@@ -50,6 +50,7 @@ int Systemcalls::startscript() {
 	retval = 0;
 	switch (start) {
 	case System: 
+	case SystemDontWait:
 		retval = system(command.c_str());
 		callback();
 		break;
@@ -193,6 +194,29 @@ int Systemcalls::startscript(Starttype how, string const & what,
 	cbk     = cback;
 	pid     = static_cast<pid_t>(0); // yet no child
 	retval	= 0;
+
+	if (how == SystemDontWait) {
+#ifndef __EMX__
+		command += " &";
+#else
+		// OS/2 cmd.exe has another use for '&'
+		// This is not NLS safe, but it's OK, I think.
+		string sh = OnlyFilename(GetEnvPath("EMXSHELL"));
+		if (sh.empty()) {
+			// COMSPEC is set, unless user unsets 
+			sh = OnlyFilename(GetEnvPath("COMSPEC"));
+			if (sh.empty())
+				sh = "cmd.exe";
+		}
+		sh = lowercase(sh);
+		if (contains(sh, "cmd.exe")
+		    || contains(sh, "4os2.exe"))
+			command = "start /min/n " + command;
+		else
+			command += " &";
+#endif
+	}
+
         return startscript();
 }
 

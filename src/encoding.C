@@ -462,7 +462,7 @@ Encoding iso8859_2("latin2",tab_iso8859_2);
 Encoding iso8859_3("latin3",tab_iso8859_3);
 Encoding iso8859_4("latin4",tab_iso8859_4);
 Encoding iso8859_6("unknown",tab_iso8859_6_16);
-Encoding iso8859_7("unknown",tab_iso8859_7);
+Encoding iso8859_7("iso-8859-7",tab_iso8859_7);
 Encoding iso8859_9("latin5",tab_iso8859_9);
 Encoding cp1255("cp1255",tab_cp1255);
 Encoding koi8("koi8-r",tab_koi8);

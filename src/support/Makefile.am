@@ -33,6 +33,7 @@ libsupport_la_SOURCES = \
 	abort.C \
 	block.h \
 	chdir.C \
+	copy.C \
 	date.C \
 	filetools.C \
 	filetools.h \
@@ -50,6 +51,7 @@ libsupport_la_SOURCES = \
 	path.C \
 	path.h \
 	putenv.C \
+	rename.C \
 	$(REGEX) syscall.C \
 	syscall.h \
 	syscontr.C \

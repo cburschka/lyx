@@ -196,13 +196,21 @@ SEARCH_PROG([for a Postscript interpreter],GS, gs)
 SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gv ghostview)
 
 # Search for a program to preview pdf
-SEARCH_PROG([for a PDF preview],PDFVIEWER,xpdf acroread gv ghostview)
+SEARCH_PROG([for a PDF preview],PDF_VIEWER,xpdf acroread gv ghostview)
 
-# Search for a program to convert pdf to ps
-SEARCH_PROG([for a PDF to PS converter],PDFPS,pdf2ps pdftops)
+# Search something to preview dvi
+SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi)
+
+# Search something to preview html
+SEARCH_PROG([for a HTML previewer],HTML_VIEWER, netscape)
+
+# Search for a program to convert ps to pdf
+SEARCH_PROG([for a PS to PDF converter],ps_to_pdf_command,ps2pdf)
+test $ps_to_pdf_command = "ps2pdf" && ps_to_pdf_command="ps2pdf \$\$FName"
 
 # Search for a program to convert dvi to ps
-SEARCH_PROG([for a DVI to PS converter],DVIPS,dvips)
+SEARCH_PROG([for a DVI to PS converter],dvi_to_ps_command,dvips)
+test $dvi_to_ps_command = "dvips" && dvi_to_ps_command="dvips -o \$\$OutName \$\$FName"
 
 # Search a *roff program (used to translate tables in ASCII export)
 SEARCH_PROG([for a *roff formatter],ROFF,groff nroff)
@@ -240,8 +248,8 @@ fi
 
 case $LINUXDOC in
   sgml2lyx)
-    linuxdoc_to_latex_command="sgml2latex"
-    linuxdoc_to_html_command="sgml2html '\$\$FName'"
+    linuxdoc_to_latex_command="sgml2latex \$\$FName"
+    linuxdoc_to_html_command="sgml2html \$\$FName"
     linuxdoc_to_lyx_command="sgml2lyx";;
   none)
     linuxdoc_to_latex_command="none"
@@ -259,11 +267,11 @@ fi
 
 case $DOCBOOK in
   sgmltools)
-    docbook_to_dvi_command="sgmltools -b dvi"
-    docbook_to_html_command="sgmltools -b html '\$\$FName'";;
+    docbook_to_dvi_command="sgmltools -b dvi \$\$FName"
+    docbook_to_html_command="sgmltools -b html \$\$FName";;
   db2dvi)
-    docbook_to_dvi_command="db2dvi"
-    docbook_to_html_command="db2html '\$\$FName'";;
+    docbook_to_dvi_command="db2dvi \$\$FName"
+    docbook_to_html_command="db2html \$\$FName";;
   none)
     docbook_to_dvi_command="none"
     docbook_to_html_command="none";;
@@ -281,10 +289,11 @@ esac
 
 # Search for a latex to html converter
 SEARCH_PROG([for an HTML converter], TOHTML, tth latex2html hevea)
+latex_to_html_command = $TOHTML
 case $TOHTML in
-	tth) html_command="tth -t < '\$\$FName' > '\$\$OutName'";;
- latex2html) html_command="latex2html -no_subdir -split 0 -show_section_numbers '\$\$FName'";;
-      hevea) html_command="hevea -s '\$\$FName'";;
+	tth) latex_to_html_command="tth -t < \$\$FName > \$\$OutName";;
+ latex2html) latex_to_html_command="latex2html -no_subdir -split 0 -show_section_numbers \$\$FName";;
+      hevea) latex_to_html_command="hevea -s \$\$FName";;
 esac
 
 #### Explore the LaTeX configuration
@@ -358,27 +367,31 @@ cat >lyxrc.defaults <<EOF
 # want to customize LyX, make a copy of the file LYXDIR/lyxrc as
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
-\\latex_command "$LATEX"
-\\pdflatex_command "$PDFLATEX"
-\\view_pdf_command "$PDFVIEWER"
-\\pdf_to_ps_command "$PDFPS"
-\\dvi_to_ps_command "$DVIPS"
+\\converter tex dvi "$LATEX" noflags
+\\converter tex pdf "$PDFLATEX" noflags
+\\converter dvi ps "$dvi_to_ps_command" noflags
+\\converter ps pdf "$ps_to_pdf_command" noflags
+\\converter sgml tex "$linuxdoc_to_latex_command" noflags
+\\converter sgml html "$linuxdoc_to_html_command" noflags
+\\converter docbook dvi "$docbook_to_dvi_command" noflags
+\\converter docbook html "$docbook_to_html_command" noflags
+\\converter tex html "$latex_to_html_command" noflags
+
+\\viewer dvi "$DVI_VIEWER"
+\\viewer html "$HTML_VIEWER"
+\\viewer pdf "$PDF_VIEWER"
+\\viewer ps "$GHOSTVIEW -swap"
+\\viewer pspic "$GHOSTVIEW"
+
 \\relyx_command "$RELYX"
+\\linuxdoc_to_lyx_command "$linuxdoc_to_lyx_command"
 \\literate_command "$LITERATE"
 \\literate_extension "$LITERATE_EXT"
 \\ps_command "$GS"
-\\view_ps_command "$GHOSTVIEW -swap"
-\\view_pspic_command "$GHOSTVIEW"
 \\ascii_roff_command "$ascii_roff_command"
 \\chktex_command "$chktex_command"
 \\spell_command "$SPELL"
 \\fax_command "$fax_command"
-\\linuxdoc_to_latex_command "$linuxdoc_to_latex_command"
-\\linuxdoc_to_html_command "$linuxdoc_to_html_command"
-\\linuxdoc_to_lyx_command "$linuxdoc_to_lyx_command"
-\\docbook_to_dvi_command "$docbook_to_dvi_command"
-\\docbook_to_html_command "$docbook_to_html_command"
-\\html_command "$html_command"
 \\print_spool_command "$print_spool_command"
 \\print_spool_printerprefix "$print_spool_printerprefix"
 \\font_encoding "$chk_fontenc"

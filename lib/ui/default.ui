@@ -34,11 +34,11 @@ Menuset
 	Item "Save As|A" "buffer-write-as"
 	Item "Revert to saved|R" "buffer-reload"
 	Separator
-	Item "View dvi|d" "buffer-view"
-	Item "View Postscript|w" "buffer-view-ps"
+	Item "View dvi|d" "buffer-view dvi"
+	Item "View Postscript|w" "buffer-view ps"
 	Submenu "View" "view"
-	Item "Update dvi|v" "buffer-typeset"
-	Item "Update Postscript|U" "buffer-typeset-ps"
+	Item "Update dvi|v" "buffer-update dvi"
+	Item "Update Postscript|U" "buffer-update ps"
 	Submenu "Update" "update"
 	OptItem "Build program|B" "build-program"
 	Separator
@@ -81,14 +81,14 @@ Menuset
 
     Menu "export"
 	ExportFormats
-	OptItem "as LaTeX|L" "buffer-export latex"
-	OptItem "as LinuxDoc|L" "buffer-export linuxdoc"
-	OptItem "as DocBook|B" "buffer-export docbook"
-	Item "as DVI|D" "buffer-export dvi"
+#	OptItem "as LaTeX|L" "buffer-export latex"
+#	OptItem "as LinuxDoc|L" "buffer-export linuxdoc"
+#	OptItem "as DocBook|B" "buffer-export docbook"
+#	Item "as DVI|D" "buffer-export dvi"
 #	Item "as Postscript|P" "buffer-export postscript"
-	Item "as Ascii|A" "buffer-export ascii"
-	Item "as HTML|H" "buffer-export html"
-	OptItem "Custom...|C" "buffer-export custom"
+#	Item "as Ascii|A" "buffer-export ascii"
+#	Item "as HTML|H" "buffer-export html"
+#	OptItem "Custom...|C" "buffer-export custom"
     End
 
     Menu "edit"

@@ -15,36 +15,39 @@
 #endif
 
 #include <queue>
-#include <stack>
-#include <algorithm>
-#include <stdio.h>
+#include <algorithm> // sort()
 
 #include "converter.h"
 #include "lyxrc.h"
 #include "support/syscall.h"
 #include "support/path.h"
-#include "debug.h"
 #include "buffer.h"
-
 #include "bufferview_funcs.h"
 #include "LaTeX.h"
 #include "LyXView.h"
 #include "minibuffer.h"
 #include "lyx_gui_misc.h"
-#include "lyx_cb.h"
+#include "lyx_cb.h" // ShowMessage()
 
 using std::map;
 using std::vector;
 using std::queue;
 using std::pair;
 using std::sort;
-using std::stack;
 using std::endl;
 
 //////////////////////////////////////////////////////////////////////////////
 
 map<string, Format> Formats::formats;
 vector<Command> Converter::commands;
+
+inline
+string add_options(string const & command, string const & options)
+{
+	string head;
+	string tail = split(command, head, ' ');
+	return head + ' ' + options + ' ' + tail;
+}
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -83,17 +86,17 @@ void Formats::Add(string const & name)
 
 void Formats::SetViewer(string const & name, string const & command)
 {
+
+	string command2 = subst(command, "$$FName", "'$$FName'");
+	if (!contains(command,"$$FName"))
+		command2 += " '$$FName'";
+
 	Add(name);
-	Format * f = GetFormat(name);
-	if (!f->viewer.empty())
-		lyxerr << "Error: a viewer for " << name
-		       << " is already defined!" << endl;
-	else
-		f->viewer = command;
+	GetFormat(name)->viewer = command2;
 }
 
 
-bool Formats::View(string const & filename)
+bool Formats::View(Buffer * buffer, string const & filename)
 {
 	string extension = GetExtension(filename);
 	Format * format = GetFormat(extension);
@@ -105,30 +108,24 @@ bool Formats::View(string const & filename)
 	}
 
 	string command = format->viewer;
+
+	if (extension == "dvi" &&
+	    !lyxrc.view_dvi_paper_option.empty()) {
+		string options = lyxrc.view_dvi_paper_option;
+		options += " " + Converter::dvi_papersize(buffer);
+		if (buffer->params.orientation 
+		    == BufferParams::ORIENTATION_LANDSCAPE)
+			options += 'r';
+		command = add_options(command, options);
+        }
+
+	string command2 = subst(command, "$$FName", OnlyFilename(filename));
+	lyxerr << "Executing command: " << command2 << endl;
+	ShowMessage(buffer, _("Executing command:"), command2);
+
 	command = subst(command, "$$FName", filename);
-#ifndef __EMX__
-	command += " &";
-#else
-	// OS/2 cmd.exe has another use for '&'
-	// This is not NLS safe, but it's OK, I think.
-	string sh = OnlyFilename(GetEnvPath("EMXSHELL"));
-	if (sh.empty()) {
-		// COMSPEC is set, unless user unsets 
-		sh = OnlyFilename(GetEnvPath("COMSPEC"));
-		if (sh.empty())
-			sh = "cmd.exe";
-	}
-	sh = lowercase(sh);
-	if (contains(sh, "cmd.exe")
-	    || contains(sh, "4os2.exe"))
-		command = "start /min/n " + command;
-	else
-		command += " &";
-#endif
-	lyxerr << "Executing command: " << command << endl;
-	//ShowMessage(buffer, _("Executing command:"), command);
 	Systemcalls one;
-	int res = one.startscript(Systemcalls::System, command);
+	int res = one.startscript(Systemcalls::SystemDontWait, command);
 
 	if (res) {
 		WriteAlert(_("Can not view file"),
@@ -149,6 +146,7 @@ Format * Formats::GetFormat(string const & name)
 		return 0;
 }
 
+
 string const Formats::PrettyName(string const & name)
 {
 	string format;
@@ -162,20 +160,26 @@ string const Formats::PrettyName(string const & name)
 
 
 //////////////////////////////////////////////////////////////////////////////
+
 void Converter::Add(string const & from, string const & to,
 		    string const & command, string const & flags)
 {
-	for (vector<Command>::const_iterator cit = commands.begin();
-	     cit != commands.end(); ++cit)
-		if ((*cit).from == from && (*cit).to == to) {
-			lyxerr << "Error: Convertor from " << from
-			       << " to " << to
-			       << " already exists!" << endl;
+	if (command == "none")
+		return;
+
+	bool original_dir = flags == "origdir";
+	string command2 = 
+		   subst(command, "$$FName", "'$$FName'");
+	command2 = subst(command2, "$$BaseName", "'$$BaseName'");
+	command2 = subst(command2, "$$OutName", "'$$OutName'");
+
+	for (vector<Command>::iterator it = commands.begin();
+	     it != commands.end(); ++it)
+		if ((*it).from == from && (*it).to == to) {
+			*it = Command(from, to, command2, original_dir);
 			return;
 		}
-	bool original_dir = flags == "origdir";
-	commands.push_back(Command(from, to, command, original_dir));
-
+	commands.push_back(Command(from, to, command2, original_dir));
 	Formats::Add(from);
 	Formats::Add(to);
 	++Formats::GetFormat(to)->in_degree;
@@ -232,15 +236,16 @@ Converter::GetReachable(string const & from, bool only_viewable)
 }
 
 
-bool Converter::convert(Buffer * buffer, string const & from_file,
-			string const & to_format)
-
+bool Converter::Convert(Buffer * buffer, string const & from_file,
+			string const & to_file, string const & using_format)
 {
-	string format;
-	string using_format = SplitFormat(to_format, format);
 	string from_format = GetExtension(from_file);
-	if (from_format == format)
-		return true;
+	string to_format = GetExtension(to_file);
+	if (from_format == to_format)
+		if (from_file != to_file)
+			return lyx::rename(from_file.c_str(), to_file.c_str());
+		else
+			return true;
 
 	queue< vector<Command>::iterator > Q;
 	for (vector<Command>::iterator it = commands.begin();
@@ -262,7 +267,7 @@ bool Converter::convert(Buffer * buffer, string const & from_file,
 	vector<Command>::iterator it;
 	while (!Q.empty()) {
 		it = Q.front();
-		if ((*it).to == format &&
+		if ((*it).to == to_format &&
 		    (using_format.empty() || using_format == (*it).from)) {
 			found = true;
 			break;
@@ -285,19 +290,18 @@ bool Converter::convert(Buffer * buffer, string const & from_file,
 		return false;
 	}
 
-	stack< vector<Command>::iterator > S;
+	vector< vector<Command>::iterator > S;
 	while (it != commands.end()) {
-		S.push(it);
+		S.push_back(it);
 		it = (*it).previous;
 	}
 
-	//Path p(OnlyPath(buffer->fileName()));
 	Path p(OnlyPath(from_file));
 
 	string basename = ChangeExtension(from_file, "");
-	while (!S.empty()) {
-		it = S.top();
-		S.pop();
+	for (vector< vector<Command>::iterator >::reverse_iterator rit =
+		     S.rbegin(); rit != S.rend(); ++rit) {
+		it = *rit;
 		lyxerr << "Converting from  "
 		       << (*it).from << " to " << (*it).to << endl;
 
@@ -316,6 +320,11 @@ bool Converter::convert(Buffer * buffer, string const & from_file,
 			command = subst(command, "$$FName", infile);
 			command = subst(command, "$$BaseName", basename);
 			command = subst(command, "$$OutName", outfile);
+
+			if ((*it).from == "dvi" && (*it).to == "ps")
+				command = add_options(command,
+						      dvips_options(buffer));
+
 			lyxerr << "Calling " << command << endl;
 			ShowMessage(buffer, _("Executing command:"), command);
 			
@@ -334,6 +343,14 @@ bool Converter::convert(Buffer * buffer, string const & from_file,
 			}
 		}
 	}
+
+	string result_file = ChangeExtension(from_file, to_format);
+	if (result_file != to_file)
+		if ((*it).from == "tex" &&
+		    ( (*it).to == "dvi" || (*it).to == "pdf") )
+			return lyx::copy(result_file.c_str(), to_file.c_str());
+		else
+			return lyx::rename(result_file.c_str(), to_file.c_str());
 
         return true;
 }
@@ -408,3 +425,56 @@ bool Converter::runLaTeX(Buffer * buffer, string const & command)
 
 }
 
+
+string Converter::dvi_papersize(Buffer * buffer)
+{
+	char real_papersize = buffer->params.papersize;
+	if (real_papersize == BufferParams::PAPER_DEFAULT)
+		real_papersize = lyxrc.default_papersize;
+
+	switch (real_papersize) {
+	case BufferParams::PAPER_A3PAPER:
+		return "a3";
+	case BufferParams::PAPER_A4PAPER:
+		return "a4";
+	case BufferParams::PAPER_A5PAPER:
+		return "a5";
+	case BufferParams::PAPER_B5PAPER:
+		return "b5";
+	case BufferParams::PAPER_EXECUTIVEPAPER:
+		return "foolscap";
+	case BufferParams::PAPER_LEGALPAPER:
+		return "legal";
+	case BufferParams::PAPER_USLETTER:
+	default:
+		return "us";
+	}
+}
+
+
+string Converter::dvips_options(Buffer * buffer)
+{
+	string result;
+	if (buffer->params.use_geometry
+	    && buffer->params.papersize2 == BufferParams::VM_PAPER_CUSTOM
+	    && !lyxrc.print_paper_dimension_flag.empty()
+	    && !buffer->params.paperwidth.empty()
+	    && !buffer->params.paperheight.empty()) {
+		// using a custom papersize
+		result = lyxrc.print_paper_dimension_flag;
+		result += ' ' + buffer->params.paperwidth;
+		result += ',' + buffer->params.paperheight;
+	} else {
+		string paper_option = dvi_papersize(buffer);
+		if (paper_option != "letter" ||
+		    buffer->params.orientation != BufferParams::ORIENTATION_LANDSCAPE) {
+			// dvips won't accept -t letter -t landscape.  In all other
+			// cases, include the paper size explicitly.
+			result = lyxrc.print_paper_flag;
+			result += ' ' + paper_option;
+		}
+	}
+	if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
+		result += ' ' + lyxrc.print_landscape_flag;
+	return result;
+}

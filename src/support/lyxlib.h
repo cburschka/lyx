@@ -26,6 +26,10 @@ namespace lyx {
 	char * getcwd(char * buffer, size_t size);
 	///
 	int chdir(char const * name);
+	/// Returns false it it fails
+	bool rename(char const * from, char const * to);
+	/// Returns false it it fails
+	bool copy(char const * from, char const * to);
 	/// generates a checksum
 	unsigned long sum(char const * file);
 	/// returns a date string (not used currently)
@@ -48,6 +52,10 @@ struct lyx {
 	static char * getcwd(char * buffer, size_t size);
 	///
 	static int chdir(char const * name);
+	/// Returns false it it fails
+	static bool rename(char const * from, char const * to);
+	/// Returns false it it fails
+	static bool copy(char const * from, char const * to);
 	/// generates a checksum
 	static unsigned long sum(char const * file);
 	/// returns a date string (not used currently)

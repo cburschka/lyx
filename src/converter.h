@@ -70,7 +70,7 @@ public:
 	void SetViewer(string const & name, string const & command);
 	///
 	static
-	bool View(string const & filename);
+	bool View(Buffer * buffer, string const & filename);
 	///
 	static
 	Format * GetFormat(string const & name);
@@ -97,11 +97,16 @@ public:
 		     bool only_viewable = false);
 	///
 	static
-	bool convert(Buffer * buffer, string const & from_file,
-		     string const & to_format);
+	bool Convert(Buffer * buffer, string const & from_file,
+		     string const & to_file, string const & using_format);
+	static
+	string const SplitFormat(string const & str, string & format);
 	///
 	static
-	string const SplitFormat(string const & str, string & format); 
+	string dvi_papersize(Buffer * buffer);
+	///
+	static
+	string dvips_options(Buffer * buffer);
 private:
 	///
 	static

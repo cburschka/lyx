@@ -32,6 +32,7 @@ public:
 	///
 	enum Starttype {
 		System, // Uses system() which uses /bin/sh
+		SystemDontWait, // Uses system() which uses /bin/sh
 		Wait, // Uses fork() and execvp()
 		DontWait // Uses fork() and execvp()
 	};

@@ -22,6 +22,11 @@
 // only to get access to NEW_INSETS and NEW_TABULAR
 #include "lyxparagraph.h"
 #endif
+#if 1
+// only to get access to NEW_EXPORT
+#include "exporter.h"
+#endif
+
 
 using std::ostream;
 using std::endl;

@@ -335,7 +335,7 @@ fi
 # Search for a program to preview pdf
 echo $ac_n "checking for a PDF preview""... $ac_c"
 echo "$ac_t""(xpdf acroread gv ghostview)"
-PDFVIEWER=
+PDF_VIEWER=
 for ac_prog in xpdf acroread gv ghostview
 do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
@@ -346,33 +346,33 @@ if test -n "$ac_word"; then
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
-      PDFVIEWER="$ac_prog"
+      PDF_VIEWER="$ac_prog"
       break
     fi
   done
   IFS="$ac_save_ifs"
 
-  if test -n "$PDFVIEWER"; then
+  if test -n "$PDF_VIEWER"; then
     ac_result=yes
   else
     ac_result=no
   fi
   
   echo "$ac_t""$ac_result"
-  test -n "$PDFVIEWER" && break
+  test -n "$PDF_VIEWER" && break
 fi
 done
 
-if test -z "$PDFVIEWER" ; then
-  PDFVIEWER=none
+if test -z "$PDF_VIEWER" ; then
+  PDF_VIEWER=none
 fi
 
 
-# Search for a program to convert pdf to ps
-echo $ac_n "checking for a PDF to PS converter""... $ac_c"
-echo "$ac_t""(pdf2ps pdftops)"
-PDFPS=
-for ac_prog in pdf2ps pdftops
+# Search something to preview dvi
+echo $ac_n "checking for a DVI previewer""... $ac_c"
+echo "$ac_t""(xdvi)"
+DVI_VIEWER=
+for ac_prog in xdvi
 do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog ; ac_word=$2
@@ -382,32 +382,105 @@ if test -n "$ac_word"; then
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
-      PDFPS="$ac_prog"
+      DVI_VIEWER="$ac_prog"
       break
     fi
   done
   IFS="$ac_save_ifs"
 
-  if test -n "$PDFPS"; then
+  if test -n "$DVI_VIEWER"; then
     ac_result=yes
   else
     ac_result=no
   fi
   
   echo "$ac_t""$ac_result"
-  test -n "$PDFPS" && break
+  test -n "$DVI_VIEWER" && break
 fi
 done
 
-if test -z "$PDFPS" ; then
-  PDFPS=none
+if test -z "$DVI_VIEWER" ; then
+  DVI_VIEWER=none
 fi
 
+
+# Search something to preview html
+echo $ac_n "checking for a HTML previewer""... $ac_c"
+echo "$ac_t""(netscape)"
+HTML_VIEWER=
+for ac_prog in netscape
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog ; ac_word=$2
+if test -n "$ac_word"; then
+  echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -x $ac_dir/$ac_word; then
+      HTML_VIEWER="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+
+  if test -n "$HTML_VIEWER"; then
+    ac_result=yes
+  else
+    ac_result=no
+  fi
+  
+  echo "$ac_t""$ac_result"
+  test -n "$HTML_VIEWER" && break
+fi
+done
+
+if test -z "$HTML_VIEWER" ; then
+  HTML_VIEWER=none
+fi
+
+
+# Search for a program to convert ps to pdf
+echo $ac_n "checking for a PS to PDF converter""... $ac_c"
+echo "$ac_t""(ps2pdf)"
+ps_to_pdf_command=
+for ac_prog in ps2pdf
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog ; ac_word=$2
+if test -n "$ac_word"; then
+  echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -x $ac_dir/$ac_word; then
+      ps_to_pdf_command="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+
+  if test -n "$ps_to_pdf_command"; then
+    ac_result=yes
+  else
+    ac_result=no
+  fi
+  
+  echo "$ac_t""$ac_result"
+  test -n "$ps_to_pdf_command" && break
+fi
+done
+
+if test -z "$ps_to_pdf_command" ; then
+  ps_to_pdf_command=none
+fi
+
+test $ps_to_pdf_command = "ps2pdf" && ps_to_pdf_command="ps2pdf \$\$FName"
 
 # Search for a program to convert dvi to ps
 echo $ac_n "checking for a DVI to PS converter""... $ac_c"
 echo "$ac_t""(dvips)"
-DVIPS=
+dvi_to_ps_command=
 for ac_prog in dvips
 do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
@@ -418,27 +491,28 @@ if test -n "$ac_word"; then
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
-      DVIPS="$ac_prog"
+      dvi_to_ps_command="$ac_prog"
       break
     fi
   done
   IFS="$ac_save_ifs"
 
-  if test -n "$DVIPS"; then
+  if test -n "$dvi_to_ps_command"; then
     ac_result=yes
   else
     ac_result=no
   fi
   
   echo "$ac_t""$ac_result"
-  test -n "$DVIPS" && break
+  test -n "$dvi_to_ps_command" && break
 fi
 done
 
-if test -z "$DVIPS" ; then
-  DVIPS=none
+if test -z "$dvi_to_ps_command" ; then
+  dvi_to_ps_command=none
 fi
 
+test $dvi_to_ps_command = "dvips" && dvi_to_ps_command="dvips -o \$\$OutName \$\$FName"
 
 # Search a *roff program (used to translate tables in ASCII export)
 echo $ac_n "checking for a *roff formatter""... $ac_c"
@@ -641,8 +715,8 @@ fi
 
 case $LINUXDOC in
   sgml2lyx)
-    linuxdoc_to_latex_command="sgml2latex"
-    linuxdoc_to_html_command="sgml2html '\$\$FName'"
+    linuxdoc_to_latex_command="sgml2latex \$\$FName"
+    linuxdoc_to_html_command="sgml2html \$\$FName"
     linuxdoc_to_lyx_command="sgml2lyx";;
   none)
     linuxdoc_to_latex_command="none"
@@ -693,11 +767,11 @@ fi
 
 case $DOCBOOK in
   sgmltools)
-    docbook_to_dvi_command="sgmltools -b dvi"
-    docbook_to_html_command="sgmltools -b html '\$\$FName'";;
+    docbook_to_dvi_command="sgmltools -b dvi \$\$FName"
+    docbook_to_html_command="sgmltools -b html \$\$FName";;
   db2dvi)
-    docbook_to_dvi_command="db2dvi"
-    docbook_to_html_command="db2html '\$\$FName'";;
+    docbook_to_dvi_command="db2dvi \$\$FName"
+    docbook_to_html_command="db2html \$\$FName";;
   none)
     docbook_to_dvi_command="none"
     docbook_to_html_command="none";;
@@ -781,10 +855,11 @@ if test -z "$TOHTML" ; then
   TOHTML=none
 fi
 
+latex_to_html_command = $TOHTML
 case $TOHTML in
-	tth) html_command="tth -t < '\$\$FName' > '\$\$OutName'";;
- latex2html) html_command="latex2html -no_subdir -split 0 -show_section_numbers '\$\$FName'";;
-      hevea) html_command="hevea -s '\$\$FName'";;
+	tth) latex_to_html_command="tth -t < \$\$FName > \$\$OutName";;
+ latex2html) latex_to_html_command="latex2html -no_subdir -split 0 -show_section_numbers \$\$FName";;
+      hevea) latex_to_html_command="hevea -s \$\$FName";;
 esac
 
 #### Explore the LaTeX configuration
@@ -870,27 +945,31 @@ cat >lyxrc.defaults <<EOF
 # want to customize LyX, make a copy of the file LYXDIR/lyxrc as
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
-\\latex_command "$LATEX"
-\\pdflatex_command "$PDFLATEX"
-\\view_pdf_command "$PDFVIEWER"
-\\pdf_to_ps_command "$PDFPS"
-\\dvi_to_ps_command "$DVIPS"
+\\converter tex dvi "$LATEX" noflags
+\\converter tex pdf "$PDFLATEX" noflags
+\\converter dvi ps "$dvi_to_ps_command" noflags
+\\converter ps pdf "$ps_to_pdf_command" noflags
+\\converter sgml tex "$linuxdoc_to_latex_command" noflags
+\\converter sgml html "$linuxdoc_to_html_command" noflags
+\\converter docbook dvi "$docbook_to_dvi_command" noflags
+\\converter docbook html "$docbook_to_html_command" noflags
+\\converter tex html "$latex_to_html_command" noflags
+
+\\viewer dvi "$DVI_VIEWER"
+\\viewer html "$HTML_VIEWER"
+\\viewer pdf "$PDF_VIEWER"
+\\viewer ps "$GHOSTVIEW -swap"
+\\viewer pspic "$GHOSTVIEW"
+
 \\relyx_command "$RELYX"
+\\linuxdoc_to_lyx_command "$linuxdoc_to_lyx_command"
 \\literate_command "$LITERATE"
 \\literate_extension "$LITERATE_EXT"
 \\ps_command "$GS"
-\\view_ps_command "$GHOSTVIEW -swap"
-\\view_pspic_command "$GHOSTVIEW"
 \\ascii_roff_command "$ascii_roff_command"
 \\chktex_command "$chktex_command"
 \\spell_command "$SPELL"
 \\fax_command "$fax_command"
-\\linuxdoc_to_latex_command "$linuxdoc_to_latex_command"
-\\linuxdoc_to_html_command "$linuxdoc_to_html_command"
-\\linuxdoc_to_lyx_command "$linuxdoc_to_lyx_command"
-\\docbook_to_dvi_command "$docbook_to_dvi_command"
-\\docbook_to_html_command "$docbook_to_html_command"
-\\html_command "$html_command"
 \\print_spool_command "$print_spool_command"
 \\print_spool_printerprefix "$print_spool_printerprefix"
 \\font_encoding "$chk_fontenc"

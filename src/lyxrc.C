@@ -1122,9 +1122,6 @@ int LyXRC::read(string const & filename)
 				command = lexrc.GetString();
 			if (lexrc.next())
 				flags = lexrc.GetString();
-			command = subst(command, "$$FName", "'$$FName'");
-			command = subst(command, "$$BaseName", "'$$BaseName'");
-			command = subst(command, "$$OutName", "'$$OutName'");
 			Converter::Add(from, to, command, flags);
 			break;
 		}
@@ -1135,7 +1132,6 @@ int LyXRC::read(string const & filename)
 				format = lexrc.GetString();
 			if (lexrc.next())
 				command = lexrc.GetString();
-			command = subst(command, "$$FName", "'$$FName'");
 			Formats::SetViewer(format, command);
 			break;
 		}

@@ -14,15 +14,11 @@
 #pragma implementation
 #endif
 
-#include <algorithm>
-#include <stdio.h>
-
 #include "exporter.h"
 #include "converter.h"
-
 #include "buffer.h"
-#include "lyx_cb.h"
-#include "support/path.h"
+#include "lyx_cb.h" //ShowMessage()
+#include "support/filetools.h"
 
 using std::vector;
 using std::pair;
@@ -33,39 +29,34 @@ bool Exporter::Export(Buffer * buffer, string const & format0,
 	string format;
 	string using_format = Converter::SplitFormat(format0, format);
 
-	string filename = buffer->fileName();
 	string backend_format = BufferExtension(buffer);
 	bool only_backend = backend_format == format;
 
-	//string file = buffer->getLatexName(true);
-        string file = filename;
+	string filename = buffer->getLatexName(false);
 	if (!buffer->tmppath.empty())
-		file = AddName(buffer->tmppath, file);
-	file = ChangeExtension(file, backend_format);
+		filename = AddName(buffer->tmppath, filename);
+	filename = ChangeExtension(filename, backend_format);
 
 	if (buffer->isLinuxDoc())
-		buffer->makeLinuxDocFile(file, only_backend);
+		buffer->makeLinuxDocFile(filename, only_backend);
 	else if (only_backend)
-		buffer->makeLaTeXFile(file, string(), true);
+		buffer->makeLaTeXFile(filename, string(), true);
 	else
-		buffer->makeLaTeXFile(file, buffer->filepath, false);
+		buffer->makeLaTeXFile(filename, buffer->filepath, false);
 
-	bool return_value = Converter::convert(buffer, file, format0);
-	if (!return_value)
+	string outfile = (put_in_tempdir)
+		? ChangeExtension(filename, format)
+		: ChangeExtension(buffer->getLatexName(false), format);
+
+	if (!Converter::Convert(buffer, filename, outfile, using_format))
 		return false;
 
-	if (!put_in_tempdir) {
-		file = ChangeExtension(file, format);
-		string outfile = ChangeExtension(filename, format);
-		if (file != outfile)
-			rename(file.c_str(), outfile.c_str());
-
+	if (!put_in_tempdir)
 		ShowMessage(buffer,
 			    _("Document exported as ")
 			    + Formats::PrettyName(format)
 			    + _(" to file `")
 			    + MakeDisplayPath(outfile) +'\'');
-	}
 	return true;
 }
 
@@ -78,11 +69,11 @@ bool Exporter::Preview(Buffer * buffer, string const & format0)
 	string format;
 	Converter::SplitFormat(format0, format);
 
-	string filename = buffer->fileName();
+	string filename = buffer->getLatexName(false);
 	if (!buffer->tmppath.empty())
 		filename = AddName(buffer->tmppath, filename);
 	filename = ChangeExtension(filename, format);
-	return Formats::View(filename);
+	return Formats::View(buffer, filename);
 }
 
 

@@ -1,3 +1,32 @@
+2000-09-04  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/converter.C (add_options): New function.
+	(SetViewer): Change $$FName into '$$FName'.
+	(View): Add options when running xdvi
+	(Add): Change $$FName into '$$FName'. Same for $$BaseName/$$OutName.
+	(Convert): The 3rd parameter is now the desired filename. Converts
+	calls to lyx::rename if necessary.
+	Add options when running dvips.
+	(dvi_papersize,dvips_options): New methods.
+
+	* src/exporter.C (Export): Use getLatexName() instead of fileName().
+
+	* src/frontends/Liason.C (printBuffer): Removed duplicate code by
+	using a call to Converter::dvips_options.
+	Fixed to work with nex export code.
+
+	* src/support/copy.C
+	* src/support/rename.C: New files
+
+	* src/support/syscall.h
+	* src/support/syscall.C: Added Starttype SystemDontWait.
+
+	* lib/ui/default.ui: Changed to work with new export code
+
+	* lib/configure.m4: Changed to work with new export code
+
+	* src/encoding.C: Changed latex name for iso8859_7 encoding.
+
 2000-09-04  Angus Leeming  <a.leeming@ic.ac.uk> +
 
 	* src/frontends/xforms/Menubar_pimpl.C: added two using directives
