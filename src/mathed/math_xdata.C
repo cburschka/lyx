@@ -18,15 +18,15 @@ MathXArray::MathXArray()
 {}
 
 
-void MathXArray::metrics(MathMetricsInfo const & st) const
+void MathXArray::metrics(MathMetricsInfo const & mi) const
 {
-	size_ = st;
-	mathed_char_dim(LM_TC_VAR, st, 'I', ascent_, descent_, width_);
+	size_ = mi;
+	mathed_char_dim(LM_TC_VAR, mi, 'I', ascent_, descent_, width_);
 
 	if (data_.empty()) 
 		return;
 
-	math_font_max_dim(LM_TC_TEXTRM, st, ascent_, descent_);	
+	math_font_max_dim(LM_TC_TEXTRM, mi, ascent_, descent_);	
 	width_ = 0;
 
 	//lyxerr << "MathXArray::metrics(): '" << data_ << "'\n";
@@ -35,13 +35,13 @@ void MathXArray::metrics(MathMetricsInfo const & st) const
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
 		if (q) {
-			q->metrics(p, st);
+			q->metrics(p, mi);
 			ascent_  = std::max(ascent_,  q->ascent(p));
 			descent_ = std::max(descent_, q->descent(p));
 			width_  += q->width(p);	
 			++it;
 		} else {
-			p->metrics(st);
+			p->metrics(mi);
 			ascent_  = std::max(ascent_,  p->ascent());
 			descent_ = std::max(descent_, p->descent());
 			width_  += p->width();	

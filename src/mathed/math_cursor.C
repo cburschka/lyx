@@ -1176,19 +1176,6 @@ int MathCursor::cellYOffset() const
 }
 
 
-int MathCursor::xpos() const
-{
-	return cellXOffset() + xarray().pos2x(pos());
-}
-
-
-int MathCursor::ypos() const
-{
-	return cellYOffset();
-}
-
-
-
 void MathCursor::gotoX(int x) 
 {
 	pos() = xarray().x2pos(x - cellXOffset());
@@ -1286,7 +1273,7 @@ bool MathCursor::interpret(string const & s)
 
 	if (s.size() >= 5 && s.substr(0, 5) == "cases") {
 		unsigned int n = 1;
-		istringstream is(s.substr(6).c_str());
+		istringstream is(s.substr(5).c_str());
 		is >> n;
 		n = std::max(1u, n);
 		niceInsert(MathAtom(new MathCasesInset(n)));
@@ -1298,7 +1285,7 @@ bool MathCursor::interpret(string const & s)
 		unsigned int n = 1;
 		string v_align;
 		string h_align;
-		istringstream is(s.substr(7).c_str());
+		istringstream is(s.substr(6).c_str());
 		is >> m >> n >> v_align >> h_align;
 		m = std::max(1u, m);
 		n = std::max(1u, n);
