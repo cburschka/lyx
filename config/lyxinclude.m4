@@ -284,7 +284,7 @@ AC_CACHE_CHECK(whether the C++ compiler understands explicit,lyx_cv_explicit,
  [AC_TRY_COMPILE([
 class Expl {
 public:
-	explicit Expl() {};
+	explicit Expl() {}
 };],,lyx_cv_explicit=yes,lyx_cv_explicit=no)
 ])
 if test $lyx_cv_explicit = no ; then
