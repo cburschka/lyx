@@ -1,3 +1,9 @@
+2004-11-04  John Spray  <spray_john@users.sourceforge.net>
+
+	* GWorkArea.C: convert GdkEventButton->state from
+		gdk mouse button ids into mouse_button::state
+		using gButtonToLyx function
+
 2004-10-23  John Spray  <spray_john@users.sourceforge.net>
 
 	* ghelpers.[Ch]: Add buildLengthUnitList() to get vector of

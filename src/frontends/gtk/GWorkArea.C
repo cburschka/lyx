@@ -26,8 +26,32 @@ using std::string;
 namespace lyx {
 namespace frontend {
 
-ColorCache colorCache;
+namespace {
 
+mouse_button::state gButtonToLyx(guint gdkbutton)
+{
+	// GDK uses int 1,2,3 but lyx uses enums (1,2,4)
+	switch (gdkbutton) {
+	case 1:
+		return mouse_button::button1;
+	case 2:
+		return mouse_button::button2;
+	case 3:
+		return mouse_button::button3;
+	case 4:
+		return mouse_button::button4;
+	case 5:
+		return mouse_button::button5;
+	}
+	
+	// This shouldn't happen, according to gdk docs
+	lyxerr << "gButtonToLyx: unhandled button index\n";
+	return mouse_button::button1;
+}
+
+} // namespace anon
+
+ColorCache colorCache;
 
 Gdk::Color * ColorCache::getColor(LColor_color clr)
 {
@@ -377,7 +401,7 @@ bool GWorkArea::onButtonPress(GdkEventButton * event)
 	dispatch(FuncRequest(ka,
 			     static_cast<int>(event->x),
 			     static_cast<int>(event->y),
-			     static_cast<mouse_button::state>(event->button)));
+			     gButtonToLyx(event->button)));
 	workArea_.grab_focus();
 	return true;
 }
@@ -388,7 +412,7 @@ bool GWorkArea::onButtonRelease(GdkEventButton * event)
 	dispatch(FuncRequest(LFUN_MOUSE_RELEASE,
 			     static_cast<int>(event->x),
 			     static_cast<int>(event->y),
-			     static_cast<mouse_button::state>(event->button)));
+			     gButtonToLyx(event->button)));
 	return true;
 }
 
