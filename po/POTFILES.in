@@ -12,6 +12,7 @@ src/credits_form.C
 src/CutAndPaste.C
 src/debug.C
 src/exporter.C
+src/ext_l10n.h
 src/filedlg.C
 src/FontLoader.C
 src/form1.C
@@ -26,7 +27,13 @@ src/frontends/gnome/FormUrl.C
 src/frontends/gnome/Menubar_pimpl.C
 src/frontends/kde/citationdlg.C
 src/frontends/kde/dlg/copyrightdlgdata.C
+src/frontends/kde/dlg/docdlgdata.C
+src/frontends/kde/dlg/docextradlgdata.C
+src/frontends/kde/dlg/docgeometrydlgdata.C
+src/frontends/kde/dlg/doclanguagedlgdata.C
+src/frontends/kde/dlg/docsettingsdlgdata.C
 src/frontends/kde/dlg/indexdlgdata.C
+src/frontends/kde/dlg/lengthentry.C
 src/frontends/kde/dlg/paraabovedlgdata.C
 src/frontends/kde/dlg/parabelowdlgdata.C
 src/frontends/kde/dlg/paradlgdata.C
@@ -34,8 +41,10 @@ src/frontends/kde/dlg/paraextradlgdata.C
 src/frontends/kde/dlg/parageneraldlgdata.C
 src/frontends/kde/dlg/printdlgdata.C
 src/frontends/kde/dlg/tabcreatedlgdata.C
+src/frontends/kde/docdlg.C
 src/frontends/kde/FormCitation.C
 src/frontends/kde/FormCopyright.C
+src/frontends/kde/FormDocument.C
 src/frontends/kde/FormIndex.C
 src/frontends/kde/FormParagraph.C
 src/frontends/kde/FormPrint.C
@@ -49,6 +58,7 @@ src/frontends/kde/paraextradlg.C
 src/frontends/kde/parageneraldlg.C
 src/frontends/kde/printdlg.C
 src/frontends/kde/refdlg.C
+src/frontends/kde/tabcreatedlg.C
 src/frontends/kde/tocdlg.C
 src/frontends/kde/urldlg.C
 src/frontends/xforms/FormBase.h
@@ -103,6 +113,7 @@ src/insets/insetlist.C
 src/insets/insetmarginal.C
 src/insets/insetminipage.C
 src/insets/insetparent.C
+src/insets/insetref.C
 src/insets/insettabular.C
 src/insets/insettext.C
 src/insets/insettheorem.C
@@ -148,4 +159,3 @@ src/support/path.h
 src/tabular.C
 src/text2.C
 src/text.C
-src/ext_l10n.h

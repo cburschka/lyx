@@ -1,7 +1,6 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES = *.orig *.rej *~ *.bak core textclass.lst packages.lst \
 		lyxrc.defaults doc/LyXConfig.lyx
-pkgdata_SCRIPTS = configure configure.cmd
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in listerrors
 SUBDIRS = reLyX
 bin_SCRIPTS = listerrors
@@ -14,7 +13,7 @@ EXAMPLES = examples/*.lyx
 IMAGES = images/*.xpm
 KBD = kbd/*.kmap kbd/*.cdef
 LAYOUT = layouts/*.layout layouts/*.inc 
-LYXSCRIPTS = scripts/*
+LYXSCRIPTS = configure configure.cmd scripts/*
 TEMPL = templates/*.lyx
 TEXSUPPORT = tex/*.cls
 UI = ui/*.ui
