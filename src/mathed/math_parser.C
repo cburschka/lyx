@@ -506,7 +506,7 @@ bool Parser::parse(MathAtom & at)
 	parse(ar, false, MathInset::UNDECIDED_MODE);
 	if (ar.size() != 1 || ar.front()->getType() == "none") {
 		lyxerr << "unusual contents found: " << ar << endl;
-		at.reset(new MathParInset);
+		at = MathAtom(new MathParInset);
 		if (at->nargs() > 0)
 			at->cell(0) = ar;
 		else

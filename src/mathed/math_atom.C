@@ -48,22 +48,7 @@ void MathAtom::operator=(MathAtom const & at)
 }
 
 
-void MathAtom::operator=(MathInset * p)
-{
-	reset(p);
-}
-
-
 MathAtom::~MathAtom()
 {
 	delete nucleus_;
-}
-
-
-void MathAtom::reset(MathInset * p)
-{
-	if (p == nucleus_)
-		return;
-	delete nucleus_;
-	nucleus_ = p;
 }
