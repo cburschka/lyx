@@ -85,7 +85,7 @@ int SwitchLayoutsBetweenClasses(textclass_type c1, textclass_type c2,
 	InsetText in;
 	std::swap(in.paragraphs(), pars);
 	
-	ParIterator end = ParIterator(in, pars.size());
+	ParIterator end = ParIterator(DocumentIterator());
 	for (ParIterator it = ParIterator(in, 0); it != end; ++it) {
 		string const name = it->layout()->name();
 		bool hasLayout = tclass2.hasLayout(name);
@@ -309,8 +309,8 @@ pasteSelection(Buffer const & buffer, ParagraphList & pars,
 	InsetText in;
 	std::swap(in.paragraphs(), insertion);
 
-	ParIterator fpit(in, 0);
-	ParIterator fend(in, insertion.size());
+	ParIterator fpit = ParIterator(in, 0);
+	ParIterator fend = ParIterator(DocumentIterator());
 
 	for (; fpit != fend; ++fpit) {
 		InsetList::iterator lit = fpit->insetlist.begin();
