@@ -20,7 +20,7 @@
 FormSplash::FormSplash(LyXView *, Dialogs * d)
 	: dialog_(0), d_(d)
 {
-   c_ = d->showSplash.connect(slot(this, &FormSplash::show));
+   c_ = d->showSplash.connect(SigC::slot(this, &FormSplash::show));
 }
 
 
@@ -39,10 +39,10 @@ void FormSplash::show()
 {
    if (!lyxrc.show_banner)
      return;
-   
+
    if (!dialog_)
      dialog_ = new FormSplashBase( 0, "LyX");
-	
+
    // show banner
    dialog_->show();
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE UI><UI>
 <class>SearchDlg</class>
+<include location="global">config.h</include>
 <widget>
     <class>QDialog</class>
     <property stdset="1">
@@ -11,7 +12,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>379</width>
+            <width>388</width>
             <height>168</height>
         </rect>
     </property>
@@ -63,16 +64,16 @@
                 </sizepolicy>
             </property>
             <property stdset="1">
+                <name>focusPolicy</name>
+                <enum>StrongFocus</enum>
+            </property>
+            <property stdset="1">
                 <name>editable</name>
                 <bool>true</bool>
             </property>
             <property stdset="1">
                 <name>duplicatesEnabled</name>
                 <bool>true</bool>
-            </property>
-            <property stdset="1">
-                <name>focusPolicy</name>
-                <enum>StrongFocus</enum>
             </property>
         </widget>
         <widget row="1"  column="0" >

@@ -60,11 +60,11 @@ private:
 	/// create a Citation inset
 	void createCitation(string const &);
 	/// edit a Citation inset
-	void showCitation(InsetCommand * const);
+	void showCitation(InsetCommand* );
  
 	/// update a listbox
 	void updateBrowser( QListBox* listbox,
-			    vector<string> const & keys) const;
+			    std::vector<string> const & keys) const;
  
 	/// Real GUI implementation.
 	FormCitationDialog * dialog_;

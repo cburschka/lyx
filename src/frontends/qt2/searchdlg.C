@@ -1,13 +1,14 @@
 /****************************************************************************
 ** Form implementation generated from reading ui file 'searchdlg.ui'
 **
-** Created: Sun Mar 4 21:52:22 2001
+** Created: Mon Mar 26 21:50:02 2001
 **      by:  The User Interface Compiler (uic)
 **
 ** WARNING! All changes made in this file will be lost!
 ****************************************************************************/
 #include "searchdlg.h"
 
+#include <config.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>
 #include <qlabel.h>
@@ -29,7 +30,7 @@ SearchDlg::SearchDlg( QWidget* parent,  const char* name, bool modal, WFlags fl 
 {
     if ( !name )
 	setName( "SearchDlg" );
-    resize( 379, 168 ); 
+    resize( 388, 168 ); 
     setCaption( tr( "Form1" ) );
     setSizeGripEnabled( TRUE );
     SearchDlgLayout = new QGridLayout( this ); 
@@ -43,9 +44,9 @@ SearchDlg::SearchDlg( QWidget* parent,  const char* name, bool modal, WFlags fl 
 
     find = new QComboBox( FALSE, this, "find" );
     find->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)3, (QSizePolicy::SizeType)0, find->sizePolicy().hasHeightForWidth() ) );
+    find->setFocusPolicy( QComboBox::StrongFocus );
     find->setEditable( TRUE );
     find->setDuplicatesEnabled( TRUE );
-    find->setFocusPolicy( QComboBox::StrongFocus );
 
     SearchDlgLayout->addMultiCellWidget( find, 0, 0, 1, 2 );
 

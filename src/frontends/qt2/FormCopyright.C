@@ -26,7 +26,7 @@
 #include "ControlCopyright.h"
 #include "FormCopyright.h"
 
-typedef FormCB<ControlCopyright, FormDB<FormCopyrightDialogImpl> > base_class;
+typedef Qt2CB<ControlCopyright, Qt2DB<FormCopyrightDialogImpl> > base_class;
 
 FormCopyright::FormCopyright( ControlCopyright& c ) :
     base_class( c, _( "Copyright and Warranty" ) )

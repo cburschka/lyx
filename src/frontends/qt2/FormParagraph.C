@@ -19,6 +19,7 @@
 #include "lyxtext.h"
 #include "debug.h"
 
+using SigC::slot;
 using Liason::setMinibuffer;
 using std::endl;
 

@@ -1,10 +1,12 @@
-/** 
+/**
  * \file searchdlgimpl.h
  * Copyright 2001 The LyX Team.
  * See the file COPYING.
- * 
+ *
  * \author Edwin Leuven
  */
+
+#include <config.h>
 
 #include "searchdlgimpl.h"
 

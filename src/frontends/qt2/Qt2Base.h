@@ -11,8 +11,8 @@
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
-#ifndef FORMBASE_H
-#define FORMBASE_H
+#ifndef QT2BASE_H
+#define QT2BASE_H
 
 #include <boost/smart_ptr.hpp>
 
@@ -33,14 +33,14 @@ class qt2BC;
 
 /** This class is an Qt2 GUI base class.
  */
-class FormBase : public QObject, public ViewBC<qt2BC>
+class Qt2Base : public QObject, public ViewBC<qt2BC>
 {
     Q_OBJECT
 public:
 	///
-	FormBase(ControlBase &, string const &);
+	Qt2Base(ControlBase &, string const &);
 	///
-	virtual ~FormBase() {}
+	virtual ~Qt2Base() {}
 
 protected:
 	/// Build the dialog
@@ -80,11 +80,11 @@ private:
 
 
 template <class Dialog>
-class FormDB: public FormBase
+class Qt2DB: public Qt2Base
 {
 protected:
 	///
-	FormDB(ControlBase &, string const &);
+	Qt2DB(ControlBase &, string const &);
 	/// Pointer to the actual instantiation of the Qt dialog
 	virtual QDialog* form() const;
 	/// Real GUI implementation.
@@ -93,37 +93,37 @@ protected:
 
 
 template <class Dialog>
-FormDB<Dialog>::FormDB(ControlBase & c, string const & t)
-	: FormBase(c, t)
+Qt2DB<Dialog>::Qt2DB(ControlBase & c, string const & t)
+	: Qt2Base(c, t)
 {}
 
 
 template <class Dialog>
-QDialog* FormDB<Dialog>::form() const
+QDialog* Qt2DB<Dialog>::form() const
 {
     return dialog_.get();
 }
 
 
 template <class Controller, class Base>
-class FormCB: public Base
+class Qt2CB: public Base
 {
 protected:
 	///
-	FormCB(ControlBase &, string const &);
+	Qt2CB(ControlBase &, string const &);
 	/// The parent controller
 	Controller & controller() const;
 };
 
 
 template <class Controller, class Base>
-FormCB<Controller, Base>::FormCB(ControlBase & c, string const & t)
+Qt2CB<Controller, Base>::Qt2CB(ControlBase & c, string const & t)
 	: Base(c, t)
 {}
 
 
 template <class Controller, class Base>
-Controller & FormCB<Controller, Base>::controller() const
+Controller & Qt2CB<Controller, Base>::controller() const
 {
 	return static_cast<Controller &>(controller_);
 	//return dynamic_cast<Controller &>(controller_);

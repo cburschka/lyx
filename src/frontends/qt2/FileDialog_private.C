@@ -9,13 +9,13 @@
 #include <config.h>
 
 #include "LString.h"
- 
-#include <qapplication.h> 
+
+#include <qapplication.h>
 #include <qfiledialog.h>
- 
+
 #include "QtLyXView.h"
 #include "debug.h"
- 
+
 #include "FileDialog_private.h"
 
 LyXFileDialog::LyXFileDialog(LyXView * lv, kb_action a, string const & p, string const & m, string const & t)
@@ -28,8 +28,8 @@ LyXFileDialog::LyXFileDialog(LyXView * lv, kb_action a, string const & p, string
 
 void LyXFileDialog::done(int what)
 {
-	lyxerr[Debug::GUI] << "Done FileDialog, value " << what << endl;
- 
+	lyxerr[Debug::GUI] << "Done FileDialog, value " << what << std::endl;
+
 	if (action_ == LFUN_SELECT_FILE_SYNC) {
 		QDialog::done(what);
 		return;

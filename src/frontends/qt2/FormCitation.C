@@ -35,9 +35,11 @@
 #include <qmultilineedit.h>
 #include <qpushbutton.h>
 
+using SigC::slot;
 using std::vector;
 using std::pair;
 using std::find;
+using std::sort;
 
 FormCitation::FormCitation(LyXView *v, Dialogs *d)
     : dialog_(0), lv_(v), d_(d), inset_(0), ih_(0)
@@ -58,11 +60,11 @@ FormCitation::~FormCitation()
 void FormCitation::showCitation(InsetCommand * inset)
 {
     if (inset == 0) return;  // maybe we should Assert this?
-    
+
     // If connected to another inset, disconnect from it.
     if (inset_)
 	ih_.disconnect();
-    
+
     inset_    = inset;
     params    = inset->params();
     ih_ = inset->hideDialog.connect(slot(this, &FormCitation::hide));
@@ -72,11 +74,11 @@ void FormCitation::showCitation(InsetCommand * inset)
 
 void FormCitation::createCitation(string const & arg)
 {
-    if (inset_) {	
+    if (inset_) {
 	ih_.disconnect();
 	inset_ = 0;
     }
-    
+
     params.setFromString(arg);
     show();
 }
@@ -96,7 +98,7 @@ void FormCitation::show()
 	dialog_ = new FormCitationDialogImpl(this, 0, _("LyX: Citation Reference"), false);
 
     dialog_->show();
-    
+
     update();
 }
 
@@ -117,7 +119,7 @@ void FormCitation::update()
     blist.clear();
 
     updateBrowser(dialog_->bibliographyKeysLB, bibkeys);
-    
+
     // Ditto for the keys cited in this inset
     citekeys.clear();
     string tmp, keys(params.getContents());
@@ -161,7 +163,7 @@ void FormCitation::setCiteButtons(State status) const
     bool const activate      = (status == ON);
     bool const activate_up   = (activate && sel != 1);
     bool const activate_down = (activate && sel != maxline);
-    
+
     dialog_->stopPB->setEnabled(activate);
     dialog_->upPB->setEnabled(activate_up);
     dialog_->downPB->setEnabled(activate_down);
@@ -180,7 +182,7 @@ void FormCitation::apply()
 
     params.setContents(contents);
     params.setOptions( dialog_->textAfterED->text().latin1() );
-    
+
     if (inset_ != 0) {
 	// Only update if contents have changed
 	if (params != inset_->params()) {
@@ -190,7 +192,7 @@ void FormCitation::apply()
     } else {
 	lv_->getLyXFunc()->Dispatch(LFUN_CITATION_INSERT,
 				    params.getAsString());
-    }	
+    }
 }
 
 

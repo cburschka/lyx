@@ -19,6 +19,7 @@
 #include "language.h"
 #include "support/lstrings.h"
 
+using SigC::slot;
 using Liason::setMinibuffer;
 
 FormCharacter::FormCharacter(LyXView *v, Dialogs *d)
@@ -43,9 +44,9 @@ void FormCharacter::apply()
 {
    if (!lv_->view()->available() || !dialog_)
      return;
-   
+
    LyXFont font = dialog_->getChar();
-   
+
    if (dialog_->langItem()==1)
      font.setLanguage(lv_->buffer()->params.language);
 
@@ -71,7 +72,7 @@ void FormCharacter::show()
       h_ = d_->hideBufferDependent.connect(slot(this, &FormCharacter::hide));
       u_ = d_->updateBufferDependent.connect(slot(this, &FormCharacter::update));
    }
-   
+
    dialog_->raise();
    dialog_->setActiveWindow();
    update();
@@ -92,9 +93,9 @@ void FormCharacter::hide()
 
 void FormCharacter::update(bool)
 {
-	
+
    if (!lv_->view()->available())
      return;
-   
+
    dialog_->setReadOnly(lv_->buffer()->isReadonly());
 }

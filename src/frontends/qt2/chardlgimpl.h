@@ -32,11 +32,11 @@ class CharDlgImpl : public CharDlg
    LyXFont getChar();
    
    int langItem() { 
-      lang->currentItem();
+      return lang->currentItem();
    };
    
    bool toggleAll() { 
-      toggleall->isChecked(); 
+      return toggleall->isChecked(); 
    };
    
    void setReadOnly(bool);

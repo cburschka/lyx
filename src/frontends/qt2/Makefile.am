@@ -5,14 +5,13 @@ noinst_LTLIBRARIES = libqt2.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
-	-I${top_srcdir}/src/frontends/xforms \
 	-I$(top_srcdir)/src/frontends/controllers
-CXXFLAGS += -DQT_CLEAN_NAMESPACE -fno-rtti -fno-exceptions
+DEFINES += -DQT_CLEAN_NAMESPACE
 
 # moc generated files
 BUILTSOURCES = \
 	moc_FileDialog_private.C \
-	moc_FormBase.C		\
+	moc_Qt2Base.C		\
 	moc_FormCitationDialog.C	\
 	moc_FormCitationDialogImpl.C	\
 	moc_FormCopyrightDialog.C	\
@@ -100,8 +99,8 @@ libqt2_la_SOURCES = \
 	chardlgimpl.h \
 	FileDialog.C \
 	FileDialog_private.C \
-	FormBase.C	\
-	FormBase.h	\
+	Qt2Base.C	\
+	Qt2Base.h	\
 	FormCitation.C	\
 	FormCitation.h	\
 	FormCitationDialog.C	\
@@ -161,7 +160,7 @@ dist-hook:
 	done ; \
 	done
 
-moc_FormBase.C: FormBase.h
+moc_Qt2Base.C: Qt2Base.h
 	$(MOC) -o $@ $<
 
 FormCitation.C: FormCitationDialog.h

@@ -18,7 +18,7 @@
 #ifndef FORMCOPYRIGHT_H
 #define FORMCOPYRIGHT_H
 
-#include "FormBase.h"
+#include "Qt2Base.h"
 #include "boost/utility.hpp"
 
 class Dialogs;
@@ -30,7 +30,7 @@ class ControlCopyright;
   @author Kalle Dalheimer
   */
 class FormCopyright 
-  : public FormCB<ControlCopyright, FormDB<FormCopyrightDialogImpl> >
+  : public Qt2CB<ControlCopyright, Qt2DB<FormCopyrightDialogImpl> >
 {
 public: 
 	FormCopyright( ControlCopyright& );

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Form interface generated from reading ui file 'searchdlg.ui'
 **
-** Created: Sun Mar 4 21:52:20 2001
+** Created: Mon Mar 26 21:48:19 2001
 **      by:  The User Interface Compiler (uic)
 **
 ** WARNING! All changes made in this file will be lost!
