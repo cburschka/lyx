@@ -100,11 +100,10 @@ void FormGraphics::build()
 	fl_set_input_maxchars(file_->input_filename, FILENAME_MAXCHARS);
 	fl_set_input_filter(file_->input_lyxscale, fl_unsigned_int_filter);
 
-	 // width default is scaling, thus unsigned integer input
+	// width default is scaling, thus unsigned integer input
 	fl_set_input_filter(file_->input_width, fl_unsigned_int_filter);
 	fl_set_input_maxchars(file_->input_height, SIZE_MAXDIGITS);
-
-
+	
 	string const display_List = _("Default|Monochrome|Grayscale|Color|Do not display");
 	fl_addto_choice(file_->choice_display, display_List.c_str());
 	
@@ -124,14 +123,14 @@ void FormGraphics::build()
 	str = _("Browse the directories.");
 	tooltips().init(file_->button_browse, str);
 
-	str = _("Scale the image to inserted percentage value");
+	str = _("Scale the image to inserted percentage value.");
 	tooltips().init(file_->input_lyxscale, str);
 	str = _("Select display mode for this image.");
 	tooltips().init(file_->choice_display, str);
 
 	str = _("Set the image width to the inserted value.");
 	tooltips().init(file_->input_width, str);
-	str = _("Select unit for width; Scale% for scaling whole image");
+	str = _("Select unit for width; Scale% for scaling whole image.");
 	tooltips().init(file_->choice_width, str);
 	str = _("Set the image height to the inserted value.");
 	tooltips().init(file_->input_height, str);
@@ -142,7 +141,7 @@ void FormGraphics::build()
 	tooltips().init(file_->check_aspectratio, str);
 
 	str = _("Pass a filename like \"file.eps.gz\" to the LaTeX output. "
-	    "This is useful when LaTeX should unzip the file. Needs an additional file "
+	    "Useful when LaTeX should unzip the file. Needs an additional file "
 	    "like \"file.eps.bb\" which holds the values for the bounding box.");
 	tooltips().init(file_->check_nounzip, str);
 
@@ -185,11 +184,10 @@ void FormGraphics::build()
 
 	str = _("Read the image coordinates new from file. If it's an (e)ps-file "
 		"then the bounding box is read otherwise the imagesize in pixels. "
-		"The default unit is \"bp\", the PostScript's b(ig) p(oint).");
+		"Default unit is \"bp\", the PostScript's b(ig) p(oint).");
 	tooltips().init(bbox_->button_getBB, str);
 
-	str = _("Enable this checkbox when the image should be clipped to the "
-		"bounding box values.");
+	str = _("Clip image to the bounding box values.");
 	tooltips().init(bbox_->check_clip, str);
 
 	// the extra section
@@ -218,13 +216,13 @@ void FormGraphics::build()
 
 	// set up the tooltips for the extra section
 	str = _("Insert the rotation angle in degrees. "
-	        "Positive value rotates anti-clockwise, negative value clockwise");
+	        "Positive value rotates anti-clockwise, negative value clockwise.");
 	tooltips().init(extra_->input_rotate_angle, str);
-	str = _("Insert the point of origin for rotation ");
+	str = _("Insert the point of origin for rotation.");
 	tooltips().init(extra_->choice_origin, str);
 	str = _("Enables use of subfigure with its own caption.");
 	tooltips().init(extra_->check_subcaption, str);
-	str = _("Insert the optional subfigure caption");
+	str = _("Insert the optional subfigure caption.");
 	tooltips().init(extra_->input_subcaption, str);
 	str = _("Add any additional latex option, which is defined in the "
                 "graphicx-package and not mentioned in the gui's tabfolders.");

@@ -6,7 +6,7 @@
  *          Copyright 1995-2001 The LyX Team.
  *
  * \author Baruch Even
- * \author Herbert Voss <voss@lyx.org>
+ * \author Herbert Voss
  *
  * ================================================= */
 
@@ -56,24 +56,24 @@ InsetGraphicsParams::operator=(InsetGraphicsParams const & params)
 
 void InsetGraphicsParams::init()
 {
-	subcaptionText = filename = string();
+	filename.erase();
 	lyxscale = 100;			// lyx scaling in percentage
-	display = grfx::DefaultDisplay;	// see pref
+	display = grfx::DefaultDisplay;	// display mode; see preferences
 	scale = 100;			// output scaling in percentage
 	width = LyXLength();
 	height = LyXLength();
-	keepAspectRatio = false;	// for latex
+	keepAspectRatio = false;	// for LaTeX output
 	draft = false;			// draft mode
 	noUnzip = false;		// unzip files
 
 	bb = string();			// bounding box
 	clip = false;			// clip image
 
-	rotateOrigin = "leftBaseline";	// Origin
-	rotateAngle = 0.0;		// in degrees
+	rotateAngle = 0.0;		// angle of rotation in degrees
+	rotateOrigin.erase();		// Origin of rotation
 	subcaption = false;		// subfigure
-	subcaptionText = string();	// subfigure caption
-	special = string();		// userdefined stuff
+	subcaptionText.erase();		// subfigure caption
+	special.erase();		// additional userdefined stuff
 }
 
 void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
@@ -167,7 +167,7 @@ void InsetGraphicsParams::Write(ostream & os) const
 
 	if (rotateAngle != 0.0)
 		os << "\trotateAngle " << rotateAngle << '\n';
-	if (rotateOrigin != "leftBaseline")
+	if (!rotateOrigin.empty())
 		os << "\trotateOrigin " << rotateOrigin << '\n';
 	if (subcaption)
 		os << "\tsubcaption\n";
