@@ -91,7 +91,7 @@ void ControlSpellchecker::check()
 	while ((res == SpellBase::OK || res == SpellBase::IGNORE) && !stop_) {
 		word_ = lv_.view()->nextWord(newval_);
 
-		if (word_.empty()) {
+		if (word_.word().empty()) {
 			clearParams();
 			break;
 		}
@@ -99,19 +99,23 @@ void ControlSpellchecker::check()
 		++count_;
 
 		// Update slider if and only if value has changed
-		newvalue_ = int(100.0*newval_);
+		newvalue_ = int(100.0 * newval_);
 		if (newvalue_!= oldval_) {
 			oldval_ = newvalue_;
 			// set progress bar
 			view().partialUpdate(0);
 		}
 
-		if (!speller_->alive()) clearParams();
+		if (!speller_->alive()) {
+			clearParams();
+			stop();
+			return;
+		}
 
 		res = speller_->check(word_);
 	}
 
-	if (!stop_ && !word_.empty())
+	if (!stop_ && !word_.word().empty())
 		lv_.view()->selectLastWord();
 
 	// set suggestions
@@ -124,6 +128,8 @@ void ControlSpellchecker::check()
 void ControlSpellchecker::replace(string const & replacement)
 {
 	lv_.view()->replaceWord(replacement);
+	// fix up the count
+ 	--count_;
 	check();
 }
 
@@ -155,7 +161,7 @@ string ControlSpellchecker::getSuggestion()
 
 string ControlSpellchecker::getWord()
 {
-	string tmp = word_;
+	string tmp = word_.word();
 	if (rtl_)
 		std::reverse(tmp.begin(), tmp.end());
 	return tmp;
@@ -214,7 +220,6 @@ void ControlSpellchecker::clearParams()
 
 	// reset values to initial
 	rtl_ = false;
-	word_.erase();
 	newval_ = 0.0;
 	oldval_ = 0;
 	newvalue_ = 0;

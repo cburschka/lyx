@@ -10,11 +10,14 @@
 #ifndef LYX_PSPELL_H
 #define LYX_PSPELL_H
 
+#include <map>
+ 
 #include "SpellBase.h"
 
 class PspellManager;
 class PspellStringEmulation;
 class PspellCanHaveError;
+class PspellConfig; 
 
 class BufferParams;
 
@@ -28,23 +31,26 @@ public:
 
 	virtual ~PSpell();
 
-	/// return true if the spellchecker instance still exists
-	virtual bool alive() { return alive_; }
+	/**
+	 * return true if the spellchecker instance still exists
+	 * Always true for pspell, since there is no separate process
+	 */
+	virtual bool alive() { return true; }
 
 	/// clean up on messy exit
 	virtual void cleanUp();
 
 	/// check the given word and return the result
-	virtual enum Result check(string const & word);
+	virtual enum Result check(WordLangTuple const &);
 
 	/// finish this spellchecker instance
 	virtual void close();
 
 	/// insert the given word into the personal dictionary
-	virtual void insert(string const & word);
+	virtual void insert(WordLangTuple const &);
 
 	/// accept the given word temporarily
-	virtual void accept(string const & word);
+	virtual void accept(WordLangTuple const &);
 
 	/// return the next near miss after a MISSED result
 	virtual string const nextMiss();
@@ -53,14 +59,23 @@ public:
 	virtual string const error();
 
 private:
-	/// main manager
-	PspellManager * sc;
+	/// add a manager of the given language
+	void addManager(string const & lang);
+
+	struct Manager {
+		PspellManager * manager;
+		PspellConfig * config;
+	};
+ 
+	typedef std::map<string, struct Manager> Managers;
+
+	/// the managers
+	Managers managers_;
+ 
 	/// FIXME
 	PspellStringEmulation * els;
 	/// FIXME
 	PspellCanHaveError * spell_error_object;
-	/// initialised properly ?
-	bool alive_;
 };
 
 #endif // PSPELL_H

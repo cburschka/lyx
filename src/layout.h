@@ -12,12 +12,6 @@
 #ifndef LAYOUT_H
 #define LAYOUT_H
 
-enum layout_default {
-	///
-	LYX_LAYOUT_DEFAULT = 99
-};
-
-
 /// The different output types
 enum OutputType {
 	///

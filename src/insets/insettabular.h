@@ -216,7 +216,7 @@ public:
 	LyXCursor const & cursor(BufferView *) const;
 	///
 	bool allowSpellcheck() { return true; }
-	string const selectNextWordToSpellcheck(BufferView *, float & value) const;
+	WordLangTuple selectNextWordToSpellcheck(BufferView *, float & value) const;
 	void selectSelectedWord(BufferView *);
 	void toggleSelection(BufferView *, bool kill_selection);
 	///
@@ -316,7 +316,7 @@ private:
 	void getSelection(int & scol, int & ecol,
 			  int & srow, int & erow) const;
 	///
-	string selectNextWordInt(BufferView *, float & value) const;
+	WordLangTuple selectNextWordInt(BufferView *, float & value) const;
 	///
 	bool insertAsciiString(BufferView *, string const & buf, bool usePaste);
 

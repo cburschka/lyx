@@ -2675,20 +2675,20 @@ Inset * InsetTabular::getInsetFromID(int id_arg) const
 }
 
 
-string const
+WordLangTuple
 InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 {
 	nodraw(true);
 	if (the_locking_inset) {
-		string const str(the_locking_inset->selectNextWordToSpellcheck(bv, value));
-		if (!str.empty()) {
+		WordLangTuple word(the_locking_inset->selectNextWordToSpellcheck(bv, value));
+		if (!word.word().empty()) {
 			nodraw(false);
-			return str;
+			return word;
 		}
 		if (tabular->IsLastCell(actcell)) {
 			bv->unlockInset(const_cast<InsetTabular *>(this));
 			nodraw(false);
-			return string();
+			return WordLangTuple();
 		}
 		++actcell;
 	}
@@ -2696,26 +2696,26 @@ InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
 	inset->edit(bv, 0,  0, mouse_button::none);
-	string const str(selectNextWordInt(bv, value));
+	WordLangTuple word(selectNextWordInt(bv, value));
 	nodraw(false);
-	if (!str.empty())
+	if (!word.word().empty())
 		resetPos(bv);
-	return str;
+	return word;
 }
 
 
-string InsetTabular::selectNextWordInt(BufferView * bv, float & value) const
+WordLangTuple InsetTabular::selectNextWordInt(BufferView * bv, float & value) const
 {
 	// when entering this function the inset should be ALWAYS locked!
 	lyx::Assert(the_locking_inset);
 
-	string const str(the_locking_inset->selectNextWordToSpellcheck(bv, value));
-	if (!str.empty())
-		return str;
+	WordLangTuple word(the_locking_inset->selectNextWordToSpellcheck(bv, value));
+	if (!word.word().empty())
+		return word;
 
 	if (tabular->IsLastCell(actcell)) {
 		bv->unlockInset(const_cast<InsetTabular *>(this));
-		return string();
+		return WordLangTuple();
 	}
 
 	// otherwise we have to lock the next inset and ask for it's selecttion

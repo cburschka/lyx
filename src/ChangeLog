@@ -1,5 +1,23 @@
 2002-08-06  John Levon  <levon@movementarian.org>
 
+	* WordLangTuple.h: new file for word + language code tuple
+ 
+	* SpellBase.h:
+	* pspell.h:
+	* pspell.C:
+	* ispell.h:
+	* ispell.C:
+	* lyxtext.h: 
+	* text.C:
+	* text2.C:
+	* BufferView.h:
+	* BufferView2.C: use WordLangTuple
+ 
+	* layout.h:
+	* buffer.C: remove very dead LYX_LAYOUT_DEFAULT
+ 
+2002-08-06  John Levon  <levon@movementarian.org>
+
 	* lyx_main.C: fix cmdline batch handling
 
 2002-08-06  André Pönitz <poenitz@gmx.net>

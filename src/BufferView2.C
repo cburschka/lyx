@@ -443,11 +443,11 @@ void BufferView::paste()
 
 
 /* these functions are for the spellchecker */
-string const BufferView::nextWord(float & value)
+WordLangTuple const BufferView::nextWord(float & value)
 {
 	if (!available()) {
 		value = 1;
-		return string();
+		return WordLangTuple();
 	}
 
 	return text->selectNextWordToSpellcheck(this, value);

@@ -230,7 +230,7 @@ public:
 	///
 	bool allowSpellcheck() { return true; }
 	///
-	string const selectNextWordToSpellcheck(BufferView *,
+	WordLangTuple selectNextWordToSpellcheck(BufferView *,
 						float & value) const;
 	void selectSelectedWord(BufferView *);
 	///

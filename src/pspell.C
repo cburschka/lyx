@@ -28,16 +28,9 @@ extern "C" {
 using std::endl;
 
 PSpell::PSpell(BufferParams const &, string const & lang)
-	: sc(0), els(0), spell_error_object(0), alive_(false)
+	: els(0), spell_error_object(0)
 {
-	PspellConfig * config = new_pspell_config();
-	pspell_config_replace(config, "language-tag", lang.c_str());
-	spell_error_object = new_pspell_manager(config);
-	if (pspell_error_number(spell_error_object) == 0) {
-		sc = to_pspell_manager(spell_error_object);
-		spell_error_object = 0;
-		alive_ = true;
-	}
+	addManager(lang); 
 }
 
 
@@ -47,6 +40,13 @@ PSpell::~PSpell()
 	close();
 	if (els)
 		delete_pspell_string_emulation(els);
+	Managers::iterator it = managers_.begin();
+	Managers::iterator end = managers_.end();
+ 
+	for (; it != end; ++it) { 
+		delete_pspell_manager(it->second.manager);
+		delete_pspell_config(it->second.config);
+	}
 }
 
 
@@ -59,21 +59,49 @@ void PSpell::cleanUp()
 }
 
 
-enum PSpell::Result PSpell::check(string const & word)
+void PSpell::addManager(string const & lang)
+{
+	PspellConfig * config = new_pspell_config();
+	pspell_config_replace(config, "language-tag", lang.c_str());
+	PspellCanHaveError * err = new_pspell_manager(config);
+	if (spell_error_object)
+		delete_pspell_can_have_error(spell_error_object);
+	spell_error_object = 0;
+ 
+	if (pspell_error_number(err) == 0) {
+		Manager m;
+		m.manager = to_pspell_manager(err);
+		m.config = config;
+		managers_[lang] = m;
+	} else {
+		spell_error_object = err;
+	}
+}
+
+ 
+enum PSpell::Result PSpell::check(WordLangTuple const & word)
 {
 	Result res = UNKNOWN;
  
-	if (!sc)
-		return res;
+	Managers::iterator it = managers_.find(word.lang_code());
+	if (it == managers_.end()) {
+		addManager(word.lang_code());
+		it = managers_.find(word.lang_code());
+		// FIXME
+		if (it == managers_.end()) 
+			return res;
+	}
 
-	int word_ok = pspell_manager_check(sc, word.c_str());
+	PspellManager * m = it->second.manager;
+ 
+	int word_ok = pspell_manager_check(m, word.word().c_str());
 	lyx::Assert(word_ok != -1);
 
 	if (word_ok) {
 		res = OK;
 	} else {
 		PspellWordList const * sugs =
-			pspell_manager_suggest(sc, word.c_str());
+			pspell_manager_suggest(m, word.word().c_str());
 		lyx::Assert(sugs != 0);
 		els = pspell_word_list_elements(sugs);
 		if (pspell_word_list_empty(sugs))
@@ -87,22 +115,28 @@ enum PSpell::Result PSpell::check(string const & word)
 
 void PSpell::close()
 {
-	if (sc)
-		pspell_manager_save_all_word_lists(sc);
+	Managers::iterator it = managers_.begin();
+	Managers::iterator end = managers_.end();
+ 
+	for (; it != end; ++it) { 
+		pspell_manager_save_all_word_lists(it->second.manager);
+	}
 }
 
 
-void PSpell::insert(string const & word)
+void PSpell::insert(WordLangTuple const & word)
 {
-	if (sc)
-		pspell_manager_add_to_personal(sc, word.c_str());
+	Managers::iterator it = managers_.find(word.lang_code());
+	if (it != managers_.end())
+		pspell_manager_add_to_personal(it->second.manager, word.word().c_str());
 }
 
 
-void PSpell::accept(string const & word)
+void PSpell::accept(WordLangTuple const & word)
 {
-	if (sc)
-		pspell_manager_add_to_session(sc, word.c_str());
+	Managers::iterator it = managers_.find(word.lang_code());
+	if (it != managers_.end()) 
+		pspell_manager_add_to_session(it->second.manager, word.word().c_str());
 }
 
 

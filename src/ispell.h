@@ -30,16 +30,16 @@ public:
 	virtual void cleanUp();
 
 	/// check the given word and return the result
-	virtual enum Result check(string const & word);
+	virtual enum Result check(WordLangTuple const & word);
 
 	/// finish this spellchecker instance
 	virtual void close();
 
 	/// insert the given word into the personal dictionary
-	virtual void insert(string const & word);
+	virtual void insert(WordLangTuple const & word);
 
 	/// accept the given word temporarily
-	virtual void accept(string const & word);
+	virtual void accept(WordLangTuple const & word);
 
 	/// return the next near miss after a MISSED result
 	virtual string const nextMiss();

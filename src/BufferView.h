@@ -19,6 +19,7 @@
 #include "commandtags.h"
 
 #include "insets/inset.h"
+#include "WordLangTuple.h"
 
 #include <boost/utility.hpp>
 
@@ -124,8 +125,8 @@ public:
 	void endOfSpellCheck();
 	///
 	void selectLastWord();
-	///
-	string const nextWord(float & value);
+	/// return the next word
+	WordLangTuple const nextWord(float & value);
 	///
 	bool gotoLabel(string const & label);
 	///

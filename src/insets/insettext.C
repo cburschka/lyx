@@ -2581,34 +2581,34 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 }
 
 
-string const InsetText::selectNextWordToSpellcheck(BufferView * bv, float & value) const
+WordLangTuple InsetText::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 {
 	bool clear = false;
-	string str;
+	WordLangTuple word;
 
 	if (!lt) {
 		lt = getLyXText(bv);
 		clear = true;
 	}
 	if (the_locking_inset) {
-		str = the_locking_inset->selectNextWordToSpellcheck(bv, value);
-		if (!str.empty()) {
+		word = the_locking_inset->selectNextWordToSpellcheck(bv, value);
+		if (!word.word().empty()) {
 			value += cy(bv);
 			if (clear)
 				lt = 0;
-			return str;
+			return word;
 		}
-		// we have to go on checking so move cusor to the next char
+		// we have to go on checking so move cursor to the next char
 		lt->cursor.pos(lt->cursor.pos() + 1);
 	}
-	str = lt->selectNextWordToSpellcheck(bv, value);
-	if (str.empty())
+	word = lt->selectNextWordToSpellcheck(bv, value);
+	if (word.word().empty())
 		bv->unlockInset(const_cast<InsetText *>(this));
 	else
 		value = cy(bv);
 	if (clear)
 		lt = 0;
-	return str;
+	return word;
 }
 
 

@@ -1092,8 +1092,8 @@ string LyXText::getStringToIndex(BufferView * bview)
 	// Try implicit word selection
 	// If there is a change in the language the implicit word selection
 	// is disabled.
-	LyXCursor resetCursor = cursor;
-	bool implicitSelection = selectWordWhenUnderCursor(bview, PREVIOUS_WORD);
+	LyXCursor const reset_cursor = cursor;
+	bool const implicitSelection = selectWordWhenUnderCursor(bview, PREVIOUS_WORD);
 
 	if (!selection.set()) {
 		bview->owner()->message(_("Nothing to index!"));
@@ -1110,7 +1110,7 @@ string LyXText::getStringToIndex(BufferView * bview)
 	//and cursor is set to the original position.
 	if (implicitSelection) {
 		clearSelection();
-		cursor = resetCursor;
+		cursor = reset_cursor;
 		setCursor(bview, cursor.par(), cursor.pos());
 		selection.cursor = cursor;
 	}

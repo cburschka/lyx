@@ -114,7 +114,8 @@ public:
 	void close(BufferView *) const;
 	///
 	bool allowSpellcheck() { return false; }
-	string const selectNextWordToSpellcheck(BufferView *, float &) const;
+
+	WordLangTuple selectNextWordToSpellcheck(BufferView *, float &) const;
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///

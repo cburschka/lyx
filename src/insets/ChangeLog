@@ -1,3 +1,16 @@
+2002-08-06  John Levon  <levon@movementarian.org>
+
+	* inset.h: 
+	* inset.C: 
+	* insetcollapsable.h: 
+	* insetcollapsable.C: 
+	* insetert.h:
+	* insetert.C:
+	* insettabular.h:
+	* insettabular.C:
+	* insettext.h:
+	* insettext.C: use WordLangTuple for spellcheck
+ 
 2002-08-06  Angus Leeming  <leeming@lyx.org>
 
 	* insetinclude.C: add a monitor to the previewed image, so that the

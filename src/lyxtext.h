@@ -21,6 +21,7 @@
 #include "layout.h"
 #include "LColor.h"
 #include "insets/inset.h"
+#include "WordLangTuple.h"
 
 class Buffer;
 class BufferParams;
@@ -302,7 +303,7 @@ public:
 	 to the beginning of this word.
 	 With SelectSelectedWord can this be highlighted really
 	 */
-	string const selectNextWordToSpellcheck(BufferView *, float & value) const;
+	WordLangTuple selectNextWordToSpellcheck(BufferView *, float & value) const;
 	///
 	void selectSelectedWord(BufferView *);
 	/// returns true if par was empty and was removed

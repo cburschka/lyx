@@ -303,13 +303,13 @@ void ISpell::cleanUp()
 }
 
 
-enum ISpell::Result ISpell::check(string const & word)
+enum ISpell::Result ISpell::check(WordLangTuple const & word)
 {
 	// FIXME Please rewrite to use string.
 
 	Result res;
  
-	::fputs(word.c_str(), out);
+	::fputs(word.word().c_str(), out);
 	::fputc('\n', out);
 
 	char buf[1024];
@@ -374,18 +374,18 @@ void ISpell::close()
 }
 
 
-void ISpell::insert(string const & word)
+void ISpell::insert(WordLangTuple const & word)
 {
 	::fputc('*', out); // Insert word in personal dictionary
-	::fputs(word.c_str(), out);
+	::fputs(word.word().c_str(), out);
 	::fputc('\n', out);
 }
 
 
-void ISpell::accept(string const & word)
+void ISpell::accept(WordLangTuple const & word)
 {
 	::fputc('@', out); // Accept in this session
-	::fputs(word.c_str(), out);
+	::fputs(word.word().c_str(), out);
 	::fputc('\n', out);
 }
 

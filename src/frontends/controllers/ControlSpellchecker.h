@@ -21,6 +21,7 @@
 
 #include "ControlDialog_impl.h"
 #include "LString.h"
+#include "WordLangTuple.h"
 
 class SpellBase;
  
@@ -78,8 +79,8 @@ private:
 	/// right to left
 	bool rtl_;
 
-	/// current word being checked
-	string word_;
+	/// current word being checked and lang code
+	WordLangTuple word_;
 
 	/// values for progress
 	float newval_;

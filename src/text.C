@@ -2393,19 +2393,19 @@ bool LyXText::selectWordWhenUnderCursor(BufferView * bview,
 
 // This function is only used by the spellchecker for NextWord().
 // It doesn't handle LYX_ACCENTs and probably never will.
-string const LyXText::selectNextWordToSpellcheck(BufferView * bview,
+WordLangTuple LyXText::selectNextWordToSpellcheck(BufferView * bview,
 						 float & value) const
 {
 	if (the_locking_inset) {
-		string str = the_locking_inset->selectNextWordToSpellcheck(bview, value);
-		if (!str.empty()) {
+		WordLangTuple word = the_locking_inset->selectNextWordToSpellcheck(bview, value);
+		if (!word.word().empty()) {
 			value += float(cursor.y())/float(height);
-			return str;
+			return word;
 		}
-		// we have to go on checking so move cusor to the next char
+		// we have to go on checking so move cursor to the next char
 		if (cursor.pos() == cursor.par()->size()) {
 			if (!cursor.par()->next())
-				return str;
+				return word;
 			cursor.par(cursor.par()->next());
 			cursor.pos(0);
 		} else
@@ -2457,6 +2457,9 @@ string const LyXText::selectNextWordToSpellcheck(BufferView * bview,
 	// Start the selection from here
 	selection.cursor = cursor;
 
+	string lang_code(
+		getFont(bview->buffer(), cursor.par(), cursor.pos())
+			.language()->code());
 	// and find the end of the word (insets like optional hyphens
 	// and ligature break are part of a word)
 	while (cursor.pos() < cursor.par()->size()
@@ -2472,7 +2475,7 @@ string const LyXText::selectNextWordToSpellcheck(BufferView * bview,
 				str += cursor.par()->getChar(i);
 		}
 	}
-	return str;
+	return WordLangTuple(str, lang_code);
 }
 
 

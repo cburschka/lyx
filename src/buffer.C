@@ -948,9 +948,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		int tmpret = lex.findToken(string_paragraph_separation);
 		if (tmpret == -1)
 			++tmpret;
-		if (tmpret != LYX_LAYOUT_DEFAULT)
-			params.paragraph_separation =
-				static_cast<BufferParams::PARSEP>(tmpret);
+		params.paragraph_separation =
+			static_cast<BufferParams::PARSEP>(tmpret);
 	} else if (token == "\\defskip") {
 		lex.nextToken();
 		params.defskip = VSpace(lex.getString());
@@ -965,31 +964,29 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		int tmpret = lex.findToken(string_quotes_language);
 		if (tmpret == -1)
 			++tmpret;
-		if (tmpret != LYX_LAYOUT_DEFAULT) {
-			InsetQuotes::quote_language tmpl =
-				InsetQuotes::EnglishQ;
-			switch (tmpret) {
-			case 0:
-				tmpl = InsetQuotes::EnglishQ;
-				break;
-			case 1:
-				tmpl = InsetQuotes::SwedishQ;
-				break;
-			case 2:
-				tmpl = InsetQuotes::GermanQ;
-				break;
-			case 3:
-				tmpl = InsetQuotes::PolishQ;
-				break;
-			case 4:
-				tmpl = InsetQuotes::FrenchQ;
-				break;
-			case 5:
-				tmpl = InsetQuotes::DanishQ;
-				break;
-			}
-			params.quotes_language = tmpl;
+		InsetQuotes::quote_language tmpl =
+			InsetQuotes::EnglishQ;
+		switch (tmpret) {
+		case 0:
+			tmpl = InsetQuotes::EnglishQ;
+			break;
+		case 1:
+			tmpl = InsetQuotes::SwedishQ;
+			break;
+		case 2:
+			tmpl = InsetQuotes::GermanQ;
+			break;
+		case 3:
+			tmpl = InsetQuotes::PolishQ;
+			break;
+		case 4:
+			tmpl = InsetQuotes::FrenchQ;
+			break;
+		case 5:
+			tmpl = InsetQuotes::DanishQ;
+			break;
 		}
+		params.quotes_language = tmpl;
 	} else if (token == "\\quotes_times") {
 		lex.nextToken();
 		switch (lex.getInteger()) {
@@ -1029,8 +1026,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		int tmpret = lex.findToken(string_orientation);
 		if (tmpret == -1)
 			++tmpret;
-		if (tmpret != LYX_LAYOUT_DEFAULT)
-			params.orientation = static_cast<BufferParams::PAPER_ORIENTATION>(tmpret);
+		params.orientation =
+			static_cast<BufferParams::PAPER_ORIENTATION>(tmpret);
 	} else if (token == "\\paperwidth") {
 		lex.next();
 		params.paperwidth = lex.getString();
@@ -1173,11 +1170,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\align") {
 		int tmpret = lex.findToken(string_align);
 		if (tmpret == -1) ++tmpret;
-		if (tmpret != LYX_LAYOUT_DEFAULT) { // tmpret != 99 ???
-			int const tmpret2 = int(pow(2.0, tmpret));
-			//lyxerr << "Tmpret2 = " << tmpret2 << endl;
-			par->params().align(LyXAlignment(tmpret2));
-		}
+		int const tmpret2 = int(pow(2.0, tmpret));
+		par->params().align(LyXAlignment(tmpret2));
 	} else if (token == "\\added_space_top") {
 		lex.nextToken();
 		VSpace value = VSpace(lex.getString());

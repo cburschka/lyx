@@ -12,6 +12,8 @@
 
 #include "LString.h" // can't forward declare...
 
+#include "WordLangTuple.h"
+ 
 class BufferParams;
 
 /**
@@ -38,17 +40,17 @@ public:
 	/// clean up on messy exit
 	virtual void cleanUp() = 0;
 
-	/// check the given word and return the result
-	virtual enum Result check(string const &) = 0;
+	/// check the given word of the given lang code and return the result
+	virtual enum Result check(WordLangTuple const &) = 0;
 
 	/// finish this spellchecker instance
 	virtual void close() = 0;
 
 	/// insert the given word into the personal dictionary
-	virtual void insert(string const &) = 0;
+	virtual void insert(WordLangTuple const &) = 0;
 
 	/// accept the given word temporarily
-	virtual void accept(string const &) = 0;
+	virtual void accept(WordLangTuple const &) = 0;
 
 	/// return the next near miss after a MISSED result
 	virtual string const nextMiss() = 0;

@@ -19,6 +19,7 @@
 #include "LString.h"
 #include "commandtags.h"
 #include "frontends/mouse_state.h"
+#include "WordLangTuple.h"
 #include "LColor.h"
 
 class LyXFont;
@@ -536,7 +537,7 @@ public:
 	///
 	virtual bool allowSpellcheck() { return false; }
 	///
-	virtual string const selectNextWordToSpellcheck(BufferView *, float & value) const;
+	virtual WordLangTuple selectNextWordToSpellcheck(BufferView *, float & value) const;
 	///
 	virtual void selectSelectedWord(BufferView *) { return; }
 	///

@@ -1,5 +1,10 @@
 2002-08-06  John Levon  <levon@movementarian.org>
 
+	* ControlSpellchecker.C:
+	* ControlSpellchecker.h: use WordLangTuple 
+ 
+2002-08-06  John Levon  <levon@movementarian.org>
+
 	* ControlSpellchecker.C: show an alert with the
 	  error message on initialisation failure
  
