@@ -191,8 +191,13 @@ bool BufferView::removeAutoInsets()
 			if (pit->autoDelete()) {
 				removed = true;
 				pos_type const pos = pit.getPos();
-				
+
 				par->erase(pos);
+				// get the next valid iterator position
+				pit = par->InsetIterator(pos);
+				// ensure we have a valid end iterator
+				pend = par->inset_iterator_end();
+
 				if (cur_par == par) {
 					if (cur_pos > pos)
 						--cur_pos;

@@ -1,3 +1,8 @@
+2002-02-19  Allan Rae  <rae@lyx.org>
+
+	* BufferView2.C (removeAutoInsets): fix remaining freed memory read.
+	Iterators might be simple to use but they also get invalidated.
+
 2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Chktex.C:
