@@ -17,9 +17,14 @@
 #include "GraphicsCacheItem.h"
 #include "GraphicsImage.h"
 #include "GraphicsParams.h"
+#include "GraphicsSupport.h"
+
+#include "frontends/Timeout.h"
 
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
+
+#include <list>
 
 namespace grfx {
 
@@ -35,6 +40,9 @@ struct Loader::Impl : boost::signals::trackable {
 	///
 	void createPixmap();
 
+	///
+	void startLoading(Inset const &, BufferView const &);
+
 	/// The loading status of the image.
 	ImageStatus status_;
 	/** Must store a copy of the cached item to ensure that it is not
@@ -47,17 +55,116 @@ struct Loader::Impl : boost::signals::trackable {
 private:
 	///
 	void statusChanged();
+	///
+	void checkedLoading();
 	
 	///
 	Params params_;
 	///
 	Loader & parent_;
+
+	///
+	Timeout timer;
+	// Multiple Insets can share the same image
+	typedef std::list<Inset const *> InsetList;
+	///
+	InsetList insets;
+	///
+	BufferView const * view;
 };
 
 
-Loader::Impl::Impl(Loader & parent, Params const & params)
-	: status_(WaitingToLoad), params_(params), parent_(parent)
+Loader::Loader()
+	: pimpl_(new Impl(*this, Params()))
 {}
+
+
+Loader::Loader(string const & file, DisplayType type)
+	: pimpl_(new Impl(*this, Params()))
+{
+	reset(file, type);
+}
+
+
+Loader::Loader(string const & file, Params const & params)
+	: pimpl_(new Impl(*this, params))
+{
+	reset(file, params);
+}
+
+
+Loader::~Loader()
+{}
+
+
+void Loader::reset(string const & file, DisplayType type)
+{
+	Params params;
+	params.display = type;
+	pimpl_->resetParams(params);
+
+	pimpl_->resetFile(file);
+	pimpl_->createPixmap();
+}
+
+
+void Loader::reset(string const & file, Params const & params)
+{
+	pimpl_->resetParams(params);
+	pimpl_->resetFile(file);
+	pimpl_->createPixmap();
+}
+
+
+void Loader::reset(Params const & params)
+{
+	pimpl_->resetParams(params);
+	pimpl_->createPixmap();
+}
+
+
+void Loader::startLoading()
+{
+	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_.get())
+		return;
+	pimpl_->cached_item_->startLoading();
+}
+
+
+void Loader::startLoading(Inset const & inset, BufferView const & bv)
+{
+	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_.get())
+		return;
+	pimpl_->startLoading(inset, bv);
+}
+
+
+string const & Loader::filename() const
+{
+	static string const empty;
+	return pimpl_->cached_item_.get() ?
+		pimpl_->cached_item_->filename() : empty;
+}
+
+
+ImageStatus Loader::status() const
+{
+	return pimpl_->status_;
+}
+
+
+Image const * Loader::image() const
+{
+	return pimpl_->image_.get();
+}
+
+
+Loader::Impl::Impl(Loader & parent, Params const & params)
+	: status_(WaitingToLoad), params_(params), parent_(parent),
+	  timer(2000, Timeout::ONETIME), view(0)
+{
+	timer.timeout.connect(boost::bind(&Impl::checkedLoading, this));
+}
 
 
 Loader::Impl::~Impl()
@@ -141,80 +248,58 @@ void Loader::Impl::createPixmap()
 }
 
 
-Loader::Loader()
-	: pimpl_(new Impl(*this, Params()))
-{}
-
-
-Loader::Loader(string const & file, DisplayType type)
-	: pimpl_(new Impl(*this, Params()))
+void Loader::Impl::startLoading(Inset const & inset, BufferView const & bv)
 {
-	reset(file, type);
-}
-
-
-Loader::Loader(string const & file, Params const & params)
-	: pimpl_(new Impl(*this, params))
-{
-	reset(file, params);
-}
-
-
-Loader::~Loader()
-{}
-
-
-void Loader::reset(string const & file, DisplayType type)
-{
-	Params params;
-	params.display = type;
-	pimpl_->resetParams(params);
-
-	pimpl_->resetFile(file);
-	pimpl_->createPixmap();
-}
-
-
-void Loader::reset(string const & file, Params const & params)
-{
-	pimpl_->resetParams(params);
-	pimpl_->resetFile(file);
-	pimpl_->createPixmap();
-}
-
-
-void Loader::reset(Params const & params)
-{
-	pimpl_->resetParams(params);
-	pimpl_->createPixmap();
-}
-
-
-void Loader::startLoading()
-{
-	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_.get())
+	if (status_ != WaitingToLoad || timer.running())
 		return;
-	pimpl_->cached_item_->startLoading();
+
+	InsetList::const_iterator it  = insets.begin();
+	InsetList::const_iterator end = insets.end();
+	it = std::find(it, end, &inset);
+	if (it == end)
+		insets.push_back(&inset);
+	view = &bv;
+
+	timer.start();
 }
 
 
-string const & Loader::filename() const
+namespace {
+
+struct FindVisibleInset {
+
+	FindVisibleInset(std::list<VisibleParagraph> const & vps) : vps_(vps) {}
+
+	bool operator()(Inset const * inset_ptr)
+	{
+		if (!inset_ptr)
+			return false;
+		return isInsetVisible(*inset_ptr, vps_);
+	}
+	
+private:
+	std::list<VisibleParagraph> const & vps_;
+};
+
+} // namespace anon
+
+
+void Loader::Impl::checkedLoading()
 {
-	static string const empty;
-	return pimpl_->cached_item_.get() ?
-		pimpl_->cached_item_->filename() : empty;
+	if (insets.empty() || !view)
+		return;
+
+	std::list<VisibleParagraph> const vps = getVisibleParagraphs(*view);
+
+	InsetList::const_iterator it  = insets.begin();
+	InsetList::const_iterator end = insets.end();
+
+	it = std::find_if(it, end, FindVisibleInset(vps));
+
+	// One of the insets is visible, so start loading the image.
+	if (it != end)
+		cached_item_->startLoading();
 }
 
-
-ImageStatus Loader::status() const
-{
-	return pimpl_->status_;
-}
-
-
-Image const * Loader::image() const
-{
-	return pimpl_->image_.get();
-}
 
 } // namespace grfx

@@ -4,7 +4,7 @@
  *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef PREVIEWIMAGE_H
@@ -16,6 +16,9 @@
 
 #include "LString.h"
 #include <boost/scoped_ptr.hpp>
+
+class Inset;
+class BufferView;
 
 namespace grfx {
 
@@ -34,9 +37,6 @@ public:
 	///
 	~PreviewImage();
 
-	/// We are explicit about when we begin the loading process.
-	void startLoading();
-
 	///
 	string const & snippet() const;
 	///
@@ -45,8 +45,13 @@ public:
 	int descent() const;
 	///
 	int width() const;
-	///
-	Image const * image() const;
+
+	/** If the image is not yet loaded (WaitingToLoad), then this method
+	 *  triggers that.
+	 *  inset and bv are passed so we can choose to load only
+	 *  those insets that are visible.
+	 */
+	Image const * image(Inset const & inset, BufferView const & bv) const;
 
 private:
 	/// Use the Pimpl idiom to hide the internals.

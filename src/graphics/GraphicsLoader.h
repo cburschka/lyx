@@ -31,6 +31,9 @@
 #include <boost/signals/signal0.hpp>
 #include <boost/scoped_ptr.hpp>
 
+class Inset;
+class BufferView;
+
 namespace grfx {
 
 class Image;
@@ -62,6 +65,11 @@ public:
 
 	/// We are explicit about when we begin the loading process.
 	void startLoading();
+
+	/** starting loading of the image is conditional upon the
+	 *  inset being visible or not.
+	 */
+	void startLoading(Inset const &, BufferView const &);
 
 	/// How far have we got in loading the image?
 	ImageStatus status() const;

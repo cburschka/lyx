@@ -3,7 +3,7 @@
  *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>
@@ -16,8 +16,6 @@
 #include "PreviewLoader.h"
 #include "GraphicsImage.h"
 #include "GraphicsLoader.h"
-
-#include "debug.h"
 
 #include "support/lyxlib.h"
 
@@ -34,9 +32,7 @@ struct PreviewImage::Impl : public boost::signals::trackable {
 	///
 	~Impl();
 	///
-	void startLoading();	
-	///
-	Image const * image();
+	Image const * image(Inset const &, BufferView const &);
 	///
 	void statusChanged();
 
@@ -45,7 +41,7 @@ struct PreviewImage::Impl : public boost::signals::trackable {
 	///
 	PreviewLoader & ploader_;
 	///
-	boost::scoped_ptr<Loader> const iloader_;
+	Loader iloader_;
 	///
 	string const snippet_;
 	///
@@ -65,20 +61,15 @@ PreviewImage::~PreviewImage()
 {}
 
 
-void PreviewImage::startLoading()
-{
-	return pimpl_->startLoading();
-}
-
-
 string const & PreviewImage::snippet() const
 {
 	return pimpl_->snippet_;
 }
 
+
 int PreviewImage::ascent() const
 {
-	Image const * const image = pimpl_->image();
+	Image const * const image = pimpl_->iloader_.image();
 	if (!image)
 		return 0;
 
@@ -88,7 +79,7 @@ int PreviewImage::ascent() const
 
 int PreviewImage::descent() const
 {
-	Image const * const image = pimpl_->image();
+	Image const * const image = pimpl_->iloader_.image();
 	if (!image)
 		return 0;
 
@@ -99,14 +90,15 @@ int PreviewImage::descent() const
 
 int PreviewImage::width() const
 {
-	Image const * const image = pimpl_->image();
+	Image const * const image = pimpl_->iloader_.image();
 	return image ? image->getWidth() : 0;
 }
 
 
-Image const * PreviewImage::image() const
+Image const * PreviewImage::image(Inset const & inset,
+				  BufferView const & bv) const
 {
-	return pimpl_->image();
+	return pimpl_->image(inset, bv);
 }
 
 
@@ -114,37 +106,33 @@ PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l,
 			 string const & s,
 			 string const & bf,
 			 double af)
-	: parent_(p), ploader_(l), iloader_(new Loader(bf)),
+	: parent_(p), ploader_(l), iloader_(bf),
 	  snippet_(s), ascent_frac_(af)
-{}
+{
+	iloader_.statusChanged.connect(
+		boost::bind(&Impl::statusChanged, this));
+}
 
 
 PreviewImage::Impl::~Impl()
 {
-	lyx::unlink(iloader_->filename());
+	lyx::unlink(iloader_.filename());
 }
 
 
-void PreviewImage::Impl::startLoading()
+Image const * PreviewImage::Impl::image(Inset const & inset,
+					BufferView const & bv)
 {
-	if (iloader_->status() != WaitingToLoad)
-		return;
+	if (iloader_.status() == WaitingToLoad)
+		iloader_.startLoading(inset, bv);
 
-	iloader_->statusChanged.connect(
-		boost::bind(&Impl::statusChanged, this));
-	iloader_->startLoading();
+	return iloader_.image();
 }
 
-
-Image const * PreviewImage::Impl::image()
-{
-//  	startLoading();
-	return iloader_->image();
-}
 
 void PreviewImage::Impl::statusChanged()
 {
-	switch (iloader_->status()) {
+	switch (iloader_.status()) {
 	case WaitingToLoad:
 	case Loading:
 	case Converting:
@@ -157,12 +145,12 @@ void PreviewImage::Impl::statusChanged()
 	case ErrorLoading:
 	case ErrorGeneratingPixmap:
 	case ErrorUnknown:
-		//lyx::unlink(iloader_->filename());
+		//lyx::unlink(iloader_.filename());
 		ploader_.remove(snippet_);
 		break;
 
 	case Ready:
-		lyx::unlink(iloader_->filename());
+		lyx::unlink(iloader_.filename());
 		ploader_.imageReady(parent_);
 		break;
 	}

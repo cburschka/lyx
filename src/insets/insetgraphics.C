@@ -329,7 +329,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	x += lwidth;
 
 	if (cache_->loader.status() == grfx::WaitingToLoad) {
-		cache_->loader.startLoading();
+		cache_->loader.startLoading(*this, *bv);
 	}
 
 	// This will draw the graphics. If the graphics has not been loaded yet,

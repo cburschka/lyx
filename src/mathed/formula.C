@@ -214,6 +214,10 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 			int y, float & xx, bool) const
 {
+	// This initiates the loading of the preview, so should come
+	// before the metrics are computed.
+	bool const use_preview = preview_->usePreview();
+
 	int const x = int(xx);
 	int const w = width(bv, font);
 	int const d = descent(bv, font);
@@ -222,9 +226,9 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 
 	MathPainterInfo pi(bv->painter());
 
-	if (preview_->usePreview()) {
+	if (use_preview) {
 		pi.pain.image(x + 1, y - a + 1, w - 2, h - 2, 
-			      *(preview_->pimage_->image()));
+			      *(preview_->pimage_->image(*this, *bv)));
 	} else {
 		//pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
 		pi.base.style = LM_ST_TEXT;
@@ -524,7 +528,7 @@ bool InsetFormula::PreviewImpl::usePreview() const
 	if (!pimage_)
 		return false;
 
-	return pimage_->image();
+	return pimage_->image(parent_, *view);
 }
 
 

@@ -1,3 +1,8 @@
+2002-07-12  Angus Leeming  <leeming@lyx.org>
+
+	* insetgraphics.C: use the new smart loading capabilities of the image
+	loader.
+
 2002-07-13  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insettabular.C (edit): Move into correct cell when entering a

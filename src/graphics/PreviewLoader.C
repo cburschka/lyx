@@ -3,7 +3,7 @@
  *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>
@@ -444,6 +444,7 @@ void PreviewLoader::Impl::finishedGenerating(string const & command,
 	if (retval > 0)
 		return;
 
+	// Paranoia check!
 	InProgressMap::iterator git = in_progress_.find(command);
 	if (git == in_progress_.end()) {
 		lyxerr << "PreviewLoader::finishedGenerating(): unable to find "
@@ -461,6 +462,8 @@ void PreviewLoader::Impl::finishedGenerating(string const & command,
 	InProgressStore::const_iterator it  = git->second.snippets.begin();
 	InProgressStore::const_iterator end = git->second.snippets.end();
 
+	std::list<PreviewImagePtr> newimages;
+
 	int metrics_counter = 0;
 	for (; it != end; ++it, ++metrics_counter) {
 		string const & snip = it->first;
@@ -470,11 +473,18 @@ void PreviewLoader::Impl::finishedGenerating(string const & command,
 		PreviewImagePtr ptr(new PreviewImage(parent_, snip, file, af));
 		cache_[snip] = ptr;
 
-		ptr->startLoading();
+		newimages.push_back(ptr);
 	}
 
 	// Remove the item from the list of still-executing processes.
 	in_progress_.erase(git);
+
+	// Tell the outside world
+	std::list<PreviewImagePtr>::const_iterator nit  = newimages.begin();
+	std::list<PreviewImagePtr>::const_iterator nend = newimages.end();
+	for (; nit != nend; ++nit) {
+		parent_.imageReady(*nit->get());
+	}
 }
 
 

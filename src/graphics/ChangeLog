@@ -1,3 +1,18 @@
+2002-07-12  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsLoader.[Ch]: smart loading of images. Images are loaded only
+	if visible 2 secs after the call to load them is first made.
+
+	* GraphicsSupport.[Ch]: new files. isInsetVisible interrogates the
+	BufferView to ascertain whether the inset is visible or not.
+
+	* Makefile.am: added GraphicsSupport.[Ch].
+
+	* PreviewImage.[Ch]: use this smart loader.
+
+	* PreviewLoader.C: don't load generated image files indiscimminantly.
+	Instead emit the imageReady signal and allow the image owner to decide.
+
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GraphicsCache.C: remove init_graphics()
