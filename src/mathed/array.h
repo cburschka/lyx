@@ -84,7 +84,7 @@ public:
 #else
 	/// Merge \a dx elements from array \a a at \apos.
 	/// This doesn't changes the size (dangerous)
-	void mergeF(MathedArray * a, int pos, int dx); 
+	void merge(MathedArray const & a, int pos); 
 #endif
 	///
 	void raw_pointer_copy(MathedInset ** p, int pos) const;

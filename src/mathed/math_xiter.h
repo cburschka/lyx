@@ -71,7 +71,7 @@ public:
 	///
 	void setTab(int, int);
 	/// Merge the array at current position
-	void Merge(MathedArray *);
+	void Merge(MathedArray const &);
 	/// Delete every object from current position to pos2
 	void Clean(int pos2);
 	///

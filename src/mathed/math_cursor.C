@@ -844,7 +844,7 @@ bool MathedCursor::pullArg()
 		p->clear();
 		Delete();
 		if (!a.empty()) {
-			cursor->Merge(&a);
+			cursor->Merge(a);
 			cursor->Adjust();
 		}
 
@@ -947,7 +947,7 @@ void MathedCursor::SelPaste()
 		SelDel();
 
 	if (!selarray.empty()) {
-		cursor->Merge(&selarray);
+		cursor->Merge(selarray);
 		cursor->Adjust();
 	}
 }

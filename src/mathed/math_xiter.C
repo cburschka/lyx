@@ -139,27 +139,18 @@ void MathedXIter::Clean(int pos2)
 }
 
 
-void MathedXIter::Merge(MathedArray * a0)
+void MathedXIter::Merge(MathedArray const & a)
 {
-	if (!a0) {
-		lyxerr[Debug::MATHED]
-			<< "Math error: Attempting to merge a void array." << endl;
-		
-		return;
-	}
-	// All insets must be clonned
-	MathedArray * a = new MathedArray(*a0);
-
 #if 0
 	array->insert(array->begin() + pos,
-		      a->begin(), a->end());
+		      a.begin(), a.end());
 #else
 	// make room for the data 
-	split(a->last());
-	array->mergeF(a, pos, a->last());
+	split(a.last());
+	array->merge(a, pos);
 #endif
 	int pos1 = pos;
-	int pos2 = pos + a->last();
+	int pos2 = pos + a.last();
 	
 	goPosAbs(pos1);
 	
@@ -186,8 +177,6 @@ void MathedXIter::Merge(MathedArray * a0)
 	goPosAbs(pos1);
 	checkTabs();
 	goPosAbs(pos2);
-	
-	delete a;
 }
 
 

@@ -219,9 +219,9 @@ void MathedArray::insert(MathedArray::iterator pos,
 	last_ = bf_.size() - 1;
 }
 #else
-void MathedArray::mergeF(MathedArray * a, int p, int dx)
+void MathedArray::merge(MathedArray const & a, int p)
 {
-	my_memcpy(&bf_[p], &a->bf_[0], dx);
+	my_memcpy(&bf_[p], &a.bf_[0], a.last());
 }
 #endif
 
