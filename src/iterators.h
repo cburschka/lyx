@@ -33,6 +33,8 @@ public:
 	///
 	ParIterator(ParIterator const &);
 	///
+	ParIterator(PosIterator const &);
+	///
 	void operator=(ParIterator const &);
 	///
 	ParIterator & operator++();
@@ -46,8 +48,7 @@ public:
 	ParagraphList::iterator pit() const;
 	///
 	ParagraphList & plist() const;
-	/// returns 'innermost' LyXText if in an inset or '0' instead of
-	//bv->text
+	/// returns 'innermost' LyXText
 	LyXText * text(BufferView *) const;
 	/// returns innermost inset
 	InsetOld * inset() const;

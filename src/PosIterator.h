@@ -52,6 +52,7 @@ public:
 	lyx::pos_type pos() const { return stack_.top().pos; }
 	bool at_end() const;
 	friend PosIterator ParIterator::asPosIterator(lyx::pos_type) const;
+	friend ParIterator::ParIterator(PosIterator const &);
 	
 private:
 	PosIterator() {};

@@ -363,6 +363,31 @@ PosIterator ParIterator::asPosIterator(lyx::pos_type pos) const
 }
 
 
+ParIterator::ParIterator(PosIterator const & pos)
+	: pimpl_(new Pimpl)
+{
+	PosIterator copy = pos;
+	int const size = copy.stack_.size();
+	
+	for (int i = 0; i < size; ++i) {
+		PosIteratorItem & it = copy.stack_.top();
+		ParPosition pp(it.pit, *it.pl);
+		if (i > 0) {
+			InsetOld * inset = it.pit->getInset(it.pos);
+			BOOST_ASSERT(inset);
+			InsetList::iterator beg = it.pit->insetlist.begin();
+			InsetList::iterator end = it.pit->insetlist.end();
+			for (; beg != end && beg->inset != inset; ++beg);
+			BOOST_ASSERT(beg != end);
+			pp.it.reset(beg);
+			pp.index.reset(it.index - 1);
+		}
+		pimpl_->positions.insert(pimpl_->positions.begin(), pp);
+		copy.stack_.pop();
+	}
+}
+
+
 void ParIterator::lockPath(BufferView * bv) const
 {
 	bv->insetUnlock();

@@ -428,9 +428,7 @@ void replaceSelection(LyXText * text)
 void put_selection_at(BufferView * bv, PosIterator const & cur,
 		      int length, bool backwards)
 {
-	ParIterator par = bv->buffer()->par_iterator_begin();
-	for (; par.pit() != cur.pit(); ++par)
-		;
+	ParIterator par(cur);
 	
 	bv->getLyXText()->clearSelection();
 

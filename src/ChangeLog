@@ -1,3 +1,8 @@
+2003-11-06  Alfredo Braunstein  <abraunst@libero.it>
+
+	* iterators.[Ch] (ParIterator): new PosIterator-based ctor
+	* bufferview_funcs.C (put_selection_at): use the above
+
 2003-11-05  Alfredo Braunstein  <abraunst@libero.it>
 
 	* text2.C (deleteEmptyParagraphMechanism): fix n-th crash
