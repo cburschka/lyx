@@ -2015,9 +2015,6 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 	tex_code_break_column = lyxrc.ascii_linelen;
 
-        LyXTextClass const & tclass =
-		textclasslist[params.textclass];
-
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
 		Alert::err_alert(_("Error: Cannot open file: "), fname);
@@ -2026,7 +2023,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	
 	// validate the buffer.
 	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
-	LaTeXFeatures features(params, tclass.size());
+	LaTeXFeatures features(params);
 	validate(features);
 	lyxerr[Debug::LATEX] << "  Buffer validation done." << endl;
 	
@@ -2071,6 +2068,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 		}
 		
 		ofs << "\\documentclass";
+		
+	        LyXTextClass const & tclass = textclasslist[params.textclass];
 		
 		ostringstream options; // the document class options.
 		
@@ -2158,9 +2157,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 			ofs << '[' << strOptions << ']';
 		}
 		
-		ofs << '{'
-		    << textclasslist[params.textclass].latexname()
-		    << "}\n";
+		ofs << '{' << tclass.latexname() << "}\n";
 		texrow.newline();
 		// end of \documentclass defs
 		
@@ -2612,15 +2609,15 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 	niceFile = nice; // this will be used by included files.
 
-        LyXTextClass const & tclass = textclasslist[params.textclass];
-
-	LaTeXFeatures features(params, tclass.size());
+	LaTeXFeatures features(params);
 	
 	validate(features);
 
 	texrow.reset();
 
-	string top_element = textclasslist[params.textclass].latexname();
+        LyXTextClass const & tclass = textclasslist[params.textclass];
+
+	string top_element = tclass.latexname();
 
 	if (!body_only) {
 		ofs << "<!doctype linuxdoc system";
@@ -2654,8 +2651,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	vector<string> environment_stack(5);
 
 	while (par) {
-		LyXLayout const & style =
-			textclasslist[params.textclass][par->layout()];
+		LyXLayout const & style = tclass[par->layout()];
 
 		// treat <toc> as a special case for compatibility with old code
 		if (par->isInset(0)) {
@@ -3053,15 +3049,13 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 	niceFile = nice; // this will be used by Insetincludes.
 
-        LyXTextClass const & tclass =
-		textclasslist[params.textclass];
-
-	LaTeXFeatures features(params, tclass.size());
+	LaTeXFeatures features(params);
 	validate(features);
    
 	texrow.reset();
 
-	string top_element = textclasslist[params.textclass].latexname();
+        LyXTextClass const & tclass = textclasslist[params.textclass];
+	string top_element = tclass.latexname();
 
 	if (!only_body) {
 		ofs << "<!DOCTYPE " << top_element
@@ -3110,8 +3104,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		string c_params;
 		int desc_on = 0; // description mode
 
-		LyXLayout const & style =
-			textclasslist[params.textclass][par->layout()];
+		LyXLayout const & style = tclass[par->layout()];
 
 		// environment tag closing
 		for (; depth > par->params().depth(); --depth) {

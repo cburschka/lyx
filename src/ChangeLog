@@ -1,5 +1,10 @@
 2002-03-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* buffer.C (makeLaTeXFile): fix calling of LaTeXFeatures, and
+	clean up the code slightly.
+	(makeLinuxDocFile): ditto
+	(makeDocBookFile): ditto
+
 	* text2.C: layout as string
 
 	* text.C: layout as string
