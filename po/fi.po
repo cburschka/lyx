@@ -61,8 +61,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
-"POT-Creation-Date: 2003-01-14 02:14+0100\n"
-"PO-Revision-Date: 2003-01-14 23:52+0200\n"
+"POT-Creation-Date: 2003-01-23 02:31+0200\n"
+"PO-Revision-Date: 2003-01-23 02:29--200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -91,15 +91,17 @@ msgstr "2:n kvadraatin|#2"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:44
+#: ../src/frontends/xforms/forms/form_error.fd:61
+#: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
+#: ../src/frontends/xforms/forms/form_forks.fd:169
+#: ../src/frontends/xforms/forms/form_thesaurus.fd:62
+#: ../src/frontends/xforms/forms/form_search.fd:116
+#: ../src/frontends/xforms/forms/form_tabular.fd:62
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
-#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:129
-msgid "Close"
-msgstr "Sulje"
+#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
+#: src/frontends/xforms/FormMathsBitmap.C:110
+msgid "Close|^["
+msgstr "Sulje|^["
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:188
 msgid "Quadratin|#Q"
@@ -151,6 +153,7 @@ msgstr "Palauta|#u"
 
 #: ../src/frontends/xforms/forms/form_float.fd:152
 #: ../src/frontends/xforms/forms/form_ref.fd:116
+#: ../src/frontends/xforms/forms/form_graphics.fd:80
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_bibitem.fd:62
 #: ../src/frontends/xforms/forms/form_minipage.fd:241
@@ -208,6 +211,7 @@ msgid "Apply|#A"
 msgstr "Toteuta|#T"
 
 #: ../src/frontends/xforms/forms/form_float.fd:188
+#: ../src/frontends/xforms/forms/form_character.fd:170
 #: ../src/frontends/xforms/forms/form_ref.fd:134
 #: ../src/frontends/xforms/forms/form_graphics.fd:98
 #: ../src/frontends/xforms/forms/form_url.fd:98
@@ -222,6 +226,7 @@ msgstr "Toteuta|#T"
 #: ../src/frontends/xforms/forms/form_bibtex.fd:98
 #: ../src/frontends/xforms/forms/form_include.fd:97
 #: ../src/frontends/xforms/forms/form_tabular_create.fd:80
+#: ../src/frontends/xforms/forms/form_external.fd:223
 #: ../src/frontends/xforms/forms/form_paragraph.fd:422
 #: ../src/frontends/xforms/forms/form_document.fd:62
 #: ../src/frontends/xforms/forms/form_filedialog.fd:224
@@ -273,10 +278,6 @@ msgstr "Koko:|#o"
 #: ../src/frontends/xforms/forms/form_character.fd:134
 msgid "Misc:|#M"
 msgstr "Sekal.:|#e"
-
-#: ../src/frontends/xforms/forms/form_character.fd:170
-msgid "Cancel|#N^["
-msgstr "Peru|^["
 
 #: ../src/frontends/xforms/forms/form_character.fd:188
 msgid "Color:|#C"
@@ -336,7 +337,6 @@ msgstr "Tyyppi|#T"
 
 #: ../src/frontends/xforms/forms/form_toc.fd:98
 #: ../src/frontends/xforms/forms/form_browser.fd:62
-#: ../src/frontends/xforms/forms/form_error.fd:61
 #: ../src/frontends/xforms/forms/form_texinfo.fd:98
 msgid "Close|^[^M"
 msgstr "Sulje|^[^M"
@@ -347,10 +347,6 @@ msgstr "Sulje|^[^M"
 #: ../src/frontends/xforms/forms/form_document.fd:44
 msgid "Tabbed folder"
 msgstr "Lehtiö"
-
-#: ../src/frontends/xforms/forms/form_graphics.fd:80
-msgid "Ok"
-msgstr "OK"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:158
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:286
@@ -1043,14 +1039,6 @@ msgstr "DVI-paperivalitsin|#D"
 msgid "Autoreset Class Options on change|#u"
 msgstr "Palauta asiakirjaluokan oletukset kun luokka vaihdetaan|#o"
 
-#: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
-#: ../src/frontends/xforms/forms/form_forks.fd:169
-#: ../src/frontends/xforms/forms/form_search.fd:116
-#: ../src/frontends/xforms/forms/form_tabular.fd:62
-#: src/frontends/xforms/FormMathsBitmap.C:110
-msgid "Close|^["
-msgstr "Sulje|^["
-
 #: ../src/frontends/xforms/forms/form_minipage.fd:43
 msgid "Width"
 msgstr "Leveys"
@@ -1226,11 +1214,6 @@ msgstr "Tyylit:|#y"
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:44
 msgid "Replace|^R"
 msgstr "Korvaa|^R"
-
-#: ../src/frontends/xforms/forms/form_thesaurus.fd:62
-#: ../src/frontends/xforms/forms/form_spellchecker.fd:206
-msgid "Close|#C^["
-msgstr "Sulje|#S^["
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:80
 msgid "Entry : "
@@ -1481,7 +1464,7 @@ msgstr "Rivinvaihto nykyisellä rivillä|#R"
 #: ../src/frontends/xforms/forms/form_tabular.fd:1638
 #: ../src/frontends/xforms/forms/form_tabular.fd:1656
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:131
-#: src/bufferview_funcs.C:194 src/frontends/qt2/QDocument.C:101
+#: src/bufferview_funcs.C:194 src/frontends/qt2/QDocument.C:147
 msgid "Double"
 msgstr "Kaksink."
 
@@ -1549,10 +1532,6 @@ msgstr "Näytä tulos|#N"
 #: ../src/frontends/xforms/forms/form_external.fd:169
 msgid "Update result|#U"
 msgstr "Päivitä|#P"
-
-#: ../src/frontends/xforms/forms/form_external.fd:223
-msgid "Cancel|#C^["
-msgstr "Peru|^["
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:62
 msgid "Text"
@@ -1666,8 +1645,8 @@ msgid "Landscape|#L"
 msgstr "Vaaka|#a"
 
 #: ../src/frontends/xforms/forms/form_document.fd:410
-#: src/frontends/qt2/QDocumentDialog.C:69
-#: src/frontends/qt2/QDocumentDialog.C:267
+#: src/frontends/qt2/QDocumentDialog.C:68
+#: src/frontends/qt2/QDocumentDialog.C:264
 msgid "Margins"
 msgstr "Reunukset"
 
@@ -1712,7 +1691,7 @@ msgid "Sides"
 msgstr "Sivu"
 
 #: ../src/frontends/xforms/forms/form_document.fd:758
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:183
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:128
 msgid "Separation"
 msgstr "Kappaleväli"
 
@@ -2071,9 +2050,18 @@ msgstr "Muuta tämän koko oikeita taulukon mittoja vastaavaksi"
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:157
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
 msgid "&OK"
 msgstr "&OK"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
+#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:129
+msgid "Close"
+msgstr "Sulje"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
@@ -2137,7 +2125,7 @@ msgstr "&Vientimuodot:"
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:168
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
 msgid "&Apply"
 msgstr "&Toteuta"
 
@@ -2147,7 +2135,7 @@ msgstr "&Toteuta"
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
 #: src/frontends/controllers/ButtonController.h:72 src/LyXAction.C:152
-#: src/lyxfunc.C:942
+#: src/lyxfunc.C:941
 msgid "Cancel"
 msgstr "Peru"
 
@@ -2187,7 +2175,7 @@ msgstr "Lisää taulukko"
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
 #: ../src/frontends/qt2/ui/PreambleModuleBase.ui:22
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:29
 msgid "Form1"
 msgstr "Form1"
 
@@ -2266,7 +2254,7 @@ msgstr "Levity palstojen yli monipalstaisessa asiakirjassa"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:668
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:60
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:67
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:125
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
 msgid "&Restore"
 msgstr "Pala&uta"
 
@@ -2446,7 +2434,7 @@ msgid "&Units:"
 msgstr "&Yksiköt:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
-#: src/frontends/qt2/QDocumentDialog.C:71
+#: src/frontends/qt2/QDocumentDialog.C:70
 #: src/frontends/xforms/FormDocument.C:347
 msgid "Bullets"
 msgstr "Merkit"
@@ -2456,7 +2444,7 @@ msgstr "Merkit"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:104
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:121
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:251
-#: src/frontends/qt2/QDocument.C:135 src/frontends/qt2/QDocument.C:145
+#: src/frontends/qt2/QDocument.C:126 src/frontends/qt2/QDocument.C:136
 msgid "default"
 msgstr "oletus"
 
@@ -2633,14 +2621,14 @@ msgid "Font series"
 msgstr "Kirjasinsarja:"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:144
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:41
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:152
 msgid "&Language:"
 msgstr "&Kieli:"
 
 #. language settings
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
-#: src/frontends/qt2/QDocumentDialog.C:70 src/frontends/qt2/QPrefsDialog.C:120
+#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
 #: src/frontends/xforms/FormDocument.C:343
 #: src/frontends/xforms/FormPreferences.C:246
 msgid "Language"
@@ -2882,27 +2870,19 @@ msgid "Use input encod&ing"
 msgstr "Käytä syötteen &merkistöä"
 
 #: ../src/frontends/qt2/ui/PackagesModuleBase.ui:41
-#: src/frontends/qt2/QDocumentDialog.C:67
+#: src/frontends/qt2/QDocumentDialog.C:73
 msgid "Packages"
 msgstr "Paketit"
 
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:78
+#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:60
 msgid "Use AMS &math"
 msgstr "Käytä AMS-&Mathia"
 
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:125
-msgid "Line spacing :"
-msgstr "Rivivälit :"
-
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:136
-msgid "Encoding:"
-msgstr "Merkistö:"
-
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:149
+#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:73
 msgid "Options"
 msgstr "Valinnat"
 
-#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:168
+#: ../src/frontends/qt2/ui/PackagesModuleBase.ui:92
 msgid "Postscript &driver :"
 msgstr "PostS&cript-ajuri :"
 
@@ -3043,21 +3023,25 @@ msgstr "&Pysty"
 msgid "&Landscape"
 msgstr "&Vaaka"
 
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:70
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:41
 msgid "Quote style"
 msgstr "Lainausmerkit"
 
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:93
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:64
 msgid "&Single"
 msgstr "&Yksinkertainen"
 
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:104
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:75
 msgid "&Double"
 msgstr "K&aksinkertainen"
 
-#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:129
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:100
 msgid "&Type:"
 msgstr "T&yyppi:"
+
+#: ../src/frontends/qt2/ui/LanguageModuleBase.ui:167
+msgid "&Encoding:"
+msgstr "&Merkistö:"
 
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:165
 msgid "Left delimiter"
@@ -3149,7 +3133,7 @@ msgstr "Näkymä ruudulla"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
 #: src/frontends/controllers/ControlGraphics.C:156
-#: src/frontends/qt2/QDocument.C:112 src/frontends/qt2/QDocumentDialog.C:341
+#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
 #: src/lyxfont.C:554
 msgid "Default"
 msgstr "Oletus"
@@ -3511,7 +3495,7 @@ msgid "Justified"
 msgstr "Tasattu"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:119
-#: src/bufferview_funcs.C:188 src/frontends/qt2/QDocument.C:97
+#: src/bufferview_funcs.C:188 src/frontends/qt2/QDocument.C:143
 msgid "Single"
 msgstr "Yksink."
 
@@ -3522,7 +3506,7 @@ msgstr "1.5"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:137
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:326
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:375
-#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocument.C:113
+#: src/frontends/qt2/QDocument.C:104 src/frontends/qt2/QDocument.C:149
 #: src/frontends/qt2/QDocumentDialog.C:342
 msgid "Custom"
 msgstr "Muu"
@@ -3769,8 +3753,7 @@ msgstr "&Asiakirja:"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
 #: ../lib/layouts/aapaper.layout:77 ../lib/layouts/aapaper.inc:113
-#: ../lib/ui/default.ui:79 src/frontends/qt2/QThesaurus.C:31
-#: src/frontends/xforms/FormThesaurus.C:39
+#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
 msgid "Thesaurus"
 msgstr "Synonyymit"
 
@@ -3887,7 +3870,7 @@ msgid "&Dummy"
 msgstr "&Testi"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:139
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:179
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:121
 #: src/frontends/qt2/Alert_pimpl.C:53
 msgid "&Cancel"
 msgstr "&Peru"
@@ -4116,22 +4099,22 @@ msgid "Executive"
 msgstr "Executive"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:92
-#: src/frontends/qt2/QDocument.C:117
+#: src/frontends/qt2/QDocument.C:108
 msgid "A3"
 msgstr "A3"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:98
-#: src/frontends/qt2/QDocument.C:118
+#: src/frontends/qt2/QDocument.C:109
 msgid "A4"
 msgstr "A4"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:104
-#: src/frontends/qt2/QDocument.C:119
+#: src/frontends/qt2/QDocument.C:110
 msgid "A5"
 msgstr "A5"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:110
-#: src/frontends/qt2/QDocument.C:122
+#: src/frontends/qt2/QDocument.C:113
 msgid "B5"
 msgstr "B5"
 
@@ -4660,41 +4643,45 @@ msgstr "&Valinnat :"
 msgid "Page &style :"
 msgstr "&Sivutyyli :"
 
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:142
-msgid "&Font && size :"
-msgstr "&Kirjasin ja koko :"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:161
-msgid "Float &placement:"
-msgstr "Irrallisten si&joitus:"
-
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:231
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:176
 msgid "&Indent"
 msgstr "Sise&nnys"
 
-#: ../src/frontends/qt2/ui/ClassModuleBase.ui:242
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:187
 msgid "S&kip"
 msgstr "&Väli"
 
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:71
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:215
+msgid "Float &placement:"
+msgstr "Irrallisten si&joitus:"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:255
+msgid "&Font && size :"
+msgstr "&Kirjasin ja koko :"
+
+#: ../src/frontends/qt2/ui/ClassModuleBase.ui:270
+msgid "&Line spacing :"
+msgstr "&Rivivälit :"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
+msgid "title here"
+msgstr "otsikko tähän"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
 msgid "Use Class Defaults"
 msgstr "Käytä luokan oletuksia"
 
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
 msgid "Reset default params of the current class"
 msgstr "Palauta nykyisen luokan oletusasetukset"
 
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:93
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
 msgid "Save as Document Defaults"
 msgstr "Tallenna asiakirjan oletukseksi"
 
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:97
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
 msgid "Save settings as LyX's default template"
 msgstr "Tallenna asetukset LyXin oletusarvoiseen malliasiakirjaan"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:228
-msgid "title here"
-msgstr "otsikko tähän"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:22
 #: src/frontends/xforms/FormPreferences.C:204
@@ -5161,7 +5148,7 @@ msgstr "Posti"
 #: ../lib/layouts/amsdefs.inc:338 ../lib/layouts/scrbook.layout:13
 #: ../lib/layouts/cl2emult.layout:105 ../lib/layouts/book.layout:19
 #: ../lib/layouts/aguplus.inc:157 ../lib/layouts/latex8.layout:121
-#: ../lib/layouts/scrclass.inc:229 src/frontends/qt2/QDocumentDialog.C:73
+#: ../lib/layouts/scrclass.inc:229 src/frontends/qt2/QDocumentDialog.C:72
 msgid "Bibliography"
 msgstr "Viitteet"
 
@@ -6429,11 +6416,11 @@ msgstr "usorbian"
 msgid "Welsh"
 msgstr "kymri"
 
-#: ../lib/ui/default.ui:7 src/MenuBackend.C:682
+#: ../lib/ui/default.ui:7 src/MenuBackend.C:684
 msgid "File|F"
 msgstr "Tiedosto|T"
 
-#: ../lib/ui/default.ui:8 src/MenuBackend.C:683
+#: ../lib/ui/default.ui:8 src/MenuBackend.C:685
 msgid "Edit|E"
 msgstr "Muokkaa|k"
 
@@ -6453,7 +6440,7 @@ msgstr "Näytä|N"
 msgid "Navigate|N"
 msgstr "Siirry|S"
 
-#: ../lib/ui/default.ui:13 src/MenuBackend.C:685
+#: ../lib/ui/default.ui:13 src/MenuBackend.C:687
 msgid "Documents|D"
 msgstr "Asiakirjat|A"
 
@@ -6469,7 +6456,7 @@ msgstr "Uusi|U"
 msgid "New from Template...|T"
 msgstr "Uusi mallin mukaan...|m"
 
-#: ../lib/ui/default.ui:24 src/MenuBackend.C:655
+#: ../lib/ui/default.ui:24 src/MenuBackend.C:657
 msgid "Open...|O"
 msgstr "Avaa...|A"
 
@@ -6493,7 +6480,7 @@ msgstr "Hylkää muutokset|y"
 msgid "Version Control|V"
 msgstr "Versiohallinta|r"
 
-#: ../lib/ui/default.ui:32 src/MenuBackend.C:656
+#: ../lib/ui/default.ui:32 src/MenuBackend.C:658
 msgid "Import|I"
 msgstr "Tuo|o"
 
@@ -6514,8 +6501,8 @@ msgid "Exit|x"
 msgstr "Lopeta|e"
 
 #: ../lib/ui/default.ui:43
-msgid "Register|R"
-msgstr "Rekisteröi|R"
+msgid "Register...|R"
+msgstr "Rekisteröi...|R"
 
 #: ../lib/ui/default.ui:44
 msgid "Check In Changes...|I"
@@ -6569,7 +6556,7 @@ msgstr "Liitä ulkoinen valinta|v"
 msgid "Find & Replace...|F"
 msgstr "Etsi tai korvaa...|E"
 
-#: ../lib/ui/default.ui:74 ../lib/ui/default.ui:302
+#: ../lib/ui/default.ui:74
 msgid "Tabular|T"
 msgstr "Taulukko|T"
 
@@ -6582,8 +6569,12 @@ msgid "Read Only"
 msgstr "Vain luku"
 
 #: ../lib/ui/default.ui:78
-msgid "Spellchecker|S"
-msgstr "Oikoluku|O"
+msgid "Spellchecker...|S"
+msgstr "Oikoluku...|O"
+
+#: ../lib/ui/default.ui:79
+msgid "Thesaurus..."
+msgstr "Synonyymit..."
 
 #: ../lib/ui/default.ui:80
 msgid "Check TeX|h"
@@ -6598,8 +6589,8 @@ msgid "Open/Close float|l"
 msgstr "Avaa tai sulje irrallinen osa|r"
 
 #: ../lib/ui/default.ui:84
-msgid "Preferences|P"
-msgstr "Asetukset|A"
+msgid "Preferences...|P"
+msgstr "Asetukset...|A"
 
 #: ../lib/ui/default.ui:85
 msgid "Reconfigure|R"
@@ -6894,8 +6885,8 @@ msgid "Short Title"
 msgstr "Lyhyt teoksen nimi"
 
 #: ../lib/ui/default.ui:203
-msgid "Index Entry|I"
-msgstr "Hakemistoviite|H"
+msgid "Index Entry...|I"
+msgstr "Hakemistoviite...|H"
 
 #: ../lib/ui/default.ui:204
 msgid "URL...|U"
@@ -7130,16 +7121,20 @@ msgid "ASCII as Paragraphs...|P"
 msgstr "Ascii-teksti kappaleina...|k"
 
 #: ../lib/ui/default.ui:299
-msgid "Character|C"
-msgstr "Merkki|M"
+msgid "Character...|C"
+msgstr "Merkki...|M"
 
 #: ../lib/ui/default.ui:300
-msgid "Paragraph|P"
-msgstr "Kappale|K"
+msgid "Paragraph...|P"
+msgstr "Kappale...|K"
 
 #: ../lib/ui/default.ui:301
-msgid "Document|D"
-msgstr "Asiakirja|A"
+msgid "Document...|D"
+msgstr "Asiakirja...|A"
+
+#: ../lib/ui/default.ui:302
+msgid "Tabular...|T"
+msgstr "Taulukko...|T"
 
 #: ../lib/ui/default.ui:304
 msgid "Emphasize Style|E"
@@ -7166,8 +7161,8 @@ msgid "Increase Environment Depth|i"
 msgstr "Kasvata ympäristösyvyyttä|v"
 
 #: ../lib/ui/default.ui:311
-msgid "Preamble|r"
-msgstr "Aloitusosa|o"
+msgid "Preamble...|r"
+msgstr "Aloitusosa...|o"
 
 #: ../lib/ui/default.ui:312
 msgid "Start Appendix Here|S"
@@ -7325,8 +7320,8 @@ msgid "The document uses an unknown textclass \"%1$s\"."
 msgstr "Asiakirja käyttää tuntematonta tekstiluokkaa \"%1$s\"."
 
 #: src/buffer.C:624 src/buffer.C:630
-msgid "LyX will not be able to produce output correctly."
-msgstr "LyX ei voi tuottaa kunnollista tulostetta."
+msgid "-- substituting default."
+msgstr "-- korvautuu oletuksella."
 
 #: src/buffer.C:628
 msgid "The document uses an unknown textclass "
@@ -7363,7 +7358,8 @@ msgstr "Varoitus!"
 msgid ""
 "The file was created with a newer version of LyX. This is likely to cause "
 "problems."
-msgstr "Tiedosto on tehty aiemmalla LyXin versiolla, mikä aiheuttanee ongelmia."
+msgstr ""
+"Tiedosto on tehty aiemmalla LyXin versiolla, mikä aiheuttanee ongelmia."
 
 #. "\\lyxformat" not found
 #: src/buffer.C:1191 src/buffer.C:1199 src/buffer.C:1211 src/buffer.C:1244
@@ -7499,7 +7495,7 @@ msgstr "Lataatko sen mieluummin?"
 msgid "Unable to open template"
 msgstr "Mallitiedostoa ei voi avata"
 
-#: src/bufferlist.C:518 src/lyxfunc.C:1819
+#: src/bufferlist.C:518 src/lyxfunc.C:1818
 msgid "Document is already open:"
 msgstr "Asiakirja on jo avoinna:"
 
@@ -7621,11 +7617,11 @@ msgstr "Valitse lisättävä LyX-asiakirja"
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
-#: src/lyxfunc.C:1643 src/lyxfunc.C:1682 src/lyxfunc.C:1787
+#: src/lyxfunc.C:1642 src/lyxfunc.C:1681 src/lyxfunc.C:1786
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
-#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1684 src/lyxfunc.C:1789
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1683 src/lyxfunc.C:1788
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
@@ -7633,8 +7629,8 @@ msgstr "Esimerkit|#E#e"
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
 
-#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1698 src/lyxfunc.C:1718
-#: src/lyxfunc.C:1806 src/lyxfunc.C:1833 src/lyxfunc.C:1843
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1697 src/lyxfunc.C:1717
+#: src/lyxfunc.C:1805 src/lyxfunc.C:1832 src/lyxfunc.C:1842
 msgid "Canceled."
 msgstr "Peruttu."
 
@@ -7656,7 +7652,7 @@ msgstr " ..."
 msgid "Document %1$s inserted."
 msgstr "Asiakirja %1$s lisätty."
 
-#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1743
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1742
 msgid "Document "
 msgstr "Asiakirja "
 
@@ -8378,16 +8374,16 @@ msgstr "Merkkijono korvattu."
 msgid " strings have been replaced."
 msgstr " merkkijonoa korvattu"
 
-#: src/frontends/controllers/ControlSpellchecker.C:196
+#: src/frontends/controllers/ControlSpellchecker.C:178
 msgid "Spellchecking completed!"
 msgstr "Oikoluku valmis! "
 
-#: src/frontends/controllers/ControlSpellchecker.C:204
-#: src/frontends/controllers/ControlSpellchecker.C:210
+#: src/frontends/controllers/ControlSpellchecker.C:186
+#: src/frontends/controllers/ControlSpellchecker.C:192
 msgid "One word checked."
 msgstr "Yksi sana tarkastettu."
 
-#: src/frontends/controllers/ControlSpellchecker.C:217
+#: src/frontends/controllers/ControlSpellchecker.C:199
 msgid ""
 "The spell checker has died for some reason.\n"
 "Maybe it has been killed."
@@ -8401,11 +8397,16 @@ msgstr "Versionhallintalokitiedostoa ei löytynyt"
 
 #: src/frontends/controllers/helper_funcs.C:63
 msgid "Filename can't contain any of these characters:"
-msgstr "Seuraavat merkit eivät ole sallittuja tiedostonimissä:"
+msgstr "Tiedostonimi ei voi sisältää seuraavia merkkejä:"
 
 #: src/frontends/controllers/helper_funcs.C:65
+#: src/frontends/controllers/helper_funcs.C:119
 msgid "space, '#', '~', '$' or '%'."
 msgstr "välilyönti, '#', '~', '$' tai '%'."
+
+#: src/frontends/controllers/helper_funcs.C:117
+msgid "directory name can't contain any of these characters:"
+msgstr "Hakemistonimissä ei voi olla seuraavia merkkejä:"
 
 #: src/frontends/gnome/GLog.C:55 src/frontends/qt2/QLog.C:56
 msgid "Build log"
@@ -8448,13 +8449,13 @@ msgstr "LyX: %1$s"
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/frontends/qt2/FileDialog.C:61
+#: src/frontends/qt2/FileDialog.C:61 src/frontends/qt2/FileDialog.C:91
 msgid "All files (*)"
 msgstr "Kaikki tiedostot (*)"
 
-#: src/frontends/qt2/FileDialog.C:91
-msgid "*|All files"
-msgstr "*|Kaikki tiedostot"
+#: src/frontends/qt2/FileDialog.C:116
+msgid "Directories"
+msgstr "Hakemistot"
 
 #: src/frontends/qt2/lengthcombo.C:34
 msgid "Choose one of the units or relative lengths"
@@ -8509,109 +8510,109 @@ msgstr "Tekijä ja vuosi"
 msgid "Numerical"
 msgstr "Numerot"
 
-#: src/frontends/qt2/QDocument.C:82
+#: src/frontends/qt2/QDocument.C:88
 msgid "``text''"
 msgstr "``teksti''"
 
-#: src/frontends/qt2/QDocument.C:83
+#: src/frontends/qt2/QDocument.C:89
 msgid "''text''"
 msgstr "''teksti''"
 
-#: src/frontends/qt2/QDocument.C:84
+#: src/frontends/qt2/QDocument.C:90
 msgid ",,text``"
 msgstr ",,teksti``"
 
-#: src/frontends/qt2/QDocument.C:85
+#: src/frontends/qt2/QDocument.C:91
 msgid ",,text''"
 msgstr ",,teksti''"
 
-#: src/frontends/qt2/QDocument.C:86
+#: src/frontends/qt2/QDocument.C:92
 msgid "«text»"
 msgstr "«teksti»"
 
-#: src/frontends/qt2/QDocument.C:87
+#: src/frontends/qt2/QDocument.C:93
 msgid "»text«"
 msgstr "»teksti«"
 
-#: src/frontends/qt2/QDocument.C:99
-msgid "OneHalf"
-msgstr "Puolikas"
-
-#: src/frontends/qt2/QDocument.C:114
+#: src/frontends/qt2/QDocument.C:105
 msgid "US letter"
 msgstr "US letter"
 
-#: src/frontends/qt2/QDocument.C:115
+#: src/frontends/qt2/QDocument.C:106
 msgid "US legal"
 msgstr "US legal"
 
-#: src/frontends/qt2/QDocument.C:116
+#: src/frontends/qt2/QDocument.C:107
 msgid "US executive"
 msgstr "US executive"
 
-#: src/frontends/qt2/QDocument.C:120
+#: src/frontends/qt2/QDocument.C:111
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt2/QDocument.C:121
+#: src/frontends/qt2/QDocument.C:112
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt2/QDocument.C:136
+#: src/frontends/qt2/QDocument.C:127
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt2/QDocument.C:137
+#: src/frontends/qt2/QDocument.C:128
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt2/QDocument.C:138
+#: src/frontends/qt2/QDocument.C:129
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt2/QDocument.C:140
+#: src/frontends/qt2/QDocument.C:131
 msgid "Smallskip"
 msgstr "Pieni väli"
 
-#: src/frontends/qt2/QDocument.C:141
+#: src/frontends/qt2/QDocument.C:132
 msgid "Medskip"
 msgstr "Keskisuuri väli"
 
-#: src/frontends/qt2/QDocument.C:142
+#: src/frontends/qt2/QDocument.C:133
 msgid "Bigskip"
 msgstr "Suuri väli"
 
-#: src/frontends/qt2/QDocument.C:143
+#: src/frontends/qt2/QDocument.C:134
 msgid "Length"
 msgstr "Pituus"
 
-#: src/frontends/qt2/QDocument.C:146
+#: src/frontends/qt2/QDocument.C:137
 msgid "empty"
 msgstr "tyhjä"
 
-#: src/frontends/qt2/QDocument.C:147
+#: src/frontends/qt2/QDocument.C:138
 msgid "plain"
 msgstr "tavallinen"
 
-#: src/frontends/qt2/QDocument.C:148
+#: src/frontends/qt2/QDocument.C:139
 msgid "headings"
 msgstr "yläotsikot"
 
-#: src/frontends/qt2/QDocument.C:149
+#: src/frontends/qt2/QDocument.C:140
 msgid "fancy"
 msgstr "hienot"
+
+#: src/frontends/qt2/QDocument.C:145
+msgid "OneHalf"
+msgstr "Puolikas"
 
 #: src/frontends/qt2/QDocumentDialog.C:66
 msgid "Layout"
 msgstr "Muotoilu"
 
-#: src/frontends/qt2/QDocumentDialog.C:68
+#: src/frontends/qt2/QDocumentDialog.C:67
 #: src/frontends/xforms/FormDocument.C:341
 msgid "Paper"
 msgstr "Sivu"
 
-#: src/frontends/qt2/QDocumentDialog.C:72
-#: src/frontends/qt2/QDocumentDialog.C:276
+#: src/frontends/qt2/QDocumentDialog.C:71
+#: src/frontends/qt2/QDocumentDialog.C:273
 msgid "Numbering"
 msgstr "Numerointi"
 
@@ -8624,24 +8625,24 @@ msgid "Document Style"
 msgstr "Asiakirjan tyyli"
 
 #: src/frontends/qt2/QDocumentDialog.C:261
-msgid "LaTeX Packages"
-msgstr "LaTeX-paketit"
-
-#: src/frontends/qt2/QDocumentDialog.C:264
 msgid "Papersize and Orientation"
 msgstr "Paperin koko ja suunta"
 
-#: src/frontends/qt2/QDocumentDialog.C:270
+#: src/frontends/qt2/QDocumentDialog.C:267
 msgid "Language Settings and Quote Style"
 msgstr "Kieliasetukset ja lainausmerkit"
 
-#: src/frontends/qt2/QDocumentDialog.C:273
+#: src/frontends/qt2/QDocumentDialog.C:270
 msgid "Bullet Types"
 msgstr "Luettelomerkit"
 
-#: src/frontends/qt2/QDocumentDialog.C:279
+#: src/frontends/qt2/QDocumentDialog.C:276
 msgid "Bibliography Settings"
 msgstr "Kirjallisuusviitteiden asetukset"
+
+#: src/frontends/qt2/QDocumentDialog.C:279
+msgid "LaTeX Packages and Options"
+msgstr "LaTeX-paketit ja valinnat"
 
 #: src/frontends/qt2/QDocumentDialog.C:282
 msgid "LaTeX Preamble"
@@ -8821,7 +8822,7 @@ msgid "Paragraph Layout"
 msgstr "Kappaleen tyyli"
 
 #: src/frontends/qt2/QParagraph.C:304 src/frontends/xforms/FormParagraph.C:287
-#: src/paragraph.C:820
+#: src/paragraph.C:819
 msgid "Senseless with this layout!"
 msgstr "Järjetöntä tällä kappaletyylillä!"
 
@@ -9078,7 +9079,7 @@ msgstr "] on käytössä sen sijaan."
 msgid "Done"
 msgstr "Valmis"
 
-#: src/frontends/xforms/FileDialog.C:62
+#: src/frontends/xforms/FileDialog.C:82
 msgid "*"
 msgstr "*"
 
@@ -9329,8 +9330,8 @@ msgstr "ERT-asetukset"
 msgid "Edit external file"
 msgstr "Muokkaa ulkoista tiedostoa"
 
-#: src/frontends/xforms/FormFiledialog.C:193
-#: src/frontends/xforms/FormFiledialog.C:362
+#: src/frontends/xforms/FormFiledialog.C:194
+#: src/frontends/xforms/FormFiledialog.C:363
 msgid "Warning! Couldn't open directory."
 msgstr "Varoitus! Ei voinut avata hakemistoa."
 
@@ -9873,31 +9874,31 @@ msgstr " oletus | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
 msgid "Default path"
 msgstr "Oletushakemisto"
 
-#: src/frontends/xforms/FormPreferences.C:2194
+#: src/frontends/xforms/FormPreferences.C:2195
 msgid "Template path"
 msgstr "Mallien hakemisto"
 
-#: src/frontends/xforms/FormPreferences.C:2198
+#: src/frontends/xforms/FormPreferences.C:2200
 msgid "Temporary dir"
 msgstr "Väliaikainen hak."
 
-#: src/frontends/xforms/FormPreferences.C:2202
+#: src/frontends/xforms/FormPreferences.C:2205
 msgid "Last files"
 msgstr "Viime tiedostot"
 
-#: src/frontends/xforms/FormPreferences.C:2206
+#: src/frontends/xforms/FormPreferences.C:2210
 msgid "Backup path"
 msgstr "Varmuuskopiot"
 
-#: src/frontends/xforms/FormPreferences.C:2210
+#: src/frontends/xforms/FormPreferences.C:2215
 msgid "LyX server pipes"
 msgstr "LyX-palvelimen putket"
 
-#: src/frontends/xforms/FormPreferences.C:2667
+#: src/frontends/xforms/FormPreferences.C:2673
 msgid "Fonts must be positive!"
 msgstr "Kirjasinten täytyy olla positiivisia!"
 
-#: src/frontends/xforms/FormPreferences.C:2690
+#: src/frontends/xforms/FormPreferences.C:2696
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
@@ -9905,7 +9906,7 @@ msgstr ""
 "Kirjasimet täytyy antaa järjestyksessä pikkuruinen > indeksi > alaviite > "
 "pieni > tavallinen > suuri > suurempi > suurin > valtava > valtavin."
 
-#: src/frontends/xforms/FormPreferences.C:2819
+#: src/frontends/xforms/FormPreferences.C:2825
 msgid " ispell | aspell "
 msgstr " ispell | aspell "
 
@@ -10294,7 +10295,7 @@ msgstr "Tuo: %1$s..."
 msgid "Importing "
 msgstr "Tuo: "
 
-#: src/importer.C:47 src/lyxfunc.C:987 src/lyxfunc.C:1150 src/lyxfunc.C:1731
+#: src/importer.C:47 src/lyxfunc.C:986 src/lyxfunc.C:1149 src/lyxfunc.C:1730
 msgid "..."
 msgstr "..."
 
@@ -10585,15 +10586,15 @@ msgstr "Mahdoton toiminto"
 msgid "Cannot include more than one paragraph!"
 msgstr "Tämä osio voi sisältää vain yhden kappaleen!"
 
-#: src/insets/insettext.C:1487 src/text3.C:1104
+#: src/insets/insettext.C:1487 src/text3.C:1130
 msgid "Layout "
 msgstr "Muotoilu "
 
-#: src/insets/insettext.C:1487 src/text3.C:1105
+#: src/insets/insettext.C:1487 src/text3.C:1131
 msgid " not known"
 msgstr " tuntematon"
 
-#: src/insets/insettext.C:1540 src/text3.C:886
+#: src/insets/insettext.C:1540 src/text3.C:912
 msgid "Unknown spacing argument: "
 msgstr "Tuntematon väliparametri: "
 
@@ -11018,11 +11019,11 @@ msgstr "Lisää lähdeviite"
 msgid "Execute command"
 msgstr "Suorita komento"
 
-#: src/LyXAction.C:165 src/MenuBackend.C:673 src/text3.C:1027
+#: src/LyXAction.C:165 src/MenuBackend.C:675 src/text3.C:1053
 msgid "Copy"
 msgstr "Kopioi"
 
-#: src/LyXAction.C:166 src/MenuBackend.C:672 src/text3.C:1022
+#: src/LyXAction.C:166 src/MenuBackend.C:674 src/text3.C:1048
 msgid "Cut"
 msgstr "Leikkaa"
 
@@ -11298,7 +11299,7 @@ msgstr "Siirry kappaleen verran ylöspäin"
 msgid "Select previous paragraph"
 msgstr "Valitse edellinen kappale"
 
-#: src/LyXAction.C:323 src/MenuBackend.C:674 src/text3.C:1004
+#: src/LyXAction.C:323 src/MenuBackend.C:676 src/text3.C:1030
 msgid "Paste"
 msgstr "Liitä"
 
@@ -11394,11 +11395,11 @@ msgstr "(muuten asiakirjaa ei tallenneta.)"
 msgid "Choose a filename to save document as"
 msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 
-#: src/lyx_cb.C:112 src/lyxfunc.C:1645
+#: src/lyx_cb.C:112 src/lyxfunc.C:1644
 msgid "Templates|#T#t"
 msgstr "Mallipohjat|#o#O"
 
-#: src/lyx_cb.C:120 src/lyxfunc.C:1650
+#: src/lyx_cb.C:120 src/lyxfunc.C:1649
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr "*.lyx|LyX-asiakirjat (*.lyx)"
 
@@ -11637,127 +11638,127 @@ msgstr "Asiakirja on kirjoitussuojattu"
 msgid "Command not allowed without any document open"
 msgstr "Komento ei toimi ilman avoinna olevaa asiakirjaa"
 
-#: src/lyxfunc.C:702
+#: src/lyxfunc.C:701
 #, c-format
 msgid "Unknown function (%1$s)"
 msgstr "Tuntematon funktio (%1$s)"
 
-#: src/lyxfunc.C:706
+#: src/lyxfunc.C:705
 msgid "Unknown function ("
 msgstr "Tuntematon funktio ("
 
-#: src/lyxfunc.C:982
+#: src/lyxfunc.C:981
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Asiakirja %1$s tallentuu..."
 
-#: src/lyxfunc.C:985
+#: src/lyxfunc.C:984
 msgid "Saving document "
 msgstr "Asiakirja tallentuu: "
 
-#: src/lyxfunc.C:991
+#: src/lyxfunc.C:990
 msgid " done."
 msgstr " valmis."
 
-#: src/lyxfunc.C:1133 src/mathed/formulabase.C:1036
+#: src/lyxfunc.C:1132 src/mathed/formulabase.C:1036
 msgid "Missing argument"
 msgstr "Argumentti puuttuu"
 
-#: src/lyxfunc.C:1146
+#: src/lyxfunc.C:1145
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Ohjetiedosto %1$s avautuu..."
 
-#: src/lyxfunc.C:1149
+#: src/lyxfunc.C:1148
 msgid "Opening help file "
 msgstr "Ohjetiedosto avautuu: "
 
-#: src/lyxfunc.C:1355
+#: src/lyxfunc.C:1354
 msgid "This is only allowed in math mode!"
 msgstr "Tämä on mahdollista vain matematiikkatilassa!"
 
-#: src/lyxfunc.C:1397
+#: src/lyxfunc.C:1396
 msgid "Opening child document "
-msgstr "Aliasiakirja avautuu"
+msgstr "Aliasiakirja avautuu: "
 
-#: src/lyxfunc.C:1471
+#: src/lyxfunc.C:1470
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaksi: set-color <lyx_nimi> <x11_nimi>"
 
-#: src/lyxfunc.C:1485
+#: src/lyxfunc.C:1484
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Värin \"%1$s\" asetus epäonnistui: väri on määrittelemätön, tai sitä ei voi "
 "määritellä uudelleen."
 
-#: src/lyxfunc.C:1490
+#: src/lyxfunc.C:1489
 msgid "Set-color "
 msgstr "Set-color \""
 
-#: src/lyxfunc.C:1491
+#: src/lyxfunc.C:1490
 msgid " failed - color is undefined or may not be redefined"
 msgstr ""
 "\" epäonnistui: väri on määrittelemätön, tai sitä ei voi määritellä "
 "uudelleen."
 
-#: src/lyxfunc.C:1641
+#: src/lyxfunc.C:1640
 msgid "Select template file"
 msgstr "Valitse mallitiedosto"
 
-#: src/lyxfunc.C:1680
+#: src/lyxfunc.C:1679
 msgid "Select document to open"
 msgstr "Valitse avattava asiakirja"
 
-#: src/lyxfunc.C:1716
+#: src/lyxfunc.C:1715
 msgid "No such file"
 msgstr "Ei tiedostoa"
 
-#: src/lyxfunc.C:1717
+#: src/lyxfunc.C:1716
 msgid "Start a new document with this filename ?"
 msgstr "Luodaanko uusi asiakirja tällä nimellä?"
 
-#: src/lyxfunc.C:1729
+#: src/lyxfunc.C:1728
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Asiakirja %1$s avautuu..."
 
-#: src/lyxfunc.C:1731
+#: src/lyxfunc.C:1730
 msgid "Opening document "
 msgstr "Asiakirja avautuu: "
 
-#: src/lyxfunc.C:1741
+#: src/lyxfunc.C:1740
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Asiakirja %1$s avautui."
 
-#: src/lyxfunc.C:1743
+#: src/lyxfunc.C:1742
 msgid " opened."
 msgstr " avautui."
 
-#: src/lyxfunc.C:1747
+#: src/lyxfunc.C:1746
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Asiakirjan %1$s avaaminen epäonnistui"
 
-#: src/lyxfunc.C:1750
+#: src/lyxfunc.C:1749
 msgid "Could not open document "
 msgstr "Asiakirjan avaaminen epäonnistui: "
 
-#: src/lyxfunc.C:1777
+#: src/lyxfunc.C:1776
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Valitse tuotava %1$s-tiedosto"
 
-#: src/lyxfunc.C:1781
+#: src/lyxfunc.C:1780
 msgid "Select "
 msgstr "Valitse "
 
-#: src/lyxfunc.C:1782
+#: src/lyxfunc.C:1781
 msgid " file to import"
 msgstr " tuotava tiedosto"
 
-#: src/lyxfunc.C:1821
+#: src/lyxfunc.C:1820
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -11765,15 +11766,15 @@ msgstr ""
 "Haluatko sulkea asiakirjan nyt?\n"
 "('Ei': siirry avoinna olevaan versioon)"
 
-#: src/lyxfunc.C:1841
+#: src/lyxfunc.C:1840
 msgid "A document by the name"
 msgstr "Asiakirja, jonka nimi on"
 
-#: src/lyxfunc.C:1842
+#: src/lyxfunc.C:1841
 msgid "already exists. Overwrite?"
 msgstr "on jo olemassa. Haluatko korvata sen?"
 
-#: src/lyxfunc.C:1914
+#: src/lyxfunc.C:1913
 msgid "Welcome to LyX!"
 msgstr "Tervetuloa LyXiin!"
 
@@ -12438,7 +12439,9 @@ msgstr "Aseta epätodeksi, jos et halua avauskuvan ilmestyvän."
 msgid ""
 "The number of lines that are scrolled by mice with wheels or five button "
 "mice."
-msgstr "Rivimäärä, jonka hiiren rulla tai viisinäppäimisen hiiren näppäimet vierittävät."
+msgstr ""
+"Rivimäärä, jonka hiiren rulla tai viisinäppäimisen hiiren näppäimet "
+"vierittävät."
 
 #: src/lyxrc.C:2140
 msgid "New documents will be assigned this language."
@@ -12556,8 +12559,8 @@ msgstr " Makro: %s: "
 msgid " Macro: "
 msgstr " Makro: "
 
-#: src/MenuBackend.C:314 src/MenuBackend.C:337 src/MenuBackend.C:394
-#: src/MenuBackend.C:415 src/MenuBackend.C:485
+#: src/MenuBackend.C:314 src/MenuBackend.C:337 src/MenuBackend.C:396
+#: src/MenuBackend.C:417 src/MenuBackend.C:487
 msgid "No Documents Open!"
 msgstr "Avoimia asiakirjoja ei ole!"
 
@@ -12569,27 +12572,27 @@ msgstr "ASCII-teksti riveinä"
 msgid "ASCII text as paragraphs"
 msgstr "ASCII-teksti kappaleina"
 
-#: src/MenuBackend.C:517
+#: src/MenuBackend.C:519
 msgid "No Table of contents"
 msgstr "Ei sisällysluetteloa"
 
-#: src/MenuBackend.C:654
+#: src/MenuBackend.C:656
 msgid "New...|N"
 msgstr "Uusi...|U"
 
-#: src/MenuBackend.C:657
+#: src/MenuBackend.C:659
 msgid "Quit|Q"
 msgstr "Lopeta|e"
 
-#: src/MenuBackend.C:665
+#: src/MenuBackend.C:667
 msgid "LaTeX...|L"
 msgstr "LaTeX...|L"
 
-#: src/MenuBackend.C:667
+#: src/MenuBackend.C:669
 msgid "LinuxDoc...|L"
 msgstr "LinuxDoc...|L"
 
-#: src/MenuBackend.C:675
+#: src/MenuBackend.C:677
 msgid "Emphasize"
 msgstr "Korosta"
 
@@ -12700,122 +12703,22 @@ msgstr "Järjetöntä: "
 msgid "No more insets"
 msgstr "Ei muita muistiinpanoja"
 
-#: src/text3.C:947
+#: src/text3.C:973
 msgid "Mark off"
 msgstr "Merkintä pois päältä"
 
-#: src/text3.C:955
+#: src/text3.C:981
 msgid "Mark on"
 msgstr "Merkintä päälle"
 
-#: src/text3.C:962
+#: src/text3.C:988
 msgid "Mark removed"
 msgstr "Merkintä poistettu"
 
-#: src/text3.C:966
+#: src/text3.C:992
 msgid "Mark set"
 msgstr "Merkintä asetettu"
 
-#: src/text3.C:1086
+#: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyXin funktio \"layout\" vaatii parametrin."
-
-#~ msgid "Replacement:|#R"
-#~ msgstr "Korvaava:|#o"
-
-#~ msgid "Enter editor program"
-#~ msgstr "Anna editoriohjelma"
-
-#~ msgid "Editor"
-#~ msgstr "Muokkain"
-
-#~ msgid "Dead Keys"
-#~ msgstr "Kuolleet näppäimet"
-
-#~ msgid "Override X Window dead-keys|#O"
-#~ msgstr "Sivuuta X-ikkunoinnin aksenttinäppäimet|#o"
-
-#~ msgid "OK  "
-#~ msgstr "OK  "
-
-#~ msgid "Level 4 bullet size"
-#~ msgstr "Tason 4 merkkien koko"
-
-#~ msgid "Level 3 bullet"
-#~ msgstr "Tason 4 merkki"
-
-#~ msgid "Shows menu with bullet options"
-#~ msgstr "Näyttää valikon, jossa on luettelomerkkiasetuksia"
-
-#~ msgid "Level 1 bullet"
-#~ msgstr "Tason 1 merkki"
-
-#~ msgid "Level 1 bullet size"
-#~ msgstr "Tason 2 merkkien koko"
-
-#~ msgid "Level &3 :"
-#~ msgstr "Taso &3 :"
-
-#~ msgid "Level &1 :"
-#~ msgstr "Taso &1 :"
-
-#~ msgid "Level &4 :"
-#~ msgstr "Taso &4 :"
-
-#~ msgid "Level 2 bullet"
-#~ msgstr "Tason 2 merkki"
-
-#~ msgid "Level 4 bullet"
-#~ msgstr "Tason 4 merkki"
-
-#~ msgid "Level 3 bullet size"
-#~ msgstr "Tason 3 merkkien koko"
-
-#~ msgid "Level 2 bullet size"
-#~ msgstr "Tason 2 merkkien koko"
-
-#~ msgid "Level &2 :"
-#~ msgstr "Taso &2 :"
-
-#~ msgid "Author            "
-#~ msgstr "Tekijä            "
-
-#~ msgid "Institute         "
-#~ msgstr "Laitos         "
-
-#~ msgid "Abstract          "
-#~ msgstr "Tiivistelmä          "
-
-#~ msgid "Portuguese (Brazil)"
-#~ msgstr "portugali (Brasilia)"
-
-#~ msgid "French Canadian"
-#~ msgstr "kanadanranska"
-
-#~ msgid "French (GUTenberg)"
-#~ msgstr "ranska (GUTenberg)"
-
-#~ msgid "German (new spelling)"
-#~ msgstr "saksa (uusi kirjoitustapa)"
-
-#~ msgid "Up"
-#~ msgstr "Ylös"
-
-#~ msgid "Down"
-#~ msgstr "Alas"
-
-#~ msgid "Ascii"
-#~ msgstr "Ascii"
-
-#~ msgid "latex text"
-#~ msgstr "latex-teksti"
-
-#~ msgid "Canceled"
-#~ msgstr "Peruttu"
-
-#~ msgid ""
-#~ "Select if LyX is to take over the handling of the dead keys (a.k.a. "
-#~ "accent keys) that may be defined for your keyboard."
-#~ msgstr ""
-#~ "Aseta tämä, jos haluat LyXin käsittelevän itse mahdolliset "
-#~ "näppäimistöllesi määritellyt \"kuolleet\" näppäimet eli aksenttimerkit."
