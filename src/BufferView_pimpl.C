@@ -2982,11 +2982,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		InsetCommandParams p("index");
 		if (argument.empty()) {
 			string const idxstring(bv_->getLyXText()->getStringToIndex(bv_));
-			if (!idxstring.empty()) {
-				p.setContents(idxstring);
-			} else {
-				break;
-			}
+			p.setContents(idxstring);
 		} else {
 			p.setContents(argument);
 		}

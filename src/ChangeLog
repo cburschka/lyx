@@ -1,3 +1,8 @@
+2001-09-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C: allow to create index inset even if
+	  string is empty
+ 
 2001-09-02  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* iterators.h: Added a std:: declaration to the return type of
