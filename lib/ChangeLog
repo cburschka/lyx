@@ -1,5 +1,13 @@
 2003-05-23  Angus Leeming  <leeming@lyx.org>
 
+	* scripts/fig2pdf.sh: new script. Capable of converts an XFIG image to
+	something that pdflatex can process into high quality PDF.
+	Works both with "modern" xfig and with older, "legacy" versions.
+
+	* scripts/fig2png.sh: removed.
+
+2003-05-23  Angus Leeming  <leeming@lyx.org>
+
 	* external_templates: add a PDFLaTeX flavour to the xfig outputs.
 	* scripts/fig2png.py: a new and very simple script.
 	* scripts/fig2png.sh: another new and rather more sophisticated script.
