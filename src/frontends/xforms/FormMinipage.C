@@ -95,14 +95,17 @@ ButtonPolicy::SMInput FormMinipage::input(FL_OBJECT * ob, long)
 {
 	ButtonPolicy::SMInput action = ButtonPolicy::SMI_NOOP;
 
+	if (ob == dialog_->radio_top || 
+		ob == dialog_->radio_middle ||
+		ob == dialog_->radio_bottom ||
+		ob == dialog_->choice_width_units)
+		return ButtonPolicy::SMI_VALID;
+
 	// disallow senseless data
 	// warnings if input is senseless
-	//
-	string input = fl_get_input(dialog_->input_width);
-	bool invalid = false;
-
 	if (ob == dialog_->input_width) {
-		invalid = !isValidLength(input) && !isStrDbl(input);
+		string const input = getStringFromInput(dialog_->input_width);
+		bool const invalid = !isValidLength(input) && !isStrDbl(input);
 		if (invalid) {
 			fl_set_object_label(dialog_->text_warning,
 				_("Warning: Invalid Length!"));
@@ -113,5 +116,6 @@ ButtonPolicy::SMInput FormMinipage::input(FL_OBJECT * ob, long)
 			action = ButtonPolicy::SMI_VALID;
 		}
 	}
+
 	return action;
 }
