@@ -1,0 +1,239 @@
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
+\textclass chess
+\begin_preamble
+\usepackage{multicol}
+\usepackage{chess-workshop-symbols}
+\smallboard
+\columnsep 0.25in
+\columnseprule 0.4pt
+\hyphenpenalty 10000
+\end_preamble
+\language english
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize 12
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 1
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\leftmargin 0.5in
+\topmargin 0.5in
+\rightmargin 0.5in
+\bottommargin 0.5in
+\headheight 0cm
+\headsep 0cm
+\footskip 0in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+
+\layout Standard
+\align center 
+
+\series bold 
+\size larger 
+Email Chess Game analyzed
+\size large 
+
+\newline 
+
+\newline 
+Kayvan A.
+ Sylvan
+\newline 
+<kayvan@sylvan.com>
+\size default 
+\emph on 
+
+\newline 
+
+\newline 
+Game start 05/29/2001
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+begin{multicols}{2}
+\end_inset 
+
+
+\layout Standard
+
+The following game was played at the IECC (International Email Chess Club).
+ It is presented as an example of the fun you can have with LyX's new chess
+ layout (based on the 
+\begin_inset Quotes eld
+\end_inset 
+
+skak.sty
+\begin_inset Quotes erd
+\end_inset 
+
+ package from CTAN).
+\layout Standard
+\added_space_top medskip \added_space_bottom smallskip \line_top \line_bottom 
+
+\noun on 
+Sylvan, Kayvan
+\hfill 
+Wakeham, Marc 
+\noun default 
+
+\newline 
+(1623)
+\hfill 
+ (1639)
+\layout Mainline
+\added_space_bottom bigskip 
+1.
+ e4 c5 2.
+ Nc3 d6 3.
+ g3 Nc6 4.
+ Bg2 e6 5.
+ Nge2
+\layout BoardCentered
+
+\layout HighLight
+
+d4,f4
+\layout Arrow
+
+d2->d4
+\layout KnightMove
+
+g1->e2
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+vspace*{-1in} % This is a hack!
+\end_inset 
+
+
+\layout Standard
+
+So far, so good.
+ The e2 knight controls the d4 and f4 squares, preparing an eventual d4
+ push.
+ The diagrammed position has been reached before in hundreds of GM games.
+\layout Mainline
+
+5...
+ Be7?! 
+\layout Variation
+
+5...
+ Nge7}
+\backslash 
+equal{} was better.{
+\layout Mainline
+
+6.
+ d4 cxd4 7.
+ Nxd4 a6
+\layout Standard
+
+With 7...
+ a6, we are back in the well-trodden theory of this opening.
+\layout BoardCentered
+
+\layout Mainline
+
+8.
+ Nxc6 bxc6 9.
+ O-O Bb7 10.
+ Qg4 Bf6 11.
+ Bf4 Ne7 12.
+ Rad1
+\layout BoardCentered
+
+\layout Arrow
+
+a1->d1
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+vspace*{-0.5in} % Another hack!
+\end_inset 
+
+
+\layout Standard
+
+White continues to develop pieces and also sets a trap for Black.
+\layout Mainline
+
+12...
+ O-O?} This move loses instantly.
+ {
+\layout Standard
+
+The following was better, even though white retains the upper hand.
+\layout Variation
+
+12...
+ e5 13.
+ Be3 Qc7 14.
+ Na4 O-O } 
+\backslash 
+wbetter {
+\layout Mainline
+
+13.
+ e5!
+\layout Standard
+
+Black's knight and bishop form a bumbling pair here.
+ The bishop is doomed.
+\layout Mainline
+
+13...
+ Nd5!? 14.
+ Bxd5 cxd5 15.
+ exf6 Qxf6 16.
+ Bxd6 Rfd8 17.
+ Bc7 Rd7 18.
+ Bf4 1-0
+\layout BoardCentered
+
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+end{multicols}
+\end_inset 
+
+
+\the_end

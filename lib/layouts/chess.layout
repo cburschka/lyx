@@ -1,0 +1,170 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[article,lyxskak.sty]{article (Chess)}
+# chess article textclass definition file.
+
+# This layout file was designed to allow easy access to all
+# the cool features of the skak package for chess notation.
+#
+# Author : Kayvan A. Sylvan <kayvan@sylvan.com>
+#
+# Copyright (C) 2001 - The LyX team.
+#
+# Remaining minor problem:
+#
+# Sometimes there is too much space under a \showboard, especially
+# if you use some of the ornamentation commands (\printknightmove,
+# \highlight or \printarrow). For now, a workaround for the problem
+# is to insert (using ERT) a \vspace* command (for example,
+# \vspace*{-0.5in})
+# 
+
+Preamble
+  \usepackage[ps,mover]{lyxskak}
+
+  %%% Modified routines from skak.sty
+  %
+  \def\lyxprintarrow#1{\lyxprintarrow@#1@}
+  \def\lyxprintarrow@#1->#2@{\ncline[style=psskak]{-|>}{#1}{#2}}
+
+  \def\lyxknightmove#1{\lyxknightmove@#1@}
+  \def\lyxknightmove@#1->#2@{% 
+    \setcounter{ps@knightangle}{\get@fileangle{\First#1}{\First#2}+%
+      \get@rankangle{\Second#1}{\Second#2} + \value{ps@inverse}}%
+    \ncdiagg[style=psskak,angleA=\arabic{ps@knightangle}]{-|>}{#1}{#2}}
+
+  %%% Variation indent (You can set this in your preamble)
+  %
+  \newlength{\lyxvarindent}
+  \setlength{\lyxvarindent}{0.2in}
+
+  %%% \Var[ moves ] - use in the Variation paragraph styles.
+  %
+  \def\Var[#1]{\variation{#1}}
+
+  %%% initialize board
+  %
+  \newgame
+
+EndPreamble
+
+Style Standard
+# To be filled in later. This makes Standard first on the list of layouts.
+End
+
+# This is the main line of the chess game. Use PGN notation here.
+# Also, this layout can be continued with Control-Enter without
+# starting a new paragraph.
+#
+Style Mainline
+  LatexType Command
+  LatexName mainline
+  Margin Static
+  LeftMargin MMMMMM
+  Labeltype Static
+  LabelString "Mainline: "
+  Newline 0
+  PassThru 1
+  TopSep 0.0
+  ParSep 0.0
+
+  LabelFont
+    Color blue
+    Series bold
+  EndFont
+
+  TextFont
+    Color blue
+  EndFont
+End
+
+# This is a variation. It shows up in the normal fashion (styleB).
+# You are free to redefine it by making a new \variationstyle
+# as talked about in the skak documentation.
+#
+Style Variation
+  CopyStyle Mainline
+  LatexType Command
+  LatexName hspace*\lyxvarindent\variation
+  LabelString "Variation: "
+  LeftMargin MMMMMMMM
+End
+
+# Same as mainline, but it does not print the moves (only updates the
+# board position.
+#
+Style HideMoves
+  CopyStyle Mainline
+  LatexName hidemoves
+  LabelString "HideMoves: "
+End
+
+# This simply prints a block left chessboard.
+#
+Style ChessBoard
+  CopyStyle Mainline
+  LatexType Command
+  LatexName showboard
+  LabelString "[chessboard]"
+  KeepEmpty 1
+  LabelFont
+    Color red
+  EndFont
+End
+
+# This prints a centered chessboard.
+#
+Style BoardCentered
+  CopyStyle Mainline
+  LatexType Command
+  LatexName [\showboard\]
+  LeftMargin MMMMMMMMMMMMM
+  LabelString "[centered board]"
+  KeepEmpty 1
+  LabelFont
+    Color red
+  EndFont
+End
+
+# This should be a list of comma-separated chessboard squares.
+# Should be placed after a ChessBoard or BoardCentered.
+#
+Style HighLight
+  CopyStyle Mainline
+  LatexType Command
+  LatexName highlight
+  LeftMargin MMMMMMM
+  LabelString "Highlights: "
+  LabelFont
+    Color black
+    Series Bold
+    Shape SmallCaps
+  EndFont
+  TextFont
+    Series Bold
+    Color black
+  EndFont
+End
+
+# This should be a list of two squares with an ascii arrow (a1->c3)
+# Should be placed after a ChessBoard or BoardCentered.
+#
+Style Arrow
+  CopyStyle HighLight
+  LatexType Command
+  LatexName lyxprintarrow
+  LeftMargin MMMMMMM
+  LabelString "Arrow: "
+End
+
+# This should be a list of two chessboard squares (again, like g1->e2)
+# Should be placed after a ChessBoard or BoardCentered.
+#
+Style KnightMove
+  CopyStyle Arrow
+  LatexType Command
+  LatexName lyxknightmove
+  LeftMargin MMMMMMM
+  LabelString "KnightMove: "
+End
+
+Input article.layout
