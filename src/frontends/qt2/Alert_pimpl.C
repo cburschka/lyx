@@ -13,8 +13,6 @@
 #include <qlineedit.h>
 #include "ui/QAskForTextDialog.h"
 
-#include FORMS_H_LOCATION
-
 #include <algorithm>
 
 #include <gettext.h>

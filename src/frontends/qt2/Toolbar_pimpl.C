@@ -42,15 +42,13 @@ namespace {
  
 QPixmap getIconPixmap(int action)
 {
-	kb_action act;
-	string arg;
-	boost::tie(act, arg) = lyxaction.retrieveActionArg(action);
+	FuncRequest f = lyxaction.retrieveActionArg(action);
  
-	string const name = lyxaction.getActionName(act);
+	string const name = lyxaction.getActionName(f.action);
 	string xpm_name;
 
-	if (!arg.empty())
-		xpm_name = subst(name + ' ' + arg, ' ','_');
+	if (!f.argument.empty())
+		xpm_name = subst(name + ' ' + f.argument, ' ','_');
 	else 
 		xpm_name = name;
 
@@ -62,7 +60,7 @@ QPixmap getIconPixmap(int action)
 		return QPixmap(fullname.c_str());
 	}
 
-	if (act == LFUN_INSERT_MATH && !arg.empty()) {
+	if (f.action == LFUN_INSERT_MATH && !f.argument.empty()) {
 #if 0 // FIXME: GUII
 		char const ** pixmap =
 			get_pixmap_from_symbol(arg.c_str(), 30, 30);

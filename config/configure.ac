@@ -150,17 +150,17 @@ CPPFLAGS="$CPPFLAGS $X_CFLAGS"
 ## Check whether X is new enough to handle the input method stuff
 AC_CHECK_FUNCS(XOpenIM)
 
+ 
 ### check which frontend we want to use
-# We have to check for xforms anyway
-LYX_PATH_XPM
-LYX_PATH_XFORMS
 
 #LYX_USE_FRONTEND
 dnl The code below is not in a macro, because this would cause big
 dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.
 case "$lyx_use_frontend" in
   xforms)
-  # for now don't set it for xforms as this is always entered
+	LYX_PATH_XPM
+	LYX_PATH_XFORMS
+	LYX_USE_XFORMS_IMAGE_LOADER
 	FRONTEND="xforms"
 	FRONTEND_GUILIB="xforms/*.lo xforms/forms/*.lo"
 	FRONTEND_INCLUDES="-I\$(srcdir)/xforms"
@@ -176,6 +176,9 @@ case "$lyx_use_frontend" in
     libforms version:             ${XFORMS_VERSION}\n"
 	;;
   gnome)
+    LYX_PATH_XPM
+    LYX_PATH_XFORMS
+    LYX_USE_XFORMS_IMAGE_LOADER
     PKG_CHECK_MODULES(GNOME_FRONTEND, gtkmm-2.0 libglademm-2.0)
     AC_SUBST(GNOME_FRONTEND_CFLAGS)
     AC_SUBST(GNOME_FRONTEND_LIBS)
@@ -184,7 +187,8 @@ case "$lyx_use_frontend" in
     FRONTEND_GUILIB="gnome/*.lo"
     FRONTEND_LDFLAGS="${GNOME_FRONTEND_LIBS}"
     FRONTEND_INCLUDES="-I\${srcdir}/gnome -I\${srcdir}/xforms ${GNOME_FRONTEND_CFLAGS} "
-    FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}";;
+    FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
+	;;
   qt2)
     QT2_DO_IT_ALL
     FRONTEND="qt2"
@@ -203,11 +207,6 @@ LYX_ERROR(dnl
    If you use a Linux system, check that you have installed
    the development tools.])
 fi
-
-### Check whether the xforms library has a viable image loader
-### For now, run this test always so config.h is unchanged by a change in
-### frontend
-LYX_USE_XFORMS_IMAGE_LOADER
 
 ### Setup GNU gettext
 dnl GNU gettext is written in C
