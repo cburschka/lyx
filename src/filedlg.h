@@ -25,6 +25,7 @@
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Object;
+using SigC::Connection;
 #endif
 
 /// LyXDirEntry internal structure definition
@@ -119,7 +120,7 @@ private:
 	/// Simulates a click on OK/Cancel
 	void Force(bool);
 	/// Redraw connection.
-	SigC::Connection r_;
+	Connection r_;
 };
 
 #endif

@@ -19,6 +19,7 @@ struct Figref;
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Object;
+using SigC::Connection;
 #endif
 
 ///
@@ -155,7 +156,7 @@ private:
 	/// get sizes from .eps file
 	void GetPSSizes();
 	/// Redraw connection.
-	SigC::Connection r_;
+	Connection r_;
 };
 
 

@@ -72,6 +72,10 @@ extern "C" int gettimeofday(struct timeval *, struct timezone *);
 #include "support/filetools.h"
 #include "filedlg.h"
 
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::slot;
+#endif
+
 // six months, in seconds
 static const long SIX_MONTH_SEC = 6L * 30L * 24L * 60L * 60L;
 static const long ONE_HOUR_SEC = 60L * 60L;
@@ -411,7 +415,7 @@ LyXFileDlg::LyXFileDlg()
 	fl_hide_object(pFileDlgForm->User1);
 	fl_hide_object(pFileDlgForm->User2);
 
-	r_ = Dialogs::redrawGUI.connect(SigC::slot(this, &LyXFileDlg::redraw));
+	r_ = Dialogs::redrawGUI.connect(slot(this, &LyXFileDlg::redraw));
 }
 
 

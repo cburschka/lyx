@@ -22,6 +22,7 @@ class TransManager;
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Object;
+using SigC::Connection;
 #endif
 
 /// default character set
@@ -99,7 +100,7 @@ private:
 	///
 	TransManager * trans;
 	/// Redraw connection.
-	SigC::Connection r_;
+	Connection r_;
 };
 
 

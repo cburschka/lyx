@@ -25,6 +25,7 @@ struct ExternalTemplate;
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Object;
+using SigC::Connection;
 #endif
 
 ///
@@ -162,7 +163,7 @@ private:
 	string tempname;
 
 	/// Redraw connection.
-	SigC::Connection r_;
+	Connection r_;
 };
 
 #endif
