@@ -129,7 +129,7 @@ void add_known_command(string const & command, string const & o1,
 	// definition                      o1    o2    invocation result
 	// \newcommand{\foo}{bar}          ""    false \foo       bar
 	// \newcommand{\foo}[1]{bar #1}    "[1]" false \foo{x}    bar x
-	// \newcommand{\foo}[1][]{bar #1}  "[1]" true  \foo       bar 
+	// \newcommand{\foo}[1][]{bar #1}  "[1]" true  \foo       bar
 	// \newcommand{\foo}[1][]{bar #1}  "[1]" true  \foo[x]    bar x
 	// \newcommand{\foo}[1][x]{bar #1} "[1]" true  \foo[x]    bar x
 	unsigned int nargs = 0;

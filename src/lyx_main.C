@@ -344,7 +344,7 @@ void LyX::init(bool gui)
 	// SIGPIPE can be safely ignored.
 
 #if defined (USE_MACOSX_PACKAGING)
-	// Set PATH for LyX/Mac 
+	// Set PATH for LyX/Mac
  	//
  	// LyX/Mac is a relocatable application bundle; here we add to
  	// the PATH so it can find binaries like reLyX inside its own
@@ -355,7 +355,7 @@ void LyX::init(bool gui)
 	newpath += "/sw/bin:/usr/local/bin:"
 		"/usr/local/teTeX/bin/powerpc-apple-darwin-current";
 	PutEnv(newpath);
-	lyxerr[Debug::INIT] << "Running from LyX/Mac bundle. " 
+	lyxerr[Debug::INIT] << "Running from LyX/Mac bundle. "
 		"Setting PATH to: " << GetEnv("PATH") << endl;
 #endif
 
@@ -363,7 +363,7 @@ void LyX::init(bool gui)
 	string const & locale_dir = package().locale_dir();
 	FileInfo fi(locale_dir);
 	if (fi.isOK() && fi.isDir()) {
-		lyxerr[Debug::INIT] 
+		lyxerr[Debug::INIT]
 			<< "Setting locale directory to "
 			<< locale_dir << endl;
 		//gettext_init(locale_dir);
@@ -382,7 +382,7 @@ void LyX::init(bool gui)
 
 	lyxrc.tempdir_path = package().temp_dir();
 	lyxrc.document_path = package().document_dir();
- 
+
 	if (lyxrc.template_path.empty()) {
 		lyxrc.template_path = AddPath(package().system_support(),
 					      "templates");

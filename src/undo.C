@@ -175,7 +175,7 @@ bool textUndoOrRedo(BufferView & bv,
 	Undo undo = stack.top();
 	stack.pop();
 
-	// We will store in otherstack the part of the document under 'undo' 
+	// We will store in otherstack the part of the document under 'undo'
 	DocIterator cell_dit = undo.cell.asDocIterator(&bv.buffer()->inset());
 
 	recordUndo(Undo::ATOMIC, cell_dit,

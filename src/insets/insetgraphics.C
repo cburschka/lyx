@@ -316,7 +316,7 @@ string const InsetGraphics::createLatexOptions() const
 
 	// Make sure rotation angle is not very close to zero;
 	// a float can be effectively zero but not exactly zero.
-	if (!params().rotateAngle.empty() 
+	if (!params().rotateAngle.empty()
 		&& !float_equal(strToDbl(params().rotateAngle), 0.0, 0.001)) {
 	    options << "  angle=" << params().rotateAngle << ",\n";
 	    if (!params().rotateOrigin.empty()) {
@@ -409,7 +409,7 @@ string const InsetGraphics::createDocBookAttributes() const
 	double const scl = strToDbl(params().scale);
 	if (!params().scale.empty() && !float_equal(scl, 0.0, 0.05)) {
 		if (!float_equal(scl, 100.0, 0.05))
-			options << " scale=\"" 
+			options << " scale=\""
 				<< static_cast<int>( (scl) + 0.5 )
 				<< "\" ";
 	} else {

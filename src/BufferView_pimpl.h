@@ -56,7 +56,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void setBuffer(Buffer * buf);
 	///
 	void resizeCurrentBuffer();
-	// 
+	//
 	bool fitCursor();
 	///
 	void update(bool fitcursor = false, bool forceupdate = true);

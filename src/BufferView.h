@@ -79,7 +79,7 @@ public:
 	/** perform pending painting updates. \c fitcursor means first
 	 *  to do a fitcursor, and to force an update if screen
 	 *  position changes. \c forceupdate means to force an update
-	 *  in any case. 
+	 *  in any case.
 	 */
 	void update(bool fitcursor = true, bool forceupdate = true);
 	/// move the screen to fit the cursor. Only to be called with

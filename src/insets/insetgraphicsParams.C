@@ -177,7 +177,7 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 	if (clip)			// clip image
 		os << "\tclip\n";
 
-	if (!rotateAngle.empty() 
+	if (!rotateAngle.empty()
 		&& !float_equal(strToDbl(rotateAngle), 0.0, 0.001))
 		os << "\trotateAngle " << rotateAngle << '\n';
 	if (!rotateOrigin.empty())

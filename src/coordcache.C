@@ -11,7 +11,7 @@
 
 
 CoordCache theCoords;
- 
+
 // just a helper to be able to set a breakpoint
 void lyxbreaker(void const * data, const char * hint, int size)
 {
@@ -23,7 +23,7 @@ void lyxbreaker(void const * data, const char * hint, int size)
 
 void lyxaborter(int x, int y)
 {
-	lyxerr << "abort on x: " << x << " y: " << y << std::endl; 
+	lyxerr << "abort on x: " << x << " y: " << y << std::endl;
 	BOOST_ASSERT(false);
 }
 
@@ -36,7 +36,7 @@ void CoordCache::clear()
 }
 
 
-Point CoordCache::get(LyXText const * text, lyx::pit_type pit) 
+Point CoordCache::get(LyXText const * text, lyx::pit_type pit)
 {
 	ParPosCache::iterator const it = pars_.find(text);
 	BOOST_ASSERT(it != pars_.end());
