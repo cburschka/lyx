@@ -44,13 +44,15 @@ void ControlMath::dispatchInsert(string const & name) const
 
 void ControlMath::dispatchSubscript() const
 {
-	dispatchFunc(LFUN_SUBSCRIPT);
+	dispatchFunc(LFUN_INSERT_MATH, "_");
+	dispatchFunc(LFUN_DOWN);
 }
 
 
 void ControlMath::dispatchSuperscript() const
 {
-	dispatchFunc(LFUN_SUPERSCRIPT);
+	dispatchFunc(LFUN_INSERT_MATH, "^");
+	dispatchFunc(LFUN_UP);
 }
 
 

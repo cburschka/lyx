@@ -1,3 +1,15 @@
+2003-12-12  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* ControlMath.C (dispatchSubscript, dispatchSuperscript): enable
+	the math panel sub/superscript buttons once again.
+
+2003-12-12  Angus Leeming  <leeming@lyx.org>
+
+	* ControlBranch.[Ch] (branchlist): new member function.
+
+	* ControlDocument.C (setBranchColor): remove redundant call to
+	LColor::setColor.
+
 2003-12-11  Angus Leeming  <leeming@lyx.org>
 
 	* ControlCommand.C (initialiseParams): changes due to the changed
