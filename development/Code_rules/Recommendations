@@ -1,5 +1,5 @@
 These are some rules for effective C++ programming. These are taken from 
-Scott Meyers, and is presented in their short form. These are not all the 
+Scott Meyers, and are presented in their short form. These are not all the 
 rules Meyers presents, only the most important of them. LyX does not yet 
 follow these rules, but they should be the goal.
 
@@ -11,7 +11,8 @@ follow these rules, but they should be the goal.
   Notice strings should be std::string's instead of char *'s.
 
 - Define a default constructor, copy constructor and an assignment
-  operator for all classes with dynamically allocated memory.
+  operator for all classes with dynamically allocated memory that
+  do not inherit noncopyable
 
 - make destructors virtual in base classes.
 

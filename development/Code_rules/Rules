@@ -5,10 +5,10 @@ Rules for the code in LyX
 The aim of this file is to serve as a guide for the developers, to aid us to
 get clean and uniform code. This document is still incomplete.
 
-We really like to have new developers joining the LyX Project. However
-since we have had problems in the past with developers leaving the
+We really like to have new developers joining the LyX Project. However,
+we have had problems in the past with developers leaving the
 project and their contributed code in a far from perfect state. Most
-of this happened before that we really became aware of these issues,
+of this happened before we really became aware of these issues,
 but still, we don't want it to happen again. So we have put together
 some guidelines and rules for the developers.
 
@@ -28,16 +28,19 @@ that you:
   This eases maintenance a lot.
 - write good C++ code: Readable, well commented and taking advantage of the 
   OO model. Follow the formatting guidelines. See Formatting.
-- adapt the code to the structures already existing in LyX, or in case that 
+- adapt the code to the structures already existing in LyX, or in the case that 
   you have better ideas, discuss them on the developer's list before writing 
   the code.
 - take advantage of the C++ standard library. especially don't use
-  custom containers when a standard container is usable, learn to use
+  custom containers when a standard container is usable; learn to use
   the algorithms and functors in the standard library.
 - be aware of exceptions and write exception safe code. See Exceptions.
 - document all variables, methods, functions, classes etc. We are
-  using the source documentation program doc++, a program that handles
-  javadoc syntax, to document sources. See Source Documentation.
+  using the source documentation program doxygen, a program that handles
+  javadoc syntax, to document sources. You can download doxygen from :
+
+  http://www.stack.nl/~dimitri/doxygen/
+
 - we have certain code constructs that we try to follow. See Code
   Constructs.
 
@@ -46,16 +49,16 @@ Submitting Code
 ---------------
 
 It is implicitly understood that all patches contributed to The LyX
-Project is under the Gnu General Public License, it you have a problem
-with that, don't contribute code.
+Project is under the Gnu General Public License, version 2 or later. 
+If you have a problem with that, don't contribute code.
 
-Also please don't just pup up out of the blue with a huge patch (or
+Also please don't just pop up out of the blue with a huge patch (or
 small) that changes something substantial in LyX. Always discuss your
-ideas with the developers on the developers mailing list.
+ideas with the developers on the developer's mailing list.
 
 When you create the patch, please use "diff -up" since we find that a
 lot easier to read than the other diff formats. Also please do not
-send patches that implements/fix several different things, several
+send patches that implements or fixes several different things; several
 patches is a much better option.
 
 We also expect you to provide a ChangeLog entry with every patch, this
@@ -66,19 +69,24 @@ this syntax:
 
 	* src/support/lyxstring.C (find): assert bug fixed.
 
+Note that there are specific ChangeLogs for most directories; use those
+rather than the top-level one.
 
 Code Constructs
 ---------------
 
-We have several guidelines on code constructs, some of these exists to
+We have several guidelines on code constructs, some of these exist to
 make the code faster, others to make the code clearer. Yet others
-exists to make us able to take advantage of the strong type checking
+exist to allow us to take advantage of the strong type checking
 in C++.
   
 - Declaration of variables should wait as long as possible. The rule
   is: "Don't declare it until you need it." In C++ there are a lot of
   user defined types, and these can very often be expensive to
   initialize. This rule connects to the next rule too.
+
+- declare the variable as const if you don't need to change it. This
+  applies to POD types like int as well as classes.
 
 - Make the scope of a variable as small as possible.
 
@@ -134,15 +142,15 @@ Exceptions
 
 Even if LyX currently is not using exceptions we need to be aware of
 them. One important thing to realize is that you often do not have to
-use throw,try or catch to be exception safe. Let's look at the
+use throw, try or catch to be exception safe. Let's look at the
 different types of exceptions safety: (These are taken from Herb
-Sutters book[ExC++]
+Sutter's book[ExC++]
 
 "
 1. Basic guarantee: Even in the presence of exceptions thrown by T or
 	other exceptions, Stack objects don't leak resources.
 	Note that this also implies that the container will be
-	destructible and usable even if an exception is thrown wile
+	destructible and usable even if an exception is thrown while
 	performing some container operation. However, if an exception
 	is thrown, the container will be in a consistent, but not
 	necessarily predictable, state. Containers that support the
@@ -156,10 +164,11 @@ Sutters book[ExC++]
 	client calls Top and then attempts a Push that fails because
 	of an exception, then the state of the Stack object must be
 	unchanged and the reference returned from the prior call to
-	Top must still be valid. For more information on there
+	Top must still be valid. For more information on these
 	guarantees, see Dave Abrahams's documentation of the SGI
 	exception-safe standard library adaption at:
-	http://www.metabyte.com/~fbp/stl/eg_contract.html 
+
+	http://www.stlport.org/doc/exception_safety.html
 
 	Probably the most interesting point here is that when you
 	implement the basic guarantee, the strong guarantee often
@@ -185,7 +194,7 @@ Sutters book[ExC++]
 For all cases where we might be able to write exception safe functions
 without using try, throw or catch we should do so. In particular we
 should look over all destructors to ensure that they are as exception
-safe at possible.
+safe as possible.
 
 Later when more compiler support exceptions sufficiently well we will
 begin using them too. One reason for this is that the C++ standard
@@ -252,7 +261,7 @@ Formatting
     [I am not so sure about the LyX prefix]
 
   - Class names are usually capitalized, and function names lowercased.
-    Enums are named like Classes, enum values in CAPS.
+    Enums are named like Classes, values are usually in lower-case.
 
   - Long variables are named like thisLongVariableName.
 
@@ -265,6 +274,7 @@ Formatting
     particular file. Lars and Asger are slowly, but surely moving the source 
     towards Linux kernel style formatting, aka K&R style. We suggest that you 
     also do this, but this is NOT something that has been decided generally.
+    (a pity - jbl)
 
 
 * Use existing structures
@@ -292,15 +302,24 @@ Formatting
     for developers, and we do not want one developer only to be able to
     read and understand the implementation of class internals. Lgb]
   
-  - Avoid to declare global objects in the declaration file of the class. 
-    If the same variable is used for all object, use a static member.
+  - Avoid declaring global objects in the declaration file of the class. 
+    If the same variable is used for all objects, use a static member.
 
   - Avoid global or static variables. An exception to this rule is 
     very private stuff like the math stack.
 
-  - Use the const keyword like this: char const * instead of const char *
-    because this is more logical.
 
+* File headers
+
+  - If you create a new file, the top of the file should look something like this :
+
+  /**
+   * \file NewFile.C
+   * Copyright 2001 the LyX Team
+   * See the file COPYING
+   *
+   * \author Kaiser Sose
+   */
 
 * Documentation
 
@@ -309,9 +328,7 @@ Formatting
   - You should document what the function does, not the implementation.
   - in the .C files you document the implementation.
   - Single line description (///), multiple lines description (/** ... */)
-  - You make the documentation by doing "make srcdoc" in the root,
-    and then you'll find HTML in the srcdoc/ directory. Read with
-    Netscape for best results.
+  - see the doxygen webpage referenced above
 
 
 * NAMING RULES FOR USER-COMMANDS
@@ -329,24 +346,15 @@ Formatting
   8) The end of an object is called `end'.
 
 
-* Using external GUI constructors (XForms fdesign)
-
-  - Fdesign generated files should not be changed at all. The only changes
-    needed are gettext, compability with 0.88 or when you have made your own
-    xforms objects and have just a dummy in the .fd file in place of your
-    own. In case you have to change the generated files for any of the
-    reasons above, you should provide a patch against the clean generated
-    file. Your callbacks must be in a separate file.
-
  *************************************************************
 
  How to create class interfaces.
  (a.k.a How Non-Member Functions Improve Encapsulation)
  ======================================================
 
-	I recently read an article by Scott Meyers in C/C++ Users
+	I recently read an article by Scott Meyers in C/C++ User's
 Journal (Vol.18,No.2), where he makes a strong case on how non-member
-functions makes classes more encapsulated, not less. Just to skipping
+functions makes classes more encapsulated, not less. Just skipping
 to the core of this provides us with the following algorithm for
 deciding what kind of function to add to a class interface:
 
@@ -367,13 +375,13 @@ deciding what kind of function to add to a class interface:
 	else
 		make f a member function of C;
  
-Unfortunately, to make the best use of this kind of Class API's we
-need namespaces. As soon as Jean-Marc stops using gcc 2.8 and other
-compilers seem more or less up to date on namespaces we will begin to
-use them. _BUT_ we should begin to use the above algoritm ASAP. We
-should also go through old code and apply this algorithm to the
-existing member functions. That will help maintainability in the
-future.
+To make the best use of this kind of Class API we need namespaces.
+Currently LyX still supports compilers that do not have good namespace
+support, so namespace declarations are enclosed as :
+
+#ifdef CXX_WORKING_NAMESPACES
+using Liason::setMinibuffer;
+#endif
 
 (I'll fill in more from Scott Meyers article when time allows.)
 
