@@ -840,14 +840,8 @@ layouts_DATA =\
 lyx2lyxdir = $(pkgdatadir)/lyx2lyx
 lyx2lyx_SCRIPTS = lyx2lyx/lyx2lyx
 lyx2lyx_DATA = \
-	lyx2lyx/error.pyc \
 	lyx2lyx/lyx2lyx \
-	lyx2lyx/parser_tools.pyc \
-	lyx2lyx/lyx_1_4.pyc \
 	lyx2lyx/parser_tools.py \
-	lyx2lyx/lyxconvert_221.pyc \
-	lyx2lyx/lyxconvert_223.pyc \
-	lyx2lyx/lyxconvert_224.pyc \
 	lyx2lyx/lyx_0_12.py \
 	lyx2lyx/lyx_1_0_0.py \
 	lyx2lyx/lyx_1_0_1.py \
