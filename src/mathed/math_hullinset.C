@@ -1008,6 +1008,16 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_MATH_DISPLAY:
 		// we handle these
 		return true;
+	case LFUN_TABULAR_FEATURE: {
+		// should be more precise
+		istringstream is(cmd.argument);
+		string s;
+		is >> s;
+		if ((s == "append-column" || s == "delete-column")
+        && (type_ == "eqnarray" || type_ == "simple"))
+			return false;
+		return MathGridInset::getStatus(cur, cmd, flag);
+	}
 	default:
 		return MathGridInset::getStatus(cur, cmd, flag);
 	}
