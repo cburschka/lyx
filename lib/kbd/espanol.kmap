@@ -1,0 +1,13 @@
+# espanol.kmap -- Type Spanish characters on an American keyboard.
+# David J. Raymond <raymond@kestrel.nmt.edu>
+# 14 February 2004
+#
+
+\kmod ' acute aeiouAEIOU
+\kmod ~ tilde nN!?
+\kmod : umlaut uU		# The " doesn't work, even \".
+
+\kxmod acute i "\\'{\\i}"
+\kxmod tilde ! "\textexclamdown{}"
+\kxmod tilde ? "\textquestiondown{}"
+
