@@ -36,8 +36,8 @@ public:
 		std::string const & suggested);
 
 private:
-	Gtk::FileChooserDialog fileChooser_;
 	kb_action action_;
+	Gtk::FileChooserDialog fileChooser_;
 };
 
 #endif

@@ -76,7 +76,7 @@ FileDialog::Result const FileDialog::Private::showChooser(string const & path,
 {
 	lyxerr[Debug::GUI] << "File Dialog with path \"" << path
 			   << "\", mask \"" << filters.as_string()
-			   << "\", suggested \"" << suggested << '"\n';
+			   << "\", suggested \"" << suggested << "\"\n";
 
 	for (lyx::support::FileFilterList::size_type i = 0; i < filters.size(); ++i) {
 		typedef lyx::support::FileFilterList::Filter::glob_iterator glob_iterator;
