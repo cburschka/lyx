@@ -186,12 +186,12 @@ NormalStream & operator<<(NormalStream & ns, char c)
 
 
 WriteStream::WriteStream(std::ostream & os, bool fragile)
-	: os_(os), fragile_(fragile), line_(0)
+	: os_(os), fragile_(fragile), firstitem_(false), line_(0)
 {}
 
 
 WriteStream::WriteStream(std::ostream & os)
-	: os_(os), fragile_(false), line_(0)
+	: os_(os), fragile_(false), firstitem_(false), line_(0)
 {}
 
 
