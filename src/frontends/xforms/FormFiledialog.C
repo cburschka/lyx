@@ -303,7 +303,6 @@ void FileDialog::Private::Reread()
 			continue;
 
 		mode = fileInfo.modeString();
-		unsigned int const nlink = fileInfo.getNumberOfLinks();
 		string const user  = lyxUserCache.find(fileInfo.getUid());
 		string const group = lyxGroupCache.find(fileInfo.getGid());
 
@@ -324,7 +323,6 @@ void FileDialog::Private::Reread()
 		}
 
 		string buffer = mode + ' ' +
-			tostr(nlink) + ' ' +
 			user + ' ' +
 			group + ' ' +
 			Time.substr(4, string::npos) + ' ';

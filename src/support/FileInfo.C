@@ -278,13 +278,6 @@ time_t FileInfo::getStatusChangeTime() const
 }
 
 
-nlink_t FileInfo::getNumberOfLinks() const
-{
-	BOOST_ASSERT(isOK());
-	return buf_.st_nlink;
-}
-
-
 uid_t FileInfo::getUid() const
 {
 	BOOST_ASSERT(isOK());

@@ -1,5 +1,9 @@
 2004-12-15  Angus Leeming  <leeming@lyx.org>
 
+	* FileInfo.[Ch] (getNumberOfLinks): removed.
+
+2004-12-15  Angus Leeming  <leeming@lyx.org>
+
 	* tempname.C: #include fcntl.h and sys/stat.h if creating a temp
 	file using mktemp and open.
 
