@@ -138,6 +138,8 @@ protected:
 	void metrics(BufferView * bv = 0) const;
 	///
 	void handleFont(BufferView * bv, string const & arg, string const & font);
+	///
+	virtual void updatePreview() const {}
 
 	///
 	mutable int xo_;

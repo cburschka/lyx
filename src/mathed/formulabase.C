@@ -24,6 +24,7 @@
 
 #include "formula.h"
 #include "formulamacro.h"
+#include "lyxrc.h"
 #include "commandtags.h"
 #include "BufferView.h"
 #include "lyxtext.h"
@@ -157,6 +158,8 @@ void InsetFormulaBase::metrics(BufferView * bv) const
 	mi.base.font  = font_;
 	mi.base.font.setColor(LColor::math);
 	par()->metrics(mi);
+	if (lyxrc.preview)
+		updatePreview();
 }
 
 
@@ -519,7 +522,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_BACKSPACE:
 		bv->lockedInsetStoreUndo(Undo::DELETE);
 		mathcursor->backspace();
-		bv->updateInset(this, true);
+		updateLocal(bv, true);
 		break;
 
 	case LFUN_DELETE_WORD_FORWARD:

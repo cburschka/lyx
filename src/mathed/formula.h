@@ -25,6 +25,7 @@
 #include "math_defs.h"
 #include "math_atom.h"
 #include "graphics/GraphicsTypes.h"
+#include "graphics/GraphicsLoader.h"
 
 class MathHullInset;
 
@@ -37,6 +38,8 @@ public:
 	explicit InsetFormula(MathInsetTypes);
 	///
 	explicit InsetFormula(string const &);
+	///
+	InsetFormula(InsetFormula const &);
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -89,10 +92,18 @@ private:
 	MathHullInset const * hull() const;
 	///
 	void handleExtern(string const & arg);
+	///
+	void statusChanged();
+	///
+	void init();
+	///
+	void updatePreview() const;
+	///
+	bool canPreview() const;
 
 	/// contents
 	MathAtom par_;
 	/// LaTeX preview
-	mutable grfx::GraphicPtr preview_;
+	mutable grfx::Loader loader_;
 };
 #endif

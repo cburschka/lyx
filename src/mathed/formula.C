@@ -30,12 +30,15 @@
 #include "BufferView.h"
 #include "gettext.h"
 #include "debug.h"
-#include "frontends/Alert.h"
 #include "support/LOstream.h"
 #include "support/LAssert.h"
-#include "support/filetools.h" // LibFileSearch
+#include "support/lyxlib.h"
+#include "support/systemcall.h"
+#include "support/filetools.h"
+#include "frontends/Alert.h"
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
+#include "graphics/GraphicsImage.h"
 #include "lyxrc.h"
 #include "math_hullinset.h"
 #include "math_support.h"
@@ -43,7 +46,9 @@
 #include "textpainter.h"
 #include "preview.h"
 
-#include "graphics/GraphicsCacheItem.h"
+#include <fstream>
+#include <boost/bind.hpp>
+#include <boost/utility.hpp>
 
 using std::ostream;
 using std::ifstream;
@@ -57,12 +62,23 @@ using std::getline;
 
 InsetFormula::InsetFormula()
 	: par_(MathAtom(new MathHullInset))
-{}
+{
+	init();
+}
+
+
+InsetFormula::InsetFormula(InsetFormula const & f)
+	: InsetFormulaBase(f), par_(f.par_), loader_(f.loader_.filename())
+{
+	init();
+}
 
 
 InsetFormula::InsetFormula(MathInsetTypes t)
 	: par_(MathAtom(new MathHullInset(t)))
-{}
+{
+	init();
+}
 
 
 InsetFormula::InsetFormula(string const & s)
@@ -78,6 +94,7 @@ InsetFormula::InsetFormula(string const & s)
 			par_ = MathAtom(new MathHullInset(LM_OT_SIMPLE));
 		}
 	}
+	init();
 	metrics();
 }
 
@@ -163,43 +180,32 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 			int y, float & xx, bool) const
 {
-	metrics(bv, font);
-
 	int const x = int(xx);
-	int const w = par_->width();
-	int const h = par_->height();
-	int const a = par_->ascent();
+	int const w = width(bv, font);
+	int const d = descent(bv, font);
+	int const a = ascent(bv, font);
+	int const h = a + d;
 
 	MathPainterInfo pi(bv->painter());
-	pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
-	pi.base.font  = font;
-	pi.base.font.setColor(LColor::math);
 
-	if (lcolor.getX11Name(LColor::mathbg)!=lcolor.getX11Name(LColor::background))
-		pi.pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
+	if (canPreview()) {
+		pi.pain.image(x + 1, y - a + 1, w - 2, h - 2, *(loader_.image()));
+	} else {
+		pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
+		pi.base.font  = font;
+		pi.base.font.setColor(LColor::math);
+		if (lcolor.getX11Name(LColor::mathbg)
+			    != lcolor.getX11Name(LColor::background))
+			pi.pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
 
-	if (mathcursor &&
-			const_cast<InsetFormulaBase const *>(mathcursor->formula()) == this)
-	{
-		mathcursor->drawSelection(pi);
-		pi.pain.rectangle(x, y - a, w, h, LColor::mathframe);
-	}
-
-	par_->draw(pi, x, y);
-
-	// preview stuff
-	if (lyxrc.preview) {
-		ostringstream os;
-		WriteStream wi(os, false, false);
-		par_->write(wi);
-		if (preview(os.str(), preview_)) {
-			lyxerr << "image could be drawn\n";
-			pi.pain.image(x + w + 2, y - a + 1, w - 2, h - 2, *(preview_->image()));
-		} else {
-			pi.pain.fillRectangle(x + w, y - a, w, h, LColor::white);
+		if (mathcursor &&
+				const_cast<InsetFormulaBase const *>(mathcursor->formula()) == this)
+		{
+			mathcursor->drawSelection(pi);
+			pi.pain.rectangle(x, y - a, w, h, LColor::mathframe);
 		}
-		pi.pain.rectangle(x + w, y - a, w, h, LColor::mathframe);
-		xx += w;
+
+		par_->draw(pi, x, y);
 	}
 
 	xx += w;
@@ -395,26 +401,121 @@ bool InsetFormula::insetAllowed(Inset::Code code) const
 
 int InsetFormula::ascent(BufferView *, LyXFont const &) const
 {
-	return par_->ascent() + 1;
+	const int a = par_->ascent();
+	if (!canPreview())
+		return a + 1;
+	return a + 1 - (par_->height() - loader_.image()->getHeight()) / 2;
 }
 
 
 int InsetFormula::descent(BufferView *, LyXFont const &) const
 {
-	return par_->descent() + 1;
+	const int d = par_->descent();
+	if (!canPreview())
+		return d + 1;
+	return d + 1 - (par_->height() - loader_.image()->getHeight()) / 2;
 }
 
 
 int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 {
 	metrics(bv, font);
-	int const w = par_->width();
-	// double the space for the preview if needed
-	return lyxrc.preview ? 2 * w : w;
+	return canPreview() ? loader_.image()->getWidth() : par_->width();
 }
 
 
 MathInsetTypes InsetFormula::getType() const
 {
 	return hull()->getType();
+}
+
+
+//
+// preview stuff
+//
+
+bool InsetFormula::canPreview() const
+{
+	return lyxrc.preview && !par_->asNestInset()->editing()
+		&& loader_.status() == grfx::Ready;
+}
+
+
+void InsetFormula::statusChanged()
+{
+	//lyxerr << "### InsetFormula::statusChanged called!, status: "
+	//	<< loader_.status() << "\n";
+	if (loader_.status() == grfx::Ready) 
+		view()->updateInset(this, false);
+	else if (loader_.status() == grfx::WaitingToLoad)
+		loader_.startLoading();
+}
+
+
+void InsetFormula::init()
+{
+	if (lyxrc.preview)
+		loader_.statusChanged.connect
+			(boost::bind(&InsetFormula::statusChanged, this));
+}
+
+
+void InsetFormula::updatePreview() const
+{
+	// nothing to be done if no preview requested
+	if (!lyxrc.preview)
+		return;
+	//lyxerr << "### updatePreview() called\n";
+
+	// get LaTeX 
+	ostringstream ls;
+	WriteStream wi(ls, false, false);
+	par_->write(wi);
+	string const data = ls.str();
+
+	// built some unique filename
+	ostringstream os;
+	os << "preview_";
+	for (string::const_iterator it = data.begin(); it != data.end(); ++it) 
+		os << char('A' + (*it & 15)) << char('a' + (*it >> 4));
+	string base = os.str();
+	string dir  = OnlyPath(lyx::tempName());
+	string file = dir + base + ".eps";
+
+	// everything is fine already
+	if (loader_.filename() == file)
+		return;
+
+	// The real work starts.
+	string const texfile = dir + base + ".tex";
+	std::ofstream of(texfile.c_str());
+	of << "\\batchmode"
+	   << "\\documentclass{article}"
+	   << "\\usepackage{amssymb}"
+	   << "\\thispagestyle{empty}"
+	   << "\\pdfoutput=0"
+	   << "\\begin{document}"
+	   << data
+	   << "\\end{document}\n";
+	of.close();
+
+	string const cmd =
+//		"latex " + base + ".tex ; " + "
+//    "dvips -x 2500 -R -E -o " + base + ".eps " + base + ".dvi ";
+	// Herbert says this is faster
+		"pdflatex --interaction batchmode " + base + "; " +
+		"dvips -x 2000 -R -E -o " + base + ".eps " + base + ".dvi ";
+	//lyxerr << "calling: '" << "(cd " + dir + "; " + cmd + ")\n";
+	Systemcall sc;
+	sc.startscript(Systemcall::Wait, "(cd " + dir + "; " + cmd + ")");
+
+	// now we are done, start actual loading
+	loader_.reset(file);
+	//lyxerr << "file '" << file << "' registered for preview\n";
+
+	// clean up a bit
+	lyx::unlink(dir + base + ".tex");
+	lyx::unlink(dir + base + ".aux");
+	lyx::unlink(dir + base + ".dvi");
+	lyx::unlink(dir + base + ".log");
 }
