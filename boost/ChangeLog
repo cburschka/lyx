@@ -1,3 +1,14 @@
+2003-02-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* boost/regex/detail/regex_match.hpp (string_compare): do not
+	declare a version for wstring is BOOST_NO_WREGEX is defined.
+
+	* boost/regex/config.hpp: do not try to include <cwchar> and
+	<cwctype> when BOOST_NO_WREGEX is defined.
+
+	* boost/integer_traits.hpp (integer_traits): add support for
+	OpenBSD (something like that is already in boost cvs tree)
+
 2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* boost/format/format_implementation.hpp (clear_bind): use

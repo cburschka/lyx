@@ -83,6 +83,8 @@ What's new
 
 - fix strerror() build problem with some gcc/glibc versions [bug #874]
 
+- fix compilation on OpenBSD
+
 - mention in INSTALL file that the qt frontend is selected using
   --with-frontend=qt
 
