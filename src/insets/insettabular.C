@@ -28,7 +28,6 @@
 #include "LyXView.h"
 #include "insets/insettext.h"
 #include "debug.h"
-#include "WorkArea.h"
 #include "gettext.h"
 #include "language.h"
 #include "BufferView.h"

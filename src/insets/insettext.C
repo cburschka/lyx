@@ -36,7 +36,6 @@
 #include "intl.h"
 #include "trans_mgr.h"
 #include "lyxscreen.h"
-#include "WorkArea.h"
 #include "gettext.h"
 #include "lyxfunc.h"
 #include "ParagraphParameters.h"
