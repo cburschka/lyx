@@ -1007,9 +1007,10 @@ string const GetExtension(string const & name)
 /// return the "extension" which belongs to the contents.
 /// for no knowing contents return the extension. Without
 /// an extension and unknown contents we return "user"
-string const getExtFromContents(string const & filename) {
+string const getExtFromContents(string const & filename)
+{
+	// paranoia check
 	if (filename.empty() || !IsFileReadable(filename))
-		// paranoia check
 		return string();
 
 	ifstream ifs(filename.c_str());

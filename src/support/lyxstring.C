@@ -663,10 +663,13 @@ lyxstring & lyxstring::assign(const_iterator first, const_iterator last)
 lyxstring::const_reference lyxstring::operator[](size_type pos) const
 {
 #if 0
+	// This is actually what the standard requires,
 	lyx::Assert(pos <= rep->sz); // OURS!
 	static char helper = '\0';
 	return pos == rep->sz ? helper : rep->s[pos];
 #else
+	// but we use this one since it is stricter
+	// and more according to the real intent of std::string.
 	lyx::Assert(pos < rep->sz); // OURS!
 	return rep->s[pos];
 #endif
@@ -1731,7 +1734,7 @@ void swap(lyxstring & str1, lyxstring & str2)
 
 istream & operator>>(istream & is, lyxstring & s)
 {
-#if 1
+#if 0
 	// very bad solution
 	char * nome = new char[1024];
 	is >> nome;
@@ -1740,7 +1743,7 @@ istream & operator>>(istream & is, lyxstring & s)
 	if (!tmp.empty()) s = tmp;
 #else
 	// better solution
-	int w = is.widdth(0);
+	int w = is.width(0);
 	s.clear();
 	char c = 0;
 	while (is.get(c)) {
@@ -1748,7 +1751,7 @@ istream & operator>>(istream & is, lyxstring & s)
 		s += c;
 		if (--w == 1) break;
 	}
-	if (s.empty()) is.setstate(ios::failbit);
+	if (s.empty()) is.setstate(std::ios::failbit);
 #endif
 	return is;
 }
