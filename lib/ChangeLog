@@ -1,3 +1,8 @@
+2003-01-08  José Abílio Oliveira Matos  <jamatos@lyx.org>
+
+	* lyx2lyx/parser_tools.py (get_value): make it robust to the
+	no argument case.
+
 2003-01-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* bind/xemacs.bind: 

@@ -80,7 +80,10 @@ def get_value(lines, token, start, end = 0):
     i = find_token2(lines, token, start, end)
     if i == -1:
 	return ""
-    return string.split(lines[i])[1]
+    if len(string.split(lines[i])) > 1:
+        return string.split(lines[i])[1]
+    else:
+        return ""
 
 def del_token(lines, token, i, j):
     k = find_token2(lines, token, i, j)
