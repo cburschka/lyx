@@ -1,3 +1,22 @@
+2000-10-18  Angus Leeming <a.leeming@ic.ac.uk>
+       * src/support/lstrings.C (lowercase, uppercase):
+       use explicit casts to remove compiler warnings.
+
+       * src/support/LRegex.C (Impl):
+       * src/support/StrPool.C (add):
+       * src/support/filetools.C (MakeAbsPath, NormalizePath, MakeRelPath)
+       (AddPath, MakeDisplayPath):
+       * src/support/lstrings.C (prefixIs, subst):
+       use correct type to remove compiler warnings.
+
+       * src/support/lstrings.[Ch] (countChar): returns string::size_type.
+
+       * src/support/lyxlib.h:
+       * src/support/mkdir.C (mkdir): change parameter to mode_t for
+       portability and to remove compiler warning with DEC cxx.
+
+       * src/support/FileInfo.[Ch] (flagRWX): ditto.
+
 2000-10-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/minibuffer.C (peek_event): retun 1 when there has been a

@@ -59,10 +59,10 @@ struct LRegex::Impl {
 	{
 		regmatch_t tmp;
 		regexec(preg, str.c_str(), 1, &tmp, 0);
-		unsigned int const first = tmp.rm_so != -1 ?
-			static_cast<unsigned int>(tmp.rm_so) : string::npos;
-		unsigned int const second = tmp.rm_eo != -1 ?
-			static_cast<unsigned int>(tmp.rm_eo) : string::npos;
+		string::size_type const first = tmp.rm_so != -1 ?
+			tmp.rm_so : string::npos;
+		string::size_type const second = tmp.rm_eo != -1 ?
+			tmp.rm_eo : string::npos;
 		return make_pair(first, second - first);
 	}
 	
@@ -91,18 +91,16 @@ struct LRegex::Impl {
 		size_t const subs =
 			(preg->re_nsub != 0 ? (preg->re_nsub + 1) : 1);
 		regmatch_t * mat = new regmatch_t[subs];
-		unsigned int first = 0;
-		unsigned int second = 0;
+		string::size_type first = 0;
+		string::size_type second = 0;
 		matches.erase(matches.begin(), matches.end());
 		if (!regexec(preg, str.c_str(), subs, mat, 0)) { // some match
 			matches.reserve(subs);
 			for (size_t i = 0; i < subs; ++i) {
 				first = mat[i].rm_so != -1 ?
-					static_cast<unsigned int>
-					(mat[i].rm_so) : string::npos;
+					mat[i].rm_so : string::npos;
 				second = mat[i].rm_eo != -1 ?
-					static_cast<unsigned int>
-					(mat[i].rm_eo) : string::npos;
+					mat[i].rm_eo : string::npos;
 				matches.push_back(make_pair(first,
 							    second - first));
 			}

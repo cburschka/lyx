@@ -155,13 +155,13 @@ double strToDbl(string const & str)
 
 char lowercase(char c) 
 { 
-	return tolower(c); 
+	return char( tolower(c) ); 
 }
 
 
 char uppercase(char c) 
 { 
-	return toupper(c); 
+	return char( toupper(c) ); 
 }
 
 
@@ -205,7 +205,7 @@ bool prefixIs(string const & a, char const * pre)
 {
 	Assert(pre);
 	
-	unsigned int const l = strlen(pre);
+	size_t const l = strlen(pre);
 	string::size_type const alen = a.length();
 	
 	if (l > alen || a.empty())
@@ -253,7 +253,7 @@ bool suffixIs(string const & a, char const * suf)
 {
 	Assert(suf);
 	
-	unsigned int const suflen = strlen(suf);
+	size_t const suflen = strlen(suf);
 	if (suflen > a.length())
 		return false;
 	else {
@@ -353,7 +353,7 @@ bool containsOnly(char const * s, string const & cset)
 }
 
 
-unsigned int countChar(string const & a, char c)
+string::size_type countChar(string const & a, char c)
 {
 #ifdef HAVE_STD_COUNT
 	return count(a.begin(), a.end(), c);
@@ -441,7 +441,7 @@ string const subst(string const & a,
 	
 	string lstr(a);
 	string::size_type i = 0;
-	int olen = strlen(oldstr);
+	string::size_type olen = strlen(oldstr);
 	while((i = lstr.find(oldstr, i)) != string::npos) {
 		lstr.replace(i, olen, newstr);
 		i += newstr.length(); // We need to be sure that we dont

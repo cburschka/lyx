@@ -579,7 +579,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 		if (Temp == ".") continue;
 		if (Temp == "..") {
 			// Remove one level of TempBase
-			int i = TempBase.length() - 2;
+			string::difference_type i = TempBase.length() - 2;
 #ifndef __EMX__
 			if (i < 0) i = 0;
 			while (i > 0 && TempBase[i] != '/') --i;
@@ -701,7 +701,7 @@ string const NormalizePath(string const & path)
 			TempBase = "./";
 		} else if (Temp == "..") {
 			// Remove one level of TempBase
-			int i = TempBase.length() - 2;
+			string::difference_type i = TempBase.length() - 2;
 			while (i > 0 && TempBase[i] != '/')
 				--i;
 			if (i >= 0 && TempBase[i] == '/')
@@ -853,8 +853,8 @@ string const MakeRelPath(string const & abspath0, string const & basepath0)
 	if (abspath.empty())
 		return "<unknown_path>";
 
-	int const abslen = abspath.length();
-	int const baselen = basepath.length();
+	string::size_type const abslen = abspath.length();
+	string::size_type const baselen = basepath.length();
 	
 	// Find first different character
 	int i = 0;
@@ -913,9 +913,9 @@ string const AddPath(string const & path, string const & path_2)
 	}
 
 	if (!path2.empty()){
-	        int p2start = path2.find_first_not_of('/');
+	        string::size_type p2start = path2.find_first_not_of('/');
 
-		int p2end = path2.find_last_not_of('/');
+		string::size_type p2end = path2.find_last_not_of('/');
 
 		string tmp = path2.substr(p2start, p2end - p2start + 1);
 		buf += tmp + '/';
@@ -966,13 +966,13 @@ string const GetExtension(string const & name)
 string const
 MakeDisplayPath (string const & path, unsigned int threshold)
 {
-	int const l1 = path.length();
+	string::size_type const l1 = path.length();
 
 	// First, we try a relative path compared to home
 	string const home(GetEnvPath("HOME"));
 	string relhome = MakeRelPath(path, home);
 
-	unsigned int l2 = relhome.length();
+	string::size_type l2 = relhome.length();
 
 	string prefix;
 

@@ -60,7 +60,7 @@ public:
 	char typeLetter() const;
 	
 	/// builds 'rwx' string describing file access rights
-	void flagRWX(unsigned short i, char * szString) const;
+	void flagRWX(mode_t i, char * szString) const;
 	
 	/// updates mode string to match suid/sgid/sticky bits
 	void setSticky(char * szString) const;

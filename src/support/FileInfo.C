@@ -237,7 +237,7 @@ char FileInfo::typeLetter() const
 
 
 // should not be in FileInfo
-void FileInfo::flagRWX(unsigned short i, char * szString) const
+void FileInfo::flagRWX(mode_t i, char * szString) const
 {
 	szString[0] = (i & S_IRUSR) ? 'r' : '-';
 	szString[1] = (i & S_IWUSR) ? 'w' : '-';

@@ -47,7 +47,7 @@ namespace lyx {
 	///
 	void abort();
         ///
-        int mkdir(string const & pathname, unsigned long int mode);
+        int mkdir(string const & pathname, mode_t mode);
 	///
 	int putenv(char const * str);
         ///

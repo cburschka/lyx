@@ -31,7 +31,7 @@ StrPool::~StrPool()
 */
 char const * StrPool::add(string const & str)
 {
-	int s = str.length();
+	string::size_type s = str.length();
         char * buf = new char [s + 1];
         str.copy(buf, s);
         buf[s] = '\0';
