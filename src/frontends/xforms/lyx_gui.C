@@ -152,6 +152,18 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 	XSetErrorHandler(LyX_XErrHandler);
 
 	lyxColorHandler.reset(new LyXColorHandler());
+ 
+	using namespace grfx;
+
+#ifdef USE_XFORMS_IMAGE_LOADER
+	// connect the image loader based on the xforms library
+	Image::newImage = boost::bind(&xformsImage::newImage);
+	Image::loadableFormats = boost::bind(&xformsImage::loadableFormats);
+#else
+	// connect the image loader based on the XPM library
+	Image::newImage = boost::bind(&ImageXPM::newImage);
+	Image::loadableFormats = boost::bind(&ImageXPM::loadableFormats);
+#endif
 }
 
 
@@ -294,24 +306,6 @@ void lyx_gui::start(string const & batch, vector<string> files)
 
 	// FIXME
 	delete lyxserver;
-}
-
-
-// Called by the graphics cache to connect the appropriate frontend
-// image loading routines to the LyX kernel.
-void lyx_gui::init_graphics()
-{
-	using namespace grfx;
-
-#ifdef USE_XFORMS_IMAGE_LOADER
-	// connect the image loader based on the xforms library
-	Image::newImage = boost::bind(&xformsImage::newImage);
-	Image::loadableFormats = boost::bind(&xformsImage::loadableFormats);
-#else
-	// connect the image loader based on the XPM library
-	Image::newImage = boost::bind(&ImageXPM::newImage);
-	Image::loadableFormats = boost::bind(&ImageXPM::loadableFormats);
-#endif
 }
 
 

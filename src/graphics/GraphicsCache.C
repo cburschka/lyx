@@ -40,12 +40,6 @@ struct Cache::Impl {
 	
 Cache & Cache::get()
 {
-	static bool start = true;
-	if (start) {
-		start = false;
-		lyx_gui::init_graphics();
-	}
-
 	// Now return the cache
 	static Cache singleton;
 	return singleton;

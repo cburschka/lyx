@@ -35,9 +35,6 @@ namespace lyx_gui {
 	 */
 	void start(string const & batch, std::vector<std::string> files);
 
-	/// initialise graphics
-	void init_graphics();
-
 	/** Eg, passing LColor::black returns "000000",
 	 *      passing LColor::white returns "ffffff".
 	 */

@@ -58,6 +58,11 @@ LyXServer * lyxserver;
 void lyx_gui::parse_init(int & argc, char * argv[])
 {
 	static QApplication a(argc, argv);
+ 
+	using namespace grfx;
+
+	Image::newImage = boost::bind(&QLImage::newImage);
+	Image::loadableFormats = boost::bind(&QLImage::loadableFormats);
 }
  
 
@@ -114,15 +119,6 @@ void lyx_gui::start(string const & batch, vector<string> files)
 }
  
  
-void lyx_gui::init_graphics()
-{
-	using namespace grfx;
-
-	Image::newImage = boost::bind(&QLImage::newImage);
-	Image::loadableFormats = boost::bind(&QLImage::loadableFormats);
-}
-
-
 string const lyx_gui::hexname(LColor::color col)
 {
 	// FIXME

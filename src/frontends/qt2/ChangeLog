@@ -1,5 +1,9 @@
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
+	* lyx_gui.C: move init_graphics() to parse_init()
+ 
+2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
+
 	* Toolbar_pimpl.h:
 	* Toolbar_pimpl.C: remove unused (de)activate()
  
