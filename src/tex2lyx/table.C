@@ -241,8 +241,8 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 			os << TAB;
 		}
 
-		//else if (t.cs() == "tabularnewline" || t.cs() == "\\") {
-		else if (t.cs() == "tabularnewline") {
+		else if (t.cs() == "tabularnewline" || t.cs() == "\\") {
+		//else if (t.cs() == "tabularnewline") {
 			// stuff before the line break
 			// and look ahead for stuff after the line break
 			os << HLINE << hlines << HLINE << LINE << read_hlines(p) << HLINE;
