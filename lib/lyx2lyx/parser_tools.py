@@ -88,6 +88,18 @@ def get_paragraph(lines, i):
 		count = count-1
 	i = i-1
 
+# Finds the matching \end_inset
+def skip_inset(lines, i):
+    count = 1
+    i = i+1
+    while count > 0:
+	i = find_tokens(lines, ["\\end_inset", "\\begin_inset"], i)
+	if check_token(lines[i], "\\begin_inset"):
+	    count = count+1
+	else:
+	    count = count-1
+	i = i+1
+    return i
 
 def is_nonempty_line(line):
     return line != " "*len(line)

@@ -185,8 +185,15 @@ def remove_oldert(lines):
 	i = find_tokens(lines, ["\\latex latex", "\\layout LaTeX"], i)
 	if i == -1:
 	    break
-	j = find_tokens(lines, ["\\latex default", "\\layout", "\\end_float", "\\the_end"],
-			i+1)
+	j = i+1
+	while 1:
+	    j = find_tokens(lines, ["\\latex default", "\\begin_inset", "\\layout", "\\end_float", "\\the_end"],
+			    j)
+	    if check_token(lines[j], "\\begin_inset"):
+		j = skip_inset(lines, j)
+	    else:
+		break
+
 	if check_token(lines[j], "\\layout"):
 	    while j-1 >= 0 and check_token(lines[j-1], "\\begin_deeper"):
 		j = j-1
@@ -259,6 +266,20 @@ def remove_oldert(lines):
 	if not check_token(lines[j], "\\latex default"):
 	    new = new+[""]+[lines[j]]
 	lines[i:j+1] = new
+	i = i+1
+
+def convert_ertinset(lines):
+    i = 0
+    while 1:
+	i = find_token(lines, "\\begin_inset ERT", i)
+	if i == -1:
+	    break
+	j = find_token(lines, "collapsed", i+1)
+	if string.split(lines[j])[1] == "true":
+	    status = "Collapsed"
+	else:
+	    status = "Open"
+	lines[j] = "status " + status
 	i = i+1
 
 def is_ert_paragraph(lines, i):
@@ -379,6 +400,7 @@ def convert(header, body):
 	language = "english"
 
     change_preamble(header)
+    convert_ertinset(body)
     remove_oldert(body)
     combine_ert(body)
     remove_oldminipage(body)
