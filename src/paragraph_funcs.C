@@ -196,7 +196,6 @@ void mergeParagraph(BufferParams const & bparams,
 }
 
 
-#if 0
 Paragraph * depthHook(Paragraph * par, Paragraph::depth_type depth)
 {
 	Paragraph * newpar = par;
@@ -207,10 +206,11 @@ Paragraph * depthHook(Paragraph * par, Paragraph::depth_type depth)
 
 	if (!newpar) {
 		if (par->previous() || par->getDepth())
-			lyxerr << "Error (depthHook): "
-			       << "no hook." << endl;
+			lyxerr << "ERROR (Paragraph::DepthHook): "
+				"no hook." << endl;
 		newpar = par;
 	}
+
 	return newpar;
 }
 
@@ -227,39 +227,38 @@ bool isFirstInSequence(Paragraph * par)
 {
 	Paragraph const * dhook = depthHook(par, par->getDepth());
 	return (dhook == par
-		|| dhook->getLayout() != par->getLayout()
+		|| dhook->layout() != par->layout()
 		|| dhook->getDepth() != par->getDepth());
 }
 
 
-int getEndLabel(Paragraph * para, BufferParams const & bparams)
+int getEndLabel(Paragraph * p)
 {
-	Paragraph * par = para;
+	Paragraph * par = p;
+	Paragraph::depth_type par_depth = p->getDepth();
 	while (par) {
-		Paragraph::depth_type par_depth = par->getDepth();
-		layout_type layout = par->getLayout();
-		int const endlabeltype =
-			textclasslist.Style(bparams.textclass,
-					    layout).endlabeltype;
+		LyXLayout_ptr const & layout = par->layout();
+		int const endlabeltype = layout->endlabeltype;
+
 		if (endlabeltype != END_LABEL_NO_LABEL) {
-			if (!para->next())
+			if (!p->next())
 				return endlabeltype;
 
-			Paragraph::depth_type const next_depth =
-				para->next()->getDepth();
+			Paragraph::depth_type const next_depth = p->next()->getDepth();
 			if (par_depth > next_depth ||
 			    (par_depth == next_depth
-			     && layout != para->next()->getLayout()))
+			     && layout != p->next()->layout()))
 				return endlabeltype;
 			break;
 		}
 		if (par_depth == 0)
 			break;
 		par = outerHook(par);
+		if (par)
+			par_depth = par->getDepth();
 	}
 	return END_LABEL_NO_LABEL;
 }
-#endif
 
 
 namespace {
@@ -1023,4 +1022,30 @@ int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex)
 	}
 
 	return unknown;
+}
+
+
+LyXFont const realizeFont(LyXFont const & font,
+			  Buffer const * buf,
+			  ParagraphList & /*plist*/,
+			  ParagraphList::iterator pit)
+{
+	LyXTextClass const & tclass = buf->params.getLyXTextClass();
+	LyXFont tmpfont(font);
+	Paragraph::depth_type par_depth = pit->getDepth();
+
+	Paragraph * par = &*pit;
+
+	// Resolve against environment font information
+	while (par && par_depth && !tmpfont.resolved()) {
+		par = outerHook(par);
+		if (par) {
+			tmpfont.realize(par->layout()->font);
+			par_depth = par->getDepth();
+		}
+	}
+
+	tmpfont.realize(tclass.defaultfont());
+
+	return tmpfont;
 }

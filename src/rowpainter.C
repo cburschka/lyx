@@ -18,6 +18,7 @@
 #include "frontends/font_metrics.h"
 #include "support/LAssert.h"
 #include "paragraph.h"
+#include "paragraph_funcs.h"
 #include "support/textutils.h"
 
 #include "insets/insettext.h"
@@ -673,7 +674,7 @@ void RowPainter::paintFirst()
 	if (layout->labeltype >= LABEL_STATIC
 	    && (layout->labeltype != LABEL_STATIC
 		|| layout->latextype != LATEX_ENVIRONMENT
-		|| pit_->isFirstInSequence())) {
+		|| isFirstInSequence(&*pit_))) {
 
 		LyXFont font = getLabelFont();
 		if (!pit_->getLabelstring().empty()) {
@@ -721,7 +722,7 @@ void RowPainter::paintFirst()
 
 	// the labels at the top of an environment.
 	// More or less for bibliography
-	} else if (pit_->isFirstInSequence() &&
+	} else if (isFirstInSequence(&*pit_) &&
 		(layout->labeltype == LABEL_TOP_ENVIRONMENT ||
 		layout->labeltype == LABEL_BIBLIO ||
 		layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
@@ -796,7 +797,7 @@ void RowPainter::paintLast()
 	}
 
 	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params);
-	int const endlabel = pit_->getEndLabel();
+	int const endlabel = getEndLabel(&*pit_);
 
 	// draw an endlabel
 	switch (endlabel) {

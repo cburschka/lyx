@@ -24,6 +24,7 @@
 #include "ParameterStruct.h"
 #include "gettext.h"
 #include "changes.h"
+#include "paragraph_funcs.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetoptarg.h"
@@ -689,35 +690,6 @@ bool Paragraph::hasSameLayout(Paragraph const * par) const
 }
 
 
-int Paragraph::getEndLabel() const
-{
-	Paragraph const * par = this;
-	depth_type par_depth = getDepth();
-	while (par) {
-		LyXLayout_ptr const & layout = par->layout();
-		int const endlabeltype = layout->endlabeltype;
-
-		if (endlabeltype != END_LABEL_NO_LABEL) {
-			if (!next_)
-				return endlabeltype;
-
-			depth_type const next_depth = next_->getDepth();
-			if (par_depth > next_depth ||
-			    (par_depth == next_depth
-			     && layout != next_->layout()))
-				return endlabeltype;
-			break;
-		}
-		if (par_depth == 0)
-			break;
-		par = par->outerHook();
-		if (par)
-			par_depth = par->getDepth();
-	}
-	return END_LABEL_NO_LABEL;
-}
-
-
 Paragraph::depth_type Paragraph::getDepth() const
 {
 	return params().depth();
@@ -802,60 +774,6 @@ int Paragraph::beginningOfBody() const
 	}
 
 	return i;
-}
-
-
-Paragraph * Paragraph::depthHook(depth_type depth)
-{
-	Paragraph * newpar = this;
-
-	do {
-		newpar = newpar->previous();
-	} while (newpar && newpar->getDepth() > depth);
-
-	if (!newpar) {
-		if (previous() || getDepth())
-			lyxerr << "ERROR (Paragraph::DepthHook): "
-				"no hook." << endl;
-		newpar = this;
-	}
-
-	return newpar;
-}
-
-
-Paragraph const * Paragraph::depthHook(depth_type depth) const
-{
-	Paragraph const * newpar = this;
-
-	do {
-		newpar = newpar->previous();
-	} while (newpar && newpar->getDepth() > depth);
-
-	if (!newpar) {
-		if (previous() || getDepth())
-			lyxerr << "ERROR (Paragraph::DepthHook): "
-				"no hook." << endl;
-		newpar = this;
-	}
-
-	return newpar;
-}
-
-
-Paragraph * Paragraph::outerHook()
-{
-	if (!getDepth())
-		return 0;
-	return depthHook(depth_type(getDepth() - 1));
-}
-
-
-Paragraph const * Paragraph::outerHook() const
-{
-	if (!getDepth())
-		return 0;
-	return depthHook(depth_type(getDepth() - 1));
 }
 
 
@@ -1484,15 +1402,6 @@ LyXLayout_ptr const & Paragraph::layout() const
 void Paragraph::layout(LyXLayout_ptr const & new_layout)
 {
 	layout_ = new_layout;
-}
-
-
-bool Paragraph::isFirstInSequence() const
-{
-	Paragraph const * dhook = depthHook(getDepth());
-	return (dhook == this
-		|| dhook->layout() != layout()
-		|| dhook->getDepth() != getDepth());
 }
 
 

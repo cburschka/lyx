@@ -1,5 +1,33 @@
 2003-04-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* text2.C (setCharFont): adjust
+	(setCounter): adjust
+
+	* text.C (leftMargin): adjust
+	(setHeightOfRow): adjust
+
+	* rowpainter.C (paintFirst): adjust
+	(paintLast): adjust
+
+	* paragraph_pimpl.C (realizeFont): adjust
+
+	* paragraph.C (isFirstInSequence): move from here...
+	* paragraph_funcs.C (isFirstInSequence): ...to here
+
+	* paragraph.C (outerHook): move from here...
+	* paragraph_funcs.C (outerHook): ...to here
+
+	* paragraph.C (depthHook): move from here...
+	* paragraph_funcs.C (depthHook): ...to here
+
+	* paragraph.C (getEndLabel): move from here...
+	* paragraph_funcs.C (getEndLabel): ...to here
+
+	* text2.C (realizeFont): move from here...
+	* paragraph_funcs.C (realizeFont): ...to here
+
+2003-04-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* text3.C (gotoNextInset): use separate tmp vars for par and pos.
 
 2003-04-14  Angus Leeming  <leeming@lyx.org>

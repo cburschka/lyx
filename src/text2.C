@@ -30,6 +30,7 @@
 #include "ParagraphParameters.h"
 #include "counters.h"
 #include "lyxrow_funcs.h"
+#include "paragraph_funcs.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetfloat.h"
@@ -96,36 +97,6 @@ void LyXText::init(BufferView * bview, bool reinit)
 	selection.cursor = cursor;
 
 	updateCounters();
-}
-
-
-namespace {
-
-LyXFont const realizeFont(LyXFont const & font,
-			  Buffer const * buf,
-			  ParagraphList & /*plist*/,
-			  ParagraphList::iterator pit)
-{
-	LyXTextClass const & tclass = buf->params.getLyXTextClass();
-	LyXFont tmpfont(font);
-	Paragraph::depth_type par_depth = pit->getDepth();
-
-	Paragraph * par = &*pit;
-
-	// Resolve against environment font information
-	while (par && par_depth && !tmpfont.resolved()) {
-		par = par->outerHook();
-		if (par) {
-			tmpfont.realize(par->layout()->font);
-			par_depth = par->getDepth();
-		}
-	}
-
-	tmpfont.realize(tclass.defaultfont());
-
-	return tmpfont;
-}
-
 }
 
 
@@ -251,7 +222,7 @@ void LyXText::setCharFont(Buffer const * buf, ParagraphList::iterator pit,
 #warning FIXME I think I hate this outerHood stuff.
 		Paragraph * tp = &*pit;
 		while (!layoutfont.resolved() && tp && tp->getDepth()) {
-			tp = tp->outerHook();
+			tp = outerHook(tp);
 			if (tp)
 				layoutfont.realize(tp->layout()->font);
 		}
@@ -1091,7 +1062,7 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 	if (pit != ownerParagraphs().begin()
 	    && boost::prior(pit)->getDepth() > pit->getDepth()
 	    && layout->labeltype != LABEL_BIBLIO) {
-		pit->enumdepth = pit->depthHook(pit->getDepth())->enumdepth;
+		pit->enumdepth = depthHook(&*pit, pit->getDepth())->enumdepth;
 	}
 
 	if (!pit->params().labelString().empty()) {

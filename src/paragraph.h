@@ -112,12 +112,6 @@ public:
 	///
 	void makeSameLayout(Paragraph const * par);
 
-	/// Is it the first par with same depth and layout?
-	bool isFirstInSequence() const;
-
-	/** Check if the current paragraph is the last paragraph in a
-	    proof environment */
-	int getEndLabel() const;
 	///
 	Inset * inInset() const;
 	///
@@ -199,15 +193,6 @@ public:
 
 	/// mark whole par as erased
 	void markErased();
-
-	/// for the environments
-	Paragraph * depthHook(depth_type depth);
-	/// for the environments
-	Paragraph const * depthHook(depth_type depth) const;
-	///
-	Paragraph * outerHook();
-	///
-	Paragraph const * outerHook() const;
 
 	/// Paragraphs can contain "manual labels", for example, Description environment.
 	/// The text for this user-editable label is stored in the paragraph alongside
