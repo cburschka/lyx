@@ -1,5 +1,10 @@
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
+	* insetinclude.C (localDispatch): ensure that params_.masterFilename_ is
+	set before trying to generate a preview, else we trigger an assert.
+
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
 	* insetinclude.C (PreviewImpl::parent): return a const reference.
 
 2003-09-16  Angus Leeming  <leeming@lyx.org>

@@ -145,8 +145,8 @@ dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 		InsetInclude::Params p;
 		InsetIncludeMailer::string2params(cmd.argument, p);
 		if (!p.cparams.getCmdName().empty()) {
+			p.masterFilename_ = cmd.view()->buffer()->fileName();
 			set(p);
-			params_.masterFilename_ = cmd.view()->buffer()->fileName();
 			cmd.view()->updateInset(this);
 		}
 		return DISPATCHED;
@@ -482,7 +482,9 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	string incfile(params_.cparams.getContents());
 	string writefile;
 
-	Buffer const & b = *bufferlist.getBuffer(getMasterFilename());
+	Buffer const * buffer_ptr = bufferlist.getBuffer(getMasterFilename());
+	BOOST_ASSERT(buffer_ptr);
+	Buffer const & b = *buffer_ptr;
 
 	if (!b.temppath().empty() && !b.niceFile() && !isVerbatim()) {
 		incfile = subst(incfile, '/','@');
@@ -622,7 +624,6 @@ void InsetInclude::PreviewImpl::startMonitoring()
 
 void InsetInclude::PreviewImpl::restartLoading()
 {
-	lyxerr << "restartLoading()" << std::endl;
 	removePreview();
 	if (view())
 		view()->updateInset(&parent());
