@@ -14,9 +14,6 @@ enum Math_Symbols_enum {
 	LM_dot            = '.',
 	LM_bar            = '-',
 
-	LM_quad           = 4,
-	LM_qquad          = 5,
-
 /// Symbols that don't exist in X11 symbol font but that we fake
 	LM_not            = 10,
 

@@ -10,13 +10,9 @@
 #include "math_macro.h"
 #include "math_macrotemplate.h"
 #include "math_parser.h"
-#include "array.h"
-#include "math_decorationinset.h"
 #include "math_deliminset.h"
 #include "math_fracinset.h"
-#include "math_inset.h"
 #include "debug.h"
-#include "support/LAssert.h"
 
 using std::endl;
 
@@ -100,79 +96,20 @@ void MathMacroTable::builtinMacros()
 		return;	
 
 	built = true;
-    
 	//lyxerr[Debug::MATHED] << "Building macros" << endl;
    
-/* 
-	// This macro doesn't have arguments
-	{
-		MathMacroTemplate * t = new MathMacroTemplate("notin", 0);
-		MathDecorationInset * p = new MathDecorationInset("not");
-		p->cell(0).push_back(LM_in, LM_TC_SYMB);
-		t->push_back(p);
-		insertTemplate(t);
-	}
-*/
-
-	createTemplate("silentmult", 0, "\\cdot");
-	createTemplate("emptyset",   0, "\\not0");
-	createTemplate("notin",      0, "\\not\\in");
-
-
-
-/*
-	{
-		MathMacroTemplate * t = new MathMacroTemplate("emptyset", 0);
-		MathDecorationInset * p = new MathDecorationInset("not", LM_not);
-		p->cell(0).push_back('O', LM_TC_VAR);
-		t->push_back(p);
-		insertTemplate(t);
-	}
-*/
-
-	{
-
-		MathMacroTemplate * t = new MathMacroTemplate("land", 0);
-		t->push_back(LM_wedge, LM_TC_SYMB);
-		insertTemplate(t);
-	}
-
-	{
-		MathMacroTemplate * t = new MathMacroTemplate("lor", 0);
-		t->push_back(LM_vee, LM_TC_SYMB);
-		insertTemplate(t);
-	}
-
-	{
-		MathMacroTemplate * t = new MathMacroTemplate("to", 0);
-		t->push_back(LM_rightarrow, LM_TC_SYMB);
-		insertTemplate(t);
-	}
-
-	{
-		MathMacroTemplate * t = new MathMacroTemplate("perp", 0);
-		t->push_back(LM_bot, LM_TC_BOP);
-		insertTemplate(t);
-	}
-
-/*
-	{
-		MathMacroTemplate & m = createTemplate("lint", 4);
-		istringstream is("\\int_{#1}^{#2}#3 d#4\0");
-		mathed_parser_file(is, 0);
-		MathMatrixInset * p = &m;
-  	mathed_parse(m.array, p, 0);
-	}
-*/
-/*
-	{
-		MathMacroTemplate * t = new MathMacroTemplate("binomii", 2);
-		istringstream is("\\left(\\frac{#1}{#2}\\right)\0");
-		mathed_parser_file(is, 0);
-  	mathed_parse(t->array, t, 0);
-		insertTemplate(t);
-	}
-*/
+	createTemplate("emptyset",     0, "\\not0");
+	createTemplate("ge",           0, "\\geq");
+	createTemplate("gets",         0, "\\leftarrow");
+	createTemplate("land",         0, "\\wedge");
+	createTemplate("le",           0, "\\leq");
+	createTemplate("lor",          0, "\\vee");
+	createTemplate("notin",        0, "\\not\\in");
+	createTemplate("perp",         0, "\\bot");
+	createTemplate("to",           0, "\\rightarrow");
+	//createTemplate("lint",       4, "\\int_{#1}^{#2}#3 d#4");
+	//createTemplate("silentmult", 0, "\\cdot");
+	//createTemplate("binomi",     2, "\\left(\\frac{#1}{#2}\\right)");
 
 	// binom has two arguments
 	{
