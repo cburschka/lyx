@@ -42,8 +42,8 @@ vector<LanguagePair> const getLanguageData(bool character_dlg)
 	vector<LanguagePair> langs(size);
 
 	if (character_dlg) {
-		langs[0].first = N_("No change"); langs[0].second = "ignore";
-		langs[1].first = N_("Reset");     langs[1].second = "reset";
+		langs[0].first = _("No change"); langs[0].second = "ignore";
+		langs[1].first = _("Reset");     langs[1].second = "reset";
 	}
 
 	vector<string>::size_type i = character_dlg ? 2 : 0;

@@ -1,3 +1,7 @@
+2002-05-21  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* frnt_lang.C (getLanguageData): change a couple of N_() to _().
+
 2002-05-13  Herbert Voss  <voss@perce.de>
 
 	* biblio.C (getAbbreviatedAuthor): fix bug with "and" for Authors
