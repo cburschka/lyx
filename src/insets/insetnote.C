@@ -58,7 +58,7 @@ InsetNote::InsetNote(InsetNote const & in)
 
 InsetNote::~InsetNote()
 {
-	InsetNoteMailer("note", *this).hideDialog();
+	InsetNoteMailer(*this).hideDialog();
 }
 
 
@@ -113,7 +113,7 @@ void InsetNote::setButtonLabel()
 
 bool InsetNote::showInsetDialog(BufferView * bv) const
 {
-	InsetNoteMailer("note", const_cast<InsetNote &>(*this)).showDialog(bv);
+	InsetNoteMailer(const_cast<InsetNote &>(*this)).showDialog(bv);
 	return true;
 }
 
@@ -134,12 +134,12 @@ InsetNote::priv_dispatch(FuncRequest const & cmd,
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetNoteMailer("note", *this).updateDialog(bv);
+		InsetNoteMailer(*this).updateDialog(bv);
 		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
-			InsetNoteMailer("note", *this).showDialog(bv);
+			InsetNoteMailer(*this).showDialog(bv);
 			return DispatchResult(true, true);
 		}
 		// fallthrough:
@@ -244,31 +244,30 @@ void InsetNote::validate(LaTeXFeatures & features) const
 
 
 
-InsetNoteMailer::InsetNoteMailer(string const & name,
-						InsetNote & inset)
-	: name_(name), inset_(inset)
-{
-}
+string const InsetNoteMailer:: name_("note");
+
+InsetNoteMailer::InsetNoteMailer(InsetNote & inset)
+	: inset_(inset)
+{}
 
 
 string const InsetNoteMailer::inset2string(Buffer const &) const
 {
-	return params2string(name_, inset_.params());
+	return params2string(inset_.params());
 }
 
 
-string const InsetNoteMailer::params2string(string const & name,
-				InsetNoteParams const & params)
+string const InsetNoteMailer::params2string(InsetNoteParams const & params)
 {
 	ostringstream data;
-	data << name << ' ';
+	data << name_ << ' ';
 	params.write(data);
 	return data.str();
 }
 
 
 void InsetNoteMailer::string2params(string const & in,
-				     InsetNoteParams & params)
+				    InsetNoteParams & params)
 {
 	params = InsetNoteParams();
 

@@ -59,7 +59,7 @@ InsetBranch::InsetBranch(InsetBranch const & in)
 
 InsetBranch::~InsetBranch()
 {
-	InsetBranchMailer("branch", *this).hideDialog();
+	InsetBranchMailer(*this).hideDialog();
 }
 
 
@@ -111,7 +111,7 @@ void InsetBranch::setButtonLabel()
 
 bool InsetBranch::showInsetDialog(BufferView * bv) const
 {
-	InsetBranchMailer("branch", const_cast<InsetBranch &>(*this)).showDialog(bv);
+	InsetBranchMailer(const_cast<InsetBranch &>(*this)).showDialog(bv);
 	return true;
 }
 
@@ -136,12 +136,12 @@ InsetBranch::priv_dispatch(FuncRequest const & cmd,
 		return DispatchResult(false);
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetBranchMailer("branch", *this).updateDialog(bv);
+		InsetBranchMailer(*this).updateDialog(bv);
 		return DispatchResult(true);
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
-			InsetBranchMailer("branch", *this).showDialog(bv);
+			InsetBranchMailer(*this).showDialog(bv);
 			return DispatchResult(true);
 		}
 		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
@@ -200,11 +200,11 @@ void InsetBranch::validate(LaTeXFeatures & features) const
 
 
 
-InsetBranchMailer::InsetBranchMailer(string const & name,
-						InsetBranch & inset)
-	: name_(name), inset_(inset)
-{
-}
+string const InsetBranchMailer:: name_("branch");
+
+InsetBranchMailer::InsetBranchMailer(InsetBranch & inset)
+	: inset_(inset)
+{}
 
 
 string const InsetBranchMailer::inset2string(Buffer const & buf) const
@@ -212,15 +212,14 @@ string const InsetBranchMailer::inset2string(Buffer const & buf) const
 	InsetBranchParams params = inset_.params();
 	params.branchlist = buf.params().branchlist();
 	inset_.setParams(params);
-	return params2string(name_, params);
+	return params2string(params);
 }
 
 
-string const InsetBranchMailer::params2string(string const & name,
-					      InsetBranchParams const & params)
+string const InsetBranchMailer::params2string(InsetBranchParams const & params)
 {
 	ostringstream data;
-	data << name << ' ';
+	data << name_ << ' ';
 	params.write(data);
 	// Add all_branches parameter to data:
 	data << params.branchlist.allBranches() << "\n";
@@ -229,7 +228,7 @@ string const InsetBranchMailer::params2string(string const & name,
 
 
 void InsetBranchMailer::string2params(string const & in,
-				     InsetBranchParams & params)
+				      InsetBranchParams & params)
 {
 	params = InsetBranchParams();
 
@@ -239,6 +238,12 @@ void InsetBranchMailer::string2params(string const & in,
 	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
+
+	string name;
+	lex >> name;
+	if (name != name_)
+		return;
+
 	params.read(lex);
 	// Process all_branches here:
 	if (lex.isOK()) {

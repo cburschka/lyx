@@ -1,3 +1,11 @@
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
+	* ControlBranch.C (dispatchParams): change to invocation of
+	InsetBranchMailer::params2string.
+
+	* ControlNote.C (dispatchParams): change to invocation of
+	InsetNoteMailer::params2string.
+
 2003-12-05  Angus Leeming  <leeming@lyx.org>
 
 	* ControlVCLog.[Ch]: removed.

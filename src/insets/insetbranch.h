@@ -90,7 +90,7 @@ private:
 class InsetBranchMailer : public MailInset {
 public:
 	///
-	InsetBranchMailer(std::string const & name, InsetBranch & inset);
+	InsetBranchMailer(InsetBranch & inset);
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///
@@ -98,13 +98,13 @@ public:
 	///
 	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static std::string const params2string(std::string const &, InsetBranchParams const &);
+	static std::string const params2string(InsetBranchParams const &);
 	///
 	static void string2params(std::string const &, InsetBranchParams &);
 
 private:
 	///
-	std::string const name_;
+	static std::string const name_;
 	///
 	InsetBranch & inset_;
 };

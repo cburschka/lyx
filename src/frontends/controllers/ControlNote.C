@@ -27,12 +27,10 @@ ControlNote::ControlNote(Dialog & parent)
 
 bool ControlNote::initialiseParams(string const & data)
 {
-    InsetNoteParams params;
+	InsetNoteParams params;
 	InsetNoteMailer::string2params(data, params);
 	params_.reset(new InsetNoteParams(params));
-
 	return true;
-
 }
 
 
@@ -44,7 +42,7 @@ void ControlNote::clearParams()
 
 void ControlNote::dispatchParams()
 {
-	string const lfun = InsetNoteMailer::params2string(string("note"), params());
+	string const lfun = InsetNoteMailer::params2string(params());
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
 
