@@ -374,10 +374,26 @@ combox_handle(FL_OBJECT * ob, int event, FL_Coord mx, FL_Coord my, int key,
     case FL_DRAW:
 	attrib_change(ob->spec);
 	/* Fall through */
-    case FL_DRAWLABEL:
+    case FL_DRAWLABEL: {
+	COMBOX_SPEC * sp = ob->spec;
+
+	FL_Coord const xbs =
+	    ob->x + (sp->button_state->x - sp->button_chosen->x);
+
+	if (ob->x != sp->button_chosen->x ||
+	    ob->y != sp->button_chosen->y ||
+	    xbs   != sp->button_state->x ||
+	    ob->y != sp->button_state->y) {
+
+	    fl_freeze_form(ob->form);
+	    fl_set_object_position(sp->button_chosen, ob->x, ob->y);
+	    fl_set_object_position(sp->button_state, xbs, ob->y);
+	    fl_unfreeze_form(ob->form);
+	}
+
 	fl_draw_object_label(ob);
 	break;
-    case FL_SHORTCUT:
+    } case FL_SHORTCUT:
 	show_browser(ob->spec);
 	break;
     case FL_FREEMEM: {
