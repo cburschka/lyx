@@ -48,13 +48,13 @@ pos_type Row::pos() const
 }
 
 
-void Row::end(pos_type p)
+void Row::endpos(pos_type p)
 {
 	end_ = p;
 }
 
 
-pos_type Row::end() const
+pos_type Row::endpos() const
 {
 	return end_;
 }

@@ -29,9 +29,9 @@ public:
 	///
 	lyx::pos_type pos() const;
 	///
-	void end(lyx::pos_type p);
+	void endpos(lyx::pos_type p);
 	///
-	lyx::pos_type end() const;
+	lyx::pos_type endpos() const;
 	///
 	void fill(int f);
 	///

@@ -769,8 +769,10 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 // returns the minimum space a row needs on the screen in pixel
 int LyXText::fill(ParagraphList::iterator pit, Row & row, int paper_width) const
 {
-	if (paper_width < 0)
+	if (paper_width < 0) {
+		lyxerr << "paperwidth < 0: " << paper_width << "  Why?" << endl;
 		return 0;
+	}
 
 	int w;
 	// get the pure distance
@@ -781,7 +783,7 @@ int LyXText::fill(ParagraphList::iterator pit, Row & row, int paper_width) const
 	// special handling of the right address boxes
 	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
 		int const tmpfill = row.fill();
-		row.fill(0); // the minfill in MarginLeft()
+		row.fill(0); // the minfill in leftMargin()
 		w = leftMargin(pit, row);
 		row.fill(tmpfill);
 	} else
@@ -1106,7 +1108,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 	}
 
 	// is it a bottom line?
-	if (row.end() == pit->size()) {
+	if (row.endpos() >= pit->size()) {
 		// the bottom margin
 		ParagraphList::iterator nextpit = boost::next(pit);
 		if (nextpit == ownerParagraphs().end() && !isInInset())
@@ -1468,8 +1470,8 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 		{
 			int const ns = numberOfSeparators(*pit, row);
 			bool disp_inset = false;
-			if (row.end() < pit->size()) {
-				InsetOld * in = pit->getInset(row.end());
+			if (row.endpos() < pit->size()) {
+				InsetOld * in = pit->getInset(row.endpos());
 				if (in)
 					disp_inset = in->display();
 			}
@@ -1477,8 +1479,8 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 			// par, does not end in newline, and is not row above a
 			// display inset... then stretch it
 			if (ns
-				&& row.end() < pit->size()
-				&& !pit->isNewline(row.end())
+				&& row.endpos() < pit->size()
+				&& !pit->isNewline(row.endpos())
 				&& !disp_inset
 				) {
 					fill_separator = w / ns;
@@ -2146,18 +2148,17 @@ int LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 	for (pos_type z = 0; z < pit->size() + 1; ) {
 		Row row(z);
 		z = rowBreakPoint(pit, row) + 1;
-		row.end(z);
+		row.endpos(z);
 		int const f = fill(pit, row, ww);
 		int const w = ww - f;
 		par_width = std::max(par_width, w);
 		row.fill(f);
 		row.width(w);
+		prepareToPrint(pit, row);
+		setHeightOfRow(pit, row);
+		row.y_offset(pit->height);
+		pit->height += row.height();
 		pit->rows.push_back(row);
-		RowList::iterator rit = boost::prior(pit->rows.end());
-		prepareToPrint(pit, *rit);
-		setHeightOfRow(pit, *rit);
-		rit->y_offset(pit->height);
-		pit->height += rit->height();
 	}
 	height += pit->height;
 

@@ -566,7 +566,7 @@ void LyXText::cursorHome()
 
 void LyXText::cursorEnd()
 {
-	setCursor(cursorPar(), cursorRow()->end() - 1);
+	setCursor(cursorPar(), cursorRow()->endpos() - 1);
 }
 
 
@@ -1502,7 +1502,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	boundary = false;
 	// This (rtl_support test) is not needed, but gives
 	// some speedup if rtl_support == false
-	bool const lastrow = lyxrc.rtl_support && row.end() == pit->size();
+	bool const lastrow = lyxrc.rtl_support && row.endpos() == pit->size();
 
 	// If lastrow is false, we don't need to compute
 	// the value of rtl.
@@ -1511,7 +1511,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		: false;
 	if (lastrow &&
 		 ((rtl  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
-		  (!rtl && !left_side && vc == last + 1   && x > tmpx + 5)))
+		  (!rtl && !left_side && vc == last + 1  && x > tmpx + 5)))
 		c = last + 1;
 	else if (vc == row.pos()) {
 		c = vis2log(vc);

@@ -1,3 +1,15 @@
+
+2003-10-22  André Pönitz  <poenitz@gmx.net>
+
+	* lyxtext.h:
+	* text.C: use Row & instead of RowList::iterator
+
+	* lyxrow.h: rename end() to endpos()
+
+	* rowpainter.C:
+	* text.C:
+	* text2.C: adjust
+
 2003-10-22  Angus Leeming  <leeming@lyx.org>
 
 	* buffer.[Ch] (fully_loaded): new member function, returning true

@@ -24,17 +24,11 @@ using std::min;
 using std::endl;
 
 
-bool isParEnd(Paragraph const & par, Row const & row)
-{
-	return row.end() == par.size();
-}
-
-
 pos_type lastPos(Paragraph const & par, Row const & row)
 {
 	if (par.empty())
 		return 0;
-	pos_type pos = row.end() - 1;
+	pos_type pos = row.endpos() - 1;
 	if (pos == par.size())
 		--pos;
 	return pos;
@@ -113,14 +107,14 @@ bool hfillExpansion(Paragraph const & par, Row const & row, pos_type pos)
 
 	// at the end of a row it does not count
 	// unless another hfill exists on the line
-	if (pos >= lastPos(par, row)) {
+	if (pos >= row.endpos()) {
 		for (pos_type i = row.pos(); i < pos && !par.isHfill(i); ++i)
 			return false;
 	}
 
 	// at the beginning of a row it does not count, if it is not
 	// the first row of a paragaph
-	if (row.isParStart())
+	if (row.pos() == 0)
 		return true;
 
 	// in some labels it does not count

@@ -14,6 +14,7 @@
 #include "rowpainter.h"
 
 #include "buffer.h"
+#include "debug.h"
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "encoding.h"
@@ -527,7 +528,7 @@ void RowPainter::paintDepthBar()
 	Paragraph::depth_type prev_depth = 0;
 	if (row_ != text_.firstRow()) {
 		ParagraphList::iterator pit2 = pit_;
-		if (row_ == pit2->rows.begin())
+		if (row_->pos() == 0)
 			--pit2;
 		prev_depth = pit2->getDepth();
 	}
@@ -535,7 +536,7 @@ void RowPainter::paintDepthBar()
 	Paragraph::depth_type next_depth = 0;
 	if (row_ != text_.lastRow()) {
 		ParagraphList::iterator pit2 = pit_;
-		if (boost::next(row_) == pit2->rows.end())
+		if (row_->endpos() >= pit2->size())
 			++pit2;
 		next_depth = pit2->getDepth();
 	}
@@ -735,12 +736,14 @@ void RowPainter::paintFirst()
 	}
 
 	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
+	bool const is_seq = isFirstInSequence(pit_, text_.ownerParagraphs());
+	//lyxerr << "paintFirst: " << pit_->id() << " is_seq: " << is_seq << std::endl;
 
 	// should we print a label?
 	if (layout->labeltype >= LABEL_STATIC
 	    && (layout->labeltype != LABEL_STATIC
-		|| layout->latextype != LATEX_ENVIRONMENT
-		|| isFirstInSequence(pit_, text_.ownerParagraphs()))) {
+		      || layout->latextype != LATEX_ENVIRONMENT
+		      || is_seq)) {
 
 		LyXFont font = getLabelFont();
 		if (!pit_->getLabelstring().empty()) {
@@ -788,7 +791,7 @@ void RowPainter::paintFirst()
 
 	// the labels at the top of an environment.
 	// More or less for bibliography
-	} else if (isFirstInSequence(pit_, text_.ownerParagraphs()) &&
+	} else if (is_seq &&
 		(layout->labeltype == LABEL_TOP_ENVIRONMENT ||
 		layout->labeltype == LABEL_BIBLIO ||
 		layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
@@ -1036,10 +1039,10 @@ void RowPainter::paint()
 	// changebar
 	paintChangeBar();
 
-	if (row_->isParStart())
+	if (row_->pos() == 0)
 		paintFirst();
 
-	if (isParEnd(*pit_, *row_))
+	if (row_->endpos() >= pit_->size())
 		paintLast();
 
 	// paint text

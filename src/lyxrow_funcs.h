@@ -18,8 +18,6 @@
 class Paragraph;
 class Row;
 
-bool isParEnd(Paragraph const & par, Row const & row);
-
 lyx::pos_type lastPos(Paragraph const & par, Row const & row);
 
 int numberOfSeparators(Paragraph const & par, Row const & row);
