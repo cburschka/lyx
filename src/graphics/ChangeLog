@@ -1,3 +1,11 @@
+2002-03-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* GraphicsConverter.[Ch] (converted): make first arg const ref.
+
+	* GraphicsCacheItem.h: doxy change
+
+	* GraphicsCacheItem.C: ws change
+
 2002-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Makefile.am: if there is no image loading class leveraging the power

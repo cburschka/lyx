@@ -272,7 +272,8 @@ ConvProcess::ConvProcess(string const & script_file,
 }
 
 
-void ConvProcess::converted(string /* cmd */, pid_t /* pid */, int retval)
+void ConvProcess::converted(string const &/* cmd */,
+			    pid_t /* pid */, int retval)
 {
 	// Clean-up behind ourselves
 	lyx::unlink(script_file_);

@@ -33,6 +33,7 @@ extern BufferView * current_view;
 
 using std::endl;
 
+
 namespace grfx {
 
 GCacheItem::GCacheItem(InsetGraphics const & inset, GParams const & params)

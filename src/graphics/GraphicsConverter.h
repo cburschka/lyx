@@ -107,7 +107,7 @@ struct ConvProcess : public SigC::Object
 	 *  Cleans-up the temporary files, emits the on_finish signal and
 	 *  removes the ConvProcess from the list of all processes.
 	 */
-	void converted(string cmd, pid_t pid, int retval);
+	void converted(string const & cmd, pid_t pid, int retval);
 
 	///
 	string script_file_;

@@ -184,6 +184,7 @@ private:
 };
 
 
+///
 class ModifiedItem {
 public:
 	///
