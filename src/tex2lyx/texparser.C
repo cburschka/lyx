@@ -20,6 +20,7 @@ using std::endl;
 using std::fill;
 using std::istream;
 using std::istringstream;
+using std::ostringstream;
 using std::ostream;
 using std::string;
 
@@ -320,6 +321,36 @@ string Parser::getOpt()
 {
 	string const res = getArg('[', ']');
 	return res.empty() ? string() : '[' + res + ']';
+}
+
+
+string const Parser::verbatimEnvironment(string const & name)
+{
+	if (!good())
+		return string();
+
+	ostringstream os;
+	for (Token t = get_token(); good(); t = get_token()) {
+		if (t.cat() == catBegin) {
+			putback();
+			os << '{' << verbatim_item() << '}';
+		} else if (t.asInput() == "\\begin") {
+			string const env = getArg('{', '}');
+			os << "\\begin{" << env << '}'
+			   << verbatimEnvironment(env)
+			   << "\\end{" << env << '}';
+		} else if (t.asInput() == "\\end") {
+			string const end = getArg('{', '}');
+			if (end != name)
+				cerr << "\\end{" << end
+				     << "} does not match \\begin{" << name
+				     << "}." << endl;
+			return os.str();
+		} else
+			os << t.asInput();
+	}
+	cerr << "unexpected end of input" << endl;
+	return os.str();
 }
 
 

@@ -150,6 +150,12 @@ public:
 	std::string getFullOpt();
 	/// \returns getArg('[', ']') including the brackets
 	std::string getOpt();
+	/*!
+	 * \returns the contents of the environment \p name.
+	 * <tt>\begin{name}</tt> must be parsed already, <tt>\end{name}</tt>
+	 * is parsed but not returned.
+	 */
+	std::string const verbatimEnvironment(std::string const & name);
 	/// Returns the character of the current token and increments the token position.
 	char getChar();
 	///

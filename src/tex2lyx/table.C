@@ -653,6 +653,7 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 			if (n.cat() == catMath) {
 				// TeX's $$...$$ syntax for displayed math
 				os << "\\[";
+				// This does only work because parse_math outputs TeX
 				parse_math(p, os, FLAG_SIMPLE, MATH_MODE);
 				os << "\\]";
 				p.get_token(); // skip the second '$' token
@@ -660,6 +661,7 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 				// simple $...$  stuff
 				p.putback();
 				os << '$';
+				// This does only work because parse_math outputs TeX
 				parse_math(p, os, FLAG_SIMPLE, MATH_MODE);
 				os << '$';
 			}
@@ -699,12 +701,14 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 
 		else if (t.cs() == "(") {
 			os << "\\(";
+			// This does only work because parse_math outputs TeX
 			parse_math(p, os, FLAG_SIMPLE2, MATH_MODE);
 			os << "\\)";
 		}
 
 		else if (t.cs() == "[") {
 			os << "\\[";
+			// This does only work because parse_math outputs TeX
 			parse_math(p, os, FLAG_EQUATION, MATH_MODE);
 			os << "\\]";
 		}
@@ -713,12 +717,10 @@ void parse_table(Parser & p, ostream & os, bool is_long_tabular,
 			string const name = p.getArg('{', '}');
 			active_environments.push_back(name);
 			os << "\\begin{" << name << '}';
-			if (is_math_env(name)) {
-				parse_math(p, os, FLAG_END, MATH_MODE);
-			} else {
-				parse_table(p, os, is_long_tabular, pos,
-				            FLAG_END);
-			}
+			// treat the nested environment as a block, don't
+			// parse &, \\ etc, because they don't belong to our
+			// table if they appear.
+			os << p.verbatimEnvironment(name);
 			os << "\\end{" << name << '}';
 			active_environments.pop_back();
 		}
