@@ -4,6 +4,8 @@
 
 	* math_cursor.C: keep empty super/subscript a bit longer
 
+	* math_cursor.C: do not move into insets that don't have inner cells yet
+
 2001-07-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* formula.C (insetAllowed): allow insertion of label

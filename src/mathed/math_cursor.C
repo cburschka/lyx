@@ -745,7 +745,8 @@ in_word_set(s) << " \n";
 		insert(p);
 		if (p->nargs()) {
 			plainLeft();
-			push(p, true);
+			//push(p, true);
+			Right();  // do not push for e.g. MathBigopInset
 			if (oldsel) 
 				SelPaste();
 		}
