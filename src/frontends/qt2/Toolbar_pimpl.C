@@ -224,13 +224,7 @@ void Toolbar::Pimpl::openLayoutList()
 }
 
 
-void Toolbar::Pimpl::set(bool)
-{
-// FIXME: ???
-}
-
-
-void Toolbar::Pimpl::add(int action, bool)
+void Toolbar::Pimpl::add(int action)
 {
 	if (!toolbars_.size()) {
 		toolbars_.push_back(new QToolBar(owner_));

@@ -66,7 +66,6 @@ QtView::QtView(unsigned int width, unsigned int height)
 		this, SLOT(activated(int)));
  
 	toolbar_.reset(new Toolbar(this, *getDialogs(), 0, 0, toolbardefaults));
-	toolbar_->set(true);
 
 	statusBar()->setSizeGripEnabled(false);
  

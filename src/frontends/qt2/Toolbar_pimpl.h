@@ -36,22 +36,13 @@ struct Toolbar::Pimpl {
 	friend class ToolbarProxy;
  
 public:
-	///
 	Pimpl(LyXView * o, Dialogs &, int x, int y);
-	///
+
 	~Pimpl();
 	
-	/// (re)sets the toolbar
-	void set(bool doingmain = false);
-
-	void reset() { }
- 
-	/** this is to be the entry point to the toolbar
-	    frame, where you can change the toolbar realtime.
-	*/
-	void edit();
 	/// add a new button to the toolbar.
-    	void add(int, bool doclean = true);
+    	void add(int action);
+
 	/// update the state of the icons
 	void update();
 

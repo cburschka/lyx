@@ -18,6 +18,7 @@
  
 #include <qcombobox.h>
 #include <qtoolbutton.h>
+#include <qsize.h>
 #include <qpixmap.h>
  
 namespace {
