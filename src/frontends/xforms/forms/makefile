@@ -22,6 +22,7 @@ FDESIGN = fdesign
 SRCS := form_citation.fd \
 	form_copyright.fd \
 	form_document.fd \
+	form_error.fd \
 	form_graphics.fd \
 	form_index.fd \
 	form_preferences.fd \

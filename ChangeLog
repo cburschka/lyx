@@ -1,3 +1,44 @@
+2000-09-22  Juergen Vigna  <jug@sad.it>
+
+	* src/frontends/kde/Dialogs.C: added credits forms.
+
+	* src/frontends/gnome/Makefile.am (libgnome_la_OBJADD): added forms.
+
+	* src/frontends/gnome/Dialogs.C: added some forms.
+
+	* src/spellchecker.C (init_spell_checker): set language in pspell code
+	(RunSpellChecker): some modifications for setting language string.
+
+	* src/language.[Ch]: added language_country code.
+
+2000-09-21  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/Dialogs.h: added new signal showError.
+	Rearranged existing signals in some sort of alphabetical order.
+
+	* src/frontends/xforms/Makefile.am: added new files, FormBase.[Ch],
+	FormError.[Ch], form_error.[Ch]
+	* src/frontends/xforms/forms/makefile: added new file form_error.fd
+	* src/frontends/xforms/Dialogs.C: added new xforms dialog FormError.
+
+	* src/frontends/xforms/FormBase.[Ch]: new base class for xforms
+	dialogs. I think that this can be used as the base to all these
+	dialogs.
+
+	* src/frontends/xforms/FormError.[Ch]
+	* src/frontends/xforms/forms/form_error.fd: new files. Xforms
+	implementation of InsetError dialog.
+	
+	* src/insets/inseterror.[Ch]: rendered GUI-independent.
+
+	* src/frontends/kde/Dialogs.C: added new xforms dialog FormError.
+	* src/frontends/kde/Makefile.am: ditto
+
+2000-09-21  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/mathed/math_cursor.[Ch]: Removed class members macroln and
+	macrobf. This fixes a bug of invisible text.
+
 2000-09-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/doc/LaTeXConfig.lyx.in: updated.

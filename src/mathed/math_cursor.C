@@ -746,9 +746,7 @@ bool MathedCursor::pullArg()
 void MathedCursor::MacroModeOpen()
 {
    if (!macro_mode)  {
-      macroln = 0;
-      macrobf[0] = '\0';
-      imacro = new MathFuncInset(&macrobf[0]);
+      imacro = new MathFuncInset("");
       Insert (imacro);
       macro_mode = true;
    } else
@@ -760,25 +758,26 @@ void MathedCursor::MacroModeClose()
 {
    if (macro_mode)  {
       macro_mode = false;
-      latexkeys * l = in_word_set(macrobf, macroln);
-      if (macroln > 0 && (!l || (l && IsMacro(l->token, l->id))) && 
-	  !MathMacroTable::mathMTable.getMacro(macrobf)) {
+      latexkeys * l = in_word_set(imacro->GetName());
+      if (!imacro->GetName().empty()
+	  && (!l || (l && IsMacro(l->token, l->id))) && 
+	  !MathMacroTable::mathMTable.getMacro(imacro->GetName())) {
 	  if (!l) {
-	    imacro->SetName(macrobf);
+	    //imacro->SetName(macrobf);
 	      // This guarantees that the string will be removed by destructor
 	    imacro->SetType(LM_OT_UNDEF);
 	  } else 
 	    imacro->SetName(l->name);
       } else {
          Left();
-	 imacro->SetName("");
 	 if (cursor->GetInset()->GetType() == LM_OT_ACCENT) {
 	     setAccent(static_cast<MathAccentInset*>(cursor->GetInset())->getAccentCode());
 	 }
 	 cursor->Delete();
-	 if (l || MathMacroTable::mathMTable.getMacro(macrobf)) {
-	    Interpret(macrobf);
+	 if (l || MathMacroTable::mathMTable.getMacro(imacro->GetName())) {
+	    Interpret(imacro->GetName());
 	 }
+	 imacro->SetName("");
       }
       imacro = 0;
    }  
@@ -788,8 +787,8 @@ void MathedCursor::MacroModeClose()
 void MathedCursor::MacroModeBack()
 {
    if (macro_mode) {
-     if (macroln>0) {
-	macrobf[--macroln] = '\0';
+     if (!imacro->GetName().empty()) {
+	imacro->SetName(imacro->GetName().substr(0, imacro->GetName().length() - 1));
 	imacro->Metrics();
      } else 
 	MacroModeClose();
@@ -801,8 +800,7 @@ void MathedCursor::MacroModeBack()
 void MathedCursor::MacroModeInsert(char c)
 {
    if (macro_mode) {
-      macrobf[macroln + 1] = macrobf[macroln];
-      macrobf[macroln++] = c;
+      imacro->SetName(imacro->GetName() + c);
       imacro->Metrics();
    } else
 	   lyxerr << "Mathed Warning: we are not in macro mode" << endl;

@@ -2,9 +2,10 @@
 #include FORMS_H_LOCATION
 
 #include "Dialogs.h"
-#include "FormCopyright.h"
 #include "FormCitation.h"
+#include "FormCopyright.h"
 #include "FormDocument.h"
+#include "FormError.h"
 #include "FormGraphics.h"
 #include "FormIndex.h"
 #include "FormPreferences.h"
@@ -14,12 +15,20 @@
 #include "FormToc.h"
 #include "FormUrl.h"
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+// temporary till ported
+extern void ShowCredits();
+
 
 Dialogs::Dialogs(LyXView * lv)
 {
 	dialogs_.push_back(new FormCitation(lv, this));
 	dialogs_.push_back(new FormCopyright(lv, this));
 	dialogs_.push_back(new FormDocument(lv, this));
+	dialogs_.push_back(new FormError(lv, this));
 	dialogs_.push_back(new FormGraphics(lv, this));
 	dialogs_.push_back(new FormIndex(lv, this));
 	dialogs_.push_back(new FormPreferences(lv, this));
@@ -28,6 +37,8 @@ Dialogs::Dialogs(LyXView * lv)
 	dialogs_.push_back(new FormTabular(lv, this));
 	dialogs_.push_back(new FormToc(lv, this));
 	dialogs_.push_back(new FormUrl(lv, this));
+
+	showCredits.connect(slot(ShowCredits));
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

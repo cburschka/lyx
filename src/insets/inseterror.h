@@ -16,10 +16,13 @@
 #pragma interface
 #endif
 
-#include FORMS_H_LOCATION
 #include "lyxinset.h"
 #include "LString.h"
-#include "gettext.h"
+#include <sigc++/signal_system.h>
+
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Signal0;
+#endif
 
 /** Used for error messages from LaTeX runs.
   
@@ -30,56 +33,49 @@ class InsetError : public Inset {
 public:
 	///
 	explicit
-	InsetError(string const & string);
-#if 0
+	InsetError(string const &);
 	///
-	InsetError();
-#endif
+	~InsetError() { hide(); }
 	///
-	~InsetError();
+	int ascent(BufferView *, LyXFont const &) const;
 	///
-	int ascent(BufferView *, LyXFont const & font) const;
+	int descent(BufferView *, LyXFont const &) const;
 	///
-	int descent(BufferView *, LyXFont const & font) const;
-	///
-	int width(BufferView *, LyXFont const & font) const;
+	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
-	void Write(Buffer const *, std::ostream &) const;
+	void Write(Buffer const *, std::ostream &) const {}
 	///
-	void Read(Buffer const *, LyXLex & lex);
+	void Read(Buffer const *, LyXLex &) {}
 	///
-	int Latex(Buffer const *, std::ostream &,
-		  bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &, bool, bool) const { return 0; }
 	///
-	int Ascii(Buffer const *, std::ostream &) const;
+	int Ascii(Buffer const *, std::ostream &) const { return 0; }
 	///
-	int Linuxdoc(Buffer const *, std::ostream &) const;
+	int Linuxdoc(Buffer const *, std::ostream &) const { return 0; }
 	///
-	int DocBook(Buffer const *, std::ostream &) const;
+	int DocBook(Buffer const *, std::ostream &) const { return 0; }
 	///
-	bool AutoDelete() const;
+	bool AutoDelete() const { return true; }
 	/// what appears in the minibuffer when opening
 	string const EditMessage() const;
 	///
-	void Edit(BufferView *, int x, int y, unsigned int button);
+	void Edit(BufferView *, int, int, unsigned int);
 	///
-	EDITABLE Editable() const;
+	EDITABLE Editable() const { return IS_EDITABLE; }
 	///
-	Inset * Clone() const;
+	Inset * Clone() const { return new InsetError(contents); }
 	///
 	Inset::Code LyxCode() const { return Inset::NO_CODE; }
 	/// We don't want "begin" and "end inset" in lyx-file
 	bool DirectWrite() const { return true; };
 	///
-	static void CloseErrorCB(FL_OBJECT *, long data);
+	string const & getContents() const { return contents; }
+	///
+	Signal0<void> hide;
 private:
 	///
 	string contents;
-	///
-	FL_FORM * form;
-	///
-	FL_OBJECT * strobj;
 };
 #endif

@@ -14,6 +14,8 @@ libxforms_la_SOURCES = \
 	ButtonController.h \
 	Dialogs.C \
 	GUIRunTime.C \
+	FormBase.C \
+	FormBase.h \
 	FormCitation.C \
 	FormCitation.h \
 	form_citation.C \
@@ -28,6 +30,10 @@ libxforms_la_SOURCES = \
 	FormDocument.h \
 	form_document.C \
 	form_document.h \
+	FormError.C \
+	FormError.h \
+	form_error.C \
+	form_error.h \
 	FormGraphics.C \
 	FormGraphics.h \
 	form_graphics.C \

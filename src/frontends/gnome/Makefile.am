@@ -6,11 +6,14 @@ INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ -I${top_srcdir}/src/frontends/xforms \
 	${SIGC_CFLAGS}
 libgnome_la_OBJADD = \
+        ../xforms/FormBase.lo \
 	../xforms/FormCitation.lo \
 	../xforms/form_citation.lo \
 	../xforms/FormCommand.lo \
 	../xforms/FormDocument.lo \
 	../xforms/form_document.lo \
+        ../xforms/FormError.lo \
+        ../xforms/form_error.lo \
 	../xforms/FormGraphics.lo \
 	../xforms/form_graphics.lo \
 	../xforms/FormIndex.lo \

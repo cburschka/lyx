@@ -2006,7 +2006,6 @@ int LyXTabular::TeXCellPostamble(ostream & os, int cell) const
 int LyXTabular::Latex(Buffer const * buf,
 		      ostream & os, bool fragile, bool fp) const
 {
-#warning Jürgen, this func should be split into more funcs (Lgb)
     int ret = 0;
     int i,j;
     int cell = 0;

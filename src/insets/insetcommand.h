@@ -84,7 +84,7 @@ public:
 	explicit
 	InsetCommand(InsetCommandParams const &);
 	///
-	virtual ~InsetCommand() { hide(); };
+	virtual ~InsetCommand() { hide(); }
 	///
 	void Write(Buffer const *, std::ostream & os) const
 		{ p_.Write( os ); }

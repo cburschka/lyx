@@ -16,9 +16,12 @@ BUILTSOURCES =	formcopyrightdialog_moc.C \
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 
 libkde_la_OBJADD = \
+        ../xforms/FormBase.lo \
         ../xforms/FormCommand.lo \
         ../xforms/FormDocument.lo \
         ../xforms/form_document.lo \
+        ../xforms/FormError.lo \
+        ../xforms/form_error.lo \
         ../xforms/FormGraphics.lo \
         ../xforms/form_graphics.lo \
         ../xforms/FormPreferences.lo \

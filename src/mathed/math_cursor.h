@@ -164,11 +164,7 @@ class MathedCursor {
     MathedTextCodes lastcode;
 
  private:
-	///
-    char macrobf[80];
-	///
-    int macroln;
-	///
+    ///
     MathFuncInset * imacro;
 };
 

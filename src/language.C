@@ -20,7 +20,7 @@
 
 Languages languages;
 Language const * default_language;
-Language ignore_lang("ignore", "Ignore", false, 0);
+Language ignore_lang("ignore", "Ignore", false, 0, "ignore");
 Language const * ignore_language = &ignore_lang;
 
 ///
@@ -44,6 +44,7 @@ struct lang_item {
 	char const * display;
 	bool rtl;
 	Encoding const * encoding;
+	char const * code;
 };
 
 
@@ -53,59 +54,60 @@ void LangInit::initL()
 	// Same method is used in LyXAction.C (Lgb)
 
 	lang_item items[] = {
-	{ "afrikaans", N_("Afrikaans"), false, &iso8859_1 },
-	{ "american", N_("American"), false, &iso8859_1 },
-	{ "arabic", N_("Arabic"), true, &iso8859_6 },
-	{ "austrian", N_("Austrian"), false, &iso8859_1 },
-	{ "bahasa", N_("Bahasa"), false, &iso8859_1 },
-	{ "brazil", N_("Brazil"), false, &iso8859_1 },
-	{ "breton", N_("Breton"), false, &iso8859_1 },
-	{ "catalan", N_("Catalan"), false, &iso8859_1 },
-	{ "croatian", N_("Croatian"), false, &iso8859_2 },
-	{ "czech", N_("Czech"), false, &iso8859_2 },
-	{ "danish", N_("Danish"), false, &iso8859_1 },
-	{ "default", N_("Document wide language"), false, &iso8859_1 },
-	{ "dutch", N_("Dutch"), false, &iso8859_1 },
-	{ "english", N_("English"), false, &iso8859_1 },
-	{ "esperanto", N_("Esperanto"), false, &iso8859_3 },
-	{ "estonian", N_("Estonian"), false, &iso8859_4 },
-	{ "finnish", N_("Finnish"), false, &iso8859_1 },
-	{ "frenchb", N_("French"), false, &iso8859_1 },
-	{ "french", N_("French (GUTenberg)"), false, &iso8859_1 },
-	{ "galician", N_("Galician"), false, &iso8859_1 },
-	{ "german", N_("German"), false, &iso8859_1 },
-	{ "greek", N_("Greek"), false, &iso8859_7 },
-	{ "hebrew", N_("Hebrew"), true, &cp1255 },
+	{ "afrikaans", N_("Afrikaans"), false, &iso8859_1, "" },
+	{ "american", N_("American"), false, &iso8859_1, "en_US" },
+	{ "arabic", N_("Arabic"), true, &iso8859_6, "" },
+	{ "austrian", N_("Austrian"), false, &iso8859_1, "de_AU" },
+	{ "bahasa", N_("Bahasa"), false, &iso8859_1, "" },
+	{ "brazil", N_("Brazil"), false, &iso8859_1, "" },
+	{ "breton", N_("Breton"), false, &iso8859_1, "" },
+	{ "catalan", N_("Catalan"), false, &iso8859_1, "" },
+	{ "croatian", N_("Croatian"), false, &iso8859_2, "" },
+	{ "czech", N_("Czech"), false, &iso8859_2, "" },
+	{ "danish", N_("Danish"), false, &iso8859_1, "" },
+	{ "default", N_("Document wide language"), false, &iso8859_1, "" },
+	{ "dutch", N_("Dutch"), false, &iso8859_1, "" },
+	{ "english", N_("English"), false, &iso8859_1, "en_EN" },
+	{ "esperanto", N_("Esperanto"), false, &iso8859_3, "" },
+	{ "estonian", N_("Estonian"), false, &iso8859_4, "" },
+	{ "finnish", N_("Finnish"), false, &iso8859_1, "" },
+	{ "frenchb", N_("French"), false, &iso8859_1, "fr_FR" },
+	{ "french", N_("French (GUTenberg)"), false, &iso8859_1, "fr_FR" },
+	{ "galician", N_("Galician"), false, &iso8859_1, "" },
+	{ "german", N_("German"), false, &iso8859_1, "de_DE" },
+	{ "greek", N_("Greek"), false, &iso8859_7, "" },
+	{ "hebrew", N_("Hebrew"), true, &cp1255, "" },
 	/* According to Zrubecz Laszlo <zrubi@k2.jozsef.kando.hu>,
 	   "magyar" is better. I kept it here in case we want
 	   to  provide aliasing of languages. (JMarc) 
 	*/
-	//{ "hungarian", N_("Hungarian"), false, &iso8859_2 },
-	{ "irish", N_("Irish"), false, &iso8859_1 },
-	{ "italian", N_("Italian"), false, &iso8859_1 },
-	{ "lsorbian", N_("Lsorbian"), false, &iso8859_2 },
-	{ "magyar", N_("Magyar"), false, &iso8859_2 },
-	{ "norsk", N_("Norsk"), false, &iso8859_1 },
-	{ "polish", N_("Polish"), false, &iso8859_2 },
-	{ "portuges", N_("Portuges"), false, &iso8859_1 },
-	{ "romanian", N_("Romanian"), false, &iso8859_2 },
-	{ "russian", N_("Russian"), false, &koi8 },
-	{ "scottish", N_("Scottish"), false, &iso8859_1 },
-	{ "spanish", N_("Spanish"), false, &iso8859_1 },
-	{ "slovak", N_("Slovak"), false, &iso8859_2 },
-	{ "slovene", N_("Slovene"), false, &iso8859_2 },
-	{ "swedish", N_("Swedish"), false, &iso8859_1 },
-	{ "turkish", N_("Turkish"), false, &iso8859_9 },
-	{ "usorbian", N_("Usorbian"), false, &iso8859_2 },
-	{ "welsh", N_("Welsh"), false, &iso8859_1 },
-	{ 0, 0, false, 0 }
+	//{ "hungarian", N_("Hungarian"), false, &iso8859_2, "" },
+	{ "irish", N_("Irish"), false, &iso8859_1, "" },
+	{ "italian", N_("Italian"), false, &iso8859_1, "it_IT" },
+	{ "lsorbian", N_("Lsorbian"), false, &iso8859_2, "" },
+	{ "magyar", N_("Magyar"), false, &iso8859_2, "" },
+	{ "norsk", N_("Norsk"), false, &iso8859_1, "" },
+	{ "polish", N_("Polish"), false, &iso8859_2, "" },
+	{ "portuges", N_("Portuges"), false, &iso8859_1, "pt_PT" },
+	{ "romanian", N_("Romanian"), false, &iso8859_2, "" },
+	{ "russian", N_("Russian"), false, &koi8, "" },
+	{ "scottish", N_("Scottish"), false, &iso8859_1, "" },
+	{ "spanish", N_("Spanish"), false, &iso8859_1, "es_ES" },
+	{ "slovak", N_("Slovak"), false, &iso8859_2, "" },
+	{ "slovene", N_("Slovene"), false, &iso8859_2, "" },
+	{ "swedish", N_("Swedish"), false, &iso8859_1, "" },
+	{ "turkish", N_("Turkish"), false, &iso8859_9, "" },
+	{ "usorbian", N_("Usorbian"), false, &iso8859_2, "" },
+	{ "welsh", N_("Welsh"), false, &iso8859_1, "" },
+	{ 0, 0, false, 0, 0 }
 	};
 
 	int i = 0;
 	while (items[i].lang) {
 		languages[items[i].lang] =
 			Language(items[i].lang, items[i].display, 
-				 items[i].rtl, items[i].encoding);
+				 items[i].rtl, items[i].encoding,
+				 items[i].code);
 		++i;
 	}
 	

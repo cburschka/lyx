@@ -58,7 +58,9 @@
 #include "lyx_gui_misc.h"
 #include "debug.h"
 #include "support/lstrings.h"
+#include "language.h"
 #include "encoding.h"
+#include "support/lstrings.h"
 
 //#define USE_PSPELL 1
 
@@ -593,9 +595,12 @@ void sc_store_replacement(string const & mis, string const & cor) {
 PspellCanHaveError * spell_error_object;
 
 static
-void init_spell_checker(BufferParams const &, string const & /* lang */)
+void init_spell_checker(BufferParams const &, string const & lang)
 {
 	PspellConfig * config = new_pspell_config();
+	string code;
+	(void)split(lang, code, '_');
+	config->replace("language-tag", code.c_str());
 	spell_error_object = new_pspell_manager(config);
 	if (pspell_error_number(spell_error_object) != 0) {
 		spell_error = pspell_error_message(spell_error_object);
@@ -787,7 +792,7 @@ void ShowSpellChecker(BufferView * bv)
 }
 
 
-// Perform an ispell session
+// Perform a spell session
 static
 bool RunSpellChecker(BufferView * bv)
 {
@@ -795,8 +800,22 @@ bool RunSpellChecker(BufferView * bv)
 	int newvalue;
 	FL_OBJECT * obj;
 
-	string tmp = (lyxrc.isp_use_alt_lang) ? lyxrc.isp_alt_lang : bv->buffer()->GetLanguage();
-	bool rtl = tmp == "hebrew" || tmp == "arabic";
+#ifdef USE_PSPELL
+	string tmp = (lyxrc.isp_use_alt_lang) ?
+	    lyxrc.isp_alt_lang : bv->buffer()->params.language_info->code();
+#else
+	string tmp = (lyxrc.isp_use_alt_lang) ?
+	    lyxrc.isp_alt_lang : bv->buffer()->GetLanguage();
+#endif
+#warning This is not good we should find a way to identify a rtl-language in a more general way. Please have a look Dekel! (Jug)
+// For now I'll change this to a bit more general solution but
+// Please comment on this if you don't like it. We probaly need
+// anoter flag something like lyxrc.isp_use_alt_lang_rtl (true/false)!
+	bool rtl;
+	if (lyxrc.isp_use_alt_lang)
+	    rtl = (tmp == "hebrew" || tmp == "arabic");
+	else
+	    rtl = bv->buffer()->params.language_info->RightToLeft();
 
 	int oldval = 0;  /* used for updating slider only when needed */
 	float newval = 0.0;

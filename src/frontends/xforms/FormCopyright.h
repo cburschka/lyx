@@ -26,7 +26,6 @@
 #endif
 
 class Dialogs;
-// same arguement as in Dialogs.h s/LyX/UI/
 class LyXView;
 struct FD_form_copyright;
 

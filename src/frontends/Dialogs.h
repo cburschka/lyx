@@ -32,6 +32,7 @@ class LyXView;
 class InsetGraphics;
 class InsetBibKey;
 class InsetBibtex;
+class InsetError;
 class InsetInclude;
 class InsetInfo;
 class InsetTabular;
@@ -71,38 +72,27 @@ public:
 	Signal0<void> updateBufferDependent;
 	//@}
 
-	/**@name Dialog Access Signals */
+	/**@name Dialog Access Signals.
+	   Put into some sort of alphabetical order */
 	//@{
-	/// Opens the Preamble Dialog.
-	Signal0<void> showPreamble;
-	///
-	Signal0<void> showLogFile;
-	///
-	Signal1<void, InsetTabular *> showTabular;
-	///
-	Signal1<void, InsetTabular *> updateTabular;
-	///
-	Signal1<void, InsetTabular *> hideTabular;
-	///
-	Signal0<void> showTabularCreate;
-	///
-	Signal0<void> showCharacter;
-	///
-	Signal0<void> updateCharacter;  // allow update as cursor moves
-	///
-	Signal0<void> showParagraph;
 	/// Do we really have to push this?
 	Signal1<void, vector<string> const &> SetDocumentClassChoice;
 	///
-	Signal0<void> showPrint;
+	Signal1<void, InsetBibKey *> showBibkey;
+	///
+	Signal1<void, InsetBibtex *> showBibtex;
+	///
+	Signal0<void> showCharacter;
+	///
+	Signal1<void, InsetCommand *> showCitation;
+	///
+	Signal1<void, string const &> createCitation;
 	///
 	Signal0<void> showCopyright;
 	///
 	Signal0<void> showCredits;
 	///
-	Signal0<void> showPreferences;
-	///
-	Signal0<void> showLayoutDocument;
+	Signal1<void, InsetError *> showError;
 	///
 	Signal1<void, InsetGraphics *> showGraphics;
 	///
@@ -112,15 +102,31 @@ public:
 	///
 	Signal1<void, string const &> createIndex;
 	///
-	Signal1<void, InsetBibKey *> showBibkey;
+	Signal1<void, InsetInfo *> showInfo;
 	///
-	Signal1<void, InsetCommand *> showCitation;
+	Signal0<void> showLayoutDocument;
 	///
-	Signal1<void, string const &> createCitation;
+	Signal0<void> showLogFile;
+	///
+	Signal0<void> showParagraph;
+	///
+	Signal0<void> showPreamble;
+	///
+	Signal0<void> showPreferences;
+	///
+	Signal0<void> showPrint;
 	///
 	Signal1<void, InsetCommand *> showRef;
 	///
 	Signal1<void, string const &> createRef;
+	///
+	Signal1<void, InsetTabular *> showTabular;
+	///
+	Signal1<void, InsetTabular *> updateTabular;
+	///
+	Signal1<void, InsetTabular *> hideTabular;
+	///
+	Signal0<void> showTabularCreate;
 	///
 	Signal1<void, InsetCommand *> showTOC;
 	///
@@ -130,9 +136,7 @@ public:
 	///
 	Signal1<void, string const &> createUrl;
 	///
-	Signal1<void, InsetBibtex *> showBibtex;
-	///
-	Signal1<void, InsetInfo *> showInfo;
+	Signal0<void> updateCharacter;  // allow update as cursor moves
 	//@}
 private:
 	///

@@ -28,8 +28,10 @@ public:
 	Language() : RightToLeft_(false) {}
 	///
 	Language(string const & l, string const & d,
-		 bool rtl, Encoding const * e)
-		: lang_(l), display_(d), RightToLeft_(rtl) , encoding_(e) {}
+		 bool rtl, Encoding const * e, string const & c)
+		: lang_(l), display_(d), RightToLeft_(rtl) , encoding_(e),
+		  code_(c)
+		{}
 	///
 	string const & lang() const {
 		return lang_;
@@ -46,6 +48,10 @@ public:
 	Encoding const * encoding() const {
 		return encoding_;
 	}
+	///
+	string const & code() const {
+		return code_;
+	}
 private:
 	///
 	string lang_;
@@ -55,6 +61,8 @@ private:
 	bool RightToLeft_;
 	///
 	Encoding const * encoding_;
+	///
+	string code_;
 };
 
 #if 0
