@@ -45,7 +45,7 @@ public:
 	/// This returns the list of labels on the child buffer
 	string getLabel(int) const;
 	/// This returns the list of bibkeys on the child buffer
-	string getKeys() const;
+	string getKeys(char delim) const;
 	///
 	void Edit(int, int);
 	///

@@ -17,31 +17,12 @@
 
 @TOP@
 
-/* Define on SunOS 4 and SCO, were some functions are missing from the headers */
-#undef BROKEN_HEADERS
-
-/* Define if you want debugging turned on as default. */
-#undef DEBUG_AS_DEFAULT
-
-/* Define if you are building a development version of LyX */
-#undef DEVEL_VERSION
-
 /* Define to 1 if NLS is requested.  */
 #undef ENABLE_NLS
-
-/* Define to nothing if your compiler does not understand the
-   `explicit' directive */
-#undef explicit
 
 /* define this to the location of forms.h to be used with #include,
   e.g. <forms.h> */
 #undef FORMS_H_LOCATION
-
-/* define this to the location of stl_string_fwd.h to be used with #include,
-  NOTE: Do not set it to <stl_string_fwd.h> as that will find the LyX
-  	supplied version of the header.
-  e.g. <../include/stl_string_fwd.h> or better yet use an absolute path */
-#undef STL_STRING_FWD_H_LOCATION
 
 /* Define if your locale.h file contains LC_MESSAGES.  */
 #undef HAVE_LC_MESSAGES
@@ -55,25 +36,11 @@
 /* Define as 1 if you have the stpcopy function */
 #undef HAVE_STPCPY
 
-#if 0
-/* Define if the bool type is known to your compiler */
-#undef HAVE_bool
-#endif
-
-/* Define to the name of the distribution.  */
-#undef PACKAGE
-
-/* You might want to define TWO_COLOR_ICONS if you want to spare
- your colormap.  This will use monochrome icons instead of colored
- ones. */
-#undef TWO_COLOR_ICONS
-
-/* Define to the version of the distribution.  */
-#undef VERSION
-
-/* Define this if you want to see the #warning directives put here and
-   there by the developpers to get attention */
-#undef WITH_WARNINGS
+/* define this to the location of stl_string_fwd.h to be used with #include,
+  NOTE: Do not set it to <stl_string_fwd.h> as that will find the LyX
+  	supplied version of the header.
+  e.g. <../include/stl_string_fwd.h> or better yet use an absolute path */
+#undef STL_STRING_FWD_H_LOCATION
 
 /* define this to the location of xpm.h to be used with #include,
   e.g. <xpm.h> */

@@ -115,7 +115,7 @@ public:
 	///
 	int Latex(string & file, signed char fragile);
 	///
-	string getKeys();
+	string getKeys(char delim);
 	///
 	unsigned char Editable() const {
 		return 1;

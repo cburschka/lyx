@@ -61,7 +61,13 @@ You will also need a recent C++ compiler, where recent means that the
 compilers knows a bit about the C++ standard. Compilers that are known
 to compile LyX are gcc 2.8.1 and 2.95.x, the various versions of egcs
 and Digital C++ version 6.1. Please tell us your experience with other
-compilers. 
+compilers. It is probably _not_ possible to compile LyX with gcc
+2.7.x, but this may change in the future. 
+
+Note that, contrary to LyX 1.0.x, LyX 1.1.x makes great use of C++
+Standard Template Library (STL); this means that gcc users will have
+to install the relevant libstdc++ library to be able to compile this
+version.
 
 If you make modifications to files in src/ (for example by applying a 
 patch), you will need to have the GNU gettext package installed, due to 

@@ -14,6 +14,9 @@
 #include <config.h>
 #include "debug.h"
 
+#include <iomanip>
+using std::setw;
+
 struct error_item {
 	Debug::type level;
 	char const * name;
@@ -85,8 +88,8 @@ void Debug::showLevel(ostream & o, Debug::type level)
 void Debug::showTags(ostream & os) 
 {
 	for (int i = 0 ; i < numErrorTags ; ++i)
-		os << "  " << errorTags[i].level
-		   << "  " << errorTags[i].name
+		os << setw(5) << errorTags[i].level
+		   << setw(10) << errorTags[i].name
 		   << "  " << errorTags[i].desc << '\n';
 	os.flush();
 }

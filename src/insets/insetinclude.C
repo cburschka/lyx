@@ -452,14 +452,14 @@ int InsetInclude::GetNumberOfLabels() const
 }
 
 
-string InsetInclude::getKeys() const
+string InsetInclude::getKeys(char delim) const
 {
 	string lst;
 	
 	if (loadIfNeeded()) {
 		Buffer *tmp = bufferlist.getBuffer(getFileName());
 		tmp->setParentName(""); 
-		lst =  tmp->getBibkeyList(',');
+		lst =  tmp->getBibkeyList(delim);
 		tmp->setParentName(getMasterFilename());
 	}
 	

@@ -1,3 +1,37 @@
+1999-12-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/buffer.C (getBibkeyList): pass the parameter delim to
+	InsetInclude::getKeys and InsetBibtex::getKeys.
+
+	* src/insets/insetinclude.[Ch] (getKeys): add parameter delim, which
+	is passed to Buffer::getBibkeyList
+	
+	* src/insets/insetbib.[Ch] (getKeys): add parameter delim, and use it
+	instead of the hardcoded comma.
+
+	* src/insets/insetbib.C (getKeys): make sure that there are not
+	leading blanks in bibtex keys. Normal latex does not care, but
+	harvard.sty seems to dislike blanks at the beginning of citation
+	keys. In particular, the retturn value of the function is
+
+	* INSTALL: make it clear that libstdc++ is needed and that gcc
+	2.7.x probably does not work.
+
+	* src/support/filetools.C (findtexfile): make debug message go to
+	the LATEX channel
+	* src/insets/insetbib.C (getKeys): ditto
+
+	* src/debug.C (showTags): make sure that the output is correctly
+	aligned. 
+
+	* configure.in: add a comment for TWO_COLOR_ICON define.
+
+	* acconfig.h: remove all the entries that already defined in
+	configure.in or acinclude.m4.
+
+	* src/buffer.C (makeLaTeXFile): headers of latex file also changed
+	to avoid user name, date and copyright.
+
 1999-12-21  Juergen Vigna  <jug@sad.it>
 
 	* src/table.C (Read): Now read bogus row format informations

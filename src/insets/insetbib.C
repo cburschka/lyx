@@ -350,7 +350,7 @@ int InsetBibtex::Latex(string & file, signed char /*fragile*/)
 
 
 // This method returns a comma separated list of Bibtex entries
-string InsetBibtex::getKeys()
+string InsetBibtex::getKeys(char delim)
 {
 	// This hack is copied from InsetBibtex::Latex.
 	// Is it still needed? Probably yes.
@@ -364,7 +364,7 @@ string InsetBibtex::getKeys()
 	while(!tmp.empty()) {
 		string fil = findtexfile(ChangeExtension(tmp, "bib", false),
 					 "bib");
-		lyxerr << "Bibfile: " << fil << endl;
+		lyxerr[Debug::LATEX] << "Bibfile: " << fil << endl;
 		// If we didn't find a matching file name just fail silently
 		if (!fil.empty()) {
 			// This is a _very_ simple parser for Bibtex database
@@ -374,6 +374,7 @@ string InsetBibtex::getKeys()
 			ifstream ifs(fil.c_str());
 			string linebuf;
 			while (getline(ifs, linebuf)) {
+				linebuf = frontStrip(linebuf);
 				if (prefixIs(linebuf, "@")) {
 					linebuf = subst(linebuf, '{', '(');
 					linebuf = split(linebuf, tmp, '(');
@@ -382,9 +383,10 @@ string InsetBibtex::getKeys()
 					    && !prefixIs(tmp, "@preamble")) {
 						linebuf = split(linebuf,
 								tmp, ',');
+						tmp = frontStrip(strip(tmp));
 						if (!tmp.empty()) {
-							keys += strip(tmp);
-							keys += ", ";
+							keys += tmp;
+							keys += delim;
 						}
 					}
 				}

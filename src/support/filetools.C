@@ -1013,7 +1013,8 @@ string findtexfile(string const & fil, string const & format)
         string kpsecmd = "kpsewhich --format= " + format + " " + OnlyFilename(fil);
         cmdret c = do_popen(kpsecmd);
 	
-        lyxerr << "kpse status = " << c.first << "\n"
-               << "kpse result = `" << strip(c.second, '\n') << "'" << endl;
+        lyxerr[Debug::LATEX] << "kpse status = " << c.first << "\n"
+			     << "kpse result = `" << strip(c.second, '\n') 
+			     << "'" << endl;
         return c.first != -1 ? strip(c.second, '\n') : string();
 }
