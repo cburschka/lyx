@@ -1,3 +1,25 @@
+2001-02-11  José Matos  <jamatos@fep.up.pt>
+
+	* buffer.C (makeDocBookFile): command styles now have a parameter as
+	"title" by default. support for CDATA sections.
+
+	* lib/layouts/db_lyxmacros.inc
+	* lib/layouts/db_stdclass.inc
+	* lib/layouts/db_stdlayouts.inc
+	* lib/layouts/db_stdlists.inc
+	* lib/layouts/db_stdsections.inc
+	* lib/layouts/db_stdstarsections.inc
+	* lib/layouts/db_stdstruct.inc
+	* lib/layouts/db_stdtitle.inc: new files with modular support
+	for docbook.
+
+	* lib/layouts/docbook-chapter.layout
+	* lib/layouts/docbook-section.layout: new files, useful for
+	document inclusion.
+	
+	* lib/layouts/docbook.layout
+	* lib/layouts/docbook-book.layout: updated to use the modular support.
+
 2001-02-26  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/text2.C (SetCurrentFont): Disable number property at boundary.
