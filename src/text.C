@@ -3899,9 +3899,10 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	LyXParagraph::size_type last = RowLastPrintable(row_ptr);
 
 	LyXParagraph::size_type vpos, pos;
-	float x, tmpx;
-	int y_top, y_bottom;
-	float fill_separator, fill_hfill, fill_label_hfill;
+	float x;
+	float tmpx;
+	int y_top;
+	int y_bottom;
 
 	LyXFont font(LyXFont::ALL_SANE);
 	int maxdesc;
@@ -3910,6 +3911,10 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		       << row_ptr->height() << endl;
 		return;
 	}
+
+	float fill_separator;
+	float fill_hfill;
+	float fill_label_hfill;
 	PrepareToPrint(bview, row_ptr, x, fill_separator,
 		       fill_hfill, fill_label_hfill);
 	
@@ -3918,44 +3923,32 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	x += x_offset;
 	
 	// clear the area where we want to paint/print
-	int ww;
-	ww = bview->workWidth();
+	int ww = bview->workWidth();
 
 	bool clear_area = true;
 	Inset * inset = 0;
 
 	if ((last == row_ptr->pos()) &&
 	    (row_ptr->par()->GetChar(row_ptr->pos()) == LyXParagraph::META_INSET) &&
-	    (inset=row_ptr->par()->GetInset(row_ptr->pos())))
-	{
+	    (inset = row_ptr->par()->GetInset(row_ptr->pos()))) {
 		clear_area = inset->doClearArea();
 	}
 	if (cleared) { // we don't need to clear it's already done!!!
 		clear_area = true;
 	} else if (clear_area) {
-		int w;
-		if (inset_owner)
-			w = inset_owner->width(bview, font);
-		else
-			w = ww;
+		int w = (inset_owner ? inset_owner->width(bview, font) : ww);
 		pain.fillRectangle(x_offset, y_offset, w, row_ptr->height());
 	} else if (inset != 0) {
 		int h = row_ptr->baseline() - inset->ascent(bview, font);
 		if (h > 0) {
-			int w;
-			if (inset_owner)
-				w = inset_owner->width(bview, font);
-			else
-				w = ww;
+			int w = (inset_owner ?
+				 inset_owner->width(bview, font) : ww);
 			pain.fillRectangle(x_offset, y_offset, w, h);
 		}
 		h += inset->ascent(bview, font) + inset->descent(bview, font);
 		if ((row_ptr->height() - h) > 0) {
-			int w;
-			if (inset_owner)
-				w = inset_owner->width(bview, font);
-			else
-				w = ww;
+			int w = (inset_owner ?
+				 inset_owner->width(bview, font) : ww);
 			pain.fillRectangle(x_offset,y_offset+h, w, row_ptr->height()-h);
 		}
 		if (!inset_owner && !inset->display() && !inset->needFullRow())
@@ -3966,11 +3959,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	}
 	
 	if (selection) {
-		int w;
-		if (inset_owner)
-			w = inset_owner->width(bview, font);
-		else
-			w = ww;
+		int w = (inset_owner ? inset_owner->width(bview, font) : ww);
 		/* selection code */
 		if (bidi_same_direction) {
 			if (sel_start_cursor.row() == row_ptr &&

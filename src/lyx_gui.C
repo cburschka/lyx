@@ -83,7 +83,8 @@ FL_resource res[] =
 };
 
 
-extern "C" int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
+extern "C"
+int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 {
 //#warning Please see if you can trigger this!
 	// emergency save
@@ -402,7 +403,7 @@ void LyXGUI::create_forms()
 		combo_language->addto((*cit).second.lang().c_str());
 		combo_language2->addto((*cit).second.lang().c_str());
 	}
-	combo_language2->select_text("No change");
+	combo_language2->select_text(_("No change"));
 
 	// not really necessary, but we can do it anyway.
 	fl_addto_choice(fd_form_document->choice_fontsize, "default|10|11|12");
@@ -526,7 +527,7 @@ void LyXGUI::create_forms()
 	int main_placement = FL_PLACE_CENTER | FL_FREE_SIZE;
 	int title_placement = FL_PLACE_CENTER;
 	// Did we get a valid position?
-	if (xpos>= 0 && ypos>= 0) {
+	if (xpos >= 0 && ypos >= 0) {
 		lyxViews->setPosition(xpos, ypos);
 		if (lyxrc.show_banner) {
 			// show the title form in the middle of the main form
@@ -554,26 +555,11 @@ void LyXGUI::create_forms()
 
 
 void LyXGUI::runTime()
-	/* This will usually be toolkit (GUI) specific. This is
-	 * also usually the XEvent dispatcher of the GUI. */
 {
-	if (!gui)
-		return;
+	if (!gui) return;
 
 	GUIRunTime grt;
-
-	// XForms specific
-	XEvent ev;
-
-	while (!finished) {
-		grt.processEvents();
-		// for now we have to leave this here then if the GUII is
-		// completed this obviously has to be removed! (Jug)
-		if (fl_check_forms() == FL_EVENT) {
-			lyxerr << "LyX: This shouldn't happen..." << endl;
-			fl_XNextEvent(&ev);
-		}
-	}
+	grt.runTime();
 }
 
 
@@ -581,6 +567,7 @@ void LyXGUI::regBuf(Buffer * b)
 {
 	lyxViews->view()->buffer(b);
 }
+
 
 LyXView * LyXGUI::getLyXView() const
 {

@@ -20,15 +20,25 @@
 
 using std::endl;
 
-GUIRunTime::Pimpl::Pimpl()
-{
-}
+extern bool finished;
 
-GUIRunTime::Pimpl::~Pimpl() 
-{
-}
 
 void GUIRunTime::Pimpl::processEvents() 
 {
     kapp->processEvents();
 }
+
+
+void GUIRunTime::Pimpl::runTime()
+{
+	// We still use xforms event handler as te main one...
+	XEvent ev;
+	while (!finished) {
+		Pimpl::processEvents();
+		if (fl_check_forms() == FL_EVENT) {
+			lyxerr << "LyX: This shouldn't happen..." << endl;
+			fl_XNextEvent(&ev);
+		}
+	}
+}
+

@@ -25,12 +25,8 @@
 struct GUIRunTime::Pimpl {
 public:
     ///
-    Pimpl();
+    static void processEvents();
     ///
-    ~Pimpl();
-    ///
-    void processEvents();
-
-private:
+    static void runTime();
 };
 #endif

@@ -30,11 +30,14 @@ public:
     ~GUIRunTime();
     ///
     void processEvents();
-    
+    ///
+    void runTime();
+	
     struct Pimpl;
     friend struct Pimpl;
     
 private:
+    ///
     Pimpl * pimpl_;
 };
 #endif

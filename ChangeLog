@@ -1,3 +1,22 @@
+2000-08-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/frontends/xforms/GUIRunTime_pimpl.C: constructor and
+	destructor. Don't definde if you don't need it
+	(processEvents): made static, non-blocking events processing for
+	xforms.
+	(runTime): static method. event loop for xforms
+	* similar as above for kde and gnome.
+	
+	* src/frontends/GUIRunTime.C (GUIRunTime): new Pimpl() is wrong
+	new Pimpl is correct
+	(runTime): new method calss the real frontends runtime func.
+
+	* src/lyx_gui.C (runTime): change to use the GUIRunTime::runTime
+
+2000-08-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyx_gui.C (create_forms): fix the "No change" gettext missing
+
 2000-08-16  Juergen Vigna  <jug@sad.it>
 
 	* src/lyx_gui.C (runTime): added GUII RunTime support.

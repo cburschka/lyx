@@ -21,7 +21,7 @@
 
 GUIRunTime::GUIRunTime()
 {
-	pimpl_ = new Pimpl();
+	pimpl_ = new Pimpl;
 }
 
 
@@ -34,4 +34,10 @@ GUIRunTime::~GUIRunTime()
 void GUIRunTime::processEvents()
 {
 	pimpl_->processEvents();
+}
+
+
+void GUIRunTime::runTime() 
+{
+	pimpl_->runTime();
 }

@@ -19,18 +19,14 @@
 
 #include "frontends/GUIRunTime.h"
 
-/*
- *    The GUI interface for runtime GUI stuff.
- */
+/**
+   The GUI interface for runtime GUI stuff.
+*/
 struct GUIRunTime::Pimpl {
 public:
     ///
-    Pimpl();
+    static void processEvents();
     ///
-    ~Pimpl();
-    ///
-    void processEvents();
-
-private:
+    static void runTime();
 };
 #endif

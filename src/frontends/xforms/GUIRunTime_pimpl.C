@@ -19,25 +19,30 @@
 #include "GUIRunTime_pimpl.h"
 #include "debug.h"
 
-GUIRunTime::Pimpl::Pimpl()
-{
-}
+using std::endl;
 
-GUIRunTime::Pimpl::~Pimpl() 
-{
-}
+extern bool finished;
+
 
 void GUIRunTime::Pimpl::processEvents() 
 {
-// this is disabled for now as we still need this ALWAYS in lyx_gui
-// and if we enable this here we would do it 2 times well why not it
-// doesn't really matter, does it? (Jug)
-#if 1
     XEvent ev;
 
-    if (fl_check_forms() == FL_EVENT) {
+    if (fl_do_forms() == FL_EVENT) {
 	lyxerr << "LyX: This shouldn't happen..." << endl;
 	fl_XNextEvent(&ev);
     }
-#endif
 }
+
+
+void GUIRunTime::Pimpl::runTime()
+{
+	XEvent ev;
+	while (!finished) {
+		if (fl_check_forms() == FL_EVENT) {
+			lyxerr << "LyX: This shouldn't appen..." << endl;
+			fl_XNextEvent(&ev);
+		}
+	}
+}
+
