@@ -1051,7 +1051,7 @@ string const unzipFile(string const & zipped_file)
     string const file = ChangeExtension(zipped_file, string());
     string  const tempfile = lyx::tempName(string(), file);
     // Run gunzip
-    string const command = "gunzip -c "+file+" > "+tempfile;
+    string const command = "gunzip -c "+zipped_file+" > "+tempfile;
     Systemcalls one(Systemcalls::System, command);
     // test that command was executed successfully
     return tempfile;

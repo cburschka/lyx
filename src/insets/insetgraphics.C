@@ -95,6 +95,7 @@ TODO Before initial production release:
 #include "graphics/GraphicsCacheItem.h"
 
 #include "frontends/Dialogs.h"
+#include "frontends/Alert.h"
 #include "LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
@@ -557,6 +558,11 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	string const image_target = decideOutputImageFormat(extension);
 	if (extension == image_target)
 		return params.filename;
+	if (!IsFileReadable(params.filename)) {
+		Alert::alert(_("File") + params.filename,
+			   _("isn't readable or doesn't exists!"));
+		return params.filename;
+	}
 	string outfile;
 	if (!buf->niceFile) {
 		string const temp = AddName(buf->tmppath, params.filename);

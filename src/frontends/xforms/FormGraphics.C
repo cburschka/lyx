@@ -474,10 +474,10 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 
 	// the bb section
 	} else if (!controller().bbChanged && 
-		    ((ob == bbox_->input_bb_x0) || (ob == bbox_->input_bb_y0) ||
-		    (ob == bbox_->input_bb_x1) || (ob == bbox_->input_bb_y1) ||
-		    (ob == bbox_->choice_bb_x0) || (ob == bbox_->choice_bb_y0) ||
-		    (ob == bbox_->choice_bb_x1) || (ob == bbox_->choice_bb_y1))) {
+		   (ob == bbox_->input_bb_x0  || ob == bbox_->input_bb_y0 ||
+		    ob == bbox_->input_bb_x1  || ob == bbox_->input_bb_y1 ||
+		    ob == bbox_->choice_bb_x0 || ob == bbox_->choice_bb_y0 ||
+		    ob == bbox_->choice_bb_x1 || ob == bbox_->choice_bb_y1)) {
 	    controller().bbChanged = true; 
 	} else if (ob == bbox_->button_getBB) {
 	    string const filename = getStringFromInput(file_->input_filename);
@@ -486,10 +486,18 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		string bb = controller().readBB(fileWithAbsPath);
 		lyxerr << "getBB::BoundingBox = " << bb << "\n";
 		if (!bb.empty()) {		
-		    fl_set_input(bbox_->input_bb_x0, token(bb,' ',0).c_str());
-		    fl_set_input(bbox_->input_bb_y0, token(bb,' ',1).c_str());
-		    fl_set_input(bbox_->input_bb_x1, token(bb,' ',2).c_str());
-		    fl_set_input(bbox_->input_bb_y1, token(bb,' ',3).c_str());
+			updateWidgetsFromLengthString(bbox_->input_bb_x0,
+						      bbox_->choice_bb_x0,
+						      token(bb,' ',0), "pt");
+			updateWidgetsFromLengthString(bbox_->input_bb_y0,
+						      bbox_->choice_bb_y0,
+						      token(bb,' ',1), "pt");
+			updateWidgetsFromLengthString(bbox_->input_bb_x1,
+						      bbox_->choice_bb_x1,
+						      token(bb,' ',2), "pt");
+			updateWidgetsFromLengthString(bbox_->input_bb_y1,
+						      bbox_->choice_bb_y1,
+						      token(bb,' ',3), "pt");
 		}
 		controller().bbChanged = false;
 	    }

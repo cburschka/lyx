@@ -1,3 +1,8 @@
+2002-02-08  Herbert Voss  <voss@lyx.org>
+
+	* insetgraphic.C: prepareFile(): fix bug when file doesn't
+	exists, than return filename with extension
+
 2002-02-06  Herbert Voss  <voss@lyx.org>
 
 	* insetgraphic.C: prepareFile(): don't convert the file, when

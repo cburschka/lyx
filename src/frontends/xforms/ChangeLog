@@ -1,4 +1,11 @@
 
+2002-02-08  Herbert Voss  <voss@lyx.org>
+
+	* xforms_helpers.h: change unit "%" to t%
+
+	* FormGraphics.C: fiy bug when BB is read from file and the
+	unit is always "pt"
+
 2002-02-08  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* FormMathsDeco.C: \underleftarrow and \underrightarrow
