@@ -68,6 +68,8 @@ private:
 	///
 	void stored_set(string const &);
 	///
+	void set_input(string const &);
+	///
 	void init();
 	///
 	string stored_input;

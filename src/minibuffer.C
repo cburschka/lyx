@@ -67,7 +67,7 @@ void MiniBuffer::stored_slot()
 {
 	if (stored_) {
 		stored_ = false;
-		fl_set_input(the_buffer, stored_input.c_str());
+		set_input(stored_input);
 	}
 }
 
@@ -90,7 +90,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 		if (stored_) {
 			stored_timer.stop();
 			input = stored_input;
-			fl_set_input(ob, input.c_str());
+			set_input(input);
 			stored_ = false;
 		}
 		
@@ -102,19 +102,19 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 			if (hist_iter == history_->end()) {
 				// no further history
 				stored_set(input);
-				fl_set_input(ob, _("[End of history]"));
+				set_input(_("[End of history]"));
 			} else {
-				fl_set_input(ob, hist_iter->c_str());
+				set_input((*hist_iter));
 			}
 			return 1; 
 		case XK_Up:
 			if (hist_iter == history_->begin()) {
 				// no further history
 				stored_set(input);
-				fl_set_input(ob, _("[Beginning of history]"));
+				set_input(_("[Beginning of history]"));
 			} else {
 				--hist_iter;
-				fl_set_input(ob, hist_iter->c_str());
+				set_input((*hist_iter));
 			}
 			return 1; 
 		case 9:
@@ -131,13 +131,13 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				// No matches
 				string const tmp = input + _(" [no match]");
 				stored_set(input);
-				fl_set_input(ob, tmp.c_str());
+				set_input(tmp);
 			} else if (comp.size() == 1) {
 				// Perfect match
 				string const tmp =
 					comp[0] + _(" [sole completion]");
 				stored_set(comp[0]);
-				fl_set_input(ob, tmp.c_str());
+				set_input(tmp);
 			} else {
 				// More that one match
 				// Find maximal avaliable prefix
@@ -156,7 +156,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 					}
 					test += tmp[test.length()];
 				}
-				fl_set_input(ob, test.c_str());
+				set_input(test);
 				
 				// How should the possible matches
 				// be visualized?
@@ -189,7 +189,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				// no such func/item
 				stored_set(input);
 				string const tmp = input + _(" [no match]");
-				fl_set_input(ob, tmp.c_str());
+				set_input(tmp);
 			} else {
 #endif
 				// Return the inputted string
@@ -213,7 +213,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 			{
 				stored_set(input);
 				string const tmp = input + _(" [no match]");
-				fl_set_input(ob, tmp.c_str());
+				set_input(tmp);
 				return 1;
 			}
 			}
@@ -246,7 +246,7 @@ int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event,
 void MiniBuffer::prepare()
 {
 	text.erase();
-	fl_set_input(the_buffer, "");
+	set_input("");
 	activate();
 	fl_set_focus_object(static_cast<XFormsView *>(owner_)->getForm(),
 			    the_buffer);
@@ -270,7 +270,7 @@ FL_OBJECT * MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
         obj->u_vdata = this;
         obj->wantkey = FL_KEY_TAB;
 
-	fl_set_input(the_buffer, text.c_str());
+	set_input(text);
 	
 	return obj;
 }
@@ -281,7 +281,7 @@ void MiniBuffer::message(string const & str)
 	timer.restart();
 	string const ntext = strip(str);
 	if (!the_buffer->focus) {
-		fl_set_input(the_buffer, ntext.c_str());
+		set_input(ntext);
 		text = ntext;
 	}
 }
@@ -336,18 +336,27 @@ void MiniBuffer::init()
 void MiniBuffer::activate()
 {
 	fl_activate_object(the_buffer);
-	fl_redraw_object(the_buffer);
+	redraw();
 }
 
 
 void MiniBuffer::deactivate()
 {
-	fl_redraw_object(the_buffer);
+	redraw();
 	fl_deactivate_object(the_buffer);
+	XFlush(fl_display);
 }
 
 
 void MiniBuffer::redraw() 
 {
 	fl_redraw_object(the_buffer);
+	XFlush(fl_display);
+}
+
+
+void MiniBuffer::set_input(string const & str)
+{
+	fl_set_input(the_buffer, str.c_str());
+	XFlush(fl_display);
 }

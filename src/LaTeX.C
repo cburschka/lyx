@@ -213,8 +213,10 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
-		if (lfun) lfun->dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
-//		WriteStatus(minib, _("Running MakeIndex."));
+		if (lfun) {
+			lfun->dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
+		}
+		
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
 	}
 
@@ -226,15 +228,18 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		// tags is found -> run bibtex and set rerun = true;
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running BibTeX." << endl;
-		if (lfun) lfun->dispatch(LFUN_MESSAGE, _("Running BibTeX."));
-		//WriteStatus(minib, _("Running BibTeX."));
+		if (lfun) {
+			lfun->dispatch(LFUN_MESSAGE, _("Running BibTeX."));
+		}
+		
 		updateBibtexDependencies(head, bibtex_info);
 		rerun |= runBibTeX(bibtex_info);
-	} else if (!had_depfile)
+	} else if (!had_depfile) {
 		/// If we run pdflatex on the file after running latex on it,
 		/// then we do not need to run bibtex, but we do need to
 		/// insert the .bib and .bst files into the .dep-pdf file.
 		updateBibtexDependencies(head, bibtex_info);
+	}
 	
 	// 1
 	// we know on this point that latex has been run once (or we just
@@ -261,8 +266,6 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 			lfun->dispatch(LFUN_MESSAGE, str.str().c_str());
 		}
 		
-//		WriteStatus(minib,
-//			    string(_("LaTeX run number ")) + tostr(count));
 		this->operator()();
 		scanres = scanLogFile(terr);
 		if (scanres & ERRORS) {
@@ -289,8 +292,10 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
-		if (lfun) lfun->dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
-		//WriteStatus(minib, _("Running MakeIndex."));
+		if (lfun) {
+			lfun->dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
+		}
+		
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
 	}
 	
