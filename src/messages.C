@@ -12,6 +12,7 @@
 #include "messages.h"
 #include "debug.h"
 #include "support/filetools.h"
+#include "support/path_defines.h"
 
 using namespace lyx::support;
 
@@ -27,7 +28,7 @@ string const & getLocaleDir()
 	if (locale_dir.empty()) {
 		locale_dir = GetEnvPath("LYX_LOCALEDIR");
 		if (locale_dir.empty())
-			locale_dir = LOCALEDIR;
+			locale_dir = lyx_localedir();
 	}
 	return locale_dir;
 }

@@ -17,6 +17,8 @@
 namespace lyx {
 namespace support {
 
+string const & lyx_localedir();
+
 /* The absolute path to the lyx build directory.
  * (Make-time value.)
  */

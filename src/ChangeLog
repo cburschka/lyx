@@ -1,5 +1,7 @@
 2003-07-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* messages.C (getLocaleDir): use lyx_localedir()
+
 	* lyxlex_pimpl.C (setFile): compress stuff
 
 	* buffer.C (writeFile): add some compression stuff

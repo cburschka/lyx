@@ -55,6 +55,12 @@ string const & lyx_top_srcdir()
 	return lts;
 }
 
+} // namespace anon
+
+
+namespace lyx {
+namespace support {
+
 
 /* The absolute path to the system-level lyx locale directory.
  * (Make-time value.)
@@ -65,11 +71,6 @@ string const & lyx_localedir()
 	return ll;
 }
 
-} // namespace anon
-
-
-namespace lyx {
-namespace support {
 
 string const & build_lyxdir()
 {
