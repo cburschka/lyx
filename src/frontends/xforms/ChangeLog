@@ -1,3 +1,9 @@
+2005-02-18  Michael Schmitt  <michael.schmitt@teststep>
+
+	* FormRef.C:
+	* forms/form_ref.fd: substitute "reference" by "label"
+	in text messages
+
 2005-02-01  Angus Leeming  <leeming@lyx.org>
 
 	* FormPreferences.C (feedback): use LyXRC::getDescription for

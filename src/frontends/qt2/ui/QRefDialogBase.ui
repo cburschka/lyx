@@ -68,7 +68,7 @@
                     </property>
                     <property>
                         <name>toolTip</name>
-                        <string>Update the reference list</string>
+                        <string>Update the label list</string>
                     </property>
                 </widget>
                 <widget>
@@ -86,11 +86,11 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Go to Reference</string>
+                        <string>&amp;Go to Label</string>
                     </property>
                     <property>
                         <name>toolTip</name>
-                        <string>Jump to the reference</string>
+                        <string>Jump to the label</string>
                     </property>
                 </widget>
             </hbox>
@@ -107,7 +107,7 @@
             </property>
             <property>
                 <name>toolTip</name>
-                <string>Sort references in alphabetical order</string>
+                <string>Sort labels in alphabetical order</string>
             </property>
         </widget>
         <widget row="3"  column="1"  rowspan="1"  colspan="2" >
@@ -179,7 +179,7 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>&amp;Reference:</string>
+                <string>&amp;Label:</string>
             </property>
             <property stdset="1">
                 <name>alignment</name>
@@ -350,7 +350,7 @@
             </property>
             <property>
                 <name>toolTip</name>
-                <string>Available references</string>
+                <string>Available labels</string>
             </property>
         </widget>
         <widget row="0"  column="0"  rowspan="1"  colspan="2" >
@@ -361,7 +361,7 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>R&amp;eferences in:</string>
+                <string>L&amp;abels in:</string>
             </property>
             <property>
                 <name>buddy</name>
