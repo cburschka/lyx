@@ -3877,7 +3877,7 @@ LyXParagraph::getParLanguage(BufferParams const & bparams) const
 	if (size() > 0) {
 		Language const * lang = GetFirstFontSettings().language();
 
-		if (lang->lang() == "default")
+		if (lang->lang() == default_language->lang())
 			return bparams.language_info;
 		return lang;
 	} else if (previous)

@@ -54,7 +54,7 @@ int InsetUrl::Latex(Buffer const *, ostream & os,
 }
 
 
-int InsetUrl::Ascii(Buffer const *, ostream & os, int linelen) const
+int InsetUrl::Ascii(Buffer const *, ostream & os, int) const
 {
 	if (getOptions().empty())
 		os << "[" << getContents() << "]";

@@ -275,8 +275,10 @@ void Intl::InitKeyMapper(bool on)
 
 	int n = 1;
 	// Default is not in the language map
+#ifdef DO_USE_DEFAULT_LANGUAGE
 	Language->addto("default");
 	Language2->addto("default");
+#endif
 	for (Languages::const_iterator cit = languages.begin();
 	     cit != languages.end(); ++cit) {
 		Language->addto((*cit).second.lang());

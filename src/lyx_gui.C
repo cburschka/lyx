@@ -331,7 +331,9 @@ void LyXGUI::create_forms()
 	combo_language2->addto(_("Reset"));
 	for(Languages::iterator cit = languages.begin();
 	    cit != languages.end(); ++cit) {
+#ifdef DO_USE_DEFAULT_LANGUAGE
 	    if ((*cit).second.lang() != "default")
+#endif
 		combo_language2->addto((*cit).second.lang().c_str());
 	}
 	combo_language2->select_text(_("No change"));

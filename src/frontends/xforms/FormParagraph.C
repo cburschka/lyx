@@ -100,8 +100,6 @@ void FormParagraph::build()
     bc_->addReadOnly (general_->radio_align_center);
     bc_->addReadOnly (general_->check_lines_top);
     bc_->addReadOnly (general_->check_lines_bottom);
-    bc_->addReadOnly (general_->check_pagebreaks_top);
-    bc_->addReadOnly (general_->check_pagebreaks_bottom);
     bc_->addReadOnly (general_->choice_space_above);
     bc_->addReadOnly (general_->input_space_above);
     bc_->addReadOnly (general_->check_space_above);
@@ -466,6 +464,19 @@ void FormParagraph::general_update()
 		   added_space_bottom.keep());
     fl_set_button(general_->check_noindent,
 		  text->cursor.par()->FirstPhysicalPar()->noindent);
+    if (text->cursor.par()->FirstPhysicalPar()->InInset()) {
+	fl_set_button(general_->check_pagebreaks_top, 0);
+	fl_deactivate_object(general_->check_pagebreaks_top);
+	fl_set_object_lcol(general_->check_pagebreaks_top, FL_INACTIVE);
+	fl_set_button(general_->check_pagebreaks_bottom, 0);
+	fl_deactivate_object(general_->check_pagebreaks_bottom);
+	fl_set_object_lcol(general_->check_pagebreaks_bottom, FL_INACTIVE);
+    } else {
+	fl_activate_object(general_->check_pagebreaks_top);
+	fl_set_object_lcol(general_->check_pagebreaks_top, FL_BLACK);
+	fl_activate_object(general_->check_pagebreaks_bottom);
+	fl_set_object_lcol(general_->check_pagebreaks_bottom, FL_BLACK);
+    }
 #else
         fl_set_input(general_->input_space_below, text->cursor.par()->
 		     added_space_bottom.length().asString().c_str());
@@ -487,7 +498,9 @@ void FormParagraph::extra_update()
     LyXParagraph * par = lv_->view()->text->cursor.par();
 
     fl_activate_object(extra_->input_pextra_width);
+    fl_set_object_lcol(extra_->input_pextra_width, FL_BLACK);
     fl_activate_object(extra_->input_pextra_widthp);
+    fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
     fl_set_input(extra_->input_pextra_width,
 		 par->pextra_width.c_str());
     fl_set_input(extra_->input_pextra_widthp,

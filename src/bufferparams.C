@@ -50,7 +50,7 @@ BufferParams::BufferParams()
         use_amsmath = false;
 	secnumdepth = 3;
 	tocdepth = 3;
-	language = "default";
+	language = default_language->lang();
 	language_info = default_language;
 	fonts = "default";
 	inputenc = "auto";
@@ -209,7 +209,7 @@ void BufferParams::readLanguage(LyXLex & lex)
 		language_info = &(*lit).second;
 	} else {
 		// not found
-		language = "default";
+		language = default_language->lang();
 		language_info = default_language;
 		if (tmptok != "default") {
 			lyxerr << "Warning: language `"

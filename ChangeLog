@@ -1,3 +1,21 @@
+2000-09-27  Juergen Vigna  <jug@sad.it>
+
+	* various files: remove "default" language check.
+	
+	* src/insets/insetquotes.C: removed use of current_view.
+
+	* src/lyxfunc.C (MenuNew): I don't know how put the AddPath here but
+	the one should have red ears by now!
+
+	* src/insets/insettext.C (LocalDispatch): fixed setting of same layouts
+	in more then one paragraph. Fixed cursor-movement/selection.
+
+	* src/frontends/xforms/FormParagraph.C: disable pagebreaks for
+	paragraphs inside a text inset.
+
+	* src/text.C (GetVisibleRow): paint top/bottom line only as wide as the
+	text-inset if this owner is an inset.
+
 2000-09-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/Bullet.h: changed type of font, character and size to int

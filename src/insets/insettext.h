@@ -200,9 +200,11 @@ private:
     ///
     void HideInsetCursor(BufferView *);
     ///
-    UpdatableInset::RESULT moveRight(BufferView *, bool activate_inset = true);
+    UpdatableInset::RESULT moveRight(BufferView *, bool activate_inset = true,
+				     bool selecting = false);
     ///
-    UpdatableInset::RESULT moveLeft(BufferView *, bool activate_inset = true);
+    UpdatableInset::RESULT moveLeft(BufferView *, bool activate_inset = true,
+				    bool selecting = false);
     ///
     UpdatableInset::RESULT moveUp(BufferView *);
     ///

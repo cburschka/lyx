@@ -159,6 +159,7 @@ enum LyXRCTags {
 	RC_CONVERTER,
 	RC_VIEWER,
 	RC_NEW_ASK_FILENAME,
+	RC_DEFAULT_LANGUAGE,
 	RC_LAST
 };
 
@@ -184,6 +185,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\custom_export_command", RC_CUSTOM_EXPORT_COMMAND },
 	{ "\\custom_export_format", RC_CUSTOM_EXPORT_FORMAT },
 	{ "\\date_insert_format", RC_DATE_INSERT_FORMAT },
+	{ "\\default_language", RC_DEFAULT_LANGUAGE },
 	{ "\\default_papersize", RC_DEFAULT_PAPERSIZE },
 	{ "\\display_shortcuts", RC_DISPLAY_SHORTCUTS },
 	{ "\\docbook_to_dvi_command", RC_DOCBOOK_TO_DVI_COMMAND },
@@ -383,6 +385,7 @@ void LyXRC::setDefaults() {
 	language_auto_end = true;
 	language_command_begin = "\\selectlanguage{$$lang}";
 	language_command_end = "\\selectlanguage{$$lang}";
+	default_language = "english";
 	///
 	new_ask_filename = false;
 
@@ -1134,6 +1137,10 @@ int LyXRC::read(string const & filename)
 			Formats::SetViewer(format, command);
 			break;
 		}
+		case RC_DEFAULT_LANGUAGE:
+			if ( lexrc.next())
+				default_language = lexrc.GetString();
+			break;
 
 		case RC_LAST: break; // this is just a dummy
 		}
@@ -1565,6 +1572,8 @@ void LyXRC::output(ostream & os) const
 		os << "\\use_gui " << tostr(use_gui) << "\n";
 	case RC_NEW_ASK_FILENAME:
 		os << "\\new_ask_filename " << tostr(new_ask_filename) << "\n";
+	case RC_DEFAULT_LANGUAGE:
+		os << "\\default_language " << default_language << "\n";
 	}
 	os.flush();
 }

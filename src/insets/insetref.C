@@ -72,7 +72,7 @@ int InsetRef::Latex(Buffer const *, ostream & os,
 }
 
 
-int InsetRef::Ascii(Buffer const *, ostream & os, int linelen) const
+int InsetRef::Ascii(Buffer const *, ostream & os, int) const
 {
 	os << "[" << getContents() << "]";
 	return 0;

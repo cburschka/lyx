@@ -502,7 +502,6 @@ void LyXText::draw(BufferView * bview, Row const * row,
 		++vpos;
 
 		if (lyxrc.mark_foreign_language &&
-		    font.language()->lang() != "default" &&
 		    font.language() != bview->buffer()->params.language_info) {
 			int y = offset + row->height() - 1;
 			pain.line(int(tmpx), y, int(x), y,
@@ -614,7 +613,6 @@ void LyXText::draw(BufferView * bview, Row const * row,
 	}
 
 	if (lyxrc.mark_foreign_language &&
-	    font.language()->lang() != "default" &&
 	    font.language() != bview->buffer()->params.language_info) {
 		int y = offset + row->height() - 1;
 		pain.line(int(tmpx), y, int(x), y,
@@ -3403,9 +3401,10 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			y_top +=  lyxfont::ascent('x',
 						  GetFont(bview->buffer(),
 							  row_ptr->par(), 0));
-			
-			pain.line(0, y_offset + y_top,
-				  ww, y_offset + y_top,
+			int w = (inset_owner ? inset_owner->width(bview, font) : ww);
+			int xp = (inset_owner ? x : 0);
+			pain.line(xp, y_offset + y_top,
+				  w, y_offset + y_top,
 				  LColor::topline,
 				  Painter::line_solid,
 				  Painter::line_thick);
@@ -3583,8 +3582,10 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			/* draw a bottom line */
 			y_bottom -= lyxfont::ascent('x', GetFont(bview->buffer(),
 								 par, par->Last() - 1));
-			pain.line(0, y_offset + y_bottom,
-				  ww, y_offset + y_bottom,
+			int w = (inset_owner ? inset_owner->width(bview, font) : ww);
+			int xp = (inset_owner ? x : 0);
+			pain.line(xp, y_offset + y_bottom,
+				  w, y_offset + y_bottom,
 				  LColor::topline, Painter::line_solid,
 				  Painter::line_thick);
 			y_bottom -= lyxfont::ascent('x', GetFont(bview->buffer(),

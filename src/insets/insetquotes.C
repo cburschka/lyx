@@ -31,8 +31,6 @@ using std::endl;
 // Quotes. Used for the various quotes. German, English, French,
 // Danish, Polish, all either double or single.
 
-extern BufferView * current_view;
-
 // codes used to read/write quotes to LyX files
 static char const * const language_char = "esgpfa";
 static char const * const side_char = "lr" ;
@@ -229,11 +227,10 @@ void InsetQuotes::Read(Buffer const *, LyXLex & lex)
 }
 
 
-int InsetQuotes::Latex(Buffer const *, ostream & os,
+int InsetQuotes::Latex(Buffer const * buf, ostream & os,
 		       bool /*fragile*/, bool) const
 {
-	string doclang = 
-		current_view->buffer()->GetLanguage();
+	string doclang = buf->GetLanguage();
 	int quoteind = quote_index[side][language];
 	string qstr;
 	
@@ -294,7 +291,7 @@ void InsetQuotes::Validate(LaTeXFeatures & features) const
 {
 	char type = quote_char[quote_index[side][language]];
 
-	if (current_view->buffer()->GetLanguage() == "default" 
+	if (features.bufferParams().language == "default" 
 	    && lyxrc.fontenc != "T1") {
 		if (times == InsetQuotes::SingleQ) 
 			switch (type) {

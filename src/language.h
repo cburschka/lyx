@@ -27,14 +27,18 @@ public:
 	///
 	Language() : RightToLeft_(false) {}
 	///
-	Language(string const & l, string const & d,
+	Language(string const & l, string const & b, string const & d,
 		 bool rtl, Encoding const * e, string const & c)
-		: lang_(l), display_(d), RightToLeft_(rtl) , encoding_(e),
-		  code_(c)
+		: lang_(l), babel_(b), display_(d), RightToLeft_(rtl),
+		  encoding_(e), code_(c)
 		{}
 	///
 	string const & lang() const {
 		return lang_;
+	}
+	///
+	string const & babel() const {
+		return babel_;
 	}
 	///
 	string const & display() const {
@@ -55,6 +59,8 @@ public:
 private:
 	///
 	string lang_;
+	///
+	string babel_;
 	///
 	string display_;
 	///

@@ -757,7 +757,7 @@ InsetText::LocalDispatch(BufferView * bv,
         // --- Cursor Movements ---------------------------------------------
     case LFUN_RIGHTSEL:
 	bv->text->FinishUndo();
-	moveRight(bv, false);
+	moveRight(bv, false, true);
 	TEXT(bv)->SetSelection();
 	UpdateLocal(bv, SELECTION, false);
 	break;
@@ -768,7 +768,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	break;
     case LFUN_LEFTSEL:
 	bv->text->FinishUndo();
-	moveLeft(bv, false);
+	moveLeft(bv, false, true);
 	TEXT(bv)->SetSelection();
 	UpdateLocal(bv, SELECTION, false);
 	break;
@@ -919,7 +919,7 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_LAYOUT:
 	// do not set layouts on non breakable textinsets
 	if (autoBreakRows) {
-	    static LyXTextClass::size_type cur_layout = cpar(bv)->layout;
+	    LyXTextClass::size_type cur_layout = cpar(bv)->layout;
       
 	    // Derive layout number from given argument (string)
 	    // and current buffer's textclass (number). */    
@@ -1121,23 +1121,23 @@ void InsetText::HideInsetCursor(BufferView * bv)
 
 
 UpdatableInset::RESULT
-InsetText::moveRight(BufferView * bv, bool activate_inset)
+InsetText::moveRight(BufferView * bv, bool activate_inset, bool selecting)
 {
     if (!cpar(bv)->next && (cpos(bv) >= cpar(bv)->Last()))
 	return FINISHED;
     if (activate_inset && checkAndActivateInset(bv, false))
 	return DISPATCHED;
-    TEXT(bv)->CursorRight(bv);
+    TEXT(bv)->CursorRight(bv, selecting);
     return DISPATCHED_NOUPDATE;
 }
 
 
 UpdatableInset::RESULT
-InsetText::moveLeft(BufferView * bv, bool activate_inset)
+InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
 {
     if (!cpar(bv)->previous && (cpos(bv) <= 0))
 	return FINISHED;
-    TEXT(bv)->CursorLeft(bv);
+    TEXT(bv)->CursorLeft(bv, selecting);
     if (activate_inset && checkAndActivateInset(bv, true))
 	return DISPATCHED;
     return DISPATCHED_NOUPDATE;
