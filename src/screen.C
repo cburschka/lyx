@@ -242,10 +242,8 @@ bool LyXScreen::FitManualCursor(LyXText * text,
 void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 				 int asc, int desc, Cursor_Shape shape)
 {
-	unsigned int y1 = max(y - text->first - asc, 0);
-	typedef unsigned int uint;
-	
-	unsigned int y2 = min(y - text->first + desc, (int)owner.height());
+	int y1 = max(y - text->first - asc, 0);
+	int y2 = min(y - text->first + desc, (int)owner.height());
 
 	// Secure against very strange situations
 	y2 = max(y2, y1);
@@ -255,7 +253,7 @@ void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 		cursor_pixmap = 0;
 	}
 
-	if (y2 > 0 && y1 < owner.height()) {
+	if ((y2 > 0) && (y1 < int(owner.height()))) {
 		cursor_pixmap_h = y2 - y1 + 1;
 		cursor_pixmap_y = y1;
 
@@ -457,8 +455,6 @@ void LyXScreen::ToggleToggle(LyXText * text, int y_offset, int x_offset)
 	int bottom = text->toggle_end_cursor.y()
 		- text->toggle_end_cursor.row()->baseline() 
 		+ text->toggle_end_cursor.row()->height();
-	
-	typedef unsigned int uint;
 	
 	bottom = min(max(bottom, text->first), (int)(text->first + owner.height()));
 	top = min(max(top, text->first), (int)(text->first + owner.height()));
