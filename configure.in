@@ -313,7 +313,7 @@ AC_OUTPUT([Makefile \
        src/frontends/xforms/Makefile \
        src/frontends/qt2/Makefile \
        src/frontends/gnome/Makefile \
-],  [sed -e "/POTFILES =/r po/POTFILES" po/Makefile.in > po/Makefile])
+])
 
 
 cat <<EOF

@@ -1,3 +1,8 @@
+2001-07-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* biblio.C (getInfo): add a .c_str() to handle the usual
+	stringstream pain.
+
 2001-07-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlCitation.[Ch]: changes associated with adding natbib support.

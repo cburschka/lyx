@@ -127,7 +127,7 @@
 	* sp_form.[Ch]: removed
 	* spellchecker.[Ch]: removed
 
-2001-07-12  Kayvan A. Sylvan  <kayvan@camel.internal.sylvan.com>
+2001-07-12  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* paragraph_pimpl.C (simpleTeXBlanks): Simply return if pass_thru
 	is set.
@@ -913,7 +913,7 @@
 
 	* bufferlist.C (emergencyWrite): fix assert() call
 
-2001-05-04  Kayvan A. Sylvan  <kayvan@camel.internal.sylvan.com>
+2001-05-04  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* text.C (InsertChar): Added trivial patch to only send the "you
 	can not do multiple spaces this way" message once during a

@@ -281,7 +281,7 @@ string const getInfo(InfoMap const & map, string const & key)
 	if (result.str().empty()) // not a BibTeX record
 		result << it->second;
 
-	return result.str();
+	return result.str().c_str();
 }
  
 
