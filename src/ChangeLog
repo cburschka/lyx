@@ -1,3 +1,19 @@
+2001-03-21  José Abílio Matos  <jamatos@fep.up.pt>
+
+	* buffer.C (pop_tag): removed.
+	(push_tag): removed.
+	(makeLinuxDocFile): cleaner C++ code, declarations near usage point,
+	array replaced with vector. Added support for CDATA sections.
+	(SimpleLinuxDocOnePar): ditto. Paragraph tags are correctly handled,
+	at any nest level.
+	(makeDocBookFile): XML conformant declaration of CDATA section,
+	fixed bug related to <emphasis> in the first paragraph char.
+	(sgmlOpenTag): exclude empty tags.
+	(sgmlCloseTag): ditto.
+	
+	* buffer.h (pop_tag): removed.
+	(push_tag): removed.
+
 2001-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* language.h (Languages): added size_type and size().

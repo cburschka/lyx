@@ -338,26 +338,17 @@ private:
 	void DocBookHandleFootnote(std::ostream & os,
 				   LyXParagraph * & par, int depth);
 #endif
-	///
+	/// Open SGML/XML tag.
         void sgmlOpenTag(std::ostream & os, int depth,
 			 string const & latexname) const;
-        ///
+        /// Closes SGML/XML tag.
         void sgmlCloseTag(std::ostream & os, int depth,
 			  string const & latexname) const;
 	///
 	void LinuxDocError(LyXParagraph * par, int pos,
 			   string const & message);
         ///
-	void SimpleLinuxDocOnePar(std::ostream & os, LyXParagraph * par,
-				  int desc_on, int depth);
-
-	/// LinuxDoc.
-	void push_tag(std::ostream & os, string const & tag,
-		      int & pos, char stack[5][3]);
-	
-	/// LinuxDoc.
-	void pop_tag(std::ostream & os, string const & tag,
-		     int & pos, char stack[5][3]);
+	void SimpleLinuxDocOnePar(std::ostream & os, LyXParagraph * par, int depth);
 
 	/// is save needed
 	mutable bool lyx_clean;
