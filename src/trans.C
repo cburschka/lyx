@@ -320,7 +320,7 @@ int Trans::Load(string const & language)
 		return -1;
 
 	FreeKeymap();
-	LyXLex lex(kmapTags, K_LAST-1);
+	LyXLex lex(kmapTags, K_LAST - 1);
 	lex.setFile(filename);
 
 	int const res = Load(lex);

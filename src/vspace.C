@@ -349,7 +349,7 @@ VSpace::VSpace(string const & data)
 
 	string::size_type const length = input.length();
 
-	if (length > 1 && input[length-1] == '*') {
+	if (length > 1 && input[length - 1] == '*') {
 		keep_ = true;
 		input.erase(length - 1);
 	}

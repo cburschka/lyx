@@ -292,19 +292,19 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		fl_clear_browser(dialog_->browser_info);
 
 		string const tmp = formatted(biblio::getInfo(theMap,
-							     bibkeys[sel-1]),
-					     dialog_->browser_info->w-10);
+							     bibkeys[sel - 1]),
+					      dialog_->browser_info->w - 10);
 		fl_add_browser_line(dialog_->browser_info, tmp.c_str());
 
 		// Highlight the selected browser_bib key in browser_cite if
 		// present
 		vector<string>::const_iterator cit =
-			find(citekeys.begin(), citekeys.end(), bibkeys[sel-1]);
+			find(citekeys.begin(), citekeys.end(), bibkeys[sel - 1]);
 
 		if (cit != citekeys.end()) {
 			int const n = int(cit - citekeys.begin());
-			fl_select_browser_line(dialog_->browser_cite, n+1);
-			fl_set_browser_topline(dialog_->browser_cite, n+1);
+			fl_select_browser_line(dialog_->browser_cite, n + 1);
+			fl_set_browser_topline(dialog_->browser_cite, n + 1);
 		}
 
 		if (!controller().bufferIsReadonly()) {
@@ -329,20 +329,20 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 
 		// Highlight the selected browser_cite key in browser_bib
 		vector<string>::const_iterator cit =
-			find(bibkeys.begin(), bibkeys.end(), citekeys[sel-1]);
+			find(bibkeys.begin(), bibkeys.end(), citekeys[sel - 1]);
 
 		if (cit != bibkeys.end()) {
 			int const n = int(cit - bibkeys.begin());
-			fl_select_browser_line(dialog_->browser_bib, n+1);
-			fl_set_browser_topline(dialog_->browser_bib, n+1);
+			fl_select_browser_line(dialog_->browser_bib, n + 1);
+			fl_set_browser_topline(dialog_->browser_bib, n + 1);
 
 			// Put into browser_info the additional info associated
 			// with the selected browser_cite key
 			fl_clear_browser(dialog_->browser_info);
 			string const tmp =
 				formatted(biblio::getInfo(theMap,
-							  citekeys[sel-1]),
-					  dialog_->browser_info->w-10);
+							  citekeys[sel - 1]),
+					  dialog_->browser_info->w - 10);
 			fl_add_browser_line(dialog_->browser_info, tmp.c_str());
 		}
 
@@ -353,8 +353,8 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 
 		// Add the selected browser_bib key to browser_cite
 		fl_addto_browser(dialog_->browser_cite,
-				 bibkeys[sel-1].c_str());
-		citekeys.push_back(bibkeys[sel-1]);
+				  bibkeys[sel - 1].c_str());
+		citekeys.push_back(bibkeys[sel - 1]);
 
 		int const n = int(citekeys.size());
 		fl_select_browser_line(dialog_->browser_cite, n);
@@ -370,7 +370,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 
 		// Remove the selected key from browser_cite
 		fl_delete_browser_line(dialog_->browser_cite, sel) ;
-		citekeys.erase(citekeys.begin() + sel-1);
+		citekeys.erase(citekeys.begin() + sel - 1);
 
 		setBibButtons(ON);
 		setCiteButtons(OFF);
@@ -382,25 +382,25 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 			return ButtonPolicy::SMI_NOOP;
 
 		// Move the selected key up one line
-		vector<string>::iterator it = citekeys.begin() + sel-1;
+		vector<string>::iterator it = citekeys.begin() + sel - 1;
 		string const tmp = *it;
 
 		fl_delete_browser_line(dialog_->browser_cite, sel);
 		citekeys.erase(it);
 
-		fl_insert_browser_line(dialog_->browser_cite, sel-1, tmp.c_str());
-		fl_select_browser_line(dialog_->browser_cite, sel-1);
-		citekeys.insert(it-1, tmp);
+		fl_insert_browser_line(dialog_->browser_cite, sel - 1, tmp.c_str());
+		fl_select_browser_line(dialog_->browser_cite, sel - 1);
+		citekeys.insert(it - 1, tmp);
 		setCiteButtons(ON);
 		activate = ButtonPolicy::SMI_VALID;
 
 	} else if (ob == dialog_->button_down) {
 		unsigned int const sel = fl_get_browser(dialog_->browser_cite);
-		if (sel < 1 || sel > citekeys.size()-1)
+		if (sel < 1 || sel > citekeys.size() - 1)
 			return ButtonPolicy::SMI_NOOP;
 
 		// Move the selected key down one line
-		vector<string>::iterator it = citekeys.begin() + sel-1;
+		vector<string>::iterator it = citekeys.begin() + sel - 1;
 		string const tmp = *it;
 
 		fl_delete_browser_line(dialog_->browser_cite, sel);

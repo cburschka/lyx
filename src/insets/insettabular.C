@@ -1589,7 +1589,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 	new_x += offset;
 	cursor_.x(new_x);
 //    cursor.x(getCellXPos(actcell) + offset);
-	if ((actcol < tabular->columns()-1) && scroll(false) &&
+	if ((actcol < tabular->columns() - 1) && scroll(false) &&
 		(tabular->GetWidthOfTabular() < bv->workWidth()-20))
 	{
 		scroll(bv, 0.0F);
