@@ -1296,6 +1296,14 @@ bool MathCursor::interpret(string const & s)
 		return true;
 	}
 
+	// prevent entering of recursive macros
+	if (formula()->lyxCode() == Inset::MATHMACRO_CODE 
+		&& formula()->getInsetName() == s.substr(1))
+	{
+		lyxerr << "can't enter recursive macro\n";
+		return true;
+	}
+
 	niceInsert(createMathInset(s.substr(1)));
 	return true;
 }
