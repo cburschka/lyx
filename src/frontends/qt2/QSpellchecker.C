@@ -117,7 +117,6 @@ void QSpellchecker::partialUpdate(int id)
 	case 2:
 		dialog_->spellcheckPB->setEnabled(true);
 		hide();
-		lyxerr << controller().getMessage() << endl;
 		QMessageBox::information(0, qt_("Spellcheck complete"),
 					 toqstr(controller().getMessage()),
 					 qt_("OK"));
