@@ -267,8 +267,6 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 void InsetWrap::addToToc(toc::TocList & toclist, Buffer const * buf) const
 {
 	// Now find the caption in the float...
-	// We now tranverse the paragraphs of
-	// the inset...
 	ParagraphList::iterator tmp = inset.paragraphs.begin();
 	ParagraphList::iterator end = inset.paragraphs.end();
 
@@ -281,7 +279,6 @@ void InsetWrap::addToToc(toc::TocList & toclist, Buffer const * buf) const
 			toc::TocItem const item(tmp->id(), 0 , str);
 			toclist[name].push_back(item);
 		}
-		++tmp;
 	}
 }
 

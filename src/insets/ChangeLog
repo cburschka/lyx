@@ -1,3 +1,9 @@
+2003-04-12  John Levon  <levon@movementarian.org>
+
+	* insetwrap.C (addToToc): fix a crash, conversion
+	from while to for loop forgot to remove the explicit
+	increment
+
 2003-04-10  John Levon  <levon@movementarian.org>
 
 	* insettabular.C (tabularFeature): make sure
