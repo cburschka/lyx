@@ -337,7 +337,7 @@ bool isValidLength(string const & data, LyXLength * result)
 //
 
 VSpace::VSpace()
-	: kind_(NONE), len_(), keep_(false)
+	: kind_(DEFSKIP), len_(), keep_(false)
 {}
 
 
@@ -357,7 +357,7 @@ VSpace::VSpace(LyXGlueLength const & l)
 
 
 VSpace::VSpace(string const & data)
-	: kind_(NONE), len_(), keep_(false)
+	: kind_(DEFSKIP), len_(), keep_(false)
 {
 	if (data.empty())
 		return;
@@ -436,7 +436,6 @@ string const VSpace::asLyXCommand() const
 {
 	string result;
 	switch (kind_) {
-	case NONE:      break;
 	case DEFSKIP:   result = "defskip";      break;
 	case SMALLSKIP: result = "smallskip";    break;
 	case MEDSKIP:   result = "medskip";      break;
@@ -444,7 +443,7 @@ string const VSpace::asLyXCommand() const
 	case VFILL:     result = "vfill";        break;
 	case LENGTH:    result = len_.asString(); break;
 	}
-	if (keep_ && kind_ != NONE && kind_ != DEFSKIP)
+	if (keep_)
 		result += '*';
 	return result;
 }
@@ -471,9 +470,6 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 	case LENGTH: 
 		return keep_ ? "\\vspace*{" + len_.asLatexString() + '}'
 			: "\\vspace{" + len_.asLatexString() + '}';
-
-	case NONE:
-		return string();
 
 	default:
 		BOOST_ASSERT(false);
@@ -510,9 +506,6 @@ int VSpace::inPixels(BufferView const & bv) const
 
 	case LENGTH:
 		return len_.len().inPixels(bv.workWidth());
-
-	case NONE:
-		return 0;
 
 	default:
 		BOOST_ASSERT(false);

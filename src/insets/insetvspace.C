@@ -35,6 +35,12 @@ using std::string;
 using std::max;
 
 
+namespace {
+
+int const ADD_TO_VSPACE_WIDTH = 5;
+
+} // namespace anon
+
 
 InsetVSpace::InsetVSpace(VSpace const & space)
 	: space_(space)
@@ -92,23 +98,21 @@ void InsetVSpace::write(Buffer const &, ostream & os) const
 void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	int size = 10;
-	if (space_.kind() != VSpace::NONE) {
-		int const arrow_size = 4;
-		int const space_size = space_.inPixels(*mi.base.bv);
+	int const arrow_size = 4;
+	int const space_size = space_.inPixels(*mi.base.bv);
 
-		LyXFont font;
-		font.decSize();
-		int const min_size = max(3 * arrow_size, font_metrics::maxHeight(font));
+	LyXFont font;
+	font.decSize();
+	int const min_size = max(3 * arrow_size, font_metrics::maxHeight(font));
 
-		if (space_.length().len().value() < 0.0)
-			size = min_size;
-		else
-			size = max(min_size, space_size);
-	}
+	if (space_.length().len().value() < 0.0)
+		size = min_size;
+	else
+		size = max(min_size, space_size);
 
 	dim.asc = size / 2;
 	dim.des = size / 2;
-	dim.wid = 10;
+	dim.wid = 10 + 2 * ADD_TO_VSPACE_WIDTH;
 
 	dim_ = dim;
 }
@@ -121,8 +125,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 	xo_ = x;
 	yo_ = y;
 
-	//if (space_.kind() == VSpace::NONE)
-	//	return 0;
+	x += ADD_TO_VSPACE_WIDTH;
 
 	int const arrow_size = 4;
 	int const start = y - dim_.asc;
@@ -150,7 +153,7 @@ void InsetVSpace::draw(PainterInfo & pi, int x, int y) const
 		by2 = added ? end : (end - arrow_size);
 	}
 
-	int const midx = xo_ + arrow_size;
+	int const midx = x + arrow_size;
 	int const rightx = midx + arrow_size;
 
 	// first the string

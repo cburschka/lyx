@@ -24,7 +24,6 @@ class VSpace {
 public:
 	/// The different kinds of spaces.
 	enum vspace_kind {
-		NONE, ///< no added vertical space
 		DEFSKIP,
 		SMALLSKIP,
 		MEDSKIP,

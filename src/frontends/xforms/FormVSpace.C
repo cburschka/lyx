@@ -54,14 +54,14 @@ void validateVSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 	BOOST_ASSERT(choice_type  && choice_type->objclass  == FL_CHOICE &&
 		     input_length && input_length->objclass == FL_INPUT);
 
-	if (fl_get_choice(choice_type) != 7)
+	if (fl_get_choice(choice_type) != 6)
 		return;
 
 	// If a vspace kind is "Length" but there's no text in
-	// the input field, reset the kind to "None".
+	// the input field, insert nothing.
 	string const input = rtrim(getString(input_length));
 	if (input.empty())
-		fl_set_choice(choice_type, 1);
+		return;
 }
 
 
@@ -75,28 +75,25 @@ VSpace const setVSpaceFromWidgets(FL_OBJECT * choice_type,
 		     input_length  && input_length->objclass  == FL_INPUT &&
 		     choice_length && choice_length->objclass == FL_CHOICE);
 
-	VSpace space = VSpace(VSpace::NONE);
+	VSpace space = VSpace(VSpace::DEFSKIP);
 
 	switch (fl_get_choice(choice_type)) {
 	case 1:
-		space = VSpace(VSpace::NONE);
-		break;
-	case 2:
 		space = VSpace(VSpace::DEFSKIP);
 		break;
-	case 3:
+	case 2:
 		space = VSpace(VSpace::SMALLSKIP);
 		break;
-	case 4:
+	case 3:
 		space = VSpace(VSpace::MEDSKIP);
 		break;
-	case 5:
+	case 4:
 		space = VSpace(VSpace::BIGSKIP);
 		break;
-	case 6:
+	case 5:
 		space = VSpace(VSpace::VFILL);
 		break;
-	case 7:
+	case 6:
 		space = VSpace(LyXGlueLength(
 			getLengthFromWidgets(input_length, choice_length)));
 		break;
@@ -121,26 +118,23 @@ void setWidgetsFromVSpace(VSpace const & space,
 
 	int pos = 1;
 	switch (space.kind()) {
-	case VSpace::NONE:
+	case VSpace::DEFSKIP:
 		pos = 1;
 		break;
-	case VSpace::DEFSKIP:
+	case VSpace::SMALLSKIP:
 		pos = 2;
 		break;
-	case VSpace::SMALLSKIP:
+	case VSpace::MEDSKIP:
 		pos = 3;
 		break;
-	case VSpace::MEDSKIP:
+	case VSpace::BIGSKIP:
 		pos = 4;
 		break;
-	case VSpace::BIGSKIP:
+	case VSpace::VFILL:
 		pos = 5;
 		break;
-	case VSpace::VFILL:
-		pos = 6;
-		break;
 	case VSpace::LENGTH:
-		pos = 7;
+		pos = 6;
 		break;
 	}
 	fl_set_choice(choice_type, pos);
@@ -195,7 +189,7 @@ void FormVSpace::build()
 	fl_set_input_return(dialog_->input_space, FL_RETURN_CHANGED);
 
 	string const spacing =
-		_("None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length");
+		_("DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length");
 	fl_addto_choice(dialog_->choice_space, spacing.c_str());
 
 	// Create the contents of the unit choices; don't include the "%" terms.
@@ -237,7 +231,7 @@ void FormVSpace::apply()
 
 	// spacing
 	// If a vspace choice is "Length" but there's no text in
-	// the input field, reset the choice to "None".
+	// the input field, insert nothing.
 	validateVSpaceWidgets(dialog_->choice_space, dialog_->input_space);
 
 	VSpace const space =
@@ -259,7 +253,7 @@ void FormVSpace::update()
 			     dialog_->check_keep);
 
 	bool const custom_length =
-		fl_get_choice(dialog_->choice_space) == 7;
+		fl_get_choice(dialog_->choice_space) == 6;
 	setEnabled(dialog_->input_space, custom_length);
 	setEnabled(dialog_->choice_unit_space, custom_length);
 }
@@ -271,7 +265,7 @@ ButtonPolicy::SMInput FormVSpace::input(FL_OBJECT * ob, long)
 	// disable 'keep' when no space is choosen
 	if (ob == dialog_->choice_space) {
 		bool const custom_length =
-			fl_get_choice(dialog_->choice_space) == 7;
+			fl_get_choice(dialog_->choice_space) == 6;
 		setEnabled(dialog_->input_space, custom_length);
 		setEnabled(dialog_->choice_unit_space, custom_length);
 	}

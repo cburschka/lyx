@@ -50,26 +50,23 @@ void setWidgetsFromVSpace(VSpace const & space,
 {
 	int item = 0;
 	switch (space.kind()) {
-	case VSpace::NONE:
+	case VSpace::DEFSKIP:
 		item = 0;
 		break;
-	case VSpace::DEFSKIP:
+	case VSpace::SMALLSKIP:
 		item = 1;
 		break;
-	case VSpace::SMALLSKIP:
+	case VSpace::MEDSKIP:
 		item = 2;
 		break;
-	case VSpace::MEDSKIP:
+	case VSpace::BIGSKIP:
 		item = 3;
 		break;
-	case VSpace::BIGSKIP:
+	case VSpace::VFILL:
 		item = 4;
 		break;
-	case VSpace::VFILL:
-		item = 5;
-		break;
 	case VSpace::LENGTH:
-		item = 6;
+		item = 5;
 		break;
 	}
 	spacing->setCurrentItem(item);
@@ -96,28 +93,25 @@ VSpace setVSpaceFromWidgets(int spacing,
 			    LengthCombo * unit,
 			    bool keep)
 {
-	VSpace space = VSpace(VSpace::NONE);
+	VSpace space = VSpace(VSpace::DEFSKIP);
 
 	switch (spacing) {
 	case 0:
-		space = VSpace(VSpace::NONE);
-		break;
-	case 1:
 		space = VSpace(VSpace::DEFSKIP);
 		break;
-	case 2:
+	case 1:
 		space = VSpace(VSpace::SMALLSKIP);
 		break;
-	case 3:
+	case 2:
 		space = VSpace(VSpace::MEDSKIP);
 		break;
-	case 4:
+	case 3:
 		space = VSpace(VSpace::BIGSKIP);
 		break;
-	case 5:
+	case 4:
 		space = VSpace(VSpace::VFILL);
 		break;
-	case 6:
+	case 5:
 		space = VSpace(LyXGlueLength(
 				      widgetsToLength(value, unit)));
 		break;
@@ -146,7 +140,6 @@ void QVSpace::build_dialog()
 	bcview().setOK(dialog_->okPB);
 	bcview().setApply(dialog_->applyPB);
 	bcview().setCancel(dialog_->closePB);
-	bcview().setRestore(dialog_->restorePB);
 
 	// disable for read-only documents
 	bcview().addReadOnly(dialog_->spacingCO);
@@ -163,10 +156,10 @@ void QVSpace::apply()
 {
 	// spacing
 	// If a vspace choice is "Length" but there's no text in
-	// the input field, reset the choice to "None".
+	// the input field, do not insert a vspace at all.
 	if (dialog_->spacingCO->currentItem() == 6
 	    && dialog_->valueLE->text().isEmpty())
-		dialog_->spacingCO->setCurrentItem(0);
+		return;
 
 	VSpace const space =
 		setVSpaceFromWidgets(dialog_->spacingCO->currentItem(),

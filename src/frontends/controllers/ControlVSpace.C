@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "ControlVSpace.h"
+#include "ButtonController.h"
 
 #include "funcrequest.h"
 #include "insets/insetvspace.h"
@@ -29,6 +30,10 @@ ControlVSpace::ControlVSpace(Dialog & parent)
 bool ControlVSpace::initialiseParams(string const & data)
 {
 	InsetVSpaceMailer::string2params(data, params_);
+
+	// so that the user can press Ok
+	dialog().bc().valid();
+
 	return true;
 }
 

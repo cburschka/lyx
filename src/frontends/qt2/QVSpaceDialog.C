@@ -52,7 +52,7 @@ void QVSpaceDialog::change_adaptor()
 
 void QVSpaceDialog::enableCustom(int)
 {
-	bool const enable = spacingCO->currentItem()==6;
+	bool const enable = spacingCO->currentItem()==5;
 	valueLE->setEnabled(enable);
 	unitCO->setEnabled(enable);
 }
