@@ -24,7 +24,6 @@
 #include "Dialogs.h"
 #include "Liason.h"
 
-#include "frontends/LyXView.h"
 #include "frontends/Alert.h"
 
 #include "support/lstrings.h"
@@ -49,15 +48,15 @@ void ControlSpellchecker::setParams()
 #ifdef USE_PSPELL
 		if (lyxrc.use_pspell) {
 			tmp = (lyxrc.isp_use_alt_lang) ?
-				lyxrc.isp_alt_lang : lv_.buffer()->params.language->code();
+				lyxrc.isp_alt_lang : buffer()->params.language->code();
 
-			speller_ = new PSpell(lv_.view()->buffer()->params, tmp);
+			speller_ = new PSpell(buffer()->params, tmp);
 		} else {
 #endif
 			tmp = (lyxrc.isp_use_alt_lang) ?
-				lyxrc.isp_alt_lang : lv_.buffer()->params.language->lang();
+				lyxrc.isp_alt_lang : buffer()->params.language->lang();
 
-			speller_ = new ISpell(lv_.view()->buffer()->params, tmp);
+			speller_ = new ISpell(buffer()->params, tmp);
 #ifdef USE_PSPELL
 		}
 #endif
@@ -67,7 +66,7 @@ void ControlSpellchecker::setParams()
 			if (lang)
 				rtl_ = lang->RightToLeft();
 		} else {
-			rtl_ = lv_.buffer()->params.language->RightToLeft();
+			rtl_ = buffer()->params.language->RightToLeft();
 		}
 
 		if (!speller_->error().empty()) {
@@ -86,12 +85,12 @@ void ControlSpellchecker::check()
 	stop_ = false;
 
 	// clear any old selection
-	LyXText * text = lv_.view()->getLyXText();
-	lv_.view()->toggleSelection(true);
-	lv_.view()->update(text, BufferView::SELECT);
+	LyXText * text = bufferview()->getLyXText();
+	bufferview()->toggleSelection(true);
+	bufferview()->update(text, BufferView::SELECT);
 
 	while ((res == SpellBase::OK || res == SpellBase::IGNORE) && !stop_) {
-		word_ = lv_.view()->nextWord(newval_);
+		word_ = bufferview()->nextWord(newval_);
 
 		if (word_.word().empty()) {
 			clearParams();
@@ -118,7 +117,7 @@ void ControlSpellchecker::check()
 	}
 
 	if (!stop_ && !word_.word().empty())
-		lv_.view()->selectLastWord();
+		bufferview()->selectLastWord();
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORE) {
@@ -129,7 +128,7 @@ void ControlSpellchecker::check()
 
 void ControlSpellchecker::replace(string const & replacement)
 {
-	lv_.view()->replaceWord(replacement);
+	bufferview()->replaceWord(replacement);
 	// fix up the count
  	--count_;
 	check();
@@ -180,7 +179,7 @@ void ControlSpellchecker::ignoreAll()
 void ControlSpellchecker::stop()
 {
 	stop_ = true;
-	lv_.view()->endOfSpellCheck();
+	bufferview()->endOfSpellCheck();
 }
 
 
@@ -215,7 +214,7 @@ void ControlSpellchecker::clearParams()
 
 	delete speller_;
 
-	lv_.view()->endOfSpellCheck();
+	bufferview()->endOfSpellCheck();
 
 	// show closing message if any words were checked.
 	if (count_ > 0)

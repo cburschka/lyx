@@ -39,8 +39,11 @@
 
 #include <boost/signals/connection.hpp>
 
+class Buffer;
+class BufferView;
 class Dialogs;
 class LyXView;
+class LyXFunc;
 
 /** Base class to control connection/disconnection of signals with the LyX
     kernel. It is meant to be used solely as the parent class to
@@ -63,7 +66,7 @@ public:
 	///
 	ControlConnectBase(LyXView &, Dialogs &);
 	/// The View may need to know if the buffer is read-only.
-	bool isReadonly() const;
+	bool bufferIsReadonly() const;
 	///
 	DocTypes docType() const;
 
@@ -81,7 +84,23 @@ protected:
 	*/
 	void redraw();
 
-	/// Get at the kernel Dispatch methods we need to apply() parameters.
+	/// a wrapper for BufferView::avaliable()
+	bool bufferIsAvailable() const;
+	/// a wrapper for LyXView::view()
+	BufferView * bufferview();
+	///
+	BufferView const * bufferview() const;
+	/// a wrapper for LyXView::buffer()
+	Buffer * buffer();
+	///
+	Buffer const * buffer() const;
+	/// a wrapper for LyXView::getLyXFunc()
+	LyXFunc & lyxfunc();
+	///
+	LyXFunc const & lyxfunc() const;
+	
+
+	///
 	LyXView & lv_;
 	/// Contains the signals we have to connect to.
 	Dialogs & d_;

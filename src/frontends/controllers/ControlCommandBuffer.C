@@ -8,6 +8,8 @@
  * \author John Levon <levon@movementarian.org>
  */
 
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif

@@ -31,9 +31,9 @@ public:
 	///
 	std::vector<string> const getLabelList(string const &) const;
 	///
-	void gotoRef(string const &) const;
+	void gotoRef(string const &);
 	///
-	void gotoBookmark() const;
+	void gotoBookmark();
 	///
 	std::vector<string> const getBufferList() const;
 	///

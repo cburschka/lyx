@@ -20,6 +20,7 @@
 #endif
 
 #include "ControlExternal.h"
+#include "buffer.h"
 #include "BufferView.h"
 #include "gettext.h"
 #include "helper_funcs.h"
@@ -50,7 +51,7 @@ ControlExternal::getParams(InsetExternal const & inset)
 void ControlExternal::applyParamsToInset()
 {
 	inset()->setFromParams(params());
-	lv_.view()->updateInset(inset(), true);
+	bufferview()->updateInset(inset(), true);
 }
 
 void ControlExternal::editExternal()
@@ -62,7 +63,7 @@ void ControlExternal::editExternal()
 	// Create a local copy of the inset and initialise it with this
 	// params struct.
 	boost::scoped_ptr<InsetExternal> ie;
-	ie.reset(static_cast<InsetExternal *>(inset()->clone(*lv_.buffer())));
+	ie.reset(static_cast<InsetExternal *>(inset()->clone(*buffer())));
 	ie->setFromParams(params());
 
 	ie->editExternal();
@@ -73,7 +74,7 @@ void ControlExternal::viewExternal()
 	view().apply();
 
 	boost::scoped_ptr<InsetExternal> ie;
-	ie.reset(static_cast<InsetExternal *>(inset()->clone(*lv_.buffer())));
+	ie.reset(static_cast<InsetExternal *>(inset()->clone(*buffer())));
 	ie->setFromParams(params());
 
 	ie->viewExternal();
@@ -84,7 +85,7 @@ void ControlExternal::updateExternal()
 	view().apply();
 
 	boost::scoped_ptr<InsetExternal> ie;
-	ie.reset(static_cast<InsetExternal *>(inset()->clone(*lv_.buffer())));
+	ie.reset(static_cast<InsetExternal *>(inset()->clone(*buffer())));
 	ie->setFromParams(params());
 
 	ie->updateExternal();
@@ -139,7 +140,7 @@ string const ControlExternal::Browse(string const & input) const
 {
 	string const title =  _("Select external file");
 
-	string const bufpath = lv_.buffer()->filePath();
+	string const bufpath = buffer()->filePath();
 
 	/// Determine the template file extension
 	ExternalTemplate const & et = params().templ;

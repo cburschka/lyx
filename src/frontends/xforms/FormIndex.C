@@ -15,7 +15,6 @@
 #include "xformsBC.h"
 #include "ControlIndex.h"
 #include "FormIndex.h"
-#include "frontends/LyXView.h"
 #include "forms/form_index.h"
 #include FORMS_H_LOCATION
 

@@ -20,6 +20,7 @@
 #endif
 
 #include "ControlBibtex.h"
+#include "buffer.h"
 #include "BufferView.h"
 #include "lyxrc.h"
 #include "helper_funcs.h"
@@ -27,7 +28,6 @@
 #include "gettext.h"
 #include "support/lstrings.h"
 
-#include "frontends/LyXView.h"
 
 using std::pair;
 
@@ -41,17 +41,17 @@ ControlBibtex::ControlBibtex(LyXView & lv, Dialogs & d)
 void ControlBibtex::applyParamsToInset()
 {
 	if (params().getContents() != inset()->params().getContents())
-		lv_.view()->ChangeCitationsIfUnique(inset()->params().getContents(),
+		bufferview()->ChangeCitationsIfUnique(inset()->params().getContents(),
 						    params().getContents());
 
 	inset()->setParams(params());
-	lv_.view()->updateInset(inset(), true);
+	bufferview()->updateInset(inset(), true);
 
 	// We need to do a redraw because the maximum
 	// InsetBibKey width could have changed
 #warning are you sure you need this repaint() ?
-	lv_.view()->repaint();
-	lv_.view()->fitCursor();
+	bufferview()->repaint();
+	bufferview()->fitCursor();
 }
 
 
@@ -64,7 +64,7 @@ string const ControlBibtex::Browse(string const & in_name,
 				   string const & pattern)
 {
 	pair<string, string> dir1(_("Documents|#o#O"), string(lyxrc.document_path));
-	return browseRelFile(&lv_, in_name, lv_.buffer()->filePath(),
+	return browseRelFile(&lv_, in_name, buffer()->filePath(),
 			     title, pattern, dir1);
 }
 

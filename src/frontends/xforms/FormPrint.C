@@ -18,8 +18,6 @@
 #include "FormPrint.h"
 #include "forms/form_print.h"
 
-#include "frontends/LyXView.h"
-
 #include "PrinterParams.h"
 
 #include "input_validators.h"

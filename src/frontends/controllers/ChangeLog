@@ -1,5 +1,14 @@
 2002-08-12  Angus Leeming  <leeming@lyx.org>
 
+	* ControlConnections.[Ch]: (isReadonly): renamed as bufferIsReadonly.
+	(bufferIsAvailable, bufferview, buffer, lyxfunc): new methods. Wrappers
+	for the most commonly accessed core methods, to minimise code
+	dependiencies.
+
+	* many files: use these wrappers and remove associated #includes.
+
+2002-08-12  Angus Leeming  <leeming@lyx.org>
+
 	* ControlButtons.[Ch] (bc, view): no longer virtual.
 	(setView, setButtonController): new methods, invoked by GUI.
 

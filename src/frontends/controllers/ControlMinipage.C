@@ -31,7 +31,7 @@ void ControlMinipage::applyParamsToInset()
 	inset()->pageWidth(params().pageWidth);
 	inset()->pos(params().pos);
 
-	lv_.view()->updateInset(inset(), true);
+	bufferview()->updateInset(inset(), true);
 }
 
 

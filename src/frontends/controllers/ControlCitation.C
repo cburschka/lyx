@@ -18,6 +18,7 @@
 #endif
 
 #include "ControlCitation.h"
+#include "buffer.h"
 
 using std::vector;
 using std::pair;
@@ -38,7 +39,7 @@ void ControlCitation::clearDaughterParams()
 
 void ControlCitation::setDaughterParams()
 {
-	vector<pair<string,string> > blist = lv_.buffer()->getBibkeyList();
+	vector<pair<string,string> > blist = buffer()->getBibkeyList();
 
 	typedef std::map<string, string>::value_type InfoMapValue;
 
@@ -65,7 +66,7 @@ biblio::InfoMap const & ControlCitation::bibkeysInfo() const
 
 bool ControlCitation::usingNatbib() const
 {
-    return lv_.buffer()->params.use_natbib;
+    return buffer()->params.use_natbib;
 }
 
 
@@ -76,7 +77,7 @@ vector<string> const ControlCitation::getCiteStrings(string const & key) const
 	vector<biblio::CiteStyle> const cs =
 		biblio::getCiteStyles(usingNatbib());
 
-	if (lv_.buffer()->params.use_numerical_citations)
+	if (buffer()->params.use_numerical_citations)
 		styles = biblio::getNumericalStrings(key, bibkeysInfo_, cs);
 	else
 		styles = biblio::getAuthorYearStrings(key, bibkeysInfo_, cs);

@@ -19,11 +19,9 @@
 #include "ControlTabularCreate.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "BufferView.h"
 #include "lyxfunc.h"
 #include "funcrequest.h"
 
-#include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
 
@@ -47,11 +45,11 @@ void ControlTabularCreate::setParams()
 
 void ControlTabularCreate::apply()
 {
-	if (!lv_.view()->available())
+	if (!bufferIsAvailable())
 		return;
 
 	view().apply();
 
 	string const val = tostr(params().first) + " " + tostr(params().second);
-	lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_TABULAR_INSERT, val));
+	lyxfunc().dispatch(FuncRequest(LFUN_TABULAR_INSERT, val));
 }

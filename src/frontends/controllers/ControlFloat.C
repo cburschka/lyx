@@ -28,7 +28,7 @@ void ControlFloat::applyParamsToInset()
 {
 	inset()->placement(params().placement);
 	inset()->wide(params().wide);
-	lv_.view()->updateInset(inset(), true);
+	bufferview()->updateInset(inset(), true);
 
 }
 

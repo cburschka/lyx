@@ -22,11 +22,9 @@
 #include "Lsstream.h"
 #include "ButtonControllerBase.h"
 #include "buffer.h"
-#include "BufferView.h"
 #include "lyxrc.h"
 #include "gettext.h"
 
-#include "frontends/LyXView.h"
 
 #include "support/lyxlib.h"
 
@@ -42,13 +40,13 @@ ControlVCLog::ControlVCLog(LyXView & lv, Dialogs & d)
 
 string const ControlVCLog::getBufferFileName() const
 {
-	return lv_.view()->buffer()->fileName();
+	return buffer()->fileName();
 }
 
 
 stringstream & ControlVCLog::getVCLogFile(stringstream & ss) const
 {
-	string const name = lv_.view()->buffer()->lyxvc.getLogFile();
+	string const name = buffer()->lyxvc.getLogFile();
 
 	std::ifstream in(name.c_str());
 

@@ -21,6 +21,10 @@
 #endif
 
 #include "ControlInset.h"
+
+// needed to instatiate inset->hideDialog in ControlInset
+#include "insets/insetgraphics.h"
+
 #include <utility>
 #include <vector>
 

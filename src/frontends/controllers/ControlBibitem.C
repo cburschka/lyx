@@ -32,16 +32,16 @@ void ControlBibitem::applyParamsToInset()
 	// FIXME:
 	// confirm, is this only necessary for FormBibTeX ???
 	if (params().getContents() != inset()->params().getContents())
-		lv_.view()->ChangeCitationsIfUnique(inset()->params().getContents(),
+		bufferview()->ChangeCitationsIfUnique(inset()->params().getContents(),
 						    params().getContents());
 
 	inset()->setParams(params());
-	lv_.view()->updateInset(inset(), true);
+	bufferview()->updateInset(inset(), true);
 
 	// We need to do a redraw because the maximum
 	// InsetBibKey width could have changed
 #warning please check you mean repaint() not update(),
 #warning and whether the repaint() is needed at all
-	lv_.view()->repaint();
-	lv_.view()->fitCursor();
+	bufferview()->repaint();
+	bufferview()->fitCursor();
 }

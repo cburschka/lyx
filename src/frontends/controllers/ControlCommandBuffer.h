@@ -12,8 +12,6 @@
 #ifndef CONTROLCOMMANDBUFFER_H
 #define CONTROLCOMMANDBUFFER_H
 
-#include <config.h>
- 
 #include "LString.h"
 
 #include <vector>

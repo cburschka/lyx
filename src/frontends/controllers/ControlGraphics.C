@@ -26,7 +26,6 @@
 #include "buffer.h"
 #include "BufferView.h"
 #include "Dialogs.h"
-#include "frontends/LyXView.h"
 #include "gettext.h"
 #include "lyxrc.h"
 
@@ -67,11 +66,11 @@ void ControlGraphics::applyParamsToInset()
 {
 	// Set the parameters in the inset, it also returns true if the new
 	// parameters are different from what was in the inset already.
-	bool changed = inset()->setParams(params(), lv_.buffer()->filePath());
+	bool changed = inset()->setParams(params(), buffer()->filePath());
 
 	// Tell LyX we've got a change, and mark the document dirty,
 	// if it changed.
-	lv_.view()->updateInset(inset(), changed);
+	bufferview()->updateInset(inset(), changed);
 }
 
 
@@ -97,14 +96,14 @@ string const ControlGraphics::Browse(string const & in_name)
 	pair<string, string> dir1(_("Clipart|#C#c"), clipdir);
 	pair<string, string> dir2(_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog
-	return browseRelFile(&lv_, in_name, lv_.buffer()->filePath(),
+	return browseRelFile(&lv_, in_name, buffer()->filePath(),
 			     title, "*.*", dir1, dir2);
 }
 
 
 string const ControlGraphics::readBB(string const & file)
 {
-	string const abs_file = MakeAbsPath(file, lv_.buffer()->filePath());
+	string const abs_file = MakeAbsPath(file, buffer()->filePath());
 
 	// try to get it from the file, if possible. Zipped files are
 	// unzipped in the readBB_from_PSFile-Function
@@ -133,7 +132,7 @@ string const ControlGraphics::readBB(string const & file)
 bool ControlGraphics::isFilenameValid(string const & fname) const
 {
 	// It may be that the filename is relative.
-	string const name = MakeAbsPath(fname, lv_.buffer()->filePath());
+	string const name = MakeAbsPath(fname, buffer()->filePath());
 	return IsFileReadable(name);
 }
 

@@ -19,8 +19,6 @@
 
 #include "ControlToc.h"
 #include "toc.h"
-#include "Dialogs.h"
-#include "BufferView.h"
 
 #include "support/lstrings.h" // tostr
 
@@ -41,7 +39,7 @@ void ControlToc::goTo(toc::TocItem const & item) const
 
 vector<string> const ControlToc::getTypes() const
 {
-	return toc::getTypes(lv_.view()->buffer());
+	return toc::getTypes(buffer());
 }
 
 
@@ -50,11 +48,11 @@ toc::Toc const ControlToc::getContents(string const & type) const
 	toc::Toc empty_list;
 
 	// This shouldn't be possible...
-	if (!lv_.view()->available()) {
+	if (!bufferIsAvailable()) {
 		return empty_list;
 	}
 
-	toc::TocList tmp = toc::getTocList(lv_.view()->buffer());
+	toc::TocList tmp = toc::getTocList(buffer());
 	toc::TocList::iterator it = tmp.find(type);
 	if (it == tmp.end()) {
 		return empty_list;

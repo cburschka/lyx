@@ -20,7 +20,6 @@
 #include "bufferview_funcs.h" // ToggleAndShow
 #include "gettext.h"
 #include "language.h"
-#include "BufferView.h"
 
 #include "frontends/LyXView.h"
 
@@ -59,12 +58,12 @@ void ControlCharacter::apply()
 		return;
 
 	// Apply from the view if it's visible. Otherwise, use the stored values
-	if (lv_.view()->available())
+	if (bufferIsAvailable())
 		view().apply();
 
-	toggleAndShow(lv_.view().get(), *(font_.get()), toggleall_);
+	toggleAndShow(bufferview(), *(font_.get()), toggleall_);
 	lv_.view_state_changed();
-	lv_.buffer()->markDirty();
+	buffer()->markDirty();
 	setMinibuffer(&lv_, _("Character set"));
 }
 
@@ -223,7 +222,7 @@ void ControlCharacter::setLanguage(string const & val)
 		font_->setLanguage(ignore_language);
 
 	else if (val == "reset")
-		font_->setLanguage(lv_.buffer()->params.language);
+		font_->setLanguage(buffer()->params.language);
 
 	else
 		font_->setLanguage(languages.getLanguage(val));

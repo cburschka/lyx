@@ -14,8 +14,6 @@
 
 #include "ControlSendto.h"
 #include "ViewBase.h"
-#include "frontends/LyXView.h"
-#include "BufferView.h"
 #include "buffer.h"
 #include "converter.h"
 #include "exporter.h"
@@ -43,13 +41,13 @@ vector<Format const *> const ControlSendto::allFormats() const
 	exports.push_back("lyx");
 	exports.push_back("text");
 
-	if (lv_.buffer()->isLatex())
+	if (buffer()->isLatex())
 		exports.push_back("latex");
-	if (lv_.buffer()->isLinuxDoc())
+	if (buffer()->isLinuxDoc())
 		exports.push_back("linuxdoc");
-	if (lv_.buffer()->isDocBook())
+	if (buffer()->isDocBook())
 		exports.push_back("docbook");
-	if (lv_.buffer()->isLiterate())
+	if (buffer()->isLiterate())
 		exports.push_back("literate");
 
 	// Loop over these native formats and ascertain what formats we
@@ -104,7 +102,7 @@ void ControlSendto::setCommand(string const & cmd)
 
 void ControlSendto::apply()
 {
-	if (!lv_.view()->available())
+	if (!bufferIsAvailable())
 		return;
 
 	view().apply();
@@ -117,15 +115,15 @@ void ControlSendto::apply()
 
 	// Output to filename
 	if (format_->name() == "lyx") {
-		filename = ChangeExtension(lv_.buffer()->getLatexName(false),
+		filename = ChangeExtension(buffer()->getLatexName(false),
 					   format_->extension());
-		if (!lv_.buffer()->tmppath.empty())
-			filename = AddName(lv_.buffer()->tmppath, filename);
+		if (!buffer()->tmppath.empty())
+			filename = AddName(buffer()->tmppath, filename);
 
-		lv_.buffer()->writeFile(filename);
+		buffer()->writeFile(filename);
 
 	} else {
-		Exporter::Export(lv_.buffer(), format_->name(), true, filename);
+		Exporter::Export(buffer(), format_->name(), true, filename);
 	}
 
 	// Substitute $$FName for filename

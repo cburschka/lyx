@@ -307,7 +307,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 			fl_set_browser_topline(dialog_->browser_cite, n+1);
 		}
 
-		if (!controller().isReadonly()) {
+		if (!controller().bufferIsReadonly()) {
 			if (cit != citekeys.end()) {
 				setBibButtons(OFF);
 				setCiteButtons(ON);
@@ -322,7 +322,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		if (sel < 1 || sel > citekeys.size())
 			return ButtonPolicy::SMI_NOOP;
 
-		if (!controller().isReadonly()) {
+		if (!controller().bufferIsReadonly()) {
 			setBibButtons(OFF);
 			setCiteButtons(ON);
 		}

@@ -19,6 +19,7 @@
 
 #include "ControlRef.h"
 #include "lyxfunc.h"
+#include "buffer.h"
 #include "bufferlist.h"
 #include "funcrequest.h"
 
@@ -36,29 +37,28 @@ ControlRef::ControlRef(LyXView & lv, Dialogs & d)
 
 vector<string> const ControlRef::getLabelList(string const & name) const
 {
-	Buffer * buffer = bufferlist.getBuffer(MakeAbsPath(name));
-	if (!buffer)
-		buffer = lv_.buffer();
-	return buffer->getLabelList();
+	Buffer const * buf = bufferlist.getBuffer(MakeAbsPath(name));
+	if (!buf)
+		buf = buffer();
+	return buf->getLabelList();
 }
 
 
-void ControlRef::gotoRef(string const & ref) const
+void ControlRef::gotoRef(string const & ref)
 {
-	lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"), false);
-	lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_REF_GOTO, ref));
+	lyxfunc().dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"), false);
+	lyxfunc().dispatch(FuncRequest(LFUN_REF_GOTO, ref));
 }
 
 
-void ControlRef::gotoBookmark() const
+void ControlRef::gotoBookmark()
 {
-	lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"), false);
+	lyxfunc().dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"), false);
 }
 
 
 vector<string> const ControlRef::getBufferList() const
 {
-
 	vector<string> buffers = bufferlist.getFileNames();
 	for (vector<string>::iterator it = buffers.begin();
 	     it != buffers.end(); ++it) {
@@ -72,7 +72,7 @@ vector<string> const ControlRef::getBufferList() const
 int ControlRef::getBufferNum() const
 {
 	vector<string> buffers = bufferlist.getFileNames();
-	string const name = lv_.buffer()->fileName();
+	string const name = buffer()->fileName();
 	vector<string>::const_iterator cit =
 		find(buffers.begin(), buffers.end(), name);
 	if (cit == buffers.end())

@@ -18,7 +18,6 @@
 #include "ViewBase.h"
 #include "ParagraphParameters.h"
 #include "Liason.h"
-#include "LyXView.h"
 #include "BufferView.h"
 #include "gettext.h"
 #include "buffer.h"
@@ -64,13 +63,13 @@ LyXAlignment ControlParagraph::alignPossible() const
 
 void ControlParagraph::apply()
 {
-	if (!lv_.view()->available())
+	if (!bufferIsAvailable())
 		return;
 
 	view().apply();
 
-	LyXText * text(lv_.view()->getLyXText());
-	text->setParagraph(lv_.view().get(),
+	LyXText * text(bufferview()->getLyXText());
+	text->setParagraph(bufferview(),
 			   pp_->lineTop(),
 			   pp_->lineBottom(),
 			   pp_->pagebreakTop(),
@@ -83,12 +82,12 @@ void ControlParagraph::apply()
 			   pp_->noindent());
 
 	// Actually apply these settings
-	lv_.view()->update(text,
-			   BufferView::SELECT |
-			   BufferView::FITCUR |
-			   BufferView::CHANGE);
+	bufferview()->update(text,
+			     BufferView::SELECT |
+			     BufferView::FITCUR |
+			     BufferView::CHANGE);
 
-	lv_.buffer()->markDirty();
+	buffer()->markDirty();
 
 	setMinibuffer(&lv_, _("Paragraph layout set"));
 }
@@ -100,7 +99,7 @@ void ControlParagraph::setParams()
 		pp_.reset(new ParagraphParameters());
 
 	/// get paragraph
-	Paragraph const * par_ = lv_.view()->getLyXText()->cursor.par();
+	Paragraph const * par_ = bufferview()->getLyXText()->cursor.par();
 
 	/// Set the paragraph parameters
 	*pp_ = par_->params();
@@ -123,7 +122,7 @@ void ControlParagraph::setParams()
 void ControlParagraph::changedParagraph()
 {
 	/// get paragraph
-	Paragraph const * p = lv_.view()->getLyXText()->cursor.par();
+	Paragraph const * p = bufferview()->getLyXText()->cursor.par();
 
 	if (p == 0) // this is wrong as we don't set par_ here! /* || p == par_) */
 		return;

@@ -15,11 +15,8 @@
 #include "ControlThesaurus.h"
 #include "Liason.h"
 #include "lyxfind.h"
-#include "buffer.h"
 #include "gettext.h"
-#include "BufferView.h"
 
-#include "frontends/LyXView.h"
 
 using Liason::setMinibuffer;
 
@@ -43,7 +40,7 @@ void ControlThesaurus::replace(string const & newstr)
 	 * deletion/change !
 	 */
 	int const replace_count =
-		lyxfind::LyXReplace(lv_.view().get(), oldstr_, newstr,
+		lyxfind::LyXReplace(bufferview(), oldstr_, newstr,
 				    true, true, true, false, true);
 
 	oldstr_ = newstr;

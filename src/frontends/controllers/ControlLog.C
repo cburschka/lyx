@@ -19,9 +19,8 @@
 #endif
 
 #include "ControlLog.h"
-#include "BufferView.h"
+#include "buffer.h"
 
-#include "frontends/LyXView.h"
 
 
 ControlLog::ControlLog(LyXView & lv, Dialogs & d)
@@ -31,7 +30,7 @@ ControlLog::ControlLog(LyXView & lv, Dialogs & d)
 
 void ControlLog::setParams()
 {
-	logfile_ = lv_.view()->buffer()->getLogName();
+	logfile_ = buffer()->getLogName();
 }
 
 

@@ -22,6 +22,9 @@
 
 #include "ControlInset.h"
 
+// needed to instatiate inset->hideDialog in ControlInset
+#include "insets/insetfloat.h"
+
 class InsetFloat;
 
 ///

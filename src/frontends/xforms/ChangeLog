@@ -1,5 +1,14 @@
 2002-08-12  Angus Leeming  <leeming@lyx.org>
 
+	* FormCitation.C:
+	* FromRef.C: change due to change of ControlConnections method name,
+	isReadonly() -> bufferIsReadonly().
+
+	* FormIndex.C:
+	* FormPrint.C: no longer #include "frontends/LyXView.h".
+
+2002-08-12  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.C (c-tor): connect the Tooltips::toggleEnabled method to
 	the Dialogs::toggleTooltips signal.
 

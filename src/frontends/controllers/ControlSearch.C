@@ -19,12 +19,9 @@
 
 #include "ControlSearch.h"
 #include "Liason.h"
-#include "buffer.h"
 #include "lyxfind.h"
 #include "gettext.h"
-#include "BufferView.h"
 
-#include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
 
@@ -37,9 +34,9 @@ ControlSearch::ControlSearch(LyXView & lv, Dialogs & d)
 
 
 void ControlSearch::find(string const & search,
-			 bool casesensitive, bool matchword, bool forward) const
+			 bool casesensitive, bool matchword, bool forward)
 {
-	bool const found = lyxfind::LyXFind(lv_.view().get(), search,
+	bool const found = lyxfind::LyXFind(bufferview(), search,
 					    forward, casesensitive,
 					    matchword);
 
@@ -49,14 +46,14 @@ void ControlSearch::find(string const & search,
 
 
 void ControlSearch::replace(string const & search, string const & replace,
-			    bool casesensitive, bool matchword, bool all) const
+			    bool casesensitive, bool matchword, bool all)
 {
 	// If not replacing all instances of the word, then do not
 	// move on to the next instance once the present instance has been
 	// changed
 	bool const once = !all;
 	int const replace_count =
-		lyxfind::LyXReplace(lv_.view().get(),
+		lyxfind::LyXReplace(bufferview(),
 				    search, replace, true, casesensitive,
 				    matchword, all, once);
 

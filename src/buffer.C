@@ -3691,20 +3691,20 @@ string const Buffer::getIncludeonlyList(char delim)
 }
 
 
-vector<string> const Buffer::getLabelList()
+vector<string> const Buffer::getLabelList() const
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
 	if (!params.parentname.empty()
 	    && bufferlist.exists(params.parentname)) {
-		Buffer * tmp = bufferlist.getBuffer(params.parentname);
+		Buffer const * tmp = bufferlist.getBuffer(params.parentname);
 		if (tmp)
 			return tmp->getLabelList();
 	}
 
 	vector<string> label_list;
-	for (inset_iterator it = inset_iterator_begin();
-	     it != inset_iterator_end(); ++it) {
+	for (inset_iterator it = inset_const_iterator_begin();
+	     it != inset_const_iterator_end(); ++it) {
 		vector<string> const l = (*it)->getLabelList();
 		label_list.insert(label_list.end(), l.begin(), l.end());
 	}

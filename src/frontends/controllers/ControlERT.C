@@ -30,7 +30,7 @@ ControlERT::ControlERT(LyXView & lv, Dialogs & d)
 
 void ControlERT::applyParamsToInset()
 {
-	inset()->status(lv_.view().get(), params().status);
+	inset()->status(bufferview(), params().status);
 }
 
 

@@ -200,7 +200,7 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		if (sel < 1 || sel > refs_.size())
 			return ButtonPolicy::SMI_NOOP;
 
-		if (!controller().isReadonly()) {
+		if (!controller().bufferIsReadonly()) {
 			string s = fl_get_browser_line(dialog_->browser_refs, sel);
 			fl_set_input(dialog_->input_ref, s.c_str());
 		}

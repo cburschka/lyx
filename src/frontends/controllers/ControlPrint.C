@@ -21,13 +21,11 @@
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
 #include "buffer.h"
-#include "frontends/LyXView.h"
 #include "PrinterParams.h"
 #include "Liason.h"
 #include "helper_funcs.h"
 #include "frontends/Alert.h"
 #include "gettext.h"
-#include "BufferView.h"
 #include "support/LAssert.h"
 
 using Liason::printBuffer;
@@ -42,12 +40,12 @@ ControlPrint::ControlPrint(LyXView & lv, Dialogs & d)
 
 void ControlPrint::apply()
 {
-	if (!lv_.view()->available())
+	if (!bufferIsAvailable())
 		return;
 
 	view().apply();
 
-	if (!printBuffer(lv_.buffer(), params())) {
+	if (!printBuffer(buffer(), params())) {
 		Alert::alert(_("Error:"),
 			   _("Unable to print"),
 			   _("Check that your parameters are correct"));
@@ -65,7 +63,7 @@ PrinterParams & ControlPrint::params() const
 void ControlPrint::setParams()
 {
 	if (params_) delete params_;
-	params_ = new PrinterParams(getPrinterParams(lv_.buffer()));
+	params_ = new PrinterParams(getPrinterParams(buffer()));
 
 	bc().valid(); // so that the user can press Ok
 }
@@ -86,6 +84,6 @@ string const ControlPrint::Browse(string const & in_name)
 	string const pattern = "*.ps";
 
 	// Show the file browser dialog
-	return browseRelFile(&lv_, in_name, lv_.buffer()->filePath(),
+	return browseRelFile(&lv_, in_name, buffer()->filePath(),
 			     title, pattern);
 }

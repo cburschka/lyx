@@ -11,13 +11,9 @@
  */
 
 #include "ControlInset.h"
+
 #include "ButtonControllerBase.h"
 #include "ViewBase.h"
-#include "buffer.h"
-#include "debug.h"
-#include "frontends/LyXView.h"
-#include "insets/insetfloat.h"
-#include "insets/insetgraphics.h"
 #include "support/LAssert.h"
 
 #include <boost/bind.hpp>
@@ -70,7 +66,7 @@ void ControlInset<Inset, Params>::show(Params const & params)
 		dialog_built_ = true;
 	}
 
-	bc().readOnly(isReadonly());
+	bc().readOnly(bufferIsReadonly());
 	view().show();
 }
 
@@ -91,7 +87,7 @@ void ControlInset<Inset, Params>::update()
 		return;
 	}
 
-	bc().readOnly(isReadonly());
+	bc().readOnly(bufferIsReadonly());
 	view().update();
 }
 
@@ -117,7 +113,7 @@ void ControlInset<Inset, Params>::hide()
 template <class Inset, class Params>
 void ControlInset<Inset, Params>::apply()
 {
-	if (lv_.buffer()->isReadonly())
+	if (bufferIsReadonly())
 		return;
 
 	view().apply();

@@ -38,7 +38,7 @@ ControlInclude::ControlInclude(LyXView & lv, Dialogs & d)
 void ControlInclude::applyParamsToInset()
 {
 	inset()->set(params());
-	lv_.view()->updateInset(inset(), true);
+	bufferview()->updateInset(inset(), true);
 }
 
 
@@ -73,7 +73,7 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 
 void ControlInclude::load(string const & file)
 {
-	lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_CHILDOPEN, file));
+	lyxfunc().dispatch(FuncRequest(LFUN_CHILDOPEN, file));
 }
 
 

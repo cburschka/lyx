@@ -21,6 +21,7 @@
 #include "ViewBase.h"
 #include "Dialogs.h"
 #include "buffer.h"
+#include "BufferView.h"
 
 #include "frontends/LyXView.h"
 
@@ -50,12 +51,57 @@ void ControlConnectBase::redraw()
 }
 
 
-bool ControlConnectBase::isReadonly() const
+bool ControlConnectBase::bufferIsReadonly() const
 {
 	if (!lv_.buffer())
 		return true;
 
 	return lv_.buffer()->isReadonly();
+}
+
+
+bool ControlConnectBase::bufferIsAvailable() const
+{
+	if (!lv_.view())
+		return false;
+
+	return lv_.view()->available();
+}
+
+
+BufferView * ControlConnectBase::bufferview()
+{
+	return lv_.view().get();
+}
+
+
+BufferView const * ControlConnectBase::bufferview() const
+{
+	return lv_.view().get();
+}
+
+
+Buffer * ControlConnectBase::buffer()
+{
+	return lv_.buffer();
+}
+
+
+Buffer const * ControlConnectBase::buffer() const
+{
+	return lv_.buffer();
+}
+
+
+LyXFunc & ControlConnectBase::lyxfunc()
+{
+	return *lv_.getLyXFunc();
+}
+
+
+LyXFunc const & ControlConnectBase::lyxfunc() const
+{
+	return *lv_.getLyXFunc();
 }
 
 

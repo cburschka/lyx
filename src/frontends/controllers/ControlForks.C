@@ -15,8 +15,6 @@
 #include "ControlForks.h"
 #include "ViewBase.h"
 
-#include "BufferView.h"
-#include "frontends/LyXView.h"
 #include "lyxfunc.h"
 #include "funcrequest.h"
 
@@ -55,7 +53,7 @@ void ControlForks::kill(pid_t pid)
 
 void ControlForks::apply()
 {
-	if (!lv_.view()->available())
+	if (!bufferIsAvailable())
 		return;
 
 	view().apply();
@@ -66,7 +64,7 @@ void ControlForks::apply()
 
 	for (vector<string>::const_iterator it = pids_.begin();
 	     it != pids_.end(); ++it) {
-		lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_FORKS_KILL, *it));
+		lyxfunc().dispatch(FuncRequest(LFUN_FORKS_KILL, *it));
 	}
 
 	pids_.clear();

@@ -278,7 +278,7 @@ public:
 	///
 	std::vector<std::pair<string, string> > const getBibkeyList() const;
 	///
-	std::vector<string> const getLabelList();
+	std::vector<string> const getLabelList() const;
 
 	/** This will clearly have to change later. Later we can have more
 	    than one user per buffer. */

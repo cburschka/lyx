@@ -31,11 +31,11 @@ public:
 
 	/// Searches occurence of string
 	void find(string const & search,
-		  bool casesensitive, bool matchword, bool forward) const;
+		  bool casesensitive, bool matchword, bool forward);
 
 	/// Replaces occurence of string
 	void replace(string const & search, string const & replace,
-		     bool casesensitive, bool matchword, bool all) const;
+		     bool casesensitive, bool matchword, bool all);
 
 private:
 	/// not needed.

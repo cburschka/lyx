@@ -19,7 +19,6 @@
 
 #include "ControlTexinfo.h"
 #include "Dialogs.h"
-#include "BufferView.h"
 #include "gettext.h"
 #include "helper_funcs.h"
 #include "tex_helpers.h"

@@ -14,12 +14,9 @@
 
 #include "ControlPreamble.h"
 #include "ViewBase.h"
-#include "frontends/LyXView.h"
 #include "buffer.h"
 #include "Liason.h"
 #include "gettext.h"
-#include "BufferView.h"
-#include "support/LAssert.h"
 
 
 ControlPreamble::ControlPreamble(LyXView & lv, Dialogs & d)
@@ -30,13 +27,13 @@ ControlPreamble::ControlPreamble(LyXView & lv, Dialogs & d)
 
 void ControlPreamble::apply()
 {
-	if (!lv_.view()->available())
+	if (!bufferIsAvailable())
 		return;
 
 	view().apply();
 
-	lv_.buffer()->params.preamble = params();
-	lv_.buffer()->markDirty();
+	buffer()->params.preamble = params();
+	buffer()->markDirty();
 	Liason::setMinibuffer(&lv_, _("LaTeX preamble set"));
 }
 
@@ -51,7 +48,7 @@ string & ControlPreamble::params() const
 void ControlPreamble::setParams()
 {
 	delete params_;
-	params_ = new string(lv_.buffer()->params.preamble);
+	params_ = new string(buffer()->params.preamble);
 }
 
 

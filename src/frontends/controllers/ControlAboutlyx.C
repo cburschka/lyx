@@ -15,9 +15,7 @@
 #endif
 
 #include "ControlAboutlyx.h"
-#include "frontends/LyXView.h"
 #include "Lsstream.h"
-#include "BufferView.h"
 #include "gettext.h"
 #include "support/filetools.h" // FileSearch
 #include "version.h"

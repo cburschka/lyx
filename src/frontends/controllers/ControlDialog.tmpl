@@ -11,12 +11,10 @@
  */
 
 #include "ControlDialog.h"
+
 #include "ButtonControllerBase.h"
-#include "ControlConnections.h"
-#include "frontends/LyXView.h"
-#include "BufferView.h"
 #include "ViewBase.h"
-#include "debug.h"
+
 
 template <class Base>
 ControlDialog<Base>::ControlDialog(LyXView & lv, Dialogs & d)
@@ -27,7 +25,7 @@ ControlDialog<Base>::ControlDialog(LyXView & lv, Dialogs & d)
 template <class Base>
 void ControlDialog<Base>::show()
 {
-	if (isBufferDependent() && !lv_.view()->available())
+	if (isBufferDependent() && !bufferIsAvailable())
 		return;
 
 	connect();
@@ -43,14 +41,14 @@ void ControlDialog<Base>::show()
 		dialog_built_ = true;
 	}
 
-	bc().readOnly(isReadonly());
+	bc().readOnly(bufferIsReadonly());
 	view().show();
 }
 
 template <class Base>
 void ControlDialog<Base>::update()
 {
-	if (isBufferDependent() && !lv_.view()->available())
+	if (isBufferDependent() && !bufferIsAvailable())
 		return;
 
 	setParams();
@@ -59,7 +57,7 @@ void ControlDialog<Base>::update()
 		return;
 	}
 
-	bc().readOnly(isReadonly());
+	bc().readOnly(bufferIsReadonly());
 	view().update();
 }
 
