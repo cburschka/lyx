@@ -1,3 +1,7 @@
+2003-03-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxinclude213.m4: add a AC_HELP_STRING
+
 2003-02-26  Albert Chin  <china@thewrittenword.com>
 
 	* relyx_configure.ac: fix application of `chmod' to the reLyX and
@@ -8,9 +12,9 @@
 	* xforms.m4 (LYX_PATH_XPM): move here from lyxinclude.m4
 
 	* lyxinclude.m4 (LYX_FUNC_PUTENV_ARGTYPE): remove, not used
-	anymore 
+	anymore
 
-	* configure.in: 
+	* configure.in:
 	* configure.ac: do not call LYX_FUNC_PUTENV_ARGTYPE
 
 2003-02-21  André Pönitz <poenitz@gmx.net>
@@ -26,7 +30,7 @@
 2003-02-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Makefile.am (EXTRA_DIST): add pkg.m4, relyx_configure.ac and
-	relyx_configure.in. 
+	relyx_configure.in.
 
 2003-02-18  John Levon  <levon@movementarian.org>
 
@@ -50,7 +54,7 @@
 2003-01-12  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* xforms.m4 (LYX_CHECK_XFORMS_IMAGE_LOADER): include forms.h in
-	the prog that checks for flimage.h header. 
+	the prog that checks for flimage.h header.
 
 	* common.am (AM_INSTALL_DATA_FLAGS): add
 
