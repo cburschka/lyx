@@ -724,7 +724,7 @@ string bformat(string const & fmt, string const & arg1, string const & arg2)
 }
 
 
-string bformat(char const * fmt, string const & arg1, string const & arg2,
+string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3)
 {
 	lyx::Assert(contains(fmt, "%1$s"));
@@ -737,7 +737,7 @@ string bformat(char const * fmt, string const & arg1, string const & arg2,
 }
 
 
-string bformat(char const * fmt, string const & arg1, string const & arg2,
+string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3, string const & arg4)
 {
 	lyx::Assert(contains(fmt, "%1$s"));

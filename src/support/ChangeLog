@@ -3,6 +3,9 @@
 
 	* lstrings.C: add missing implementation of three-arg bformat
 
+	* lstrings.C: change rest of char * fmt -> string const & fmt
+
+
 2003-05-15  André Pönitz  <poenitz@gmx.net>
 
 	* lstrings.[Ch]: use string const & instead of char const * for format
