@@ -17,11 +17,6 @@
 
 #include <boost/utility.hpp>
 
-#include <iosfwd>
-#include <map>
-#include <string>
-#include <vector>
-
 class LyXLex;
 
 namespace lyx {
@@ -87,8 +82,6 @@ struct Template {
 	///
 	Formats formats;
 };
-
-#include "ExternalTransforms.h"
 
 /**
  *  A singleton class that manages the external inset templates

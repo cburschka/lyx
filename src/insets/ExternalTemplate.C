@@ -20,11 +20,6 @@
 #include "support/lstrings.h"
 #include "support/path.h"
 #include "support/path_defines.h"
-#include "support/translator.h"
-
-#include <boost/assert.hpp>
-
-#include <algorithm>
 
 namespace support = lyx::support;
 
