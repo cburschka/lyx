@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language frenchb
 \inputencoding latin1
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -25,9 +27,17 @@
 \layout Title
 
 CECI EST LE TITRE DU DOCUMENT
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Informations de révision :
+\layout Standard
+
 Traduction : Mise à jour, Date: 2001/02/16
+\layout Standard
+
 Original : Révision: 1.4, Date: 2000/11/03
 \end_inset 
 
@@ -123,11 +133,14 @@ Fonctionnalités de LyX
 \layout Standard
 
 LyX possède un bon nombre de fonctionnalités qui facilitent l'écriture.
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Après tout, quelle autre raison pourrait vous le faire utiliser ?
-\end_float 
+\end_inset 
+
  Je 
 \shape italic 
 ne résiste plus
@@ -201,14 +214,14 @@ Ma formule préférée est la résolution d'une équation du second degré.
 \layout Standard
 
 Si 
-\begin_inset Formula \( ax^{2}+bx+c=0 \)
+\begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset 
 
  (eq.1), 
 \layout Standard
 
 alors 
-\begin_inset Formula \( x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a} \)
+\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
 \end_inset 
 
  (eq.
@@ -219,7 +232,7 @@ Une autre favorite, la base du calcul différentiel :
 \layout Standard
 
 
-\begin_inset Formula \( f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \)
+\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset 
 
  (eq.

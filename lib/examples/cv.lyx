@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass cv
 \begin_preamble
 %% You can modify the fonts used in the document be using the
@@ -32,6 +32,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth -1
 \tocdepth -1
@@ -77,9 +79,14 @@ ayout
 \bar under 
 L
 \bar default 
-\latex latex 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 {}
-\latex default 
+\end_inset 
+
 aTeX\SpecialChar ~
 Preamble...
 \family default 

@@ -1,6 +1,5 @@
-#This file was created by <lasgoutt> Fri Dec 10 15:51:46 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language english
 \inputencoding default
@@ -12,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -26,28 +27,50 @@
 \layout Standard
 
 THIS IS THE TITLE OF THE DOCUMENT 
-\begin_inset Info Hint: the title should look more like a title
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: the title should look more like a title
 \end_inset 
 
 
 \layout Standard
 
 by Fee LyX
-\begin_inset Info Hint: Fee is the AUTHOR
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Fee is the AUTHOR
 \end_inset 
 
 
 \layout Standard
 
 June 12, 1972
-\begin_inset Info Hint: this is a DATE
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: this is a DATE
 \end_inset 
 
 
 \layout Standard
 
 Table of Contents
-\begin_inset Info Hint: It would be nice if we didn't have to type the Table
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: It would be nice if we didn't have to type the Table
+\layout Standard
+
 of Contents explicitly
 \end_inset 
 
@@ -81,7 +104,12 @@ of Contents explicitly
 
 1.
  Basic Philosophy
-\begin_inset Info Hint: Section titles should probably stand out more
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Section titles should probably stand out more
 \end_inset 
 
 
@@ -100,9 +128,19 @@ LyX uses LaTeX, a document preparation system designed by Leslie Lamport
  by Donald Knuth in 1984.
  LaTeX is designed around a philosophy similar to that of LyX.
  Leslie Lamport once said (see reference [1])
-\begin_inset Info Hint: Probably, this CITATION REFERENCE shouldn't be
-"hard-coded". What if we make Lamport's book the second
- item in the bibliography?
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Probably, this CITATION REFERENCE shouldn't be
+\layout Standard
+
+"hard-coded".
+ What if we make Lamport's book the second
+\layout Standard
+
+item in the bibliography?
 \end_inset 
 
 :
@@ -126,7 +164,12 @@ The function of typographic design is to help the reader understand the
 \end_inset 
 
 
-\begin_inset Info Hint: This is a QUOTE
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: This is a QUOTE
 \end_inset 
 
 
@@ -168,11 +211,21 @@ What you see is what you mean
 
 LyX has many features which make writing documents easier.
  (After all, why else would you want to use it?
-\begin_inset Info Hint: This parenthetical statement would look better in a footnote
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: This parenthetical statement would look better in a footnote
 \end_inset 
 
 ) I'm VERY EXCITED
-\begin_inset Info Hint: Emphasize!
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Emphasize!
 \end_inset 
 
  to talk about them.
@@ -187,8 +240,16 @@ LyX has many features which make writing documents easier.
 
 For a more philosophical discussion of why LyX is better than lots of other
  word processors, see Section 1.2, which can be found on page 1.
-\begin_inset Info Hint: Probably, these CROSS-REFERENCES shouldn't be
-"hard-coded". What if we change the section numbers?
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Probably, these CROSS-REFERENCES shouldn't be
+\layout Standard
+
+"hard-coded".
+ What if we change the section numbers?
 \end_inset 
 
 
@@ -217,7 +278,12 @@ I'M AWESOME!
 \layout Standard
 
 20 GOTO 10 
-\begin_inset Info Hint: This is computer CODE
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: This is computer CODE
 \end_inset 
 
 
@@ -234,7 +300,14 @@ Typesetting word processor
 \layout Standard
 
 It saves so much time 
-\begin_inset Info Hint: It's not very good, but it is poetry,
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: It's not very good, but it is poetry,
+\layout Standard
+
 otherwise known as VERSE
 \end_inset 
 
@@ -243,7 +316,12 @@ otherwise known as VERSE
 
 4.
  Math Stuff
-\begin_inset Info Hint: these math things should be printed in math mode!
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: these math things should be printed in math mode!
 \end_inset 
 
 

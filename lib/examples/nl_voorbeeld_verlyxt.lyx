@@ -1,5 +1,5 @@
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language dutch
 \inputencoding default
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -33,9 +35,11 @@ door Fee LyX
 June 12, 1972
 \layout Standard
 
+
 \begin_inset LatexCommand \tableofcontents{}
 
 \end_inset 
+
 
 \layout Section
 
@@ -44,7 +48,6 @@ Uitgangspunten
 
 Het uitgangspunt van LyX is dat je je niet bezig houdt met de vormgeving,
  maar met de inhoud van je tekst.
-
 \layout Subsection
 
 Hoe LyX het fikst
@@ -78,6 +81,7 @@ De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
 
 Waarom LyX beter is
 \layout Standard
+
 
 \begin_inset LatexCommand \label{sec:lyxbeter}
 
@@ -114,19 +118,20 @@ De mogelijkheden van LyX
 \layout Standard
 
 LyX heeft vele mogelijkheden die het schrijven van documenten vergemakkelijken.
+\begin_inset Foot
+collapsed true
 
-\begin_float footnote 
 \layout Standard
 
 Waarom zou je het anders willen gebruiken?
-\end_float 
+\end_inset 
+
  Ik vind het 
 \emph on 
 geweldig
 \emph default 
  om er over te vertellen.
  Hier volgt een lijst van slechts een deel van deze mogelijkhedeb.
-
 \layout Itemize
 
 LyX regelt marges, en het nummeren van voetnoten voor je
@@ -156,9 +161,7 @@ Ik heb laatst een programma geschreven.
  Het zag er uit als volgt.
 \layout LyX-Code
 
-5 
-\protected_separator 
-REMARK MIJN GEWELDIGE PROGRAMMA
+5  REMARK MIJN GEWELDIGE PROGRAMMA
 \layout LyX-Code
 
 10 PRINT 
@@ -168,6 +171,7 @@ REMARK MIJN GEWELDIGE PROGRAMMA
 IK BEN GEWELDIG!
 \begin_inset Quotes erd
 \end_inset 
+
 
 \layout LyX-Code
 
@@ -190,11 +194,11 @@ Wiskunde dingen
 
 Mijn favoriete vergelijking is de oplossing van een kwadratische vergelijking.
  Als 
-\begin_inset Formula \( ax^{2}+bx+c=0 \)
+\begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset 
 
  (verg.1), dan is 
-\begin_inset Formula \( x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a} \)
+\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
 \end_inset 
 
  (verg.
@@ -202,7 +206,7 @@ Mijn favoriete vergelijking is de oplossing van een kwadratische vergelijking.
 \layout Standard
 
 Een andere favoriete vergelijking is de grondslag van calculus: 
-\begin_inset Formula \( f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \)
+\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset 
 
  (verg.
@@ -220,7 +224,6 @@ Ik kon de lijnen die met streepjes gemaakt waren verwijderen.
  document te scheiden.
  LyX (LaTeX) begrijpt genoeg om deze onderdelen van het document met witruimte
  te scheiden.
-
 \layout Itemize
 
 Ik heb niet de moeite genomen de wiskudige vergelijkingen in display-modus
@@ -231,7 +234,6 @@ Ik heb niet de moeite genomen de wiskudige vergelijkingen in display-modus
 Turorial
 \emph default 
  wordt beschreven.
-
 \layout Itemize
 
 Ik hoefde het woord 
@@ -256,12 +258,10 @@ Bibliografie
 Bibliography
 \family default 
  stijl kiest.
-
 \layout Bibliography
 \bibitem {lamport}
 
 Lamport, Leslie.
-
 \emph on 
 LaTeX: A Document Preparation System.
 

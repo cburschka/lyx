@@ -1,6 +1,5 @@
-#This file was created by <mike> Wed Jun  9 13:29:15 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass aastex
 \begin_preamble
 \slugcomment{}
@@ -17,6 +16,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 1
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -34,10 +35,16 @@
 \layout Author
 
 <Author 1>
-\latex latex 
+\begin_inset ERT
+status Inlined
+
+\layout Standard
 
 \backslash 
 altaffilmark{1}
+\end_inset 
+
+
 \layout Affiliation
 
 <Institution and Address>
@@ -47,10 +54,16 @@ altaffilmark{1}
 \layout Author
 
 <Author 2>
-\latex latex 
+\begin_inset ERT
+status Inlined
+
+\layout Standard
 
 \backslash 
 altaffilmark{2,3}
+\end_inset 
+
+
 \layout Affiliation
 
 <Institution and Address>
@@ -59,39 +72,39 @@ altaffilmark{2,3}
 \layout Author
 
 <Author 3>
-\latex latex 
+\begin_inset ERT
+status Inlined
+
+\layout Standard
 
 \backslash 
 altaffilmark{3}
+\end_inset 
+
+
 \layout Affiliation
 
 <Institution and Address>
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Inlined
+
+\layout Standard
 
 \backslash 
 altaffiltext{1}{Visiting Astronomer, etc.}
-\latex default 
- 
 \layout Standard
-
-
-\latex latex 
 
 \backslash 
 altaffiltext{2}{Current Address, etc.}
-\latex default 
- 
 \layout Standard
-
-
-\latex latex 
 
 \backslash 
 altaffiltext{3}{Visiting Astronomer, etc.}
-\latex default 
+\end_inset 
+
  
 \layout Abstract
 
@@ -122,11 +135,10 @@ Results
 \end_inset 
 
  and to 
-\latex latex 
+\begin_inset LatexCommand \citet{ref1}
 
-\backslash 
-citet{ref1}
-\latex default 
+\end_inset 
+
 > 
 \layout Section
 
@@ -154,30 +166,36 @@ Appendix
 \bibitem [Author(1982)]{ref1}
 
 Author, A., 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 apj
-\latex default 
+\end_inset 
+
 , 109, 301 
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 clearpage
+\end_inset 
+
+
 \layout FigCaption
 
-
-\latex latex 
 
 \begin_inset LatexCommand \label{fig1}
 
 \end_inset 
 
-
-\latex default 
 This is the first figure.
  
 \the_end

@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.16
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language spanish
 \inputencoding latin1
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -25,28 +27,50 @@
 \layout Standard
 
 HAU IDAZKIAREN IZENBURUA DA
-\begin_inset Info Argibidea:: Izenburak izenburu baten itxura gehiago eduki beharko luke.
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea:: Izenburak izenburu baten itxura gehiago eduki beharko luke.
 \end_inset 
 
 
 \layout Standard
 
 egilea: Norbait
-\begin_inset Info Argibidea:  Norbaitek egilea da.
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea: Norbaitek egilea da.
 \end_inset 
 
 
 \layout Standard
 
 1973ko urriak 23
-\begin_inset Info Argibidea:Hau DATA bat da.
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea:Hau DATA bat da.
 \end_inset 
 
 
 \layout Standard
 
 Aurkibide orokorra
-\begin_inset Info Argibidea: Zoragarria izango zatekeen aurkibidea eskuz idatzi
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea: Zoragarria izango zatekeen aurkibidea eskuz idatzi
+\layout Standard
+
 beharrik ez edukitzea.
 \end_inset 
 
@@ -80,7 +104,12 @@ beharrik ez edukitzea.
 
 1.
  Oinarrizko Izakera
-\begin_inset Info Argibidea: Ataleko izenburuek gehiago nabarmendu beharko ziren.
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea: Ataleko izenburuek gehiago nabarmendu beharko ziren.
 \end_inset 
 
 
@@ -98,9 +127,20 @@ LyX-ek LaTeX erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
  eraikia izan zen.
  LaTeX LyX-en antzeko izakera baten gain diseinatuta dago.
  Leslie Lamport-ek esan zuen ([1] erreferentzia ikusi) 
-\begin_inset Info Argibidea: AIPAMEN ERREFERENTZI hau eskuz idatzita ez
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea: AIPAMEN ERREFERENTZI hau eskuz idatzita ez
+\layout Standard
+
 egotea legezkoena izango zatekeen.
+\layout Standard
+
 Zer gertatuko litzatekeen Lamport-en liburua bibliografiako
+\layout Standard
+
 bigarren sarrera jartzen badugu?
 \end_inset 
 
@@ -125,7 +165,12 @@ Tipografi diseinuaren betebeharra irakurtzaileak egilearen burutazioak ulerttu
 \end_inset 
 
 
-\begin_inset Info Argibidea: Hau AIPAMEN bat da.
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea: Hau AIPAMEN bat da.
 \end_inset 
 
 
@@ -168,13 +213,25 @@ ikusten duzuna esan nahi duzu
 
 LyX-ek idazkiak idazteko erreztasun asko eskeintzen dituen ezugarri ugari
  ditu (bestela, zertarako nahiko zenuke erabiltzea?
-\begin_inset Info Argibidea: Parentesi arteko azalpen hau orri oineko ohar batean
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea: Parentesi arteko azalpen hau orri oineko ohar batean
+\layout Standard
+
 hobekiago egongo litzatekeen.
 \end_inset 
 
 ).
  Beraietaz mintzatzeak UNKITU egiten nau
-\begin_inset Info Argibidea: Nabarmendu ezazu!
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea: Nabarmendu ezazu!
 \end_inset 
 
 .
@@ -191,8 +248,17 @@ hobekiago egongo litzatekeen.
 LyX beste testu prozesatzaileen baino hobeago izatearen zergatia eztabaidatzeko,
  1.2 atala ikusi, 1.
  orrialdean aurkitzen da.
-\begin_inset Info Argibidea: Ziurrenik, GURUTZATUTAKO ERREFERENTZI
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea: Ziurrenik, GURUTZATUTAKO ERREFERENTZI
+\layout Standard
+
 hauek eskuz idatzirik ez luketeen egon behar.
+\layout Standard
+
 Eta ataletako zenbakiak aldatzen baditugu?
 \end_inset 
 
@@ -222,7 +288,12 @@ IKUSGARRIA NAIZ
 \layout Standard
 
 20 GOTO 10 
-\begin_inset Info Argibidea: Hau ordenagailu kodea da.
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea: Hau ordenagailu kodea da.
 \end_inset 
 
 
@@ -239,7 +310,14 @@ Zoragarri bat da
 \layout Standard
 
 Hainbeste denbora aurrezten du
-\begin_inset Info Argibidea: Ez da oso ona, baina olerkia da, estrofa bat
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea: Ez da oso ona, baina olerkia da, estrofa bat
+\layout Standard
+
 hain zuzen.
 \end_inset 
 
@@ -248,7 +326,14 @@ hain zuzen.
 
 4.
  Matematikak
-\begin_inset Info Argibidea: Hemendik aurrera agertzen diren ekuazio guztiak
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Argibidea: Hemendik aurrera agertzen diren ekuazio guztiak
+\layout Standard
+
 matematika eran idatziak izan beharko ziren.
 \end_inset 
 

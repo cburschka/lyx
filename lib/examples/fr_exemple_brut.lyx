@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language frenchb
 \inputencoding latin1
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -25,15 +27,29 @@
 \layout Standard
 
 CECI EST LE TITRE DU DOCUMENT
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Informations de révision :
+\layout Standard
+
 Traduction : Mise à jour, Date: 2001/02/16
+\layout Standard
+
 Original : Révision: 1.3, Date: 2000/11/03
 \end_inset 
 
 
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication:
+\layout Standard
+
 Le titre devrait ressembler un peu plus à un titre ("TITLE")
 \end_inset 
 
@@ -41,8 +57,14 @@ Le titre devrait ressembler un peu plus à un titre ("TITLE")
 \layout Standard
 
 par Fée LyX 
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication:
+\layout Standard
+
 Fée est l'auteur de ce document ("AUTHOR")
 \end_inset 
 
@@ -50,8 +72,14 @@ Fée est l'auteur de ce document ("AUTHOR")
 \layout Standard
 
 12 Juin 1972 
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication:
+\layout Standard
+
 Ceci est une "DATE".(NdT: Si si !)
 \end_inset 
 
@@ -59,10 +87,18 @@ Ceci est une "DATE".(NdT: Si si !)
 \layout Standard
 
 Table des Matières 
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication:
+\layout Standard
+
 Ce serait plus agréable de ne pas avoir à taper la
- "Table des Matières"  explicitement.
+\layout Standard
+
+"Table des Matières" explicitement.
 \end_inset 
 
 
@@ -95,9 +131,17 @@ Ce serait plus agréable de ne pas avoir à taper la
 
 1.
  Philosophie Générale 
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication:
+\layout Standard
+
 Les titres de "Sections" ne sont pas assez en valeur, et ne
+\layout Standard
+
 devraient pas ^etre numérotés manuellement.
 \end_inset 
 
@@ -117,10 +161,21 @@ LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
  TeX, créé par Donald Knuth en 1984.
  LaTeX est conçu autour d'une philosophie similaire à celle de LyX.
  Leslie Lamport disait lui-même (voir référence [1]) 
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication:
+\layout Standard
+
 Cette "Citation Bibliographique" ne devrait probablement pas
-^etre écrite en dur. Que se passe-t-il si le livre de Leslie Lamport
+\layout Standard
+
+^etre écrite en dur.
+ Que se passe-t-il si le livre de Leslie Lamport
+\layout Standard
+
 passe en seconde position dans la bibliographie?
 \end_inset 
 
@@ -145,8 +200,14 @@ Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteur.
 \end_inset 
 
  
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication:
+\layout Standard
+
 C'est une citation (QUOTE).
 \end_inset 
 
@@ -189,14 +250,26 @@ What you see is what you mean
 
 LyX possède un bon nombre de fonctionnalités qui facilitent l'écriture.
  ( Après tout, quelle autre raison pourrait vous le faire utiliser ? 
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication:
+\layout Standard
+
 Cette parenthèse serait bien mieux en "Note de bas de page"
 \end_inset 
 
 ) Je NE RÉSISTE PLUS 
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication:
+\layout Standard
+
 A mettre en "Italique" (ou en "Evidence") plut^ot qu'en majuscules!
 \end_inset 
 
@@ -212,9 +285,17 @@ A mettre en "Italique" (ou en "Evidence") plut^ot qu'en majuscules!
 \layout Standard
 
 Voir Section 1.2, page 1 
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication:
+\layout Standard
+
 Cette "Référence Croisée" ne devrait pas ^etre écrite en dur.
+\layout Standard
+
 Que se passe-t-il si l'on change la numérotation des sections?
 \end_inset 
 
@@ -249,7 +330,11 @@ JE SUIS SUPER !
 \layout Standard
 
 
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication: C'est du source de programme ("CODE").
 \end_inset 
 
@@ -270,9 +355,17 @@ Il fait gagner tellement de temps
 \layout Standard
 
 
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication:
+\layout Standard
+
 Pas terrible comme poésie! Mais ce sont quand m^eme
+\layout Standard
+
 des vers ("VERSE").
 \end_inset 
 
@@ -281,9 +374,17 @@ des vers ("VERSE").
 
 4.
  Les maths 
-\begin_inset Info
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Indication:
+\layout Standard
+
 Les mathématiques qui suivent devraient ^etre traitées
+\layout Standard
+
 en "Mode Mathématique".
 \end_inset 
 

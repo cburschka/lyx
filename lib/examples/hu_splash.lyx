@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language magyar
 \inputencoding latin2
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -74,12 +76,16 @@ szövegszerkesztõnek
  ezzel sokkal könnyebbé teszi a dokumentumok szerkesztését.
  De ez csak egy kis különbség, szóval ne ijedjen meg.
  A dokumentációból minden világos lesz.
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 \SpecialChar ~
 Eléggé kihangsúlyoztuk, hogy el kellene olvasni a dokumentációt?
-\end_float 
+\end_inset 
+
+
 \layout Enumerate
 
 A LyX kimenete nagyon jól mutat! Válassza a 

@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language italian
 \inputencoding default
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -70,11 +72,14 @@ ttura---secondo una prospettiva che rende più semplice la scrittura dei
  documenti.
  In realtà si tratta di piccole differenze, quindi non vi spaventate.
  La documentazione vi renderà tutto più chiaro
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Abbiamo già ribadito il fatto che dovreste leggere la documentazione?
-\end_float 
+\end_inset 
+
 .
 \layout Enumerate
 

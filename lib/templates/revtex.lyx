@@ -1,8 +1,28 @@
-#This file was created by <karger> Tue Jan 26 17:48:36 1999
-#LyX 1.0 (C) 1995-1998 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass revtex
 \options aps,manuscript
+\language english
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize default
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
 
 \layout Title
 
@@ -10,11 +30,14 @@ Insert your Title Here
 \layout Author
 
 Author1
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Author to whom correspondence should be addressed
-\end_float 
+\end_inset 
+
  and Author2
 \layout Address
 
@@ -22,7 +45,15 @@ Insert the name of your university, company, or institute here.
 \layout Standard
 
 
-\begin_inset Info You don't have to write \maketitle.. LyX does this by itself.
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+You don't have to write 
+\backslash 
+maketitle..
+ LyX does this by itself.
 \end_inset 
 
 
@@ -47,14 +78,12 @@ preprint
 \family default 
  should go in the 
 \family sans 
-Extra
-\protected_separator 
+Extra\SpecialChar ~
 Options
 \family default 
  field in the 
 \family sans 
-Document
-\protected_separator 
+Document\SpecialChar ~
 Layout
 \family default 
  popup (accessed from the 
@@ -78,15 +107,19 @@ Special REVTeX 3.1 macros must be typed in TeX mode, so typing
 openone
 \family default 
  in TeX mode yields 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 openone{}
-\latex default 
+\end_inset 
+
 .
  (See the REVTeX manual for other macros.) REVTeX macros can also be used
  freely in the math editor, so you can type 
-\begin_inset Formula \( \sqrt{\overstar {a}}>\overcirc {b} \)
+\begin_inset Formula $\sqrt{\overstar a}>\overcirc b$
 \end_inset 
 
 .
@@ -106,7 +139,14 @@ prsty.bst
 \end_inset 
 
 .
-\begin_inset Info If you get question marks instead of numbers in your references,
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+If you get question marks instead of numbers in your references,
+\layout Standard
+
 re-run LaTeX (File->update dvi)
 \end_inset 
 

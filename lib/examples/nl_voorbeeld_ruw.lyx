@@ -1,6 +1,5 @@
-#This file was created by <Tino Meinen tino@direct.a2000.nl> Tue Dec  7 06:31:24 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language dutch
 \inputencoding default
@@ -12,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -26,27 +27,53 @@
 \layout Standard
 
 DIT IS DE TITEL VAN HET DOCUMENT
-\begin_inset Info Hint: de titel zou er meer als een titel uit horen te zien
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: de titel zou er meer als een titel uit horen te zien
 \end_inset 
+
 
 \layout Standard
 
 door Fee LyX
-\begin_inset Info Hint: Fee is de auteur (AUTHOR)
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Fee is de auteur (AUTHOR)
 \end_inset 
+
 
 \layout Standard
 
 June 12, 1972
-\begin_inset Info Hint: Dit is een datum (DATE)
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Dit is een datum (DATE)
 \end_inset 
+
 
 \layout Standard
 
 Inhoudsopgave
-\begin_inset Info Hint: Het zou leuk zijn als we de inhoudsopgave
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Het zou leuk zijn als we de inhoudsopgave
+\layout Standard
+
 (Table of Contents) niet zelf hoefden te tikken
 \end_inset 
+
 
 \layout Standard
 
@@ -77,14 +104,19 @@ Inhoudsopgave
 
 1.
  Uitgangspunten
-\begin_inset Info Hint: Sectie titels mogen er meer uitspringen
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Sectie titels mogen er meer uitspringen
 \end_inset 
+
 
 \layout Standard
 
 Het uitgangspunt van LyX is dat je je niet bezig houdt met de vormgeving,
  maar met de inhoud van je tekst.
-
 \layout Standard
 
 1.1 Hoe LyX het fikst
@@ -96,13 +128,24 @@ LyX gebruikt LaTeX, een tekstverwerkingssysteem ontworpen door Leslie Lamport
  door Donald Knuth gemaakt in 1984.
  LaTeX is ontworpen met dezelfde uitgangspunten als LyX.
  Leslie Lamport zei eens (zie referentie [1]) 
-\begin_inset Info Hint: Waarschijnlijk zou de referente naar dit citaat (CITATION
-REFERENCE) niet "hard gecodeerd" moeten zijn. Wat nu als
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Waarschijnlijk zou de referente naar dit citaat (CITATION
+\layout Standard
+
+REFERENCE) niet "hard gecodeerd" moeten zijn.
+ Wat nu als
+\layout Standard
+
 we Lamports boek het tweede item in de bibliografie maken?
 \end_inset 
 
 :
 \layout Standard
+
 
 \begin_inset Quotes eld
 \end_inset 
@@ -121,8 +164,15 @@ De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
 \begin_inset Quotes erd
 \end_inset 
 
-\begin_inset Info Hint: dit is een citaat (QUOTE)
+
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: dit is een citaat (QUOTE)
 \end_inset 
+
 
 \layout Standard
 
@@ -162,12 +212,24 @@ Wat je ziet is wat je bedoelt
 
 LyX heeft vele mogelijkheden die het schrijven van documenten vergemakkelijken.
  (Per slot van rekening: Waarom zou je het anders willen gebruiken?)
-\begin_inset Info Hint: Deze opmerking tussen haakjes zou beter uitkomen als
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Deze opmerking tussen haakjes zou beter uitkomen als
+\layout Standard
+
 een voetnoot.
 \end_inset 
 
  Ik vind het GEWELDIG
-\begin_inset Info Hint: Nadruk (Emphasize)
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Nadruk (Emphasize)
 \end_inset 
 
  om erover te vertellen.
@@ -182,10 +244,20 @@ een voetnoot.
 
 Voor een meer filosofische verhandeling waarom LyX beter is dan andere tekstverw
 erkers, zie Sectie 1.2, welke te vinden is op pagina 1.
-\begin_inset Info Hint: Waarschijnlijk zouden deze kruisverwijzingen
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Waarschijnlijk zouden deze kruisverwijzingen
+\layout Standard
+
 (CROSS-REFERENCES) niet "Hard gecodeerd" moeten zijn.
+\layout Standard
+
 Wat nu als we de sectienummers veranderen?
 \end_inset 
+
 
 \layout Standard
 
@@ -208,11 +280,18 @@ IK BEN GEWELDIG!
 \begin_inset Quotes erd
 \end_inset 
 
+
 \layout Standard
 
 20 GOTO 10 
-\begin_inset Info Hint: Dit is computer CODE
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Dit is computer CODE
 \end_inset 
+
 
 \layout Standard
 
@@ -227,16 +306,30 @@ Tekstzettende tekstverwerker
 \layout Standard
 
 Hij bespaart zo veel tijd 
-\begin_inset Info Hint: Het is niet erg goed, maar het is poezie,
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: Het is niet erg goed, maar het is poezie,
+\layout Standard
+
 ook bekend als gedicht (VERSE)
 \end_inset 
+
 
 \layout Standard
 
 4.
  Wiskunde dingen
-\begin_inset Info Hint: de wiskunde dingen moeten in math modus gezet worden
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Hint: de wiskunde dingen moeten in math modus gezet worden
 \end_inset 
+
 
 \layout Standard
 

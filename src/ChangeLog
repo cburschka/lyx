@@ -1,3 +1,10 @@
+2002-04-23  Mike Ressler  <mike.ressler@alum.mit.edu>
+
+	* lyxtextclass.[Ch]: add layout keyword ProvidesNatbib. 
+
+	* LaTeXFeatures.C: do not add \usepackage{natbib} to tex file if
+	natbib is provided by the LaTeX class.
+	
 2002-04-23  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.[Ch]: remove use of wrong and unneeded insetSleep/

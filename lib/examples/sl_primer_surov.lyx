@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language slovene
 \inputencoding latin2
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -25,14 +27,25 @@
 \layout Standard
 
 TO JE NASLOV VA©EGA SPISA 
-\begin_inset Info Namig: naslov bi moral biti videti bolj kot naslov.
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: naslov bi moral biti videti bolj kot naslov.
 \end_inset 
 
 
 \layout Standard
 
 Avtor: Fe LyX
-\begin_inset Info Namig: Fe je AVTOR (angl. Author).
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: Fe je AVTOR (angl.
+ Author).
 \end_inset 
 
 
@@ -40,14 +53,27 @@ Avtor: Fe LyX
 
 12.
  junij 1972
-\begin_inset Info Namig: to je DATUM (angl. Date).
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: to je DATUM (angl.
+ Date).
 \end_inset 
 
 
 \layout Standard
 
 Kazalo
-\begin_inset Info Namig: Fino bi bilo, èe nam ne bi bilo treba roèno
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: Fino bi bilo, èe nam ne bi bilo treba roèno
+\layout Standard
+
 dobesedno vpisovati vsebinskega kazala.
 \end_inset 
 
@@ -81,7 +107,15 @@ dobesedno vpisovati vsebinskega kazala.
 
 1.
  Temeljna filozofija
-\begin_inset Info Namig: naslovi razdelkov (angl. Section) bi verjetno
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: naslovi razdelkov (angl.
+ Section) bi verjetno
+\layout Standard
+
 morali bolj izstopati.
 \end_inset 
 
@@ -101,8 +135,18 @@ LyX uporablja LaTeX, sistem za pripravljanje spisov, ki ga je leta 1985
  ustvaril Donald Knuth.
  Filozofija LaTeXa je podobna filozofiji LyXa.
  Leslie Lamport je nekoè rekel (glej vir [1])
-\begin_inset Info Namig: Verjetno ta NAVZKRI®NI SKLIC ne bi smel
-biti "vne¹en". Kaj, èe naredimo Lamportovo knjigo
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: Verjetno ta NAVZKRI®NI SKLIC ne bi smel
+\layout Standard
+
+biti "vne¹en".
+ Kaj, èe naredimo Lamportovo knjigo
+\layout Standard
+
 za drugo postavko spiska literature?
 \end_inset 
 
@@ -126,7 +170,13 @@ Tipografsko oblikovanje naj bi pomagalo bralcu razumeti avtorjeve zamisli.
 \end_inset 
 
 
-\begin_inset Info Namig: To je NAVEDEK (angl. Quote).
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: To je NAVEDEK (angl.
+ Quote).
 \end_inset 
 
 
@@ -167,12 +217,24 @@ to, kar vidi¹, to tudi misli¹
 
 LyX ima ¹tevilne odlike, ki nam olaj¹ajo pisanje spisov.
  (Navsezadnje, le zakaj bi ga drugaèe sploh ¾eleli uporabljati?
-\begin_inset Info Namig: Ta stavek v oklepaju je videti bolje kot
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: Ta stavek v oklepaju je videti bolje kot
+\layout Standard
+
 opomba v nogi.
 \end_inset 
 
 ) ZELO ME VESELI, 
-\begin_inset Info Namig: Poudarite!
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: Poudarite!
 \end_inset 
 
  da lahko pi¹em o tem.
@@ -187,8 +249,18 @@ opomba v nogi.
 
 Bolj filozofsko razpravo o tem, zakaj je LyX bolj¹i od drugih urejevalnikov
  besedil, pa boste na¹li v razdelku 1.2 na strani 1.
-\begin_inset Info Namig: Verjetno ta NAVZKRI®NA SKLICEVANJA
-ne bi smela biti "zakodirana". Kaj, èe spremenimo
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: Verjetno ta NAVZKRI®NA SKLICEVANJA
+\layout Standard
+
+ne bi smela biti "zakodirana".
+ Kaj, èe spremenimo
+\layout Standard
+
 ¹tevilke razdelkov?
 \end_inset 
 
@@ -217,7 +289,13 @@ STRA©EN SEM!
 \layout Standard
 
 20 GOTO 10 
-\begin_inset Info Namig: To je raèunalni¹ka KODA (angl. Code).
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: To je raèunalni¹ka KODA (angl.
+ Code).
 \end_inset 
 
 
@@ -234,8 +312,16 @@ stavni urejevalnik besedil
 \layout Standard
 
 prihrani mi toliko èasa 
-\begin_inset Info Namig: Ni preveè dobro, a je poezija,
-znana tudi kot VERZI (angl. Verse).
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: Ni preveè dobro, a je poezija,
+\layout Standard
+
+znana tudi kot VERZI (angl.
+ Verse).
 \end_inset 
 
 
@@ -243,7 +329,14 @@ znana tudi kot VERZI (angl. Verse).
 
 4.
  Matematiène zadev¹èine
-\begin_inset Info Namig: Te matematiène stvari bi morale biti izpisane
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Namig: Te matematiène stvari bi morale biti izpisane
+\layout Standard
+
 v matematiènem naèinu!
 \end_inset 
 

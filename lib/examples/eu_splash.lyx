@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.16
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language english
 \inputencoding default
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -74,11 +76,14 @@ idazki prozesatzailea
  idazteko lana errazago eginez.
  Apur bat ezberdina soilik, ez zaitez beldurtu.
  Eskuliburu laguntzaileek gauza denak argituko dizkizute
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Laguntzako eskuliburuak irakurtzea komeni zaizkizula esan al dizugu?
-\end_float 
+\end_inset 
+
 .
 \layout Enumerate
 

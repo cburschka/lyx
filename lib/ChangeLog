@@ -1,3 +1,16 @@
+2002-04-23  Mike Ressler  <mike.ressler@alum.mit.edu>
+
+	* layouts/aastex.layout: add ProvidesNatbib
+	
+	* templates/aastex.lyx: convert to format 220
+
+2002-04-23  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* examples/*.lyx: convert many files to format 220, _except_
+	aa_sample and aas_sample, for which I do not have the textclass
+
+	* templates/*.lyx: convert a few files to format 220
+
 2002-04-11  Rob Lahaye  <lahaye@users.sourceforge.net>
 
 	* layouts/revtex4.layout: fix tilde-output in URL and Email insets.

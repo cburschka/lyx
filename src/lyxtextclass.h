@@ -93,7 +93,9 @@ public:
 		///
 		makeidx = 2,
 		///
-		url = 4
+		url = 4,
+		///
+		natbib = 8
 	};
 	///
 	bool provides(Provides p) const;

@@ -1,6 +1,5 @@
-#This file was created by <const> Thu May 27 14:26:22 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language russian
 \inputencoding koi8-r
@@ -12,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -65,19 +66,21 @@ LyX поставляется с прекрасным набором документации --- пользуйтесь ей! Начните
  Но не пугайтесь, если этот процесс несколько отличается от того, к которому
  вы привыкли.
  Возникшие у вас вопросы может прояснить документация
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Мы, кажется, уже упоминали, что документацию читать очень полезно?
-\end_float 
+\end_inset 
+
 .
 \layout Enumerate
 
 Вывод программы LyX выглядит потрясающе! Чтобы сейчас же в этом убедиться,
  выберите пункт меню 
 \family sans 
-Файл->Просмотреть
-\protected_separator 
+Файл->Просмотреть\SpecialChar ~
 dvi
 \family default 
 .

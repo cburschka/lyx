@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.17
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language dutch
 \inputencoding default
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -73,11 +75,14 @@ document verwerker.
  het schrijven van teksten makkelijker.
  Een beetje anders maar geen reden om bang te zijn.
  De documentatie zal het allemaal duidelijk maken
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Hebben we al verteld dat je de documentatie moet lezen?
-\end_float 
+\end_inset 
+
 .
 \layout Enumerate
 

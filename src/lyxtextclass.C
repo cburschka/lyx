@@ -91,6 +91,7 @@ enum TextClassTags {
 	TC_CLASSOPTIONS,
 	TC_PREAMBLE,
 	TC_PROVIDESAMSMATH,
+	TC_PROVIDESNATBIB,
 	TC_PROVIDESMAKEIDX,
 	TC_PROVIDESURL,
 	TC_LEFTMARGIN,
@@ -115,6 +116,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		{ "preamble",        TC_PREAMBLE },
 		{ "providesamsmath", TC_PROVIDESAMSMATH },
 		{ "providesmakeidx", TC_PROVIDESMAKEIDX },
+		{ "providesnatbib",  TC_PROVIDESNATBIB },
 		{ "providesurl",     TC_PROVIDESURL },
 		{ "rightmargin",     TC_RIGHTMARGIN },
 		{ "secnumdepth",     TC_SECNUMDEPTH },
@@ -282,6 +284,11 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		case TC_PROVIDESAMSMATH:
 			if (lexrc.next() && lexrc.getInteger())
 				provides_ |= amsmath;
+			break;
+
+		case TC_PROVIDESNATBIB:
+			if (lexrc.next() && lexrc.getInteger())
+				provides_ |= natbib;
 			break;
 
 		case TC_PROVIDESMAKEIDX:

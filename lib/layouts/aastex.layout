@@ -26,6 +26,7 @@
 #			  is changed. (Not by me!) Documentation, template, and
 #			  example files are available.
 # Version 1.1	7/25/99 - Changed \url to take advantage of new layout option.
+# Version 1.2	4/18/02 - Updated for natbib in 1.2.0
 
 # General textclass parameters
 Columns			1
@@ -35,6 +36,7 @@ MaxCounter		Counter_Section
 TocDepth		0
 PageStyle		Plain
 ProvidesAmsmath		1
+ProvidesNatbib		1
 ProvidesUrl		1
 ClassOptions
   PageStyle		""	

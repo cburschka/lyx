@@ -1,6 +1,5 @@
-#This file was created by <larsbj> Sun Dec  5 17:44:19 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass foils
 \begin_preamble
 \raggedright
@@ -17,6 +16,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \paperwidth 0cm
 \paperheight 0cm
@@ -58,16 +59,21 @@
 \end_bullet
 
 \layout Title
+\added_space_bottom 7pt 
+Foils Class 
+\layout Standard
 
-Foils Class
-\latex latex 
 
-\newline 
+\begin_inset ERT
+status Collapsed
 
-\backslash 
-vspace{7pt}
+\layout Standard
+
 \backslash 
 hrule height 7pt
+\end_inset 
+
+
 \layout Author
 
 
@@ -93,11 +99,19 @@ foils
 \layout Foilhead
 
 This is a Foilhead
-\layout LaTeX
+\layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
-hrule height 3pt 
+hrule height 3pt
+\end_inset 
+
+ 
 \layout Standard
 
 A Foilhead starts a new foil.
@@ -111,11 +125,15 @@ short
 \layout Itemize
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 zerolistvertdimens{}
-\latex default 
+\end_inset 
+
 The new Itemize Bullet Selection popup
 \begin_deeper 
 \layout Itemize
@@ -150,11 +168,19 @@ zerolistvertdimens{}
 \layout ShortFoilhead
 
 This is a ShortFoilhead
-\layout LaTeX
+\layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 hrule height 3pt
+\end_inset 
+
+
 \layout Standard
 
 The foils class has been extended to provide two additional bullet-lists.
@@ -177,7 +203,7 @@ These two lists were added because the listing of do's and don'ts or good
 \layout Rotatefoilhead
 
 Rotatefoilhead
-\layout LaTeX
+\layout Standard
 
 
 \backslash 
@@ -202,11 +228,19 @@ There are also several environments specially designed for presenting Theorems,
 \layout ShortRotatefoilhead
 
 ShortRotateFoilhead
-\layout LaTeX
+\layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 hrule height 3pt
+\end_inset 
+
+
 \layout Itemize
 
 Again the short version reduces the space below the heading
@@ -241,11 +275,19 @@ short
 \layout ShortFoilhead
 
 Tricky Proofs
-\layout LaTeX
+\layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 hrule height 3pt 
+\end_inset 
+
+
 \layout Lemma*
 
 Several consecutive paragraphs of type
@@ -276,18 +318,26 @@ Proof
 \layout Lemma*
 
 As you can see, we are still in the same lemma.
-\layout LaTeX
+\layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 %
+\end_inset 
+
+
 \layout Lemma*
 
 To force this second Lemma straight after the first it's necessary to add
  some dividing text or as I've done in this case separate the two by inserting
  a 
 \emph on 
-LaTeX
+TeX
 \emph default 
- environment that simply contains a 
+ inset that simply contains a 
 \begin_inset Quotes eld
 \end_inset 
 
@@ -310,113 +360,225 @@ not
 \layout ShortFoilhead
 
 Tables and Figures
-\layout LaTeX
+\layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 hrule height 3pt 
+\end_inset 
+
+
 \layout Standard
-\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
-multicol5
-3 3 0 0 -1 -1 -1 -1
-1 1 0 0
-1 0 0 0
-1 1 0 0
-8 1 0 "" ""
-8 1 0 "" ""
-8 1 1 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
 
 Column1
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 Column2
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 Column3
-\newline 
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 A
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 
 \emph on 
 simple
-\emph default 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
 
-\newline 
+\layout Standard
+
 table
-\newline 
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 
 \bar under 
 example
-\bar default 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
 
-\newline 
+\layout Standard
+
 with
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 
 \series bold 
 foils
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
 \layout Standard
 
 Both tables and figures are supported in Foils however floats don't float
  instead they appear exactly where they appear in the text.
  Any placement parameters you set will be ignored.
-\begin_float tab 
+\begin_inset Float table
+placement htbp
+wide false
+collapsed false
+
 \layout Standard
-\align center \LyXTable
-multicol5
-3 3 0 0 -1 -1 -1 -1
-1 1 0 0
-1 0 0 0
-1 1 0 0
-8 1 0 "" ""
-8 1 0 "" ""
-8 1 1 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
+\align center 
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
 
 Row1
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 
 \emph on 
 Another
-\emph default 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
 
-\newline 
+\layout Standard
+
 simple
-\newline 
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 Row2
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 
 \bar under 
 table
-\bar default 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
 
-\newline 
+\layout Standard
+
 example
-\newline 
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 Row3
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 
 \series bold 
 with
-\series default 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
 
-\newline 
+\layout Standard
+
 foils
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
 \layout Caption
 
 This is a non-floating 
@@ -428,23 +590,36 @@ float
 \end_inset 
 
  table
-\end_float 
+\end_inset 
+
+
 \layout ShortFoilhead
 
 Headers and Footers
-\layout LaTeX
+\layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 hrule height 3pt
+\end_inset 
+
+
 \layout Standard
 
 FoilTeX provides some powerful header and footer capabilities
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 You can also use the standard footnotes like this one.
-\end_float 
+\end_inset 
+
  that are best set in the preamble although they may be set at any point
  in a document.
  If you want to change these settings in the document the best place to
@@ -507,11 +682,19 @@ leftheader{}
 \layout Foilhead
 
 Further Reading
-\layout LaTeX
+\layout Standard
 
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 hrule height 3pt
+\end_inset 
+
+
 \layout Standard
 
 Your LaTeX distribution should include some documentation on FoilTeX.

@@ -1,6 +1,5 @@
-#This file was created by <larsbj> Sun Dec  5 17:50:17 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass foils
 \options dvips
 \language english
@@ -13,6 +12,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation landscape
 \secnumdepth 3
 \tocdepth 3
@@ -27,40 +28,70 @@
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 MyLogo{HUT/ECDL Kimmo Koli 
 \backslash 
 today}
+\end_inset 
+
+
 \layout ShortFoilhead
 \line_bottom 
 Landscape slide example with a figure
 \layout Standard
-\pextra_type 2 \pextra_alignment 1 \pextra_start_minipage 1 \pextra_widthp 52
+
+
+\begin_inset Minipage
+position 1
+inner_position 0
+height "0pt"
+width "52page%"
+collapsed false
+
+\layout Standard
 
 It is possible to place text beside a figure (clipart platypus in this example)
  using the minipage enviroment
 \layout Itemize
-\pextra_type 2 \pextra_alignment 1 \pextra_widthp 52
 
 The text can contain also item lists
 \layout TickList
-\pextra_type 2 \pextra_alignment 1 \pextra_widthp 52
 
 Also other lists like tick lists 
 \layout CrossList
-\pextra_type 2 \pextra_alignment 0 \pextra_widthp 52
 
 and cross lists can be entered
+\end_inset 
+
+
+\hfill 
+
+\begin_inset Minipage
+position 1
+inner_position 0
+height "0pt"
+width "45page%"
+collapsed false
+
 \layout Standard
-\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \pextra_type 2 \pextra_alignment 1 \pextra_hfill 1 \pextra_start_minipage 1 \pextra_widthp 45
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
 
+\begin_inset Graphics FormatVersion 1
+	filename ../clipart/platypus.eps
+	display monochrome
+	size_type 1
+	width 10cm
+	rotateOrigin center
+	lyxsize_type 1
+	lyxwidth 283pt
+	lyxheight 208pt
+\end_inset 
 
-\begin_inset Figure size 283 208
-file ../clipart/platypus.eps
-width 1 10
-flags 1
 
 \end_inset 
 

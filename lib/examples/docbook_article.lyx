@@ -1,6 +1,5 @@
-#This file was created by <jamatos> Wed Sep 29 16:07:48 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass docbook
 \language english
 \inputencoding default
@@ -12,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -25,14 +26,31 @@
 
 \layout SGML
 
+ 
+\begin_inset Note
+collapsed true
 
-\begin_inset Info Here goes the information about the article:
-  * title
-  * date
-  * author
-    + first name
-    + last name
- * abstract
+\layout Standard
+
+Here goes the information about the article:
+\layout Standard
+
+* title
+\layout Standard
+
+* date
+\layout Standard
+
+* author
+\layout Standard
+
++ first name
+\layout Standard
+
++ last name
+\layout Standard
+
+* abstract
 \end_inset 
 
 
@@ -50,9 +68,19 @@ Docbook with LyX
 
 \size normal 
 
-\begin_inset Info The author name is always composed of:
-  * first name
-  * surname
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+The author name is always composed of:
+\layout Standard
+
+* first name
+\layout Standard
+
+* surname
+\layout Standard
 
 It is always possible to have more than one author.
 \end_inset 
@@ -60,15 +88,9 @@ It is always possible to have more than one author.
 
 \layout FirstName
 
-
-\latex no_latex 
-Jos
-\latex default 
-e'
+Jose'
 \layout Surname
 
-
-\latex no_latex 
 Matos
 \end_deeper 
 \layout Abstract
@@ -188,9 +210,13 @@ The only fonts supported are
 Emphasis
 \emph default 
  and 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 <literal>SGML</literal>
-\latex default 
+\end_inset 
+
 .
 \layout Subsection
 
@@ -210,41 +236,62 @@ Notice that when the docbook code is exported the filename extension is
  The default extension are eps for the print and gif for the html backend.
 \layout Standard
 
-\begin_float fig 
+
+\begin_inset Float figure
+placement htbp
+wide false
+collapsed false
+
 \layout Standard
 
 
-\begin_inset Figure size 56 85
-file ../doc/platypus.eps
-width 1 2
-height 1 3
-angle 45
-flags 2
-
+\begin_inset Graphics FormatVersion 1
+	filename ../doc/platypus.eps
+	display grayscale
+	size_type 1
+	width 2cm
+	height 3cm
+	rotate
+	rotateAngle 45
+	rotateOrigin center
+	lyxsize_type 1
+	lyxwidth 56pt
+	lyxheight 85pt
 \end_inset 
 
 
 \layout Caption
 
 Nice platypus
-\end_float 
+\end_inset 
+
  
 \layout Standard
 
 Wide figures are treated as normal figures.
 \layout Standard
 
-\begin_float wide-fig 
+
+\begin_inset Float figure
+placement htbp
+wide true
+collapsed false
+
 \layout Standard
 
 
-\begin_inset Figure size 56 85
-file ../doc/platypus.eps
-width 1 2
-height 1 3
-angle 45
-flags 2
-
+\begin_inset Graphics FormatVersion 1
+	filename ../doc/platypus.eps
+	display grayscale
+	size_type 1
+	width 2cm
+	height 3cm
+	rotate
+	rotateAngle 45
+	rotateOrigin center
+	lyxsize_type 1
+	lyxwidth 56pt
+	lyxheight 85pt
 \end_inset 
 
 
@@ -252,73 +299,164 @@ flags 2
 
 long, very long...
  :-)
-\end_float 
+\end_inset 
+
+
 \layout Subsection
 
 Tables
 \layout Standard
 
 There is also basic support for tables.
-\begin_float tab 
+\begin_inset Float table
+placement htbp
+wide false
+collapsed false
+
 \layout Standard
-\added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
-multicol5
-3 5 0 0 -1 -1 -1 -1
-1 0 0 0
-1 0 0 0
-1 1 0 0
-8 1 0 "" ""
-8 1 0 "" ""
-8 1 0 "" ""
-8 1 0 "" ""
-8 1 1 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-1 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-1 8 1 0 0 0 0 "" ""
-2 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-1 8 0 1 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
 
+\begin_inset  Tabular
+<lyxtabular version="3" rows="3" columns="5">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
 
-\newline 
+\layout Standard
+
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 Software 1
-\newline 
-Software 2
-\newline 
-Software 3
-\newline 
-Software 4
-\newline 
-Plataform 1
-\newline 
-25 MB
-\newline 
-10 MB
-\newline 
-34 MB
-\newline 
-Plataform 2
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
 
-\newline 
+\layout Standard
+
+Software 2
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Software 3
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Software 4
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Plataform 1
+\end_inset 
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+25 MB
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+10 MB
+\end_inset 
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+34 MB
+\end_inset 
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Plataform 2
+\end_inset 
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 12 MB
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 30 MB
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 35 MB
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
 \layout Caption
 
 Nice Formal Table
-\end_float 
+\end_inset 
+
  
 \layout Standard
 
@@ -341,8 +479,10 @@ It is also possible to insert margin notes inside some environments.
 \begin_deeper 
 \layout SGML
 
-\begin_float margin 
-\end_deeper 
+
+\begin_inset Marginal
+collapsed true
+
 \layout Standard
 
 margin note
@@ -352,12 +492,16 @@ second par -> margin note
 \layout Standard
 
 third par -> margin note
-\end_float 
+\end_inset 
+
  
+\end_deeper 
 \layout Quotation
 
 Notice that the previous layout is at level 1 
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 This comes from a docbook restriction.
@@ -366,18 +510,23 @@ This comes from a docbook restriction.
 \layout Standard
 
 These environments are easily added to the docbook layout.
-\end_float 
+\end_inset 
+
  and so is the follow:
 \begin_deeper 
 \layout SGML
 
-\begin_float margin 
-\end_deeper 
+
+\begin_inset Marginal
+collapsed true
+
 \layout Standard
 
 too marginal ;-)
-\end_float 
+\end_inset 
+
  
+\end_deeper 
 \layout Section
 
 The road map
@@ -417,13 +566,15 @@ book
 \layout Enumerate
 
 set (very unlikely)
-\begin_float footnote 
-\end_deeper 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 I do not expect lyx to deal with colection of books, for now!
-\end_float 
-\begin_deeper 
+\end_inset 
+
+
 \layout Enumerate
 
 refentry

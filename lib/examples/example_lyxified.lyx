@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.16
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language english
 \inputencoding default
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -23,11 +25,6 @@
 \paperpagestyle plain
 
 \layout Title
-
-
-\begin_inset External Bitmap,"filename.txt","parameters"
-
-\end_inset 
 
 THIS IS THE TITLE OF THE DOCUMENT
 \layout Author
@@ -120,11 +117,14 @@ Features of LyX
 \layout Standard
 
 LyX has many features which make writing documents easier.
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 After all, why else would you want to use it?
-\end_float 
+\end_inset 
+
  I'm 
 \shape italic 
 very excited
@@ -193,11 +193,11 @@ Math Stuff
 
 My favorite equation is the solution to a quadratic equation.
  If 
-\begin_inset Formula \( ax^{2}+bx+c=0 \)
+\begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset 
 
  (eq.1), then 
-\begin_inset Formula \( x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a} \)
+\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
 \end_inset 
 
  (eq.
@@ -205,7 +205,7 @@ My favorite equation is the solution to a quadratic equation.
 \layout Standard
 
 Another favorite equation is the basis of calculus: 
-\begin_inset Formula \( f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \)
+\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset 
 
  (eq.

@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language slovene
 \inputencoding latin2
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -72,11 +74,14 @@ stavnik spisov
  pisanje spisov.
  Vendar se od njih razlikuje le malce, zato se nikar ne prestra¹ite.
  V dokumentaciji je vse pojasnjeno
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Saj smo omenili, da bi morali prebrati dokumentacijo, kajne?
-\end_float 
+\end_inset 
+
 .
 \layout Enumerate
 
@@ -86,8 +91,7 @@ Izhod LyXa je videti èudovit! Izberite
 D
 \bar default 
 atoteka\SpecialChar \menuseparator
-Glej
-\protected_separator 
+Glej\SpecialChar ~
 
 \bar under 
 d

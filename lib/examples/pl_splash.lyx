@@ -1,6 +1,5 @@
-#This file was created by <dzieko> Mon Mar  1 21:49:28 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language polish
 \inputencoding latin2
@@ -12,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -71,11 +72,14 @@ procesorem tekstu
  ³atwiej tworzyæ dokumenty.
  Ró¿ni siê jednak bardzo niewiele, wiêc nie ma obawy.
  W razie problemów zajrzyj do dokumentacji.
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Czy wspomnieli¶my ju¿, ¿e powiniene¶ przeczytaæ dokumentacjê?
-\end_float 
+\end_inset 
+
 .
 \layout Enumerate
 
@@ -84,8 +88,7 @@ Wynik pracy wygl±da naprawdê wspaniale! Wybierz teraz
 \bar under 
 P
 \bar default 
-lik->Podgl±d
-\protected_separator 
+lik->Podgl±d\SpecialChar ~
 dvi
 \family default 
  by zobaczyæ ten dokument w ca³ej okaza³o¶ci.
@@ -96,10 +99,8 @@ Pakiet zawiera wiele szablonów (
 \bar under 
 P
 \bar default 
-lik->Nowy
-\protected_separator 
-z
-\protected_separator 
+lik->Nowy\SpecialChar ~
+z\SpecialChar ~
 szablonu
 \family default 
 ) i przyk³adów (

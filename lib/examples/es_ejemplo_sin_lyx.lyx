@@ -1,6 +1,5 @@
-#This file was created by <sergio> Mon May 24 07:03:07 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language spanish
 \inputencoding latin1
@@ -12,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -26,28 +27,50 @@
 \layout Standard
 
 ESTE ES EL TÍTULO DEL DOCUMENTO
-\begin_inset Info Pista: el título debería parecerse más a un título
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: el título debería parecerse más a un título
 \end_inset 
 
 
 \layout Standard
 
 por Fulanito
-\begin_inset Info Pista: Fulanito es el AUTOR
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: Fulanito es el AUTOR
 \end_inset 
 
 
 \layout Standard
 
 12 de junio de 1972
-\begin_inset Info Pista: Esto es una FECHA
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: Esto es una FECHA
 \end_inset 
 
 
 \layout Standard
 
 Índice general
-\begin_inset Info Pista: Sería estupendo que no tuviésemos que escribir el índice
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: Sería estupendo que no tuviésemos que escribir el índice
+\layout Standard
+
 de manera explícita
 \end_inset 
 
@@ -81,7 +104,12 @@ de manera explícita
 
 1.
  Filosofía general
-\begin_inset Info Pista: Los títulos de sección deberían resaltar mas
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: Los títulos de sección deberían resaltar mas
 \end_inset 
 
 
@@ -100,8 +128,18 @@ LyX utiliza LaTeX, un sistema de preparación de documentos diseñado por
  Donald Knuth en 1984.
  LaTeX está diseñado sobre una filosofía similar a la de LyX.
  Leslie Lamport dijo (ver referencia [1]) 
-\begin_inset Info Pista: Probablemente esta REFERENCIA A CITA no debería
-estar escrita "directamente". ¿Qué pasaría si ponemos el libro
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: Probablemente esta REFERENCIA A CITA no debería
+\layout Standard
+
+estar escrita "directamente".
+ ¿Qué pasaría si ponemos el libro
+\layout Standard
+
 de Lamport en la segunda entrada de la bibliografía?
 \end_inset 
 
@@ -125,7 +163,12 @@ La función del diseño tipográfico es ayudar al lector a comprender las ideas
 \end_inset 
 
 
-\begin_inset Info Pista: Esto es una CITA
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: Esto es una CITA
 \end_inset 
 
 
@@ -168,12 +211,24 @@ lo que ves es lo que quieres decir
 
 LyX posee muchas características que hacen más fácil escribir documentos.
  (Después de todo, ¿por qué otra cosa lo querrías usar?
-\begin_inset Info Pista: Este comentario entre paréntesis quedaría mejor en una
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: Este comentario entre paréntesis quedaría mejor en una
+\layout Standard
+
 nota a pie de página
 \end_inset 
 
 ) Estoy MUY EMOCIONADO
-\begin_inset Info Pista: ¡Resáltalo!
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: ¡Resáltalo!
 \end_inset 
 
  de hablarte de ellas.
@@ -189,8 +244,18 @@ nota a pie de página
 
 Para una discusión más filosófica de por qué LyX es mejor que muchos procesadore
 s de texto, mira la sección 1.2, que se encuentra en la página 1.
-\begin_inset Info Pista: Seguramente, estas REFERENCIAS CRUZADAS no
-deberían escribirse "directamente". ¿Y si cambiásemos los
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: Seguramente, estas REFERENCIAS CRUZADAS no
+\layout Standard
+
+deberían escribirse "directamente".
+ ¿Y si cambiásemos los
+\layout Standard
+
 números de sección?
 \end_inset 
 
@@ -220,7 +285,12 @@ El otro día escribí un programa.
 \layout Standard
 
 20 GOTO 10 
-\begin_inset Info Pista: Esto es código de ordenador
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: Esto es código de ordenador
 \end_inset 
 
 
@@ -237,7 +307,14 @@ Procesador de textos
 \layout Standard
 
 Ahorra tanto tiempo 
-\begin_inset Info Pista: No es muy bueno, pero es poesia, concretamente una
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: No es muy bueno, pero es poesia, concretamente una
+\layout Standard
+
 estrofa
 \end_inset 
 
@@ -246,7 +323,14 @@ estrofa
 
 4.
  Matemáticas
-\begin_inset Info Pista: Todas las fórmulas a partir de aquí deberían escribirse
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Pista: Todas las fórmulas a partir de aquí deberían escribirse
+\layout Standard
+
 en modo matematico
 \end_inset 
 

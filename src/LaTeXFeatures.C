@@ -245,7 +245,7 @@ string const LaTeXFeatures::getPackages() const
 
 	// float.sty
 	// natbib.sty
-	if (isRequired("natbib")) {
+	if (isRequired("natbib") && ! tclass.provides(LyXTextClass::natbib)) {
 		packages << "\\usepackage[";
 		if (params.use_numerical_citations) {
 			packages << "numbers";

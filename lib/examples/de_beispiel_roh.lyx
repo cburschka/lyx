@@ -1,6 +1,5 @@
-#This file was created by <pit> Wed Mar  3 01:32:12 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language german
 \inputencoding latin1
@@ -12,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -26,7 +27,11 @@
 \layout Standard
 
 DIES IST DER TITEL DES DOKUMENTS 
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis: der Titel sollte mehr nach einem Titel aussehen
 \end_inset 
 
@@ -34,7 +39,11 @@ Hinweis: der Titel sollte mehr nach einem Titel aussehen
 \layout Standard
 
 von Fee LyX 
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis: Fee LyX ist der AUTHOR
 \end_inset 
 
@@ -43,7 +52,11 @@ Hinweis: Fee LyX ist der AUTHOR
 
 12.
  Juni 1972 
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis: dies ist ein DATE
 \end_inset 
 
@@ -51,9 +64,15 @@ Hinweis: dies ist ein DATE
 \layout Standard
 
 Inhaltsverzeichnis 
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis: Es wäre schön, wenn wir das Verzeichnis nicht selber schreiben
- müßten
+\layout Standard
+
+müßten
 \end_inset 
 
 
@@ -86,8 +105,14 @@ Hinweis: Es wäre schön, wenn wir das Verzeichnis nicht selber schreiben
 
 1.
  Grundidee 
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis:
+\layout Standard
+
 Abschnittüberschriften sollten ein wenig hervorgehoben sein
 \end_inset 
 
@@ -107,10 +132,18 @@ LyX benutzt LaTeX, ein Textsatzsystem für Dokumente, das Leslie Lamport
  entwickelt hatte.
  Die Grundidee von LaTeX ist ähnlich wie die von LyX.
  Leslie Lamport sagte einmal (siehe Referenz [1]):
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis: dieser Zitat-Verweis sollte nicht fest sein.
- Was wäre, wenn wir Lamports Buch als zweites in der Literaturverzeichnis
- haben wollten?
+\layout Standard
+
+Was wäre, wenn wir Lamports Buch als zweites in der Literaturverzeichnis
+\layout Standard
+
+haben wollten?
 \end_inset 
 
 
@@ -134,7 +167,11 @@ Der Sinn des typographischen Entwurfs ist, daß der Leser die Ideen des Autors
 \end_inset 
 
 
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis: Dies ist ein Zitat
 \end_inset 
 
@@ -170,12 +207,20 @@ What you see is what you mean
 
 LyX hat viele Merkmale, die das Schreiben von Dokumenten erleichtern.
  (Warum sollte man es sonst benutzen?
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis: Dieser hervorgehobene Satz würde in einer Fußnote besser aussehen
 \end_inset 
 
 ) Ich bin SEHR AUFGEREGT
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis: Hervorheben!
 \end_inset 
 
@@ -192,9 +237,15 @@ Hinweis: Hervorheben!
 
 Für eine mehr philosophische Diskussion, warum LyX besser als viele andere
  Textverarbeitungen ist, lesen Sie bitte Abschnitt 1.2 auf Seite 1.
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis: Dieser Querverweis sollte nicht fest sein.
- Was wäre, wenn wir die Abschnittsnummern ändern würden?
+\layout Standard
+
+Was wäre, wenn wir die Abschnittsnummern ändern würden?
 \end_inset 
 
 
@@ -226,7 +277,11 @@ ICH BIN TOLL!
 \layout Standard
 
 
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis: Dies ist Computer-CODE
 \end_inset 
 
@@ -247,9 +302,15 @@ Es spart soviel Zeit.
 \layout Standard
 
 
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis: Es ist nicht sehr gut, aber es ist Poesie, auch als VERSE
- bekannt
+\layout Standard
+
+bekannt
 \end_inset 
 
 
@@ -257,9 +318,15 @@ Hinweis: Es ist nicht sehr gut, aber es ist Poesie, auch als VERSE
 
 4.
  Mathematik 
-\begin_inset Info 
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
 Hinweis: diese mathematischen Dinge sollten im Mathematikmodus gedruckt
- werden!
+\layout Standard
+
+werden!
 \end_inset 
 
 

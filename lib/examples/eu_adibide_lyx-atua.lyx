@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.16
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language spanish
 \inputencoding latin1
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -116,11 +118,14 @@ LyX-en Ezaugarriak
 
 LyX-ek idazkiak idazteko erreztasun asko eskeintzen dituen ezugarri ugari
  ditu.
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 bestela, zertarako nahiko zenuke erabiltzea?
-\end_float 
+\end_inset 
+
  Beraietaz mintzatzeak 
 \emph on 
 asko unkitzen
@@ -190,11 +195,11 @@ Matematikak
 
 Nere ekuazio gogokoena bigarren mailako ekuazio baten emaitza da.
  Baldin eta 
-\begin_inset Formula \( ax^{2}+bx+c=0 \)
+\begin_inset Formula $ax^{2}+bx+c=0$
 \end_inset 
 
  (1.ek), orduan 
-\begin_inset Formula \( x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a} \)
+\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
 \end_inset 
 
  (2.
@@ -202,7 +207,7 @@ Nere ekuazio gogokoena bigarren mailako ekuazio baten emaitza da.
 \layout Standard
 
 Beste ekuazio polita kalkulu oinarria da: 
-\begin_inset Formula \( f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \)
+\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 \end_inset 
 
  (3.

@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \begin_preamble
 \usepackage{multicol}
@@ -14,6 +14,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -94,10 +96,16 @@ end{multicols}
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 \noindent 
 
@@ -142,10 +150,16 @@ Het was in het voorjaar van het jaar 1894 dat iedereen in Londen  geïnteresseerd
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsubsection
 
 Meervoudige kolommen
@@ -157,10 +171,16 @@ Hetzelfde patroon wordt toegepast als je meer dan twee kolommen wenst.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{3}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -187,10 +207,16 @@ U kunt zich voorstellen dat mijn nauwe vriendschap met Sherlock Holmes me
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsubsection
 
 Kolommen binnen kolommen
@@ -200,10 +226,16 @@ Je kunt zelfs kolommen binnen kolommen definieren:
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 \added_space_bottom -2ex 
 
@@ -216,10 +248,16 @@ De rechtschapen Ronald Adair was de tweede zoon van de Graaf van Maynooth,
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -238,10 +276,16 @@ en.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -271,10 +315,16 @@ ge speler en werd meestal de winnaar.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsection
 
 Voorbeelden voor gevorderden
@@ -299,15 +349,25 @@ Als er minder dan 5cm ruimte op de pagina over is, zal op een nieuwe pagina
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}[
-\latex default 
+\end_inset 
+
 En het verhaal gaat verder en verder en verder\SpecialChar \ldots{}
  
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 ][5cm]
+\end_inset 
+
+
 \layout Standard
 
 
@@ -335,10 +395,16 @@ Op de avond van de misdaad kwam hij precies om tien uur terug van de club.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsubsection
 
 Inleiding en secties
@@ -355,16 +421,26 @@ multicols
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{multicols}{2}[
 \backslash 
 subsubsection{
-\latex default 
+\end_inset 
+
 Dit is de sectie opdracht als inleiding
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }][5cm]
+\end_inset 
+
+
 \layout Standard
 
 
@@ -401,10 +477,16 @@ d werden door de volledige afwezigheid van een motief, want, zoals ik heb
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Subsubsection
 
 Lege ruimte
@@ -434,7 +516,10 @@ begin{multicols}
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
@@ -442,6 +527,9 @@ setlength{
 multicolsep}{3cm}
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -474,10 +562,16 @@ De hele dag bleven deze feiten in mijn gedachten, strevend naar een theorie
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Paragraph
 
 Opmerking:
@@ -494,12 +588,18 @@ setlength
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
 \backslash 
 multicolsep}{13pt}
+\end_inset 
+
+
 \layout Subsubsection
 
 Kolom breedte en afscheiding
@@ -515,7 +615,10 @@ multicols
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
@@ -523,6 +626,9 @@ setlength{
 columnsep}{3cm}
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -544,10 +650,16 @@ r, zijn spitse verschrompelde gezicht in het witte haar gehuld, en zijn
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Standard
 
 Wederom moeten we de waarden naar hun voorkeursinstellingen terugzetten
@@ -555,12 +667,18 @@ Wederom moeten we de waarden naar hun voorkeursinstellingen terugzetten
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
 \backslash 
 columnsep}{10pt}
+\end_inset 
+
+
 \layout Subsubsection
 
 Vertikale strepen
@@ -579,7 +697,10 @@ columnseprule
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
@@ -587,6 +708,9 @@ setlength{
 columnseprule}{2pt}
 \backslash 
 begin{multicols}{2}
+\end_inset 
+
+
 \layout Standard
 
 
@@ -679,32 +803,47 @@ The Holy War
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{multicols}
+\end_inset 
+
+
 \layout Standard
 
 Zoals gebruikelijk moeten we de waarde herstellen na gebruik.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 setlength{
 \backslash 
 columnseprule}{0pt}
+\end_inset 
+
+
 \layout Standard
 
 Je zult naar de bibliotheek moeten gaan om de rest van het verhaal te lezen.
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 \SpecialChar \ldots{}
 of het verhaal opscharrelen in het Gutenberg project, ergens op het web.
  
-\end_float 
+\end_inset 
+
  Geloof het of niet, maar dit is een erg spannende scène uit het verhaal\SpecialChar \ldots{}
 
 \the_end
