@@ -1430,7 +1430,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 
 		default:
-			view()->cursor().dispatch(cmd);
+			DispatchResult res = view()->cursor().dispatch(cmd);
+			if (!res.dispatched());
+				view()->dispatch(cmd);
 			break;
 		}
 	}

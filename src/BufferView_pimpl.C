@@ -1212,7 +1212,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		break;
 
 	default:
-		return cur.dispatch(cmd).dispatched();
+		return false;
 	}
 
 	return true;

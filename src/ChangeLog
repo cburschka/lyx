@@ -1,4 +1,11 @@
 
+2004-02-03  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* BufferView_pimpl.C (dispatch): remove call to LCursor::dispatch 
+	on the default clause of the switch
+	* lyxfunc.C (dispatch): call BufferView::dispatch if the event 
+	wasn't catched by LCursor::dispatch
+
 2004-02-03  André Pönitz  <poenitz@gmx.net>
 
 	* BufferView.C:
