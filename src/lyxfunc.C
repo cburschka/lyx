@@ -896,7 +896,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		} else {
 			searched_string = last_search;
 		}
-		bool fw = (action == LFUN_WORDFINDBACKWARD);
+		bool fw = (action == LFUN_WORDFINDFORWARD);
 		if (!searched_string.empty()) {
 			lyxfind::LyXFind(view(), searched_string, fw);
 		}
