@@ -1,5 +1,9 @@
 2002-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* paragraph.[Ch]: add some NO_NEXT ifdefs.
+
+2002-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* paragraph.C (Paragraph): reformat a bit
 	(cutIntoMinibuffer): use builtin InsetList function instad of
 	doing it manually.

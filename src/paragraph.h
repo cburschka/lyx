@@ -83,9 +83,11 @@ public:
 
 	///
 	Paragraph();
+#ifndef NO_NEXT
 	/// this constructor inserts the new paragraph in a list
 	explicit
 	Paragraph(Paragraph * par);
+#endif
 	///
 	Paragraph(Paragraph const &, bool same_ids);
 	/// the destructor removes the new paragraph from the list
@@ -181,6 +183,7 @@ public:
 	///
 	InsetBibKey * bibkey;  // ale970302
 
+#ifndef NO_NEXT
 	///
 	void next(Paragraph *);
 	/** these function are able to hide closed footnotes
@@ -195,7 +198,7 @@ public:
 	Paragraph * previous();
 	///
 	Paragraph const * previous() const;
-
+#endif
 	/// for the environments
 	Paragraph * depthHook(depth_type depth);
 	/// for the environments
@@ -342,11 +345,12 @@ private:
 	LyXLayout_ptr layout_;
 	/// if anything uses this we don't want it to.
 	Paragraph(Paragraph const &);
+#ifndef NO_NEXT
 	///
 	Paragraph * next_;
 	///
 	Paragraph * previous_;
-
+#endif
 	struct Pimpl;
 	///
 	friend struct Paragraph::Pimpl;

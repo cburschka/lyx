@@ -76,8 +76,10 @@ extern BufferView * current_view;
 Paragraph::Paragraph()
 	: pimpl_(new Paragraph::Pimpl(this))
 {
+#ifndef NO_NEXT
 	next_ = 0;
 	previous_ = 0;
+#endif
 	enumdepth = 0;
 	itemdepth = 0;
 	bibkey = 0; // ale970302
@@ -85,6 +87,7 @@ Paragraph::Paragraph()
 }
 
 
+#ifndef NO_NEXT
 // This constructor inserts the new paragraph in a list.
 Paragraph::Paragraph(Paragraph * par)
 	: pimpl_(new Paragraph::Pimpl(this))
@@ -103,6 +106,7 @@ Paragraph::Paragraph(Paragraph * par)
 	bibkey = 0; // ale970302
 	params().clear();
 }
+#endif
 
 
 Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
@@ -110,9 +114,10 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 {
 	enumdepth = 0;
 	itemdepth = 0;
+#ifndef NO_NEXT
 	next_     = 0;
 	previous_ = 0;
-
+#endif
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
 	layout_ = lp.layout();
@@ -141,10 +146,12 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 // the destructor removes the new paragraph from the list
 Paragraph::~Paragraph()
 {
+#ifndef NO_NEXT
 	if (previous_)
 		previous_->next_ = next_;
 	if (next_)
 		next_->previous_ = previous_;
+#endif
 
 	// ale970302
 	delete bibkey;
@@ -688,7 +695,7 @@ void Paragraph::setFont(pos_type pos, LyXFont const & font)
 }
 
 
-
+#ifndef NO_NEXT
 void Paragraph::next(Paragraph * p)
 {
 	next_ = p;
@@ -726,6 +733,7 @@ Paragraph const * Paragraph::previous() const
 {
 	return previous_;
 }
+#endif
 
 
 void Paragraph::breakParagraph(BufferParams const & bparams,
@@ -1050,12 +1058,14 @@ Paragraph const * Paragraph::depthHook(depth_type depth) const
 	return newpar;
 }
 
+
 Paragraph * Paragraph::outerHook()
 {
 	if (!getDepth())
 		return 0;
 	return depthHook(depth_type(getDepth() - 1));
 }
+
 
 Paragraph const * Paragraph::outerHook() const
 {
@@ -1303,6 +1313,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	return next_;
 }
 
+
 // This could go to ParagraphParameters if we want to
 int Paragraph::startTeXParParams(BufferParams const & bparams,
 				 ostream & os, bool moving_arg) const
@@ -1362,6 +1373,7 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 
 	return column;
 }
+
 
 // This could go to ParagraphParameters if we want to
 int Paragraph::endTeXParParams(BufferParams const & bparams,
