@@ -249,16 +249,12 @@ void Toolbar::Pimpl::add(int action)
 		break;
 	}
 	default: {
-		char const * tooltip = _(lyxaction.helpText(action)).c_str();
- 
 		QToolButton * tb = 
 			new QToolButton(getIconPixmap(action),
-			tooltip, tooltip,
+			_(lyxaction.helpText(action)).c_str(), "",
 			proxy_.get(), SLOT(button_selected()), toolbars_.back());
 
 		map_[tb] = action;
- 
-		QToolTip::add(tb, tooltip);
 		break;
 	}
 	}
