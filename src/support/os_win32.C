@@ -13,6 +13,7 @@
 #include <config.h>
 
 #include "support/os.h"
+#include "support/lstrings.h"
 
 #include "debug.h"
 
