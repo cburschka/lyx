@@ -245,7 +245,7 @@ dnl work correctly because of some conflict with stdlib.h with g++ 2.96
 dnl We aim to remove this eventually, since we should test as much as
 dnl possible with the compiler which will use the functions (JMarc)
 AC_LANG_PUSH(C)
-AC_CHECK_FUNCS(memmove memset strchr putenv setenv mkfifo mkstemp mktemp)
+AC_CHECK_FUNCS(memmove memset strchr mkfifo mkstemp mktemp)
 AC_LANG_POP(C)
 
 dnl Until this is fixed in autoconf we provide our own version
