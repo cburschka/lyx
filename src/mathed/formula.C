@@ -25,7 +25,6 @@
 
 #include "frontends/Painter.h"
 
-#include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 
 #include "insets/render_preview.h"

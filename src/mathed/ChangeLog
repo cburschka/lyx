@@ -1,6 +1,6 @@
-2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+2003-10-13  Angus Leeming  <leeming@lyx.org>
 
-	* formulabase.C (localDispatch): DISPATCH -> dispatch_result
+	* formula.C: remove #include "PreviewImage.h".
 
 2003-10-12  Angus Leeming  <leeming@lyx.org>
 
