@@ -35,7 +35,7 @@ public:
 	int docbook(std::ostream & os, bool) const;
 
 
-	struct type_info {
+	struct ref_type_info {
 		///
 		string latex_name;
 		///
@@ -43,7 +43,7 @@ public:
 		///
 		string short_gui_name;
 	};
-	static type_info types[];
+	static ref_type_info types[];
 	///
 	static int getType(string const & name);
 	///

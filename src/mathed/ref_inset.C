@@ -123,7 +123,7 @@ int RefInset::docbook(std::ostream & os, bool) const
 }
 
 
-RefInset::type_info RefInset::types[] = {
+RefInset::ref_type_info RefInset::types[] = {
 	{ "ref",	N_("Standard"),			N_("Ref: ")},
 	{ "pageref",	N_("Page Number"),		N_("Page: ")},
 	{ "vpageref",	N_("Textual Page Number"),	N_("TextPage: ")},
