@@ -1,3 +1,8 @@
+2004-10-27  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ExternalTransforms.C (sanitizeLatexOption): fix regex to handle
+	"[,,,]" without warning message
+
 2004-10-26  Angus Leeming  <leeming@lyx.org>
 
 	* ExternalSupport.C (updateExternal):
@@ -76,7 +81,7 @@
 2004-09-24  Andreas Vox  <vox@isp.uni-luebeck.de>
 
 	* insetref.C (docbook): fixing problem where Docbook XML output
-        had unclosed <xref ... >
+	had unclosed <xref ... >
 
 2004-08-16  José Matos  <jamatos@lyx.org>
 

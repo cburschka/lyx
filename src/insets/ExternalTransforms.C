@@ -273,7 +273,7 @@ string const sanitizeLatexOption(string const & input)
 	string::const_iterator it = begin;
 
 	// Strip any leading commas
-	// "[,,,,foo..." -> "foo..."
+	// "[,,,,foo..." -> "foo..." ("foo..." may be empty)
 	string output;
 	boost::smatch what;
 	static boost::regex const front("^( *[[],*)(.*)$");
@@ -281,7 +281,7 @@ string const sanitizeLatexOption(string const & input)
 	regex_match(it, end, what, front, boost::match_partial);
 	if (!what[0].matched) {
 		lyxerr << "Unable to sanitize LaTeX \"Option\": "
-		       << output << '\n';
+		       << input << '\n';
 		return string();
 	}
 	it =  what[1].second;
@@ -301,8 +301,8 @@ string const sanitizeLatexOption(string const & input)
 	}
 
 	// Strip any trailing commas
-	// "...foo,,,]" -> "...foo"
-	static boost::regex const back("^(.*[^,])(,*[]] *)$");
+	// "...foo,,,]" -> "...foo" ("...foo,,," may be empty)
+	static boost::regex const back("^(.*[^,])?(,*)([]] *)$");
 	regex_match(output, what, back);
 	if (!what[0].matched) {
 		lyxerr << "Unable to sanitize LaTeX \"Option\": "
