@@ -7,7 +7,7 @@
 #
 # author: Michael Schmitt, michael.schmitt@teststep.org
 #
-# This script extracts some information from the po file headers (last 
+# This script extracts some information from the po file headers (last
 # translator, revision date), generates the corresponding gmo files
 # to retrieve the number of translated/fuzzy/untranslated messages,
 # and generates a PHP web page.
@@ -19,7 +19,7 @@
 # *** The PHP header ***
 
 cat <<EOF
-<? 
+<?
 	// What's the title of the page?
 	\$title = "LyX i18n";
 	// What's the short name of the page in the navigation bar?
@@ -43,7 +43,7 @@ echo "\$podata = array ( "
 first=true
 for x
 do
- 	if [ $first == true ] ; then 
+	if [ $first = true ] ; then
 		first=false ;
 	else
 		echo ", " ;
@@ -51,12 +51,12 @@ do
 	y=`basename $x .po`
 	echo "array ( 'langcode' => '$y', "
 	touch $x
-	make 2>&1 $y.gmo | grep "^[1-9]" | 
+	make 2>&1 $y.gmo | grep "^[1-9]" |
 		sed -e 's/\([0-9]*\) translated m[a-z]*[.,]/"msg_tr" => \1,/' |
 		sed -e 's/\([0-9]*\) fuzzy t[a-z]*[.,]/"msg_fu" => \1,/' |
 		sed -e 's/\([0-9]*\) untranslated m[a-z]*./"msg_nt" => \1,/'
 	# Format: "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
-	grep "Last-Translator" $x | 
+	grep "Last-Translator" $x |
 		sed -e 's/"Last-Translator: \(.*\)\( *\)<\(.*\)>\\n"/"translator" => "\1", "email" => "\3", /'
 	# Format: "PO-Revision-Date: 2003-01-18 03:00+0100\n"
 	grep "PO-Revision-Date" $x |
@@ -93,7 +93,7 @@ cat <<EOF
 				'sv' => 'Swedish',
 				'tr' => 'Turkish',
 				'wa' => 'Wallon'
-			     ); 
+			     );
 
 		\$noOfMsg = \$podata[0]['msg_tr'] + \$podata[0]['msg_fu'] + \$podata[0]['msg_nt'];
 
@@ -108,10 +108,10 @@ cat <<EOF
 	?>
 
 	<p>
-		The following table lists all translations available with the number of messages 
-		given for the LyX main development branch (currently 1.3.0cvs). 
+		The following table lists all translations available with the number of messages
+		given for the LyX main development branch (currently 1.3.0cvs).
 		Unfortunately, only a few languages are well-supported.
-		For every release, the LyX development team may decide to exclude some of the 
+		For every release, the LyX development team may decide to exclude some of the
 		translations from the distribution in order not to confuse the user by a strongly
 		mixed-language interface.
 	</p>
@@ -119,13 +119,13 @@ cat <<EOF
 		Explanation:
 		<ul>
 		<li><i>Translated:</i> The number of translated messages</li>
-		<li><i>Fuzzy:</i> The number of fuzzy messages; these are not considered 
+		<li><i>Fuzzy:</i> The number of fuzzy messages; these are not considered
 		    for LyX output but solely serve as a hint for the translators</li>
 		<li><i>Untranslated:</i> The number of untranslated messages; the
 		    default language (i.e., English) will be used in the LyX outputs</li>
 		</ul>
 	</p>
-	<table align=center frame=box rules=all border="2" cellpadding="5">
+	<table class="center" frame="box" rules="all" border="2" cellpadding="5">
 		<thead>
 			<tr>
 				<td>Language</td>
@@ -151,9 +151,9 @@ cat <<EOF
 
 					print "<td \$style>" . \$lang[\$info['langcode']] . "</td>";
 
-					print "<td \$style align=right>" . \$info['msg_tr'] . "</td>";
+					print "<td \$style align=\"right\">" . \$info['msg_tr'] . "</td>";
 
-					print "<td \$style align=right>";
+					print "<td \$style align=\"right\">";
 					if (isset(\$info['msg_fu'])) {
 						print \$info['msg_fu'];
 					} else {
@@ -161,7 +161,7 @@ cat <<EOF
 					}
 					print "</td>";
 
-					print "<td \$style align=right>";
+					print "<td \$style align=\"right\">";
 					if (isset(\$info['msg_nt'])) {
 						print \$info['msg_nt'];
 					} else {
@@ -169,11 +169,11 @@ cat <<EOF
 					}
 					print "</td>";
 
-					print "<td \$style align=center>" . \$info['date'] . "</td>";
+					print "<td \$style align=\"center\">" . \$info['date'] . "</td>";
 
 					print "<td \$style>";
 					if (\$info['email'] == "") {
- 						print \$info['translator'];
+						print \$info['translator'];
 					} else {
 						print "<a href=\"mailto:" . \$info['email'] . "\">" .
 						      \$info['translator'] . "</a>";
@@ -188,7 +188,7 @@ cat <<EOF
 EOF
 
 cat <<EOF
-	<? 
-		include("end.php3"); 
+	<?
+		include("end.php3");
 	?>
 EOF
