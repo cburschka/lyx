@@ -8,7 +8,8 @@
     It allows to manage the extra info independently of the paragraph data.  
     Only used for multiline paragraphs.
  */
-class MathedRowSt
+
+class MathedRowStruct
 {
 public:
 	///
@@ -16,14 +17,10 @@ public:
 	
 	///
 	explicit
-	MathedRowSt(int n)
+	MathedRowStruct(int n)
 		: asc_(0), desc_(0), y_(0), widths_(n + 1, 0),
-		  numbered_(true), next_(0)
+		  numbered_(true)
 		{}
-	/// Should be const but...
-	MathedRowSt * getNext() const;
-	/// ...we couldn't use this.
-	void setNext(MathedRowSt * n);
 	///
 	string const & getLabel() const;
 	///
@@ -48,7 +45,9 @@ public:
 	void setNumbered(bool nf);
 	///
 	void setTab(int i, int t);
-private:
+	///
+	friend class MathedRowSt;
+protected:
 	/// Vericals 
 	int asc_;
 	///
@@ -61,6 +60,19 @@ private:
 	string label_;
 	///
 	bool numbered_;
+};
+
+class MathedRowSt : public MathedRowStruct {
+public:
+	///
+	explicit MathedRowSt(int n)
+			: MathedRowStruct(n), next_(0)
+		{}
+	/// Should be const but...
+	MathedRowSt * getNext() const;
+	/// ...we couldn't use this.
+	void setNext(MathedRowSt * n);
+private:
 	///
 	MathedRowSt * next_;
 };
@@ -81,84 +93,84 @@ void MathedRowSt::setNext(MathedRowSt * n)
 
 
 inline
-string const & MathedRowSt::getLabel() const
+string const & MathedRowStruct::getLabel() const
 {
 	return label_;
 }
 
 
 inline
-bool MathedRowSt::isNumbered() const
+bool MathedRowStruct::isNumbered() const
 {
 	return numbered_;
 }
 
 
 inline
-int MathedRowSt::getBaseline() const
+int MathedRowStruct::getBaseline() const
 {
 	return y_;
 }
 
 
 inline
-void MathedRowSt::setBaseline(int b)
+void MathedRowStruct::setBaseline(int b)
 {
 	y_ = b;
 }
 
 
 inline
-int MathedRowSt::ascent() const
+int MathedRowStruct::ascent() const
 {
 	return asc_;
 }
 
 
 inline
-int MathedRowSt::descent() const
+int MathedRowStruct::descent() const
 {
 	return desc_;
 }
 
 
 inline
-void MathedRowSt::ascent(int a)
+void MathedRowStruct::ascent(int a)
 {
 	asc_ = a;
 }
 
 
 inline
-void MathedRowSt::descent(int d)
+void MathedRowStruct::descent(int d)
 {
 	desc_ = d;
 }
 
 
 inline
-int MathedRowSt::getTab(int i) const
+int MathedRowStruct::getTab(int i) const
 {
 	return widths_[i];
 }
 
 
 inline
-void MathedRowSt::setLabel(string const & l)
+void MathedRowStruct::setLabel(string const & l)
 {
 	label_ = l;
 }
 
 
 inline
-void MathedRowSt::setNumbered(bool nf)
+void MathedRowStruct::setNumbered(bool nf)
 {
 	numbered_ = nf;
 }
 
 
 inline
-void MathedRowSt::setTab(int i, int t)
+void MathedRowStruct::setTab(int i, int t)
 {
 	widths_[i] = t;
 }
