@@ -1,3 +1,8 @@
+2003-02-12  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* qfont_metrics.C: Add checks for lyxrc.use_gui.
+	This fixes 'lyx -e' with the QT frontend.
+
 2003-02-10  João Luis Meloni Assirati  <assirati@fma.if.usp.br>
 
 	* ui/QMathMatrixDialogBase.ui: Fix horizontal alignment tooltip
