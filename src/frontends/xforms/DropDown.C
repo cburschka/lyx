@@ -71,7 +71,7 @@ void DropDown::select(vector<string> const & choices, int x, int y, int w)
 	if (choices.empty())
 		return;
 
-	fl_set_form_geometry(form_, x, y-100, w, 100);
+	fl_set_form_geometry(form_, x, y - 100, w, 100);
 	fl_clear_browser(browser_);
 
 	vector<string>::const_iterator cit = choices.begin();

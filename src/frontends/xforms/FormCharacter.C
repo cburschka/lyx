@@ -124,25 +124,25 @@ void FormCharacter::apply()
 	if (!form()) return;
 
 	int pos = fl_get_choice(dialog_->choice_family);
-	controller().setFamily(family_[pos-1]);
+	controller().setFamily(family_[pos - 1]);
 
 	pos = fl_get_choice(dialog_->choice_series);
-	controller().setSeries(series_[pos-1]);
+	controller().setSeries(series_[pos - 1]);
 
 	pos = fl_get_choice(dialog_->choice_shape);
-	controller().setShape(shape_[pos-1]);
+	controller().setShape(shape_[pos - 1]);
 
 	pos = fl_get_choice(dialog_->choice_size);
-	controller().setSize(size_[pos-1]);
+	controller().setSize(size_[pos - 1]);
 
 	pos = fl_get_choice(dialog_->choice_bar);
-	controller().setBar(bar_[pos-1]);
+	controller().setBar(bar_[pos - 1]);
 
 	pos = fl_get_choice(dialog_->choice_color);
-	controller().setColor(color_[pos-1]);
+	controller().setColor(color_[pos - 1]);
 
 	pos = combo_language2_->get();
-	controller().setLanguage(lang_[pos-1]);
+	controller().setLanguage(lang_[pos - 1]);
 
 	bool const toggleall = fl_get_button(dialog_->check_toggle_all);
 	controller().setToggleAll(toggleall);
@@ -181,31 +181,31 @@ ButtonPolicy::SMInput FormCharacter::input(FL_OBJECT *, long)
 	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_NOOP;
 
 	int pos = fl_get_choice(dialog_->choice_family);
-	if (family_[pos-1] != LyXFont::IGNORE_FAMILY)
+	if (family_[pos - 1] != LyXFont::IGNORE_FAMILY)
 		activate = ButtonPolicy::SMI_VALID;
 
 	pos = fl_get_choice(dialog_->choice_series);
-	if (series_[pos-1] != LyXFont::IGNORE_SERIES)
+	if (series_[pos - 1] != LyXFont::IGNORE_SERIES)
 		activate = ButtonPolicy::SMI_VALID;
 
 	pos = fl_get_choice(dialog_->choice_shape);
-	if (shape_[pos-1] != LyXFont::IGNORE_SHAPE)
+	if (shape_[pos - 1] != LyXFont::IGNORE_SHAPE)
 		activate = ButtonPolicy::SMI_VALID;
 
 	pos = fl_get_choice(dialog_->choice_size);
-	if (size_[pos-1] != LyXFont::IGNORE_SIZE)
+	if (size_[pos - 1] != LyXFont::IGNORE_SIZE)
 		activate = ButtonPolicy::SMI_VALID;
 
 	pos = fl_get_choice(dialog_->choice_bar);
-	if (bar_[pos-1] != frnt::IGNORE)
+	if (bar_[pos - 1] != frnt::IGNORE)
 		activate = ButtonPolicy::SMI_VALID;
 
 	pos = fl_get_choice(dialog_->choice_color);
-	if (color_[pos-1] != LColor::ignore)
+	if (color_[pos - 1] != LColor::ignore)
 		activate = ButtonPolicy::SMI_VALID;
 
 	pos = combo_language2_->get();
-	if (lang_[pos-1] != "No change")
+	if (lang_[pos - 1] != "No change")
 		activate = ButtonPolicy::SMI_VALID;
 
 	return activate;

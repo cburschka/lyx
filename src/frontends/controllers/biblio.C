@@ -516,7 +516,7 @@ CitationStyle const getCitationStyle(string const & command)
 		cmd[0] = 'c';
 	}
 
-	size_t n = cmd.size()-1;
+	size_t n = cmd.size() - 1;
 	if (cmd[n] == '*') {
 		cs.full = true;
 		cmd = cmd.substr(0,n);

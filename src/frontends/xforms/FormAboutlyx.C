@@ -45,11 +45,11 @@ void FormAboutlyx::build()
 	license_.reset(build_aboutlyx_license(this));
 
 	string str = formatted(controller().getLicense(),
-			       license_->text_license->w-10);
+			       license_->text_license->w - 10);
 	fl_set_object_label(license_->text_license, str.c_str());
 
 	str = formatted(controller().getDisclaimer(),
-			license_->text_warranty->w-10);
+			license_->text_warranty->w - 10);
 	fl_set_object_label(license_->text_warranty, str.c_str());
 
 	// create credits

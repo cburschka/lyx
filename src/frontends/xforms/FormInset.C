@@ -90,7 +90,7 @@ void FormCommand::createInset(string const & arg)
 	}
 
 	params.setFromString(arg);
-	if ( !arg.empty())
+	if (!arg.empty())
 		bc().valid(); // so that the user can press Ok
 	show();
 }

@@ -103,8 +103,8 @@ HSVColor::HSVColor(RGBColor const & rgb)
 	double const g = rgb.g / 255.0;
 	double const b = rgb.b / 255.0;
 
-	double const maxval = max( max( r, g), b);
-	double const minval = min( min( r, g), b);
+	double const maxval = max(max(r, g), b);
+	double const minval = min(min(r, g), b);
 
 	v = maxval;
 
