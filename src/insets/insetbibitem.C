@@ -73,12 +73,6 @@ dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)
 
 		setParams(p);
 		cmd.view()->updateInset(this);
-
-		// We need to do a redraw because the maximum
-		// InsetBibitem width could have changed
-#warning please check you mean repaint() not update(),
-#warning and whether the repaint() is needed at all
-		cmd.view()->repaint();
 		cmd.view()->fitCursor();
 		return DISPATCHED;
 	}

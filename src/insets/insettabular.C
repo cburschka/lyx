@@ -256,14 +256,30 @@ void InsetTabular::read(Buffer const * buf, LyXLex & lex)
 
 void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (mi.base.bv) {
-		calculate_dimensions_of_cells(mi.base.bv);
-		//lyxerr << "InsetTabular::metrics, bv: " << mi.base.bv << endl;
-		for (int i = 0; i < tabular.getNumberOfCells(); ++i) {
-			tabular.cellinfo_of_cell(i)->inset.text_.bv_owner = mi.base.bv;
-			tabular.cellinfo_of_cell(i)->inset.reinitLyXText();
-		}
+	//lyxerr << "InsetTabular::metrics: " << mi.base.bv << " width: " <<
+	//	mi.base.textwidth << "\n";
+	if (!mi.base.bv) {
+		lyxerr << "InsetTabular::metrics: need bv\n";
+		Assert(0);
 	}
+		
+	calculate_dimensions_of_cells(mi.base.bv);
+	//lyxerr << "InsetTabular::metrics, bv: " << mi.base.bv << endl;
+	for (int i = 0; i < tabular.getNumberOfCells(); ++i) {
+		LyXTabular::cellstruct * ci =  tabular.cellinfo_of_cell(i);
+		int col = tabular.column_of_cell(i);
+		InsetText & cell = ci->inset;
+		cell.text_.bv_owner = mi.base.bv;
+		int wid = tabular.column_info[col].p_width.inPixels(mi.base.textwidth);
+		//lyxerr << " " << i << " - " << ci->width_of_cell << " - "
+		//	<< tabular.column_info[col].width_of_column << " -  "
+		//	<< wid << "  ";
+		MetricsInfo m = mi;
+		m.base.textwidth = wid;
+		Dimension d;
+		cell.metrics(m, d);
+	}
+	//lyxerr << endl;
 			
 	dim.asc = tabular.getAscentOfRow(0);
 	dim.des = tabular.getHeightOfTabular() - tabular.getAscentOfRow(0) + 1;
@@ -273,6 +289,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 {
+	lyxerr << "InsetTabular::draw: " << x << " " << y << "\n";
 	if (nodraw()) {
 		need_update = FULL;
 		return;
@@ -436,6 +453,7 @@ void InsetTabular::insetUnlock(BufferView * bv)
 
 void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what) const
 {
+	lyxerr << "InsetTabular::updateLocal: " << what << "\n";
 	if (what == INIT) {
 		calculate_dimensions_of_cells(bv);
 	}

@@ -692,7 +692,7 @@ void LyXText::fullRebreak()
 }
 
 
-void LyXText::rebuild()
+void LyXText::rebuild(int maxwidth)
 {
 	rowlist_.clear();
 	need_break_row = rows().end();
@@ -704,17 +704,15 @@ void LyXText::rebuild()
 	ParagraphList::iterator pit = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();
 
-	//current_font = getFont(bview->buffer(), pit, 0);
+	for (; pit != end; ++pit) {
+		// insert a new row, starting at position 0
+		Row newrow(pit, 0);
+		RowList::iterator rit = rowlist_.insert(rowlist_.end(), newrow);
 
-	for (; pit != end; ++pit)
-		insertParagraph(pit, rowlist_.end());
+		// and now append the whole paragraph before the new row
+		appendParagraph(rit);
+	}
 
-	//setCursorIntern(rowlist_.begin()->par(), 0);
-	//selection.cursor = cursor;
-
-	//updateCounters();
-
-	//setCursorIntern(cursor.par(), cursor.pos());
 }
 
 

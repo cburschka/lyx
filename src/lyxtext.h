@@ -164,7 +164,7 @@ public:
 	/// a full rebreak of the whole text
 	void fullRebreak();
 	/// rebuild RowList cache
-	void rebuild();
+	void rebuild(int maxwidth);
 
 	///
 	RowList::iterator need_break_row;
