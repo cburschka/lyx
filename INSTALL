@@ -91,8 +91,7 @@ To use the thesaurus, you will need to install libAikSaurus, available
 from:
     http://aiken.clan11.com/aiksaurus/ 
  
-Finally, the two following programs should be available at
-configuration time:
+The two following programs should be available at configuration time:
 
   o Perl (at least 5.002) is needed for the reLyX script. reLyX will
     not be installed if perl is not found.  If the environment
@@ -104,6 +103,10 @@ configuration time:
   o LaTeX2e should be correctly setup for the user you are logged in
     as. Otherwise, LyX will not be able to run a number of tests. Note
     that users can run these tests manually with Edit>Reconfigure.
+
+Finally, you will need to have python 1.5.2 or newer installed to be
+able to import older LyX files with the lyx2lyx script (this script is
+called automatically when opening a file).
 
 
 Creating the Makefile
