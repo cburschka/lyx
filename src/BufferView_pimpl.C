@@ -380,7 +380,7 @@ void BufferView::Pimpl::scrollDocView(int value)
 	else if (vbt->cursor.y() > last)
 		vbt->setCursorFromCoordinates(0, last);
 
- 	owner_->updateLayoutChoice();
+	owner_->updateLayoutChoice();
 }
 
 
