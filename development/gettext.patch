@@ -1,34 +1,144 @@
-This patch contains the modifications that have been made to
-the files from GNU gettext 0.10.31
 
---- /afs/inria.fr/rocq/home/meval/lasgoutt/.common/src/gettext-0.10.31/intl/Makefile.in	Fri Aug 15 23:36:39 1997
-+++ intl/Makefile.in	Wed Sep  3 14:35:31 1997
-@@ -79,7 +79,7 @@
- .c.lo:
- 	$(LIBTOOL) --mode=compile $(COMPILE) $<
+  This patch contains the changes that have been made wrt gettext 0.10.40
+
+--- .common/src/gettext-0.10.40/intl/Makefile.in	Sat Sep 15 03:15:49 2001
++++ src/lyx/lyx-devel/intl/Makefile.in	Mon Oct  8 16:24:11 2001
+@@ -102,7 +102,7 @@
+ 	sed -e '/^#/d' -e 's/@''PACKAGE''@/@PACKAGE@/g' $< > t-$@
+ 	mv t-$@ $@
  
--INCLUDES = -I.. -I. -I$(top_srcdir)/intl -I$(top_srcdir)/lib
-+INCLUDES = -I../src -I. -I$(top_srcdir)/src -I$(top_srcdir)/intl 
+-INCLUDES = -I.. -I. -I$(top_srcdir)/intl
++INCLUDES = -I../src -I. -I$(top_srcdir)/intl
  
  all: all-@USE_INCLUDED_LIBINTL@
- 
-@@ -150,7 +150,7 @@
+ all-yes: libintl.$la libintl.h charset.alias ref-add.sed ref-del.sed
+@@ -253,7 +253,7 @@
  
  info dvi:
  
--$(OBJECTS): ../config.h libgettext.h
-+$(OBJECTS): ../src/config.h libgettext.h
+-$(OBJECTS): ../config.h libgnuintl.h
++$(OBJECTS): ../src/config.h libgnuintl.h
  bindtextdom.$lo finddomain.$lo loadmsgcat.$lo: gettextP.h gettext.h loadinfo.h
  dcgettext.$lo: gettextP.h gettext.h hash-string.h loadinfo.h
  
---- /afs/inria.fr/rocq/home/meval/lasgoutt/.common/src/gettext-0.10.31/po/Makefile.in.in	Fri Aug 15 23:43:26 1997
-+++ po/Makefile.in.in	Tue Sep  2 18:53:19 1997
-@@ -48,7 +48,7 @@
- CFLAGS = @CFLAGS@
- CPPFLAGS = @CPPFLAGS@
+--- .common/src/gettext-0.10.38/po/Makefile.in.in	Fri May 18 17:06:54 2001
++++ src/lyx/lyx-devel/po/Makefile.in.in	Mon Oct  8 16:24:11 2001
+@@ -50,6 +50,8 @@
+ DISTFILES = ChangeLog Makefile.in.in POTFILES.in $(PACKAGE).pot \
+ $(POFILES) $(GMOFILES)
  
--INCLUDES = -I.. -I$(top_srcdir)/intl
-+INCLUDES = -I../src -I$(top_srcdir)/intl
++POTFILE_IN_DEPS = $(shell find $(top_srcdir)/src -name Makefile.am)
++
+ POTFILES = \
  
- COMPILE = $(CC) -c $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) $(XCFLAGS)
+ CATALOGS = @CATALOGS@
+@@ -69,7 +71,10 @@
  
+ .po.gmo:
+ 	file=$(srcdir)/`echo $* | sed 's,.*/,,'`.gmo \
+-	  && rm -f $$file && $(GMSGFMT) --statistics -o $$file $<
++	  && case "$(GMSGFMT)" in \
++	       */msgfmt) rm -f $$file && $(GMSGFMT) --statistics -o $$file $<;; \
++	       *) touch $$file ;; \
++	     esac
+ 
+ 
+ all: all-@USE_NLS@
+@@ -89,7 +94,6 @@
+ 	   || ( rm -f $(srcdir)/$(PACKAGE).pot \
+ 		&& mv $(PACKAGE).po $(srcdir)/$(PACKAGE).pot )
+ 
+-
+ install: install-exec install-data
+ install-exec:
+ install-data: install-data-@USE_NLS@
+@@ -190,6 +194,26 @@
+ 	cd $(top_builddir) \
+ 	  && CONFIG_FILES=$(subdir)/$@.in CONFIG_HEADERS= \
+ 	       $(SHELL) ./config.status
++
++${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
++	rm -f $@-t \
++	&& ( cd $(top_srcdir); \
++	     grep -l "_(\".*\")" `find src -name \*.[hHC] -print` |\
++	     grep -v frontends/kde |\
++	     sed -e '/xforms.forms/d' | \
++	     sort -f -n | uniq ) > $@-t \
++	&& echo "src/ext_l10n.h" >> $@-t \
++	&& mv $@-t $@
++
++$(top_srcdir)/src/ext_l10n.h: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc $(top_srcdir)/lib/ui/default.ui $(top_srcdir)/lib/languages
++	sed < $(top_srcdir)/lib/ui/default.ui -n \
++		-e 's/.*[sS]ub[mM]enu[^"]*\("[^"]*"\).*/_(\1);/p' \
++		-e 's/.*[iI]tem[^"]*\("[^"]*"\).*/_(\1);/p' \
++		> $@
++	cat $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc | \
++		sed -n -e 's/^[sS]tyle[ ]*\([^ ]*\)$$/_("\1");/p' | \
++		sort | uniq >> $@
++	sed < $(top_srcdir)/lib/languages -e '/^#/d' -e 's/[^"]*\("[A-Za-z0-9][^"]*"\).*/_(\1);/' >> $@
+ 
+ # Tell versions [3.59,3.63) of GNU make not to export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+--- .common/src/gettext-0.10.38/m4/progtest.m4	Thu Feb  8 14:25:47 2001
++++ src/lyx/lyx-devel/config/progtest.m4	Mon Oct  8 16:24:11 2001
+@@ -2,15 +2,32 @@
+ # Ulrich Drepper <drepper@cygnus.com>, 1996.
+ #
+ # This file can be copied and used freely without restrictions.  It can
+-# be used in projects which are not available under the GNU Public License
+-# but which still want to provide support for the GNU gettext functionality.
+-# Please note that the actual code is *not* freely available.
++# be used in projects which are not available under the GNU General Public
++# License or the GNU Library General Public License but which still want
++# to provide support for the GNU gettext functionality.
++# Please note that the actual code of the GNU gettext library is covered
++# by the GNU Library General Public License, and the rest of the GNU
++# gettext package package is covered by the GNU General Public License.
++# They are *not* in the public domain.
+ 
+-# serial 1
++# serial 2
+ 
+ dnl AM_PATH_PROG_WITH_TEST(VARIABLE, PROG-TO-CHECK-FOR,
+ dnl   TEST-PERFORMED-ON-FOUND_PROGRAM [, VALUE-IF-NOT-FOUND [, PATH]])
+ AC_DEFUN([AM_PATH_PROG_WITH_TEST],
++[case "`uname -s 2> /dev/null`" in
++OS/2)
++  PATH=`echo -E "$PATH" | sed 's+\\\\+/+g'`
++  PATH_IFS=';'
++  EXE_EXT='.exe'
++  CMD_EXT='.cmd'
++  ;;
++*)
++  PATH_IFS=':'
++  EXE_EXT=''
++  CMD_EXT=''
++  ;;
++esac]
+ [# Extract the first word of "$2", so it can be a program name with args.
+ set dummy $2; ac_word=[$]2
+ AC_MSG_CHECKING([for $ac_word])
+@@ -20,10 +37,12 @@
+   ac_cv_path_$1="[$]$1" # Let the user override the test with a path.
+   ;;
+   *)
+-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
++  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}$PATH_IFS"
+   for ac_dir in ifelse([$5], , $PATH, [$5]); do
+     test -z "$ac_dir" && ac_dir=.
+-    if test -f $ac_dir/$ac_word; then
++    if test -f $ac_dir/$ac_word \
++	 -o -f $ac_dir/$ac_word$EXE_EXT \
++	 -o -f $ac_dir/$ac_word$CMD_EXT; then
+       if [$3]; then
+ 	ac_cv_path_$1="$ac_dir/$ac_word"
+ 	break
+@@ -38,7 +57,7 @@
+   ;;
+ esac])dnl
+ $1="$ac_cv_path_$1"
+-if test -n "[$]$1"; then
++if test ifelse([$4], , [-n "[$]$1"], ["[$]$1" != "$4"]); then
+   AC_MSG_RESULT([$]$1)
+ else
+   AC_MSG_RESULT(no)
