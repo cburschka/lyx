@@ -198,9 +198,9 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 }
 
 
-void InsetFormulaBase::getCursorPos(BufferView * bv, int & x, int & y) const
+void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 {
-	metrics(bv);
+	//metrics(bv);
 	mathcursor->getPos(x, y);
 	//x -= xo_;
 	y -= yo_;
@@ -286,12 +286,9 @@ vector<string> const InsetFormulaBase::getLabelList() const
 }
 
 
-void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
+void InsetFormulaBase::updateLocal(BufferView * bv, bool /*dirty*/)
 {
-	metrics(bv);
-	if (mathcursor)
-		bv->fitCursor();
-	bv->updateInset(this, dirty);
+	bv->updateInset(this, true);
 }
 
 
