@@ -117,7 +117,7 @@ AC_CHECK_LIB(Aiksaurus, main,
 	[AC_DEFINE(HAVE_LIBAIKSAURUS,1,[Define this if you have the AikSaurus library])
 	 AIKSAURUS_LIBS="-lAiksaurus -lbz2"
 	 lyx_flags="$lyx_flags aiksaurus"
-	],,"-lbz2")
+	])
 AC_CHECK_HEADER(Aiksaurus.h,[
   ac_cv_header_aiksaurus_h=yes
   lyx_cv_aiksaurus_h_location="<Aiksaurus.h>"])
