@@ -157,10 +157,13 @@ bool ControlDocument::loadTextclass(lyx::textclass_type tc) const
 
 void ControlDocument::saveAsDefault()
 {
+// Can somebody justify this ? I think it should be removed - jbl
+#if 0
 	if (!Alert::askQuestion(_("Do you want to save the current settings"),
 				_("for the document layout as default?"),
 				_("(they will be valid for any new document)")))
 		return;
+#endif
 
 	lv_.buffer()->params.preamble = bp_->preamble;
 

@@ -1,15 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file bufferlist.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Word Processor
+ * \author Lars Gullik Bjønnes
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- *           This file is Copyright 1996-2001
- *           Lars Gullik Bjønnes
- *
- * ======================================================
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
@@ -65,55 +61,63 @@ bool BufferList::empty() const
 }
 
 
-bool BufferList::qwriteOne(Buffer * buf, string const & fname,
-			   string & unsaved_list)
+bool BufferList::quitWriteBuffer(Buffer * buf)
 {
-	bool reask = true;
-	while (reask) {
-		switch (Alert::askConfirmation(_("Changes in document:"),
-				       fname,
-				       _("Save document?"))) {
-		case 1: // Yes
-			// FIXME: WriteAs can be asynch !
-			if (buf->isUnnamed())
-				reask = !WriteAs(current_view, buf);
-			else {
-				reask = !MenuWrite(current_view, buf);
-			}
-			break;
-		case 2: // No
-			// if we crash after this we could
-			// have no autosave file but I guess
-			// this is really inprobable (Jug)
-			if (buf->isUnnamed()) {
-				removeAutosaveFile(buf->fileName());
-			}
+	string file;
+	if (buf->isUnnamed())
+		file = OnlyFilename(buf->fileName());
+	else
+		file = MakeDisplayPath(buf->fileName(), 30);
 
-			unsaved_list += MakeDisplayPath(fname, 50) + "\n";
-			return true;
-		case 3: // Cancel
+#if USE_BOOST_FORMAT
+	boost::format fmt(_("The document %1$s has unsaved changes.\n\nDo you want to save the document?"));
+	fmt % file;
+	string text = fmt.str();
+#else
+	string text = _("The document ");
+	text += file + _(" has unsaved changes.\n\nDo you want to save the document?");
+#endif
+	int const ret = Alert::prompt(_("Save changed document?"),
+		text, 0, _("&Save"), _("&Discard"), _("&Cancel quit"));
+
+	if (ret == 0) {
+		// FIXME: WriteAs can be asynch !
+		// but not right now...maybe we should remove that
+
+		bool succeeded;
+
+		if (buf->isUnnamed())
+			succeeded = !WriteAs(current_view, buf);
+		else
+			succeeded = !MenuWrite(current_view, buf);
+
+		if (!succeeded)
 			return false;
-		}
+	} else if (ret == 1) {
+		// if we crash after this we could
+		// have no autosave file but I guess
+		// this is really inprobable (Jug)
+		if (buf->isUnnamed())
+			removeAutosaveFile(buf->fileName());
+
+	} else {
+		return false;
 	}
+
 	return true;
 }
 
 
-bool BufferList::qwriteAll()
+bool BufferList::quitWriteAll()
 {
-	string unsaved;
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();
 	for (; it != end; ++it) {
-		if (!(*it)->isClean()) {
-			string fname;
-			if ((*it)->isUnnamed())
-				fname = OnlyFilename((*it)->fileName());
-			else
-				fname = MakeDisplayPath((*it)->fileName(), 50);
-			if (!qwriteOne(*it, fname, unsaved)) // cancel the request!
-				return false;
-		}
+		if ((*it)->isClean())
+			continue;
+
+		if (!quitWriteBuffer(*it))
+			return false;
 	}
 
 	return true;
@@ -154,46 +158,49 @@ void BufferList::closeAll()
 	textcache.clear();
 
 	while (!bstore.empty()) {
-		close(bstore.front());
+		close(bstore.front(), true);
 	}
 }
 
 
-bool BufferList::close(Buffer * buf)
+bool BufferList::close(Buffer * buf, bool ask)
 {
 	lyx::Assert(buf);
 
-	if (!buf->paragraphs.empty() && !buf->isClean() && !quitting) {
-		string fname;
-		if (buf->isUnnamed())
-			fname = OnlyFilename(buf->fileName());
-		else
-			fname = MakeDisplayPath(buf->fileName(), 50);
-		bool reask = true;
-		while (reask) {
-			switch (Alert::askConfirmation(_("Changes in document:"),
-					       fname,
-					       _("Save document?"))) {
-			case 1: // Yes
-				if (buf->isUnnamed())
-					reask = !WriteAs(current_view, buf);
-				else if (buf->save()) {
-					lastfiles->newFile(buf->fileName());
-					reask = false;
-				} else {
-					return false;
-				}
-				break;
-			case 2:
-				if (buf->isUnnamed()) {
-					removeAutosaveFile(buf->fileName());
-				}
-				reask = false;
-				break;
-			case 3: // Cancel
+	if (!ask || buf->isClean() || quitting || buf->paragraphs.empty()) {
+		release(buf);
+		return true;
+	}
+
+	string fname;
+	if (buf->isUnnamed())
+		fname = OnlyFilename(buf->fileName());
+	else
+		fname = MakeDisplayPath(buf->fileName(), 30);
+#if USE_BOOST_FORMAT
+	boost::format fmt(_("The document %1$s has unsaved changes.\n\nDo you want to save the document?"));
+	fmt % fname;
+	string text = fmt.str();
+#else
+	string text = _("The document ");
+	text += fname + _(" has unsaved changes.\n\nDo you want to save the document?");
+#endif
+	int const ret = Alert::prompt(_("Save changed document?"),
+		text, 0, _("&Save"), _("&Discard"));
+
+	if (ret == 0) {
+		if (buf->isUnnamed()) {
+			if (!WriteAs(current_view, buf))
 				return false;
-			}
+		} else if (buf->save()) {
+			lastfiles->newFile(buf->fileName());
+		} else {
+			return false;
 		}
+	}
+	
+	if (buf->isUnnamed()) {
+		removeAutosaveFile(buf->fileName());
 	}
 
 	release(buf);
@@ -340,9 +347,19 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 	if (fileInfoE.exist() && fileInfo2.exist()) {
 		if (fileInfoE.getModificationTime()
 		    > fileInfo2.getModificationTime()) {
-			if (Alert::askQuestion(_("An emergency save of this document exists!"),
-					MakeDisplayPath(s, 50),
-					_("Try to load that instead?"))) {
+			string const file = MakeDisplayPath(s, 20);
+#if USE_BOOST_FORMAT
+			boost::format fmt(_("An emergency save of the document %1$s exists.\n\nRecover emergency save?"));
+			fmt % file;
+			string text = fmt.str();
+#else
+			string text = _("An emergency save of the document ");
+			text += file + _(" exists.\n\nRecover emergency save?");
+#endif
+			int const ret = Alert::prompt(_("Load emergency save?"),
+				text, 0, _("&Recover"), _("&Load original"));
+
+			if (ret == 0) {
 				ts = e;
 				// the file is not saved if we load the
 				// emergency file.
@@ -364,9 +381,19 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 		if (fileInfoA.exist() && fileInfo2.exist()) {
 			if (fileInfoA.getModificationTime()
 			    > fileInfo2.getModificationTime()) {
-				if (Alert::askQuestion(_("Autosave file is newer."),
-						MakeDisplayPath(s, 50),
-						_("Load that one instead?"))) {
+				string const file = MakeDisplayPath(s, 20);
+#if USE_BOOST_FORMAT
+				boost::format fmt(_("The backup of the document %1$s is newer.\n\nLoad the backup instead?"));
+				fmt % file;
+				string text = fmt.str();
+#else
+				string text = _("The backup of the document ");
+				text += file + _(" is newer.\n\nLoad the backup instead?");
+#endif
+				int const ret = Alert::prompt(_("Load backup?"),
+					text, 0, _("&Load backup"), _("Load &original"));
+
+				if (ret == 0) {
 					ts = a;
 					// the file is not saved if we load the
 					// autosave file.
@@ -469,11 +496,21 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 
 	// file already open?
 	if (exists(s)) {
-		if (Alert::askQuestion(_("Document is already open:"),
-				MakeDisplayPath(s, 50),
-				_("Do you want to reload that document?"))) {
-			// Reload is accomplished by closing and then loading
-			if (!close(getBuffer(s))) {
+		string const file = MakeDisplayPath(s, 20);
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("The document %1$s is already loaded.\n\nDo you want to revert to the saved version?"));
+		fmt % file;
+		string text = fmt.str();
+#else
+		string text = _("The document ");
+		text += file + _(" is already loaded.\n\nDo you want to revert to the saved version?");
+#endif
+		int const ret = Alert::prompt(_("Revert to saved document?"),
+			text, 1, _("&Revert"), _("&Switch to document"));
+
+		if (ret == 0) {
+			// FIXME: should be LFUN_REVERT
+			if (!close(getBuffer(s), false)) {
 				return 0;
 			}
 			// Fall through to new load. (Asger)
@@ -483,6 +520,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 			return getBuffer(s);
 		}
 	}
+
 	Buffer * b = 0;
 	bool ro = false;
 	switch (IsFileWriteable(s)) {
@@ -495,12 +533,22 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 			b->lyxvc.file_found_hook(s);
 		}
 		break; //fine- it's r/w
-	case -1:
+	case -1: {
+		string const file = MakeDisplayPath(s, 20);
 		// Here we probably should run
 		if (LyXVC::file_not_found_hook(s)) {
-			// Ask if the file should be checked out for
-			// viewing/editing, if so: load it.
-			if (Alert::askQuestion(_("Do you want to retrieve file under version control?"))) {
+#if USE_BOOST_FORMAT
+			boost::format fmt(_("Do you want to retrieve the document %1$s from version control?"));
+			fmt % file;
+			string text = fmt.str();
+#else
+			string text = _("Do you want to retrieve the document ");
+			text += file + _(" from version control?");
+#endif
+			int const ret = Alert::prompt(_("Retrieve from version control?"),
+				text, 0, _("&Retrieve"), _("&Cancel"));
+
+			if (ret == 0) {
 				// How can we know _how_ to do the checkout?
 				// With the current VC support it has to be,
 				// a RCS file since CVS do not have special ,v files.
@@ -508,14 +556,23 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 				return loadLyXFile(filename, tolastfiles);
 			}
 		}
-		if (Alert::askQuestion(_("Cannot open specified file:"),
-				MakeDisplayPath(s, 50),
-				_("Create new document with this name?")))
-			{
-				// Find a free buffer
-				b = newFile(s, string(), true);
-			}
+
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("The document %1$s does not yet exist. Do you want to create a new document?"));
+		fmt % file;
+		string text = fmt.str();
+#else
+		string text = _("The document ");
+		text += file + _(" does not yet exist. Do you want to create a new document?");
+#endif
+		int const ret = Alert::prompt(_("Create new document?"),
+			text, 0, _("&Create"), _("Cancel"));
+
+		if (ret == 0)
+			b = newFile(s, string(), true);
+
 		break;
+		}
 	}
 
 	if (b && tolastfiles)

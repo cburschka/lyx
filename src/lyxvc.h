@@ -86,6 +86,9 @@ public:
 	string const & locker() const;
 
 private:
+	/// returns false if still not clean
+	bool ensureClean();
+	
 	///
 	Buffer * owner_;
 

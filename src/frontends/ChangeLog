@@ -1,3 +1,10 @@
+2003-03-29  John Levon  <levon@movementarian.org>
+
+	* Alert.h:
+	* Alert.C:
+	* Alert_pimpl.h: fix up askQuestion/askConfirmation
+	into prompt, to discourage Yes/No questions.
+
 2003-03-26  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.h: remove showThesaurus.

@@ -34,6 +34,9 @@ string widgetsToLength(QLineEdit const * input, LengthCombo const * combo);
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	string const & len, LyXLength::UNIT default_unit);
 
+/// format a string to the given width
+string const formatted(string const & text, int w = 80);
+
 /**
  * toqstr - convert char * into unicode
  *

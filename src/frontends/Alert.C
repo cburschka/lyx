@@ -46,50 +46,23 @@ void Alert::err_alert(string const & s1, string const & s2)
 }
 
 
-bool Alert::askQuestion(string const & s1, string const & s2,
-			string const & s3, bool default_value)
+int Alert::prompt(string const & title, string const & question,
+           int default_button,
+	   string const & b1, string const & b2, string const & b3)
 {
-	if (!lyxrc.use_gui) {
-		lyxerr << "----------------------------------------" << endl
-		       << s1 << endl;
-		if (!s2.empty())
-			lyxerr << s2 << endl;
-		if (!s3.empty())
-			lyxerr << s3 << endl;
-		lyxerr << "Assuming answer is "
-		       << (default_value ? "yes" : "no")
-		       << endl
-		       << "----------------------------------------" << endl;
-		return default_value;
-	} else {
-		return askQuestion_pimpl(s1, s2, s3);
-	}
-}
+	if (lyxrc.use_gui)
+		return prompt_pimpl(title, question, default_button, b1, b2, b3);
 
-
-int Alert::askConfirmation(string const & s1, string const & s2,
-			   string const & s3, int default_value)
-{
-	if (!lyxrc.use_gui) {
-		lyxerr << "----------------------------------------" << endl
-		       << s1 << endl;
-		if (!s2.empty())
-			lyxerr << s2 << endl;
-		if (!s3.empty())
-			lyxerr << s3 << endl;
-		lyxerr << "Assuming answer is ";
-		if (default_value == 1)
-			lyxerr << "yes";
-		else if (default_value == 2)
-			lyxerr << "no";
-		else
-			lyxerr << "cancel";
-		lyxerr << endl
-		       << "----------------------------------------" << endl;
-		return default_value;
-	} else {
-		return askConfirmation_pimpl(s1, s2, s3);
+	lyxerr << title << endl;
+	lyxerr << "----------------------------------------" << endl;
+	lyxerr << question << endl;
+	lyxerr << "Assuming answer is ";
+	switch (default_button) {
+		case 0: lyxerr << b1 << endl;
+		case 1: lyxerr << b2 << endl;
+		case 2: lyxerr << b3 << endl;
 	}
+	return default_button;
 }
 
 

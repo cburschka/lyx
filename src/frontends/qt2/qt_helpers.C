@@ -23,6 +23,7 @@
 
 using std::pair;
 using std::make_pair;
+using std::min;
 
 string makeFontName(string const & family, string const & foundry)
 {
@@ -116,4 +117,61 @@ string const fromqstr(QString const & str)
 	QCString tmpstr = codec->fromUnicode(str);
 	char const * tmpcstr = tmpstr;
 	return tmpcstr;
+}
+
+
+string const formatted(string const & text, int w)
+{
+	string sout;
+
+	if (text.empty())
+		return sout;
+
+	string::size_type curpos = 0;
+	string line;
+
+	for (;;) {
+		string::size_type const nxtpos1 = text.find(' ',  curpos);
+		string::size_type const nxtpos2 = text.find('\n', curpos);
+		string::size_type const nxtpos = std::min(nxtpos1, nxtpos2);
+
+		string const word = nxtpos == string::npos ?
+			text.substr(curpos) : text.substr(curpos, nxtpos-curpos);
+
+		bool const newline = (nxtpos2 != string::npos &&
+				      nxtpos2 < nxtpos1);
+
+		string const line_plus_word =
+			line.empty() ? word : line + ' ' + word;
+
+		// FIXME: make w be size_t
+		if (line_plus_word.length() >= w) {
+			sout += line + '\n';
+			if (newline) {
+				sout += word + '\n';
+				line.erase();
+			} else {
+				line = word;
+			}
+
+		} else if (newline) {
+			sout += line_plus_word + '\n';
+			line.erase();
+
+		} else {
+			if (!line.empty())
+				line += ' ';
+			line += word;
+		}
+
+		if (nxtpos == string::npos) {
+			if (!line.empty())
+				sout += line;
+			break;
+		}
+
+		curpos = nxtpos + 1;
+	}
+
+	return sout;
 }

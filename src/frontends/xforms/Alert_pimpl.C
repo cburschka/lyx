@@ -29,25 +29,21 @@ void alert_pimpl(string const & s1, string const & s2, string const & s3)
 }
 
 
-bool askQuestion_pimpl(string const & s1, string const & s2, string const & s3)
-{
-	fl_set_resource("flQuestion.yes.label", idex(_("Yes|#y")).c_str());
-	fl_set_resource("flQuestion.no.label", idex(_("No|#n")).c_str());
-	return fl_show_question((s1 + "\n" + s2 + "\n" + s3).c_str(), 0);
-}
+#warning error needs fixing up
+#warning a "&Save" -> "Save|#S" is whats needed
+#warning and a format maybe, and fixup default_button ?
 
-
-int askConfirmation_pimpl(string const & s1, string const & s2, string const & s3)
+int prompt_pimpl(string const & title, string const & question,
+           int default_button,
+	   string const & b1, string const & b2, string const & b3);
 {
-	string const yes    = _("Yes|#Y");
-	string const no     = _("No|#N");
-	string const cancel = _("Cancel|^[");
-	
-	fl_set_choices_shortcut(scex(yes).c_str(), scex(no).c_str(),
-				scex(cancel).c_str());
-	return fl_show_choice(s1.c_str(), s2.c_str(), s3.c_str(),
-			      3, idex(yes).c_str(), idex(no).c_str(),
-			      idex(cancel).c_str(), 3);
+	if (b3.empty()) {
+		return fl_show_choice(title.c_str(), question.c_str(), "",
+			2, b1.c_str(), b2.c_str(), 2);
+	} else {
+		return fl_show_choice(title.c_str(), question.c_str(), "",
+			3, b1.c_str(), b2.c_str(), b3.c_str(), 3);
+	}
 }
 
 

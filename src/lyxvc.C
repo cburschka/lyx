@@ -13,6 +13,7 @@
 
 #include "support/filetools.h"
 #include "support/lyxlib.h"
+#include "BoostFormat.h"
 
 #include <unistd.h>
 
@@ -73,6 +74,31 @@ void LyXVC::buffer(Buffer * buf)
 }
 
 
+bool LyXVC::ensureClean()
+{
+	if (owner_->isClean())
+		return true;
+
+	string const file = MakeDisplayPath(owner_->fileName(), 30);
+#if USE_BOOST_FORMAT
+	boost::format fmt(_("The document %1$s has unsaved changes.\n\nDo you want to save the document?"));
+	fmt % file;
+	string text = fmt.str();
+#else
+	string text = _("The document ");
+	text += file + _(" has unsaved changes.\n\nDo you want to save the document?");
+#endif
+	int const ret = Alert::prompt(_("Save changed document?"),
+		text, 0, _("&Save"), _("&Cancel"));
+
+	if (ret == 0) {
+		vcs->owner()->getUser()->owner()->dispatch(FuncRequest(LFUN_MENUWRITE));
+	}
+
+	return owner_->isClean();
+}
+
+
 void LyXVC::registrer()
 {
 	string const filename = owner_->fileName();
@@ -107,18 +133,9 @@ void LyXVC::registrer()
 		vcs->owner(owner_);
 	}
 
-	// If the document is changed, we might want to save it
-	if (!vcs->owner()->isClean() &&
-	    Alert::askQuestion(_("Changes in document:"),
-			MakeDisplayPath(filename, 50),
-			_("Save document and proceed?"))) {
-		vcs->owner()->getUser()->owner()
-			->dispatch(FuncRequest(LFUN_MENUWRITE));
-	}
-
 	// Maybe the save fails, or we answered "no". In both cases,
 	// the document will be dirty, and we abort.
-	if (!vcs->owner()->isClean())
+	if (!ensureClean())
 		return;
 
 	lyxerr[Debug::LYXVC] << "LyXVC: registrer" << endl;
@@ -140,10 +157,7 @@ void LyXVC::registrer()
 void LyXVC::checkIn()
 {
 	// If the document is changed, we might want to save it
-	if (!vcs->owner()->isClean() &&
-	    Alert::askQuestion(_("Changes in document:"),
-			MakeDisplayPath(vcs->owner()->fileName(), 50),
-			_("Save document and proceed?"))) {
+	if (!vcs->owner()->isClean()) {
 		vcs->owner()->getUser()->owner()
 			->dispatch(FuncRequest(LFUN_MENUWRITE));
 	}
@@ -169,12 +183,8 @@ void LyXVC::checkIn()
 void LyXVC::checkOut()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: checkOut" << endl;
-	if (!vcs->owner()->isClean()
-	    && !Alert::askQuestion(_("Changes in document:"),
-			   MakeDisplayPath(vcs->owner()->fileName(), 50),
-			   _("Ignore changes and proceed with check out?"))) {
+	if (!ensureClean())
 		return;
-	}
 
 	vcs->checkOut();
 }
@@ -183,15 +193,22 @@ void LyXVC::checkOut()
 void LyXVC::revert()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: revert" << endl;
-	// Here we should check if the buffer is dirty. And if it is
-	// we should warn the user that reverting will discard all
-	// changes made since the last check in.
-	if (Alert::askQuestion(_("When you revert, you will loose all changes made"),
-			_("to the document since the last check in."),
-			_("Do you still want to do it?"))) {
 
+	string const file = MakeDisplayPath(owner_->fileName(), 20);
+#if USE_BOOST_FORMAT
+	boost::format fmt(_("Reverting to the stored version of the document %1$s will "
+			"lose all current changes.\n\nDo you want to revert to the saved version?"));
+	fmt % file;
+	string text = fmt.str();
+#else
+	string text = _("Reverting to the stored version of the document ");
+	text += file + _(" will lose all current changes.\n\nDo you want to revert to the saved version?");
+#endif
+	int const ret = Alert::prompt(_("Revert to stored version of document?"),
+		text, 1, _("&Revert"), _("&Cancel"));
+
+	if (ret == 0)
 		vcs->revert();
-	}
 }
 
 

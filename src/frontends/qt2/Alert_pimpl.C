@@ -37,17 +37,21 @@ void alert_pimpl(string const & s1, string const & s2, string const & s3)
 }
 
 
-bool askQuestion_pimpl(string const & s1, string const & s2, string const & s3)
+int prompt_pimpl(string const & tit, string const & question,
+           int default_button,
+	   string const & b1, string const & b2, string const & b3)
 {
-	return !(QMessageBox::information(0, "LyX", toqstr(s1 + '\n' + s2 + '\n' + s3),
-		qt_("&Yes"), qt_("&No"), 0, 1));
-}
+#if USE_BOOST_FORMAT
+	boost::format fmt(_("LyX: %1$s"));
+	fmt % tit;
+	string const title = fmt.str();
+#else
+	string const title = _("LyX: ") + tit;
+#endif
 
-
-int askConfirmation_pimpl(string const & s1, string const & s2, string const & s3)
-{
-	return (QMessageBox::information(0, "LyX", toqstr(s1 + '\n' + s2 + '\n' + s3),
-		qt_("&Yes"), qt_("&No"), qt_("&Cancel"), 0, 2)) + 1;
+	return QMessageBox::information(0, toqstr(title), toqstr(formatted(question)),
+		toqstr(b1), toqstr(b2), b3.empty() ? QString::null : toqstr(b3),
+		default_button);
 }
 
 

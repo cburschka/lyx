@@ -1,10 +1,13 @@
 // -*- C++ -*-
-/** \file
- *  Copyright 2002 the LyX Team
- *  Read the file COPYING
+/**
+ * \file bufferlist.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *  \author Lars Gullik Bjønnes
-*/
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef BUFFER_LIST_H
 #define BUFFER_LIST_H
@@ -36,8 +39,8 @@ public:
 	Buffer * loadLyXFile(string const & filename,
 			     bool tolastfiles = true);
 
-	/// write all buffers, asking the user
-	bool qwriteAll();
+	/// write all buffers, asking the user, returns false if cancelled
+	bool quitWriteAll();
 
 	/// create a new buffer
 	Buffer * newBuffer(string const & s, bool ronly = false);
@@ -63,7 +66,7 @@ public:
 	void emergencyWriteAll();
 
 	/// close buffer. Returns false if cancelled by user
-	bool close(Buffer * buf);
+	bool close(Buffer * buf, bool ask);
 
 	/// return true if no buffers loaded
 	bool empty() const;
@@ -86,9 +89,8 @@ public:
 	void setCurrentAuthor(string const & name, string const & email);
 
 private:
-	/// ask to save a buffer on quit
-	bool qwriteOne(Buffer * buf, string const & fname,
-		       string & unsaved_list);
+	/// ask to save a buffer on quit, returns false if should cancel
+	bool quitWriteBuffer(Buffer * buf);
 
 	typedef std::vector<Buffer *> BufferStorage;
 

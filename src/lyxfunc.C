@@ -1758,11 +1758,6 @@ void LyXFunc::open(string const & fname)
 	// if the file doesn't exist, let the user create one
 	FileInfo const f(filename, true);
 	if (!f.exist()) {
-		if (!Alert::askQuestion(_("No such file"), disp_fn,
-			_("Start a new document with this filename ?"))) {
-			owner->message(_("Canceled."));
-			return;
-		}
 		// the user specifically chose this name. Believe them.
 		Buffer * buffer =  bufferlist.newFile(filename, "", true);
 		view()->buffer(buffer);
@@ -1861,30 +1856,44 @@ void LyXFunc::doImport(string const & argument)
 
 	// Check if the document already is open
 	if (lyxrc.use_gui && bufferlist.exists(lyxfile)) {
-		switch (Alert::askConfirmation(_("Document is already open:"),
-					MakeDisplayPath(lyxfile, 50),
-					_("Do you want to close that document now?\n"
-					  "('No' will just switch to the open version)")))
-			{
-			case 1:
-				// If close is canceled, we cancel here too.
-				if (!bufferlist.close(bufferlist.getBuffer(lyxfile)))
-					return;
-				break;
-			case 2:
-				view()->buffer(bufferlist.getBuffer(lyxfile));
-				return;
-			case 3:
-				owner->message(_("Canceled."));
-				return;
-			}
+		string const file = MakeDisplayPath(lyxfile, 30);
+
+		// FIXME: sucky UI !
+
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("The document %1$s is already open.\n\nDo you want to close that document?"));
+		fmt % file;
+		string text = fmt.str();
+#else
+		string text = _("The document ");
+		text += file + _(" is already open.\n\nDo you want to close that document?");
+#endif
+		int const ret = Alert::prompt(_("Close open document?"),
+			text, 1, _("&Close"), _("&Cancel"));
+
+		if (ret == 0 || !bufferlist.close(bufferlist.getBuffer(lyxfile), true)) {
+			owner->message(_("Canceled."));
+			return;
+		}
 	}
 
 	// if the file exists already, and we didn't do
 	// -i lyx thefile.lyx, warn
 	if (FileInfo(lyxfile, true).exist() && filename != lyxfile) {
-		if (!Alert::askQuestion(_("A document by the name"),
-			MakeDisplayPath(lyxfile), _("already exists. Overwrite?"))) {
+		string const file = MakeDisplayPath(lyxfile, 30);
+
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("The document %1$s already exists.\n\nDo you want to over-write that document?"));
+		fmt % file;
+		string text = fmt.str();
+#else
+		string text = _("The document ");
+		text += file + _(" already exists.\n\nDo you want to over-write that document?");
+#endif
+		int const ret = Alert::prompt(_("Over-write document?"),
+			text, 1, _("&Over-write"), _("&Cancel"));
+
+		if (ret == 1) {
 			owner->message(_("Canceled."));
 			return;
 		}
@@ -1896,7 +1905,7 @@ void LyXFunc::doImport(string const & argument)
 
 void LyXFunc::closeBuffer()
 {
-	if (bufferlist.close(owner->buffer()) && !quitting) {
+	if (bufferlist.close(owner->buffer(), true) && !quitting) {
 		if (bufferlist.empty()) {
 			// need this otherwise SEGV may occur while trying to
 			// set variables that don't exist

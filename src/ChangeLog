@@ -1,3 +1,19 @@
+2003-03-29  John Levon  <levon@movementarian.org>
+
+	* bufferlist.h:
+	* bufferlist.C: several UI fixes using Alert::prompt.
+	Fix the pointless looping quit code. Fix stupid revert
+	behaviour (bug 938)
+
+	* lyxvc.h:
+	* lyxvc.C:
+	* lyx_cb.C: use Alert::prompt
+
+	* lyx_main.C: remove a silly question
+
+	* lyxfunc.C: remove a couple of silly questions,
+	use Alert::prompt
+	
 2003-03-28  John Levon  <levon@movementarian.org>
 
 	* text2.C: fix bug 974 (End on empty par)

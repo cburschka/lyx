@@ -75,28 +75,35 @@ void ShowMessage(Buffer const * buf,
 // Menu callbacks
 //
 
-//
-// File menu
-//
-// should be moved to lyxfunc.C
 bool MenuWrite(BufferView * bv, Buffer * buffer)
 {
-	if (!buffer->save()) {
-		if (Alert::askQuestion(_("Save failed. Rename and try again?"),
-				MakeDisplayPath(buffer->fileName(), 50),
-				_("(If not, document is not saved.)"))) {
-			return WriteAs(bv, buffer);
-		}
-		return false;
-	} else
+	if (buffer->save()) {
 		lastfiles->newFile(buffer->fileName());
-	return true;
+		return true;
+	}
+
+	// FIXME: we don't tell the user *WHY* the save failed !!
+
+	string const file = MakeDisplayPath(buffer->fileName(), 30);
+
+#if USE_BOOST_FORMAT
+	boost::format fmt(_("The document %1$s could not be saved.\n\nDo you want to rename the document and try again?"));
+	fmt % file;
+	string text = fmt.str();
+#else
+	string text = _("The document ");
+	text += file + _(" could not be saved.\n\nDo you want to rename the document and try again?");
+#endif
+	int const ret = Alert::prompt(_("Rename and save?"),
+		text, 0, _("&Rename"), _("&Cancel"));
+
+	if (ret == 0)
+		return WriteAs(bv, buffer);
+	return false;
 }
 
 
 
-// should be moved to BufferView.C
-// Half of this func should be in LyXView, the rest in BufferView.
 bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 {
 	string fname = buffer->fileName();
@@ -134,36 +141,22 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 	} else
 		fname = filename;
 
-	// Same name as we have already?
-	if (!buffer->isUnnamed() && fname == oldname) {
-		if (!Alert::askQuestion(_("Same name as document already has:"),
-				 MakeDisplayPath(fname, 50),
-				 _("Save anyway?")))
-			return false;
-		// Falls through to name change and save
-	}
-	// No, but do we have another file with this name open?
-	else if (!buffer->isUnnamed() && bufferlist.exists(fname)) {
-		if (Alert::askQuestion(_("Another document with same name open!"),
-				MakeDisplayPath(fname, 50),
-				_("Replace with current document?")))
-			{
-				bufferlist.close(bufferlist.getBuffer(fname));
+	FileInfo const myfile(fname);
+	if (myfile.isOK()) {
+		string const file = MakeDisplayPath(fname, 30);
 
-				// Ok, change the name of the buffer, but don't save!
-				buffer->setFileName(fname);
-				buffer->markDirty();
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("The document %1$s already exists.\n\nDo you want to over-write that document?"));
+		fmt % file;
+		string text = fmt.str();
+#else
+		string text = _("The document ");
+		text += file + _(" already exists.\n\nDo you want to over-write that document?");
+#endif
+		int const ret = Alert::prompt(_("Over-write document?"),
+			text, 1, _("&Over-write"), _("&Cancel"));
 
-				ShowMessage(buffer, _("Document renamed to '"),
-						MakeDisplayPath(fname), _("', but not saved..."));
-		}
-		return false;
-	} // Check whether the file exists
-	else {
-		FileInfo const myfile(fname);
-		if (myfile.isOK() && !Alert::askQuestion(_("Document already exists:"),
-						  MakeDisplayPath(fname, 50),
-						  _("Replace file?")))
+		if (ret == 1)
 			return false;
 	}
 
@@ -174,13 +167,11 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 	buffer->setUnnamed(false);
 
 	if (!MenuWrite(bv, buffer)) {
-	    buffer->setFileName(oldname);
-	    buffer->setUnnamed(unnamed);
-	    ShowMessage(buffer, _("Document could not be saved!"),
-			_("Holding the old name."), MakeDisplayPath(oldname));
-	    return false;
+		buffer->setFileName(oldname);
+		buffer->setUnnamed(unnamed);
+		return false;
 	}
-	// now remove the oldname autosave file if existant!
+
 	removeAutosaveFile(oldname);
 	return true;
 }
@@ -222,7 +213,7 @@ void QuitLyX()
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
 
 	if (lyxrc.use_gui) {
-		if (!bufferlist.qwriteAll())
+		if (!bufferlist.quitWriteAll())
 			return;
 
 		lastfiles->writeFile(lyxrc.lastfiles);

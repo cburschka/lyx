@@ -598,18 +598,6 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 
 	first_start = !explicit_userdir;
 
-	// If the user specified explicitly a directory, ask whether
-	// to create it (otherwise, always create it)
-	if (explicit_userdir &&
-	    !Alert::askQuestion(_("You have specified an invalid LyX directory."),
-			 _("It is needed to keep your own configuration."),
-			 _("Should I try to set it up for you (recommended)?"))) {
-		lyxerr << _("Running without personal LyX directory.") << endl;
-		// No, let's use $HOME instead.
-		user_lyxdir = GetEnvPath("HOME");
-		return;
-	}
-
 #if USE_BOOST_FORMAT
 	lyxerr << boost::format(_("LyX: Creating directory %1$s"
 				  " and running configure..."))
