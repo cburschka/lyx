@@ -637,6 +637,7 @@ void MathCursor::erase()
 	if (n->hasInner()) {
 		n->removeNucleus();
 		inner() = true;
+		glueAdjacentAtoms();
 		return;
 	}
 
