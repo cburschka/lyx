@@ -232,8 +232,6 @@ char FileInfo::typeIndicator() const
 	if (S_ISSOCK(buf_.st_mode))
 		return '=';
 #endif
-	if (S_ISREG(buf_.st_mode) && (buf_.st_mode & (S_IEXEC | S_IXGRP | S_IXOTH)))
-		return '*';
 	return ' ';
 }
 
