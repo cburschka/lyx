@@ -1,5 +1,10 @@
 2002-11-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* lyx_cb.C (start): boost.formatify
+	do not include <iostream>
+
+	* lengthcommon.C: ws only
+
 	* boost-inst.C,BoostFormat.h: add more explict instantations
 
 2002-11-24  Lars Gullik Bjønnes  <larsbj@gullik.net>

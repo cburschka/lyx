@@ -36,10 +36,11 @@
 #include "support/systemcall.h"
 #include "support/lstrings.h"
 
+#include "BoostFormat.h"
+
 #include <fstream>
 #include <algorithm>
 #include <utility>
-#include <iostream>
 
 using std::vector;
 using std::ifstream;
@@ -268,8 +269,11 @@ private:
 
 int AutoSaveBuffer::start()
 {
-	command_ = _("Auto-saving $$f");
-	command_ = subst(command_, "$$f", fname_);
+#if USE_BOOST_FORMAT
+	command_ = boost::io::str(boost::format(_("Auto-saving %1$s")) % fname_);
+#else
+	command_ = _("Auto-saving ") + fname_;
+#endif
 	return runNonBlocking();
 }
 
@@ -317,7 +321,7 @@ int AutoSaveBuffer::generateChild()
 	}
 	return pid;
 }
- 
+
 } // namespace anon
 
 
@@ -344,7 +348,7 @@ void AutoSave(BufferView * bv)
 
 	AutoSaveBuffer autosave(*bv, fname);
 	autosave.start();
-	
+
 	bv->buffer()->markBakClean();
 	bv->owner()->resetAutosaveTimer();
 }
