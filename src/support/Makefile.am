@@ -8,7 +8,7 @@ BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${srcdir}/../ $(BOOST_INCLUDES)
 
 EXTRA_DIST = lyxstring.C lyxstring.h regex.c lyxregex.h \
-             os_unix.C os_win32.C os_os2.C types.h
+             os_unix.C os_win32.C os_os2.C
 
 if USE_LYXSTRING
 LYXSTRING = lyxstring.C lyxstring.h
@@ -69,8 +69,9 @@ libsupport_la_SOURCES = \
 	syscontr.h \
 	syssingleton.C \
 	tempname.C \
-	translator.h \
 	textutils.h \
+	translator.h \
+	types.h \
 	unlink.C \
 	utility.h
 
