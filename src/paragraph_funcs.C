@@ -60,7 +60,7 @@ namespace {
 bool moveItem(Paragraph & from, Paragraph & to,
 	BufferParams const & params, pos_type i, pos_type j)
 {
-	char const tmpchar = from.getChar(i);
+	Paragraph::value_type const tmpchar = from.getChar(i);
 	LyXFont tmpfont = from.getFontSettings(params, i);
 
 	if (tmpchar == Paragraph::META_INSET) {
@@ -89,17 +89,19 @@ bool moveItem(Paragraph & from, Paragraph & to,
 
 
 void breakParagraph(BufferParams const & bparams,
-	ParagraphList & pars, par_type par, pos_type pos, int flag)
+	ParagraphList & pars, par_type par_offset, pos_type pos, int flag)
 {
 	// create a new paragraph, and insert into the list
 	ParagraphList::iterator tmp =
-		pars.insert(pars.begin() + par + 1, Paragraph());
+		pars.insert(pars.begin() + par_offset + 1, Paragraph());
+
+	Paragraph & par = pars[par_offset];
 
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
 	tmp->layout(bparams.getLyXTextClass().defaultLayout());
 	// remember to set the inset_owner
-	tmp->setInsetOwner(pars[par].inInset());
+	tmp->setInsetOwner(par.inInset());
 
 	if (bparams.tracking_changes)
 		tmp->trackChanges();
@@ -109,19 +111,19 @@ void breakParagraph(BufferParams const & bparams,
 
 	// layout stays the same with latex-environments
 	if (flag) {
-		tmp->layout(pars[par].layout());
-		tmp->setLabelWidthString(pars[par].params().labelWidthString());
+		tmp->layout(par.layout());
+		tmp->setLabelWidthString(par.params().labelWidthString());
 	}
 
-	bool const isempty = (pars[par].allowEmpty() && pars[par].empty());
+	bool const isempty = (par.allowEmpty() && par.empty());
 
-	if (!isempty && (pars[par].size() > pos || pars[par].empty() || flag == 2)) {
-		tmp->layout(pars[par].layout());
-		tmp->params().align(pars[par].params().align());
-		tmp->setLabelWidthString(pars[par].params().labelWidthString());
+	if (!isempty && (par.size() > pos || par.empty() || flag == 2)) {
+		tmp->layout(par.layout());
+		tmp->params().align(par.params().align());
+		tmp->setLabelWidthString(par.params().labelWidthString());
 
-		tmp->params().depth(pars[par].params().depth());
-		tmp->params().noindent(pars[par].params().noindent());
+		tmp->params().depth(par.params().depth());
+		tmp->params().noindent(par.params().noindent());
 
 		// copy everything behind the break-position
 		// to the new paragraph
@@ -131,38 +133,48 @@ void breakParagraph(BufferParams const & bparams,
 		 * doesn't cause problems because both loops below
 		 * enforce pos <= pos_end and 0 <= pos
 		 */
-		pos_type pos_end = pars[par].size() - 1;
+		pos_type pos_end = par.size() - 1;
 
 		for (pos_type i = pos, j = pos; i <= pos_end; ++i) {
-			Change::Type change = pars[par].lookupChange(i);
-			if (moveItem(pars[par], *tmp, bparams, i, j - pos)) {
+			Change::Type change = par.lookupChange(i);
+			if (moveItem(par, *tmp, bparams, i, j - pos)) {
 				tmp->setChange(j - pos, change);
 				++j;
 			}
 		}
 
 		for (pos_type i = pos_end; i >= pos; --i)
-			pars[par].eraseIntern(i);
+			par.eraseIntern(i);
 	}
 
-	if (pos)
+	if (pos) {
+		// Make sure that we keep the language when
+		// breaking paragrpah.
+		if (tmp->empty()) {
+			LyXFont changed = tmp->getFirstFontSettings();
+			LyXFont old = par.getFontSettings(bparams, par.size());
+			changed.setLanguage(old.language());
+			tmp->setFont(0, changed);
+		}
+
 		return;
+	}
 
-	pars[par].params().clear();
+	par.params().clear();
 
-	pars[par].layout(bparams.getLyXTextClass().defaultLayout());
+	par.layout(bparams.getLyXTextClass().defaultLayout());
 
 	// layout stays the same with latex-environments
 	if (flag) {
-		pars[par].layout(tmp->layout());
-		pars[par].setLabelWidthString(tmp->params().labelWidthString());
-		pars[par].params().depth(tmp->params().depth());
+		par.layout(tmp->layout());
+		par.setLabelWidthString(tmp->params().labelWidthString());
+		par.params().depth(tmp->params().depth());
 	}
 
 	// subtle, but needed to get empty pars working right
 	if (bparams.tracking_changes) {
-		if (!pars[par].size()) {
-			pars[par].cleanChanges();
+		if (!par.size()) {
+			par.cleanChanges();
 		} else if (!tmp->size()) {
 			tmp->cleanChanges();
 		}
@@ -171,43 +183,46 @@ void breakParagraph(BufferParams const & bparams,
 
 
 void breakParagraphConservative(BufferParams const & bparams,
-	ParagraphList & pars, par_type par, pos_type pos)
+	ParagraphList & pars, par_type par_offset, pos_type pos)
 {
 	// create a new paragraph
-	Paragraph & tmp = *pars.insert(pars.begin() + par + 1, Paragraph());
-	tmp.makeSameLayout(pars[par]);
+	Paragraph & tmp = *pars.insert(pars.begin() + par_offset + 1, Paragraph());
+	Paragraph & par = pars[par_offset];
+
+	tmp.makeSameLayout(par);
 
 	// When can pos > size()?
 	// I guess pos == size() is possible.
-	if (pars[par].size() > pos) {
+	if (par.size() > pos) {
 		// copy everything behind the break-position to the new
 		// paragraph
-		pos_type pos_end = pars[par].size() - 1;
+		pos_type pos_end = par.size() - 1;
 
 		for (pos_type i = pos, j = pos; i <= pos_end; ++i)
-			if (moveItem(pars[par], tmp, bparams, i, j - pos))
+			if (moveItem(par, tmp, bparams, i, j - pos))
 				++j;
 
 		for (pos_type k = pos_end; k >= pos; --k)
-			pars[par].erase(k);
+			par.erase(k);
 	}
 }
 
 
 void mergeParagraph(BufferParams const & bparams,
-	ParagraphList & pars, par_type par)
+	ParagraphList & pars, par_type par_offset)
 {
-	Paragraph & next = pars[par + 1];
+	Paragraph & next = pars[par_offset + 1];
+	Paragraph & par = pars[par_offset];
 
 	pos_type pos_end = next.size() - 1;
-	pos_type pos_insert = pars[par].size();
+	pos_type pos_insert = par.size();
 
 	// ok, now copy the paragraph
 	for (pos_type i = 0, j = 0; i <= pos_end; ++i)
-		if (moveItem(next, pars[par], bparams, i, pos_insert + j))
+		if (moveItem(next, par, bparams, i, pos_insert + j))
 			++j;
 
-	pars.erase(pars.begin() + par + 1);
+	pars.erase(pars.begin() + par_offset + 1);
 }
 
 
@@ -229,20 +244,27 @@ par_type depthHook(par_type pit,
 }
 
 
-par_type outerHook(par_type par, ParagraphList const & pars)
+par_type outerHook(par_type par_offset, ParagraphList const & pars)
 {
-	if (pars[par].getDepth() == 0)
+	Paragraph const & par = pars[par_offset];
+
+	if (par.getDepth() == 0)
 		return pars.size();
-	return depthHook(par, pars, Paragraph::depth_type(pars[par].getDepth() - 1));
+	return depthHook(par_offset, pars, Paragraph::depth_type(par.getDepth() - 1));
 }
 
 
-bool isFirstInSequence(par_type pit, ParagraphList const & pars)
+bool isFirstInSequence(par_type par_offset, ParagraphList const & pars)
 {
-	par_type dhook = depthHook(pit, pars, pars[pit].getDepth());
-	return dhook == pit
-		|| pars[dhook].layout() != pars[pit].layout()
-		|| pars[dhook].getDepth() != pars[pit].getDepth();
+	Paragraph const & par = pars[par_offset];
+
+	par_type dhook_offset = depthHook(par_offset, pars, par.getDepth());
+
+	Paragraph const & dhook = pars[dhook_offset];
+
+	return dhook_offset == par_offset
+		|| dhook.layout() != par.layout()
+		|| dhook.getDepth() != par.getDepth();
 }
 
 
@@ -275,19 +297,19 @@ int getEndLabel(par_type p, ParagraphList const & pars)
 }
 
 
-LyXFont const outerFont(par_type pit, ParagraphList const & pars)
+LyXFont const outerFont(par_type par_offset, ParagraphList const & pars)
 {
-	Paragraph::depth_type par_depth = pars[pit].getDepth();
+	Paragraph::depth_type par_depth = pars[par_offset].getDepth();
 	LyXFont tmpfont(LyXFont::ALL_INHERIT);
 
 	// Resolve against environment font information
-	while (pit != par_type(pars.size())
+	while (par_offset != par_type(pars.size())
 	       && par_depth
 	       && !tmpfont.resolved()) {
-		pit = outerHook(pit, pars);
-		if (pit != par_type(pars.size())) {
-			tmpfont.realize(pars[pit].layout()->font);
-			par_depth = pars[pit].getDepth();
+		par_offset = outerHook(par_offset, pars);
+		if (par_offset != par_type(pars.size())) {
+			tmpfont.realize(pars[par_offset].layout()->font);
+			par_depth = pars[par_offset].getDepth();
 		}
 	}
 

@@ -1,6 +1,25 @@
+2004-08-13  Lars Gullik Bjonnes  <larsbj@lyx.org>
+
+	bug 1305
+	* paragraph_funcs.C (moveItem): use Paragraph::value_type instead
+	of char
+	(breakParagraph): rename par to par_offset and use a local
+	reference. Add code to keep the language over a rebreak.
+	(breakParagraphConservative): rename par to par_offset, use a
+	local reference
+	(mergeParagraph): ditto
+	(outerHook): ditto
+	(isFirstInSequence): ditto
+	(outerFont): rename pit to par_offset
+
+	* paragraph.C: ws change
+	* paragraph.h: ditto
+	* text3.C: ditto
+	* text.C: ditto
+
 2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* text2.C (editXY): 
+	* text2.C (editXY):
 	* text3.C (checkInsetHit): constify
 
 2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
@@ -11,7 +30,7 @@
 2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	Fix toggling of collapsable insets with the mouse (bug 1558)
-	
+
 	* lyxfunc.C (dispatch): adapt to LCursor changes
 
 	* BufferView_pimpl.C (workAreaDispatch): adapt to LCursor changes;
@@ -31,7 +50,7 @@
 
 	* CutAndPaste.C (eraseSelection): fix cursor position after erasing
 	  multiple cells
-   
+
 2004-08-12  André Pönitz  <poenitz@gmx.net>
 
 	* text3.C: take out the 'cursor right' form insertInset and only
@@ -55,7 +74,7 @@
 
 	* paragraph.C (insertInset, insertChar): the version that takes a
 	LyXFont argument is now a wrapper around the other one (the
-	opposite used to be true). 
+	opposite used to be true).
 
 	* paragraph_pimpl.C (insertInset, insertChar): remove the LyXFont
 	argument. Font setting is done in Paragraph now.

@@ -278,7 +278,7 @@ bool Paragraph::checkInsertChar(LyXFont &)
 }
 
 
-void Paragraph::insertChar(pos_type pos, Paragraph::value_type c, 
+void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 			   Change change)
 {
 	pimpl_->insertChar(pos, c, change);

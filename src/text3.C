@@ -185,7 +185,7 @@ string const freefont2string()
 
 
 //takes absolute x,y coordinates
-InsetBase * LyXText::checkInsetHit(int x, int y) const 
+InsetBase * LyXText::checkInsetHit(int x, int y) const
 {
 	par_type pit;
 	par_type end;
@@ -454,7 +454,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		finishChange(cur, false);
 		break;
 
-	case LFUN_BEGINNINGBUF:	
+	case LFUN_BEGINNINGBUF:
 		if (cur.size() == 1) {
 			if (!cur.mark())
 				cur.clearSelection();
@@ -1045,7 +1045,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				cur.insert(new InsetQuotes(c,
 				    bufparams.quotes_language,
 				    InsetQuotes::DoubleQ));
-			else 
+			else
 				cur.insert(new InsetQuotes(c, bufparams));
 			cur.posRight();
 		}

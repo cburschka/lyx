@@ -292,7 +292,7 @@ public:
 	///
 	bool checkInsertChar(LyXFont &);
 	///
-	void insertInset(lyx::pos_type pos, InsetBase * inset, 
+	void insertInset(lyx::pos_type pos, InsetBase * inset,
 			 Change change = Change(Change::INSERTED));
 	///
 	void insertInset(lyx::pos_type pos, InsetBase * inset,

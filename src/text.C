@@ -2092,6 +2092,7 @@ string LyXText::currentState(LCursor & cur)
 			break;
 		}
 	}
+
 #ifdef DEVEL_VERSION
 	os << _(", Inset: ") << &cur.inset();
 	os << _(", Paragraph: ") << cur.par();
