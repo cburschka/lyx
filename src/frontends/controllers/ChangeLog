@@ -1,3 +1,10 @@
+2004-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* ControlSendto.C (allFormats): use the unique-erase idom and
+	simplify some code a bit.
+
+	* ControlMath.C: make CompareKey adaptable
+
 2004-01-07  Angus Leeming  <leeming@lyx.org>
 
 	* ControlSearch.C:
@@ -55,7 +62,7 @@
 	(readBB): attempt to read the BoundingBox from the graphics file.
 	If that fails, try the Graphics Cache.
 	(all_origins, origin_gui_str): helpers for the frontends.
-	
+
 2003-12-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ControlVSpace.C: enable the buttons for new insets.
@@ -89,7 +96,7 @@
 
 2003-11-04  Alfredo Braunstein  <abraunst@libero.it>
 
-	* ControlSpellchecker.[Ch] (nextWord, check): rewrite of the text 
+	* ControlSpellchecker.[Ch] (nextWord, check): rewrite of the text
 	handling parts
 
 2003-10-27  Juergen Spitzmueller  <j.spitzmueller@gmx.de>

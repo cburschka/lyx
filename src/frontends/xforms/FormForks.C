@@ -250,10 +250,10 @@ ButtonPolicy::SMInput FormForks::input_browser_children()
 
 namespace {
 
-class FindPID {
+class FindPID : public std::unary_function<string, bool> {
 public:
 	FindPID(string const & pid) : pid_(pid) {}
-	bool operator()(string const & line)
+	bool operator()(string const & line) const
 	{
 		if (line.empty())
 			return false;

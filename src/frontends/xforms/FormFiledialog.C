@@ -172,7 +172,7 @@ UserCache lyxUserCache;
 GroupCache lyxGroupCache;
 
 // compares two LyXDirEntry objects content (used for sort)
-class comp_direntry {
+class comp_direntry : public std::binary_function<DirEntry, DirEntry, bool> {
 public:
 	bool operator()(DirEntry const & r1, DirEntry const & r2) const
 	{
@@ -241,7 +241,7 @@ void FileDialog::Private::Reread()
 
 	vector<string> const glob_matches =
 		lyx::support::expand_globs(mask_, directory_);
-	
+
 	time_t curTime = time(0);
 	rewinddir(dir);
 	while (dirent * entry = readdir(dir)) {

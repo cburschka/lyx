@@ -85,13 +85,7 @@ vector<Format const *> const ControlSendto::allFormats() const
 
 	// Remove repeated formats.
 	std::sort(to.begin(), to.end());
-
-	vector<Format const *>::iterator to_begin = to.begin();
-	vector<Format const *>::iterator to_end   = to.end();
-	vector<Format const *>::iterator to_it =
-		std::unique(to_begin, to_end);
-	if (to_it != to_end)
-		to.erase(to_it, to_end);
+	to.erase(std::unique(to.begin(), to.end()), to.end());
 
 	return to;
 }

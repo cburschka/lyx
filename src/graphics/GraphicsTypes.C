@@ -12,6 +12,8 @@
 
 #include "graphics/GraphicsTypes.h"
 
+#include <string>
+
 using std::string;
 
 
@@ -36,7 +38,7 @@ Translator<DisplayType, string> const initTranslator()
 
 } // namespace anon
 
-Translator<DisplayType, string> const & displayTranslator() 
+Translator<DisplayType, string> const & displayTranslator()
 {
 	static Translator<DisplayType, string> const translator =
 		initTranslator();

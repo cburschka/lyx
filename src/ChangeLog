@@ -1,3 +1,9 @@
+2004-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* ShareContainer.h: make isEqual and isUnique adaptable
+
+	* CutAndPaste.C: make resetOwnerAndChanges adaptable
+
 2004-01-07  Angus Leeming  <leeming@lyx.org>
 
 	* LyXAction.C:

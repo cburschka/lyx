@@ -62,7 +62,7 @@ public:
 	}
 private:
 	/// A functor returning true if the elements are equal.
-	struct isEqual {
+	struct isEqual : public std::unary_function<value_type, bool> {
 		isEqual(Share const & s) : p_(s) {}
 		bool operator()(value_type const & p1) const {
 			return *p1.get() == p_;
@@ -71,7 +71,7 @@ private:
 		Share const & p_;
 	};
 	/// A functor returning true if the element is unique.
-	struct isUnique {
+	struct isUnique : public std::unary_function<value_type, bool> {
 		bool operator()(value_type const & p) const {
 			return p.unique();
 		}

@@ -165,8 +165,8 @@ PitPosPair CutAndPaste::eraseSelection(BufferParams const & params,
 
 namespace {
 
-struct resetOwnerAndChanges {
-	void operator()(Paragraph & p) {
+struct resetOwnerAndChanges : public std::unary_function<Paragraph, void> {
+	void operator()(Paragraph & p) const {
 		p.cleanChanges();
 		p.setInsetOwner(0);
 	}
