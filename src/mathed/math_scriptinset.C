@@ -210,7 +210,7 @@ void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
 {  
 	if (nuc)
 		nuc->draw(pain, x + dxx(nuc), y);
-	else
+	else if (editing())
 		drawStr(pain, LM_TC_TEX, mi_, x + dxx(nuc), y, ".");
 
 	if (hasUp())

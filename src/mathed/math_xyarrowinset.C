@@ -8,7 +8,6 @@
 #include "math_xymatrixinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
-#include "math_cursor.h"
 #include "math_support.h"
 #include "Painter.h"
 #include "debug.h"
@@ -22,12 +21,6 @@ MathXYArrowInset::MathXYArrowInset()
 MathInset * MathXYArrowInset::clone() const
 {
 	return new MathXYArrowInset(*this);
-}
-
-
-bool MathXYArrowInset::editing() const
-{
-	return mathcursor && mathcursor->isInside(this);
 }
 
 

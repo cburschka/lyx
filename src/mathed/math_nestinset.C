@@ -3,6 +3,7 @@
 #endif
 
 #include "math_nestinset.h"
+#include "math_cursor.h"
 #include "math_mathmlstream.h"
 #include "debug.h"
 
@@ -182,3 +183,10 @@ bool MathNestInset::contains(MathArray const & ar)
 			return true;
 	return false;
 }
+
+
+bool MathNestInset::editing() const
+{
+	return mathcursor && mathcursor->isInside(this);
+}
+

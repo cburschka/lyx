@@ -359,7 +359,7 @@ Token const & Parser::nextToken() const
 Token const & Parser::getToken()
 {
 	static const Token dummy;
-	//lyxerr << "looking at token " << tokens_[pos_] << '\n';
+	//lyxerr << "looking at token " << tokens_[pos_] << " pos: " << pos_ << '\n';
 	return good() ? tokens_[pos_++] : dummy;
 }
 
@@ -494,16 +494,25 @@ void Parser::tokenize(string const & buffer)
 
 			case catEscape: {
 				is.get(c);
-				string s(1, c);
-				if (catcode(c) == catLetter) {
-					while (is.get(c) && catcode(c) == catLetter)
-						s += c;
-					if (catcode(c) == catSpace)
-						while (is.get(c) && catcode(c) == catSpace)
-							;
-					is.putback(c);
-				}	
-				push_back(Token(s));
+				if (!is) {
+					error("unexpected end of input");
+				} else {
+					string s(1, c);
+					if (catcode(c) == catLetter) {
+						while (is.get(c) && catcode(c) == catLetter)
+							s += c;
+						if (catcode(c) == catSpace)
+							while (is.get(c) && catcode(c) == catSpace)
+								;
+						is.putback(c);
+					}	
+					push_back(Token(s));
+				}
+				break;
+			}
+
+			case catIgnore: {
+				lyxerr << "ignoring a char: " << int(c) << "\n";
 				break;
 			}
 
@@ -558,17 +567,19 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 		// reading a row
 		for (MathInset::col_type col = 0; col < p->ncols(); ++col) {
 			//lyxerr << "reading cell " << row << " " << col << "\n";
+			//lyxerr << "ncols: " << p->ncols() << "\n";
 		
 			MathArray & ar = p->cell(col + row * p->ncols());
 			parse_into(ar, FLAG_BLOCK);
 			// remove 'unnecessary' braces:
 			if (ar.size() == 1 && ar.back()->asBraceInset())
 				ar = ar.back()->asBraceInset()->cell(0);
+			//lyxerr << "ar: " << ar << "\n";
 
 			// break if cell is not followed by an ampersand
 			if (nextToken().cat() != catAlign) {
-				//lyxerr << "less cells read than normal in row/col: "
-				//	<< row << " " << col << "\n";
+				lyxerr << "less cells read than normal in row/col: "
+					<< row << " " << col << "\n";
 				break;
 			}
 			
@@ -845,8 +856,10 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 {
 	parse_into1(array, flags, code);
 	// remove 'unnecessary' braces:
-	if (array.size() == 1 && array.back()->asBraceInset())
+	if (array.size() == 1 && array.back()->asBraceInset()) {
+		lyxerr << "extra braces removed\n";
 		array = array.back()->asBraceInset()->cell(0);
+	}
 }
 
 

@@ -75,6 +75,8 @@ public:
 
 	/// debug helper
 	void dump() const;
+	///
+	virtual bool editing() const;
 
 protected:
 	/// we store the cells in a vector

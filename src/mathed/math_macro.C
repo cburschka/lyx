@@ -20,7 +20,6 @@
 
 #include "math_macro.h"
 #include "math_support.h"
-#include "math_cursor.h"
 #include "math_extern.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
@@ -61,12 +60,6 @@ bool MathMacro::defining() const
 {
 	return 0;
 	//return mathcursor && mathcursor->formula()->getInsetName() == name();
-}
-
-
-bool MathMacro::editing() const
-{
-	return mathcursor && mathcursor->isInside(this);
 }
 
 

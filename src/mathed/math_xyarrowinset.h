@@ -24,8 +24,6 @@ public:
 	void draw(Painter & pain, int x, int y) const;
 	///
 	MathXYArrowInset * asXYArrowInset() { return this; }
-	///
-	bool editing() const;
 
 	///
 	void normalize();

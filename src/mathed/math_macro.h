@@ -83,8 +83,6 @@ private:
 	///
 	char const * name() const;
 	///
-	bool editing() const;
-	///
 	bool defining() const;
 	///
 	void updateExpansion() const;
