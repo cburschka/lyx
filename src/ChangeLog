@@ -1,3 +1,9 @@
+2003-09-09  Angus Leeming  <leeming@lyx.org>
+
+	* buffer.[Ch]: make Buffer's member variables private. Add accessor functions.
+
+	Lots of changes all over the tree as a result.
+
 2003-09-08  Angus Leeming  <leeming@lyx.org>
 
 	* graph.C: #include <config.h>.
