@@ -1,4 +1,9 @@
-2005-04-02  Martin Vermeer  <martin.vermeer@hut.fi>
+2005-04-03  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_fontinset.[Ch] (draw): add call to setPosCache, 
+	fixes bug 1796
+
+2005-04-01  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_data.C (x2pos): fix math cursor positioning bug
 

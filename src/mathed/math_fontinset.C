@@ -56,6 +56,7 @@ void MathFontInset::draw(PainterInfo & pi, int x, int y) const
 	FontSetChanger dummy(pi.base, key_->name.c_str());
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
+	setPosCache(pi, x, y);
 }
 
 
