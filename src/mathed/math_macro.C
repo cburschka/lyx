@@ -44,7 +44,7 @@ MathMacro::MathMacro(MathMacro const & m)
 
 
 
-MathInset * MathMacro::clone() const
+InsetBase * MathMacro::clone() const
 {
 	return new MathMacro(*this);
 }

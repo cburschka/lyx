@@ -10,7 +10,7 @@ MathMatrixInset::MathMatrixInset(MathGridInset const & p)
 {}
 
 
-MathInset * MathMatrixInset::clone() const
+InsetBase * MathMatrixInset::clone() const
 {
 	return new MathMatrixInset(*this);
 }

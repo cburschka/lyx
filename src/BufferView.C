@@ -395,7 +395,8 @@ void BufferView::gotoLabel(string const & label)
 {
 	for (Buffer::inset_iterator it = buffer()->inset_iterator_begin();
 	     it != buffer()->inset_iterator_end(); ++it) {
-		vector<string> labels = it->getLabelList();
+		vector<string> labels;
+		it->getLabelList(labels);
 		if (find(labels.begin(),labels.end(),label)
 		     != labels.end()) {
 			beforeChange(text);
@@ -660,7 +661,8 @@ bool BufferView::ChangeInsets(Inset::Code code,
 bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 {
 	// Check if the label 'from' appears more than once
-	vector<string> labels = buffer()->getLabelList();
+	vector<string> labels;
+	buffer()->getLabelList(labels);
 
 	if (lyx::count(labels.begin(), labels.end(), from) > 1)
 		return false;

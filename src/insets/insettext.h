@@ -72,12 +72,9 @@ public:
 	///
 	InsetText(BufferParams const &);
 	///
-	explicit
-	InsetText(InsetText const &);
+	explicit InsetText(InsetText const &);
 	///
-	~InsetText();
-	///
-	Inset * clone() const;
+	InsetBase * clone() const;
 	///
 	InsetText & operator=(InsetText const & it);
 	/// empty inset to empty par, or just mark as erased
@@ -172,7 +169,7 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	std::vector<string> const getLabelList() const;
+	void getLabelList(std::vector<string> &) const;
 	///
 	bool nodraw() const;
 	///

@@ -193,12 +193,6 @@ void InsetText::init(InsetText const * ins)
 }
 
 
-InsetText::~InsetText()
-{
-	paragraphs.clear();
-}
-
-
 void InsetText::clear(bool just_mark_erased)
 {
 	if (just_mark_erased) {
@@ -224,7 +218,7 @@ void InsetText::clear(bool just_mark_erased)
 }
 
 
-Inset * InsetText::clone() const
+InsetBase * InsetText::clone() const
 {
 	return new InsetText(*this);
 }
@@ -1809,21 +1803,16 @@ bool InsetText::showInsetDialog(BufferView * bv) const
 }
 
 
-vector<string> const InsetText::getLabelList() const
+void InsetText::getLabelList(std::vector<string> & list) const
 {
-	vector<string> label_list;
-
 	ParagraphList::const_iterator pit = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();
 	for (; pit != pend; ++pit) {
 		InsetList::const_iterator beg = pit->insetlist.begin();
 		InsetList::const_iterator end = pit->insetlist.end();
-		for (; beg != end; ++beg) {
-			vector<string> const l = beg->inset->getLabelList();
-			label_list.insert(label_list.end(), l.begin(), l.end());
-		}
+		for (; beg != end; ++beg)
+			beg->inset->getLabelList(list);
 	}
-	return label_list;
 }
 
 

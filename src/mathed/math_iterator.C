@@ -17,22 +17,22 @@ MathIterator::MathIterator(MathInset * p)
 }
 
 
-MathInset const * MathIterator::par() const
+MathInset const * MathIterator::inset() const
 {
-	return back().par_;
+	return back().inset_;
 }
 
 
-MathInset * MathIterator::par()
+MathInset * MathIterator::inset()
 {
-	return back().par_;
+	return back().inset_;
 }
 
 
 MathArray const & MathIterator::cell() const
 {
-	MathCursorPos const & top = back();
-	return top.par_->cell(top.idx_);
+	CursorPos const & top = back();
+	return top.inset_->cell(top.idx_);
 }
 
 
@@ -40,7 +40,7 @@ MathArray const & MathIterator::cell() const
 void MathIterator::push(MathInset * p)
 {
 	//lyxerr << "push: " << p << endl;
-	push_back(MathCursorPos(p));
+	push_back(CursorPos(p));
 }
 
 
@@ -52,13 +52,13 @@ void MathIterator::pop()
 }
 
 
-MathCursorPos const & MathIterator::operator*() const
+CursorPos const & MathIterator::operator*() const
 {
 	return back();
 }
 
 
-MathCursorPos const & MathIterator::operator->() const
+CursorPos const & MathIterator::operator->() const
 {
 	return back();
 }
@@ -66,16 +66,16 @@ MathCursorPos const & MathIterator::operator->() const
 
 void MathIterator::goEnd()
 {
-	MathCursorPos & top = back();
-	top.idx_ = top.par_->nargs() - 1;
+	CursorPos & top = back();
+	top.idx_ = top.inset_->nargs() - 1;
 	top.pos_ = cell().size();
 }
 
 
 void MathIterator::operator++()
 {
-	MathCursorPos & top = back();
-	MathArray     & ar  = top.par_->cell(top.idx_);
+	CursorPos & top = back();
+	MathArray     & ar  = top.inset_->cell(top.idx_);
 
 	// move into the current inset if possible
 	// it is impossible for pos() == size()!
@@ -95,10 +95,10 @@ void MathIterator::operator++()
 	}
 
 	// otherwise try to move on one cell if possible
-	while (top.idx_ + 1 < top.par_->nargs()) {
+	while (top.idx_ + 1 < top.inset_->nargs()) {
 		// idx() == nargs() is _not_ valid!
 		++top.idx_;
-		if (top.par_->validCell(top.idx_)) {
+		if (top.inset_->validCell(top.idx_)) {
 			top.pos_ = 0;
 			return;
 		}

@@ -16,7 +16,7 @@ MathBinaryOpInset::MathBinaryOpInset(char op)
 {}
 
 
-MathInset * MathBinaryOpInset::clone() const
+InsetBase * MathBinaryOpInset::clone() const
 {
 	return new MathBinaryOpInset(*this);
 }

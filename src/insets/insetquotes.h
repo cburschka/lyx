@@ -68,7 +68,7 @@ public:
 	/// Create the right quote inset after character c
 	InsetQuotes(char c, BufferParams const & params);
 	///
-	Inset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

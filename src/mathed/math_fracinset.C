@@ -14,7 +14,7 @@ MathFracInset::MathFracInset(bool atop)
 {}
 
 
-MathInset * MathFracInset::clone() const
+InsetBase * MathFracInset::clone() const
 {
 	return new MathFracInset(*this);
 }

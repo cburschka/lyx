@@ -90,7 +90,8 @@ Paragraph::Paragraph(Paragraph const & lp)
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
-		it->inset = it->inset->clone();
+		// currently we hold Inset*, not InsetBase*
+		it->inset = static_cast<Inset*>(it->inset->clone());
 		// tell the new inset who is the boss now
 		it->inset->parOwner(this);
 	}
@@ -117,7 +118,7 @@ void Paragraph::operator=(Paragraph const & lp)
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
-		it->inset = it->inset->clone();
+		it->inset = static_cast<Inset*>(it->inset->clone());
 		// tell the new inset who is the boss now
 		it->inset->parOwner(this);
 	}
@@ -256,7 +257,7 @@ void Paragraph::copyIntoMinibuffer(Buffer const & buffer, pos_type pos) const
 	minibuffer_inset = 0;
 	if (minibuffer_char == Paragraph::META_INSET) {
 		if (getInset(pos)) {
-			minibuffer_inset = getInset(pos)->clone();
+			minibuffer_inset = static_cast<Inset *>(getInset(pos)->clone());
 		} else {
 			minibuffer_inset = 0;
 			minibuffer_char = ' ';

@@ -32,7 +32,7 @@ class MathUnknownInset;
 [Have a look at math_inset.h first]
 
 The MathCursor is different from the kind of cursor used in the Outer
-World. It contains a stack of MathCursorPos, each of which is made
+World. It contains a stack of CursorPos, each of which is made
 up of a inset pointer, an index and a position offset, marking a path from
 this formula's MathHullInset to the current position.
 
@@ -106,7 +106,7 @@ public:
 	/// in pixels from left of screen
 	int targetX() const;
 	/// current inset
-	MathInset * par() const;
+	MathInset * inset() const;
 	/// return the next enclosing grid inset and the cursor's index in it
 	MathGridInset * enclosingGrid(idx_type & idx) const;
 	/// go up to enclosing grid
@@ -208,14 +208,14 @@ public:
 	MathAtom & nextAtom();
 
 	/// returns the selection
-	void getSelection(MathCursorPos &, MathCursorPos &) const;
+	void getSelection(CursorPos &, CursorPos &) const;
 	/// returns the normalized anchor of the selection
-	MathCursorPos normalAnchor() const;
+	CursorPos normalAnchor() const;
 
 	/// reference to the last item of the path, i.e. "The Cursor"
-	MathCursorPos & cursor();
+	CursorPos & cursor();
 	/// reference to the last item of the path, i.e. "The Cursor"
-	MathCursorPos const & cursor() const;
+	CursorPos const & cursor() const;
 	/// how deep are we nested?
 	unsigned depth() const;
 

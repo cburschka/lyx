@@ -14,7 +14,7 @@ CommandInset::CommandInset(string const & name)
 }
 
 
-MathInset * CommandInset::clone() const
+InsetBase * CommandInset::clone() const
 {
 	return new CommandInset(*this);
 }

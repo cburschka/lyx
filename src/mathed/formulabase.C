@@ -122,7 +122,7 @@ void InsetFormulaBase::handleFont
 	// this whole function is a hack and won't work for incremental font
 	// changes...
 	bv->lockedInsetStoreUndo(Undo::EDIT);
-	if (mathcursor->par()->name() == font)
+	if (mathcursor->inset()->name() == font)
 		mathcursor->handleFont(font);
 	else {
 		mathcursor->handleNest(createMathInset(font));

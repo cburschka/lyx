@@ -27,7 +27,7 @@ RefInset::RefInset(string const & data)
 {}
 
 
-MathInset * RefInset::clone() const
+InsetBase * RefInset::clone() const
 {
 	return new RefInset(*this);
 }

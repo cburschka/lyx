@@ -1,4 +1,11 @@
 
+2003-06-16  André Pönitz  <poenitz@gmx.net>
+
+	* insetbase.h: new virtual base function clone()
+
+	* *inset*.[Ch]: IU of clone() and getLabelList (i.e. essentially
+	  Inset * clone()  ->  InsetBase * clone()
+
 2003-06-13  André Pönitz  <poenitz@gmx.net>
 
 	* insettabular.[Ch]: make tabular a proper member

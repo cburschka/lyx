@@ -24,7 +24,7 @@ public:
 	///
 	MathBigInset(string const & name, string const & delim);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

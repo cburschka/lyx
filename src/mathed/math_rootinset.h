@@ -29,7 +29,7 @@ public:
 	///
 	MathRootInset();
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	bool idxUpDown(idx_type & idx, pos_type & pos, bool up, int targetx) const;
 	///

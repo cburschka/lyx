@@ -25,7 +25,7 @@ public:
 	///
 	~InsetCitation();
 	///
-	Inset * clone() const {
+	InsetBase * clone() const {
 		return new InsetCitation(params());
 	}
 	///

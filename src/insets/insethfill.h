@@ -20,7 +20,7 @@ public:
 	///
 	InsetHFill();
 	///
-	virtual Inset * clone() const {
+	virtual InsetBase * clone() const {
 		return new InsetHFill;
 	}
 	///

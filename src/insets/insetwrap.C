@@ -167,7 +167,7 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 }
 
 
-Inset * InsetWrap::clone() const
+InsetBase * InsetWrap::clone() const
 {
 	return new InsetWrap(*this);
 }

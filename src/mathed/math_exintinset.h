@@ -14,7 +14,7 @@ public:
 	///
 	explicit MathExIntInset(string const & name_);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void symbol(string const &);
 	///

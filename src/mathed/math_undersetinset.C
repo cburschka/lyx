@@ -11,7 +11,7 @@ MathUndersetInset::MathUndersetInset()
 {}
 
 
-MathInset * MathUndersetInset::clone() const
+InsetBase * MathUndersetInset::clone() const
 {
 	return new MathUndersetInset(*this);
 }

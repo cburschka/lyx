@@ -42,7 +42,7 @@ public:
 
 	~InsetRef();
 	///
-	virtual Inset * clone() const {
+	virtual InsetBase * clone() const {
 		return new InsetRef(*this);
 	}
 	///

@@ -99,7 +99,7 @@ InsetExternal::InsetExternal(InsetExternal const & other)
 }
 
 
-Inset * InsetExternal::clone() const
+InsetBase * InsetExternal::clone() const
 {
 	InsetExternal * inset = new InsetExternal(*this);
 	return inset;

@@ -90,7 +90,7 @@ public:
 	/// Ensures that the dialog is closed.
 	~MathGridInset();
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo & mi) const;
 	///

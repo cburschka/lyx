@@ -12,7 +12,7 @@ MathUnknownInset::MathUnknownInset(string const & nm, bool final, bool black)
 {}
 
 
-MathInset * MathUnknownInset::clone() const
+InsetBase * MathUnknownInset::clone() const
 {
 	return new MathUnknownInset(*this);
 }

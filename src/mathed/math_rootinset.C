@@ -25,7 +25,7 @@ MathRootInset::MathRootInset()
 {}
 
 
-MathInset * MathRootInset::clone() const
+InsetBase * MathRootInset::clone() const
 {
 	return new MathRootInset(*this);
 }

@@ -54,7 +54,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	Inset * clone() const {
+	InsetBase * clone() const {
 		return new InsetError(contents);
 	}
 	///

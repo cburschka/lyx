@@ -77,7 +77,7 @@ public:
 	///
 	~InsetTabular();
 	///
-	Inset * clone() const;
+	InsetBase * clone() const;
 	///
 	void read(Buffer const *, LyXLex &);
 	///
@@ -164,7 +164,7 @@ public:
 	///
 	FuncStatus getStatus(string const & argument) const;
 	///
-	std::vector<string> const getLabelList() const;
+	void getLabelList(std::vector<string> &) const;
 	///
 	void nodraw(bool b) const {
 		UpdatableInset::nodraw(b);

@@ -22,7 +22,7 @@ public:
 	///
 	~InsetLabel();
 	///
-	virtual Inset * clone() const {
+	virtual InsetBase * clone() const {
 		return new InsetLabel(params());
 	}
 	///
@@ -34,7 +34,7 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::LABEL_CODE; }
 	///
-	std::vector<string> const getLabelList() const;
+	void getLabelList(std::vector<string> &) const;
 	///
 	int latex(Buffer const *, std::ostream &,
 		  LatexRunParams const &) const;

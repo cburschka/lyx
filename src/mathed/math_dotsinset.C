@@ -12,7 +12,7 @@ MathDotsInset::MathDotsInset(latexkeys const * key)
 {}
 
 
-MathInset * MathDotsInset::clone() const
+InsetBase * MathDotsInset::clone() const
 {
 	return new MathDotsInset(*this);
 }

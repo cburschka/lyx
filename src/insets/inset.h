@@ -15,7 +15,6 @@
 #ifndef INSET_H
 #define INSET_H
 
-#include "LString.h"
 #include "LColor.h"
 #include "insetbase.h"
 #include "support/types.h"
@@ -193,13 +192,6 @@ public:
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual Inset::Code lyxCode() const { return NO_CODE; }
-
-	virtual std::vector<string> const getLabelList() const {
-		return std::vector<string>();
-	}
-
-	///
-	virtual Inset * clone() const = 0;
 
 	/// returns true to override begin and end inset in file
 	virtual bool directWrite() const;

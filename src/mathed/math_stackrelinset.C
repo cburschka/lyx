@@ -11,7 +11,7 @@ MathStackrelInset::MathStackrelInset()
 {}
 
 
-MathInset * MathStackrelInset::clone() const
+InsetBase * MathStackrelInset::clone() const
 {
 	return new MathStackrelInset(*this);
 }

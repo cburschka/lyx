@@ -13,7 +13,7 @@ public:
 	///
 	explicit MathDiffInset();
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void addDer(MathArray const & der);
 	///

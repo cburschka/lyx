@@ -12,7 +12,7 @@ public:
 	///
 	explicit MathSplitInset(string const & name);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void write(WriteStream & os) const;
 	///

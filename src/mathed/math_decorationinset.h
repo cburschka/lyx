@@ -19,7 +19,7 @@ public:
 	///
 	explicit MathDecorationInset(latexkeys const * key);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

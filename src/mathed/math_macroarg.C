@@ -21,7 +21,7 @@ MathMacroArgument::MathMacroArgument(int n)
 }
 
 
-MathInset * MathMacroArgument::clone() const
+InsetBase * MathMacroArgument::clone() const
 {
 	return new MathMacroArgument(*this);
 }

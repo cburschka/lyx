@@ -13,7 +13,7 @@ MathParboxInset::MathParboxInset()
 }
 
 
-MathInset * MathParboxInset::clone() const
+InsetBase * MathParboxInset::clone() const
 {
 	return new MathParboxInset(*this);
 }

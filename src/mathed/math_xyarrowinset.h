@@ -15,7 +15,7 @@ public:
 	///
 	MathXYArrowInset();
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo & mi) const;
 	///

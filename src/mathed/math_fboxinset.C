@@ -14,7 +14,7 @@ MathFboxInset::MathFboxInset(latexkeys const * key)
 {}
 
 
-MathInset * MathFboxInset::clone() const
+InsetBase * MathFboxInset::clone() const
 {
 	return new MathFboxInset(*this);
 }

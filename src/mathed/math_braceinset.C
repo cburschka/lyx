@@ -21,7 +21,7 @@ MathBraceInset::MathBraceInset(MathArray const & ar)
 }
 
 
-MathInset * MathBraceInset::clone() const
+InsetBase * MathBraceInset::clone() const
 {
 	return new MathBraceInset(*this);
 }

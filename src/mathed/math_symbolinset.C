@@ -28,7 +28,7 @@ MathSymbolInset::MathSymbolInset(string const & name)
 
 
 
-MathInset * MathSymbolInset::clone() const
+InsetBase * MathSymbolInset::clone() const
 {
 	return new MathSymbolInset(*this);
 }

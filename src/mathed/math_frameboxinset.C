@@ -12,7 +12,7 @@ MathFrameboxInset::MathFrameboxInset()
 {}
 
 
-MathInset * MathFrameboxInset::clone() const
+InsetBase * MathFrameboxInset::clone() const
 {
 	return new MathFrameboxInset(*this);
 }

@@ -47,7 +47,7 @@ InsetOptArg::InsetOptArg(InsetOptArg const & in)
 }
 
 
-Inset * InsetOptArg::clone() const
+InsetBase * InsetOptArg::clone() const
 {
 	return new InsetOptArg(*this);
 }

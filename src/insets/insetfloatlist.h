@@ -26,7 +26,7 @@ public:
 	///
 	~InsetFloatList();
 	///
-	Inset * clone() const {
+	InsetBase * clone() const {
 		return new InsetFloatList(getCmdName());
 	}
 	///

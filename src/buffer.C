@@ -2012,24 +2012,23 @@ void Buffer::validate(LaTeXFeatures & features) const
 }
 
 
-vector<string> const Buffer::getLabelList() const
+void Buffer::getLabelList(std::vector<string> & list) const
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
 	if (!params.parentname.empty()
 	    && bufferlist.exists(params.parentname)) {
 		Buffer const * tmp = bufferlist.getBuffer(params.parentname);
-		if (tmp)
-			return tmp->getLabelList();
+		if (tmp) {
+			tmp->getLabelList(list);
+			return;
+		}
 	}
 
-	vector<string> label_list;
 	for (inset_iterator it = inset_const_iterator_begin();
 	     it != inset_const_iterator_end(); ++it) {
-		vector<string> const l = it->getLabelList();
-		label_list.insert(label_list.end(), l.begin(), l.end());
+		it->getLabelList(list);
 	}
-	return label_list;
 }
 
 

@@ -12,7 +12,7 @@ MathBoxInset::MathBoxInset(string const & name)
 {}
 
 
-MathInset * MathBoxInset::clone() const
+InsetBase * MathBoxInset::clone() const
 {
 	return new MathBoxInset(*this);
 }

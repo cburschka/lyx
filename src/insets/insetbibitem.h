@@ -29,7 +29,7 @@ public:
 	///
 	~InsetBibitem();
 	///
-	Inset * clone() const;
+	InsetBase * clone() const;
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	/** Currently \bibitem is used as a LyX2.x command,

@@ -19,7 +19,7 @@ MathFontOldInset::MathFontOldInset(latexkeys const * key)
 }
 
 
-MathInset * MathFontOldInset::clone() const
+InsetBase * MathFontOldInset::clone() const
 {
 	return new MathFontOldInset(*this);
 }

@@ -16,7 +16,7 @@ public:
 	///
 	explicit MathCharInset(char c);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

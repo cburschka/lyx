@@ -6,7 +6,7 @@
 #include "support/LOstream.h"
 
 
-MathInset * MathErtInset::clone() const
+InsetBase * MathErtInset::clone() const
 {
 	return new MathErtInset(*this);
 }

@@ -15,7 +15,7 @@ public:
 	///
 	explicit MathInferInset();
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

@@ -117,7 +117,7 @@ public:
 	///
 	void resizeLyXText(BufferView *, bool force = false) const;
 	///
-	std::vector<string> const getLabelList() const;
+	void getLabelList(std::vector<string> &) const;
 	///
 	bool nodraw() const;
 	///

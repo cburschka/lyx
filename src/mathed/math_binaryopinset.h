@@ -16,7 +16,7 @@ public:
 	///
 	explicit MathBinaryOpInset(char op);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///

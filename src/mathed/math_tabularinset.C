@@ -33,7 +33,7 @@ MathTabularInset::MathTabularInset(string const & name, char valign,
 {}
 
 
-MathInset * MathTabularInset::clone() const
+InsetBase * MathTabularInset::clone() const
 {
 	return new MathTabularInset(*this);
 }

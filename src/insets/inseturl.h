@@ -27,7 +27,7 @@ public:
 	///
 	~InsetUrl();
 	///
-	virtual Inset * clone() const {
+	virtual InsetBase * clone() const {
 		return new InsetUrl(params());
 	}
 	///

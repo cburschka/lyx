@@ -11,7 +11,7 @@ MathEnvInset::MathEnvInset(string const & name)
 {}
 
 
-MathInset * MathEnvInset::clone() const
+InsetBase * MathEnvInset::clone() const
 {
 	return new MathEnvInset(*this);
 }

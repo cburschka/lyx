@@ -49,7 +49,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	Inset * clone() const;
+	InsetBase * clone() const;
 	///
 	Inset::Code lyxCode() const { return Inset::WRAP_CODE; }
 	///

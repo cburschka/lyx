@@ -11,7 +11,7 @@ MathSqrtInset::MathSqrtInset()
 {}
 
 
-MathInset * MathSqrtInset::clone() const
+InsetBase * MathSqrtInset::clone() const
 {
 	return new MathSqrtInset(*this);
 }

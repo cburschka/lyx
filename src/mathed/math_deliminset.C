@@ -52,7 +52,7 @@ MathDelimInset::MathDelimInset
 }
 
 
-MathInset * MathDelimInset::clone() const
+InsetBase * MathDelimInset::clone() const
 {
 	return new MathDelimInset(*this);
 }

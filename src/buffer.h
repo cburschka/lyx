@@ -256,7 +256,7 @@ public:
 	/// return all bibkeys from buffer and its childs
 	void fillWithBibKeys(std::vector<std::pair<string, string> > & keys) const;
 	///
-	std::vector<string> const getLabelList() const;
+	void getLabelList(std::vector<string> &) const;
 
 	/** This will clearly have to change later. Later we can have more
 	    than one user per buffer. */

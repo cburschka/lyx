@@ -13,7 +13,7 @@ public:
 	///
 	MathLimInset(MathArray const & f, MathArray const & x, MathArray const & x0);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

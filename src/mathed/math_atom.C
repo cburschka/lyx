@@ -14,9 +14,9 @@
 
 #include <config.h>
 
-
 #include "math_atom.h"
 #include "math_inset.h"
+#include "insets/insetbase.h"
 
 #include <utility>
 
@@ -26,13 +26,13 @@ MathAtom::MathAtom()
 {}
 
 
-MathAtom::MathAtom(MathInset * p)
-	: nucleus_(p)
+MathAtom::MathAtom(InsetBase * p)
+	: nucleus_(static_cast<MathInset *>(p))
 {}
 
 
 MathAtom::MathAtom(MathAtom const & at)
-	: nucleus_(at.nucleus_ ? at.nucleus_->clone() : 0)
+	: nucleus_(at.nucleus_ ? static_cast<MathInset *>(at.nucleus_->clone()) : 0)
 {}
 
 

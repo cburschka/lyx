@@ -14,7 +14,7 @@ public:
 	///
 	MathMatrixInset(string const & str);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	/// identifies MatrixInsets
 	MathMatrixInset const * asMatrixInset() const { return this; }
 

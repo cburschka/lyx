@@ -238,7 +238,7 @@ int InsetSpecialChar::docbook(Buffer const *, ostream & os, bool) const
 }
 
 
-Inset * InsetSpecialChar::clone() const
+InsetBase * InsetSpecialChar::clone() const
 {
 	return new InsetSpecialChar(kind_);
 }

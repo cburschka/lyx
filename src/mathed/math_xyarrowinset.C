@@ -18,7 +18,7 @@ MathXYArrowInset::MathXYArrowInset()
 {}
 
 
-MathInset * MathXYArrowInset::clone() const
+InsetBase * MathXYArrowInset::clone() const
 {
 	return new MathXYArrowInset(*this);
 }

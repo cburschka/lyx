@@ -12,6 +12,8 @@
 #ifndef INSETBASE_H
 #define INSETBASE_H
 
+#include "LString.h"
+
 #include <vector>
 
 class BufferView;
@@ -64,6 +66,11 @@ public:
 	/// type for column numbers
 	typedef size_t  col_type;
 
+	/// virtual base class destructor
+	virtual ~InsetBase() {}
+	/// replicate ourselves
+	virtual InsetBase * clone() const = 0;
+
 	// the real dispatcher
 	virtual dispatch_result dispatch
 		(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
@@ -75,15 +82,14 @@ public:
 	/// draw inset and update (xo, yo)-cache
 	virtual void draw(PainterInfo & pi, int x, int y) const = 0;
 
-	///
-	virtual ~InsetBase() {}
-
 	/// Methods to cache and retrieve a cached BufferView.
 	virtual void cache(BufferView *) const {}
 	///
 	virtual BufferView * view() const { return 0; }
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}
+	/// fill in all labels in the inset
+	virtual void getLabelList(std::vector<string> &) const {}
 };
 
 #endif

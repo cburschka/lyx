@@ -22,7 +22,7 @@ MathKernInset::MathKernInset(string const & s)
 {}
 
 
-MathInset * MathKernInset::clone() const
+InsetBase * MathKernInset::clone() const
 {
 	return new MathKernInset(*this);
 }

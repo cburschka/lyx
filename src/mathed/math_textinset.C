@@ -9,7 +9,7 @@ MathTextInset::MathTextInset()
 {}
 
 
-MathInset * MathTextInset::clone() const
+InsetBase * MathTextInset::clone() const
 {
 	return new MathTextInset(*this);
 }

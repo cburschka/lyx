@@ -57,7 +57,7 @@ MathArrayInset::MathArrayInset(string const & name, string const & str)
 }
 
 
-MathInset * MathArrayInset::clone() const
+InsetBase * MathArrayInset::clone() const
 {
 	return new MathArrayInset(*this);
 }

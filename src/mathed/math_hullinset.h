@@ -20,7 +20,7 @@ public:
 	///
 	explicit MathHullInset(string const & type);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	mode_type currentMode() const;
 	///

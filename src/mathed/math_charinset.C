@@ -49,7 +49,7 @@ MathCharInset::MathCharInset(char c)
 
 
 
-MathInset * MathCharInset::clone() const
+InsetBase * MathCharInset::clone() const
 {
 	return new MathCharInset(*this);
 }

@@ -11,7 +11,7 @@ MathInferInset::MathInferInset()
 {}
 
 
-MathInset * MathInferInset::clone() const
+InsetBase * MathInferInset::clone() const
 {
 	return new MathInferInset(*this);
 }

@@ -39,14 +39,13 @@ InsetLabel::InsetLabel(InsetCommandParams const & p)
 
 InsetLabel::~InsetLabel()
 {
-	InsetCommandMailer mailer("label", *this);
-	mailer.hideDialog();
+	InsetCommandMailer("label", *this).hideDialog();
 }
 
 
-vector<string> const InsetLabel::getLabelList() const
+void InsetLabel::getLabelList(std::vector<string> & list) const
 {
-	return vector<string>(1, getContents());
+	list.push_back(getContents());
 }
 
 

@@ -12,7 +12,7 @@ MathBigInset::MathBigInset(string const & name, string const & delim)
 {}
 
 
-MathInset * MathBigInset::clone() const
+InsetBase * MathBigInset::clone() const
 {
 	return new MathBigInset(*this);
 }

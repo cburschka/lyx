@@ -74,11 +74,11 @@ public:
 	void set(Params const & params);
 
 	///
-	virtual Inset * clone() const;
+	virtual InsetBase * clone() const;
 	///
 	Inset::Code lyxCode() const { return Inset::INCLUDE_CODE; }
 	/// This returns the list of labels on the child buffer
-	std::vector<string> const getLabelList() const;
+	void getLabelList(std::vector<string> &) const;
 	/// This returns the list of bibkeys on the child buffer
 	void fillWithBibKeys(std::vector<std::pair<string,string> > & keys) const;
 	///

@@ -18,7 +18,7 @@ MathAMSArrayInset::MathAMSArrayInset(string const & name)
 {}
 
 
-MathInset * MathAMSArrayInset::clone() const
+InsetBase * MathAMSArrayInset::clone() const
 {
 	return new MathAMSArrayInset(*this);
 }

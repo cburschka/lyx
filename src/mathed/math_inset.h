@@ -87,8 +87,6 @@ public:
 	/// our members behave nicely...
 	MathInset() {}
 
-	/// reproduce itself
-	virtual MathInset * clone() const = 0;
 	/// substitutes macro arguments if necessary
 	virtual void substitute(MathMacro const & macro);
 	/// draw selection between two positions
@@ -255,9 +253,6 @@ public:
 	/// dump content to stderr for debugging
 	virtual void dump() const;
 
-	/// LyXInset stuff
-	/// write labels into a list
-	virtual void getLabelList(std::vector<string> &) const {}
 	/// LyXInset stuff
 	virtual bool numberedType() const { return false; }
 	/// hull type

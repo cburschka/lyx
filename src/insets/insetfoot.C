@@ -46,7 +46,7 @@ InsetFoot::InsetFoot(InsetFoot const & in)
 }
 
 
-Inset * InsetFoot::clone() const
+InsetBase * InsetFoot::clone() const
 {
 	return new InsetFoot(*this);
 }

@@ -196,7 +196,7 @@ InsetTabular::~InsetTabular()
 }
 
 
-Inset * InsetTabular::clone() const
+InsetBase * InsetTabular::clone() const
 {
 	return new InsetTabular(*this);
 }
@@ -2351,9 +2351,9 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 }
 
 
-vector<string> const InsetTabular::getLabelList() const
+void InsetTabular::getLabelList(std::vector<string> & list) const
 {
-	return tabular.getLabelList();
+	tabular.getLabelList(list);
 }
 
 

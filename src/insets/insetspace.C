@@ -250,7 +250,7 @@ int InsetSpace::docbook(Buffer const *, ostream & os, bool) const
 }
 
 
-Inset * InsetSpace::clone() const
+InsetBase * InsetSpace::clone() const
 {
 	return new InsetSpace(kind_);
 }

@@ -19,7 +19,7 @@ public:
 	///
 	MathFboxInset(latexkeys const * key);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	mode_type currentMode() const;
 	///

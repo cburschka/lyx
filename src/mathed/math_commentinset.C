@@ -21,7 +21,7 @@ MathCommentInset::MathCommentInset(string const & str)
 }
 
 
-MathInset * MathCommentInset::clone() const
+InsetBase * MathCommentInset::clone() const
 {
 	return new MathCommentInset(*this);
 }

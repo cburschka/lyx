@@ -20,7 +20,7 @@ public:
 
 	InsetNewline() {}
 
-	virtual Inset * clone() const {
+	virtual InsetBase * clone() const {
 		return new InsetNewline;
 	}
 

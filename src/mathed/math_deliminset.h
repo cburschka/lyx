@@ -19,7 +19,7 @@ public:
 	///
 	MathDelimInset(string const & left, string const & right, MathArray const &);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	MathDelimInset * asDelimInset() { return this; }
 	///

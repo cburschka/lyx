@@ -40,7 +40,7 @@ public:
 	///
 	InsetERT(InsetERT const &);
 	///
-	Inset * clone() const;
+	InsetBase * clone() const;
 	///
 	InsetERT(BufferParams const &,
 		 Language const *, string const & contents, bool collapsed);

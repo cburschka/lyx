@@ -17,7 +17,7 @@ public:
 	///
 	explicit MathXArrowInset(string const & name);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

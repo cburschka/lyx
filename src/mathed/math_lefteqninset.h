@@ -12,7 +12,7 @@ public:
 	///
 	MathLefteqnInset();
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	string name() const;
 	///

@@ -160,7 +160,7 @@ MathGridInset::~MathGridInset()
 }
 
 
-MathInset * MathGridInset::clone() const
+InsetBase * MathGridInset::clone() const
 {
 	return new MathGridInset(*this);
 }

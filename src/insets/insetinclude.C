@@ -203,7 +203,7 @@ void InsetInclude::set(Params const & p)
 }
 
 
-Inset * InsetInclude::clone() const
+InsetBase * InsetInclude::clone() const
 {
 	//Params p(params_);
 	//p.masterFilename_ = buffer.fileName();
@@ -489,18 +489,14 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 }
 
 
-vector<string> const InsetInclude::getLabelList() const
+void InsetInclude::getLabelList(std::vector<string> & list) const
 {
-	vector<string> l;
-
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 		tmp->setParentName("");
-		l = tmp->getLabelList();
+		tmp->getLabelList(list);
 		tmp->setParentName(getMasterFilename());
 	}
-
-	return l;
 }
 
 

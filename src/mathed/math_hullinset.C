@@ -104,7 +104,7 @@ MathHullInset::MathHullInset(string const & type)
 }
 
 
-MathInset * MathHullInset::clone() const
+InsetBase * MathHullInset::clone() const
 {
 	return new MathHullInset(*this);
 }

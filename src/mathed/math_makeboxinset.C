@@ -17,7 +17,7 @@ MathMakeboxInset::MathMakeboxInset()
 {}
 
 
-MathInset * MathMakeboxInset::clone() const
+InsetBase * MathMakeboxInset::clone() const
 {
 	return new MathMakeboxInset(*this);
 }

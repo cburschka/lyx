@@ -37,7 +37,7 @@ MathMacroTemplate::MathMacroTemplate(std::istream & is)
 }
 
 
-MathInset * MathMacroTemplate::clone() const
+InsetBase * MathMacroTemplate::clone() const
 {
 	//lyxerr << "cloning MacroTemplate!\n";
 	return new MathMacroTemplate(*this);

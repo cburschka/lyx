@@ -13,7 +13,7 @@ public:
 	///
 	explicit MathBinomInset(bool choose = false);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void write(WriteStream & os) const;
 	///

@@ -27,7 +27,7 @@ public:
 
 	InsetOptArg(InsetOptArg const &);
 	/// make a duplicate of this inset
-	Inset * clone() const;
+	InsetBase * clone() const;
 	/// this inset is editable
 	EDITABLE editable() const { return IS_EDITABLE; }
 	/// code of the inset

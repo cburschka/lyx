@@ -12,7 +12,7 @@ public:
 	///
 	explicit RefInset(string const & data);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	//void write(WriteStream & os) const;
 	///

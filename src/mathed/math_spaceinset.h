@@ -13,7 +13,7 @@ public:
 	///
 	explicit MathSpaceInset(string const & name);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	MathSpaceInset const * asSpaceInset() const { return this; }
 	///

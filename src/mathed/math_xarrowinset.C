@@ -12,7 +12,7 @@ MathXArrowInset::MathXArrowInset(string const & name)
 {}
 
 
-MathInset * MathXArrowInset::clone() const
+InsetBase * MathXArrowInset::clone() const
 {
 	return new MathXArrowInset(*this);
 }

@@ -7,67 +7,67 @@
 #include "support/LOstream.h"
 
 
-MathCursorPos::MathCursorPos()
-	: par_(0), idx_(0), pos_(0)
+CursorPos::CursorPos()
+	: inset_(0), idx_(0), pos_(0)
 {}
 
 
-MathCursorPos::MathCursorPos(MathInset * p)
-	: par_(p), idx_(0), pos_(0)
+CursorPos::CursorPos(MathInset * p)
+	: inset_(p), idx_(0), pos_(0)
 {
-	lyx::Assert(par_);
+	lyx::Assert(inset_);
 }
 
 
 
-MathArray & MathCursorPos::cell(MathArray::idx_type idx) const
+MathArray & CursorPos::cell(MathArray::idx_type idx) const
 {
-	lyx::Assert(par_);
-	return par_->cell(idx);
+	lyx::Assert(inset_);
+	return inset_->cell(idx);
 }
 
 
-MathArray & MathCursorPos::cell() const
+MathArray & CursorPos::cell() const
 {
-	lyx::Assert(par_);
-	return par_->cell(idx_);
+	lyx::Assert(inset_);
+	return inset_->cell(idx_);
 }
 
 
-void MathCursorPos::getPos(int & x, int & y) const
+void CursorPos::getPos(int & x, int & y) const
 {
-	par_->getPos(idx_, pos_, x, y);
+	inset_->getPos(idx_, pos_, x, y);
 }
 
 
-void MathCursorPos::setPos(MathArray::pos_type pos)
+void CursorPos::setPos(MathArray::pos_type pos)
 {
 	pos_ = pos;
 }
 
 
-std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
+std::ostream & operator<<(std::ostream & os, CursorPos const & p)
 {
-	os << "(par: " << p.par_ << " idx: " << p.idx_ << " pos: " << p.pos_ << ')';
+	os << "(par: " << p.inset_ << " idx: " << p.idx_ << " pos: " << p.pos_ << ')';
 	return os;
 }
 
 
-bool operator==(MathCursorPos const & p, MathCursorPos const & q)
+bool operator==(CursorPos const & p, CursorPos const & q)
 {
-	return p.par_ == q.par_ && p.idx_ == q.idx_ && p.pos_ == q.pos_;
+	return p.inset_ == q.inset_ && p.idx_ == q.idx_ && p.pos_ == q.pos_;
 }
 
 
-bool operator!=(MathCursorPos const & p, MathCursorPos const & q)
+bool operator!=(CursorPos const & p, CursorPos const & q)
 {
-	return p.par_ != q.par_ || p.idx_ != q.idx_ || p.pos_ != q.pos_;
+	return p.inset_ != q.inset_ || p.idx_ != q.idx_ || p.pos_ != q.pos_;
 }
 
 
-bool operator<(MathCursorPos const & p, MathCursorPos const & q)
+bool operator<(CursorPos const & p, CursorPos const & q)
 {
-	if (p.par_ != q.par_) {
+	if (p.inset_ != q.inset_) {
 		lyxerr << "can't compare cursor and anchor in different insets\n";
 		return true;
 	}

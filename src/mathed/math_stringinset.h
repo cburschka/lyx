@@ -17,7 +17,7 @@ public:
 	///
 	explicit MathStringInset(string const & s);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

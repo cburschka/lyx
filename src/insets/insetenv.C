@@ -40,7 +40,7 @@ InsetEnvironment::InsetEnvironment(InsetEnvironment const & in)
 {}
 
 
-Inset * InsetEnvironment::clone() const
+InsetBase * InsetEnvironment::clone() const
 {
 	return new InsetEnvironment(*this);
 }

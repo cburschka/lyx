@@ -32,7 +32,7 @@ MathSpaceInset::MathSpaceInset(string const & name)
 }
 
 
-MathInset * MathSpaceInset::clone() const
+InsetBase * MathSpaceInset::clone() const
 {
 	return new MathSpaceInset(*this);
 }

@@ -12,7 +12,7 @@ public:
 	///
 	MathSubstackInset();
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

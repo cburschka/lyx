@@ -24,7 +24,7 @@ public:
 	///
 	~InsetTOC();
 	///
-	virtual Inset * clone() const {
+	virtual InsetBase * clone() const {
 		return new InsetTOC(params());
 	}
 	///

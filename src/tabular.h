@@ -382,7 +382,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	std::vector<string> const getLabelList() const;
+	void getLabelList(std::vector<string> &) const;
 	///
 	/// recalculate the widths/heights only!
 	void reinit();

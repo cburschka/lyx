@@ -21,7 +21,7 @@ MathExIntInset::MathExIntInset(string const & name)
 // 3 - upper
 
 
-MathInset * MathExIntInset::clone() const
+InsetBase * MathExIntInset::clone() const
 {
 	return new MathExIntInset(*this);
 }

@@ -15,7 +15,7 @@ public:
 	///
 	explicit MathMacroArgument(int);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	bool isActive() const { return false; }
 	///

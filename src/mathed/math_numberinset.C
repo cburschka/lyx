@@ -13,7 +13,7 @@ MathNumberInset::MathNumberInset(string const & s)
 {}
 
 
-MathInset * MathNumberInset::clone() const
+InsetBase * MathNumberInset::clone() const
 {
 	return new MathNumberInset(*this);
 }

@@ -43,7 +43,7 @@ InsetBibitem::~InsetBibitem()
 }
 
 
-Inset * InsetBibitem::clone() const
+InsetBase * InsetBibitem::clone() const
 {
 	InsetBibitem * b = new InsetBibitem(params());
 	b->setCounter(counter);

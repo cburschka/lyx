@@ -15,7 +15,7 @@ public:
 	///
 	explicit MathBoxInset(string const & name);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///

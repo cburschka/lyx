@@ -18,7 +18,7 @@ public:
 	///
 	explicit MathFontInset(latexkeys const * key);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	MathFontInset * asFontInset() { return this; }
 	///

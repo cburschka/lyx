@@ -43,7 +43,7 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void dump() const;
 

@@ -16,7 +16,7 @@ MathLimInset::MathLimInset
 }
 
 
-MathInset * MathLimInset::clone() const
+InsetBase * MathLimInset::clone() const
 {
 	return new MathLimInset(*this);
 }

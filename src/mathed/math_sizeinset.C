@@ -15,7 +15,7 @@ MathSizeInset::MathSizeInset(latexkeys const * l)
 {}
 
 
-MathInset * MathSizeInset::clone() const
+InsetBase * MathSizeInset::clone() const
 {
 	return new MathSizeInset(*this);
 }

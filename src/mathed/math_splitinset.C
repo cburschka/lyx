@@ -11,7 +11,7 @@ MathSplitInset::MathSplitInset(string const & name)
 }
 
 
-MathInset * MathSplitInset::clone() const
+InsetBase * MathSplitInset::clone() const
 {
 	return new MathSplitInset(*this);
 }

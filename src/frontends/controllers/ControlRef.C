@@ -34,7 +34,9 @@ vector<string> const ControlRef::getLabelList(string const & name) const
 	Buffer const * buf = bufferlist.getBuffer(MakeAbsPath(name));
 	if (!buf)
 		buf = kernel().buffer();
-	return buf->getLabelList();
+	vector<string> list;
+	buf->getLabelList(list);
+	return list;
 }
 
 

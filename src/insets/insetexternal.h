@@ -83,7 +83,7 @@ public:
 	virtual Inset::Code lyxCode() const { return EXTERNAL_CODE; }
 
 	///
-	virtual Inset * clone() const;
+	virtual InsetBase * clone() const;
 
 	/// Set the inset parameters.
 	virtual void setParams(Params const &, string const & filepath);

@@ -7,12 +7,12 @@
 
 
 /// Description of a position
-class MathCursorPos {
+class CursorPos {
 public:
 	///
-	MathCursorPos();
+	CursorPos();
 	///
-	explicit MathCursorPos(MathInset *);
+	explicit CursorPos(MathInset *);
 
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
@@ -25,7 +25,7 @@ public:
 
 public:
 	/// pointer to an inset
-	MathInset * par_;
+	MathInset * inset_;
 	/// cell index of a position in this inset
 	MathArray::idx_type idx_;
 	/// position in this cell
@@ -33,12 +33,12 @@ public:
 };
 
 /// test for equality
-bool operator==(MathCursorPos const &, MathCursorPos const &);
+bool operator==(CursorPos const &, CursorPos const &);
 /// test for inequality
-bool operator!=(MathCursorPos const &, MathCursorPos const &);
+bool operator!=(CursorPos const &, CursorPos const &);
 /// test for order
-bool operator<(MathCursorPos const &, MathCursorPos const &);
+bool operator<(CursorPos const &, CursorPos const &);
 /// output
-std::ostream & operator<<(std::ostream &, MathCursorPos const &);
+std::ostream & operator<<(std::ostream &, CursorPos const &);
 
 #endif

@@ -27,7 +27,7 @@ public:
 	///
 	~InsetBibtex();
 	///
-	Inset * clone() const {
+	InsetBase * clone() const {
 		return new InsetBibtex(params());
 	}
 	/// small wrapper for the time being

@@ -20,7 +20,7 @@ public:
 	/// create inset with single script and given nucleus
 	MathScriptInset(MathAtom const & at, bool up);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

@@ -11,7 +11,7 @@ MathSubstackInset::MathSubstackInset()
 {}
 
 
-MathInset * MathSubstackInset::clone() const
+InsetBase * MathSubstackInset::clone() const
 {
 	return new MathSubstackInset(*this);
 }

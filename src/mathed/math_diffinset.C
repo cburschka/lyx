@@ -11,7 +11,7 @@ MathDiffInset::MathDiffInset()
 {}
 
 
-MathInset * MathDiffInset::clone() const
+InsetBase * MathDiffInset::clone() const
 {
 	return new MathDiffInset(*this);
 }

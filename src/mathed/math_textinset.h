@@ -11,7 +11,7 @@ public:
 	///
 	MathTextInset();
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	/// get cursor position
 	void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
 	/// this stores metrics information in cache_

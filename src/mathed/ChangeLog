@@ -1,24 +1,10 @@
-2003-06-11  Angus Leeming  <leeming@lyx.org>
 
-	* button_inset.[Ch]: removed.
-	* Makefile.am: remove button_inset.[Ch].
+2003-06-16  André Pönitz  <poenitz@gmx.net>
 
-	* command_inset.[Ch]: no longer derived from ButtonInset.
-	Instead has a ButtonRenderer member variable.
+	* math_*inset.[Ch]: IU of clone()
 
-	* ref_inset.[Ch]: associated changes.
-	
-2003-06-03  John Levon  <levon@movementarian.org>
-
-	* formula.[Ch]:
-	* formulabase.h:
-	* formulamacro.[Ch]: clone() doesn't take a Buffer anymore
-
-2003-06-02  André Pönitz  <poenitz@gmx.net>
-
-	* math_*.[Ch]: finish unified two-stage drawing
-
-	* math_inset.h: move validate to insetbase.h
+	* math_cursorpos.[Ch]:
+	* math_cursor.[Ch]: rename MathCursorPos -> CursorPos, par_ -> inset_
 
 2003-05-28  André Pönitz  <poenitz@gmx.net>
 

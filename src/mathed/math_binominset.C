@@ -14,7 +14,7 @@ MathBinomInset::MathBinomInset(bool choose)
 {}
 
 
-MathInset * MathBinomInset::clone() const
+InsetBase * MathBinomInset::clone() const
 {
 	return new MathBinomInset(*this);
 }

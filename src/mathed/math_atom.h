@@ -35,6 +35,7 @@ Andre'
 
 */
 
+class InsetBase;
 class MathInset;
 
 class MathAtom {
@@ -43,7 +44,7 @@ public:
 	// std::containers
 	MathAtom();
 	/// the "real constructor"
-	explicit MathAtom(MathInset * p);
+	explicit MathAtom(InsetBase * p);
 	/// copy constructor, invokes nucleus_->clone()
 	MathAtom(MathAtom const &);
 	/// we really need to clean up

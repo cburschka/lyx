@@ -19,7 +19,7 @@ MathExFuncInset::MathExFuncInset(string const & name, MathArray const & ar)
 }
 
 
-MathInset * MathExFuncInset::clone() const
+InsetBase * MathExFuncInset::clone() const
 {
 	return new MathExFuncInset(*this);
 }

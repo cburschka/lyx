@@ -9,7 +9,7 @@ MathLefteqnInset::MathLefteqnInset()
 {}
 
 
-MathInset * MathLefteqnInset::clone() const
+InsetBase * MathLefteqnInset::clone() const
 {
 	return new MathLefteqnInset(*this);
 }

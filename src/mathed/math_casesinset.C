@@ -14,7 +14,7 @@ MathCasesInset::MathCasesInset(row_type n)
 {}
 
 
-MathInset * MathCasesInset::clone() const
+InsetBase * MathCasesInset::clone() const
 {
 	return new MathCasesInset(*this);
 }

@@ -151,7 +151,7 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 }
 
 
-Inset * InsetGraphics::clone() const
+InsetBase * InsetGraphics::clone() const
 {
 	return new InsetGraphics(*this);
 }

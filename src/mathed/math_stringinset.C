@@ -13,7 +13,7 @@ MathStringInset::MathStringInset(string const & s)
 {}
 
 
-MathInset * MathStringInset::clone() const
+InsetBase * MathStringInset::clone() const
 {
 	return new MathStringInset(*this);
 }

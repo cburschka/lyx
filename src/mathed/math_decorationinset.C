@@ -14,7 +14,7 @@ MathDecorationInset::MathDecorationInset(latexkeys const * key)
 {}
 
 
-MathInset * MathDecorationInset::clone() const
+InsetBase * MathDecorationInset::clone() const
 {
 	return new MathDecorationInset(*this);
 }

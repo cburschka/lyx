@@ -13,7 +13,7 @@ public:
 	///
 	MathParboxInset * asParboxInset() { return this; }
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///

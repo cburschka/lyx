@@ -70,7 +70,7 @@ InsetERT::InsetERT(InsetERT const & in)
 }
 
 
-Inset * InsetERT::clone() const
+InsetBase * InsetERT::clone() const
 {
 	return new InsetERT(*this);
 }

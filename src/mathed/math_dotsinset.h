@@ -13,7 +13,7 @@ public:
 	///
 	explicit MathDotsInset(latexkeys const * l);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

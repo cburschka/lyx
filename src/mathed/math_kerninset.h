@@ -20,7 +20,7 @@ public:
 	///
 	explicit MathKernInset(string const & wid);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

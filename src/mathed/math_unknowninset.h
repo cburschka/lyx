@@ -13,7 +13,7 @@ public:
 	explicit MathUnknownInset(string const & name,
 		bool final = true, bool black = false);
 	///
-	MathInset * clone() const;
+	InsetBase * clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

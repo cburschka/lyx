@@ -2,16 +2,17 @@
 #ifndef MATH_ITERATOR_H
 #define MATH_ITERATOR_H
 
-
 #include "math_pos.h"
+
 #include <vector>
+
 
 // this is used for traversing math insets
 
-class MathIterator : private std::vector<MathCursorPos> {
+class MathIterator : private std::vector<CursorPos> {
 public:
 	// re-use inherited stuff
-	typedef std::vector<MathCursorPos> base_type;
+	typedef std::vector<CursorPos> base_type;
 	using base_type::clear;
 	using base_type::size;
 	using base_type::push_back;
@@ -32,17 +33,17 @@ public:
 	/// start with given inset
 	explicit MathIterator(MathInset * p);
 	///
-	MathCursorPos const & operator*() const;
+	CursorPos const & operator*() const;
 	///
-	MathCursorPos const & operator->() const;
+	CursorPos const & operator->() const;
 	/// move on one step
 	void operator++();
 	/// move on several steps
 	void jump(difference_type);
 	/// read access to top most inset
-	MathInset const * par() const;
+	MathInset const * inset() const;
 	/// read access to top most inset
-	MathInset * par();
+	MathInset * inset();
 	/// helper for iend
 	void goEnd();
 	/// read access to top most item

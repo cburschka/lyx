@@ -37,7 +37,7 @@ MathScriptInset::MathScriptInset(MathAtom const & at, bool up)
 
 
 
-MathInset * MathScriptInset::clone() const
+InsetBase * MathScriptInset::clone() const
 {
 	return new MathScriptInset(*this);
 }
