@@ -255,9 +255,6 @@ SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi windvi yap)
 # Search something to preview html
 SEARCH_PROG([for a HTML previewer],HTML_VIEWER, "mozilla file://\$\$p\$\$i" netscape)
 
-# Search for a program to preview latex code
-SEARCH_PROG([for a LaTeX preview],LATEX_VIEWER, "xterm -e less")
-
 # Search for a program to convert ps to pdf
 SEARCH_PROG([for a PS to PDF converter],ps_to_pdf_command,ps2pdf)
 test $ps_to_pdf_command = "ps2pdf" && ps_to_pdf_command="ps2pdf -dCompatibilityLevel=1.3 \$\$i"
@@ -487,7 +484,6 @@ cat >$outfile <<EOF
 \\viewer pdf "$PDF_VIEWER"
 \\viewer ps "$GHOSTVIEW -swap"
 \\viewer eps "$GHOSTVIEW"
-\\viewer latex "$LATEX_VIEWER"
 
 $rc_entries
 \\font_encoding "$chk_fontenc"
