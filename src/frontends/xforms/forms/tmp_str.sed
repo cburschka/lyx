@@ -1,4 +1,4 @@
-# file c_str.sed
+# file tmp_str.sed
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
@@ -7,7 +7,7 @@
 # Full author contact details are available in file CREDITS
 
 # This sed script is run on the .C file after the main fdfixc.sed has done
-# its stuff. It ensures that any c_str variables inserted by fdfixc.sed
+# its stuff. It ensures that any tmp_str variables inserted by fdfixc.sed
 # are declared at the top of the appropriate function.
 #
 # We use a two-pass algorithm like this because a single pass results in
@@ -29,12 +29,12 @@ H; d
 }
 
 # If it is the last line, paste the contents of the hold space above it,
-# seach for the string "c_str" and, if found, add its declaration to the top
+# seach for the string "tmp_str" and, if found, add its declaration to the top
 # of the function.
 /^}$/ {
 x; G
 
-/c_str/s/\(	FL_OBJECT \*\)/	char const * c_str;\
+/tmp_str/s/\(	FL_OBJECT \*\)/	string tmp_str;\
 \1/
 }
 

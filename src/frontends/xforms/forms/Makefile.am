@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 MAINTAINERCLEANFILES += *.C *.h *.c
 
-EXTRA_DIST = fdfixc.sed fdfixh.sed fdfix.sh README $(SRCS)
+EXTRA_DIST = fdfixc.sed fdfixh.sed fdfix.sh tmp_str.sed README $(SRCS)
 
 # For (forms_fwd.h, forms_gettext.h) and LString.h, respectively.
 INCLUDES = -I$(srcdir)/..  -I$(top_srcdir)/src -I..
@@ -52,7 +52,7 @@ SRCS =  form_aboutlyx.fd \
 nodist_libfdesign_la_SOURCES = $(SRCS:.fd=.C) $(SRCS:.fd=.h)
 # This is a trick so that the actual .la file never gets build,
 # so we do not need to use diskspace and time for it.
-# It is only getting linked into libxforms.la any way.
+# It is only getting linked into libxforms.la anyway.
 libfdesign_la_LINK = touch libfdesign.la
 
 # These are used to generate the .[Ch] files from the .fd ones.
@@ -60,8 +60,5 @@ SHELL = /bin/sh
 SCRIPT = $(srcdir)/fdfix.sh
 SUFFIXES = .fd
 
-# Make the .Ch files dependent on the fdfix files.
-$(libfdesign_la_SOURCES): $(srcdir)/fdfix.sh $(srcdir)/fdfix[ch].sed
-
-%.C: %.fd
+%.C: %.fd $(srcdir)/fdfix.sh $(srcdir)/fdfix[ch].sed $(srcdir)/tmp_str.sed
 	$(SHELL) $(SCRIPT) $<

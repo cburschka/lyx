@@ -149,9 +149,9 @@ grep combox ${CIN} > /dev/null &&
 
 sed -f ${FDFIXC} < ${CIN} >> ${TMP}
 
-# Pass 2. Ensure that any c_str variables inserted by fdfixc.sed
+# Pass 2. Ensure that any tmp_str variables inserted by fdfixc.sed
 # are declared at the top of the appropriate function.
-FDFIXC=${DIRNAME}/c_str.sed
+FDFIXC=${DIRNAME}/tmp_str.sed
 sed -f ${FDFIXC} < ${TMP} > ${COUT}
 rm -f ${TMP}
 

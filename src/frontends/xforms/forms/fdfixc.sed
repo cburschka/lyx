@@ -106,13 +106,13 @@ s/CHOICE/COMBOX/
 # change so:
 #        fdui->counter_zoom = obj = fl_add_counter(...,"Zoom %|#Z");
 # becomes
-#        c_str = _("Zoom %|#Z");
-#        fdui->counter_zoom = obj = fl_add_counter(...,idex(c_str).c_str());
-#        fl_set_button_shortcut(obj,scex(c_str).c_str(),1);
+#        tmp_str = _("Zoom %|#Z");
+#        fdui->counter_zoom = obj = fl_add_counter(...,idex(tmp_str).c_str());
+#        fl_set_button_shortcut(obj,scex(tmp_str).c_str(),1);
 
-/fl_add.*".*[|].*"/s/fdui\(.*\)"\(.*\)".*/c_str = _("\2");\
-	fdui\1idex(c_str).c_str());\
-	fl_set_button_shortcut(obj,scex(c_str).c_str(),1);/
+/fl_add.*".*[|].*"/s/fdui\(.*\)"\(.*\)".*/tmp_str = _("\2");\
+	fdui\1idex(tmp_str).c_str());\
+	fl_set_button_shortcut(obj,scex(tmp_str).c_str(),1);/
 
 
 # gettext will get confused if the string contains a "%" unless the line is

@@ -1,3 +1,14 @@
+2003-05-19  Angus Leeming  <leeming@lyx.org>
+
+	* forms/c_str.sed: removed. Renamed as:
+	* forms/tmp_str.sed
+
+	* forms/Makefile.am (EXTRA_DIST): add tmp_str.sed.
+	($(libfdesign_la_SOURCES)): make it depend on tmp_str.sed.
+
+	* forms/fdfix.sh:
+	* forms/fdfixc.sed:
+	* forms/tmp_str.sed: s/c_str\([^(]\)/tmp_str\1/.
 
 2003-05-15 André Pönitz <poenitz@gmx.net>
 
