@@ -47,7 +47,13 @@ public:
 	///
 	ParagraphList();
 	///
+	ParagraphList(ParagraphList const &);
+	///
+	ParagraphList & operator=(ParagraphList const &);
+	///
 	iterator insert(iterator it, Paragraph * par);
+	///
+	void assign(iterator beg, iterator end);
 	///
 	void clear();
 	///

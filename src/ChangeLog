@@ -1,5 +1,9 @@
 2003-05-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* ParagraphList.C (ParagraphList): implement copy constructor
+	(operator=): implement, base on copy constructor.
+	(assign): new func
+
 	* paragraph.C (erase): return a bool
 
 	* paragraph_pimpl.C (erasePos): remove function, move contents...

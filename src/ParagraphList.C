@@ -86,11 +86,33 @@ bool operator!=(ParagraphList::iterator const & i1,
 	return !(i1 == i2);
 }
 
-
+//////////
 ////////// The ParagraphList proper
+//////////
+
 ParagraphList::ParagraphList()
 	: parlist(0)
 {}
+
+
+ParagraphList::ParagraphList(ParagraphList const & pl)
+	: parlist(0)
+{
+	// Deep copy.
+	ParagraphList::iterator it = pl.begin();
+	ParagraphList::iterator end = pl.end();
+	for (; it != end; ++it) {
+		push_back(new Paragraph(*it, false));
+	}
+}
+
+
+ParagraphList & ParagraphList::operator=(ParagraphList const & rhs)
+{
+	ParagraphList tmp(rhs);
+	std::swap(parlist, tmp.parlist);
+	return *this;
+}
 
 
 ParagraphList::iterator
@@ -134,6 +156,16 @@ ParagraphList::insert(ParagraphList::iterator it, Paragraph * par)
 	return iterator(par);
 #endif
 }
+
+
+void ParagraphList::assign(iterator beg, iterator end)
+{
+	clear();
+	for (; beg != end; ++beg) {
+		push_back(new Paragraph(*beg, false));
+	}
+}
+
 
 
 void ParagraphList::clear()
