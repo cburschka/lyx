@@ -1,6 +1,11 @@
-2004-02-03  Jos& Matos  <jamatos@lyx.org>
+2004-02-04  José Matos  <jamatos@lyx.org>
+	* lyxconvert_210.py: add two new transforms:
+	remove_empty_insets and remove_formula_latex
+	little fix to existing transformations.
 
-        * lyxconvert216.py: one line fix for out of range error.
+2004-02-03  José Matos  <jamatos@lyx.org>
+
+	* lyxconvert216.py: one line fix for out of range error.
 
 2004-02-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 

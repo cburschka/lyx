@@ -27,7 +27,7 @@ def space_before_layout(lines):
         if i == -1:
             break
 
-        if lines[i - 1] == '':
+        if lines[i - 1] == '' and string.find(lines[i-2],'\\protected_separator') == -1:
             del lines[i-1]
         i = i + 1
 
@@ -37,7 +37,7 @@ def formula_inset_space_eat(lines):
         i = find_token(lines, "\\begin_inset Formula", i)
         if i == -1: break
 
-        if len(lines[i]) > 22:
+        if len(lines[i]) > 22 and lines[i][21] == ' ':
             lines[i] = lines[i][:20] + lines[i][21:]
         i = i + 1
 
@@ -125,12 +125,38 @@ def update_inset_accent(lines):
 
 def remove_cursor(lines):
     i = 0
+    cursor_re = re.compile(r'.*(\\cursor \d*)')
     while 1:
-        i = find_token(lines, '\\cursor', i)
+        i = find_re(lines, cursor_re, i)
         if i == -1:
             break
-        lines[i] = ''
+        cursor = cursor_re.search(lines[i]).group(1)
+        lines[i]= string.replace(lines[i], cursor, '')
         i = i + 1
+
+def remove_empty_insets(lines):
+    i = 0
+    while 1:
+        i = find_token(lines, '\\begin_inset ',i)
+        if i == -1:
+            break
+        if lines[i] == '\\begin_inset ' and lines[i+1] == '\\end_inset ':
+            del lines[i]
+            del lines[i]
+        i = i + 1
+
+def remove_formula_latex(lines):
+    i = 0
+    while 1:
+        i = find_token(lines, '\\latex formula_latex ', i)
+        if i == -1:
+            break
+        del lines[i]
+
+        i = find_token(lines, '\\latex default', i)
+        if i == -1:
+            break
+        del lines[i]
 
 def add_end_document(lines):
     lines.append('\\the_end')
@@ -157,10 +183,26 @@ def header_update(lines):
 
         if check_token(lines[i], '\\papersize'):
             size = string.split(lines[i])[1]
+            new_size = size
+            paperpackage = ""
+
             if size == 'usletter':
-                lines[i] = '\\papersize letterpaper'
+                new_size = 'letterpaper'
+            if size == 'a4wide':
+                new_size = 'Default'
+                paperpackage = "widemarginsa4"
+
+            lines[i] = '\\papersize ' + new_size
             i = i + 1
+            if paperpackage:
+                lines.insert(i, '\\paperpackage ' + paperpackage)
+                i = i + 1
+
+            lines.insert(i,'\\use_geometry 0')
+            lines.insert(i + 1,'\\use_amsmath 0')
+            i = i + 2
             continue
+
 
         if check_token(lines[i], '\\baselinestretch'):
             size = string.split(lines[i])[1]
@@ -169,18 +211,14 @@ def header_update(lines):
             elif size == '1.50':
                 name = 'onehalf'
             elif size == '2.00':
-                name == 'double'
+                name = 'double'
+            else:
+                name = 'other ' + size
             lines[i] = '\\spacing %s ' % name
             i = i + 1
             continue
 
         i = i + 1
-
-    lines.append('\\paperpackage a4')
-    lines.append('\\use_geometry 0')
-    lines.append('\\use_amsmath 0')
-    lines.append('\\paperorientation portrait')
-
 
 def convert(header,body):
     header_update(header)
@@ -195,6 +233,8 @@ def convert(header,body):
     formula_inset_space_eat(body)
     update_tabular(body)
     update_vfill(body)
+    remove_empty_insets(body)
+    remove_formula_latex(body)
 
 if __name__ == "__main__":
     pass
