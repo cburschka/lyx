@@ -1,3 +1,16 @@
+2000-01-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxfont.C (textWidth): hopefully better fix for the Array
+	Bounds Read error seen by purify. The problem was that islower is
+	a macros which takes an unsigned char and uses it as an index for
+	in array of characters properties (and is thus subject to the
+	above error).
+	(drawText): ditto.
+
+	* src/lyx_cb.C (UpdateLayoutDocument): use a switch to set
+	correctly the paper sides radio buttons.
+	(UpdateDocumentButtons): ditto.
+
 2000-01-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfunc.C (processKeyEvent): fix a the buffer returned by

@@ -879,18 +879,19 @@ int LyXFont::textWidth(char const * s, int n) const
 	} else {
 		// emulate smallcaps since X doesn't support this
 		unsigned int result = 0;
-		char c[2]; c[1] = '\0';
+		char c;
 		LyXFont smallfont = *this;
 		smallfont.decSize();
 		smallfont.decSize();
 		smallfont.setShape(LyXFont::UP_SHAPE);
 		for (int i = 0; i < n; ++i) {
-			c[0] = s[i];
-			if (islower(c[0])){
-				c[0] = toupper(c[0]);
-				result += XTextWidth(smallfont.getXFontstruct(), c, 1);
+			c = s[i];
+			// when islower is a macro, the cast is needed (JMarc)
+			if (islower(static_cast<unsigned char>(c))){
+				c = toupper(c);
+				result += XTextWidth(smallfont.getXFontstruct(), &c, 1);
 			} else {
-				result += XTextWidth(getXFontstruct(), c, 1);
+				result += XTextWidth(getXFontstruct(), &c, 1);
 			}
 		}
 		return result;
@@ -937,7 +938,7 @@ int LyXFont::drawText(char const * s, int n, Pixmap pm,
 		smallfont.setShape(LyXFont::UP_SHAPE);
 		for (int i = 0; i < n; ++i) {
 			c = s[i];
-			if (islower(c)){
+			if (islower(static_cast<unsigned char>(c))){
 				c = toupper(c);
 				XDrawString(fl_display,
 					    pm,

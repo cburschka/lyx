@@ -1884,10 +1884,14 @@ bool UpdateLayoutDocument(BufferParams * params)
 	fl_set_button(fd_form_document->radio_sides_one, 0);
 	fl_set_button(fd_form_document->radio_sides_two, 0);
    
-	if (params->sides == 2)
-		fl_set_button(fd_form_document->radio_sides_two, 1);
-	else
+	switch (params->sides) {
+	case LyXTextClass::OneSide:
 		fl_set_button(fd_form_document->radio_sides_one, 1);
+		break;
+	case LyXTextClass::TwoSides:
+		fl_set_button(fd_form_document->radio_sides_two, 1);
+		break;
+	}
    
 	fl_set_button(fd_form_document->radio_columns_one, 0);
 	fl_set_button(fd_form_document->radio_columns_two, 0);
@@ -2791,12 +2795,16 @@ extern "C" void CharacterOKCB(FL_OBJECT *ob, long data)
 void UpdateDocumentButtons(BufferParams const & params) 
 {
 	fl_set_choice(fd_form_document->choice_pagestyle, 1);
-	
-	if (params.sides == 2)
-		fl_set_button(fd_form_document->radio_sides_two, 1);
-	else
+
+	switch (params.sides) {
+	case LyXTextClass::OneSide:
 		fl_set_button(fd_form_document->radio_sides_one, 1);
-	
+		break;
+	case LyXTextClass::TwoSides:
+		fl_set_button(fd_form_document->radio_sides_two, 1);
+		break;
+	}
+   
 	if (params.columns == 2)
 		fl_set_button(fd_form_document->radio_columns_two, 1);
 	else
