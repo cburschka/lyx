@@ -15,45 +15,56 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-def check_token(lines, token, i):
-    if lines[i][:len(token)] == token:
+import string
+
+def check_token(line, token):
+    if line[:len(token)] == token:
 	return 1
     return 0
 
-def find_token(lines, token, start):
-    n = len(lines)
+# We need to check that the char after the token is space, but I think
+# we can ignore this
+def find_token(lines, token, start, end = 0):
+    if end == 0:
+	end = len(lines)
     m = len(token)
-    i = start
-    while i < n:
-	line = lines[i]
-	if line[:m] == token:
+    for i in xrange(start, end):
+	if lines[i][:m] == token:
 	    return i
-	i = i+1
     return -1
 
-def find_token2(lines, token1, token2, start):
-    n = len(lines)
-    m1 = len(token1)
-    m2 = len(token2)
-    i = start
-    while i < n:
+def find_tokens(lines, tokens, start, end = 0):
+    if end == 0:
+	end = len(lines)
+    for i in xrange(start, end):
 	line = lines[i]
-	if line[:m1] == token1 or line[:m2] == token2:
-	    return i
-	i = i+1
+	for token in tokens:
+	    if line[:len(token)] == token:
+		return i
+    return -1
+
+def find_re(lines, rexp, start, end = 0):
+    if end == 0:
+	end = len(lines)
+    for i in xrange(start, end):
+	if rexp.match(lines[i]):
+		return i
     return -1
 
 def find_token_backwards(lines, token, start):
-    n = len(lines)
     m = len(token)
-    i = start
-    while i >= 0:
+    for i in xrange(start, -1, -1):
 	line = lines[i]
 	if line[:m] == token:
 	    return i
-	i = i-1
     return -1
 
+def get_value(lines, token, start, end = 0):
+    i = find_token(lines, token, start, end)
+    if i == -1:
+	return ""
+    return string.split(lines[i])[1]
+    
 def set_format(lines, number):
     i = find_token(lines, "\\lyxformat", 0)
     lines[i] = "\\lyxformat %s" % number

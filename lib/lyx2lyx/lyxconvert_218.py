@@ -16,37 +16,37 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
-import sys,string
+import sys,string,re
 from parser_tools import *
 
 floats = {
-    "footnote": ["\\begin_inset Foot\n",
-		 "collapsed true\n"],
-    "margin":   ["\\begin_inset Marginal\n",
-		 "collapsed true\n"],
-    "fig":      ["\\begin_inset Float figure\n",
-		 "placement htbp\n",
-		 "wide false\n",
-		 "collapsed false\n"],
-    "tab":      ["\\begin_inset Float table\n",
-		 "placement htbp\n",
-		 "wide false\n",
-		 "collapsed false\n"],
-    "alg":      ["\\begin_inset Float algorithm\n",
-		 "placement htbp\n",
-		 "wide false\n",
-		 "collapsed false\n"],
-    "wide-fig": ["\\begin_inset Float figure\n",
-		 "placement htbp\n",
-		 "wide true\n",
-		 "collapsed false\n"],
-    "wide-tab": ["\\begin_inset Float table\n",
-		 "placement htbp\n",
-		 "wide true\n",
-		 "collapsed false\n"]
+    "footnote": ["\\begin_inset Foot",
+		 "collapsed true"],
+    "margin":   ["\\begin_inset Marginal",
+		 "collapsed true"],
+    "fig":      ["\\begin_inset Float figure",
+		 "placement htbp",
+		 "wide false",
+		 "collapsed false"],
+    "tab":      ["\\begin_inset Float table",
+		 "placement htbp",
+		 "wide false",
+		 "collapsed false"],
+    "alg":      ["\\begin_inset Float algorithm",
+		 "placement htbp",
+		 "wide false",
+		 "collapsed false"],
+    "wide-fig": ["\\begin_inset Float figure",
+		 "placement htbp",
+		 "wide true",
+		 "collapsed false"],
+    "wide-tab": ["\\begin_inset Float table",
+		 "placement htbp",
+		 "wide true",
+		 "collapsed false"]
 }
 
-def remove_oldfloat(lines):
+def remove_oldfloat(lines, language):
     i = 0
     while 1:
 	i = find_token(lines, "\\begin_float", i)
@@ -54,10 +54,35 @@ def remove_oldfloat(lines):
 	    break
 	j = find_token(lines, "\\end_float", i+1)
 	floattype = string.split(lines[i])[1]
-	#print floattype
-	start = floats[floattype]+["\n"]
-	mid = lines[i+1:j]
-	lines[i:j+1]= start+mid+["\\end_inset \n"]
+	if not floats.has_key(floattype):
+	    sys.stderr.write("Error! Unknown float type "+floattype+"\n")
+	    floattype = "fig"
+
+	# skip \end_deeper tokens
+	i2 = i+1
+	while check_token(lines[i2], "\\end_deeper"):
+	    i2 = i2+1
+	if i2 > i+1:
+	    j2 = find_token(lines, "\\layout", j+1)
+	    lines[j2:j2] = ["\\end_deeper "]*(i2-(i+1))
+
+	start = floats[floattype]+[""]
+	mid = lines[i2:j]
+	end = ["\\end_inset ",
+	       "\\family default ",
+	       "\\series default ",
+	       "\\shape default ",
+	       "\\size default ",
+	       "\\emph default ",
+#	       "\\numeric default ",
+	       "\\bar default ",
+	       "\\noun default ",
+	       "\\color default "
+	       "\\lang %s " % language]
+	# It isn't nice to always put all the '\xxx default' statements,
+	# but it doesn't hurt
+	lines[i:j+1]= start+mid+end
+
 	i = i+1
 
 def remove_oldminipage(lines):
@@ -70,38 +95,48 @@ def remove_oldminipage(lines):
 	hfill = 0
 	line = string.split(lines[i])
 	if line[4] == "\\pextra_hfill":
-	    line[4:6] = []
 	    hfill = 1
-	if line[4] == "\\pextra_start_minipage":
 	    line[4:6] = []
+	if line[4] == "\\pextra_start_minipage":
+	    # We just ignore this
+	    line[4:6] = []
+
+	position = line[3]
 	width = line[5]
 	if line[4] == "\\pextra_widthp":
 	    width = line[5]+"col%"
+	
 
-	start = ["\\begin_inset Minipage\n",
-		 "position %s\n" % line[3],
-		 "inner_position 0\n",
-		 'height "0pt"\n',
-		 'width "%s"\n' % width,
-		 "collapsed false\n"
+	start = ["\\begin_inset Minipage",
+		 "position " + position,
+		 "inner_position 0",
+		 'height "0pt"',
+		 'width "%s"' % width,
+		 "collapsed false"
 		 ]
 	if flag:
 	    flag = 0
 	    if hfill:
-		start = ["\n","\hfill\n","\n"]+start
+		start = ["","\hfill",""]+start
 	else:
-	    start = ["\\layout Standard\n"] + start
+	    start = ["\\layout Standard"] + start
 
 	j = find_token_backwards(lines,"\\layout", i-1)
 	j0 = j
 	mid = lines[j:i]
 
-	j = find_token2(lines,"\\layout", "\\end_float", i+1)
+	j = find_tokens(lines, ["\\layout", "\\end_float"], i+1)
+	# j can be -1, but this is still ok
 	mid = mid+lines[i+1:j]
 
+	count = 0
 	while 1:
-	    i = find_token2(lines,"\\layout", "\\pextra_type", j+1)
-	    if i == -1 or not check_token(lines,  "\\pextra_type", i):
+	    # collect more paragraphs to the minipage
+	    count = count+1
+	    if j == -1 or not check_token(lines[j], "\\layout"):
+		break
+	    i = find_tokens(lines, ["\\layout", "\\pextra_type"], j+1)
+	    if i == -1 or not check_token(lines[i], "\\pextra_type"):
 		break
 	    line = string.split(lines[i])
 	    if line[4] == "\\pextra_hfill":
@@ -111,18 +146,179 @@ def remove_oldminipage(lines):
 		break
 	    j = find_token_backwards(lines,"\\layout", i-1)
 	    mid = mid+lines[j:i]
-	    j = find_token2(lines,"\\layout", "\\end_float", i+1)
+	    j = find_tokens(lines, ["\\layout", "\\end_float"], i+1)
 	    mid = mid+lines[i+1:j]
 
-	end = ["\\end_inset \n"]
+	end = ["\\end_inset "]
 
 	lines[j0:j] = start+mid+end
 	i = i+1
 
-def convert(header,body):
+def is_empty(lines):
+    for line in lines:
+	line = line[:-1]
+	if line != " "*len(line):
+	    return 0
+    return 1
+
+font_rexp =  re.compile(r"\\(family|series|shape|size|emph|numeric|bar|noun)")
+ert_rexp = re.compile(r"\\begin_inset|.*\\SpecialChar")
+spchar_rexp = re.compile(r"(.*)(\\SpecialChar.*)")
+
+def remove_oldert(lines):
+    ert_begin = ["\\begin_inset ERT",
+		 "status Collapsed",
+		 "",
+		 "\\layout Standard"]
+    i = 0
+    while 1:
+	i = find_token(lines, "\\latex latex", i)
+	if i == -1:
+	    break
+	j = find_tokens(lines, ["\\latex default", "\\layout", "\\end_float"],
+			i+1)
+	if j == -1:
+	    j = len(lines)-1
+	if check_token(lines[j], "\\layout"):
+	    while j-1 >= 0 and check_token(lines[j-1], "\\begin_deeper"):
+		j = j-1
+
+	# We need to remove insets, special chars & font commands from ERT text
+	new = []
+	new2 = []
+	k = i+1
+	while 1:
+	    k2 = find_re(lines, ert_rexp, k, j)
+	    inset = specialchar = 0
+	    if k2 == -1:
+		k2 = j
+	    elif check_token(lines[k2], "\\begin_inset"):
+		inset = 1
+	    else:
+		specialchar = 1
+		mo = spchar_rexp.match(lines[k2])
+		lines[k2] = mo.group(1)
+		specialchar_str = mo.group(2)
+		k2 = k2+1
+
+	    tmp = []
+	    for line in lines[k:k2]:
+		if font_rexp.match(line):
+		    new2.append(line)
+		else:
+		    tmp.append(line)
+
+	    if is_empty(tmp):
+		new = new+tmp
+	    else:
+		new = new+ert_begin+tmp+["\\end_inset ", ""]
+
+	    if inset:
+		k3 = find_token(lines, "\\end_inset", k2+1)
+		new = new+[""]+lines[k2:k3+1]+["", ""]
+		k = k3+1
+	    elif specialchar:
+		new = new+[specialchar_str]
+		k = k2
+	    else:
+		break
+
+	new = new+new2
+	if not check_token(lines[j], "\\latex default"):
+	    new = new+[""]+[lines[j]]
+	lines[i:j+1] = new
+	i = i+1
+
+
+oldunits = ["pt", "cm", "in", "text%", "col%"]
+
+def get_length(lines, name, start, end):
+    i = find_token(lines, name, start, end)
+    if i == -1:
+	return ""
+    x = string.split(lines[i])
+    return x[2]+oldunits[int(x[1])]
+
+def append(x, token, value):
+    if value != "":
+	x.append("\t"+token+" "+value)
+
+def remove_figinset(lines):
+    i = 0
+    while 1:
+	i = find_token(lines, "\\begin_inset Figure", i)
+	if i == -1:
+	    break
+	j = find_token(lines, "\\end_inset", i+1)
+
+	lyxwidth = string.split(lines[i])[3]+"pt"
+	lyxheight = string.split(lines[i])[4]+"pt"
+
+	filename = get_value(lines, "file", i+1, j)
+
+	width = get_length(lines, "width", i+1, j)
+	# what does width=5 mean ?
+	height = get_length(lines, "height", i+1, j)
+	rotateAngle = get_value(lines, "angle", i+1, j)
+	if width == "" and height == "":
+	    size_type = "0"
+	else:
+	    size_type = "1"
+
+	flags = get_value(lines, "flags", i+1, j)
+	x = int(flags)%4
+	if x == 1:
+	    display = "monochrome"
+	elif x == 2:
+	    display = "gray"
+	else:
+	    display = "color"
+
+	subcaptionText = get_value(lines, "subcaption", i+1, j)
+	if subcaptionText != "":
+	    subcaptionText = '"'+subcaptionText+'"'
+	k = find_token(lines, "subfigure", i+1,j)
+	if k == -1:
+	    subcaption = 0
+	else:
+	    subcaption = 1
+
+	new = ["\\begin_inset Graphics FormatVersion 1"]
+	append(new, "filename", filename)
+	append(new, "display", display)
+	if subcaption:
+	    new.append("\tsubcaption")
+	append(new, "subcaptionText", subcaptionText)
+	append(new, "size_type", size_type)
+	append(new, "width", width)
+	append(new, "height", height)
+	if rotateAngle != "":
+	    new.append("\trotate")
+	    append(new, "rotateAngle", rotateAngle)
+	new.append("\trotateOrigin center")
+	new.append("\tlyxsize_type 1")
+	append(new, "lyxwidth", lyxwidth)
+	append(new, "lyxheight", lyxheight)
+	new = new + ["\end_inset"]
+	lines[i:j+1] = new
+
+def change_preamble(lines):
+    i = find_token(lines, "\\use_amsmath", 0)
+    if i == -1:
+	return
+    lines[i+1:i+1] = ["\\use_natbib 0",
+		      "\use_numerical_citations 0"]
+
+def convert(header, body):
+    language = get_value(header, "\\language", 0)
+    if language == "":
+	language = "english"
+
+    change_preamble(header)
+    remove_oldert(body)
     remove_oldminipage(body)
-    remove_oldfloat(body)
+    remove_oldfloat(body, language)
+    remove_figinset(body)
 
 if __name__ == "__main__":
     pass
-
