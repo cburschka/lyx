@@ -38,7 +38,6 @@ public:
 	struct Params {
 		Params(InsetCommandParams const & cp = InsetCommandParams("input"),
 		       Flags f = INPUT,
-		       bool nl = false,
 		       string const & name = string())
 			: cparams(cp), flag(f),
 			  masterFilename_(name) {}
