@@ -1,3 +1,7 @@
+2001-01-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* config/lyxinclude.m4 (LYX_USE_FRONTEND): mark as experimental 
+
 2001-01-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/buffer.C (getTocList): make the method const, so that

@@ -923,7 +923,7 @@ extern int select ($ac_cv_func_select_arg1,$ac_cv_func_select_arg234,$ac_cv_func
 AC_DEFUN(LYX_USE_FRONTEND,
 [AC_MSG_CHECKING(what frontend should be used as main GUI)
 AC_ARG_WITH(frontend,
-  [  --with-frontend[=value] Use THIS frontend as main GUI:
+  [  --with-frontend[=value] EXPERIMENTAL (only xforms works) Use THIS frontend as main GUI:
                           Possible values: xforms,kde,gnome],
   [lyx_use_frontend="$withval"], [lyx_use_frontend="xforms"])
 AC_MSG_RESULT($lyx_use_frontend)
