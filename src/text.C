@@ -62,7 +62,7 @@ int LyXText::top_y() const
 {
 	if (!top_row_)
 		return 0;
-	
+
 	int y = 0;
 	for (Row * row = firstrow; row && row != top_row_; row = row->next()) {
 		y += row->height();
@@ -76,7 +76,7 @@ void LyXText::top_y(int newy)
 	if (!firstrow)
 		return;
 	lyxerr[Debug::GUI] << "setting top y = " << newy << endl;
-	
+
 	int y = newy;
 	top_row_ = getRowNearY(y);
 	top_row_offset_ = newy - y;
@@ -206,6 +206,9 @@ unsigned char LyXText::transformChar(unsigned char c, Paragraph * par,
 int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 			 pos_type pos) const
 {
+	if (pos >= par->size())
+		return 0;
+
 	char const c = par->getChar(pos);
 	return singleWidth(bview, par, pos, c);
 }
@@ -214,6 +217,9 @@ int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 			 pos_type pos, char c) const
 {
+	if (pos >= par->size())
+		return 0;
+
 	LyXFont const font = getFont(bview->buffer(), par, pos);
 
 	// The most common case is handled first (Asger)
@@ -422,10 +428,12 @@ bool LyXText::isBoundary(Buffer const * buf, Paragraph * par,
 int LyXText::leftMargin(BufferView * bview, Row const * row) const
 {
 	Inset * ins;
-	if ((row->par()->getChar(row->pos()) == Paragraph::META_INSET) &&
-		(ins=row->par()->getInset(row->pos())) &&
-		(ins->needFullRow() || ins->display()))
-		return LEFT_MARGIN;
+
+	if (row->pos() < row->par()->size())
+		if ((row->par()->getChar(row->pos()) == Paragraph::META_INSET) &&
+		    (ins = row->par()->getInset(row->pos())) &&
+		    (ins->needFullRow() || ins->display()))
+			return LEFT_MARGIN;
 
 	LyXTextClass const & tclass =
 		bview->buffer()->params.getLyXTextClass();
@@ -615,10 +623,12 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 int LyXText::rightMargin(Buffer const & buf, Row const & row) const
 {
 	Inset * ins;
-	if ((row.par()->getChar(row.pos()) == Paragraph::META_INSET) &&
-		(ins=row.par()->getInset(row.pos())) &&
-		(ins->needFullRow() || ins->display()))
-		return PAPER_MARGIN;
+
+	if (row.pos() < row.par()->size())
+		if ((row.par()->getChar(row.pos()) == Paragraph::META_INSET) &&
+		    (ins=row.par()->getInset(row.pos())) &&
+		    (ins->needFullRow() || ins->display()))
+			return PAPER_MARGIN;
 
 	LyXTextClass const & tclass = buf.params.getLyXTextClass();
 	LyXLayout_ptr const & layout = row.par()->layout();
@@ -722,7 +732,9 @@ LyXText::rowBreakPoint(BufferView & bv, Row const & row) const
 	pos_type const body_pos = par->beginningOfBody();
 	pos_type const last = par->size();
 	pos_type point = last;
-	pos_type i = pos;
+
+	if (pos == last)
+		return last;
 
 	// Now we iterate through until we reach the right margin
 	// or the end of the par, then choose the possible break
@@ -734,7 +746,8 @@ LyXText::rowBreakPoint(BufferView & bv, Row const & row) const
 	// pixel width since last breakpoint
 	int chunkwidth = 0;
 
-	for (i = pos; i < last; ++i) {
+	pos_type i = pos;
+	for (; i < last; ++i) {
 
 		if (par->isNewline(i)) {
 			point = i;
@@ -795,7 +808,7 @@ LyXText::rowBreakPoint(BufferView & bv, Row const & row) const
 
 		if (!display)
 			continue;
-			
+
 		// full row insets start at a new row
 		if (i == pos) {
 			if (pos < last - 1) {
@@ -976,7 +989,7 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row) const
 	int maxwidth = 0;
 
 	// Check if any insets are larger
-	for (pos_type pos = row->pos(); pos <= pos_end; ++pos) {
+	for (pos_type pos = row->pos(); pos < pos_end; ++pos) {
 		if (row->par()->isInset(pos)) {
 			tmpfont = getFont(bview->buffer(), row->par(), pos);
 			tmpinset = row->par()->getInset(pos);
@@ -1592,9 +1605,10 @@ void LyXText::insertChar(BufferView * bview, char c)
 			return;
 		}
 	}
-	
+
 	// the display inset stuff
-	if (cursor.row()->par()->isInset(cursor.row()->pos())) {
+	if (cursor.row()->pos() < cursor.row()->par()->size()
+	    && cursor.row()->par()->isInset(cursor.row()->pos())) {
 		Inset * inset = cursor.row()->par()->getInset(cursor.row()->pos());
 		if (inset && (inset->display() || inset->needFullRow())) {
 			// force a new break
@@ -1787,7 +1801,7 @@ void LyXText::prepareToPrint(BufferView * bview,
 		// is empty.
 		if (!row->par()->empty())
 			++nlh;
-			
+
 		if (nlh && !row->par()->getLabelWidthString().empty()) {
 			fill_label_hfill = labelFill(*bview, *row) / nlh;
 		}
@@ -1814,8 +1828,9 @@ void LyXText::prepareToPrint(BufferView * bview,
 
 		// center displayed insets
 		Inset * inset;
-		if (row->par()->isInset(row->pos())
-		    && (inset=row->par()->getInset(row->pos()))
+		if (row->pos() < row->par()->size()
+		    && row->par()->isInset(row->pos())
+		    && (inset = row->par()->getInset(row->pos()))
 		    && (inset->display())) // || (inset->scroll() < 0)))
 		    align = (inset->lyxCode() == Inset::MATHMACRO_CODE)
 			? LYX_ALIGN_BLOCK : LYX_ALIGN_CENTER;
@@ -1991,7 +2006,7 @@ void LyXText::getWord(LyXCursor & from, LyXCursor & to,
 		// Move cursor to the beginning, when not already there.
 		if (from.pos() && !from.par()->isSeparator(from.pos() - 1)
 		    && !(from.par()->isKomma(from.pos() - 1)
-		         || from.par()->isNewline(from.pos() - 1)))
+			 || from.par()->isNewline(from.pos() - 1)))
 			cursorLeftOneWord(from);
 		break;
 	case PREVIOUS_WORD:

@@ -159,6 +159,9 @@ namespace {
 
 bool nextRowIsAllInset(Row const & row, pos_type last)
 {
+	if (last + 1 >= row.par()->size())
+		return false;
+
 	if (!row.par()->isInset(last + 1))
 		return false;
 
@@ -192,7 +195,7 @@ int Row::numberOfSeparators() const
 	pos_type p = max(pos(), par()->beginningOfBody());
 
 	int n = 0;
-	for (; p <= last; ++p) {
+	for (; p < last; ++p) {
 		if (par()->isSeparator(p)) {
 			++n;
 		}
@@ -208,7 +211,7 @@ int Row::numberOfHfills() const
 
 	// hfill *DO* count at the beginning of paragraphs!
 	if (first) {
-		while (first <= last && par()->isHfill(first)) {
+		while (first < last && par()->isHfill(first)) {
 			++first;
 		}
 	}
@@ -218,7 +221,7 @@ int Row::numberOfHfills() const
 	int n = 0;
 
 	// last, because the end is ignored!
-	for (pos_type p = first; p <= last; ++p) {
+	for (pos_type p = first; p < last; ++p) {
 		if (par()->isHfill(p))
 			++n;
 	}

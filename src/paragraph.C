@@ -788,7 +788,7 @@ int Paragraph::beginningOfBody() const
 		char previous_char = 0;
 		char temp = 0;
 		if (i < size()) {
-		        previous_char = getChar(i);
+			previous_char = getChar(i);
 			if (!isNewline(i)) {
 				++i;
 				while (i < size() && previous_char != ' ') {
@@ -1345,7 +1345,7 @@ string const Paragraph::asString(Buffer const * buffer,
 		value_type const c = getUChar(buffer->params, i);
 		if (IsPrintable(c))
 			os << c;
-		else if (c == META_INSET) 
+		else if (c == META_INSET)
 			getInset(i)->ascii(buffer, os);
 	}
 
@@ -1358,7 +1358,7 @@ void Paragraph::setInsetOwner(Inset * i)
 	pimpl_->inset_owner = i;
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
-	for (; it != end; ++it) 
+	for (; it != end; ++it)
 		if (it.getInset())
 			it.getInset()->setOwner(i);
 }

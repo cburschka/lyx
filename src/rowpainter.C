@@ -312,7 +312,8 @@ bool RowPainter::paintBackground()
 	Inset const * inset = 0;
 
 	if (!bv_.screen().forceClear() && last == row_.pos()
-		&& par_.isInset(row_.pos())) {
+	    && row_.pos() < par_.size()
+	    && par_.isInset(row_.pos())) {
 		inset = par_.getInset(row_.pos());
 		clear_area = inset->doClearArea();
 	}
@@ -897,6 +898,11 @@ bool RowPainter::paintText()
 		if (x_ > bv_.workWidth())
 			break;
 		pos_type pos = text_.vis2log(vpos);
+
+		if (pos >= par_.size()) {
+			++vpos;
+			continue;
+		}
 
 		if (x_ + singleWidth(pos) < 0) {
 			x_ += singleWidth(pos);

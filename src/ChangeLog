@@ -1,3 +1,28 @@
+2003-03-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (setCursor): never ask for one past last
+	(setCursor): add some debugging messages.
+
+	* text.C (singleWidth): never ask for one past last
+	(singleWidth): ditto
+	(leftMargin): ditto
+	(rightMargin): ditto
+	(rowBreakPoint): ditto
+	(setHeightOfRow): ditto
+	(prepareToPrint): ditto
+
+	* rowpainter.C (paintBackground): never ask for one past last
+	(paintText): never ask for one past last
+
+	* paragraph_pimpl.C (getChar): make the assert stricter, never
+	allow the one past last pos to be taken
+
+	* paragraph.C (getChar): ws changes only
+
+	* lyxrow.C (nextRowIsAllInset): never ask for one past last
+	(numberOfSeparators): ditto
+	(numberOfHfills): ditto
+
 2003-03-12  John Levon  <levon@movementarian.org>
 
 	* author.h:

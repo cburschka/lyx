@@ -252,12 +252,14 @@ void Paragraph::Pimpl::rejectChange(pos_type start, pos_type end)
 
 Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 {
-	// This is in the critical path for loading!
-	pos_type const siz = size();
-	lyx::Assert(pos <= siz);
+	//lyx::Assert(pos <= siz);
 	// This is stronger, and I belive that this is the assertion
 	// that we should really use. (Lgb)
-	//Assert(pos < size());
+	lyx::Assert(pos < size());
+
+#if 0
+	// This is in the critical path for loading!
+	pos_type const siz = size();
 
 	// Then this has no meaning. (Lgb)
 	if (!siz || pos == siz) {
@@ -266,7 +268,7 @@ Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 			<< "  is a bit silly !" << endl;
 		return '\0';
 	}
-
+#endif
 	return text[pos];
 }
 

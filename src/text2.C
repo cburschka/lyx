@@ -52,7 +52,7 @@ using lyx::pos_type;
 
 
 LyXText::LyXText(BufferView * bv)
-	: height(0), width(0), top_row_(0), top_row_offset_(0), 
+	: height(0), width(0), top_row_(0), top_row_offset_(0),
 	  inset_owner(0), the_locking_inset(0), need_break_row(0),
 	  refresh_y(0), refresh_row(0), bv_owner(bv),
 	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
@@ -60,7 +60,7 @@ LyXText::LyXText(BufferView * bv)
 
 
 LyXText::LyXText(InsetText * inset)
-	: height(0), width(0), top_row_(0), top_row_offset_(0), 
+	: height(0), width(0), top_row_(0), top_row_offset_(0),
 	  inset_owner(inset), the_locking_inset(0), need_break_row(0),
 	  refresh_y(0), refresh_row(0), bv_owner(0),
 	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
@@ -1769,8 +1769,9 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 	Inset * ins;
 	if (row->previous() && pos &&
 		row->previous()->par() == row->par() &&
+	    pos < par->size() &&
 		par->getChar(pos) == Paragraph::META_INSET &&
-		(ins=par->getInset(pos)) && (ins->needFullRow() || ins->display()))
+		(ins = par->getInset(pos)) && (ins->needFullRow() || ins->display()))
 	{
 		row = row->previous();
 		y -= row->height();
@@ -1786,13 +1787,16 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 
 	// None of these should happen, but we're scaredy-cats
 	if (pos > par->size()) {
+		lyxerr << "dont like 1 please report" << endl;
 		pos = 0;
 		cur.pos(0);
 	} else if (pos > last + 1) {
+		lyxerr << "dont like 2 please report" << endl;
 		// This shouldn't happen.
 		pos = last + 1;
 		cur.pos(pos);
 	} else if (pos < row->pos()) {
+		lyxerr << "dont like 3 please report" << endl;
 		pos = row->pos();
 		cur.pos(pos);
 	}
