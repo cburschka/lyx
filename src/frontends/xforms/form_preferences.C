@@ -30,6 +30,16 @@ FD_form_preferences * FormPreferences::build_preferences()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
+    char const * const dummy = N_("Restore|#R");
+    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 5, 390, 90, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedRestoreCB, 0);
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 170, 390, 90, 30, _("Save"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedOKCB, 0);
+  {
     char const * const dummy = N_("Apply|#A");
     fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 270, 390, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
@@ -43,16 +53,6 @@ FD_form_preferences * FormPreferences::build_preferences()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
-  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 170, 390, 90, 30, _("Save"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedOKCB, 0);
-  {
-    char const * const dummy = N_("Restore|#R");
-    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 5, 390, 90, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedRestoreCB, 0);
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 0, 425, 470, 1, "");
   fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 5, 430, 460, 70, "");
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
@@ -113,6 +113,14 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
   fdui->input_typewriter = obj = fl_add_input(FL_NORMAL_INPUT, 210, 65, 200, 30, _("Typewriter"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->input_screen_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 210, 95, 200, 30, _("Encoding"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->check_scalable = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 60, 143, 33, 31, _("Use scalable fonts"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_button(obj, 1);
   {
     // xgettext:no-c-format
     char const * const dummy = N_("Zoom %|#Z");
@@ -126,32 +134,6 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
     fl_set_counter_bounds(obj, 0, 999);
     fl_set_counter_value(obj, 150);
     fl_set_counter_step(obj, 1, 1);
-  fdui->check_scalable = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 60, 143, 33, 31, _("Use scalable fonts"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_button(obj, 1);
-  fdui->input_screen_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 210, 95, 200, 30, _("Encoding"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_script = obj = fl_add_input(FL_FLOAT_INPUT, 200, 199, 70, 30, _("script"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_footnote = obj = fl_add_input(FL_FLOAT_INPUT, 340, 198, 70, 30, _("footnote"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_large = obj = fl_add_input(FL_FLOAT_INPUT, 340, 228, 70, 30, _("large"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_largest = obj = fl_add_input(FL_FLOAT_INPUT, 200, 259, 70, 30, _("largest"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_huge = obj = fl_add_input(FL_FLOAT_INPUT, 340, 258, 70, 30, _("huge"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_normal = obj = fl_add_input(FL_FLOAT_INPUT, 200, 229, 70, 30, _("normal"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Screen DPI|#D");
     fdui->counter_dpi = obj = fl_add_counter(FL_NORMAL_COUNTER, 310, 160, 100, 30, idex(_(dummy)));
@@ -167,10 +149,28 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
   fdui->input_tiny = obj = fl_add_input(FL_FLOAT_INPUT, 60, 198, 70, 30, _("tiny"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_larger = obj = fl_add_input(FL_FLOAT_INPUT, 60, 258, 70, 30, _("larger"));
+  fdui->input_script = obj = fl_add_input(FL_FLOAT_INPUT, 200, 199, 70, 30, _("script"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->input_footnote = obj = fl_add_input(FL_FLOAT_INPUT, 340, 198, 70, 30, _("footnote"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fdui->input_small = obj = fl_add_input(FL_FLOAT_INPUT, 60, 228, 70, 30, _("small"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->input_normal = obj = fl_add_input(FL_FLOAT_INPUT, 200, 229, 70, 30, _("normal"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->input_large = obj = fl_add_input(FL_FLOAT_INPUT, 340, 228, 70, 30, _("large"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->input_larger = obj = fl_add_input(FL_FLOAT_INPUT, 60, 258, 70, 30, _("larger"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->input_largest = obj = fl_add_input(FL_FLOAT_INPUT, 200, 259, 70, 30, _("largest"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->input_huge = obj = fl_add_input(FL_FLOAT_INPUT, 340, 258, 70, 30, _("huge"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fdui->input_huger = obj = fl_add_input(FL_FLOAT_INPUT, 60, 288, 70, 30, _("huger"));
@@ -184,66 +184,240 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
 }
 /*---------------------------------------*/
 
-FD_form_outputs_misc::~FD_form_outputs_misc()
+FD_form_interface::~FD_form_interface()
 {
   if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
 
-FD_form_outputs_misc * FormPreferences::build_outputs_misc()
+FD_form_interface * FormPreferences::build_interface()
 {
   FL_OBJECT *obj;
-  FD_form_outputs_misc *fdui = new FD_form_outputs_misc;
+  FD_form_interface *fdui = new FD_form_interface;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 455, 375);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 350);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 455, 375, "");
-    fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 350, "");
+  fdui->input_popup_font = obj = fl_add_input(FL_NORMAL_INPUT, 230, 30, 200, 30, _("Popup Font"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->input_menu_font = obj = fl_add_input(FL_NORMAL_INPUT, 230, 60, 200, 30, _("Menu Font"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->input_popup_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 230, 90, 200, 30, _("Popup Encoding"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("Ascii line length|#A");
-    fdui->counter_line_len = obj = fl_add_counter(FL_NORMAL_COUNTER, 315, 50, 100, 30, idex(_(dummy)));
+    char const * const dummy = N_("User Interface file|#U");
+    fdui->input_ui_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 148, 190, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->button_ui_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 148, 80, 30, _("Browse..."));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("Bind file|#B");
+    fdui->input_bind_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 178, 190, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->button_bind_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 178, 80, 30, _("Browse..."));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("Override X-Windows dead-keys|#O");
+    fdui->check_override_x_dead_keys = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 24, 230, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_button(obj, 1);
+  fl_end_form();
+
+  fdui->form->fdui = fdui;
+
+  return fdui;
+}
+/*---------------------------------------*/
+
+FD_form_colors::~FD_form_colors()
+{
+  if ( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
+
+FD_form_colors * FormPreferences::build_colors()
+{
+  FL_OBJECT *obj;
+  FD_form_colors *fdui = new FD_form_colors;
+
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
+  fdui->form->u_vdata = this;
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
+  {
+    char const * const dummy = N_("LyX objects|#L");
+    fdui->browser_lyx_objs = obj = fl_add_browser(FL_HOLD_BROWSER, 10, 25, 195, 290, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("H|#H");
+    fdui->dial_hue = obj = fl_add_dial(FL_NORMAL_DIAL, 276, 23, 100, 100, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lalign(obj, FL_ALIGN_CENTER);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("S|#S");
+    fdui->slider_saturation = obj = fl_add_slider(FL_HOR_NICE_SLIDER, 251, 135, 150, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_slider_size(obj, 0.15);
+  {
+    char const * const dummy = N_("V|#V");
+    fdui->slider_value = obj = fl_add_slider(FL_HOR_NICE_SLIDER, 251, 175, 150, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_slider_size(obj, 0.15);
+  {
+    char const * const dummy = N_("R|#R");
+    fdui->slider_red = obj = fl_add_slider(FL_VERT_FILL_SLIDER, 250, 25, 40, 180, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_color(obj, FL_COL1, FL_RED);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_slider_size(obj, 0.15);
+  {
+    char const * const dummy = N_("G|#G");
+    fdui->slider_green = obj = fl_add_slider(FL_VERT_FILL_SLIDER, 305, 25, 40, 180, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_color(obj, FL_COL1, FL_GREEN);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_slider_size(obj, 0.15);
+  {
+    char const * const dummy = N_("B|#B");
+    fdui->slider_blue = obj = fl_add_slider(FL_VERT_FILL_SLIDER, 360, 25, 40, 180, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_color(obj, FL_COL1, FL_BLUE);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_slider_size(obj, 0.15);
+  fdui->button_colorspace = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 310, 219, 30, 30, "");
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->text_color_values = obj = fl_add_text(FL_NORMAL_TEXT, 250, 250, 150, 30, "");
+    fl_set_object_boxtype(obj, FL_DOWN_BOX);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+  fdui->button_color = obj = fl_add_button(FL_NORMAL_BUTTON, 250, 285, 60, 30, "");
+    fl_set_object_boxtype(obj, FL_BORDER_BOX);
+    fl_set_object_color(obj, FL_WHITE, FL_COL1);
+  {
+    char const * const dummy = N_("Modify|#M");
+    fdui->button_modify = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 285, 90, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fl_end_form();
+
+  fdui->form->fdui = fdui;
+
+  return fdui;
+}
+/*---------------------------------------*/
+
+FD_form_lnf_misc::~FD_form_lnf_misc()
+{
+  if ( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
+
+FD_form_lnf_misc * FormPreferences::build_lnf_misc()
+{
+  FL_OBJECT *obj;
+  FD_form_lnf_misc *fdui = new FD_form_lnf_misc;
+
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 350);
+  fdui->form->u_vdata = this;
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 350, "");
+  {
+    char const * const dummy = N_("Show banner|#S");
+    fdui->check_banner = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 15, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_button(obj, 1);
+  {
+    char const * const dummy = N_("Auto region delete|#A");
+    fdui->check_auto_region_delete = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 45, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_button(obj, 1);
+  {
+    char const * const dummy = N_("Exit confirmation|#E");
+    fdui->check_exit_confirm = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 75, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_button(obj, 1);
+  fdui->check_display_shrtcuts = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 105, 30, 30, _("Display keyboard shortcuts"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_button(obj, 1);
+  {
+    char const * const dummy = N_("File->New asks for name|#N");
+    fdui->check_ask_new_file = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 135, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_button(obj, 1);
+  {
+    char const * const dummy = N_("Cursor follows scrollbar|#C");
+    fdui->check_cursor_follows_scrollbar = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 165, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_button(obj, 1);
+  fdui->counter_wm_jump = obj = fl_add_counter(FL_NORMAL_COUNTER, 320, 225, 115, 30, _("Wheel mouse jump"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
     fl_set_counter_precision(obj, 0);
-    fl_set_counter_bounds(obj, 0, 120);
-    fl_set_counter_value(obj, 75);
+    fl_set_counter_bounds(obj, 0, 250);
+    fl_set_counter_value(obj, 100);
     fl_set_counter_step(obj, 1, 1);
-  {
-    char const * const dummy = N_("TeX encoding|#T");
-    fdui->input_tex_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 216, 95, 200, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
+  fdui->counter_autosave = obj = fl_add_counter(FL_NORMAL_COUNTER, 320, 255, 115, 30, _("Autosave interval"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Default paper size|#p");
-    fdui->choice_default_papersize = obj = fl_add_choice(FL_NORMAL_CHOICE, 219, 142, 199, 29, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_boxtype(obj, FL_FRAME_BOX);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("ascii roff|#r");
-    fdui->input_ascii_roff = obj = fl_add_input(FL_NORMAL_INPUT, 121, 209, 285, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("checktex|#c");
-    fdui->input_checktex = obj = fl_add_input(FL_NORMAL_INPUT, 121, 250, 285, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 12, 186, 406, 120, _("Outside code interaction"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
+    fl_set_counter_precision(obj, 0);
+    fl_set_counter_bounds(obj, 0, 1200);
+    fl_set_counter_value(obj, 300);
+    fl_set_counter_step(obj, 1, 1);
   fl_end_form();
 
   fdui->form->fdui = fdui;
@@ -337,36 +511,6 @@ FD_form_spelloptions * FormPreferences::build_spelloptions()
 }
 /*---------------------------------------*/
 
-FD_form_inputs_misc::~FD_form_inputs_misc()
-{
-  if ( form->visible ) fl_hide_form( form );
-  fl_free_form( form );
-}
-
-
-FD_form_inputs_misc * FormPreferences::build_inputs_misc()
-{
-  FL_OBJECT *obj;
-  FD_form_inputs_misc *fdui = new FD_form_inputs_misc;
-
-  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
-  fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
-  {
-    char const * const dummy = N_("date format|#f");
-    fdui->input_date_format = obj = fl_add_input(FL_NORMAL_INPUT, 120, 70, 285, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fl_end_form();
-
-  fdui->form->fdui = fdui;
-
-  return fdui;
-}
-/*---------------------------------------*/
-
 FD_form_language::~FD_form_language()
 {
   if ( form->visible ) fl_hide_form( form );
@@ -405,52 +549,6 @@ FD_form_language * FormPreferences::build_language()
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("RtL support|#R");
-    fdui->check_rtl_support = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 140, 161, 30, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Mark foreign|#M");
-    fdui->check_mark_foreign = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 140, 187, 30, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Auto begin|#b");
-    fdui->check_auto_begin = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 265, 161, 30, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Auto finish|#f");
-    fdui->check_auto_end = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 265, 187, 30, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Command start|#s");
-    fdui->input_command_begin = obj = fl_add_input(FL_NORMAL_INPUT, 131, 224, 300, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Command end|#e");
-    fdui->input_command_end = obj = fl_add_input(FL_NORMAL_INPUT, 131, 257, 300, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
     char const * const dummy = N_("1st|#1");
     fdui->input_kbmap1 = obj = fl_add_input(FL_NORMAL_INPUT, 144, 97, 195, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
@@ -469,8 +567,40 @@ FD_form_language * FormPreferences::build_language()
   fdui->button_kbmap2_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 341, 128, 90, 30, _("Browse"));
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
+    char const * const dummy = N_("RtL support|#R");
+    fdui->check_rtl_support = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 140, 161, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("Auto begin|#b");
+    fdui->check_auto_begin = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 265, 161, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
     char const * const dummy = N_("Use babel|#U");
     fdui->check_use_babel = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 390, 161, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("Mark foreign|#M");
+    fdui->check_mark_foreign = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 140, 187, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("Auto finish|#f");
+    fdui->check_auto_end = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 265, 187, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -484,174 +614,16 @@ FD_form_language * FormPreferences::build_language()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fl_end_form();
-
-  fdui->form->fdui = fdui;
-
-  return fdui;
-}
-/*---------------------------------------*/
-
-FD_form_colors::~FD_form_colors()
-{
-  if ( form->visible ) fl_hide_form( form );
-  fl_free_form( form );
-}
-
-
-FD_form_colors * FormPreferences::build_colors()
-{
-  FL_OBJECT *obj;
-  FD_form_colors *fdui = new FD_form_colors;
-
-  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
-  fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
-  fdui->button_color = obj = fl_add_button(FL_NORMAL_BUTTON, 250, 285, 60, 30, "");
-    fl_set_object_boxtype(obj, FL_BORDER_BOX);
-    fl_set_object_color(obj, FL_WHITE, FL_COL1);
   {
-    char const * const dummy = N_("LyX objects|#L");
-    fdui->browser_lyx_objs = obj = fl_add_browser(FL_HOLD_BROWSER, 10, 25, 195, 290, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_TOP);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Modify|#M");
-    fdui->button_modify = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 285, 90, 30, idex(_(dummy)));
+    char const * const dummy = N_("Command start|#s");
+    fdui->input_command_begin = obj = fl_add_input(FL_NORMAL_INPUT, 131, 224, 300, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("S|#S");
-    fdui->slider_saturation = obj = fl_add_slider(FL_HOR_NICE_SLIDER, 251, 135, 150, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_slider_size(obj, 0.15);
-  {
-    char const * const dummy = N_("V|#V");
-    fdui->slider_value = obj = fl_add_slider(FL_HOR_NICE_SLIDER, 251, 175, 150, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_slider_size(obj, 0.15);
-  {
-    char const * const dummy = N_("H|#H");
-    fdui->dial_hue = obj = fl_add_dial(FL_NORMAL_DIAL, 276, 23, 100, 100, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lalign(obj, FL_ALIGN_CENTER);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("R|#R");
-    fdui->slider_red = obj = fl_add_slider(FL_VERT_FILL_SLIDER, 250, 25, 40, 180, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_color(obj, FL_COL1, FL_RED);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_slider_size(obj, 0.15);
-  {
-    char const * const dummy = N_("B|#B");
-    fdui->slider_blue = obj = fl_add_slider(FL_VERT_FILL_SLIDER, 360, 25, 40, 180, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_color(obj, FL_COL1, FL_BLUE);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_slider_size(obj, 0.15);
-  {
-    char const * const dummy = N_("G|#G");
-    fdui->slider_green = obj = fl_add_slider(FL_VERT_FILL_SLIDER, 305, 25, 40, 180, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_color(obj, FL_COL1, FL_GREEN);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_slider_size(obj, 0.15);
-  fdui->button_colorspace = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 310, 219, 30, 30, "");
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->text_color_values = obj = fl_add_text(FL_NORMAL_TEXT, 250, 250, 150, 30, "");
-    fl_set_object_boxtype(obj, FL_DOWN_BOX);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-  fl_end_form();
-
-  fdui->form->fdui = fdui;
-
-  return fdui;
-}
-/*---------------------------------------*/
-
-FD_form_converters::~FD_form_converters()
-{
-  if ( form->visible ) fl_hide_form( form );
-  fl_free_form( form );
-}
-
-
-FD_form_converters * FormPreferences::build_converters()
-{
-  FL_OBJECT *obj;
-  FD_form_converters *fdui = new FD_form_converters;
-
-  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
-  fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
-  {
-    char const * const dummy = N_("All converters|#A");
-    fdui->browser_all = obj = fl_add_browser(FL_HOLD_BROWSER, 30, 30, 160, 270, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_TOP);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Delete|#D");
-    fdui->button_delete = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 270, 90, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Add|#A");
-    fdui->button_add = obj = fl_add_button(FL_NORMAL_BUTTON, 240, 270, 90, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Converter|#C");
-    fdui->input_converter = obj = fl_add_input(FL_NORMAL_INPUT, 280, 110, 150, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("From|#F");
-    fdui->choice_from = obj = fl_add_choice(FL_NORMAL_CHOICE, 280, 30, 150, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_boxtype(obj, FL_FRAME_BOX);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("To|#T");
-    fdui->choice_to = obj = fl_add_choice(FL_NORMAL_CHOICE, 280, 70, 150, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_boxtype(obj, FL_FRAME_BOX);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Flags|#F");
-    fdui->input_flags = obj = fl_add_input(FL_NORMAL_INPUT, 280, 150, 150, 30, idex(_(dummy)));
+    char const * const dummy = N_("Command end|#e");
+    fdui->input_command_end = obj = fl_add_input(FL_NORMAL_INPUT, 131, 257, 300, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -702,15 +674,8 @@ FD_form_formats * FormPreferences::build_formats()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("Delete|#D");
-    fdui->button_delete = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 270, 90, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Add|#A");
-    fdui->button_add = obj = fl_add_button(FL_NORMAL_BUTTON, 240, 270, 90, 30, idex(_(dummy)));
+    char const * const dummy = N_("Shortcut|#S");
+    fdui->input_shrtcut = obj = fl_add_input(FL_NORMAL_INPUT, 280, 110, 150, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -730,8 +695,15 @@ FD_form_formats * FormPreferences::build_formats()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("Shortcut|#S");
-    fdui->input_shrtcut = obj = fl_add_input(FL_NORMAL_INPUT, 280, 110, 150, 30, idex(_(dummy)));
+    char const * const dummy = N_("Add|#A");
+    fdui->button_add = obj = fl_add_button(FL_NORMAL_BUTTON, 240, 270, 90, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("Delete|#D");
+    fdui->button_delete = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 270, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -744,81 +716,71 @@ FD_form_formats * FormPreferences::build_formats()
 }
 /*---------------------------------------*/
 
-FD_form_lnf_misc::~FD_form_lnf_misc()
+FD_form_converters::~FD_form_converters()
 {
   if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
 
-FD_form_lnf_misc * FormPreferences::build_lnf_misc()
+FD_form_converters * FormPreferences::build_converters()
 {
   FL_OBJECT *obj;
-  FD_form_lnf_misc *fdui = new FD_form_lnf_misc;
+  FD_form_converters *fdui = new FD_form_converters;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 350);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 350, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
   {
-    char const * const dummy = N_("Show banner|#S");
-    fdui->check_banner = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 15, 30, 30, idex(_(dummy)));
+    char const * const dummy = N_("All converters|#A");
+    fdui->browser_all = obj = fl_add_browser(FL_HOLD_BROWSER, 30, 30, 160, 270, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("From|#F");
+    fdui->choice_from = obj = fl_add_choice(FL_NORMAL_CHOICE, 280, 30, 150, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("To|#T");
+    fdui->choice_to = obj = fl_add_choice(FL_NORMAL_CHOICE, 280, 70, 150, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("Converter|#C");
+    fdui->input_converter = obj = fl_add_input(FL_NORMAL_INPUT, 280, 110, 150, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_button(obj, 1);
   {
-    char const * const dummy = N_("Auto region delete|#A");
-    fdui->check_auto_region_delete = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 45, 30, 30, idex(_(dummy)));
+    char const * const dummy = N_("Flags|#F");
+    fdui->input_flags = obj = fl_add_input(FL_NORMAL_INPUT, 280, 150, 150, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_button(obj, 1);
   {
-    char const * const dummy = N_("Exit confirmation|#E");
-    fdui->check_exit_confirm = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 75, 30, 30, idex(_(dummy)));
+    char const * const dummy = N_("Add|#A");
+    fdui->button_add = obj = fl_add_button(FL_NORMAL_BUTTON, 240, 270, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_button(obj, 1);
-  fdui->check_display_shrtcuts = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 105, 30, 30, _("Display keyboard shortcuts"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_button(obj, 1);
-  fdui->counter_autosave = obj = fl_add_counter(FL_NORMAL_COUNTER, 320, 255, 115, 30, _("Autosave interval"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_counter_precision(obj, 0);
-    fl_set_counter_bounds(obj, 0, 1200);
-    fl_set_counter_value(obj, 300);
-    fl_set_counter_step(obj, 1, 1);
   {
-    char const * const dummy = N_("File->New asks for name|#N");
-    fdui->check_ask_new_file = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 135, 30, 30, idex(_(dummy)));
+    char const * const dummy = N_("Delete|#D");
+    fdui->button_delete = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 270, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_button(obj, 1);
-  {
-    char const * const dummy = N_("Cursor follows scrollbar|#C");
-    fdui->check_cursor_follows_scrollbar = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 165, 30, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_button(obj, 1);
-  fdui->counter_wm_jump = obj = fl_add_counter(FL_NORMAL_COUNTER, 320, 225, 115, 30, _("Wheel mouse jump"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_counter_precision(obj, 0);
-    fl_set_counter_bounds(obj, 0, 250);
-    fl_set_counter_value(obj, 100);
-    fl_set_counter_step(obj, 1, 1);
   fl_end_form();
 
   fdui->form->fdui = fdui;
@@ -827,58 +789,138 @@ FD_form_lnf_misc * FormPreferences::build_lnf_misc()
 }
 /*---------------------------------------*/
 
-FD_form_interface::~FD_form_interface()
+FD_form_paths::~FD_form_paths()
 {
   if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
 
-FD_form_interface * FormPreferences::build_interface()
+FD_form_paths * FormPreferences::build_paths()
 {
   FL_OBJECT *obj;
-  FD_form_interface *fdui = new FD_form_interface;
+  FD_form_paths *fdui = new FD_form_paths;
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 450, 350);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 350, "");
-  fdui->input_popup_font = obj = fl_add_input(FL_NORMAL_INPUT, 230, 30, 200, 30, _("Popup Font"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_menu_font = obj = fl_add_input(FL_NORMAL_INPUT, 230, 60, 200, 30, _("Menu Font"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_popup_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 230, 90, 200, 30, _("Popup Encoding"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("Bind file|#B");
-    fdui->input_bind_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 178, 190, 30, idex(_(dummy)));
+    char const * const dummy = N_("Default path|#p");
+    fdui->input_default_path = obj = fl_add_input(FL_NORMAL_INPUT, 170, 10, 170, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_bind_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 178, 80, 30, _("Browse..."));
+  fdui->button_default_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 10, 90, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("User Interface file|#U");
-    fdui->input_ui_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 148, 190, 30, idex(_(dummy)));
+    char const * const dummy = N_("Template path|#T");
+    fdui->input_template_path = obj = fl_add_input(FL_NORMAL_INPUT, 170, 40, 170, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_ui_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 148, 80, 30, _("Browse..."));
+  fdui->button_template_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 40, 90, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("Override X-Windows dead-keys|#O");
-    fdui->check_override_x_dead_keys = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 24, 230, 30, 30, idex(_(dummy)));
+    char const * const dummy = N_("Temp dir|#d");
+    fdui->check_use_temp_dir = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 134, 70, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
     fl_set_button(obj, 1);
+  fdui->input_temp_dir = obj = fl_add_input(FL_NORMAL_INPUT, 170, 70, 170, 30, "");
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->button_temp_dir_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 70, 90, 30, _("Browse..."));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("Check last files|#C");
+    fdui->check_last_files = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 134, 100, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_button(obj, 1);
+  fdui->input_lastfiles = obj = fl_add_input(FL_NORMAL_INPUT, 170, 100, 170, 30, "");
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->button_lastfiles_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 100, 90, 30, _("Browse..."));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("Last file count|#L");
+    fdui->counter_lastfiles = obj = fl_add_counter(FL_SIMPLE_COUNTER, 170, 130, 90, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_counter_precision(obj, 0);
+    fl_set_counter_bounds(obj, 0, 9);
+    fl_set_counter_value(obj, 4);
+    fl_set_counter_step(obj, 1, 1);
+  {
+    char const * const dummy = N_("Backup path|#B");
+    fdui->check_make_backups = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 134, 170, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_button(obj, 1);
+  fdui->input_backup_path = obj = fl_add_input(FL_NORMAL_INPUT, 170, 170, 170, 30, "");
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->button_backup_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 170, 90, 30, _("Browse..."));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  {
+    char const * const dummy = N_("LyXServer pipe|#S");
+    fdui->input_serverpipe = obj = fl_add_input(FL_NORMAL_INPUT, 169, 217, 170, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->button_serverpipe_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 339, 217, 90, 30, _("Browse..."));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fl_end_form();
+
+  fdui->form->fdui = fdui;
+
+  return fdui;
+}
+/*---------------------------------------*/
+
+FD_form_inputs_misc::~FD_form_inputs_misc()
+{
+  if ( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
+
+FD_form_inputs_misc * FormPreferences::build_inputs_misc()
+{
+  FL_OBJECT *obj;
+  FD_form_inputs_misc *fdui = new FD_form_inputs_misc;
+
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
+  fdui->form->u_vdata = this;
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
+  {
+    char const * const dummy = N_("date format|#f");
+    fdui->input_date_format = obj = fl_add_input(FL_NORMAL_INPUT, 120, 70, 285, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;
@@ -902,6 +944,14 @@ FD_form_printer * FormPreferences::build_printer()
   fdui->form = fl_bgn_form(FL_NO_BOX, 450, 350);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 350, "");
+  fdui->input_name = obj = fl_add_input(FL_NORMAL_INPUT, 130, 10, 80, 30, _("name"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->check_adapt_output = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 240, 10, 30, 30, _("adapt output"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 0, 60, 452, 260, _("Printer Command and Flags"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fdui->input_command = obj = fl_add_input(FL_NORMAL_INPUT, 130, 75, 80, 30, _("command"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
@@ -950,14 +1000,6 @@ FD_form_printer * FormPreferences::build_printer()
   fdui->input_paper_size = obj = fl_add_input(FL_NORMAL_INPUT, 360, 285, 80, 30, _("paper size"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_name = obj = fl_add_input(FL_NORMAL_INPUT, 130, 10, 80, 30, _("name"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->check_adapt_output = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 240, 10, 30, 30, _("adapt output"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 0, 60, 452, 260, _("Printer Command and Flags"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fl_end_form();
 
   fdui->form->fdui = fdui;
@@ -966,108 +1008,66 @@ FD_form_printer * FormPreferences::build_printer()
 }
 /*---------------------------------------*/
 
-FD_form_paths::~FD_form_paths()
+FD_form_outputs_misc::~FD_form_outputs_misc()
 {
   if ( form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
 
-FD_form_paths * FormPreferences::build_paths()
+FD_form_outputs_misc * FormPreferences::build_outputs_misc()
 {
   FL_OBJECT *obj;
-  FD_form_paths *fdui = new FD_form_paths;
+  FD_form_outputs_misc *fdui = new FD_form_outputs_misc;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 350);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 455, 375);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 350, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 455, 375, "");
+    fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
   {
-    char const * const dummy = N_("Default path|#p");
-    fdui->input_default_path = obj = fl_add_input(FL_NORMAL_INPUT, 170, 10, 170, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_default_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 10, 90, 30, _("Browse..."));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Last file count|#L");
-    fdui->counter_lastfiles = obj = fl_add_counter(FL_SIMPLE_COUNTER, 170, 130, 90, 30, idex(_(dummy)));
+    char const * const dummy = N_("Ascii line length|#A");
+    fdui->counter_line_len = obj = fl_add_counter(FL_NORMAL_COUNTER, 315, 50, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
     fl_set_counter_precision(obj, 0);
-    fl_set_counter_bounds(obj, 0, 9);
-    fl_set_counter_value(obj, 4);
+    fl_set_counter_bounds(obj, 0, 120);
+    fl_set_counter_value(obj, 75);
     fl_set_counter_step(obj, 1, 1);
   {
-    char const * const dummy = N_("Template path|#T");
-    fdui->input_template_path = obj = fl_add_input(FL_NORMAL_INPUT, 170, 40, 170, 30, idex(_(dummy)));
+    char const * const dummy = N_("TeX encoding|#T");
+    fdui->input_tex_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 216, 95, 200, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_template_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 40, 90, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("Check last files|#C");
-    fdui->check_last_files = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 134, 100, 30, 30, idex(_(dummy)));
+    char const * const dummy = N_("Default paper size|#p");
+    fdui->choice_default_papersize = obj = fl_add_choice(FL_NORMAL_CHOICE, 219, 142, 199, 29, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_button(obj, 1);
-  fdui->button_temp_dir_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 70, 90, 30, _("Browse..."));
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_lastfiles = obj = fl_add_input(FL_NORMAL_INPUT, 170, 100, 170, 30, "");
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 12, 186, 406, 120, _("Outside code interaction"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_lastfiles_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 100, 90, 30, _("Browse..."));
+    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
+  {
+    char const * const dummy = N_("ascii roff|#r");
+    fdui->input_ascii_roff = obj = fl_add_input(FL_NORMAL_INPUT, 121, 209, 285, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("Backup path|#B");
-    fdui->check_make_backups = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 134, 170, 30, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_button(obj, 1);
-  fdui->input_backup_path = obj = fl_add_input(FL_NORMAL_INPUT, 170, 170, 170, 30, "");
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_backup_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 170, 90, 30, _("Browse..."));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("LyXServer pipe|#S");
-    fdui->input_serverpipe = obj = fl_add_input(FL_NORMAL_INPUT, 169, 217, 170, 30, idex(_(dummy)));
+    char const * const dummy = N_("checktex|#c");
+    fdui->input_checktex = obj = fl_add_input(FL_NORMAL_INPUT, 121, 250, 285, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->button_serverpipe_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 339, 217, 90, 30, _("Browse..."));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  fdui->input_temp_dir = obj = fl_add_input(FL_NORMAL_INPUT, 170, 70, 170, 30, "");
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  {
-    char const * const dummy = N_("Temp dir|#d");
-    fdui->check_use_temp_dir = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 134, 70, 30, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-    fl_set_button(obj, 1);
   fl_end_form();
 
   fdui->form->fdui = fdui;

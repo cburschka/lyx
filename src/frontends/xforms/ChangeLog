@@ -1,4 +1,9 @@
-2001-08-21  Angus Leeming  <a.leeming@ic.ac.uk>
+2001-08-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* forms/form_preferences.fd: order the items "logically" so that
+	tabbing through the dialog makes sense. Close bug #404569.
+
+2001-08-23  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormPreferences.C: Tentative fix of John's "no point in spell
 	command "None"" bug, #223255.
