@@ -2964,20 +2964,27 @@ void LyXText::getVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		pain.fillRectangle(x, y, w, h, backgroundColor());
 	} else if (inset != 0) {
 		int h = row_ptr->baseline() - inset->ascent(bview, font);
+		// first clear the whole row above the inset!
 		if (h > 0) {
+#if 0
 			int const w = (inset_owner ?
 				 inset_owner->width(bview, font) : ww);
-			pain.fillRectangle(x_offset, y_offset, w, h,
-					   backgroundColor());
+#endif
+			pain.fillRectangle(x_offset, y_offset, ww, h,
+			                   backgroundColor());
 		}
 		h += inset->ascent(bview, font) + inset->descent(bview, font);
+		// clear the space below the inset!
 		if ((row_ptr->height() - h) > 0) {
+#if 0
 			int const w = (inset_owner ?
 				 inset_owner->width(bview, font) : ww);
+#endif
 			pain.fillRectangle(x_offset, y_offset + h,
-					   w, row_ptr->height() - h,
-					   backgroundColor());
+			                   ww, row_ptr->height() - h,
+			                   backgroundColor());
 		}
+		// clear the space behind the inset, if needed
 		if (!inset_owner && !inset->display() && !inset->needFullRow())
 		{
 			int const w = inset->width(bview, font) + int(x);

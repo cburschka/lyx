@@ -71,6 +71,18 @@ public:
 	                                     string const &);
 	///
 	bool checkInsertChar(LyXFont &);
+	///
+	// this are needed here because of the label/inlined functionallity
+	///
+	bool needFullRow() const { return !collapsed_ && !inlined(); }
+	///
+	bool isOpen() const { return !collapsed_ || inlined(); }
+	///
+	bool inlined() const { return !inset.getAutoBreakRows(); }
+	///
+	void inlined(BufferView *, bool flag);
+	///
+	void draw(BufferView *, const LyXFont &, int , float &, bool) const;
 
 private:
 	///
@@ -79,6 +91,8 @@ private:
 	string const get_new_label() const;
 	///
 	void setButtonLabel();
+	///
+	void set_latex_font(BufferView *);
 };
 
 #endif

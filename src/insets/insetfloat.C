@@ -273,26 +273,21 @@ bool InsetFloat::showInsetDialog(BufferView * bv) const
 
 void InsetFloat::insetButtonRelease(BufferView * bv, int x, int y, int button)
 {
-#if 0
-	if (x >= top_x
-	    && x < button_length
-	    && y >= button_top_y
-	    && y < button_bottom_y
-	    && button == 3) {
-		// This obviously need to change.
-		lyxerr << "InsetFloat: Let's edit this floats parameters!"
-		       << endl;
-		//bv->owner()->getDialogs()->showFloat(this);
-	} else {
-		InsetCollapsable::insetButtonRelease(bv, x, y, button);
+#if 1
+	if ((x >= 0)  && (x < button_length) &&
+	    (y >= button_top_y) &&  (y <= button_bottom_y) &&
+	    (button == 3))
+	{
+		showInsetDialog(bv);
+		return;
 	}
 #else
 	if (button == 3) {
 		showInsetDialog(bv);
 		return;
 	}
-	InsetCollapsable::insetButtonRelease(bv, x, y, button);
 #endif
+	InsetCollapsable::insetButtonRelease(bv, x, y, button);
 }
 
 

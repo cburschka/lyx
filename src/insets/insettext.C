@@ -190,17 +190,13 @@ InsetText::~InsetText()
 
 void InsetText::clear()
 {
-	cached_bview = 0;
-
-	// now also delete all caches this should be safe, hopefully
-	cache.clear();
-
 	while (par) {
 		Paragraph * tmp = par->next();
 		delete par;
 		par = tmp;
 	}
 	par = new Paragraph;
+	reinitLyXText();
 }
 
 
@@ -305,6 +301,8 @@ int InsetText::width(BufferView * bv, LyXFont const &) const
 
 int InsetText::textWidth(BufferView * bv) const
 {
+	if (!autoBreakRows)
+		return -1;
 	int const w = getMaxWidth(bv, this);
 	return w;
 }
@@ -332,18 +330,8 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	}
 
 	xpos = x;
-#if 0
-	UpdatableInset::draw(bv, f, baseline, x, cleared);
-#else
 	if (!owner())
 		x += static_cast<float>(scroll());
-#endif
-#if 0
-	// update insetWidth and insetHeight with dummy calls
-	(void)ascent(bv, f);
-	(void)descent(bv, f);
-	(void)width(bv, f);
-#endif
 
 	// if top_x differs we have a rule down and we don't have to clear anything
 	if (!cleared && (top_x == int(x)) &&
@@ -464,8 +452,11 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 void InsetText::drawFrame(Painter & pain, bool cleared) const
 {
 	if (!frame_is_visible || cleared) {
-		pain.rectangle(top_x + 1, top_baseline - insetAscent + 1,
-		               insetWidth - 1, insetAscent + insetDescent - 1,
+		frame_x = top_x + 1;
+		frame_y = top_baseline - insetAscent + 1;
+		frame_w = insetWidth - 1;
+		frame_h = insetAscent + insetDescent - 1;
+		pain.rectangle(frame_x, frame_y, frame_w, frame_h,
 		               frame_color);
 		frame_is_visible = true;
 	}
@@ -476,8 +467,7 @@ void InsetText::clearFrame(Painter & pain, bool cleared) const
 {
 	if (frame_is_visible) {
 		if (!cleared) {
-			pain.rectangle(top_x + 1, top_baseline - insetAscent + 1,
-			               insetWidth - 1, insetAscent + insetDescent - 1,
+			pain.rectangle(frame_x, frame_y, frame_w, frame_h,
 			               backgroundColor());
 		}
 		frame_is_visible = false;
@@ -1664,11 +1654,6 @@ int InsetText::getMaxWidth(BufferView * bv, UpdatableInset const * inset) const
 
 void InsetText::setParagraphData(Paragraph * p)
 {
-	cached_bview = 0;
-
-	// now also delete all caches this should be safe, hopefully
-	cache.clear();
-
 	while (par) {
 		Paragraph * tmp = par->next();
 		delete par;
@@ -1685,8 +1670,7 @@ void InsetText::setParagraphData(Paragraph * p)
 		np = np->next();
 		np->setInsetOwner(this);
 	}
-
-	need_update = INIT;
+	reinitLyXText();
 }
 
 
@@ -1706,6 +1690,7 @@ void InsetText::setAutoBreakRows(bool flag)
 		need_update = FULL;
 		if (!flag)
 			removeNewlines();
+		reinitLyXText();
 	}
 }
 
@@ -1882,6 +1867,37 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 		need_update = FULL;
 	// this will scroll the screen such that the cursor becomes visible 
 	bv->updateScrollbar();
+}
+
+
+void InsetText::reinitLyXText() const
+{
+	for(Cache::iterator it = cache.begin(); it != cache.end(); ++it) {
+		lyx::Assert(it->second.text.get());
+
+		LyXText * t = it->second.text.get();
+		BufferView * bv = it->first;
+
+		saveLyXTextState(t);
+		for (Paragraph * p = par; p; p = p->next()) {
+			p->resizeInsetsLyXText(bv);
+		}
+		t->init(bv, true);
+		restoreLyXTextState(bv, t);
+		if (the_locking_inset) {
+			inset_x = cx(bv) - top_x + drawTextXOffset;
+			inset_y = cy(bv) + drawTextYOffset;
+		}
+		if (bv->screen()) {
+			t->first = bv->screen()->topCursorVisible(t);
+		}
+		if (!owner())
+			updateLocal(bv, FULL, false);
+		else
+			need_update = FULL;
+		// this will scroll the screen such that the cursor becomes visible 
+		bv->updateScrollbar();
+	}
 }
 
 

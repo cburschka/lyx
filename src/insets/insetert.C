@@ -22,6 +22,7 @@
 #include "lyx_gui_misc.h"
 #include "BufferView.h"
 #include "LyXView.h"
+#include "lyxtext.h"
 
 using std::ostream;
 
@@ -114,18 +115,14 @@ void InsetERT::setFont(BufferView *, LyXFont const &, bool, bool selectall)
 void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 {
 	InsetCollapsable::edit(bv, x, y, button);
-
-	LyXFont font(LyXFont::ALL_INHERIT);
-	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
-	font.setColor(LColor::latex);
-
-	inset.setFont(bv, font);
+	set_latex_font(bv);
 }
 
 
-void InsetERT::edit(BufferView * bv, bool)
+void InsetERT::edit(BufferView * bv, bool front)
 {
-	edit(bv, 0, 0, 0);
+	InsetCollapsable::edit(bv, front);
+	set_latex_font(bv);
 }
 
 
@@ -133,14 +130,35 @@ void InsetERT::insetButtonRelease(BufferView * bv,
 				  int x, int y, int button)
 {
 	if ((x >= 0)  && (x < button_length) &&
-	    (y >= button_top_y) &&  (y <= button_bottom_y)) {
+	    (y >= button_top_y) &&  (y <= button_bottom_y))
+	{
+		if (button == 2) {
+			inlined(bv, !inlined());
+			return;
+		}
 		if (collapsed_) {
 			setLabel(_("ERT"));
 		} else {
 			setLabel(get_new_label());
 		}
+		if (collapsed_) {
+			collapsed_ = false;
+			inset.insetButtonRelease(bv, 0, 0, button);
+			inset.setUpdateStatus(bv, InsetText::FULL);
+			bv->updateInset(this, true);
+		} else {
+			collapsed_ = true;
+			bv->unlockInset(this);
+			bv->updateInset(this, true);
+		}
+	} else if (!collapsed_ && (y > button_bottom_y)) {
+		LyXFont font(LyXFont::ALL_SANE);
+		int yy = ascent(bv, font) + y -
+		    (ascent_collapsed() +
+		     descent_collapsed() +
+		     inset.ascent(bv, font));
+		inset.insetButtonRelease(bv, x, yy, button);
 	}
-	InsetCollapsable::insetButtonRelease(bv, x, y, button);
 }
 
 
@@ -191,7 +209,11 @@ UpdatableInset::RESULT
 InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
 {
 	UpdatableInset::RESULT result = DISPATCHED_NOUPDATE;
-	
+
+	if (!inset.paragraph()->size()) {
+		set_latex_font(bv);
+	}
+
 	switch(action) {
 	case LFUN_LAYOUT:
 		bv->owner()->setLayout(inset.paragraph()->getLayout());
@@ -202,13 +224,8 @@ InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
 	switch(action) {
 	case LFUN_BREAKPARAGRAPH:
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
-	{
-		LyXFont font(LyXFont::ALL_INHERIT);
-		font.setFamily(LyXFont::TYPEWRITER_FAMILY);
-		font.setColor(LColor::latex);
-		inset.setFont(bv, font);
-	}
-	break;
+		set_latex_font(bv);
+		break;
 	
 	default:
 		break;
@@ -259,4 +276,73 @@ bool InsetERT::checkInsertChar(LyXFont & font)
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
 	return true;
+}
+
+
+void InsetERT::inlined(BufferView * bv, bool flag)
+{
+	if (flag != inset.getAutoBreakRows())
+		return;
+	
+	inset.setAutoBreakRows(!flag);
+	bv->updateInset(this, true);
+}
+
+void InsetERT::draw(BufferView * bv, LyXFont const & f, 
+                    int baseline, float & x, bool cleared) const
+{
+	Painter & pain = bv->painter();
+
+	button_length = width_collapsed();
+	button_top_y = -ascent(bv, f);
+	button_bottom_y = -ascent(bv, f) + ascent_collapsed() +
+		descent_collapsed();
+
+	if (!isOpen()) {
+		draw_collapsed(pain, baseline, x);
+		x += TEXT_TO_INSET_OFFSET;
+		return;
+	}
+
+	float old_x = x;
+
+	if (!owner())
+		x += static_cast<float>(scroll());
+
+	if (!cleared && (inset.need_update == InsetText::FULL ||
+	                 inset.need_update == InsetText::INIT ||
+	                 top_x != int(x) ||
+	                 top_baseline != baseline))
+	{
+		// we don't need anymore to clear here we just have to tell
+		// the underlying LyXText that it should do the RowClear!
+		inset.setUpdateStatus(bv, InsetText::FULL);
+		bv->text->status(bv, LyXText::CHANGED_IN_DRAW);
+		return;
+	}
+
+	top_x = int(x);
+	top_baseline = baseline;
+
+	int const bl = baseline - ascent(bv, f) + ascent_collapsed();
+
+	if (inlined()) {
+		inset.draw(bv, f, baseline, x, cleared);
+	} else {
+		draw_collapsed(pain, bl, old_x);
+		inset.draw(bv, f, 
+				   bl + descent_collapsed() + inset.ascent(bv, f),
+				   x, cleared);
+	}
+	need_update = NONE;
+}
+
+
+void InsetERT::set_latex_font(BufferView * bv)
+{
+	LyXFont font(LyXFont::ALL_INHERIT);
+
+	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
+	font.setColor(LColor::latex);
+	inset.setFont(bv, font);
 }

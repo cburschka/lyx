@@ -78,7 +78,7 @@ public:
 	///
 	void insetUnlock(BufferView *);
 	///
-	bool needFullRow() const { return !collapsed_; }
+	bool needFullRow() const { return isOpen(); }
 	///
 	bool lockInsetInInset(BufferView *, UpdatableInset *);
 	///
@@ -223,6 +223,11 @@ protected:
 	mutable int button_top_y;
 	///
 	mutable int button_bottom_y;
+	///
+	mutable int topx;
+	mutable int topbaseline;
+	mutable UpdateCodes need_update;
+
 private:
 	///
 	string label;
@@ -232,12 +237,6 @@ private:
 #endif
 	///
 	mutable int oldWidth;
-	///
-	mutable int topx;
-	mutable int topbaseline;
-	mutable UpdateCodes need_update;
-	///
-	bool inlined;
 };
 
 #endif

@@ -182,6 +182,8 @@ public:
 	///
 	void setAutoBreakRows(bool);
 	///
+	bool getAutoBreakRows() const { return autoBreakRows; }
+	///
 	void setDrawFrame(BufferView *, DrawFrame);
 	///
 	void setFrameColor(BufferView *, LColor::color);
@@ -293,7 +295,7 @@ private:
 	bool checkAndActivateInset(BufferView * bv, bool behind);
 	///
 	bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
-				   int button = 0);
+	                           int button = 0);
 	///
 	void removeNewlines();
 	///
@@ -317,6 +319,8 @@ private:
 	///
 	void saveLyXTextState(LyXText *) const;
 	void restoreLyXTextState(BufferView *, LyXText *) const;
+	///
+	void reinitLyXText() const;
 	
 	/* Private structures and variables */
 	///
@@ -383,5 +387,12 @@ private:
 	// this is needed globally so we know that we're using it actually and
 	// so the LyXText-Cache is not erased until used!
 	mutable LyXText * lt;
+	///
+	// to remember old painted frame dimensions to clear it on the right spot!
+	///
+	mutable int frame_x;
+	mutable int frame_y;
+	mutable int frame_w;
+	mutable int frame_h;
 };
 #endif

@@ -1,3 +1,28 @@
+2001-07-31  Juergen Vigna  <jug@sad.it>
+
+	* insetcollapsable.h: removed inline variable and moved it over
+	to the only user InsetERT.
+
+	* insetcollapsable.C (insetButtonRelease): fixed uncollpasing the
+	inset opening immediately therein lying insets dialogs!
+
+	* insetert.C (localDispatch): set the font also if we don't have any
+	chars in this paragraph, otherwise if we delete all of em and start
+	writing we have the wrong font.
+	(inlined): added
+	(draw): implemented for inline support
+	(insetButtonRelease): ditto.
+
+2001-07-30  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (reinitLyXText): new function to reinit the insets
+	text after lot's of paragraph changes. Use this instead of the
+	cache.clear() which is VERY dangerous.
+
+	* insetfloat.C (insetButtonRelease): we should only show the dialog
+	if we press on the label otherwise we have problems to open mouse
+	button 3 dialogs inside this float (f.ex. of a tabular!)
+
 2001-07-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetert.C: change back to "ERT"
