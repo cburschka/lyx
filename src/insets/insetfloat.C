@@ -24,6 +24,7 @@
 #include "LaTeXFeatures.h"
 #include "debug.h"
 #include "Floating.h"
+#include "buffer.h"
 
 using std::ostream;
 using std::endl;
@@ -190,11 +191,28 @@ int InsetFloat::latex(Buffer const * buf,
 		      ostream & os, bool fragile, bool fp) const
 {
 	string const tmptype = (wide_ ? floatType_ + "*" : floatType_);
+	// Figure out the float placement to use.
+	// From lowest to highest:
+	// - float default placement
+	// - document wide default placement
+	// - specific float placement
+	string placement;
+	string const buf_placement = buf->params.float_placement;
+	string const def_placement = floatList.defaultPlacement(floatType_);
+	if (!floatPlacement_.empty()
+	    && floatPlacement_ != def_placement) {
+		placement = floatPlacement_;
+	} else if (!buf_placement.empty()
+		   && buf_placement != def_placement) {
+		placement = buf_placement;
+	}
 	
 	os << "\\begin{" << tmptype << "}";
-	if (!floatPlacement_.empty()
-	    && floatPlacement_ != floatList.defaultPlacement(floatType_))
-		os << "[" << floatPlacement_ << "]";
+	// We only output placement if different from the def_placement.
+	if (!placement.empty()) {
+		os << "[" << placement << "]";
+	}
+	
 	os << "%\n";
     
 	int const i = inset.latex(buf, os, fragile, fp);
