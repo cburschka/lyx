@@ -1930,6 +1930,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->insertInset(new_inset);
 		new_inset->Edit(owner->view(), 0, 0, 0);
 	}
+	break;
 	case LFUN_INSET_FOOTNOTE:
 	{
 		InsetFoot * new_inset = new InsetFoot(owner->buffer());
