@@ -28,14 +28,16 @@ static XIC xic;
 XComposeStatus compose_status= {0, 0};
 
 // This is called after the main LyX window has been created
-void InitLyXLookup(Display* display, Window window) 
+void InitLyXLookup(Display * display, Window window) 
 {
 	xic = 0;
-
+	
 	// This part could be done before opening display
 	setlocale(LC_CTYPE, "");
        	if (!XSupportsLocale()) {
-		lyxerr.debug() << "InitLyXLookup: X does not support this locale." << endl;
+		lyxerr.debug()
+			<< "InitLyXLookup: X does not support this locale."
+			<< endl;
 		return;
 	} 
 	if (!XSetLocaleModifiers("")) {
@@ -43,15 +45,15 @@ void InitLyXLookup(Display* display, Window window)
 			"for this locale." << endl;
 		return;
 	}
-
+	
 	// This part will have to be done for each frame
 	xim = XOpenIM (display, 0, 0, 0);
 	if (xim) {
-		xic = XCreateIC (xim,  
-			    XNInputStyle, XIMPreeditNothing | XIMStatusNothing,
-			    XNClientWindow, window,
-			    XNFocusWindow, window, 
-			    0);
+		xic = XCreateIC(xim, XNInputStyle,
+				XIMPreeditNothing | XIMStatusNothing,
+				XNClientWindow, window,
+				XNFocusWindow, window, 
+				0);
 		
 		if (!xic) {
 			lyxerr.debug() << "InitLyXLookup: could not create "
@@ -63,14 +65,13 @@ void InitLyXLookup(Display* display, Window window)
 	else 
 		lyxerr.debug() << "InitLyXLookup: could not open "
 			"an input method." << endl;
-
 }
 
 
 static
-bool isDeadEvent(XEvent *event,
-		  char *buffer_return, int bytes_buffer,
-		  KeySym *keysym_return)
+bool isDeadEvent(XEvent * event,
+		  char * buffer_return, int bytes_buffer,
+		  KeySym * keysym_return)
 {
 	XLookupString(&event->xkey, buffer_return,
 		      bytes_buffer, keysym_return,
@@ -136,9 +137,9 @@ bool isDeadEvent(XEvent *event,
 
 
 // This is called instead of XLookupString()
-int LyXLookupString(XEvent *event,    
-		    char *buffer_return, int bytes_buffer,
-		    KeySym *keysym_return) 
+int LyXLookupString(XEvent * event,    
+		    char * buffer_return, int bytes_buffer,
+		    KeySym * keysym_return) 
 {
 	int result = 0;
 	if (xic) {
@@ -205,16 +206,16 @@ void CloseLyXLookup()
 XComposeStatus compose_status= {0, 0};
 
 // This is called after the main LyX window has been created
-void InitLyXLookup(Display* , Window ) 
+void InitLyXLookup(Display *, Window ) 
 {
 	//Nothing to do.
 }
 
 // This is called instead of XLookupString(). I this particular case,
 // this *is* XLookupString...
-int LyXLookupString(XEvent *event,    
-		    char *buffer_return, int bytes_buffer,
-		    KeySym *keysym_return) 
+int LyXLookupString(XEvent * event,    
+		    char * buffer_return, int bytes_buffer,
+		    KeySym * keysym_return) 
 {
 	return XLookupString(&event->xkey, buffer_return,
 				  bytes_buffer, keysym_return,
@@ -226,6 +227,5 @@ void CloseLyXLookup()
 {
 	// Nothing to do
 }
-
 
 #endif // HAVE_XOPENIM

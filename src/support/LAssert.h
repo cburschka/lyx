@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef _LASSERT_H_
-#define _LASSERT_H_
+#ifndef LASSERT_H
+#define LASSERT_H
 
 //namespace LyX {
 

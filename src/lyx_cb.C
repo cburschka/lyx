@@ -1159,7 +1159,7 @@ void MenuInsertLabel(char const *arg)
 	if (label.empty())
 		label = frontStrip(strip(askForText(_("Enter new label to insert:"))));
 	if (!label.empty()) {
-		InsetLabel *new_inset = new InsetLabel;
+		InsetLabel * new_inset = new InsetLabel;
 		new_inset->setContents(label);
 		current_view->buffer()->insertInset(new_inset);
 	}
@@ -1259,8 +1259,12 @@ int RunLinuxDoc(int flag, string const & filename)
 #endif
 		BufferParams::PAPER_SIZE ps = static_cast<BufferParams::PAPER_SIZE>(current_view->buffer()->params.papersize);
 		switch (ps) {
-		case BufferParams::PAPER_A4PAPER:  add_flags = "-p a4";     break;
-		case BufferParams::PAPER_USLETTER: add_flags = "-p letter"; break;
+		case BufferParams::PAPER_A4PAPER:
+			add_flags = "-p a4";
+			break;
+		case BufferParams::PAPER_USLETTER:
+			add_flags = "-p letter";
+			break;
 		default: /* nothing to be done yet ;-) */     break; 
 		}
 	}
@@ -2036,10 +2040,9 @@ void MenuLayoutSave()
 
 void NoteCB()
 {
-	InsetInfo *new_inset = new InsetInfo();
+	InsetInfo * new_inset = new InsetInfo();
 	current_view->buffer()->insertInset(new_inset);
 	new_inset->Edit(0, 0);
-	//current_view->buffer()->update(-1);
 }
 
 
@@ -2113,10 +2116,9 @@ void HyphenationPoint()
 	if (current_view->available())  {
 		current_view->getScreen()->HideCursor();
 		current_view->buffer()->update(-2);
-		InsetSpecialChar *new_inset = 
+		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::HYPHENATION);
 		current_view->buffer()->insertInset(new_inset);
-		//current_view->buffer()->update(-1);
 	}
 }
 
@@ -2126,7 +2128,7 @@ void Ldots()
 	if (current_view->available())  {
 		current_view->getScreen()->HideCursor();
 		current_view->buffer()->update(-2);
-		InsetSpecialChar *new_inset = 
+		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::LDOTS);
 		current_view->buffer()->insertInset(new_inset);
 	}
@@ -2138,7 +2140,7 @@ void EndOfSentenceDot()
 	if (current_view->available())  {
 		current_view->getScreen()->HideCursor();
 		current_view->buffer()->update(-2);
-		InsetSpecialChar *new_inset = 
+		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::END_OF_SENTENCE);
 		current_view->buffer()->insertInset(new_inset);
 	}
@@ -2150,10 +2152,9 @@ void MenuSeparator()
 	if (current_view->available())  {
 		current_view->getScreen()->HideCursor();
 		current_view->buffer()->update(-2);
-		InsetSpecialChar *new_inset = 
+		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR);
 		current_view->buffer()->insertInset(new_inset);
-		//current_view->buffer()->update(-1);
 	}
 }
 
@@ -3056,7 +3057,7 @@ void GotoNote()
 
 void InsertCorrectQuote()
 {
-	Buffer *cbuffer = current_view->buffer();
+	Buffer * cbuffer = current_view->buffer();
 	char c;
 
 	if  (cbuffer->text->cursor.pos )
@@ -3487,9 +3488,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	
 	buffer->update(-1);
       
-	Inset *new_inset = 0;
-	
-	new_inset = new InsetFig(100, 100, buffer);
+	Inset * new_inset = new InsetFig(100, 100, buffer);
 	buffer->insertInset(new_inset);
 	new_inset->Edit(0, 0);
 	buffer->update(0);
@@ -3838,7 +3837,7 @@ extern "C" void RefSelectCB(FL_OBJECT *, long data)
 	else
 		t += "{" + s + "}";
 
-	Inset *new_inset = 
+	Inset * new_inset = 
 		new InsetRef(t, current_view->buffer());
 	current_view->buffer()->insertInset(new_inset);
 }
@@ -4002,7 +4001,7 @@ void FitLockedInsetCursor(long x, long y, int asc, int desc)
 }
 
 
-int UnlockInset(UpdatableInset* inset)
+int UnlockInset(UpdatableInset * inset)
 {
 	if (inset &&
 	    current_view->buffer()->the_locking_inset == inset){
@@ -4029,10 +4028,10 @@ void LockedInsetStoreUndo(Undo::undo_kind kind)
 }
 
 
-void PutInsetIntoInsetUpdateList(Inset* inset)
+void PutInsetIntoInsetUpdateList(Inset * inset)
 {
 	if (inset) {
-		InsetUpdateStruct* tmp = new InsetUpdateStruct();
+		InsetUpdateStruct * tmp = new InsetUpdateStruct();
 		tmp->inset = inset;
 		tmp->next = InsetUpdateList;
 		InsetUpdateList = tmp;
@@ -4042,7 +4041,7 @@ void PutInsetIntoInsetUpdateList(Inset* inset)
 
 void UpdateInsetUpdateList()
 {
-	InsetUpdateStruct *tmp = InsetUpdateList;
+	InsetUpdateStruct * tmp = InsetUpdateList;
 	while (tmp) {
 		UpdateInset(tmp->inset, false); // "false" because no document change
 		tmp = tmp->next;

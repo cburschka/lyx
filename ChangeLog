@@ -1,3 +1,62 @@
+1999-11-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.h: made the methods that take iterators
+	use const_iterator.
+
+	* src/support/lstrings.C (countChar): use std::cound(itr, itr, val)
+	(regexMatch): made is use the real regex class.
+
+	* src/support/Makefile.am: changed to use libtool
+
+	* src/support/.cvsignore: added *.lo, .libs and libsupport.la
+
+	* src/mathed/math_defs.h: made the mathaligns be in a enum instead
+	of defines.
+	(MathIsInset ++): changed several macros to be inline functions
+	instead. 
+
+	* src/mathed/Makefile.am: changed to use libtool
+
+	* src/mathed/.cvsignore: added *.lo, .libs and libmathed.la
+
+	* src/insets/inset* : Clone changed to const and return type is
+	the true insettype not just Inset*.
+	
+	* src/insets/Makefile.am: changed to use libtool
+
+	* src/insets/.cvsignore: added *.lo, .libs and libinsets.la
+
+	* src/undo.[Ch] : added empty() and changed some of the method
+	names.
+	
+	* src/texrow.[Ch]: rewrote to store texrow's in a std::list.
+
+	* src/lyxparagraph.h: use id() and id(...) instead of getID and
+	setID use block<> for the bullets array, added const several places.
+
+	* src/lyxfunc.C (getStatus): new function
+
+	* src/lyxfunc.[Ch] : small changes to take advantage of the new
+	LyXAction, added const to several funtions.
+
+	* src/filedlg.[Ch]: rewrote to store userchache and groupchache in
+	a std::map, and to store the dir items in a vector.
+
+	* src/Makefile.am (lyx_DEPENDENCIES): changed to use libtool files
+	as dependencies.
+
+	* src/LyXView.[Ch] + other files : changed currentView to view.
+	
+	* src/LyXAction.[Ch] : ported from the old devel branch.
+	
+	* src/.cvsignore: added .libs and a.out
+
+	* configure.in : changes to use libtool. 
+
+	* acinclude.m4 : inserted libtool.m4
+
+	* .cvsignore: added libtool
+
 1999-11-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/Makefile.am (lyx_DEPENDENCIES): give the explicit object

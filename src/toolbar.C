@@ -29,6 +29,7 @@
 #include "combox.h"
 #include "lyx_cb.h"
 #include "LyXView.h"
+#include "LyXAction.h"
 #include "support/lstrings.h"
 
 #ifdef TWO_COLOR_ICONS
@@ -471,8 +472,8 @@ void Toolbar::add(int action, bool doclean)
 	toolbarItem *newItem,*tmp;
 
 	if (lyxaction.isPseudoAction(action)) {
-		char const *arg;
-		kb_action act = (kb_action)lyxaction.retrieveActionArg(action, &arg);
+		string arg;
+		kb_action act = static_cast<kb_action>(lyxaction.retrieveActionArg(action, arg));
 		pixmap = getPixmap(act, arg);
 		help = lyxaction.helpText(act);
 		help += " ";

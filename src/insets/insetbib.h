@@ -26,13 +26,15 @@
 class InsetCitation: public InsetCommand {
 public:
 	///
-	InsetCitation(): InsetCommand("cite") { }
+	InsetCitation(): InsetCommand("cite") {}
 	///
 	InsetCitation(string const & key, string const & note = string());
         ///
 	~InsetCitation();
         ///
-        Inset * Clone() { return new InsetCitation(contents, options); }
+        InsetCitation * Clone() const {
+		return new InsetCitation(contents, options);
+	}
     	///
 	string getScreenLabel()const;
         ///
@@ -52,7 +54,7 @@ public:
 class InsetBibKey: public InsetCommand {
 public:
 	///
-	InsetBibKey(): InsetCommand("bibitem") { counter = 1; }
+	InsetBibKey() : InsetCommand("bibitem") { counter = 1; }
 	///
 	InsetBibKey(string const & key, string const & label = string());
 	///
@@ -60,7 +62,7 @@ public:
 	///
 	~InsetBibKey();
 	///
-        Inset * Clone() { return new InsetBibKey(this); }
+        InsetBibKey * Clone() const { return new InsetBibKey(this); }
 	/// Currently \bibitem is used as a LyX2.x command, so we need this method.
         void Write(FILE *);
 	///
@@ -96,9 +98,9 @@ public:
 	InsetBibtex(string const & dbase, string const & style,
 		    Buffer *);
         ///
-        ~InsetBibtex();
-        ///
-	Inset * Clone() { return new InsetBibtex(contents, options, 0); }
+	InsetBibtex * Clone() const {
+		return new InsetBibtex(contents, options, 0);
+	}
 	///  
 	Inset::Code LyxCode() const
 	{
@@ -119,15 +121,14 @@ public:
 		return 1;
 	}
         ///
-        bool addDatabase(string const&);
+        bool addDatabase(string const &);
         ///
-        bool delDatabase(string const&);
+        bool delDatabase(string const &);
 	///
-	bool Display() const { return true; }    
+	bool display() const { return true; }    
 private:
 	///
-	Buffer *owner;
+	Buffer * owner;
 };
-
 
 #endif

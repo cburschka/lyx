@@ -37,11 +37,9 @@ public:
 	};
 
 	///
-	InsetSpecialChar();
+	InsetSpecialChar() {}
 	///
 	InsetSpecialChar(Kind k);
-	///
-	~InsetSpecialChar();
 	///
 	int Ascent(LyXFont const & font) const;
 	///
@@ -63,7 +61,7 @@ public:
 	///
 	int DocBook(string & file);
 	///
-	Inset * Clone();
+	InsetSpecialChar * Clone() const;
 	///  
 	Inset::Code LyxCode() const
 	{

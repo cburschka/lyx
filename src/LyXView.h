@@ -73,7 +73,7 @@ public:
 	Buffer * buffer() const { return bufferview->buffer(); }
 
 	///
-	BufferView * currentView() { return bufferview; }
+	BufferView * view() { return bufferview; }
 
 	/// returns a pointer to the form.
 	FL_FORM * getForm() { return _form; }

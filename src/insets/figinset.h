@@ -57,7 +57,7 @@ public:
 	///
 	Inset::Code LyxCode() const;
 	///
-	Inset* Clone();
+	InsetFig * Clone() const;
 	///
 	void CallbackFig(long arg);
 	///

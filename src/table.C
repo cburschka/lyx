@@ -52,7 +52,7 @@ LyXTable::~LyXTable() {
 }
 
 
-LyXTable* LyXTable::Clone()
+LyXTable * LyXTable::Clone()
 {
     LyXTable *result = new LyXTable(rows, columns);
     int row, column;;

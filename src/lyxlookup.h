@@ -16,13 +16,12 @@
 #include <X11/Xlib.h>
 
 // Initialize the compose key handling
-extern void InitLyXLookup(Display* , Window ) ;
+extern void InitLyXLookup(Display *, Window ) ;
 
 // Read a keysym and/or a string (like XLookupString)
-extern int LyXLookupString(XEvent *event,    
-		    char *buffer_return, int bytes_buffer,
-		    KeySym *keysym_return);
+extern int LyXLookupString(XEvent * event,    
+			   char * buffer_return, int bytes_buffer,
+			   KeySym * keysym_return);
 
 // Call this when you destroy your window
 extern void CloseLyXLookup();
-

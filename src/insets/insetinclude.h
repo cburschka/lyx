@@ -37,7 +37,7 @@ public:
 	///
 	~InsetInclude();
         ///
-        Inset * Clone();
+        InsetInclude * Clone() const;
 	///
 	Inset::Code LyxCode() const { return Inset::INCLUDE_CODE; }
 	/// This is 1 if the childs have labels, 0 otherwise
@@ -66,7 +66,7 @@ public:
 	void Validate(LaTeXFeatures &) const;
 	
         /// Input inserts anything inside a paragraph, Display can give some visual feedback 
-	bool Display() const { return !(isInput()); }
+	bool display() const { return !(isInput()); }
 	///
 	string getScreenLabel() const;
 	///

@@ -65,7 +65,7 @@ public:
 	///
 	Inset::Code LyxCode() const;
 	///
-	Inset * Clone();
+	InsetInfo * Clone() const;
 	///
 	static void CloseInfoCB(FL_OBJECT *, long data);
 private:

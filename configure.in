@@ -32,7 +32,7 @@ done
 ### Check for programs
 AC_PROG_MAKE_SET
 AC_PROG_INSTALL
-AC_PROG_RANLIB
+#AC_PROG_RANLIB
 AC_CHECK_PROG(KPSEWHICH, kpsewhich, kpsewhich, :)
 if test "x$KPSEWHICH" = xkpsewhich ; then
     AC_DEFINE(HAVE_KPSEWHICH, 1,
@@ -56,6 +56,9 @@ AC_EXEEXT
 AC_LANG_CPLUSPLUS
 LYX_PROG_CXX
 AC_PROG_CXXCPP
+AC_DISABLE_SHARED
+AC_LIBTOOL_WIN32_DLL
+AM_PROG_LIBTOOL
 
 ### check the size of pointers and ints
 # the defaults are given for cross compilation.

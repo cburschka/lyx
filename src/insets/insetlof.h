@@ -30,7 +30,7 @@ public:
 	///
 	InsetLOF(Buffer * b): InsetCommand("listoffigures"), owner(b) {}
         ///
-        Inset * Clone() { return new InsetLOF(owner); }
+        InsetLOF * Clone() const { return new InsetLOF(owner); }
     	///
 	string getScreenLabel() const { return _("List of Figures"); }
         
@@ -40,7 +40,7 @@ public:
 		return 0; // not yet
 	}
 	///
-	bool Display() const { return true; }
+	bool display() const { return true; }
 	///
 	Inset::Code LyxCode() const { return Inset::LOF_CODE; }
 private:

@@ -30,7 +30,7 @@ public:
 	///
 	InsetTOC(Buffer * b): InsetCommand("tableofcontents"), owner(b) {}
         ///
-        Inset * Clone() { return new InsetTOC(owner); }
+        InsetTOC * Clone() const { return new InsetTOC(owner); }
     	///
 	string getScreenLabel() const { return _("Table of Contents"); }
 	/// On edit, we open the TOC pop-up
@@ -40,7 +40,7 @@ public:
 		return 1;
 	}
 	///
-	bool Display() const { return true; }
+	bool display() const { return true; }
 	///
 	Inset::Code LyxCode() const { return Inset::TOC_CODE; }
 	///

@@ -80,12 +80,12 @@ void LyXView::redraw() {
 void LyXView::UpdateTimerCB(FL_OBJECT * ob, long)
 {
 	LyXView * view = static_cast<LyXView*>(ob->u_vdata);
-	if (!view->currentView()->available()) 
+	if (!view->view()->available()) 
 		return;
-	if (!view->currentView()->getScreen() || !updatetimer)
+	if (!view->view()->getScreen() || !updatetimer)
 		return;
 
-	view->currentView()->getScreen()->HideCursor();
+	view->view()->getScreen()->HideCursor();
 	view->buffer()->update(-2);
 	/* This update can happen, even when the work area has lost
 	 * the focus. So suppress the cursor in that case */
@@ -363,7 +363,7 @@ void LyXView::updateWindowTitle() {
 	static string last_title = "LyX";
 	string title = "LyX";
 
-	if (currentView()->available()) {
+	if (view()->available()) {
 		string cur_title = buffer()->getFileName();
 		if (!cur_title.empty()){
 			title += ": " + OnlyFilename(cur_title);

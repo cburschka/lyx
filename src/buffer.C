@@ -1201,14 +1201,8 @@ bool Buffer::writeFile(string const & filename, bool flag)
 	string userName(getUserName()) ;
 
 	// write out a comment in the top of the file
-// We do not print this anymore, since it annoys cvs and is useless
-// anyway. It could even be seen as including private
-// information without telling the user :) -- JMarc 
-//  	fprintf(file,
-//  		"#This file was created by <%s> %s",
-//  		userName.c_str(),(char*)date());
 	fprintf(file,
-		"#LyX 1.1 (C) 1995-1999 Matthias Ettrich"
+		"#LyX 1.1 Copyright 1995-1999 Matthias Ettrich"
 		" and the LyX Team\n");
 	
 	// at the very beginning the used lyx format
@@ -3469,7 +3463,7 @@ void Buffer::insertErrors(TeXErrors & terr)
 		if (texrowpar == 0)
 			continue;
 
-		InsetError *new_inset = new InsetError(msgtxt);
+		InsetError * new_inset = new InsetError(msgtxt);
 
 		text->SetCursorIntern(texrowpar, tmppos);
 		text->InsertInset(new_inset);

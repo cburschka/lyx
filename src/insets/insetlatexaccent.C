@@ -50,11 +50,6 @@ InsetLatexAccent::InsetLatexAccent(string const & string)
 }
 
 
-InsetLatexAccent::~InsetLatexAccent()
-{
-}
-
-
 void InsetLatexAccent::checkContents()
         // check, if we know the modifier and can display it ok on screen
 {
@@ -635,10 +630,9 @@ bool InsetLatexAccent::DirectWrite() const
 }
 
 
-Inset* InsetLatexAccent::Clone()
+InsetLatexAccent * InsetLatexAccent::Clone() const
 {
-	InsetLatexAccent * result = new InsetLatexAccent(contents);
-	return result;
+	return new InsetLatexAccent(contents);
 }
 
 
@@ -647,15 +641,6 @@ Inset::Code InsetLatexAccent::LyxCode() const
 	return Inset::ACCENT_CODE;
 }
 
-
-bool InsetLatexAccent::IsEqual(Inset * other)
-{
-	if (other && other->LyxCode() == Inset::ACCENT_CODE){
-		InsetLatexAccent* otheraccent = (InsetLatexAccent*) other;
-		return (contents == otheraccent->contents);
-	}
-	return false;
-}
 
 ostream & operator<<(ostream & o, InsetLatexAccent::ACCENT_TYPES at)
 {

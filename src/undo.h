@@ -86,17 +86,19 @@ public:
 	///
 	UndoStack();
 	///
-	Undo * Pop();
+	Undo * pop();
 	///
-	Undo * Top();
+	Undo * top();
+	///
+	bool empty() const { return stakk.empty(); }
 	///
 	~UndoStack();
 	///
-	void Clear();
+	void clear();
 	///
 	void SetStackLimit(Stakk::size_type l);
 	///
-	void Push(Undo * undo_arg);
+	void push(Undo * undo_arg);
 };
 
 #endif

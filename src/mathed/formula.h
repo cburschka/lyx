@@ -59,7 +59,7 @@ public:
 	///
 	void Validate(LaTeXFeatures &) const;
 	///
-	Inset * Clone();
+	InsetFormula * Clone() const;
 	///
 	Inset::Code LyxCode() const { return Inset::MATH_CODE; }
 	///
@@ -74,9 +74,9 @@ public:
 	///
 	void Edit(int x, int y);
 	///
-	bool Display() const { return (disp_flag) ? true: false; }
+	bool display() const { return (disp_flag) ? true: false; }
 	///
-	void SetDisplay(bool);
+	void display(bool);
 	///
 	void ToggleInsetCursor();
 	///

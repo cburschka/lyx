@@ -362,7 +362,7 @@ void math_insert_symbol(char const* s)
 {
    if (current_view->available())   {
       if (!current_view->buffer()->the_locking_inset) {
-	 InsetFormula* new_inset = new InsetFormula();
+	 InsetFormula * new_inset = new InsetFormula();
 	 BeforeChange();
 	 current_view->buffer()->insertInset(new_inset);
 //	 Update(1);//BUG

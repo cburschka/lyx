@@ -54,6 +54,7 @@
 #include "lyxfunc.h"
 #include "lyx_main.h"
 #include "debug.h"
+#include "LyXAction.h"
 #include "support/lstrings.h"
 
 #ifdef __EMX__
@@ -118,7 +119,7 @@ void LyXComm::openConnection() {
 		lyxerr << "LyXComm: Pipe " << tmp << " already exists.\n"
 		       << "If no other LyX program is active, please delete"
 			" the pipe by hand and try again." << endl;
-		pipename = string();
+		pipename.clear();
 		return;
 	}
 #ifndef __EMX__
@@ -169,7 +170,7 @@ void LyXComm::openConnection() {
 		lyxerr << "LyXComm: Pipe " << tmp << " already exists.\n"
 		       << "If no other LyX program is active, please delete"
 			" the pipe by hand and try again." << endl;
-		pipename = string();
+		pipename.clear();
 		return;
 	}
 #ifndef __EMX__
@@ -289,7 +290,7 @@ void LyXComm::closeConnection() {
 // Receives messages and sends then to client
 void LyXComm::callback(int fd, void *v)
 {
-	LyXComm * c = (LyXComm *) v;
+	LyXComm * c = static_cast<LyXComm*>(v);
  
 	if (lyxerr.debugging(Debug::LYXSERVER)) {
 		lyxerr << "LyXComm: Receiving from fd " << fd << endl;

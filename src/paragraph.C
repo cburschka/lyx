@@ -73,7 +73,7 @@ LyXParagraph::LyXParagraph()
 	/* table stuff -- begin*/ 
 	table = 0;
 	/* table stuff -- end*/ 
-	id = paragraph_id++;
+	id_ = paragraph_id++;
         bibkey = 0; // ale970302
 	Clear();
 }
@@ -103,7 +103,7 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 	/* table stuff -- begin*/ 
 	table = 0;
 	/* table stuff -- end*/ 
-	id = paragraph_id++;
+	id_ = paragraph_id++;
 
         bibkey = 0; // ale970302        
     
@@ -420,7 +420,7 @@ void LyXParagraph::validate(LaTeXFeatures & features)
 
 
 /* first few functions needed for cut and paste and paragraph breaking */
-void LyXParagraph::CopyIntoMinibuffer(LyXParagraph::size_type pos)
+void LyXParagraph::CopyIntoMinibuffer(LyXParagraph::size_type pos) const
 {
 	minibuffer_char = GetChar(pos);
 	minibuffer_font = GetFontSettings(pos);
@@ -841,9 +841,63 @@ Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 }
 
 
+Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
+{
+	if (pos >= size()) {
+		if (next
+		    && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
+			return NextAfterFootnote()
+				->GetInset(pos - text.size() - 1);
+		else { 
+		        lyxerr << "ERROR (LyXParagraph::GetInset): "
+				"position does not exist: "
+			       << pos << endl;
+		}
+		return 0;
+	}
+#ifdef NEW_TABLE
+	/* find the inset */
+	for(InsetList::const_iterator cit = insetlist.begin();
+	    cit != insetlist.end(); ++cit) {
+		if ((*cit).pos == pos) {
+			return (*cit).inset;
+		}
+	}
+	lyxerr << "ERROR (LyXParagraph::GetInset): "
+		"Inset does not exist: " << pos << endl;
+	text[pos] = ' '; /// WHY!!! does this set the pos to ' '????
+	// Did this commenting out introduce a bug? So far I have not
+	// seen any, please enlighten me. (Lgb)
+	// My guess is that since the inset does not exist, we might
+	// as well replace it with a space to prevent crashes. (Asger)
+	return 0;
+#else
+	/* find the inset */ 
+	InsetTable * tmpi = insettable;
+
+	while (tmpi && tmpi->pos != pos)
+		tmpi = tmpi->next;
+
+	if (tmpi)
+		return tmpi->inset;
+	else {
+		lyxerr << "ERROR (LyXParagraph::GetInset): "
+			"Inset does not exist: " << pos << endl;
+		// in the const version we need to comment it out anyway...
+		//text[pos] = ' '; /// WHY!!! does this set the pos to ' '????
+		// Did this commenting out introduce a bug? So far I have not
+		// seen any, please enlighten me. (Lgb)
+		// My guess is that since the inset does not exist, we might
+		// as well replace it with a space to prevent crashes. (Asger)
+		return 0;
+	}
+#endif
+}
+
+
 // Gets uninstantiated font setting at position.
 // Optimized after profiling. (Asger)
-LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos)
+LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos) const
 {
 	if (pos < size()) {
 #ifdef NEW_TABLE
@@ -893,7 +947,7 @@ LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos)
 // the true picture of the buffer. (Asger)
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
-LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos)
+LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos) const
 {
 	LyXFont tmpfont;
 	LyXLayout const & layout = textclasslist.Style(GetCurrentTextClass(), 
@@ -920,7 +974,7 @@ LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos)
 
 	// check for environment font information
 	char par_depth = GetDepth();
-	LyXParagraph * par = this;
+	LyXParagraph const * par = this;
 	while (par && par_depth && !tmpfont.resolved()) {
 		par = par->DepthHook(par_depth - 1);
 		if (par) {
@@ -1078,7 +1132,7 @@ char LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 }
 
 
-string LyXParagraph::GetWord(LyXParagraph::size_type & lastpos)
+string LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
   //Added 98/9/21 by REH
   // return an string of the current word, and the end of the word
   // in lastpos.
@@ -1145,7 +1199,7 @@ string LyXParagraph::GetWord(LyXParagraph::size_type & lastpos)
 }
 
  
-LyXParagraph::size_type LyXParagraph::Last()
+LyXParagraph::size_type LyXParagraph::Last() const
 {
 	if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE)
 		return text.size() + NextAfterFootnote()->Last() + 1;
@@ -1175,7 +1229,7 @@ LyXParagraph * LyXParagraph::ParFromPos(LyXParagraph::size_type pos)
 }
 
 
-int LyXParagraph::PositionInParFromPos(LyXParagraph::size_type pos)
+int LyXParagraph::PositionInParFromPos(LyXParagraph::size_type pos) const
 {
 	/* > because last is the next unused position, and you can 
 	 * use it if you want  */
@@ -1459,7 +1513,7 @@ LyXParagraph * LyXParagraph::NextAfterFootnote()
 }
 
 
-LyXParagraph * LyXParagraph::NextAfterFootnote() const
+LyXParagraph const * LyXParagraph::NextAfterFootnote() const
 {
 	if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
 		LyXParagraph * tmp = next;
@@ -1526,8 +1580,49 @@ LyXParagraph * LyXParagraph::FirstPhysicalPar()
 }
 
 
+LyXParagraph const * LyXParagraph::FirstPhysicalPar() const
+{
+	if (!IsDummy())
+		return this;
+	LyXParagraph const * tmppar = this;
+
+	while (tmppar && (tmppar->IsDummy()
+			  || tmppar->footnoteflag != LyXParagraph::NO_FOOTNOTE))
+		tmppar = tmppar->previous;
+   
+	if (!tmppar)
+		return this;	       /* this should never happen!  */
+	else
+		return tmppar;
+}
+
+
 /* this function is able to hide closed footnotes */
 LyXParagraph * LyXParagraph::Previous()
+{
+	LyXParagraph * tmp = previous;
+	if (!tmp)
+		return tmp;
+   
+	if (tmp->previous
+	    && tmp->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
+		tmp = tmp->previous;
+		while (tmp
+		       && tmp->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE)
+			tmp = tmp->previous;
+		if (tmp && tmp->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE) 
+			return tmp->next->Previous();	
+
+		else
+			return previous; 
+	}
+	else
+		return previous;
+}
+
+
+/* this function is able to hide closed footnotes */
+LyXParagraph const * LyXParagraph::Previous() const
 {
 	LyXParagraph * tmp = previous;
 	if (!tmp)
@@ -1625,7 +1720,7 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 }
 
 
-void LyXParagraph::MakeSameLayout(LyXParagraph * par)
+void LyXParagraph::MakeSameLayout(LyXParagraph const * par)
 {
 	par = par->FirstPhysicalPar();
 	footnoteflag = par->footnoteflag;
@@ -1672,7 +1767,7 @@ LyXParagraph * LyXParagraph::FirstSelfrowPar()
 }
 
 
-LyXParagraph * LyXParagraph::Clone()
+LyXParagraph * LyXParagraph::Clone() const
 {
 	/* create a new paragraph */
 	LyXParagraph * result = new LyXParagraph;
@@ -1696,16 +1791,16 @@ LyXParagraph * LyXParagraph::Clone()
     
 	/* copy everything behind the break-position to the new paragraph */
    
-	result->text.reserve(size());
 	for (size_type i = 0; i < size(); i++) {
 		CopyIntoMinibuffer(i);
 		result->InsertFromMinibuffer(i);
 	}
+	result->text.resize(result->text.size());
 	return result;
 }
 
 
-bool LyXParagraph::HasSameLayout(LyXParagraph * par)
+bool LyXParagraph::HasSameLayout(LyXParagraph const * par)
 {
 	par = par->FirstPhysicalPar();
 
@@ -1827,38 +1922,38 @@ void LyXParagraph::CloseFootnote(LyXParagraph::size_type pos)
 }
 
 
-LyXTextClass::LayoutList::size_type LyXParagraph::GetLayout()
+LyXTextClass::LayoutList::size_type LyXParagraph::GetLayout() const
 {
 	return FirstPhysicalPar()->layout;
 }
 
 
-char LyXParagraph::GetDepth()
+char LyXParagraph::GetDepth() const
 {
 	return FirstPhysicalPar()->depth;
 }
 
 
-char LyXParagraph::GetAlign()
+char LyXParagraph::GetAlign() const
 {
 	return FirstPhysicalPar()->align;
 }
 
 
-string LyXParagraph::GetLabestring()
+string LyXParagraph::GetLabestring() const
 {
 	return FirstPhysicalPar()->labelstring;
 }
 
 
-int LyXParagraph::GetFirstCounter(int i)
+int LyXParagraph::GetFirstCounter(int i) const
 {
-	return FirstPhysicalPar()->counter[i];
+	return FirstPhysicalPar()->counter_[i];
 }
 
 
 /* the next two functions are for the manual labels */ 
-string LyXParagraph::GetLabelWidthString()
+string LyXParagraph::GetLabelWidthString() const
 {
 	if (!FirstPhysicalPar()->labelwidthstring.empty())
 		return FirstPhysicalPar()->labelwidthstring;
@@ -1977,7 +2072,7 @@ void LyXParagraph::SetLayout(LyXTextClass::LayoutList::size_type new_layout)
 * because there cannot be a newline or a blank <= the beginning of the 
 * main body in TeX. */ 
 
-int LyXParagraph::BeginningOfMainBody()
+int LyXParagraph::BeginningOfMainBody() const
 {
 	if (FirstPhysicalPar() != this)
 		return -1;
@@ -2016,6 +2111,27 @@ int LyXParagraph::BeginningOfMainBody()
 LyXParagraph * LyXParagraph::DepthHook(int deth)
 {
 	LyXParagraph * newpar = this;
+	if (deth < 0)
+		return 0;
+   
+	do {
+		newpar = newpar->FirstPhysicalPar()->Previous();
+	} while (newpar && newpar->GetDepth() > deth
+		 && newpar->footnoteflag == footnoteflag);
+   
+	if (!newpar) {
+		if (Previous() || GetDepth())
+			lyxerr << "ERROR (LyXParagraph::DepthHook): "
+				"no hook." << endl;
+		newpar = this;
+	}
+	return newpar->FirstPhysicalPar();
+}
+
+
+LyXParagraph const * LyXParagraph::DepthHook(int deth) const
+{
+	LyXParagraph const * newpar = this;
 	if (deth < 0)
 		return 0;
    
@@ -2104,7 +2220,7 @@ Inset * LyXParagraph::ReturnNextInsetPointer(LyXParagraph::size_type & pos)
 
 
 /* returns -1 if inset not found */
-int LyXParagraph::GetPositionOfInset(Inset * inset)
+int LyXParagraph::GetPositionOfInset(Inset * inset) const
 {
 #ifdef NEW_TABLE
 	for (InsetList::iterator it = insetlist.begin();

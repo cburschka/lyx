@@ -438,7 +438,7 @@ int FindBmpIndex(figdata *tmpdata)
 
 static void chpixmap(Pixmap, int, int)
 {
-	Display* tempdisp = XOpenDisplay(XDisplayName(0));
+	Display * tempdisp = XOpenDisplay(XDisplayName(0));
 
 	// here read the pixmap and change all colors to those we
 	// have allocated
@@ -520,9 +520,9 @@ static void runqueue()
 			return;
 		}
 		if (pid == 0) { // child
-			char **env, rbuf[80], gbuf[40];
+			char ** env, rbuf[80], gbuf[40];
 			int ne = 0;
-			Display* tempdisp = XOpenDisplay(XDisplayName(0));
+			Display * tempdisp = XOpenDisplay(XDisplayName(0));
 
 			// create translation file
 			sprintf(tbuf, "%s/~lyxgs%d.ps", system_tempdir.c_str(),
@@ -1296,9 +1296,9 @@ void InsetFig::Edit(int, int)
 }
 
 
-Inset *InsetFig::Clone()
+InsetFig * InsetFig::Clone() const
 {
-	InsetFig *tmp = new InsetFig(100, 100, owner);
+	InsetFig * tmp = new InsetFig(100, 100, owner);
 
 	if (lyxerr.debugging()) {
 		lyxerr << "Clone Figure: buffer:["

@@ -199,6 +199,7 @@ InsetBibKey::InsetBibKey(InsetBibKey const *b):
 	counter = b->counter;
 }
 
+
 InsetBibKey::~InsetBibKey()
 {
 	if(bibitem_form && bibitem_form->bibitem_form
@@ -219,7 +220,7 @@ void InsetBibKey::setCounter(int c)
 // as a LyX 2.x command, and lyxlex is not enough smart to understand
 // real LaTeX commands. Yes, that could be fixed, but would be a waste 
 // of time cause LyX3 won't use lyxlex anyway.  (ale)
-void InsetBibKey::Write(FILE *file)
+void InsetBibKey::Write(FILE * file)
 {
 	string s;
 	if (!options.empty()) {
@@ -243,7 +244,8 @@ string InsetBibKey::getScreenLabel() const
 
 /*
   The value in "Key:" isn't allways set right after a few bibkey insets have
-  been added/removed.  Perhaps the wrong object is deleted/used somewhere upwards?
+  been added/removed.  Perhaps the wrong object is deleted/used somewhere
+  upwards?
   (Joacim 1998-03-04)
 */
 void InsetBibKey::Edit(int, int)
@@ -278,11 +280,6 @@ void InsetBibKey::Edit(int, int)
 InsetBibtex::InsetBibtex(string const & dbase, string const & style,
 			 Buffer *o)
 	:InsetCommand("BibTeX", dbase, style), owner(o)
-{
-}
-
-
-InsetBibtex::~InsetBibtex()
 {
 }
 

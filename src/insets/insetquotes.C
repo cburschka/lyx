@@ -308,7 +308,8 @@ void InsetQuotes::Validate(LaTeXFeatures & features) const
 	}
 }
 
-Inset * InsetQuotes::Clone()
+
+InsetQuotes * InsetQuotes::Clone() const
 {
   return new InsetQuotes(language, side, times);
 }

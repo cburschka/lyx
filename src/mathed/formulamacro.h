@@ -61,7 +61,7 @@ public:
 	///
 	int DocBook(string &file);
 	///
-	Inset* Clone();
+	InsetFormulaMacro * Clone() const;
 
 	/// what appears in the minibuffer when opening
 	char const* EditMessage() {return "Math macro editor mode";}

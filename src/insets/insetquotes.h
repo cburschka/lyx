@@ -97,7 +97,7 @@ public:
 	///
 	void Validate(LaTeXFeatures &) const;
 	///
-	Inset* Clone();
+	InsetQuotes * Clone() const;
 	///
 	Inset::Code LyxCode() const;
 private:

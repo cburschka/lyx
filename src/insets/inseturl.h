@@ -46,7 +46,7 @@ public:
 	///
 	~InsetUrl();
         ///
-        Inset * Clone() { return new InsetUrl(getCommand()); }
+        InsetUrl * Clone() const { return new InsetUrl(getCommand()); }
 	///
 	Inset::Code LyxCode() const { return Inset::URL_CODE; }
 	///
@@ -60,7 +60,7 @@ public:
 	///
 	char const * EditMessage() {return "Opened Url";}
         ///
-	bool Display() const { return false; }
+	bool display() const { return false; }
 	///
 	string getScreenLabel() const;
 	///

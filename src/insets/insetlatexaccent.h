@@ -36,8 +36,6 @@ public:
 	///
 	InsetLatexAccent(InsetLatexAccent const &);
 	///
-	~InsetLatexAccent();
-	///
 	int Ascent(LyXFont const & font) const;
 	///
 	int Descent(LyXFont const & font) const;
@@ -65,11 +63,9 @@ public:
 	///
 	bool DirectWrite() const;
 	///
-	Inset * Clone();
+	InsetLatexAccent * Clone() const;
 	///
 	Inset::Code LyxCode()const;
-	///
-	bool IsEqual(Inset * other);
 	///
 	inline bool CanDisplay();
 private:

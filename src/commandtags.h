@@ -246,4 +246,3 @@ enum kb_action {
 
 ostream & operator<<(ostream &, kb_action);
 #endif
-

@@ -30,7 +30,7 @@ public:
 	///
 	InsetLOT(Buffer * b): InsetCommand("listoftables"), owner(b) {}
         ///
-        Inset * Clone() { return new InsetLOT(owner); }
+        InsetLOT * Clone() const { return new InsetLOT(owner); }
     	///
 	string getScreenLabel() const { return _("List of Tables"); }
         
@@ -40,7 +40,7 @@ public:
 		return 0; // not yet
 	}
 	///
-	bool Display() const { return true; }
+	bool display() const { return true; }
 	///
 	Inset::Code LyxCode() const { return Inset::LOT_CODE; }
 private:

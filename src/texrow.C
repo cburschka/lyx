@@ -18,69 +18,57 @@
 #include "lyxparagraph.h"
 #include "debug.h"
 
+
 // Delete linked list
 void TexRow::reset()
 {
-	TexRow_Item *current, *iter = next;
-	while (iter) {
-		// Iterate through the list deleting as you go.
-		// A bit easier to debug than recursive deletion.
-		current = iter;
-		iter = iter->next;
-		delete current;
-	}
+	rowlist.clear();
 	count = 0;
-	next = 0;
 	lastpar = 0;
 	lastpos = -1;
 }
 
+
 // Defines paragraph and position for the beginning of this row
-void TexRow::start(LyXParagraph *par, int pos) {
+void TexRow::start(LyXParagraph * par, int pos)
+{
 	lastpar = par;
 	lastpos = pos;
 }
 
+
 // Insert node when line is completed
 void TexRow::newline()
 {
-	TexRow_Item *tmp = new TexRow_Item;
-	tmp->pos = lastpos;
-	
+	RowItem tmp;
+	tmp.pos = lastpos;
 	if (lastpar)
-		tmp->id = lastpar->GetID();
+		tmp.id = lastpar->id();
 	else
-		tmp->id = -1;
-
-	// Inserts at the beginning of the list
-	tmp->next = next;
-	next = tmp;
-	count++;
-	tmp->rownumber = count;
+		tmp.id = -1;
+	tmp.rownumber = ++count;
+	rowlist.push_back(tmp);
 }
 
 
-void TexRow::getIdFromRow(int row, int &id, int &pos)
+void TexRow::getIdFromRow(int row, int & id, int & pos)
 {
-	TexRow_Item *tmp = next;
-	while (tmp && tmp->rownumber != row) {
-		tmp = tmp->next;
+	RowList::const_iterator cit = rowlist.begin();
+	for (; cit != rowlist.end(); ++cit) {
+		if ((*cit).rownumber == row) break;
 	}
-	if (tmp) {
-		TexRow_Item *tmp2 = next;
+	if (cit != rowlist.end()) {
+		RowList::iterator kit = rowlist.begin();
 		// Increase the pos of all rows with the
 		// same id (and where the pos is larger)
 		// to avoid putting errorinsets at the
 		// same pos.
-		while (tmp2) {
-			if (tmp2 != tmp &&
-			    tmp2->id == tmp->id &&
-			    tmp2->pos >= tmp->pos)
-				tmp2->pos++;
-			tmp2 = tmp2->next;
+		for(; kit != rowlist.end(); ++kit) {
+			if (&(*kit) != &(*cit)
+			    && (*kit).id == (*cit).id
+			    && (*kit).pos >= (*cit).pos)
+				(*kit).pos++;
 		}
-		id = tmp->id;
-		pos = tmp->pos;
 	} else {
 		id = -1;
 		pos = 0;
@@ -88,30 +76,8 @@ void TexRow::getIdFromRow(int row, int &id, int &pos)
 }
 
 
-TexRow & TexRow::operator+= (const TexRow &tr)
+TexRow & TexRow::operator+= (TexRow const & tr)
 {
-	// remember that the lists are stored in reverse 
-	// so you've got to turn the second one around 
-	// as you insert it in the first
-	for (int counter = tr.count; counter > 0; --counter) {
-		int i = 1;
-		TexRow_Item *iter = tr.next;
-		while (i < counter) {
-			iter = iter->next;
-			++i;
-		}
-
-		++count;
-		TexRow_Item *tmp;
-		tmp = new TexRow_Item;
-		tmp->id = iter->id;
-		tmp->pos = iter->pos;
-		tmp->next = next;
-		tmp->rownumber = count;
-		next = tmp;
-	}
-	// should I be doing this or not?
-	//lastpar = tr.lastpar;
-	//lastpos = tr.lastpos;
+	rowlist.insert(rowlist.end(), tr.rowlist.begin(), tr.rowlist.end());
 	return *this;
 }	

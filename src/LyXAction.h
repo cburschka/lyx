@@ -6,77 +6,113 @@
 #pragma interface
 #endif
 
+#include <map>
 #include "commandtags.h"
-
-class LString;
-
-/// Command name - action   
-struct kb_func_table {
-	///
-	char const * name;
-	///
-	kb_action action;
-};
-
+#include "LString.h"
 
 /** This class encapsulates LyX action and user command operations.
  */
 class LyXAction {
+private:
+	///
+	struct func_info {
+		string name;
+		unsigned int attrib;
+		string helpText;
+	};
+
+	///
+	struct pseudo_func {
+		kb_action action;
+		string arg;
+	};
 public:
 	///
-	LyXAction();
+	typedef map<string, kb_action, less<string> > func_map;
 	///
-	~LyXAction();
+	typedef map<kb_action, func_info, less<kb_action> > info_map;
+	///
+	typedef map<unsigned int, pseudo_func, less<unsigned int> > pseudo_map;
+	///
+	typedef map<string, unsigned int, less<string> > arg_item;
+	///
+	typedef map<kb_action, arg_item, less<kb_action> > arg_map;
+
+	///
+	enum func_attrib {
+		/// nothing special about this func
+		Noop = 0,
+		/// can not be used in RO mode (perhaps this should change)
+		ReadOnly = 1, // ,
+                /// Can be used when there is no document open
+                NoBuffer = 2,
+		//Interactive = 2, // Is interactive (requires a GUI)
+		Argument=4      // Requires argument
+		//MathOnly = 8,    // Only math mode
+		//EtcEtc = ...     // Or other attributes...
+	};
+	
+	///
+	LyXAction();
     
 	/** Returns an action tag from a string. Returns kb_action.
 	  Include arguments in func_name ONLY if you
 	  want to create new pseudo actions. */
-	int LookupFunc(char const * func_name); 
+	int LookupFunc(string const & func_name) const; 
 
         /** Returns an action tag which name is the most similar to a string.
 	    Don't include arguments, they would be ignored. */
-        int getApproxFunc(char const * func);
+        int getApproxFunc(string const & func) const;
 
         /** Returns an action name the most similar to a string.
 	    Don't include arguments, they would be ignored. */
-        char const * getApproxFuncName(char const * func);
+        string getApproxFuncName(string const & func) const;
 
 	/// Returns a pseudo-action given an action and its argument.
-	int getPseudoAction(kb_action action, char const * arg);
+	int getPseudoAction(kb_action action, string const & arg) const;
 
 	/// Retrieves the real action and its argument.
-	int retrieveActionArg(int i, char const ** arg);
+	kb_action retrieveActionArg(int i, string & arg) const;
     
 	/// Search for an existent pseudoaction, return -1 if it doesn't exist.
-	int searchActionArg(kb_action action, char const * arg);
+	int searchActionArg(kb_action action, string const & arg) const;
 
 	/// Check if a value is a pseudo-action. 
-	bool isPseudoAction(int);
+	bool isPseudoAction(int) const;
     
-	/// Not sure if this function should be here 
-	int bindKey(char const * seq, int action);
-	
 	/// Return the name associated with command
-	char const * getActionName(int action) const;
+	string getActionName(int action) const;
 
-	/// Return one line help text associated with command
-	char const * helpText(kb_action action) const;
+	/// Return one line help text associated with (pseudo)action
+	string helpText(int action) const;
 
-	 /// True if the command is Read Only (not allowed for RO buffers)
-	bool isFuncRO(kb_action action) const;
+	/// True if the command has `flag' set
+	bool funcHasFlag(kb_action action, func_attrib flag) const;
 
 private:
-     
-        ///  Standard commands
-        static kb_func_table const * lyx_func_table;
-	/// Number of commands
-	int funcCount;
-	///  Pseudoactions
-	static kb_func_table * lyx_func_args;
-	///  Pseudoaction index
-	static int psd_idx; 
-	/// Last action index found
-	int last_action_idx;
+	///
+	void init();
+	///
+	void newFunc(kb_action, string const & name,
+		     string const & helpText, unsigned int attrib);
+	
+	/** This is a list of all the LyXFunc names with the
+	  coresponding action number. It is usually only used by the
+	  minibuffer or when assigning commands to keys during init. */
+	func_map lyx_func_map;
+	
+	/** This is a mapping from action number to an object holding
+	  info about this action. f.ex. helptext, command name (string),
+	  command attributes (ro) */
+	info_map lyx_info_map;
+	
+	/** A mapping from the automatically created pseudo action number
+	  to the real action and its argument. */
+	mutable pseudo_map lyx_pseudo_map;
+	
+	/** A (multi) mapping from the lyx action to all the generated
+	  pseudofuncs and the arguments the action should use. */
+	mutable arg_map lyx_arg_map;
 };
      
 
@@ -84,9 +120,9 @@ private:
     
      
 inline
-bool LyXAction::isPseudoAction(int a) 
+bool LyXAction::isPseudoAction(int a) const
 { 
-	return (a >= int(LFUN_LASTACTION)); 
+	return a > int(LFUN_LASTACTION); 
 }
      
 

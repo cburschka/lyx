@@ -60,10 +60,9 @@ InsetFormulaMacro::~InsetFormulaMacro()
 }
 
 
-Inset* InsetFormulaMacro::Clone()
+InsetFormulaMacro * InsetFormulaMacro::Clone() const
 {
-   InsetFormulaMacro* f = new InsetFormulaMacro(name);
-   return (Inset*)f;
+   return new InsetFormulaMacro(name);
 }
 
 

@@ -152,7 +152,7 @@ private:
 	bool cleaned;
 
 	///
-	char **getPixmap(kb_action, string const & arg= string());
+	char **getPixmap(kb_action, string const & arg = string());
 	/// removes all toolbar buttons from the toolbar.
 	void clean();
 

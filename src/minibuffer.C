@@ -24,6 +24,7 @@
 #include "LyXView.h"
 #include "debug.h"
 #include "gettext.h"
+#include "LyXAction.h"
 
 extern bool keyseqUncomplete();
 extern string keyseqOptions(int l= 190);
@@ -46,7 +47,7 @@ void MiniBuffer::ExecutingCB(FL_OBJECT * ob, long)
 	MiniBuffer * obj = static_cast<MiniBuffer*>(ob->u_vdata);
 	lyxerr.debug() << "Getting ready to execute: " << obj->cur_cmd << endl;
 	fl_set_focus_object(obj->owner->getForm(),
-			    obj->owner->currentView()->getWorkArea());
+			    obj->owner->view()->getWorkArea());
 	if (obj->cur_cmd.empty()) { 
 		obj->Init();
 		return ; 
@@ -91,16 +92,16 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 		case XK_Tab:
 		{
 			// complete or increment the command
-			char const * s = lyxaction.getApproxFuncName(fl_get_input(ob));
-			if (s && s[0])
-				fl_set_input(ob, s);
+			string  s = lyxaction.getApproxFuncName(fl_get_input(ob));
+			if (!s.empty())
+				fl_set_input(ob, s.c_str());
 			return 1; 
 		}
 		case 27:
 		case XK_Escape:
 			// Abort
 			fl_set_focus_object(mini->owner->getForm(),
-					    mini->owner->currentView()->getWorkArea());
+					    mini->owner->view()->getWorkArea());
 			mini->Init();
 			return 1; 
 		case 13:
@@ -195,7 +196,7 @@ void MiniBuffer::Init()
 		text = owner->getLyXFunc()->keyseqOptions();
    
 	// Else, show the buffer state.
-	else if (owner->currentView()->available()) {
+	else if (owner->view()->available()) {
 			string nicename = 
 				MakeDisplayPath(owner->buffer()->
 						getFileName());

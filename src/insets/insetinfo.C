@@ -215,10 +215,9 @@ void InsetInfo::Edit(int, int)
 }
 
 
-Inset* InsetInfo::Clone()
+InsetInfo * InsetInfo::Clone() const
 {
-	InsetInfo * result = new InsetInfo(contents);
-	return result;
+	return new InsetInfo(contents);
 }
 
 

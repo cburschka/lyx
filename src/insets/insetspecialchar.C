@@ -18,20 +18,9 @@
 #include "debug.h"
 #include "LaTeXFeatures.h"
 
-InsetSpecialChar::InsetSpecialChar()
-{
-}
-
-
 InsetSpecialChar::InsetSpecialChar(Kind k)
 	: kind(k)
-{
-}
-
-
-InsetSpecialChar::~InsetSpecialChar()
-{
-}
+{}
 
 
 int InsetSpecialChar::Ascent(LyXFont const & font) const
@@ -195,10 +184,9 @@ int InsetSpecialChar::DocBook(string & file)
 }
 
 
-Inset * InsetSpecialChar::Clone()
+InsetSpecialChar * InsetSpecialChar::Clone() const
 {
-	InsetSpecialChar * result = new InsetSpecialChar(kind);
-	return result;
+	return new InsetSpecialChar(kind);
 }
 
 

@@ -78,7 +78,7 @@ int InsetRef::Latex(FILE * file, signed char /*fragile*/)
 		fprintf(file, "%s", escape(getCommand()).c_str());
 	else {
 		string ns;
-		InsetCommand clone= InsetCommand(getCmdName(), getContents(), ns);
+		InsetCommand clone = InsetCommand(getCmdName(), getContents(), ns);
 		fprintf(file, "%s", escape(clone.getCommand()).c_str());
 	}
 	return 0;

@@ -7,8 +7,7 @@
 
 #include "LString.h"
 #include "lstrings.h"
-
-//#include "debug.h"
+#include "LRegex.h"
 
 using std::count;
 
@@ -48,7 +47,7 @@ string lowercase(string const & a)
 	string tmp;
 	string::const_iterator cit = a.begin();
 	for(; cit != a.end(); ++cit) {
-		tmp += char(tolower(*cit));
+		tmp += static_cast<char>(tolower(*cit));
 	}
 	return tmp;
 }
@@ -122,7 +121,7 @@ bool prefixIs(string const & a, char const * pre)
 bool suffixIs(string const & a, char c)
 {
 	if (a.empty()) return false;
-	return a[a.length()-1] == c;
+	return a[a.length() - 1] == c;
 }
 
 
@@ -169,9 +168,7 @@ bool contains(char const * a, char const * b)
 
 int countChar(string const & a, char const c)
 {
-	unsigned int n = 0;
-	count(a.begin(), a.end(), c, n);
-	return n;
+	return count(a.begin(), a.end(), c);
 }
 
 
@@ -219,62 +216,16 @@ int tokenPos(string const & a, char delim, string const & tok)
 
 bool regexMatch(string const & a, string const & pattern)
 {
-	if (pattern.empty())
-		return true;
-	if (a.empty())
-		return false;
-	
-	string::size_type si= 0, pi= 0;
-	string::size_type const sl = a.length();
-	string::size_type const pl = pattern.length();	
-
-	while (si < sl && pi < pl) {
-		if (pattern[pi] == '*') {
-			// Skip all consequtive *s
-			while (pattern[pi] == '*') {
-				++pi;
-				if (pi == pl)
-					return true;
-			}
-
-			// Get next chunk of pattern to match
-			string chunk;
-			string temp =
-				split(pattern.substr(pi, pl-1), chunk, '*');
-
-			if (!chunk.empty() && pattern[pl-1] == '*' && 
-			    temp.empty())
-				temp = '*';
-
-			if (temp.empty()) {
-				// Last chunk, see if tail matches
-				if (sl < chunk.length()) {
-					return false;
-				}
-				temp = a.substr(sl - chunk.length(), sl - 1);
-				return temp == chunk;
-			} else {
-				// Middle chunk, see if we can find a match
-				bool match = false;
-				while (!match && si<sl) {
-					temp = a.substr(si, sl - 1);
-					match = prefixIs(temp, chunk.c_str());
-					++si;
-				};
-				if (!match)
-					return false;
-				si += chunk.length()-1;
-				pi += chunk.length();
-				if (si == sl && pi == pl-1)
-					return true;
-			}
-		} else if (a[si++] != pattern[pi++]) {
-			return false;
-		}
-	}
-	if (pi < pl || si < sl)
-		return false;	
-	return true;
+	// We massage the pattern a bit so that the usual
+	// shell pattern we all are used to will work.
+	// One nice thing about using a real regex is that
+	// things like "*.*[^~]" will work also.
+	// build the regex string.
+	string regex(pattern);
+	regex = subst(regex, ".", "\\.");
+	regex = subst(regex, "*", ".*");
+	LRegex reg(regex);
+	return reg.exact_match(a);
 }
 
 

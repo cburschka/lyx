@@ -169,9 +169,19 @@ public:
 	/// lyxstring(5, 'n') -> "nnnnn"
 	lyxstring(size_type n, value_type c);
 
+#if 1
 	///
-	lyxstring(iterator first, iterator last);
-	
+	lyxstring(const_iterator first, const_iterator last);
+#else
+	///
+	template<class InputIterator>
+	lyxstring::lyxstring(InputIterator begin, InputIterator end) {
+		while (begin != end) {
+			push_back((*begin));
+			++begin;
+		}
+	}
+#endif
 	///
 	~lyxstring();
 
@@ -234,9 +244,20 @@ public:
 	///
 	lyxstring & assign(size_type n, value_type c);
 
+#if 1
 	///
-	lyxstring & assign(iterator first, iterator last);
-	
+	lyxstring & assign(const_iterator first, const_iterator last);
+#else
+	///
+	template<class InputIterator>
+	lyxstring & assign(InputIterator begin, InputIterator end) {
+		clear;
+		while (begin != end) {
+			push_back((*begin));
+			++begin;
+		}
+	}
+#endif
 	//@}
 
 	/**@name Element Access. Since lyxstring does not use exceptions,
@@ -288,9 +309,20 @@ public:
 	///
 	lyxstring & append(size_type n, value_type);
 
+#if 1
 	///
 	lyxstring & append(iterator first, iterator last);
-	
+#else
+	///
+	template<class InputIterator>
+	lyxstring & append(InputIterator begin, InputIterator end) {
+		while (begin != end) {
+			push_back((*begin));
+			++begin;
+		}
+		return *this;
+	}
+#endif
 	// insert characters before (*this)[pos]:
 
 	///
@@ -318,8 +350,20 @@ public:
 	///
 	void insert(iterator p, size_type n , value_type c);
 
+#if 1
 	///
 	void insert(iterator p, iterator first, iterator last);
+#else
+	///
+	template<class InputIterator>
+	void insert(iterator p, InputIterator begin, InputIterator end) {
+		iterator it;
+		while (begin != end) {
+			it = insert(p, (*begin));
+			++begin;
+		}
+	}
+#endif
 	
 	//@}
 
@@ -445,7 +489,7 @@ public:
 	///
 	lyxstring & replace(iterator i, iterator i2,
 			    size_type n , value_type c);
-	
+
 	///
 	lyxstring & replace(iterator i, iterator i2, iterator j, iterator j2);
 

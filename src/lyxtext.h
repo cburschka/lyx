@@ -134,9 +134,7 @@ public:
    
 	/// completes the insertion with a full rebreak
 	int FullRebreak();
-   
-	/// may be important for the menu
-	char * GetLayout(int row);
+
 	///
 	LyXParagraph::footnote_flag GetFootnoteFlag(int row);
 	///
@@ -268,16 +266,13 @@ public:
 	void DeleteLineForward();
 	///
 	int SelectWordWhenUnderCursor();
-	/// Change the case of the word at cursor position
-	/** Change the case of the word at cursor position.
-	    action is 0 for lower case, 1 for capitalization and 2 for
-	    uppercase. 
-	 */
+
 	enum TextCase {
 		text_lowercase = 0,
 		text_capitalization = 1,
 		text_uppercase = 2
 	};
+	/// Change the case of the word at cursor position.
 	void ChangeWordCase(TextCase action);
 
 	/** returns a printed row in a pixmap. The y value is needed to
@@ -419,7 +414,7 @@ public:
 	///
 	void BackspaceInTable();
 	///
-	char HitInTable(Row * row, int x);
+	bool HitInTable(Row * row, int x);
 	///
 	bool MouseHitInTable(int x, long y);
 	/* table stuff -- end*/
@@ -461,9 +456,9 @@ public:
         ///
         void RemoveTableRow(LyXCursor * cursor);
         ///
-        bool IsEmptyTableRow(LyXCursor * cursor);
+        bool IsEmptyTableRow(LyXCursor * cursor) const;
         ///
-        bool IsEmptyTableCell();
+        bool IsEmptyTableCell() const;
         ///
         void toggleAppendix();
 
@@ -549,7 +544,7 @@ private:
 	int LabelFill(Row * row);
 
 	///
-	LyXParagraph::size_type BeginningOfMainBody(LyXParagraph * par);
+	LyXParagraph::size_type BeginningOfMainBody(LyXParagraph * par) const;
 	/** Returns the left beginning of the text.
 	  This information cannot be taken from the layouts-objekt, because
 	  in LaTeX the beginning of the text fits in some cases

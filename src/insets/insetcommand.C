@@ -30,11 +30,6 @@ InsetCommand::InsetCommand(string const & cmd, string const & arg,
 }
 
 
-InsetCommand::~InsetCommand()
-{
-}
-
-
 int InsetCommand::Ascent(LyXFont const & font) const
 {
 	LyXFont f = font;
@@ -200,10 +195,9 @@ int InsetCommand::DocBook(string &/*file*/)
 }
 
 
-Inset * InsetCommand::Clone()
+InsetCommand * InsetCommand::Clone() const
 {
-	InsetCommand * result = new InsetCommand(command, contents, options);
-	return result;
+	return new InsetCommand(command, contents, options);
 }
 
 

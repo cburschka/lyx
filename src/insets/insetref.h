@@ -41,7 +41,9 @@ public:
 	///
 	~InsetRef();
         ///
-        Inset * Clone() { return new InsetRef (getCommand(), master); }
+        InsetRef * Clone() const {
+		return new InsetRef (getCommand(), master);
+	}
 	///
 	Inset::Code LyxCode() const { return Inset::REF_CODE; }
 	///
@@ -51,7 +53,7 @@ public:
 		return 1;
 	}
         ///
-	bool Display() const { return false; }
+	bool display() const { return false; }
 	///
 	string getScreenLabel() const;
 	///

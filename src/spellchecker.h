@@ -1,15 +1,12 @@
 // -*- C++ -*-
-#ifndef _SPELLCHECKER_H
-#define _SPELLCHECKER_H
+#ifndef SPELLCHECKER_H
+#define SPELLCHECKER_H
 
 /* These functions are defined in lyx_cb.C */
 
-class LString;
-
-
 /** The returned word has to be deleted manually
  */
-char* NextWord(float &value);
+char * NextWord(float & value);
 
 
 /** MarkLastWord should only be used immidiately after NextWord().
@@ -24,7 +21,7 @@ void ReplaceWord(string const & replacestringstring);
 
 
 /** This function has to be implemented by the spell checker.
-  * It will show the spellcheker form*/ 
+    It will show the spellcheker form*/ 
 void ShowSpellChecker();
 ///
 void SpellCheckerOptions();

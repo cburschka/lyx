@@ -8,10 +8,9 @@
 
 #include "commandtags.h"
 #include "kbmap.h"
-#include "tex-accent.h"
-#include "LyXAction.h"
 #include "insets/lyxinset.h"
 #include "LString.h"
+
 class LyXView;
 
 /** This class encapsulates all the LyX command operations. 
@@ -22,62 +21,60 @@ class LyXView;
 */
 class LyXFunc {
 public:
+	/// The status of a function.
+	enum func_status {
+		OK = 0, // No problem
+		Unknown = 1,
+		Disabled = 2, // Command cannot be executed
+		ToggleOn = 4,
+		ToggleOff = 8
+	};
+	
 	///
-	LyXFunc(LyXView*);
-	///
-	~LyXFunc();
+	LyXFunc(LyXView *);
     
 	/// LyX distpatcher, executes lyx actions.
-	string Dispatch(int action, char const* arg = 0);
+	string Dispatch(int action, char const * arg = 0);
 			 
 	/// The same but uses the name of a lyx command.
-	string Dispatch(string const &cmd);
+	string Dispatch(string const & cmd);
 
 	/// A keyboard event is processed to execute a lyx action. 
-	int  processKeyEvent(XEvent *ev);
-     
+	int  processKeyEvent(XEvent * ev);
+
+	///
+	func_status getStatus(int ac) const;
+	
 	/// The last key was meta
-	bool wasMetaKey();
+	bool wasMetaKey() const;
 
 	// These can't be global because are part of the internat state (ale970227)
 	/// Get the current keyseq string
-	string keyseqStr(int l = 190);
+	string keyseqStr(int l = 190) const;
 
 	/// Is the key sequence uncomplete?
-	bool keyseqUncomplete();
+	bool keyseqUncomplete() const;
 
 	/// get options for the current keyseq
-	string keyseqOptions(int l = 190);
-
-	/// Returns the name of a funcion given a keyseq
-	char const* getFunc(char*) 
-	{ /* unimplemented */ return 0; }
-
-	/// Return a string with the keybind to an action, if any
-	char const* getKeybind(int) 
-	{ /* unimplemented */ return 0; }
+	string keyseqOptions(int l = 190) const;
 
         /// True if lyxfunc reports an error
         bool errorStat() const { return errorstat; }
         /// Buffer to store result messages
-        void setMessage(string const &m);
+        void setMessage(string const & m);
         /// Buffer to store result messages
-        void setErrorMessage(string const &); 
+        void setErrorMessage(string const &) const; 
         /// Buffer to store result messages
         string getMessage() const { return dispatch_buffer; }
         /// Get next inset of this class from current cursor position  
-        Inset* getInsetByCode(Inset::Code);
+        Inset * getInsetByCode(Inset::Code);
 	
 	/// Should a hint message be displayed?
 	void setHintMessage(bool);
 
 private:
 	///
-	LyXView *owner;
-	///
-	static kb_func_table* lyx_func_table;
-	///
-	static kb_func_table *lyx_func_args;
+	LyXView * owner;
 	///
 	static int psd_idx;
  	///
@@ -95,12 +92,12 @@ private:
         ///
         kb_action lyx_calling_dead_action;
         /// Error status, only Dispatch can change this flag
-        bool errorstat;
+        mutable bool errorstat;
 
         /** Buffer to store messages and result data. Is there a
 	  good reason to have this one as static in Dispatch? (Ale)
          */
-        string dispatch_buffer;
+        mutable string dispatch_buffer;
 	/// Command name and shortcut information
 	string commandshortcut;
 
@@ -133,14 +130,14 @@ private:
 /*--------------------  inlines  --------------------------*/
 
 inline
-bool LyXFunc::wasMetaKey() 
+bool LyXFunc::wasMetaKey() const 
 { 
 	return (meta_fake_bit != 0);
 }
      
 
 inline
-string LyXFunc::keyseqStr(int l)
+string LyXFunc::keyseqStr(int l) const
 {
 	char text[200];
 	keyseq.print(text, l, true);
@@ -150,7 +147,7 @@ string LyXFunc::keyseqStr(int l)
 
 
 inline
-string LyXFunc::keyseqOptions(int l)
+string LyXFunc::keyseqOptions(int l) const
 {
 	char text[200];
 	keyseq.printOptions(text, l);
@@ -160,7 +157,7 @@ string LyXFunc::keyseqOptions(int l)
 
 
 inline
-bool LyXFunc::keyseqUncomplete() 
+bool LyXFunc::keyseqUncomplete() const
 { 
 	return (keyseq.length > 0);
 }

@@ -181,8 +181,7 @@ void InsetError::Edit(int, int)
 }
 
 
-Inset * InsetError::Clone()
+InsetError * InsetError::Clone() const
 {
-	InsetError * result = new InsetError(contents);
-	return result;
+	return new InsetError(contents);
 }

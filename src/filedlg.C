@@ -17,6 +17,10 @@
 #include <pwd.h>
 #include <grp.h>
 #include <cstring>
+#include <map>
+#include <algorithm>
+using std::map;
+using std::sort;
 
 #include "lyx_gui_misc.h" // CancelCloseCB
 #include "support/FileInfo.h"
@@ -66,147 +70,101 @@ extern "C" int gettimeofday(struct timeval *, struct timezone *);
 #include "support/filetools.h"
 #include "filedlg.h"
 
-static const long SIX_MONTH_SEC = 6L * 30L * 24L * 60L * 60L; // six months, in seconds
+// six months, in seconds
+static const long SIX_MONTH_SEC = 6L * 30L * 24L * 60L * 60L;
 static const long ONE_HOUR_SEC = 60L * 60L;
 
 // *** User cache class implementation
+/// User cache class definition
+class UserCache {
+public:
+	/// seeks user name from group ID
+	string const & find(uid_t ID) const {
+		Users::const_iterator cit = users.find(ID);
+		if (cit == users.end()) {
+			add(ID);
+			return users[ID];
+		}
+		return (*cit).second;
+	}
+private:
+	///
+	void add(uid_t ID) const {
+		string pszNewName;
+		struct passwd * pEntry;
+		
+		// gets user name
+		if ((pEntry = getpwuid(ID)))
+			pszNewName = pEntry->pw_name;
+		else {
+			pszNewName = tostr(ID);
+		}
+		
+		// adds new node
+		users[ID] = pszNewName;
+	}
+	///
+	typedef map<uid_t, string> Users;
+	///
+	mutable Users users;
+};
 
-// global instance (user cache root)
-UserCache lyxUserCache = UserCache(string(), 0, 0);
+
+/// Group cache class definition
+class GroupCache {
+public:
+	/// seeks group name from group ID
+	string const & find(gid_t ID) const {
+		Groups::const_iterator cit = groups.find(ID);
+		if (cit == groups.end()) {
+			add(ID);
+			return groups[ID];
+		}
+		return (*cit).second;
+	}
+private:
+	///
+	void add(gid_t ID) const {
+		string pszNewName;
+		struct group * pEntry;
+		
+		// gets user name
+		if ((pEntry = getgrgid(ID))) pszNewName = pEntry->gr_name;
+		else {
+			pszNewName = tostr(ID);
+		}
+		// adds new node
+		groups[ID] = pszNewName;
+	}
+	///
+	typedef map<gid_t, string> Groups;
+	///
+	mutable Groups groups;
+};
+
+// static instances
+static UserCache lyxUserCache;
+static GroupCache lyxGroupCache;
 
 // some "C" wrappers around callbacks
 extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT *, long lArgument);
 extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT *, long);
 extern "C" int C_LyXFileDlg_CancelCB(FL_FORM *, void *);
-extern "C" int C_LyXDirEntryC_ldeCompProc(const void * r1, 
-					  const void * r2);
 
-// Add: creates a new user entry
-UserCache * UserCache::Add(uid_t ID)
-{
-	string pszNewName;
-	struct passwd * pEntry;
 
-	// gets user name
-	if ((pEntry = getpwuid(ID)))
-		pszNewName = pEntry->pw_name;
-	else {
-		pszNewName = tostr(ID);
+// compares two LyXDirEntry objects content (used for sort)
+class comp_direntry {
+public:
+	int operator()(LyXDirEntry const & r1,
+		       LyXDirEntry const & r2) const {
+		bool r1d = suffixIs(r1.pszName, '/');
+		bool r2d = suffixIs(r2.pszName, '/');
+		if (r1d && !r2d) return 1;
+		if (!r1d && r2d) return 0;
+		return r1.pszName < r2.pszName;
 	}
+};
 
-	// adds new node
-	return new UserCache(pszNewName, ID, pRoot);
-}
-
-
-UserCache::UserCache(string const & pszName, uid_t ID, UserCache * pRoot)
-{
-	// links node
-	if (pRoot) {
-		this->pRoot = pRoot;
-		pNext = pRoot->pNext;
-		pRoot->pNext = this;
-	} else {
-		this->pRoot = this;
-		pNext = 0;
-	}
-
-	// stores data
-	this->pszName = pszName;
-	this->ID = ID;
-}
-
-
-UserCache::~UserCache()
-{
-	if (pNext) delete pNext;
-}
-
-
-// Find: seeks user name from user ID
-string UserCache::Find(uid_t ID)
-{
-	if ((!pszName.empty()) && (this->ID == ID)) return pszName; 
-	if (pNext) return pNext->Find(ID);
-
-	return pRoot->Add(ID)->pszName;
-}
-
-
-// *** Group cache class implementation
-
-// global instance (group cache root)
-GroupCache lyxGroupCache = GroupCache(string(), 0, 0);
-
-// Add: creates a new group entry
-GroupCache * GroupCache::Add(gid_t ID)
-{
-	string pszNewName;
-	struct group * pEntry;
-
-	// gets user name
-	if ((pEntry = getgrgid(ID))) pszNewName = pEntry->gr_name;
-	else {
-		pszNewName = tostr(ID);
-	}
-
-	// adds new node
-	return new GroupCache(pszNewName, ID, pRoot);
-}
-
-
-GroupCache::GroupCache(string const & pszName, gid_t ID, GroupCache * pRoot)
-{
-	// links node
-	if (pRoot) {
-		this->pRoot = pRoot;
-		pNext = pRoot->pNext;
-		pRoot->pNext = this;
-	} else {
-		this->pRoot = this;
-		pNext = 0;
-	}
-
-	// stores data
-	this->pszName = pszName;
-	this->ID = ID;
-}
-
-
-GroupCache::~GroupCache()
-{
-	if (pNext) delete pNext;
-}
-
-
-// Find: seeks group name from group ID
-string GroupCache::Find(gid_t ID)
-{
-	if ((!pszName.empty()) && (this->ID == ID)) return pszName; 
-	if (pNext) return pNext->Find(ID);
-
-	return pRoot->Add(ID)->pszName;
-}
-
-// *** LyXDirEntry internal structure implementation
-
-// ldeCompProc: compares two LyXDirEntry objects content (used for qsort)
-int LyXDirEntry::ldeCompProc(const LyXDirEntry * r1, 
-			     const LyXDirEntry * r2)
-{
-	bool r1d = suffixIs(r1->pszName, '/'); 
-	bool r2d = suffixIs(r2->pszName, '/');
-	if (r1d && !r2d) return -1;
-	if (!r1d && r2d) return 1;
-	return r1->pszName.compare(r2->pszName);
-}
-
-extern "C" int C_LyXDirEntry_ldeCompProc(const void * r1, 
-					 const void * r2)
-{
-	return LyXDirEntry::ldeCompProc((const LyXDirEntry *)r1,
-					(const LyXDirEntry *)r2);
-}
 
 // *** LyXFileDlg class implementation
 
@@ -218,17 +176,8 @@ LyXFileDlg * LyXFileDlg::pCurrentDlg = 0;
 // Reread: updates dialog list to match class directory
 void LyXFileDlg::Reread()
 {
-	int i;
-	DIR * pDirectory;
-	struct dirent * pDirEntry;
-	string File;
-	string Buffer;
-	string Time;
-	char szMode[15];
-	FileInfo fileInfo;
-	
 	// Opens directory
-	pDirectory = opendir(pszDirectory.c_str());
+	DIR * pDirectory = opendir(pszDirectory.c_str());
 	if (!pDirectory) {
 		WriteFSAlert(_("Warning! Couldn't open directory."), 
 			     pszDirectory);
@@ -237,10 +186,7 @@ void LyXFileDlg::Reread()
 	}
 
 	// Clear the present namelist
-	if (pCurrentNames) {
-		delete [] pCurrentNames;
-		pCurrentNames = 0;
-	}
+	direntries.clear();
 
 	// Updates display
 	fl_hide_object(pFileDlgForm->List);
@@ -250,7 +196,9 @@ void LyXFileDlg::Reread()
 	// Splits complete directory name into directories and compute depth
 	iDepth = 0;
 	string line, Temp;
-	File = pszDirectory;
+	char szMode[15];
+	FileInfo fileInfo;
+	string File = pszDirectory;
 	if (File != "/") {
 		File = split(File, Temp, '/');
 	}
@@ -262,18 +210,11 @@ void LyXFileDlg::Reread()
 		++iDepth;
 	}
 
-	// Allocate names array
-	iNumNames = 0;
-	rewinddir(pDirectory);
-	while ((readdir(pDirectory))) ++iNumNames;
-	pCurrentNames = new LyXDirEntry[iNumNames];
-
 	// Parses all entries of the given subdirectory
-	iNumNames = 0;
 	time_t curTime = time(0);
 	rewinddir(pDirectory);
+	struct dirent * pDirEntry;
 	while ((pDirEntry = readdir(pDirectory))) {
-
 		bool isLink = false, isDir = false;
 
 		// If the pattern doesn't start with a dot, skip hidden files
@@ -294,11 +235,11 @@ void LyXFileDlg::Reread()
 		fileInfo.newFile(File, true);
 		fileInfo.modeString(szMode);
 		unsigned int nlink = fileInfo.getNumberOfLinks();
-		string user = 	lyxUserCache.Find(fileInfo.getUid());
-		string group = lyxGroupCache.Find(fileInfo.getGid());
+		string user = 	lyxUserCache.find(fileInfo.getUid());
+		string group = lyxGroupCache.find(fileInfo.getGid());
 
 		time_t modtime = fileInfo.getModificationTime();
-		Time = ctime(&modtime);
+		string Time = ctime(&modtime);
 		
 		if (curTime > fileInfo.getModificationTime() + SIX_MONTH_SEC
 		    || curTime < fileInfo.getModificationTime()
@@ -314,7 +255,7 @@ void LyXFileDlg::Reread()
 			Time.erase(16, string::npos);
 		}
 
-		Buffer = string(szMode) + ' ' +
+		string Buffer = string(szMode) + ' ' +
 			tostr(nlink) + ' ' +
 			user + ' ' +
 			group + ' ' +
@@ -324,21 +265,21 @@ void LyXFileDlg::Reread()
 		Buffer += fileInfo.typeIndicator();
 
 		if ((isLink = fileInfo.isLink())) {
-		  string Link;
+			string Link;
 
-		  if (LyXReadLink(File, Link)) {
-		       Buffer += " -> ";
-		       Buffer += Link;
+			if (LyXReadLink(File, Link)) {
+				Buffer += " -> ";
+				Buffer += Link;
 
-		       // This gives the FileType of the file that
-		       // is really pointed too after resolving all
-		       // symlinks. This is not necessarily the same
-		       // as the type of Link (which could again be a
-		       // link). Is that intended?
-		       //                              JV 199902
-		       fileInfo.newFile(File);
-		       Buffer += fileInfo.typeIndicator();
-		  }
+				// This gives the FileType of the file that
+				// is really pointed too after resolving all
+				// symlinks. This is not necessarily the same
+				// as the type of Link (which could again be a
+				// link). Is that intended?
+				//                              JV 199902
+				fileInfo.newFile(File);
+				Buffer += fileInfo.typeIndicator();
+			}
 		}
 
 		// filters files according to pattern and type
@@ -351,33 +292,35 @@ void LyXFileDlg::Reread()
 		} else if (!(isDir = fileInfo.isDir()))
 			continue;
 
-		// Note pszLsEntry is an string!
-		pCurrentNames[iNumNames].pszLsEntry = Buffer;
+		LyXDirEntry tmp;
 
+		// Note pszLsEntry is an string!
+		tmp.pszLsEntry = Buffer;
 		// creates used name
 		string temp = fname;
 		if (isDir) temp += '/';
-		pCurrentNames[iNumNames].pszName = temp;
 
+		tmp.pszName = temp;
 		// creates displayed name
 		temp = pDirEntry->d_name;
 		if (isLink)
 			temp += '@';
 		else
 			temp += fileInfo.typeIndicator();
-		
-		pCurrentNames[iNumNames++].pszDisplayed = temp;
+		tmp.pszDisplayed = temp;
+
+		direntries.push_back(tmp);
 	}
 
 	closedir(pDirectory);
 
 	// Sort the names
-	qsort(pCurrentNames, iNumNames, sizeof(LyXDirEntry), 
-	      C_LyXDirEntry_ldeCompProc);
-
+	sort(direntries.begin(), direntries.end(), comp_direntry());
+	
 	// Add them to directory box
-	for (i = 0; i < iNumNames; ++i) {
-		string temp = line + pCurrentNames[i].pszDisplayed;
+	for (DirEntries::const_iterator cit = direntries.begin();
+	     cit != direntries.end(); ++cit) {
+		string temp = line + (*cit).pszDisplayed;
 		fl_add_browser_line(pFileDlgForm->List, temp.c_str());
 	}
 	fl_set_browser_topline(pFileDlgForm->List, iDepth);
@@ -415,7 +358,6 @@ void LyXFileDlg::SetInfoLine(string const & Line)
 
 LyXFileDlg::LyXFileDlg()
 {
-	pCurrentNames = 0;
 	pszDirectory = MakeAbsPath(string("."));
 	pszMask = '*';
 
@@ -445,19 +387,11 @@ LyXFileDlg::LyXFileDlg()
 				    C_LyXFileDlg_CancelCB, 0);
 	   	// Register doubleclick callback
 		fl_set_browser_dblclick_callback(pFileDlgForm->List,
-						 C_LyXFileDlg_DoubleClickCB, 0);
+						 C_LyXFileDlg_DoubleClickCB,
+						 0);
 	}
 	fl_hide_object(pFileDlgForm->User1);
 	fl_hide_object(pFileDlgForm->User2);
-}
-
-
-LyXFileDlg::~LyXFileDlg()
-{
-	// frees directory entries
-	if (pCurrentNames) {
-		delete [] pCurrentNames;
-	}
 }
 
 
@@ -465,8 +399,8 @@ LyXFileDlg::~LyXFileDlg()
 void LyXFileDlg::SetButton(int iIndex, string const & pszName, 
 			   string const & pszPath)
 {
-	FL_OBJECT *pObject;
-	string *pTemp;
+	FL_OBJECT * pObject;
+	string * pTemp;
 
 	if (iIndex == 0) {
 		pObject = pFileDlgForm->User1;
@@ -488,7 +422,7 @@ void LyXFileDlg::SetButton(int iIndex, string const & pszName,
 
 
 // GetDirectory: gets last dialog directory
-string LyXFileDlg::GetDirectory() 
+string LyXFileDlg::GetDirectory() const
 {
 	if (!pszDirectory.empty())
 		return pszDirectory;
@@ -556,7 +490,8 @@ void LyXFileDlg::FileDlgCB(FL_OBJECT *, long lArgument)
 	case 12: // user button 1
 		if (!pCurrentDlg->pszUserPath1.empty()) {
 			pCurrentDlg->SetDirectory(pCurrentDlg->pszUserPath1);
-			pCurrentDlg->SetMask(fl_get_input(pFileDlgForm->PatBox));
+			pCurrentDlg->SetMask(fl_get_input(pFileDlgForm
+							  ->PatBox));
 			pCurrentDlg->Reread();
 		}
 		break;
@@ -564,7 +499,8 @@ void LyXFileDlg::FileDlgCB(FL_OBJECT *, long lArgument)
 	case 13: // user button 2
 		if (!pCurrentDlg->pszUserPath2.empty()) {
 			pCurrentDlg->SetDirectory(pCurrentDlg->pszUserPath2);
-			pCurrentDlg->SetMask(fl_get_input(pFileDlgForm->PatBox));
+			pCurrentDlg->SetMask(fl_get_input(pFileDlgForm
+							  ->PatBox));
 			pCurrentDlg->Reread();
 		}
 		break;
@@ -572,7 +508,7 @@ void LyXFileDlg::FileDlgCB(FL_OBJECT *, long lArgument)
 	}
 }
 
-extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT *ob, long data) 
+extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT * ob, long data) 
 {
 	LyXFileDlg::FileDlgCB(ob, data);
 }
@@ -584,7 +520,7 @@ void LyXFileDlg::HandleListHit()
 	// set info line
 	int iSelect = fl_get_browser(pFileDlgForm->List);
 	if (iSelect > iDepth)  {
-		SetInfoLine(pCurrentNames[iSelect - iDepth - 1].pszLsEntry);
+		SetInfoLine(direntries[iSelect - iDepth - 1].pszLsEntry);
 	} else {
 		SetInfoLine(string());
 	}
@@ -599,7 +535,7 @@ void LyXFileDlg::DoubleClickCB(FL_OBJECT *, long)
 		pCurrentDlg->Force(false);
 }
 
-extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT *ob, long data)
+extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT * ob, long data)
 {
 	LyXFileDlg::DoubleClickCB(ob, data);
 }
@@ -607,16 +543,14 @@ extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT *ob, long data)
 // Handle double click from list
 bool LyXFileDlg::HandleDoubleClick()
 {
-	bool isDir;
 	string pszTemp;
-	int iSelect;  
 
 	// set info line
-	isDir = true;
-	iSelect = fl_get_browser(pFileDlgForm->List);
+	bool isDir = true;
+	int iSelect = fl_get_browser(pFileDlgForm->List);
 	if (iSelect > iDepth)  {
-		pszTemp = pCurrentNames[iSelect - iDepth - 1].pszName;
-		SetInfoLine(pCurrentNames[iSelect - iDepth - 1].pszLsEntry);
+		pszTemp = direntries[iSelect - iDepth - 1].pszName;
+		SetInfoLine(direntries[iSelect - iDepth - 1].pszLsEntry);
 		if (!suffixIs(pszTemp, '/')) {
 			isDir = false;
 			fl_set_input(pFileDlgForm->Filename, pszTemp.c_str());
@@ -628,8 +562,6 @@ bool LyXFileDlg::HandleDoubleClick()
 
 	// executes action
 	if (isDir) {
-
-		int i;
 		string Temp;
 
 		// builds new directory name
@@ -643,7 +575,7 @@ bool LyXFileDlg::HandleDoubleClick()
 		} else {
 			// Directory higher up
 			Temp.clear();
-			for (i = 0; i < iSelect; ++i) {
+			for (int i = 0; i < iSelect; ++i) {
 				string piece = fl_get_browser_line(pFileDlgForm->List, i+1);
 				// The '+2' is here to count the '@b' (JMarc)
 				Temp += piece.substr(i + 2);
@@ -662,10 +594,8 @@ bool LyXFileDlg::HandleDoubleClick()
 // Handle OK button call
 bool LyXFileDlg::HandleOK()
 {
-	string pszTemp;
-
 	// mask was changed
-	pszTemp = fl_get_input(pFileDlgForm->PatBox);
+	string pszTemp = fl_get_input(pFileDlgForm->PatBox);
 	if (pszTemp!= pszMask) {
 		SetMask(pszTemp);
 		Reread();
@@ -683,7 +613,7 @@ bool LyXFileDlg::HandleOK()
 	// Handle return from list
 	int select = fl_get_browser(pFileDlgForm->List);
 	if (select > iDepth) {
-		string temp = pCurrentNames[select - iDepth - 1].pszName;
+		string temp = direntries[select - iDepth - 1].pszName;
 		if (!suffixIs(temp, '/')) {
 			// If user didn't type anything, use browser
 			string name = fl_get_input(pFileDlgForm->Filename);
@@ -707,10 +637,12 @@ int LyXFileDlg::CancelCB(FL_FORM *, void *)
   	return FL_IGNORE;
 }
 
+
 extern "C" int C_LyXFileDlg_CancelCB(FL_FORM *fl, void *xev)
 {
 	return LyXFileDlg::CancelCB(fl, xev);
 }
+
 
 // Simulates a click on OK/Cancel
 void LyXFileDlg::Force(bool cancel)
@@ -729,12 +661,10 @@ void LyXFileDlg::Force(bool cancel)
 
 // Select: launches dialog and returns selected file
 string LyXFileDlg::Select(string const & title, string const & path, 
-			   string const & mask, string const & suggested)
+			  string const & mask, string const & suggested)
 {
-	bool isOk;
-
 	// handles new mask and path
-	isOk = true;
+	bool isOk = true;
 	if (!mask.empty()) {
 		SetMask(mask);
 		isOk = false;

@@ -91,7 +91,7 @@ public:
 	virtual void Draw(LyXFont font, LyXScreen & scr,
 			  int baseline, float & x) = 0;
 	/// what appears in the minibuffer when opening
-	virtual char const * EditMessage() {return _("Opened inset");}
+	virtual char const * EditMessage() const {return _("Opened inset");}
 	///
 	virtual void Edit(int, int);
 	///
@@ -99,9 +99,9 @@ public:
 	///
 	virtual bool AutoDelete() const;
 	///
-	virtual void Write(FILE * file)= 0;
+	virtual void Write(FILE * file) = 0;
 	///
-	virtual void Read(LyXLex & lex)= 0;
+	virtual void Read(LyXLex & lex) = 0;
 	/** returns the number of rows (\n's) of generated tex code.
 	 fragile != 0 means, that the inset should take care about
 	 fragile commands by adding a \protect before.
@@ -125,22 +125,16 @@ public:
 		return string();
 	}
 
-	/// used for autocorrection
-	virtual bool IsEqual(Inset * /*other*/){
-		return false;
-	}
-
 	///
-	virtual Inset * Clone() = 0;
+	virtual Inset * Clone() const = 0;
 
 	/// returns true to override begin and end inset in file
 	virtual bool DirectWrite() const;
 
 	/// Returns true if the inset should be centered alone
-	virtual bool Display() const { return false; }  
- 
+	virtual bool display() const { return false; }  
 	/// Changes the display state of the inset
-	virtual void SetDisplay(bool) {  }  
+	virtual void display(bool) {}  
 	///
 	virtual int GetNumberOfLabels() const {
 		return 0;
@@ -185,7 +179,7 @@ public:
 	/// may call ToggleLockedInsetCursor
 	virtual void ToggleInsetCursor();
 	///
-	virtual void GetCursorPos(int &, int &) {}
+	virtual void GetCursorPos(int &, int &) const {}
 	///
 	virtual void InsetButtonPress(int x, int y, int button);
 	///

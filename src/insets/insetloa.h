@@ -32,7 +32,7 @@ public:
         ///
 	void Validate(LaTeXFeatures & features) const;
         ///
-        Inset * Clone() { return new InsetLOA(owner); }
+        InsetLOA * Clone() const { return new InsetLOA(owner); }
     	///
 	string getScreenLabel() const { return _("List of Algorithms"); }
 
@@ -43,7 +43,7 @@ public:
 		return 0; // not yet
 	}
 	///
-	bool Display() const { return true; }
+	bool display() const { return true; }
 	///
 	Inset::Code LyxCode() const { return Inset::LOA_CODE; }
 private:

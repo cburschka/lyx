@@ -27,6 +27,7 @@
 #include "intl.h"
 #include "lyx_main.h"
 #include "lyx_cb.h"
+#include "LyXAction.h"
 #if 0
 #include "insets/insetlatex.h"
 #endif
@@ -148,18 +149,13 @@ extern void UpdateInset(Inset* inset, bool mark_dirty = true);
 bool LyXFunc::show_sc = true;
 
 
-LyXFunc::LyXFunc(LyXView *o)
+LyXFunc::LyXFunc(LyXView * o)
 	:owner(o)
 {
 	meta_fake_bit = 0;
 	lyx_dead_action = LFUN_NOACTION;
 	lyx_calling_dead_action = LFUN_NOACTION;
 	setupLocalKeymap();
-}
-
-
-LyXFunc::~LyXFunc()
-{
 }
 
 
@@ -173,13 +169,13 @@ void LyXFunc::moveCursorUpdate(bool selecting)
 {
 	if (selecting || owner->buffer()->text->mark_set) {
 		owner->buffer()->text->SetSelection();
-		owner->currentView()->getScreen()->ToggleToggle();
+		owner->view()->getScreen()->ToggleToggle();
 		owner->buffer()->update(0);
 	} else {
 		owner->buffer()->update(-2); // this IS necessary
 		// (Matthias) 
 	}
-	owner->currentView()->getScreen()->ShowCursor();
+	owner->view()->getScreen()->ShowCursor();
 	
 	/* ---> Everytime the cursor is moved, show the current font state. */
 	// should this too me moved out of this func?
@@ -187,14 +183,14 @@ void LyXFunc::moveCursorUpdate(bool selecting)
 }
 
 
-int LyXFunc::processKeyEvent(XEvent *ev)
+int LyXFunc::processKeyEvent(XEvent * ev)
 {
 	char s_r[10];
 	s_r[9] = '\0';
 	int num_bytes;
 	int action; 
 	string argument;
-	XKeyEvent *keyevent = &ev->xkey;
+	XKeyEvent * keyevent = &ev->xkey;
 	KeySym keysym_return;
 
 	num_bytes = LyXLookupString(ev, s_r, 10, &keysym_return);
@@ -217,7 +213,7 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 	}
 	
 	// this function should be used always [asierra060396]
-	if (owner->currentView()->available() &&
+	if (owner->view()->available() &&
 	    owner->buffer()->the_locking_inset &&
 	    keysym_return == XK_Escape) {
 		UnlockInset(owner->buffer()->the_locking_inset);
@@ -311,9 +307,130 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 } 
 
 
-string LyXFunc::Dispatch(string const& s) 
+LyXFunc::func_status LyXFunc::getStatus(int ac) const
 {
-  // Split command string into command and argument
+        kb_action action;
+        func_status flag = LyXFunc::OK;
+        string argument;
+        Buffer * buf = owner->buffer();
+	
+ 	if (lyxaction.isPseudoAction(ac)) 
+		action = lyxaction.retrieveActionArg(ac, argument);
+	else 
+		action = static_cast<kb_action>(ac);
+	
+	if (action == LFUN_UNKNOWN_ACTION) {
+		setErrorMessage(N_("Unknown action"));
+		return LyXFunc::Unknown;
+	} 
+	
+	// Check whether we need a buffer
+	if (!lyxaction.funcHasFlag(action, LyXAction::NoBuffer)) {
+		// Yes we need a buffer, do we have one?
+		if (buf) {
+			// yes
+			// Can we use a readonly buffer?
+			if (buf->isReadonly() && 
+			    !lyxaction.funcHasFlag(action,
+						   LyXAction::ReadOnly)) {
+				// no
+				setErrorMessage(N_("Document is read-only"));
+				flag = func_status(flag | LyXFunc::Disabled);
+			}
+		} else {
+			// no
+			setErrorMessage(N_("Command not allowed with"
+					   "out any document open"));
+			flag = func_status(flag | LyXFunc::Disabled);
+		}
+	}
+
+	if (flag & LyXFunc::Disabled)
+		return flag;
+
+        static bool noLaTeX = lyxrc->latex_command == "none";
+        bool disable = false;
+        switch (action) {
+          case LFUN_PREVIEW:
+                  disable = noLaTeX || lyxrc->view_dvi_command == "none";
+                  break;	
+          case LFUN_PREVIEWPS: 
+                  disable = noLaTeX || lyxrc->view_ps_command == "none";
+                  break;
+          case LFUN_RUNLATEX:
+          case LFUN_RUNDVIPS:
+                  disable = noLaTeX;
+                  break;
+          case LFUN_MENUPRINT:
+                  disable = noLaTeX || lyxrc->print_command == "none";
+                  break;
+          case LFUN_FAX:
+                  disable = noLaTeX || lyxrc->fax_command == "none"; 
+                  break;
+          case LFUN_IMPORT:
+                  if (argument == "latex")
+                          disable = lyxrc->relyx_command == "none";
+                  break;
+          case LFUN_EXPORT:
+                  if (argument == "dvi" || argument == "postscript")
+                          disable = noLaTeX;
+                  break;
+	  case LFUN_UNDO:
+		  disable = buf->undostack.empty();
+		  break;
+	  case LFUN_REDO:
+		  disable = buf->redostack.empty();
+		  break;
+	  case LFUN_SPELLCHECK:
+		  disable = lyxrc->isp_command == "none";
+		  break;
+	  case LFUN_RUNCHKTEX:
+		  disable = lyxrc->chktex_command == "none";
+		  break;
+	  case LFUN_LAYOUT_TABLE:
+#warning change this and font code once it is possible to get to cursor
+		  //		  disable = ! buf->text->cursor.par->table;
+		  break;
+	  default:
+                  break;
+        }
+        if (disable)
+                flag = func_status(flag | LyXFunc::Disabled);
+
+	func_status box = LyXFunc::ToggleOff;
+	//	LyXFont font = buf->text->real_current_font;
+	LyXFont font;
+	switch (action) {
+	case LFUN_EMPH:
+		if (font.emph() == LyXFont::ON)
+			box = LyXFunc::ToggleOn;
+		break;
+	case LFUN_NOUN:
+		if (font.noun() == LyXFont::ON)
+			box = LyXFunc::ToggleOn;
+		break;
+	case LFUN_BOLD:
+		if (font.series() == LyXFont::BOLD_SERIES)
+			box = LyXFunc::ToggleOn;
+		break;
+	case LFUN_TEX:
+		if (font.latex() == LyXFont::ON)
+			box = LyXFunc::ToggleOn;
+		break;
+	default:
+		box = LyXFunc::OK;
+		break;
+	}
+	flag = func_status(flag | box);
+
+
+	return flag;
+}
+
+
+string LyXFunc::Dispatch(string const & s) 
+{
+	// Split command string into command and argument
 	string cmd, line = frontStrip(s);
 	string arg = strip(frontStrip(split(line, cmd, ' ')));
 
@@ -322,70 +439,41 @@ string LyXFunc::Dispatch(string const& s)
 
 
 string LyXFunc::Dispatch(int ac,
-			  char const *do_not_use_this_arg)
+			  char const * do_not_use_this_arg)
 {
 	string argument;
 	kb_action action;
         
-
-	FL_OBJECT *ob = 0;  // This will disapear soon
+	FL_OBJECT * ob = 0;  // This will disapear soon
     
         // we have not done anything wrong yet.
         errorstat = false;
-	dispatch_buffer = string();
+	dispatch_buffer.clear();
 	
 	// if action is a pseudo-action, we need the real action
 	if (lyxaction.isPseudoAction(ac)) {
-		char const *tmparg = 0;
-		action = (kb_action)lyxaction.retrieveActionArg(ac, &tmparg);
-		if (tmparg)
+		string tmparg;
+		action = static_cast<kb_action>
+			(lyxaction.retrieveActionArg(ac, tmparg));
+		if (!tmparg.empty())
 			argument = tmparg;
 	} else {
-		action = (kb_action)ac;
+		action = static_cast<kb_action>(ac);
 		if (do_not_use_this_arg)
 			argument = do_not_use_this_arg; // except here
 	}
     
 	selection_possible = false;
 	
-	if (owner->currentView()->available() 
-	    && owner->currentView()->getScreen())
-		owner->currentView()->getScreen()->HideCursor();
+	if (owner->view()->available() 
+	    && owner->view()->getScreen())
+		owner->view()->getScreen()->HideCursor();
 
-	if(!owner->currentView()->available()) {
-		// This lists the allowed funcs when we have no
-		// buffer loaded
-		switch(action){
-		case LFUN_MENU_OPEN_BY_NAME:
-		case LFUN_PREFIX:
-		case LFUN_MENUNEW:
-		case LFUN_MENUNEWTMPLT:
-		case LFUN_MENUOPEN:
-		case LFUN_QUIT:
-		case LFUN_PUSH_TOOLBAR:
-		case LFUN_ADD_TO_TOOLBAR:
-		case LFUN_EXEC_COMMAND:
-		case LFUN_DROP_LAYOUTS_CHOICE:
-		case LFUN_FILE_NEW:
-		case LFUN_FILE_OPEN:
-		case LFUN_IMPORT:
-		case LFUN_RECONFIGURE:
-		case LFUN_CANCEL:
-		case LFUN_APROPOS:
-		case LFUN_META_FAKE:
+	// We cannot use this function here
+	if (getStatus(action) & Disabled)
+		goto exit_with_message;
 
-			break;
-		case LFUN_UNKNOWN_ACTION:
-			setErrorMessage(N_("Unknown action"));
-			goto exit_with_message;
-		default:
-			setErrorMessage(N_("Command not allowed with"
-					"out any document open"));
-			goto exit_with_message;  // action not allowed
-		}
-	}
-	
-	commandshortcut = string();
+	commandshortcut.clear();
 	
 	if (lyxrc->display_shortcuts && show_sc) {
 		if (action != LFUN_SELFINSERT) {
@@ -433,44 +521,35 @@ string LyXFunc::Dispatch(int ac,
 		}
         }
 
-        // Now that we know which action, if the buffer is RO let's check 
-	// whether the action is legal.  Alejandro 970603
-        if (owner->currentView()->available() && 
-            owner->buffer()->isReadonly() && 
-            lyxaction.isFuncRO(action)) {
-		setErrorMessage(N_("Document is read-only"));
-		lyxerr.debug() << "Error: Document is read-only." << endl;
-		goto exit_with_message;
-	}
-
 	// If in math mode pass the control to
 	// the math inset [asierra060396]
-	if (owner->currentView()->available() &&
+	if (owner->view()->available() &&
 	    owner->buffer()->the_locking_inset) {
-		if (action>1 || (action == LFUN_UNKNOWN_ACTION && keyseq.length>= -1)) {
+		if (action > 1
+		    || (action == LFUN_UNKNOWN_ACTION && keyseq.length>= -1)) {
 			if (action == LFUN_UNKNOWN_ACTION && argument.empty()) {
 				argument = keyseq.getiso();
 			}
-			// Undo/Redo pre 0.13 is a bit tricky for insets.		    
+			// Undo/Redo pre 0.13 is a bit tricky for insets.
 		        if (action == LFUN_UNDO) {
 				int slx, sly;
-				UpdatableInset* inset = 
+				UpdatableInset * inset = 
 					owner->buffer()->the_locking_inset;
 				inset->GetCursorPos(slx, sly);
 				UnlockInset(inset);
 				MenuUndo();
-				inset = (UpdatableInset*)owner->buffer()->text->cursor.par->GetInset(owner->buffer()->text->cursor.pos);
+				inset = static_cast<UpdatableInset*>(owner->buffer()->text->cursor.par->GetInset(owner->buffer()->text->cursor.pos));
 				if (inset) 
 					inset->Edit(slx, sly);
 				return string();
 			} else 
 				if (action == LFUN_REDO) {
 					int slx, sly;
-					UpdatableInset* inset = owner->buffer()->the_locking_inset;
+					UpdatableInset * inset = owner->buffer()->the_locking_inset;
 					inset->GetCursorPos(slx, sly);
 					UnlockInset(inset);
 					MenuRedo();
-					inset = (UpdatableInset*)owner->buffer()->text->cursor.par->GetInset(owner->buffer()->text->cursor.pos);
+					inset = static_cast<UpdatableInset*>(owner->buffer()->text->cursor.par->GetInset(owner->buffer()->text->cursor.pos));
 					if (inset)
 						inset->Edit(slx, sly);
 					return string();
@@ -501,21 +580,20 @@ string LyXFunc::Dispatch(int ac,
 			searched_string = last_search;
 		}
 
-		LyXText * ltCur = owner->currentView()->buffer()->text ;
+		LyXText * ltCur = owner->view()->buffer()->text ;
 
 		if (!searched_string.empty() &&
-		    (	 (action == LFUN_WORDFINDBACKWARD) ? 
-			 ltCur->SearchBackward( searched_string.c_str() ) :
-			 ltCur->SearchForward(	searched_string.c_str() ) 
-			 )){
+		    ((action == LFUN_WORDFINDBACKWARD) ? 
+		     ltCur->SearchBackward(searched_string.c_str()) :
+		     ltCur->SearchForward(searched_string.c_str()))) {
 
 			// ??? What is that ???
-			owner->currentView()->buffer()->update(-2);
+			owner->view()->buffer()->update(-2);
 
 			// ??? Needed ???
 			// clear the selection (if there is any) 
-			owner->currentView()->getScreen()->ToggleSelection();
-			owner->currentView()->buffer()->text->ClearSelection();
+			owner->view()->getScreen()->ToggleSelection();
+			owner->view()->buffer()->text->ClearSelection();
 
 			// Move cursor so that successive C-s 's will not stand in place. 
 			if( action == LFUN_WORDFINDFORWARD ) 
@@ -525,20 +603,20 @@ string LyXFunc::Dispatch(int ac,
 
 			// ??? Needed ???
 			// set the new selection 
-			// SetSelectionOverLenChars(owner->currentView()->currentBuffer()->text, iLenSelected);
-			owner->currentView()->getScreen()->ToggleSelection(false);
+			// SetSelectionOverLenChars(owner->view()->currentBuffer()->text, iLenSelected);
+			owner->view()->getScreen()->ToggleSelection(false);
 		} else 
 			LyXBell();	
 	 
-		// REMOVED : if (owner->currentView()->getWorkArea()->focus)
-		owner->currentView()->getScreen()->ShowCursor();
+		// REMOVED : if (owner->view()->getWorkArea()->focus)
+		owner->view()->getScreen()->ShowCursor();
 	}
 	break;
 
 	case LFUN_PREFIX:
 	{
-		if (owner->currentView()->available()
-		    && owner->currentView()->getScreen()) {
+		if (owner->view()->available()
+		    && owner->view()->getScreen()) {
 			owner->buffer()->update(-2);
 		}
 		char buf[100];
@@ -555,9 +633,9 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_CANCEL:                   // RVDK_PATCH_5
 		keyseq.reset();
 		meta_fake_bit = 0;
-		if(owner->currentView()->available())
+		if(owner->view()->available())
 			// cancel any selection
-			Dispatch(int(LFUN_MARK_OFF), 0);
+			Dispatch(LFUN_MARK_OFF, 0);
 		setMessage(N_("Cancel"));
 		break;
 
@@ -583,20 +661,20 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_CENTER: // this is center and redraw.
 		BeforeChange();
 		if (owner->buffer()->text->cursor.y >
-		    owner->currentView()->getWorkArea()->h / 2)	{
-			owner->currentView()->getScreen()->
+		    owner->view()->getWorkArea()->h / 2)	{
+			owner->view()->getScreen()->
 				Draw(owner->buffer()->text->cursor.y -
-				     owner->currentView()->getWorkArea()->h/2);
+				     owner->view()->getWorkArea()->h/2);
 		} else { // <= 
-			owner->currentView()->getScreen()->
+			owner->view()->getScreen()->
 				Draw(0);
 		}
 		owner->buffer()->update(0);
-		owner->currentView()->redraw();
+		owner->view()->redraw();
 		break;
 		
 	case LFUN_APPENDIX:
-		if (owner->currentView()->available()) {
+		if (owner->view()->available()) {
 			owner->buffer()->text->toggleAppendix();
 			owner->buffer()->update(1);
 		}
@@ -666,7 +744,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_EXPORT:
 	{
 		//needs argument as string
-		string extyp= argument;
+		string extyp = argument;
 		
 		// latex
 		if (extyp == "latex") {
@@ -730,16 +808,16 @@ string LyXFunc::Dispatch(int ac,
 			Systemcalls one;
 			int res = one.startscript(Systemcalls::System, tmp);
 			if (res == 0) {
-				setMessage(_("Document exported as HTML to file `")
+				setMessage(N_("Document exported as HTML to file `")
 					   + MakeDisplayPath(result) +'\'');
 			} else {
-				setErrorMessage(_("Unable to convert to HTML the file `")
+				setErrorMessage(N_("Unable to convert to HTML the file `")
 						+ MakeDisplayPath(file) 
 						+ '\'');
 			}
 		}
 		else {
-			setErrorMessage(_("Unknown export type: ")
+			setErrorMessage(N_("Unknown export type: ")
 					+ extyp);
 		}
 	}
@@ -748,7 +826,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_IMPORT:
 	{
 		//needs argument as string
-		string imtyp= argument;
+		string imtyp = argument;
 		
 		// latex
 		if (imtyp == "latex") {
@@ -793,37 +871,29 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_TOC_INSERT:
 	{
-		Inset *new_inset = 
-			new InsetTOC(owner->buffer());
-		owner->buffer()->insertInset(new_inset,
-						    "Standard", true);
+		Inset * new_inset = new InsetTOC(owner->buffer());
+		owner->buffer()->insertInset(new_inset, "Standard", true);
 		break;
 	}
 	
 	case LFUN_LOF_INSERT:
 	{
-		Inset *new_inset = 
-			new InsetLOF(owner->buffer());
-		owner->buffer()->insertInset(new_inset,
-						    "Standard", true);
+		Inset * new_inset = new InsetLOF(owner->buffer());
+		owner->buffer()->insertInset(new_inset, "Standard", true);
 		break;
 	}
 	
 	case LFUN_LOA_INSERT:
 	{
-		Inset *new_inset = 
-			new InsetLOA(owner->buffer());
-		owner->buffer()->insertInset(new_inset,
-						    "Standard", true);
+		Inset * new_inset = new InsetLOA(owner->buffer());
+		owner->buffer()->insertInset(new_inset, "Standard", true);
 		break;
 	}
 
 	case LFUN_LOT_INSERT:
 	{
-		Inset *new_inset = 
-			new InsetLOT(owner->buffer());
-		owner->buffer()->insertInset(new_inset,
-						    "Standard", true);
+		Inset * new_inset = new InsetLOT(owner->buffer());
+		owner->buffer()->insertInset(new_inset, "Standard", true);
 		break;
 	}
 		
@@ -858,7 +928,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_PASTESELECTION:
 	{
 	        bool asPara = false;
-		if (string(argument) == "paragraph") asPara = true;
+		if (argument == "paragraph") asPara = true;
 		MenuPasteSelection(asPara);
 		break;
 	}
@@ -880,14 +950,14 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_GOTOERROR:
-		owner->currentView()->gotoError();
+		owner->view()->gotoError();
 		break;
 		
 	case LFUN_REMOVEERRORS:
 		if (owner->buffer()->removeAutoInsets()) {
-			owner->currentView()->redraw();
-			owner->currentView()->fitCursor();
-			owner->currentView()->updateScrollbar();
+			owner->view()->redraw();
+			owner->view()->fitCursor();
+			owner->view()->updateScrollbar();
 		}
 		break;
 		
@@ -948,7 +1018,7 @@ string LyXFunc::Dispatch(int ac,
 		break;
 
 	case LFUN_FOOTMELT:
-		if (owner->currentView()->available()
+		if (owner->view()->available()
 		    && !owner->buffer()->text->selection
 		    && owner->buffer()->text->cursor.par->footnoteflag
 		    != LyXParagraph::NO_FOOTNOTE)
@@ -961,13 +1031,13 @@ string LyXFunc::Dispatch(int ac,
 		break;
 
 	case LFUN_MARGINMELT:
-		if (owner->currentView()->available()
+		if (owner->view()->available()
 		    && !owner->buffer()->text->selection
 		    && owner->buffer()->text->cursor.par->footnoteflag
-		    != LyXParagraph::NO_FOOTNOTE)
-		{ // only melt margins
-		  if(owner->buffer()->text->cursor.par->footnotekind == LyXParagraph::MARGIN)
-			MeltCB(ob, 0);
+		    != LyXParagraph::NO_FOOTNOTE) {
+			// only melt margins
+			if(owner->buffer()->text->cursor.par->footnotekind == LyXParagraph::MARGIN)
+				MeltCB(ob, 0);
 		}
 		else
 			MarginCB(ob, 0); 
@@ -1022,13 +1092,13 @@ string LyXFunc::Dispatch(int ac,
 #endif
 		// it is the LyXView or the BufferView that should
 		// remember the previous buffer, not bufferlist.
-// 			if (owner->currentView()->available()){	  
+// 			if (owner->view()->available()){	  
 // 				BeforeChange();
 // 				owner->buffer()->update(-2);
 // 			}
-// 			owner->currentView()->setBuffer(bufferlist.prev());
+// 			owner->view()->setBuffer(bufferlist.prev());
 
-// 			owner->currentView()->
+// 			owner->view()->
 // 				resizeCurrentBufferPseudoExpose();
 		break;
 			
@@ -1040,8 +1110,7 @@ string LyXFunc::Dispatch(int ac,
 	
 	case LFUN_FILE_INSERT_ASCII:
 	{
-	        bool asPara = false;
-		asPara = (string(argument) == "paragraph");
+		bool asPara = (argument == "paragraph");
 		InsertAsciiFile(string(), asPara);
 	}
 	break;
@@ -1049,15 +1118,14 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_FILE_NEW:
 	{
 		// servercmd: argument must be <file>:<template>
-		Buffer * tmpbuf = 0;
-		tmpbuf = NewLyxFile(argument);
+		Buffer * tmpbuf = NewLyxFile(argument);
 		if (tmpbuf)
-			owner->currentView()->buffer(tmpbuf);
+			owner->view()->buffer(tmpbuf);
 	}
 		break;
 			
 	case LFUN_FILE_OPEN:
-		owner->currentView()->buffer(
+		owner->view()->buffer(
 			bufferlist.loadLyXFile(argument));
 		break;
 
@@ -1093,8 +1161,7 @@ string LyXFunc::Dispatch(int ac,
 		
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number). */    
-		int layoutno = -1;
-		layoutno = 
+		int layoutno = 
 			textclasslist.NumberOfLayout(owner->
 						buffer()->
 						text->parameters->
@@ -1109,7 +1176,7 @@ string LyXFunc::Dispatch(int ac,
 		}
 			
 		if (current_layout != layoutno) {
-			owner->currentView()->getScreen()->HideCursor();
+			owner->view()->getScreen()->HideCursor();
 			current_layout = layoutno;
 			owner->buffer()->update(-2);
 			owner->buffer()->text->
@@ -1138,7 +1205,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_LAYOUT_TABLE:
 	{
 	        int flag = 0;
-	        if (string(argument) == "true") flag = 1;
+	        if (argument == "true") flag = 1;
 		MenuLayoutTable(flag);
 	}
 	break;
@@ -1237,8 +1304,8 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_REFTOGGLE:
 	{
-		InsetRef *inset = 
-			(InsetRef*)getInsetByCode(Inset::REF_CODE);
+		InsetRef * inset = 
+			static_cast<InsetRef*>(getInsetByCode(Inset::REF_CODE));
 		if (inset) {
 			if (inset->getFlag() == InsetRef::REF)
 				inset->setFlag(InsetRef::PAGE_REF);
@@ -1253,7 +1320,7 @@ string LyXFunc::Dispatch(int ac,
 	
 	case LFUN_REFBACK:
 	{
-		owner->currentView()->restorePosition();
+		owner->view()->restorePosition();
 	}
 	break;
 
@@ -1261,14 +1328,14 @@ string LyXFunc::Dispatch(int ac,
 	{
 		string label(argument);
 		if (label.empty()) {
-			InsetRef *inset = 
-				(InsetRef*)getInsetByCode(Inset::REF_CODE);
+			InsetRef * inset = 
+				static_cast<InsetRef*>(getInsetByCode(Inset::REF_CODE));
 			if (inset)
                                 label = inset->getContents();
 		}
 		
 		if (!label.empty()) {
-			owner->currentView()->savePosition();
+			owner->view()->savePosition();
 			owner->buffer()->gotoLabel(label.c_str());
 		}
 	}
@@ -1286,8 +1353,8 @@ string LyXFunc::Dispatch(int ac,
 		// --- Cursor Movements -----------------------------
 	case LFUN_RIGHT:
 	{
-		Buffer *tmpbuffer = owner->buffer();
-		LyXText *tmptext = owner->buffer()->text;
+		Buffer * tmpbuffer = owner->buffer();
+		LyXText * tmptext = owner->buffer()->text;
 		if(!tmptext->mark_set)
 			BeforeChange();
 		tmpbuffer->update(-2);
@@ -1296,7 +1363,7 @@ string LyXFunc::Dispatch(int ac,
 		    == LyXParagraph::META_INSET
 		    && tmptext->cursor.par->GetInset(tmptext->cursor.pos)
 		    && tmptext->cursor.par->GetInset(tmptext->cursor.pos)->Editable() == 2){
-			Inset* tmpinset = tmptext->cursor.par->GetInset(tmptext->cursor.pos);
+			Inset * tmpinset = tmptext->cursor.par->GetInset(tmptext->cursor.pos);
 			setMessage(tmpinset->EditMessage());
 			tmpinset->Edit(0, 0);
 			break;
@@ -1312,7 +1379,7 @@ string LyXFunc::Dispatch(int ac,
 	{
 		// This is soooo ugly. Isn`t it possible to make
 		// it simpler? (Lgb)
-		LyXText *txt= owner->buffer()->text;
+		LyXText * txt = owner->buffer()->text;
 		if(!txt->mark_set) BeforeChange();
 		owner->buffer()->update(-2);
 		txt->CursorLeft();
@@ -1321,11 +1388,10 @@ string LyXFunc::Dispatch(int ac,
 		    == LyXParagraph::META_INSET
 		    && txt->cursor.par->GetInset(txt->cursor.pos)
 		    && txt->cursor.par->GetInset(txt->cursor.pos)->Editable() == 2) {
-			Inset* tmpinset = txt->cursor.par->GetInset(txt->cursor.pos);
+			Inset * tmpinset = txt->cursor.par->GetInset(txt->cursor.pos);
 			setMessage(tmpinset->EditMessage());
 			tmpinset->Edit(tmpinset->Width(txt->GetFont(txt->cursor.par,
 								    txt->cursor.pos)), 0);
-			//			tmpinset->Edit(-1, 0);  // -1 means go rightmost
 			break;
 		}
 		owner->buffer()->text->FinishUndo();
@@ -1377,7 +1443,7 @@ string LyXFunc::Dispatch(int ac,
 		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
 		owner->buffer()->update(-3);
-		owner->currentView()->cursorPrevious();
+		owner->view()->cursorPrevious();
 		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
@@ -1387,7 +1453,7 @@ string LyXFunc::Dispatch(int ac,
 		if(!owner->buffer()->text->mark_set)
 			BeforeChange();
 		owner->buffer()->update(-3);
-		owner->currentView()->cursorNext();
+		owner->view()->cursorNext();
 		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState());
@@ -1515,7 +1581,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_PRIORSEL:
 		owner->buffer()->update(-2);
-		owner->currentView()->cursorPrevious();
+		owner->view()->cursorPrevious();
 		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
@@ -1523,7 +1589,7 @@ string LyXFunc::Dispatch(int ac,
 		
 	case LFUN_NEXTSEL:
 		owner->buffer()->update(-2);
-		owner->currentView()->cursorNext();
+		owner->view()->cursorNext();
 		owner->buffer()->text->FinishUndo();
 		moveCursorUpdate(true);
 		owner->getMiniBuffer()->Set(CurrentState());
@@ -1619,7 +1685,7 @@ string LyXFunc::Dispatch(int ac,
 			SmallUpdate(1);
 			// It is possible to make it a lot faster still
 			// just comment out the lone below...
-			owner->currentView()->getScreen()->ShowCursor();
+			owner->view()->getScreen()->ShowCursor();
 		} else {
 			CutCB();
 		}
@@ -1731,7 +1797,7 @@ string LyXFunc::Dispatch(int ac,
 				SmallUpdate(1);
 				// It is possible to make it a lot faster still
 				// just comment out the lone below...
-				owner->currentView()->getScreen()->ShowCursor();
+				owner->view()->getScreen()->ShowCursor();
 			}
 		} else {
 			CutCB();
@@ -1836,7 +1902,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_HTMLURL:
 	case LFUN_URL:
 	{
-		InsetCommand *new_inset;
+		InsetCommand * new_inset;
 		if (action == LFUN_HTMLURL)
 			new_inset = new InsetUrl("htmlurl", "", "");
 		else
@@ -1930,9 +1996,9 @@ string LyXFunc::Dispatch(int ac,
 
 		// Either change buffer or load the file
 		if (bufferlist.exists(s))
-		        owner->currentView()->buffer(bufferlist.getBuffer(s));
+		        owner->view()->buffer(bufferlist.getBuffer(s));
 		else
-		        owner->currentView()->buffer(bufferlist.loadLyXFile(s));
+		        owner->view()->buffer(bufferlist.loadLyXFile(s));
 
 		// Set the cursor  
 		owner->buffer()->setCursorFromRow(row);
@@ -1940,16 +2006,16 @@ string LyXFunc::Dispatch(int ac,
 		// Recenter screen
 		BeforeChange();
 		if (owner->buffer()->text->cursor.y >
-		    owner->currentView()->getWorkArea()->h / 2)	{
-			owner->currentView()->getScreen()->
+		    owner->view()->getWorkArea()->h / 2)	{
+			owner->view()->getScreen()->
 				Draw(owner->buffer()->text->cursor.y -
-				     owner->currentView()->getWorkArea()->h/2);
+				     owner->view()->getWorkArea()->h/2);
 		} else { // <= 
-			owner->currentView()->getScreen()->
+			owner->view()->getScreen()->
 				Draw(0);
 		}
 		owner->buffer()->update(0);
-		owner->currentView()->redraw();
+		owner->view()->redraw();
 	}
 	break;
 
@@ -2081,7 +2147,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_MATH_DELIM:     
 	case LFUN_INSERT_MATRIX:
 	{ 	   
-		if (owner->currentView()->available()) { 
+		if (owner->view()->available()) { 
 			owner->buffer()->
 				open_new_inset(new InsetFormula(false));
 			owner->buffer()->
@@ -2098,14 +2164,14 @@ string LyXFunc::Dispatch(int ac,
 	
 	case LFUN_MATH_DISPLAY:
 	{
-		if (owner->currentView()->available())
+		if (owner->view()->available())
 			owner->buffer()->open_new_inset(new InsetFormula(true));
 		break;
 	}
 		    
 	case LFUN_MATH_MACRO:
 	{
-		if (owner->currentView()->available()) {
+		if (owner->view()->available()) {
 			string s(argument);
 		        if (s.empty())
 		            setErrorMessage(N_("Missing argument"));
@@ -2122,7 +2188,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_MATH_MODE:   // Open or create a math inset
 	{
 		
-		if (owner->currentView()->available())
+		if (owner->view()->available())
 			owner->buffer()->open_new_inset(new InsetFormula);
 		setMessage(N_("Math editor mode"));
 	}
@@ -2290,11 +2356,11 @@ string LyXFunc::Dispatch(int ac,
 				    OnlyPath(owner->buffer()->getFileName()));
 		setMessage(N_("Opening child document ") +
 			   MakeDisplayPath(filename) + "...");
-		owner->currentView()->savePosition();
+		owner->view()->savePosition();
 		if (bufferlist.exists(filename))
-		  owner->currentView()->buffer(bufferlist.getBuffer(filename));
+		  owner->view()->buffer(bufferlist.getBuffer(filename));
 		else
-		  owner->currentView()->buffer(bufferlist.loadLyXFile(filename));
+		  owner->view()->buffer(bufferlist.loadLyXFile(filename));
 	}
 	break;
 
@@ -2433,7 +2499,7 @@ string LyXFunc::Dispatch(int ac,
 	} // end of switch
   exit_with_message:
 
-	string res= getMessage();
+	string res = getMessage();
 
 	if (res.empty()) {
 		if (!commandshortcut.empty()) {
@@ -2449,7 +2515,7 @@ string LyXFunc::Dispatch(int ac,
 					    + " " + commandshortcut);
 	}
 
-	return getMessage();
+	return res;
 }
 	    
 
@@ -2465,7 +2531,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	string fname, initpath = lyxrc->document_path;
 	LyXFileDlg fileDlg;
 
-	if (owner->currentView()->available()) {
+	if (owner->view()->available()) {
 		string trypath = owner->buffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
@@ -2504,7 +2570,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 				return;
 			break;
 		case 2: // No: switch to the open document
-			owner->currentView()->buffer(bufferlist.getBuffer(s));
+			owner->view()->buffer(bufferlist.getBuffer(s));
 			return;
 		case 3: // Cancel: Do nothing
 			owner->getMiniBuffer()->Set(_("Canceled."));
@@ -2523,7 +2589,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 			owner->getMiniBuffer()->Set(_("Opening document"), 
 						    MakeDisplayPath(s), "...");
 			XFlush(fl_display);
-			owner->currentView()->buffer(
+			owner->view()->buffer(
 				bufferlist.loadLyXFile(s));
 			owner->getMiniBuffer()->Set(_("Document"),
 						    MakeDisplayPath(s),
@@ -2545,7 +2611,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
   
 	// find a free buffer
 	lyxerr.debug() << "Find a free buffer." << endl;
-	owner->currentView()->buffer(bufferlist.newFile(s, templname));
+	owner->view()->buffer(bufferlist.newFile(s, templname));
 }
 
 
@@ -2554,7 +2620,7 @@ void LyXFunc::MenuOpen()
 	string initpath = lyxrc->document_path;
 	LyXFileDlg fileDlg;
   
-	if (owner->currentView()->available()) {
+	if (owner->view()->available()) {
 		string trypath = owner->buffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
@@ -2587,7 +2653,7 @@ void LyXFunc::MenuOpen()
 				    MakeDisplayPath(filename), "...");
 	Buffer * openbuf = bufferlist.loadLyXFile(filename);
 	if (openbuf) {
-		owner->currentView()->buffer(openbuf);
+		owner->view()->buffer(openbuf);
 		owner->getMiniBuffer()->Set(_("Document"),
 					    MakeDisplayPath(filename),
 					    _("opened."));
@@ -2603,7 +2669,7 @@ void LyXFunc::doImportASCII(bool linorpar)
 	string initpath = lyxrc->document_path;
 	LyXFileDlg fileDlg;
   
-	if (owner->currentView()->available()) {
+	if (owner->view()->available()) {
 		string trypath = owner->buffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
@@ -2643,7 +2709,7 @@ void LyXFunc::doImportASCII(bool linorpar)
 				return;
 			break;
 		case 2: // No: switch to the open document
-			owner->currentView()->buffer(bufferlist.getBuffer(s));
+			owner->view()->buffer(bufferlist.getBuffer(s));
 			return;
 		case 3: // Cancel: Do nothing
 			owner->getMiniBuffer()->Set(_("Canceled."));
@@ -2660,7 +2726,7 @@ void LyXFunc::doImportASCII(bool linorpar)
 		return;
 	}
 
-	owner->currentView()->buffer(bufferlist.newFile(s, string()));
+	owner->view()->buffer(bufferlist.newFile(s, string()));
 	owner->getMiniBuffer()->Set(_("Importing ASCII file"),
 				    MakeDisplayPath(filename), "...");
 	// Insert ASCII file
@@ -2676,7 +2742,7 @@ void LyXFunc::doImportLaTeX(bool isnoweb)
 	string initpath = lyxrc->document_path;
 	LyXFileDlg fileDlg;
   
-	if (owner->currentView()->available()) {
+	if (owner->view()->available()) {
 		string trypath = owner->buffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
@@ -2722,7 +2788,7 @@ void LyXFunc::doImportLaTeX(bool isnoweb)
 				return;
 			break;
 		case 2: // No: switch to the open document
-			owner->currentView()->buffer(
+			owner->view()->buffer(
 				bufferlist.getBuffer(LyXfilename));
 			return;
 		case 3: // Cancel: Do nothing
@@ -2754,7 +2820,7 @@ void LyXFunc::doImportLaTeX(bool isnoweb)
 		openbuf = myImport.run();
 	}
 	if (openbuf) {
-		owner->currentView()->buffer(openbuf);
+		owner->view()->buffer(openbuf);
 		owner->getMiniBuffer()->Set(isnoweb ?
 					    _("Noweb file ") : _("LateX file "),
 					    MakeDisplayPath(filename),
@@ -2777,7 +2843,7 @@ void LyXFunc::MenuInsertLyXFile(string const & filen)
 		string initpath = lyxrc->document_path;
 		LyXFileDlg fileDlg;
 
-		if (owner->currentView()->available()) {
+		if (owner->view()->available()) {
 			string trypath = owner->buffer()->filepath;
 			// If directory is writeable, use this as default.
 			if (IsDirWriteable(trypath) == 1)
@@ -2825,7 +2891,7 @@ void LyXFunc::reloadBuffer()
 {
 	string fn = owner->buffer()->getFileName();
 	if (bufferlist.close(owner->buffer()))
-		owner->currentView()->buffer(bufferlist.loadLyXFile(fn));
+		owner->view()->buffer(bufferlist.loadLyXFile(fn));
 }
 
 
@@ -2839,7 +2905,7 @@ void LyXFunc::CloseBuffer()
 			CloseAllBufferRelatedPopups();
 		}
 		else {
-			owner->currentView()->buffer(bufferlist.first());
+			owner->view()->buffer(bufferlist.first());
 		}
 	}
 }
@@ -2873,7 +2939,7 @@ Inset * LyXFunc::getInsetByCode(Inset::Code code)
 // This func is bit problematic when it comes to NLS, to make the
 // lyx servers client be language indepenent we must not translate
 // strings sent to this func.
-void LyXFunc::setErrorMessage(string const &m) 
+void LyXFunc::setErrorMessage(string const & m) const
 {
 	dispatch_buffer = m;
 	errorstat = true;

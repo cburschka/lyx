@@ -27,9 +27,7 @@ public:
 	///
 	InsetLabel() : InsetCommand("label") {}
 	///
-	~InsetLabel();
-	///
-	Inset * Clone();
+	InsetLabel * Clone() const;
 	///
 	Inset::Code LyxCode() const { return Inset::LABEL_CODE; }
 	///

@@ -31,9 +31,9 @@ public:
 		fl_set_timer(timer, a);
 	}
 	///
-	void Set(string const& = string(),
-		 string const& = string(),
-		 string const& = string(),
+	void Set(string const & = string(),
+		 string const & = string(),
+		 string const & = string(),
 		 int delay_secs= 6);
 	/// 
 	string GetText() const { return text; }

@@ -33,8 +33,6 @@ public:
 	InsetCommand(string const & name, string const & arg = string(), 
 		     string const & opt = string());
 	///
-	~InsetCommand();
-	///
 	int Ascent(LyXFont const & font) const;
 	///
 	int Descent(LyXFont const & font) const;
@@ -57,7 +55,7 @@ public:
 	///
 	virtual int DocBook(string & file);
 	///
-	Inset * Clone();
+	InsetCommand * Clone() const;
 	///  
 	Inset::Code LyxCode() const
 	{

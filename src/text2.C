@@ -1070,7 +1070,7 @@ void LyXText::ToggleFree(LyXFont font, bool toggleall)
 }
 
 
-LyXParagraph::size_type LyXText::BeginningOfMainBody(LyXParagraph * par)
+LyXParagraph::size_type LyXText::BeginningOfMainBody(LyXParagraph * par) const
 {
 	if (textclasslist.Style(parameters->textclass, par->GetLayout()).labeltype != LABEL_MANUAL)
 		return 0;
@@ -2633,7 +2633,6 @@ bool LyXText::GotoNextNote()
 int LyXText::SwitchLayoutsBetweenClasses(char class1, char class2,
 					 LyXParagraph * par)
 {
-	InsetError * new_inset = 0;
 	int ret = 0;
 	if (!par || class1 == class2)
 		return ret;
@@ -2658,7 +2657,7 @@ int LyXText::SwitchLayoutsBetweenClasses(char class1, char class2,
 				+ "\nbecause of class conversion from\n"
 				+ textclasslist.NameOfClass(class1) + " to "
 				+ textclasslist.NameOfClass(class2);
-			new_inset = new InsetError(s);
+			InsetError * new_inset = new InsetError(s);
 			par->InsertChar(0, LyXParagraph::META_INSET);
 			par->InsertInset(0, new_inset);
 		}
@@ -3193,7 +3192,7 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor old_cursor)
 LyXParagraph * LyXText::GetParFromID(int id)
 {
 	LyXParagraph * result = FirstParagraph();
-	while (result && result->GetID() != id)
+	while (result && result->id() != id)
 		result = result->next;
 	return result;
 }
@@ -3202,11 +3201,11 @@ LyXParagraph * LyXText::GetParFromID(int id)
 // undo functions
 bool  LyXText::TextUndo()
 { // returns false if no undo possible
-	Undo * undo = params->undostack.Pop();
+	Undo * undo = params->undostack.pop();
 	if (undo){
 		FinishUndo();
 		if (!undo_frozen)
-			params->redostack.Push(CreateUndo(undo->kind, 
+			params->redostack.push(CreateUndo(undo->kind, 
 							  GetParFromID(undo->number_of_before_par),
 							  GetParFromID(undo->number_of_behind_par)));
 	}
@@ -3216,11 +3215,11 @@ bool  LyXText::TextUndo()
 
 bool LyXText::TextRedo()
 { // returns false if no redo possible
-	Undo * undo = params->redostack.Pop();
+	Undo * undo = params->redostack.pop();
 	if (undo){
 		FinishUndo();
 		if (!undo_frozen)
-			params->undostack.Push(CreateUndo(undo->kind, 
+			params->undostack.push(CreateUndo(undo->kind, 
 							  GetParFromID(undo->number_of_before_par),
 							  GetParFromID(undo->number_of_behind_par)));
 	}
@@ -3371,15 +3370,15 @@ void LyXText::SetUndo(Undo::undo_kind kind, LyXParagraph * before,
 		      LyXParagraph * behind)
 {
 	if (!undo_frozen)
-		params->undostack.Push(CreateUndo(kind, before, behind));
-	params->redostack.Clear();
+		params->undostack.push(CreateUndo(kind, before, behind));
+	params->redostack.clear();
 }
 
 
 void LyXText::SetRedo(Undo::undo_kind kind, LyXParagraph * before,
 		      LyXParagraph * behind)
 {
-	params->redostack.Push(CreateUndo(kind, before, behind));
+	params->redostack.push(CreateUndo(kind, before, behind));
 }
 
 
@@ -3389,9 +3388,9 @@ Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph * before,
 	int before_number = -1;
 	int behind_number = -1;
 	if (before)
-		before_number = before->GetID();
+		before_number = before->id();
 	if (behind)
-		behind_number = behind->GetID();
+		behind_number = behind->id();
 	// Undo::EDIT  and Undo::FINISH are
 	// always finished. (no overlapping there)
 	// overlapping only with insert and delete inside one paragraph: 
@@ -3402,10 +3401,10 @@ Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph * before,
 	if (!undo_finished && kind != Undo::EDIT && 
 	    kind != Undo::FINISH){
 		// check wether storing is needed
-		if (params->undostack.Top() && 
-		    params->undostack.Top()->kind == kind &&
-		    params->undostack.Top()->number_of_before_par ==  before_number &&
-		    params->undostack.Top()->number_of_behind_par ==  behind_number ){
+		if (!params->undostack.empty() && 
+		    params->undostack.top()->kind == kind &&
+		    params->undostack.top()->number_of_before_par ==  before_number &&
+		    params->undostack.top()->number_of_behind_par ==  behind_number ){
 			// no undo needed
 			return 0;
 		}
@@ -3433,7 +3432,7 @@ Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph * before,
 	if (start && end && start != end->next && (before != behind || (!before && !behind))) {
 		tmppar = start;
 		tmppar2 = tmppar->Clone();
-		tmppar2->SetID(tmppar->GetID());
+		tmppar2->id(tmppar->id());
 
 		// a memory optimization: Just store the layout information when only edit
 		if (kind == Undo::EDIT){
@@ -3447,7 +3446,7 @@ Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph * before,
 		while (tmppar != end && tmppar->next) {
 			tmppar = tmppar->next;
 			tmppar2->next = tmppar->Clone();
-			tmppar2->next->SetID(tmppar->GetID());
+			tmppar2->next->id(tmppar->id());
 			// a memory optimization: Just store the layout information when only edit
 			if (kind == Undo::EDIT){
 				tmppar2->next->text.clear();
@@ -3461,7 +3460,7 @@ Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph * before,
 	else
 		undopar = 0; // nothing to replace (undo of delete maybe)
   
-	int cursor_par = cursor.par->ParFromPos(cursor.pos)->GetID();
+	int cursor_par = cursor.par->ParFromPos(cursor.pos)->id();
 	int cursor_pos =  cursor.par->PositionInParFromPos(cursor.pos);
 
 	Undo * undo = new Undo(kind, 
@@ -3533,14 +3532,13 @@ void LyXText::RemoveTableRow(LyXCursor * cursor)
 }
 
 
-bool LyXText::IsEmptyTableRow(LyXCursor * old_cursor)
+bool LyXText::IsEmptyTableRow(LyXCursor * old_cursor) const
 {
 	if (!old_cursor->par->table)
 		return false;
 #ifdef I_DONT_KNOW_IF_I_SHOULD_DO_THIS
-	int
-		pos = old_cursor->pos,
-		cell = NumberOfCell(old_cursor->par, pos);
+	int pos = old_cursor->pos;
+	int cell = NumberOfCell(old_cursor->par, pos);
 
 	// search first charater of this table row
 	while (pos && !old_cursor->par->table->IsFirstCell(cell)) {
@@ -3566,7 +3564,7 @@ bool LyXText::IsEmptyTableRow(LyXCursor * old_cursor)
 }
 
 
-bool LyXText::IsEmptyTableCell()
+bool LyXText::IsEmptyTableCell() const
 {
 	LyXParagraph::size_type pos = cursor.pos - 1;
 	while (pos >= 0 && pos < cursor.par->Last()

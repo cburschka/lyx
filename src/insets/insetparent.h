@@ -37,7 +37,7 @@ public:
 	///
 	int Latex(string & file, signed char fragile);
         ///
-        Inset * Clone() { return new InsetParent(getContents()); }
+        InsetParent * Clone() const { return new InsetParent(getContents()); }
     	///
 	string getScreenLabel() const { return string(_("Parent:"))+getContents(); }
         ///

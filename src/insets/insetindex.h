@@ -35,7 +35,7 @@ public:
 	///
 	~InsetIndex();
 	///
-	Inset * Clone() { return new InsetIndex(contents);}
+	InsetIndex * Clone() const { return new InsetIndex(contents);}
 	///
 	void Edit(int, int);
 	///
@@ -65,7 +65,7 @@ public:
 		return 1;
 	}
 	///
-	bool Display() const { return true; }
+	bool display() const { return true; }
 	///
 	Inset::Code LyxCode() const;
 	///

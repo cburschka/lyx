@@ -164,9 +164,9 @@ MathDelimInset::MathDelimInset(int l, int r, short st):
 {
 }
 
-MathedInset *MathDelimInset::Clone()
+MathedInset * MathDelimInset::Clone()
 {   
-   MathDelimInset* p = new MathDelimInset(left, right, GetStyle());
+   MathDelimInset * p = new MathDelimInset(left, right, GetStyle());
    MathedIter it(array);
    p->SetData(it.Copy());
    return p;
@@ -179,9 +179,9 @@ MathDecorationInset::MathDecorationInset(int d, short st):
    upper = (deco!= LM_underline && deco!= LM_underbrace);
 }
 
-MathedInset *MathDecorationInset::Clone()
+MathedInset * MathDecorationInset::Clone()
 {   
-   MathDecorationInset* p = new MathDecorationInset(deco, GetStyle());
+   MathDecorationInset * p = new MathDecorationInset(deco, GetStyle());
    MathedIter it(array);
    p->SetData(it.Copy());
    return p;
@@ -204,9 +204,9 @@ MathFracInset::~MathFracInset()
     delete den;
 }
 
-MathedInset *MathFracInset::Clone()
+MathedInset * MathFracInset::Clone()
 {   
-    MathFracInset* p = new MathFracInset(GetType());
+    MathFracInset * p = new MathFracInset(GetType());
     MathedIter itn(array);
     MathedIter itd(den->GetData());
     p->SetData(itn.Copy(), itd.Copy());

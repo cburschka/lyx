@@ -18,7 +18,8 @@
 
 #include FORMS_H_LOCATION
 #include "lyxfont.h"
-class LString;
+#include "LString.h"
+
 class FontInfo;
 
 /** This class takes care of loading fonts. It uses FontInfo to make 

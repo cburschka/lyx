@@ -31,13 +31,16 @@
 #include "array.h"
 
 ///
-#define MATH_ALIGN_LEFT    1
-///
-#define MATH_ALIGN_RIGHT   2
-///
-#define MATH_ALIGN_BOTTOM  4
-///
-#define MATH_ALIGN_TOP     8
+enum math_align {
+	///
+	MATH_ALIGN_LEFT = 1,
+	///
+	MATH_ALIGN_RIGHT = 2,
+	///
+	MATH_ALIGN_BOTTOM = 4,
+	///
+	MATH_ALIGN_TOP = 8
+};
 ///
 #define MATH_COLSEP 8
 ///
@@ -47,7 +50,7 @@
 /// Standard Math Sizes (Math mode styles)
 enum MathedStyles {
 	///
-   LM_ST_DISPLAY= 0,
+   LM_ST_DISPLAY = 0,
    ///
    LM_ST_TEXT,
    ///
@@ -60,7 +63,7 @@ enum MathedStyles {
 /// Standard LaTeX Math Environments
 enum MathedEnvironment {
 	///
-   LM_EN_INTEXT= 0,
+   LM_EN_INTEXT = 0,
    ///
    LM_EN_DISPLAY,
    ///
@@ -204,7 +207,6 @@ enum MathedBinaryTypes {
     LMB_BOP = (LMB_RELATION | LMB_OPERATOR)
 };
 
-class LString;
 class MathedInset;
 class MathParInset;
 
@@ -217,25 +219,25 @@ class MathParInset;
 class MathedInset  {
  public: 
     /// A math inset has a name (usually its LaTeX name), type and font-size
-    MathedInset(char const *nm, short ot, short st);
+    MathedInset(char const * nm, short ot, short st);
     ///
-    MathedInset(MathedInset*);
+    MathedInset(MathedInset *);
     ///
-    virtual ~MathedInset() { };
+    virtual ~MathedInset() {}
     
     /// Draw the object 
-    virtual void Draw(int x, int baseline)= 0;
+    virtual void Draw(int x, int baseline) = 0;
     
     /// Write LaTeX and Lyx code
-    virtual void Write(FILE *file)= 0;
+    virtual void Write(FILE * file) = 0;
     /// Write LaTeX and Lyx code
-    virtual void Write(string & file)= 0;
+    virtual void Write(string & file) = 0;
    
     /// Reproduces itself
-    virtual MathedInset *Clone()= 0;
+    virtual MathedInset * Clone() = 0;
    
     /// Compute the size of the object
-    virtual void Metrics()= 0; 
+    virtual void Metrics() = 0; 
     /// 
     virtual int Ascent() const { return ascent; }
     ///
@@ -248,10 +250,10 @@ class MathedInset  {
     ///
     virtual bool GetLimits() const { return false; }
     ///
-    virtual void SetLimits(bool) { }   
+    virtual void SetLimits(bool) {}   
    
     ///
-    char const *GetName() const { return name; }
+    char const * GetName() const { return name; }
     ///
     short GetType() const { return objtype; }
     ///
@@ -263,13 +265,13 @@ class MathedInset  {
     ///
     virtual void  SetStyle(short st) { size = st; } // Metrics();
     ///
-    virtual void  SetName(char const* n) { name = n; }
+    virtual void  SetName(char const * n) { name = n; }
     /// 
     void setDrawable(long unsigned int d) { pm = d; }
  
  protected:
     ///
-    char const *name;
+    char const * name;
     ///
     short objtype;
     ///
@@ -287,7 +289,7 @@ class MathedInset  {
     static int df_asc, df_des, df_width;
 
     /// In a near future maybe we use a better fonts renderer than X
-    void drawStr(short, int, int, int, byte*, int);
+    void drawStr(short, int, int, int, byte *, int);
 	///
     friend class MathedCursor;
 	///
@@ -319,21 +321,22 @@ enum MathedParFlag {
 class MathParInset: public MathedInset  {
  public: 
     ///
-    MathParInset(short st= LM_ST_TEXT, char const *nm= 0, short ot= LM_OT_MIN);
+    MathParInset(short st= LM_ST_TEXT, char const * nm= 0,
+		 short ot= LM_OT_MIN);
     ///
-    MathParInset(MathParInset*);
+    MathParInset(MathParInset *);
     ///
     virtual ~MathParInset();
     ///
-    virtual MathedInset *Clone();   
+    virtual MathedInset * Clone();   
 
     /// Draw the object on a drawable
     virtual void Draw(int x, int baseline);
    
     /// Write LaTeX code
-    virtual void Write(FILE *file);
+    virtual void Write(FILE * file);
     /// Write LaTeX code
-    virtual void Write(string &file);
+    virtual void Write(string & file);
     ///
     virtual void Metrics();
     ///
@@ -345,17 +348,17 @@ class MathParInset: public MathedInset  {
     virtual LyxArrayBase * GetData() { return array; }
 
     /// Paragraph position
-    virtual void GetXY(int&, int&) const;
+    virtual void GetXY(int &, int &) const;
     ///
     virtual void setXY(int x, int y) { xo = x;  yo = y; }
     ///
-    virtual void SetFocus(int, int) { };
+    virtual void SetFocus(int, int) {}
     ///
     virtual bool Inside(int, int);   
    
     // Tab stuff used by Matrix.
     ///
-    virtual void SetAlign(char, char const*) { };
+    virtual void SetAlign(char, char const *) {}
 //    ///
 //    virtual int GetTabPos() { return 0; }
 //    ///
@@ -380,19 +383,19 @@ class MathParInset: public MathedInset  {
     ///
     virtual int  getMaxArgumentIdx() { return 0; }
 //    ///
-//    virtual void SetLabel(char const*) { }
+//    virtual void SetLabel(char const *) {}
     ///
     virtual void SetStyle(short);
 	///
-    virtual MathedRowSt *getRowSt() const { return 0; }
+    virtual MathedRowSt * getRowSt() const { return 0; }
 	///
-    virtual void setRowSt(MathedRowSt*) { }
+    virtual void setRowSt(MathedRowSt *) {}
 	///
-    virtual bool Permit(short f) { return (bool)(f & flag); }
+    virtual bool Permit(short f) { return bool(f & flag); }
     
  protected:
     /// Paragraph data is stored here
-    LyxArrayBase *array;
+    LyxArrayBase * array;
     /// Cursor start position
     int xo, yo;
     /// 
@@ -408,7 +411,9 @@ class MathParInset: public MathedInset  {
 	///
     friend class MathedCursor;
 	///
-    friend LyxArrayBase *mathed_parse(unsigned flags = 0, LyxArrayBase*a= 0, MathParInset**p= 0);
+    friend LyxArrayBase * mathed_parse(unsigned flags = 0,
+				       LyxArrayBase * a = 0,
+				       MathParInset ** p = 0);
 };
 
 
@@ -419,7 +424,7 @@ class MathParInset: public MathedInset  {
 struct MathedRowSt {    
     /// 
     MathedRowSt(int n) {
-	    w = new int[n+1]; // this leaks
+	    w = new int[n + 1]; // this leaks
 	next = 0;
 	label = 0;
 	numbered = true;
@@ -430,11 +435,11 @@ struct MathedRowSt {
 	if (label) delete[] label;
     }
     /// Should be const but...
-    MathedRowSt* getNext() const  { return next; }
+    MathedRowSt * getNext() const  { return next; }
     /// ...we couldn't use this.
-    void setNext(MathedRowSt* n) { next = n; }
+    void setNext(MathedRowSt * n) { next = n; }
     ///
-    char const* getLabel() const { return label; }
+    char const * getLabel() const { return label; }
     ///
     bool isNumbered() const { return numbered; }
     ///
@@ -442,7 +447,7 @@ struct MathedRowSt {
     ///
     int  getTab(int i) { return w[i]; }
     /// 
-    void setLabel(char* l) { label = l; }
+    void setLabel(char * l) { label = l; }
     ///
     void setNumbered(bool nf) { numbered = nf; }
     ///
@@ -452,13 +457,13 @@ struct MathedRowSt {
     /// Vericals 
     int asc, desc, y;
     /// widths 
-    int *w;
+    int * w;
     /// 
-    char *label;
+    char * label;
     ///
     bool numbered;
     ///
-    MathedRowSt *next;
+    MathedRowSt * next;
 	///
     friend class MathMatrixInset;
 	///
@@ -473,27 +478,27 @@ struct MathedRowSt {
 class MathMatrixInset: public MathParInset {
  public: 
     ///
-    MathMatrixInset(int m= 1, int n= 1, short st= LM_ST_TEXT);
+    MathMatrixInset(int m = 1, int n = 1, short st = LM_ST_TEXT);
     ///
-    MathMatrixInset(MathMatrixInset*);
+    MathMatrixInset(MathMatrixInset *);
     ///
-    MathedInset *Clone();
+    MathedInset * Clone();
     ///
     virtual ~MathMatrixInset();
     ///
     void Draw(int, int);
     ///
-    void Write(FILE *file);
+    void Write(FILE * file);
     ///
-    void Write(string &file);
+    void Write(string & file);
     ///
     void Metrics();
     ///
     void SetData(LyxArrayBase *);
     ///
-    void SetAlign(char, char const*);
+    void SetAlign(char, char const *);
     ///
-    char *GetAlign(char* vv) {
+    char * GetAlign(char * vv) {
 	*vv = v_align;
 	return h_align;
     }
@@ -507,21 +512,21 @@ class MathMatrixInset: public MathParInset {
     virtual bool isMatrix() { return true; }
 
     /// Use this to manage the extra information independently of paragraph
-    MathedRowSt *getRowSt() const { return row; }
+    MathedRowSt * getRowSt() const { return row; }
 	///
-    void setRowSt(MathedRowSt* r) { row = r; }
+    void setRowSt(MathedRowSt * r) { row = r; }
     
  protected:
     ///  Number of columns & rows
     int nc, nr;
     /// tab sizes
-    int *ws;   
+    int * ws;   
     /// 
     char v_align; // add approp. signedness
     ///
-    char* h_align;
+    char * h_align;
     /// Vertical structure
-    MathedRowSt *row;
+    MathedRowSt * row;
 
 };
 
@@ -529,52 +534,85 @@ class MathMatrixInset: public MathParInset {
 
 /*************************  Prototypes  **********************************/
 /// 
-LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *data, MathParInset **mt);
+LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * data,
+			    MathParInset ** mt);
 ///
-void mathed_write(MathParInset*, FILE *, int*, char fragile, char const* label= 0);
+void mathed_write(MathParInset *, FILE *, int *, char fragile,
+		  char const * label = 0);
 ///
-void mathed_write(MathParInset*, string &, int*, char fragile, char const* label= 0);
+void mathed_write(MathParInset *, string &, int *, char fragile,
+		  char const * label = 0);
 ///
-void mathed_parser_file(FILE*, int);
+void mathed_parser_file(FILE *, int);
 ///
 int mathed_parser_lineno();
 ///
 int MathedLookupBOP(short);
 
 /************************ Inline functions ********************************/
+///
+inline bool MathIsInset(short x)
+{
+	return LM_TC_INSET <= x && x <= LM_TC_ACTIVE_INSET;
+}
 
 ///
-#define MathIsInset(x)  (LM_TC_INSET<= (x) && (x)<= LM_TC_ACTIVE_INSET)
+inline bool MathIsFont(short x)
+{
+	return LM_TC_CONST <= x && x <= LM_TC_BSYM;
+}
+
 ///
-#define MathIsFont(x)  (LM_TC_CONST<= (x) && (x)<= LM_TC_BSYM)
+inline bool MathIsAlphaFont(short x)
+{
+	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
+}
+
 ///
-#define MathIsAlphaFont(x)  (LM_TC_VAR<= (x) && (x)<= LM_TC_TEXTRM)
+inline bool MathIsActive(short x)
+{
+	return LM_TC_INSET < x && x <= LM_TC_ACTIVE_INSET;
+}
+
 ///
-#define MathIsActive(x)  (LM_TC_INSET<(x) && (x)<= LM_TC_ACTIVE_INSET) 
+inline bool MathIsUp(short x)
+{
+	return x == LM_TC_UP;
+}
+
 ///
-#define MathIsUp(x)    ((x) == LM_TC_UP) 
+inline bool MathIsDown(short x)
+{
+	return x == LM_TC_DOWN;
+}
+
 ///
-#define MathIsDown(x)  ((x) == LM_TC_DOWN)
+inline bool MathIsScript(short x)
+{
+	return x == LM_TC_DOWN || x == LM_TC_UP;
+}
+
 ///
-#define MathIsScript(x)  ((x) == LM_TC_DOWN || (x) == LM_TC_UP)  
-///
-#define MathIsBOPS(x)    (MathedLookupBOP(x)>LMB_NONE)
+inline bool MathIsBOPS(short x)
+{
+	return MathedLookupBOP(x) > LMB_NONE;
+}
 
 
 ///
 inline bool MathIsBinary(short x)
 {
-    return (x == LM_TC_BOP || x == LM_TC_BOPS);
+    return x == LM_TC_BOP || x == LM_TC_BOPS;
 }
 
 ///
 inline bool MathIsSymbol(short x) {
-    return (LM_TC_SYMB<= x && x<= LM_TC_BSYM);
+    return LM_TC_SYMB <= x && x <= LM_TC_BSYM;
 }
      
 
 inline 
-MathedInset::MathedInset(char const *nm, short ot, short st):
+MathedInset::MathedInset(char const * nm, short ot, short st):
   name(nm), objtype(ot), size(st) 
 {
    width = ascent = descent = 0;
@@ -583,12 +621,12 @@ MathedInset::MathedInset(char const *nm, short ot, short st):
 inline
 bool MathParInset::Inside(int x, int y) 
 {
-  return (x>= xo && x<= xo+width && y<= yo+descent && y>= yo-ascent);
+  return (x >= xo && x <= xo + width && y <= yo + descent && y >= yo - ascent);
 }
 
 
 inline
-void MathParInset::GetXY(int& x, int& y) const
+void MathParInset::GetXY(int & x, int & y) const
 {
    x = xo; y = yo;
 }
@@ -597,7 +635,7 @@ void MathParInset::GetXY(int& x, int& y) const
 inline
 void MathParInset::UserSetSize(short sz)
 {
-   if (sz>= 0) {
+   if (sz >= 0) {
        size = sz;      
        flag = flag & ~LMPF_FIXED_SIZE;
    }
@@ -609,13 +647,12 @@ void MathParInset::SetStyle(short sz)
 {
     if (Permit(LMPF_FIXED_SIZE)) {
 	if (Permit(LMPF_SCRIPT)) 
-	  sz = (sz<LM_ST_SCRIPT) ? LM_ST_SCRIPT: LM_ST_SCRIPTSCRIPT;
+	  sz = (sz < LM_ST_SCRIPT) ? LM_ST_SCRIPT: LM_ST_SCRIPTSCRIPT;
 	if (Permit(LMPF_SMALLER) && sz < LM_ST_SCRIPTSCRIPT) {
-	    sz++;
+	    ++sz;
 	} 
 	MathedInset::SetStyle(sz);
     }
 }
 
 #endif
-

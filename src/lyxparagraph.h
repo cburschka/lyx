@@ -29,6 +29,7 @@
 #include "table.h"
 #include "vspace.h"
 #include "layout.h"
+#include "support/block.h"
 
 class BufferParams;
 class LyXBuffer;
@@ -126,12 +127,12 @@ public:
 	void validate(LaTeXFeatures &);
 	
 	///
-	int GetID(){
-		return id;
+	int id() const {
+		return id_;
 	}
 	///
-	void SetID(int id_arg){
-		id = id_arg;
+	void id(int id_arg) {
+		id_ = id_arg;
 	}
 
 	///
@@ -151,17 +152,17 @@ public:
 				     int & foot_count);
 	
 	///
-	LyXParagraph * Clone();
+	LyXParagraph * Clone() const;
 	
 	///
-	bool HasSameLayout(LyXParagraph * par);
+	bool HasSameLayout(LyXParagraph const * par);
 	
 	///
-	void MakeSameLayout(LyXParagraph * par);
+	void MakeSameLayout(LyXParagraph const * par);
 
 	/// Is it the first par with same depth and layout?
-	bool IsFirstInSequence() {
-		LyXParagraph * dhook = DepthHook(GetDepth());
+	bool IsFirstInSequence() const {
+		LyXParagraph const * dhook = DepthHook(GetDepth());
 		return (dhook == this
 			|| dhook->GetLayout() != GetLayout()
 			|| dhook->GetDepth() != GetDepth());
@@ -172,8 +173,7 @@ public:
 	typedef char value_type;
 	///
 	typedef vector<value_type> TextContainer;
-	//typedef deque<char> TextContainer;
-	//typedef rope<char> TextContainer;
+	///
 	typedef int size_type;
 	///
 	TextContainer text;
@@ -224,13 +224,12 @@ public:
         bool noindent;
 	
 private:
-	///
-	int counter[10];
+	block<int, 10> counter_;
 public:
 	///
-	void setCounter(int i, int v) { counter[i] = v; }
-	int getCounter(int i) { return counter[i]; }
-	void incCounter(int i) { counter[i]++; }
+	void setCounter(int i, int v) { counter_[i] = v; }
+	int getCounter(int i) const { return counter_[i]; }
+	void incCounter(int i) { counter_[i]++; }
 	///
 	bool start_of_appendix;
 
@@ -283,49 +282,57 @@ public:
 	
 	///
 	LyXParagraph * Previous();
+	///
+	LyXParagraph const * Previous() const;
 
 	/** these function are able to hide open and closed footnotes
 	 */ 
 	LyXParagraph * NextAfterFootnote();
 	///
-	LyXParagraph * NextAfterFootnote() const;
+	LyXParagraph const * NextAfterFootnote() const;
+	
 	///
 	LyXParagraph * PreviousBeforeFootnote();
 	///
 	LyXParagraph * LastPhysicalPar();
+	
 	///
 	LyXParagraph * FirstPhysicalPar();
+	///
+	LyXParagraph const * FirstPhysicalPar() const;
 
 	/// returns the physical paragraph
 	LyXParagraph * ParFromPos(size_type pos);
 	/// returns the position in the physical par
-	int PositionInParFromPos(size_type pos);
+	int PositionInParFromPos(size_type pos) const;
 
 	/// for the environments
 	LyXParagraph * DepthHook(int depth);
+	/// for the environments
+	LyXParagraph const * DepthHook(int depth) const;
 	///
-	int BeginningOfMainBody();
+	int BeginningOfMainBody() const;
 	///
-	string GetLabestring();
+	string GetLabestring() const;
 	
 	/// the next two functions are for the manual labels
-	string GetLabelWidthString();
+	string GetLabelWidthString() const;
 	///
 	void SetLabelWidthString(string const & s);
 	///
-	LyXTextClass::LayoutList::size_type GetLayout();
+	LyXTextClass::LayoutList::size_type GetLayout() const;
 	///
-	char GetAlign();
+	char GetAlign() const;
 	///
-	char GetDepth();
+	char GetDepth() const;
 	///
 	void SetLayout(LyXTextClass::LayoutList::size_type new_layout);
 	///
 	void SetOnlyLayout(LyXTextClass::LayoutList::size_type new_layout);
 	///
-	int GetFirstCounter(int i);
+	int GetFirstCounter(int i) const;
 	///
-	size_type Last();
+	size_type Last() const;
 	///
 	void Erase(size_type pos);
 	/** the flag determines wether the layout should be copied
@@ -337,7 +344,7 @@ public:
 	  between the characters font and the layoutfont.
 	  This is what is stored in the fonttable
 	 */
-	LyXFont GetFontSettings(size_type pos);
+	LyXFont GetFontSettings(size_type pos) const;
 	/** Get fully instantiated font. If pos == -1, use the layout
 	  font attached to this paragraph.
 	  If pos == -2, use the label font of the layout attached here.
@@ -345,7 +352,7 @@ public:
 	  attributes with values LyXFont::INHERIT, LyXFont::IGNORE or 
 	  LyXFont::TOGGLE.
 	  */
-	LyXFont getFont(size_type pos);
+	LyXFont getFont(size_type pos) const;
 	///
 	char GetChar(size_type pos);
 	///
@@ -353,7 +360,7 @@ public:
 	///
 	void SetFont(size_type pos, LyXFont const & font);
 	///
-        string GetWord(size_type &);
+        string GetWord(size_type &) const;
 	/// Returns the height of the highest font in range
 	LyXFont::FONT_SIZE HighestFontInRange(size_type startpos,
 					      size_type endpos) const;
@@ -364,13 +371,15 @@ public:
 	///
 	Inset * GetInset(size_type pos);
 	///
+	Inset const * GetInset(size_type pos) const;
+	///
 	Inset * ReturnNextInsetPointer(size_type & pos);
 	///
 	void OpenFootnote(size_type pos);
 	///
 	void CloseFootnote(size_type pos);
 	/// important for cut and paste
-	void CopyIntoMinibuffer(size_type pos);
+	void CopyIntoMinibuffer(size_type pos) const;
 	///
 	void CutIntoMinibuffer(size_type pos);
 	///
@@ -409,7 +418,7 @@ public:
 	int AutoDeleteInsets();
 
 	/// returns -1 if inset not found
-	int GetPositionOfInset(Inset * inset);
+	int GetPositionOfInset(Inset * inset) const;
 	
 	/// ok and now some footnote functions
 	void OpenFootnotes();
@@ -440,7 +449,7 @@ public:
 	  one (or more) paragraphs with the footnote, and finally
 	  the a paragraph with the text after the footnote. Only the
 	  first paragraph keeps information  about layoutparameters, */
-	bool IsDummy(){
+	bool IsDummy() const{
 		return (footnoteflag == LyXParagraph::NO_FOOTNOTE && previous
 			&& previous->footnoteflag != LyXParagraph::NO_FOOTNOTE);
 	}
@@ -545,7 +554,7 @@ private:
 				   size_type & i,
 				   int & column, char const c);
 	///
-	int id;
+	unsigned int id_;
 	///
 	static unsigned int paragraph_id;
 };

@@ -16,78 +16,22 @@
 #pragma interface
 #endif
 
-#include "LString.h"
+#include <vector>
 
-// necessary for xForms related stuff
+#include "LString.h"
 #include FORMS_H_LOCATION
 #include "form1.h"
 
-
-/// User cache class definition
-class UserCache
-{
-public:
-	///
-	UserCache(string const & pszName = string(), uid_t ID = 0, 
-		  UserCache *pRoot = 0);
-	///
-	~UserCache();
-	// interface
-	/// seeks user name from user ID
-	string Find(uid_t ID);
-private:
-	///
-	uid_t ID;
-	///
-	string pszName;
-	///
-	UserCache *pNext, *pRoot;
-	// internal methods
-	/// creates a new user entry
-	UserCache *Add(uid_t ID);
-};
-extern UserCache lyxUserCache;
-
-
-/// Group cache class definition
-class GroupCache
-{
-public:
-	///
-	GroupCache(string const & pszName = string(), gid_t ID = 0,
-		   GroupCache *pRoot = 0);
-	///
-	~GroupCache();
-	// interface
-	/// seeks group name from group ID
-	string Find(gid_t ID);
-
-private:
-	///
-	gid_t ID;
-	///
-	string pszName;
-	///
-	GroupCache *pNext, *pRoot;
-	// internal methods
-	/// creates a new group entry
-	GroupCache *Add(gid_t ID);
-};
-extern GroupCache lyxGroupCache;
+using std::vector;
 
 
 /// LyXDirEntry internal structure definition
 class LyXDirEntry
 {
-private:
-	friend class LyXFileDlg;    
+public:
 	string pszName;
 	string pszDisplayed;
 	string pszLsEntry;
-	LyXDirEntry() {};
-public:
-	/// compares two LyXDirEntry objects content (used by qsort)
-	static int ldeCompProc(const LyXDirEntry *r1, const LyXDirEntry *r2);
 };
 
 
@@ -97,13 +41,12 @@ class LyXFileDlg
 public:
 	///
 	LyXFileDlg();
-	///
-	~LyXFileDlg();
+
 	/// sets file selector user button action
 	void SetButton(int iIndex, string const & pszName = string(), 
 		       string const & pszPath = string());
 	/// gets last dialog directory
-	string GetDirectory();
+	string GetDirectory() const;
 	/// launches dialog and returns selected file
 	string Select(string const & pszTitle = string(),
 		       string const & pszPath = string(),
@@ -116,25 +59,37 @@ public:
 	/// Handle Cancel CB from WM close
 	static int CancelCB(FL_FORM *, void *);
 private:
-	// data
-	static FD_FileDlg *pFileDlgForm;
-	static LyXFileDlg *pCurrentDlg;
+	/// data
+	static FD_FileDlg * pFileDlgForm;
+	///
+	static LyXFileDlg * pCurrentDlg;
+	///
 	string pszUserPath1;
+	///
 	string pszUserPath2;
+	///
 	string pszDirectory;
+	///
 	string pszMask;
+	///
 	string pszFileName;
+	///
 	int iDepth;
+	///
 	int iLastSel;
+	///
 	long lLastTime;
+	///
 	string pszInfoLine;
-	LyXDirEntry *pCurrentNames;
-	int iNumNames;
-
+	///
+	typedef vector<LyXDirEntry> DirEntries;
+	///
+	DirEntries direntries;
+	///
 	bool force_cancel;
+	///
 	bool force_ok;
 
-	// internal functions
 	/// updates dialog list to match class directory
 	void Reread();
 	/// sets dialog current directory

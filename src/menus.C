@@ -135,7 +135,7 @@ Menus::Menus(LyXView * view, int air)
 
 inline BufferView * Menus::currentView() 
 {
-	return _view->currentView(); 
+	return _view->view(); 
 }
 
 
@@ -1017,9 +1017,9 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(EditMenu, 17, scex(_("EM|gG#g#G")));
       
 	// disable unavailable entries.
-	if(tmpbuffer->undostack.Top() == 0)
+	if(tmpbuffer->undostack.empty())
 		fl_setpup_mode(EditMenu, 1, FL_PUP_GREY);
-	if(tmpbuffer->redostack.Top() == 0)
+	if(tmpbuffer->redostack.empty())
 		fl_setpup_mode(EditMenu, 2, FL_PUP_GREY);
 	if(lyxrc->isp_command == "none") 
 		fl_setpup_mode(EditMenu, 11, FL_PUP_GREY);

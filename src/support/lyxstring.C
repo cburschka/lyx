@@ -419,7 +419,7 @@ lyxstring::lyxstring(size_type n, value_type c)
 }
 
 
-lyxstring::lyxstring(iterator first, iterator last)
+lyxstring::lyxstring(const_iterator first, const_iterator last)
 {
 	rep = new Srep(last - first, first);
 }
@@ -612,7 +612,7 @@ lyxstring & lyxstring::assign(size_type n, value_type ch)
 }
 
 
-lyxstring & lyxstring::assign(iterator first, iterator last)
+lyxstring & lyxstring::assign(const_iterator first, const_iterator last)
 {
 	TestlyxstringInvariant(this);
 
@@ -1687,12 +1687,25 @@ void swap(lyxstring & str1, lyxstring & str2)
 
 istream & operator>>(istream & is, lyxstring & s)
 {
+#if 1
 	// very bad solution
 	char * nome = new char[1024];
 	is >> nome;
 	lyxstring tmp(nome);
 	delete [] nome;
 	if (!tmp.empty()) s = tmp;
+#else
+	// better solution
+	int w = is.widdth(0);
+	s.clear();
+	char c = 0;
+	while (is.get(c)) {
+		if (isspace(c)) { is.putback(c); break; }
+		s += c;
+		if (--w == 1) break;
+	}
+	if (s.empty()) is.setstate(ios::failbit);
+#endif
 	return is;
 }
 

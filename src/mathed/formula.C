@@ -315,11 +315,11 @@ InsetFormula::~InsetFormula()
    //if (label) delete label;
 }
 
-Inset* InsetFormula::Clone()
+InsetFormula * InsetFormula::Clone() const
 {
-    InsetFormula* f = new InsetFormula(par);
+    InsetFormula * f = new InsetFormula(par);
     f->label = label;
-    return (Inset*)f;
+    return f;
 }
 
 void InsetFormula::Write(FILE *file)
@@ -572,7 +572,7 @@ void InsetFormula::ToggleInsetSelection()
       
 }
 
-void InsetFormula::SetDisplay(bool dspf)
+void InsetFormula::display(bool dspf)
 {
    if (dspf!= disp_flag) {
       if (dspf) {
@@ -580,7 +580,7 @@ void InsetFormula::SetDisplay(bool dspf)
 	 par->SetStyle(LM_ST_DISPLAY);
       } else {
 	 if (par->GetType()>= LM_OT_MPAR) { 
-	    MathParInset *p = new MathParInset(par);
+	    MathParInset * p = new MathParInset(par);
 	    delete par;
 	    par = p;
 	    if (mathcursor) 
@@ -602,9 +602,9 @@ int InsetFormula::GetNumberOfLabels() const
 {
    // This is dirty, I know. I'll clean it at 0.13
    if (par->GetType() == LM_OT_MPARN) {
-       MathMatrixInset *mt = (MathMatrixInset*)par;
-       int nl= 0;
-       MathedRowSt const* crow = mt->getRowSt();
+       MathMatrixInset * mt = (MathMatrixInset*)par;
+       int nl = 0;
+       MathedRowSt const * crow = mt->getRowSt();
        while (crow) {
 	   if (crow->getLabel()) nl++;
 	   crow = crow->getNext();
@@ -1046,7 +1046,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
     case LFUN_MATH_DISPLAY:
 	    //LockedInsetStoreUndo(Undo::INSERT);
 	    LockedInsetStoreUndo(Undo::EDIT);
-      SetDisplay(!disp_flag);
+      display(!disp_flag);
       UpdateLocal();
       break;
       

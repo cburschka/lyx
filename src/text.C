@@ -135,7 +135,7 @@ void LyXText::Draw(Row * row, LyXParagraph::size_type & pos,
 	char c = row->par->GetChar(pos);
 
 	if (IsNewlineChar(c)) {
-		pos++;
+		++pos;
 		// Draw end-of-line marker
 
 		LyXFont font = GetFont(row->par, pos);
@@ -158,18 +158,18 @@ void LyXText::Draw(Row * row, LyXParagraph::size_type & pos,
 	LyXFont font = GetFont(row->par, pos);
 	LyXFont font2 = font;
 
-	if (c == LyXParagraph::META_FOOTNOTE ||
-	    c == LyXParagraph::META_MARGIN ||
-	    c == LyXParagraph::META_FIG ||
-	    c == LyXParagraph::META_TAB ||
-	    c == LyXParagraph::META_WIDE_FIG ||
-	    c == LyXParagraph::META_WIDE_TAB ||
-	    c == LyXParagraph::META_ALGORITHM) {
+	if (c == LyXParagraph::META_FOOTNOTE
+	    || c == LyXParagraph::META_MARGIN
+	    || c == LyXParagraph::META_FIG
+	    || c == LyXParagraph::META_TAB
+	    || c == LyXParagraph::META_WIDE_FIG
+	    || c == LyXParagraph::META_WIDE_TAB
+	    || c == LyXParagraph::META_ALGORITHM) {
 		string fs;
 		switch (c) {
 		case LyXParagraph::META_MARGIN:
 			fs = "margin";
-			/* draw a sign at the left margin! */ 
+			// Draw a sign at the left margin! 
 			scr.drawText(font, "!", 1, offset + row->baseline,
 				     (LYX_PAPER_MARGIN - font.width('!'))/2);
 			break;
@@ -195,7 +195,7 @@ void LyXText::Draw(Row * row, LyXParagraph::size_type & pos,
 		font.decSize();
 		font.decSize();
 	  
-		/* calculate the position of the footnotemark */
+		// calculate the position of the footnotemark
 		int y = (row->baseline - font2.maxAscent() 
 			 + font.maxAscent());
 	  
@@ -203,7 +203,7 @@ void LyXText::Draw(Row * row, LyXParagraph::size_type & pos,
 
 		float tmpx = x;
 
-		/* draw it and set new x position */
+		// draw it and set new x position
 		x += scr.drawString(font, fs, offset + y, int(x));
 
 		scr.drawLine(gc_foot, offset + row->baseline,
@@ -212,7 +212,7 @@ void LyXText::Draw(Row * row, LyXParagraph::size_type & pos,
 		pos++;
 		return;
 	} else if (c == LyXParagraph::META_INSET) {
-		Inset *tmpinset = row->par->GetInset(pos);
+		Inset * tmpinset = row->par->GetInset(pos);
 		if (tmpinset) 
 			tmpinset->Draw(font, scr, offset + row->baseline, x);
 		pos++;
@@ -226,71 +226,39 @@ void LyXText::Draw(Row * row, LyXParagraph::size_type & pos,
 	// This is dirty, but fast. Notice that it will never be too small.
 	// For the record, I'll note that Microsoft Word has a limit
 	// of 768 here. We have none :-) (Asger)
-#if 0
-	static char textstring[1024];
-#else
 	// Ok. I am the first to admit that the use of std::string will be
-	// a tiny bit slower. However, I claim that this slowdown is so
-	// small that it is close to inperceptive. So IMHO we should go
-	// with the easier and clearer implementation. And even if 1024
-	// is a large number here it might overflow, string will only
-	// overflow if the machine is out of memory...
+	// a tiny bit slower than using a POD char array. However, I claim
+	// that this slowdown is so small that it is close to inperceptive.
+	// So IMHO we should go with the easier and clearer implementation.
+	// And even if 1024 is a large number here it might overflow, string
+	// will only overflow if the machine is out of memory...
 	static string textstring;
 	textstring = c;
 	++pos;
-#endif
 
 	LyXParagraph::size_type last = RowLast(row);
-#if 0
-	// Prevent crash in the extremely unlikely event
-	// that our array is too small
-	if (last > pos+1020) last = pos + 1020;
-
-	textstring[0] = c;
-	pos++;
-
-	int i = 1;
-#endif
 	
-	while (pos <= last &&
-	       static_cast<char>(c = row->par->GetChar(pos)) > ' ' &&
-	       font2 == GetFont(row->par, pos)) {
-#if 0
-		textstring[i++] = c;
-#else
+	while (pos <= last
+	       && static_cast<char>(c = row->par->GetChar(pos)) > ' '
+	       && font2 == GetFont(row->par, pos)) {
 		textstring += c;
-#endif
 		++pos;
 	}
-#if 0
-	textstring[i] = 0; 
-#endif
 	float tmpx = x;
 
 	// If monochrome and LaTeX mode, provide reverse background
 	if (mono_video && font.latex() == LyXFont::ON) {
-		int a= font.maxAscent(), d= font.maxDescent();
-#if 0
-		scr.fillRectangle(gc_copy, int(tmpx), offset + row->baseline-a,
-				  font.textWidth(textstring, i), a+d);
-#else
+		int a = font.maxAscent(), d = font.maxDescent();
 		scr.fillRectangle(gc_copy, int(tmpx), offset + row->baseline-a,
 				  font.textWidth(textstring.c_str(),
 						 textstring.length()), a+d);
-#endif
 	}
-#if 0
-	/* Draw text and set the new x position */ 
-	x += scr.drawText(font, textstring, i, offset + row->baseline, 
-			  int(x));
-#else
-	/* Draw text and set the new x position */ 
+	// Draw text and set the new x position
 	x += scr.drawText(font, textstring.c_str(), textstring.length(),
 			  offset + row->baseline, 
 			  int(x));
-#endif
 	
-	/* what about underbars? */
+	// what about underbars?
 	if (font.underbar() == LyXFont::ON && font.latex() != LyXFont::ON) {
 		scr.drawLine(gc_copy, offset + row->baseline + 2,
 			     int(tmpx), int(x - tmpx));
@@ -311,7 +279,8 @@ int LyXText::LeftMargin(Row * row)
    LyXFont labelfont;
    LyXParagraph * newpar;
    Row dummyrow;
-   LyXLayout const & layout = textclasslist.Style(parameters->textclass, row->par->GetLayout());
+   LyXLayout const & layout = textclasslist.Style(parameters->textclass,
+						  row->par->GetLayout());
    
    string parindent = layout.parindent; 
 
@@ -339,7 +308,8 @@ int LyXText::LeftMargin(Row * row)
 	 /* find the previous same level paragraph */
 	 if (row->par->FirstPhysicalPar()->Previous()) {
 	    newpar = row->par->DepthHook(row->par->GetDepth());
-	    if (newpar && textclasslist.Style(parameters->textclass, newpar->GetLayout()).nextnoindent)
+	    if (newpar && textclasslist.Style(parameters->textclass,
+					      newpar->GetLayout()).nextnoindent)
 	       parindent.clear();
 	 }
       }
@@ -596,12 +566,12 @@ int LyXText::WidthOfCell(LyXParagraph * par, LyXParagraph::size_type & pos)
 }
 
 
-char LyXText::HitInTable(Row * row, int x)
+bool LyXText::HitInTable(Row * row, int x)
 {
   float tmpx;
   float fill_separator, fill_hfill, fill_label_hfill;
   if (!row->par->table)
-    return 0;
+    return false;
   PrepareToPrint(row, tmpx, fill_separator, fill_hfill, fill_label_hfill);
   return (x > tmpx && x < tmpx + row->par->table->WidthOfTable());
 }
@@ -637,8 +607,8 @@ LyXText::NextBreakPoint(Row * row, int width)
 		       && (!par->IsNewline(pos) 
 			   || !par->table->IsFirstCell(NumberOfCell(par, pos+1)))) {
 			if (par->GetChar(pos) == LyXParagraph::META_INSET &&
-			    par->GetInset(pos) && par->GetInset(pos)->Display()){
-				par->GetInset(pos)->SetDisplay(false);
+			    par->GetInset(pos) && par->GetInset(pos)->display()){
+				par->GetInset(pos)->display(false);
 			}
 			pos++;
 		}
@@ -662,8 +632,8 @@ LyXText::NextBreakPoint(Row * row, int width)
 				i = par->Last() - 1;/* this means break  */
 				x = width;
 			} else if (par->GetChar(i) == LyXParagraph::META_INSET &&
-				   par->GetInset(i) && par->GetInset(i)->Display()){
-				par->GetInset(i)->SetDisplay(false);
+				   par->GetInset(i) && par->GetInset(i)->display()){
+				par->GetInset(i)->display(false);
 			}
 			i++;
 		}
@@ -679,14 +649,14 @@ LyXText::NextBreakPoint(Row * row, int width)
 				last_separator = i;
 				x = width;		       /* this means break  */
 			} else if (c == LyXParagraph::META_INSET &&
-				   par->GetInset(i) && par->GetInset(i)->Display()){
+				   par->GetInset(i) && par->GetInset(i)->display()){
 				/* check wether a Display() inset is valid here .
 				   if not, change it to non-display*/ 
 				if (layout.isCommand()
 				    || (layout.labeltype == LABEL_MANUAL
 					&& i < BeginningOfMainBody(par))){
 					/* display istn't allowd */ 
-					par->GetInset(i)->SetDisplay(false);
+					par->GetInset(i)->display(false);
 					x += SingleWidth(par, i, c);
 				} else {
 					/* inset is display. So break the line here */ 
@@ -2064,8 +2034,8 @@ void LyXText::CheckParagraphInTable(LyXParagraph * par,
 {
 	
 	if (par->GetChar(pos) == LyXParagraph::META_INSET &&
-	    par->GetInset(pos) && par->GetInset(pos)->Display()){
-	  par->GetInset(pos)->SetDisplay(false);
+	    par->GetInset(pos) && par->GetInset(pos)->display()){
+	  par->GetInset(pos)->display(false);
 	}
 
 	long y;
@@ -2315,7 +2285,7 @@ void  LyXText::InsertChar(char c)
 	/* the display inset stuff */ 
 	if (cursor.row->par->GetChar(cursor.row->pos) == LyXParagraph::META_INSET
 	    && cursor.row->par->GetInset(cursor.row->pos)
-	    && cursor.row->par->GetInset(cursor.row->pos)->Display())
+	    && cursor.row->par->GetInset(cursor.row->pos)->display())
 		cursor.row->fill = -1; // to force a new break  
 
 	/* get the cursor row fist */
@@ -2503,7 +2473,7 @@ void LyXText::PrepareToPrint(Row * row, float & x, float & fill_separator,
 	   /* center displayed insets */ 
 	   if (row->par->GetChar(row->pos) == LyXParagraph::META_INSET
 	       && row->par->GetInset(row->pos)
-	       && row->par->GetInset(row->pos)->Display())
+	       && row->par->GetInset(row->pos)->display())
 	     align = LYX_ALIGN_CENTER;
 
 	   switch (align) {
@@ -2513,7 +2483,7 @@ void LyXText::PrepareToPrint(Row * row, float & x, float & fill_separator,
 		  !(row->next->par->IsNewline(row->next->pos-1))
 		  && !(row->next->par->GetChar(row->next->pos) == LyXParagraph::META_INSET
 		       && row->next->par->GetInset(row->next->pos)
-		       && row->next->par->GetInset(row->next->pos)->Display())
+		       && row->next->par->GetInset(row->next->pos)->display())
 		  )
 	      	fill_separator = w / ns;
 	      break;
@@ -3046,7 +3016,7 @@ void  LyXText::Backspace()
 				return; 
 			/* force complete redo when erasing display insets */ 
 			/* this is a cruel mathod but save..... Matthias */ 
-			if (cursor.par->GetInset(cursor.pos)->Display()){
+			if (cursor.par->GetInset(cursor.pos)->display()){
 				cursor.par->Erase(cursor.pos);
 				RedoParagraph();
 				return;

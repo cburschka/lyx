@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign
-noinst_LIBRARIES = libsupport.a
-libsupport_a_LIBADD = @LIBOBJS@
+pkglib_LTLIBRARIES = libsupport.la
+LIBS =
 ETAGS_ARGS = --c++
 INCLUDES = -I${srcdir}/../
 
@@ -8,7 +8,7 @@ if USE_LYXSTRING
 LYXSTRING = lyxstring.C lyxstring.h
 endif
 
-libsupport_a_SOURCES = \
+libsupport_la_SOURCES = \
 	DebugStream.C \
 	DebugStream.h \
 	FileInfo.C \
@@ -34,4 +34,3 @@ libsupport_a_SOURCES = \
 	syscontr.h \
 	syssingleton.C \
 	textutils.h
-

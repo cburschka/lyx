@@ -25,15 +25,9 @@ InsetLabel::InsetLabel(string const & cmd)
 }
 
 
-InsetLabel::~InsetLabel()
+InsetLabel * InsetLabel::Clone() const
 {
-}
-
-
-Inset * InsetLabel::Clone()
-{
-	InsetLabel * result = new InsetLabel(getCommand());
-	return result;
+	return new InsetLabel(getCommand());
 }
 
 
