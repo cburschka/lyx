@@ -417,7 +417,7 @@ int Buffer::readHeader(LyXLex & lex)
 
 		string unknown = params().readToken(lex, token);
 		if (!unknown.empty()) {
-			if (unknown[0] != '\\' and token == "\\textclass") {
+			if (unknown[0] != '\\' && token == "\\textclass") {
 				unknownClass(unknown);
 			} else {
 				++unknown_tokens;

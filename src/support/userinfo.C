@@ -16,7 +16,9 @@
 #include <boost/assert.hpp>
 
 #include <pwd.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <sys/types.h>
 
 using std::string;

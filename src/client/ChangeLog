@@ -1,3 +1,7 @@
+2005-01-19  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
+
+	* client.C: use the HAVE_UNISTD_H preprocessor guard.
+
 2005-01-10  Angus Leeming  <leeming@lyx.org>
 
 	* messages.C: use support/package.h to provide the paths to the

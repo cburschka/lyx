@@ -18,7 +18,9 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <fcntl.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 
 #include <cerrno>
 

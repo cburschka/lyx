@@ -1,3 +1,9 @@
+2005-01-19  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
+
+	* buffer.C (readHeader): use "&&" rather than "and".
+
+	* lyxserver.h (inPipeName, outPipeName): make these const.
+
 2005-01-19  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (error_handler, init): protect SIGHUP with

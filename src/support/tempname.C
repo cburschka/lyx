@@ -21,7 +21,9 @@
 #include <boost/scoped_array.hpp>
 
 #include <cstdlib>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 
 #if !defined(HAVE_MKSTEMP) && defined(HAVE_MKTEMP)
 # include <fcntl.h>
