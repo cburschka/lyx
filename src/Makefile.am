@@ -10,7 +10,7 @@ lyx_DEPENDENCIES = mathed/libmathed.o insets/libinsets.o \
 	support/libsupport.o \
 	@INCLUDED_SIGC@
 lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(SIGC_LIBS) \
-	$(PSPELL_LIBS) @AIKSAURUS_LIBS@ @LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+	$(PSPELL_LIBS) @AIKSAURUS_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 
 #lyx_LDFLAGS=-Wl,-O1
 EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version.C.in \
