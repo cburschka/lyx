@@ -486,7 +486,7 @@ void InsetGraphics::readFigInset(LyXLex & lex)
 			if (lex.next())
 				params_.lyxwidth = LyXLength(lex.getString()+"pt");
 			if (lex.next())
-				params_.lyxheight = LyXLength(lex.getString()+"pt");	
+				params_.lyxheight = LyXLength(lex.getString()+"pt");
 			params_.lyxsize_type = InsetGraphicsParams::WH;
 		} else if (token == "flags") {
 			if (lex.next())
@@ -651,16 +651,16 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 int InsetGraphics::latex(Buffer const *buf, ostream & os,
 			 bool /*fragile*/, bool/*fs*/) const
 {
-	// If there is no file specified or not existing, 
+	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
-	lyxerr[Debug::GRAPHICS] << "[latex]filename = " 
-				<< params().filename << endl;		    
-	string const message = 
-	    (IsFileReadable(MakeAbsPath(params().filename, buf->filePath())) 
+	lyxerr[Debug::GRAPHICS] << "[latex]filename = "
+				<< params().filename << endl;
+	string const message =
+	    (IsFileReadable(MakeAbsPath(params().filename, buf->filePath()))
 		&& !params().filename.empty()) ?
 		    string() :
 		    string("bb = 0 0 200 100, draft, type=eps]");
-	lyxerr[Debug::GRAPHICS] << "[latex]Messagestring = " << message << endl;		    
+	lyxerr[Debug::GRAPHICS] << "[latex]Messagestring = " << message << endl;
 
 	// These variables collect all the latex code that should be before and
 	// after the actual includegraphics command.
@@ -676,20 +676,20 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 
 	// Write the options if there are any.
 	string const opts = createLatexOptions();
-	lyxerr[Debug::GRAPHICS] << "[latex]opts = " << opts << endl;		    
+	lyxerr[Debug::GRAPHICS] << "[latex]opts = " << opts << endl;
 	if (!opts.empty() && !message.empty())
 		before += ("[" + opts + ',' + message);
 	else if (!message.empty())
 		before += ('[' + message);
 	else if (!opts.empty())
 		before += ("[" + opts + ']');
-	lyxerr[Debug::GRAPHICS] << "[latex]before = " << before << endl;		    
-	lyxerr[Debug::GRAPHICS] << "[latex]after = " << after << endl;		    
+	lyxerr[Debug::GRAPHICS] << "[latex]before = " << before << endl;
+	lyxerr[Debug::GRAPHICS] << "[latex]after = " << after << endl;
 
 	// Make the filename relative to the lyx file
 	// and remove the extension so the LaTeX will use whatever is
 	// appropriate (when there are several versions in different formats)
-	string const latex_str = message.empty() ? 
+	string const latex_str = message.empty() ?
 		(before + '{' + prepareFile(buf) + '}' + after) :
 		(before + '{' + params().filename + " not found!}" + after);
 	os << latex_str;
