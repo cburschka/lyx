@@ -1,3 +1,8 @@
+2005-02-03  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcall.C (running): call the lyx::kill wrapper function
+	rather than the system kill.
+
 2005-02-02  Angus Leeming  <leeming@lyx.org>
 
 	* forkedcall.C (generateChild): overhaul the code to split a string
