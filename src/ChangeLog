@@ -1,3 +1,8 @@
+2002-05-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C:
+	* BufferView2.C: clear selection on paste (bug 393)
+
 2002-05-14  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* DepTable.C: include ctime
