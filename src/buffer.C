@@ -433,7 +433,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	static int call_depth;
 	++call_depth;
 	bool checkminipage = false;
-	static Paragraph * minipar;
+	static Paragraph * minipar = 0;
 	static Paragraph * parBeforeMinipage;
 #endif
 #endif
@@ -1172,6 +1172,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		the_end_read = true;
 #ifndef NO_COMPABILITY
 #ifndef NO_PEXTRA_REALLY
+		if (minipar == par)
+			par = 0;
 		minipar = parBeforeMinipage = 0;
 #endif
 #endif
@@ -1228,7 +1230,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	if (checkminipage && (call_depth == 1)) {
 	checkminipage = false;
 	if (minipar && (minipar != par) &&
-	    (par->params().pextraType() == Paragraph::PEXTRA_MINIPAGE)) {
+	    (par->params().pextraType() == Paragraph::PEXTRA_MINIPAGE))
+	{
 		lyxerr << "minipages in a row" << endl;
 		if (par->params().pextraStartMinipage()) {
 			lyxerr << "start new minipage" << endl;
@@ -1264,7 +1267,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			mini->pageWidth(LyXLength(par->params().pextraWidth()));
 			if (!par->params().pextraWidthp().empty()) {
 			    lyxerr << "WP:" << mini->pageWidth().asString() << endl;
-			    mini->pageWidth(LyXLength((par->params().pextraWidthp())+"%"));
+			    mini->pageWidth(LyXLength((par->params().pextraWidthp())+"p%"));
 			}
 			Paragraph * op = mini->firstParagraph();
 			mini->inset.paragraph(par);
@@ -1345,9 +1348,19 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		mini->pageWidth(LyXLength(minipar->params().pextraWidth()));
 		if (!par->params().pextraWidthp().empty()) {
 		    lyxerr << "WP:" << mini->pageWidth().asString() << endl;
-		    mini->pageWidth(LyXLength((par->params().pextraWidthp())+"%"));
+		    mini->pageWidth(LyXLength((par->params().pextraWidthp())+"p%"));
 		}
+
+		Paragraph * op = mini->firstParagraph();
 		mini->inset.paragraph(minipar);
+		//
+		// and free the old ones!
+		//
+		while(op) {
+			Paragraph * pp = op->next();
+			delete op;
+			op = pp;
+		}
 			
 		// Insert the minipage last in the
 		// previous paragraph.

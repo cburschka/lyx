@@ -227,6 +227,7 @@ void InsetText::clear()
 		par = tmp;
 	}
 	par = new Paragraph;
+	par->setInsetOwner(this);
 	par->layout(old_layout);
 	
 	reinitLyXText();
@@ -2137,12 +2138,13 @@ Row * InsetText::crow(BufferView * bv) const
 LyXText * InsetText::getLyXText(BufferView const * lbv,
                                 bool const recursive) const
 {
-	if (!recursive && (cached_bview == lbv)) {
+	if (cached_bview == lbv) {
+		if (recursive && the_locking_inset)
+			return the_locking_inset->getLyXText(lbv, true);
 		LyXText * lt = cached_text.get();
 		lyx::Assert(lt && lt->firstRow()->par() == par);
 		return lt;
 	}
-	
 	// Super UGLY! (Lgb)
 	BufferView * bv = const_cast<BufferView *>(lbv);
 	

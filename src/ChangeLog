@@ -1,3 +1,13 @@
+2002-03-06  Juergen Vigna  <jug@sad.it>
+
+	* buffer.C (parseSingleLyXformat2Token): changed "%" to "p%" as
+	otherwise it would not be a valid lenght. Fixed a special case in
+	the minipage compatibility read where we end the document with a
+	minipage.
+
+	* text2.C (deleteEmptyParagraphMechanism): check if old_cursor.par()
+	was set as it could be 0 for InsetTexts first entry.
+
 2002-03-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* paragraph.C (writeFile): if layout is empty write out

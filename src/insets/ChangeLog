@@ -1,6 +1,7 @@
 2002-03-06  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (draw): fixed frame redrawing.
+	(clear): forgot to set the inset_owner of the paragraph.
 
 	* insetert.C (status): pay attention the bv can be 0 here!
 	(getMaxWidth): add the default leftMargin
