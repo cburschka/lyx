@@ -1,3 +1,10 @@
+2003-01-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* text3.C (dispatch): put the lfuns that insert insets in 3
+	groups, and call doInsertInset with appropriate arguments.
+	(doInsertInset): new function, that creates an inset and inserts
+	it according to some boolean parameters.
+
 2003-01-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* buffer.C (readFile): remember to pass on 'par' when calling

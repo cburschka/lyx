@@ -362,6 +362,7 @@ void LyXText::update(BufferView * bv, bool changed)
 		bv->update(this, c);
 }
 
+namespace {
 
 void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 {
@@ -374,6 +375,31 @@ void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 		bv->updateInset(new_inset, true);
 }
 
+void doInsertInset(LyXText * lt, FuncRequest const & cmd,
+		   bool edit, bool pastesel)
+{
+	Inset * inset = createInset(cmd);
+	BufferView * bv = cmd.view();
+	
+	if (inset) {
+		bool gotsel = false;
+		if (lt->selection.set()) {
+			lt->cutSelection(bv, true, false);
+			gotsel = true;
+		}
+		if (bv->insertInset(inset)) {
+			if (edit)
+				inset->edit(bv);
+			if (gotsel && pastesel)
+				bv->owner()->dispatch(FuncRequest(LFUN_PASTESELECTION));
+		}
+		else
+			delete inset;
+	}
+
+}
+
+}
 
 Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 {
@@ -1592,12 +1618,10 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 #if 0
 	case LFUN_INSET_LIST:
 	case LFUN_INSET_THEOREM:
+	case LFUN_INSET_CAPTION:
 #endif
 	case LFUN_INSERT_NOTE:
-	case LFUN_INSERT_URL:
-	case LFUN_INSET_CAPTION:
 	case LFUN_INSET_ERT:
-	case LFUN_INSET_EXTERNAL:
 	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_FOOTNOTE:
 	case LFUN_INSET_MARGINAL:
@@ -1606,29 +1630,24 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INSET_WIDE_FLOAT:
 	case LFUN_INSET_WRAP:
 	case LFUN_TABULAR_INSERT:
+		// Open the inset, and move the current selection
+		// inside it.
+		doInsertInset(this, cmd, true, true);
+		break;
+
+	case LFUN_INSERT_URL:
+	case LFUN_INSET_EXTERNAL:
 	case LFUN_INDEX_INSERT:
+		// Just open the inset
+		doInsertInset(this, cmd, true, false);
+		break;
+
 	case LFUN_INDEX_PRINT:
 	case LFUN_PARENTINSERT:
 	case LFUN_TOC_INSERT:
-	{
-		Inset * inset = createInset(cmd);
-		if (inset) {
-			bool gotsel = false;
-			if (selection.set()) {
-				cutSelection(bv, true, false);
-				gotsel = true;
-			}
-			if (bv->insertInset(inset)) {
-				inset->edit(bv);
-				if (gotsel)
-					bv->owner()->dispatch(FuncRequest(LFUN_PASTESELECTION));
-			}
-			else
-				delete inset;
-		}
+		// do nothing fancy
+		doInsertInset(this, cmd, false, false);
 		break;
-	}
-
 
 	default:
 		return Inset::UNDISPATCHED;
