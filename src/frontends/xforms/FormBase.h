@@ -29,6 +29,7 @@ using SigC::Signal0;
 #endif
 
 /** This class is an XForms GUI base class
+    @author Angus Leeming
  */
 class FormBase : public DialogBase, public noncopyable {
 public:
@@ -59,6 +60,10 @@ protected:
 	void show();
 	/// Hide the dialog.
 	void hide();
+	/// Connect signals
+	virtual void connect();
+	/// Disconnect signals
+	virtual void disconnect();
 	/// Build the dialog
 	virtual void build() = 0;
 	/// Filter the inputs on callback from xforms

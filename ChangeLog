@@ -1,3 +1,9 @@
+2000-09-29  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/xforms/FormBase.[Ch] (connect, disconnect): new.
+	Allow derived type to control connection and disconnection from signals
+	of its choice if desired.
+
 2000-09-28  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (update): fixed cursor setting when

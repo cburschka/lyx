@@ -64,9 +64,7 @@ void FormBase::show()
 			     FL_PLACE_MOUSE | FL_FREE_SIZE,
 			     FL_TRANSIENT,
 			     title.c_str());
-		if( uSignal_ )
-			u_ = uSignal_->connect(slot(this, &FormBase::update));
-		h_ = hSignal_->connect(slot(this, &FormBase::hide));
+		connect();
 	}
 }
 
@@ -75,13 +73,30 @@ void FormBase::hide()
 {
 	if (form() && form()->visible) {
 		fl_hide_form(form());
-		u_.disconnect();
-		h_.disconnect();
+		disconnect();
 	}
 
 	// free up the dialog for another inset
 	dialogIsOpen = false;
 	clearStore();
+}
+
+
+void FormBase::connect()
+{
+	if ( uSignal_ ) {
+		u_ = uSignal_->connect(slot(this, &FormBase::update));
+	}
+	h_ = hSignal_->connect(slot(this, &FormBase::hide));
+}
+
+
+void FormBase::disconnect()
+{
+	if (u_) {
+		u_.disconnect();
+	}
+	h_.disconnect();
 }
 
 
