@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>319</width>
+            <width>314</width>
             <height>323</height>
         </rect>
     </property>
@@ -355,7 +355,11 @@
             </property>
             <property stdset="1">
                 <name>enabled</name>
-                <bool>false</bool>
+                <bool>true</bool>
+            </property>
+            <property stdset="1">
+                <name>focusPolicy</name>
+                <enum>NoFocus</enum>
             </property>
             <property stdset="1">
                 <name>resizePolicy</name>
