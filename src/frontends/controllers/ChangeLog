@@ -1,3 +1,9 @@
+2001-10-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlMinipage.[Ch] (getUnits): moved to helper_funcs.
+
+	* helper_funcs.[Ch] (getLatexUnits): see above.
+
 2001-10-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ControlTexinfo.C (getContents): use the right file for .sty files

@@ -108,3 +108,15 @@ string const browseFile(LyXView * lv, string const & filename,
 }
 
 
+// sorry this is just a temporary hack we should include vspace.h! (Jug)
+extern const char * stringFromUnit(int);
+
+vector<string> const getLatexUnits()
+{
+	vector<string> units;
+	const char * str;
+	for(int i=0; (str = stringFromUnit(i)); ++i)
+	    units.push_back(str);
+
+	return units;
+}

@@ -44,6 +44,7 @@
 #include "xforms_helpers.h" 
 #include "debug.h"
 #include "input_validators.h" // fl_unsigned_float_filter
+#include "helper_funcs.h" 
 
 using Liason::setMinibuffer;
 using SigC::slot;
@@ -138,7 +139,14 @@ void FormDocument::build()
 			    fl_unsigned_float_filter);
 
 	// Create the contents of the unit choices
-	string const units = " cm | inch ";
+	// Don't include the "%" terms...
+	std::vector<string> units_vec = getLatexUnits();
+	for (std::vector<string>::iterator it = units_vec.begin();
+		it != units_vec.end(); ++it) {
+		if (contains(*it, "%"))
+			it = units_vec.erase(it, it+1) - 1;
+	}
+	string units = getStringFromVector(units_vec, "|");
 
 	fl_addto_choice(paper_->choice_custom_width_units,  units.c_str());
 	fl_addto_choice(paper_->choice_custom_height_units, units.c_str());
@@ -412,14 +420,11 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		BufferParams::PACKAGE_NONE + 1);
 
 	if (ob == paper_->choice_papersize) {
-		bool const custom =
-			fl_get_choice(paper_->choice_papersize) == 2;
-		bool const a3size =
-			fl_get_choice(paper_->choice_papersize) == 6;
-		bool const b3size =
-			fl_get_choice(paper_->choice_papersize) == 9;
-		bool const b4size =
-			fl_get_choice(paper_->choice_papersize) == 10;
+		int const paperchoice = fl_get_choice(paper_->choice_papersize);
+		bool const custom = paperchoice == 2;
+		bool const a3size = paperchoice == 6;
+		bool const b3size = paperchoice == 9;
+		bool const b4size = paperchoice == 10;
 
 		if (custom)
 			fl_set_button(paper_->radio_portrait, 1);
@@ -451,6 +456,37 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		setEnabled(paper_->choice_custom_height_units, custom);
 		setEnabled(paper_->radio_portrait,  !custom);
 		setEnabled(paper_->radio_landscape, !custom);
+
+		// Default unit choice is cm if metric, inches if US paper.
+		bool const metric = paperchoice < 3 || paperchoice > 5;
+		int const default_unit = metric ? 8 : 9;
+		if (strip(fl_get_input(paper_->input_custom_width)).empty())
+			fl_set_choice(paper_->choice_custom_width_units,
+				      default_unit);
+		if (strip(fl_get_input(paper_->input_custom_height)).empty())
+			fl_set_choice(paper_->choice_custom_height_units,
+				      default_unit);
+		if (strip(fl_get_input(paper_->input_top_margin)).empty())
+			fl_set_choice(paper_->choice_top_margin_units,
+				      default_unit);
+		if (strip(fl_get_input(paper_->input_bottom_margin)).empty())
+			fl_set_choice(paper_->choice_bottom_margin_units,
+				      default_unit);
+		if (strip(fl_get_input(paper_->input_left_margin)).empty())
+			fl_set_choice(paper_->choice_left_margin_units,
+				      default_unit);
+		if (strip(fl_get_input(paper_->input_right_margin)).empty())
+			fl_set_choice(paper_->choice_right_margin_units,
+				      default_unit);
+		if (strip(fl_get_input(paper_->input_head_height)).empty())
+			fl_set_choice(paper_->choice_head_height_units,
+				      default_unit);
+		if (strip(fl_get_input(paper_->input_head_sep)).empty())
+			fl_set_choice(paper_->choice_head_sep_units,
+				      default_unit);
+		if (strip(fl_get_input(paper_->input_foot_skip)).empty())
+			fl_set_choice(paper_->choice_foot_skip_units,
+				      default_unit);
 	}
 
 	if (ob == paper_->choice_papersize ||
@@ -687,6 +723,7 @@ void FormDocument::paper_apply()
 	params.leftmargin =
 		getLengthFromWidgets(paper_->input_left_margin,
 				     paper_->choice_left_margin_units);
+	std::cerr << params.leftmargin << std::endl;
 
 	params.topmargin =
 		getLengthFromWidgets(paper_->input_top_margin,
@@ -943,7 +980,8 @@ void FormDocument::paper_update(BufferParams const & params)
 	fl_set_choice(paper_->choice_paperpackage, params.paperpackage + 1);
 	fl_set_button(paper_->check_use_geometry, params.use_geometry);
 
-	bool const useCustom = fl_get_choice(paper_->choice_papersize) == 2;
+	int const paperchoice = fl_get_choice(paper_->choice_papersize);
+	bool const useCustom = paperchoice == 2;
 	bool const useGeom = fl_get_button(paper_->check_use_geometry);
 
 	fl_set_button(paper_->radio_portrait, 0);
@@ -958,62 +996,64 @@ void FormDocument::paper_update(BufferParams const & params)
 	setEnabled(paper_->choice_paperpackage,
 		   //either default papersize (preferences)
 		   //or document papersize has to be A4
-		   (fl_get_choice(paper_->choice_papersize) == 7
-		    || fl_get_choice(paper_->choice_papersize) == 1
-		    && lyxrc.default_papersize == 5)
+		   (paperchoice == 7
+		    || paperchoice == 1 && lyxrc.default_papersize == 5)
 		   && fl_get_button(paper_->radio_portrait));
 
+	// Default unit choice is cm if metric, inches if US paper.
+	bool const metric = paperchoice < 3 || paperchoice > 5;
+	string const default_unit = metric ? "cm" : "in";
 	updateWidgetsFromLengthString(paper_->input_custom_width,
 				      paper_->choice_custom_width_units,
-				      params.paperwidth);
+				      params.paperwidth, default_unit);
 	setEnabled(paper_->input_custom_width, useCustom);
 	setEnabled(paper_->choice_custom_width_units, useCustom);
 
 	updateWidgetsFromLengthString(paper_->input_custom_height,
 				      paper_->choice_custom_height_units,
-				      params.paperheight);
+				      params.paperheight, default_unit);
 	setEnabled(paper_->input_custom_height, useCustom);
 	setEnabled(paper_->choice_custom_height_units, useCustom);
 
 	updateWidgetsFromLengthString(paper_->input_left_margin,
 				      paper_->choice_left_margin_units,
-				      params.leftmargin);
+				      params.leftmargin, default_unit);
 	setEnabled(paper_->input_left_margin, useGeom);
 	setEnabled(paper_->choice_left_margin_units, useGeom);
 
 	updateWidgetsFromLengthString(paper_->input_top_margin,
 				      paper_->choice_top_margin_units,
-				      params.topmargin);
+				      params.topmargin, default_unit);
 	setEnabled(paper_->input_top_margin, useGeom);
 	setEnabled(paper_->choice_top_margin_units, useGeom);
 
 	updateWidgetsFromLengthString(paper_->input_right_margin,
 				      paper_->choice_right_margin_units,
-				      params.rightmargin);
+				      params.rightmargin, default_unit);
 	setEnabled(paper_->input_right_margin, useGeom);
 	setEnabled(paper_->choice_right_margin_units, useGeom);
 
 	updateWidgetsFromLengthString(paper_->input_bottom_margin,
 				      paper_->choice_bottom_margin_units,
-				      params.bottommargin);
+				      params.bottommargin, default_unit);
 	setEnabled(paper_->input_bottom_margin, useGeom);
 	setEnabled(paper_->choice_bottom_margin_units, useGeom);
 
 	updateWidgetsFromLengthString(paper_->input_head_height,
 				      paper_->choice_head_height_units,
-				      params.headheight);
+				      params.headheight, default_unit);
 	setEnabled(paper_->input_head_height, useGeom);
 	setEnabled(paper_->choice_head_height_units, useGeom);
 
 	updateWidgetsFromLengthString(paper_->input_head_sep,
 				      paper_->choice_head_sep_units,
-				      params.headsep);
+				      params.headsep, default_unit);
 	setEnabled(paper_->input_head_sep, useGeom);
 	setEnabled(paper_->choice_head_sep_units, useGeom);
 
 	updateWidgetsFromLengthString(paper_->input_foot_skip,
 				      paper_->choice_foot_skip_units,
-				      params.footskip);
+				      params.footskip, default_unit);
 	setEnabled(paper_->input_foot_skip, useGeom);
 	setEnabled(paper_->choice_foot_skip_units, useGeom);
 

@@ -24,12 +24,11 @@
 #include "LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
+#include "helper_funcs.h"
 
 using std::vector;
 using SigC::slot;
 
-// sorry this is just a temporary hack we should include vspace.h! (Jug)
-extern const char * stringFromUnit(int);
 
 ControlMinipage::ControlMinipage(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetMinipage, MinipageParams>(lv, d)
@@ -82,17 +81,3 @@ bool operator!=(MinipageParams const & p1, MinipageParams const & p2)
 {
 	return !(p1 == p2);
 }
-
-namespace minipage {
-
-vector<string> const getUnits()
-{
-	vector<string> units;
-	const char * str;
-	for(int i=0; (str = stringFromUnit(i)); ++i)
-	    units.push_back(str);
-
-	return units;
-}
- 
-} // namespace minipage

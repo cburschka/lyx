@@ -45,6 +45,11 @@ string const browseFile(LyXView *lv, string const & filename,
 			std::pair<string,string> const & dir1,
 			std::pair<string,string> const & dir2);
 
+
+/// Returns a vector of units that can be used to create a valid LaTeX length.
+std::vector<string> const getLatexUnits();
+
+
 /** Functions to extract vectors of the first and second elems from a
     vector<pair<A,B> >
 */

@@ -38,7 +38,7 @@ void FormMinipage::build()
 
 	fl_set_input_return(dialog_->input_width, FL_RETURN_CHANGED);
 
-	string const choice = getStringFromVector(minipage::getUnits(), "|");
+	string const choice = getStringFromVector(getLatexUnits(), "|");
 	fl_addto_choice(dialog_->choice_width_units, subst(choice, "%", "%%").c_str());
 
 	// Manage the ok, apply and cancel/close buttons

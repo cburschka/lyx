@@ -79,14 +79,16 @@ string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 	if (length.empty())
 		return string();
 
-	string const units = strip(frontStrip(fl_get_choice_text(choice)));
+	string unit = strip(frontStrip(fl_get_choice_text(choice)));
+	unit = subst(unit, "%%", "%");
 
-	return length + units;
+	return length + unit;
 }
 	
 
 void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
-				   string const & str)
+				   string const & str,
+				   string const & default_unit)
 {
 	// Paranoia check
 	lyx::Assert(input  && input->objclass  == FL_INPUT &&
@@ -94,7 +96,16 @@ void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 
 	if (str.empty()) {
 		fl_set_input(input, "");
-		fl_set_choice(choice, 1);
+		int unitpos = 1; // xforms has Fortran-style indexing
+		for(int i = 0; i < fl_get_choice_maxitems(choice); ++i) {
+			string const text = fl_get_choice_item_text(choice,i+1);
+			if (default_unit ==
+			    lowercase(strip(frontStrip(text)))) {
+				unitpos = i+1;
+				break;
+			}
+		}
+		fl_set_choice(choice, unitpos);
 		return;
 	}
 
@@ -118,7 +129,8 @@ void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 		string tmplen = string(tmp.begin(), p);
 		if (isStrDbl(tmplen))
 			len = tmplen;
-		string unit = string(p+1, tmp.end());
+		string unit = string(p, tmp.end());
+		unit = subst(unit, "%", "%%");
 
 		for(int i = 0; i < fl_get_choice_maxitems(choice); ++i) {
 			string const text = fl_get_choice_item_text(choice,i+1);

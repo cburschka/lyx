@@ -1,3 +1,10 @@
+2001-10-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormDocument.C: fixed some bugs in the Paper tab.
+
+	* xforms_helpers.[Ch] (updateWidgetsFromLengthString): add argument
+	specifying default unit for choice if input string is empty.
+
 2001-10-12  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormDocument.C (input): one more tweak...
