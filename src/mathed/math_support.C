@@ -186,6 +186,7 @@ LyXFont const & whichFontBaseIntern(MathTextCodes type)
 	return MathFonts[1];
 }
 
+
 LyXFont const & whichFontBase(MathTextCodes type)
 {
 	if (!MathFonts)
