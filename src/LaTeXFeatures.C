@@ -43,7 +43,7 @@ using std::set;
 
 
 LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p, bool n)
-	: buffer_(b), params_(p), nice_(n)
+	: buffer_(&b), params_(p), nice_(n)
 {}
 
 
@@ -465,7 +465,13 @@ void LaTeXFeatures::showStruct() const {
 
 Buffer const & LaTeXFeatures::buffer() const
 {
-	return buffer_;
+	return *buffer_;
+}
+
+
+void LaTeXFeatures::setBuffer(Buffer const & buffer)
+{
+	buffer_ = &buffer;
 }
 
 

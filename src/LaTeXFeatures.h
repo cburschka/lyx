@@ -79,6 +79,8 @@ public:
 	///
 	Buffer const & buffer() const;
 	///
+	void setBuffer(Buffer const &);
+	///
 	BufferParams const & bufferParams() const;
 	/// the return value is dependent upon both LyXRC and LaTeXFeatures.
 	bool useBabel() const;
@@ -106,8 +108,12 @@ private:
 	typedef std::map<std::string , std::string> FileMap;
 	///
 	FileMap IncludedFiles_;
-	///
-	Buffer const & buffer_;
+	/** Buffer of the file being processed.
+	 *  This may be a child buffer of the to-be-exported file and
+	 *  therefore may not be the buffer that belongs to params_.
+	 *  Only needed by InsetInclude::validate().
+	 */
+	Buffer const * buffer_;
 	///
 	BufferParams const & params_;
 	/** If we are writing a nice LaTeX file or not.

@@ -1,4 +1,8 @@
+2004-04-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
+	* LaTeXFeatures.[Ch]: change buffer_ to a pointer and add accessor
+	setBuffer()
+	
 2004-04-07  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* BufferView.C (setCursor): call redoParagraph (some insets could

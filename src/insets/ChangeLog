@@ -1,3 +1,8 @@
+2004-04-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetinclude.C (validate): set/reset features.buffer_ when
+	validating the child
+
 2004-04-07  Angus Leeming  <angus@localhost.localdomain>
 
 	* insetexternal.C (priv_dispatch): 
@@ -15,7 +20,7 @@
 
 	* ExternalSupport.C (doSubstitution): add new variables $$AbsPath,
 	$$RelPath_Master, $$RelPath_Parent, $$Extension,
-	$$AbsOrRelPath_Master and $$AbsOrRelPath_Parent. Change the meaning
+	$$AbsOrRelPathMaster and $$AbsOrRelPathParent. Change the meaning
 	of $$Basename
 	* ExternalSupport.C (updateExternal): use absolute and output
 	filename where appropriate

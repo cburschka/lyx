@@ -530,8 +530,14 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	if (loadIfNeeded(buffer, params_)) {
 		// a file got loaded
 		Buffer * const tmp = bufferlist.getBuffer(included_file);
-		if (tmp)
+		if (tmp) {
+			// We must temporarily change features.buffer,
+			// otherwise it would always be the master buffer,
+			// and nested includes would not work.
+			features.setBuffer(*tmp);
 			tmp->validate(features);
+			features.setBuffer(buffer);
+		}
 	}
 }
 
