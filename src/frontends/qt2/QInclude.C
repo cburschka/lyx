@@ -58,10 +58,14 @@ void QInclude::update_contents()
 
 	dialog_->visiblespaceCB->setChecked(false);
 	dialog_->visiblespaceCB->setEnabled(false);
+	dialog_->previewCB->setChecked(false);
+	dialog_->previewCB->setEnabled(false);
 
 	switch (params.flag) {
 		case InsetInclude::INPUT:
 			dialog_->typeCO->setCurrentItem(0);
+			dialog_->previewCB->setEnabled(true);
+			dialog_->previewCB->setChecked(params.cparams.preview());
 			break;
 
 		case InsetInclude::INCLUDE:
@@ -84,6 +88,7 @@ void QInclude::apply()
 	InsetInclude::Params & params = controller().params();
 
 	params.cparams.setContents(dialog_->filenameED->text().latin1());
+	params.cparams.preview(dialog_->previewCB->isChecked());
 
 	int const item = dialog_->typeCO->currentItem();
 	if (item == 0)
