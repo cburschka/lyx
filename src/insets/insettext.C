@@ -1422,7 +1422,7 @@ int InsetText::cy(BufferView * bv) const
 }
 
 
-int InsetText::cpos(BufferView * bv) const
+LyXParagraph::size_type InsetText::cpos(BufferView * bv) const
 {
     return TEXT(bv)->cursor.pos();
 }
@@ -1480,9 +1480,9 @@ void InsetText::resizeLyXText(BufferView * bv) const
     LyXParagraph * lpar = 0;
     LyXParagraph * selstartpar = 0;
     LyXParagraph * selendpar = 0;
-    int pos = 0;
-    int selstartpos = 0;
-    int selendpos = 0;
+    LyXParagraph::size_type pos = 0;
+    LyXParagraph::size_type selstartpos = 0;
+    LyXParagraph::size_type selendpos = 0;
     int selection = 0;
     int mark_set = 0;
 

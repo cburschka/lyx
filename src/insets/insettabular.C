@@ -660,7 +660,7 @@ void InsetTabular::InsetMotionNotify(BufferView * bv, int x, int y, int button)
     }
     if (!no_selection) {
 	HideInsetCursor(bv);
-	int const old_pos = sel_pos_end;
+	LyXParagraph::size_type const old_pos = sel_pos_end;
 	int const old_cell = actcell;
 
 	setPos(bv, x, y);

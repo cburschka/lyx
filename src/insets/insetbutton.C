@@ -71,7 +71,7 @@ int InsetButton::width(BufferView * bv, LyXFont const &) const
 	int width, ascent, descent;
         string s = getScreenLabel();
 	if (!bv)
-		return s.length();
+		int(s.length());
 	
         if (Editable()) {
 		bv->painter().buttonText(0, 0, s, font,

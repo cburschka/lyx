@@ -225,7 +225,7 @@ private:
     ///
     int cy(BufferView *) const;
     ///
-    int cpos(BufferView *) const;
+    LyXParagraph::size_type cpos(BufferView *) const;
     ///
     LyXParagraph * cpar(BufferView *) const;
     ///
@@ -254,7 +254,7 @@ private:
     ///
     LyXParagraph * inset_par;
     ///
-    int inset_pos;
+    LyXParagraph::size_type inset_pos;
     ///
     mutable int inset_x;
     ///

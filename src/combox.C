@@ -142,7 +142,7 @@ bool Combox::select_text(string const & t)
 }
 
 
-void Combox::select(size_t i)
+void Combox::select(int i)
 {
 	if (!browser || !button) return;
 	if (i > 0 && i <= fl_get_browser_maxline(browser)) sel = i; 
@@ -391,10 +391,9 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 	if (static_cast<XEvent*>(xev)->type != KeyPress) return 0;
 	
 	char s_r[10]; s_r[9] = '\0';
-	static int num_bytes;
 	KeySym keysym_return;
-	num_bytes = XLookupString(&static_cast<XEvent*>(xev)->xkey, s_r, 10, 
-				  &keysym_return, 0);
+	XLookupString(&static_cast<XEvent*>(xev)->xkey, s_r, 10, 
+			      &keysym_return, 0);
 	XFlush(fl_get_display());
 	switch (keysym_return) {
 	case XK_Down:

@@ -34,12 +34,12 @@ string const InsetCitation::getScreenLabel() const
 		// Final comma allows while loop to cover all keys
 		keys = frontStrip(split(keys, label, ',')) + ",";
 
-		size_t const maxSize = 40;
+		string::size_type const maxSize = 40;
 		while (contains( keys, "," )) {
 			string key;
 			keys = frontStrip(split(keys, key, ','));
 
-			size_t size = label.size() + 2 + key.size();
+			string::size_type size = label.size() + 2 + key.size();
 			if( size >= maxSize ) {
 				label += ", ...";
 				break;

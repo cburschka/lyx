@@ -72,10 +72,10 @@ libinsets_la_SOURCES = \
 	insetspecialchar.h \
 	insettabular.C \
 	insettabular.h \
-	insettheorem.C \
-	insettheorem.h \
 	insettext.C \
 	insettext.h \
+	insettheorem.C \
+	insettheorem.h \
 	insettoc.C \
 	insettoc.h \
 	inseturl.C \

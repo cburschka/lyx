@@ -75,7 +75,7 @@ public:
 	string const getline() const;
    
 	///  Select an arbitrary item
-	void select(size_t);
+	void select(int);
 	///
         bool select_text(string const &);
    

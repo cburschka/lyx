@@ -241,15 +241,15 @@ private:
     ///
     mutable LyXCursor old_cursor;
     ///
-    mutable int inset_pos;
+    mutable LyXParagraph::size_type inset_pos;
     ///
     mutable unsigned int inset_x;
     ///
     mutable unsigned int inset_y;
     ///
-    mutable int sel_pos_start;
+    mutable LyXParagraph::size_type sel_pos_start;
     ///
-    mutable int sel_pos_end;
+    mutable LyXParagraph::size_type sel_pos_end;
     ///
     mutable int sel_cell_start;
     ///

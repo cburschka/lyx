@@ -1,9 +1,40 @@
-2000-10-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+2000-10-17  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* lib/CREDITS: clean up
+
+2000-10-16  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/combox.[Ch] (select): changed argument back to int
+	* src/combox.C (peek_event): removed num_bytes as it is declared but
+	never referenced.
+
+	* src/frontends/xforms/FormDocument.C (class_apply, bullets_apply):
+	modified calls to Combox::select() to remove warnings about type
+	conversion.
+
+	* src/insets/insetbutton.C (width): explicit cast to remove warning
+	about type conversion.
+
+	* src/insets/insetcite.C (getScreenLabel): use string::size_type not
+	size_t.
+
+	* src/insets/insettabular.[Ch]: variables inset_pos, sel_pos_start and
+	sel_pos_end, refering to cursor position are changed to
+	LyXParagraph::size_type.
+
+	* src/insets/insettext.h (cpos): returns LyXParagraph::size_type,
+	consistent with LyXCursor::pos().
+	(inset_pos): changed to LyXParagraph::size_type for same reason.
+
+	* src/insets/insettext.C (resizeLyXText): changed some temporary
+	variables refing to cursor position to LyXParagraph::size_type.
+
 2000-10-16  John Levon  <moz@compsoc.man.ac.uk>
 
 	* src/frontends/kde/<various>: The Great Renaming,
 	add FormParagraph
 
+2000-10-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/support/Makefile.am (EXTRA_DIST): re-fix.
 
@@ -77,7 +108,7 @@
 2000-10-13  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/text.C (GetColumnNearX): Fixed disabled code.
-                           
+
 2000-10-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* configure.in (CPPFLAGS): add snprintf and vsnprintf to
@@ -961,7 +992,7 @@
 	* src/insets/insetbutton.C (width): Changed to work with no GUI.
 	* src/insets/insetbib.C (bibitemWidest): ditto.
 	* src/lyx_gui_misc.C (AskQuestion,AskConfirmation,askForText): ditto.
-	     
+
 2000-10-03  Juergen Vigna  <jug@sad.it>
 
 	* src/BufferView2.C (theLockingInset): removed const because of
@@ -1917,7 +1948,7 @@
 	* src/frontends/xforms/Toolbar_pimpl.C: 
 	* src/lyx_cb.C (LayoutsCB): added Combox * to function call.
 
-2000-09-14  Garst Reese    <reese@isn.net>
+2000-09-14  Garst Reese  <reese@isn.net>
 
 	* lib/tex/hollywood.cls changed length of parenthicals to 1.5in
 	moved usepackage{xxx}'s to beginning of file. Changed left margin
@@ -4448,7 +4479,7 @@
 	* src/lyxrc.C, src/lyxrc.h, src/BufferView_pimpl.C,
 	lib/lyxrc.example: added option \wheel_jump
 
-2000-07-04   R. Lahaye  <lahaye@postech.ac.kr>
+2000-07-04  R. Lahaye  <lahaye@postech.ac.kr>
 
 	* src/lyx_gui.C src/lyx_main.C: add support for -geometry, and
 	remove support for -width,-height,-xpos and -ypos.
