@@ -71,6 +71,13 @@ ButtonPolicy::SMInput FormToc::input(FL_OBJECT *, long)
 
 void FormToc::updateType()
 {
+	// Update the choice list from scratch
+	fl_clear_choice(dialog_->choice_toc_type);
+	string const choice =
+		" " + getStringFromVector(controller().getTypes(), " | ") + " ";
+	fl_addto_choice(dialog_->choice_toc_type, choice.c_str());
+
+	// And select the correct one
 	string const type = toc::getType(controller().params().getCmdName());
 	
 	fl_set_choice(dialog_->choice_toc_type, 1);

@@ -1,3 +1,8 @@
+2001-07-29  Asger Alstrup Nielsen  <alstrup@alstrup>
+
+	* FormToc.C (updateType): Fix problem with TOC that couldn't be
+	updated because the type list was not updated.
+
 2001-07-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* forms/form_aboutlyx.fd: made a bit bigger to get the Copyright &
