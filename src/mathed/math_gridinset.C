@@ -915,7 +915,8 @@ void MathGridInset::write(WriteStream & os) const
 			os << cell(index(row, col)) << eocString(col, lastcol);
 		os << eolString(row, os.fragile());
 		// append newline only if line wasn't completely empty
-		if (!emptyline)
+		// and this was not the last line in the grid
+		if (!emptyline && row + 1 < nrows())
 			os << "\n";
 	}
 	string const s = verboseHLine(rowinfo_[nrows()].lines_);

@@ -141,6 +141,7 @@ void MathDelimInset::maplize(MapleStream & os) const
 		os << left_ << cell(0) << right_;
 }
 
+
 void MathDelimInset::mathematicize(MathematicaStream & os) const
 {
 	if (isAbs()) {
@@ -152,7 +153,6 @@ void MathDelimInset::mathematicize(MathematicaStream & os) const
 	else
 		os << left_ << cell(0) << right_;
 }
-
 
 
 void MathDelimInset::mathmlize(MathMLStream & os) const
