@@ -1,3 +1,8 @@
+2002-06-21  Herbert Voss  <voss@lyx.org>
+
+	* GraphicsCacheItem.C: convert .ps as .eps to avoid
+	  problems with old ps files
+ 
 2002-06-13  Angus Leeming  <leeming@lyx.org>
 
 	Fixes needed to compile with Compaq cxx 6.3.

@@ -477,11 +477,20 @@ void GCacheItem::convertToDisplayFormat()
 		unzipped_filename_ = filename;
 	}
 
-	string const from = getExtFromContents(filename);
-	string const to   = grfx::findTargetFormat(from);
+	string from = getExtFromContents(filename);
+	// Some old ps-files make problems, so we do not need direct
+	// loading of an ps-file
+	if (from == "ps") {
+		lyxerr[Debug::GRAPHICS] 
+			<< "\n\tThe file contains PostScript format data.\n" 
+			<< "\tchanging it to eps-format to get it converted to xpm\n";
+		from = "eps";
+	} else {
+		lyxerr[Debug::GRAPHICS] 
+			<< "\n\tThe file contains " << from << " format data." << endl;
+	}
+	string const to = grfx::findTargetFormat(from);
 
-	lyxerr[Debug::GRAPHICS]
-		<< "The file contains " << from << " format data." << endl;
 
 	if (to.empty()) {
 		setStatus(ErrorConverting);
