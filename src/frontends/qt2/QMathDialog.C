@@ -140,7 +140,12 @@ void QMathDialog::expandClicked()
 {
 	int const id = symbolsWS->id(symbolsWS->visibleWidget());
 	IconPalette * p = makePanel(0, panels[id]);
+	string s = "LyX: "; 
+	s += symbolsCO->text(id).latin1();
+	p->setCaption(s.c_str());
+	p->resize(40 * 5, p->height());
 	p->show();
+	p->setMaximumSize(p->width(), p->height());
 }
  
  

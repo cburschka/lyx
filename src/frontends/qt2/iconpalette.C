@@ -61,15 +61,23 @@ void IconPalette::clicked()
 
 void IconPalette::resizeEvent(QResizeEvent * e)
 {
-	lyxerr << "resize panel to " << e->size().width() << "," << e->size().height() << endl;
+	QWidget::resizeEvent(e);
+ 
+	lyxerr[Debug::GUI] << "resize panel to "
+		<< e->size().width() << "," << e->size().height() << endl;
  
 	int maxcol = e->size().width() / button_size;
  
 	if (!layout_->isEmpty() && maxcol == maxcol_)
 		return;
 
-	lyxerr << "doing layout !" << maxcol << " " << width() << endl;
-	lyxerr << "before is " << maxcol_ << endl; 
+	int cols(width() / button_size);
+	int rows = max(buttons_.size() / cols, 1U);
+	if (buttons_.size() % cols)
+		++rows;
+
+	lyxerr[Debug::GUI] << "Laying out " << buttons_.size() << " widgets in a "
+		<< cols << "x" << rows << " grid." << endl;
  
 	setUpdatesEnabled(false);
  
@@ -84,24 +92,21 @@ void IconPalette::resizeEvent(QResizeEvent * e)
 	vector<Button>::const_iterator it(buttons_.begin());
 	vector<Button>::const_iterator const end(buttons_.end());
 
-	int row = 0;
-	int col = 0;
-	 
-	for (; it != end; ++it) {
-		layout_->addWidget(it->first, row, col++);
-		if (col >= maxcol) {
-			col = 0;
-			++row;
+	for (int i = 0; i < rows; ++i) {
+		for (int j = 0; j < cols; ++j) {
+			layout_->addWidget(it->first, i, j);
+			++it;
+			if (it == end)
+				goto out;
 		}
 	}
 
-	maxcol_ = maxcol;
+out:
  
-	// this is OK because width won't change, and we have the check above
-	setGeometry(x(), y(), width(), (row + 1) * button_size);
+	resize(cols * button_size, rows * button_size);
+
+	maxcol_ = cols;
  
-	repaint();
-	lyxerr << "after is " << row << "," << maxcol << endl; 
 	setUpdatesEnabled(true);
 	update();
 }
