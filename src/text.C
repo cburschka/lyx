@@ -157,7 +157,9 @@ int LyXText::SingleWidth(BufferView * bview, LyXParagraph * par,
 	} else if (c == LyXParagraph::META_INSET) {
 		Inset * tmpinset = par->GetInset(pos);
 		if (tmpinset) {
+#if 0 // seems not to be needed, but ...
 			tmpinset->update(bview, font);
+#endif
 			return tmpinset->width(bview, font);
 		} else
 			return 0;
@@ -428,9 +430,9 @@ void LyXText::draw(BufferView * bview, Row const * row,
 	if (c == LyXParagraph::META_INSET) {
 		Inset * tmpinset = row->par()->GetInset(pos);
 		if (tmpinset) {
-//			tmpinset->update(bview, font, false);
+			tmpinset->update(bview, font, false);
 			tmpinset->draw(bview, font, offset+row->baseline(), x,
-				       cleared);
+			               cleared);
 #ifdef SEEMS_TO_BE_NOT_NEEDED
 			if (status == CHANGED_IN_DRAW) {
 				UpdateInset(bview, tmpinset);
@@ -1217,7 +1219,9 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 		   tmpfont = GetFont(bview->buffer(), row_ptr->par(), pos);
 		   tmpinset = row_ptr->par()->GetInset(pos);
 		   if (tmpinset) {
-//			   tmpinset->update(bview, tmpfont);
+#if 1 // this is needed for deep update on initialitation
+			   tmpinset->update(bview, tmpfont);
+#endif
 			   asc = tmpinset->ascent(bview, tmpfont);
 			   desc = tmpinset->descent(bview, tmpfont);
 			   maxwidth += tmpinset->width(bview, tmpfont);
@@ -2784,7 +2788,7 @@ void LyXText::Backspace(BufferView * bview)
 
 
 void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
-			    Row * row_ptr, int y, bool cleared)
+                            Row * row_ptr, int y, bool cleared)
 {
 	// returns a printed row
 	Painter & pain = bview->painter();

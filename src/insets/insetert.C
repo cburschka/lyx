@@ -60,11 +60,14 @@ string const InsetERT::EditMessage() const
 }
 
 
-void InsetERT::SetFont(BufferView *, LyXFont const &, bool)
+void InsetERT::SetFont(BufferView *, LyXFont const &, bool, bool selectall)
 {
-	WriteAlert(_("Impossible Operation!"),
-		   _("Not permitted to change font-types inside ERT-insets!"),
-		   _("Sorry."));
+	// if selectall is activated then the fontchange was an outside general
+	// fontchange and this messages is not needed
+	if (!selectall)
+		WriteAlert(_("Impossible Operation!"),
+		           _("Not permitted to change font-types inside ERT-insets!"),
+		           _("Sorry."));
 }
 
 

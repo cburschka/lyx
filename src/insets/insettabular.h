@@ -160,7 +160,8 @@ public:
 	///
 	int GetActCell() const { return actcell; }
 	///
-	void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
+	void SetFont(BufferView *, LyXFont const &, bool toggleall = false,
+	             bool selectall = false);
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
@@ -265,6 +266,8 @@ private:
 	bool cutSelection();
 	///
 	bool isRightToLeft(BufferView *);
+	///
+	void getSelection(int & scol, int & ecol, int & srow, int & erow) const;
 
 	//
 	// Private structures and variables

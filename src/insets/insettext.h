@@ -152,7 +152,8 @@ public:
 	///
 	UpdatableInset * GetFirstLockingInsetOfType(Inset::Code);
 	///
-	void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
+	void SetFont(BufferView *, LyXFont const &, bool toggleall = false,
+	             bool selectall = false);
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
@@ -189,6 +190,10 @@ public:
 	void scroll(BufferView *bv, int offset) const {
 		UpdatableInset::scroll(bv, offset);
 	}
+	///
+	void selectAll(BufferView *bv);
+	///
+	void clearSelection(BufferView *bv);
 
 	LyXParagraph * par;
 	///
@@ -297,7 +302,7 @@ private:
 	///
 	mutable int inset_y;
 	///
-	int interline_space;
+	mutable int old_max_width;
 	///
 	bool no_selection;
 	///

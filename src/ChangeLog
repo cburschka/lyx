@@ -1,3 +1,26 @@
+2001-05-28  Juergen Vigna  <jug@sad.it>
+
+	* text.C (SetHeightOfRow): added the update() call again as it is
+	needed to initialize inset dimensions!
+
+2001-05-16  Juergen Vigna  <jug@sad.it>
+
+	* text2.C (SetCharFont): Add new function with BufferView * and
+	bool toggleall parameters for setting insets internal fonts.
+	(SetFont): Freeze the undo as we may change fonts in Insets and
+	all this change should be inside only one Undo!
+
+	* bufferview_funcs.C (ToggleAndShow): fixed this functions for
+	setting font's in insets as for them we have the SetFont function!
+
+2001-05-15  Juergen Vigna  <jug@sad.it>
+
+	* text2.C (ClearSelection): to be sure we REALLY don't have any
+	selection anymore!
+
+	* tabular.C (TeXCellPreamble): fixed the left border problem for
+	multicolumn cells.
+
 2001-05-27  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* LaTeX.C (deplog): Make sure that the main .tex file is in the

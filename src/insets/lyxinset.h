@@ -336,7 +336,7 @@ public:
 			  int baseline, float & x, bool cleared) const;
 	///
 	virtual void SetFont(BufferView *, LyXFont const &,
-			     bool toggleall = false);
+                         bool toggleall = false, bool selectall = false);
 	///
 	virtual bool InsertInset(BufferView *, Inset *) { return false; }
 	///

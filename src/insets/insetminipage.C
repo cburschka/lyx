@@ -93,87 +93,84 @@ void InsetMinipage::Write(Buffer const * buf, ostream & os) const
 
 void InsetMinipage::Read(Buffer const * buf, LyXLex & lex)
 {
-    string token;
+	string token;
 
-    if (lex.IsOK()) {
-	lex.next();
-	token = lex.GetString();
-	if (token == "position") {
-	    lex.next();
-	    pos_ = static_cast<Position>(lex.GetInteger());
-	    token = string();
-	} else {
-		lyxerr << "InsetMinipage::Read: Missing 'position'-tag!"
-		       << endl;
+	if (lex.IsOK()) {
+		lex.next();
+		token = lex.GetString();
+		if (token == "position") {
+			lex.next();
+			pos_ = static_cast<Position>(lex.GetInteger());
+			token = string();
+		} else {
+			lyxerr << "InsetMinipage::Read: Missing 'position'-tag!"
+				   << endl;
+		}
 	}
-    }
-    if (lex.IsOK()) {
-	if (token.empty()) {
-	    lex.next();
-	    token = lex.GetString();
+	if (lex.IsOK()) {
+		if (token.empty()) {
+			lex.next();
+			token = lex.GetString();
+		}
+		if (token == "inner_position") {
+			lex.next();
+			inner_pos_ = static_cast<InnerPosition>(lex.GetInteger());
+			token = string();
+		} else {
+			lyxerr << "InsetMinipage::Read: Missing 'inner_position'-tag!"
+				   << endl;
+		}
 	}
-	if (token == "inner_position") {
-	    lex.next();
-	    inner_pos_ = static_cast<InnerPosition>(lex.GetInteger());
-	    token = string();
-	} else {
-		lyxerr << "InsetMinipage::Read: Missing 'inner_position'-tag!"
-		       << endl;
+	if (lex.IsOK()) {
+		if (token.empty()) {
+			lex.next();
+			token = lex.GetString();
+		}
+		if (token == "height") {
+			lex.next();
+			height_ = lex.GetString();
+			token = string();
+		} else {
+			lyxerr << "InsetMinipage::Read: Missing 'height'-tag!"
+				   << endl;
+		}
 	}
-    }
-    if (lex.IsOK()) {
-	if (token.empty()) {
-	    lex.next();
-	    token = lex.GetString();
+	if (lex.IsOK()) {
+		if (token.empty()) {
+			lex.next();
+			token = lex.GetString();
+		}
+		if (token == "width") {
+			lex.next();
+			width_ = lex.GetString();
+			token = string();
+		} else {
+			lyxerr << "InsetMinipage::Read: Missing 'width'-tag!"
+				   << endl;
+		}
 	}
-	if (token == "height") {
-	    lex.next();
-	    height_ = lex.GetString();
-	    token = string();
-	} else {
-		lyxerr << "InsetMinipage::Read: Missing 'height'-tag!"
-		       << endl;
-	}
-    }
-    if (lex.IsOK()) {
-	if (token.empty()) {
-	    lex.next();
-	    token = lex.GetString();
-	}
-	if (token == "width") {
-	    lex.next();
-	    width_ = lex.GetString();
-	    token = string();
-	} else {
-		lyxerr << "InsetMinipage::Read: Missing 'width'-tag!"
-		       << endl;
-	}
-    }
 #ifdef WITH_WARNINGS
 #warning Remove me before final 1.2.0 (Jug)
 #warning Can we please remove this as soon as possible? (Lgb)
 #endif
-    // this is only for compatibility to the intermediate format and should
-    // vanish till the final 1.2.0!
-    if (lex.IsOK()) {
-	if (token.empty()) {
-	    lex.next();
-	    token = lex.GetString();
+	// this is only for compatibility to the intermediate format and should
+	// vanish till the final 1.2.0!
+	if (lex.IsOK()) {
+		if (token.empty()) {
+			lex.next();
+			token = lex.GetString();
+		}
+		if (token == "widthp") {
+			lex.next();
+			// only do this if the width_-string was not already set!
+			if (width_.empty())
+				width_ = lex.GetString() + "%";
+			token = string();
+		}
 	}
-	if (token == "widthp") {
-	    lex.next();
-	    // only do this if the width_-string was not already set!
-	    if (width_.empty())
-		width_ = lex.GetString() + "%";
-	    token = string();
-	} else {
-		lyxerr << "InsetMinipage::Read: Missing 'widthp_'-tag!"
-		       << endl;
-	}
-    }
-    if (!token.empty())
-	lex.pushToken(token);
-    InsetCollapsable::Read(buf, lex);
+	if (!token.empty())
+		lex.pushToken(token);
+	InsetCollapsable::Read(buf, lex);
 }
 
 
@@ -330,28 +327,28 @@ void InsetMinipage::width(string const & ll)
 
 bool InsetMinipage::ShowInsetDialog(BufferView * bv) const
 {
-    if (!inset.ShowInsetDialog(bv))
+	if (!inset.ShowInsetDialog(bv))
 	bv->owner()->getDialogs()->showMinipage(const_cast<InsetMinipage *>(this));
-    return true;
+	return true;
 }
 
 
 void InsetMinipage::InsetButtonRelease(BufferView * bv, int x, int y,
 				       int button)
 {
-    if (button == 3) {
+	if (button == 3) {
 	ShowInsetDialog(bv);
 	return;
-    }
-    InsetCollapsable::InsetButtonRelease(bv, x, y, button);
+	}
+	InsetCollapsable::InsetButtonRelease(bv, x, y, button);
 }
 
 
 int InsetMinipage::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
-    const
+	const
 {
-    if (!width_.empty())
+	if (!width_.empty())
 	return VSpace(width_).inPixels(bv);
-    // this should not happen!
-    return InsetCollapsable::getMaxWidth(bv, inset);
+	// this should not happen!
+	return InsetCollapsable::getMaxWidth(bv, inset);
 }

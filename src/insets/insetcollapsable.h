@@ -109,7 +109,8 @@ public:
 	///
 	UpdatableInset * GetFirstLockingInsetOfType(Inset::Code);
 	///
-	void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
+	void SetFont(BufferView *, LyXFont const &, bool toggleall = false,
+                 bool selectall = false);
 	///
 	void setLabel(string const & l) { label = l; }
 	///

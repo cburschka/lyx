@@ -1,3 +1,21 @@
+2001-05-28  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (resizeLyXText): clear LyXText ONLY if we don't have
+	a endless-width inset (maxWidth < 0).
+	(Edit): change language only if not equal.
+
+	* insettabular.C (resetPos): call UpdateLocal only on REAL scroll!
+
+	* insettext.C (draw): fixed draw/clear of InsetText-Frame
+
+2001-05-16  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (selectAll): added
+	(clearSelection): added
+
+	* insettabular.C (SetFont): now we may set a font on a whole selection!
+	(getSelection): added helper function.
+
 2001-05-27  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetcite.C (Ascii): Add method.

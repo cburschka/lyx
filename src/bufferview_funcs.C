@@ -245,6 +245,10 @@ string const CurrentState(BufferView * bv)
 void ToggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 {
 	if (bv->available()) { 
+		if (bv->theLockingInset()) {
+			bv->theLockingInset()->SetFont(bv, font, toggleall);
+			return;
+		}
 		LyXText * text = bv->getLyXText();
 
 		bv->hideCursor();
@@ -254,7 +258,8 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 
 		if (font.language() != ignore_language ||
 		    font.latex() != LyXFont::IGNORE ||
-		    font.number() != LyXFont::IGNORE) {
+		    font.number() != LyXFont::IGNORE)
+		{
 			LyXCursor & cursor = text->cursor;
 			text->ComputeBidiTables(bv->buffer(), cursor.row());
 			if (cursor.boundary() != 

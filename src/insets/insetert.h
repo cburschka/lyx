@@ -38,7 +38,8 @@ public:
 	///
 	bool InsertInset(BufferView *, Inset *) { return false; }
 	///
-	void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
+	void SetFont(BufferView *, LyXFont const &, bool toggleall = false,
+                 bool selectall = false);
 	///
 	void Edit(BufferView *, int, int, unsigned int);
 };

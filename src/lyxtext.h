@@ -82,8 +82,10 @@ public:
 			LyXParagraph::size_type pos) const;
 	///
 	void SetCharFont(Buffer const *, LyXParagraph * par,
-			 LyXParagraph::size_type pos,
-			 LyXFont const & font);
+	                 LyXParagraph::size_type pos, LyXFont const & font);
+	void SetCharFont(BufferView *, LyXParagraph * par,
+	                 LyXParagraph::size_type pos,
+	                 LyXFont const & font, bool toggleall);
 	/// returns a pointer to the very first LyXParagraph
 	LyXParagraph * FirstParagraph() const;
   
@@ -218,7 +220,7 @@ public:
 	///
 	mutable LyXCursor sel_cursor;
 	///
-	LyXCursor sel_start_cursor;
+	mutable LyXCursor sel_start_cursor;
 	///
 	mutable LyXCursor sel_end_cursor;
 	/// needed for the toggling

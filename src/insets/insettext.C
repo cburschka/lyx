@@ -92,7 +92,7 @@ void InsetText::init(InsetText const * ins)
 	insetDescent = 0;
 	insetWidth = 0;
 	the_locking_inset = 0;
-	interline_space = 1;
+	old_max_width = 0;
 	no_selection = false;
 	need_update = INIT;
 	drawTextXOffset = 0;
@@ -259,6 +259,8 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		x += width(bv, f);
 		if (!cleared && (need_update & CLEAR_FRAME))
 			clearFrame(pain, cleared);
+		else if (cleared)
+			frame_is_visible = false;
 		need_update = NONE;
 		return;
 	}
@@ -270,10 +272,12 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	if (!owner())
 		x += static_cast<float>(scroll());
 #endif
+#if 0
 	// update insetWidth and insetHeight with dummy calls
 	(void)ascent(bv, f);
 	(void)descent(bv, f);
 	(void)width(bv, f);
+#endif
 
 	// if top_x differs we have a rule down and we don't have to clear anything
 	if (!cleared && (top_x == int(x)) &&
@@ -296,14 +300,25 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		cleared = true;
 		need_update = FULL;
 	}
+	if (cleared)
+		frame_is_visible = false;
+
 	if (!cleared && (need_update == NONE))
 		return;
 
 	if (top_x != int(x)) {
-		need_update |= INIT;
+		if ((getMaxWidth(bv, this) > 0) && (TEXT(bv)->width != old_max_width)){
+			resizeLyXText(bv);
+			need_update |= FULL;
+			old_max_width = TEXT(bv)->width;
+			bv->text->status = LyXText::CHANGED_IN_DRAW;
+		}
 		top_x = int(x);
-		bv->text->status = LyXText::CHANGED_IN_DRAW;
+#if 1
+		cleared = true;
+#else
 		return;
+#endif
 	}
 
 //	lyxerr << "InsetText::draw[" << this << "](" << need_update << ":" << int(x) << ":" << top_x << ")\n";
@@ -355,10 +370,10 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		y = 0;
 		while ((row != 0) && (yf < ph)) {
 			TEXT(bv)->GetVisibleRow(bv, y+y_offset, int(x), row,
-						y+first, cleared);
-		y += row->height();
-		yf += row->height();
-		row = row->next();
+			                        y+first, cleared);
+			y += row->height();
+			yf += row->height();
+			row = row->next();
 		}
 	} else if (!locked) {
 		if (need_update & CURSOR) {
@@ -525,8 +540,10 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
 	UpdateLocal(bv, CURSOR, false);
 
 	// If the inset is empty set the language of the current font to the
-	// language to the surronding text.
-	if (par->size() == 0 && !par->next()) {
+	// language to the surronding text (if different).
+	if (par->size() == 0 && !par->next() &&
+		bv->getParentLanguage(this) != TEXT(bv)->current_font.language())
+	{
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
 		SetFont(bv, font, false);
@@ -543,12 +560,16 @@ void InsetText::InsetUnlock(BufferView * bv)
 	HideInsetCursor(bv);
 	no_selection = false;
 	locked = false;
-	UpdateLocal(bv, CLEAR_FRAME|CURSOR, false);
-	if (owner())
+	int code = CURSOR|CLEAR_FRAME;
+	if (TEXT(bv)->selection) {
+		TEXT(bv)->ClearSelection(bv);
+		code = FULL;
+	} else if (owner())
 		bv->owner()->setLayout(owner()->getLyXText(bv)
-				       ->cursor.par()->GetLayout());
+		                       ->cursor.par()->GetLayout());
 	else
 		bv->owner()->setLayout(bv->text->cursor.par()->GetLayout());
+	UpdateLocal(bv, code, false);
 }
 
 
@@ -1370,16 +1391,24 @@ std::vector<string> const InsetText::getLabelList() const
 }
 
 
-void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
+void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall,
+                        bool selectall)
 {
 	if (TEXT(bv)->selection) {
 		bv->text->SetUndo(bv->buffer(), Undo::EDIT,
 				  bv->text->cursor.par()->previous(),
 				  bv->text->cursor.par()->next());
 	}
+	if (selectall)
+		selectAll(bv);
 	TEXT(bv)->SetFont(bv, font, toggleall);
+	if (selectall)
+		TEXT(bv)->ClearSelection(bv);
 	bv->fitCursor(TEXT(bv));
-	UpdateLocal(bv, CURSOR_PAR, true);
+	if (selectall || TEXT(bv)->selection)
+		UpdateLocal(bv, FULL, true);
+	else
+		UpdateLocal(bv, CURSOR_PAR, true);
 }
 
 
@@ -1612,7 +1641,9 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 
 void InsetText::resizeLyXText(BufferView * bv) const
 {
-	if (!par->next() && !par->size()) // resize not neccessary!
+	if (!par->next() && !par->size()) // no data, resize not neccessary!
+		return;
+	if (getMaxWidth(bv, this) < 0) // one endless line, no resize necessary
 		return;
 	if ((cache.find(bv) == cache.end()) || !cache[bv])
 		return;
@@ -1716,6 +1747,20 @@ bool InsetText::doClearArea() const
 {
 	return !locked || (need_update & (FULL|INIT));
 }
+
+void InsetText::selectAll(BufferView * bv)
+{
+	TEXT(bv)->CursorTop(bv);
+	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
+	TEXT(bv)->CursorBottom(bv);
+	TEXT(bv)->SetSelection(bv);
+}
+
+void InsetText::clearSelection(BufferView * bv)
+{
+	TEXT(bv)->ClearSelection(bv);
+}
+
 /* Emacs:
  * Local variables:
  * tab-width: 4

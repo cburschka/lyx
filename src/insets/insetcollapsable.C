@@ -442,10 +442,10 @@ UpdatableInset * InsetCollapsable::GetFirstLockingInsetOfType(Inset::Code c)
 }
 
 
-void InsetCollapsable::SetFont(BufferView * bv,
-			       LyXFont const & font, bool toggleall)
+void InsetCollapsable::SetFont(BufferView * bv, LyXFont const & font,
+                               bool toggleall, bool selectall)
 {
-	inset.SetFont(bv, font, toggleall);
+	inset.SetFont(bv, font, toggleall, selectall);
 }
 
 

@@ -223,10 +223,13 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 {
 	if (nodraw())
 		return;
-	if (bv->text->status == LyXText::CHANGED_IN_DRAW)
-		return;
-
-//	lyxerr << "InsetTabular::draw(" << need_update << ")\n";
+#if 0
+	if (need_update == INIT) {
+		if (calculate_dimensions_of_cells(bv, font, true))
+			bv->text->status = LyXText::CHANGED_IN_DRAW;
+		need_update = FULL;
+	}
+#endif
 
 	Painter & pain = bv->painter();
 	int i;
@@ -346,8 +349,10 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		float cx = dx;
 		//cx = dx = nx + tabular->GetBeginningOfTextInCell(cell);
 		tabular->GetCellInset(cell)->draw(bv,font,baseline, dx, false);
+#if 0
 		if (bv->text->status == LyXText::CHANGED_IN_DRAW)
 			return;
+#endif
 		// clear only if we didn't have a change
 		if (need_update == CELL) {
 			// clear before the inset
@@ -371,10 +376,15 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 	}
 	x -= ADD_TO_TABULAR_WIDTH;
 	x += width(bv, font);
-	if (bv->text->status == LyXText::CHANGED_IN_DRAW)
-		need_update = INIT;
-	else
+	if (bv->text->status == LyXText::CHANGED_IN_DRAW) {
+		int i=0;
+		for(Inset * inset=owner();inset;++i)
+			inset = inset->owner();
+		if (calculate_dimensions_of_cells(bv, font, false))
+			need_update = INIT;
+	} else {
 		need_update = NONE;
+	}
 }
 
 
@@ -772,6 +782,8 @@ InsetTabular::LocalDispatch(BufferView * bv,
 	case LFUN_SHIFT_TAB:
 	case LFUN_TAB:
 	{
+		if (GetFirstLockingInsetOfType(Inset::TABULAR_CODE))
+			break;
 		HideInsetCursor(bv);
 		if (the_locking_inset) {
 			UnlockInsetInInset(bv, the_locking_inset);
@@ -1276,16 +1288,17 @@ void InsetTabular::resetPos(BufferView * bv) const
 	} else if (the_locking_inset &&
 		 (tabular->GetWidthOfColumn(actcell) > bv->workWidth()-20)) {
 		int xx = cursor.x() - offset + bv->text->GetRealCursorX(bv);
-		if (xx > (bv->workWidth()-20))
+		if (xx > (bv->workWidth()-20)) {
 			scroll(bv, -(xx - bv->workWidth() + 60));
-		else if (xx < 20) {
+			UpdateLocal(bv, FULL, false);
+		} else if (xx < 20) {
 			if (xx < 0)
 				xx = -xx + 60;
 			else
 				xx = 60;
 			scroll(bv, xx);
+			UpdateLocal(bv, FULL, false);
 		}
-		UpdateLocal(bv, FULL, false);
 	} else if ((cursor.x() - offset) > 20 &&
 		   (cursor.x() - offset + tabular->GetWidthOfColumn(actcell))
 		   > (bv->workWidth() - 20)) {
@@ -1447,8 +1460,36 @@ bool InsetTabular::Delete()
 }
 
 
-void InsetTabular::SetFont(BufferView * bv, LyXFont const & font, bool tall)
+void InsetTabular::SetFont(BufferView * bv, LyXFont const & font, bool tall,
+                           bool selectall)
 {
+	if (selectall) {
+		sel_cell_start = 0;
+		sel_cell_end = tabular->GetNumberOfCells() - 1;
+	}
+	if (hasSelection()) {
+		bool frozen;
+		bv->text->SetUndo(bv->buffer(), Undo::EDIT,
+				  bv->text->cursor.par()->previous(),
+				  bv->text->cursor.par()->next());
+		frozen = bv->text->undo_frozen;
+		if (!frozen)
+			bv->text->FreezeUndo();
+		// apply the fontchange on the whole selection
+		int sel_row_start;
+		int sel_row_end;
+		int sel_col_start;
+		int sel_col_end;
+		getSelection(sel_row_start, sel_row_end, sel_col_start, sel_col_end);
+		for(int i=sel_row_start; i <= sel_row_end; ++i) {
+			for(int j=sel_col_start; j <= sel_col_end; ++j) {
+				tabular->GetCellInset(i, j)->SetFont(bv, font, tall, true);
+			}
+		}
+		if (!frozen)
+			bv->text->UnFreezeUndo();
+		UpdateLocal(bv, INIT, true);
+	}
 	if (the_locking_inset)
 		the_locking_inset->SetFont(bv, font, tall);
 }
@@ -1524,23 +1565,7 @@ void InsetTabular::TabularFeatures(BufferView * bv,
 		break;
 	}
 	if (hasSelection()) {
-		sel_col_start = tabular->column_of_cell(sel_cell_start);
-		sel_col_end = tabular->column_of_cell(sel_cell_end);
-		if (sel_col_start > sel_col_end) {
-			sel_col_end = sel_col_start;
-			sel_col_start = tabular->column_of_cell(sel_cell_end);
-		} else {
-			sel_col_end = tabular->right_column_of_cell(sel_cell_end);
-		}
-	
-		sel_row_start = tabular->row_of_cell(sel_cell_start);
-		sel_row_end = tabular->row_of_cell(sel_cell_end);
-		if (sel_row_start > sel_row_end) {
-			//int tmp = sel_row_start;
-			//sel_row_start = sel_row_end;
-			//sel_row_end = tmp;
-			swap(sel_row_start, sel_row_end);
-		}
+		getSelection(sel_row_start, sel_row_end, sel_col_start, sel_col_end);
 	} else {
 		sel_col_start = sel_col_end = tabular->column_of_cell(actcell);
 		sel_row_start = sel_row_end = tabular->row_of_cell(actcell);
@@ -1952,14 +1977,7 @@ LyXFunc::func_status InsetTabular::getStatus(string const & what) const
 	bool flag = true;
 
 	if (hasSelection()) {
-		sel_row_start = tabular->row_of_cell(sel_cell_start);
-		sel_row_end = tabular->row_of_cell(sel_cell_end);
-		if (sel_row_start > sel_row_end) {
-			//int tmp = sel_row_start;
-			//sel_row_start = sel_row_end;
-			//sel_row_end = tmp;
-			swap(sel_row_start, sel_row_end);
-		}
+		getSelection(sel_row_start, sel_row_end, dummy, dummy);
 	} else {
 		sel_row_start = sel_row_end = tabular->row_of_cell(actcell);
 	}
@@ -2309,6 +2327,22 @@ bool InsetTabular::doClearArea() const
 {
 	return !locked || (need_update & (FULL|INIT));
 }
+
+void InsetTabular::getSelection(int & srow, int & erow, int & scol, int & ecol) const
+{
+		srow = tabular->row_of_cell(sel_cell_start);
+		erow = tabular->row_of_cell(sel_cell_end);
+		if (srow > erow)
+			swap(srow, erow);
+
+		scol = tabular->column_of_cell(sel_cell_start);
+		ecol = tabular->column_of_cell(sel_cell_end);
+		if (scol > ecol)
+			swap(scol, ecol);
+		else
+			ecol = tabular->right_column_of_cell(sel_cell_end);
+}
+
 /* Emacs:
  * Local variables:
  * tab-width: 4

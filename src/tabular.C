@@ -1967,8 +1967,13 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 		if (!cellinfo_of_cell(cell)->align_special.empty()) {
 			os << cellinfo_of_cell(cell)->align_special << "}{";
 		} else {
-			if (LeftLine(cell))
+			if (LeftLine(cell) &&
+				(IsFirstCellInRow(cell) || 
+				 (!IsMultiColumn(cell-1) && !LeftLine(cell, true) &&
+				  !RightLine(cell-1, true))))
+			{
 				os << '|';
+			}
 			if (!GetPWidth(cell).empty()) {
 				switch (GetVAlignment(cell)) {
 				case LYX_VALIGN_TOP:
@@ -2517,7 +2522,7 @@ InsetText * LyXTabular::GetCellInset(int cell) const
 
 InsetText * LyXTabular::GetCellInset(int row, int column) const
 {
-	return GetCellInset(GetCellNumber(row, column));
+	return & cell_info[row][column].inset;
 }
 
 

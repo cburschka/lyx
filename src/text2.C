@@ -138,6 +138,7 @@ void LyXText::init(BufferView * bview)
 	SetCursorIntern(bview, firstrow->par(), 0);
 	sel_cursor = cursor;
 #if 0
+	printf("TP = %x\n",inset_owner->owner());
 	// Dump all rowinformation:
 	Row * tmprow = firstrow;
 	lyxerr << "Width = " << width << endl;
@@ -247,15 +248,64 @@ LyXFont const LyXText::GetFont(Buffer const * buf, LyXParagraph * par,
 }
 
 
+void LyXText::SetCharFont(BufferView * bv, LyXParagraph * par,
+                          LyXParagraph::size_type pos, LyXFont const & fnt,
+                          bool toggleall)
+{
+	Buffer const * buf = bv->buffer();
+	LyXFont font = GetFont(buf, par, pos);
+	font.update(fnt, buf->params.language, toggleall);
+	// Let the insets convert their font
+	if (par->GetChar(pos) == LyXParagraph::META_INSET) {
+		Inset * inset = par->GetInset(pos);
+		if (inset) {
+			if (inset->Editable()==Inset::HIGHLY_EDITABLE) {
+				UpdatableInset * uinset = static_cast<UpdatableInset *>(inset);
+				uinset->SetFont(bv, fnt, toggleall, true);
+			}
+			font = inset->ConvertFont(font);
+		}
+	}
+
+	LyXLayout const & layout =
+		textclasslist.Style(buf->params.textclass,
+				    par->GetLayout());
+
+	// Get concrete layout font to reduce against
+	LyXFont layoutfont;
+
+	if (pos < BeginningOfMainBody(buf, par))
+		layoutfont = layout.labelfont;
+	else
+		layoutfont = layout.font;
+
+	// Realize against environment font information
+	if (par->GetDepth()){
+		LyXParagraph * tp = par;
+		while (!layoutfont.resolved() && tp && tp->GetDepth()) {
+			tp = tp->DepthHook(tp->GetDepth()-1);
+			if (tp)
+				layoutfont.realize(textclasslist.
+						Style(buf->params.textclass,
+						      tp->GetLayout()).font);
+		}
+	}
+
+	layoutfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont());
+
+	// Now, reduce font against full layout font
+	font.reduce(layoutfont);
+
+	par->SetFont(pos, font);
+}
+
 void LyXText::SetCharFont(Buffer const * buf, LyXParagraph * par,
-			  LyXParagraph::size_type pos,
-			  LyXFont const & fnt)
+                          LyXParagraph::size_type pos, LyXFont const & fnt)
 {
 	LyXFont font(fnt);
 	// Let the insets convert their font
 	if (par->GetChar(pos) == LyXParagraph::META_INSET) {
-		if (par->GetInset(pos))
-			font = par->GetInset(pos)->ConvertFont(font);
+		font = par->GetInset(pos)->ConvertFont(font);
 	}
 
 	LyXLayout const & layout =
@@ -676,25 +726,21 @@ void LyXText::SetFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	SetUndo(bview->buffer(), Undo::EDIT,
 		sel_start_cursor.par()->previous(),
 		sel_end_cursor.par()->next()); 
+	FreezeUndo();
 	cursor = sel_start_cursor;
 	while (cursor.par() != sel_end_cursor.par() ||
 	       (cursor.pos() < sel_end_cursor.pos())) {
 		if (cursor.pos() < cursor.par()->size()) {
 			// an open footnote should behave
 			// like a closed one
-			LyXFont newfont = GetFont(bview->buffer(), 
-						  cursor.par(), cursor.pos());
-			newfont.update(font,
-				       bview->buffer()->params.language,
-				       toggleall);
-			SetCharFont(bview->buffer(),
-				    cursor.par(), cursor.pos(), newfont);
+			SetCharFont(bview, cursor.par(), cursor.pos(), font, toggleall);
 			cursor.pos(cursor.pos() + 1);
 		} else {
 			cursor.pos(0);
 			cursor.par(cursor.par()->next());
 		}
 	}
+	UnFreezeUndo();
    
 	RedoParagraphs(bview, sel_start_cursor, sel_end_cursor.par()->next());
    
@@ -971,6 +1017,7 @@ void LyXText::ClearSelection(BufferView * /*bview*/) const
 {
 	selection = false;
 	mark_set = false;
+	sel_end_cursor = sel_start_cursor = cursor;
 }
 
 
@@ -1012,7 +1059,7 @@ void LyXText::CursorBottom(BufferView * bview) const
    
    
 void LyXText::ToggleFree(BufferView * bview,
-			 LyXFont const & font, bool toggleall)
+                         LyXFont const & font, bool toggleall)
 {
 	// If the mask is completely neutral, tell user
 	if (font == LyXFont(LyXFont::ALL_IGNORE)) {
