@@ -24,6 +24,7 @@
 
 #include "bufferlist.h"
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "lyxserver.h"
 #include "kbmap.h"
 #include "lyxfunc.h"
@@ -142,14 +143,16 @@ LyX::LyX(int & argc, char * argv[])
 		vector<string>::iterator it = files.begin();
 		vector<string>::iterator end = files.end();
 		for (; it != end; ++it) {
-			last_loaded = bufferlist.loadLyXFile(*it);
+			last_loaded = bufferlist.newBuffer(*it, false);
+			loadLyXFile(last_loaded, *it);
 		}
 
 		files.clear();
 
 		// no buffer loaded, create one
+		string const tmpfile = "tmpfile";
 		if (!last_loaded)
-			last_loaded = bufferlist.newFile("tmpfile", string());
+			last_loaded = newFile(tmpfile, string());
 
 		bool success = false;
 

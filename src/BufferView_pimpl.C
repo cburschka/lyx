@@ -11,6 +11,7 @@
 #include "BufferView_pimpl.h"
 #include "bufferlist.h"
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "bufferview_funcs.h"
 #include "lfuns.h"
 #include "debug.h"
@@ -28,6 +29,7 @@
 #include "lyxtext.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
+#include "lastfiles.h"
 #include "paragraph.h"
 #include "ParagraphParameters.h"
 #include "TextCache.h"
@@ -127,6 +129,62 @@ BufferView::Pimpl::Pimpl(BufferView * bv, LyXView * owner,
 	saved_positions.resize(saved_positions_num);
 }
 
+
+
+bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
+{
+	// get absolute path of file and add ".lyx" to the filename if
+	// necessary
+	string s = FileSearch(string(), filename, "lyx");
+	if (s.empty()) {
+		s = filename;
+	}
+
+	// file already open?
+	if (bufferlist.exists(s)) {
+		string const file = MakeDisplayPath(s, 20);
+		string text = bformat(_("The document %1$s is already "
+					"loaded.\n\nDo you want to revert "
+					"to the saved version?"), file);
+		int const ret = Alert::prompt(_("Revert to saved document?"),
+			text, 0, 1,  _("&Revert"), _("&Switch to document"));
+
+		if (ret != 0) {
+			buffer(bufferlist.getBuffer(s));
+			return true;
+		} else {
+			// FIXME: should be LFUN_REVERT
+			if (!bufferlist.close(bufferlist.getBuffer(s), false))
+				return false;
+			// Fall through to new load. (Asger)
+		}
+	}
+	Buffer * b = bufferlist.newBuffer(s);
+
+	//this is the point to attach to the error signal in the buffer
+
+	if (!::loadLyXFile(b, s)) {
+		bufferlist.release(b);
+		string text = bformat(_("The document %1$s does "
+					"not yet exist.\n\n"
+					"Do you want to create "
+					"a new document?"), s);
+		int const ret = Alert::prompt(_("Create new document?"),
+			 text, 0, 1, _("&Create"), _("Cancel"));
+
+		if (ret == 0) {
+			bufferlist.close(buffer_, false);
+			buffer(newFile(s, string(), true));
+		}
+	}
+
+	buffer(b);
+
+	if (tolastfiles)
+		lastfiles->newFile(b->fileName());
+
+	return true;
+}
 
 WorkArea & BufferView::Pimpl::workarea() const
 {
@@ -286,8 +344,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		mark_set = bv_->text->selection.mark();
 		the_locking_inset = bv_->theLockingInset();
 		buffer_->resizeInsets(bv_);
-		// I don't think the delete and new are necessary here we just could
-		// call only init! (Jug 20020419)
+		// I don't think the delete and new are necessary here we 
+		// just could call only init! (Jug 20020419)
 		delete bv_->text;
 		bv_->text = new LyXText(bv_);
 		bv_->text->init(bv_);
@@ -641,10 +699,15 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	beforeChange(bv_->text);
 
 	if (fname != buffer_->fileName()) {
-		Buffer * b = bufferlist.exists(fname) ?
-			bufferlist.getBuffer(fname) :
-			bufferlist.loadLyXFile(fname); // don't ask, just load it
-		if (b != 0) buffer(b);
+		Buffer * b;
+		if (bufferlist.exists(fname))
+			b = bufferlist.getBuffer(fname);
+		else {
+			b = bufferlist.newBuffer(fname);
+			::loadLyXFile(b, fname); // don't ask, just load it
+		}
+		if (b != 0) 
+			buffer(b);
 	}
 
 	ParIterator par = buffer_->getParFromID(saved_positions[i].par_id);

@@ -18,6 +18,7 @@
 #include "funcrequest.h"
 
 #include "bufferlist.h"
+#include "buffer_funcs.h"
 #include "support/filetools.h"
 #include "frontends/Alert.h"
 #include "gettext.h"
@@ -65,11 +66,9 @@ bool Importer::Import(LyXView * lv, string const & filename,
 
 
 	if (loader_format == "lyx") {
-		Buffer * buffer = bufferlist.loadLyXFile(lyxfile);
-		if (buffer)
-			lv->view()->buffer(buffer);
+		lv->view()->loadLyXFile(lyxfile);
 	} else {
-		lv->view()->buffer(bufferlist.newFile(lyxfile, string(), true));
+		lv->view()->buffer(newFile(lyxfile, string(), true));
 		bool as_paragraphs = loader_format == "textparagraph";
 		string filename2 = (loader_format == format) ? filename
 			: ChangeExtension(filename,

@@ -81,6 +81,8 @@ public:
 
 	/// reload the contained buffer
 	void reload();
+	/// load a buffer into the view
+	bool loadLyXFile(string const & name, bool tolastfiles = true);
 
 	/// fit the user cursor within the visible view
 	bool fitCursor();

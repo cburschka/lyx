@@ -54,6 +54,9 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	 * Repaint pixmap. Used for when we've made a visible
 	 * change but don't need the full update() logic
 	 */
+	///
+	bool loadLyXFile(string const &, bool);
+	///
 	void repaint();
 	///
 	void workAreaResize();

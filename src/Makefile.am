@@ -105,6 +105,8 @@ lyx_SOURCES = \
 	broken_headers.h \
 	buffer.C \
 	buffer.h \
+	buffer_funcs.C \
+	buffer_funcs.h \
 	bufferlist.C \
 	bufferlist.h \
 	bufferparams.C \

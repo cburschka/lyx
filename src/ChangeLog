@@ -1,3 +1,16 @@
+
+2003-06-19  Alfredo Braunstein  <abraunst@libero.it>
+
+	* bufferlist.[Ch] (loadLyXFile, readFile, newFile): removed the 
+	ability to create a buffer and to return an existing one from 
+	the list. Moved these functions to...
+	* buffer_funcs.[Ch]: added
+	* BufferView.[Ch] (loadLyXFile): added
+	* BufferView_pimpl.[Ch] (loadLyXFile): Added. Does the guessing 
+	job removed from bufferlist::loadLyXFile.
+	* buffer.C (setReadOnly): make it work without view 
+	(i.e added an if (users))
+	
 2003-06-19  Angus Leeming  <leeming@lyx.org>
 
 	* lfuns.h:

@@ -104,11 +104,17 @@ void BufferView::buffer(Buffer * b)
 }
 
 
+bool BufferView::loadLyXFile(string const & fn, bool tl)
+{
+	return pimpl_->loadLyXFile(fn, tl);
+}
+
+
 void BufferView::reload()
 {
 	string const fn = buffer()->fileName();
 	if (bufferlist.close(buffer(), false))
-		buffer(bufferlist.loadLyXFile(fn));
+		loadLyXFile(fn);
 }
 
 

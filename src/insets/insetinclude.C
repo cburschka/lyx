@@ -12,6 +12,7 @@
 
 #include "insetinclude.h"
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "bufferlist.h"
 #include "BufferView.h"
 #include "debug.h"
@@ -293,8 +294,8 @@ bool InsetInclude::loadIfNeeded() const
 	FileInfo finfo(getFileName());
 	if (!finfo.isOK())
 		return false;
-
-	return bufferlist.loadLyXFile(getFileName(), false) != 0;
+	return loadLyXFile(bufferlist.newBuffer(getFileName()),
+			   getFileName());
 }
 
 

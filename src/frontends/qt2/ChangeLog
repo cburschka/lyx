@@ -1,3 +1,9 @@
+
+2003-06-19  Alfredo Braunstein  <abraunst@libero.it>
+
+	* lyx_gui.C (start): call ::loadLyXFile instead 
+	of BufferList::loadLyXFile
+	
 2003-06-19  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.C:

@@ -16,6 +16,7 @@
 #include "lyxrow.h"
 #include "bufferlist.h"
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "BufferView.h"
 #include "lyxserver.h"
 #include "intl.h"
@@ -1195,7 +1196,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		}
 		owner->message(bformat(_("Opening help file %1$s..."),
 			MakeDisplayPath(fname)));
-		view()->buffer(bufferlist.loadLyXFile(fname, false));
+		view()->loadLyXFile(fname, false);
 		break;
 	}
 
@@ -1307,7 +1308,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		if (bufferlist.exists(s)) {
 			view()->buffer(bufferlist.getBuffer(s));
 		} else {
-			view()->buffer(bufferlist.loadLyXFile(s));
+			view()->loadLyXFile(s);
 		}
 
 		view()->setCursorFromRow(row);
@@ -1455,7 +1456,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		if (bufferlist.exists(filename))
 			view()->buffer(bufferlist.getBuffer(filename));
 		else
-			view()->buffer(bufferlist.loadLyXFile(filename));
+			view()->loadLyXFile(filename);
 	}
 	break;
 
@@ -1714,7 +1715,7 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 		templname = fname;
 	}
 
-	view()->buffer(bufferlist.newFile(filename, templname, !name.empty()));
+	view()->buffer(newFile(filename, templname, !name.empty()));
 }
 
 
@@ -1769,17 +1770,15 @@ void LyXFunc::open(string const & fname)
 	FileInfo const f(filename, true);
 	if (!f.exist()) {
 		// the user specifically chose this name. Believe them.
-		Buffer * buffer =  bufferlist.newFile(filename, "", true);
+		Buffer * buffer =  newFile(filename, "", true);
 		view()->buffer(buffer);
 		return;
 	}
 
 	owner->message(bformat(_("Opening document %1$s..."), disp_fn));
 
-	Buffer * openbuf = bufferlist.loadLyXFile(filename);
 	string str2;
-	if (openbuf) {
-		view()->buffer(openbuf);
+	if (view()->loadLyXFile(filename)) {
 		str2 = bformat(_("Document %1$s opened."), disp_fn);
 	} else {
 		str2 = bformat(_("Could not open document %1$s"), disp_fn);

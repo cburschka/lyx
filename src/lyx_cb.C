@@ -13,6 +13,7 @@
 #include "lyx_cb.h"
 #include "lyx_main.h"
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "bufferlist.h"
 #include "bufferview_funcs.h"
 #include "debug.h"
@@ -326,7 +327,7 @@ Buffer * NewFile(string const & filename)
 			    << "\nTemplate is " << tmpname << endl;
 
 	// find a free buffer
-	Buffer * tmpbuf = bufferlist.newFile(name, tmpname);
+	Buffer * tmpbuf = newFile(name, tmpname);
 	if (tmpbuf)
 		lastfiles->newFile(tmpbuf->fileName());
 	return tmpbuf;

@@ -28,6 +28,7 @@
 
 // FIXME: move this stuff out again
 #include "bufferlist.h"
+#include "buffer_funcs.h"
 #include "lyxfunc.h"
 #include "lyxserver.h"
 #include "BufferView.h"
@@ -153,10 +154,9 @@ void start(string const & batch, vector<string> const & files)
 	vector<string>::const_iterator cit = files.begin();
 	vector<string>::const_iterator end = files.end();
 	for (; cit != end; ++cit) {
-		Buffer * b = bufferlist.loadLyXFile(*cit);
-		if (b) {
+		Buffer * b = bufferlist.newBuffer(*cit);
+		if (loadLyXFile(b, *cit))
 			last = b;
-		}
 	}
 
 	// switch to the last buffer successfully loaded

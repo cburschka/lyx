@@ -29,17 +29,6 @@ class BufferList : boost::noncopyable {
 public:
 	BufferList();
 
-	/**
-	   Loads a LyX file or...
-
-	   \param filename The filename to read from.
-	   \param tolastfiles Wether the file should be put in the
-	   last opened files list or not.
-	   \return The newly loaded LyX file.
-	*/
-	Buffer * loadLyXFile(string const & filename,
-			     bool tolastfiles = true);
-
 	/// write all buffers, asking the user, returns false if cancelled
 	bool quitWriteAll();
 
@@ -52,11 +41,6 @@ public:
 	/// Close all open buffers.
 	void closeAll();
 
-	/// read the given file
-	Buffer * readFile(string const &, bool ro);
-
-	/// Make a new file (buffer) using a template
-	Buffer * newFile(string const &, string, bool isNamed = false);
 	/// returns a vector with all the buffers filenames
 	std::vector<string> const getFileNames() const;
 
