@@ -25,7 +25,7 @@
 #include "support/filetools.h" // OnlyPath, OnlyFilename
 #include "support/lstrings.h"
 #include "gettext.h" // _()
-#include "lyx_gui_misc.h" // WriteAlert
+#include "frontends/Alert.h"
 
 using std::pair;
 using std::vector;
@@ -99,7 +99,7 @@ string const browseFile(LyXView * lv, string const & filename,
 		if (result.second.find_first_of("#~$% ") == string::npos)
 			break; 
  
-		WriteAlert(_("Filename can't contain any "
+		Alert::alert(_("Filename can't contain any "
 			"of these characters:"),
 			_("space, '#', '~', '$' or '%'."));
 	}

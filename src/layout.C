@@ -20,7 +20,7 @@
 #include "layout.h"
 #include "lyxlex.h"
 #include "support/filetools.h"
-#include "lyx_gui_misc.h"
+#include "frontends/Alert.h"
 #include "debug.h"
 #include "gettext.h"
 #include "support/LAssert.h"
@@ -1366,7 +1366,7 @@ bool LyXTextClassList::Read ()
 			"textclass file  `" << MakeDisplayPath(real_file, 1000)
 		       << "'. Exiting." << endl;
 
-		WriteAlert(_("LyX wasn't able to find its layout descriptions!"),
+		Alert::alert(_("LyX wasn't able to find its layout descriptions!"),
 			   _("Check that the file \"textclass.lst\""),
 			   _("is installed correctly. Sorry, has to exit :-("));
 		return false;
@@ -1430,7 +1430,7 @@ bool LyXTextClassList::Read ()
 	if (classlist.empty()) {
 		lyxerr << "LyXTextClassList::Read: no textclasses found!"
 		       << endl;
-		WriteAlert(_("LyX wasn't able to find any layout description!"),
+		Alert::alert(_("LyX wasn't able to find any layout description!"),
 			   _("Check the contents of the file \"textclass.lst\""),
 			   _("Sorry, has to exit :-("));
 		return false;

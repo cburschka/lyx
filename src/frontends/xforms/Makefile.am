@@ -13,6 +13,7 @@ LYXDATADIRS = forms
 ETAGS_ARGS = --lang=c++
 # Alphabetical order please.  It makes it easier to figure out what's missing. 
 libxforms_la_SOURCES = \
+	Alert_pimpl.C \
 	bmtable.c \
 	bmtable.h \
 	Color.C \

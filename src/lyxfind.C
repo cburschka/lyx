@@ -7,7 +7,7 @@
 #include "lyxtext.h"
 #include "lyxfind.h"
 #include "LyXView.h"
-#include "lyx_gui_misc.h"
+#include "frontends/Alert.h"
 #include "support/textutils.h"
 #include "support/lstrings.h"
 #include "BufferView.h"
@@ -53,7 +53,7 @@ int LyXReplace(BufferView * bv,
 	if (searchstr.length() == 0
 		|| (searchstr.length() == 1 && searchstr[0] == ' '))
 	{
-		WriteAlert(_("Sorry!"), _("You cannot replace a single space, "
+		Alert::alert(_("Sorry!"), _("You cannot replace a single space, "
 		                          "nor an empty character."));
 		return 0;
 	}
@@ -201,12 +201,11 @@ bool IsStringInText(Paragraph * par, Paragraph::size_type pos,
 	}
 	if (size == string::size_type(i)) {
 		// if necessary, check whether string matches word
-		if (!mw || 
-		    (mw && ((pos <= 0 || !IsLetterCharOrDigit(par->getChar(pos - 1)))
-		             && (pos + Paragraph::size_type(size) >= par->size()
-		                 || !IsLetterCharOrDigit(par->getChar(pos + size))))
-		     ))
-		{
+		if (!mw)
+			return true;
+		if ((pos <= 0 || !IsLetterCharOrDigit(par->getChar(pos - 1)))
+			&& (pos + Paragraph::size_type(size) >= par->size()
+			|| !IsLetterCharOrDigit(par->getChar(pos + size)))) {
 			return true;
 		}
 	}

@@ -19,8 +19,6 @@
 #endif
 
 #include FORMS_H_LOCATION
-#include "LString.h"
-#include <utility>  /* needed for pair<> definition */
 
 /// Prevents LyX from being killed when the close box is pressed in a popup.
 extern "C"
@@ -35,43 +33,5 @@ void CloseAllBufferRelatedDialogs();
 
 /// Ensures info in visible popups are always correct.
 void updateAllVisibleBufferRelatedDialogs(bool switched = false);
-
-/* These shortcut extractors should be shifted to frontends/xforms/ eventually */
-
-/// Extract shortcut from <ident>|<shortcut> string
-char const * flyx_shortcut_extract(char const * sc);
-/// Shortcut for flyx_shortcut_extract
-#define scex flyx_shortcut_extract
-
-/// Extract shortcut from <ident>|<shortcut> string
-char const * flyx_ident_extract(char const * sc);
-/// Shortcut for flyx_ident_extract
-#define idex flyx_ident_extract
-
-/// Show message
-void WriteAlert(string const & s1, string const & s2 = string(), 
-		string const & s3 = string());
-
-/// Alarms user of something related to files
-void WriteFSAlert(string const & s1, string const & s2 = string());
-
-/// Asks "Yes" or "No". Returns true for yes, false for no
-bool AskQuestion(string const & s1, string const & s2 = string(),
-		 string const & s3 = string(), bool default_value = true);
-
-/// Asks "Yes", "No" or "Cancel". Returns 1 for yes, 2 for no, 3 for cancel
-int AskConfirmation(string const & s1, string const & s2 = string(), 
-		    string const & s3 = string(), int default_value = 1);
-
-/// returns a bool: false=cancelled, true=okay. string contains returned text
-std::pair<bool, string> const
-askForText(string const & msg,
-	   string const & dflt = string());
-
-/// Informs the user that changes in the coming form will be ignored
-void WarnReadonly(string const & file);
-
-/// Get the dpi setting of the current screen
-float getScreenDPI();
 
 #endif

@@ -2,6 +2,7 @@
 #include <config.h>
 #include "lyx_gui_misc.h"
 #include "gettext.h"
+#include "frontends/xforms/xforms_helpers.h" 
 
 /* Form definition file generated with fdesign. */
 

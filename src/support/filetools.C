@@ -28,6 +28,7 @@
 #endif
 
 #include <cstdlib>
+#include <cstdio> 
 #include <fcntl.h>
 #include <cerrno>
 #include "debug.h"
@@ -35,7 +36,7 @@
 
 #include "filetools.h"
 #include "LSubstring.h"
-#include "lyx_gui_misc.h"
+#include "frontends/Alert.h"
 #include "FileInfo.h"
 #include "support/path.h"        // I know it's OS/2 specific (SMiyata)
 #include "gettext.h"
@@ -397,7 +398,7 @@ int DeleteAllFilesInDir (string const & path)
 	// directory_iterator dit(path);
 	// directory_iterator dend;
 	// if (dit == dend) {
-	//         WriteFSAlert(_("Error! Cannot open directory:"), path);
+	//         Alert::err_alert(_("Error! Cannot open directory:"), path);
 	//         return -1;
 	// }
 	// for (; dit != dend; ++dit) {
@@ -406,13 +407,13 @@ int DeleteAllFilesInDir (string const & path)
 	//                 continue;
 	//         string unlinkpath(AddName(path, filename));
 	//         if (lyx::unlink(unlinkpath))
-	//                 WriteFSAlert(_("Error! Could not remove file:"),
+	//                 Alert::err_alert(_("Error! Could not remove file:"),
 	//                              unlinkpath);
 	// }
 	// return 0;
 	DIR * dir = ::opendir(path.c_str());
 	if (!dir) {
-		WriteFSAlert (_("Error! Cannot open directory:"), path);
+		Alert::err_alert (_("Error! Cannot open directory:"), path);
 		return -1;
 	}
 	struct dirent * de;
@@ -431,8 +432,8 @@ int DeleteAllFilesInDir (string const & path)
 			deleted = (DeleteAllFilesInDir(unlinkpath) == 0);
 		deleted &= (lyx::unlink(unlinkpath) == 0);
  		if (!deleted) {
-			WriteFSAlert (_("Error! Could not remove file:"), 
-				      unlinkpath);
+			Alert::err_alert(_("Error! Could not remove file:"), 
+				unlinkpath);
 			return_value = -1;
 		}
         }
@@ -455,7 +456,7 @@ string const CreateTmpDir(string const & tempdir, string const & mask)
 	lyx::unlink(tmpfl.c_str());
 	
 	if (tmpfl.empty() || lyx::mkdir(tmpfl, 0700)) {
-		WriteFSAlert(_("Error! Couldn't create temporary directory:"),
+		Alert::err_alert(_("Error! Couldn't create temporary directory:"),
 			     tempdir);
 		return string();
 	}
@@ -472,7 +473,7 @@ int DestroyTmpDir(string const & tmpdir, bool Allfiles)
 		return -1;
 	}
 	if (lyx::rmdir(tmpdir)) { 
-		WriteFSAlert(_("Error! Couldn't delete temporary directory:"), 
+		Alert::err_alert(_("Error! Couldn't delete temporary directory:"), 
 			     tmpdir);
 		return -1;
 	}
@@ -491,7 +492,7 @@ string const CreateBufferTmpDir(string const & pathfor)
 	// of EMX mkstemp().
 	string const tmpfl = tmpdir + "/lyx_tmpbuf" + tostr(count++);
 	if (lyx::mkdir(tmpfl, 0777)) {
-		WriteFSAlert(_("Error! Couldn't create temporary directory:"),
+		Alert::err_alert(_("Error! Couldn't create temporary directory:"),
 			     tmpdir);
 		return string();
 	}
@@ -536,13 +537,13 @@ bool createDirectory(string const & path, int permission)
 	string temp(strip(os::slashify_path(path), '/'));
 
 	if (temp.empty()) {
-		WriteAlert(_("Internal error!"),
+		Alert::alert(_("Internal error!"),
 			   _("Call to createDirectory with invalid name"));
 		return false;
 	}
 
 	if (lyx::mkdir(temp, permission)) {
-		WriteFSAlert (_("Error! Couldn't create directory:"), temp);
+		Alert::err_alert (_("Error! Couldn't create directory:"), temp);
 		return false;
 	}
 	return true;
@@ -1103,7 +1104,7 @@ void removeAutosaveFile(string const & filename)
 	FileInfo const fileinfo(a);
 	if (fileinfo.exist()) {
 		if (lyx::unlink(a) != 0) {
-			WriteFSAlert(_("Could not delete auto-save file!"), a);
+			Alert::err_alert(_("Could not delete auto-save file!"), a);
 		}
 	}
 }

@@ -119,7 +119,7 @@ void fl_print_range_filter(FL_OBJECT * ob,
 		piece = strip(piece) ;
 		piece = frontStrip(piece) ;
 		if (!stringOnlyContains (piece, "0123456789-")) {
-			WriteAlert(_("ERROR!  Unable to print!"),
+			Alert::alert(_("ERROR!  Unable to print!"),
 				   _("Check 'range of pages'!"));
 			return;
 		}

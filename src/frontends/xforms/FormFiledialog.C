@@ -21,7 +21,7 @@ using std::map;
 using std::max;
 using std::sort;
 
-#include "lyx_gui_misc.h" // for WriteFSAlert
+#include "frontends/Alert.h"
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
@@ -223,7 +223,7 @@ void FileDialog::Private::Reread()
 	// Opens directory
 	DIR * pDirectory = ::opendir(pszDirectory.c_str());
 	if (!pDirectory) {
-		WriteFSAlert(_("Warning! Couldn't open directory."),
+		Alert::err_alert(_("Warning! Couldn't open directory."),
 			     pszDirectory);
 		pszDirectory = lyx::getcwd();
 		pDirectory = ::opendir(pszDirectory.c_str());
@@ -389,7 +389,7 @@ void FileDialog::Private::SetDirectory(string const & Path)
 	// must check the directory exists
 	DIR * pDirectory = ::opendir(tmp.c_str());
 	if (!pDirectory) {
-		WriteFSAlert(_("Warning! Couldn't open directory."), tmp);
+		Alert::err_alert(_("Warning! Couldn't open directory."), tmp);
 	} else {
 		::closedir(pDirectory);
 		pszDirectory = tmp;

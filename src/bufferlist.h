@@ -142,6 +142,9 @@ public:
 	Buffer * getBuffer(unsigned int);
 
 private:
+	/// ask to save a buffer on quit
+	bool qwriteOne(Buffer * buf, string const & fname, string & unsaved_list); 
+
 	///
 	BufferStorage bstore;
 	

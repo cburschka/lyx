@@ -24,6 +24,7 @@
 #include "LyXView.h"
 #include "lyxtext.h"
 #include "frontends/Dialogs.h"
+#include "frontends/Alert.h"
 #include "debug.h"
 
 using std::ostream;
@@ -232,7 +233,7 @@ void InsetERT::setFont(BufferView *, LyXFont const &, bool, bool selectall)
 	// if selectall is activated then the fontchange was an outside general
 	// fontchange and this messages is not needed
 	if (!selectall)
-		WriteAlert(_("Impossible Operation!"),
+		Alert::alert(_("Impossible Operation!"),
 		           _("Not permitted to change font-types inside ERT-insets!"),
 		           _("Sorry."));
 }

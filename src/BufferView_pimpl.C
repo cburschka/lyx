@@ -28,6 +28,7 @@
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "frontends/Dialogs.h"
+#include "frontends/Alert.h"
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
 /// added for Dispatch functions
@@ -1814,7 +1815,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (!label.empty()) {
 			//bv_->savePosition(0);
 			if (!bv_->gotoLabel(label))
-				WriteAlert(_("Error"), 
+				Alert::alert(_("Error"), 
 					   _("Couldn't find this label"), 
 					   _("in current document."));
 		}

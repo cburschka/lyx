@@ -22,6 +22,7 @@
 #include <algorithm>
 #include <functional>
 
+#include "frontends/Alert.h"
 #include "bufferlist.h"
 #include "lyx_main.h"
 #include "support/FileInfo.h"
@@ -97,53 +98,58 @@ bool BufferList::empty() const
 }
 
 
+bool BufferList::qwriteOne(Buffer * buf, string const & fname, string & unsaved_list)
+{
+	bool reask = true;
+	while (reask) {
+		switch (Alert::askConfirmation(_("Changes in document:"),
+				       fname,
+				       _("Save document?"))) {
+		case 1: // Yes
+			// FIXME: WriteAs can be asynch !
+			if (buf->isUnnamed())
+				reask = !WriteAs(current_view, buf);
+			else {
+				reask = !MenuWrite(current_view, buf);
+			}
+			break;
+		case 2: // No
+			// if we crash after this we could
+			// have no autosave file but I guess
+			// this is really inprobable (Jug)
+			if (buf->isUnnamed()) {
+				removeAutosaveFile(buf->fileName());
+			}
+ 
+			unsaved_list += MakeDisplayPath(fname, 50) + "\n";
+			return true;
+		case 3: // Cancel
+			return false;
+		}
+	}
+	return false;
+}
+
+ 
 bool BufferList::qwriteAll()
 {
-        bool askMoreConfirmation = false;
+        bool are_unsaved = false;
         string unsaved;
 	for (BufferStorage::iterator it = bstore.begin();
-	    it != bstore.end(); ++it) {
+		it != bstore.end(); ++it) {
 		if (!(*it)->isLyxClean()) {
 			string fname;
 			if ((*it)->isUnnamed())
 				fname = OnlyFilename((*it)->fileName());
 			else
 				fname = MakeDisplayPath((*it)->fileName(), 50);
-			bool reask = true;
-			while (reask) {
-				switch (AskConfirmation(_("Changes in document:"),
-						       fname,
-						       _("Save document?"))) {
-				case 1: // Yes
-					if ((*it)->isUnnamed())
-						reask = !WriteAs(current_view, (*it));
-					else {
-						reask = !MenuWrite(current_view, (*it));
-					}
-					break;
-				case 2: // No
-					// if we crash after this we could
-					// have no autosave file but I guess
-					// this is really inprobable (Jug)
-					if ((*it)->isUnnamed()) {
-						removeAutosaveFile((*it)->fileName());
-					}
-					askMoreConfirmation = true;
-					unsaved += MakeDisplayPath(fname, 50);
-					unsaved += "\n";
-					reask = false;
-					break;
-				case 3: // Cancel
-					return false;
-				}
-			}
+			are_unsaved = qwriteOne(*it, fname, unsaved);
 		}
 	}
-        if (askMoreConfirmation &&
-            lyxrc.exit_confirmation &&
-            !AskQuestion(_("Some documents were not saved:"),
-                         unsaved, _("Exit anyway?"))) {
-                return false;
+ 
+        if (are_unsaved && lyxrc.exit_confirmation) {
+		return Alert::askQuestion(_("Some documents were not saved:"),
+			unsaved, _("Exit anyway?"));
         }
 
         return true;
@@ -183,7 +189,7 @@ bool BufferList::close(Buffer * buf)
 			fname = MakeDisplayPath(buf->fileName(), 50);
 		bool reask = true;
 		while (reask) {
-			switch (AskConfirmation(_("Changes in document:"),
+			switch (Alert::askConfirmation(_("Changes in document:"),
 					       fname,
 					       _("Save document?"))){
 			case 1: // Yes
@@ -351,7 +357,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 	FileInfo fileInfo2(s);
 
 	if (!fileInfo2.exist()) {
-		WriteAlert(_("Error!"), _("Cannot open file"), 
+		Alert::alert(_("Error!"), _("Cannot open file"), 
 			MakeDisplayPath(s));
 		return 0;
 	}
@@ -365,7 +371,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 	if (fileInfoE.exist() && fileInfo2.exist()) {
 		if (fileInfoE.getModificationTime()
 		    > fileInfo2.getModificationTime()) {
-			if (AskQuestion(_("An emergency save of this document exists!"),
+			if (Alert::askQuestion(_("An emergency save of this document exists!"),
 					MakeDisplayPath(s, 50),
 					_("Try to load that instead?"))) {
 				ts = e;
@@ -389,7 +395,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 		if (fileInfoA.exist() && fileInfo2.exist()) {
 			if (fileInfoA.getModificationTime()
 			    > fileInfo2.getModificationTime()) {
-				if (AskQuestion(_("Autosave file is newer."),
+				if (Alert::askQuestion(_("Autosave file is newer."),
 						MakeDisplayPath(s, 50),
 						_("Load that one instead?"))) {
 					ts = a;
@@ -461,7 +467,7 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 			}
 		}
 		if (!templateok) {
-			WriteAlert(_("Error!"), _("Unable to open template"), 
+			Alert::alert(_("Error!"), _("Unable to open template"), 
 				   MakeDisplayPath(tname));
 			// no template, start with empty buffer
 			b->paragraph = new Paragraph;
@@ -492,7 +498,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 
 	// file already open?
 	if (exists(s)) {
-		if (AskQuestion(_("Document is already open:"), 
+		if (Alert::askQuestion(_("Document is already open:"), 
 				MakeDisplayPath(s, 50),
 				_("Do you want to reload that document?"))) {
 			// Reload is accomplished by closing and then loading
@@ -523,7 +529,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 		if (LyXVC::file_not_found_hook(s)) {
 			// Ask if the file should be checked out for
 			// viewing/editing, if so: load it.
-		        if (AskQuestion(_("Do you want to retrieve file under version control?"))) {
+		        if (Alert::askQuestion(_("Do you want to retrieve file under version control?"))) {
 				// How can we know _how_ to do the checkout?
 				// With the current VC support it has to be,
 				// a RCS file since CVS do not have special ,v files.
@@ -531,7 +537,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 				return loadLyXFile(filename, tolastfiles);
 			}
 		}
-		if (AskQuestion(_("Cannot open specified file:"), 
+		if (Alert::askQuestion(_("Cannot open specified file:"), 
 				MakeDisplayPath(s, 50),
 				_("Create new document with this name?")))
 			{

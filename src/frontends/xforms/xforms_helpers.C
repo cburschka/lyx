@@ -24,6 +24,42 @@ using std::ofstream;
 using std::pair;
 using std::vector;
 
+// Extract shortcut from <ident>|<shortcut> string
+char const * flyx_shortcut_extract(char const * sc)
+{
+	// Find '|' in the sc and return the string after that.
+	register char const * sd = sc;
+	while(sd[0]!= 0 && sd[0] != '|') ++sd;
+
+	if (sd[0] == '|') {
+		++sd;
+		//lyxerr << sd << endl;
+		return sd;
+	}
+	return "";
+}
+
+
+// Extract identifier from <ident>|<shortcut> string
+char const * flyx_ident_extract(char const * sc)
+{
+	register char const * se = sc;
+	while(se[0]!= 0 && se[0] != '|') ++se;
+
+	if (se[0] == 0) return sc;
+	
+	char * sb = new char[se - sc + 1];
+	int index = 0;
+	register char const * sd = sc;
+	while (sd != se) {
+		sb[index] = sd[0];
+		++index; ++sd;
+	}
+	sb[index] = 0;
+	return sb;
+}
+
+
 // Set an FL_OBJECT to activated or deactivated
 void setEnabled(FL_OBJECT * ob, bool enable)
 {

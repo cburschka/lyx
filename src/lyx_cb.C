@@ -16,7 +16,6 @@
 #include <iostream>
 
 #include "lyx_cb.h"
-#include "lyx_gui_misc.h"
 #include "lyx_main.h"
 #include "buffer.h"
 #include "bufferlist.h"
@@ -26,6 +25,7 @@
 #include "LyXView.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
+#include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
 #include "frontends/GUIRunTime.h"
 #include "insets/insetlabel.h"
@@ -141,7 +141,7 @@ bool MenuWrite(BufferView * bv, Buffer * buffer)
 	if (!buffer->save()) {
 		string const fname = buffer->fileName();
 		string const s = MakeAbsPath(fname);
-		if (AskQuestion(_("Save failed. Rename and try again?"),
+		if (Alert::askQuestion(_("Save failed. Rename and try again?"),
 				MakeDisplayPath(s, 50),
 				_("(If not, document is not saved.)"))) {
 			return WriteAs(bv, buffer);
@@ -196,7 +196,7 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 
 	// Same name as we have already?
 	if (!buffer->isUnnamed() && fname == oldname) {
-		if (!AskQuestion(_("Same name as document already has:"),
+		if (!Alert::askQuestion(_("Same name as document already has:"),
 				 MakeDisplayPath(fname, 50),
 				 _("Save anyway?")))
 			return false;
@@ -204,7 +204,7 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 	} 
 	// No, but do we have another file with this name open?
 	else if (!buffer->isUnnamed() && bufferlist.exists(fname)) {
-		if (AskQuestion(_("Another document with same name open!"),
+		if (Alert::askQuestion(_("Another document with same name open!"),
 				MakeDisplayPath(fname, 50),
 				_("Replace with current document?")))
 			{
@@ -221,7 +221,7 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 	} // Check whether the file exists
 	else {
 		FileInfo const myfile(fname);
-		if (myfile.isOK() && !AskQuestion(_("Document already exists:"), 
+		if (myfile.isOK() && !Alert::askQuestion(_("Document already exists:"), 
 						  MakeDisplayPath(fname, 50),
 						  _("Replace file?")))
 			return false;
@@ -251,7 +251,7 @@ int MenuRunChktex(Buffer * buffer)
 	int ret;
 
 	if (buffer->isSGML()) {
-		WriteAlert(_("Chktex does not work with SGML derived documents."));
+		Alert::alert(_("Chktex does not work with SGML derived documents."));
 		return 0;
 	} else 
 		ret = buffer->runChktex();
@@ -269,9 +269,9 @@ int MenuRunChktex(Buffer * buffer)
 			s += _(" warnings found.");
 			t = _("Use `Navigate->Error' to find them.");
 		}
-		WriteAlert(_("Chktex run successfully"), s, t);
+		Alert::alert(_("Chktex run successfully"), s, t);
 	} else {
-		WriteAlert(_("Error!"), _("It seems chktex does not work."));
+		Alert::alert(_("Error!"), _("It seems chktex does not work."));
 	}
 	return ret;
 }
@@ -430,14 +430,14 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	FileInfo fi(fname);
 
 	if (!fi.readable()) {
-		WriteFSAlert(_("Error! Specified file is unreadable: "),
+		Alert::err_alert(_("Error! Specified file is unreadable: "),
 			     MakeDisplayPath(fname, 50));
 		return;
 	}
 
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
-		WriteFSAlert(_("Error! Cannot open specified file: "),
+		Alert::err_alert(_("Error! Cannot open specified file: "),
 			     MakeDisplayPath(fname, 50));
 		return;
 	}
@@ -512,7 +512,7 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 		}
 
 		pair<bool, string> result =
-			askForText(_("Enter new label to insert:"), text);
+			Alert::askForText(_("Enter new label to insert:"), text);
 		if (result.first) {
 			label = frontStrip(strip(result.second));
 		}
@@ -539,7 +539,7 @@ void Reconfigure(BufferView * bv)
 	p.pop();
 	bv->owner()->message(_("Reloading configuration..."));
 	lyxrc.read(LibFileSearch(string(), "lyxrc.defaults"));
-	WriteAlert(_("The system has been reconfigured."), 
+	Alert::alert(_("The system has been reconfigured."), 
 		   _("You need to restart LyX to make use of any"),
 		   _("updated document class specifications."));
 }

@@ -24,7 +24,7 @@
 #include "LyXView.h"
 #include "bmtable.h"
 #include "debug.h"
-#include "lyx_gui_misc.h" // scex, idex
+#include "xforms_helpers.h"
 #include "gettext.h"
 #include "support/LAssert.h"
 

@@ -23,7 +23,7 @@
 
 #include "bufferlist.h"
 #include "support/filetools.h"
-#include "lyx_gui_misc.h" //WriteAlert
+#include "frontends/Alert.h"
 #include "gettext.h"
 #include "BufferView.h"
 
@@ -58,7 +58,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 			}
 		}
 		if (loader_format.empty()) {
-			WriteAlert(_("Cannot import file"),
+			Alert::alert(_("Cannot import file"),
 				   _("No information for importing from ")
 				   + formats.prettyName(format));
 			return false;

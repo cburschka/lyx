@@ -1,6 +1,6 @@
 // File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
 #include <config.h>
-#include "lyx_gui_misc.h"
+#include "xforms_helpers.h"
 #include "gettext.h"
 
 /* Form definition file generated with fdesign. */

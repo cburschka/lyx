@@ -97,8 +97,8 @@
 #include "lyxtext.h"
 #include "gettext.h"
 #include "language.h"
-#include "lyx_gui_misc.h"	// WarnReadonly()
 #include "frontends/Dialogs.h"
+#include "frontends/Alert.h"
 #include "encoding.h"
 #include "exporter.h"
 #include "Lsstream.h"
@@ -234,9 +234,6 @@ void Buffer::setReadonly(bool flag)
 		updateTitles();
 		users->owner()->getDialogs()->updateBufferDependent(false);
 	}
-	if (read_only) {
-		WarnReadonly(filename);
-	}
 }
 
 
@@ -365,7 +362,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 			s += tostr(unknown_layouts);
 			s += _(" paragraphs");
 		}
-		WriteAlert(_("Textclass Loading Error!"), s,
+		Alert::alert(_("Textclass Loading Error!"), s,
 			   _("When reading " + fileName()));
 	}
 
@@ -377,7 +374,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 			s += tostr(unknown_tokens);
 			s += _(" unknown tokens");
 		}
-		WriteAlert(_("Textclass Loading Error!"), s,
+		Alert::alert(_("Textclass Loading Error!"), s,
 			   _("When reading " + fileName()));
 	}
 
@@ -666,19 +663,19 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		if (pp.first) {
 			params.textclass = pp.second;
 		} else {
-			WriteAlert(string(_("Textclass error")), 
+			Alert::alert(string(_("Textclass error")), 
 				string(_("The document uses an unknown textclass \"")) + 
 				lex.getString() + string("\"."),
 				string(_("LyX will not be able to produce output correctly.")));
 			params.textclass = 0;
 		}
 		if (!textclasslist.Load(params.textclass)) {
-				// if the textclass wasn't loaded properly
-				// we need to either substitute another
-				// or stop loading the file.
-				// I can substitute but I don't see how I can
-				// stop loading... ideas??  ARRae980418
-			WriteAlert(_("Textclass Loading Error!"),
+			// if the textclass wasn't loaded properly
+			// we need to either substitute another
+			// or stop loading the file.
+			// I can substitute but I don't see how I can
+			// stop loading... ideas??  ARRae980418
+			Alert::alert(_("Textclass Loading Error!"),
 				   string(_("Can't load textclass ")) +
 				   textclasslist.NameOfClass(params.textclass),
 				   _("-- substituting default"));
@@ -1537,14 +1534,14 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 				// current format
 			} else if (file_format > LYX_FORMAT) {
 				// future format
-				WriteAlert(_("Warning!"),
+				Alert::alert(_("Warning!"),
 					   _("LyX file format is newer that what"),
 					   _("is supported in this LyX version. Expect some problems."));
 				
 			} else if (file_format < LYX_FORMAT) {
 				// old formats
 				if (file_format < 200) {
-					WriteAlert(_("ERROR!"),
+					Alert::alert(_("ERROR!"),
 						   _("Old LyX file format found. "
 						     "Use LyX 0.10.x to read this!"));
 					return false;
@@ -1556,16 +1553,17 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 			if (file_format < 213)
 				the_end = true;
 
-			if (!the_end)
-				WriteAlert(_("Warning!"),
+			if (!the_end) {
+				Alert::alert(_("Warning!"),
 					   _("Reading of document is not complete"),
 					   _("Maybe the document is truncated"));
+			}
 			return true;
 		} else { // "\\lyxformat" not found
-			WriteAlert(_("ERROR!"), _("Not a LyX file!"));
+			Alert::alert(_("ERROR!"), _("Not a LyX file!"));
 		}
 	} else
-		WriteAlert(_("ERROR!"), _("Unable to read file!"));
+		Alert::alert(_("ERROR!"), _("Unable to read file!"));
 	return false;
 }
 	    	    
@@ -1661,7 +1659,7 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 			lyxerr << _("Error! Document is read-only: ")
 			       << fname << endl;
 		else
-			WriteAlert(_("Error! Document is read-only: "),
+			Alert::alert(_("Error! Document is read-only: "),
 				   fname);
 		return false;
 	}
@@ -1674,7 +1672,7 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 			lyxerr << _("Error! Cannot write file: ")
 			       << fname << endl;
 		else
-			WriteFSAlert(_("Error! Cannot write file: "),
+			Alert::err_alert(_("Error! Cannot write file: "),
 				     fname);
 		return false;
 	}
@@ -1685,7 +1683,7 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 			lyxerr << _("Error! Cannot open file: ")
 			       << fname << endl;
 		else
-			WriteFSAlert(_("Error! Cannot open file: "),
+			Alert::err_alert(_("Error! Cannot open file: "),
 				     fname);
 		return false;
 	}
@@ -1922,7 +1920,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 {
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
-		WriteFSAlert(_("Error: Cannot write file:"), fname);
+		Alert::err_alert(_("Error: Cannot write file:"), fname);
 		return;
 	}
 	writeFileAscii(ofs, linelen);
@@ -1956,7 +1954,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
-		WriteFSAlert(_("Error: Cannot open file: "), fname);
+		Alert::err_alert(_("Error: Cannot open file: "), fname);
 		return;
 	}
 	
@@ -2537,7 +2535,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	ofstream ofs(fname.c_str());
 
 	if (!ofs) {
-		WriteAlert(_("LYX_ERROR:"), _("Cannot write file"), fname);
+		Alert::alert(_("LYX_ERROR:"), _("Cannot write file"), fname);
 		return;
 	}
 
@@ -2975,7 +2973,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 {
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
-		WriteAlert(_("LYX_ERROR:"), _("Cannot write file"), fname);
+		Alert::alert(_("LYX_ERROR:"), _("Cannot write file"), fname);
 		return;
 	}
 
@@ -3371,7 +3369,7 @@ int Buffer::runChktex()
 	int res = chktex.run(terr); // run chktex
 
 	if (res == -1) {
-		WriteAlert(_("chktex did not work!"),
+		Alert::alert(_("chktex did not work!"),
 			   _("Could not run with file:"), name);
 	} else if (res > 0) {
 		// Insert all errors as errors boxes

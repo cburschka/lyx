@@ -34,6 +34,7 @@
 #include "LyXView.h"
 #include "insets/insettext.h"
 #include "frontends/Dialogs.h"
+#include "frontends/Alert.h"
 #include "debug.h"
 #include "WorkArea.h"
 #include "gettext.h"
@@ -1825,7 +1826,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	case LyXTabular::MULTICOLUMN:
 	{
 		if (sel_row_start != sel_row_end) {
-			WriteAlert(_("Impossible Operation!"), 
+			Alert::alert(_("Impossible Operation!"), 
 				   _("Multicolumns can only be horizontally."), 
 				   _("Sorry."));
 			return;

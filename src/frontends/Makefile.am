@@ -20,6 +20,9 @@ libfrontends_la_DEPENDENCIES = @FRONTEND_GUILIB@ \
 	controllers/libcontrollers.la
 
 libfrontends_la_SOURCES=\
+	Alert.C \
+	Alert.h \
+	Alert_pimpl.h \
 	Dialogs.C \
 	Dialogs.h \
 	DialogBase.h \

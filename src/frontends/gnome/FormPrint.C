@@ -154,7 +154,7 @@ void FormPrint::apply()
 				 copies_unsorted_->get_active(),
 				 copies_count_->get_value_as_int())))
     {
-      WriteAlert(_("Error:"),
+      Alert::alert(_("Error:"),
 		 _("Unable to print"),
 		 _("Check that your parameters are correct"));
     }

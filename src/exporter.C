@@ -22,7 +22,7 @@
 #include "support/filetools.h"
 #include "lyxrc.h"
 #include "converter.h"
-#include "lyx_gui_misc.h" //WriteAlert
+#include "frontends/Alert.h"
 #include "gettext.h"
 
 using std::vector;
@@ -45,7 +45,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			}
 		}
 		if (backend_format.empty()) {
-			WriteAlert(_("Cannot export file"),
+			Alert::alert(_("Cannot export file"),
 				   _("No information for exporting to ")
 				   + formats.prettyName(format));
 			return false;
@@ -72,7 +72,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	else if (backend_format == format)
 		buffer->makeLaTeXFile(filename, string(), true);
 	else if (contains(buffer->filepath, ' ')) {
-		WriteAlert(_("Cannot run latex."),
+		Alert::alert(_("Cannot run latex."),
 			   _("The path to the lyx file cannot contain spaces."));
 		return false;
 	} else

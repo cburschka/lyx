@@ -16,7 +16,7 @@
 
 #include "insetlabel.h"
 #include "support/LOstream.h"
-#include "lyx_gui_misc.h"     //askForText
+#include "frontends/Alert.h"
 #include "support/lstrings.h" //frontStrip, strip
 #include "lyxtext.h"
 #include "buffer.h"
@@ -44,12 +44,7 @@ vector<string> const InsetLabel::getLabelList() const
 
 void InsetLabel::edit(BufferView * bv, int, int, unsigned int)
 {
-	if (bv->buffer()->isReadonly()) {
-		WarnReadonly(bv->buffer()->fileName());
-		return;
-	}
-
-	pair<bool, string> result = askForText(_("Enter label:"), getContents());
+	pair<bool, string> result = Alert::askForText(_("Enter label:"), getContents());
 	if (result.first) {
 		string new_contents = frontStrip(strip(result.second));
 		if (!new_contents.empty() &&

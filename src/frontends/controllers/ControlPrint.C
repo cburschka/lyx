@@ -28,7 +28,7 @@
 #include "PrinterParams.h"
 #include "Liason.h"
 #include "helper_funcs.h" // browseFile
-#include "lyx_gui_misc.h" // WriteAlert
+#include "frontends/Alert.h"
 #include "gettext.h"
 #include "BufferView.h"
 #include "support/LAssert.h"
@@ -53,7 +53,7 @@ void ControlPrint::apply()
 	view().apply();
 
 	if (!printBuffer(lv_.buffer(), params())) {
-		WriteAlert(_("Error:"),
+		Alert::alert(_("Error:"),
 			   _("Unable to print"),
 			   _("Check that your parameters are correct"));
 	}

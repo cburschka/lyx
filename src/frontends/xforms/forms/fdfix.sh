@@ -67,7 +67,7 @@ sed -e "s/CLASSNAME/$CLASSNAME/" < $FDFIXC > $FDFIXC_MOD
 # Modify .c file for use by LyX
 echo "// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext" > $COUT
 echo "#include <config.h>" >> $COUT
-echo "#include \"lyx_gui_misc.h\"" >> $COUT
+echo "#include \"xforms_helpers.h\"" >> $COUT
 echo "#include \"gettext.h\"" >> $COUT
 
 grep bmtable $CIN > /dev/null

@@ -22,7 +22,8 @@
 #include "lyx_gui.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
-#include "lyx_gui_misc.h"
+#include "frontends/Alert.h"
+#include "frontends/GUIRunTime.h"
 #include "lyxrc.h"
 #include "support/path.h"
 #include "support/filetools.h"
@@ -433,7 +434,7 @@ void LyX::init(bool gui)
  
         // Calculate screen dpi as average of x-DPI and y-DPI:
 	if (lyxrc.use_gui) {
-		lyxrc.dpi = getScreenDPI();
+		lyxrc.dpi = GUIRunTime::getScreenDPI();
 		lyxerr[Debug::INIT] << "DPI setting detected to be "
                                                 << lyxrc.dpi + 0.5 << endl;
 	} else {
@@ -612,7 +613,7 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 	// If the user specified explicitely a directory, ask whether
 	// to create it (otherwise, always create it)
 	if (explicit_userdir &&
-	    !AskQuestion(_("You have specified an invalid LyX directory."),
+	    !Alert::askQuestion(_("You have specified an invalid LyX directory."),
 			 _("It is needed to keep your own configuration."),
 			 _("Should I try to set it up for you (recommended)?"))) {
 		lyxerr << _("Running without personal LyX directory.") << endl;
@@ -651,7 +652,7 @@ bool LyX::readRcFile(string const & name)
 	        lyxerr[Debug::INIT] << "Found " << name
 				    << " in " << lyxrc_path << endl;
 		if (lyxrc.read(lyxrc_path) < 0) { 
-		        WriteAlert(_("LyX Warning!"), 
+		        Alert::alert(_("LyX Warning!"), 
 				   _("Error while reading ") + lyxrc_path + ".",
 				   _("Using built-in defaults."));
 			return false;
@@ -910,5 +911,3 @@ bool LyX::easyParse(int * argc, char * argv[])
 
 	return gui;
 }
-
-

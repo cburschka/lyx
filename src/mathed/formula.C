@@ -30,7 +30,7 @@
 #include "BufferView.h"
 #include "gettext.h"
 #include "debug.h"
-#include "lyx_gui_misc.h"
+#include "frontends/Alert.h"
 #include "support/LOstream.h"
 #include "support/LAssert.h"
 #include "support/lyxlib.h"
@@ -423,8 +423,8 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 				string const default_label =
 					(lyxrc.label_init_length >= 0) ? "eq:" : "";
 				pair<bool, string> const res = old_label.empty()
-					? askForText(_("Enter new label to insert:"), default_label)
-					: askForText(_("Enter label:"), old_label);
+					? Alert::askForText(_("Enter new label to insert:"), default_label)
+					: Alert::askForText(_("Enter label:"), old_label);
 				
 				lyxerr << "res: " << res.first << " - '" << res.second << "'\n";
 				if (!res.first)

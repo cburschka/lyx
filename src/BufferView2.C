@@ -23,7 +23,7 @@
 #include "support/FileInfo.h"
 #include "lyxscreen.h"
 #include "support/filetools.h"
-#include "lyx_gui_misc.h"
+#include "frontends/Alert.h"
 #include "LaTeX.h"
 #include "BufferView_pimpl.h"
 #include "insets/insetcommand.h" //ChangeRefs
@@ -63,7 +63,7 @@ bool BufferView::insertLyXFile(string const & filen)
 	FileInfo const fi(fname);
 
 	if (!fi.readable()) {
-		WriteAlert(_("Error!"),
+		Alert::alert(_("Error!"),
 			   _("Specified file is unreadable: "),
 			   MakeDisplayPath(fname, 50));
 		return false;
@@ -73,7 +73,7 @@ bool BufferView::insertLyXFile(string const & filen)
 
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
-		WriteAlert(_("Error!"),
+		Alert::alert(_("Error!"),
 			   _("Cannot open specified file: "),
 			   MakeDisplayPath(fname, 50));
 		return false;

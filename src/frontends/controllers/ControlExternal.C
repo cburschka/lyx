@@ -32,7 +32,7 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "frontends/FileDialog.h"
-#include "lyx_gui_misc.h" // WriteAlert
+#include "frontends/Alert.h"
 #include "gettext.h"
 #include "BufferView.h"
 
@@ -193,7 +193,7 @@ string const ControlExternal::Browse(string const & input) const
 		    contains(p, "~") ||
 		    contains(p, "$") ||
 		    contains(p, "%")) {
-			WriteAlert(_("Filename can't contain any "
+			Alert::alert(_("Filename can't contain any "
 				     "of these characters:"),
 				   // xgettext:no-c-format
 				   _("'#', '~', '$' or '%'."));

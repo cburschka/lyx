@@ -56,6 +56,7 @@
 #include "lyxrc.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
+#include "frontends/Alert.h" 
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
@@ -1218,16 +1219,10 @@ string const InsetFig::editMessage() const
 }
 
 
-void InsetFig::edit(BufferView * bv, int, int, unsigned int)
+void InsetFig::edit(BufferView *, int, int, unsigned int)
 {
 	lyxerr[Debug::INFO] << "Editing InsetFig." << endl;
 	regenerate();
-
-	// We should have RO-versions of the form instead.
-	// The actual prevention of altering a readonly doc
-	// is done in CallbackFig()
-	if (bv->buffer()->isReadonly()) 
-		WarnReadonly(bv->buffer()->fileName());
 
 	if (!form) {
 		form = create_form_Figure();
@@ -2004,7 +1999,7 @@ void InsetFig::browseFile()
 		
 		if (contains(p, "#") || contains(p, "~") || contains(p, "$")
 		    || contains(p, "%") || contains(p, " ")) {
-			WriteAlert(_("Filename can't contain any "
+			Alert::alert(_("Filename can't contain any "
 				     "of these characters:"),
 				   // xgettext:no-c-format
 				   _("space, '#', '~', '$' or '%'.")); 

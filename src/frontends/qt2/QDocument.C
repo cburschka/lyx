@@ -362,14 +362,14 @@ bool QDocument::class_apply()
 					s += tostr(ret);
 					s += _(" paragraphs couldn't be converted");
 				}
-				WriteAlert(_("Conversion Errors!"),s,
+				Alert::alert(_("Conversion Errors!"),s,
 					   _("into chosen document class"));
 			}
 
 			params.textclass = new_class;
 		} else {
 			// problem changing class -- warn user and retain old style
-			WriteAlert(_("Conversion Errors!"),
+			Alert::alert(_("Conversion Errors!"),
 				   _("Errors loading new document class."),
 				   _("Reverting to original document class."));
 			dialog_->docClassCO->setCurrentItem( params.textclass );
@@ -993,7 +993,7 @@ void QDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 		BufferParams params = lv_->buffer()->params;
 
 		if (params.textclass != tc
-			&& AskQuestion(_("Should I set some parameters to"),
+			&& Alert::askQuestion(_("Should I set some parameters to"),
 				   _("the defaults of this document class?"))) {
 			params.textclass = tc;
 			params.useClassDefaults();
@@ -1001,7 +1001,7 @@ void QDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 		}
 	} else {
 		// unable to load new style
-		WriteAlert(_("Conversion Errors!"),
+		Alert::alert(_("Conversion Errors!"),
 			   _("Unable to switch to new document class."),
 			   _("Reverting to original document class."));
 		combo_doc_class->select(int(lv_->buffer()->params.textclass) + 1);

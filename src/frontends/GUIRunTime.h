@@ -53,5 +53,8 @@ public:
 	/// The current visual depth
 	static
 	int x11VisualDepth();
+	/// the server's DPI estimate
+	static
+	float getScreenDPI(); 
 };
 #endif

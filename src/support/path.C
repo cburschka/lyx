@@ -13,16 +13,16 @@ int Path::pop()
 		// throw logical_error();
 		// The use of WriteFSAlerrt makes this impossible
 		// to inline.
-		//WriteFSAlert(_("Error: Dir already popped: "),
+		//Alert::err_alert(_("Error: Dir already popped: "),
 		//	     pushedDir_);
 		return 0;
 	}
 	if (lyx::chdir(pushedDir_)) {
 		// should throw an exception
 		// throw DirChangeError();
-		// The use of WriteFSAlert makes this impossible
+		// The use of Alert::err_alert makes this impossible
 		// to inline.
-		//WriteFSAlert(
+		//Alert::err_alert(
 		//	_("Error: Could not change to directory: "), 
 		//	pushedDir_);
 	}

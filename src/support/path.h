@@ -24,9 +24,9 @@ public:
 			if (pushedDir_.empty() || lyx::chdir(path)) {
 				// should throw an exception
 				// throw DirChangeError();
-				// The use of WriteFSAlert makes this
+				// The use of Alert::err_alert makes this
 				// impossible to inline.
-				//WriteFSAlert(_("Error: Could not change to directory: "), 
+				//Alert::err_alert(_("Error: Could not change to directory: "), 
 				//	     path);
 			}
 		} else {

@@ -7,7 +7,24 @@
 #pragma interface
 #endif
 
+#include <config.h>
+ 
+#include FORMS_H_LOCATION
+ 
 #include "Color.h"
+#include "support/lstrings.h"
+ 
+#include <vector>
+
+/// Extract shortcut from <ident>|<shortcut> string
+char const * flyx_shortcut_extract(char const * sc);
+/// Shortcut for flyx_shortcut_extract
+#define scex flyx_shortcut_extract
+
+/// Extract shortcut from <ident>|<shortcut> string
+char const * flyx_ident_extract(char const * sc);
+/// Shortcut for flyx_ident_extract
+#define idex flyx_ident_extract
 
 /// Set an FL_OBJECT to activated or deactivated
 void setEnabled(FL_OBJECT *, bool enable);

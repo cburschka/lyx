@@ -58,7 +58,7 @@ void ControlTexinfo::runTexhash() const
 	//path to texhash through system
 	Systemcalls one(Systemcalls::System,"texhash"); 
 	p.pop();
-//	WriteAlert(_("texhash run!"), 
+//	Alert::alert(_("texhash run!"), 
 //		   _("rebuilding of the TeX-tree could only be successfull"),
 //		   _("if you have had user-write-permissions to the tex-dir."));
 }

@@ -86,6 +86,7 @@
 #include "frontends/Dialogs.h"
 #include "frontends/Toolbar.h"
 #include "frontends/Menubar.h"
+#include "frontends/Alert.h"
 #include "FloatList.h"
 #include "converter.h"
 #include "exporter.h"
@@ -1739,7 +1740,7 @@ void LyXFunc::menuNew(bool fromTemplate)
 
 		// Check if the document already is open
 		if (bufferlist.exists(s)) {
-			switch (AskConfirmation(_("Document is already open:"),
+			switch (Alert::askConfirmation(_("Document is already open:"),
 						MakeDisplayPath(s, 50),
 						_("Do you want to close that document now?\n"
 						  "('No' will just switch to the open version)")))
@@ -1760,7 +1761,7 @@ void LyXFunc::menuNew(bool fromTemplate)
 		// Check whether the file already exists
 		FileInfo fi(s);
 		if (fi.readable() &&
-		    AskQuestion(_("File already exists:"), 
+		    Alert::askQuestion(_("File already exists:"), 
 				MakeDisplayPath(s, 50),
 				_("Do you want to open the document?"))) {
 				// loads document
@@ -1866,7 +1867,7 @@ void LyXFunc::open(string const & fname)
 	// necessary
 	string const fullpath = FileSearch(string(), filename, "lyx");
 	if (fullpath.empty()) {
-		WriteAlert(_("Error"), _("Could not find file"), filename);
+		Alert::alert(_("Error"), _("Could not find file"), filename);
 		return;
 	}
 
@@ -1950,7 +1951,7 @@ void LyXFunc::doImport(string const & argument)
 
 	// Check if the document already is open
 	if (bufferlist.exists(lyxfile)) {
-		switch (AskConfirmation(_("Document is already open:"), 
+		switch (Alert::askConfirmation(_("Document is already open:"), 
 					MakeDisplayPath(lyxfile, 50),
 					_("Do you want to close that document now?\n"
 					  "('No' will just switch to the open version)")))
@@ -1971,7 +1972,7 @@ void LyXFunc::doImport(string const & argument)
 
 	// Check if a LyX document by the same root exists in filesystem
 	FileInfo const f(lyxfile, true);
-	if (f.exist() && !AskQuestion(_("A document by the name"), 
+	if (f.exist() && !Alert::askQuestion(_("A document by the name"), 
 				      MakeDisplayPath(lyxfile),
 				      _("already exists. Overwrite?"))) {
 		owner->message(_("Canceled"));

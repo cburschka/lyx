@@ -18,8 +18,8 @@
 #pragma implementation
 #endif
 
-#include "lyx_gui_misc.h"
-
+#include "Alert.h"
+ 
 #include "FormDocument.h"
 #include "form_document.h"
 #include "Dialogs.h"
@@ -378,7 +378,7 @@ namespace {
 */
 bool saveParamsAsDefault(BufferParams const &params)
 {
-	if (!AskQuestion(_("Do you want to save the current settings"),
+	if (!Alert::askQuestion(_("Do you want to save the current settings"),
 			 _("for the document layout as default?"),
 			 _("(they will be valid for any new document)")))
 		return false;
@@ -754,13 +754,13 @@ bool FormDocument::class_apply()
 					s += tostr(ret);
 					s += _(" paragraphs couldn't be converted");
 				}
-				WriteAlert(_("Conversion Errors!"),s,
+				Alert::alert(_("Conversion Errors!"),s,
 					   _("into chosen document class"));
 			}
 			
 		} else {
 			// problem changing class -- warn user and retain old style
-			WriteAlert(_("Conversion Errors!"),
+			Alert::alert(_("Conversion Errors!"),
 				   _("Errors loading new document class."),
 				   _("Reverting to original document class."));
 			combo_doc_class->select(int(old_class) + 1);
@@ -1396,7 +1396,7 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 		}
 	} else {
 		// unable to load new style
-		WriteAlert(_("Conversion Errors!"),
+		Alert::alert(_("Conversion Errors!"),
 			   _("Unable to switch to new document class."),
 			   _("Reverting to original document class."));
 		combo_doc_class->select(int(lv_->buffer()->params.textclass) + 1);

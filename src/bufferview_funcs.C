@@ -19,7 +19,7 @@
 #include "BufferView.h"
 #include "paragraph.h"
 #include "lyxfont.h"
-#include "lyx_gui_misc.h"
+#include "frontends/Alert.h"
 #include "lyxtext.h"
 #include "buffer.h"
 #include "support/lstrings.h"
@@ -68,7 +68,7 @@ void lang(BufferView * bv, string const & l)
 		font.setLanguage(lang);
 		toggleAndShow(bv, font);
 	} else
-		WriteAlert(_("Error! unknown language"),l);
+		Alert::alert(_("Error! unknown language"),l);
 }
 
 
@@ -226,8 +226,7 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 		bv->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 		if (font.language() != ignore_language ||
-		    font.number() != LyXFont::IGNORE)
-		{
+		    font.number() != LyXFont::IGNORE) {
 			LyXCursor & cursor = text->cursor;
 			text->computeBidiTables(bv->buffer(), cursor.row());
 			if (cursor.boundary() != 

@@ -32,7 +32,7 @@
 #include "layout.h"
 #include "LaTeXFeatures.h"
 #include "Painter.h"
-#include "lyx_gui_misc.h"
+#include "frontends/Alert.h"
 #include "lyxtext.h"
 #include "lyxcursor.h"
 #include "CutAndPaste.h"
@@ -1188,7 +1188,7 @@ InsetText::localDispatch(BufferView * bv,
 		if (!autoBreakRows) {
 
 			if (CutAndPaste::nrOfParagraphs() > 1) {
-				WriteAlert(_("Impossible operation"),
+				Alert::alert(_("Impossible operation"),
 						   _("Cannot include more than one paragraph!"),
 						   _("Sorry."));
 				break;

@@ -6,6 +6,7 @@
 
 #include <unistd.h>
 
+#include "frontends/Alert.h"
 #include "lyxvc.h"
 #include "vc-backend.h"
 #include "debug.h"
@@ -83,7 +84,7 @@ void LyXVC::registrer()
 	
 	// If the document is changed, we might want to save it
 	if (!vcs->owner()->isLyxClean() && 
-	    AskQuestion(_("Changes in document:"),
+	    Alert::askQuestion(_("Changes in document:"),
 			MakeDisplayPath(vcs->owner()->fileName(), 50),
 			_("Save document and proceed?"))) {
 		vcs->owner()->getUser()->owner()
@@ -98,12 +99,12 @@ void LyXVC::registrer()
 
 	lyxerr[Debug::LYXVC] << "LyXVC: registrer" << endl;
 	pair<bool, string> tmp =
-		askForText(_("LyX VC: Initial description"),
+		Alert::askForText(_("LyX VC: Initial description"),
 			   _("(no initial description)"));
 	if (!tmp.first || tmp.second.empty()) {
 		// should we insist on checking tmp.second.empty()?
 		lyxerr[Debug::LYXVC] << "LyXVC: user cancelled" << endl;
-		WriteAlert(_("Info"),
+		Alert::alert(_("Info"),
 			   _("This document has NOT been registered."));
 		return;
 	}
@@ -116,7 +117,7 @@ void LyXVC::checkIn()
 {
 	// If the document is changed, we might want to save it
 	if (!vcs->owner()->isLyxClean() && 
-	    AskQuestion(_("Changes in document:"),
+	    Alert::askQuestion(_("Changes in document:"),
 			MakeDisplayPath(vcs->owner()->fileName(), 50),
 			_("Save document and proceed?"))) {
 		vcs->owner()->getUser()->owner()
@@ -130,7 +131,7 @@ void LyXVC::checkIn()
 	}
 
 	lyxerr[Debug::LYXVC] << "LyXVC: checkIn" << endl;
-	pair<bool, string> tmp = askForText(_("LyX VC: Log Message"));
+	pair<bool, string> tmp = Alert::askForText(_("LyX VC: Log Message"));
 	if (tmp.first) {
 		if (tmp.second.empty()) {
 			tmp.second = _("(no log message)");
@@ -146,7 +147,7 @@ void LyXVC::checkOut()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: checkOut" << endl;
 	if (!vcs->owner()->isLyxClean() 
-	    && !AskQuestion(_("Changes in document:"),
+	    && !Alert::askQuestion(_("Changes in document:"),
 			   MakeDisplayPath(vcs->owner()->fileName(), 50),
 			   _("Ignore changes and proceed with check out?"))) {
 		return;
@@ -163,7 +164,7 @@ void LyXVC::revert()
 	// Here we should check if the buffer is dirty. And if it is
 	// we should warn the user that reverting will discard all
 	// changes made since the last check in.
-	if (AskQuestion(_("When you revert, you will loose all changes made"),
+	if (Alert::askQuestion(_("When you revert, you will loose all changes made"),
 			_("to the document since the last check in."),
 			_("Do you still want to do it?"))) {
 

@@ -28,6 +28,7 @@
 #include "lyx_gui_misc.h"
 #include "lyx_cb.h" // ShowMessage()
 #include "support/lyxfunctional.h"
+#include "frontends/Alert.h"
 #include "gettext.h"
 #include "BufferView.h"
 #include "debug.h"
@@ -168,7 +169,7 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 	    format->isChildFormat())
 		format = getFormat(format->parentFormat());
 	if (!format || format->viewer().empty()) {
-		WriteAlert(_("Cannot view file"),
+		Alert::alert(_("Cannot view file"),
 			   _("No information for viewing ")
 			   + prettyName(format_name));
 			   return false;
@@ -198,7 +199,7 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 	int const res = one.startscript(Systemcalls::SystemDontWait, command);
 
 	if (res) {
-		WriteAlert(_("Cannot view file"),
+		Alert::alert(_("Cannot view file"),
 			   _("Error while executing"),
 			   command.substr(0, 50));
 		return false;
@@ -574,7 +575,7 @@ bool Converters::convert(Buffer const * buffer,
 
 	EdgePath edgepath = getPath(from_format, to_format);
 	if (edgepath.empty()) {
-		WriteAlert(_("Cannot convert file"),
+		Alert::alert(_("Cannot convert file"),
 			   _("No information for converting from ")
 			   + formats.prettyName(from_format) + _(" to ")
 			   + formats.prettyName(to_format));
@@ -665,10 +666,10 @@ bool Converters::convert(Buffer const * buffer,
 
 			if (res) {
 				if (conv.to == "program")
-					WriteAlert(_("There were errors during the Build process."),
+					Alert::alert(_("There were errors during the Build process."),
 						   _("You should try to fix them."));
 				else
-					WriteAlert(_("Cannot convert file"),
+					Alert::alert(_("Cannot convert file"),
 						   "Error while executing",
 						   command.substr(0, 50));
 				return false;
@@ -691,7 +692,7 @@ bool Converters::convert(Buffer const * buffer,
 			string to = subst(conv.result_dir,
 					  token_base, to_base);
 			if (!lyx::rename(from, to)) {
-				WriteAlert(_("Error while trying to move directory:"),
+				Alert::alert(_("Error while trying to move directory:"),
 					   from, ("to ") + to);
 				return false;
 			}
@@ -727,7 +728,7 @@ bool Converters::move(string const & from, string const & to, bool copy)
 				? lyx::copy(from2, to2)
 				: lyx::rename(from2, to2);
 			if (!moved && no_errors) {
-				WriteAlert(_("Error while trying to move file:"),
+				Alert::alert(_("Error while trying to move file:"),
 					   from2, _("to ") + to2);
 				no_errors = false;
 			}
@@ -818,13 +819,13 @@ bool Converters::scanLog(Buffer const * buffer, string const & command,
 		}
 		string head;
 		split(command, head, ' ');
-		WriteAlert(_("There were errors during running of ") + head,
+		Alert::alert(_("There were errors during running of ") + head,
 			   s, t);
 		return false;
 	} else if (result & LaTeX::NO_OUTPUT) {
 		string const s = _("The operation resulted in");
 		string const t = _("an empty file.");
-		WriteAlert(_("Resulting file is empty"), s, t);
+		Alert::alert(_("Resulting file is empty"), s, t);
 		return false;
 	}
 	return true;
@@ -872,7 +873,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 
 	// check return value from latex.run().
 	if ((result & LaTeX::NO_LOGFILE)) {
-		WriteAlert(_("LaTeX did not work!"),
+		Alert::alert(_("LaTeX did not work!"),
 			   _("Missing log file:"), name);
 	} else if ((result & LaTeX::ERRORS)) {
 		int num_errors = latex.getNumErrors();
@@ -886,12 +887,12 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 			s += _(" errors detected.");
 			t = _("You should try to fix them.");
 		}
-		WriteAlert(_("There were errors during the LaTeX run."),
+		Alert::alert(_("There were errors during the LaTeX run."),
 			   s, t);
 	}  else if (result & LaTeX::NO_OUTPUT) {
 		string const s = _("The operation resulted in");
 		string const t = _("an empty file.");
-		WriteAlert(_("Resulting file is empty"), s, t);
+		Alert::alert(_("Resulting file is empty"), s, t);
 	}
 
 	if (bv)

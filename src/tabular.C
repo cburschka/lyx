@@ -26,7 +26,7 @@
 #include "debug.h"
 #include "vspace.h"
 #include "layout.h"
-#include "lyx_gui_misc.h"
+#include "frontends/Alert.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "Painter.h"
@@ -266,9 +266,6 @@ void LyXTabular::AppendRow(int cell)
 
 void LyXTabular::DeleteRow(int row)
 {
-	// Why make it so hard? (Lgb)
-	//if (!(rows_ - 1))
-	//return;
 	if (rows_ == 1) return; // Not allowed to delete last row
 	
 	row_info.erase(row_info.begin() + row); //&row_info[row]);
@@ -1442,7 +1439,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 		lyxerr << "Tabular format < 5 is not supported anymore\n"
 			"Get an older version of LyX (< 1.1.x) for conversion!"
 			   << endl;
-		WriteAlert(_("Warning:"),
+		Alert::alert(_("Warning:"),
 				   _("Tabular format < 5 is not supported anymore\n"),
 				   _("Get an older version of LyX (< 1.1.x) for conversion!"));
 		if (version > 2) {
@@ -2651,16 +2648,9 @@ LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
 
 	for (; par; par = par->next()) {
 		for (int i = 0; i < par->size(); ++i) {
-			if (par->getChar(i)	== Paragraph::META_NEWLINE)
+			if (par->getChar(i) == Paragraph::META_NEWLINE)
 				return BOX_PARBOX;
 		}
 	}
 	return BOX_NONE;
 }
-
-/* Emacs:
- * Local variables:
- * tab-width: 4
- * End:
- * vi:set tabstop=4:
- */
