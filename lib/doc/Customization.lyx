@@ -7926,7 +7926,7 @@ If you are developing a client program, you might find it useful to enable
  debugging information from the LyX server.
  Do this by starting LyX as 
 \family typewriter 
-lyx -dbg 4096.
+lyx -dbg lyxserver.
 \layout Standard
 
 Warning: if LyX crashes, it may not manage to remove the pipes; in this
