@@ -1,3 +1,10 @@
+2002-04-29  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCharacter.h: store a vector<string> lang_ of language identifiers.
+
+	* FormCharacter.C: changes associated with character::getLanguageData
+	returning a vector<LanguagePair> rather than a vector<string>.
+
 2002-04-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormMathsPanel.C: translate Close

@@ -50,21 +50,23 @@ namespace character {
 	typedef std::pair<string, FONT_STATE> BarPair;
 	///
 	typedef std::pair<string, LColor::color> ColorPair;
+	///
+	typedef std::pair<string, string> LanguagePair;
 
 	///
-	std::vector<FamilyPair> const getFamilyData();
+	std::vector<FamilyPair>   const getFamilyData();
 	///
-	std::vector<SeriesPair> const getSeriesData();
+	std::vector<SeriesPair>   const getSeriesData();
 	///
-	std::vector<ShapePair>  const getShapeData();
+	std::vector<ShapePair>    const getShapeData();
 	///
-	std::vector<SizePair>   const getSizeData();
+	std::vector<SizePair>     const getSizeData();
 	///
-	std::vector<BarPair>    const getBarData();
+	std::vector<BarPair>      const getBarData();
 	///
-	std::vector<ColorPair>  const getColorData();
+	std::vector<ColorPair>    const getColorData();
 	///
-	std::vector<string> const getLanguageData();
+	std::vector<LanguagePair> const getLanguageData();
 
 } // namespace character
 

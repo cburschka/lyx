@@ -71,6 +71,8 @@ private:
 	std::vector<character::FONT_STATE> bar_;
 	///
 	std::vector<LColor::color>         color_;
+	///
+	std::vector<string>                lang_;
 };
 
 #endif

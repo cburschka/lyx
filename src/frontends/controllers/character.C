@@ -176,17 +176,19 @@ vector<ColorPair> const getColorData()
 }
 
 
-vector<string> const getLanguageData()
+vector<LanguagePair> const getLanguageData()
 {
-	vector<string> langs(languages.size() + 2);
+	vector<LanguagePair> langs(languages.size() + 2);
 
-	langs[0] = _("No change");
-	langs[1] = _("Reset");
+	langs[0].first = N_("No change"); langs[0].second = "No change";
+	langs[1].first = N_("Reset");     langs[1].second = "Reset";
 
-	vector<string>::size_type i = 1;
+	vector<string>::size_type i = 2;
 	for (Languages::const_iterator cit = languages.begin();
 	     cit != languages.end(); ++cit) {
-		langs[++i] = cit->second.lang();
+		langs[i].first  = cit->second.display();
+		langs[i].second = cit->second.lang();
+		++i;
 	}
 
 	return langs;

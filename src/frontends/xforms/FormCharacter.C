@@ -47,21 +47,22 @@ void FormCharacter::build()
 {
 	dialog_.reset(build_character());
 
-	vector<FamilyPair> const family = getFamilyData();
-	vector<SeriesPair> const series = getSeriesData();
-	vector<ShapePair>  const shape  = getShapeData();
-	vector<SizePair>   const size   = getSizeData();
-	vector<BarPair>    const bar    = getBarData();
-	vector<ColorPair>  const color  = getColorData();
-	vector<string> const language = getLanguageData();
+	vector<FamilyPair>   const family   = getFamilyData();
+	vector<SeriesPair>   const series   = getSeriesData();
+	vector<ShapePair>    const shape    = getShapeData();
+	vector<SizePair>     const size     = getSizeData();
+	vector<BarPair>      const bar      = getBarData();
+	vector<ColorPair>    const color    = getColorData();
+	vector<LanguagePair> const language = getLanguageData();
 
-	// Store the enums for later
+	// Store the identifiers for later
 	family_ = getSecond(family);
 	series_ = getSecond(series);
-	shape_ = getSecond(shape);
-	size_ = getSecond(size);
-	bar_ = getSecond(bar);
-	color_ = getSecond(color);
+	shape_  = getSecond(shape);
+	size_   = getSecond(size);
+	bar_    = getSecond(bar);
+	color_  = getSecond(color);
+	lang_   = getSecond(language);
 
 	// create a string of entries " entry1 | entry2 | entry3 | entry4 "
 	// with which to initialise the xforms choice object.
@@ -98,11 +99,11 @@ void FormCharacter::build()
 	fl_end_form();
 
 	// build up the combox entries
-	for (vector<string>::const_iterator cit = language.begin();
+	for (vector<LanguagePair>::const_iterator cit = language.begin();
 	     cit != language.end(); ++cit) {
-		combo_language2_->addto(*cit);
+		combo_language2_->addto(_(cit->first));
 	}
-	combo_language2_->select(*language.begin());
+	combo_language2_->select(1);
 
 	// Manage the ok, apply and cancel/close buttons
 	bc().setApply(dialog_->button_apply);
@@ -133,7 +134,8 @@ void FormCharacter::apply()
 	pos = fl_get_choice(dialog_->choice_color);
 	controller().setColor(color_[pos-1]);
 
-	controller().setLanguage(combo_language2_->getline());
+	pos = combo_language2_->get();
+	controller().setLanguage(lang_[pos-1]);
 
 	bool const toggleall = fl_get_button(dialog_->check_toggle_all);
 	controller().setToggleAll(toggleall);
@@ -175,7 +177,8 @@ void FormCharacter::update()
 	pos = int(findPos(color_, controller().getColor()));
 	fl_set_choice(dialog_->choice_color, pos+1);
 
-	combo_language2_->select(controller().getLanguage());
+	pos = int(findPos(lang_, controller().getLanguage()));
+	combo_language2_->select(pos+1);
 
 	fl_set_button(dialog_->check_toggle_all, controller().getToggleAll());
 }
@@ -209,8 +212,8 @@ ButtonPolicy::SMInput FormCharacter::input(FL_OBJECT *, long)
 	if (color_[pos-1] != LColor::ignore)
 		activate = ButtonPolicy::SMI_VALID;
 
-	string const language = combo_language2_->getline();
-	if (language != _("No change"))
+	pos = combo_language2_->get();
+	if (lang_[pos-1] != "No change")
 		activate = ButtonPolicy::SMI_VALID;
 
 	return activate;

@@ -1,3 +1,12 @@
+2002-04-29  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* character.[Ch] (getLanguageData): returns a vector<LanguagePair>
+	where LanguagePair is a display string and an identifying string.
+	The display string is internationalised.
+
+	* ControlCharacter.C (getLanguage, setLanguage): Do not internationalise
+	the identifying strings, "No change" and "Reset".
+
 2002-04-25  Herbert Voss  <voss@lyx.org>
 
 	* ControlSendto.C (allFormats): don't add the graphics extensions to the
