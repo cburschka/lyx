@@ -15,18 +15,24 @@ Thesaurus thesaurus;
 Thesaurus::ThesaurusEntry::ThesaurusEntry(string const & ent, char part)
 	: entry(ent), pos(Thesaurus::NONE)
 {
-	if (part & AikSaurus::Unknown) pos |= OTHER;
-	if (part & AikSaurus::Other) pos |= OTHER;
-	if (part & AikSaurus::Noun) pos |= NOUN;
-	if (part & AikSaurus::Verb) pos |= VERB;
-	if (part & AikSaurus::Adjective) pos |= ADJECTIVE;
-	if (part & AikSaurus::Adverb) pos |= ADVERB;
+	if (part & AikSaurus::Unknown)
+		pos |= OTHER;
+	if (part & AikSaurus::Other)
+		pos |= OTHER;
+	if (part & AikSaurus::Noun)
+		pos |= NOUN;
+	if (part & AikSaurus::Verb)
+		pos |= VERB;
+	if (part & AikSaurus::Adjective)
+		pos |= ADJECTIVE;
+	if (part & AikSaurus::Adverb)
+		pos |= ADVERB;
 }
 
 
 Thesaurus::Thesaurus()
 {
-	aik_ = new AikSaurus();
+	aik_ = new AikSaurus;
 }
 
 
@@ -44,9 +50,8 @@ std::vector<Thesaurus::ThesaurusEntry> Thesaurus::lookup(string const & text)
 		return entries;
 
 	char pos;
-	string ret;
 
-	ret = aik_->next(pos);
+	string ret = aik_->next(pos);
 	while (!ret.empty()) {
 		entries.push_back(ThesaurusEntry(ret, pos));
 		ret = aik_->next(pos);

@@ -12,24 +12,14 @@
  * ====================================================== 
  */
 
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
-
-#include <assert.h>
-#include <algorithm>
-#include <functional>
-
-#include "frontends/Alert.h"
 #include "bufferlist.h"
 #include "lyx_main.h"
-#include "support/FileInfo.h"
-#include "support/filetools.h"
-#include "support/lyxmanip.h"
-#include "support/lyxfunctional.h"
-#include "support/LAssert.h"
 #include "lyx_gui_misc.h"
 #include "lastfiles.h"
 #include "debug.h"
@@ -42,6 +32,19 @@
 #include "LyXView.h"
 #include "vc-backend.h"
 #include "TextCache.h"
+
+#include "frontends/Alert.h"
+
+#include "support/FileInfo.h"
+#include "support/filetools.h"
+#include "support/lyxmanip.h"
+#include "support/lyxfunctional.h"
+#include "support/LAssert.h"
+
+#include <assert.h>
+#include <algorithm>
+#include <functional>
+
 
 using std::vector;
 using std::find;

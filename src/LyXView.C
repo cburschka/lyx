@@ -15,26 +15,28 @@
 #pragma implementation
 #endif
 
-#include <sys/time.h>
-#include <unistd.h>
-
 #include "LyXView.h"
 #include "minibuffer.h"
 #include "debug.h"
 #include "intl.h"
 #include "lyxrc.h"
-#include "support/filetools.h"        // OnlyFilename()
 #include "lyxtext.h"
 #include "buffer.h"
-#include "frontends/Dialogs.h"
-#include "frontends/Toolbar.h"
-#include "frontends/Menubar.h"
 #include "MenuBackend.h"
 #include "lyx_gui_misc.h"	// [update,Close,Redraw]AllBufferRelatedDialogs
 #include "bufferview_funcs.h" // CurrentState()
 #include "gettext.h"
 #include "lyxfunc.h"
 #include "BufferView.h"
+
+#include "frontends/Dialogs.h"
+#include "frontends/Toolbar.h"
+#include "frontends/Menubar.h"
+
+#include "support/filetools.h"        // OnlyFilename()
+
+#include <sys/time.h>
+#include <unistd.h>
 
 using std::endl;
 using lyx::layout_type;

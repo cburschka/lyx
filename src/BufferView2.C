@@ -8,31 +8,34 @@
  *
  * ====================================================== */
 
-#include <fstream>
-#include <algorithm>
-
 #include <config.h>
 
 #include "BufferView.h"
 #include "buffer.h"
 #include "lyxcursor.h"
 #include "lyxtext.h"
-#include "insets/inseterror.h"
 #include "LyXView.h"
 #include "bufferlist.h"
-#include "support/FileInfo.h"
 #include "lyxscreen.h"
-#include "support/filetools.h"
-#include "frontends/Alert.h"
 #include "LaTeX.h"
 #include "BufferView_pimpl.h"
-#include "insets/insetcommand.h" //ChangeRefs
-#include "support/lyxfunctional.h" //equal_1st_in_pair
 #include "language.h"
 #include "gettext.h"
 #include "undo_funcs.h"
 #include "debug.h"
 #include "iterators.h"
+
+#include "frontends/Alert.h"
+
+#include "insets/insetcommand.h" //ChangeRefs
+#include "insets/inseterror.h"
+
+#include "support/FileInfo.h"
+#include "support/filetools.h"
+#include "support/lyxfunctional.h" //equal_1st_in_pair
+
+#include <fstream>
+#include <algorithm>
 
 extern BufferList bufferlist;
 

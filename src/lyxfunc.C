@@ -10,26 +10,13 @@
 
 #include <config.h>
 
-#include "Lsstream.h"
-
-#include <ctime>
-#include <clocale>
-
-#include <utility> 
-#include <algorithm> 
-
-#include <cstdlib>
-#include <cctype>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include "support/lyxalgo.h"
-#include "support/LAssert.h"
+#include "lyxfunc.h"
 #include "version.h"
 #include "kbmap.h"
-#include "lyxfunc.h"
 #include "lyxrow.h"
 #include "bufferlist.h"
 #include "BufferView.h"
@@ -39,6 +26,30 @@
 #include "lyx_main.h"
 #include "lyx_cb.h"
 #include "LyXAction.h"
+#include "debug.h"
+#include "lyxrc.h"
+#include "lyxtext.h"
+#include "gettext.h"
+#include "Lsstream.h"
+#include "trans_mgr.h"
+#include "layout.h"
+#include "WorkArea.h"
+#include "bufferview_funcs.h"
+#include "minibuffer.h"
+#include "vspace.h"
+#include "LyXView.h"
+#include "lyx_gui_misc.h"
+#include "FloatList.h"
+#include "converter.h"
+#include "exporter.h"
+#include "importer.h"
+#include "FontLoader.h"
+#include "TextCache.h"
+#include "lyxfind.h"
+#include "undo_funcs.h"
+#include "ParagraphParameters.h"
+#include "figureForm.h"
+
 #include "insets/inseturl.h"
 #include "insets/insetlatexaccent.h"
 #include "insets/insettoc.h"
@@ -62,42 +73,34 @@
 #endif
 #include "insets/insettabular.h"
 #include "insets/insetcaption.h"
+
 #include "mathed/formulamacro.h"
 #include "mathed/math_cursor.h"
 #include "mathed/math_inset.h"
-#include "minibuffer.h"
-#include "vspace.h"
-#include "LyXView.h"
-#include "lyx_gui_misc.h"
+
+#include "frontends/FileDialog.h"
+#include "frontends/Dialogs.h"
+#include "frontends/Toolbar.h"
+#include "frontends/Menubar.h"
+#include "frontends/Alert.h"
+
+#include "support/lyxalgo.h"
+#include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
 #include "support/syscall.h"
 #include "support/lstrings.h"
 #include "support/path.h"
 #include "support/lyxfunctional.h"
-#include "debug.h"
-#include "lyxrc.h"
-#include "lyxtext.h"
-#include "gettext.h"
-#include "trans_mgr.h"
-#include "layout.h"
-#include "WorkArea.h"
-#include "bufferview_funcs.h"
-#include "frontends/FileDialog.h"
-#include "frontends/Dialogs.h"
-#include "frontends/Toolbar.h"
-#include "frontends/Menubar.h"
-#include "frontends/Alert.h"
-#include "FloatList.h"
-#include "converter.h"
-#include "exporter.h"
-#include "importer.h"
-#include "FontLoader.h"
-#include "TextCache.h"
-#include "lyxfind.h"
-#include "undo_funcs.h"
-#include "ParagraphParameters.h"
-#include "figureForm.h"
+
+#include <ctime>
+#include <clocale>
+#include <cstdlib>
+#include <cctype>
+
+#include <utility> 
+#include <algorithm> 
+
 
 using std::pair;
 using std::make_pair; 

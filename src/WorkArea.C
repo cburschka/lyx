@@ -9,24 +9,27 @@
  * ====================================================== */
 
 #include <config.h>
-#include <cmath>
-#include <cctype>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "WorkArea.h"
 #include "debug.h"
-#include "support/lstrings.h"
 #include "LyXView.h"
-#include "support/filetools.h" // LibFileSearch
 #include "lyxrc.h" // lyxrc.show_banner
 #include "version.h" // lyx_version
-#include "support/LAssert.h"
 
 #if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 #include "lyxlookup.h"
 #endif
+
+#include "support/filetools.h" // LibFileSearch
+#include "support/lstrings.h"
+#include "support/LAssert.h"
+
+#include <cmath>
+#include <cctype>
 
 using std::endl;
 

@@ -63,7 +63,7 @@ MathAtom * MathIterator::nextInset() const
 {
 	if (position().pos_ == xcell().data_.size())
 		return 0;
-	return const_cast<MathAtom *>(xcell().begin() + position().pos_);
+	return const_cast<MathAtom *>(&*(xcell().begin() + position().pos_));
 }
 
 

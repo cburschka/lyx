@@ -1,3 +1,4 @@
+// -*- C++ -*-
 #ifndef MATH_ITERATOR_H
 #define MATH_ITERATOR_H
 

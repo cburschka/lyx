@@ -17,15 +17,8 @@
 #include "lyxtext.h"
 #include "LString.h"
 #include "paragraph.h"
-#include "insets/inseterror.h"
-#include "insets/insetbib.h"
-#include "insets/insetspecialchar.h"
-#include "insets/insettext.h"
-#include "insets/insetfloat.h"
 #include "layout.h"
 #include "LyXView.h"
-#include "support/textutils.h"
-#include "support/lstrings.h"
 #include "undo_funcs.h"
 #include "buffer.h"
 #include "bufferparams.h"
@@ -42,7 +35,16 @@
 #include "FloatList.h"
 #include "language.h"
 #include "ParagraphParameters.h"
+
+#include "insets/inseterror.h"
+#include "insets/insetbib.h"
+#include "insets/insetspecialchar.h"
+#include "insets/insettext.h"
+#include "insets/insetfloat.h"
+
 #include "support/LAssert.h"
+#include "support/textutils.h"
+#include "support/lstrings.h"
 
 using std::copy;
 using std::find;

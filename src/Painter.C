@@ -13,19 +13,10 @@
 #pragma implementation
 #endif
 
-#ifdef USE_STL_MEMORY
-#include <memory>
-#endif
-
-#include <cmath>
-
 #include "Painter.h"
 #include "LString.h"
 #include "debug.h"
 #include "lyxfont.h"
-#include "frontends/GUIRunTime.h"
-#include "support/LAssert.h"
-#include "support/lstrings.h"
 #include "WorkArea.h"
 #include "font.h"
 #include "ColorHandler.h"
@@ -33,7 +24,15 @@
 #include "encoding.h"
 #include "language.h"
 
+#include "frontends/GUIRunTime.h"
 #include "frontends/support/LyXImage.h"
+
+#include "support/LAssert.h"
+#include "support/lstrings.h"
+
+#include <boost/smart_ptr.hpp>
+
+#include <cmath>
 
 using std::endl;
 using std::max;
@@ -45,7 +44,7 @@ Painter::Painter(WorkArea & wa)
 }
 
 
-/* Basic drawing routines */
+// Basic drawing routines
 
 PainterBase & Painter::point(int x, int y, LColor::color c)
 {
@@ -72,11 +71,8 @@ PainterBase & Painter::lines(int const * xp, int const * yp, int np,
 			     enum line_style ls,
 			     enum line_width lw)
 {
-#ifndef HAVE_AUTO_PTR
-	XPoint * points = new XPoint[np];
-#else
-	auto_ptr<XPoint> points(new Xpoint[np]);
-#endif
+	boost::scoped_array<XPoint> points(new XPoint[np]);
+
 	for (int i = 0; i < np; ++i) {
 		points[i].x = xp[i];
 		points[i].y = yp[i];
@@ -84,11 +80,8 @@ PainterBase & Painter::lines(int const * xp, int const * yp, int np,
 
         XDrawLines(display, owner.getPixmap(),
 		   lyxColorHandler->getGCLinepars(ls, lw, col), 
-		   points, np, CoordModeOrigin);
+		   points.get(), np, CoordModeOrigin);
 
-#ifndef HAVE_AUTO_PTR
-	delete[] points;
-#endif	
 	return *this;
 }      
 
@@ -117,22 +110,17 @@ PainterBase & Painter::fillRectangle(int x, int y, int w, int h,
 PainterBase & Painter::fillPolygon(int const * xp, int const * yp, int np,
 			       LColor::color col)
 {
-#ifndef HAVE_AUTO_PTR
-	XPoint * points = new XPoint[np];
-#else
-	auto_ptr<XPoint> points(new XPoint[np]);
-#endif
-	for (int i=0; i < np; ++i) {
+	boost::scoped_array<XPoint> points(new XPoint[np]);
+
+	for (int i = 0; i < np; ++i) {
 		points[i].x = xp[i];
 		points[i].y = yp[i];
 	}
 
 	XFillPolygon(display, owner.getPixmap(),
-		     lyxColorHandler->getGCForeground(col), points, np, 
+		     lyxColorHandler->getGCForeground(col), points.get(), np, 
 		     Nonconvex, CoordModeOrigin);
-#ifndef HAVE_AUTO_PTR
-	delete[] points;
-#endif	
+
 	return *this;
 }      
 
@@ -154,25 +142,21 @@ PainterBase & Painter::segments(int const * x1, int const * y1,
 			    LColor::color col,
 			    enum line_style ls, enum line_width lw)
 {
-#ifndef HAVE_AUTO_PTR
-	XSegment * s= new XSegment[ns];
-#else
-	auto_ptr<XSegment> s(new XSegment[ns]);
-#endif
-	for (int i=0; i<ns; ++i) {
+	boost::scoped_array<XSegment> s(new XSegment[ns]);
+
+	for (int i = 0; i < ns; ++i) {
 		s[i].x1 = x1[i];
 		s[i].y1 = y1[i];
 		s[i].x2 = x2[i];
 		s[i].y2 = y2[i];
 	}
 	XDrawSegments(display, owner.getPixmap(),
-		      lyxColorHandler->getGCLinepars(ls, lw, col), s, ns);
+		      lyxColorHandler->getGCLinepars(ls, lw, col),
+		      s.get(), ns);
 
-#ifndef HAVE_AUTO_PTR
-	delete [] s;
-#endif
 	return *this;
 }
+
 
 PainterBase & Painter::pixmap(int x, int y, int w, int h, Pixmap bitmap)
 {
@@ -185,6 +169,7 @@ PainterBase & Painter::pixmap(int x, int y, int w, int h, Pixmap bitmap)
 	XFreeGC(display, gc);
 	return *this;
 }
+
 
 PainterBase & Painter::image(int x, int y, int w, int h, LyXImage const * image)
 {
@@ -211,7 +196,7 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 			LyXFont const & f)
 {
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1) {
-		XChar2b * xs = new XChar2b[ls];
+		boost::scoped_array<XChar2b> xs(new XChar2b[ls]);
 		Encoding const * encoding = f.language()->encoding();
 		LyXFont font(f);
 		if (f.isSymbolFont()) {
@@ -226,8 +211,7 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 			xs[i].byte1 = c >> 8;
 			xs[i].byte2 = c & 0xff;
 		}
-		text(x , y, xs, ls, font);
-		delete[] xs;
+		text(x , y, xs.get(), ls, font);
 		return *this;
 	}
 
@@ -238,10 +222,9 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 	} else {
 		LyXFont smallfont(f);
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
-		char c;
 		int tmpx = x;
 		for (size_t i = 0; i < ls; ++i) {
-			c = s[i];
+			char c = s[i];
 			if (islower(static_cast<unsigned char>(c))) {
 				c = toupper(c);
 				lyxfont::XSetFont(display, gc, smallfont);
@@ -303,8 +286,8 @@ PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 
 void Painter::underline(LyXFont const & f, int x, int y, int width)
 {
-	int below = max(lyxfont::maxDescent(f) / 2, 2);
-	int height = max((lyxfont::maxDescent(f) / 4) - 1, 1);
+	int const below = max(lyxfont::maxDescent(f) / 2, 2);
+	int const height = max((lyxfont::maxDescent(f) / 4) - 1, 1);
 	if (height < 2)
 		line(x, y + below, x + width, y + below, f.color());
 	else

@@ -1,10 +1,5 @@
 #include <config.h>
 
-#include <ctime>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <locale.h>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -26,19 +21,20 @@
 #include "lyx_gui_misc.h"
 #include "lyxrc.h"
 #include "intl.h"
-#include "support/LAssert.h"
-#include "support/lstrings.h"
-#include "frontends/Dialogs.h"
-#include "frontends/Alert.h"
-#include "insets/insetbib.h"
-#include "insets/insettext.h"
-/// added for Dispatch functions
+// added for Dispatch functions
 #include "lyx_cb.h"
-#include "frontends/FileDialog.h"
 #include "lyx_main.h"
 #include "FloatList.h"
-#include "support/filetools.h"
-#include "support/lyxfunctional.h"
+#include "gettext.h"
+#include "ParagraphParameters.h"
+#include "undo_funcs.h"
+
+#include "frontends/Dialogs.h"
+#include "frontends/Alert.h"
+#include "frontends/FileDialog.h"
+
+#include "insets/insetbib.h"
+#include "insets/insettext.h"
 #include "insets/inseturl.h"
 #include "insets/insetlatexaccent.h"
 #include "insets/insettoc.h"
@@ -63,10 +59,19 @@
 #include "insets/insetcaption.h"
 #include "insets/insetfloatlist.h"
 #include "insets/insetspecialchar.h"
-#include "gettext.h"
-#include "ParagraphParameters.h"
-#include "undo_funcs.h"
+
 #include "mathed/formulabase.h"
+
+#include "support/LAssert.h"
+#include "support/lstrings.h"
+#include "support/filetools.h"
+#include "support/lyxfunctional.h"
+
+#include <ctime>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <locale.h>
+
 
 extern lyx::layout_type current_layout;
 

@@ -30,8 +30,25 @@
 #include "bufferview_funcs.h"
 #include "lyxfont.h"
 #include "version.h"
+#include "LaTeX.h"
+#include "Chktex.h"
+#include "LyXView.h"
+#include "debug.h"
+#include "LaTeXFeatures.h"
+#include "lyxtext.h"
+#include "gettext.h"
+#include "language.h"
+#include "encoding.h"
+#include "exporter.h"
+#include "Lsstream.h"
+#include "converter.h"
+#include "BufferView.h"
+#include "ParagraphParameters.h"
+#include "iterators.h"
+
 #include "mathed/formulamacro.h"
 #include "mathed/formula.h"
+
 #include "insets/inset.h"
 #include "insets/inseterror.h"
 #include "insets/insetlabel.h"
@@ -63,37 +80,25 @@
 #endif
 #include "insets/insetcaption.h"
 #include "insets/insetfloatlist.h"
+
+#include "frontends/Dialogs.h"
+#include "frontends/Alert.h"
+
 #include "support/textutils.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/os.h"
-#include "LaTeX.h"
-#include "Chktex.h"
-#include "LyXView.h"
-#include "debug.h"
-#include "LaTeXFeatures.h"
 #include "support/syscall.h"
 #include "support/lyxlib.h"
 #include "support/FileInfo.h"
 #include "support/lyxmanip.h"
-#include "lyxtext.h"
-#include "gettext.h"
-#include "language.h"
-#include "frontends/Dialogs.h"
-#include "frontends/Alert.h"
-#include "encoding.h"
-#include "exporter.h"
-#include "Lsstream.h"
-#include "converter.h"
-#include "BufferView.h"
-#include "ParagraphParameters.h"
-#include "iterators.h"
 
 #include <fstream>
 #include <iomanip>
 #include <map>
 #include <stack>
 #include <list>
+#include <algorithm>
 
 #include <cstdlib>
 #include <cmath>
@@ -101,7 +106,6 @@
 #include <sys/types.h>
 #include <utime.h>
 
-#include <algorithm>
 
 #ifdef HAVE_LOCALE
 #include <locale>

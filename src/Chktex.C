@@ -13,23 +13,24 @@
 
 #include <config.h>
 
-#include <fstream>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "Chktex.h"
 #include "LaTeX.h" // TeXErrors
-#include "support/filetools.h"
 #include "lyxlex.h"
-#include "support/FileInfo.h"
 #include "debug.h"
+#include "gettext.h"
+
+#include "support/FileInfo.h"
+#include "support/filetools.h"
 #include "support/syscall.h"
 #include "support/syscontr.h"
 #include "support/path.h"
 #include "support/lstrings.h"
-#include "gettext.h"
+
+#include <fstream>
 
 using std::ifstream;
 using std::getline;

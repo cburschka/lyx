@@ -28,7 +28,7 @@
 2001-12-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* buffer.C (insertErtContents): try to handle font and language
-	interaction a bit better.
+	interaction a bit better.g
 
 	* ColorHandler.C (updateColor): change the hash to cover the whole
 	LColor enum, ws cleanup
