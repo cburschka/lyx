@@ -2656,3 +2656,37 @@ void InsetText::getDrawFont(LyXFont & font) const
 		return;
 	owner()->getDrawFont(font);
 }
+
+
+void InsetText::appendParagraphs(BufferParams const & bparams,
+                                 Paragraph * newpar)
+{
+	Paragraph * buf;
+	Paragraph * tmpbuf = newpar;
+	Paragraph * lastbuffer = buf = new Paragraph(*tmpbuf, false);
+	
+	while (tmpbuf->next()) {
+		tmpbuf = tmpbuf->next();
+		lastbuffer->next(new Paragraph(*tmpbuf, false));
+		lastbuffer->next()->previous(lastbuffer);
+		lastbuffer = lastbuffer->next();
+	}
+	lastbuffer = par;
+	while (lastbuffer->next())
+		lastbuffer = lastbuffer->next();
+	if (newpar->size() && lastbuffer->size() &&
+		!lastbuffer->isSeparator(lastbuffer->size()-1))
+	{
+		lastbuffer->insertChar(lastbuffer->size(), ' ');
+	}
+	
+	// make the buf exactly the same layout than our last paragraph
+	buf->makeSameLayout(lastbuffer);
+
+	// paste it!
+	lastbuffer->next(buf);
+	buf->previous(lastbuffer);
+	lastbuffer->pasteParagraph(bparams);
+
+	reinitLyXText();
+}

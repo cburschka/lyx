@@ -249,6 +249,8 @@ public:
 	///
 	void getDrawFont(LyXFont &) const;
 	///
+	void appendParagraphs(BufferParams const & bparams, Paragraph *);
+	///
 	//
 	// Public structures and variables
 	///

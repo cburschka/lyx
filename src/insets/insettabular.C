@@ -2036,7 +2036,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 				tabular->UnsetMultiColumn(actcell);
 				updateLocal(bv, INIT, true);
 			} else {
-				tabular->SetMultiColumn(actcell, 1);
+				tabular->SetMultiColumn(bv->buffer(), actcell, 1);
 				updateLocal(bv, CELL, true);
 			}
 			return;
@@ -2053,7 +2053,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 			s_start = sel_cell_start;
 			s_end = sel_cell_end;
 		}
-		tabular->SetMultiColumn(s_start, s_end - s_start + 1);
+		tabular->SetMultiColumn(bv->buffer(), s_start, s_end - s_start + 1);
 		actcell = s_start;
 		clearSelection();
 		updateLocal(bv, INIT, true);

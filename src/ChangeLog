@@ -1,3 +1,8 @@
+2002-03-21  Juergen Vigna  <jug@sad.it>
+
+	* tabular.C (SetMultiColumn): collapse also the contents of the
+	cells and set the last border right. Added a Buffer const * param.
+
 2002-03-20  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Makefile.am (LYX_CONV_LIBS): select libs depending on partial
