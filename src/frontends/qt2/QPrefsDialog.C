@@ -42,6 +42,7 @@
 #include <qwidgetstack.h>
 #include <qpushbutton.h>
 #include <qlistview.h>
+#include <qlistbox.h>
 #include <qspinbox.h>
 #include <qlineedit.h>
 #include <qcheckbox.h>
@@ -152,10 +153,22 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	// Qt sucks
 	resize(minimumSize());
 
+	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(new_format()));
+	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(remove_format()));
+	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(modify_format()));
+	connect(fileformatsModule->formatsLB, SIGNAL(highlighted(int)), this, SLOT(switch_format(int)));
+ 
 	// Qt really sucks. This is as ugly as it looks, but the alternative
 	// means having to derive every module == bloat
  
-	// FIXME: connect converters/formats/colors objs
+	// FIXME: connect colors objs
+ 
+	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
+	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(languageModule->rtlCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(languageModule->markForeignCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(languageModule->autoBeginCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
@@ -255,4 +268,93 @@ void QPrefsDialog::switchPane(QListViewItem * i)
 void QPrefsDialog::change_adaptor()
 {
 	form_->changed();
+}
+
+
+void QPrefsDialog::updateConverters()
+{ 
+	QPrefConvertersModule * convertmod(convertersModule);
+ 
+	convertmod->convertersLB->clear(); 
+
+	Converters::const_iterator ccit = form_->converters_.begin();
+	Converters::const_iterator cend = form_->converters_.end();
+	for (; ccit != cend; ++ccit) {
+		string const name(ccit->From->prettyname() + " -> " +
+			ccit->To->prettyname()); 
+		convertmod->convertersLB->insertItem(name.c_str());
+	}
+}
+
+ 
+void QPrefsDialog::updateFormats()
+{
+	QPrefFileformatsModule * formatmod(fileformatsModule);
+
+	formatmod->formatsLB->clear();
+ 
+	Formats::const_iterator cit = form_->formats_.begin();
+	Formats::const_iterator end = form_->formats_.end();
+	for (; cit != end; ++cit) {
+		formatmod->formatsLB->insertItem(cit->prettyname().c_str());
+	}
+}
+
+
+void QPrefsDialog::switch_format(int nr)
+{
+	Format const & f(form_->formats_.get(nr));
+	fileformatsModule->formatED->setText(f.name().c_str());
+	fileformatsModule->guiNameED->setText(f.prettyname().c_str());
+	fileformatsModule->extensionED->setText(f.extension().c_str());
+	fileformatsModule->shortcutED->setText(f.shortcut().c_str());
+	fileformatsModule->viewerED->setText(f.viewer().c_str());
+	fileformatsModule->formatRemovePB->setEnabled(
+		!form_->converters_.formatIsUsed(f.name()));
+}
+
+ 
+void QPrefsDialog::new_format()
+{
+	form_->formats_.add(_("New"));
+	form_->formats_.sort(); 
+	updateFormats();
+	fileformatsModule->formatsLB->setCurrentItem(form_->formats_.getNumber(_("New")));
+	updateConverters();
+}
+
+
+void QPrefsDialog::modify_format()
+{
+	Format const & oldformat(form_->formats_.get(fileformatsModule->formatsLB->currentItem()));
+	string const oldpretty(oldformat.prettyname());
+	string const name(fileformatsModule->formatED->text().latin1());
+	form_->formats_.erase(oldformat.name());
+ 
+        string const prettyname = fileformatsModule->guiNameED->text().latin1();
+        string const extension = fileformatsModule->extensionED->text().latin1();
+        string const shortcut = fileformatsModule->shortcutED->text().latin1();
+        string const viewer = fileformatsModule->viewerED->text().latin1();
+ 
+        form_->formats_.add(name, extension, prettyname, shortcut);
+	form_->formats_.sort();
+        form_->formats_.setViewer(name, viewer);
+
+	fileformatsModule->formatsLB->setUpdatesEnabled(false);
+	updateFormats(); 
+	fileformatsModule->formatsLB->setUpdatesEnabled(true);
+	fileformatsModule->formatsLB->update();
+ 
+	updateConverters();
+}
+
+
+void QPrefsDialog::remove_format()
+{
+	int const nr(fileformatsModule->formatsLB->currentItem());
+	if (nr < 0)
+		return;
+	form_->formats_.erase(form_->formats_.get(nr).name());
+	updateFormats();
+	updateConverters();
 }

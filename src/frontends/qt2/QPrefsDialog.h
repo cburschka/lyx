@@ -46,11 +46,20 @@ public:
  
 	~QPrefsDialog();
 
+	void updateConverters();
+
+	void updateFormats();
+
 public slots:
 	virtual void switchPane(QListViewItem * i);
 
 	void change_adaptor();
 
+	void switch_format(int);
+	void new_format();
+	void modify_format();
+	void remove_format();
+ 
 protected:
 	void closeEvent(QCloseEvent * e);
  

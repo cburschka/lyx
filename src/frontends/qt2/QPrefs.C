@@ -43,6 +43,7 @@
 #include <qlineedit.h>
 #include <qspinbox.h>
 #include <qcombobox.h> 
+#include <qlistbox.h>
  
 typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;
 
@@ -412,10 +413,14 @@ void QPrefs::update_contents()
 	fontmod->screenHugeED->setText(tostr(rc.font_sizes[LyXFont::SIZE_HUGE]).c_str());
 	fontmod->screenHugerED->setText(tostr(rc.font_sizes[LyXFont::SIZE_HUGER]).c_str());
 
-	converters_ = converters;
 	formats_ = formats;
- 
-	// FIXME: populate converters/formats 
 
+	dialog_->updateFormats();
+ 
+	converters_ = converters;
+
+	dialog_->updateConverters();
+ 
+ 
 	// FIXME: populate colors
 }
