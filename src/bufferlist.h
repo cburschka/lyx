@@ -106,7 +106,7 @@ public:
 	Buffer * readFile(string const &, bool ro);
 
 	/// Make a new file (buffer) using a template
-	Buffer * newFile(string const &, string);
+	Buffer * newFile(string const &, string, bool isNamed=false);
 	/// returns a vector with all the buffers filenames
 	std::vector<string> getFileNames() const;
 

@@ -432,7 +432,7 @@ Buffer * BufferList::getBuffer(string const & s)
 }
 
 
-Buffer * BufferList::newFile(string const & name, string tname)
+Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 {
 	// get a free buffer
 	Buffer * b = bstore.newBuffer(name);
@@ -464,7 +464,8 @@ Buffer * BufferList::newFile(string const & name, string tname)
 #warning Why mark a new document dirty? I deactivate this (Jug)
 	if (!lyxrc.new_ask_filename) {
 //		b->markDirty();
-		b->setUnnamed();
+		if (!isNamed)
+			b->setUnnamed();
 	}
 	b->setReadonly(false);
 	
@@ -528,7 +529,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 				_("Create new document with this name?")))
 			{
 				// Find a free buffer
-				b = newFile(s, string());
+				b = newFile(s, string(), true);
 			}
 		break;
 	}

@@ -1,3 +1,13 @@
+2000-09-13  Juergen Vigna  <jug@sad.it>
+
+	* src/frontends/xforms/FormDocument.C: implemented choice_class
+	as combox and give callback to combo_language so OK/Apply is activated
+	on change.
+
+	* src/bufferlist.C (newFile): small fix so already named files
+	(via an open call) are not requested to be named again on the
+	first save!
+
 2000-09-13  John Levon  <moz@compsoc.man.ac.uk>
 
         * src/frontends/kde/formtocdialog.C

@@ -61,6 +61,8 @@ public:
     ///
     static void InputCB(FL_OBJECT *, long);
     ///
+    static void ComboInputCB(int, void *);
+    ///
     static void ChoiceClassCB(FL_OBJECT *, long);
     ///
     static void ChoiceBulletSizeCB(FL_OBJECT * ob, long);
@@ -186,6 +188,8 @@ private:
     FL_OBJECT * fbullet;
     ///
     Combox * combo_language;
+    ///
+    Combox * combo_doc_class;
     ///
     ButtonController<NoRepeatedApplyReadOnlyPolicy> * bc_;
 };
