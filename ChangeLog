@@ -1,5 +1,9 @@
 1999-11-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/layouts/g-brief-{en,de}.layout,
+	  lib/templates/g-brief-{en,de}.lyx: new versions of the textclass
+	from Thomas Hartkens <thomas@hartkens.de>.
+
 	* src/{insets,mathed}/Makefile.am: do not declare an empty
 	LDFLAGS, so that it can be set at configure time (useful on Irix
 	for -n32 flag).

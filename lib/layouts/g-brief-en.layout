@@ -1,7 +1,7 @@
 #% Do not delete he line below; configure depends on this
 #  \DeclareLaTeXClass[g-brief]{letter (g-brief)}
 # Letter textclass definition file. 
-# Author : Thomas Hartkens <hartkens@informatik.uni-hamburg.de>
+# Author : Thomas Hartkens <thomas@hartkens.de>
 
 # Input general definitions
 # Input stdletter.inc
@@ -31,12 +31,17 @@ Style Letter
   Margin  		Static
   LatexType 		Environment
   LatexName 		g-brief
-  ParIndent		MM
   ParSkip 		0.4
   KeepEmpty		1  
   Align 		Block
   AlignPossible 	Block, Left, Right, Center
-  LabelType 		No_Label
+  LabelType 		Top_Environment
+  LabelString		Letter:
+  LabelFont 
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
 End
 
 
