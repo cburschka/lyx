@@ -132,7 +132,7 @@ string external_path(string const & p)
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	// Translate from cygwin path syntax to dos path syntax
 	if (is_absolute_path(p)) {
-		char dp[MAX_PATH];
+		char dp[PATH_MAX];
 		cygwin_conv_to_full_win32_path(p.c_str(), dp);
 		dos_path = !dp ? "" : dp;
 	}
@@ -160,7 +160,7 @@ string external_path(string const & p)
 string internal_path(string const & p)
 {
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	char posix_path[MAX_PATH];
+	char posix_path[PATH_MAX];
 	posix_path[0] = '\0';
 	cygwin_conv_to_posix_path(p.c_str(), posix_path);
 	return posix_path;
