@@ -250,6 +250,17 @@ QDocumentDialog::QDocumentDialog( QDocument * form)
 	connect( paperModule->facingPagesCB, SIGNAL( toggled(bool) ),
 		 this , SLOT( change_adaptor() ) );
 
+	/* bullets */
+	connect( bulletsModule->bullet1LE, SIGNAL( textChanged(const QString&) ),
+		 this , SLOT( change_adaptor() ) );
+	connect( bulletsModule->bulletsize1CO, SIGNAL( activated(int) ),
+		 this , SLOT( change_adaptor() ) );
+/*
+	connect( bulletsModule->levelSP, SIGNAL( valueChanged(int) ),
+		 this , SLOT( setBullet(int) ) );
+	connect( bulletsModule->levelSP, SIGNAL( valueChanged(int) ),
+		 this , SLOT( setBulletSize(int) ) );
+*/
 }
 
 

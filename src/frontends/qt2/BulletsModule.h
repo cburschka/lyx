@@ -18,8 +18,11 @@
 
 #include "ui/BulletsModuleBase.h"
 #include "LString.h"
+#include <vector>
 
 class QBrowseBox;
+class QLineEdit;
+
 
 class BulletsModule : public BulletsModuleBase {
 	Q_OBJECT
@@ -27,18 +30,40 @@ public:
 	BulletsModule(QWidget* parent = 0, const char* name = 0,
 		      WFlags fl = 0);
 	~BulletsModule();
+
+protected slots:
+	///
+	void standard(int row, int col);
+	///
+	void maths(int row, int col);
+	///
+	void ding1(int row, int col);
+	///
+	void ding2(int row, int col);
+	///
+	void ding3(int row, int col);
+	///
+	void ding4(int row, int col);
+	///
+	void setlevel1();
+	///
+	void setlevel2();
+	///
+	void setlevel3();
+	///
+	void setlevel4();
 	
-public slots:
-	void checkThis(int,int);
-	void setLevel1();
 	
 private:
-	QBrowseBox * standard;
-	QBrowseBox * maths;
-	QBrowseBox * ding1;
-	QBrowseBox * ding2;
-	QBrowseBox * ding3;
-	QBrowseBox * ding4;
+	QLineEdit * le_;
+
+	QBrowseBox * standard_;
+	QBrowseBox * maths_;
+	QBrowseBox * ding1_;
+	QBrowseBox * ding2_;
+	QBrowseBox * ding3_;
+	QBrowseBox * ding4_;
+
 };
 
 #endif // BULLETSMODULE_H

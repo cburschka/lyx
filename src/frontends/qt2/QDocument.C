@@ -204,10 +204,15 @@ void QDocument::apply()
 		dialog_->numberingModule->sectionnrDepthSB->value();
 
 	// bullets
-	//BufferParams & param = lv_.buffer()->params;
-	//param.temp_bullets[current_bullet_depth].
-	//	setText(getString(bullets_->input_bullet_latex));
+	params.user_defined_bullets[0].setText(dialog_->bulletsModule->bullet1LE->text().latin1());
+	params.user_defined_bullets[1].setText(dialog_->bulletsModule->bullet2LE->text().latin1());
+	params.user_defined_bullets[2].setText(dialog_->bulletsModule->bullet3LE->text().latin1());
+	params.user_defined_bullets[3].setText(dialog_->bulletsModule->bullet4LE->text().latin1());
 	
+	params.user_defined_bullets[0].setSize(dialog_->bulletsModule->bulletsize1CO->currentItem()-1);
+	params.user_defined_bullets[1].setSize(dialog_->bulletsModule->bulletsize2CO->currentItem()-1);
+	params.user_defined_bullets[2].setSize(dialog_->bulletsModule->bulletsize3CO->currentItem()-1);
+	params.user_defined_bullets[3].setSize(dialog_->bulletsModule->bulletsize4CO->currentItem()-1);
 
 	// packages
 	switch (dialog_->packagesModule->lspacingCO->currentItem()) {
@@ -428,29 +433,25 @@ void QDocument::update_contents()
 		params.tocdepth);
 
 	// bullets
-	QString s = params.user_defined_bullets[0].getText().c_str();
+	QString s;
+	s = params.user_defined_bullets[0].getText().c_str();
 	dialog_->bulletsModule->bullet1LE->setText(s);
-	
 	s = params.user_defined_bullets[1].getText().c_str();
 	dialog_->bulletsModule->bullet2LE->setText(s);
-	
 	s = params.user_defined_bullets[2].getText().c_str();
 	dialog_->bulletsModule->bullet3LE->setText(s);
-	
 	s = params.user_defined_bullets[3].getText().c_str();
 	dialog_->bulletsModule->bullet4LE->setText(s);
 	
 	dialog_->bulletsModule->bulletsize1CO->setCurrentItem(
 		params.user_defined_bullets[0].getSize() + 1);
-	
 	dialog_->bulletsModule->bulletsize2CO->setCurrentItem(
 		params.user_defined_bullets[1].getSize() + 1);
-	
 	dialog_->bulletsModule->bulletsize3CO->setCurrentItem(
 		params.user_defined_bullets[2].getSize() + 1);
-	
 	dialog_->bulletsModule->bulletsize4CO->setCurrentItem(
 		params.user_defined_bullets[3].getSize() + 1);
+	
 	
 	// packages
 	QStringList enc;
