@@ -40,7 +40,7 @@ struct Loader::Impl : boost::signals::trackable {
 	void createPixmap();
 
 	///
-	void startLoading(Inset const &);
+	void startLoading();
 
 	/// The loading status of the image.
 	ImageStatus status_;
@@ -62,10 +62,6 @@ private:
 	///
 	Params params_;
 
-	// Multiple Insets can share the same image
-	typedef std::list<Inset const *> InsetList;
-	///
-	InsetList insets;
 };
 
 
@@ -122,15 +118,7 @@ void Loader::startLoading() const
 {
 	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_.get())
 		return;
-	pimpl_->cached_item_->startLoading();
-}
-
-
-void Loader::startLoading(Inset const & inset) const
-{
-	if (pimpl_->status_ != WaitingToLoad || !pimpl_->cached_item_.get())
-		return;
-	pimpl_->startLoading(inset);
+	pimpl_->startLoading();
 }
 
 
@@ -281,16 +269,10 @@ void Loader::Impl::createPixmap()
 }
 
 
-void Loader::Impl::startLoading(Inset const & inset)
+void Loader::Impl::startLoading()
 {
 	if (status_ != WaitingToLoad)
 		return;
-
-	InsetList::const_iterator it  = insets.begin();
-	InsetList::const_iterator end = insets.end();
-	it = std::find(it, end, &inset);
-	if (it == end)
-		insets.push_back(&inset);
 
 	LoaderQueue::get().touch(cached_item_);
 }

@@ -1,3 +1,9 @@
+2003-02-26  Alfredo Braunstein <abraunst@libero.it>
+
+	* insetgraphics.C (draw)
+	* insetinclude.C (draw): Eliminate also the other argument (owner 
+	inset inset) in the call to PreviewImage::image
+
 2003-02-25  Alfredo Braunstein <abraunst@libero.it>
 
 	* insetgraphics.C (draw)

@@ -1,4 +1,9 @@
-003-02-26  Angus Leeming  <leeming@lyx.org>
+2003-02-26  Alfredo Braunstein <abraunst@libero.it>
+
+	* formula.C (draw): strip also the other argument (the owner inset) in 
+	the call to PreviewImage::image
+
+2003-02-26  Angus Leeming  <leeming@lyx.org>
 
 	* ref_inset.[Ch]: add a localDispatch method to RefInset.
 	add a string2RefInset function to 'translate' the string passed to the

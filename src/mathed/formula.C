@@ -211,7 +211,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 
 	if (use_preview) {
 		pi.pain.image(x + 1, y - a, w, h,   // one pixel gap in front
-			      *(preview_->pimage()->image(*this)));
+			      *(preview_->pimage()->image()));
 	} else {
 		pi.base.style = LM_ST_TEXT;
 		pi.base.font  = font;

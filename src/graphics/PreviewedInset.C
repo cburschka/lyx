@@ -105,7 +105,7 @@ bool PreviewedInset::previewReady() const
 	if (!pimage_)
 		return false;
 
-	return pimage_->image(inset_);
+	return pimage_->image();
 }
 
 

@@ -47,7 +47,7 @@ public:
 	/** If the image is not yet loaded (WaitingToLoad), then this method
 	 *  triggers that.
 	 */
-	Image const * image(Inset const & inset) const;
+	Image const * image() const;
 
 private:
 	/// Use the Pimpl idiom to hide the internals.

@@ -30,7 +30,7 @@ struct PreviewImage::Impl : public boost::signals::trackable {
 	///
 	~Impl();
 	///
-	Image const * image(Inset const &);
+	Image const * image();
 	///
 	void statusChanged();
 
@@ -93,9 +93,9 @@ int PreviewImage::width() const
 }
 
 
-Image const * PreviewImage::image(Inset const & inset) const
+Image const * PreviewImage::image() const
 {
-	return pimpl_->image(inset);
+	return pimpl_->image();
 }
 
 
@@ -116,10 +116,10 @@ PreviewImage::Impl::~Impl()
 }
 
 
-Image const * PreviewImage::Impl::image(Inset const & inset)
+Image const * PreviewImage::Impl::image()
 {
 	if (iloader_.status() == WaitingToLoad)
-		iloader_.startLoading(inset);
+		iloader_.startLoading();
 
 	return iloader_.image();
 }
