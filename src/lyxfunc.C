@@ -332,6 +332,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_REDO:
 		disable = buf->redostack.empty();
 		break;
+	case LFUN_CUT:
+	case LFUN_COPY:
+		disable = !view()->getLyXText()->selection.set();
+		break;
 #ifndef HAVE_LIBAIKSAURUS
 	case LFUN_THESAURUS_ENTRY:
 		disable = true;

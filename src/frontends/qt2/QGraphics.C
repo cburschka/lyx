@@ -71,9 +71,21 @@ void QGraphics::update_contents()
 {
 	InsetGraphicsParams & igp = controller().params();
 
+	// set the right default unit
 	string unit = "cm";
-	if (lyxrc.default_papersize < 3)
-	    unit = "in";
+	switch (lyxrc.default_papersize) {
+		case BufferParams::PAPER_DEFAULT: break;
+	
+		case BufferParams::PAPER_USLETTER:
+		case BufferParams::PAPER_LEGALPAPER:
+		case BufferParams::PAPER_EXECUTIVEPAPER: unit = "in"; break;
+	
+		case BufferParams::PAPER_A3PAPER:
+		case BufferParams::PAPER_A4PAPER:
+		case BufferParams::PAPER_A5PAPER:
+		case BufferParams::PAPER_B5PAPER: unit = "cm"; break;
+	}
+	// ?? defaultUnit is not used !!
 	string const defaultUnit = string(unit);
 
 	// Update dialog with details from inset
@@ -112,42 +124,18 @@ void QGraphics::update_contents()
 
 	int item;
 	switch (igp.display) {
-		case InsetGraphicsParams::DEFAULT: item = 0; break;
-		case InsetGraphicsParams::MONOCHROME: item = 1; break;
-		case InsetGraphicsParams::GRAYSCALE: item = 2; break;
-		case InsetGraphicsParams::COLOR: item = 3; break;
-		case InsetGraphicsParams::NONE: item = 4; break;
+		case grfx::DefaultDisplay: item = 0; break;
+		case grfx::MonochromeDisplay: item = 1; break;
+		case grfx::GrayscaleDisplay: item = 2; break;
+		case grfx::ColorDisplay: item = 3; break;
+		case grfx::NoDisplay: item = 4; break;
 	}
 	dialog_->show->setCurrentItem(item);
 
-	QRadioButton * b;
- 
-	switch (igp.lyxsize_kind) {
-		case InsetGraphicsParams::DEFAULT_SIZE: b = dialog_->displaydefaultRB; break;
-		case InsetGraphicsParams::WH: b = dialog_->displaycustomRB; break;
-		case InsetGraphicsParams::SCALE: b = dialog_->displayscaleRB; break;
-	}
-	b->setChecked(true);
- 
-	dialog_->displaywidthUnit->setCurrentItem(igp.lyxwidth.unit());
-	dialog_->displayheightUnit->setCurrentItem(igp.lyxheight.unit());
-	dialog_->displaywidth->setText(tostr(igp.lyxwidth.value()).c_str());
-	dialog_->displayheight->setText(tostr(igp.lyxheight.value()).c_str());
 	dialog_->displayscale->setText(tostr(igp.lyxscale).c_str());
-	dialog_->displayratioCB->setChecked(igp.keepLyXAspectRatio);
 
-	switch (igp.size_kind) {
-		case InsetGraphicsParams::DEFAULT_SIZE: b = dialog_->defaultRB; break;
-		case InsetGraphicsParams::WH: b = dialog_->customRB; break;
-		case InsetGraphicsParams::SCALE: b = dialog_->scaleRB; break;
-	}
-	b->setChecked(true);
-	
 	dialog_->widthUnit->setCurrentItem(igp.width.unit());
 	dialog_->heightUnit->setCurrentItem(igp.height.unit());
-	dialog_->width->setText(tostr(igp.width.value()).c_str());
-	dialog_->height->setText(tostr(igp.height.value()).c_str());
-	dialog_->scale->setText(tostr(igp.scale).c_str());
 	dialog_->aspectratio->setChecked(igp.keepAspectRatio);
 
 	// Update the rotate angle
@@ -205,61 +193,32 @@ void QGraphics::apply()
 	igp.subcaptionText = dialog_->subcaption->text();
 
 	switch (dialog_->show->currentItem()) {
-		case 0: igp.display = InsetGraphicsParams::DEFAULT; break;
-		case 1: igp.display = InsetGraphicsParams::MONOCHROME; break;
-		case 2: igp.display = InsetGraphicsParams::GRAYSCALE; break;
-		case 3: igp.display = InsetGraphicsParams::COLOR; break;
-		case 4: igp.display = InsetGraphicsParams::NONE; break;
+		case 0: igp.display = grfx::DefaultDisplay; break;
+		case 1: igp.display = grfx::MonochromeDisplay; break;
+		case 2: igp.display = grfx::GrayscaleDisplay; break;
+		case 3: igp.display = grfx::ColorDisplay; break;
+		case 4: igp.display = grfx::NoDisplay; break;
 		default:;
 	}
-
-	if (dialog_->defaultRB->isChecked())
-	    igp.size_kind = InsetGraphicsParams::DEFAULT_SIZE;
-	else if (dialog_->customRB->isChecked())
-	    igp.size_kind = InsetGraphicsParams::WH;
-	else
-	    igp.size_kind = InsetGraphicsParams::SCALE;
 
 	string value(dialog_->width->text());
 	igp.width = LyXLength(strToDbl(value), dialog_->widthUnit->currentLengthItem());
 	value = string(dialog_->height->text());
 	igp.height = LyXLength(strToDbl(value), dialog_->heightUnit->currentLengthItem());
 
-	igp.scale = strToInt(string(dialog_->scale->text()));
 	igp.keepAspectRatio = dialog_->aspectratio->isChecked();
  
-	if (dialog_->displaydefaultRB->isChecked())
-	    igp.lyxsize_kind = InsetGraphicsParams::DEFAULT_SIZE;
-	else if (dialog_->displaycustomRB->isChecked())
-	    igp.lyxsize_kind = InsetGraphicsParams::WH;
-	else
-	    igp.lyxsize_kind = InsetGraphicsParams::SCALE;
-
-	value = string(dialog_->displaywidth->text());
-	igp.lyxwidth = LyXLength(strToDbl(value), dialog_->displaywidthUnit->currentLengthItem());
-	value = string(dialog_->displayheight->text());
-	igp.lyxheight = LyXLength(strToDbl(value), dialog_->displayheightUnit->currentLengthItem());
-
 	igp.lyxscale = strToInt(string(dialog_->displayscale->text()));
-	igp.keepLyXAspectRatio = dialog_->displayratioCB->isChecked();
 
 	igp.rotateAngle = strToDbl(string(dialog_->angle->text()));
-
-	while (igp.rotateAngle < 0.0 || igp.rotateAngle > 360.0) {
-		if (igp.rotateAngle < 0.0) {
-			igp.rotateAngle += 360.0;
-		} else if (igp.rotateAngle > 360.0) {
-			igp.rotateAngle -= 360.0;
-		}
-	}
+	while (igp.rotateAngle < -360.0) igp.rotateAngle += 360.0;
+	while (igp.rotateAngle >  360.0) igp.rotateAngle -= 360.0;
 
 	if ((dialog_->origin->currentItem()) > 0)
 		igp.rotateOrigin = dialog_->origin->currentText();
 	else
 	    igp.rotateOrigin = string();
 
-	igp.rotate = igp.rotateAngle != 0.0;
-	 
 	igp.special = dialog_->latexoptions->text();
 }
 

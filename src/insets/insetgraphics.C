@@ -391,7 +391,7 @@ Inset::EDITABLE InsetGraphics::editable() const
 
 void InsetGraphics::write(Buffer const *, ostream & os) const
 {
-	os << "Graphics FormatVersion " << VersionNumber << '\n';
+	os << "Graphics\n";
 	params().Write(os);
 }
 
@@ -402,10 +402,8 @@ void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
 
 	if (token == "Graphics")
 		readInsetGraphics(lex);
-	else if (token == "Figure") // Compatibility reading of FigInset figures.
-		readFigInset(lex);
 	else
-		lyxerr[Debug::GRAPHICS] << "Not a Graphics or Figure inset!\n";
+		lyxerr[Debug::GRAPHICS] << "Not a Graphics inset!\n";
 
 	cache_->update(MakeAbsPath(params().filename, buf->filePath()));
 }
@@ -445,105 +443,6 @@ void InsetGraphics::readInsetGraphics(LyXLex & lex)
 	}
 }
 
-// FormatVersion < 1.0  (LyX < 1.2)
-void InsetGraphics::readFigInset(LyXLex & lex)
-{
-	std::vector<string> const oldUnitsWidth =
-		getVectorFromString("pt, cm, in, text%, col%");
-	std::vector<string> const oldUnitsHeight =
-		getVectorFromString("pt, cm, in, theight%");
-	bool finished = false;
-	// set the display default
-	if (lyxrc.display_graphics == "mono")
-	    params_.display = InsetGraphicsParams::MONOCHROME;
-	else if (lyxrc.display_graphics == "gray")
-	    params_.display = InsetGraphicsParams::GRAYSCALE;
-	else if (lyxrc.display_graphics == "color")
-	    params_.display = InsetGraphicsParams::COLOR;
-	else
-	    params_.display = InsetGraphicsParams::NONE;
-	while (lex.isOK() && !finished) {
-		lex.next();
-
-		string const token = lex.getString();
-		lyxerr[Debug::GRAPHICS] << "Token: " << token << endl;
-
-		if (token.empty())
-			continue;
-		else if (token == "\\end_inset") {
-			finished = true;
-		} else if (token == "file") {
-			if (lex.next()) {
-				params_.filename = lex.getString();
-			}
-		} else if (token == "extra") {
-			if (lex.next());
-			// kept for backwards compability. Delete in 0.13.x
-		} else if (token == "subcaption") {
-			if (lex.eatLine())
-				params_.subcaptionText = lex.getString();
-		} else if (token == "label") {
-			if (lex.next());
-			// kept for backwards compability. Delete in 0.13.x
-		} else if (token == "angle") {
-			if (lex.next()) {
-				params_.rotate = true;
-				params_.rotateAngle = lex.getFloat();
-			}
-		} else if (token == "size") {
-			if (lex.next())
-				params_.lyxwidth = LyXLength(lex.getString()+"pt");
-			if (lex.next())
-				params_.lyxheight = LyXLength(lex.getString()+"pt");
-			params_.lyxsize_kind = InsetGraphicsParams::WH;
-		} else if (token == "flags") {
-			if (lex.next())
-				switch (lex.getInteger()) {
-				case 1: params_.display = InsetGraphicsParams::MONOCHROME;
-				    break;
-				case 2: params_.display = InsetGraphicsParams::GRAYSCALE;
-				    break;
-				case 3: params_.display = InsetGraphicsParams::COLOR;
-				    break;
-				case 8: params_.display = InsetGraphicsParams::NONE;
-				    break;
-				}
-		} else if (token == "subfigure") {
-			params_.subcaption = true;
-		} else if (token == "width") {
-		    if (lex.next()) {
-			int i = lex.getInteger();
-			if (lex.next()) {
-			    if (i == 5) {
-				params_.scale = lex.getInteger();
-				params_.size_kind = InsetGraphicsParams::SCALE;
-			    } else {
-				string const value = lex.getString();
-				lyxerr[Debug::GRAPHICS] << "readFiginset::oldWidth: "
-					<< value << oldUnitsWidth[i] << endl;
-				params_.width = LyXLength(value + oldUnitsWidth[i]);
-				lyxerr[Debug::GRAPHICS] << "readFiginset::newWidth: "
-					<< params_.width.asString() << endl;
-				params_.size_kind = InsetGraphicsParams::WH;
-			    }
-			}
-		    }
-		} else if (token == "height") {
-		    if (lex.next()) {
-			int i = lex.getInteger();
-			if (lex.next()) {
-				string const value = lex.getString();
-				lyxerr[Debug::GRAPHICS] << "readFiginset::oldHeight: "
-					<< value << oldUnitsHeight[i] << endl;
-				params_.height = LyXLength(value + oldUnitsHeight[i]);
-				lyxerr[Debug::GRAPHICS] << "readFiginset::newHeight: "
-					<< params_.height.asString() << endl;
-			    params_.size_kind = InsetGraphicsParams::WH;
-			}
-		    }
-		}
-	}
-}
 
 string const InsetGraphics::createLatexOptions() const
 {
@@ -557,20 +456,22 @@ string const InsetGraphics::createLatexOptions() const
 	    options << "  draft,\n";
 	if (params().clip)
 	    options << "  clip,\n";
-	if (params().size_kind == InsetGraphicsParams::WH) {
-	    if (!params().width.zero())
-		options << "  width=" << params().width.asLatexString() << ",\n";
-	    if (!params().height.zero())
-		options << "  height=" << params().height.asLatexString() << ",\n";
-	} else if (params().size_kind == InsetGraphicsParams::SCALE) {
-	    if (params().scale > 0)
-		options << "  scale=" << double(params().scale)/100.0 << ",\n";
+	
+	if (params().scale) {
+		if (params().scale != 100)
+			options << "  scale=" << params().scale / 100.0 << ",\n";
+	} else {
+		if (!params().width.zero())
+			options << "  width=" << params().width.asLatexString() << ",\n";
+		if (!params().height.zero())
+			options << "  height=" << params().height.asLatexString() << ",\n";
+		if (params().keepAspectRatio)
+	    		options << "  keepaspectratio,\n";
 	}
-	if (params().keepAspectRatio)
-	    options << "  keepaspectratio,\n";
-	// Make sure it's not very close to zero, a float can be effectively
-	// zero but not exactly zero.
-	if (!lyx::float_equal(params().rotateAngle, 0, 0.001) && params().rotate) {
+
+	// Make sure rotation angle is not very close to zero;
+	// a float can be effectively zero but not exactly zero.
+	if (!lyx::float_equal(params().rotateAngle, 0, 0.001)) {
 	    options << "  angle=" << params().rotateAngle << ",\n";
 	    if (!params().rotateOrigin.empty()) {
 		options << "  origin=" << params().rotateOrigin[0];
@@ -583,8 +484,10 @@ string const InsetGraphics::createLatexOptions() const
 		options << ",\n";
 	    }
 	}
+
 	if (!params().special.empty())
 	    options << params().special << ",\n";
+
 	string opts = options.str().c_str();
 	return opts.substr(0,opts.size()-2);	// delete last ",\n"
 }

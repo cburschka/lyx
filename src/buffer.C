@@ -157,14 +157,7 @@ Buffer::Buffer(string const & file, bool ronly)
 	  filename_(file), users(0), ctrs(new Counters)
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
-//	filename = file;
 	filepath_ = OnlyPath(file);
-//	lyx_clean = true;
-//	bak_clean = true;
-//	dep_clean = 0;
-//	read_only = ronly;
-//	unnamed = false;
-//	users = 0;
 	lyxvc.buffer(this);
 	if (read_only || lyxrc.use_tempdir) {
 		tmppath = CreateBufferTmpDir();
@@ -3217,20 +3210,21 @@ vector<pair<string, string> > const Buffer::getBibkeyList() const
 		}
 	}
 
+	if (!keys.empty())
+		return keys;
+ 
 	// Might be either using bibtex or a child has bibliography
-	if (keys.empty()) {
-		for (inset_iterator it = inset_const_iterator_begin();
-			it != inset_const_iterator_end(); ++it) {
-			// Search for Bibtex or Include inset
-			if (it->lyxCode() == Inset::BIBTEX_CODE) {
-				vector<StringPair> tmp =
-					static_cast<InsetBibtex &>(*it).getKeys(this);
-				keys.insert(keys.end(), tmp.begin(), tmp.end());
-			} else if (it->lyxCode() == Inset::INCLUDE_CODE) {
-				vector<StringPair> const tmp =
-					static_cast<InsetInclude &>(*it).getKeys();
-				keys.insert(keys.end(), tmp.begin(), tmp.end());
-			}
+	for (inset_iterator it = inset_const_iterator_begin();
+		it != inset_const_iterator_end(); ++it) {
+		// Search for Bibtex or Include inset
+		if (it->lyxCode() == Inset::BIBTEX_CODE) {
+			vector<StringPair> tmp =
+				static_cast<InsetBibtex &>(*it).getKeys(this);
+			keys.insert(keys.end(), tmp.begin(), tmp.end());
+		} else if (it->lyxCode() == Inset::INCLUDE_CODE) {
+			vector<StringPair> const tmp =
+				static_cast<InsetInclude &>(*it).getKeys();
+			keys.insert(keys.end(), tmp.begin(), tmp.end());
 		}
 	}
 

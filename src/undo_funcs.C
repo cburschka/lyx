@@ -105,7 +105,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 
 	// replace the paragraphs with the undo informations
 
-	Paragraph * tmppar3 = undo.par;
+	Paragraph * undopar = undo.par;
 	undo.par = 0;	/* otherwise the undo destructor would
 			   delete the paragraph */
 
@@ -113,17 +113,17 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	// paragraph if there is any. This is not needed if we don't have
 	// a paragraph before because then in is automatically done in the
 	// function which assigns the first paragraph to an InsetText. (Jug)
-	Paragraph * tmppar4 = tmppar3;
-	if (tmppar4) {
+	Paragraph * lastundopar = undopar;
+	if (lastundopar) {
 		Inset * in = 0;
 		if (before)
 			in = before->inInset();
 		else if (undo.number_of_inset_id >= 0)
 			in = bv->buffer()->getInsetFromID(undo.number_of_inset_id);
-		tmppar4->setInsetOwner(in);
-		while (tmppar4->next()) {
-			tmppar4 = tmppar4->next();
-			tmppar4->setInsetOwner(in);
+		lastundopar->setInsetOwner(in);
+		while (lastundopar->next()) {
+			lastundopar = lastundopar->next();
+			lastundopar->setInsetOwner(in);
 		}
 	}
 
@@ -137,7 +137,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			deletepar = before->next();
 		else
 			deletepar = firstUndoParagraph(bv, undo.number_of_inset_id);
-		tmppar2 = tmppar3;
+		tmppar2 = undopar;
 		while (deletepar && deletepar != behind) {
 			deletelist.push_back(deletepar);
 			tmppar = deletepar;
@@ -155,14 +155,14 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	}
 
 	// put the new stuff in the list if there is one
-	if (tmppar3) {
+	if (undopar) {
 		if (before)
-			before->next(tmppar3);
+			before->next(undopar);
 		else
 			bv->text->ownerParagraph(firstUndoParagraph(bv, undo.number_of_inset_id)->id(),
-						 tmppar3);
+						 undopar);
 
-		tmppar3->previous(before);
+		undopar->previous(before);
 	} else {
 		// We enter here on DELETE undo operations where we have to
 		// substitue the second paragraph with the first if the removed
@@ -170,13 +170,15 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		if (!before && behind) {
 			bv->text->ownerParagraph(firstUndoParagraph(bv, undo.number_of_inset_id)->id(),
 						 behind);
-			tmppar3 = behind;
+			undopar = behind;
 		}
 	}
-	if (tmppar4) {
-		tmppar4->next(behind);
+
+	// thread the end of the undo onto the par in front if any
+	if (lastundopar) {
+		lastundopar->next(behind);
 		if (behind)
-			behind->previous(tmppar4);
+			behind->previous(lastundopar);
 	}
 
 
@@ -196,8 +198,8 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 
 	tmppar = bv->buffer()->getParFromID(undo.number_of_cursor_par);
 	UpdatableInset* it = 0;
-	if (tmppar3)
-		it = static_cast<UpdatableInset*>(tmppar3->inInset());
+	if (undopar)
+		it = static_cast<UpdatableInset*>(undopar->inInset());
 	if (it) {
 		it->getLyXText(bv)->redoParagraphs(bv,
 						   it->getLyXText(bv)->cursor,

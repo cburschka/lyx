@@ -25,10 +25,8 @@
 class ControlGraphics;
 struct FD_graphics;
 struct FD_graphics_file;
-struct FD_graphics_lyxview;
-struct FD_graphics_size;
 struct FD_graphics_bbox;
-struct FD_graphics_special;
+struct FD_graphics_extra;
 
 /** This class provides an XForms implementation of the Graphics Dialog.
  */
@@ -55,13 +53,9 @@ private:
 	/// Real GUI implementation.
 	boost::scoped_ptr<FD_graphics_file> file_;
 	///
-	boost::scoped_ptr<FD_graphics_lyxview> lyxview_;
-	///
-	boost::scoped_ptr<FD_graphics_size> size_;
-	///
 	boost::scoped_ptr<FD_graphics_bbox> bbox_;
 	///
-	boost::scoped_ptr<FD_graphics_special> special_;
+	boost::scoped_ptr<FD_graphics_extra> extra_;
 
 	/// Store the LaTeX names for the rotation origins.
 	std::vector<string> origins_;

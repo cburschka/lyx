@@ -902,12 +902,11 @@ int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
 	int count = 0;
 	bool env = false;
 
-	LyXFont f = *this; // why do you need this?
-	f.reduce(base); // why isn't this just "reduce(base);" (Lgb)
-	// Because this function is const. Everything breaks if this
-	// method changes the font it represents. There is no speed penalty
-	// by using the temporary. (Asger)
-
+	// reduce the current font to changes against the base
+	// font (of the layout). We use a temporary for this to
+	// avoid changing this font instance, as that would break
+	LyXFont f = *this;
+	f.reduce(base);
 
 	if (f.family() != INHERIT_FAMILY) {
 		os << '}';

@@ -61,7 +61,7 @@ using std::endl;
 
 InsetMinipage::InsetMinipage(BufferParams const & bp)
 	: InsetCollapsable(bp), pos_(center),
-	  inner_pos_(inner_center), width_(100, LyXLength::PW)
+	  inner_pos_(inner_center), width_(100, LyXLength::PCW)
 {
 	setLabel(_("minipage"));
 	LyXFont font(LyXFont::ALL_SANE);

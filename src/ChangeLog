@@ -1,3 +1,21 @@
+2002-08-24  John Levon  <levon@movementarian.org>
+
+	* buffer.C:
+	* bufferlist.C:
+	* bufferview_funcs.C:
+	* lyxfont.C:
+	* undo_funcs.C: cleanups
+
+	* lyxfunc.C: disable CUT/COPY when no selection
+ 
+2002-08-23  Rob Lahaye  <lahaye@snu.ac.kr>
+ 
+ 	* lyxlength.[Ch]: use better (three letters) mnemonics for percentage units
+ 	in "enum UNIT"; e.g. PTW for Percent of TextWidth
+ 	
+ 	* lyxrc.C: graphics display is now monochrome|grayscale|color|none.
+ 	Add backward compatibility to "mono", "gray" and "no".
+ 
 2002-08-24  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (readFile): Always run lyx2lyx if file_format < LYX_FORMAT

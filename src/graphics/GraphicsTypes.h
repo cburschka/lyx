@@ -50,11 +50,13 @@ namespace grfx {
 	/// How is the image to be displayed on the LyX screen?
 	enum DisplayType {
 		///
-		ColorDisplay,
+		DefaultDisplay,
+		///
+		MonochromeDisplay,
 		///
 		GrayscaleDisplay,
 		///
-		MonochromeDisplay,
+		ColorDisplay,
 		///
 		NoDisplay
 	};

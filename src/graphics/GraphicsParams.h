@@ -34,10 +34,10 @@ struct BoundingBox {
 	/// 0 0 0 0 is empty!
 	bool empty() const;
 
-	int xl;
-	int yb;
-	int xr;
-	int yt;
+	unsigned int xl;
+	unsigned int yb;
+	unsigned int xr;
+	unsigned int yt;
 };
 
 bool operator==(BoundingBox const &, BoundingBox const &);
@@ -48,6 +48,7 @@ struct Params
 	Params();
 
 	DisplayType display;
+	unsigned int scale;
 
 	/// The image filename.
 	string filename;
@@ -61,13 +62,8 @@ struct Params
 	/** The size of the view inside lyx in pixels or the scaling of the
 	 *  image.
 	 */
-	unsigned int width;
-	unsigned int height;
-	unsigned int scale;
-	bool keepLyXAspectRatio;
-
 	/// Rotation angle.
-	int angle;
+	float angle;
 };
 
 bool operator==(Params const &, Params const &);

@@ -278,10 +278,12 @@ void xformsImage::clip(Params const & params)
 		// Bounds are unchanged.
 		return;
 
-	int const xoffset_l = std::max(0, params.bb.xl);
-	int const xoffset_r = std::max(0, image_->w - params.bb.xr);
-	int const yoffset_t = std::max(0, image_->h - params.bb.yt);
-	int const yoffset_b = std::max(0, params.bb.yb);
+	// FIXME: these values are unsigned so this makes NO sense
+ 
+	int const xoffset_l = std::max(0U, params.bb.xl);
+	int const xoffset_r = std::max(0U, image_->w - params.bb.xr);
+	int const yoffset_t = std::max(0U, image_->h - params.bb.yt);
+	int const yoffset_b = std::max(0U, params.bb.yb);
 
 	flimage_crop(image_, xoffset_l, yoffset_t, xoffset_r, yoffset_b);
 }

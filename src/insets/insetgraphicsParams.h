@@ -17,6 +17,7 @@
 #pragma interface
 #endif
 
+#include "graphics/GraphicsTypes.h"
 #include "LString.h"
 #include "lyxlength.h"
 
@@ -29,64 +30,41 @@ namespace grfx {
 /// This struct holds all the parameters needed by insetGraphics.
 struct InsetGraphicsParams
 {
-	/// How do we display the image?
-	enum DisplayType {
-	    DEFAULT,		// whatever is in lyxrc.display_graphics
-	    COLOR,		// full color range
-	    GRAYSCALE,		// 256 shades of gray
-	    MONOCHROME,		// In black and white.
-	    NONE		// only keep a frame in place.
-	};
-	///
-	enum sizeKind {		// for latex and/or lyx
-	    DEFAULT_SIZE,	// like none
-	    SCALE,		// percentage value
-	    WH			// width/height values
-	};
 	/// Image filename.
 	string filename;
-	/// Do we have a subcaption?
-	bool subcaption;
-	/// The text of the subcaption.
-	string subcaptionText;
-	/// Do we rotate?
-	bool rotate;
-	/// Origin point of rotation
-	string rotateOrigin;
-	/// Rotation angle.
-	float rotateAngle;
-	/// clip image
-	bool clip;
+	/// Scaling the Screen inside Lyx
+	unsigned int lyxscale;
+	/// How to display the image inside LyX
+	grfx::DisplayType display;
+	/// Scaling for output (LaTeX)
+	unsigned int scale;
+	/// sizes for output (LaTeX)
+	LyXLength width;
+	///
+	LyXLength height;
+	/// Keep the ratio between height and width when resizing.
+	bool keepAspectRatio;
 	/// draft mode
 	bool draft;
 	/// what to do with zipped files
 	bool noUnzip;
+
 	/// The bounding box with "xLB yLB yRT yRT ", divided by a space!
 	string bb;
-	/// Type of rescaling
-	sizeKind size_kind;
-	/// three possible values for rescaling (latex)
-	LyXLength width;
-	///
-	LyXLength height;
-	///
-	int scale;
-	/// Keep the ratio between height and width when resizing.
-	bool keepAspectRatio;
+	/// clip image
+	bool clip;
+
+	/// Rotation angle.
+	float rotateAngle;
+	/// Origin point of rotation
+	string rotateOrigin;
+	/// Do we have a subcaption?
+	bool subcaption;
+	/// The text of the subcaption.
+	string subcaptionText;
 	/// any userdefined special command
 	string special;
-	/// How to display the image inside lyx
-	DisplayType display;
-	/// the size for the view inside lyx
-	LyXLength lyxwidth;
-	/// Typ of the LyXView, same as for latex
-	sizeKind lyxsize_kind;
-	///
-	LyXLength lyxheight;
-	/// Keep the ratio between lyxheight and lyxwidth when resizing.
-	bool keepLyXAspectRatio;
-	/// Typ of rescaling the Screen inside lyx
-	int lyxscale;
+
 	///
 	InsetGraphicsParams();
 	///

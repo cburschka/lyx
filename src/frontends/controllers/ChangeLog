@@ -1,3 +1,8 @@
+2002-08-23  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* ControlGraphics.C: make rotationOrigin's default ("leftBaseline") the
+	first item in the list
+
 2002-08-15  Angus Leeming  <leeming@lyx.org>
 
 	* ControlConnections.C: Dialogs::redrawGUI is now a method not a signal.

@@ -306,10 +306,10 @@ void BufferList::emergencyWrite(Buffer * buf)
 	if (buf->isClean())
 		return;
 
-	lyxerr << _("lyx: Attempting to save document ")
-	       << (buf->isUnnamed() ? OnlyFilename(buf->fileName())
-		   : buf->fileName())
-	       <<  _(" as...") << endl;
+	string const doc = buf->isUnnamed()
+		? OnlyFilename(buf->fileName()) : buf->fileName();
+ 
+	lyxerr << _("LyX: Attempting to save document ") << doc << endl;
 
 	// We try to save three places:
 

@@ -353,8 +353,13 @@ int LyXRC::read(string const & filename)
 			break;
 
 		case RC_DISPLAY_GRAPHICS:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				display_graphics = lexrc.getString();
+				// backward compatibility
+				if (display_graphics == "mono") display_graphics = "monochrome";
+				else if (display_graphics == "gray") display_graphics = "grayscale";
+				else if (display_graphics == "no") display_graphics = "none";
+			}
 			break;
 
 		case RC_KBMAP:
@@ -1045,7 +1050,7 @@ void LyXRC::output(ostream & os) const
 	case RC_DISPLAY_GRAPHICS:
 		if (display_graphics != system_lyxrc.display_graphics) {
 			os << "# Display graphics within LyX\n"
-			   << "# no|mono|gray|color\n"
+			   << "# monochrome|grayscale|color|none\n"
 			   << "\\display_graphics " << display_graphics
 			   << "\n";
 		}

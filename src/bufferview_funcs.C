@@ -151,56 +151,55 @@ string const currentState(BufferView * bv)
 {
 	ostringstream state;
 
-	if (bv->available()) {
-		// I think we should only show changes from the default
-		// font. (Asger)
-		LyXText * text = bv->getLyXText();
-		Buffer * buffer = bv->buffer();
-		LyXFont font = text->real_current_font;
-		LyXFont const & defaultfont =
-			buffer->params.getLyXTextClass().defaultfont();
-		font.reduce(defaultfont);
+	if (!bv->available())
+		return "";
+ 
+	// I think we should only show changes from the default
+	// font. (Asger)
+	LyXText * text = bv->getLyXText();
+	Buffer * buffer = bv->buffer();
+	LyXFont font = text->real_current_font;
+	LyXFont const & defaultfont =
+		buffer->params.getLyXTextClass().defaultfont();
+	font.reduce(defaultfont);
 
-		state << _("Font:") << ' '
-		      << font.stateText(&buffer->params);
+	state << _("Font:") << ' ' << font.stateText(&buffer->params);
 
-		// The paragraph depth
-		int depth = text->getDepth();
-		if (depth > 0)
-			state << _(", Depth: ") << depth;
+	// The paragraph depth
+	int depth = text->getDepth();
+	if (depth > 0)
+		state << _(", Depth: ") << depth;
 
-		// The paragraph spacing, but only if different from
-		// buffer spacing.
-		if (!text->cursor.par()->params().spacing().isDefault()) {
-			Spacing::Space cur_space =
-				text->cursor.par()->params().spacing().getSpace();
-			state << _(", Spacing: ");
+	// The paragraph spacing, but only if different from
+	// buffer spacing.
+	if (!text->cursor.par()->params().spacing().isDefault()) {
+		Spacing::Space cur_space =
+			text->cursor.par()->params().spacing().getSpace();
+		state << _(", Spacing: ");
 
-			switch (cur_space) {
-			case Spacing::Single:
-				state << _("Single");
-
-				break;
-			case Spacing::Onehalf:
-				state << _("Onehalf");
-				break;
-			case Spacing::Double:
-				state << _("Double");
-				break;
-			case Spacing::Other:
-				state << _("Other (")
-				      << text->cursor.par()->params().spacing().getValue()
-				      << ")";
-				break;
-			case Spacing::Default:
-				// should never happen, do nothing
-				break;
-			}
+		switch (cur_space) {
+		case Spacing::Single:
+			state << _("Single");
+			break;
+		case Spacing::Onehalf:
+			state << _("Onehalf");
+			break;
+		case Spacing::Double:
+			state << _("Double");
+			break;
+		case Spacing::Other:
+			state << _("Other (")
+			      << text->cursor.par()->params().spacing().getValue()
+			      << ")";
+			break;
+		case Spacing::Default:
+			// should never happen, do nothing
+			break;
 		}
-#ifdef DEVEL_VERSION
-		state << _(", Paragraph: ") << text->cursor.par()->id();
-#endif
 	}
+#ifdef DEVEL_VERSION
+	state << _(", Paragraph: ") << text->cursor.par()->id();
+#endif
 	return state.str().c_str();
 }
 

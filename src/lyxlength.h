@@ -36,12 +36,12 @@ public:
 		EX, ///< Height of a small "x" for the current font.
 		EM, ///< Width of capital "M" in current font.
 		MU, ///< Math unit (18mu = 1em) for positioning in math mode
-		PW, ///< Percent of columnwidth
-		PE, ///< Percent of textwidth
-		PP, ///< Percent of pagewidth
-		PL, ///< Percent of linewidth
-		TH, ///< Percent of textheight		// Herbert 2002-05-16
-		PH, ///< Percent of paperheight		// Herbert 2002-05-16
+		PTW, //< Percent of TextWidth
+		PCW, //< Percent of ColumnWidth
+		PPW, //< Percent of PageWidth
+		PLW, //< Percent of LineWidth
+		PTH, //< Percent of TextHeight		// Herbert 2002-05-16
+		PPH, //< Percent of PaperHeight		// Herbert 2002-05-16
 		UNIT_NONE ///< no unit
 	};
 

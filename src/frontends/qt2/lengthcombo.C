@@ -58,10 +58,10 @@ LyXLength::UNIT LengthCombo::currentLengthItem() const
 		case 9: unit = LyXLength::DD; break;
 		case 10: unit = LyXLength::CC; break;
 		case 11: unit = LyXLength::MU; break;
-		case 12: unit = LyXLength::PP; break;
-		case 13: unit = LyXLength::PW; break;
-		case 14: unit = LyXLength::PL; break;
-		// FIXME: LyXLength::PE ?
+		case 12: unit = LyXLength::PPW; break;
+		case 13: unit = LyXLength::PCW; break;
+		case 14: unit = LyXLength::PLW; break;
+		// FIXME: LyXLength::PTW ?
 	};
 	return unit;
 }
@@ -90,10 +90,10 @@ void LengthCombo::setCurrentItem(LyXLength::UNIT unit)
 		case LyXLength::DD: i = 9; break;
 		case LyXLength::CC: i = 10; break;
 		case LyXLength::MU: i = 11; break;
-		case LyXLength::PP: i = 12; break;
-		case LyXLength::PW: i = 13; break;
-		case LyXLength::PL: i = 14; break;
-		// FIXME: LyXLength::PE ?
+		case LyXLength::PPW: i = 12; break;
+		case LyXLength::PCW: i = 13; break;
+		case LyXLength::PLW: i = 14; break;
+		// FIXME: LyXLength::PTW ?
 	}
 	QComboBox::setCurrentItem(i);
 }

@@ -24,24 +24,18 @@ namespace grfx {
 
 Params::Params()
 	: display(ColorDisplay),
-	  width(0),
-	  height(0),
-	  scale(0),
-	  keepLyXAspectRatio(false),
+	  scale(100),
 	  angle(0)
 {}
 
 
 bool operator==(Params const & a, Params const & b)
 {
-	return (a.filename 	     == b.filename &&
-		a.display  	     == b.display &&
-		a.bb       	     == b.bb &&
-		a.width              == b.width &&
-		a.height             == b.height &&
-		a.scale    	     == b.scale &&
-		a.keepLyXAspectRatio == b.keepLyXAspectRatio &&
-		a.angle        	     == b.angle);
+	return (a.filename == b.filename &&
+		a.display == b.display &&
+		a.bb == b.bb &&
+		a.scale == b.scale &&
+		a.angle == b.angle);
 }
 
 
@@ -68,10 +62,10 @@ BoundingBox::BoundingBox(string const & bb)
 
 	// inBP returns the length in Postscript points.
 	// Note further that there are 72 Postscript pixels per inch.
-	int const xl_tmp = abs(LyXLength(a).inBP());
-	int const yb_tmp = abs(LyXLength(b).inBP());
-	int const xr_tmp = abs(LyXLength(c).inBP());
-	int const yt_tmp = abs(LyXLength(d).inBP());
+	unsigned int const xl_tmp = abs(LyXLength(a).inBP());
+	unsigned int const yb_tmp = abs(LyXLength(b).inBP());
+	unsigned int const xr_tmp = abs(LyXLength(c).inBP());
+	unsigned int const yt_tmp = abs(LyXLength(d).inBP());
 
 	if (xr_tmp <= xl_tmp || yt_tmp <= yb_tmp)
 		return;

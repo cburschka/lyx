@@ -108,8 +108,6 @@ private:
 
 	/// Read the inset native format
 	void readInsetGraphics(LyXLex & lex);
-	/// Read the FigInset file format
-	void readFigInset(LyXLex & lex);
 
 	/// Get the status message, depends on the image loading status.
 	string const statusMessage() const;

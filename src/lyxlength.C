@@ -61,27 +61,27 @@ string const LyXLength::asLatexString() const
 {
 	ostringstream buffer;
 	switch (unit_) {
-	case PW:
+	case PTW:
 	    buffer << abs(static_cast<int>(val_/100)) << "."
 		   << abs(static_cast<int>(val_)%100) << "\\textwidth";
 	    break;
-	case PE:
+	case PCW:
 	    buffer << abs(static_cast<int>(val_/100)) << "."
 		   << abs(static_cast<int>(val_)%100) << "\\columnwidth";
 	    break;
-	case PP:
+	case PPW:
 	    buffer << abs(static_cast<int>(val_/100)) << "."
 		   << abs(static_cast<int>(val_)%100) << "\\paperwidth";
 	    break;
-	case PL:
+	case PLW:
 	    buffer << abs(static_cast<int>(val_/100)) << "."
 		   << abs(static_cast<int>(val_)%100) << "\\linewidth";
 	    break;
-	case PH:
+	case PPH:
 	    buffer << abs(static_cast<int>(val_/100)) << "."
 		   << abs(static_cast<int>(val_)%100) << "\\paperheight";
 	    break;
-	case TH:
+	case PTH:
 	    buffer << abs(static_cast<int>(val_/100)) << "."
 		   << abs(static_cast<int>(val_)%100) << "\\textheight";
 	    break;
@@ -201,14 +201,14 @@ int LyXLength::inPixels(int default_width, int default_height) const
 		// math mode
 		result = zoom * val_ * default_height;
 		break;
-	case LyXLength::PW: // Always % of workarea
-	case LyXLength::PE:
-	case LyXLength::PP:
-	case LyXLength::PL:
+	case LyXLength::PCW: // Always % of workarea
+	case LyXLength::PTW:
+	case LyXLength::PPW:
+	case LyXLength::PLW:
 		result = val_ * default_width / 100;
 		break;
-	case LyXLength::PH:
-	case LyXLength::TH:
+	case LyXLength::PTH:
+	case LyXLength::PPH:
 		result = val_ * default_height / 100;
 		break;
 	case LyXLength::UNIT_NONE:

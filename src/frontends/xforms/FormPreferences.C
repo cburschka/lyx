@@ -1826,13 +1826,13 @@ void FormPreferences::LnFmisc::apply() const
 
 	string const old_value = lyxrc.display_graphics;
 	if (fl_get_button(dialog_->radio_display_monochrome)) {
-		lyxrc.display_graphics = "mono";
+		lyxrc.display_graphics = "monochrome";
 	} else if (fl_get_button(dialog_->radio_display_grayscale)) {
-		lyxrc.display_graphics = "gray";
+		lyxrc.display_graphics = "grayscale";
 	} else if (fl_get_button(dialog_->radio_display_color)) {
 		lyxrc.display_graphics = "color";
 	} else {
-		lyxrc.display_graphics = "no";
+		lyxrc.display_graphics = "none";
 	}
 
 #ifdef WITH_WARNINGS
@@ -1908,9 +1908,9 @@ void FormPreferences::LnFmisc::update()
 	fl_set_counter_value(dialog_->counter_autosave, lyxrc.autosave);
 	fl_set_counter_value(dialog_->counter_wm_jump, lyxrc.wheel_jump);
 
-	if (lyxrc.display_graphics == "mono") {
+	if (lyxrc.display_graphics == "monochrome") {
 		fl_set_button(dialog_->radio_display_monochrome, 1);
-	} else if (lyxrc.display_graphics == "gray") {
+	} else if (lyxrc.display_graphics == "grayscale") {
 		fl_set_button(dialog_->radio_display_grayscale, 1);
 	} else if (lyxrc.display_graphics == "color") {
 		fl_set_button(dialog_->radio_display_color, 1);

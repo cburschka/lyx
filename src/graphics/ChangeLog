@@ -1,3 +1,11 @@
+2002-08-23  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* GraphicsImage.C:
+	* GraphicsParams.[Ch]: remove keepLyXAspectRatio, width and height
+	because this input has gone from the graphics dialog.
+	
+	* GraphicsTypes.h: add enum DisplayType DefaultDisplay
+
 2002-08-20  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* GraphicsImageXPM.h: inlcude boost/shared_ptr.hpp, remove include
