@@ -87,34 +87,26 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 
 		if (token == "family") {
 			int const next = lex.getInteger();
-			LyXFont::FONT_FAMILY const family =
-				static_cast<LyXFont::FONT_FAMILY>(next);
-			font.setFamily(family);
+			font.setFamily(LyXFont::FONT_FAMILY(next));
 
 		} else if (token == "series") {
 			int const next = lex.getInteger();
-			LyXFont::FONT_SERIES const series =
-				static_cast<LyXFont::FONT_SERIES>(next);
-			font.setSeries(series);
+			font.setSeries(LyXFont::FONT_SERIES(next));
 
 		} else if (token == "shape") {
 			int const next = lex.getInteger();
-			LyXFont::FONT_SHAPE const shape =
-				static_cast<LyXFont::FONT_SHAPE>(next);
-			font.setShape(shape);
+			font.setShape(LyXFont::FONT_SHAPE(next));
 
 		} else if (token == "size") {
 			int const next = lex.getInteger();
-			LyXFont::FONT_SIZE const size =
-				static_cast<LyXFont::FONT_SIZE>(next);
-			font.setSize(size);
+			font.setSize(LyXFont::FONT_SIZE(next));
 
 		} else if (token == "emph" || token == "underbar" ||
 			   token == "noun" || token == "number") {
 
 			int const next = lex.getInteger();
 			LyXFont::FONT_MISC_STATE const misc =
-				static_cast<LyXFont::FONT_MISC_STATE>(next);
+				LyXFont::FONT_MISC_STATE(next);
 
 			if (token == "emph")
 			    font.setEmph(misc);
@@ -127,9 +119,7 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 
 		} else if (token == "color") {
 			int const next = lex.getInteger();
-			LColor::color const color =
-				static_cast<LColor::color>(next);
-			font.setColor(color);
+			font.setColor(LColor::color(next));
 
 		} else if (token == "language") {
 			string const next = lex.getString();
