@@ -2127,9 +2127,23 @@ void Buffer::makeLaTeXFile(ostream & os,
 		    << endl;
 		texrow.newline();
 	}
+	
+	// if we are doing a real file with body, even if this is the
+	// child of some other buffer, let's cut the link here.
+	string save_parentname;
+	if (!only_body) {
+		save_parentname = params.parentname;
+		params.parentname.erase();
+	}
 
+	// the real stuff
 	latexParagraphs(os, &*(paragraphs.begin()), 0, texrow);
 
+	// Restore the parenthood if needed
+	if (!only_body) {
+		params.parentname = save_parentname;
+	}
+	
 	// add this just in case after all the paragraphs
 	os << endl;
 	texrow.newline();
@@ -3202,12 +3216,9 @@ vector<string> const Buffer::getLabelList() const
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
-	if (!params.parentname.empty()
-	    && bufferlist.exists(params.parentname)) {
-		Buffer const * tmp = bufferlist.getBuffer(params.parentname);
-		if (tmp)
-			return tmp->getLabelList();
-	}
+	Buffer const * tmp = getMasterBuffer();
+	if (tmp != this)
+		return tmp->getLabelList();
 
 	vector<string> label_list;
 	for (inset_iterator it = inset_const_iterator_begin();
@@ -3225,11 +3236,9 @@ vector<pair<string, string> > const Buffer::getBibkeyList() const
 	typedef pair<string, string> StringPair;
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990412]
-	if (!params.parentname.empty() && bufferlist.exists(params.parentname)) {
-		Buffer const * tmp = bufferlist.getBuffer(params.parentname);
-		if (tmp)
-			return tmp->getBibkeyList();
-	}
+	Buffer const * tmp = getMasterBuffer();
+	if (tmp != this)
+		return tmp->getBibkeyList();
 
 	vector<StringPair> keys;
 	ParagraphList::iterator pit = paragraphs.begin();
@@ -3538,6 +3547,19 @@ BufferView * Buffer::getUser() const
 void Buffer::setParentName(string const & name)
 {
 	params.parentname = name;
+}
+
+
+Buffer const * Buffer::getMasterBuffer() const
+{
+	if (!params.parentname.empty()
+	    && bufferlist.exists(params.parentname)) {
+		Buffer const * buf = bufferlist.getBuffer(params.parentname);
+		if (buf)
+			return buf->getMasterBuffer();
+	}
+
+	return this;
 }
 
 

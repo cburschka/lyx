@@ -229,7 +229,11 @@ public:
 	void setFileName(string const & newfile);
 
 	/// Name of the document's parent
-	void setParentName(string const &);
+	void setParentName(string const & = string());
+
+	/// Get the document's master (or \c this if this is not a
+	//child document)
+	Buffer const * getMasterBuffer() const;
 
 	/// Is buffer read-only?
 	bool isReadonly() const;

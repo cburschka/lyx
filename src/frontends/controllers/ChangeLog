@@ -1,3 +1,8 @@
+2003-02-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* ControlInclude.C (Browse): replace masterFilename_ with
+	parentFilename_. 
+
 2003-06-06  John Levon  <levon@movementarian.org>
 
 	* ControlDocument.C: make sure a language change always gets

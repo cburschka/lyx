@@ -531,8 +531,8 @@ string const InsetGraphics::createLatexOptions() const
 
 string const InsetGraphics::prepareFile(Buffer const * buf) const
 {
-	// LaTeX can cope if the graphics file doesn't exist, so just return the
-	// filename.
+	// LaTeX can cope if the graphics file doesn't exist, so just
+	// return the filename.
 	string const orig_file = params().filename;
 	string orig_file_with_path =
 		MakeAbsPath(orig_file, buf->filePath());
@@ -694,6 +694,10 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 int InsetGraphics::latex(Buffer const *buf, ostream & os,
 			 bool /*fragile*/, bool/*fs*/) const
 {
+	// The master buffer. This is useful when there are multiple levels
+	// of include files
+	Buffer const * m_buffer = buf->getMasterBuffer();
+
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
 	lyxerr[Debug::GRAPHICS]
@@ -742,20 +746,35 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 		<< "\tBefore = " << before
 		<< "\n\tafter = " << after << endl;
 
-
-	// "nice" means that the buffer is exported to LaTeX format but not
-	//        run through the LaTeX compiler.
-	if (buf->niceFile) {
-		os << before <<'{' << params().filename << '}' << after;
-		return 1;
+	string latex_str = before + '{';
+	if (!message.empty()) {
+		latex_str += params().filename + " not found!";
+	} else {
+		// "nice" means that the buffer is exported to LaTeX
+		// format but not run through the LaTeX compiler.
+		string fname;
+		if (buf->niceFile) {
+			// "nice" means that the buffer is exported to LaTeX
+			// format but not run through the LaTeX compiler.
+			fname = params().filename;
+		} else {
+			// Make the filename relative to the lyx file
+			// and remove the extension so the LaTeX will
+			// use whatever is appropriate (when there are
+			// several versions in different formats)
+			fname = prepareFile(buf);
+		}
+		if (!AbsolutePath(fname)) {
+			// a relative filename should be relative to
+			// the master buffer.
+			fname = MakeRelPath(MakeAbsPath(fname,
+							buf->filePath()),
+					    m_buffer->filePath());
+		}
+		latex_str += os::external_path(fname);
 	}
-
-	// Make the filename relative to the lyx file
-	// and remove the extension so the LaTeX will use whatever is
-	// appropriate (when there are several versions in different formats)
-	string const latex_str = message.empty() ?
-		(before + '{' + os::external_path(prepareFile(buf)) + '}' + after) :
-		(before + '{' + params().filename + " not found!}" + after);
+	latex_str += '}' + after;
+	
 	os << latex_str;
 
 	// Return how many newlines we issued.

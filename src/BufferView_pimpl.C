@@ -1215,7 +1215,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		InsetInclude::Params p;
 		if (!ev.argument.empty())
 			p.cparams.setFromString(ev.argument);
-		p.masterFilename_ = buffer_->fileName();
+		p.parentFilename_ = buffer_->fileName();
 
 		InsetInclude * inset = new InsetInclude(p);
 		if (!insertInset(inset))

@@ -1,3 +1,15 @@
+2003-02-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetinclude.C (loadIfNeeded): when the child buffer is loaded,
+	set its parent to the current buffer.
+	(latex): use the tmppath of the master buffer, not just the parent
+	buffer (makes a difference with more than one level of include
+	insets). If the file name is relative write in the .tex file a
+	name relative to the master buffer directory.
+
+	* insetinclude.[Ch]: rename masterFilename to parentFilename (this
+	points to the direct parent)
+
 2004-04-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetoptarg.h: remove editable() method, which is already (and

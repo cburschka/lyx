@@ -42,11 +42,11 @@ public:
 		       Flags f = INPUT,
 		       string const & name = string())
 			: cparams(cp), flag(f),
-			  masterFilename_(name) {}
+			  parentFilename_(name) {}
 
 		InsetCommandParams cparams;
 		Flags flag;
-		string masterFilename_;
+		string parentFilename_;
 
 		///
 		bool operator==(Params const &) const;
@@ -129,8 +129,8 @@ private:
 	string const getScreenLabel(Buffer const *) const;
 	/// is this a verbatim include ?
 	bool isVerbatim() const;
-	/// get the filename of the master buffer
-	string const getMasterFilename() const;
+	/// get the filename of the parent buffer
+	string const getParentFilename() const;
 	/// get the included file name
 	string const getFileName() const;
 

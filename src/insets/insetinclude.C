@@ -103,7 +103,7 @@ InsetInclude::InsetInclude(InsetCommandParams const & p, Buffer const & b)
 	  preview_(new PreviewImpl(*this))
 {
 	params_.cparams = p;
-	params_.masterFilename_ = b.fileName();
+	params_.parentFilename_ = b.fileName();
 }
 
 
@@ -122,7 +122,7 @@ InsetInclude::Params const & InsetInclude::params() const
 bool InsetInclude::Params::operator==(Params const & o) const
 {
 	if (cparams == o.cparams && flag == o.flag &&
-	    masterFilename_ == o.masterFilename_)
+	    parentFilename_ == o.parentFilename_)
 		return true;
 
 	return false;
@@ -169,7 +169,7 @@ void InsetInclude::set(Params const & p)
 Inset * InsetInclude::clone(Buffer const & buffer, bool) const
 {
 	Params p(params_);
-	p.masterFilename_ = buffer.fileName();
+	p.parentFilename_ = buffer.fileName();
 
 	return new InsetInclude(p);
 }
@@ -241,20 +241,21 @@ string const InsetInclude::getScreenLabel(Buffer const *) const
 
 string const InsetInclude::getRelFileBaseName() const
 {
-	return OnlyFilename(ChangeExtension(params_.cparams.getContents(), string()));
+	return OnlyFilename(ChangeExtension(params_.cparams.getContents(),
+					    string()));
 }
 
 
 string const InsetInclude::getFileName() const
 {
 	return MakeAbsPath(params_.cparams.getContents(),
-			   OnlyPath(getMasterFilename()));
+			   OnlyPath(getParentFilename()));
 }
 
 
-string const InsetInclude::getMasterFilename() const
+string const InsetInclude::getParentFilename() const
 {
-	return params_.masterFilename_;
+	return params_.parentFilename_;
 }
 
 
@@ -266,38 +267,50 @@ bool InsetInclude::loadIfNeeded() const
 	if (!IsLyXFilename(getFileName()))
 		return false;
 
-	if (bufferlist.exists(getFileName()))
-		return true;
+	Buffer * buf = bufferlist.getBuffer(getFileName());
+	if (!buf) {
+		// the readonly flag can/will be wrong, not anymore I think.
+		FileInfo finfo(getFileName());
+		if (!finfo.isOK())
+			return false;
 
-	// the readonly flag can/will be wrong, not anymore I think.
-	FileInfo finfo(getFileName());
-	if (!finfo.isOK())
-		return false;
+		buf = bufferlist.readFile(getFileName(), !finfo.writable());
+	}
 
- 	return bufferlist.loadLyXFile(getFileName(), false) != 0;
+	if (buf)
+		buf->setParentName(getParentFilename());
+	return buf != 0;
 }
 
 
 int InsetInclude::latex(Buffer const * buffer, ostream & os,
 			bool /*fragile*/, bool /*fs*/) const
 {
+	Buffer const * m_buffer = buffer->getMasterBuffer();
+
 	string incfile(params_.cparams.getContents());
 
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
 		return 0;
 
+	// if incfile is relative, make it relative to the master
+	// buffer directory.
+	if (!AbsolutePath(incfile)) {
+		incfile = MakeRelPath(getFileName(), m_buffer->filePath());
+	}       
+ 
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
 		// FIXME: this should be a GUI warning
-		if (tmp->params.textclass != buffer->params.textclass) {
+		if (tmp->params.textclass != m_buffer->params.textclass) {
 			lyxerr << "WARNING: Included file `"
 			       << MakeDisplayPath(getFileName())
 			       << "' has textclass `"
 			       << tmp->params.getLyXTextClass().name()
 			       << "' while parent file has textclass `"
-			       << buffer->params.getLyXTextClass().name()
+			       << m_buffer->params.getLyXTextClass().name()
 			       << "'." << endl;
 			//return 0;
 		}
@@ -305,24 +318,31 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".tex");
 
-		if (!buffer->tmppath.empty()
-		    && !buffer->niceFile) {
+		if (!m_buffer->tmppath.empty()
+		    && !m_buffer->niceFile) {
 			incfile = subst(incfile, '/','@');
 #ifdef __EMX__
 			incfile = subst(incfile, ':', '$');
 #endif
-			writefile = AddName(buffer->tmppath, incfile);
-		} else
-			writefile = getFileName();
+			writefile = AddName(m_buffer->tmppath, incfile);
+		} else 
+				writefile = getFileName();
+			    
 		writefile = ChangeExtension(writefile, ".tex");
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		tmp->markDepClean(buffer->tmppath);
+		tmp->markDepClean(m_buffer->tmppath);
 
+#ifdef WITH_WARNINGS
+#warning Second argument is irrelevant!
+// since only_body is true, makeLaTeXFile will not look at second
+// argument. Should we set it to string(), or should makeLaTeXFile
+// make use of it somehow? (JMarc 20031002)
+#endif
 		tmp->makeLaTeXFile(writefile,
-				   OnlyPath(getMasterFilename()),
-				   buffer->niceFile, true);
+				   OnlyPath(getParentFilename()),
+				   m_buffer->niceFile, true);
 	}
 
 	if (isVerbatim()) {
@@ -440,7 +460,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	string incfile(params_.cparams.getContents());
 	string writefile;
 
-	Buffer const * const b = bufferlist.getBuffer(getMasterFilename());
+	Buffer const * const b = bufferlist.getBuffer(getParentFilename());
 
 	if (b && !b->tmppath.empty() && !b->niceFile && !isVerbatim()) {
 		incfile = subst(incfile, '/','@');
@@ -477,9 +497,9 @@ vector<string> const InsetInclude::getLabelList() const
 
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
-		tmp->setParentName("");
+		tmp->setParentName();
 		l = tmp->getLabelList();
-		tmp->setParentName(getMasterFilename());
+		tmp->setParentName(getParentFilename());
 	}
 
 	return l;
@@ -492,9 +512,9 @@ vector<pair<string,string> > const InsetInclude::getKeys() const
 
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
-		tmp->setParentName("");
+		tmp->setParentName();
 		keys = tmp->getBibkeyList();
-		tmp->setParentName(getMasterFilename());
+		tmp->setParentName(getParentFilename());
 	}
 
 	return keys;

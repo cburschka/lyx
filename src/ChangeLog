@@ -1,3 +1,19 @@
+2003-02-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* buffer.C (makeLaTeXFile): if the main latex file that is
+	processed is usually a subdocument of some master, then pretend
+	for a while that it is actually the master
+
+2003-02-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView_pimpl.C (dispatch): use parentFilename_ instead of
+	masterFilename_
+
+	* buffer.C (getLabelList): 
+	(getBibkeyList): use getMasterBuffer()
+	(getMasterBuffer): new method. Returns the main document in the
+	case where one is using included documents.
+
 2004-04-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* LaTeX.C (runMakeIndex, runBibTeX): quote correctly file name
