@@ -1,5 +1,8 @@
 1999-11-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/layouts/lyxmacros.inc (lyxcode): set the font with
+	\verbatim@font instead of \ttfamily, so that it can be redefined.
+
 	* src/BackStack.h, src/DepTable.C, src/DepTable.h, src/LaTeX.C,
 	  src/LaTeX.h, src/lastfiles.C, src/lastfiles.h, src/layout.C,
 	  src/layout.h, src/text2.C: add 'using' directive to bring the
