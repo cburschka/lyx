@@ -18,7 +18,7 @@ Menuset
 
 	Menu "file"
 		Item "New|N" "buffer-new"
-		Item "New from Template...|T" "buffer-new-template"
+		Item "New from Template...|m" "buffer-new-template"
 		Item "Open...|O" "file-open"
 # This seems a much more sensible place to me
 		Submenu "Open recent|t" "lastfiles"

@@ -223,7 +223,9 @@ Menuset
 		Item "HFill|H" "hfill-insert"
 		Item "Hyphenation Point|P" "hyphenation-point-insert"
 		Item "Ligature Break|k" "ligature-break-insert"
-		Item "Protected Blank|B" "protected-space-insert"
+		Item "Protected Space|r" "space-insert protected"
+		Item "Inter-word Space|w" "space-insert normal"
+		Item "Thin Space|T" "space-insert thin"
 		Item "Linebreak|L" "break-line"
 		Item "Ellipsis|i" "dots-insert"
 		Item "End of Sentence|E" "end-of-sentence-period-insert"
@@ -389,10 +391,10 @@ Menuset
 
 End
 
-# A Toolbar starts like :
-#
-# Toolbar "Name" "on" 
-#
+# Which toolbars to use.
+
+include "stdtoolbars.ui"
+
 # The second parameter are the flags :
 #
 # on: the toolbar is visible
@@ -404,53 +406,10 @@ End
 # left: the toolbar should be at the left of the window
 # right: the toolbar should be at the right of the window
 #
-# Only four commands are allowed inside the begin_toolbar and end_toolbar
-# directives: 
-#   Item "<action> [<parameter>]" adds an icon to the toolbar performing
-#          "<action> <parameter>"
-#      Examples:
-#      Item "font-size small"
-#      Item set-emph
-#
-#   Layouts adds the layouts combo-box to the toolbar
-#
-#   Separator adds some spacing to the toolbar
-#
-#   Minibuffer adds the command buffer (Qt only, only one may exist)
-#
-# The icons are found in the lib/image direcory under the name
-# action.xpm or action_parameter.xpm.
-#
-#  All other lyx commands will get a "unknown" icon.
-#
-# This is the default toolbar:
-
-Toolbar "Standard" "on,top"
-	Layouts
-	Item "Open document" "file-open"
-	Item "Save document" "buffer-write"
-	Item "Print document" "dialog-show print"
-	Separator
-	Item "Cut selection" "cut"
-	Item "Copy selection" "copy"
-	Item "Paste" "paste"
-	Separator
-	Item "Toggle emphasis style" "font-emph"
-	Item "Toggle noun style" "font-noun"
-	Item "Toggle free style" "font-free-apply"
-	Separator
-	Item "Insert TeX" "ert-insert"
-	Item "Insert math" "math-mode"
-	#Item "dialog-show mathpanel"
-	Separator
-	Item "Insert footnote" "footnote-insert"
-	Item "Insert margin note" "marginalnote-insert"
-	Item "Increase depth" "depth-increment"
-	Separator
-	Item "Insert graphics" "dialog-show-new-inset graphics"
-	Item "Insert table" "tabular-insert"
-End
-
-Toolbar "Command Buffer" "on,bottom"
-	Minibuffer
+Toolbars
+	"Standard" "on,top"
+	"Extra" "on,top"
+	"Table" "off,bottom"
+	"Math" "off,bottom"
+	"Command Buffer" "off,bottom"
 End
