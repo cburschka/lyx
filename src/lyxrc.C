@@ -1128,8 +1128,9 @@ void LyXRC::output(ostream & os) const
 		// bind files are not done here.
 	case RC_BEGINTOOLBAR:
 		// Toolbar is not written here (yet).
-	case RC_SET_COLOR:
+	//case RC_SET_COLOR:
 		// color bindings not written to preference file.
+		// And we want to be warned about that. (Lgb)
 	case RC_FONT_ENCODING:
 		os << "\\font_encoding \"" << fontenc << "\"\n";
 	case RC_PRINTER:

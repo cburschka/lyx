@@ -84,7 +84,7 @@ public:
 	///
 	float GetFloat() const;
 	///
-	string const GetString() const;
+	string GetString() const;
 	
 	/**
 	 * Get a long string, ended by the tag `endtag'

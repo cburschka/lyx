@@ -53,6 +53,8 @@ libinsets_la_SOURCES = \
 	insetlof.h \
 	insetlot.C \
 	insetlot.h \
+	insetmarginal.h \
+	insetmarginal.C \
 	insetparent.C \
 	insetparent.h \
 	insetquotes.C \

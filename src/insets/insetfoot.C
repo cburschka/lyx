@@ -39,7 +39,7 @@ InsetFoot::InsetFoot() : InsetCollapsable()
 
 Inset * InsetFoot::Clone() const
 {
-    InsetFoot * result = new InsetFoot();
+    InsetFoot * result = new InsetFoot;
     result->init(this);
 
     result->collapsed = collapsed;

@@ -36,7 +36,7 @@ struct LyXLex::Pimpl {
 	
 	Pimpl(keyword_item * tab, int num);
 	
-	string const GetString() const;
+	string GetString() const;
 	
 	void printError(string const & message) const;
 	

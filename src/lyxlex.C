@@ -123,7 +123,7 @@ float LyXLex::GetFloat() const
 }
 
 
-string const LyXLex::GetString() const
+string LyXLex::GetString() const
 {
 	return pimpl_->GetString();
 }
