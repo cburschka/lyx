@@ -41,7 +41,7 @@ void MathUndersetInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathUndersetInset::draw(PainterInfo & pi, int x, int y) const
 {
-	int m  = x + pi.width / 2;
+	int m  = x + width() / 2;
 	int yo = y + cell(1).descent() + cell(0).ascent() + 1;
 	cell(1).draw(pi, m - cell(1).width() / 2, y);
 	FracChanger dummy(pi.base);
