@@ -1,3 +1,8 @@
+2002-04-03  Allan Rae  <rae@lyx.org>
+
+	* insetgraphics.C (latex): one % too many makes living on the bleeding
+	edge fun with less than 30 minutes to a meeting with a PhD supervisor.
+
 2002-03-28  Herbert Voss  <voss@lyx.org>
 
 	* insetgraphic.C (latex): simplify the code for the latex

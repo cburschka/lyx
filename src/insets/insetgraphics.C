@@ -682,7 +682,7 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	else if (!message.empty())
 		before += ('[' + message);
 	else if (!opts.empty())
-		before += ("[%" + opts + ']');
+		before += ("[" + opts + ']');
 	lyxerr[Debug::GRAPHICS] << "[latex]before = " << before << endl;		    
 	lyxerr[Debug::GRAPHICS] << "[latex]after = " << after << endl;		    
 
