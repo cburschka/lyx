@@ -331,30 +331,11 @@ bool positionable(MathCursor::cursor_type const & cursor,
 
 void MathCursor::setPos(int x, int y)
 {
-	dump("setPos 1");
-	cursor_type best_cursor;
-	double best_dist = 1e10;
-
-	MathIterator it = ibegin(formula()->par().nucleus());
-	MathIterator et = iend(formula()->par().nucleus());
-	for ( ; it != et; ++it) {
-		//lyxerr << "*it: " << *it << "  *et: " << *et << "\n";
-		// avoid invalid nesting hen selecting
-		if (selection_ && !positionable(it.cursor(), Anchor_))
-			continue;
-		//lyxerr << it.position() << endl;
-		int xo = it.position().xpos();
-		int yo = it.position().ypos();
-		double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
-		if (d < best_dist) {
-			best_dist   = d;
-			best_cursor = it.cursor();
-		}
-	}
-	if (best_dist < 1e10)
-		Cursor_ = best_cursor;
-	//lyxerr << "x: " << x << " y: " << y << " dist: " << best_dist << "\n";
-	lyx::Assert(Cursor_.size());
+	dump("setPos 2");
+	bool res = bruteFind(x, y,
+		formula()->xlow(), formula()->xhigh(),
+		formula()->ylow(), formula()->yhigh());
+	lyx::Assert(res);
 	dump("setPos 2");
 }
 
@@ -540,27 +521,6 @@ bool MathCursor::up(bool sel)
 	dump("up 1");
 	macroModeClose();
 	selHandle(sel);
-
-	if (!selection_) {
-		MathInset::idx_type i = 0;
-		MathInset::pos_type p = 0;
-
-		// check whether we could move into the inset
-		if (hasPrevAtom() && prevAtom()->idxLastUp(i, p)) {
-			pushRight(prevAtom());
-			idx() = i;
-			pos() = p;
-			return true;
-		}
-
-		if (hasNextAtom() && nextAtom()->idxFirstUp(i, p)) {
-			pushLeft(nextAtom());
-			idx() = i;
-			pos() = p;
-			return true;
-		}
-	}
-
 	cursor_type save = Cursor_;
 	if (goUpDown(true))
 		return true;
@@ -574,27 +534,6 @@ bool MathCursor::down(bool sel)
 	dump("down 1");
 	macroModeClose();
 	selHandle(sel);
-
-	if (!selection_) {
-		MathInset::idx_type i = 0;
-		MathInset::pos_type p = 0;
-
-		// check whether we could move into the inset
-		if (hasPrevAtom() && prevAtom()->idxLastDown(i, p)) {
-			pushRight(prevAtom());
-			idx() = i;
-			pos() = p;
-			return true;
-		}
-
-		if (hasNextAtom() && nextAtom()->idxFirstDown(i, p)) {
-			pushLeft(nextAtom());
-			idx() = i;
-			pos() = p;
-			return true;
-		}
-	}
-
 	cursor_type save = Cursor_;
 	if (goUpDown(false))
 		return true;
@@ -1130,8 +1069,19 @@ MathCursorPos const & MathCursor::cursor() const
 
 bool MathCursor::goUpDown(bool up)
 {
-	int xo, yo;
+	int xlow, xhigh, ylow, yhigh;
+
+  int xo, yo;
 	getPos(xo, yo);
+
+	// try current cell first
+	xarray().boundingBox(xlow, xhigh, ylow, yhigh);
+	if (up)
+		yhigh = yo - 4;
+	else
+		ylow = yo + 4;
+	if (bruteFind(xo, yo, xlow, xhigh, ylow, yhigh))
+		return true;
 
 	// try to find an inset that knows better then we
 	while (1) {
@@ -1145,7 +1095,7 @@ bool MathCursor::goUpDown(bool up)
 		}
 
 		if (!popLeft()) {
-			// have reached hull
+			// no such inset found, just take something "above"
 			return
 				bruteFind(xo, yo,
 					formula()->xlow(),
@@ -1155,7 +1105,6 @@ bool MathCursor::goUpDown(bool up)
 				);
 		}
 	}
-	int xlow, xhigh, ylow, yhigh;
 	xarray().boundingBox(xlow, xhigh, ylow, yhigh);
 	bruteFind(xo, yo, xlow, xhigh, ylow, yhigh);
 	return true;
@@ -1164,20 +1113,20 @@ bool MathCursor::goUpDown(bool up)
 
 bool MathCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 {
-	//lyxerr << "looking at range: "
-	//	<< "[" << xlow << "..." << xhigh << "]" 
-	//	<< " x [" << ylow << "..." << yhigh << "]"
-	//	<< "   xo: " << x << "  yo: " << y << "\n";
-
 	cursor_type best_cursor;
 	double best_dist = 1e10;
 
 	MathIterator it = ibegin(formula()->par().nucleus());
 	MathIterator et = iend(formula()->par().nucleus());
 	for ( ; it != et; ++it) {
+		// avoid invalid nesting hen selecting
+		if (selection_ && !positionable(it.cursor(), Anchor_))
+			continue;
 		int xo = it.position().xpos();
 		int yo = it.position().ypos();
-		if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
+		if (xlow - 2 <= xo && xo <= xhigh + 2 &&
+		    ylow - 2 <= yo && yo <= yhigh + 2)
+		{
 			double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 			if (d < best_dist) {
 				best_dist   = d;
@@ -1414,7 +1363,12 @@ bool MathCursor::interpret(char c)
 
 MathCursorPos MathCursor::normalAnchor() const
 {
-	lyx::Assert(Anchor_.size() >= Cursor_.size());
+	if (Anchor_.size() < Cursor_.size()) {
+		Anchor_ = Cursor_;
+		lyxerr << "unusual Anchor size\n";
+		dump("1");
+	}
+	//lyx::Assert(Anchor_.size() >= Cursor_.size());
 	// use Anchor on the same level as Cursor
 	MathCursorPos normal = Anchor_[Cursor_.size() - 1];
 	if (Cursor_.size() < Anchor_.size() && !(normal < cursor())) {

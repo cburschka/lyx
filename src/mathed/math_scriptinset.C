@@ -291,46 +291,6 @@ bool MathScriptInset::idxLeft(MathInset::idx_type &,
 }
 
 
-bool MathScriptInset::idxFirstUp(idx_type & idx, pos_type & pos) const
-{
-	if (!hasUp())
-		return false;
-	idx = 1;
-	pos = 0; 
-	return true;
-}
-
-
-bool MathScriptInset::idxFirstDown(idx_type & idx, pos_type & pos) const
-{
-	if (!hasDown())
-		return false;
-	idx = 0;
-	pos = 0; 
-	return true;
-}
-
-
-bool MathScriptInset::idxLastUp(idx_type & idx, pos_type & pos) const
-{
-	if (!hasUp())
-		return false;
-	idx = 1;
-	pos = up().data_.size(); 
-	return true;
-}
-
-
-bool MathScriptInset::idxLastDown(idx_type & idx, pos_type & pos) const
-{
-	if (!hasDown())
-		return false;
-	idx = 0;
-	pos = down().data_.size(); 
-	return true;
-}
-
-
 void MathScriptInset::write(WriteStream & os) const
 {  
 	//lyxerr << "unexpected call to MathScriptInset::write()\n";

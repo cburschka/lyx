@@ -129,16 +129,8 @@ public:
 
 	/// Target pos when we enter the inset from the left by pressing "Right"
 	virtual bool idxFirst(idx_type & idx, pos_type & pos) const;
-	/// Target pos when we enter the inset from the left by pressing "Up"
-	virtual bool idxFirstUp(idx_type & idx, pos_type & pos) const;
-	/// Target pos when we enter the inset from the left by pressing "Down"
-	virtual bool idxFirstDown(idx_type & idx, pos_type & pos) const;
 	/// Target pos when we enter the inset from the right by pressing "Left"
 	virtual bool idxLast(idx_type & idx, pos_type & pos) const;
-	/// Target pos when we enter the inset from the right by pressing "Up"
-	virtual bool idxLastUp(idx_type & idx, pos_type & pos) const;
-	/// Target pos when we enter the inset from the right by pressing "Down"
-	virtual bool idxLastDown(idx_type & idx, pos_type & pos) const;
 
 	/// Where should we go if we press home?
 	virtual bool idxHome(idx_type & idx, pos_type & pos) const;

@@ -44,14 +44,6 @@ public:
 	bool idxLeft(idx_type &, pos_type &) const;
 	///
 	bool idxRight(idx_type &, pos_type &) const;
-	///
-	bool idxFirstUp(idx_type &, pos_type &) const;
-	///
-	bool idxFirstDown(idx_type &, pos_type &) const;
-	///
-	bool idxLastUp(idx_type &, pos_type &) const;
-	///
-	bool idxLastDown(idx_type &, pos_type &) const;
 
 	/// identifies scriptinsets
 	MathScriptInset const * asScriptInset() const;

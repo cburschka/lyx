@@ -124,31 +124,7 @@ bool MathInset::idxFirst(idx_type &, pos_type &) const
 }
 
 
-bool MathInset::idxFirstUp(idx_type &, pos_type &) const
-{
-	return false;
-}
-
-
-bool MathInset::idxFirstDown(idx_type &, pos_type &) const
-{
-	return false;
-}
-
-
 bool MathInset::idxLast(idx_type &, pos_type &) const
-{
-	return false;
-}
-
-
-bool MathInset::idxLastUp(idx_type &, pos_type &) const
-{
-	return false;
-}
-
-
-bool MathInset::idxLastDown(idx_type &, pos_type &) const
 {
 	return false;
 }

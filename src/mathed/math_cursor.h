@@ -216,7 +216,7 @@ public:
 	/// path of positions the cursor had to go if it were leving each inset
 	cursor_type Cursor_;
 	/// path of positions the anchor had to go if it were leving each inset
-	cursor_type Anchor_;
+	mutable cursor_type Anchor_;
 
 	/// reference to the last item of the path, i.e. "The Cursor"
 	MathCursorPos & cursor();

@@ -11,49 +11,15 @@ MathFracbaseInset::MathFracbaseInset()
 {}
 
 
-bool MathFracbaseInset::idxRight(MathInset::idx_type &,
-				 MathInset::pos_type &) const
+bool MathFracbaseInset::idxRight(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-bool MathFracbaseInset::idxLeft(MathInset::idx_type &,
-				MathInset::pos_type &) const
+bool MathFracbaseInset::idxLeft(idx_type &, pos_type &) const
 {
 	return false;
-}
-
-
-bool MathFracbaseInset::idxFirstUp(idx_type & idx, pos_type & pos) const
-{
-	idx = 0;
-	pos = 0;
-	return true;
-}
-
-
-bool MathFracbaseInset::idxFirstDown(idx_type & idx, pos_type & pos) const
-{
-	idx = 1;
-	pos = 0;
-	return true;
-}
-
-
-bool MathFracbaseInset::idxLastUp(idx_type & idx, pos_type & pos) const
-{
-	idx = 0;
-	pos = cell(0).size();
-	return true;
-}
-
-
-bool MathFracbaseInset::idxLastDown(idx_type & idx, pos_type & pos) const
-{
-	idx = 1;
-	pos = cell(1).size();
-	return true;
 }
 
 
