@@ -107,24 +107,24 @@ void QContentPane::mousePressEvent(QMouseEvent * e)
 		return;
 	}
 
-	FuncRequest cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
-			q_button_state(e->button()));
+	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
+			      q_button_state(e->button()));
 	wa_->dispatch(cmd);
 }
 
 
 void QContentPane::mouseReleaseEvent(QMouseEvent * e)
 {
-	FuncRequest cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
-			q_button_state(e->button()));
+	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
+			      q_button_state(e->button()));
 	wa_->dispatch(cmd);
 }
 
 
 void QContentPane::mouseMoveEvent(QMouseEvent * e)
 {
-	FuncRequest cmd
-		(LFUN_MOUSE_MOTION, e->x(), e->y(), q_motion_state(e->state()));
+	FuncRequest const cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
+			      q_motion_state(e->state()));
 	wa_->dispatch(cmd);
 }
 
