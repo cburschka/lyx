@@ -1,3 +1,8 @@
+2002-02-28  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormForks.C (input_button_all): resolve comparison between signed
+	and unsigned.
+
 2002-02-26  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Menubar_pimpl.C (makeMenubar): ignore entries which are not

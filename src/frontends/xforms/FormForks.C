@@ -317,7 +317,11 @@ ButtonPolicy::SMInput FormForks::input_button_all()
 	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_NOOP;
 
 	vector<string> const pid_vec = getPIDvector(dialog_->browser_children);
-	if (fl_get_browser_maxline(dialog_->browser_kill) != pid_vec.size()) {
+
+	// to resolve a warning about comparison between signed and unsigned.
+	int const pid_vec_size = int(pid_vec.size());
+	
+	if (fl_get_browser_maxline(dialog_->browser_kill) != pid_vec_size) {
 		activate = ButtonPolicy::SMI_VALID;
 
 		fl_clear_browser(dialog_->browser_kill);
