@@ -1164,7 +1164,7 @@ int InsetFig::DocBook(ostream & os) const
 	string figurename = fname;
 
 	if(suffixIs(figurename, ".eps"))
-		figurename.erase(fname.length() - 5);
+		figurename.erase(fname.length() - 4);
 
 	os << "@<graphic fileref=\"" << figurename << "\"></graphic>";
 	return 0;
