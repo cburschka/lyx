@@ -195,6 +195,7 @@ GC LyXColorHandler::getGCLinepars(PainterBase::line_style ls,
 			  GCCapStyle | GCJoinStyle | GCFunction, &val);
 }
 
+
 // update GC cache after color redefinition
 void LyXColorHandler::updateColor (LColor::color c)
 {

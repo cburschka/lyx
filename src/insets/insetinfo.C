@@ -35,21 +35,18 @@ extern BufferView * current_view;
 
 
 InsetInfo::InsetInfo()
-{
-	form = 0;
-}
+	: form(0)
+{}
 
 
-InsetInfo::InsetInfo(string const & string)
-	: contents(string)
-{
-	form = 0;
-}
+InsetInfo::InsetInfo(string const & str)
+	: contents(str), form(0)
+{}
 
 
 InsetInfo::~InsetInfo()
 {
-	if (form){
+	if (form) {
 		fl_hide_form(form);
 		fl_free_form(form);
 		form = 0;
@@ -182,7 +179,8 @@ void InsetInfo::CloseInfoCB(FL_OBJECT * ob, long)
 
 
 // This is just a wrapper.
-extern "C" void C_InsetInfo_CloseInfoCB(FL_OBJECT * ob, long data) 
+extern "C"
+void C_InsetInfo_CloseInfoCB(FL_OBJECT * ob, long data) 
 {
   	InsetInfo::CloseInfoCB(ob, data);
 }

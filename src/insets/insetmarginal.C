@@ -37,11 +37,11 @@ InsetMarginal::InsetMarginal()
 
 Inset * InsetMarginal::Clone() const
 {
-    InsetMarginal * result = new InsetMarginal;
-    result->inset->init(inset);
-    
-    result->collapsed = collapsed;
-    return result;
+	InsetMarginal * result = new InsetMarginal;
+	result->inset->init(inset);
+	
+	result->collapsed = collapsed;
+	return result;
 }
 
 
@@ -54,31 +54,20 @@ char const * InsetMarginal::EditMessage() const
 int InsetMarginal::Latex(Buffer const * buf,
 			 ostream & os, bool fragile, bool fp) const
 {
-    os << "\\marginpar{%\n";
-    
-    int i = inset->Latex(buf, os, fragile, fp);
-    os << "}%\n";
-    
-    return i + 2;
+	os << "\\marginpar{%\n";
+	
+	int i = inset->Latex(buf, os, fragile, fp);
+	os << "}%\n";
+	
+	return i + 2;
 }
 
 
 bool InsetMarginal::InsertInsetAllowed(Inset * in) const
 {
-    if ((in->LyxCode() == Inset::FOOT_CODE) ||
-	(in->LyxCode() == Inset::MARGIN_CODE)) {
-	return false;
-    }
-    return true;
+	if ((in->LyxCode() == Inset::FOOT_CODE) ||
+	    (in->LyxCode() == Inset::MARGIN_CODE)) {
+		return false;
+	}
+	return true;
 }
-
-
-#if 0
-LyXFont InsetMarginal::GetDrawFont(BufferView * bv,
-				   LyXParagraph * p, int pos) const
-{
-    LyXFont fn = getLyXText(bv)->GetFont(bv->buffer(), p, pos);
-    fn.decSize().decSize();
-    return fn;
-}
-#endif

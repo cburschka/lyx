@@ -24,7 +24,7 @@
  * Similar to InsetLaTeX but having control of the basic structure of a
  *   LaTeX command: \name[options]{contents}. 
  */
-class InsetCommand: public InsetButton {
+class InsetCommand : public InsetButton {
 public:
 	///
 	InsetCommand();

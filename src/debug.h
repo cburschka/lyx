@@ -79,7 +79,7 @@ struct Debug {
 };
 
 
-///
+
 inline
 void operator|= (Debug::type & d1, Debug::type d2)
 {
@@ -90,7 +90,7 @@ void operator|= (Debug::type & d1, Debug::type d2)
 #include "support/DebugStream.h"
 
 
-///
+
 std::ostream & operator<<(std::ostream & o, Debug::type t);
 
 extern DebugStream lyxerr;

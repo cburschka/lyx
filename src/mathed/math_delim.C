@@ -298,16 +298,11 @@ void Matriz::transf(float xp, float yp, float & x, float & y)
 
 
 struct math_deco_compare {
-	/// for use by sort
+	/// for use by sort and lower_bound
 	inline
 	int operator()(math_deco_struct const & a,
 		       math_deco_struct const & b) const {
 		return a.code < b.code;
-	}
-	/// for use by lower_bound
-	inline
-	int operator()(math_deco_struct const & a, int b) const {
-		return a.code < b;
 	}
 };
 
@@ -357,10 +352,12 @@ math_deco_struct const & search_deco(int code)
 static
 math_deco_struct const * search_deco(int code)
 {
+	math_deco_struct search_elem = { code, 0, 0 };
+	
 	math_deco_struct * res =
 		lower_bound(math_deco_table,
 			    math_deco_table + math_deco_table_size,
-			    code, math_deco_compare());
+			    search_elem, math_deco_compare());
 	if (res != math_deco_table + math_deco_table_size &&
 	    res->code == code)
 		return res;

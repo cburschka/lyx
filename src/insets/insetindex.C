@@ -17,7 +17,8 @@
  
 FD_index_form * index_form = 0;
 
-extern "C" void index_cb(FL_OBJECT *, long data)
+extern "C"
+void index_cb(FL_OBJECT *, long data)
 {
 	InsetIndex::Holder * holder =
 		static_cast<InsetIndex::Holder*>
@@ -59,8 +60,7 @@ FD_index_form * create_form_index_form()
 
 InsetIndex::InsetIndex(string const & key)
 	: InsetCommand("index", key) 
-{
-}
+{}
 
 
 InsetIndex::~InsetIndex()
@@ -100,7 +100,8 @@ void InsetIndex::Edit(BufferView * bv, int, int, unsigned int)
 
 	if (!index_form) {
 		index_form = create_form_index_form();
-		fl_set_form_atclose(index_form->index_form, CancelCloseBoxCB, 0);
+		fl_set_form_atclose(index_form->index_form,
+				    CancelCloseBoxCB, 0);
 	}
 
 	holder.inset = this;
@@ -128,22 +129,25 @@ string InsetIndex::getScreenLabel() const
 // InsetPrintIndex
 //
 
+#if 0
 InsetPrintIndex::InsetPrintIndex()
 	: InsetCommand("printindex")
 {
 	owner = 0;
 }
+#endif
 
 
 InsetPrintIndex::InsetPrintIndex(Buffer * o)
 	: InsetCommand("printindex"), owner(o)
-{
-}
+{}
 
 
+#if 0
 InsetPrintIndex::~InsetPrintIndex()
 {
 }
+#endif
 
 
 string InsetPrintIndex::getScreenLabel() const

@@ -269,7 +269,8 @@ void InsetExternal::Edit(BufferView * bv,
 				    CancelCloseBoxCB, 0);
 	}
 	holder.view = bv;
-	fl_addto_choice(form_external->templatechoice, getTemplateString().c_str());
+	fl_addto_choice(form_external->templatechoice,
+			getTemplateString().c_str());
 	fl_set_input(form_external->filename, filename.c_str());
 	fl_set_input(form_external->parameters, parameters.c_str());
 	if (!templatename.empty()) {

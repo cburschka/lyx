@@ -33,7 +33,7 @@
 
 #include <cstring> // for size_t
 
-/** A string class for LyX
+/* A string class for LyX
   
   This is a permanent String class. It is modeled closely after the C++ STL
   string class. In comparison with STL string lyxstring lack support for
@@ -90,8 +90,7 @@ When you want to copy an lyxstring, just do
 */
 class lyxstring {
 public:
-	/**@name Typedefs */
-	//@{
+	/* Typedefs */
 	
 	///
 	typedef char value_type;
@@ -124,7 +123,6 @@ public:
 		const_reference> const_reverse_iterator;
 
 #endif
-	//@}
 
 	///
 	iterator begin();
@@ -144,11 +142,10 @@ public:
 	///
 	const_reverse_iterator rend() const;
 #endif
-	/**@name Constructors and Deconstructors. lyxstring has the same
+	/* Constructors and Deconstructors. lyxstring has the same
 	  constructors as STL, except the one using iterators, one other
 	  difference is that lyxstring, do not allow the optional allocator
 	  parameter. */
-	//@{
 	
 	/// "all characters" marker
 	static const size_type npos;
@@ -163,7 +160,6 @@ public:
 	lyxstring(value_type const *, size_type n);
 	
 	/// #lyxstring x("abc")#
-//	explicit
 	lyxstring(value_type const *);
 	
 	/// lyxstring(5, 'n') -> "nnnnn"
@@ -185,12 +181,6 @@ public:
 	///
 	~lyxstring();
 
-	//@}
-
-	
-	/**@name Size and Capacity */
-	//@{
-	
 	/// number of characters
 	size_type size() const;
 
@@ -215,11 +205,6 @@ public:
 	///
 	void reserve(size_type res_arg = 0);
 	
-	//@}
-
-	/**@name Assignment */
-	//@{
-
 	///
 	lyxstring & operator=(lyxstring const &);
 	
@@ -258,11 +243,7 @@ public:
 		}
 	}
 #endif
-	//@}
 
-	/**@name Element Access. Since lyxstring does not use exceptions,
-	  an abort is called on out-of-range access to at(). */
-	
 	/// unchecked access
 	const_reference operator[](size_type) const;
 	
@@ -275,11 +256,6 @@ public:
 	/// checked access
 	reference at(size_type);
 
-	//@}
-
-	/**@name Insert */
-	//@{
-	
 	// add characters after (*this)[length()-1]:
 	
 	///
@@ -365,11 +341,6 @@ public:
 	}
 #endif
 	
-	//@}
-
-	/**@name Find */
-	//@{
-
 	///
 	size_type find(lyxstring const &, size_type i = 0) const;
 	
@@ -450,12 +421,6 @@ public:
 	///
 	size_type find_last_not_of(value_type c, size_type i = npos) const;
 
-	//*}
-
-	
-	/**@name Replace */
-	//@{
-
 	// replace [(*this)[i], (*this)[i+n]] with other characters:
 
 	///
@@ -510,30 +475,19 @@ public:
 	///
 	iterator erase(iterator first, iterator last);
 
-	//@}
-
-	
-	/**@name Conversion to C-style Strings */
-	//@{
-	
 	/// 
 	value_type const * c_str() const;
 
-	/** Note that this is STL compilant, so you can not assume
+	/* Note that this is STL compilant, so you can not assume
 	  that the returned array has a trailing '\0'. */
 	value_type const * data() const;
 
-	/** This one returns a verbatim copy. Not the trailing '\0'
+	/* This one returns a verbatim copy. Not the trailing '\0'
 	  The caller must provide a buffer with engough room.
 	  */
 	size_type copy(value_type * buf, size_type len,
 		       size_type pos = 0) const;
 
-	//@}
-
-	
-	/**@name Comparisons. Combined > and == */
-	//@{
 	
 	///
 	int compare(lyxstring const & str) const; 
@@ -552,18 +506,10 @@ public:
 	int compare(size_type pos, size_type n, value_type const * p,
 		    size_type n2 = npos) const;
 	
-	//@}
-
 	
-	
-	/**@name Substrings */
-	//@{
-
 	///
 	lyxstring substr(size_type i = 0, size_type n = npos) const;
 	
-	//@}
-
 private:
 	// These three operators can be used to discover erronous use of
 	// ints and strings. However a conforming C++ compiler will flag
@@ -590,7 +536,7 @@ private:
 	/// A string is a pointer to it's representation
 	Srep * rep;
 
-	/** Note: The empty_rep is a local static in each function that
+	/* Note: The empty_rep is a local static in each function that
 	    benefits from one. There is no "global" empty srep but lyxstring
 	    doesn't need one (no code actually relies upon a single
 	    empty srep).

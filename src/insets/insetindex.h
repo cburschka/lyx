@@ -27,7 +27,7 @@ struct FD_index_form;
 
 /** Used to insert index labels  
   */
-class InsetIndex: public InsetCommand {
+class InsetIndex : public InsetCommand {
 public:
 	///
 	InsetIndex() : InsetCommand("index") {}
@@ -62,12 +62,16 @@ public:
 
 class InsetPrintIndex : public InsetCommand {
 public:
+#if 0
 	///
 	InsetPrintIndex();
+#endif
 	///
 	InsetPrintIndex(Buffer *);
+#if 0
 	///
 	~InsetPrintIndex();
+#endif
 	/// Updates needed features for this inset.
 	void Validate(LaTeXFeatures & features) const;
 	///

@@ -32,7 +32,7 @@ enum  {
    MM_APPLY, MM_OK
 };
 
-///
+
 typedef FL_OBJECT * FL_OBJECTP;
 
 /// Class to manage bitmap menu bars
@@ -44,13 +44,13 @@ class BitmapMenu {
 protected:
    ///
    BitmapMenu * next, * prev;
+   /// Number of bitmaps
+   int nb;
+   /// Current bitmap
+   int i;
+   /// Border width
+   int ww;
    ///
-   int nb;             // Number of bitmaps
-			    ///
-   int i;              // Current bitmap
-			    ///
-   int ww;             // Border width
-			    ///
    int x, y, w, h;
    ///
    FL_FORM * form;

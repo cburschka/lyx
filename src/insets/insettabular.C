@@ -5,7 +5,7 @@
  *
  *           Copyright 2000 The LyX Team.
  *
- *======================================================
+ * ======================================================
  */
 
 #include <config.h>
@@ -40,6 +40,7 @@ using std::ostream;
 using std::ifstream;
 using std::max;
 using std::endl;
+using std::swap;
 
 #define cellstart(p) ((p % 2) == 0)
 
@@ -154,7 +155,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 			float & x, bool cleared) const
 {
     Painter & pain = bv->painter();
-    int i, j, cell=0;
+    int i, j, cell = 0;
     int nx;
     float cx;
 
@@ -252,8 +253,6 @@ void InsetTabular::DrawCellLines(Painter & pain, int x, int baseline,
 void InsetTabular::DrawCellSelection(Painter & pain, int x, int baseline,
 				     int row, int column, int cell) const
 {
-    int tmp;
-
     int cs = tabular->column_of_cell(sel_cell_start);
     int ce = tabular->column_of_cell(sel_cell_end);
     if (cs > ce) {
@@ -265,11 +264,7 @@ void InsetTabular::DrawCellSelection(Painter & pain, int x, int baseline,
 
     int rs = tabular->row_of_cell(sel_cell_start);
     int re = tabular->row_of_cell(sel_cell_end);
-    if (rs > re) {
-	tmp = rs;
-	rs = re;
-	re = tmp;
-    }
+    if (rs > re) swap(rs, re);
 
     if ((column >= cs) && (column <= ce) && (row >= rs) && (row <= re)) {
 	int w = tabular->GetWidthOfColumn(cell);
@@ -353,6 +348,7 @@ void InsetTabular::InsetUnlock(BufferView * bv)
     locked = false;
 }
 
+
 void InsetTabular::UpdateLocal(BufferView * bv, UpdateCodes what,
 			       bool mark_dirty)
 {
@@ -361,6 +357,7 @@ void InsetTabular::UpdateLocal(BufferView * bv, UpdateCodes what,
     if (what != NONE)
 	resetPos(bv);
 }
+
 
 bool InsetTabular::LockInsetInInset(BufferView * bv, UpdatableInset * inset)
 {
@@ -393,6 +390,7 @@ bool InsetTabular::LockInsetInInset(BufferView * bv, UpdatableInset * inset)
     return false;
 }
 
+
 bool InsetTabular::UnlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 				   bool lr)
 {
@@ -418,6 +416,7 @@ bool InsetTabular::UnlockInsetInInset(BufferView * bv, UpdatableInset * inset,
     }
     return false;
 }
+
 
 bool InsetTabular::UpdateInsetInInset(BufferView * bv, Inset * inset)
 {
@@ -733,7 +732,8 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 }
 
 
-int InsetTabular::Latex(Buffer const * buf, ostream & os, bool fragile, bool fp) const
+int InsetTabular::Latex(Buffer const * buf, ostream & os,
+			bool fragile, bool fp) const
 {
     return tabular->Latex(buf, os, fragile, fp);
 }
@@ -743,6 +743,7 @@ int InsetTabular::Ascii(Buffer const *, ostream &) const
 {
     return 0;
 }
+
 
 int InsetTabular::Linuxdoc(Buffer const *, ostream &) const
 {
@@ -875,6 +876,7 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
     resetPos(bv);
 }
 
+
 int InsetTabular::getCellXPos(int cell) const
 {
     int c;
@@ -888,6 +890,7 @@ int InsetTabular::getCellXPos(int cell) const
     return (lx - tabular->GetWidthOfColumn(cell) + top_x +
 	    ADD_TO_TABULAR_WIDTH);
 }
+
 
 void InsetTabular::resetPos(BufferView * bv) const
 {
@@ -1259,6 +1262,7 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
     }
 }
 
+
 bool InsetTabular::ActivateCellInset(BufferView * bv, int x, int y, int button,
 				     bool behind)
 {
@@ -1284,6 +1288,7 @@ bool InsetTabular::ActivateCellInset(BufferView * bv, int x, int y, int button,
     return true;
 }
 
+
 bool InsetTabular::InsetHit(BufferView * bv, int x, int ) const
 {
     InsetText * inset = tabular->GetCellInset(actcell);
@@ -1300,6 +1305,7 @@ bool InsetTabular::InsetHit(BufferView * bv, int x, int ) const
     }
 }
 
+
 // This returns paperWidth() if the cell-width is unlimited or the width
 // in pixels if we have a pwidth for this cell.
 int InsetTabular::GetMaxWidthOfCell(Painter &, int cell) const
@@ -1310,6 +1316,7 @@ int InsetTabular::GetMaxWidthOfCell(Painter &, int cell) const
 	return -1;
     return VSpace(s).inPixels( 0, 0);
 }
+
 
 int InsetTabular::getMaxWidth(Painter & pain,
 			      UpdatableInset const * inset) const
@@ -1330,7 +1337,9 @@ int InsetTabular::getMaxWidth(Painter & pain,
     return w;
 }
 
-void InsetTabular::recomputeTextInsets(BufferView * bv, const LyXFont & font) const
+
+void InsetTabular::recomputeTextInsets(BufferView * bv,
+				       LyXFont const & font) const
 {
     InsetText * inset;
     int cell;

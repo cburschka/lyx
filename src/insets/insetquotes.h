@@ -27,7 +27,7 @@ struct LaTeXFeatures;
 
   Used for the various quotes. German, English, French, all either
   double or single **/ 
-class InsetQuotes: public Inset {
+class InsetQuotes : public Inset {
 public:
 	///
 	enum quote_language {
@@ -80,13 +80,15 @@ public:
 	///
 	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
-	LyXFont ConvertFont(LyXFont font);
+	LyXFont ConvertFont(LyXFont const & font);
+	//LyXFont ConvertFont(LyXFont font);
 	///
 	void Write(Buffer const *, std::ostream &) const;
 	///
 	void Read(Buffer const *, LyXLex & lex);
 	///
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &,
+		  bool fragile, bool free_spc) const;
 	///
 	int Ascii(Buffer const *, std::ostream &) const;
 	///

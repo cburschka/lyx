@@ -280,7 +280,8 @@ void InsetCollapsable::InsetKeyPress(XKeyEvent * xke)
 }
 
 
-int InsetCollapsable::Latex(Buffer const * buf, ostream & os, bool fragile, bool free_spc) const
+int InsetCollapsable::Latex(Buffer const * buf, ostream & os,
+			    bool fragile, bool free_spc) const
 {
     return inset->Latex(buf, os, fragile, free_spc);
 }
@@ -289,8 +290,7 @@ int InsetCollapsable::Latex(Buffer const * buf, ostream & os, bool fragile, bool
 int InsetCollapsable::getMaxWidth(Painter & pain,
 				  UpdatableInset const * inset) const
 {
-    int w;
-    w = UpdatableInset::getMaxWidth(pain,inset);
+    int w = UpdatableInset::getMaxWidth(pain,inset);
 
     if (w < 0) {
 	return w;
@@ -302,6 +302,7 @@ int InsetCollapsable::getMaxWidth(Painter & pain,
     return w; // - top_x - widthCollapsed;
 }
 
+
 #if 0
 int InsetCollapsable::getMaxTextWidth(Painter & pain,
 				      UpdatableInset const * inset) const
@@ -309,6 +310,7 @@ int InsetCollapsable::getMaxTextWidth(Painter & pain,
     return getMaxWidth(pain, inset) - widthCollapsed;
 }
 #endif
+
 
 void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
 			      bool reinit)
@@ -340,14 +342,17 @@ void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
     inset->update(bv, font);
 }
 
+
 UpdatableInset::RESULT
-InsetCollapsable::LocalDispatch(BufferView * bv, int action, string const & arg)
+InsetCollapsable::LocalDispatch(BufferView * bv, int action,
+				string const & arg)
 {
     UpdatableInset::RESULT result = inset->LocalDispatch(bv, action, arg);
     if (result == FINISHED)
         bv->unlockInset(this);
     return result;
 }
+
 
 bool InsetCollapsable::LockInsetInInset(BufferView * bv, UpdatableInset * in)
 {
@@ -422,6 +427,7 @@ void InsetCollapsable::SetFont(BufferView * bv,
 {
     inset->SetFont(bv, font, toggleall);
 }
+
 
 bool InsetCollapsable::doClearArea() const
 {

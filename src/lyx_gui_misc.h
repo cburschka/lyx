@@ -65,7 +65,7 @@ void WarnReadonly(string const & file);
 float getScreenDPI();
 
 // inlined functions
-/// rings the audio bell.
+// rings the audio bell.
 inline
 void LyXBell() {
 	// if (audio()) ON/OFF switch yet to be implemented

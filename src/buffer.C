@@ -307,7 +307,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				   LyXParagraph::footnote_kind & footnotekind)
 {
 	bool the_end_read = false;
-
+	// We'll remove this later. (Lgb)
+	static string last_inset_read;
+	
 	if (token[0] != '\\') {
 		for (string::const_iterator cit = token.begin();
 		     cit != token.end(); ++cit) {
@@ -393,14 +395,23 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		} else if (tmptok == "margin") {
 			inset = new InsetMarginal;
 		} else if (tmptok == "fig") {
+			inset = new InsetFloat("figure");
 			//inset = new InsetFigure;
 		} else if (tmptok == "tab") {
+			inset = new InsetFloat("table");
 			//inset = new InsetTable;
 		} else if (tmptok == "alg") {
+			inset = new InsetFloat("algorithm");
 			//inset = new InsetAlgorithm;
 		} else if (tmptok == "wide-fig") {
+			InsetFloat * tmp = new InsetFloat("figure");
+			tmp->wide(true);
+			inset = tmp;
 			//inset = new InsetFigure(true);
 		} else if (tmptok == "wide-tab") {
+			InsetFloat * tmp = new InsetFloat("table");
+			tmp->wide(true);
+			inset = tmp;
 			//inset = new InsetTable(true);
 		}
 
@@ -790,6 +801,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		par->labelwidthstring = lex.GetString();
 		// do not delete this token, it is still needed!
 	} else if (token == "\\end_inset") {
+		lyxerr << "Solitary \\end_inset. Missing \\begin_inset?.\n"
+		       << "Last inset read was: " << last_inset_read
+		       << endl;
 		// Simply ignore this. The insets do not have
 		// to read this.
 		// But insets should read it, it is a part of
@@ -798,6 +812,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		// Should be moved out into its own function/method. (Lgb)
 		lex.next();
 		string tmptok = lex.GetString();
+		last_inset_read = tmptok;
 		// test the different insets
 		if (tmptok == "Quotes") {
 			Inset * inset = new InsetQuotes;
@@ -865,7 +880,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			par->InsertInset(pos, inset, font);
 			++pos;
 		} else if (tmptok == "Float") {
-			Inset * inset = new InsetFloat;
+			lex.next();
+			string tmptok = lex.GetString();
+			Inset * inset = new InsetFloat(tmptok);
 			inset->Read(this, lex);
 			par->InsertInset(pos, inset, font);
 			++pos;
@@ -938,9 +955,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		// Insets don't make sense in a free-spacing context! ---Kayvan
 		if (layout.free_spacing) {
 			if (lex.IsOK()) {
-				string next_token;
 				lex.next();
-				next_token = lex.GetString();
+				string next_token = lex.GetString();
 				if (next_token == "\\-") {
 					par->InsertChar(pos, '-', font);
 				} else if (next_token == "\\protected_separator"

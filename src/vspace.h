@@ -159,7 +159,7 @@ protected:
 	LyXLength::UNIT plus_uni, minus_uni;
 };
 
-///
+
 inline
 bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2)
 {

@@ -22,7 +22,7 @@ struct LaTeXFeatures;
 
 /** The reference inset  
  */
-class InsetRef: public InsetCommand {
+class InsetRef : public InsetCommand {
 public:
         ///
         enum Ref_Flags {
@@ -69,7 +69,8 @@ public:
         ///
         void gotoLabel();
 	///
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &,
+		  bool fragile, bool free_spc) const;
 	///
 	int Ascii(Buffer const *, std::ostream &) const;
 	///

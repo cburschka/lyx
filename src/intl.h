@@ -56,7 +56,7 @@ public:
 	void InitKeyMapper(bool on);
 
 	/// Get the Translation Manager
-	inline TransManager * getTrans();
+	TransManager * getTrans();
 	///
 	bool keymapon;
 	///
@@ -94,6 +94,7 @@ private:
 };
 
 
+inline
 TransManager * Intl::getTrans()
 {
 	return trans;

@@ -24,6 +24,9 @@ private:
 	///
 	struct BackStackItem {
 		///
+		BackStackItem() 
+			: x(0), y(0) {}
+		///
 		BackStackItem(string const & f, int xx, int yy)
 			: fname(f), x(xx), y(yy) {}
 		/// Filename

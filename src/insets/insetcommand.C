@@ -23,15 +23,13 @@ using std::endl;
 
 
 InsetCommand::InsetCommand()
-{
-}
+{}
 
 
 InsetCommand::InsetCommand(string const & cmd, string const & arg, 
 			   string const & opt)
 	: cmdname(cmd), options(opt), contents(arg)
-{
-}
+{}
 
 
 // In lyxf3 this will be just LaTeX
@@ -127,7 +125,8 @@ void InsetCommand::Read(Buffer const *, LyXLex & lex)
 }
 
 
-int InsetCommand::Latex(Buffer const *, ostream & os, bool /*fragile*/, bool/*fs*/) const
+int InsetCommand::Latex(Buffer const *, ostream & os,
+			bool /*fragile*/, bool/*fs*/) const
 {
 	os << getCommand();
 	return 0;

@@ -16,6 +16,7 @@
 
 using std::ostream;
 
+
 InsetUrl::InsetUrl(string const & cmd)
 	: fd_form_url(0)
 {
@@ -104,7 +105,8 @@ void InsetUrl::CloseUrlCB(FL_OBJECT * ob, long)
 }
 
 
-extern "C" void C_InsetUrl_CloseUrlCB(FL_OBJECT * ob, long data)
+extern "C"
+void C_InsetUrl_CloseUrlCB(FL_OBJECT * ob, long data)
 {
 	InsetUrl::CloseUrlCB(ob, data);
 }

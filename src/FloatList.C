@@ -56,5 +56,26 @@ string FloatList::defaultPlacement(string const & t) const
 }
 
 
+bool FloatList::typeExist(string const & t) const
+{
+	List::const_iterator cit = list.find(t);
+	return cit != list.end();
+}
+
+
+Floating const & FloatList::getType(string const & t) const
+{
+	// I wish we could use exceptions
+	List::const_iterator cit = list.find(t);
+	if (cit != list.end())
+		return (*cit).second;
+#ifdef HAVE_EXCEPTIONS
+	throw UnknownFloatType(t);
+#else
+	static Floating empty_float;
+	return empty_float;
+#endif
+}
+
 // The global floatlist
 FloatList floatList;

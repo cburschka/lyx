@@ -18,7 +18,7 @@
 
 #include "insetcollapsable.h"
 
-/** The footnote inset
+/** The theorem inset
   
 */
 class InsetTheorem : public InsetCollapsable {
@@ -39,8 +39,6 @@ public:
 	const char * EditMessage() const;
 	///
 	bool InsertInsetAllowed(Inset * inset) const;
-	///
-	//LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
 };
 
 #endif

@@ -507,7 +507,6 @@ private:
 };
 
 
-///
 inline
 void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
 {

@@ -73,8 +73,7 @@ InsetQuotes::InsetQuotes(InsetQuotes::quote_language l,
 			 InsetQuotes::quote_side s,
 			 InsetQuotes::quote_times t)
 	: language(l), side(s), times(t)
-{
-}
+{}
 
 
 InsetQuotes::InsetQuotes(char c, BufferParams const & params)
@@ -189,9 +188,12 @@ int InsetQuotes::width(BufferView *, LyXFont const & font) const
 }
 
 
-LyXFont InsetQuotes::ConvertFont(LyXFont font)
+//LyXFont InsetQuotes::ConvertFont(LyXFont font)
+// I really belive this should be
+LyXFont InsetQuotes::ConvertFont(LyXFont const & f)
 {
-	/* quotes-insets cannot be latex of any kind */
+	LyXFont font(f);
+	// quotes-insets cannot be latex of any kind
 	font.setLatex(LyXFont::OFF);
 	return font;
 }
@@ -221,10 +223,16 @@ void InsetQuotes::Read(Buffer const *, LyXLex & lex)
 {
 	lex.nextToken();
 	ParseString(lex.GetString());
+	lex.next();
+	string tmp(lex.GetString());
+	if (tmp != "\\end_inset")
+		lyxerr << "LyX Warning: Missing \\end_inset "
+			"in InsetQuotes::Read." << endl;
 }
 
 
-int InsetQuotes::Latex(Buffer const *, ostream & os, bool /*fragile*/, bool) const
+int InsetQuotes::Latex(Buffer const *, ostream & os,
+		       bool /*fragile*/, bool) const
 {
 	string doclang = 
 		current_view->buffer()->GetLanguage();
@@ -233,11 +241,9 @@ int InsetQuotes::Latex(Buffer const *, ostream & os, bool /*fragile*/, bool) con
 	
 	if (lyxrc.fontenc == "T1") {
 		qstr = latex_quote_t1[times][quoteind];
-	}
-	else if (doclang == "default") {
+	} else if (doclang == "default") {
 		qstr = latex_quote_ot1[times][quoteind];
-	} 
-	else if (language == InsetQuotes::FrenchQ 
+	} else if (language == InsetQuotes::FrenchQ 
 		 && times == InsetQuotes::DoubleQ
 		 && doclang == "frenchb") {
 		if (side == InsetQuotes::LeftQ) 

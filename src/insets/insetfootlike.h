@@ -20,6 +20,8 @@
 
 #include "insetcollapsable.h"
 
+// To have this class is probably a bit overkill... (Lgb)
+
 /** The footnote inset
   
 */
@@ -29,8 +31,6 @@ public:
 	InsetFootlike();
 	///
 	void Write(Buffer const * buf, std::ostream & os) const;
-	///
-	//LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
 };
 
 #endif

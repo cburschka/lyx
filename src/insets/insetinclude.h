@@ -27,11 +27,13 @@ struct LaTeXFeatures;
  */
 class InsetInclude: public InsetCommand {
 public:
+#if 0
 	///
 	InsetInclude(): InsetCommand("include")
 	{
 		flag = InsetInclude::INCLUDE;
 	}
+#endif
 	///
 	InsetInclude(string const &,  Buffer *);
 	///
@@ -64,7 +66,9 @@ public:
 	///
 	void Validate(LaTeXFeatures &) const;
 	
-        /// Input inserts anything inside a paragraph, Display can give some visual feedback 
+        /** Input inserts anything inside a paragraph.
+	    Display can give some visual feedback
+	*/
 	bool display() const;
 	///
 	string getScreenLabel() const;
@@ -88,7 +92,9 @@ public:
 	 */ 
 	bool isVerb() const;
 	///
-	bool isVerbVisibleSpace() const { return flag == InsetInclude::VERBAST;}
+	bool isVerbVisibleSpace() const {
+		return flag == InsetInclude::VERBAST;
+	}
         ///  
 	bool isInclude() const { return flag == InsetInclude::INCLUDE;}
         ///  

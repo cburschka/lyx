@@ -18,9 +18,7 @@
 
 #include "insetcollapsable.h"
 
-class Painter;
-
-/** The footnote inset
+/** The minipage inset
   
 */
 class InsetMinipage : public InsetCollapsable {
@@ -39,8 +37,6 @@ public:
 	const char * EditMessage() const;
 	///
 	bool InsertInsetAllowed(Inset * inset) const;
-	///
-//	LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
 };
 
 #endif

@@ -24,9 +24,6 @@
 class InsetButton: public Inset {
 public:
 	///
-	InsetButton();
-
-	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
 	int descent(BufferView *, LyXFont const &) const;

@@ -87,10 +87,11 @@ struct Debug {
 // 1.0.x), which generates a compiler error when subclassing from
 // std::. (JMarc)
 #ifdef CXX_WORKING_NAMESPACES
-class DebugStream : public std::ostream {
+class DebugStream : public std::ostream
 #else
-class DebugStream : public ostream {
+class DebugStream : public ostream
 #endif
+{
 public:
 	/// Constructor, sets the debug level to t.
 	explicit DebugStream(Debug::type t = Debug::NONE);

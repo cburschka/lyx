@@ -70,7 +70,6 @@ private:
 };
 
 
-///
 inline
 bool operator==(LyXCursor const & a, LyXCursor const & b)
 {
@@ -80,7 +79,6 @@ bool operator==(LyXCursor const & a, LyXCursor const & b)
 }
 
 
-///
 inline
 bool operator!=(LyXCursor const & a, LyXCursor const & b)
 {

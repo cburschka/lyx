@@ -25,12 +25,12 @@
 
 #include "symbol_def.h"
 
-///
+
 #define LM_TK_OPEN '{'
-///
+
 #define LM_TK_CLOSE '}'
 
-///
+
 enum MathTokenEnum
 {
    LM_TK_BOP = 256,
@@ -66,32 +66,32 @@ enum MathTokenEnum
      LM_TK_STACK
 };
 
-///
+
 struct latexkeys {
 	char const * name;
 	short token;
 	int id;
 };
 
-///
+
 latexkeys *
 in_word_set (register char const * str, register int len);
 
-///
+
 latexkeys * lm_get_key(int index);
 
-///
+
 latexkeys * lm_get_key_by_id(int id, short tc = LM_TK_SYM);
 
-///
+
 typedef union{
-  ///
+
 unsigned char c;
-  ///
+
 char * s;
-  ///
+
 int i;
-  ///
+
 latexkeys * l;
 } YYSTYPE;
 

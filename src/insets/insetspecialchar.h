@@ -56,7 +56,8 @@ public:
 	/// Will not be used when lyxf3
 	void Read(Buffer const *, LyXLex & lex);
 	/// 
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &,
+		  bool fragile, bool free_spc) const;
 	///
 	int Ascii(Buffer const *, std::ostream &) const;
 	///

@@ -1,3 +1,84 @@
+2000-07-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* some whitespace chagnes to a number of files.
+	
+	* src/support/DebugStream.h: change to make it easier for
+	doc++ to parse correctly.
+	* src/support/lyxstring.h: ditto
+
+	* src/mathed/math_utils.C (compara): change to have only one
+	operator()
+	(MathedLookupBOP): change because of the above.
+
+	* src/mathed/math_delim.C (math_deco_compare): change to have only
+	one operator()
+	(search_deco): change becasue of the above.
+
+	* src/insets/insettabular.C (DrawCellSelection): use std::swap
+	instead of manually coded one.
+
+	* src/insets/insetquotes.C (Read): read the \end_inset too
+
+	* src/insets/insetlatex.h: remove file
+	* src/insets/insetlatex.C: remove file
+	
+	* src/insets/insetindex.[Ch] (InsetPrintIndex): remove default
+	constructor 
+	(InsetPrintIndex): remove destructor
+
+	* src/insets/insetinclude.h: remove default constructor
+
+	* src/insets/insetfloat.C: work to make it work better
+
+	* src/insets/inseterror.[Ch] (InsetError): remove default constructor
+
+	* src/insets/insetcite.h (InsetCitation): remove default constructor
+
+	* src/insets/insetbutton.[Ch] (InsetButton): remove default constructor
+
+	* src/text.C (GetColumnNearX): comment out some currently unused code.
+
+	* src/paragraph.C (writeFile): move some initializations closer to
+	first use.
+	(CutIntoMinibuffer): small change to use new matchIT operator
+	(Erase): ditto
+	(Erase): ditto
+	(InsertChar): ditto
+	(InsertInset): ditto
+	(GetInset): ditto
+	(GetInset): ditto
+	(InsetIterator): ditto
+	(Erase): small change to use new matchFT operator
+	(InsertChar): ditto
+	(GetFontSettings): ditto
+	(HighestFontInRange): ditto
+	(SetFont): ditto
+
+	* src/lyxparagraph.h: some chars changed to value_type
+	(matchIT): because of some stronger checking (perhaps too strong)
+	in SGI STL, the two operator() unified to one.
+	(matchFT): ditto
+
+	* src/lyxfunc.C (Dispatch): code to insert InsetFloat improved
+
+	* src/buffer.C (parseSingleLyXformat2Token): static string to hold
+	the last inset read added
+	(parseSingleLyXformat2Token): some more (future) compability code added
+	(parseSingleLyXformat2Token): warning about solitary \end_inset added
+	(parseSingleLyXformat2Token): set last_inset_read
+	(parseSingleLyXformat2Token): more code to read new "Float" correctly
+	(parseSingleLyXformat2Token): don't double intializw string next_token
+
+	* src/TextCache.C (text_fits::operator()): add const's to the signature
+	(has_buffer::operator()): ditto
+
+	* src/Floating.h: add some comments on the class
+
+	* src/FloatList.[Ch] (typeExist): new method
+	(getType): ditto
+
+	* src/BackStack.h: added default constructor, wanted by Gcc.
+
 2000-07-14  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (clear): fixed for multiple paragraps/layouts.

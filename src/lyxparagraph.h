@@ -214,9 +214,11 @@ public:
 	void fitToSize() {
 		text.resize(text.size());
 	}
+	///
 	void setContentsFromPar(LyXParagraph * par) {
 		text = par->text;
 	}
+	///
 	void clearContents() {
 		text.clear();
 	}
@@ -406,11 +408,11 @@ public:
 	  */
 	LyXFont getFont(BufferParams const &, size_type pos) const;
 	///
-	char GetChar(size_type pos);
+	value_type GetChar(size_type pos);
 	///
-	char GetChar(size_type pos) const;
+	value_type GetChar(size_type pos) const;
 	/// The position must already exist.
-	void SetChar(size_type pos, char c) {
+	void SetChar(size_type pos, value_type c) {
 		text[pos] = c;
 	}
 	
@@ -422,9 +424,9 @@ public:
 	LyXFont::FONT_SIZE HighestFontInRange(size_type startpos,
 					      size_type endpos) const;
 	///
-	void InsertChar(size_type pos, char c);
+	void InsertChar(size_type pos, value_type c);
 	///
-	void InsertChar(size_type pos, char c, LyXFont const &);
+	void InsertChar(size_type pos, value_type c, LyXFont const &);
 	///
 	void InsertInset(size_type pos, Inset * inset);
 	///
@@ -533,17 +535,11 @@ private:
 	friend struct matchIT;
 	///
 	struct matchIT {
-		/// used by lower_bound
+		/// used by lower_bound and upper_bound
 		inline
 		int operator()(LyXParagraph::InsetTable const & a,
-			       LyXParagraph::size_type pos) const {
-			return a.pos < pos;
-		}
-		/// used by upper_bound
-		inline
-		int operator()(LyXParagraph::size_type pos,
-			       LyXParagraph::InsetTable const & a) const {
-			return pos < a.pos;
+			       LyXParagraph::InsetTable const & b) const {
+			return a.pos < b.pos;
 		}
 	};
 	/** A font entry covers a range of positions. Notice that the
@@ -576,17 +572,11 @@ private:
 	friend struct matchFT;
 	///
 	struct matchFT {
-		/// used by lower_bound
+		/// used by lower_bound and upper_bound
 		inline
 		int operator()(LyXParagraph::FontTable const & a,
-			       LyXParagraph::size_type pos) const {
-			return a.pos < pos;
-		}
-		/// used by upper_bound
-		inline
-		int operator()(LyXParagraph::size_type pos,
-			       LyXParagraph::FontTable const & a) const {
-			return pos < a.pos;
+			       LyXParagraph::FontTable const & b) const {
+			return a.pos < b.pos;
 		}
 	};
 
@@ -665,7 +655,6 @@ public:
 	}
 	///
 	inset_iterator InsetIterator(size_type pos);
-
 };
 
 #endif

@@ -26,7 +26,7 @@ class Painter;
 class InsetFloat : public InsetCollapsable {
 public:
 	///
-	InsetFloat();
+	InsetFloat(string const &);
 	///
 	void Write(Buffer const * buf, std::ostream & os) const;
 	///
@@ -44,14 +44,18 @@ public:
 	///
 	bool InsertInsetAllowed(Inset * inset) const;
 	///
-//	LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
-	///
 	void InsetButtonRelease(BufferView * bv, int x, int y, int button);
+	///
+	void wide(bool w);
+	///
+	bool wide() const;
 private:
 	///
 	string floatType;
 	///
 	string floatPlacement;
+	///
+	bool wide_;
 };
 
 #endif

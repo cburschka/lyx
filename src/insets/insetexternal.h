@@ -86,7 +86,8 @@ public:
 	static void cancelCB(FL_OBJECT *, long);
 private:
 	/// Write the output for a specific file format
-	int write(string const & format, Buffer const *, std::ostream &) const;
+	int write(string const & format, Buffer const *,
+		  std::ostream &) const;
 
 	/// Apply the changes
 	void doApply(BufferView * bv);
@@ -107,7 +108,9 @@ private:
 	/// Substitute meta-variables in this string
 	string doSubstitution(Buffer const *, string const & s) const;
 
-	/// Get the LyX name of the currently selected template in the choice list
+	/** Get the LyX name of the currently selected
+	    template in the choice list
+	*/
 	string getCurrentTemplate() const;
 
 	/// Get a certain template from a LyX name

@@ -32,7 +32,8 @@ public:
 	explicit
         InsetParent(string const & fn, Buffer * owner = 0);
 	/// 
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &,
+		  bool fragile, bool free_spc) const;
         ///
         Inset * Clone() const { return new InsetParent(getContents()); }
     	///

@@ -48,7 +48,8 @@ public:
 	 fragile == true means, that the inset should take care about
 	 fragile commands by adding a \protect before.
 	 */
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &,
+		  bool fragile, bool free_spc) const;
 	///
 	int Ascii(Buffer const *, std::ostream &) const;
 	///

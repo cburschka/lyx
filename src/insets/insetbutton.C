@@ -23,10 +23,6 @@ using std::ostream;
 using std::endl;
 
 
-InsetButton::InsetButton()
-{
-}
-
 int InsetButton::ascent(BufferView * bv, LyXFont const &) const
 {
 	LyXFont font(LyXFont::ALL_SANE);

@@ -25,17 +25,17 @@ using std::ostream;
 
 /* Error, used for the LaTeX-Error Messages */
 
+#if 0
 InsetError::InsetError()
 {
 	form = 0;
 }
+#endif
 
 
 InsetError::InsetError(string const & str)
-	: contents(str)
-{
-	form = 0;
-}
+	: contents(str), form(0)
+{}
 
 
 InsetError::~InsetError()
@@ -155,7 +155,8 @@ void InsetError::CloseErrorCB(FL_OBJECT * ob, long)
 
 
 // A C wrapper
-extern "C" void C_InsetError_CloseErrorCB(FL_OBJECT * ob, long data)
+extern "C"
+void C_InsetError_CloseErrorCB(FL_OBJECT * ob, long data)
 {
         InsetError::CloseErrorCB(ob , data);
 }

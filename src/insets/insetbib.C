@@ -34,14 +34,16 @@ FD_bibitem_form * bibitem_form = 0;
 FD_bibitem_form * create_form_bibitem_form(void);
 
 
-extern "C" void bibitem_cb(FL_OBJECT *, long data)
+extern "C"
+void bibitem_cb(FL_OBJECT *, long data)
 {
 	InsetBibKey::Holder * holder =
 		static_cast<InsetBibKey::Holder*>
 		(bibitem_form->bibitem_form->u_vdata);
-
+	
 	holder->inset->callback( bibitem_form, data );
 }
+
 
 FD_bibitem_form * create_form_bibitem_form(void)
 {
@@ -71,8 +73,8 @@ FD_bibitem_form * create_form_bibitem_form(void)
 }
 
 
-InsetBibKey::InsetBibKey(string const & key, string const & label):
-	InsetCommand("bibitem", key, label)
+InsetBibKey::InsetBibKey(string const & key, string const & label)
+	: InsetCommand("bibitem", key, label)
 {
 	counter = 1;
 	if (key.empty())
@@ -80,8 +82,8 @@ InsetBibKey::InsetBibKey(string const & key, string const & label):
 }
 
 
-InsetBibKey::InsetBibKey(InsetBibKey const * b):
-	InsetCommand("bibitem", b->getContents(), b->getOptions())
+InsetBibKey::InsetBibKey(InsetBibKey const * b)
+	: InsetCommand("bibitem", b->getContents(), b->getOptions())
 {
 	counter = b->counter;
 }
@@ -98,11 +100,9 @@ InsetBibKey::~InsetBibKey()
 
 void InsetBibKey::callback( FD_bibitem_form * form, long data )
 {
-	switch (data)
-	{
+	switch (data) {
 	case 1:
-		if(!holder.view->buffer()->isReadonly())
-		{
+		if(!holder.view->buffer()->isReadonly()) {
 			setContents(fl_get_input(form->key));
 			setOptions(fl_get_input(form->label));
 			// shouldn't mark the buffer dirty unless
@@ -164,7 +164,7 @@ string InsetBibKey::getScreenLabel() const
 }
 
 
-/*
+/**
   The value in "Key:" isn't allways set right after a few bibkey insets have
   been added/removed.  Perhaps the wrong object is deleted/used somewhere
   upwards?
@@ -205,8 +205,8 @@ void InsetBibKey::Edit(BufferView * bv, int, int, unsigned int)
 InsetBibtex::InsetBibtex(string const & dbase, string const & style,
 			 Buffer * o)
 	: InsetCommand("BibTeX", dbase, style), owner(o)
-{
-}
+{}
+
 
 InsetBibtex::~InsetBibtex()
 {

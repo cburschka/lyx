@@ -280,8 +280,11 @@ class MathedInset  {
     ///
     short size;
     /// Default metrics
-    static int df_asc, df_des, df_width;
-
+    static int df_asc;
+    ///
+    static int df_des;
+    ///
+    static int df_width;
     /// In a near future maybe we use a better fonts renderer than X
     void drawStr(Painter &, short, int, int, int, byte const *, int);
     ///
@@ -391,20 +394,22 @@ class MathParInset: public MathedInset  {
     /// Paragraph data is stored here
     LyxArrayBase * array;
     /// Cursor start position
-    int xo, yo;
+    int xo;
+    ///
+    int yo;
     /// 
     short flag;
 
  private:
     ///
     virtual void setFlag(MathedParFlag f) { flag |= f; }
-	///
+    ///
     friend class InsetFormula;
-	///
+    ///
     friend class MathedXIter;
-	///
+    ///
     friend class MathedCursor;
-	///
+    ///
     friend LyxArrayBase * mathed_parse(unsigned flags = 0,
 				       LyxArrayBase * a = 0,
 				       MathParInset ** p = 0);
@@ -462,9 +467,9 @@ struct MathedRowSt {
     bool numbered;
     ///
     MathedRowSt * next;
-	///
+    ///
     friend class MathMatrixInset;
-	///
+    ///
     friend class MathedXIter;
 };
 
@@ -511,12 +516,14 @@ class MathMatrixInset: public MathParInset {
 
     /// Use this to manage the extra information independently of paragraph
     MathedRowSt * getRowSt() const { return row; }
-	///
+    ///
     void setRowSt(MathedRowSt * r) { row = r; }
     
  protected:
     ///  Number of columns & rows
-    int nc, nr;
+    int nc;
+    ///
+    int nr;
     /// tab sizes
     int * ws;   
     /// 
@@ -546,56 +553,56 @@ int mathed_parser_lineno();
 int MathedLookupBOP(short);
 
 /************************ Inline functions ********************************/
-///
+
 inline
 bool MathIsInset(short x)
 {
 	return LM_TC_INSET <= x && x <= LM_TC_ACTIVE_INSET;
 }
 
-///
+
 inline
 bool MathIsFont(short x)
 {
 	return LM_TC_CONST <= x && x <= LM_TC_BSYM;
 }
 
-///
+
 inline
 bool MathIsAlphaFont(short x)
 {
 	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
 }
 
-///
+
 inline
 bool MathIsActive(short x)
 {
 	return LM_TC_INSET < x && x <= LM_TC_ACTIVE_INSET;
 }
 
-///
+
 inline
 bool MathIsUp(short x)
 {
 	return x == LM_TC_UP;
 }
 
-///
+
 inline
 bool MathIsDown(short x)
 {
 	return x == LM_TC_DOWN;
 }
 
-///
+
 inline
 bool MathIsScript(short x)
 {
 	return x == LM_TC_DOWN || x == LM_TC_UP;
 }
 
-///
+
 inline
 bool MathIsBOPS(short x)
 {
@@ -603,14 +610,14 @@ bool MathIsBOPS(short x)
 }
 
 
-///
+
 inline
 bool MathIsBinary(short x)
 {
     return x == LM_TC_BOP || x == LM_TC_BOPS;
 }
 
-///
+
 inline
 bool MathIsSymbol(short x) {
     return LM_TC_SYMB <= x && x <= LM_TC_BSYM;

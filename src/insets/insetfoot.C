@@ -27,7 +27,8 @@ using std::ostream;
 using std::endl;
 
 
-InsetFoot::InsetFoot() : InsetFootlike()
+InsetFoot::InsetFoot()
+	: InsetFootlike()
 {
     setLabel(_("foot"));
     setInsetName("Foot");
@@ -70,14 +71,3 @@ bool InsetFoot::InsertInsetAllowed(Inset * in) const
     }
     return true;
 }
-
-
-#if 0
-LyXFont InsetFoot::GetDrawFont(BufferView * bv,
-			       LyXParagraph * p, int pos) const
-{
-    LyXFont fn = getLyXText(bv)->GetFont(bv->buffer(), p, pos);
-    fn.decSize().decSize();
-    return fn;
-}
-#endif

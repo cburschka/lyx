@@ -20,7 +20,7 @@ class Dialogs;
 
 /** Used to insert citations  
  */
-class InsetCitation: public InsetCommand {
+class InsetCitation : public InsetCommand {
 public:
 	///
 	explicit
@@ -39,7 +39,7 @@ public:
 	void Edit(BufferView *, int, int, unsigned int);
 private:
 	///
-	InsetCitation() : InsetCommand("cite"), dialogs_(0) {}
+	//InsetCitation() : InsetCommand("cite"), dialogs_(0) {}
 	///
 	Dialogs * dialogs_;
 };

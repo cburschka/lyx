@@ -16,7 +16,7 @@
 
 #include "insetfootlike.h"
 #include "lyxfont.h"
-#include "BufferView.h"
+#include "buffer.h"
 #include "lyxtext.h"
 #include "support/LOstream.h"
 
@@ -40,14 +40,3 @@ void InsetFootlike::Write(Buffer const * buf, ostream & os) const
 	os << getInsetName() << "\n";
 	InsetCollapsable::Write(buf, os);
 }
-
-
-#if 0
-LyXFont InsetFootlike::GetDrawFont(BufferView * bv,
-				   LyXParagraph * p, int pos) const
-{
-	LyXFont fn = getLyXText(bv)->GetFont(bv->buffer(), p, pos);
-	fn.decSize().decSize();
-	return fn;
-}
-#endif

@@ -17,7 +17,6 @@
 #include "gettext.h"
 #include "lyxfont.h"
 #include "BufferView.h"
-#include "Painter.h"
 #include "lyxtext.h"
 #include "insets/insettext.h"
 #include "support/LOstream.h"
@@ -112,14 +111,3 @@ bool InsetMinipage::InsertInsetAllowed(Inset * in) const
 	}
 	return true;
 }
-
-
-#if 0
-LyXFont InsetMinipage::GetDrawFont(BufferView * bv,
-				   LyXParagraph * p, int pos) const
-{
-	LyXFont fn = getLyXText(bv)->GetFont(bv->buffer(), p, pos);
-	fn.decSize().decSize();
-	return fn;
-}
-#endif

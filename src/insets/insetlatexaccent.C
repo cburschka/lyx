@@ -30,13 +30,12 @@ using std::endl;
 /* Later modified by Lars G. Bjønnes, larsbj@lyx.org */
 
 InsetLatexAccent::InsetLatexAccent()
-{
-	candisp = false;
-}
+	: candisp(false)
+{}
 
 
-InsetLatexAccent::InsetLatexAccent(string const & string)
-	: contents(string)
+InsetLatexAccent::InsetLatexAccent(string const & str)
+	: contents(str)
 {
 	checkContents();
 }

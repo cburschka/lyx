@@ -31,7 +31,6 @@ class LyXText;
 struct LaTeXFeatures;
 
 
-
 /// Insets
 class Inset {
 public:
@@ -128,7 +127,7 @@ public:
 	virtual void draw(BufferView *, LyXFont const &,
 			  int baseline, float & x, bool cleared) const = 0;
 	/// update the inset representation
-	virtual void update(BufferView *, LyXFont const &, bool =false)
+	virtual void update(BufferView *, LyXFont const &, bool = false)
 		{}
 	///
 	virtual LyXFont ConvertFont(LyXFont font);

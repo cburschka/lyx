@@ -27,7 +27,7 @@ struct FD_bibitem_form;
   Must be automatically inserted as the first object in a
   bibliography paragraph. 
   */
-class InsetBibKey: public InsetCommand {
+class InsetBibKey : public InsetCommand {
 public:
 	///
 	InsetBibKey() : InsetCommand("bibitem") { counter = 1; }
@@ -41,7 +41,9 @@ public:
 	~InsetBibKey();
 	///
         Inset * Clone() const { return new InsetBibKey(this); }
-	/// Currently \bibitem is used as a LyX2.x command, so we need this method.
+	/** Currently \bibitem is used as a LyX2.x command,
+	    so we need this method.
+	*/
         void Write(Buffer const *, std::ostream &) const;
 	///
 	void Read(Buffer const *, LyXLex & lex);
@@ -69,7 +71,7 @@ public:
 		BufferView * view;
 	};
  
- private:
+private:
 	///
         int counter;
 	///
@@ -79,7 +81,7 @@ public:
 
 /** Used to insert BibTeX's information 
   */
-class InsetBibtex: public InsetCommand {
+class InsetBibtex : public InsetCommand {
 public:
 	/// 
 	InsetBibtex() : InsetCommand("BibTeX") { owner = 0; }
@@ -93,7 +95,7 @@ public:
 	Inset * Clone() const {
 		return new InsetBibtex(getCmdName(), getOptions(), 0);
 	}
-	///  
+	///
 	Inset::Code LyxCode() const
 	{
 		return Inset::BIBTEX_CODE;
@@ -103,9 +105,10 @@ public:
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	/// 
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool freespace) const;
+	int Latex(Buffer const *, std::ostream &,
+		  bool fragile, bool freespace) const;
 	///
-	std::vector< std::pair<string,string> > getKeys() const;
+	std::vector<std::pair<string,string> > getKeys() const;
 	///
 	EDITABLE Editable() const {
 		return IS_EDITABLE;
@@ -116,7 +119,7 @@ public:
         bool delDatabase(string const &);
 	///
 	bool display() const { return true; } 
-
+	///
    	struct Holder {
 		InsetBibtex * inset;
 		BufferView * view;

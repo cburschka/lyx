@@ -37,8 +37,6 @@ public:
 	const char * EditMessage() const;
 	///
 	bool InsertInsetAllowed(Inset * inset) const;
-	///
-	//LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
 };
 
 #endif

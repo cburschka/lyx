@@ -17,13 +17,13 @@
 #include "gettext.h"
 #include "lyxfont.h"
 #include "BufferView.h"
-#include "Painter.h"
 #include "lyxtext.h"
 #include "insets/insettext.h"
 #include "support/LOstream.h"
 #include "FloatList.h"
 #include "LaTeXFeatures.h"
 #include "debug.h"
+#include "Floating.h"
 
 using std::ostream;
 using std::endl;
@@ -78,9 +78,12 @@ using std::endl;
 //
 // Lgb
 
-InsetFloat::InsetFloat() : InsetCollapsable()
+InsetFloat::InsetFloat(string const & type)
+	: InsetCollapsable()
 {
-	setLabel(_("float"));
+	string lab(_("float:"));
+	lab += type;
+	setLabel(lab);
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
@@ -88,16 +91,20 @@ InsetFloat::InsetFloat() : InsetCollapsable()
 	setLabelFont(font);
 	setAutoCollapse(false);
 	setInsetName("Float");
-	floatType = "table";
-	floatPlacement = "H";
+	floatType = type;
+	//floatPlacement = "H";
 }
 
 
 void InsetFloat::Write(Buffer const * buf, ostream & os) const
 {
 	os << getInsetName()
-	   << "\ntype " << floatType
-	   << "\nplacement " << floatPlacement << "\n";
+	   << " " << floatType
+	   << "\nplacement ";
+	if (floatPlacement.empty())
+		os << floatList.getType(floatType).placement << "\n";
+	else
+		os << floatPlacement << "\n";
 	InsetCollapsable::Write(buf, os);
 }
 
@@ -107,12 +114,6 @@ void InsetFloat::Read(Buffer const * buf, LyXLex & lex)
 	if (lex.IsOK()) {
 		lex.next();
 		string token = lex.GetString();
-		if (token == "type") {
-			lex.next();
-			floatType = lex.GetString();
-		}
-		lex.next();
-		token = lex.GetString();
 		if (token == "placement") {
 			lex.next();
 			floatPlacement = lex.GetString();
@@ -130,7 +131,7 @@ void InsetFloat::Validate(LaTeXFeatures & features) const
 
 Inset * InsetFloat::Clone() const
 {
-	InsetFloat * result = new InsetFloat;
+	InsetFloat * result = new InsetFloat(floatType);
 	result->inset->init(inset);
 
 	result->collapsed = collapsed;
@@ -170,17 +171,6 @@ bool InsetFloat::InsertInsetAllowed(Inset * in) const
 }
 
 
-#if 0
-LyXFont InsetFloat::GetDrawFont(BufferView * bv,
-				LyXParagraph * p, int pos) const
-{
-	LyXFont fn = getLyXText(bv)->GetFont(bv->buffer(), p, pos);
-	fn.decSize().decSize();
-	return fn;
-}
-#endif
-
-
 void InsetFloat::InsetButtonRelease(BufferView * bv, int x, int y, int button)
 {
 	if (x >= 0
@@ -196,3 +186,24 @@ void InsetFloat::InsetButtonRelease(BufferView * bv, int x, int y, int button)
 	}
 }
 
+
+void InsetFloat::wide(bool w)
+{
+	wide_ = w;
+	if (wide_) {
+		string lab(_("float:"));
+		lab += floatType;
+		lab += "*";
+		setLabel(lab);
+	} else {
+		string lab(_("float:"));
+		lab += floatType;
+		setLabel(lab);
+	}
+}
+
+
+bool InsetFloat::wide() const
+{
+	return wide_;
+}

@@ -35,7 +35,7 @@ class text_fits {
 public:
 	text_fits(Buffer * b, int p)
 		: buf(b), pw(p) {}
-	bool operator()(TextCache::value_type & vt) {
+	bool operator()(TextCache::value_type const & vt) const {
 		if (vt.first == buf && vt.second.first == pw)
 			return true;
 		return false;
@@ -70,6 +70,7 @@ private:
 	ostream & os;
 };
 
+
 void TextCache::show(ostream & os, string const & str)
 {
 	os << "TextCache: " << str << endl;
@@ -84,7 +85,7 @@ void TextCache::show(ostream & os, TextCache::value_type const & vt)
 }
 
 
-void TextCache::add(Buffer *buf, int workwidth, LyXText * text)
+void TextCache::add(Buffer * buf, int workwidth, LyXText * text)
 {
 	lyxerr.debug() << "TextCache::add " << text;
 	if (bufferlist.isLoaded(buf)) {
@@ -116,7 +117,7 @@ class has_buffer {
 public:
 	has_buffer(Buffer * b)
 		: buf(b) {}
-	bool operator()(TextCache::value_type & vt) {
+	bool operator()(TextCache::value_type const & vt) const{
 		if (vt.first == buf) return true;
 		return false;
 	}

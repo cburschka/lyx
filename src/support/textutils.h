@@ -14,35 +14,35 @@
 
 #include <cctype>
 
-///
+//
 inline
 bool IsNewlineChar(char c) {
 	return (c == LyXParagraph::META_NEWLINE);
 }
 
 
-///
+//
 inline
 bool IsSeparatorChar(char c) {
 	return (c == ' ');
 }
 
 
-///
+//
 inline
 bool IsHfillChar(char c) {
 	return (c == LyXParagraph::META_HFILL);
 }
 
 
-///
+//
 inline
 bool IsInsetChar(char c) {
 	return (c == LyXParagraph::META_INSET);
 }
 
 
-///
+//
 inline
 bool IsFloatChar(char c) {
 	return (c == LyXParagraph::META_FOOTNOTE
@@ -55,14 +55,14 @@ bool IsFloatChar(char c) {
 }
 
 
-///
+//
 inline
 bool IsLineSeparatorChar(char c) {
 	return (c == ' ');
 }
 
 
-///
+//
 inline
 bool IsKommaChar(char c) {
 	return (c == ',' 
@@ -93,7 +93,7 @@ bool IsKommaChar(char c) {
 }
 
 
-///
+//
 inline
 bool IsLetterChar(unsigned char c) {
 	return ((c >= 'A' && c <= 'Z')
@@ -102,21 +102,21 @@ bool IsLetterChar(unsigned char c) {
 }
 
 
-///
+//
 inline
 bool IsPrintable(unsigned char c) {
 	return (c >= ' ');
 }
 
 
-///
+//
 inline
 bool IsPrintableNonspace(unsigned char c) {
 	return (c > ' ');
 }
 
 
-/// Word is not IsSeparator or IsKomma or IsHfill or IsFloat or IsInset. 
+// Word is not IsSeparator or IsKomma or IsHfill or IsFloat or IsInset. 
 inline
 bool IsWordChar(unsigned char c) {
 	return !( IsSeparatorChar( c ) 
@@ -127,7 +127,7 @@ bool IsWordChar(unsigned char c) {
 }
 
 
-///
+//
 inline
 bool IsLetterCharOrDigit(char ch)
 {

@@ -26,7 +26,7 @@ int compare_no_case(string const & s, string const & s2);
 ///
 int compare_no_case(string const & s, string const & s2, unsigned int len);
 
-///
+
 inline
 int compare(char const * a, char const * b)
 {
@@ -34,7 +34,7 @@ int compare(char const * a, char const * b)
 }
 
 
-///
+
 inline
 int compare(char const * a, char const * b, unsigned int len)
 {
@@ -60,7 +60,7 @@ string lowercase(string const &);
 ///
 string uppercase(string const &);
 
-/// convert T to string
+// convert T to string
 template<typename T>
 inline
 string tostr(T const & t) 

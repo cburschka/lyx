@@ -26,13 +26,15 @@
   The edit-operation opens a 
   dialog with the text of the error-message. The inset is displayed as 
   "Error" in a box, and automatically deleted. */
-class InsetError: public Inset {
+class InsetError : public Inset {
 public:
 	///
 	explicit
 	InsetError(string const & string);
+#if 0
 	///
 	InsetError();
+#endif
 	///
 	~InsetError();
 	///
@@ -48,7 +50,8 @@ public:
 	///
 	void Read(Buffer const *, LyXLex & lex);
 	///
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &,
+		  bool fragile, bool free_spc) const;
 	///
 	int Ascii(Buffer const *, std::ostream &) const;
 	///

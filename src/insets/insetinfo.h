@@ -50,7 +50,8 @@ public:
 	///
 	void Read(Buffer const *, LyXLex & lex);
 	///
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &,
+		  bool fragile, bool free_spc) const;
 	///
 	int Ascii(Buffer const *, std::ostream &) const;
 	///

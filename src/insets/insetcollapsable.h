@@ -91,7 +91,8 @@ public:
     ///
     UpdatableInset::RESULT LocalDispatch(BufferView *, int, string const &);
     ///
-    int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
+    int Latex(Buffer const *, std::ostream &,
+	      bool fragile, bool free_spc) const;
     ///
     int Ascii(Buffer const *, std::ostream &) const { return 0; }
     ///
@@ -120,7 +121,9 @@ public:
     int getMaxWidth(Painter & pain, UpdatableInset const *) const;
     ///
     LyXText * getLyXText(BufferView *) const;
+    ///
     void deleteLyXText(BufferView *, bool recursive=true) const;
+    ///
     void resizeLyXText(BufferView *) const;
 
 protected:

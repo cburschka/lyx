@@ -130,11 +130,6 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			     BufferParams const & params,
 			     char footflag, char dth) const
 {
-	LyXFont font1, font2;
-	int column = 0;
-	int h = 0;
-	char c = 0;
-
 	if (footnoteflag != LyXParagraph::NO_FOOTNOTE
 	    || !previous
 	    || previous->footnoteflag == LyXParagraph::NO_FOOTNOTE) {
@@ -209,6 +204,7 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			
 		// Alignment?
 		if (align != LYX_ALIGN_LAYOUT) {
+			int h = 0;
 			switch (align) {
 			case LYX_ALIGN_LEFT: h = 1; break;
 			case LYX_ALIGN_RIGHT: h = 2; break;
@@ -254,9 +250,9 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 	if (bibkey)
 		bibkey->Write(buf, os);
 
-	font1 = LyXFont(LyXFont::ALL_INHERIT,params.language_info);
+	LyXFont font1(LyXFont::ALL_INHERIT,params.language_info);
 
-	column = 0;
+	int column = 0;
 	for (size_type i = 0; i < size(); ++i) {
 		if (!i) {
 			os << "\n";
@@ -264,14 +260,14 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 		}
 		
 		// Write font changes
-		font2 = GetFontSettings(params, i);
+		LyXFont font2 = GetFontSettings(params, i);
 		if (font2 != font1) {
 			font2.lyxWriteChanges(font1, os);
 			column = 0;
 			font1 = font2;
 		}
 
-		c = GetChar(i);
+		value_type c = GetChar(i);
 		switch (c) {
 		case META_INSET:
 		{
@@ -443,9 +439,11 @@ void LyXParagraph::CutIntoMinibuffer(BufferParams const & bparams,
 			// the inset, not just a clone. Otherwise
 			// the inset would be deleted when calling Erase(pos)
 			// find the entry
-			InsetList::iterator it = lower_bound(insetlist.begin(),
-							     insetlist.end(),
-							     pos, matchIT());
+			InsetTable search_elem(pos, 0);
+			InsetList::iterator it =
+				lower_bound(insetlist.begin(),
+					    insetlist.end(),
+					    search_elem, matchIT());
 			if (it != insetlist.end() && (*it).pos == pos)
 				(*it).inset = 0;
 		} else {
@@ -552,9 +550,11 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 		// if it is an inset, delete the inset entry 
 		if (text[pos] == LyXParagraph::META_INSET) {
 			// find the entry
-			InsetList::iterator it = lower_bound(insetlist.begin(),
-							     insetlist.end(),
-							     pos, matchIT());
+			InsetTable search_inset(pos, 0);
+			InsetList::iterator it =
+				lower_bound(insetlist.begin(),
+					    insetlist.end(),
+					    search_inset, matchIT());
 			if (it != insetlist.end() && (*it).pos == pos) {
 				delete (*it).inset;
 				insetlist.erase(it);
@@ -563,9 +563,12 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 		text.erase(text.begin() + pos);
 
 		// Erase entries in the tables.
-		FontList::iterator it = lower_bound(fontlist.begin(),
-						    fontlist.end(),
-						    pos, matchFT());
+		FontTable search_font(pos, LyXFont());
+		
+		FontList::iterator it =
+			lower_bound(fontlist.begin(),
+				    fontlist.end(),
+				    search_font, matchFT());
 		if (it != fontlist.end() && (*it).pos == pos &&
 		    (pos == 0 || 
 		     (it != fontlist.begin() && (*(it-1)).pos == pos - 1))) {
@@ -588,9 +591,11 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 			--(*it).pos;
 
 		// Update the inset table.
-		for (InsetList::iterator it = upper_bound(insetlist.begin(),
-							  insetlist.end(),
-							  pos, matchIT());
+		InsetTable search_inset(pos, 0);
+		for (InsetList::iterator it =
+			     upper_bound(insetlist.begin(),
+					 insetlist.end(),
+					 search_inset, matchIT());
 		     it != insetlist.end(); ++it)
 			--(*it).pos;
 	} else {
@@ -600,7 +605,8 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 }
 
 
-void LyXParagraph::InsertChar(LyXParagraph::size_type pos, char c)
+void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
+			      LyXParagraph::value_type c)
 {
 	LyXFont f(LyXFont::ALL_INHERIT);
 	InsertChar(pos, c, f);
@@ -608,7 +614,8 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos, char c)
 
 
 void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
-			      char c, LyXFont const & font)
+			      LyXParagraph::value_type c,
+			      LyXFont const & font)
 {
 	// > because last is the next unused position, and you can 
 	// use it if you want
@@ -626,16 +633,18 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
 	}
 	text.insert(text.begin() + pos, c);
 	// Update the font table.
+	FontTable search_font(pos, LyXFont());
 	for (FontList::iterator it = lower_bound(fontlist.begin(),
 						 fontlist.end(),
-						 pos, matchFT());
+						 search_font, matchFT());
 	     it != fontlist.end(); ++it)
 		++(*it).pos;
    
 	// Update the inset table.
+	InsetTable search_inset(pos, 0);
 	for (InsetList::iterator it = lower_bound(insetlist.begin(),
 						  insetlist.end(),
-						  pos, matchIT());
+						  search_inset, matchIT());
 	     it != insetlist.end(); ++it)
 		++(*it).pos;
 
@@ -676,9 +685,10 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 	Assert(text[pos] == META_INSET);
 	
 	// Add a new entry in the inset table.
+	InsetTable search_inset(pos, 0);
 	InsetList::iterator it = lower_bound(insetlist.begin(),
 					     insetlist.end(),
-					     pos, matchIT());
+					     search_inset, matchIT());
 	if (it != insetlist.end() && (*it).pos == pos)
 		lyxerr << "ERROR (LyXParagraph::InsertInset): "
 			"there is an inset in position: " << pos << endl;
@@ -716,9 +726,10 @@ Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 		return 0;
 	}
 	// Find the inset.
+	InsetTable search_inset(pos, 0);
 	InsetList::iterator it = lower_bound(insetlist.begin(),
 					     insetlist.end(),
-					     pos, matchIT());
+					     search_inset, matchIT());
 	if (it != insetlist.end() && (*it).pos == pos)
 		return (*it).inset;
 
@@ -752,9 +763,10 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 		return 0;
 	}
 	// Find the inset.
+	InsetTable search_inset(pos, 0);
 	InsetList::const_iterator cit = lower_bound(insetlist.begin(),
 						    insetlist.end(),
-						    pos, matchIT());
+						    search_inset, matchIT());
 	if (cit != insetlist.end() && (*cit).pos == pos)
 		return (*cit).inset;
 
@@ -776,9 +788,10 @@ LyXFont LyXParagraph::GetFontSettings(BufferParams const & bparams,
 				      LyXParagraph::size_type pos) const
 {
 	if (pos < size()) {
+		FontTable search_font(pos, LyXFont());
 		FontList::const_iterator cit = lower_bound(fontlist.begin(),
 						    fontlist.end(),
-						    pos, matchFT());
+						    search_font, matchFT());
 		if (cit != fontlist.end())
 			return (*cit).font;
 	}
@@ -889,16 +902,19 @@ LyXParagraph::HighestFontInRange(LyXParagraph::size_type startpos,
 	LyXFont::FONT_SIZE maxsize = LyXFont::SIZE_TINY;
 	if (fontlist.empty())
 		return maxsize;
-	
+
+	FontTable end_search(endpos, LyXFont());
 	FontList::const_iterator end_it = lower_bound(fontlist.begin(),
 						      fontlist.end(),
-						      endpos, matchFT());
+						      end_search, matchFT());
 	if (end_it != fontlist.end())
 		++end_it;
 
-	for (FontList::const_iterator cit = lower_bound(fontlist.begin(),
-							fontlist.end(),
-							startpos, matchFT());
+	FontTable start_search(startpos, LyXFont());
+	for (FontList::const_iterator cit =
+		     lower_bound(fontlist.begin(),
+				 fontlist.end(),
+				 start_search, matchFT());
 	     cit != end_it; ++cit) {
 		LyXFont::FONT_SIZE size = (*cit).font.size();
 		if (size > maxsize && size <= LyXFont::SIZE_HUGER)
@@ -908,7 +924,8 @@ LyXParagraph::HighestFontInRange(LyXParagraph::size_type startpos,
 }
 
 
-char LyXParagraph::GetChar(LyXParagraph::size_type pos)
+LyXParagraph::value_type
+LyXParagraph::GetChar(LyXParagraph::size_type pos)
 {
 	Assert(pos >= 0);
 
@@ -966,7 +983,8 @@ char LyXParagraph::GetChar(LyXParagraph::size_type pos)
 }
 
 
-char LyXParagraph::GetChar(LyXParagraph::size_type pos) const
+LyXParagraph::value_type
+LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 {
 	Assert(pos >= 0);
 
@@ -1149,9 +1167,10 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 	// in a new kernel. (Asger)
 	// Next search font table
 
+	FontTable search_font(pos, LyXFont());
 	FontList::iterator it = lower_bound(fontlist.begin(),
 					    fontlist.end(),
-					    pos, matchFT());
+					    search_font, matchFT());
 	unsigned int i = it - fontlist.begin();
 	bool notfound = it == fontlist.end();
 
@@ -1998,11 +2017,13 @@ int LyXParagraph::AutoDeleteInsets()
 }
 
 
-LyXParagraph::inset_iterator LyXParagraph::InsetIterator(LyXParagraph::size_type pos)
+LyXParagraph::inset_iterator
+LyXParagraph::InsetIterator(LyXParagraph::size_type pos)
 {
+	InsetTable search_inset(pos, 0);
 	InsetList::iterator it = lower_bound(insetlist.begin(),
 					     insetlist.end(),
-					     pos, matchIT());
+					     search_inset, matchIT());
 	return inset_iterator(it);
 }
 
@@ -2402,7 +2423,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 			}	 
 		}
 
-		int c = GetChar(i);
+		value_type c = GetChar(i);
 
 		// Fully instantiated font
 		LyXFont font = getFont(bparams, i);
@@ -2566,7 +2587,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(Buffer const * buf,
 	bool first_in_cell = true;
 		
 	for (size_type i = 0; i < size(); ++i) {
-		char c = GetChar(i);
+		value_type c = GetChar(i);
 		if (table->IsContRow(current_cell_number + 1)) {
 			if (c == LyXParagraph::META_NEWLINE)
 				++current_cell_number;
@@ -2603,7 +2624,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(Buffer const * buf,
 			open_font = false;
 		}
 		// Blanks are printed before start of fontswitch
-		if (c == ' '){
+		if (c == ' ') {
 			SimpleTeXBlanks(os, texrow, i, column, font, style);
 		}
 		// Do we need to change font?
@@ -2711,11 +2732,11 @@ bool LyXParagraph::TeXContTableRows(Buffer const * buf,
 	size_type lastpos = i;
 	int cell = table->CellHasContRow(current_cell_number);
 	++current_cell_number;
-	char c;
+	value_type c;
 	while(cell >= 0) {
 		// first find the right position
 		i = lastpos;
-		for (; (i < size()) && (current_cell_number<cell); ++i) {
+		for (; (i < size()) && (current_cell_number < cell); ++i) {
 			c = GetChar(i);
 			if (c == LyXParagraph::META_NEWLINE)
 				++current_cell_number;
@@ -3242,7 +3263,8 @@ void LyXParagraph::SimpleTeXSpecialChars(Buffer const * buf,
 					 bool & open_font,
 					 LyXLayout const & style,
 					 LyXParagraph::size_type & i,
-					 int & column, char const c)
+					 int & column,
+					 LyXParagraph::value_type c)
 {
 	// Two major modes:  LaTeX or plain
 	// Handle here those cases common to both modes
@@ -4228,7 +4250,7 @@ bool LyXParagraph::IsKomma(size_type pos) const
 /// Used by the spellchecker
 bool LyXParagraph::IsLetter(LyXParagraph::size_type pos) const
 {
-	unsigned char c = GetChar(pos);
+	value_type c = GetChar(pos);
 	if (IsLetterChar(c))
 		return true;
 	// '\0' is not a letter, allthough every string contains "" (below)
@@ -4318,7 +4340,7 @@ string LyXParagraph::String(Buffer const * buffer, bool label)
 	string::size_type len = s.size();
 
 	for (LyXParagraph::size_type i = 0; i < size(); ++i) {
-		unsigned char c = GetChar(i);
+		value_type c = GetChar(i);
 		if (IsPrintable(c))
 			s += c;
 		else if (c == META_INSET &&
@@ -4373,7 +4395,7 @@ string LyXParagraph::String(Buffer const * buffer,
 		s += labelstring + ' ';
 
 	for (LyXParagraph::size_type i = beg; i < end; ++i) {
-		unsigned char c = GetChar(i);
+		value_type c = GetChar(i);
 		if (IsPrintable(c))
 			s += c;
 		else if (c == META_INSET) {

@@ -53,7 +53,8 @@ public:
 	///
 	void Read(Buffer const *, LyXLex & lex);
 	///
-	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &,
+		  bool fragile, bool free_spc) const;
 	///
 	int Ascii(Buffer const *, std::ostream &) const;
 	///
@@ -113,12 +114,17 @@ public:
 	std::vector<string> getLabelList() const;
    
 protected:
+	///
 	void UpdateLocal(BufferView * bv);
+	///
     	MathParInset * par;
+	///
 	static MathedCursor * mathcursor;
     
 private:
+	///
 	bool disp_flag;
+	///
 	string label;
 };
 

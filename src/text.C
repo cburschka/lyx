@@ -4776,11 +4776,13 @@ int LyXText::GetColumnNearX(BufferView * bview, Row * row, int & x,
 		vc = last + 1;
 
 	boundary = false;
+#if 0 // currently unused
 	bool lastrow = (!row->next() || row->next()->par() != row->par());
 	bool rtl = (lastrow)
 		? row->par()->isRightToLeftPar(bview->buffer()->params)
 		: false;
-
+#endif
+	
 	if (row->pos() > last)  // Row is empty?
 		c = row->pos();
 #warning This is wrong, please have a look Dekel (Jug)

@@ -19,10 +19,11 @@
 #include "BufferView.h"
 #include "frontends/Dialogs.h"
 
+
 InsetCitation::InsetCitation(string const & key, string const & note)
 		: InsetCommand("cite", key, note), dialogs_(0)
-{
-}
+{}
+
 
 InsetCitation::~InsetCitation()
 {
@@ -33,7 +34,6 @@ InsetCitation::~InsetCitation()
 string InsetCitation::getScreenLabel() const
 {
 	string temp("[");
-
 	temp += getContents();
 
 	if( !getOptions().empty() ) {

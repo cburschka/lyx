@@ -32,6 +32,10 @@ public:
 	void newFloat(Floating const & fl);
 	///
 	string defaultPlacement(string const & t) const;
+	///
+	bool typeExist(string const & t) const;
+	///
+	Floating const & getType(string const & t) const;
 private:
 	///
 	List list;

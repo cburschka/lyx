@@ -119,7 +119,6 @@ void DepTable::remove_files_with_extension(string const & suf)
 			tmp[(*cit).first] = (*cit).second;
 	}
 	deplist.swap(tmp);
-	
 }
 
 

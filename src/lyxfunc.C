@@ -88,6 +88,7 @@ using std::istringstream;
 #include "menus.h"
 #include "bufferview_funcs.h"
 #include "frontends/Dialogs.h"
+#include "FloatList.h"
 
 using std::pair;
 using std::endl;
@@ -2066,11 +2067,18 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_INSET_FLOAT:
 	{
-		InsetFloat * new_inset = new InsetFloat;
-		if (owner->view()->insertInset(new_inset))
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		else
-			delete new_inset;
+		// check if the float type exist
+		if (floatList.typeExist(argument)) {
+			InsetFloat * new_inset = new InsetFloat(argument);
+			if (owner->view()->insertInset(new_inset))
+				new_inset->Edit(owner->view(), 0, 0, 0);
+			else
+				delete new_inset;
+		} else {
+			lyxerr << "Non-existant float type: "
+			       << argument << endl;
+		}
+		
 	}
 	break;
 

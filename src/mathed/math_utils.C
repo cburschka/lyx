@@ -64,16 +64,11 @@ binary_op_pair binary_op_table[] = {
 
 
 struct compara {
-	// used by sort
+	// used by sort and lower_bound
 	inline
 	int operator()(binary_op_pair const & a,
 		       binary_op_pair const & b) const {
 		return a.id < b.id;
-	}
-	// used by lower_bound
-	inline
-	int operator()(binary_op_pair const & a, short int id) const {
-		return a.id < id;
 	}
 };
 
@@ -88,10 +83,12 @@ int MathedLookupBOP(short id)
 		sort(binary_op_table, binary_op_table + bopCount, compara());
 		issorted = true;
 	}
+
+	binary_op_pair search_elem = { id, 0 };
 	
 	binary_op_pair * res = lower_bound(binary_op_table,
 					   binary_op_table + bopCount,
-					   id, compara());
+					   search_elem, compara());
 	if (res != binary_op_table + bopCount && res->id == id)
 		return res->isrel;
 	else

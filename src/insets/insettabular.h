@@ -72,7 +72,7 @@ public:
 	SELECTION
     };
     ///
-    InsetTabular(Buffer *, int rows=1, int columns=1);
+    InsetTabular(Buffer *, int rows = 1, int columns = 1);
     ///
     InsetTabular(InsetTabular const &, Buffer *);
     ///
@@ -92,7 +92,7 @@ public:
     ///
     void draw(BufferView *, const LyXFont &, int , float &, bool) const;
     ///
-    void update(BufferView *, LyXFont const &, bool =false);
+    void update(BufferView *, LyXFont const &, bool = false);
     ///
     const char * EditMessage() const;
     ///
@@ -106,7 +106,7 @@ public:
     ///
     bool LockInsetInInset(BufferView *, UpdatableInset *);
     ///
-    bool UnlockInsetInInset(BufferView *, UpdatableInset *, bool lr=false);
+    bool UnlockInsetInInset(BufferView *, UpdatableInset *, bool lr = false);
     ///
     bool UpdateInsetInInset(BufferView *, Inset *);
     ///
@@ -148,7 +148,7 @@ public:
     ///
     void ToggleInsetCursor(BufferView *);
     ///
-    void TabularFeatures(BufferView * bv, int feature, string val="");
+    void TabularFeatures(BufferView * bv, int feature, string val = string());
     ///
     int GetActCell() { return actcell; }
     ///
@@ -166,10 +166,11 @@ public:
     LyXTabular * tabular;
 
 private:
-    bool calculate_dimensions_of_cells(BufferView *, LyXFont const &, bool =false) const;
+    bool calculate_dimensions_of_cells(BufferView *, LyXFont const &,
+				       bool =false) const;
     ///
-    void DrawCellLines(Painter &, int x, int baseline, int row, int cell)
-	    const;
+    void DrawCellLines(Painter &, int x, int baseline,
+		       int row, int cell) const;
     ///
     void DrawCellSelection(Painter &, int x, int baseline,
 			   int row, int column, int cell) const;
@@ -180,8 +181,8 @@ private:
     ///
     void setPos(BufferView *, int x, int y) const;
     ///
-    UpdatableInset::RESULT moveRight(BufferView *, bool lock=true);
-    UpdatableInset::RESULT moveLeft(BufferView *, bool lock=true);
+    UpdatableInset::RESULT moveRight(BufferView *, bool lock = true);
+    UpdatableInset::RESULT moveLeft(BufferView *, bool lock = true);
     UpdatableInset::RESULT moveUp(BufferView *);
     UpdatableInset::RESULT moveDown(BufferView *);
     bool moveNextCell(BufferView *);
@@ -196,7 +197,7 @@ private:
     bool hasSelection() const {return ((sel_pos_start != sel_pos_end) ||
 				       (sel_cell_start != sel_cell_end));}
     ///
-    bool ActivateCellInset(BufferView *, int x=0, int y=0, int button=0,
+    bool ActivateCellInset(BufferView *, int x = 0, int y = 0, int button = 0,
 			   bool behind = false);
     ///
     bool InsetHit(BufferView * bv, int x, int y) const;
@@ -208,10 +209,8 @@ private:
     ///
     /// Private structures and variables
     ///
-    InsetText
-        * the_locking_inset;
-    Buffer
-        * buffer;
+    InsetText * the_locking_inset;
+    Buffer * buffer;
     mutable LyXCursor
         cursor,
 	old_cursor;

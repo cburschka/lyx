@@ -110,7 +110,8 @@ public:
     ///
     UpdatableInset::RESULT LocalDispatch(BufferView *, int, string const &);
     ///
-    int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
+    int Latex(Buffer const *, std::ostream &,
+	      bool fragile, bool free_spc) const;
     ///
     int Ascii(Buffer const *, std::ostream &) const { return 0; }
     ///
