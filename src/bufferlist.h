@@ -21,8 +21,6 @@
 #include "buffer.h"
 #include "debug.h"
 
-#define NEW_STORE 1
-
 /** A class to hold all the buffers in a structure
   The point of this class is to hide from bufferlist what kind
   of structure the buffers are stored in. Should be no concern for
@@ -32,7 +30,6 @@
   gave me an "internal gcc error".
   */
 class BufferStorage {
-#ifdef NEW_STORE
 public:
 	///
 	typedef vector<Buffer *> Container;
@@ -57,53 +54,7 @@ public:
 private:
 	///
 	Container container;
-#else
-public:
-	///
-	BufferStorage();
-	///
-	bool empty();
-	///
-	void release(Buffer * buf);
-	///
-	Buffer* newBuffer(string const & s, LyXRC *, bool = false);
-private:
-	enum {
-		/** The max number of buffers there are possible to have
-		    loaded at the same time. (this only applies when we use an
-		    array)
-		*/
-		NUMBER_OF_BUFFERS = 50
-	};
-	
-	/** The Bufferlist is currently implemented as a static array.
-	  The buffers are new'ed and deleted as reqested.
-	  */
-	Buffer *buffer[NUMBER_OF_BUFFERS];
-	///
-	friend class BufferStorage_Iter;
-#endif
 };
-
-
-#ifndef NEW_STORE
-/// An Iterator class for BufferStorage
-class BufferStorage_Iter {
-public:
-	///
-	BufferStorage_Iter(BufferStorage const & bs)
-	{ cs = & bs; index = 0;}
-	/// next
-	Buffer* operator() ();
-	///
-	Buffer* operator[] (int a);
-private:
-	///
-	const BufferStorage *cs;
-	///
-	unsigned char index;
-};
-#endif
 
 
 /** The class governing all the open buffers
@@ -128,10 +79,10 @@ public:
 	list_state getState() { return _state; }
 	
 	/** loads a LyX file or...
-	  If the optional argument tolastfiles is false (default is
+	    If the optional argument tolastfiles is false (default is
             true), the file name will not be added to the last opened
 	    files list
-	    */  
+	*/  
 	Buffer * loadLyXFile(string const & filename, 
 			     bool tolastfiles = true);
 	

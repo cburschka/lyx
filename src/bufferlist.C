@@ -43,29 +43,8 @@ extern int RunLinuxDoc(int, string const &);
 // Class BufferStorage
 //
 
-#ifndef NEW_STORE
-BufferStorage::BufferStorage()
-{
-	// Initialize the buffer array
-	for (int i = NUMBER_OF_BUFFERS-1; i >= 0; i--) {
-		buffer[i] = 0;
-	}
-}
-#endif
-
-#ifndef NEW_STORE
-bool BufferStorage::isEmpty()
-{
-	for (int i = NUMBER_OF_BUFFERS-1; i >= 0; i--) {
-		if (buffer[i]) return false;
-	}
-	return true;
-}
-#endif
-
 void BufferStorage::release(Buffer * buf)
 {
-#ifdef NEW_STORE
 	for(Container::iterator it = container.begin();
 	    it != container.end(); ++it) {
 		if ((*it) == buf) {
@@ -75,14 +54,6 @@ void BufferStorage::release(Buffer * buf)
 			break;
 		}
 	}
-#else
-	int i = 0;
-	for (i = 0; i < NUMBER_OF_BUFFERS; i++)
-		if (buffer[i] == buf) break;
-	Buffer * tmpbuf = buffer[i];
-	buffer[i] = 0;
-	delete tmpbuf;
-#endif
 }
 
 
@@ -90,62 +61,19 @@ Buffer * BufferStorage::newBuffer(string const & s,
 				 LyXRC * lyxrc,
 				 bool ronly)
 {
-#ifdef NEW_STORE
 	Buffer * tmpbuf = new Buffer(s, lyxrc, ronly);
 	tmpbuf->params.useClassDefaults();
 	lyxerr.debug() << "Assigning to buffer "
 		       << container.size() + 1 << endl;
 	container.push_back(tmpbuf);
 	return tmpbuf;
-#else
-	int i = 0;
-	while (i < NUMBER_OF_BUFFERS - 1
-	       && buffer[i]) i++;
-	buffer[i] = new Buffer(s, lyxrc, ronly);
-	buffer[i]->params.useClassDefaults();
-	lyxerr.debug() << "Assigning to buffer " << i << endl;
-	return buffer[i];
-#endif
 }
-
-
-#ifndef NEW_STORE
-//
-// Class BufferStrorage_Iter
-//
-
-Buffer * BufferStorage_Iter::operator() ()
-{
-	int i = 0;
-	for (i = index; i < BufferStorage::NUMBER_OF_BUFFERS; i++) {
-		if (cs->buffer[i]) {
-			index = i + 1;
-			return cs->buffer[i];
-		}
-	}
-	return 0;	
-}
-
-
-Buffer * BufferStorage_Iter::operator[] (int a)
-{
-	// a is >= 1
-	if (a <= 0) return 0;
-	
-	int i = 0;
-	while (a--) {
-		while(!cs->buffer[i++]);
-	}
-	if (i - 1 < BufferStorage::NUMBER_OF_BUFFERS)
-		return cs->buffer[i - 1];
-	return 0;	
-}
-#endif
 
 
 //
 // Class BufferList
 //
+
 BufferList::BufferList()
 {
 	_state = BufferList::OK;
@@ -164,7 +92,6 @@ bool BufferList::QwriteAll()
 {
         bool askMoreConfirmation = false;
         string unsaved;
-#ifdef NEW_STORE
 	for(BufferStorage::iterator it = bstore.begin();
 	    it != bstore.end(); ++it) {
 		if (!(*it)->isLyxClean()) {
@@ -185,28 +112,6 @@ bool BufferList::QwriteAll()
 			}
 		}
 	}
-#else
-	BufferStorage_Iter biter(bstore);
-	Buffer * b = 0;
-	while ((b = biter())) {
-		if (!b->isLyxClean()) {
-			switch(AskConfirmation(_("Changes in document:"),
-					       MakeDisplayPath(b->filename, 50),
-					       _("Save document?"))) {
-			case 1: // Yes
-				MenuWrite(b);
-				break;
-			case 2: // No
-				askMoreConfirmation = true;
-				unsaved += MakeDisplayPath(b->filename, 50);
-				unsaved += "\n";
-                                break;
-			case 3: // Cancel
-				return false;
-			}
-		}
-	}
-#endif
         if (askMoreConfirmation &&
             lyxrc->exit_confirmation &&
             !AskQuestion(_("Some documents were not saved:"),
@@ -326,35 +231,19 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 void BufferList::closeAll()
 {
 	_state = BufferList::CLOSING;
-#ifdef NEW_STORE
 	while (!bstore.empty()) {
 		close(bstore.front());
 	}
-#else
-	BufferStorage_Iter biter(bstore);
-	Buffer * b = 0;
-	while ((b = biter())) {
-		close(b);
-	}
-#endif
 	_state = BufferList::OK;
 }
 
 
 void BufferList::resize()
 {
-#ifdef NEW_STORE
 	for(BufferStorage::iterator it = bstore.begin();
 	    it != bstore.end(); ++it) {
 		(*it)->resize();
 	}
-#else
-	BufferStorage_Iter biter(bstore);
-	Buffer * b = 0;
-	while ((b = biter())) {
-		b->resize();
-	}
-#endif
 }
 
 
@@ -393,57 +282,32 @@ void BufferList::makePup(int pup)
 	   */
 {
 	int ant = 0;
-#ifdef NEW_STORE
 	for(BufferStorage::iterator it = bstore.begin();
 	    it != bstore.end(); ++it) {
 		string relbuf = MakeDisplayPath((*it)->filename, 30);
 		fl_addtopup(pup, relbuf.c_str());
 		++ant;
 	}
-#else
-	BufferStorage_Iter biter(bstore);
-	Buffer * b = 0;
-	while ((b = biter())) {
-		string relbuf = MakeDisplayPath(b->filename, 30);
-		fl_addtopup(pup, relbuf.c_str());
-		++ant;
-	}
-#endif
 	if (ant == 0) fl_addtopup(pup, _("No Documents Open!%t"));
 }
 
 
 Buffer * BufferList::first()
 {
-#ifdef NEW_STORE
 	if (bstore.empty()) return 0;
 	return bstore.front();
-#else
-	BufferStorage_Iter biter(bstore);
-	return biter();
-#endif
 }
 
 
 Buffer * BufferList::getBuffer(int choice)
 {
-#ifdef NEW_STORE
 	if (choice >= bstore.size()) return 0;
 	return bstore[choice];
-#else
-	BufferStorage_Iter biter(bstore);
-	Buffer * b = 0;
-	b = biter[choice];
-	    
-	// Be careful, this could be 0.    
-	return b;
-#endif
 }
 
 
 void BufferList::updateInset(Inset * inset, bool mark_dirty)
 {
-#ifdef NEW_STORE
 	for (BufferStorage::iterator it = bstore.begin();
 	     it != bstore.end(); ++it) {
 		if ((*it)->text && (*it)->text->UpdateInset(inset)) {
@@ -452,23 +316,11 @@ void BufferList::updateInset(Inset * inset, bool mark_dirty)
 			break;
 		}
 	}
-#else
-	BufferStorage_Iter biter(bstore);
-	Buffer *b = 0;
-	while ((b = biter())) {
-		if (b->text && b->text->UpdateInset(inset)) {
-			if (mark_dirty)
-				b->markDirty();
-			break;
-		}
-	}
-#endif
 }
 
 
 int BufferList::unlockInset(UpdatableInset * inset)
 {
-#ifdef NEW_STORE
 	if (!inset) return 1;
 	for(BufferStorage::iterator it = bstore.begin();
 	    it != bstore.end(); ++it) {
@@ -478,25 +330,11 @@ int BufferList::unlockInset(UpdatableInset * inset)
 		}
 	}
 	return 1;
-#else
-	if (!inset) return 1;
-	
-	BufferStorage_Iter biter(bstore);
-	Buffer *b = 0;
-	while ((b = biter())) {
-		if (b->the_locking_inset == inset) {
-			b->InsetUnlock();
-			return 0;
-		}
-	}
-	return 1;
-#endif
 }
 
 
 void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 {
-#ifdef NEW_STORE
 	for(BufferStorage::iterator it = bstore.begin();
 	    it != bstore.end(); ++it) {
 		if (!(*it)->isDepClean(mastertmpdir)) {
@@ -510,25 +348,11 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 						     
 		}
 	}
-#else
-	BufferStorage_Iter biter(bstore);
-	Buffer *b = 0;
-	while ((b = biter())) {
-		if (!b->isDepClean(mastertmpdir)) {
-			string writefile = mastertmpdir;
-			writefile += '/';
-			writefile += ChangeExtension(b->getFileName(), ".tex", true);
-			b->makeLaTeXFile(writefile, mastertmpdir, false, true);
-			b->markDepClean(mastertmpdir);
-		}
-	}
-#endif
 }
 
 
 void BufferList::emergencyWriteAll()
 {
-#ifdef NEW_STORE
 	for (BufferStorage::iterator it = bstore.begin();
 	     it != bstore.end(); ++it) {
 		if (!(*it)->isLyxClean()) {
@@ -573,56 +397,10 @@ void BufferList::emergencyWriteAll()
 			}
 		}
 	}
-#else
-	BufferStorage_Iter biter(bstore);
-	Buffer * b = 0;
-	while ((b = biter())) {
-		if (!b->isLyxClean()) {
-			bool madeit = false;
-			
-			lyxerr <<_("lyx: Attempting to save"
-				      " document ")
-			       << b->filename
-			       << _(" as...") << endl;
-			
-			for (int i = 0; i<3 && !madeit; i++) {
-				string s;
-				
-				// We try to save three places:
-				// 1) Same place as document.
-				// 2) In HOME directory.
-				// 3) In "/tmp" directory.
-				if (i == 0) {
-					s = b->filename;
-				} else if (i == 1) {
-					s = AddName(GetEnvPath("HOME"),
-						    b->filename);
-				} else { // MakeAbsPath to prepend the current drive letter on OS/2
-					s = AddName(MakeAbsPath("/tmp/"),
-						    b->filename);
-				}
-				s += ".emergency";
-				
-				lyxerr << "  " << i + 1 << ") " << s << endl;
-				
-				if (b->writeFile(s, true)) {
-					b->markLyxClean();
-					lyxerr << _("  Save seems successful. Phew.") << endl;
-					madeit = true;
-				} else if (i != 2) {
-					lyxerr << _("  Save failed! Trying...")
-					       << endl;
-				} else {
-					lyxerr << _("  Save failed! Bummer. Document is lost.") << endl;
-				}
-			}
-		}
-	}
-#endif
 }
 
 
-Buffer* BufferList::readFile(string const & s, bool ronly)
+Buffer * BufferList::readFile(string const & s, bool ronly)
 {
 	Buffer * b = bstore.newBuffer(s, lyxrc, ronly);
 
@@ -693,43 +471,23 @@ Buffer* BufferList::readFile(string const & s, bool ronly)
 
 bool BufferList::exists(string const & s)
 {
-#ifdef NEW_STORE
 	for (BufferStorage::iterator it = bstore.begin();
 	     it != bstore.end(); ++it) {
 		if ((*it)->filename == s)
 			return true;
 	}
 	return false;
-#else
-	BufferStorage_Iter biter(bstore);
-	Buffer * b = 0;
-	while ((b = biter())) {
-		if (b->filename == s)
-			return true;
-	}
-	return false;
-#endif
 }
 
 
 Buffer * BufferList::getBuffer(string const & s)
 {
-#ifdef NEW_STORE
 	for(BufferStorage::iterator it = bstore.begin();
 	    it != bstore.end(); ++it) {
 		if ((*it)->filename == s)
 			return (*it);
 	}
 	return 0;
-#else
-	BufferStorage_Iter biter(bstore);
-	Buffer * b = 0;
-	while ((b = biter())) {
-		if (b->filename == s)
-			return b;
-	}
-	return 0;
-#endif
 }
 
 

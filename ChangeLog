@@ -1,5 +1,10 @@
 1999-11-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/menus.C (ShowBufferMenu): to use the new BufferStorage
+
+	* src/bufferlist.[Ch]: use the new BufferStorage class and remove all
+	trace of the old one.
+
 	* src/undo.[Ch]: made the undostack use std::list to store undo's in
 	put the member definitions in undo.C.
 
