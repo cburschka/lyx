@@ -6,6 +6,10 @@
 
 	* ParagraphList.C: whitespace
 
+	* paragraph.[Ch]:
+	  paragraph_pimpl.[Ch]:
+	  undo_funcs.C: Paragraph *  -> Paragraph (const) &
+
 2003-04-28  John Levon  <levon@movementarian.org>
 
 	* bufferlist.C: changes for unsaved changes dialog

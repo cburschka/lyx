@@ -84,12 +84,11 @@ void Paragraph::Pimpl::clear()
 }
 
 
-void Paragraph::Pimpl::setContentsFromPar(Paragraph const * par)
+void Paragraph::Pimpl::setContentsFromPar(Paragraph const & par)
 {
-	lyx::Assert(par);
-	text = par->pimpl_->text;
-	if (par->pimpl_->tracking()) {
-		changes_.reset(new Changes(*(par->pimpl_->changes_.get())));
+	text = par.pimpl_->text;
+	if (par.pimpl_->tracking()) {
+		changes_.reset(new Changes(*(par.pimpl_->changes_.get())));
 	}
 }
 

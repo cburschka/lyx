@@ -36,7 +36,7 @@ struct Paragraph::Pimpl {
 	///
 	void clear();
 	///
-	void setContentsFromPar(Paragraph const * par);
+	void setContentsFromPar(Paragraph const & par);
 	/// set tracking mode
 	void trackChanges(Change::Type type = Change::UNCHANGED);
 	/// stop tracking

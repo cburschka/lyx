@@ -145,7 +145,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			// is stored in the undo. So restore
 			// the text informations.
 			if (undo.kind == Undo::EDIT) {
-				tmppar2->setContentsFromPar(tmppar);
+				tmppar2->setContentsFromPar(*tmppar);
 				tmppar2 = tmppar2->next();
 			}
 		}

@@ -1303,7 +1303,7 @@ void Paragraph::resizeInsetsLyXText(BufferView * bv)
 }
 
 
-void Paragraph::setContentsFromPar(Paragraph * par)
+void Paragraph::setContentsFromPar(Paragraph const & par)
 {
 	pimpl_->setContentsFromPar(par);
 }

@@ -125,7 +125,7 @@ public:
 	///
 	bool empty() const;
 	///
-	void setContentsFromPar(Paragraph * par);
+	void setContentsFromPar(Paragraph const & par);
 	///
 	void clearContents();
 
