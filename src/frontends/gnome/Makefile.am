@@ -7,13 +7,17 @@ INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ -I${top_srcdir}/src/frontends/xforms \
 	${SIGC_CFLAGS} $(BOOST_INCLUDES)
 libgnome_la_OBJADD = \
-        ../xforms/FormBase.lo \
+	../xforms/ButtonController.lo \
+	../xforms/Color.lo \
+	../xforms/FormBase.lo \
 	../xforms/FormCitation.lo \
 	../xforms/form_citation.lo \
+	../xforms/FormCopyright.lo \
+	../xforms/form_copyright.lo \
 	../xforms/FormDocument.lo \
 	../xforms/form_document.lo \
-        ../xforms/FormError.lo \
-        ../xforms/form_error.lo \
+	../xforms/FormError.lo \
+	../xforms/form_error.lo \
 	../xforms/FormGraphics.lo \
 	../xforms/form_graphics.lo \
 	../xforms/FormIndex.lo \
@@ -23,15 +27,22 @@ libgnome_la_OBJADD = \
 	../xforms/form_paragraph.lo \
 	../xforms/FormPreferences.lo \
 	../xforms/form_preferences.lo \
+	../xforms/FormPrint.lo \
+	../xforms/form_print.lo \
 	../xforms/FormRef.lo \
 	../xforms/form_ref.lo \
 	../xforms/FormTabular.lo \
 	../xforms/form_tabular.lo \
+	../xforms/FormTabularCreate.lo \
+	../xforms/form_tabular_create.lo \
 	../xforms/FormToc.lo \
 	../xforms/form_toc.lo \
+	../xforms/FormUrl.lo \
+	../xforms/form_url.lo \
 	../xforms/input_validators.lo \
 	../xforms/RadioButtonGroup.lo \
-	../xforms/Toolbar_pimpl.lo
+	../xforms/Toolbar_pimpl.lo \
+	../xforms/xform_helpers.lo \
 LIBS= 
 LDFLAGS= $(libgnome_la_OBJADD)
 LYXDATADIRS = 

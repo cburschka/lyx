@@ -1,11 +1,17 @@
+2000-11-20  Marko Vendelin <markov@ioc.ee>
+
+	* src/frontends/gnome/Dialogs.C: added signal Dialogs::redrawGUI
+
+	* src/frontends/gnome/Makefile.am: updated list of XForms object files
+              
 2000-11-21  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/LColor.C (init):
 	* src/lyxrc.C (getDescription): changed some comments as suggested by
 	Rob Lahaye.
 
-	* src/frontends/xforms/FormBase.[Ch]: modified to connect and disconnect
-	the redrawGUI signal in best-practice fashion.
+	* src/frontends/xforms/FormBase.[Ch]: modified to connect and
+	disconnect the redrawGUI signal in best-practice fashion.
 
 	* src/frontends/xforms/FormPreferences.[Ch]: renamed usage_tab_ as
 	long_opts_tab to reflect the change in name of this tabfolder, as
