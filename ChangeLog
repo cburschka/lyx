@@ -1,3 +1,11 @@
+1999-10-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lstrings.C (tostr(char)): fix it to handle param as
+	a character not as a small integer. 
+
+	* src/support/lyxstring.C (find): removed Assert and added i >=
+	rep->sz to the first if.
+
 1999-10-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/LyXAction.C (LookupFunc): added a workaround for sun

@@ -864,9 +864,8 @@ void lyxstring::insert(iterator p, iterator first, iterator last)
 
 lyxstring::size_type lyxstring::find(lyxstring const & a, size_type i) const
 {
-	if (!rep->sz) return npos;
+	if (!rep->sz || i >= rep->sz) return npos;
 	
-	Assert(i < rep->sz);
 	TestlyxstringInvariant(this);
 
 	for (size_type t = i; rep->sz - t >= a.length(); ++t) {

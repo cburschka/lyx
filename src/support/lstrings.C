@@ -86,7 +86,7 @@ string tostr(unsigned int ui)
 
 string tostr(char c)
 {
-  return tostr(long(c));
+	return string(1, c);
 }
 
 string tostr(bool b)
