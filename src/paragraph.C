@@ -3606,7 +3606,12 @@ LyXParagraph * LyXParagraph::TeXFootnote(Buffer const * buf,
 		}
 		break;
 	case LyXParagraph::ALGORITHM:
-		os << "\\begin{algorithm}\n";
+		os << "\\begin{algorithm}";
+		if (!bparams.float_placement.empty()) { 
+			os << '[' << bparams.float_placement << "]\n";
+		} else {
+			os << '\n';
+		}
 		break;
 	}
 	texrow.newline();

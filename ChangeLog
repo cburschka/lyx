@@ -1,3 +1,8 @@
+2002-03-04  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* src/paragraph.C (TeXFootnote): honor float placement for
+	algorithms too.
+
 2002-03-01  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* config/lyxinclude.m4 (LYX_PROG_CXX): use -dumpversion to get gcc
