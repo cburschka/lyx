@@ -1943,38 +1943,38 @@ int InsetText::cix(BufferView * bv) const
 int InsetText::cy(BufferView * bv) const
 {
 	LyXFont font;
-	return getLyXText(bv)->cursor.y() - ascent(bv, font) + TEXT_TO_INSET_OFFSET;
+	return text_.cursor.y() - ascent(bv, font) + TEXT_TO_INSET_OFFSET;
 }
 
 
 int InsetText::ciy(BufferView * bv) const
 {
 	LyXFont font;
-	return getLyXText(bv)->cursor.iy() - ascent(bv, font) + TEXT_TO_INSET_OFFSET;
+	return text_.cursor.iy() - ascent(bv, font) + TEXT_TO_INSET_OFFSET;
 }
 
 
-pos_type InsetText::cpos(BufferView * bv) const
+pos_type InsetText::cpos(BufferView *) const
 {
-	return getLyXText(bv)->cursor.pos();
+	return text_.cursor.pos();
 }
 
 
-ParagraphList::iterator InsetText::cpar(BufferView * bv) const
+ParagraphList::iterator InsetText::cpar(BufferView *) const
 {
-	return getLyXText(bv)->cursor.par();
+	return text_.cursor.par();
 }
 
 
-bool InsetText::cboundary(BufferView * bv) const
+bool InsetText::cboundary(BufferView *) const
 {
-	return getLyXText(bv)->cursor.boundary();
+	return text_.cursor.boundary();
 }
 
 
-RowList::iterator InsetText::crow(BufferView * bv) const
+RowList::iterator InsetText::crow(BufferView *) const
 {
-	return getLyXText(bv)->cursorRow();
+	return text_.cursorRow();
 }
 
 
