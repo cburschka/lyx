@@ -954,7 +954,7 @@ cat >lyxrc.defaults <<EOF
 \\converter docbook dvi "$docbook_to_dvi_command" ""
 \\converter docbook html "$docbook_to_html_command" ""
 \\converter tex html "$latex_to_html_command"
-	originaldir
+	"originaldir,needaux"
 
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"

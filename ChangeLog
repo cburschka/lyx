@@ -1,25 +1,29 @@
 2000-09-11  John Levon  <moz@compsoc.man.ac.uk>
 
-        * src/frontends/kde/formurldialog.C
-        * src/frontends/kde/formurldialog.h
-        * src/frontends/kde/FormUrl.C
-        * src/frontends/kde/FormUrl.h: minor cleanups
-        
-        * src/frontends/kde/QtLyXView: wrapper to avoid Qt namespace mangling
+	* src/frontends/kde/FormCitation.C: fix thinko
+	where we didn't always display the reference text
+	properly
 
-        * src/frontends/kde/Makefile.am
-        * src/frontends/kde/FormToc.C
-        * src/frontends/kde/FormToc.h
-        * src/frontends/kde/FormCitation.C
-        * src/frontends/kde/FormCitation.h
-        * src/frontends/kde/FormIndex.C
-        * src/frontends/kde/FormIndex.h
-        * src/frontends/kde/formtocdialog.C
-        * src/frontends/kde/formtocdialog.h
-        * src/frontends/kde/formcitationdialog.C
-        * src/frontends/kde/formcitationdialog.h
-        * src/frontends/kde/formindexdialog.C
-        * src/frontends/kde/formindexdialog.h: new Toc,Citation,Index dialogs
+	* src/frontends/kde/formurldialog.C
+	* src/frontends/kde/formurldialog.h
+	* src/frontends/kde/FormUrl.C
+	* src/frontends/kde/FormUrl.h: minor cleanups
+
+	* src/frontends/kde/QtLyXView: wrapper to avoid Qt namespace mangling
+
+	* src/frontends/kde/Makefile.am
+	* src/frontends/kde/FormToc.C
+	* src/frontends/kde/FormToc.h
+	* src/frontends/kde/FormCitation.C
+	* src/frontends/kde/FormCitation.h
+	* src/frontends/kde/FormIndex.C
+	* src/frontends/kde/FormIndex.h
+	* src/frontends/kde/formtocdialog.C
+	* src/frontends/kde/formtocdialog.h
+	* src/frontends/kde/formcitationdialog.C
+	* src/frontends/kde/formcitationdialog.h
+	* src/frontends/kde/formindexdialog.C
+	* src/frontends/kde/formindexdialog.h: new Toc,Citation,Index dialogs
 
 2000-09-12  Juergen Vigna  <jug@sad.it>
 
@@ -570,7 +574,7 @@
 
 2000-08-15  Kayvan A. Sylvan <kayvan@sylvan.com>
 
-       	* src/frontend/Makefile.am: Add gnome and kde to dist tar file.
+	* src/frontend/Makefile.am: Add gnome and kde to dist tar file.
 
 2000-08-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -1345,14 +1349,14 @@
 
 	* src/lyxfunc.C (Dispatch) : modified to accomodate new FormToc class
 	and modified InsetTOC class
-	* src/buffer.C: ditto            
+	* src/buffer.C: ditto
 
 	* forms/lyx.fd: strip out old FD_form_toc code
 	* src/lyx_gui_misc.C: ditto
 	* src/lyx_gui.C: ditto
 	* src/lyx_cb.C: ditto
 	* src/lyx.[Ch]: ditto
-                         
+ 
 2000-08-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/utility.hpp: tr -d '\r'
@@ -1461,14 +1465,14 @@
 2000-07-31  Baruch Even <baruch.even@writeme.com>
 
 	* src/frontends/Dialogs.h: Added showGraphics signals.
-    
+
 	* src/frontends/xforms/forms/form_graphics.fd: Added file, the
-	            xforms form definition of the graphics dialog.
+	xforms form definition of the graphics dialog.
 
 	* src/frontends/xforms/FormGraphics.h: 
 	* src/frontends/xforms/FormGraphics.C: Added files, the
 	GUIndependent code of InsetGraphics
-    
+
 	* src/insets/insetgraphics.h: 
 	* src/insets/insetgraphics.C: Major writing to make it work.
 
@@ -1571,7 +1575,7 @@
 	* development/lyx.spec.in
 	* Makefile.am: Fix buglet for LyX RPM generation resulting from
 	file/directory re-organization.
-                
+
 2000-07-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* src/insets/insetcommand.[Ch]: moved the string data and
@@ -1772,7 +1776,7 @@
 
 	* config/lyxinclude.m4: added --with-frontend[=value] option value
 	for Gtk/Gnome frontend-GUI support.
-                            
+
 2000-07-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lstrings.C (prefixIs): rewrite so that gcc bastring
@@ -2022,7 +2026,7 @@
 	* src/mathed/math_symbols.C (math_insert_greek): Changed to use
 	LocalDispatch(..,LFUN_SELFINSERT,..) instead of math_insert_symbol().
 	Also changed the prototype to "bool math_insert_greek(char)".
-                                                                       
+   
 2000-07-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* lots of files: apply the NEW_INSETS on all code that will not be
@@ -2405,8 +2409,8 @@
 2000-07-08  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/WorkArea.C  (request_clipboard_cb): Set clipboard_read to
-        true when clipboard is empty.
-                                        
+	true when clipboard is empty.
+
 2000-07-08  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* text.C (Backspace): Prevent rebreaking of a row if it is the last
@@ -2517,7 +2521,7 @@
 	(set_font_norm_type): New method.
 
 	* src/paragraph.C (TeXOnePar): Put "\inputencoding{}" between
-	paragraphs with different encodings.                          
+	paragraphs with different encodings.  
 
 	* src/text.C (is_arabic, is_nikud, TransformChar): Moved to encoding.C
 	(TransformChar): Changed to work correctly with Arabic points.
@@ -2907,7 +2911,7 @@
 	* src/lyxparagraph.h
 
 	* src/paragraph.C: Changed fontlist to a sorted vector.
-                                         
+ 
 2000-06-19  Juergen Vigna  <jug@sad.it>
 
 	* src/BufferView.h: added screen() function.
@@ -3625,13 +3629,13 @@
 	
 	* src/trans_mgr.C (insertVerbatim): Do not use insetquote when the
 	text is Hebrew.
-                             
+ 
 2000-05-27  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/text.C (draw): draw bars under foreign language words.
 	
 	* src/LColor.[Ch]: add LColor::language
-                            
+
 2000-05-27 Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/lyxcursor.h (boundary): New member variable
@@ -4625,7 +4629,7 @@
 	* src/layout_forms.C (create_form_form_character)
 	* src/lyx_cb.C (UserFreeFont)
 	* src/lyx_gui.C (create_forms): Added GUI support for multi-lingual
-       documents (in the layout->character popup).
+	documents (in the layout->character popup).
 
 2000-04-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -4789,7 +4793,7 @@
 	* src/paragraph.C (ChangeLanguage,isMultiLingual) New methods.
 
 	* A lot of files: A rewrite of the Right-to-Left support.
-                                                                           
+   
 2000-04-10  Juergen Vigna  <jug@sad.it>
 
 	* src/BufferView2.C (showLockedInsetCursor): small bugfix for

@@ -268,8 +268,9 @@ void FormCitation::up()
 	// Qt will select the first one on redo, so we need this 
 	string tmp = selectedChosenKey;
  
-	for (vector< string >::iterator iter = chosenkeys.begin();
-		iter != chosenkeys.end(); ++iter) {
+	vector< string >::iterator iter = chosenkeys.begin();
+
+	for (; iter != chosenkeys.end(); ++iter) {
 		if (*iter==selectedChosenKey && iter!=chosenkeys.begin()) {
 			string tmp = *iter;
 			chosenkeys.erase(iter);
@@ -293,8 +294,9 @@ void FormCitation::down()
 	// Qt will select the first one on redo, so we need this 
 	string tmp = selectedChosenKey;
  
-	for (vector< string >::iterator iter = chosenkeys.begin();
-		iter != chosenkeys.end(); ++iter) {
+	vector< string >::iterator iter = chosenkeys.begin();
+
+	for (; iter != chosenkeys.end(); ++iter) {
 		if (*iter==selectedChosenKey && (iter+1)!=chosenkeys.end()) {
 			string tmp = *iter;
 			chosenkeys.erase(iter);
@@ -339,9 +341,11 @@ void FormCitation::highlight_chosen(const char *key)
 	selectedChosenKey = key;
  
 	unsigned int i;
+
 	for (i=0; i < keys.size(); i++) {
-		if (keys[i].first==key && keys[i].second.compare(dialog_->entry->text())) {
-			dialog_->entry->setText(keys[i].second.c_str());
+		if (keys[i].first==key) {
+			if (keys[i].second.compare(dialog_->entry->text()))
+				dialog_->entry->setText(keys[i].second.c_str());
 			break;
 		}
 	}
