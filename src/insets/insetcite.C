@@ -88,6 +88,14 @@ string const getNatbibLabel(Buffer const * buffer,
 	// CITEYEAR:	year
 	// CITEYEARPAR:	(year)
 
+	// We don't currently use the full or forceUCase fields.
+	// bool const forceUCase = citeType[0] == 'C';
+	bool const full = citeType[citeType.size()-1] == '*';
+
+	string const cite_type = full ?
+		lowercase(citeType.substr(0,citeType.size()-1)) :
+		lowercase(citeType);
+	
 	string before_str;
 	if (!before.empty()) {
 		// In CITET and CITEALT mode, the "before" string is
@@ -95,11 +103,11 @@ string const getNatbibLabel(Buffer const * buffer,
 		// In CITEP, CITEALP and CITEYEARPAR mode, it is attached
 		// to the front of the whole only.
 		// In other modes, it is not used at all.
-		if (citeType == "citet" ||
-		    citeType == "citealt" ||
-		    citeType == "citep" ||
-		    citeType == "citealp" || 
-		    citeType == "citeyearpar")
+		if (cite_type == "citet" ||
+		    cite_type == "citealt" ||
+		    cite_type == "citep" ||
+		    cite_type == "citealp" || 
+		    cite_type == "citeyearpar")
 			before_str = before + ' ';
 	}
 
@@ -133,14 +141,14 @@ string const getNatbibLabel(Buffer const * buffer,
 
 		// (authors1 (<before> year);  ... ;
 		//  authors_last (<before> year, <after>)
-		if (citeType == "citet") {
+		if (cite_type == "citet") {
 			string const tmp = numerical ? '#' + *it : year;
 			label += author + op_str + before_str + tmp +
 				cp + sep_str;
 
 		// author, year; author, year; ...
-		} else if (citeType == "citep" ||
-			   citeType == "citealp") {
+		} else if (cite_type == "citep" ||
+			   cite_type == "citealp") {
 			if (numerical) {
 				label += *it + sep_str;
 			} else {
@@ -149,42 +157,42 @@ string const getNatbibLabel(Buffer const * buffer,
 
 		// (authors1 <before> year;
 		//  authors_last <before> year, <after>)
-		} else if (citeType == "citealt") {
+		} else if (cite_type == "citealt") {
 			string const tmp = numerical ? '#' + *it : year;
 			label += author + ' ' + before_str + tmp + sep_str;
 
 		// author; author; ...
-		} else if (citeType == "citeauthor") {
+		} else if (cite_type == "citeauthor") {
 			label += author + sep_str;
 
 		// year; year; ...
-		} else if (citeType == "citeyear" ||
-			   citeType == "citeyearpar") {
+		} else if (cite_type == "citeyear" ||
+			   cite_type == "citeyearpar") {
 			label += year + sep_str;
 		}
 	}
 	label = strip(strip(label), sep);
 
 	if (!after_str.empty()) {
-		if (citeType == "citet") {
+		if (cite_type == "citet") {
 			// insert "after" before last ')'
 			label.insert(label.size()-1, after_str);
 		} else {
 			bool const add = !(numerical &&
-					   (citeType == "citeauthor" ||
-					    citeType == "citeyear"));
+					   (cite_type == "citeauthor" ||
+					    cite_type == "citeyear"));
 			if (add)
 				label += after_str;
 		}
 	}
 
-	if (!before_str.empty() && (citeType == "citep" ||
-				    citeType == "citealp" || 
-				    citeType == "citeyearpar")) {
+	if (!before_str.empty() && (cite_type == "citep" ||
+				    cite_type == "citealp" || 
+				    cite_type == "citeyearpar")) {
 		label = before_str + label;
 	}
 
-	if (citeType == "citep" || citeType == "citeyearpar")
+	if (cite_type == "citep" || cite_type == "citeyearpar")
 		label = string(1, op) + label + string(1, cp);
 
 	return label;

@@ -1,3 +1,8 @@
+2002-05-09  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Insetcite.C (getNatbibLabel): don't disable natbib label support
+	when using options "Full author list" or "Upper case".
+
 2002-05-14  Herbert Voss  <voss@perce.de>
 
 	* insetgraphics.C (prepareFile): allow files with same name
