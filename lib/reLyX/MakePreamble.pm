@@ -294,7 +294,7 @@ sub translate_preamble {
 
     my $up;
     foreach $up (keys %Usepackage_Table) {
-	$Latex_Preamble =~ s/\\usepackage\{$up\}\s*// && do {
+	$Latex_Preamble =~ s/^\s*\\usepackage\{$up\}\s*// && do {
 	    $LyX_Preamble .= "$Usepackage_Table{$up}";
 	    $LyX_Preamble .= "\n" unless ($Usepackage_Table{$up} eq "");
 	}
