@@ -7,10 +7,10 @@ dnl         Allan Rae (rae@lyx.org)
 dnl Usage LYX_CHECK_VERSION   Displays version of LyX being built and
 dnl sets variables "lyx_devel_version" and "lyx_prerelease"
 AC_DEFUN([LYX_CHECK_VERSION],[
-changequote(, ) dnl
 echo "configuring LyX version $VERSION"
 if echo "$VERSION" | grep 'cvs' >/dev/null ; then
   lyx_devel_version=yes
+  AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
   echo "WARNING: This is a development version. Expect bugs."
 else
   lyx_devel_version=no
@@ -21,11 +21,7 @@ if echo "$VERSION" | grep 'pre' > /dev/null ; then
 else
     lyx_prerelease=no
 fi
-changequote([, ]) dnl
-AC_SUBST(lyx_devel_version)
-if test $lyx_devel_version = yes ; then
-  AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
-fi])
+AC_SUBST(lyx_devel_version)])
 
 
 dnl Define the option to set a LyX version on installed executables and directories

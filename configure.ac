@@ -11,6 +11,10 @@ PACKAGE=lyx${program_suffix}
 VERSION="1.4.0cvs"
 LYX_CHECK_VERSION
 
+dnl default maintainer mode to true for development versions
+if test "${enable_maintainer_mode+set}" != set; then
+  enable_maintainer_mode=$lyx_devel_version
+fi
 AM_MAINTAINER_MODE
 AC_CANONICAL_TARGET
 
