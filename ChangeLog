@@ -1,3 +1,8 @@
+2003-08-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* configure.ac (AH_BOTTOM): do not use BOOST_NO_EXCEPTIONS
+	here, that is done by boost gcc config.
+
 2003-08-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* configure.ac: add $(EXEEXT) to program names in FRONTEND_PROGS
@@ -9,7 +14,7 @@
 	should be built
 	(AC_CONFIG_FILES): output lyx_forms.h-tmp instead of lyx_forms.h
 	in order to do dependency trick in xforms frontend (same for
-	lyx_xpm.h) 
+	lyx_xpm.h)
 
 2003-07-31  John Levon  <levon@movementarian.org>
 

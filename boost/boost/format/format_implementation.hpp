@@ -58,7 +58,7 @@ basic_format<Ch, Tr> ::basic_format(const string_t& s, const std::locale & loc)
 {
     oss_.imbue( loc );
     state0_.set_by_stream(oss_);
-    parse(s);
+    parse(s);  
 }
 #endif //BOOST_NO_STD_LOCALE
 
@@ -68,18 +68,18 @@ basic_format<Ch, Tr> ::basic_format(const string_t& s)
       items_(),  oss_(), exceptions_(io::all_error_bits)
 {
     state0_.set_by_stream(oss_);
-    parse(s);
+    parse(s);  
 }
 
 template< class Ch, class Tr>
 basic_format<Ch, Tr> :: basic_format(const basic_format& x)
-    : style_(x.style_), cur_arg_(x.cur_arg_), num_args_(x.num_args_), dumped_(false),
-      items_(x.items_), prefix_(x.prefix_), bound_(x.bound_),
+    : style_(x.style_), cur_arg_(x.cur_arg_), num_args_(x.num_args_), dumped_(false), 
+      items_(x.items_), prefix_(x.prefix_), bound_(x.bound_), 
       oss_(),   // <- we obviously can't copy x.oss_
       state0_(x.state0_), exceptions_(x.exceptions_)
-{
+{ 
     state0_.apply_on(oss_);
-}
+} 
 
 template< class Ch, class Tr>
 basic_format<Ch, Tr>& basic_format<Ch, Tr> ::operator= (const basic_format& x)
@@ -94,8 +94,8 @@ basic_format<Ch, Tr>& basic_format<Ch, Tr> ::operator= (const basic_format& x)
     items_ = x.items_;
     prefix_ = x.prefix_;
     bound_=x.bound_;
-    style_=x.style_;
-    cur_arg_=x.cur_arg_;
+    style_=x.style_; 
+    cur_arg_=x.cur_arg_; 
     num_args_=x.num_args_;
     dumped_=x.dumped_;
     return *this;
@@ -103,17 +103,17 @@ basic_format<Ch, Tr>& basic_format<Ch, Tr> ::operator= (const basic_format& x)
 
 
 template< class Ch, class Tr>
-unsigned char basic_format<Ch,Tr> ::exceptions() const
+unsigned char basic_format<Ch,Tr> ::exceptions() const 
 {
-  return exceptions_;
+  return exceptions_; 
 }
 
 template< class Ch, class Tr>
-unsigned char basic_format<Ch,Tr> ::exceptions(unsigned char newexcept)
-{
-  unsigned char swp = exceptions_;
-  exceptions_ = newexcept;
-  return swp;
+unsigned char basic_format<Ch,Tr> ::exceptions(unsigned char newexcept) 
+{ 
+  unsigned char swp = exceptions_; 
+  exceptions_ = newexcept; 
+  return swp; 
 }
 
 
@@ -139,7 +139,7 @@ basic_format<Ch,Tr>& basic_format<Ch,Tr> ::clear()
 }
 
 template< class Ch, class Tr>
-basic_format<Ch,Tr>& basic_format<Ch,Tr> ::clear_binds()
+basic_format<Ch,Tr>& basic_format<Ch,Tr> ::clear_binds() 
   // cancel all bindings, and clear()
 {
     bound_.resize(0);
@@ -148,10 +148,10 @@ basic_format<Ch,Tr>& basic_format<Ch,Tr> ::clear_binds()
 }
 
 template< class Ch, class Tr>
-basic_format<Ch,Tr>& basic_format<Ch,Tr> ::clear_bind(int argN)
+basic_format<Ch,Tr>& basic_format<Ch,Tr> ::clear_bind(int argN) 
   // cancel the binding of ONE argument, and clear()
 {
-    if(argN<1 || argN > num_args_ || bound_.size()==0 || !bound_[argN-1] )
+    if(argN<1 || argN > num_args_ || bound_.size()==0 || !bound_[argN-1] ) 
       {
         if( exceptions() & io::out_of_range_bit )
           boost::throw_exception(io::out_of_range()); // arg not in range.
@@ -176,18 +176,18 @@ std::basic_string<Ch,Tr> basic_format<Ch,Tr> ::str() const
 
   unsigned long sz = prefix_.size();
   unsigned long i;
-  for(i=0; i < items_.size(); ++i)
+  for(i=0; i < items_.size(); ++i) 
     sz += items_[i].res_.size() + items_[i].appendix_.size();
   string_t res;
   res.reserve(sz);
 
   res += prefix_;
-  for(i=0; i < items_.size(); ++i)
+  for(i=0; i < items_.size(); ++i) 
   {
     const format_item_t& item = items_[i];
     res += item.res_;
-    if( item.argN_ == format_item_t::argN_tabulation)
-    {
+    if( item.argN_ == format_item_t::argN_tabulation) 
+    { 
       BOOST_ASSERT( item.pad_scheme_ & format_item_t::tabulation);
       std::streamsize  n = item.state_.width_ - res.size();
       if( n > 0 )
@@ -201,33 +201,33 @@ std::basic_string<Ch,Tr> basic_format<Ch,Tr> ::str() const
 namespace io {
 namespace detail {
 
-template<class Ch, class Tr, class T>
-basic_format<Ch, Tr>&  bind_arg_body( basic_format<Ch, Tr>& self,
-                                      int argN,
+template<class Ch, class Tr, class T> 
+basic_format<Ch, Tr>&  bind_arg_body( basic_format<Ch, Tr>& self, 
+                                      int argN, 
                                       const T& val)
   // bind one argument to a fixed value
   // this is persistent over clear() calls, thus also over str() and <<
 {
     if(self.dumped_) self.clear(); // needed, because we will modify cur_arg_..
-    if(argN<1 || argN > self.num_args_)
+    if(argN<1 || argN > self.num_args_) 
       {
         if( self.exceptions() & io::out_of_range_bit )
           boost::throw_exception(io::out_of_range()); // arg not in range.
         else return self;
       }
-    if(self.bound_.size()==0)
+    if(self.bound_.size()==0) 
       self.bound_.assign(self.num_args_,false);
-    else
+    else 
       BOOST_ASSERT( self.num_args_ == static_cast<signed int>(self.bound_.size()) );
     int o_cur_arg = self.cur_arg_;
     self.cur_arg_ = argN-1; // arrays begin at 0
 
     self.bound_[self.cur_arg_]=false; // if already set, we unset and re-sets..
     self.operator%(val); // put val at the right place, because cur_arg is set
-
+    
 
     // Now re-position cur_arg before leaving :
-    self.cur_arg_ = o_cur_arg;
+    self.cur_arg_ = o_cur_arg; 
     self.bound_[argN-1]=true;
     if(self.cur_arg_ == argN-1 )
       // hum, now this arg is bound, so move to next free arg
@@ -239,16 +239,16 @@ basic_format<Ch, Tr>&  bind_arg_body( basic_format<Ch, Tr>& self,
     return self;
 }
 
-template<class Ch, class Tr, class T>
+template<class Ch, class Tr, class T> 
 basic_format<Ch, Tr>&  modify_item_body( basic_format<Ch, Tr>& self,
-                                      int itemN,
+                                      int itemN, 
                                       const T& manipulator)
   // applies a manipulator to the format_item describing a given directive.
   // this is a permanent change, clear or clear_binds won't cancel that.
 {
-  if(itemN<1 || itemN >= static_cast<signed int>(self.items_.size() ))
+  if(itemN<1 || itemN >= static_cast<signed int>(self.items_.size() )) 
     {
-      if( self.exceptions() & io::out_of_range_bit )
+      if( self.exceptions() & io::out_of_range_bit ) 
         boost::throw_exception(io::out_of_range()); // item not in range.
       else return self;
     }

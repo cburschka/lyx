@@ -66,6 +66,5 @@
 // #define BOOST_DISABLE_WIN32
 
 
-#define BOOST_NO_EXCEPTIONS 1
 #define BOOST_NO_WREGEX 1
 #define BOOST_NO_WSTRING 1

@@ -1,7 +1,16 @@
+2003-08-07  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* boost/config/user.hpp: do not use BOOST_NO_EXCEPTIONS here, that
+	is done automatically by the gcc config.
+
+	* boost/config/compiler/gcc.hpp: allow for gcc 2.4
+
+	* update boost to version 1.30.1
+
 2003-07-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* libs/regex/src/cpp_regex_traits.cpp (message_data): cast to safe
-	types 
+	types
 
 	* libs/regex/src/c_regex_traits.cpp (do_update_ctype): cast to
 	safe types.
@@ -14,7 +23,7 @@
 
 2003-03-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* update boot so version 1.30.0
+	* update boost to version 1.30.0
 
 2003-03-11  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

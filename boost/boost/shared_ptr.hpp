@@ -246,12 +246,23 @@ public:
 
     // implicit conversion to "bool"
 
+#if defined(__SUNPRO_CC) && BOOST_WORKAROUND(__SUNPRO_CC, <= 0x530)
+
+    operator bool () const
+    {
+        return px != 0;
+    }
+
+#else
+
     typedef T * (this_type::*unspecified_bool_type)() const;
 
     operator unspecified_bool_type() const // never throws
     {
         return px == 0? 0: &this_type::get;
     }
+
+#endif
 
     // operator! is redundant, but some compilers need it
 
@@ -387,7 +398,7 @@ template<class Y> std::ostream & operator<< (std::ostream & os, shared_ptr<Y> co
 
 #else
 
-# if BOOST_WORKAROUND(BOOST_MSVC, <= 1200 && __SGI_STL_PORT)
+# if defined(BOOST_MSVC) && BOOST_WORKAROUND(BOOST_MSVC, <= 1200 && __SGI_STL_PORT)
 // MSVC6 has problems finding std::basic_ostream through the using declaration in namespace _STL
 using std::basic_ostream;
 template<class E, class T, class Y> basic_ostream<E, T> & operator<< (basic_ostream<E, T> & os, shared_ptr<Y> const & p)

@@ -362,7 +362,6 @@ int mkstemp(char*);
 #endif
 
 #define BOOST_DISABLE_THREADS 1
-#define BOOST_NO_EXCEPTIONS 1
 #define BOOST_NO_WREGEX 1
 #define BOOST_NO_WSTRING 1
 

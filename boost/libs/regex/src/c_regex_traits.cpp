@@ -8,11 +8,11 @@
  * provided that the above copyright notice appear in all copies and
  * that both that copyright notice and this permission notice appear
  * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.
+ * about the suitability of this software for any purpose.  
  * It is provided "as is" without express or implied warranty.
  *
  */
-
+ 
  /*
   *   LOCATION:    see http://www.boost.org for most recent version.
   *   FILE         c_regex_traits.cpp
@@ -514,9 +514,9 @@ void BOOST_REGEX_CALL c_traits_base::do_update_ctype()
       if(std::isxdigit(i))
          class_map[i] |= char_class_xdigit;
    }
-   class_map[(unsigned char)('_')] |= char_class_underscore;
-   class_map[(unsigned char)(' ')] |= char_class_blank;
-   class_map[(unsigned char)('\t')] |= char_class_blank;
+   class_map[(unsigned char)'_'] |= char_class_underscore;
+   class_map[(unsigned char)' '] |= char_class_blank;
+   class_map[(unsigned char)'\t'] |= char_class_blank;
    for(i = 0; i < map_size; ++i)
    {
       lower_case_map[i] = (char)std::tolower(i);
@@ -1068,3 +1068,6 @@ std::size_t BOOST_REGEX_CALL c_regex_traits<wchar_t>::strwiden(wchar_t *s1, std:
 #endif // BOOST_NO_WREGEX
 
 } // namespace boost
+
+
+
