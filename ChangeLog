@@ -5,6 +5,9 @@
 
 1999-11-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* acinclude.m4 (cross_compiling): add -fpermissive when gcc 2.95.x
+	is used.
+
 	* src/support/lyxstring.C: some changes from length() to rep->sz.
 	avoids a function call.
 
