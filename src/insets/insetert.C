@@ -582,3 +582,10 @@ void InsetERT::close(BufferView * bv) const
 		return;
 	status(bv, Collapsed);
 }
+
+
+string const InsetERT::selectNextWordToSpellcheck(BufferView * bv,float &) const
+{
+        bv->unlockInset(const_cast<InsetERT *>(this));
+	return string();
+}

@@ -2306,9 +2306,7 @@ string const LyXText::selectNextWordToSpellcheck(BufferView * bview,
 	while ((cursor.par()->size() > cursor.pos()
 	       && (!cursor.par()->isLetter(cursor.pos()))
 	       && (!cursor.par()->isInset(cursor.pos()) ||
-	           !(cursor.par()->getInset(cursor.pos())->isTextInset() &&
-		     cursor.par()->getInset(cursor.pos())->lyxCode() !=
-		     Inset::ERT_CODE)))
+	           !cursor.par()->getInset(cursor.pos())->isTextInset()))
 	       || (cursor.par()->size() == cursor.pos()
 		   && cursor.par()->next()))
 	{      

@@ -97,6 +97,8 @@ public:
 	///
 	void close(BufferView *) const;
 	///
+	string const selectNextWordToSpellcheck(BufferView *, float &) const;
+	///
 	bool inlined() const { return status_ == Inlined; }
 	///
 	int ascent(BufferView *, LyXFont const &) const;

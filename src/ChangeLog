@@ -1,3 +1,8 @@
+2001-09-24  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* text.C (selectNextWordToSpellcheck): reverted change to if-block.
+	The ERT inset now returns string().
+
 2001-09-21  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* lyxtext.h, text.C (selectNextWord): renamed as
