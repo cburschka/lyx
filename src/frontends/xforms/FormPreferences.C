@@ -268,8 +268,6 @@ void FormPreferences::apply()
 	// and other stuff which may cost us a lot on slower/high-load
 	// machines.
 
-	lyxerr << "apply in form !" << endl;
-
 	LyXRC & rc(controller().rc());
 
 	colors_.apply();
