@@ -1342,7 +1342,9 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 #endif
 			// correct all cursor parts
 			fixCursorAfterDelete(cur.top(), old.top());
+#ifdef WITH_WARNINGS
 #warning DEPM, look here
+#endif
 			//fixCursorAfterDelete(cur.anchor(), old.top());
 			return false;
 		}
@@ -1385,7 +1387,9 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 		// such events. Maybe even signal/slot?
 		if (cur.par() > old.par())
 			--cur.par();
+#ifdef WITH_WARNINGS
 #warning DEPM, look here
+#endif
 //		if (cur.anchor().par() > old.par())
 //			--cur.anchor().par();
 

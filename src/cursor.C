@@ -326,7 +326,9 @@ void LCursor::setSelection()
 {
 	selection() = true;
 	// a selection with no contents is not a selection
+#ifdef WITH_WARNINGS
 #warning doesnt look ok
+#endif
 	if (par() == anchor().par() && pos() == anchor().pos())
 		selection() = false;
 }
@@ -385,7 +387,9 @@ void LCursor::selHandle(bool sel)
 {
 	//lyxerr << "LCursor::selHandle" << endl;
 	if (sel == selection()) {
+#ifdef WITH_WARNINGS
 #warning Alfredo: This is too strong (Andre)
+#endif
 		//if (!sel)
 		//	noUpdate();
 		return;

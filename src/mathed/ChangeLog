@@ -1,3 +1,10 @@
+2004-04-29  Angus Leeming  <leeming@lyx.org>
+
+	* math_hullinset.C:
+	* math_kerninset.C:
+	* math_nestinset.C: wrap a bunch of #warning statements
+	inside #ifdef WITH_WARNINGS blocks.
+
 2004-04-20  Angus Leeming  <leeming@lyx.org>
 
 	* math_nestinset.C (notifyCursorLeaves): squash warning about

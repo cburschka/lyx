@@ -54,7 +54,9 @@ void MathKernInset::draw(PainterInfo &, int, int) const
 
 void MathKernInset::write(WriteStream & os) const
 {
+#ifdef WITH_WARNINGS
 #warning this crashs on startup!
+#endif
 	//os << "\\kern" << wid_.asLatexString() << ' ';
 	os << "\\kern0mm ";
 }

@@ -1154,7 +1154,9 @@ InsetBase::Code MathHullInset::lyxCode() const
 bool MathHullInset::searchForward(BufferView * bv, string const & str,
 				     bool, bool)
 {
+#ifdef WITH_WARNINGS
 #warning completely broken
+#endif
 	static MathHullInset * lastformula = 0;
 	static CursorBase current = DocIterator(ibegin(nucleus()));
 	static MathArray ar;

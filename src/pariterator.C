@@ -166,7 +166,9 @@ bool operator!=(ParConstIterator const & iter1, ParConstIterator const & iter2)
 }
 
 
+#ifdef WITH_WARNINGS
 #warning const correctness!
+#endif
 
 ParConstIterator par_const_iterator_begin(InsetBase const & inset)
 {

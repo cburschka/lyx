@@ -315,7 +315,9 @@ int MathNestInset::latex(Buffer const &, std::ostream & os,
 
 void MathNestInset::notifyCursorLeaves(LCursor & /*cur*/)
 {
+#ifdef WITH_WARNINGS
 #warning look here
+#endif
 #if 0
 	MathArray & ar = cur.cell();
 	// remove base-only "scripts"
