@@ -33,7 +33,7 @@ extern BufferList bufferlist;
 
 namespace {
 
-string const unique_id()
+string const uniqueID()
 {
 	static unsigned int seed = 1000;
 
@@ -48,12 +48,12 @@ string const unique_id()
 
 
 InsetInclude::InsetInclude(Params const & p)
-	: params_(p), include_label(unique_id())
+	: params_(p), include_label(uniqueID())
 {}
 
 
 InsetInclude::InsetInclude(InsetCommandParams const & p, Buffer const & b)
-	: include_label(unique_id())
+	: include_label(uniqueID())
 {
 	params_.cparams = p;
 	params_.masterFilename_ = b.fileName();

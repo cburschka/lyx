@@ -43,6 +43,9 @@ What's new
 
 - only use the amsmath package when it is needed
 
+- make sure to use the graphicx package with the RasterBitmap and XFig
+  external templates.
+
 - do not ignore zero-length vertical spacing with 'keep' flag.
 
 - fix interaction between sixpack and LyX via lyxserver
@@ -56,9 +59,11 @@ What's new
 - make latex import script (reLyX) honor the LYX_DIR_12x envirnment
   variable, like the rest of LyX
 
-- honor --with-extra-XXX whensearching for AikSaurus library
+- honor --with-extra-XXX when searching for AikSaurus library
 
 - fix support for alpha-based systems in boost library
+
+- fix compilation on AIX (unique_id identifier)
 
 - improve compilation with compaq cxx 6.5 (not there yet...)
 
