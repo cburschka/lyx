@@ -615,8 +615,8 @@ bool Parser::parse_normal(MathAtom & matrix)
 
 	string const name = getArg('{', '}');
 
-	if (name == "equation" || name == "equation*") {
-		curr_num_ = !stared(name);
+	if (name == "equation" || name == "equation*" || name == "displaymath") {
+		curr_num_ = (name == "equation");
 		curr_label_.erase();
 		matrix = MathAtom(new MathMatrixInset(LM_OT_EQUATION));
 		MathMatrixInset * p = matrix->asMatrixInset();
