@@ -134,7 +134,9 @@ enum lexcode_enum {
 
 
 lexcode_enum lexcode[256];  
+#ifdef WITH_WARNINGS
 #warning Replace with string
+#endif
 //char yytext[256];
 array<char, 256> yytext;
 int yylineno;
@@ -626,7 +628,9 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 				if (accent) {
 					data.insertInset(doAccent(bg), LM_TC_INSET);
 				} else {
+#ifdef WITH_WARNINGS
 #warning This is suspisious! (Lgb)
+#endif
 					// it should not take a bool as second arg (Lgb)
 					data.insertInset(bg, true);
 				}

@@ -633,7 +633,9 @@ void sc_clean_up_after_error()
 isp_result * sc_check_word(string const & word)
 {
 	isp_result * result = new isp_result;
+#ifdef WITH_WARNINGS
 #warning Why isnt word_ok a bool? (Lgb)
+#endif
 	int word_ok = pspell_manager_check(sc, word.c_str());
 	Assert(word_ok != -1);
 

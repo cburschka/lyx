@@ -1,3 +1,9 @@
+2001-04-16  Allan Rae  <rae@lyx.org>
+
+	* xforms_helpers.C (formatted): 
+	* Menubar_pimpl.C (add_toc): #warning triggers an error on Sun CC 6.0
+	as an unrecognised preprocessor directive.  So ensure they're wrapped. 
+
 2001-04-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormTabularCreate.C: pass a pair of uints to the controller

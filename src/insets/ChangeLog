@@ -1,3 +1,14 @@
+2001-04-16  Allan Rae  <rae@lyx.org>
+
+	* insettoc.C (Ascii): 
+	* insettext.C (draw): 
+	* insettabular.C (setPos): 
+	* insetminipage.C (Read): 
+	* insetfloat.C (placement): 
+	* insetcaption.C (Ascii, DocBook): 
+	* figinset.C (runqueue): #warning triggers an error on Sun CC 6.0 as
+	an unrecognised preprocessor directive.  So ensure they're wrapped. 
+
 2001-04-13  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C: tried to avoid unneeded redraws.

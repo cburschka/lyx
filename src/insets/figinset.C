@@ -521,8 +521,10 @@ void runqueue()
 			t2 << "GHOSTVIEW=" << fl_get_canvas_id(figinset_canvas)
 			   << ' ' << p->data->bitmap;
 			// now set up ghostview property on a window
+			// #ifdef WITH_WARNINGS
 			// #warning BUG seems that the only bug here
 			// might be the hardcoded dpi.. Bummer!
+			// #endif
 			ostringstream t1;
 			t1 << "0 0 0 0 " << p->data->wid << ' '
 			   << p->data->hgh << " 72 72 0 0 0 0";

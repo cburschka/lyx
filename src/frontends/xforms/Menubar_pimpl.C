@@ -370,7 +370,9 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 	add_toc2(menu, extra_label, smn, win,
 		 toc_list[0], 0, toc_list[0].size(), 0);
 #else
+#ifdef WITH_WARNINGS
 #warning Fix Me! (Lgb)
+#endif
 	Buffer::Lists toc_list = owner_->buffer()->getLists();
 	Buffer::Lists::const_iterator cit = toc_list.begin();
 	Buffer::Lists::const_iterator end = toc_list.end();

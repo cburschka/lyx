@@ -230,7 +230,9 @@ void InsetFloat::placement(string const & p)
 {
 	// Here we should only allow the placement to be set
 	// if a valid value.
+#ifdef WITH_WARNINGS
 #warning FIX!
+#endif
 	floatPlacement_ = p;
 }
 

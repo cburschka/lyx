@@ -1,8 +1,10 @@
 AUTOMAKE_OPTIONS = foreign
-DISTCLEANFILES= *.orig *.rej *~ *.bak lyx.1 core
+DISTCLEANFILES = -r *.orig *.rej *~ *.bak lyx.1 core $(srcdir)/sourcedoc/*~ \
+	$(srcdir)/sourcedoc/html $(srcdir)/sourcedoc/latex \
+	$(srcdir)/sourcedoc/man $(srcdir)/sourcedoc/Doxyfile
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in $(srcdir)/aclocal.m4 \
 	$(srcdir)/configure $(srcdir)/development/lyx.spec \
-	$(srcdir)/acinclude.m4
+	$(srcdir)/acinclude.m4 $(srcdir)/sourcedoc/Doxyfile
 SUBDIRS = intl po sigc++ boost src lib
 
 EXTRA_DIST = ANNOUNCE OLD-CHANGES INSTALL.OS2 INSTALL.autoconf README.OS2 \
@@ -50,9 +52,13 @@ bindist:
 	@echo "*** $(bindistfile) has been created."
 
 
-sourcedoc: 
+sourcedoc: sourcedoc/Doxyfile
 	cd sourcedoc; \
 	doxygen ./Doxyfile
+
+sourcedoc/Doxyfile: sourcedoc/Doxyfile.in config.status
+	cd $(top_builddir) \
+	  && CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
 lgbtags:
 	etags --totals=yes --recurse=yes -o TAGS $(top_srcdir)/*

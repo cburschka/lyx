@@ -149,7 +149,9 @@ void InsetMinipage::Read(Buffer const * buf, LyXLex & lex)
 		       << endl;
 	}
     }
+#ifdef WITH_WARNINGS
 #warning Remove me before final 1.2.0 (Jug)
+#endif
     // this is only for compatibility to the intermediate format and should
     // vanish till the final 1.2.0!
     if (lex.IsOK()) {

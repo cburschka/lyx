@@ -71,7 +71,9 @@ int InsetTOC::Ascii(Buffer const * buffer, std::ostream & os, int) const
 	     it != toc.end(); ++it)
 		os << string(4 * it->depth, ' ') << it->str << endl;
 #else
+#ifdef WITH_WARNINGS
 #warning Fix Me! (Lgb)
+#endif
 	string type;
 	string const cmdname = getCmdName();
 	if (cmdname == "tableofcontents" )

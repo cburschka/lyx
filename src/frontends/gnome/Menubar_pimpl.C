@@ -92,7 +92,9 @@ void Menubar::Pimpl::set(string const & menu_name)
 
 void Menubar::Pimpl::updateAllLists()
 {
+#ifdef WITH_WARNINGS
 #warning Implement me! (be 20010324)
+#endif
 #if 0
   // update lists
   if (toc_.size() > 0)

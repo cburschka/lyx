@@ -1,3 +1,10 @@
+2001-04-16  Allan Rae  <rae@lyx.org>
+
+	* formula.C (Latex, getLabelList, LocalDispatch): 
+	* math_parser.C (mathed_parse): 
+	* math_parinset.C (Write): #warning triggers an error on Sun CC 6.0 as
+	an unrecognised preprocessor directive.  So ensure they're wrapped.
+
 2001-04-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* formula.C (draw): adjust for cursor_visible

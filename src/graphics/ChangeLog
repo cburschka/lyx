@@ -1,3 +1,9 @@
+2001-04-16  Allan Rae  <rae@lyx.org>
+
+	* ImageLoaderXPM.C (runImageLoader): #warning triggers an error on Sun
+	CC 6.0 as an unrecognised preprocessor directive.  So ensure they're 
+	wrapped. 
+
 2001-04-02  Baruch Even  <baruch@lyx.org>
 
 	* GraphicsCacheItem.[Ch]: Changed to used the Converter class instead

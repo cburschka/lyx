@@ -296,7 +296,9 @@ void MathParInset::Write(ostream & os, bool fragile)
 					if (l) {
 						os << '\\' << l->name << ' ';
 					} else {
+#ifdef WITH_WARNINGS
 #warning this does not compile on gcc 2.97
+#endif
 						//lyxerr << "Illegal symbol code[" << c
 						//   << " " << str.end() - s << " " << data.fcode() << "]";
 					}

@@ -1,3 +1,10 @@
+2001-04-16  Allan Rae  <rae@lyx.org>
+
+	* gnomeBC.C (setButtonLabel): 
+	* Menubar_pimpl.C (updateAllLists): 
+	* GnomeBase.C (loadXML): #warning triggers an error on Sun CC 6.0 as
+	an unrecognised preprocessor directive.  So ensure they're wrapped. 
+
 2001-04-03  Baruch Even  <baruch@lyx.org>
 
 	* FileDialog.C: Added file to provide the gnome file dialog.

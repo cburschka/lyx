@@ -384,8 +384,10 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	}
 	x += TEXT_TO_INSET_OFFSET;
 
+#ifdef WITH_WARNINGS
 #warning Jürgen, why is this a block of its own? (Lgb)
-#warning because you told me to define variables only in local contest (Jug)!
+#warning because you told me to define variables only in local context (Jug)!
+#endif
 	{
 	int y = 0;
 	Row * row = TEXT(bv)->GetRowNearY(y);

@@ -37,7 +37,9 @@ GnomeBase::~GnomeBase()
 	
 void GnomeBase::loadXML() const
 {
+#ifdef WITH_WARNINGS
 #warning Change this before declaring it production code! (be 20010325)
+#endif
 	string const path("src/frontends/gnome/dialogs/;frontends/gnome/dialogs/;/home/baruch/prog/lyx/graphics/src/frontends/gnome/dialogs/");
 	string const file = FileOpenSearch(path, file_, "glade");
 

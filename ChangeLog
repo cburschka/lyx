@@ -1,3 +1,13 @@
+2001-04-15  Allan Rae  <rae@lyx.org>
+
+	* Makefile.am (sourcedoc/Doxyfile): ensure modifications to doxygen
+	configuration file take effect.
+	(DISTCLEANFILES): clean out sourcedoc/
+
+	* sourcedoc/Doxyfile.in(FILE_PATTERNS): make sure we only filter
+	things that should be filtered.  Now you can run it after you started
+	compiling stuff as well.
+
 2001-03-29  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* configure.in: changed AC_INIT(src/lyx.C) to AC_INIT(src/main.C)

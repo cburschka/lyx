@@ -1,3 +1,10 @@
+2001-04-16  Allan Rae  <rae@lyx.org>
+
+	* tabular-old.C (l_getline): 
+	* spellchecker.C (sc_check_word): 
+	* lyxfunc.C (Dispatch): #warning triggers an error on Sun CC 6.0 as
+	an unrecognised preprocessor directive.  So ensure they're wrapped. 
+
 2001-04-14  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/exporter.C (Export): Give an error message when path to file 
