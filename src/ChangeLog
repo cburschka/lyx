@@ -1,3 +1,9 @@
+2004-12-14  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: change targets lyx_main.o and main.o to
+	lyx_main.$(OBJEXT) and main.$(OBJEXT) to ensure compilation
+	proceeds on Windows machines.
+
 2004-12-07  Angus Leeming  <leeming@lyx.org>
 
 	* *.[Ch]: remove all traces of #pragma interface/implementation
