@@ -71,7 +71,7 @@ def parse_options(argv):
             sys.exit()
         if o in ("-v", "--version"):
             print "lyxconvert, version %s" %(version)
-            print "Copyright (C) 2002-2003 LyX Team"
+            print "Copyright (C) 2002-2003 José Matos and Dekel Tsur"
             sys.exit()
         if o in ("-d", "--debug"):
             opt.debug = int(a)
