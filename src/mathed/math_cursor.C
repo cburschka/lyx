@@ -92,7 +92,7 @@ void MathCursor::push(MathAtom & t)
 
 void MathCursor::pushLeft(MathAtom & t)
 {
-	//cerr << "Entering atom "; t->write(cerr, false); cerr << " left\n";
+	//lyxerr << "Entering atom " << t << " left\n";
 	push(t);
 	t->idxFirst(idx(), pos());
 }
@@ -100,7 +100,7 @@ void MathCursor::pushLeft(MathAtom & t)
 
 void MathCursor::pushRight(MathAtom & t)
 {
-	//cerr << "Entering atom "; t->write(cerr, false); cerr << " right\n";
+	//lyxerr << "Entering atom " << t << " right\n";
 	posLeft();
 	push(t);
 	t->idxLast(idx(), pos());

@@ -1031,7 +1031,7 @@ MathInset::result_type MathGridInset::dispatch
 		}
 
 		default:	
-			break;
+			return MathNestInset::dispatch(cmd, idx, pos);
 	}
 	return UNDISPATCHED;
 }

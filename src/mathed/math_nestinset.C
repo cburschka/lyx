@@ -5,11 +5,10 @@
 #include "math_nestinset.h"
 #include "math_cursor.h"
 #include "math_mathmlstream.h"
-#include "formulabase.h"
+#include "math_parser.h"
+#include "funcrequest.h"
 #include "debug.h"
 #include "frontends/Painter.h"
-
-using std::vector;
 
 
 MathNestInset::MathNestInset(idx_type nargs)
@@ -311,3 +310,24 @@ void MathNestInset::normalize(NormalStream & os) const
 
 void MathNestInset::notifyCursorLeaves()
 {}
+
+
+MathInset::result_type MathNestInset::dispatch
+	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+{
+	switch (cmd.action) {
+
+		case LFUN_PASTE: {
+			//lyxerr << "pasting '" << cmd.argument << "'\n";
+			MathArray ar;
+			mathed_parse_cell(ar, cmd.argument);
+			cell(idx).insert(pos, ar);
+			pos += ar.size();
+			return DISPATCHED;
+		}
+
+		default:	
+			return MathInset::dispatch(cmd, idx, pos);
+	}
+	return UNDISPATCHED;
+}
