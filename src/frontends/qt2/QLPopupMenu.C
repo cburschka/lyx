@@ -26,6 +26,7 @@
 
 #include <boost/scoped_ptr.hpp>
 
+using std::endl;
 using std::pair;
 using std::make_pair;
 
