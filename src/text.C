@@ -138,7 +138,7 @@ int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 
 
 int LyXText::singleWidth(BufferView * bview, Paragraph * par,
-			 Paragraph::size_type pos, char c) const
+                         Paragraph::size_type pos, char c) const
 {
 	LyXFont const font = getFont(bview->buffer(), par, pos);
 
@@ -1134,7 +1134,7 @@ int LyXText::numberOfLabelHfills(Buffer const * buf, Row const * row) const
 // returns true, if a expansion is needed.
 // Rules are given by LaTeX
 bool LyXText::hfillExpansion(Buffer const * buf, Row const * row_ptr,
-			     Paragraph::size_type pos) const
+                             Paragraph::size_type pos) const
 {
 	// by the way, is it a hfill?
 	if (!row_ptr->par()->isHfill(pos))
@@ -1991,11 +1991,11 @@ void LyXText::charInserted()
 
 
 void LyXText::prepareToPrint(BufferView * bview,
-			     Row * row, float & x,
-			     float & fill_separator, 
-			     float & fill_hfill,
-			     float & fill_label_hfill,
-			     bool bidi) const
+                             Row * row, float & x,
+                             float & fill_separator, 
+                             float & fill_hfill,
+                             float & fill_label_hfill,
+                             bool bidi) const
 {
 	float nlh;
 	float ns;
@@ -2030,45 +2030,49 @@ void LyXText::prepareToPrint(BufferView * bview,
 	// are there any hfills in the row?
 	float const nh = numberOfHfills(bview->buffer(), row);
 
-	if (nh)
-	  fill_hfill = w / nh;
-	else  {
+	if (nh) {
+		if (w > 0)
+			fill_hfill = w / nh;
+	} else  {
 		// is it block, flushleft or flushright? 
 		// set x how you need it
-	int align;
-	if (row->par()->params().align() == LYX_ALIGN_LAYOUT)
-	  align = textclasslist.Style(bview->buffer()->params.textclass, row->par()->getLayout()).align;
-	else
-	  align = row->par()->params().align();
-	   
-	// center displayed insets 
-	Inset * inset;
-	   if (row->par()->getChar(row->pos()) == Paragraph::META_INSET
-	       && (inset=row->par()->getInset(row->pos()))
-	       && (inset->display())) // || (inset->scroll() < 0)))
-	     align = (inset->lyxCode() == Inset::MATHMACRO_CODE)
-		     ? LYX_ALIGN_BLOCK : LYX_ALIGN_CENTER;
-
-	   switch (align) {
+		int align;
+		if (row->par()->params().align() == LYX_ALIGN_LAYOUT) {
+			align = textclasslist.Style(bview->buffer()->params.textclass, row->par()->getLayout()).align;
+		} else {
+			align = row->par()->params().align();
+		}
+		
+		// center displayed insets 
+		Inset * inset;
+		if (row->par()->getChar(row->pos()) == Paragraph::META_INSET
+		    && (inset=row->par()->getInset(row->pos()))
+		    && (inset->display())) // || (inset->scroll() < 0)))
+		    align = (inset->lyxCode() == Inset::MATHMACRO_CODE)
+		        ? LYX_ALIGN_BLOCK : LYX_ALIGN_CENTER;
+		
+		switch (align) {
 	    case LYX_ALIGN_BLOCK:
-	      ns = numberOfSeparators(bview->buffer(), row);
-	      if (ns && row->next() && row->next()->par() == row->par() &&
-		  !(row->next()->par()->isNewline(row->next()->pos() - 1))
-		  && !(row->next()->par()->getChar(row->next()->pos()) == Paragraph::META_INSET
-		       && row->next()->par()->getInset(row->next()->pos())
-		       && row->next()->par()->getInset(row->next()->pos())->display())
-		  )
-	      	fill_separator = w / ns;
-	      else if (is_rtl)
-		x += w;
-	      break;
+			ns = numberOfSeparators(bview->buffer(), row);
+			if (ns && row->next() && row->next()->par() == row->par() &&
+			    !(row->next()->par()->isNewline(row->next()->pos() - 1))
+			    && !(row->next()->par()->getChar(row->next()->pos()) == Paragraph::META_INSET
+			         && row->next()->par()->getInset(row->next()->pos())
+			         && row->next()->par()->getInset(row->next()->pos())->display())
+				)
+			{
+				fill_separator = w / ns;
+			} else if (is_rtl) {
+				x += w;
+			}
+			break;
 	    case LYX_ALIGN_RIGHT:
-	      x += w;
-	      break;
+			x += w;
+			break;
 	    case LYX_ALIGN_CENTER:
-	      x += w / 2;
-	      break;
-	   }
+			x += w / 2;
+			break;
+		}
 	}
 	if (!bidi)
 		return;

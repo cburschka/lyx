@@ -377,10 +377,10 @@ int InsetCollapsable::latex(Buffer const * buf, ostream & os,
 
 
 int InsetCollapsable::getMaxWidth(BufferView * bv,
-                                  UpdatableInset const * inset) const
+                                  UpdatableInset const * in) const
 {
 #if 0
-	int const w = UpdatableInset::getMaxWidth(bv, inset);
+	int const w = UpdatableInset::getMaxWidth(bv, in);
 
 	if (w < 0) {
 		// What does a negative max width signify? (Lgb)
@@ -390,7 +390,7 @@ int InsetCollapsable::getMaxWidth(BufferView * bv,
 	// should be at least 30 pixels !!!
 	return max(30, w - width_collapsed());
 #else
-	return UpdatableInset::getMaxWidth(bv, inset);
+	return UpdatableInset::getMaxWidth(bv, in);
 #endif
 }
 

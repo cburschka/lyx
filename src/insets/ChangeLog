@@ -1,5 +1,12 @@
 2001-08-10  Juergen Vigna  <jug@sad.it>
 
+	* insettabular.C (selectNextWordInt): use the front using edit call.
+
+	* insetcollapsable.C (getMaxWidth): rename inset to in to not have
+	the parameter overwrite class variable inset.
+
+	* inset.C (getMaxWidth): fix the setting of the minwidth = 10.
+
 	* insettext.C (saveLyXTextState): check for invalid cursor-par.
 	(reinitLyXText): remove wrong_cursor bool as not needed anymore!
 

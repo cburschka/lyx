@@ -341,8 +341,9 @@ int InsetMinipage::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 	if (!width_.empty()) {
 		int ww1 = VSpace(width_).inPixels(bv);
 		int ww2 = InsetCollapsable::getMaxWidth(bv, inset);
-		if (ww2 > 0 && ww2 < ww1)
+		if (ww2 > 0 && ww2 < ww1) {
 			return ww2;
+		}
 		return ww1;
 	}
 	// this should not happen!

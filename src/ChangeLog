@@ -1,5 +1,7 @@
 2001-08-10  Juergen Vigna  <jug@sad.it>
 
+	* text.C (prepareToPrint): fixed hfill-width in draw!
+
 	* BufferView2.C (selectLastWord): save the selection cursor as this
 	now is cleared in the function LyXText::clearSelection!
 

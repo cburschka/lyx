@@ -2524,7 +2524,7 @@ string InsetTabular::selectNextWordInt(BufferView * bv, float & value) const
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(++actcell));
-	inset->edit(bv, 0,  0, 0);
+	inset->edit(bv);
 	return selectNextWordInt(bv, value);
 }
 
