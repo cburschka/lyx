@@ -30,7 +30,7 @@ What's new
 
 - Insert>Lists & TOC>Bibtex Reference uses style 'plain' by default
 
-- new class ijmpd; update cl2emult and foils textclasses
+- new class ijmpd; update cl2emult, llncs and foils textclasses
 
 - small cleanup of UserGuide; update to German and French
   documentation; new Hebrew tutorial
@@ -38,12 +38,6 @@ What's new
 - update french, german and danish localization of the interface
 
 ** Bug fixes
-
-- fix the Bibliography layout in llncs
-
-- fix bug with language changes in nested environment
-
-- fix crash when using koi8-u keymap
 
 - fix bug where special characters in equations label confuse LyX
   (this was a new bug in 1.2.1)
@@ -66,7 +60,11 @@ What's new
 - when a viewer has not been found (set to "none"), remove the
   corresponding View menu entry
 
+- fix bad latex output with language changes in nested environment
+
 - add bindings for M-< and M-> in emacs mode
+
+- fix crash when using the koi8-u keyboard mapping
 
 - fix handling of word-related cursor movement functions in math editor
 
