@@ -1,9 +1,9 @@
 /*
  *  File:        math_inset.C
  *  Purpose:     Implementation of insets for mathed
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
+ *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
  *  Created:     January 1996
- *  Description: 
+ *  Description:
  *
  *  Dependencies: Xlib, XForms
  *
@@ -53,7 +53,7 @@ MathedArray * MathedIter::GetData() const
 {
 	return array;
 }
- 
+
 
 int MathedIter::Empty() const
 {
@@ -69,33 +69,35 @@ int MathedIter::OK() const
 
 void MathedIter::Reset()
 {
-    if (array->last() > 0 && MathIsFont((*array)[0])) {
-	fcode = (*array)[0];
-	pos = 1;
-    } else {
-	fcode = -1;
-	pos = 0;
-    }
-    col = row = 0;
+	if (array->last() > 0 && MathIsFont((*array)[0])) {
+		fcode = (*array)[0];
+		pos   = 1;
+	} else {
+		fcode = -1;
+		pos   = 0;
+	}
+	col = 0;
+	row = 0;
 }
 
 
 byte MathedIter::GetChar() const
 {
-    if (IsFont()) { 
-	fcode = (*array)[pos];
-	++pos;
-    }
-    return (*array)[pos];
+	if (IsFont()) {
+		fcode = (*array)[pos];
+		++pos;
+	}
+	return (*array)[pos];
 }
 
 
 string const MathedIter::GetString() const
 {
-	if (IsFont()) { 
+	if (IsFont()) {
 		fcode = (*array)[++pos];
 		++pos;
 	}
+
 	string s;
 	for (; (*array)[pos] >= ' ' && pos < array->last(); ++pos)
 		s += (*array)[pos];
@@ -106,340 +108,373 @@ string const MathedIter::GetString() const
 
 MathedInset * MathedIter::GetInset() const
 {
-   if (IsInset()) {
-      MathedInset * p;
-      array->raw_pointer_copy(&p, pos + 1);
-      return p;
-   } else {
-	   lyxerr << "Math Error: This is not an inset["
-		  << (*array)[pos] << "]" << endl;
-     return 0;
-   }
+	if (IsInset()) {
+		MathedInset * p;
+		array->raw_pointer_copy(&p, pos + 1);
+		return p;
+	} else {
+		lyxerr << "Math Error: This is not an inset["
+		       << (*array)[pos] << "]" << endl;
+		return 0;
+	}
 }
 
 
-// An active math inset MUST be derived from MathParInset because it 
+// An active math inset MUST be derived from MathParInset because it
 // must have at least one paragraph to edit
 MathParInset * MathedIter::GetActiveInset() const
 {
-    if (IsActive()) {
-	return reinterpret_cast<MathParInset*>(GetInset());
-    } 
-    
-    lyxerr << "Math Error: This is not an active inset" << endl;
-    return 0;
+	if (IsActive()) 
+		return reinterpret_cast<MathParInset*>(GetInset());
+
+	lyxerr << "Math Error: This is not an active inset" << endl;
+	return 0;
 }
 
 
 bool MathedIter::Next()
-{  
-    if (!OK()) return false;
-   
-    if ((*array)[pos] < ' ') {
-	fcode = -1;     
-	if (IsTab()) ++col;
-	if (IsCR())  {
-	    col = 0;
-	    ++row;
-	}
-    }
-	
-    if (IsInset())
-      pos += sizeof(char*) + 2;
-    else 
-      ++pos;
-    
-    if (IsFont()) {
-	fcode = (*array)[pos++];
-    }
+{
+	if (!OK())
+		return false;
 
-    return true;   
+	if ((*array)[pos] < ' ') {
+		fcode = -1;
+		if (IsTab())
+			++col;
+		if (IsCR()) {
+			col = 0;
+			++row;
+		}
+	}
+
+	if (IsInset())
+		pos += sizeof(char*) + 2;
+	else
+		++pos;
+
+	if (IsFont()) 
+		fcode = (*array)[pos++];
+
+	return true;
 }
 
 
 bool MathedIter::goNextCode(MathedTextCodes code)
-{  
-    while (Next()) {
-	if ((*array)[pos] == code) 
-	  return true;
-    }
-    
-    return false;
+{
+	while (Next()) {
+		if ((*array)[pos] == code)
+			return true;
+	}
+
+	return false;
 }
 
 
 void MathedIter::goPosAbs(int p)
-{  
-    Reset();
-    while (pos < p && Next());
+{
+	Reset();
+	while (pos < p && Next())
+		;
 }
 
 
 void MathedIter::goPosRel(int dp)
-{  
-    int const posx = pos + dp;
- 
-    // is posx a valid position?
-    if (dp < 0)
-      Reset();
-    while (pos < posx && Next());
+{
+	int const posx = pos + dp;
+
+	// is posx a valid position?
+	if (dp < 0)
+		Reset();
+
+	while (pos < posx && Next())
+		;
 }
 
 
 void MathedIter::Insert(byte c, MathedTextCodes t)
 {
-    if (c < ' ') return;
-    
-    if (t == LM_TC_TAB && col >= ncols - 1) 
-      return;
-    
-    // Never more than one space // array->bf[pos-1] gives error from purify:
-    //       Reading 1 byte from 0x47b857 in the heap.
-    //  Address 0x47b857 is 1 byte before start of malloc'd block at 0x47b858 of 16 bytes.
-    if (c == ' ' && ((*array)[pos] == ' ' || (*array)[pos - 1] == ' ')) 
-      return;
-	
-    if (IsFont() && (*array)[pos] == t) {
-	fcode = t;
-	++pos;
-    } else
-      if (t != fcode && pos > 0 && MathIsFont((*array)[pos - 1])) {
-	  --pos;
-	  int k = pos - 1;
-	  for (; k >= 0 && (*array)[k] >= ' '; --k);
-	  fcode = (k >= 0 && MathIsFont((*array)[k])) ? (*array)[k] : -1;
-      }
-    short const f = ((*array)[pos] < ' ') ? 0 : fcode;
-    int shift = (t == fcode) ? 1 : ((f) ? 3 : 2);
-    
-    if (t == LM_TC_TAB || t == LM_TC_CR) {
-	--shift;
-	c = t;
-	if (t == LM_TC_CR) {
-	    ++row;
-	    col = 0;
-	} else
-	  ++col;
-    }
- 
-    if (pos < array->last())
-        array->move(pos, shift);
-    else {
-	array->need_size(array->last() + shift);
-	array->last(array->last() + shift);
-	(*array)[array->last()] = '\0';
-    }
-    if (t != fcode) {
-	if (f)  
-	  (*array)[pos + shift - 1] = fcode;
- 	if (c >= ' ') {
-	    (*array)[pos++] = t;
-	    fcode = t;
+	if (c < ' ')
+		return;
+
+	if (t == LM_TC_TAB && col >= ncols - 1)
+		return;
+
+	// Never more than one space // array->bf[pos-1] gives error from purify:
+	// Reading 1 byte from 0x47b857 in the heap.
+	//
+	// Address 0x47b857 is 1 byte before start of malloc'd block at
+	// 0x47b858 of 16 bytes.
+
+	if (c == ' ' && ((*array)[pos] == ' ' || (*array)[pos - 1] == ' '))
+		return;
+
+	if (IsFont() && (*array)[pos] == t) {
+		fcode = t;
+		++pos;
 	} else {
-	    fcode = 0;
+		if (t != fcode && pos > 0 && MathIsFont((*array)[pos - 1])) {
+			--pos;
+			int k = pos - 1;
+			for (; k >= 0 && (*array)[k] >= ' '; --k)
+				;
+			fcode = (k >= 0 && MathIsFont((*array)[k])) ? (*array)[k] : -1;
+		}
 	}
-    }
-    (*array)[pos++] = c;
+
+	short const f = ((*array)[pos] < ' ') ? 0 : fcode;
+	int shift = (t == fcode) ? 1 : ((f) ? 3 : 2);
+
+	if (t == LM_TC_TAB || t == LM_TC_CR) {
+		--shift;
+		c = t;
+		if (t == LM_TC_CR) {
+			++row;
+			col = 0;
+		} else
+			++col;
+	}
+
+	if (pos < array->last())
+		array->move(pos, shift);
+	else {
+		array->need_size(array->last() + shift);
+		array->last(array->last() + shift);
+		(*array)[array->last()] = '\0';
+	}
+
+	if (t != fcode) {
+		if (f)
+			(*array)[pos + shift - 1] = fcode;
+
+		if (c >= ' ') {
+			(*array)[pos++] = t;
+			fcode = t;
+		} else 
+			fcode = 0;
+	}
+
+	(*array)[pos++] = c;
 }
 
 
 // Prepare to insert a non-char object
 void MathedIter::split(int shift)
 {
-   if (pos < array->last()) {
-      bool fg = false;
-      if ((*array)[pos] >= ' ') {
-	 if (pos> 0 && MathIsFont((*array)[pos - 1]))
-	   --pos;
-	 else { 
-	    fg = true;
-	    ++shift;
-	 }
-      }      
-      array->move(pos, shift);
-      if (fg) (*array)[pos + shift - 1] = fcode;
-   } else {
-			array->need_size(array->last() + shift);
-      array->last(array->last() + shift);
-   }
-   (*array)[array->last()] = '\0';
+	if (pos < array->last()) {
+
+		bool fg = false;
+		if ((*array)[pos] >= ' ') {
+			if (pos> 0 && MathIsFont((*array)[pos - 1]))
+				--pos;
+			else {
+				fg = true;
+				++shift;
+			}
+		}
+
+		array->move(pos, shift);
+
+		if (fg)
+			(*array)[pos + shift - 1] = fcode;
+
+	} else {
+
+		array->need_size(array->last() + shift);
+		array->last(array->last() + shift);
+	}
+
+	(*array)[array->last()] = '\0';
 }
 
 
 // I assume that both pos and pos2 are legal positions
 void MathedIter::join(int pos2)
-{   
-    if (!OK() || pos2 <= pos)
-      return;    
+{
+	if (!OK() || pos2 <= pos)
+		return;
 
-    short f = fcode;
-    if (pos > 0 && (*array)[pos] >= ' ' && MathIsFont((*array)[pos - 1]))
-      --pos;	
-    	    
-    if (MathIsFont((*array)[pos2 - 1]))
-      --pos2;
-    
-    if ((*array)[pos2] >= ' ') {
-	for (int p = pos2; p > 0; --p) 
-	  if (MathIsFont((*array)[p])) {
-	      f = (*array)[p];
-	      break;
-	  }
-	(*array)[pos++] = f;
-    }    
+	short f = fcode;
+	if (pos > 0 && (*array)[pos] >= ' ' && MathIsFont((*array)[pos - 1]))
+		--pos;	
 
-    array->move(pos2, pos - pos2);
+	if (MathIsFont((*array)[pos2 - 1]))
+		--pos2;
+
+	if ((*array)[pos2] >= ' ') {
+		for (int p = pos2; p > 0; --p) {
+			if (MathIsFont((*array)[p])) {
+				f = (*array)[p];
+				break;
+			}
+		}
+		(*array)[pos++] = f;
+	}
+
+	array->move(pos2, pos - pos2);
 }
 
 
 void MathedIter::Insert(MathedInset * p, int type)
 {
-    int const shift = SizeInset;
-    if (!MathIsInset(type))
-      type = LM_TC_INSET;
-    split(shift);
-    (*array)[pos] = type;
-    array->raw_pointer_insert(p, pos + 1, sizeof(p));
-    pos += SizeInset;
-    (*array)[pos - 1] = type;
-    (*array)[array->last()] = '\0';
-    fcode = -1;
+	int const shift = SizeInset;
+
+	if (!MathIsInset(type))
+		type = LM_TC_INSET;
+
+	split(shift);
+
+	(*array)[pos] = type;
+	array->raw_pointer_insert(p, pos + 1, sizeof(p));
+	pos += SizeInset;
+	(*array)[pos - 1] = type;
+	(*array)[array->last()] = '\0';
+	fcode = -1;
 }
 
 
 bool MathedIter::Delete()
-{   
-   if (!OK())
-     return false;
-   
-   int shift = 0;
-   byte c = GetChar();
-   if (c >= ' ') {
-      if (MathIsFont((*array)[pos - 1]) && (*array)[pos + 1] < ' ') {
-	 shift = 2;
-	 pos--;
-	 int i = pos - 1;
-	 for (; i > 0 && !MathIsFont((*array)[i]); --i);
-	 if (i > 0 && MathIsFont((*array)[i]))
-	   fcode = (*array)[i];
-      } else
-	shift = 1;
-   } else {
-      if (MathIsInset((*array)[pos]))
-	shift = sizeof(char*) + 2;
-     else if (c == LM_TC_TAB || c == LM_TC_CR) {
-	 ++shift;
-//	 lyxerr <<"Es un tab.";
-      } else {
-	     lyxerr << "Math Warning: expected inset." << endl;
-     }
-   } 
-    
-   if (shift != 0) {
-      array->move(pos + shift, -shift);
-      if (pos >= array->last()) 
-	 pos = (array->last() > 0) ? array->last() : 0;
-       return true;
-   } else
-     return false;
+{
+	if (!OK())
+		return false;
+
+	int shift = 0;
+	byte c = GetChar();
+	if (c >= ' ') {
+
+		if (MathIsFont((*array)[pos - 1]) && (*array)[pos + 1] < ' ') {
+			shift = 2;
+			pos--;
+			int i = pos - 1;
+			for (; i > 0 && !MathIsFont((*array)[i]); --i)
+				;
+			if (i > 0 && MathIsFont((*array)[i]))
+			fcode = (*array)[i];
+		} else
+			shift = 1;
+
+	} else {
+
+		if (MathIsInset((*array)[pos]))
+			shift = sizeof(char*) + 2;
+		else if (c == LM_TC_TAB || c == LM_TC_CR) {
+			++shift;
+		//	 lyxerr <<"Es un tab.";
+		} else {
+			lyxerr << "Math Warning: expected inset." << endl;
+		}
+
+	}
+
+	if (shift != 0) {
+		array->move(pos + shift, -shift);
+		if (pos >= array->last())
+			pos = (array->last() > 0) ? array->last() : 0;
+		return true;
+	} else
+		return false;
 }
 
 
 MathedArray * MathedIter::Copy(int pos1, int pos2)
 {
-   if (!array) {
-//      lyxerr << "Math error: Attempting to copy a void array." << endl;
-      return 0;
-   }
-      
-   ipush(); 
-   MathedArray * t = array;
-   MathedArray * a;
-    
-   if (pos1 > 0 || pos2 <= array->last()) {       
-       short fc = 0;
-       if (pos1 > 0 && (*array)[pos1] > ' ') {
-	   for (int p = pos1; p >= 0; --p) 
-	     if (MathIsFont((*array)[p])) {
-		 if (p != pos1 - 1)
-		   fc = (*array)[p];
-		 else
-		   --pos1;
-		 break;
-	     }
-       }
+	if (!array) {
+	//      lyxerr << "Math error: Attempting to copy a void array." << endl;
+		return 0;
+	}
 
-       if (pos2 > 0 && (*array)[pos2] >= ' '
-	   && MathIsFont((*array)[pos2 - 1])) 
-	 --pos2;
+	ipush();
+	MathedArray * t = array;
+	MathedArray * a;
 
-       int dx = pos2 - pos1;
-       a = new MathedArray(dx + MathedArray::ARRAY_MIN_SIZE);
-//       lyxerr << "VA " << pos2 << " " << pos2 << " " << dx << endl;
-       array->strange_copy(a, (fc) ? 1 : 0, pos1, dx);
-       if (fc) {
-	   (*a)[0] = fc;
-	   ++dx;
-       }
-       a->last(dx);
-       (*a)[dx] = '\0';
-   }  else   
-      a = new MathedArray(*array);
-   SetData(a);
-   while (OK()) {
-      if (IsInset()) {
-	 MathedInset * inset = GetInset();
-	 inset = inset->Clone();
-	 array->raw_pointer_insert(inset, pos + 1, sizeof(inset));
-      }
-      Next();
-   }
-   array = t;
-   ipop(); 
-   return a;
+	if (pos1 > 0 || pos2 <= array->last()) {
+		short fc = 0;
+		if (pos1 > 0 && (*array)[pos1] > ' ') {
+			for (int p = pos1; p >= 0; --p) {
+				if (MathIsFont((*array)[p])) {
+				if (p != pos1 - 1)
+				fc = (*array)[p];
+				else
+				--pos1;
+				break;
+				}
+			}
+		}
+
+		if (pos2 > 0 && (*array)[pos2] >= ' '
+		             && MathIsFont((*array)[pos2 - 1]))
+			--pos2;
+
+		int dx = pos2 - pos1;
+		a = new MathedArray(dx + MathedArray::ARRAY_MIN_SIZE);
+		//       lyxerr << "VA " << pos2 << " " << pos2 << " " << dx << endl;
+		array->strange_copy(a, (fc) ? 1 : 0, pos1, dx);
+		if (fc) {
+			(*a)[0] = fc;
+			++dx;
+		}
+		a->last(dx);
+		(*a)[dx] = '\0';
+	} else
+		a = new MathedArray(*array);
+
+	SetData(a);
+	while (OK()) {
+		if (IsInset()) {
+			MathedInset * inset = GetInset();
+			inset = inset->Clone();
+			array->raw_pointer_insert(inset, pos + 1, sizeof(inset));
+		}
+		Next();
+	}
+	array = t;
+	ipop();
+	return a;
 }
 
 
 void MathedIter::Clear()
 {
-   if (!array) {
-	   lyxerr << "Math error: Attempting to clean a void array." << endl;
-      return;
-   }
-   Reset();  
-   while (OK()) {
-      if (IsInset()) {
-	 MathedInset * inset = GetInset();
-	  if (inset->GetType()!= LM_OT_MACRO_ARG)
-	    delete inset;
-	  Delete();
-      } else
-	Next();
-   }
+	if (!array) {
+		lyxerr << "Math error: Attempting to clean a void array." << endl;
+		return;
+	}
+
+	Reset();
+	while (OK()) {
+		if (IsInset()) {
+			MathedInset * inset = GetInset();
+			if (inset->GetType()!= LM_OT_MACRO_ARG)
+			delete inset;
+			Delete();
+		} else
+			Next();
+	}
 }
 
 
 // Check consistency of tabs and crs
 void MathedIter::checkTabs()
 {
-    ipush();
-    
-//    MathedIter:Reset();
-    while (OK()) {
-        if ((IsTab() && col >= ncols - 1) || (IsCR() && !(MthIF_CR & flags))) {
-            Delete();
-            continue;
-        }
-        if (IsCR() && col < ncols - 2) {
-            Insert(' ', LM_TC_TAB);
+	ipush();
+
+	// MathedIter:Reset();
+	while (OK()) {
+		if ((IsTab() && col >= ncols - 1) || (IsCR() && !(MthIF_CR & flags))) {
+			Delete();
+			continue;
+		}
+
+		if (IsCR() && col < ncols - 2) 
+			Insert(' ', LM_TC_TAB);
+
+		MathedIter::Next();
 	}
-        MathedIter::Next();
-    }
-    if (col < ncols - 2) {
-	Insert(' ', LM_TC_TAB);
-    }
-    ipop();
-}         
+
+	if (col < ncols - 2)
+		Insert(' ', LM_TC_TAB);
+	
+	ipop();
+}
 
 
 //  Try to adjust tabs in the expected place, as used in eqnarrays
@@ -448,67 +483,68 @@ void MathedIter::checkTabs()
 //   - If tehre are not a relation operator, put everything in the
 //     3rd column.
 void MathedIter::adjustTabs()
-{}         
+{}
 
 
 bool MathedIter::IsInset() const
 {
-    return MathIsInset((*array)[pos]);
+	return MathIsInset((*array)[pos]);
 }
- 
+
 
 bool MathedIter::IsActive() const
 {
-    return MathIsActive((*array)[pos]);
+	return MathIsActive((*array)[pos]);
 }
 
 
 bool MathedIter::IsFont() const
 {
-    return MathIsFont((*array)[pos]);
+	return MathIsFont((*array)[pos]);
 }
 
 
 bool MathedIter::IsScript() const
 {
-    return MathIsScript((*array)[pos]);
-}   
+	return MathIsScript((*array)[pos]);
+}
 
 
 bool MathedIter::IsTab() const
 {
-    return ((*array)[pos] == LM_TC_TAB);
-}  
+	return ((*array)[pos] == LM_TC_TAB);
+}
 
 
 bool MathedIter::IsCR() const
 {
-    return ((*array)[pos] == LM_TC_CR);
-}  
+	return ((*array)[pos] == LM_TC_CR);
+}
 
 
 MathedIter::MathedIter(MathedArray * d)
 	: array(d)
 {
-    pos = 0;
-    row = col = 0;
-    fcode = (array && IsFont()) ? (*array)[0]: 0;
+	pos = 0;
+	row = 0;
+	col = 0;
+	fcode = (array && IsFont()) ? (*array)[0]: 0;
 }
 
 
 void MathedIter::ipush()
-{ 
-    stck.fcode = fcode;
-    stck.pos = pos;
-    stck.row = row;
-    stck.col = col; 
+{
+	stck.fcode = fcode;
+	stck.pos = pos;
+	stck.row = row;
+	stck.col = col;
 }
 
 
 void MathedIter::ipop()
-{ 
-    fcode = stck.fcode;
-    pos = stck.pos;
-    row = stck.row;
-    col = stck.col;  
+{
+	fcode = stck.fcode;
+	pos = stck.pos;
+	row = stck.row;
+	col = stck.col;
 }

@@ -34,6 +34,7 @@
 #include "font.h"
 #include "support/lyxlib.h"
 #include "mathed/support.h"
+#include "support/LOstream.h"
 
 using std::ostream;
 using std::istream;
