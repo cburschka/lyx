@@ -46,9 +46,8 @@ void linuxdocParagraphs(Buffer const & buf,
 		LyXLayout_ptr const & style = pit->layout();
 		// treat <toc> as a special case for compatibility with old code
 		if (pit->isInset(0)) {
-			InsetOld * inset = pit->getInset(0);
-			InsetOld::Code lyx_code = inset->lyxCode();
-			if (lyx_code == InsetOld::TOC_CODE) {
+			InsetBase * inset = pit->getInset(0);
+			if (inset->lyxCode() == InsetOld::TOC_CODE) {
 				string const temp = "toc";
 				sgml::openTag(os, depth, false, temp);
 				continue;
@@ -92,8 +91,7 @@ void linuxdocParagraphs(Buffer const & buf,
 
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT:
-		case LATEX_BIB_ENVIRONMENT:
-		{
+		case LATEX_BIB_ENVIRONMENT: {
 			string const & latexname = style->latexname();
 
 			if (depth == pit->params().depth()

@@ -35,7 +35,7 @@ PosIterator & PosIterator::operator++()
 		PosIteratorItem & p = stack_.back();
 		
 		if (p.pos < p.pit->size()) {
-			if (InsetOld * inset = p.pit->getInset(p.pos)) {
+			if (InsetBase * inset = p.pit->getInset(p.pos)) {
 				if (LyXText * text = inset->getText(p.index)) {
 					ParagraphList & pl = text->paragraphs();
 					p.index++;
@@ -68,7 +68,7 @@ PosIterator & PosIterator::operator--()
 	PosIteratorItem & p = stack_.back();
 	if (p.pos > 0) {
 		--p.pos;
-		InsetOld * inset = p.pit->getInset(p.pos);
+		InsetBase * inset = p.pit->getInset(p.pos);
 		if (inset)
 			p.index = inset->numParagraphs();
 	} else {
@@ -85,7 +85,7 @@ PosIterator & PosIterator::operator--()
 	// try to push an item if there is some left unexplored
 	PosIteratorItem & q = stack_.back();
 	if (q.pos < q.pit->size()) {
-		InsetOld * inset = q.pit->getInset(q.pos);
+		InsetBase * inset = q.pit->getInset(q.pos);
 		if (inset && q.index > 0) {
 			LyXText * text = inset->getText(q.index - 1);
 			BOOST_ASSERT(text);
@@ -144,7 +144,7 @@ PosIterator::PosIterator(BufferView & bv)
 }
 
 
-InsetOld * PosIterator::inset() const
+InsetBase * PosIterator::inset() const
 {
 	if (stack_.size() == 1)
 		return 0;
@@ -155,9 +155,8 @@ InsetOld * PosIterator::inset() const
 
 int distance(PosIterator const & cur, PosIterator const & end)
 {
-	PosIterator p = cur;
 	int count = 0;
-	for (; p != end; ++p, ++count)
+	for (PosIterator p = cur; p != end; ++p, ++count)
 		;
 	return count;
 }

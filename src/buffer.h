@@ -31,15 +31,16 @@
 class BufferParams;
 class ErrorItem;
 class FuncRequest;
+class InsetBase;
 class LyXFont;
 class LyXLex;
 class LyXRC;
 class LyXText;
 class LyXVC;
 class LaTeXFeatures;
-class OutputParams;
 class Language;
 class Messages;
+class OutputParams;
 class ParIterator;
 class PosIterator;
 class ParConstIterator;
@@ -282,10 +283,10 @@ public:
 	class inset_iterator {
 	public:
 		typedef std::input_iterator_tag iterator_category;
-		typedef InsetOld value_type;
+		typedef InsetBase value_type;
 		typedef ptrdiff_t difference_type;
-		typedef InsetOld * pointer;
-		typedef InsetOld & reference;
+		typedef InsetBase * pointer;
+		typedef InsetBase & reference;
 		typedef ParagraphList::iterator base_type;
 
 		///

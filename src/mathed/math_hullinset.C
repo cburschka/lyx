@@ -10,15 +10,16 @@
 
 #include <config.h>
 
+#include "math_charinset.h"
+#include "math_data.h"
+#include "math_extern.h"
 #include "math_hullinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
-#include "math_cursor.h"
 #include "math_support.h"
-#include "math_extern.h"
-#include "math_charinset.h"
-#include "textpainter.h"
+
 #include "BufferView.h"
+#include "cursor.h"
 #include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
@@ -26,6 +27,7 @@
 #include "LaTeXFeatures.h"
 #include "LColor.h"
 #include "lyxrc.h"
+#include "textpainter.h"
 
 #include "frontends/Alert.h"
 
@@ -66,7 +68,7 @@ namespace {
 
 	// returns position of first relation operator in the array
 	// used for "intelligent splitting"
-	MathArray::size_type firstRelOp(MathArray const & ar)
+	size_t firstRelOp(MathArray const & ar)
 	{
 		for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
 			if ((*it)->isRelOp())
@@ -110,6 +112,12 @@ namespace {
 MathHullInset::MathHullInset()
 	: MathGridInset(1, 1), type_("none"), nonum_(1), label_(1)
 {
+	// This is needed as long the math parser is not re-entrant
+	initMath();
+	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << endl;
+	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
+	//lyxerr << "sizeof MathCharInset: " << sizeof(MathCharInset) << endl;
+	//lyxerr << "sizeof LyXFont: " << sizeof(LyXFont) << endl;
 	setDefaults();
 }
 
@@ -725,8 +733,8 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest const & func)
 	if (getType() == "simple") {
 		size_type pos = cur.cell().find_last(eq);
 		MathArray ar;
-		if (inMathed() && cur.selection()) {
-			asArray(mathcursor::grabAndEraseSelection(cur), ar);
+		if (cur.inMathed() && cur.selection()) {
+			asArray(cur.grabAndEraseSelection(), ar);
 		} else if (pos == cur.cell().size()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;
@@ -870,4 +878,510 @@ MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 string MathHullInset::fileInsetLabel() const
 {
 	return "Formula";
+}
+
+
+/////////////////////////////////////////////////////////////////////
+
+#include "formulamacro.h"
+#include "math_arrayinset.h"
+#include "math_data.h"
+#include "math_deliminset.h"
+#include "math_factory.h"
+#include "math_hullinset.h"
+#include "math_parser.h"
+#include "math_spaceinset.h"
+#include "math_support.h"
+#include "ref_inset.h"
+
+#include "BufferView.h"
+#include "bufferview_funcs.h"
+#include "cursor.h"
+#include "dispatchresult.h"
+#include "debug.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "LColor.h"
+#include "lyxtext.h"
+#include "undo.h"
+
+#include "frontends/LyXView.h"
+#include "frontends/Dialogs.h"
+
+#include "support/std_sstream.h"
+#include "support/lstrings.h"
+#include "support/lyxlib.h"
+
+using lyx::support::atoi;
+using lyx::support::split;
+using lyx::support::token;
+
+using std::abs;
+using std::endl;
+using std::max;
+using std::istringstream;
+using std::ostringstream;
+
+
+namespace {
+
+// local global
+int first_x;
+int first_y;
+
+bool openNewInset(LCursor & cur, InsetBase * inset)
+{
+	if (!cur.bv().insertInset(inset)) {
+		delete inset;
+		return false;
+	}
+	inset->edit(cur, true);
+	return true;
+}
+
+
+} // namespace anon
+
+
+
+int MathHullInset::ylow() const
+{
+	return yo_ - dim_.asc;
+}
+
+
+int MathHullInset::yhigh() const
+{
+	return yo_ + dim_.des;
+}
+
+
+int MathHullInset::xlow() const
+{
+	return xo_;
+}
+
+
+int MathHullInset::xhigh() const
+{
+	return xo_ + dim_.wid;
+}
+
+
+// simply scrap this function if you want
+void MathHullInset::mutateToText()
+{
+#if 0
+	// translate to latex
+	ostringstream os;
+	latex(NULL, os, false, false);
+	string str = os.str();
+
+	// insert this text
+	LyXText * lt = view_->getLyXText();
+	string::const_iterator cit = str.begin();
+	string::const_iterator end = str.end();
+	for (; cit != end; ++cit)
+		view_->owner()->getIntl()->getTransManager().TranslateAndInsert(*cit, lt);
+
+	// remove ourselves
+	//view_->owner()->dispatch(LFUN_ESCAPE);
+#endif
+}
+
+
+void MathHullInset::handleFont
+	(LCursor & cur, string const & arg, string const & font)
+{
+	// this whole function is a hack and won't work for incremental font
+	// changes...
+	recordUndo(cur, Undo::ATOMIC);
+
+	if (cur.inset()->asMathInset()->name() == font)
+		cur.handleFont(font);
+	else {
+		cur.handleNest(createMathInset(font));
+		cur.insert(arg);
+	}
+}
+
+
+void MathHullInset::handleFont2(LCursor & cur, string const & arg)
+{
+	recordUndo(cur, Undo::ATOMIC);
+	LyXFont font;
+	bool b;
+	bv_funcs::string2font(arg, font, b);
+	if (font.color() != LColor::inherit) {
+		MathAtom at = createMathInset("color");
+		asArray(lcolor.getGUIName(font.color()), at.nucleus()->cell(0));
+		cur.handleNest(at, 1);
+	}
+}
+
+
+string const MathHullInset::editMessage() const
+{
+	return _("Math editor mode");
+}
+
+
+void MathHullInset::insetUnlock(BufferView & bv)
+{
+	if (bv.cursor().inMathed()) {
+		if (bv.cursor().inMacroMode())
+			bv.cursor().macroModeClose();
+		bv.cursor().releaseMathCursor();
+	}
+	if (bv.buffer())
+		generatePreview(*bv.buffer());
+	bv.update();
+}
+
+
+void MathHullInset::getCursorPos(BufferView & bv, int & x, int & y) const
+{
+	if (bv.cursor().inMathed()) {
+		bv.cursor().getScreenPos(x, y);
+		x = bv.cursor().targetX();
+		x -= xo_;
+		y -= yo_;
+		lyxerr << "MathHullInset::getCursorPos: " << x << ' ' << y << endl;
+	} else {
+		x = 0;
+		y = 0;
+		lyxerr << "getCursorPos - should not happen";
+	}
+}
+
+
+void MathHullInset::getCursorDim(int & asc, int & desc) const
+{
+	asc = 10;
+	desc = 2;
+	//math_font_max_dim(font_, asc, des);
+}
+
+
+DispatchResult
+MathHullInset::lfunMouseRelease(LCursor & cur, FuncRequest const & cmd)
+{
+	if (!cur.inMathed())
+		return DispatchResult(false);
+	cur.bv().update();
+	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
+
+	if (cmd.button() == mouse_button::button3) {
+		// try to dispatch to enclosed insets first
+		if (!cur.dispatch(cmd).dispatched()) {
+			// launch math panel for right mouse button
+			lyxerr << "lfunMouseRelease: undispatched: " << cmd.button() << endl;
+			cur.bv().owner()->getDialogs().show("mathpanel");
+		}
+		return DispatchResult(true, true);
+	}
+
+	if (cmd.button() == mouse_button::button2) {
+		MathArray ar;
+		asArray(cur.bv().getClipboard(), ar);
+		cur.selClear();
+		cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
+		cur.insert(ar);
+		cur.bv().update();
+		return DispatchResult(true, true);
+	}
+
+	if (cmd.button() == mouse_button::button1) {
+		// try to dispatch to enclosed insets first
+		cur.dispatch(cmd);
+		cur.bv().stuffClipboard(cur.grabSelection());
+		// try to set the cursor
+		//delete mathcursor;
+		//mathcursor = new MathCursor(bv, this, x == 0);
+		//metrics(bv);
+		//cur.setScreenPos(x + xo_, y + yo_);
+		return DispatchResult(true, true);
+	}
+
+	return DispatchResult(false);
+}
+
+
+DispatchResult
+MathHullInset::lfunMousePress(LCursor & cur, FuncRequest const & cmd)
+{
+	//lyxerr << "lfunMousePress: buttons: " << cmd.button() << endl;
+
+	if (!cur.inMathed() || cur.formula() != this) {
+		lyxerr[Debug::MATHED] << "re-create cursor" << endl;
+		cur.releaseMathCursor();
+		cur.idx() = 0;
+		//metrics(bv);
+		cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
+	}
+
+	if (cmd.button() == mouse_button::button3) {
+		cur.dispatch(cmd);
+		return DispatchResult(true, true);
+	}
+
+	if (cmd.button() == mouse_button::button1) {
+		first_x = cmd.x;
+		first_y = cmd.y;
+		cur.selClear();
+		cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
+		cur.dispatch(cmd);
+		return DispatchResult(true, true);
+	}
+
+	cur.bv().update();
+	return DispatchResult(true, true);
+}
+
+
+DispatchResult
+MathHullInset::lfunMouseMotion(LCursor & cur, FuncRequest const & cmd)
+{
+	if (!cur.inMathed())
+		return DispatchResult(true, true);
+
+	if (cur.dispatch(FuncRequest(cmd)).dispatched())
+		return DispatchResult(true, true);
+
+	// only select with button 1
+	if (cmd.button() != mouse_button::button1)
+		return DispatchResult(true, true);
+
+	if (abs(cmd.x - first_x) < 2 && abs(cmd.y - first_y) < 2)
+		return DispatchResult(true, true);
+
+	first_x = cmd.x;
+	first_y = cmd.y;
+
+	if (!cur.selection())
+		cur.selBegin();
+
+	cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
+	cur.bv().update();
+	return DispatchResult(true, true);
+}
+
+
+void MathHullInset::edit(LCursor & cur, bool left)
+{
+	lyxerr << "Called FormulaBase::edit" << endl;
+	cur.push(this);
+	cur.idx() = left ? 0 : cur.lastidx();
+	cur.pos() = left ? 0 : cur.lastpos();
+	cur.resetAnchor();
+}
+
+
+void MathHullInset::edit(LCursor & cur, int x, int y)
+{
+	lyxerr << "Called FormulaBase::EDIT with '" << x << ' ' << y << "'" << endl;
+	//metrics(bv);
+	cur.push(this);
+	//cur.idx() = left ? 0 : cur.lastidx();
+	cur.idx() = 0;
+	cur.idx() = 0;
+	cur.setScreenPos(x + xo_, y + yo_);
+	// if that is removed, we won't get the magenta box when entering an
+	// inset for the first time
+	cur.bv().update();
+}
+
+
+
+
+void MathHullInset::revealCodes(LCursor & cur) const
+{
+	if (!cur.inMathed())
+		return;
+	ostringstream os;
+	cur.info(os);
+	cur.bv().owner()->message(os.str());
+/*
+	// write something to the minibuffer
+	// translate to latex
+	cur.markInsert(bv);
+	ostringstream os;
+	write(NULL, os);
+	string str = os.str();
+	cur.markErase(bv);
+	string::size_type pos = 0;
+	string res;
+	for (string::iterator it = str.begin(); it != str.end(); ++it) {
+		if (*it == '\n')
+			res += ' ';
+		else if (*it == '\0') {
+			res += "  -X-  ";
+			pos = it - str.begin();
+		}
+		else
+			res += *it;
+	}
+	if (pos > 30)
+		res = res.substr(pos - 30);
+	if (res.size() > 60)
+		res = res.substr(0, 60);
+	bv.owner()->message(res);
+*/
+}
+
+
+InsetBase::Code MathHullInset::lyxCode() const
+{
+	return MATH_CODE;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+
+
+#if 1
+bool MathHullInset::searchForward(BufferView *, string const &, bool, bool)
+{
+	return false;
+}
+
+#else
+bool MathHullInset::searchForward(BufferView * bv, string const & str,
+				     bool, bool)
+{
+	return false;
+#ifdef WITH_WARNINGS
+#warning pretty ugly
+#endif
+	static MathHullInset * lastformula = 0;
+	static CursorBase current = CursorBase(ibegin(par().nucleus()));
+	static MathArray ar;
+	static string laststr;
+
+	if (lastformula != this || laststr != str) {
+		//lyxerr << "reset lastformula to " << this << endl;
+		lastformula = this;
+		laststr = str;
+		current	= ibegin(par().nucleus());
+		ar.clear();
+		mathed_parse_cell(ar, str);
+	} else {
+		increment(current);
+	}
+	//lyxerr << "searching '" << str << "' in " << this << ar << endl;
+
+	for (CursorBase it = current; it != iend(par().nucleus()); increment(it)) {
+		CursorSlice & top = it.back();
+		MathArray const & a = top.asMathInset()->cell(top.idx_);
+		if (a.matchpart(ar, top.pos_)) {
+			bv->cursor().setSelection(it, ar.size());
+			current = it;
+			top.pos_ += ar.size();
+			bv->update();
+			return true;
+		}
+	}
+
+	//lyxerr << "not found!" << endl;
+	lastformula = 0;
+	return false;
+}
+#endif
+
+
+bool MathHullInset::searchBackward(BufferView * bv, string const & what,
+				      bool a, bool b)
+{
+	lyxerr[Debug::MATHED] << "searching backward not implemented in mathed" << endl;
+	return searchForward(bv, what, a, b);
+}
+
+
+void mathDispatchCreation(LCursor & cur, FuncRequest const & cmd,
+	bool display)
+{
+	// use selection if available..
+	//string sel;
+	//if (action == LFUN_MATH_IMPORT_SELECTION)
+	//	sel = "";
+	//else
+
+	string sel =
+		cur.bv().getLyXText()->selectionAsString(*cur.bv().buffer(), false);
+
+	if (sel.empty()) {
+		InsetBase * f = new MathHullInset;
+		if (openNewInset(cur, f)) {
+			cur.inset()->dispatch(cur, FuncRequest(LFUN_MATH_MUTATE, "simple"));
+			// don't do that also for LFUN_MATH_MODE unless you want end up with
+			// always changing to mathrm when opening an inlined inset
+			// -- I really hate "LyXfunc overloading"...
+			if (display)
+				f->dispatch(cur, FuncRequest(LFUN_MATH_DISPLAY));
+			f->dispatch(cur, FuncRequest(LFUN_INSERT_MATH, cmd.argument));
+		}
+	} else {
+		// create a macro if we see "\\newcommand" somewhere, and an ordinary
+		// formula otherwise
+		InsetBase * f;
+		if (sel.find("\\newcommand") == string::npos &&
+				sel.find("\\def") == string::npos)
+			f = new MathHullInset(sel);
+		else
+			f = new InsetFormulaMacro(sel);
+		cur.bv().getLyXText()->cutSelection(true, false);
+		openNewInset(cur, f);
+	}
+	cmd.message(N_("Math editor mode"));
+}
+
+
+void mathDispatch(LCursor & cur, FuncRequest const & cmd)
+{
+	if (!cur.bv().available())
+		return;
+
+	switch (cmd.action) {
+
+		case LFUN_MATH_DISPLAY:
+			mathDispatchCreation(cur, cmd, true);
+			break;
+
+		case LFUN_MATH_MODE:
+			mathDispatchCreation(cur, cmd, false);
+			break;
+
+		case LFUN_MATH_IMPORT_SELECTION:
+			mathDispatchCreation(cur, cmd, false);
+			break;
+
+/*
+		case LFUN_MATH_MACRO:
+			if (cmd.argument.empty())
+				cmd.errorMessage(N_("Missing argument"));
+			else {
+				string s = cmd.argument;
+				string const s1 = token(s, ' ', 1);
+				int const nargs = s1.empty() ? 0 : atoi(s1);
+				string const s2 = token(s, ' ', 2);
+				string const type = s2.empty() ? "newcommand" : s2;
+				openNewInset(cur, new InsetFormulaMacro(token(s, ' ', 0), nargs, s2));
+			}
+			break;
+
+		case LFUN_INSERT_MATH:
+		case LFUN_INSERT_MATRIX:
+		case LFUN_MATH_DELIM: {
+			MathHullInset * f = new MathHullInset;
+			if (openNewInset(cur, f)) {
+				cur.inset()->dispatch(cur, FuncRequest(LFUN_MATH_MUTATE, "simple"));
+				cur.inset()->dispatch(cur, cmd);
+			}
+			break;
+		}
+*/
+
+		default:
+			break;
+	}
 }

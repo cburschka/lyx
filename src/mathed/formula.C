@@ -9,16 +9,18 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#if 0
 #include <config.h>
 
 #include "formula.h"
-#include "math_cursor.h"
+#include "math_data.h"
 #include "math_parser.h"
 #include "math_hullinset.h"
 #include "math_mathmlstream.h"
 #include "textpainter.h"
 
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "LColor.h"
 #include "lyx_main.h"
@@ -164,25 +166,13 @@ void InsetFormula::read(Buffer const &, LyXLex & lex)
 }
 
 
-namespace {
-
-bool editing_inset(InsetFormula const * inset)
-{
-	return inMathed() &&
-		(const_cast<InsetFormulaBase const *>(mathcursor::formula()) ==
-		 inset);
-}
-
-} // namespace anon
-
-
 void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 {
 	xo_ = x;
 	yo_ = y;
 
 	// The previews are drawn only when we're not editing the inset.
-	bool const use_preview = !editing_inset(this)
+	bool const use_preview = !pi.base.bv->cursor().isInside(this)
 		&& RenderPreview::activated()
 		&& preview_->previewReady();
 
@@ -203,8 +193,8 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 			    != lcolor.getX11Name(LColor::background))
 			p.pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
 
-		if (editing_inset(this)) {
-			mathcursor::drawSelection(pi);
+		if (!pi.base.bv->cursor().isInside(this)) {
+			pi.base.bv->cursor().drawSelection(pi);
 			//p.pain.rectangle(x, y - a, w, h, LColor::mathframe);
 		}
 
@@ -243,7 +233,7 @@ bool InsetFormula::insetAllowed(InsetOld::Code code) const
 
 void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
 {
-	bool const use_preview = !editing_inset(this)
+	bool const use_preview = !m.base.bv->cursor().isInside(this)
 		&& RenderPreview::activated()
 		&& preview_->previewReady();
 
@@ -308,3 +298,4 @@ void InsetFormula::generatePreview(Buffer const & buffer) const
 	preview_->addPreview(snippet, buffer);
 	preview_->startLoading(buffer);
 }
+#endif

@@ -41,30 +41,6 @@ InsetOld::InsetOld(InsetOld const & in)
 {}
 
 
-bool InsetOld::directWrite() const
-{
-	return false;
-}
-
-
-InsetOld::EDITABLE InsetOld::editable() const
-{
-	return NOT_EDITABLE;
-}
-
-
-bool InsetOld::autoDelete() const
-{
-	return false;
-}
-
-
-string const InsetOld::editMessage() const
-{
-	return _("Opened inset");
-}
-
-
 void InsetOld::setBackgroundColor(LColor_color color)
 {
 	background_color_ = color;
@@ -77,7 +53,7 @@ LColor_color InsetOld::backgroundColor() const
 }
 
 
-bool InsetOld::forceDefaultParagraphs(InsetOld const * inset) const
+bool InsetOld::forceDefaultParagraphs(InsetBase const * inset) const
 {
 	if (owner())
 		return owner()->forceDefaultParagraphs(inset);
@@ -103,52 +79,9 @@ int InsetOld::width() const
 }
 
 
-bool InsetOld::insetAllowed(InsetOld * in) const
-{
-	return insetAllowed(in->lyxCode());
-}
-
-
 int InsetOld::scroll(bool recursive) const
 {
 	if (!recursive || !owner_)
 		return scx;
 	return 0;
 }
-
-
-int InsetOld::getCell(int x, int y) const
-{
-	for (int i = 0, n = numParagraphs(); i < n; ++i) {
-		LyXText * text = getText(i);
-		//lyxerr << "### text: " << text << " i: " << i
-		//	<< " xo: " << text->xo_ << "..." << text->xo_ + text->width
-		//	<< " yo: " << text->yo_ 
-		//	<< " yo: " << text->yo_ - text->ascent() << "..."
-		//		<<  text->yo_ + text->descent()
-		//	<< std::endl;	
-		if (x >= text->xo_
-				&& x <= text->xo_ + text->width
-				&& y >= text->yo_ 
-				&& y <= text->yo_ + text->height)
-		{
-			lyxerr << "### found text # " << i << std::endl;	
-			return i;
-		}
-	}
-	return -1;
-}
-
-
-bool isEditableInset(InsetOld const * i)
-{
-	return i && i->editable();
-}
-
-
-bool isHighlyEditableInset(InsetOld const * i)
-{
-	return i && i->editable() == InsetOld::HIGHLY_EDITABLE;
-}
-
-

@@ -13,21 +13,22 @@
 #ifndef INSET_FORMULA_MACRO_H
 #define INSET_FORMULA_MACRO_H
 
-#include "formulabase.h"
-
+#include "math_nestinset.h"
 
 class MathMacroTemplate;
+class LyXLex;
+
 
 // An InsetFormulaMacro only knows its name and asks the global
 // MathMacroTable if it needs to know more.
 
 /// Main LyX Inset for defining math macros
-class InsetFormulaMacro : public InsetFormulaBase {
+class InsetFormulaMacro : public MathNestInset {
 public:
 	///
 	InsetFormulaMacro();
 	/// construct a macro hull from its name and the number of arguments
-	explicit InsetFormulaMacro(std::string const & name, int nargs, std::string const & t);
+	InsetFormulaMacro(std::string const & name, int nargs, std::string const & t);
 	/// constructs a mocro from its LaTeX definition
 	explicit InsetFormulaMacro(std::string const & s);
 	///
@@ -53,18 +54,16 @@ public:
 		    OutputParams const &) const;
 
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
-	InsetOld::Code lyxCode() const;
-	///
-	MathAtom const & par() const;
-	///
-	MathAtom & par();
+	InsetBase::Code lyxCode() const { return MATHMACRO_CODE; }
 private:
 	///
 	void read(std::istream & is);
 	/// prefix in inset
 	std::string prefix() const;
+	///
+	std::string name_;
 };
 
 #endif

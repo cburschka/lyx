@@ -16,23 +16,28 @@
 
 #include "bufferview_funcs.h"
 #include "Bidi.h"
-#include "layout.h"
+#include "dispatchresult.h"
 #include "lyxfont.h"
-#include "lyxtextclass.h"
+#include "layout.h"
+#include "lyxlayout_ptr_fwd.h"
 #include "ParagraphList_fwd.h"
 #include "RowList_fwd.h"
-
-#include "insets/inset.h"
 
 #include <iosfwd>
 
 class Buffer;
 class BufferParams;
 class BufferView;
-class Dimension;
-class LColor_color;
 class CursorSlice;
+class Dimension;
+class InsetBase;
+class InsetOld_code;
+class FuncRequest;
+class LColor_color;
+class LCursor;
+class LyXTextClass;
 class MetricsInfo;
+class PainterInfo;
 class Paragraph;
 class Row;
 class Spacing;
@@ -112,7 +117,7 @@ public:
 	  */
 	void insertChar(char c);
 	///
-	void insertInset(InsetOld * inset);
+	void insertInset(InsetBase * inset);
 
 	/// a full rebreak of the whole text
 	void fullRebreak();
@@ -163,7 +168,7 @@ public:
 	/// just selects the word the cursor is in
 	void selectWord(lyx::word_location loc);
 	/// returns the inset at cursor (if it exists), 0 otherwise
-	InsetOld * getInset() const;
+	InsetBase * getInset() const;
 
 	/// accept selected change
 	void acceptChange();
@@ -278,13 +283,13 @@ public:
 	void insertStringAsParagraphs(std::string const & str);
 
 	/// Find next inset of some specified type.
-	bool gotoNextInset(std::vector<InsetOld::Code> const & codes,
+	bool gotoNextInset(std::vector<InsetOld_code> const & codes,
 			   std::string const & contents = std::string());
 	///
-	void gotoInset(std::vector<InsetOld::Code> const & codes,
+	void gotoInset(std::vector<InsetOld_code> const & codes,
 		       bool same_content);
 	///
-	void gotoInset(InsetOld::Code code, bool same_content);
+	void gotoInset(InsetOld_code code, bool same_content);
 
 	/// current max text width
 	int textWidth() const;
@@ -292,7 +297,7 @@ public:
 	/// updates all counters
 	void updateCounters();
 	/// Returns an inset if inset was hit, or 0 if not.
-	InsetOld * checkInsetHit(int x, int y);
+	InsetBase * checkInsetHit(int x, int y);
 
 	///
 	int singleWidth(ParagraphList::iterator pit, lyx::pos_type pos) const;

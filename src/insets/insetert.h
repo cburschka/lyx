@@ -71,7 +71,7 @@ public:
 	///
 	void getDrawFont(LyXFont &) const;
 	///
-	bool forceDefaultParagraphs(InsetOld const *) const { return true; }
+	bool forceDefaultParagraphs(InsetBase const *) const { return true; }
 protected:
 	///
 	virtual

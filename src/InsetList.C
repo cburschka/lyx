@@ -26,18 +26,21 @@ using lyx::pos_type;
 using std::endl;
 using std::lower_bound;
 
+
 namespace {
 
-class InsetTablePosLess : public std::binary_function<InsetList::InsetTable, InsetList::InsetTable, bool> {
-public:
-	bool operator()(InsetList::InsetTable const & t1,
-		      InsetList::InsetTable const & t2) const
+typedef InsetList::InsetTable Table;
+
+struct InsetTablePosLess : public std::binary_function<Table, Table, bool> {
+	bool operator()(Table const & t1, Table const & t2) const
 	{
 		return t1.pos < t2.pos;
 	}
 };
 
 } // namespace anon
+
+
 
 InsetList::~InsetList()
 {
@@ -67,7 +70,7 @@ InsetList::const_iterator InsetList::insetIterator(pos_type pos) const
 }
 
 
-void InsetList::insert(InsetOld * inset, lyx::pos_type pos)
+void InsetList::insert(InsetBase * inset, lyx::pos_type pos)
 {
 	List::iterator end = list.end();
 	List::iterator it = insetIterator(pos);
@@ -91,12 +94,12 @@ void InsetList::erase(pos_type pos)
 }
 
 
-InsetOld * InsetList::release(pos_type pos)
+InsetBase * InsetList::release(pos_type pos)
 {
 	List::iterator end = list.end();
 	List::iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos) {
-		InsetOld * tmp = it->inset;
+		InsetBase * tmp = it->inset;
 		it->inset = 0;
 		return tmp;
 	}
@@ -104,7 +107,7 @@ InsetOld * InsetList::release(pos_type pos)
 }
 
 
-InsetOld * InsetList::get(pos_type pos) const
+InsetBase * InsetList::get(pos_type pos) const
 {
 	List::const_iterator end = list.end();
 	List::const_iterator it = insetIterator(pos);
@@ -139,8 +142,9 @@ void InsetList::insetsOpenCloseBranch(Buffer const & buf)
 	List::iterator it = list.begin();
 	List::iterator end = list.end();
 	for (; it != end; ++it) {
-		if (!it->inset ||
-		    it->inset->lyxCode() != InsetOld::BRANCH_CODE)
+		if (!it->inset)
+			continue;
+		if (it->inset->lyxCode() != InsetBase::BRANCH_CODE)
 			continue;
 
 		InsetBranch * inset = static_cast<InsetBranch *>(it->inset);

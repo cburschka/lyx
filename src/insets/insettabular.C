@@ -1985,7 +1985,7 @@ void InsetTabular::markErased()
 }
 
 
-bool InsetTabular::forceDefaultParagraphs(InsetOld const * in) const
+bool InsetTabular::forceDefaultParagraphs(InsetBase const * in) const
 {
 	const int cell = tabular.getCellFromInset(in);
 

@@ -299,7 +299,7 @@ void BufferView::setCursorFromRow(int row)
 }
 
 
-bool BufferView::insertInset(InsetOld * inset, string const & lout)
+bool BufferView::insertInset(InsetBase * inset, string const & lout)
 {
 	return pimpl_->insertInset(inset, lout);
 }
@@ -410,10 +410,10 @@ Encoding const * BufferView::getEncoding() const
 	LyXText * t = getLyXText();
 	if (!t)
 		return 0;
-	return t->cursorPar()->getFont(
-		buffer()->params(),
-		t->cursor().pos(),
-		outerFont(t->cursorPar(), t->paragraphs())
+	CursorSlice const & cur = cursor().innerTextSlice();
+	return t->getPar(cur.par())->getFont(
+		buffer()->params(), cur.pos(),
+		outerFont(t->getPar(cur.par()), t->paragraphs())
 	).language()->encoding();
 }
 
@@ -448,7 +448,7 @@ LyXText * BufferView::text() const
 if the fitCursor call refers to some point in never-explored-land, then we
 don't have y information in insets there, then we cannot even do an update
 to get it (because we need the y infomation for setting top_y first). So
-this is solved in put_selection_at with:
+this is solved in putSelectionAt with:
 
 - setting top_y to the y of the outerPar (that has good info)
 - calling update

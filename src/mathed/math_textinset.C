@@ -50,8 +50,7 @@ void MathTextInset::getScreenPos(idx_type /*idx*/, pos_type pos, int & x, int & 
 
 
 #if 0
-bool MathTextInset::idxUpDown2(LCursor & pos, bool up,
-	int /*targetx*/) const
+bool MathTextInset::idxUpDown2(LCursor & pos, bool up) const
 {
 	// try to move only one screen row up or down if possible
 	idx_type i = pos2row(pos);

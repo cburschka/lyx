@@ -60,10 +60,12 @@ public:
 	InsetBase * inset() const { return inset_; }
 	/// set the paragraph that contains this cursor
 	void idx(idx_type idx);
-	/// return the paragraph this cursor is in
+	/// return the cell this cursor is in
 	idx_type idx() const;
-	/// return the paragraph this cursor is in
+	/// return the cell this cursor is in
 	idx_type & idx();
+	/// return the last cell in this inset
+	idx_type lastidx() const { return nargs() - 1; }
 	/// set the paragraph that contains this cursor
 	void par(par_type par);
 	/// return the paragraph this cursor is in

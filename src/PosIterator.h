@@ -22,8 +22,7 @@
 
 class BufferView;
 
-struct PosIteratorItem 
-{
+struct PosIteratorItem {
 	PosIteratorItem(ParagraphList * pl,
 			ParagraphList::iterator pit,
 			lyx::pos_type pos,
@@ -36,8 +35,7 @@ struct PosIteratorItem
 };
 
 
-class PosIterator
-{
+class PosIterator {
 public:
 	PosIterator(BufferView & bv);
 	PosIterator(ParIterator & par, lyx::pos_type pos);
@@ -51,7 +49,7 @@ public:
 	ParagraphList::iterator pit() const { return stack_.back().pit; }
 	lyx::pos_type pos() const { return stack_.back().pos; }
 	bool at_end() const;
-	InsetOld * inset() const;
+	InsetBase * inset() const;
 	friend PosIterator ParIterator::asPosIterator(lyx::pos_type) const;
 	friend ParIterator::ParIterator(PosIterator const &);
 	
@@ -60,6 +58,7 @@ private:
 	//this is conceptually a stack, but we need random access sometimes
 	std::vector<PosIteratorItem> stack_;
 };
+
 
 bool operator!=(PosIterator const &, PosIterator const &);
 bool operator==(PosIterator const &, PosIterator const &);

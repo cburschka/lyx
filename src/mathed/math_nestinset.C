@@ -11,14 +11,16 @@
 #include <config.h>
 
 #include "math_nestinset.h"
-#include "math_cursor.h"
+
+#include "BufferView.h"
+#include "LColor.h"
+#include "cursor.h"
+#include "debug.h"
+#include "dispatchresult.h"
+#include "funcrequest.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
 #include "math_parser.h"
-#include "BufferView.h"
-#include "dispatchresult.h"
-#include "debug.h"
-#include "funcrequest.h"
-#include "LColor.h"
 #include "undo.h"
 
 #include "frontends/Painter.h"
@@ -214,9 +216,9 @@ bool MathNestInset::contains(MathArray const & ar) const
 }
 
 
-bool MathNestInset::editing() const
+bool MathNestInset::editing(BufferView * bv) const
 {
-	return inMathed() && mathcursor::isInside(this);
+	return bv->cursor().isInside(this);
 }
 
 
@@ -306,43 +308,415 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_RIGHTSEL:
 		cur.selection() = true; // fall through...
 	case LFUN_RIGHT:
-		return mathcursor::right(cur, cur.selection()) ?
+		return cur.right() ?
 			DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
 		//lyxerr << "calling scroll 20" << endl;
 		//scroll(&cur.bv(), 20);
 		// write something to the minibuffer
-		//cur.bv().owner()->message(mathcursor::info());
+		//cur.bv().owner()->message(cur.info());
 
 	case LFUN_LEFTSEL:
 		cur.selection() = true; // fall through
 	case LFUN_LEFT:
-		return mathcursor::left(cur, cur.selection()) ?
+		return cur.left() ?
 			DispatchResult(true, true) : DispatchResult(false, FINISHED);
 
 	case LFUN_UPSEL:
 		cur.selection() = true; // fall through
 	case LFUN_UP:
-		return mathcursor::up(cur, cur.selection()) ?
+		return cur.up() ?
 			DispatchResult(true, true) : DispatchResult(false, FINISHED_UP);
 
 	case LFUN_DOWNSEL:
 		cur.selection() = true; // fall through
 	case LFUN_DOWN:
-		return mathcursor::down(cur, cur.selection()) ?
+		return cur.down() ?
 			DispatchResult(true, true) : DispatchResult(false, FINISHED_DOWN);
+
+	case LFUN_WORDSEL:
+		cur.home();
+		cur.selection() = true;
+		cur.end();
+		return DispatchResult(true, true);
+
+	case LFUN_UP_PARAGRAPHSEL:
+	case LFUN_UP_PARAGRAPH:
+	case LFUN_DOWN_PARAGRAPHSEL:
+	case LFUN_DOWN_PARAGRAPH:
+		return DispatchResult(true, FINISHED);
+
+	case LFUN_HOMESEL:
+	case LFUN_WORDLEFTSEL:
+		cur.selection() = true; // fall through
+	case LFUN_HOME:
+	case LFUN_WORDLEFT:
+		return cur.home()
+			? DispatchResult(true, true) : DispatchResult(true, FINISHED);
+
+	case LFUN_ENDSEL:
+	case LFUN_WORDRIGHTSEL:
+		cur.selection() = true; // fall through
+	case LFUN_END:
+	case LFUN_WORDRIGHT:
+		return cur.end()
+			? DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
+
+	case LFUN_PRIORSEL:
+	case LFUN_PRIOR:
+	case LFUN_BEGINNINGBUFSEL:
+	case LFUN_BEGINNINGBUF:
+		return DispatchResult(true, FINISHED);
+
+	case LFUN_NEXTSEL:
+	case LFUN_NEXT:
+	case LFUN_ENDBUFSEL:
+	case LFUN_ENDBUF:
+		return DispatchResult(false, FINISHED_RIGHT);
+
+	case LFUN_CELL_FORWARD:
+		cur.inset()->idxNext(cur);
+		return DispatchResult(true, true);
+
+	case LFUN_CELL_BACKWARD:
+		cur.inset()->idxPrev(cur);
+		return DispatchResult(true, true);
+
+	case LFUN_DELETE_WORD_BACKWARD:
+	case LFUN_BACKSPACE:
+		recordUndo(cur, Undo::ATOMIC);
+		cur.backspace();
+		return DispatchResult(true, true);
+
+	case LFUN_DELETE_WORD_FORWARD:
+	case LFUN_DELETE:
+		recordUndo(cur, Undo::ATOMIC);
+		cur.erase();
+		return DispatchResult(true, FINISHED);
+
+	case LFUN_ESCAPE:
+		if (!cur.selection())
+			return DispatchResult(true, true);
+		cur.selClear();
+		return DispatchResult(false);
+
+	case LFUN_INSET_TOGGLE:
+		cur.lockToggle();
+		return DispatchResult(true, true);
 
 	case LFUN_SELFINSERT:
 		if (!cmd.argument.empty()) {
 			recordUndo(cur, Undo::ATOMIC);
 			if (cmd.argument.size() == 1) {
-				if (mathcursor::interpret(cur, cmd.argument[0]))
+				if (cur.interpret(cmd.argument[0]))
 					return DispatchResult(true, true);
 				else
 					return DispatchResult(false, FINISHED_RIGHT);
 			}
-			mathcursor::insert(cur, cmd.argument);
+			cur.insert(cmd.argument);
+		}
+		return DispatchResult(false, FINISHED_RIGHT);
+
+
+#if 0
+//
+// this needs to bee incorporated
+//
+	//lyxerr << "InsetFormulaBase::localDispatch: act: " << cmd.action
+	//	<< " arg: '" << cmd.argument
+	//	<< "' x: '" << cmd.x
+	//	<< " y: '" << cmd.y
+	//	<< "' button: " << cmd.button() << endl;
+
+	// delete empty mathbox (LFUN_BACKSPACE and LFUN_DELETE)
+	bool remove_inset = false;
+
+	switch (cmd.action) {
+		case LFUN_MOUSE_PRESS:
+			//lyxerr << "Mouse single press" << endl;
+			return lfunMousePress(cur, cmd);
+		case LFUN_MOUSE_MOTION:
+			//lyxerr << "Mouse motion" << endl;
+			return lfunMouseMotion(cur, cmd);
+		case LFUN_MOUSE_RELEASE:
+			//lyxerr << "Mouse single release" << endl;
+			return lfunMouseRelease(cur, cmd);
+		case LFUN_MOUSE_DOUBLE:
+			//lyxerr << "Mouse double" << endl;
+			return dispatch(cur, FuncRequest(LFUN_WORDSEL));
+		default:
+			break;
+	}
+
+	DispatchResult result(true);
+	string argument    = cmd.argument;
+	bool was_macro     = cur.inMacroMode();
+
+	cur.normalize();
+	cur.touch();
+
+	switch (cmd.action) {
+
+	case LFUN_MATH_MUTATE:
+	case LFUN_MATH_DISPLAY:
+	case LFUN_MATH_NUMBER:
+	case LFUN_MATH_NONUMBER:
+	case LFUN_CELL_SPLIT:
+	case LFUN_BREAKLINE:
+	case LFUN_DELETE_LINE_FORWARD:
+	case LFUN_INSERT_LABEL:
+	case LFUN_MATH_EXTERN:
+	case LFUN_TABULAR_FEATURE:
+	case LFUN_PASTESELECTION:
+	case LFUN_MATH_LIMITS:
+		recordUndo(cur, Undo::ATOMIC);
+		cur.dispatch(cmd);
+		break;
+
+	//    case LFUN_GETXY:
+	//      sprintf(dispatch_buffer, "%d %d",);
+	//      DispatchResult= dispatch_buffer;
+	//      break;
+	case LFUN_SETXY: {
+		lyxerr << "LFUN_SETXY broken!" << endl;
+		int x = 0;
+		int y = 0;
+		istringstream is(cmd.argument.c_str());
+		is >> x >> y;
+		cur.setScreenPos(x, y);
+		break;
+	}
+
+	case LFUN_PASTE: {
+		size_t n = 0;
+		istringstream is(cmd.argument.c_str());
+		is >> n;
+		if (was_macro)
+			cur.macroModeClose();
+		recordUndo(cur, Undo::ATOMIC);
+		cur.selPaste(n);
+		break;
+	}
+
+	case LFUN_CUT:
+		recordUndo(cur, Undo::DELETE);
+		cur.selCut();
+		break;
+
+	case LFUN_COPY:
+		cur.selCopy();
+		break;
+
+
+	// Special casing for superscript in case of LyX handling
+	// dead-keys:
+	case LFUN_CIRCUMFLEX:
+		if (cmd.argument.empty()) {
+			// do superscript if LyX handles
+			// deadkeys
+			recordUndo(cur, Undo::ATOMIC);
+			cur.script(true);
 		}
 		break;
+
+	case LFUN_UMLAUT:
+	case LFUN_ACUTE:
+	case LFUN_GRAVE:
+	case LFUN_BREVE:
+	case LFUN_DOT:
+	case LFUN_MACRON:
+	case LFUN_CARON:
+	case LFUN_TILDE:
+	case LFUN_CEDILLA:
+	case LFUN_CIRCLE:
+	case LFUN_UNDERDOT:
+	case LFUN_TIE:
+	case LFUN_OGONEK:
+	case LFUN_HUNG_UMLAUT:
+		break;
+
+	//  Math fonts
+	case LFUN_FREEFONT_APPLY:
+	case LFUN_FREEFONT_UPDATE:
+		handleFont2(cur, cmd.argument);
+		break;
+
+	case LFUN_BOLD:         handleFont(cur, cmd.argument, "mathbf"); break;
+	case LFUN_SANS:         handleFont(cur, cmd.argument, "mathsf"); break;
+	case LFUN_EMPH:         handleFont(cur, cmd.argument, "mathcal"); break;
+	case LFUN_ROMAN:        handleFont(cur, cmd.argument, "mathrm"); break;
+	case LFUN_CODE:         handleFont(cur, cmd.argument, "texttt"); break;
+	case LFUN_FRAK:         handleFont(cur, cmd.argument, "mathfrak"); break;
+	case LFUN_ITAL:         handleFont(cur, cmd.argument, "mathit"); break;
+	case LFUN_NOUN:         handleFont(cur, cmd.argument, "mathbb"); break;
+	//case LFUN_FREEFONT_APPLY:  handleFont(cur, cmd.argument, "textrm"); break;
+	case LFUN_DEFAULT:      handleFont(cur, cmd.argument, "textnormal"); break;
+
+	case LFUN_MATH_MODE:
+		if (cur.currentMode() == InsetBase::TEXT_MODE)
+			cur.niceInsert(MathAtom(new MathHullInset("simple")));
+		else
+			handleFont(cur, cmd.argument, "textrm");
+		//cur.owner()->message(_("math text mode toggled"));
+		break;
+
+	case LFUN_MATH_SIZE:
+#if 0
+		if (!arg.empty()) {
+			recordUndo(cur, Undo::ATOMIC);
+			cur.setSize(arg);
+		}
+#endif
+		break;
+
+	case LFUN_INSERT_MATRIX: {
+		recordUndo(cur, Undo::ATOMIC);
+		unsigned int m = 1;
+		unsigned int n = 1;
+		string v_align;
+		string h_align;
+		istringstream is(argument);
+		is >> m >> n >> v_align >> h_align;
+		m = max(1u, m);
+		n = max(1u, n);
+		v_align += 'c';
+		cur.niceInsert(
+			MathAtom(new MathArrayInset("array", m, n, v_align[0], h_align)));
+		break;
+	}
+
+	case LFUN_MATH_DELIM: {
+		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'" << endl;
+		string ls;
+		string rs = split(cmd.argument, ls, ' ');
+		// Reasonable default values
+		if (ls.empty())
+			ls = '(';
+		if (rs.empty())
+			rs = ')';
+		recordUndo(cur, Undo::ATOMIC);
+		cur.handleNest(MathAtom(new MathDelimInset(ls, rs)));
+		break;
+	}
+
+	case LFUN_SPACE_INSERT:
+	case LFUN_MATH_SPACE:
+		recordUndo(cur, Undo::ATOMIC);
+		cur.insert(MathAtom(new MathSpaceInset(",")));
+		break;
+
+	case LFUN_UNDO:
+		cur.bv().owner()->message(_("Invalid action in math mode!"));
+		break;
+
+
+	case LFUN_EXEC_COMMAND:
+		result = DispatchResult(false);
+		break;
+
+	case LFUN_INSET_ERT:
+		// interpret this as if a backslash was typed
+		recordUndo(cur, Undo::ATOMIC);
+		cur.interpret('\\');
+		break;
+
+	case LFUN_BREAKPARAGRAPH:
+	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
+	case LFUN_BREAKPARAGRAPH_SKIP:
+		argument = "\n";
+		// fall through
+
+// FIXME: We probably should swap parts of "math-insert" and "self-insert"
+// handling such that "self-insert" works on "arbitrary stuff" too, and
+// math-insert only handles special math things like "matrix".
+	case LFUN_INSERT_MATH:
+		recordUndo(cur, Undo::ATOMIC);
+		cur.niceInsert(argument);
+		break;
+
+	case LFUN_INSET_TOGGLE:
+		cur.lockToggle();
+		break;
+
+	case LFUN_DIALOG_SHOW:
+		result = DispatchResult(false);
+		break;
+
+	case LFUN_DIALOG_SHOW_NEW_INSET: {
+		string const & name = argument;
+		string data;
+		if (name == "ref") {
+			RefInset tmp(name);
+			data = tmp.createDialogStr(name);
+		}
+
+		if (data.empty())
+			result = DispatchResult(false);
+		else
+			cur.bv().owner()->getDialogs().show(name, data, 0);
+		break;
+	}
+
+	case LFUN_INSET_APPLY: {
+		string const name = cmd.getArg(0);
+		InsetBase * base = cur.bv().owner()->getDialogs().getOpenInset(name);
+
+		if (base) {
+			FuncRequest fr(LFUN_INSET_MODIFY, cmd.argument);
+			result = base->dispatch(cur, fr);
+		} else {
+			MathArray ar;
+			if (createMathInset_fromDialogStr(cmd.argument, ar)) {
+				cur.insert(ar);
+				result = DispatchResult(true, true);
+			} else {
+				result = DispatchResult(false);
+			}
+		}
+		break;
+	}
+
+	case LFUN_WORD_REPLACE:
+	case LFUN_WORD_FIND: {
+		result = 
+			searchForward(&cur.bv(), cmd.getArg(0), false, false)
+				? DispatchResult(true, true) : DispatchResult(false);
+		break;
+	}
+
+	case LFUN_INSERT_MATH:
+	case LFUN_INSERT_MATRIX:
+	case LFUN_MATH_DELIM: {
+		MathHullInset * f = new MathHullInset;
+		if (openNewInset(cur, f)) {
+			cur.inset()->dispatch(cur, FuncRequest(LFUN_MATH_MUTATE, "simple"));
+			cur.inset()->dispatch(cur, cmd);
+		}
+		break;
+	}
+
+	default:
+		result = DispatchResult(false);
+	}
+
+	if (result == DispatchResult(true, true))
+		cur.bv().update();
+
+	cur.normalize();
+	cur.touch();
+
+	BOOST_ASSERT(cur.inMathed());
+
+	if (result.dispatched()) {
+		revealCodes(cur);
+		cur.bv().stuffClipboard(cur.grabSelection());
+	} else {
+		cur.releaseMathCursor();
+		if (remove_inset)
+			cur.bv().owner()->dispatch(FuncRequest(LFUN_DELETE));
+	}
+
+	return result;  // original version
+#endif
 
 	default:
 		return MathInset::priv_dispatch(cur, cmd);
@@ -364,9 +738,10 @@ void MathNestInset::metricsMarkers2(int) const
 	dim_.des += 1;
 }
 
+
 void MathNestInset::drawMarkers(PainterInfo & pi, int x, int y) const
 {
-	if (!editing())
+	if (!editing(pi.base.bv))
 		return;
 	int t = x + dim_.width() - 1;
 	int d = y + dim_.descent();
@@ -379,7 +754,7 @@ void MathNestInset::drawMarkers(PainterInfo & pi, int x, int y) const
 
 void MathNestInset::drawMarkers2(PainterInfo & pi, int x, int y) const
 {
-	if (!editing())
+	if (!editing(pi.base.bv))
 		return;
 	drawMarkers(pi, x, y);
 	int t = x + dim_.width() - 1;

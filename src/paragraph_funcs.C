@@ -77,7 +77,7 @@ bool moveItem(Paragraph & from, Paragraph & to,
 	LyXFont tmpfont = from.getFontSettings(params, i);
 
 	if (tmpchar == Paragraph::META_INSET) {
-		InsetOld * tmpinset = 0;
+		InsetBase * tmpinset = 0;
 		if (from.getInset(i)) {
 			// the inset is not in a paragraph anymore
 			tmpinset = from.insetlist.release(i);
@@ -356,7 +356,7 @@ int readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 		lyxerr << "Solitary \\end_inset in line " << lex.getLineNo() << "\n"
 		       << "Missing \\begin_inset?.\n";
 	} else if (token == "\\begin_inset") {
-		InsetOld * inset = readInset(lex, buf);
+		InsetBase * inset = readInset(lex, buf);
 		if (inset)
 			par.insertInset(par.size(), inset, font, change);
 		else {
@@ -431,7 +431,7 @@ int readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 				}
 			}
 		} else {
-			auto_ptr<InsetOld> inset;
+			auto_ptr<InsetBase> inset;
 			if (token == "\\SpecialChar" )
 				inset.reset(new InsetSpecialChar);
 			else
@@ -441,17 +441,17 @@ int readParToken(Buffer const & buf, Paragraph & par, LyXLex & lex,
 					font, change);
 		}
 	} else if (token == "\\i") {
-		auto_ptr<InsetOld> inset(new InsetLatexAccent);
+		auto_ptr<InsetBase> inset(new InsetLatexAccent);
 		inset->read(buf, lex);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\backslash") {
 		par.insertChar(par.size(), '\\', font, change);
 	} else if (token == "\\newline") {
-		auto_ptr<InsetOld> inset(new InsetNewline);
+		auto_ptr<InsetBase> inset(new InsetNewline);
 		inset->read(buf, lex);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\LyXTable") {
-		auto_ptr<InsetOld> inset(new InsetTabular(buf));
+		auto_ptr<InsetBase> inset(new InsetTabular(buf));
 		inset->read(buf, lex);
 		par.insertInset(par.size(), inset.release(), font, change);
 	} else if (token == "\\bibitem") {
@@ -559,7 +559,7 @@ LyXFont const outerFont(ParagraphList::iterator pit,
 }
 
 
-ParagraphList::iterator outerPar(Buffer const & buf, InsetOld const * inset)
+ParagraphList::iterator outerPar(Buffer const & buf, InsetBase const * inset)
 {
 	ParIterator pit = const_cast<Buffer &>(buf).par_iterator_begin();
 	ParIterator end = const_cast<Buffer &>(buf).par_iterator_end();
@@ -582,7 +582,7 @@ ParagraphList::iterator outerPar(Buffer const & buf, InsetOld const * inset)
 }
 
 
-Paragraph const & ownerPar(Buffer const & buf, InsetOld const * inset)
+Paragraph const & ownerPar(Buffer const & buf, InsetBase const * inset)
 {
 	ParConstIterator pit = buf.par_iterator_begin();
 	ParConstIterator end = buf.par_iterator_end();

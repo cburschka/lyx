@@ -1027,7 +1027,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 				int const ns = numberOfSeparators(*pit, row);
 				bool disp_inset = false;
 				if (row.endpos() < pit->size()) {
-					InsetOld * in = pit->getInset(row.endpos());
+					InsetBase * in = pit->getInset(row.endpos());
 					if (in)
 						disp_inset = in->display();
 				}
@@ -1127,8 +1127,8 @@ void LyXText::acceptChange()
 	if (!cur.selection() && cursorPar()->size())
 		return;
 
-	if (cur.selStart().par() == cur.par()) {
-		CursorSlice const & startc = cur.selStart();
+	if (cur.selBegin().par() == cur.par()) {
+		CursorSlice const & startc = cur.selBegin();
 		CursorSlice const & endc = cur.selEnd();
 		recordUndo(Undo::INSERT, this, startc.par());
 		getPar(startc)->acceptChange(startc.pos(), endc.pos());
@@ -1147,8 +1147,8 @@ void LyXText::rejectChange()
 	if (!cur.selection() && cursorPar()->size())
 		return;
 
-	if (cur.selStart().par() == cur.selEnd().par()) {
-		CursorSlice const & startc = cur.selStart();
+	if (cur.selBegin().par() == cur.selEnd().par()) {
+		CursorSlice const & startc = cur.selBegin();
 		CursorSlice const & endc = cur.selEnd();
 		recordUndo(Undo::INSERT, this, startc.par());
 		getPar(startc)->rejectChange(startc.pos(), endc.pos());
@@ -1230,7 +1230,7 @@ void LyXText::changeCase(LyXText::TextCase action)
 	CursorSlice to;
 
 	if (cur.selection()) {
-		from = cur.selStart();
+		from = cur.selBegin();
 		to = cur.selEnd();
 	} else {
 		from = cursor();
@@ -1517,9 +1517,9 @@ string LyXText::selectionAsString(Buffer const & buffer, bool label) const
 		return string();
 
 	// should be const ...
-	ParagraphList::iterator startpit = getPar(cur.selStart());
+	ParagraphList::iterator startpit = getPar(cur.selBegin());
 	ParagraphList::iterator endpit = getPar(cur.selEnd());
-	size_t const startpos = cur.selStart().pos();
+	size_t const startpos = cur.selBegin().pos();
 	size_t const endpos = cur.selEnd().pos();
 
 	if (startpit == endpit)

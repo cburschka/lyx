@@ -25,15 +25,15 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	bool idxFirst(LCursor &) const;
+	bool idxFirst(LCursor & cur) const;
 	///
-	bool idxLast(LCursor &) const;
+	bool idxLast(LCursor & cur) const;
 	///
-	bool idxUpDown(LCursor &, bool up, int targetx) const;
+	bool idxUpDown(LCursor & cur, bool up) const;
 	///
-	void write(WriteStream & os) const;
+	void write(WriteStream & ws) const;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream & ns) const;
 };
 
 #endif

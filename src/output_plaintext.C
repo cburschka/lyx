@@ -204,7 +204,7 @@ void asciiParagraph(Buffer const & buf,
 		char c = par.getUChar(buf.params(), i);
 		switch (c) {
 		case Paragraph::META_INSET: {
-			InsetOld const * inset = par.getInset(i);
+			InsetBase const * inset = par.getInset(i);
 			if (runparams.linelen > 0) {
 				os << word;
 				currlinelen += word.length();
@@ -225,12 +225,10 @@ void asciiParagraph(Buffer const & buf,
 				os << p.second;
 				currlinelen = p.first;
 			}
-
 			os << word << ' ';
 			currlinelen += word.length() + 1;
 			word.erase();
 			break;
-
 
 		case '\0':
 			lyxerr[Debug::INFO] <<

@@ -12,11 +12,12 @@
 #include <config.h>
 
 #include "formulamacro.h"
-#include "math_cursor.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
 
+#include "BufferView.h"
+#include "cursor.h"
 #include "gettext.h"
 #include "LColor.h"
 #include "lyxlex.h"
@@ -35,22 +36,22 @@ using std::auto_ptr;
 using std::ostream;
 
 
+
 InsetFormulaMacro::InsetFormulaMacro()
-{
-	// inset name is inherited from Inset
-	setInsetName("unknown");
-}
+	: MathNestInset(2), name_("unknown")
+{}
 
 
 InsetFormulaMacro::InsetFormulaMacro
-	(string const & name, int nargs, string const & type)
+		(string const & name, int nargs, string const & type)
+	: MathNestInset(2), name_(name)
 {
-	setInsetName(name);
 	MathMacroTable::create(MathAtom(new MathMacroTemplate(name, nargs, type)));
 }
 
 
 InsetFormulaMacro::InsetFormulaMacro(string const & s)
+	: MathNestInset(2), name_("unknown")
 {
 	std::istringstream is(s);
 	read(is);
@@ -67,7 +68,7 @@ void InsetFormulaMacro::write(Buffer const &, ostream & os) const
 {
 	os << "FormulaMacro ";
 	WriteStream wi(os, false, false);
-	par()->write(wi);
+	MathNestInset::write(wi);
 }
 
 
@@ -75,7 +76,7 @@ int InsetFormulaMacro::latex(Buffer const &, ostream & os,
 			     OutputParams const & runparams) const
 {
 	WriteStream wi(os, runparams.moving_arg, true);
-	par()->write(wi);
+	MathNestInset::write(wi);
 	return 2;
 }
 
@@ -84,7 +85,7 @@ int InsetFormulaMacro::plaintext(Buffer const &, ostream & os,
 			     OutputParams const &) const
 {
 	WriteStream wi(os, false, true);
-	par()->write(wi);
+	MathNestInset::write(wi);
 	return 0;
 }
 
@@ -112,7 +113,7 @@ void InsetFormulaMacro::read(Buffer const &, LyXLex & lex)
 void InsetFormulaMacro::read(std::istream & is)
 {
 	auto_ptr<MathMacroTemplate> p(new MathMacroTemplate(is));
-	setInsetName(p->name());
+	name_ = p->name();
 	MathMacroTable::create(MathAtom(p.release()));
 	//metrics();
 }
@@ -120,20 +121,24 @@ void InsetFormulaMacro::read(std::istream & is)
 
 string InsetFormulaMacro::prefix() const
 {
-	return bformat(_(" Macro: %1$s: "), getInsetName());
+	return bformat(_(" Macro: %1$s: "), name_);
 }
 
 
 void InsetFormulaMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	par()->metrics(mi, dim_);
-	dim_.asc += 5;
-	dim_.des += 5;
-	dim_.wid += 10 + font_metrics::width(prefix(), mi.base.font);
+	MathNestInset::metrics(mi);
+	dim = cell(0).dim(); 
+	dim += cell(1).dim(); 
+	dim.asc += 5;
+	dim.des += 5;
+	dim.wid += 10 + font_metrics::width(prefix(), mi.base.font);
 	dim = dim_;
 }
 
 
+#warning FIXME
+#if 0
 MathAtom const & InsetFormulaMacro::par() const
 {
 	return MathMacroTable::provide(getInsetName());
@@ -144,12 +149,7 @@ MathAtom & InsetFormulaMacro::par()
 {
 	return MathMacroTable::provide(getInsetName());
 }
-
-
-InsetOld::Code InsetFormulaMacro::lyxCode() const
-{
-	return InsetOld::MATHMACRO_CODE;
-}
+#endif
 
 
 void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
@@ -170,14 +170,17 @@ void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 	pi.pain.fillRectangle(x, a, w, h, LColor::mathmacrobg);
 	pi.pain.rectangle(x, a, w, h, LColor::mathframe);
 
-	if (inMathed() &&
-			const_cast<InsetFormulaBase const *>(mathcursor::formula()) == this)
-		mathcursor::drawSelection(pi);
+	LCursor & cur = p.base.bv->cursor();
+	if (cur.isInside(this))
+		cur.drawSelection(pi);
 
 	pi.pain.text(x + 2, y, prefix(), font);
 
 	// formula
+#warning FIXME
+#if 0
 	par()->draw(pi, x + font_metrics::width(prefix(), p.base.font) + 5, y);
 	xo_ = x;
 	yo_ = y;
+#endif
 }

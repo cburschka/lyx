@@ -214,7 +214,7 @@ void LyXText::setCharFont(
 }
 
 
-InsetOld * LyXText::getInset() const
+InsetBase * LyXText::getInset() const
 {
 	ParagraphList::iterator pit = cursorPar();
 	pos_type const pos = cursor().pos();
@@ -228,7 +228,7 @@ InsetOld * LyXText::getInset() const
 
 bool LyXText::toggleInset()
 {
-	InsetOld * inset = getInset();
+	InsetBase * inset = getInset();
 	// is there an editable inset at cursor position?
 	if (!isEditableInset(inset))
 		return false;
@@ -324,7 +324,7 @@ void LyXText::setLayout(string const & layout)
 		bv()->owner()->dispatch(FuncRequest(LFUN_HOME));
 		bv()->owner()->dispatch(FuncRequest(LFUN_ENDSEL));
 		bv()->owner()->dispatch(FuncRequest(LFUN_CUT));
-		InsetOld * inset = new InsetEnvironment(params, layout);
+		InsetBase * inset = new InsetEnvironment(params, layout);
 		if (bv()->insertInset(inset)) {
 			//inset->edit(bv());
 			//bv()->owner()->dispatch(FuncRequest(LFUN_PASTE));
@@ -334,7 +334,7 @@ void LyXText::setLayout(string const & layout)
 	}
 
 	ParagraphList::iterator start =
-		getPar(bv()->cursor().selStart().par());
+		getPar(bv()->cursor().selBegin().par());
 	ParagraphList::iterator end =
 		boost::next(getPar(bv()->cursor().selEnd().par()));
 	ParagraphList::iterator endpit = setLayout(start, end, layout);
@@ -355,7 +355,7 @@ void getSelectionSpan(LyXText & text,
 		beg = text.cursorPar();
 		end = boost::next(beg);
 	} else {
-		beg = text.getPar(text.bv()->cursor().selStart());
+		beg = text.getPar(text.bv()->cursor().selBegin());
 		end = boost::next(text.getPar(text.bv()->cursor().selEnd()));
 	}
 }
@@ -451,13 +451,13 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	}
 
 	// ok we have a selection.
-	recUndo(cur.selStart().par(), cur.selEnd().par());
+	recUndo(cur.selBegin().par(), cur.selEnd().par());
 	freezeUndo();
 
-	ParagraphList::iterator beg = getPar(cur.selStart().par());
+	ParagraphList::iterator beg = getPar(cur.selBegin().par());
 	ParagraphList::iterator end = getPar(cur.selEnd().par());
 	
-	PosIterator pos(&paragraphs(), beg, cur.selStart().pos());
+	PosIterator pos(&paragraphs(), beg, cur.selBegin().pos());
 	PosIterator posend(&paragraphs(), end, cur.selEnd().pos());
 
 	BufferParams const & params = bv()->buffer()->params();
@@ -553,7 +553,7 @@ string LyXText::getStringToIndex()
 	string idxstring;
 	if (!cur.selection())
 		bv()->owner()->message(_("Nothing to index!"));
-	else if (cur.selStart().par() != cur.selEnd().par())
+	else if (cur.selBegin().par() != cur.selEnd().par())
 		bv()->owner()->message(_("Cannot index more than one paragraph!"));
 	else
 		idxstring = selectionAsString(*bv()->buffer(), false);
@@ -582,10 +582,10 @@ void LyXText::setParagraph(Spacing const & spacing, LyXAlignment align,
 	LCursor & cur = bv()->cursor();
 	// make sure that the depth behind the selection are restored, too
 	ParagraphList::iterator undopit = undoSpan(getPar(cur.selEnd()));
-	recUndo(cur.selStart().par(), parOffset(undopit) - 1);
+	recUndo(cur.selBegin().par(), parOffset(undopit) - 1);
 
 	ParagraphList::reverse_iterator pit(getPar(cur.selEnd().par()));
-	ParagraphList::reverse_iterator beg(getPar(cur.selStart().par()));
+	ParagraphList::reverse_iterator beg(getPar(cur.selBegin().par()));
 
 	for (--pit; pit != beg; ++pit) {
 		ParagraphParameters & params = pit->params();
@@ -606,7 +606,7 @@ void LyXText::setParagraph(Spacing const & spacing, LyXAlignment align,
 		params.noindent(noindent);
 	}
 
-	redoParagraphs(getPar(cur.selStart()), undopit);
+	redoParagraphs(getPar(cur.selBegin()), undopit);
 }
 
 
@@ -819,14 +819,14 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 		if (layout->labeltype == LABEL_SENSITIVE) {
 			ParagraphList::iterator end = paragraphs().end();
 			ParagraphList::iterator tmppit = pit;
-			InsetOld * in = 0;
+			InsetBase * in = 0;
 			bool isOK = false;
 			while (tmppit != end && tmppit->inInset()
 			       // the single '=' is intended below
 			       && (in = tmppit->inInset()->owner()))
 			{
-				if (in->lyxCode() == InsetOld::FLOAT_CODE ||
-				    in->lyxCode() == InsetOld::WRAP_CODE) {
+				if (in->lyxCode() == InsetBase::FLOAT_CODE ||
+				    in->lyxCode() == InsetBase::WRAP_CODE) {
 					isOK = true;
 					break;
 				} else {
@@ -841,9 +841,9 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 			if (isOK) {
 				string type;
 
-				if (in->lyxCode() == InsetOld::FLOAT_CODE)
+				if (in->lyxCode() == InsetBase::FLOAT_CODE)
 					type = static_cast<InsetFloat*>(in)->params().type;
-				else if (in->lyxCode() == InsetOld::WRAP_CODE)
+				else if (in->lyxCode() == InsetBase::WRAP_CODE)
 					type = static_cast<InsetWrap*>(in)->params().type;
 				else
 					BOOST_ASSERT(false);
@@ -899,7 +899,7 @@ void LyXText::updateCounters()
 }
 
 
-void LyXText::insertInset(InsetOld * inset)
+void LyXText::insertInset(InsetBase * inset)
 {
 	if (!cursorPar()->insetAllowed(inset->lyxCode()))
 		return;
@@ -938,14 +938,14 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	if (!cur.selection())
 		return;
 
-	// OK, we have a selection. This is always between cur.selStart()
+	// OK, we have a selection. This is always between cur.selBegin()
 	// and cur.selEnd()
 
 	// make sure that the depth behind the selection are restored, too
-	ParagraphList::iterator begpit = getPar(cur.selStart().par());
+	ParagraphList::iterator begpit = getPar(cur.selBegin().par());
 	ParagraphList::iterator endpit = getPar(cur.selEnd().par());
 	ParagraphList::iterator undopit = undoSpan(endpit);
-	recUndo(cur.selStart().par(), parOffset(undopit) - 1);
+	recUndo(cur.selBegin().par(), parOffset(undopit) - 1);
 
 	int endpos = cur.selEnd().pos();
 
@@ -954,13 +954,13 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 		CutAndPaste::cutSelection(bufparams,
 					  paragraphs(),
 					  begpit , endpit,
-					  cur.selStart().pos(), endpos,
+					  cur.selBegin().pos(), endpos,
 					  bufparams.textclass,
 					  doclear)
 		: CutAndPaste::eraseSelection(bufparams,
 					      paragraphs(),
 					      begpit, endpit,
-					      cur.selStart().pos(), endpos,
+					      cur.selBegin().pos(), endpos,
 					      doclear);
 	// sometimes necessary
 	if (doclear)
@@ -989,19 +989,19 @@ void LyXText::copySelection()
 	if (!cur.selection())
 		return;
 
-	// ok we have a selection. This is always between cur.selStart()
+	// ok we have a selection. This is always between cur.selBegin()
 	// and sel_end cursor
 
 	// copy behind a space if there is one
-	while (getPar(cur.selStart())->size() > cur.selStart().pos()
-	       && getPar(cur.selStart())->isLineSeparator(cur.selStart().pos())
-	       && (cur.selStart().par() != cur.selEnd().par()
-		   || cur.selStart().pos() < cur.selEnd().pos()))
-		cur.selStart().pos(cur.selStart().pos() + 1);
+	while (getPar(cur.selBegin())->size() > cur.selBegin().pos()
+	       && getPar(cur.selBegin())->isLineSeparator(cur.selBegin().pos())
+	       && (cur.selBegin().par() != cur.selEnd().par()
+		   || cur.selBegin().pos() < cur.selEnd().pos()))
+		cur.selBegin().pos(cur.selBegin().pos() + 1);
 
-	CutAndPaste::copySelection(getPar(cur.selStart().par()),
+	CutAndPaste::copySelection(getPar(cur.selBegin().par()),
 				   getPar(cur.selEnd().par()),
-				   cur.selStart().pos(), 
+				   cur.selBegin().pos(), 
 				   cur.selEnd().pos(),
 				   bv()->buffer()->params().textclass);
 }
@@ -1062,9 +1062,9 @@ void LyXText::replaceSelectionWithString(string const & str)
 
 	// Get font setting before we cut
 	pos_type pos = cur.selEnd().pos();
-	LyXFont const font = getPar(cur.selStart())
+	LyXFont const font = getPar(cur.selBegin())
 		->getFontSettings(bv()->buffer()->params(),
-				  cur.selStart().pos());
+				  cur.selBegin().pos());
 
 	// Insert the new string
 	string::const_iterator cit = str.begin();
@@ -1375,7 +1375,7 @@ bool LyXText::checkAndActivateInset(bool front)
 {
 	if (cursor().pos() == cursorPar()->size())
 		return false;
-	InsetOld * inset = cursorPar()->getInset(cursor().pos());
+	InsetBase * inset = cursorPar()->getInset(cursor().pos());
 	if (!isHighlyEditableInset(inset))
 		return false;
 	inset->edit(bv()->cursor(), front);
@@ -1508,7 +1508,7 @@ void LyXText::cursorUp(bool selecting)
 
 	if (!selecting) {
 		int y_abs = y + yo_ - bv()->top_y();
-		InsetOld * inset_hit = checkInsetHit(cur.x_target(), y_abs);
+		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y_abs);
 		if (inset_hit && isHighlyEditableInset(inset_hit))
 			inset_hit->edit(cur, cur.x_target(), y_abs);
 	}
@@ -1525,7 +1525,7 @@ void LyXText::cursorDown(bool selecting)
 
 	if (!selecting) {
 		int y_abs = y + yo_ - bv()->top_y();
-		InsetOld * inset_hit = checkInsetHit(cur.x_target(), y_abs);
+		InsetBase * inset_hit = checkInsetHit(cur.x_target(), y_abs);
 		if (inset_hit && isHighlyEditableInset(inset_hit))
 			inset_hit->edit(cur, cur.x_target(), y_abs);
 	}

@@ -24,7 +24,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	bool idxUpDown(LCursor &, bool up, int targetx) const;
+	bool idxUpDown(LCursor & cur, bool up) const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

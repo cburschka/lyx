@@ -189,10 +189,8 @@ int RowPainter::leftMargin() const
 
 void RowPainter::paintInset(pos_type const pos)
 {
-	InsetOld * inset = const_cast<InsetOld*>(pit_->getInset(pos));
-
+	InsetBase * inset = const_cast<InsetBase *>(pit_->getInset(pos));
 	BOOST_ASSERT(inset);
-
 	PainterInfo pi(const_cast<BufferView *>(&bv_));
 	pi.base.font = getFont(pos);
 	inset->draw(pi, int(x_), yo_ + row_.baseline());
@@ -242,7 +240,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos)
 	// first char
 	char c = pit_->getChar(pos);
 	c = pit_->transformChar(c, pos);
-	str +=c;
+	str += c;
 	++vpos;
 
 	LyXFont const & font = getFont(pos);
@@ -392,13 +390,13 @@ void RowPainter::paintSelection()
 
 	// the current selection
 	LCursor const & cur = bv_.cursor();
-	int const startx = text_.cursorX(cur.selStart());
+	int const startx = text_.cursorX(cur.selBegin());
 	int const endx = text_.cursorX(cur.selEnd());
-	int const starty = text_.cursorY(cur.selStart());
+	int const starty = text_.cursorY(cur.selBegin());
 	int const endy = text_.cursorY(cur.selEnd());
-	ParagraphList::iterator startpit = text_.getPar(cur.selStart());
+	ParagraphList::iterator startpit = text_.getPar(cur.selBegin());
 	ParagraphList::iterator endpit = text_.getPar(cur.selEnd());
-	RowList::iterator startrow = startpit->getRow(cur.selStart().pos());
+	RowList::iterator startrow = startpit->getRow(cur.selBegin().pos());
 	RowList::iterator endrow = endpit->getRow(cur.selEnd().pos());
 	int const h = row_.height();
 
@@ -469,7 +467,7 @@ void RowPainter::paintSelection()
 		}
 
 		if (((startpit != pit_ && startrow != rit_)
-				|| cur.selStart().pos() <= pos) &&
+				|| cur.selBegin().pos() <= pos) &&
 			((endpit != pit_ && endrow != rit_)
 				|| pos < cur.selEnd().pos())) {
 			// Here we do not use x_ as xo_ was added to x_.

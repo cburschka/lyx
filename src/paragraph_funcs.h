@@ -22,7 +22,7 @@ class Buffer;
 class BufferParams;
 class LyXFont;
 class LyXLex;
-class InsetOld;
+class InsetBase;
 
 ///
 void breakParagraph(BufferParams const & bparams,
@@ -70,10 +70,10 @@ LyXFont const outerFont(ParagraphList::iterator pit,
 			ParagraphList const & plist);
 
 /// find outermost paragraph containing an inset
-ParagraphList::iterator outerPar(Buffer const & buf, InsetOld const * inset);
+ParagraphList::iterator outerPar(Buffer const & buf, InsetBase const * inset);
 
 /// find owning paragraph containing an inset
-Paragraph const & ownerPar(Buffer const & buf, InsetOld const * inset);
+Paragraph const & ownerPar(Buffer const & buf, InsetBase const * inset);
 
 /// return the range of pars [beg, end[ owning the range of y [ystart, yend] 
 void getParsInRange(ParagraphList & pl,

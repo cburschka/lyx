@@ -134,7 +134,7 @@ public:
 
 	// this should return true if we have a "normal" cell, otherwise true.
 	// "normal" means without width set!
-	bool forceDefaultParagraphs(InsetOld const * in) const;
+	bool forceDefaultParagraphs(InsetBase const * in) const;
 
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;

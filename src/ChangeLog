@@ -1,3 +1,35 @@
+
+
+2004-01-26  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView.[Ch]:
+	* BufferView_pimpl.[Ch]:
+	* InsetList.[Ch]:
+	* PosIterator.[Ch]:
+	* buffer.h:
+	* bufferview_funcs.C:
+	* cursor.[Ch]:
+	* cursor_slice.h:
+	* factory.[Ch]:
+	* iterators.[Ch]:
+	* lyxfind.C:
+	* lyxfunc.C:
+	* lyxtext.h:
+	* output_docbook.C:
+	* output_latex.C:
+	* output_linuxdoc.C:
+	* output_plaintext.C:
+	* paragraph.[Ch]:
+	* paragraph_funcs.[Ch]:
+	* paragraph_pimpl.[Ch]:
+	* rowpainter.C:
+	* tabular.C:
+	* tabular.h:
+	* text.C:
+	* text2.C:
+	* text3.C: more IU:  dumps most of the rest of the mathcursor
+    implementation into cursor.[Ch]; "globalize" a bit of it.
+
 2004-01-25  Angus Leeming  <leeming@lyx.org>
 
 	* lyxfunc.C (dispatch): Dialogs::showSearch is no more.

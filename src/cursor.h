@@ -27,6 +27,11 @@ class LyXText;
 class Paragraph;
 
 
+// these should go
+class MathHullInset;
+class PainterInfo;
+class MathUnknownInset;
+class MathGridInset;
 
 // this is used for traversing math insets
 typedef std::vector<CursorSlice> CursorBase;
@@ -59,12 +64,18 @@ public:
 	explicit LCursor(BufferView & bv);
 	/// dispatch from innermost inset upwards
 	DispatchResult dispatch(FuncRequest const & cmd);
-	///
+	/// add a new cursor slice
 	void push(InsetBase * inset);
-	/// restrict cursor nesting to given size
-	void pop(int depth);
+	/// add a new cursor slice, place cursor on left end
+	void pushLeft(InsetBase * inset);
 	/// pop one level off the cursor
 	void pop();
+	/// pop one slice off the cursor stack and go left
+	bool popLeft();
+	/// pop one slice off the cursor stack and go right
+	bool popRight();
+	/// restrict cursor nesting to given size
+	void pop(int depth);
 	/// access to current cursor slice
 	CursorSlice & current();
 	/// access to current cursor slice
@@ -85,26 +96,55 @@ public:
 	bool & mark() { return mark_; }
 	///
 	void setSelection();
+	/// set selection at given position
+	void setSelection(CursorBase const & where, size_t n);
 	///
 	void clearSelection();
-	///
-	CursorSlice & selStart();
-	///
-	CursorSlice const & selStart() const;
-	///
+	/// access start of selection
+	CursorSlice & selBegin();
+	/// access start of selection
+	CursorSlice const & selBegin() const;
+	/// access end of selection
 	CursorSlice & selEnd();
-	///
+	/// access end of selection
 	CursorSlice const & selEnd() const;
+	///
+	std::string grabSelection();
+	///
+	void eraseSelection();
+	///
+	std::string grabAndEraseSelection();
+	// other selection methods
+	///
+	void selCopy();
+	///
+	void selCut();
+	///
+	void selDel();
+	/// pastes n-th element of cut buffer
+	void selPaste(size_t n);
+	///
+	void selHandle(bool selecting);
+	/// start selection
+	void selStart();
+	/// clear selection
+	void selClear();
+	/// clears or deletes selection depending on lyxrc setting
+	void selClearOrDel();
+	///
+	void paste(std::string const & data);
 
 	//
 	// access to the 'current' cursor slice
 	//
 	/// the current inset
 	InsetBase * inset() const { return current().inset(); }
-	/// return the text-ed cell this cursor is in
+	/// return the cell of the inset this cursor is in
 	idx_type idx() const { return current().idx(); }
-	/// return the text-ed cell this cursor is in
+	/// return the cell of the inset this cursor is in
 	idx_type & idx() { return current().idx(); }
+	/// return the last possible cell in this inset
+	idx_type lastidx() const { return current().lastidx(); }
 	/// return the paragraph this cursor is in
 	par_type par() const { return current().par(); }
 	/// return the paragraph this cursor is in
@@ -164,6 +204,8 @@ public:
 	InsetTabular * innerInsetTabular() const;
 	///
 	LyXText * innerText() const;
+	///
+	CursorSlice const & innerTextSlice() const;
 	/// returns x,y position
 	void getPos(int & x, int & y) const;
 	/// returns cursor dimension
@@ -194,6 +236,10 @@ public:
 	BufferView & bv() const; 
 	/// get some interesting description of current position
 	void info(std::ostream & os);
+	/// are we in math mode (2), text mode (1) or unsure (0)?
+	int currentMode();
+	/// reset cursor
+	void reset();
 
 	/// output
 	friend std::ostream & operator<<(std::ostream & os, LCursor const & cur);
@@ -241,6 +287,137 @@ private:
 	bool autocorrect_;
 	/// are we entering a macro name?
 	bool macromode_;
+
+
+///////////////////////////////////////////////////////////////////
+//
+// The part below is the non-integrated rest of the original math
+// cursor. This should be either generalized for texted or moved
+// back to the math insets.
+//
+///////////////////////////////////////////////////////////////////
+
+public:
+	///
+	void insert(MathAtom const &);
+	///
+	void insert(MathArray const &);
+	///
+	void insert2(std::string const &);
+	/// return false for empty math insets
+	bool erase();
+	/// return false for empty math insets
+	bool backspace();
+	/// called for LFUN_HOME etc
+	bool home();
+	/// called for LFUN_END etc
+	bool end();
+	/// called for LFUN_RIGHT and LFUN_RIGHTSEL
+	bool right();
+	/// called for LFUN_LEFT etc
+	bool left();
+	/// called for LFUN_UP etc
+	bool up();
+	/// called for LFUN_DOWN etc
+	bool down();
+	///
+	void plainErase();
+	///
+	void plainInsert(MathAtom const & at);
+	///
+	void niceInsert(MathAtom const & at);
+	///
+	void niceInsert(std::string const & str);
+
+	/// in pixels from top of screen
+	void setScreenPos(int x, int y);
+	/// in pixels from top of screen
+	void getScreenPos(int & x, int & y) const;
+	/// in pixels from left of screen
+	int targetX() const;
+	/// return the next enclosing grid inset and the cursor's index in it
+	MathGridInset * enclosingGrid(idx_type & idx) const;
+	/// adjust anchor position after deletions/insertions
+	void adjust(pos_type from, int diff);
+	///
+	MathHullInset * formula() const;
+	/// current offset in the current cell
+	///
+	bool script(bool);
+	///
+	bool interpret(char);
+	/// interpret name a name of a macro
+	void macroModeClose();
+	/// are we currently typing the name of a macro?
+	bool inMacroMode() const;
+	/// get access to the macro we are currently typing
+	MathUnknownInset * activeMacro();
+	/// are we currently typing '#1' or '#2' or...?
+	bool inMacroArgMode() const;
+
+	/// draws light-blue selection background
+	void drawSelection(PainterInfo & pi);
+	/// replace selected stuff with at, placing the former
+	// selection in given cell of atom
+	void handleNest(MathAtom const & at, int cell = 0);
+	/// remove this as soon as LyXFunc::getStatus is "localized"
+	//inline std::string getLastCode() { return "mathnormal"; }
+	///
+	bool isInside(InsetBase const *);
+	///
+	char valign();
+	///
+	char halign();
+
+	/// make sure cursor position is valid
+	void normalize();
+	/// mark current cursor trace for redraw
+	void touch();
+
+	/// returns the normalized anchor of the selection
+	CursorSlice normalAnchor();
+
+	///
+	void insert(char c);
+	///
+	void insert(std::string const & str);
+	/// lock/unlock inset
+	void lockToggle();
+
+	/// hack for reveal codes
+	void markInsert();
+	void markErase();
+	/// injects content of a cell into parent
+	void pullArg();
+	/// split font inset etc
+	void handleFont(std::string const & font);
+
+	void releaseMathCursor();
+
+	bool inMathed() const;
+
+private:
+	/// moves cursor index one cell to the left
+	bool idxLeft();
+	/// moves cursor index one cell to the right
+	bool idxRight();
+	/// moves cursor to end of last cell of current line
+	bool idxLineLast();
+	/// moves position somehow up or down
+	bool goUpDown(bool up);
+	/// moves position closest to (x, y) in given box
+	bool bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh);
+	/// moves position closest to (x, y) in current cell
+	void bruteFind2(int x, int y);
+	/// are we in a nucleus of a script inset?
+	bool inNucleus();
+
+	/// the name of the macro we are currently inputting
+	std::string macroName();
+	/// where in the curent cell does the macro name start?
+	int macroNamePos();
+	/// can we enter the inset?
+	bool openable(MathAtom const &);
 };
 
 #endif // LYXCURSOR_H

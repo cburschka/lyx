@@ -2542,7 +2542,7 @@ InsetText & LyXTabular::getCellInset(int row, int column) const
 }
 
 
-int LyXTabular::getCellFromInset(InsetOld const * inset) const
+int LyXTabular::getCellFromInset(InsetBase const * inset) const
 {
 	// is this inset part of the tabular?
 	if (!inset) {

@@ -20,7 +20,7 @@ public:
 	///
 	MathFracbaseInset();
 	///
-	bool idxUpDown(LCursor &, bool up, int targetx) const;
+	bool idxUpDown(LCursor &, bool up) const;
 	///
 	bool idxLeft(LCursor &) const;
 	///

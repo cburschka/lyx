@@ -116,6 +116,8 @@ public:
 	void setBackgroundColor(LColor_color);
 	///
 	void setStatus(CollapseStatus st);
+	///
+	bool allowSpellCheck() const { return true; }
 
 protected:
 	///

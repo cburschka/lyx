@@ -59,7 +59,7 @@
 
 #include "graphics/Previews.h"
 
-#include "mathed/formulabase.h"
+#include "mathed/math_hullinset.h"
 
 #include "support/filetools.h"
 #include "support/globbing.h"
@@ -302,6 +302,9 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		//bv_->setText(0);
 	}
 
+	// reset old cursor
+	cursor_.reset();
+
 	// set current buffer
 	buffer_ = b;
 
@@ -403,8 +406,8 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 	LCursor & cur = bv_->cursor();
 	par = cur.par();
 	pos = cur.pos();
-	selstartpar = cur.selStart().par();
-	selstartpos = cur.selStart().pos();
+	selstartpar = cur.selBegin().par();
+	selstartpos = cur.selBegin().pos();
 	selendpar = cur.selEnd().par();
 	selendpos = cur.selEnd().pos();
 	sel = cur.selection();
@@ -646,8 +649,8 @@ Change const BufferView::Pimpl::getCurrentChange()
 	if (!cur.selection())
 		return Change(Change::UNCHANGED);
 
-	return text->getPar(cur.selStart())
-		->lookupChangeFull(cur.selStart().pos());
+	return text->getPar(cur.selBegin())
+		->lookupChangeFull(cur.selBegin().pos());
 }
 
 
@@ -745,7 +748,7 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
 }
 
 
-InsetOld * BufferView::Pimpl::getInsetByCode(InsetOld::Code code)
+InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code code)
 {
 #if 0
 	CursorSlice cursor = bv_->getLyXText()->cursor;
@@ -885,14 +888,16 @@ CursorBase theTempCursor;
 
 namespace {
 
-	InsetOld * insetFromCoords(BufferView * bv, int x, int y)
+	InsetBase * insetFromCoords(BufferView * bv, int x, int y)
 	{
 		lyxerr << "insetFromCoords" << endl;
-		LyXText * text = bv->text();
-		InsetOld * inset = 0;
+		InsetBase * inset = 0;
 		theTempCursor.clear();
+		LyXText * text = bv->text();
+#warning FIXME
+#if 0
 		while (true) {
-			InsetOld * const inset_hit = text->checkInsetHit(x, y);
+			InsetBase * const inset_hit = text->checkInsetHit(x, y);
 			if (!inset_hit) {
 				lyxerr << "no further inset hit" << endl;
 				break;
@@ -910,6 +915,7 @@ namespace {
 				<< " text: " << text << " y: " << y << endl;
 			theTempCursor.push_back(CursorSlice(inset));
 		}
+#endif
 		//lyxerr << "theTempCursor: " << theTempCursor << endl;
 		return inset;
 	}
@@ -964,7 +970,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 		// handle this event.
 
 		// built temporary path to inset
-		InsetOld * inset = insetFromCoords(bv_, cmd.x, cmd.y);
+		InsetBase * inset = insetFromCoords(bv_, cmd.x, cmd.y);
 		DispatchResult res;
 
 		// try to dispatch to that inset
@@ -1097,7 +1103,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		string label = ev.argument;
 		if (label.empty()) {
 			InsetRef * inset =
-				static_cast<InsetRef*>(getInsetByCode(InsetOld::REF_CODE));
+				static_cast<InsetRef*>(getInsetByCode(InsetBase::REF_CODE));
 			if (inset) {
 				label = inset->getContents();
 				savePosition(0);
@@ -1152,7 +1158,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	case LFUN_INSET_INSERT: {
 		// Same as above.
 		BOOST_ASSERT(false);
-		InsetOld * inset = createInset(bv_, ev);
+		InsetBase * inset = createInset(bv_, ev);
 		if (!inset || !insertInset(inset))
 			delete inset;
 		break;
@@ -1160,7 +1166,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 
 	case LFUN_FLOAT_LIST:
 		if (tclass.floats().typeExist(ev.argument)) {
-			InsetOld * inset = new InsetFloatList(ev.argument);
+			InsetBase * inset = new InsetFloatList(ev.argument);
 			if (!insertInset(inset, tclass.defaultLayoutName()))
 				delete inset;
 		} else {
@@ -1290,7 +1296,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 }
 
 
-bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
+bool BufferView::Pimpl::insertInset(InsetBase * inset, string const & lout)
 {
 	// not quite sure if we want this...
 	bv_->text()->recUndo(bv_->text()->cursor().par());
@@ -1318,7 +1324,7 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 }
 
 
-bool BufferView::Pimpl::ChangeInsets(InsetOld::Code code,
+bool BufferView::Pimpl::ChangeInsets(InsetBase::Code code,
 				     string const & from, string const & to)
 {
 	bool need_update = false;
@@ -1360,12 +1366,14 @@ void BufferView::Pimpl::updateParagraphDialog()
 {
 	if (!bv_->owner()->getDialogs().visible("paragraph"))
 		return;
-	Paragraph const & par = *bv_->getLyXText()->cursorPar();
+	CursorSlice const & cur = bv_->cursor().innerTextSlice();
+	LyXText * text = bv_->cursor().innerText();
+	Paragraph const & par = *text->getPar(cur.par());
 	string data;
 	params2string(par, data);
 
 	// Will the paragraph accept changes from the dialog?
-	InsetOld * const inset = par.inInset();
+	InsetBase * const inset = cur.inset();
 	bool const accept =
 		!(inset && inset->forceDefaultParagraphs(inset));
 

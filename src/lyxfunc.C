@@ -63,8 +63,6 @@
 #include "insets/insetvspace.h"
 #include "insets/insetwrap.h"
 
-#include "mathed/math_cursor.h"
-
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
@@ -162,8 +160,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 }
 
 
-void LyXFunc::processKeySym(LyXKeySymPtr keysym,
-			    key_modifier::state state)
+void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 {
 	string argument;
 
@@ -343,7 +340,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		if (tab && tab->hasSelection())
 			disable = false;
 		else
-			disable = !inMathed() && !view()->cursor().selection();
+			disable = !view()->cursor().inMathed() && !view()->cursor().selection();
 		break;
 
 	case LFUN_RUNCHKTEX:
@@ -379,7 +376,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	case LFUN_TABULAR_FEATURE:
 #if 0
-		if (inMathed()) {
+		if (view()->cursor().inMathed()) {
 			// FIXME: check temporarily disabled
 			// valign code
 			char align = mathcursor::valign();
@@ -511,7 +508,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	}
 
 	case LFUN_MATH_MUTATE:
-		if (inMathed())
+		if (view()->cursor().inMathed())
 			//flag.setOnOff(mathcursor::formula()->hullType() == ev.argument);
 			flag.setOnOff(false);
 		else
@@ -525,7 +522,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_MATH_NONUMBER:
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_EXTERN:
-		disable = !inMathed();
+		disable = !view()->cursor().inMathed();
 		break;
 
 	case LFUN_DIALOG_SHOW: {
@@ -684,13 +681,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_SPACE_INSERT:
 		// slight hack: we know this is allowed in math mode
-		if (!inMathed())
+		if (!view()->cursor().inMathed())
 			code = InsetOld::SPACE_CODE;
 		break;
 	case LFUN_INSET_DIALOG_SHOW: {
-		InsetOld * inset = view()->getLyXText()->getInset();
+		InsetBase * inset = view()->getLyXText()->getInset();
 		disable = !inset;
-		if (!disable) {
+		if (inset) {
 			code = inset->lyxCode();
 			if (!(code == InsetOld::INCLUDE_CODE
 				|| code == InsetOld::BIBTEX_CODE
@@ -736,7 +733,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 #ifdef LOCK
 	// the font related toggles
-	if (!inMathed()) {
+	if (!view()->cursor().inMathed()) {
 		LyXFont const & font = view()->getLyXText()->real_current_font;
 		switch (ev.action) {
 		case LFUN_EMPH:
@@ -1289,7 +1286,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			break;
 
 		case LFUN_INSET_DIALOG_SHOW: {
-			InsetOld * inset = view()->getLyXText()->getInset();
+			InsetBase * inset = view()->getLyXText()->getInset();
 			if (inset)
 				inset->dispatch(view()->cursor(), FuncRequest(LFUN_INSET_DIALOG_SHOW));
 			break;

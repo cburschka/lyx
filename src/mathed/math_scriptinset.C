@@ -231,7 +231,7 @@ void MathScriptInset::draw(PainterInfo & pi, int x, int y) const
 		nuc().draw(pi, x + dxx(), y);
 	else {
 		nuc().setXY(x + dxx(), y);
-		if (editing())
+		if (editing(pi.base.bv))
 			drawStr(pi, pi.base.font, x + dxx(), y, ".");
 	}
 	ScriptChanger dummy(pi.base);
@@ -326,7 +326,7 @@ bool MathScriptInset::idxLeft(LCursor &) const
 }
 
 
-bool MathScriptInset::idxUpDown(LCursor & cur, bool up, int) const
+bool MathScriptInset::idxUpDown(LCursor & cur, bool up) const
 {
 	if (cur.idx() == 1) {
 		// if we are 'up' we can't go further up

@@ -16,7 +16,7 @@
 
 #include <vector>
 
-class InsetOld;
+class InsetBase;
 class Buffer;
 
 
@@ -28,9 +28,9 @@ public:
 		///
 		lyx::pos_type pos;
 		///
-		InsetOld * inset;
+		InsetBase * inset;
 		///
-		InsetTable(lyx::pos_type p, InsetOld * i) : pos(p), inset(i) {}
+		InsetTable(lyx::pos_type p, InsetBase * i) : pos(p), inset(i) {}
 	};
 	///
 	typedef std::vector<InsetTable> List;
@@ -56,13 +56,13 @@ public:
 	///
 	const_iterator insetIterator(lyx::pos_type pos) const;
 	///
-	void insert(InsetOld * inset, lyx::pos_type pos);
+	void insert(InsetBase * inset, lyx::pos_type pos);
 	///
 	void erase(lyx::pos_type pos);
 	///
-	InsetOld * release(lyx::pos_type);
+	InsetBase * release(lyx::pos_type);
 	///
-	InsetOld * get(lyx::pos_type pos) const;
+	InsetBase * get(lyx::pos_type pos) const;
 	///
 	void increasePosAfterPos(lyx::pos_type pos);
 	///

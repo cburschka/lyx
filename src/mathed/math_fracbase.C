@@ -32,12 +32,12 @@ bool MathFracbaseInset::idxLeft(LCursor &) const
 }
 
 
-bool MathFracbaseInset::idxUpDown(LCursor & cur, bool up, int targetx) const
+bool MathFracbaseInset::idxUpDown(LCursor & cur, bool up) const
 {
 	MathInset::idx_type target = !up; // up ? 0 : 1, since upper cell has idx 0
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;
-	cur.pos() = cell(target).x2pos(targetx);
+	cur.pos() = cell(target).x2pos(cur.x_target());
 	return true;
 }

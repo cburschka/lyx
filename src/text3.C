@@ -48,7 +48,7 @@
 #include "support/tostr.h"
 #include "support/std_sstream.h"
 
-#include "mathed/formulabase.h"
+#include "mathed/math_hullinset.h"
 
 #include <clocale>
 
@@ -69,7 +69,7 @@ using std::vector;
 extern string current_layout;
 
 // the selection possible is needed, that only motion events are
-// used, where the bottom press event was on the drawing area too
+// used, where the button press event was on the drawing area too
 bool selection_possible = false;
 
 
@@ -246,7 +246,7 @@ string const freefont2string()
 }
 
 
-InsetOld * LyXText::checkInsetHit(int x, int y)
+InsetBase * LyXText::checkInsetHit(int x, int y)
 {
 	ParagraphList::iterator pit;
 	ParagraphList::iterator end;
@@ -261,7 +261,7 @@ InsetOld * LyXText::checkInsetHit(int x, int y)
 		InsetList::iterator iit = pit->insetlist.begin();
 		InsetList::iterator iend = pit->insetlist.end();
 		for ( ; iit != iend; ++iit) {
-			InsetOld * inset = iit->inset;
+			InsetBase * inset = iit->inset;
 			//lyxerr << "examining inset " << inset
 			//	<< " xy: " << inset->x() << "/" << inset->y()
 			//	<< " x: " << inset->x() << "..." << inset->x() + inset->width()
@@ -283,14 +283,14 @@ InsetOld * LyXText::checkInsetHit(int x, int y)
 }
 
 
-bool LyXText::gotoNextInset(vector<InsetOld::Code> const & codes,
+bool LyXText::gotoNextInset(vector<InsetOld_code> const & codes,
 			    string const & contents)
 {
 	ParagraphList::iterator end = paragraphs().end();
 	ParagraphList::iterator pit = cursorPar();
 	pos_type pos = cursor().pos();
 
-	InsetOld * inset;
+	InsetBase * inset;
 	do {
 		if (pos + 1 < pit->size()) {
 			++pos;
@@ -315,7 +315,7 @@ bool LyXText::gotoNextInset(vector<InsetOld::Code> const & codes,
 }
 
 
-void LyXText::gotoInset(vector<InsetOld::Code> const & codes, bool same_content)
+void LyXText::gotoInset(vector<InsetOld_code> const & codes, bool same_content)
 {
 	LCursor & cur = bv()->cursor();
 	cur.clearSelection();
@@ -324,7 +324,7 @@ void LyXText::gotoInset(vector<InsetOld::Code> const & codes, bool same_content)
 	if (same_content
 	    && cur.pos() < cur.lastpos()
 	    && cur.paragraph().isInset(cur.pos())) {
-		InsetOld const * inset = cur.paragraph().getInset(cur.pos());
+		InsetBase const * inset = cur.paragraph().getInset(cur.pos());
 		if (find(codes.begin(), codes.end(), inset->lyxCode())
 		    != codes.end())
 			contents = static_cast<InsetCommand const *>(inset)->getContents();
@@ -348,9 +348,9 @@ void LyXText::gotoInset(vector<InsetOld::Code> const & codes, bool same_content)
 }
 
 
-void LyXText::gotoInset(InsetOld::Code code, bool same_content)
+void LyXText::gotoInset(InsetOld_code code, bool same_content)
 {
-	gotoInset(vector<InsetOld::Code>(1, code), same_content);
+	gotoInset(vector<InsetOld_code>(1, code), same_content);
 }
 
 
@@ -412,7 +412,7 @@ void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 void doInsertInset(BufferView * bv, FuncRequest const & cmd,
 	bool edit, bool pastesel)
 {
-	InsetOld * inset = createInset(bv, cmd);
+	InsetBase * inset = createInset(bv, cmd);
 	if (!inset)
 		return;
 
@@ -865,7 +865,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_INSERT: {
-		InsetOld * inset = createInset(bv, cmd);
+		InsetBase * inset = createInset(bv, cmd);
 		if (inset && !bv->insertInset(inset))
 			delete inset;
 		break;
@@ -1042,9 +1042,9 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		bool change_layout = (current_layout != layout);
 
 		if (!change_layout && cur.selection() &&
-			cur.selStart().par() != cur.selEnd().par())
+			cur.selBegin().par() != cur.selEnd().par())
 		{
-			ParagraphList::iterator spit = getPar(cur.selStart());
+			ParagraphList::iterator spit = getPar(cur.selBegin());
 			ParagraphList::iterator epit = boost::next(getPar(cur.selEnd()));
 			while (spit != epit) {
 				if (spit->layout()->name() != current_layout) {
@@ -1079,17 +1079,17 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	case LFUN_GOTOERROR:
-		gotoInset(InsetOld::ERROR_CODE, false);
+		gotoInset(InsetBase::ERROR_CODE, false);
 		break;
 
 	case LFUN_GOTONOTE:
-		gotoInset(InsetOld::NOTE_CODE, false);
+		gotoInset(InsetBase::NOTE_CODE, false);
 		break;
 
 	case LFUN_REFERENCE_GOTO: {
-		vector<InsetOld::Code> tmp;
-		tmp.push_back(InsetOld::LABEL_CODE);
-		tmp.push_back(InsetOld::REF_CODE);
+		vector<InsetOld_code> tmp;
+		tmp.push_back(InsetBase::LABEL_CODE);
+		tmp.push_back(InsetBase::REF_CODE);
 		gotoInset(tmp, true);
 		break;
 	}

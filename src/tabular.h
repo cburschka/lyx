@@ -371,7 +371,7 @@ public:
 	InsetText & getCellInset(int row, int column) const;
 	/// Search for \param inset in the tabular, with the
 	///
-	int getCellFromInset(InsetOld const * inset) const;
+	int getCellFromInset(InsetBase const * inset) const;
 	///
 	int rows() const { return rows_; }
 	///

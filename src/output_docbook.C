@@ -149,9 +149,8 @@ void docbookParagraphs(Buffer const & buf,
 			// This is a hack while paragraphs can't have
 			// attributes, like id in this case.
 			if (par->size() && par->isInset(0)) {
-				InsetOld * inset = par->getInset(0);
-				InsetOld::Code lyx_code = inset->lyxCode();
-				if (lyx_code == InsetOld::LABEL_CODE) {
+				InsetBase * inset = par->getInset(0);
+				if (inset->lyxCode() == InsetOld::LABEL_CODE) {
 					command_name += " id=\"";
 					command_name += (static_cast<InsetCommand *>(inset))->getContents();
 					command_name += '"';

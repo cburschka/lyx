@@ -18,7 +18,7 @@
 #include <boost/scoped_ptr.hpp>
 
 class LyXText;
-class InsetOld;
+class InsetBase;
 class Cursor;
 class Buffer;
 class BufferView;
@@ -52,7 +52,7 @@ public:
 	/// returns 'innermost' LyXText
 	LyXText * text(Buffer &) const;
 	/// returns innermost inset
-	InsetOld * inset() const;
+	InsetBase * inset() const;
 	/// returns index of cell in innermost inset
 	int index() const;
 	///

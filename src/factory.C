@@ -52,11 +52,13 @@
 #include "insets/inseturl.h"
 #include "insets/insetvspace.h"
 #include "insets/insetwrap.h"
+
 #include "mathed/formulamacro.h"
-#include "mathed/formula.h"
+#include "mathed/math_hullinset.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
+
 #include "support/lstrings.h"
 #include "support/std_sstream.h"
 
@@ -69,7 +71,7 @@ using std::endl;
 using std::string;
 
 
-InsetOld * createInset(BufferView * bv, FuncRequest const & cmd)
+InsetBase * createInset(BufferView * bv, FuncRequest const & cmd)
 {
 	BufferParams const & params = bv->buffer()->params();
 
@@ -330,7 +332,7 @@ InsetOld * createInset(BufferView * bv, FuncRequest const & cmd)
 }
 
 
-InsetOld * readInset(LyXLex & lex, Buffer const & buf)
+InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 {
 	// consistency check
 	if (lex.getString() != "\\begin_inset") {
@@ -338,7 +340,7 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		       << endl;
 	}
 
-	auto_ptr<InsetOld> inset;
+	auto_ptr<InsetBase> inset;
 
 	LyXTextClass tclass = buf.params().getLyXTextClass();
 		
@@ -405,7 +407,7 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		} else if (tmptok == "FormulaMacro") {
 			inset.reset(new InsetFormulaMacro);
 		} else if (tmptok == "Formula") {
-			inset.reset(new InsetFormula);
+			inset.reset(new MathHullInset);
 		} else if (tmptok == "Graphics") {
 			inset.reset(new InsetGraphics);
 		} else if (tmptok == "Note") {

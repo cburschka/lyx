@@ -38,11 +38,11 @@ public:
 	void dump() const;
 
 	///
-	bool idxUpDown(LCursor &, bool up, int targetx) const;
+	bool idxUpDown(LCursor & cur, bool up) const;
 	///
-	bool idxLeft(LCursor &) const;
+	bool idxLeft(LCursor & cur) const;
 	///
-	bool idxRight(LCursor &) const;
+	bool idxRight(LCursor & cur) const;
 
 	///
 	void validate(LaTeXFeatures &) const;

@@ -102,7 +102,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void center();
 	///
-	bool insertInset(InsetOld * inset, std::string const & lout = std::string());
+	bool insertInset(InsetBase * inset, std::string const & lout = std::string());
 	/// a function should be executed from the workarea
 	bool workAreaDispatch(FuncRequest const & ev);
 	/// a function should be executed
@@ -148,7 +148,7 @@ private:
 	 * string. May only be used with InsetCommand-derived insets
 	 * Returns true if a screen update is needed.
 	 */
-	bool ChangeInsets(InsetOld::Code code, std::string const & from,
+	bool ChangeInsets(InsetBase::Code code, std::string const & from,
 			  std::string const & to);
 
 	///
@@ -187,7 +187,7 @@ private:
 	///
 	std::vector<Position> saved_positions;
 	/// Get next inset of this class from current cursor position
-	InsetOld * getInsetByCode(InsetOld::Code code);
+	InsetBase * getInsetByCode(InsetBase::Code code);
 	///
 	void MenuInsertLyXFile(std::string const & filen);
 	/// our workarea

@@ -34,10 +34,7 @@
 
 #include "insets/insettext.h"
 
-#include "mathed/math_cursor.h"
-
 #include "support/tostr.h"
-
 #include "support/std_sstream.h"
 
 using lyx::support::bformat;
@@ -169,7 +166,7 @@ string const currentState(BufferView * bv)
 	if (!bv->available())
 		return string();
 
-	if (inMathed()) {
+	if (bv->cursor().inMathed()) {
 		bv->cursor().info(state);
 		return state.str();
 	}

@@ -28,10 +28,14 @@ class LyXLayout;
 struct Paragraph::Pimpl {
 	///
 	Pimpl(Paragraph * owner);
-	/// Copy constructor
+	/// "Copy constructor"
 	Pimpl(Pimpl const &, Paragraph * owner);
 	///
 	void setContentsFromPar(Paragraph const & par);
+
+	//
+	// Change tracking
+	//
 	/// set tracking mode
 	void trackChanges(Change::Type type = Change::UNCHANGED);
 	/// stop tracking
@@ -46,32 +50,27 @@ struct Paragraph::Pimpl {
 	bool isChanged(lyx::pos_type start, lyx::pos_type end) const;
 	/// is there a non-addition in this range ?
 	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
-
 	/// set change at pos
 	void setChange(lyx::pos_type pos, Change::Type type);
-
 	/// mark as erased
 	void markErased();
-
 	/// accept change
 	void acceptChange(lyx::pos_type start, lyx::pos_type end);
-
 	/// reject change
 	void rejectChange(lyx::pos_type start, lyx::pos_type end);
-
 	/// are we tracking changes ?
-	bool tracking() const {
-		return changes_.get();
-	}
+	bool tracking() const { return changes_.get(); }
 
 	///
 	value_type getChar(lyx::pos_type pos) const;
 	///
 	void setChar(lyx::pos_type pos, value_type c);
 	///
-	void insertChar(lyx::pos_type pos, value_type c, LyXFont const & font, Change change = Change(Change::INSERTED));
+	void insertChar(lyx::pos_type pos, value_type c,
+		LyXFont const & font, Change change = Change(Change::INSERTED));
 	///
-	void insertInset(lyx::pos_type pos, InsetOld * inset, LyXFont const & font, Change change = Change(Change::INSERTED));
+	void insertInset(lyx::pos_type pos, InsetBase * inset,
+		LyXFont const & font, Change change = Change(Change::INSERTED));
 	/// definite erase
 	void eraseIntern(lyx::pos_type pos);
 	/// erase the given position. Returns true if it was actually erased
@@ -96,9 +95,9 @@ struct Paragraph::Pimpl {
 		///
 		FontTable(lyx::pos_type p, LyXFont const & f)
 			: pos_(p)
-			{
-				font_ = container.get(f);
-			}
+		{
+			font_ = container.get(f);
+		}
 		///
 		lyx::pos_type pos() const { return pos_; }
 		///

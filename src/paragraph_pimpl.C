@@ -291,7 +291,7 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 
 
 void Paragraph::Pimpl::insertInset(pos_type pos,
-				   InsetOld * inset, LyXFont const & font, Change change)
+				   InsetBase * inset, LyXFont const & font, Change change)
 {
 	BOOST_ASSERT(inset);
 	BOOST_ASSERT(pos <= size());
@@ -467,8 +467,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			if (c != '\0')
 				os << c;
 		} else {
-			InsetOld const * inset = owner_->getInset(i);
-			inset->plaintext(buf, os, runparams);
+			owner_->getInset(i)->plaintext(buf, os, runparams);
 		}
 		return;
 	}
@@ -478,14 +477,14 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 	// and then split to handle the two modes separately.
 	switch (c) {
 	case Paragraph::META_INSET: {
-		InsetOld * inset = owner_->getInset(i);
+		InsetBase * inset = owner_->getInset(i);
 
 		// FIXME: remove this check
 		if (!inset)
 			break;
 
 		// FIXME: move this to InsetNewline::latex
-		if (inset->lyxCode() == InsetOld::NEWLINE_CODE) {
+		if (inset->lyxCode() == InsetBase::NEWLINE_CODE) {
 			// newlines are handled differently here than
 			// the default in simpleTeXSpecialChars().
 			if (!style.newline_allowed) {
@@ -521,9 +520,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 		bool close = false;
 		ostream::pos_type const len = os.tellp();
 
-		if ((inset->lyxCode() == InsetOld::GRAPHICS_CODE
-		     || inset->lyxCode() == InsetOld::MATH_CODE
-		     || inset->lyxCode() == InsetOld::URL_CODE)
+		if ((inset->lyxCode() == InsetBase::GRAPHICS_CODE
+		     || inset->lyxCode() == InsetBase::MATH_CODE
+		     || inset->lyxCode() == InsetBase::URL_CODE)
 		    && running_font.isRightToLeft()) {
 			os << "\\L{";
 			close = true;
@@ -790,7 +789,7 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 		if (icit->inset) {
 			icit->inset->validate(features);
 			if (layout.needprotect &&
-			    icit->inset->lyxCode() == InsetOld::FOOT_CODE)
+			    icit->inset->lyxCode() == InsetBase::FOOT_CODE)
 				features.require("NeedLyXFootnoteCode");
 		}
 	}

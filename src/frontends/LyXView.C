@@ -21,6 +21,7 @@
 #include "bufferparams.h"
 #include "BufferView.h"
 #include "bufferview_funcs.h"
+#include "cursor.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -33,8 +34,6 @@
 #include "paragraph.h"
 
 #include "controllers/ControlCommandBuffer.h"
-
-#include "mathed/math_cursor.h"
 
 #include "support/filetools.h" // OnlyFilename()
 
@@ -105,7 +104,7 @@ void LyXView::setLayout(string const & layout)
 
 void LyXView::updateToolbar()
 {
-	bool const math = inMathed();
+	bool const math = bufferview_->cursor().inMathed();
 	bool const table =
 		!getLyXFunc().getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).disabled();
 	toolbar_->update(math, table);

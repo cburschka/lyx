@@ -10,6 +10,7 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#if 0
 #ifndef INSET_FORMULA_H
 #define INSET_FORMULA_H
 
@@ -88,4 +89,5 @@ private:
 	/// The pointer never changes although *preview_'s contents may.
 	boost::scoped_ptr<RenderPreview> const preview_;
 };
+#endif
 #endif

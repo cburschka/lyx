@@ -21,12 +21,6 @@ using std::ostream;
 using std::endl;
 
 
-MathInset::size_type MathInset::nargs() const
-{
-	return 0;
-}
-
-
 MathArray dummyCell;
 
 MathArray & MathInset::cell(idx_type)
@@ -43,84 +37,9 @@ MathArray const & MathInset::cell(idx_type) const
 }
 
 
-MathInset::idx_type MathInset::index(row_type row, col_type col) const
-{
-	if (row != 0)
-		lyxerr << "illegal row: " << row << endl;
-	if (col != 0)
-		lyxerr << "illegal col: " << col << endl;
-	return 0;
-}
-
 void MathInset::substitute(MathMacro const &)
 {}
 
-
-bool MathInset::idxNext(LCursor &) const
-{
-	return false;
-}
-
-
-bool MathInset::idxRight(LCursor &) const
-{
-	return false;
-}
-
-
-bool MathInset::idxPrev(LCursor &) const
-{
-	return false;
-}
-
-
-bool MathInset::idxLeft(LCursor &) const
-{
-	return false;
-}
-
-
-bool MathInset::idxUpDown(LCursor &, bool, int) const
-{
-	return false;
-}
-
-
-bool MathInset::idxUpDown2(LCursor &, bool, int) const
-{
-	return false;
-}
-
-
-bool MathInset::idxFirst(LCursor &) const
-{
-	return false;
-}
-
-
-bool MathInset::idxLast(LCursor &) const
-{
-	return false;
-}
-
-
-bool MathInset::idxHome(LCursor &) const
-{
-	return false;
-}
-
-
-bool MathInset::idxEnd(LCursor &) const
-{
-	return false;
-}
-
-
-void MathInset::getScreenPos(idx_type, pos_type, int & x, int & y) const
-{
-	lyxerr << "MathInset::getScreenPos() called directly!" << endl;
-	x = y = 0;
-}
 
 
 void MathInset::dump() const
@@ -129,12 +48,6 @@ void MathInset::dump() const
 	WriteStream wi(lyxerr, false, true);
 	write(wi);
 	lyxerr << "\n---------------------------------------------" << endl;
-}
-
-
-bool MathInset::idxBetween(idx_type idx, idx_type from, idx_type to) const
-{
-	return from <= idx && idx <= to;
 }
 
 
@@ -207,24 +120,6 @@ void MathInset::mathmlize(MathMLStream & os) const
 {
 	NormalStream ns(os.os());
 	normalize(ns);
-}
-
-
-int MathInset::plaintext(std::ostream &, OutputParams const &) const
-{
-	return 0;
-}
-
-
-int MathInset::linuxdoc(std::ostream &, OutputParams const &) const
-{
-	return 0;
-}
-
-
-int MathInset::docbook(std::ostream &, OutputParams const &) const
-{
-	return 0;
 }
 
 

@@ -24,6 +24,7 @@ class Change;
 class Encoding;
 class ErrorList;
 class FuncRequest;
+class InsetBase;
 class InsetOld;
 class Language;
 class LCursor;
@@ -140,7 +141,7 @@ public:
 	 * Insert an inset into the buffer.
 	 * Place it in a layout of lout,
 	 */
-	bool insertInset(InsetOld * inset, std::string const & lout = std::string());
+	bool insertInset(InsetBase * inset, std::string const & lout = std::string());
 
 	/// Inserts a lyx file at cursor position. return false if it fails
 	bool insertLyXFile(std::string const & file);

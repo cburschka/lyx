@@ -75,8 +75,6 @@ class ReplaceData;
 
 class MathInset : public InsetBase {
 public:
-	/// our members behave nicely...
-	MathInset() {}
 	/// identification as math inset
 	MathInset * asMathInset() { return this; }
 
@@ -91,64 +89,10 @@ public:
 	/// draw the object as text
 	virtual void drawT(TextPainter &, int x, int y) const;
 
-	/// Where should we go when we press the up or down cursor key?
-	virtual bool idxUpDown(LCursor & cur, bool up, int targetx) const;
-	/// Where should we go when we press the up or down cursor key?
-	virtual bool idxUpDown2(LCursor & cur, bool up, int targetx) const;
-	/// The left key
-	virtual bool idxLeft(LCursor & cur) const;
-	/// The right key
-	virtual bool idxRight(LCursor & cur) const;
-
-	/// Move one physical cell up
-	virtual bool idxNext(LCursor & cur) const;
-	/// Move one physical cell down
-	virtual bool idxPrev(LCursor & cur) const;
-
-	/// Target pos when we enter the inset from the left by pressing "Right"
-	virtual bool idxFirst(LCursor & cur) const;
-	/// Target pos when we enter the inset from the right by pressing "Left"
-	virtual bool idxLast(LCursor & cur) const;
-
-	/// Where should we go if we press home?
-	virtual bool idxHome(LCursor & cur) const;
-	/// Where should we go if we press end?
-	virtual bool idxEnd(LCursor & cur) const;
-
-	/// Delete a cell and move cursor
-	virtual bool idxDelete(idx_type &) { return false; }
-	/// pulls cell after pressing erase
-	virtual void idxGlue(idx_type) {}
-	// returns list of cell indices that are "between" from and to for
-	// selection purposes
-	virtual bool idxBetween(idx_type idx, idx_type from, idx_type to) const;
-
-	/// the number of nested cells this inset owns
-	virtual idx_type nargs() const;
-
 	/// return cell given its number
 	virtual MathArray & cell(idx_type);
 	/// return cell given its number
 	virtual MathArray const & cell(idx_type) const;
-
-	/// the number of columns of this inset if it is grid-like
-	virtual col_type ncols() const { return 1; }
-	/// the number of rows of this inset if it is grid-like
-	virtual row_type nrows() const { return 1; }
-	/// to which column belongs a cell with a given index?
-	virtual col_type col(idx_type) const { return 0; }
-	/// to which row belongs a cell with a given index?
-	virtual row_type row(idx_type) const { return 0; }
-	/// cell idex corresponding to row and column;
-	virtual idx_type index(row_type row, col_type col) const;
-	/// any additional x-offset when drawing a cell?
-	virtual int cellXOffset(idx_type) const { return 0; }
-	/// any additional y-offset when drawing a cell?
-	virtual int cellYOffset(idx_type) const { return 0; }
-	/// can we enter this cell?
-	virtual bool validCell(idx_type) const { return true; }
-	/// get coordinates
-	virtual void getScreenPos(idx_type idx, pos_type pos, int & x, int & y) const;
 
 	/// identifies certain types of insets
 	virtual MathAMSArrayInset       * asAMSArrayInset()       { return 0; }
@@ -185,14 +129,8 @@ public:
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
-	/// thing that can be moved into
-	virtual bool isActive() const { return nargs() > 0; }
 	/// is the a relational operator (used for splitting equations)
 	virtual bool isRelOp() const { return false; }
-	/// -1: text mode, 1: math mode, 0 undecided
-	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
-
-	virtual mode_type currentMode() const { return UNDECIDED_MODE; }
 	/// will this get written as a single block in {..}
 	virtual bool extraBraces() const { return false; }
 
@@ -211,8 +149,6 @@ public:
 	virtual bool lock() const { return false; }
 	/// access to the lock (only nest array have one)
 	virtual void lock(bool) {}
-	/// get notification when the cursor leaves this inset
-	virtual void notifyCursorLeaves(idx_type) {}
 
 	/// write LaTeX and Lyx code
 	virtual void write(WriteStream & os) const;
@@ -228,12 +164,6 @@ public:
 	virtual void mathmlize(MathMLStream &) const;
 	/// write content as something readable by Octave
 	virtual void octave(OctaveStream &) const;
-	/// plain ascii output
-	virtual int plaintext(std::ostream & os, OutputParams const &) const;
-	/// linuxdoc output
-	virtual int linuxdoc(std::ostream & os, OutputParams const &) const;
-	/// docbook output
-	virtual int docbook(std::ostream & os, OutputParams const &) const;
 
 	/// dump content to stderr for debugging
 	virtual void dump() const;

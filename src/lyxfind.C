@@ -391,7 +391,7 @@ int replace(BufferView * bv,
 
 	text->replaceSelectionWithString(replacestr);
 	text->setSelectionRange(replacestr.length());
-	bv->cursor().current() = fw ? bv->cursor().selEnd() : bv->cursor().selStart();
+	bv->cursor().current() = fw ? bv->cursor().selEnd() : bv->cursor().selBegin();
 	bv->buffer()->markDirty();
 	find(bv, searchstr, cs, mw, fw);
 	bv->update();

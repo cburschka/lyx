@@ -29,6 +29,7 @@ class Buffer;
 class BufferParams;
 class BufferView;
 class Counters;
+class InsetBase;
 class InsetBibitem;
 class InsetOld_code;
 class Language;
@@ -44,7 +45,7 @@ class UpdatableInset;
 class Paragraph  {
 public:
 	///
-	enum META_KIND {
+	enum {
 		/// Note that this is 1 right now to avoid
 		/// crashes where getChar() is called wrongly
 		/// (returning 0) - if this was 0, then we'd
@@ -61,12 +62,11 @@ public:
 
 	///
 	Paragraph();
-
 	///
 	Paragraph(Paragraph const &);
 	///
 	void operator=(Paragraph const &);
-	/// the destructor removes the new paragraph from the list
+	///
 	~Paragraph();
 
 	///
@@ -276,19 +276,21 @@ public:
 	///
 	void insertChar(lyx::pos_type pos, value_type c);
 	///
-	void insertChar(lyx::pos_type pos, value_type c, LyXFont const &, Change change = Change(Change::INSERTED));
+	void insertChar(lyx::pos_type pos, value_type c,
+		LyXFont const &, Change change = Change(Change::INSERTED));
 	///
 	bool checkInsertChar(LyXFont &);
 	///
-	void insertInset(lyx::pos_type pos, InsetOld * inset);
+	void insertInset(lyx::pos_type pos, InsetBase * inset);
 	///
-	void insertInset(lyx::pos_type pos, InsetOld * inset, LyXFont const &, Change change = Change(Change::INSERTED));
+	void insertInset(lyx::pos_type pos, InsetBase * inset,
+		LyXFont const &, Change change = Change(Change::INSERTED));
 	///
 	bool insetAllowed(InsetOld_code code);
 	///
-	InsetOld * getInset(lyx::pos_type pos);
+	InsetBase * getInset(lyx::pos_type pos);
 	///
-	InsetOld const * getInset(lyx::pos_type pos) const;
+	InsetBase const * getInset(lyx::pos_type pos) const;
 
 	///
 	bool isHfill(lyx::pos_type pos) const;
@@ -308,7 +310,7 @@ public:
 	bool isWord(lyx::pos_type pos) const;
 
 	/// returns -1 if inset not found
-	int getPositionOfInset(InsetOld const * inset) const;
+	int getPositionOfInset(InsetBase const * inset) const;
 
 	///
 	int stripLeadingSpaces();

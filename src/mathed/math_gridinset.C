@@ -755,7 +755,7 @@ int MathGridInset::cellYOffset(idx_type idx) const
 }
 
 
-bool MathGridInset::idxUpDown(LCursor & cur, bool up, int targetx) const
+bool MathGridInset::idxUpDown(LCursor & cur, bool up) const
 {
 	if (up) {
 		if (cur.idx() < ncols())
@@ -766,7 +766,7 @@ bool MathGridInset::idxUpDown(LCursor & cur, bool up, int targetx) const
 			return false;
 		cur.idx() += ncols();
 	}
-	cur.pos() = cur.cell().x2pos(targetx - cur.cell().xo());
+	cur.pos() = cur.cell().x2pos(cur.x_target() - cur.cell().xo());
 	return true;
 }
 

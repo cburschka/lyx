@@ -22,13 +22,24 @@ class DispatchResult;
 class FuncRequest;
 class LaTeXFeatures;
 class LCursor;
+class LyXLex;
+class LyXText;
 class MathInset;
 class MetricsInfo;
 class Dimension;
 class PainterInfo;
+class OutputParams;
 class UpdatableInset;
 
+namespace lyx { namespace graphics { class PreviewLoader; } }
+
+
 /// Common base class to all insets
+
+// Do not add _any_ (non-static) data members as this would inflate
+// everything storing large quantities of insets. Mathed e.g. would
+// suffer.
+
 class InsetBase {
 public:
 	///
@@ -71,27 +82,104 @@ public:
 	/// last drawn position for 'important' insets
 	virtual int y() const { return 0; }
  
+	/// is this an inset that can be moved into?
+	virtual bool isActive() const { return nargs() > 0; }
+	/// Where should we go when we press the up or down cursor key?
+	virtual bool idxUpDown(LCursor & cur, bool up) const;
+	/// Where should we go when we press the up or down cursor key?
+	virtual bool idxUpDown2(LCursor & cur, bool up) const;
+	/// Move one cell to the left
+	virtual bool idxLeft(LCursor &) const { return false; }
+	/// Move one cell to the right
+	virtual bool idxRight(LCursor &) const { return false; }
+
+	/// Move one physical cell up
+	virtual bool idxNext(LCursor &) const { return false; }
+	/// Move one physical cell down
+	virtual bool idxPrev(LCursor &) const { return false; }
+
+	/// Target pos when we enter the inset from the left by pressing "Right"
+	virtual bool idxFirst(LCursor &) const { return false; }
+	/// Target pos when we enter the inset from the right by pressing "Left"
+	virtual bool idxLast(LCursor &) const { return false; }
+
+	/// Where should we go if we press home?
+	virtual bool idxHome(LCursor &) const { return false; }
+	/// Where should we go if we press end?
+	virtual bool idxEnd(LCursor &) const { return false; }
+
+	/// Delete a cell and move cursor
+	virtual bool idxDelete(idx_type &) { return false; }
+	/// pulls cell after pressing erase
+	virtual void idxGlue(idx_type) {}
+	// returns list of cell indices that are "between" from and to for
+	// selection purposes
+	virtual bool idxBetween(idx_type idx, idx_type from, idx_type to) const;
+
+	/// to which column belongs a cell with a given index?
+	virtual col_type col(idx_type) const { return 0; }
+	/// to which row belongs a cell with a given index?
+	virtual row_type row(idx_type) const { return 0; }
+	/// cell idex corresponding to row and column;
+	virtual idx_type index(row_type row, col_type col) const;
+	/// any additional x-offset when drawing a cell?
+	virtual int cellXOffset(idx_type) const { return 0; }
+	/// any additional y-offset when drawing a cell?
+	virtual int cellYOffset(idx_type) const { return 0; }
+	/// can we enter this cell?
+	virtual bool validCell(idx_type) const { return true; }
+	/// get coordinates
+	virtual void getScreenPos(idx_type idx, pos_type pos, int & x, int & y) const;
  	/// number of embedded cells
  	virtual size_t nargs() const { return 0; }
  	/// number of rows in gridlike structures
  	virtual size_t nrows() const { return 0; }
  	/// number of columns in gridlike structures
  	virtual size_t ncols() const { return 0; }
+	/// is called when the cursor leaves this inset
+	virtual void notifyCursorLeaves(idx_type) {}
 
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const {}
 	/// Appends \c list with all labels found within this inset.
 	virtual void getLabelList(Buffer const &,
 				  std::vector<std::string> & /* list */) const {}
+
 	/// describe content if cursor inside
 	virtual void infoize(std::ostream &) const {}
 	/// describe content if cursor behind
 	virtual void infoize2(std::ostream &) const {}
-protected:
-	// the real dispatcher
-	virtual
-	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
-public:
+
+	/// plain ascii output
+	virtual int plaintext(Buffer const &, std::ostream & os,
+		OutputParams const &) const;
+	/// linuxdoc output
+	virtual int linuxdoc(Buffer const &, std::ostream & os,
+		OutputParams const &) const;
+	/// docbook output
+	virtual int docbook(Buffer const &, std::ostream & os,
+		OutputParams const &) const;
+
+	///
+	enum EDITABLE {
+		///
+		NOT_EDITABLE = 0,
+		///
+		IS_EDITABLE,
+		///
+		HIGHLY_EDITABLE
+	};
+	/// what appears in the minibuffer when opening
+	virtual std::string const editMessage() const;
+	///
+	virtual EDITABLE editable() const;
+	/// can we go further down on mouse click?
+	virtual bool descendable() const { return false; }
+	///
+	virtual bool isTextInset() const { return false; }
+	/// return true if the inset should be removed automatically
+	virtual bool autoDelete() const;
+
 	/** This is not quite the correct place for this enum. I think
 	    the correct would be to let each subclass of Inset declare
 	    its own enum code. Actually the notion of an InsetOld::Code
@@ -193,9 +281,102 @@ public:
 		///
 		MATHHULL_CODE
 	};
-	/// returns LyX code associated with the inset. Used for TOC, ...)
-	virtual InsetBase::Code lyxCode() const { return NO_CODE; }
+	/// returns true the inset can hold an inset of given type
+	virtual bool insetAllowed(Code) const { return false; }
+	/// wrapper around the above
+	bool insetAllowed(InsetBase * inset) const;
+	// if this inset has paragraphs should they be output all as default
+	// paragraphs with "Standard" layout?
+	virtual bool forceDefaultParagraphs(InsetBase const *) const { return false; }
+	///
+	virtual std::string const & getInsetName() const;
+	/// used to toggle insets
+	// is the inset open?
+	virtual bool isOpen() const { return false; }
+	/// open the inset
+	virtual void open() {}
+	/// close the inset
+	virtual void close() {}
+	// should this inset be handled like a normal charater
+	virtual bool isChar() const { return false; }
+	// is this equivalent to a letter?
+	virtual bool isLetter() const { return false; }
+	// is this equivalent to a space (which is BTW different from
+	// a line separator)?
+	virtual bool isSpace() const { return false; }
+	// should we have a non-filled line before this inset?
+	virtual bool display() const { return false; }
+	// should we break lines after this inset?
+	virtual bool isLineSeparator() const { return false; }
+	///
+	virtual void write(Buffer const &, std::ostream &) const {}
+	///
+	virtual void read(Buffer const &, LyXLex &) {}
+	/// returns the number of rows (\n's) of generated tex code.
+	virtual int latex(Buffer const &, std::ostream &,
+			  OutputParams const &) const { return 0; }
+	/// returns true to override begin and end inset in file
+	virtual bool directWrite() const;
+	///
+	virtual bool allowSpellCheck() const { return false; }
 
+	/// if this insets owns text cells (e.g. InsetText) return cell num
+	virtual LyXText * getText(int /*num*/) const { return 0; }
+	///
+	virtual int numParagraphs() const { return 0; }
+	/// returns cell covering position (x,y), -1 if none exists
+	virtual int getCell(int x, int y) const;
+
+	/** Adds a LaTeX snippet to the Preview Loader for transformation
+	 *  into a bitmap image. Does not start the laoding process.
+	 *
+	 *  Most insets have no interest in this capability, so the method
+	 *  defaults to empty.
+	 */
+	virtual void addPreview(lyx::graphics::PreviewLoader &) const {}
+protected:
+	// the real dispatcher
+	virtual
+	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+public:
+	/// returns LyX code associated with the inset. Used for TOC, ...)
+	virtual Code lyxCode() const { return NO_CODE; }
+
+	/// -1: text mode, 1: math mode, 0 undecided
+	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
+	/// return text or mathmode if that is possible to determine
+	virtual mode_type currentMode() const { return UNDECIDED_MODE; }
+
+	/// FIXME: This ought to die.
+	virtual void setOwner(UpdatableInset *) {}
+	///
+	virtual UpdatableInset * owner() const { return 0; }
+
+	/// is this inset allowed within a font change?
+	virtual bool noFontChange() const { return false; }
+
+	///
+	virtual void markErased();
+	/// pretty arbitrary
+	virtual int width() const { return 10; }
+	/// pretty arbitrary
+	virtual int ascent() const { return 10; }
+	/// pretty arbitrary
+	virtual int descent() const { return 10; }
 };
+
+
+/**
+ * returns true if pointer argument is valid
+ * and points to an editable inset
+ */
+bool isEditableInset(InsetBase const * inset);
+
+
+/**
+ * returns true if pointer argument is valid
+ * and points to a highly editable inset
+ */
+bool isHighlyEditableInset(InsetBase const * inset);
 
 #endif

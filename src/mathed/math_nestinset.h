@@ -25,7 +25,7 @@ public:
 	/// nestinsets have a fixed size to start with
 	explicit MathNestInset(idx_type ncells);
 
-	/// the size is usuall some sort of convex hull of the cells
+	/// the size is usually some sort of convex hull of the cells
 	/// hides inset::metrics() intentionally!
 	void metrics(MetricsInfo const & mi) const;
 	/// draw background if locked
@@ -90,8 +90,6 @@ public:
 
 	/// debug helper
 	void dump() const;
-	/// is the cursor currently somewhere within this inset?
-	virtual bool editing() const;
 
 	/// writes \\, name(), and args in braces and '\\lyxlock' if necessary
 	void write(WriteStream & os) const;
@@ -110,6 +108,8 @@ protected:
 	/// if the inset is locked, it can't be entered with the cursor
 	bool lock_;
 
+	///
+	bool editing(BufferView * bv) const;
 	/// draw four angular markers
 	void drawMarkers(PainterInfo & pi, int x, int y) const;
 	/// draw two angular markers

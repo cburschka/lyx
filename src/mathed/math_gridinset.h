@@ -145,7 +145,7 @@ public:
 	row_type row(idx_type idx) const;
 
 	///
-	bool idxUpDown(LCursor &, bool up, int targetx) const;
+	bool idxUpDown(LCursor &, bool up) const;
 	///
 	bool idxLeft(LCursor &) const;
 	///

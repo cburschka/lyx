@@ -64,13 +64,13 @@ bool MathUndersetInset::idxLast(LCursor & cur) const
 }
 
 
-bool MathUndersetInset::idxUpDown(LCursor & cur, bool up, int targetx) const
+bool MathUndersetInset::idxUpDown(LCursor & cur, bool up) const
 {
 	idx_type target = up; // up ? 1 : 0, since upper cell has idx 1
 	if (cur.idx() == target)
 		return false;
 	cur.idx() = target;
-	cur.pos() = cur.cell().x2pos(targetx);
+	cur.pos() = cur.cell().x2pos(cur.x_target());
 	return true;
 }
 

@@ -75,13 +75,13 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 
 		mathed_string_dim(font_, name(), dim_);
 
-	} else if (editing()) {
+	} else if (editing(mi.base.bv)) {
 
 		expand();
 		expanded_.metrics(mi_, dim_);
 		metricsMarkers();
 
-		dim_.wid +=  mathed_string_width(font_, name()) + 10;
+		dim_.wid += mathed_string_width(font_, name()) + 10;
 
 		int ww = mathed_string_width(font_, "#1: ");
 
@@ -117,7 +117,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		return;
 	}
 
-	if (editing()) {
+	if (editing(pi.base.bv)) {
 		int h = y - dim_.ascent() + 2 + expanded_.ascent();
 		drawStr(pi, font_, x + 3, h, name());
 
@@ -156,7 +156,7 @@ void MathMacro::dump() const
 }
 
 
-bool MathMacro::idxUpDown(LCursor & cur, bool up, int x) const
+bool MathMacro::idxUpDown(LCursor & cur, bool up) const
 {
 	if (up) {
 		if (!MathNestInset::idxLeft(cur))
@@ -165,7 +165,7 @@ bool MathMacro::idxUpDown(LCursor & cur, bool up, int x) const
 		if (!MathNestInset::idxRight(cur))
 			return false;
 	}
-	cur.pos() = cur.cell().x2pos(x);
+	cur.pos() = cur.cell().x2pos(cur.x_target());
 	return true;
 }
 

@@ -194,8 +194,8 @@ InsetOptArg * optArgInset(Paragraph const & par)
 	InsetList::const_iterator it = par.insetlist.begin();
 	InsetList::const_iterator end = par.insetlist.end();
 	for (; it != end; ++it) {
-		InsetOld * ins = it->inset;
-		if (ins->lyxCode() == InsetOld::OPTARG_CODE) {
+		InsetBase * ins = it->inset;
+		if (ins->lyxCode() == InsetBase::OPTARG_CODE) {
 			return static_cast<InsetOptArg *>(ins);
 		}
 	}

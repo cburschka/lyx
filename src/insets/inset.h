@@ -18,22 +18,8 @@
 #include "insetbase.h"
 #include "dimension.h"
 
-class Buffer;
 class LColor_color;
-class FuncRequest;
-class OutputParams;
-class CursorSlice;
-class LyXLex;
-class LyXText;
-class Painter;
-class Paragraph;
 class UpdatableInset;
-
-namespace lyx {
-namespace graphics {
-	class PreviewLoader;
-}
-}
 
 
 /// Insets
@@ -46,16 +32,6 @@ public:
 	};
 
 	///
-	enum EDITABLE {
-		///
-		NOT_EDITABLE = 0,
-		///
-		IS_EDITABLE,
-		///
-		HIGHLY_EDITABLE
-	};
-
-	///
 	InsetOld();
 	///
 	InsetOld(InsetOld const & in);
@@ -65,39 +41,6 @@ public:
 	int descent() const;
 	///
 	int width() const;
-	/// what appears in the minibuffer when opening
-	virtual std::string const editMessage() const;
-	///
-	virtual EDITABLE editable() const;
-	/// can we go further down on mouse click?
-	virtual bool descendable() const { return false; }
-	///
-	virtual bool isTextInset() const { return false; }
-	/// return true if the inset should be removed automatically
-	virtual bool autoDelete() const;
-	/// returns true the inset can hold an inset of given type
-	virtual bool insetAllowed(InsetOld::Code) const { return false; }
-	/// wrapper around the above
-	bool insetAllowed(InsetOld * in) const;
-	///
-	virtual void write(Buffer const &, std::ostream &) const = 0;
-	///
-	virtual void read(Buffer const &, LyXLex & lex) = 0;
-	/// returns the number of rows (\n's) of generated tex code.
-	virtual int latex(Buffer const &, std::ostream &,
-			  OutputParams const &) const = 0;
-	///
-	virtual int plaintext(Buffer const &, std::ostream &,
-			  OutputParams const &) const = 0;
-	///
-	virtual int linuxdoc(Buffer const &, std::ostream &,
-			     OutputParams const &) const = 0;
-	///
-	virtual int docbook(Buffer const &, std::ostream &,
-			    OutputParams const &) const = 0;
-
-	/// returns true to override begin and end inset in file
-	virtual bool directWrite() const;
 
 	///
 	void setInsetName(std::string const & s) { name_ = s; }
@@ -118,52 +61,8 @@ public:
 	/// returns the actual scroll-value
 	virtual int scroll(bool recursive = true) const;
 
-	/// if this insets owns text cells (e.g. InsetText) return cell num
-	virtual LyXText * getText(int /*num*/) const { return 0; }
 	///
-	virtual int numParagraphs() const { return 0; }
-	/// returns cell covering position (x,y), -1 if none exists
-	virtual int getCell(int x, int y) const;
-
-	/// used to toggle insets
-	// is the inset open?
-	virtual bool isOpen() const { return false; }
-	/// open the inset
-	virtual void open() {}
-	/// close the inset
-	virtual void close() {}
-	// should this inset be handled like a normal charater
-	virtual bool isChar() const { return false; }
-	// is this equivalent to a letter?
-	virtual bool isLetter() const { return false; }
-	// is this equivalent to a space (which is BTW different from
-	// a line separator)?
-	virtual bool isSpace() const { return false; }
-	// should we have a non-filled line before this inset?
-	virtual bool display() const { return false; }
-	// should we break lines after this inset?
-	virtual bool isLineSeparator() const { return false; }
-	// if this inset has paragraphs should they be output all as default
-	// paragraphs with "Standard" layout?
-	virtual bool forceDefaultParagraphs(InsetOld const *) const;
-	/** returns true if, when outputing LaTeX, font changes should
-	    be closed before generating this inset. This is needed for
-	    insets that may contain several paragraphs */
-	virtual bool noFontChange() const { return false; }
-
-	/// mark the inset contents as erased (for change tracking)
-	virtual void markErased() {}
-
-	/// does this inset allows spellchecking?
-	virtual bool allowSpellCheck() const { return true; }
-
-	/** Adds a LaTeX snippet to the Preview Loader for transformation
-	 *  into a bitmap image. Does not start the laoding process.
-	 *
-	 *  Most insets have no interest in this capability, so the method
-	 *  defaults to empty.
-	 */
-	virtual void addPreview(lyx::graphics::PreviewLoader &) const {}
+	bool forceDefaultParagraphs(InsetBase const * inset) const;
 protected:
 	///
 	mutable int xo_;
@@ -196,19 +95,5 @@ public:
 	InsetOld_code(InsetOld::Code val) : val_(val) {}
 	operator InsetOld::Code() const { return val_; }
 };
-
-
-/**
- * returns true if pointer argument is valid
- * and points to an editable inset
- */
-bool isEditableInset(InsetOld const * inset);
-
-
-/**
- * returns true if pointer argument is valid
- * and points to a highly editable inset
- */
-bool isHighlyEditableInset(InsetOld const * inset);
 
 #endif

@@ -15,14 +15,14 @@
 class Buffer;
 class BufferView;
 class FuncRequest;
-class InsetOld;
+class InsetBase;
 class LyXLex;
 
 
 /// creates inset according to 'cmd'
-InsetOld * createInset(BufferView * bv, FuncRequest const & cmd);
+InsetBase * createInset(BufferView * bv, FuncRequest const & cmd);
 
 /// read inset from a file
-InsetOld * readInset(LyXLex & lex, Buffer const & buf);
+InsetBase * readInset(LyXLex & lex, Buffer const & buf);
 
 #endif // FACTORY_H

@@ -37,7 +37,7 @@ auto_ptr<InsetBase> MathColorInset::clone() const
 void MathColorInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(1).metrics(mi, dim);
-	if (editing()) {
+	if (editing(mi.base.bv)) {
 		FontSetChanger dummy(mi.base, "textnormal");
 		cell(0).metrics(mi);
 		dim  += cell(0).dim();
@@ -53,7 +53,7 @@ void MathColorInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathColorInset::draw(PainterInfo & pi, int x, int y) const
 {
-	if (editing()) {
+	if (editing(pi.base.bv)) {
 		FontSetChanger dummy(pi.base, "textnormal");
 		drawMarkers(pi, x, y);
 		drawStrBlack(pi, x, y, "[");

@@ -35,6 +35,19 @@ public:
 	///
 	void drawT(TextPainter & pi, int x, int y) const;
 
+	/// move cursor left
+	bool idxLeft(LCursor & cur) const;
+	/// move cursor right
+	bool idxRight(LCursor & cur) const;
+	/// move cursor up or down
+	bool idxUpDown(LCursor & cur, bool up) const;
+	/// Target pos when we enter the inset from the left by pressing "Right"
+	bool idxFirst(LCursor & cur) const;
+	/// Target pos when we enter the inset from the right by pressing "Left"
+	bool idxLast(LCursor & cur) const;
+	/// can we enter this cell?
+	bool validCell(idx_type i) const { return i == 2 || script_[i]; }
+
 	/// write LaTeX and Lyx code
 	void write(WriteStream & os) const;
 	/// write normalized content
@@ -47,18 +60,6 @@ public:
 	void mathmlize(MathMLStream &) const;
 	/// write content as something readable by Octave
 	void octave(OctaveStream &) const;
-	/// move cursor left
-	bool idxLeft(LCursor &) const;
-	/// move cursor right
-	bool idxRight(LCursor &) const;
-	/// move cursor up or down
-	bool idxUpDown(LCursor &, bool up, int targetx) const;
-	/// Target pos when we enter the inset from the left by pressing "Right"
-	bool idxFirst(LCursor &) const;
-	/// Target pos when we enter the inset from the right by pressing "Left"
-	bool idxLast(LCursor &) const;
-	/// can we enter this cell?
-	bool validCell(idx_type i) const { return i == 2 || script_[i]; }
 
 	/// identifies scriptinsets
 	MathScriptInset const * asScriptInset() const;

@@ -12,6 +12,7 @@
 #include "insetref.h"
 
 #include "buffer.h"
+#include "cursor.h"
 #include "BufferView.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"

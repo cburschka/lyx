@@ -166,7 +166,7 @@ LyXText * ParIterator::text(Buffer & buf) const
 }
 
 
-InsetOld * ParIterator::inset() const
+InsetBase * ParIterator::inset() const
 {
 	//lyxerr << "positions.size: " << pimpl_->positions.size() << std::endl;
 	if (pimpl_->positions.size() <= 1)
@@ -385,7 +385,7 @@ ParIterator::ParIterator(PosIterator const & pos)
 		PosIteratorItem const & it = pos.stack_[i];
 		ParPosition pp(it.pit, *it.pl);
 		if (i < size - 1) {
-			InsetOld * inset = it.pit->getInset(it.pos);
+			InsetBase * inset = it.pit->getInset(it.pos);
 			BOOST_ASSERT(inset);
 			InsetList::iterator beg = it.pit->insetlist.begin();
 			InsetList::iterator end = it.pit->insetlist.end();

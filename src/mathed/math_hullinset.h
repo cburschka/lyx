@@ -47,8 +47,6 @@ public:
 	///
 	bool numberedType() const;
 	///
-	bool display() const;
-	///
 	bool ams() const;
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &,
@@ -98,9 +96,7 @@ public:
 
 protected:
 	///
-	virtual
-	DispatchResult
-	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
+	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 	///
 	std::string eolString(row_type row, bool fragile) const;
 
@@ -132,6 +128,93 @@ private:
 	std::vector<int> nonum_;
 	///
 	std::vector<std::string> label_;
+
+//
+// Incorporate me
+//
+public:
+	/// lowest x coordinate
+	int xlow() const;
+	/// highest x coordinate
+	int xhigh() const;
+	/// lowest y coordinate
+	int ylow() const;
+	/// highest y coordinate
+	int yhigh() const;
+
+
+	/// what appears in the minibuffer when opening
+	virtual std::string const editMessage() const;
+	/// get the absolute document x,y of the cursor
+	virtual void getCursorPos(BufferView & bv, int & x, int & y) const;
+	///
+	virtual void getCursorDim(int &, int &) const;
+	///
+	virtual void insetUnlock(BufferView & bv);
+
+	/// To allow transparent use of math editing functions
+	//virtual void status(FuncRequest const &);
+
+	///
+	virtual bool searchForward(BufferView *, std::string const &,
+				   bool = true, bool = false);
+	///
+	virtual bool searchBackward(BufferView *, std::string const &,
+				    bool = true, bool = false);
+	///
+	virtual bool isTextInset() const { return true; }
+	///
+	virtual void mutateToText();
+	///
+	virtual void revealCodes(LCursor & cur) const;
+	///
+	virtual EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	///
+	bool display() const;
+	///
+	void edit(LCursor & cur, bool);
+	///
+	void edit(LCursor & cur, int, int);
+	///
+	Code MathHullInset::lyxCode() const;
+
+private:
+	/// common base for handling accents
+	void handleAccent(BufferView & bv, std::string const & arg,
+		std::string const & name);
+
+	/// lfun handler
+	DispatchResult lfunMousePress(LCursor &, FuncRequest const &);
+	///
+	DispatchResult lfunMouseRelease(LCursor &, FuncRequest const &);
+	///
+	DispatchResult lfunMouseMotion(LCursor &, FuncRequest const &);
+	///
+	int x() const { return xo_; }
+	///
+	int y() const { return yo_; }
+	///
+	int yo_;
+	///
+	int xo_;
+
+protected:
+
+	/** Find the PreviewLoader, add a LaTeX snippet to it and
+	 *  start the loading process.
+	 *
+	 *  Most insets have no interest in this capability, so the method
+	 *  defaults to empty.
+	 */
+	virtual void generatePreview(Buffer const &) const {}
+
+	///
+	void handleFont(LCursor &, std::string const & arg, std::string const & font);
+	///
+	void handleFont2(LCursor &, std::string const & arg);
 };
 
+// We don't really mess want around with mathed stuff outside mathed.
+// So do it here.
+void mathDispatch(LCursor & cur, FuncRequest const & cmd);
 #endif
