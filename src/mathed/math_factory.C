@@ -221,11 +221,11 @@ void readSymbols(string const & filename)
 		}
 
 		if (theWordList.find(tmp.name) != theWordList.end())
-			lyxerr << "readSymbols: inset " << tmp.name
+			lyxerr[Debug::MATHED] << "readSymbols: inset " << tmp.name
 			       << " already exists.\n";
 		else
 			theWordList[tmp.name] = tmp;
-		lyxerr << "read symbol '" << tmp.name
+		lyxerr[Debug::MATHED] << "read symbol '" << tmp.name
 					<<  "  inset: " << tmp.inset
 					<<  "  draw: " << int(tmp.draw[0])
 					<<  "  extra: " << tmp.extra
