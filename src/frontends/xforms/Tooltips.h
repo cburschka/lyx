@@ -43,9 +43,6 @@ public:
 	/// Are the tooltips on or off?
 	static bool enabled() { return enabled_; }
 
-	/// This method is connected to the tooltipsToggled signal.
-	void set();
-
 #if FL_VERSION < 1 && FL_REVISION < 89
 
 	/** Return the tooltip associated with this object.
@@ -61,6 +58,9 @@ public:
 	static void toggleEnabled();
 
 private:
+
+	/// This method is connected to the Tooltips::toggled signal.
+	void set();
 
 	/// Are the tooltips on or off?
 	static bool enabled_;

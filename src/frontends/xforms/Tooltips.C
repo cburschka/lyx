@@ -81,6 +81,10 @@ void Tooltips::init(FL_OBJECT * ob, string const & tip)
 
 	// Store the tooltip string
 	tooltipsMap[ob] = formatted(str, 400);
+
+	// Set the tooltip
+	char const * const c_str = enabled_ ? str.c_str() : 0;
+	fl_set_object_helper(ob, c_str);
 }
 
 

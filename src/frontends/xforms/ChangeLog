@@ -1,3 +1,10 @@
+2002-10-14  Angus Leeming  <leeming@lyx.org>
+
+	* Tooltips.h (set) make it private:
+	* Tooltips.C (set): don't forget to initialise the FL_OBJECT!
+
+	* FormBase.C (show):
+	* FormBaseDeprecated.C (show): no longer invoke Tooltips::set().
 
 2002-10-14  André Pönitz <poenitz@gmx.net>
 

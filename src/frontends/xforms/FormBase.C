@@ -157,10 +157,6 @@ void FormBase::show()
 			     iconify_policy,
 			     maximize_title.c_str());
 	}
-
-	// For some strange reason known only to xforms, the tooltips can only
-	// be set on a form that is already visible...
-	tooltips().set();
 }
 
 
