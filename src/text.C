@@ -691,10 +691,9 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 			point = i;
 			break;
 		}
-		InsetOld * in;
 		// Break before...	
 		if (i + 1 < last) {
-			in = pit->getInset(i + 1);
+			InsetOld * in = pit->getInset(i + 1);
 			if (in && in->display()) {
 				point = i;
 				break;
@@ -731,15 +730,18 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 		x += thiswidth;
 		chunkwidth += thiswidth;
 
-		in = pit->getInset(i);
+		InsetOld * in = pit->getInset(i);
 
 		// break before a character that will fall off
 		// the right of the row
 		if (x >= width) {
 			// if no break before, break here
-			if (point == last || chunkwidth >= width - left)
-				point = (pos < i) ? i - 1 : i;
-			break;
+			if (point == last || chunkwidth >= width - left) {
+				if (pos < i) {
+					point = i - 1;
+					break;
+				}
+			}
 		}
 
 		if (!in || in->isChar()) {
@@ -1461,9 +1463,9 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 		}
 
 		// Display-style insets should always be on a centred row
-		// (Simplify this to inset = pit->getInset(rit->pos()) once
-		// the "bit silly" bug is fixed, MV)
-		inset = pit->isInset(rit->pos()) ? pit->getInset(rit->pos()) : 0;
+		// The test on pit->size() is to catch zero-size pars, which
+		// would trigger the assert in Paragraph::getInset().
+		inset = pit->size() ? pit->getInset(rit->pos()) : 0;
 		if (inset && inset->display()) {
 			align = LYX_ALIGN_CENTER;
 		}

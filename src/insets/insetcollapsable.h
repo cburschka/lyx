@@ -120,6 +120,8 @@ public:
 	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
+	virtual bool display() const { return isOpen(); }
+	///
 	bool isOpen() const;
 	///
 	void open(BufferView *);

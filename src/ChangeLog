@@ -1,3 +1,9 @@
+2003-10-21  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* text.C: (1) finish off the inset display() work;
+	(2) fix the "is a bit silly" bug (accessing char
+	past end of par).
+
 2003-10-20  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* text.C: re-introduce display() for insets, fixing the

@@ -38,6 +38,8 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	virtual bool display() const { return true; }
 
 	/// get the parameters
 	InsetCommandParams const & params(void) const;
