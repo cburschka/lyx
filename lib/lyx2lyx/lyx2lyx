@@ -33,6 +33,7 @@ opt = struct()
 
 opt.output = sys.stdout
 opt.input = sys.stdin
+opt.err = sys.stderr
 opt.start = None
 opt.end = None
 opt.quiet = 0
@@ -52,6 +53,7 @@ Options:
     -l, --list			list all available formats
     -d, --debug level		level=0..2 (O_ no debug information,2_verbose)
 				default: level=1
+    -e, --err error_file	name of the error file or else goes to stderr
     -f, --from version		initial version (optional)
     -t, --to version		final version (optional)
     -o, --output name		name of the output file or else goes to stdout
@@ -59,9 +61,9 @@ Options:
 
 
 def parse_options(argv):
-    _options =  ["help", "version", "list", "debug=", "from=", "to=", "output=", "quiet"]
+    _options =  ["help", "version", "list", "debug=", "err=", "from=", "to=", "output=", "quiet"]
     try:
-       opts, args = getopt.getopt(argv[1:], "d:f:hlo:qt:v", _options)
+       opts, args = getopt.getopt(argv[1:], "d:e:f:hlo:qt:v", _options)
     except getopt.error:
         usage()
         sys.exit(2)
@@ -87,6 +89,8 @@ def parse_options(argv):
             opt.start = lyxformat(a)
         if o in ("-t", "--to"):
             opt.end = lyxformat(a)
+        if o in ("-e","--err"):
+            opt.err = open(a, "w")
 
     if not opt.end:
         opt.end = lst_ft[len(lst_ft)-1]
@@ -105,13 +109,13 @@ def lyxformat(fmt):
     if result:
         fmt = int(result.group(1) + result.group(2))
     else:
-        sys.stderr.write(str(fmt) + ": " + error.invalid_format)
+        opt.err.write(str(fmt) + ": " + error.invalid_format)
         sys.exit(2)
 
     if fmt in lst_ft:
         return fmt
 
-    sys.stderr.write(fmt + ": " + error.format_not_supported)
+    opt.err.write(fmt + ": " + error.format_not_supported)
     sys.exit(1)
 
 def read_file(file, header, body):
@@ -122,7 +126,7 @@ def read_file(file, header, body):
     while 1:
         line = file.readline()
         if not line:
-            sys.stderr.write(error.invalid_file)
+            opt.err.write(error.invalid_file)
             sys.exit(3)
 
         line = line[:-1]
@@ -149,7 +153,7 @@ def read_file(file, header, body):
         body.append(line[:-1])
 
     if not fmt:
-        sys.stderr.write(error.invalid_file)
+        opt.err.write(error.invalid_file)
         sys.exit(3)
     return fmt
 
@@ -168,7 +172,7 @@ def main(argv):
 
     if opt.start:
         if opt.start != fmt:
-            sys.stderr.write("%s: %s %s\n" % (warning.dont_match, opt.start, fmt))
+            opt.err.write("%s: %s %s\n" % (warning.dont_match, opt.start, fmt))
     else:
         opt.start = fmt
 

@@ -1,5 +1,6 @@
 # This file is part of lyx2lyx
-# Copyright (C) 2002 Dekel Tsur <dekel@lyx.org>, José Matos <jamatos@lyx.org>
+# -*- coding: iso-8859-1 -*-
+# Copyright (C) 2002-2003 Dekel Tsur <dekel@lyx.org>, José Matos <jamatos@lyx.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
