@@ -17,6 +17,8 @@
 	* insetwrap.C:
 	* updatableinset.[Ch]: rip out "deep update"
 
+	* insettext.C (localDispatch): merge cases with default branch
+
 2003-08-04  André Pönitz  <poenitz@gmx.net>
 
 	* insettext.[Ch] (updateLocal): remove 'what' argument by assuimng it
@@ -44,7 +46,7 @@
 2003-07-30  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	(with help from Juergen Spitzmueller)
-        * insetnote.C: add add i18n support. Use Prefs-definable
+	* insetnote.C: add add i18n support. Use Prefs-definable
 	colours for Comment and Greyedout.
 
 2003-07-30	Martin Vermeer  <martin.vermeer@hut.fi>

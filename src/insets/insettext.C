@@ -1093,32 +1093,6 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 	}
 	break;
 
-	// These need to do repaints but don't require
-	// special handling otherwise. A *lot* of the
-	// above could probably be done similarly ...
-
-	case LFUN_HOME:
-	case LFUN_END:
-	case LFUN_WORDLEFT:
-	case LFUN_WORDRIGHT:
-	// these two are really unhandled ...
-	case LFUN_ENDBUF:
-	case LFUN_BEGINNINGBUF:
-		if (!bv->dispatch(cmd))
-			result = UNDISPATCHED;
-		break;
-
-	case LFUN_RIGHTSEL:
-	case LFUN_UPSEL:
-	case LFUN_DOWNSEL:
-	case LFUN_LEFTSEL:
-	case LFUN_HOMESEL:
-	case LFUN_ENDSEL:
-	case LFUN_WORDLEFTSEL:
-	case LFUN_WORDRIGHTSEL:
-
-		// fallthrough
-
 	default:
 		if (!bv->dispatch(cmd))
 			result = UNDISPATCHED;
