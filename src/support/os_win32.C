@@ -72,16 +72,22 @@ void os::init(int /* argc */, char * argv[])
 #endif
 }
 
-void os::warn(string mesg) {
+
+void os::warn(string mesg)
+{
 	MessageBox(0, mesg.c_str(), "LyX error",
 	MB_OK|MB_ICONSTOP|MB_SYSTEMMODAL);
 }
 
-string os::current_root() {
+
+string os::current_root()
+{
 	return string("/");
 }
 
-string::size_type os::common_path(string const &p1, string const &p2) {
+
+string::size_type os::common_path(string const &p1, string const &p2)
+{
 	string::size_type i = 0,
 			p1_len = p1.length(),
 			p2_len = p2.length();
@@ -95,6 +101,7 @@ string::size_type os::common_path(string const &p1, string const &p2) {
 	return i;
 }
 
+
 string os::external_path(string const & p)
 {	
 	string dos_path;
@@ -102,9 +109,9 @@ string os::external_path(string const & p)
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	// Translate from cygwin path syntax to dos path syntax
 	if (is_absolute_path(p)) {
-		char dp[MAX_PATH];
+		char dp[MAX_PATH+1];
 		cygwin_conv_to_full_win32_path(p.c_str(), dp);
-		dos_path = !dp ? "" : dp;
+		dos_path = !dp ? string() : dp;
 	}
 
 	else return p;
@@ -112,7 +119,7 @@ string os::external_path(string const & p)
 	dos_path = p;
 #endif
 	
-	//No backslashes in LaTeX files
+	// No backslashes in LaTeX files
 	dos_path = subst(dos_path,'\\','/');
 
 	lyxerr[Debug::LATEX]
@@ -123,14 +130,10 @@ string os::external_path(string const & p)
 }
 
 
-// (Claus H.) Parsing the latex log file in an Win32 environment all
-// files are mentioned in Win32/DOS syntax. Because LyX uses the dep file
-// entries to check if any file has been changed we must retranslate
-// the Win32/DOS pathnames into Cygwin pathnames.
 string os::internal_path(string const & p)
 {
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
-	char posix_path[MAX_PATH];
+	char posix_path[MAX_PATH+1];
 	posix_path[0] = '\0';
 	cygwin_conv_to_posix_path(p.c_str(), posix_path);
 	return posix_path;
@@ -138,6 +141,7 @@ string os::internal_path(string const & p)
 	return subst(p,"\\","/");
 #endif
 }
+
 
 // (Claus H.) On Win32 both Unix and Win32/DOS pathnames are used.
 // Therefore an absolute path could be either a pathname starting
@@ -147,14 +151,12 @@ string os::internal_path(string const & p)
 // of the colon in the 2nd position seems to be enough!
 bool os::is_absolute_path(string const & p)
 {
-	if (p.empty())
-		return false;
-
-	bool isDosPath = (p.length() > 1 && p[1] == ':');
-	bool isUnixPath = (p[0] == '/');
+	bool const isDosPath  = (p.size() > 1 && p[1] == ':');
+	bool const isUnixPath = (p.size() > 0 && p[0] == '/');
 
 	return isDosPath | isUnixPath;
 }
+
 
 // returns a string suitable to be passed to fopen when
 // reading a file
@@ -162,6 +164,7 @@ char const * os::read_mode()
 {
 	return "rb";
 }
+
 
 // returns a string suitable to be passed to popen when
 // reading a pipe
