@@ -859,7 +859,8 @@ bool Parser::parse_normal(MathAtom & matrix)
 	}
 
 	if (cs != "begin") {
-		lyxerr << "'begin' of un-simple math expected, got '" << cs << "'\n";
+		lyxerr[Debug::MATHED]
+			<< "'begin' of un-simple math expected, got '" << cs << "'\n";
 		return false;
 	}
 
