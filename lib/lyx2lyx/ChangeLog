@@ -1,3 +1,24 @@
+2004-04-14  José Matos  <jamatos@lyx.org>
+
+	* error.py
+	* lyxconvert_*
+	* lyxrevert_*: removed
+
+	* lyx_0_12.py
+	* lyx_1_0_0.py
+	* lyx_1_0_1.py
+	+ lyx_1_1_4.py
+	* lyx_1_1_5.py
+	* lyx_1_1_6.py
+	* lyx_1_1_6fix3.py
+	* lyx_1_2.py
+	* lyx_1_3.py
+	* lyx_1_4.py: Added file with the same content as the previous that
+	were removed.
+
+	* lyx2lyx
+	* parser_tools.py: reworked for better modularity.
+
 2004-03-31  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyxconvert_229.py (convert_jurabib): new, add use_jurabib flag
