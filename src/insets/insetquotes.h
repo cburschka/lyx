@@ -67,6 +67,8 @@ public:
 	InsetQuotes(std::string const & str = "eld");
 	/// Create the right quote inset after character c
 	InsetQuotes(char c, BufferParams const & params);
+	/// Direct access to inner/outer quotation marks
+	InsetQuotes(char c, quote_language l, quote_times t);
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
@@ -97,7 +99,7 @@ public:
 	void validate(LaTeXFeatures &) const;
 	///
 	InsetOld::Code lyxCode() const;
-	// should this inset be handled like a normal charater
+	// should this inset be handled like a normal character
 	bool isChar() const { return true; }
 
 private:
@@ -112,6 +114,8 @@ private:
 	    side and the multiplicity of the quote.
 	 */
 	InsetQuotes(quote_language l, quote_side s, quote_times t);
+	/// Decide whether we need left or right quotation marks
+	void getPosition(char c);
 	///
 	void parseString(std::string const &);
 	///

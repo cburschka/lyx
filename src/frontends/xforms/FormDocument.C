@@ -270,8 +270,6 @@ void FormDocument::build()
 	bcview().addReadOnly(language_->combox_language);
 	bcview().addReadOnly(language_->choice_inputenc);
 	bcview().addReadOnly(language_->choice_quotes_language);
-	bcview().addReadOnly(language_->radio_single);
-	bcview().addReadOnly(language_->radio_double);
 
 	fl_addto_choice(language_->choice_inputenc,
 			"default|auto|latin1|latin2|latin3|latin4|latin5|latin9"
@@ -973,10 +971,6 @@ bool FormDocument::language_apply(BufferParams & params)
 		break;
 	}
 	params.quotes_language = lga;
-	if (fl_get_button(language_->radio_single))
-		params.quotes_times = InsetQuotes::SingleQ;
-	else
-		params.quotes_times = InsetQuotes::DoubleQ;
 
 	int const pos = fl_get_combox(language_->combox_language);
 	Language const * new_language = languages.getLanguage(lang_[pos-1]);
@@ -1154,12 +1148,6 @@ void FormDocument::language_update(BufferParams const & params)
 
 	fl_set_choice_text(language_->choice_inputenc, params.inputenc.c_str());
 	fl_set_choice(language_->choice_quotes_language, params.quotes_language + 1);
-	fl_set_button(language_->radio_single, 0);
-	fl_set_button(language_->radio_double, 0);
-	if (params.quotes_times == InsetQuotes::SingleQ)
-		fl_set_button(language_->radio_single, 1);
-	else
-		fl_set_button(language_->radio_double, 1);
 }
 
 

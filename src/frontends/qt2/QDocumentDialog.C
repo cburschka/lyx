@@ -88,8 +88,6 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(biblioModule->natbibCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	// language & quote
-	connect(langModule->singleQuoteRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(langModule->doubleQuoteRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(langModule->languageCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(langModule->encodingCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));

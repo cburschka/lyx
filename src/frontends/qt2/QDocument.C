@@ -194,11 +194,6 @@ void QDocument::apply()
 		dialog_->biblioModule->citeStyleCO->currentItem();
 
 	// language & quotes
-	if (dialog_->langModule->singleQuoteRB->isChecked())
-		params.quotes_times = InsetQuotes::SingleQ;
-	else
-		params.quotes_times = InsetQuotes::DoubleQ;
-
 	if (dialog_->langModule->defaultencodingCB->isChecked()) {
 		params.inputenc = "auto";
 	} else {
@@ -449,11 +444,6 @@ void QDocument::update_contents()
 		params.use_numerical_citations ? 1 : 0);
 
 	// language & quotes
-	dialog_->langModule->singleQuoteRB->setChecked(
-		params.quotes_times == InsetQuotes::SingleQ);
-	dialog_->langModule->doubleQuoteRB->setChecked(
-		params.quotes_times == InsetQuotes::DoubleQ);
-
 	int const pos = int(findPos(lang_,
 				    params.language->lang()));
 	dialog_->langModule->languageCO->setCurrentItem(pos);

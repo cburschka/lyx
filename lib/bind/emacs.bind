@@ -69,7 +69,8 @@
 \bind "C-~S-slash"             "undo"
 \bind "C-~S-underscore"        "undo"
 
-\bind "~S-C-quotedbl"           "self-insert \""
+\bind "~S-C-quotedbl"           "quote-insert single"
+\bind "~S-M-quotedbl"           "self-insert \""
 
 \bind "C-x a"                  "buffer-auto-save"
 #\bind "C-x b"                 "buffer-previous"

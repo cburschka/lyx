@@ -1,3 +1,14 @@
+2004-02-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* bind/cua.bind:
+	* bind/emacs.bind:
+	* bind/sciword.bind:
+	* bind/xemacs.bind: added binding for "quote-insert single"
+	NB: Still TODO for aqua.bind (see FIXME)
+	
+	* ui/classic.ui:
+	* ui/stdmenus.ui: added "quote-insert single"
+
 2004-02-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* kbd/espanol.kmap: new file from David Raymond

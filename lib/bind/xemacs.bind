@@ -73,7 +73,8 @@
 \bind "C-~S-slash"             "undo"
 \bind "C-~S-underscore"        "undo"
 
-\bind "~S-C-quotedbl"           "self-insert \""
+\bind "~S-C-quotedbl"           "quote-insert single"
+\bind "~S-M-quotedbl"           "self-insert \""
 
 \bind "C-x a"                  "buffer-auto-save"
 # not currently supported
@@ -204,8 +205,8 @@
 \bind "C-Return"		"break-line"
 \bind "C-S-L"			"ligature-break-insert"
 \bind "C-space"			"space-insert protected"
-\bind "C-M-space"			"space-insert normal"
-\bind "S-C-space"			"space-insert thin"
+\bind "C-M-space"		"space-insert normal"
+\bind "S-C-space"		"space-insert thin"
 \bind "C-period"		"end-of-sentence-period-insert"
 \bind "M-period"		"dots-insert"
 \bind "M-w"			"copy"

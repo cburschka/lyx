@@ -126,3 +126,9 @@ void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 
 	pi.pain.lines(xp, yp, 3, LColor::eolmarker);
 }
+
+
+bool InsetNewline::isSpace() const
+{
+	return true;
+}

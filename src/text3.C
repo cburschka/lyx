@@ -45,6 +45,7 @@
 #include "insets/insetcommand.h"
 #include "insets/insetfloatlist.h"
 #include "insets/insetnewline.h"
+#include "insets/insetquotes.h"
 #include "insets/insetspecialchar.h"
 #include "insets/insettext.h"
 
@@ -1028,11 +1029,22 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			c = par.getChar(pos - 1);
 
 		LyXLayout_ptr const & style = par.layout();
-
+		
 		BufferParams const & bufparams = bv->buffer()->params();
-		if (style->pass_thru ||
-		    par.getFontSettings(bufparams, pos).language()->lang() == "hebrew")
-		  cur.insert(new InsetQuotes(c, bufparams));
+		if (!style->pass_thru
+		    && par.getFontSettings(bufparams, pos).language()->lang() != "hebrew") {
+		    	string arg = cmd.argument;
+			if (arg == "single")
+				cur.insert(new InsetQuotes(c,
+				    bufparams.quotes_language, 
+				    InsetQuotes::SingleQ));
+			else if (arg == "double")
+				cur.insert(new InsetQuotes(c,
+				    bufparams.quotes_language, 
+				    InsetQuotes::DoubleQ));
+			else
+		  		cur.insert(new InsetQuotes(c, bufparams));
+			}
 		else
 			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
 		break;

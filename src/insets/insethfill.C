@@ -79,3 +79,9 @@ void InsetHFill::write(Buffer const &, ostream & os) const
 {
 	os << "\n\\hfill \n";
 }
+
+
+bool InsetHFill::isSpace() const
+{
+	return true;
+}

@@ -1,3 +1,10 @@
+2004-02-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QDocument.C:
+	* QDocumentDialog.C: 
+	* ui/LanguageModuleBase.ui: get rid of the single/double 
+	quote toggle (accessible via lfuns now).
+
 2004-02-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QRef.[Ch]: Real fix for bug 1511 (restore latest settings);

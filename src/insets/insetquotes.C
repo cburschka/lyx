@@ -94,12 +94,23 @@ InsetQuotes::InsetQuotes(quote_language l, quote_side s, quote_times t)
 InsetQuotes::InsetQuotes(char c, BufferParams const & params)
 	: language_(params.quotes_language), times_(params.quotes_times)
 {
+	getPosition(c);
+}
+
+
+InsetQuotes::InsetQuotes(char c, quote_language l, quote_times t)
+	: language_(l), times_(t)
+{
+	getPosition(c);
+}
+
+
+void InsetQuotes::getPosition(char c)
+{
 	// Decide whether left or right
 	switch (c) {
 	case ' ': case '(':
-#warning eh ? I am lost here ...
-	//case Paragraph::META_HFILL:
-	// case Paragraph::META_NEWLINE:
+	// FIXME: what about '['? (jspitzm)
 		side_ = LeftQ;   // left quote
 		break;
 	default:

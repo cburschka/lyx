@@ -72,7 +72,8 @@
 \bind "C-S-Z"			"redo"
 
 \bind "C-S-E"			"track-changes"  # it's what MS Word uses
-\bind "~S-C-quotedbl"		"self-insert \""
+\bind "~S-C-quotedbl"		"quote-insert single"
+\bind "M-S-quotedbl"		"self-insert \""
 \bind "C-minus"			"hyphenation-point-insert"
 \bind "M-S-Right"		"depth-increment"
 \bind "M-S-Left"		"depth-decrement"

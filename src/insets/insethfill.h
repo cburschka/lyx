@@ -43,6 +43,9 @@ public:
 	void write(Buffer const & buf, std::ostream & os) const;
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
+	/// is this equivalent to a space (which is BTW different from
+	// a line separator)?
+	bool isSpace() const;
 
 };
 

@@ -1,3 +1,9 @@
+2004-02-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* FormDocument.C:
+	* forms/form_document.fd: get rid of the single/double 
+	quote toggle (accessible via lfuns now).
+
 2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* FormFloat.C (update): "c" -> 'c' in calls to contains
