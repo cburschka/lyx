@@ -1,3 +1,31 @@
+2000-10-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* config/kde.m4: fix consecutive ./configure runs,
+	look for qtarch, fix library order
+
+	* src/frontends/kde/Makefile.am: tidy up,
+	add Print dialog, add .dlg dependencies
+
+	* src/frontends/kde/FormPrint.C:
+	* src/frontends/kde/FormPrint.h:
+	* src/frontends/kde/formprintdialog.C:
+	* src/frontends/kde/formprintdialog.h:
+	* src/frontends/kde/formprintdialogdata.C:
+	* src/frontends/kde/formprintdialogdata.h:
+	* src/frontends/kde/dlg/formprintdialog.dlg: add
+	print dialog
+
+	* src/frontends/kde/dlg/README: Added explanatory readme
+	
+	* src/frontends/kde/dlg/checkinitorder.pl: small perl
+	script to double-check qtarch's output
+
+	* src/frontends/kde/formindexdialog.C:
+	* src/frontends/kde/formindexdialogdata.C:
+	* src/frontends/kde/formindexdialogdata.h:
+	* src/frontends/kde/dlg/formindexdialog.dlg: update
+	for qtarch, minor fixes
+
 2000-10-05  Allan Rae  <rae@lyx.org>
 
 	* src/BufferView_pimpl.C (buffer): don't hide all buffer dependent

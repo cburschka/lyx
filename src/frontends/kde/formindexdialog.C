@@ -57,11 +57,11 @@ void FormIndexDialog::setReadOnly(bool readonly)
     if (readonly) {
 	index->setFocusPolicy(QWidget::NoFocus);
 	buttonOk->setEnabled(false);
-	buttonCancel->setText(_("Close"));
+	buttonCancel->setText(_("&Close"));
     } else {
 	index->setFocusPolicy(QWidget::StrongFocus);
 	index->setFocus();
 	buttonOk->setEnabled(true);
-	buttonCancel->setText(_("Cancel"));
+	buttonCancel->setText(_("&Cancel"));
     }
 }

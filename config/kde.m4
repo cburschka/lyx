@@ -633,6 +633,8 @@ dnl should check it's not Qt2, so it will fail now, rather than in KDE check
 
 SAVE_CXXFLAGS="$CXXFLAGS"
 CXXFLAGS="$CXXFLAGS -I$qt_includes -L$qt_libraries"
+dnl specify we are definitely C++ compiling first
+AC_LANG_CPLUSPLUS
 AC_TRY_COMPILE([
 #include <qglobal.h>
 ],
@@ -836,7 +838,7 @@ AC_DEFUN(KDE_CREATE_LIBS_ALIASES,
 [
    AC_REQUIRE([KDE_MISC_TESTS])
 
-   KDE_LIBS='-lqt -lkdecore -lkdeui -lkfm -lkfile'
+   KDE_LIBS='-lkfile -lkfm -lkdeui -lkdecore -lqt'
    AC_SUBST(KDE_LIBS)
 #   LIB_X11='-lX11 $(LIBSOCKET)'
 #   AC_SUBST(LIB_X11)
@@ -1230,6 +1232,7 @@ AC_DEFUN(KDE_DO_IT_ALL,
 AC_PREFIX_DEFAULT(${KDEDIR:-/usr/local/kde})
 KDE_PROG_LIBTOOL
 AC_PATH_KDE
+AC_PATH_PROG(QTARCH, "qtarch",qtarch-notinstalled)
 ])
 
 AC_DEFUN(AC_CHECK_RPATH,

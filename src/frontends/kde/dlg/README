@@ -1,0 +1,61 @@
+These files are generated with qtarch-1.4-5 which can be downloaded
+from 
+
+http://qtarch.sourceforge.net/
+
+FIXME. Note this is *not* the latest version, as they only
+support Qt 2.0.
+
+You should compile in the KDE module when you compile qtarch-1.4.
+For me this was just a case of a make in the module/kde/ directory,
+and then you can add the .so library file in the qtarch GUI.
+
+Note that the formsomethingdialogdata.* files are automatically
+generated, but the derived class files are *not* (i.e. they have
+been edited by hand). So you should only ever generate the base
+class files, and then propogate any changes into the derived class
+by hand.
+
+Some tips and guidelines for qtarch and the KDE frontend :
+
+o the default button should be the one that causes least harm, unless
+  the action can be undone. So Print should default to cancel, whereas
+  insert index entry can be undone, so should default to OK
+
+o the dialog should derive from QWidget (set in Properties)
+
+o the dialog should always have the gettext option set
+
+o give every widget a name - useful for the geometry layouts later
+
+o don't bother setting min/max sizes for anything, but do set the size Hint
+  stuff appropriately. e.g. QLineEdit's should have a max height specified by
+  size Hint, but variable width
+
+o if you map a variable make it the same as the widget name
+
+o radio groups are done automagically based on positioning
+ 
+o grid units are 5 pixels
+
+o set alignment before placing a widget inside a layout, it doesn't seem to
+  update properly. Alternatively you can just edit the .dlg file directly
+
+o push buttons are arranged symmetrically across the dialog e.g.  
+  <1 stretch> <button> <2 stretch> <button> <2 stretch> <button> <1 stretch>
+
+o for GroupBox and similar, you set the children in the layout manager
+ 
+o do the geometry layouts last. you cannot alter the geometry of widgets
+  whilst they're being managed which makes any settings a pain, which
+  are useful mainly while editing the dialog in qtarch
+  
+o when doing layout, add all the layouts before any of the widgets otherwise
+  qtarch has a tendency to get confused
+
+o qtarch often produces code that initialises stuff in the wrong order. 
+  This is nasty, but usually dumps core so is noticable. Either way, the 
+  cheesy perl script checkinitorder.pl will verify the produced files for 
+  you - if it complains you need to hack the .dlg file to re-arrange the order.
+
+	- jbl
