@@ -371,12 +371,6 @@ Paragraph & ParagraphList::back()
 }
 
 
-void ParagraphList::set(Paragraph * p)
-{
-	parlist = p;
-}
-
-
 void ParagraphList::push_back(Paragraph * p)
 {
 #ifndef NO_NEXT
