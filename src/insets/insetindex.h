@@ -62,6 +62,8 @@ public:
 	///
 	InsetOld::Code lyxCode() const;
 	///
+	bool display() const { return true; }
+	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;

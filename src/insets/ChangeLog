@@ -1,3 +1,12 @@
+2003-10-22  Angus Leeming  <leeming@lyx.org>
+
+	* insetcommand.h: remove the display method.
+
+	* insetbibtex.h:
+	* insetfloatlist.h:
+	* insetindex.h (InsetPrintIndex):
+	* insettoc.h: add a display method, returning true.
+
 2003-10-21  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetcollapsable.h:

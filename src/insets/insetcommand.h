@@ -55,8 +55,6 @@ public:
 	virtual int docbook(Buffer const &, std::ostream &, bool) const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::NO_CODE; }
-	///
-	virtual bool display() const { return true; }
 	
 	///
 	InsetCommandParams const & params() const { return p_; }

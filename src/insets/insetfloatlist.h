@@ -40,6 +40,8 @@ public:
 	///
 	InsetOld::Code lyxCode() const;
 	///
+	bool display() const { return true; }
+	///
 	void write(Buffer const &, std::ostream &) const;
 	///
 	void read(Buffer const &, LyXLex &);

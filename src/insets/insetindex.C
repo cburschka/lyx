@@ -56,7 +56,7 @@ void InsetPrintIndex::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetPrintIndex::draw(PainterInfo & pi, int x, int y) const
 {
-		    InsetCommand::draw(pi, x + center_indent_, y);
+	InsetCommand::draw(pi, x + center_indent_, y);
 }
 
 

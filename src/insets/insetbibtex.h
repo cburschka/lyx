@@ -37,6 +37,8 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::BIBTEX_CODE; }
 	///
+	bool display() const { return true; }
+	///
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///

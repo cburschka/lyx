@@ -41,6 +41,8 @@ public:
 	///
 	InsetOld::Code lyxCode() const;
 	///
+	bool display() const { return true; }
+	///
 	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
 	int linuxdoc(Buffer const &, std::ostream &) const;
