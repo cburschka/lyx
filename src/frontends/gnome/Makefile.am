@@ -10,7 +10,6 @@ libgnome_la_OBJADD = \
         ../xforms/FormBase.lo \
 	../xforms/FormCitation.lo \
 	../xforms/form_citation.lo \
-	../xforms/FormCommand.lo \
 	../xforms/FormDocument.lo \
 	../xforms/form_document.lo \
         ../xforms/FormError.lo \
@@ -19,6 +18,7 @@ libgnome_la_OBJADD = \
 	../xforms/form_graphics.lo \
 	../xforms/FormIndex.lo \
 	../xforms/form_index.lo \
+	../xforms/FormInset.lo \
 	../xforms/FormParagraph.lo \
 	../xforms/form_paragraph.lo \
 	../xforms/FormPreferences.lo \

@@ -54,7 +54,7 @@ void FormIndex::showIndex(InsetCommand * const inset)
  
 void FormIndex::createIndex(string const & arg)
 {
-	// we could already be showing a URL, clear it out
+	// we could already be showing an index entry, clear it out
 	if (inset_)
 		close();
  
@@ -71,7 +71,7 @@ void FormIndex::update(bool switched)
 	}
 
 	dialog_->setIndexText(params.getContents().c_str());
-//	dialog_->setReadOnly(readonly);
+	dialog_->setReadOnly(readonly);
 }
  
 void FormIndex::apply()
@@ -93,11 +93,7 @@ void FormIndex::apply()
 void FormIndex::show()
 {
 	if (!dialog_)
-#if 1
 		dialog_ = new FormIndexDialog(this, 0, _("LyX: Index"));
-#else
-		dialog_ = new FormIndexDialog(this, 0, _("LyX: Index"), false);
-#endif
  
 	if (!dialog_->isVisible()) {
 		h_ = d_->hideBufferDependent.connect(slot(this, &FormIndex::hide));

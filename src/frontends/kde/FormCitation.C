@@ -72,6 +72,14 @@ void FormCitation::createCitation(string const & arg)
 
 void FormCitation::updateButtons()
 { 
+	if (readonly) {
+		dialog_->add->setEnabled(false);
+		dialog_->remove->setEnabled(false);
+		dialog_->up->setEnabled(false);
+		dialog_->down->setEnabled(false);
+		return;
+	}
+
 	bool ischosenkey = !selectedChosenKey.empty();
  
 	vector<string>::const_iterator iter = 
@@ -316,6 +324,9 @@ void FormCitation::down()
  
 void FormCitation::select_key(const char *key)
 {
+	if (readonly)
+		return;
+
 	vector<string>::const_iterator iter = 
 		find(chosenkeys.begin(), chosenkeys.end(), key);
 
@@ -330,6 +341,9 @@ void FormCitation::select_key(const char *key)
  
 void FormCitation::highlight_key(const char *key)
 {
+	if (readonly)
+		return;
+
 	selectedKey.erase();
 	selectedKey = key;
 
@@ -338,9 +352,6 @@ void FormCitation::highlight_key(const char *key)
 			dialog_->entry->setText(keys[i].second.c_str());
 			dialog_->chosen->clearFocus();
 			dialog_->chosen->clearSelection();
-			dialog_->up->setEnabled(false);
-			dialog_->down->setEnabled(false);
-			dialog_->remove->setEnabled(false);
 			selectedChosenKey.erase();
 			break;
 		}
@@ -362,7 +373,6 @@ void FormCitation::highlight_chosen(const char *key)
 				dialog_->entry->setText(keys[i].second.c_str());
 			dialog_->keys->clearFocus();
 			dialog_->keys->clearSelection();
-			dialog_->add->setEnabled(false);
 			selectedKey.erase();
 			break;
 		}

@@ -1,3 +1,13 @@
+2000-10-13  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/frontends/gnome/Makefile.am:
+	* src/frontends/kde/Makefile.am:  FormCommand.C
+	disappeared from xforms
+
+	* src/frontends/kde/FormCitation.C:
+	* src/frontends/kde/FormIndex.C: read-only
+	correctness 
+
 2000-10-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/lyxfunctional.h (void_class_fun_t): fix name of
@@ -9,8 +19,7 @@
 
 	* src/support/lyxfunctional.h: version of class_fun for void
 	returns added, const versions of back_inseter_fun and compare_fun
-	added.
-	
+	added.	
 
 2000-10-13  Angus Leeming <a.leeming@ic.ac.uk>
 
