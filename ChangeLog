@@ -1,3 +1,32 @@
+2000-07-28  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/xforms/FormPreferences.C (build): Setup input return
+	checking.  NOTE: It seems that pressing ESC to cancel the dialog also
+	triggers the callback for input checking. As a result we sometimes get
+	"LyX: This shouldn't happen..." printed to cerr.
+	(input): Started using status variable since I only free() on 
+	destruction.  Some input checking for paths and font sizes.
+
+	* src/frontends/xforms/FormPreferences.h: Use status to control 
+	activation of Ok and Apply
+
+	* src/frontends/xforms/forms/form_preferences.fd: Setup input return
+	callback.  Also resized to stop segfaults with 0.88.  The problem is
+	that xforms-0.88 requires the folder to be wide enough to fit all the
+	tabs.  If it isn't it causes all sorts of problems.
+
+	* src/frontends/xforms/FormCopyright.[hC]: forward declare FD_form...
+
+	* src/frontends/xforms/forms/README: Reflect reality.
+
+	* src/frontends/xforms/forms/fdfix.sh: Clean up comments
+	* src/frontends/xforms/forms/makefile: ditto.
+
+	* src/commandtags.h: Get access to new Preferences dialog
+	* src/LyXAction.C: ditto
+	* src/lyxfunc.C: ditto
+	* lib/ui/default.ui: ditto
+
 2000-07-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/forms/makefile (.c.C): change call to fdfix.sh.

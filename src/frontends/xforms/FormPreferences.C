@@ -19,6 +19,8 @@
 #include "Dialogs.h"
 #include "lyxrc.h"
 #include "debug.h"
+#include "support/FileInfo.h"
+#include "support/filetools.h"
 #include "lyx_gui_misc.h"
 #include "gettext.h"
 
@@ -36,7 +38,7 @@ C_GENERICCB(FormPreferences, InputCB)
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: dialog_(0), bind_(0), misc_(0), screen_fonts_(0),
 	  interface_fonts_(0), printer_(0), paths_(0),
-	  lv_(lv), d_(d), u_(0), h_(0)
+	  lv_(lv), d_(d), u_(0), h_(0), status(DIALOG_UNMODIFIED)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -61,6 +63,63 @@ void FormPreferences::build()
 	printer_ = build_printer();
 	paths_ = build_paths();
 
+	// setup the input returns
+	// Bind tab
+	fl_set_input_return(bind_->input_bind, FL_RETURN_CHANGED);
+	// Misc tab
+	fl_set_counter_return(misc_->counter_autosave, FL_RETURN_CHANGED);
+	fl_set_counter_return(misc_->counter_line_len, FL_RETURN_CHANGED);
+	// Screen fonts
+	fl_set_input_return(screen_fonts_->input_roman, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_sans, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_typewriter,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_encoding, FL_RETURN_CHANGED);
+	fl_set_counter_return(screen_fonts_->counter_zoom, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_tiny, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_script, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_footnote, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_small, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_normal, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_large, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_larger, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_largest, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_huge, FL_RETURN_CHANGED);
+	fl_set_input_return(screen_fonts_->input_huger, FL_RETURN_CHANGED);
+	// interface fonts
+	fl_set_input_return(interface_fonts_->input_popup_font,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(interface_fonts_->input_menu_font,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(interface_fonts_->input_encoding,
+			    FL_RETURN_CHANGED);
+	// printer
+	fl_set_input_return(printer_->input_command, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_page_range, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_copies, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_reverse, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_to_printer, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_file_extension, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_spool_command, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_paper_type, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_even_pages, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_odd_pages, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_collated, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_landscape, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_to_file, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_extra_options, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_spool_prefix, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_paper_size, FL_RETURN_CHANGED);
+	fl_set_input_return(printer_->input_name, FL_RETURN_CHANGED);
+	// paths
+	fl_set_input_return(paths_->input_default_path, FL_RETURN_CHANGED);
+	fl_set_input_return(paths_->input_template_path, FL_RETURN_CHANGED);
+	fl_set_input_return(paths_->input_temp_dir, FL_RETURN_CHANGED);
+	fl_set_input_return(paths_->input_lastfiles, FL_RETURN_CHANGED);
+	fl_set_input_return(paths_->input_backup_path, FL_RETURN_CHANGED);
+	fl_set_counter_return(paths_->counter_lastfiles, FL_RETURN_CHANGED);
+
+	// Now add them to the tabfolder
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Bindings"),
 			   bind_->form_bind);
@@ -82,6 +141,21 @@ void FormPreferences::build()
 
 	fl_set_form_atclose(dialog_->form_preferences,
 			    C_FormPreferencesWMHideCB, 0);
+
+	// deactivate the various browse buttons because they
+	// currently aren't implemented
+	fl_deactivate_object(bind_->button_bind_file_browse);
+	fl_deactivate_object(paths_->button_document_browse);
+	fl_deactivate_object(paths_->button_template_browse);
+	fl_deactivate_object(paths_->button_temp_dir_browse);
+	fl_deactivate_object(paths_->button_lastfiles_browse);
+	fl_deactivate_object(paths_->button_backup_path_browse);
+	fl_set_object_lcol(bind_->button_bind_file_browse, FL_INACTIVE);
+	fl_set_object_lcol(paths_->button_document_browse, FL_INACTIVE);
+	fl_set_object_lcol(paths_->button_template_browse, FL_INACTIVE);
+	fl_set_object_lcol(paths_->button_temp_dir_browse, FL_INACTIVE);
+	fl_set_object_lcol(paths_->button_lastfiles_browse, FL_INACTIVE);
+	fl_set_object_lcol(paths_->button_backup_path_browse, FL_INACTIVE);
 }
 
 
@@ -95,6 +169,12 @@ void FormPreferences::show()
 	if (dialog_->form_preferences->visible) {
 		fl_raise_form(dialog_->form_preferences);
 	} else {
+		status = DIALOG_UNMODIFIED;
+		fl_deactivate_object(dialog_->button_ok);
+		fl_deactivate_object(dialog_->button_apply);
+		fl_set_object_lcol(dialog_->button_ok, FL_INACTIVE);
+		fl_set_object_lcol(dialog_->button_apply, FL_INACTIVE);
+
 		fl_show_form(dialog_->form_preferences,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE,
 			     FL_FULLBORDER,
@@ -128,7 +208,8 @@ void FormPreferences::apply()
 	lyxrc.auto_region_delete = fl_get_button(misc_->
 						 check_auto_region_delete);
 	lyxrc.exit_confirmation = fl_get_button(misc_->check_exit_confirm);
-	lyxrc.display_shortcuts = fl_get_button(misc_->check_display_shortcuts);
+	lyxrc.display_shortcuts =
+		fl_get_button(misc_->check_display_shortcuts);
 	lyxrc.autosave = static_cast<unsigned int>
 		(fl_get_counter_value(misc_->counter_autosave));
 	lyxrc.ascii_linelen = static_cast<unsigned int>
@@ -139,7 +220,8 @@ void FormPreferences::apply()
 	lyxrc.typewriter_font_name = fl_get_input(screen_fonts_->
 						  input_typewriter);
 	lyxrc.font_norm = fl_get_input(screen_fonts_->input_encoding);
-	lyxrc.use_scalable_fonts = fl_get_button(screen_fonts_->check_scalable);
+	lyxrc.use_scalable_fonts =
+		fl_get_button(screen_fonts_->check_scalable);
 	lyxrc.zoom = static_cast<unsigned int>
 		(fl_get_counter_value(screen_fonts_->counter_zoom));
 	lyxrc.font_sizes[LyXFont::SIZE_TINY] = 
@@ -328,9 +410,79 @@ void FormPreferences::input()
 {
 	bool activate = true;
 	//
-	// whatever checks you need
+	// whatever checks you need to ensure the user hasn't entered
+	// some totally ridiculous value somewhere.  Change activate to suit.
 	//
-	if (activate) {
+	// Examples:
+	//  paths -- all dirs in the path should exist, be writable & absolute
+	if (!AbsolutePath(fl_get_input(paths_->input_default_path))
+	    || 1 != IsDirWriteable(fl_get_input(paths_->input_default_path))
+	    || !AbsolutePath(fl_get_input(paths_->input_template_path))
+	    || 1 != IsDirWriteable(fl_get_input(paths_->input_template_path))
+	    // lastfiles: exists && writeable || non-existent && isn't a dir
+	    // NOTE: assumes IsFileWriteable == -1 means non-existent hence
+	    //       the extra check to see if its a directory
+	    || !AbsolutePath(fl_get_input(paths_->input_lastfiles))
+	    || 1 != IsDirWriteable(OnlyPath(fl_get_input(paths_->
+							 input_lastfiles)))
+	    || 0 == IsFileWriteable(OnlyPath(fl_get_input(paths_->
+							  input_lastfiles)))
+	    || FileInfo(fl_get_input(paths_->input_lastfiles)).isDir()
+	    // tmpdir: only check if we are using it
+	    || (fl_get_button(paths_->check_use_temp_dir)
+		&& (1 != IsDirWriteable(fl_get_input(paths_->input_temp_dir))
+		    || !AbsolutePath(fl_get_input(paths_->input_temp_dir))))
+	    // backupdir: can safely be left empty
+	    || (fl_get_button(paths_->check_make_backups)
+		&& (!string(fl_get_input(paths_->input_backup_path)).empty()
+		    && (1 != IsDirWriteable(fl_get_input(paths_->
+							input_backup_path))
+			|| !AbsolutePath(fl_get_input(paths_->
+						      input_backup_path)))))) {
+		activate = false;
+	}
+
+	//  fontsizes -- tiny < script < footnote etc.
+	if (0.0 >= strToDbl(fl_get_input(screen_fonts_->input_tiny))
+	    || 0.0 >= strToDbl(fl_get_input(screen_fonts_->input_script))
+	    || 0.0 >= strToDbl(fl_get_input(screen_fonts_->input_footnote))
+	    || 0.0 >= strToDbl(fl_get_input(screen_fonts_->input_small))
+	    || 0.0 >= strToDbl(fl_get_input(screen_fonts_->input_normal))
+	    || 0.0 >= strToDbl(fl_get_input(screen_fonts_->input_large))
+	    || 0.0 >= strToDbl(fl_get_input(screen_fonts_->input_larger))
+	    || 0.0 >= strToDbl(fl_get_input(screen_fonts_->input_largest))
+	    || 0.0 >= strToDbl(fl_get_input(screen_fonts_->input_huge))
+	    || 0.0 >= strToDbl(fl_get_input(screen_fonts_->input_huger))) {
+		// make sure they all have positive entries
+		// Also note that an empty entry is returned as 0.0 by strToDbl
+		activate = false;
+	} else if (strToDbl(fl_get_input(screen_fonts_->input_tiny)) >
+		   strToDbl(fl_get_input(screen_fonts_->input_script)) ||
+		   strToDbl(fl_get_input(screen_fonts_->input_script)) >
+		   strToDbl(fl_get_input(screen_fonts_->input_footnote)) ||
+		   strToDbl(fl_get_input(screen_fonts_->input_footnote)) >
+		   strToDbl(fl_get_input(screen_fonts_->input_small)) ||
+		   strToDbl(fl_get_input(screen_fonts_->input_small)) >
+		   strToDbl(fl_get_input(screen_fonts_->input_normal)) ||
+		   strToDbl(fl_get_input(screen_fonts_->input_normal)) >
+		   strToDbl(fl_get_input(screen_fonts_->input_large)) ||
+		   strToDbl(fl_get_input(screen_fonts_->input_large)) >
+		   strToDbl(fl_get_input(screen_fonts_->input_larger)) ||
+		   strToDbl(fl_get_input(screen_fonts_->input_larger)) >
+		   strToDbl(fl_get_input(screen_fonts_->input_largest)) ||
+		   strToDbl(fl_get_input(screen_fonts_->input_largest)) >
+		   strToDbl(fl_get_input(screen_fonts_->input_huge)) ||
+		   strToDbl(fl_get_input(screen_fonts_->input_huge)) >
+		   strToDbl(fl_get_input(screen_fonts_->input_huger))) {
+		activate = false;
+	}
+
+	//
+	// You can modify the dialog and still have the buttons disabled
+	status = DIALOG_MODIFIED;
+
+	if (status == DIALOG_MODIFIED
+	    && activate) {
 		fl_activate_object(dialog_->button_ok);
 		fl_activate_object(dialog_->button_apply);
 		fl_set_object_lcol(dialog_->button_ok, FL_BLACK);
@@ -399,6 +551,3 @@ void FormPreferences::InputCB(FL_OBJECT * ob, long)
 	FormPreferences * pre = static_cast<FormPreferences*>(ob->form->u_vdata);
 	pre->input();
 }
-
-
-

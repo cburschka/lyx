@@ -2764,6 +2764,10 @@ string LyXFunc::Dispatch(int ac,
 	}
 	break;
 
+	case LFUN_DIALOG_PREFERENCES:
+		owner->getDialogs()->showPreferences();
+		break;
+		
 	case LFUN_SAVEPREFERENCES:
 	{
 		Path p(user_lyxdir);

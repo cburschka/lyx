@@ -341,6 +341,8 @@ void LyXAction::init()
 		  N_("Select previous paragraph"), ReadOnly },
 		{ LFUN_PARENTINSERT, "parent-insert", "", Noop },
 		{ LFUN_PASTE, "paste", N_("Paste") , Noop },
+		{ LFUN_DIALOG_PREFERENCES, "dialog-preferences",
+		  N_("Edit Preferences"), NoBuffer },
 		{ LFUN_SAVEPREFERENCES, "preferences-save",
 		  N_("Save Preferences"), NoBuffer },
 		{ LFUN_PASTESELECTION, "primary-selection-paste", "", Noop },

@@ -11,6 +11,7 @@
 #endif
 
 #include "xform_macros.h"
+#include "form_copyright.h"
 #include "FormCopyright.h"
 #include "Dialogs.h"
 #include "LyXView.h"

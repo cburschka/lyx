@@ -28,6 +28,7 @@
 class Dialogs;
 // same arguement as in Dialogs.h s/LyX/UI/
 class LyXView;
+struct FD_form_copyright;
 
 /** This class provides an XForms implementation of the FormCopyright Dialog.
  */
@@ -84,5 +85,4 @@ private:
 };
 
 #endif
-
 

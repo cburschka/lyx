@@ -33,6 +33,7 @@ void CloseAllBufferRelatedDialogs();
 /// Ensures info in visible popups are always correct.
 void updateAllVisibleBufferRelatedDialogs();
 
+/* These shortcut extractors should be shifted to frontends/xforms/ eventually */
 /// Extract shortcut from <ident>|<shortcut> string
 char const * flyx_shortcut_extract(char const * sc);
 /// Make a shortnamed version of the above func

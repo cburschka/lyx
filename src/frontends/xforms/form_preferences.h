@@ -1,14 +1,20 @@
-/** Header file generated with fdesign on Fri Jul 14 09:35:06 2000.**/
+/** Header file generated with fdesign on Fri Jul 28 11:50:11 2000.**/
 
 #ifndef FD_form_bind_h_
 #define FD_form_bind_h_
 
 /** Callbacks, globals and object handlers **/
+extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
 
+extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
 
+extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
 
+extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
 
+extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
 
+extern  "C" void C_FormPreferencesInputCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormPreferencesApplyCB(FL_OBJECT *, long);
 extern  "C" void C_FormPreferencesCancelCB(FL_OBJECT *, long);
@@ -20,6 +26,7 @@ struct FD_form_bind {
 
 	FL_FORM *form_bind;
 	FL_OBJECT *input_bind;
+	FL_OBJECT *button_bind_file_browse;
 };
 struct FD_form_misc {
 

@@ -120,6 +120,8 @@ private:
 	Connection u_;
 	/// Hide connection.
 	Connection h_;
+	///
+	EnumDialogStatus status;
 	//@}
 };
 

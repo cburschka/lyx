@@ -5,17 +5,18 @@ Internal Form Definition File
 
 Number of forms: 7
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_bind
-Width: 380
+Width: 450
 Height: 320
 Number of Objects: 3
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 380 320
+box: 0 0 450 320
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -33,7 +34,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 80 80 190 30
+box: 145 80 190 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -45,13 +46,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_bind
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 270 80 80 30
+box: 335 80 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -62,20 +63,20 @@ label: Browse...
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
+name: button_bind_file_browse
 callback: 
 argument: 
 
 =============== FORM ===============
 Name: form_misc
-Width: 380
+Width: 450
 Height: 320
 Number of Objects: 7
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 380 320
+box: 0 0 450 320
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -105,8 +106,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_banner
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 	value: 1
 
 --------------------
@@ -124,8 +125,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_auto_region_delete
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 	value: 1
 
 --------------------
@@ -143,8 +144,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_exit_confirm
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 	value: 1
 
 --------------------
@@ -162,14 +163,14 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_display_shortcuts
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 	value: 1
 
 --------------------
 class: FL_COUNTER
 type: NORMAL_COUNTER
-box: 160 250 170 30
+box: 240 255 170 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -181,8 +182,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_autosave
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
   bounds: 0 1200
   precision: 0
   value: 300
@@ -191,7 +192,7 @@ argument:
 --------------------
 class: FL_COUNTER
 type: NORMAL_COUNTER
-box: 160 220 170 30
+box: 240 225 170 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -203,8 +204,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_line_len
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
   bounds: 0 120
   precision: 0
   value: 75
@@ -212,14 +213,14 @@ argument:
 
 =============== FORM ===============
 Name: form_screen_fonts
-Width: 380
+Width: 450
 Height: 320
 Number of Objects: 17
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 380 320
+box: 0 0 450 320
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -237,7 +238,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 160 10 200 30
+box: 210 5 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -249,13 +250,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_roman
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 160 40 200 30
+box: 210 35 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -267,13 +268,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_sans
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 160 70 200 30
+box: 210 65 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -285,13 +286,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_typewriter
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_COUNTER
 type: NORMAL_COUNTER
-box: 160 130 200 30
+box: 210 125 200 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_RIGHT
@@ -303,8 +304,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_zoom
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
   bounds: 0 999
   precision: 0
   value: 150
@@ -313,7 +314,7 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 0 130 160 30
+box: 50 125 160 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -325,14 +326,14 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_scalable
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 	value: 1
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 160 100 200 30
+box: 210 95 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -344,13 +345,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_encoding
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 120 170 70 30
+box: 140 165 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -362,13 +363,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_tiny
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 290 170 70 30
+box: 340 165 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -380,13 +381,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_script
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 120 200 70 30
+box: 140 195 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -398,13 +399,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_footnote
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 290 200 70 30
+box: 340 195 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -416,13 +417,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_small
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 290 230 70 30
+box: 340 225 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -434,13 +435,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_large
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 120 260 70 30
+box: 140 255 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -452,13 +453,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_larger
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 290 260 70 30
+box: 340 255 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -470,13 +471,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_largest
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 120 230 70 30
+box: 140 225 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -488,13 +489,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_normal
-callback: 
+callback: C_FormPreferencesInputCB
 argument: 0
 
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 120 290 70 30
+box: 140 285 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -506,13 +507,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_huge
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: FLOAT_INPUT
-box: 290 290 70 30
+box: 340 285 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -524,19 +525,19 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_huger
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 =============== FORM ===============
 Name: form_interface_fonts
-Width: 380
+Width: 450
 Height: 320
 Number of Objects: 4
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 380 320
+box: 0 0 450 320
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -554,7 +555,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 120 50 200 30
+box: 215 50 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -566,13 +567,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_popup_font
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 120 80 200 30
+box: 215 80 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -584,13 +585,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_menu_font
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 120 110 200 30
+box: 215 110 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -602,19 +603,19 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_encoding
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 =============== FORM ===============
 Name: form_printer
-Width: 380
+Width: 450
 Height: 320
 Number of Objects: 19
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 380 320
+box: 0 0 450 320
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -632,7 +633,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 60 80 30
+box: 130 60 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -644,13 +645,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_command
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 90 80 30
+box: 130 90 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -662,13 +663,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_page_range
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 120 80 30
+box: 130 120 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -680,13 +681,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_copies
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 150 80 30
+box: 130 150 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -698,13 +699,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_reverse
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 180 80 30
+box: 130 180 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -716,13 +717,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_to_printer
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 210 80 30
+box: 130 210 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -734,13 +735,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_file_extension
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 240 80 30
+box: 130 240 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -752,13 +753,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_spool_command
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 270 80 30
+box: 130 270 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -770,13 +771,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_paper_type
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 300 60 80 30
+box: 360 60 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -788,13 +789,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_even_pages
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 300 90 80 30
+box: 360 90 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -806,13 +807,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_odd_pages
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 300 120 80 30
+box: 360 120 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -824,13 +825,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_collated
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 300 150 80 30
+box: 360 150 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -842,13 +843,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_landscape
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 300 180 80 30
+box: 360 180 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -860,13 +861,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_to_file
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 300 210 80 30
+box: 360 210 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -878,13 +879,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_extra_options
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 300 240 80 30
+box: 360 240 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -896,13 +897,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_spool_prefix
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 300 270 80 30
+box: 360 270 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -914,13 +915,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_paper_size
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 10 80 30
+box: 130 10 80 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -932,13 +933,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_name
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 230 10 120 30
+box: 240 10 120 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -950,19 +951,19 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_adapt_output
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 =============== FORM ===============
 Name: form_paths
-Width: 380
-Height: 430
+Width: 450
+Height: 320
 Number of Objects: 15
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 380 430
+box: 0 0 450 320
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -980,7 +981,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 10 170 30
+box: 170 10 170 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -992,13 +993,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_default_path
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 280 10 90 30
+box: 340 10 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1016,7 +1017,7 @@ argument:
 --------------------
 class: FL_COUNTER
 type: NORMAL_COUNTER
-box: 110 130 110 30
+box: 170 130 110 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -1028,8 +1029,8 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: counter_lastfiles
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
   bounds: 0 9
   precision: 0
   value: 4
@@ -1038,7 +1039,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 40 170 30
+box: 170 40 170 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1050,13 +1051,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_template_path
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 280 40 90 30
+box: 340 40 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1074,7 +1075,7 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 230 130 140 30
+box: 290 130 140 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1086,14 +1087,14 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_last_files
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 	value: 1
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 70 170 30
+box: 170 70 170 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1105,13 +1106,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_temp_dir
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 280 70 90 30
+box: 340 70 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1129,7 +1130,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 100 170 30
+box: 170 100 170 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1141,13 +1142,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_lastfiles
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 280 100 90 30
+box: 340 100 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1165,7 +1166,7 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 10 70 50 30
+box: 35 70 50 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -1177,14 +1178,14 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_use_temp_dir
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 	value: 1
 
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 10 170 40 30
+box: 30 170 40 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
@@ -1196,14 +1197,14 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_make_backups
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 	value: 1
 
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 110 170 170 30
+box: 170 170 170 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1215,13 +1216,13 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_backup_path
-callback: 
-argument: 
+callback: C_FormPreferencesInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 280 170 90 30
+box: 340 170 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1238,14 +1239,14 @@ argument:
 
 =============== FORM ===============
 Name: form_preferences
-Width: 380
-Height: 430
+Width: 460
+Height: 435
 Number of Objects: 5
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 380 430
+box: 0 0 460 435
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1263,14 +1264,14 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 170 380 90 30
+box: 250 395 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Apply
+label: Apply|#A
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -1281,14 +1282,14 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 270 380 90 30
+box: 350 395 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Cancel
+label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -1299,7 +1300,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 70 380 90 30
+box: 150 395 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1317,7 +1318,7 @@ argument: 0
 --------------------
 class: FL_TABFOLDER
 type: TOP_TABFOLDER
-box: 0 0 380 360
+box: 5 5 450 385
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_TOP_LEFT

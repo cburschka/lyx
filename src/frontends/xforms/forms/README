@@ -8,7 +8,7 @@ NOTE: An exception to the above is any tabbed form which
 All forms should be named form_xxx and saved into a file by the same name.
 For example, the copyright notice is called form_copyright and is stored in
 form_copyright.fd.  Its used by class FormCopyright.  If you match this pattern
-the fdfix.sh script will do nearly all the conversions for you.  That'll make
+the fdfix.sh script will do all the conversions for you.  That'll make
 updating the source incredibly easy.
 
 Name all buttons and other form components that are likely to cause a callback.
@@ -30,23 +30,38 @@ The name of the wrapped dialog will be dialog_ eg.
 
         FD_form_copyright * dialog_;
 
-If you follow these simple rules then the generated code for create_form can
-be directly used as the FormXxxx::build method without any extra editting to
-make it work.  Every forms implementation will follow a very simple pattern
-and make it easier to maintain.
+Angus Leeming has modified the scripts to forward declare FD_form_xxxx thereby
+removing one inter-file dependency and removing the struct declaration from the
+FormXxxx.h file which was the previous practice.
 
-The easiest way to fit into this pattern is to copy an existing dialogs
-implementation and adjust it to suit keeping the variable names the same.
+If you follow these simple rules then the generated code for create_form_form_xxxx
+can will be converted as the FormXxxx::build_xxxx method without any extra 
+editting to make it work.  Every forms implementation will thereby follow a very
+simple pattern and make it easier to maintain.
+
+All the forms are rebuild by running `make updatesrc`.  This will generate all
+the form_xxxx.[Ch] files. You should run `make install` to install them in the
+parent directory.  `make install` will also regenerate all the files for you
+so you don't have to do the `make updatesrc` step unless, for example, you are
+testing the conversion scripts. The fdfix.sh, fdfixh.sed and makefile contain
+the necessary smarts to convert the generated code into something that can be
+used directly in the LyX codebase..
+
+The easiest way to fit into the pattern is to copy an existing dialogs
+implementation and adjust it to suit, keeping the variable names the same.
+Take a look at the existing .fd files as well to see what is needed in there
+in the way of callback names and widget names.
+
 In addition a lot of work can be saved by using the code that has already been
 written in the "lyx" module of the LyX CVS repository. This is where the old
 development branch is kept.  The code there will need to be modified slightly
 to meet these new guidelines.  In addition, an earlier generation signalling
-system was used in that code. A conversion script called gtmmconvert2 is 
+system was used in that code. A conversion script called gtkmmconvert2 is 
 available from the gtk-- distribution.  It updates all the signals to use
 libsigc++.
 
-Don't reinvent the wheel.  There's 18 months worth of code in the "lyx"
+Don't reinvent the wheel.  There's 18 months worth of code in the "lyx" cvs
 module that you should at least use as a guide even if you don't actually make
 direct use of it.
- 
+
 Allan. (ARRae)
