@@ -10,6 +10,11 @@
 #include "debug.h"
 #include "os.h"
 
+#if !defined(HAVE_MKSTEMP) && defined(HAVE_MKTEMP)
+# include <fcntl.h>
+# include <sys/stat.h>
+#endif
+
 using std::endl;
 
 
