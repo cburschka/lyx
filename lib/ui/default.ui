@@ -162,6 +162,7 @@ Menuset
 	Item "AlignAt environment" "math-mutate alignat"
 	Item "XAlignAt environment" "math-mutate xalignat"
 	Item "XXAlignAt environment" "math-mutate xxalignat"
+	Item "Gather environment" "math-mutate gather"
 	Item "Multline environment" "math-mutate multline"
     End
 
@@ -215,6 +216,7 @@ Menuset
 	Item "AMS alignat environment|t" "command-sequence math-mode; math-mutate alignat;"
 	Item "AMS xalignat environment|x" "command-sequence math-mode; math-mutate xalignat;"
 	Item "AMS xxalignat environment" "command-sequence math-mode; math-mutate xxalignat;"
+	Item "AMS gather environment" "command-sequence math-mode; math-mutate gather;"
 	Item "AMS multline environment" "command-sequence math-mode; math-mutate multline;"
   Separator
 	Item "Array environment|y" "math-insert matrix 2 2"
