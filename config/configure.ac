@@ -189,13 +189,13 @@ case "$lyx_use_frontend" in
     FRONTEND_INCLUDES="-I\${srcdir}/gnome -I\${srcdir}/xforms ${GNOME_FRONTEND_CFLAGS} "
     FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
 	;;
-  qt2)
-    QT2_DO_IT_ALL
+  qt)
+    QT_DO_IT_ALL
     FRONTEND="qt2"
     FRONTEND_GUILIB="qt2/*.lo qt2/ui/*.lo qt2/moc/*.lo qt2/ui/moc/*.lo"
-    FRONTEND_LDFLAGS="\$(QT2_LDFLAGS)"
-    FRONTEND_INCLUDES="-I\${srcdir}/qt2 \$(QT2_INCLUDES)"
-    FRONTEND_LIBS="\$(QT2_LIBS)";;
+    FRONTEND_LDFLAGS="\$(QT_LDFLAGS)"
+    FRONTEND_INCLUDES="-I\${srcdir}/qt2 \$(QT_INCLUDES)"
+    FRONTEND_LIBS="\$(QT_LIB)";;
   *)
     LYX_ERROR(Unknown frontend $lyx_use_frontend);;
 esac
