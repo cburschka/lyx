@@ -700,10 +700,10 @@ void LyXText::setFont(BufferView * bview, LyXFont const & font, bool toggleall)
 }
 
 
-void LyXText::redoHeightOfParagraph(BufferView * bview, LyXCursor const & cur)
+void LyXText::redoHeightOfParagraph(BufferView * bview)
 {
-	Row * tmprow = cur.row();
-	int y = cur.y() - tmprow->baseline();
+	Row * tmprow = cursor.row();
+	int y = cursor.y() - tmprow->baseline();
 
 	setHeightOfRow(bview, tmprow);
 
@@ -718,7 +718,7 @@ void LyXText::redoHeightOfParagraph(BufferView * bview, LyXCursor const & cur)
 	status(bview, LyXText::NEED_MORE_REFRESH);
 	refresh_y = y;
 	refresh_row = tmprow;
-	setCursor(bview, cur.par(), cur.pos(), false, cursor.boundary());
+	setCursor(bview, cursor.par(), cursor.pos(), false, cursor.boundary());
 }
 
 

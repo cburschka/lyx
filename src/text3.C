@@ -431,7 +431,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// we can set the refreshing parameters now
 		status(cmd.view(), LyXText::NEED_MORE_REFRESH);
 		updateCounters(cmd.view());
-		redoHeightOfParagraph(bv, cursor);
+		redoHeightOfParagraph(bv);
 		refresh_y = 0;
 		refresh_row = 0;
 		setCursor(cmd.view(), cursor.par(), cursor.pos());

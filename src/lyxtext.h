@@ -169,7 +169,7 @@ public:
 	    specified paragraph.  needed, if the last characters font
 	    has changed.
 	    */
-	void redoHeightOfParagraph(BufferView *, LyXCursor const & cursor);
+	void redoHeightOfParagraph(BufferView *);
 
 	/** insert a character, moves all the following breaks in the
 	  same Paragraph one to the right and make a little rebreak

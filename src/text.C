@@ -1680,7 +1680,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 			// check, wether the last characters font has changed.
 			if (cursor.pos() && cursor.pos() == cursor.par()->size()
 			    && rawparfont != rawtmpfont)
-				redoHeightOfParagraph(bview, cursor);
+				redoHeightOfParagraph(bview);
 
 			charInserted();
 			return;
@@ -1739,7 +1739,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 	// check, wether the last characters font has changed.
 	if (cursor.pos() && cursor.pos() == cursor.par()->size()
 	    && rawparfont != rawtmpfont) {
-		redoHeightOfParagraph(bview, cursor);
+		redoHeightOfParagraph(bview);
 	} else {
 		// now the special right address boxes
 		if (cursor.par()->layout()->margintype
@@ -2666,7 +2666,7 @@ void LyXText::backspace(BufferView * bview)
 				if (rawparfont !=
 				    cursor.par()->getFontSettings(bview->buffer()->params,
 								  cursor.par()->size() - 1))
-					redoHeightOfParagraph(bview, cursor);
+					redoHeightOfParagraph(bview);
 				return;
 			}
 		}
@@ -2731,7 +2731,7 @@ void LyXText::backspace(BufferView * bview)
 	// check, whether the last characters font has changed.
 	if (rawparfont !=
 	    cursor.par()->getFontSettings(bview->buffer()->params, lastpos - 1)) {
-		redoHeightOfParagraph(bview, cursor);
+		redoHeightOfParagraph(bview);
 	} else {
 		// now the special right address boxes
 		if (cursor.par()->layout()->margintype
