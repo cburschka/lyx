@@ -355,7 +355,9 @@ bool Converters::convert(Buffer const * buffer,
 						      dvipdfm_options(buffer->params()));
 
 			lyxerr[Debug::FILES] << "Calling " << command << endl;
-			buffer->message(_("Executing command: ") + command);
+			if (buffer)
+				buffer->message(_("Executing command: ")
+					+ command);
 
 			Systemcall::Starttype type = (dummy)
 				? Systemcall::DontWait : Systemcall::Wait;

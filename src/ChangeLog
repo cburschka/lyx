@@ -1,3 +1,8 @@
+2003-11-24  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* converter.C (convert): fix a crash: this function gets
+	called with buffer == 0 from importer code.
+
 2003-11-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* text3.C (cursorPrevious): make sure that we do not compare
