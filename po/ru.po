@@ -33,7 +33,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.2.0\n"
-"POT-Creation-Date: 2003-03-07 16:45+0100\n"
+"POT-Creation-Date: 2003-03-18 18:01+0100\n"
 "PO-Revision-Date: 2002-12-19 18:59+0100\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -3113,7 +3113,7 @@ msgstr "Представление ссылок"
 msgid "Selected"
 msgstr "Выберите "
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:131
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:135
 msgid "Info"
 msgstr "Текст ссылки"
 
@@ -6490,7 +6490,7 @@ msgid "Code"
 msgstr "Код"
 
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/heb-article.layout:16
-#: ../lib/layouts/lyxmacros.inc:47
+#: ../lib/layouts/lyxmacros.inc:47 ../lib/layouts/scrlttr2.layout:345
 msgid "Comment"
 msgstr "Комментарий"
 
@@ -8257,41 +8257,41 @@ msgstr "Текущая конфигурация LaTeX"
 msgid "About LyX|X"
 msgstr "О LyX"
 
-#: src/BufferView.C:293 src/bufferlist.C:373 src/bufferlist.C:485
+#: src/BufferView.C:301 src/bufferlist.C:373 src/bufferlist.C:485
 #: src/lyx_cb.C:215
 msgid "Error!"
 msgstr "Ошибка!"
 
-#: src/BufferView.C:294
+#: src/BufferView.C:302
 msgid "Specified file is unreadable: "
 msgstr "Указанный файл не удаётся прочитать: "
 
-#: src/BufferView.C:303 src/lyx_cb.C:447
+#: src/BufferView.C:311 src/lyx_cb.C:447
 #, fuzzy
 msgid "Error! Cannot open specified file:"
 msgstr "Ошибка открытия указанного файла: "
 
-#: src/BufferView.C:563 src/LyXAction.C:377
+#: src/BufferView.C:571 src/LyXAction.C:377
 msgid "Undo"
 msgstr "Отменить последнее действие"
 
-#: src/BufferView.C:568
+#: src/BufferView.C:576
 msgid "No further undo information"
 msgstr "Больше нет информации для отмены действия"
 
-#: src/BufferView.C:580 src/LyXAction.C:334
+#: src/BufferView.C:588 src/LyXAction.C:334
 msgid "Redo"
 msgstr "Повторить отменённое действие"
 
-#: src/BufferView.C:585
+#: src/BufferView.C:593
 msgid "No further redo information"
 msgstr "Нет дальнейшей информации для повторения отменённого действия"
 
-#: src/BufferView.C:596
+#: src/BufferView.C:604
 msgid "Paragraph environment type copied"
 msgstr "Тип окружения абзаца скопирован"
 
-#: src/BufferView.C:605
+#: src/BufferView.C:613
 msgid "Paragraph environment type set"
 msgstr "Установлен тип окружения абзаца"
 
@@ -8642,21 +8642,21 @@ msgstr "наследовать"
 msgid "ignore"
 msgstr "игнорировать"
 
-#: src/LaTeX.C:207 src/LaTeX.C:296 src/LaTeX.C:357
+#: src/LaTeX.C:210 src/LaTeX.C:299 src/LaTeX.C:360
 #, fuzzy, c-format
 msgid "LaTeX run number %1$d"
 msgstr "Проход LaTeX номер "
 
-#: src/LaTeX.C:209 src/LaTeX.C:298 src/LaTeX.C:359
+#: src/LaTeX.C:212 src/LaTeX.C:301 src/LaTeX.C:362
 #, fuzzy
 msgid "LaTeX run number "
 msgstr "Проход LaTeX номер "
 
-#: src/LaTeX.C:247 src/LaTeX.C:331
+#: src/LaTeX.C:250 src/LaTeX.C:334
 msgid "Running MakeIndex."
 msgstr "Выполняю MakeIndex."
 
-#: src/LaTeX.C:262
+#: src/LaTeX.C:265
 msgid "Running BibTeX."
 msgstr "Выполняю BibTeX."
 
@@ -9339,8 +9339,8 @@ msgstr "chktex не работает!"
 msgid "Could not run with file:"
 msgstr "Ошибка запуска с файлом: "
 
-#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:112 src/lyxvc.C:144
-#: src/lyxvc.C:173
+#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:116 src/lyxvc.C:148
+#: src/lyxvc.C:177
 msgid "Changes in document:"
 msgstr "Изменения в документе:"
 
@@ -10400,11 +10400,11 @@ msgstr "режим LaTeX"
 msgid "External"
 msgstr "Внешний объект"
 
-#: src/frontends/qt2/QExternalDialog.C:87
+#: src/frontends/qt2/QExternalDialog.C:89
 msgid "External material (*)"
 msgstr "Внешний объект (*)"
 
-#: src/frontends/qt2/QExternalDialog.C:89
+#: src/frontends/qt2/QExternalDialog.C:91
 msgid "Select external material"
 msgstr "Выберите внешний объект"
 
@@ -13115,7 +13115,7 @@ msgstr "Документ с названием"
 msgid "already exists. Overwrite?"
 msgstr "уже существует. Перезаписывать?"
 
-#: src/lyxfunc.C:1917
+#: src/lyxfunc.C:1909
 msgid "Welcome to LyX!"
 msgstr "Добро пожаловать в LyX!"
 
@@ -13626,60 +13626,60 @@ msgstr "Проверьте содержимое файла \"textclass.lst\""
 msgid "Sorry, has to exit :-("
 msgstr "Извините, должен Вас покинуть :-("
 
-#: src/lyxvc.C:82
+#: src/lyxvc.C:86
 #, fuzzy
 msgid "File not saved"
 msgstr "Вернуться к сохранённому"
 
-#: src/lyxvc.C:83
+#: src/lyxvc.C:87
 msgid "You must save the file"
 msgstr ""
 
-#: src/lyxvc.C:84
+#: src/lyxvc.C:88
 #, fuzzy
 msgid "before it can be registered."
 msgstr "Этот документ НЕ БЫЛ зарегистрирован."
 
-#: src/lyxvc.C:114 src/lyxvc.C:146
+#: src/lyxvc.C:118 src/lyxvc.C:150
 msgid "Save document and proceed?"
 msgstr "Сохранить документ и продолжать?"
 
-#: src/lyxvc.C:126
+#: src/lyxvc.C:130
 msgid "LyX VC: Initial description"
 msgstr "LyX VC: Первоначальное описание"
 
-#: src/lyxvc.C:127
+#: src/lyxvc.C:131
 msgid "(no initial description)"
 msgstr "(нет начального описания)"
 
-#: src/lyxvc.C:132
+#: src/lyxvc.C:136
 msgid "This document has NOT been registered."
 msgstr "Этот документ НЕ БЫЛ зарегистрирован."
 
-#: src/lyxvc.C:157
+#: src/lyxvc.C:161
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Сообщение для журнала сообщений"
 
-#: src/lyxvc.C:160
+#: src/lyxvc.C:164
 msgid "(no log message)"
 msgstr "(нет сообщений)"
 
-#: src/lyxvc.C:175
+#: src/lyxvc.C:179
 msgid "Ignore changes and proceed with check out?"
 msgstr "Игнорировать все изменения и заливать?"
 
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
 #. changes made since the last check in.
-#: src/lyxvc.C:190
+#: src/lyxvc.C:193
 msgid "When you revert, you will loose all changes made"
 msgstr "Если вы откатитесь, потеряются все изменения"
 
-#: src/lyxvc.C:191
+#: src/lyxvc.C:194
 msgid "to the document since the last check in."
 msgstr "в документе с момента последней заливки."
 
-#: src/lyxvc.C:192
+#: src/lyxvc.C:195
 msgid "Do you still want to do it?"
 msgstr "Вы все ещё хотите это сделать?"
 

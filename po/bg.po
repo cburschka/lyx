@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
-"POT-Creation-Date: 2003-03-07 16:45+0100\n"
+"POT-Creation-Date: 2003-03-18 18:01+0100\n"
 "PO-Revision-Date: 2002-12-19 19:01+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -3536,7 +3536,7 @@ msgid "Selected"
 msgstr "Изберете "
 
 # src/frontends/xforms/form_citation.C:66 src/lyxvc.C:112
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:131
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:135
 msgid "Info"
 msgstr "Информация"
 
@@ -7415,7 +7415,7 @@ msgstr "Код"
 
 # src/ext_l10n.h:202
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/heb-article.layout:16
-#: ../lib/layouts/lyxmacros.inc:47
+#: ../lib/layouts/lyxmacros.inc:47 ../lib/layouts/scrlttr2.layout:345
 msgid "Comment"
 msgstr "Коментар"
 
@@ -9599,49 +9599,49 @@ msgstr ""
 
 # src/BufferView2.C:62 src/BufferView2.C:72 src/bufferlist.C:449
 # src/lyx_cb.C:298
-#: src/BufferView.C:293 src/bufferlist.C:373 src/bufferlist.C:485
+#: src/BufferView.C:301 src/bufferlist.C:373 src/bufferlist.C:485
 #: src/lyx_cb.C:215
 msgid "Error!"
 msgstr "Грешка!"
 
 # src/BufferView2.C:63
-#: src/BufferView.C:294
+#: src/BufferView.C:302
 msgid "Specified file is unreadable: "
 msgstr "Указаният файл е нечетим: "
 
 # src/lyx_cb.C:484
-#: src/BufferView.C:303 src/lyx_cb.C:447
+#: src/BufferView.C:311 src/lyx_cb.C:447
 #, fuzzy
 msgid "Error! Cannot open specified file:"
 msgstr "Грешка! Не мога да отворя указаният файл:"
 
 # src/BufferView2.C:435 src/LyXAction.C:406
-#: src/BufferView.C:563 src/LyXAction.C:377
+#: src/BufferView.C:571 src/LyXAction.C:377
 msgid "Undo"
 msgstr "Отмени"
 
 # src/BufferView2.C:440
-#: src/BufferView.C:568
+#: src/BufferView.C:576
 msgid "No further undo information"
 msgstr "Няма нищо повече за отменяне"
 
 # src/BufferView2.C:456 src/LyXAction.C:357
-#: src/BufferView.C:580 src/LyXAction.C:334
+#: src/BufferView.C:588 src/LyXAction.C:334
 msgid "Redo"
 msgstr "Повтори"
 
 # src/BufferView2.C:461
-#: src/BufferView.C:585
+#: src/BufferView.C:593
 msgid "No further redo information"
 msgstr "Няма нищо повече за повтаряне"
 
 # src/BufferView2.C:558
-#: src/BufferView.C:596
+#: src/BufferView.C:604
 msgid "Paragraph environment type copied"
 msgstr "Средата на абзаца е копирана"
 
 # src/BufferView2.C:567
-#: src/BufferView.C:605
+#: src/BufferView.C:613
 msgid "Paragraph environment type set"
 msgstr "Средата на абзаца е установена"
 
@@ -10084,25 +10084,25 @@ msgstr "игнориране"
 
 # src/LaTeX.C:177 src/LaTeX.C:252 src/LaTeX.C:300
 
-#: src/LaTeX.C:207 src/LaTeX.C:296 src/LaTeX.C:357
+#: src/LaTeX.C:210 src/LaTeX.C:299 src/LaTeX.C:360
 #, fuzzy, c-format
 msgid "LaTeX run number %1$d"
 msgstr "LaTeX изпълнение номер "
 
 # src/LaTeX.C:177 src/LaTeX.C:252 src/LaTeX.C:300
 
-#: src/LaTeX.C:209 src/LaTeX.C:298 src/LaTeX.C:359
+#: src/LaTeX.C:212 src/LaTeX.C:301 src/LaTeX.C:362
 #, fuzzy
 msgid "LaTeX run number "
 msgstr "LaTeX изпълнение номер "
 
 # src/LaTeX.C:210 src/LaTeX.C:279
-#: src/LaTeX.C:247 src/LaTeX.C:331
+#: src/LaTeX.C:250 src/LaTeX.C:334
 msgid "Running MakeIndex."
 msgstr "Изпълнявам MakeIndex."
 
 # src/LaTeX.C:223
-#: src/LaTeX.C:262
+#: src/LaTeX.C:265
 msgid "Running BibTeX."
 msgstr "Стартирам BibTeX."
 
@@ -10952,8 +10952,8 @@ msgstr "Недъзможна е работата с файл: "
 
 # src/bufferlist.C:111 src/bufferlist.C:187 src/lyxvc.C:92 src/lyxvc.C:125
 # src/lyxvc.C:155
-#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:112 src/lyxvc.C:144
-#: src/lyxvc.C:173
+#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:116 src/lyxvc.C:148
+#: src/lyxvc.C:177
 msgid "Changes in document:"
 msgstr "Промени в документа:"
 
@@ -12289,13 +12289,13 @@ msgid "External"
 msgstr "Външен"
 
 # src/ext_l10n.h:94
-#: src/frontends/qt2/QExternalDialog.C:87
+#: src/frontends/qt2/QExternalDialog.C:89
 #, fuzzy
 msgid "External material (*)"
 msgstr "Външен материал(x)...|x"
 
 # src/ext_l10n.h:94
-#: src/frontends/qt2/QExternalDialog.C:89
+#: src/frontends/qt2/QExternalDialog.C:91
 #, fuzzy
 msgid "Select external material"
 msgstr "Външен материал(x)...|x"
@@ -15493,7 +15493,7 @@ msgid "already exists. Overwrite?"
 msgstr "вече съществува. Запис отогоре?"
 
 # src/minibuffer.C:46 src/minibuffer.C:244
-#: src/lyxfunc.C:1917
+#: src/lyxfunc.C:1909
 msgid "Welcome to LyX!"
 msgstr "Добре дошли в LyX!"
 
@@ -16059,55 +16059,55 @@ msgid "Sorry, has to exit :-("
 msgstr "За съжаление спира :-(!"
 
 # src/form1.C:245
-#: src/lyxvc.C:82
+#: src/lyxvc.C:86
 #, fuzzy
 msgid "File not saved"
 msgstr "Име на файл(F):|#F"
 
 # src/frontends/xforms/FormPreferences.C:2248
-#: src/lyxvc.C:83
+#: src/lyxvc.C:87
 #, fuzzy
 msgid "You must save the file"
 msgstr "Последни файлове"
 
 # src/lyxvc.C:113
-#: src/lyxvc.C:84
+#: src/lyxvc.C:88
 #, fuzzy
 msgid "before it can be registered."
 msgstr "Този документ НЕ е бил регистриран."
 
 # src/lyxvc.C:94 src/lyxvc.C:127
-#: src/lyxvc.C:114 src/lyxvc.C:146
+#: src/lyxvc.C:118 src/lyxvc.C:150
 msgid "Save document and proceed?"
 msgstr "Запазване на документа и продължение?"
 
 # src/lyxvc.C:107
-#: src/lyxvc.C:126
+#: src/lyxvc.C:130
 msgid "LyX VC: Initial description"
 msgstr "LyX СКВ: Начално описание"
 
 # src/lyxvc.C:108
-#: src/lyxvc.C:127
+#: src/lyxvc.C:131
 msgid "(no initial description)"
 msgstr "(няма начално описание)"
 
 # src/lyxvc.C:113
-#: src/lyxvc.C:132
+#: src/lyxvc.C:136
 msgid "This document has NOT been registered."
 msgstr "Този документ НЕ е бил регистриран."
 
 # src/lyxvc.C:139
-#: src/lyxvc.C:157
+#: src/lyxvc.C:161
 msgid "LyX VC: Log Message"
 msgstr "LyX СКВ: протоколно съобщение"
 
 # src/lyxvc.C:142
-#: src/lyxvc.C:160
+#: src/lyxvc.C:164
 msgid "(no log message)"
 msgstr "(няма протоколно съобщение)"
 
 # src/lyxvc.C:157
-#: src/lyxvc.C:175
+#: src/lyxvc.C:179
 msgid "Ignore changes and proceed with check out?"
 msgstr "Пренебрегване на промените и продължаване с check out?"
 
@@ -16115,17 +16115,17 @@ msgstr "Пренебрегване на промените и продължаване с check out?"
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
 #. changes made since the last check in.
-#: src/lyxvc.C:190
+#: src/lyxvc.C:193
 msgid "When you revert, you will loose all changes made"
 msgstr "При връщане назад ще загубите всички направени промени "
 
 # src/lyxvc.C:173
-#: src/lyxvc.C:191
+#: src/lyxvc.C:194
 msgid "to the document since the last check in."
 msgstr "в документа от последния check in."
 
 # src/lyxvc.C:174
-#: src/lyxvc.C:192
+#: src/lyxvc.C:195
 msgid "Do you still want to do it?"
 msgstr "Все още ли искате операцията?"
 

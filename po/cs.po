@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.2\n"
-"POT-Creation-Date: 2003-03-07 16:45+0100\n"
+"POT-Creation-Date: 2003-03-18 18:01+0100\n"
 "PO-Revision-Date: 2002-12-19 19:01+0100\n"
 "Last-Translator: Ludek Brukner <>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -2961,7 +2961,7 @@ msgstr "Citace"
 msgid "Selected"
 msgstr "Vyber z|#V"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:131
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:135
 msgid "Info"
 msgstr "Info"
 
@@ -6321,7 +6321,7 @@ msgid "Code"
 msgstr "Zavøít"
 
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/heb-article.layout:16
-#: ../lib/layouts/lyxmacros.inc:47
+#: ../lib/layouts/lyxmacros.inc:47 ../lib/layouts/scrlttr2.layout:345
 #, fuzzy
 msgid "Comment"
 msgstr "Komentáø:"
@@ -8249,42 +8249,42 @@ msgstr ""
 msgid "About LyX|X"
 msgstr ""
 
-#: src/BufferView.C:293 src/bufferlist.C:373 src/bufferlist.C:485
+#: src/BufferView.C:301 src/bufferlist.C:373 src/bufferlist.C:485
 #: src/lyx_cb.C:215
 msgid "Error!"
 msgstr "Chyba!"
 
-#: src/BufferView.C:294
+#: src/BufferView.C:302
 msgid "Specified file is unreadable: "
 msgstr ""
 
-#: src/BufferView.C:303 src/lyx_cb.C:447
+#: src/BufferView.C:311 src/lyx_cb.C:447
 #, fuzzy
 msgid "Error! Cannot open specified file:"
 msgstr "Chyba! Nemohu otevøít specifikovaný soubor:"
 
-#: src/BufferView.C:563 src/LyXAction.C:377
+#: src/BufferView.C:571 src/LyXAction.C:377
 msgid "Undo"
 msgstr "Zpìt"
 
-#: src/BufferView.C:568
+#: src/BufferView.C:576
 #, fuzzy
 msgid "No further undo information"
 msgstr "Není k dispozici dal¹í informace pro funkci Zpìt"
 
-#: src/BufferView.C:580 src/LyXAction.C:334
+#: src/BufferView.C:588 src/LyXAction.C:334
 msgid "Redo"
 msgstr "Opakovat"
 
-#: src/BufferView.C:585
+#: src/BufferView.C:593
 msgid "No further redo information"
 msgstr "Není k dispozici dal¹í informace pro vrácení funkce Zpìt."
 
-#: src/BufferView.C:596
+#: src/BufferView.C:604
 msgid "Paragraph environment type copied"
 msgstr "Parametry odstavce zkopírovány"
 
-#: src/BufferView.C:605
+#: src/BufferView.C:613
 msgid "Paragraph environment type set"
 msgstr "Parametry odstavce nastaveny"
 
@@ -8666,21 +8666,21 @@ msgstr "zdìdìné"
 msgid "ignore"
 msgstr "ignoruj"
 
-#: src/LaTeX.C:207 src/LaTeX.C:296 src/LaTeX.C:357
+#: src/LaTeX.C:210 src/LaTeX.C:299 src/LaTeX.C:360
 #, fuzzy, c-format
 msgid "LaTeX run number %1$d"
 msgstr "Èíslo bìhu LaTeXu "
 
-#: src/LaTeX.C:209 src/LaTeX.C:298 src/LaTeX.C:359
+#: src/LaTeX.C:212 src/LaTeX.C:301 src/LaTeX.C:362
 #, fuzzy
 msgid "LaTeX run number "
 msgstr "Èíslo bìhu LaTeXu "
 
-#: src/LaTeX.C:247 src/LaTeX.C:331
+#: src/LaTeX.C:250 src/LaTeX.C:334
 msgid "Running MakeIndex."
 msgstr "Bì¾í MakeIndex."
 
-#: src/LaTeX.C:262
+#: src/LaTeX.C:265
 msgid "Running BibTeX."
 msgstr "Bì¾í BibTeX."
 
@@ -9402,8 +9402,8 @@ msgstr "chktex nefunguje!"
 msgid "Could not run with file:"
 msgstr "Nemohu pracovat se souborem:"
 
-#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:112 src/lyxvc.C:144
-#: src/lyxvc.C:173
+#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:116 src/lyxvc.C:148
+#: src/lyxvc.C:177
 msgid "Changes in document:"
 msgstr "Zmìny v dokumentu:"
 
@@ -10540,11 +10540,11 @@ msgstr "LaTeX|#L"
 msgid "External"
 msgstr "Dal¹í volby|#D"
 
-#: src/frontends/qt2/QExternalDialog.C:87
+#: src/frontends/qt2/QExternalDialog.C:89
 msgid "External material (*)"
 msgstr ""
 
-#: src/frontends/qt2/QExternalDialog.C:89
+#: src/frontends/qt2/QExternalDialog.C:91
 #, fuzzy
 msgid "Select external material"
 msgstr "Výbìr následujícího øádku"
@@ -13283,7 +13283,7 @@ msgstr "Je otevøen jiný dokument stejného jména!"
 msgid "already exists. Overwrite?"
 msgstr "Pøepsat?"
 
-#: src/lyxfunc.C:1917
+#: src/lyxfunc.C:1909
 msgid "Welcome to LyX!"
 msgstr "Vítejte v LyXu!"
 
@@ -13700,65 +13700,65 @@ msgstr "Zkontrolujte, ¾e soubor \"textclass.lst\""
 msgid "Sorry, has to exit :-("
 msgstr "je správnì nainstalován. Lituji, musím konèit :-("
 
-#: src/lyxvc.C:82
+#: src/lyxvc.C:86
 #, fuzzy
 msgid "File not saved"
 msgstr "Soubor:"
 
-#: src/lyxvc.C:83
+#: src/lyxvc.C:87
 #, fuzzy
 msgid "You must save the file"
 msgstr "Seznam tabulek"
 
-#: src/lyxvc.C:84
+#: src/lyxvc.C:88
 #, fuzzy
 msgid "before it can be registered."
 msgstr "Tento dokument NEBYL registrován"
 
-#: src/lyxvc.C:114 src/lyxvc.C:146
+#: src/lyxvc.C:118 src/lyxvc.C:150
 msgid "Save document and proceed?"
 msgstr "Ulo¾it dokument a pokraèovat?"
 
-#: src/lyxvc.C:126
+#: src/lyxvc.C:130
 msgid "LyX VC: Initial description"
 msgstr "LyX VC: Poèáteèní popis"
 
-#: src/lyxvc.C:127
+#: src/lyxvc.C:131
 msgid "(no initial description)"
 msgstr "(Poèáteèní popis chybí)"
 
-#: src/lyxvc.C:132
+#: src/lyxvc.C:136
 msgid "This document has NOT been registered."
 msgstr "Tento dokument NEBYL registrován"
 
-#: src/lyxvc.C:157
+#: src/lyxvc.C:161
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Zpráva"
 
-#: src/lyxvc.C:160
+#: src/lyxvc.C:164
 msgid "(no log message)"
 msgstr ""
 
-#: src/lyxvc.C:175
+#: src/lyxvc.C:179
 msgid "Ignore changes and proceed with check out?"
 msgstr "Ignorovat zmìny a pokraèovat?"
 
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
 #. changes made since the last check in.
-#: src/lyxvc.C:190
+#: src/lyxvc.C:193
 msgid "When you revert, you will loose all changes made"
 msgstr ""
 "Pokud se vrátíte zpìt ztratíte v¹echny zmìny, které byly v dokumentu "
 "provedeny od posledního záznamu."
 
-#: src/lyxvc.C:191
+#: src/lyxvc.C:194
 msgid "to the document since the last check in."
 msgstr ""
 "Pokud se vrátíte zpìt ztratíte v¹echny zmìny, které byly v dokumentu "
 "provedeny od posledního záznamu."
 
-#: src/lyxvc.C:192
+#: src/lyxvc.C:195
 msgid "Do you still want to do it?"
 msgstr "Stále to chcete udìlat?"
 

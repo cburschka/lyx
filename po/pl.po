@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.3.0\n"
-"POT-Creation-Date: 2003-03-07 16:45+0100\n"
+"POT-Creation-Date: 2003-03-18 18:01+0100\n"
 "PO-Revision-Date: 2003-02-28 10:53+0100\n"
 "Last-Translator: Tomasz £uczak <tlu@technodat.com.pl>\n"
 "Language-Team: polish <pl@li.org>\n"
@@ -2576,7 +2576,7 @@ msgstr "Aktualnie wybrane cytowania"
 msgid "Selected"
 msgstr "Wybrane"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:131
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:135
 msgid "Info"
 msgstr "Informacja"
 
@@ -5508,7 +5508,7 @@ msgid "Code"
 msgstr ""
 
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/heb-article.layout:16
-#: ../lib/layouts/lyxmacros.inc:47
+#: ../lib/layouts/lyxmacros.inc:47 ../lib/layouts/scrlttr2.layout:345
 msgid "Comment"
 msgstr "Komentarz"
 
@@ -7205,40 +7205,40 @@ msgstr "Konfiguracja LaTeX-a"
 msgid "About LyX|X"
 msgstr "O LyX-ie"
 
-#: src/BufferView.C:293 src/bufferlist.C:373 src/bufferlist.C:485
+#: src/BufferView.C:301 src/bufferlist.C:373 src/bufferlist.C:485
 #: src/lyx_cb.C:215
 msgid "Error!"
 msgstr "B³±d!"
 
-#: src/BufferView.C:294
+#: src/BufferView.C:302
 msgid "Specified file is unreadable: "
 msgstr "Podany plik jest nieczytelny:"
 
-#: src/BufferView.C:303 src/lyx_cb.C:447
+#: src/BufferView.C:311 src/lyx_cb.C:447
 msgid "Error! Cannot open specified file:"
 msgstr "B³±d! Nie mo¿na otworzyæ podanego pliku: "
 
-#: src/BufferView.C:563 src/LyXAction.C:377
+#: src/BufferView.C:571 src/LyXAction.C:377
 msgid "Undo"
 msgstr "Cofnij"
 
-#: src/BufferView.C:568
+#: src/BufferView.C:576
 msgid "No further undo information"
 msgstr "Nie mo¿na ju¿ dalej cofn±æ"
 
-#: src/BufferView.C:580 src/LyXAction.C:334
+#: src/BufferView.C:588 src/LyXAction.C:334
 msgid "Redo"
 msgstr "Powtórz"
 
-#: src/BufferView.C:585
+#: src/BufferView.C:593
 msgid "No further redo information"
 msgstr "Nie mo¿na ju¿ dalej powtarzaæ"
 
-#: src/BufferView.C:596
+#: src/BufferView.C:604
 msgid "Paragraph environment type copied"
 msgstr "Skopiowano typ ¶rodowiska akapitu"
 
-#: src/BufferView.C:605
+#: src/BufferView.C:613
 msgid "Paragraph environment type set"
 msgstr "Ustawiono ¶rodowisko akapitu"
 
@@ -7585,20 +7585,20 @@ msgstr ""
 msgid "ignore"
 msgstr "ignoruj"
 
-#: src/LaTeX.C:207 src/LaTeX.C:296 src/LaTeX.C:357
+#: src/LaTeX.C:210 src/LaTeX.C:299 src/LaTeX.C:360
 #, c-format
 msgid "LaTeX run number %1$d"
 msgstr "%1 przebieg LaTeX-a"
 
-#: src/LaTeX.C:209 src/LaTeX.C:298 src/LaTeX.C:359
+#: src/LaTeX.C:212 src/LaTeX.C:301 src/LaTeX.C:362
 msgid "LaTeX run number "
 msgstr "Przebieg LaTeX-a numer "
 
-#: src/LaTeX.C:247 src/LaTeX.C:331
+#: src/LaTeX.C:250 src/LaTeX.C:334
 msgid "Running MakeIndex."
 msgstr "Uruchomiony MakeIndex."
 
-#: src/LaTeX.C:262
+#: src/LaTeX.C:265
 msgid "Running BibTeX."
 msgstr "Uruchomiony BibTeX."
 
@@ -8263,8 +8263,8 @@ msgstr "chktex nie dzia³a!"
 msgid "Could not run with file:"
 msgstr "Nie mo¿na uruchomiæ z plikiem:"
 
-#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:112 src/lyxvc.C:144
-#: src/lyxvc.C:173
+#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:116 src/lyxvc.C:148
+#: src/lyxvc.C:177
 msgid "Changes in document:"
 msgstr "Zmiany w dokumencie:"
 
@@ -9268,11 +9268,11 @@ msgstr "LaTeX ERT"
 msgid "External"
 msgstr "Zewnêtrzne"
 
-#: src/frontends/qt2/QExternalDialog.C:87
+#: src/frontends/qt2/QExternalDialog.C:89
 msgid "External material (*)"
 msgstr "¬ród³o zewnêtrzne"
 
-#: src/frontends/qt2/QExternalDialog.C:89
+#: src/frontends/qt2/QExternalDialog.C:91
 msgid "Select external material"
 msgstr "Wybierz ¼ród³o zewnêtrzne"
 
@@ -11844,7 +11844,7 @@ msgstr "Dokument o nazwie"
 msgid "already exists. Overwrite?"
 msgstr "ju¿ istnieje. Nadpisaæ?"
 
-#: src/lyxfunc.C:1917
+#: src/lyxfunc.C:1909
 msgid "Welcome to LyX!"
 msgstr "Witaj w LyXie!"
 
@@ -12327,58 +12327,58 @@ msgstr "Sprawd¼ zawarto¶æ pliku \"textclass.lst\""
 msgid "Sorry, has to exit :-("
 msgstr "Niestety muszê zakoñczyæ pracê :-("
 
-#: src/lyxvc.C:82
+#: src/lyxvc.C:86
 msgid "File not saved"
 msgstr "Pliku nie zapisano"
 
-#: src/lyxvc.C:83
+#: src/lyxvc.C:87
 msgid "You must save the file"
 msgstr "Musisz zapisaæ plik"
 
-#: src/lyxvc.C:84
+#: src/lyxvc.C:88
 msgid "before it can be registered."
 msgstr "zanim go zarejestrujesz."
 
-#: src/lyxvc.C:114 src/lyxvc.C:146
+#: src/lyxvc.C:118 src/lyxvc.C:150
 msgid "Save document and proceed?"
 msgstr "Zapisaæ dokument i kontynuowaæ?"
 
-#: src/lyxvc.C:126
+#: src/lyxvc.C:130
 msgid "LyX VC: Initial description"
 msgstr "Kontrola wersji: Opis pocz±tkowy"
 
-#: src/lyxvc.C:127
+#: src/lyxvc.C:131
 msgid "(no initial description)"
 msgstr "(brak opisu pocz±tkowego)"
 
-#: src/lyxvc.C:132
+#: src/lyxvc.C:136
 msgid "This document has NOT been registered."
 msgstr "Ten dokument NIE zosta³ zarejestrowany."
 
-#: src/lyxvc.C:157
+#: src/lyxvc.C:161
 msgid "LyX VC: Log Message"
 msgstr "Kontrola wersji: opis bie¿±cej wersji"
 
-#: src/lyxvc.C:160
+#: src/lyxvc.C:164
 msgid "(no log message)"
 msgstr "(brak logu wykonania)"
 
-#: src/lyxvc.C:175
+#: src/lyxvc.C:179
 msgid "Ignore changes and proceed with check out?"
 msgstr "Zignorowaæ zmiany i odblokowaæ do edycji?"
 
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
 #. changes made since the last check in.
-#: src/lyxvc.C:190
+#: src/lyxvc.C:193
 msgid "When you revert, you will loose all changes made"
 msgstr "Je¶li wrócisz to stracisz wszystkie zmiany wykonane"
 
-#: src/lyxvc.C:191
+#: src/lyxvc.C:194
 msgid "to the document since the last check in."
 msgstr "na dokumencie od ostatniego zablokowania."
 
-#: src/lyxvc.C:192
+#: src/lyxvc.C:195
 msgid "Do you still want to do it?"
 msgstr "Czy nadal chcesz to wykonaæ?"
 

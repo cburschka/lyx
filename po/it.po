@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.1\n"
-"POT-Creation-Date: 2003-03-07 16:45+0100\n"
+"POT-Creation-Date: 2003-03-18 18:01+0100\n"
 "PO-Revision-Date: 2002-12-19 18:59+0100\n"
 "Last-Translator: Fulvio Boggia <muci@freenet.hut.fi>\n"
 "Language-Team: Italiano <it@li.org>\n"
@@ -2960,7 +2960,7 @@ msgstr "Citazione"
 msgid "Selected"
 msgstr "Seleziona fra|#S"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:131
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:135
 msgid "Info"
 msgstr "Informazioni"
 
@@ -6318,7 +6318,7 @@ msgid "Code"
 msgstr "Chiudi"
 
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/heb-article.layout:16
-#: ../lib/layouts/lyxmacros.inc:47
+#: ../lib/layouts/lyxmacros.inc:47 ../lib/layouts/scrlttr2.layout:345
 #, fuzzy
 msgid "Comment"
 msgstr "Commento:"
@@ -8240,42 +8240,42 @@ msgstr ""
 msgid "About LyX|X"
 msgstr ""
 
-#: src/BufferView.C:293 src/bufferlist.C:373 src/bufferlist.C:485
+#: src/BufferView.C:301 src/bufferlist.C:373 src/bufferlist.C:485
 #: src/lyx_cb.C:215
 msgid "Error!"
 msgstr "Errore!"
 
-#: src/BufferView.C:294
+#: src/BufferView.C:302
 msgid "Specified file is unreadable: "
 msgstr "File specificato non puo essere letto: "
 
-#: src/BufferView.C:303 src/lyx_cb.C:447
+#: src/BufferView.C:311 src/lyx_cb.C:447
 #, fuzzy
 msgid "Error! Cannot open specified file:"
 msgstr "Errore! Non riesco a trovare il file indicato."
 
-#: src/BufferView.C:563 src/LyXAction.C:377
+#: src/BufferView.C:571 src/LyXAction.C:377
 msgid "Undo"
 msgstr "Annulla l'ultima operazione"
 
-#: src/BufferView.C:568
+#: src/BufferView.C:576
 #, fuzzy
 msgid "No further undo information"
 msgstr "Nessun altra operazione da annullare"
 
-#: src/BufferView.C:580 src/LyXAction.C:334
+#: src/BufferView.C:588 src/LyXAction.C:334
 msgid "Redo"
 msgstr "Ripristina l'ultima operazione annullata"
 
-#: src/BufferView.C:585
+#: src/BufferView.C:593
 msgid "No further redo information"
 msgstr "Nessun altra operazione da ripristinare"
 
-#: src/BufferView.C:596
+#: src/BufferView.C:604
 msgid "Paragraph environment type copied"
 msgstr "Ho copiato il tipo d'ambiente del paragrafo"
 
-#: src/BufferView.C:605
+#: src/BufferView.C:613
 msgid "Paragraph environment type set"
 msgstr "Ho impostato il tipo d'ambiente del paragrafo"
 
@@ -8657,21 +8657,21 @@ msgstr "eredita"
 msgid "ignore"
 msgstr "ignora"
 
-#: src/LaTeX.C:207 src/LaTeX.C:296 src/LaTeX.C:357
+#: src/LaTeX.C:210 src/LaTeX.C:299 src/LaTeX.C:360
 #, fuzzy, c-format
 msgid "LaTeX run number %1$d"
 msgstr "Lancio di LaTeX n."
 
-#: src/LaTeX.C:209 src/LaTeX.C:298 src/LaTeX.C:359
+#: src/LaTeX.C:212 src/LaTeX.C:301 src/LaTeX.C:362
 #, fuzzy
 msgid "LaTeX run number "
 msgstr "Lancio di LaTeX n."
 
-#: src/LaTeX.C:247 src/LaTeX.C:331
+#: src/LaTeX.C:250 src/LaTeX.C:334
 msgid "Running MakeIndex."
 msgstr "Esecuzione di MakeIndex."
 
-#: src/LaTeX.C:262
+#: src/LaTeX.C:265
 msgid "Running BibTeX."
 msgstr "Esecuzione di BibTeX."
 
@@ -9392,8 +9392,8 @@ msgstr "chktex non funziona!"
 msgid "Could not run with file:"
 msgstr "Non riesco a partire col file:"
 
-#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:112 src/lyxvc.C:144
-#: src/lyxvc.C:173
+#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:116 src/lyxvc.C:148
+#: src/lyxvc.C:177
 msgid "Changes in document:"
 msgstr "Modifiche nel documento:"
 
@@ -10529,11 +10529,11 @@ msgstr "LaTeX|#L"
 msgid "External"
 msgstr "Altro"
 
-#: src/frontends/qt2/QExternalDialog.C:87
+#: src/frontends/qt2/QExternalDialog.C:89
 msgid "External material (*)"
 msgstr ""
 
-#: src/frontends/qt2/QExternalDialog.C:89
+#: src/frontends/qt2/QExternalDialog.C:91
 #, fuzzy
 msgid "Select external material"
 msgstr "Seleziona la linea successiva"
@@ -13296,7 +13296,7 @@ msgstr "Un documento col nome"
 msgid "already exists. Overwrite?"
 msgstr "già esiste. Vuoi sovrascriverlo?"
 
-#: src/lyxfunc.C:1917
+#: src/lyxfunc.C:1909
 msgid "Welcome to LyX!"
 msgstr "Benvenuto in LyX!"
 
@@ -13713,61 +13713,61 @@ msgstr "Controllare il contenuto del file \"textclass.lst\""
 msgid "Sorry, has to exit :-("
 msgstr "Spiacente, ma devo uscire :-("
 
-#: src/lyxvc.C:82
+#: src/lyxvc.C:86
 #, fuzzy
 msgid "File not saved"
 msgstr "Nome del file:|#f"
 
-#: src/lyxvc.C:83
+#: src/lyxvc.C:87
 #, fuzzy
 msgid "You must save the file"
 msgstr "Lista delle tabelle"
 
-#: src/lyxvc.C:84
+#: src/lyxvc.C:88
 #, fuzzy
 msgid "before it can be registered."
 msgstr "Questo documento NON è stato registrato."
 
-#: src/lyxvc.C:114 src/lyxvc.C:146
+#: src/lyxvc.C:118 src/lyxvc.C:150
 msgid "Save document and proceed?"
 msgstr "Vuoi salvare il documento e procedere?"
 
-#: src/lyxvc.C:126
+#: src/lyxvc.C:130
 msgid "LyX VC: Initial description"
 msgstr "LyX VC: Descrizione iniziale"
 
-#: src/lyxvc.C:127
+#: src/lyxvc.C:131
 msgid "(no initial description)"
 msgstr "(nessuna descrizione iniziale)"
 
-#: src/lyxvc.C:132
+#: src/lyxvc.C:136
 msgid "This document has NOT been registered."
 msgstr "Questo documento NON è stato registrato."
 
-#: src/lyxvc.C:157
+#: src/lyxvc.C:161
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Messaggio di log"
 
-#: src/lyxvc.C:160
+#: src/lyxvc.C:164
 msgid "(no log message)"
 msgstr "(nessun messaggio di log)"
 
-#: src/lyxvc.C:175
+#: src/lyxvc.C:179
 msgid "Ignore changes and proceed with check out?"
 msgstr "Vuoi ignorare le modifiche e procedere con il controllo?"
 
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
 #. changes made since the last check in.
-#: src/lyxvc.C:190
+#: src/lyxvc.C:193
 msgid "When you revert, you will loose all changes made"
 msgstr "Una volta tornato indietro, perderai tutte le modifiche fatte"
 
-#: src/lyxvc.C:191
+#: src/lyxvc.C:194
 msgid "to the document since the last check in."
 msgstr "al documento dall'ultimo controllo."
 
-#: src/lyxvc.C:192
+#: src/lyxvc.C:195
 msgid "Do you still want to do it?"
 msgstr "Vuoi davvero farlo?"
 

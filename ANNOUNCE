@@ -18,15 +18,18 @@ http://www.lyx.org/ has to say on the subject:
   visual layout to the software.
 
   LyX runs on many Unix platforms (including MacOS X), OS/2, and under
-  Windows/Cygwin. Note that all these ports use the same xforms interface 
-  and therefore need an X server. 
+  Windows/Cygwin. Note that all these ports still need an X server.
 
-You can download LyX 1.3.1 here :
+You can download LyX 1.3.1 here (the .bz2 are compressed with bzip2,
+which yields smaller files) :
 
 	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.1.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.1.tar.bz2
 	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.1.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.1.tar.bz2
 
-and it should shortly propagate to the following mirrors :
+and it should shortly propagate to the following mirrors (also with
+the .bz2 versions):
 
         ftp://ftp.sdsc.edu/pub/other/lyx/stable/lyx-1.3.1.tar.gz
         ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.3.1.tar.gz
@@ -37,12 +40,13 @@ and it should shortly propagate to the following mirrors :
 
 Prebuild binaries (mainly rpms for linux distributions) should soon be 
 available at
-	ftp://ftp.lyx.org/pub/lyx/bin/1.3.1
+	ftp://ftp.lyx.org/pub/lyx/bin/1.3.1/
  
 If you already have LyX 1.3.0 sources, you may want to apply the
 following patch instead
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.1.gz  
- 
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.1.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.1.bz2
+
 
 If you find what you think is a bug in LyX 1.3.1, you may either
 e-mail the LyX developers' mailing list (lyx-devel@lists.lyx.org), or open
@@ -157,6 +161,9 @@ What's new
 
 - search checkboxes are not disabled for read-only documents [bug
   #937, Qt only]
+
+- in Preferences dialog, the maximum value for last files is now set
+  to 9 [Qt only]
 
 - fix various problems with paper size selection [bug #844 and #866]
 
