@@ -1,5 +1,8 @@
 2000-05-22  Juergen Vigna  <jug@sad.it>
 
+	* src/tabular.C (OldFormatRead): added \end_deeper to the end LyXTable
+	end markers!
+
 	* src/paragraph.C (PasteParagraph): Possibly a memory leak as
 	next was deleted but not set to 0.
 

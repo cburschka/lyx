@@ -1312,7 +1312,9 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
         token = lex.GetString();
         if (token.empty())
             continue;
-	if ((token == "\\layout") || (token == "\\end_float")) {
+	if ((token == "\\layout") || (token == "\\end_float") ||
+	    (token == "\\end_deeper"))
+	{
 	    lex.pushToken(token);
 	    break;
 	}
