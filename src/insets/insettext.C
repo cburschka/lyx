@@ -1327,9 +1327,9 @@ void InsetText::computeTextRows(Painter & pain) const
 	if (par->IsNewline(p)) {
 	    rows.back().asc = wordAscent;
 	    rows.back().desc = wordDescent;
-	    row.pos = ++p;
+	    row.pos = p+1;
 	    rows.push_back(row);
-	    nwp = p;
+	    nwp = p+1;
 	    width = lastWordWidth = 0;
 	    oasc = odesc = wordAscent = wordDescent = 0;
 	    is_first_word_in_row = true;

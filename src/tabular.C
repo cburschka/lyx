@@ -23,6 +23,9 @@
 #include "layout.h"
 #include "lyx_gui_misc.h"
 #include "buffer.h"
+#include "BufferView.h"
+#include "Painter.h"
+#include "LaTeXFeatures.h"
 #include "support/lstrings.h"
 #include "support/lyxmanip.h"
 #include "insets/insettabular.h"
@@ -263,33 +266,12 @@ void LyXTabular::AppendRow(int /* cell */)
 }
 
 
-void LyXTabular::DeleteRow(int /*cell*/)
+void LyXTabular::DeleteRow(int row)
 {
-#if 0
-    int row = row_of_cell(cell);
-    rowstruct * row_info2 = new rowstruct[rows_ - 1];
-    cellstruct ** cell_info2 = new cellstruct * [rows_ - 1];
-
-    delete[] cell_info[row];
-    int i = 0;
-    for (; i < row; ++i) {
-	cell_info2[i] = cell_info[i];
-	row_info2[i] = row_info[i];
-    }
-    for (i = row; i < rows_ - 1; ++i) {
-	cell_info2[i] = cell_info[i + 1];
-	row_info2[i] = row_info[i + 1];
-    }
-
-    delete[] cell_info;
-    cell_info = cell_info2;
-    delete[] row_info;
-    row_info = row_info2;
-   
+    row_info.erase(&row_info[row]);
+    cell_info.erase(&cell_info[row]);
     --rows_;
-
     Reinit();
-#endif
 }
 
 
@@ -449,6 +431,14 @@ void LyXTabular::set_row_column_number_info()
 	if (column == columns_) {
 	    column = 0;
 	    ++row;
+	}
+    }
+    for (row = 0; row < rows_; ++row) {
+	for (column = 0; column<columns_; ++column) {
+	    if (IsPartOfMultiColumn(row,column))
+		continue;
+	    cell_info[row][column].inset->SetAutoBreakRows(
+		!GetPWidth(GetCellNumber(row, column)).empty());
 	}
     }
 }
@@ -1164,9 +1154,6 @@ void LyXTabular::Read(LyXLex & lex)
 	    (void)getTokenValue(line, "rotate", cell_info[i][j].rotate);
 	    (void)getTokenValue(line, "linebreaks", cell_info[i][j].linebreaks);
 	    (void)getTokenValue(line, "width", cell_info[i][j].p_width);
-	    if (!(cell_info[i][j].p_width.empty() &&
-		  column_info[j].p_width.empty()))
-		cell_info[i][j].inset->SetAutoBreakRows(true);
 	    (void)getTokenValue(line, "special", cell_info[i][j].align_special);
 	    l_getline(is, line);
 	    if (prefixIs(line, "\\begin_inset")) {
@@ -1223,7 +1210,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
     else
 	version = 1;
 
-    //int * cont_row_info; // unused
+    vector<int> cont_row_info;
 
     if (version < 5) {
 	lyxerr << "Tabular format < 5 is not supported anymore\n"
@@ -1238,11 +1225,13 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	} else
 	    is >> rows_arg >> columns_arg;
 	Init(rows_arg, columns_arg);
+	cont_row_info = vector<int>(rows_arg);
 	SetLongTabular(is_long_tabular_arg);
 	SetRotateTabular(rotate_arg);
 	string tmp;
 	for (i = 0; i < rows_; ++i) {
 	    getline(is, tmp);
+	    cont_row_info[i] = false;
 	}
 	for (i = 0; i < columns_; ++i) {
 	    getline(is, tmp);
@@ -1256,6 +1245,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	is >> rows_arg >> columns_arg >> is_long_tabular_arg
 	   >> rotate_arg >> a >> b >> c >> d;
 	Init(rows_arg, columns_arg);
+	cont_row_info = vector<int>(rows_arg);
 	SetLongTabular(is_long_tabular_arg);
 	SetRotateTabular(rotate_arg);
 	endhead = a;
@@ -1267,7 +1257,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	    is >> a >> b >> c >> d;
 	    row_info[i].top_line = a;
 	    row_info[i].bottom_line = b;
-//	row_info[i].is_cont_row = c;
+	    cont_row_info[i] = c;
 	    row_info[i].newpage = d;
 	}
 	for (i = 0; i < columns_; ++i) {
@@ -1299,7 +1289,6 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 		cell_info[i][j].alignment = static_cast<char>(b);
 		cell_info[i][j].top_line = static_cast<char>(c);
 		cell_info[i][j].bottom_line = static_cast<char>(d);
-//			cell_info[i][j].has_cont_row = static_cast<bool>(e);
 		cell_info[i][j].rotate = static_cast<bool>(f);
 		cell_info[i][j].linebreaks = static_cast<bool>(g);
 		cell_info[i][j].align_special = s1;
@@ -1308,6 +1297,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	}
     }
     set_row_column_number_info();
+
     LyXParagraph * par = new LyXParagraph;
     LyXParagraph * return_par = 0;
     LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
@@ -1315,7 +1305,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
     string token, tmptok;
     int pos = 0;
     char depth = 0;
-    LyXFont font(LyXFont::ALL_INHERIT);
+    LyXFont font(LyXFont::ALL_SANE);
 
     while (lex.IsOK()) {
         lex.nextToken();
@@ -1348,6 +1338,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
     // now we have the par we should fill the insets with this!
     int cell = 0;
     InsetText *inset = GetCellInset(cell);
+    int row;
 
     for(int i=0; i < par->Last(); ++i) {
 	if (par->IsNewline(i)) {
@@ -1358,444 +1349,29 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 		    endl;
 		return;
 	    }
+	    row = row_of_cell(cell);
+	    if (cont_row_info[row]) {
+		DeleteRow(row);
+		cont_row_info.erase(&cont_row_info[row]);
+		while(!IsFirstCellInRow(--cell));
+	    } else {
+		inset = GetCellInset(cell);
+		continue;
+	    }
 	    inset = GetCellInset(cell);
-	    continue;
+	    row = row_of_cell(cell);
+	    if (!cell_info[row_of_cell(cell)][column_of_cell(cell)].linebreaks)
+	    {
+		// insert a space instead
+		par->Erase(i);
+		par->InsertChar(i, ' ');
+	    }
 	}
 	par->CopyIntoMinibuffer(i);
 	inset->par->InsertFromMinibuffer(inset->par->Last());
     }
+    Reinit();
 }
-
-
-#if 0
-// cell < 0 will tex the preamble
-// returns the number of printed newlines
-int LyXTabular::TexEndOfCell(ostream & os, int cell) const
-{
-    int i;
-    int ret = 0;
-    int tmp; // tmp2;
-    int fcell, nvcell;
-    if (IsLastCell(cell)) {
-        // the very end at the very beginning
-        if (GetLinebreaks(cell))
-		os << "\\smallskip{}}";
-        if (IsMultiColumn(cell))
-		os << '}';
-        if (GetRotateCell(cell)) {
-		os << "\n\\end{sideways}";
-            ++ret;
-        }
-        os << "\\\\\n";
-        ++ret;
-    
-        tmp = 0;
-        fcell = cell; 
-        while (!IsFirstCellInRow(fcell)) --fcell;
-        for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
-            if (BottomLine(fcell + i))
-                ++tmp;
-        }
-        if (tmp == NumberOfCellsInRow(fcell)) {
-		os << "\\hline ";
-        } else {
-            tmp = 0;
-            for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
-                if (BottomLine(fcell + i)) {
-			os << "\\cline{"
-			   << column_of_cell(fcell + i) + 1
-			   << '-'
-			   << right_column_of_cell(fcell + i) + 1
-			   << "} ";
-                    tmp = 1;
-                }
-            }
-        }
-        if (tmp){
-		os << '\n';
-            ++ret;
-        }
-        if (is_long_tabular)
-		os << "\\end{longtable}";
-        else
-		os << "\\end{tabular}";
-        if (rotate) {
-		os << "\n\\end{sideways}";
-            ++ret;
-        }
-    } else {
-        nvcell = cell + 1;
-        if (cell < 0){
-            // preamble
-            if (rotate) {
-		    os << "\\begin{sideways}\n";
-                ++ret;
-            }
-            if (is_long_tabular)
-		    os << "\\begin{longtable}{";
-            else
-		    os << "\\begin{tabular}{";
-            for (i = 0; i < columns_; ++i) {
-                if (column_info[i].left_line)
-			os << '|';
-                if (!column_info[i].align_special.empty()) {
-			os << column_info[i].align_special;
-                } else if (!column_info[i].p_width.empty()) {
-			os << "p{"
-			   << column_info[i].p_width
-			   << '}';
-                } else {
-                    switch (column_info[i].alignment) {
-                      case LYX_ALIGN_LEFT:
-			      os << 'l';
-                          break;
-                      case LYX_ALIGN_RIGHT:
-			      os << 'r';
-                          break;
-                      default:
-			      os << 'c';
-                          break;
-                    }
-                }
-                if (column_info[i].right_line)
-			os << '|';
-            }
-            os << "}\n";
-            ++ret;
-            tmp = 0;
-            if (GetNumberOfCells()) {
-                fcell = 0;
-                for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
-                    if (TopLine(fcell + i))
-                        ++tmp;
-                }
-                if (tmp == NumberOfCellsInRow(fcell)){
-			os << "\\hline ";
-                } else {
-                    tmp = 0;
-                    for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
-                        if (TopLine(fcell + i)) {
-				os << "\\cline{"
-				   << column_of_cell(fcell + i) + 1
-				   << '-'
-				   << right_column_of_cell(fcell + i) + 1
-				   << "} ";
-				tmp = 1;
-                        }
-                    }
-                }
-                if (tmp){
-			os << '\n';
-                    ++ret;
-                }
-            }
-            if (GetRotateCell(0)) {
-		    os << "\\begin{sideways}\n";
-                ++ret;
-            }
-        } else {
-            // usual cells
-            if (GetLinebreaks(cell))
-		    os << "\\smallskip{}}";
-            if (IsMultiColumn(cell)){
-		    os << '}';
-            }
-            if (GetRotateCell(cell)) {
-		    os << "\n\\end{sideways}";
-                ++ret;
-            }
-            if (IsLastCellInRow(cell)) {
-                int row = row_of_cell(cell);
-                string hline1, hline2;
-                bool print_hline = true;
-                bool flag1 = IsLongTabular() &&
-                    ((row == endhead) || (row == endfirsthead) ||
-                     (row == endfoot) || (row == endlastfoot));
-                ++row;
-                bool flag2 = IsLongTabular() &&
-                    ((row <= endhead) || (row <= endfirsthead) ||
-                     (row <= endfoot) || (row <= endlastfoot));
-                --row;
-                // print the bottom hline only if (otherwise it is doubled):
-                // - is no LongTabular
-                // - there IS a first-header
-                // - the next row is no special header/footer
-                //   & this row is no special header/footer
-                // - the next row is a special header/footer
-                //   & this row is a special header/footer
-                bool pr_top_hline = (flag1 && flag2) || (!flag1 && !flag2) ||
-                    (endfirsthead == endhead);
-                os << "\\\\\n";
-                ++ret;
-                tmp = 0;
-                fcell = cell;
-                while (!IsFirstCellInRow(fcell))
-                    --fcell;
-                for (i = 0; i < NumberOfCellsInRow(cell); ++i) {
-                    if (BottomLine(fcell + i))
-                        ++tmp;
-                }
-                if (tmp == NumberOfCellsInRow(cell)){
-			os << "\\hline ";
-                    hline1 = "\\hline ";
-                } else {
-                    tmp = 0;
-                    for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
-                        if (BottomLine(fcell + i)){
-				os << "\\cline{"
-				   << column_of_cell(fcell + i) + 1
-				   << '-'
-				   << right_column_of_cell(fcell + i) + 1
-				   << "} ";
-                            hline1 += "\\cline{";
-                            hline1 += tostr(column_of_cell(fcell + i) + 1);
-                            hline1 += '-';
-                            hline1 += tostr(right_column_of_cell(fcell + i) + 1);
-                            hline1 += "} ";
-                            tmp = 1;
-                        }
-                    }
-                }
-                if (tmp){
-			os << '\n';
-                    ++ret;
-                }
-                if (IsLongTabular() && (row == endfoot)) {
-			os << "\\endfoot\n";
-                    ++ret;
-                    print_hline = false; // no double line below footer
-                }
-                if (IsLongTabular() && (row == endlastfoot)) {
-			os << "\\endlastfoot\n";
-                    ++ret;
-                    print_hline = false; // no double line below footer
-                }
-                if (IsLongTabular() && row_info[row].newpage) {
-			os << "\\newpage\n";
-                    ++ret;
-                    print_hline = false; // no line below a \\newpage-command
-                }
-                tmp = 0;
-                if ((nvcell < numberofcells) &&
-		    (cell < GetNumberOfCells() - 1) && !IsLastCell(cell)) {
-                    fcell = nvcell;
-                    for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
-                        if (TopLine(fcell + i))
-                            ++tmp;
-                    }
-                    if (tmp == NumberOfCellsInRow(fcell)) {
-                        if (print_hline)
-				os << "\\hline ";
-                        hline2 = "\\hline ";
-                    } else {
-                        tmp = 0;
-                        for (i = 0; i < NumberOfCellsInRow(fcell); ++i) {
-                            if (TopLine(fcell + i)) {
-                                if (print_hline) {
-					os << "\\cline{"
-					   << column_of_cell(fcell + i) + 1
-					   << '-'
-					   << right_column_of_cell(fcell + i) + 1
-					   << "} ";
-				}
-                                hline2 += "\\cline{";
-                                hline2 += tostr(column_of_cell(fcell+i)+1);
-                                hline2 += '-';
-                                hline2 += tostr(right_column_of_cell(fcell+i)+1);
-                                hline2 += "} ";
-                                tmp = 1;
-                            }
-                        }
-                    }
-                    if (tmp && print_hline){
-			    os << '\n';
-                        ++ret;
-                    }
-                }
-                // the order here is important as if one defines two
-                // or more things in one line only the first entry is
-                // displayed the other are set to an empty-row. This
-                // is important if I have a footer and want that the
-                // lastfooter is NOT displayed!!!
-                bool sflag2 = (row == endhead) || (row == endfirsthead) ||
-                    (row == endfoot) || (row == endlastfoot);
-                --row;
-                row += 2;
-                bool sflag1 = IsLongTabular() && (row != endhead) &&
-                    (row != endfirsthead) &&
-                    ((row == endfoot) || (row == endlastfoot));
-                --row;
-                if (IsLongTabular() && (row == endhead)) {
-			os << "\\endhead\n";
-                    ++ret;
-                }
-                if (IsLongTabular() && (row == endfirsthead)) {
-			os << "\\endfirsthead\n";
-                    ++ret;
-                }
-                if (sflag1) { // add the \hline for next foot row
-                    if (!hline1.empty()) {
-			    os << hline1 + '\n';
-                        ++ret;
-                    }
-                }
-                // add the \hline for the first row
-                if (pr_top_hline && sflag2) {
-                    if (!hline2.empty()) {
-			    os << hline2 + '\n';
-                        ++ret;
-                    }
-                }
-                if (nvcell < numberofcells && GetRotateCell(nvcell)) {
-			os << "\\begin{sideways}\n";
-                    ++ret;
-                }
-            } else {
-		os << "&\n";
-                ++ret;
-                if (nvcell < numberofcells && GetRotateCell(nvcell)) {
-			os << "\\begin{sideways}\n";
-                    ++ret;
-                }
-            }
-        }
-        if (nvcell < numberofcells && IsMultiColumn(nvcell)) {
-		os << "\\multicolumn{"
-		   << cells_in_multicolumn(nvcell)
-		   << "}{";
-            if (!cellinfo_of_cell(cell+1)->align_special.empty()) {
-		    os << cellinfo_of_cell(cell+1)->align_special
-		       << "}{";
-            } else {
-                if (LeftLine(nvcell))
-			os << '|';
-                if (!GetPWidth(nvcell).empty()) {
-			os << "p{"
-			   << GetPWidth(nvcell)
-			   << '}';
-                } else {
-                    switch (GetAlignment(nvcell)) {
-		    case LYX_ALIGN_LEFT: os << 'l'; break;
-		    case LYX_ALIGN_RIGHT: os << 'r'; break;
-		    default:  os << 'c'; break;
-                    }
-                }
-                if (RightLine(nvcell))
-			os << '|';
-                //if (column_of_cell(cell+2)!= 0 && LeftLine(cell+2))
-                if (((nvcell + 1) < numberofcells) &&
-                    ((nvcell+1) < numberofcells) &&
-                    (column_of_cell(nvcell+1)!= 0) &&
-                    LeftLine(nvcell+1))
-			os << '|';
-		
-		os << "}{";
-            }
-        }
-        if (nvcell < numberofcells && GetLinebreaks(nvcell)) {
-		os << "\\parbox[t]{"
-		   << GetPWidth(nvcell)
-		   << "}{\\smallskip{}";
-	}
-    }
-    return ret;
-}
-
-
-// cell <0 will tex the preamble
-// returns the number of printed newlines
-int LyXTabular::RoffEndOfCell(ostream & os, int cell)
-{
-    int ret = 0;
-
-    if (cell == GetNumberOfCells() - 1){
-        // the very end at the very beginning
-//        if (CellHasContRow(cell) >= 0) {
-//		os << "\nT}";
-//           ++ret;
-//        }
-        os << "\n";
-        ++ret;
-        if (row_info[row_of_cell(cell)].bottom_line) {
-		os << "_\n";
-            ++ret;
-        }
-        os << ".TE\n.pl 1c";
-    } else {  
-        if (cell < 0) {
-            int fcell = 0;
-            // preamble
-            os << "\n.pl 500c\n.TS\n";
-            for (int j = 0; j < rows_; ++j) {
-                for (int i = 0; i < columns_; ++i, ++fcell) {
-                    if (column_info[i].left_line)
-			    os << " | ";
-                    if (cell_info[j][i].multicolumn == CELL_PART_OF_MULTICOLUMN)
-			    os << "s";
-                    else {
-                        switch (column_info[i].alignment) {
-                          case LYX_ALIGN_LEFT:
-				  os << "l";
-                              break;
-                          case LYX_ALIGN_RIGHT:
-				  os << "r";
-                              break;
-                          default:
-				  os << "c";
-                              break;
-                        }
-                    }
-                    if (!column_info[i].p_width.empty())
-			    os << "w(" << column_info[i].p_width << ")";
-                    if (column_info[i].right_line)
-			    os << " | ";
-                }
-                if ((j + 1) < rows_) {
-			os << "\n";
-                    ++ret;
-                }
-            }
-            os << ".\n";
-            ++ret;
-            if (row_info[0].top_line) {
-		    os << "_\n";
-                ++ret;
-            }
-//            if (CellHasContRow(0) >= 0) {
-//		    os << "T{\n";
-//                ++ret;
-//            }
-        } else {
-            // usual cells
-//            if (CellHasContRow(cell) >= 0) {
-//		    os << "\nT}";
-//                ++ret;
-//            }
-            if (right_column_of_cell(cell) == columns_ -1){
-		    os << "\n";
-                ++ret;
-                int row = row_of_cell(cell);
-                if (row_info[row++].bottom_line) {
-			os << "_\n";
-                    ++ret;
-                }
-                if ((row < rows_) && row_info[row].top_line) {
-			os << "_\n";
-                    ++ret;
-                }
-            } else
-		    os << "\t";
-//            if ((cell < GetNumberOfCells() - 1) &&
-//                (CellHasContRow(cell+1) >= 0)) {
-//		    os << "T{\n";
-//                ++ret;
-//            }
-        }
-    }
-    return ret;
-}
-
-#endif
 
 
 char const * LyXTabular::GetDocBookAlign(int cell, bool isColumn) const
@@ -1996,8 +1572,6 @@ void LyXTabular::SetMultiColumn(int cell, int number)
     }
     set_row_column_number_info();
     SetWidthOfCell(cell, new_width);
-    if (GetPWidth(cell).empty())
-	GetCellInset(cell)->SetAutoBreakRows(false);
 }
 
 
@@ -2037,8 +1611,6 @@ int LyXTabular::UnsetMultiColumn(int cell)
         }
     }
     set_row_column_number_info();
-    if (GetPWidth(cell).empty())
-	GetCellInset(cell)->SetAutoBreakRows(false);
     return result;
 }
 
@@ -2506,4 +2078,14 @@ int LyXTabular::Latex(ostream & os, bool fragile, bool fp) const
 InsetText * LyXTabular::GetCellInset(int cell) const
 {
     return cell_info[row_of_cell(cell)][column_of_cell(cell)].inset;
+}
+
+void LyXTabular::Validate(LaTeXFeatures & features) const
+{
+    if (IsLongTabular())
+        features.longtable = true;
+    if (NeedRotating())
+	features.rotating = true;
+    for(int cell = 0; cell < numberofcells; ++cell)
+	GetCellInset(cell)->Validate(features);
 }

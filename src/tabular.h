@@ -22,6 +22,7 @@
 
 class InsetTabular;
 class InsetText;
+class LaTeXFeatures;
 
 /* The features the text class offers for tables */ 
 
@@ -257,6 +258,8 @@ public:
     int columns() const { return columns_;}
     ///
     InsetTabular * owner() const { return owner_; }
+    ///
+    void Validate(LaTeXFeatures &) const;
 
 private: //////////////////////////////////////////////////////////////////
     ///

@@ -642,8 +642,7 @@ int InsetTabular::DocBook(ostream &) const
 
 void InsetTabular::Validate(LaTeXFeatures & features) const
 {
-    if (tabular->IsLongTabular())
-        features.longtable = true;
+    tabular->Validate(features);
 }
 
 
@@ -926,9 +925,9 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
     switch (feature) {
       case LyXTabular::SET_PWIDTH:
       {
-	  bool update = tabular->GetPWidth(actcell).empty();
+	  bool update = (tabular->GetPWidth(actcell) != val);
           tabular->SetPWidth(actcell,val);
-	  if (tabular->GetPWidth(actcell).empty() != update)
+	  if (update)
 	      UpdateLocal(bv, true);
       }
       break;

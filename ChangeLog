@@ -1,3 +1,21 @@
+2000-05-19  Juergen Vigna  <jug@sad.it>
+
+	* src/tabular.C (Validate): fixed/added validating of LaTeXFeatures.
+
+	* src/insets/insettext.C (computeTextRows): small fix for display of
+	1 character after a newline.
+
+	* src/tabular.C (OldFormatRead): fixed the OldFormatRead with regard
+	to cont-rows!
+
+2000-05-18  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (TabularFeatures): fixed update of display
+	when changing width of column.
+
+	* src/tabular.C (set_row_column_number_info): setting of
+	autobreak rows if necessary.
+
 2000-05-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxvc.C (toggleReadOnly): use VCS::status() instead of stat()
