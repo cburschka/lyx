@@ -1065,7 +1065,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 					    par->getLayout());
 
 		// Insets don't make sense in a free-spacing context! ---Kayvan
-		if (layout.free_spacing) {
+		if (layout.free_spacing || par->isFreeSpacing()) {
 			if (lex.isOK()) {
 				lex.next();
 				string next_token = lex.getString();
@@ -1123,7 +1123,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			textclasslist.Style(params.textclass, 
 					    par->getLayout());
 
-		if (layout.free_spacing) {
+		if (layout.free_spacing || par->isFreeSpacing()) {
 			par->insertChar(pos, ' ', font);
 		} else {
 			Inset * inset = new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
@@ -1364,11 +1364,12 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 			}
 			// do not insert consecutive spaces if !free_spacing
 		} else if ((*cit == ' ' || *cit == '\t') &&
-		           space_inserted && !layout.free_spacing)
+		           space_inserted && !layout.free_spacing &&
+				   !par->isFreeSpacing())
 		{
 			continue;
 		} else if (*cit == '\t') {
-			if (!layout.free_spacing) {
+			if (!layout.free_spacing && !par->isFreeSpacing()) {
 				// tabs are like spaces here
 				par->insertChar(pos, ' ', font);
 				++pos;
@@ -2927,7 +2928,8 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 		} else {
 			string sgml_string;
 			if (par->sgmlConvertChar(c, sgml_string)
-			    && !style.free_spacing) { 
+			    && !style.free_spacing && !par->isFreeSpacing())
+			{ 
 				// in freespacing mode, spaces are
 				// non-breaking characters
 				if (desc_on) {// if char is ' ' then...
@@ -3314,7 +3316,7 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 
 			if (style.pass_thru) {
 				os << c;
-			} else if(style.free_spacing || c != ' ') {
+			} else if(style.free_spacing || par->isFreeSpacing() || c != ' ') {
 					os << sgml_string;
 			} else if (desc_on ==1) {
 				++char_line_count;

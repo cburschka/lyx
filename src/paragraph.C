@@ -928,8 +928,11 @@ void Paragraph::makeSameLayout(Paragraph const * par)
 
 int Paragraph::stripLeadingSpaces(LyXTextClassList::size_type tclass) 
 {
-	if (textclasslist.Style(tclass, getLayout()).free_spacing)
+	if (textclasslist.Style(tclass, getLayout()).free_spacing ||
+		isFreeSpacing())
+	{
 		return 0;
+	}
 	
 	int i = 0;
 	while (size()
@@ -2155,4 +2158,14 @@ ParagraphParameters const & Paragraph::params() const
 Paragraph * Paragraph::getParFromID(int id) const
 {
 	return pimpl_->getParFromID(id);
+}
+
+
+bool Paragraph::isFreeSpacing() const
+{
+	// for now we just need this, later should we need this in some
+	// other way we can always add a function to Inset::() too.
+	if (pimpl_->inset_owner && pimpl_->inset_owner->owner())
+		return (pimpl_->inset_owner->owner()->lyxCode() == Inset::ERT_CODE);
+	return false;
 }

@@ -1,5 +1,15 @@
 2001-11-29  Juergen Vigna  <jug@sad.it>
 
+	* text.C: added support for paragraph::isFreeSpacing()
+
+	* buffer.C: same as above
+
+	* paragraph.h: inserted isFreeSpacing() function to enable
+	FreeSpacing inside InsetERT.
+
+	* CutAndPaste.C (cutSelection/copySelection): set the inset_owner
+	of the paragraph's in the cut/copy buffer to 0!
+
 	* text2.C (removeRow): remove the assert as it can!
 
 	* lyxtext.h: added helper function firstRow returning firstrow and

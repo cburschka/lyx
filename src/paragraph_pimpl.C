@@ -219,9 +219,9 @@ void Paragraph::Pimpl::erase(pos_type pos)
 
 
 void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
-				       pos_type const i,
-				       int & column, LyXFont const & font,
-				       LyXLayout const & style)
+                                       pos_type const i,
+                                       int & column, LyXFont const & font,
+                                       LyXLayout const & style)
 {
 	if (style.pass_thru) return;
 	if (column > tex_code_break_column
@@ -230,6 +230,7 @@ void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
 	    && (i < size() - 1)
 	    // same in FreeSpacing mode
 	    && !style.free_spacing
+		&& !owner_->isFreeSpacing()
 	    // In typewriter mode, we want to avoid 
 	    // ! . ? : at the end of a line
 	    && !(font.family() == LyXFont::TYPEWRITER_FAMILY
@@ -307,7 +308,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			}
 
 			int tmp = inset->latex(buf, os, moving_arg,
-					       style.free_spacing);
+			                       style.free_spacing);
 
 			if (close)
 				os << "}";

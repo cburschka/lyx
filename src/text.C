@@ -1746,7 +1746,8 @@ void LyXText::insertChar(BufferView * bview, char c)
 
 	bool const freeSpacing = 
 		textclasslist.Style(bview->buffer()->params.textclass,
-			       cursor.row()->par()->getLayout()).free_spacing;
+			       cursor.row()->par()->getLayout()).free_spacing ||
+		cursor.row()->par()->isFreeSpacing();
 
 
 	if (lyxrc.auto_number) {

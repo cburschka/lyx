@@ -376,7 +376,7 @@ int InsetCollapsable::latex(Buffer const * buf, ostream & os,
 	return inset.latex(buf, os, fragile, free_spc);
 }
 
-
+#if 0
 int InsetCollapsable::getMaxWidth(BufferView * bv,
                                   UpdatableInset const * in) const
 {
@@ -394,6 +394,7 @@ int InsetCollapsable::getMaxWidth(BufferView * bv,
 	return UpdatableInset::getMaxWidth(bv, in);
 #endif
 }
+#endif
 
 
 void InsetCollapsable::update(BufferView * bv, LyXFont const & font,

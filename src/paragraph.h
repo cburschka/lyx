@@ -334,6 +334,8 @@ public:
 #endif
 	///
 	bool sgmlConvertChar(char c, string & sgml_string);
+	///
+	bool isFreeSpacing() const;
 
 	ParagraphParameters & params();
 	ParagraphParameters const & params() const;

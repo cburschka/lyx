@@ -3,6 +3,7 @@
 	* insettext.C: inserted a reinitLyXText function everywhere I delete
 	the paragraphs! This should fixe the crashes we had.
 	Also use the new function firstRow() instead of getRowNearY(dummy_y)
+	(paragraph): set the InsetOwner() of the new paragraphs!
 
 2001-11-28  André Pönitz <poenitz@gmx.net>
 

@@ -136,8 +136,10 @@ public:
 	///
 	void setAutoCollapse(bool f) { autocollapse = f; }
 #endif
+#if 0
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
+#endif
 	///
 	LyXText * getLyXText(BufferView const *, bool const recursive) const;
 	///

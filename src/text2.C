@@ -2376,8 +2376,11 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
 	if (textclasslist.Style(bview->buffer()->params.textclass,
-				old_cursor.par()->getLayout()).free_spacing)
+							old_cursor.par()->getLayout()).free_spacing ||
+		old_cursor.par()->isFreeSpacing())
+	{
 		return;
+	}
 
 	bool deleted = false;
 	

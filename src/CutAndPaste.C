@@ -137,6 +137,12 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 			startpar->pasteParagraph(current_view->buffer()->params);
 			(*endpar) = startpar; // this because endpar gets deleted here!
 		}
+		// this paragraph's are of noone's owner!
+		Paragraph * p = buf;
+		while(p) {
+			p->setInsetOwner(0);
+			p = p->next();
+		}
 	}
 	return true;
 }
@@ -187,6 +193,12 @@ bool CutAndPaste::copySelection(Paragraph * startpar, Paragraph * endpar,
 		tmpi2 = end;
 		while (tmppar2->size() > tmpi2) {
 			tmppar2->erase(tmppar2->size() - 1);
+		}
+		// this paragraph's are of noone's owner!
+		tmppar = buf;
+		while(tmppar) {
+			tmppar->setInsetOwner(0);
+			tmppar = tmppar->next();
 		}
 	}
 	return true;

@@ -2335,6 +2335,12 @@ Paragraph * InsetText::paragraph() const
 void InsetText::paragraph(Paragraph * p)
 {
 	par = p;
+	// set ourself as owner for all the paragraphs inserted!
+	Paragraph * np = par;
+	while (np) {
+		np->setInsetOwner(this);
+		np = np->next();
+	}
 	reinitLyXText();
 	// redraw myself when asked for
 	need_update = INIT;
