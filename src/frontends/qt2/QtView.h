@@ -34,24 +34,18 @@ public:
 
 	~QtView();
  
-	/// set the x,y of the top level window
-	virtual void setPosition(unsigned int, unsigned int);
- 
 	/**
 	 * show - display the top-level window
-	 * @param place general placement (FIXME: GUII)
-	 * @param border border border type (FIXME: GUII)
+	 * @param x x position
+	 * @param y y position
 	 * @param title window title
 	 */
-	virtual void show(int, int, string const & t = string("LyX"));
+	void show(int x, int y, string const & t = string("LyX"));
  
 	/// start modal operation
 	virtual void prohibitInput() const;
 	/// end modal operation
 	virtual void allowInput() const;
- 
-	/// redraw the main form.
-	void redraw();
  
 public slots:
 	/// menu item has been selected

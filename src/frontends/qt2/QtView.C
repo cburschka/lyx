@@ -93,21 +93,9 @@ void QtView::closeEvent(QCloseEvent *)
 }
 
  
-void QtView::redraw() 
-{
-	// FIXME: does this make any sense for us ? 
-	repaint();
-}
-
-
-void QtView::setPosition(unsigned int x, unsigned int y)
+void QtView::show(int x, int y, string const & title)
 {
 	move(x, y);
-}
-
-
-void QtView::show(int, int, string const & title)
-{
 	setCaption(title.c_str());
 	QMainWindow::show();
 }
