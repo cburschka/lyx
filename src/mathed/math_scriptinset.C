@@ -3,10 +3,11 @@
 #endif
 
 #include "math_scriptinset.h"
-#include "debug.h"
 #include "math_support.h"
+#include "math_symbolinset.h"
 #include "math_mathmlstream.h"
 #include "support/LAssert.h"
+#include "debug.h"
 
 
 MathScriptInset::MathScriptInset()
@@ -230,7 +231,25 @@ void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
 
 bool MathScriptInset::hasLimits(MathInset const * nuc) const
 {
-	return limits_ == 1 || (limits_ == 0 && nuc && nuc->isScriptable());
+	// obviuos cases
+	if (limits_ == 1)
+		return true;
+	if (limits_ == -1)
+		return false;
+
+	// we can only display limits if the nucleus wants some	
+	if (!nuc)
+		return false;
+	if (!nuc->isScriptable())
+		return false;
+	
+	// per default \int has limits beside the \int even in displayed formulas
+	if (nuc->asSymbolInset())
+		if (nuc->asSymbolInset()->name().find("int") != string::npos)
+			return false;
+
+	// assume "real" limits for everything else
+	return true;
 }
 
 

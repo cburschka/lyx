@@ -23,13 +23,13 @@ public:
 	void draw(Painter &, int x, int y) const;
 	///
 	bool isRelOp() const;
-	///
+	/// do we take scripts?
 	bool isScriptable() const;
-	/// identifies things that can get \limits or \nolimits
+	/// do we take \limits or \nolimits?
 	bool takesLimits() const;
-	///
-	MathSymbolInset * asSymbolInset() { return this; }
-	///
+	/// identifies SymbolInset as such
+	MathSymbolInset const * asSymbolInset() const { return this; }
+	/// the LaTeX name of the symbol (without the backslash)
 	string name() const;
 	///
 	bool match(MathInset *) const;
