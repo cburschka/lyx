@@ -20,15 +20,27 @@
 #include "Lsstream.h"
 
 
-void MailInset::showDialog() const
+namespace {
+
+BufferView * cachedBufferView(InsetBase & inset, string const & title)
 {
-	BufferView * bv = inset().view();
+	BufferView * const bv = inset.view();
 	if (!bv) {
-		lyxerr << "MailInset::showDialog:\n"
+		lyxerr << "MailInset::" << title << ":\n"
 		       << "The BufferView has not been cached!"
 		       << std::endl;
-		return;
 	}
+	return bv;
+}
+
+} // namespace anon
+
+
+void MailInset::showDialog() const
+{
+	BufferView * bv = cachedBufferView(inset(), "showDialog");
+	if (!bv)
+		return;
 
 	bv->owner()->getDialogs().show(name(), inset2string(), &inset());
 }
@@ -36,13 +48,9 @@ void MailInset::showDialog() const
 
 void MailInset::updateDialog() const
 {
-	BufferView * bv = inset().view();
-	if (!bv) {
-		lyxerr << "MailInset::showDialog:\n"
-		       << "The BufferView has not been cached!"
-		       << std::endl;
+	BufferView * bv = cachedBufferView(inset(), "updateDDialog");
+	if (!bv)
 		return;
-	}
 
 	bv->owner()->getDialogs().update(name(), inset2string());
 }
@@ -50,13 +58,9 @@ void MailInset::updateDialog() const
 
 void MailInset::hideDialog() const
 {
-	BufferView * bv = inset().view();
-	if (!bv) {
-		lyxerr << "MailInset::showDialog:\n"
-		       << "The BufferView has not been cached!"
-		       << std::endl;
+	BufferView * bv = cachedBufferView(inset(), "hideDialog");
+	if (!bv)
 		return;
-	}
 
 	InsetBase * cmp = bv->owner()->getDialogs().getOpenInset(name());
 	if (cmp == &inset())
