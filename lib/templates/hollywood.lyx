@@ -1,6 +1,5 @@
-#This file was created by <garst> Fri Jan  8 16:22:26 1999
-#LyX 1.0 (C) 1995-1998 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass hollywood
 \language english
 \inputencoding default
@@ -12,14 +11,16 @@
 \paperpackage a4
 \use_geometry 1
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
-\leftmargin 1.6in
-\topmargin 0.5in
+\leftmargin 1.5in
+\topmargin 48bp
 \rightmargin 0.75in
-\bottommargin 0.75in
-\headheight 0.5in
-\headsep 12bp
-\footskip 0.5in
+\bottommargin 30bp
+\headheight 12bp
+\headsep 24bp
+\footskip 6bp
 \secnumdepth 2
 \tocdepth 2
 \paragraph_separation indent
@@ -28,7 +29,7 @@
 \quotes_times 2
 \papercolumns 1
 \papersides 1
-\paperpagestyle default
+\paperpagestyle fancy
 
 \layout Title
 
@@ -41,6 +42,8 @@
 <your address>
 \newline 
 <continued>
+\newline 
+<last line>
 \layout Narrative
 \pagebreak_top 
 Delete this text.
@@ -61,4 +64,7 @@ Use two 1.5in brass brads and hammer them down.
 Remember---nothing goes in a script that you cannot see or hear!! 1 page
  per minute.
  120 pages max.
+\layout Narrative
+
+See examples/script_form.lyx for details.
 \the_end

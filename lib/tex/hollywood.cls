@@ -5,12 +5,14 @@
 %% Derived from report.cls. There is probably still a lot of stuff
 %% that could be deleted. 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hollywood} [1998/10/27 v1.0 uses hollywood.layout]
+\ProvidesClass{hollywood} [2001/9/10 v1.2 uses hollywood.layout]
 \usepackage{fancyhdr}
 \usepackage{extramarks}
 \usepackage{ifthen}
 \usepackage{lastpage}
-\pagestyle{fancy}
+%%\usepackage{geometry}
+\usepackage{calc}
+%%\usepackage{setspace}
 \renewcommand{\ref}[1]{#1}
 \newcommand\@ptsize{}
 \newif\if@restonecol
@@ -19,7 +21,8 @@
 \newif\if@openright
 \DeclareOption{letterpaper}
    {\setlength\paperheight {11in}%
-    \setlength\paperwidth  {8.5in}}
+    \setlength\paperwidth  {8.5in}%
+}
 \DeclareFontFamily{OT1}{pcr}{\hyphenchar\font=-1}
 \DeclareFontShape{OT1}{pcr}{m}{n}{<12>  pcrr7t}{}
 \DeclareFontFamily{T1}{pcr}{\hyphenchar\font=-1}
@@ -59,13 +62,13 @@
 \renewcommand\dblfloatpagefraction{.5}
   \def\ps@headings{%
     \let\@oddfoot\@empty
-    \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%
+    \def\@oddhead{{\slshape\rightmark}\hfil\thepage.}%
     \let\@mkboth\markboth
 }
 \def\ps@myheadings{%
     \let\@oddfoot\@empty\let\@evenfoot\@empty
-    \def\@evenhead{\thepage\hfil\slshape\leftmark}%
-    \def\@oddhead{{\slshape\rightmark}\hfil\thepage}%
+    \def\@evenhead{\thepage.\hfil\slshape\leftmark}%
+    \def\@oddhead{{\slshape\rightmark}\hfil\thepage.}%
     \let\@mkboth\@gobbletwo
     }
   \if@titlepage
@@ -132,10 +135,12 @@
       \fi
       \thispagestyle{empty}%
       \setcounter{page}\@ne
+      \addtocounter{page}{1}
     }%
     {\if@restonecol\twocolumn \else \newpage \fi
      \if@twoside\else
         \setcounter{page}\@ne
+      \addtocounter{page}{1}
      \fi
     }
 \setlength\tabbingsep{\labelsep}
@@ -150,24 +155,29 @@
 \setlength\columnseprule{0\p@}
 \pagestyle{plain}
 \pagenumbering{arabic}
-\if@twoside
-\else
   \raggedbottom
-\fi
-\if@twocolumn
-  \twocolumn
-  \sloppy
-  \flushbottom
-\else
   \onecolumn
-\fi
-% This stuff is for a shooting script
-% \lhead{\ifthenelse{ \not \value{page} = 1}{CONTINUED:}{}}
-% \rfoot{\ifthenelse{ \not \value{page}=\pageref{LastPage}}{(CONT'D)}
-%  {\ifthenelse{\value{page}=\pageref{LastPage}}{(END)}{}}}
-
+\rfoot{\pageref{LastPage}[]{}}
 
 % This is what we want for a spec script
+%% set l & rt margin
+ \setlength{\rightmargin}{.75in}
+   \setlength{\leftmargin}{1.5in}%
+   \setlength{\textwidth}%
+     {\paperwidth -\leftmargin -\rightmargin}%
+%% Set vertical spacing
+   \setlength\topmargin {48bp}%
+   \setlength\headheight {12bp}%
+   \setlength\headsep {24bp}%
+   \setlength\footskip {0bp}% there are no footnotes
+%% set page length
+\newlength{\bmargin}%
+\setlength{\bmargin}{.75in}%
+\setlength{\textheight}%
+{\paperheight -\bmargin -\topmargin -\headheight -\headsep }% 
+
+
+\pagestyle{fancy}
 \rhead{\thepage.}
 \cfoot{}
   % This one is needed to get real adobe courier, but you can use
@@ -180,39 +190,122 @@
   % hyphenation, but I do not remember how.
   % That's good because we -do not- want any hyphenation.
   \sloppy
-\newcommand{\fadein}[1]{\filbreak\raggedright\par FADE IN: \uppercase{#1}}%
+\newlength{\lnspace}
+\setlength{\lnspace}{6bp plus 3bp minus 3bp}
+
+\newcommand{\fadein}[1]{\filbreak\raggedright\par FADE IN:
+\uppercase{#1}\par\vspace{2bp}}%
 \newcommand{\fadeout}{\filbreak\raggedright\par FADE OUT }%
-\newcommand{\interiorshot}[1]{\filbreak\raggedright\par INT. \uppercase{#1}}%
-\newcommand{\exteriorshot}[1]{\filbreak\raggedright\par EXT. \uppercase{#1}}%
+\newcommand{\intercut}{\filbreak\par INTERCUT WITH: }%
+\newcommand{\interiorshot}[1]%
+{\filbreak
+\vspace{\lnspace}
+\raggedright
+\par INT. 
+\uppercase{#1}
+}%
+
+\newcommand{\exteriorshot}[1]%
+{\filbreak
+\vspace{\lnspace}
+\raggedright
+\par EXT. 
+\uppercase{#1}
+\vspace{\lnspace}
+}%
+%% Generalized Scene command in case INT. EXT. etc is not sufficient.
+\newcommand{\scene}[1]%
+{\filbreak
+\vspace{4bp}
+\raggedright
+\par 
+\uppercase{#1}
+}%
+\newlength{\dialogLength}
+\setlength{\dialogLength}{4in minus 1in}
+\newlength{\parenLength}
+\setlength{\parenLength}{2.2in plus .5in minus .7in}
+\newlength{\dialogindent}
+\setlength{\dialogindent}{1in plus .5in}
 
 \newcommand{\dialogue}[1]%
 {\raggedright
-\hspace{1in}
-\parbox{4in}{#1}
-\vspace{6pt}
+\hspace{\dialogindent}
+\parbox{\dialogLength}{#1}
+\vspace{4bp}
 }
 
 \newcommand{\narrative}[1]%
 {\filbreak
-\vspace{6pt}
+\vspace{4bp}
 \raggedright{#1}
-\vspace{6pt}
+\vspace{4bp}
+}
+\newcommand{\description}[1]%
+{
+\rfoot[]{}
+\lhead[]{}
+\vspace{\lnspace}
+\raggedright{#1}
+\vspace{\lnspace}
 }
 
+\newsavebox{\currentspeaker}
+\newlength{\speakeroffset}
+\setlength{\speakeroffset}{1in plus .25in}
+\newlength{\speakerindent}
+\setlength{\speakerindent}{\dialogindent +\speakeroffset}
 
 \newcommand{\speaker}[1]%
 {\filbreak
-\vspace{12pt}
-\hspace{2.25in}{#1}
-\vspace{6pt}
+\vspace{4bp}
+\hspace{\speakerindent}
+\sbox{\currentspeaker}{\uppercase{#1}}
+\usebox{\currentspeaker}
+\vspace{4bp}
 }
 
+\newcommand{\contd}%
+{\filbreak
+\vspace{4bp}
+\hspace{\speakerindent}\usebox{\currentspeaker} (CONT'D)
+\vspace{4bp}
+}
+
+\newcommand{\more}%
+{
+\vspace{0bp}
+\hspace{\speakerindent}\uppercase{(MORE)}
+\pagebreak\contd%
+}
+
+\newlength{\parenindent}
+\newlength{\parenoffset}
+\setlength{\parenoffset}{.5in}
+\setlength{\parenindent}{\speakerindent -\parenoffset}
+
 \newcommand{\parenthetical}[1]%
-{\raggedright
-\hspace{1.75in}
-\parbox{1.5in}{(#1)}
-\vspace{6pt}}
+{
+\hspace{\parenindent}
+\vspace{-2bp}
+\parbox{\parenLength}{(#1)}
+\vspace{4bp}}
+
+\newcommand{\titleover}[1]%
+{\filbreak
+\par TITLE OVER:
+\par\hspace{\parenindent}{#1}\par\raggedright}
+
+\newcommand{\continuing}[0]%
+{\filbreak
+\vspace{4bp}
+\hspace{\speakerindent}
+\usebox{\currentspeaker}{ (continuing})\par
+\vspace{2bp}
+}
+
 
 \endinput
 %%
-%% End of file `hollywood.cls'.
+%% End of file `hollywood.cls'
+~
