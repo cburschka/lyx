@@ -1,11 +1,11 @@
-AUTOMAKE_OPTIONS = foreign
-DISTCLEANFILES = *.orig *.rej *~ *.bak core textclass.lst packages.lst \
-		lyxrc.defaults doc/LyXConfig.lyx doc/LaTeXConfig.lyx
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-SUBDIRS = reLyX
+include $(top_srcdir)/config/common.am
+
+DISTCLEANFILES += textclass.lst packages.lst lyxrc.defaults
+
+SUBDIRS = doc reLyX
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
-	external_templates bind clipart doc/LaTeXConfig.lyx.in doc/LyXConfig.lyx.in examples images \
+	external_templates bind clipart examples images \
 	kbd layouts lyx2lyx scripts templates tex ui encodings \
 	languages symbols configure configure.m4
 
@@ -38,10 +38,6 @@ bind_DATA = \
 
 clipartdir = $(pkgdatadir)/clipart
 clipart_DATA = clipart/platypus.eps
-
-docdir = $(pkgdatadir)/doc
-doc_DATA = \
-	doc/LaTeXConfig.lyx
 
 examplesdir = $(pkgdatadir)/examples
 examples_DATA = \
@@ -933,9 +929,3 @@ install-data-local: install-xfonts
 
 
 uninstall-local: uninstall-xfonts
-
-# dist-hook:
-#	cd $(distdir) ; rm -rf `find . -name \*CVS\*` ; \
-#	rm -rf doc/.cvsignore; \
-#	[ -f doc/UserGuide.lyx ] || { cvs -Q export -r HEAD -d doc lyxdoc || \
-#	  echo "WARNING: Unable to get LyX Documentation from CVS!" ; true ; }

@@ -397,6 +397,7 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        development/Makefile \
        development/lyx.spec \
        lib/Makefile \
+       lib/doc/Makefile \
        intl/Makefile \
        po/Makefile.in \
        sourcedoc/Doxyfile \

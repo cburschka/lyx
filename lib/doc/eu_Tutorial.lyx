@@ -1,0 +1,3849 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass scrbook
+\begin_preamble
+\usepackage{multicol}
+\end_preamble
+\language basque
+\inputencoding latin1
+\fontscheme pslatex
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+
+\layout Title
+
+
+\noun on 
+LyX Tutoretza
+\layout Author
+
+egilea: LyX taldea.
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+ Fitxategi honen arduradun nagusia 
+\family typewriter 
+John Weiss
+\family default 
+ da.
+ Bidali iradokizunak edo erroreei buruzko zuzenketak LyX dokumentazioko
+ posta-zerrendara: <lyx-docs@lists.lyx.org>.
+ 
+\newline 
+Itzulpena: Iñaki Larrañaga Murgoitio (dooteo@euskalgnu.org) eta Sara Elorza,
+ 2004.
+\newline 
+Zuzenketak: Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Chapter
+
+Sarrera
+\layout Section
+
+Ongi etorri LyX-era! 
+\layout Standard
+
+Fitxategi hau LaTeX inoiz entzun barik edo ongi ezagutzen ez duten neska-mutilen
+tzat egina dago.
+ Lasai, ordea, LyX erabiltzeko LaTeX-i buruz ezer jakin beharrik ez daukazu.
+ Azken finean, LyX-en ezaugarrietako bat LaTeX-entzat ia WYSIWYG (
+\emph on 
+What You See Is What You Get
+\emph default 
+) interfazea eskaintzean datza.
+ Hori bai, LyX bere osotasunean erabiltzeko gauza batzuk ikasi beharko dituzu.
+\layout Standard
+
+Ziurrenik, bi paragrafo artean hiru lerro zuri edo puntu "." baten ondoren
+ bi hutsune ezartzen saiatzeagatik eskuliburu hau irakurtzen ari zara.
+ Hainbat buruhauste izan eta gero, ezinezkoa dela ohartuko zinen.
+ 
+\layout Standard
+
+Gertatzen dena hau da: bestelako testu prozesadoreetako zenbait trikimailu
+ LyX-en ez direla erabilgarriak.
+ Hau da, erabili izan dituzun testu-prozesadore gehienetan tabulazioak,
+ zuriuneak, paragrafo-tarteak, letra-tipoak eta bestelako batzuk eskuz idatzi
+ behar dira.
+ Honekin jarraituz, dokumentuetako testua idazteaz gain beraren itxura eta
+ konposaketa-lanak ere erabiltzaile bakoitzak lantzen ditu.
+ LyX-ek, ordea, itxura eta konposaketa-arloak lantzen ditu, gauza garrantzitsuen
+a zuri utziz: dokumentuaren edukia idaztea.
+\layout Standard
+
+Beraz, zatoz gurekin eta jarraitu irakurtzen.
+ Tutoretza hau irakurrita denborari etekina aterako diozu.
+\layout Section
+
+Tutoretza hau zer da eta zer ez da.
+\layout Standard
+
+Atal honekin serioski hasi baino lehen, gauza bat argitu nahiko genuke.
+ Tutoretza honek 
+\emph on 
+Sarrera
+\emph default 
+-n agertzen den idazkera erabiltzen du.
+ Lehenbizi eskuliburu hau irakurtzen ari bazara, hobe lehenago 
+\emph on 
+Sarrera
+\emph default 
+ irakurtzen baduzu.
+ Bai, une honetantxe esan nahi dugu.
+\layout Standard
+
+Orain letra-tipo bakoitzaren esanahia dakizunez, tutoretza honen helburuez
+ zertxobait azaldu nahi dugu.
+\layout Subsection
+
+Tutoretza erabilgarria izan dadin.
+\layout Standard
+
+Tutoretza hau adibide eta ariketekin osatua dago.
+ 
+\layout Standard
+
+Dokumentu honi zuku handiena ateratzeko irakurtzerakoan zenbait ariketa
+ idazteko esango dizugu, gauza guztiak ongi ulertu dituzula ziurtatzeko.
+ Berdin digu errazak badira ere (lehengusinari ez esan zure ordez idazteko,
+ horrek ez baitu balio eta\SpecialChar \ldots{}
+) idatzi ariketa guzti-guztiak gauza bakoitza
+ ulertu arte.
+ Zure erosotasunerako(bai jatorrak garela!), inprimatu txosten hau PostScript®
+ formatuan.
+\layout Standard
+
+LaTeX ezagutzen baduzu, tutoretza hau azkarrago irakur dezakezu, LyX-eko
+ burutazio ugari LaTeX-ekoak baitira.
+ Nola nahi ere, Lyx-ek ikasi beharreko halako jokaerak
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+edo, era dotoreago batean,"ezaugarriak"
+\end_inset 
+
+ ditu.
+ Baldin eta tutoretza osoa irakurtzeko asmorik ez baduzu, 
+\begin_inset LatexCommand \ref{atal:latexerabiltzaileak}
+
+\end_inset 
+
+ atala begiratzea aholkatzen dizugu, LaTeX-eko adituei zuzendua baitago.
+\layout Subsection
+
+Aurkituko 
+\emph on 
+ez
+\emph default 
+ duzuna:
+\layout Itemize
+
+LyX-en ezaugarri guztien azalpen zehatzak.
+ 
+\layout Itemize
+
+Zer? 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+ birritan nahi duzu? 
+\layout Itemize
+
+Serioski mintzatuz, zu ernatu eta tresna honekin idazten jartzea nahi dugu,
+ 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+ bakarrik behar izango duzu.
+ LyX-en ezaugarri guztiak hemen sartuz gero 
+\emph on 
+Tutoretza
+\emph default 
+ luzeegia izateaz gain informazio errepikatua eduki eta beti ere zaharkitua
+ izango litzateke.
+\begin_deeper 
+\layout Standard
+
+Alferrikako lan errepikakor eta aspergarria izango litzateke 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+ bikoiztea, eta gainera zaharkitua geldituko litzateke (eta erabat luzea).
+ Gauzen sarrera egitea bakarrik nahi dugu; pentsatu atal bakoitzaren amaieran
+ "
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+ ikusi" bezalako esaldia agertuko dela.
+\end_deeper 
+\layout Itemize
+
+LaTeX-en azalpen zehatza.
+\begin_deeper 
+\layout Standard
+
+Premiagabekoak.
+ LaTeX-ekin egin daitezkeen trikimailu batzuk ikasteko gogoa edukiz gero,
+ berorri buruzko liburu bat lor dezakezu.
+ Gai honi buruz idatzita hainbat liburu on daude merkatuan (bai, alboko
+ kaleko frutategian adibidez).
+ Azken finean, zertarako gurpila berriz asmatu\SpecialChar \ldots{}
+
+\end_deeper 
+\layout Standard
+
+Beraz, gora bihotz ausartak, aurrera jarraitzeko ordua iritsi zaigu eta.
+ Zure lehenbiziko dokumentua egiteko unea da\SpecialChar \ldots{}
+
+\layout Chapter
+
+LyX-ekin hastea
+\layout Section
+
+Lehenbiziko LyX dokumentua
+\layout Standard
+
+
+\begin_inset LatexCommand \label{atal:lyxlehenidazkia}
+
+\end_inset 
+
+ Oso ondo.
+ Idazten hasteko prest zaude.
+ Hasi aurretik, ordea, tutoretza hau hezigarri, erabilgarri eta atseginagoa
+ gertatuko zaizulakoan, gauza batzuk esan beharrean gaude.
+\layout Standard
+
+Dagoen informazio asko hemen azalduko ez dugunez, laguntzako beste fitxategi
+ batzuk bilatu beharrean egongo zara.
+ Zorionez, erraza da.
+ Abiatu LyX.
+ Aukeratu 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+ 
+\family sans 
+\bar under 
+L
+\bar default 
+aguntza
+\family default 
+ menuan.
+ Horrela baderitzozu, kargatu 
+\emph on 
+Tutoretza
+\emph default 
+ ere (une honetan pantailan irakurtzen ari ez bazara bederen).
+ Horrela, zure fitxategia LyX-en ezaugarrien erabilera gisa adibide ona
+ izango da, idazten ari zaren bitartean irakur baititzakezu.
+ Dokumentu bat baino gehiago irekita badituzu, 
+\family sans 
+Dokumentuak
+\family default 
+ menua erabili hauen artean mugitzeko.
+ Tutoretza honek ez ditu zehatz-mehatz azalduko beste LyX eskuliburuetan
+ agertzen diren gaiak.
+ Hasera batean nahiz eta zuretzako zailagoa izan, 
+\emph on 
+Tutoretza
+\emph default 
+ motzagoa izatea lortzen du.
+ Beste gidak erabiltzera bultzatuko zaitu, epe luzera denbora asko aurreztuz.
+\layout Standard
+
+Tutoretza-n programa hauek instalatuta dauzkazula onartuko dugu: ongi baino
+ hobekiago darabilen LyX-eko bertsio bat, LaTeX, 
+\family typewriter 
+xdvi
+\family default 
+ edo dvi fitxategi-ikustailea eta 
+\family typewriter 
+dvips
+\family default 
+ tresna (dvi formatutik PostScript®-era bihurtzen duen beste programaren
+ bat) eta (nola ez) inprimagailu bat.
+ Agian gehiegi suposatzea izango da, baina aurreko programatariko bat falta
+ bada zuk (edo sistemako administratzaileak) instalatu beharko duzu.
+ Beste eskuliburuetan instalazio-lanak nola egin aurkitu ahal izango dituzu.
+\layout Standard
+
+Azkenik, zure trebezia lantzeko asmoz LyX-en fitxategi bat prestatu dugu.
+ Beraren izena 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+ da.
+ Pentsatu LyX-eko ezaugarri dotoreak ezagutzen ez dituen batek idatzi duela.
+ Funtzio berriak ikasten ari zaren heinean 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+ fitxategiko zati batzuk zuzentzeko eskatuko dizugu.
+ Gauzak zuzentzeko trikimailu politak dauzka
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+Trikimailuak hori koloredun "oharretan" agertzen dira.
+ Horien gainean saguarekin klikatuz irakur ditzakezu.
+ 
+\end_inset 
+
+.
+ Tranpa egin nahi baduzu (edo egindakoa aztertzeko asmoz), 
+\family typewriter 
+eu_adibide_lyx-atua.lyx
+\family default 
+ fitxategia daukazu; berton LyX-en aditua den norbaitek idatzitako testu
+ berdina dago.
+\layout Standard
+
+Adibide-fitxategiak 
+\family typewriter 
+examples/
+\family default 
+ direktoriopean aurki Daiteke; hautatu 
+\family sans 
+\bar under 
+F
+\bar default 
+itxategia\SpecialChar \menuseparator
+I
+\bar under 
+r
+\bar default 
+eki
+\family default 
+ menua eta 
+\family sans 
+Adibideak
+\family default 
+ botoian klikatuz lor ditzakezu.
+ Ireki Landugabeko dokumentua, 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+, eta horren gainean idazteko 
+\family sans 
+\bar under 
+F
+\bar default 
+itxategia\SpecialChar \menuseparator
+Gorde\SpecialChar ~
+honela
+\family default 
+\SpecialChar \ldots{}
+ aukera erabiliz zure "etxeko" direktorioan kopia bat gorde.
+ Dokumentua zuzentzen duzun heinean, aldaketak dvi irteeran nola eragiten
+ duten ikus dezakezu.
+\layout Standard
+
+Gainera, 
+\family typewriter 
+examples/
+\family default 
+ direktorioan dauden beste adibide-fitxategiek LyX-ekin landuago dauden
+ gauza politak burutzen erakutsiko dizute.
+ Eskuliburuetan (bere luzera edo beste arrazoiengatik) agertzen ez diren
+ beste gauza erabilgarri batzuk erakusten dira.
+ Tutoretza hau irakurri ondoren, edo LyX-ekin gauza dotoreagoak egiteko
+ orduan zalantzarik edukiz gero, kontsultatu fitxategi hauek.
+\layout Subsection
+
+Idaztea, ikustea eta inprimatzea
+\layout Itemize
+
+Ireki fitxategi berria 
+\family sans 
+\bar under 
+F
+\bar default 
+itxategia\SpecialChar \menuseparator
+
+\bar under 
+B
+\bar default 
+erria
+\family default 
+\SpecialChar \ldots{}
+ erabiliz.
+\layout Itemize
+
+Idatzi honelako esaldi bat: Nere LyX lehen idazkia!.
+\layout Itemize
+
+Gorde dokumentua (
+\family sans 
+\bar under 
+F
+\bar default 
+itxategia\SpecialChar \menuseparator
+Gorde\SpecialChar ~
+honela
+\family default 
+\SpecialChar \ldots{}
+)
+\layout Itemize
+
+Exekutatu LaTeX 
+\family typewriter 
+dvi
+\family default 
+ fitxategia sortzeko 
+\family sans 
+\bar under 
+I
+\bar default 
+kusi\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+VI
+\family default 
+.
+ Leiho nagusian unean lantzen ari diren komandoak ikusi ahal izango dituzu.
+ LaTeX-eko mezuak dira, oraingoz ezikusi ditzakezu.
+ LyX-ek xdvi programa (edo bestelako dvi ikustaria) abiatuko du; horrek
+ beste leiho berri bat sortuko du, berton zure dokumentua inprimatua nola
+ geldituko den erakutsiko dizun.
+ 
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+xdvi atzeko planoan exekutatzen utziz denbora aurrez dezakezu.
+ Ondoren, 
+\family sans 
+\bar under 
+I
+\bar default 
+kusi\SpecialChar \menuseparator
+
+\bar under 
+E
+\bar default 
+guneratu\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+VI
+\family default 
+ erabili eta LaTeX-en ekitaldia amaitzean 
+\family typewriter 
+xdvi
+\family default 
+-ko leihoan klikatu .
+\end_inset 
+
+
+\layout Itemize
+
+Inprimatzeko 
+\family sans 
+\bar under 
+F
+\bar default 
+itxategia\SpecialChar \menuseparator
+In
+\bar under 
+p
+\bar default 
+rimatu
+\family default 
+\SpecialChar \ldots{}
+ menua hautatu eta
+\family sans 
+Inprimatu
+\family default 
+ botoian klikatu.
+\layout Standard
+
+Zorionak! Zure lehenbiziko LyX dokumentua idatzi eta inprimatu duzu.
+ Beste guztia huskeriak bakarrik dira, 
+\emph on 
+Tutoretza
+\emph default 
+ , 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+ eta 
+\emph on 
+Ezaugarri hedatuak
+\emph default 
+ eskuliburuetan zehar azalduko direnak.
+\layout Subsection
+
+Eragiketa bakunak
+\layout Standard
+
+LyX-ek testu-prozesadore batekin egin ditzakezun gauza gehienak egin ditzake.
+ Automatikoki hitzak banandu eta paragrafoak koska ditzake.
+ Ondoren, ekintza sinple batzuen azalpen laburrak dauzkazu.
+\layout Description
+
+Desegin LyX-ek hainbat desegite-maila ditu, uneko dokumentua editatzen hasi
+ eta orain arteko guztiak desegin ditzakezu 
+\family sans 
+\bar under 
+E
+\bar default 
+ditatu\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+esegin
+\family default 
+ hautatuz behin eta berriz.
+ Gehiegi desegiten baduzu, aldaketak berreskuratzeko, hautatu 
+\family sans 
+\bar under 
+E
+\bar default 
+ditatu\SpecialChar \menuseparator
+
+\bar under 
+B
+\bar default 
+erregin
+\family default 
+.
+ 
+\begin_deeper 
+\layout Standard
+
+Gaur egun, desegin komandoa 100 urratsetara mugatua dago.
+ Gauza guztientzako ez da erabilgarria (adibidez, dokumentuaren diseinuaren
+ aldaketan).
+ Horietariko bakoitza LyX errorea bezala onartuta dago.
+\end_deeper 
+\layout Description
+
+Ebaki/Itsatsi/Kopiatu Erabili 
+\family sans 
+\bar under 
+E
+\bar default 
+ditatu\SpecialChar \menuseparator
+
+\bar under 
+E
+\bar default 
+baki
+\family default 
+, 
+\family sans 
+\bar under 
+E
+\bar default 
+ditatu\SpecialChar \menuseparator
+
+\bar under 
+I
+\bar default 
+tsatsi
+\family default 
+ eta 
+\family sans 
+\bar under 
+E
+\bar default 
+ditatu\SpecialChar \menuseparator
+
+\bar under 
+K
+\bar default 
+opiatu
+\family default 
+ testua ebaki, itsatsi eta kopiatzeko.
+ Edo itsatsi automatikoki hautatutako testua (beste zenbait programetako
+ hautapenak ere bai) saguaren erdiko botoiarekin.
+\layout Description
+
+Bilatu/Ordeztu Erabili 
+\family sans 
+\bar under 
+E
+\bar default 
+ditatu\SpecialChar \menuseparator
+Bilatu\SpecialChar ~
+eta\SpecialChar ~
+ordeztu
+\family default 
+ esaldi edo hitzak bilatzeko.
+ Elkarrizketa-koadroan, bilatu Bilatu hurrengoa botoiarekin, eta erabil
+ ezazu 
+\family sans 
+\bar under 
+O
+\bar default 
+rdeztu
+\family default 
+ aurkitu den hitza ordezteko
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+Amaitzean leihotxoa itxi.
+ Edo irekita utzi lagungarriagoa dela baderitzozu.
+ LyX-eko elkarrizketa-koadro gehienak (
+\series bold 
+Bilatu eta ordeztu
+\series default 
+, 
+\series bold 
+Gaien aurkibidea
+\series default 
+, 
+\series bold 
+Diseinua
+\series default 
+ edota matematikako hainbat bezala) modu honetan erabil ditzakezu.
+ Elkarrizketa-koadro gutxi batzuk, 
+\series bold 
+\bar under 
+F
+\bar default 
+itxategia\SpecialChar \menuseparator
+
+\bar under 
+I
+\bar default 
+reki...
+
+\series default 
+ bezalakoak, itxi arte leiho nagusian ezer egiten ez dizute utziko.
+ Ziurtatu leiho nagusian fokoa daukazula, edo elkarrizketa-koadro batean
+ komando bat idazten ari zarela.
+\end_inset 
+
+.
+ Bilaketetan maiuskula eta minuskulak bereiz ditzan edo hitz osoak soilik
+ bilatzeko aukera eskaintzen zaizu.
+ Dokumentuan gorantz ere bilatu dezakezu.
+\layout Description
+
+Karaktereak\SpecialChar ~
+formateatzea Testua 
+\emph on 
+enfasiarekin
+\emph default 
+ (karaktere etzanak), 
+\series bold 
+lodia
+\series default 
+, edo 
+\noun on 
+Izen
+\noun default 
+ estiloa (normalean maiuskula txikiak izaten dira, pertsonen izenentzako)
+ eran ezartzeko, erabili 
+\family sans 
+\bar under 
+D
+\bar default 
+iseinua\SpecialChar \menuseparator
+
+\bar under 
+K
+\bar default 
+arakterea
+\family default 
+ menua.
+\layout Description
+
+Tresna-barra Ekintza erabilgarrienak lantzeko botoiak dauzka (menuen azpian
+ dago), adibidez, 
+\family sans 
+Itsatsi
+\family default 
+ edo 
+\family sans 
+Inprimatu
+\family default 
+ botoiak.
+\layout Standard
+
+Noski, oraindik ez duzu nahikoa idatzi funtzio hauen erabilgarritasuna aztertzek
+o.
+ Gehiago idaztean desegin, itsatsi, kopiatu e.a.
+ erabiltzen saia zaitez.
+\layout Subsection
+
+WYSIWYM: zuriuneak LyX-en
+\layout Standard
+
+
+\begin_inset LatexCommand \label{atal:zuriuneak}
+
+\end_inset 
+
+Gauza zailenetariko bat (erabiltzaile berrientzako) LyX-ek zuriuneak erabiltzeko
+ modura ohitzea izaten da.
+ Nahiz eta mila bider 
+\family sans 
+lerro\SpecialChar ~
+itzulera
+\family default 
+ (
+\family sans 
+Enter
+\family default 
+ edo 
+\family sans 
+Return
+\family default 
+) sakatu, lerro zuri bakarra lortuko duzu.
+ Nahiz eta tua sutu arte zuriune (
+\family sans 
+Spacebar
+\family default 
+ izeneko 'luuuze' hori) astindu, zuriune bakar bat besterik ez duzu lortuko.
+ LyX-ek ez dizu lerro huts batean zuriune bat sartzen utziko.
+ 
+\family sans 
+Tabuladoreak
+\family default 
+ ez du testua koskatuko, gainera tabulaziorik ez dago! Orrialdearen gainean
+ marjinak edo tabulazioak ezartzeko erregelarik ere ez dago.
+\layout Standard
+
+Testu-prozesadore komertzial asko WYSIWYG izakeran oinarritzen dira: "ikusten
+ duzuna lortzen duzu".
+ LyX-ek, ordea, "Ikusten duzuna 
+\emph on 
+esan nahi
+\emph default 
+ duzu" izakeran oinarritzen da.
+ Utzi LyX-en eskuetan idatzi nahi duzuna eta beste dena, konposaketa-lanak.
+ Lantxo hori txukun-txukun eta polit-polita uzten bera arduratuko baita.
+ 
+\family sans 
+Lerro-itzulera
+\family default 
+ batek paragrafoak gramatikalki bereizten ditu, 
+\family sans 
+Zuriune
+\family default 
+ batek bi hitz bereizten dituen bezalaxe, eta gauzak horrela izanda, lerro-itzul
+era gehiago sartu beharrik ez dago; bestalde, 
+\family sans 
+Tabuladore
+\family default 
+ batek gramatika-ikuspegitik zereginik ez dauka; beraz, LyX-ek ez du onartzen.
+ Azken finean, LyX erabiliz denborarik gehien dokumentuaren edukian buru-belarri
+ idazten igaroko duzu, eta gutxiengoa itxuran.
+ WYSIWYMen esanahia hobekiago ulertzeko, ikus 
+\emph on 
+Sarrera
+\emph default 
+.
+\layout Standard
+
+LyX-ek dokumentuaren egitura fintzeko lantzeko aukera (asko) eskaintzen
+ dizkizu.
+ Agian esan nahi zenuena ez du inprimatuko behar bezala.
+ Erabiltzailearen Gida-k honi buruzkoak argitzen dizkizu.
+ Horizontal eta bertikal betegarriei buruzko azalpenak ditu, hainbat zuriune
+ edo lerro hutsak baino gaitasun handiagoa daukate.
+ Paragrafo, lerrokatze, letra-tipo, letra-tamaina eta bestelakoak eskuz
+ alda ditzakezu.
+ Benetako ideia da zu zeu dokumentuaren edukian murgiltzea, eta amaitzean
+ soilik arduratzea gauzak fintzeaz.
+ Egungo testu-prozesadore estandarrekin, idazten zabiltzan unean dokumentuaren
+ itxurak arreta galarazten dizu.
+\layout Section
+
+Inguruneak
+\layout Standard
+
+Dokumentu bateko zati ezberdinek xede ezberdinak dituzte: zati horiei 
+\emph on 
+inguruneak
+\emph default 
+ deritzogu.
+ Dokumentu bateko gehiengoa testu arrunta izan ohi da.
+ Ataleko (kapituluak, azpiatalak, e.a.) izenburuek azalduko den gai edo azpigai
+ berriak hastera doazela jakinarazten diote irakurleari.
+ Dokumentu-mota batzuek ingurune bereziak dauzkate.
+ Egunkari bateko artikulu batek titulu eta laburpen bat edukiko du.
+ Gutun batek, berriz, horietarikorik ez du edukiko, bidaltzailearen helbidea
+ edukitzeko ingurune aproposa edukiko du ziurrenik.
+\layout Standard
+
+Inguruneak LyX-en oinarrizko "Ikusten duzuna esan nahi duzu" filosofiaren
+ zati nagusiak dira.
+ Ingurune zehatz batek letra-tipo, letra-tamaina, koskatze, lerro-tarte
+ eta beste berezitasun batzuk eska ditzake.
+ Arazoa areagotzen da ingurune zehatz bat aldatzerakoan: egunkari batek
+ bere tituluentzako letra lodia, 18 tamainakoa eta paragrafo zentratuak
+ erabil ditzaken bitartean beste batzuk 15 tamainako letra etzana eta ezkerrera
+ lerrokatutakoa erabil dezakete; hizkuntza ezberdinek koska-estandar ezberdinak
+ eska ditzakete; eta bibliografietako egiturak asko alda daitezke.
+ LyX-ek formatu-estilo guztiak ikastea saihestuko dizu.
+\layout Standard
+
+
+\family sans 
+Ingurunea
+\family default 
+ menua tresna-barraren ezkerrean kokatua dago (
+\family sans 
+\bar under 
+F
+\bar default 
+itxategia
+\family default 
+ menuaren azpian, hain zuzen ere).
+ Une bakoitzean zein ingurunetan idazten ari zaren erakusten du.
+ Zure lehen dokumentua idazten ari zinen bitartean "Estandarra" azaltzen
+ zuen, testuen ingurune lehenetsia.
+ Nola dabiltzan ikusteko, dokumentu berrian gune ezberdinak jar ditzakezu.
+ Ireki Ingurunea menua saguarekin klikatuz eta hautatu bertako edozein elementu.
+\layout Subsection
+
+Atalak eta azpiatalak
+\layout Standard
+
+Idatzi 
+\family typewriter 
+Sarrera
+\family default 
+ zure LyX-eko fitxategiko lehen lerroan, eta 
+\family sans 
+Ingurunea
+\family default 
+ menuan
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+Ez daukazu lerro osoa hautatu beharrik.
+ Ezer ez baduzu hautatzen, LyX-ek unean dagoen paragrafoa hautatutako ingurunera
+ aldatuko du.
+ Bestalde, hainbat paragrafo-ingurune batera aldatzeko, hautatu lehenbizi
+ paragrafoak eta ondoren zehaztu ingurunea.
+\end_inset 
+
+.
+ Hautatu 
+\family sans 
+Atala
+\family default 
+.
+ Ziurtatu zaitez 
+\family sans 
+Atala
+\family default 
+ hautatzen duzula eta ez 
+\family sans 
+Atala*
+\family default 
+, beherago azalduko da zergatia.
+ LyX-ek atala "1" bezala zenbatzen du eta atalaren izenburua letra-tamaina
+ handiagoz ezartzen du.
+ Orain lerro-itzulera sakatu.
+ Ikus dezakezuna 
+\family sans 
+Ingurunea
+\family default 
+ menuan "Atala"tik "Estandarra" egoerara igarotzen da.
+ Ataleko izenburuak, ingurune asko bezala, lerro-itzulera sakatzerakoan
+ amaitzen direla onartzen da.
+ 
+\layout Standard
+
+Idatzi dokumentuaren sarrera:
+\layout LyX-Code
+
+Hau nire LyX-eko lehen dokumentuaren sarrera bat da.
+\layout Standard
+
+Sakatu 
+\family sans 
+Lerro-itzulera
+\family default 
+ berriz, eta hautatu 
+\family sans 
+Atala
+\family default 
+ Ingurunea menuan.
+ LyX zain dago "2" idatzi eta izenburu bat noiz idatziko.
+ Idatzi 
+\family typewriter 
+
+\begin_inset Quotes eld
+\end_inset 
+
+gauza gehiago
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+, eta ikusiko duzu ataleko izenburu bezala ezarriko duela.
+\layout Standard
+
+Gauzak hobetuz doaz.
+ Joan 1.
+ atalaren amaierara ("nire LyX-eko lehen" paragrafoaren atzera), sakatu
+ lerro-itzulera, eta hautatu 
+\family sans 
+Atala
+\family default 
+ Ingurunea menuan.
+ LyX berriro "2" eta ataleko izenburua noiz idatziko zain egongo da.
+ Idatzi 
+\family typewriter 
+Dokumentu honi buruz
+\family default 
+.
+ "Gauza gehiago" atala, lehenxeago 2.
+ atala zena, automatikoki 3.
+ atal bezala berzenbatua izan da! WYSIWYM egiazko eran, dokumentuko testuak
+ atalen izenburu bezala identifikatu behar dituzu, LyX arduratuko baita
+ zenbatze-eta konposatze-lanez.
+\layout Standard
+
+Lerro itzulera sakatu, Estandarra ingurunera itzultzeko, eta datozen bost
+ lerroak idatzi:
+\layout LyX-Code
+
+Atalak eta azpiatalak beherago azaltzen dira.
+\layout LyX-Code
+
+Atalaren azalpena
+\layout LyX-Code
+
+Atalak azpiatalen baino handiagoak dira.
+\layout LyX-Code
+
+Azpiatalaren azalpena
+\layout LyX-Code
+
+Azpiatalak atalak baino txikiagoak dira.
+\layout Standard
+
+Bigarren lerroan kurtsorea kokatu eta Ingurunea menuan 
+\family sans 
+Azpiatala
+\family default 
+ hautatu.
+ LyX-ek azpiatala "2.1" zenbatuko du, eta letra-tamaina testu arruntarena
+ baino handiagoa eta atalen izenburuena baino txikiagoa ezarriko dio.
+ Laugarren lerroa 
+\series bold 
+Azpiatala
+\series default 
+ ingurunera aldatuko du.
+ Pentsatzen zenuen bezala, LyX-ek azpiatala "2.2" bezala zenbatzen du.
+ Beste atal bat sartzen baduzu 2.aren aurretik, 2.
+ atala 3.
+ atalera berzenbatua izango da; beraren azpiatalak, berriz, "3.1" eta "3.2"ra.
+\layout Standard
+
+Zatitzeko maila sakonagoak 
+\family sans 
+Azpiazpiatala
+\family default 
+, 
+\family sans 
+Paragrafo
+\family default 
+ eta 
+\family sans 
+Azpiparagrafoak
+\family default 
+ dira.
+ Beraiekin zure kasa jolasten utziko dizugu.
+ Paragrafo eta azpiparagrafoen izenburuek jatorriz zenbatugabe eta azpiparagrafo
+ak koskatuta daudela ohartuko zara; hori aldatzeko, irakurri 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+.
+ Zatitze maila-altuena 
+\family sans 
+Kapitulua
+\family default 
+ izenburuak dira, 
+\family sans 
+Atala
+\family default 
+ gainetik, baina LyX dokumentuetako testu-klase batzuetan bakarrik erabil
+ ditzakezu (
+\begin_inset LatexCommand \ref{atal:testuklaseak}
+
+\end_inset 
+
+ atala ikusi).
+\layout Standard
+
+Azkenik, baliteke zenbatu gabeko atal eta azpiatalak nahi izatea.
+ Horretarako ere badaude beste gune batzuk.
+ Atalen izenburuak 
+\family sans 
+Atala*
+\family default 
+ ingurunera (agian Ingurunea menuan beherantz mugitu beharko duzu) aldatzen
+ badituzu, LyX-ek atal normaletako letra-tamaina berdina erabiliko du, baina
+ ez ditu zenbatuko.
+ Badaude "izardun" izenburuak 
+\family sans 
+Azpiatala
+\family default 
+ eta 
+\family sans 
+Azpiazpiatala
+\family default 
+ inguruneentzako.
+ Atal eta azpiatal bat edo beste izardun ingurunetara bihurtzen saiatu,
+ eta ohartuko zara nola beste zenbakiak eguneratzen diren.
+\layout Description
+
+Ariketa: konpondu 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+ fitxategiko atal eta azpiataleko izenburuak.
+\layout Subsection
+
+Zerrendak eta azpizerrendak
+\layout Standard
+
+LyX-ek zerrendak osatzeko zenbait ingurune ditu.
+ Zerrenden hainbat ingurunek eskema bat idaztean, 
+\family sans 
+Tabuladoreari
+\family default 
+ hainbat bider sakatzea edo zerrenda baten erdian puntu berri bat idaztean
+ beste denak berzenbatzea sahiestuko da.
+ Horrela, zerrendaren edukiaz arduratuko zara soilik
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Bai, badakigu hau 
+\emph on 
+Tutoretza
+\emph default 
+ honetan behin eta berriz enfasia jartzen diogula azalpen honi.
+ LyX-en filosofia nagusia da, ordea; beraz, barka iezaguzu.
+\end_inset 
+
+ Dokumentu-mota ezberdinek, noski, zerrenda ingurune ezberdinak behar dituzte:
+\layout Itemize
+
+Diapositiben aurkezpeneko puntu ezberdinak deskribatzeko 
+\family sans 
+Elementua
+\family default 
+ inguruneko buleten
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+
+\series bold 
+Bulet
+\series default 
+ bat pinport formako apaingarri bat izaten da, eta hainbat itxura ezberdin
+ erabiltzen ditu: borobila, izartxoa, irukia, e.a.
+\end_inset 
+
+ zerrenda erabili beharko luke.
+\layout Itemize
+
+Eskema batek 
+\family sans 
+Zenbatuta
+\family default 
+ inguruneko zenbatutako zerrenda (eta hizkiz osatutako azpizerrendak) erabil
+ lezake.
+\layout Itemize
+
+Hainbat softwaretako paketeak azaltzen dituen dokumentu batek 
+\family sans 
+Azalpena
+\family default 
+ ingurunea erabil dezake, eta zerrendako elementu bakoitza letra lodia duen
+ hitz batekin hasiko da.
+ 
+\layout Itemize
+
+
+\family sans 
+Zerrenda
+\family default 
+ ingurunea (LaTeX-en ez dago) 
+\family sans 
+Azalpena
+\family default 
+ ingurunearekin konparatuz apur bat ezberdina da.
+\layout Standard
+
+LyX beste testu-prozesadoreak baino hobeago izatearen arrazoiei buruzko
+ zerrenda bat idatziko dugu.
+ Idatzi hau zure dokumentuaren leku batean:
+\layout LyX-Code
+
+LyX beste testu-prozesadoreak baino hobeagoa da zeren eta:
+\layout Standard
+
+eta sakatu lerro-itzulera.
+ Orain 
+\family sans 
+Ingurune
+\family default 
+ menuan 
+\family sans 
+Elementua
+\family default 
+ hautatu.
+ LyX-ek lerro-hasieran bulet bat idazten du (berez "izartxo" bat, baina
+ irteerako emaitzan borobil bihurtzen da).
+ Idatzi zure zergatiak:
+\layout LyX-Code
+
+Konposaketa-lana zure ordez egiten du.
+\layout LyX-Code
+
+Matematikak WYSIWYG dira.
+\layout LyX-Code
+
+Oso erraza da zerrendak sortzea!
+\layout Standard
+
+Zerrenda-motako inguruneak, izenburuen ez bezala, 
+\family sans 
+lerro-itzulera
+\family default 
+ sakatzerakoan ez dira amaitzen.
+ Horren ordez, LyX-ek zerrendako hurrengo elementuarekin jarraituko duzulakoan
+ dago.
+ Aurreko adibidea hiru elementuz osatutako zerrenda bat da.
+ Zerrendako elementu batean paragrafo bat baino gehiago edukitzeko jauzi
+ babestua erabili, 
+\family sans 
+C-Lerro-itzulera
+\family default 
+ sakatuz.
+ Zerrenda ingurunetik irteteko, hautatu 
+\family sans 
+Estandarra
+\family default 
+ ingurunea (edo erabili 
+\family sans 
+M-p s
+\family default 
+ -elkartea).
+\layout Standard
+
+Zerrenda polita lortu duzu.
+ Inprimatzean zein itxura edukiko duen ikusteko, exekutatu LaTeX.
+ Baina, zer gertatzen da arrazoiak zenbatuta eduki nahi badituzu? Hautatu
+ zerrenda osoa
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+LyX-ek ez dizu lehenbiziko buleta aukeratzen utziko, zerrendaren aurreko
+ paragrafoa ez baduzu aukeratzen, bederen, eta ziurrenik ez duzu hori egin
+ nahiko.
+ Era berean, atalen izenburuen zenbakia ez du hautatzen utziko.
+ Ez zaitez kezkatu.
+\end_inset 
+
+ eta aukeratu 
+\family sans 
+Zenbatuta
+\family default 
+ Ingurune menuan.
+ Sinestezina, eh?! Esan genizun bezala, zerrendan elementu bat sartzean
+ edo ezabatzean LyX-ek zenbaketa guztia berregiten du.
+\layout Standard
+
+Zerrenda hautatuta dagoen bitartean, beste bi zerrenda-ingurunetara alda
+ dezakezu, 
+\family sans 
+Azalpena
+\family default 
+ eta 
+\family sans 
+Zerrenda
+\family default 
+, nolako itxura duten ikusteko.
+ Bi kasuetan, zerrendako elementu bakoitzak "termino" eta definizio bat
+ dauka, eta definizioa paragrafoan gelditzen den beste guztia da (lerro-itzulera
+ sakatu arte).
+ 
+\layout Standard
+
+Lehen terminoa letra lodiz (
+\family sans 
+Azalpena
+\family default 
+) edo paragrafotik "Tabuladore"
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+Konposaketako tabuladorea da, ordea, eta zerrendako "termino" handienaren
+ neurrira moldatzeko aldatuko da, idazmakina bateko tabuladore lehor, goibel
+ eta aldagaitz bat ez bezala.
+\end_inset 
+
+ (
+\family sans 
+Zerrenda
+\family default 
+) batekin bereiztua dago.
+ Zenbait hitzetako terminoa lortzeko hitzak zuriune babestuaz bereizi.
+ 
+\family sans 
+C-Zuriunea
+\family default 
+ (C-Spacebar) sakatzerakoan sortzen da.
+\layout Description
+
+Ariketa: zuzendu 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+ fitxategiko zerrenda.
+\layout Standard
+
+Itxura erakargarriak osatuz, zerrenda batzuk beste batzuen barnean sar ditzakezu.
+ Adibide gisa, eskemak.
+ Zerrenda sinplea eta zenbatuak azpizerrendetan buleta eta zenbatze-mota
+ ezberdinak eduki ditzakete.
+ Zerrenda-mota ezberdinen azalpenak eta habiaratze-mailari (adbz.
+ azpizerrenda beste baten barruan, eta azken hau beste baten barnean) buruko
+ xehetasunak 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+-n aurkituko dituzu.
+\layout Subsection
+
+Beste inguruneak: Bertsoa, Zitazioa eta beste batzuk
+\layout Standard
+
+Zitak ezartzeko bi ingurune daude: 
+\family sans 
+Zita
+\family default 
+ aipamen motzentzat eta 
+\family sans 
+Zitazioa
+\family default 
+ luzeentzat.
+ 
+\family sans 
+LyX-kodea
+\family default 
+ (tutoretza honetako adibide luzeetan erabilia) 
+\family typewriter 
+idazmakinaren
+\family default 
+ letra-tipoarekin idazten du; kodea koskatzeko nahi adina zuriune jarraian
+ idazteko baimena eskaintzen dizun LyX-eko ingurune bakarra da.
+ Olerkiak idatz ditzakezu 
+\family sans 
+Bertsoa
+\family default 
+ ingurunea erabiliz, estrofak bereizteko lerro-itzulerak eta estrofa baten
+ barruan lerroak banatzeko 
+\family sans 
+C-Lerro-itzulerak
+\family default 
+ erabiliz.
+ LyX-ek eskaintzen dizkizun inguruneen xehetasunak ezagutzeko, ikus 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+.
+\layout Description
+
+Ariketa: 
+\family sans 
+Zita
+\family default 
+, 
+\family sans 
+LyX-kodea
+\family default 
+ eta 
+\family sans 
+Bertso
+\family default 
+ inguruneak honeko fitxategian konpondu:
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+linebreak
+\end_inset 
+
+
+\family typewriter 
+eu_adibide_gordina.lyx
+\layout Chapter
+
+Dokumentuak idaztea
+\layout Standard
+
+Aurreko kapitulua LyX-ekin idazten ohitzeko lagunduko zizulakoan gaude.
+ Oinarrizko editatze-eragiketaz gain inguruneen ahalmenekin idaztea ere
+ erakutsi dizugu.
+ LyX erabiltzen duen gehiengo batek dokumentuak idaztea dauka helburutzat:
+ egunkariak, artikuluak, liburuak, gutunak edo eskuliburuak.
+ Kapitulu honek testu bakun batetik dokumentu oso bat LyX-ekin idaztera
+ eramango zaitu.
+ Testu-klaseak aurkeztuko dizkizu, hainbat dokumentu-mota idazteko.
+ Testu bat dokumentu batera bihurtzeko behar dituzun ezaugarri asko azalduko
+ dizkizu, adibidez, tituluak, oin-oharrak, erreferentzia gurutzatuak, bibliograf
+i eta gaien aurkibideak.
+\layout Section
+
+Testu-klaseak
+\layout Standard
+
+
+\begin_inset LatexCommand \label{atal:testuklaseak}
+
+\end_inset 
+
+Dokumentu-mota bakoitza era ezberdin batean konposatzen da.
+ Adibidez, liburuak bi aldetatik inprimatu ohi diren bitartean, artikuluak
+ orrialde bakarrekoak izaten dira.
+ Gainera, dokumentu askok ingurune bereziak edukitzen dituzte: gutunak edukitzen
+ duten zenbait ingurune (bidaltzailearen helbidea eta sinadura bezala) liburu
+ edo artikulu batean ez daukate zentzurik.
+ LyX-eko 
+\emph on 
+testu-klaseak
+\emph default 
+
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+LaTeX-eko erabiltzaileentzat: hau LaTeX-eko dokumentu-klasearen (documentclass)
+ antzekoa da
+\end_inset 
+
+ hauen arteko ezberdintasunez arduratzen dira.
+ Tutoretza hau, adibidez, 
+\family sans 
+liburua
+\family default 
+ (Book) testu-klasearekin idatzi da.
+ Testu-klaseak WYSIWYM filosofiaren zatirik garrantzitsuenetarikoak dira;
+ beraiek esaten baitiote LyX-i dokumentu bat nola konposatu, ondorioz hau
+ egiteko moduari buruz ez daukazu ezer jakin beharrik.
+\layout Standard
+
+Litekeena da zure dokumentua 
+\family sans 
+Artikulua
+\family default 
+ (Article) testu-klasearekin
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+Testu-klase lehenetsia izan ohi da.
+\end_inset 
+
+ idaztea.
+ Saia zaitez beste testu-klase batera aldatzen (erabili 
+\family sans 
+\bar under 
+D
+\bar default 
+iseinua\SpecialChar \menuseparator
+Dokumentua
+\family default 
+...
+ menua), beraien konposaketa ezberdinak ikusteko.
+ Aldatu zure dokumentua 
+\family sans 
+Book
+\family default 
+ testu-klasera, eta 
+\family sans 
+Ingurunea
+\family default 
+ menuan begiratzen baduzu dauden ingurune gehienak berdinak izango dira.
+ Orain, ordea, 
+\family sans 
+Kapitulua
+\family default 
+ ingurunea erabil dezakezu.
+ Testu-klase batek zein ingurune eskaintzen dituen jakiteko, 
+\family sans 
+Ingurunea
+\family default 
+ menua aztertzearekin nahikoa duzu.
+\layout Standard
+
+Egunkariek konposaketa-mota propioa eduki ohi dute: letra-tamainak, zutabe
+ bateko (edo biko) inprimaketa, edo orriaren izenburuak bezala.
+ Garai digital honetan, hauek artikulu elektronikoak onartzen hasi dira,
+ LaTeX estiloko fitxategiak sortu eta idazleak beraien artikuluak ongi konposatu
+ta bidal ditzaten.
+ Horretarako ere prestatuta dago LyX.
+ Adibidez, LyX-ek 
+\family sans 
+Article\SpecialChar ~
+(AMS)
+\family default 
+ testu-klasearen bidez Amerikar Matematika Elkarteko egunkarientzat (eta
+ antzeko beste batzuentzat ere) konposaketa-euskarria eskaintzen du.
+\layout Standard
+
+Jarraian zenbait testu-motari buruzko erreferentzia laburra azaltzen da.
+ Xehetasun gehiagorako, ikus E
+\emph on 
+zaugarri hedatuak
+\emph default 
+ eskuliburuko 
+\emph on 
+Dokumentu-klase bereziak
+\emph default 
+ atala.
+\layout Standard
+
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Izena
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Azalpena
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+article
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+orrialde bakarrekoa, kapitulurik gabe
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+article (AMS)
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Amerikar Matematika Elkarteko diseinu eta inguruneak
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+report
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+artikulua baino luzeagoa, bi orrialdetatik
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+book
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+txostena + azala + kontrazala
+\end_inset 
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+slides
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+gardenkiak (FoilTeX dauka)
+\end_inset 
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+letter
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+helbide, sinadura eta bestelako inguruneak dauzka
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\layout Section
+
+Txantiloiak: eskutitza idaztea
+\layout Standard
+
+Testu-klase ospetsuena 
+\family sans 
+Letter
+\family default 
+ (gutuna) da.
+ Gutun bat idazteko orduan, ireki fitxategi berria eta 
+\family sans 
+\bar under 
+D
+\bar default 
+iseinua\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+okumentua
+\family default 
+ elkarrizketa-koadroko 
+\family sans 
+Dokumentu\SpecialChar ~
+klasea
+\family default 
+ eremuan 
+\family sans 
+Letter
+\family default 
+ hautatu.
+ Eskutitza idazteko biderik errazena izan arren lan gehiago eskatzen duela
+ dirudi.
+ Negozio-gutun bakoitza idazterakoan jasotzailearen eta zure helbideak,
+ gorputza, sinadura e.a.
+ eduki nahi dituzu.
+ Beraz, LyX-ek gutunentzat txantiloi bat dauka, gutun-adibidea duena; behin
+ txantiloi bat eskuartean daukazula, gutun berri bat idazten duzun bakoitzean
+ zatiren bat edo beste aldatzen duzu soilik.
+\layout Standard
+
+Ireki fitxategi berri bat 
+\family sans 
+\bar under 
+F
+\bar default 
+itxategia\SpecialChar \menuseparator
+Berria\SpecialChar ~
+(txantiloitik)
+\family default 
+ menua aukeratuz.
+ Hautatu 
+\family typewriter 
+letter.lyx
+\family default 
+ txantiloi gisa.
+ Gorde eta inprima ezazu zenbait ingurune nola konposatzen diren aztertzeko.
+ 
+\layout Standard
+
+
+\family sans 
+Ingurunea
+\family default 
+ menuan begiratzen duzunean beste testu-klase batzuetan ageri ez diren hainbat
+ ingurune ikusiko dituzu, adibidez, 
+\family sans 
+Nire\SpecialChar ~
+Helbidea
+\family default 
+.
+ 
+\family sans 
+Zita
+\family default 
+ eta 
+\family sans 
+Azalpena
+\family default 
+ bezalako beste batzuk ezagunak egingo zaizkizu.
+ Ingurune horiek nola erabiltzen diren ikusteko, beroriekin jolasten ibil
+ zaitezke.
+ Ohartuko zara, adibidez, 
+\family sans 
+Sinadura
+\family default 
+ inguruneak gorri koloredun "
+\family typewriter 
+signature:
+\family default 
+" hitza testu aurretik agertzen duela.
+ Fitxategia inprimatzen baduzu, ohartuko zara hitz hori ez duela erakusten.
+ Sinaduraren kokapena jakiteko erabiltzen da.
+ Horrez gain, jakin ezazu berdin dela 
+\family sans 
+Signature
+\family default 
+ lerroa non kokatzen den.
+ Gogoratu LyX programa WYSIWYM dela; nahi duzun lekuan 
+\family sans 
+Signature
+\family default 
+ ingurunea kokatu, LyX-ek badaki inprimatzerakoan sinadurak gutunaren amaieran
+ egon behar duela.
+\layout Standard
+
+Txantiloi bat LyX fitxategi arrunt bat besterik ez da.
+ Hots, zure helbide eta sinadurekin bete eta txantiloi berri bat bezala
+ gorde dezakezu.
+ Hemendik aurrera, gutun bat idatzi nahi duzun bakoitzean sortu berri duzun
+ txantiloian oinarrituz denbora aurreztuko duzu.
+ Egiazko "ariketa" bat egitea ongi baino hobekiago etorriko zaizula esan
+ beharrik ez daukagu, idatz iezaiozu gutun bat lagun bati 
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+Abisu bat, txantiloitik idazten duzun kasurako.
+ Ingurune bateko testua ezabatuz (zure helbidea sartzeko 
+\family sans 
+Nire\SpecialChar ~
+helbidea
+\family default 
+ eremua erabat ezabatzen baduzu) eta ondoren ezer idatzi gabe kurtsorea
+ beste nonbaitera mugituz gero, gune hori desagertuko da.
+ Ingurune gehienek testurik gabe ezin dute bizi.
+ Itzultzeko, hautatu berriro Ingurunea menuko elementua.
+\end_inset 
+
+!
+\layout Standard
+
+Txantiloiek denbora asko aurrera dezaketenez, ahal duzun guztietan erabiltzea
+ aholkatzen dizugu.
+ Gainera, testu-klase dotore batzuk nola erabiltzen diren erakusten dute.
+ Azkenik, LyX ordenagailuekin trebetasun gutxi daukaten erabiltzaileentzat
+ lagungarri izan daiteke.
+ Erabiltzaileek gutun-txantiloi bat erabiltzen badute errazagoa izateaz
+ gain, LyX erabiltzeko beldurra galduko dute.
+\layout Section
+
+Dokumentuen tituluak
+\layout Standard
+
+LyX-ek (LaTeX-ek bezala) titulua --- uneko izenburua, egilea, data eta laburpena
+ ere barne eduki ditzake --- dokumentutik bereizitako zati bezala hartzen
+ du.
+ Itzul zaitez zure 
+\family typewriter 
+fitxategiberria.lyx
+\family default 
+ dokumentura eta ziurtatu 
+\family sans 
+Article
+\family default 
+
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+Gutun mota ez darabilzula, 
+\family sans 
+Letter
+\family default 
+ testu-klaseak titulurik ez baitu erabiltzen.
+\end_inset 
+
+ testu-klasea erabiltzen ari dela.
+ Idatzi titulua lehenbiziko lerroan eta lerroa 
+\family sans 
+Titulua
+\family default 
+ ingurunearekin ezarri.
+ Idatzi jurrengo lerroan zure izen-abizenak eta aldatu 
+\family sans 
+Egilea
+\family default 
+ ingurunera.
+ Idatzi data hirugarren lerroan 
+\family sans 
+Data
+\family default 
+ ingurunea erabiliz.
+ Hori egin ondoren, laburtu dokumentuaren edukia bizpahiru paragrafotan
+ (edo bakar batean) eta ezarri 
+\family sans 
+Laburpena
+\family default 
+ ingurune bezala.
+ 
+\layout Standard
+
+Orain, ikusi emaitza nola inprimatuko den.
+\layout Description
+
+Ariketa: Zuzendu titulua, egilea eta data 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+ fitxategian.
+\layout Section
+
+Etiketa eta erreferentzia gurutzatuak
+\layout Standard
+
+
+\begin_inset LatexCommand \label{atal:etiketak}
+
+\end_inset 
+
+Dokumentuko atal bati (edo azpiatala, edo edozein testu-zati bat) etiketa
+ jar diezaiokezu.
+ Etiketa bat jarritakoan, dokumentuko beste edozein lekutan atal honi buruzko
+ aipamenak sartzeko erreferentzia gurutzatuak erabil ditzakezu.
+ Atalaren zenbakira edo kokatuta dagoen orrialdeari erreferentzia dezakezu.
+ Atal eta oin-oharrekin gertatzen den bezala, erreferentzia gurutzatuetaz
+ LyX arduratuko da.
+ Etiketa eta erreferentzia gurutzatuak automatikoki kudeatzeko gaitasuna
+ LyX eta LaTeX programen abantailarik onenetariko bat da, beste testu-prozesador
+eekin konparatuz.
+\layout Subsection*
+
+Zure aurreneko etiketa
+\layout Standard
+
+Gure bigarren atala, "Dokumentu honi buruz" izenburua duena, markatuko dugu.
+ Klikatu ataleko izenburuaren amaieran eta hautatu 
+\family sans 
+\bar under 
+T
+\bar default 
+xertatu
+\bar under 
+\SpecialChar \menuseparator
+
+\bar default 
+Etiketa\SpecialChar \ldots{}
+
+\family default 
+ menua.
+ Elkarrizketa-koadro batek etiketaren izena eskatuko dizu, eta berak iradokizuna
+k egingo dizkizu.
+ Ados klikatutakoan, etiketaren izena kutxa batean ataleko izenburutik gertu
+ ezarriko du.
+\layout Standard
+
+Ahaztu baino lehenago, etiketa ataleko edozein lekutan koka dezakezu; ataleko
+ erreferentziak etiketaren aurretik dagoen azken atal edo azpiataleko izenburura
+ zuzendua dago.
+ Nola nahi ere, ataleko izenburuaren lerroan ezartzeak (edo agian ataleko
+ aurreneko testu-lerroaren hasieran) atalaren hasierara zuzentzen du.
+\layout Standard
+
+Orain arte ez dugu gauza askorik egin (
+\family typewriter 
+dvi
+\family default 
+ fitxategiak itxura bera dauka, inprimatutako dokumentuan etiketarik ez
+ baita agertzen).
+ Hala ere, etiketa gehitu duzunez, honi buruz dokumentuan erreferentzia
+ gurutzatuak erabil ditzakezu.
+ Oraintxe egingo dugu.
+\layout Subsection*
+
+Zure lehen erreferentzia gurutzatua
+\layout Standard
+
+Kokatu kurtsorea zure dokumentuko 2.
+ ataleko lekuren batean.
+ Idatzi hau
+\layout LyX-Code
+
+Dokumentu honi buruz gehiago jakiteko asmoz, 
+\newline 
+ikus atala , orrialdean aurki dezakezu.
+\layout Standard
+
+Orain, kokatu kurtsorea "atala" hitzaren aurrean eta hautatu 
+\family sans 
+\bar under 
+T
+\bar default 
+xertatu
+\family default 
+ menuko 
+\family sans 
+Erreferentzia gurutzatua
+\family default 
+ elementua.
+ 
+\family sans 
+Erreferentzia gurutzatua
+\family default 
+ izeneko leihoa bistaratuko da.
+ Aipatu dezakezun etiketa-zerrenda bat dauka.
+ Oraingoz dagoena "
+\family typewriter 
+atal:dokumburuz
+\family default 
+" bakarrik da.
+ Hautatu hori (jatorriz aukeratuta egongo da) eta klikatu 
+\family sans 
+Ados
+\family default 
+ botoia.
+ Orain jarri kurtsorea "orrialdean" hitzaren aurretik eta aldatu erreferentzi
+ mota orrialde zenbakira elkarrizketa-koadroan eta klikatu 
+\family sans 
+Ados
+\family default 
+.
+ Erabat zuzenak izateko, erreferentzia eta "atala" hitzaren artean 
+\family sans 
+zuriune\SpecialChar ~
+babestu
+\family default 
+ bat sartu beharko duzu.
+ Egin gauza bera orrialdearen erreferentziarekin.
+\layout Standard
+
+LyX-ek erreferentzia-kutxa batean jartzen du, kurtsorea dagoen lekuan.
+ Inprimatutako dokumentuan erreferentzia markatzen duen kutxa hau orrialde
+ edo atal zenbakiagatik (
+\family sans 
+Erreferentzia gurutzatua
+\family default 
+ elkarrizketa-koadroan hautatutakoaren arabera) ordezten da.
+ Erabili 
+\family sans 
+\bar under 
+I
+\bar default 
+kusi\SpecialChar \menuseparator
+
+\bar under 
+E
+\bar default 
+guneratu\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+vi
+\family default 
+, eta ikusiko duzu azken orrialdean "2 atala" eta "1 orrialdea"ri (edo 2.
+ atala kokatzen den orrialdea) erreferentzia egiten diogula.
+\layout Standard
+
+Era probetxugarri batean, LyX-ekin dokumentua editatzen duzunean, gurutzatutako
+ erreferentzia batek hiperesteka gisa dihardu; horren gainean klikatuta,
+ 
+\family sans 
+Erreferentzia gurutzatua
+\family default 
+ elkarrizketa-koadroa agertuko zaizu, eta klikatu Joan botoia kurtsorea
+ aipatzen den etiketara mugitzeko.
+\layout Subsection*
+
+Etiketekin jolastea
+\layout Standard
+
+Esan dizugu erreferentzia gurutzatuak zenbatzeaz LyX arduratzen dela; egiaztatze
+ko unea heldu zaizu.
+ Gehitu atal berri bat 2.
+ atalaren aurretik, jar iezaiozu izenburu panpox bat ("Neguko lore gardenak"
+ adibidez).
+ Orain exekutatu LaTeX berriro eta --- 'Voilà!'--- atalaren erreferentzia
+ gurutzatua "3" izatera aldatu da; sinesgaitza eh? Aldatu "Dokumentu honi
+ buruz" azpiatal batera, eta erreferentzia gurutzatua 3 atalaren ordez 2.1\SpecialChar ~
+azpiata
+la bezala aipatuko du.
+ Hori bai, orrialdearen erreferentzia aldatzeko etiketaren aurretik testu
+ asko daukan orrialde berri bat idatzi beharko duzu.
+ 
+\layout Standard
+
+Etiketekin aritzeko, sartu etiketa berri bat lehenbiziko erreferentzia gurutzatu
+a zegoen lekuan, eta aipatu dokumentuko edozein lekutik.
+ Erreferentzia gurutzatu ugari txertatzen ibiltzen bazara (egunkarirako
+ artikulua idaztean, adibidez), 
+\family sans 
+Erreferentzia gurutzatua
+\family default 
+ elkarrizketa-koadroa irekita edukitzea komeniko zaizu.
+\layout Standard
+
+Erreferentzia gurutzatuak dokumentu handietan ere ongi dabiltzala ziurtatu
+ nahi baduzu, kopiatu 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+-ko orrialde batzuk eta itsatsi zure dokumentuan
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+Gauza bat, kapitulu baten izenburua kopiatzeak errore bat sor dezake, zeren
+ eta artikulu testu-klaseak kapitulurik ez baitu onartzen.
+ Hori gertatzen bada, ezabatu kapituluaren izenburua.
+ Xehetasun gehiago 
+\begin_inset LatexCommand \ref{atal:testuklaseak}
+
+\end_inset 
+
+ atalean.
+\end_inset 
+
+.
+\layout Description
+
+Ariketa: zuzendu erreferentziak 
+\family typewriter 
+eu_adibide_gordina.lyx 
+\family default 
+fitxategian.
+\layout Section
+
+Oin-oharrak eta albokoak
+\layout Standard
+
+Oin-oharrak gehitzeko, tresna-barrako 
+\family sans 
+Txertatu\SpecialChar ~
+oin-oharra
+\family default 
+ botoia
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Botoiak beltz koloreko testuaren azpian dagoen testu gorri batera zuzendutako
+ gezia irudikatzen du.
+\end_inset 
+
+, edo 
+\family sans 
+\bar under 
+T
+\bar default 
+xertatu
+\family default 
+\SpecialChar \menuseparator
+
+\family sans 
+Oi
+\bar under 
+n
+\bar default 
+-oharra
+\family default 
+ menua erabil dezakezu.
+ Jarri kurtsorea dokumentuko "LyX" hitzaren atzean eta klikatu 
+\family sans 
+Txertatu\SpecialChar ~
+oin-oharra
+\family default 
+ botoian.
+ Oin-orriari dagokion kutxa bat agertuko zaizu; idatzi bertan oineko oharrari
+ dagokion testua.
+ LyX-ek kurtsorea oin-ohar kutxaren hasieran kokatuko du.
+ Idatzi
+\layout LyX-Code
+
+LyX konposaketarako testu-prozesadorea da.
+\layout Standard
+
+Orain klikatu "oina" etiketadun botoia.
+ Oin-oharraren kutxa desagertuko da, oin-oharraren marka inprimatuko den
+ testuaren kokalekua erakusteko botoia utziko du.
+ Ekintza horri oin-oharra "tolestatzea" deitzen zaio.
+ Oin-oharra destolestu nahi duzunean, klikatu "oina" botoia; horrela beraren
+ testua editatzeko aukera daukazu.
+\layout Standard
+
+Oin-oharraren izendatzailea zenbaki bat izan beharrean hitz bat izatearen
+ zergatia galdetzen baduzu, erantzuna zera da: inprimatuko den testuan oin-orrie
+n zenbaketa egiteaz LyX arduratzen dela.
+ Zure kabuz egiazta dezakezu dvi fitxategian (edo inprimatutako orrialdeetan)
+ begiratuz.
+ Oin-oharrak gehitzen badiozu, LyX-ek birzenbatuko ditu.
+ Beraz, oin-oharren zenbaketa egiteaz LyX (LaTeX azken finean) arduratzen
+ denez, LyX fitxategietan zenbakirik jarri beharrik ez dago.
+\layout Standard
+
+Oin-oharrak testu arrunt bezala ebaki eta itsats daitezke.
+ Saia zaitez beldurrik gabe! Hautatu oin-ohar botoi bat
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+Teklatuaren bitartez errazago hautatuko duzu.
+ Saguarekin saiatzean oin-oharraren kutxa irekitzeko arriskua baitaukazu.
+\end_inset 
+
+, 
+\family sans 
+Ebaki
+\family default 
+ eta 
+\family sans 
+Itsatsi
+\family default 
+.
+ Horretaz gain, testu arrunta oin-ohar batera alda dezakezu: hautatu testua
+ eta klikatu 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Txertatu
+\family default 
+ 
+\family sans 
+oin-oharra
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ izeneko botoia.
+ Oin-oharra testu arruntera bihurtzeko, klikatu 
+\family sans 
+Txertatu oin-oharra
+\family default 
+ botoia, kurtsorea oin-oharrean kokatuta dagoela.
+\layout Standard
+
+Albo-oharrak gehitzeko, erabili 
+\family sans 
+Txertatu\SpecialChar ~
+albo-oharra
+\family default 
+ botoia edo 
+\family sans 
+\bar under 
+T
+\bar default 
+xertatu\SpecialChar \menuseparator
+Albo-oharra
+\family default 
+ menua.
+ Oin-oharrak bezala dihardute, honako hauek izan ezik:
+\layout Itemize
+
+Pantailan kutxek "oina" eduki beharrean "albo" daukate.
+\layout Itemize
+
+Oharrak alboetan kokatzen dira, testuaren behealdean ordez.
+\layout Itemize
+
+Ez dira zenbatzen.
+ Aldatu LyX-eko oin-ohar bat testu arrunt egoerara, ondoren hautatu testu
+ hori eta bihurtu ezazu albo-oharrera.
+ Albo-oharra nola inprimatzen diren ikusteko, exekutatu LaTeX.
+\layout Description
+
+Ariketa: zuzendu oin-oharrak 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+ fitxategian.
+\layout Section
+
+Bibliografiak
+\layout Standard
+
+
+\begin_inset LatexCommand \label{atal:bibliografiak}
+
+\end_inset 
+
+Bibliografiak erreferentzia gurutzatuak bezalakoak dira.
+ Bibliografiak erreferentzien zerrenda bat edukitzen du dokumentu amaieran,
+ eta dokumentuaren zehar elementu hauek aipa daiteke.
+ Ataletako izenburuekin gertatzen den bezala, LyX eta LaTeX-ek zure lana
+ errazten dute automatikoki bibliografiako elementuak zenbatuz eta zitazioak
+ aldatuz elementuen zenbakia aldatzen diren bakoitzean.
+\layout Standard
+
+Joan dokumentu-amaierara eta aldatu 
+\family sans 
+Bibliografia
+\family default 
+ ingurunera.
+ Orain, idazten duzun paragrafo bakoitza erreferentzi bat izango da.
+ Idatzi 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+LyX Tutoretza, LyX-eko dokumentazio taldea
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ zure lehen bibliografiako erreferentzi gisa.
+ Ohartuko zarenez, LyX-ek automatikoki erreferentzia bakoitzaren aurretik
+ zenbaki bat daukan kutxa jartzen du.
+ Zuk lehen eremua erabiliko duzu, Giltza, erreferentzia horri LyX dokumentuan
+ zehar aipamenak egiteko.
+ Zenbaki bat izaten da lehenetsi gisa.
+ Errazago oroitzeko, alda ezazu 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+lyxtutoretza
+\family default 
+"ra
+\family sans 
+ Gakoa
+\family default 
+ eremukoa.
+\layout Standard
+
+Orain, kokatu kurtsorea dokumentuko leku batean, erreferentzia txertatu
+ nahi duzun kokalekua hain zuzen.
+ Hautatu 
+\family sans 
+\bar under 
+T
+\bar default 
+xertatu\SpecialChar \menuseparator
+Zitazio\SpecialChar ~
+erreferentzia
+\family default 
+.
+ 
+\family sans 
+Zitazioa
+\family default 
+ elkarrizketa-koadroa agertuko da.
+ Elkarrizketa-koadro honen eskuineko panelean bibliografiako sarrera guztiak
+ zerrendatzen dira, eta eremu honek aipatu nahi duzun bibliografiako elementua
+ aukeratzea eskaintzen dizu.
+ Hautatu 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+lyxtutoretza
+\family default 
+" (oraintxe bertan, dagoen bibliografiako elementu bakarra baita), ondoren
+ erabili erdian dagoen ezker-gezia txertatzeko.
+ Kokapen berean nahi haina zitazio eduki ditzakezu honen bidez hainbat gako
+ transferituta.
+ Orain, exekutatu LaTeX, eta ikusiko duzu zitazioak testuan giltzen artean
+ agertzen direla, dokumentu amaierako bibliografia erreferentziatuz.
+\layout Standard
+
+Nola erabiltzen dira beste eremuak? Zitazioa elkarrizketa-koadroko 
+\family sans 
+Testua\SpecialChar ~
+ondoren
+\family default 
+ eremuak erreferentziaren ondoren, baina giltza artean, testua sartuko du
+ (erreferentziatzen den liburu edo artikulu bateko orrialde edo kapitulua
+ zehazteko, adibidez).
+ Inprimatzerakoan erreferentziek zenbakien ordez etiketak edukitzea nahi
+ baduzu (adib.
+ egunkari batzuk Sorozabal andreak 1992an idatzitako dokumentu bat aipatzeko
+ "[Sor92]" idaztiko lukete) 
+\family sans 
+Bibliografia-elementua
+\family default 
+ elkarrizketa-koadroko 
+\family sans 
+Etiketa
+\family default 
+ eremua erabili.
+ Xehetasun gehiagorako, irakurri 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+.
+\layout Description
+
+Ariketa: zuzendu bibliografia eta zitazioak 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+ fitxategian.
+\layout Section
+
+Gaien aurkibidea
+\layout Standard
+
+Dokumentu-hasieran gaien aurkibidea jartzeko burutazioa izango zenuen, ez?
+ LyX-ekin erraz egingo duzu.
+ Dokumentuko tituluaren ondoren eta testuaren aurretik lerro-itzulera sakatu
+ ostean, aukeratu 
+\family sans 
+\bar under 
+T
+\bar default 
+xertatu\SpecialChar \menuseparator
+
+\family default 
+Zerrendak\SpecialChar ~
+eta\SpecialChar ~
+
+\family sans 
+Aurk.
+
+\family default 
+ menuan 
+\family sans 
+Gaien\SpecialChar ~
+aurkibidea
+\family default 
+ elementua.
+ Dokumentuko aurreneko lerroan "
+\family sans 
+Gaien aurkibidea
+\family default 
+" esaldia duen botoi bat agertuko da.
+\layout Standard
+
+Ez dirudi oso erabilkorra denik.
+ Hala ere, 
+\family typewriter 
+dvi
+\family default 
+ fitxategian begiratzen baduzu, dokumentuko atal eta azpiatalak zerrendatzen
+ dituen gaien aurkibidea ikusiko duzu.
+ Ohitura den bezala, atalak berrantolatzean edo berriak sortzean, aldaketa
+ horiek 
+\family typewriter 
+dvi
+\family default 
+ fitxategi eguneratuan ikusiko dituzu.
+\layout Standard
+
+Dokumentua pantailan editatzerakoan, ez da gaien aurkibidea testu gisa azaltzen,
+ ezinezkoa baita editatzea.
+ Gaien aurkibideari dagokion botoian, edo 
+\family sans 
+\bar under 
+I
+\bar default 
+kusi\SpecialChar \menuseparator
+Gaien\SpecialChar ~
+aurkibidea
+\family default 
+ menuan klikatuz banandutako leiho batean zerrendatzen da.
+ Nahiz eta dokumentuan "gaien aurkibidea" ez egon txertatuta, menuaren komandoak
+ funtzionatuko du.
+ Hori tresna eraginkorra da.
+ Dokumentuan zehar mugitzeko 
+\family sans 
+Gaien\SpecialChar ~
+aurkibidea
+\family default 
+ leihoa erabil dezakezu: (azpi)atal baten izenburuan klikatuz bat elementuaren
+ lerroa nabarmendu eta kurtsorea (LyX editatzen den leihoan) dokumentuko
+ zati horretan kokatuko du.
+ Teklatuko geziak (kurtsorea mugitzeko erabiltzen direnak:
+\begin_inset Formula $\leftarrow$
+\end_inset 
+
+, 
+\begin_inset Formula $\uparrow$
+\end_inset 
+
+, 
+\begin_inset Formula $\downarrow$
+\end_inset 
+
+eta 
+\begin_inset Formula $\rightarrow$
+\end_inset 
+
+) ere erabil ditzakezu gaien aurkibidean gora eta behera mugitzeko.
+ Agian komenigarria izango duzu editatzen ari zarenean leiho hau irekita
+ uztea.
+ Antzeko gaitasuna Arakatu menutik lor dezakezu, eta gaien aurkibidea automatiko
+ki agertuko da.
+\layout Standard
+
+Aurkibidea kentzeko dagokion botoia, beste edozein testu bezala, ezabatzearekin
+ nahikoa da.
+\layout Description
+
+Ariketa: jarri gaien aurkibidea 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+ fitxategian.
+\layout Chapter
+
+Matematika erabiltzea
+\layout Standard
+
+Zientzialari askok LaTeX erabiltzen dute zeren eta ekuazioak era dotorre
+ batean kaleratzen baititu, testu prozesadoreek eta beraien ekuazio editoreak
+ erabiltzen duten kontrol karaktereak sahietsiz.
+ Zientzilari askok goibelduak sentitzen dira, LaTeX-ekin ekuazioak idatzi
+ baino programaketa lan bat gehiago delako.
+ Zorionez, LyX-ek ekuazioentzako WYSIWYM izaera dauka.
+ LaTeX erabiltzen baduzu, LaTeX-eko matematika komandoak bide normal batean
+ idatz daitekeela ikusiko duzu, eta horiek WYSIWYM eran erakutsiko dira.
+ Bestalde, LaTeX inoiz ez baduzu erabili, orduan 
+\family sans 
+Matematikako panela
+\family default 
+rekin bide azkar eta erosoan profesional-itxurako adierazpen matematikoak
+ idazteko aukera izango duzu
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+LyX-ek ezin du egiaztatu idazten dituzun ekuazioak zuzenak al diren edo
+ ez.
+ Sentitzen da.
+\end_inset 
+
+.
+\layout Section
+
+Matematika-era
+\layout Standard
+
+Dokumentuko lekuren batean ondorengoa idatzi:
+\layout LyX-Code
+
+Gogoko dut Einstein-ek esandakoa, E=mc^2, hain bakuna da.
+\layout Standard
+
+Ekuazioak, 
+\family typewriter 
+dvi
+\family default 
+ fitxategian ere, ez dauka itxura onik; hizkien eta berdintasun ikurraren
+ artean ez dago zuriunerik, eta "2" benetako goi-indize bezala egotea nahiko
+ zenuke.
+ Konposatze okerra gertatu da, LyX-i matematikako ekuazio bat idazten ari
+ garela ez baitiogu esan, eta ekuazioa testu normala bezala konposatu du.
+ 
+\layout Standard
+
+Horren ordez, egokiro konposatua izan dadin formula bat sortu dugu.
+ Ekuazio bat sortzeko, klikatu tresna-barrako kolore urdineko
+\begin_inset Formula $\frac{a+b}{c}$
+\end_inset 
+
+ botoia.
+ LyX-ek laukitxo urdin bat txertatuko du; matematika-ekuazio hutsa izango
+ da, eta kurtsorea bertan kokatuko duenez, idatzi 
+\family typewriter 
+E=mc^2
+\family default 
+ berriro.
+ Adierazpen matematikoa urdinez dago, eta laukitxo urdina ekuazioa hutsa
+ izateari uzten dion unean desagertuko da.
+ Sakatu 
+\family sans 
+Ihes
+\family default 
+ (
+\family sans 
+Esc
+\family default 
+) ekuaziotik ateratzeko.
+ Markatzaile arrosa desagertuko da, kurtsorea adierazpenaren eskuinean kokatuz,
+ eta orain zerbait idazten baduzu testu arrunta izango da.
+\layout Standard
+
+Exekutatu LaTeX eta begiratu 
+\family typewriter 
+dvi
+\family default 
+ fitxategian.
+ Konturatuko zarenez, adierazpen matematikoa era dotorean osatu da; hizki
+ eta berdintasun ikurraren artean zuriunea du, eta "2" goi-indize bezala
+ dauka.
+ Matematika-eran hizkiak aldagai gisa hartzen dira, eta letra etzanez azaltzen
+ dira.
+ Zenbakiak zenbaki izaten jarraitzen dute.
+\layout Standard
+
+Matematika editatzeko era berri hau WYSIWYM filosofiaren beste adibide bat
+ da.
+ LaTeX-en, matematika espresioak testuaren eta 
+\family typewriter 
+
+\backslash 
+sqrt
+\family default 
+ bezalako komandoen bitartez idazten dira; LaTeX exekutatu arte ezin izango
+ duzu ikusi nola inprimatuko diren, eta falta den parentesi edo bestelako
+ zerbaiten bila denbora asko gal daiteke, edozein pertsona haserraraziz.
+ LyX-ek, ordea, adierazpen matematikoa WYSIWYG eran ez azaldu arren, inprimatzea
+n edukiko duen ia itxura berdina bistaratzen du.
+ Ondoren, LaTeX konposaketa profesionala lantzeaz arduratuko da.
+ Denboraren %99-an LaTeX-ek kaleratzen duenaren letra-tipo edo tarterik
+ ez duzu aldatzerik nahi izango.
+ Honela (barkatu hainbeste errepikatzeagatik) adierazpen matematikoez arduratuko
+ zara, eta ez beraien egituraz.
+\layout Section
+
+Ekuazioetan murgiltzea
+\layout Standard
+
+Orain 
+\begin_inset Formula $E=mc^{2}$
+\end_inset 
+
+aldatu 
+\begin_inset Formula $E=1+mc^{2}$
+\end_inset 
+
+ekuaziora.
+ Adierazpen barruan mugitzeko, erabili teklatuko geziak.
+ Sartzerakoan matematika-eran zaudela argitzeko markatzaile arrosa azaltzen
+ dela ohartu.
+ Erabili teklatuko 
+\family sans 
+Ezkerra
+\family default 
+ eta 
+\family sans 
+Eskuina
+\family default 
+ geziak berdintasun ikurraren mailan kurtsorea mugitzeko, idatzi eta "1+".
+ Erabili geziak ekuaziotik irteteko edo sakatu 
+\family sans 
+Ihes
+\family default 
+.
+ Ezkerra, eskuina, gora eta behera geziak diren arren saguarekin klikatuz
+ ekuazioko edozein lekutan kurtsorea koka dezakezu.
+\layout Standard
+
+Matematika-eran idaztea testu normal bat editatzea bezala da, aurrerago
+ azalduko dizkizugun tekla bereziak kontutan hartzen ez baditugu bederen.
+ Ezabatzeko, erabili 
+\family sans 
+Ezabatu
+\family default 
+ (Supr) edo 
+\family sans 
+Atzera-tekla
+\family default 
+ (Backspace).
+ Testua hautatzeko bai teklatuko geziak bai sagua erabil ditzakezu.
+ 
+\family sans 
+\bar under 
+E
+\bar default 
+ditatu\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+esegin
+\family default 
+ menua matematika-eran berdin erabiltzen da, gauza bera ebaki eta itsasteko.
+ Kontuz ibili gauza batekin: ekuazioaren eskuinaldean eta kanpoan kurtsorea
+ balego eta 
+\family sans 
+Ezabatu
+\family default 
+ edo 
+\family sans 
+Atzera-tekla
+\family default 
+ sakatzerakoan ekuazio osoa ezabatuko litzateke.
+ Eskerrak adierazpen matematikoa berreskuratzeko 
+\family sans 
+Desegin
+\family default 
+ daukazun.
+\layout Standard
+
+Eta 
+\begin_inset Formula $E=mc^{2}$
+\end_inset 
+
+ ordez 
+\begin_inset Formula $E=mc^{2.5}+1$
+\end_inset 
+
+ ekuaziora aldatu nahi baduzu? Beste behin, klikatu saguarekin kokaleku
+ egokian.
+ Nahi izanez gero, erabili teklatuko geziak.
+ Kurtsorea "c" hizkiaren ondoren baina "2"-ren aurrean kokatuta balego,
+ sakatu 
+\family sans 
+Gora
+\family default 
+ gezia goi-indizera igotzeko, "2"-ren aurretik kokatuko da.
+ Gehitu ".5" balioa.
+ Orain, sakatu 
+\family sans 
+Behera
+\family default 
+ gezia kurtsorea maila arruntera itzultzeko.
+ Ekuazioko goi-indizean bazaude eta 
+\family sans 
+Zuriunea
+\family default 
+ sakatzen baduzu, jaitsi maila arruntera eta goi-indize ondoren kurtsorea
+ kokatuko du, horrela "+1" idaztea bakarrik faltako zaizu.
+\layout Section
+
+Berretzaile eta indizeak
+\layout Standard
+
+Berretzaile bat 
+\family sans 
+Matematikako\SpecialChar ~
+panela
+\family default 
+ erabiliz sar daitekeen arren (ikus ondogo atala), askoz ere azkarragoa
+ da "^" erabiltzea.
+ LyX-ek goi-indizean beste laukitxo urdin bat jarriko du, ondoren idazten
+ duzuna goi-indizea izango da (letra-tamaina txikiagoa edukiko du).
+ 
+\family sans 
+Zuriunea
+\family default 
+ edo 
+\family sans 
+Ihes
+\family default 
+ sakatu bitartean idazten duzun guztia goi-indizean agertuko da.
+\layout Standard
+
+Azpindizea idazteko bidea ere erraza da: 
+\family sans 
+Azpimarra
+\family default 
+ ("_") zapaldu.
+ Dagoeneko ikasi duzu ondoren agertzen den ekuazioko goi-indizeak eta azpindizea
+k idazten: 
+\begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
+\end_inset 
+
+.
+\layout Description
+
+Ariketa: ipini 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+ fitxategiko 1.
+ ekuazioa matematika-eran.
+\layout Section
+
+Matematikako panela
+\layout Standard
+
+Matematikako ikur eta funtzio osatuagoak sartzeko Matematikako panela erabiltzea
+ komenigarria izaten da.
+ Funtzio hauetariko asko tuarekin, 
+\family sans 
+\bar under 
+E
+\bar default 
+ditatu\SpecialChar \menuseparator
+Matematika
+\family default 
+ edo 
+\family sans 
+\bar under 
+T
+\bar default 
+xertatu\SpecialChar \menuseparator
+
+\bar under 
+M
+\bar default 
+atematika
+\family default 
+ menuen bidez sor daiteke.
+ Matematikako panela erabiltzen irakatsiko dizugu; beste eskuliburuak irakurriz
+ lasterbideak erabiltzen ikasiko duzu.
+ Ireki ezazu 
+\family sans 
+\bar under 
+T
+\bar default 
+xertatu\SpecialChar \menuseparator
+
+\bar under 
+M
+\bar default 
+atematika\SpecialChar \menuseparator
+Matematikako\SpecialChar ~
+panela
+\family default 
+ eta atal hau irakurtzen ari zaren bitartean irekita utzi.
+\layout Subsection
+
+Grekera eta ikurrak
+\layout Standard
+
+Matematika panela-ak matematikako ikur multzo handia aukeratzen uzten dizu:
+ hainbat gezi, erlazio, eragile, batura eta integral.
+ Jakin ezazu goi-indizeek eta azpindizeek batura eta integralen limitea
+ jartzea eskaintzen dizutela.
+\layout Standard
+
+" Ez dago egin ezin dezakezunik...
+ behar duzun guztia 
+\begin_inset Formula $\heartsuit$
+\end_inset 
+
+ da."
+\layout Subsection
+
+Erroketa, tilet eta mugatzaileak
+\layout Standard
+
+Erroketa bat idazteko, klikatu erroketa-ikurra daukan botoia.
+ Erro ikurra agertuko da, eta kurtsorea bere barnean kokatuko da.
+ Orain idatzi aldagaiak, zenbakiak, beste erroketak, zatiketak edota nahi
+ duzun guztia.
+ LyX-ek erroketaren tamaina automatikoki egokituko du edukieraren arabera.
+\layout Standard
+
+Karaktere (
+\begin_inset Formula $\overrightarrow{v}$
+\end_inset 
+
+) edo karaktere taldean (
+\begin_inset Formula $\overrightarrow{a+b}$
+\end_inset 
+
+) tilet ikurra ezartzeko bide berdina lantzen da.
+ Apaingarri-motak panelean eskuragarri daude.
+ Klikatu apaingarri batean, eta LyX-ek apaingarri hori txertatuko du txertatze-g
+une
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+
+\emph on 
+Itzultzailearen oharra
+\emph default 
+: txertatze-gunea matematikako ekuazioa idazten den laukitxo urdinari deitzen
+ zaio.
+\end_inset 
+
+ baten azpian (edo gainean).
+ Idatzi gogokoen duzun ekuazioa txertatze-gunean.
+ Bi apaingarri multzo daude: idazten duzun testuarekin bat tamainaz aldatzen
+ direnak, eta beraien tamaina finkatuta daukatenak, hizki soilentzako egokiagoak
+ direnak.
+\layout Standard
+
+Parentesiak, giltzak edota kortxeteak bezalako mugatzaileak antzera erabili
+ arren pitin bat zailtxoagoak dira erabiltzen.
+ Sakatu 
+\family sans 
+Mugatzailea
+\family default 
+ botoia (kortxete artean laukitxo urdina dauka) eta 
+\family sans 
+Mugatzaileak
+\family default 
+ elkarrizketa-koadroa agertuko da.
+ Unean hautatutako mugatzailea leiho erdialdean agertuko da.
+\layout Standard
+
+Parentesi-bikotea egoten da lehenetsi gisa, hautatu zuk nahi dituzun kortxete-bi
+koteak, kortxete eta parentesiak, edo botoi hutsa "
+\begin_inset Formula $a=\left\langle 7\right.$
+\end_inset 
+
+" bezalako zerbait idazteko (huts-mugatzailea tartekako marra bertikala
+ bezala bistaratzen da LyX-en; inprimatzerakoan, ordea, ez da azaltzen).
+\layout Standard
+
+Alferra bazara, matematika-eran oraingo parentesiak idatz ditzakezu 
+\family sans 
+Mugatzailea
+\family default 
+ leihoaren ordez.
+ Hala ere, parentesi horiek testu arruntaren letra-tamaina berdina izango
+ dute, parentesi barruan zatiketa edo matrize bat idazten baduzu oso itsusi
+ geldituko dira.
+ Mugatzailea leihoa erabiltzeak mugatzaileen tamaina edukiaren arabera egokituko
+ dela ziurtatzen da.
+\layout Standard
+
+Existitzen den testu batean mugatzaileak, erroketak edo apaingarriak txerta
+ ditzakezu.
+ Hautatu egokitu nahi duzun ekuazioa, ondoren klikatu 
+\family sans 
+Matematikako\SpecialChar ~
+panela
+\family default 
+ leihoko nahi duzun botoia.
+ Saia zaitez 
+\noun on 
+Newton
+\noun default 
+-en bigarren legea eskalar eratik (
+\begin_inset Formula $f=ma$
+\end_inset 
+
+) bektore erara (
+\begin_inset Formula $\overrightarrow{f}=\overrightarrow{ma}$
+\end_inset 
+
+) bihurtzen.
+ Matrizei buruz ikasitakoan parentesi edo kortxeteak modu honetan jar ditzakezu.
+\layout Subsection
+
+Zatikiak
+\layout Standard
+
+Matematika-eran zatikiak idaztea oso erraza da.
+ Klikatu 
+\family sans 
+Matematikako\SpecialChar ~
+panela
+\family default 
+ leihoko 
+\family sans 
+Zatikia
+\family default 
+ botoia (zenbatzaile eta zatitzailean lauki urdinak ditu).
+ LyX-ek bi txertatze-gune jarriko ditu.
+ Uste zenuen bezala, zatiki batean zehar kurtsorea mugitzeko teklatuko geziak
+ erabil ditzakezu.
+ Klikatu zenbatzaileari dagokion txertatze-gunean eta idatzi "1" zenbakia.
+ Orain, sakatu 
+\family sans 
+Behera
+\family default 
+ gezia eta "2" zenbakia idatzi.
+ Zatiki bat lortu duzu !
+\layout Standard
+
+Jakingo duzunez, bi txertatze-gunetan nahi duzuna idazteko aukera daukazu:
+ berretzaileak dituzten aldagaiak, erro karratuak, beste zatiki batzuk,
+ integralak edo bururatzen zaizun beste edozer.
+\layout Description
+
+Ariketa: jarri 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+ fitxategiko 2.
+ ekuazioa matematika-eran.
+\layout Subsection
+
+TeX era: limiteak, log, sinu eta bestelakoak
+\layout Standard
+
+Matematika-eran hizkiak aldagaitzat hartzen direnez, matematika-eran "sin"
+ idazten baduzu LyX-ek hiru aldagaien arteko biderkaketa (
+\begin_inset Formula $s$
+\end_inset 
+
+, 
+\begin_inset Formula $i$
+\end_inset 
+
+ eta 
+\begin_inset Formula $n$
+\end_inset 
+
+) idazten ari zarela usteko du.
+ Hirurak letra etzanarekin bistaratuko dira, baina "sin" hitza letra erromatarra
+rekin idatzi nahiko zenuen.
+ Gainera, LyX-ek ez du tarterik sartuko "sin" eta "x" hitzen artean (zuriunea
+ sakatuz matematika-eratik aterako zaitu).
+ Nola lor dezakezu 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\begin_inset Formula $\sin x$
+\end_inset 
+
+
+\begin_inset Quotes erd
+\end_inset 
+
+ ekuazioa 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\begin_inset Formula $sinx$
+\end_inset 
+
+
+\begin_inset Quotes erd
+\end_inset 
+
+-en ordez?
+\layout Standard
+
+Hautatu klik bikoitzarekin "sin" 
+\family sans 
+Matematikako panela
+\family default 
+ leihoko 
+\family sans 
+Funtzioak
+\family default 
+ zerrendan.
+ "sin" hitza letra beltz eta erromatarrez idatziko da.
+ Hitz osoa sinbolo soil baten gisa kudeatuko denez, 
+\family sans 
+Atzera-tekla
+\family default 
+ sakatuz hitz osoa ezabatuko da.
+ Idatzi orain "x", letra etzan urdinez idatziko da, matematika-eran espero
+ zenuen bezala.
+ dvi fitxategian adierazpen matematikoa egokiro konposatuko da.
+ Saia zaitez.
+\layout Standard
+
+TeX eran idazteko behar dituzun komando gehiago 
+\family sans 
+Funtzioak
+\family default 
+ zerrendan aurkituko dituzu: trigonometri funtzioak eta beraien alderantzizkoak,
+ hiperbole funtzioak, logaritmoak, limiteak eta bestelako gutxi batzuk.
+ Funtzio hauek goi-indize eta azpindizeak onartzen dituzte, 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\begin_inset Formula $\cos^{2}\theta$
+\end_inset 
+
+
+\begin_inset Quotes erd
+\end_inset 
+
+ edo 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\begin_inset Formula $\lim_{n\rightarrow\infty}$
+\end_inset 
+
+
+\begin_inset Quotes erd
+\end_inset 
+
+ bezalakoak idazteko garrantzitsuak izanik.
+\layout Description
+
+Ariketa: jarri 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+ fitxategiko 3.
+ ekuazioa matematika-eran.
+\layout Subsection
+
+Matrizeak
+\layout Standard
+
+
+\begin_inset LatexCommand \label{atal:matrizeak}
+
+\end_inset 
+
+Klikatu 
+\family sans 
+Matematikako panela
+\family default 
+ leihoko 
+\family sans 
+Matrizea
+\family default 
+ botoia.
+ Izen bereko elkarrizketa-koadroa agertuko da, bi barra higikorrez osatua
+ dago, matrizeko errenkada eta zutabe kopuruak zehazteko aukera eskainiz.
+ Aukeratu 2 errenkada eta 3 zutabe, eta klikatu 
+\family sans 
+Aplikatu
+\family default 
+ edo 
+\family sans 
+Ados
+\family default 
+.
+ 
+\layout Standard
+
+LyX-ek 
+\begin_inset Formula $2\times3$
+\end_inset 
+
+-ko matrize batean 6 txertatze-gune jarriko ditu.
+ Ohitura denez, txertatze-gune bakoitzean edozein adierazpen matematiko
+ sar dezakezu: erroketa bat, beste azpimatrizea, eta abar.
+ Beraietariko bakoitzean matematika ekuazio-mota ezberdinak ezarri diezazkiokezu.
+ Nahi izanez gero, txertatze-gune bat edo beste hutsik utz dezakezu.
+\layout Standard
+
+Matrize bateko zutabeetan zehar mugitzeko 
+\family sans 
+Tabuladorea
+\family default 
+ erabil daiteke.
+ Beste aukera bat da teklatuko geziak erabiltzea: gune-amaieran 
+\family sans 
+Eskubira
+\family default 
+ sakatuz kurtsorea hurrengora bidaliko du, 
+\family sans 
+Behera
+\family default 
+ geziarekin azpiko errenkadara, eta abar.
+\layout Standard
+
+Bat-batean errenkada edo zutabe gehiago behar badituzu, erabili 
+\family sans 
+\bar under 
+E
+\bar default 
+ditatu\SpecialChar \menuseparator
+
+\bar under 
+M
+\bar default 
+atematika
+\family default 
+ menuan
+\family sans 
+ Gehitu\SpecialChar ~
+errenkada
+\family default 
+ eta 
+\family sans 
+Gehitu\SpecialChar ~
+zutabea
+\family default 
+.
+ Uneko kokapenaren ondoren gehituko ditu.
+ Gehiegi direla? Erabili menu berdineko 
+\family sans 
+Ezabatu\SpecialChar ~
+errenkada
+\family default 
+ eta 
+\family sans 
+Ezabatu\SpecialChar ~
+zutabea
+\family default 
+ aukerak.
+\layout Standard
+
+Ikus 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+ zutabe bakoitza lerrokatzen edo matrize osoaren kokapen bertikala nola
+ aldatzen den ikasteko.
+ Jabetu zaitez zeregin bakoitzarentzat tresna bat dagoela; testua daukan
+ taula bat idazteko, erabili LyX-en taula-euskarri harrigarria, taulak idazteko
+ ez da komeni matrizeak erabiltzea.
+\layout Subsection
+
+Adierazpen-era
+\layout Standard
+
+Orain arte idatzi ditugun ekuazioak, inguratzen zituzten testuaren lerro
+ berdinean zeuden, lerroko edo barneko ekuazioak bezala ere ezagutzen dira.
+ Ekuazio labur eta soilentzat ongi doa, baina gauza handiagoentzat, edo
+ testutik urruntzea nahi badituzu, adierazpen eran idatzi beharko dira.
+ Gainera, adierazpen erako ekuazioak etiketatu eta zenbatuak izan daiteke,
+ eta lerro anitzetako ekuazioak adierazpen eran egon behar dute (ikus 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+).
+ Gainera hainbat lerrotako ekuazioak adierazpen-eran egon behar dute.
+\layout Standard
+
+Klikatu 
+\family sans 
+Matematikako\SpecialChar ~
+panela
+\family default 
+ leihoko 
+\family sans 
+Adierazpen\SpecialChar ~
+era
+\family default 
+ botoia, laukitxo urdin baten gainean eta azpian testu-marra bikotea marraztuta
+ duen irudia dauka.
+ LyX-ek lerro berri batean, eta erdialdean zentratuta, txertatze-gune bat
+ jartzen du.
+ Orain idatzi ekuazio bat eta exekutatu LaTeX bere itxura ikusteko.
+ 
+\family sans 
+Adierazpen\SpecialChar ~
+era
+\family default 
+ botoia era batetik bestera txandakatzeko erabiltzen da: adierazpen eratik
+ barneko erara aldatzeko, edo alderantziz.
+ Adierazpen erak barneko eratik bereizten dituen zenbait ezaugarri ditu:
+\layout Itemize
+
+Letra-tamaina lehenetsia handiagoa da, 
+\begin_inset Formula $\sum$
+\end_inset 
+
+ eta 
+\begin_inset Formula $\int$
+\end_inset 
+
+ bezalako ikur gutxi batzuentzako.
+\layout Itemize
+
+Batura eta limiteetan (integraletan ez) goi-indizeak eta azpindizeak ikurren
+ azpira gehiago hurbiltzen dira alboetara baino.
+\layout Itemize
+
+Testua zentratuta dago.
+\layout Standard
+
+Ezberdintasun hauek alde batera utziz, barneko eta adierazpen erako ekuazioak
+ oso antzekoak dira.
+\layout Standard
+
+Azken ohar bat adierazpen era konposatzeari buruz: argi ibili ekuazioa paragrafo
+ berri batean edo ez idazten duzunean.
+ Ekuazioa sententzi edo paragrafo baten erdian idazten baduzu, ez sakatu
+ lerro-itzulera.
+ Hori eginez gero, ekuazio osteko testua paragrafo berri batean hasiko baita.
+ Ondorioz, testu hau koskatuko da, eta litekeena da hori nahi ez izatea.
+\layout Description
+
+Ariketa: jarri 
+\family typewriter 
+eu_adibide_gordina.lyx
+\family default 
+ fitxategiko ekuazio batzuk adierazpen eran, eta ikusi bestelako konposaketa
+ lantzen den.
+\layout Description
+
+Ariketa: atal honetan ikasitako zenbait tresnarekin, Hurrengo ekuazioa bezalako
+ bat idazteko gai izan beharko zenuke
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+Bide zailenetik aritu ondoren, zergatik ez zara 
+\family sans 
+\bar under 
+T
+\bar default 
+xertatu\SpecialChar \menuseparator
+Matematika\SpecialChar \menuseparator
+
+\bar under 
+K
+\bar default 
+asu\SpecialChar ~
+ingurunea
+\family default 
+ menuarekin saiatzen?
+\end_inset 
+
+:
+\layout Standard
+
+
+\begin_inset Formula \[
+f(x)=\left\{ \begin{array}{cc}
+\log_{8}x & x>0\\
+0 & x=0\\
+\sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0\end{array}\right.\]
+
+\end_inset 
+
+
+\layout Section
+
+Matematikari buruzko gauza gehiago
+\layout Standard
+
+Matematika-eran gauza gehiago egin daiteke.
+ Oraindaino oinarrizkoa bakarrik ezagutu duzu, irakurri 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+ trikimailu hauek nola egiten diren jakiteko:
+\layout Itemize
+
+Ekuazioak etiketatu eta zenbatzea.
+\layout Itemize
+
+Lerro anitzeko ekuazioak.
+\layout Itemize
+
+Letra-tipoak aldatzea, adibidez, adierazpen bat letra lodiz idaztea.
+\layout Itemize
+
+Ekuazio bateko letra-tipoa eta barruko tartea zehaztea (ez zaitez kezkatu
+ honelakoengatik amaierako ziriborroa arte).
+\layout Itemize
+
+Makroak idaztea.
+ Oso baliagarriak dira, dokumentu baten hasieran definitu eta dokumentuan
+ zehar erabili ahal izango dituzu.
+ Makro baten definizioa aldatuz, dokumentuko markoari dagokion erreferentzia
+ guztiak eguneratuko dira.
+ Makroek argumentuak jaso ditzakete.
+\layout Itemize
+
+Denboraz larri gabiltzanez, tutoretza honetan azaldu ezin dizugun beste
+ gauza pila bat.
+\layout Chapter
+
+Hainbat
+\layout Section
+
+LyX-en beste ezaugarri garrantzitsu batzuk
+\layout Standard
+
+Ez ditugu aipatu LyX-ekin erabil daitezken komando guztiak, eta ez daukagu
+ asmorik.
+ Informazio gehiagorako irakur ezazu 
+\emph on 
+Erabiltzailearen Gida
+\emph default 
+.
+ LyX-ek egin ditzakeen zenbait gauza garrantzitsu bakarrik aipatuko ditugu...
+\layout Itemize
+
+LyX-ek taulentzako WYSIWYG euskarria dauka.
+ Taula bat lortzeko, erabili 
+\family sans 
+\bar under 
+T
+\bar default 
+xertatu\SpecialChar \menuseparator
+
+\bar under 
+T
+\bar default 
+aula
+\family default 
+ menua.
+ Klikatu taulan saguaren eskuineko botoiarekin eta 
+\family sans 
+Editatu\SpecialChar ~
+taula
+\family default 
+ elkarrizketa-koadroa irekiko da, eta taula editatzeko aukera izango duzula.
+ 
+\layout Itemize
+
+LyX-ek hainbat formatudun irudiak (JPEG eta bestelako bitmap formatuak,
+ PostScript® eta LaTeX gordina bezalakoak barne) txertatzeko euskarria dauka.
+ Asmatu duzu: 
+\family sans 
+\bar under 
+T
+\bar default 
+xertatu\SpecialChar \menuseparator
+
+\bar under 
+I
+\bar default 
+rudia
+\family default 
+.
+ Ondoren, aukeratu txertatu, biratu edo eskalatu nahi duzun irudi-fitxategia.
+ 
+\layout Itemize
+
+Bai taulek bai irudiek epigrafeak eduki ditzakete, eta LyX-ek automatikoki
+ irudi edota taulen zerrenda sortuko du.
+\layout Itemize
+
+Bertsio-kontrolaren euskarria dauka, RCS erabiliz (exekutatu 
+\family typewriter 
+man rcsintro
+\family default 
+ komandoa xehetasun gehiagorako).
+\layout Itemize
+
+LyX oso konfigurakorra da.
+ Gauza guztiak, LyX leihoen itxuratik hasita inprimatzeko irteera emaitza
+ arte, hainbat eratan konfigura daitezke.
+ Konfigurazio gehiena 
+\family sans 
+\bar under 
+E
+\bar default 
+ditatu
+\family default 
+\SpecialChar \menuseparator
+
+\family sans 
+\bar under 
+H
+\bar default 
+obespenak
+\family default 
+ menutik lantzen da.
+ Argitasun gehiagorako, kontsultatu 
+\family sans 
+\bar under 
+L
+\bar default 
+aguntza\SpecialChar \menuseparator
+
+\bar under 
+P
+\bar default 
+ertsonalizazioa
+\family default 
+.
+\layout Itemize
+
+LyX bost kontinenteetako programatzaile-talde baten eskutik garatzen ari
+ da.
+ Horregatik, hainbat testu- prozesadorerekin konparatuz, ingeles hizkuntzak
+ ez direnen euskarri hobeagoa dauka (alemanera, txekiera, grekera, euskara,
+ italiera, errusiera...).
+ Eskuinetik ezkerrera idazten diren hizkuntza batzuk ere onartzen ditu,
+ arabiera edo hebreera adibidez.
+ Dokumentuak beste hizkuntza batzuetan idatz ditzakezu; LyX-ek menuak eta
+ errore-mezuak beste hizkuntzetan erakuts ditzan ere konfigura dezakezu.
+\layout Itemize
+
+LyX-eko menuek laster- k erabiltzen dituzte.
+ Hots, 
+\family sans 
+\bar under 
+F
+\bar default 
+itxategia\SpecialChar \menuseparator
+
+\bar under 
+I
+\bar default 
+reki
+\family default 
+ menua hautatzeko 
+\family sans 
+M-F
+\family default 
+ idatzi eta ondoren 
+\family sans 
+I
+\family default 
+ sakatu, edo menuaren alboan agertzen den lotura erabili (
+\family sans 
+C-O
+\family default 
+ lehenetsita dago).
+ laster-teklak ere konfiguragarriak dira.
+ Honi buruzko argitasunak 
+\family sans 
+\bar under 
+L
+\bar default 
+aguntza\SpecialChar \menuseparator
+
+\bar under 
+P
+\bar default 
+ertsonalizazioa
+\family default 
+ menuan aurkituko dituzu.
+\layout Itemize
+
+LyX-ek LaTeX formatuko dokumentuak irakur ditzake.
+ Ikus 
+\begin_inset LatexCommand \ref{atal:relyx}
+
+\end_inset 
+
+ atala.
+\layout Itemize
+
+Zuzentzaile ortografiko eta tesaurus-a erabilgarri daude.
+\layout Itemize
+
+LyX leiho nagusiaren behealdean dagoen testu-kutxari bufertxoa deitzen zaio
+ (emacs programak ere pareko ezaugarria dauka).
+ Erabilgarritasun handiko ezarpen zabala lantzeko aukera eskaintzen dizu,
+ zure dokumentua zatitzeko gaitasuna barne dela.
+ Beste hitzetan, hobe duzu bufertxoan ezer ez idaztea zertan ari zaren jakin
+ gabe.
+\layout Section
+
+LyX LaTeX-eko erabiltzaileentzat
+\layout Standard
+
+
+\begin_inset LatexCommand \label{atal:latexerabiltzaileak}
+
+\end_inset 
+
+LaTeX-i buruz ezer ez badakizu, atal hau irakurri beharrik ez daukazu.
+ Baliteke LaTeX buruzko zerbait ikasi nahi izatea, eta ondorioz atal hau
+ irakurtzea.
+ 
+\layout Standard
+
+LyX erabiltzen hasten den askori LaTeX ezaguna egingo zaio.
+ Horietariko bat bazara, galde dezakezu ea LyX-ek LaTeX-ekin egin daitekeen
+ gauza guztiak egiteko ahalmena al daukan.
+ Erantzun labur bat da nola edo hala LyX hurbiltzen dela LaTeX-ekin egin
+ daitekeen gauzetara, eta LaTeX formatuko dokumentu baten zati gehiena idaztea
+ errazten duela.
+ Gaur egun, LaTeX-eko idazki zaharrak bihurtzeko arazoak daude, eta beste
+ zenbait gauzetan, baina etorriko diren bertsio garatuagoetan hau konponduko
+ dute.
+\layout Standard
+
+Hau tutoretza bat bakarrik denez, LyX-eko erabiltzaile berriek interesa
+ eduki dezaketen zenbait gauza aipatuko ditugu.
+ Tutoretza hori labur gordetzearren, azalpen xumeak izango dira.
+ 
+\emph on 
+Ezaugarri hedatuak
+\emph default 
+ eskuliburuak, 
+\emph on 
+LaTeX adituen sekretuak
+\emph default 
+ kapitulupean, LyX eta LaTeX arteko ezberdintasunei, eta LyX-en LaTeX-eko
+ zenbait trikimailu nola erabili buruzko informazio asko dauka.
+\layout Subsection
+
+TeX era
+\layout Standard
+
+TeX eran idatzitako guztia pantailan gorriz agertuko da, eta zuzenean LaTeX-i
+ bidaliko zaio.
+ TeX komandoak LyX-en erabil ditzakezu 
+\family sans 
+Txertatu\SpecialChar \menuseparator
+
+\bar under 
+T
+\bar default 
+ex
+\family default 
+ menua aukeratuz.
+ Honek testu-kutxa sortzen du eta barrukoa zuzenean LaTeX-i igorriko zaio.
+\layout Standard
+
+TeX-ek matematika-era zertxobait ezberdin erabiltzen du.
+ Sartu TeX eran alderantzizko barra, ("
+\backslash 
+") bat idatziz.
+ Inprimatzerakoan ez da agertuko, ondoren idazten duzun guztia gorriz egongo
+ da.
+ Sakatu TeX eratik ateratzeko zuriunea edo edozein karaktere ez-alfabetiko
+ (zenbaki, azpimarra, berretzaile-ikurra edo parentesi gisakoak).
+ TeX eratik ateratzen zarenean LyX-ek badaki zein TeX komando idatzi duzun
+ eta WYSIWYM-era bihurtuko du.
+ Ekuazio batean 
+\family typewriter 
+
+\backslash 
+gamma
+\family default 
+ idatzi eta ondoren zuriunea sakatzen baduzu LyX-ek "gamma" gorria 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\begin_inset Formula $\gamma$
+\end_inset 
+
+
+\begin_inset Quotes erd
+\end_inset 
+
+ urdin bihurtuko du.
+ Hau oso konplexuak ez diren makro guztientzako balio du (kontutan hartu
+ 
+\backslash 
+sin bezalako funtzioak gorriz jarraituko dutela, bere WYSIWYM itxura baita).
+ 
+\family sans 
+Matematikako\SpecialChar ~
+panela
+\family default 
+ erabiltzea baino azkarragoa izan daiteke, batipat LaTeX-eko erabiltzaile
+ adituentzako.
+\layout Standard
+
+Bitxikeri bat, TeX eran kortxete bat idazten baduzu, hasiera eta amaierako
+ kortxeteak gorriz txertatuko dira, TeX eratik aterako zaitu eta kurtsorea
+ kortxete artean kokatuko du.
+ LyX-ek ezagutzen ez dituen eta argumentuak jasotzen dituzten komandoak
+ idazteko komenigarria izaten da.
+\layout Standard
+
+LyX-ek ezin ditu egin LaTeX-ekin egiten diren gauza guztiak (oraindik ez?).
+ Zenbait landutako funtzio ez dira erabat onartzen, beste batzuk erabilgarriak
+ dira baina ez dira WYSIWYM.
+ TeX erak erabiltzaileari LaTeX-en moldagarritasun osoa eskaintzeaz batera
+ LyX-eko ezaugarri erabilgarriekin gozatu (WYSIWYM matematikak, taulak eta
+ edizioa bezalakoak) dezake.
+ LyX-ek ezin izango ditu LaTeX-eko pakete guztiak onartu.
+ 
+\layout Standard
+
+Hitzaurrean 
+\family typewriter 
+
+\backslash 
+usepackage{pakete_izena}
+\family default 
+ idatziz (ikus 
+\begin_inset LatexCommand \ref{atal:hitzaurrea}
+
+\end_inset 
+
+\SpecialChar ~
+atala), nahi dituzun pakete guztiak erabiltzeko gaitasuna izango duzu (kontutan
+ izan pakete hauek WYSIWYM euskarria ez dutela izango).
+\layout Subsection
+
+LaTeX dokumentuak inportatzea: reLyX
+\layout Standard
+
+
+\begin_inset LatexCommand \label{atal:relyx}
+
+\end_inset 
+
+LaTeX fitxategi bat inportatzeko, erabili 
+\family sans 
+\bar under 
+F
+\bar default 
+itxategia\SpecialChar \menuseparator
+
+\bar under 
+I
+\bar default 
+nportatu\SpecialChar \menuseparator
+LaTeX
+\family default 
+ komandoa.
+ Horrek 
+\family typewriter 
+reLyX
+\family default 
+ izeneko Perl programa bati deituko dio: 
+\family typewriter 
+fitx.tex
+\family default 
+ fitxategi batetik 
+\family typewriter 
+fitx.lyx
+\family default 
+ bat sortu eta irekiko du.
+ Bihurketak ez badu funtzionatzen, komando lerrotik 
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+LyX instalatzen denean 
+\family typewriter 
+lyx
+\family default 
+ programa exekutagarria dagoen direktoriopean 
+\family typewriter 
+reLyX
+\family default 
+ izeneko programa kopiatzen du (adbz.
+ 
+\family typewriter 
+/usr/local/bin/relyx
+\family default 
+).
+ 
+\family typewriter 
+reLyX
+\family default 
+ abiatzeko Perl behar da ( dokumentu hau idaztean 5.002.
+ bertsioa)
+\end_inset 
+
+ 
+\family typewriter 
+reLyX
+\family default 
+ exekutatzen saia zaitez, argumentu konplexuagoak erabiliz.
+\layout Standard
+
+
+\family typewriter 
+reLyX
+\family default 
+ programak LaTeX-eko legalak diren komando gehienak bihurtuko ditu, baina
+ ez guztiak.
+ Ulergaitz egiten zaizkionak TeX eran utziko ditu, beraz bihurtu ondoren
+ gorri koloredun testuak bilatu eta eskuz konpondu beharko dituzu.
+ 
+\layout Standard
+
+
+\family typewriter 
+reLyX
+\family default 
+-ek bere eskuliburua dauka.
+ Irakurri jakiteko LaTeX-eko zein komando eta ingurune ez dituen onartzen,
+ dauden erroreak (nola saihestu), eta aukera ezberdinak nola erabiltzen
+ diren.
+\layout Subsection
+
+LyX dokumentua LaTeX-era bihurtu
+\layout Standard
+
+LyX dokumentu bat LaTeX formatura bihurtzea nahi izango duzu.
+ Adibidez, lankide edo eginkide batek LyX programa ez eduki arren dokumentuareki
+n lan egin behar du.
+ Hori egitea huskeria bat da LyX-entzako.
+ Hautatu 
+\family sans 
+\bar under 
+F
+\bar default 
+itxategia\SpecialChar \menuseparator
+
+\bar under 
+E
+\bar default 
+sportatu\SpecialChar \menuseparator
+LaTeX
+\family default 
+.
+ Horrek editatzen ari zaren 
+\family typewriter 
+fitxa_izena.lyx
+\family default 
+ fitxategia beste fitxategi honetan bihurtuko du: 
+\family typewriter 
+fitxa_izena.tex
+\family default 
+.
+ Azken finean, LyX-ek dokumentuak bistaratu edo inprimatzerakoan beti LaTeX
+ behin-behineko fitxategiak sortzen dituenez, LaTeX sortzen trebea da.
+\layout Subsection
+
+LaTeX hitzaurrea
+\layout Subsubsection
+
+Dokumentu-klasea
+\layout Standard
+
+
+\family sans 
+\bar under 
+D
+\bar default 
+iseinua\SpecialChar \menuseparator
+
+\bar under 
+D
+\bar default 
+okumentua
+\family default 
+ elkarrizketa-koadroak
+\family typewriter 
+ 
+\backslash 
+documentclass
+\family default 
+ komandoan sar ditzakezun hainbat aukeren gaineko ardura hartzen du.
+ Hemen aldatu klasea, letra-tipoa eta paper-tamaina.
+ Jarri 
+\family typewriter 
+
+\backslash 
+documentclass
+\family default 
+ bidaliko zaizkion aukera-osagarriak 
+\family sans 
+LaTeX\SpecialChar ~
+hitzaurrea
+\family default 
+ arean.
+\layout Subsubsection
+
+Hitzaurreko beste alderdi batzuk
+\layout Standard
+
+
+\begin_inset LatexCommand \label{atal:hitzaurrea}
+
+\end_inset 
+
+Hitzaurrean komando bereziak jarri behar badituzu LaTeX fitxategi baterako,
+ zuzenean LyX dokumentuan idatz ditzakezu.
+ Horretarako, 
+\family sans 
+Diseinua\SpecialChar \menuseparator
+Hitzaurrea
+\family default 
+
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+
+\emph on 
+Itzultzailearen oharra
+\emph default 
+: litekeena da LyX bertsio berrietan bide hau horrela ezin lantzea.
+ Horretarako 
+\family sans 
+Diseinua
+\family default 
+\SpecialChar \menuseparator
+
+\family sans 
+Dokumentua
+\family default 
+ elkarrizketa-koadroa ireki eta bertan Hitzaurrea fitxan idatzi behar da.
+\end_inset 
+
+ idatzi hautatu eta elkarrizketa-koadroan.
+ Hor idazten duzun dena zuzenean LaTeX-i bidaliko zaio.
+\layout Subsection
+
+BibTeX
+\layout Standard
+
+LyX-ek BibTeX euskarria du, honekin erreferentzia bibliografikoen datu-baseak
+ sortu eta hainbat dokumentutan erabiltzeko aukera izango duzu.
+ Hautatu 
+\family sans 
+\bar under 
+T
+\bar default 
+xertatu\SpecialChar \menuseparator
+Zerrendak\SpecialChar ~
+eta\SpecialChar ~
+Aurk.\SpecialChar \menuseparator
+
+\bar under 
+B
+\bar default 
+ibTeX\SpecialChar ~
+erreferentzia
+\family default 
+ menua bib motako fitxategi bat gehitzeko.
+ Alde batetik, 
+\family sans 
+BibTeX
+\family default 
+ izeneko elkarrizketa-koadro bat agerraraziko du.
+ Bestalde, dokumentuan "
+\family sans 
+BibTeX-ek sortutako erreferentzia
+\family default 
+k" izeneko botoia txertatuko du.
+ Elkarrizketa-koadroa ixten baduzu, sortu berri den botoian klikatuz berriro
+ irekiko zaizu.
+ 
+\family sans 
+BibTeX
+\family default 
+ leihoan 
+\family sans 
+Datu-baseak
+\family default 
+ izeneko eremuan 
+\family typewriter 
+
+\backslash 
+bibliography{}
+\family default 
+ komandoko
+\begin_inset Foot
+collapsed false
+
+\layout Standard
+
+LaTeX arruntean bezala, bereiztu bi bibliografia edo gehiago komaz, eta
+ zuriunerik gabe.
+\end_inset 
+
+ giltzetan idatziko zenuena idatzi.
+ Estiloa eremuan, berriz, idatzi 
+\family typewriter 
+
+\backslash 
+bibliographystyle{}
+\family default 
+ komandoko giltzetan idatziko zenuena.
+\layout Standard
+
+Hori egindakoan, edozein bibliografia-sarreraren aipamenak egin ditzakezu
+ Txertatu\SpecialChar \menuseparator
+Zitazio\SpecialChar ~
+erreferentzia menua erabiliz (ikus 
+\begin_inset LatexCommand \ref{atal:bibliografiak}
+
+\end_inset 
+
+\SpecialChar ~
+atala).
+ LyX arduratuko da 
+\family sans 
+BibTeX
+\family default 
+ exekutatzeaz.
+ Zitazioa elkarrizketa-koadroko kutxan zure bib fitxategiko erreferentzia
+ guztiak zerrendatuko dira.
+\layout Section
+
+Erroreak!
+\layout Standard
+
+Batzuetan dokumentu bat LaTeX formatura bihurtzerakoan erroreak gerta daiteke,
+ LyX-ek edo LaTeX-ek ulertzen ez dituzten gauzengatik.
+ Hori gertatzen bada, LyX-ek errore-kutxak ("errorea" hitzarekin) sortzen
+ ditu.
+ Kutxa horietan klikatuta, errorearen zergatia bistaratuko du.
+ LyX-ek LaTeX-en sortutako erroreak gehituko ditu.
+ Ohartu zaitez errore horien kokapenak askotan ez dutela garrantzirik izaten.
+\the_end

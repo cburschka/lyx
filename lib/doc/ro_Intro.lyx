@@ -1,0 +1,844 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass article
+\language romanian
+\inputencoding latin2
+\fontscheme default
+\graphics none
+\paperfontsize 12
+\spacing single 
+\papersize letterpaper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 0
+\papersides 1
+\paperpagestyle plain
+
+\layout Title
+
+Introducere în LyX sau cum sã utilizaþi acest document
+\layout Author
+
+de John Weiss ºi echipa LyX
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+traducere Gabriel Cristache <cristache@adcomm.pub.ro>
+\end_inset 
+
+
+\layout Section
+
+Navigarea prin documentaþie
+\layout Standard
+
+Bine aþi venit în lumea LyX !
+\layout Standard
+
+Pentru a uºura rãspunsul la întrebãrile dumneavoastrã ºi pentru a descrie
+ caracteristicile LyX-ului, documentaþia a fost împãrþitã în mai multe 
+ fiºiere.
+ Fiecare fiºier are rostul sãu, aºa cum se va putea observa din descrierea
+ care urmeazã.
+ Înainte de a citi oricare dintre aceste fiºiere ar trebui, totuºi, sã-l
+  citiþi mai întâi pe acesta, deoarece conþine foarte multã informaþie utilã
+ ºi pentru cã în acest mod puteþi economisi timp.
+ 
+\layout Standard
+\added_space_top bigskip \align center 
+ATENÞIE!!!!!ATENÞIE!!!!!!ATENÞIE!!!!!
+\layout Standard
+
+Documentaþia, ca un întreg, nu este completã în acest moment! Ca ºi programul,
+ ea poate fi consideratã în faza beta.
+ Puteþi fi siguri cã totul va fi complet odatã cu versiunea 1.0.
+\layout Standard
+
+Dacã în lectura acestui manual întâlniþi neclaritãþi sau vi se pare ceva
+ confuz, puteþi contacta echipa LyX: 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+LyX@via.ecp.fr
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Vã rugãm sã puneþi cuvintele: 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+LyX Docs
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ undeva în subiectul mesajului.
+ Pentru eventuale sugestii privind traducerea, puteþi contacta: 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family typewriter 
+cristache@ADComm.pub.ro
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Mulþumim!
+\layout Subsection
+
+Formatul manualelor
+\layout Standard
+
+Unii dintre cititorii acestui articol vor tipãri aceastã documentaþie.
+ Alþii o vor citi 
+\emph on 
+online
+\emph toggle 
+, cu LyX-ul, ca pe un fiºier.
+ Pentru cei care citesc documentaþia 
+\emph on 
+online
+\emph toggle 
+, existã câteva diferenþe faþã de versiunea tipãritã.
+ În primul rând, titlul este pur ºi simplu la începutul documentului, nu
+  formatat pe o paginã separatã ca în unele dintre versiunile tipãrite.
+ Cuprinsul ºi notele de subsol nu sunt vizibile.
+ Pentru a-l afiºa selectaþi
+\family sans 
+ Structura documentului
+\family default 
+ din 
+\family sans 
+meniul
+\family default 
+ 
+\family sans 
+Editare
+\family default 
+.
+ Pentru a deschide o notã de subsol, care aratã ca aceasta,
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Salut!
+\end_inset 
+
+ apãsaþi pe ea cu butonul stânga al mouse-ului.
+\layout Standard
+
+Acum, dupa ce am clarificat câteva dintre diferenþele dintre versiunea tipãritã
+ ºi cea 
+\emph on 
+online
+\emph toggle 
+, putem sã aruncãm o privire asupra formatului  acestui document.
+ Puteþi remarca, uneori, diferite fonturi:
+\layout Itemize
+
+
+\emph on 
+Stilul evidenþiat 
+\emph default 
+este folosit pentru accentuãri generale, argumente generice, titluri de
+ cãrþi, nume de secþiuni ale manualelor ºi note din partea autorilor.
+\layout Itemize
+
+
+\family typewriter 
+Maºinã de scris
+\family default 
+ este folosit pentru nume de programe ºi de fiºiere, cod LaTeX ºi pentru
+ cod sursã ºi funcþii LyX.
+\layout Itemize
+
+
+\family sans 
+Sans Serif
+\family default 
+ este utilizat pentru meniu, butoane, nume de meniuri
+\emph on 
+ popup
+\emph toggle 
+ ºi nume ale  tastelor.
+\layout Itemize
+
+
+\noun on 
+Stilul substantiv
+\noun default 
+ este utilizat pentru nume de persoane.
+\layout Standard
+
+Pentru a afla diferitele asocieri dintre taste ºi comenzi ar trebui sã citiþi
+ secþiunea 
+\emph on 
+Maparea
+\emph toggle 
+ 
+\emph on 
+tastelor 
+\emph toggle 
+din 
+\emph default 
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\emph on 
+Manualul de referinþã
+\begin_inset Quotes erd
+\end_inset 
+
+
+\emph default 
+ [fiºierul 
+\family typewriter 
+Reference.
+\family default 
+LyX].
+ Când vom face referire la taste, vom folosi urmãtoarele convenþii:
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+C-
+\family default 
+
+\begin_inset Quotes eld
+\end_inset 
+
+ indicã tasta
+\family sans 
+ Control.
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+S-
+\family default 
+
+\begin_inset Quotes eld
+\end_inset 
+
+indicã tasta 
+\family sans 
+Shift.
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+M-
+\family default 
+
+\begin_inset Quotes eld
+\end_inset 
+
+ indicã tasta 
+\family sans 
+Meta
+\family default 
+, care pentru unele tastaturi este reprezentatã de tasta 
+\family sans 
+Alt
+\family default 
+.
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+F1
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ \SpecialChar \ldots{}
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+F12
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ sunt tastele funcþie.
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Esc
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ este tasta Escape.
+\layout Itemize
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Left
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Right
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Up
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Down
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+: reprezintã tastele cursor.
+\layout Itemize
+
+
+\family sans 
+
+\begin_inset Quotes eld
+\end_inset 
+
+Insert
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Delete
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Home
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+End
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+PageUp
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+PageDown
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+: acestea sunt cele 6 taste ce apar deasupra tastelor curente la majoritatea
+ tastaturilor PC.
+  
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+PageUp
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ ºi 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+PageDown
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+  sunt denumite 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Prior
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ ºi 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\family sans 
+Next
+\family default 
+
+\begin_inset Quotes erd
+\end_inset 
+
+ la anumite tastaturi.
+\layout Itemize
+
+
+\family sans 
+Return
+\family default 
+ ºi 
+\family sans 
+Enter
+\family default 
+ se referã amândouã la aceiaºi tastã.
+ Unele tastaturi eticheteazã tasta
+\family sans 
+ Return
+\family default 
+ ca 
+\begin_inset Quotes eld
+\end_inset 
+
+Return,
+\begin_inset Quotes erd
+\end_inset 
+
+ altele ca 
+\begin_inset Quotes eld
+\end_inset 
+
+Enter,
+\begin_inset Quotes erd
+\end_inset 
+
+ pe când altele le au pe amîndouã.
+ LyX le trateazã pe toate ca fiind aceiaºi tastã, astfel încît le vom putea
+ utiliza pe oricare din ele.
+\layout Standard
+
+Veþi vedea texte ca 
+\begin_inset Quotes eld
+\end_inset 
+
+[Vezi
+\emph on 
+
+\begin_inset Quotes els
+\end_inset 
+
+Manualul de referinþã
+\begin_inset Quotes ers
+\end_inset 
+
+
+\emph default 
+]
+\begin_inset Quotes erd
+\end_inset 
+
+ din când în când.
+ Am listat mapãrile posibile de taste pentru o funcþie în secþiunea corespunzãto
+are din 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\emph on 
+Manualul de referinþã
+\emph default 
+,
+\begin_inset Quotes erd
+\end_inset 
+
+ deci cãutaþi ºi acolo.
+\layout Section
+
+Manualele
+\layout Standard
+
+Urmãtoarea listã descrie conþinutul fiecãrui fiºier din documentaþie:
+\layout Description
+
+
+\emph on 
+Introducere
+\emph toggle 
+ 
+\emph default 
+Acest fiºier.
+\layout Description
+
+
+\emph on 
+Tutorial
+\emph default 
+ Dacã sunteþi nou în LyX, ºi nu aþi utilizat niciodatã LaTeX înainte, atunci
+ ar trebui sã începeþi cu acest fiºier.
+ 
+\layout Description
+
+
+\emph on 
+Cum\SpecialChar ~
+sã\SpecialChar ~
+fac
+\emph toggle 
+ 
+\emph default 
+Acesta este un fiºier cu cele mai frecvente întrebãri referitoare la LyX
+ [
+\emph on 
+sau va fi, la timpul potrivit
+\emph default 
+].
+ În tot ceea ce înseamnã procesare de text sunt câteva operaþii comune cu
+ care aproape toþi utilizatorii sunt familiarizaþi.
+ Nu toate acestea sunt valabile însã ºi în LyX, ºi de aceea, nu au nici
+ un sens în LyX sau LaTeX.
+ Acest fiºier încearcã sã explice, prin întrebãri ºi rãspunsuri, care sunt
+  operaþiile echivalente în LyX\SpecialChar \@.
+ De asemenea, tot aici se pot gãsi, din când
+ în când, referinþe la manualul principal.
+\layout Description
+
+
+\emph on 
+Ghidul\SpecialChar ~
+utilizatorului
+\emph toggle 
+ 
+\emph default 
+Aceasta este o documentaþie primarã.
+ Este de aºteptat ca aceastã documentaþie sã acopere
+\emph on 
+ 
+\emph toggle 
+elementele
+\emph default 
+ de bazã ce privesc operarea în LyX ºi caracteristile lui.
+ Manualul principal presupune cã aveþi cunostinþe de LaTeX sau cã aþi citit
+\emph on 
+ Tutorialul
+\emph default 
+\SpecialChar \@.
+
+\layout Description
+
+
+\emph on 
+Editare\SpecialChar ~
+avansatã
+\emph toggle 
+ 
+\emph default 
+Aceasta este o extensie a 
+\emph on 
+Ghidului utilizatorului
+\emph default 
+.
+ El include informaþii adiþionale privind tehnoredactarea documentelor ºi
+ caracteristici ale editãrilor specializate, printre aceste incluzând ºi
+ câteva trucuri ale specialiºtilor LaTeX.
+\layout Description
+
+
+\emph on 
+Personalizare 
+\emph default 
+O descriere avansatã a caracteristicilor LyX-ului, incluzând informaþii
+ despre cum sã vã personalizaþi întregul comportament al LyX-ului.
+ Aceasta include chestiuni legate de mapãri, internaþionalizãri ºi fiºiere
+ de configurare.
+\layout Description
+
+
+\emph on 
+Manualul\SpecialChar ~
+de\SpecialChar ~
+referinþã
+\emph default 
+  Acesta contine o descriere exhaustivã ºi detaliatã a caracteristicilor
+ LyX-ului, dar fãrã aluziile ºi descrierile ajutãtoare pe care le gãsiþi
+ în
+\emph on 
+ Ghidul utilizatorului
+\emph default 
+\SpecialChar \@.
+
+\layout Description
+
+
+\emph on 
+Erori\SpecialChar ~
+cunoscute
+\emph toggle 
+ 
+\emph default 
+Acest fiºier conþine o listã a erorilor cunoscute în LyX ºi informaþii despre
+ ce trebuie sã faceþi dacã depistaþi o eroare în LyX\SpecialChar \@.
+
+\layout Description
+
+
+\emph on 
+Configuraþia\SpecialChar ~
+LaTeX 
+\emph default 
+Acest fiºier conþine informaþii pe care LyX-ul le-a aflat despre instalarea
+ pe care aþi fãcut-o dumneavoastrã.
+ Verificaþi pentru a afla dacã vã lipseºte ceva ce aþi dori sã aveþi.
+\layout Standard
+
+Aceste fiºiere fac referire unul la celãlalt.
+ De exemplu, 
+\emph on 
+Ghidul utilizatorului
+\emph default 
+ conþine 
+\emph on 
+unele
+\emph default 
+ informaþii despre instalare ºi personalizare, dar face referire la manualul
+ 
+\emph on 
+Personalizare
+\emph default 
+ pentru a oferi mai multe informaþii.
+\layout Standard
+
+Reamintim un lucru foarte important:
+\layout Standard
+\added_space_top 0.51cm \added_space_bottom 0.51cm \align center 
+Dacã nu aþi utilizat LaTeX înainte citiþi
+\emph on 
+ Tutorialul.
+\layout Standard
+
+Altfel, LyX-ul vi se va pãrea bizar ºi greu de utilizat.
+\layout Section
+
+Contribuþii la proiectul de documentare 
+\layout Subsection
+
+Raportarea erorilor
+\layout Standard
+
+Destul de uºor de fãcut.
+ Va trebui sã trimiteþi un mesaj pe Developer's Mailing List sau pe User's
+ Mailing List.
+ Dacã începeþi linia din subiect cu 
+\begin_inset Quotes eld
+\end_inset 
+
+Doc Error
+\begin_inset Quotes erd
+\end_inset 
+
+ sau ceva în genul acesta, ne va ajuta foarte mult sã o gãsim
+\layout Standard
+\added_space_top 1.06cm \added_space_bottom 1.06cm \align center 
+
+\emph on 
+Nu faceþi nici o modificare în aceste manuale fãrã un acord prealabil al
+ autorilor!
+\layout Standard
+
+Orice modificare aleatoare a acestor manuale ar fi fãrã rost pentru cã,
+ oricum, echipa de documentare deþine originalul.
+\layout Subsection
+
+Cum sã începeþie
+\layout Standard
+
+Proiectul de documentare al LyX, ca ºi orice alt proiect LyX, poate fi susþinut!
+ Dacã sunteþi interesat sã contribuiþi la Proiectul de documentare al LyX,
+ va trebui sã urmaþi aceste etape :
+\layout Enumerate
+
+Obþineþi ultimul cod sursã LyX.
+ Dezarhivaþi-l.
+ Veþi gãsi un director în calea principalã numit 
+\family typewriter 
+development
+\family default 
+.
+ În interiorul acestui director este un fiºier numit 
+\family typewriter 
+DocStyle.lyx
+\family default 
+.
+ Citiþi-l.
+ Conþine 
+\emph on 
+stylesheet
+\emph toggle 
+-ul documentaþiei.
+\layout Enumerate
+
+Citiþi 
+\family typewriter 
+DocStyle.lyx
+\family default 
+ din nou.
+\layout Enumerate
+
+Apoi, citiþi, 
+\emph on 
+Ghidul utilizatorului
+\emph default 
+.
+ În întregime.
+\begin_deeper 
+\layout Standard
+
+Scopul acestui exerciþiu este sa vã dãm câteva idei.
+ 
+\emph on 
+Ghidul utilizatorului
+\emph default 
+ este cel mai complet manual din aceastã documentaþie.
+ Va trebui sa vã însuºiþi câteva idei referitoare la modul în care se citeºte
+ sau aratã acest manual.
+\end_deeper 
+\layout Enumerate
+
+În cele din urmã, contactaþi echipa LyX : 
+\begin_deeper 
+\layout Standard
+
+
+\family typewriter 
+LyX@via.ecp.fr
+\end_deeper 
+\layout Standard
+
+Vrem sã fim siguri cã aþi înþeles 
+\emph on 
+stylesheet
+\emph toggle 
+-ul 
+\series bold 
+înainte
+\series default 
+\emph default 
+ de a începe sã scrieþi.
+\the_end

@@ -1,0 +1,623 @@
+2004-06-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Doc files and Changelog included form lyxdoc CVS module.
+
+2004-05-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* eu_*.lyx: update fom dooteo
+
+2004-05-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* de_Extended.lyx: update from Hartmut Haase
+
+2004-04-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* de_Extended.lyx: update from Hartmut Haase
+
+2004-04-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* de_UserGuide.lyx: another update from Hartmut Haase
+
+2004-03-31  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ro_Intro.lyx: small update from Claudiu Costin
+
+2004-03-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* eu_FAQ.lyx: new file from dooteo
+
+	* ro_splash.lyx: removed
+
+2004-02-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* eu_Customization.lyx: new file from dooteo
+
+	* eu_Extended.lyx:
+	* eu_UserGuide.lyx:
+	* eu_Intro.lyx:
+	* eu_Tutorial.lyx: updates from dooteo
+
+2004-02-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Extended.lyx:
+	* de_Extended.lyx:
+	* eu_Extended.lyx:
+	* fr_Extended.lyx:
+	* pl_Extended.lyx: change reference to old ev-en.org wiki to the
+	new wiki.lyx.org version
+
+2004-02-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* eu_Extended.lyx:
+	* eu_UserGuide.lyx: new files from dooteo
+
+	* eu_Intro.lyx:
+	* eu_Tutorial.lyx: updates from dooteo
+
+	* no_Intro.lyx: new file from Helge Hafting
+
+2004-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* de_UserGuide.lyx: turn varioref errors into warnings
+
+2004-01-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* de_UserGuide.lyx: another update from Hartmut Haase
+
+2004-01-07  Vitaly Lipatov  <LAV@VL3143.spb.edu>
+
+	* TOC_top/ru_TOC_top.lyx: new file
+
+2003-09-23  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* de_Customization.lyx:
+	* de_Extended.lyx:
+	* de_UserGuide.lyx: yet more updates from Hartmut Haase
+
+2003-09-22  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* Extended.lyx: document memoir textclass
+
+2003-09-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* de_Intro.lyx:
+	* de_Tutorial.lyx: update from Hartmut Haase
+
+2003-09-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* de_Customization.lyx: update from Hartmut Haase
+
+2003-09-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* de_UserGuide.lyx: update from Hartmut Haase
+
+2003-07-30  Alfredo Braunstein  <abraunst@libero.it>
+
+	* UserGuide.lyx: fix a broken cross-reference
+
+2003-07-21  Christian Ridderström  <chr@home.se>
+
+	* UserGuide.lyx: fix menu entry, document "Keep Space"
+	(bug 996)
+
+2003-07-07  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* Customization.lyx:
+	* Extended.lyx:
+	* UserGuide.lyx: fix various typos
+	* fr_Customization.lyx:
+	* fr_Extended.lyx:
+	* fr_Intro.lyx:
+	* fr_Tutorial.lyx:
+	* fr_UserGuide.lyx: translation update
+
+2003-06-27  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* Extended.lyx: improve docs for agu journals
+
+2003-05-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* fr_Customization.lyx:
+	* fr_Extended.lyx: fix wrong ERT that prevented typesetting
+
+2003-05-07  John Levon  <levon@movementarian.org>
+
+	* UserGuide.lyx:
+	* Tutorial.lyx: menu structure updates
+
+2003-05-07  John Levon  <levon@movementarian.org>
+
+	* FAQ.lyx: menu structure updates
+
+2003-05-01  John Levon  <levon@movementarian.org>
+
+	* Extended.lyx: fix up for new menu structure
+
+2003-05-01  John Levon  <levon@movementarian.org>
+
+	* DocStyle.lyx: minor updates
+
+2003-04-30  John Levon  <levon@movementarian.org>
+
+	* Customization.lyx: update for new menu structure
+
+2003-03-22  John Levon  <levon@movementarian.org>
+
+	* Doc_toc.pl: handle short title insets
+
+	* TOC files: regenerate
+
+2003-03-20  John Levon  <levon@movementarian.org>
+
+	* Extended.lyx: fix preamble menu mention (bug 900)
+
+2003-03-17  John Levon  <levon@movementarian.org>
+
+	* Customisation.lyx: remove the discussion of LaTeX 2.09
+	style files
+
+2003-03-16  John Levon  <levon@movementarian.org>
+
+	* Customisation.lyx: updates. Remove the printer
+	tutorial: most definitely the wrong place to have it.
+	Move LyX server to the end.
+
+2003-03-16  John Levon  <levon@movementarian.org>
+
+	* Extended.lyx: updates and tweaks
+
+2003-03-16  John Levon  <levon@movementarian.org>
+
+	* Intro.lyx: small tweaks
+
+2003-03-16  John Levon  <levon@movementarian.org>
+
+	* Tutorial.lyx: various updates. Remove some math
+	stuff that was basically a duplicate of stuff in the
+	user guide.
+
+2003-03-15  John Levon  <levon@movementarian.org>
+
+	* Reference.lyx: note that it's out of date
+
+2003-03-15  John Levon  <levon@movementarian.org>
+
+	* UserGuide.lyx: some more updates
+
+2003-03-15  John Levon  <levon@movementarian.org>
+
+	* UserGuide.lyx: updates and fixes for chapter 5,
+	also some re-organisation
+
+2003-03-15  John Levon  <levon@movementarian.org>
+
+	* UserGuide.lyx: updates and fixes for chapter 4
+
+2003-03-14  John Levon  <levon@movementarian.org>
+
+	* UserGuide.lyx: updates and fixes for chapter 3
+
+2003-03-13  John Levon  <levon@movementarian.org>
+
+	* UserGuide.lyx: updates and fixes for chapters 1 and 2
+
+2003-03-13  John Levon  <levon@movementarian.org>
+
+	* DocStyle.lyx:
+	* UserGuide.lyx:
+	* Intro.lyx:
+	* fr_Intro.lyx: don't say "et cetera, et cetera"
+
+2003-03-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* UserGuide.lyx: remove mention of iletter class, which has been
+	removed.
+
+2003-02-27  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* fr_Customization.lyx:
+	* fr_Extended.lyx:
+	* fr_FAQ.lyx:
+	* fr_Intro.lyx:
+	* fr_Tutorial.lyx:
+	* fr_UserGuide.lyx: translation update
+
+	* Extended.lyx: minor fixes
+
+2003-02-18  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* Extended.lyx:
+	* de_Extended.lyx: document the KOMA updates and the new
+	scrlttr2 class
+
+	* UserGuide.lyx: finally document Ligature Break Insert.
+
+2003-02-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Customization.lyx: document new textclass entries Float and
+	Counter.
+
+2003-02-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Extended.lyx: many changes suggested by Hartmut Haase.
+
+	* Tutorial.lyx: mention that Section* is different fro, Section,
+	since people seem to make the mistake often.
+
+	* Customization.lyx: begin to document new syntax elements in
+	layout files (DependsOn, TitleLatexType/Command).
+
+2003-02-06  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* fr_Extended.lyx: translation update
+
+2003-02-03  John Levon  <levon@movementarian.org>
+
+	* pl_Extended.lyx: new translation from Tomasz Luczak
+
+2003-01-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* it_UserGuide.lyx: update from Claudio Coco
+
+2003-01-13  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* Extended.lyx: add doc for egs layout
+
+2003-01-10  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* Extended.lyx: add some doc for wrapinset
+
+2003-01-10  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* Extended.lyx: add doc for agu journals
+
+2002-12-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* it_UserGuide.lyx: update from Claudio Coco
+
+2002-12-01  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* fr_Customization.lyx:
+	* fr_Extended.lyx:
+	* fr_FAQ.lyx: translation update
+
+	* Customization.lyx: minor corrections
+
+2002-11-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Reference.lyx: remove section on bindings which has been moved
+	to Customization.lyx already.
+
+	* Customization.lyx: remove use of accent-vector; change syntax of
+	math-insert
+
+2002-11-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* FAQ.lyx: update. I tried to correct some information that was
+	too old, but a lot remains to do. Added book from Yann Collette.
+	Added tip about \date{} from Christian Ridderström.
+
+2002-11-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* ru_Intro.lyx:
+	* ru_Tutorial.lyx: update from Vitaly Lipatov
+
+	* ru_FAQ.lyx: new file
+
+2002-10-23  Gady Kozma  <gadykozma@yahoo.com>
+
+	* he_Intro.lyx: updated
+
+	* he_Tutorial.lyx: new translation
+
+2002-10-21  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* Extended.lyx:
+	* de_Extended.lyx: document new layouts in foils
+
+2002-10-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Extended.lyx: add documentation for ijmpd class (from PAP)
+
+2002-10-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* de_Customization.lyx:
+	* de_FAQ.lyx:
+	* de_Intro.lyx:
+	* de_Tutorial.lyx: update from Pit
+
+	* fr_Customization.lyx:
+	* fr_Extended.lyx:
+	* fr_FAQ.lyx:
+	* fr_Intro.lyx:
+	* fr_Tutorial.lyx:
+	* fr_UserGuide.lyx: update from Adrien Rebollo
+
+2002-09-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* de_UserGuide.lyx:
+	* de_Extended.lyx: updates from Hartmut Haase
+
+2002-09-05  John Levon  <levon@movementarian.org>
+
+	* UserGuide.lyx: many changes suggested by Hartmut Haase,
+	  and some more. LOTS more to do :(
+
+2002-08-23  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* de_UserGuide.lyx: another update from Hartmut Haase
+
+2002-08-22  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* de_UserGuide.lyx: update from Hartmut Haase
+
+	* *.lyx: replace maintainer addresses with lyx-docs mailing list
+	(from Peter Suetterlin)
+
+2002-07-24  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* fr_Customization.lyx:
+	* fr_Extended.lyx:
+	* fr_Tutorial.lyx:
+	* fr_UserGuide.lyx: update
+
+2002-07-17  Helge Hafting  <helgehaf@aitel.hist.no>
+
+	* UserGuide.lyx:
+	* Reference.lyx: document how to use the minibuffer
+
+2002-07-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Customization.lyx: document EndLabelType and EndLabelString;
+	update bindings a bit (more to do)
+
+	* Tutorial.lyx: incorporate changes suggested by Gady Kozma (plus
+	a few random others)
+
+2002-06-16  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* fr_Customization.lyx:
+	* fr_Tutorial.lyx:
+	* fr_UserGuide.lyx: update
+
+2002-05-31  John Levon  <moz@compsoc.man.ac.uk>
+
+	* he_Intro.lyx: from Gady Kozma
+
+2002-05-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Customization.lyx: add description of the defaults.lyx template.
+
+	* Tutorial.lyx: updates here and there. Probably more work is
+	necessary
+
+2002-05-22  Adrian Penisoara <ady@ady.ro>
+
+	* ro_splash.lyx: Romanian splash added
+
+2002-05-02  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* fr_Extended.lyx:
+	* fr_FAQ.lyx:
+	* fr_Tutorial.lyx:
+	* fr_UserGuide.lyx: updating translation
+
+2002-05-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Tutorial.lyx: some typos pointed out by David Green <dgreen@uab.edu>
+
+2002-04-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Extended.lyx: Literate update from Kayvan
+
+2002-04-25  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Doc_toc.pl: try to improve the code that ignores some insets in
+	headings.
+
+	* *TOC.lyx: regenerate
+
+2002-04-24  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* it_Customization.lyx: update to format 220. Juergen did fix the
+	format problems this file has, but it did not typeset due to the
+	'creative' redefinition of accents that the italian babel option
+	does. I therefore removed the occurences of the tie accent (\t)
+	and stand-alone circumflex accent that this file had.
+
+2002-04-23  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* sk_UserGuide.lyx: update to format 220
+
+2002-04-09  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* all files: stupid me. The right file format we want is 220, of
+	course. Made sure everything has format 220. The only additional
+	one I did not touch is it_Customization, which has some (small)
+	conversion problems.
+
+	* fr_BUGS.lyx:
+	* de_BUGS.lyx: removed.
+
+2002-04-08  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* all files: make sure lyxformat is 218. Only sk_UserGuide is left
+	untouched, since it triggers an error (solitary \end_inset) when
+	loading.
+
+2002-03-28  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* fr_Customization.lyx:
+	* fr_Extended.lyx:
+	* fr_Tutorial.lyx:
+	* fr_UserGuide.lyx: updating translation
+
+2002-03-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* ru_Intro.lyx: update from Vitaly Lipatov
+
+2002-03-26  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Customization.lyx: update information on layout files
+
+2002-03-19  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* fr_Customization.lyx:
+	* fr_Extended.lyx:
+	* fr_FAQ.lyx:
+	* fr_Intro.lyx:
+	* fr_UserGuide.lyx: update
+
+2002-03-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TOC.lyx: update again
+
+2002-03-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* UserGuide.lyx: remove LaTeX environment mentions,
+	  update for graphics inset, minor fixes
+
+2002-03-19  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Tutorial.lyx: some minor changes (menus etc.)
+
+2002-03-19  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Extended.lyx: update discussion of LaTeX inserting,
+	  menu fixes, update (and remove) sections on floatflt,
+	  s/popup/dialog/, various other fixes.
+
+2002-03-18  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Intro.lyx: remove outdated stuff about our crash
+	  handler.
+
+	* Customization.lyx: small updates for 1.2.0,
+	  s/popup/dialog/, change some stuff to refer to
+	  Edit->Preferences
+
+2002-03-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Doc_toc.pl: add usage, mention bug.
+
+	* TOC.lyx: update
+
+	* FAQ.lyx: mention XWin32 bug
+
+2002-03-13  John Levon  <moz@compsoc.man.ac.uk>
+
+	* UserGuide.lyx: fix build, remove wrong note
+
+	* TOC.lyx: fix build
+
+	* Reference.lyx: fix build
+
+	* FAQ.lyx: fix references to PDF stuff, add FAQ about
+	  fonts in acroread. Mention gs 6.53
+
+	* Customization.lyx: fix build for 1.2.0
+
+	* DocStyle.lyx: removed mention of ancient versions
+
+2002-03-08  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* Extended.lyx: replace information on ejour2 by svjour
+
+2002-03-08  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* sk_Intro.lyx:
+	* sk_Tutorial.lyx:
+	* ru_Intro.lyx:
+	* ru_Tutorial.lyx: New translations
+
+2002-01-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Intro.lyx: change bugzilla URL
+
+2001-11-23  Panayotis "PAP" Papasotiriou  <papasot@physics.upatras.gr>
+
+	* Extended.lyx: document new kluwer layout.
+
+2001-11-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* it_Customization.lyx: new italian customization guide from Lino
+	Muoio.
+
+2001-10-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BUGS.lyx: remove
+	* Intro.lyx: add details on reporting bugs
+
+2001-10-28  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* fr_BUGS.lyx:
+	* fr_Customization.lyx:
+	* fr_Extended.lyx:
+	* fr_FAQ.lyx:
+	* fr_Intro.lyx:
+	* fr_Tutorial.lyx:
+	* fr_UserGuide.lyx: update, switching to 1.2.0 format
+
+2001-10-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* it_UserGuide.lyx: update from Claudio Coco.
+
+2001-10-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* BUGS.lyx: remove some bugs that have been fixed
+
+2001-09-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* it_UserGuide.lyx: update from Claudio Coco
+
+2001-09-17  Mike Ressler  <mike.ressler@alum.mit.edu>
+
+	* Intro: fixes suggested by list
+
+2001-09-13  Mike Ressler  <mike.ressler@alum.mit.edu>
+
+	* Intro: tried to smooth out introductory comments
+	* Tutorial: changed "popup" to "dialog"
+
+2001-08-02  Mike Ressler  <mike.ressler@alum.mit.edu>
+
+	* Finised reorg (I think).
+	* UserGuide: fix appendix discussion
+
+2001-08-01  Mike Ressler  <mike.ressler@alum.mit.edu>
+
+	* Intro, Tutorial, User Guide: first reorg changes
+
+2001-07-30  Mike Ressler <mike.ressler@alum.mit.edu>
+
+	* UserGuide.lyx, Tutorial.lyx, Customization.lyx: converted to 1.2.0
+
+2001-07-25  Mike Ressler <mike.ressler@alum.mit.edu>
+
+	* BUGS.lyx DocStyle.lyx Extended.lyx FAQ.lyx Intro.lyx Reference.lyx:
+	convert to 1.2.0; having major problems with UG, Custom, and Tutorial
+
+2001-07-24  Mike Ressler <mike.ressler@alum.mit.edu>
+
+	* Tutorial.lyx: fix cross-reference link discussion
+	* UserGuide.lyx: typo fix, fixed editing labels discussion
+	* Customization.lyx: typo fix
+
+2001-07-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Customisation.lyx: document \view_dvi_paper_option
+
+2001-07-19  Mike Ressler <mike.ressler@alum.mit.edu>
+
+	* all: last few typos, clarifications, etc. before 1.1.6fix3,
+	removed historical references to LyX before 1.1.6
+
+2001-07-16  Mike Ressler <mike.ressler@alum.mit.edu>
+
+	* Intro.lyx: reverted to 1.1.6 format, but kept John's changes
+	* Tutorial.lyx: fixed menu references, updated Bibliographies
+	* UserGuide.lyx: fixed menu references, updated Bibliography
+
+2001-06-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Intro.lyx: minor fixes and updates for 1.2.0
