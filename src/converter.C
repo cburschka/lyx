@@ -256,15 +256,16 @@ void Converters::sort()
 }
 
 
-bool Converters::usePdflatex(Graph::EdgePath const & path)
+OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path)
 {
 	for (Graph::EdgePath::const_iterator cit = path.begin();
 	     cit != path.end(); ++cit) {
 		Converter const & conv = converterlist_[*cit];
 		if (conv.latex)
-			return contains(conv.to, "pdf");
+			if (contains(conv.to, "pdf"))
+				return OutputParams::PDFLATEX;
 	}
-	return false;
+	return OutputParams::LATEX;
 }
 
 
@@ -284,8 +285,7 @@ bool Converters::convert(Buffer const * buffer,
 		return false;
 	}
 	OutputParams runparams;
-	runparams.flavor = usePdflatex(edgepath) ?
-		OutputParams::PDFLATEX : OutputParams::LATEX;
+	runparams.flavor = getFlavor(edgepath);
 
 	string path = OnlyPath(from_file);
 	Path p(path);

@@ -13,6 +13,7 @@
 #define CONVERTER_H
 
 #include "graph.h"
+#include "outputparams.h"
 
 #include <vector>
 #include <string>
@@ -98,7 +99,7 @@ public:
 	///
 	Graph::EdgePath const getPath(std::string const & from, std::string const & to);
 	///
-	bool usePdflatex(Graph::EdgePath const & path);
+	OutputParams::FLAVOR getFlavor(Graph::EdgePath const & path);
 	///
 	bool convert(Buffer const * buffer,
 		     std::string const & from_file, std::string const & to_file_base,

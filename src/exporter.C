@@ -70,8 +70,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			Graph::EdgePath p =
 				converters.getPath(*it,	format);
 			if (!p.empty()) {
-				if (converters.usePdflatex(p))
-					runparams.flavor = OutputParams::PDFLATEX;
+				runparams.flavor = converters.getFlavor(p);
 				backend_format = *it;
 				break;
 			}
