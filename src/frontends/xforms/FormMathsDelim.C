@@ -67,7 +67,7 @@ void FormMathsDelim::build()
 	dialog_->radio_right->u_ldata = 1;
 	//dialog_->radio_both->u_ldata = 2;
 
-	fl_set_bmtable_data(dialog_->bmtable, 6, 4,
+	fl_set_bmtable_data(dialog_->bmtable, 12, 2,
 			    delim_width, delim_height, delim_bits);
 	fl_set_bmtable_maxitems(dialog_->bmtable, 23);
 
@@ -130,8 +130,8 @@ bool FormMathsDelim::input(FL_OBJECT *, long)
 	Pixmap p1;
 	fl_get_pixmap_pixmap(dialog_->button_pix, &p1, 0);
 	
-	fl_draw_bmtable_item(dialog_->bmtable, left, p1, -2, 0);
-	fl_draw_bmtable_item(dialog_->bmtable, right, p1, 14, 0);
+	fl_draw_bmtable_item(dialog_->bmtable, left, p1, 0, 0);
+	fl_draw_bmtable_item(dialog_->bmtable, right, p1, 16, 0);
 	fl_redraw_object(dialog_->button_pix);
 
 	dialog_->radio_left->u_ldata  = left;
