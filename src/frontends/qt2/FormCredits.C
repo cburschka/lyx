@@ -14,6 +14,7 @@
 
 #include <config.h>
 
+#include "gettext.h"
 #include "FormCreditsDialogImpl.h"
 #include <qtextview.h>
 #include <qpushbutton.h>

@@ -34,7 +34,7 @@ LYXDATADIRS = dlg
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 
 libqt2_la_OBJADD = \
-	../controllers/ButtonController.lo \
+	../controllers/ButtonControllerBase.lo \
 	../xforms/combox.lo \
 	../xforms/Color.lo \
 	../xforms/FormBaseDeprecated.lo	\
@@ -88,7 +88,7 @@ libqt2_la_OBJADD = \
 LIBS=
 LDFLAGS= $(libqt2_la_OBJADD)
 ETAGS_ARGS = --lang=c++
- 
+
 libqt2_la_SOURCES = \
 	$(BUILTSOURCES) \
 	Dialogs.C \

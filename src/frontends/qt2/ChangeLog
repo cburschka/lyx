@@ -1,3 +1,15 @@
+2001-05-17  Allan Rae  <rae@lyx.org>
+
+	* FormCharacter.C:
+	* FormCopyright.C:
+	* FormCredits.C:
+	* FormSearch.C: gettext went missing but is back gain now _().
+
+	* Makefile.am:  ButtonController is now ButtonControllerBase.
+	It now compiles but it won't link lyx on my system.  Complaints about
+	not being able to link in libraries lib{GL,GLU,Xft,Xext,Xmu} which
+	are all present and accounted for by ldconfig.  YMMV.
+
 2001-05-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* FormParagraph.C: remove !NEW_INSETS and !NO_PEXTRA cruft

@@ -8,6 +8,7 @@
 
 #include <config.h>
 
+#include "gettext.h"
 #include "chardlgimpl.h"
 #include "FormCharacter.h"
 #include "bufferview_funcs.h"

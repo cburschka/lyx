@@ -17,7 +17,7 @@
 
 #include <config.h>
 
-
+#include "gettext.h"
 #include "FormCopyrightDialogImpl.h"
 #include <qlabel.h>
 #include <qpushbutton.h>

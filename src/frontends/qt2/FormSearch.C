@@ -8,6 +8,7 @@
 
 #include <config.h>
 
+#include "gettext.h"
 #include "searchdlgimpl.h"
 #include "FormSearch.h"
 #include "Dialogs.h"
