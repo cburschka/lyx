@@ -1383,7 +1383,7 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 
 	// None of these should happen, but we're scaredy-cats
 	if (pos > pit->size()) {
-		lyxerr << "dont like 1 please report" << endl;
+		lyxerr << "dont like 1, pos: " << pos << " size: " << pit->size() << endl;
 		pos = 0;
 		cur.pos(0);
 	} else if (pos > last + 1) {

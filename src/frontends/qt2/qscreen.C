@@ -54,7 +54,7 @@ QScreen::~QScreen()
 
 void QScreen::repaint()
 {
-	QWidget * content(owner_.getContent());
+	QWidget * content = owner_.getContent();
 	content->repaint(0, 0, content->width(), content->height());
 }
 
@@ -70,35 +70,14 @@ void QScreen::expose(int x, int y, int w, int h)
 
 void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 {
-	QPixmap * p(owner_.getPixmap());
+	QPixmap * p = owner_.getPixmap();
 
 	owner_.getPainter().start();
 
-	int const old_first = text->top_y();
 	text->top_y(y);
 
-	// If you want to fix the warning below, fix it so it
-	// actually scrolls properly. Hint: a cast won't do.
-
-	// is any optimization possible?
-	if (y - old_first < owner_.workHeight()
-	    && old_first - y < owner_.workHeight()) {
-		if (text->top_y() < old_first) {
-			int const dest_y = old_first - text->top_y();
-			drawFromTo(text, bv, 0, dest_y, 0, 0);
-			copyInPixmap(p, dest_y, 0, owner_.workWidth(), owner_.height() - dest_y);
-			expose(0, 0, owner_.workWidth(), dest_y);
-		} else  {
-			int const src_y = text->top_y() - old_first;
-			drawFromTo(text, bv, owner_.height() - src_y, owner_.height(), 0, 0);
-			copyInPixmap(p, 0, 0, owner_.workWidth(), owner_.height() - src_y);
-			expose(0, owner_.height() - src_y, owner_.workWidth(), src_y);
-		}
-	} else {
-		lyxerr[Debug::GUI] << "dumb full redraw" << endl;
-		drawFromTo(text, bv, 0, owner_.height(), 0, 0);
-		repaint();
-	}
+	drawFromTo(text, bv, 0, owner_.height(), 0, 0);
+	repaint();
 
 	owner_.getPainter().end();
 }

@@ -176,50 +176,9 @@ void XScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 	int const old_first = text->top_y();
 	text->top_y(y);
 
-	// is any optimization possible?
-	if ((y - old_first) < owner_.workHeight()
-	    && (old_first - y) < owner_.workHeight())
-	{
-		if (text->top_y() < old_first) {
-			drawFromTo(text, bv, 0, old_first - text->top_y(), 0, 0);
-			XCopyArea(fl_get_display(),
-				  owner_.getWin(),
-				  owner_.getWin(),
-				  gc_copy,
-				  owner_.xpos(),
-				  owner_.ypos(),
-				  owner_.workWidth(),
-				  owner_.workHeight() - old_first + text->top_y(),
-				  owner_.xpos(),
-				  owner_.ypos() + old_first - text->top_y()
-				);
-			// expose the area drawn
-			expose(0, 0,
-			       owner_.workWidth(),
-			       old_first - text->top_y());
-		} else  {
-			drawFromTo(text, bv,
-				   owner_.workHeight() + old_first - text->top_y(),
-				   owner_.workHeight(), 0, 0);
-			XCopyArea(fl_get_display(),
-				  owner_.getWin(),
-				  owner_.getWin(),
-				  gc_copy,
-				  owner_.xpos(),
-				  owner_.ypos() + text->top_y() - old_first,
-				  owner_.workWidth(),
-				  owner_.workHeight() + old_first - text->top_y(),
-				  owner_.xpos(),
-				  owner_.ypos());
-			// expose the area drawn
-			expose(0, owner_.workHeight() + old_first - text->top_y(),
-			       owner_.workWidth(), text->top_y() - old_first);
-		}
-	} else {
-		// make a dumb new-draw
-		drawFromTo(text, bv, 0, owner_.workHeight(), 0, 0);
-		expose(0, 0, owner_.workWidth(), owner_.workHeight());
-	}
+	// make a dumb new-draw
+	drawFromTo(text, bv, 0, owner_.workHeight(), 0, 0);
+	expose(0, 0, owner_.workWidth(), owner_.workHeight());
 
 	XSync(fl_get_display(), 0);
 }
