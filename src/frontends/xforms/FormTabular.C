@@ -358,17 +358,17 @@ void FormTabular::update()
 	setEnabled(longtable_options_->radio_lt_newpage,   enable);
 
 	if (enable) {
-		int dummy;
+		LyXTabular::ltType dummyltt;
 		fl_set_button(longtable_options_->radio_lt_firsthead,
-			      tabular->GetRowOfLTFirstHead(cell, dummy));
+		              tabular->GetRowOfLTFirstHead(row-1, dummyltt));
 		fl_set_button(longtable_options_->radio_lt_head,
-			      tabular->GetRowOfLTHead(cell, dummy));
+		              tabular->GetRowOfLTHead(row-1, dummyltt));
 		fl_set_button(longtable_options_->radio_lt_foot,
-			      tabular->GetRowOfLTFoot(cell, dummy));
+		              tabular->GetRowOfLTFoot(row-1, dummyltt));
 		fl_set_button(longtable_options_->radio_lt_lastfoot,
-			      tabular->GetRowOfLTLastFoot(cell, dummy));
+		              tabular->GetRowOfLTLastFoot(row-1, dummyltt));
 		fl_set_button(longtable_options_->radio_lt_newpage,
-			      tabular->GetLTNewPage(cell));
+		              tabular->GetLTNewPage(cell));
 	} else {
 		fl_set_button(longtable_options_->radio_lt_firsthead,0);
 		fl_set_button(longtable_options_->radio_lt_head,0);
@@ -392,6 +392,8 @@ bool FormTabular::input(FL_OBJECT * ob, long)
     string special;;
 
     int cell = inset_->getActCell();
+	int row = tabular->row_of_cell(cell);
+	
     if (actCell_ != cell) {
         update();
         fl_set_object_label(dialog_->text_warning,
@@ -468,15 +470,15 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 
 	    if (enable) {
 		    num = LyXTabular::SET_LONGTABULAR;
-		    int dummy;
+		    LyXTabular::ltType dummyltt;
 		    fl_set_button(longtable_options_->radio_lt_firsthead,
-				  tabular->GetRowOfLTFirstHead(cell, dummy));
+				  tabular->GetRowOfLTFirstHead(row, dummyltt));
 		    fl_set_button(longtable_options_->radio_lt_head,
-				  tabular->GetRowOfLTHead(cell, dummy));
+				  tabular->GetRowOfLTHead(row, dummyltt));
 		    fl_set_button(longtable_options_->radio_lt_foot,
-				  tabular->GetRowOfLTFoot(cell, dummy));
+				  tabular->GetRowOfLTFoot(row, dummyltt));
 		    fl_set_button(longtable_options_->radio_lt_lastfoot,
-				  tabular->GetRowOfLTLastFoot(cell, dummy));
+				  tabular->GetRowOfLTLastFoot(row, dummyltt));
 		    fl_set_button(longtable_options_->radio_lt_firsthead,
 				  tabular->GetLTNewPage(cell));
 	    } else {
@@ -503,13 +505,25 @@ bool FormTabular::input(FL_OBJECT * ob, long)
         num = LyXTabular::SET_USEBOX;
 	special = "2";
     } else if (ob == longtable_options_->radio_lt_firsthead) {
-        num = LyXTabular::SET_LTFIRSTHEAD;
+		if (fl_get_button(ob))
+			num = LyXTabular::SET_LTFIRSTHEAD;
+		else
+			num = LyXTabular::UNSET_LTFIRSTHEAD;
     } else if (ob == longtable_options_->radio_lt_head) {
-        num = LyXTabular::SET_LTHEAD;
+		if (fl_get_button(ob))
+			num = LyXTabular::SET_LTHEAD;
+		else
+			num = LyXTabular::UNSET_LTHEAD;
     } else if (ob == longtable_options_->radio_lt_foot) {
-        num = LyXTabular::SET_LTFOOT;
+		if (fl_get_button(ob))
+			num = LyXTabular::SET_LTFOOT;
+		else
+			num = LyXTabular::UNSET_LTFOOT;
     } else if (ob == longtable_options_->radio_lt_lastfoot) {
-        num = LyXTabular::SET_LTLASTFOOT;
+		if (fl_get_button(ob))
+			num = LyXTabular::SET_LTLASTFOOT;
+		else
+			num = LyXTabular::UNSET_LTLASTFOOT;
     } else if (ob == longtable_options_->radio_lt_newpage) {
         num = LyXTabular::SET_LTNEWPAGE;
     } else if (ob == column_options_->input_special_alignment) {

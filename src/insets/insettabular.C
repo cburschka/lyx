@@ -1662,10 +1662,11 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	        bv->text->cursor.par(),
 	        bv->text->cursor.par()->next());
 
-	int row = tabular->row_of_cell(actcell);
+	LyXTabular::ltType ltt;
+	int row = ltt.row = tabular->row_of_cell(actcell);
 	int column = tabular->column_of_cell(actcell);
 	bool flag = true;
-	
+
 	switch (feature) {
 	case LyXTabular::SET_PWIDTH:
 	{
@@ -1906,17 +1907,25 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 					tabular->GetCellNumber(i, j), val);
 		break;
 	}
+	case LyXTabular::UNSET_LTFIRSTHEAD:
+		ltt.row = 0;
 	case LyXTabular::SET_LTFIRSTHEAD:
-		tabular->SetLTHead(actcell, true);
+		tabular->SetLTHead(ltt, true);
 		break;
+	case LyXTabular::UNSET_LTHEAD:
+		ltt.row = 0;
 	case LyXTabular::SET_LTHEAD:
-		tabular->SetLTHead(actcell, false);
+		tabular->SetLTHead(ltt, false);
 		break;
+	case LyXTabular::UNSET_LTFOOT:
+		ltt.row = 0;
 	case LyXTabular::SET_LTFOOT:
-		tabular->SetLTFoot(actcell, false);
+		tabular->SetLTFoot(ltt, false);
 		break;
+	case LyXTabular::UNSET_LTLASTFOOT:
+		ltt.row = 0;
 	case LyXTabular::SET_LTLASTFOOT:
-		tabular->SetLTFoot(actcell, true);
+		tabular->SetLTFoot(ltt, true);
 		break;
 	case LyXTabular::SET_LTNEWPAGE:
 	{
@@ -2108,6 +2117,7 @@ func_status::value_type InsetTabular::getStatus(string const & what) const
 	int sel_row_start;
 	int sel_row_end;
 	int dummy;
+	LyXTabular::ltType dummyltt;
 	bool flag = true;
 
 	if (hasSelection()) {
@@ -2262,25 +2272,25 @@ func_status::value_type InsetTabular::getStatus(string const & what) const
 			status |= func_status::ToggleOff;
 		break;
 	case LyXTabular::SET_LTFIRSTHEAD:
-		if (tabular->GetRowOfLTHead(actcell, dummy))
+		if (tabular->GetRowOfLTHead(actcell, dummyltt))
 			status |= func_status::ToggleOn;
 		else
 			status |= func_status::ToggleOff;
 		break;
 	case LyXTabular::SET_LTHEAD:
-		if (tabular->GetRowOfLTHead(actcell, dummy))
+		if (tabular->GetRowOfLTHead(actcell, dummyltt))
 			status |= func_status::ToggleOn;
 		else
 			status |= func_status::ToggleOff;
 		break;
 	case LyXTabular::SET_LTFOOT:
-		if (tabular->GetRowOfLTFoot(actcell, dummy))
+		if (tabular->GetRowOfLTFoot(actcell, dummyltt))
 			status |= func_status::ToggleOn;
 		else
 			status |= func_status::ToggleOff;
 		break;
 	case LyXTabular::SET_LTLASTFOOT:
-		if (tabular->GetRowOfLTFoot(actcell, dummy))
+		if (tabular->GetRowOfLTFoot(actcell, dummyltt))
 			status |= func_status::ToggleOn;
 		else
 			status |= func_status::ToggleOff;

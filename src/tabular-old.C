@@ -157,10 +157,10 @@ void LyXTabular::ReadOld(Buffer const * buf, istream & is,
 	return;
     }
     getTokenValue(line, "islongtable", is_long_tabular);
-    getTokenValue(line, "endhead", endhead);
-    getTokenValue(line, "endfirsthead", endfirsthead);
-    getTokenValue(line, "endfoot", endfoot);
-    getTokenValue(line, "endlastfoot", endlastfoot);
+    getTokenValue(line, "endhead", endhead.row);
+    getTokenValue(line, "endfirsthead", endfirsthead.row);
+    getTokenValue(line, "endfoot", endfoot.row);
+    getTokenValue(line, "endlastfoot", endlastfoot.row);
 
     for (int i = 0; i < rows_; ++i) {
 	l_getline(is, line);

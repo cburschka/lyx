@@ -1,3 +1,11 @@
+2001-10-24  Juergen Vigna  <jug@sad.it>
+
+	* tabular-old.C (ReadOld): below variable changes reflected.
+
+	* tabular.[Ch]: added ltType struct for longtable header/footer
+	defines and changed all instances where they are used. Added
+	future support for double top/bottom rows.
+
 2001-10-24  José Matos  <jamatos@fep.up.pt>
 
 	* buffer.h (docbookHandleCaption):

@@ -1,3 +1,8 @@
+2001-10-24  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C: use new ltType struct for setting longtable
+	header and footers also new UNSET enums.
+
 2001-10-24  José Matos  <jamatos@fep.up.pt>
 
 	* insettabular.C (linuxdoc): Now exports the ascii's table version.

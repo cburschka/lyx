@@ -108,12 +108,16 @@ public:
 		SET_USEBOX,
 		///
 		SET_LTHEAD,
+		UNSET_LTHEAD,
 		///
 		SET_LTFIRSTHEAD,
+		UNSET_LTFIRSTHEAD,
 		///
 		SET_LTFOOT,
+		UNSET_LTFOOT,
 		///
 		SET_LTLASTFOOT,
+		UNSET_LTLASTFOOT,
 		///
 		SET_LTNEWPAGE,
 		///
@@ -152,6 +156,19 @@ public:
 		BOX_MINIPAGE = 2
 	};
 
+	struct lttype {
+		// constructor
+		lttype();
+		// row of the header/footer type end definition
+		int row;
+		// double borders on top
+		bool topDL;
+		// double borders on bottom
+		bool bottomDL;
+	};
+	///
+	typedef struct lttype ltType;
+	
 	/* konstruktor */
 	///
 	LyXTabular(InsetTabular *, int columns_arg, int rows_arg);
@@ -344,17 +361,19 @@ public:
 	//
 	// Long Tabular Options
 	///
-	void SetLTHead(int cell, bool first);
+	bool checkLTType(int row, ltType const &) const;
 	///
-	bool GetRowOfLTHead(int cell, int & row) const;
+	void SetLTHead(ltType const &, bool first);
 	///
-	bool GetRowOfLTFirstHead(int cell, int & row) const;
+	bool GetRowOfLTHead(int row, ltType &) const;
 	///
-	void SetLTFoot(int cell, bool last);
+	bool GetRowOfLTFirstHead(int row, ltType &) const;
 	///
-	bool GetRowOfLTFoot(int cell, int & row) const;
+	void SetLTFoot(ltType const &, bool last);
 	///
-	bool GetRowOfLTLastFoot(int cell, int & row) const;
+	bool GetRowOfLTFoot(int row, ltType &) const;
+	///
+	bool GetRowOfLTLastFoot(int row, ltType &) const;
 	///
 	void SetLTNewPage(int cell, bool what);
 	///
@@ -485,13 +504,13 @@ private:
 	///
 	bool is_long_tabular;
 	/// row of endhead
-	int endhead;
+	ltType endhead;
 	/// row of endfirsthead
-	int endfirsthead;
+	ltType endfirsthead;
 	/// row of endfoot
-	int endfoot;
+	ltType endfoot;
 	/// row of endlastfoot
-	int endlastfoot;
+	ltType endlastfoot;
 	///
 	InsetTabular * owner_;
 
