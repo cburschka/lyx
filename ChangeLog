@@ -1,5 +1,14 @@
 1999-10-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/mathed/math_macro.C (MathMacroArgument::Write,
+	MathMacroTemplate::WriteDef): add tostr() around macro arg numbers
+	when writing them out.
+
+	* src/LString.C: remove, since it is not used anymore.
+	
+	* src/support/lyxstring.C: condition the content to
+	USE_INCLUDED_STRING macro.
+
 	* src/mathed/math_symbols.C, src/support/lstrings.C,
 	src/support/lyxstring.C: add `using' directive to specify what
 	we need in <algorithm>. I do not think that we need to

@@ -256,7 +256,7 @@ void MathMacroArgument::Write(string &file)
 	MathParInset::Write(file);
     } else {
 	file += '#';
-	file += number;
+	file += tostr(number);
 	file += ' ';
     }
 }
@@ -388,7 +388,7 @@ void MathMacroTemplate::WriteDef(string &file)
       
     if (nargs > 0 ) {
       file += '[';
-      file += nargs;
+      file += tostr(nargs);
       file += ']';
     }
     
