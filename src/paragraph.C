@@ -4542,13 +4542,11 @@ void LyXParagraph::ChangeLanguage(BufferParams const & bparams,
 
 bool LyXParagraph::isMultiLingual(BufferParams const & bparams)
 {
-	Language const * doc_language =
-		bparams.language_info;
-	for(size_type i = 0; i < size(); ++i) {
-		LyXFont font = GetFontSettings(bparams, i);
-		if (font.language() != doc_language)
+	Language const * doc_language =	bparams.language_info;
+	for (FontList::const_iterator cit = fontlist.begin();
+	     cit != fontlist.end(); ++cit)
+		if ((*cit).font.language() != doc_language)
 			return true;
-	}
 	return false;
 }
 

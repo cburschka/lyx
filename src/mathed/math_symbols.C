@@ -43,7 +43,7 @@ using std::max;
 using std::endl;
 using std::ostream;
 
-extern short greek_kb_flag;
+extern int greek_kb_flag;
 
 extern BufferView * current_view;
 
@@ -121,21 +121,11 @@ static char const * latex_dots[] = {
    "ldots", "cdots", "vdots", "ddots"
 };
 
-static signed char latin2greek[] =  {
-  0, 1, 25, 3, 4, 23, 2, 7, 10, 24, 11, 12, 13, 14, -1, 16, 8, 18,
-  19, 21, 22, 17, 27, 15, 26, 6
-};
- 
-static signed char Latin2Greek[] =  {
- -1, -1, -1, 1, -1, 8, 0, -1, -1, -1, -1, 3, -1, -1, -1,
- 5, 2, -1, 6, -1, 7, -1, 10, 4, 9, -1
-}; 
-
 extern char const ** mathed_get_pixmap_from_icon(int d);
 extern "C" void math_cb(FL_OBJECT*, long);
 static char const ** pixmapFromBitmapData(char const *, int, int);
 void math_insert_symbol(char const * s);
-Bool math_insert_greek(char const c);
+bool math_insert_greek(char c);
 
 BitmapMenu * BitmapMenu::active = 0;
 
@@ -340,28 +330,32 @@ char const ** get_pixmap_from_symbol(char const * arg, int wx, int hx)
    return data;
 }
 
-Bool math_insert_greek(char const c)
+bool math_insert_greek(char c)
 {
-   int i;
-   char const * s= 0;
-   
-   if ('A' <= c && c <= 'Z') {
-      if ((i = Latin2Greek[c - 'A']) >= 0)
-	s = latex_greek[i];
-   }   
-   if ('a'<= c && c<= 'z') {
-      if ((i= latin2greek[c - 'a'])>= 0)
-	s = latex_greek[i+11];
+   if (current_view->available() &&
+       (('A' <= c && c <= 'Z') ||
+	('a'<= c && c<= 'z')))   {
+      string tmp;
+      tmp = c;
+      if (!current_view->the_locking_inset) {
+	 int greek_kb_flag_save = greek_kb_flag;
+	 InsetFormula * new_inset = new InsetFormula();
+	 current_view->beforeChange();
+	 current_view->insertInset(new_inset);
+//	 Update(1);//BUG
+	 new_inset->Edit(current_view, 0, 0, 0);
+	 new_inset->LocalDispatch(current_view, LFUN_SELFINSERT, tmp);
+	 if (greek_kb_flag_save < 2)
+		 current_view->unlockInset(current_view->the_locking_inset);
+      } else
+	 if (current_view->the_locking_inset->LyxCode() == Inset::MATH_CODE)
+		static_cast<InsetFormula*>(current_view->the_locking_inset)->LocalDispatch(current_view, LFUN_SELFINSERT, tmp);
+	 else
+		lyxerr << "Math error: attempt to write on a wrong "
+			"class of inset." << endl;
+      return true;
    }
-   if (s) {
-      math_insert_symbol(s);
-      if (greek_kb_flag<2) {
-	 greek_kb_flag = 0;
-	 current_view->unlockInset(current_view->the_locking_inset);
-      }
-      return True;
-   } else
-     return False; 
+   return false;
 }
 
 

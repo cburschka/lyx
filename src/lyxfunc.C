@@ -98,10 +98,10 @@ extern bool cursor_follows_scrollbar;
 
 extern void InsertAsciiFile(BufferView *, string const &, bool);
 extern void math_insert_symbol(char const *);
-extern Bool math_insert_greek(char const); // why "Bool"?
+extern bool math_insert_greek(char);
 extern BufferList bufferlist;
 extern LyXServer * lyxserver;
-extern short greek_kb_flag;
+extern int greek_kb_flag;
 extern FD_form_toc * fd_form_toc;
 extern bool selection_possible;
 

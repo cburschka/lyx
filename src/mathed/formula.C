@@ -53,7 +53,7 @@ extern char * mathed_label;
 
 extern char const * latex_special_chars;
 
-short greek_kb_flag = 0;
+int greek_kb_flag = 0;
 
 LyXFont * Math_Fonts = 0; // this is only used by Whichfont and mathed_init_fonts (Lgb)
 
@@ -1117,7 +1117,21 @@ InsetFormula::LocalDispatch(BufferView * bv,
 	    }
 
 //	     lyxerr << "Varcode << vardoce;
-	    mathcursor->Insert(c, (greek_kb_flag) ? LM_TC_SYMB: varcode);
+	    MathedTextCodes char_code = varcode;
+	    if (greek_kb_flag) {
+		    char greek[26] = 
+		    {'A', 'B', 'X',  0 , 'E',  0 ,  0 , 'H', 'I',  0 ,
+		     'K',  0 , 'M', 'N', 'O',  0 ,  0 , 'P',  0 , 'T',
+		     'Y',  0,   0,   0,   0 , 'Z' };
+		    if ('A' <= c && c <= 'Z' && greek[c - 'A']) {
+			    char_code = LM_TC_RM;
+			    c = greek[c - 'A'];
+		    } else
+			    char_code = LM_TC_SYMB;
+	    }
+	    mathcursor->Insert(c, char_code);
+	    if (greek_kb_flag && char_code == LM_TC_RM )
+		    mathcursor->setLastCode(LM_TC_VAR);
 	    varcode = LM_TC_MIN;
 	    if (greek_kb_flag<2) greek_kb_flag = 0;
 	 } else 

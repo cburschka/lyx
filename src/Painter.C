@@ -274,13 +274,23 @@ PainterBase & Painter::text(int x, int y, char const * s, int ls,
 {
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1) {
 		XChar2b * xs = new XChar2b[ls];
-		Encoding const * enc = f.language()->encoding();
+		Encoding const * encoding = f.language()->encoding();
+		LyXFont const * font = &f; 
+		if (f.family() == LyXFont::SYMBOL_FAMILY) {
+#ifdef USE_UNICODE_FOR_SYMBOLS
+			LyXFont font2 = f;
+			font2.setFamily(LyXFont::ROMAN_FAMILY);
+			font2.setShape(LyXFont::UP_SHAPE);
+			font = &font2;
+#endif
+			encoding = &symbol_encoding;
+		}
 		for (int i = 0; i < ls; ++i) {
-			Uchar c = enc->ucs(s[i]);
+			Uchar c = encoding->ucs(s[i]);
 			xs[i].byte1 = c >> 8;
 			xs[i].byte2 = c & 0xff;
-                }
-		text(x , y, xs, ls, f);
+		}
+		text(x , y, xs, ls, *font);
 		delete[] xs;
 		return *this;
 	}

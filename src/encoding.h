@@ -59,12 +59,14 @@ private:
 
 extern Encoding iso8859_1;
 extern Encoding iso8859_2;
+extern Encoding iso8859_3;
 extern Encoding iso8859_4;
 extern Encoding iso8859_6;
 extern Encoding iso8859_7;
+extern Encoding iso8859_9;
 extern Encoding cp1255;
 extern Encoding koi8;
-
+extern Encoding symbol_encoding;
 
 inline
 bool Encoding::IsComposeChar_hebrew(unsigned char c)

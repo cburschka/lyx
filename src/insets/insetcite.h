@@ -20,6 +20,11 @@
 
 class Dialogs;
 
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Signal0;
+#endif
+
+
 /** Used to insert citations  
  */
 class InsetCitation : public InsetCommand {
@@ -40,7 +45,7 @@ public:
         ///
 	void Edit(BufferView *, int, int, unsigned int);
 	///
-	SigC::Signal0<void> hide;
+	Signal0<void> hide;
 };
 
 #endif // INSET_CITE_H
