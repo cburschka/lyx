@@ -159,9 +159,9 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	  buffer_(&buf), cursorx_(0), cursory_(0)
 {
 	tabular.setOwner(this);
-	the_locking_inset = 0;
 	actrow = 0;
 	actcell = 0;
+	locked_cell = -1;
 	clearSelection();
 	in_reset_pos = 0;
 }
@@ -172,10 +172,10 @@ InsetTabular::InsetTabular(InsetTabular const & tab)
 		buffer_(tab.buffer_), cursorx_(0), cursory_(0)
 {
 	tabular.setOwner(this);
-	the_locking_inset = 0;
 	actrow = 0;
 	actcell = 0;
 	clearSelection();
+	locked_cell = -1;
 	in_reset_pos = 0;
 }
 
@@ -282,13 +282,12 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 				break;
 			if (tabular.isPartOfMultiColumn(i, j))
 				continue;
-			int cx = nx + tabular.getBeginningOfTextInCell(cell);
 			if (first_visible_cell < 0)
 				first_visible_cell = cell;
-			if (hasSelection()) {
+			if (hasSelection()) 
 				drawCellSelection(pi.pain, nx, y, i, j, cell);
-			}
 
+			int const cx = nx + tabular.getBeginningOfTextInCell(cell);
 			tabular.getCellInset(cell).draw(pi, cx, y);
 			drawCellLines(pi.pain, nx, y, i, cell);
 			nx += tabular.getWidthOfColumn(cell);
@@ -351,6 +350,9 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 void InsetTabular::drawCellSelection(Painter & pain, int x, int y,
 				     int row, int column, int cell) const
 {
+	if (locked_cell != -1)
+		return;
+
 	BOOST_ASSERT(hasSelection());
 	int cs = tabular.column_of_cell(sel_cell_start);
 	int ce = tabular.column_of_cell(sel_cell_end);
@@ -387,6 +389,9 @@ void InsetTabular::updateLocal(BufferView * bv) const
 	resetPos(bv);
 }
 
+extern LCursor theTempCursor;
+
+
 
 void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 {
@@ -401,12 +406,17 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 	int cell = getCell(cmd.x + xo_, cmd.y + yo_);
 	lyxerr << "# InsetTabular::lfunMousePress cell: " << cell << endl;
 	if (cell == -1) {
+		bv->cursor() = theTempCursor;
+		bv->cursor().data_.push_back(CursorItem(this));
+		bv->cursor().data_.back().idx_ = cell;
 	} else {
-		the_locking_inset = 0;
 		setPos(bv, cmd.x, cmd.y);
 		clearSelection();
-		the_locking_inset = 0;
+		bv->cursor() = theTempCursor;
+		bv->cursor().data_.back().idx_ = cell;
 	}
+	locked_cell = cell;
+	lyxerr << bv->cursor() << endl;
 
 	if (cmd.button() == mouse_button::button2)
 		dispatch(FuncRequest(bv, LFUN_PASTESELECTION, "paragraph"));
@@ -415,6 +425,8 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 
 void InsetTabular::lfunMouseRelease(FuncRequest const & cmd)
 {
+	int cell = getCell(cmd.x + xo_, cmd.y + yo_);
+	lyxerr << "# InsetTabular::lfunMouseRelease cell: " << cell << endl;
 	if (cmd.button() == mouse_button::button3)
 		InsetTabularMailer(*this).showDialog(cmd.view());
 }
@@ -422,6 +434,8 @@ void InsetTabular::lfunMouseRelease(FuncRequest const & cmd)
 
 void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 {
+	int cell = getCell(cmd.x + xo_, cmd.y + yo_);
+	lyxerr << "# InsetTabular::lfunMouseMotion cell: " << cell << endl;
 	BufferView * bv = cmd.view();
 	int const old_cell = actcell;
 
@@ -435,13 +449,8 @@ void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 
 void InsetTabular::edit(BufferView * bv, bool left)
 {
-	lyxerr << "InsetTabular::edit: " << this
-		<< " first text: " << tabular.cell_info[0][0].inset.getText(0)
-		<< " first cell: " << &tabular.cell_info[0][0].inset << endl;
-
+	lyxerr << "InsetTabular::edit: " << this << endl;
 	finishUndo();
-	the_locking_inset = 0;
-
 	if (left) {
 		if (isRightToLeft(bv))
 			actcell = tabular.getLastCellInRow(0);
@@ -457,6 +466,9 @@ void InsetTabular::edit(BufferView * bv, bool left)
 	resetPos(bv);
 	bv->fitCursor();
 	bv->cursor().push(this);
+	bv->cursor().data_.back().idx_ = actcell;
+	locked_cell = actcell;
+	lyxerr << bv->cursor() << endl;
 }
 
 
@@ -466,25 +478,25 @@ void InsetTabular::edit(BufferView * bv, int x, int y)
 		<< &tabular.cell_info[0][0].inset << endl;
 
 	finishUndo();
-	the_locking_inset = 0;
 	setPos(bv, x, y);
 	clearSelection();
 	finishUndo();
 	int xx = cursorx_ - xo_ + tabular.getBeginningOfTextInCell(actcell);
 	bv->cursor().push(this);
 	if (x > xx)
-		activateCellInset(bv, x - xx, y - cursory_);
+		activateCellInset(bv, x - xx, y - cursory_, false);
 }
 
 
 DispatchResult
-InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
+InsetTabular::priv_dispatch(FuncRequest const & cmd,
+	idx_type & idx, pos_type & pos)
 {
 	lyxerr << "# InsetTabular::dispatch: " << cmd << endl;
-	// We need to save the value of the_locking_inset as the call to
-	// the_locking_inset->localDispatch might unlock it.
+
 	DispatchResult result(true, true);
 	BufferView * bv = cmd.view();
+	lyxerr << "# cursor: " << bv->cursor() << endl;
 
 	switch (cmd.action) {
 
@@ -499,16 +511,62 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 	case LFUN_MOUSE_RELEASE:
 		lfunMouseRelease(cmd);
 		return DispatchResult(true, true);
+	
+	default:
+		break;
+	}
+
+
+	int cell = bv->cursor().data_.back().idx_;
+	if (cell != -1) {
+		lyxerr << "# InsetTabular::dispatch 1: " << cmd << endl;
+		result = tabular.getCellInset(cell).dispatch(cmd, idx, pos);
+
+		switch (result.val()) {
+		case LFUN_FINISHED_LEFT:
+			lyxerr << "handle LFUN_FINISHED_LEFT, act: " << actcell << endl;
+			if (movePrevCell(bv, false))
+				result = DispatchResult(true, true);
+			else
+				result = DispatchResult(false, FINISHED);
+			break;
+
+		case LFUN_FINISHED_RIGHT:
+			lyxerr << "handle LFUN_FINISHED_RIGHT, act: " << actcell << endl;
+			if (moveNextCell(bv, false))
+				result = DispatchResult(true, true);
+			else
+				result = DispatchResult(false, FINISHED_RIGHT);
+			break;
+
+		case LFUN_FINISHED_UP:
+			lyxerr << "handle LFUN_FINISHED_UP, act: " << actcell << endl;
+			result = moveUp(bv, true);
+			break;
+
+		case LFUN_FINISHED_DOWN:
+			lyxerr << "handle LFUN_FINISHED_DOWN, act: " << actcell << endl;
+			result = moveDown(bv, true);
+			break;
+
+		default:
+			break;
+		}
+
+		lyxerr << "# InsetTabular::dispatch 2: " << cmd << endl;
+		return result;
+	}
+
+	lyxerr << "# InsetTabular::dispatch 3: " << cmd << endl;
+	switch (cmd.action) {
 
 	case LFUN_CELL_BACKWARD:
 	case LFUN_CELL_FORWARD:
 		if (cmd.action == LFUN_CELL_FORWARD)
-			moveNextCell(bv, the_locking_inset != 0);
+			moveNextCell(bv, false);
 		else
-			movePrevCell(bv, the_locking_inset != 0);
+			movePrevCell(bv, false);
 		clearSelection();
-		if (!the_locking_inset)
-			return DispatchResult(true);
 		return result;
 
 	case LFUN_SCROLL_INSET:
@@ -586,7 +644,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 	}
 
 	case LFUN_DOWN:
-		result = moveDown(bv, the_locking_inset != 0);
+		result = moveDown(bv, false);
 		clearSelection();
 		break;
 
@@ -609,7 +667,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 	}
 
 	case LFUN_UP:
-		result = moveUp(bv, the_locking_inset != 0);
+		result = moveUp(bv, false);
 		clearSelection();
 		break;
 
@@ -706,28 +764,6 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		lyxerr << "font changes not re-implemented for tables after LOCK" << endl;
 		break;
 
-	case LFUN_FINISHED_LEFT:
-		lyxerr << "swallow LFUN_FINISHED_LEFT, act: " << actcell << endl;
-		if (!movePrevCell(bv, false))
-			result = DispatchResult(FINISHED);
-		break;
-
-	case LFUN_FINISHED_RIGHT:
-		lyxerr << "swallow LFUN_FINISHED_RIGHT, act: " << actcell << endl;
-		if (!moveNextCell(bv, false))
-			result = DispatchResult(FINISHED_RIGHT);
-		break;
-
-	case LFUN_FINISHED_UP:
-		lyxerr << "swallow LFUN_FINISHED_UP, act: " << actcell << endl;
-		result = moveUp(bv, true);
-		break;
-
-	case LFUN_FINISHED_DOWN:
-		lyxerr << "swallow LFUN_FINISHED_DOWN, act: " << actcell << endl;
-		result = moveDown(bv, true);
-		break;
-
 	case LFUN_CUT:
 		if (copySelection(bv)) {
 			recordUndo(bv, Undo::DELETE);
@@ -759,13 +795,13 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			string::size_type p = 0;
 
 			while (p < len &&
-			      ((p = clip.find_first_of("\t\n", p)) != string::npos)) {
+			      (p = clip.find_first_of("\t\n", p)) != string::npos) {
 				switch (clip[p]) {
 				case '\t':
 					++cols;
 					break;
 				case '\n':
-					if ((p+1) < len)
+					if (p + 1 < len)
 						++rows;
 					maxCols = max(cols, maxCols);
 					cols = 1;
@@ -836,16 +872,6 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		result = DispatchResult(false);
 		// we try to activate the actual inset and put this event down to
 		// the insets dispatch function.
-		if (!the_locking_inset && activateCellInset(bv)) {
-			result = the_locking_inset->dispatch(cmd);
-			if (!result.dispatched()) {
-				// we need to update if this was requested before
-				result = DispatchResult(false);
-				break;
-			}
-			if (hasSelection())
-				clearSelection();
-		}
 		break;
 	}
 
@@ -887,7 +913,8 @@ int InsetTabular::docbook(Buffer const & buf, ostream & os,
 	// wrapper. Search for it.
 	for (master = owner();
 	     master && master->lyxCode() != InsetOld::FLOAT_CODE;
-	     master = master->owner());
+	     master = master->owner())
+		;
 
 	if (!master) {
 		os << "<informaltable>";
@@ -914,29 +941,6 @@ void InsetTabular::validate(LaTeXFeatures & features) const
 
 void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
 {
-#if 1
-	// if we have a locking_inset we should have to check only this cell for
-	// change so I'll try this to have a boost, but who knows ;) (Jug?)
-	// This is _really_ important (André)
-	if (the_locking_inset == &tabular.getCellInset(actcell)) {
-		int maxAsc = 0;
-		int maxDesc = 0;
-		for (int j = 0; j < tabular.columns(); ++j) {
-			Dimension dim;
-			MetricsInfo m = mi;
-			m.base.textwidth =
-				tabular.column_info[j].p_width.inPixels(mi.base.textwidth);
-			tabular.getCellInset(actrow, j).metrics(m, dim);
-			maxAsc  = max(dim.asc, maxAsc);
-			maxDesc = max(dim.des, maxDesc);
-		}
-		tabular.setWidthOfCell(actcell, the_locking_inset->width());
-		tabular.setAscentOfRow(actrow, maxAsc + ADD_TO_HEIGHT);
-		tabular.setDescentOfRow(actrow, maxDesc + ADD_TO_HEIGHT);
-		return;
-	}
-#endif
-
 	int cell = -1;
 	for (int i = 0; i < tabular.rows(); ++i) {
 		int maxAsc = 0;
@@ -962,8 +966,13 @@ void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
 
 void InsetTabular::getCursorPos(int & x, int & y) const
 {
-	x = TEXT_TO_INSET_OFFSET + cursorx_ - xo_;
-	y = TEXT_TO_INSET_OFFSET + cursory_;
+	if (locked_cell == -1) {
+		x = TEXT_TO_INSET_OFFSET + cursorx_ - xo_;
+		y = TEXT_TO_INSET_OFFSET + cursory_;
+	} else {
+		tabular.getCellInset(locked_cell).getCursorPos(x, y);
+		x = TEXT_TO_INSET_OFFSET;
+	}
 }
 
 
@@ -1046,21 +1055,6 @@ void InsetTabular::resetPos(BufferView * bv) const
 	{
 		scroll(bv, 0.0F);
 		updateLocal(bv);
-	} else if (the_locking_inset &&
-		 tabular.getWidthOfColumn(actcell) > bv->workWidth() - 20)
-	{
-		int xx = cursorx_ - offset;
-		if (xx > bv->workWidth()-20) {
-			scroll(bv, - xx + bv->workWidth() - 60);
-			updateLocal(bv);
-		} else if (xx < 20) {
-			if (xx < 0)
-				xx = -xx + 60;
-			else
-				xx = 60;
-			scroll(bv, xx);
-			updateLocal(bv);
-		}
 	} else if (cursorx_ - offset > 20 &&
 		   cursorx_ - offset + tabular.getWidthOfColumn(actcell)
 		   > bv->workWidth() - 20) {
@@ -1081,16 +1075,12 @@ void InsetTabular::resetPos(BufferView * bv) const
 
 DispatchResult InsetTabular::moveRight(BufferView * bv, bool lock)
 {
+	bool moved = isRightToLeft(bv) ? movePrevCell(bv) : moveNextCell(bv);
+	if (!moved)
+		return DispatchResult(false, FINISHED_RIGHT);
 	if (lock) {
-		if (activateCellInset(bv))
-			return DispatchResult(true, true);
-	} else {
-		bool moved = isRightToLeft(bv)
-			? movePrevCell(bv) : moveNextCell(bv);
-		if (!moved)
-			return DispatchResult(false, FINISHED_RIGHT);
-		if (lock && activateCellInset(bv))
-			return DispatchResult(true, true);
+		activateCellInset(bv, 0, 0, false);
+		return DispatchResult(true, true);
 	}
 	resetPos(bv);
 	return DispatchResult(true);
@@ -1103,8 +1093,10 @@ DispatchResult InsetTabular::moveLeft(BufferView * bv, bool lock)
 	if (!moved)
 		return DispatchResult(false, FINISHED);
 	// behind the inset
-	if (lock && activateCellInset(bv, 0, 0, true))
+	if (lock) {
+		activateCellInset(bv, 0, 0, true);
 		return DispatchResult(true, true);
+	}
 	resetPos(bv);
 	return DispatchResult(true);
 }
@@ -1114,12 +1106,11 @@ DispatchResult InsetTabular::moveUp(BufferView * bv, bool lock)
 {
 	int const ocell = actcell;
 	actcell = tabular.getCellAbove(actcell);
-	if (actcell == ocell) { // we moved out of the inset
+	if (actcell == ocell) // we moved out of the inset
 		return DispatchResult(false, FINISHED_UP);
-	}
 	resetPos(bv);
 	if (lock)
-		activateCellInset(bv, bv->x_target(), 0);
+		activateCellInset(bv, bv->x_target(), 0, false);
 	return DispatchResult(true, true);
 }
 
@@ -1128,12 +1119,11 @@ DispatchResult InsetTabular::moveDown(BufferView * bv, bool lock)
 {
 	int const ocell = actcell;
 	actcell = tabular.getCellBelow(actcell);
-	if (actcell == ocell) { // we moved out of the inset
+	if (actcell == ocell) // we moved out of the inset
 		return DispatchResult(false, FINISHED_DOWN);
-	}
 	resetPos(bv);
 	if (lock)
-		activateCellInset(bv, bv->x_target(), 0);
+		activateCellInset(bv, bv->x_target(), 0, false);
 	return DispatchResult(true, true);
 }
 
@@ -1579,7 +1569,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 }
 
 
-bool InsetTabular::activateCellInset(BufferView * bv, int x, int y, bool behind)
+void InsetTabular::activateCellInset(BufferView * bv, int x, int y, bool behind)
 {
 	UpdatableInset & inset = tabular.getCellInset(actcell);
 	if (behind) {
@@ -1588,35 +1578,21 @@ bool InsetTabular::activateCellInset(BufferView * bv, int x, int y, bool behind)
 		y = inset.descent();
 	}
 	inset.edit(bv, x, y);
-	bv->cursor().push(&inset);
-	if (!the_locking_inset)
-		return false;
+	bv->cursor().data_.back().idx_ = actcell;
+	locked_cell = actcell;
 	updateLocal(bv);
-	return true;
 }
 
 
 bool InsetTabular::showInsetDialog(BufferView * bv) const
 {
-	if (!the_locking_inset || !the_locking_inset->showInsetDialog(bv))
-		InsetTabularMailer(*this).showDialog(bv);
+	InsetTabularMailer(*this).showDialog(bv);
 	return true;
 }
 
 
 void InsetTabular::openLayoutDialog(BufferView * bv) const
 {
-#warning Look here
-/*
-	if (the_locking_inset) {
-		InsetTabular * inset = static_cast<InsetTabular *>
-			(the_locking_inset->getFirstLockingInsetOfType(TABULAR_CODE));
-		if (inset) {
-			inset->openLayoutDialog(bv);
-			return;
-		}
-	}
-*/
 	InsetTabularMailer(*this).showDialog(bv);
 }
 
@@ -1929,17 +1905,6 @@ bool InsetTabular::cutSelection(BufferParams const & bp)
 bool InsetTabular::isRightToLeft(BufferView * bv)
 {
 	return bv->getParentLanguage(this)->RightToLeft();
-}
-
-
-int InsetTabular::scroll(bool recursive) const
-{
-	int sx = UpdatableInset::scroll(false);
-
-	if (recursive && the_locking_inset)
-		sx += the_locking_inset->scroll(recursive);
-
-	return sx;
 }
 
 

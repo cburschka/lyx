@@ -123,16 +123,6 @@ public:
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
-	int scroll(bool recursive = true) const;
-	///
-	void scroll(BufferView * bv, float sx) const {
-		UpdatableInset::scroll(bv, sx);
-	}
-	///
-	void scroll(BufferView * bv, int offset) const {
-		UpdatableInset::scroll(bv, offset);
-	}
-	///
 	int numParagraphs() const;
 	///
 	LyXText * getText(int) const;
@@ -217,8 +207,7 @@ private:
 		has_selection = true;
 	}
 	///
-	bool activateCellInset(BufferView *, int x = 0, int y = 0,
-			       bool behind = false);
+	void activateCellInset(BufferView *, int x, int y, bool behind);
 	///
 	bool hasPasteBuffer() const;
 	///
@@ -237,8 +226,6 @@ private:
 	//
 	// Private structures and variables
 	///
-	InsetText * the_locking_inset;
-	///
 	Buffer const * buffer_;
 	///
 	mutable int cursorx_;
@@ -250,6 +237,8 @@ private:
 	mutable int sel_cell_start;
 	/// the ending cell selection nr
 	mutable int sel_cell_end;
+	/// -1: no cell, >= 0 cell
+	mutable int locked_cell;
 	///
 	mutable int actcell;
 	///

@@ -34,10 +34,10 @@ class InsetTabular;
 class CursorItem {
 public:
 	///
-	CursorItem() : inset_(0), par_(0), pos_(0) {}
+	CursorItem() : inset_(0), idx_(0), par_(0), pos_(0) {}
 	///
 	explicit CursorItem(UpdatableInset * inset)
-		: inset_(inset), par_(0), pos_(0)
+		: inset_(inset), idx_(0), par_(0), pos_(0)
 	{}
 	///
 	LyXText * text() const;
@@ -46,6 +46,8 @@ public:
 public:
 	///
 	UpdatableInset * inset_;
+	///
+	int idx_;
 	///
 	int par_;
 	///

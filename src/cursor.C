@@ -37,6 +37,7 @@ std::ostream & operator<<(std::ostream & os, CursorItem const & item)
 	os << " inset: " << item.inset_
 	   << " code: " << item.inset_->lyxCode()
 	   << " text: " << item.text()
+	   << " idx: " << item.idx_
 //	   << " par: " << item.par_
 //	   << " pos: " << item.pos_
 	   << " x: " << item.inset_->x()
