@@ -2862,7 +2862,7 @@ void Buffer::makeDocBookFile(string const & filename, int column)
 			        Inset *inset = par->GetInset(0);
 				char  lyx_code = inset->LyxCode();
 				if (lyx_code == Inset::LABEL_CODE){
-					command_name+= " id= \"";
+					command_name+= " id=\"";
 					command_name+= ((InsetCommand *) inset)->getContents();
 					command_name+= "\"";
 					desc_on= 3;
@@ -3084,7 +3084,7 @@ void Buffer::SimpleDocBookOnePar(string & file, string & extra,
 					file += tmp_out;
 			}
 		} else if (font2.latex() == LyXFont::ON) {
-			// "TeX"-Mode on == > SGML-Mode on.
+			// "TeX"-Mode on ==> SGML-Mode on.
 			if (c!= '\0')
 				file += c;
 			char_line_count++;

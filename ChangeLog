@@ -1,3 +1,57 @@
+1999-11-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/undo.[Ch]: made the undostack use std::list to store undo's in
+	put the member definitions in undo.C.
+
+	* src/lyxparagraph.h, src/paragraph.C + a lot of files: removed
+	NEW_TEXT and have now only code that was included when this was
+	defined. 
+
+	* src/intl.C (LCombo): use static_cast
+	(LCombo2): ditto
+	(DispatchCallback): ditto
+
+	* src/definitions.h: removed whole file
+	
+	* src/commandtags.h: comment out LFUN_INSERT_INSET_LATEX
+
+	* src/chset.[Ch]: a lot rewritten, does not use lyxlex for cdef
+	parsing and stores in a std:map. a regex defines the file format.
+	removed unneeded members.
+
+	* src/bufferparams.h: added several enums from definitions.h here.
+	Removed unsused destructor. Changed some types to use proper enum
+	types. use block to have the temp_bullets and user_defined_bullets
+	and to make the whole class assignable.
+
+	* src/bufferparams.C (Copy): removed this functions, use a default
+	assignment instead. 
+
+	* src/buffer.h: made isLatex, isLinuxDoc, isDocBook, isSGML and
+	isLiterate const.
+
+	* src/buffer.C (readLyXformat2): commend out all that have with
+	oldpapersize to do. also comment out all that hve to do with
+	insetlatex and insetlatexdel. 
+	(setOldPaperStuff): commented out
+
+	* src/Makefile.am (lyx_SOURCES): remove definitions.h, add undo.C
+
+	* src/LyXAction.C: remove use of inset-latex-insert
+
+	* src/mathed/math_panel.C (button_cb): use static_cast
+
+	* src/insets/Makefile.am (insets_o_SOURCES): removed
+	insetlatex.[Ch] 
+
+	* src/support/lyxstring.C (helper): use the unsigned long
+	specifier, UL, instead of a static_cast.
+
+	* src/support/Makefile.am (libsupport_a_SOURCES): added block.h
+
+	* src/support/block.h: new file. to be used as a c-style array in
+	classes, so that the class can be assignable.
+
 1999-11-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyx_gui_misc.C (askForText): when fl_show_input() returns

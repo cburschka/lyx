@@ -58,8 +58,3 @@ grep -E "_\(\".*\"\)" `find src -name \*.[hHC]` | \
 awk 'BEGIN {FS= ":"} {print $1}' | sort -f -d | uniq >> tmppot
 mv tmppot po/POTFILES.in
 echo "done"
-
-
-
-
-
