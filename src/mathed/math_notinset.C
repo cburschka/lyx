@@ -32,7 +32,7 @@ void MathNotInset::metrics(MathStyles st) const
 {
 	size(st);
 	mathed_char_dim(LM_TC_VAR, size_, '/', ascent_, descent_, width_);
-	width_ = 1;
+	width_ = 0;
 }
 
 
@@ -41,5 +41,5 @@ void MathNotInset::draw(Painter & pain, int x, int y) const
 	xo(x);
 	yo(y);
 
-	drawChar(pain, LM_TC_VAR, size_, x + 4, y, '/');
+	drawChar(pain, LM_TC_VAR, size_, x, y, '/');
 }
