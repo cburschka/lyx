@@ -405,11 +405,14 @@ void RowPainter::paintSelection()
 
 	int const row_y = pit_->y + row_.y_offset();
 
+	bool const sel_starts_here = startpit == pit_ && startrow == rit_;
+	bool const sel_ends_here   = endpit == pit_ && endrow == rit_;
+	bool const sel_on_one_row  = sel_starts_here && sel_ends_here;
+
 	if (text_.bidi.same_direction()) {
 		int x;
 		int w;
-		if ((startpit == pit_ && startrow == rit_) &&
-		    (endpit == pit_ && endrow == rit_)) {
+		if (sel_on_one_row) {
 			if (startx < endx) {
 				x = int(xo_) + startx;
 				w = endx - startx;
@@ -418,11 +421,11 @@ void RowPainter::paintSelection()
 				w = startx - endx;
 			}
 			pain_.fillRectangle(x, yo_, w, h, LColor::selection);
-		} else if (startpit == pit_ && startrow == rit_) {
+		} else if (sel_starts_here) {
 			int const x = is_rtl ? int(xo_) : int(xo_ + startx);
 			int const w = is_rtl ? startx : (width_ - startx);
 			pain_.fillRectangle(x, yo_, w, h, LColor::selection);
-		} else if (endpit == pit_ && endrow == rit_) {
+		} else if (sel_ends_here) {
 			int const x = is_rtl ? int(xo_ + endx) : int(xo_);
 			int const w = is_rtl ? (width_ - endx) : endx;
 			pain_.fillRectangle(x, yo_, w, h, LColor::selection);
