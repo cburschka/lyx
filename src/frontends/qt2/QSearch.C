@@ -41,9 +41,6 @@ void QSearch::build_dialog()
 	bcview().addReadOnly(dialog_->replaceCO);
 	bcview().addReadOnly(dialog_->replacePB);
 	bcview().addReadOnly(dialog_->replaceallPB);
-	bcview().addReadOnly(dialog_->caseCB);
-	bcview().addReadOnly(dialog_->wordsCB);
-	bcview().addReadOnly(dialog_->backwardsCB);
 
 	dialog_->replacePB->setEnabled(false);
 	dialog_->replaceallPB->setEnabled(false);
