@@ -26,7 +26,9 @@
 #include "ControlCopyright.h"
 #include "ControlCredits.h"
 #include "ControlError.h"
+#include "ControlGraphics.h"
 #include "ControlInclude.h"
+#include "ControlIndex.h"
 #include "ControlLog.h"
 #include "ControlMinipage.h"
 #include "ControlPreamble.h"
@@ -49,7 +51,9 @@
 #include "form_copyright.h"
 #include "form_credits.h"
 #include "form_error.h"
+#include "form_graphics.h"
 #include "form_include.h"
+#include "form_index.h"
 #include "form_minipage.h"
 #include "form_preamble.h"
 #include "form_print.h"
@@ -66,7 +70,9 @@
 #include "FormCopyright.h"
 #include "FormCredits.h"
 #include "FormError.h"
+#include "FormGraphics.h"
 #include "FormInclude.h"
+#include "FormIndex.h"
 #include "FormLog.h"
 #include "FormMinipage.h"
 #include "FormPreamble.h"
@@ -80,8 +86,6 @@
 
 #include "FormDocument.h"
 #include "FormExternal.h" 
-#include "FormGraphics.h"
-#include "FormIndex.h"
 #include "FormMathsPanel.h"
 #include "FormParagraph.h"
 #include "FormPreferences.h"
@@ -103,7 +107,9 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUICopyright<FormCopyright, xformsBC>(*lv, *this));
 	add(new GUICredits<FormCredits, xformsBC>(*lv, *this));
 	add(new GUIError<FormError, xformsBC>(*lv, *this));
+	add(new GUIGraphics<FormGraphics, xformsBC>(*lv, *this));
 	add(new GUIInclude<FormInclude, xformsBC>(*lv, *this));
+	add(new GUIIndex<FormIndex, xformsBC>(*lv, *this));
 	add(new GUILog<FormLog, xformsBC>(*lv, *this));
 	add(new GUIMinipage<FormMinipage, xformsBC>(*lv, *this));
 	add(new GUIPreamble<FormPreamble, xformsBC>(*lv, *this));
@@ -116,8 +122,6 @@ Dialogs::Dialogs(LyXView * lv)
 
 	add(new FormDocument(lv, this));
 	add(new FormExternal(lv, this));
-	add(new FormGraphics(lv, this));
-	add(new FormIndex(lv, this));
  	add(new FormMathsPanel(lv, this));
 	add(new FormParagraph(lv, this));
 	add(new FormPreferences(lv, this));

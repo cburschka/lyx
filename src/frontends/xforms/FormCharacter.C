@@ -26,6 +26,7 @@
 using std::vector;
 using std::back_inserter;
 using std::transform;
+using namespace character;
 
 typedef FormCB<ControlCharacter, FormDB<FD_form_character> > base_class;
 
@@ -44,12 +45,12 @@ void FormCharacter::build()
 {
 	dialog_.reset(build_character());
 
-	vector<ControlCharacter::FamilyPair> const family = getFamilyData();
-	vector<ControlCharacter::SeriesPair> const series = getSeriesData();
-	vector<ControlCharacter::ShapePair>  const shape  = getShapeData();
-	vector<ControlCharacter::SizePair>   const size   = getSizeData();
-	vector<ControlCharacter::BarPair>    const bar    = getBarData();
-	vector<ControlCharacter::ColorPair>  const color  = getColorData();
+	vector<FamilyPair> const family = getFamilyData();
+	vector<SeriesPair> const series = getSeriesData();
+	vector<ShapePair>  const shape  = getShapeData();
+	vector<SizePair>   const size   = getSizeData();
+	vector<BarPair>    const bar    = getBarData();
+	vector<ColorPair>  const color  = getColorData();
 	vector<string> const language = getLanguageData();
 
 	// Store the enums for later

@@ -1,5 +1,14 @@
-/* FormGraphics.C
- * FormGraphics Interface Class Implementation
+/* This file is part of
+ * ====================================================== 
+ *
+ *           LyX, The Document Processor
+ *
+ *           Copyright 2000-2001 The LyX Team.
+ *
+ * ======================================================
+ *
+ * \file FormGraphics.C
+ * \author Baruch Even, baruch.even@writeme.com
  */
 
 #include <config.h> 
@@ -8,52 +17,42 @@
 #pragma implementation
 #endif 
 
-#include "lyx_gui_misc.h"
-#include "input_validators.h"
+#include "xformsBC.h"
+#include "ControlGraphics.h"
 #include "FormGraphics.h"
 #include "form_graphics.h"
-#include "Dialogs.h"
-#include "LyXView.h"
-#include "BufferView.h"
 
+//#include "lyx_gui_misc.h"
+#include "input_validators.h"
 #include "debug.h" // for lyxerr
-
 #include "support/lstrings.h"  // for strToDbl & tostr
 #include "support/FileInfo.h"  // for FileInfo
 #include "xforms_helpers.h"     // for browseFile
 #include "support/filetools.h" // for AddName
-#include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"
-
-#include "RadioButtonGroup.h"
-
-#include "support/LAssert.h"
 
 using std::endl;
 using std::make_pair;
-using SigC::slot;
 
-FormGraphics::FormGraphics(LyXView * lv, Dialogs * d)
-	: FormInset(lv, d, _("Graphics")),
-	  inset_(0),
+typedef FormCB<ControlGraphics, FormDB<FD_form_graphics> > base_class;
+
+FormGraphics::FormGraphics(ControlGraphics & c)
+	: base_class(c, _("Graphics")),
 	  // The buttons c-tor values are the number of buttons we use
 	  // This is only to reduce memory waste.
 	  widthButtons(5), heightButtons(4), displayButtons(4),
 	  last_image_path(".")
-{
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showGraphics.connect(slot(this, &FormGraphics::showDialog));
-}
+{}
 
 
-FormGraphics::~FormGraphics()
+void FormGraphics::hide()
 {
 	// Remove all associations for the radio buttons
 	widthButtons.reset();
 	heightButtons.reset();
 	displayButtons.reset();
+
+	FormBase::hide();
 }
 
 
@@ -145,42 +144,10 @@ void FormGraphics::build()
 }
 
 
-FL_FORM * FormGraphics::form() const
-{
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
-}
-
-
-void FormGraphics::disconnect()
-{
-	inset_ = 0;
-	FormInset::disconnect();
-}
-
-
-void FormGraphics::showDialog(InsetGraphics * inset)
-{
-	// If we are connected to another inset, disconnect.
-	if (inset_)
-		ih_.disconnect();
-
-	inset_ = inset;
-
-	ih_ = inset_->hideDialog.connect(slot(this, &FormGraphics::hide));
-	show();
-}
-
-
 void FormGraphics::apply()
 {
-	Assert(inset_ != 0);
-
-	// Take all dialog details and insert them to the inset.
-
 	// Create the parameters structure and fill the data from the dialog.
-	InsetGraphicsParams igp;
+	InsetGraphicsParams & igp = controller().params();
 
 	igp.filename = fl_get_input(dialog_->input_filename);
 
@@ -207,22 +174,13 @@ void FormGraphics::apply()
 	igp.inlineFigure = fl_get_button(dialog_->check_inline);
 
 	igp.testInvariant();
-
-	// Set the parameters in the inset, it also returns true if the new
-	// parameters are different from what was in the inset already.
-	bool changed = inset_->setParams(igp);
-
-	// Tell LyX we've got a change, and mark the document dirty, if it changed.
-	lv_->view()->updateInset(inset_, changed);
 }
 
 
 void FormGraphics::update()
 {
-	Assert(inset_ != 0);
-
 	// Update dialog with details from inset
-	InsetGraphicsParams igp = inset_->getParams();
+	InsetGraphicsParams & igp = controller().params();
 
 	// Update the filename input field
 	fl_set_input(dialog_->input_filename,
@@ -255,23 +213,20 @@ void FormGraphics::update()
 	fl_set_button(dialog_->check_inline,
 	              igp.inlineFigure);
 
-	// update the dialog's read only / read-write status
-	bc().readOnly(lv_->buffer()->isReadonly());
-
 	// Now make sure that the buttons are set correctly.
 	input(0, 0);
 }
 
 
-bool FormGraphics::input(FL_OBJECT *, long data )
+ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT *, long data)
 {
 	State cb = static_cast<State>( data );
 
-	bool inputOK = true;
+	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_NOOP;
 
 	switch (cb) {
 	case CHECKINPUT:
-		inputOK = checkInput();
+		activate = checkInput();
 		break;
 	case BROWSE:
 		browse();
@@ -285,18 +240,17 @@ bool FormGraphics::input(FL_OBJECT *, long data )
 		break;
 	}
 	
-	return inputOK;
+	return activate;
 }
 
 
-bool FormGraphics::checkInput()
+ButtonPolicy::SMInput FormGraphics::checkInput()
 {
 	// Put verifications that the dialog shows some sane values,
 	// if not disallow clicking on ok/apply.
 	// Possibly use a label in the bottom of the dialog to give the reason.
 
-	// Is all input boxes convey a valid meaning?
-	bool inputOK = true;
+	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_VALID;
 
 	// Things that we check (meaning they are incorrect states):
 	// 1. No filename specified.
@@ -317,23 +271,23 @@ bool FormGraphics::checkInput()
 	        || !file.isRegular()
 	        || !file.readable()
 	   )
-		inputOK = false;
+		activate = ButtonPolicy::SMI_NOOP;
 
 	// Width radio button not default and no number.
 	if (!fl_get_button(dialog_->radio_width_default)
 	        && strToDbl(fl_get_input(dialog_->input_width)) <= 0.0) {
 
-		inputOK = false;
+		activate = ButtonPolicy::SMI_NOOP;
 	}
 
 	// Height radio button not default and no number.
 	if (!fl_get_button(dialog_->radio_height_default)
 	        && strToDbl(fl_get_input(dialog_->input_height)) <= 0.0) {
 
-		inputOK = false;
+		activate = ButtonPolicy::SMI_NOOP;
 	}
 
-	return inputOK;
+	return activate;
 }
 
 
@@ -360,7 +314,7 @@ void FormGraphics::browse()
 	
 	// Show the file browser dialog
 	string const new_filename =
-		browseFile(lv_, filename, title, pattern, dir1,
+		browseFile(controller().lv(), filename, title, pattern, dir1,
 			   make_pair(string(), string()));
 
 	// Save the filename to the dialog

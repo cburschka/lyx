@@ -1,3 +1,18 @@
+2001-03-28  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormGraphics.C:
+	* forms/form_graphics.fd:
+	* FormIndex.C:
+	* forms/form_index.fd: implemented controller-view split.
+
+	* Dialogs.C: associated changes.
+
+	* FormCharacter.[Ch]: changes associated with ControlCharacter cleanup.
+
+	* FormCitation.C: changes associated with ControlCitation cleanup.
+
+	* FormMinipage.h: cleaned-up forward declarations.
+
 2001-03-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormMinipage.[Ch]:

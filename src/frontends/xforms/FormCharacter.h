@@ -20,6 +20,7 @@
 #include "lyxfont.h"          // for LyXFont enums
 #include "ControlCharacter.h" // for ControlCharacter enum
 #include "LColor.h"           // for LColor enum
+#include "character.h"        // for FONT_STATE enum
 
 class Combox;
 struct FD_form_character;
@@ -55,17 +56,17 @@ private:
 	///
 	boost::scoped_ptr<Combox> combo_language2_;
 	///
-	std::vector<LyXFont::FONT_FAMILY>         family_;
+	std::vector<LyXFont::FONT_FAMILY>  family_;
 	///
-	std::vector<LyXFont::FONT_SERIES>         series_;
+	std::vector<LyXFont::FONT_SERIES>  series_;
 	///
-	std::vector<LyXFont::FONT_SHAPE>          shape_;
+	std::vector<LyXFont::FONT_SHAPE>   shape_;
 	///
-	std::vector<LyXFont::FONT_SIZE>           size_;
+	std::vector<LyXFont::FONT_SIZE>    size_;
 	///
-	std::vector<ControlCharacter::FONT_STATE> bar_;
+	std::vector<character::FONT_STATE> bar_;
 	///
-	std::vector<LColor::color>                color_;
+	std::vector<LColor::color>         color_;
 };
 
 #endif

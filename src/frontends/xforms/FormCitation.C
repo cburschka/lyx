@@ -11,21 +11,22 @@
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
+#include <config.h>
 #include <algorithm>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
+#include "xformsBC.h"
 #include "ControlCitation.h"
 #include "FormCitation.h"
 #include "form_citation.h"
 #include "gettext.h"
 #include "support/lstrings.h"
-#include "xforms_helpers.h"
-#include "xformsBC.h"
+#include "biblio.h"
 #include "helper_funcs.h"
+#include "xforms_helpers.h"
 
 using std::find;
 using std::max;
@@ -92,6 +93,8 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 {
 	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_NOOP;
 
+	biblio::InfoMap const & theMap = controller().bibkeysInfo();
+
 	if (ob == dialog_->browser_bib) {
 		fl_deselect_browser(dialog_->browser_cite);
 
@@ -102,8 +105,9 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		// Put into browser_info the additional info associated with
 		// the selected browser_bib key
 		fl_clear_browser(dialog_->browser_info);
-		string const tmp = formatted( controller().
-					      getBibkeyInfo(bibkeys[sel-1]),
+
+		string const tmp = formatted(biblio::getInfo(theMap,
+							     bibkeys[sel-1]),
 					      dialog_->browser_info->w-10 );
 		fl_add_browser_line(dialog_->browser_info, tmp.c_str());
 
@@ -151,9 +155,9 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 			// with the selected browser_cite key
 			fl_clear_browser(dialog_->browser_info);
 			string const tmp =
-				formatted( controller(). 
-					   getBibkeyInfo(bibkeys[n]),
-					   dialog_->browser_info->w-10 );
+				formatted(biblio::getInfo(theMap,
+							  bibkeys[sel-1]),
+					  dialog_->browser_info->w-10);
 			fl_add_browser_line(dialog_->browser_info, tmp.c_str());
 		}
 
@@ -237,13 +241,13 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 
 		string const str = fl_get_input(dialog_->input_search);
 
-		ControlCitation::Direction const dir =
+		biblio::Direction const dir =
 			(ob == dialog_->button_previous) ?
-			ControlCitation::BACKWARD : ControlCitation::FORWARD;
+			biblio::BACKWARD : biblio::FORWARD;
 
-		ControlCitation::Search const type =
+		biblio::Search const type =
 			fl_get_button(dialog_->button_search_type) ?
-			ControlCitation::REGEX : ControlCitation::SIMPLE;
+			biblio::REGEX : biblio::SIMPLE;
 
 		vector<string>::const_iterator start = bibkeys.begin();
 		int const sel = fl_get_browser(dialog_->browser_bib);
@@ -251,14 +255,14 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 			start += sel-1;
 
 		// Find the NEXT instance...
-		if (dir == ControlCitation::FORWARD)
+		if (dir == biblio::FORWARD)
 			start += 1;
 		else
 			start -= 1;
 
 		vector<string>::const_iterator const cit =
-			searchKeys(controller(), bibkeys, str, start,
-				   type, dir);
+			biblio::searchKeys(theMap, bibkeys, str,
+					   start, type, dir);
 
 		if (cit == bibkeys.end())
 			return ButtonPolicy::SMI_NOOP;
@@ -286,7 +290,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 void FormCitation::update()
 {
 	// Make the list of all available bibliography keys
-	bibkeys = controller().getBibkeys();
+	bibkeys = biblio::getKeys(controller().bibkeysInfo());
 	updateBrowser(dialog_->browser_bib, bibkeys);
 
 	// Ditto for the keys cited in this inset

@@ -20,9 +20,7 @@
 
 #include "FormBase.h"
 
-class LyXView;
-class Dialogs;
-class InsetMinipage;
+class ControlMinipage;
 struct FD_form_minipage;
 
 /** This class provides an XForms implementation of the Minipage
