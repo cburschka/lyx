@@ -1,3 +1,12 @@
+2001-07-30  Baruch Even  <baruch@lyx.org>
+
+	* insetgraphics.C: Added EPSI to be an alias of EPS.
+
+2001-07-29  Baruch Even  <baruch@lyx.org>
+
+	* insetgraphics.C: Change GRAPHICS to Graphics.
+	Changed image conversion rules (documented at the beginning of file).
+
 2001-07-28  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetert.C (get_new_label): int -> Paragraph::size_type to get

@@ -9,18 +9,12 @@
  * ====================================================== */
 
 /*
-How to use it for now:
-    * The lyxfunc 'graphics-insert' will insert this inset into the document.
-*/
-
-/*
 Major tasks:
 	* Switch to convert the images in the background, this requires work on
 		the converter, the systemcontroller and the graphics cache.
 
 Minor tasks:
     * Pop up a dialog if the widget version is higher than what we accept.
-	* Prepare code to read FigInset insets to upgrade upwards
 	* Provide sed/awk/C code to downgrade from InsetGraphics to FigInset(?)
         
 */
@@ -50,11 +44,11 @@ Known BUGS:
 		
 TODO Before initial production release:
     * Replace insetfig everywhere
-        * Read it's file format
-        * Get created by all commands used to create figinset currently.
         * Search for comments of the form
             // INSET_GRAPHICS: remove this when InsetFig is thrown.
-          And act upon them.
+          And act upon them. Make sure not to remove InsetFig code for the 
+		  1.2.0 release, only afterwards, after deployment shows InsetGraphics
+		  to be ok.
  
 TODO Extended features:
  
@@ -76,6 +70,9 @@ TODO Extended features:
 	* Add support for the 'picinpar' package.
 	* Improve support for 'subfigure' - Allow to set the various options
 		that are possible.
+	* Add resizing by percentage of image size (50%, 150%) - usefull for two
+		images of different size to be resized where they both should have
+		the same scale compared to each other.
  */
 
 /* NOTES:
@@ -112,9 +109,16 @@ TODO Extended features:
  * moving the document file and its images with no problem.
  *
  * Conversions:
- *  
- *  Apparently the PNG output is preferred over PDF images when doing PDF
- *  documents (i.e. prefer imagemagick eps2png over eps2pdf)
+ *   Postscript output means EPS figures.
+ *
+ *   PDF output is best done with PDF figures if it's a direct conversion
+ *   or PNG figures otherwise.
+ *   	Image format
+ *   	from        to
+ *   	EPS         epstopdf
+ *   	JPG/PNG     direct
+ *   	PDF         direct
+ *   	others      PNG
  */
 
 #include <config.h> 
@@ -151,6 +155,7 @@ extern string system_tempdir;
 
 using std::ostream;
 using std::endl;
+
 
 // This function is a utility function
 inline
@@ -331,7 +336,7 @@ Inset::EDITABLE InsetGraphics::editable() const
 
 void InsetGraphics::write(Buffer const * buf, ostream & os) const
 {
-	os << "GRAPHICS FormatVersion 1\n";
+	os << "Graphics FormatVersion 1\n";
 
 	params.Write(buf, os);
 }
@@ -341,12 +346,12 @@ void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
 {
 	string const token = lex.GetString();
 
-	if (token == "GRAPHICS")
+	if (token == "Graphics")
 		readInsetGraphics(buf, lex);
 	else if (token == "Figure") // Compatibility reading of FigInset figures.
 		readFigInset(buf, lex);
 	else
-		lyxerr[Debug::INFO] << "Not a GRAPHICS or Figure inset!\n";
+		lyxerr[Debug::INFO] << "Not a Graphics or Figure inset!\n";
 
 	updateInset();
 }
@@ -505,6 +510,30 @@ InsetGraphics::createLatexOptions() const
 	return opts;
 }
 
+namespace {
+	
+string decideOutputImageFormat(string const & in_fmt)
+{
+	// lyxrc.pdf_mode means:
+	// Are we creating a PDF or a PS file?
+	// (Should actually mean, are we using latex or pdflatex).
+	
+	if (lyxrc.pdf_mode) {
+		if (in_fmt == "eps" || in_fmt == "epsi" || in_fmt == "pdf")
+			return "pdf";
+		else if (in_fmt == "jpg" || in_fmt == "jpeg")
+			return in_fmt;
+		else
+			return "png";
+	}
+
+	// If it's postscript, we always do eps.
+	if (in_fmt == "eps" || in_fmt == "epsi")
+		return in_fmt; // eps & epsi are both eps, but different extension.
+	return "eps";
+}
+
+} // Anon. namespace
 
 string const 
 InsetGraphics::prepareFile(Buffer const *buf) const
@@ -531,7 +560,7 @@ InsetGraphics::prepareFile(Buffer const *buf) const
 	
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we usind latex or pdflatex).
-	string const image_target = (lyxrc.pdf_mode ? "png" : "eps");
+	string const image_target = decideOutputImageFormat(extension);
 
 	if (extension == image_target)
 		return params.filename;
