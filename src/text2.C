@@ -2156,8 +2156,10 @@ void LyXText::setCursorIntern(BufferView * bview, Paragraph * par,
 	InsetText * it = static_cast<InsetText *>(par->inInset());
 	if (it) {
 		if (it != inset_owner) {
-			lyxerr << "InsetText   is " << it << endl;
-			lyxerr << "inset_owner is " << inset_owner << endl;
+			lyxerr[Debug::INSETS] << "InsetText   is " << it
+					      << endl
+					      << "inset_owner is "
+					      << inset_owner << endl;
 #ifdef WITH_WARNINGS
 #warning I believe this code is wrong. (Lgb)
 #warning Jürgen, have a look at this. (Lgb)

@@ -21,7 +21,6 @@ Columns			2
 Sides			1
 PageStyle		Plain
 MaxCounter		Counter_Section
-ProvidesAmsmath		1
 
 # Standard style definition
 Style Standard

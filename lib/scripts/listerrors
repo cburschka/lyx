@@ -1,0 +1,154 @@
+#!/usr/bin/python
+"""reformat noweb and compiler errors for LyX.
+
+Expects to read from stdin and output to stdout.
+"""
+
+__author__ = "Kayvan A. Sylvan <kayvan@sylvan.com>"
+__date__ = "$Date: 2002/03/19 21:42:48 $"
+__version__ = "$Revision: 1.1 $"
+__credits__ = """Edmar Wienskoski Jr. <edmar-w-jr@technologist.com>
+    original Literate support for LyX.
+Bernard Michael Hurley <berhardh@westherts.ac.uk>
+    modifications to original listerrors."""
+__copyright__ = "Copyright 2002 - The LyX team."
+
+import sys
+
+def write_error(msg, tool = "noweb", line_number = 1):
+  """Write out the given message in TeX error style.
+
+  called like: write_error(msg, tool, line_number)."""
+  print "! Build Error: ==> %s ==>\n" % (tool),
+  print " ...\n\nl.%d ...\n" % (line_number),
+  if type(msg) == type("str"): # simple string
+    print msg
+  else: # some kind of list (sequence or tuple)
+    for m in msg:
+        if m != "": print m,
+    print
+
+__lines = [] # lines pushed back
+
+def getline(file = sys.stdin):
+  """read a line from internal stack or from file.
+
+  optional file argument defaults to sys.stdin."""
+  global __lines
+  lines = __lines
+  if lines:
+    line = lines[-1]
+    lines = lines[:-1]
+  else:
+    line = file.readline()
+  return line
+
+def pushline(line):
+  "push a line onto the pushback stack."
+  global __lines
+  lines = __lines
+  lines += (line,) # push a list onto the stack, not individual letters
+
+def main():
+  """Entry point for listerrors. Takes no options.
+
+  Reads stdin and writes to stdout. Filter errors"""
+
+  while 1:
+    line = getline()
+    if line == "": break
+    try_patterns_dispatch = [ noweb_try, gcc_try, xlc_try ]
+    for predicate in try_patterns_dispatch:
+      if predicate(line): break
+def noweb_try(line):
+  """see if line is a noweb error.
+
+  Returns 1 on success, 0 otherwise. Outputs on stdout."""
+  retval = 0
+  if line.find(": unescaped << in documentation chunk") != -1:
+    line_parts = line.split(':')
+    num_str = line_parts[1]
+    num_len = len(num_str)
+    i = 0
+    while i < num_len and num_str[i].isdigit(): i += 1
+    if i == num_len:
+      write_error(":" + line_parts[2], "noweb", int(num_str))
+      retval = 1
+  if (not retval):
+    left = line.find("<<")
+    if (left != -1) and ((left + 2) < len(line)) and \
+       (line[left+2:].find(">>") != -1):
+      write_error(line, "noweb");
+      retval = 1;
+  if (not retval):
+    msgs_to_try = ("couldn't open file",
+      "couldn't open temporary file",
+      "error writing temporary file",
+      "ill-formed option",
+      "unknown option",
+      "Bad format sequence",
+      "Can't open output file",
+      "Can't open temporary file",
+      "Capacity exceeded:",
+      "Ignoring unknown option -",
+      "This can't happen:",
+      "non-numeric line number in")
+    for msg in msgs_to_try:
+      if line.find(msg) != -1:
+        write_error(line, "noweb")
+        retval = 1
+        break
+  return retval
+
+def gcc_try(line):
+  """See if line is a gcc error. Read ahead to handle all the lines.
+
+  Returns 1 on success, 0 otherwise. Outputs on stdout."""
+  retval = 0
+  first_space = line.find(' ')
+  if first_space > 1: # The smallest would be "X: "
+    if line[first_space - 1] == ':':
+      header_to_see = line[:first_space - 1]
+      next_line = getline()
+      if next_line and next_line[:first_space - 1] == header_to_see:
+        num_end = first_space
+        while next_line[num_end].isdigit(): num_end += 1
+        if num_end > first_space: # good!
+          num_str = next_line[first_space:num_end]
+          msgs = []
+          msgs += (line[first_space:],)
+          msgs += (next_line[num_end + 1:],)
+          header_to_see = next_line[:num_end]
+          next_line = getline()
+          while next_line and next_line[:num_end] == header_to_see:
+            msgs += (next_line[num_end + 1:],)
+            next_line = getline()
+          if next_line: pushline(next_line)
+          write_error(msgs, "gcc", int(num_str))
+          retval = 1
+        else: # oops! Not a gcc error.
+          pushline(next_line)
+      elif next_line:
+        pushline(next_line) # return this line to input stream
+  return retval
+
+def xlc_try(line):
+  """see if line is an xlc error.
+
+  Returns 1 on success, 0 otherwise. Outputs on stdout."""
+  retval = 0
+  if line[0] == '"': # This is the first character of all xlc errors
+    next_quote = line.find('"', 1)
+    first_space = line.find(' ')
+    if (next_quote != -1) and (first_space > next_quote): # no space inisde quotes
+      if line[first_space - 1:first_space + 6] == ", line ":
+        num_start = num_end = first_space + 6
+        while line[num_end].isdigit(): num_end += 1
+        if num_end > num_start:
+          write_error(line, "xlc", int(line[num_start : num_end]))
+          retval = 1
+  return retval
+  
+
+if __name__ == "__main__":
+  main()

@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES = *.orig *.rej *~ *.bak core textclass.lst packages.lst \
 		lyxrc.defaults doc/LyXConfig.lyx
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in listerrors
+MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 SUBDIRS = reLyX
 
 M4=m4
@@ -35,7 +35,7 @@ LYXLIBDIRS = bind clipart doc examples help images kbd layouts scripts \
              templates tex ui
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
-	external_templates $(LYXLIBDIRS) build-listerrors \
+	external_templates $(LYXLIBDIRS) \
 	encodings languages symbols configure configure.m4
 
 $(srcdir)/configure: $(srcdir)/configure.m4
@@ -56,14 +56,11 @@ install-data-local: libinstalldirs
 	   $(INSTALL_DATA) ${srcdir}/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \
 	done
 
-install-exec-local: libinstalldirs listerrors
+install-exec-local: libinstalldirs 
 	files=`cd ${srcdir} ; echo $(LYXSCRIPTS)` ; \
 	for i in $${files} ; do \
 	   $(INSTALL_SCRIPT) ${srcdir}/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \
 	done
-	if [ -s listerrors ]; then \
-	   $(INSTALL_SCRIPT) listerrors $(DESTDIR)$(bindir)/listerrors; \
-	fi
 
 uninstall-local:
 	@$(NORMAL_UNINSTALL)
@@ -81,6 +78,3 @@ dist-hook:
 	rm -rf doc/.cvsignore; \
 	[ -f doc/UserGuide.lyx ] || { cvs -Q export -r HEAD -d doc lyxdoc || \
 	  echo "WARNING: Unable to get LyX Documentation from CVS!" ; true ; }
-
-listerrors: examples/Literate.lyx
-	${srcdir}/build-listerrors ${srcdir}

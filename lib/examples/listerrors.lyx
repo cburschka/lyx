@@ -1,0 +1,859 @@
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
+\textclass literate-article
+\begin_preamble
+%
+% ps2pdf stuff
+%
+\usepackage[ps2pdf,pdftitle={LyX listerrors re-implemented},urlcolor=blue,linktocpage,letterpaper,colorlinks=true]{hyperref}
+\@savsf=1% This is to get around a hyperref+noweb interaction problem
+\hyphenpenalty 10000
+
+%
+% This (from the noweb FAQ) relaxes the constraint that chunks are never broken across pages.
+%
+\def\nwendcode{\endtrivlist \endgroup \vfil\penalty10\vfilneg}
+\let\nwdocspar=\smallbreak
+\end_preamble
+\language english
+\inputencoding auto
+\fontscheme pslatex
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+LyX listerrors:
+\newline 
+rewritten in Python
+\layout Author
+
+Kayvan A.
+ Sylvan
+\newline 
+
+\begin_inset LatexCommand \url{mailto:kayvan@sylvan.com}
+
+\end_inset 
+
+
+\layout Date
+
+3/15/2002
+\layout Abstract
+
+The listerrors program used to be compiled as a C program and installed
+ as 
+\emph on 
+BINDIR/listerrors
+\emph default 
+ along with LyX in order to perform some simple re-formatting of noweb and
+ GCC error messages.
+ This document describes and implements the Python version of the same program.
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Section
+
+Introduction
+\layout Standard
+
+The motivation for this program was Bugzilla bug 190
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Visit 
+\begin_inset LatexCommand \url{http://bugzilla.lyx.org/show_bug.cgi?id=190}
+
+\end_inset 
+
+ for the details.
+\end_inset 
+
+ dealing with the 
+\begin_inset Quotes eld
+\end_inset 
+
+listerrors
+\begin_inset Quotes erd
+\end_inset 
+
+ executable.
+\layout Standard
+
+What is 
+\begin_inset Quotes eld
+\end_inset 
+
+listerrors
+\begin_inset Quotes erd
+\end_inset 
+
+? Usually, LyX has great support for parsing of error messages.
+ For each error in the log file, LyX pops up an error box at that location
+ in the LyX window.
+ The error scanning routines expect these errors to be in a certain format
+ (similar to LaTeX errors).
+ When dealing with Literate Programs, you have 
+\begin_inset Quotes eld
+\end_inset 
+
+noweb
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+See 
+\begin_inset LatexCommand \url{http://www.eecs.harvard.edu/~nr/noweb}
+
+\end_inset 
+
+ for more information about noweb.
+\end_inset 
+
+
+\begin_inset Quotes erd
+\end_inset 
+
+ as well as gcc error messages (and potentially others).
+ The listerrors program attempts to standardize these error messages to
+ a format that LyX can parse and react to.
+\layout Standard
+
+In a nutshell, the problems with the old implementation of listerrors that
+ bug 190 refers to were::
+\layout Enumerate
+
+It was a C program and it was installed in the user path in the same directory
+ as LyX.
+ Having such a generically named binary in, for example, 
+\emph on 
+/usr/bin
+\emph default 
+, was potentially confusing.
+\layout Enumerate
+
+It required that noweb be installed on the compiling machine (the source
+ was extracted by noweb from 
+\emph on 
+SRCDIR/examples/Literate.lyx
+\emph default 
+, compiled and installed by 
+\begin_inset Quotes eld
+\end_inset 
+
+make install
+\begin_inset Quotes erd
+\end_inset 
+
+).
+\layout Standard
+
+The new version deals with these problems in the following fashion:
+\layout Enumerate
+
+Both the example file (this document) and the program are to be added to
+ the LyX CVS repository.
+\layout Enumerate
+
+The program itself will be installed in 
+\emph on 
+SHAREDIR/lyx/scripts
+\emph default 
+, along with other LyX-specific helper scripts.
+\layout Standard
+
+In the design and implementation of this new 
+\begin_inset Quotes eld
+\end_inset 
+
+listerrors
+\begin_inset Quotes erd
+\end_inset 
+
+, the Python
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+See the Python home page (
+\begin_inset LatexCommand \url{http://www.python.org}
+
+\end_inset 
+
+) for more information.
+\end_inset 
+
+ language was chosen since it is fully multi-platform and provides a very
+ uniform and easy to read syntax.
+ This re-write also simplifies the code for 
+\begin_inset Quotes eld
+\end_inset 
+
+listerrors
+\begin_inset Quotes erd
+\end_inset 
+
+ greatly.
+ Python is installed by default on all modern Linux systems and is freely
+ available for all other platforms.
+\layout Scrap
+
+<<listerrors>>=
+\newline 
+#!/usr/bin/python
+\newline 
+"""reformat noweb and compiler errors for LyX.
+\newline 
+
+\newline 
+Expects to read from stdin and output to stdout.
+\newline 
+"""
+\newline 
+
+\newline 
+__author__ = "Kayvan A.
+ Sylvan <kayvan@sylvan.com>"
+\newline 
+__date__ = "$Date: 2002/03/19 21:42:48 $"
+\newline 
+__version__ = "$Revision: 1.1 $"
+\newline 
+__credits__ = """Edmar Wienskoski Jr.
+ <edmar-w-jr@technologist.com>
+\newline 
+    original Literate support for LyX.
+\newline 
+Bernard Michael Hurley <berhardh@westherts.ac.uk>
+\newline 
+    modifications to original listerrors."""
+\newline 
+__copyright__ = "Copyright 2002 - The LyX team."
+\newline 
+
+\newline 
+import sys
+\newline 
+
+\newline 
+<<Function Bodies>>
+\newline 
+
+\newline 
+if __name__ == "__main__":
+\newline 
+  main()
+\newline 
+@
+\layout Section
+
+LaTeX style error message
+\layout Standard
+
+The following function mimics the TeX error message format.
+\layout Scrap
+
+<<Function Bodies>>=
+\newline 
+def write_error(msg, tool = "noweb", line_number = 1):
+\newline 
+  """Write out the given message in TeX error style.
+\newline 
+
+\newline 
+  called like: write_error(msg, tool, line_number)."""
+\newline 
+  print "! Build Error: ==> %s ==>
+\backslash 
+n" % (tool),
+\newline 
+  print " ...
+\backslash 
+n
+\backslash 
+nl.%d ...
+\backslash 
+n" % (line_number),
+\newline 
+  if type(msg) == type("str"): # simple string
+\newline 
+    print msg
+\newline 
+  else: # some kind of list (sequence or tuple)
+\newline 
+    for m in msg:
+\newline 
+        if m != "": print m,
+\newline 
+    print
+\newline 
+
+\newline 
+@ %def write_error
+\layout Section
+
+Filtering errors
+\layout Standard
+
+The only complication in our filtering code is that some parsers might need
+ to push back lines that are read in to be read again later.
+ We solve this problem by implementing a 
+\begin_inset Quotes eld
+\end_inset 
+
+getline
+\begin_inset Quotes erd
+\end_inset 
+
+ and 
+\begin_inset Quotes eld
+\end_inset 
+
+pushline
+\begin_inset Quotes erd
+\end_inset 
+
+ set of functions:
+\layout Scrap
+
+<<Function Bodies>>=
+\newline 
+__lines = [] # lines pushed back
+\newline 
+
+\newline 
+def getline(file = sys.stdin):
+\newline 
+  """read a line from internal stack or from file.
+\newline 
+
+\newline 
+  optional file argument defaults to sys.stdin."""
+\newline 
+  global __lines
+\newline 
+  lines = __lines
+\newline 
+  if lines:
+\newline 
+    line = lines[-1]
+\newline 
+    lines = lines[:-1]
+\newline 
+  else:
+\newline 
+    line = file.readline()
+\newline 
+  return line
+\newline 
+
+\newline 
+@ %def getline
+\layout Standard
+
+And now for the corresponding pushline function:
+\layout Scrap
+
+<<Function Bodies>>=
+\newline 
+def pushline(line):
+\newline 
+  "push a line onto the pushback stack."
+\newline 
+  global __lines
+\newline 
+  lines = __lines
+\newline 
+  lines += (line,) # push a list onto the stack, not individual letters
+\newline 
+
+\newline 
+@ %def pushline
+\layout Standard
+
+The main() entry point function is extremely simple.
+ Note that this version of 
+\begin_inset Quotes eld
+\end_inset 
+
+listerrors
+\begin_inset Quotes erd
+\end_inset 
+
+ takes no options and simply filters, attempting simply to match against
+ the known error message patterns.
+ The listerrors C program handled a single-character command-line argument
+ that the current code no longer needs.
+ 
+\layout Scrap
+
+<<Function Bodies>>=
+\newline 
+def main():
+\newline 
+  """Entry point for listerrors.
+ Takes no options.
+\newline 
+
+\newline 
+  Reads stdin and writes to stdout.
+ Filter errors"""
+\newline 
+
+\newline 
+  while 1:
+\newline 
+    line = getline()
+\newline 
+    if line == "": break
+\newline 
+    <<Check line against patterns and take action>>
+\newline 
+@ %def main
+\layout Standard
+
+For each line read in, we need to find out if it matches any of our tools
+ (noweb, gcc, etc.) and act accordingly.
+\layout Scrap
+
+<<Check line against patterns and take action>>=
+\newline 
+try_patterns_dispatch = [ noweb_try, gcc_try, xlc_try ]
+\newline 
+for predicate in try_patterns_dispatch:
+\newline 
+  if predicate(line): break
+\newline 
+@
+\layout Section
+
+Different Error Formats
+\layout Standard
+
+The following sections handle the various error message formats that we
+ recognize in this program.
+ 
+\layout Subsection
+
+noweb errors
+\layout Standard
+
+Noweb errors are output on a single line, so examining just the current
+ line is enough.
+\layout Scrap
+
+<<Function Bodies>>=
+\newline 
+def noweb_try(line):
+\newline 
+  """see if line is a noweb error.
+\newline 
+
+\newline 
+  Returns 1 on success, 0 otherwise.
+ Outputs on stdout."""
+\newline 
+  retval = 0
+\newline 
+  <<Look for the unescaped angle-brackets in documentation>>
+\newline 
+  <<Look for anything with double angle brackets>>
+\newline 
+  <<Last ditch effort scan for specific strings>>
+\newline 
+  return retval
+\newline 
+
+\newline 
+@ %def noweb_try
+\layout Standard
+
+First, we look for the 
+\begin_inset Quotes eld
+\end_inset 
+
+unescaped < < in documentation chunk
+\begin_inset Quotes erd
+\end_inset 
+
+ message.
+ This is the only message with an associated line number from noweb.
+\layout Scrap
+
+<<Look for the unescaped angle-brackets in documentation>>=
+\newline 
+if line.find(": unescaped << in documentation chunk") != -1:
+\newline 
+  line_parts = line.split(':')
+\newline 
+  num_str = line_parts[1]
+\newline 
+  num_len = len(num_str)
+\newline 
+  i = 0
+\newline 
+  while i < num_len and num_str[i].isdigit(): i += 1
+\newline 
+  if i == num_len:
+\newline 
+    write_error(":" + line_parts[2], "noweb", int(num_str))
+\newline 
+    retval = 1
+\newline 
+@
+\layout Standard
+
+Some noweb messages are simply about undefined scraps.
+ These can be seen by looking for matching double-angle-brackets.
+\layout Scrap
+
+<<Look for anything with double angle brackets>>=
+\newline 
+if (not retval):
+\newline 
+  left = line.find("<<")
+\newline 
+  if (left != -1) and ((left + 2) < len(line)) and 
+\backslash 
+
+\newline 
+     (line[left+2:].find(">>") != -1):
+\newline 
+    write_error(line, "noweb");
+\newline 
+    retval = 1;
+\newline 
+@
+\layout Standard
+
+Finally, here is an additional list of explicit strings to check for.
+\layout Scrap
+
+<<Last ditch effort scan for specific strings>>=
+\newline 
+if (not retval):
+\newline 
+  msgs_to_try = ("couldn't open file",
+\newline 
+    "couldn't open temporary file",
+\newline 
+    "error writing temporary file",
+\newline 
+    "ill-formed option",
+\newline 
+    "unknown option",
+\newline 
+    "Bad format sequence",
+\newline 
+    "Can't open output file",
+\newline 
+    "Can't open temporary file",
+\newline 
+    "Capacity exceeded:",
+\newline 
+    "Ignoring unknown option -",
+\newline 
+    "This can't happen:",
+\newline 
+    "non-numeric line number in")
+\newline 
+  for msg in msgs_to_try:
+\newline 
+    if line.find(msg) != -1:
+\newline 
+      write_error(line, "noweb")
+\newline 
+      retval = 1
+\newline 
+      break
+\newline 
+@
+\layout Subsection
+
+gcc errors
+\layout Standard
+
+The gcc errors can be multi-line, with the following format:
+\layout LyX-Code
+
+foo.c: In function `main': 
+\newline 
+foo.c:3: `bar' undeclared (first use in this function) 
+\newline 
+foo.c:3: (Each undeclared identifier is reported only once 
+\newline 
+foo.c:3: for each function it appears in.) 
+\newline 
+foo.c:3: parse error before `x'
+\layout Standard
+
+In order to parse this, the gcc error handler has to look ahead and return
+ any and all lines that do not match the expected pattern.
+\layout Scrap
+
+<<Function Bodies>>=
+\newline 
+def gcc_try(line):
+\newline 
+  """See if line is a gcc error.
+ Read ahead to handle all the lines.
+\newline 
+
+\newline 
+  Returns 1 on success, 0 otherwise.
+ Outputs on stdout."""
+\newline 
+  retval = 0
+\newline 
+  <<Handle the gcc error message>>
+\newline 
+  return retval
+\newline 
+
+\newline 
+@ %def gcc_try
+\layout Standard
+
+The error message starts with a gcc header (as above) without an associated
+ line number.
+\layout Scrap
+
+<<Handle the gcc error message>>= 
+\newline 
+first_space = line.find(' ')
+\newline 
+if first_space > 1: # The smallest would be "X: "
+\newline 
+  if line[first_space - 1] == ':':
+\newline 
+    header_to_see = line[:first_space - 1]
+\newline 
+    next_line = getline()
+\newline 
+    if next_line and next_line[:first_space - 1] == header_to_see:
+\newline 
+      num_end = first_space
+\newline 
+      while next_line[num_end].isdigit(): num_end += 1
+\newline 
+      if num_end > first_space: # good!
+\newline 
+        <<Accumulate gcc error lines and print it>>
+\newline 
+      else: # oops! Not a gcc error.
+\newline 
+        pushline(next_line)
+\newline 
+    elif next_line:
+\newline 
+      pushline(next_line) # return this line to input stream
+\newline 
+@
+\layout Standard
+
+At the point in the code that we know that we are in the middle of an error
+ message, we do the following:
+\layout Scrap
+
+<<Accumulate gcc error lines and print it>>=
+\newline 
+num_str = next_line[first_space:num_end]
+\newline 
+msgs = []
+\newline 
+msgs += (line[first_space:],)
+\newline 
+msgs += (next_line[num_end + 1:],)
+\newline 
+header_to_see = next_line[:num_end]
+\newline 
+next_line = getline()
+\newline 
+while next_line and next_line[:num_end] == header_to_see:
+\newline 
+  msgs += (next_line[num_end + 1:],)
+\newline 
+  next_line = getline()
+\newline 
+if next_line: pushline(next_line)
+\newline 
+write_error(msgs, "gcc", int(num_str))
+\newline 
+retval = 1
+\newline 
+@
+\layout Subsection
+
+xlc errors
+\layout Standard
+
+A xlc error message is easy to identify.
+ Every error message starts with a quoted string with no spaces, a comma,
+ a space, the word 
+\begin_inset Quotes eld
+\end_inset 
+
+line
+\begin_inset Quotes erd
+\end_inset 
+
+, a space, and some variable text.
+ The following routine tests if a given buffer line matches this criteria
+ (this code would probably be simpler if I used the 
+\begin_inset Quotes eld
+\end_inset 
+
+re
+\begin_inset Quotes erd
+\end_inset 
+
+ regexp module, but we don't really need the full regular expression engine
+ here).
+ 
+\layout Scrap
+
+<<Function Bodies>>=
+\newline 
+def xlc_try(line):
+\newline 
+  """see if line is an xlc error.
+\newline 
+
+\newline 
+  Returns 1 on success, 0 otherwise.
+ Outputs on stdout."""
+\newline 
+  retval = 0
+\newline 
+  if line[0] == '"': # This is the first character of all xlc errors
+\newline 
+    next_quote = line.find('"', 1)
+\newline 
+    first_space = line.find(' ')
+\newline 
+    if (next_quote != -1) and (first_space > next_quote): # no space inisde
+ quotes
+\newline 
+      if line[first_space - 1:first_space + 6] == ", line ":
+\newline 
+        num_start = num_end = first_space + 6
+\newline 
+        while line[num_end].isdigit(): num_end += 1
+\newline 
+        if num_end > num_start:
+\newline 
+          write_error(line, "xlc", int(line[num_start : num_end]))
+\newline 
+          retval = 1
+\newline 
+  return retval
+\newline 
+  
+\newline 
+@ %def xlc_try
+\layout Section
+
+Extracting the code
+\layout Standard
+
+This project can be tangled from LyX if you set your 
+\begin_inset Quotes eld
+\end_inset 
+
+Program
+\begin_inset Quotes erd
+\end_inset 
+
+ convertor to call a generic script that always extracts a scrap named 
+\family typewriter 
+build-script
+\family default 
+ and executes it.
+ Here is an example of such a generic script:
+\layout LyX-Code
+
+#!/bin/sh
+\newline 
+notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 sh
+\layout Standard
+
+This section defines our build-script, which extracts the code.
+\layout Scrap
+
+<<build-script>>=
+\newline 
+#!/bin/sh
+\newline 
+if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=listerrors.nw; fi
+\newline 
+notangle -Rlisterrors ${NOWEB_SOURCE} > listerrors
+\newline 
+chmod +x listerrors
+\newline 
+@
+\layout Section
+
+Indices
+\layout Standard
+
+This section provides cross-references into the rest of the program.
+\layout Subsection
+
+Macros
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+nowebchunks
+\end_inset 
+
+
+\layout Subsection
+
+Identifiers
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+nowebindex
+\end_inset 
+
+
+\the_end
