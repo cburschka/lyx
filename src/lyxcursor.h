@@ -79,10 +79,6 @@ public:
 	 * FIXME: explain why we need this ? especially for y...
 	 */
 	int iy() const;
-	/// set the row of the paragraph the cursor is in
-	void row(RowList::iterator r);
-	/// return the row of the paragraph this cursor is in
-	RowList::iterator row() const;
 	/// set the stored next row
 	void irow(RowList::iterator r);
 	/**
@@ -124,8 +120,6 @@ private:
 	int y_;
 	/// the stored next-row y position
 	int iy_;
-	/// the containing row
-	RowList::iterator row_;
 	/// the containing row for the next line
 	RowList::iterator irow_;
 };

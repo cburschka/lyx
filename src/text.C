@@ -1503,17 +1503,17 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	// move one row up!
 	// This touches only the screen-update. Otherwise we would may have
 	// an empty row on the screen
-	if (cursor.pos() && cursor.row()->pos() == cursor.pos()
-	    && !cursor.row()->par()->isNewline(cursor.pos() - 1))
+	if (cursor.pos() && cursorRow()->pos() == cursor.pos()
+	    && !cursorRow()->par()->isNewline(cursor.pos() - 1))
 	{
 		cursorLeft(bv());
 	}
 
-	int y = cursor.y() - cursor.row()->baseline();
+	int y = cursor.y() - cursorRow()->baseline();
 
 	// Do not forget the special right address boxes
 	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
-		RowList::iterator r = cursor.row();
+		RowList::iterator r = cursorRow();
 		RowList::iterator beg = rows().begin();
 
 		while (r != beg && boost::prior(r)->par() == r->par()) {
@@ -1524,12 +1524,12 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 
 	postPaint(y);
 
-	removeParagraph(cursor.row());
+	removeParagraph(cursorRow());
 
 	// set the dimensions of the cursor row
-	cursor.row()->fill(fill(cursor.row(), workWidth()));
+	cursorRow()->fill(fill(cursorRow(), workWidth()));
 
-	setHeightOfRow(cursor.row());
+	setHeightOfRow(cursorRow());
 
 #warning Trouble Point! (Lgb)
 	// When ::breakParagraph is called from within an inset we must
@@ -1540,7 +1540,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	while (!next_par->empty() && next_par->isNewline(0))
 		next_par->erase(0);
 
-	insertParagraph(next_par, boost::next(cursor.row()));
+	insertParagraph(next_par, boost::next(cursorRow()));
 	updateCounters();
 
 	// This check is necessary. Otherwise the new empty paragraph will
@@ -1550,8 +1550,8 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	else
 		setCursor(cursor.par(), 0);
 
-	if (boost::next(cursor.row()) != rows().end())
-		breakAgain(boost::next(cursor.row()));
+	if (boost::next(cursorRow()) != rows().end())
+		breakAgain(boost::next(cursorRow()));
 
 	need_break_row = rows().end();
 }
@@ -1575,8 +1575,8 @@ void LyXText::insertChar(char c)
 	// When the free-spacing option is set for the current layout,
 	// disable the double-space checking
 
-	bool const freeSpacing = cursor.row()->par()->layout()->free_spacing ||
-		cursor.row()->par()->isFreeSpacing();
+	bool const freeSpacing = cursorRow()->par()->layout()->free_spacing ||
+		cursorRow()->par()->isFreeSpacing();
 
 	if (lyxrc.auto_number) {
 		static string const number_operators = "+-/*";
@@ -1670,17 +1670,17 @@ void LyXText::insertChar(char c)
 	}
 
 	// the display inset stuff
-	if (cursor.row()->pos() < cursor.row()->par()->size()
-	    && cursor.row()->par()->isInset(cursor.row()->pos())) {
-		Inset * inset = cursor.row()->par()->getInset(cursor.row()->pos());
+	if (cursorRow()->pos() < cursorRow()->par()->size()
+	    && cursorRow()->par()->isInset(cursorRow()->pos())) {
+		Inset * inset = cursorRow()->par()->getInset(cursorRow()->pos());
 		if (inset && (inset->display() || inset->needFullRow())) {
 			// force a new break
-			cursor.row()->fill(-1); // to force a new break
+			cursorRow()->fill(-1); // to force a new break
 		}
 	}
 
 	// get the cursor row fist
-	RowList::iterator row = cursor.row();
+	RowList::iterator row = cursorRow();
 	int y = cursor.y() - row->baseline();
 	if (c != Paragraph::META_INSET) {
 		// Here case LyXText::InsertInset  already insertet the character
@@ -1705,7 +1705,7 @@ void LyXText::insertChar(char c)
 		|| cursor.par()->isNewline(cursor.pos())
 		|| ((cursor.pos() + 1 < cursor.par()->size()) &&
 		    cursor.par()->isInset(cursor.pos() + 1))
-		|| cursor.row()->fill() == -1))
+		|| cursorRow()->fill() == -1))
 	{
 		pos_type z = rowBreakPoint(*boost::prior(row));
 
@@ -2290,7 +2290,6 @@ void LyXText::deleteWordForward()
 		cursorRight(bv());
 	else {
 		LyXCursor tmpcursor = cursor;
-		tmpcursor.row(0); // ??
 		selection.set(true); // to avoid deletion
 		cursorRightOneWord();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
@@ -2311,7 +2310,6 @@ void LyXText::deleteWordBackward()
 		cursorLeft(bv());
 	else {
 		LyXCursor tmpcursor = cursor;
-		tmpcursor.row(0); // ??
 		selection.set(true); // to avoid deletion
 		cursorLeftOneWord();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
@@ -2333,7 +2331,6 @@ void LyXText::deleteLineForward()
 		LyXCursor tmpcursor = cursor;
 		// We can't store the row over a regular setCursor
 		// so we set it to 0 and reset it afterwards.
-		tmpcursor.row(0); // ??
 		selection.set(true); // to avoid deletion
 		cursorEnd();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
@@ -2397,8 +2394,8 @@ void LyXText::changeCase(LyXText::TextCase action)
 		++pos;
 	}
 
-	if (to.row() != from.row())
-		postPaint(from.y() - from.row()->baseline());
+	if (getRow(to) != getRow(from))
+		postPaint(from.y() - getRow(from)->baseline());
 }
 
 
@@ -2480,10 +2477,10 @@ void LyXText::backspace()
 				cursorLeft(bv());
 
 				// the layout things can change the height of a row !
-				int const tmpheight = cursor.row()->height();
-				setHeightOfRow(cursor.row());
-				if (cursor.row()->height() != tmpheight) {
-					postPaint(cursor.y() - cursor.row()->baseline());
+				int const tmpheight = cursorRow()->height();
+				setHeightOfRow(cursorRow());
+				if (cursorRow()->height() != tmpheight) {
+					postPaint(cursor.y() - cursorRow()->baseline());
 				}
 				return;
 			}
@@ -2496,7 +2493,7 @@ void LyXText::backspace()
 		}
 
 		ParagraphList::iterator tmppit = cursor.par();
-		RowList::iterator tmprow = cursor.row();
+		RowList::iterator tmprow = cursorRow();
 
 		// We used to do cursorLeftIntern() here, but it is
 		// not a good idea since it triggers the auto-delete
@@ -2538,7 +2535,7 @@ void LyXText::backspace()
 				if (cursor.pos())
 					cursor.pos(cursor.pos() - 1);
 
-			postPaint(cursor.y() - cursor.row()->baseline());
+			postPaint(cursor.y() - cursorRow()->baseline());
 
 			// remove the lost paragraph
 			// This one is not safe, since the paragraph that the tmprow and the
@@ -2549,7 +2546,7 @@ void LyXText::backspace()
 			//RemoveRow(tmprow);
 
 			// This rebuilds the rows.
-			appendParagraph(cursor.row());
+			appendParagraph(cursorRow());
 			updateCounters();
 
 			// the row may have changed, block, hfills etc.
@@ -2577,7 +2574,7 @@ void LyXText::backspace()
 			}
 		}
 
-		RowList::iterator row = cursor.row();
+		RowList::iterator row = cursorRow();
 		int y = cursor.y() - row->baseline();
 		pos_type z;
 		// remember that a space at the end of a row doesnt count
@@ -2755,6 +2752,42 @@ void LyXText::backspace()
 	}
 }
 
+
+RowList::iterator LyXText::cursorRow() const
+{
+	return getRow(cursor.par(), cursor.pos());
+}
+
+
+RowList::iterator LyXText::getRow(LyXCursor const & cur) const
+{
+	return getRow(cur.par(), cur.pos());
+}
+
+
+RowList::iterator
+LyXText::getRow(ParagraphList::iterator pit, pos_type pos) const
+{
+	if (rows().empty())
+		return rowlist_.end();
+
+	// find the first row of the specified paragraph
+	RowList::iterator rit = rowlist_.begin();
+	RowList::iterator end = rowlist_.end();
+	while (boost::next(rit) != end && rit->par() != pit) {
+		++rit;
+	}
+
+	// now find the wanted row
+	while (rit->pos() < pos
+	       && boost::next(rit) != end
+	       && boost::next(rit)->par() == pit
+	       && boost::next(rit)->pos() <= pos) {
+		++rit;
+	}
+
+	return rit;
+}
 
 // returns pointer to a specified row
 RowList::iterator

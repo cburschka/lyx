@@ -243,12 +243,14 @@ bool LyXScreen::fitManualCursor(BufferView * bv, LyXText * text,
 }
 
 
-unsigned int LyXScreen::topCursorVisible(LyXCursor const & cursor, int top_y)
+unsigned int LyXScreen::topCursorVisible(LyXText * text)
 {
-	int const vheight = workarea().workHeight();
+	LyXCursor const & cursor = text->cursor;
+	int top_y = text->top_y();
 	int newtop = top_y;
+	int const vheight = workarea().workHeight();
 
-	RowList::iterator row = cursor.row();
+	RowList::iterator row = text->cursorRow();
 
 #warning SUPER HACK DISABLED (Lgb)
 #if 0
@@ -263,9 +265,8 @@ unsigned int LyXScreen::topCursorVisible(LyXCursor const & cursor, int top_y)
 				+ row->height()
 				- row->baseline() - vheight;
 		} else {
-			// scroll down
-			newtop = cursor.y()
-				- vheight / 2;   /* the scroll region must be so big!! */
+			// scroll down, the scroll region must be so big!!
+			newtop = cursor.y() - vheight / 2; 
 		}
 
 	} else if (static_cast<int>((cursor.y()) - row->baseline()) <
@@ -289,7 +290,7 @@ unsigned int LyXScreen::topCursorVisible(LyXCursor const & cursor, int top_y)
 bool LyXScreen::fitCursor(LyXText * text, BufferView * bv)
 {
 	// Is a change necessary?
-	int const newtop = topCursorVisible(text->cursor, text->top_y());
+	int const newtop = topCursorVisible(text);
 	bool const result = (newtop != text->top_y());
 	if (result) {
 		draw(text, bv, newtop);
@@ -348,13 +349,13 @@ void LyXScreen::toggleSelection(LyXText * text, BufferView * bv,
 
 	int const bottom = min(
 		max(static_cast<int>(text->selection.end.y()
-				     - text->selection.end.row()->baseline()
-				     + text->selection.end.row()->height()),
+				     - text->getRow(text->selection.end)->baseline()
+				     + text->getRow(text->selection.end)->height()),
 		    text->top_y()),
 		static_cast<int>(text->top_y() + workarea().workHeight()));
 	int const top = min(
 		max(static_cast<int>(text->selection.start.y() -
-				     text->selection.start.row()->baseline()),
+				     text->getRow(text->selection.start)->baseline()),
 		    text->top_y()),
 		static_cast<int>(text->top_y() + workarea().workHeight()));
 
@@ -381,10 +382,10 @@ void LyXScreen::toggleToggle(LyXText * text, BufferView * bv,
 		return;
 
 	int const top_tmp = text->toggle_cursor.y()
-		- text->toggle_cursor.row()->baseline();
+		- text->getRow(text->toggle_cursor)->baseline();
 	int const bottom_tmp = text->toggle_end_cursor.y()
-		- text->toggle_end_cursor.row()->baseline()
-		+ text->toggle_end_cursor.row()->height();
+		- text->getRow(text->toggle_end_cursor)->baseline()
+		+ text->getRow(text->toggle_end_cursor)->height();
 
 	int const offset = yo < 0 ? yo : 0;
 	int const bottom = min(max(bottom_tmp, text->top_y()),

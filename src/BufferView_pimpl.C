@@ -258,7 +258,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		}
 
 		// FIXME: needed when ?
-		bv_->text->top_y(screen().topCursorVisible(bv_->text->cursor, bv_->text->top_y()));
+		bv_->text->top_y(screen().topCursorVisible(bv_->text));
 
 		// Buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
@@ -409,7 +409,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		bv_->theLockingInset(the_locking_inset);
 	}
 
-	bv_->text->top_y(screen().topCursorVisible(bv_->text->cursor, bv_->text->top_y()));
+	bv_->text->top_y(screen().topCursorVisible(bv_->text));
 
 	switchKeyMap();
 	owner_->busy(false);

@@ -243,7 +243,7 @@ void LyXText::cursorPrevious()
 {
 	int y = top_y();
 
-	if (cursor.row() == rows().begin()) {
+	if (cursorRow() == rows().begin()) {
 		if (y > 0) {
 			int new_y = bv()->text->top_y() - bv()->workHeight();
 			bv()->screen().draw(bv()->text, bv(), new_y < 0 ? 0 : new_y);
@@ -252,13 +252,13 @@ void LyXText::cursorPrevious()
 		return;
 	}
 
-	RowList::iterator cursorrow = cursor.row();
+	RowList::iterator cursorrow = cursorRow();
 
 	setCursorFromCoordinates(cursor.x_fix(), y);
 	finishUndo();
 
 	int new_y;
-	if (cursorrow == bv()->text->cursor.row()) {
+	if (cursorrow == bv()->text->cursorRow()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the previous row instead.
 		cursorUp(true);
@@ -272,20 +272,20 @@ void LyXText::cursorPrevious()
 		if (inset_owner) {
 			new_y = bv()->text->cursor.iy()
 				+ bv()->theLockingInset()->insetInInsetY() + y
-				+ cursor.row()->height()
+				+ cursorRow()->height()
 				- bv()->workHeight() + 1;
 		} else {
 			new_y = cursor.y()
-				- cursor.row()->baseline()
-				+ cursor.row()->height()
+				- cursorRow()->baseline()
+				+ cursorRow()->height()
 				- bv()->workHeight() + 1;
 		}
 	}
 	bv()->screen().draw(bv()->text, bv(), new_y < 0 ? 0 : new_y);
-	if (cursor.row() != rows().begin()) {
+	if (cursorRow() != rows().begin()) {
 		LyXCursor cur;
-		setCursor(cur, boost::prior(cursor.row())->par(),
-			  boost::prior(cursor.row())->pos(), false);
+		setCursor(cur, boost::prior(cursorRow())->par(),
+			  boost::prior(cursorRow())->pos(), false);
 		if (cur.y() > top_y()) {
 			cursorUp(true);
 		}
@@ -298,9 +298,9 @@ void LyXText::cursorNext()
 {
 	int topy = top_y();
 
-	if (boost::next(cursor.row()) == rows().end()) {
-		int y = cursor.y() - cursor.row()->baseline() +
-			cursor.row()->height();
+	if (boost::next(cursorRow()) == rows().end()) {
+		int y = cursor.y() - cursorRow()->baseline() +
+			cursorRow()->height();
 		if (y > topy + bv()->workHeight()) {
 			bv()->screen().draw(bv()->text, bv(), bv()->text->top_y() + bv()->workHeight());
 			bv()->updateScrollbar();
@@ -317,13 +317,13 @@ void LyXText::cursorNext()
 
 	getRowNearY(y);
 
-	RowList::iterator cursorrow = cursor.row();
+	RowList::iterator cursorrow = cursorRow();
 	setCursorFromCoordinates(cursor.x_fix(), y);
 	// + bv->workHeight());
 	finishUndo();
 
 	int new_y;
-	if (cursorrow == bv()->text->cursor.row()) {
+	if (cursorrow == bv()->text->cursorRow()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the next row instead.
 		cursorDown(true);
@@ -337,14 +337,14 @@ void LyXText::cursorNext()
 		if (inset_owner) {
 			new_y = bv()->text->cursor.iy()
 				+ bv()->theLockingInset()->insetInInsetY()
-				+ y - cursor.row()->baseline();
+				+ y - cursorRow()->baseline();
 		} else {
-			new_y =  cursor.y() - cursor.row()->baseline();
+			new_y =  cursor.y() - cursorRow()->baseline();
 		}
 	}
 	bv()->screen().draw(bv()->text, bv(), new_y);
 
-	RowList::iterator next_row = boost::next(cursor.row());
+	RowList::iterator next_row = boost::next(cursorRow());
 	if (next_row != rows().end()) {
 		LyXCursor cur;
 		setCursor(cur, next_row->par(), next_row->pos(), false);
@@ -1311,7 +1311,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		RowList::iterator cursorrow = bv->text->cursor.row();
+		RowList::iterator cursorrow = bv->text->cursorRow();
 		bv->text->setCursorFromCoordinates(cmd.x, cmd.y + bv->text->top_y());
 	#if 0
 		// sorry for this but I have a strange error that the y value jumps at
@@ -1323,7 +1323,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			       << bv->text->cursor.y() << endl;
 	#endif
 		// This is to allow jumping over large insets
-		if (cursorrow == bv->text->cursor.row()) {
+		if (cursorrow == bv->text->cursorRow()) {
 			if (cmd.y >= bv->workHeight())
 				bv->text->cursorDown(false);
 			else if (cmd.y < 0)

@@ -65,14 +65,13 @@ public:
 
 	/**
 	 * topCursorVisible - get a new "top" to make the cursor visible
-	 * @param c the cursor
-	 * @param top_y the current y location of the containing region
+	 * in a LyXText
 	 *
 	 * This helper function calculates a new y co-ordinate for
 	 * the top of the containing region such that the cursor contained
 	 * within the LyXText is "nicely" visible.
 	 */
-	virtual unsigned int topCursorVisible(LyXCursor const & c, int top_y);
+	virtual unsigned int topCursorVisible(LyXText *);
 
 	/**
 	 * fitCursor - fit the cursor onto the work area

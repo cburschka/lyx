@@ -948,7 +948,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 					}
 					goto exit_with_message;
 				case LFUN_DOWN:
-					if (boost::next(TEXT()->cursor.row()) != TEXT()->rows().end())
+					if (boost::next(TEXT()->cursorRow()) != TEXT()->rows().end())
 						TEXT()->cursorDown(view());
 					else
 						TEXT()->cursorRight(view());

@@ -623,7 +623,7 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 
 void LyXText::redoHeightOfParagraph()
 {
-	RowList::iterator tmprow = cursor.row();
+	RowList::iterator tmprow = cursorRow();
 	int y = cursor.y() - tmprow->baseline();
 
 	setHeightOfRow(tmprow);
@@ -643,7 +643,7 @@ void LyXText::redoHeightOfParagraph()
 
 void LyXText::redoDrawingOfParagraph(LyXCursor const & cur)
 {
-	RowList::iterator tmprow = cur.row();
+	RowList::iterator tmprow = getRow(cur);
 
 	int y = cur.y() - tmprow->baseline();
 	setHeightOfRow(tmprow);
@@ -665,7 +665,7 @@ void LyXText::redoDrawingOfParagraph(LyXCursor const & cur)
 void LyXText::redoParagraphs(LyXCursor const & cur,
 			     ParagraphList::iterator endpit)
 {
-	RowList::iterator tmprit = cur.row();
+	RowList::iterator tmprit = getRow(cur);
 	int y = cur.y() - tmprit->baseline();
 
 	ParagraphList::iterator first_phys_pit;
@@ -849,7 +849,7 @@ void LyXText::clearSelection()
 
 void LyXText::cursorHome()
 {
-	setCursor(cursor.par(), cursor.row()->pos());
+	setCursor(cursor.par(), cursorRow()->pos());
 }
 
 
@@ -858,7 +858,7 @@ void LyXText::cursorEnd()
 	if (cursor.par()->empty())
 		return;
 
-	RowList::iterator rit = cursor.row();
+	RowList::iterator rit = cursorRow();
 	RowList::iterator next_rit = boost::next(rit);
 	ParagraphList::iterator pit = rit->par();
 	pos_type last_pos = lastPos(*this, rit);
@@ -996,7 +996,7 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 
 	while (tmppit != boost::prior(selection.start.par())) {
 		setCursor(tmppit, 0);
-		postPaint(cursor.y() - cursor.row()->baseline());
+		postPaint(cursor.y() - cursorRow()->baseline());
 
 		ParagraphList::iterator pit = cursor.par();
 		ParagraphParameters & params = pit->params();
@@ -1567,7 +1567,6 @@ void LyXText::checkParagraph(ParagraphList::iterator pit, pos_type pos)
 	// check the special right address boxes
 	if (pit->layout()->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
 		tmpcursor.par(pit);
-		tmpcursor.row(row);
 		tmpcursor.y(y);
 		tmpcursor.x(0);
 		tmpcursor.x_fix(0);
@@ -1670,7 +1669,6 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 		}
 	}
 
-	cur.row(row);
 	// y is now the beginning of the cursor row
 	y += row->baseline();
 	// y is now the cursor baseline
@@ -1827,7 +1825,7 @@ void LyXText::setCurrentFont()
 			--pos;
 		else // potentional bug... BUG (Lgb)
 			if (pit->isSeparator(pos)) {
-				if (pos > cursor.row()->pos() &&
+				if (pos > cursorRow()->pos() &&
 				    bidi_level(pos) % 2 ==
 				    bidi_level(pos - 1) % 2)
 					--pos;
@@ -1989,7 +1987,7 @@ namespace {
 	 */
 	bool beforeFullRowInset(LyXText & lt, LyXCursor const & cur)
 	{
-		RowList::iterator row = cur.row();
+		RowList::iterator row = lt.getRow(cur);
 		if (boost::next(row) == lt.rows().end())
 			return false;
 
@@ -2022,7 +2020,6 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 	cur.pos(row->pos() + column);
 	cur.x(x);
 	cur.y(y + row->baseline());
-	cur.row(row);
 
 	if (beforeFullRowInset(*this, cur)) {
 		pos_type const last = lastPrintablePos(*this, row);
@@ -2078,7 +2075,7 @@ void LyXText::cursorUp(bool selecting)
 {
 #if 1
 	int x = cursor.x_fix();
-	int y = cursor.y() - cursor.row()->baseline() - 1;
+	int y = cursor.y() - cursorRow()->baseline() - 1;
 	setCursorFromCoordinates(x, y);
 	if (!selecting) {
 		int topy = top_y();
@@ -2093,7 +2090,7 @@ void LyXText::cursorUp(bool selecting)
 	}
 #else
 	setCursorFromCoordinates(bv(), cursor.x_fix(),
-				 cursor.y() - cursor.row()->baseline() - 1);
+				 cursor.y() - cursorRow()->baseline() - 1);
 #endif
 }
 
@@ -2102,10 +2099,10 @@ void LyXText::cursorDown(bool selecting)
 {
 #if 1
 	int x = cursor.x_fix();
-	int y = cursor.y() - cursor.row()->baseline() +
-		cursor.row()->height() + 1;
+	int y = cursor.y() - cursorRow()->baseline() +
+		cursorRow()->height() + 1;
 	setCursorFromCoordinates(x, y);
-	if (!selecting && cursor.row() == cursor.irow()) {
+	if (!selecting && cursorRow() == cursor.irow()) {
 		int topy = top_y();
 		int y1 = cursor.iy() - topy;
 		int y2 = y1;
@@ -2118,8 +2115,8 @@ void LyXText::cursorDown(bool selecting)
 	}
 #else
 	setCursorFromCoordinates(bv(), cursor.x_fix(),
-				 cursor.y() - cursor.row()->baseline()
-				 + cursor.row()->height() + 1);
+				 cursor.y() - cursorRow()->baseline()
+				 + cursorRow()->height() + 1);
 #endif
 }
 
@@ -2269,10 +2266,10 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			selection.cursor.par()  == old_cursor.par()
 			&& selection.cursor.pos() == old_cursor.pos());
 
-		if (old_cursor.row() != rows().begin()) {
+		if (getRow(old_cursor) != rows().begin()) {
 			RowList::iterator
-				prevrow = boost::prior(old_cursor.row());
-			const_cast<LyXText *>(this)->postPaint(old_cursor.y() - old_cursor.row()->baseline() - prevrow->height());
+				prevrow = boost::prior(getRow(old_cursor));
+			postPaint(old_cursor.y() - getRow(old_cursor)->baseline() - prevrow->height());
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
 			#warning FIXME. --end() iterator is usable here
@@ -2287,7 +2284,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			cursor = tmpcursor;
 
 			// delete old row
-			removeRow(old_cursor.row());
+			removeRow(getRow(old_cursor));
 			// delete old par
 			ownerParagraphs().erase(old_cursor.par());
 
@@ -2302,9 +2299,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			}
 			setHeightOfRow(prevrow);
 		} else {
-			RowList::iterator nextrow = boost::next(old_cursor.row());
-			const_cast<LyXText *>(this)->postPaint(
-				old_cursor.y() - old_cursor.row()->baseline());
+			RowList::iterator nextrow = boost::next(getRow(old_cursor));
+			postPaint(old_cursor.y() - getRow(old_cursor)->baseline());
 
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
@@ -2319,7 +2315,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			cursor = tmpcursor;
 
 			// delete old row
-			removeRow(old_cursor.row());
+			removeRow(getRow(old_cursor));
 			// delete old par
 			ownerParagraphs().erase(old_cursor.par());
 
@@ -2394,7 +2390,7 @@ void LyXText::postPaint(int start_y)
 	// We are an inset's lyxtext. Tell the top-level lyxtext
 	// it needs to update the row we're in.
 	LyXText * t = bv()->text;
-	t->postRowPaint(t->cursor.row(), t->cursor.y() - t->cursor.row()->baseline());
+	t->postRowPaint(t->cursorRow(), t->cursor.y() - t->cursorRow()->baseline());
 }
 
 
@@ -2421,7 +2417,7 @@ void LyXText::postRowPaint(RowList::iterator rit, int start_y)
 	// We are an inset's lyxtext. Tell the top-level lyxtext
 	// it needs to update the row we're in.
 	LyXText * t = bv()->text;
-	t->postRowPaint(t->cursor.row(), t->cursor.y() - t->cursor.row()->baseline());
+	t->postRowPaint(t->cursorRow(), t->cursor.y() - t->cursorRow()->baseline());
 }
 
 

@@ -2077,7 +2077,7 @@ bool InsetText::cboundary(BufferView * bv) const
 
 RowList::iterator InsetText::crow(BufferView * bv) const
 {
-	return getLyXText(bv)->cursor.row();
+	return getLyXText(bv)->cursorRow();
 }
 
 
@@ -2213,7 +2213,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 		inset_y = ciy(bv) + drawTextYOffset;
 	}
 
-	t->top_y(bv->screen().topCursorVisible(t->cursor, t->top_y()));
+	t->top_y(bv->screen().topCursorVisible(t));
 	if (!owner()) {
 		const_cast<InsetText*>(this)->updateLocal(bv, FULL, false);
 		// this will scroll the screen such that the cursor becomes visible
@@ -2252,7 +2252,7 @@ void InsetText::reinitLyXText() const
 			inset_x = cix(bv) - top_x + drawTextXOffset;
 			inset_y = ciy(bv) + drawTextYOffset;
 		}
-		t->top_y(bv->screen().topCursorVisible(t->cursor, t->top_y()));
+		t->top_y(bv->screen().topCursorVisible(t));
 		if (!owner()) {
 			const_cast<InsetText*>(this)->updateLocal(bv, FULL, false);
 			// this will scroll the screen such that the cursor becomes visible

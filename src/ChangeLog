@@ -1,4 +1,17 @@
 
+2003-06-27  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView_pimpl.C:
+	* bufferview_funcs.C:
+	* lyxcursor.C:
+	* lyxcursor.h:
+	* lyxfunc.C:
+	* lyxtext.h:
+	* rowpainter.C:
+	* text.C:
+	* text2.C:
+	* text3.C: remove LyXCursor::row_ member
+
 2003-06-26  Alfredo Brauntein  <abraunst@lyx.org>
 
 	* lyx_main.C (LyX): get full path of document loaded on the 

@@ -314,8 +314,8 @@ void RowPainter::paintSelection()
 	int const endx = text_.selection.end.x();
 	int const starty = text_.selection.start.y();
 	int const endy = text_.selection.end.y();
-	RowList::iterator startrow = text_.selection.start.row();
-	RowList::iterator endrow = text_.selection.end.row();
+	RowList::iterator startrow = text_.getRow(text_.selection.start);
+	RowList::iterator endrow = text_.getRow(text_.selection.end);
 
 	if (text_.bidi_same_direction) {
 		int x;

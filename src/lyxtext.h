@@ -235,7 +235,15 @@ private:
 	/// only the top-level LyXText has this non-zero
 	BufferView * bv_owner;
 
+	/// returns a pointer to a specified row.
+	RowList::iterator
+	getRow(ParagraphList::iterator pit, lyx::pos_type pos) const;
 public:
+	/// returns a pointer cursor row
+	RowList::iterator getRow(LyXCursor const & cursor) const;
+	/// convenience
+	RowList::iterator cursorRow() const;
+	
 	/** returns a pointer to the row near the specified y-coordinate
 	  (relative to the whole text). y is set to the real beginning
 	  of this row
