@@ -187,18 +187,24 @@ namespace frnt {
 
 namespace {
 
-char const * const rorigin_latex_strs[] = {
-	"center", "leftTop", "leftBottom", "leftBaseline",
-	"centerTop", "centerBottom", "centerBaseline",
-	"rightTop", "rightBottom", "rightBaseline" };
+// These are the strings that are stored in the LyX file and which
+// correspond to the LaTeX identifiers shown in the comments at the
+// end of each line.
+char const * const rorigin_lyx_strs[] = {
+	"center",                                        // c
+	"leftTop",   "leftBottom",   "leftBaseline",     // lt lb lB
+	"centerTop", "centerBottom", "centerBaseline",   // ct cb cB
+	"rightTop",  "rightBottom",  "rightBaseline" };  // rt rb rB
 
+// These are the strings, corresponding to the above, that the GUI should
+// use. Note that they can/should be translated.
 char const * const rorigin_gui_strs[] = {
 	N_("center"),
 	N_("left top"),   N_("left bottom"),   N_("left baseline"),
 	N_("center top"), N_("center bottom"), N_("center baseline"),
 	N_("right top"),  N_("right bottom"),  N_("right baseline") };
 
-size_t rorigin_size = sizeof(rorigin_latex_strs) / sizeof(char *);
+size_t rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
 
 } // namespace anon
 
@@ -211,7 +217,7 @@ vector<RotationOriginPair> getRotationOriginData()
 	data.resize(rorigin_size);
 	for (lyx::size_type i = 0; i < rorigin_size; ++i) {
 		data[i] = std::make_pair(_(rorigin_gui_strs[i]),
-					 rorigin_latex_strs[i]);
+					 rorigin_lyx_strs[i]);
 	}
 
 	return data;
