@@ -13,7 +13,6 @@
 #include "ButtonController.h"
 #include "BCView.h"
 #include "support/LAssert.h"
-#include "debug.h"
 
 using namespace lyx::support;
 

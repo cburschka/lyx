@@ -14,7 +14,6 @@
 #include "ControlBranch.h"
 #include "funcrequest.h"
 #include "insets/insetbranch.h"
-#include "debug.h"
 
 ControlBranch::ControlBranch(Dialog & parent)
 	: Dialog::Controller(parent)

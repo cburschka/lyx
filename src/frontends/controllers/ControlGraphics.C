@@ -15,7 +15,6 @@
 
 #include "helper_funcs.h"
 
-#include "BufferView.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "lyxrc.h"
@@ -25,7 +24,6 @@
 #include "graphics/GraphicsImage.h"
 
 #include "insets/insetgraphics.h"
-#include "insets/insetgraphicsParams.h"
 
 #include "support/tostr.h"
 #include "support/filetools.h"

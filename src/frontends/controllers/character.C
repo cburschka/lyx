@@ -9,7 +9,6 @@
  */
 
 #include <config.h>
-#include <vector>
 
 
 #include "gettext.h"

@@ -15,16 +15,11 @@
 
 #include "Lsstream.h"
 #include "gettext.h" // for _()
-#include "helper_funcs.h"
-#include "Lsstream.h"
-#include "LString.h"
 
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 
 #include <boost/regex.hpp>
-
-#include <algorithm>
 
 using namespace lyx::support;
 

@@ -13,7 +13,6 @@
 #include <config.h>
 
 #include "ControlExternal.h"
-#include "buffer.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "helper_funcs.h"
@@ -22,7 +21,6 @@
 #include "insets/ExternalTemplate.h"
 
 #include "support/LAssert.h"
-#include <vector>
 
 using namespace lyx::support;
 using std::vector;

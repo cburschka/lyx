@@ -17,7 +17,6 @@
 #include "gettext.h"
 #include "language.h"
 #include "lyxrc.h"
-#include "lyxtext.h"
 #include "debug.h"
 
 #include "ispell.h"

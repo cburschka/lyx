@@ -8,24 +8,23 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#include <vector>
-
 
 #include <config.h>
-#include "LString.h"
+
 #include "helper_funcs.h"
 
-#include "frontends/FileDialog.h"
-#include "support/filetools.h" // OnlyPath, OnlyFilename
-#include "support/lstrings.h"
-#include "gettext.h" // _()
+#include "gettext.h"
+
 #include "frontends/Alert.h"
+#include "frontends/FileDialog.h"
+
+#include "support/filetools.h" // OnlyPath, OnlyFilename
 
 using namespace lyx::support;
 
+using std::make_pair;
 using std::pair;
 using std::vector;
-using std::make_pair;
 
 
 string const browseFile(string const & filename,

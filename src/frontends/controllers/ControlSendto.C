@@ -17,7 +17,6 @@
 #include "converter.h"
 #include "format.h"
 #include "exporter.h"
-#include "gettext.h"
 #include "lyxrc.h"
 
 #include "support/filetools.h"

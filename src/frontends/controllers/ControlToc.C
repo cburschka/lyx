@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "ControlToc.h"
-#include "support/lstrings.h" // tostr
 
 using std::vector;
 

@@ -13,7 +13,6 @@
 #include <config.h>
 
 #include "ControlBibtex.h"
-#include "Kernel.h"
 
 #include "lyxrc.h"
 #include "helper_funcs.h"

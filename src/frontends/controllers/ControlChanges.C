@@ -15,7 +15,6 @@
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "lyxfind.h"
-#include "author.h"
 #include "support/lstrings.h"
 
 using namespace lyx::support;

@@ -16,7 +16,6 @@
 #include "ButtonController.h"
 
 #include "buffer.h"
-#include "bufferparams.h"
 #include "gettext.h"
 #include "helper_funcs.h"
 #include "PrinterParams.h"
@@ -25,7 +24,6 @@
 #include "frontends/Alert.h"
 
 #include "support/tostr.h"
-#include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/systemcall.h"

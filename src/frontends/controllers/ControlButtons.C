@@ -14,7 +14,6 @@
 #include "ControlButtons.h"
 #include "ButtonController.h"
 #include "BCView.h"
-#include "ViewBase.h"
 #include "lyxrc.h"
 #include "support/LAssert.h"
 

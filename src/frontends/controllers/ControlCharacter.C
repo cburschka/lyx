@@ -16,7 +16,6 @@
 #include "buffer.h"
 #include "bufferview_funcs.h"
 #include "funcrequest.h"
-#include "gettext.h"
 #include "language.h"
 
 using namespace bv_funcs;

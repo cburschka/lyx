@@ -14,7 +14,6 @@
 
 #include "ControlCommandBuffer.h"
 #include "bufferview_funcs.h"
-#include "debug.h"
 #include "lyxfunc.h"
 #include "LyXAction.h"
 #include "frontends/LyXView.h"

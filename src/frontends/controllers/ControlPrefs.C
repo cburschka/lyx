@@ -10,29 +10,31 @@
 
 #include <config.h>
 
-
-#include <utility>
-
 #include "ControlPrefs.h"
+
+#include "helper_funcs.h"
 #include "ViewBase.h"
 
-#include "frontends/LyXView.h"
 #include "bufferlist.h"
-#include "helper_funcs.h"
-#include "gettext.h"
-#include "support/filetools.h"
-#include "support/path_defines.h"
-#include "frontends/Dialogs.h"
 #include "converter.h"
 #include "format.h"
-#include "debug.h"
+#include "gettext.h"
 
-extern BufferList bufferlist;
+#include "frontends/Dialogs.h"
+#include "frontends/LyXView.h"
+
+#include "support/filetools.h"
+#include "support/path_defines.h"
+
+#include <utility>
 
 using namespace lyx::support;
 
 using std::endl;
 using std::pair;
+
+
+extern BufferList bufferlist;
 
 ControlPrefs::ControlPrefs(LyXView & lv, Dialogs & d)
 	: ControlDialogBI(lv, d)

@@ -14,8 +14,6 @@
 #include "frnt_lang.h"
 #include "gettext.h"
 #include "language.h"
-#include <iostream>
-#include <algorithm>
 
 using std::vector;
 

@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "ControlMath.h"
-#include "Kernel.h"
 #include "debug.h"
 #include "funcrequest.h"
 

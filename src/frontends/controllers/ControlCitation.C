@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "ControlCitation.h"
-#include "Kernel.h"
 
 #include "buffer.h"
 

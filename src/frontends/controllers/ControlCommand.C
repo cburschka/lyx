@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "ControlCommand.h"
-#include "Kernel.h"
 
 #include "funcrequest.h"
 #include "insets/insetcommand.h"

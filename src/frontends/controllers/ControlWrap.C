@@ -12,7 +12,6 @@
 
 #include "ControlWrap.h"
 #include "funcrequest.h"
-#include "lyxlength.h"
 #include "insets/insetwrap.h"
 
 

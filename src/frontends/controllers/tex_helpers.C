@@ -13,7 +13,6 @@
 #include "tex_helpers.h"
 
 #include "debug.h"
-#include "gettext.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -23,9 +22,7 @@
 #include "support/path_defines.h"
 
 #include <boost/cregex.hpp>
-#include <vector>
 #include <fstream>
-#include <algorithm>
 
 using namespace lyx::support;
 

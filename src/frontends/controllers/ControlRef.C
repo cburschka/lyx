@@ -12,7 +12,6 @@
 
 
 #include "ControlRef.h"
-#include "lyxfunc.h"
 #include "buffer.h"
 #include "bufferlist.h"
 #include "funcrequest.h"

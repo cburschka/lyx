@@ -17,7 +17,6 @@
 #include "version.h"
 #include "Lsstream.h"
 
-#include "support/LOstream.h"
 #include "support/filetools.h" // FileSearch
 #include "support/path_defines.h"
 
