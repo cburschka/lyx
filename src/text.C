@@ -782,6 +782,7 @@ LyXText::rowBreakPoint(Row const & row) const
 
 	// pixel width since last breakpoint
 	int chunkwidth = 0;
+	bool fullrow = false;
 
 	pos_type i = pos;
 	for (; i < last; ++i) {
@@ -806,7 +807,7 @@ LyXText::rowBreakPoint(Row const & row) const
 		chunkwidth += thiswidth;
 
 		Inset * in = pit->isInset(i) ? pit->getInset(i) : 0;
-		bool fullrow = (in && (in->display() || in->needFullRow()));
+		fullrow = (in && (in->display() || in->needFullRow()));
 
 		// break before a character that will fall off
 		// the right of the row
@@ -847,7 +848,8 @@ LyXText::rowBreakPoint(Row const & row) const
 		} else {
 			point = i - 1;
 		}
-		break;
+
+		return point;
 	}
 
 	if (point == last && x >= width) {
@@ -859,8 +861,10 @@ LyXText::rowBreakPoint(Row const & row) const
 		point = last;
 	}
 
-	// manual labels cannot be broken in LaTeX
-	if (body_pos && point < body_pos)
+	// manual labels cannot be broken in LaTeX. But we
+	// want to make our on-screen rendering of footnotes
+	// etc. still break
+	if (!fullrow && body_pos && point < body_pos)
 		point = body_pos - 1;
 
 	return point;
