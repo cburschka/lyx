@@ -1,3 +1,18 @@
+2003-02-15  John Levon  <levon@movementarian.org>
+
+	* QPrefs.C: fix accidental confusion between spool command and file extension
+	  in printer params prefs
+
+2003-02-15  John Levon  <levon@movementarian.org>
+
+	* ui/BulletsModuleBase.ui:
+	* ui/ClassModuleBase.ui:
+	* ui/LanguageModuleBase.ui:
+	* ui/MarginsModuleBase.ui:
+	* ui/NumberingModuleBase.ui:
+	* ui/QPrefScreenFontsModule.ui:
+	* ui/QPrefsDialogBase.ui: tab ordering fixes
+
 2003-02-09  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* QBibtexDialog.C: Fix browsing mechanism of *.sty files (bug 773).

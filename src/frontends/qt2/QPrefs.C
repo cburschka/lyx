@@ -217,7 +217,7 @@ void QPrefs::apply()
 	rc.print_reverse_flag = fromqstr(printmod->printerReverseED->text());
 	rc.print_to_printer = fromqstr(printmod->printerToPrinterED->text());
 	rc.print_file_extension = fromqstr(printmod->printerExtensionED->text());
-	rc.print_file_extension = fromqstr(printmod->printerSpoolCommandED->text());
+	rc.print_spool_command = fromqstr(printmod->printerSpoolCommandED->text());
 	rc.print_paper_flag = fromqstr(printmod->printerPaperTypeED->text());
 	rc.print_evenpage_flag = fromqstr(printmod->printerEvenED->text());
 	rc.print_oddpage_flag = fromqstr(printmod->printerOddED->text());
@@ -464,7 +464,7 @@ void QPrefs::update_contents()
 	printmod->printerReverseED->setText(toqstr(rc.print_reverse_flag));
 	printmod->printerToPrinterED->setText(toqstr(rc.print_to_printer));
 	printmod->printerExtensionED->setText(toqstr(rc.print_file_extension));
-	printmod->printerSpoolCommandED->setText(toqstr(rc.print_file_extension));
+	printmod->printerSpoolCommandED->setText(toqstr(rc.print_spool_command));
 	printmod->printerPaperTypeED->setText(toqstr(rc.print_paper_flag));
 	printmod->printerEvenED->setText(toqstr(rc.print_evenpage_flag));
 	printmod->printerOddED->setText(toqstr(rc.print_oddpage_flag));
