@@ -240,6 +240,8 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 	}
 	Changes::lyxMarkChange(os, column, curtime,
 		running_change, Change(Change::UNCHANGED));
+
+	os << "\n\\end_layout\n";
 }
 
 

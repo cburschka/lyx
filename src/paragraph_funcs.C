@@ -826,13 +826,12 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 
 		par.params().read(lex);
 
+	} else if (token == "\\end_layout") {
+		lyxerr << "Solitary \\end_layout in line " << lex.getLineNo() << "\n"
+		       << "Missing \\layout?.\n";
 	} else if (token == "\\end_inset") {
 		lyxerr << "Solitary \\end_inset in line " << lex.getLineNo() << "\n"
 		       << "Missing \\begin_inset?.\n";
-		// Simply ignore this. The insets do not have
-		// to read this.
-		// But insets should read it, it is a part of
-		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
 		InsetOld * inset = readInset(lex, buf);
 		par.insertInset(par.size(), inset, font, change);
@@ -982,16 +981,20 @@ int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex)
 		if (token.empty())
 			continue;
 
+		if (token == "\\end_layout") {
+			//Ok, paragraph finished
+			break;
+		}
+
 		lyxerr[Debug::PARSER] << "Handling paragraph token: `"
 				      << token << '\'' << endl;
-
-		// reached the next paragraph. FIXME: really we should
-		// change the file format to indicate the end of a par
-		// clearly, but for now, this hack will do
 		if (token == "\\layout" || token == "\\the_end"
 		    || token == "\\end_inset" || token == "\\begin_deeper"
 		    || token == "\\end_deeper") {
 			lex.pushToken(token);
+			lyxerr << "Paragraph ended in line "
+			       << lex.getLineNo() << "\n"
+			       << "Missing \\end_layout.\n";
 			break;
 		}
 	}

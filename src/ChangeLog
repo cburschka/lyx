@@ -1,3 +1,9 @@
+2003-07-28  José Matos  <jamatos@fep.up.pt>
+
+	* buffer.C: increment file format.
+	* paragraph_funcs (readParagraph, readParToken):
+	* paragraph.C (readParagraph): add \end_layout.
+
 2003-07-27  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: remove special casing for configure-time setting of

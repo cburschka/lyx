@@ -115,7 +115,7 @@ extern BufferList bufferlist;
 
 namespace {
 
-const int LYX_FORMAT = 224;
+const int LYX_FORMAT = 225;
 
 bool openFileWrite(ofstream & ofs, string const & fname)
 {
