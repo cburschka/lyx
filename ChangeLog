@@ -4,6 +4,7 @@
 	declared in header. On an alpha, long is _not_ the same as int.
 
 	* src/support/LOstream.h: add a "using std::flush;"
+	* src/insets/figinset.C: ditto.
 
 2000-01-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
 

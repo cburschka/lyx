@@ -48,6 +48,7 @@ using std::ifstream;
 using std::queue;
 using std::list;
 using std::find;
+using std::flush;
 
 #include "figinset.h"
 #include "lyx.h"
