@@ -350,7 +350,7 @@ void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
 
 
 UpdatableInset::RESULT
-InsetCollapsable::LocalDispatch(BufferView * bv, int action,
+InsetCollapsable::LocalDispatch(BufferView * bv, kb_action action,
 				string const & arg)
 {
     UpdatableInset::RESULT result = inset->LocalDispatch(bv, action, arg);

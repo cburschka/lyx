@@ -1,3 +1,10 @@
+2001-02-23  Juergen Vigna  <jug@sad.it>
+
+	* formula.C (LocalDispatch):  changed action to be a kb_action (as it
+	should be) and not an int.
+
+	* formulamacro.C (LocalDispatch): ditto.
+
 2001-02-14  André Pönitz  <poenitz@htwm.de>
 
 	* math_parinset.[Ch]: make array a real MathArray, not just a

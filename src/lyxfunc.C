@@ -154,6 +154,25 @@ void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 }
 
 
+void LyXFunc::handleKeyFunc(kb_action action)
+{
+	char c = 0;
+
+	if (keyseq.length == -1 && keyseq.getiso() != 0) 
+		c = keyseq.getiso();
+	owner->getIntl()->getTrans()
+		.deadkey(c, get_accent(action).accent, TEXT(false));
+	// Need to reset, in case the minibuffer calls these
+	// actions
+	keyseq.reset();
+	keyseq.length = 0;
+	// copied verbatim from do_accent_char
+	owner->view()->update(TEXT(false),
+	       BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	TEXT(false)->sel_cursor = TEXT(false)->cursor;
+}
+
+
 int LyXFunc::processKeySym(KeySym keysym, unsigned int state) 
 {
 	string argument;
@@ -708,7 +727,7 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->showCursor();
 	}
 	break;
-
+		
 	case LFUN_PREFIX:
 	{
 		if (owner->view()->available()) {
@@ -757,13 +776,6 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->center();
 		break;
 		
-	case LFUN_APPENDIX:
-		if (owner->view()->available()) {
-			TEXT(false)->toggleAppendix(owner->view());
-			owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		}
-		break;
-
 		// --- Menus -----------------------------------------------
 	case LFUN_MENUNEW:
 		MenuNew(false);
@@ -858,56 +870,14 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 	}	
 
-	case LFUN_TOC_INSERT:
-	case LFUN_LOA_INSERT:
-	case LFUN_LOF_INSERT:
-	case LFUN_LOT_INSERT:
-	{
-		InsetCommandParams p;
-		
-		if (action == LFUN_TOC_INSERT )
-			p.setCmdName( "tableofcontents" );
-		else if (action == LFUN_LOA_INSERT )
-			p.setCmdName( "listofalgorithms" );
-		else if (action == LFUN_LOF_INSERT )
-			p.setCmdName( "listoffigures" );
-		else
-			p.setCmdName( "listoftables" );
-
-		Inset * inset = new InsetTOC( p );
-		if (!owner->view()->insertInset( inset, "Standard", true ) )
-			delete inset;
-		break;
-	}
-		
 	case LFUN_DIALOG_TABULAR_INSERT:
 		owner->getDialogs()->showTabularCreate();
 		break;
 		
-	case LFUN_TABULAR_FEATURE:
-	case LFUN_SCROLL_INSET:
-		// this is not handled here as this funktion is only aktive
-		// if we have a locking_inset and that one is (or contains)
-		// a tabular-inset
-		break;
-
 	case LFUN_FIGURE:
 		Figure();
 		break;
 
-	case LFUN_INSET_GRAPHICS:
-	{
-		Inset * new_inset = new InsetGraphics;
-		if (!owner->view()->insertInset(new_inset)) {
-			delete new_inset;
-		} else {
-			// this is need because you don't use a inset->Edit()
-			owner->view()->updateInset(new_inset, true);
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		}
-		break;
-	}
-	
 	case LFUN_AUTOSAVE:
 		AutoSave(owner->view());
 		break;
@@ -930,40 +900,6 @@ string const LyXFunc::Dispatch(int ac,
 	}
 	break;
 		
-	case LFUN_PASTE:
-		owner->view()->paste();
-		owner->view()->setState();
-		break;
-		
-	case LFUN_PASTESELECTION:
-	{
-	        bool asPara = false;
-		if (argument == "paragraph") asPara = true;
-		owner->view()->pasteClipboard(asPara);
-	}
-	break;
-	
-	case LFUN_CUT:
-		owner->view()->cut();
-		break;
-		
-	case LFUN_COPY:
-		owner->view()->copy();
-		break;
-		
-	case LFUN_LAYOUT_COPY:
-		owner->view()->copyEnvironment();
-		break;
-		
-	case LFUN_LAYOUT_PASTE:
-		owner->view()->pasteEnvironment();
-		owner->view()->setState();
-		break;
-		
-	case LFUN_GOTOERROR:
-		owner->view()->gotoInset(Inset::ERROR_CODE, false);
-		break;
-		
 	case LFUN_REMOVEERRORS:
 		if (owner->view()->removeAutoInsets()) {
 			owner->view()->redraw();
@@ -971,19 +907,6 @@ string const LyXFunc::Dispatch(int ac,
 		}
 		break;
 		
-	case LFUN_GOTONOTE:
-		owner->view()->gotoInset(Inset::IGNORE_CODE, false);
-		break;
-
-	case LFUN_REFERENCE_GOTO:
-	{
-		vector<Inset::Code> tmp;
-		tmp.push_back(Inset::LABEL_CODE);
-		tmp.push_back(Inset::REF_CODE);
-		owner->view()->gotoInset(tmp, true);
-		break;
-	}
-
 #ifndef NEW_INSETS
 	case LFUN_OPENSTUFF:
 		owner->view()->openStuff();
@@ -1175,20 +1098,6 @@ string const LyXFunc::Dispatch(int ac,
                 owner->view()->buffer(bufferlist.getBuffer(argument));
 		break;
 
-
-	case LFUN_FILE_INSERT:
-	{
-		MenuInsertLyXFile(argument);
-	}
-	break;
-	
-	case LFUN_FILE_INSERT_ASCII:
-	{
-		bool asPara = (argument == "paragraph");
-		InsertAsciiFile(owner->view(), string(), asPara);
-	}
-	break;
-	
 	case LFUN_FILE_NEW:
 	{
 		// servercmd: argument must be <file>:<template>
@@ -1226,49 +1135,6 @@ string const LyXFunc::Dispatch(int ac,
 		return string();
 	}
 		
-	case LFUN_LAYOUT:
-	{
-		lyxerr.debug() << "LFUN_LAYOUT: (arg) "
-			       << argument << endl;
-		
-		// Derive layout number from given argument (string)
-		// and current buffer's textclass (number). */    
-		LyXTextClassList::ClassList::size_type tclass =
-			owner->view()->buffer()->params.textclass;
-		pair <bool, LyXTextClass::size_type> layout = 
-			textclasslist.NumberOfLayout(tclass, argument);
-
-		// If the entry is obsolete, use the new one instead.
-		if (layout.first) {
-			string obs = textclasslist.Style(tclass,layout.second)
-			      .obsoleted_by();
-			if (!obs.empty()) 
-				layout = 
-				  textclasslist.NumberOfLayout(tclass, obs);
-		}
-
-		// see if we found the layout number:
-		if (!layout.first) {
-			setErrorMessage(string(N_("Layout ")) + argument + 
-					N_(" not known"));
-			break;
-		}
-
-		if (current_layout != layout.second) {
-			owner->view()->hideCursor();
-			current_layout = layout.second;
-			owner->view()->update(TEXT(),
-					      BufferView::SELECT|BufferView::FITCUR);
-			TEXT()->
-				SetLayout(owner->view(), layout.second);
-			owner->setLayout(layout.second);
-			owner->view()->update(TEXT(),
-					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-			owner->view()->setState();
-		}
-	}
-	break;
-
 	case LFUN_LAYOUT_DOCUMENT:
 		owner->getDialogs()->showLayoutDocument();
 		break;
@@ -1312,136 +1178,6 @@ string const LyXFunc::Dispatch(int ac,
 		owner->getToolbar()->openLayoutList();
 		break;
 
-	case LFUN_LANGUAGE:
-		Lang(owner->view(), argument);
-		owner->view()->setState();
-		owner->showState();
-		break;
-
-	case LFUN_EMPH:
-		Emph(owner->view());
-		owner->showState();
-		break;
-
-	case LFUN_BOLD:
-		Bold(owner->view());
-		owner->showState();
-		break;
-		
-	case LFUN_NOUN:
-		Noun(owner->view());
-		owner->showState();
-		break;
-		
-	case LFUN_CODE:
-		Code(owner->view());
-		owner->showState();
-		break;
-		
-	case LFUN_SANS:
-		Sans(owner->view());
-		owner->showState();
-		break;
-		
-	case LFUN_ROMAN:
-		Roman(owner->view());
-		owner->showState();
-		break;
-		
-	case LFUN_DEFAULT:
-		StyleReset(owner->view());
-		owner->showState();
-		break;
-		
-	case LFUN_UNDERLINE:
-		Underline(owner->view());
-		owner->showState();
-		break;
-		
-	case LFUN_FONT_SIZE:
-		FontSize(owner->view(), argument);
-		owner->showState();
-		break;
-		
-	case LFUN_FONT_STATE:
-		setMessage(CurrentState(owner->view()));
-		break;
-		
-	case LFUN_UPCASE_WORD:
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		TEXT(false)->ChangeWordCase(owner->view(), LyXText::text_uppercase);
-		if (TEXT(false)->inset_owner)
-		    owner->view()->updateInset(TEXT(false)->inset_owner, true);
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		break;
-		
-	case LFUN_LOWCASE_WORD:
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		TEXT(false)->ChangeWordCase(owner->view(), LyXText::text_lowercase);
-		if (TEXT(false)->inset_owner)
-		    owner->view()->updateInset(TEXT(false)->inset_owner, true);
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		break;
-		
-	case LFUN_CAPITALIZE_WORD:
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		TEXT(false)->ChangeWordCase(owner->view(),
-				     LyXText::text_capitalization);
-		if (TEXT(false)->inset_owner)
-		    owner->view()->updateInset(TEXT(false)->inset_owner, true);
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		break;
-		
-	case LFUN_INSERT_LABEL:
-		MenuInsertLabel(owner->view(), argument);
-		break;
-		
-	case LFUN_REF_INSERT:
-		if (argument.empty()) {
-			InsetCommandParams p("ref");
-		owner->getDialogs()->createRef(p.getAsString());
-		} else {
-			InsetCommandParams p;
-			p.setFromString(argument);
-
-			InsetRef * inset = new InsetRef(p, *owner->buffer());
-			if (!owner->view()->insertInset(inset))
-				delete inset;
-			else
-				owner->view()->updateInset(inset, true);
-		}
-		break;
-
-	case LFUN_BOOKMARK_SAVE:
-		owner->view()->savePosition(strToUnsignedInt(argument));
-		break;
-
-	case LFUN_BOOKMARK_GOTO:
-		owner->view()->restorePosition(strToUnsignedInt(argument));
-		break;
-
-	case LFUN_REF_GOTO:
-	{
-		string label(argument);
-		if (label.empty()) {
-			InsetRef * inset = 
-				static_cast<InsetRef*>(getInsetByCode(Inset::REF_CODE));
-			if (inset) {
-                                label = inset->getContents();
-				owner->view()->savePosition(0);
-			}
-		}
-		
-		if (!label.empty()) {
-			//owner->view()->savePosition(0);
-			if (!owner->view()->gotoLabel(label))
-				WriteAlert(_("Error"), 
-					   _("Couldn't find this label"), 
-					   _("in current document."));
-		}
-	}
-	break;
-		
 	case LFUN_MENU_OPEN_BY_NAME:
 		owner->getMenubar()->openByName(argument);
 		break; // RVDK_PATCH_5
@@ -1451,890 +1187,8 @@ string const LyXFunc::Dispatch(int ac,
 			ShowSpellChecker(owner->view());
 		break; // RVDK_PATCH_5
 		
-		// --- Cursor Movements -----------------------------
-	case LFUN_RIGHT:
-	{
-		bool is_rtl = TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params);
-		if (!TEXT()->mark_set)
-			owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(), BufferView::SELECT|BufferView::FITCUR);
-		if (is_rtl)
-			TEXT()->CursorLeft(owner->view(), false);
-		if (TEXT()->cursor.pos() < TEXT()->cursor.par()->Last()
-		    && TEXT()->cursor.par()->GetChar(TEXT()->cursor.pos())
-		    == LyXParagraph::META_INSET
-		    && TEXT()->cursor.par()->GetInset(TEXT()->cursor.pos())
-		    && TEXT()->cursor.par()->GetInset(TEXT()->cursor.pos())->Editable() == Inset::HIGHLY_EDITABLE){
-			Inset * tmpinset = TEXT()->cursor.par()->GetInset(TEXT()->cursor.pos());
-			setMessage(tmpinset->EditMessage());
-			int y = 0;
-			if (is_rtl) {
-				LyXFont font = 
-					TEXT()->GetFont(owner->view()->buffer(),
-							 TEXT()->cursor.par(),
-							 TEXT()->cursor.pos());	
-				y = tmpinset->descent(owner->view(),font);
-			}
-			tmpinset->Edit(owner->view(), 0, y, 0);
-			break;
-		}
-		if (!is_rtl)
-			TEXT()->CursorRight(owner->view(), false);
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, false);
-		owner->showState();
-	}
-	break;
-		
-	case LFUN_LEFT:
-	{
-		// This is soooo ugly. Isn`t it possible to make
-		// it simpler? (Lgb)
-		bool is_rtl = TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params);
-		if (!TEXT()->mark_set)
-			owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(), BufferView::SELECT|BufferView::FITCUR);
-		LyXCursor cur = TEXT()->cursor;
-		if (!is_rtl)
-			TEXT()->CursorLeft(owner->view(), false);
-		if ((is_rtl || cur != TEXT()->cursor) && // only if really moved!
-		    TEXT()->cursor.pos() < TEXT()->cursor.par()->Last() &&
-		    (TEXT()->cursor.par()->GetChar(TEXT()->cursor.pos()) ==
-		     LyXParagraph::META_INSET) &&
-		    TEXT()->cursor.par()->GetInset(TEXT()->cursor.pos()) &&
-		    (TEXT()->cursor.par()->GetInset(TEXT()->cursor.pos())->Editable()
-		     == Inset::HIGHLY_EDITABLE))
-		{
-			Inset * tmpinset = TEXT()->cursor.par()->GetInset(TEXT()->cursor.pos());
-			setMessage(tmpinset->EditMessage());
-			LyXFont font = TEXT()->GetFont(owner->view()->buffer(),
-						    TEXT()->cursor.par(),
-						    TEXT()->cursor.pos());
-			int y = is_rtl ? 0 
-				: tmpinset->descent(owner->view(),font);
-			tmpinset->Edit(owner->view(),
-				       tmpinset->x() +
-				       tmpinset->width(owner->view(),font),
-				       y, 0);
-			break;
-		}
-		if  (is_rtl)
-			TEXT()->CursorRight(owner->view(), false);
-
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, false);
-		owner->showState();
-	}
-	break;
-		
-	case LFUN_UP:
-		if (!TEXT()->mark_set)
-			owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(), BufferView::UPDATE);
-		TEXT()->CursorUp(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, false);
-		owner->showState();
-		break;
-		
-	case LFUN_DOWN:
-		if (!TEXT()->mark_set)
-			owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(), BufferView::UPDATE);
-		TEXT()->CursorDown(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, false);
-		owner->showState();
-		break;
-
-	case LFUN_UP_PARAGRAPH:
-		if (!TEXT()->mark_set)
-			owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(), BufferView::UPDATE);
-		TEXT()->CursorUpParagraph(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, false);
-		owner->showState();
-		break;
-		
-	case LFUN_DOWN_PARAGRAPH:
-		if (!TEXT()->mark_set)
-			owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(), BufferView::UPDATE);
-		TEXT()->CursorDownParagraph(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, false);
-		owner->showState();
-		break;
-		
-	case LFUN_PRIOR:
-		if (!TEXT(false)->mark_set)
-		    owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(), BufferView::UPDATE);
-		owner->view()->cursorPrevious(TEXT(false));
-		TEXT()->FinishUndo();
-		moveCursorUpdate(false, false);
-		owner->showState();
-		break;
-		
-	case LFUN_NEXT:
-		if (!TEXT(false)->mark_set)
-			owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(), BufferView::UPDATE);
-		owner->view()->cursorNext(TEXT(false));
-		TEXT()->FinishUndo();
-		moveCursorUpdate(false, false);
-		owner->showState();
-		break;
-		
-	case LFUN_HOME:
-		if (!TEXT()->mark_set)
-			owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(), BufferView::SELECT|BufferView::FITCUR);
-		TEXT()->CursorHome(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, false);
-		owner->showState();
-		break;
-		
-	case LFUN_END:
-		if (!TEXT()->mark_set)
-			owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR);
-		TEXT()->CursorEnd(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, false);
-		owner->showState();
-		break;
-		
-	case LFUN_SHIFT_TAB:
-	case LFUN_TAB:
-		if (!TEXT()->mark_set)
-			owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR);
-		TEXT()->CursorTab(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, false);
-		owner->showState();
-		break;
-		
-	case LFUN_WORDRIGHT:
-		if (!TEXT(false)->mark_set)
-			owner->view()->beforeChange(TEXT(false));
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		if (TEXT(false)->cursor.par()->isRightToLeftPar(owner->buffer()->params))
-			TEXT(false)->CursorLeftOneWord(owner->view());
-		else
-			TEXT(false)->CursorRightOneWord(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(false, false);
-		owner->showState();
-		break;
-		
-	case LFUN_WORDLEFT:
-		if (!TEXT(false)->mark_set)
-			owner->view()->beforeChange(TEXT(false));
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		if (TEXT(false)->cursor.par()->isRightToLeftPar(owner->buffer()->params))
-			TEXT(false)->CursorRightOneWord(owner->view());
-		else
-			TEXT(false)->CursorLeftOneWord(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(false, false);
-		owner->showState();
-		break;
-		
-	case LFUN_BEGINNINGBUF:
-		if (!TEXT()->mark_set)
-			owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR);
-		TEXT()->CursorTop(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, false);
-		owner->showState();
-		break;
-		
-	case LFUN_ENDBUF:
-		if (!TEXT()->mark_set)
-			owner->view()->beforeChange(TEXT());
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR);
-		TEXT()->CursorBottom(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, false);
-		owner->showState();
-		break;
-
-      
-		/* cursor selection ---------------------------- */
-	case LFUN_RIGHTSEL:
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR);
-		if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params))
-			TEXT()->CursorLeft(owner->view());
-		else
-			TEXT()->CursorRight(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, true);
-		owner->showState();
-		break;
-		
-	case LFUN_LEFTSEL:
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR);
-		if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params))
-			TEXT()->CursorRight(owner->view());
-		else
-			TEXT()->CursorLeft(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, true);
-		owner->showState();
-		break;
-		
-	case LFUN_UPSEL:
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR);
-		TEXT()->CursorUp(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, true);
-		owner->showState();
-		break;
-		
-	case LFUN_DOWNSEL:
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR);
-		TEXT()->CursorDown(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, true);
-		owner->showState();
-		break;
-
-	case LFUN_UP_PARAGRAPHSEL:
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR);
-		TEXT()->CursorUpParagraph(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, true);
-		owner->showState();
-		break;
-		
-	case LFUN_DOWN_PARAGRAPHSEL:
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR);
-		TEXT()->CursorDownParagraph(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, true);
-		owner->showState();
-		break;
-		
-	case LFUN_PRIORSEL:
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		owner->view()->cursorPrevious(TEXT(false));
-		TEXT()->FinishUndo();
-		moveCursorUpdate(false, true);
-		owner->showState();
-		break;
-		
-	case LFUN_NEXTSEL:
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		owner->view()->cursorNext(TEXT(false));
-		TEXT()->FinishUndo();
-		moveCursorUpdate(false, true);
-		owner->showState();
-		break;
-		
-	case LFUN_HOMESEL:
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		TEXT(false)->CursorHome(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(false, true);
-		owner->showState();
-		break;
-		
-	case LFUN_ENDSEL:
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		TEXT(false)->CursorEnd(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(false, true);
-		owner->showState();
-		break;
-		
-	case LFUN_WORDRIGHTSEL:
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		if (TEXT(false)->cursor.par()->isRightToLeftPar(owner->buffer()->params))
-			TEXT(false)->CursorLeftOneWord(owner->view());
-		else
-			TEXT(false)->CursorRightOneWord(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(false, true);
-		owner->showState();
-		break;
-		
-	case LFUN_WORDLEFTSEL:
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params))
-			TEXT(false)->CursorRightOneWord(owner->view());
-		else
-			TEXT(false)->CursorLeftOneWord(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(false, true);
-		owner->showState();
-		break;
-		
-	case LFUN_BEGINNINGBUFSEL:
-		if (TEXT(false)->inset_owner)
-		    break;
-		owner->view()->update(TEXT(), BufferView::SELECT|BufferView::FITCUR);
-		TEXT()->CursorTop(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, true);
-		owner->showState();
-		break;
-		
-	case LFUN_ENDBUFSEL:
-		if (TEXT(false)->inset_owner)
-		    break;
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR);
-		TEXT()->CursorBottom(owner->view());
-		TEXT()->FinishUndo();
-		moveCursorUpdate(true, true);
-		owner->showState();
-		break;
-
-		// --- text changing commands ------------------------
-	case LFUN_BREAKLINE:
-		owner->view()->beforeChange(TEXT());
-		TEXT()->InsertChar(owner->view(), LyXParagraph::META_NEWLINE);
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		moveCursorUpdate(true, false);
-		break;
-		
-	case LFUN_PROTECTEDSPACE:
-	{
-		LyXLayout const & style =
-			textclasslist.Style(owner->view()->buffer()->params.textclass,
-					    TEXT(false)->cursor.par()->GetLayout());
-
-		if (style.free_spacing) {
-			TEXT(false)->InsertChar(owner->view(), ' ');
-			owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		} else {
-			owner->view()->protectedBlank(TEXT(false));
-		}
-		moveCursorUpdate(false, false);
-	}
-	break;
-		
-	case LFUN_SETMARK:
-		if (TEXT(false)->mark_set) {
-			owner->view()->beforeChange(TEXT(false));
-			owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-			setMessage(N_("Mark removed"));
-		} else {
-			owner->view()->beforeChange(TEXT(false));
-			TEXT(false)->mark_set = 1;
-			owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-			setMessage(N_("Mark set"));
-		}
-		TEXT(false)->sel_cursor = TEXT(false)->cursor;
-		break;
-		
-	case LFUN_DELETE:
-		if (!TEXT()->selection) {
-			TEXT()->Delete(owner->view());
-			TEXT()->sel_cursor = 
-				TEXT()->cursor;
-			owner->view()->update(TEXT(),
-					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-			// It is possible to make it a lot faster still
-			// just comment out the line below...
-			owner->view()->showCursor();
-		} else {
-			owner->view()->cut();
-		}
-		moveCursorUpdate(true, false);
-		owner->showState();
-		owner->view()->setState();
-		break;
-
-	case LFUN_DELETE_SKIP:
-	{
-		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
-		
-		LyXCursor cursor = TEXT()->cursor;
-
-		if (!TEXT()->selection) {
-			if (cursor.pos() == cursor.par()->Last()) {
-				TEXT()->CursorRight(owner->view());
-				cursor = TEXT()->cursor;
-				if (cursor.pos() == 0
-				    && !(cursor.par()->added_space_top 
-					 == VSpace (VSpace::NONE))) {
-					TEXT()->SetParagraph
-						(owner->view(),
-						 cursor.par()->line_top,
-						 cursor.par()->line_bottom,
-						 cursor.par()->pagebreak_top, 
-						 cursor.par()->pagebreak_bottom,
-						 VSpace(VSpace::NONE), 
-						 cursor.par()->added_space_bottom,
-						 cursor.par()->align, 
-						 cursor.par()->labelwidthstring, 0);
-					TEXT()->CursorLeft(owner->view());
-					owner->view()->update(TEXT(), 
-							      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-				} else {
-					TEXT()->CursorLeft(owner->view());
-					TEXT()->Delete(owner->view());
-					TEXT()->sel_cursor = 
-						TEXT()->cursor;
-					owner->view()->update(TEXT(),
-							      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-				}
-			} else {
-				TEXT()->Delete(owner->view());
-				TEXT()->sel_cursor = 
-					TEXT()->cursor;
-				owner->view()->update(TEXT(),
-						      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-			}
-		} else {
-			owner->view()->cut();
-		}
-	}
-	break;
-
-	/* -------> Delete word forward. */
-	case LFUN_DELETE_WORD_FORWARD:
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		TEXT(false)->DeleteWordForward(owner->view());
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		moveCursorUpdate(false, false);
-		owner->showState();
-		break;
-
-		/* -------> Delete word backward. */
-	case LFUN_DELETE_WORD_BACKWARD:
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		TEXT(false)->DeleteWordBackward(owner->view());
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		moveCursorUpdate(false, false);
-		owner->showState();
-		break;
-		
-		/* -------> Kill to end of line. */
-	case LFUN_DELETE_LINE_FORWARD:
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		TEXT(false)->DeleteLineForward(owner->view());
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		moveCursorUpdate(false, false);
-		break;
-		
-		/* -------> Set mark off. */
-	case LFUN_MARK_OFF:
-		owner->view()->beforeChange(TEXT(false));
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		TEXT(false)->sel_cursor = TEXT(false)->cursor;
-		setMessage(N_("Mark off"));
-		break;
-
-		/* -------> Set mark on. */
-	case LFUN_MARK_ON:
-		owner->view()->beforeChange(TEXT(false));
-		TEXT(false)->mark_set = 1;
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR);
-		TEXT(false)->sel_cursor = TEXT(false)->cursor;
-		setMessage(N_("Mark on"));
-		break;
-		
-	case LFUN_BACKSPACE:
-	{
-		if (!TEXT()->selection) {
-			if (owner->getIntl()->getTrans().backspace()) {
-				TEXT()->Backspace(owner->view());
-				TEXT()->sel_cursor = 
-					TEXT()->cursor;
-				owner->view()->update(TEXT(),
-						      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-				// It is possible to make it a lot faster still
-				// just comment out the line below...
-				owner->view()->showCursor();
-			}
-		} else {
-			owner->view()->cut();
-		}
-		owner->showState();
-		owner->view()->setState();
-	}
-	break;
-
-	case LFUN_BACKSPACE_SKIP:
-	{
-		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
-		
-		LyXCursor cursor = TEXT()->cursor;
-		
-		if (!TEXT()->selection) {
-			if (cursor.pos() == 0 
-			    && !(cursor.par()->added_space_top 
-				 == VSpace (VSpace::NONE))) {
-				TEXT()->SetParagraph 
-					(owner->view(),
-					 cursor.par()->line_top,      
-					 cursor.par()->line_bottom,
-					 cursor.par()->pagebreak_top, 
-					 cursor.par()->pagebreak_bottom,
-					 VSpace(VSpace::NONE), cursor.par()->added_space_bottom,
-					 cursor.par()->align, 
-					 cursor.par()->labelwidthstring, 0);
-				owner->view()->update(TEXT(),
-						      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-			} else {
-				TEXT()->Backspace(owner->view());
-				TEXT()->sel_cursor 
-					= cursor;
-				owner->view()->update(TEXT(),
-						      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-			}
-		} else
-			owner->view()->cut();
-	}
-	break;
-
-	case LFUN_BREAKPARAGRAPH:
-	{
-		owner->view()->beforeChange(TEXT());
-		TEXT()->BreakParagraph(owner->view(), 0);
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		TEXT()->sel_cursor = 
-			TEXT()->cursor;
-		owner->view()->setState();
-		owner->showState();
-		break;
-	}
-
-	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
-	{
-		owner->view()->beforeChange(TEXT());
-		TEXT()->BreakParagraph(owner->view(), 1);
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		TEXT()->sel_cursor = 
-			TEXT()->cursor;
-		owner->view()->setState();
-		owner->showState();
-		break;
-	}
-	
-	case LFUN_BREAKPARAGRAPH_SKIP:
-	{
-		// When at the beginning of a paragraph, remove
-		// indentation and add a "defskip" at the top.
-		// Otherwise, do the same as LFUN_BREAKPARAGRAPH.
-		
-		LyXCursor cursor = TEXT()->cursor;
-		
-		owner->view()->beforeChange(TEXT());
-		if (cursor.pos() == 0) {
-			if (cursor.par()->added_space_top == VSpace(VSpace::NONE)) {
-				TEXT()->SetParagraph
-					(owner->view(),
-					 cursor.par()->line_top,      
-					 cursor.par()->line_bottom,
-					 cursor.par()->pagebreak_top, 
-					 cursor.par()->pagebreak_bottom,
-					 VSpace(VSpace::DEFSKIP), cursor.par()->added_space_bottom,
-					 cursor.par()->align, 
-					 cursor.par()->labelwidthstring, 1);
-				//owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-			} 
-		}
-		else {
-			TEXT()->BreakParagraph(owner->view(), 0);
-			//owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		}
-
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		TEXT()->sel_cursor = cursor;
-		owner->view()->setState();
-		owner->showState();
-	}
-	break;
-
-	case LFUN_PARAGRAPH_SPACING:
-	{
-		LyXParagraph * par = TEXT()->cursor.par();
-		Spacing::Space cur_spacing = par->spacing.getSpace();
-		float cur_value = 1.0;
-		if (cur_spacing == Spacing::Other) {
-			cur_value = par->spacing.getValue();
-		}
-		
-		istringstream istr(argument.c_str());
-
-		string tmp;
-		istr >> tmp;
-		Spacing::Space new_spacing = cur_spacing;
-		float new_value = cur_value;
-		if (tmp.empty()) {
-			lyxerr << "Missing argument to `paragraph-spacing'"
-			       << endl;
-		} else if (tmp == "single") {
-			new_spacing = Spacing::Single;
-		} else if (tmp == "onehalf") {
-			new_spacing = Spacing::Onehalf;
-		} else if (tmp == "double") {
-			new_spacing = Spacing::Double;
-		} else if (tmp == "other") {
-			new_spacing = Spacing::Other;
-			float tmpval = 0.0;
-			istr >> tmpval;
-			lyxerr << "new_value = " << tmpval << endl;
-			if (tmpval != 0.0)
-				new_value = tmpval;
-		} else if (tmp == "default") {
-			new_spacing = Spacing::Default;
-		} else {
-			lyxerr << _("Unknown spacing argument: ")
-			       << argument << endl;
-		}
-		if (cur_spacing != new_spacing || cur_value != new_value) {
-			par->spacing.set(new_spacing, new_value);
-			TEXT()->RedoParagraph(owner->view());
-			owner->view()->update(TEXT(),
-					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		}
-	}
-	break;
-	
-	case LFUN_QUOTE:
-		owner->view()->beforeChange(TEXT(false));
-		TEXT(false)->InsertChar(owner->view(), '\"');  // This " matches the single quote in the code
-		owner->view()->update(TEXT(false), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-                moveCursorUpdate(false, false);
-		break;
-
-	case LFUN_HTMLURL:
-	case LFUN_URL:
-	{
-		InsetCommandParams p;
-		if (action == LFUN_HTMLURL)
-			p.setCmdName("htmlurl");
-		else
-			p.setCmdName("url");
-		owner->getDialogs()->createUrl( p.getAsString() );
-	}
-	break;
-		    
-	case LFUN_INSERT_URL:
-	{
-		InsetCommandParams p;
-		p.setFromString( argument );
-
-		InsetUrl * inset = new InsetUrl( p );
-		if (!owner->view()->insertInset(inset))
-			delete inset;
-		else
-			owner->view()->updateInset( inset, true );
-	}
-	break;
-		    
-	case LFUN_INSET_TEXT:
-	{
-		InsetText * new_inset = new InsetText;
-		if (owner->view()->insertInset(new_inset))
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		else
-			delete new_inset;
-	}
-	break;
-	
-	case LFUN_INSET_ERT:
-	{
-		InsetERT * new_inset = new InsetERT;
-		if (owner->view()->insertInset(new_inset))
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		else
-			delete new_inset;
-	}
-	break;
-	
-	case LFUN_INSET_EXTERNAL:
-	{
-		InsetExternal * new_inset = new InsetExternal;
-		if (owner->view()->insertInset(new_inset))
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		else
-			delete new_inset;
-	}
-	break;
-	
-	case LFUN_INSET_FOOTNOTE:
-	{
-		InsetFoot * new_inset = new InsetFoot;
-		if (owner->view()->insertInset(new_inset))
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		else
-			delete new_inset;
-	}
-	break;
-
-	case LFUN_INSET_MARGINAL:
-	{
-		InsetMarginal * new_inset = new InsetMarginal;
-		if (owner->view()->insertInset(new_inset))
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		else
-			delete new_inset;
-	}
-	break;
-
-	case LFUN_INSET_MINIPAGE:
-	{
-		InsetMinipage * new_inset = new InsetMinipage;
-		if (owner->view()->insertInset(new_inset))
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		else
-			delete new_inset;
-	}
-	break;
-
-	case LFUN_INSET_FLOAT:
-	{
-		// check if the float type exist
-		if (floatList.typeExist(argument)) {
-			InsetFloat * new_inset = new InsetFloat(argument);
-			if (owner->view()->insertInset(new_inset))
-				new_inset->Edit(owner->view(), 0, 0, 0);
-			else
-				delete new_inset;
-		} else {
-			lyxerr << "Non-existant float type: "
-			       << argument << endl;
-		}
-		
-	}
-	break;
-
-	case LFUN_INSET_LIST:
-	{
-		InsetList * new_inset = new InsetList;
-		if (owner->view()->insertInset(new_inset))
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		else
-			delete new_inset;
-	}
-	break;
-
-	case LFUN_INSET_THEOREM:
-	{
-		InsetTheorem * new_inset = new InsetTheorem;
-		if (owner->view()->insertInset(new_inset))
-			new_inset->Edit(owner->view(), 0, 0, 0);
-		else
-			delete new_inset;
-	}
-	break;
-
-	case LFUN_INSET_CAPTION:
-	{
-		// Do we have a locking inset...
-		if (owner->view()->theLockingInset()) {
-			lyxerr << "Locking inset code: "
-			       << static_cast<int>(owner->view()->theLockingInset()->LyxCode());
-			InsetCaption * new_inset = new InsetCaption;
-			new_inset->setOwner(owner->view()->theLockingInset());
-			new_inset->SetAutoBreakRows(true);
-			new_inset->SetDrawFrame(0, InsetText::LOCKED);
-			new_inset->SetFrameColor(0, LColor::footnoteframe);
-			if (owner->view()->insertInset(new_inset))
-				new_inset->Edit(owner->view(), 0, 0, 0);
-			else
-				delete new_inset;
-		}
-	}
-	break;
-	
-	case LFUN_INSET_TABULAR:
-	{
-		int r = 2, c = 2;
-		if (!argument.empty())
-			::sscanf(argument.c_str(),"%d%d", &r, &c);
-		InsetTabular * new_inset =
-			new InsetTabular(*owner->buffer(), r, c);
-		bool rtl =
-			TEXT(false)->real_current_font.isRightToLeft();
-		if (!owner->view()->open_new_inset(new_inset, rtl))
-			delete new_inset;
-	}
-	break;
-
 	// --- lyxserver commands ----------------------------
 
-	case LFUN_CHARATCURSOR:
-	{
-		LyXParagraph::size_type pos = 
-			TEXT()->cursor.pos();
-		if (pos < TEXT()->cursor.par()->size())
-			//dispatch_buffer = TEXT()->
-			//	cursor.par()->text[pos];
-			dispatch_buffer =
-				TEXT()->
-				cursor.par()->GetChar(pos);
-		else
-			dispatch_buffer = "EOF";
-	}
-	break;
-	
-	case LFUN_GETXY:
-		dispatch_buffer = 
-			tostr(TEXT()->cursor.x()) + ' '
-			+ tostr(TEXT()->cursor.y());
-		break;
-		
-	case LFUN_SETXY:
-	{
-		int x;
-		int y;
-		::sscanf(argument.c_str(), " %d %d", &x, &y);
-		TEXT()->SetCursorFromCoordinates(owner->view(), x, y);
-	}
-	break;
-	
-	case LFUN_GETLAYOUT:
-		dispatch_buffer =  
-			tostr(TEXT()->cursor.par()->layout);
-		break;
-			
-	case LFUN_GETFONT:
-	{
-		LyXFont & font = TEXT()->current_font;
-                if (font.shape() == LyXFont::ITALIC_SHAPE)
-			dispatch_buffer = 'E';
-                else if (font.shape() == LyXFont::SMALLCAPS_SHAPE)
-			dispatch_buffer = 'N';
-                else
-			dispatch_buffer = '0';
-
-	}
-	break;
-
-	case LFUN_GETLATEX:
-	{
-		LyXFont & font = TEXT()->current_font;
-                if (font.latex() == LyXFont::ON)
-			dispatch_buffer = 'L';
-                else
-			dispatch_buffer = '0';
-	}
-	break;
 
 	case LFUN_GETNAME:
 		setMessage(owner->buffer()->fileName());
@@ -2401,49 +1255,6 @@ string const LyXFunc::Dispatch(int ac,
 	}
 	break;
 
-	// --- accented characters ---------------------------
-		
-	case LFUN_UMLAUT:
-	case LFUN_CIRCUMFLEX:
-	case LFUN_GRAVE:
-	case LFUN_ACUTE:
-	case LFUN_TILDE:
-	case LFUN_CEDILLA:
-	case LFUN_MACRON:
-	case LFUN_DOT:
-	case LFUN_UNDERDOT:
-	case LFUN_UNDERBAR:
-	case LFUN_CARON:
-	case LFUN_SPECIAL_CARON:
-	case LFUN_BREVE:
-	case LFUN_TIE:
-	case LFUN_HUNG_UMLAUT:
-	case LFUN_CIRCLE:
-	case LFUN_OGONEK:
-	{
-		char c = 0;
-		
-		if (keyseq.length == -1 && keyseq.getiso() != 0) 
-			c = keyseq.getiso();
-
-		owner->getIntl()->getTrans()
-			.deadkey(c, get_accent(action).accent, 
-				TEXT());
-		
-		// Need to reset, in case the minibuffer calls these
-		// actions
-		keyseq.reset();
-		keyseq.length = 0;
-		
-		// copied verbatim from do_accent_char
-		owner->view()->update(TEXT(),
-				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-
-		TEXT()->sel_cursor = 
-			TEXT()->cursor;
-	}   
-	break;
-	
 	// --- toolbar ----------------------------------
 	case LFUN_PUSH_TOOLBAR:
 	{
@@ -2501,59 +1312,6 @@ string const LyXFunc::Dispatch(int ac,
 	}
 	break;
 	
-	case LFUN_MATH_DELIM:     
-	case LFUN_INSERT_MATRIX:
-	{ 	   
-		if (owner->view()->available()) { 
-			if (owner->view()->
-			    open_new_inset(new InsetFormula(false)))
-			{
-				owner->view()->theLockingInset()
-					->LocalDispatch(owner->view(),
-							action,
-							argument);
-			}
-		}
-	}	   
-	break;
-	       
-	case LFUN_INSERT_MATH:
-	{
-		math_insert_symbol(owner->view(), argument);
-	}
-	break;
-	
-	case LFUN_MATH_DISPLAY:
-	{
-		if (owner->view()->available())
-			owner->view()->open_new_inset(new InsetFormula(true));
-		break;
-	}
-		    
-	case LFUN_MATH_MACRO:
-	{
-		if (owner->view()->available()) {
-			string s(argument);
-		        if (s.empty())
-				setErrorMessage(N_("Missing argument"));
-		        else {
-				string const s1 = token(s, ' ', 1);
-				int const na = s1.empty() ? 0 : lyx::atoi(s1);
-				owner->view()->
-					open_new_inset(new InsetFormulaMacro(token(s, ' ', 0), na));
-			}
-		}
-	}
-	break;
-
-	case LFUN_MATH_MODE:   // Open or create a math inset
-	{		
-		if (owner->view()->available())
-			owner->view()->open_new_inset(new InsetFormula);
-		setMessage(N_("Math editor mode"));
-	}
-	break;
-	  
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_LIMITS:
 	{
@@ -2589,147 +1347,6 @@ string const LyXFunc::Dispatch(int ac,
 	}
 	break;
 		    
-	case LFUN_CITATION_INSERT:
-	{
-		InsetCommandParams p;
-		p.setFromString( argument );
-
-		InsetCitation * inset = new InsetCitation( p );
-		if (!owner->view()->insertInset(inset))
-			delete inset;
-		else
-			owner->view()->updateInset( inset, true );
-	}
-	break;
-		    
-	case LFUN_INSERT_BIBTEX:
-	{   
-		// ale970405+lasgoutt970425
-		// The argument can be up to two tokens separated 
-		// by a space. The first one is the bibstyle.
-		string const db       = token(argument, ' ', 0);
-		string bibstyle = token(argument, ' ', 1);
-		if (bibstyle.empty())
-			bibstyle = "plain";
-
-		InsetCommandParams p( "BibTeX", db, bibstyle );
-		InsetBibtex * inset = new InsetBibtex(p);
-		
-		if (owner->view()->insertInset(inset)) {
-			if (argument.empty())
-				inset->Edit(owner->view(), 0, 0, 0);
-		} else
-			delete inset;
-	}
-	break;
-		
-	// BibTeX data bases
-	case LFUN_BIBDB_ADD:
-	{
-		InsetBibtex * inset = 
-			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
-		if (inset) {
-			inset->addDatabase(argument);
-		}
-	}
-	break;
-		    
-	case LFUN_BIBDB_DEL:
-	{
-		InsetBibtex * inset = 
-			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
-		if (inset) {
-			inset->delDatabase(argument);
-		}
-	}
-	break;
-	
-	case LFUN_BIBTEX_STYLE:
-	{
-		InsetBibtex * inset = 
-			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
-		if (inset) {
-			inset->setOptions(argument);
-		}
-	}
-	break;
-		
-	case LFUN_INDEX_CREATE:
-	{
-		InsetCommandParams p( "index" );
-		
-		if (argument.empty()) {
-			// Get the word immediately preceding the cursor
-			LyXParagraph::size_type curpos = 
-				TEXT()->cursor.pos() - 1;
-
-			string curstring;
-			if (curpos >= 0 )
-				curstring = TEXT()
-					    ->cursor.par()->GetWord(curpos);
-
-			p.setContents( curstring );
-		} else {
-			p.setContents( argument );
-		}
-
-		owner->getDialogs()->createIndex( p.getAsString() );
-	}
-	break;
-		    
-	case LFUN_INDEX_INSERT:
-	{
-		InsetCommandParams p;
-		p.setFromString(argument);
-		InsetIndex * inset = new InsetIndex(p);
-
-		if (!owner->view()->insertInset(inset))
-			delete inset;
-		else
-			owner->view()->updateInset(inset, true);
-	}
-	break;
-		    
-	case LFUN_INDEX_INSERT_LAST:
-	{
-		// Get word immediately preceding the cursor
-		LyXParagraph::size_type curpos = 
-			TEXT()->cursor.pos() - 1;
-	  	// Can't do that at the beginning of a paragraph
-	  	if (curpos < 0) break;
-
-		string const curstring(TEXT()
-				  ->cursor.par()->GetWord(curpos));
-
-		InsetCommandParams p("index", curstring);
-		InsetIndex * inset = new InsetIndex(p);
-
-		if (!owner->view()->insertInset(inset))
-			delete inset;
-		else
-			owner->view()->updateInset(inset, true);
-	}
-	break;
-		    
-	case LFUN_INDEX_PRINT:
-	{
-		InsetCommandParams p("printindex");
-		Inset * inset = new InsetPrintIndex(p);
-		if (!owner->view()->insertInset(inset, "Standard", true))
-			delete inset;
-	}
-	break;
-
-	case LFUN_PARENTINSERT:
-	{
-		lyxerr << "arg " << argument << endl;
-		InsetCommandParams p( "lyxparent", argument );
-		Inset * inset = new InsetParent(p, *owner->buffer());
-		if (!owner->view()->insertInset(inset, "Standard", true))
-			delete inset;
-	}
-	break;
-
 	case LFUN_CHILD_CREATE:
 	{
 		InsetCommandParams p("include");
@@ -2746,19 +1363,6 @@ string const LyXFunc::Dispatch(int ac,
 	}
 	break;
 
-	case LFUN_CHILD_INSERT:
-	{
-		InsetCommandParams p;
-		p.setFromString(argument);
-
-		InsetInclude * inset = new InsetInclude(p, *owner->buffer());
-		if (!owner->view()->insertInset(inset))
-			delete inset;
-		else
-			owner->view()->updateInset(inset, true);
-	}
-	break; 
-
 	case LFUN_CHILDOPEN:
 	{
 		string const filename =
@@ -2774,9 +1378,6 @@ string const LyXFunc::Dispatch(int ac,
 	}
 	break;
 
-	case LFUN_INSERT_NOTE:
-		owner->view()->insertNote();
-		break;
 #ifndef NEW_INSETS
 	case LFUN_INSERTFOOTNOTE: 
 	{
@@ -2826,26 +1427,6 @@ string const LyXFunc::Dispatch(int ac,
 		owner->getIntl()->ToggleKeyMap();
 		break;
 
-	case LFUN_SELFINSERT:
-	{
-		LyXFont const old_font(TEXT(false)->real_current_font);
-		for (string::size_type i = 0; i < argument.length(); ++i) {
-			TEXT(false)->InsertChar(owner->view(), argument[i]);
-			// This needs to be in the loop, or else we
-			// won't break lines correctly. (Asger)
-			owner->view()->update(TEXT(false),
-					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		}
-		TEXT(false)->sel_cursor = TEXT(false)->cursor;
-		moveCursorUpdate(false, false);
-
-		// real_current_font.number can change so we need to 
-		// update the minibuffer
-		if (old_font != TEXT(false)->real_current_font)
-			owner->showState();
-	}
-	break;
-
 	case LFUN_SEQUENCE: 
 	{
 		// argument contains ';'-terminated commands
@@ -2854,32 +1435,6 @@ string const LyXFunc::Dispatch(int ac,
 			argument = split(argument, first, ';');
 			Dispatch(first);
 		}
-	}
-	break;
-
-	case LFUN_DATE_INSERT:  // jdblair: date-insert cmd
-	{
-		struct tm * now_tm;
-		
-		time_t now_time_t = time(NULL);
-		now_tm = localtime(&now_time_t);
-		setlocale(LC_TIME, "");
-		string arg;
-		if (!argument.empty())
-			arg = argument;
-		else 
-			arg = lyxrc.date_insert_format;
-		char datetmp[32];
-		int const datetmp_len =
-			::strftime(datetmp, 32, arg.c_str(), now_tm);
-		for (int i = 0; i < datetmp_len; i++) {
-			TEXT()->InsertChar(owner->view(), datetmp[i]);
-			owner->view()->update(TEXT(),
-					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		}
-
-		TEXT()->sel_cursor = TEXT()->cursor;
-		moveCursorUpdate(true, false);
 	}
 	break;
 
@@ -2934,72 +1489,14 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 	}
 
-	case LFUN_UNKNOWN_ACTION:
-	{
-		if (!owner->buffer()) {
-			setErrorMessage(N_("No document open"));
-			break;
-		}
-
-		if (owner->buffer()->isReadonly()) {
-			setErrorMessage(N_("Document is read only"));
-			break;
-		}
-			 
-		if (!argument.empty()) {
-			
-			/* Automatically delete the currently selected
-			 * text and replace it with what is being
-			 * typed in now. Depends on lyxrc settings
-			 * "auto_region_delete", which defaults to
-			 * true (on). */
-		
-			if (lyxrc.auto_region_delete) {
-				if (TEXT()->selection){
-					TEXT()->CutSelection(owner->view(), false);
-					owner->view()->update(TEXT(),
-							      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-				}
-			}
-			
-			owner->view()->beforeChange(TEXT());
-			LyXFont const old_font(TEXT()->real_current_font);
-			for (string::size_type i = 0;
-			     i < argument.length(); ++i) {
-				if (greek_kb_flag) {
-					if (!math_insert_greek(owner->view(),
-							       argument[i]))
-						owner->getIntl()->getTrans().TranslateAndInsert(argument[i], TEXT());
-				} else
-					owner->getIntl()->getTrans().TranslateAndInsert(argument[i], TEXT());
-			}
-
-			owner->view()->update(TEXT(),
-					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-
-			TEXT()->sel_cursor = 
-				TEXT()->cursor;
-			moveCursorUpdate(true, false);
-
-			// real_current_font.number can change so we need to
-			// update the minibuffer
-			if (old_font != TEXT()->real_current_font)
-				owner->showState();
-			return string();
-		} else {
-			// why is an "Unknown action" with empty
-			// argument even dispatched in the first
-			// place? I`ll probably change that. (Lgb)
-			setErrorMessage(N_("Unknown action"));
-		}
-		break;
-	}
-
 	default:
-		lyxerr << "A truly unknown func!" << endl;
+		// Then if it was none of the above
+		if (!owner->view()->Dispatch(action, argument))
+			lyxerr << "A truly unknown func!" << endl;
 		break;
 	} // end of switch
-  exit_with_message:
+
+exit_with_message:
 
 	string const res = getMessage();
 
@@ -3264,59 +1761,6 @@ void LyXFunc::doImport(string const & argument)
 }
 
 
-void LyXFunc::MenuInsertLyXFile(string const & filen)
-{
-	string filename = filen;
-
-	if (filename.empty()) {
-		// Launch a file browser
-		string initpath = lyxrc.document_path;
-		LyXFileDlg fileDlg;
-
-		if (owner->view()->available()) {
-			string const trypath = owner->buffer()->filepath;
-			// If directory is writeable, use this as default.
-			if (IsDirWriteable(trypath) == 1)
-				initpath = trypath;
-		}
-
-		// launches dialog
-		ProhibitInput(owner->view());
-		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
-		fileDlg.SetButton(1, _("Examples"), 
-				  AddPath(system_lyxdir, "examples"));
-		filename = fileDlg.Select(_("Select Document to Insert"),
-					  initpath, "*.lyx");
-		AllowInput(owner->view());
-
-		// check selected filename
-		if (filename.empty()) {
-			owner->getMiniBuffer()->Set(_("Canceled."));
-			return;
-		}
-	} 
-
-	// get absolute path of file and make sure the filename ends
-	// with .lyx
-	filename = MakeAbsPath(filename);
-	if (!IsLyXFilename(filename))
-		filename += ".lyx";
-
-	// Inserts document
-	owner->getMiniBuffer()->Set(_("Inserting document"),
-				    MakeDisplayPath(filename), "...");
-	bool const res = owner->view()->insertLyXFile(filename);
-	if (res) {
-		owner->getMiniBuffer()->Set(_("Document"),
-					    MakeDisplayPath(filename),
-					    _("inserted."));
-	} else {
-		owner->getMiniBuffer()->Set(_("Could not insert document"),
-					    MakeDisplayPath(filename));
-	}
-}
-
-
 void LyXFunc::reloadBuffer()
 {
 	string const fn = owner->buffer()->fileName();
@@ -3337,19 +1781,6 @@ void LyXFunc::CloseBuffer()
 			owner->view()->buffer(bufferlist.first());
 		}
 	}
-}
-
-
-Inset * LyXFunc::getInsetByCode(Inset::Code code)
-{
-	LyXCursor cursor = TEXT()->cursor;
-	Buffer * buffer = owner->view()->buffer();
-	Buffer::inset_iterator it =
-		find_if(Buffer::inset_iterator(cursor.par(),
-					       cursor.pos()),
-			buffer->inset_iterator_end(),
-			compare_memfun(&Inset::LyxCode, code));
-	return it != buffer->inset_iterator_end() ? (*it) : 0;
 }
 
 

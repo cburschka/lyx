@@ -77,9 +77,8 @@ public:
         void setErrorMessage(string const &) const; 
         /// Buffer to store result messages
         string const getMessage() const { return dispatch_buffer; }
-        /// Get next inset of this class from current cursor position  
-        Inset * getInsetByCode(Inset::Code);
-	
+	/// Handle a accented char keysequenze
+	void handleKeyFunc(kb_action action);
 	/// Should a hint message be displayed?
 	void setHintMessage(bool);
 private:
@@ -121,8 +120,6 @@ private:
 
 	///
 	void doImport(string const &);
-	///
-	void MenuInsertLyXFile(string const &);
 
 	///
 	void CloseBuffer();

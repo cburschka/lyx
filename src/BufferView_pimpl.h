@@ -5,6 +5,7 @@
 
 #include "BufferView.h"
 #include "UpdateInset.h"
+#include "commandtags.h"
 #include "frontends/Timeout.h"
 
 #ifdef __GNUG__
@@ -118,6 +119,8 @@ struct BufferView::Pimpl : public Object {
 	///
 	void center();
 	///
+	bool Dispatch(kb_action action, string const & argument);
+	///
 	BufferView * bv_;
 	///
 	LyXView * owner_;
@@ -161,5 +164,10 @@ private:
                         : filename(f), par_id(id), par_pos(pos) {}
 	};
 	std::vector<Position> saved_positions;
+
+	void moveCursorUpdate(bool selecting);
+        /// Get next inset of this class from current cursor position  
+	Inset * getInsetByCode(Inset::Code code);
+	void MenuInsertLyXFile(string const & filen);
 };
 #endif

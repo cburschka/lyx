@@ -211,7 +211,7 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 ///  An updatable inset could handle lyx editing commands
 UpdatableInset::RESULT
 UpdatableInset::LocalDispatch(BufferView * bv, 
-			      int action, string const & arg) 
+			      kb_action action, string const & arg) 
 {
     if (!arg.empty() && (action==LFUN_SCROLL_INSET)) {
 	if (arg.find('.') != arg.npos) {

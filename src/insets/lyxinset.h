@@ -22,6 +22,7 @@
 #include "gettext.h"
 #include "lyxfont.h"
 #include "lyxlex.h"
+#include "commandtags.h"
 
 class BufferView;
 class Buffer;
@@ -356,7 +357,7 @@ public:
 					bool /*lr*/ = false)
 		{ return false; }
 	///  An updatable inset could handle lyx editing commands
-	virtual RESULT LocalDispatch(BufferView *, int, string const &);
+	virtual RESULT LocalDispatch(BufferView *, kb_action, string const &);
 	///
 	virtual bool isCursorVisible() const { return cursor_visible; }
 	///

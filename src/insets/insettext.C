@@ -273,7 +273,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
     // no draw is necessary !!!
     if ((drawFrame == LOCKED) && !locked && !par->size()) {
-	if (!cleared && (need_update == CLEAR_FRAME)) {
+	if (!cleared && (need_update & CLEAR_FRAME)) {
 	    pain.rectangle(top_x + 1, baseline - insetAscent + 1,
 			   width(bv, f) - 1,
 			   insetAscent + insetDescent - 1,
@@ -349,7 +349,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	if (y_offset < 0)
 	    y_offset = y;
 	TEXT(bv)->first = first;
-	if (cleared || !locked || (need_update&FULL) || (need_update&INIT)) {
+	if (cleared) { // (need_update&FULL) || (need_update&INIT)
 	    int yf = y_offset;
 	    y = 0;
 	    while ((row != 0) && (yf < ph)) {
@@ -359,6 +359,13 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		yf += row->height();
 		row = row->next();
 	    }
+	} else if (!locked) {
+	    if (need_update & CURSOR) {
+		bv->screen()->ToggleSelection(TEXT(bv), bv, true, y_offset,int(x));
+		TEXT(bv)->ClearSelection(bv);
+		TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
+	    }
+	    bv->screen()->Update(TEXT(bv), bv, y_offset, int(x));
 	} else {
 	    locked = false;
 	    if (need_update & SELECTION)
@@ -740,7 +747,7 @@ void InsetText::InsetKeyPress(XKeyEvent * xke)
 
 UpdatableInset::RESULT
 InsetText::LocalDispatch(BufferView * bv,
-			 int action, string const & arg)
+			 kb_action action, string const & arg)
 {
     no_selection = false;
     UpdatableInset::RESULT
@@ -777,6 +784,8 @@ InsetText::LocalDispatch(BufferView * bv,
 		if (TEXT(bv)->cursor.par()->isRightToLeftPar(bv->buffer()->params))
 		    moveRightIntern(bv, false, false);
 		dispatched = true;
+		break;
+	    default:
 		break;
 	    }
 	    the_locking_inset = 0;
@@ -815,7 +824,6 @@ InsetText::LocalDispatch(BufferView * bv,
 		}
 	    }
 	    TEXT(bv)->ClearSelection(bv);
-	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	    for (string::size_type i = 0; i < arg.length(); ++i) {
 		if (greek_kb_flag) {
 		    if (!math_insert_greek(bv, arg[i])) {
@@ -828,6 +836,7 @@ InsetText::LocalDispatch(BufferView * bv,
 		}
 	    }
 	}
+	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR_PAR, true);
 	result=DISPATCHED_NOUPDATE;
 	break;
@@ -1087,7 +1096,8 @@ InsetText::LocalDispatch(BufferView * bv,
     break;
 	
     default:
-	result = UNDISPATCHED;
+	if (!bv->Dispatch(action, arg))
+	    result = UNDISPATCHED;
 	break;
     }
 

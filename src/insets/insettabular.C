@@ -714,7 +714,8 @@ void InsetTabular::InsetKeyPress(XKeyEvent * xke)
 }
 
 
-UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
+UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv,
+						   kb_action action,
 						   string const & arg)
 {
     // We need to save the value of the_locking_inset as the call to 

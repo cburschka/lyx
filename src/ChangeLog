@@ -1,3 +1,18 @@
+2001-02-23  Juergen Vigna  <jug@sad.it>
+
+	* lyxfunc.C (Dispatch): removed the whole part of the switch statement
+	which works with LyXText and putted it inside BufferView. Here now we
+	only call for that part the BufferView::Dispatch() function.
+
+	* BufferView.C (Dispatch): added.
+
+	* BufferView_pimpl.C (Dispatch): added! Here are now all dispatch
+	functions which needs to use a LyXText over from LyXFunc.
+	(MenuInsertLyXFile): added
+	(getInsetByCode): added
+	(moveCursorUpdate): added
+	(static TEXT): added
+
 2001-02-22  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (update): call a status update to see if LyXText

@@ -135,7 +135,8 @@ public:
     ///
     void InsetKeyPress(XKeyEvent *);
     ///
-    UpdatableInset::RESULT LocalDispatch(BufferView *, int, string const &);
+    UpdatableInset::RESULT LocalDispatch(BufferView *, kb_action,
+					 string const &);
     ///
     int Latex(Buffer const *, std::ostream &, bool, bool) const;
     ///

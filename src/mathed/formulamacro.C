@@ -204,7 +204,7 @@ void InsetFormulaMacro::InsetUnlock(BufferView * bv)
 
 UpdatableInset::RESULT
 InsetFormulaMacro::LocalDispatch(BufferView * bv,
-				 int action, string const & arg)
+				 kb_action action, string const & arg)
 {
 	if (action == LFUN_MATH_MACROARG) {
 		int i = lyx::atoi(arg) - 1;

@@ -1,3 +1,22 @@
+2001-02-23  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (draw): some small repainting fixes.
+	(LocalDispatch): put the sel_cursor stuff after the insert of chars.
+
+	* inset.C (LocalDispatch): changed action to be a kb_action (as it
+	should be) and not an int.
+	
+	* insettabular.C (LocalDispatch): ditto
+
+	* insettext.C (LocalDispatch): ditto
+
+	* insetcollapsable.C (LocalDispatch): ditto
+
+2001-02-22  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (LocalDispatch): return DISPATCHED if we cannot
+	DISPATCH it and we don't have a locking_inset.
+
 2001-02-21  Baruch Even  <baruch@ev-en.org>
 
 	* insetgraphics.[Ch]: Changed to use boost::shared_ptr<GraphicsCacheItem>

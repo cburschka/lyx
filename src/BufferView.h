@@ -18,6 +18,7 @@
 
 #include FORMS_H_LOCATION
 #include "undo.h"
+#include "commandtags.h"
 #include <boost/utility.hpp>
 
 class LyXView;
@@ -249,6 +250,8 @@ public:
 	void pasteClipboard(bool asPara);
 	///
 	void stuffClipboard(string const &) const;
+	///
+	bool Dispatch(kb_action action, string const & argument);
 private:
 	struct Pimpl;
 	///
