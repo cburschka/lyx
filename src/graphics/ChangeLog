@@ -1,3 +1,9 @@
+2002-04-17  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GraphicsImageXPM.C (Data::reset): Fix the loading of xpm files by
+	the simple image loader when it encounters colour strings like
+	#rrrrggggbbbb.
+
 2002-04-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsCacheItem.C (convertToDisplayFormat):

@@ -388,6 +388,10 @@ bool contains_color_none(XpmImage const & image);
 
 string const unique_color_string(XpmImage const & image);
 
+// libXpm cannot cope with strings of the form #rrrrggggbbbb,
+// #rrrgggbbb or #rgb, so convert them to #rrggbb.
+string const convertTo7chars(string const &);
+
 // create a copy (using malloc and strcpy). If (!in) return 0;
 char * clone_c_string(char const * in);
 
@@ -470,21 +474,17 @@ void GImageXPM::Data::reset(XpmImage & image)
 
 	// 2. Ensure that the color table has g_color and m_color entries
 	XpmColor * table = colorTable_.get();
-	string buggy_color;
 
 	for (size_t i = 0; i < ncolors_; ++i) {
 		XpmColor & entry = table[i];
 		if (!entry.c_color)
 			continue;
 
-		// A work-around for buggy XPM files that may be created by
-		// ImageMagick's convert.
+		// libXpm cannot cope with strings of the form #rrrrggggbbbb,
+		// #rrrgggbbb or #rgb, so convert them to #rrggbb.
 		string c_color = entry.c_color;
-		if (c_color[0] == '#' && c_color.size() > 7) {
-			if (buggy_color.empty())
-				buggy_color = c_color;
-
-			c_color = c_color.substr(0, 7);
+		if (c_color[0] == '#' && c_color.size() != 7) {
+			c_color = convertTo7chars(c_color);
 			free(entry.c_color);
 			entry.c_color = clone_c_string(c_color.c_str());
 		}
@@ -492,18 +492,6 @@ void GImageXPM::Data::reset(XpmImage & image)
 		// If the c_color is defined and the equivalent
 		// grayscale or monochrome ones are not, then define them.
 		mapcolor(entry.c_color, &entry.g_color, &entry.m_color);
-	}
-
-	if (!buggy_color.empty()) {
-		lyxerr << "The XPM file contains silly colors, "
-		       << "an example being \""
-		       << buggy_color << "\".\n"
-		       << "This was cropped to \""
-		       << buggy_color.substr(0, 7)
-		       << "\" so you can see something!\n"
-		       << "If this file was created by ImageMagick's convert,\n"
-		       << "then upgrading may cure the problem."
-		       << std::endl;
 	}
 }
 
@@ -556,6 +544,68 @@ unsigned int GImageXPM::Data::color_none_id() const
 } // namespace grfx
 
 namespace {
+
+// libXpm cannot cope with strings of the form #rrrrggggbbbb,
+// #rrrgggbbb or #rgb, so convert them to #rrggbb.
+string const convertTo7chars(string const & input)
+{
+	string::size_type size = input.size();
+	if (size != 13 && size != 10 && size != 4)
+		// Can't deal with it.
+		return input;
+
+	if (input[0] != '#')
+		// Can't deal with it.
+		return input;
+
+	int nbytes;
+	double factor;
+	switch (size) {
+	case 13: // #rrrrggggbbbb
+	    nbytes = 4;
+	    factor = 1.0 / 256.0;
+	    break;
+
+	case 10: // #rrrgggbbb
+	    nbytes = 3;
+	    factor = 1.0 / 16.0;
+	    break;
+
+	case 4:  // #rgb
+	    nbytes = 1;
+	    factor = 16.0;
+	    break;
+	}
+
+	int r, g, b;
+	int const pos1 = 1;
+	int const pos2 = pos1 + nbytes;
+	int const pos3 = pos2 + nbytes;
+	
+	stringstream ss;
+	ss << input.substr(pos1, nbytes) << ' '
+	   << input.substr(pos2, nbytes) << ' '
+	   << input.substr(pos3, nbytes);
+	ss >> std::hex >> r >> g >> b;
+	if (ss.fail())
+		// Oh, you're on your own.
+		return input;
+	
+	// The existing r,g,b values are multiplied by these factors
+	// to end up with values in the range 0 <= c <= 255
+	r = int(factor * double(r));
+	g = int(factor * double(g));
+	b = int(factor * double(b));
+
+	ostringstream oss;
+	oss << '#' << std::hex << std::setfill('0')
+	    << std::setw(2) << r
+	    << std::setw(2) << g
+	    << std::setw(2) << b;
+
+	return oss.str().c_str();
+}
+
 
 // Given a string of the form #ff0571 create appropriate grayscale and
 // monochrome colors.
