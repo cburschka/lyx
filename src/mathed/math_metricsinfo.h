@@ -53,10 +53,6 @@ struct TextMetricsInfo {
 	///
 	TextMetricsInfo()
 		{}
-	/// used to pass some info down
-	MathNestInset const * inset;
-	///
-	int idx;
 };
 
 #endif

@@ -4,7 +4,7 @@
 #include "textpainter.h"
 
 
-void MathDimInset::metrics(TextMetricsInfo const &) const
+void MathDimInset::metricsT(TextMetricsInfo const &) const
 {
 	std::ostringstream os;
 	os << *this;
@@ -14,7 +14,7 @@ void MathDimInset::metrics(TextMetricsInfo const &) const
 }
 
 
-void MathDimInset::draw(TextPainter & pain, int x, int y) const
+void MathDimInset::drawT(TextPainter & pain, int x, int y) const
 {
 	std::ostringstream os;
 	os << *this;

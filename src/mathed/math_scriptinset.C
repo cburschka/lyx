@@ -198,31 +198,31 @@ void MathScriptInset::metrics(MathInset const * nuc,
 }
 
 
-void MathScriptInset::metrics(TextMetricsInfo const & mi) const
-{	
-	metrics(0, mi);
-}
-
-
-void MathScriptInset::metrics(MathInset const * nuc,
-	TextMetricsInfo const & mi) const
-{	
-	if (hasUp())
-		up().metrics(mi);
-	if (hasDown())
-		down().metrics(mi);
-	if (nuc)
-		nuc->metrics(mi);
-	//ascent_  = ascent2(nuc);
-	//descent_ = descent2(nuc);
-	//width_   = width2(nuc);
-}
-
-
 void MathScriptInset::draw(Painter & pain, int x, int y) const
 {  
 	//lyxerr << "unexpected call to MathScriptInset::draw()\n";
 	draw(0, pain, x, y);
+}
+
+
+void MathScriptInset::metricsT(TextMetricsInfo const & mi) const
+{	
+	metricsT(0, mi);
+}
+
+
+void MathScriptInset::metricsT(MathInset const * nuc,
+	TextMetricsInfo const & mi) const
+{	
+	if (hasUp())
+		up().metricsT(mi);
+	if (hasDown())
+		down().metricsT(mi);
+	if (nuc)
+		nuc->metricsT(mi);
+	//ascent_  = ascent2(nuc);
+	//descent_ = descent2(nuc);
+	//width_   = width2(nuc);
 }
 
 
@@ -241,22 +241,22 @@ void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
 		down().draw(pain, x + dx0(nuc), y + dy0(nuc));
 }
 
-void MathScriptInset::draw(TextPainter & pain, int x, int y) const
+void MathScriptInset::drawT(TextPainter & pain, int x, int y) const
 {  
 	//lyxerr << "unexpected call to MathScriptInset::draw()\n";
-	draw(0, pain, x, y);
+	drawT(0, pain, x, y);
 }
 
 
-void MathScriptInset::draw(MathInset const * nuc, TextPainter & pain,
+void MathScriptInset::drawT(MathInset const * nuc, TextPainter & pain,
 	int x, int y) const
 {  
 	if (nuc)
-		nuc->draw(pain, x + dxx(nuc), y);
+		nuc->drawT(pain, x + dxx(nuc), y);
 	if (hasUp())
-		up().draw(pain, x + dx1(nuc), y - dy1(nuc));
+		up().drawT(pain, x + dx1(nuc), y - dy1(nuc));
 	if (hasDown())
-		down().draw(pain, x + dx0(nuc), y + dy0(nuc));
+		down().drawT(pain, x + dx0(nuc), y + dy0(nuc));
 }
 
 

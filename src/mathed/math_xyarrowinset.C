@@ -48,8 +48,8 @@ MathXArray const & MathXYArrowInset::targetCell() const
 		}
 	}
 	//lyxerr << "target: x: " << x << " y: " << y << "\n";
-	int n = mi_.idx + p->ncols() * y + x;
-	if (n < 0 || n >= int(p->nargs())) {
+	MathInset::idx_type n = mi_.idx + p->ncols() * y + x;
+	if (n >= p->nargs()) {
 		lyxerr << "source: n: " << mi_.idx << "\n";
 		lyxerr << "target: n: " << n << " out of range\n";
 		n = 0;

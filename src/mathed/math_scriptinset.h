@@ -29,18 +29,18 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	void metrics(TextMetricsInfo const & st) const;
+	void metricsT(TextMetricsInfo const & st) const;
 	///
-	void draw(TextPainter &, int x, int y) const;
+	void drawT(TextPainter &, int x, int y) const;
 
 	///
 	void metrics(MathInset const * nuc, MathMetricsInfo const & st) const;
 	///
 	void draw(MathInset const * nuc, Painter &, int x, int y) const;
 	///
-	void metrics(MathInset const * nuc, TextMetricsInfo const & st) const;
+	void metricsT(MathInset const * nuc, TextMetricsInfo const & st) const;
 	///
-	void draw(MathInset const * nuc, TextPainter &, int x, int y) const;
+	void drawT(MathInset const * nuc, TextPainter &, int x, int y) const;
 	///
 	int ascent2(MathInset const * nuc) const;
 	///

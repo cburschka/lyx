@@ -376,12 +376,12 @@ void MathGridInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathGridInset::metrics(TextMetricsInfo const & mi) const
+void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 {
 	// let the cells adjust themselves
 	//MathNestInset::metrics(mi);
 	for (idx_type i = 0; i < nargs(); ++i) 
-		xcell(i).metrics(mi);
+		xcell(i).metricsT(mi);
 
 	// compute absolute sizes of vertical structure
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -466,10 +466,10 @@ void MathGridInset::metrics(TextMetricsInfo const & mi) const
 }
 
 
-void MathGridInset::draw(TextPainter & pain, int x, int y) const
+void MathGridInset::drawT(TextPainter & pain, int x, int y) const
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		xcell(idx).draw(pain, x + cellXOffset(idx), y + cellYOffset(idx));
+		xcell(idx).drawT(pain, x + cellXOffset(idx), y + cellYOffset(idx));
 }
 
 

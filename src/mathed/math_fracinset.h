@@ -22,9 +22,9 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	void metrics(TextMetricsInfo const & mi) const;
+	void metricsT(TextMetricsInfo const & mi) const;
 	///
-	void draw(TextPainter &, int x, int y) const;
+	void drawT(TextPainter &, int x, int y) const;
 	///
 	MathFracInset * asFracInset();
 

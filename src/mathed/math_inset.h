@@ -110,9 +110,9 @@ public:
 	virtual void draw(Painter &, int x, int y) const;
 	/// the ascent of the inset above the baseline
 	/// compute the size of the object for text based drawing
-	virtual void metrics(TextMetricsInfo const & st) const;
+	virtual void metricsT(TextMetricsInfo const & st) const;
 	/// draw the object as text
-	virtual void draw(TextPainter &, int x, int y) const;
+	virtual void drawT(TextPainter &, int x, int y) const;
 	/// the ascent of the inset above the baseline
 	virtual int ascent() const { return 1; }
 	/// the descent of the inset below the baseline

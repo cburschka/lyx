@@ -297,9 +297,9 @@ int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 {
 #if 1
 	TextMetricsInfo mi;
-	par()->metrics(mi);
+	par()->metricsT(mi);
 	TextPainter tpain(par()->width(), par()->height());
-	par()->draw(tpain, 0, par()->ascent());
+	par()->drawT(tpain, 0, par()->ascent());
 	tpain.show(os);
 	// reset metrics cache to "real" values
 	metrics();

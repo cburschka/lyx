@@ -200,7 +200,7 @@ void MathHullInset::draw(Painter & pain, int x, int y) const
 }
 
 /*
-void MathHullInset::metrics(TextMetricsInfo const & mi) const
+void MathHullInset::metricsT(TextMetricsInfo const & mi) const
 {
 	ascent_  = 1;
 	descent_ = 0;
@@ -208,7 +208,7 @@ void MathHullInset::metrics(TextMetricsInfo const & mi) const
 }
 
 
-void MathHullInset::draw(TextPainter & pain, int x, int y) const
+void MathHullInset::drawT(TextPainter & pain, int x, int y) const
 {
 	pain.draw(x, y, normalName(objtype_).c_str());
 	MathGridInset::draw(pain, x, y);

@@ -51,21 +51,21 @@ void MathFracInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathFracInset::metrics(TextMetricsInfo const & mi) const
+void MathFracInset::metricsT(TextMetricsInfo const & mi) const
 {
-	xcell(0).metrics(mi);
-	xcell(1).metrics(mi);
+	xcell(0).metricsT(mi);
+	xcell(1).metricsT(mi);
 	width_   = max(xcell(0).width(), xcell(1).width());
 	ascent_  = xcell(0).height() + 1;
 	descent_ = xcell(1).height();
 }
 
 
-void MathFracInset::draw(TextPainter & pain, int x, int y) const
+void MathFracInset::drawT(TextPainter & pain, int x, int y) const
 {
 	int m = x + width() / 2;
-	xcell(0).draw(pain, m - xcell(0).width() / 2, y - xcell(0).descent() - 1);
-	xcell(1).draw(pain, m - xcell(1).width() / 2, y + xcell(1).ascent());
+	xcell(0).drawT(pain, m - xcell(0).width() / 2, y - xcell(0).descent() - 1);
+	xcell(1).drawT(pain, m - xcell(1).width() / 2, y + xcell(1).ascent());
 	if (!atop_)
 		pain.horizontalLine(x, y, width());
 }

@@ -114,7 +114,7 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathXArray::metrics(TextMetricsInfo const & mi) const
+void MathXArray::metricsT(TextMetricsInfo const & mi) const
 {
 	//if (clean_)
 	//	return;
@@ -127,13 +127,13 @@ void MathXArray::metrics(TextMetricsInfo const & mi) const
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
 		if (q) {
-			q->metrics(p, mi);
+			q->metricsT(p, mi);
 			ascent_  = max(ascent_,  q->ascent2(p));
 			descent_ = max(descent_, q->descent2(p));
 			width_  += q->width2(p);	
 			++it;
 		} else {
-			p->metrics(mi);
+			p->metricsT(mi);
 			ascent_  = max(ascent_,  p->ascent());
 			descent_ = max(descent_, p->descent());
 			width_  += p->width();	
@@ -142,7 +142,7 @@ void MathXArray::metrics(TextMetricsInfo const & mi) const
 }
 
 
-void MathXArray::draw(TextPainter & pain, int x, int y) const
+void MathXArray::drawT(TextPainter & pain, int x, int y) const
 {
 	//if (drawn_ && x == xo_ && y == yo_)
 	//	return;
@@ -159,11 +159,11 @@ void MathXArray::draw(TextPainter & pain, int x, int y) const
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == et) ? 0 : asScript(it);
 		if (q) {
-			q->draw(p, pain, x, y);
+			q->drawT(p, pain, x, y);
 			x += q->width2(p);
 			++it;
 		} else {
-			p->draw(pain, x, y);
+			p->drawT(pain, x, y);
 			x += p->width();
 		}
 	}

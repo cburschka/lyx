@@ -206,15 +206,15 @@ void MathInset::draw(Painter &, int, int) const
 }
 
 
-void MathInset::metrics(TextMetricsInfo const &) const
+void MathInset::metricsT(TextMetricsInfo const &) const
 {
-	lyxerr << "MathInset::metrics(Text) called directly!\n";
+	lyxerr << "MathInset::metricsT(Text) called directly!\n";
 }
 
 
-void MathInset::draw(TextPainter &, int, int) const
+void MathInset::drawT(TextPainter &, int, int) const
 {
-	lyxerr << "MathInset::draw(Text) called directly!\n";
+	lyxerr << "MathInset::drawT(Text) called directly!\n";
 }
 
 

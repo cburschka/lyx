@@ -80,7 +80,7 @@ void MathCharInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathCharInset::metrics(TextMetricsInfo const &) const
+void MathCharInset::metricsT(TextMetricsInfo const &) const
 {
 	width_   = 1;
 	ascent_  = 1;
@@ -88,7 +88,7 @@ void MathCharInset::metrics(TextMetricsInfo const &) const
 }
 
 
-void MathCharInset::draw(TextPainter & pain, int x, int y) const
+void MathCharInset::drawT(TextPainter & pain, int x, int y) const
 { 
 	//lyxerr << "drawing text '" << char_ << "' code: " << code_ << endl;
 	pain.draw(x, y, char_);

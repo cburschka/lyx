@@ -17,9 +17,9 @@ public:
 	/// read width
 	int width() const { return width_; }
 	///
-	void metrics(TextMetricsInfo const &) const;
+	void metricsT(TextMetricsInfo const &) const;
 	///
-	void draw(TextPainter & pain, int x, int y) const;
+	void drawT(TextPainter & pain, int x, int y) const;
 
 protected:
 	///
