@@ -153,7 +153,7 @@ rm -f conftest.C conftest.o conftest.obj || true
 
 AC_DEFUN(LYX_PROG_CXX,
 [AC_MSG_CHECKING([for a good enough C++ compiler])
-LYX_SEARCH_PROG(CXX, $CCC g++ gcc c++ CC cxx xlC cc++, [LYX_PROG_CXX_WORKS])
+LYX_SEARCH_PROG(CXX, $CXX $CCC g++ gcc c++ CC cxx xlC cc++, [LYX_PROG_CXX_WORKS])
 
 if test -z "$CXX" ; then
   AC_ERROR([Unable to find a good enough C++ compiler])
@@ -560,11 +560,14 @@ fi])
 
 
 dnl Usage LYX_PATH_XFORMS: Checks for xforms library and flags
+dnl   If it is found, the variable XFORMS_NAME is set to its name on disk, 
+dnl   and XFORMS_LIBS is set to the relevant -l flag.
 AC_DEFUN(LYX_PATH_XFORMS,[
 ### Check for xforms library
-AC_CHECK_LIB(forms, fl_initialize, XFORMS_LIB="-lforms", 
-  [AC_CHECK_LIB(xforms, fl_initialize, XFORMS_LIB="-lxforms", 
-    [LYX_LIB_ERROR(libforms or libxforms,xforms)], $XFORMS_LIB)], $XFORMS_LIB) 
+AC_CHECK_LIB(forms, fl_initialize, XFORMS_NAME="forms", 
+  [AC_CHECK_LIB(xforms, fl_initialize, XFORMS_NAME="xforms", 
+    [LYX_LIB_ERROR(libforms or libxforms,xforms)])])
+test -n "$XFORMS_NAME" && XFORMS_LIB=-l$XFORMS_NAME
 AC_SUBST(XFORMS_LIB)
 ### Check for xforms headers
 lyx_cv_forms_h_location="<forms.h>"
@@ -605,9 +608,28 @@ probably use version 0.89.6 (or 0.88) instead) ;;
     0.89*) ;;
        *) LYX_WARNING(dnl
 Version $lyx_cv_xfversion of xforms might not be compatible with LyX[,] 
- since it is newer than 0.88. You might have slight problems with it.);;
+ since it is newer than 0.89. You might have slight problems with it.);;
 esac
 fi])
+
+
+dnl Check whether the xforms library has a viable image loader
+AC_DEFUN(LYX_USE_XFORMS_IMAGE_LOADER,
+[
+save_LIBS=$LIBS
+LIBS="$XFORMS_LIB $LIBS"
+lyx_use_xforms_image_loader=no
+AC_CHECK_FUNCS(flimage_dup,[
+  AC_CHECK_FUNCS(flimage_to_pixmap,[
+    lyx_use_xforms_image_loader=yes
+    AC_CHECK_FUNCS(flimage_enable_ps)])])
+LIBS=$save_LIBS
+
+### If the gui cannot load images itself, then we default to the
+### very simple one in graphics/GraphicsImageXPM.[Ch]
+AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
+               test $lyx_use_xforms_image_loader = no)
+])
 
 
 dnl Usage: LYX_HPUX  Checks for HP-UX and update CXXFLAGS accordingly
@@ -979,20 +1001,4 @@ CFLAGS="$CXXFLAGS"
 AM_PROG_LIBTOOL dnl for libraries
 CC=$ac_save_cc
 CFLAGS="$ac_save_cflags"
-])
-
-
-### Check whether the xforms library has a viable image loader
-AC_DEFUN(LYX_USE_XFORMS_IMAGE_LOADER,
-[
-TEMP_LDFLAGS=$LDFLAGS
-LDFLAGS=$XFORMS_LIB $LDFLAGS
-
-lyx_use_xforms_image_loader=no
-AC_CHECK_FUNCS(flimage_dup,[
-  AC_CHECK_FUNCS(flimage_to_pixmap,[
-    lyx_use_xforms_image_loader=yes
-    AC_CHECK_FUNCS(flimage_enable_ps)])])
-
-LDFLAGS=$TEMP_LDFLAGS
 ])

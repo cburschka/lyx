@@ -952,6 +952,8 @@ listerrors.c
 \newline 
 #!/bin/sh
 \newline 
+if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=Literate.nw; fi
+\newline 
 notangle -L -Rlisterrors.c ${NOWEB_SOURCE} > listerrors.c
 \newline 
 gcc -g -o listerrors listerrors.c

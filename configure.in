@@ -161,8 +161,6 @@ LYX_WITH_SIGC
 CHECK_WITH_PSPELL
 
 ### Check for X libraries
-dnl # Check for the pt library (for SCO, needed for X)
-dnl AC_CHECK_LIB(pt,ptsname,X_EXTRA_LIBS="-lpt $X_EXTRA_LIBS")
 # The real thing.
 AC_PATH_XTRA
 LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
@@ -257,11 +255,6 @@ fi
 ### For now, run this test always so config.h is unchanged by a change in
 ### frontend
 LYX_USE_XFORMS_IMAGE_LOADER
-
-### If the gui cannot load images itself, then we default to the
-### very simple one in graphics/GraphicsImageXPM.[Ch]
-AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
-               test x$lyx_use_xforms_image_loader = xno)
 
 ### Setup GNU gettext
 dnl GNU gettext is written in C
