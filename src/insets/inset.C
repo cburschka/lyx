@@ -337,16 +337,12 @@ int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 	if (topx_set && owner()) {
 		w -= top_x;
 		w += owner()->x();
-	}
-#if 0 // already handled above now!!!
-	else if (!owner()) {
-		// give some left margin this should be made better!
-		// Idea: LyXText::giveLeftMargin(Inset * inset) will search the
-		//       inset in the text and return the LeftMargin of that row!
-		lyxerr << "w -= 20\n";
+	} else if (owner()) {
+		// this is needed as otherwise we might have a too large inset if
+		// its top_x afterwards changes to LeftMargin so we try to put at
+		// least the default margin as top_x
 		w -= 20;
 	}
-#endif
 	if (w < 10) {
 		w = 10;
 	}
