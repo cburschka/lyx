@@ -31,11 +31,11 @@
 #include "formulabase.h"
 #include "math_cursor.h"
 #include "math_factory.h"
+#include "math_funcinset.h"
 #include "math_arrayinset.h"
 #include "math_charinset.h"
 #include "math_decorationinset.h"
 #include "math_deliminset.h"
-#include "math_funcinset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_matrixinset.h"
@@ -121,16 +121,14 @@ std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
 
 
 MathCursor::MathCursor(InsetFormulaBase * formula)
-	: formula_(formula), lastcode_(LM_TC_VAR), imacro_(0), selection_(false)
+	: formula_(formula), lastcode_(LM_TC_VAR), selection_(false)
 {
 	first();
 }
 
 
 MathCursor::~MathCursor()
-{
-	delete imacro_;
-}
+{}
 
 
 void MathCursor::pushLeft(MathInset * par)
@@ -260,13 +258,8 @@ bool MathCursor::posRight()
 bool MathCursor::left(bool sel)
 {
 	dump("Left 1");
-	if (imacro_) {
-		// was MacroModeBack()
-		if (!imacro_->name().empty()) {
-			imacro_->setName(imacro_->name().substr(0, imacro_->name().length()-1));
-			imacro_->metrics(imacro_->size());
-		} else
-			macroModeClose();
+	if (inMacroMode()) {
+		macroModeClose();
 		return true;
 	}
 	selHandle(sel);
@@ -285,7 +278,7 @@ bool MathCursor::left(bool sel)
 bool MathCursor::right(bool sel)
 {
 	dump("Right 1");
-	if (imacro_) {
+	if (inMacroMode()) {
 		macroModeClose();
 		return true;
 	}
@@ -393,20 +386,6 @@ void MathCursor::plainErase()
 void MathCursor::insert(char c, MathTextCodes t)
 {
 	//lyxerr << "inserting '" << c << "'\n";
-	if (selection_)
-		selDel();
-
-	if (t != LM_TC_VAR)
-		lastcode_ = t;
-
-	if (imacro_ && t != LM_TC_TEX)
-		macroModeClose();
-
-	if (imacro_) {
-		imacro_->setName(imacro_->name() + c);
-		return;
-	}
-
 	array().insert(pos(), new MathCharInset(c, t));
 	posRight();
 }
@@ -480,7 +459,7 @@ void MathCursor::backspace()
 void MathCursor::erase()
 {
 	dump("erase 1");
-	if (imacro_)
+	if (inMacroMode())
 		return;
 
 	if (selection_) {
@@ -614,28 +593,28 @@ void MathCursor::setSize(MathStyles size)
 }
 
 
-
-void MathCursor::macroModeOpen()
+void MathCursor::macroModeClose()
 {
-	if (!imacro_) {
-		imacro_ = new MathFuncInset("");
-		array().insert(pos(), imacro_);
-		++pos();
-		//insert(imacro_);
-	} else
-		lyxerr << "Math Warning: Already in macro mode" << endl;
+	string s = macroName();
+	if (s.size()) {
+		pos() = pos() - s.size();
+		for (unsigned i = 0; i < s.size(); ++i)
+			plainErase();
+		interpret("\\" + s);
+	}
+	lastcode_ = LM_TC_VAR;
 }
 
 
-void MathCursor::macroModeClose()
+string MathCursor::macroName() const
 {
-	if (imacro_) {
-		string name = imacro_->name();
-		posLeft();
-		plainErase();
-		imacro_ = 0;
-		interpret("\\" + name);
+	string s;
+	int p = pos() - 1;
+	while (p >= 0 && array().nextInset(p)->code() == LM_TC_TEX) {
+		s = array().nextInset(p)->getChar() + s;
+		--p;
 	}
+	return s;
 }
 
 
@@ -839,7 +818,7 @@ int & MathCursor::pos()
 
 bool MathCursor::inMacroMode() const
 {
-	return imacro_;
+	return lastcode_ == LM_TC_TEX;
 }
 
 
@@ -1302,16 +1281,20 @@ void MathCursor::interpret(string const & s)
 		return;	
 	}
 
-	if (c == '_' && lastcode_ == LM_TC_TEX) {
-		lastcode_ = LM_TC_VAR;
-		insert(c, LM_TC_SPECIAL);
-		return;
-	}
+	if (selection_)
+		selDel();
 
-	if ('0' <= c && c <= '9' && (lastcode_ == LM_TC_TEX || imacro_)) {
-		macroModeOpen();
-		lastcode_ = LM_TC_VAR;
-		insert(c, lastcode_);
+	if (lastcode_ == LM_TC_TEX) {
+		if (macroName().empty()) {
+			insert(c, LM_TC_TEX);
+			if (!isalpha(c))
+				macroModeClose();
+		} else {
+			if (isalpha(c))
+				insert(c, LM_TC_TEX);
+			else
+				macroModeClose();
+		}
 		return;
 	}
 
@@ -1337,7 +1320,7 @@ void MathCursor::interpret(string const & s)
 	}
 
 	if (c == ' ') {
-		if (imacro_) {
+		if (inMacroMode()) {
 			lastcode_ = LM_TC_VAR;
 			macroModeClose();
 			return;
@@ -1364,18 +1347,12 @@ void MathCursor::interpret(string const & s)
 	}
 
 	if (c == '\\') {
-		if (imacro_)
-			macroModeClose();
-		//bv->owner()->message(_("TeX mode"));
 		lastcode_ = LM_TC_TEX;
+		//bv->owner()->message(_("TeX mode"));
 		return;	
 	}
 
 	if (isalpha(c)) {
-		if (lastcode_ == LM_TC_TEX) {
-			macroModeOpen();
-			lastcode_ = LM_TC_VAR;
-		}
 		insert(c, lastcode_);
 		return;	
 	}

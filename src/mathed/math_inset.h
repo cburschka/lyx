@@ -182,11 +182,13 @@ public:
 	virtual bool isRelOp() const { return false; }
 	///
 	virtual char getChar() const { return 0; }
+	///
+	virtual MathTextCodes code() const { return LM_TC_MIN; }
 
 	///
 	virtual void push_back(MathInset *);
 	///
-	virtual void push_back(unsigned char ch, MathTextCodes fcode);
+	virtual void push_back(unsigned char c, MathTextCodes code);
 	///
 	virtual void dump() const;
 

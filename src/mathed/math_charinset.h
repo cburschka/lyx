@@ -37,6 +37,8 @@ public:
 	///
 	char getChar() const { return char_; }
 	///
+	MathTextCodes code() const { return code_; }
+	///
 	bool isRelOp() const;
 	///
 	void handleFont(MathTextCodes t);

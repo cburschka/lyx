@@ -67,8 +67,6 @@ public:
 	///
 	~MathCursor();
 	///
-	void insert(char, MathTextCodes t = LM_TC_MIN);
-	///
 	void insert(MathInset *);
 	///
 	void insert(MathArray const &);
@@ -140,8 +138,6 @@ public:
 	bool toggleLimits();
 	///
 	// Macro mode methods
-	void macroModeOpen();
-	///
 	void macroModeClose();
 	///
 	bool inMacroMode() const;
@@ -254,6 +250,10 @@ public:
 	MathSpaceInset * prevSpaceInset() const;
 private:
 	///
+	string macroName() const;
+	///
+	void insert(char, MathTextCodes t = LM_TC_MIN);
+	///
 	int & pos();
 	///
 	int & idx();
@@ -272,8 +272,6 @@ private:
 	InsetFormulaBase * const formula_;
 	///
 	MathTextCodes lastcode_;
-	///
-	MathFuncInset * imacro_;
 	// Selection stuff
 	/// do we currently select
 	bool selection_;
