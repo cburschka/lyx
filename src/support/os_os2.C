@@ -1,6 +1,15 @@
-// os_os2.C
+/**
+ * \file os_os2.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Ruurd A. Reitsma
+ *
+ * Full author contact details are available in file CREDITS
+ *
+ * Various OS specific functions
+ */
 
-// Various OS specific functions
 #include <config.h>
 
 #include "os.h"

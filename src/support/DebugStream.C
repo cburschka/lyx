@@ -1,9 +1,12 @@
-// Created by Lars Gullik Bjønnes
-// Copyright 1999 Lars Gullik Bjønnes (larsbj@lyx.org)
-// Released into the public domain.
-
-// Primarily developed for use in the LyX Project http://www.lyx.org/
-// but should be adaptable to any project.
+/**
+ * \file DebugStream.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
+ */
 
 //#define TEST_DEBUGSTREAM
 

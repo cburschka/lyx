@@ -10,8 +10,12 @@
  * \author Asger Alstrup
  * \author Lars Gullik Bjønnes
  * \author Jean-Marc Lasgouttes
+ * \author Angus Leeming
+ * \author John Levon
+ * \author Herbert Voss
  *
- * Full author contact details are available in file CREDITS
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * General path-mangling functions
  */

@@ -1,4 +1,13 @@
-// os.h copyright "Ruurd A. Reitsma" <R.A.Reitsma@wbmt.tudelft.nl>
+// -*- C++ -*-
+/**
+ * \file os.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Ruurd A. Reitsma
+ *
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef OS_H
 #define OS_H

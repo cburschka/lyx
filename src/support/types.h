@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file types.h
  * This file is part of LyX, the document processor.

@@ -1,14 +1,22 @@
 // -*- C++ -*-
+/**
+ * \file lyxfunctional.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
+ *
+ * \brief Convenient function objects for use with LyX
+ *
+ * This is currently a small collection of small function objects for use
+ * together with std::algorithms.
+ */
+
 
 #ifndef LYX_FUNCTIONAL_H
 #define LYX_FUNCTIONAL_H
-
-/** \file lyxfunctional.h
-    \brief Convenient function objects for use with LyX
-
-    This is currently a small collection of small function objects for use
-    together with std::algorithms.
-**/
 
 #include <iterator>
 

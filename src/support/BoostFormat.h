@@ -1,4 +1,14 @@
 // -*- C++ -*-
+/**
+ * \file BoostFormat.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
+ */
+
 #ifndef LYX_BOOST_FORMAT_H
 #define LYX_BOOST_FORMAT_H
 
