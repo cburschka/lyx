@@ -29,6 +29,7 @@ dnl
 dnl
 AC_DEFUN([LYX_VERSION_SUFFIX],[
 AC_MSG_CHECKING([for install target ... ])
+RPM_VERSION_SUFFIX='""'
 AC_ARG_WITH(version-suffix,
   [  --with-version-suffix[=<version>]  install lyx files as lyx<version>],
   [if test "x$withval" = "xyes";

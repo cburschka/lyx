@@ -1,3 +1,8 @@
+2004-10-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyxinclude.m4 (LYX_VERSION_SUFFIX): set RPM_VERSION_SUFFIX even
+	if it is empty, otherwise the spec file is broken
+
 2004-10-11  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyxinclude.m4: set new variable RPM_VERSION_SUFFIX
