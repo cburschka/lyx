@@ -1418,7 +1418,7 @@ int lyxstring::compare(lyxstring const & str) const
 {
 	TestlyxstringInvariant(this);
 
-	return compare(0, rep->sz, str.rep->s, str.rep->sz);
+	return compare(0, rep->sz, str.c_str(), str.rep->sz);
 }
 
 
@@ -1435,7 +1435,7 @@ int lyxstring::compare(size_type pos, size_type n, lyxstring const & str) const
 {
 	TestlyxstringInvariant(this);
 
-	return compare(pos, n, str.rep->s, str.rep->sz);
+	return compare(pos, n, str.c_str(), str.rep->sz);
 }
 
 
@@ -1444,7 +1444,7 @@ int lyxstring::compare(size_type pos, size_type n, lyxstring const & str,
 {
 	TestlyxstringInvariant(this);
 
-	return compare(pos, n, str.rep->s + pos2, n2);
+	return compare(pos, n, str.c_str() + pos2, n2);
 }
 
 

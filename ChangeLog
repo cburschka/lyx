@@ -1,3 +1,9 @@
+1999-11-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxstring.C (compare): pass c_str()
+	(compare): pass c_str
+	(compare): pass c_str
+
 1999-11-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/DebugStream.C: <config.h> was not included correctly.
