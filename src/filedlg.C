@@ -81,7 +81,8 @@ class UserCache {
 public:
 	/// seeks user name from group ID
 	string const & find(uid_t ID) const {
-		Users::const_iterator cit = users.find(ID);
+		// We really want to use const_iterator. (Lgb)
+		Users::iterator cit = users.find(ID);
 		if (cit == users.end()) {
 			add(ID);
 			return users[ID];
@@ -96,6 +97,7 @@ private:
 	///
 	mutable Users users;
 };
+
 
 void UserCache::add(uid_t ID) const 
 {
@@ -128,15 +130,19 @@ private:
 	mutable Groups groups;
 };
 
-	string const & GroupCache::find(gid_t ID) const 
-	{
-		Groups::const_iterator cit = groups.find(ID);
-		if (cit == groups.end()) {
-			add(ID);
-			return groups[ID];
-		}
-		return (*cit).second;
+
+string const & GroupCache::find(gid_t ID) const 
+{
+	// We really want to use const_iterator. (Lgb)
+	Groups::iterator cit = groups.find(ID);
+	if (cit == groups.end()) {
+		add(ID);
+		return groups[ID];
 	}
+	return (*cit).second;
+}
+
+
 void GroupCache::add(gid_t ID) const 
 {
 	string pszNewName;
@@ -150,10 +156,12 @@ void GroupCache::add(gid_t ID) const
 	// adds new node
 	groups[ID] = pszNewName;
 }
-	
+
+
 // static instances
 static UserCache lyxUserCache;
 static GroupCache lyxGroupCache;
+
 
 // some "C" wrappers around callbacks
 extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT *, long lArgument);
@@ -192,7 +200,7 @@ void LyXFileDlg::Reread()
 	if (!pDirectory) {
 		WriteFSAlert(_("Warning! Couldn't open directory."), 
 			     pszDirectory);
-		pszDirectory = lyx::getcwd(); //GetCWD();
+		pszDirectory = lyx::getcwd();
 		pDirectory = ::opendir(pszDirectory.c_str());
 	}
 
@@ -331,7 +339,7 @@ void LyXFileDlg::Reread()
 	// Add them to directory box
 	for (DirEntries::const_iterator cit = direntries.begin();
 	     cit != direntries.end(); ++cit) {
-		string temp = line + (*cit).pszDisplayed;
+		string const temp = line + (*cit).pszDisplayed;
 		fl_add_browser_line(pFileDlgForm->List, temp.c_str());
 	}
 	fl_set_browser_topline(pFileDlgForm->List, iDepth);
@@ -450,7 +458,6 @@ bool LyXFileDlg::RunDialog()
 	
         // event loop
         while(true) {
-
                 FL_OBJECT * pObject = fl_do_forms();
 
                 if (pObject == pFileDlgForm->Ready) {
@@ -530,7 +537,7 @@ extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT * ob, long data)
 void LyXFileDlg::HandleListHit()
 {
 	// set info line
-	int iSelect = fl_get_browser(pFileDlgForm->List);
+	int const iSelect = fl_get_browser(pFileDlgForm->List);
 	if (iSelect > iDepth)  {
 		SetInfoLine(direntries[iSelect - iDepth - 1].pszLsEntry);
 	} else {
@@ -547,10 +554,12 @@ void LyXFileDlg::DoubleClickCB(FL_OBJECT *, long)
 		pCurrentDlg->Force(false);
 }
 
+
 extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT * ob, long data)
 {
 	LyXFileDlg::DoubleClickCB(ob, data);
 }
+
 
 // Handle double click from list
 bool LyXFileDlg::HandleDoubleClick()
@@ -559,7 +568,7 @@ bool LyXFileDlg::HandleDoubleClick()
 
 	// set info line
 	bool isDir = true;
-	int iSelect = fl_get_browser(pFileDlgForm->List);
+	int const iSelect = fl_get_browser(pFileDlgForm->List);
 	if (iSelect > iDepth)  {
 		pszTemp = direntries[iSelect - iDepth - 1].pszName;
 		SetInfoLine(direntries[iSelect - iDepth - 1].pszLsEntry);
@@ -608,7 +617,7 @@ bool LyXFileDlg::HandleOK()
 {
 	// mask was changed
 	string pszTemp = fl_get_input(pFileDlgForm->PatBox);
-	if (pszTemp!= pszMask) {
+	if (pszTemp != pszMask) {
 		SetMask(pszTemp);
 		Reread();
 		return false;
@@ -623,12 +632,13 @@ bool LyXFileDlg::HandleOK()
 	}
 	
 	// Handle return from list
-	int select = fl_get_browser(pFileDlgForm->List);
+	int const select = fl_get_browser(pFileDlgForm->List);
 	if (select > iDepth) {
-		string temp = direntries[select - iDepth - 1].pszName;
+		string const temp = direntries[select - iDepth - 1].pszName;
 		if (!suffixIs(temp, '/')) {
 			// If user didn't type anything, use browser
-			string name = fl_get_input(pFileDlgForm->Filename);
+			string const name =
+				fl_get_input(pFileDlgForm->Filename);
 			if (name.empty()) {
 				fl_set_input(pFileDlgForm->Filename, temp.c_str());
 			}
@@ -689,21 +699,22 @@ string const LyXFileDlg::Select(string const & title, string const & path,
 
 	// highlight the suggested file in the browser, if it exists.
 	int sel = 0;
-	string filename = OnlyFilename(suggested);
-	if( !filename.empty() ) {
-		for( int i = 0; 
-		     i < fl_get_browser_maxline(pFileDlgForm->List); ++i ) {
-			string s = fl_get_browser_line(pFileDlgForm->List, i+1);
+	string const filename = OnlyFilename(suggested);
+	if (!filename.empty()) {
+		for (int i = 0; 
+		     i < fl_get_browser_maxline(pFileDlgForm->List); ++i) {
+			string s =
+				fl_get_browser_line(pFileDlgForm->List, i + 1);
 			s = strip(frontStrip(s));
-			if( s == filename ) {
-				sel = i+1;
+			if (s == filename) {
+				sel = i + 1;
 				break;
 			}
 		}
 	}
 	
-	if( sel != 0 ) fl_select_browser_line(pFileDlgForm->List, sel);
-	int top = max(sel - 5, 1);
+	if (sel != 0) fl_select_browser_line(pFileDlgForm->List, sel);
+	int const top = max(sel - 5, 1);
 	fl_set_browser_topline(pFileDlgForm->List, top);
 
 	// checks whether dialog can be started
@@ -711,7 +722,7 @@ string const LyXFileDlg::Select(string const & title, string const & path,
 	pCurrentDlg = this;
 
 	// runs dialog
-	SetInfoLine (string());
+	SetInfoLine(string());
 	fl_set_input(pFileDlgForm->Filename, suggested.c_str());
 	fl_set_button(pFileDlgForm->Cancel, 0);
 	fl_set_button(pFileDlgForm->Ready, 0);

@@ -453,7 +453,8 @@ LyXAction::LyXAction()
 // if it doesn't exist.
 int LyXAction::searchActionArg(kb_action action, string const & arg) const
 {
-	arg_map::const_iterator pit = lyx_arg_map.find(action);
+	// we really want to use const_iterator (Lgb)
+	arg_map::iterator pit = lyx_arg_map.find(action);
 
 	if (pit == lyx_arg_map.end()) {
 		// the action does not have any pseudoactions
@@ -462,8 +463,9 @@ int LyXAction::searchActionArg(kb_action action, string const & arg) const
 				      << endl;
 		return LFUN_UNKNOWN_ACTION;
 	}
-	
-	arg_item::const_iterator aci = (*pit).second.find(arg);
+
+	// we really want to use const_iterator (Lgb)
+	arg_item::iterator aci = (*pit).second.find(arg);
 
 	if (aci == (*pit).second.end()) {
 		// the action does not have any pseudoactions with this arg
@@ -518,8 +520,9 @@ int LyXAction::getPseudoAction(kb_action action, string const & arg) const
 kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
 {
 	arg.erase(); // clear it to be sure.
-	
-	pseudo_map::const_iterator pit = lyx_pseudo_map.find(pseudo);
+
+	// we really want to use const_iterator (Lgb)
+	pseudo_map::iterator pit = lyx_pseudo_map.find(pseudo);
 
 	if (pit != lyx_pseudo_map.end()) {
 		lyxerr[Debug::ACTION] << "Found the pseudoaction: ["

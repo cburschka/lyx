@@ -54,3 +54,6 @@ sourcedoc:
 	mkdir sourcedoc
 	cd sourcedoc ; \
 	doc++ -p `find ../$(top_srcdir)/src -name \*.h`
+
+lgbtags:
+	etags --totals=yes --recurse=yes -o TAGS $(top_srcdir)/*

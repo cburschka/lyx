@@ -175,7 +175,7 @@ string const lowercase(string const & a)
 	}
 #else
 	// We want to use this one. (Lgb)
-	transform(tmp.begin(), tmp.end(), tmp.begin(), tolower);
+	transform(tmp.begin(), tmp.end(), tmp.begin(), lowercase);
 #endif
 	return tmp;
 }
@@ -193,7 +193,7 @@ string const uppercase(string const & a)
 	}
 #else
 	// We want to use this one. (Lgb)
-	transform(tmp.begin(), tmp.end(), tmp.begin(), toupper);
+	transform(tmp.begin(), tmp.end(), tmp.begin(), uppercase);
 #endif
 	return tmp;
 }

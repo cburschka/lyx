@@ -1,3 +1,38 @@
+2000-11-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lyxfunctional.h: make back_insert_fun_iterator(s)
+	match the requirements from the standard better. This is required
+	to work with gnu libstdc++-v3
+
+	* src/frontends/xforms/FormPreferences.C: add explict pair
+	arguments to browse calls. include support/lyxmanip.h remvoe
+	extern fmt. whitespace changes. reorder variables in
+	FormPreferences.h, to match initalizaton order.
+
+	* several files: constify more local variables.
+	
+	* src/buffer.C: remove some commented functions.
+
+	* src/DepTable.C (remove_files_with_extension): temporary
+	work around for gcc 2.97 
+	* src/filedlg.C (find): ditto
+	* src/Variables.C (set): ditto
+	* src/LyXAction.C (searchActionArg): ditto
+	(retrieveActionArg): ditto
+
+	* configure.in: check for mktemp too
+
+	* UPGRADING: prepare for 1.1.6
+
+	* Makefile.am (lgbtags): add backup tags for when etags are
+	different than usual.
+
+	* ANNOUNCE: prepare for 1.1.6
+
+	* src/support/tempname.C (make_tempfile): new function, wrapper
+	around mkstemp and mktemp. Only mkstemp has been tested.
+	(tempName): call it.
+	
 2000-11-14  Rob Lahaye  <lahaye@postech.edu>
 	
 	* default.ui: capitalized some menu items to improve shortcuts.

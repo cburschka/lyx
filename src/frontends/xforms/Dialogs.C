@@ -26,7 +26,7 @@
 #include "FormTabularCreate.h"
 #include "FormToc.h"
 #include "FormUrl.h"
-#include "debug.h"
+//#include "debug.h"
 
 #ifdef __GNUG__
 #pragma implementation
@@ -73,7 +73,7 @@ Dialogs::~Dialogs()
 	for (vector<DialogBase *>::iterator iter = dialogs_.begin();
 	     iter != dialogs_.end();
 	     ++iter) {
-		lyxerr << "delete *iter" << endl;
+		//lyxerr << "delete *iter" << endl;
 		delete *iter;
 	}
 }

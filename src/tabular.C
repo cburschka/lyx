@@ -342,6 +342,8 @@ void LyXTabular::set_row_column_number_info(bool oldformat)
     }
 #else
     // Isn't this the same as the while above? (Lgb)
+#warning Please check this Jürgen.
+    // if ok please delete the #if 0 section above. (Lgb)
     for (int row = 0, column = 0, c = 0;
 	 c < numberofcells && row < rows_ && column < columns_;) {
 	rowofcell[c] = row;
@@ -2364,12 +2366,7 @@ static
 inline
 void print_n_chars(ostream & os, unsigned char ch, int n)
 {
-#if 0
-	for (int i = 0; i < n; ++i)
-		os << ch;
-#else
 	os << string(n, ch);
-#endif
 }
 
 
@@ -2390,6 +2387,8 @@ int LyXTabular::AsciiTopHLine(ostream & os, int row,
 	return 0;
 #else
     // Isn't this equivalent? (Lgb)
+#warning Please check this Jürgen.
+    // If ok please delete the abofe #if 0 section. (Lgb)
     for (int i = fcell; i < n; ++i) {
 	    if (TopLine(i))
 		    return 0;
@@ -2444,6 +2443,8 @@ int LyXTabular::AsciiBottomHLine(ostream & os, int row,
 	return 0;
 #else
     // Isn't this equivalent? (Lgb)
+#warning Please check this Jürgen.
+    // If ok, please delete the above #if 0 section. (Lgb)
     for (int i = fcell; i < n; ++i) {
 	if (BottomLine(i))
 	    return 0;

@@ -113,7 +113,8 @@ bool DepTable::exist(string const & fil) const
 void DepTable::remove_files_with_extension(string const & suf)
 {
 	DepList tmp;
-	for (DepList::const_iterator cit = deplist.begin();
+	// we want const_iterator (Lgb)
+	for (DepList::iterator cit = deplist.begin();
 	     cit != deplist.end(); ++cit) {
 		if (!suffixIs((*cit).first, suf))
 			tmp[(*cit).first] = (*cit).second;

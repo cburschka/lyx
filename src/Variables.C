@@ -20,10 +20,11 @@
 
 void Variables::set(string const & var, string const & val)
 {
-  Vars::const_iterator cit = vars_.find(var);
-  if (cit != vars_.end()) 
-    vars_.erase(var);
-  vars_[var] = val;;
+	// We want to use const_iterator (Lgb)
+	Vars::iterator cit = vars_.find(var);
+	if (cit != vars_.end()) 
+		vars_.erase(var);
+	vars_[var] = val;;
 }
 
 

@@ -54,7 +54,6 @@ using std::isdigit;
 using std::isalpha;
 #endif
 
-//extern char * mathed_label;
 extern string mathed_label;
 
 extern char const * latex_special_chars;

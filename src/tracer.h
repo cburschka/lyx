@@ -20,20 +20,20 @@
 #include "LString.h"
 
 ///
-class DebugTracer {
+class Trace {
 public:
 	///
 	explicit
-	DebugTracer(string const & s) : str(s) {
-		lyxerr << string(depth, ' ') << "Trace begin : "
+	Trace(string const & s) : str(s) {
+		lyxerr << string(depth, ' ') << "TRACE IN: "
 		       << str << std::endl;
-		++depth;
+		depth += 2;
 		
 	}
 	///
-	~DebugTracer() {
-		--depth;
-		lyxerr << string(depth, ' ') << "Trace end : "
+	~Trace() {
+		depth -= 2;
+		lyxerr << string(depth, ' ') << "TRACE OUT: "
 		       << str << std::endl;
 	}
 private:
@@ -43,4 +43,11 @@ private:
 	static int depth;
 };
 
+// To avoid wrong usage:
+// Trace("BufferView::update");  // wrong
+// Trace t("BufferView::update"); // right
+// we add this macro:
+///
+#define Trace(x) unnamed_Trace;
+// Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
 #endif

@@ -339,7 +339,9 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 		os << " rotateAngle " << rotateAngle << endl;
 }
 
-static void readResize(InsetGraphicsParams * igp, bool height,
+
+static
+void readResize(InsetGraphicsParams * igp, bool height,
                        string const & token)
 {
 	InsetGraphicsParams::Resize resize = InsetGraphicsParams::DEFAULT_SIZE;
@@ -369,7 +371,9 @@ static void readResize(InsetGraphicsParams * igp, bool height,
 		igp->widthResize = resize;
 }
 
-static void readOrigin(InsetGraphicsParams * igp, string const & token)
+
+static
+void readOrigin(InsetGraphicsParams * igp, string const & token)
 { // TODO: complete this function.
 	igp->rotateOrigin = originTranslator.find(token);
 }

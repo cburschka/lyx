@@ -3,6 +3,8 @@
 #ifndef LYX_FUNCTIONAL_H
 #define LYX_FUNCTIONAL_H
 
+#include <iterator>
+
 //namespace lyx {
 
 template<class R, class C, class A>
@@ -50,21 +52,28 @@ class_fun(C & c, void(C::*f)(A))
 template <class Cont, class Type, class MemRet>
 class back_insert_fun_iterator {
 protected:
-	Cont & container;
+	Cont * container;
 	MemRet(Type::*pmf)();
 public:
+	typedef Cont container_type;
+	typedef std::output_iterator_tag iterator_category;
+	typedef void value_type;
+	typedef void difference_type;
+	typedef void pointer;
+	typedef void reference;
+       
 	back_insert_fun_iterator(Cont & x, MemRet(Type::*p)())
-		: container(x), pmf(p) {}
+		: container(&x), pmf(p) {}
 
 	back_insert_fun_iterator &
 	operator=(Type * val) {
-		container.push_back((val->*pmf)());
+		container->push_back((val->*pmf)());
 		return *this;
 	}
 
 	back_insert_fun_iterator &
 	operator=(Type & val) {
-		container.push_back((val.*pmf)());
+		container->push_back((val.*pmf)());
 		return *this;
 	}
 
@@ -83,21 +92,30 @@ public:
 template <class Cont, class Type, class MemRet>
 class const_back_insert_fun_iterator {
 protected:
-	Cont & container;
+	Cont * container;
 	MemRet(Type::*pmf)() const;
 public:
+	typedef Cont container_type;
+	typedef std::output_iterator_tag iterator_category;
+	typedef void value_type;
+	typedef void difference_type;
+	typedef void pointer;
+	typedef void reference;
+	
 	const_back_insert_fun_iterator(Cont & x, MemRet(Type::*p)() const)
-		: container(x), pmf(p) {}
-
+		: container(&x), pmf(p) {}
+	
+	~const_back_insert_fun_iterator() {}
+      
 	const_back_insert_fun_iterator &
 	operator=(Type const * val) {
-		container.push_back((val->*pmf)());
+		container->push_back((val->*pmf)());
 		return *this;
 	}
 
 	const_back_insert_fun_iterator &
 	operator=(Type const & val) {
-		container.push_back((val.*pmf)());
+		container->push_back((val.*pmf)());
 		return *this;
 	}
 

@@ -72,8 +72,8 @@ Buffer * BufferStorage::newBuffer(string const & s, bool ronly)
 {
 	Buffer * tmpbuf = new Buffer(s, ronly);
 	tmpbuf->params.useClassDefaults();
-	lyxerr.debug() << "Assigning to buffer "
-		       << container.size() << endl;
+	lyxerr[Debug::INFO] << "Assigning to buffer "
+			    << container.size() << endl;
 	container.push_back(tmpbuf);
 	return tmpbuf;
 }
@@ -107,7 +107,7 @@ bool BufferList::QwriteAll()
 			else
 				fname = MakeDisplayPath((*it)->fileName(), 50);
 			bool reask = true;
-			while(reask) {
+			while (reask) {
 				switch (AskConfirmation(_("Changes in document:"),
 						       fname,
 						       _("Save document?"))) {

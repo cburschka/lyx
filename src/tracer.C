@@ -18,4 +18,4 @@
 
 #include "tracer.h"
 
-int DebugTracer::depth = 0;
+int Trace::depth = 0;

@@ -21,6 +21,7 @@
 
 #include "FormBase.h"
 #include "Color.h"
+#include "LString.h"
 
 #ifdef __GNUG_
 #pragma interface
@@ -104,22 +105,20 @@ private:
 	 */
 	
 	///
-	bool browse( FL_OBJECT * input,
-		     string const & title, string const & pattern, 
-		     std::pair<string,string> const & dir1 =
-		     	std::pair<string,string>(),
-		     std::pair<string,string> const & dir2 =
-		     	std::pair<string,string>() );
+	bool browse(FL_OBJECT * input,
+		    string const & title, string const & pattern, 
+		    std::pair<string,string> const & dir1 //=
+		    //std::pair<string,string>()
+		    ,
+		    std::pair<string,string> const & dir2 //=
+		    //std::pair<string,string>()
+		);
 	/// called from browse()
 	string const browseFile( string const & filename,
 				 string const & title, string const & pattern, 
 				 std::pair<string,string> const & dir1,
 				 std::pair<string,string> const & dir2 ) const;
 
-	/** Flag whether a warning has been posted to the text window.
-	    If so, don't redraw the window when the mouse leaves an object. */
-	bool warningPosted;
-	
 	/// Type definitions from the fdesign produced header file.
 	FD_form_preferences * build_preferences();
 	///
@@ -151,17 +150,21 @@ private:
 
 	/// Real GUI implementation.
 	FD_form_preferences * dialog_;
+	/// Converters tabfolder
+	FD_form_outer_tab * converters_tab_;
 	/// reLyX and other import/input stuff
 	FD_form_outer_tab * inputs_tab_;
 	/// HCI configuration
 	FD_form_outer_tab * look_n_feel_tab_;
-	/// Converters tabfolder
-	FD_form_outer_tab * converters_tab_;
 	/// Outputs tabfolder
 	FD_form_outer_tab * outputs_tab_;
 	/// Spellchecker, language stuff, etc
 	FD_form_outer_tab * usage_tab_;
 
+	/** Flag whether a warning has been posted to the text window.
+	    If so, don't redraw the window when the mouse leaves an object. */
+	bool warningPosted;
+	
 	/** Each tab folder is encapsulated in its own class.
 	 */
 
@@ -571,9 +574,9 @@ private:
 	///
 	Converters converters_;
 	///
-	Formats formats_;
-	///
 	InputsMisc inputs_misc_;
+	///
+	Formats formats_;
 	///
 	Interface interface_;
 	///

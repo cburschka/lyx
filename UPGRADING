@@ -1,4 +1,4 @@
-How do I upgrade my existing LyX system to version 1.1.5?
+How do I upgrade my existing LyX system to version 1.1.6?
 ---------------------------------------------------------
 
 If you upgrade from version 0.12.0 or 1.0.x, you shouldn't have 
@@ -14,9 +14,9 @@ Document transfer
 -----------------
 
 In general, you don't need to convert any documents saved with LyX
-v0.10, v0.12.0 or v1.0.x to use them with LyX v1.1.5.
+v0.10, v0.12.0 or v1.0.x to use them with LyX v1.1.6.
 
-LyX v1.1.5 can read all documents saved with lyx-0.12.0 and later correctly.
+LyX v1.1.6 can read all documents saved with lyx-0.12.0 and later correctly.
 Documents saved with lyx-0.10.x are read correctly up to the old math 
 mode, which is not supported anymore. If you have documents with such 
 math formulas, you convert it using the program COLD, written by Preben 
@@ -27,5 +27,5 @@ Rhandol. COLD can be found at:
 
 or at one of LyX archive mirror sites listed in README.
 
-Documents saved with LyX version 1.1.5 can be read correctly by 
+Documents saved with LyX version 1.1.6 can be read correctly by 
 LyX v0.12.0 and v1.0.x, except for new and a couple of changed features.
