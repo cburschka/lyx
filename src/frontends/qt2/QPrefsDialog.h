@@ -70,6 +70,21 @@ public slots:
  
 	void change_color();
  
+	void change_roman();
+	void change_sans();
+	void change_typewriter();
+
+	void select_ui();
+	void select_bind();
+	void select_keymap1();
+	void select_keymap2();
+	void select_dict();
+	void select_templatedir();
+	void select_tempdir();
+	void select_backupdir();
+	void select_workingdir();
+	void select_lyxpipe();
+
 protected:
 	void closeEvent(QCloseEvent * e);
  

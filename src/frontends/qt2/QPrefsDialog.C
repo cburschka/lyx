@@ -47,6 +47,7 @@
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>
+#include <qfontdialog.h>
 #include <qcolordialog.h>
 #include <qcolor.h>
 #include "qcoloritem.h"
@@ -178,6 +179,24 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 		colorsModule->lyxObjectsLB->insertItem(ci);
 	}
 
+	connect(uiModule->uiFilePB, SIGNAL(clicked()), this, SLOT(select_ui()));
+	connect(uiModule->bindFilePB, SIGNAL(clicked()), this, SLOT(select_bind()));
+ 
+	connect(keyboardModule->firstKeymapPB, SIGNAL(clicked()), this, SLOT(select_keymap1()));
+	connect(keyboardModule->secondKeymapPB, SIGNAL(clicked()), this, SLOT(select_keymap2()));
+ 
+	connect(spellcheckerModule->persDictionaryPB, SIGNAL(clicked()), this, SLOT(select_dict()));
+
+	connect(pathsModule->templateDirPB, SIGNAL(clicked()), this, SLOT(select_templatedir()));
+	connect(pathsModule->tempDirPB, SIGNAL(clicked()), this, SLOT(select_tempdir()));
+	connect(pathsModule->backupDirPB, SIGNAL(clicked()), this, SLOT(select_backupdir()));
+	connect(pathsModule->workingDirPB, SIGNAL(clicked()), this, SLOT(select_workingdir()));
+	connect(pathsModule->lyxserverDirPB, SIGNAL(clicked()), this, SLOT(select_lyxpipe()));
+ 
+	connect(screenfontsModule->screenRomanPB, SIGNAL(clicked()), this, SLOT(change_roman()));
+	connect(screenfontsModule->screenSansPB, SIGNAL(clicked()), this, SLOT(change_sans()));
+	connect(screenfontsModule->screenTypewriterPB, SIGNAL(clicked()), this, SLOT(change_typewriter()));
+ 
 	connect(colorsModule->colorChangePB, SIGNAL(clicked()), this, SLOT(change_color()));
 	connect(colorsModule->lyxObjectsLB, SIGNAL(selected(int)), this, SLOT(change_color()));
  
@@ -466,4 +485,135 @@ void QPrefsDialog::change_color()
 		lb->update();
 		change_adaptor();
 	}
+}
+
+
+void QPrefsDialog::select_ui()
+{
+	string file(form_->controller().browseUI(uiModule->uiFileED->text().latin1()));
+	if (!file.empty())
+		uiModule->uiFileED->setText(file.c_str());
+}
+
+
+void QPrefsDialog::select_bind()
+{
+	string file(form_->controller().browsebind(uiModule->bindFileED->text().latin1()));
+	if (!file.empty())
+		uiModule->bindFileED->setText(file.c_str());
+}
+
+ 
+void QPrefsDialog::select_keymap1()
+{
+	string file(form_->controller().browsekbmap(keyboardModule->firstKeymapED->text().latin1()));
+	if (!file.empty())
+		keyboardModule->firstKeymapED->setText(file.c_str());
+}
+
+ 
+void QPrefsDialog::select_keymap2()
+{
+	string file(form_->controller().browsekbmap(keyboardModule->secondKeymapED->text().latin1()));
+	if (!file.empty())
+		keyboardModule->secondKeymapED->setText(file.c_str());
+}
+
+
+void QPrefsDialog::select_dict()
+{
+	string file(form_->controller().browsedict(spellcheckerModule->persDictionaryED->text().latin1()));
+	if (!file.empty())
+		spellcheckerModule->persDictionaryED->setText(file.c_str());
+}
+
+ 
+void QPrefsDialog::select_templatedir()
+{
+	string file(form_->controller().browse(pathsModule->templateDirED->text().latin1(), _("Select a document templates directory")));
+	if (!file.empty())
+		pathsModule->templateDirED->setText(file.c_str());
+}
+
+ 
+void QPrefsDialog::select_tempdir()
+{
+	string file(form_->controller().browse(pathsModule->tempDirED->text().latin1(), _("Select a temporary directory")));
+	if (!file.empty())
+		pathsModule->tempDirED->setText(file.c_str());
+}
+
+ 
+void QPrefsDialog::select_backupdir()
+{
+	string file(form_->controller().browse(pathsModule->backupDirED->text().latin1(), _("Select a backups directory")));
+	if (!file.empty())
+		pathsModule->backupDirED->setText(file.c_str());
+}
+
+ 
+void QPrefsDialog::select_workingdir()
+{
+	string file(form_->controller().browse(pathsModule->workingDirED->text().latin1(), _("Selection a documents directory")));
+	if (!file.empty())
+		pathsModule->workingDirED->setText(file.c_str());
+}
+
+ 
+void QPrefsDialog::select_lyxpipe()
+{
+	string file(form_->controller().browse(pathsModule->lyxserverDirED->text().latin1(), _("Give a filename for the LyX server pipe")));
+	if (!file.empty())
+		pathsModule->lyxserverDirED->setText(file.c_str());
+}
+
+
+void QPrefsDialog::change_roman()
+{
+#if QT_VERSION >= 300
+	QFont f;
+	f.fromString(screenfontsModule->screenRomanED->text());
+ 
+	// Qt designers hadn't heard of references
+	bool ok; 
+	QFontDialog::getFont(&ok, f);
+	if (ok)
+		screenfontsModule->screenRomanED->setText(f.toString());
+#else
+	// ??
+#endif
+}
+
+
+void QPrefsDialog::change_sans()
+{
+#if QT_VERSION >= 300
+	QFont f;
+	f.fromString(screenfontsModule->screenSansED->text());
+ 
+	// Qt designers hadn't heard of references
+	bool ok; 
+	QFontDialog::getFont(&ok, f);
+	if (ok)
+		screenfontsModule->screenSansED->setText(f.toString());
+#else
+	// ?? rawName is no good
+#endif
+}
+
+
+void QPrefsDialog::change_typewriter()
+{
+#if QT_VERSION >= 300
+	QFont f;
+	f.fromString(screenfontsModule->screenTypewriterED->text());
+ 
+	// Qt designers hadn't heard of references
+	bool ok; 
+	QFontDialog::getFont(&ok, f);
+	if (ok)
+		screenfontsModule->screenTypewriterED->setText(f.toString());
+#else
+	// ?? rawName is no good
+#endif
 }

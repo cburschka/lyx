@@ -1,5 +1,11 @@
 2002-11-17  John Levon  <levon@movementarian.org>
 
+	* QPrefsDialog.h:
+	* QPrefsDialog.C: implement browse slots. Also
+	  try to do something with fonts for Qt 3 (untested)
+ 
+2002-11-17  John Levon  <levon@movementarian.org>
+
 	* QGraphics.C: some fixes from Herbert & me
  
 2002-11-15  Juergen Spitzmueller  <j.spitzmueller@gmx.de>

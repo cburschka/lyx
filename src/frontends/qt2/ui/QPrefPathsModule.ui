@@ -156,7 +156,7 @@
                     <class>QPushButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>backupDirPB</cstring>
+                        <cstring>lyxserverDirPB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
@@ -215,7 +215,7 @@
                     <class>QPushButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>lyxserverDirPB</cstring>
+                        <cstring>backupDirPB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
@@ -271,9 +271,9 @@
     <tabstop>templateDirED</tabstop>
     <tabstop>templateDirPB</tabstop>
     <tabstop>backupDirED</tabstop>
-    <tabstop>lyxserverDirPB</tabstop>
-    <tabstop>lyxserverDirED</tabstop>
     <tabstop>backupDirPB</tabstop>
+    <tabstop>lyxserverDirED</tabstop>
+    <tabstop>lyxserverDirPB</tabstop>
     <tabstop>tempDirCB</tabstop>
     <tabstop>tempDirED</tabstop>
     <tabstop>tempDirPB</tabstop>
