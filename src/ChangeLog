@@ -1,5 +1,9 @@
 2001-12-28  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* screen.C (topCursorVisible): introduce a temp var for
+	text->cursor.row(), handle the case where this row is null. (kindo
+	hachish)
+
 	* text2.C (setCursor): add a couple of asserts.
 
 	* paragraph.h (inset_iterator): add -> operator 

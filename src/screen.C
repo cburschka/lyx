@@ -388,27 +388,30 @@ unsigned int LyXScreen::topCursorVisible(LyXText const * text)
 {
 	int newtop = text->first;
 
-	if (text->cursor.y()
-	    - text->cursor.row()->baseline()
-	    + text->cursor.row()->height()
+	Row * row = text->cursor.row();
+
+	// Is this a hack? Yes, probably... (Lgb)
+	if (!row)
+		return max(newtop, 0);
+	
+	if (text->cursor.y() - row->baseline() + row->height()
 	    - text->first >= owner.height()) {
-		if (text->cursor.row()->height() < owner.height()
-		    && text->cursor.row()->height() > owner.height() / 4) {
+		if (row->height() < owner.height()
+		    && row->height() > owner.height() / 4) {
 			newtop = text->cursor.y()
-				+ text->cursor.row()->height()
-				- text->cursor.row()->baseline() - owner.height();
+				+ row->height()
+				- row->baseline() - owner.height();
 		} else {
 			// scroll down
 			newtop = text->cursor.y()
 				- owner.height() / 2;   /* the scroll region must be so big!! */
 		}
 		
-	} else if (static_cast<int>((text->cursor.y()) - text->cursor.row()->baseline()) <
-		   text->first && text->first > 0)
-	{
-		if (text->cursor.row()->height() < owner.height()
-		    && text->cursor.row()->height() > owner.height() / 4) {
-			newtop = text->cursor.y() - text->cursor.row()->baseline();
+	} else if (static_cast<int>((text->cursor.y()) - row->baseline()) <
+		   text->first && text->first > 0) {
+		if (row->height() < owner.height()
+		    && row->height() > owner.height() / 4) {
+			newtop = text->cursor.y() - row->baseline();
 		} else {
 			// scroll up
 			newtop = text->cursor.y() - owner.height() / 2;
