@@ -493,33 +493,37 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 	// yet. don't let this continue to exist ...
 	if (ob == dialog_->button_close) {
 		closing_ = true;
-		string str1 =
+		string w1 =
 			getLengthFromWidgets(column_options_->input_column_width,
 					     column_options_->choice_value_column_width);
-		string str2;
+		string w2;
 		LyXLength llen = tabular.GetColumnPWidth(cell);
 		if (!llen.zero())
-			str2 = llen.asString();
-		if (str1 != str2)
-			input(column_options_->input_column_width, 0);
-		str1 = getLengthFromWidgets(cell_options_->input_mcolumn_width,
+			w2 = llen.asString();
+
+		string mw1 = getLengthFromWidgets(cell_options_->input_mcolumn_width,
 					    cell_options_->choice_value_mcolumn_width);
 		llen = tabular.GetMColumnPWidth(cell);
+		string mw2;
 		if (llen.zero())
-			str2 = "";
+			mw2 = "";
 		else
-			str2 = llen.asString();
-		if (str1 != str2)
-			input(cell_options_->input_mcolumn_width, 0);
-		str1 = getString(column_options_->input_special_alignment);
-		str2 = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
-		if (str1 != str2)
-			input(column_options_->input_special_alignment, 0);
-		str1 = getString(cell_options_->input_special_multialign);
-		str2 = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
-		if (str1 != str2)
-			input(cell_options_->input_special_multialign, 0);
+			mw2 = llen.asString();
 
+		string al1 = getString(column_options_->input_special_alignment);
+		string al2 = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
+		string mal1 = getString(cell_options_->input_special_multialign);
+		string mal2 = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
+
+		// we must do these all at the end
+		if (w1 != w2)
+			input(column_options_->input_column_width, 0);
+		if (mw1 != mw2)
+			input(cell_options_->input_mcolumn_width, 0);
+		if (al1 != al2)
+			input(column_options_->input_special_alignment, 0);
+		if (mal1 != mal2)
+			input(cell_options_->input_special_multialign, 0);
 		closing_ = false;
 		dialog().OKButton();
 		return ButtonPolicy::SMI_VALID;
