@@ -665,6 +665,11 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			parse(p->cell(up), FLAG_ITEM, mathmode);
 			p->limits(limits);
 			limits = 0;
+			// special handling of {}-bases 
+			// is this always correct?
+			if (p->nuc().size() == 1 && p->nuc().back()->asNestInset() &&
+			    p->nuc().back()->extraBraces())
+				p->nuc() = p->nuc().back()->asNestInset()->cell(0);
 		}
 
 		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST)) {

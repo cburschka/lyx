@@ -834,8 +834,11 @@ void write(MathArray const & dat, WriteStream & wi)
 {
 	MathArray ar = dat;
 	extractStrings(ar);
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+	wi.firstitem() = true;
+	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it) {
 		(*it)->write(wi);
+		wi.firstitem() = false;
+	}
 }
 
 
