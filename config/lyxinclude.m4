@@ -37,15 +37,15 @@ dnl
 dnl
 AC_DEFUN(LYX_VERSION_SUFFIX,[ 
 AC_MSG_CHECKING([for install target ... ])
-AC_ARG_WITH(lyx-version,
-  [  --with-lyx-version[=<version>]  install lyx files as lyx-<suffix>],
+AC_ARG_WITH(version-suffix,
+  [  --with-version-suffix[=<version>]  install lyx files as lyx<version>],
   [if test "x$withval" = "xyes";
    then
-     withval="$VERSION"
-     ac_configure_args=`echo $ac_configure_args | sed "s,--with-lyx-version,--with-lyx-version=$withval,"`
+     withval="-$VERSION"
+     ac_configure_args=`echo $ac_configure_args | sed "s,--with-version-suffix,--with-version-suffix=$withval,"`
    fi
-   lyxname="lyx-$withval"
-   program_suffix=-$withval],
+   lyxname="lyx$withval"
+   program_suffix=$withval],
   [lyxname=lyx])
 AC_MSG_RESULT([$lyxname])
 ])
