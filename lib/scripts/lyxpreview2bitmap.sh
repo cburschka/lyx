@@ -54,9 +54,10 @@
 # Three helper functions.
 FIND_IT ()
 {
-	which ${EXECUTABLE} > /dev/null ||
-	{
-		echo "Unable to find \"${EXECUTABLE}\". Please install."
+	test $# -eq 1 || exit 1
+
+	type $1 > /dev/null || {
+		echo "Unable to find \"$1\". Please install."
 		exit 1
 	}
 }
@@ -100,9 +101,9 @@ else
 fi
 
 # We use latex, dvips and gs, so check that they're all there.
-EXECUTABLE=latex; FIND_IT
-EXECUTABLE=dvips; FIND_IT
-EXECUTABLE=gs;    FIND_IT
+FIND_IT latex
+FIND_IT dvips
+FIND_IT gs
 
 # Initialise some variables.
 TEXFILE=${BASE}.tex
@@ -202,7 +203,7 @@ rm -f ${FILES} texput.log
 # The bitmap files can have large amounts of whitespace to the left and
 # right. This can be cropped if so desired.
 CROP=1
-which pnmcrop > /dev/null || CROP=0
+type pnmcrop > /dev/null || CROP=0
 
 # There's no point cropping the image if using PNG images. If you want to
 # crop, use PPM.
