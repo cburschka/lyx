@@ -108,7 +108,8 @@ void InsetGraphicsParams::init()
 	size_type = DEFAULT_SIZE;	// do nothing
 	lyxsize_type = DEFAULT_SIZE;	// do nothing
 	keepAspectRatio = false;	//
-	rotateOrigin = "center";	// 
+	rotate = false;			// Rotating 
+	rotateOrigin = "center";	// Origin
 	rotateAngle = 0.0;		// in degrees
 	special = string();		// userdefined stuff
 }
@@ -131,6 +132,7 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 	lyxwidth = igp.lyxwidth;
 	lyxheight = igp.lyxheight;
 	lyxscale = igp.lyxscale;
+	rotate = igp.rotate;
 	rotateOrigin = igp.rotateOrigin;
 	rotateAngle = igp.rotateAngle;
 	special = igp.special;
@@ -155,6 +157,7 @@ bool operator==(InsetGraphicsParams const & left,
 	        left.lyxwidth == right.lyxwidth &&
 	        left.lyxheight == right.lyxheight &&
 	        left.lyxscale == right.lyxscale &&
+	        left.rotate == right.rotate &&
 	        left.rotateOrigin == right.rotateOrigin &&
 	        lyx::float_equal(left.rotateAngle, right.rotateAngle, 0.001 &&
 		left.special == right.special) 
@@ -205,6 +208,8 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 	    os << "\tscale " << scale << '\n';
 	if (keepAspectRatio)
 		os << "\tkeepAspectRatio\n";
+	if (rotate)
+		os << "\trotate\n";
 	if (!lyx::float_equal(rotateAngle, 0.0, 0.001))
 		os << "\trotateAngle " << rotateAngle << '\n';
 	if (!rotateOrigin.empty())
@@ -287,6 +292,8 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 	} else if (token == "scale") {
 		lex.next();
 		scale = lex.getInteger();
+	} else if (token == "rotate") {
+		rotate = true;
 	} else if (token == "rotateAngle") {
 		lex.next();
 		rotateAngle = lex.getFloat();

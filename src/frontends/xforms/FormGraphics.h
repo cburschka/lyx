@@ -53,8 +53,6 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-	/// 
-	void help();
 
 	/// Fdesign generated method
 	FD_form_graphics * build_graphics();

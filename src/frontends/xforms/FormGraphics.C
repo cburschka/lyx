@@ -74,7 +74,6 @@ void FormGraphics::build()
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
 	bc().setRestore(dialog_->button_restore);
-	bc().addReadOnly(dialog_->button_help);
 
 	// the file section
 	file_.reset(build_file());
@@ -95,6 +94,7 @@ void FormGraphics::build()
 
 	bc().addReadOnly(file_->button_browse);
 	bc().addReadOnly(file_->check_subcaption);
+	bc().addReadOnly(file_->check_rotate);
 	bc().addReadOnly(file_->button_clip);
 	bc().addReadOnly(file_->button_draft);
 
@@ -107,11 +107,12 @@ void FormGraphics::build()
 
 	fl_addto_choice(lyxview_->choice_width_lyxwidth, choice_Length_WithUnit.c_str());
 	fl_addto_choice(lyxview_->choice_width_lyxheight, choice_Length_WithUnit.c_str());
-	fl_addto_choice(lyxview_->choice_display,
-		_(" Default | Monochrome | Grayscale | Color | Do not display "));
-	fl_set_choice(lyxview_->choice_display, 1);
 
-	bc().addReadOnly(lyxview_->choice_display);
+	bc().addReadOnly(lyxview_->radio_pref);
+	bc().addReadOnly(lyxview_->radio_mono);
+	bc().addReadOnly(lyxview_->radio_gray);
+	bc().addReadOnly(lyxview_->radio_color);
+	bc().addReadOnly(lyxview_->radio_nodisplay);
 
 	// the size section
 	size_.reset(build_size());
@@ -129,7 +130,7 @@ void FormGraphics::build()
 	fl_addto_choice(size_->choice_width_units, choice_Length_All.c_str());
 	fl_addto_choice(size_->choice_height_units, choice_Length_All.c_str());
 
-	bc().addReadOnly(size_->button_default);
+	bc().addReadOnly(size_->button_asis);
 	bc().addReadOnly(size_->button_wh);
 	bc().addReadOnly(size_->button_scale);
 	bc().addReadOnly(size_->check_aspectratio);
@@ -155,8 +156,8 @@ void FormGraphics::build()
 
 	// add the different tabfolders
 	fl_addto_tabfolder(dialog_->tabFolder, _("File"), file_->form);
-	fl_addto_tabfolder(dialog_->tabFolder, _("LyXView"), lyxview_->form);
-	fl_addto_tabfolder(dialog_->tabFolder, _("Size"), size_->form);
+	fl_addto_tabfolder(dialog_->tabFolder, _("LyX View"), lyxview_->form);
+	fl_addto_tabfolder(dialog_->tabFolder, _("LaTeX Size"), size_->form);
 	fl_addto_tabfolder(dialog_->tabFolder, _("Bounding Box"), bbox_->form);
 	fl_addto_tabfolder(dialog_->tabFolder, _("Extras"), special_->form);
 }
@@ -166,10 +167,12 @@ void FormGraphics::apply()
 {
 	// Create the parameters structure and fill the data from the dialog.
 	InsetGraphicsParams & igp = controller().params();
+
 	// the file section
 	igp.filename = getStringFromInput(file_->input_filename);
 	igp.subcaption = fl_get_button(file_->check_subcaption);
 	igp.subcaptionText = getStringFromInput(file_->input_subcaption);
+	igp.rotate = fl_get_button(file_->check_rotate);
 	igp.rotateAngle =
 		strToDbl(getStringFromInput(file_->input_rotate_angle));
 	while (igp.rotateAngle < 0.0 || igp.rotateAngle > 360.0) {
@@ -187,24 +190,18 @@ void FormGraphics::apply()
 	igp.clip = fl_get_button(file_->button_clip);
 
 	// the lyxview section
-	switch (fl_get_choice(lyxview_->choice_display)) {
-	case 1:
-		igp.display = InsetGraphicsParams::DEFAULT;		
-		break;
-	case 2:
-		igp.display = InsetGraphicsParams::MONOCHROME;		
-		break;
-	case 3:
-		igp.display = InsetGraphicsParams::GRAYSCALE;		
-		break;
-	case 4:
-		igp.display = InsetGraphicsParams::COLOR;		
-		break;
-	case 5:
-		igp.display = InsetGraphicsParams::NONE;		
-		break;
- 	}
-	if (fl_get_button(lyxview_->button_lyxdefault))
+	if (fl_get_button(lyxview_->radio_pref))
+	    igp.display = InsetGraphicsParams::DEFAULT;
+	else if (fl_get_button(lyxview_->radio_mono))
+	    igp.display = InsetGraphicsParams::MONOCHROME;
+	else if (fl_get_button(lyxview_->radio_gray))
+	    igp.display = InsetGraphicsParams::GRAYSCALE;
+	else if (fl_get_button(lyxview_->radio_color))
+	    igp.display = InsetGraphicsParams::COLOR;
+	else if (fl_get_button(lyxview_->radio_nodisplay))
+	    igp.display = InsetGraphicsParams::NONE;
+
+	if (fl_get_button(lyxview_->button_lyxasis))
 	    igp.lyxsize_type = InsetGraphicsParams::DEFAULT_SIZE;
 	else if (fl_get_button(lyxview_->button_lyxwh))
 	    igp.lyxsize_type = InsetGraphicsParams::WH;
@@ -217,7 +214,7 @@ void FormGraphics::apply()
 	igp.lyxscale = strToInt(getStringFromInput(lyxview_->input_lyxscale));
 
 	// the size section
-	if (fl_get_button(size_->button_default))
+	if (fl_get_button(size_->button_asis))
 	    igp.size_type = InsetGraphicsParams::DEFAULT_SIZE;
 	else if (fl_get_button(size_->button_wh))
 	    igp.size_type = InsetGraphicsParams::WH;
@@ -277,31 +274,36 @@ void FormGraphics::update() {
 	fl_set_input(file_->input_subcaption, igp.subcaptionText.c_str());
 	setEnabled(file_->input_subcaption,
 		   fl_get_button(file_->check_subcaption));
+	fl_set_button(file_->check_rotate, igp.rotate);
 	fl_set_input(file_->input_rotate_angle,
 	             tostr(igp.rotateAngle).c_str());
 	if (igp.rotateOrigin.empty())
 	    fl_set_choice(file_->choice_origin,0);
 	else
 	    fl_set_choice_text(file_->choice_origin,igp.rotateOrigin.c_str());
+	setEnabled(file_->input_rotate_angle,
+		   fl_get_button(file_->check_rotate));
+	setEnabled(file_->choice_origin,
+		   fl_get_button(file_->check_rotate));
 	fl_set_button(file_->button_draft, igp.draft);
 	fl_set_button(file_->button_clip, igp.clip);
 
 	// the lyxview section
 	switch (igp.display) {
 	case InsetGraphicsParams::DEFAULT:
-		fl_set_choice(lyxview_->choice_display, 1);
+		fl_set_button(lyxview_->radio_pref, 1);
 		break;
 	case InsetGraphicsParams::MONOCHROME:
-		fl_set_choice(lyxview_->choice_display, 2);
+		fl_set_button(lyxview_->radio_mono, 1);
 		break;
 	case InsetGraphicsParams::GRAYSCALE:
-		fl_set_choice(lyxview_->choice_display, 3);
+		fl_set_button(lyxview_->radio_gray, 1);
 		break;
 	case InsetGraphicsParams::COLOR:
-		fl_set_choice(lyxview_->choice_display, 4);
+		fl_set_button(lyxview_->radio_color, 1);
 		break;
 	case InsetGraphicsParams::NONE:
-		fl_set_choice(lyxview_->choice_display, 5);
+		fl_set_button(lyxview_->radio_nodisplay, 1);
 		break;
  	}
 	updateWidgetsFromLength(lyxview_->input_lyxwidth,
@@ -311,7 +313,7 @@ void FormGraphics::update() {
 	fl_set_input(lyxview_->input_lyxscale, tostr(igp.lyxscale).c_str());
 	switch (igp.lyxsize_type) {
 	    case InsetGraphicsParams::DEFAULT_SIZE: {
-		fl_set_button(lyxview_->button_lyxdefault,1);
+		fl_set_button(lyxview_->button_lyxasis,1);
 		setEnabled(lyxview_->input_lyxwidth, 0);
 		setEnabled(lyxview_->choice_width_lyxwidth, 0);
 		setEnabled(lyxview_->input_lyxheight, 0);
@@ -348,7 +350,7 @@ void FormGraphics::update() {
 	fl_set_input(size_->input_scale, tostr(igp.scale).c_str());
 	switch (igp.size_type) {
 	    case InsetGraphicsParams::DEFAULT_SIZE: {
-		fl_set_button(size_->button_default,1);
+		fl_set_button(size_->button_asis,1);
 		setEnabled(size_->input_width, 0);
 		setEnabled(size_->choice_width_units, 0);
 		setEnabled(size_->input_height, 0);
@@ -444,9 +446,14 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	} else if (ob == file_->check_subcaption) {
 	    	setEnabled(file_->input_subcaption,
 			   fl_get_button(file_->check_subcaption));
+	} else if (ob == file_->check_rotate) {
+	    	setEnabled(file_->input_rotate_angle,
+			   fl_get_button(file_->check_rotate));
+	    	setEnabled(file_->choice_origin,
+			   fl_get_button(file_->check_rotate));
 
 	// the lyxview section
-	} else if (ob == lyxview_->button_lyxdefault) {
+	} else if (ob == lyxview_->button_lyxasis) {
 	    	setEnabled(lyxview_->input_lyxwidth, 0);
 	    	setEnabled(lyxview_->choice_width_lyxwidth, 0);
 	    	setEnabled(lyxview_->input_lyxheight, 0);
@@ -488,7 +495,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	    }
 
 	// the size section
-	} else if (ob == size_->button_default) {
+	} else if (ob == size_->button_asis) {
 	    	setEnabled(size_->input_width, 0);
 	    	setEnabled(size_->choice_width_units, 0);
 	    	setEnabled(size_->input_height, 0);
@@ -509,8 +516,6 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	    	setEnabled(size_->choice_height_units, 0);
 		setEnabled(size_->check_aspectratio, 0);
 	    	setEnabled(size_->input_scale, 1);
-	} else if (ob == dialog_->button_help) {
-    	    controller().help();
 	}
 
 	// check if the input is valid

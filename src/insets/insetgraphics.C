@@ -410,6 +410,7 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 			// kept for backwards compability. Delete in 0.13.x
 		} else if (token == "angle") {
 			if (lex.next())
+				params.rotate = true;
 				params.rotateAngle = lex.getFloat();
 		} else if (token == "size") {
 			if (lex.next())
@@ -460,42 +461,41 @@ string const InsetGraphics::createLatexOptions() const
 	// before writing it to the output stream.
 	ostringstream options;
 	if (!params.bb.empty())
-	    options << "bb=" << strip(params.bb) << ',';
+	    options << "  bb=" << strip(params.bb) << ",%\n";
 	if (params.draft)
-	    options << "%\n  draft,";
+	    options << "  draft,%\n";
 	if (params.clip)
-	    options << "%\n  clip,";
+	    options << "  clip,%\n";
 	if (params.size_type == InsetGraphicsParams::WH) {
 	    if (!params.width.zero())
-		options << "%\n  width=" << params.width.asLatexString() << ',';
+		options << "  width=" << params.width.asLatexString() << ",%\n";
 	    if (!params.height.zero())
-		options << "%\n  height=" << params.height.asLatexString() << ',';
+		options << "  height=" << params.height.asLatexString() << ",%\n";
 	} else if (params.size_type == InsetGraphicsParams::SCALE) {
 	    if (params.scale > 0)
-		options << "%\n  scale=" << double(params.scale)/100.0 << ',';
+		options << "  scale=" << double(params.scale)/100.0 << ",%\n";
 	}
 	if (params.keepAspectRatio)
-	    options << "%\n  keepaspectratio,";
+	    options << "  keepaspectratio,%\n";
 	// Make sure it's not very close to zero, a float can be effectively
 	// zero but not exactly zero.
-	if (!lyx::float_equal(params.rotateAngle, 0, 0.001)) {
-	    options << "%\n  angle=" << params.rotateAngle << ',';
+	if (!lyx::float_equal(params.rotateAngle, 0, 0.001) && params.rotate) {
+	    options << "  angle=" << params.rotateAngle << ",%\n";
 	    if (!params.rotateOrigin.empty()) {
-		options << "%\n  origin=";
-		options << params.rotateOrigin[0];
+		options << "  origin=" << params.rotateOrigin[0];
 		if (contains(params.rotateOrigin,"Top"))
 		    options << 't';
 		else if (contains(params.rotateOrigin,"Bottom"))
 		    options << 'b';
 		else if (contains(params.rotateOrigin,"Baseline"))
 		    options << 'B';
-		options << ',';
+		options << ",%\n";
 	    }
 	}
 	if (!params.special.empty())
-	    options << params.special << ',';
+	    options << params.special << ",%\n";
 	string opts = options.str().c_str();
-	opts = strip(opts, ',');
+	opts = opts.substr(0,opts.size()-3);	// delete last ",%\n"
 	return opts;
 }
 
@@ -595,7 +595,7 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	// Write the options if there are any.
 	string const opts = createLatexOptions();
 	if (!opts.empty()) {
-		os << "[%\n  " << opts << ']';
+		os << "[%\n" << opts << ']';
 	}
 	// Make the filename relative to the lyx file
 	// and remove the extension so the LaTeX will use whatever is

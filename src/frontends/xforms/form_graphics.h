@@ -5,7 +5,6 @@
 #define FD_form_graphics_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
@@ -28,7 +27,6 @@ struct FD_form_graphics {
 
 	FL_FORM *form;
 	FL_OBJECT *tabFolder;
-	FL_OBJECT *button_help;
 	FL_OBJECT *button_restore;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_cancel;
@@ -47,20 +45,21 @@ struct FD_form_file {
 	FL_OBJECT *choice_origin;
 	FL_OBJECT *button_clip;
 	FL_OBJECT *button_draft;
+	FL_OBJECT *check_rotate;
 };
 struct FD_form_size {
 	~FD_form_size();
 
 	FL_FORM *form;
 	FL_OBJECT *radio_size;
-	FL_OBJECT *button_default;
-	FL_OBJECT *button_wh;
+	FL_OBJECT *button_asis;
 	FL_OBJECT *button_scale;
+	FL_OBJECT *button_wh;
+	FL_OBJECT *input_scale;
 	FL_OBJECT *input_width;
 	FL_OBJECT *choice_width_units;
 	FL_OBJECT *input_height;
 	FL_OBJECT *choice_height_units;
-	FL_OBJECT *input_scale;
 	FL_OBJECT *check_aspectratio;
 };
 struct FD_form_bbox {
@@ -87,15 +86,20 @@ struct FD_form_lyxview {
 	~FD_form_lyxview();
 
 	FL_FORM *form;
-	FL_OBJECT *choice_display;
+	FL_OBJECT *input_lyxscale;
+	FL_OBJECT *button_lyxasis;
+	FL_OBJECT *button_lyxscale;
+	FL_OBJECT *button_lyxwh;
+	FL_OBJECT *radio_display;
+	FL_OBJECT *radio_pref;
+	FL_OBJECT *radio_mono;
+	FL_OBJECT *radio_gray;
+	FL_OBJECT *radio_color;
+	FL_OBJECT *radio_nodisplay;
 	FL_OBJECT *input_lyxwidth;
 	FL_OBJECT *choice_width_lyxwidth;
 	FL_OBJECT *input_lyxheight;
 	FL_OBJECT *choice_width_lyxheight;
-	FL_OBJECT *input_lyxscale;
-	FL_OBJECT *button_lyxdefault;
-	FL_OBJECT *button_lyxwh;
-	FL_OBJECT *button_lyxscale;
 };
 
 #endif /* FD_form_graphics_h_ */

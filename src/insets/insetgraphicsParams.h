@@ -48,6 +48,12 @@ struct InsetGraphicsParams
 	/// The text of the subcaption.
 	string subcaptionText;
 	/// The bounding box with "xLB yLB yRT yRT ", divided by a space!
+	/// Do we rotate?
+	bool rotate;
+	/// Origin point of rotation
+	string rotateOrigin;
+	/// Rotation angle.
+	float rotateAngle;
 	string bb;
 	/// clip image 
 	bool clip;
@@ -75,10 +81,6 @@ struct InsetGraphicsParams
 	int lyxscale;
 	/// Typ of the LyXView, same as for latex
 	sizeType lyxsize_type;
-	/// Origin point of rotation
-	string rotateOrigin;
-	/// Rotation angle.
-	float rotateAngle;
 	///
 	InsetGraphicsParams();
 	///
