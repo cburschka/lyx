@@ -310,7 +310,7 @@ string const LaTeXFeatures::getPackages() const
 
 	// jurabib -- we need version 0.6 at least.
 	if (isRequired("jurabib")) {
-		packages << "\\RequirePackage{jurabib}[2004/01/25]\n";
+		packages << "\\usepackage{jurabib}[2004/01/25]\n";
 	}
 
 	// bibtopic -- the dot provides the aux file naming which
