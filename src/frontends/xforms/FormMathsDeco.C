@@ -82,7 +82,7 @@ bool FormMathsDeco::input(FL_OBJECT * ob, long)
 	//if (ob == dialog_->bmtable_deco1)
 	//	deco_ += 0;
 	if (ob == dialog_->bmtable_deco2)
-		deco_ += 10;
+		deco_ += 12;
 	apply();
 	return true;
 }
