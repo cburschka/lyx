@@ -664,8 +664,8 @@ void setAscentFractions(vector<double> & ascent_fractions,
 		string page;
 		string page_id;
 		int dummy;
-		int ascent;
-		int descent;
+		double ascent;
+		double descent;
 
 		ifs >> page >> page_id >> dummy >> dummy >> dummy >> dummy
 		    >> ascent >> descent >> dummy;
@@ -679,8 +679,9 @@ void setAscentFractions(vector<double> & ascent_fractions,
 						<< endl;
 			break;
 		}
-		
-		*it = ascent / (ascent + descent);
+
+		if (ascent + descent != 0)
+			*it = ascent / (ascent + descent);
 	}
 }
 

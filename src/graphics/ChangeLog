@@ -1,5 +1,10 @@
 2002-07-09  Angus Leeming  <leeming@lyx.org>
 
+	* PreviewLoader.C (setAscentFractions): fix bug due to use of integer
+	arithmetic when it should be floating.
+
+2002-07-09  Angus Leeming  <leeming@lyx.org>
+
 	* PreviewLoader.C (startLoading): prepend LaTeX file with "\batchmode".
 	Output equation labels as "(#)" if lyxrc preference is set.
 	(setFontScalingFactor): use lyxrc variable preview_scale_factor
