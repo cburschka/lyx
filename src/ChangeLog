@@ -1,3 +1,13 @@
+2003-04-10  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C: adjust several funcs.
+	(realizeFont): take a ParagraphList::iterator as arg.
+	(getLayoutFont): ditto
+	(getLabelFont): ditto
+	(setCharFont): ditto
+
+	* text.C: adjust several funcs.
+
 2003-04-09  Alfredo Braunstein  <abraunst@libero.it>
 
 	* text.C (selectNextWordToSpellcheck): don't accidentally
@@ -10,7 +20,7 @@
 
 2003-04-09  Alfredo Braunstein  <abraunst@libero.it>
 
-	* text2.C (cursorRight): a getChar assert fixed 
+	* text2.C (cursorRight): a getChar assert fixed
 
 2003-04-09  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

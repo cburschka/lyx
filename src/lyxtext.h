@@ -105,14 +105,17 @@ public:
 	LyXFont const getFont(Buffer const *, ParagraphList::iterator pit,
 		lyx::pos_type pos) const;
 	///
-	LyXFont const getLayoutFont(Buffer const *, Paragraph * par) const;
+	LyXFont const getLayoutFont(Buffer const *,
+				    ParagraphList::iterator pit) const;
 	///
-	LyXFont const getLabelFont(Buffer const *, Paragraph * par) const;
+	LyXFont const getLabelFont(Buffer const *,
+				   ParagraphList::iterator pit) const;
 	///
-	void setCharFont(Buffer const *, Paragraph * par,
+	void setCharFont(Buffer const *, ParagraphList::iterator pit,
 			 lyx::pos_type pos, LyXFont const & font);
-	void setCharFont(Paragraph * par,
-			 lyx::pos_type pos, LyXFont const & font, bool toggleall);
+	void setCharFont(ParagraphList::iterator pit,
+			 lyx::pos_type pos,
+			 LyXFont const & font, bool toggleall);
 
 	///
 	void breakAgainOneRow(RowList::iterator rit);
