@@ -27,7 +27,7 @@ def bool_table(item):
 align_table = {"0": "top", "2": "left", "4": "right", "8": "center"}
 use_table = {"0": "none", "1": "parbox"}
 
-#table_meta_re = re.compile(r'<LyXTabular version="1" rows="(\d*)" columns="(\d*)">')
+table_meta_re = re.compile(r'<LyXTabular version="?1"? rows="?(\d*)"? columns="?(\d*)"?>')
 def update_tabular(lines):
     i=0
     while 1:
@@ -38,7 +38,10 @@ def update_tabular(lines):
         i = i +1
 
         # scan table header meta-info
-        lines[i] = string.replace(lines[i], 'LyXTabular version="1"', 'lyxtabular version="2"')
+        res = table_meta_re.match( lines[i] )
+        if res:
+            val = res.groups()
+            lines[i] = '<lyxtabular version="2" rows="%s" columns="%s">' % val
 
         j = find_token(lines, '</LyXTabular>', i) + 1
         if j == 0:
@@ -49,10 +52,10 @@ def update_tabular(lines):
 	lines[i:j] = new_table
         i = i + len(new_table)
 
-col_re = re.compile(r'<column alignment="(\d)" valignment="(\d)" leftline="(\d)" rightline="(\d)" width="(.*)" special="(.*)">')
-cell_re = re.compile(r'<cell multicolumn="(\d)" alignment="(\d)" valignment="(\d)" topline="(\d)" bottomline="(\d)" leftline="(\d)" rightline="(\d)" rotate="(\d)" usebox="(\d)" width="(.*)" special="(.*)">')
-features_re = re.compile(r'<features rotate="(\d)" islongtable="(\d)" endhead="(\d)" endfirsthead="(\d)" endfoot="(\d)" endlastfoot="(\d)">')
-row_re = re.compile(r'<row topline="(\d)" bottomline="(\d)" newpage="(\d)">')
+col_re = re.compile(r'<column alignment="?(\d)"? valignment="?(\d)"? leftline="?(\d)"? rightline="?(\d)"? width="(.*)" special="(.*)">')
+cell_re = re.compile(r'<cell multicolumn="?(\d)"? alignment="?(\d)"? valignment="?(\d)"? topline="?(\d)"? bottomline="?(\d)"? leftline="?(\d)"? rightline="?(\d)"? rotate="?(\d)"? usebox="?(\d)"? width="(.*)" special="(.*)">')
+features_re = re.compile(r'<features rotate="?(\d)"? islongtable="?(\d)"? endhead="?(-?\d)"? endfirsthead="?(-?\d)"? endfoot="?(-?\d)"? endlastfoot="?(-?\d)"?>')
+row_re = re.compile(r'<row topline="?(\d)"? bottomline="?(\d)"? newpage="?(\d)"?>')
 
 def table_update(lines):
     lines[1] = string.replace(lines[1], '<Features', '<features')
