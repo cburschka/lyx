@@ -1036,7 +1036,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 	LyXFont tmpfont;
 	Inset * tmpinset = 0;
 
-	// ok , let us initialize the maxasc and maxdesc value.
+	// ok, let us initialize the maxasc and maxdesc value.
 	// This depends in LaTeX of the font of the last character
 	// in the paragraph. The hack below is necessary because
 	// of the possibility of open footnotes
@@ -1093,11 +1093,6 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 					mi.base.font = tmpfont;
 					tmpinset->metrics(mi, dim);
 #endif
-					//maxwidth += tmpinset->width(bv(), tmpfont);
-					//maxasc = max(maxasc,
-					//	     tmpinset->ascent(bv(), tmpfont));
-					//maxdesc = max(maxdesc,
-					//	      tmpinset->descent(bv(), tmpfont));
 					maxwidth += dim.wid;
 					maxasc = max(maxasc, dim.asc);
 					maxdesc = max(maxdesc, dim.des);
