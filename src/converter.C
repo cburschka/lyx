@@ -51,6 +51,7 @@ namespace {
 string const token_from("$$i");
 string const token_base("$$b");
 string const token_to("$$o");
+string const token_path("$$p");
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -194,7 +195,12 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 			command += 'r';
 	}
 
-	command += " " + QuoteName(OnlyFilename((filename)));
+	if (!contains(command, token_from))
+		command += " " + token_from;
+
+	command = subst(command, token_from,
+			QuoteName(OnlyFilename(filename)));
+	command = subst(command, token_path, QuoteName(OnlyPath(filename)));
 
 	lyxerr[Debug::FILES] << "Executing command: " << command << endl;
 	ShowMessage(buffer, _("Executing command:"), command);

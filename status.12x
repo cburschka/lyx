@@ -22,6 +22,11 @@ What's new
 - selecting a word by double clicking now sets the X clipboard (like
   when dragging the mouse)
 
+- it is now possible to specify the arguments for viewers; in
+  particular, this means that it is possible to use browsers which
+  require a file: URL as HTML viewers (mozilla is used as default if
+  found)
+
 - when changing the current layout with the toolbar, the corresponding
   keyboard binding is shown in the minibuffer
 
