@@ -5,6 +5,15 @@
 
 2003-02-07  Angus Leeming  <leeming@lyx.org>
 
+	* BasicLyX.pm: enable reLyX to recognise natbib citations.
+
+	* MakePreamble.pm: if '\usepackage{natbib}' is found, activate
+	LyX's natbib support.
+
+	* reLyX/syntax.default: add natbib citation commands.
+
+2003-02-07  Angus Leeming  <leeming@lyx.org>
+
 	* lyx2lyx/lyx2lyx: enable the debug level to be set.
 
 	* reLyX/BasicLyX.pm, reLyX/CleanTeX.pm, reLyX/Verbatim.pm: pass

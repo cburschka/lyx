@@ -294,9 +294,20 @@ sub translate_preamble {
     my $up;
     foreach $up (keys %Usepackage_Table) {
 	$Latex_Preamble =~ s/\\usepackage\{$up\}\s*// && do {
-	    $LyX_Preamble .= "$Usepackage_Table{$up}";
-	    $LyX_Preamble .= "\n" unless ($Usepackage_Table{$up} eq "");
+	    my $tmp = $Usepackage_Table{$up};
+	    $LyX_Preamble .= join($tmp, "\n") unless ($tmp eq '');
+	    #$LyX_Preamble .= "$Usepackage_Table{$up}";
+	    #$LyX_Preamble .= "\n" unless ($Usepackage_Table{$up} eq "");
 	}
+    }
+
+    # Natbib is a little more complex than that.
+    if ($Latex_Preamble =~ s/\\usepackage(.*)\{natbib\}\s*//) {
+	print "matched it!\n";
+	$LyX_Preamble .= "\\use_natbib 1\n\\use_numerical_citations ";
+	$LyX_Preamble .= ($1 =~ /numbers/) ? "1\n" : "0\n";
+    } else {
+	$LyX_Preamble .= "\\use_natbib 0\n\\use_numerical_citations 0\n";
     }
 
     ## Handle geometry options
