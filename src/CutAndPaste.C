@@ -116,7 +116,8 @@ pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
 
 	// Convert newline to paragraph break in ERT inset.
 	// This should not be here!
-	if (pars[pit].inInset()->lyxCode() == InsetBase::ERT_CODE) {
+	if (pars[pit].inInset() &&
+	    pars[pit].inInset()->lyxCode() == InsetBase::ERT_CODE) {
 		for (ParagraphList::size_type i = 0; i < insertion.size(); ++i) {
 			for (pos_type j = 0; j < insertion[i].size(); ++j) {
 				if (insertion[i].isNewline(j)) {
