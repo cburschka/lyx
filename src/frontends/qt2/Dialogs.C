@@ -28,6 +28,7 @@
 #include "QPreambleDialog.h"
 #include "QPrintDialog.h"
 #include "QRefDialog.h"
+#include "QSearchDialog.h"
 #include "QTabularCreateDialog.h"
 #include "QThesaurusDialog.h"
 #include "QURLDialog.h"
@@ -80,6 +81,7 @@
 #include "controllers/ControlPreamble.h"
 #include "controllers/ControlPrint.h"
 #include "controllers/ControlRef.h"
+#include "controllers/ControlSearch.h"
 #include "controllers/ControlSplash.h"
 #include "controllers/ControlTabularCreate.h"
 #include "controllers/ControlThesaurus.h"
@@ -91,7 +93,6 @@
 #include "controllers/ControlFloat.h"
 #include "controllers/ControlLabel.h"
 #include "controllers/ControlRef.h"
-#include "controllers/ControlSearch.h"
 #include "controllers/ControlSpellchecker.h"
 #include "controllers/ControlToc.h"
 #endif
@@ -123,6 +124,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIPreamble<QPreamble, Qt2BC>(*lv, *this)); 
 	add(new GUIPrint<QPrint, Qt2BC>(*lv, *this));
 	add(new GUIRef<QRef, Qt2BC>(*lv, *this));
+	add(new GUISearch<QSearch, Qt2BC>(*lv, *this)); 
 	add(new GUITabularCreate<QTabularCreate, Qt2BC>(*lv, *this));
 	add(new GUIThesaurus<QThesaurus, Qt2BC>(*lv, *this));
 	add(new GUIUrl<QURL, Qt2BC>(*lv, *this));

@@ -15,40 +15,29 @@
 #include "QSearch.h"
 
 class QCloseEvent;
+class QComboBox;
 
 class QSearchDialog : public QSearchDialogBase
 { Q_OBJECT
 
 public:
-	QSearchDialog(QSearch * form, QWidget * parent = 0, const char * name = 0, bool modal = FALSE, WFlags fl = 0);
-	~QSearchDialog();
+	QSearchDialog(QSearch * form);
 	
-	void setReadOnly(bool);
-	
-	void Replace(bool replaceall = false);
+protected slots:
+	void findChanged();
+	void findClicked();
+	void replaceClicked();
+	void replaceallClicked();
  
 protected:
 	void closeEvent(QCloseEvent * e);
 
 private:
+	// add a string to the combo if needed
+	void QSearchDialog::remember(string const & find, QComboBox & combo);
+ 
 	QSearch * form_;
 
-protected slots:
-
-	void Find();
- 
-	void Replace() {
-		Replace(false);
-	};
- 
-	void ReplaceAll() {
-		Replace(true);
-	};
-
-	void cancel_adaptor() {
-		form_->close();
-		hide();
-	}
 };
 
 #endif // QSEARCHDIALOG_H

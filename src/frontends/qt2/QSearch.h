@@ -1,63 +1,48 @@
 // -*- C++ -*-
-/** 
+/**
  * \file QSearch.h
- * Copyright 2001 The LyX Team.
- * See the file COPYING.
- * 
- * \author Edwin Leuven
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
 #ifndef QSEARCH_H
 #define QSEARCH_H
 
-#include "DialogBase.h"
-#include "LString.h"
-#include "support/lstrings.h"
+#ifdef __GNUG__
+#pragma interface
+#endif
 
-class LyXView;
-class Dialogs;
+#include "Qt2Base.h"
+
+class ControlSearch;
 class QSearchDialog;
 
-class QSearch : public DialogBase {
+///
+class QSearch
+	: public Qt2CB<ControlSearch, Qt2DB<QSearchDialog> > 
+{
 public:
 	///
-	QSearch(LyXView *, Dialogs *);
+	friend class QSearchDialog;
 	///
-	~QSearch();
-	
-	/// Close connections.
-	void close();
-	/// find stuff (we need access to lv_).
-	void find(string const &, bool const &, bool const &, bool const &);
-	/// replace stuff (we need access to lv_).
-	void replace(string const &, string const &, 
-		bool const &, bool const &, bool const &, bool const &);
-	
-private:
-	/// Show the dialog.
-	void show();
-	/// Hide the dialog.
-	void hide();
-	/// Update the dialog.
-	void update(bool switched = false);
-	
-	/// Real GUI implementation.
-	QSearchDialog * dialog_;
-	
-	/// the LyXView we belong to.
-	LyXView * lv_;
-	
-	/** Which Dialogs do we belong to?
-	 *  Used so we can get at the signals we have to connect to.
-	 */
-	Dialogs * d_;
-	
-	/// Hide connection.
-	SigC::Connection h_;
+	QSearch(ControlSearch &);
 
-	/// Update connection.
-	SigC::Connection u_;
-	
+private:
+	/// Apply changes
+	virtual void apply() {};
+	/// update
+	virtual void update_contents() {};
+	/// build the dialog
+	virtual void build_dialog();
+
+
+	void find(string const & str, bool casesens, bool words, bool backwards);
+
+	void replace(string const & findstr, string const & replacestr,
+		bool casesens, bool words, bool all);
+
 };
 
 #endif // QSEARCH_H

@@ -13,13 +13,13 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>384</width>
+            <width>379</width>
             <height>168</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string>Form1</string>
+        <string>Search and replace</string>
     </property>
     <property stdset="1">
         <name>sizeGripEnabled</name>
@@ -44,18 +44,22 @@
             <class>QLabel</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>findStrLabel</cstring>
+                <cstring>findLA</cstring>
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Find:</string>
+                <string>&amp;Find:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>findCO</cstring>
             </property>
         </widget>
         <widget row="0"  column="1"  rowspan="1"  colspan="2" >
             <class>QComboBox</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>find</cstring>
+                <cstring>findCO</cstring>
             </property>
             <property stdset="1">
                 <name>sizePolicy</name>
@@ -74,25 +78,41 @@
             </property>
             <property stdset="1">
                 <name>duplicatesEnabled</name>
+                <bool>false</bool>
+            </property>
+            <property stdset="1">
+                <name>insertionPolicy</name>
+                <enum>AtTop</enum>
+            </property>
+            <property stdset="1">
+                <name>autoCompletion</name>
                 <bool>true</bool>
+            </property>
+            <property stdset="1">
+                <name>maxCount</name>
+                <number>10</number>
             </property>
         </widget>
         <widget row="1"  column="0" >
             <class>QLabel</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>replaceLabel</cstring>
+                <cstring>replaceLA</cstring>
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Replace with:</string>
+                <string>Replace &amp;with:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>replaceCO</cstring>
             </property>
         </widget>
         <widget row="1"  column="1"  rowspan="1"  colspan="2" >
             <class>QComboBox</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>replace</cstring>
+                <cstring>replaceCO</cstring>
             </property>
             <property stdset="1">
                 <name>sizePolicy</name>
@@ -105,23 +125,39 @@
                 <name>editable</name>
                 <bool>true</bool>
             </property>
+            <property stdset="1">
+                <name>insertionPolicy</name>
+                <enum>AtTop</enum>
+            </property>
+            <property stdset="1">
+                <name>duplicatesEnabled</name>
+                <bool>false</bool>
+            </property>
+            <property stdset="1">
+                <name>autoCompletion</name>
+                <bool>true</bool>
+            </property>
+            <property stdset="1">
+                <name>maxCount</name>
+                <number>10</number>
+            </property>
         </widget>
         <widget row="2"  column="0"  rowspan="1"  colspan="2" >
             <class>QCheckBox</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>caseSensitive</cstring>
+                <cstring>caseCB</cstring>
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>&amp;Case sensitive</string>
+                <string>Case &amp;sensitive</string>
             </property>
         </widget>
         <widget row="3"  column="0"  rowspan="2"  colspan="2" >
             <class>QCheckBox</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>matchWord</cstring>
+                <cstring>wordsCB</cstring>
             </property>
             <property stdset="1">
                 <name>text</name>
@@ -201,6 +237,14 @@
                 <name>text</name>
                 <string>Find &amp;Next</string>
             </property>
+            <property stdset="1">
+                <name>default</name>
+                <bool>true</bool>
+            </property>
+            <property stdset="1">
+                <name>enabled</name>
+                <bool>false</bool>
+            </property>
         </widget>
         <widget row="1"  column="3" >
             <class>QPushButton</class>
@@ -212,23 +256,31 @@
                 <name>text</name>
                 <string>&amp;Replace</string>
             </property>
+            <property stdset="1">
+                <name>enabled</name>
+                <bool>false</bool>
+            </property>
         </widget>
         <widget row="2"  column="3"  rowspan="2"  colspan="1" >
             <class>QPushButton</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>replaceAllPB</cstring>
+                <cstring>replaceallPB</cstring>
             </property>
             <property stdset="1">
                 <name>text</name>
                 <string>Replace &amp;All </string>
+            </property>
+            <property stdset="1">
+                <name>enabled</name>
+                <bool>false</bool>
             </property>
         </widget>
         <widget row="5"  column="0"  rowspan="1"  colspan="2" >
             <class>QCheckBox</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>searchBack</cstring>
+                <cstring>backwardsCB</cstring>
             </property>
             <property stdset="1">
                 <name>text</name>
@@ -239,11 +291,11 @@
             <class>QPushButton</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>cancelPB</cstring>
+                <cstring>closePB</cstring>
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>&amp;Cancel</string>
+                <string>&amp;Close</string>
             </property>
         </widget>
     </grid>
@@ -253,40 +305,40 @@
         <sender>findPB</sender>
         <signal>clicked()</signal>
         <receiver>QSearchDialogBase</receiver>
-        <slot>Find()</slot>
+        <slot>findClicked()</slot>
     </connection>
     <connection>
         <sender>replacePB</sender>
         <signal>clicked()</signal>
         <receiver>QSearchDialogBase</receiver>
-        <slot>Replace()</slot>
+        <slot>replaceClicked()</slot>
     </connection>
     <connection>
-        <sender>replaceAllPB</sender>
+        <sender>replaceallPB</sender>
         <signal>clicked()</signal>
         <receiver>QSearchDialogBase</receiver>
-        <slot>ReplaceAll()</slot>
+        <slot>replaceallClicked()</slot>
     </connection>
     <connection>
-        <sender>cancelPB</sender>
-        <signal>clicked()</signal>
+        <sender>findCO</sender>
+        <signal>textChanged(const QString&amp;)</signal>
         <receiver>QSearchDialogBase</receiver>
-        <slot>cancel_adaptor()</slot>
+        <slot>findChanged()</slot>
     </connection>
-    <slot access="protected">Find()</slot>
-    <slot access="protected">Replace()</slot>
-    <slot access="protected">ReplaceAll()</slot>
-    <slot access="protected">cancel_adaptor()</slot>
+    <slot access="protected">findClicked()</slot>
+    <slot access="public">findChanged()</slot>
+    <slot access="protected">replaceClicked()</slot>
+    <slot access="protected">replaceallClicked()</slot>
 </connections>
 <tabstops>
-    <tabstop>find</tabstop>
-    <tabstop>replace</tabstop>
-    <tabstop>caseSensitive</tabstop>
-    <tabstop>matchWord</tabstop>
-    <tabstop>searchBack</tabstop>
+    <tabstop>findCO</tabstop>
+    <tabstop>replaceCO</tabstop>
+    <tabstop>caseCB</tabstop>
+    <tabstop>wordsCB</tabstop>
+    <tabstop>backwardsCB</tabstop>
     <tabstop>findPB</tabstop>
     <tabstop>replacePB</tabstop>
-    <tabstop>replaceAllPB</tabstop>
-    <tabstop>cancelPB</tabstop>
+    <tabstop>replaceallPB</tabstop>
+    <tabstop>closePB</tabstop>
 </tabstops>
 </UI>

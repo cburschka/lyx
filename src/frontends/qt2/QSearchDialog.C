@@ -8,57 +8,71 @@
 
 #include <config.h>
 
+#include "ControlSearch.h"
 #include "QSearchDialog.h"
+#include "debug.h"
 
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qcheckbox.h>
 #include <qlabel.h>
 
-QSearchDialog::QSearchDialog(QSearch * form, QWidget * parent,  const char * name, bool modal, WFlags fl)
-	: QSearchDialogBase(parent, name, modal, fl),
+QSearchDialog::QSearchDialog(QSearch * form)
+	: QSearchDialogBase(0, 0, false, 0),
 	form_(form)
 {
-	setCaption(name);
+	connect(closePB, SIGNAL(clicked()),
+		form_, SLOT(slotClose())); 
 }
 
  
-QSearchDialog::~QSearchDialog()
-{
-}
-
-
 void QSearchDialog::closeEvent(QCloseEvent * e)
 {
-	form_->close();
+	form_->slotWMHide();
 	e->accept();
 }
 
 
-void QSearchDialog::setReadOnly(bool readonly)
+void QSearchDialog::findChanged()
 {
-	replace->setEnabled(!readonly);
-	replaceLabel->setEnabled(!readonly);
-	replacePB->setEnabled(!readonly);
-	replaceAllPB->setEnabled(!readonly);
+	if (findCO->currentText().isEmpty()) {
+		findPB->setEnabled(false);
+		replacePB->setEnabled(false);
+		replaceallPB->setEnabled(false);
+	} else {
+		findPB->setEnabled(true);
+		replacePB->setEnabled(!form_->readOnly());
+		replaceallPB->setEnabled(!form_->readOnly());
+	} 
+}
+
+ 
+void QSearchDialog::findClicked()
+{
+	string const find(findCO->currentText().latin1());
+	form_->find(find,
+		caseCB->isChecked(),
+		wordsCB->isChecked(),
+		backwardsCB->isChecked());
 }
 
 
-void QSearchDialog::Find()
+void QSearchDialog::replaceClicked()
 {
-	form_->find(tostr(find->currentText()).c_str(),
-			 caseSensitive->isChecked(),
-			 matchWord->isChecked(),
-			 !searchBack->isChecked());
+	string const find(findCO->currentText().latin1());
+	string const replace(replaceCO->currentText().latin1());
+	form_->replace(find, replace,
+		caseCB->isChecked(),
+		wordsCB->isChecked(),
+		false); 
 }
+ 
 
-
-void QSearchDialog::Replace(bool replaceall)
+void QSearchDialog::replaceallClicked()
 {
-	form_->replace(tostr(find->currentText()).c_str(),
-		  tostr(replace->currentText()).c_str(),
-		  caseSensitive->isChecked(),
-		  matchWord->isChecked(),
-		  !searchBack->isChecked(),
-		  replaceall);
+	form_->replace(findCO->currentText().latin1(),
+		replaceCO->currentText().latin1(),
+		caseCB->isChecked(),
+		wordsCB->isChecked(),
+		true);
 }
