@@ -32,6 +32,7 @@ libcontrollers_la_SOURCES=\
 	ControlCopyright.h \
 	ControlCredits.h \
 	ControlCredits.C \
+	ControlDialogs.h \
 	ControlError.h \
 	ControlError.C \
 	ControlInclude.C \
