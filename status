@@ -1,6 +1,45 @@
 This file lists interface changes that might affect users in
 1.4.0, and also some bug fixes.
 
+Internal changes
+----------------
+
+Add change tracking.
+
+Replace the home-grown RowList code with std::list<Row>.
+
+Load graphics images in a more asynchronous manner.
+
+Load graphics images in a serial fashion rather than (possibly) swamping the
+machine with multiple conversion processes executing in parallel.
+
+Remove much of the hard-coding of bibitem insets from the paragraph code.
+
+Add a localDispatch method to many more inset classes and use it. An important
+step in the clean-up of the current inset code and towards inset-unification.
+
+Add a real Label dialog rather than that nasty Alert thingy.
+
+Add a Hfill inset.
+
+Clean-up the use of Alert to make the dialogs far more descriptive.
+
+Rewrite entirely the interface between LyX and its dialogs. Multiple showXYZ()
+methods replaced with a single show(<name>). Attempt to create new LFUNs
+so that the frontend dialogs do not actually change anything in the LyX core.
+Instead they dispatch these LFUNs back to the core for consideration by it.
+
+As a side effect of the above, redesign the implementation of the Model-
+Controller-View implementation of the dialogs to make it transparent.
+
+(xforms): replace the Combox code with a native xforms widget, for eventual
+inclusion in the xforms library itself.
+
+File format changes
+-------------------
+
+Add \end_header.
+
 Interface changes
 -----------------
 
@@ -13,5 +52,46 @@ tab-forward -> cell-forward
 Additionally, tab-forward (bound to the "Tab" key normally) no
 longer has any effect in normal text.
 
+bibkey-insert -> bibitem-insert
+
+bibtex-insert -> dialog-show-new-inset bibtex
+citation-insert -> dialog-show-new-inset citation
+external-insert -> dialog-show-new-inset external
+graphics-insert -> dialog-show-new-inset graphics
+buffer-child-insert -> dialog-show-new-inset include
+reference-insert -> dialog-show-new-inset ref
+
+It is now possible to run LyX without a Toolbar if so desired.
+
+ReLyX changes
+-------------
+
+Add support for 'm' column descriptors.
+
+Pass almost all math through reLyX unchanged.
+
+Add support for natbib citations.
+
+Add support for minipages.
+
+When reLyX creates a LyX file, the header now records this.
+
+Add support for generic LaTeX lengths.
+
+Layouts
+-------
+
+Add classes mwart, mwbk, mwrep conforming to polish typographical conventions.
+
+Add elsart class.
+
+Update KOME classes.
+
 Bug fixes
 ---------
+
+Fix detection of fax programs.
+
+Fix the tgif converters.
+
+lyx2lyx now handles development version files.

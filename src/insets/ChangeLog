@@ -266,7 +266,7 @@
 
 2003-03-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* insettext.C (latex): addjust call to latexParagraphs.
+	* insettext.C (latex): adjust call to latexParagraphs.
 
 2003-03-10  Angus Leeming  <leeming@lyx.org>
 
@@ -324,7 +324,7 @@
 	* insetgraphics.[Ch]: define a new class InsetGraphicsMailer and use
 	it to communicate with the frontend dialogs.
 
-cd src2003-03-07  Angus Leeming  <leeming@lyx.org>
+2003-03-07  Angus Leeming  <leeming@lyx.org>
 
 	* insetexternal.C: remove operator== and operator!= for
 	InsetExternal::Params. They were used only by the old controller
