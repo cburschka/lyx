@@ -58,31 +58,32 @@ end
 curdir=translate(curdir,'/','\')
 srcdir=translate(srcdir,'/','\')
 A_.0=0
-call SEARCH_PROG 'converter latex dvi%latex|latex2e%"latex,disable=linuxdoc&docbook"'
-call SEARCH_PROG 'converter latex pdf%pdflatex|pdflatex2e%"latex,disable=linuxdoc&docbook"'
-call SEARCH_PROG 'converter latex html%tth -t -e2 -L$$BaseName < $$FName > $$OutName|latex2html -no_subdir -split 0 -show_section_numbers $$FName|hevea -s $$FName%"originaldir,needaux,disable=linuxdoc&docbook"'
-call SEARCH_PROG 'converter literate latex%noweave -delay -index $$FName > $$OutName%""'
-call SEARCH_PROG 'converter dvi ps%dvips -o $$OutName $$FName%""'
-call SEARCH_PROG 'converter ps pdf%ps2pdf $$FName%""'
-call SEARCH_PROG 'converter ps tiff%gs -sDEVICE=tiffg3 -sOutputFile=$$OutName -dNOPAUSE $$FName -c quit|gsos2 -sDEVICE=tiffg3 -sOutputFile=$$OutName -dNOPAUSE $$FName -c quit%""'
-call SEARCH_PROG 'converter linuxdoc lyx%sgml2lyx $$FName%""'
-call SEARCH_PROG 'converter linuxdoc latex%sgml2latex $$FName%""'
-call SEARCH_PROG 'converter linuxdoc dvi%sgml2latex -o dvi $$FName%""'
-call SEARCH_PROG 'converter linuxdoc html%sgml2html $$FName%""'
-call SEARCH_PROG 'converter docbook dvi%sgmltools -b dvi $$FName|db2dvi $$FName%""'
-call SEARCH_PROG 'converter docbook html%sgmltools -b html $$FName|db2html $$FName%""'
+call SEARCH_PROG 'converter latex dvi%latex $$i|latex2e $$i%"latex"'
+call SEARCH_PROG 'converter latex pdf2%pdflatex $$i|pdflatex2e $$i%"latex"'
+call SEARCH_PROG 'converter latex html%tth -t -e2 -L$$BaseName < $$i > $$o|latex2html -no_subdir -split 0 -show_section_numbers $$i|hevea -s $$i%"originaldir,needaux"'
+call SEARCH_PROG 'converter literate latex%noweave -delay -index $$i > $$o%""'
+call SEARCH_PROG 'converter dvi ps%dvips -o $$o $$i%""'
+call SEARCH_PROG 'converter ps pdf%ps2pdf $$i%""'
+call SEARCH_PROG 'converter ps fax%ksendfax $$i%""'
+/* call SEARCH_PROG 'converter ps tiff%gs -sDEVICE=tiffg3 -sOutputFile=$$o -dNOPAUSE $$i -c quit|gsos2 -sDEVICE=tiffg3 -sOutputFile=$$o -dNOPAUSE $$i -c quit%""' */
+call SEARCH_PROG 'converter linuxdoc lyx%sgml2lyx $$i%""'
+call SEARCH_PROG 'converter linuxdoc latex%sgml2latex $$i%""'
+call SEARCH_PROG 'converter linuxdoc dvi%sgml2latex -o dvi $$i%""'
+call SEARCH_PROG 'converter linuxdoc html%sgml2html $$i%""'
+call SEARCH_PROG 'converter docbook dvi%sgmltools -b dvi $$i|db2dvi $$i%""'
+call SEARCH_PROG 'converter docbook html%sgmltools -b html $$i|db2html $$i%""'
 A_.0=A_.0+1;i=A_.0
 A_.i=''
-call SEARCH_PROG 'converter latex lyx%reLyX -f $$FName%"importer"'
-call SEARCH_PROG 'converter literate lyx%noweb2lyx $$FName $$OutName%"importer"'
-call SEARCH_PROG 'converter html latex%html2latex $$FName%"importer"'
-call SEARCH_PROG 'converter word latex%wvCleanLatex $$FName $$OutName|word2x -f latex $$FName%"importer"'
+call SEARCH_PROG 'converter latex lyx%reLyX -f $$i%""'
+call SEARCH_PROG 'converter literate lyx%noweb2lyx $$i $$o%""'
+call SEARCH_PROG 'converter html latex%html2latex $$i%""'
+call SEARCH_PROG 'converter word latex%wvCleanLatex $$i $$o|word2x -f latex $$i%""'
 A_.0=A_.0+1;i=A_.0
 A_.i=''
-call SEARCH_PROG 'converter gif eps%convert $$FName $$OutName%""'
-call SEARCH_PROG 'converter png eps%convert $$FName $$OutName%""'
-call SEARCH_PROG 'converter jpg eps%convert $$FName $$OutName%""'
-call SEARCH_PROG 'converter gif png%convert $$FName $$OutName%""'
+call SEARCH_PROG 'converter gif eps%convert $$i $$o%""'
+call SEARCH_PROG 'converter png eps%convert $$i $$o%""'
+call SEARCH_PROG 'converter jpg eps%convert $$i $$o%""'
+call SEARCH_PROG 'converter gif png%convert $$i $$o%""'
 A_.0=A_.0+1;i=A_.0
 A_.i=''
 call SEARCH_PROG 'viewer dvi%xdvi'
@@ -93,10 +94,10 @@ call SEARCH_PROG 'viewer eps%gv|ghostview|gvpm'
 A_.0=A_.0+1;i=A_.0
 A_.i=''
 call SEARCH_PROG 'ps_command%gs|gsos2'
-call SEARCH_PROG 'ascii_roff_command%groff -t -Tlatin1 $$FName'
+call SEARCH_PROG 'ascii_roff_command%groff -t -Tlatin1 $$i'
 call SEARCH_PROG 'chktex_command%chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38'
 call SEARCH_PROG 'spell_command%ispell'
-/* call SEARCH_PROG 'fax_command%fsend -p$$Phone -i$$FName -d$$Name -m$$Comment' */
+/* call SEARCH_PROG 'fax_command%fsend -p$$Phone -i$$i -d$$Name -m$$Comment' */
 call SEARCH_PROG 'print_spool_command%lp|lpr'
 i=A_.0;A_.0=A_.0+1
 if pos('lpr',A_.i)>0 then
@@ -174,11 +175,11 @@ do
 # It contains only default values, since chkconfig.ltx could not be run
 # for some reason. Run ./configure if you need to update it after a
 # configuration change.
-article	article	article
-report	report	report
-book	book	book
-linuxdoc	linuxdoc	linuxdoc
-letter	letter	letter
+"article"	"article"	"article"
+"report"	"report"	"report"
+"book"	"book"	"book"
+"linuxdoc"	"linuxdoc"	"linuxdoc"
+"letter"	"letter"	"letter"
  EOF */
   call WRITE_FILE 'textclass.lst' '$TextClass'
   rc=lineout('chkconfig.sed','s/@.*@/???/g')
@@ -227,18 +228,26 @@ rc=SysFileDelete(X11ROOT'\XFree86\bin\fsend2.cmd')
 # want to customize LyX, make a copy of the file LYXDIR/lyxrc as
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
-\Format latex tex     LaTeX           L
-\Format dvi   dvi     DVI             D
-\Format ps    ps      Postscript      t
-\Format pdf   pdf     PDF             P
-\Format html  html    HTML            H
-\Format text  txt     ASCII           A
-\Format word  doc     Word            W
-\Format literate nw   NoWeb           N
-\Format linuxdoc sgml LinuxDoc        x
-\Format docbook  sgml DocBook         B
-\Format program  ""   Program         ""
-\Format fax      ""   Fax             ""
+\Format text      txt   ASCII           A
+\Format textparagraph txt ASCII(paragraphs)     ""
+\Format docbook  sgml   DocBook         B
+\Format dvi       dvi   DVI             D
+\Format eps       eps   EPS             ""
+\Format fax       ""    Fax             ""
+\Format gif      gif    GIF             ""
+\Format html      html  HTML            H
+\Format jpg      jpg    JPEG            ""
+\Format latex     tex   LaTeX           L
+\Format linuxdoc sgml   LinuxDoc        x
+\Format lyx      lyx    LyX             ""
+\Format literate nw     NoWeb           N
+\Format pdf       pdf   PDF             P
+\Format pdf2      pdf  "PDF (pdflatex)" F
+\Format png       png   PNG             ""
+\Format ps        ps    Postscript      t
+\Format program  ""     Program         ""
+\Format word      doc   Word            W
+
 
  EOF */
 call WRITE_FILE lyxrc_defaults '$LyXRC_Default'

@@ -4,7 +4,7 @@ RCS file: /usr/local/lyx/cvsroot/lyx-devel/config/progtest.m4,v
 retrieving revision 1.2
 diff -u -r1.2 progtest.m4
 --- lyx-devel/config/progtest.m4	2000/01/08 21:02:55	1.2
-+++ lyx-devel/config/progtest.m4	2000/11/12 08:09:08
++++ lyx-devel/config/progtest.m4	2001/01/01 01:09:00
 @@ -11,6 +11,19 @@
  dnl AM_PATH_PROG_WITH_TEST(VARIABLE, PROG-TO-CHECK-FOR,
  dnl   TEST-PERFORMED-ON-FOUND_PROGRAM [, VALUE-IF-NOT-FOUND [, PATH]])
@@ -43,10 +43,10 @@ diff -u -r1.2 progtest.m4
 Index: lyx-devel/lib/configure.m4
 ===================================================================
 RCS file: /usr/local/lyx/cvsroot/lyx-devel/lib/configure.m4,v
-retrieving revision 1.15
-diff -u -r1.15 configure.m4
---- lyx-devel/lib/configure.m4	2000/11/07 12:07:13	1.15
-+++ lyx-devel/lib/configure.m4	2000/11/12 08:09:13
+retrieving revision 1.17
+diff -u -r1.17 configure.m4
+--- lyx-devel/lib/configure.m4	2000/11/21 15:45:42	1.17
++++ lyx-devel/lib/configure.m4	2001/01/01 01:09:05
 @@ -28,6 +28,19 @@
  dnl
  define(SEARCH_PROG,[dnl
@@ -100,14 +100,14 @@ diff -u -r1.15 configure.m4
 +PATH=${PATH}${PATH_IFS}./reLyX/
  SEARCH_PROG([for a LaTeX -> LyX converter],tex_to_lyx_command,reLyX)
  PATH=${save_PATH}
- test $tex_to_lyx_command = "reLyX" && tex_to_lyx_command="reLyX -f \$\$FName"
+ test $tex_to_lyx_command = "reLyX" && tex_to_lyx_command="reLyX -f \$\$i"
 Index: lyx-devel/lib/reLyX/acinclude.m4
 ===================================================================
 RCS file: /usr/local/lyx/cvsroot/lyx-devel/lib/reLyX/acinclude.m4,v
 retrieving revision 1.2
 diff -u -r1.2 acinclude.m4
 --- lyx-devel/lib/reLyX/acinclude.m4	2000/11/07 12:07:13	1.2
-+++ lyx-devel/lib/reLyX/acinclude.m4	2000/11/12 08:09:15
++++ lyx-devel/lib/reLyX/acinclude.m4	2001/01/01 01:09:06
 @@ -10,15 +10,24 @@
  dnl RELYX_SEARCH_PROG(VARIABLE-NAME,PROGRAMS-LIST,ACTION-IF-FOUND)
  dnl             
@@ -141,7 +141,7 @@ RCS file: /usr/local/lyx/cvsroot/lyx-devel/lib/reLyX/configure.in,v
 retrieving revision 1.8
 diff -u -r1.8 configure.in
 --- lyx-devel/lib/reLyX/configure.in	2000/06/26 15:33:12	1.8
-+++ lyx-devel/lib/reLyX/configure.in	2000/11/12 08:09:15
++++ lyx-devel/lib/reLyX/configure.in	2001/01/01 01:09:06
 @@ -2,6 +2,7 @@
  AC_INIT(reLyX.in)
  AC_PREREQ(2.13) dnl We want to use autoconf 2.13
@@ -150,44 +150,13 @@ diff -u -r1.8 configure.in
  
  dnl PACKAGE=reLyX
  dnl Do this to install in $datadir/lyx/reLyX instead of $datadir/reLyX/reLyX
-Index: lyx-devel/src/lyx_cb.C
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/lyx_cb.C,v
-retrieving revision 1.128
-diff -u -r1.128 lyx_cb.C
---- lyx-devel/src/lyx_cb.C	2000/11/10 17:29:45	1.128
-+++ lyx-devel/src/lyx_cb.C	2000/11/12 08:09:18
-@@ -321,6 +321,7 @@
- #if 0
- void MenuFax(Buffer * buffer)
- {
-+#ifndef __EMX__
- 	// Generate postscript file
- 	if (!Exporter::Export(buffer, "ps", true))
- 		return;
-@@ -328,6 +329,15 @@
- 	// Send fax
- 	string const ps = OnlyFilename(ChangeExtension(buffer->fileName(), 
- 						       ".ps"));
-+#else
-+	// Generate tiff file
-+	if (!Exporter::Export(buffer, "tiff", true))
-+		return;
-+
-+	// Send fax
-+	string const ps = OnlyFilename(ChangeExtension(buffer->fileName(), 
-+						       ".tif"));
-+#endif
- 
- 	string path = OnlyPath (buffer->fileName());
- 	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 Index: lyx-devel/src/os2_defines.h
 ===================================================================
 RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/os2_defines.h,v
 retrieving revision 1.5
 diff -u -r1.5 os2_defines.h
 --- lyx-devel/src/os2_defines.h	2000/11/08 09:39:44	1.5
-+++ lyx-devel/src/os2_defines.h	2000/11/12 08:09:18
++++ lyx-devel/src/os2_defines.h	2001/01/01 01:09:07
 @@ -13,16 +13,22 @@
  #ifndef OS2_DEFINES_H
  #define OS2_DEFINES_H
@@ -216,10 +185,10 @@ diff -u -r1.5 os2_defines.h
 Index: lyx-devel/src/support/rename.C
 ===================================================================
 RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/rename.C,v
-retrieving revision 1.4
-diff -u -r1.4 rename.C
---- lyx-devel/src/support/rename.C	2000/11/06 11:20:22	1.4
-+++ lyx-devel/src/support/rename.C	2000/11/12 08:09:20
+retrieving revision 1.5
+diff -u -r1.5 rename.C
+--- lyx-devel/src/support/rename.C	2000/11/13 10:35:02	1.5
++++ lyx-devel/src/support/rename.C	2001/01/01 01:09:10
 @@ -6,6 +6,9 @@
  
  bool lyx::rename(string const & from, string const & to)
@@ -228,15 +197,15 @@ diff -u -r1.4 rename.C
 +	::unlink(to.c_str());
 +#endif
  	if (::rename(from.c_str(), to.c_str()) == -1)
- 		return lyx::copy(from, to);
- 	return true;
+ 		if (lyx::copy(from, to)) {
+ 			lyx::unlink(from);
 Index: lyx-devel/src/support/syscall.C
 ===================================================================
 RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/syscall.C,v
 retrieving revision 1.18
 diff -u -r1.18 syscall.C
 --- lyx-devel/src/support/syscall.C	2000/10/11 21:06:43	1.18
-+++ lyx-devel/src/support/syscall.C	2000/11/12 08:09:21
++++ lyx-devel/src/support/syscall.C	2001/01/01 01:09:10
 @@ -15,6 +15,7 @@
  #include "syscontr.h"
  #include "support/lstrings.h"
@@ -245,3 +214,44 @@ diff -u -r1.18 syscall.C
  
  using std::endl;
  
+Index: lyx-devel/src/support/tempname.C
+===================================================================
+RCS file: /usr/local/lyx/cvsroot/lyx-devel/src/support/tempname.C,v
+retrieving revision 1.4
+diff -u -r1.4 tempname.C
+--- lyx-devel/src/support/tempname.C	2000/11/15 03:22:08	1.4
++++ lyx-devel/src/support/tempname.C	2001/01/01 01:09:10
+@@ -12,6 +12,17 @@
+ 
+ extern string system_tempdir;
+ 
++#ifdef __EMX__
++	// EMX mkstemp() behaviour may be problematic, however,
++	// as noted by Lgb in the comment to CreateTmpDir(),
++	// there is no point for using mkstemp() here.
++#undef HAVE_MKSTEMP
++#include <sys/types.h>
++#include <sys/stat.h>
++#define INCL_DOSFILEMGR
++#include <os2.h>
++#endif
++
+ static inline
+ int make_tempfile(char * templ) 
+ {
+@@ -19,9 +30,14 @@
+ 	return ::mkstemp(templ);
+ #else
+ #ifdef HAVE_MKTEMP
++#ifdef __EMX__
++	ULONG cur = 0;
++	LONG  req = 1;
++	DosSetRelMaxFH(&req, &cur);	// No need to check error code.
++#endif
+ 	// This probably just barely works...
+ 	::mktemp(templ);
+-	return ::open(templ, O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
++	return ::open(templ, O_RDWR | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
+ #else
+ #warning FIX FIX FIX
+ #endif

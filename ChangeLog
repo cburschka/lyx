@@ -1,3 +1,12 @@
+2001-01-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Makefile.am (EXTRA_DIST): add autogen.sh
+
+2001-01-03  Miyata Shigeru  <miyata@kusm.kyoto-u.ac.jp>
+
+	* development/OS2/quick_fix.patch: 
+	* lib/configure.cmd: update OS/2 support files.
+
 2001-01-02  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (pasteSelection): rewritten correctly.
