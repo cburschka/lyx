@@ -1,5 +1,12 @@
 2001-05-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* paragraph.C (writeFile): reindent
+	(Erase): reindent
+
+	* WorkArea.h: revert the xpos + etc changes.
+
+	* CutAndPaste.C (SwitchLayoutsBetweenClasses): constify name and s
+
 	* lyxparagraph.[Ch]: add copy constructor, remove Clone
 
 	* CutAndPaste.C (copySelection): use LyXParagraph copy constructor

@@ -35,17 +35,17 @@ public:
 	///
 	int workWidth() const { return work_area->w; }
 	///
-	//unsigned int width() const { return work_area->w + scrollbar->w; }
-	unsigned int width() const { return backgroundbox->w + 15; }
+	unsigned int width() const { return work_area->w + scrollbar->w; }
+	//unsigned int width() const { return backgroundbox->w + 15; }
 	///
-	//unsigned int height() const { return work_area->h; }
-	unsigned int height() const { return backgroundbox->h; }
+	unsigned int height() const { return work_area->h; }
+	//unsigned int height() const { return backgroundbox->h; }
 	///
-	//int xpos() const { return work_area->x; }
-	int xpos() const { return backgroundbox->x; }
+	int xpos() const { return work_area->x; }
+	//int xpos() const { return backgroundbox->x; }
 	///
-	//int ypos() const { return work_area->y; }
-	int ypos() const { return backgroundbox->y; }
+	int ypos() const { return work_area->y; }
+	//int ypos() const { return backgroundbox->y; }
 	///
 	void resize(int xpos, int ypos, int width, int height);
 	///

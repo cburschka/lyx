@@ -132,10 +132,6 @@ public:
 	///
 	LyXParagraph * TeXEnvironment(Buffer const *, BufferParams const &,
 				      std::ostream &, TexRow & texrow);
-#if 0
-	///
-	LyXParagraph * Clone() const;
-#endif
 	///
 	bool HasSameLayout(LyXParagraph const * par) const;
 	

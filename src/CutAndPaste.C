@@ -159,21 +159,13 @@ bool CutAndPaste::copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
 		// copy more than one paragraph
 		// clone the paragraphs within the selection
 		LyXParagraph * tmppar = startpar;
-#if 0
-		buf = tmppar->Clone();
-#else
 		buf = new LyXParagraph(*tmppar);
-#endif
 		LyXParagraph * tmppar2 = buf;
 		
 		while (tmppar != endpar
 		       && tmppar->next()) {
 			tmppar = tmppar->next();
-#if 0
-			tmppar2->next(tmppar->Clone());
-#else
 			tmppar2->next(new LyXParagraph(*tmppar));
-#endif
 			tmppar2->next()->previous(tmppar2);
 			tmppar2 = tmppar2->next();
 		}
@@ -210,11 +202,8 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 	// There are two cases: cutbuffer only one paragraph or many
 	if (!buf->next()) {
 		// only within a paragraph
-#if 0
-		LyXParagraph * tmpbuf = buf->Clone();
-#else
 		LyXParagraph * tmpbuf = new LyXParagraph(*buf);
-#endif
+
 		// Some provisions should be done here for checking
 		// if we are inserting at the beginning of a
 		// paragraph. If there are a space at the beginning
@@ -243,19 +232,12 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 		
 		// make a copy of the simple cut_buffer
 		LyXParagraph * tmpbuf = buf;
-#if 0
-		LyXParagraph * simple_cut_clone = tmpbuf->Clone();
-#else
 		LyXParagraph * simple_cut_clone = new LyXParagraph(*tmpbuf);
-#endif
 		LyXParagraph * tmpbuf2 = simple_cut_clone;
+
 		while (tmpbuf->next()) {
 			tmpbuf = tmpbuf->next();
-#if 0
-			tmpbuf2->next(tmpbuf->Clone());
-#else
 			tmpbuf2->next(new LyXParagraph(*tmpbuf));
-#endif
 			tmpbuf2->next()->previous(tmpbuf2);
 			tmpbuf2 = tmpbuf2->next();
 		}
@@ -343,7 +325,8 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type c1,
 		return ret;
 
     while (par) {
-		string name = textclasslist.NameOfLayout(c1, par->layout);
+		string const name = textclasslist.NameOfLayout(c1,
+							       par->layout);
 		int lay = 0;
 		pair<bool, LyXTextClass::LayoutList::size_type> pp =
 			textclasslist.NumberOfLayout(c2, name);
@@ -357,7 +340,7 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type c1,
 		
 		if (name != textclasslist.NameOfLayout(c2, par->layout)) {
 			++ret;
-			string s = _("Layout had to be changed from\n")
+			string const s = _("Layout had to be changed from\n")
 				+ name + _(" to ")
 				+ textclasslist.NameOfLayout(c2, par->layout)
 				+ _("\nbecause of class conversion from\n")

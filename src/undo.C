@@ -10,11 +10,11 @@
 
 #include <config.h>
 
-#include "undo.h"
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
+
+#include "undo.h"
 
 
 Undo::Undo(undo_kind kind_arg,

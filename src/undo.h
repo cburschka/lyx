@@ -16,9 +16,10 @@
 #pragma interface
 #endif
 
+#include <list>
+
 #include "lyxparagraph.h"
 
-#include <list>
 
 ///
 class Undo {

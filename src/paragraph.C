@@ -180,80 +180,80 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			     BufferParams const & bparams,
 			     char footflag, char dth) const
 {
-		// The beginning or end of a deeper (i.e. nested) area?
-		if (dth != params.depth()) {
-			if (params.depth() > dth) {
-				while (params.depth() > dth) {
-					os << "\n\\begin_deeper ";
-					++dth;
-				}
-			} else {
-				while (params.depth() < dth) {
-					os << "\n\\end_deeper ";
-					--dth;
-				}
+	// The beginning or end of a deeper (i.e. nested) area?
+	if (dth != params.depth()) {
+		if (params.depth() > dth) {
+			while (params.depth() > dth) {
+				os << "\n\\begin_deeper ";
+				++dth;
+			}
+		} else {
+			while (params.depth() < dth) {
+				os << "\n\\end_deeper ";
+				--dth;
 			}
 		}
-
-		// First write the layout
-		os << "\n\\layout "
-		   << textclasslist.NameOfLayout(bparams.textclass, layout)
-		   << "\n";
-
-		// Maybe some vertical spaces.
-		if (params.spaceTop().kind() != VSpace::NONE)
-			os << "\\added_space_top "
-			   << params.spaceTop().asLyXCommand() << " ";
-		if (params.spaceBottom().kind() != VSpace::NONE)
-			os << "\\added_space_bottom "
-			   << params.spaceBottom().asLyXCommand() << " ";
-
-		// Maybe the paragraph has special spacing
-		params.spacing().writeFile(os, true);
-		
-		// The labelwidth string used in lists.
-		if (!params.labelWidthString().empty())
-			os << "\\labelwidthstring "
-			   << params.labelWidthString() << '\n';
-
-		// Lines above or below?
-		if (params.lineTop())
-			os << "\\line_top ";
-		if (params.lineBottom())
-			os << "\\line_bottom ";
-
-		// Pagebreaks above or below?
-		if (params.pagebreakTop())
-			os << "\\pagebreak_top ";
-		if (params.pagebreakBottom())
-			os << "\\pagebreak_bottom ";
-			
-		// Start of appendix?
-		if (params.startOfAppendix())
-			os << "\\start_of_appendix ";
-
-		// Noindent?
-		if (params.noindent())
-			os << "\\noindent ";
-			
-		// Alignment?
-		if (params.align() != LYX_ALIGN_LAYOUT) {
-			int h = 0;
-			switch (params.align()) {
-			case LYX_ALIGN_LEFT: h = 1; break;
-			case LYX_ALIGN_RIGHT: h = 2; break;
-			case LYX_ALIGN_CENTER: h = 3; break;
-			default: h = 0; break;
-			}
-			os << "\\align " << string_align[h] << " ";
+	}
+	
+	// First write the layout
+	os << "\n\\layout "
+	   << textclasslist.NameOfLayout(bparams.textclass, layout)
+	   << "\n";
+	
+	// Maybe some vertical spaces.
+	if (params.spaceTop().kind() != VSpace::NONE)
+		os << "\\added_space_top "
+		   << params.spaceTop().asLyXCommand() << " ";
+	if (params.spaceBottom().kind() != VSpace::NONE)
+		os << "\\added_space_bottom "
+		   << params.spaceBottom().asLyXCommand() << " ";
+	
+	// Maybe the paragraph has special spacing
+	params.spacing().writeFile(os, true);
+	
+	// The labelwidth string used in lists.
+	if (!params.labelWidthString().empty())
+		os << "\\labelwidthstring "
+		   << params.labelWidthString() << '\n';
+	
+	// Lines above or below?
+	if (params.lineTop())
+		os << "\\line_top ";
+	if (params.lineBottom())
+		os << "\\line_bottom ";
+	
+	// Pagebreaks above or below?
+	if (params.pagebreakTop())
+		os << "\\pagebreak_top ";
+	if (params.pagebreakBottom())
+		os << "\\pagebreak_bottom ";
+	
+	// Start of appendix?
+	if (params.startOfAppendix())
+		os << "\\start_of_appendix ";
+	
+	// Noindent?
+	if (params.noindent())
+		os << "\\noindent ";
+	
+	// Alignment?
+	if (params.align() != LYX_ALIGN_LAYOUT) {
+		int h = 0;
+		switch (params.align()) {
+		case LYX_ALIGN_LEFT: h = 1; break;
+		case LYX_ALIGN_RIGHT: h = 2; break;
+		case LYX_ALIGN_CENTER: h = 3; break;
+		default: h = 0; break;
 		}
-
+		os << "\\align " << string_align[h] << " ";
+	}
+	
 	// bibitem  ale970302
 	if (bibkey)
 		bibkey->Write(buf, os);
-
+	
 	LyXFont font1(LyXFont::ALL_INHERIT, bparams.language);
-
+	
 	int column = 0;
 	for (size_type i = 0; i < size(); ++i) {
 		if (!i) {
@@ -268,7 +268,7 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			column = 0;
 			font1 = font2;
 		}
-
+		
 		value_type const c = GetChar(i);
 		switch (c) {
 		case META_INSET:
@@ -468,60 +468,60 @@ void LyXParagraph::Clear()
 void LyXParagraph::Erase(LyXParagraph::size_type pos)
 {
 	lyx::Assert(pos < size());
-		// if it is an inset, delete the inset entry 
-		if (text[pos] == LyXParagraph::META_INSET) {
-			// find the entry
-			InsetTable search_inset(pos, 0);
-			InsetList::iterator it =
-				lower_bound(insetlist.begin(),
-					    insetlist.end(),
-					    search_inset, matchIT());
-			if (it != insetlist.end() && (*it).pos == pos) {
-				delete (*it).inset;
-				insetlist.erase(it);
-			}
-		}
-
-		text.erase(text.begin() + pos);
-
-		// Erase entries in the tables.
-		FontTable search_font(pos, LyXFont());
-		
-		FontList::iterator it =
-			lower_bound(fontlist.begin(),
-				    fontlist.end(),
-				    search_font, matchFT());
-		if (it != fontlist.end() && (*it).pos() == pos &&
-		    (pos == 0 || 
-		     (it != fontlist.begin() && (*(it - 1)).pos() == pos - 1))) {
-			// If it is a multi-character font
-			// entry, we just make it smaller
-			// (see update below), otherwise we
-			// should delete it.
-			unsigned int const i = it - fontlist.begin();
-			fontlist.erase(fontlist.begin() + i);
-			it = fontlist.begin() + i;
-			if (i > 0 && i < fontlist.size() &&
-			    fontlist[i - 1].font() == fontlist[i].font()) {
-				fontlist.erase(fontlist.begin() + i - 1);
-				it = fontlist.begin() + i - 1;
-			}
-		}
-
-		// Update all other entries.
-		FontList::iterator fend = fontlist.end();
-		for (; it != fend; ++it)
-			(*it).pos((*it).pos() - 1);
-
-		// Update the inset table.
+	// if it is an inset, delete the inset entry 
+	if (text[pos] == LyXParagraph::META_INSET) {
+		// find the entry
 		InsetTable search_inset(pos, 0);
-		InsetList::iterator lend = insetlist.end();
-		for (InsetList::iterator it =
-			     upper_bound(insetlist.begin(),
-					 lend,
-					 search_inset, matchIT());
-		     it != lend; ++it)
-			--(*it).pos;
+		InsetList::iterator it =
+			lower_bound(insetlist.begin(),
+				    insetlist.end(),
+				    search_inset, matchIT());
+		if (it != insetlist.end() && (*it).pos == pos) {
+			delete (*it).inset;
+			insetlist.erase(it);
+		}
+	}
+	
+	text.erase(text.begin() + pos);
+	
+	// Erase entries in the tables.
+	FontTable search_font(pos, LyXFont());
+	
+	FontList::iterator it =
+		lower_bound(fontlist.begin(),
+			    fontlist.end(),
+			    search_font, matchFT());
+	if (it != fontlist.end() && (*it).pos() == pos &&
+	    (pos == 0 || 
+	     (it != fontlist.begin() && (*(it - 1)).pos() == pos - 1))) {
+		// If it is a multi-character font
+		// entry, we just make it smaller
+		// (see update below), otherwise we
+		// should delete it.
+		unsigned int const i = it - fontlist.begin();
+		fontlist.erase(fontlist.begin() + i);
+		it = fontlist.begin() + i;
+		if (i > 0 && i < fontlist.size() &&
+		    fontlist[i - 1].font() == fontlist[i].font()) {
+			fontlist.erase(fontlist.begin() + i - 1);
+			it = fontlist.begin() + i - 1;
+		}
+	}
+	
+	// Update all other entries.
+	FontList::iterator fend = fontlist.end();
+	for (; it != fend; ++it)
+		(*it).pos((*it).pos() - 1);
+	
+	// Update the inset table.
+	InsetTable search_inset(pos, 0);
+	InsetList::iterator lend = insetlist.end();
+	for (InsetList::iterator it =
+		     upper_bound(insetlist.begin(),
+				 lend,
+				 search_inset, matchIT());
+	     it != lend; ++it)
+		--(*it).pos;
 }
 
 
@@ -1047,40 +1047,6 @@ int LyXParagraph::StripLeadingSpaces(LyXTextClassList::size_type tclass)
 
 	return i;
 }
-
-
-#if 0
-LyXParagraph * LyXParagraph::Clone() const
-{
-	// create a new paragraph
-	LyXParagraph * result = new LyXParagraph;
-   
-	result->MakeSameLayout(this);
-
-	// this is because of the dummy layout of the paragraphs that
-	// follow footnotes
-	result->layout = layout;
-
-	result->inset_owner = inset_owner;
-   
-        // ale970302
-	if (bibkey)
-		result->bibkey = static_cast<InsetBibKey *>
-			         (bibkey->Clone(*current_view->buffer()));
-	else
-		result->bibkey = 0;
-    
-	// copy everything behind the break-position to the new paragraph
-
-	result->text = text;
-	result->fontlist = fontlist;
-	result->insetlist = insetlist;
-	for (InsetList::iterator it = result->insetlist.begin();
-	     it != result->insetlist.end(); ++it)
-		(*it).inset = (*it).inset->Clone(*current_view->buffer());
-	return result;
-}
-#endif
 
 
 bool LyXParagraph::HasSameLayout(LyXParagraph const * par) const
