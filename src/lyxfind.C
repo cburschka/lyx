@@ -123,7 +123,7 @@ void find(BufferView * bv, FuncRequest const & ev)
 	bool forward       = parse_bool(howto);
 
 	bool const found = ::find(bv, search,
-				  forward, casesensitive, matchword);
+				  casesensitive, matchword, forward);
 
 	if (!found)
 		bv->owner()->message(_("String not found!"));
