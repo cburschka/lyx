@@ -170,13 +170,13 @@ string const top_srcdir()
 
 string const hardcoded_localedir()
 {
-	return string("c:\\lyx\\lyx-devel\\share\\locale");
+	return string("c:\\lyx\\lyx-devel\\lib\\locale");
 }
 
 
 string const hardcoded_system_support_dir()
 {
-	return string("c:\\lyx\\lyx-devel\\share");
+	return string("c:\\lyx\\lyx-devel\\lib");
 }
 
 } // namespace anon

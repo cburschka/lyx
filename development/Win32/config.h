@@ -228,7 +228,7 @@
 #define HAVE_MEMPCPY 1
 
 /* Define to 1 if you have the `mkdir' function. */
-#define HAVE_MKDIR 1
+/* #define HAVE_MKDIR */
 
 /* Define to 1 if you have the `mkfifo' function. */
 #define HAVE_MKFIFO 1
@@ -370,7 +370,7 @@
 #define HAVE_ZLIB_H 1
 
 /* Define to 1 if you have the `_mkdir' function. */
-/* #undef HAVE__MKDIR */
+#define HAVE__MKDIR 1
 
 /* Define to 1 if you have the `__argz_count' function. */
 /* #undef HAVE___ARGZ_COUNT */
