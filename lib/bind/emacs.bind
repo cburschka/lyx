@@ -142,7 +142,7 @@
 \bind "End"                    "buffer-end"
 
 \bind "C-~S-greater"		"reference-goto"
-\bind "C-~S-less" 		"reference-back"
+\bind "C-~S-less" 		"bookmark-goto 0"
 
 
 # The below are xemacs bindings

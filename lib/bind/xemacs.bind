@@ -157,7 +157,7 @@
 \bind "Tab"                     "depth-next"
 
 \bind "C-~S-greater"		"reference-goto"
-\bind "C-~S-less" 		"reference-back"
+\bind "C-~S-less" 		"bookmark-goto 0"
 
 #
 # Motion + select group

@@ -1,3 +1,9 @@
+2001-02-07  Allan Rae  <rae@lyx.org>
+
+	* bind/emacs.bind: 
+	* bind/xemacs.bind: Someone forgot to do the other bind files when they
+	changed the reference-back into a bookmark-goto. naughty naughty.
+
 2001-02-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* kbd/thai-kedmanee.kmap: new Thai keymap, contributed by Chanop
