@@ -21,14 +21,8 @@
 #include <vector>
 #include <sigc++/signal_system.h>
 
-using std::vector;
-
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Signal0;
-using SigC::Signal1;
-#endif
-
 #include "LString.h"
+#include "support/utility.hpp"
 
 class DialogBase;
 
@@ -44,11 +38,18 @@ class InsetInfo;
 class InsetTabular;
 class InsetUrl;
 
+using std::vector;
+
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Signal0;
+using SigC::Signal1;
+#endif
+
 /** Container of all dialogs and signals a LyXView needs or uses to access them
     The list of dialog signals isn't comprehensive but should be a good guide
     for any future additions.  Remember don't go overboard -- think minimal.
  */
-class Dialogs
+class Dialogs : public noncopyable
 {
 public:
 	/**@name Constructors and Deconstructors */
@@ -123,10 +124,6 @@ public:
 	Signal1<void, InsetInfo *> showInfo;
 	//@}
 private:
-	/// Disallow default constructor
-	Dialogs() {}
-	/// Disallow copy constructor
-	Dialogs(Dialogs &) {}
 	///
 	vector<DialogBase *> dialogs_;
 };

@@ -31,6 +31,10 @@ libxforms_la_SOURCES = \
 	FormTabular.h \
 	form_tabular.C \
 	form_tabular.h \
+	FormUrl.C \
+	FormUrl.h \
+	form_url.C \
+	form_url.h \
 	Toolbar_pimpl.C \
 	Toolbar_pimpl.h \
 	Menubar_pimpl.C \

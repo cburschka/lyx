@@ -18,18 +18,24 @@
 #define FORMPRINT_H
 
 #include "DialogBase.h"
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
+#include "support/utility.hpp"
+
+#ifdef __GNUG__
+#pragma interface
 #endif
 
 class LyXView;
 class Dialogs;
 struct FD_form_print;
 
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Connection;
+#endif
+
 /** This class provides an XForms implementation of the FormPrint Dialog.
     The print dialog allows users to print their documents.
  */
-class FormPrint : public DialogBase {
+class FormPrint : public DialogBase, public noncopyable {
 public:
 	/**@name Constructors and Destructors */
 	//@{
@@ -49,9 +55,6 @@ public:
 	//@}
 
 private:
-	FormPrint() {}
-	FormPrint(FormPrint &) : DialogBase() {}
-
 	/**@name Slot Methods */
 	//@{
 	/// Create the dialog if necessary, update it and display it.

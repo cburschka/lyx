@@ -93,7 +93,7 @@ public:
 
         ///
 	Inset * Clone() const {
-		return new InsetBibtex(getCmdName(), getOptions(), 0);
+		return new InsetBibtex(getCmdName(), getOptions(), owner);
 	}
 	///
 	Inset::Code LyxCode() const

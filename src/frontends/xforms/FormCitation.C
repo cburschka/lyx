@@ -10,8 +10,17 @@
  */
 
 #include <config.h>
-#include "gettext.h"
+
+#include <algorithm>
+
 #include FORMS_H_LOCATION
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+
+#include "gettext.h"
 #include "BufferView.h"
 #include "Dialogs.h"
 #include "FormCitation.h"
@@ -22,10 +31,6 @@
 #include "xform_macros.h"
 #include "insets/insetcite.h"
 #include "support/filetools.h"
-
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 using std::vector;
 using std::pair;

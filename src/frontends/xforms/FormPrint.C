@@ -3,9 +3,12 @@
  */
 
 #include <config.h>
-#include "lyx_gui_misc.h"
-#include "gettext.h"
+
 #include FORMS_H_LOCATION
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
 #include "FormPrint.h"
 #include "form_print.h"
@@ -19,6 +22,8 @@
 #include "Liason.h"
 #include "debug.h"
 #include "BufferView.h"
+#include "lyx_gui_misc.h"
+#include "gettext.h"
 
 
 #ifdef SIGC_CXX_NAMESPACES

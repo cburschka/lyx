@@ -3,9 +3,12 @@
  */
 
 #include <config.h>
-#include "lyx_gui_misc.h"
-#include "gettext.h"
+
 #include FORMS_H_LOCATION
+
+#ifdef __GNUG_
+#pragma implementation
+#endif
 
 #include "FormPreferences.h"
 #include "form_preferences.h"
@@ -16,7 +19,8 @@
 #include "Dialogs.h"
 #include "lyxrc.h"
 #include "debug.h"
-
+#include "lyx_gui_misc.h"
+#include "gettext.h"
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;

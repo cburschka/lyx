@@ -19,6 +19,11 @@
 
 #include "DialogBase.h"
 #include "form_copyright.h"
+#include "support/utility.hpp"
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 class Dialogs;
 // same arguement as in Dialogs.h s/LyX/UI/
@@ -26,7 +31,7 @@ class LyXView;
 
 /** This class provides an XForms implementation of the FormCopyright Dialog.
  */
-class FormCopyright : public DialogBase {
+class FormCopyright : public DialogBase, public noncopyable {
 public:
 	/**@name Constructors and Destructors */
 	//@{
@@ -43,9 +48,6 @@ public:
 	//@}
 
 private:
-	FormCopyright() {}
-	FormCopyright(FormCopyright &) : DialogBase() {}
-	
 	/**@name Slot Methods */
 	//@{
 	/// Create the dialog if necessary, update it and display it.

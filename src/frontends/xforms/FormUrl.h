@@ -15,15 +15,21 @@
 #include "DialogBase.h"
 #include "LString.h"
 
+#include "support/utility.hpp"
+
 class Dialogs;
 class LyXView;
 class InsetCommandParams;
 class InsetUrl;
 struct FD_form_url;
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 /** This class provides an XForms implementation of the FormUrl Dialog.
  */
-class FormUrl : public DialogBase {
+class FormUrl : public DialogBase, public noncopyable {
 public:
 	/**@name Constructors and Destructors */
 	//@{
@@ -41,9 +47,6 @@ public:
 	//@}
 
 private:
-	FormUrl() {}
-	FormUrl(FormUrl &) : DialogBase() {}
-	
 	/**@name Slot Methods */
 	//@{
 	/// Create the dialog if necessary, update it and display it.

@@ -1,3 +1,29 @@
+2000-07-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/frontends/xforms/FormUrl.h: ditto
+
+	* src/frontends/xforms/FormPrint.h: ditto
+
+	* src/frontends/xforms/FormPreferences.h: ditto
+
+	* src/frontends/xforms/FormCopyright.h: ditto
+
+	* src/frontends/xforms/FormCitation.C: ditto
+
+	* src/frontends/Dialogs.h (class Dialogs): use noncopyable, remove
+	private copyconstructor and private default contructor
+
+	* src/support/Makefile.am: add utility.hpp
+
+	* src/support/utility.hpp: new file from boost
+
+	* src/insets/insetbib.h: set owner in clone
+
+	* src/frontends/xforms/FormCitation.C: added missing include
+	algorithm
+
+	* src/insets/form_url.[Ch]: removed
+
 2000-07-26  Kayvan A. Sylvan <kayvan@sylvan.com>
 
 	* development/lyx.spec.in

@@ -12,9 +12,15 @@
 #ifndef FORMCITATION_H
 #define FORMCITATION_H
 
+#include <vector>
+
 #include "DialogBase.h"
 #include "LString.h"
-#include <vector>
+#include "support/utility.hpp"
+
+#ifndef __GNUG__
+#pragma interface
+#endif
 
 class Dialogs;
 // same arguement as in Dialogs.h s/LyX/UI/
@@ -24,7 +30,7 @@ struct FD_form_citation;
 
 /** This class provides an XForms implementation of the FormCitation Dialog.
  */
-class FormCitation : public DialogBase {
+class FormCitation : public DialogBase, public noncopyable {
 public:
 	///
 	enum State {
@@ -54,9 +60,6 @@ public:
 	//@}
 
 private:
-	FormCitation() {}
-	FormCitation(FormCitation &) : DialogBase() {}
-	
 	/**@name Slot Methods */
 	//@{
 	/// Create the dialog if necessary, update it and display it.

@@ -10,8 +10,15 @@
  */
 
 #include <config.h>
-#include "gettext.h"
+
 #include FORMS_H_LOCATION
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+
+#include "gettext.h"
 #include "BufferView.h"
 #include "Dialogs.h"
 #include "FormUrl.h"
@@ -23,10 +30,6 @@
 #include "insets/insetcommand.h"
 #include "insets/inseturl.h"
 #include "support/filetools.h"
-
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 C_RETURNCB(FormUrl, WMHideCB)
 C_GENERICCB(FormUrl, OKCB)

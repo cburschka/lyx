@@ -3,18 +3,19 @@
  */
 
 #include <config.h>
-#include "lyx_gui_misc.h"
-#include "gettext.h"
+
 #include FORMS_H_LOCATION
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
 
 #include "xform_macros.h"
 #include "FormCopyright.h"
 #include "Dialogs.h"
 #include "LyXView.h"
-
-#ifdef __GNUG__
-#pragma implementation
-#endif
+#include "lyx_gui_misc.h"
+#include "gettext.h"
 
 C_RETURNCB(FormCopyright, WMHideCB)
 C_GENERICCB(FormCopyright, OKCB)

@@ -18,8 +18,10 @@
 #define FORMPREFERENCES_H
 
 #include "DialogBase.h"
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Connection;
+#include "support/utility.hpp"
+
+#ifdef __GNUG_
+#pragma interface
 #endif
 
 class LyXView;
@@ -32,10 +34,14 @@ struct FD_form_interface_fonts;
 struct FD_form_printer;
 struct FD_form_paths;
 
+#ifdef SIGC_CXX_NAMESPACES
+using SigC::Connection;
+#endif
+
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.
  */
-class FormPreferences : public DialogBase {
+class FormPreferences : public DialogBase, public noncopyable {
 public:
 	/**@name Constructors and Destructors */
 	//@{
@@ -55,9 +61,6 @@ public:
 	//@}
 
 private:
-	FormPreferences() {}
-	FormPreferences(FormPreferences &) : DialogBase() {}
-
 	/**@name Slot Methods */
 	//@{
 	/// Create the dialog if necessary, update it and display it.
