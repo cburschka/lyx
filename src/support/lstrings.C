@@ -324,22 +324,6 @@ bool suffixIs(string const & a, string const & suf)
 }
 
 
-bool contains(string const & a, string const & b)
-{
-	if (a.empty())
-		return false;
-	return a.find(b) != string::npos;
-}
-
-
-bool contains(string const & a, char b)
-{
-	if (a.empty())
-		return false;
-	return a.find(b) != string::npos;
-}
-
-
 bool containsOnly(string const & s, string const & cset)
 {
 	return s.find_first_not_of(cset) == string::npos;

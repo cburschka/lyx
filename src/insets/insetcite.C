@@ -194,10 +194,10 @@ string const getBasicLabel(string const & keyList, string const & after)
 	string keys(keyList);
 	string label;
 
-	if (contains(keys, ",")) {
+	if (contains(keys, ',')) {
 		// Final comma allows while loop to cover all keys
 		keys = ltrim(split(keys, label, ',')) + ',';
-		while (contains(keys, ",")) {
+		while (contains(keys, ',')) {
 			string key;
 			keys = ltrim(split(keys, key, ','));
 			label += ", " + key;

@@ -111,22 +111,22 @@ void FloatPlacement::set(string const & placement)
 
 	if (placement.empty()) {
 		def_placement = true;
-	} else if (contains(placement, "H")) {
+	} else if (contains(placement, 'H')) {
 		here_definitely = true;
 	} else {
-		if (contains(placement, "!")) {
+		if (contains(placement, '!')) {
 			force = true;
 		}
-		if (contains(placement, "t")) {
+		if (contains(placement, 't')) {
 			top = true;
 		}
-		if (contains(placement, "b")) {
+		if (contains(placement, 'b')) {
 			bottom = true;
 		}
-		if (contains(placement, "p")) {
+		if (contains(placement, 'p')) {
 			page = true;
 		}
-		if (contains(placement, "h")) {
+		if (contains(placement, 'h')) {
 			here = true;
 		}
 	}

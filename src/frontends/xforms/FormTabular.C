@@ -24,11 +24,14 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::contains_functor;
+#include <boost/bind.hpp>
+
+using lyx::support::contains;
 using lyx::support::getStringFromVector;
 using lyx::support::isStrDbl;
 
-using std::bind2nd;
+using boost::bind;
+
 using std::string;
 using std::vector;
 
@@ -81,7 +84,7 @@ void FormTabular::build()
 	vector<string> units_vec = getLatexUnits();
 	vector<string>::iterator ret =
 		remove_if(units_vec.begin(), units_vec.end(),
-			  bind2nd(contains_functor(), "%"));
+			  bind(contains<char>, _1, '%'));
 	units_vec.erase(ret, units_vec.end());
 	string const units = getStringFromVector(units_vec, "|");
 

@@ -241,7 +241,7 @@ void InsetFloat::read(Buffer const & buf, LyXLex & lex)
 
 void InsetFloat::validate(LaTeXFeatures & features) const
 {
-	if (contains(params_.placement, "H")) {
+	if (contains(params_.placement, 'H')) {
 		features.require("float");
 	}
 
@@ -356,7 +356,7 @@ int InsetFloat::docbook(Buffer const & buf, ostream & os,
 bool InsetFloat::insetAllowed(InsetOld::Code code) const
 {
 	return code != InsetOld::FLOAT_CODE
- 	    && code != InsetOld::FOOT_CODE 
+	    && code != InsetOld::FOOT_CODE
 	    && code != InsetOld::MARGIN_CODE;
 }
 

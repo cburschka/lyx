@@ -1,3 +1,7 @@
+2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* text.C (parse_box): "\\" -> '\\' in calls to contains.
+
 2004-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* text.C: reorder the using statements.

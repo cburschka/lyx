@@ -40,20 +40,23 @@
 #include "vspace.h"
 
 #include "support/tostr.h"
-#include "support/lstrings.h" // contains_functor, getStringFromVector
+#include "support/lstrings.h" // contains, getStringFromVector
 #include "support/filetools.h" // LibFileSearch
 
 #include "lyx_xpm.h"
 
+#include <boost/bind.hpp>
+
 #include <iomanip>
 
 using lyx::support::bformat;
-using lyx::support::contains_functor;
+using lyx::support::contains;
 using lyx::support::getStringFromVector;
 using lyx::support::getVectorFromString;
 using lyx::support::LibFileSearch;
 
-using std::bind2nd;
+using boost::bind;
+
 using std::endl;
 using std::string;
 using std::vector;
@@ -169,7 +172,7 @@ void FormDocument::build()
 	vector<string>::iterator ret =
 		std::remove_if(units_vec.begin(),
 			       units_vec.end(),
-			       bind2nd(contains_functor(), "%"));
+			       bind(contains<char>, _1, '%'));
 	units_vec.erase(ret, units_vec.end());
 
 	string const units = getStringFromVector(units_vec, "|");
@@ -759,7 +762,7 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 			fl_get_browser_line(branch_->browser_all_branches, i);
 
 		Branch * branch = branchlist_.find(current_branch);
-		
+
 		if (branch && branch->setSelected(selected))
 			rebuild_selected_branches_browser();
 

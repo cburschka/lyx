@@ -1,10 +1,17 @@
+2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lstrings.h (contains_functor): delete
+	(contains): change into template, simplify
+
+	* lstrings.C (contains): remove both functions
+
 2004-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyxalgo.h (eliminate_duplicates): reimplement with sort and the
 	unique-erase idom.
 
 	* lstrings.h (contains_functor): inherit from
-	std::binary_function, remove typedefs. 
+	std::binary_function, remove typedefs.
 
 2004-01-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
 

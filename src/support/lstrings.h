@@ -97,22 +97,11 @@ bool suffixIs(std::string const &, char);
 bool suffixIs(std::string const &, std::string const &);
 
 ///
-bool contains(std::string const & a, std::string const & b);
-
-///
-bool contains(std::string const & a, char b);
-
-/// This should probably we rewritten to be more general.
-struct contains_functor
-	: public std::binary_function<std::string, std::string, bool>
+template <typename B>
+bool contains(std::string const & a, B b)
 {
-	bool operator()(std::string const & haystack,
-			std::string const & needle) const
-	{
-		return contains(haystack, needle);
-	}
-};
-
+	return a.find(b) != std::string::npos;
+}
 
 ///
 bool containsOnly(std::string const &, std::string const &);

@@ -134,7 +134,7 @@ void RCS::scanMaster()
 			// nothing
 		} else if (contains(token, "locks")) {
 			// get locker here
-			if (contains(token, ";")) {
+			if (contains(token, ';')) {
 				locker_ = "Unlocked";
 				vcstatus = UNLOCKED;
 				continue;
@@ -153,7 +153,7 @@ void RCS::scanMaster()
 					vcstatus = LOCKED;
 					break;
 				}
-			} while (!contains(tmpt, ";"));
+			} while (!contains(tmpt, ';'));
 
 		} else if (token == "comment") {
 			// we don't need to read any further than this.

@@ -372,7 +372,7 @@ string const parseBibTeX(string data, string const & findkey)
 		// the \n and in the second we replace it
 		// with a space
 		if (!dummy.empty()) {
-			if (!contains(dummy, "="))
+			if (!contains(dummy, '='))
 				data_ += ' ' + dummy;
 			else
 				data_ += dummy;

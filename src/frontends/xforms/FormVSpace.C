@@ -33,11 +33,14 @@
 
 #include "lyx_forms.h"
 
-using lyx::support::contains_functor;
+#include <boost/bind.hpp>
+
+using lyx::support::contains;
 using lyx::support::getStringFromVector;
 using lyx::support::rtrim;
 
-using std::bind2nd;
+using boost::bind;
+
 using std::remove_if;
 
 using std::vector;
@@ -196,7 +199,7 @@ void FormVSpace::build()
 	vector<string> units_vec = getLatexUnits();
 	vector<string>::iterator del =
 		remove_if(units_vec.begin(), units_vec.end(),
-			  bind2nd(contains_functor(), "%"));
+			  bind(contains<char>, _1, '%'));
 	units_vec.erase(del, units_vec.end());
 
 	string const units = getStringFromVector(units_vec, "|");

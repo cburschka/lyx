@@ -1,7 +1,11 @@
+2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* vc-backend.C (scanMaster): ";" -> ';'
+
 2004-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyxtextclasslist.C (less_textclass_avail_desc): inherit from
-	std::binary_function 
+	std::binary_function
 
 	* lyxtextclass.C (compare_name): rename to...
 	(LayoutNamesEqual): ...this
@@ -24,7 +28,7 @@
 	(getConverter): use it, and make function const
 	(getNumber): use it, and make function const
 	(add): use it
-	(erase): use it: 
+	(erase): use it:
 
 	* bufferlist.C: add using boost::bind
 

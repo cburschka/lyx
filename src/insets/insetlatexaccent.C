@@ -68,7 +68,7 @@ void InsetLatexAccent::checkContents()
 	// REMOVE IN 0.13
 	// Dirty Hack for backward compability. remove in 0.13 (Lgb)
 	contents = trim(contents);
-	if (!contains(contents, "{") && !contains(contents, "}")) {
+	if (!contains(contents, '{') && !contains(contents, '}')) {
 		if (contents.length() == 2) {
 			string tmp;
 			tmp += contents[0];

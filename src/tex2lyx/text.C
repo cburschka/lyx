@@ -445,7 +445,7 @@ void parse_box(Parser & p, ostream & os, unsigned flags, bool outer,
 	string width_unit;
 	string const latex_width = p.verbatim_item();
 	translate_len(latex_width, width_value, width_unit);
-	if (contains(width_unit, "\\") || contains(height_unit, "\\")) {
+	if (contains(width_unit, '\\') || contains(height_unit, '\\')) {
 		// LyX can't handle length variables
 		ostringstream ss;
 		if (use_parbox)

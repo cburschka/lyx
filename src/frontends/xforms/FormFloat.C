@@ -160,13 +160,13 @@ void FormFloat::update()
 	string placement(controller().params().placement);
 	bool const wide = controller().params().wide;
 
-	bool const here_definitely = contains(placement, "H");
+	bool const here_definitely = contains(placement, 'H');
 
-	bool const top    = contains(placement, "t");
-	bool const bottom = contains(placement, "b");
-	bool const page   = contains(placement, "p");
-	bool const here   = contains(placement, "h");
-	bool const force  = contains(placement, "!");
+	bool const top    = contains(placement, 't');
+	bool const bottom = contains(placement, 'b');
+	bool const page   = contains(placement, 'p');
+	bool const here   = contains(placement, 'h');
+	bool const force  = contains(placement, '!');
 	bool const alternatives = top || bottom || page || (here && !wide);
 
 	if (alternatives) {

@@ -73,19 +73,19 @@ void GFloat::update()
 
 	string placement(controller().params().placement);
 
-	if (contains(placement, "H")) {
+	if (contains(placement, 'H')) {
 		forcehere = true;
 	} else {
-		if (contains(placement, "t")) {
+		if (contains(placement, 't')) {
 			top = true;
 		}
-		if (contains(placement, "b")) {
+		if (contains(placement, 'b')) {
 			bottom = true;
 		}
-		if (contains(placement, "p")) {
+		if (contains(placement, 'p')) {
 			page = true;
 		}
-		if (contains(placement, "h")) {
+		if (contains(placement, 'h')) {
 			here = true;
 		}
 	}

@@ -1,3 +1,10 @@
+2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* insetlatexaccent.C (checkContents): "c" -> 'c' in calls to contains
+
+	* insetfloat.C (validate): "H" -> 'H' in call to contains
+
+	* insetcite.C (getBasicLabel): "," -> ',' in calls to contains
 
 2004-01-30  André Pönitz  <poenitz@gmx.net>
 	* inset.[Ch]:
