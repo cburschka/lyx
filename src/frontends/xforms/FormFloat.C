@@ -130,13 +130,24 @@ void FormFloat::update()
 	fl_set_button(dialog_->check_wide, controller().params().wide);
 	setEnabled(dialog_->check_top, !def_placement);
 	setEnabled(dialog_->check_page, !def_placement);
-	setEnabled(dialog_->check_force, !def_placement);
+	setEnabled(dialog_->check_force, top || bottom || page || here);
 }
 
 
 ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 {
 	bool const def_place = fl_get_button(dialog_->check_default);
+	bool const wide_float = fl_get_button(dialog_->check_wide);
+	// with wide floats, h[ere] is not allowed
+	// b[ottom] is allowed (only) for figure* in multicolumn, don't
+	// disallow it therefore
+	bool const wide_options = (fl_get_button(dialog_->check_top)
+					|| fl_get_button(dialog_->check_bottom)
+					|| fl_get_button(dialog_->check_page));
+	// The !-option is only allowed together with h, t, b, or p
+	// We have to take this into account
+	bool const standard_options = (wide_options || fl_get_button(dialog_->check_here));
+	
 	if (ob == dialog_->check_default) {
 		if (def_place) {
 			fl_set_button(dialog_->check_top, false);
@@ -149,9 +160,22 @@ ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 		setEnabled(dialog_->check_top, !def_place);
 		setEnabled(dialog_->check_bottom, !def_place);
 		setEnabled(dialog_->check_page, !def_place);
-		setEnabled(dialog_->check_here, !def_place);
-		setEnabled(dialog_->check_force, !def_place);
-		setEnabled(dialog_->check_here_definitely, !def_place);
+		setEnabled(dialog_->check_here, !def_place && !wide_float);
+		setEnabled(dialog_->check_force, !def_place && standard_options);
+		setEnabled(dialog_->check_here_definitely, !def_place && !wide_float);
+
+	} else if (ob == dialog_->check_wide) {
+		if (wide_float) {
+			fl_set_button(dialog_->check_here_definitely, false);
+			fl_set_button(dialog_->check_here, false);
+			if (!wide_options) {
+				fl_set_button(dialog_->check_force, false);
+				setEnabled(dialog_->check_force, false);
+			}
+		}
+		setEnabled(dialog_->check_here, !def_place && !wide_float);
+		setEnabled(dialog_->check_force, !def_place && wide_options);
+		setEnabled(dialog_->check_here_definitely, !def_place && !wide_float);
 
 	} else if (ob == dialog_->check_here_definitely) {
 		if (fl_get_button(dialog_->check_here_definitely)) {
@@ -160,27 +184,17 @@ ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
 			fl_set_button(dialog_->check_page,   false);
 			fl_set_button(dialog_->check_here,   false);
 			fl_set_button(dialog_->check_force,   false);
+			setEnabled(dialog_->check_force, false);
 		}
-	} else {
-		if (fl_get_button(dialog_->check_here_definitely)) {
-			fl_set_button(dialog_->check_here_definitely, false);
-		}
-	}
 
-	if (ob == dialog_->check_wide) {
-		if (fl_get_button(dialog_->check_wide)) {
+	} else if (ob == dialog_->check_here || ob == dialog_->check_top
+		|| ob == dialog_->check_bottom || ob == dialog_->check_page) {
+		if (!standard_options)
+			fl_set_button(dialog_->check_force, false);
+		else
 			fl_set_button(dialog_->check_here_definitely, false);
-			setEnabled(dialog_->check_here_definitely, false);
-			fl_set_button(dialog_->check_here, false);
-			setEnabled(dialog_->check_here, false);
-			fl_set_button(dialog_->check_bottom, false);
-			setEnabled(dialog_->check_bottom, false);
-		
-		} else {
-			setEnabled(dialog_->check_here_definitely, true);
-			setEnabled(dialog_->check_here, true);
-			setEnabled(dialog_->check_bottom, true);
-		}
+		setEnabled(dialog_->check_force, standard_options);
+
 	}
 
 	return ButtonPolicy::SMI_VALID;
