@@ -22,11 +22,6 @@
 #include "debug.h"
 
 using std::make_pair;
-using std::vector;
-using std::endl;
-using std::hex;
-using std::dec;
-
 
 
 int kb_sequence::addkey(LyXKeySymPtr key,
