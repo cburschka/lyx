@@ -1,5 +1,8 @@
 2000-10-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/minibuffer.C (peek_event): retun 1 when there has been a
+	mouseclick in the minibuffer.
+
 	* NEWS: updated.
 
 2000-10-17  John Levon  <moz@compsoc.man.ac.uk>
