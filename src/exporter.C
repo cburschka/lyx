@@ -185,7 +185,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 	else if (backend_format == format) {
 		runparams.nice = true;
 		buffer->makeLaTeXFile(filename, string(), runparams);
-	} else if (contains(buffer->filePath(), ' ')) {
+	} else if (!lyxrc.tex_allows_spaces 
+		   && contains(buffer->filePath(), ' ')) {
 		Alert::error(_("File name error"),
 			   _("The directory path to the document cannot contain spaces."));
 		return false;

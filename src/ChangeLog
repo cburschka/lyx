@@ -1,3 +1,14 @@
+2005-03-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxrc.C (setDefaults, read, output, getDescription): add support
+	for tex_allows_spaces.
+
+	* exporter.C (Export): allows files in directory containing spaces
+	if tex_allows_spaces is true.
+
+	* buffer.C (makeLaTeXFile): if the document path contains spaces,
+	output it in double quotes.
+
 2005-03-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* rowpainter.C: use default text height for drawing change tracker

@@ -123,6 +123,7 @@ public:
 		RC_SPELL_COMMAND,
 		RC_TEMPDIRPATH,
 		RC_TEMPLATEPATH,
+		RC_TEX_ALLOWS_SPACES,
 		RC_UIFILE,
 		RC_USER_EMAIL,
 		RC_USER_NAME,
@@ -377,6 +378,8 @@ public:
 	std::string user_email;
 	///
 	bool cygwin_path_fix;
+	/// True if the TeX engine can handle file names containing spaces
+	bool tex_allows_spaces;
 	/** Prepend paths to the PATH environment variable.
 	 *  The string is input, stored and output in native format.
 	 */

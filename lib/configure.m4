@@ -502,8 +502,8 @@ EOF
 	 fi ;;
     esac
   done > chklayouts.tex
+  ${LATEX} wrap_chkconfig.ltx 2>/dev/null | grep '^\+'
 changequote([,])dnl
-  [eval] ${LATEX} wrap_chkconfig.ltx 2>/dev/null | grep '^\+'
   [eval] `cat chkconfig.vars | sed 's/-/_/g'`
 changequote(,)dnl
   test -n "${rmlink}" && rm -f chkconfig.ltx
@@ -527,6 +527,24 @@ echo "creating doc/LaTeXConfig.lyx"
 echo "s/@chk_linuxdoc@/$chk_linuxdoc/g" >> chkconfig.sed
 echo "s/@chk_docbook@/$chk_docbook/g" >> chkconfig.sed
 sed -f chkconfig.sed "${srcdir}"/doc/LaTeXConfig.lyx.in >doc/LaTeXConfig.lyx
+
+### Let's check whether spaces are allowed in TeX file names
+MSG_CHECKING(whether TeX allows spaces in file names)
+if test ${lyx_check_config} = no ; then
+  tex_allows_spaces=false
+else
+  fname="a b"
+  rm -f "$fname".tex
+  echo "\\message{working^^J}" >"$fname".tex
+  if ${LATEX} "$fname" </dev/null | grep 'working' >/dev/null ; then
+    MSG_RESULT(yes)
+    tex_allows_spaces=true
+  else
+    MSG_RESULT(no)
+    tex_allows_spaces=false
+  fi
+  rm -r "$fname".*
+fi
 
 echo "creating $outfile"
 cat >$outfile <<EOF
@@ -660,6 +678,7 @@ cat >>$outfile <<EOF
 
 $rc_entries
 \\font_encoding "$chk_fontenc"
+\\tex_allows_spaces $tex_allows_spaces
 EOF
 
 if [ "x$use_cygwin_path_fix" != "x" ]

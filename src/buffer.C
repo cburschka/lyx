@@ -857,6 +857,8 @@ void Buffer::makeLaTeXFile(ostream & os,
 		if (!original_path.empty()) {
 			string inputpath = os::external_path(original_path);
 			subst(inputpath, "~", "\\string~");
+			if (inputpath.find(' ') != string::npos)
+				inputpath = '"' + inputpath + '"';
 			os << "\\makeatletter\n"
 			    << "\\def\\input@path{{"
 			    << inputpath << "/}}\n"
