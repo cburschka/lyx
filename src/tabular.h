@@ -374,6 +374,8 @@ public:
     InsetTabular * owner() const { return owner_; }
     ///
     void Validate(LaTeXFeatures &) const;
+    ///
+    mutable int cur_cell;
 
 private: //////////////////////////////////////////////////////////////////
     ///

@@ -1857,27 +1857,25 @@ int InsetTabular::GetMaxWidthOfCell(Painter &, int cell) const
 int InsetTabular::getMaxWidth(Painter & pain,
 			      UpdatableInset const * inset) const
 {
-    typedef std::map<UpdatableInset const *, int> Cache;
-    static Cache cache;
-
-    int cell = -1;
-    Cache::const_iterator ci = cache.find(inset);
-    if (ci != cache.end()) {
-        cell = (*ci).second;
-        if (tabular->GetCellInset(cell) != inset) {
-                cell = -1;
-        }
+    int cell = tabular->cur_cell;
+    if (tabular->GetCellInset(cell) != inset) {
+	cell = actcell;
+	if (tabular->GetCellInset(cell) != inset) {
+	    lyxerr << "Actcell not equal to actual cell!" << std::endl;
+	    cell = -1;
+	}
     }
-    
+	
     int const n = tabular->GetNumberOfCells();
+
     if (cell == -1) {
-        cell = 0;
-        for (; cell < n; ++cell) {
-            if (tabular->GetCellInset(cell) == inset)
-                break;
-        }
-        cache[inset] = cell;
+	cell = 0;
+	for (; cell < n; ++cell) {
+	    if (tabular->GetCellInset(cell) == inset)
+		break;
+	}
     }
+
 
     if (cell >= n)
 	return -1;

@@ -1,3 +1,12 @@
+2001-06-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/insettabular.C (getMaxWidth): do the speedup in a
+	different way, remove dead code
+
+	* src/tabular.C (GetCellInset): store the last cell checked (gotten)
+
+	* src/tabular.h: new member cur_cell, used to cache cell values.
+
 2001-06-24  The LyX Project  <jug@sad.it>
 
 	* src/lyxlex_pimpl.C (compare_tags): use compare_ascii_no_case instead
