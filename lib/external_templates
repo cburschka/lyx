@@ -25,7 +25,7 @@ Template RasterImage
 		Product "\\includegraphics{$$Basename.eps}"
 		UpdateCommand "convert $$Parameters $$FName $$Basename.eps"
 		UpdateResult "$$Basename.eps"
-		Requirement "graphics"
+		Requirement "graphicx"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$Basename.asc\")"
@@ -70,7 +70,7 @@ Template XFig
 		Product "\\begin{picture}(0,0)\\includegraphics{$$Basename.eps}\\end{picture}\\input{$$Basename.pstex_t}"
 		UpdateCommand "python $$Sysdir/scripts/fig2pstex.py $$FName $$Parameters"
 		UpdateResult "$$Basename.eps"
-		Requirement "graphics"	
+		Requirement "graphicx"	
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$Basename.asc\")"

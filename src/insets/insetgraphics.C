@@ -128,7 +128,7 @@ string const RemoveExtension(string const & filename)
 
 namespace {
 
-string const unique_id()
+string const uniqueID()
 {
 	static unsigned int seed = 1000;
 
@@ -143,7 +143,7 @@ string const unique_id()
 
 
 InsetGraphics::InsetGraphics()
-	: graphic_label(unique_id()),
+	: graphic_label(uniqueID()),
 	  cached_status_(grfx::ErrorUnknown), cache_filled_(false), old_asc(0)
 
 {}
@@ -153,7 +153,7 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig,
 			     string const & filepath,
 			     bool same_id)
 	: Inset(ig, same_id),
-	  graphic_label(unique_id()),
+	  graphic_label(uniqueID()),
 	  cached_status_(grfx::ErrorUnknown), cache_filled_(false), old_asc(0)
 {
 	setParams(ig.params(), filepath);
