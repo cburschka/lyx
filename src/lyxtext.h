@@ -443,8 +443,8 @@ private:
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
 	void rowBreakPoint(ParagraphList::iterator pit, Row & row) const;
-	/// sets row.witdh to the minimum space a row needs on the screen in pixel
-	void fill(ParagraphList::iterator pit, Row & row, int workwidth) const;
+	/// sets row.width to the minimum space a row needs on the screen in pixel
+	void setRowWidth(ParagraphList::iterator pit, Row & row) const;
 	/// the minimum space a manual label needs on the screen in pixels
 	int labelFill(ParagraphList::iterator pit, Row const & row) const;
 	/// FIXME

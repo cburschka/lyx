@@ -510,16 +510,13 @@ void RowPainter::paintAppendix()
 	if (!pit_->params().appendix())
 		return;
 
-	// FIXME: can be just width_ ?
-	int const ww = width_;
-
 	int y = yo_;
 
 	if (pit_->params().startOfAppendix())
 		y += 2 * defaultRowHeight();
 
 	pain_.line(1, y, 1, yo_ + row_.height(), LColor::appendix);
-	pain_.line(ww - 2, y, ww - 2, yo_ + row_.height(), LColor::appendix);
+	pain_.line(width_ - 2, y, width_ - 2, yo_ + row_.height(), LColor::appendix);
 }
 
 
@@ -619,8 +616,6 @@ void RowPainter::paintFirst()
 		}
 	}
 
-	int const ww = bv_.workWidth();
-
 	bool const is_rtl = text_.isRTL(*pit_);
 	bool const is_seq = isFirstInSequence(pit_, text_.paragraphs());
 	//lyxerr << "paintFirst: " << pit_->id() << " is_seq: " << is_seq << std::endl;
@@ -653,7 +648,7 @@ void RowPainter::paintFirst()
 						+ int(layout->parsep) * defaultRowHeight();
 
 					if (is_rtl) {
-						x = ww - leftMargin() -
+						x = width_ - leftMargin() -
 							font_metrics::width(str, font);
 					}
 
@@ -664,7 +659,7 @@ void RowPainter::paintFirst()
 				}
 			} else {
 				if (is_rtl) {
-					x = ww - leftMargin()
+					x = width_ - leftMargin()
 						+ font_metrics::width(layout->labelsep, font);
 				} else {
 					x = x_ - font_metrics::width(layout->labelsep, font)
@@ -698,10 +693,10 @@ void RowPainter::paintFirst()
 			double x = x_;
 			if (layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 				x = ((is_rtl ? leftMargin() : x_)
-					 + ww - text_.rightMargin(*pit_)) / 2;
+					 + width_ - text_.rightMargin(*pit_)) / 2;
 				x -= font_metrics::width(str, font) / 2;
 			} else if (is_rtl) {
-				x = ww - leftMargin() -
+				x = width_ - leftMargin() -
 					font_metrics::width(str, font);
 			}
 			pain_.text(int(x),
@@ -714,7 +709,6 @@ void RowPainter::paintFirst()
 
 void RowPainter::paintLast()
 {
-	int const ww = bv_.workWidth();
 	bool const is_rtl = text_.isRTL(*pit_);
 	int const endlabel = getEndLabel(pit_, text_.paragraphs());
 
@@ -725,10 +719,10 @@ void RowPainter::paintLast()
 		LyXFont const font = getLabelFont();
 		int const size = int(0.75 * font_metrics::maxAscent(font));
 		int const y = yo_ + row_.baseline() - size;
-		int x = is_rtl ? NEST_MARGIN + CHANGEBAR_MARGIN: ww - size;
+		int x = is_rtl ? NEST_MARGIN + CHANGEBAR_MARGIN: width_ - size;
 
-		if (row_.fill() <= size)
-			x += (size - row_.fill() + 1) * (is_rtl ? -1 : 1);
+		if (width_ - row_.width() <= size)
+			x += (size - width_ + row_.width() + 1) * (is_rtl ? -1 : 1);
 
 		if (endlabel == END_LABEL_BOX)
 			pain_.rectangle(x, y, size, size, LColor::eolmarker);
@@ -742,7 +736,7 @@ void RowPainter::paintLast()
 		string const & str = pit_->layout()->endlabelstring();
 		double const x = is_rtl ?
 			x_ - font_metrics::width(str, font)
-			: ww - text_.rightMargin(*pit_) - row_.fill();
+			: - text_.rightMargin(*pit_) - row_.width();
 		pain_.text(int(x), yo_ + row_.baseline(), str, font);
 		break;
 	}

@@ -390,10 +390,6 @@ public:
 	///
 	MathHullInset * formula() const;
 	/// current offset in the current cell
-	///
-	bool script(bool);
-	///
-	bool interpret(char);
 	/// interpret name a name of a macro
 	void macroModeClose();
 	/// are we currently typing the name of a macro?
@@ -446,21 +442,17 @@ public:
 	///
 	std::string getPossibleLabel();
 
-private:
 	/// moves position somehow up or down
 	bool goUpDown(bool up);
 	/// moves position closest to (x, y) in given box
 	bool bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh);
 	/// moves position closest to (x, y) in current cell
 	void bruteFind2(int x, int y);
-	/// are we in a nucleus of a script inset?
-	bool inNucleus();
 
 	/// the name of the macro we are currently inputting
 	std::string macroName();
 	/// where in the curent cell does the macro name start?
 	int macroNamePos();
-public:
 	/// can we enter the inset?
 	bool openable(MathAtom const &) const;
 };

@@ -103,6 +103,11 @@ protected:
 	///
 	void handleFont2(LCursor & cur, std::string const & arg);
 
+	///
+	bool interpret(LCursor & cur, char c);
+	///
+	bool script(LCursor & cur, bool);
+
 
 private:
 	/// lfun handler

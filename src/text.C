@@ -571,8 +571,7 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 }
 
 
-// returns the minimum space a row needs on the screen in pixel
-void LyXText::fill(ParagraphList::iterator pit, Row & row, int workwidth) const
+void LyXText::setRowWidth(ParagraphList::iterator pit, Row & row) const
 {
 	// get the pure distance
 	pos_type const end = row.endpos();
@@ -611,9 +610,7 @@ void LyXText::fill(ParagraphList::iterator pit, Row & row, int workwidth) const
 		w = max(w, labelEnd(pit));
 	}
 
-	int const fill = workwidth - w - rightMargin(*pit);
-	row.fill(fill);
-	row.width(workwidth - fill);
+	row.width(w + rightMargin(*pit));
 }
 
 
@@ -1026,7 +1023,7 @@ void LyXText::charInserted()
 
 void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 {
-	double w = row.fill();
+	double w = textWidth() - row.width();
 	double fill_hfill = 0;
 	double fill_label_hfill = 0;
 	double fill_separator = 0;
@@ -1596,14 +1593,14 @@ void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 	do {
 		Row row(z);
 		rowBreakPoint(pit, row);
-		z = row.endpos();
-		fill(pit, row, textwidth_);
+		setRowWidth(pit, row);
 		prepareToPrint(pit, row);
 		setHeightOfRow(pit, row);
 		row.y_offset(pit->height);
 		pit->rows.push_back(row);
 		pit->width = std::max(pit->width, row.width());
 		pit->height += row.height();
+		z = row.endpos();
 	} while (z < pit->size());
 
 	height += pit->height;

@@ -13,15 +13,19 @@
 #include "math_nestinset.h"
 
 #include "math_arrayinset.h"
+#include "math_braceinset.h"
+#include "math_commentinset.h"
 #include "math_data.h"
 #include "math_deliminset.h"
 #include "math_factory.h"
 #include "math_hullinset.h"
 #include "math_mathmlstream.h"
 #include "math_parser.h"
+#include "math_scriptinset.h"
 #include "math_spaceinset.h"
 #include "math_support.h"
 #include "math_mboxinset.h"
+#include "math_unknowninset.h"
 
 #include "BufferView.h"
 #include "bufferview_funcs.h"
@@ -331,7 +335,7 @@ void MathNestInset::handleFont2(LCursor & cur, string const & arg)
 void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	lyxerr << "MathNestInset: request: " << cmd << std::endl;
-	CursorSlice sl = cur.current();
+	//CursorSlice sl = cur.current();
 
 	switch (cmd.action) {
 
@@ -563,7 +567,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			cur.insert(cmd.argument);
 			break;
 		}
-		if (!cur.interpret(cmd.argument[0]))
+		if (!interpret(cur, cmd.argument[0]))
 			cur.dispatched(FINISHED_RIGHT);
 		break;
 
@@ -611,7 +615,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 			// do superscript if LyX handles
 			// deadkeys
 			//recordUndo(cur, Undo::ATOMIC);
-			cur.script(true);
+			script(cur, true);
 		}
 		break;
 
@@ -676,7 +680,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		cur.posLeft();
 		cur.pushLeft(cur.nextInset());
 #else
-		if (cur.currentMode() == InsetBase::TEXT_MODE)
+		if (currentMode() == InsetBase::TEXT_MODE)
 			cur.niceInsert(MathAtom(new MathHullInset("simple")));
 		else
 			handleFont(cur, cmd.argument, "textrm");
@@ -739,7 +743,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_INSET_ERT:
 		// interpret this as if a backslash was typed
 		//recordUndo(cur, Undo::ATOMIC);
-		cur.interpret('\\');
+		interpret(cur, '\\');
 		break;
 
 // FIXME: We probably should swap parts of "math-insert" and "self-insert"
@@ -913,4 +917,187 @@ void MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest const & cmd)
 	cur.bv().cursor().cursor_ = cur.cursor_;
 	cur.bv().cursor().selection() = true;
 	return;
+}
+
+
+bool MathNestInset::interpret(LCursor & cur, char c)
+{
+	//lyxerr << "interpret 2: '" << c << "'" << endl;
+	cur.clearTargetX();
+	if (cur.inMacroArgMode()) {
+		cur.posLeft();
+		cur.plainErase();
+#warning FIXME
+#if 0
+		int n = c - '0';
+		MathMacroTemplate const * p = formula()->asMacroTemplate();
+		if (p && 1 <= n && n <= p->numargs())
+			cur.insert(MathAtom(new MathMacroArgument(c - '0')));
+		else {
+			cur.insert(createMathInset("#"));
+			interpret(cur, c); // try again
+		}
+#endif
+		return true;
+	}
+
+	// handle macroMode
+	if (cur.inMacroMode()) {
+		string name = cur.macroName();
+		//lyxerr << "interpret name: '" << name << "'" << endl;
+
+		if (isalpha(c)) {
+			cur.activeMacro()->setName(cur.activeMacro()->name() + c);
+			return true;
+		}
+
+		// handle 'special char' macros
+		if (name == "\\") {
+			// remove the '\\'
+			cur.backspace();
+			if (c == '\\') {
+				if (currentMode() == MathInset::TEXT_MODE)
+					cur.niceInsert(createMathInset("textbackslash"));
+				else
+					cur.niceInsert(createMathInset("backslash"));
+			} else if (c == '{') {
+				cur.niceInsert(MathAtom(new MathBraceInset));
+			} else {
+				cur.niceInsert(createMathInset(string(1, c)));
+			}
+			return true;
+		}
+
+		// leave macro mode and try again if necessary
+		cur.macroModeClose();
+		if (c == '{')
+			cur.niceInsert(MathAtom(new MathBraceInset));
+		else if (c != ' ')
+			interpret(cur, c);
+		return true;
+	}
+
+	// This is annoying as one has to press <space> far too often.
+	// Disable it.
+
+#if 0
+		// leave autocorrect mode if necessary
+		if (autocorrect() && c == ' ') {
+			autocorrect() = false;
+			return true;
+		}
+#endif
+
+	// just clear selection on pressing the space bar
+	if (cur.selection() && c == ' ') {
+		cur.selection() = false;
+		return true;
+	}
+
+	cur.selClearOrDel();
+
+	if (c == '\\') {
+		//lyxerr << "starting with macro" << endl;
+		cur.insert(MathAtom(new MathUnknownInset("\\", false)));
+		return true;
+	}
+
+	if (c == '\n') {
+		if (currentMode() == MathInset::TEXT_MODE)
+			cur.insert(c);
+		return true;
+	}
+
+	if (c == ' ') {
+		if (currentMode() == MathInset::TEXT_MODE) {
+			// insert spaces in text mode,
+			// but suppress direct insertion of two spaces in a row
+			// the still allows typing  '<space>a<space>' and deleting the 'a', but
+			// it is better than nothing...
+			if (!cur.pos() != 0 || cur.prevAtom()->getChar() != ' ')
+				cur.insert(c);
+			return true;
+		}
+		if (cur.pos() != 0 && cur.prevAtom()->asSpaceInset()) {
+			cur.prevAtom().nucleus()->asSpaceInset()->incSpace();
+			return true;
+		}
+		if (cur.popRight())
+			return true;
+		// if are at the very end, leave the formula
+		return cur.pos() != cur.lastpos();
+	}
+
+	if (c == '_') {
+		script(cur, false);
+		return true;
+	}
+
+	if (c == '^') {
+		script(cur, true);
+		return true;
+	}
+
+	if (c == '{' || c == '}' || c == '#' || c == '&' || c == '$') {
+		cur.niceInsert(createMathInset(string(1, c)));
+		return true;
+	}
+
+	if (c == '%') {
+		cur.niceInsert(MathAtom(new MathCommentInset));
+		return true;
+	}
+
+	// try auto-correction
+	//if (autocorrect() && hasPrevAtom() && math_autocorrect(prevAtom(), c))
+	//	return true;
+
+	// no special circumstances, so insert the character without any fuss
+	cur.insert(c);
+	cur.autocorrect() = true;
+	return true;
+}
+
+
+bool MathNestInset::script(LCursor & cur, bool up)
+{
+	// Hack to get \\^ and \\_ working
+	lyxerr << "handling script: up: " << up << endl;
+	if (cur.inMacroMode() && cur.macroName() == "\\") {
+		if (up)
+			cur.niceInsert(createMathInset("mathcircumflex"));
+		else
+			interpret(cur, '_');
+		return true;
+	}
+
+	cur.macroModeClose();
+	string safe = cur.grabAndEraseSelection();
+	if (asScriptInset() && cur.idx() == 2) {
+		// we are in a nucleus of a script inset, move to _our_ script
+		asScriptInset()->ensure(up);
+		cur.idx() = up;
+		cur.pos() = 0;
+	} else if (cur.pos() != 0 && cur.prevAtom()->asScriptInset()) {
+		--cur.pos();
+		cur.nextAtom().nucleus()->asScriptInset()->ensure(up);
+		cur.push(cur.nextInset());
+		cur.idx() = up;
+		cur.pos() = cur.lastpos();
+	} else if (cur.pos() != 0) {
+		--cur.pos();
+		cur.cell()[cur.pos()] = MathAtom(new MathScriptInset(cur.nextAtom(), up));
+		cur.push(cur.nextInset());
+		cur.idx() = up;
+		cur.pos() = 0;
+	} else {
+		cur.plainInsert(MathAtom(new MathScriptInset(up)));
+		--cur.pos();
+		cur.nextAtom().nucleus()->asScriptInset()->ensure(up);
+		cur.push(cur.nextInset());
+		cur.idx() = up;
+		cur.pos() = 0;
+	}
+	cur.paste(safe);
+	return true;
 }

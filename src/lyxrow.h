@@ -33,10 +33,6 @@ public:
 	///
 	lyx::pos_type endpos() const;
 	///
-	void fill(int f);
-	///
-	int fill() const;
-	///
 	void height(unsigned int h) { height_ = h; }
 	///
 	unsigned int height() const { return height_; }
@@ -85,9 +81,6 @@ private:
 	lyx::pos_type pos_;
 	/// one behind last pos covered by this row
 	lyx::pos_type end_;
-	/** what is missing to a full row. Can be negative.
-	  Needed for hfills, flushright, block etc. */
-	mutable int fill_;
 	///
 	unsigned int height_;
 	///
