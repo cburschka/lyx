@@ -3,7 +3,7 @@
  * \file QBrowseBox.h
  *
  * Original file taken from klyx 0.10 sources:
- * $Id: QBrowseBox.h,v 1.1 2002/10/09 08:59:02 leuven Exp $
+ * $Id: QBrowseBox.h,v 1.2 2002/10/17 09:51:18 poenitz Exp $
  *
  * \author Kalle Dalheimer ?
  *
@@ -16,7 +16,6 @@
 #include "qgridview.h"
 
 #include <qwidget.h>
-#include <qarray.h>
 
 
 class QString;
@@ -28,45 +27,49 @@ class QBrowseBox : public QGridView
 {
   Q_OBJECT
 public:
-  QBrowseBox( int rows , int cols, QWidget* parent = 0 , const char* name=0 , WFlags f =0  );
+  QBrowseBox(int rows, int cols, QWidget * parent = 0,
+		char const * name = 0, WFlags f = 0);
   ~QBrowseBox();
   
-  void insertItem( const QString& text, int x, int y );
-  void insertItem( const char* text, int x, int y ) { insertItem( QString( text ), x, y ); }
-  void insertItem( QPixmap pixmap, int x, int y );
-  void insertItem( QPixmap pixmap);
-  void removeItem( int x, int y );
+  void insertItem(QString const & text, int x, int y);
+  void insertItem(char const * text, int x, int y);
+  void insertItem(QPixmap pixmap, int x, int y);
+  void insertItem(QPixmap pixmap);
+  void removeItem(int x, int y);
   void clear();
 
-  QString text( int x, int y );
-  QPixmap pixmap( int x, int y);
+  QString text(int x, int y);
+  QPixmap pixmap(int x, int y);
 
-//  int exec( const QPoint& pos );
-//  int exec( int x, int y );
-//  int exec( const QWidget* trigger );
+//  int exec(QPoint const & pos);
+//  int exec(int x, int y);
+//  int exec(QWidget * trigger);
 
-    signals:
+signals:
   void selected(int, int);
     
 protected:
-  virtual void keyPressEvent( QKeyEvent* e );
-  virtual void resizeEvent( QResizeEvent* e );
-  virtual void mouseReleaseEvent( QMouseEvent* e );
-//  virtual void closeEvent( QCloseEvent* e );
-  virtual void mouseMoveEvent( QMouseEvent* e );
-  virtual void paintCell( QPainter *, int, int );
+  virtual void keyPressEvent(QKeyEvent * e);
+  virtual void resizeEvent(QResizeEvent * e);
+  virtual void mouseReleaseEvent(QMouseEvent * e);
+//  virtual void closeEvent(QCloseEvent * e);
+  virtual void mouseMoveEvent(QMouseEvent * e);
+  virtual void paintCell(QPainter *, int x, int y);
 
 private:
-    void moveLeft();
-    void moveRight();
-    void moveUp();
-    void moveDown();
-    
-  int coordsToIndex( int x, int y );
+	// make sure the automatically generated one is not used
+ 	QBrowseBox & operator=(QBrowseBox const &);
 
-  QString* _texts;
-  QPixmap* _pixmaps;
-  QPoint _activecell;
+	void moveLeft();
+	void moveRight();
+	void moveUp();
+	void moveDown();
+    
+  int coordsToIndex(int x, int y);
+
+  QString * texts_;
+  QPixmap* pixmaps_;
+  QPoint activecell_;
     
 };
 
