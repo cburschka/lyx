@@ -609,13 +609,18 @@ void MathCursor::setSize(MathStyles size)
 }
 
 
-void MathCursor::interpret(string const & s)
+void MathCursor::interpret(string const & t)
 {
 	//lyxerr << "interpret: '" << s << "'\n";
 	//lyxerr << "in: " << in_word_set(s) << " \n";
 
-	if (s.empty())
+	if (t.empty())
 		return;
+
+	// temporary glue code
+	string s = t;
+	if (s[0] == '\\')
+		s = s.substr(1);
 
 	if (s[0] == '^' || s[0] == '_') {
 		bool const up = (s[0] == '^');

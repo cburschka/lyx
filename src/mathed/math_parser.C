@@ -561,7 +561,6 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 
 	int  t      = yylex();
 	bool panic  = false;
-	int  brace  = 0;
 	int  limits = 0;
 
 	while (t) {
@@ -573,20 +572,18 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 		if (flags & FLAG_ITEM) {
 			flags &= ~FLAG_ITEM;
 			if (t == LM_TK_OPEN) { 
-				// skip the brace and regard everything to the next matching
+				// skip the brace and collect everything to the next matching
 				// closing brace
 				t = yylex();
-				++brace;
 				flags |= FLAG_BRACE_LAST;
 			} else {
-				// regard only this single token
+				// take only this single token
 				flags |= FLAG_LEAVE;
 			}
 		}
 
 		if ((flags & FLAG_BRACE) && t != LM_TK_OPEN) {
-			error(
-				"Expected {. Maybe you forgot to enclose an argument in {}");
+			error("Expected {. Maybe you forgot to enclose an argument in {}");
 			panic = true;
 			break;
 		}
