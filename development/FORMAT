@@ -1,6 +1,23 @@
 LyX file-format changes
 -----------------------
 
+2004-12-03  José Matos  <jamatos@lyx.org>
+
+       * format up to 238.
+       * The compatibility code to read old latex accents from 0.12.x in
+       InsetLatexAccent::checkContents has been removed.
+       The following translations are done:
+               "\i \x"   -> "\i \x{}"
+               "\i \xy"  -> "\i \x{y}"
+               "\i \x y" -> "\i \x{y}"
+               "\i \x\i" -> "\i \x{\i}"
+               "\i \x\j" -> "\i \x{\j}"
+       x is a latex accent command, y the base character. \, i and j are
+       literal.
+       lyx did these changes already from 0.12.x -> 215, but not lyx2lyx,
+       so formats 215 - 237 can have both versions.
+
+
 2004-10-10  José Matos  <jamatos@lyx.org>
 
 	* format up to 237.

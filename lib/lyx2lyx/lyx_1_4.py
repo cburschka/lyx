@@ -26,6 +26,8 @@ from parser_tools import find_token, find_end_of_inset, get_next_paragraph, \
 from sys import stdin
 from string import replace, split, find, strip, join
 
+from lyx_0_12 import update_latexaccents
+
 ##
 # Remove \color default
 #
@@ -1526,7 +1528,8 @@ def convert(file):
               235 : [convert_paperpackage],
               236 : [convert_bullets, add_begin_header, add_begin_body,
                      normalize_papersize, strip_end_space],
-              237 : [use_x_boolean]}
+              237 : [use_x_boolean],
+              238 : [update_latexaccents]}
 
     chain = table.keys()
     chain.sort()
@@ -1542,7 +1545,8 @@ def convert(file):
 
 
 def revert(file):
-    table = { 236: [use_x_binary],
+    table = { 237: [],
+              236: [use_x_binary],
               235: [denormalize_papersize, remove_begin_body,remove_begin_header,
                     revert_bullets],
               234: [revert_paperpackage],

@@ -236,7 +236,8 @@ def header_update(lines, file):
         i = i + 1
 
 
-def update_latexaccents(body):
+def update_latexaccents(file):
+    body = file.body
     i = 1
     while 1:
         i = find_token(body, '\\i ', i)
@@ -244,6 +245,10 @@ def update_latexaccents(body):
             return
 
         contents = string.strip(body[i][2:])
+
+        if string.find(contents, '{') != -1 and string.find(contents, '}') != -1:
+            i = i + 1
+            continue
 
         if len(contents) == 2:
             contents = contents + '{}'
@@ -274,7 +279,7 @@ def convert(file):
     update_vfill(file.body)
     remove_empty_insets(file.body)
     remove_formula_latex(file.body)
-    update_latexaccents(file.body)
+    update_latexaccents(file)
     file.format = 215
 
 

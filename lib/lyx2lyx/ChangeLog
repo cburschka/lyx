@@ -1,5 +1,12 @@
 2004-12-03  José Matos  <jamatos@lyx.org>
 
+	* LyX.py: format up to 238.
+	* lyx_1_4.py:
+	* lyx_0_12.py (update_latexaccents): consider the cases where the
+	inset is updated.
+
+2004-12-03  José Matos  <jamatos@lyx.org>
+
 	* lyx_1_2.py (update_longtable): Update longtables to table format 3.
 
 2004-12-02  José Matos  <jamatos@lyx.org>
