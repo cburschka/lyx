@@ -2964,8 +2964,9 @@ void LyXText::PrepareToPrint(Row * row, float & x,
 	   if (row->par->GetChar(row->pos) == LyXParagraph::META_INSET
 	       && row->par->GetInset(row->pos)
 	       && row->par->GetInset(row->pos)->display())
-	     align = LYX_ALIGN_CENTER;
-
+		   align = (row->par->GetInset(row->pos)->LyxCode()
+			    == Inset::MATHMACRO_CODE)
+			   ? LYX_ALIGN_BLOCK : LYX_ALIGN_CENTER;
 	   switch (align) {
 	    case LYX_ALIGN_BLOCK:
 	      ns = NumberOfSeparators(row);

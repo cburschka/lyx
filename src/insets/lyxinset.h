@@ -92,7 +92,9 @@ public:
 		///
 		SPECIALCHAR_CODE,
 		///
-		TABULAR_CODE
+		TABULAR_CODE,
+		///
+		MATHMACRO_CODE
 	};
 
 	enum EDITABLE {
