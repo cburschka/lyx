@@ -78,6 +78,7 @@ bool GnomeBase::validate()
 
 void GnomeBase::OKClicked() 
 { 
+	lyxerr[Debug::GUI] << "OKClicked()\n";
 	OKButton(); 
 }
 

@@ -78,6 +78,8 @@ libgnome_la_SOURCES = \
 	FormTabularCreate.h \
 	FormUrl.C \
 	FormUrl.h \
+	FormERT.C \
+	FormERT.h \
 	gnome_helpers.C \
 	gnome_helpers.h \
 	GnomeBase.C \

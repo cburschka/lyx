@@ -1,3 +1,14 @@
+2002-02-10  Michael A. Koziarski  <michael@koziarski.com>
+
+	* FormERT.C
+	* FormERT.h
+	* Dialogs.C
+	* dialogs/FormERT.glade: Implemented FormERT, still seeing the
+	weird crashes
+	* GnomeBase.C: add debug message to help track down the "twice OK"
+	bug
+	* gnomeBC.C: Fix compilation
+
 2002-01-12  Michael A. Koziarski  <michael@koziarski.com>
 
 	* Menubar_pimpl.C

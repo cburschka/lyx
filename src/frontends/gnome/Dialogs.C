@@ -30,11 +30,13 @@
 #include "ControlUrl.h"
 #include "ControlVCLog.h"
 #include "ControlTabularCreate.h"
+#include "ControlERT.h"
 #include "GUI.h"
 
 #include "FormUrl.h"
 #include "FormError.h"
 #include "FormTabularCreate.h"
+#include "FormERT.h"
 /*
 #include "FormBibitem.h"
 #include "FormBibtex.h"
@@ -56,7 +58,7 @@
 #include "FormRef.h"
 #include "FormSearch.h"
 #include "FormTabular.h"
-#include "FormTabularCreate.h"
+#include "FormTabul./arCreate.h"
 #include "FormToc.h"
 #include "FormUrl.h"
 #include "FormMinipage.h"
@@ -71,6 +73,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIUrl<FormUrl, gnomeBC>(*lv, *this));
 	add(new GUIError<FormError, gnomeBC>(*lv, *this));
 	add(new GUITabularCreate<FormTabularCreate, gnomeBC>(*lv, *this));
+	add(new GUIERT<FormERT, gnomeBC>(*lv, *this));
 
 /*	
 	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
