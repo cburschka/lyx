@@ -261,11 +261,10 @@ void LyXText::removeRow(RowList::iterator rit)
 
 
 // remove all following rows of the paragraph of the specified row.
-void LyXText::removeParagraph(RowList::iterator rit)
+void LyXText::removeParagraph(ParagraphList::iterator pit,
+	RowList::iterator rit)
 {
-	ParagraphList::iterator pit = getPar(rit);
 	RowList::iterator end = endRow(pit);
-
 	for (++rit; rit != end; ) {
 		RowList::iterator rit2 = boost::next(rit);
 		removeRow(rit);
@@ -1398,18 +1397,15 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	// get the cursor y position in text
 	int y = 0;
 	RowList::iterator row = getRow(pit, pos, y);
-	RowList::iterator beg = rows().begin();
-
 	RowList::iterator old_row = row;
 	// if we are before the first char of this row and are still in the
 	// same paragraph and there is a previous row then put the cursor on
 	// the end of the previous row
 	cur.iy(y + row->baseline());
-	if (row != beg &&
-	    pos &&
-	    getPar(boost::prior(row)) == getPar(row) &&
-	    pos < pit->size() &&
-	    pit->getChar(pos) == Paragraph::META_INSET) {
+	if (row != beginRow(pit)
+	    && pos
+	    && pos < pit->size()
+	    && pit->getChar(pos) == Paragraph::META_INSET) {
 		InsetOld * ins = pit->getInset(pos);
 		if (ins && (ins->needFullRow() || ins->display())) {
 			--row;
@@ -1704,7 +1700,7 @@ namespace {
 
 		RowList::iterator next = boost::next(row);
 
-		if (next->pos() != cur.pos() || lt.getPar(next) != cur.par())
+		if (next == lt.endRow(cur.par()) || next->pos() != cur.pos())
 			return false;
 
 		if (cur.pos() == cur.par()->size()
@@ -1983,17 +1979,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			removeRow(getRow(old_cursor));
 			// delete old par
 			ownerParagraphs().erase(old_cursor.par());
-
-			/* Breakagain the next par. Needed because of
-			 * the parindent that can occur or dissappear.
-			 * The next row can change its height, if
-			 * there is another layout before */
-			RowList::iterator tmprit = boost::next(prevrow);
-			if (tmprit != rows().end()) {
-				redoParagraph(getPar(tmprit));
-				updateCounters();
-			}
-			setHeightOfRow(getPar(prevrow), prevrow);
 		} else {
 			RowList::iterator nextrow = boost::next(getRow(old_cursor));
 
@@ -2013,15 +1998,6 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			removeRow(getRow(old_cursor));
 			// delete old par
 			ownerParagraphs().erase(old_cursor.par());
-
-			/* Breakagain the next par. Needed because of
-			   the parindent that can occur or dissappear.
-			   The next row can change its height, if
-			   there is another layout before */
-			if (nextrow != rows().end()) {
-				redoParagraph(getPar(nextrow));
-				updateCounters();
-			}
 		}
 
 		// correct cursor y

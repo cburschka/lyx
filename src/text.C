@@ -1391,7 +1391,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 		cursorLeft(bv());
 	}
 
-	removeParagraph(cursorRow());
+	removeParagraph(cursor.par(), cursorRow());
 
 #warning Trouble Point! (Lgb)
 	// When ::breakParagraph is called from within an inset we must
@@ -2101,7 +2101,7 @@ void LyXText::backspace()
 		    && (cursor.par()->layout() == tmppit->layout()
 			|| tmppit->layout() == tclass.defaultLayout())
 		    && cursor.par()->getAlign() == tmppit->getAlign()) {
-			removeParagraph(tmprow);
+			removeParagraph(cursor.par(), tmprow);
 			removeRow(tmprow);
 			mergeParagraph(bv()->buffer()->params,
 				bv()->buffer()->paragraphs, cursor.par());

@@ -397,7 +397,7 @@ private:
 	void removeRow(RowList::iterator rit);
 
 	/// remove all following rows of the paragraph of the specified row.
-	void removeParagraph(RowList::iterator rit);
+	void removeParagraph(ParagraphList::iterator pit, RowList::iterator rit);
 
 	/// insert the specified paragraph behind the specified row
 	void insertParagraph(ParagraphList::iterator pit,
