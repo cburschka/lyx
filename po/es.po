@@ -1,27 +1,23 @@
 # Mensajes en español para LyX.
 # Copyright (C) 1997-1999 LyX Team.
-#
-# Alejandro Aguilar Sierra <asierra@servidor.unam.mx>, 1997.
-# David Suárez de lis <fafefito@usc.es>, 1999, 2000.
-# German Poo Caaman~o <gpoo@ubiobio.cl>, 2001.
-# Alfredo Braunstein <abraunst@ictp.trieste.it>, 2002, 2003.
 # Alejandro Aguilar Sierra <asierra@servidor.unam.mx>, 1997.
 # David Suárez de lis <fafefito@usc.es>, 1999, 2000.
 # German Poo Caaman~o <gpoo@ubiobio.cl>, 2001.
 # Alfredo Braunstein <abraunst@ictp.trieste.it>, 2002, 2003.
 # Eulogio Serradilla Rodríguez <eulogio.sr@terra.es>, 2003, 2004, 2005.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: es\n"
+"Project-Id-Version: es-29\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-30 16:43+0200\n"
-"PO-Revision-Date: 2005-04-01 11:07+0200\n"
+"PO-Revision-Date: 2005-04-04 20:28+0200\n"
 "Last-Translator: Eulogio Serradilla <eulogio.sr@terra.es>\n"
 "Language-Team:  <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.10\n"
 "\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
@@ -42,7 +38,7 @@ msgstr "Cerrar|^["
 #: ../src/frontends/xforms/forms/form_graphics.fd:44
 #: ../src/frontends/xforms/forms/form_tabular.fd:44
 msgid "Tabbed folder"
-msgstr "Carpeta con pestañas"
+msgstr "Carpeta tabulada"
 
 #: ../src/frontends/xforms/forms/form_bibitem.fd:44
 msgid "Key:|#K"
@@ -1287,11 +1283,11 @@ msgstr "Global|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1769
 msgid "Command start:|#s"
-msgstr "Comando de inicio:|#n"
+msgstr "Comienzo del comando:|#o"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1787
 msgid "Command end:|#e"
-msgstr "Comando de fin:|#e"
+msgstr "Fin del comando:|#F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1883
 msgid "All formats:|#l"
@@ -1413,7 +1409,7 @@ msgstr "Adaptar salida"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2616
 msgid "Printer Command and Flags"
-msgstr "Comando de impresora"
+msgstr "Comando de impresora y opciones"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2634
 msgid "Command:"
@@ -2843,7 +2839,7 @@ msgstr "Predeterminado"
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
 msgid "Monochrome"
-msgstr "Monócromo"
+msgstr "Monocromo"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
@@ -2928,7 +2924,7 @@ msgstr "&Obtener de archivo"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:662
 msgid "Get bounding box from the (EPS) file"
-msgstr "Obtener cuadro limitador del archivo (EPS)"
+msgstr "Obtener cuadro delimitador del archivo (EPS)"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
 msgid "Right &top:"
@@ -3076,7 +3072,7 @@ msgstr "Entrada de índice"
 
 #: ../src/frontends/qt2/ui/QLogDialogBase.ui:22
 msgid "Log"
-msgstr "Reporte"
+msgstr "Registro"
 
 #: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
@@ -3647,7 +3643,7 @@ msgstr "Opciones de idioma"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:41
 msgid "Command s&tart:"
-msgstr "Comando de &inicio:"
+msgstr "C&omienzo del comando:"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:84
 msgid "&Default language:"
@@ -3655,7 +3651,7 @@ msgstr "Idioma &predeterminado:"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:99
 msgid "Command e&nd:"
-msgstr "Comando de &fin:"
+msgstr "&Fin del comando:"
 
 #: ../src/frontends/qt2/ui/QPrefLanguageModule.ui:114
 msgid "Language pac&kage:"
@@ -3751,8 +3747,7 @@ msgstr "Opciones de tamaño del papel del visor DVI:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:252
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr ""
-"Indicador opcional del tamaño del papel (-paper) para algunos visores DVI"
+msgstr "Indicador opcional del tamaño del papel (-paper) para algunos visores DVI"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:263
 msgid "CheckTeX start options and flags"
@@ -3792,7 +3787,7 @@ msgstr "&Nombre de la impresora:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:93
 msgid "Printer co&mmand:"
-msgstr "&Comando de impresión:"
+msgstr "Comando de la i&mpresora:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:108
 msgid "Name of the default printer"
@@ -3872,7 +3867,7 @@ msgstr "Rango de pá&ginas:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:508
 msgid "Specify the command option names for your printer command"
-msgstr "Especificar las opciones para el comando de impresión"
+msgstr "Especificar las opciones para el comando de la impresora"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:22
 #: src/frontends/xforms/FormPreferences.C:226
@@ -4211,7 +4206,7 @@ msgstr "Formatos de &exportación:"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr "Procesar el archivo convertido con este comando ($$FName = archivo)"
+msgstr "Procesar el archivo convertido con este comando ($$FName = nombre de archivo)"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
@@ -4545,8 +4540,7 @@ msgid "&View"
 msgstr "&Ver"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Mostrar contenidos del archivo marcado. Solo posible cuando los archivos son "
 "mostrados con su ruta"
@@ -4624,7 +4618,7 @@ msgstr "¿Salida como hiperenlace?"
 
 #: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
 msgid "Version control log"
-msgstr "Reporte del control de versiones"
+msgstr "Registro del control de versiones"
 
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:32
 #: src/frontends/xforms/FormWrap.C:29
@@ -5454,7 +5448,7 @@ msgstr "Compensaciones"
 #: ../lib/layouts/egs.layout:749 ../lib/layouts/db_lyxmacros.inc:25
 #: ../lib/layouts/lyxmacros.inc:11
 msgid "LyX-Code"
-msgstr "Código fuente"
+msgstr "Código-LyX"
 
 #: ../lib/layouts/elsart.layout:136
 msgid "Author_Address"
@@ -5518,7 +5512,7 @@ msgstr "ListaCruzada"
 
 #: ../lib/layouts/foils.layout:173
 msgid "My_Logo"
-msgstr "Mi_Logo"
+msgstr "Mi_Logotipo"
 
 #: ../lib/layouts/foils.layout:193
 msgid "Restriction"
@@ -6075,7 +6069,7 @@ msgstr "CorreoElectrónico"
 
 #: ../lib/layouts/scrlttr2.layout:235
 msgid "Logo"
-msgstr "Logo"
+msgstr "Logotipo"
 
 #: ../lib/layouts/seminar.layout:49
 msgid "LandscapeSlide"
@@ -8054,7 +8048,7 @@ msgstr "Cambiar idioma"
 
 #: src/LyXAction.C:249
 msgid "View LaTeX log"
-msgstr "Ver reporte LateX"
+msgstr "Ver registro LateX"
 
 #: src/LyXAction.C:254
 msgid "Copy paragraph environment type"
@@ -8298,7 +8292,7 @@ msgstr "El documento usa una clase textual desconocida \"%1$s\"."
 
 #: src/buffer.C:624 src/buffer.C:630 src/buffer.C:644 src/buffer.C:649
 msgid "-- substituting default."
-msgstr "-- substituyéndola con la clase por defecto."
+msgstr "-- sustituyéndola con la clase por defecto."
 
 #: src/buffer.C:628
 msgid "The document uses an unknown textclass "
@@ -8356,8 +8350,7 @@ msgstr "¡ERROR!"
 
 #: src/buffer.C:1220
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr ""
-"Formato antiguo de archivo LyX encontrado. ¡Use LyX 0.10.x para leer esto!"
+msgstr "Formato antiguo de archivo LyX encontrado. ¡Use LyX 0.10.x para leer esto!"
 
 #: src/buffer.C:1228
 msgid "Can't find conversion script."
@@ -8631,7 +8624,7 @@ msgstr "¡LaTeX no funcionó!"
 
 #: src/converter.C:918
 msgid "Missing log file:"
-msgstr "Falta archivo de reporte:"
+msgstr "Falta archivo de registro:"
 
 #: src/converter.C:931
 msgid "There were errors during the LaTeX run."
@@ -9080,7 +9073,7 @@ msgstr "Corrección ortográfica terminada"
 
 #: src/frontends/controllers/ControlVCLog.C:53
 msgid "No version control log file found."
-msgstr "No se encontró archivo de reporte del control de versiones."
+msgstr "Ningún archivo de registro de control de versiones encontrado."
 
 #: src/frontends/controllers/biblio.C:97
 #, c-format
@@ -9222,20 +9215,20 @@ msgstr "el nombre de directorio no puede contener ninguno de estos caracteres:"
 
 #: src/frontends/gnome/GLog.C:51 src/frontends/qt2/QLog.C:52
 msgid "Build log"
-msgstr "Reporte de Construcción"
+msgstr "Registro de construcción"
 
 #: src/frontends/gnome/GLog.C:53 src/frontends/qt2/QLog.C:54
 msgid "LaTeX log"
-msgstr "Reporte de LaTeX"
+msgstr "Registro de LaTeX"
 
 #: src/frontends/gnome/GLog.C:60 src/frontends/qt2/QLog.C:61
 msgid "No build log file found."
-msgstr "Archivo de reporte de construcción no encontrado."
+msgstr "Ningún archivo de registro de construcción encontrado."
 
 #: src/frontends/gnome/GLog.C:62 src/frontends/qt2/QLog.C:63
 #: src/frontends/xforms/FormLog.C:39
 msgid "No LaTeX log file found."
-msgstr "Archivo de reporte de LaTeX no encontrado."
+msgstr "Ningún archivo de registro LaTeX encontrado."
 
 #: src/frontends/qt2/Alert_pimpl.C:42 src/frontends/qt2/Alert_pimpl.C:49
 msgid "&Yes"
@@ -9481,7 +9474,7 @@ msgstr "Seleccionar un archivo para imprimir en"
 
 #: src/frontends/qt2/QLog.C:33 src/frontends/xforms/FormLog.C:21
 msgid "LaTeX Log"
-msgstr "Reporte de LaTeX"
+msgstr "Registro de LaTeX"
 
 #: src/frontends/qt2/QMathDialog.C:115
 msgid "LyX: Insert space"
@@ -9715,16 +9708,16 @@ msgstr "Índice General"
 
 #: src/frontends/qt2/QVCLog.C:31 src/frontends/xforms/FormVCLog.C:23
 msgid "Version Control Log"
-msgstr "Reporte del control de versiones"
+msgstr "Registro del control de versiones"
 
 #: src/frontends/qt2/QVCLog.C:47
 #, c-format
 msgid "Version control log for %1$s"
-msgstr "Reporte del control de versiones para %1$s"
+msgstr "Registro del control de versiones para %1$s"
 
 #: src/frontends/qt2/QVCLog.C:49
 msgid "Version control log for "
-msgstr "Reporte del control de versiones para "
+msgstr "Registro del control de versiones para "
 
 #: src/frontends/qt2/QtView.C:143
 msgid "LyX"
@@ -10036,8 +10029,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:236
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Ninguno | Márgenes pequeños | Márgenes muy pequeños | Márgenes muy grandes "
+msgstr " Ninguno | Márgenes pequeños | Márgenes muy pequeños | Márgenes muy grandes "
 
 #: src/frontends/xforms/FormDocument.C:286
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
@@ -10129,7 +10121,7 @@ msgstr "Extender el flotante sobre las columnas."
 
 #: src/frontends/xforms/FormGraphics.C:125
 msgid "Default|Monochrome|Grayscale|Color|Do not display"
-msgstr "Predeterminado|Monócromo|Grises|Color|No mostrar"
+msgstr "Predeterminado|Monocromo|Grises|Color|No mostrar"
 
 #: src/frontends/xforms/FormGraphics.C:129
 #, c-format
@@ -10165,8 +10157,7 @@ msgstr "Cambiar el ancho de la imagen al valor especificado."
 #: src/frontends/xforms/FormGraphics.C:152
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr ""
-"Seleccionar la unidad para el ancho; Escala% para redimensionar la imagen."
+msgstr "Seleccionar la unidad para el ancho; Escala% para redimensionar la imagen."
 
 #: src/frontends/xforms/FormGraphics.C:154
 msgid "Set the image height to the inserted value."
@@ -10281,15 +10272,15 @@ msgstr "Incluir Archivo"
 
 #: src/frontends/xforms/FormLog.C:30
 msgid "LyX: LaTeX Log"
-msgstr "LyX: Reporte de LaTeX"
+msgstr "LyX: Registro de LaTeX"
 
 #: src/frontends/xforms/FormLog.C:31
 msgid "LyX: Literate Programming Build Log"
-msgstr "LyX: Reporte del proceso de construcción de Programación Literaria"
+msgstr "LyX: Registro de construcción de programación culta"
 
 #: src/frontends/xforms/FormLog.C:40
 msgid "No Literate Programming build log file found."
-msgstr "No fue encontrado ningún reporte del proceso de construcción."
+msgstr "Ningún archivo de registro de construcción de programación culta encontrado."
 
 #: src/frontends/xforms/FormMathsDelim.C:53
 msgid "Maths Delimiters"
@@ -10382,8 +10373,7 @@ msgstr "Añadir espacio adicional encima de este párrafo."
 
 #: src/frontends/xforms/FormParagraph.C:153
 msgid "Never suppress space (e.g. at top of page or new page)."
-msgstr ""
-"Nunca suprimir espacio (p. ej. al principio de página o en nueva página)."
+msgstr "Nunca suprimir espacio (p. ej. al principio de página o en nueva página)."
 
 #: src/frontends/xforms/FormParagraph.C:156
 msgid "Add a separator line below this paragraph."
@@ -10433,8 +10423,7 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Objetos de LyX a los que puede ser asignado un color."
 
 #: src/frontends/xforms/FormPreferences.C:539
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
 msgstr ""
 "Modificar el color del objeto de LyX. Nota: debe entonces \"Aplicar\" el "
 "cambio."
@@ -10536,8 +10525,7 @@ msgstr "El nombre del formato tal como aparecerá en los menús."
 
 #: src/frontends/xforms/FormPreferences.C:1267
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr ""
-"Acelerador del teclado. Usar una letra en el nombre. Distingue mayúsculas."
+msgstr "Acelerador del teclado. Usar una letra en el nombre. Distingue mayúsculas."
 
 #: src/frontends/xforms/FormPreferences.C:1271
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
@@ -10579,12 +10567,11 @@ msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:1883
 msgid "Monochrome|Grayscale|Color|Do not display"
-msgstr "Monócromo|Grises|Color|No mostrar"
+msgstr "Monocromo|Grises|Color|No mostrar"
 
 #: src/frontends/xforms/FormPreferences.C:1981
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" predeterminado | carta US | oficio US | ejecutivo US | A3 | A4 | A5 | B5 "
+msgstr " predeterminado | carta US | oficio US | ejecutivo US | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2240
 msgid "Default path"
@@ -10754,10 +10741,8 @@ msgstr "Buscar hacia atrás."
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormSendto.C:45
-msgid ""
-"Export the buffer to this format before running the command below on it."
-msgstr ""
-"Exportar el búfer a este formato antes de ejecutar el comando debajo de él."
+msgid "Export the buffer to this format before running the command below on it."
+msgstr "Exportar el búfer a este formato antes de ejecutar el comando debajo de él."
 
 #: src/frontends/xforms/FormSendto.C:48
 msgid ""
@@ -10769,8 +10754,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormSpellchecker.C:57
 msgid "Type replacement for unknown word or select from suggestions."
-msgstr ""
-"Introducir reemplazo para palabra desconocida o seleccionar de sugerencias."
+msgstr "Introducir reemplazo para palabra desconocida o seleccionar de sugerencias."
 
 #: src/frontends/xforms/FormSpellchecker.C:60
 msgid "List of replacement suggestions from dictionary."
@@ -10848,8 +10832,7 @@ msgstr "Mostrar ruta completa o solo nombre de archivo."
 
 #: src/frontends/xforms/FormTexinfo.C:54
 msgid "Runs the script \"TexFiles.sh\" to rebuild the file lists."
-msgstr ""
-"Ejecuta el script \"TexFiles.sh\" para reconstruir las listas de archivos."
+msgstr "Ejecuta el script \"TexFiles.sh\" para reconstruir las listas de archivos."
 
 #: src/frontends/xforms/FormTexinfo.C:57
 msgid "Double click to view contents of file."
@@ -11711,8 +11694,7 @@ msgstr "Falta comando después de la opción --execute"
 
 #: src/lyx_main.C:780
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr ""
-"Falta tipo de archivo [p. ej. latex, ps...] después de la opción --export"
+msgstr "Falta tipo de archivo [p. ej. latex, ps...] después de la opción --export"
 
 #: src/lyx_main.C:792
 msgid "Missing file type [eg latex, ps...] after --import switch"
@@ -11851,7 +11833,7 @@ msgstr " hecho."
 
 #: src/lyxfunc.C:1134 src/mathed/formulabase.C:1032
 msgid "Missing argument"
-msgstr "Argumento faltante"
+msgstr "Falta argumento"
 
 #: src/lyxfunc.C:1147
 #, c-format
@@ -11877,8 +11859,7 @@ msgstr "Sintaxis: set-color <nombre_lyx> <nombre_x11>"
 #: src/lyxfunc.C:1494
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
-msgstr ""
-"set-color \"%1$s\" falló - el color no está definido o no pudo ser redefinido"
+msgstr "set-color \"%1$s\" falló - el color no está definido o no pudo ser redefinido"
 
 #: src/lyxfunc.C:1499
 msgid "Set-color "
@@ -11994,8 +11975,7 @@ msgstr "Opción para imprimir solo páginas impares."
 
 #: src/lyxrc.C:1886
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
-"Opción para especificar una lista separada por comas de páginas a imprimir."
+msgstr "Opción para especificar una lista separada por comas de páginas a imprimir."
 
 #: src/lyxrc.C:1890
 msgid "The option for specifying the number of copies to print."
@@ -12091,8 +12071,7 @@ msgstr ""
 
 #: src/lyxrc.C:1951
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Tamaños de fuentes usados para calcular la escala de las fuentes de pantalla."
+msgstr "Tamaños de fuentes usados para calcular la escala de las fuentes de pantalla."
 
 #: src/lyxrc.C:1957
 msgid "The screen fonts used to display the text while editing."
@@ -12115,8 +12094,7 @@ msgid "The encoding for the menu/popups fonts."
 msgstr "Codificación para las fuentes de los menús/diálogos."
 
 #: src/lyxrc.C:1980
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Intervalo temporal entre autoguardados (en segundos). 0 significa no "
 "autoguardado."
@@ -12155,8 +12133,7 @@ msgstr ""
 
 #: src/lyxrc.C:2000
 msgid "The file where the last-files information should be stored."
-msgstr ""
-"Archivo donde la información de archivos recientes debería ser almacenada."
+msgstr "Archivo donde la información de archivos recientes debería ser almacenada."
 
 #: src/lyxrc.C:2004
 msgid ""
@@ -12275,15 +12252,12 @@ msgstr ""
 "del documento."
 
 #: src/lyxrc.C:2075
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
-msgstr ""
-"Especificar diccionario personal alternativo. P. ej. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgstr "Especificar diccionario personal alternativo. P. ej. \".ispell_english\"."
 
 #: src/lyxrc.C:2080
 msgid "Specify additional chars that can be part of a word."
-msgstr ""
-"Especificar caracteres adicionales que pueden ser parte de una palabra."
+msgstr "Especificar caracteres adicionales que pueden ser parte de una palabra."
 
 #: src/lyxrc.C:2084
 msgid ""
@@ -12338,10 +12312,8 @@ msgstr ""
 "original."
 
 #: src/lyxrc.C:2112
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Seleccionar para idiomas de derecha-a-izquierda (p. ej. hebreo, árabe)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr "Seleccionar para idiomas de derecha-a-izquierda (p. ej. hebreo, árabe)."
 
 #: src/lyxrc.C:2116
 msgid ""
@@ -12384,8 +12356,7 @@ msgstr ""
 "documento."
 
 #: src/lyxrc.C:2136
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Seleccionar si un comando de cambio de idioma se necesita al final del "
 "documento."
@@ -12515,11 +12486,11 @@ msgstr "Este documento NO ha sido registrado."
 
 #: src/lyxvc.C:159
 msgid "LyX VC: Log Message"
-msgstr "LyX CV: Mensaje de reporte"
+msgstr "LyX CV: Mensaje de registro"
 
 #: src/lyxvc.C:162
 msgid "(no log message)"
-msgstr "(sin mensaje de reporte)"
+msgstr "(sin mensaje de registro)"
 
 #: src/lyxvc.C:177
 msgid "Ignore changes and proceed with check out?"
@@ -12591,15 +12562,12 @@ msgstr "¡No se pudo eliminar archivo de auto-guardado!"
 
 #: src/support/package.C:374
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1%"
-msgstr ""
-"No se pudo determinar la ruta al binario LyX desde la línea de comandos %1%"
+msgid "Unable to determine the path to the LyX binary from the command line %1%"
+msgstr "No se pudo determinar la ruta al binario LyX desde la línea de comandos %1%"
 
 #: src/support/package.C:379
 msgid "Unable to determine the path to the LyX binary from the command line "
-msgstr ""
-"No se pudo determinar la ruta al binario LyX desde la línea de comandos "
+msgstr "No se pudo determinar la ruta al binario LyX desde la línea de comandos "
 
 #: src/support/package.C:505
 #, c-format
@@ -12702,8 +12670,7 @@ msgstr ""
 
 #: src/text.C:1926
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"No se puede introducir dos espacios de esa manera. Por favor lea el Tutorial."
+msgstr "No se puede introducir dos espacios de esa manera. Por favor lea el Tutorial."
 
 #: src/text.C:3348
 msgid "Page Break (top)"
@@ -12773,3 +12740,4 @@ msgstr "Marca puesta"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "La función 'layout' de LyX necesita un argumento."
+
