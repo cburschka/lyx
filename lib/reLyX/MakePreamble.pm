@@ -307,7 +307,7 @@ sub translate_preamble {
 	my $op;
 	foreach $op (keys %Geometry_Options) {
 	    $geom_options =~ s/$op// && do {
-	        $LyX_Preamble .= $Geometry_Options{$op}();
+	        $LyX_Preamble .= &{$Geometry_Options{$op}}();
 		print "Geometry option $op\n" if $debug_on;
 	    }
 	}

@@ -33,17 +33,17 @@ my $dir = &dirname($name);
 
 # Create a list of possible directories to look in. Non-existent directories
 #    are OK, but empty or undefined values will make 'use lib' complain
-my $i = 0;
+
 # case 1: for developers, e.g. - reLyX and $mainscript in same directory
-$maybe_dir[$i++] = "$dir";
+push @maybe_dir, "$dir";
 # case 2: ran make but not make install.
-$maybe_dir[$i++] = "$dir/$srcdir";
+push @maybe_dir, "$dir/$srcdir";
 # case 3: environment variable LYX_DIR_11x has been set
-if (exists $ENV{LYX_DIR_11x}) { $maybe_dir[$i++] = "$ENV{LYX_DIR_11x}/reLyX"};
+if (exists $ENV{LYX_DIR_11x}) { push @maybe_dir, "$ENV{LYX_DIR_11x}/reLyX"};
 # case 4: e.g., reLyX in /opt/bin, $mainscript in /opt/share/lyx/reLyX
-$maybe_dir[$i++] = "$dir/../share/$lyxname/reLyX"; # case 4
+push @maybe_dir, "$dir/../share/$lyxname/reLyX"; # case 4
 # case 5: configure figured out where $mainscript is
-$maybe_dir[$i++] = "$lyxdir/reLyX";
+push @maybe_dir, "$lyxdir/reLyX";
 
 # Decide which one is the real directory, based on the existence of
 #    "$dir/$mainscript"
@@ -55,12 +55,14 @@ foreach $dir (@maybe_dir) {
 	$found = 1;
 	last;
     }
- }
+}
 
 if(!$found) {
     print "reLyX directory not found.\n";
     exit(1);
- } 
+} else { ##just for debug purpose, remove for stable version
+    print "reLyX directory is: $relyxdir\n";
+}
 
 } # end BEGIN block
 

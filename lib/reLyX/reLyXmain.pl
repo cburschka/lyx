@@ -8,7 +8,7 @@
 #
 # This code usually gets called by the reLyX wrapper executable
 #
-# $Id: reLyXmain.pl,v 1.3 2000/06/06 10:32:10 lasgouttes Exp $
+# $Id: reLyXmain.pl,v 1.4 2001/08/31 07:54:05 jamatos Exp $
 #
 
 require 5.002; # Perl 5.001 doesn't work. Perl 4 REALLY doesn't work.
@@ -65,7 +65,7 @@ BEGIN{$Success = 0}
 #
 
 # Print welcome message including version info
-my $version_info = '$Date: 2000/06/06 10:32:10 $'; # RCS puts checkin date here
+my $version_info = '$Date: 2001/08/31 07:54:05 $'; # RCS puts checkin date here
 $version_info =~ s&.*?(\d+/\d+/\d+).*&$1&; # take out just the date info
 warn "reLyX, the LaTeX to LyX translator. Revision date $version_info\n\n";
 
@@ -94,7 +94,7 @@ my $Usage_Long = $Usage_Short . <<"ENDLONGUSAGE";
     -o    output all LyX files to directory "outputdir"
              Otherwise, LyX file is created in directory the LaTeX file is in
     -p    translate LaTeX fragments or include files (requires -c)
-             I.e., files without \documentclass commands
+             I.e., files without \\documentclass commands
     -r    give reLyX a (list of) regular environment(s)
     -s    give reLyX a (list of) additional syntax file(s) to read
 
