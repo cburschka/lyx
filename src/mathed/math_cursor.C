@@ -144,8 +144,8 @@ struct Selection
 	std::vector<MathArray> data_;
 };
 
-Selection theSelection;
 
+Selection theSelection;
 
 
 bool IsMacro(short tok, int id)
@@ -161,9 +161,11 @@ bool IsMacro(short tok, int id)
 	       !(tok == LM_TK_SYM && id < 255);
 }
 
-ostream & operator<<(ostream & os, MathCursorPos const & p)
+
+std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
 {
-	os << "(par: " << p.par_ << " idx: " << p.idx_ << " pos: " << p.pos_ << ")";
+	os << "(par: " << p.par_ << " idx: " << p.idx_
+	   << " pos: " << p.pos_ << ")";
 	return os;
 }
 
@@ -206,6 +208,7 @@ MathInset * MathCursor::parInset(int i) const
 	return Cursor_[i].par_;
 }
 
+
 void MathCursor::dump(char const * what) const
 {
 	return;
@@ -218,6 +221,7 @@ void MathCursor::dump(char const * what) const
 		<< " data: " << array()
 		<< "\n";
 }
+
 
 void MathCursor::seldump(char const *) const
 {
@@ -260,6 +264,7 @@ bool MathCursor::openable(MathInset * p, bool sel, bool useupdown) const
 	}
 	return true;
 }
+
 
 bool MathCursor::plainLeft()
 {
@@ -824,6 +829,7 @@ void MathCursor::SelCopy()
 	}
 }
 
+
 void MathCursor::SelCut()
 {
 	seldump("SelCut");
@@ -852,6 +858,7 @@ void MathCursor::SelPaste()
 	SelClear();
 }
 
+
 void MathCursor::SelHandle(bool sel)
 {
 	if (sel && !selection)
@@ -876,7 +883,6 @@ void MathCursor::SelClear()
 {
 	selection = false;
 }
-
 
 
 void MathCursor::drawSelection(Painter & pain) const
@@ -969,6 +975,7 @@ void MathCursor::handleAccent(string const & name, int code)
 	push(p, true);
 }
 
+
 void MathCursor::handleDelim(int l, int r)
 {
 	MathDelimInset * p = new MathDelimInset(l, r);
@@ -1060,6 +1067,7 @@ MathInset * MathCursor::enclosing(MathInsetTypes t, int & idx) const
 	return 0;
 }
 
+
 void MathCursor::pullArg()
 {
 	// pullArg
@@ -1126,6 +1134,7 @@ string MathCursorPos::readString()
 	return s;
 }
 */
+
 
 MathInset * MathCursor::prevInset() const
 {
@@ -1198,20 +1207,24 @@ int MathCursor::xpos() const
 	return xarray().pos2x(cursor().pos_);
 }
 
+
 void MathCursor::gotoX(int x)
 {
 	cursor().pos_ = xarray().x2pos(x);	
 }
+
 
 void MathCursor::idxNext()
 {
 	cursor().par_->idxNext(cursor().idx_, cursor().pos_);
 }
 
+
 void MathCursor::idxPrev()
 {
 	cursor().par_->idxPrev(cursor().idx_, cursor().pos_);
 }
+
 
 void MathCursor::splitCell()
 {
@@ -1224,6 +1237,7 @@ void MathCursor::splitCell()
 	cursor().pos_ = 0;
 	array().insert(0, ar);
 }
+
 
 void MathCursor::breakLine()
 {
@@ -1251,6 +1265,7 @@ void MathCursor::breakLine()
 	}
 }
 
+
 char MathCursor::valign() const
 {
 	int idx;
@@ -1258,6 +1273,7 @@ char MathCursor::valign() const
 		static_cast<MathGridInset *>(enclosing(LM_OT_MATRIX, idx));
 	return p ? p->valign() : 0;
 }
+
 
 char MathCursor::halign() const
 {
@@ -1311,20 +1327,21 @@ MathCursorPos const & MathCursor::cursor() const
 ////////////////////////////////////////////////////////////////////////
 
 
-bool MathCursorPos::operator==(const MathCursorPos & it) const
+bool operator==(MathCursorPos const & ti, MathCursorPos const & it)
 {
-	return par_ == it.par_ && idx_ == it.idx_ && pos_ == it.pos_;
+	return ti.par_ == it.par_ && ti.idx_ == it.idx_ && ti.pos_ == it.pos_;
 }
 
-bool MathCursorPos::operator<(const MathCursorPos & it) const
+
+bool operator<(MathCursorPos const & ti, MathCursorPos const & it)
 {
-	if (par_ != it.par_) {
+	if (ti.par_ != it.par_) {
 		lyxerr << "can't compare cursor and anchor in different insets\n";
 		return true;
 	}
-	if (idx_ != it.idx_)
-		return idx_ < it.idx_;
-	return pos_ < it.pos_;
+	if (ti.idx_ != it.idx_)
+		return ti.idx_ < it.idx_;
+	return ti.pos_ < it.pos_;
 }
 
 
@@ -1344,16 +1361,18 @@ MathXArray & MathCursorPos::xcell(int idx) const
 	return par_->xcell(idx);
 }
 
+
 MathXArray & MathCursorPos::xcell() const
 {
 	return par_->xcell(idx_);
 }
 
+
 MathCursorPos MathCursor::normalAnchor() const
 {
 	// use Anchor on the same level as Cursor
 	MathCursorPos normal = Anchor_[Cursor_.size() - 1];
-	if (Cursor_.size() < Anchor_.size() && !(cursor() > normal)) {
+	if (Cursor_.size() < Anchor_.size() && !(normal < cursor())) {
 		// anchor is behind cursor -> move anchor behind the inset
 		normal.cell().next(normal.pos_);
 	}
@@ -1362,20 +1381,24 @@ MathCursorPos MathCursor::normalAnchor() const
 	return normal;
 }
 
+
 bool MathCursorPos::idxUp()
 {
 	return par_->idxUp(idx_, pos_);
 }
+
 
 bool MathCursorPos::idxDown()
 {
 	return par_->idxDown(idx_, pos_);
 }
 
+
 bool MathCursorPos::idxLeft()
 {
 	return par_->idxLeft(idx_, pos_);
 }
+
 
 bool MathCursorPos::idxRight()
 {

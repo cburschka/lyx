@@ -1,3 +1,9 @@
+2001-07-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* math_cursor.C (operator==): moved ouf of struct
+	(operator<): ditto
+	(normalAnchor): reversed one test (but shouldn't it really be >= ?)
+
 2001-07-12 André Pönitz  <poenitz@htwm.de>
 
 	* math_cursor.[hC]: multicell selection (multicell pasete still defunct)

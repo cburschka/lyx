@@ -39,10 +39,6 @@ struct MathCursorPos {
 	int idx_;
 	/// cell position
 	int pos_;
-	/// 
-	bool operator==(const MathCursorPos &) const;
-	/// 
-	bool operator<(const MathCursorPos &) const;
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
 	/// returns cell corresponding to this position
@@ -60,6 +56,11 @@ struct MathCursorPos {
 	/// moves position on cell up
 	bool idxDown();
 };
+
+/// 
+bool operator==(MathCursorPos const &, MathCursorPos const &);
+/// 
+bool operator<(MathCursorPos const &, MathCursorPos const &);
 
 
 /// This is the external interface of Math's subkernel
