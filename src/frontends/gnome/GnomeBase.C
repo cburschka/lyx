@@ -25,7 +25,8 @@ GnomeBase::GnomeBase(ControlBase & c, string const & glade_file, string const & 
 	
 GnomeBase::~GnomeBase()
 {
-     gtk_object_unref(GTK_OBJECT(xml_));
+	if (xml_)
+		gtk_object_unref(GTK_OBJECT(xml_));
 }
 
 	

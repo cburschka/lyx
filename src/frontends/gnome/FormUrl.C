@@ -34,7 +34,7 @@ FormUrl::~FormUrl()
 	// Note that there is no need to destroy the class itself, it seems
 	// like everything is managed inside it. Deleting the class itself will
 	// a crash at the end of the program.
-    dialog_->destroy();
+	//dialog_->destroy();
 }
 
 

@@ -32,13 +32,14 @@
 #include "GUI.h"
 
 #include "FormUrl.h"
+#include "FormCredits.h"
+
 /*
 #include "FormBibitem.h"
 #include "FormBibtex.h"
 #include "FormCharacter.h"
 #include "FormCitation.h"
 #include "FormCopyright.h"
-#include "FormCredits.h"
 #include "FormLog.h"
 #include "FormVCLog.h"
 
@@ -70,6 +71,8 @@ SigC::Signal0<void> Dialogs::redrawGUI;
 Dialogs::Dialogs(LyXView * lv)
 {
 	add(new GUIUrl<FormUrl, gnomeBC>(*lv, *this));
+	add(new GUICredits<FormCredits, gnomeBC>(*lv, *this));
+
 /*	
 	splash_.reset(new FormSplash(lv, this));
 
@@ -78,7 +81,6 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUICharacter<FormCharacter, xformsBC>(*lv, *this));
 	//add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
 	//add(new GUICopyright<FormCopyright, xformsBC>(*lv, *this));
-	add(new GUICredits<FormCredits, xformsBC>(*lv, *this));
 	add(new GUILog<FormLog, xformsBC>(*lv, *this));
 	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));
 

@@ -81,6 +81,8 @@ libgnome_la_SOURCES = \
 	pixbutton.h \
 	GnomeBase.C \
 	GnomeBase.h \
+	FormCredits.C \
+	FormCredits.h \
 	FormUrl.C \
 	FormUrl.h 
 

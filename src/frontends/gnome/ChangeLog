@@ -1,3 +1,22 @@
+2001-03-29  Baruch Even  <baruch@lyx.org>
+
+	* FormUrl.C (d-tor):
+	* FormCredits.C (d-tor): Removed the dialog_->destroy(), it was causing
+	crashes on exit.
+
+	* GnomeBase.C (d-tor): Added a check for times when the xml wasn't loaded.
+
+2001-03-29  Michael Koziarski  <michael@koziarski.org>
+
+	* Dialogs.C: Uncommented FormCredits in the #include and instantiate it.
+
+	* Makefile.am: Added FormCredits.[Ch]
+
+	* FormCredits.[Ch]: Created FormCredits dialog using libglade
+	approach.  Text needs to be formatted still.
+
+	* dialogs/diahelpcredits.glade: Created file.
+
 2001-03-26  Baruch Even  <baruch@lyx.org>
 
 	* Various files: Fixes to get the gnome frontend to compile again. 
