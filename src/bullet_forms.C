@@ -33,8 +33,7 @@ FD_form_bullet *create_form_form_bullet(void)
         fl_set_bmtable_file(obj, 6, 6,
                            LibFileSearch("images",
                                          "standard.xbm").c_str());
-     }
-     else {
+     } else {
         fl_set_bmtable_pixmap_file(obj, 6, 6,
                                   LibFileSearch("images",
                                                 "standard.xpm").c_str());

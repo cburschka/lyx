@@ -95,11 +95,13 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 	appendix = false;
 	enumdepth = 0;
 	itemdepth = 0;
+	// double linked list begin
 	next = par->next;
 	if (next)
 		next->previous = this;
 	previous = par;
 	previous->next = this;
+	// end
 #ifndef NEW_FONTTABLE // OK
 	fonttable = 0;
 #endif
@@ -937,13 +939,13 @@ LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos) const
 		else {
 			// Why is it an error to ask for the font of a
 			// position that does not exist? Would it be
-			// enough for this to be anable on debug?
+			// enough for this to be enabled on debug?
 			// We want strict error checking, but it's ok to only
 			// have it when debugging. (Asger)
 			lyxerr << "ERROR (LyXParagraph::GetFontSettings): "
 				"position does not exist. "
 			       << pos << " (" << static_cast<int>(pos)
-			       << ")\n";
+			       << ")" << endl;
 		}
 	} else if (pos) {
 		return GetFontSettings(pos - 1);
@@ -962,8 +964,9 @@ LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos) const
 LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos) const
 {
 	LyXFont tmpfont;
-	LyXLayout const & layout = textclasslist.Style(current_view->buffer()->params.textclass, 
-						       GetLayout());
+	LyXLayout const & layout =
+		textclasslist.Style(current_view->buffer()->params.textclass, 
+				    GetLayout());
 	LyXParagraph::size_type main_body = 0;
 	if (layout.labeltype == LABEL_MANUAL)
 		main_body = BeginningOfMainBody();
@@ -1050,6 +1053,7 @@ char LyXParagraph::GetChar(LyXParagraph::size_type pos)
 				"position does not exist."
 			       << pos << " (" << static_cast<int>(pos)
 			       << ")\n";
+			Assert(false);
 		}
 		return '\0';
 	} else {
@@ -1094,10 +1098,11 @@ char LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 			return NextAfterFootnote()
 				->GetChar(pos - text.size() - 1);
 		else {
-			lyxerr << "ERROR (LyXParagraph::GetChar): "
+			lyxerr << "ERROR (LyXParagraph::GetChar const): "
 				"position does not exist."
 			       << pos << " (" << static_cast<int>(pos)
 			       << ")\n";
+			Assert(false);
 		}
 		return '\0';
 	} else {
@@ -1133,10 +1138,10 @@ string LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
 {
 	Assert(lastpos>=0);
 
-  // the current word is defined as starting at the first character from
-  // the immediate left of lastpospos which meets the definition of IsLetter(),
-  // continuing to the last character to the right of this meeting
-  // IsLetter.
+	// the current word is defined as starting at the first character
+	// from the immediate left of lastpospos which meets the definition
+	// of IsLetter(), continuing to the last character to the right
+	// of this meeting IsLetter.
 
     	string theword;
 
@@ -1157,11 +1162,11 @@ string LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
 	// now find the beginning by looking for a nonletter
 	
 	while ((firstpos>= 0) && IsLetter(firstpos))
-		firstpos--;
+		--firstpos;
 
 	// the above is now pointing to the preceeding non-letter
-	firstpos++;
-	lastpos= firstpos;
+	++firstpos;
+	lastpos = firstpos;
 
 	// so copy characters into theword  until we get a nonletter
 	// note that this can easily exceed lastpos, wich means
@@ -1170,7 +1175,7 @@ string LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
 
 	while (IsLetter(lastpos)) theword += GetChar(lastpos++);
 	
-	return  theword;
+	return theword;
 
 }
 
@@ -1199,8 +1204,7 @@ LyXParagraph * LyXParagraph::ParFromPos(LyXParagraph::size_type pos)
 			lyxerr << "ERROR (LyXParagraph::ParFromPos): "
 				"position does not exist." << endl;
 		return this;
-	}
-	else
+	} else
 		return this;
 }
 
@@ -1231,7 +1235,8 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 	// > because last is the next unused position, and you can 
 	// use it if you want
 	if (pos > size()) {
-		if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
+		if (next &&
+		    next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
 			NextAfterFootnote()->SetFont(pos - text.size() - 1,
 						     font);
 		} else {
@@ -1487,8 +1492,7 @@ LyXParagraph * LyXParagraph::Next()
 					       paragraph */
 		else
 			return next;  // This should never happen!
-	}
-	else
+	} else
 		return next;
 }
 
@@ -1504,8 +1508,7 @@ LyXParagraph * LyXParagraph::NextAfterFootnote()
 					 in a logical paragraph */
 		else
 			return next;  // This should never happen!
-	}
-	else
+	} else
 		return next;
 }
 
@@ -1521,8 +1524,7 @@ LyXParagraph const * LyXParagraph::NextAfterFootnote() const
 					 in a logical paragraph */
 		else
 			return next;  // This should never happen!
-	}
-	else
+	} else
 		return next;
 }
 
@@ -1539,8 +1541,7 @@ LyXParagraph * LyXParagraph::PreviousBeforeFootnote()
 					  in a logical paragraph */
 		else
 			return previous;  // This should never happen!
-	}
-	else
+	} else
 		return previous;
 }
 
@@ -1566,13 +1567,15 @@ LyXParagraph * LyXParagraph::FirstPhysicalPar()
 		return this;
 	LyXParagraph * tmppar = this;
 
-	while (tmppar && (tmppar->IsDummy()
-			  || tmppar->footnoteflag != LyXParagraph::NO_FOOTNOTE))
+	while (tmppar &&
+	       (tmppar->IsDummy()
+		|| tmppar->footnoteflag != LyXParagraph::NO_FOOTNOTE))
 		tmppar = tmppar->previous;
    
-	if (!tmppar)
+	if (!tmppar) {
+		Assert(false); // let's get an abort then
 		return this; // This should never happen!
-	else
+	} else
 		return tmppar;
 }
 
@@ -1587,9 +1590,10 @@ LyXParagraph const * LyXParagraph::FirstPhysicalPar() const
 			  || tmppar->footnoteflag != LyXParagraph::NO_FOOTNOTE))
 		tmppar = tmppar->previous;
    
-	if (!tmppar)
+	if (!tmppar) {
+		Assert(false); // let's get an abort then
 		return this;  // This should never happen!
-	else
+	} else
 		return tmppar;
 }
 
@@ -1612,8 +1616,7 @@ LyXParagraph * LyXParagraph::Previous()
 
 		else
 			return previous; 
-	}
-	else
+	} else
 		return previous;
 }
 
@@ -1636,8 +1639,7 @@ LyXParagraph const * LyXParagraph::Previous() const
 
 		else
 			return previous; 
-	}
-	else
+	} else
 		return previous;
 }
 
@@ -1651,12 +1653,12 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 	LyXParagraph * firstpar = FirstPhysicalPar();
    
 	LyXParagraph * tmp = new LyXParagraph(par);
-   
+	
 	tmp->footnoteflag = footnoteflag;
 	tmp->footnotekind = footnotekind;
    
 	// this is an idea for a more userfriendly layout handling, I will
-	// see what the users say */
+	// see what the users say
    
 	// layout stays the same with latex-environments
 	if (flag) {
@@ -1686,14 +1688,15 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 			pos_first++;
 
 		pos_end = pos_first + par->text.size() - 1;
-		if (pos_end > pos)
-			tmp->text.reserve(pos_end - pos);
+		// The constructor has already reserved 500 elements
+		//if (pos_end > pos)
+		//	tmp->text.reserve(pos_end - pos);
 
 		for (i = pos; i <= pos_end; i++) {
 			par->CutIntoMinibuffer(i - pos_first);
 			tmp->InsertFromMinibuffer(i - pos);
 		}
-
+		tmp->text.resize(tmp->text.size());
 		for (i = pos_end; i >= pos; i--)
 			par->Erase(i - pos_first);
 
@@ -1833,36 +1836,38 @@ bool LyXParagraph::HasSameLayout(LyXParagraph const * par)
 
 void LyXParagraph::BreakParagraphConservative(LyXParagraph::size_type pos)
 {
-	size_type i, pos_end, pos_first;
-	
 	// create a new paragraph
 	LyXParagraph * par = ParFromPos(pos);
 
 	LyXParagraph * tmp = new LyXParagraph(par);
    
 	tmp->MakeSameLayout(par);
-   
+
+	// When can pos < Last()?
+	// I guess pos == Last() is possible.
 	if (Last() > pos) {
 		// copy everything behind the break-position to the new
 		// paragraph
-		pos_first = 0;
+		size_type pos_first = 0;
 		while (ParFromPos(pos_first) != par)
-			pos_first++;
-		pos_end = pos_first + par->text.size() - 1;
-		// make shure there is enough memory for the now larger
+			++pos_first;
+		size_type pos_end = pos_first + par->text.size() - 1;
+		// make sure there is enough memory for the now larger
 		// paragraph. This is not neccessary, because
 		// InsertFromMinibuffer will enlarge the memory (it uses
 		// InsertChar of course). But doing it by hand
 		// is MUCH faster! (only one time, not thousend times!!)
-		if (pos_end > pos)
-			tmp->text.reserve(pos_end - pos);
+		// Not needed since the constructor aleady have
+		// reserved 500 elements in text.
+		//if (pos_end > pos)
+		//	tmp->text.reserve(pos_end - pos);
 
-		for (i = pos; i <= pos_end; i++) {
-      
+		for (size_type i = pos; i <= pos_end; ++i) {
 			par->CutIntoMinibuffer(i - pos_first);
 			tmp->InsertFromMinibuffer(i - pos);
 		}
-		for (i = pos_end; i >= pos; i--)
+		tmp->text.resize(tmp->text.size());
+		for (size_type i = pos_end; i >= pos; --i)
 			par->Erase(i - pos_first);
 
 		par->text.resize(par->text.size());
@@ -2271,8 +2276,9 @@ LyXParagraph * LyXParagraph::TeXOnePar(string & file, TexRow & texrow,
 {
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << this << endl;
 	LyXParagraph * par = next;
-	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass,
-						      layout);
+	LyXLayout const & style =
+		textclasslist.Style(current_view->buffer()->params.textclass,
+				    layout);
 
 	bool further_blank_line = false;
 	if (IsDummy())

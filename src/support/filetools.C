@@ -831,7 +831,7 @@ string MakeRelPath(string const & abspath0, string const & basepath0)
 	int j = i;
 	while (j < baselen) {
 		if (basepath[j] == '/') {
-			if (j+1 == baselen) break;
+			if (j + 1 == baselen) break;
 			buf += "../";
 		}
 		++j;

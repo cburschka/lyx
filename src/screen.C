@@ -21,7 +21,6 @@
 extern int mono_video;
 extern int fast_selection;
 
-
 // Constructor
 LyXScreen::LyXScreen(Window window,
 		     Dimension width, 
@@ -280,7 +279,7 @@ void  LyXScreen::ShowManualCursor(long x, long y, int asc, int desc)
 	if (y2 > _height)
 		y2 = _height;
 	
-	if (fast_selection || mono_video){
+	if (fast_selection || mono_video) {
 		if (y2 > 0 && y1 < _height) {
 			XDrawLine(fl_display,
 				  _window, getGC(gc_select),
@@ -332,7 +331,7 @@ void LyXScreen::HideCursor()
 {
 	if (!cursor_visible) return;
 	
-	if (fast_selection || mono_video){
+	if (fast_selection || mono_video) {
 		cursor_visible = false;
 		ShowCursor();
 		cursor_visible = false;
@@ -489,7 +488,7 @@ void LyXScreen::ToggleSelection(bool kill_selection)
 	long bottom = 0;
    
 	
-	if (fast_selection || mono_video){
+	if (fast_selection || mono_video) {
 		
 		/* selection only in one row ?*/ 
 		if (text->sel_start_cursor.y == text->sel_end_cursor.y) {

@@ -19,6 +19,10 @@ template<class A> inline void Assert(A assertion)
 // Not too sure if this is the correct way to specialize
 template<class A> inline void Assert(A * ptr)
 {
+	Assert<void const *>(ptr);
+}
+template<> inline void Assert(void const * ptr)
+{
 	if (!ptr) {
 		abort();
 	}

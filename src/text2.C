@@ -35,11 +35,12 @@
 #include "BufferView.h"
 #include "LyXView.h"
 
+#define FIX_DOUBLE_SPACE 1
+
 extern BufferView * current_view;
 
 using std::copy;
 
-// Constructor
 LyXText::LyXText(int pw, Buffer * p)
 {
 	firstrow = 0;
@@ -61,17 +62,17 @@ LyXText::LyXText(int pw, Buffer * p)
 		InsertParagraph(par, lastrow);
 		par = par->Next();
 	}
-	/* set cursor at the very top position */
-	selection = true;		       /* these setting is necessary 
-						* because of the delete-empty-
-						* paragraph mechanism in
-						* SetCursor */
+	// set cursor at the very top position
+	selection = true;	    /* these setting is necessary 
+				       because of the delete-empty-
+				       paragraph mechanism in
+				       SetCursor */
 	SetCursor(firstrow->par, 0);
 	sel_cursor = cursor;
 	selection = false;
 	mark_set = false;
    
-	/* no rebreak necessary */ 
+	// no rebreak necessary
 	need_break_row = 0;
    
 	undo_finished = true;
@@ -82,7 +83,6 @@ LyXText::LyXText(int pw, Buffer * p)
 }
 
 
-// Destructor
 LyXText::~LyXText()
 {
 	// Delete all rows, this does not touch the paragraphs!
@@ -103,7 +103,7 @@ LyXText::~LyXText()
 // If position is -1, we get the layout font of the paragraph.
 // If position is -2, we get the font of the manual label of the paragraph.
 LyXFont LyXText::GetFont(LyXParagraph * par,
-			 LyXParagraph::size_type pos)
+			 LyXParagraph::size_type pos) const
 {
 	LyXLayout const & layout = 
 		textclasslist.Style(parameters->textclass, par->GetLayout());
@@ -181,8 +181,9 @@ LyXFont LyXText::GetFont(LyXParagraph * par,
 
 void LyXText::SetCharFont(LyXParagraph * par,
 			  LyXParagraph::size_type pos,
-			  LyXFont font)
+			  LyXFont const & fnt)
 {
+	LyXFont font(fnt);
 	// Let the insets convert their font
 	if (par->GetChar(pos) == LyXParagraph::META_INSET) {
 		if (par->GetInset(pos))
@@ -229,7 +230,7 @@ void LyXText::SetCharFont(LyXParagraph * par,
 /* inserts a new row behind the specified row, increments
  * the touched counters */
 void LyXText::InsertRow(Row * row, LyXParagraph * par,
-			LyXParagraph::size_type pos)
+			LyXParagraph::size_type pos) const
 {
 	Row * tmprow = new Row;
 	if (!row) {
@@ -255,12 +256,12 @@ void LyXText::InsertRow(Row * row, LyXParagraph * par,
    
 	if (row == lastrow)
 		lastrow = tmprow;
-	number_of_rows++;			       /* one more row  */
+	number_of_rows++; // one more row
 }
 
 
-/* removes the row and reset the touched counters */
-void LyXText::RemoveRow(Row * row)
+// removes the row and reset the touched counters
+void LyXText::RemoveRow(Row * row) const
 {
 	/* this must not happen before the currentrow for clear reasons.
 	   so the trick is just to set the current row onto the previous
@@ -284,21 +285,20 @@ void LyXText::RemoveRow(Row * row)
 	if (row == lastrow)
 		lastrow = row->previous;
    
-	height -= row->height;	       /* the text becomes smaller  */
+	height -= row->height;	 // the text becomes smaller
    
 	delete row;
-	--number_of_rows;			       /* one row less  */
+	--number_of_rows;	// one row less
 }
 
 
-/* remove all following rows of the paragraph of the specified row. */
-void LyXText::RemoveParagraph(Row * row)
+// remove all following rows of the paragraph of the specified row.
+void LyXText::RemoveParagraph(Row * row) const
 {
-	Row * tmprow;
-
 	LyXParagraph * tmppar = row->par;
 	row = row->next;
     
+	Row * tmprow;
 	while (row && row->par == tmppar) {
 		tmprow = row->next;
 		RemoveRow(row);
@@ -307,15 +307,15 @@ void LyXText::RemoveParagraph(Row * row)
 }
    
   
-/* insert the specified paragraph behind the specified row */
-void LyXText::InsertParagraph(LyXParagraph * par, Row * row)
+// insert the specified paragraph behind the specified row
+void LyXText::InsertParagraph(LyXParagraph * par, Row * row) const
 {
 	InsertRow(row, par, 0);	       /* insert a new row, starting 
 					* at postition 0 */
 
-	SetCounter(par);		       /* set the counters  */
+	SetCounter(par);  // set the counters
    
-	/* and now append the whole paragraph behind the new row */
+	// and now append the whole paragraph behind the new row
 	if (!row) {
 		firstrow->height = 0;
 		AppendParagraph(firstrow);
@@ -330,11 +330,11 @@ void LyXText::InsertParagraph(LyXParagraph * par, Row * row)
 void LyXText::ToggleFootnote()
 {
 	LyXParagraph * par = cursor.par->ParFromPos(cursor.pos);
-	if (par->next && par->next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE){
+	if (par->next
+	    && par->next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
 		OpenFootnote();
 		current_view->owner()->getMiniBuffer()->Set(_("Opened float"));
-	}
-	else {
+	} else {
 		current_view->owner()->getMiniBuffer()->Set(_("Closed float"));
 		CloseFootnote();
 	}
@@ -349,12 +349,12 @@ void LyXText::OpenStuff()
 	else if (cursor.pos < cursor.par->Last() 
 		 && cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
 		 && cursor.par->GetInset(cursor.pos)->Editable()) {
-		current_view->owner()->getMiniBuffer()->Set(cursor.par->GetInset(cursor.pos)->EditMessage());
+		current_view->owner()->getMiniBuffer()
+			->Set(cursor.par->GetInset(cursor.pos)->EditMessage());
 		if (cursor.par->GetInset(cursor.pos)->Editable() != 2)
 			SetCursorParUndo();
 		cursor.par->GetInset(cursor.pos)->Edit(0, 0);
-	}
-	else {
+	} else {
 		ToggleFootnote();
 	}
 }
@@ -362,43 +362,44 @@ void LyXText::OpenStuff()
 
 void LyXText::CloseFootnote()
 {
-	LyXParagraph * endpar, * tmppar;
-	Row * row;
-   
+	LyXParagraph * tmppar;
 	LyXParagraph * par = cursor.par->ParFromPos(cursor.pos);
    
-	/* if the cursor is not in an open footnote, or 
-	 * there is no open footnote in this paragraph, just return. */ 
+	// if the cursor is not in an open footnote, or 
+	// there is no open footnote in this paragraph, just return.
 	if (cursor.par->footnoteflag != LyXParagraph::OPEN_FOOTNOTE) {
       
-		if (!par->next
-		    || par->next->footnoteflag != LyXParagraph::OPEN_FOOTNOTE) {
-			current_view->owner()->getMiniBuffer()->Set(_("Nothing to do"));
+		if (!par->next ||
+		    par->next->footnoteflag != LyXParagraph::OPEN_FOOTNOTE) {
+			current_view->owner()->getMiniBuffer()
+				->Set(_("Nothing to do"));
 			return;
 		}
    
-		/* ok, move the cursor right before the footnote */ 
- 
-		/* just a little faster than using CursorRight() */
-		for (cursor.pos = 0; cursor.par->ParFromPos(cursor.pos)!= par; cursor.pos++);
-		/* now the cursor is at the beginning of the physical par */
+		// ok, move the cursor right before the footnote
+ 		// just a little faster than using CursorRight()
+		for (cursor.pos = 0;
+		     cursor.par->ParFromPos(cursor.pos) != par;
+		     cursor.pos++)
+			{}
+		
+		// now the cursor is at the beginning of the physical par
 		SetCursor(cursor.par,
 			  cursor.pos +
 			  cursor.par->ParFromPos(cursor.pos)->text.size());
-	}
-	else  {
+	} else  {
 		/* we are in a footnote, so let us move at the beginning */ 
 		/* this is just faster than using just CursorLeft() */ 
        
 		tmppar = cursor.par;
 		while (tmppar->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
-			/* just a little bit faster than movin the cursor */
+			// just a little bit faster than movin the cursor
 			tmppar = tmppar->Previous();
 		}
 		SetCursor(tmppar, tmppar->Last());
 	}
    
-	/* the cursor must be exactly before the footnote */ 
+	// the cursor must be exactly before the footnote
 	par = cursor.par->ParFromPos(cursor.pos);
    
 	status = LyXText::NEED_MORE_REFRESH;
@@ -406,8 +407,8 @@ void LyXText::CloseFootnote()
 	refresh_y = cursor.y - cursor.row->baseline;
    
 	tmppar = cursor.par;
-	endpar = par->NextAfterFootnote()->Next();
-	row = cursor.row;
+	LyXParagraph * endpar = par->NextAfterFootnote()->Next();
+	Row * row = cursor.row;
    
 	tmppar->CloseFootnote(cursor.pos);
 
@@ -424,7 +425,7 @@ void LyXText::CloseFootnote()
 	SetCursor(cursor.par, cursor.pos);
 	sel_cursor = cursor;
    
-	/* just necessary */
+	// just necessary
 	if (cursor.row->next)
 		SetHeightOfRow(cursor.row->next);
 }
@@ -436,7 +437,8 @@ void LyXText::MakeFontEntriesLayoutSpecific(LyXParagraph * par)
 {
 	LyXFont layoutfont, tmpfont;
    
-	LyXLayout const & layout = textclasslist.Style(parameters->textclass, par->GetLayout());
+	LyXLayout const & layout =
+		textclasslist.Style(parameters->textclass, par->GetLayout());
 
 	for (LyXParagraph::size_type pos = 0;
 	     pos < par->Last(); ++pos) {
@@ -452,14 +454,15 @@ void LyXText::MakeFontEntriesLayoutSpecific(LyXParagraph * par)
 }
 
 
-/* set layout over selection and make a total rebreak of those paragraphs */
+// set layout over selection and make a total rebreak of those paragraphs
 void  LyXText::SetLayout(char layout)
 {
 	LyXCursor tmpcursor;
 
-	/* if there is no selection just set the layout of the current paragraph  */
+	// if there is no selection just set the layout
+	// of the current paragraph  */
 	if (!selection) {
-		sel_start_cursor = cursor;       /* dummy selection  */
+		sel_start_cursor = cursor;  // dummy selection
 		sel_end_cursor = cursor;
 	}
 
@@ -473,7 +476,7 @@ void  LyXText::SetLayout(char layout)
 		}
 	}
 	else if (endpar) {
-		endpar = endpar->Next();	       /* because of parindents etc.  */
+		endpar = endpar->Next(); // because of parindents etc.
 	}
    
 	SetUndo(Undo::EDIT, 
@@ -486,7 +489,8 @@ void  LyXText::SetLayout(char layout)
 	 * and sel_end cursor */ 
 	cursor = sel_start_cursor;
    
-	LyXLayout const & lyxlayout = textclasslist.Style(parameters->textclass, layout);
+	LyXLayout const & lyxlayout =
+		textclasslist.Style(parameters->textclass, layout);
    
 	while (cursor.par != sel_end_cursor.par) {
 		if (cursor.par->footnoteflag ==
@@ -528,8 +532,8 @@ void  LyXText::SetLayout(char layout)
    
 	RedoParagraphs(sel_start_cursor, endpar);
    
-	/* we have to reset the selection, because the
-	 * geometry could have changed */ 
+	// we have to reset the selection, because the
+	// geometry could have changed */ 
 	SetCursor(sel_start_cursor.par, sel_start_cursor.pos);
 	sel_cursor = cursor;
 	SetCursor(sel_end_cursor.par, sel_end_cursor.pos);
@@ -540,13 +544,13 @@ void  LyXText::SetLayout(char layout)
 }
 
 
-/* increment depth over selection and
- * make a total rebreak of those paragraphs */
+// increment depth over selection and
+// make a total rebreak of those paragraphs
 void  LyXText::IncDepth()
 {
 	// If there is no selection, just use the current paragraph
 	if (!selection) {
-		sel_start_cursor = cursor;       /* dummy selection */
+		sel_start_cursor = cursor; // dummy selection
 		sel_end_cursor = cursor;
 	}
 
@@ -561,17 +565,18 @@ void  LyXText::IncDepth()
 		}
 	}
 	else if (endpar) {
-		endpar = endpar->Next();	       /* because of parindents etc.  */
+		endpar = endpar->Next(); // because of parindents etc.
 	}
 	
 	SetUndo(Undo::EDIT, 
-		sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->previous, 
+		sel_start_cursor
+		.par->ParFromPos(sel_start_cursor.pos)->previous, 
 		undoendpar);
 
-	LyXCursor tmpcursor = cursor;	     /* store the current cursor  */
+	LyXCursor tmpcursor = cursor; // store the current cursor
 
-	/* ok we have a selection. This is always between sel_start_cursor
-	 * and sel_end cursor */ 
+	// ok we have a selection. This is always between sel_start_cursor
+	// and sel_end cursor
 	cursor = sel_start_cursor;
    
 	bool anything_changed = false;
@@ -583,7 +588,8 @@ void  LyXText::IncDepth()
 		    && textclasslist.Style(parameters->textclass,
 				      cursor.par->GetLayout()
 				     ).labeltype != LABEL_BIBLIO) {
-			LyXParagraph * prev = cursor.par->FirstPhysicalPar()->Previous();
+			LyXParagraph * prev =
+				cursor.par->FirstPhysicalPar()->Previous();
 			if (prev 
 			    && (prev->GetDepth() - cursor.par->GetDepth() > 0
 				|| (prev->GetDepth() == cursor.par->GetDepth()
@@ -598,7 +604,7 @@ void  LyXText::IncDepth()
 		cursor.par = cursor.par->Next();
 	}
    
-	/* if nothing changed set all depth to 0 */ 
+	// if nothing changed set all depth to 0
 	if (!anything_changed) {
 		cursor = sel_start_cursor;
 		while (cursor.par != sel_end_cursor.par) {
@@ -611,8 +617,8 @@ void  LyXText::IncDepth()
    
 	RedoParagraphs(sel_start_cursor, endpar);
    
-	/* we have to reset the selection, because the
-	 * geometry could have changed */ 
+	// we have to reset the selection, because the
+	// geometry could have changed
 	SetCursor(sel_start_cursor.par, sel_start_cursor.pos);
 	sel_cursor = cursor;
 	SetCursor(sel_end_cursor.par, sel_end_cursor.pos);
@@ -623,13 +629,14 @@ void  LyXText::IncDepth()
 }
 
 
-/* decrement depth over selection and
- * make a total rebreak of those paragraphs */
+// decrement depth over selection and
+// make a total rebreak of those paragraphs
 void  LyXText::DecDepth()
 {
-	/* if there is no selection just set the layout of the current paragraph  */
+	// if there is no selection just set the layout
+	// of the current paragraph
 	if (!selection) {
-		sel_start_cursor = cursor;       /* dummy selection  */
+		sel_start_cursor = cursor; // dummy selection
 		sel_end_cursor = cursor;
 	}
    
@@ -643,17 +650,18 @@ void  LyXText::DecDepth()
 		}
 	}
 	else if (endpar) {
-		endpar = endpar->Next();	       /* because of parindents etc.  */
+		endpar = endpar->Next(); // because of parindents etc.
 	}
    
 	SetUndo(Undo::EDIT, 
-		sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->previous, 
+		sel_start_cursor
+		.par->ParFromPos(sel_start_cursor.pos)->previous, 
 		undoendpar);
 
-	LyXCursor tmpcursor = cursor;		       /* store the current cursor  */
+	LyXCursor tmpcursor = cursor; // store the current cursor
 
-	/* ok we have a selection. This is always between sel_start_cursor
-	 * and sel_end cursor */ 
+	// ok we have a selection. This is always between sel_start_cursor
+	// and sel_end cursor
 	cursor = sel_start_cursor;
 
 	while (true) {
@@ -669,8 +677,8 @@ void  LyXText::DecDepth()
 
 	RedoParagraphs(sel_start_cursor, endpar);
    
-	/* we have to reset the selection, because the
-	 * geometry could have changed */ 
+	// we have to reset the selection, because the
+	// geometry could have changed
 	SetCursor(sel_start_cursor.par, sel_start_cursor.pos);
 	sel_cursor = cursor;
 	SetCursor(sel_end_cursor.par, sel_end_cursor.pos);
@@ -681,10 +689,10 @@ void  LyXText::DecDepth()
 }
 
 
-/* set font over selection and make a total rebreak of those paragraphs */
-void  LyXText::SetFont(LyXFont font, bool toggleall)
+// set font over selection and make a total rebreak of those paragraphs
+void  LyXText::SetFont(LyXFont const & font, bool toggleall)
 {
-	/* if there is no selection just set the current_font */
+	// if there is no selection just set the current_font
 	if (!selection) {
 		// Determine basis font
 		LyXFont layoutfont;
@@ -703,10 +711,10 @@ void  LyXText::SetFont(LyXFont font, bool toggleall)
 		return;
 	}
 
-	LyXCursor tmpcursor = cursor;		       /* store the current cursor  */
+	LyXCursor tmpcursor = cursor; // store the current cursor
    
-	/* ok we have a selection. This is always between sel_start_cursor
-	 * and sel_end cursor */ 
+	// ok we have a selection. This is always between sel_start_cursor
+	// and sel_end cursor
    
 	SetUndo(Undo::EDIT, 
 		sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->previous, 
@@ -718,9 +726,9 @@ void  LyXText::SetFont(LyXFont font, bool toggleall)
 	{
 		if (cursor.pos < cursor.par->Last()
 		    && cursor.par->footnoteflag
-		    == sel_start_cursor.par->footnoteflag) {   /* an open footnote
-								* should behave
-								* like a closed */
+		    == sel_start_cursor.par->footnoteflag) {
+			// an open footnote should behave
+			// like a closed one
 			LyXFont newfont = GetFont(cursor.par, cursor.pos);
 			newfont.update(font, toggleall);
 			SetCharFont(cursor.par, cursor.pos, newfont);
@@ -733,8 +741,8 @@ void  LyXText::SetFont(LyXFont font, bool toggleall)
    
 	RedoParagraphs(sel_start_cursor, sel_end_cursor.par->Next());
    
-	/* we have to reset the selection, because the
-	 * geometry could have changed */ 
+	// we have to reset the selection, because the
+	// geometry could have changed
 	SetCursor(sel_start_cursor.par, sel_start_cursor.pos);
 	sel_cursor = cursor;
 	SetCursor(sel_end_cursor.par, sel_end_cursor.pos);
@@ -744,27 +752,28 @@ void  LyXText::SetFont(LyXFont font, bool toggleall)
 }
 
 
-void LyXText::RedoHeightOfParagraph(LyXCursor cur)
+void LyXText::RedoHeightOfParagraph(LyXCursor const & cur)
 {
 	Row * tmprow = cur.row;
 	long y = cur.y - tmprow->baseline;
 
 	SetHeightOfRow(tmprow);
 	LyXParagraph * first_phys_par = tmprow->par->FirstPhysicalPar();
-	/* find the first row of the paragraph */
+	// find the first row of the paragraph
 	if (first_phys_par != tmprow->par)
-		while (tmprow->previous && tmprow->previous->par != first_phys_par)  {
+		while (tmprow->previous
+		       && tmprow->previous->par != first_phys_par) {
 			tmprow = tmprow->previous;
 			y -= tmprow->height;
 			SetHeightOfRow(tmprow);
 		}
-	while (tmprow->previous && tmprow->previous->par == first_phys_par)  {
+	while (tmprow->previous && tmprow->previous->par == first_phys_par) {
 		tmprow = tmprow->previous;
 		y -= tmprow->height;
 		SetHeightOfRow(tmprow);
 	}
-   
-	/* we can set the refreshing parameters now */
+	
+	// we can set the refreshing parameters now
 	status = LyXText::NEED_MORE_REFRESH;
 	refresh_y = y;
 	refresh_row = tmprow;
@@ -772,14 +781,14 @@ void LyXText::RedoHeightOfParagraph(LyXCursor cur)
 }
 
 
-void LyXText::RedoDrawingOfParagraph(LyXCursor cur)
+void LyXText::RedoDrawingOfParagraph(LyXCursor const & cur)
 {
 	Row * tmprow = cur.row;
    
 	long y = cur.y - tmprow->baseline;
 	SetHeightOfRow(tmprow);
 	LyXParagraph * first_phys_par = tmprow->par->FirstPhysicalPar();
-	/* find the first row of the paragraph */
+	// find the first row of the paragraph
 	if (first_phys_par != tmprow->par)
 		while (tmprow->previous && tmprow->previous->par != first_phys_par)  {
 			tmprow = tmprow->previous;
@@ -788,10 +797,9 @@ void LyXText::RedoDrawingOfParagraph(LyXCursor cur)
 	while (tmprow->previous && tmprow->previous->par == first_phys_par)  {
 		tmprow = tmprow->previous;
 		y -= tmprow->height;
-      
 	}
    
-	/* we can set the refreshing parameters now */
+	// we can set the refreshing parameters now
 	if (status == LyXText::UNCHANGED || y < refresh_y) {
 		refresh_y = y;
 		refresh_row = tmprow;
@@ -804,7 +812,8 @@ void LyXText::RedoDrawingOfParagraph(LyXCursor cur)
 /* deletes and inserts again all paragaphs between the cursor
 * and the specified par 
 * This function is needed after SetLayout and SetFont etc. */
-void LyXText::RedoParagraphs(LyXCursor cur, LyXParagraph * endpar)
+void LyXText::RedoParagraphs(LyXCursor const & cur,
+			     LyXParagraph const * endpar) const
 {
 	Row * tmprow2;
 	LyXParagraph * tmppar, * first_phys_par;
@@ -815,28 +824,29 @@ void LyXText::RedoParagraphs(LyXCursor cur, LyXParagraph * endpar)
    
 	if (!tmprow->previous){
 		first_phys_par = FirstParagraph();   // a trick/hack for UNDO
-	}
-	else {
+	} else {
 		first_phys_par = tmprow->par->FirstPhysicalPar();
-		/* find the first row of the paragraph */
+		// find the first row of the paragraph
 		if (first_phys_par != tmprow->par)
-			while (tmprow->previous && tmprow->previous->par != first_phys_par)  {
+			while (tmprow->previous
+			       && tmprow->previous->par != first_phys_par) {
 				tmprow = tmprow->previous;
 				y -= tmprow->height;
 			}
-		while (tmprow->previous && tmprow->previous->par == first_phys_par)  {
+		while (tmprow->previous
+		       && tmprow->previous->par == first_phys_par) {
 			tmprow = tmprow->previous;
 			y -= tmprow->height;
 		}
 	}
    
-	/* we can set the refreshing parameters now */
+	// we can set the refreshing parameters now
 	status = LyXText::NEED_MORE_REFRESH;
 	refresh_y = y;
-	refresh_row = tmprow->previous;	       /* the real refresh row will
-						* be deleted, so I store
-						* the previous here */ 
-	/* remove it */
+	refresh_row = tmprow->previous;	 /* the real refresh row will
+					    be deleted, so I store
+					    the previous here */ 
+	// remove it
 	if (tmprow->next)
 		tmppar = tmprow->next->par;
 	else
@@ -849,9 +859,9 @@ void LyXText::RedoParagraphs(LyXCursor cur, LyXParagraph * endpar)
 			tmppar = 0;
 	}  
    
-	/* remove the first one */
-	tmprow2 = tmprow;		       /* this is because tmprow->previous
-						* can be 0 */
+	// remove the first one
+	tmprow2 = tmprow;     /* this is because tmprow->previous
+				 can be 0 */
 	tmprow = tmprow->previous;
 	RemoveRow(tmprow2);
    
@@ -865,17 +875,14 @@ void LyXText::RedoParagraphs(LyXCursor cur, LyXParagraph * endpar)
 			while (tmprow->next && tmprow->next->par == tmppar)
 				tmprow = tmprow->next;
 			tmppar = tmppar->Next();
-	 
 		}
-	}
-	while (tmppar != endpar);
+	} while (tmppar != endpar);
    
-	/* this is because of layout changes */ 
+	// this is because of layout changes
 	if (refresh_row) {
 		refresh_y -= refresh_row->height;
 		SetHeightOfRow(refresh_row);   
-	}
-	else {
+	} else {
 		refresh_row = firstrow;
 		refresh_y = 0;
 		SetHeightOfRow(refresh_row);   
@@ -904,7 +911,7 @@ int LyXText::FullRebreak()
 * realize, that you left an empty paragraph, they will delete it.
 * They also delet the corresponding row */
    
-/* need the selection cursor: */ 
+// need the selection cursor:
 void LyXText::SetSelection()
 {
 	if (!selection) {
@@ -915,7 +922,7 @@ void LyXText::SetSelection()
    
 	selection = True;
    
-	/* first the toggling area */ 
+	// first the toggling area
 	if (cursor.y < last_sel_cursor.y ||
 	    (cursor.y == last_sel_cursor.y && cursor.x < last_sel_cursor.x)) {
 		toggle_end_cursor = last_sel_cursor;
@@ -928,7 +935,7 @@ void LyXText::SetSelection()
    
 	last_sel_cursor = cursor;
    
-	/* and now the whole selection */ 
+	// and now the whole selection
    
 	if (sel_cursor.y < cursor.y ||
 	    (sel_cursor.y == cursor.y && sel_cursor.x < cursor.x)) {
@@ -940,27 +947,27 @@ void LyXText::SetSelection()
 		sel_start_cursor = cursor;
 	}
    
-	/* a selection with no contents is not a selection */ 
+	// a selection with no contents is not a selection
 	if (sel_start_cursor.x == sel_end_cursor.x && 
 	    sel_start_cursor.y == sel_end_cursor.y)
 		selection = false;
 }
 
 
-void LyXText::ClearSelection()
+void LyXText::ClearSelection() const
 {
 	selection = false;
 	mark_set = false;
 }
 
 
-void  LyXText::CursorHome()
+void LyXText::CursorHome() const
 {
 	SetCursor(cursor.par, cursor.row->pos);
 }
 
 
-void  LyXText::CursorEnd()
+void  LyXText::CursorEnd() const
 {
 	if (!cursor.row->next || cursor.row->next->par != cursor.row->par)
 		SetCursor(cursor.par, RowLast(cursor.row) + 1);
@@ -991,7 +998,7 @@ void  LyXText::CursorEnd()
 }
 
 
-void  LyXText::CursorTop()
+void  LyXText::CursorTop() const
 {
 	while (cursor.par->Previous())
 		cursor.par = cursor.par->Previous();
@@ -999,7 +1006,7 @@ void  LyXText::CursorTop()
 }
 
 
-void  LyXText::CursorBottom()
+void  LyXText::CursorBottom() const
 {
 	while (cursor.par->Next())
 		cursor.par = cursor.par->Next();
@@ -1010,21 +1017,20 @@ void  LyXText::CursorBottom()
 /* returns a pointer to the row near the specified y-coordinate
 * (relative to the whole text). y is set to the real beginning
 * of this row */ 
-Row * LyXText::GetRowNearY(long & y)
+Row * LyXText::GetRowNearY(long & y) const
 {
 	Row * tmprow;
 	long tmpy;
    
-	if (currentrow){
+	if (currentrow) {
 		tmprow = currentrow;
 		tmpy = currentrow_y;
-	}
-	else {
+	} else {
 		tmprow = firstrow;
 		tmpy = 0;
 	}
 
-	if (tmpy<= y)
+	if (tmpy <= y)
 		while (tmprow->next && tmpy + tmprow->height <= y) {
 			tmpy += tmprow->height;
 			tmprow = tmprow->next;
@@ -1038,17 +1044,18 @@ Row * LyXText::GetRowNearY(long & y)
 	currentrow = tmprow;
 	currentrow_y = tmpy;
 
-	y = tmpy;			       /* return the real y  */
+	y = tmpy;   // return the real y
 	return tmprow;
 }
    
 
-void LyXText::ToggleFree(LyXFont font, bool toggleall)
+void LyXText::ToggleFree(LyXFont const & font, bool toggleall)
 {
 	// If the mask is completely neutral, tell user
 	if (font == LyXFont(LyXFont::ALL_IGNORE)){
 		// Could only happen with user style
-		current_view->owner()->getMiniBuffer()->Set(_("No font change defined. Use Character under"
+		current_view->owner()->getMiniBuffer()
+			->Set(_("No font change defined. Use Character under"
 				  " the Layout menu to define font change."));
 		return;
 	}
@@ -1073,7 +1080,8 @@ void LyXText::ToggleFree(LyXFont font, bool toggleall)
 
 LyXParagraph::size_type LyXText::BeginningOfMainBody(LyXParagraph * par) const
 {
-	if (textclasslist.Style(parameters->textclass, par->GetLayout()).labeltype != LABEL_MANUAL)
+	if (textclasslist.Style(parameters->textclass,
+				par->GetLayout()).labeltype != LABEL_MANUAL)
 		return 0;
 	else
 		return par->BeginningOfMainBody();
@@ -1110,36 +1118,41 @@ void LyXText::MeltFootnoteEnvironment()
 
 	char first_footnote_par_is_not_empty = tmppar->next->text.size();
    
-	while (tmppar->next && tmppar->next->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
-		tmppar = tmppar->next;	       /* I use next instead of Next(),
-						* because there cannot be any
-						* footnotes in a footnote
-						* environment */
+	while (tmppar->next
+	       && tmppar->next->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
+		tmppar = tmppar->next;	 /* I use next instead of Next(),
+					  * because there cannot be any
+					  * footnotes in a footnote
+					  * environment */
 		tmppar->footnoteflag = LyXParagraph::NO_FOOTNOTE;
       
 		/* remember the captions and empty paragraphs */
 		if ((textclasslist.Style(parameters->textclass,
-				    tmppar->GetLayout()).labeltype == LABEL_SENSITIVE)
+					 tmppar->GetLayout())
+		     .labeltype == LABEL_SENSITIVE)
 		    || !tmppar->Last())
 			tmppar->SetLayout(0);
 	}
    
-	/* now we will paste the ex-footnote, if the layouts allow it */
-	/* first restore the layout of the paragraph right behind the footnote*/ 
+	// now we will paste the ex-footnote, if the layouts allow it
+	// first restore the layout of the paragraph right behind
+	// the footnote
 	if (tmppar->next) 
 		tmppar->next->MakeSameLayout(cursor.par);
 
-	/* first the end */ 
+	// first the end
 	if ((!tmppar->GetLayout() && !tmppar->table)
-	    || (tmppar->Next() && (!tmppar->Next()->Last()
-				   || tmppar->Next()->HasSameLayout(tmppar)))) {
-		if (tmppar->Next()->Last() && tmppar->Next()->IsLineSeparator(0))
+	    || (tmppar->Next()
+		&& (!tmppar->Next()->Last()
+		    || tmppar->Next()->HasSameLayout(tmppar)))) {
+		if (tmppar->Next()->Last()
+		    && tmppar->Next()->IsLineSeparator(0))
 			tmppar->Next()->Erase(0);
 		tmppar->PasteParagraph();
 	}
 
-	tmppar = tmppar->Next();	       /* make shure tmppar cannot be touched
-						* by the pasting of the beginning */
+	tmppar = tmppar->Next();  /* make sure tmppar cannot be touched
+				   * by the pasting of the beginning */
 
 	/* then the beginning */ 
 	/* if there is no space between the text and the footnote, so we insert
@@ -1179,7 +1192,8 @@ void LyXText::MeltFootnoteEnvironment()
 
 void LyXText::SetParagraph(bool line_top, bool line_bottom,
 			   bool pagebreak_top, bool pagebreak_bottom,
-			   VSpace space_top, VSpace space_bottom,
+			   VSpace const & space_top,
+			   VSpace const & space_bottom,
 			   LyXAlignment align, 
 			   string labelwidthstring,
 			   bool noindent) 
@@ -1201,16 +1215,17 @@ void LyXText::SetParagraph(bool line_top, bool line_bottom,
 		}
 	}
 	else if (endpar) {
-		endpar = endpar->Next(); /* because of parindents etc.  */
+		endpar = endpar->Next(); // because of parindents etc.
 	}
    
 	SetUndo(Undo::EDIT, 
-		sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->previous, 
+		sel_start_cursor
+		.par->ParFromPos(sel_start_cursor.pos)->previous, 
 		undoendpar);
 
 	
 	LyXParagraph * tmppar = sel_end_cursor.par;
-	while (tmppar != sel_start_cursor.par->FirstPhysicalPar()->Previous()){
+	while (tmppar != sel_start_cursor.par->FirstPhysicalPar()->Previous()) {
 		SetCursor(tmppar->FirstPhysicalPar(), 0);
 		status = LyXText::NEED_MORE_REFRESH;
 		refresh_row = cursor.row;
@@ -1223,7 +1238,7 @@ void LyXText::SetParagraph(bool line_top, bool line_bottom,
 			cursor.par->pagebreak_bottom = pagebreak_bottom;
 			cursor.par->added_space_top = space_top;
 			cursor.par->added_space_bottom = space_bottom;
-				/* does the layout allow the new alignment? */
+			// does the layout allow the new alignment?
 			if (align == LYX_ALIGN_LAYOUT)
 				align = textclasslist
 					.Style(parameters->textclass,
@@ -1280,11 +1295,12 @@ void LyXText::SetParagraphExtraOpt(int type,
 		}
 	}
 	else if (endpar) {
-		endpar = endpar->Next(); /* because of parindents etc.  */
+		endpar = endpar->Next(); // because of parindents etc.
 	}
    
 	SetUndo(Undo::EDIT, 
-		sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->previous, 
+		sel_start_cursor
+		.par->ParFromPos(sel_start_cursor.pos)->previous, 
 		undoendpar);
 	
 	tmppar = sel_end_cursor.par;
@@ -1319,32 +1335,31 @@ void LyXText::SetParagraphExtraOpt(int type,
 }
 
 
-static char const * alphaCounter(int n){
-  static char result[2];
-  result[1] = 0;
-  if (n == 0)
-    return "";
-  else {
-    result[0] = 64 + n;
-    if (n > 26)
-      return "??";
-  }
-  return result;
+static char const * alphaCounter(int n) {
+	static char result[2];
+	result[1] = 0;
+	if (n == 0)
+		return "";
+	else {
+		result[0] = 'A' + n;
+		if (n > 'Z')
+			return "??";
+	}
+	return result;
 }
 
 
-/* set the counter of a paragraph. This includes the labels */ 
-void LyXText::SetCounter(LyXParagraph * par)
+// set the counter of a paragraph. This includes the labels
+void LyXText::SetCounter(LyXParagraph * par) const
 {
-	int i;
-   
-	/* this is only relevant for the beginning of paragraph */ 
+	// this is only relevant for the beginning of paragraph
 	par = par->FirstPhysicalPar();
 
 	LyXLayout const & layout = textclasslist.Style(parameters->textclass, 
-					   par->GetLayout());
+						       par->GetLayout());
 
-	LyXTextClass const & textclass = textclasslist.TextClass(parameters->textclass);
+	LyXTextClass const & textclass =
+		textclasslist.TextClass(parameters->textclass);
 
 	/* copy the prev-counters to this one, unless this is the start of a 
 	   footnote or of a bibliography or the very first paragraph */
@@ -1356,13 +1371,13 @@ void LyXText::SetCounter(LyXParagraph * par)
 				par->Previous()->GetLayout()
 				).labeltype != LABEL_BIBLIO
 		 && layout.labeltype == LABEL_BIBLIO)) {
-		for (i = 0; i<10; i++) {
+		for (int i = 0; i<10; i++) {
 			par->setCounter(i, par->Previous()->GetFirstCounter(i));
 		}
 		par->appendix = par->Previous()->FirstPhysicalPar()->appendix;
 		if (!par->appendix && par->start_of_appendix){
 		  par->appendix = true;
-		  for (i = 0; i<10; i++) {
+		  for (int i = 0; i<10; i++) {
 		    par->setCounter(i, 0);
 		  }  
 		}
@@ -1370,7 +1385,7 @@ void LyXText::SetCounter(LyXParagraph * par)
 		par->itemdepth = par->Previous()->FirstPhysicalPar()->itemdepth;
 	}
 	else {
-		for (i = 0; i<10; i++) {
+		for (int i = 0; i<10; i++) {
 			par->setCounter(i, 0);
 		}  
 		par->appendix = par->start_of_appendix;
@@ -1433,7 +1448,7 @@ void LyXText::SetCounter(LyXParagraph * par)
 		/* reset the counters.
 		 * A depth change is like a breaking layout
 		 */
-		for (i = 6 + par->enumdepth + 1; i<10;i++)
+		for (int i = 6 + par->enumdepth + 1; i<10;i++)
 			par->setCounter(i, 0);
 	}
    
@@ -1453,7 +1468,7 @@ void LyXText::SetCounter(LyXParagraph * par)
 	/* is it a layout that has an automatic label ? */ 
 	if (layout.labeltype >=  LABEL_FIRST_COUNTER) {
       
-		i = layout.labeltype - LABEL_FIRST_COUNTER;
+		int i = layout.labeltype - LABEL_FIRST_COUNTER;
 		if (i >= 0 && i<= parameters->secnumdepth) {
 			par->incCounter(i);	// increment the counter  
 	 
@@ -1465,8 +1480,7 @@ void LyXText::SetCounter(LyXParagraph * par)
 					par->labelstring = layout.labelstring();
 				else
 					par->labelstring.clear();
-                        }
-			else {
+                        } else {
 				if (!layout.labelstring_appendix().empty())
 					par->labelstring = layout.labelstring_appendix();
 				else
@@ -1519,8 +1533,7 @@ void LyXText::SetCounter(LyXParagraph * par)
 					sprintf(s, "%d.", par->getCounter(i));
                                         break;
 				}
-			}
-			else {
+			} else {
 				switch (2 * LABEL_FIRST_COUNTER - textclass.maxcounter() + i) {
 				case LABEL_COUNTER_CHAPTER:
 					sprintf(s, "%s",
@@ -1570,13 +1583,13 @@ void LyXText::SetCounter(LyXParagraph * par)
 			par->labelstring += s;
 			delete[] s;
 	 
-			for (i++; i<10; i++) {
-				/* reset the following counters  */
+			for (i++; i < 10; ++i) {
+				// reset the following counters
 				par->setCounter(i, 0);
 			}
 		} else if (layout.labeltype < LABEL_COUNTER_ENUMI) {
-			for (i++; i<10; i++) {
-				/* reset the following counters  */
+			for (i++; i < 10; ++i) {
+				// reset the following counters
 				par->setCounter(i, 0);
 			}
 		} else if (layout.labeltype == LABEL_COUNTER_ENUMI) {
@@ -1617,34 +1630,33 @@ void LyXText::SetCounter(LyXParagraph * par)
 			par->labelstring = s;
 			delete[] s;
 
-			for (i += par->enumdepth + 1;i<10;i++)
+			for (i += par->enumdepth + 1; i < 10; ++i)
 				par->setCounter(i, 0);  /* reset the following counters  */
 	 
 		} 
 	} else if (layout.labeltype == LABEL_BIBLIO) {// ale970302
-	    i = LABEL_COUNTER_ENUMI - LABEL_FIRST_COUNTER + par->enumdepth;
-	    par->incCounter(i);
-	    int number = par->getCounter(i);
-	    if (!par->bibkey)
-	      par->bibkey = new InsetBibKey();
-	    par->bibkey->setCounter(number);
-	    par->labelstring = layout.labelstring();
-	    
-	    // In biblio should't be following counters but...
-	}						
-	else  {
+		int i = LABEL_COUNTER_ENUMI - LABEL_FIRST_COUNTER + par->enumdepth;
+		par->incCounter(i);
+		int number = par->getCounter(i);
+		if (!par->bibkey)
+			par->bibkey = new InsetBibKey();
+		par->bibkey->setCounter(number);
+		par->labelstring = layout.labelstring();
+		
+		// In biblio should't be following counters but...
+	} else {
 		string s = layout.labelstring();
-      
-		/* the caption hack: */
+		
+		// the caption hack:
       
 		if (layout.labeltype == LABEL_SENSITIVE) {
 			if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 			    && (par->footnotekind == LyXParagraph::FIG
-			    || par->footnotekind == LyXParagraph::WIDE_FIG))
+				|| par->footnotekind == LyXParagraph::WIDE_FIG))
 				s = "Figure:";
 			else if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 				 && (par->footnotekind == LyXParagraph::TAB
-				 || par->footnotekind == LyXParagraph::WIDE_TAB))
+				     || par->footnotekind == LyXParagraph::WIDE_TAB))
 				s = "Table:";
 			else if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 				 && par->footnotekind == LyXParagraph::ALGORITHM)
@@ -1653,14 +1665,13 @@ void LyXText::SetCounter(LyXParagraph * par)
 				/* par->SetLayout(0); 
 				   s = layout->labelstring;  */
 				s = "Senseless: "; 
-	   
 			}
 		}
 		par->labelstring = s;
-      
+		
 		/* reset the enumeration counter. They are always resetted
 		 * when there is any other layout between */ 
-		for (i = 6 + par->enumdepth; i<10;i++)
+		for (int i = 6 + par->enumdepth; i < 10; ++i)
 			par->setCounter(i, 0);
 	}
 }
@@ -1668,7 +1679,7 @@ void LyXText::SetCounter(LyXParagraph * par)
 
 /* Updates all counters BEHIND the row. Changed paragraphs
 * with a dynamic left margin will be rebroken. */ 
-void LyXText::UpdateCounters(Row * row)
+void LyXText::UpdateCounters(Row * row) const
 {
 	LyXParagraph * par;
 	if (!row) {
@@ -1676,7 +1687,8 @@ void LyXText::UpdateCounters(Row * row)
 		par = row->par;
 	}
 	else {
-		if (row->par->next && row->par->next->footnoteflag != LyXParagraph::OPEN_FOOTNOTE) {
+		if (row->par->next
+		    && row->par->next->footnoteflag != LyXParagraph::OPEN_FOOTNOTE) {
 			par = row->par->LastPhysicalPar()->Next();
 		} else {
 			par = row->par->next;
@@ -1686,9 +1698,9 @@ void LyXText::UpdateCounters(Row * row)
 	while (par) {
 		while (row->par != par)
 			row = row->next;
-      
+		
 		SetCounter(par);
-      
+		
 		/* now  check for the headline layouts. remember that they
 		 * have a dynamic left margin */ 
 		if (!par->IsDummy()
@@ -1767,37 +1779,40 @@ void LyXText::pasteEnvironmentType()
 
 void LyXText::CutSelection(bool doclear)
 {
-	/* This doesn't make sense, if there is no selection */ 
-	if (!selection) {
+	// This doesn't make sense, if there is no selection
+	if (!selection)
 		return;
-	}
    
-	/* OK, we have a selection. This is always between sel_start_cursor
-	 * and sel_end cursor */
+	// OK, we have a selection. This is always between sel_start_cursor
+	// and sel_end cursor
 	LyXParagraph * tmppar;
    
-	/* Check whether there are half footnotes in the selection */
+	// Check whether there are half footnotes in the selection
 	if (sel_start_cursor.par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 	    || sel_end_cursor.par->footnoteflag != LyXParagraph::NO_FOOTNOTE){
 		tmppar = sel_start_cursor.par;
 		while (tmppar != sel_end_cursor.par){
-			if (tmppar->footnoteflag != sel_end_cursor.par->footnoteflag){
-				WriteAlert(_("Impossible operation"), _("Don't know what to do with half floats."), _("sorry."));
+			if (tmppar->footnoteflag != sel_end_cursor.par->footnoteflag) {
+				WriteAlert(_("Impossible operation"),
+					   _("Don't know what to do with half floats."),
+					   _("sorry."));
 				return;
 			}
 			tmppar = tmppar->Next();
 		}
 	}
 
-	/* table stuff -- begin*/
-	if (sel_start_cursor.par->table || sel_end_cursor.par->table){
-		if ( sel_start_cursor.par != sel_end_cursor.par){
-			WriteAlert(_("Impossible operation"), _("Don't know what to do with half tables."), _("sorry."));
+	/* table stuff -- begin */
+	if (sel_start_cursor.par->table || sel_end_cursor.par->table) {
+		if ( sel_start_cursor.par != sel_end_cursor.par) {
+			WriteAlert(_("Impossible operation"),
+				   _("Don't know what to do with half tables."),
+				   _("sorry."));
 			return;
 		}
 		sel_start_cursor.par->table->Reinit();
 	}
-	/* table stuff -- end*/
+	/* table stuff -- end */
 
 	// make sure that the depth behind the selection are restored, too
 	LyXParagraph * endpar = sel_end_cursor.par->LastPhysicalPar()->Next();
@@ -1808,136 +1823,152 @@ void LyXText::CutSelection(bool doclear)
 			endpar = endpar->LastPhysicalPar()->Next();
 			undoendpar = endpar;
 		}
-	}
-	else if (endpar) {
-		endpar = endpar->Next();	       /* because of parindents etc.  */
+	} else if (endpar) {
+		endpar = endpar->Next(); // because of parindents etc.
 	}
    
 	SetUndo(Undo::DELETE, 
-		sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->previous, 
+		sel_start_cursor
+		.par->ParFromPos(sel_start_cursor.pos)->previous, 
 		undoendpar);
    
-	/* delete the simple_cut_buffer */ 
+	// delete the simple_cut_buffer
 	DeleteSimpleCutBuffer();
    
-	/* set the textclass */
+	// set the textclass
 	simple_cut_buffer_textclass = parameters->textclass;
 
 #ifdef WITH_WARNINGS
 #warning Asger: Make cut more intelligent here.
 #endif
-/* 
-White paper for "intelligent" cutting:
+	/* 
+	   White paper for "intelligent" cutting:
+	   
+	   Example: "This is our text."
+	   Using " our " as selection, cutting will give "This istext.".
+	   Using "our" as selection, cutting will give "This is text.".
+	   Using " our" as selection, cutting will give "This is text.".
+	   Using "our " as selection, cutting will give "This is text.".
+	   
+	   All those four selections will (however) paste identically:
+	   Pasting with the cursor right after the "is" will give the
+	   original text with all four selections.
+	   
+	   The rationale is to be intelligent such that words are copied,
+	   cut and pasted in a functional manner.
+	   
+	   This is not implemented yet. (Asger)
 
-Example: "This is our text."
-Using " our " as selection, cutting will give "This istext.".
-Using "our" as selection, cutting will give "This is text.".
-Using " our" as selection, cutting will give "This is text.".
-Using "our " as selection, cutting will give "This is text.".
+	   The changes below sees to do a lot of what you want. However
+	   I have not verified that all cases work as they should:
+	             - cut in single row
+		     - cut in multiple row
+		     - cut with insets
+		     - cut across footnotes and paragraph
+	   My simplistic tests show that the idea are basically sound but
+	   there are some items to fix up...we only need to find them
+	   first. (Lgb)
+	*/
 
-All those four selections will (however) paste identically:
-Pasting with the cursor right after the "is" will give the
-original text with all four selections.
-
-The rationale is to be intelligent such that words are copied,
-cut and pasted in a functional manner.
-
-This is not implemented yet.
-*/
-
+#ifndef FIX_DOUBLE_SPACE
 	bool space_wrapped =
 		sel_end_cursor.par->IsLineSeparator(sel_end_cursor.pos);
 	if (sel_end_cursor.pos > 0
 	    && sel_end_cursor.par->IsLineSeparator(sel_end_cursor.pos - 1)) {
-		sel_end_cursor.pos--;  /* please break before a space at
-					* the end */
+		// please break before a space at the end
+		sel_end_cursor.pos--;
 		space_wrapped = true;
 	}
-
 	// cut behind a space if there is one
 	while (sel_start_cursor.par->Last() > sel_start_cursor.pos
 	       && sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos)
 	       && (sel_start_cursor.par != sel_end_cursor.par
 		   || sel_start_cursor.pos < sel_end_cursor.pos))
 		sel_start_cursor.pos++; 
-   
-	/* there are two cases: cut only within one paragraph or
-	 * more than one paragraph */
+#endif
+	// there are two cases: cut only within one paragraph or
+	// more than one paragraph
    
 	if (sel_start_cursor.par->ParFromPos(sel_start_cursor.pos) 
 	    == sel_end_cursor.par->ParFromPos(sel_end_cursor.pos)) {
-		/* only within one paragraph */
+		// only within one paragraph
 		simple_cut_buffer = new LyXParagraph;
 		LyXParagraph::size_type i =
 			sel_start_cursor.pos;
-		for (; i< sel_end_cursor.pos; i++){
-			/* table stuff -- begin*/
+		for (; i < sel_end_cursor.pos; ++i) {
+			/* table stuff -- begin */
 			if (sel_start_cursor.par->table
 			    && sel_start_cursor.par->IsNewline(sel_start_cursor.pos)){
 				sel_start_cursor.par->CopyIntoMinibuffer(sel_start_cursor.pos);
 				sel_start_cursor.pos++;
 			} else {
-				/* table stuff -- end*/
+				/* table stuff -- end */
 				sel_start_cursor.par->CopyIntoMinibuffer(sel_start_cursor.pos);
 				sel_start_cursor.par->Erase(sel_start_cursor.pos);
 			}
 			simple_cut_buffer->InsertFromMinibuffer(simple_cut_buffer->Last());
 		}
-		/* check for double spaces */
+#ifdef FIX_DOUBLE_SPACES
+		// check for double spaces
 		if (sel_start_cursor.pos &&
-		    sel_start_cursor.par->Last()>sel_start_cursor.pos &&
+		    sel_start_cursor.par->Last() > sel_start_cursor.pos &&
 		    sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos - 1) &&
-		    sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos)){
+		    sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos)) {
 			sel_start_cursor.par->Erase(sel_start_cursor.pos);
 		}
 		if (space_wrapped)
 			simple_cut_buffer->InsertChar(i - sel_start_cursor.pos, ' ');
+#endif
 		endpar = sel_end_cursor.par->Next();
 	}
 	else {
-		/* cut more than one paragraph */ 
+		// cut more than one paragraph
    
 		sel_end_cursor.par->BreakParagraphConservative(sel_end_cursor.pos);
-		/* insert a space at the end if there was one */
+#ifndef FIX_DOUBLE_SPACE
+		// insert a space at the end if there was one
 		if (space_wrapped)
 			sel_end_cursor.par->InsertChar(sel_end_cursor.par->Last(), ' ');
-   
+#endif
 		sel_end_cursor.par = sel_end_cursor.par->Next();
 		sel_end_cursor.pos = 0;
    
 		cursor = sel_end_cursor;
-   
-		/* please break behind a space, if there is one. The space should
-		 * be copied too */ 
+
+#ifndef FIX_DOUBLE_SPACE
+		// please break behind a space, if there is one.
+		// The space should be copied too
 		if (sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos))
 			sel_start_cursor.pos++;
    
-		sel_start_cursor.par->BreakParagraphConservative(sel_start_cursor.pos);
+		sel_start_cursor.par
+			->BreakParagraphConservative(sel_start_cursor.pos);
 		if (!sel_start_cursor.pos
 		    || sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos - 1)
 		    || sel_start_cursor.par->IsNewline(sel_start_cursor.pos - 1)) {
 			sel_start_cursor.par->Next()->InsertChar(0, ' ');
 		}
-   
-		/* store the endparagraph for redoing later */
+#endif
+		// store the endparagraph for redoing later
 		endpar = sel_end_cursor.par->Next();   /* needed because
-							* the sel_end_
-							* cursor.par
-							* will be pasted!*/
+							  the sel_end_
+							  cursor.par
+							  will be pasted! */
    
-		/*store the selection */ 
-		simple_cut_buffer = sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->next;
+		// store the selection
+		simple_cut_buffer = sel_start_cursor.par
+			->ParFromPos(sel_start_cursor.pos)->next;
 		simple_cut_buffer->previous = 0;
 		sel_end_cursor.par->previous->next = 0;
 
-		/* cut the selection */ 
+		// cut the selection
 		sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->next 
 			= sel_end_cursor.par;
    
 		sel_end_cursor.par->previous 
 			= sel_start_cursor.par->ParFromPos(sel_start_cursor.pos);
 
-		/* care about footnotes */
+		// care about footnotes
 		if (simple_cut_buffer->footnoteflag) {
 			LyXParagraph *tmppar = simple_cut_buffer;
 			while (tmppar){
@@ -1946,10 +1977,10 @@ This is not implemented yet.
 			}
 		}
 
-		/* the cut selection should begin with standard layout */
+		// the cut selection should begin with standard layout
 		simple_cut_buffer->Clear(); 
    
-		/* paste the paragraphs again, if possible  */
+		// paste the paragraphs again, if possible
 		if (doclear)
 			sel_start_cursor.par->Next()->ClearParagraph();
 		if (sel_start_cursor.par->FirstPhysicalPar()->HasSameLayout(sel_start_cursor.par->Next())
@@ -1957,17 +1988,17 @@ This is not implemented yet.
 		    !sel_start_cursor.par->Next()->Last())
 			sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->PasteParagraph();
 
-   
-		/* maybe a forgotten blank */
+#ifdef FIX_DOUBLE_SPACE
+		// maybe a forgotten blank
 		if (sel_start_cursor.pos 
 		    && sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos)
 		    && sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos - 1)) {
 			sel_start_cursor.par->Erase(sel_start_cursor.pos);
 		}
+#endif
 	}   
 
-
-	/* sometimes necessary */
+	// sometimes necessary
 	if (doclear)
 		sel_start_cursor.par->ClearParagraph();
 
@@ -1983,14 +2014,12 @@ This is not implemented yet.
     
 void LyXText::CopySelection()
 {
-	LyXParagraph::size_type i = 0;
-	/* this doesnt make sense, if there is no selection */ 
-	if (!selection) {
+	// this doesnt make sense, if there is no selection
+	if (!selection)
 		return;
-	}
 
-	/* ok we have a selection. This is always between sel_start_cursor
-	 * and sel_end cursor */
+	// ok we have a selection. This is always between sel_start_cursor
+	// and sel_end cursor
 	LyXParagraph * tmppar;
    
 	/* check wether there are half footnotes in the selection */
@@ -1999,49 +2028,56 @@ void LyXText::CopySelection()
 		tmppar = sel_start_cursor.par;
 		while (tmppar != sel_end_cursor.par){
 			if (tmppar->footnoteflag != sel_end_cursor.par->footnoteflag){
-				WriteAlert(_("Impossible operation"), _("Don't know what to do with half floats."), _("sorry."));
+				WriteAlert(_("Impossible operation"),
+					   _("Don't know what to do with half floats."),
+					   _("sorry."));
 				return;
 			}
 			tmppar = tmppar->Next();
 		}
 	}
 
-	/* table stuff -- begin*/
+	/* table stuff -- begin */
 	if (sel_start_cursor.par->table || sel_end_cursor.par->table){
 		if ( sel_start_cursor.par != sel_end_cursor.par){
-			WriteAlert(_("Impossible operation"), _("Don't know what to do with half tables."), _("sorry."));
+			WriteAlert(_("Impossible operation"),
+				   _("Don't know what to do with half tables."),
+				   _("sorry."));
 			return;
 		}
 	}
-	/* table stuff -- end*/
+	/* table stuff -- end */
    
-	/* delete the simple_cut_buffer */ 
+	// delete the simple_cut_buffer
 	DeleteSimpleCutBuffer();
 
-	/* set the textclass */
+	// set the textclass
 	simple_cut_buffer_textclass = parameters->textclass;
 
+#ifdef FIX_DOUBLE_SPACE
 	// copy behind a space if there is one
 	while (sel_start_cursor.par->Last() > sel_start_cursor.pos
 	       && sel_start_cursor.par->IsLineSeparator(sel_start_cursor.pos)
 	       && (sel_start_cursor.par != sel_end_cursor.par
 		   || sel_start_cursor.pos < sel_end_cursor.pos))
 		sel_start_cursor.pos++; 
-
-	/* there are two cases: copy only within one paragraph or more than one paragraph */
+#endif
+	// there are two cases: copy only within one paragraph
+	// or more than one paragraph
 	if (sel_start_cursor.par->ParFromPos(sel_start_cursor.pos) 
 	    == sel_end_cursor.par->ParFromPos(sel_end_cursor.pos)) {
-		/* only within one paragraph */
+		// only within one paragraph
 		simple_cut_buffer = new LyXParagraph;
+		LyXParagraph::size_type i = 0;
 		for (i = sel_start_cursor.pos; i < sel_end_cursor.pos; ++i){
 			sel_start_cursor.par->CopyIntoMinibuffer(i);
 			simple_cut_buffer->InsertFromMinibuffer(i - sel_start_cursor.pos);
 		}
-	}
-	else {
-		/* copy more than one paragraph */ 
-		/* clone the paragraphs within the selection*/
-		tmppar = sel_start_cursor.par->ParFromPos(sel_start_cursor.pos);
+	} else {
+		// copy more than one paragraph
+		// clone the paragraphs within the selection
+		tmppar =
+			sel_start_cursor.par->ParFromPos(sel_start_cursor.pos);
 		simple_cut_buffer = tmppar->Clone();
 		LyXParagraph *tmppar2 = simple_cut_buffer;
      
@@ -2054,22 +2090,23 @@ void LyXText::CopySelection()
 		}
 		tmppar2->next = 0;
 
-		/* care about footnotes */
+		// care about footnotes
 		if (simple_cut_buffer->footnoteflag) {
 			tmppar = simple_cut_buffer;
 			while (tmppar){
-				tmppar->footnoteflag = LyXParagraph::NO_FOOTNOTE;
+				tmppar->footnoteflag =
+					LyXParagraph::NO_FOOTNOTE;
 				tmppar = tmppar->next;
 			}
 		}
      
-		/* the simple_cut_buffer paragraph is too big */
+		// the simple_cut_buffer paragraph is too big
 		LyXParagraph::size_type tmpi2 =
 			sel_start_cursor.par->PositionInParFromPos(sel_start_cursor.pos);
-		for (;tmpi2;tmpi2--)
+		for (; tmpi2; --tmpi2)
 			simple_cut_buffer->Erase(0);
 
-		/* now tmppar 2 is too big, delete all after sel_end_cursor.pos */
+		// now tmppar 2 is too big, delete all after sel_end_cursor.pos
      
 		tmpi2 = sel_end_cursor.par->PositionInParFromPos(sel_end_cursor.pos);
 		while (tmppar2->size() > tmpi2) {
@@ -2081,7 +2118,7 @@ void LyXText::CopySelection()
 
 void LyXText::PasteSelection()
 {
-	/* this does not make sense, if there is nothing to paste */ 
+	// this does not make sense, if there is nothing to paste
 	if (!simple_cut_buffer)
 		return;
 
@@ -2090,22 +2127,24 @@ void LyXText::PasteSelection()
 
 	LyXCursor tmpcursor;
 
-	/* be carefull with footnotes in footnotes */ 
+	// be carefull with footnotes in footnotes
 	if (cursor.par->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
       
-		/* check whether the cut_buffer includes a footnote */
+		// check whether the cut_buffer includes a footnote
 		tmppar = simple_cut_buffer;
-		while (tmppar && tmppar->footnoteflag == LyXParagraph::NO_FOOTNOTE)
+		while (tmppar
+		       && tmppar->footnoteflag == LyXParagraph::NO_FOOTNOTE)
 			tmppar = tmppar->next;
       
 		if (tmppar) {
 			WriteAlert(_("Impossible operation"),
-				   _("Can't paste float into float!"), _("Sorry."));
+				   _("Can't paste float into float!"),
+				   _("Sorry."));
 			return;
 		}
 	}
 
-	/* table stuff -- begin*/
+	/* table stuff -- begin */
 	if (cursor.par->table){
 		if (simple_cut_buffer->next){
 			WriteAlert(_("Impossible operation"),
@@ -2114,7 +2153,7 @@ void LyXText::PasteSelection()
 			return;
 		}
 	}
-	/* table stuff -- end*/
+	/* table stuff -- end */
    
 	SetUndo(Undo::INSERT, 
 		cursor.par->ParFromPos(cursor.pos)->previous, 
@@ -2122,17 +2161,18 @@ void LyXText::PasteSelection()
 
 	tmpcursor = cursor;
 
-	/* There are two cases: cutbuffer only one paragraph or many */
+	// There are two cases: cutbuffer only one paragraph or many
 	if (!simple_cut_buffer->next) {
-		/* only within a paragraph */
-     
-		/* please break behind a space, if there is one */
+		// only within a paragraph
+
+#ifndef FIX_DOUBLE_SPACE
+		// please break behind a space, if there is one
 		while (tmpcursor.par->Last() > tmpcursor.pos
 		       && tmpcursor.par->IsLineSeparator(tmpcursor.pos))
 			tmpcursor.pos++; 
-
+#endif
 		tmppar = simple_cut_buffer->Clone();
-		/* table stuff -- begin*/
+		/* table stuff -- begin */
 		bool table_too_small = false;
 		if (tmpcursor.par->table) {
 			while (simple_cut_buffer->text.size()
@@ -2153,22 +2193,26 @@ void LyXText::PasteSelection()
 				}
 			}
 		} else {
-			/* table stuff -- end*/
-			while (simple_cut_buffer->text.size()){
+			/* table stuff -- end */
+			// Some provisions should be done here for checking if we
+			// are inserting at the beginning of a paragraph. If there
+			// are a space at the beginning of the text to insert and we are
+			// inserting at the beginning of the paragraph the space should
+			// be removed.
+			while (simple_cut_buffer->text.size()) {
 				simple_cut_buffer->CutIntoMinibuffer(0);
 				simple_cut_buffer->Erase(0);
 				tmpcursor.par->InsertFromMinibuffer(tmpcursor.pos);
 				tmpcursor.pos++;
 			}
 		}
-
 		delete simple_cut_buffer;
 		simple_cut_buffer = tmppar;
 		endpar = tmpcursor.par->Next();
 	} else {
-		/* many paragraphs */
+		// many paragraphs
 
-		/* make a copy of the simple cut_buffer */
+		// make a copy of the simple cut_buffer
 		tmppar = simple_cut_buffer;
 		LyXParagraph * simple_cut_clone = tmppar->Clone();
 		LyXParagraph * tmppar2 = simple_cut_clone;
@@ -2187,51 +2231,54 @@ void LyXText::PasteSelection()
 			}
 		}
      
-		/* make sure there is no class difference */ 
+		// make sure there is no class difference
 		SwitchLayoutsBetweenClasses(simple_cut_buffer_textclass,
 					    parameters->textclass,
 					    simple_cut_buffer);
      
-		/* make the simple_cut_buffer exactly the same layout than
-		   the cursor paragraph */
+		// make the simple_cut_buffer exactly the same layout than
+		// the cursor paragraph
 		simple_cut_buffer->MakeSameLayout(cursor.par);
      
-		/* find the end of the buffer */ 
+		// find the end of the buffer
 		LyXParagraph *lastbuffer = simple_cut_buffer;
 		while (lastbuffer->Next())
 			lastbuffer = lastbuffer->Next();
      
-		/* find the physical end of the buffer */ 
+		// find the physical end of the buffer
 		lastbuffer = simple_cut_buffer;
 		while (lastbuffer->Next())
 			lastbuffer = lastbuffer->Next();
      
-		/* please break behind a space, if there is one. The space 
-		 * should be copied too */
-		if (cursor.par->Last() > cursor.pos && cursor.par->IsLineSeparator(cursor.pos))
+#ifndef FIX_DOUBLE_SPACE 
+		// Please break behind a space, if there is one. The space 
+		// should be copied too.
+		if (cursor.par->Last() > cursor.pos
+		    && cursor.par->IsLineSeparator(cursor.pos))
 			cursor.pos++; 
-     
+#endif
 		bool paste_the_end = false;
 
-		/* open the paragraph for inserting the simple_cut_buffer
-		   if necessary */
+		// open the paragraph for inserting the simple_cut_buffer
+		// if necessary
 		if (cursor.par->Last() > cursor.pos || !cursor.par->Next()){
 			cursor.par->BreakParagraphConservative(cursor.pos);
 			paste_the_end = true;
 		}
-     
-		/* be careful with double spaces */ 
+
+#ifndef FIX_DOUBLE_SPACE
+		// be careful with double spaces
 		if ((!cursor.par->Last()
 		     || cursor.par->IsLineSeparator(cursor.pos - 1)
 		     || cursor.par->IsNewline(cursor.pos - 1))
 		    && simple_cut_buffer->text.size()
 		    && simple_cut_buffer->IsLineSeparator(0))
 			simple_cut_buffer->Erase(0);
-     
-		/* set the end for redoing later */ 
+#endif
+		// set the end for redoing later
 		endpar = cursor.par->ParFromPos(cursor.pos)->next->Next();
      
-		/* paste it! */ 
+		// paste it!
 		lastbuffer->ParFromPos(lastbuffer->Last())->next = cursor.par->ParFromPos(cursor.pos)->next;
 		cursor.par->ParFromPos(cursor.pos)->next->previous = lastbuffer->ParFromPos(lastbuffer->Last());
      
@@ -2243,57 +2290,55 @@ void LyXText::PasteSelection()
      
 		cursor.par->ParFromPos(cursor.pos)->PasteParagraph();
      
-		/* store the new cursor position  */
+		// store the new cursor position
 		tmpcursor.par = lastbuffer;
 		tmpcursor.pos = lastbuffer->Last();
      
-		/* maybe some pasting */ 
+		// maybe some pasting
 		if (lastbuffer->Next() && paste_the_end) {
 			if (lastbuffer->Next()->HasSameLayout(lastbuffer)) {
-	 
-				/* be careful witth double spaces */ 
+#ifndef FIX_DOUBLE_SPACE
+				// be careful with double spaces
 				if ((!lastbuffer->Last()
 				     || lastbuffer->IsLineSeparator(lastbuffer->Last() - 1)
 				     || lastbuffer->IsNewline(lastbuffer->Last() - 1))
 				    && lastbuffer->Next()->Last()
 				    && lastbuffer->Next()->IsLineSeparator(0))
 					lastbuffer->Next()->Erase(0);
-	 
+#endif
 				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
 	 
-			}
-			else if (!lastbuffer->Next()->Last()) {
+			} else if (!lastbuffer->Next()->Last()) {
 				lastbuffer->Next()->MakeSameLayout(lastbuffer);
-	 
-				/* be careful witth double spaces */ 
+#ifndef FIX_DOUBLE_SPACE 
+				// be careful witth double spaces
 				if ((!lastbuffer->Last()
 				     || lastbuffer->IsLineSeparator(lastbuffer->Last() - 1)
 				     || lastbuffer->IsNewline(lastbuffer->Last() - 1))
 				    && lastbuffer->Next()->Last()
 				    && lastbuffer->Next()->IsLineSeparator(0))
 					lastbuffer->Next()->Erase(0);
-	 
+#endif
 				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
 	 
-			}
-			else if (!lastbuffer->Last()) {
+			} else if (!lastbuffer->Last()) {
 				lastbuffer->MakeSameLayout(lastbuffer->next);
-	 
-				/* be careful witth double spaces */ 
+#ifndef FIX_DOUBLE_SPACE
+				// be careful witth double spaces
 				if ((!lastbuffer->Last()
 				     || lastbuffer->IsLineSeparator(lastbuffer->Last() - 1)
 				     || lastbuffer->IsNewline(lastbuffer->Last() - 1))
 				    && lastbuffer->Next()->Last()
 				    && lastbuffer->Next()->IsLineSeparator(0))
 					lastbuffer->Next()->Erase(0);
-	 
+#endif
 				lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph();
 	 
 			}
 			else lastbuffer->Next()->ClearParagraph();
 		}
 
-		/* restore the simple cut buffer */
+		// restore the simple cut buffer
 		simple_cut_buffer = simple_cut_clone;
 	}
 
@@ -2309,17 +2354,17 @@ void LyXText::PasteSelection()
 }
    
 
-/* returns a pointer to the very first LyXParagraph */ 
-LyXParagraph * LyXText::FirstParagraph()
+// returns a pointer to the very first LyXParagraph
+LyXParagraph * LyXText::FirstParagraph() const
 {
 	return params->paragraph;
 }
 
 
-/* returns true if the specified string is at the specified position */
+// returns true if the specified string is at the specified position
 bool LyXText::IsStringInText(LyXParagraph * par,
 			     LyXParagraph::size_type pos,
-			     char const * str)
+			     char const * str) const
 {
 	if (par) {
 		int i = 0;
@@ -2334,7 +2379,7 @@ bool LyXText::IsStringInText(LyXParagraph * par,
 }
 
 
-/* sets the selection over the number of characters of string, no check!! */
+// sets the selection over the number of characters of string, no check!!
 void LyXText::SetSelectionOverString(char const * string)
 {
 	sel_cursor = cursor;
@@ -2344,13 +2389,13 @@ void LyXText::SetSelectionOverString(char const * string)
 }
 
 
-/* simple replacing. The font of the first selected character is used */
+// simple replacing. The font of the first selected character is used
 void LyXText::ReplaceSelectionWithString(char const * str)
 {
 	SetCursorParUndo();
 	FreezeUndo();
 
-	if (!selection) { /* create a dummy selection */
+	if (!selection) { // create a dummy selection
 		sel_end_cursor = cursor;
 		sel_start_cursor = cursor;
 	}
@@ -2373,9 +2418,9 @@ void LyXText::ReplaceSelectionWithString(char const * str)
 }
 
 
-/* if the string can be found: return true and set the cursor to
- * the new position */
-bool LyXText::SearchForward(char const * str)
+// if the string can be found: return true and set the cursor to
+// the new position
+bool LyXText::SearchForward(char const * str) const
 {
 	LyXParagraph * par = cursor.par;
 	LyXParagraph::size_type pos = cursor.pos;
@@ -2396,29 +2441,28 @@ bool LyXText::SearchForward(char const * str)
 }
 
 
-bool LyXText::SearchBackward(char const * string)
+bool LyXText::SearchBackward(char const * string) const
 {
 	LyXParagraph * par = cursor.par;
 	int pos = cursor.pos;
 
 	do {
-		if (pos>0)
-			pos--;
+		if (pos > 0)
+			--pos;
 		else {
 			// We skip empty paragraphs (Asger)
 			do {
 				par = par->Previous();
 				if (par)
-					pos = par->Last()-1;
-			} while (par && pos<0);
+					pos = par->Last() - 1;
+			} while (par && pos < 0);
 		}
 	} while (par && !IsStringInText(par, pos, string));
   
 	if (par) {
 		SetCursor(par, pos);
 		return true;
-	}
-	else
+	} else
 		return false;
 }
 
@@ -2433,7 +2477,7 @@ void LyXText::InsertStringA(LyXParagraph::TextContainer const & text)
 }
 
 
-/* needed to insert the selection */
+// needed to insert the selection
 void LyXText::InsertStringA(char const * s)
 {
 	string str(s);
@@ -2442,65 +2486,62 @@ void LyXText::InsertStringA(char const * s)
 	LyXParagraph::size_type a = 0;
         int cell = 0;
 	LyXParagraph * endpar = cursor.par->Next();
-
+	
 	SetCursorParUndo();
-
-	char flag = textclasslist.Style(parameters->textclass, 
-				   cursor.par->GetLayout()).isEnvironment();
-	/* only to be sure, should not be neccessary */ 
+	
+	char flag =
+		textclasslist.Style(parameters->textclass, 
+				    cursor.par->GetLayout()).isEnvironment();
+	// only to be sure, should not be neccessary
 	ClearSelection();
-   
-	/* insert the string, don't insert doublespace */ 
+	
+	// insert the string, don't insert doublespace
 	string::size_type i = 0;
 	while (i < str.length()) {
 		if (str[i] != '\n') {
 			if (str[i] == ' ' 
-			    && i+1<str.length() && str[i+1]!= ' '
-			    && pos && par->GetChar(pos-1)!= ' ') {
+			    && i + 1 < str.length() && str[i + 1] != ' '
+			    && pos && par->GetChar(pos - 1)!= ' ') {
 				par->InsertChar(pos,' ');
-				pos++;
-			}
-                        else if (par->table) {
-                            if (str[i] == '\t') {
-                                while((pos < par->size()) &&
-                                      (par->GetChar(pos) != LyXParagraph::META_NEWLINE))
-                                        ++pos;
-                                if (pos < par->size())
-                                        ++pos;
-                                else // no more fields to fill skip the rest
-                                        break;
-                            } else if ((str[i] != 13) &&
-                                ((str[i] & 127) >= ' ')) {
-                                par->InsertChar(pos, str[i]);
-                                pos++;
-                            }
-                        }
-			else if (str[i] == ' ') {
+				++pos;
+			} else if (par->table) {
+				if (str[i] == '\t') {
+					while((pos < par->size()) &&
+					      (par->GetChar(pos) != LyXParagraph::META_NEWLINE))
+						++pos;
+					if (pos < par->size())
+						++pos;
+					else // no more fields to fill skip the rest
+						break;
+				} else if ((str[i] != 13) &&
+					   ((str[i] & 127) >= ' ')) {
+					par->InsertChar(pos, str[i]);
+					++pos;
+				}
+                        } else if (str[i] == ' ') {
 				par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
-				pos++;
-			}
-			else if (str[i] == '\t') {
-				for (a = pos; a < (pos/8 + 1) * 8 ; ++a) {
+				++pos;
+			} else if (str[i] == '\t') {
+				for (a = pos; a < (pos / 8 + 1) * 8 ; ++a) {
 					par->InsertChar(a, LyXParagraph::META_PROTECTED_SEPARATOR);
 				}
 				pos = a;
-			}
-			else if (str[i]!= 13 && 
-				 // Ignore unprintables
-				 (str[i] & 127) >= ' ') {
+			} else if (str[i]!= 13 && 
+				   // Ignore unprintables
+				   (str[i] & 127) >= ' ') {
 				par->InsertChar(pos, str[i]);
-				pos++;
+				++pos;
 			}
 		} else {
                         if (par->table) {
-                                if (i+1>=str.length()) {
-                                        pos++;
+                                if (i + 1 >= str.length()) {
+                                        ++pos;
                                         break;
                                 }
                                 while((pos < par->size()) &&
                                       (par->GetChar(pos) != LyXParagraph::META_NEWLINE))
-                                        pos++;
-                                pos++;
+                                        ++pos;
+                                ++pos;
                                 cell = NumberOfCell(par, pos);
                                 while((pos < par->size()) &&
                                       !(par->table->IsFirstCell(cell))) {
@@ -2516,17 +2557,16 @@ void LyXText::InsertStringA(char const * s)
                         } else {
                                 if (!par->text.size()) {
                                         par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
-                                        pos++;
+                                        ++pos;
                                 }
                                 par->BreakParagraph(pos, flag);
                                 par = par->Next();
                                 pos = 0;
                         }
 		}
-      
-		i++;
+		++i;
 	}
-   
+	
 	RedoParagraphs(cursor, endpar);
 	SetCursor(cursor.par, cursor.pos);
 	sel_cursor = cursor;
@@ -2557,16 +2597,16 @@ void LyXText::InsertStringB(char const * s)
 	while (i < str.length()) {
 		if (str[i] == '\t' && !par->table)
 			str[i] = ' ';
-		if (str[i] == ' ' && i+1 < str.length() && str[i + 1] == ' ')
+		if (str[i] == ' ' && i + 1 < str.length() && str[i + 1] == ' ')
 			str[i] = 13;
-		if (str[i] == '\n' && i+1 < str.length() && !par->table){
+		if (str[i] == '\n' && i + 1 < str.length() && !par->table){
 			if (str[i + 1] != '\n') {
 				if (str[i - 1] != ' ')
 					str[i] = ' ';
 				else
 					str[i] = 13;
 			}
-			while (i+1 < str.length() 
+			while (i + 1 < str.length() 
 			       && (str[i + 1] == ' ' 
 				   || str[i + 1] == '\t'
 				   || str[i + 1] == '\n' 
@@ -2581,7 +2621,7 @@ void LyXText::InsertStringB(char const * s)
 }
 
 
-bool LyXText::GotoNextError()
+bool LyXText::GotoNextError() const
 {
 	LyXCursor res = cursor;
 	do {
@@ -2601,19 +2641,17 @@ bool LyXText::GotoNextError()
 		SetCursor(res.par, res.pos);
 		return true;
 	}
-   
 	return false;
 }
 
 
-bool LyXText::GotoNextNote()
+bool LyXText::GotoNextNote() const
 {
 	LyXCursor res = cursor;
 	do {
-		if (res.pos < res.par->Last()-1) {
+		if (res.pos < res.par->Last() - 1) {
 			res.pos++;
-		}
-		else  {
+		} else  {
 			res.par = res.par->Next();
 			res.pos = 0;
 		}
@@ -2626,7 +2664,6 @@ bool LyXText::GotoNextNote()
 		SetCursor(res.par, res.pos);
 		return true;
 	}
-   
 	return false;
 }
 
@@ -2687,11 +2724,11 @@ void LyXText::CheckParagraph(LyXParagraph * par,
 		LyXParagraph::size_type z;
 		Row * row = GetRow(par, pos, y);
      
-		/* is there a break one row above */ 
+		// is there a break one row above
 		if (row->previous && row->previous->par == row->par) {
 			z = NextBreakPoint(row->previous, paperwidth);
 			if ( z >= row->pos) {
-				/* set the dimensions of the row above  */ 
+				// set the dimensions of the row above
 				y -= row->previous->height;
 				refresh_y = y;
 				refresh_row = row->previous;
@@ -2699,7 +2736,8 @@ void LyXText::CheckParagraph(LyXParagraph * par,
        
 				BreakAgain(row->previous);
 
-				/* set the cursor again. Otherwise dungling pointers are possible */
+				// set the cursor again. Otherwise
+				// dangling pointers are possible
 				SetCursor(cursor.par, cursor.pos);
 				sel_cursor = cursor;
 				return;
@@ -2717,8 +2755,10 @@ void LyXText::CheckParagraph(LyXParagraph * par,
 		else
 			status = LyXText::NEED_MORE_REFRESH; 
    
-		/* check the special right address boxes */
-		if (textclasslist.Style(parameters->textclass, par->GetLayout()).margintype == MARGIN_RIGHT_ADDRESS_BOX) {
+		// check the special right address boxes
+		if (textclasslist.Style(parameters->textclass,
+					par->GetLayout()).margintype
+		    == MARGIN_RIGHT_ADDRESS_BOX) {
 			tmpcursor.par = par;
 			tmpcursor.row = row;
 			tmpcursor.y = y;
@@ -2730,10 +2770,10 @@ void LyXText::CheckParagraph(LyXParagraph * par,
    
 	}
 
-	/* set the cursor again. Otherwise dangling pointers are possible */
+	// set the cursor again. Otherwise dangling pointers are possible
 	// also set the selection
    
-	if (selection){
+	if (selection) {
 		tmpcursor = cursor;
 		SetCursorIntern(sel_cursor.par, sel_cursor.pos);
 		sel_cursor = cursor; 
@@ -2749,21 +2789,21 @@ void LyXText::CheckParagraph(LyXParagraph * par,
 }
 
 
-/* returns 0 if inset wasn't found */
+// returns 0 if inset wasn't found
 int LyXText::UpdateInset(Inset * inset)
 {
-	/* first check the current paragraph */
+	// first check the current paragraph
 	int pos = cursor.par->GetPositionOfInset(inset);
 	if (pos != -1){
 		CheckParagraph(cursor.par, pos);
 		return 1;
 	}
   
-	/* check every paragraph */
+	// check every paragraph
   
 	LyXParagraph * par = FirstParagraph();
 	do {
-		/* make sure the paragraph is open */
+		// make sure the paragraph is open
 		if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
 			pos = par->GetPositionOfInset(inset);
 			if (pos != -1){
@@ -2779,7 +2819,7 @@ int LyXText::UpdateInset(Inset * inset)
 
 
 void LyXText::SetCursor(LyXParagraph * par,
-			LyXParagraph::size_type pos)
+			LyXParagraph::size_type pos) const
 {
 	LyXCursor old_cursor = cursor;
 	SetCursorIntern(par, pos);
@@ -2787,14 +2827,15 @@ void LyXText::SetCursor(LyXParagraph * par,
 }
 
 
-void LyXText::SetCursorIntern(LyXParagraph * par, LyXParagraph::size_type pos)
+void LyXText::SetCursorIntern(LyXParagraph * par,
+			      LyXParagraph::size_type pos) const
 {
 	long y;
 	Row * row;
 	int left_margin;
 	LyXParagraph * tmppar;
    
-	/* correct the cursor position if impossible */
+	// correct the cursor position if impossible
 	if (pos > par->Last()){
 		tmppar = par->ParFromPos(pos);
 		pos = par->PositionInParFromPos(pos);
@@ -2902,7 +2943,7 @@ void LyXText::SetCursorIntern(LyXParagraph * par, LyXParagraph::size_type pos)
 }
 
 
-void LyXText::SetCursorFromCoordinates(int x, long y)
+void LyXText::SetCursorFromCoordinates(int x, long y) const
 {
 	LyXCursor old_cursor = cursor;
    
@@ -2935,7 +2976,7 @@ void LyXText::SetCursorFromCoordinates(int x, long y)
 }
 
 
-void LyXText::CursorLeft()
+void LyXText::CursorLeft() const
 {
 	CursorLeftIntern();
         if (cursor.par->table) {
@@ -2948,7 +2989,7 @@ void LyXText::CursorLeft()
 }
 
 
-void LyXText::CursorLeftIntern()
+void LyXText::CursorLeftIntern() const
 {
 	if (cursor.pos > 0) {
 		SetCursor(cursor.par, cursor.pos - 1);
@@ -2959,7 +3000,7 @@ void LyXText::CursorLeftIntern()
 }
 
 
-void LyXText::CursorRight()
+void LyXText::CursorRight() const
 {
 	CursorRightIntern();
         if (cursor.par->table) {
@@ -2972,7 +3013,7 @@ void LyXText::CursorRight()
 }
 
 
-void LyXText::CursorRightIntern()
+void LyXText::CursorRightIntern() const
 {
 	if (cursor.pos < cursor.par->Last()) {
 		SetCursor(cursor.par, cursor.pos + 1);
@@ -2983,7 +3024,7 @@ void LyXText::CursorRightIntern()
 }
 
 
-void LyXText::CursorUp()
+void LyXText::CursorUp() const
 {
 	SetCursorFromCoordinates(cursor.x_fix, 
 				 cursor.y - cursor.row->baseline - 1);
@@ -2997,7 +3038,7 @@ void LyXText::CursorUp()
 }
 
 
-void LyXText::CursorDown()
+void LyXText::CursorDown() const
 {
         if (cursor.par->table &&
             cursor.par->table->ShouldBeVeryLastRow(NumberOfCell(cursor.par, cursor.pos)) &&
@@ -3024,7 +3065,7 @@ void LyXText::CursorDown()
 }
 
 
-void LyXText::CursorUpParagraph()
+void LyXText::CursorUpParagraph() const
 {
 	if (cursor.pos > 0) {
 		SetCursor(cursor.par, 0);
@@ -3035,7 +3076,7 @@ void LyXText::CursorUpParagraph()
 }
 
 
-void LyXText::CursorDownParagraph()
+void LyXText::CursorDownParagraph() const
 {
 	if (cursor.par->Next()) {
 		SetCursor(cursor.par->Next(), 0);
@@ -3046,147 +3087,192 @@ void LyXText::CursorDownParagraph()
 
 
 
-void LyXText::DeleteEmptyParagraphMechanism(LyXCursor old_cursor)
+void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 {
-    bool deleted = false;
+	bool deleted = false;
 	
-    /* this is the delete-empty-paragraph-mechanism. */ 
-    if (selection)
-        return;
+	// this is the delete-empty-paragraph-mechanism.
+	if (selection) return;
 
-    // Paragraph should not be deleted if empty
-    if ((textclasslist.Style(parameters->textclass,
-                        old_cursor.par->GetLayout())).keepempty)
-        return;
+#ifdef FIX_DOUBLE_SPACE
+	/* Ok I'll put some comments here about what is missing.
+	   I have fixed BackSpace (and thus Delete) to not delete
+	   double-spaces automagically. I have also changed Cut,
+	   Copy and Paste to hopefully do some sensible things.
+	   There are still some small problems that can lead to
+	   double spaces stored in the document file or space at
+	   the beginning of paragraphs. This happens if you have
+	   the cursor betwenn to spaces and then save. Or if you
+	   cut and paste and the selection have a space at the
+	   beginning and then save right after the paste. I am
+	   sure none of these are very hard to fix, but I will
+	   put out 1.1.4pre2 with FIX_DOUBLE_SPACE defined so
+	   that I can get some feedback. (Lgb)
+	*/
 
-    LyXCursor tmpcursor;
+	// If old_cursor.pos == 0 and old_cursor.pos(1) == LineSeparator
+	// delete the LineSeparator.
+	// MISSING
 
-    if (old_cursor.par != cursor.par) {
-        if ( (old_cursor.par->Last() == 0
-              || (old_cursor.par->Last() == 1
-                  && (old_cursor.par->IsLineSeparator(0))))
-             && old_cursor.par->FirstPhysicalPar()
-             == old_cursor.par->LastPhysicalPar()) {
+	// If old_cursor.pos == 1 and old_cursor.pos(0) == LineSeparator
+	// delete the LineSeparator.
+	// MISSING
+
+	// If the pos around the old_cursor were spaces, delete one of them.
+	if (!(old_cursor.par == cursor.par && old_cursor.pos == cursor.pos)
+	    && old_cursor.pos > 0
+	    && old_cursor.pos < old_cursor.par->Last()
+	    && old_cursor.par->IsLineSeparator(old_cursor.pos)
+	    && old_cursor.par->IsLineSeparator(old_cursor.pos - 1)) {
+		old_cursor.par->Erase(old_cursor.pos - 1);
+		RedoParagraphs(old_cursor, old_cursor.par->Next());
+		// or RedoDrawingOfParagraph(old_cursor);
+		// correct cursor
+		if (old_cursor.par == cursor.par &&
+		    cursor.pos > old_cursor.pos)
+			SetCursor(cursor.par, cursor.pos - 1);
+		else
+			SetCursor(cursor.par, cursor.pos);
+		return;
+	}
+#endif
+	//
+	// Paragraph should not be deleted if empty
+	if ((textclasslist.Style(parameters->textclass,
+				 old_cursor.par->GetLayout())).keepempty)
+		return;
+
+	LyXCursor tmpcursor;
+
+	if (old_cursor.par != cursor.par) {
+		if ( (old_cursor.par->Last() == 0
+		      || (old_cursor.par->Last() == 1
+			  && (old_cursor.par->IsLineSeparator(0))))
+		     && old_cursor.par->FirstPhysicalPar()
+		     == old_cursor.par->LastPhysicalPar()) {
 			
-            /* ok, we will delete anything */ 
+			// ok, we will delete anything
 			
-            // make sure that you do not delete any environments
-            if ((old_cursor.par->footnoteflag != LyXParagraph::OPEN_FOOTNOTE &&
-                 !(old_cursor.row->previous 
-                   && old_cursor.row->previous->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)
-                 && !(old_cursor.row->next 
-                      && old_cursor.row->next->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE))
-                || 
-                (old_cursor.par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE &&
-                 ((old_cursor.row->previous 
-                   && old_cursor.row->previous->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)
-                  || 
-                  (old_cursor.row->next
-                   && old_cursor.row->next->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE))
-                 )){
-                status = LyXText::NEED_MORE_REFRESH;
-                deleted = true;
+			// make sure that you do not delete any environments
+			if ((old_cursor.par->footnoteflag != LyXParagraph::OPEN_FOOTNOTE &&
+			     !(old_cursor.row->previous 
+			       && old_cursor.row->previous->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)
+			     && !(old_cursor.row->next 
+				  && old_cursor.row->next->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE))
+			    || 
+			    (old_cursor.par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE &&
+			     ((old_cursor.row->previous 
+			       && old_cursor.row->previous->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)
+			      || 
+			      (old_cursor.row->next
+			       && old_cursor.row->next->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE))
+				    )) {
+				status = LyXText::NEED_MORE_REFRESH;
+				deleted = true;
 				
-                if (old_cursor.row->previous) {
-                    refresh_row = old_cursor.row->previous;
-                    refresh_y = old_cursor.y - old_cursor.row->baseline - refresh_row->height;
-                    tmpcursor = cursor;
-                    cursor = old_cursor; // that undo can restore the right cursor position
-                    LyXParagraph *endpar = old_cursor.par->next;
-                    if (endpar && endpar->GetDepth()) {
-                        while (endpar && endpar->GetDepth()) {
-                            endpar = endpar->LastPhysicalPar()->Next();
-                        }
-                    }
-                    SetUndo(Undo::DELETE,
-                            old_cursor.par->previous,
-                            endpar);
-                    cursor = tmpcursor;
+				if (old_cursor.row->previous) {
+					refresh_row = old_cursor.row->previous;
+					refresh_y = old_cursor.y - old_cursor.row->baseline - refresh_row->height;
+					tmpcursor = cursor;
+					cursor = old_cursor; // that undo can restore the right cursor position
+					LyXParagraph * endpar = old_cursor.par->next;
+					if (endpar && endpar->GetDepth()) {
+						while (endpar && endpar->GetDepth()) {
+							endpar = endpar->LastPhysicalPar()->Next();
+						}
+					}
+					SetUndo(Undo::DELETE,
+						old_cursor.par->previous,
+						endpar);
+					cursor = tmpcursor;
 
-                    /* delete old row */ 
-                    RemoveRow(old_cursor.row);
-                    if (params->paragraph == old_cursor.par) {
-                        params->paragraph = params->paragraph->next;
-                    }
-                    /* delete old par */ 
-                    delete old_cursor.par;
+					// delete old row
+					RemoveRow(old_cursor.row);
+					if (params->paragraph == old_cursor.par) {
+						params->paragraph = params->paragraph->next;
+					}
+					// delete old par
+					delete old_cursor.par;
 					
-                    /* Breakagain the next par. Needed
-                     * because of the parindent that
-                     * can occur or dissappear. The
-                     * next row can change its height,
-                     * if there is another layout before */
-                    if (refresh_row->next) {
-                        BreakAgain(refresh_row->next);
-                        UpdateCounters(refresh_row);
-                    }
-                    SetHeightOfRow(refresh_row);
-                }
-                else {
-                    refresh_row = old_cursor.row->next;
-                    refresh_y = old_cursor.y - old_cursor.row->baseline;
+					/* Breakagain the next par. Needed
+					 * because of the parindent that
+					 * can occur or dissappear. The
+					 * next row can change its height,
+					 * if there is another layout before */
+					if (refresh_row->next) {
+						BreakAgain(refresh_row->next);
+						UpdateCounters(refresh_row);
+					}
+					SetHeightOfRow(refresh_row);
+				} else {
+					refresh_row = old_cursor.row->next;
+					refresh_y = old_cursor.y - old_cursor.row->baseline;
 					
-                    tmpcursor = cursor;
-                    cursor = old_cursor; // that undo can restore the right cursor position
-                    LyXParagraph *endpar = old_cursor.par->next;
-                    if (endpar && endpar->GetDepth()) {
-                        while (endpar && endpar->GetDepth()) {
-                            endpar = endpar->LastPhysicalPar()->Next();
-                        }
-                    }
-                    SetUndo(Undo::DELETE,
-                            old_cursor.par->previous,
-                            endpar);
-                    cursor = tmpcursor;
+					tmpcursor = cursor;
+					cursor = old_cursor; // that undo can restore the right cursor position
+					LyXParagraph *endpar = old_cursor.par->next;
+					if (endpar && endpar->GetDepth()) {
+						while (endpar && endpar->GetDepth()) {
+							endpar = endpar->LastPhysicalPar()->Next();
+						}
+					}
+					SetUndo(Undo::DELETE,
+						old_cursor.par->previous,
+						endpar);
+					cursor = tmpcursor;
 
-                    /* delete old row */ 
-                    RemoveRow(old_cursor.row);
-                    /* delete old par */ 
-                    if (params->paragraph == old_cursor.par) {
-                        params->paragraph = params->paragraph->next;
-                    }
-                    delete old_cursor.par;
+					// delete old row
+					RemoveRow(old_cursor.row);
+					// delete old par
+					if (params->paragraph == old_cursor.par) {
+						params->paragraph = params->paragraph->next;
+					}
+					delete old_cursor.par;
 					
-                    /* Breakagain the next par. Needed because of
-                     * the parindent that can occur or dissappear.
-                     * The next row can change its height, if there
-                     * is another layout before */ 
-                    if (refresh_row) {
-                        BreakAgain(refresh_row);
-                        UpdateCounters(refresh_row->previous);
-                    }
-                }
+					/* Breakagain the next par. Needed
+					   because of the parindent that can
+					   occur or dissappear.
+					   The next row can change its height,
+					   if there is another layout before
+					*/ 
+					if (refresh_row) {
+						BreakAgain(refresh_row);
+						UpdateCounters(refresh_row->previous);
+					}
+				}
 				
-				/* correct cursor y */
-                SetCursor(cursor.par, cursor.pos);
-		     
+				// correct cursor y
+				SetCursor(cursor.par, cursor.pos);
+				
 				/* if (cursor.y > old_cursor.y)
 				   cursor.y -= old_cursor.row->height; */ 
 	 
-                if (sel_cursor.par  == old_cursor.par
-                    && sel_cursor.pos == sel_cursor.pos) {
-                    /* correct selection*/ 
-                    sel_cursor = cursor;
-                }
-            }
-       
-        }
-        if (!deleted){
-            if (old_cursor.par->ClearParagraph()){
-                RedoParagraphs(old_cursor, old_cursor.par->Next());
-				/* correct cursor y */
-                SetCursor(cursor.par, cursor.pos);
-                sel_cursor = cursor;
-            }
-        }
-    } else if (cursor.par->table && (cursor.row != old_cursor.row)) {
-        int cell = NumberOfCell(old_cursor.par, old_cursor.pos);
-        if (old_cursor.par->table->IsContRow(cell) &&
-            IsEmptyTableRow(&old_cursor)) {
-            RemoveTableRow(&old_cursor);
-            RedoParagraph();
-        }
-    }
+				if (sel_cursor.par  == old_cursor.par
+				    && sel_cursor.pos == sel_cursor.pos) {
+					// correct selection
+					sel_cursor = cursor;
+				}
+			}
+		}
+		if (!deleted) {
+			if (old_cursor.par->ClearParagraph()){
+				RedoParagraphs(old_cursor, old_cursor.par->Next());
+				// correct cursor y
+				SetCursor(cursor.par, cursor.pos);
+				sel_cursor = cursor;
+			}
+		}
+	}
+#if 0
+	else if (cursor.par->table && (cursor.row != old_cursor.row)) {
+		int cell = NumberOfCell(old_cursor.par, old_cursor.pos);
+		if (old_cursor.par->table->IsContRow(cell) &&
+		    IsEmptyTableRow(old_cursor)) {
+			RemoveTableRow(const_cast<LyXCursor*>(&old_cursor));
+			RedoParagraph();
+		}
+	}
+#endif
 }
 
 
@@ -3200,39 +3286,47 @@ LyXParagraph * LyXText::GetParFromID(int id)
 
 
 // undo functions
-bool  LyXText::TextUndo()
-{ // returns false if no undo possible
+bool LyXText::TextUndo()
+{
+	// returns false if no undo possible
 	Undo * undo = params->undostack.pop();
-	if (undo){
+	if (undo) {
 		FinishUndo();
 		if (!undo_frozen)
-			params->redostack.push(CreateUndo(undo->kind, 
-							  GetParFromID(undo->number_of_before_par),
-							  GetParFromID(undo->number_of_behind_par)));
+			params->redostack
+				.push(CreateUndo(undo->kind, 
+						 GetParFromID(undo->number_of_before_par),
+						 GetParFromID(undo->number_of_behind_par)));
 	}
 	return TextHandleUndo(undo);
 }
 
 
 bool LyXText::TextRedo()
-{ // returns false if no redo possible
+{
+	// returns false if no redo possible
 	Undo * undo = params->redostack.pop();
-	if (undo){
+	if (undo) {
 		FinishUndo();
 		if (!undo_frozen)
-			params->undostack.push(CreateUndo(undo->kind, 
-							  GetParFromID(undo->number_of_before_par),
-							  GetParFromID(undo->number_of_behind_par)));
+			params->undostack
+				.push(CreateUndo(undo->kind, 
+						 GetParFromID(undo->number_of_before_par),
+						 GetParFromID(undo->number_of_behind_par)));
 	}
 	return TextHandleUndo(undo);
 }
 
 
-bool LyXText::TextHandleUndo(Undo * undo){ // returns false if no undo possible
+bool LyXText::TextHandleUndo(Undo * undo)
+{
+	// returns false if no undo possible
 	bool result = false;
-	if (undo){
-		LyXParagraph * before = GetParFromID(undo->number_of_before_par); 
-		LyXParagraph * behind = GetParFromID(undo->number_of_behind_par); 
+	if (undo) {
+		LyXParagraph * before =
+			GetParFromID(undo->number_of_before_par); 
+		LyXParagraph * behind =
+			GetParFromID(undo->number_of_behind_par); 
 		LyXParagraph * tmppar;
 		LyXParagraph * tmppar2;
 		LyXParagraph * tmppar3;
@@ -3240,7 +3334,8 @@ bool LyXText::TextHandleUndo(Undo * undo){ // returns false if no undo possible
 		LyXParagraph * endpar;
 		LyXParagraph * tmppar5;
     
-		// if there's no before take the beginning of the document for redoing
+		// if there's no before take the beginning
+		// of the document for redoing
 		if (!before)
 			SetCursorIntern(FirstParagraph(), 0);
 
@@ -3350,25 +3445,28 @@ bool LyXText::TextHandleUndo(Undo * undo){ // returns false if no undo possible
 
 
 void LyXText::FinishUndo()
-{ // makes sure the next operation will be stored
+{
+	// makes sure the next operation will be stored
 	undo_finished = True;
 }
 
 
 void LyXText::FreezeUndo()
-{ // this is dangerous and for internal use only
+{
+	// this is dangerous and for internal use only
 	undo_frozen = True;
 }
 
 
 void LyXText::UnFreezeUndo()
-{ // this is dangerous and for internal use only
+{
+	// this is dangerous and for internal use only
 	undo_frozen = false;
 }
 
 
-void LyXText::SetUndo(Undo::undo_kind kind, LyXParagraph * before,
-		      LyXParagraph * behind)
+void LyXText::SetUndo(Undo::undo_kind kind, LyXParagraph const * before,
+		      LyXParagraph const * behind) const
 {
 	if (!undo_frozen)
 		params->undostack.push(CreateUndo(kind, before, behind));
@@ -3376,15 +3474,15 @@ void LyXText::SetUndo(Undo::undo_kind kind, LyXParagraph * before,
 }
 
 
-void LyXText::SetRedo(Undo::undo_kind kind, LyXParagraph * before,
-		      LyXParagraph * behind)
+void LyXText::SetRedo(Undo::undo_kind kind, LyXParagraph const * before,
+		      LyXParagraph const * behind)
 {
 	params->redostack.push(CreateUndo(kind, before, behind));
 }
 
 
-Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph * before,
-			  LyXParagraph * behind)
+Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph const * before,
+			  LyXParagraph const * behind) const
 {
 	int before_number = -1;
 	int behind_number = -1;
@@ -3430,16 +3528,17 @@ Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph * before,
 			end = end->next;
 	}
 
-	if (start && end && start != end->next && (before != behind || (!before && !behind))) {
+	if (start && end
+	    && start != end->next
+	    && (before != behind || (!before && !behind))) {
 		tmppar = start;
 		tmppar2 = tmppar->Clone();
 		tmppar2->id(tmppar->id());
 
-		// a memory optimization: Just store the layout information when only edit
+		// a memory optimization: Just store the layout information
+		// when only edit
 		if (kind == Undo::EDIT){
 			tmppar2->text.clear();
-			//tmppar2->text.erase(tmppar2->text.begin(),
-			//		    tmppar2->text.end());
 		}
 
 		undopar = tmppar2;
@@ -3448,26 +3547,25 @@ Undo * LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph * before,
 			tmppar = tmppar->next;
 			tmppar2->next = tmppar->Clone();
 			tmppar2->next->id(tmppar->id());
-			// a memory optimization: Just store the layout information when only edit
+			// a memory optimization: Just store the layout
+			// information when only edit
 			if (kind == Undo::EDIT){
 				tmppar2->next->text.clear();
-				//tmppar2->next->text.erase(tmppar2->next->text.begin(), tmppar2->next->text.end());
 			}
 			tmppar2->next->previous = tmppar2;
 			tmppar2 = tmppar2->next;
 		}
 		tmppar2->next = 0;
-	}
-	else
+	} else
 		undopar = 0; // nothing to replace (undo of delete maybe)
   
 	int cursor_par = cursor.par->ParFromPos(cursor.pos)->id();
 	int cursor_pos =  cursor.par->PositionInParFromPos(cursor.pos);
 
 	Undo * undo = new Undo(kind, 
-			      before_number, behind_number,  
-			      cursor_par, cursor_pos, 
-			      undopar);
+			       before_number, behind_number,  
+			       cursor_par, cursor_pos, 
+			       undopar);
   
 	undo_finished = false;
 	return undo;
@@ -3481,86 +3579,89 @@ void LyXText::SetCursorParUndo()
 		cursor.par->ParFromPos(cursor.pos)->next); 
 }
 
-void LyXText::RemoveTableRow(LyXCursor * cur)
+
+void LyXText::RemoveTableRow(LyXCursor * cur) const
 {
 	int cell = -1;
 	int cell_org = 0;
 	int ocell = 0;
     
-    /* move to the previous row */
-    int cell_act = NumberOfCell(cur->par, cur->pos);
-    if (cell < 0)
-        cell = cell_act;
-    while (cur->pos && !cur->par->IsNewline(cur->pos - 1))
-        cur->pos--;
-    while (cur->pos && 
-           !cur->par->table->IsFirstCell(cell_act)) {
-        cur->pos--;
-        while (cur->pos && !cur->par->IsNewline(cur->pos - 1))
-            cur->pos--;
-            --cell;
-            --cell_act;
-    }
-    /* now we have to pay attention if the actual table is the
-       main row of TableContRows and if yes to delete all of them */
-    if (!cell_org)
-        cell_org = cell;
-    do {
-        ocell = cell;
-        /* delete up to the next row */
-        while (cur->pos < cur->par->Last() && 
-               (cell_act == ocell
-                || !cur->par->table->IsFirstCell(cell_act))) {
-            while (cur->pos < cur->par->Last() &&
-                   !cur->par->IsNewline(cur->pos))
-                cur->par->Erase(cur->pos);
-            ++cell;
-            ++cell_act;
-            if (cur->pos < cur->par->Last())
-                cur->par->Erase(cur->pos);
-        }
-        if (cur->pos && cur->pos == cur->par->Last()) {
-            cur->pos--;
-            cur->par->Erase(cur->pos); // no newline at the very end!
-        }
-    } while (((cell + 1) < cur->par->table->GetNumberOfCells()) &&
-             !cur->par->table->IsContRow(cell_org) &&
-             cur->par->table->IsContRow(cell));
-    cur->par->table->DeleteRow(cell_org);
-    return;
+	// move to the previous row
+	int cell_act = NumberOfCell(cur->par, cur->pos);
+	if (cell < 0)
+		cell = cell_act;
+	while (cur->pos && !cur->par->IsNewline(cur->pos - 1))
+		cur->pos--;
+	while (cur->pos && 
+	       !cur->par->table->IsFirstCell(cell_act)) {
+		cur->pos--;
+		while (cur->pos && !cur->par->IsNewline(cur->pos - 1))
+			cur->pos--;
+		--cell;
+		--cell_act;
+	}
+	// now we have to pay attention if the actual table is the
+	//   main row of TableContRows and if yes to delete all of them
+	if (!cell_org)
+		cell_org = cell;
+	do {
+		ocell = cell;
+		// delete up to the next row
+		while (cur->pos < cur->par->Last() && 
+		       (cell_act == ocell
+			|| !cur->par->table->IsFirstCell(cell_act))) {
+			while (cur->pos < cur->par->Last() &&
+			       !cur->par->IsNewline(cur->pos))
+				cur->par->Erase(cur->pos);
+			++cell;
+			++cell_act;
+			if (cur->pos < cur->par->Last())
+				cur->par->Erase(cur->pos);
+		}
+		if (cur->pos && cur->pos == cur->par->Last()) {
+			cur->pos--;
+			cur->par->Erase(cur->pos); // no newline at very end!
+		}
+	} while (((cell + 1) < cur->par->table->GetNumberOfCells()) &&
+		 !cur->par->table->IsContRow(cell_org) &&
+		 cur->par->table->IsContRow(cell));
+	cur->par->table->DeleteRow(cell_org);
+	return;
 }
 
 
-bool LyXText::IsEmptyTableRow(LyXCursor * old_cursor) const
+#if 0
+bool LyXText::IsEmptyTableRow(LyXCursor const & old_cursor) const
 {
-	if (!old_cursor->par->table)
+	if (!old_cursor.par->table)
 		return false;
 #ifdef I_DONT_KNOW_IF_I_SHOULD_DO_THIS
-	int pos = old_cursor->pos;
-	int cell = NumberOfCell(old_cursor->par, pos);
-
+	int pos = old_cursor.pos;
+	int cell = NumberOfCell(old_cursor.par, pos);
+	
 	// search first charater of this table row
-	while (pos && !old_cursor->par->table->IsFirstCell(cell)) {
-		pos--;
-		while (pos && !old_cursor->par->IsNewline(pos-1))
-			pos--;
-		cell--;
+	while (pos && !old_cursor.par->table->IsFirstCell(cell)) {
+		--pos;
+		while (pos && !old_cursor.par->IsNewline(pos-1))
+			--pos;
+		--cell;
 	}
-	if (!old_cursor->par->IsNewline(pos))
+	if (!old_cursor.par->IsNewline(pos))
 		return false;
-	cell++;
-	pos++;
-	while ((pos < old_cursor->par->Last()) &&
-	       !old_cursor->par->table->IsFirstCell(cell)) {
-		if (!old_cursor->par->IsNewline(pos))
+	++cell;
+	++pos;
+	while ((pos < old_cursor.par->Last()) &&
+	       !old_cursor.par->table->IsFirstCell(cell)) {
+		if (!old_cursor.par->IsNewline(pos))
 			return false;
-		pos++;
-		cell++;
+		++pos;
+		++cell;
 	}
 	return true;
 #endif
 	return false;
 }
+#endif
 
 
 bool LyXText::IsEmptyTableCell() const
@@ -3574,20 +3675,20 @@ bool LyXText::IsEmptyTableCell() const
 
 
 void LyXText::toggleAppendix(){
-  LyXParagraph * par = cursor.par->FirstPhysicalPar();
-  bool start = !par->start_of_appendix;
+	LyXParagraph * par = cursor.par->FirstPhysicalPar();
+	bool start = !par->start_of_appendix;
 
-  /* ensure that we have only one start_of_appendix in this document */
-  LyXParagraph * tmp = FirstParagraph();
-  for (;tmp;tmp = tmp->next)
-    tmp->start_of_appendix = 0;
-  par->start_of_appendix = start;
+	// ensure that we have only one start_of_appendix in this document
+	LyXParagraph * tmp = FirstParagraph();
+	for (; tmp; tmp = tmp->next)
+		tmp->start_of_appendix = 0;
+	par->start_of_appendix = start;
 
-  /* we can set the refreshing parameters now */
-  status = LyXText::NEED_MORE_REFRESH;
-  refresh_y = 0;
-  refresh_row = 0; // not needed for full update
-  UpdateCounters(0);
-  SetCursor(cursor.par, cursor.pos);
+	// we can set the refreshing parameters now
+	status = LyXText::NEED_MORE_REFRESH;
+	refresh_y = 0;
+	refresh_row = 0; // not needed for full update
+	UpdateCounters(0);
+	SetCursor(cursor.par, cursor.pos);
 }
 

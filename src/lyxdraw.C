@@ -372,7 +372,6 @@ GC GetSelectionGC()
 		val.foreground= WhitePixel(fl_display,
 					   DefaultScreen(fl_display));
 	}
-	
 	val.function= GXcopy;
 	val.graphics_exposures = false;
 	if (!fast_selection && selection_color[0] != 0) {

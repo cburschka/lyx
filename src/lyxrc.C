@@ -822,10 +822,12 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				cursor_follows_scrollbar = lexrc.GetBool();
 			break;
+
 		case RC_FAST_SELECTION:
 			if (lexrc.next())
 				fast_selection = lexrc.GetBool();
 			break;
+
 		case RC_BACKGROUND_COLOR:
 			if (lexrc.next())
 				background_color = lexrc.GetString();

@@ -36,7 +36,6 @@
      (May 19 1996, 12:04, RvdK)
  */
  
-
 // These are globals. 
 LyXAction lyxaction;
 

@@ -53,4 +53,11 @@ private:
 	string pushedDir_;
 };
 
+// To avoid the wrong usage:
+// Path("/tmp");   // wrong
+// Path p("/tmp");  // right
+// we add this macro:
+#define Path(x) unnamed_Path;
+// Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
+
 #endif

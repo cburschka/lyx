@@ -12,6 +12,7 @@
 #include "lyx_gui_misc.h" // CancelCloseBoxCB + WriteAlert
 
 extern int mono_video;
+
 extern BufferView * current_view;
 FD_form_bullet * fd_form_bullet;
 
@@ -23,8 +24,8 @@ static int current_bullet_depth;
 void bulletForm()
 {
 	if (!fd_form_bullet) {
-		if (!mono_video 
-		    && (XpmVersion < 4
+		if (!mono_video &&
+		    (XpmVersion < 4
 		        || (XpmVersion == 4 && XpmRevision < 7))) {
 			WriteAlert(_("Sorry, your libXpm is too old."),
 			_("This feature requires xpm-4.7 (a.k.a 3.4g) or newer."),
@@ -224,8 +225,7 @@ void BulletPanelCB(FL_OBJECT * /*ob*/, long data)
 			new_panel += ".xbm";
 			fl_set_bmtable_file(fd_form_bullet->bmtable_bullet_panel, 6, 6,
 			       LibFileSearch("images", new_panel.c_str()).c_str());
-		}
-		else {
+		} else {
 			new_panel += ".xpm";
 			fl_set_bmtable_pixmap_file(fd_form_bullet->bmtable_bullet_panel, 6, 6,
 			       LibFileSearch("images", new_panel.c_str()).c_str());

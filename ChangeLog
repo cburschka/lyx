@@ -13,6 +13,49 @@
 	where a "struct utimbuf" is allocated with "new" and deleted with
 	"delete[]". 
 
+2000-01-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/text2.C (CutSelection): don't delete double spaces.
+	(PasteSelection): ditto
+	(CopySelection): ditto
+	
+	* src/text.C (Backspace): don't delete double spaces.
+
+	* src/lyxlex.C (next): fix a bug that were only present with
+	conformant std::istream::get to read comment lines, use
+	std::istream::getline instead. This seems to fix the problem.
+
+2000-01-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/text2.C (DeleteEmptyParagraphMechanism): fix for the "not
+	allowed to insert space before space" editing problem. Please read
+	commends at the beginning of the function. Comments about usage
+	are very welcome.
+
+	* src/text.C (InsertChar): fix for the "not allowed to insert
+	space before space" editing problem.
+
+	* src/text2.C (DeleteEmptyParagraphMechanism): when
+	IsEmptyTableRow can only return false this last "else if" will
+	always be a no-op. Commented out.
+
+	* src/text.C (RedoParagraph): As far as I can understand tmp
+	cursor is not really needed.
+
+	* src/lyxtext.[Ch] (IsEmptyTableCell): commented out. As used at
+	present it could only return false anyway. 
+	(several functions): Did something not so smart...added a const
+	specifier on a lot of methods.
+	
+	* src/paragraph.C (BreakParagraph): removed the tmp->text.reserve
+	and add a tmp->text.resize. The LyXParagraph constructor does the
+	resize for us.
+	(BreakParagraphConservative): ditto
+
+	* src/support/path.h (Path): add a define so that the wrong usage
+	"Path("/tmp") will be flagged as a compilation error:
+	"`unnamed_Path' undeclared (first use this function)"
+
 2000-01-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* config/lyxinclude.m4 (LYX_FUNC_PUTENV_ARGTYPE): fix the macro,

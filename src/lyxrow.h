@@ -24,7 +24,7 @@ struct Row {
 	unsigned short  baseline;
 	/** what is missing to a full row can be negative.
 	  Needed for hfills, flushright, block etc. */
-	int fill;
+	mutable int fill;
 	///
 	unsigned short  height;
 	///

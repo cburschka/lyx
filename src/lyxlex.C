@@ -261,9 +261,9 @@ bool LyXLex::next(bool esc)
 			c = cc;
 			if (c == '#') {
 				// Read rest of line (fast :-)
-				is.get(buff, sizeof(buff));
-				lyxerr[Debug::LYXLEX] << "Comment read: " << c
-						      << buff << endl;
+				is.getline(buff, sizeof(buff));
+				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
+						      << buff << "'" << endl;
 				++lineno;
 				continue;
 			}
@@ -371,9 +371,9 @@ bool LyXLex::next(bool esc)
 			
 			if (c == '#') {
 				// Read rest of line (fast :-)
-				is.get(buff, sizeof(buff));
-				lyxerr[Debug::LYXLEX] << "Comment read: " << c
-						      << buff << endl;
+				is.getline(buff, sizeof(buff));
+				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
+						      << buff << "'" << endl;
 				++lineno;
 				continue;
 			}
@@ -443,7 +443,7 @@ bool LyXLex::next(bool esc)
 		
 		if (status) return true;
 		
-		status = is.eof() ? LEX_FEOF: LEX_UNDEF;
+		status = is.eof() ? LEX_FEOF : LEX_UNDEF;
 		buff[0] = '\0';
 		return false;
 	}
