@@ -143,6 +143,9 @@ in there, and upgrading is highly recommended.
 
 - highlight the search string on opening the Find&Replace dialog
 
+- fix bug in 'Insert cross reference' dialog where the list of labels
+  and the buffer name may get out of sync
+
 - fix bug where cursor would jump when inserting fractions of
   superscripts in a math formula
 
