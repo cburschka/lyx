@@ -413,8 +413,14 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		return;
 	}
 
+	// call these methods so that insetWidth, insetAscent and
+	// insetDescent have the right values. 
+	width(bv, f);
+	ascent(bv, f);
+	descent(bv, f);
+
 	top_baseline = baseline;
-	top_y = baseline - ascent(bv, f);
+	top_y = baseline - insetAscent;
 
 	if (last_drawn_width != insetWidth) {
 		if (!cleared) 
