@@ -302,7 +302,7 @@ string const sanitizeLatexOption(string const & input)
 
 	// Strip any trailing commas
 	// "...foo,,,]" -> "...foo" ("...foo,,," may be empty)
-	static boost::regex const back("^(.*[^,])?(,*)([]] *)$");
+	static boost::regex const back("^(.*[^,])?,*[]] *$");
 	regex_match(output, what, back);
 	if (!what[0].matched) {
 		lyxerr << "Unable to sanitize LaTeX \"Option\": "
