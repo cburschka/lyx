@@ -23,6 +23,7 @@
 #include "debug.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
+#include "func_status.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "LyXAction.h"
@@ -190,7 +191,7 @@ void Toolbar::Pimpl::update()
 	for (; p != end; ++p) {
 		if (p->icon) {
 			int status = owner->getLyXFunc()->getStatus(p->action);
-			if (status & LyXFunc::ToggleOn) {
+			if (status & func_status::ToggleOn) {
 				// I'd like to use a different color
 				// here, but then the problem is to
 				// know how to use transparency with
@@ -203,7 +204,7 @@ void Toolbar::Pimpl::update()
 				fl_set_object_boxtype(p->icon, FL_UP_BOX);
 			}
 
-			if (status & LyXFunc::Disabled) {
+			if (status & func_status::Disabled) {
 				// Is there a way here to specify a
 				// mask in order to show that the
 				// button is disabled? (JMarc)

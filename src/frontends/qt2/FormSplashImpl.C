@@ -43,7 +43,7 @@ FormSplashBase::~FormSplashBase()
 }
 
 
-void FormSplashBase::mousePressEvent( QMouseEvent * e)
+void FormSplashBase::mousePressEvent( QMouseEvent * )
 {
    hide();
 }

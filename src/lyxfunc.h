@@ -10,6 +10,7 @@
 
 #include FORMS_H_LOCATION
 #include "commandtags.h"
+#include "func_status.h"
 #include "kbsequence.h"
 #include "insets/inset.h"
 #include "LString.h"
@@ -25,19 +26,6 @@ class LyXView;
 */
 class LyXFunc : public SigC::Object {
 public:
-	/// The status of a function.
-	enum func_status {
-		/// No problem
-		OK = 0,
-		///
-		Unknown = 1,
-		/// Command cannot be executed
-		Disabled = 2,
-		///
-		ToggleOn = 4,
-		///
-		ToggleOff = 8
-	};
 	///
 	explicit
 	LyXFunc(LyXView *);
@@ -59,9 +47,10 @@ public:
 
 	/// we need one internall which is called from inside LyXAction and
 	/// can contain the string argument.
-	func_status getStatus(int ac) const;
+	func_status::value_type getStatus(int ac) const;
 	///
-	func_status getStatus(int ac, string const & not_to_use_arg) const;
+	func_status::value_type getStatus(int ac, 
+					  string const & not_to_use_arg) const;
 	
 	/// The last key was meta
 	bool wasMetaKey() const;
@@ -183,13 +172,6 @@ inline
 void LyXFunc::setHintMessage(bool hm) 
 { 
 	show_sc = hm;
-}
-
-///
-inline
-void operator|=(LyXFunc::func_status & fs, LyXFunc::func_status f)
-{
-	fs = static_cast<LyXFunc::func_status>(fs | f);
 }
 
 #endif

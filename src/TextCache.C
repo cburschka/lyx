@@ -99,13 +99,13 @@ void TextCache::show(ostream & os, TextCache::value_type const & vt)
 
 void TextCache::add(Buffer * buf, int workwidth, LyXText * text)
 {
-	lyxerr.debug() << "TextCache::add " << text;
+	lyxerr[Debug::INFO] << "TextCache::add " << text;
 	if (bufferlist.isLoaded(buf)) {
 		cache[buf] = make_pair(workwidth, text);
-		lyxerr.debug() << " added" << endl;
+		lyxerr[Debug::INFO] << " added" << endl;
 	} else {
 		delete text;
-		lyxerr.debug() << " deleted" << endl;
+		lyxerr[Debug::INFO] << " deleted" << endl;
 	}
 }
 

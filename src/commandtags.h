@@ -12,6 +12,11 @@
 
 #include <iosfwd>
 
+#if 1
+// For NO_LATEX
+#include "lyxfont.h"
+#endif
+
 /** These are all the lyxfunctions (as enums).
     Please add new functions at the end of the enum, right
     before LFUN_LASTACTION.
@@ -49,7 +54,9 @@ enum kb_action {
 	LFUN_HFILL,
 	LFUN_DEPTH,
 	LFUN_FREE,     // 30
+#ifndef NO_LATEX
 	LFUN_TEX,
+#endif
 #if 0
 	LFUN_FOOTMELT, // schedule for deletion
 	LFUN_MARGINMELT, // schedule for deletion
@@ -293,7 +300,3 @@ enum kb_action {
 
 std::ostream & operator<<(std::ostream &, kb_action);
 #endif
-
-
-
-

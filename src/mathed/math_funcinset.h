@@ -15,9 +15,9 @@
 class MathFuncInset : public MathInset {
 public:
 	///
-	explicit MathFuncInset(string const & nm, short ot = LM_OT_FUNC);
+	explicit MathFuncInset(string const & nm, MathInsetTypes ot = LM_OT_FUNC);
 	///
-	MathInset *  Clone() const;
+	MathInset * Clone() const;
 	///
 	void draw(Painter &, int, int);
 	///

@@ -46,6 +46,15 @@ public:
 		///
 		CHANGED_IN_DRAW
 	};
+	///
+	enum word_location {
+		/// the word around the cursor
+		WHOLE_WORD,
+		/// the word begining from the cursor position
+		PARTIAL_WORD,
+		/// the next word (not yet used)
+		NEXT_WORD
+	};
 
 	/// Constructor
 	LyXText(BufferView *);
@@ -212,20 +221,6 @@ public:
 	  */
 	mutable LyXCursor cursor;
 
-#if 0
-	/* the selection cursor */
-	/// 
-	mutable bool selection;
-	///
-	mutable bool mark_set;
-
-	///
-	mutable LyXCursor sel_cursor;
-	///
-	mutable LyXCursor sel_start_cursor;
-	///
-	mutable LyXCursor sel_end_cursor;
-#else
 	/** The structrue that keeps track of the selections set. */
 	struct Selection {
 		bool set() const {
@@ -249,7 +244,7 @@ public:
 		
 	};
 	mutable Selection selection;
-#endif
+
 	/// needed for the toggling
 	LyXCursor last_sel_cursor;
 	///
@@ -264,6 +259,8 @@ public:
 	///
 	string const selectionAsString(Buffer const *) const;
 	
+	/// select the word we need depending on word_location
+	void getWord(LyXCursor & from, LyXCursor & to, word_location) const;
 	/// just selects the word the cursor is in
 	void selectWord(BufferView *);
 
@@ -316,6 +313,8 @@ public:
 	///
 	void cursorLeftOneWord(BufferView *) const;
 	///
+	void cursorLeftOneWord(LyXCursor &) const;
+	///
 	void cursorRightOneWord(BufferView *) const;
 	///
 	void cursorUpParagraph(BufferView *) const;
@@ -353,7 +352,7 @@ public:
 		text_uppercase = 2
 	};
 	/// Change the case of the word at cursor position.
-	void changeWordCase(BufferView *, TextCase action);
+	void changeCase(BufferView *, TextCase action);
 	///
 	void transposeChars(BufferView const &);
 	

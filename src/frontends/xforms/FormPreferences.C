@@ -2088,7 +2088,6 @@ FormPreferences::Paths::feedback(FL_OBJECT const * const ob) const
 		str = lyxrc.getDescription(LyXRC::RC_BACKUPDIR_PATH);
 	else if (ob == dialog_->input_serverpipe) {
 		str = lyxrc.getDescription(LyXRC::RC_SERVERPIPE);
-		str += " Enter either the input pipe, xxx.in, or the output pipe, xxx.out.";
 	}
 
 	return str;

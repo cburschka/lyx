@@ -5,6 +5,7 @@
 #include "math_defs.h"
 #include "math_parser.h"
 #include "support/lstrings.h"
+#include <iostream>
 
 namespace {
 
@@ -12,7 +13,7 @@ latexkeys const wordlist[] =
 {
 	{"setminus",  LM_TK_SYM, LM_setminus},
 	{"ldots",  LM_TK_DOTS, LM_ldots},
-	//{"limits",  LM_TK_LIMIT, 1 },
+	{"limits",  LM_TK_LIMIT, 1 },
 	{"stackrel",  LM_TK_STACK, 0},
 	{"ll",  LM_TK_SYM, LM_ll},
 	{"label",  LM_TK_LABEL, 0},
@@ -82,7 +83,7 @@ latexkeys const wordlist[] =
 	{"widehat",  LM_TK_WIDE, LM_widehat},
 	{"sin",  LM_TK_FUNC, 0},
 	{"asymp",  LM_TK_SYM, LM_asymp},
-	//{"nolimits",  LM_TK_LIMIT, 0 },
+	{"nolimits",  LM_TK_LIMIT, 0 },
 	{"perp",  LM_TK_MACRO, LM_perp},
 	{"wedge",  LM_TK_SYM, LM_wedge},
 	{"ln",  LM_TK_FUNC, 0},
@@ -282,14 +283,13 @@ latexkeys const wordlist[] =
 };
 
 
-
 struct symbolindex {
-	int   id;
+	unsigned int id;
 	short token;
 
-	symbolindex(int i, short t) : id(i), token(t)
+	symbolindex(unsigned int i, short t) : id(i), token(t)
 	{}
-	
+
 	bool operator<(symbolindex const & s) const
 	{
 		return (id < s.id) || (id == s.id && token < s.token);
@@ -307,7 +307,19 @@ struct init {
 	init() {
 		int const n = sizeof(wordlist)/sizeof(wordlist[0]);
 		for (latexkeys const * it = wordlist; it != wordlist + n; ++it) {
+			if (LatexkeyByName.find(it->name) != LatexkeyByName.end()) {
+				std::cerr << "math_hash.C: Bug: Duplicate entry: " 
+					  << it->name << std::endl;
+			}
 			LatexkeyByName[it->name] = it - wordlist;
+			if (it->id != 0 && 
+			    LatexkeyById.find(symbolindex(it->id, it->token)) !=
+			    LatexkeyById.end()) {
+				std::cerr << "math_hash.C: Bug: Duplicate entry: "
+					  << it->name << " Id: "
+					  << it->id << " token: " << it->token
+					  << std::endl;
+			}
 			LatexkeyById[symbolindex(it->id, it->token)] = it - wordlist;
 		}
 	}
@@ -327,7 +339,7 @@ latexkeys const * in_word_set(string const & str)
 }
 
 
-latexkeys const * lm_get_key_by_id(int id, short tc)
+latexkeys const * lm_get_key_by_id(unsigned int id, short tc)
 {
 	std::map<symbolindex, int>::const_iterator pos
 		= LatexkeyById.find(symbolindex(id, tc));

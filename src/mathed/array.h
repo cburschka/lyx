@@ -64,7 +64,7 @@ public:
 	///
 	void insert(int pos, MathInset * inset);
 	///
-	void insert(int pos, char, MathTextCodes);
+	void insert(int pos, byte, MathTextCodes);
 	///
 	void insert(int pos, MathArray const &);
 
@@ -85,7 +85,7 @@ public:
 	///
 	void push_back(MathInset * inset);
 	///
-	void push_back(char, MathTextCodes);
+	void push_back(byte, MathTextCodes);
 	///
 	void push_back(MathArray const &);
 	///
@@ -104,7 +104,9 @@ public:
 	///
 	MathScriptInset * prevScriptInset(int pos) const;
 	///
-	char GetChar(int pos) const;
+	MathScriptInset * nextScriptInset(int pos) const;
+	///
+	byte GetChar(int pos) const;
 	///
 	MathTextCodes GetCode(int pos) const;
 	///

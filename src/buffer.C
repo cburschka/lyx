@@ -363,6 +363,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	)
 {
 	bool the_end_read = false;
+#ifdef NO_LATEX
+	static string inset_ert_contents;
+#endif
 #ifndef NO_PEXTRA_REALLY
 	// This is super temporary but is needed to get the compability
 	// mode for minipages work correctly together with new tabulars.
@@ -386,6 +389,15 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		par->insertInset(pos, inset, font);
 		++pos;
 	} else if (token == "\\layout") {
+#ifdef NO_LATEX
+		// Do the insetert.
+		if (!inset_ert_contents.empty()) {
+			Inset * inset = new InsetERT(inset_ert_contents);
+			par->insertInset(pos, inset, font);
+			++pos;
+			inset_ert_contents.erase();
+		}
+#endif
                 lex.EatLine();
                 string const layoutname = lex.GetString();
                 pair<bool, LyXTextClass::LayoutList::size_type> pp
@@ -848,6 +860,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	} else if (token == "\\size") {
 		lex.next();
 		font.setLyXSize(lex.GetString());
+#ifndef NO_LATEX
+#ifdef WITH_WARNINGS
+#warning compatability hack needed
+#endif
 	} else if (token == "\\latex") {
 		lex.next();
 		string const tok = lex.GetString();
@@ -861,6 +877,21 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		else
 			lex.printError("Unknown LaTeX font flag "
 				       "`$$Token'");
+#else
+	} else if (token == "\\latex") {
+		lex.next();
+		string const tok = lex.GetString();
+		if (tok == "no_latex") {
+			; // nothing
+		} else if (tok == "latex") {
+			; // nothing
+		} else if (tok == "default") {
+			; // nothing
+		} else {
+			lex.printError("Unknown LaTeX font flag "
+				       "`$$Token'");
+		}
+#endif
 	} else if (token == "\\lang") {
 		lex.next();
 		string const tok = lex.GetString();
@@ -1577,8 +1608,10 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 	} else {
 		lyxerr << "Should this ever happen?" << endl;
 	}
-      
+
+#ifndef NO_LATEX
 	LyXFont const font1 = LyXFont(LyXFont::ALL_INHERIT, params.language);
+#endif
 	for (Paragraph::size_type i = 0; i < par->size(); ++i) {
 		if (!i && !noparbreak) {
 			if (linelen > 0)
@@ -1617,6 +1650,7 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 				currlinelen += (ltype_depth-depth)*2;
 			}
 		}
+#ifndef NO_LATEX
 		LyXFont const font2 = par->getFontSettings(params, i);
 		if (font1.latex() != font2.latex()) {
 			if (font2.latex() == LyXFont::OFF)
@@ -1626,6 +1660,7 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 		} else {
 			islatex = 0;
 		}
+#endif
 		
 		char c = par->getUChar(params, i);
 		if (islatex)
@@ -1691,7 +1726,7 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 			} else if (c != '\0')
 				buffer << c;
 			else if (c == '\0')
-				lyxerr.debug() << "writeAsciiFile: NULL char in structure." << endl;
+				lyxerr[Debug::INFO] << "writeAsciiFile: NULL char in structure." << endl;
 			++currlinelen;
 			break;
 		}
@@ -1761,7 +1796,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		texrow.newline();
 		texrow.newline();
 	}
-	lyxerr.debug() << "lyx header finished" << endl;
+	lyxerr[Debug::INFO] << "lyx header finished" << endl;
 	// There are a few differences between nice LaTeX and usual files:
 	// usual is \batchmode and has a 
 	// special input@path to allow the including of figures
@@ -2177,7 +2212,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		ofs << "\\begin{document}\n";
 		texrow.newline();
 	} // only_body
-	lyxerr.debug() << "preamble finished, now the body." << endl;
+	lyxerr[Debug::INFO] << "preamble finished, now the body." << endl;
 
 	if (!lyxrc.language_auto_begin) {
 		ofs << subst(lyxrc.language_command_begin, "$$lang",
@@ -2223,7 +2258,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		lyxerr << "File was not closed properly." << endl;
 	}
 	
-	lyxerr.debug() << "Finished making latex file." << endl;
+	lyxerr[Debug::INFO] << "Finished making latex file." << endl;
 }
 
 
@@ -2305,7 +2340,8 @@ void Buffer::sgmlOpenTag(ostream & os, Paragraph::depth_type depth,
 			 string const & latexname) const
 {
 	if (!latexname.empty() && latexname != "!-- --")
-		os << string(depth, ' ') << "<" << latexname << ">\n";
+		os << "<!-- " << depth << " -->" << "<" << latexname << ">";
+	//os << string(depth, ' ') << "<" << latexname << ">\n";
 }
 
 
@@ -2313,7 +2349,8 @@ void Buffer::sgmlCloseTag(ostream & os, Paragraph::depth_type depth,
 			  string const & latexname) const
 {
 	if (!latexname.empty() && latexname != "!-- --")
-		os << string(depth, ' ') << "</" << latexname << ">\n";
+		os << "<!-- " << depth << " -->" << "</" << latexname << ">\n";
+	//os << string(depth, ' ') << "</" << latexname << ">\n";
 }
 
 
@@ -2727,7 +2764,11 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os,
 			continue;
 		}
 
-		if (font.latex() == LyXFont::ON || style.latexparam() == "CDATA") {
+		if (
+#ifndef NO_LATEX
+			font.latex() == LyXFont::ON ||
+#endif
+		    style.latexparam() == "CDATA") {
 			// "TeX"-Mode on == > SGML-Mode on.
 			if (c != '\0')
 				os << c;
@@ -3093,8 +3134,8 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 	LyXFont font_old = style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
 
 	int char_line_count = depth;
-	if (!style.free_spacing)
-		os << string(depth,' ');
+	//if (!style.free_spacing)
+	//	os << string(depth,' ');
 
 	// parsing main loop
 	for (Paragraph::size_type i = 0;
@@ -3140,11 +3181,13 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 				else
 					os << tmp_out;
 			}
+#ifndef NO_LATEX
 		} else if (font.latex() == LyXFont::ON) {
 			// "TeX"-Mode on ==> SGML-Mode on.
 			if (c != '\0')
 				os << c;
 			++char_line_count;
+#endif
 		} else {
 			string sgml_string;
 			if (par->linuxDocConvertChar(c, sgml_string)
@@ -3175,7 +3218,7 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 		// <term> not closed...
 		os << "</term>";
 	}
-	os << '\n';
+	if(style.free_spacing) os << '\n';
 }
 
 
@@ -3327,7 +3370,7 @@ string const Buffer::getIncludeonlyList(char delim)
 			}
 		}
 	}
-	lyxerr.debug() << "Includeonly(" << lst << ')' << endl;
+	lyxerr[Debug::INFO] << "Includeonly(" << lst << ')' << endl;
 	return lst;
 }
 

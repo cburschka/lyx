@@ -31,7 +31,8 @@
 @iE-mail: larsbj@lyx.org
    improvements to user interface (menus and 
    keyhandling) including configurable toolbar,
-   and a few other minor things. Also current
+   and a few other (not so) minor things, like 
+   rewriting most of the LyX kernel. Also current
    source maintainer.
 @bChristian Buescher 
    user-definable keys, lyxserver and more
@@ -43,7 +44,7 @@
    Improvements to the czech keymaps
 @bAlbert Chin
 @iE-mail: china@thewrittenword.com
-   Bug fixes.
+   Bug fixes
 @bClaudio Coco
 @iE-mail: lacocio@iol.it
    Italian translation
@@ -72,7 +73,7 @@
 @iE-mail: goebel@noris.net
    Improvements to Koma-Script classes
 @bClaus Hentschel
-@iE-mail claus.hentschel@mbau.fh-hannover.de
+@iE-mail: claus.hentschel@mbau.fh-hannover.de
    Win32 port of LyX 1.1.x
 @bBernard Michael Hurley 
 @iE-mail: bernardh@westherts.ac.uk
@@ -124,12 +125,12 @@
 @iE-mail: a.leeming@ic.ac.uk
    GUI-I-fication of insets and more
 @bEdwin Leuven 
-@iE-mail leuven@fee.uva.nl
+@iE-mail: leuven@fee.uva.nl
    Qt2 frontend
    GUI-I-fication of several popups (in particular
      the one you are using now :)
 @bJohn Levon
-@iE-mail moz@compsoc.man.ac.uk
+@iE-mail: moz@compsoc.man.ac.uk
    KDE port
    GUI-I-fication of several popups
 @bJosé Matos
@@ -139,7 +140,7 @@
 @iE-mail: a.t.meinen@chello.nl
    Dutch translation coordinator
 @bDaniel Naber
-@iE-mail dnaber@mini.gt.owl.de
+@iE-mail: dnaber@mini.gt.owl.de
    Improvements to find&replace popup
 @bDirk Niggemann
 @iE-mail: dabn100@cam.ac.uk
@@ -159,6 +160,7 @@
    Better support for serbian and serbocroatian
 @bKornelia Pietsch
 @iE-mail: pietsch@mathematik.tu-chemnitz.de
+   heavy mathed testing
    provided siamltex document class
 @bAndré Poenitz 
 @iE-mail: poenitz@HTWM.De
@@ -166,7 +168,7 @@
    file io with streams
    --export and --import command line options
 @bAlkis Polyzotis
-   Keymap work.
+   Keymap work
 @bBernhard Psaier
    Designer of the LyX-Banner
 @bThomas Pundt
@@ -174,6 +176,7 @@
    initial configure script
 @bAllan Rae
 @iE-mail: rae@elec.uq.edu.au
+   GUI-I architect, LyX PR head, LDN, 
    bug reports/fixes, Itemize Bullet Selection,
    xforms-0.81 + gcc-2.6.3 compatibility
 @bGarst R. Reese
@@ -185,11 +188,11 @@
    Support for Koma-Script family of classes
 @bMichael Ressler
 @iE-mail: mike.ressler@alum.mit.edu
-   various documentation contributions, AASTeX support
+   documentation maintainer, AASTeX support
 @bHubert Schreier
    spellchecker (ispell frontend)
    beautiful document-manager based on the simple 
-   table of contents (temporary removed)
+   table of contents (removed)
 @bIvan Schreter
 @iE-mail: schreter@kdk.sk
    international support and kbmaps for slovak, czech, 
@@ -206,19 +209,20 @@
    small fixes (some work, others didn't)
 @bPeter Sütterlin
 @iE-mail: pit@uni-sw.gwdg.de
-   aapaper support, bug reports
+   aapaper support, german documentation translation,
+   bug reports
 @bKayvan Aghaiepour Sylvan
 @iE-mail: kayvan@sylvan.com      
    noweb2lyx and reLyX integration of noweb files. 
-   Added Import->Noweb and key bindings to menus.
+   added Import->Noweb and key bindings to menus.
 @bReuben Thomas
 @iE-mail: rrt@dcs.gla.ac.uk
-  encts document class
-  lots of useful bug reports
+   encts document class
+   lots of useful bug reports
 @bDekel Tsur
 @iE-mail: dekel@math.tau.ac.il
-   Hebrew support.
-   Many bug fixes.
+   Hebrew support, general file converter,
+   many many bug fixes.
 @bMatthias Ulrichs
 @iE-mail: urlichs@smurf.noris.de
    bug reports and small fixes
@@ -233,7 +237,8 @@
    svjour/svjog, egs and llncs document classes
 @bJuergen Vigna
 @iE-mail: jug@sad.it
-   Fax- and Ascii-Export support
+   complete rewrite of the tabular, text inset
+   fax- and Ascii-Export support
    iletter and dinbrief support
 @bJohn P. Weiss
 @iE-mail: weissjp@colorado.edu
@@ -243,15 +248,15 @@
    Tutorial chapter 1
 @bEdmar Wienskoski Jr.
 @iE-mail: edmar-w-jr@technologist.com
-   Literate programming support
-   Various bug fixes
+   literate programming support
+   various bug fixes
 @bSerge Winitzki 
 @iE-mail: winitzki@erebus.phys.cwru.edu
-   Updates to the Scientific Word bindings
+   updates to the Scientific Word bindings
 @bStephan Witt
 @iE-mail: stephan.witt@beusen.de
-   Support for page selection for printing
-   Support for number of copies
+   support for page selection for printing
+   support for number of copies
 @bHenner Zeller
 @iE-mail: zeller@think.de
    rotation of wysiwyg figures

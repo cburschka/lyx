@@ -104,46 +104,8 @@ void MathMatrixInset::Metrics(MathStyles st)
 		if (l)
 			width_ += 30 + l;
 	}
-	
-/*	
-	{
-		cxrow->setBaseline((cxrow == row_.begin()) ?
-				   cxrow->ascent() :
-				   cxrow->ascent() + cprow->descent()
-				   + MATH_ROWSEP + cprow->getBaseline());
-		h += cxrow->ascent() + cxrow->descent() + MATH_ROWSEP; 	
-		cprow = cxrow;
-	}
-	
-	int const hl = descent();
-	h -= MATH_ROWSEP;
-	
-	//  Compute vertical align
-	switch (v_align_) {
-	case 't':
-		ascent = row_.begin()->getBaseline();
-		break;
-	case 'b':
-		ascent = h - hl;
-		break;
-	default:
-		ascent = row_.begin().is_last() ? h / 2 : h - hl;
-		break;
-	}
-	descent = h - ascent + 2;
-	
-	// Increase ws_[i] for 'R' columns (except the first one)
-	for (int i = 1; i < nc_; ++i)
-		if (h_align_[i] == 'R')
-			ws_[i] += 10 * df_width;
-	// Increase ws_[i] for 'C' column
-	if (h_align_[0] == 'C')
-		if (ws_[0] < 7 * workwidth / 8)
-			ws_[0] = 7 * workwidth / 8;
-	
-*/
-
 }
+
 
 void MathMatrixInset::draw(Painter & pain, int x, int y)
 {
@@ -154,7 +116,9 @@ void MathMatrixInset::draw(Painter & pain, int x, int y)
 
 	if (numberedType()) {
 		LyXFont wfont = WhichFont(LM_TC_BF, size());
+#ifndef NO_LATEX
 		wfont.setLatex(LyXFont::OFF);
+#endif
 		int xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
 		for (int row = 0; row < nrows(); ++row) 
 			pain.text(xx, y + rowinfo_[row].offset_, nicelabel(row), wfont);

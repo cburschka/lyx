@@ -85,34 +85,34 @@ LyXText * Inset::getLyXText(BufferView const * bv, bool const) const
 
 void UpdatableInset::InsetButtonPress(BufferView *, int x, int y, int button)
 {
-	lyxerr.debug() << "Inset Button Press x=" << x
+	lyxerr[Debug::INFO] << "Inset Button Press x=" << x
 		       << ", y=" << y << ", button=" << button << endl;
 }
 
 
 void UpdatableInset::InsetButtonRelease(BufferView *, int x, int y, int button)
 {
-	lyxerr.debug() << "Inset Button Release x=" << x
+	lyxerr[Debug::INFO] << "Inset Button Release x=" << x
 		       << ", y=" << y << ", button=" << button << endl;
 }
 
 
 void UpdatableInset::InsetKeyPress(XKeyEvent *)
 {
-	lyxerr.debug() << "Inset Keypress" << endl;
+	lyxerr[Debug::INFO] << "Inset Keypress" << endl;
 }
 
 
 void UpdatableInset::InsetMotionNotify(BufferView *, int x, int y, int state)
 {
-	lyxerr.debug() << "Inset Motion Notify x=" << x
+	lyxerr[Debug::INFO] << "Inset Motion Notify x=" << x
 		       << ", y=" << y << ", state=" << state << endl;
 }
 
 
 void UpdatableInset::InsetUnlock(BufferView *)
 {
-	lyxerr.debug() << "Inset Unlock" << endl;
+	lyxerr[Debug::INFO] << "Inset Unlock" << endl;
 }
 
 

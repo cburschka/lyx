@@ -64,7 +64,9 @@ void ToolbarDefaults::init()
 	add(LFUN_DEPTH);
 	add(SEPARATOR);
 
+#ifndef NO_LATEX
 	add(LFUN_TEX);
+#endif
         add(LFUN_MATH_MODE);
 	add(SEPARATOR);
 

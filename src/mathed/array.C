@@ -100,7 +100,7 @@ MathInset * MathArray::GetInset(int pos) const
 	return p;
 }
 
-char MathArray::GetChar(int pos) const
+byte MathArray::GetChar(int pos) const
 {
 	return pos < size() ? bf_[pos + 1] : '\0';
 }
@@ -122,7 +122,7 @@ void MathArray::replace(int pos, MathInset * p)
 	memcpy(&bf_[pos + 1], &p, sizeof(p));
 }
 
-void MathArray::insert(int pos, char b, MathTextCodes t)
+void MathArray::insert(int pos, byte b, MathTextCodes t)
 {
 	bf_.insert(bf_.begin() + pos, 3, t);
 	bf_[pos + 1] = b;
@@ -144,7 +144,7 @@ void MathArray::push_back(MathInset * p)
 	insert(size(), p);
 }
 
-void MathArray::push_back(char b, MathTextCodes c)
+void MathArray::push_back(byte b, MathTextCodes c)
 {
 	insert(size(), b, c);
 }
@@ -183,7 +183,7 @@ int MathArray::size() const
 
 void MathArray::erase(int pos)
 {
-	if (pos < bf_.size())
+	if (pos < static_cast<int>(bf_.size()))
 		erase(pos, pos + item_size(pos));
 }
 
@@ -221,7 +221,16 @@ MathScriptInset * MathArray::prevScriptInset(int pos) const
 	prev(pos);
 
 	MathInset * inset = GetInset(pos);
-	if (inset && inset->GetType() == LM_OT_SCRIPT) 
+	if (inset && inset->isScriptInset()) 
+		return static_cast<MathScriptInset *>(inset);
+
+	return 0;
+}
+
+MathScriptInset * MathArray::nextScriptInset(int pos) const
+{
+	MathInset * inset = GetInset(pos);
+	if (inset && inset->isScriptInset()) 
 		return static_cast<MathScriptInset *>(inset);
 
 	return 0;
@@ -261,7 +270,6 @@ void MathArray::Write(ostream & os, bool fragile) const
 		return;
 
 	int brace = 0;
-	latexkeys const * l;
 	
 	for (int pos = 0; pos < size(); next(pos)) {
 		if (isInset(pos)) {
@@ -270,15 +278,22 @@ void MathArray::Write(ostream & os, bool fragile) const
 
 		} else {
 
-			char fcode = GetCode(pos);
-			char c     = GetChar(pos);
+			MathTextCodes fcode = GetCode(pos);
+			byte c = GetChar(pos);
 
 			if (MathIsSymbol(fcode)) {
-				l = lm_get_key_by_id(c, fcode == LM_TC_BSYM ? LM_TK_BIGSYM : LM_TK_SYM);
-				if (l)
-						os << '\\' << l->name << ' ';
+				latexkeys const * l = lm_get_key_by_id(c, LM_TK_SYM);
+
+				if (l == 0) {
+					l = lm_get_key_by_id(c, LM_TK_BIGSYM);
+				}
+
+				if (l) {
+					os << '\\' << l->name << ' ';
+				} else {
+					lyxerr << "Could not find the LaTeX name for  " << c << " and fcode " << fcode << "!" << std::endl;
+				}
 			} else {
-			
 				if (fcode >= LM_TC_RM && fcode <= LM_TC_TEXTRM) 
 					os << '\\' << math_font_name[fcode - LM_TC_RM] << '{';
 
@@ -295,7 +310,7 @@ void MathArray::Write(ostream & os, bool fragile) const
 				if (c == '}' && fcode == LM_TC_TEX && brace < 0) 
 					lyxerr <<"Math warning: Unexpected closing brace.\n";
 				else	       
-					os << char(c);
+					os << c;
 			}
 
 			if (fcode >= LM_TC_RM && fcode <= LM_TC_TEXTRM)

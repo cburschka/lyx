@@ -328,7 +328,8 @@ void InsetGraphics::Read(Buffer const * buf, LyXLex & lex)
 		lex.next();
 
 		string const token = lex.GetString();
-		lyxerr.debug() << "Token: '" << token << '\'' << std::endl;
+		lyxerr[Debug::INFO] << "Token: '" << token << '\'' 
+				    << std::endl;
 
 		if (token.empty()) {
 			continue;
@@ -597,14 +598,14 @@ void InsetGraphics::updateInset() const
 }
 
 
-bool InsetGraphics::setParams(InsetGraphicsParams const & params)
+bool InsetGraphics::setParams(InsetGraphicsParams const & p)
 {
 	// If nothing is changed, just return and say so.
-	if (this->params == params)
+	if (params == p)
 		return false;
 
 	// Copy the new parameters.
-	this->params = params;
+	params = p;
 
 	// Update the inset with the new parameters.
 	updateInset();
@@ -622,7 +623,9 @@ InsetGraphicsParams InsetGraphics::getParams() const
 
 Inset * InsetGraphics::Clone(Buffer const &) const
 {
+#ifdef WITH_WARNINGS
 #warning use the copy constructor instead. (Lgb)
+#endif
 	InsetGraphics * newInset = new InsetGraphics;
 
 	newInset->cacheHandle = cacheHandle;

@@ -56,6 +56,8 @@ public:
 	/// Put the cursor in the last position
 	void last();
 	///
+	bool plainRight();
+	///
 	void Delete();
 	///
 	void DelLine();
@@ -131,7 +133,15 @@ public:
 	MathTextCodes prevCode() const;
 	///
 	void selArray(MathArray &) const;
-	
+	///
+	char valign() const;
+	///
+	char halign() const;
+	///
+	int col() const;
+	///
+	int row() const;
+
 //protected:
 	///
 	bool macro_mode;
@@ -167,9 +177,14 @@ public:
 
 	///
 	MathStyles style() const;
-	///
+	/// Make sure cursor position is valid
 	void normalize() const;
 	
+	/// Enter a new MathInset from the front or the back
+	void push(MathInset * par, bool first);
+	/// Leave current MathInset
+	bool pop();
+
 private:
 	/// Description of a position 
 	struct MathIter {
@@ -181,10 +196,6 @@ private:
 	/// MathPath
 	std::vector<MathIter> path_;
 
-	///  
-	void push(MathInset * par, bool first);
-	///
-	void pop();
 	///  
 	int last() const;
 	///
@@ -222,11 +233,7 @@ private:
 	///
 	MathInset * prevActiveInset() const;
 	///
-	MathScriptInset * prevScriptInset() const;
-	///
-	int col() const;
-	///
-	int row() const;
+	MathScriptInset * nearbyScriptInset() const;
 
 	///
 	MathFuncInset * imacro;

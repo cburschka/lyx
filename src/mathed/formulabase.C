@@ -282,8 +282,6 @@ void InsetFormulaBase::InsetUnlock(BufferView * bv)
 }
 
 
-
-
 void InsetFormulaBase::GetCursorPos(BufferView *, int & x, int & y) const
 {
 	mathcursor->GetPos(x, y);
@@ -350,7 +348,6 @@ void InsetFormulaBase::ToggleInsetSelection(BufferView * bv)
 
 	bv->updateInset(this, false);
 }
-
 
 
 vector<string> const InsetFormulaBase::getLabelList() const
@@ -532,7 +529,6 @@ InsetFormulaBase::LocalDispatch(BufferView * bv, kb_action action,
 		}
 		if (!mathcursor->Left())
 			break;
-
 		// fall through...
 
 	case LFUN_DELETE:
@@ -622,12 +618,17 @@ InsetFormulaBase::LocalDispatch(BufferView * bv, kb_action action,
 	case LFUN_CODE:  mathcursor->toggleLastCode(LM_TC_TT); break;
 	case LFUN_DEFAULT:  mathcursor->setLastCode(LM_TC_VAR); break;
 
+#ifndef NO_LATEX
+#ifdef WITH_WARNINGS
+#warning This needs a fix.
+		// Can we use the ERT inset here? (Lgb)
+#endif
 	case LFUN_TEX:
 		// varcode = LM_TC_TEX;
 		mathcursor->setLastCode(LM_TC_TEX);
 		bv->owner()->message(_("TeX mode"));
 		break;
-
+#endif
 	case LFUN_MATH_LIMITS:
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		if (mathcursor->toggleLimits())
@@ -638,7 +639,7 @@ InsetFormulaBase::LocalDispatch(BufferView * bv, kb_action action,
 		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 			latexkeys const * l = in_word_set(arg);
-			mathcursor->SetSize(MathStyles(l ? l->id : -1));
+			mathcursor->SetSize(MathStyles(l ? l->id : static_cast<unsigned int>(-1)));
 			UpdateLocal(bv);
 		}
 		break;
@@ -650,7 +651,6 @@ InsetFormulaBase::LocalDispatch(BufferView * bv, kb_action action,
 			UpdateLocal(bv);
 		}
 		break;
-
 
 	case LFUN_INSERT_MATRIX:
 		if (mathcursor) {
@@ -815,18 +815,8 @@ InsetFormulaBase::LocalDispatch(BufferView * bv, kb_action action,
 		result = UNDISPATCHED;
 		break;
 
-
-		//------- dummy actions
-#ifdef WITH_WARNINGS
-#warning Is this needed here? Shouldnt the main dispatch handle this? (Lgb)
-#endif
-		//case LFUN_EXEC_COMMAND:
-		//bv->owner()->getMiniBuffer()->PrepareForCommand();
-		//break;
-
 	default:
-		if ((action == -1  || action == LFUN_SELFINSERT)
-		    && !arg.empty())  {
+		if ((action == -1 || action == LFUN_SELFINSERT) && !arg.empty()) {
 			unsigned char c = arg[0];
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 
@@ -896,11 +886,20 @@ InsetFormulaBase::LocalDispatch(BufferView * bv, kb_action action,
 				mathcursor->clearLastCode();
 				mathcursor->insert(c, LM_TC_MIN);
 			} else if (('0' <= c && c <= '9') || strchr(";:!|[]().,?", c)) {
-				mathcursor->insert(c, LM_TC_CONST);
+				MathTextCodes code = mathcursor->getLastCode();
+				if (code != LM_TC_TEXTRM)
+					code = LM_TC_CONST;
+				mathcursor->insert(c, code);
 			} else if (strchr("+/-*<>=", c)) {
-				mathcursor->insert(c, LM_TC_BOP);
+				MathTextCodes code = mathcursor->getLastCode();
+				if (code != LM_TC_TEXTRM)
+					code = LM_TC_BOP;
+				mathcursor->insert(c, code);
 			} else if (strchr(latex_special_chars, c) && c!= '_') {
-				mathcursor->insert(c, LM_TC_SPECIAL);
+				MathTextCodes code = mathcursor->getLastCode();
+				if (code != LM_TC_TEXTRM)
+					code = LM_TC_SPECIAL;
+				mathcursor->insert(c, code);
 			} else if (c == '_' || c == '^') {
 				char s[2];
 				s[0] = c;
@@ -925,9 +924,9 @@ InsetFormulaBase::LocalDispatch(BufferView * bv, kb_action action,
 					sp->SetSpace(isp);
 					space_on = true;
 				} else {
-					lyxerr << "look here!\n";
-					//if (!mathcursor->cursor.pop() && !mathcursor->cursor.OK())
-					result = FINISHED;
+					if (!mathcursor->pop())
+						result = FINISHED;
+					mathcursor->plainRight();
 				}
 			} else if (c == '\'' || c == '@') {
 				mathcursor->insert (c, LM_TC_VAR);
@@ -999,8 +998,7 @@ bool math_insert_greek(BufferView * bv, char c)
 		new_inset->LocalDispatch(bv, LFUN_SELFINSERT, tmp);
 		if (greek_kb_flag_save < 2) {
 			bv->unlockInset(new_inset); // bv->theLockingInset());
-#warning someone broke this in bolzano
-			//bv->text->cursorRight(bv, true);
+			bv->text->cursorRight(bv, true);
 		}
 	} else
 		if (bv->theLockingInset()->LyxCode() == Inset::MATH_CODE ||
@@ -1024,7 +1022,9 @@ LyXFont const InsetFormulaBase::ConvertFont(LyXFont const & f) const
 {
 	// We have already discussed what was here
 	LyXFont font(f);
+#ifndef NO_LATEX
 	font.setLatex(LyXFont::OFF);
+#endif
 	return font;
 }
 

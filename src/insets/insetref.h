@@ -65,8 +65,6 @@ public:
 	///
 	void Validate(LaTeXFeatures & features) const;
 private:
-	/// This function escapes 8-bit characters
-	string const escape(string const &) const;
 	///
 	bool isLatex;
 };

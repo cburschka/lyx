@@ -108,7 +108,7 @@ struct latexkeys {
 	///
 	short token;
 	///
-	int id;
+	unsigned int id;
 };
 
 
@@ -116,7 +116,7 @@ struct latexkeys {
 latexkeys const * in_word_set(string const & str);
 
 ///
-latexkeys const * lm_get_key_by_id(int id, short tc);
+latexkeys const * lm_get_key_by_id(unsigned int id, short tc);
 
 
 MathInset * mathed_parse(std::istream &);

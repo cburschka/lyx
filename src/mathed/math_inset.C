@@ -30,7 +30,7 @@
 int MathInset::workwidth;
 
 
-MathInset::MathInset(string const & name, short ot, int nargs)
+MathInset::MathInset(string const & name, MathInsetTypes ot, int nargs)
 	: name_(name), objtype(ot), width_(0), ascent_(0), descent_(0),
 		size_(LM_ST_TEXT), cells_(nargs), xo_(0), yo_(0)
 {}
@@ -60,13 +60,20 @@ int MathInset::height() const
 }
 
 
-bool MathInset::GetLimits() const
+int MathInset::limits() const
 {
 	return false;
 }
 
 
-void MathInset::SetLimits(bool) {}   
+void MathInset::limits(int)
+{
+}
+
+bool MathInset::hasLimits() const
+{
+	return false;
+}
 
 
 string const & MathInset::name() const
@@ -75,13 +82,13 @@ string const & MathInset::name() const
 }
 
 
-short MathInset::GetType() const
+MathInsetTypes MathInset::GetType() const
 {
 	return objtype;
 }
 
 
-void  MathInset::SetType(short t)
+void MathInset::SetType(MathInsetTypes t)
 {
 	objtype = t;
 }
@@ -246,7 +253,7 @@ bool MathInset::idxLast(int & i, int & pos) const
 }
 
 
-bool MathInset::idxHome(int & i, int & pos) const
+bool MathInset::idxHome(int & /* idx */, int & pos) const
 {
 	if (pos == 0)
 		return false;
@@ -262,6 +269,35 @@ bool MathInset::idxEnd(int & idx, int & pos) const
 
 	pos = cell(idx).size();
 	return true;
+}
+
+
+bool MathInset::idxFirstUp(int &, int &) const
+{
+	return false;
+}
+
+
+bool MathInset::idxFirstDown(int &, int &) const
+{
+	return false;
+}
+
+bool MathInset::idxDelete(int)
+{
+	return false;
+}
+
+
+bool MathInset::idxLastUp(int &, int &) const
+{
+	return false;
+}
+
+
+bool MathInset::idxLastDown(int &, int &) const
+{
+	return false;
 }
 
 

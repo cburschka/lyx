@@ -30,18 +30,28 @@ public:
 	///
 	InsetERT();
 	///
-	void Write(Buffer const * buf, std::ostream & os) const;
+	virtual void Write(Buffer const * buf, std::ostream & os) const;
 	///
-	Inset * Clone(Buffer const &) const;
+	virtual Inset * Clone(Buffer const &) const;
 	///
-	string const EditMessage() const;
+	virtual string const EditMessage() const;
 	///
-	bool InsertInset(BufferView *, Inset *) { return false; }
+	virtual bool InsertInset(BufferView *, Inset *);
 	///
-	void SetFont(BufferView *, LyXFont const &, bool toggleall = false,
-                 bool selectall = false);
+	virtual void SetFont(BufferView *, LyXFont const &,
+			     bool toggleall = false, bool selectall = false);
 	///
-	void Edit(BufferView *, int, int, unsigned int);
+	virtual void Edit(BufferView *, int, int, unsigned int);
+	///
+	virtual int Latex(Buffer const *, std::ostream &, bool fragile,
+			  bool free_spc) const;
+	///
+	virtual int Ascii(Buffer const *,
+			  std::ostream &, int linelen = 0) const;
+	///
+	virtual int Linuxdoc(Buffer const *, std::ostream &) const;
+	///
+	virtual int DocBook(Buffer const *, std::ostream &) const;
 };
 
 #endif

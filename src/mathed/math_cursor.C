@@ -33,6 +33,7 @@
 #include "LColor.h"
 #include "Painter.h"
 #include "math_matrixinset.h"
+#include "math_grid.h"
 #include "math_spaceinset.h"
 #include "math_funcinset.h"
 #include "math_bigopinset.h"
@@ -94,15 +95,16 @@ void MathCursor::push(MathInset * par, bool first)
 }
 
 
-void MathCursor::pop()
+bool MathCursor::pop()
 {
 	if (path_.empty())
-		return;
+		return false;
 	par_    = path_.back().par_;
 	idx_    = path_.back().idx_;
 	cursor_ = path_.back().cursor_;
 	dump("Popped:");
 	path_.pop_back();
+	return true;
 }
 
 
@@ -167,8 +169,7 @@ bool MathCursor::Left(bool sel)
 
 	if (selection) {
 		result = array().prev(cursor_);
-		if (!result && !path_.empty()) {
-			pop();
+		if (!result && pop()) {
 			anchor_ = cursor_;
 			result = array().next(anchor_);
 		}
@@ -186,8 +187,7 @@ bool MathCursor::Left(bool sel)
 			if (!result) {
 				if (par_->idxLeft(idx_, cursor_)) {
 					result = true;
-				} else if (!path_.empty()) {
-					pop();
+				} else if (pop()) {
 					result = true;
 				}
 			}
@@ -195,6 +195,12 @@ bool MathCursor::Left(bool sel)
 	}
 	dump("Left 2");
 	return result;
+}
+
+
+bool MathCursor::plainRight()
+{
+	return array().next(cursor_);
 }
 
 
@@ -213,10 +219,9 @@ bool MathCursor::Right(bool sel)
 
 	if (selection) {
 		result = array().next(cursor_);
-		if (!result && !path_.empty()) {
-			pop();
+		if (!result && pop()) {
 			anchor_ = cursor_;
-			result = array().prev(anchor_);
+			result = array().next(cursor_);
 		}
 	} else {
 		MathInset * p = nextActiveInset();
@@ -228,8 +233,7 @@ bool MathCursor::Right(bool sel)
 			if (!result) {
 				if (par_->idxRight(idx_, cursor_)) {
 					result = true;
-				} else if (!path_.empty()) {
-					pop();
+				} else if (pop()) {
 					result = true;
 					array().next(cursor_);
 				}
@@ -405,6 +409,13 @@ void MathCursor::Delete()
 	if (cursor_ < array().size())
 		array().erase(cursor_);
 
+	// delete empty cells parts if necessary
+	if (cursor_ == 0 && array().size() == 0) {
+		bool removeit = par_->idxDelete(idx_);
+		if (pop() && removeit)
+				Delete();
+	}
+
 #ifdef WITH_WARNINGS
 #warning pullArg disabled
 #endif
@@ -438,10 +449,38 @@ bool MathCursor::Up(bool sel)
 	SelHandle(sel);
 	SelClear();
 
+	// check whether we could move into an inset on the right or on the left
+	MathInset * p = nextInset();
+	if (p) {
+		int idx, cursor;
+		if (p->idxFirstUp(idx, cursor)) {
+			push(p, true);
+			par_ = p;
+			idx_    = idx;
+			cursor_ = cursor;
+			dump("Up 3");
+			return true;
+		}
+	}
+
+	p = prevInset();
+	if (p) {
+		int idx, cursor;
+		if (p->idxLastUp(idx, cursor)) {
+			array().prev(cursor_);
+			push(p, false);
+			par_ = p;
+			idx_    = idx;
+			cursor_ = cursor;
+			dump("Up 4");
+			return true;
+		}
+	}
+
+
 	int x = xarray().pos2x(cursor_);
 	bool result = par_->idxUp(idx_, cursor_);
-	if (!result && !path_.empty()) {
-		pop();
+	if (!result && pop()) {
 		result = par_->idxUp(idx_, cursor_);
 	}
 	cursor_ = xarray().x2pos(x);
@@ -458,10 +497,35 @@ bool MathCursor::Down(bool sel)
 	SelHandle(sel);
 	SelClear();
 
+	// check whether we could move into an inset on the right or on the left
+	MathInset * p = nextInset();
+	if (p) {
+		int idx, cursor;
+		if (p->idxFirstDown(idx, cursor)) {
+			push(p, true);
+			idx_    = idx;
+			cursor_ = cursor;
+			dump("Down 3");
+			return true;
+		}
+	}
+
+	p = prevInset();
+	if (p) {
+		int idx, cursor;
+		if (p->idxLastDown(idx, cursor)) {
+			array().prev(cursor_);
+			push(p, false);
+			idx_    = idx;
+			cursor_ = cursor;
+			dump("Down 4");
+			return true;
+		}
+	}
+
 	int x = xarray().pos2x(cursor_);
 	bool result = par_->idxDown(idx_, cursor_);
-	if (!result && !path_.empty()) {
-		pop();
+	if (!result && pop()) {
 		result = par_->idxDown(idx_, cursor_);
 	}
 	cursor_ = xarray().x2pos(x);
@@ -476,9 +540,9 @@ bool MathCursor::toggleLimits()
 	if (!prevIsInset())
 		return false;
 	MathInset * p = prevInset();
-	bool old = p->GetLimits();
-	p->SetLimits(!old);
-	return old != p->GetLimits();
+	int old = p->limits();
+	p->limits(old == -1 ? 1 : -1);
+	return old != p->limits();
 }
 
 
@@ -494,26 +558,30 @@ void MathCursor::Interpret(string const & s)
 	lyxerr << "Interpret: '" << s << "'\n";
 
 	if (s[0] == '^') {
-		MathScriptInset * p = prevScriptInset();
+		MathScriptInset * p = nearbyScriptInset();
 		if (!p) {
 			p = new MathScriptInset;
 			insert(p);
+			array().prev(cursor_);
 		}
+		push(p, true);
 		if (!p->up())
 			p->up(true);
-		push(p, true);
+		idx_ = 0;
 		return;
 	}
 
 	if (s[0] == '_') {
-		MathScriptInset * p = prevScriptInset();
+		MathScriptInset * p = nearbyScriptInset();
 		if (!p) {
 			p = new MathScriptInset;
 			insert(p);
+			array().prev(cursor_);
 		}
+		push(p, true);
 		if (!p->down())
 			p->down(true);
-		push(p, true);
+		idx_ = 1;
 		return;
 	}
 
@@ -526,7 +594,7 @@ void MathCursor::Interpret(string const & s)
 	MathInset * p = 0;
 	latexkeys const * l = in_word_set(s);
 
-	if (!l) {
+	if (l == 0) {
 		if (s == "root") 
 			p = new MathRootInset;
 		else if (MathMacroTable::hasTemplate(s))
@@ -540,13 +608,16 @@ void MathCursor::Interpret(string const & s)
 					break;
 				
 			case LM_TK_SYM: 
-					if (l->id < 255)
-						insert(static_cast<byte>(l->id), MathIsBOPS(l->id) ?
-							LM_TC_BOPS : LM_TC_SYMB); 	
-					else 
-						p = new MathFuncInset(l->name);
-					break;
-				
+				if (l->id < 255) {
+					insert(static_cast<byte>(l->id), 
+					       MathIsBOPS(l->id) ?
+						LM_TC_BOPS : LM_TC_SYMB);
+					
+				} else {
+					p = new MathFuncInset(l->name);
+				}
+				break;
+
 			case LM_TK_STACK:
 				p = new MathFracInset(LM_OT_STACKREL);
 				break;
@@ -1018,7 +1089,7 @@ MathInset * MathCursor::prevActiveInset() const
 	if (cursor_ <= 0 || !array().isInset(cursor_ - 1))
 		return 0;
 	MathInset * inset = prevInset();
-	return inset->nargs() ? inset : 0;
+	return inset->isActive() ? inset : 0;
 }
 
 
@@ -1034,14 +1105,17 @@ MathInset * MathCursor::nextActiveInset() const
 	if (!array().isInset(cursor_))
 		return 0;
 	MathInset * inset = nextInset();
-	return inset->nargs() ? inset : 0;
+	return inset->isActive() ? inset : 0;
 }
 
 
-MathScriptInset * MathCursor::prevScriptInset() const
+MathScriptInset * MathCursor::nearbyScriptInset() const
 {
 	normalize();
-	return array().prevScriptInset(cursor_);
+	MathScriptInset * p = array().prevScriptInset(cursor_);
+ 	if (p)
+		return p;
+	return array().nextScriptInset(cursor_);
 }
 
 
@@ -1078,7 +1152,7 @@ bool MathCursor::nextIsInset() const
 
 bool MathCursor::nextIsActive() const
 {
-	return nextIsInset() && nextInset()->nargs();
+	return nextIsInset() && nextInset()->isActive();
 }
 
 
@@ -1090,7 +1164,7 @@ bool MathCursor::prevIsInset() const
 
 bool MathCursor::prevIsActive() const
 {
-	return prevIsInset() && prevInset()->nargs();
+	return prevIsInset() && prevInset()->isActive();
 }
 
 
@@ -1121,4 +1195,20 @@ void MathCursor::gotoX(int x)
 void MathCursor::idxRight()
 {
 	par_->idxRight(idx_, cursor_);
+}
+
+char MathCursor::valign() const
+{
+	int idx;
+	MathGridInset * p =
+		static_cast<MathGridInset *>(enclosing(LM_OT_MATRIX, idx));
+	return p ? p->valign() : 0;
+}
+
+char MathCursor::halign() const
+{
+	int idx;
+	MathGridInset * p =
+		static_cast<MathGridInset *>(enclosing(LM_OT_MATRIX, idx));
+	return p ? p->halign(idx % p->ncols()) : 0;
 }

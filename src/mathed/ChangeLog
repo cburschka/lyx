@@ -1,3 +1,18 @@
+2001-06-25  The LyX Project  <Asger>
+
+	* math_scriptinset.C: Fix for entering with cursor up/down.
+
+	* math_fracinset.C: We can enter fractions with cursor up and
+	down.
+
+	* math_cursor.C (Right): Fixes for cursor movement.
+
+	* formula.C (draw): New background color for math.
+	
+	* math_cursor.C: Fixes for toggling labels on/off in math.
+	Fixes for infinity and other symbols that didn't appear in
+	LaTeX.
+
 2001-06-24  The LyX Project  <Asger>
 
 	* math_inset.C: Cursor movement is better in square roots, among

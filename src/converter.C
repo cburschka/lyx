@@ -189,7 +189,7 @@ bool Formats::View(Buffer const * buffer, string const & filename,
 
 	command += " " + QuoteName(OnlyFilename((filename)));
 
-	lyxerr << "Executing command: " << command << endl;
+	lyxerr[Debug::FILES] << "Executing command: " << command << endl;
 	ShowMessage(buffer, _("Executing command:"), command);
 
 	Path p(OnlyPath(filename));
@@ -574,7 +574,7 @@ bool Converters::Convert(Buffer const * buffer,
 		Converter const & conv = converterlist[*cit];
 		bool dummy = conv.To->dummy() && conv.to != "program";
 		if (!dummy)
-			lyxerr << "Converting from  "
+			lyxerr[Debug::FILES] << "Converting from  "
 			       << conv.from << " to " << conv.to << endl;
 		infile = outfile;
 		outfile = conv.result_dir.empty()
@@ -587,14 +587,15 @@ bool Converters::Convert(Buffer const * buffer,
 		if (conv.latex) {
 			run_latex = true;
 			string command = subst(conv.command, token_from, "");
-			lyxerr << "Running " << command << endl;
+			lyxerr[Debug::FILES] << "Running " << command << endl;
 			if (!runLaTeX(buffer, command))
 				return false;
 		} else {
 			if (conv.need_aux && !run_latex
 			    && !latex_command.empty()) {
-				lyxerr << "Running " << latex_command 
-				       << " to update aux file"<<  endl;
+				lyxerr[Debug::FILES] 
+					<< "Running " << latex_command 
+					<< " to update aux file"<<  endl;
 				runLaTeX(buffer, latex_command);
 			}
 
@@ -618,7 +619,7 @@ bool Converters::Convert(Buffer const * buffer,
 				command = add_options(command,
 						      dvipdfm_options(buffer));
 
-			lyxerr << "Calling " << command << endl;
+			lyxerr[Debug::FILES] << "Calling " << command << endl;
 			if (buffer)
 				ShowMessage(buffer, _("Executing command:"), command);
 
@@ -700,7 +701,8 @@ bool Converters::Move(string const & from, string const & to, bool copy)
 			string from2 = path + *it;
 			string to2 = to_base + (*it).substr(base.length());
 			to2 = ChangeExtension(to2, to_extension);
-			lyxerr << "moving " << from2 << " to " << to2 << endl;
+			lyxerr[Debug::FILES] << "moving " << from2 
+					     << " to " << to2 << endl;
 			bool moved = (copy)
 				? lyx::copy(from2, to2)
 				: lyx::rename(from2, to2);

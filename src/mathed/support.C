@@ -364,9 +364,11 @@ int mathed_string_width(short type, int size, string const & s)
 LyXFont mathed_get_font(short type, int size)
 {
 	LyXFont f = WhichFont(type, size);
+#ifndef NO_LATEX
 	if (type == LM_TC_TEX) {
 		f.setLatex(LyXFont::ON);
 	}
+#endif
 	return f;
 }
 

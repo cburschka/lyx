@@ -93,6 +93,7 @@ LyXTabular::columnstruct::columnstruct()
 LyXTabular::LyXTabular(InsetTabular * inset, int rows_arg, int columns_arg)
 {
 	owner_ = inset;
+	cur_cell = -1;
 	Init(rows_arg, columns_arg);
 }
 
@@ -100,6 +101,7 @@ LyXTabular::LyXTabular(InsetTabular * inset, int rows_arg, int columns_arg)
 LyXTabular::LyXTabular(InsetTabular * inset, LyXTabular const & lt)
 {
 	owner_ = inset;
+	cur_cell = -1;
 	Init(lt.rows_, lt.columns_, &lt);
 #if 0
 #ifdef WITH_WARNINGS
@@ -113,6 +115,7 @@ LyXTabular::LyXTabular(InsetTabular * inset, LyXTabular const & lt)
 LyXTabular::LyXTabular(Buffer const * buf, InsetTabular * inset, LyXLex & lex)
 {
 	owner_ = inset;
+	cur_cell = -1;
 	Read(buf, lex);
 }
 
@@ -129,7 +132,7 @@ LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 	// So then it is ok to throw an exception, or for now
 	// call abort()
 	lyx::Assert(rows_ == lt.rows_ && columns_ == lt.columns_);
-
+	cur_cell = -1;
 	cell_info = lt.cell_info;
 	row_info = lt.row_info;
 	column_info = lt.column_info;
@@ -2520,6 +2523,7 @@ int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
 
 InsetText * LyXTabular::GetCellInset(int cell) const
 {
+	cur_cell = cell;
 	return & cell_info[row_of_cell(cell)][column_of_cell(cell)].inset;
 }
 

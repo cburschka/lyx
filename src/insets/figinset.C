@@ -233,7 +233,7 @@ int GhostscriptMsg(XEvent * ev, void *)
 				// now fork rendering process
 				forkstat = fork();
 				if (forkstat == -1) {
-					lyxerr.debug()
+					lyxerr[Debug::INFO]
 						<< "Cannot fork, using slow "
 						"method for pixmap translation." << endl;
 					tmpdisp = fl_get_display();
@@ -438,7 +438,7 @@ void DoneFigures()
 	bitmaps.clear();
 	figures.clear();
 	
-	lyxerr.debug() << "Unregistering figures..." << endl;
+	lyxerr[Debug::INFO] << "Unregistering figures..." << endl;
 }
 
 
@@ -676,7 +676,7 @@ void runqueue()
 			// if we are still there, an error occurred.
 			lyxerr << "Error executing ghostscript. "
 			       << "Code: " << err << endl;
-			lyxerr.debug() << "Cmd: " 
+			lyxerr[Debug::INFO] << "Cmd: " 
 				       << lyxrc.ps_command
 				       << " -sDEVICE=x11 "
 				       << tmpf << ' '
@@ -799,18 +799,18 @@ void makeupdatelist(figdata * p)
 // this func is only "called" in spellchecker.C
 void sigchldchecker(pid_t pid, int * status)
 {
-	lyxerr.debug() << "Got pid = " << pid << endl;
+	lyxerr[Debug::INFO] << "Got pid = " << pid << endl;
 	bool pid_handled = false;
 	for (bitmaps_type::iterator it = bitmaps.begin();
 	     it != bitmaps.end(); ++it) {
 		if ((*it)->reading && pid == (*it)->gspid) {
-			lyxerr.debug() << "Found pid in bitmaps" << endl;
+			lyxerr[Debug::INFO] << "Found pid in bitmaps" << endl;
 			// now read the file and remove it from disk
 			figdata * p = (*it);
 			p->reading = false;
 			if ((*it)->gsdone) *status = 0;
 			if (*status == 0) {
-				lyxerr.debug() << "GS [" << pid
+				lyxerr[Debug::INFO] << "GS [" << pid
 					       << "] exit OK." << endl;
 			} else {
 				lyxerr << "GS [" << pid  << "] error "
@@ -836,18 +836,18 @@ void sigchldchecker(pid_t pid, int * status)
 		}
 	}
 	if (!pid_handled) {
-		lyxerr.debug() << "Checking pid in pidwait" << endl;
+		lyxerr[Debug::INFO] << "Checking pid in pidwait" << endl;
 		list<int>::iterator it = find(pidwaitlist.begin(),
 					      pidwaitlist.end(), pid);
 		if (it != pidwaitlist.end()) {
-			lyxerr.debug() << "Found pid in pidwait\n"
+			lyxerr[Debug::INFO] << "Found pid in pidwait\n"
 				       << "Caught child pid of recompute "
 				"routine" << pid << endl;
 			pidwaitlist.erase(it);
 		}
 	}
 	if (pid == -1) {
-		lyxerr.debug() << "waitpid error" << endl;
+		lyxerr[Debug::INFO] << "waitpid error" << endl;
 		switch (errno) {
 		case ECHILD:
 			lyxerr << "The process or process group specified by "
@@ -871,7 +871,7 @@ void sigchldchecker(pid_t pid, int * status)
 	} else if (pid == 0) {
 		lyxerr << "waitpid nohang" << endl;;
 	} else {
-		lyxerr.debug() << "normal exit from childhandler" << endl;
+		lyxerr[Debug::INFO] << "normal exit from childhandler" << endl;
 	}
 }
 
@@ -1078,7 +1078,7 @@ void InsetFig::Read(Buffer const *, LyXLex & lex)
 		lex.next();
 
 		string const token = lex.GetString();
-		lyxerr.debug() << "Token: " << token << endl;
+		lyxerr[Debug::INFO] << "Token: " << token << endl;
 		
 		if (token.empty())
 			continue;
@@ -1126,7 +1126,7 @@ void InsetFig::Read(Buffer const *, LyXLex & lex)
 			case PER_PAGE: wtype = PER_PAGE; break;
 			case PER_COL: wtype = PER_COL; break;
 			default:
-				lyxerr.debug() << "Unknown type!" << endl;
+				lyxerr[Debug::INFO] << "Unknown type!" << endl;
 				break;
 			}
 			twtype = wtype;
@@ -1142,7 +1142,7 @@ void InsetFig::Read(Buffer const *, LyXLex & lex)
 			case IN: htype = IN; break;
 			case PER_PAGE: htype = PER_PAGE; break;
 			default:
-				lyxerr.debug() << "Unknown type!" << endl;
+				lyxerr[Debug::INFO] << "Unknown type!" << endl;
 				break;
 			}
 			thtype = htype;
@@ -1214,7 +1214,7 @@ string const InsetFig::EditMessage() const
 
 void InsetFig::Edit(BufferView * bv, int, int, unsigned int)
 {
-	lyxerr.debug() << "Editing InsetFig." << endl;
+	lyxerr[Debug::INFO] << "Editing InsetFig." << endl;
 	Regenerate();
 
 	// We should have RO-versions of the form instead.
@@ -1587,14 +1587,14 @@ void InsetFig::GetPSSizes()
 	for (;;) {
 		char c = 0; ifs.get(c);
 		if (ifs.eof()) {
-			lyxerr.debug() << "End of (E)PS file reached and"
+			lyxerr[Debug::INFO] << "End of (E)PS file reached and"
 				" no BoundingBox!" << endl;
 			break;
 		}
 		if (c == '%' && lastchar == '%') {
 			ifs >> p;
 			if (p.empty()) break;
-			lyxerr.debug() << "Token: `" << p << "'" << endl;
+			lyxerr[Debug::INFO] << "Token: `" << p << "'" << endl;
 			if (p == "BoundingBox:") {
 				float fpsx, fpsy, fpswid, fpshgh;
 				if (ifs >> fpsx >> fpsy >> fpswid >> fpshgh) {
@@ -1664,7 +1664,7 @@ void InsetFig::CallbackFig(long arg)
 			fl_activate_object(form->Width);
 			break;
 		default:
-			lyxerr.debug() << "Unknown type!" << endl;
+			lyxerr[Debug::INFO] << "Unknown type!" << endl;
 			break;
 		}
 		regen = true;
@@ -1695,7 +1695,7 @@ void InsetFig::CallbackFig(long arg)
 			fl_activate_object(form->Height);
 			break;
 		default:
-			lyxerr.debug() << "Unknown type!" << endl;
+			lyxerr[Debug::INFO] << "Unknown type!" << endl;
 			break;
 		}
 		regen = true;

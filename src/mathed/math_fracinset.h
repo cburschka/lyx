@@ -14,7 +14,7 @@
 class MathFracInset : public MathInset {
 public:
 	///
-	explicit MathFracInset(short ot = LM_OT_FRAC);
+	explicit MathFracInset(MathInsetTypes ot = LM_OT_FRAC);
 	///
 	virtual MathInset * Clone() const;
 	///
@@ -33,6 +33,14 @@ public:
 	virtual bool idxLeft(int &, int &) const;
 	///
 	virtual bool idxRight(int &, int &) const;
+	///
+	virtual bool idxFirstUp(int & idx, int & pos) const;
+	///
+	virtual bool idxFirstDown(int & idx, int & pos) const;
+	///
+	virtual bool idxLastUp(int & idx, int & pos) const;
+	///
+	virtual bool idxLastDown(int & idx, int & pos) const;
 };
 
 #endif

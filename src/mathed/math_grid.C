@@ -36,7 +36,7 @@ MathGridInset::ColInfo::ColInfo()
 {}
 
 
-MathGridInset::MathGridInset(int m, int n, string const & nm, short ot)
+MathGridInset::MathGridInset(int m, int n, string const & nm, MathInsetTypes ot)
 	: MathInset(nm, ot, m * n), rowinfo_(n), colinfo_(m), v_align_('c')
 {
 	if (m <= 0)
@@ -66,10 +66,19 @@ void MathGridInset::halign(char h, int col)
 	colinfo_[col].h_align_ = h;
 }
 
+char MathGridInset::halign(int col) const
+{
+	return colinfo_[col].h_align_;
+}
+
 void MathGridInset::valign(char c)
 {
-	lyxerr << "setting valign to " << c << "\n";
 	v_align_ = c;
+}
+
+char MathGridInset::valign() const
+{
+	return v_align_;
 }
 
 void MathGridInset::Metrics(MathStyles st)
@@ -101,7 +110,6 @@ void MathGridInset::Metrics(MathStyles st)
 	}
 
 	// adjust vertical offset
-	lyxerr << "v_align: " << v_align_ << "\n";
 	int h = 0;
 	switch (v_align_) {
 	case 't':
@@ -139,11 +147,6 @@ void MathGridInset::Metrics(MathStyles st)
 	width_   =   colinfo_.back().offset_  + colinfo_.back().width_;
 	ascent_  = - rowinfo_.front().offset_ + rowinfo_.front().ascent_;
 	descent_ =   rowinfo_.back().offset_  + rowinfo_.back().descent_;
-
-	// some extra space around
-	width_   += 2 * MATH_BORDER;
-	ascent_  += MATH_BORDER;
-	descent_ += MATH_BORDER;
 	
 /*	
 	// Increase ws_[i] for 'R' columns (except the first one)
@@ -232,7 +235,6 @@ void MathGridInset::Write(std::ostream & os, bool fragile) const
 
 void MathGridInset::addRow(int row)
 {
-	lyxerr << "adding row " << row << endl;
 	rowinfo_.insert(rowinfo_.begin() + row + 1, RowInfo());
 	cells_.insert(cells_.begin() + (row + 1) * ncols(), ncols(), MathXArray());
 }

@@ -81,20 +81,20 @@ void Combox::clear()
 
 void Combox::remove()
 {
-	lyxerr.debug() << "Button: " << button << endl;
+	lyxerr[Debug::GUI] << "Button: " << button << endl;
 	if (button) {
 		fl_delete_object(button);
 		fl_free_object(button); 
 	}
 	
-	lyxerr.debug() << "Label: " << label << endl;
+	lyxerr[Debug::GUI] << "Label: " << label << endl;
 	if (label && label != button) {
 		fl_delete_object(label);
 		fl_free_object(label); 
 	}
 	
-	lyxerr.debug() << "Form: " << form << endl;
-	lyxerr.debug() << "Browser: " << browser << endl;
+	lyxerr[Debug::GUI] << "Form: " << form << endl;
+	lyxerr[Debug::GUI] << "Browser: " << browser << endl;
 	if (form && browser) {
 	   fl_delete_object(browser);
 	   fl_free_object(browser);

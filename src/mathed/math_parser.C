@@ -403,7 +403,7 @@ void handle_frac(MathArray & dat, MathInsetTypes t)
 MathScriptInset * lastScriptInset(MathArray & array)
 {
 	MathInset * p = array.back_inset();
-	if (!p || p->GetType() != LM_OT_SCRIPT) {
+	if (!p || !p->isScriptInset()) {
 		p = new MathScriptInset;
 		array.push_back(p);
 	}
@@ -417,12 +417,12 @@ MathScriptInset * lastScriptInset(MathArray & array)
 static bool   curr_num;
 static string curr_label;
 
-void mathed_parse_lines(MathInset * inset, int col)
+void mathed_parse_lines(MathInset * inset, int col, bool numbered, bool outmost)
 {
 	MathGridInset * p = static_cast<MathGridInset *>(inset);
-	while (1) {
+	for (int row = 0; true; ++row) {
 		// reset global variables
-		curr_num   = true;
+		curr_num   = numbered;
 		curr_label = string();
 
 		// reading a row
@@ -430,6 +430,12 @@ void mathed_parse_lines(MathInset * inset, int col)
 		for (int i = 0; i < col - 1; ++i, ++idx)
 			mathed_parse(p->cell(idx), FLAG_AMPERSAND);
 		mathed_parse(p->cell(idx), FLAG_NEWLINE | FLAG_END);
+
+		if (outmost) {
+			MathMatrixInset * m = static_cast<MathMatrixInset *>(p);
+			m->numbered(row, curr_num);
+			m->label(row, curr_label);
+		}
 
 		// Hack!
 		// no newline
@@ -474,17 +480,27 @@ MathInset * mathed_parse()
 			switch (typ) {
 
 				case LM_OT_SIMPLE: {
+					curr_num   = latex_mathenv[i].numbered;
+					curr_label = string();
 					mathed_parse(p->cell(0), 0);
+					MathMatrixInset * m = static_cast<MathMatrixInset *>(p);
+					m->numbered(0, curr_num);
+					m->label(0, curr_label);
 					break;
 				}
 
 				case LM_OT_EQUATION: {
+					curr_num   = latex_mathenv[i].numbered;
+					curr_label = string();
 					mathed_parse(p->cell(0), FLAG_END);
+					MathMatrixInset * m = static_cast<MathMatrixInset *>(p);
+					m->numbered(0, curr_num);
+					m->label(0, curr_label);
 					break;
 				}
 
 				case LM_OT_EQNARRAY: {
-					mathed_parse_lines(p, 3);
+					mathed_parse_lines(p, 3, latex_mathenv[i].numbered, true);
 					break;
 				}
 
@@ -492,7 +508,7 @@ MathInset * mathed_parse()
 					LexGetArg('{');
 					//int c = atoi(yytext.c_str());
 					lyxerr << "LM_OT_ALIGNAT: not implemented\n";
-					mathed_parse_lines(p, 2);
+					mathed_parse_lines(p, 2, latex_mathenv[i].numbered, true);
 					lyxerr << "LM_OT_ALIGNAT: par: " << *p << "\n";
 					break;
 				}
@@ -503,10 +519,6 @@ MathInset * mathed_parse()
 
 			p->SetName(latex_mathenv[i].basename);
 
-/*
-			curr_num = latex_mathenv[i].numbered;
-			p->numbered(p->nrows()-1, curr_num);
-*/
 			break;
 		}
 		
@@ -649,7 +661,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		{
 			MathScriptInset * p = lastScriptInset(array);
 			if (p) 
-				p->SetLimits(bool(yylval.l->id));
+				p->limits(yylval.l->id ? 1 : -1);
 			break;
 		}
 		
@@ -843,7 +855,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 				mm->valign(valign[0]);
 				mm->halign(halign);
 
-				mathed_parse_lines(mm, halign.size());
+				mathed_parse_lines(mm, halign.size(), latex_mathenv[i].numbered, false);
 				do_insert(array, mm);
 				//lyxerr << "read matrix " << *mm << "\n";	
 				break;

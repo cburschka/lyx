@@ -209,8 +209,11 @@ int Systemcalls::startscript(Starttype how, string const & what,
 	retval	= 0;
 
 	if (how == SystemDontWait) {
-		(os::shell() == os::UNIX) ? command += " &"
-					  : command = "start /min/n " + command;
+		if (os::shell() == os::UNIX) {
+			command += " &";
+		} else {
+			command = "start /min/n " + command;
+		}
 	}
 
         return startscript();

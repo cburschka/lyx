@@ -59,7 +59,9 @@
 #include "insets/insettheorem.h"
 #include "insets/insetcaption.h"
 #include "mathed/formulamacro.h"
-#include "spellchecker.h" // RVDK_PATCH_5
+#include "mathed/math_cursor.h"
+#include "mathed/math_inset.h"
+#include "spellchecker.h" 
 #include "minibuffer.h"
 #include "vspace.h"
 #include "LyXView.h"
@@ -350,17 +352,17 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 } 
 
 
-LyXFunc::func_status LyXFunc::getStatus(int ac) const
+func_status::value_type LyXFunc::getStatus(int ac) const
 {
 	return getStatus(ac, string());
 }
 
 
-LyXFunc::func_status LyXFunc::getStatus(int ac,
-					string const & not_to_use_arg) const
+func_status::value_type LyXFunc::getStatus(int ac,
+					   string const & not_to_use_arg) const
 {
 	kb_action action;
-	func_status flag = LyXFunc::OK;
+	func_status::value_type flag = func_status::OK;
 	string argument;
 	Buffer * buf = owner->buffer();
 	
@@ -374,7 +376,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac,
 	
 	if (action == LFUN_UNKNOWN_ACTION) {
 		setErrorMessage(N_("Unknown action"));
-		return LyXFunc::Unknown;
+		return func_status::Unknown;
 	}
 	
 	// Check whether we need a buffer
@@ -388,13 +390,13 @@ LyXFunc::func_status LyXFunc::getStatus(int ac,
 						   LyXAction::ReadOnly)) {
 				// no
 				setErrorMessage(N_("Document is read-only"));
-				flag |= LyXFunc::Disabled;
+				flag |= func_status::Disabled;
 			}
 		} else {
 			// no
 			setErrorMessage(N_("Command not allowed with"
 					   "out any document open"));
-			flag |= LyXFunc::Disabled;
+			flag |= func_status::Disabled;
 			return flag;
 		}
 	}
@@ -447,7 +449,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac,
 	case LFUN_TABULAR_FEATURE:
 		disable = true;
 		if (owner->view()->theLockingInset()) {
-			func_status ret = LyXFunc::Disabled;
+			func_status::value_type ret = func_status::Disabled;
 			if (owner->view()->theLockingInset()->LyxCode() == Inset::TABULAR_CODE) {
 				ret = static_cast<InsetTabular *>
 					(owner->view()->theLockingInset())->
@@ -455,20 +457,20 @@ LyXFunc::func_status LyXFunc::getStatus(int ac,
 			} else if (owner->view()->theLockingInset()->GetFirstLockingInsetOfType(Inset::TABULAR_CODE)) {
 				ret = static_cast<InsetTabular *>
 					(owner->view()->theLockingInset()->
-					GetFirstLockingInsetOfType(Inset::TABULAR_CODE))->
+					 GetFirstLockingInsetOfType(Inset::TABULAR_CODE))->
 					getStatus(argument);
 			}
 			flag |= ret;
 			disable = false;
 		} else {
-		    static InsetTabular inset(*owner->buffer(), 1, 1);
-		    func_status ret;
+			static InsetTabular inset(*owner->buffer(), 1, 1);
+			func_status::value_type ret;
 
-		    disable = true;
-		    ret = inset.getStatus(argument);
-		    if ((ret & LyXFunc::ToggleOn) ||
-			(ret & LyXFunc::ToggleOff))
-			flag |= LyXFunc::ToggleOff;
+			disable = true;
+			ret = inset.getStatus(argument);
+			if ((ret & func_status::ToggleOn) ||
+			    (ret & func_status::ToggleOff))
+				flag |= func_status::ToggleOff;
 		}
 		break;
 
@@ -489,39 +491,117 @@ LyXFunc::func_status LyXFunc::getStatus(int ac,
 	case LFUN_BOOKMARK_GOTO:
 		disable =  !owner->view()->
 			isSavedPosition(strToUnsignedInt(argument));
+	case LFUN_MATH_VALIGN: {
+		Inset * tli = owner->view()->theLockingInset();
+		if (tli && (tli->LyxCode() == Inset::MATH_CODE 
+			    || tli->LyxCode() == Inset::MATHMACRO_CODE)) {
+			char align = mathcursor->valign();
+			if (align == '\0') {
+				disable = true;
+				break;
+			}
+			if (argument.empty()) {
+				flag = func_status::OK;
+				break;
+			}
+			if (!contains("tcb", argument[0])) {
+				disable = true;
+				break;
+			}
+			if (argument[0] == align) 
+				flag |= func_status::ToggleOn;
+			else
+				flag |= func_status::ToggleOff;
+		} else
+			disable = true;
+		break;
+	}
+	case LFUN_MATH_HALIGN: {
+		Inset * tli = owner->view()->theLockingInset();
+		if (tli && (tli->LyxCode() == Inset::MATH_CODE 
+			    || tli->LyxCode() == Inset::MATHMACRO_CODE)) {
+			char align = mathcursor->halign();
+			if (align == '\0') {
+				disable = true;
+				break;
+			}
+			if (argument.empty()) {
+				flag = func_status::OK;
+				break;
+			}
+			if (!contains("lcr", argument[0])) {
+				disable = true;
+				break;
+			}
+			if (argument[0] == align) 
+				flag |= func_status::ToggleOn;
+			else
+				flag |= func_status::ToggleOff;
+		} else
+			disable = true;
+		break;
+	}
+	case LFUN_MATH_MUTATE: {
+		Inset * tli = owner->view()->theLockingInset();
+		if (tli && (tli->LyxCode() == Inset::MATH_CODE)) {
+			MathInsetTypes type = mathcursor->par()->GetType();
+			func_status::value_type box = func_status::ToggleOff;
+			if (argument == "inline") {
+				if (type == LM_OT_SIMPLE)
+					box = func_status::ToggleOn;
+			} else if (argument == "display") {
+				if (type == LM_OT_EQUATION)
+					box = func_status::ToggleOn;
+			} else if (argument == "eqnarray") {
+				if (type == LM_OT_EQNARRAY)
+					box = func_status::ToggleOn;
+			} else if (argument == "align") {
+				if (type == LM_OT_ALIGN)
+					box = func_status::ToggleOn;
+			} else {
+				box = func_status::OK;
+				disable = true;
+			}
+			flag |= box;
+		} else
+			disable = true;
+		break;
+	}
 	default:
 		break;
         }
         if (disable)
-                flag |= LyXFunc::Disabled;
+                flag |= func_status::Disabled;
 
 	if (buf) {
-		func_status box = LyXFunc::ToggleOff;
+		func_status::value_type box = func_status::ToggleOff;
 		LyXFont const & font =
 			TEXT(false)->real_current_font;
 		switch (action) {
 		case LFUN_EMPH:
 			if (font.emph() == LyXFont::ON)
-				box = LyXFunc::ToggleOn;
+				box = func_status::ToggleOn;
 			break;
 		case LFUN_NOUN:
 			if (font.noun() == LyXFont::ON)
-				box = LyXFunc::ToggleOn;
+				box = func_status::ToggleOn;
 			break;
 		case LFUN_BOLD:
 			if (font.series() == LyXFont::BOLD_SERIES)
-				box = LyXFunc::ToggleOn;
+				box = func_status::ToggleOn;
 			break;
+#ifndef NO_LATEX
 		case LFUN_TEX:
 			if (font.latex() == LyXFont::ON)
-				box = LyXFunc::ToggleOn;
+				box = func_status::ToggleOn;
 			break;
+#endif
 		case LFUN_READ_ONLY_TOGGLE:
 			if (buf->isReadonly())
-				box = LyXFunc::ToggleOn;
+				box = func_status::ToggleOn;
 			break;
 		default:
-			box = LyXFunc::OK;
+			box = func_status::OK;
 			break;
 		}
 		flag |= box;
@@ -583,58 +663,9 @@ string const LyXFunc::Dispatch(int ac,
 		owner->view()->hideCursor();
 
 	// We cannot use this function here
-	if (getStatus(ac, do_not_use_this_arg) & Disabled)
+	if (getStatus(ac, do_not_use_this_arg) & func_status::Disabled)
 		goto exit_with_message;
 
-	commandshortcut.erase();
-	
-	if (lyxrc.display_shortcuts && show_sc) {
-		if (action != LFUN_SELFINSERT) {
-			// Put name of command and list of shortcuts
-			// for it in minibuffer
-			string comname = lyxaction.getActionName(action);
-
-			int pseudoaction = action;
-			bool argsadded = false;
-
-			if (!argument.empty()) {
-				// If we have the command with argument, 
-				// this is better
-				pseudoaction = 
-					lyxaction.searchActionArg(action,
-							  	  argument);
-
-				if (pseudoaction == -1) {
-					pseudoaction = action;
-				} else {
-					comname += " " + argument;
-					argsadded = true;
-				}
-			}
-
-			string const shortcuts =
-				toplevel_keymap->findbinding(pseudoaction);
-
-			if (!shortcuts.empty()) {
-				comname += ": " + shortcuts;
-			} else if (!argsadded) {
-				comname += " " + argument;
-			}
-
-			if (!comname.empty()) {
-				comname = strip(comname);
-				commandshortcut = "(" + comname + ')';
-				owner->message(commandshortcut);
-
-				// Here we could even add a small pause,
-				// to annoy the user and make him learn
-				// the shortcuts.
-				// No! That will just annoy, not teach
-				// anything. The user will read the messages
-				// if they are interested. (Asger)
-			}
-		}
-        }
 
 	if (owner->view()->available() && owner->view()->theLockingInset()) {
 		UpdatableInset::RESULT result;
@@ -644,7 +675,7 @@ string const LyXFunc::Dispatch(int ac,
 			if ((action==LFUN_UNKNOWN_ACTION) && argument.empty()){
 				argument = keyseq.getiso();
 			}
-			// Undo/Redo pre 0.13 is a bit tricky for insets.
+			// Undo/Redo is a bit tricky for insets.
 		        if (action == LFUN_UNDO) {
 				int slx;
 				int sly;
@@ -989,13 +1020,15 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_FREE:
 		owner->getDialogs()->setUserFreeFont();
 		break;
-		
+
+#ifndef NO_LATEX
 	case LFUN_TEX:
 		Tex(owner->view());
 		owner->view()->setState();
 		owner->showState();
 		break;
-
+#endif
+		
 	case LFUN_RECONFIGURE:
 		Reconfigure(owner->view());
 		break;
@@ -1130,9 +1163,9 @@ string const LyXFunc::Dispatch(int ac,
 		
 	case LFUN_LAYOUTNO:
 	{
-		lyxerr.debug() << "LFUN_LAYOUTNO: (arg) " << argument << endl;
+		lyxerr[Debug::INFO] << "LFUN_LAYOUTNO: (arg) " << argument << endl;
 		int sel = strToInt(argument);
-		lyxerr.debug() << "LFUN_LAYOUTNO: (sel) "<< sel << endl;
+		lyxerr[Debug::INFO] << "LFUN_LAYOUTNO: (sel) "<< sel << endl;
 		
 		// Should this give a setMessage instead?
 		if (sel == 0) 
@@ -1201,7 +1234,7 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_GETNAME:
 		setMessage(owner->buffer()->fileName());
-		lyxerr.debug() << "FNAME["
+		lyxerr[Debug::INFO] << "FNAME["
 			       << owner->buffer()->fileName()
 			       << "] " << endl;
 		break;
@@ -1476,6 +1509,55 @@ string const LyXFunc::Dispatch(int ac,
 
 exit_with_message:
 
+	commandshortcut.erase();
+	
+	if (lyxrc.display_shortcuts && show_sc) {
+		if (action != LFUN_SELFINSERT) {
+			// Put name of command and list of shortcuts
+			// for it in minibuffer
+			string comname = lyxaction.getActionName(action);
+
+			int pseudoaction = action;
+			bool argsadded = false;
+
+			if (!argument.empty()) {
+				// If we have the command with argument, 
+				// this is better
+				pseudoaction = 
+					lyxaction.searchActionArg(action,
+							  	  argument);
+
+				if (pseudoaction == -1) {
+					pseudoaction = action;
+				} else {
+					comname += " " + argument;
+					argsadded = true;
+				}
+			}
+
+			string const shortcuts =
+				toplevel_keymap->findbinding(pseudoaction);
+
+			if (!shortcuts.empty()) {
+				comname += ": " + shortcuts;
+			} else if (!argsadded) {
+				comname += " " + argument;
+			}
+
+			if (!comname.empty()) {
+				comname = strip(comname);
+				commandshortcut = "(" + comname + ')';
+
+				// Here we could even add a small pause,
+				// to annoy the user and make him learn
+				// the shortcuts.
+				// No! That will just annoy, not teach
+				// anything. The user will read the messages
+				// if they are interested. (Asger)
+			}
+		}
+        }
+
 	string const res = getMessage();
 
 	if (res.empty()) {
@@ -1527,7 +1609,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	
 		if (result.second.empty()) {
 			owner->message(_("Canceled."));
-			lyxerr.debug() << "New Document Cancelled." << endl;
+			lyxerr[Debug::INFO] << "New Document Cancelled." << endl;
 			return;
 		}
 	
@@ -1558,31 +1640,28 @@ void LyXFunc::MenuNew(bool fromTemplate)
 			}
 		}
 		// Check whether the file already exists
-		if (IsLyXFilename(s)) {
-			FileInfo fi(s);
-			if (fi.readable() &&
-			    AskQuestion(_("File already exists:"), 
-					MakeDisplayPath(s, 50),
-					_("Do you want to open the document?"))) {
+		FileInfo fi(s);
+		if (fi.readable() &&
+		    AskQuestion(_("File already exists:"), 
+				MakeDisplayPath(s, 50),
+				_("Do you want to open the document?"))) {
 				// loads document
-				string const disp_fn(MakeDisplayPath(s));
-				
-				ostringstream str;
-				str << _("Opening  document") << ' '
-				    << disp_fn << "...";
-				
-				owner->message(str.str().c_str());
-				//XFlush(fl_get_display());
-				owner->view()->buffer(
-					bufferlist.loadLyXFile(s));
-				ostringstream str2;
-				str2 << _("Document") << ' '
-				     << disp_fn << ' ' << _("opened.");
-				
-				owner->message(str2.str().c_str());
-
-				return;
-			}
+			string const disp_fn(MakeDisplayPath(s));
+			
+			ostringstream str;
+			str << _("Opening  document") << ' '
+			    << disp_fn << "...";
+			
+			owner->message(str.str().c_str());
+			//XFlush(fl_get_display());
+			owner->view()->buffer(bufferlist.loadLyXFile(s));
+			ostringstream str2;
+			str2 << _("Document") << ' '
+			     << disp_fn << ' ' << _("opened.");
+			
+			owner->message(str2.str().c_str());
+			
+			return;
 		}
 	} else {
 		s = AddName(lyxrc.document_path,
@@ -1622,7 +1701,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	}
   
 	// find a free buffer
-	lyxerr.debug() << "Find a free buffer." << endl;
+	lyxerr[Debug::INFO] << "Find a free buffer." << endl;
 	owner->view()->buffer(bufferlist.newFile(s, templname));
 }
 
@@ -1665,11 +1744,9 @@ void LyXFunc::Open(string const & fname)
 	} else
 		filename = fname;
 
-	// get absolute path of file and make sure the filename ends
-	// with .lyx
-	filename = MakeAbsPath(filename);
-	if (!IsLyXFilename(filename))
-		filename += ".lyx";
+	// get absolute path of file and add ".lyx" to the filename if
+	// necessary
+	filename = FileSearch(string(), filename, "lyx");
 
 	// loads document
 	string const disp_fn(MakeDisplayPath(filename));
@@ -1698,8 +1775,8 @@ void LyXFunc::doImport(string const & argument)
 {
 	string format;
 	string filename = split(argument, format, ' ');
-	lyxerr.debug() << "LyXFunc::doImport: " << format 
-		       << " file: " << filename << endl;
+	lyxerr[Debug::INFO] << "LyXFunc::doImport: " << format 
+			    << " file: " << filename << endl;
 
 	if (filename.empty()) { // need user interaction
 		string initpath = lyxrc.document_path;

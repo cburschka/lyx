@@ -32,8 +32,10 @@ void MathScriptInset::Metrics(MathStyles st)
 	MathInset::Metrics(st);
 	size_    = st;
 	width_   = max(xcell(0).width(), xcell(1).width()) + 2; 
-	ascent_  = xcell(0).height() + 9;
-	descent_ = xcell(1).height();
+	if (up())
+		ascent_  = max(ascent_, xcell(0).height() + 9);
+	if (down())
+		descent_ = max(descent_, xcell(1).height());
 }
 
 
@@ -139,4 +141,53 @@ bool MathScriptInset::idxLast(int & idx, int & pos) const
 	idx = down() ? 1 : 0;
 	pos = cell(idx).size();
 	return true;
+}
+
+
+bool MathScriptInset::idxFirstUp(int & idx, int & pos) const
+{
+	if (!up()) 
+		return false;
+	idx = 0;
+	pos = 0;
+	return true;
+}
+
+bool MathScriptInset::idxFirstDown(int & idx, int & pos) const
+{
+	if (!down()) 
+		return false;
+	idx = 1;
+	pos = 0;
+	return true;
+}
+
+bool MathScriptInset::idxLastUp(int & idx, int & pos) const
+{
+	if (!up()) 
+		return false;
+	idx = 0;
+	pos = cell(idx).size();
+	return true;
+}
+
+bool MathScriptInset::idxLastDown(int & idx, int & pos) const
+{
+	if (!down()) 
+		return false;
+	idx = 1;
+	pos = cell(idx).size();
+	return true;
+}
+
+
+bool MathScriptInset::idxDelete(int idx)
+{
+	if (idx == 0) {
+		up(false);
+		return !down();
+	} else {
+		down(false);
+		return !up();
+	}
 }

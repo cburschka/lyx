@@ -17,7 +17,7 @@ using std::ostream;
 extern LyXFont WhichFont(short type, int size);
 
 
-MathFuncInset::MathFuncInset(string const & nm, short ot)
+MathFuncInset::MathFuncInset(string const & nm, MathInsetTypes ot)
 	: MathInset(nm, ot)
 {
 	lims_ = (GetType() == LM_OT_FUNCLIM);
@@ -34,7 +34,9 @@ void MathFuncInset::draw(Painter & pain, int x, int y)
 { 
 	if (!name_.empty() && name_[0] > ' ') {
 		LyXFont font = WhichFont(LM_TC_TEXTRM, size());
+#ifndef NO_LATEX
 		font.setLatex(LyXFont::ON);
+#endif
 	        x += (lyxfont::width('I', font) + 3) / 4;
 		pain.text(x, y, name_, font);
 	}
@@ -56,7 +58,9 @@ void MathFuncInset::WriteNormal(std::ostream & os) const
 void MathFuncInset::Metrics(MathStyles st) 
 {
 	LyXFont font = WhichFont(LM_TC_TEXTRM, size());
+#ifndef NO_LATEX
 	font.setLatex(LyXFont::ON);
+#endif
 	size_ = st;
 	if (name_.empty()) {
 		width_   = lyxfont::width('M', font);

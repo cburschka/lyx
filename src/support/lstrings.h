@@ -237,4 +237,7 @@ string const split(string const & a, char delim);
 /// Same as split but uses the last delim.
 string const rsplit(string const & a, string & piece, char delim);
 
+/// Escapes non ASCII chars
+string const escape(string const & lab);
+
 #endif

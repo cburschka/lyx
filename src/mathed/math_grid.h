@@ -52,7 +52,7 @@ class MathGridInset : public MathInset {
 
 public: 
 	///
-	MathGridInset(int m, int n, string const & nm, short ot);
+	MathGridInset(int m, int n, string const & nm, MathInsetTypes ot);
 	///
 	MathInset *  Clone() const = 0;
 	///
@@ -66,7 +66,11 @@ public:
 	///
 	void halign(char c, int col);
 	///
+	char halign(int col) const;
+	///
 	void valign(char c);
+	///
+	char valign() const;
 	///
 	void resize(short int type, int cols);
 	///

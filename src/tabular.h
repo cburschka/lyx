@@ -371,6 +371,8 @@ public:
 	void Validate(LaTeXFeatures &) const;
 	///
 	std::vector<string> const getLabelList() const;
+	///
+	mutable int cur_cell;
 private:
 	///
 	struct cellstruct {

@@ -106,6 +106,8 @@ public:
 		math,
 		/// Math inset background color
 		mathbg,
+		/// Macro math inset background color
+		mathmacrobg,
 		/// Math inset frame color
 		mathframe,
 		/// Math cursor color

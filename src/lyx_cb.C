@@ -277,7 +277,7 @@ int MenuRunChktex(Buffer * buffer)
 
 void QuitLyX()
 {
-	lyxerr.debug() << "Running QuitLyX." << endl;
+	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;
 
 	if (lyxrc.use_gui) {
 		if (!bufferlist.QwriteAll())
@@ -294,7 +294,7 @@ void QuitLyX()
 	bufferlist.closeAll();
 
 	// do any other cleanup procedures now
-	lyxerr.debug() << "Deleting tmp dir " << system_tempdir << endl;
+	lyxerr[Debug::INFO] << "Deleting tmp dir " << system_tempdir << endl;
 
 	DestroyLyXTmpDir(system_tempdir);
 
@@ -390,9 +390,9 @@ Buffer * NewLyxFile(string const & filename)
 		tmpname = split(tmpname, ':');
 	}
 #endif
-	lyxerr.debug() << "Arg is " << filename
-		       << "\nName is " << name
-		       << "\nTemplate is " << tmpname << endl;
+	lyxerr[Debug::INFO] << "Arg is " << filename
+			    << "\nName is " << name
+			    << "\nTemplate is " << tmpname << endl;
 
 	// find a free buffer 
 	Buffer * tmpbuf = bufferlist.newFile(name, tmpname);

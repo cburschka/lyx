@@ -55,12 +55,15 @@ int compare_no_case(string const & s, string const & s2)
 	return 1;
 }
 
-static
-int ascii_tolower(int c) {
-	if (c >= 'A' && c <= 'Z')
-		return c - 'A' + 'a';
-	return c;
+
+namespace {
+	int ascii_tolower(int c) {
+		if (c >= 'A' && c <= 'Z')
+			return c - 'A' + 'a';
+		return c;
+	}
 }
+
 
 int compare_ascii_no_case(string const & s, string const & s2)
 {
@@ -618,4 +621,25 @@ string const rsplit(string const & a, string & piece, char delim)
 		piece.erase();
 	}
 	return tmp;
+}
+
+
+// This function escapes 8-bit characters and other problematic
+// characters that cause problems in latex labels.
+string const escape(string const & lab)
+{
+	char hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
+			      '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+	string enc;
+	for (string::size_type i = 0; i < lab.length(); ++i) {
+		unsigned char c= lab[i];
+		if (c >= 128 || c == '=' || c == '%') {
+			enc += '=';
+			enc += hexdigit[c>>4];
+			enc += hexdigit[c & 15];
+		} else {
+			enc += c;
+		}
+	}
+	return enc;
 }

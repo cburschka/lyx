@@ -1,3 +1,76 @@
+2001-06-27  Juergen Vigna  <jug@sad.it>
+
+	* text.C (cursorLeftOneWord): changed to return the cursor and added
+	overlay with BufferView * parameter which calls this one.
+	(getWord): added
+	(selectWord): use new getWord function.
+	(changeCase): renamed from changeWordCase as and extended to work
+	also on selections.
+
+	* lyxtext.h: added enum word_location
+
+	* BufferView_pimpl.C (Dispatch): change function changeWordCase to
+	changeCase as this operates now also on selections.
+
+2001-06-26  The LyX Project  <lyx@violet.home.sad.it>
+
+	* lyxfunc.C (getStatus): support LFUN_MATH_MUTATE
+
+	* many files: send debug output to Debug::INFO instead of
+	Debug::ANY. 
+
+	* converter.C (View): 
+	(Convert): 
+	(Move): send debug output to Debug::FILES instead of console.
+
+2001-06-26  The LyX Project  <lyx@rose.home.sad.it>
+
+	* lyxfunc.C (getStatus): use func_status
+
+	* func_status.h: new header, describing the results of
+	LyXFunc::getStatus;
+
+	* lyxfunc.C (getStatus): add support for LFUN_MATH_VALIGN and
+	LFUN_MATH_HALIGN.
+
+2001-06-25  The LyX Project  <jug@sad.it>
+
+	* buffer.C (sgmlOpenTag):
+	(sgmlCloseTag):
+	(SimpleDocBookOnePar): 	disable the depth spaces, for the moment.
+
+2001-06-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.C: remove some dead code
+
+	* tabular.C (GetCellInset): store the last cell checked (gotten)
+
+	* tabular.h: add the helper for the speedup
+
+	* lyxtext.h: remove some dead code
+
+2001-06-26  The LyX Project  <Asger>
+
+	* paragraph.C: Change export to LaTeX of alignment to
+	\begin{center} and family for better roundtrip work with reLyX.
+
+	* Tune the math drawing a bit.
+
+2001-06-25  The LyX Project  <Asger>
+
+	* LColor.C (LColor): New color for math background. New color
+	for buttons.
+
+2001-06-25  The LyX Project  <jug@sad.it>
+
+	* lyxfunc.C (MenuNew): remove extra check for .lyx file
+
+	* lyxfunc.C (Open): 
+	* bufferlist.C (newFile): do not restrict to files ending with
+	.lyx
+
+	* BufferView_pimpl.C (MenuInsertLyXFile): 
+
 2001-06-24  The LyX Project  <jug@sad.it>
 
 	* lyxlex_pimpl.C (compare_tags): use compare_ascii_no_case instead

@@ -56,7 +56,7 @@
 #include "tabular.h"
 #include "LString.h"
 #include "lyxcursor.h"
-#include "lyxfunc.h"
+#include "func_status.h"
 
 class LyXLex;
 class Painter;
@@ -178,7 +178,7 @@ public:
 	///
 	bool ShowInsetDialog(BufferView *) const;
 	///
-	LyXFunc::func_status getStatus(string const & argument) const;
+	func_status::value_type getStatus(string const & argument) const;
 	///
 	std::vector<string> const getLabelList() const;
 	///

@@ -68,13 +68,13 @@ extern string system_tempdir;
 
 bool IsLyXFilename(string const & filename)
 {
-	return suffixIs(filename, ".lyx");
+	return suffixIs(lowercase(filename), ".lyx");
 }
 
 
 bool IsSGMLFilename(string const & filename)
 {
-	return suffixIs(filename, ".sgml");
+	return suffixIs(lowercase(filename), ".sgml");
 }
 
 
@@ -408,7 +408,8 @@ int DeleteAllFilesInDir (string const & path)
 			continue;
 		string const unlinkpath = AddName (path, temp);
 
-		lyxerr.debug() << "Deleting file: " << unlinkpath << endl;
+		lyxerr[Debug::FILES] << "Deleting file: " << unlinkpath 
+				     << endl;
 
 		bool deleted = true;
 		if (FileInfo(unlinkpath).isDir())

@@ -39,7 +39,15 @@ public:
 	///
 	bool idxFirst(int & idx, int & pos) const;
 	///
+	bool idxFirstUp(int & idx, int & pos) const;
+	///
+	bool idxFirstDown(int & idx, int & pos) const;
+	///
 	bool idxLast(int & idx, int & pos) const;
+	///
+	bool idxLastUp(int & idx, int & pos) const;
+	///
+	bool idxLastDown(int & idx, int & pos) const;
 	///
 	bool up() const;
 	///
@@ -48,6 +56,12 @@ public:
 	void up(bool);
 	///
 	void down(bool);
+	///
+	bool isActive() const { return false; }
+	/// Identifies ScriptInsets
+	bool isScriptInset() const { return true; }
+	///
+	bool idxDelete(int idx);
 private:
 	///
 	bool up_;

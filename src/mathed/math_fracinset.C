@@ -11,7 +11,7 @@
 #include "support/LOstream.h"
 
 
-MathFracInset::MathFracInset(short ot)
+MathFracInset::MathFracInset(MathInsetTypes ot)
 	: MathInset("frac", ot, 2)
 {
 	if (objtype == LM_OT_STACKREL) 
@@ -93,6 +93,34 @@ bool MathFracInset::idxDown(int & idx, int &) const
 	if (idx == 1)
 		return false;
 	idx = 1;
+	return true;
+}
+
+bool MathFracInset::idxFirstUp(int & idx, int & pos) const
+{
+	idx = 0;
+	pos = 0;
+	return true;
+}
+
+bool MathFracInset::idxFirstDown(int & idx, int & pos) const
+{
+	idx = 1;
+	pos = 0;
+	return true;
+}
+
+bool MathFracInset::idxLastUp(int & idx, int & pos) const
+{
+	idx = 0;
+	pos = cell(idx).size();
+	return true;
+}
+
+bool MathFracInset::idxLastDown(int & idx, int & pos) const
+{
+	idx = 1;
+	pos = cell(idx).size();
 	return true;
 }
 

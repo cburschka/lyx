@@ -35,6 +35,7 @@ ControlBibitem::ControlBibitem(LyXView & lv, Dialogs & d)
 	d_.showBibitem.connect(slot(this, &ControlBibitem::showInset));
 }
 
+
 void ControlBibitem::applyParamsToInset()
 {
 	// FIXME:

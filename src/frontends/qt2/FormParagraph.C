@@ -145,7 +145,7 @@ void FormParagraph::apply()
 	lyxerr[Debug::GUI] << "Setting above space \"" << LyXGlueLength(spaceabove.length().asString()).asString() << "\"" << endl;
 	lyxerr[Debug::GUI] << "Setting below space \"" << LyXGlueLength(spacebelow.length().asString()).asString() << "\"" << endl;
 
-	lv_->view()->text->SetParagraph(lv_->view(),
+	lv_->view()->text->setParagraph(lv_->view(),
 		dialog_->getLineAbove(), dialog_->getLineBelow(),
 		dialog_->getPagebreakAbove(), dialog_->getPagebreakBelow(),
 		spaceabove, spacebelow, dialog_->getAlign(),

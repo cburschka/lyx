@@ -207,10 +207,12 @@ void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 	    && i 
 	    && owner_->getChar(i - 1) != ' '
 	    && (i < owner_->size() - 1)
+#ifndef NO_LATEX
 	    // In LaTeX mode, we don't want to
 	    // break lines since some commands
 	    // do not like this
 	    && ! (font.latex() == LyXFont::ON)
+#endif
 	    // same in FreeSpacing mode
 	    && !style.free_spacing
 	    // In typewriter mode, we want to avoid 
@@ -230,13 +232,18 @@ void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 		texrow.newline();
 		texrow.start(owner_, i + 1);
 		column = 0;
-	} else if (font.latex() == LyXFont::OFF) {
+	} else
+#ifndef NO_LATEX
+		if (font.latex() == LyXFont::OFF) {
+#endif
 		if (style.free_spacing) {
 			os << '~';
 		} else {
 			os << ' ';
 		}
+#ifndef NO_LATEX
 	}
+#endif
 }
 
 
@@ -307,6 +314,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 
 	default:
 		// And now for the special cases within each mode
+#ifndef NO_LATEX
 		// Are we in LaTeX mode?
 		if (font.latex() == LyXFont::ON) {
 			// at present we only have one option
@@ -325,6 +333,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				break;
 			}
 		} else {
+#endif
 			// Plain mode (i.e. not LaTeX)
 			switch (c) {
 			case '\\': 
@@ -498,7 +507,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				}
 				break;
 			}
+#ifndef NO_LATEX
 		}
+#endif
 	}
 }
 

@@ -171,11 +171,12 @@ public:
 	///
 	void SetFrameColor(BufferView *, LColor::color);
 	///
-	LyXText * getLyXText(BufferView const *, bool const recursive=false) const;
+	LyXText * getLyXText(BufferView const *,
+			     bool const recursive = false) const;
 	///
-	void deleteLyXText(BufferView *, bool recursive=true) const;
+	void deleteLyXText(BufferView *, bool recursive = true) const;
 	///
-	void resizeLyXText(BufferView *, bool force=false) const;
+	void resizeLyXText(BufferView *, bool force = false) const;
 	///
 	bool ShowInsetDialog(BufferView *) const;
 	///
@@ -184,9 +185,11 @@ public:
 	bool nodraw() const;
 	///
 	int scroll(bool recursive=true) const;
+	///
 	void scroll(BufferView *bv, float sx) const {
 		UpdatableInset::scroll(bv, sx);
 	}
+	///
 	void scroll(BufferView *bv, int offset) const {
 		UpdatableInset::scroll(bv, offset);
 	}

@@ -5,7 +5,7 @@
 #include "math_scriptinset.h"
 
 /// big operators
-class MathBigopInset : public MathInset {
+class MathBigopInset : public MathScriptInset {
 public:
 	///
 	MathBigopInset(string const &, int);
@@ -20,11 +20,15 @@ public:
 	///
 	void Metrics(MathStyles st);
 	///
-	bool GetLimits() const;
+	int limits() const;
 	///
-	void SetLimits(bool);
+	bool hasLimits() const;
+	///
+	void limits(int);
+	///
+	bool idxDelete(int idx);
 private:
-	///
+	/// 1: \limits, -1: \nolimits, 0: use default
 	int lims_;
 	///
 	int sym_;

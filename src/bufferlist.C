@@ -443,7 +443,7 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 	if (tname.empty()) {
 		tname = LibFileSearch("templates", "defaults.lyx");
 	}
-	if (!tname.empty() && IsLyXFilename(tname)) {
+	if (!tname.empty()) {
 		bool templateok = false;
 		LyXLex lex(0, 0);
 		lex.setFile(tname);

@@ -117,16 +117,20 @@ void InsetFormula::Read(Buffer const *, LyXLex & lex)
 
 
 void InsetFormula::draw(BufferView * bv, LyXFont const &,
-			int y, float & x, bool) const
+			int y, float & xx, bool) const
 {
+	int x = int(xx) - 1;
+	y -= 2;
 	MathInset::workwidth = bv->workWidth();
 	Painter & pain = bv->painter();
 
+	int w = par()->width();
+	int h = par()->height();
+	int a = par()->ascent();
+	pain.fillRectangle(int(x), y - a, w, h, LColor::mathbg);
+
 	if (mathcursor) {
 		par()->Metrics(LM_ST_TEXT);
-		int w = par()->width()  + 2;
-		int a = par()->ascent() + 1;
-		int h = par()->height() + 1;
 
 		if (mathcursor->formula() == this) {
 			if (mathcursor->Selection()) {
@@ -136,12 +140,12 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 				mathcursor->SelGetArea(xp, yp, n);
 				pain.fillPolygon(xp, yp, n, LColor::selection);
 			}
-			pain.rectangle(int(x - 1), y - a, w, h, LColor::green);
+			pain.rectangle(int(x), y - a, w, h, LColor::mathframe);
 		}
 	}
 
 	par()->draw(pain, int(x), y);
-	x += par()->width();
+	xx += par()->width();
 
 	setCursorVisible(false);
 }
@@ -193,7 +197,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 			//lyxerr << "toggling line number\n";
 			if (display()) {
 				bv->lockedInsetStoreUndo(Undo::INSERT);
-				int row = par()->nrows() - 1;
+				int row = mathcursor->row();
 				bool old = par()->numbered(row);
 				bv->owner()->message(old ? _("No number") : _("Number"));
 				par()->numbered(row, !old);
@@ -206,7 +210,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		{
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 
-			int row = par()->nrows() - 1;
+			int row = mathcursor->row();
 			string old_label = par()->label(row);
 			string new_label = arg;
 
@@ -313,7 +317,7 @@ void InsetFormula::Validate(LaTeXFeatures & features) const
 
 int InsetFormula::ascent(BufferView *, LyXFont const &) const
 {
-	return par()->ascent();
+	return par()->ascent() + 4;
 }
 
 

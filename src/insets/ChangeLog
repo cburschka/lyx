@@ -1,3 +1,33 @@
+2001-06-26  The LyX Project  <lyx@violet.home.sad.it>
+
+	* figinset.C:
+	* inset.C:
+	* insetgraphics.C: send debug output to Debug::INFO instead of
+	Debug::ANY.
+
+2001-06-26  The LyX Project  <lyx@rose.home.sad.it>
+
+	* insettabular.h:
+	* insettabular.C (getStatus): update to use func_status
+
+2001-06-26  ben <nicolas.marsgui@libertysurf.fr>
+
+	* insetref.C (DocBook): added support for cross-references without
+	a name.
+
+2001-06-26  The LyX Project  <jug@sad.it>
+
+	* insetref.C:
+	* insetref.h:
+	* insetlabel.C:
+	* insetlabel.h: removed escape method and moved it to
+	support/lstrings.h.
+
+2001-06-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insettabular.C (getMaxWidth): do the speedup in a different way,
+	remove dead code
+
 2001-06-24  The LyX Project  <Asger>
 
 	* insettabular.C (getMaxWidth): We cache a mapping from
@@ -21,7 +51,7 @@
 
 2001-06-14  Juergen Vigna  <jug@sad.it>
 
-	* insettext.C (draw): removed warinings.
+	* insettext.C (draw): removed warnings.
 
 2001-06-13  Juergen Vigna  <jug@sad.it>
 

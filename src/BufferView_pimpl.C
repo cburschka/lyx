@@ -16,6 +16,7 @@
 #include "lyxrow.h"
 #include "LyXView.h"
 #include "commandtags.h"
+#include "lyxfunc.h"
 #include "font.h"
 #include "bufferview_funcs.h"
 #include "TextCache.h"
@@ -1183,8 +1184,12 @@ void BufferView::Pimpl::setState()
 		return;
 
 	LyXText * text = bv_->getLyXText();
-	if (text->real_current_font.isRightToLeft() &&
-	    text->real_current_font.latex() != LyXFont::ON) {
+	if (text->real_current_font.isRightToLeft()
+#ifndef NO_LATEX
+	    &&
+	    text->real_current_font.latex() != LyXFont::ON
+#endif
+		) {
 		if (owner_->getIntl()->keymap == Intl::PRIMARY)
 			owner_->getIntl()->KeyMapSec();
 	} else {
@@ -1393,15 +1398,12 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 		}
 	}
 
-	// get absolute path of file and make sure the filename ends
-	// with .lyx
-	filename = MakeAbsPath(filename);
-	if (!IsLyXFilename(filename))
-		filename += ".lyx";
+	// get absolute path of file and add ".lyx" to the filename if
+	// necessary
+	filename = FileSearch(string(), filename, "lyx");
 
 	string const disp_fn(MakeDisplayPath(filename));
 	
-	// Inserts document
 	ostringstream s1;
 	s1 << _("Inserting document") << ' '
 	   << disp_fn << " ...";
@@ -1550,13 +1552,15 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_FREE:
 		owner_->getDialogs()->setUserFreeFont();
 		break;
-		
+
+#ifndef NO_LATEX
 	case LFUN_TEX:
 		Tex(bv_);
 		setState();
 		owner_->showState();
 		break;
-
+#endif
+		
 	case LFUN_FILE_INSERT:
 	{
 		MenuInsertLyXFile(argument);
@@ -1573,8 +1577,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 	case LFUN_LAYOUT:
 	{
-		lyxerr.debug() << "LFUN_LAYOUT: (arg) "
-			       << argument << endl;
+		lyxerr[Debug::INFO] << "LFUN_LAYOUT: (arg) "
+				    << argument << endl;
 		
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number). */    
@@ -1680,7 +1684,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt,
 		       BufferView::SELECT
 		       | BufferView::FITCUR);
-		lt->changeWordCase(bv_, LyXText::text_uppercase);
+		lt->changeCase(bv_, LyXText::text_uppercase);
 		if (lt->inset_owner)
 			updateInset(lt->inset_owner, true);
 		update(lt,
@@ -1695,7 +1699,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		LyXText * lt = bv_->getLyXText();
 		
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
-		lt->changeWordCase(bv_, LyXText::text_lowercase);
+		lt->changeCase(bv_, LyXText::text_lowercase);
 		if (lt->inset_owner)
 			updateInset(lt->inset_owner, true);
 		update(lt,
@@ -1710,8 +1714,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		LyXText * lt = bv_->getLyXText();
 		
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
-		lt->changeWordCase(bv_,
-				   LyXText::text_capitalization);
+		lt->changeCase(bv_, LyXText::text_capitalization);
 		if (lt->inset_owner)
 			updateInset(lt->inset_owner, true);
 		update(lt,
@@ -2593,7 +2596,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			cur_value = par->params().spacing().getValue();
 		}
 		
-		istringstream istr(argument.c_str());
+		istringstream istr(argument);
 
 		string tmp;
 		istr >> tmp;
@@ -2831,10 +2834,12 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 	case LFUN_SETXY:
 	{
-#warning Should check sscanf for errors (Lgb)
-		int x;
-		int y;
-		::sscanf(argument.c_str(), " %d %d", &x, &y);
+		int x = 0;
+		int y = 0;
+		if (::sscanf(argument.c_str(), " %d %d", &x, &y) != 2) {
+			lyxerr << "SETXY: Could not parse coordinates in '"
+			       << argument << std::endl;
+		}
 		bv_->getLyXText()->setCursorFromCoordinates(bv_, x, y);
 	}
 	break;
@@ -2858,10 +2863,12 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 	case LFUN_GETLATEX:
 	{
+#ifndef NO_LATEX
 		LyXFont & font = bv_->getLyXText()->current_font;
                 if (font.latex() == LyXFont::ON)
 			owner_->getLyXFunc()->setMessage("L");
                 else
+#endif
 			owner_->getLyXFunc()->setMessage("0");
 	}
 	break;
@@ -3392,8 +3399,9 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 				   string(),
 				   0);
 		update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		
+#ifndef NO_LATEX
 		bv_->text->current_font.setLatex(LyXFont::OFF);
+#endif
 	}
 	
 	bv_->text->insertInset(bv_, inset);

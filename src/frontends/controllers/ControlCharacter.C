@@ -30,6 +30,7 @@ using Liason::setMinibuffer;
 using SigC::slot;
 using std::vector;
 
+
 ControlCharacter::ControlCharacter(LyXView & lv, Dialogs & d)
 	: ControlDialog<ControlConnectBD>(lv, d),
 	  font_(0), toggleall_(false)
@@ -82,10 +83,12 @@ LyXFont::FONT_FAMILY ControlCharacter::getFamily() const
 	return LyXFont::IGNORE_FAMILY;
 }
 
+
 void ControlCharacter::setFamily(LyXFont::FONT_FAMILY val)
 {
 	font_->setFamily(val);
 }
+
 
 LyXFont::FONT_SERIES ControlCharacter::getSeries() const
 {
@@ -94,10 +97,12 @@ LyXFont::FONT_SERIES ControlCharacter::getSeries() const
 	return LyXFont::IGNORE_SERIES;
 }
 
+
 void ControlCharacter::setSeries(LyXFont::FONT_SERIES val)
 {
 	font_->setSeries(val);
 }
+
 
 LyXFont::FONT_SHAPE ControlCharacter::getShape() const
 {
@@ -106,10 +111,12 @@ LyXFont::FONT_SHAPE ControlCharacter::getShape() const
 	return LyXFont::IGNORE_SHAPE;
 }
 
+
 void ControlCharacter::setShape(LyXFont::FONT_SHAPE val)
 {
 	font_->setShape(val);
 }
+
 
 LyXFont::FONT_SIZE ControlCharacter::getSize() const
 {
@@ -118,10 +125,12 @@ LyXFont::FONT_SIZE ControlCharacter::getSize() const
 	return LyXFont::IGNORE_SIZE;
 }
 
+
 void ControlCharacter::setSize(LyXFont::FONT_SIZE val)
 {
 	font_->setSize(val);
 }
+
 
 character::FONT_STATE ControlCharacter::getBar() const
 {
@@ -134,12 +143,14 @@ character::FONT_STATE ControlCharacter::getBar() const
 
 		else if (font_->noun() != LyXFont::IGNORE)
 	    		return character::NOUN_TOGGLE;
-
+#ifndef NO_LATEX
 		else if (font_->latex() != LyXFont::IGNORE)
 	    		return character::LATEX_TOGGLE;
+#endif
 	}
 	return character::IGNORE;
 }
+
 
 void ControlCharacter::setBar(character::FONT_STATE val)
 {
@@ -148,7 +159,9 @@ void ControlCharacter::setBar(character::FONT_STATE val)
 		font_->setEmph(LyXFont::IGNORE);
 		font_->setUnderbar(LyXFont::IGNORE);
 		font_->setNoun(LyXFont::IGNORE);
+#ifndef NO_LATEX
 		font_->setLatex(LyXFont::IGNORE);
+#endif
 		break;
 
 	case character::EMPH_TOGGLE:
@@ -163,18 +176,23 @@ void ControlCharacter::setBar(character::FONT_STATE val)
 		font_->setNoun(LyXFont::TOGGLE);
 		break;
 
+#ifndef NO_LATEX
 	case character::LATEX_TOGGLE:
 		font_->setLatex(LyXFont::TOGGLE);
 		break;
-
+#endif
+		
 	case character::INHERIT:
 		font_->setEmph(LyXFont::INHERIT);
 		font_->setUnderbar(LyXFont::INHERIT);
 		font_->setNoun(LyXFont::INHERIT);
+#ifndef NO_LATEX
 		font_->setLatex(LyXFont::INHERIT);
+#endif
 		break;
 	}
 }
+
 
 LColor::color ControlCharacter::getColor() const
 {
@@ -202,6 +220,7 @@ LColor::color ControlCharacter::getColor() const
 
 	return col;
 }
+
 
 void ControlCharacter::setColor(LColor::color val)
 {
@@ -250,6 +269,7 @@ bool ControlCharacter::getToggleAll() const
 {
 	return toggleall_;
 }
+
 
 void ControlCharacter::setToggleAll(bool t)
 {

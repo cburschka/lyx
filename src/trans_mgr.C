@@ -288,9 +288,11 @@ void TransManager::insertVerbatim(string const & str, LyXText * text)
 	string::size_type const l = str.length();
 	
 	for (string::size_type i = 0; i < l; ++i) {
-		if (str[i] == '\"' 
+		if (str[i] == '\"'
+#ifndef NO_LATEX
 		    && text->getFont(current_view->buffer(),text->cursor.par(),
 				     text->cursor.pos()).latex() == LyXFont::OFF
+#endif
 		    && text->getFont(current_view->buffer(),text->cursor.par(),
 				     text->cursor.pos()).language()->lang() != "hebrew")
 			current_view->insertCorrectQuote();

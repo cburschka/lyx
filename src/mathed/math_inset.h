@@ -44,7 +44,7 @@ public:
 	*/
 	///
 	explicit
-	MathInset (string const & nm = string(), short ot = LM_OT_SIMPLE, int na = 0);
+	MathInset (string const & nm = string(), MathInsetTypes ot = LM_OT_SIMPLE, int na = 0);
 	/// The virtual base destructor
 	virtual ~MathInset() {}
 
@@ -59,7 +59,7 @@ public:
 	/// Appends itself with macro arguments substituted
 	virtual void substitute(MathArray & array, MathMacro const & macro) const;
 	/// Compute the size of the object
-	virtual void Metrics(MathStyles st) = 0; 
+	virtual void Metrics(MathStyles st) = 0;
 	/// 
 	virtual int ascent() const;
 	///
@@ -69,16 +69,18 @@ public:
 	///
 	virtual int height() const;
 	///
-	virtual bool GetLimits() const;
+	virtual bool hasLimits() const;
 	///
-	virtual void SetLimits(bool);
+	virtual int limits() const;
+	///
+	virtual void limits(int);
 	///
 	string const & name() const;
 	///
-	short GetType() const;
+	MathInsetTypes GetType() const;
 	//Man:  Avoid to use these functions if it's not strictly necessary 
 	///
-	virtual void SetType(short t);
+	virtual void SetType(MathInsetTypes t);
 	///
 	virtual void SetName(string const & n);
 	///
@@ -92,15 +94,29 @@ public:
 	virtual bool idxLeft(int & idx, int & pos) const;
 	/// The right key
 	virtual bool idxRight(int & idx, int & pos) const;
-	/// Where should we go when we enter the inset from the left?
+
+	/// Target pos when we enter the inset from the left by pressing "Right"
 	virtual bool idxFirst(int & idx, int & pos) const;
-	/// Where should we go when we enter the inset from the right?
+	/// Target pos when we enter the inset from the left by pressing "Up"
+	virtual bool idxFirstUp(int & idx, int & pos) const;
+	/// Target pos when we enter the inset from the left by pressing "Down"
+	virtual bool idxFirstDown(int & idx, int & pos) const;
+
+	/// Target pos when we enter the inset from the right by pressing "Left"
 	virtual bool idxLast(int & idx, int & pos) const;
+	/// Target pos when we enter the inset from the right by pressing "Up"
+	virtual bool idxLastUp(int & idx, int & pos) const;
+	/// Target pos when we enter the inset from the right by pressing "Down"
+	virtual bool idxLastDown(int & idx, int & pos) const;
 
 	/// Where should we go if we press home?
 	virtual bool idxHome(int & idx, int & pos) const;
 	/// Where should we go if we press end?
 	virtual bool idxEnd(int & idx, int & pos) const;
+
+	/// Delete a cell and move cursor
+	// a return value true indicates that the whole inset should be deleted
+	virtual bool idxDelete(int idx);
 
 	///
 	int nargs() const;
@@ -150,6 +166,10 @@ public:
 	void GetXY(int & x, int & y) const;
 	///
 	bool covers(int x, int y) const;
+	/// Identifies ScriptInsets
+	virtual bool isScriptInset() const { return false; }
+	///
+	virtual bool isActive() const { return nargs() > 0; }
 
 
 	///
@@ -166,7 +186,7 @@ protected:
 	///
 	string name_;
 	///
-	short objtype;
+	MathInsetTypes objtype;
 	///
 	int width_;
 	///

@@ -43,9 +43,6 @@ public:
 	int Linuxdoc(Buffer const *, std::ostream &) const;
 	///
 	int DocBook(Buffer const *, std::ostream &) const;
-private:
-	/// This function escapes 8-bit characters
-	string const escape(string const &) const;
 };
 
 #endif

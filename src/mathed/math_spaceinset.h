@@ -13,7 +13,7 @@
 class MathSpaceInset : public MathInset {
 public:
 	///
-	MathSpaceInset(int sp, short ot = LM_OT_SPACE);
+	MathSpaceInset(int sp, MathInsetTypes ot = LM_OT_SPACE);
 	///
 	MathInset *  Clone() const;
 	///

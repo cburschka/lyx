@@ -14,6 +14,7 @@
 #include "frontends/Dialogs.h"
 #include "lyxfunc.h"
 #include "BufferView.h"
+#include "support/lstrings.h"
 
 using std::ostream;
 
@@ -81,30 +82,14 @@ int InsetRef::Linuxdoc(Buffer const *, ostream & os) const
 
 int InsetRef::DocBook(Buffer const *, ostream & os) const
 {
-	os << "<link linkend=\"" << getContents()
-	   << "\">" << getOptions() << "</link>";
-	return 0;
-}
-
-
-// This function escapes 8-bit characters and other problematic characters
-// It's exactly the same code as in insetlabel.C.
-string const InsetRef::escape(string const & lab) const
-{
-	char hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
-			      '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
-	string enc;
-	for (string::size_type i = 0; i < lab.length(); ++i) {
-		unsigned char c= lab[i];
-		if (c >= 128 || c == '=' || c == '%') {
-			enc += '=';
-			enc += hexdigit[c>>4];
-			enc += hexdigit[c & 15];
-		} else {
-			enc += c;
-		}
+	if (getOptions().empty()) {
+		os << "<xref linkend=\"" << getContents() << "\"/>";
+	} else {
+		os << "<link linkend=\"" << getContents()
+		   << "\">" << getOptions() << "</link>";
 	}
-	return enc;
+
+	return 0;
 }
 
 

@@ -143,7 +143,7 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 
 	pain.fillRectangle(int(x), y , w, h, LColor::mathbg);
 	pain.rectangle(int(x), y, w, h, LColor::mathframe);
-	
+
 	if (mathcursor && mathcursor->formula() == this && mathcursor->Selection()) {
 		int xp[10];
 		int yp[10];

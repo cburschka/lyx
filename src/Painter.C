@@ -55,7 +55,7 @@ PainterBase & Painter::point(int x, int y, LColor::color c)
 		if (!Lgb_bug_find_hack)
 			lyxerr << "point not called from "
 				"workarea::workhandler\n";
-		lyxerr.debug() << "Painter drawable: "
+		lyxerr[Debug::INFO] << "Painter drawable: "
 			       << owner.getPixmap() << endl;
 	}
 	
@@ -74,7 +74,7 @@ PainterBase & Painter::line(int x1, int y1, int x2, int y2,
 		if (!Lgb_bug_find_hack)
 			lyxerr << "line not called from "
 				"workarea::workhandler\n";
-		lyxerr.debug() << "Painter drawable: "
+		lyxerr[Debug::INFO] << "Painter drawable: "
 			       << owner.getPixmap() << endl;
 	}
 	
@@ -94,7 +94,7 @@ PainterBase & Painter::lines(int const * xp, int const * yp, int np,
 		if (!Lgb_bug_find_hack)
 			lyxerr << "lines not called from "
 				"workarea::workhandler\n";
-		lyxerr.debug() << "Painter drawable: "
+		lyxerr[Debug::INFO] << "Painter drawable: "
 			       << owner.getPixmap() << endl;
 	}
 	
@@ -332,7 +332,11 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 			}
 		}
 	}
-	if (f.underbar() == LyXFont::ON && f.latex() != LyXFont::ON)
+	if (f.underbar() == LyXFont::ON
+#ifndef NO_LATEX
+	    && f.latex() != LyXFont::ON
+#endif
+		)
 		underline(f, x, y, lyxfont::width(s, ls, f));
 	return *this;
 }
@@ -371,7 +375,11 @@ PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 			}
 		}
 	}
-	if (f.underbar() == LyXFont::ON && f.latex() != LyXFont::ON)
+	if (f.underbar() == LyXFont::ON
+#ifndef NO_LATEX
+	    && f.latex() != LyXFont::ON
+#endif
+		)
 		underline(f, x, y, lyxfont::width(s, ls, f));
 	return *this;
 }

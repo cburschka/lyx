@@ -1436,24 +1436,21 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	else
 		main_body = beginningOfMainBody();
 
+	int column = 0;
+
 	if (main_body > 0) {
 		os << '[';
+		++column;
 		basefont = getFont(bparams, -2); // Get label font
 	} else {
 		basefont = getFont(bparams, -1); // Get layout font
 	}
-
-	int column = 0;
 
 	if (main_body >= 0
 	    && !pimpl_->size()) {
 		if (style.isCommand()) {
 			os << '{';
 			++column;
-		} else if (params().align() != LYX_ALIGN_LAYOUT) {
-			os << '{';
-			++column;
-			return_value = true;
 		}
 	}
 
@@ -1483,12 +1480,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 			if (style.isCommand()) {
 				os << '{';
 				++column;
-			} else if (params().align() != LYX_ALIGN_LAYOUT && next_) {
-				// We do not need \par here (Dekel)
-				// os << "{\\par";
-				os << "{";
-				++column;
-				return_value = true;
 			}
 
 			if (params().noindent()) {
@@ -1502,32 +1493,26 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 			case LYX_ALIGN_SPECIAL:
 				break;
 			case LYX_ALIGN_LEFT:
-				if (moving_arg)
-					os << "\\protect";
 				if (getParLanguage(bparams)->babel() != "hebrew") {
-					os << "\\raggedright ";
-					column+= 13;
+					os << "\\begin{flushleft}";
+					column+= 17;
 				} else {
-					os << "\\raggedleft ";
-					column+= 12;
+					os << "\\begin{flushright}";
+					column+= 18;
 				}
 				break;
 			case LYX_ALIGN_RIGHT:
-				if (moving_arg)
-					os << "\\protect";
 				if (getParLanguage(bparams)->babel() != "hebrew") {
-					os << "\\raggedleft ";
-					column+= 12;
+					os << "\\begin{flushright}";
+					column+= 18;
 				} else {
-					os << "\\raggedright ";
-					column+= 13;
+					os << "\\begin{flushleft}";
+					column+= 17;
 				}
 				break;
 			case LYX_ALIGN_CENTER:
-				if (moving_arg)
-					os << "\\protect";
-				os << "\\centering ";
-				column+= 11;
+				os << "\\begin{center}";
+				column+= 14;
 				break;
 			}	 
 		}
@@ -1578,7 +1563,10 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 			// newlines are handled differently here than
 			// the default in SimpleTeXSpecialChars().
 			if (!style.newline_allowed
-			    || font.latex() == LyXFont::ON) {
+#ifndef NO_LATEX
+			    || font.latex() == LyXFont::ON
+#endif
+				) {
 				os << '\n';
 			} else {
 				if (open_font) {
@@ -1625,6 +1613,36 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		os << "]~";
 		return_value = false;
 	}
+
+	switch (params().align()) {
+	case LYX_ALIGN_NONE:
+	case LYX_ALIGN_BLOCK:
+	case LYX_ALIGN_LAYOUT:
+	case LYX_ALIGN_SPECIAL:
+		break;
+	case LYX_ALIGN_LEFT:
+		if (getParLanguage(bparams)->babel() != "hebrew") {
+			os << "\\end{flushleft}";
+			column+= 15;
+		} else {
+			os << "\\end{flushright}";
+			column+= 16;
+		}
+		break;
+	case LYX_ALIGN_RIGHT:
+		if (getParLanguage(bparams)->babel() != "hebrew") {
+			os << "\\end{flushright}";
+			column+= 16;
+		} else {
+			os << "\\end{flushleft}";
+			column+= 15;
+		}
+		break;
+	case LYX_ALIGN_CENTER:
+		os << "\\end{center}";
+		column+= 12;
+		break;
+	}	 
 
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...done " << this << endl;
 	return return_value;
@@ -2065,3 +2083,4 @@ ParagraphParameters const & Paragraph::params() const
 {
 	return pimpl_->params;
 }
+

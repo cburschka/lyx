@@ -118,6 +118,12 @@ void MathMacroTable::builtinMacros()
 	}
 
 	{
+		MathMacroTemplate * t = new MathMacroTemplate("to", 0);
+		t->push_back(LM_rightarrow, LM_TC_SYMB);
+		insertTemplate(t);
+	}
+
+	{
 		MathMacroTemplate * t = new MathMacroTemplate("perp", 0);
 		t->push_back(LM_bot, LM_TC_BOP);
 		insertTemplate(t);

@@ -922,12 +922,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 						last_separator = i - 1;
 					x = width;  // this means break
 				} else {
-#if 0
-					last_separator = i;
-					x += width;
-#else
 					x += singleWidth(bview, par, i, c);
-#endif
 				}
 			} else  {
 				if (IsLineSeparatorChar(c))
@@ -1494,6 +1489,9 @@ void LyXText::appendParagraph(BufferView * bview, Row * row) const
 	 not_ready = false;
       
       // Set the dimensions of the row
+#ifdef WITH_WARNINGS
+#warning Something is rotten here! (Jug)
+#endif
       tmprow->fill(fill(bview, tmprow, workWidth(bview)));
       setHeightOfRow(bview, tmprow);
 
@@ -2129,60 +2127,80 @@ void LyXText::cursorTab(BufferView * bview) const
 
 void LyXText::cursorLeftOneWord(BufferView * bview)  const
 {
-	// treat HFills, floats and Insets as words
 	LyXCursor tmpcursor = cursor;
-	while (tmpcursor.pos() 
-	       && (tmpcursor.par()->isSeparator(tmpcursor.pos() - 1) 
-		   || tmpcursor.par()->isKomma(tmpcursor.pos() - 1))
-	       && !(tmpcursor.par()->isHfill(tmpcursor.pos() - 1)
-		    || tmpcursor.par()->isInset(tmpcursor.pos() - 1)))
-		tmpcursor.pos(tmpcursor.pos() - 1);
-
-	if (tmpcursor.pos()
-	    && (tmpcursor.par()->isInset(tmpcursor.pos() - 1)
-		|| tmpcursor.par()->isHfill(tmpcursor.pos() - 1))) {
-		tmpcursor.pos(tmpcursor.pos() - 1);
-	} else if (!tmpcursor.pos()) {
-		if (tmpcursor.par()->previous()){
-			tmpcursor.par(tmpcursor.par()->previous());
-			tmpcursor.pos(tmpcursor.par()->size());
-		}
-	} else {		// Here, tmpcursor != 0 
-		while (tmpcursor.pos() > 0 &&
-		       tmpcursor.par()->isWord(tmpcursor.pos()-1) )
-			tmpcursor.pos(tmpcursor.pos() - 1);
-	}
+	cursorLeftOneWord(tmpcursor);
 	setCursor(bview, tmpcursor.par(), tmpcursor.pos());
+}
+
+void LyXText::cursorLeftOneWord(LyXCursor  & cur)  const
+{
+	// treat HFills, floats and Insets as words
+	cur = cursor;
+	while (cur.pos() 
+	       && (cur.par()->isSeparator(cur.pos() - 1) 
+		   || cur.par()->isKomma(cur.pos() - 1))
+	       && !(cur.par()->isHfill(cur.pos() - 1)
+		    || cur.par()->isInset(cur.pos() - 1)))
+		cur.pos(cur.pos() - 1);
+
+	if (cur.pos()
+	    && (cur.par()->isInset(cur.pos() - 1)
+		|| cur.par()->isHfill(cur.pos() - 1))) {
+		cur.pos(cur.pos() - 1);
+	} else if (!cur.pos()) {
+		if (cur.par()->previous()){
+			cur.par(cur.par()->previous());
+			cur.pos(cur.par()->size());
+		}
+	} else {		// Here, cur != 0 
+		while (cur.pos() > 0 &&
+		       cur.par()->isWord(cur.pos()-1) )
+			cur.pos(cur.pos() - 1);
+	}
 }
 
 /* -------> Select current word. This depends on behaviour of CursorLeftOneWord(), so it is
 			patched as well. */
 
-void LyXText::selectWord(BufferView * bview) 
+void LyXText::getWord(LyXCursor & from, LyXCursor & to, word_location loc) const
 {
-	// Move cursor to the beginning, when not already there.
-	if (cursor.pos()
-	    && !cursor.par()->isSeparator(cursor.pos() - 1)
-	    && !cursor.par()->isKomma(cursor.pos() - 1))
-		cursorLeftOneWord(bview);
-
-	// set the sel cursor
-#if 0
-	sel_cursor = cursor;
-#else
-	selection.cursor = cursor;
-#endif
-	
-	while (cursor.pos() < cursor.par()->size()
-	       && !cursor.par()->isSeparator(cursor.pos())
-	       && !cursor.par()->isKomma(cursor.pos()) )
-		cursor.pos(cursor.pos() + 1);
-	setCursor(bview, cursor.par(), cursor.pos() );
-	
-	// finally set the selection
-	setSelection(bview);
+	// first put the cursor where we wana start to select the word
+	from = cursor;
+	switch(loc) {
+	case WHOLE_WORD:
+		// Move cursor to the beginning, when not already there.
+		if (from.pos() && !from.par()->isSeparator(from.pos() - 1)
+		    && !from.par()->isKomma(from.pos() - 1))
+			cursorLeftOneWord(from);
+		break;
+	case NEXT_WORD:
+		lyxerr << "LyXText::getWord: NEXT_WORD not implemented yet\n";
+		break;
+	case PARTIAL_WORD:
+		break;
+	}
+	to = from;
+	while (to.pos() < to.par()->size()
+	       && !to.par()->isSeparator(to.pos())
+	       && !to.par()->isKomma(to.pos())
+	       && !to.par()->isHfill(to.pos()) )
+	{
+		to.pos(to.pos() + 1);
+	}
 }
 
+
+void LyXText::selectWord(BufferView * bview) 
+{
+	LyXCursor from;
+	LyXCursor to;
+	getWord(from, to, WHOLE_WORD);
+	if (cursor != from)
+		setCursor(bview, from.par(), from.pos());
+	selection.cursor = cursor;
+	setCursor(bview, to.par(), to.pos() );
+	setSelection(bview);
+}
 
 /* -------> Select the word currently under the cursor when:
 			1: no selection is currently set,
@@ -2190,11 +2208,7 @@ void LyXText::selectWord(BufferView * bview)
 
 bool LyXText::selectWordWhenUnderCursor(BufferView * bview) 
 {
-#if 0
-	if (!selection &&
-#else
-	    if (!selection.set() &&
-#endif
+	if (!selection.set() &&
 	    cursor.pos() > 0 && cursor.pos() < cursor.par()->size()
 	    && !cursor.par()->isSeparator(cursor.pos())
 	    && !cursor.par()->isKomma(cursor.pos())
@@ -2226,8 +2240,11 @@ string const LyXText::selectNextWord(BufferView * bview,
 	// Now, skip until we have real text (will jump paragraphs)
 	while ((cursor.par()->size() > cursor.pos()
 		&& (!cursor.par()->isLetter(cursor.pos())
+#ifndef NO_LATEX
 		    || cursor.par()->getFont(bview->buffer()->params, cursor.pos())
-		    .latex() == LyXFont::ON))
+		    .latex() == LyXFont::ON
+#endif
+			))
 	       || (cursor.par()->size() == cursor.pos()
 		   && cursor.par()->next())){
 		if (cursor.pos() == cursor.par()->size()) {
@@ -2244,11 +2261,7 @@ string const LyXText::selectNextWord(BufferView * bview,
 	}
 
 	// Start the selection from here
-#if 0
-	sel_cursor = cursor;
-#else
 	selection.cursor = cursor;
-#endif
 	
 	std::ostringstream latex;
 
@@ -2265,15 +2278,6 @@ string const LyXText::selectNextWord(BufferView * bview,
 
 	// Finally, we copy the word to a string and return it
 	string str;
-#if 0
-	if (sel_cursor.pos() < cursor.pos()) {
-		Paragraph::size_type i;
-		for (i = sel_cursor.pos(); i < cursor.pos(); ++i) {
-			if (cursor.par()->getChar(i) != Paragraph::META_INSET)
-				str += cursor.par()->getChar(i);
-		}
-	}
-#else
 	if (selection.cursor.pos() < cursor.pos()) {
 		Paragraph::size_type i;
 		for (i = selection.cursor.pos(); i < cursor.pos(); ++i) {
@@ -2281,7 +2285,6 @@ string const LyXText::selectNextWord(BufferView * bview,
 				str += cursor.par()->getChar(i);
 		}
 	}
-#endif
 	return str;
 }
 
@@ -2289,19 +2292,11 @@ string const LyXText::selectNextWord(BufferView * bview,
 // This one is also only for the spellchecker
 void LyXText::selectSelectedWord(BufferView * bview)
 {
-#if 0
-	// move cursor to the beginning
-	setCursor(bview, sel_cursor.par(), sel_cursor.pos());
-	
-	// set the sel cursor
-	sel_cursor = cursor;
-#else
 	// move cursor to the beginning
 	setCursor(bview, selection.cursor.par(), selection.cursor.pos());
 	
 	// set the sel cursor
 	selection.cursor = cursor;
-#endif
 	std::ostringstream latex;
 	
 	// now find the end of the word
@@ -2329,18 +2324,10 @@ void LyXText::deleteWordForward(BufferView * bview)
 	else {
 		LyXCursor tmpcursor = cursor;
 		tmpcursor.row(0); // ??
-#if 0
-		selection = true; // to avoid deletion
-#else
 		selection.set(true); // to avoid deletion
-#endif
 		cursorRightOneWord(bview);
 		setCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
-#if 0
-		sel_cursor = cursor;
-#else
 		selection.cursor = cursor;
-#endif
 		cursor = tmpcursor;
 		setSelection(bview); 
 		
@@ -2358,18 +2345,10 @@ void LyXText::deleteWordBackward(BufferView * bview)
        else {
 	       LyXCursor tmpcursor = cursor;
 	       tmpcursor.row(0); // ??
-#if 0
-	       selection = true; // to avoid deletion
-#else
 	       selection.set(true); // to avoid deletion
-#endif
 	       cursorLeftOneWord(bview);
 	       setCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
-#if 0
-	       sel_cursor = cursor;
-#else
 	       selection.cursor = cursor;
-#endif
 	       cursor = tmpcursor;
 	       setSelection(bview);
 	       cutSelection(bview);
@@ -2388,26 +2367,14 @@ void LyXText::deleteLineForward(BufferView * bview)
 		// We can't store the row over a regular setCursor
 		// so we set it to 0 and reset it afterwards.
 		tmpcursor.row(0); // ??
-#if 0
-		selection = true; // to avoid deletion
-#else
 		selection.set(true); // to avoid deletion
-#endif
 		cursorEnd(bview);
 		setCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
-#if 0
-		sel_cursor = cursor;
-#else
 		selection.cursor = cursor;
-#endif
 		cursor = tmpcursor;
 		setSelection(bview);
 		// What is this test for ??? (JMarc)
-#if 0
-		if (!selection) {
-#else
-			if (!selection.set()) {
-#endif
+		if (!selection.set()) {
 			deleteWordForward(bview);
 		} else {
 			cutSelection(bview);
@@ -2423,20 +2390,25 @@ void LyXText::deleteLineForward(BufferView * bview)
 // Paragraph, but it will have to change for 1.1 anyway. At least
 // it does not access outside of the allocated array as the older
 // version did. (JMarc) 
-void LyXText::changeWordCase(BufferView * bview, LyXText::TextCase action) 
+void LyXText::changeCase(BufferView * bview, LyXText::TextCase action)
 {
-	Paragraph * tmppar = cursor.par();
+	LyXCursor from;
+	LyXCursor to;
 
-	setUndo(bview->buffer(),Undo::FINISH,
-		tmppar->previous(), tmppar->next()); 
+	if (selection.set()) {
+		from = selection.cursor;
+		to = cursor;
+	} else {
+		getWord(from, to, PARTIAL_WORD);
+		setCursor(bview, to.par(), to.pos()+1);
+	}
 
-	Paragraph::size_type tmppos = cursor.pos();
+	setUndo(bview->buffer(), Undo::FINISH,
+		from.par()->previous(), to.par()->next()); 
 
-	while (tmppos < tmppar->size()) {
-		unsigned char c = tmppar->getChar(tmppos);
-		if (IsKommaChar(c) || IsLineSeparatorChar(c))
-			break;
-		if (c != Paragraph::META_INSET) {
+	while(from != to) {
+		unsigned char c = from.par()->getChar(from.pos());
+		if (!IsInsetChar(c) && !IsHfillChar(c)) {
 			switch (action) {
 			case text_lowercase:
 				c = tolower(c);
@@ -2450,13 +2422,19 @@ void LyXText::changeWordCase(BufferView * bview, LyXText::TextCase action)
 				break;
 			}
 		}
-		
-		//tmppar->text[tmppos] = c;
-		tmppar->setChar(tmppos, c);
-		++tmppos;
+		from.par()->setChar(from.pos(), c);
+		checkParagraph(bview, from.par(), from.pos());
+		from.pos(from.pos() + 1);
+		if (from.pos() >= from.par()->size()) {
+			from.par(from.par()->next());
+			from.pos(0);
+		}
 	}
-	checkParagraph(bview, tmppar, tmppos);
-	cursorRightOneWord(bview);
+	if (to.row() != from.row()) {
+		refresh_y = from.y() - from.row()->baseline();
+		refresh_row = from.row();
+		status = LyXText::NEED_MORE_REFRESH;
+	}
 }
 
 
@@ -3520,7 +3498,7 @@ int LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 	float last_tmpx = tmpx;
 	
 	if (main_body > 0 &&
-	    (main_body-1 > last || 
+	    (main_body - 1 > last || 
 	     !row->par()->isLineSeparator(main_body - 1)))
 		main_body = 0;
 	
@@ -3551,7 +3529,7 @@ int LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 		++vc;
 	}
 	
-	if (1 || (tmpx + last_tmpx) / 2 > x) {
+	if ((tmpx + last_tmpx) / 2 > x) {
 		tmpx = last_tmpx;
 		left_side = true;
 	}

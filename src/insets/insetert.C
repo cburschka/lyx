@@ -25,9 +25,11 @@ using std::ostream;
 
 InsetERT::InsetERT() : InsetCollapsable()
 {
-	setLabel(_("ERT"));
+	setLabel(_("666"));
+#ifndef NO_LATEX
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setLatex (LyXFont::ON);
+#endif
 	labelfont = LyXFont(LyXFont::ALL_SANE);
 	labelfont.decSize();
 	labelfont.decSize();
@@ -60,6 +62,12 @@ string const InsetERT::EditMessage() const
 }
 
 
+bool InsetERT::InsertInset(BufferView *, Inset *)
+{
+	return false;
+}
+
+
 void InsetERT::SetFont(BufferView *, LyXFont const &, bool, bool selectall)
 {
 	// if selectall is activated then the fontchange was an outside general
@@ -74,6 +82,38 @@ void InsetERT::SetFont(BufferView *, LyXFont const &, bool, bool selectall)
 void InsetERT::Edit(BufferView * bv, int x, int y, unsigned int button)
 {
 	InsetCollapsable::Edit(bv, x, y, button);
+#ifndef NO_LATEX
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setLatex (LyXFont::ON);
+#endif
+}
+
+
+int InsetERT::Latex(Buffer const *, std::ostream & os, bool /*fragile*/,
+		    bool /*free_spc*/) const
+{
+	Paragraph::size_type siz = inset.par->size();
+	for (Paragraph::size_type i = 0; i != siz; ++i) {
+		os << inset.par->getChar(i);
+	}
+	return 1;
+}
+
+
+int InsetERT::Ascii(Buffer const *,
+		    std::ostream &, int /*linelen*/) const 
+{
+	return 0;
+}
+
+
+int InsetERT::Linuxdoc(Buffer const *, std::ostream &) const
+{
+	return 0;
+}
+
+
+int InsetERT::DocBook(Buffer const *, std::ostream &) const
+{
+	return 0;
 }

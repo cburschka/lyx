@@ -18,9 +18,6 @@
 
 #include "LOstream.h"
 
-// I don't really like this, but too please doc++...(Lgb)
-using std::ostream;
-
 #ifdef TEST_DEBUGSTREAM
 #include <string>
 struct Debug {
@@ -78,11 +75,8 @@ struct Debug {
     debug[Debug::type(Debug::INFO | Debug::CRIT)] << "...info/crit...\n";
 
 */
-class DebugStream : public ostream
+class DebugStream : public std::ostream
 {
-// This workaround is needed only for gcc 2.8.1 (and possibly egcs
-// 1.0.x), which generates a compiler error when subclassing from
-// std::. (JMarc)
 public:
 	/// Constructor, sets the debug level to t.
 	explicit DebugStream(Debug::type t = Debug::NONE);

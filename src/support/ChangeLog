@@ -1,3 +1,21 @@
+2001-06-26  The LyX Project  <lyx@violet.home.sad.it>
+
+	* filetools.C (DeleteAllFilesInDir): send debug output to
+	Debug::FILES instewad of Debug::ANY.
+
+	* DebugStream.h: remove gcc 2.8.x hack.
+
+2001-06-26  The LyX Project  <jug@sad.it>
+
+	* lstrings.h:
+	* lstrings.C (escape): move method to escape non ascii characters
+	from insets label and ref to here.
+
+2001-06-25  The LyX Project  <jug@sad.it>
+
+	* filetools.C (IsLyXFilename): 
+	(IsSGMLFilename): do case insensitive name matching
+
 2001-06-24  The LyX Project  <jug@sad.it>
 
 	* lstrings.C (compare_ascii_no_case): version of compare_no_case

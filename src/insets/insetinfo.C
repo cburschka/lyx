@@ -39,7 +39,11 @@ InsetInfo::InsetInfo()
 	: form(0), labelfont(LyXFont::ALL_SANE)
 {
 	labelfont.decSize().decSize()
-		.setColor(LColor::note).setLatex(LyXFont::OFF);
+		.setColor(LColor::note)
+#ifndef NO_LATEX
+		.setLatex(LyXFont::OFF)
+#endif
+		;
 }
 
 
@@ -47,7 +51,11 @@ InsetInfo::InsetInfo(string const & str)
 	: contents(str), form(0), labelfont(LyXFont::ALL_SANE)
 {
 	labelfont.decSize().decSize()
-		.setColor(LColor::note).setLatex(LyXFont::OFF);
+		.setColor(LColor::note)
+#ifndef NO_LATEX
+		.setLatex(LyXFont::OFF)
+#endif
+		;
 }
 
 
