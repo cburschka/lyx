@@ -1,3 +1,8 @@
+2004-10-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* lyxlength.C (asLaTeXString): rewrite macros (using snprintf), because
+	the old ones were broken with values < 10% (bug 1523)
+
 2004-10-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* version.C.in: update release date
