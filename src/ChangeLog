@@ -1,3 +1,12 @@
+2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* debug.C (showLevel): do not forget the end-of-line marker
+
+2004-04-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* kbmap.C (read): do not stop parsing a bind file when an error
+	occurs (bug 1575)
+
 2004-04-29  Angus Leeming  <leeming@lyx.org>
 
 	* cursor.C:

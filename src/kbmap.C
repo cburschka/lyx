@@ -112,7 +112,7 @@ bool kb_keymap::read(string const & bind_file)
 	lyxerr[Debug::KBMAP] << "Reading bind file:" << tmp << endl;
 
 	bool error = false;
-	while (!error && lexrc.isOK()) {
+	while (lexrc.isOK()) {
 		switch (lexrc.lex()) {
 		case LyXLex::LEX_UNDEF:
 			lexrc.printError("Unknown tag `$$Token'");
@@ -154,7 +154,7 @@ bool kb_keymap::read(string const & bind_file)
 		case BN_BINDFILE:
 			if (lexrc.next()) {
 				string const tmp(lexrc.getString());
-				error = !read(tmp);
+				error |= !read(tmp);
 			} else {
 				lexrc.printError("BN_BINDFILE: Missing file name");
 				error = true;
