@@ -1,3 +1,8 @@
+2003-05-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* forms/Makefile.am (EXTRA_DIST): do not forget to distribute
+	c_str.sed. 
+
 2003-04-09  Angus Leeming  <leeming@lyx.org>
 
 	* FormAboutlyx.C:

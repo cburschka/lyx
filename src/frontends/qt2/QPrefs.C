@@ -269,19 +269,19 @@ void QPrefs::apply()
 		QListBoxItem * ib(colmod->lyxObjectsLB->item(i));
 		QColorItem * ci(static_cast<QColorItem*>(ib));
 
-		ostringstream ostr;
-
-		ostr << '#' << std::setbase(16) << setfill('0')
-			<< setw(2) << ci->color().red()
-			<< setw(2) << ci->color().green()
-			<< setw(2) << ci->color().blue();
-
-		string newhex(STRCONV(ostr.str()));
-
-		LColor::color col(dialog_->colors_[i]);
+		LColor::color const col(dialog_->colors_[i]);
+		QColor const qcol(toqstr(lcolor.getX11Name(col)));
 
 		// FIXME: dubious, but it's what xforms does
-		if (lcolor.getX11Name(col) != newhex) {
+		if (qcol != ci->color()) {
+			ostringstream ostr;
+			
+			ostr << '#' << std::setbase(16) << setfill('0')
+			     << setw(2) << ci->color().red()
+			     << setw(2) << ci->color().green()
+			     << setw(2) << ci->color().blue();
+
+			string newhex(STRCONV(ostr.str()));
 			controller().setColor(col, newhex);
 		}
 	}

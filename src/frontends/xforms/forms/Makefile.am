@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = fdfixc.sed fdfixh.sed fdfix.sh README $(SRCS)
+EXTRA_DIST = fdfixc.sed fdfixh.sed c_str.sed fdfix.sh README $(SRCS)
 
 noinst_LTLIBRARIES = libfdesign.la
 
