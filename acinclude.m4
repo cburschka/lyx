@@ -1271,7 +1271,11 @@ AC_DEFUN(AM_WITH_NLS,
 	       [AC_CACHE_CHECK([for gettext in libintl],
 		 gt_cv_func_gettext_libintl,
 		 [AC_CHECK_LIB(intl, gettext,
-		  gt_cv_func_gettext_libintl=yes,
+dnl ============== A fix is here! ======================
+dnl -lintl was not added to the LIBS variable in this case
+		  [gt_cv_func_gettext_libintl=yes
+		   INTLLIBS="-lintl"],
+dnl ==== end of fix
 		  gt_cv_func_gettext_libintl=no)],
 		 gt_cv_func_gettext_libintl=no)])
 	   fi

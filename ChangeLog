@@ -1,3 +1,9 @@
+2000-03-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* config/gettext.m4 (AM_WITH_NLS): fix a gettext bug where -lintl
+	would not be added to the link list when an installed gettext (not
+	part of libc) is found.
+
 2000-03-24  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insetcollapsable.C (Edit): 
