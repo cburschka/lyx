@@ -2584,21 +2584,21 @@ bool Buffer::isSGML() const
 }
 
 
-void Buffer::sgmlOpenTag(ostream & os, Paragraph::depth_type depth,
+void Buffer::sgmlOpenTag(ostream & os, Paragraph::depth_type,
 			 string const & latexname) const
 {
 	if (!latexname.empty() && latexname != "!-- --")
 		//os << "<!-- " << depth << " -->" << "<" << latexname << ">";
-		os << string(depth, ' ') << "<" << latexname << ">\n";
+		os << "<" << latexname << ">";
 }
 
 
-void Buffer::sgmlCloseTag(ostream & os, Paragraph::depth_type depth,
+void Buffer::sgmlCloseTag(ostream & os, Paragraph::depth_type,
 			  string const & latexname) const
 {
 	if (!latexname.empty() && latexname != "!-- --")
 		//os << "<!-- " << depth << " -->" << "</" << latexname << ">\n";
-		os << string(depth, ' ') << "</" << latexname << ">\n";
+		os << "</" << latexname << ">";
 }
 
 

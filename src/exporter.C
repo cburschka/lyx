@@ -64,10 +64,10 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		buffer->writeFileAscii(filename, lyxrc.ascii_linelen);
 	// Linuxdoc backend
 	else if (buffer->isLinuxDoc())
-		buffer->makeLinuxDocFile(filename, true);
+		buffer->makeLinuxDocFile(filename, !put_in_tempdir);
 	// Docbook backend
 	else if (buffer->isDocBook())
-		buffer->makeDocBookFile(filename, true);
+		buffer->makeDocBookFile(filename, !put_in_tempdir);
 	// LaTeX backend
 	else if (backend_format == format)
 		buffer->makeLaTeXFile(filename, string(), true);

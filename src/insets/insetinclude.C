@@ -316,7 +316,7 @@ int InsetInclude::linuxdoc(Buffer const * buffer, ostream & os) const
 
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".sgml");
-		if (!buffer->tmppath.empty() && buffer->niceFile) {
+		if (!buffer->tmppath.empty() && !buffer->niceFile) {
 			incfile = subst(incfile, '/','@');
 			writefile = AddName(buffer->tmppath, incfile);
 		} else
@@ -355,7 +355,7 @@ int InsetInclude::docbook(Buffer const * buffer, ostream & os) const
 
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".sgml");
-		if (!buffer->tmppath.empty() && buffer->niceFile) {
+		if (!buffer->tmppath.empty() && !buffer->niceFile) {
 			incfile = subst(incfile, '/','@');
 			writefile = AddName(buffer->tmppath, incfile);
 		} else
@@ -388,7 +388,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 	Buffer const * const b = bufferlist.getBuffer(getMasterFilename());
 
-	if (b && !b->tmppath.empty() && b->niceFile && !isVerbatim()) {
+	if (b && !b->tmppath.empty() && !b->niceFile && !isVerbatim()) {
 		incfile = subst(incfile, '/','@');
 		writefile = AddName(b->tmppath, incfile);
 	} else

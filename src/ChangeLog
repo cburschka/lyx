@@ -1,3 +1,11 @@
+2002-03-04  Jose Abilio Oliveira Matos  <jamatos@novalis.fc.up.pt>
+
+	* exporter.C (Export): for linuxdoc and docbook the buffer is a nice
+	file if it doesn't go to a temporary file.
+
+	* buffer.C (sgmlOpenTag):
+	(sgmlCloseTag):  remove extra newline insertion.
+
 2002-03-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text.C (getRowNearY): comment out debug msg
