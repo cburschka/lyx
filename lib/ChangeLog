@@ -1,3 +1,8 @@
+2004-04-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* help/ and contents is gone (outdated).
+	* Makefile.am: remove all traces of help/
+
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
 	* ui/classic.ui:
@@ -13,7 +18,7 @@
 
 2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
-	* dco/LaTeXConfig.lyx.in: check for bibtopic.
+	* doc/LaTeXConfig.lyx.in: check for bibtopic.
 
 2004-03-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
