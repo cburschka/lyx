@@ -83,7 +83,10 @@ ParagraphList::const_iterator searchEnvironment(ParagraphList::const_iterator co
 			return p;
 		}
 
-		if( style->latexname() != bstyle->latexname() and p->params().depth() <= par->params().depth())
+		if(p->params().depth() < par->params().depth())
+			return p;
+
+		if( style->latexname() != bstyle->latexname() and p->params().depth() == par->params().depth() )
 			return p;
 	}
 	return pend;
@@ -166,8 +169,8 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					counters.step("para");
 					id = tostr(counters.value("para"));
 					id = " id=\""+ subst(defaultstyle->latexparam(), "#", id) + '"';
-					wrapper = defaultstyle->latexname();
 				}
+				wrapper = defaultstyle->latexname();
 				sgml::openTag(os, depth, true, bstyle->itemtag());
 			}
 		default:

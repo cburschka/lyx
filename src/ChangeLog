@@ -1,3 +1,8 @@
+2004-10-24   José Matos  <jamatos@lyx.org>
+
+	* output_docbook.C (makeEnvironment, searchEnvironment): place
+	CDATA inside paragraphs and fix scope for listitems.
+
 2004-10-24  José Matos  <jamatos@lyx.org>
 
 	* output_docbook.C: remove using statement for stack.
