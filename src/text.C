@@ -1911,9 +1911,13 @@ void LyXText::InsertChar(BufferView * bview, char c)
 
 
 	if (lyxrc.auto_number) {
+		static string const number_operators = "+-/*";
+		static string const number_unary_operators = "+-";
+		static string const number_seperators = ".,:";
+
 		if (current_font.number() == LyXFont::ON) {
-			if (!isdigit(c) && !strchr("+-/*", c) &&
-			    !(strchr(".,:",c) &&
+			if (!isdigit(c) && !contains(number_operators, c) &&
+			    !(contains(number_seperators, c) &&
 			      cursor.pos() >= 1 &&
 			      cursor.pos() < cursor.par()->size() &&
 			      GetFont(bview->buffer(),
@@ -1930,7 +1934,7 @@ void LyXText::InsertChar(BufferView * bview, char c)
 
 			if (cursor.pos() > 0) {
 				char const c = cursor.par()->GetChar(cursor.pos() - 1);
-				if (strchr("+-",c) &&
+				if (contains(number_unary_operators, c) &&
 				    (cursor.pos() == 1 ||
 				     cursor.par()->IsSeparator(cursor.pos() - 2) ||
 				     cursor.par()->IsNewline(cursor.pos() - 2) )
@@ -1939,7 +1943,7 @@ void LyXText::InsertChar(BufferView * bview, char c)
 						    cursor.par(),
 						    cursor.pos() - 1,
 						    current_font);
-				} else if (strchr(".,:", c) &&
+				} else if (contains(number_seperators, c) &&
 					   cursor.pos() >= 2 &&
 					   GetFont(bview->buffer(),
 						   cursor.par(),

@@ -126,6 +126,9 @@ bool contains(string const & a, char const * b);
 bool contains(string const & a, string const & b);
 
 ///
+bool contains(string const & a, char b);
+
+///
 bool contains(char const * a, char const * b);
 
 ///

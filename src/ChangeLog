@@ -1,5 +1,7 @@
 2001-01-15  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* text.C (InsertChar): Use contains instead of strchr.
+
 	* lyx_cb.C (MenuInsertLabel): Enable default value code.
 
 2001-01-13  Dekel Tsur  <dekelts@tau.ac.il>
