@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libgraphics.la
 
-INCLUDES = -I$(srcdir)/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
+INCLUDES = -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 EXTRA_DIST = GraphicsImageXPM.C GraphicsImageXPM.h
 
@@ -35,4 +35,3 @@ libgraphics_la_SOURCES = \
 	Previews.C \
 	PreviewedInset.h \
 	PreviewedInset.C
-

@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libsupport.la
 
-INCLUDES = -I$(srcdir)/../ $(SIGC_INCLUDES) $(BOOST_INCLUDES)
+INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
 EXTRA_DIST = lyxstring.C lyxstring.h \
 	     os_unix.C os_win32.C os_os2.C

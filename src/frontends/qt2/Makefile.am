@@ -8,7 +8,7 @@ EXTRA_DIST = Makefile.dialogs QDocument.C QDocument.h \
 noinst_LTLIBRARIES = libqt2.la
 
 INCLUDES = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
-	$(SIGC_CFLAGS) -I$(top_srcdir)/images \
+	-I$(top_srcdir)/images \
 	$(FRONTEND_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 

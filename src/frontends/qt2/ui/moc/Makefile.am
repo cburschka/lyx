@@ -5,10 +5,9 @@ DISTCLEANFILES += $(UIMOCDIALOGS)
 
 noinst_LTLIBRARIES = libqt2uimoc.la
 
-INCLUDES = -I$(top_srcdir)/src/ \
-	-I$(top_srcdir)/src/frontends/ \
+INCLUDES = -I$(top_srcdir)/src \
+	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \
-	$(SIGC_CFLAGS) \
 	$(FRONTEND_INCLUDES) \
 	$(BOOST_INCLUDES)
 

@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libinsets.la
 
-INCLUDES = -I$(srcdir)/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
+INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
 EXTRA_DIST = \
 	insetlist.C \

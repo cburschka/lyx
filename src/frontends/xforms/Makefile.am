@@ -2,10 +2,10 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libxforms.la
 
-INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src/ \
-	-I$(top_srcdir)/src/frontends/ \
+INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src \
+	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \
-	$(SIGC_CFLAGS) $(BOOST_INCLUDES)
+	$(BOOST_INCLUDES)
 
 SUBDIRS = forms
 

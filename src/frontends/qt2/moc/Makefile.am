@@ -9,7 +9,6 @@ INCLUDES = -I$(top_srcdir)/src/ \
 	-I$(top_srcdir)/src/frontends/ \
 	-I$(top_srcdir)/src/frontends/controllers \
 	-I$(top_builddir)/src/frontends/qt2 \
-	$(SIGC_CFLAGS) \
 	$(FRONTEND_INCLUDES) \
 	$(BOOST_INCLUDES)
 
@@ -33,6 +32,6 @@ nodist_libqt2moc_la_SOURCES = \
 	$(MOCDIALOGS)
 
 libqt2moc.la: $(libqt2moc_la_OBJECTS) $(libqt2moc_la_DEPENDENCIES)
- 
+
 %_moc.C: ../%.h
 	$(MOC) -o $@ $<
