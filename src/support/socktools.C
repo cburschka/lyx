@@ -26,6 +26,12 @@ using std::strerror;
 
 using std::string;
 
+// This MACRO eppears to be defined only on Linux.
+#if !defined(SUN_LEN)
+#define SUN_LEN(su) \
+	(sizeof (*(su)) - sizeof ((su)->sun_path) + strlen((su)->sun_path))
+#endif
+
 
 namespace lyx {
 namespace support {
