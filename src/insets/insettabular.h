@@ -211,8 +211,6 @@ private:
     int GetMaxWidthOfCell(Painter &, int cell) const;
     ///
     void recomputeTextInsets(BufferView *, const LyXFont &) const;
-    ///
-    void initFeatures();
 
     ///
     /// Private structures and variables

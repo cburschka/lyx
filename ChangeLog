@@ -1,5 +1,7 @@
 2000-08-01  Juergen Vigna  <jug@sad.it>
 
+	* src/insets/insettabular.h: removed initFeatures() as it's not needed.
+
 	* src/commandtags.h: 
 	* src/LyXAction.C (init): added LFUN_LAYOUT_TABULAR and
 	LFUN_TABULAR_FEATURES.

@@ -128,7 +128,6 @@ InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
     dialogs_ = 0;
     need_update = INIT;
-    initFeatures();
 }
 
 
@@ -145,61 +144,6 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer * buf)
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
     dialogs_ = 0;
     need_update = INIT;
-}
-
-
-void InsetTabular::initFeatures()
-{
-    if (tabularFeatures)
-	return;
-
-    tabular_features tf[] = {
-	{ LyXTabular::APPEND_ROW, "append-row" },
-	{ LyXTabular::APPEND_COLUMN, "append-column" },
-	{ LyXTabular::DELETE_ROW, "delete-row" },
-	{ LyXTabular::DELETE_COLUMN, "delete-column" },
-	{ LyXTabular::TOGGLE_LINE_TOP, "toggle-line-top" },
-	{ LyXTabular::TOGGLE_LINE_BOTTOM, "toggle-line-bottom" },
-	{ LyXTabular::TOGGLE_LINE_LEFT, "toggle-line-left" },
-	{ LyXTabular::TOGGLE_LINE_RIGHT, "toggle-line-right" },
-	{ LyXTabular::ALIGN_LEFT, "align-left" },
-	{ LyXTabular::ALIGN_RIGHT, "align-right" },
-	{ LyXTabular::ALIGN_CENTER, "align-center" },
-	{ LyXTabular::VALIGN_TOP, "valign-top" },
-	{ LyXTabular::VALIGN_BOTTOM, "valign-bottom" },
-	{ LyXTabular::VALIGN_CENTER, "valign-center" },
-	{ LyXTabular::M_TOGGLE_LINE_TOP, "m-toggle-line-top" },
-	{ LyXTabular::M_TOGGLE_LINE_BOTTOM, "m-toggle-line-bottom" },
-	{ LyXTabular::M_TOGGLE_LINE_LEFT, "m-toggle-line-left" },
-	{ LyXTabular::M_TOGGLE_LINE_RIGHT, "m-toggle-line-right" },
-	{ LyXTabular::M_ALIGN_LEFT, "m-align-left" },
-	{ LyXTabular::M_ALIGN_RIGHT, "m-align-right" },
-	{ LyXTabular::M_ALIGN_CENTER, "m-align-center" },
-	{ LyXTabular::M_VALIGN_TOP, "m-valign-top" },
-	{ LyXTabular::M_VALIGN_BOTTOM, "m-valign-bottom" },
-	{ LyXTabular::M_VALIGN_CENTER, "m-valign-center" },
-	{ LyXTabular::DELETE_TABULAR, "delete-tabular" },
-	{ LyXTabular::MULTICOLUMN, "multicolumn" },
-	{ LyXTabular::SET_ALL_LINES, "set-all-lines" },
-	{ LyXTabular::UNSET_ALL_LINES, "unset-all-lines" },
-	{ LyXTabular::SET_LONGTABULAR, "set-longtabular" },
-	{ LyXTabular::UNSET_LONGTABULAR, "unset-longtabular" },
-	{ LyXTabular::SET_PWIDTH, "set-pwidth" },
-	{ LyXTabular::SET_MPWIDTH, "set-mpwidth" },
-	{ LyXTabular::SET_ROTATE_TABULAR, "set-rotate-tabular" },
-	{ LyXTabular::UNSET_ROTATE_TABULAR, "unset-rotate-tabular" },
-	{ LyXTabular::SET_ROTATE_CELL, "set-rotate-cell" },
-	{ LyXTabular::UNSET_ROTATE_CELL, "unset-rotate-cell" },
-	{ LyXTabular::SET_USEBOX, "set-usebox" },
-	{ LyXTabular::SET_LTHEAD, "set-lthead" },
-	{ LyXTabular::SET_LTFIRSTHEAD, "set-ltfirsthead" },
-	{ LyXTabular::SET_LTFOOT, "set-ltfoot" },
-	{ LyXTabular::SET_LTLASTFOOT, "set-ltlastfoot" },
-	{ LyXTabular::SET_LTNEWPAGE, "set-ltnewpage" },
-	{ LyXTabular::SET_SPECIAL_COLUMN, "set-special-column" },
-	{ LyXTabular::SET_SPECIAL_MULTI, "set-special-multi" },
-	{ LyXTabular::LAST_ACTION, "" }
-    };
 }
 
 
