@@ -1,5 +1,8 @@
 2004-03-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* QCitation.C:
+	* ui/QCitationDialogBase.ui: Support second \cite option.
+	
 	* QDocumentDialog.C (branches): Don't deselect branch
 	after button press.
 	* QBranch.C: fix off-by-one-error. 

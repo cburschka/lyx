@@ -30,7 +30,7 @@ using std::ostringstream;
 
 InsetCommand::InsetCommand(InsetCommandParams const & p,
 			   string const & mailer_name)
-	: p_(p.getCmdName(), p.getContents(), p.getOptions()),
+	: p_(p.getCmdName(), p.getContents(), p.getOptions(), p.getSecOptions()),
 	  mailer_name_(mailer_name),
 	  set_label_(false)
 {}

@@ -115,6 +115,9 @@ void FormCitation::apply()
 	controller().params().setCmdName(command);
 	controller().params().setContents(getStringFromVector(citekeys));
 
+	string const before  = getString(dialog_->input_before);
+	controller().params().setSecOptions(before);
+	
 	string const after  = getString(dialog_->input_after);
 	controller().params().setOptions(after);
 }
@@ -450,6 +453,7 @@ void FormCitation::update()
 	setEnabled(dialog_->check_full_author_list, natbib);
 	setEnabled(dialog_->check_force_uppercase, natbib);
 	setEnabled(dialog_->choice_style, natbib);
+	setEnabled(dialog_->input_before, natbib);
 
 	// No keys have been selected yet, so...
 	fl_clear_browser(dialog_->browser_info);
@@ -457,12 +461,11 @@ void FormCitation::update()
 	setCiteButtons(OFF);
 
 	// Natbib can have comments before and after the citation.
-	// This is not yet supported. After only.
 	fl_set_input(dialog_->input_after,
 		     controller().params().getOptions().c_str());
 
-	fl_set_input(dialog_->input_before, _("Not yet supported").c_str());
-	setEnabled(dialog_->input_before, false);
+	fl_set_input(dialog_->input_before, 
+		     controller().params().getSecOptions().c_str());
 }
 
 

@@ -27,30 +27,34 @@ InsetCommandParams::InsetCommandParams()
 
 InsetCommandParams::InsetCommandParams(string const & n,
 					string const & c,
-					string const & o)
-	: cmdname(n), contents(c), options(o), preview_(false)
+					string const & o,
+					string const & s)
+	: cmdname(n), contents(c), options(o), sec_options(s), 
+	preview_(false)
 {}
 
 
 void InsetCommandParams::scanCommand(string const & cmd)
 {
-	string tcmdname, toptions, tcontents;
+	string tcmdname, toptions, tsecoptions, tcontents;
 
 	if (cmd.empty()) return;
-
-	enum { WS, CMDNAME, OPTION, CONTENT } state = WS;
+	
+	enum { WS, CMDNAME, OPTION, SECOPTION, CONTENT } state = WS;
 
 	// Used to handle things like \command[foo[bar]]{foo{bar}}
 	int nestdepth = 0;
 
 	for (string::size_type i = 0; i < cmd.length(); ++i) {
 		char c = cmd[i];
+		char b = cmd[i-1];
 		if ((state == CMDNAME && c == ' ') ||
 		    (state == CMDNAME && c == '[') ||
 		    (state == CMDNAME && c == '{')) {
 			state = WS;
 		}
 		if ((state == OPTION  && c == ']') ||
+		    (state == SECOPTION  && c == ']') ||
 		    (state == CONTENT && c == '}')) {
 			if (nestdepth == 0) {
 				state = WS;
@@ -59,18 +63,23 @@ void InsetCommandParams::scanCommand(string const & cmd)
 			}
 		}
 		if ((state == OPTION  && c == '[') ||
+		    (state == SECOPTION  && c == '[') ||
 		    (state == CONTENT && c == '{')) {
 			++nestdepth;
 		}
 		switch (state) {
 		case CMDNAME:	tcmdname += c; break;
 		case OPTION:	toptions += c; break;
+		case SECOPTION:	tsecoptions += c; break;
 		case CONTENT:	tcontents += c; break;
 		case WS:
 			if (c == '\\') {
 				state = CMDNAME;
-			} else if (c == '[') {
+			} else if (c == '[' && b != ']') {
 				state = OPTION;
+				nestdepth = 0; // Just to be sure
+			} else if (c == '[' && b == ']') {
+				state = SECOPTION;
 				nestdepth = 0; // Just to be sure
 			} else if (c == '{') {
 				state = CONTENT;
@@ -83,6 +92,7 @@ void InsetCommandParams::scanCommand(string const & cmd)
 	// Don't mess with this.
 	if (!tcmdname.empty())  setCmdName(tcmdname);
 	if (!toptions.empty())  setOptions(toptions);
+	if (!tsecoptions.empty())  setSecOptions(tsecoptions);
 	if (!tcontents.empty()) setContents(tcontents);
 
 	if (lyxerr.debugging(Debug::PARSER))
@@ -90,7 +100,8 @@ void InsetCommandParams::scanCommand(string const & cmd)
 		       << "> == <" << getCommand()
 		       << "> == <" << getCmdName()
 		       << '|' << getContents()
-		       << '|' << getOptions() << '>' << endl;
+		       << '|' << getOptions() 
+		       << '|' << getSecOptions() << '>' << endl;
 }
 
 
@@ -133,6 +144,11 @@ string const InsetCommandParams::getCommand() const
 	string s;
 	if (!getCmdName().empty()) s += '\\' + getCmdName();
 	if (!getOptions().empty()) s += '[' + getOptions() + ']';
+	if (!getSecOptions().empty()) {
+		// for cases like \command[][sec_option]{arg}
+		if (getOptions().empty()) s += "[]";
+	s += '[' + getSecOptions() + ']';
+	}
 	s += '{' + getContents() + '}';
 	return s;
 }
@@ -144,6 +160,7 @@ bool operator==(InsetCommandParams const & o1,
 	return o1.getCmdName() == o2.getCmdName()
 		&& o1.getContents() == o2.getContents()
 		&& o1.getOptions() == o2.getOptions()
+		&& o1.getSecOptions() == o2.getSecOptions()
 		&& o1.preview() == o2.preview();
 }
 

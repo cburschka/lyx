@@ -70,6 +70,8 @@ public:
 	///
 	std::string const & getOptions() const { return p_.getOptions(); }
 	///
+	std::string const & getSecOptions() const { return p_.getSecOptions(); }
+	///
 	RenderButton & button() const { return button_; }
 
 protected:
@@ -83,6 +85,8 @@ protected:
 	void setCmdName(std::string const & n) { p_.setCmdName(n); }
 	///
 	void setOptions(std::string const & o) { p_.setOptions(o); }
+	///
+	void setSecOptions(std::string const & s) { p_.setSecOptions(s); }
 	///
 	void setParams(InsetCommandParams const &);
 	/// This should provide the text for the button

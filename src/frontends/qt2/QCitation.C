@@ -60,6 +60,9 @@ void QCitation::apply()
 	controller().params().setCmdName(command);
 	controller().params().setContents(getStringFromVector(citekeys));
 
+	string const before = fromqstr(dialog_->textBeforeED->text());
+	controller().params().setSecOptions(before);
+	
 	string const after = fromqstr(dialog_->textAfterED->text());
 	controller().params().setOptions(after);
 	
@@ -95,8 +98,7 @@ void QCitation::build_dialog()
 	bcview().addReadOnly(dialog_->citationStyleCO);
 	bcview().addReadOnly(dialog_->forceuppercaseCB);
 	bcview().addReadOnly(dialog_->fulllistCB);
-	// add when enabled !
-	//bcview().addReadOnly(dialog_->textBeforeED);
+	bcview().addReadOnly(dialog_->textBeforeED);
 	bcview().addReadOnly(dialog_->textAfterED);
 	
 	open_find_ = true;
@@ -143,6 +145,7 @@ void QCitation::updateStyle()
 
 	dialog_->fulllistCB->setEnabled(natbib);
 	dialog_->forceuppercaseCB->setEnabled(natbib);
+	dialog_->textBeforeED->setEnabled(natbib);
 
 	string const & command = controller().params().getCmdName();
 
@@ -185,7 +188,10 @@ void QCitation::update_contents()
 	dialog_->infoML->clear();
 	dialog_->setButtons();
 
-	dialog_->textAfterED->setText(toqstr(controller().params().getOptions()));
+	dialog_->textBeforeED->setText(
+		toqstr(controller().params().getSecOptions()));
+	dialog_->textAfterED->setText(
+		toqstr(controller().params().getOptions()));
 
 	fillStyles();
 	updateStyle();

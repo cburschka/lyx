@@ -221,7 +221,7 @@ InsetCitation::InsetCitation(InsetCommandParams const & p)
 
 string const InsetCitation::generateLabel(Buffer const & buffer) const
 {
-	string const before = string();
+	string const before = getSecOptions();
 	string const after  = getOptions();
 
 	string label;
@@ -275,7 +275,7 @@ string const InsetCitation::getScreenLabel(Buffer const & buffer) const
 		return cache.screen_label;
 
 	// The label has changed, so we have to re-create it.
-	string const before = string();
+	string const before = getSecOptions();
 	string const after  = getOptions();
 
 	string const glabel = generateLabel(buffer);
@@ -320,25 +320,13 @@ int InsetCitation::latex(Buffer const & buffer, ostream & os,
 	else
 		os << "cite";
 
-#warning What is this code supposed to do? (Lgb)
-// my guess is that this is just waiting for when we support before,
-// so it's a oneliner. But this is very silly ! - jbl
-
-#if 1
-	// The current strange code
-
-	string const before = string();
+	string const before = getSecOptions();
 	string const after  = getOptions();
 	if (!before.empty() && buffer.params().use_natbib)
 		os << '[' << before << "][" << after << ']';
 	else if (!after.empty())
 		os << '[' << after << ']';
-#else
-	// and the cleaned up equvalent, should it just be changed? (Lgb)
-	string const after  = getOptions();
-	if (!after.empty())
-		os << '[' << after << ']';
-#endif
+
 	string::const_iterator it  = getContents().begin();
 	string::const_iterator end = getContents().end();
 	// Paranoia check: make sure that there is no whitespace in here

@@ -26,7 +26,8 @@ public:
 	///
 	explicit InsetCommandParams(std::string const & n,
 			    std::string const & c = std::string(),
-			    std::string const & o = std::string());
+			    std::string const & o = std::string(),
+			    std::string const & s = std::string());
 	///
 	void read(LyXLex &);
 	/// Parse the command
@@ -40,11 +41,15 @@ public:
 	///
 	std::string const & getOptions() const { return options; }
 	///
+	std::string const & getSecOptions() const { return sec_options; }
+	///
 	std::string const & getContents() const { return contents; }
 	///
 	void setCmdName(std::string const & n) { cmdname = n; }
 	///
 	void setOptions(std::string const & o) { options = o; }
+	///
+	void setSecOptions(std::string const & s) { sec_options = s; }
 	///
 	void setContents(std::string const & c) { contents = c; }
 	///
@@ -59,6 +64,8 @@ private:
 	std::string contents;
 	///
 	std::string options;
+	///
+	std::string sec_options;
 	///
 	bool preview_;
 };

@@ -1,6 +1,15 @@
 LyX file-format changes
 -----------------------
 
+2004-02-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* format incremented to 230.
+	* Support for a second optional argument in insetcommand.
+	currently, citation uses this to support natbibs second
+	optional argument \cite[before][after]{key}.
+	I think there's nothing to convert upwards. Downwards, the 
+	commands need to be converted to ERT I suppose. 
+
 2003-12-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* format incremented to 229.
