@@ -31,7 +31,6 @@
 #include <boost/scoped_ptr.hpp>
 
 class Inset;
-class BufferView;
 
 namespace grfx {
 
@@ -51,6 +50,8 @@ public:
 
 	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
 	~Loader();
+
+	Loader & operator=(Loader const &);
 
 	/// The file can be changed, or the display params, or both.
 	void reset(string const & file_with_path,

@@ -16,7 +16,6 @@
 #include <boost/scoped_ptr.hpp>
 
 class Inset;
-class BufferView;
 
 namespace grfx {
 

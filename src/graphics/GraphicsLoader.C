@@ -29,7 +29,7 @@ namespace grfx {
 
 struct Loader::Impl : boost::signals::trackable {
 	///
-	Impl(Params const &);
+	Impl();
 	///
 	~Impl();
 	///
@@ -67,26 +67,26 @@ private:
 
 
 Loader::Loader()
-	: pimpl_(new Impl(Params()))
+	: pimpl_(new Impl)
 {}
 
 
 Loader::Loader(string const & file, DisplayType type)
-	: pimpl_(new Impl(Params()))
+	: pimpl_(new Impl)
 {
 	reset(file, type);
 }
 
 
 Loader::Loader(string const & file, Params const & params)
-	: pimpl_(new Impl(Params()))
+	: pimpl_(new Impl)
 {
 	reset(file, params);
 }
 
 
 Loader::Loader(Loader const & other)
-	: pimpl_(new Impl(Params()))
+	: pimpl_(new Impl)
 {
 	Params const & params = other.pimpl_->params();
 	reset(params.filename, params);
@@ -95,6 +95,16 @@ Loader::Loader(Loader const & other)
 
 Loader::~Loader()
 {}
+
+
+Loader & Loader::operator=(Loader const & other)
+{
+	if (this != &other) {
+		Params const & params = other.pimpl_->params();
+		reset(params.filename, params);
+	}
+	return *this;
+}
 
 
 void Loader::reset(string const & file, DisplayType type) const
@@ -184,8 +194,8 @@ Image const * Loader::image() const
 }
 
 
-Loader::Impl::Impl(Params const & params)
-	: status_(WaitingToLoad), params_(params)
+Loader::Impl::Impl()
+	: status_(WaitingToLoad)
 {
 }
 

@@ -1,6 +1,7 @@
 2003-06-04  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsLoader.C (Loader copy c-tor): make it work as expected. ;-)
+	(operator=): if it has a copy c-tor, it should have this too.
 
 2003-06-03  Angus Leeming  <leeming@lyx.org>
 
