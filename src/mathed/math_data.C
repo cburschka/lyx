@@ -66,7 +66,7 @@ void MathArray::insert(size_type pos, MathArray const & ar)
 
 
 void MathArray::push_back(MathAtom const & t)
-{	
+{
 	bf_.push_back(t);
 }
 
@@ -85,7 +85,7 @@ void MathArray::clear()
 
 void MathArray::swap(MathArray & ar)
 {
-	if (this != &ar) 
+	if (this != &ar)
 		bf_.swap(ar.bf_);
 }
 
@@ -176,7 +176,7 @@ void MathArray::validate(LaTeXFeatures & features) const
 
 
 void MathArray::pop_back()
-{	
+{
 	if (!size()) {
 		lyxerr << "pop_back from empty array!\n";
 		return;
@@ -219,7 +219,7 @@ bool MathArray::matchpart(MathArray const & ar, pos_type pos) const
 {
 	if (size() < ar.size() + pos)
 		return false;
-	const_iterator it = begin() + pos; 
+	const_iterator it = begin() + pos;
 	for (const_iterator jt = ar.begin(); jt != ar.end(); ++jt, ++it)
 		if (!jt->nucleus()->match(it->nucleus()))
 			return false;
@@ -265,6 +265,6 @@ bool MathArray::contains(MathArray const & ar) const
 	for (const_iterator it = begin(); it != end(); ++it)
 		if (it->nucleus()->contains(ar))
 			return true;
-	
+
 	return false;
 }

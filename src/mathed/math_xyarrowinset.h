@@ -13,7 +13,7 @@
 class MathXYMatrixInset;
 
 class MathXYArrowInset : public MathNestInset {
-public: 
+public:
 	///
 	MathXYArrowInset();
 	///

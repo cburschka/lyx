@@ -1,4 +1,3 @@
-
 #include "math_diminset.h"
 #include "Lsstream.h"
 #include "textpainter.h"

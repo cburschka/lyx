@@ -11,7 +11,7 @@
 // "shortcut" for DelimInset("(",ArrayInset,")")
 
 class MathMatrixInset : public MathArrayInset {
-public: 
+public:
 	///
 	MathMatrixInset(MathArrayInset const &);
 	///

@@ -18,7 +18,7 @@ MathDotsInset::MathDotsInset(string const & name)
 MathInset * MathDotsInset::clone() const
 {
 	return new MathDotsInset(*this);
-}     
+}
 
 
 void MathDotsInset::metrics(MathMetricsInfo const & mi) const
@@ -32,7 +32,7 @@ void MathDotsInset::metrics(MathMetricsInfo const & mi) const
 		case 'v': width_ /= 2;
 		case 'd': dh_ = ascent_; break;
 	}
-} 
+}
 
 
 void MathDotsInset::draw(Painter & pain, int x, int y) const

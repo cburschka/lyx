@@ -44,6 +44,6 @@ void MathFuncLimInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathFuncLimInset::draw(Painter & pain, int x, int y) const
-{  
+{
 	drawStr(pain, font_, x, y, name_);
 }

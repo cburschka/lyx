@@ -34,7 +34,7 @@ public:
 	void normalize(NormalStream &) const;
 
 private:
-	/// 
+	///
 	latexkeys const * key_;
 };
 

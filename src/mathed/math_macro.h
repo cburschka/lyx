@@ -1,8 +1,8 @@
 // -*- C++ -*-
 /*
  *  File:        math_macro.h
- *  Purpose:     Declaration of macro class for mathed 
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
+ *  Purpose:     Declaration of macro class for mathed
+ *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
  *  Created:     November 1996
  *  Description: WYSIWYG math macros
  *

@@ -57,7 +57,7 @@ void MathUnknownInset::normalize(NormalStream & os) const
 }
 
 
-void MathUnknownInset::metrics(MathMetricsInfo const & mi) const 
+void MathUnknownInset::metrics(MathMetricsInfo const & mi) const
 {
 	whichFont(font_, LM_TC_TEX, mi);
 	mathed_string_dim(font_, name_, ascent_, descent_, width_);
@@ -65,7 +65,7 @@ void MathUnknownInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathUnknownInset::draw(Painter & pain, int x, int y) const
-{ 
+{
 	drawStr(pain, font_, x, y, name_);
 }
 

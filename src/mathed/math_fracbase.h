@@ -12,7 +12,7 @@ class MathFracbaseInset : public MathNestInset {
 public:
 	///
 	MathFracbaseInset();
-	/// 
+	///
 	bool idxUpDown(idx_type &, bool up) const;
 	///
 	bool idxLeft(idx_type &, pos_type &) const;

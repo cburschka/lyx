@@ -98,7 +98,7 @@ void MathSymbolInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathSymbolInset::draw(Painter & pain, int x, int y) const
-{  
+{
 	if (isRelOp())
 		x += 3;
 	MathTextCodes Code = code();
@@ -117,7 +117,7 @@ void MathSymbolInset::draw(Painter & pain, int x, int y) const
 
 
 bool MathSymbolInset::isRelOp() const
-{	
+{
 	return sym_->type == "mathrel";
 }
 
@@ -200,5 +200,3 @@ void MathSymbolInset::infoize(ostream & os) const
 {
 	os << '\\' << name();
 }
-
-

@@ -37,7 +37,7 @@ public:
 	/// read access to top most item
 	MathArray const & cell() const;
 
-private:	
+private:
 	/// own level down
 	void push(MathInset *);
 	/// own level up

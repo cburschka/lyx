@@ -10,7 +10,7 @@
 
 
 class MathCasesInset : public MathGridInset {
-public: 
+public:
 	///
 	explicit MathCasesInset(row_type rows = 1u);
 	///

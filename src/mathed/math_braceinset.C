@@ -19,7 +19,7 @@ MathBraceInset::MathBraceInset()
 
 
 MathInset * MathBraceInset::clone() const
-{   
+{
 	return new MathBraceInset(*this);
 }
 
@@ -37,7 +37,7 @@ void MathBraceInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathBraceInset::draw(Painter & pain, int x, int y) const
-{ 
+{
 	drawChar(pain, font_, x, y, '{');
 	xcell(0).draw(pain, x + wid_, y);
 	drawChar(pain, font_, x + width_ - wid_, y, '}');
@@ -54,5 +54,3 @@ void MathBraceInset::normalize(NormalStream & os) const
 {
 	os << "[block " << cell(0) << ']';
 }
-
-

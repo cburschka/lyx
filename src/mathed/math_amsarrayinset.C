@@ -67,7 +67,7 @@ void MathAMSArrayInset::metrics(MathMetricsInfo const & st) const
 
 
 void MathAMSArrayInset::draw(Painter & pain, int x, int y) const
-{ 
+{
 	MathGridInset::draw(pain, x + 6, y);
 	int yy = y - ascent_;
 	mathed_draw_deco(pain, x + 1, yy, 5, height(), name_left());

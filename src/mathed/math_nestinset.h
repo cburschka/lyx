@@ -16,14 +16,14 @@
 class LaTeXFeatures;
 
 class MathNestInset : public MathDimInset {
-public: 
+public:
 	/// nestinsets have a fixed size to start with
 	explicit MathNestInset(idx_type ncells);
 
 	/// the size is usuall some sort of convex hull of the cells
 	void metrics(MathMetricsInfo const & st) const;
 	/// appends itself with macro arguments substituted
-	void substitute(MathMacro const & macro); 
+	void substitute(MathMacro const & macro);
 	/// identifies NestInsets
 	MathNestInset * asNestInset() { return this; }
 
@@ -58,7 +58,7 @@ public:
 	MathXArray & xcell(idx_type);
 	/// direct access to the cell including the drawing cache
 	MathXArray const & xcell(idx_type) const;
-			
+
 	/// can we move into this cell (see macroarg.h)
 	bool isActive() const { return nargs() > 0; }
 	/// request "external features"

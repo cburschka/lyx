@@ -14,7 +14,7 @@ class MathMacro;
 /** This class contains the macro definition
     \author Alejandro Aguilar Sierra
  */
-//class MathMacroTemplate : public MathInset, boost::noncopyable 
+//class MathMacroTemplate : public MathInset, boost::noncopyable
 
 class MathMacroTemplate : public MathNestInset {
 public:

@@ -1,7 +1,7 @@
 /*
  *  File:        math_root.C
- *  Purpose:     Implementation of the root object 
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
+ *  Purpose:     Implementation of the root object
+ *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
  *  Created:     January 1999
  *  Description: Root math object
  *

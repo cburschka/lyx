@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #include "math_iterator.h"
@@ -116,7 +115,7 @@ void MathIterator::operator++()
 
 	// otherwise leave array, move on one position
 	// this might yield pos() == size(), but that's a ok.
-	pop(); 
+	pop();
 	// it certainly invalidates top
 	++position().pos_;
 }
@@ -135,7 +134,7 @@ bool operator==(MathIterator const & it, MathIterator const & jt)
 	//lyxerr << "==: " << it.cursor().size() << " " << jt.cursor().size() << endl;
 	if (it.cursor().size() != jt.cursor().size())
 		return false;
-	return it.cursor() == jt.cursor();	
+	return it.cursor() == jt.cursor();
 }
 
 
@@ -144,7 +143,7 @@ bool operator!=(MathIterator const & it, MathIterator const & jt)
 	//lyxerr << "!=: " << it.cursor().size() << " " << jt.cursor().size() << endl;
 	if (it.cursor().size() != jt.cursor().size())
 		return true;
-	return it.cursor() != jt.cursor();	
+	return it.cursor() != jt.cursor();
 }
 
 

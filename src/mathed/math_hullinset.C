@@ -65,7 +65,7 @@ namespace {
 		if (s == "multline")  return LM_OT_MULTLINE;
 		if (s == "gather")    return LM_OT_GATHER;
 		return LM_OT_SIMPLE;
-	}	
+	}
 
 
 	string normalName(MathInsetTypes t)
@@ -83,7 +83,7 @@ namespace {
 			default: break;
 		}
 		return "unknown";
-	}	
+	}
 
 } // end anon namespace
 
@@ -165,7 +165,7 @@ void MathHullInset::metrics(MathMetricsInfo const & mi) const
 	if (display()) {
 		ascent_  += 12;
 		descent_ += 12;
-	}	
+	}
 
 	if (numberedType()) {
 		whichFont(mi_.font, LM_TC_BF, mi_);
@@ -226,13 +226,13 @@ string MathHullInset::label(row_type row) const
 
 void MathHullInset::label(row_type row, string const & label)
 {
-	label_[row] = label; 
+	label_[row] = label;
 }
 
 
 void MathHullInset::numbered(row_type row, bool num)
 {
-	nonum_[row] = !num; 
+	nonum_[row] = !num;
 }
 
 
@@ -246,7 +246,7 @@ bool MathHullInset::ams() const
 {
 	return true;
 /*
-	return 
+	return
 		objtype_ == LM_OT_ALIGN ||
 		objtype_ == LM_OT_MULTLINE ||
 		objtype_ == LM_OT_GATHER ||
@@ -315,9 +315,9 @@ void MathHullInset::header_write(WriteStream & os) const
 
 		case LM_OT_EQUATION:
 			if (n)
-				os << "\\begin{equation" << star(n) << "}\n"; 
+				os << "\\begin{equation" << star(n) << "}\n";
 			else
-				os << "\\[\n"; 
+				os << "\\[\n";
 			break;
 
 		case LM_OT_EQNARRAY:
@@ -339,7 +339,7 @@ void MathHullInset::header_write(WriteStream & os) const
 			break;
 
 		case LM_OT_XXALIGNAT:
-			os << "\\begin{xxalignat}" 
+			os << "\\begin{xxalignat}"
 			   << "{" << static_cast<unsigned int>(ncols()/2) << "}\n";
 			break;
 
@@ -368,9 +368,9 @@ void MathHullInset::footer_write(WriteStream & os) const
 
 		case LM_OT_EQUATION:
 			if (n)
-				os << "\\end{equation" << star(n) << "}\n"; 
+				os << "\\end{equation" << star(n) << "}\n";
 			else
-				os << "\\]\n"; 
+				os << "\\]\n";
 			break;
 
 		case LM_OT_EQNARRAY:
@@ -407,7 +407,7 @@ void MathHullInset::footer_write(WriteStream & os) const
 }
 
 
-void MathHullInset::addRow(row_type row) 
+void MathHullInset::addRow(row_type row)
 {
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
 	label_.insert(label_.begin() + row + 1, string());
@@ -423,7 +423,7 @@ void MathHullInset::appendRow()
 }
 
 
-void MathHullInset::delRow(row_type row) 
+void MathHullInset::delRow(row_type row)
 {
 	MathGridInset::delRow(row);
 	nonum_.erase(nonum_.begin() + row);
@@ -541,7 +541,7 @@ void MathHullInset::mutate(MathInsetTypes newtype)
 					setType(LM_OT_SIMPLE);
 					break;
 
-				case LM_OT_ALIGN: 
+				case LM_OT_ALIGN:
 				case LM_OT_ALIGNAT:
 				case LM_OT_XALIGNAT:
 				case LM_OT_XXALIGNAT: {
@@ -549,7 +549,7 @@ void MathHullInset::mutate(MathInsetTypes newtype)
 					MathGridInset::addCol(1);
 
 					// split it "nicely"
-					pos_type pos = firstRelOp(cell(0));	
+					pos_type pos = firstRelOp(cell(0));
 					cell(1) = cell(0);
 					cell(0).erase(pos, cell(0).size());
 					cell(1).erase(0, pos);
@@ -564,7 +564,7 @@ void MathHullInset::mutate(MathInsetTypes newtype)
 					MathGridInset::addCol(1);
 
 					// split it "nicely" on the firest relop
-					pos_type pos = firstRelOp(cell(0));	
+					pos_type pos = firstRelOp(cell(0));
 					cell(1) = MathArray(cell(0), pos, cell(0).size());
 					cell(0).erase(pos, cell(0).size());
 
@@ -633,7 +633,7 @@ void MathHullInset::mutate(MathInsetTypes newtype)
 					setType(LM_OT_EQNARRAY);
 					mutate(newtype);
 					break;
-				
+
 				case LM_OT_ALIGNAT:
 				case LM_OT_XALIGNAT:
 				case LM_OT_XXALIGNAT:
@@ -684,11 +684,11 @@ void MathHullInset::mutate(MathInsetTypes newtype)
 void MathHullInset::write(WriteStream & os) const
 {
 	header_write(os);
-	
+
 	bool n = numberedType();
-	
+
 	for (row_type row = 0; row < nrows(); ++row) {
-		for (col_type col = 0; col < ncols(); ++col) 
+		for (col_type col = 0; col < ncols(); ++col)
 			os << cell(index(row, col)) << eocString(col);
 		if (n) {
 			if (!label_[row].empty())
@@ -698,7 +698,7 @@ void MathHullInset::write(WriteStream & os) const
 		}
 		os << eolString(row);
 	}
-	
+
 	footer_write(os);
 }
 
@@ -722,5 +722,3 @@ void MathHullInset::check() const
 	lyx::Assert(nonum_.size() == nrows());
 	lyx::Assert(label_.size() == nrows());
 }
-
-

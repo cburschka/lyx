@@ -2,7 +2,7 @@
 /*
  *  File:        math_parser.h
  *  Purpose:     Declaration of parsing utilities for mathed
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
+ *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
  *  Created:     January 1996
  *  Description: Parse LaTeX2e math mode code.
  *
@@ -100,7 +100,7 @@ enum MathTokenEnum
 	///
 	LM_TK_SPECIAL,
 	///
-	LM_TK_ARGUMENT, 
+	LM_TK_ARGUMENT,
 	///
 	LM_TK_NEWCOMMAND,
 	///

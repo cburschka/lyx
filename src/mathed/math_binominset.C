@@ -18,7 +18,7 @@ MathBinomInset::MathBinomInset()
 
 
 MathInset * MathBinomInset::clone() const
-{   
+{
 	return new MathBinomInset(*this);
 }
 
@@ -41,8 +41,8 @@ void MathBinomInset::metrics(MathMetricsInfo const & st) const
 	xcell(0).metrics(mi);
 	xcell(1).metrics(mi);
 	ascent_  = xcell(0).height() + 4 + 5;
-	descent_ = xcell(1).height() + 4 - 5; 
-	width_   = max(xcell(0).width(), xcell(1).width()) + 2 * dw() + 4; 
+	descent_ = xcell(1).height() + 4 - 5;
+	width_   = max(xcell(0).width(), xcell(1).width()) + 2 * dw() + 4;
 }
 
 

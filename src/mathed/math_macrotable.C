@@ -35,14 +35,14 @@ void MathMacroTable::dump()
 MathAtom & MathMacroTable::provide(string const & name)
 {
 	builtinMacros();
-	
+
 	table_type::iterator pos = macro_table.find(name);
 
 	if (pos == macro_table.end()) {
 		lyxerr << "MathMacroTable::provideTemplate: no template with name '"
 		       << name << "' available.\n";
 	}
-		
+
 	return pos->second;
 }
 
@@ -75,9 +75,9 @@ bool MathMacroTable::has(string const & name)
 void MathMacroTable::builtinMacros()
 {
 	static bool built = false;
-	
+
 	if (built)
-		return;	
+		return;
 
 	built = true;
 	//lyxerr[Debug::MATHED] << "Building macros\n";

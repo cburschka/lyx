@@ -70,7 +70,7 @@ int hack_y;
 int hack_button;
 
 
-void handleFont(BufferView * bv, string const & arg, MathTextCodes t) 
+void handleFont(BufferView * bv, string const & arg, MathTextCodes t)
 {
 	if (mathcursor->selection())
 		bv->lockedInsetStoreUndo(Undo::EDIT);
@@ -133,14 +133,14 @@ void InsetFormulaBase::validate(LaTeXFeatures &) const
 {}
 
 
-void InsetFormulaBase::metrics(BufferView * bv, LyXFont const & f) const 
+void InsetFormulaBase::metrics(BufferView * bv, LyXFont const & f) const
 {
 	font_ = f;
 	metrics(bv);
 }
 
 
-void InsetFormulaBase::metrics(BufferView * bv) const 
+void InsetFormulaBase::metrics(BufferView * bv) const
 {
 	if (bv)
 		view_ = bv;
@@ -279,7 +279,7 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 
 
 bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
-                                          int /*x*/, int /*y*/, int /*button*/)
+					  int /*x*/, int /*y*/, int /*button*/)
 {
 	if (!mathcursor)
 		return false;
@@ -328,7 +328,7 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 					bv->getLyXText()->selectionAsString(bv->buffer(), false);
 				mathed_parse_cell(ar, sel);
 				mathcursor->insert(ar);
-			}	
+			}
 			break;
 */
 		case 3:
@@ -353,9 +353,9 @@ void InsetFormulaBase::insetMotionNotify(BufferView * bv,
 	first_x = x;
 	first_y = y;
 
-	if (!mathcursor->selection()) 
+	if (!mathcursor->selection())
 		mathcursor->selStart();
-	
+
 	//lyxerr << "insetMotionNotify: " << x + xo_ << ' ' << y + yo_
 	//	<< ' ' << button << "\n";
 	hideInsetCursor(bv);
@@ -378,7 +378,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	//lyxerr << "InsetFormulaBase::localDispatch: act: " << action
 	//	<< " arg: '" << arg << "' cursor: " << mathcursor << "\n";
 
-	if (!mathcursor) 
+	if (!mathcursor)
 		return UNDISPATCHED;
 
 	if (mathcursor->asHyperActiveInset()) {
@@ -568,7 +568,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_DEFAULT:      handleFont(bv, arg, LM_TC_VAR); break;
 	case LFUN_FREE:         handleFont(bv, arg, LM_TC_TEXTRM); break;
 
-	case LFUN_GREEK: 
+	case LFUN_GREEK:
 		handleFont(bv, arg, LM_TC_GREEK1);
 		if (arg.size())
 			mathcursor->interpret(arg);
@@ -618,7 +618,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		updateLocal(bv, true);
 		break;
 	}
-	
+
 	case LFUN_SUPERSCRIPT:
 	case LFUN_SUBSCRIPT:
 	{
@@ -627,7 +627,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		updateLocal(bv, true);
 		break;
 	}
-	
+
 	case LFUN_MATH_DELIM:
 	{
 		lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
@@ -825,7 +825,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 		//lyxerr << "reset lastformula to " << this << "\n";
 		lastformula = this;
 		laststr = str;
- 		current	= ibegin(par().nucleus());
+		current	= ibegin(par().nucleus());
 		ar.clear();
 		mathed_parse_cell(ar, str);
 	} else {
@@ -893,7 +893,7 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 		} else {
 			// create a macro if we see "\\newcommand" somewhere, and an ordinary
 			// formula otherwise
-			if (sel.find("\\newcommand") == string::npos) 
+			if (sel.find("\\newcommand") == string::npos)
 				f = new InsetFormula(sel);
 			else {
 				string name;
@@ -914,7 +914,7 @@ void mathDispatchMathDisplay(BufferView * bv, string const & arg)
 	mathDispatchCreation(bv, arg, true);
 }
 
-	
+
 void mathDispatchMathMode(BufferView * bv, string const & arg)
 {
 	mathDispatchCreation(bv, arg, false);
@@ -944,20 +944,20 @@ void mathDispatchMathMacro(BufferView * bv, string const & arg)
 
 void mathDispatchMathDelim(BufferView * bv, string const & arg)
 {
-	if (bv->available()) { 
+	if (bv->available()) {
 		if (openNewInset(bv, new InsetFormula))
 			bv->theLockingInset()->localDispatch(bv, LFUN_MATH_DELIM, arg);
 	}
-}	   
+}
 
 
 void mathDispatchInsertMatrix(BufferView * bv, string const & arg)
-{ 	   
-	if (bv->available()) { 
+{
+	if (bv->available()) {
 		if (openNewInset(bv, new InsetFormula))
 			bv->theLockingInset()->localDispatch(bv, LFUN_INSERT_MATRIX, arg);
 	}
-}	   
+}
 
 
 void mathDispatchInsertMath(BufferView * bv, string const & arg)
@@ -974,16 +974,16 @@ void mathDispatchInsertMath(BufferView * bv, string const & arg)
 
 
 void mathDispatchGreek(BufferView * bv, string const & arg)
-{ 	   
-	if (bv->available()) { 
+{
+	if (bv->available()) {
 		InsetFormula * f = new InsetFormula;
 		if (openNewInset(bv, f)) {
 			bv->theLockingInset()->localDispatch(bv, LFUN_GREEK, arg);
 			bv->unlockInset(f);
 		}
 	}
-}	   
+}
 
 
 void mathDispatch(BufferView *, kb_action, string const &)
-{}	   
+{}

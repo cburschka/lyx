@@ -17,7 +17,7 @@ MathXArrowInset::MathXArrowInset(string const & name)
 
 
 MathInset * MathXArrowInset::clone() const
-{   
+{
 	return new MathXArrowInset(*this);
 }
 
@@ -34,7 +34,7 @@ void MathXArrowInset::metrics(MathMetricsInfo const & st) const
 
 
 void MathXArrowInset::draw(Painter & pain, int x, int y) const
-{ 
+{
 	xcell(0).draw(pain, x + 5, y - 10);
 	mathed_draw_deco(pain, x + 1, y - 7, width_ - 2, 5, name_);
 }

@@ -21,7 +21,7 @@ MathDelimInset::MathDelimInset(string const & l, string const & r)
 
 
 MathInset * MathDelimInset::clone() const
-{   
+{
 	return new MathDelimInset(*this);
 }
 
@@ -68,7 +68,7 @@ void MathDelimInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathDelimInset::draw(Painter & pain, int x, int y) const
-{ 
+{
 	int const w = dw();
 	int const b = y - ascent_;
 	xcell(0).draw(pain, x + w + 4, y);
@@ -101,7 +101,7 @@ void MathDelimInset::maplize(MapleStream & os) const
 		bool mat =
 			cell(0).size() == 1 && cell(0).begin()->nucleus()
 					&& cell(0).begin()->nucleus()->asMatrixInset();
-		if (mat)	
+		if (mat)
 			os << "linalg[det](" << cell(0) << ")";
 		else
 			os << "abs(" << cell(0) << ")";

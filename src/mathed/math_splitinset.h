@@ -11,7 +11,7 @@
 
 
 class MathSplitInset : public MathGridInset {
-public: 
+public:
 	///
 	explicit MathSplitInset(string const & name);
 	///

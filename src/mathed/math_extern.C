@@ -1,4 +1,3 @@
-
 // This file contains most of the magic that extracts "context
 // information" from the unstructered layout-oriented stuff in an
 // MathArray.
@@ -28,7 +27,7 @@ using std::find_if;
 
 ostream & operator<<(ostream & os, MathArray const & ar)
 {
-	NormalStream ns(os);	
+	NormalStream ns(os);
 	ns << ar;
 	return os;
 }
@@ -42,7 +41,7 @@ typedef MathInset * ReplaceArgumentFunc(const MathArray & ar);
 
 
 
-// try to extract a super/subscript 
+// try to extract a super/subscript
 // modify iterator position to point behind the thing
 bool extractScript(MathArray & ar,
 	MathArray::iterator & pos, MathArray::iterator last)
@@ -260,13 +259,13 @@ void replaceNested(
 		ar.erase(it + 1, jt + 1);
 		(*it).reset(p);
 	}
-} 
+}
 
 
 
 //
 // split scripts into seperate super- and subscript insets. sub goes in
-// front of super... 
+// front of super...
 //
 
 void splitScripts(MathArray & ar)
@@ -286,13 +285,13 @@ void splitScripts(MathArray & ar)
 
 		// create extra script inset and move superscript over
 		MathScriptInset * q = new MathScriptInset;
-		q->ensure(true); 
+		q->ensure(true);
 		q->up().data_.swap(p->up().data_);
 		p->removeScript(true);
 
 		// insert new inset behind
 		++i;
-		ar.insert(i, MathAtom(q)); 
+		ar.insert(i, MathAtom(q));
 	}
 	//lyxerr << "\nScripts to: " << ar << "\n";
 }
@@ -385,10 +384,10 @@ void extractFunctions(MathArray & ar)
 
 		string name;
 		// is it a function?
-		if ((*it)->asFuncInset()) { 
+		if ((*it)->asFuncInset()) {
 			// it certainly is if it is well known...
 			name = (*it)->asFuncInset()->name();
-	 	} else {
+		} else {
 			// is this a user defined function?
 			// it it probably not, if it doesn't have a name.
 			if (!extractString((*it).nucleus(), name))
@@ -408,7 +407,7 @@ void extractFunctions(MathArray & ar)
 		// 'sin' '^2' 'x' -> 'sin(x)' '^2'
 		MathArray exp;
 		extractScript(exp, jt, ar.end());
-	
+
 		// create a proper inset as replacement
 		MathExFuncInset * p = new MathExFuncInset(name);
 
@@ -417,7 +416,7 @@ void extractFunctions(MathArray & ar)
 
 		// replace the function name by a real function inset
 		(*it).reset(p);
-		
+
 		// remove the source of the argument from the array
 		ar.erase(it + 1, st);
 
@@ -425,7 +424,7 @@ void extractFunctions(MathArray & ar)
 		ar.insert(i + 1, exp);
 		//lyxerr << "\nFunctions to: " << ar << "\n";
 	}
-} 
+}
 
 
 //
@@ -480,7 +479,7 @@ void extractIntegrals(MathArray & ar)
 		// collect subscript if any
 		MathArray::iterator st = it + 1;
 		if (st != ar.end())
-			if (MathScriptInset * sub = (*st)->asScriptInset()) 
+			if (MathScriptInset * sub = (*st)->asScriptInset())
 				if (sub->hasDown()) {
 					p->cell(2) = sub->down().data_;
 					++st;
@@ -488,7 +487,7 @@ void extractIntegrals(MathArray & ar)
 
 		// collect superscript if any
 		if (st != ar.end())
-			if (MathScriptInset * sup = (*st)->asScriptInset()) 
+			if (MathScriptInset * sup = (*st)->asScriptInset())
 				if (sup->hasUp()) {
 					p->cell(3) = sup->up().data_;
 					++st;
@@ -499,7 +498,7 @@ void extractIntegrals(MathArray & ar)
 
 		// use the "thing" behind the 'd' as differential
 		MathArray::iterator tt = extractArgument(p->cell(1), jt + 1, ar.end());
-		
+
 		// remove used parts
 		ar.erase(it + 1, tt);
 		(*it).reset(p);
@@ -632,7 +631,7 @@ void extractDiff(MathArray & ar)
 		// is this a "differential fraction"?
 		if (!testDiffFrac(it->nucleus()))
 			continue;
-		
+
 		MathFracInset * f = (*it)->asFracInset();
 		if (!f) {
 			lyxerr << "should not happen\n";
@@ -643,20 +642,20 @@ void extractDiff(MathArray & ar)
 		MathDiffInset * diff = new MathDiffInset;
 
 		// collect function, let jt point behind last used item
-		MathArray::iterator jt = it + 1; 
-		//int n = 1; 
+		MathArray::iterator jt = it + 1;
+		//int n = 1;
 		MathArray & numer = f->cell(0);
 		if (numer.size() > 1 && numer.at(1)->asScriptInset()) {
 			// this is something like  d^n f(x) / d... or  d^n / d...
 			// FIXME
-			//n = 1;	
-			if (numer.size() > 2) 
+			//n = 1;
+			if (numer.size() > 2)
 				diff->cell(0) = MathArray(numer.begin() + 2, numer.end());
 			else
 				jt = extractArgument(diff->cell(0), jt, ar.end());
 		} else {
 			// simply d f(x) / d... or  d/d...
-			if (numer.size() > 1) 
+			if (numer.size() > 1)
 				diff->cell(0) = MathArray(numer.begin() + 1, numer.end());
 			else
 				jt = extractArgument(diff->cell(0), jt, ar.end());
@@ -725,7 +724,7 @@ void write(MathArray const & dat, WriteStream & wi)
 				q->write2(p, wi);
 				++it;
 				continue;
-			} 
+			}
 		}
 		p->write(wi);
 	}
@@ -748,7 +747,7 @@ void octavize(MathArray const & dat, OctaveStream & os)
 		if (it + 1 != ar.end()) {
 			if (MathScriptInset const * q = asScript(it)) {
 				q->octavize2(p, os);
-				++it;	
+				++it;
 				continue;
 			}
 		}
@@ -766,7 +765,7 @@ void maplize(MathArray const & dat, MapleStream & os)
 		if (it + 1 != ar.end()) {
 			if (MathScriptInset const * q = asScript(it)) {
 				q->maplize2(p, os);
-				++it;	
+				++it;
 				continue;
 			}
 		}
@@ -790,7 +789,7 @@ void mathmlize(MathArray const & dat, MathMLStream & os)
 			if (it + 1 != ar.end()) {
 				if (MathScriptInset const * q = asScript(it)) {
 					q->mathmlize2(p, os);
-					++it;	
+					++it;
 					continue;
 				}
 			}
@@ -799,4 +798,3 @@ void mathmlize(MathArray const & dat, MathMLStream & os)
 		os << ETag("mrow");
 	}
 }
-

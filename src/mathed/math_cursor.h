@@ -2,7 +2,7 @@
 /*
  *  File:        math_cursor.h
  *  Purpose:     Declaration of interaction classes for mathed
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
+ *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
  *  Created:     January 1996
  *  Description: MathCursor control all user interaction
  *
@@ -128,7 +128,7 @@ public:
 	bool inMacroMode() const;
 	/// are we currently typing '#1' or '#2' or...?
 	bool inMacroArgMode() const;
-	
+
 	// Local selection methods
 	///
 	bool selection() const;
@@ -158,7 +158,7 @@ public:
 	void handleNest(MathInset * p);
 	/// splits cells and shifts right part to the next cell
 	void splitCell();
-	/// splits line and insert new row of cell 
+	/// splits line and insert new row of cell
 	void breakLine();
 	/// read contents of line into an array
 	void readLine(MathArray & ar) const;
@@ -185,12 +185,12 @@ public:
 
 	/// make sure cursor position is valid
 	void normalize();
-	/// mark current cursor trace for redraw 
+	/// mark current cursor trace for redraw
 	void touch();
 	///
 	UpdatableInset * asHyperActiveInset() const;
 
-	/// enter a MathInset 
+	/// enter a MathInset
 	void push(MathAtom & par);
 	/// enter a MathInset from the front
 	void pushLeft(MathAtom & par);
@@ -236,7 +236,7 @@ public:
 	void dump(char const * str) const;
 	///
 	void stripFromLastEqualSign();
-	/// moves on 
+	/// moves on
 	void setSelection(cursor_type const & where, size_type n);
 	///
 	void insert(char);
@@ -244,7 +244,7 @@ public:
 	/// hack for reveal codes
 	void markInsert();
 	void markErase();
-	
+
 	///
 	friend class Selection;
 
@@ -268,7 +268,7 @@ private:
 	MathInset::difference_type macroNamePos() const;
 	///
 	void insert(char, MathTextCodes t);
-	/// can we enter the inset? 
+	/// can we enter the inset?
 	bool openable(MathAtom const &, bool selection) const;
 	/// write access to cursor cell position
 	pos_type & pos();

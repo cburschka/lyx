@@ -24,7 +24,7 @@ public:
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
-	/// 
+	///
 	int ascent() const;
 	///
 	int descent() const;

@@ -13,7 +13,7 @@ MathSpecialCharInset::MathSpecialCharInset(char c)
 
 
 MathInset * MathSpecialCharInset::clone() const
-{   
+{
 	return new MathSpecialCharInset(*this);
 }
 
@@ -43,7 +43,7 @@ void MathSpecialCharInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathSpecialCharInset::draw(Painter & pain, int x, int y) const
-{ 
+{
 	drawChar(pain, font_, x, y, char_);
 }
 

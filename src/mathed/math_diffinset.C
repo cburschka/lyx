@@ -39,7 +39,7 @@ void MathDiffInset::metrics(MathMetricsInfo const &) const
 
 
 void MathDiffInset::draw(Painter &, int, int) const
-{  
+{
 	lyxerr << "should not happen\n";
 }
 
@@ -72,4 +72,3 @@ void MathDiffInset::write(WriteStream &) const
 {
 	lyxerr << "should not happen\n";
 }
-

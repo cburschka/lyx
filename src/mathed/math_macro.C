@@ -1,7 +1,7 @@
 /*
  *  File:        math_macro.C
- *  Purpose:     Implementation of macro class for mathed 
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
+ *  Purpose:     Implementation of macro class for mathed
+ *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
  *  Created:     November 1996
  *  Description: WYSIWYG math macros
  *
@@ -98,7 +98,7 @@ void MathMacro::metrics(MathMetricsInfo const & mi) const
 			descent_ += max(c.descent(), ldes) + 5;
 		}
 		return;
-	} 
+	}
 
 	expanded_ = tmplate_->xcell(0);
 	expanded_.data_.substitute(*this);
@@ -214,7 +214,7 @@ void MathMacro::octavize(OctaveStream & os) const
 void MathMacro::normalize(NormalStream & os) const
 {
 	os << "[macro " << name() << " ";
-	for (idx_type i = 0; i < nargs(); ++i) 
+	for (idx_type i = 0; i < nargs(); ++i)
 		os << cell(i) << ' ';
 	os << ']';
 }
@@ -225,7 +225,7 @@ void MathMacro::write(WriteStream & os) const
 	os << '\\' << name();
 	for (idx_type i = 0; i < nargs(); ++i)
 		os << '{' << cell(i) << '}';
-	if (nargs() == 0) 
+	if (nargs() == 0)
 		os << ' ';
 }
 

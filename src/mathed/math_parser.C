@@ -1,7 +1,7 @@
 /*
  *  File:        math_parser.C
  *  Purpose:     Parser for mathed
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
+ *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
  *  Created:     January 1996
  *  Description: Parse LaTeX2e math mode code.
  *
@@ -15,7 +15,7 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-/* 
+/*
 
 If someone desperately needs partial "structures" (such as a few cells of
 an array inset or similar) (s)he could uses the following hack as starting
@@ -109,7 +109,7 @@ void add(MathArray & ar, char c, MathTextCodes code)
 
 // These are TeX's catcodes
 enum CatCode {
-	catEscape,     // 0    backslash 
+	catEscape,     // 0    backslash
 	catBegin,      // 1    {
 	catEnd,        // 2    }
 	catMath,       // 3    $
@@ -118,7 +118,7 @@ enum CatCode {
 	catParameter,  // 6    #
 	catSuper,      // 7    ^
 	catSub,        // 8    _
-	catIgnore,     // 9       
+	catIgnore,     // 9
 	catSpace,      // 10   space
 	catLetter,     // 11   a-zA-Z
 	catOther,      // 12   none of the above
@@ -127,7 +127,7 @@ enum CatCode {
 	catInvalid     // 15   <delete>
 };
 
-CatCode theCatcode[256];  
+CatCode theCatcode[256];
 
 
 inline CatCode catcode(unsigned char c)
@@ -155,21 +155,21 @@ void catInit()
 	fill(theCatcode + 'a', theCatcode + 'z' + 1, catLetter);
 	fill(theCatcode + 'A', theCatcode + 'Z' + 1, catLetter);
 
-	theCatcode['\\'] = catEscape;	
-	theCatcode['{']  = catBegin;	
-	theCatcode['}']  = catEnd;	
-	theCatcode['$']  = catMath;	
-	theCatcode['&']  = catAlign;	
-	theCatcode['\n'] = catNewline;	
-	theCatcode['#']  = catParameter;	
-	theCatcode['^']  = catSuper;	
-	theCatcode['_']  = catSub;	
-	theCatcode[''] = catIgnore;	
-	theCatcode[' ']  = catSpace;	
-	theCatcode['\t'] = catSpace;	
-	theCatcode['\r'] = catSpace;	
-	theCatcode['~']  = catActive;	
-	theCatcode['%']  = catComment;	
+	theCatcode['\\'] = catEscape;
+	theCatcode['{']  = catBegin;
+	theCatcode['}']  = catEnd;
+	theCatcode['$']  = catMath;
+	theCatcode['&']  = catAlign;
+	theCatcode['\n'] = catNewline;
+	theCatcode['#']  = catParameter;
+	theCatcode['^']  = catSuper;
+	theCatcode['_']  = catSub;
+	theCatcode[''] = catIgnore;
+	theCatcode[' ']  = catSpace;
+	theCatcode['\t'] = catSpace;
+	theCatcode['\r'] = catSpace;
+	theCatcode['~']  = catActive;
+	theCatcode['%']  = catComment;
 }
 
 
@@ -198,7 +198,7 @@ public:
 	///
 	bool isCR() const;
 
-private:	
+private:
 	///
 	string cs_;
 	///
@@ -221,7 +221,7 @@ string Token::asString() const
 //bool operator==(Token const & s, Token const & t)
 //{
 //	return s.character() == t.character()
-//		&& s.cat() == t.cat() && s.cs() == t.cs(); 
+//		&& s.cat() == t.cat() && s.cs() == t.cs();
 //}
 //
 //bool operator!=(Token const & s, Token const & t)
@@ -433,9 +433,9 @@ string Parser::getArg(char lf, char rg)
 	string result;
 	char c = getChar();
 
-	if (c != lf)  
+	if (c != lf)
 		putback();
-	else 
+	else
 		while ((c = getChar()) != rg && good())
 			result += c;
 
@@ -476,7 +476,7 @@ void Parser::skipSpaceTokens(istream & is, char c)
 void Parser::tokenize(string const & buffer)
 {
 	static bool init_done = false;
-	
+
 	if (!init_done) {
 		catInit();
 		init_done = true;
@@ -490,13 +490,13 @@ void Parser::tokenize(string const & buffer)
 
 		switch (catcode(c)) {
 			case catNewline: {
-				++lineno_; 
+				++lineno_;
 				is.get(c);
 				if (catcode(c) == catNewline)
 					; //push_back(Token("par"));
 				else {
 					push_back(Token(' ', catSpace));
-					is.putback(c);	
+					is.putback(c);
 				}
 				break;
 			}
@@ -504,7 +504,7 @@ void Parser::tokenize(string const & buffer)
 			case catComment: {
 				while (is.get(c) && catcode(c) != catNewline)
 					;
-				++lineno_; 
+				++lineno_;
 				break;
 			}
 
@@ -519,7 +519,7 @@ void Parser::tokenize(string const & buffer)
 						while (is.get(c) && catcode(c) == catLetter)
 							s += c;
 						skipSpaceTokens(is, c);
-					}	
+					}
 					push_back(Token(s));
 				}
 				break;
@@ -558,7 +558,7 @@ void Parser::dump() const
 }
 
 
-void Parser::error(string const & msg) 
+void Parser::error(string const & msg)
 {
 	lyxerr << "Line ~" << lineno_ << ": Math parse error: " << msg << endl;
 	dump();
@@ -568,7 +568,7 @@ void Parser::error(string const & msg)
 
 
 bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
-{	
+{
 	MathGridInset * p = t->asGridInset();
 	if (!p) {
 		dump();
@@ -593,7 +593,7 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 			//lyxerr << "reading cell " << row << " " << col << " "
 			// << p->ncols() << "\n";
 			//lyxerr << "ncols: " << p->ncols() << "\n";
-		
+
 			if (col >= p->ncols()) {
 				//lyxerr << "adding col " << col << "\n";
 				p->addCol(p->ncols());
@@ -612,7 +612,7 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 				//	<< row << " " << col << "\n";
 				break;
 			}
-			
+
 			// skip the ampersand
 			getToken();
 		}
@@ -666,7 +666,7 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 
 
 bool Parser::parse_lines2(MathAtom & t, bool braced)
-{	
+{
 	MathGridInset * p = t->asGridInset();
 	if (!p) {
 		lyxerr << "error in Parser::parse_lines() 1\n";
@@ -677,7 +677,7 @@ bool Parser::parse_lines2(MathAtom & t, bool braced)
 		// reading a row
 		for (MathInset::col_type col = 0; true; ++col) {
 			//lyxerr << "reading cell " << row << " " << col << " " << p->ncols() << "\n";
-		
+
 			if (col >= p->ncols()) {
 				//lyxerr << "adding col " << col << "\n";
 				p->addCol(p->ncols());
@@ -691,7 +691,7 @@ bool Parser::parse_lines2(MathAtom & t, bool braced)
 				//lyxerr << "less cells read than normal in row/col: " << row << " " << col << "\n";
 				break;
 			}
-			
+
 			// skip the ampersand
 			getToken();
 		}
@@ -750,7 +750,7 @@ bool Parser::parse_macro(string & name)
 	}
 
 	string    arg  = getArg('[', ']');
-	int       narg = arg.empty() ? 0 : atoi(arg.c_str()); 
+	int       narg = arg.empty() ? 0 : atoi(arg.c_str());
 
 	if (getToken().cat() != catBegin) {
 		lyxerr << "'{' in \\newcommand expected (2)\n";
@@ -906,7 +906,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 
 	while (good()) {
 		Token const & t = getToken();
-	
+
 #ifdef FILEDEBUG
 		lyxerr << "t: " << t << " flags: " << flags << "\n";
 		//array.dump();
@@ -918,7 +918,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 				continue;
 
 			flags &= ~FLAG_ITEM;
-			if (t.cat() == catBegin) { 
+			if (t.cat() == catBegin) {
 				// skip the brace and collect everything to the next matching
 				// closing brace
 				flags |= FLAG_BRACE_LAST;
@@ -978,7 +978,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			// ignore braces around simple items
 			if ((ar.size() == 1 && !ar.front()->needsBraces()
        || (ar.size() == 2 && !ar.front()->needsBraces()
-			                    && ar.back()->asScriptInset()))
+					    && ar.back()->asScriptInset()))
        || (ar.size() == 0 && array.size() == 0))
 			{
 				array.push_back(ar);
@@ -996,17 +996,17 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			lyx::Assert(0);
 			add(array, '}', LM_TC_TEX);
 		}
-		
+
 		else if (t.cat() == catAlign) {
 			lyxerr << "found tab unexpectedly, array: '" << array << "'\n";
 			//lyxerr << "found tab unexpectedly\n";
 			add(array, '&', LM_TC_TEX);
 		}
-		
+
 		else if (t.cat() == catSuper || t.cat() == catSub) {
 			bool up = (t.cat() == catSuper);
-			MathScriptInset * p = 0; 
-			if (array.size()) 
+			MathScriptInset * p = 0;
+			if (array.size())
 				p = array.back()->asScriptInset();
 			if (!p || p->has(up)) {
 				array.push_back(MathAtom(new MathScriptInset(up)));
@@ -1023,12 +1023,12 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 
 		else if (t.cat() == catOther)
 			add(array, t.character(), code);
-		
+
 		//
 		// control sequences
-		//	
+		//
 		else if (t.cs() == "protect")
-			// ignore \\protect, will be re-added during output 
+			// ignore \\protect, will be re-added during output
 			;
 
 		else if (t.cs() == "end")
@@ -1046,13 +1046,13 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			lyxerr << "found newline unexpectedly\n";
 			array.push_back(createMathInset("\\"));
 		}
-	
+
 		else if (t.cs() == "limits")
 			limits = 1;
-		
+
 		else if (t.cs() == "nolimits")
 			limits = -1;
-		
+
 		else if (t.cs() == "nonumber")
 			curr_num_ = false;
 
@@ -1071,7 +1071,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 				parse_into(array.back()->cell(0), FLAG_ITEM);
 			}
 		}
-		
+
 		else if (t.cs() == "left") {
 			string l = getToken().asString();
 			MathArray ar;
@@ -1081,7 +1081,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			dl->cell(0) = ar;
 			array.push_back(dl);
 		}
-		
+
 		else if (t.cs() == "right") {
 			if (!(flags & FLAG_RIGHT)) {
 				//lyxerr << "got so far: '" << array << "'\n";
@@ -1091,24 +1091,24 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		else if (t.cs() == "begin") {
-			string const name = getArg('{', '}');	
+			string const name = getArg('{', '}');
 			if (name == "array" || name == "subarray") {
 				string const valign = getArg('[', ']') + 'c';
 				string const halign = getArg('{', '}');
 				array.push_back(MathAtom(new MathArrayInset(name, valign[0], halign)));
 				parse_lines(array.back(), false, false);
 			} else if (name == "split" || name == "cases" ||
-				         name == "gathered" || name == "aligned") {
+					 name == "gathered" || name == "aligned") {
 				array.push_back(createMathInset(name));
 				parse_lines(array.back(), false, false);
 			} else if (name == "matrix"  || name == "pmatrix" || name == "bmatrix" ||
-				         name == "vmatrix" || name == "Vmatrix") {
+					 name == "vmatrix" || name == "Vmatrix") {
 				array.push_back(createMathInset(name));
 				parse_lines2(array.back(), false);
-			} else 
-				lyxerr << "unknow math inset begin '" << name << "'\n";	
+			} else
+				lyxerr << "unknow math inset begin '" << name << "'\n";
 		}
-	
+
 		else if (t.cs() == "kern") {
 #ifdef WITH_WARNINGS
 #warning A hack...
@@ -1117,7 +1117,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			while (1) {
 				Token const & t = getToken();
 				if (!good()) {
-					putback();	
+					putback();
 					break;
 				}
 				s += t.character();
@@ -1183,13 +1183,13 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			//array.push_back(createMathInset(t.cs()));
 			array.push_back(MathAtom(new MathBoxInset(t.cs())));
 			// slurp in the argument of mbox
-	
+
 			MathBoxInset * p = array.back()->asBoxInset();
 			//lyx::assert(p);
 		}
 #endif
 
-	
+
 		else if (t.cs().size()) {
 			latexkeys const * l = in_word_set(t.cs());
 			if (l) {
@@ -1197,8 +1197,8 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 					//lyxerr << "starting font\n";
 					//CatCode catSpaceSave = theCatcode[' '];
 					//if (l->id == LM_TC_TEXTRM) {
-					//	// temporarily change catcode	
-					//	theCatcode[' '] = catLetter;	
+					//	// temporarily change catcode
+					//	theCatcode[' '] = catLetter;
 					//}
 
 					MathArray ar;
@@ -1229,7 +1229,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 
 				else {
 					MathAtom p = createMathInset(t.cs());
-					for (MathInset::idx_type i = 0; i < p->nargs(); ++i) 
+					for (MathInset::idx_type i = 0; i < p->nargs(); ++i)
 						parse_into(p->cell(i), FLAG_ITEM);
 					array.push_back(p);
 				}
@@ -1252,7 +1252,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 
 	if (panic) {
 		lyxerr << " Math Panic, expect problems!\n";
-		//   Search for the end command. 
+		//   Search for the end command.
 		Token t;
 		do {
 			t = getToken();

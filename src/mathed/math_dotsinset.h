@@ -29,5 +29,5 @@ protected:
 	mutable int dh_;
 	///
 	string const name_;
-};   
+};
 #endif

@@ -15,7 +15,7 @@
 class LaTeXFeatures;
 
 class MathHullInset : public MathGridInset {
-public: 
+public:
 	///
 	MathHullInset();
 	///

@@ -77,4 +77,3 @@ void MathMacroArgument::substitute(MathMacro const & m)
 			it->nucleus()->handleFont(code_);
 	expanded_ = true;
 }
-

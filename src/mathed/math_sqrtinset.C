@@ -15,7 +15,7 @@ MathSqrtInset::MathSqrtInset()
 
 
 MathInset * MathSqrtInset::clone() const
-{   
+{
 	return new MathSqrtInset(*this);
 }
 
@@ -30,8 +30,8 @@ void MathSqrtInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathSqrtInset::draw(Painter & pain, int x, int y) const
-{ 
-	xcell(0).draw(pain, x + 10, y); 
+{
+	xcell(0).draw(pain, x + 10, y);
 	int const a = ascent_;
 	int const d = descent_;
 	int xp[4];
@@ -54,8 +54,8 @@ void MathSqrtInset::metricsT(TextMetricsInfo const & mi) const
 
 
 void MathSqrtInset::drawT(TextPainter & pain, int x, int y) const
-{ 
-	xcell(0).drawT(pain, x + 2, y); 
+{
+	xcell(0).drawT(pain, x + 2, y);
 	pain.horizontalLine(x + 2, y - xcell(0).ascent(), xcell(0).width(), '_');
 	pain.verticalLine  (x + 1, y - xcell(0).ascent() + 1, xcell(0).height());
 	pain.draw(x, y + xcell(0).descent(), '\\');

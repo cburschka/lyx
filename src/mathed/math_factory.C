@@ -52,7 +52,7 @@ MathAtom createMathInset(latexkeys const * l)
 		return MathAtom(new MathStackrelInset);
 	case LM_TK_UNDERSET:
 		return MathAtom(new MathUndersetInset);
-	case LM_TK_KERN: 
+	case LM_TK_KERN:
 		return MathAtom(new MathKernInset);
 	case LM_TK_BINOM:
 	case LM_TK_CHOOSE:
@@ -117,14 +117,14 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathArrayInset(s, 1, 1));
 
 	if (s == "pmatrix" || s == "bmatrix" || s == "vmatrix" || s == "Vmatrix" ||
-		  s == "matrix") 
+		  s == "matrix")
 		return MathAtom(new MathAMSArrayInset(s));
 
 	latexkeys const * l = in_word_set(s);
 	if (l)
 		return createMathInset(l);
 
-	if (MathMacroTable::has(s)) 
+	if (MathMacroTable::has(s))
 		return MathAtom(new MathMacro(s));
 
 	//cerr << "creating inset 2 with name: '" << s << "'\n";

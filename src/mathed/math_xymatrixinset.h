@@ -10,7 +10,7 @@
 
 
 class MathXYMatrixInset : public MathGridInset {
-public: 
+public:
 	///
 	MathXYMatrixInset();
 	///

@@ -25,7 +25,7 @@ void MathExFuncInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathExFuncInset::draw(Painter & pain, int x, int y) const
-{  
+{
 	drawStr(pain, font_, x, y, name_);
 }
 
@@ -58,5 +58,3 @@ void MathExFuncInset::write(WriteStream & os) const
 {
 	os << '\\' << name_ << '{' << cell(0) << '}';
 }
-
-

@@ -4,7 +4,7 @@
  *  Purpose:     Common parts of the math LyX insets
  *  Author:      André Pönitz
  *  Created:     May 2001
- *  Description: Allows the edition of math paragraphs inside Lyx. 
+ *  Description: Allows the edition of math paragraphs inside Lyx.
  *
  *  Copyright: 2001, The LyX Project
  *
@@ -12,7 +12,7 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#ifndef INSET_FORMULABASE_H 
+#ifndef INSET_FORMULABASE_H
 #define INSET_FORMULABASE_H
 
 #ifdef __GNUG__
@@ -87,10 +87,10 @@ public:
 	virtual void insetMotionNotify(BufferView *, int x, int y, int state);
 	///
 	virtual void insetUnlock(BufferView *);
-   
+
 	/// To allow transparent use of math editing functions
 	virtual RESULT localDispatch(BufferView *, kb_action, string const &);
-    
+
 	///
 	virtual std::vector<string> const getLabelList() const;
 	///
@@ -104,10 +104,10 @@ public:
 
 	///
 	virtual bool searchForward(BufferView *, string const &,
-	                           bool = true, bool = false);
+				   bool = true, bool = false);
 	///
 	virtual bool searchBackward(BufferView *, string const &,
-	                            bool = true, bool = false);
+				    bool = true, bool = false);
 	///
 	virtual bool isTextInset() const { return true; }
 	///
@@ -123,7 +123,7 @@ private:
 	void handleAccent(BufferView * bv, string const & arg, string const & name);
 
 	///
-	mutable BufferView * view_;	
+	mutable BufferView * view_;
 	///
 	mutable LyXFont font_;
 

@@ -5,12 +5,12 @@
 #include "math_xdata.h"
 
 
-/// Description of a position 
+/// Description of a position
 class MathCursorPos {
 public:
-	/// 
+	///
 	MathCursorPos();
-	/// 
+	///
 	explicit MathCursorPos(MathInset *);
 
 	/// returns cell corresponding to this position

@@ -7,12 +7,12 @@
 #pragma interface
 #endif
 
-/** 
+/**
 The 'atom' is the major blob in math typesetting.  And 'atom' consists
 of a nucleus, an optional superscript, and an optional subscript.
 
 Exactly where the subscript and superscript are drawn depends on the
-size, and type, of the nucleus they are attached to.  
+size, and type, of the nucleus they are attached to.
 
 Jules
 
@@ -33,7 +33,7 @@ Andre'
 class MathInset;
 
 class MathAtom {
-public: 
+public:
 	/// default constructor, object is useless, but we need it to put it into
 	// std::containers
 	MathAtom();
@@ -42,7 +42,7 @@ public:
 	/// copy constructor, invokes nucleus_->clone()
 	MathAtom(MathAtom const &);
 	/// we really need to clean up
-	~MathAtom(); 
+	~MathAtom();
 	/// assignment invokes nucleus_->clone()
 	void operator=(MathAtom const &);
 	/// change inset under the hood

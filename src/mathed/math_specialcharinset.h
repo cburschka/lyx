@@ -8,7 +8,7 @@
 #pragma interface
 #endif
 
-/** An inset for characters like {, #, and $ that need to be escaped 
+/** An inset for characters like {, #, and $ that need to be escaped
     when written out, but can be inserted by a single keystroke
     \author André Pönitz
  */
@@ -27,7 +27,7 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
-	/// 
+	///
 	int ascent() const;
 	///
 	int descent() const;

@@ -1,5 +1,7 @@
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* most files: ws cleanup
+
 	* Makefile.am: remove ld -r stuff
 
 2002-03-20  Lars Gullik Bjønnes  <larsbj@birdstep.com>
@@ -17,7 +19,7 @@
 
 	* math_inset.C (metrics): parameter "mi" is never referenced. Removed.
 	* math_hullinset.C (metrics): ditto.
-	
+
 
 2002-03-12  André Pönitz <poenitz@gmx.net>
 
@@ -45,16 +47,16 @@
 
 2002-02-08  Otto Tronarp <otttr440@student.liu.se>
 
-	* math_decorationinset.C: 
+	* math_decorationinset.C:
 
-	* math_support.C: 
+	* math_support.C:
 
 	* math_hash.C: Added \underrightarrow and \underleftarrow
 
 2002-02-08  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* formulabase.C (localDispatch): fix umlaut handling
-	
+
 	* formulabase.C: pop up math panel on right mouse click
 
 2002-02-01  André Pönitz <poenitz@gmx.net>
@@ -101,7 +103,7 @@
 2002-01-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* math_support.C: change latex_mathfontcmds to an array of
-	kb_action. 
+	kb_action.
 
 2002-01-11  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -128,11 +130,11 @@
 2002-01-09  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* math_hullinset.C (validate): rename feature "amsstyle" to
-	"amsmath". 
+	"amsmath".
 
 2002-01-09  Martin Vermeer <martin.vermeer@hut.fi>
 
-	* math_support.C: modified to support  a mathed pop-up for math 
+	* math_support.C: modified to support  a mathed pop-up for math
 	size "styles" and font types.
 
 2002-01-07  Angus Leeming  <a.leeming@ic.ac.uk>
@@ -166,7 +168,7 @@
 
 	* math_parser.C: user std::fill to fill the catcodes. (please
 	check this one...), and some consts.
-	
+
 2001-12-11  André Pönitz <poenitz@gmx.net>
 
 	* math_cursor.C: allow cut&paste of rectangular regions of cells
@@ -212,23 +214,23 @@
 	* math_symbolinset.C:
 	* math_unknowninset.C: include math_streamstr.h and remove
 	unneeded c_str()
-	
+
 	* math_symbolinset.[Ch]: add constructor taking string
-	
+
 	* math_mathmlstream.C: move includes around
 
 	* math_streamstr.[Ch]: add operator<<(Stream, string) for
 	NormalStream, MapleStream, MathMLStream and OctaveStream
-	
+
 	* math_gridinset.C: user LyXLength::zero
-	
+
 2001-11-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* formula.C:
 	* math_arrayinset.C: add using std::getline directive.
 
 2001-11-20 André Pönitz  <poenitz@gmx.net>
-	
+
 	* formulabase.C: fix mouse positioning using the cursor
 
 2001-11-19  Dekel Tsur  <dekelts@tau.ac.il>
@@ -247,13 +249,13 @@
 
 2001-11-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* math_extern.C (extractNumber): 
+	* math_extern.C (extractNumber):
 	(extractDiffExponent): add ugly .c_str()
 
 2001-11-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* math_arrayinset.C (MathArrayInset): 
-	* formula.C (pipeThroughMaple): 
+	* math_arrayinset.C (MathArrayInset):
+	* formula.C (pipeThroughMaple):
 	(pipeThroughOctave): add ugly .c_str() to help compile
 	with lyxstring
 
@@ -281,7 +283,7 @@
 	* math_*inset.[Ch]: remove MathStyles cache from insets that
 	  don't need it
 
-	* support.C: 
+	* support.C:
 	  formulabase.C: fix math font sizes in headings etc
 
 	* math_inset.[Ch]:
@@ -333,7 +335,7 @@
 2001-09-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* math_cursor.C: fix type mismatches with what was declared in
-	math_cursor.h. 
+	math_cursor.h.
 
 2001-09-28  Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -376,7 +378,7 @@
 	    'xxalignt', 'gather' and 'multiline' environments
 
 	* math_cursor.C: fix handling of | and \|
-	
+
 2001-09-04  José Matos  <jamatos@fep.up.pt>
 
 	* formulabase.C
@@ -397,7 +399,7 @@
 2001-08-17  André Pönitz  <poenitz@gmx.net>
 
 	* math_hash.C: Use std::map instead of faking it
-	
+
 	* symbol_def.h: remove unneeded symbol definitions
 
 	*	support.C: use the decorations' name for drawing
@@ -423,7 +425,7 @@
 2001-08-31  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* math_hash.C: Read symbols information from external file
- 	many files: Add support for latex symbol fonts
+	many files: Add support for latex symbol fonts
 
 2001-08-18  Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -489,7 +491,7 @@
 	* math_bigopinset.[Ch]: revival for things like \int, \sum
 
 	* math_funcliminset.[Ch]: dedicated new inset for \lim, \max, \min...
-	
+
 	* math_diminset.h: make cache variables mutable, remove const_cast
 
 	* formulabase.[Ch]: remove unneeded convertFont()
@@ -518,7 +520,7 @@
 	the width_/ascent_/descent_ cache
 
 2001-07-25  André Pönitz  <poenitz@gmx.net>
-	
+
 	* formulabase.C: re-enable 'space enlargement' feature
 
 	* math_scriptinset.C:
@@ -535,7 +537,7 @@
 	* formulabase.C: fix memory leak
 
 	* math_cursor.C: ^ now copies selection into new srriptinset
-	
+
 	* xarray.C: less crude MathXArray::x2pos for preciser cursor positioning
 	  using the mouse
 
@@ -586,11 +588,11 @@
 
 	* math_updowninset.[hC]: new base class for script and bigop insets
 		*.[hC]: subsequent changes to all Metric() functions
-	
+
 	* math_parser.C: small changes (\sqrt0 is read properly now)
-	
+
 2001-07-10 André Pönitz  <poenitz@gmx.net>
-	
+
 	* math_accentinset.[hC]: rewrite
 
 	* math_parser.C:
@@ -616,11 +618,11 @@
 2001-07-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* formulabase.C (mathDispatchInsertMath): remove bogus return
-	statement. 
+	statement.
 
 2001-07-09 André Pönitz  <poenitz@gmx.net>
 
-	* math_*inset.C: Change order of arguments in MathInset constructor 
+	* math_*inset.C: Change order of arguments in MathInset constructor
 
 	* math_cursor.C: Remove broken "increase space" feature for a while
 
@@ -658,7 +660,7 @@
 
 	* *.C: remove all "using namespace std" directives (not
 	good!!) and replaced it with relevant "using" directives.
-	
+
 	* math_macrotemplate.C (Clone): change return type to MathInset*
 
 2001-06-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
@@ -680,7 +682,7 @@
 	* math_macrotemplate.C (Write): std:: qualify ostream
 
 	* math_bigopinset.C (Metrics): std:: qualify max, and include
-	functional 
+	functional
 
 	* math_matrixinset.h: include vector and std:: qualify it.
 
@@ -697,7 +699,7 @@
 	* math_cursor.C (Right): Fixes for cursor movement.
 
 	* formula.C (draw): New background color for math.
-	
+
 	* math_cursor.C: Fixes for toggling labels on/off in math.
 	Fixes for infinity and other symbols that didn't appear in
 	LaTeX.
@@ -720,7 +722,7 @@
 
 	* math_cursor.C: Cursor improvements after a few dead-ends
 	in the evolution of cursor movement were tested and scrapped.
-	
+
 2001-06-24  The LyX Project  <Asger>
 
 	* math_cursor.C: Renamed stack to path.
@@ -769,7 +771,7 @@
 	declared in std:: namespace.
 
 	* math_macrotemplate.h: do not use explicitely std::string, but
-	string. 
+	string.
 
 	* math_macroarg.C: avoid bringing the whole std:: namespace in
 	global-land. When you do that, there is an ambiguity between
@@ -800,7 +802,7 @@
 	* math_macro.[Ch]:
 	* math_macrotable.[Ch]:
 	* math_macroarg.[Ch]: restructuring of macro handling
-	* several files: 
+	* several files:
 
 2001-04-25  Angus Leeming  <a.leeming@ic.ac.uk>
 
@@ -826,8 +828,8 @@
 
 2001-04-16  Allan Rae  <rae@lyx.org>
 
-	* formula.C (Latex, getLabelList, LocalDispatch): 
-	* math_parser.C (mathed_parse): 
+	* formula.C (Latex, getLabelList, LocalDispatch):
+	* math_parser.C (mathed_parse):
 	* math_parinset.C (Write): #warning triggers an error on Sun CC 6.0 as
 	an unrecognised preprocessor directive.  So ensure they're wrapped.
 
@@ -849,7 +851,7 @@
 	* math_matrixinset.h:
 	* math_parinset.[Ch]:
 	* math_rowst.[Ch]: move MathedRowContainer::row_ to the base
-      
+
 2001-03-13  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
@@ -918,7 +920,7 @@
 
 2001-03-08  André Pönitz  <poenitz@gmx.net>
 
-	* math_rowst.h: give MathedRowContainer an 'insert' method. 
+	* math_rowst.h: give MathedRowContainer an 'insert' method.
 
 	* math_xiter.C: new 'container()' method to encapsulated access to
 	  the MathParInset's MathedRowContainer
@@ -928,13 +930,13 @@
 
 	* math_matrixinset.[hC]: remove copy constructr and destructor. Those
 	  automatically created by the compiler are ok now.
-	
+
 2001-03-06  André Pönitz  <poenitz@gmx.net>
 
 	* array.[Ch]: factor out deep_copy,
-	  remove third argument from raw_pointer_insert 
+	  remove third argument from raw_pointer_insert
 
-	* math_iter.[Ch]: remove unused function Clear()	
+	* math_iter.[Ch]: remove unused function Clear()
 
 	* math_cursor.C: change signature of MathStackXIter:push()
 	  whitespace changes
@@ -1002,7 +1004,7 @@
 	shared_ptr, let constructor take a shared_ptr
 
 	* math_macro.C (MathMacro): take shared_ptr as arg, remove double
-	initialization. 
+	initialization.
 	(draw): remove unneded update, remove removed update of x,y
 	(GetXY): call tmplates GetMacroXY directly
 	(SetFocus): call Metrics() instead of update()
@@ -1022,7 +1024,7 @@
 
 	* math_cursor.C: changes because of the above
 	* math_parser.C: changes because of the abobe
-	
+
 	* formulamacro.h: change tmacro_ to be a shared_ptr, remove
 	default arg on constructor.
 	* formulamacro.C: changes because of the above
@@ -1109,7 +1111,7 @@
 	(~MathFuncInset): remove
 
 	* math_fracinset.h: make MathParInset den_ a real object and not a
-	pointer. 
+	pointer.
 
 	* math_fracinset.C (MathFracInset): clean up, move initalization
 	to initialization list
@@ -1117,7 +1119,7 @@
 	(Clone): remove leak
 
 	* math_draw.C: delete file
-	
+
 	* math_dotsinset.[Ch]: add pragma
 
 	* math_bigopinset.h: make protected variables private add '_' to vars.
@@ -1146,14 +1148,14 @@
 	* math_macroarg.C (MathMacroArgument): delete
 	* math_macro.C (~MathMacro): delete
 	* math_macrotemplate.C (~MathMacroTemplate): delete
-	
+
 	* math_decorationinset.[Ch]: add pragma
 	* math_deliminset.[Ch]: likewise
 	* math_fracinset.[Ch]: likewise
 	* math_macroarg.[Ch]: likewise
 	* math_macrotemplate.[Ch]: likewise
 	* math_matrixinset.[Ch]: likewise
-	
+
 	* formulamacro.C (Read): set contents of tmacro_ to ar.
 
 	* formulamacro.h: add '_' to private variables.
@@ -1174,7 +1176,7 @@
 	* move MathIter::Copy(int, int) to MathArray::shrink(pos, pos)
 
 	* several files: subsequent changes
-	
+
 	* math_cursor.C: make selarray a proper MathArray
 
 	* several files: Change "MathedArray *" to "MathedArray &"
@@ -1187,7 +1189,7 @@
 2001-02-14  André Pönitz  <poenitz@gmx.net>
 
 	* array.[Ch]: "deep" copy constructor and assignment operator for
-	MathArray 
+	MathArray
 
 	* math_iter.[Ch]: seperate Copy() from Copy(int, int)
 
@@ -1197,7 +1199,7 @@
 2001-02-14  André Pönitz  <poenitz@gmx.net>
 
 	* array.[Ch]: remove constructor and  enums ARRAY_MIN_SIZE and
-	ARRAY_STEP 
+	ARRAY_STEP
 
 	* math_iter.C: default-construct and resize array
 
@@ -1211,7 +1213,7 @@
 	of private variables.
 
 	* changes to several files because of the above.
-	
+
 2001-02-14  André Pönitz  <poenitz@gmx.net>
 
 	* math_iter.[Ch]: hide fcode_
@@ -1230,7 +1232,7 @@
 
 	* move funcs to more localized files, more general cleanup.
 	Constify several local vars. Doxygen changes. Formatting.
-	
+
 2001-02-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* support.C: add some consts
@@ -1242,7 +1244,7 @@
 
 2001-02-14  André Pönitz  <poenitz@gmx.net>
 
-	* formula.C: reformatting 
+	* formula.C: reformatting
 
 	* math_cursor.[Ch]:
 	  math_iter.[Ch]:
@@ -1250,44 +1252,44 @@
 
 2001-02-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
-	* math_parser.C: 
-	* math_panel.C: 
+	* math_parser.C:
+	* math_panel.C:
 	* formula.C: remove cruft
 
 	* array.C (begin): new method
 	(end): ditto
 
 2001-02-14  André Pönitz  <poenitz@gmx.net>
-	
+
 	* math_iter.[Ch]: remove 'insert', 'maxsize' and 'ARRAY_SIZE'
 
-	* math_cursor.C: reformatting 
+	* math_cursor.C: reformatting
 
 2001-02-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* math_spaceinset.C: 
-	* math_root.C: 
-	* math_matrixinset.C: 
-	* math_macrotemplate.C: 
-	* math_funcinset.C: 
-	* math_fracinset.C: 
-	* math_dotsinset.C: 
-	* math_deliminset.C: 
-	* math_decorationinset.C: 
-	* math_bigopinset.C: 
-	* math_accentinset.C: 
+	* math_spaceinset.C:
+	* math_root.C:
+	* math_matrixinset.C:
+	* math_macrotemplate.C:
+	* math_funcinset.C:
+	* math_fracinset.C:
+	* math_dotsinset.C:
+	* math_deliminset.C:
+	* math_decorationinset.C:
+	* math_bigopinset.C:
+	* math_accentinset.C:
 	* math_sqrtinset.C: include LOstream.h and add using directive.
 
 2001-02-14  André Pönitz  <poenitz@gmx.net>
 
-	* math_iter.C: reformatting 
+	* math_iter.C: reformatting
 
 2001-02-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* math_spaceinset.C (GetSpace): move here
 
 	* math_parinset.C: add debug.h, move several prev. inlined methods
-	here. 
+	here.
 
 	* math_macrotable.C math_xiter.C support.C: add debug.h
 
@@ -1347,28 +1349,28 @@
 2001-02-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Makefile.am (libmathed_la_SOURCES): remove duplicate
-	math_sqrtinset. 
+	math_sqrtinset.
 
-	* support.C: 
-	* math_xiter.C: 
+	* support.C:
+	* math_xiter.C:
 	* math_parinset.C: add a bunch of "using" directives.
 
-	* math_funcinset.h: 
-	* math_decorationinset.h: 
-	* math_bigopinset.h: 
+	* math_funcinset.h:
+	* math_decorationinset.h:
+	* math_bigopinset.h:
 	* math_spaceinset.h: remove more couples of inline.
 
 2001-02-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* math_xiter.h: remove a couple of "inline"
 
-	* array.C (strange_copy): fix bug (hopefully) 
+	* array.C (strange_copy): fix bug (hopefully)
 	* many files: add a lot of new files and move methods to the class
 	files they belong to. Only first attempt at cleanup more will
 	follow.
-	
+
 2001-02-12  André Pönitz  <poenitz@gmx.net>
-	
+
 	* math_macro.[hC]: replace MathMacroArgument[] with
 	  std::vector<MathMacroArgument>
 	* math_defs.h:
@@ -1376,7 +1378,7 @@
 	* math_panel.h:
 	* math_symbols.C: replace FL_OBJECTP[] with
 	std::vector<FL_OBJECT*>
-	
+
 2001-02-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* math_defs.h (struct MathedRowSt): make all private variables end
@@ -1392,7 +1394,7 @@
 	environment.
 
 2001-02-12  André Pönitz  <poenitz@gmx.net>
-	
+
 	* array.[hC]: replace private variable maxsize_ with call to
 	bf_.size()
 	* math_defs.h: replace int[] by std::vector<int> for
@@ -1406,11 +1408,11 @@
 	changed name from LyxArrayBase to MathedArray.
 	changed name of some methods to start with lowerchar.
 	moved inline methods to array.C
-	
+
 	* math_iter.C + several file: changes because of the above.
 
 	* array.C: new file with the prev inline methods.
-	
+
 2001-02-10  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* Many files: add support for the align environment from amsmath.
@@ -1418,7 +1420,7 @@
 2001-02-09  André Pönitz  <poenitz@gmx.net>
 
 	* array.h: replace array buffer  'byte bf[]'  by 'std::vector<byte> bf'
-	* several files: subsequent changes         
+	* several files: subsequent changes
 	* math_iter.h: remove unused prototype
 	* array.h: ditto.
 
@@ -1439,7 +1441,7 @@
 
 2001-02-02  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* Many files: Add support for multline and alignat environments from 
+	* Many files: Add support for multline and alignat environments from
 	amsmath.
 
 2001-02-02  Dekel Tsur  <dekelts@tau.ac.il>
@@ -1459,4 +1461,3 @@
 2001-01-15  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* math_draw.C (Metrics): Use the correct GetString.
-

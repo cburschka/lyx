@@ -27,7 +27,7 @@ MathStringInset::MathStringInset(string const & s, MathTextCodes t)
 
 
 MathInset * MathStringInset::clone() const
-{   
+{
 	return new MathStringInset(*this);
 }
 
@@ -65,7 +65,7 @@ void MathStringInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathStringInset::draw(Painter & pain, int x, int y) const
-{ 
+{
 	//lyxerr << "drawing '" << str_ << "' code: " << code_ << endl;
 	drawStr(pain, font_, x, y, str_);
 }
@@ -82,11 +82,11 @@ void MathStringInset::maplize(MapleStream & os) const
 	if (code_ != LM_TC_VAR || str_.size() <= 1) {
 		os << ' ' << str_ << ' ';
 		return;
-	}	
+	}
 
 	// insert '*' between adjacent chars if type is LM_TC_VAR
 	os << str_[0];
-	for (string::size_type i = 1; i < str_.size(); ++i) 
+	for (string::size_type i = 1; i < str_.size(); ++i)
 		os << '*' << str_[i];
 }
 
@@ -96,11 +96,11 @@ void MathStringInset::octavize(OctaveStream & os) const
 	if (code_ != LM_TC_VAR || str_.size() <= 1) {
 		os << ' ' << str_ << ' ';
 		return;
-	}	
+	}
 
 	// insert '*' between adjacent chars if type is LM_TC_VAR
 	os << str_[0];
-	for (string::size_type i = 1; i < str_.size(); ++i) 
+	for (string::size_type i = 1; i < str_.size(); ++i)
 		os << '*' << str_[i];
 }
 
@@ -120,10 +120,8 @@ void MathStringInset::mathmlize(MathMLStream & os) const
 
 void MathStringInset::write(WriteStream & os) const
 {
-	if (math_font_name(code_)) 
+	if (math_font_name(code_))
 		os << '\\' << math_font_name(code_) << '{' << str_ << '}';
-	else 
+	else
 		os << str_;
 }
-
-

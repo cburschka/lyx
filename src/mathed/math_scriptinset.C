@@ -85,7 +85,7 @@ int MathScriptInset::dy0(MathInset const * nuc) const
 	int des = down().ascent();
 	if (hasLimits(nuc))
 		des += nd + 2;
-	else 
+	else
 		des = max(des, nd);
 	return des;
 }
@@ -99,7 +99,7 @@ int MathScriptInset::dy1(MathInset const * nuc) const
 	int asc = up().descent();
 	if (hasLimits(nuc))
 		asc += na + 2;
-	else 
+	else
 		asc = max(asc, na);
 	asc = max(asc, mathed_char_ascent(font_, 'I'));
 	return asc;
@@ -178,14 +178,14 @@ int MathScriptInset::ndes(MathInset const * nuc) const
 
 
 void MathScriptInset::metrics(MathMetricsInfo const & mi) const
-{	
+{
 	metrics(0, mi);
 }
 
 
 void MathScriptInset::metrics(MathInset const * nuc,
 	MathMetricsInfo const & mi) const
-{	
+{
 	MathMetricsInfo m = mi;
 	smallerStyleScript(m);
 	MathNestInset::metrics(m);
@@ -199,21 +199,21 @@ void MathScriptInset::metrics(MathInset const * nuc,
 
 
 void MathScriptInset::draw(Painter & pain, int x, int y) const
-{  
+{
 	//lyxerr << "unexpected call to MathScriptInset::draw()\n";
 	draw(0, pain, x, y);
 }
 
 
 void MathScriptInset::metricsT(TextMetricsInfo const & mi) const
-{	
+{
 	metricsT(0, mi);
 }
 
 
 void MathScriptInset::metricsT(MathInset const * nuc,
 	TextMetricsInfo const & mi) const
-{	
+{
 	if (hasUp())
 		up().metricsT(mi);
 	if (hasDown())
@@ -228,7 +228,7 @@ void MathScriptInset::metricsT(MathInset const * nuc,
 
 void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
 	int x, int y) const
-{  
+{
 	if (nuc)
 		nuc->draw(pain, x + dxx(nuc), y);
 	else // if (editing())
@@ -242,7 +242,7 @@ void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
 }
 
 void MathScriptInset::drawT(TextPainter & pain, int x, int y) const
-{  
+{
 	//lyxerr << "unexpected call to MathScriptInset::draw()\n";
 	drawT(0, pain, x, y);
 }
@@ -250,7 +250,7 @@ void MathScriptInset::drawT(TextPainter & pain, int x, int y) const
 
 void MathScriptInset::drawT(MathInset const * nuc, TextPainter & pain,
 	int x, int y) const
-{  
+{
 	if (nuc)
 		nuc->drawT(pain, x + dxx(nuc), y);
 	if (hasUp())
@@ -269,12 +269,12 @@ bool MathScriptInset::hasLimits(MathInset const * nuc) const
 	if (limits_ == -1)
 		return false;
 
-	// we can only display limits if the nucleus wants some	
+	// we can only display limits if the nucleus wants some
 	if (!nuc)
 		return false;
 	if (!nuc->isScriptable())
 		return false;
-	
+
 	// per default \int has limits beside the \int even in displayed formulas
 	if (nuc->asSymbolInset())
 		if (nuc->asSymbolInset()->name().find("int") != string::npos)
@@ -341,7 +341,7 @@ bool MathScriptInset::idxLeft(MathInset::idx_type &,
 
 
 void MathScriptInset::write(WriteStream & os) const
-{  
+{
 	//lyxerr << "unexpected call to MathScriptInset::write()\n";
 	write2(0, os);
 }
@@ -372,7 +372,7 @@ void MathScriptInset::write2(MathInset const * nuc, WriteStream & os) const
 
 
 void MathScriptInset::normalize(NormalStream & os) const
-{  
+{
 	//lyxerr << "unexpected call to MathScriptInset::normalize()\n";
 	normalize2(0, os);
 }
@@ -383,11 +383,11 @@ void MathScriptInset::normalize2(MathInset const * nuc, NormalStream & os) const
 	bool d = hasDown() && down().data_.size();
 	bool u = hasUp() && up().data_.size();
 
-	if (u) 
+	if (u)
 		os << "[sup ";
 	if (d)
 		os << "[sub ";
-	
+
 	if (nuc)
 		os << nuc << ' ';
 	else
@@ -395,7 +395,7 @@ void MathScriptInset::normalize2(MathInset const * nuc, NormalStream & os) const
 
 	if (d)
 		os << down().data_ << ']';
-	if (u) 
+	if (u)
 		os << up().data_ << ']';
 }
 
@@ -446,5 +446,3 @@ void MathScriptInset::octavize2(MathInset const * nuc, OctaveStream & os) const
 	if (hasUp() && up().data_.size())
 		os << "^(" << up().data_ << ')';
 }
-
-

@@ -17,7 +17,7 @@ MathDecorationInset::MathDecorationInset(string const & name)
 
 
 MathInset * MathDecorationInset::clone() const
-{   
+{
 	return new MathDecorationInset(*this);
 }
 
@@ -81,7 +81,7 @@ void MathDecorationInset::metrics(MathMetricsInfo const & mi) const
 	ascent_  = xcell(0).ascent();
 	descent_ = xcell(0).descent();
 
-	dh_ = 6; //mathed_char_height(LM_TC_VAR, mi(), 'I', ascent_, descent_);  
+	dh_ = 6; //mathed_char_height(LM_TC_VAR, mi(), 'I', ascent_, descent_);
 	dw_ = 6; //mathed_char_width(LM_TC_VAR, mi, 'x');
 
 	if (upper()) {
@@ -95,9 +95,9 @@ void MathDecorationInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathDecorationInset::draw(Painter & pain, int x, int y) const
-{ 
+{
 	xcell(0).draw(pain, x, y);
-	if (wide()) 
+	if (wide())
 		mathed_draw_deco(pain, x, y + dy_, width_, dh_, name_);
 	else
 		mathed_draw_deco(pain, x + (width_ - dw_) / 2, y + dy_, dw_, dh_, name_);

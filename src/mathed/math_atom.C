@@ -1,6 +1,6 @@
 /*
  *  File:        math_atom.C
- *  Purpose:     Wrapper for MathInset * 
+ *  Purpose:     Wrapper for MathInset *
  *  Author:      André Pönitz
  *  Created:     July 2001
  *

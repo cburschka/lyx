@@ -38,7 +38,7 @@ void MathLimitOpInset::metrics(MathMetricsInfo const &) const
 
 
 void MathLimitOpInset::draw(Painter &, int, int) const
-{  
+{
 	lyxerr << "should not happen\n";
 }
 

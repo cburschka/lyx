@@ -124,8 +124,8 @@ LyXFont const & whichFontBaseIntern(MathTextCodes type)
 		mathed_init_fonts();
 
 	switch (type) {
-	case LM_TC_SYMB:	
-	case LM_TC_BOLDSYMB:	
+	case LM_TC_SYMB:
+	case LM_TC_BOLDSYMB:
 		return MathFonts[FONT_SYMBOLI];
 
 	case LM_TC_VAR:
@@ -495,8 +495,8 @@ named_deco_struct deco_table[] = {
 	{"uparrow",        arrow,      0 },
 	{"Uparrow",        Arrow,      0 },
 	{"updownarrow",    udarrow,    0 },
-	{"Updownarrow",    Udarrow,    0 },	
-	
+	{"Updownarrow",    Udarrow,    0 },
+
 	// Accents
 	{"ddot",           ddot,       0 },
 	{"dddot",          dddot,      0 },
@@ -510,7 +510,7 @@ named_deco_struct deco_table[] = {
 	{"breve",          parenth,    1 },
 	{"vec",            arrow,      3 },
 	{"not",            slash,      0 },
-	
+
 	// Dots
 	{"ldots",          hline3,     0 },
 	{"cdots",          hline3,     0 },
@@ -618,22 +618,22 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 		pain.line(x + w/2, y, x + w/2, y + h,
 			  LColor::mathcursor, Painter::line_onoffdash);
 		return;
-	}	
-	
+	}
+
 	deco_struct const * mds = search_deco(name);
 	if (!mds) {
 		lyxerr << "Deco was not found. Programming error?\n";
 		lyxerr << "name: '" << name << "'\n";
 		return;
 	}
-	
+
 	int const n = (w < h) ? w : h;
 	int const r = mds->angle;
 	double const * d = mds->data;
-	
+
 	if (h > 70 && (name == "(" || name == ")"))
 		d = parenthHigh;
-	
+
 	Matrix mt(r, w, h);
 	Matrix sqmt(r, n, n);
 
@@ -750,7 +750,7 @@ char const * math_font_name(MathTextCodes code)
 		"textrm"
 	};
 
-	if (code >= LM_TC_RM && code <= LM_TC_TEXTRM) 
+	if (code >= LM_TC_RM && code <= LM_TC_TEXTRM)
 		return theFontNames[code - LM_TC_RM];
 	return 0;
 }
@@ -773,5 +773,3 @@ string convertDelimToLatexName(string const & name)
 		return name;
 	return "\\" + name + " ";
 }
-
-

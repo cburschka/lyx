@@ -20,7 +20,7 @@ MathBinaryOpInset::MathBinaryOpInset(char op)
 
 
 MathInset * MathBinaryOpInset::clone() const
-{   
+{
 	return new MathBinaryOpInset(*this);
 }
 
@@ -43,10 +43,10 @@ void MathBinaryOpInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathBinaryOpInset::draw(Painter & pain, int x, int y) const
-{ 
-	xcell(0).draw(pain, x, y); 
+{
+	xcell(0).draw(pain, x, y);
 	drawChar(pain, LM_TC_CONST, mi_, x + xcell(0).width() , y, op_);
-	xcell(1).draw(pain, x + width() - xcell(1).width(), y); 
+	xcell(1).draw(pain, x + width() - xcell(1).width(), y);
 }
 
 

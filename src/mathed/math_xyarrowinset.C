@@ -111,7 +111,7 @@ void MathXYArrowInset::draw(Painter & pain, int x, int y) const
 		MathXArray const & t = targetCell();
 		pain.line(s.xm(), s.ym(), t.xm(), t.ym(), LColor::math);
 		xcell(1).draw(pain, (s.xm() + t.xm())/2, (s.ym() + t.ym())/2);
-		
+
 	}
 }
 

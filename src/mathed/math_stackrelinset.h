@@ -8,7 +8,7 @@
 #pragma interface
 #endif
 
-/** Stackrel objects 
+/** Stackrel objects
     \author André Pönitz
  */
 class MathStackrelInset : public MathFracbaseInset {

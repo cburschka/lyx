@@ -81,7 +81,7 @@ void MathArrayInset::write(WriteStream & os) const
 		os << "\\protect";
 	os << "\\begin{" << name_ << "}";
 
-	if (v_align_ == 't' || v_align_ == 'b') 
+	if (v_align_ == 't' || v_align_ == 'b')
 		os << '[' << char(v_align_) << ']';
 	os << '{' << halign() << "}\n";
 

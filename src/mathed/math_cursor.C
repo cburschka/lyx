@@ -358,7 +358,7 @@ void MathCursor::last()
 
 
 bool positionable(MathCursor::cursor_type const & cursor,
-                  MathCursor::cursor_type const & anchor)
+		  MathCursor::cursor_type const & anchor)
 {
 	// avoid deeper nested insets when selecting
 	if (cursor.size() > anchor.size())
@@ -946,12 +946,12 @@ void MathCursor::normalize()
 	}
 #endif
 
- 	if (idx() >= par()->nargs()) {
+	if (idx() >= par()->nargs()) {
 		lyxerr << "this should not really happen - 1: "
 		       << idx() << " " << par()->nargs() << "\n";
 		dump("error 2");
 	}
- 	idx() = min(idx(), par()->nargs() - 1);
+	idx() = min(idx(), par()->nargs() - 1);
 
 	if (pos() > size()) {
 		lyxerr << "this should not really happen - 2: "
@@ -1238,7 +1238,7 @@ bool MathCursor::goUpDown(bool up)
 		if (!popLeft()) {
 			// no such inset found, just take something "above"
 			///lyxerr << "updown: handled by strange case\n";
-			return 
+			return
 				bruteFind(xo, yo,
 					formula()->xlow(),
 					formula()->xhigh(),
@@ -1363,7 +1363,7 @@ bool MathCursor::interpret(string const & s)
 	}
 
 	// prevent entering of recursive macros
-	if (formula()->lyxCode() == Inset::MATHMACRO_CODE 
+	if (formula()->lyxCode() == Inset::MATHMACRO_CODE
 		&& formula()->getInsetName() == s.substr(1))
 	{
 		lyxerr << "can't enter recursive macro\n";

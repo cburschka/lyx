@@ -29,7 +29,7 @@ string verboseHLine(int n)
 }
 
 
-////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////
 
 
 MathGridInset::RowInfo::RowInfo()
@@ -48,7 +48,7 @@ int MathGridInset::RowInfo::skipPixels() const
 
 
 
-////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////
 
 
 MathGridInset::ColInfo::ColInfo()
@@ -56,14 +56,14 @@ MathGridInset::ColInfo::ColInfo()
 {}
 
 
-////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////
 
 
 MathGridInset::MathGridInset(char v, string const & h)
 	: MathNestInset(guessColumns(h)), rowinfo_(2), colinfo_(guessColumns(h) + 1)
 {
 	setDefaults();
- 	valign(v);
+	valign(v);
 	halign(h);
 }
 
@@ -79,7 +79,7 @@ MathGridInset::MathGridInset(col_type m, row_type n, char v, string const & h)
 	: MathNestInset(m * n), rowinfo_(n + 1), colinfo_(m + 1), v_align_(v)
 {
 	setDefaults();
- 	valign(v);
+	valign(v);
 	halign(h);
 }
 
@@ -124,7 +124,7 @@ void MathGridInset::halign(string const & hh)
 			lyxerr << "unkown column separator: '" << c << "'\n";
 		}
 	}
-			
+
 /*
 	col_type n = hh.size();
 	if (n > ncols())
@@ -163,7 +163,7 @@ string MathGridInset::halign() const
 	for (col_type col = 0; col < ncols(); ++col) {
 		res += string(colinfo_[col].lines_, '|');
 		res += colinfo_[col].align_;
-	} 
+	}
 	return res + string(colinfo_[ncols()].lines_, '|');
 }
 
@@ -240,7 +240,7 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 	// compute vertical offsets
 	rowinfo_[0].offset_ = 0;
 	for (row_type row = 1; row <= nrows(); ++row) {
-		rowinfo_[row].offset_  =	
+		rowinfo_[row].offset_  =
 			rowinfo_[row - 1].offset_  +
 			rowinfo_[row - 1].descent_ +
 			rowinfo_[row - 1].skipPixels() +
@@ -263,12 +263,12 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 	}
 	for (row_type row = 0; row <= nrows(); ++row)
 		rowinfo_[row].offset_ -= h;
-	
+
 
 	// compute absolute sizes of horizontal structure
 	for (col_type col = 0; col < ncols(); ++col) {
 		int wid = 0;
-		for (row_type row = 0; row < nrows(); ++row) 
+		for (row_type row = 0; row < nrows(); ++row)
 			wid = max(wid, xcell(index(row, col)).width());
 		colinfo_[col].width_ = wid;
 	}
@@ -279,30 +279,30 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 	for (col_type col = 1; col <= ncols(); ++col) {
 		colinfo_[col].offset_ =
 			colinfo_[col - 1].offset_ +
-			colinfo_[col - 1].width_ + 
+			colinfo_[col - 1].width_ +
 			colinfo_[col - 1].skip_ +
-			colsep() + 
+			colsep() +
 			colinfo_[col].lines_ * vlinesep();
 	}
 
 
-	width_   =   colinfo_[ncols() - 1].offset_      
-	               + colinfo_[ncols() - 1].width_
-                 + vlinesep() * colinfo_[ncols()].lines_
-	               + border();
+	width_   =   colinfo_[ncols() - 1].offset_
+		       + colinfo_[ncols() - 1].width_
+		 + vlinesep() * colinfo_[ncols()].lines_
+		       + border();
 
-	ascent_  = - rowinfo_[0].offset_          
-	               + rowinfo_[0].ascent_
-                 + hlinesep() * rowinfo_[0].lines_
-	               + border();
+	ascent_  = - rowinfo_[0].offset_
+		       + rowinfo_[0].ascent_
+		 + hlinesep() * rowinfo_[0].lines_
+		       + border();
 
 	descent_ =   rowinfo_[nrows() - 1].offset_
-	               + rowinfo_[nrows() - 1].descent_
-                 + hlinesep() * rowinfo_[nrows()].lines_
-	               + border();
+		       + rowinfo_[nrows() - 1].descent_
+		 + hlinesep() * rowinfo_[nrows()].lines_
+		       + border();
 
 
-/*	
+/*
 	// Increase ws_[i] for 'R' columns (except the first one)
 	for (int i = 1; i < nc_; ++i)
 		if (align_[i] == 'R')
@@ -311,10 +311,10 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 	if (align_[0] == 'C')
 		if (ws_[0] < 7 * workwidth / 8)
 			ws_[0] = 7 * workwidth / 8;
-	
+
 	// Adjust local tabs
 	width = colsep();
-	for (cxrow = row_.begin(); cxrow; ++cxrow) {   
+	for (cxrow = row_.begin(); cxrow; ++cxrow) {
 		int rg = COLSEP;
 		int lf = 0;
 		for (int i = 0; i < nc_; ++i) {
@@ -328,7 +328,7 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 				lf = 0;
 				break;
 			case 'c':
-				lf = (ws_[i] - cxrow->getTab(i))/2; 
+				lf = (ws_[i] - cxrow->getTab(i))/2;
 				break;
 			case 'r':
 			case 'R':
@@ -340,7 +340,7 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 				else if (cxrow.is_last())
 					lf = ws_[i] - cxrow->getTab(i);
 				else
-					lf = (ws_[i] - cxrow->getTab(i))/2; 
+					lf = (ws_[i] - cxrow->getTab(i))/2;
 				break;
 			}
 			int const ww = (isvoid) ? lf : lf + cxrow->getTab(i);
@@ -380,7 +380,7 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 {
 	// let the cells adjust themselves
 	//MathNestInset::metrics(mi);
-	for (idx_type i = 0; i < nargs(); ++i) 
+	for (idx_type i = 0; i < nargs(); ++i)
 		xcell(i).metricsT(mi);
 
 	// compute absolute sizes of vertical structure
@@ -402,7 +402,7 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 	// compute vertical offsets
 	rowinfo_[0].offset_ = 0;
 	for (row_type row = 1; row <= nrows(); ++row) {
-		rowinfo_[row].offset_  =	
+		rowinfo_[row].offset_  =
 			rowinfo_[row - 1].offset_  +
 			rowinfo_[row - 1].descent_ +
 			//rowinfo_[row - 1].skipPixels() +
@@ -425,12 +425,12 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 	}
 	for (row_type row = 0; row <= nrows(); ++row)
 		rowinfo_[row].offset_ -= h;
-	
+
 
 	// compute absolute sizes of horizontal structure
 	for (col_type col = 0; col < ncols(); ++col) {
 		int wid = 0;
-		for (row_type row = 0; row < nrows(); ++row) 
+		for (row_type row = 0; row < nrows(); ++row)
 			wid = max(wid, xcell(index(row, col)).width());
 		colinfo_[col].width_ = wid;
 	}
@@ -441,27 +441,27 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 	for (col_type col = 1; col <= ncols(); ++col) {
 		colinfo_[col].offset_ =
 			colinfo_[col - 1].offset_ +
-			colinfo_[col - 1].width_ + 
+			colinfo_[col - 1].width_ +
 			colinfo_[col - 1].skip_ +
-			1 ; //colsep() + 
+			1 ; //colsep() +
 			//colinfo_[col].lines_ * vlinesep();
 	}
 
 
-	width_   =   colinfo_[ncols() - 1].offset_      
-	               + colinfo_[ncols() - 1].width_
-                 //+ vlinesep() * colinfo_[ncols()].lines_
-	               + 2;
+	width_   =   colinfo_[ncols() - 1].offset_
+		       + colinfo_[ncols() - 1].width_
+		 //+ vlinesep() * colinfo_[ncols()].lines_
+		       + 2;
 
-	ascent_  = - rowinfo_[0].offset_          
-	               + rowinfo_[0].ascent_
-                 //+ hlinesep() * rowinfo_[0].lines_
-	               + 1;
+	ascent_  = - rowinfo_[0].offset_
+		       + rowinfo_[0].ascent_
+		 //+ hlinesep() * rowinfo_[0].lines_
+		       + 1;
 
 	descent_ =   rowinfo_[nrows() - 1].offset_
-	               + rowinfo_[nrows() - 1].descent_
-                 //+ hlinesep() * rowinfo_[nrows()].lines_
-	               + 1;
+		       + rowinfo_[nrows() - 1].descent_
+		 //+ hlinesep() * rowinfo_[nrows()].lines_
+		       + 1;
 
 }
 
@@ -525,7 +525,7 @@ void MathGridInset::delRow(row_type row)
 	if (nrows() == 1)
 		return;
 
-	cells_type::iterator it = cells_.begin() + row * ncols(); 
+	cells_type::iterator it = cells_.begin() + row * ncols();
 	cells_.erase(it, it + ncols());
 
 	rowinfo_.erase(rowinfo_.begin() + row);
@@ -537,7 +537,7 @@ void MathGridInset::addCol(col_type newcol)
 	const col_type nc = ncols();
 	const row_type nr = nrows();
 	cells_type new_cells((nc + 1) * nr);
-	
+
 	for (row_type row = 0; row < nr; ++row)
 		for (col_type col = 0; col < nc; ++col)
 			new_cells[row * (nc + 1) + col + (col > newcol)]
@@ -557,7 +557,7 @@ void MathGridInset::delCol(col_type col)
 		return;
 
 	cells_type tmpcells;
-	for (col_type i = 0; i < nargs(); ++i) 
+	for (col_type i = 0; i < nargs(); ++i)
 		if (i % ncols() != col)
 			tmpcells.push_back(cells_[i]);
 	swap(cells_, tmpcells);
@@ -572,9 +572,9 @@ int MathGridInset::cellXOffset(idx_type idx) const
 	int x = colinfo_[c].offset_;
 	char align = colinfo_[c].align_;
 	if (align == 'r' || align == 'R')
-		x += colinfo_[c].width_ - xcell(idx).width(); 
+		x += colinfo_[c].width_ - xcell(idx).width();
 	if (align == 'c' || align == 'C')
-		x += (colinfo_[c].width_ - xcell(idx).width()) / 2; 
+		x += (colinfo_[c].width_ - xcell(idx).width()) / 2;
 	return x;
 }
 
@@ -600,7 +600,7 @@ bool MathGridInset::idxUpDown(idx_type & idx, bool up) const
 	}
 }
 
-	
+
 bool MathGridInset::idxLeft(idx_type & idx, pos_type & pos) const
 {
 	// leave matrix if on the left hand edge
@@ -610,8 +610,8 @@ bool MathGridInset::idxLeft(idx_type & idx, pos_type & pos) const
 	pos = cell(idx).size();
 	return true;
 }
-	
-	
+
+
 bool MathGridInset::idxRight(idx_type & idx, pos_type & pos) const
 {
 	// leave matrix if on the right hand edge
@@ -632,7 +632,7 @@ bool MathGridInset::idxFirst(idx_type & idx, pos_type & pos) const
 		case 'b':
 			idx = (nrows() - 1) * ncols();
 			break;
-		default: 
+		default:
 			idx = ((nrows() - 1) / 2) * ncols();
 	}
 	pos = 0;
@@ -714,14 +714,14 @@ void MathGridInset::idxDelete(idx_type & idx, bool & popit, bool & deleteit)
 	// move cells if necessary
 	for (idx_type i = index(row(idx), 0); i < idx; ++i)
 		cell(i).swap(cell(i + ncols()));
-		
+
 	delRow(row(idx));
 
 	if (idx >= nargs())
 		idx = nargs() - 1;
 
 	// undo effect of Ctrl-Tab (i.e. pull next cell)
-	//if (idx + 1 != nargs()) 
+	//if (idx + 1 != nargs())
 	//	cell(idx).swap(cell(idx + 1));
 }
 
@@ -772,7 +772,7 @@ void MathGridInset::mathmlize(MathMLStream & os) const
 	os << MTag("mtable");
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << MTag("mtr");
-		for (col_type col = 0; col < ncols(); ++col) 
+		for (col_type col = 0; col < ncols(); ++col)
 			os << cell(index(row, col));
 		os << ETag("mtr");
 	}
@@ -784,7 +784,7 @@ void MathGridInset::write(WriteStream & os) const
 {
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << verboseHLine(rowinfo_[row].lines_);
-		for (col_type col = 0; col < ncols(); ++col) 
+		for (col_type col = 0; col < ncols(); ++col)
 			os << cell(index(row, col)) << eocString(col);
 		os << eolString(row);
 	}

@@ -30,7 +30,7 @@ void MathCasesInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathCasesInset::draw(Painter & pain, int x, int y) const
-{ 
+{
 	mathed_draw_deco(pain, x + 1, y - ascent(), 6, height(), "{");
 	MathGridInset::draw(pain, x + 8, y);
 }

@@ -59,4 +59,3 @@ void MathKernInset::normalize(NormalStream & os) const
 {
 	os << "[kern " << wid_.asLatexString() << "]";
 }
-

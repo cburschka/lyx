@@ -1,8 +1,8 @@
 // -*- C++ -*-
 /*
  *  File:        math_defs.h
- *  Purpose:     Math editor definitions 
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
+ *  Purpose:     Math editor definitions
+ *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
  *  Created:     January 1996
  *  Description: Math paragraph and objects for a WYSIWYG math editor.
  *
@@ -14,7 +14,7 @@
  *
  *   You are free to use and modify this code under the terms of
  *   the GNU General Public Licence version 2 or later.
- * 
+ *
  */
 
 #ifndef MATH_DEFS
@@ -27,7 +27,7 @@
 
 ///
 enum MathTextCodes  {
-	/// 
+	///
 	LM_TC_MIN = 0,
 	/// internal code for variables
 	LM_TC_VAR,
@@ -53,7 +53,7 @@ enum MathTextCodes  {
 	LM_TC_IT,
 	///
 	LM_TC_TEXTRM,
-	/// math mode TeX characters ",;:{}"  
+	/// math mode TeX characters ",;:{}"
 	LM_TC_TEX,
 	/// internal code when typing greek
 	LM_TC_GREEK,
@@ -80,13 +80,13 @@ enum MathTextCodes  {
 };
 
 
-/// Types of lyx-math insets 
+/// Types of lyx-math insets
 enum MathInsetTypes  {
 	///
 	LM_OT_SIMPLE = 0,
 	///
 	LM_OT_EQUATION,
-	/// 
+	///
 	LM_OT_EQNARRAY,
 	///
 	LM_OT_ALIGN,

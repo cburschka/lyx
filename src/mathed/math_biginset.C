@@ -17,7 +17,7 @@ MathBigInset::MathBigInset(string const & name, string const & delim)
 
 
 MathInset * MathBigInset::clone() const
-{   
+{
 	return new MathBigInset(*this);
 }
 
@@ -53,7 +53,7 @@ void MathBigInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathBigInset::draw(Painter & pain, int x, int y) const
-{ 
+{
 	mathed_draw_deco(pain, x + 1, y - ascent_, 4, height(), delim_);
 }
 

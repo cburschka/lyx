@@ -2,9 +2,9 @@
 /*
  *  File:        formula.h
  *  Purpose:     Declaration of formula inset
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
+ *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
  *  Created:     January 1996
- *  Description: Allows the edition of math paragraphs inside Lyx. 
+ *  Description: Allows the edition of math paragraphs inside Lyx.
  *
  *  Copyright: 1996, Alejandro Aguilar Sierra
  *
@@ -14,7 +14,7 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#ifndef INSET_FORMULA_MACRO_H 
+#ifndef INSET_FORMULA_MACRO_H
 #define INSET_FORMULA_MACRO_H
 
 #include "formulabase.h"
@@ -26,7 +26,7 @@
 class MathMacroTemplate;
 
 // InsetFormulaMacro's only knows its name and asks the global
-// MathMacroTable if it needs to know more. 
+// MathMacroTable if it needs to know more.
 
 ///
 class InsetFormulaMacro: public InsetFormulaBase {

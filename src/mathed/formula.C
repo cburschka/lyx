@@ -92,7 +92,7 @@ namespace {
 					"eval(`latex/latex/*`)):\n";
 
 		// remove spurious \\noalign{\\medskip} in matrix output
-		header += 
+		header +=
 			"`latex/latex/matrix`:= "
 				"subs(`\\\\\\\\\\\\noalign{\\\\medskip}` = `\\\\\\\\`,"
 					"eval(`latex/latex/matrix`)):\n";
@@ -111,7 +111,7 @@ namespace {
 			//
 			// ... > echo "1A;" | mint -i 1 -S -s -q
 			// on line     1: 1A;
-			//                 ^ syntax error - 
+			//                 ^ syntax error -
 			//                   Probably missing an operator such as * p
 			//
 			lyxerr << "checking expr: '" << expr << "'\n";
@@ -143,8 +143,8 @@ namespace {
 		mathed_parse_cell(res, out);
 		return res;
 	}
-		
-	
+
+
 	MathArray pipeThroughOctave(string const &, MathArray const & ar)
 	{
 		ostringstream os;
@@ -155,13 +155,13 @@ namespace {
 
 		for (int i = 0; i < 100; ++i) { // at most 100 attempts
 			//
-			// try to fix missing '*' the hard way 
+			// try to fix missing '*' the hard way
 			// parse error:
 			// >>> ([[1 2 3 ];[2 3 1 ];[3 1 2 ]])([[1 2 3 ];[2 3 1 ];[3 1 2 ]])
 			//                                   ^
 			//
 			lyxerr << "checking expr: '" << expr << "'\n";
- 			out = captureOutput("octave -q 2>&1", expr);
+			out = captureOutput("octave -q 2>&1", expr);
 			lyxerr << "checking out: '" << out << "'\n";
 
 			// leave loop if expression syntax is probably ok
@@ -234,7 +234,7 @@ namespace {
 			lyxerr << "converter to '" << lang << "' not found\n";
 			return MathArray();
 		}
-		
+
 		// run external sript
 		string out = captureOutput(file, data);
 		MathArray res;
@@ -255,7 +255,7 @@ InsetFormula::InsetFormula(MathInsetTypes t)
 {}
 
 
-InsetFormula::InsetFormula(string const & s) 
+InsetFormula::InsetFormula(string const & s)
 {
 	if (s.size()) {
 		bool res = mathed_parse_normal(par_, s);
@@ -388,7 +388,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 	switch (action) {
 
-		case LFUN_BREAKLINE: 
+		case LFUN_BREAKLINE:
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 			mathcursor->breakLine();
 			mathcursor->normalize();
@@ -496,11 +496,11 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			updateLocal(bv, true);
 			break;
 		}
-		
+
 		case LFUN_PASTESELECTION:
 		{
 			string const clip = bv->getClipboard();
-  		if (!clip.empty())
+		if (!clip.empty())
 				mathed_parse_normal(par_, clip);
 			break;
 		}
@@ -523,14 +523,14 @@ void InsetFormula::handleExtern(const string & arg)
 {
 	// where are we?
 	if (!mathcursor)
-		return; 
+		return;
 
 	string lang;
 	string extra;
 	istringstream iss(arg.c_str());
 	iss >> lang >> extra;
 	if (extra.empty())
-		extra = "noextra";	
+		extra = "noextra";
 
 	bool selected = mathcursor->selection();
 
@@ -588,9 +588,9 @@ void InsetFormula::validate(LaTeXFeatures & features) const
 
 bool InsetFormula::insetAllowed(Inset::Code code) const
 {
-	return 
+	return
 		(code == Inset::LABEL_CODE && display())
-		|| code == Inset::ERT_CODE; 
+		|| code == Inset::ERT_CODE;
 }
 
 

@@ -3,7 +3,7 @@
  *  Purpose:     Implementation of the formula macro LyX inset
  *  Author:      André Pönitz, based on ideas of Alejandro Aguilar Sierra
  *  Created:     March 2001
- *  Description: Allows the edition of math macros inside Lyx. 
+ *  Description: Allows the edition of math macros inside Lyx.
  *
  *  Copyright: 2001  The LyX Project
  *
@@ -76,7 +76,7 @@ void InsetFormulaMacro::write(Buffer const *, ostream & os) const
 }
 
 
-int InsetFormulaMacro::latex(Buffer const *, ostream & os, bool fragile, 
+int InsetFormulaMacro::latex(Buffer const *, ostream & os, bool fragile,
 			     bool /*free_spacing*/) const
 {
 	WriteStream wi(os, fragile);
@@ -172,7 +172,7 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 
 	// label
 	font.setColor(LColor::math);
-	
+
 	int const a = y - ascent(bv, font) + 1;
 	int const w = width(bv, font) - 2;
 	int const h = ascent(bv, font) + descent(bv, font) - 2;
@@ -193,4 +193,3 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	yo_ = y;
 	par()->draw(pain, xo_, yo_);
 }
-

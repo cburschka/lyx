@@ -10,7 +10,7 @@
 
 
 class MathArrayInset : public MathGridInset {
-public: 
+public:
 	///
 	MathArrayInset(string const &, int m, int n);
 	///

@@ -182,4 +182,3 @@ bool MathNestInset::editing() const
 {
 	return mathcursor && mathcursor->isInside(this);
 }
-

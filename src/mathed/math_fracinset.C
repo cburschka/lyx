@@ -18,7 +18,7 @@ MathFracInset::MathFracInset(bool atop)
 
 
 MathInset * MathFracInset::clone() const
-{   
+{
 	return new MathFracInset(*this);
 }
 
@@ -35,9 +35,9 @@ void MathFracInset::metrics(MathMetricsInfo const & mi) const
 	smallerStyleFrac(m);
 	xcell(0).metrics(m);
 	xcell(1).metrics(m);
-	width_   = max(xcell(0).width(), xcell(1).width()) + 2; 
+	width_   = max(xcell(0).width(), xcell(1).width()) + 2;
 	ascent_  = xcell(0).height() + 2 + 5;
-	descent_ = xcell(1).height() + 2 - 5; 
+	descent_ = xcell(1).height() + 2 - 5;
 }
 
 
@@ -82,7 +82,7 @@ void MathFracInset::write(WriteStream & os) const
 
 void MathFracInset::normalize(NormalStream & os) const
 {
-	if (atop_) 
+	if (atop_)
 		os << "[atop ";
 	else
 		os << "[frac ";

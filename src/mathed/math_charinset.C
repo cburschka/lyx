@@ -57,7 +57,7 @@ MathTextCodes MathCharInset::nativeCode(char c)
 
 
 MathInset * MathCharInset::clone() const
-{   
+{
 	return new MathCharInset(*this);
 }
 
@@ -72,7 +72,7 @@ void MathCharInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathCharInset::draw(Painter & pain, int x, int y) const
-{ 
+{
 	//lyxerr << "drawing '" << char_ << "' code: " << code_ << endl;
 	if (isBinaryOp(char_, code_))
 		x += lyxfont::width(' ', font_);
@@ -89,7 +89,7 @@ void MathCharInset::metricsT(TextMetricsInfo const &) const
 
 
 void MathCharInset::drawT(TextPainter & pain, int x, int y) const
-{ 
+{
 	//lyxerr << "drawing text '" << char_ << "' code: " << code_ << endl;
 	pain.draw(x, y, char_);
 }

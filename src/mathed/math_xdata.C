@@ -25,7 +25,7 @@ MathXArray::MathXArray()
 
 
 void MathXArray::touch() const
-{	
+{
 	clean_  = false;
 	drawn_  = false;
 }
@@ -58,16 +58,16 @@ void MathXArray::metrics(MathMetricsInfo const & mi) const
 			q->metrics(p, mi);
 			ascent_  = max(ascent_,  q->ascent2(p));
 			descent_ = max(descent_, q->descent2(p));
-			width_  += q->width2(p);	
+			width_  += q->width2(p);
 			++it;
 		} else {
 			p->metrics(mi);
 			ascent_  = max(ascent_,  p->ascent());
 			descent_ = max(descent_, p->descent());
-			width_  += p->width();	
+			width_  += p->width();
 		}
 	}
-	//lyxerr << "MathXArray::metrics(): '" << ascent_ << " " 
+	//lyxerr << "MathXArray::metrics(): '" << ascent_ << " "
 	//	<< descent_ << " " << width_ << "'\n";
 }
 
@@ -130,13 +130,13 @@ void MathXArray::metricsT(TextMetricsInfo const & mi) const
 			q->metricsT(p, mi);
 			ascent_  = max(ascent_,  q->ascent2(p));
 			descent_ = max(descent_, q->descent2(p));
-			width_  += q->width2(p);	
+			width_  += q->width2(p);
 			++it;
 		} else {
 			p->metricsT(mi);
 			ascent_  = max(ascent_,  p->ascent());
 			descent_ = max(descent_, p->descent());
-			width_  += p->width();	
+			width_  += p->width();
 		}
 	}
 }
@@ -232,7 +232,7 @@ int MathXArray::dist(int x, int y) const
 	else if (y > yo_ + descent_)
 		yy = y - yo_ - descent_;
 
-	return xx + yy;	
+	return xx + yy;
 }
 
 
@@ -248,7 +248,7 @@ void MathXArray::boundingBox(int & x1, int & x2, int & y1, int & y2)
 void MathXArray::findPos(MathPosFinder & f) const
 {
 	double x = xo_;
-	double y = yo_; 
+	double y = yo_;
 	for (const_iterator it = begin(); it < end(); ++it) {
 		// check this position in the cell first
 		f.visit(x, y);

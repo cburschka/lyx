@@ -56,7 +56,7 @@ void MathMatrixInset::octavize(OctaveStream & os) const
 		if (row)
 			os << ';';
 		os << '[';
-		for (col_type col = 0; col < ncols(); ++col) 
+		for (col_type col = 0; col < ncols(); ++col)
 			os << cell(index(row, col)) << ' ';
 		os << ']';
 	}

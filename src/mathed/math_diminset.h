@@ -10,9 +10,9 @@ class MathDimInset : public MathInset {
 public:
 	/// not sure whether the initialization is really necessary
 	MathDimInset() : width_(0), ascent_(0), descent_(0) {}
-	/// read ascent value (should be inline according to gprof) 
+	/// read ascent value (should be inline according to gprof)
 	int ascent() const { return ascent_; }
-	/// read descent 
+	/// read descent
 	int descent() const { return descent_; }
 	/// read width
 	int width() const { return width_; }

@@ -92,5 +92,3 @@ bool operator<(MathCursorPos const & p, MathCursorPos const & q)
 		return p.idx_ < q.idx_;
 	return p.pos_ < q.pos_;
 }
-
-

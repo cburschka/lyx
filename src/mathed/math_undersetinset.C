@@ -15,7 +15,7 @@ MathUndersetInset::MathUndersetInset()
 
 
 MathInset * MathUndersetInset::clone() const
-{   
+{
 	return new MathUndersetInset(*this);
 }
 
@@ -26,7 +26,7 @@ void MathUndersetInset::metrics(MathMetricsInfo const & mi) const
 	smallerStyleFrac(m);
 	xcell(0).metrics(m);
 	xcell(1).metrics(mi);
-	width_   = max(xcell(0).width(), xcell(1).width()) + 4; 
+	width_   = max(xcell(0).width(), xcell(1).width()) + 4;
 	ascent_  = xcell(1).ascent();
 	descent_ = xcell(1).descent() + xcell(0).height() + 4;
 }

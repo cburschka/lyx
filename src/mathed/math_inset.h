@@ -1,8 +1,8 @@
 // -*- C++ -*-
 /*
  *  File:        math_inset.h
- *  Purpose:     Declaration of insets for mathed 
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
+ *  Purpose:     Declaration of insets for mathed
+ *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
  *  Created:     January 1996
  *  Description: Math paragraph and objects for a WYSIWYG math editor.
  *
@@ -35,7 +35,7 @@
 
 Abstract base class for all math objects.  A math insets is for use of the
 math editor only, it isn't a general LyX inset. It's used to represent all
-the math objects. 
+the math objects.
 
 Math insets do not know there parents, a cursor position or things
 like that. The are dumb object that are contained in other math insets
@@ -80,7 +80,7 @@ class MathPosFinder;
 
 
 class MathInset {
-public: 
+public:
 	/// short of anything else reasonable
 	typedef MathArray::size_type        size_type;
 	/// type for cursor positions differences within a cell
@@ -163,7 +163,7 @@ public:
 	virtual MathXArray & xcell(idx_type);
 	/// return cell plus drawing cache given its number
 	virtual MathXArray const & xcell(idx_type) const;
-			
+
 	/// the number of columns of this inset if it is grid-like
 	virtual col_type ncols() const { return 1; }
 	/// the number of rows of this inset if it is grid-like

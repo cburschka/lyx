@@ -33,7 +33,7 @@ private:
 	size_type size() const;
 	///
 	double increase() const;
-	
+
 	/// \bigl or what?
 	string const name_;
 	/// ( or [ or Vert...

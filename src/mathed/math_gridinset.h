@@ -40,7 +40,7 @@ class MathGridInset : public MathNestInset {
 
 	// additional per-row information
 	struct ColInfo {
-		///	
+		///
 		ColInfo();
 		/// currently possible: 'l', 'c', 'r'
 		char align_;
@@ -50,7 +50,7 @@ class MathGridInset : public MathNestInset {
 		mutable int width_;
 		/// cached offset
 		mutable int offset_;
-		/// do we need a line to the left? 
+		/// do we need a line to the left?
 		bool leftline_;
 		/// do we need a line to the right?
 		bool rightline_;
@@ -60,7 +60,7 @@ class MathGridInset : public MathNestInset {
 		int skip_;
 	};
 
-public: 
+public:
 	/// constructor from columns description, creates one row
 	MathGridInset(char valign, string const & halign);
 	/// Note: columns first!
@@ -131,7 +131,7 @@ public:
 	bool idxEnd(idx_type &, pos_type &) const;
 	///
 	void idxDelete(idx_type &, bool &, bool &);
-			
+
 	///
 	virtual void addRow(row_type);
 	///
@@ -187,7 +187,7 @@ protected:
 	std::vector<RowInfo> rowinfo_;
 	/// column info
 	std::vector<ColInfo> colinfo_;
-	/// 
+	///
 	char v_align_; // add approp. type
 };
 

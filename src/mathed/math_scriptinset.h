@@ -117,7 +117,7 @@ private:
 	bool hasLimits(MathInset const * nuc) const;
 
 	/// possible subscript (index 0) and superscript (index 1)
-	bool script_[2]; 
+	bool script_[2];
 	/// 1 - "limits", -1 - "nolimits", 0 - "default"
 	int limits_;
 	/// cached font
@@ -125,4 +125,3 @@ private:
 };
 
 #endif
-

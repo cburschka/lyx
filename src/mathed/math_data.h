@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /*
- *  Purpose:     A general purpose resizable array.  
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
+ *  Purpose:     A general purpose resizable array.
+ *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
  *  Created:     January 1996
  *
  *  Dependencies: None (almost)
@@ -33,7 +33,7 @@ class ReplaceData;
 
 /** \class MathArray
     \brief Low level container for math insets
-    
+
     \author Alejandro Aguilar Sierra
     \author André Pönitz
     \author Lars Gullik Bjønnes
@@ -73,7 +73,7 @@ public:
 	void clear();
 	///
 	void swap(MathArray &);
-	
+
 	///
 	void insert(size_type pos, MathAtom const &);
 	///
@@ -126,9 +126,9 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
-	const_iterator begin() const;	
+	const_iterator begin() const;
 	///
-	const_iterator end() const;	
+	const_iterator end() const;
 	///
 	iterator begin();
 	///

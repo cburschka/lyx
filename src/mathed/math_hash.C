@@ -27,7 +27,7 @@ struct key_type {
 };
 
 
-key_type wordlist_array[] = 
+key_type wordlist_array[] =
 {
 	{"!",  LM_TK_SPACE, 0},
 	{"#",  LM_TK_SPECIAL, '#'},

@@ -41,7 +41,7 @@ void MathNotInset::metrics(MathMetricsInfo const & mi) const
 
 
 void MathNotInset::draw(Painter & pain, int x, int y) const
-{  
+{
 	if (math_font_available(LM_TC_CMSY))
 		drawChar(pain, font_, x, y, 54);
 	else

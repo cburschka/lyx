@@ -9,7 +9,7 @@
 #pragma interface
 #endif
 
-/** Extra nesting 
+/** Extra nesting
     \author André Pönitz
 */
 

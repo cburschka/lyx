@@ -44,7 +44,7 @@ bool MathExIntInset::hasScripts() const
 
 void MathExIntInset::normalize(NormalStream & os) const
 {
-	os << '[' << symbol_ << ' ' << cell(0) << ' ' << cell(1) << ' ' 
+	os << '[' << symbol_ << ' ' << cell(0) << ' ' << cell(1) << ' '
 	   << cell(2) << ' ' << cell(3) << ']';
 }
 
@@ -56,7 +56,7 @@ void MathExIntInset::metrics(MathMetricsInfo const &) const
 
 
 void MathExIntInset::draw(Painter &, int, int) const
-{  
+{
 	lyxerr << "should not happen" << endl;
 }
 
@@ -66,7 +66,7 @@ void MathExIntInset::maplize(MapleStream & os) const
 	os << symbol_ << '(';
 	if (cell(0).size())
 		os << cell(0);
-	else 
+	else
 		os << '1';
 	os << ',' << cell(1);
 	if (hasScripts())
@@ -80,7 +80,7 @@ void MathExIntInset::mathmlize(MathMLStream & os) const
 	boost::scoped_ptr<MathSymbolInset> sym(new MathSymbolInset(symbol_));
 	//if (hasScripts())
 	//	mathmlize(sym, os);
-	//else 
+	//else
 		sym->mathmlize(os);
 	os << cell(0) << "<mo> &InvisibleTimes; </mo>"
 	   << MTag("mrow") << "<mo> &DifferentialD; </mo>"
@@ -92,4 +92,3 @@ void MathExIntInset::write(WriteStream &) const
 {
 	lyxerr << "should not happen" << endl;
 }
-

@@ -8,7 +8,7 @@
 #pragma interface
 #endif
 
-/** Underset objects 
+/** Underset objects
     \author André Pönitz
  */
 class MathUndersetInset : public MathFracbaseInset {

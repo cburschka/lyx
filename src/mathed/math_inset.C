@@ -1,9 +1,9 @@
 /*
  *  File:        math_inset.C
  *  Purpose:     Implementation of insets for mathed
- *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx> 
+ *  Author:      Alejandro Aguilar Sierra <asierra@servidor.unam.mx>
  *  Created:     January 1996
- *  Description: 
+ *  Description:
  *
  *  Dependencies: Xlib, XForms
  *

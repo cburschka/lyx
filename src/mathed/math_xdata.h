@@ -77,7 +77,7 @@ public:
 	const_iterator begin() const { return data_.begin(); }
 	/// end iterator of the underlying MathArray
 	const_iterator end() const { return data_.end(); }
-	
+
 public:
 	/// the underlying MathArray
 	MathArray data_;

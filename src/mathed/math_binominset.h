@@ -9,7 +9,7 @@
 #endif
 
 /** Binom like objects
-    \author André Pönitz 
+    \author André Pönitz
  */
 class MathBinomInset : public MathFracbaseInset {
 public:

@@ -10,7 +10,7 @@
 
 
 class MathSubstackInset : public MathGridInset {
-public: 
+public:
 	///
 	MathSubstackInset();
 	///
