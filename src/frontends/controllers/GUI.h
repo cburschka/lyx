@@ -43,7 +43,7 @@ public:
 	friend void gui_ShowGraphics(InsetGraphics *, LyXView &, Dialogs &);
 	friend void gui_ShowInclude(InsetInclude *, LyXView &, Dialogs &);
 	friend void gui_ShowIndex(InsetCommand *, LyXView &, Dialogs &);
-	friend void gui_CreateIndex(string const &, LyXView &, Dialogs &);
+	friend void gui_CreateIndex(LyXView &, Dialogs &);
 	friend void gui_ShowLogFile(LyXView &, Dialogs &);
 	friend void gui_ShowMathPanel(LyXView &, Dialogs &);
 	friend void gui_ShowMinipage(InsetMinipage *, LyXView &, Dialogs &);

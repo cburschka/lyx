@@ -123,7 +123,7 @@ public:
 	///
 	void showIndex(InsetCommand *);
 	///
-	void createIndex(string const &);
+	void createIndex();
 	///
 	void showInfo(InsetInfo *);
 	/// show the LaTeX log or build file

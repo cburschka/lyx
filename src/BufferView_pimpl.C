@@ -2987,46 +2987,24 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	}
 	break;
 
-	case LFUN_INDEX_CREATE:
-	{
-		InsetCommandParams p("index");
-		if (argument.empty()) {
-			string const idxstring(bv_->getLyXText()->getStringToIndex(bv_));
-			p.setContents(idxstring);
-		} else {
-			p.setContents(argument);
-		}
-
-		owner_->getDialogs()->createIndex(p.getAsString());
-	}
-	break;
-
 	case LFUN_INDEX_INSERT:
 	{
-		InsetCommandParams p;
-		p.setFromString(argument);
-		InsetIndex * inset = new InsetIndex(p);
+		string entry = argument;
+		if (entry.empty()) {
+			entry = bv_->getLyXText()->getStringToIndex(bv_);
+		}
 
-		if (!insertInset(inset))
+		if (entry.empty()) {
+			owner_->getDialogs()->createIndex();
+			break;
+		}
+
+		InsetIndex * inset = new InsetIndex(InsetCommandParams("index", entry));
+	
+		if (!insertInset(inset)) {
 			delete inset;
-		else
+		} else {
 			updateInset(inset, true);
-	}
-	break;
-
-	case LFUN_INDEX_INSERT_LAST:
-	{
-		string const idxstring(bv_->getLyXText()->getStringToIndex(bv_));
-		if (!idxstring.empty()) {
-			owner_->message(_("Word `")
-					+ idxstring + _(("' indexed.")));
-			InsetCommandParams p("index", idxstring);
-			InsetIndex * inset = new InsetIndex(p);
-
-			if (!insertInset(inset))
-				delete inset;
-			else
-				updateInset(inset, true);
 		}
 	}
 	break;

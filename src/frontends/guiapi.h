@@ -35,7 +35,7 @@ extern "C" {
 	void gui_ShowGraphics(InsetGraphics *, LyXView & lv, Dialogs & d);
 	void gui_ShowInclude(InsetInclude *, LyXView & lv, Dialogs & d);
 	void gui_ShowIndex(InsetCommand *, LyXView & lv, Dialogs & d);
-	void gui_CreateIndex(string const &, LyXView & lv, Dialogs & d);
+	void gui_CreateIndex(LyXView & lv, Dialogs & d);
 	void gui_ShowInfo(InsetInfo *, LyXView & lv, Dialogs & d);
 	void gui_ShowLogFile(LyXView & lv, Dialogs & d);
 	void gui_ShowMathPanel(LyXView & lv, Dialogs & d);

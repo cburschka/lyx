@@ -1,5 +1,13 @@
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
+	* BufferView_pimpl.C:
+	* LyXAction.C:
+	* commandtags.h:
+	* lyxfunc.C: remove the six million index lyxfuncs to just
+	  one, and DTRT (bug 458)
+
+2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
+
 	* BufferView.h:
 	* BufferView.C:
 	* BufferView_pimpl.h:

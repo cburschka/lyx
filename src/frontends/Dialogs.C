@@ -144,9 +144,9 @@ void Dialogs::showIndex(InsetCommand * ic)
 }
 
 
-void Dialogs::createIndex(string const & s)
+void Dialogs::createIndex()
 {
-	gui_CreateIndex(s, *dialogs_lyxview, *this);
+	gui_CreateIndex(*dialogs_lyxview, *this);
 }
 
 

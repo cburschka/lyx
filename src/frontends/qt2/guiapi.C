@@ -302,9 +302,9 @@ extern "C" {
 	}
 
 
-	void gui_CreateIndex(string const & s, LyXView & lv, Dialogs & d)
+	void gui_CreateIndex(LyXView & lv, Dialogs & d)
 	{
-		controlIndexSingleton.get(lv, d).createInset(s);
+		controlIndexSingleton.get(lv, d).createInset("");
 	}
 
 

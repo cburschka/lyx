@@ -613,8 +613,6 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		code = Inset::BIBTEX_CODE;
 		break;
 	case LFUN_INDEX_INSERT:
-	case LFUN_INDEX_INSERT_LAST:
-	case LFUN_INDEX_CREATE:
 		code = Inset::INDEX_CODE;
 		break;
 	case LFUN_INDEX_PRINT:
