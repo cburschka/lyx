@@ -1338,6 +1338,14 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			//cur.nextInset()->edit(cur, true);
 		}
 		break;
+		
+	// passthrough hat and underscore outside mathed:
+	case LFUN_SUBSCRIPT:
+		mathDispatch(cur, FuncRequest(LFUN_SELFINSERT, "_"), false);
+		break;
+	case LFUN_SUPERSCRIPT:
+		mathDispatch(cur, FuncRequest(LFUN_SELFINSERT, "^"), false);
+		break;
 
 	case LFUN_INSERT_MATH:
 	case LFUN_INSERT_MATRIX:
@@ -1908,6 +1916,8 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_INSERT_MATH:
 	case LFUN_INSERT_MATRIX:
 	case LFUN_MATH_DELIM:
+	case LFUN_SUBSCRIPT:
+	case LFUN_SUPERSCRIPT:
 	case LFUN_DEFAULT:
 	case LFUN_UNDERLINE:
 	case LFUN_FONT_SIZE:

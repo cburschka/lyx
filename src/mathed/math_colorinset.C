@@ -23,6 +23,17 @@
 using std::auto_ptr;
 
 
+namespace {
+
+// color "none" (reset to default) needs special treatment
+bool normalcolor(MathArray const & ar)
+{
+	return (asString(ar) == "none");
+}
+
+} // namespace anon
+
+
 MathColorInset::MathColorInset(bool oldstyle)
 	: MathNestInset(2), oldstyle_(oldstyle)
 {}
@@ -75,13 +86,16 @@ void MathColorInset::draw(PainterInfo & pi, int x, int y) const
 void MathColorInset::validate(LaTeXFeatures & features) const
 {
 	MathNestInset::validate(features);
-	features.require("color");
+	if (!normalcolor(cell(0)))
+		features.require("color");
 }
 
 
 void MathColorInset::write(WriteStream & os) const
 {
-	if (oldstyle_)
+	if (normalcolor(cell(0)))
+		os << "{\\normalcolor " << cell(1) << '}';
+	else if (oldstyle_)
 		os << "{\\color" << '{' << cell(0) << '}' << cell(1) << '}';
 	else
 		os << "\\textcolor" << '{' << cell(0) << "}{" << cell(1) << '}';

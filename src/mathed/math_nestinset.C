@@ -784,6 +784,18 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		recordUndo(cur, Undo::ATOMIC);
 		interpret(cur, '\\');
 		break;
+		
+	case LFUN_SUBSCRIPT:
+		// interpret this as if a _ was typed
+		recordUndo(cur, Undo::ATOMIC);
+		interpret(cur, '_');
+		break;
+		
+	case LFUN_SUPERSCRIPT:
+		// interpret this as if a ^ was typed
+		recordUndo(cur, Undo::ATOMIC);
+		interpret(cur, '^');
+		break;
 
 // FIXME: We probably should swap parts of "math-insert" and "self-insert"
 // handling such that "self-insert" works on "arbitrary stuff" too, and

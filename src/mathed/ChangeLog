@@ -1,3 +1,8 @@
+2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* math_nestinset.C: reintroduce LFUN_{SUB|SUPER}SCRIPT.
+	* math_colorinset.C: fix handling of color "none".
+
 2004-12-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_parser.C (addRow, addCol): new, try to add a row or column to
