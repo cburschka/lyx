@@ -258,167 +258,169 @@ public:
 	}
 };
 
+void expandLastfiles(Menu & tomenu)
+{
+	int ii = 1;
+	LastFiles::const_iterator lfit = lastfiles->begin();
+	LastFiles::const_iterator end = lastfiles->end();
+
+	for (; lfit != end && ii < 10; ++lfit, ++ii) {
+		string const label = tostr(ii) + ". "
+			+ MakeDisplayPath((*lfit), 30)
+			+ '|' + tostr(ii);
+		int const action = lyxaction.
+			getPseudoAction(LFUN_FILE_OPEN,
+					(*lfit));
+		tomenu.add(MenuItem(MenuItem::Command,
+				    label, action));
+	}
+}
+
+void expandDocuments(Menu & tomenu)
+{
+	typedef vector<string> Strings;
+	Strings const names = bufferlist.getFileNames();
+
+	if (names.empty()) {
+		tomenu.add(MenuItem(MenuItem::Command, _("No Documents Open!"),
+				    LFUN_NOACTION));
+		return;
+	}
+	
+	int ii = 1;
+	Strings::const_iterator docit = names.begin();
+	Strings::const_iterator end = names.end();
+	for (; docit != end; ++docit, ++ii) {
+		int const action =
+			lyxaction.getPseudoAction(LFUN_SWITCHBUFFER, *docit);
+		string label = MakeDisplayPath(*docit, 30);
+		if (ii < 10)
+			label = tostr(ii) + ". " + label + '|' + tostr(ii);
+		tomenu.add(MenuItem(MenuItem::Command, label, action));
+	}
+}
+
+
+void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
+{
+	if (!buf && kind != MenuItem::ImportFormats) {
+		tomenu.add(MenuItem(MenuItem::Command,
+				    _("No Documents Open!"), LFUN_NOACTION));
+		return;
+	}				
+			
+	typedef vector<Format const *> Formats;
+	Formats formats;
+	kb_action action;
+	
+	switch (kind) {
+	case MenuItem::ImportFormats:
+		formats = Importer::GetImportableFormats();
+		action = LFUN_IMPORT;
+		break;
+	case MenuItem::ViewFormats:
+		formats = Exporter::GetExportableFormats(buf, true);
+		action = LFUN_PREVIEW;
+		break;
+	case MenuItem::UpdateFormats:
+		formats = Exporter::GetExportableFormats(buf, true);
+		action = LFUN_UPDATE;
+		break;
+	default:
+		formats = Exporter::GetExportableFormats(buf, false);
+		action = LFUN_EXPORT;
+	}
+	sort(formats.begin(), formats.end(), compare_format());
+
+	Formats::const_iterator fit = formats.begin();
+	Formats::const_iterator end = formats.end();
+	for (; fit != end ; ++fit) {
+		if ((*fit)->dummy())
+			continue;
+		string label = (*fit)->prettyname();
+		// we need to hide the default graphic export formats
+		// from the external menu, because we need them only
+		// for the internal lyx-view and external latex run
+		if (label == "EPS" || label == "XPM" || label == "PNG")
+			continue;
+
+		if (kind == MenuItem::ImportFormats)
+			if ((*fit)->name() == "text")
+				label = _("Ascii text as lines");
+			else if ((*fit)->name() == "textparagraph")
+				label = _("Ascii text as paragraphs");
+		if (!(*fit)->shortcut().empty())
+			label += "|" + (*fit)->shortcut();
+		int const action2 = lyxaction.
+			getPseudoAction(action,	(*fit)->name());
+		tomenu.add(MenuItem(MenuItem::Command, label, action2));
+	}
+}
+
+void expandFloatListInsert(Menu & tomenu)
+{
+	FloatList::const_iterator cit = floatList.begin();
+	FloatList::const_iterator end = floatList.end();
+	for (; cit != end; ++cit) {
+		int const action =  lyxaction
+			.getPseudoAction(LFUN_FLOAT_LIST, cit->second.type());
+		tomenu.add(MenuItem(MenuItem::Command,
+				    _(cit->second.listName()),
+				    action));
+	}
+}
+
+void expandFloatInsert(Menu & tomenu)
+{
+	FloatList::const_iterator cit = floatList.begin();
+	FloatList::const_iterator end = floatList.end();
+	for (; cit != end; ++cit) {
+		// normal float
+		int const action =
+			lyxaction.getPseudoAction(LFUN_INSET_FLOAT,
+						  cit->second.type());
+		string const label = _(cit->second.name());
+		tomenu.add(MenuItem(MenuItem::Command, label, action));
+		
+		// and the wide version
+		int const action2 =
+			lyxaction.getPseudoAction(LFUN_INSET_WIDE_FLOAT,
+						  cit->second.type());
+		string const label2 = label + _(" (wide)");
+		tomenu.add(MenuItem(MenuItem::Command, label2, action2));
+	}
+}
+
 } // namespace anon
 
 
-void Menu::expand(Menu & tomenu, Buffer * buf) const
+void Menu::expand(Menu & tomenu, Buffer const * buf) const
 {
 	for (const_iterator cit = begin();
 	     cit != end() ; ++cit) {
 		switch (cit->kind()) {
-		case MenuItem::Lastfiles: {
-			int ii = 1;
-			LastFiles::const_iterator lfit = lastfiles->begin();
-			LastFiles::const_iterator end = lastfiles->end();
+		case MenuItem::Lastfiles: 
+			expandLastfiles(tomenu);
+			break;
 
-			for (; lfit != end && ii < 10; ++lfit, ++ii) {
-				string const label = tostr(ii) + ". "
-					+ MakeDisplayPath((*lfit), 30)
-					+ '|' + tostr(ii);
-				int const action = lyxaction.
-					getPseudoAction(LFUN_FILE_OPEN,
-							(*lfit));
-				tomenu.add(MenuItem(MenuItem::Command,
-						    label, action));
-			}
-		}
-		break;
-
-		case MenuItem::Documents: {
-			typedef vector<string> Strings;
-
-			Strings const names = bufferlist.getFileNames();
-
-			if (names.empty()) {
-				tomenu.add(MenuItem(MenuItem::Command,
-						    _("No Documents Open!"),
-						    LFUN_NOACTION));
-				break;
-			}
-
-			int ii = 1;
-			Strings::const_iterator docit = names.begin();
-			Strings::const_iterator end = names.end();
-			for (; docit != end; ++docit, ++ii) {
-				int const action = lyxaction
-					.getPseudoAction(LFUN_SWITCHBUFFER,
-							 *docit);
-				string label = MakeDisplayPath(*docit, 30);
-				if (ii < 10)
-					label = tostr(ii) + ". "
-						+ label + '|' + tostr(ii);
-				tomenu.add(MenuItem(MenuItem::Command,
-						    label, action));
-			}
-		}
-		break;
+		case MenuItem::Documents:
+			expandDocuments(tomenu);
+			break;
 
 		case MenuItem::ImportFormats:
 		case MenuItem::ViewFormats:
 		case MenuItem::UpdateFormats:
-		case MenuItem::ExportFormats: {
-
-			if (!buf && cit->kind() != MenuItem::ImportFormats) {
-				tomenu.add(MenuItem(MenuItem::Command,
-						    _("No Documents Open!"),
-						    LFUN_NOACTION));
-				continue;
-			}				
-			
-			typedef vector<Format const *> Formats;
-
-			Formats formats;
-
-			kb_action action;
-			switch (cit->kind()) {
-			case MenuItem::ImportFormats:
-				formats = Importer::GetImportableFormats();
-				action = LFUN_IMPORT;
-				break;
-			case MenuItem::ViewFormats:
-				formats = Exporter::GetExportableFormats(buf, true);
-				action = LFUN_PREVIEW;
-				break;
-			case MenuItem::UpdateFormats:
-				formats = Exporter::GetExportableFormats(buf, true);
-				action = LFUN_UPDATE;
-				break;
-			default:
-				formats = Exporter::GetExportableFormats(buf, false);
-				action = LFUN_EXPORT;
-			}
-			sort(formats.begin(), formats.end(), compare_format());
-
-			Formats::const_iterator fit = formats.begin();
-			Formats::const_iterator end = formats.end();
-
-			for (; fit != end ; ++fit) {
-				if ((*fit)->dummy())
-					continue;
-				string label = (*fit)->prettyname();
-				// we need to hide the default graphic export
-				// formats from the external menu, because we
-				// need them only for the internal lyx-view and
-				// external latex run
-				if (label == "EPS" ||
-				    label == "XPM" ||
-				    label == "PNG")
-					continue;
-
-				if (cit->kind() == MenuItem::ImportFormats)
-					if ((*fit)->name() == "text")
-						label = _("Ascii text as lines");
-					else if ((*fit)->name() == "textparagraph")
-						label = _("Ascii text as paragraphs");
-				if (!(*fit)->shortcut().empty())
-					label += "|" + (*fit)->shortcut();
-				int const action2 = lyxaction.
-					getPseudoAction(action,
-							(*fit)->name());
-				tomenu.add(MenuItem(MenuItem::Command,
-						    label, action2));
-			}
-		}
-		break;
+		case MenuItem::ExportFormats:
+			expandFormats(cit->kind(), tomenu, buf);
+			break;
 
 		case MenuItem::FloatListInsert:
-		{
-			FloatList::const_iterator cit = floatList.begin();
-			FloatList::const_iterator end = floatList.end();
-			for (; cit != end; ++cit) {
-				int const action =  lyxaction
-					.getPseudoAction(LFUN_FLOAT_LIST,
-							 cit->second.type());
-				tomenu.add(MenuItem(MenuItem::Command,
-						    _(cit->second.listName()),
-						    action));
-			}
-		}
-		break;
+			expandFloatListInsert(tomenu);
+			break;
 
 		case MenuItem::FloatInsert:
-		{
-			FloatList::const_iterator cit = floatList.begin();
-			FloatList::const_iterator end = floatList.end();
-			for (; cit != end; ++cit) {
-				// normal float
-				int const action = lyxaction
-					.getPseudoAction(LFUN_INSET_FLOAT,
-							 cit->second.type());
-				string const label = _(cit->second.name());
-				tomenu.add(MenuItem(MenuItem::Command,
-						    label, action));
-
-				// and the wide version
-				int const action2 = lyxaction
-					.getPseudoAction(LFUN_INSET_WIDE_FLOAT,
-							 cit->second.type());
-				string const label2 = label + _(" (wide)");
-				tomenu.add(MenuItem(MenuItem::Command,
-						    label2, action2));
-			}
-		}
-		break;
+			expandFloatInsert(tomenu);
+			break;
 
 		default:
 			tomenu.add(*cit);

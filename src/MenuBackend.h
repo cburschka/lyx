@@ -121,7 +121,7 @@ public:
 	    sequence of Command MenuItems: Lastfiles, Documents,
 	    ViewFormats, ExportFormats, UpdateFormats
 	*/
-	void expand(Menu & tomenu, Buffer *) const;
+	void expand(Menu & tomenu, Buffer const *) const;
 	///
 	string const & name() const { return name_; }
 	///
