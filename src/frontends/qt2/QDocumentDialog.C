@@ -255,12 +255,19 @@ QDocumentDialog::QDocumentDialog( QDocument * form)
 		 this , SLOT( change_adaptor() ) );
 	connect( bulletsModule->bulletsize1CO, SIGNAL( activated(int) ),
 		 this , SLOT( change_adaptor() ) );
-/*
-	connect( bulletsModule->levelSP, SIGNAL( valueChanged(int) ),
-		 this , SLOT( setBullet(int) ) );
-	connect( bulletsModule->levelSP, SIGNAL( valueChanged(int) ),
-		 this , SLOT( setBulletSize(int) ) );
-*/
+	connect( bulletsModule->bullet2LE, SIGNAL( textChanged(const QString&) ),
+		 this , SLOT( change_adaptor() ) );
+	connect( bulletsModule->bulletsize2CO, SIGNAL( activated(int) ),
+		 this , SLOT( change_adaptor() ) );
+	connect( bulletsModule->bullet3LE, SIGNAL( textChanged(const QString&) ),
+		 this , SLOT( change_adaptor() ) );
+	connect( bulletsModule->bulletsize3CO, SIGNAL( activated(int) ),
+		 this , SLOT( change_adaptor() ) );
+	connect( bulletsModule->bullet4LE, SIGNAL( textChanged(const QString&) ),
+		 this , SLOT( change_adaptor() ) );
+	connect( bulletsModule->bulletsize4CO, SIGNAL( activated(int) ),
+		 this , SLOT( change_adaptor() ) );
+
 }
 
 

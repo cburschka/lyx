@@ -269,7 +269,6 @@ void QBrowseBox::resizeEvent(QResizeEvent * e)
 
 void QBrowseBox::contentsMouseMoveEvent(QMouseEvent * e)
 {
-	qWarning("mouseMoveEvent");
 	int x = e->pos().x();
 	int y = e->pos().y();
 	
