@@ -38,7 +38,7 @@ void GUIRunTime::runTime()
 	XEvent ev;
 	while (!finished) {
 		if (fl_check_forms() == FL_EVENT) {
-			lyxerr << "LyX: This shouldn't appen..." << endl;
+			lyxerr << "LyX: This shouldn't happen..." << endl;
 			fl_XNextEvent(&ev);
 		}
 	}

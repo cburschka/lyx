@@ -1,3 +1,13 @@
+2000-09-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/Liason.C: add "using: declaration.
+
+2000-08-31  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/mathed/math_macro.C (Metrics): Set the size of the template
+
+	* src/mathed/formulamacro.C (Latex): Fixed the returned value
+
 2000-09-04  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/converter.C (add_options): New function.

@@ -29,6 +29,8 @@
 #include "minibuffer.h"
 #include "support/syscall.h"
 
+using std::endl;
+
 extern LyXRC lyxrc;
 #ifndef NEW_EXPORT
 extern bool RunScript(Buffer * buffer, bool wait, string const & command,
