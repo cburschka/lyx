@@ -1247,6 +1247,7 @@ string const MakeDisplayPath(string const & path, unsigned int threshold)
 
 bool LyXReadLink(string const & file, string & link, bool resolve)
 {
+#ifdef HAVE_READLINK
 	char linkbuffer[512];
 	// Should be PATH_MAX but that needs autconf support
 	int const nRead = ::readlink(file.c_str(),
@@ -1259,6 +1260,9 @@ bool LyXReadLink(string const & file, string & link, bool resolve)
 	else
 		link = linkbuffer;
 	return true;
+#else
+	return false;
+#endif
 }
 
 

@@ -10,12 +10,14 @@
 
 #include <config.h>
 
-//#include <sys/types.h>
-//#include <sys/stat.h>
-
-#include <cerrno>
 #include "FileInfo.h"
 #include "LAssert.h"
+#include "lstrings.h"
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+#include <cerrno>
 
 #if !S_IRUSR
 # if S_IREAD
@@ -138,7 +140,6 @@ char typeLetter(mode_t i)
 	return '?';
 }
 
-
 } // namespace anon
 
 
@@ -149,7 +150,9 @@ FileInfo::FileInfo()
 
 
 FileInfo::FileInfo(string const & path, bool link)
-	: fname_(path)
+	// Win32 stat() doesn't dig trailing slashes.
+	// Posix stat() doesn't care, but we'll remove it anyway.
+	: fname_(rtrim(path, "/"))
 {
 	init();
 	dostat(link);
@@ -174,10 +177,15 @@ void FileInfo::init()
 
 void FileInfo::dostat(bool link)
 {
+#ifdef HAVE_LSTAT
 	if (link)
 		status_ = ::lstat(fname_.c_str(), &buf_);
 	else
 		status_ = ::stat(fname_.c_str(), &buf_);
+#else
+	status_ = ::stat(fname_.c_str(), &buf_);
+#endif
+
 	if (status_)
 		err_ = errno;
 }
@@ -185,7 +193,9 @@ void FileInfo::dostat(bool link)
 
 FileInfo & FileInfo::newFile(string const & path, bool link)
 {
-	fname_  = path;
+	// Win32 stat() doesn't dig trailing slashes.
+	// Posix stat() doesn't care, but we'll remove it anyway.
+	fname_  = rtrim(path, "/");
 	status_ = 0;
 	err_    = NoErr;
 	dostat(link);
@@ -308,7 +318,11 @@ bool FileInfo::isOK() const
 bool FileInfo::isLink() const
 {
 	lyx::Assert(isOK());
+#ifdef S_ISLNK
 	return S_ISLNK(buf_.st_mode);
+#else
+	return false;
+#endif
 }
 
 
