@@ -75,7 +75,10 @@ namespace {
 #include "support/LAssert.h"
 
 #define USE_ORIGINAL_MANAGER_FUNCS 1
+// new aspell pspell missing extern "C"
+extern "C" {
 # include <pspell/pspell.h>
+}
 
 #include "sp_pspell.h"
 
@@ -107,7 +110,7 @@ PSpell::~PSpell()
 void PSpell::initialize(BufferParams const &, string const & lang)
 {
 	PspellConfig * config = new_pspell_config();
-	config->replace("language-tag", lang.c_str());
+	pspell_config_replace(config, "language-tag", lang.c_str());
 	spell_error_object = new_pspell_manager(config);
 	if (pspell_error_number(spell_error_object) != 0) {
 		error_ = pspell_error_message(spell_error_object);
