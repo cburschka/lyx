@@ -1,5 +1,7 @@
 2001-07-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* screen.[Ch]: change method names to begin with lowercase 
+
 	* BufferView_pimpl.C (updateScrollbar): simplify further and
 	hopefully make it a bit faster.
 

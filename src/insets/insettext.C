@@ -364,21 +364,21 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		}
 	} else if (!locked) {
 		if (need_update & CURSOR) {
-			bv->screen()->ToggleSelection(getLyXText(bv), bv, true, y_offset,int(x));
+			bv->screen()->toggleSelection(getLyXText(bv), bv, true, y_offset,int(x));
 			getLyXText(bv)->clearSelection(bv);
 			getLyXText(bv)->selection.cursor = getLyXText(bv)->cursor;
 		}
-		bv->screen()->Update(getLyXText(bv), bv, y_offset, int(x));
+		bv->screen()->update(getLyXText(bv), bv, y_offset, int(x));
 	} else {
 		locked = false;
 		if (need_update & SELECTION)
-			bv->screen()->ToggleToggle(getLyXText(bv), bv, y_offset, int(x));
+			bv->screen()->toggleToggle(getLyXText(bv), bv, y_offset, int(x));
 		else if (need_update & CURSOR) {
-			bv->screen()->ToggleSelection(getLyXText(bv), bv, true, y_offset,int(x));
+			bv->screen()->toggleSelection(getLyXText(bv), bv, true, y_offset,int(x));
 			getLyXText(bv)->clearSelection(bv);
 			getLyXText(bv)->selection.cursor = getLyXText(bv)->cursor;
 		}
-		bv->screen()->Update(getLyXText(bv), bv, y_offset, int(x));
+		bv->screen()->update(getLyXText(bv), bv, y_offset, int(x));
 		locked = true;
 	}
 
@@ -1740,7 +1740,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	}
 	if (bv->screen()) {
 			LyXText * t = getLyXText(bv);
-			t->first = bv->screen()->TopCursorVisible(t);
+			t->first = bv->screen()->topCursorVisible(t);
 	}
 	
 	// this will scroll the screen such that the cursor becomes visible 
