@@ -485,8 +485,8 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
     UpdatableInset::Edit(bv, x, y, button);
 
     if (!bv->lockInset(this)) {
-	lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
-	return;
+		lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
+		return;
     }
     locked = true;
     the_locking_inset = 0;
@@ -495,8 +495,8 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
     inset_par = 0;
     old_par = 0;
     if (!checkAndActivateInset(bv, x, y, button))
-	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
-					   y+insetAscent);
+		TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
+	                                       y+insetAscent);
     TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
     bv->text->FinishUndo();
     ShowInsetCursor(bv);
@@ -505,9 +505,9 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
     // If the inset is empty set the language of the current font to the
     // language to the surronding text.
     if (par->Last() == 0 && !par->next) {
-	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setLanguage(bv->getParentLanguage(this));
-	SetFont(bv, font, false);
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setLanguage(bv->getParentLanguage(this));
+		SetFont(bv, font, false);
     }
 }
 
@@ -1364,8 +1364,12 @@ UpdatableInset * InsetText::GetFirstLockingInsetOfType(Inset::Code c)
 
 void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
 {
+	if ((!par->next && !par->size()) || !cpar(bv)->size()) {
+		TEXT(bv)->SetFont(bv, font, toggleall);
+		return;
+	}
     if (TEXT(bv)->selection) {
-	bv->text->SetUndo(bv->buffer(), Undo::EDIT,
+		bv->text->SetUndo(bv->buffer(), Undo::EDIT,
 #ifndef NEW_INSETS
 	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
 	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
@@ -1373,7 +1377,7 @@ void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
 	      bv->text->cursor.par()->previous,
 	      bv->text->cursor.par()->next
 #endif
-	);
+		);
     }
     TEXT(bv)->SetFont(bv, font, toggleall);
     bv->fitCursor(TEXT(bv));

@@ -1,3 +1,9 @@
+2001-10-19  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (SetFont): fixed problem of marking
+	document "changed" when only changing the font of an empty
+	paragraph.
+
 2001-10-17  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* development/lyx.spec.in: overhaul
