@@ -31,19 +31,24 @@ using std::ostringstream;
 #include "delim1.xpm"
 
 
-static int const delim_rversion[] = {
-1,1,3,3,4,5,7,7,9,9,10,11,
+namespace {
 
+int const delim_rversion[] = {
+	1,1,3,3,4,5,7,7,9,9,10,11,
+	3,13,15,15,16,17,19,19,20,21,22
 };
+int const delim_size = 
+	sizeof(delim_rversion) / sizeof(delim_rversion[0]);
 
-
-static char const * delim_values[] = {
+char const * delim_values[] = {
 	"(", ")", "lceil",  "rceil",  "uparrow",  "Uparrow",
 	"[", "]", "lfloor", "rfloor", "updownarrow", "Updownarrow",
 	"{", "}",  "/", "backslash",  "downarrow",  "Downarrow",
 	"langle",  "rangle", "|", "Vert", ".", 0
 };
 
+
+} // namespace anon
 
 
 typedef FormController<ControlMath, FormView<FD_maths_delim> > base_class;
@@ -116,7 +121,7 @@ ButtonPolicy::SMInput FormMathsDelim::input(FL_OBJECT *, long)
 			if (both) {
 				right = delim_rversion[i];
 				// Add left delimiter in "both" case if right one was pressed:
-				for (int j = 0; j <= 23; ++j) {
+				for (int j = 0; j < delim_size; ++j) {
 					if (delim_rversion[j] == left) {
 						right = left;
 						left = j;
