@@ -222,8 +222,10 @@ class MathedXIter: public MathedIter {
     ///
     bool setLabel(string const & label);
     ///
+    static string error_label;
+    ///
     string const & getLabel() const {
-	    return crow->getLabel();
+	    return crow ? crow->getLabel() : error_label;
     }
     ///
     bool setNumbered(bool);
