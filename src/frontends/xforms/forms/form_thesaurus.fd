@@ -52,7 +52,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 180 410 100 30
+box: 355 410 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -70,14 +70,14 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 60 10 315 25
+box: 70 10 315 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Entry:
+label: Keyword
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_NorthWest
@@ -88,14 +88,14 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 75 375 260 30
+box: 90 375 260 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Selection:
+label: Selection|#S
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_NorthWest
@@ -106,14 +106,14 @@ argument: 0
 --------------------
 class: FL_BROWSER
 type: SELECT_BROWSER
-box: 15 50 440 305
+box: 15 60 440 305
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_BOTTOM
+alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Meanings|#M
+label: Thesaurus entries
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
