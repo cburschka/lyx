@@ -22,9 +22,7 @@
 #include "FormBaseDeprecated.h"
 
 class Paragraph;
-struct FD_form_tabbed_paragraph;
-struct FD_form_paragraph_general;
-struct FD_form_paragraph_extra;
+struct FD_form_paragraph;
 
 /** This class provides an XForms implementation of the FormParagraph dialog.
  *           @author Jürgen Vigna
@@ -58,23 +56,15 @@ private:
 	///
 	virtual FL_FORM * form() const;
 	
-	///
-	void general_update();
-	///
-	void general_apply();
+	/// Fdesign generated method
+	FD_form_paragraph * build_paragraph();
 
-	/// Fdesign generated methods
-	FD_form_tabbed_paragraph * build_tabbed_paragraph();
-	///
-	FD_form_paragraph_general * build_paragraph_general();
-	///
-	FD_form_paragraph_extra * build_paragraph_extra();
 	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_tabbed_paragraph> dialog_;
-	///
-	boost::scoped_ptr<FD_form_paragraph_general> general_;
+	boost::scoped_ptr<FD_form_paragraph> dialog_;
+
 	/// The ButtonController
 	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
+
 	/// Changed Paragraph connection.
 	SigC::Connection cp_;
 

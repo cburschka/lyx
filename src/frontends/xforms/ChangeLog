@@ -1,5 +1,11 @@
 2001-08-29  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FormParagraph.[Ch]:
+	* forms/form_paragraph.fd: clean up of dialog and of controlling
+	code.
+
+2001-08-29  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* FormBase.C (C_CutandPastePH): new function that can be used as a
 	pre-handler to any xforms text input widget. Will trigger an event on
 	pasting into the widget using the middle mouse button.
