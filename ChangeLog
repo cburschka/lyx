@@ -1,5 +1,9 @@
 2000-01-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/lastfiles.C: move using directives in global scope (egcs 1.x
+	complains otherwise).
+	* src/table.C: ditto
+
 	* lib/reLyX/reLyX.in: use variable @LYX_DIR@ as built-in data
 	directory. 
 

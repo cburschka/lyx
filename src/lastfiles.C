@@ -18,6 +18,8 @@
 #include <fstream>
 using std::ifstream;
 using std::ofstream;
+using std::copy;
+using std::ostream_iterator;
 
 #include <algorithm>
 using std::find;
@@ -82,8 +84,6 @@ void LastFiles::writeFile(string const & filename) const
 		// algorithms. I'll leave this in, and if I get reports
 		// about compilations errors I take it out again before
 		// 1.1.4. (Lgb)
-		using std::copy;
-		using std::ostream_iterator;
 		copy(files.begin(), files.end(),
 		     ostream_iterator<string>(ofs, "\n"));
 #endif
