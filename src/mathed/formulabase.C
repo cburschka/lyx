@@ -418,7 +418,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	//	<< "' button: " << cmd.button() << endl;
 
 	// delete empty mathbox (LFUN_BACKSPACE and LFUN_DELETE)
-	bool remove_inset; 
+	bool remove_inset = false;
 
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
