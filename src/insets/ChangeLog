@@ -1,3 +1,7 @@
+2002-01-09  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetfloat.C (validate): require "float" instead of "floats".
+
 2002-01-08  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insettabular.C (getStatus): use FuncStatus

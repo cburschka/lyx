@@ -2157,7 +2157,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 
 	if (!ob || ob == dialog_->input_default_path) {
 		string const name = fl_get_input(dialog_->input_default_path);
-		if (!RWInfo::WriteableDir(name)) {
+		if (!name.empty() && !RWInfo::WriteableDir(name)) {
 			parent_.printWarning(RWInfo::ErrorMessage());
 			return false;
 		}
@@ -2165,7 +2165,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 
 	if (!ob || ob == dialog_->input_template_path) {
 		string const name = fl_get_input(dialog_->input_template_path);
-		if (!RWInfo::ReadableDir(name)) {
+		if (!name.empty() && !RWInfo::ReadableDir(name)) {
 			parent_.printWarning(RWInfo::ErrorMessage());
 			return false;
 		}

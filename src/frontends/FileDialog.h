@@ -44,24 +44,27 @@ public:
 
 	/**
 	 * Constructs a file dialog attached to LyXView \param lv, with
-	 * title \param title. If param \a is \const LFUN_SELECT_FILE_SYNC
+	 * title \param title. If \param a is \const LFUN_SELECT_FILE_SYNC
 	 * then a value will be returned immediately upon performing a Select(),
 	 * otherwise a callback Dispatch() will be invoked with the filename as
 	 * argument, of action \param a.
 	 *
-	 * Up to two optional extra buttons are allowed for specifying addtional
-	 * directories in the navigation.
+	 * Up to two optional extra buttons are allowed for specifying
+	 * additional directories in the navigation (an empty
+	 * directory is interpreted as getcwd())
 	 */
-	FileDialog(LyXView * lv, string const & title, kb_action a = LFUN_SELECT_FILE_SYNC,
-		Button b1 = Button(string(), string()),
-		Button b2 = Button(string(), string()));
+	FileDialog(LyXView * lv, string const & title,
+		   kb_action a = LFUN_SELECT_FILE_SYNC,
+		   Button b1 = Button(string(), string()),
+		   Button b2 = Button(string(), string()));
 			
 
 	~FileDialog();
 
 	/**
-	 * Choose a file for selection, starting in directory \param path, with the file
-	 * selection \param mask. The \param mask string is of the form :
+	 * Choose a file for selection, starting in directory \param
+	 * path, with the file selection \param mask. The \param mask
+	 * string is of the form : 
 	 *
 	 * <regular expression to match> | <description>
 	 *

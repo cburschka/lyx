@@ -2322,12 +2322,6 @@ void Buffer::makeLaTeXFile(string const & fname,
 			texrow.newline();
 		}
 
-		if (features.isRequired("amsstyle")
-			    && !tclass.provides(LyXTextClass::amsmath)) {
-			ofs << "\\usepackage{amsmath}\n";
-			texrow.newline();
-		}
-		
 		if (tokenPos(tclass.opt_pagestyle(),
 			     '|', params.pagestyle) >= 0) {
 			if (params.pagestyle == "fancy") {
@@ -3491,7 +3485,7 @@ void Buffer::validate(LaTeXFeatures & features) const
     
         // AMS Style is at document level
         if (params.use_amsmath || tclass.provides(LyXTextClass::amsmath))
-		features.require("amsstyle");
+		features.require("amsmath");
     
 	while (par) {
 		// We don't use "lyxerr.debug" because of speed. (Asger)

@@ -41,6 +41,9 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, layout_type n)
 
 void LaTeXFeatures::require(string const & name)
 {
+	if (isRequired(name))
+		return;
+	
 	// INSET_GRAPHICS: remove this when InsetFig is thrown.
 	if (name == "graphics") {
 		features.push_back("graphicx");
@@ -74,6 +77,13 @@ void LaTeXFeatures::addExternalPreamble(string const & pream)
 void LaTeXFeatures::useFloat(string const & name)
 {
 	usedFloats.insert(name);
+	// We only need float.sty if we use non builtin floats, or if we
+	// use the "H" modifier. This includes modified table and
+	// figure floats. (Lgb)
+	Floating const & fl = floatList.getType(name);
+	if (!fl.type().empty() && !fl.builtin()) {
+		require("float");
+	}
 }
 
 
@@ -120,6 +130,25 @@ set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding)
 	return encodings;
 }
 
+namespace {
+	
+char const * simplefeatures[] = {
+	"array",
+	"verbatim",
+	"longtable",
+	"rotating",
+	"latexsym",
+	"pifont",
+	"subfigure",
+	"floatflt",
+	"varioref",
+	"prettyref",
+	"float"
+};
+
+const int nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
+
+}
 
 string const LaTeXFeatures::getPackages() const
 {
@@ -132,54 +161,23 @@ string const LaTeXFeatures::getPackages() const
 	 *  These are all the 'simple' includes.  i.e
 	 *  packages which we just \usepackage{package}
 	 **/
-
-	// array-package
-	if (isRequired("array"))
-		packages << "\\usepackage{array}\n";
-
-	// verbatim.sty
-	if (isRequired("verbatim"))
-		packages << "\\usepackage{verbatim}\n";
-
-	//longtable.sty
-	if (isRequired("longtable"))
-		packages << "\\usepackage{longtable}\n";
-
-	//rotating.sty
-	if (isRequired("rotating"))
-		packages << "\\usepackage{rotating}\n";
-
-
-	// latexsym.sty
-	if (isRequired("latexsym"))
-		packages << "\\usepackage{latexsym}\n";
-
-	// pifont.sty
-	if (isRequired("pifont"))
-		packages << "\\usepackage{pifont}\n";
-
-	// subfigure.sty
-	if (isRequired("subfigure"))
-		packages << "\\usepackage{subfigure}\n";
-
-	// floatflt.sty
-	if (isRequired("floatflt"))
-		packages << "\\usepackage{floatflt}\n";
-
-
-	// varioref.sty
-	if (isRequired("varioref"))
-		packages << "\\usepackage{varioref}\n";
-
-	// prettyref.sty
-	if (isRequired("prettyref"))
-		packages << "\\usepackage{prettyref}\n";
-
+	for (int i = 0 ; i < nb_simplefeatures ; ++i) {
+		if (isRequired(simplefeatures[i]))
+			packages << "\\usepackage{"
+				 << simplefeatures[i]
+				 << "}\n";
+	}
+	
 	/**
 	 * The rest of these packages are somewhat more complicated
 	 * than those above.
 	 **/
 
+	if (isRequired("amsmath")
+	    && ! tclass.provides(LyXTextClass::amsmath)) {
+		packages << "\\usepackage{amsmath}\n";
+	}
+		
 	// color.sty
 	if (isRequired("color")) {
 		if (params.graphicsDriver == "default")
@@ -260,24 +258,6 @@ string const LaTeXFeatures::getPackages() const
 			    "                      {\\newcommand{\\url}{\\texttt}}\n";
 
 	// float.sty
-	// We only need float.sty if we use non builtin floats, or if we
-	// use the "H" modifier. This includes modified table and
-	// figure floats. (Lgb)
-	if (!usedFloats.empty()) {
-		UsedFloats::const_iterator beg = usedFloats.begin();
-		UsedFloats::const_iterator end = usedFloats.end();
-		for (; beg != end; ++beg) {
-			Floating const & fl = floatList.getType((*beg));
-			if (!fl.type().empty() && !fl.builtin()) {
-				const_cast<LaTeXFeatures *>(this)->require("floats");
-				break;
-			}
-		}
-	}
-	if (isRequired("floats")) {
-		packages << "\\usepackage{float}\n";
-	}
-	
 	// natbib.sty
 	if (isRequired("natbib")) {
 		packages << "\\usepackage[";
@@ -327,9 +307,9 @@ string const LaTeXFeatures::getMacros() const
 		macros << guillemotright_def << '\n';
     
         // Math mode    
-	if (isRequired("boldsymbol") && !isRequired("amsstyle"))
+	if (isRequired("boldsymbol") && !isRequired("amsmath"))
 		macros << boldsymbol_def << '\n';
-	if (isRequired("binom") && !isRequired("amsstyle"))
+	if (isRequired("binom") && !isRequired("amsmath"))
 		macros << binom_def << '\n';
 
 	// other
@@ -467,7 +447,7 @@ void LaTeXFeatures::getFloatDefinitions(std::ostream & os) const
 			   << name << "}\n";
 			
 			// What missing here is to code to minimalize the code
-			// outputted so that the same floatstyle will not be
+			// output so that the same floatstyle will not be
 			// used several times, when the same style is still in
 			// effect. (Lgb)
 		}

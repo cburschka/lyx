@@ -1,3 +1,26 @@
+2002-01-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxrc.C (getDescription): document that document_path and
+	template_path can be empty.
+
+2002-01-09  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* LaTeXFeatures.C (getMacros): 
+	* buffer.C (validate): rename feature "amsstyle" to "amsmath"
+	
+	* buffer.C (makeLaTeXFile): remove test for "amsstyle" from here.
+
+	* LaTeXFeatures.C (useFloat): require "float" here instead of in
+	getPackages. 
+	(getPackages): rename feature "floats" to "float". Use an array to
+	iterate over 'simple' features (i.e. just a \usepackage). Add
+	handling of "amsmath" (renamed from "amsstyle").
+
+2001-12-29  Michael A. Koziarski  <michael@koziarski.org>
+
+	* LaTeXFeatures.C (require): Prevent duplicate entries in the
+	features list.
+
 2002-01-08  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FuncStatus.C: small compile fix for DEC cxx. Doesn't like

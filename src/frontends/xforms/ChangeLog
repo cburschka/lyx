@@ -1,3 +1,14 @@
+2002-01-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* FormPreferences.C (input): allow empty values for document_path
+	and template_path.
+
+	* FormFiledialog.C (SetButton):
+	(FileDlgCB): do not disable directory buttons if they have an
+	empty path.
+	(SetDirectory): if the argument is an empty string, change to
+	cwd().
+
 2002-01-09  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* forms/form_maths_style.fd:

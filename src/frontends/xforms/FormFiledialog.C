@@ -375,15 +375,13 @@ void FileDialog::Private::Reread()
 // SetDirectory: sets dialog current directory
 void FileDialog::Private::SetDirectory(string const & Path)
 {
+	
 	string tmp;
- 
-	if (!pszDirectory.empty()) {
-		string TempPath = ExpandPath(Path); // Expand ~/
-		TempPath = MakeAbsPath(TempPath, pszDirectory);
-		tmp = MakeAbsPath(TempPath);
-	} else {
-		tmp = MakeAbsPath(Path);
-	}
+
+	if (Path.empty()) 
+		tmp = lyx::getcwd();
+	else
+		tmp = MakeAbsPath(ExpandPath(Path), pszDirectory);
  
 	// must check the directory exists
 	DIR * pDirectory = ::opendir(tmp.c_str());
@@ -481,7 +479,7 @@ void FileDialog::Private::SetButton(int iIndex, string const & pszName,
 		pTemp = &pszUserPath2;
 	} else return;
 
-	if (!pszName.empty() && !pszPath.empty()) {
+	if (!pszName.empty()) {
 		fl_set_object_label(pObject, pszName.c_str());
 		fl_show_object(pObject);
 		*pTemp = pszPath;
@@ -558,21 +556,17 @@ void FileDialog::Private::FileDlgCB(FL_OBJECT *, long lArgument)
 		break;
 
 	case 12: // user button 1
-		if (!pCurrentDlg->pszUserPath1.empty()) {
-			pCurrentDlg->SetDirectory(pCurrentDlg->pszUserPath1);
-			pCurrentDlg->SetMask(fl_get_input(pFileDlgForm
-							  ->PatBox));
-			pCurrentDlg->Reread();
-		}
+		pCurrentDlg->SetDirectory(pCurrentDlg->pszUserPath1);
+		pCurrentDlg->SetMask(fl_get_input(pFileDlgForm
+						  ->PatBox));
+		pCurrentDlg->Reread();
 		break;
 
 	case 13: // user button 2
-		if (!pCurrentDlg->pszUserPath2.empty()) {
-			pCurrentDlg->SetDirectory(pCurrentDlg->pszUserPath2);
-			pCurrentDlg->SetMask(fl_get_input(pFileDlgForm
-							  ->PatBox));
-			pCurrentDlg->Reread();
-		}
+		pCurrentDlg->SetDirectory(pCurrentDlg->pszUserPath2);
+		pCurrentDlg->SetMask(fl_get_input(pFileDlgForm
+						  ->PatBox));
+		pCurrentDlg->Reread();
 		break;
 
 	}
@@ -716,8 +710,10 @@ void FileDialog::Private::Force(bool cancel)
 
 
 // Select: launches dialog and returns selected file
-string const FileDialog::Private::Select(string const & title, string const & path,
-				string const & mask, string const & suggested)
+string const FileDialog::Private::Select(string const & title,
+					 string const & path,
+					 string const & mask,
+					 string const & suggested)
 {
 	// handles new mask and path
 	bool isOk = true;

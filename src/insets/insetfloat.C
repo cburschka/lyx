@@ -185,7 +185,7 @@ void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 void InsetFloat::validate(LaTeXFeatures & features) const
 {
 	if (contains(placement(), "H")) {
-		features.require("floats");
+		features.require("float");
 	}
 	
 	features.useFloat(floatType_);
