@@ -85,7 +85,7 @@ string QLyXKeySym::getSymbolName() const
 
 char QLyXKeySym::getISOEncoded() const
 {
-	char const c = fromqstr(text_)[0];
+	unsigned char const c = fromqstr(text_)[0];
 	lyxerr[Debug::KEY] << "ISOEncoded returning value " << int(c) << endl;
 	return c;
 }
