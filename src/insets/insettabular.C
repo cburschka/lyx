@@ -441,7 +441,6 @@ bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 
 	if (!the_locking_inset) {
 		int const n = tabular.getNumberOfCells();
-		int const id = inset->id();
 		for (int i = 0; i < n; ++i) {
 			InsetText * in = &tabular.getCellInset(i);
 			if (inset == in) {
@@ -451,11 +450,9 @@ bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 				resetPos(bv);
 				return true;
 			}
-			if (in->getInsetFromID(id)) {
-				actcell = i;
-				in->dispatch(FuncRequest(bv, LFUN_INSET_EDIT));
-				return the_locking_inset->lockInsetInInset(bv, inset);
-			}
+			actcell = i;
+			in->dispatch(FuncRequest(bv, LFUN_INSET_EDIT));
+			return the_locking_inset->lockInsetInInset(bv, inset);
 		}
 		return false;
 	}
@@ -2413,22 +2410,6 @@ LyXCursor const & InsetTabular::cursor(BufferView * bv) const
 	if (the_locking_inset)
 		return the_locking_inset->cursor(bv);
 	return InsetOld::cursor(bv);
-}
-
-
-InsetOld * InsetTabular::getInsetFromID(int id_arg) const
-{
-	if (id_arg == id())
-		return const_cast<InsetTabular *>(this);
-
-	for (int i = 0; i < tabular.rows(); ++i) {
-		for (int j = 0; j < tabular.columns(); ++j) {
-			InsetOld * inset = tabular.getCellInset(i, j).getInsetFromID(id_arg);
-			if (inset)
-				return inset;
-		}
-	}
-	return 0;
 }
 
 

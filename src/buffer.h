@@ -359,9 +359,6 @@ public:
 	///
 	ParConstIterator par_iterator_end() const;
 
-	///
-	InsetOld * getInsetFromID(int id_arg) const;
-
 	/** \returns true only when the file is fully loaded.
 	 *  Used to prevent the premature generation of previews
 	 *  and by the citation inset.

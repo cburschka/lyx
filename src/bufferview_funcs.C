@@ -372,9 +372,9 @@ string const currentState(BufferView * bv)
 	state << _(", Inset: ");
 	InsetOld * inset = pit->inInset();
 	if (inset)
-		state << inset << " id: " << inset->id()
-		      << " text: " << inset->getLyXText(bv, true)
-						<< " owner: " << inset->owner();
+		state << inset
+			<< " text: " << inset->getLyXText(bv, true)
+			<< " owner: " << inset->owner();
 	else
 		state << -1;
 #endif

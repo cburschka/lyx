@@ -490,14 +490,6 @@ LyXCursor const & InsetCollapsable::cursor(BufferView * bv) const
 }
 
 
-InsetOld * InsetCollapsable::getInsetFromID(int id_arg) const
-{
-	if (id_arg == id())
-		return const_cast<InsetCollapsable *>(this);
-	return inset.getInsetFromID(id_arg);
-}
-
-
 void InsetCollapsable::open(BufferView * bv)
 {
 	if (!collapsed_)

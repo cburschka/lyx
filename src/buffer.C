@@ -1418,21 +1418,6 @@ void Buffer::inset_iterator::setParagraph()
 }
 
 
-InsetOld * Buffer::getInsetFromID(int id_arg) const
-{
-	for (inset_iterator it = inset_const_iterator_begin();
-		 it != inset_const_iterator_end(); ++it)
-	{
-		if (it->id() == id_arg)
-			return &(*it);
-		InsetOld * in = it->getInsetFromID(id_arg);
-		if (in)
-			return in;
-	}
-	return 0;
-}
-
-
 ParIterator Buffer::getParFromID(int id) const
 {
 #warning FIXME: const correctness! (Andre)

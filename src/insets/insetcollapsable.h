@@ -115,8 +115,6 @@ public:
 	///
 	void scroll(BufferView *bv, int offset) const;
 	///
-	InsetOld * getInsetFromID(int id) const;
-	///
 	ParagraphList * getParagraphs(int) const;
 	///
 	int numParagraphs() const;

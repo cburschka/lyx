@@ -158,8 +158,6 @@ public:
 		UpdatableInset::scroll(bv, offset);
 	}
 	///
-	InsetOld * getInsetFromID(int id) const;
-	///
 	ParagraphList * getParagraphs(int) const;
 	///
 	int numParagraphs() const;

@@ -152,8 +152,6 @@ public:
 	///
 	void clearSelection(BufferView * bv);
 	///
-	InsetOld * getInsetFromID(int id) const;
-	///
 	ParagraphList * getParagraphs(int) const;
 	///
 	LyXText * getText(int) const;

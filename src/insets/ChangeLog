@@ -1,3 +1,11 @@
+
+2003-11-03  André Pönitz  <poenitz@gmx.net>
+
+	* inset.[Ch]:
+	* insetcollapsable.[Ch]:
+	* insettabular.[Ch]:
+	* insettext.[Ch]: remove Inset::id and related functions
+
 2003-11-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insets: adjust for DispatchResult changes.

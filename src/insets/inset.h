@@ -230,9 +230,6 @@ public:
 		return 0;
 	}
 
-	/// try to get a inset pointer from it's id if we have
-	/// an inset to give back!
-	virtual InsetOld * getInsetFromID(int /*id*/) const { return 0; }
 	/// if this insets owns paragraphs (f.ex. InsetText) then it
 	/// should return it's very first one!
 	virtual ParagraphList * getParagraphs(int /*num*/) const { return 0; }
@@ -244,10 +241,6 @@ public:
 	/// return the cursor if we own one otherwise giv'em just the
 	/// BufferView cursor to work with.
 	virtual LyXCursor const & cursor(BufferView * bview) const;
-	/// id functions
-	int id() const;
-	///
-	void id(int id_arg);
 	/// lock cell with given index
 	virtual void edit(BufferView *, int /*index*/) {}
 
@@ -314,8 +307,6 @@ protected:
 	mutable int scx;
 	/// Used to identify the inset for cursor positioning when undoing
 	unsigned int id_;
-	///
-	static unsigned int inset_id;
 	///
 	mutable Dimension dim_;
 

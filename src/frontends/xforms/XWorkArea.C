@@ -27,8 +27,7 @@ using std::string;
 
 namespace {
 
-inline
-void waitForX(bool discard)
+inline void waitForX(bool discard)
 {
 	XSync(fl_get_display(), discard);
 }
@@ -272,15 +271,18 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	XEvent * ev = static_cast<XEvent*>(xev);
 	XWorkArea * area = static_cast<XWorkArea*>(ob->u_vdata);
 
-	if (!area) return 1;
+	if (!area)
+		return 1;
 
 	switch (event) {
+
 	case FL_DRAW:
 		if (!area->work_area || !area->work_area->form->visible)
 			return 1;
 		lyxerr[Debug::WORKAREA] << "Workarea event: DRAW" << endl;
 		area->redraw(area->workWidth(), area->workHeight());
 		break;
+
 	case FL_PUSH:
 		if (!ev || ev->xbutton.button == 0) break;
 		// Should really have used xbutton.state
@@ -291,6 +293,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				    ev->xbutton.y - ob->y,
 				    x_button_state(key)));
 		break;
+
 	case FL_RELEASE:
 		if (!ev || ev->xbutton.button == 0) break;
 		// Should really have used xbutton.state
@@ -301,8 +304,8 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				    ev->xbutton.y - ob->y,
 				    x_button_state(key)));
 		break;
-	case FL_DRAG:
-	{
+
+	case FL_DRAG: {
 		if (!ev || !area->scrollbar)
 			break;
 
@@ -367,8 +370,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		break;
 	}
 
-	case FL_KEYPRESS:
-	{
+	case FL_KEYPRESS: {
 		lyxerr[Debug::WORKAREA] << "Workarea event: KEYPRESS" << endl;
 
 		KeySym keysym = 0;
@@ -456,8 +458,8 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 		area->workAreaKeyPress(LyXKeySymPtr(xlk),
 				       x_key_state(ret_state));
+		break;
 	}
-	break;
 
 	case FL_KEYRELEASE:
 		lyxerr[Debug::WORKAREA] << "Workarea event: KEYRELEASE" << endl;
@@ -467,11 +469,13 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		lyxerr[Debug::WORKAREA] << "Workarea event: ENTER" << endl;
 		fl_set_cursor(FL_ObjWin(area->work_area), XC_xterm);
 		break;
+
 	case FL_LEAVE:
 		lyxerr[Debug::WORKAREA] << "Workarea event: LEAVE" << endl;
 		// There should be no need for this. But there is.
 		fl_set_cursor(FL_ObjWin(area->work_area), FL_DEFAULT_CURSOR);
 		break;
+
 	case FL_DBLCLICK:
 		if (ev) {
 			lyxerr[Debug::WORKAREA] << "Workarea event: DBLCLICK" << endl;
@@ -482,6 +486,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			area->dispatch(cmd);
 		}
 		break;
+
 	case FL_TRPLCLICK:
 		if (ev) {
 			lyxerr[Debug::WORKAREA] << "Workarea event: TRPLCLICK" << endl;
@@ -492,6 +497,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			area->dispatch(cmd);
 		}
 		break;
+
 	case FL_OTHER:
 		if (ev)
 			lyxerr[Debug::WORKAREA] << "Workarea event: OTHER" << endl;

@@ -1,4 +1,10 @@
 
+2003-11-03  André Pönitz  <poenitz@gmx.net>
+
+	* buffer.C:
+	* buffer.h:
+	* bufferview_funcs.C: remove getInsetFromId()
+
 2003-11-03  Alfredo Braunstein  <abraunst@libero.it>
 
 	* PosIterator.C (distance, advance): new

@@ -1440,28 +1440,6 @@ LyXCursor const & InsetText::cursor(BufferView * bv) const
 }
 
 
-InsetOld * InsetText::getInsetFromID(int id_arg) const
-{
-	if (id_arg == id())
-		return const_cast<InsetText *>(this);
-
-	ParagraphList::const_iterator pit = paragraphs.begin();
-	ParagraphList::const_iterator pend = paragraphs.end();
-	for (; pit != pend; ++pit) {
-		InsetList::const_iterator it = pit->insetlist.begin();
-		InsetList::const_iterator end = pit->insetlist.end();
-		for (; it != end; ++it) {
-			if (it->inset->id() == id_arg)
-				return it->inset;
-			InsetOld * in = it->inset->getInsetFromID(id_arg);
-			if (in)
-				return in;
-		}
-	}
-	return 0;
-}
-
-
 WordLangTuple const
 InsetText::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 {

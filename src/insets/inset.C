@@ -24,21 +24,16 @@
 using std::string;
 
 
-// Initialization of the counter for the inset id's,
-unsigned int InsetOld::inset_id = 0;
-
 InsetOld::InsetOld()
 	: InsetBase(),
-	top_x(0), top_baseline(0), scx(0),
-	id_(inset_id++), owner_(0),
+	top_x(0), top_baseline(0), scx(0), owner_(0),
 	background_color_(LColor::inherit)
 {}
 
 
 InsetOld::InsetOld(InsetOld const & in)
 	: InsetBase(),
-	top_x(0), top_baseline(0), scx(0),
-	id_(in.id_), owner_(0),
+	top_x(0), top_baseline(0), scx(0), owner_(0),
 	name_(in.name_), background_color_(in.background_color_)
 {}
 
@@ -105,16 +100,6 @@ LColor_color InsetOld::backgroundColor() const
 		return LColor::color(background_color_);
 }
 
-
-int InsetOld::id() const
-{
-	return id_;
-}
-
-void InsetOld::id(int id_arg)
-{
-	id_ = id_arg;
-}
 
 void InsetOld::setFont(BufferView *, LyXFont const &, bool, bool)
 {}
