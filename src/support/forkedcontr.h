@@ -18,6 +18,7 @@
 #include <vector>
 #include "LString.h"
 #include <sigc++/signal_system.h>
+#include <sys/types.h> // needed for pid_t
 
 #ifdef __GNUG__
 #pragma interface

@@ -25,6 +25,7 @@
 #include <boost/utility.hpp>
 #include <sigc++/signal_system.h>
 #include <list>
+#include <sys/types.h> // needed for pid_t
 
 #ifdef __GNUG__
 #pragma interface
