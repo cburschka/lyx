@@ -67,7 +67,7 @@ float getDPI()
 { 
 	QWidget w;
 	QPaintDeviceMetrics pdm(&w);
-	return pdm.logicalDpiY();
+	return 0.5 * (pdm.logicalDpiX() + pdm.logicalDpiY());
 }
 
 }

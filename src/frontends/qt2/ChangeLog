@@ -1,9 +1,14 @@
+2002-10-17  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_gui.C (getDPI): use an average of DpiX and DpiY.
+
+	* QBrowseBox.[Ch] (c-tor): remove unneeded arguments.
 
 2002-10-17  André Pönitz  <poenitz@lyx.org>
 
 	* QBrowseBox.[Ch]: fix style issues
 
-2002-10-16  Angus Leeming  <leeming@lyx.org>
+2002-10-17  Angus Leeming  <leeming@lyx.org>
 
 	* ui/moc/Makefile.am:
 	* moc/Makefile.am: add a distclean-local target to remove *_moc.C.

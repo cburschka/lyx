@@ -2,7 +2,7 @@
  * \file QBrowseBox.C
  *
  * Original file taken from klyx 0.10 sources:
- * $Id: QBrowseBox.C,v 1.4 2002/10/17 09:51:18 poenitz Exp $
+ * $Id: QBrowseBox.C,v 1.5 2002/10/17 13:31:04 leeming Exp $
  *
  * \author Kalle Dalheimer ?
  *
@@ -25,8 +25,7 @@
 #include "QBrowseBox.h"
 
 
-QBrowseBox::QBrowseBox(int rows, int cols, QWidget * parent,
-		char const * name, WFlags fl)
+QBrowseBox::QBrowseBox(int rows, int cols)
 	: QGridView()
 {
 	setNumRows(rows);
@@ -157,7 +156,7 @@ void QBrowseBox::keyPressEvent(QKeyEvent * e)
 }
 
 
-void QBrowseBox::mouseReleaseEvent(QMouseEvent * e)
+void QBrowseBox::mouseReleaseEvent(QMouseEvent *)
 {
 	qWarning("mouse release");
 	emit selected( activecell_.x(), activecell_.y());

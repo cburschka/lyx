@@ -3,7 +3,7 @@
  * \file QBrowseBox.h
  *
  * Original file taken from klyx 0.10 sources:
- * $Id: QBrowseBox.h,v 1.2 2002/10/17 09:51:18 poenitz Exp $
+ * $Id: QBrowseBox.h,v 1.3 2002/10/17 13:31:04 leeming Exp $
  *
  * \author Kalle Dalheimer ?
  *
@@ -27,8 +27,7 @@ class QBrowseBox : public QGridView
 {
   Q_OBJECT
 public:
-  QBrowseBox(int rows, int cols, QWidget * parent = 0,
-		char const * name = 0, WFlags f = 0);
+  QBrowseBox(int rows, int cols);
   ~QBrowseBox();
   
   void insertItem(QString const & text, int x, int y);
