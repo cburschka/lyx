@@ -319,40 +319,45 @@ void QTabular::closeGUI()
 	// ugly hack to auto-apply the stuff that hasn't been
 	// yet. don't let this continue to exist ...
 
+	// Subtle here, we must /not/ apply any changes and
+	// then refer to tabular, as it will have been freed
+	// since the changes update the actual controller().tabular()
 	LyXTabular const & tabular(controller().tabular());
 
 	// apply the fixed width values
 	int const cell = controller().getActiveCell();
 	bool const multicol(tabular.IsMultiColumn(cell));
-	string str1 = widgetsToLength(dialog_->widthED, dialog_->widthUnit);
-	string str2;
+	string width = widgetsToLength(dialog_->widthED, dialog_->widthUnit);
+	string width2;
 
 	LyXLength llen(tabular.GetColumnPWidth(cell));
 	LyXLength llenMulti(tabular.GetMColumnPWidth(cell));
 
 	if (multicol && !llenMulti.zero())
-			str2 = llenMulti.asString();
+			width2 = llenMulti.asString();
 	else if (!multicol && !llen.zero())
-			str2 = llen.asString();
-
-	if (str1 != str2) {
-		if (multicol)
-			controller().set(LyXTabular::SET_MPWIDTH, str1);
-		else
-			controller().set(LyXTabular::SET_PWIDTH, str1);
-	}
+			width2 = llen.asString();
 
 	// apply the special alignment
-	str1 = fromqstr(dialog_->specialAlignmentED->text());
-	if (multicol)
-		str2 = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
-	else
-		str2 = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
+	string const sa1 = fromqstr(dialog_->specialAlignmentED->text());
+	string sa2;
 
-	if (str1 != str2) {
+	if (multicol)
+		sa2 = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
+	else
+		sa2 = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
+
+	if (sa1 != sa2) {
 		if (multicol)
-			controller().set(LyXTabular::SET_SPECIAL_MULTI, str1);
+			controller().set(LyXTabular::SET_SPECIAL_MULTI, sa1);
 		else
-			controller().set(LyXTabular::SET_SPECIAL_COLUMN, str1);
+			controller().set(LyXTabular::SET_SPECIAL_COLUMN, sa1);
+	}
+
+	if (width != width2) {
+		if (multicol)
+			controller().set(LyXTabular::SET_MPWIDTH, width);
+		else
+			controller().set(LyXTabular::SET_PWIDTH, width);
 	}
 }
