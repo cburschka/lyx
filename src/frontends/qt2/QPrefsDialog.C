@@ -157,6 +157,11 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(remove_format()));
 	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(modify_format()));
 	connect(fileformatsModule->formatsLB, SIGNAL(highlighted(int)), this, SLOT(switch_format(int)));
+
+	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(new_converter()));
+	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(remove_converter()));
+	connect(convertersModule->converterModifyPB, SIGNAL(clicked()), this, SLOT(modify_converter()));
+	connect(convertersModule->convertersLB, SIGNAL(highlighted(int)), this, SLOT(switch_converter(int)));
  
 	// Qt really sucks. This is as ugly as it looks, but the alternative
 	// means having to derive every module == bloat
@@ -275,6 +280,16 @@ void QPrefsDialog::updateConverters()
 { 
 	QPrefConvertersModule * convertmod(convertersModule);
  
+	convertmod->converterFromCO->clear();
+	convertmod->converterToCO->clear();
+ 
+	Formats::const_iterator cit = form_->formats_.begin();
+	Formats::const_iterator end = form_->formats_.end();
+	for (; cit != end; ++cit) {
+		convertmod->converterFromCO->insertItem(cit->prettyname().c_str());
+		convertmod->converterToCO->insertItem(cit->prettyname().c_str());
+	}
+ 
 	convertmod->convertersLB->clear(); 
 
 	Converters::const_iterator ccit = form_->converters_.begin();
@@ -284,6 +299,57 @@ void QPrefsDialog::updateConverters()
 			ccit->To->prettyname()); 
 		convertmod->convertersLB->insertItem(name.c_str());
 	}
+}
+
+ 
+void QPrefsDialog::switch_converter(int nr)
+{
+	Converter const & c(form_->converters_.get(nr));
+	convertersModule->converterFromCO->setCurrentItem(form_->formats_.getNumber(c.from));
+	convertersModule->converterToCO->setCurrentItem(form_->formats_.getNumber(c.to));
+	convertersModule->converterED->setText(c.command.c_str());
+	convertersModule->converterFlagED->setText(c.flags.c_str());
+}
+
+ 
+// FIXME: we would like to highlight the new entry ... also user must
+// specify unique from/to or it doesn't appear. This is really bad UI
+void QPrefsDialog::new_converter()
+{ 
+	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem())); 
+	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem())); 
+ 
+	Converter const * old = form_->converters_.getConverter(from.name(), to.name());
+	form_->converters_.add(from.name(), to.name(), "", "");
+	if (!old) {
+		form_->converters_.updateLast(form_->formats_);
+	}
+	updateConverters();
+}
+
+
+void QPrefsDialog::modify_converter()
+{
+	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem())); 
+	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem())); 
+	string flags(convertersModule->converterFlagED->text().latin1());
+	string name(convertersModule->converterED->text().latin1());
+ 
+	Converter const * old = form_->converters_.getConverter(from.name(), to.name());
+	form_->converters_.add(from.name(), to.name(), name, flags);
+	if (!old) {
+		form_->converters_.updateLast(form_->formats_);
+	}
+	updateConverters();
+}
+
+
+void QPrefsDialog::remove_converter()
+{
+	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem())); 
+	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem())); 
+	form_->converters_.erase(from.name(), to.name());
+	updateConverters();
 }
 
  

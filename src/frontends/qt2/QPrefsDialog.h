@@ -60,6 +60,11 @@ public slots:
 	void modify_format();
 	void remove_format();
  
+	void switch_converter(int);
+	void new_converter();
+	void modify_converter();
+	void remove_converter();
+ 
 protected:
 	void closeEvent(QCloseEvent * e);
  

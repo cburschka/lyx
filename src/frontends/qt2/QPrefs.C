@@ -244,8 +244,6 @@ void QPrefs::apply()
 		controller().updateScreenFonts();
 	}
  
-	// FIXME: here we read new converters/ formats
-
 	controller().setConverters(converters_);
 	controller().setFormats(formats_); 
 
