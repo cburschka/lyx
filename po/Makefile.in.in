@@ -210,6 +210,7 @@ l10n_pots: $(srcdir)/xforms_l10n.pot $(srcdir)/qt_l10n.pot $(srcdir)/layouts_l10
 	msguniq -o $(PACKAGE).po
 
 $(srcdir)/xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
+	cd ${srcdir} ; \
 	awk ' \
 	     BEGIN { \
 		     print "#, fuzzy"; \
@@ -231,9 +232,10 @@ $(srcdir)/xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 		     }\
 		     skip=0; \
 	     }' \
-	`find $(top_srcdir)/src/frontends/xforms/forms -name \*.fd` > $@
+	  ../src/frontends/xforms/forms/*.fd > xforms_l10n.pot
 
 $(srcdir)/qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
+	cd ${srcdir} ; \
 	awk ' \
 	     /<string>/ { \
 	             line=$$0; \
@@ -247,9 +249,10 @@ $(srcdir)/qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
                              printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n",\
 		     FILENAME, FNR, line); \
 	     }' \
-	`find $(top_srcdir)/src/frontends/qt2/ui -name \*.ui` > $@
+	  ../src/frontends/qt2/ui/*.ui > qt_l10n.pot
 
 $(srcdir)/layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc
+	cd ${srcdir} ; \
 	awk ' \
 	    /^Style / { \
 		line=$$0; \
@@ -263,9 +266,10 @@ $(srcdir)/layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib
 		printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
 		       FILENAME, FNR, line); \
 	    } \
-	    ' `find $(top_srcdir)/lib/layouts -regex ".*\.\(layout\|inc\)"` > $@
+	    ' ../lib/layouts/*.layout ../lib/layouts/*.inc > layouts_l10n.pot
 
 $(srcdir)/languages_l10n.pot: $(top_srcdir)/lib/languages
+	cd ${srcdir} ; \
 	awk ' \
 	    /^#/ { \
                 next; \
@@ -277,9 +281,10 @@ $(srcdir)/languages_l10n.pot: $(top_srcdir)/lib/languages
 	        printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
                        FILENAME, FNR, lang); \
 	    } \
-            '  $(top_srcdir)/lib/languages > $@
+            '  ../lib/languages > languages_l10n.pot
 
 $(srcdir)/ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
+	cd ${srcdir} ; \
 	awk ' \
 	    /^[^#]*Submenu/ { \
 		line=$$0; \
@@ -302,7 +307,7 @@ $(srcdir)/ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 	        printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
                        FILENAME, FNR, line); \
             } \
-            ' $(top_srcdir)/lib/ui/*.ui > $@
+            ' ../lib/ui/*.ui > ui_l10n.pot
 
 # Tell versions [3.59,3.63) of GNU make not to export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
