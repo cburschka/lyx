@@ -1,3 +1,11 @@
+2004-03-23  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcall.h (ForkedProcess, Forkedcall): change the signature of
+	clone to return a boost::shred_ptr rather than a std::auto_ptr.
+
+	* forkedcontr.[Ch]: store the forked calls as boost::shared_ptrs rather
+	than raw pointers.
+
 2004-03-22  Angus Leeming  <leeming@lyx.org>
 
 	* forkedcontr.[Ch] (childrenChanged, getPIDs, getCommand): remove

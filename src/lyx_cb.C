@@ -44,6 +44,8 @@
 #include "support/path_defines.h"
 #include "support/systemcall.h"
 
+#include <boost/shared_ptr.hpp>
+
 #include <cerrno>
 #include <fstream>
 
@@ -71,7 +73,8 @@ using lyx::support::user_lyxdir;
 
 namespace os = lyx::support::os;
 
-using std::auto_ptr;
+using boost::shared_ptr;
+
 using std::back_inserter;
 using std::copy;
 using std::endl;
@@ -221,8 +224,9 @@ public:
 	AutoSaveBuffer(BufferView & bv, string const & fname)
 		: bv_(bv), fname_(fname) {}
 	///
-	virtual auto_ptr<ForkedProcess> clone() const {
-		return auto_ptr<ForkedProcess>(new AutoSaveBuffer(*this));
+	virtual shared_ptr<ForkedProcess> clone() const
+	{
+		return shared_ptr<ForkedProcess>(new AutoSaveBuffer(*this));
 	}
 	///
 	int start();

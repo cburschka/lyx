@@ -16,8 +16,8 @@
 #ifndef FORKEDCONTR_H
 #define FORKEDCONTR_H
 
+#include <boost/shared_ptr.hpp>
 #include <sys/types.h> // needed for pid_t
-
 #include <list>
 
 class Timeout;
@@ -54,7 +54,8 @@ private:
 	void timer();
 
 	/// The child processes
-	typedef std::list<ForkedProcess *> ListType;
+	typedef boost::shared_ptr<ForkedProcess> ForkedProcessPtr;
+	typedef std::list<ForkedProcessPtr> ListType;
 	///
 	ListType forkedCalls;
 

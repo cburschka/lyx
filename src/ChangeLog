@@ -1,3 +1,9 @@
+2004-03-23  Angus Leeming  <leeming@lyx.org>
+
+	* ispell.C (LaunchIspell):
+	* lyx_cb.C (AutoSaveBuffer): change the signature of clone to return
+	a boost::shred_ptr rather than a std::auto_ptr.
+
 2004-03-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (getStatus): handle read-only buffers correctly;

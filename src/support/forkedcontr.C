@@ -22,6 +22,7 @@
 #include "frontends/Timeout.h"
 
 #include <boost/bind.hpp>
+#include <boost/iterator/indirect_iterator.hpp>
 
 #include <cerrno>
 #include <cstdlib>
@@ -65,11 +66,6 @@ ForkedcallsController::ForkedcallsController()
 // I want to print or something.
 ForkedcallsController::~ForkedcallsController()
 {
-	for (ListType::iterator it = forkedCalls.begin();
-	     it != forkedCalls.end(); ++it) {
-		delete *it;
-	}
-
 	delete timeout_;
 }
 
@@ -79,7 +75,7 @@ void ForkedcallsController::addCall(ForkedProcess const & newcall)
 	if (!timeout_->running())
 		timeout_->start();
 
-	forkedCalls.push_back(newcall.clone().release());
+	forkedCalls.push_back(newcall.clone());
 }
 
 
@@ -90,7 +86,7 @@ void ForkedcallsController::timer()
 	ListType::iterator it  = forkedCalls.begin();
 	ListType::iterator end = forkedCalls.end();
 	while (it != end) {
-		ForkedProcess * actCall = *it;
+		ForkedProcess * actCall = it->get();
 
 		pid_t pid = actCall->pid();
 		int stat_loc;
@@ -134,10 +130,8 @@ void ForkedcallsController::timer()
 		}
 
 		if (remove_it) {
-			forkedCalls.erase(it);
-
 			actCall->emitSignal();
-			delete actCall;
+			forkedCalls.erase(it);
 
 			/* start all over: emiting the signal can result
 			 * in changing the list (Ab)
@@ -158,19 +152,21 @@ void ForkedcallsController::timer()
 // within tolerance secs
 void ForkedcallsController::kill(pid_t pid, int tolerance)
 {
-	ListType::iterator it =
-		find_if(forkedCalls.begin(), forkedCalls.end(),
-			lyx::compare_memfun(&Forkedcall::pid, pid));
+	typedef boost::indirect_iterator<ListType::iterator> iterator;
 
-	if (it == forkedCalls.end())
+	iterator begin = boost::make_indirect_iterator(forkedCalls.begin());
+	iterator end   = boost::make_indirect_iterator(forkedCalls.end());
+	iterator it = find_if(begin, end,
+			      lyx::compare_memfun(&Forkedcall::pid, pid));
+
+	if (it == end)
 		return;
 
-	(*it)->kill(tolerance);
-	forkedCalls.erase(it);
+	it->kill(tolerance);
+	forkedCalls.erase(it.base());
 
-	if (forkedCalls.empty()) {
+	if (forkedCalls.empty())
 		timeout_->stop();
-	}
 }
 
 } // namespace support

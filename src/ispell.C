@@ -30,13 +30,14 @@
 #endif
 #include <sys/time.h>
 
+using boost::shared_ptr;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::strcpy;
 using std::strlen;
 using std::strpbrk;
 #endif
 
-using std::auto_ptr;
 using std::endl;
 using std::max;
 using std::string;
@@ -45,14 +46,15 @@ using std::string;
 namespace {
 
 class LaunchIspell : public lyx::support::ForkedProcess {
+	typedef lyx::support::ForkedProcess ForkedProcess;
 public:
 	///
 	LaunchIspell(BufferParams const & p, string const & l,
 		     int * in, int * out, int * err)
 		: params(p), lang(l), pipein(in), pipeout(out), pipeerr(err) {}
 	///
-	virtual auto_ptr<lyx::support::ForkedProcess> clone() const {
-		return auto_ptr<lyx::support::ForkedProcess>(new LaunchIspell(*this));
+	virtual shared_ptr<ForkedProcess> clone() const {
+		return shared_ptr<ForkedProcess>(new LaunchIspell(*this));
 	}
 	///
 	int start();
