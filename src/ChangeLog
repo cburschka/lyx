@@ -1,3 +1,11 @@
+2001-07-30  Baruch Even  <baruch@lyx.org>
+
+	* buffer.C (readInset): Stop auto-converting InsetFig to InsetGraphics.
+
+2001-07-29  Baruch Even  <baruch@lyx.org>
+
+	* buffer.C (readInset): Changed GRAPHICS to Graphics.
+
 2001-07-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* ParameterStruct.h (endif): add a default constructor to make

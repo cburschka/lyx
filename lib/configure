@@ -1091,7 +1091,7 @@ case $TOEPS in
 	pnmtops) gif_to_eps="giftopnm \$\$i | pnmtops > \$\$o" png_to_eps="pngtopnm \$\$i | pnmtops >\$\$o" jpg_to_eps="jpegtopnm \$\$i | pnmtops >\$\$o";;
 esac
 
-echo $ac_n "checking for a GIF -> PNG converter""... $ac_c"
+echo $ac_n "checking for a Image -> PNG converter""... $ac_c"
 echo "$ac_t""(convert pnmtopng)"
 TOPNG=
 for ac_prog in convert pnmtopng
@@ -1128,6 +1128,44 @@ fi
 case $TOPNG in
 	convert) gif_to_png="convert GIF:\$\$i PNG:\$\$o" eps_to_png="convert EPS:\$\$i PNG:\$\$o" jpg_to_png="convert JPG:\$\$i PNG:\$\$o";;
 	pnmtopng) gif_to_png="giftopnm \$\$i | pnmtopng >\$\$o" eps_to_png="pstopnm \$\$i| pnmtopng >\$\$o" jpg_to_png="jpegtopnm \$\$i | pnmtopng >\$\$o";;
+esac
+
+echo $ac_n "checking For an EPS -> PDF converter""... $ac_c"
+echo "$ac_t""(epstopdf)"
+EPSTOPDF=
+for ac_prog in epstopdf
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog ; ac_word=$2
+if test -n "$ac_word"; then
+  echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -x $ac_dir/$ac_word; then
+      EPSTOPDF="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+
+  if test -n "$EPSTOPDF"; then
+    ac_result=yes
+  else
+    ac_result=no
+  fi
+  
+  echo "$ac_t""$ac_result"
+  test -n "$EPSTOPDF" && break
+fi
+done
+
+if test -z "$EPSTOPDF" ; then
+  EPSTOPDF=none
+fi
+
+case $EPSTOPDF in
+	epstopdf) eps_to_pdf="epstopdf --outfile=\$\$o \$\$i";;
 esac
 
 #### Explore the LaTeX configuration
@@ -1218,6 +1256,7 @@ cat >lyxrc.defaults <<EOF
 \\Format docbook  sgml	DocBook		B
 \\Format dvi	  dvi	DVI		D
 \\Format eps	  eps	EPS		""
+\\Format epsi     epsi  EPSI    ""
 \\Format fax	  ""	Fax		""
 \\Format gif      gif	GIF		""
 \\Format html	  html	HTML		H
@@ -1254,13 +1293,17 @@ cat >lyxrc.defaults <<EOF
 \\converter html latex "$html_to_latex_command" ""
 \\converter word latex "$word_to_latex_command" ""
 
-\\converter gif eps "$gif_to_eps" ""
-\\converter png eps "$png_to_eps" ""
-\\converter jpg eps "$jpg_to_eps" ""
+\\converter gif  eps "$gif_to_eps" ""
+\\converter png  eps "$png_to_eps" ""
+\\converter jpg  eps "$jpg_to_eps" ""
 
-\\converter gif png "$gif_to_png" ""
-\\converter eps png "$eps_to_png" ""
-\\converter jpg png "$jpg_to_png" ""
+\\converter gif  png "$gif_to_png" ""
+\\converter eps  png "$eps_to_png" ""
+\\converter epsi png "$eps_to_png" ""
+\\converter jpg  png "$jpg_to_png" ""
+
+\\converter eps  pdf "$eps_to_pdf" ""
+\\converter epsi pdf "$eps_to_pdf" ""
 
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"

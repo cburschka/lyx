@@ -338,10 +338,15 @@ case $TOEPS in
 	pnmtops) gif_to_eps="giftopnm \$\$i | pnmtops > \$\$o" png_to_eps="pngtopnm \$\$i | pnmtops >\$\$o" jpg_to_eps="jpegtopnm \$\$i | pnmtops >\$\$o";;
 esac
 
-SEARCH_PROG([for a GIF -> PNG converter], TOPNG, convert pnmtopng)
+SEARCH_PROG([for a Image -> PNG converter], TOPNG, convert pnmtopng)
 case $TOPNG in
 	convert) gif_to_png="convert GIF:\$\$i PNG:\$\$o" eps_to_png="convert EPS:\$\$i PNG:\$\$o" jpg_to_png="convert JPG:\$\$i PNG:\$\$o";;
 	pnmtopng) gif_to_png="giftopnm \$\$i | pnmtopng >\$\$o" eps_to_png="pstopnm \$\$i| pnmtopng >\$\$o" jpg_to_png="jpegtopnm \$\$i | pnmtopng >\$\$o";;
+esac
+
+SEARCH_PROG([For an EPS -> PDF converter], EPSTOPDF, epstopdf)
+case $EPSTOPDF in
+	epstopdf) eps_to_pdf="epstopdf --outfile=\$\$o \$\$i";;
 esac
 
 #### Explore the LaTeX configuration
@@ -420,6 +425,7 @@ cat >lyxrc.defaults <<EOF
 \\Format docbook  sgml	DocBook		B
 \\Format dvi	  dvi	DVI		D
 \\Format eps	  eps	EPS		""
+\\Format epsi     epsi  EPSI    ""
 \\Format fax	  ""	Fax		""
 \\Format gif      gif	GIF		""
 \\Format html	  html	HTML		H
@@ -456,13 +462,17 @@ cat >lyxrc.defaults <<EOF
 \\converter html latex "$html_to_latex_command" ""
 \\converter word latex "$word_to_latex_command" ""
 
-\\converter gif eps "$gif_to_eps" ""
-\\converter png eps "$png_to_eps" ""
-\\converter jpg eps "$jpg_to_eps" ""
+\\converter gif  eps "$gif_to_eps" ""
+\\converter png  eps "$png_to_eps" ""
+\\converter jpg  eps "$jpg_to_eps" ""
 
-\\converter gif png "$gif_to_png" ""
-\\converter eps png "$eps_to_png" ""
-\\converter jpg png "$jpg_to_png" ""
+\\converter gif  png "$gif_to_png" ""
+\\converter eps  png "$eps_to_png" ""
+\\converter epsi png "$eps_to_png" ""
+\\converter jpg  png "$jpg_to_png" ""
+
+\\converter eps  pdf "$eps_to_pdf" ""
+\\converter epsi pdf "$eps_to_pdf" ""
 
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"

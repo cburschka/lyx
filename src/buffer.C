@@ -1454,9 +1454,9 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 		} else if (tmptok == "Formula") {
 			inset = new InsetFormula;
 		} else if (tmptok == "Figure") { // Backward compatibility
-			//inset = new InsetFig(100, 100, *this);
-			inset = new InsetGraphics;
-		} else if (tmptok == "GRAPHICS") {
+			inset = new InsetFig(100, 100, *this);
+			//inset = new InsetGraphics;
+		} else if (tmptok == "Graphics") {
 			inset = new InsetGraphics;
 		} else if (tmptok == "Info") {// backwards compatibility
 			inset = new InsetNote(this,
