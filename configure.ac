@@ -438,7 +438,6 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        src/frontends/qt2/moc/Makefile \
        src/frontends/qt2/ui/Makefile \
        src/frontends/qt2/ui/moc/Makefile \
-       src/frontends/gnome/Makefile \
 ])
 
 AC_OUTPUT
