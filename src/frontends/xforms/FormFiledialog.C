@@ -277,8 +277,12 @@ void FileDialog::Private::Reread()
 		// gets file status
 		File = AddName(pszDirectory, fname);
 
-		// FIXME: we don't get this file exists/stattable
 		FileInfo fileInfo(File, true);
+
+		// can this really happen?
+		if (!fileInfo.isOK())
+			continue;
+		
 		fileInfo.modeString(szMode);
 		unsigned int nlink = fileInfo.getNumberOfLinks();
 		string user = 	lyxUserCache.find(fileInfo.getUid());
@@ -323,7 +327,10 @@ void FileDialog::Private::Reread()
 				// link). Is that intended?
 				//                              JV 199902
 				fileInfo.newFile(File);
-				Buffer += fileInfo.typeIndicator();
+				if (fileInfo.isOK())
+					Buffer += fileInfo.typeIndicator();
+				else
+					continue;
 			}
 		}
 

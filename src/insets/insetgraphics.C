@@ -798,9 +798,9 @@ void InsetGraphics::updateInset() const
 
 	// We do it this way so that in the face of some error, we will still
 	// be in a valid state.
-	if (!params.filename.empty() &&
-	    lyxrc.display_graphics != "no" &&
-	    params.display != InsetGraphicsParams::NONE) {
+	if (!params.filename.empty() && lyxrc.use_gui
+	    && lyxrc.display_graphics != "no" 
+	    && params.display != InsetGraphicsParams::NONE) {
 		temp = gc.addFile(params.filename);
 	}
 

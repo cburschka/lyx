@@ -1,3 +1,7 @@
+2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* FormFiledialog.C (Reread): skip broken symlinks
+
 2002-01-13  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* FormMathsMatrix.C (AlignFilter): use std::count and add some

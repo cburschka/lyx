@@ -1,5 +1,8 @@
 2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* insetgraphics.C (updateInset): do not try to render image if
+	lyxrc.use_gui is false (bug #104)
+
 	* insetinclude.C (loadIfNeeded): do not call bufferlist.readFile
 	if file does not exist
 
