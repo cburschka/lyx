@@ -1069,6 +1069,10 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_HOMESEL:
 	case LFUN_END:
 	case LFUN_ENDSEL:
+	case LFUN_BEGINNINGBUF:
+	case LFUN_BEGINNINGBUFSEL: 
+	case LFUN_ENDBUF:
+	case LFUN_ENDBUFSEL:
 		break;
 	case LFUN_LAYOUT_TABULAR:
 		bv->owner()->getDialogs()->showTabular(this);
