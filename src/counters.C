@@ -88,7 +88,7 @@ Counters::Counters()
 	sects.push_back("subsubsection");
 	sects.push_back("paragraph");
 	sects.push_back("subparagraph");
-	
+
 	// Enumeration counters:
 	newCounter("enumi");
 	newCounter("enumii", "enumi");
@@ -99,10 +99,10 @@ Counters::Counters()
 	enums.push_back("enumii");
 	enums.push_back("enumiii");
 	enums.push_back("enumiv");
-	
+
 	// Biblio:
 	newCounter("bibitem");
-	
+
 	// Float counters:
 	newCounter("Figure");
 	newCounter("Table");
@@ -205,7 +205,7 @@ void Counters::reset(string const & match)
 	for (; it != end; ++it) {
 		if (it->first.find(match) != string::npos || match == "")
 			it->second.reset();
-	}	
+	}
 }
 
 void Counters::copy(Counters & from, Counters & to, string const & match)
@@ -215,13 +215,13 @@ void Counters::copy(Counters & from, Counters & to, string const & match)
 	for (; it != end; ++it) {
 		if (it->first.find(match) != string::npos || match == "") {
 			to.set(it->first, from.value(it->first));
-		} 
-	}	
+		}
+	}
 }
 
 
 namespace {
-		
+
 inline
 char loweralphaCounter(int n)
 {
@@ -272,7 +272,7 @@ string const romanCounter(int n)
 } // namespace anon
 
 string Counters::labelItem(string const & ctr,
-		string const & numbertype, 
+		string const & numbertype,
 		string const & langtype,
 		bool first)
 {
@@ -301,7 +301,7 @@ string Counters::labelItem(string const & ctr,
 }
 
 string Counters::numberLabel(string const & ctr,
-		string const & numbertype, 
+		string const & numbertype,
 		string const & langtype,
 		int head)
 {
@@ -313,16 +313,16 @@ string Counters::numberLabel(string const & ctr,
 			s << numberLabel("chapter", numbertype, langtype, head)
 			  << labelItem("section", numbertype, langtype, head == 1);
 		} else if (ctr == "subsection" && head <= 2) {
-			s << numberLabel("section", numbertype, langtype, head) 
+			s << numberLabel("section", numbertype, langtype, head)
 			  << labelItem("subsection", numbertype, langtype, head == 2);
 		} else if (ctr == "subsubsection" && head <= 3) {
-			s << numberLabel("subsection", numbertype, langtype, head) 
+			s << numberLabel("subsection", numbertype, langtype, head)
 			  << labelItem("subsubsection", numbertype, langtype, head == 3);
 		} else if (ctr == "paragraph" && head <= 4) {
-			s << numberLabel("subsubsection", numbertype, langtype, head) 
+			s << numberLabel("subsubsection", numbertype, langtype, head)
 			  << labelItem("paragraph", numbertype, langtype, head == 4);
 		} else if (ctr == "subparagraph" && head <= 5) {
-			s << numberLabel("paragraph", numbertype, langtype, head) 
+			s << numberLabel("paragraph", numbertype, langtype, head)
 			  << labelItem("subparagraph", numbertype, langtype, head == 5);
 		} else if (ctr == "Figure" || ctr == "Table") {
 			// figure, table, ...
@@ -330,7 +330,7 @@ string Counters::numberLabel(string const & ctr,
 			s << numberLabel("chapter", numbertype, langtype, head)
 			  << labelItem(ctr, numbertype, langtype, head == 1);
 		}
-	
+
 	} else if (numbertype == "enumeration") {
 		ostringstream ei, eii, eiii, eiv;
 		//string ei, eiii, eiv;
@@ -347,14 +347,14 @@ string Counters::numberLabel(string const & ctr,
 			eiv << alphaCounter(value("enumiv")) << '.';
 		}
 		if (ctr == "enumii") {
-			s << eii.str(); 
+			s << eii.str();
 		} else if (ctr == "enumi") {
-			s << ei.str();	
+			s << ei.str();
 		} else if (ctr == "enumiii") {
 			s << eiii.str();
 		} else if (ctr == "enumiv") {
 			s << eiv.str();
 		}
-	} 
+	}
 	return s.str();
 }
