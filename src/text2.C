@@ -89,13 +89,9 @@ void LyXText::init(BufferView * bview)
 	anchor_row_ = rows().end();
 	anchor_row_offset_ = 0;
 
-	ParagraphList::iterator pit = ownerParagraphs().begin();
-	ParagraphList::iterator end = ownerParagraphs().end();
+	current_font = getFont(ownerParagraphs().begin(), 0);
 
-	current_font = getFont(pit, 0);
-
-	for (; pit != end; ++pit)
-		insertParagraph(pit, rowlist_.end());
+	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
 
 	setCursorIntern(rowlist_.begin()->par(), 0);
 	selection.cursor = cursor;
@@ -642,21 +638,15 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 {
 	RowList::iterator rit = firstRow(pit);
 
-	if (rit == rows().end()) {
-		lyxerr << "LyXText::redoParagraphs: should not happen\n";
-		Assert(0);
-	}
-
-	// remove it
+	// remove paragraph from rowlist
 	while (rit != rows().end() && rit->par() == pit) {
 		RowList::iterator rit2 = rit++;
 		removeRow(rit2);
 	}
 
-	// Reinsert the paragraph.
+	// reinsert the paragraph
 	insertParagraph(pit, rit);
 	setHeightOfRow(rows().begin());
-	updateCounters();
 }
 
 
