@@ -1652,6 +1652,8 @@ void LyXRC::set_font_norm_type()
 		font_norm_type = ISO_8859_1;
 	else if (font_norm == "iso8859-3")
 		font_norm_type = ISO_8859_3;
+	else if (font_norm == "iso8859-4")
+		font_norm_type = ISO_8859_4;
 	else if (font_norm == "iso8859-6.8x")
 		font_norm_type = ISO_8859_6_8;
 	else if (font_norm == "iso8859-9")
