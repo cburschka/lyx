@@ -80,18 +80,22 @@ void FeedbackController::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 		// using the middle mouse button.
 		InputCB(ob, 0);
 		
-	// This is very odd:
-	// event == FL_LEAVE when the mouse enters the folder and
-	// event == FL_ENTER are it leaves!
-	} else if (ob->objclass == FL_TABFOLDER && event == FL_LEAVE) {
-		// This prehandler is used to work-around an xforms bug.
-		// It updates the form->x, form->y coords of the active
-		// tabfolder when the mouse enters.
-		FL_FORM * const form = fl_get_active_folder(ob);
-		if (form->window) {
+	} else if (ob->objclass == FL_TABFOLDER &&
+		   (event == FL_ENTER || event == FL_LEAVE)) {
+		// This prehandler is used to work-around an xforms bug and
+		// ensures that the form->x, form->y coords of the active
+		// tabfolder are up to date.
+
+		// The tabfolder itself can be very narrow, being just
+		// the visible border to the tabs.
+		// We thus use both FL_ENTER and FL_LEAVE as flags,
+		// in case the FL_ENTER event is not caught.
+
+		FL_FORM * const folder = fl_get_active_folder(ob);
+		if (folder->window) {
 			FL_Coord w, h;
-			fl_get_wingeometry(form->window,
-					   &(form->x), &(form->y), &w, &h);
+			fl_get_wingeometry(folder->window,
+					   &(folder->x), &(folder->y), &w, &h);
 		}
 
 	} else if (message_widget_ &&
