@@ -519,6 +519,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_CODE:         handleFont(bv, LM_TC_TT); break;
 	case LFUN_NOUN:         handleFont(bv, LM_TC_BB); break;
 	case LFUN_DEFAULT:      handleFont(bv, LM_TC_VAR); break;
+	case LFUN_FREE:         handleFont(bv, LM_TC_TEXTRM); break;
 
 	case LFUN_GREEK: 
 		handleFont(bv, LM_TC_GREEK1);
@@ -528,8 +529,10 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	case LFUN_MATH_MODE:
 		//handleFont(bv, LM_TC_TEXTRM);
-		mathcursor->niceInsert(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
-		updateLocal(bv, true);
+
+		//mathcursor->niceInsert(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
+		//updateLocal(bv, true);
+
 		//bv->owner()->message(_("math text mode toggled"));
 		break;
 
