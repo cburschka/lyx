@@ -394,6 +394,7 @@ void FormRef::apply()
     {
       lv_->getLyXFunc()->Dispatch(LFUN_REF_INSERT,
 				  params.getAsString());
+      lv_->getLyXFunc()->Dispatch(LFUN_BOOKMARK_SAVE, "0");
     }
 
   // save configuration
