@@ -56,6 +56,7 @@ QCitationDialog::QCitationDialog(QCitation * form)
 	connect(add_->availableLB, SIGNAL(selected(QListBoxItem *)), this, SLOT(addCitation()));
 	connect(add_->availableLB, SIGNAL(selected(QListBoxItem *)), add_, SLOT(accept()));
 	connect(add_->addPB, SIGNAL(clicked()), this, SLOT(addCitation()));
+	connect(selectedLB, SIGNAL(returnPressed(QListBoxItem *)), form, SLOT(slotOK()));
 }
 
 

@@ -1,5 +1,10 @@
 2003-04-23  John Levon  <levon@movementarian.org>
 
+	* QCitationDialog.C: close dialog on return in listbox
+	(bug 866)
+
+2003-04-23  John Levon  <levon@movementarian.org>
+
 	* QPrefs.C:
 	* lyx_gui.C: fix bug 1063
 
