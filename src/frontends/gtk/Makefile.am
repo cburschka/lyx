@@ -7,6 +7,7 @@ noinst_LTLIBRARIES = libgtk.la
 INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \
+	-I../xforms \
 	-I$(top_srcdir)/src/frontends/xforms \
 	$(BOOST_INCLUDES) @GTK_FRONTEND_CFLAGS@
 
