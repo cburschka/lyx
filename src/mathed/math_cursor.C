@@ -639,9 +639,9 @@ bool MathCursor::down(bool sel)
 
 bool MathCursor::toggleLimits()
 {
-	if (!hasPrevAtom())
+	if (!hasNextAtom())
 		return false;
-	MathScriptInset * t = prevAtom()->asScriptInset();
+	MathScriptInset * t = nextAtom()->asScriptInset();
 	if (!t)
 		return false;
 	int old = t->limits();
