@@ -243,6 +243,9 @@ TGIF_VIEWER="$TGIF_EDITOR"
 SEARCH_PROG([for a FIG viewer and editor], FIG_EDITOR, xfig)
 FIG_VIEWER="$FIG_EDITOR"
 
+SEARCH_PROG([for a GRACE viewer and editor], GRACE_EDITOR, xmgrace)
+GRACE_VIEWER="$GRACE_EDITOR"
+
 SEARCH_PROG([for a FEN viewer and editor], FEN_EDITOR, xboard)
 test "$FEN" = "xboard" && FEN_EDITOR="xboard -lpf \$\$i -mode EditPosition"
 FEN_VIEWER="$FEN_EDITOR"
@@ -250,6 +253,8 @@ FEN_VIEWER="$FEN_EDITOR"
 SEARCH_PROG([for a raster image viewer], RASTERIMAGE_VIEWER, xv kview gimp)
 
 SEARCH_PROG([for a raster image editor], RASTERIMAGE_EDITOR, gimp)
+
+SEARCH_PROG([for a text editor], TEXT_EDITOR, xemacs gvim kedit kwrite kate nedit gedit)
 
 # Search for an installed reLyX or a ready-to-install one
 save_PATH=${PATH}
@@ -277,8 +282,15 @@ test "$word_to_latex_command" = "word2x" && word_to_latex_command="word2x -f lat
 SEARCH_PROG([for Image converter],image_command,convert)
 test $image_command = "convert" && image_command="convert \$\$i \$\$o"
 
+SEARCH_PROG([for an OpenOffice.org -> Latex converter],sxw_to_latex_command,w2l)
+test "$sxw_to_latex_command" = "w2l" && sxw_to_latex_command="w2l -clean \$\$i"
+
+# oolatex is the original name, SuSE has oolatex.sh
+SEARCH_PROG([for an Latex -> OpenOffice.org converter],latex_to_sxw_command,oolatex oolatex.sh)
+test "$latex_to_sxw_command" != "none" && latex_to_sxw_command="$latex_to_sxw_command \$\$i"
+
 # Search something to preview postscript
-SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gsview32 gv ghostview)
+SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gsview32 gv ghostview kghostview)
 case $GHOSTVIEW in
   gv|ghostview) PS_VIEWER="$GHOSTVIEW -swap" ;;
   *) PS_VIEWER="$GHOSTVIEW";;
@@ -286,10 +298,10 @@ esac
 EPS_VIEWER=$GHOSTVIEW
 
 # Search for a program to preview pdf
-SEARCH_PROG([for a PDF preview],PDF_VIEWER, acrobat acrord32 gsview32 acroread gv ghostview xpdf)
+SEARCH_PROG([for a PDF preview],PDF_VIEWER, acrobat acrord32 gsview32 acroread gv ghostview xpdf kpdf kghostview)
 
 # Search something to preview dvi
-SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi windvi yap)
+SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi windvi yap kdvi)
 
 # Search something to preview html
 SEARCH_PROG([for a HTML previewer],HTML_VIEWER, "mozilla file://\$\$p\$\$i" netscape)
@@ -521,15 +533,15 @@ cat >$outfile <<EOF
 # want to customize LyX, make a copy of the file LYXDIR/lyxrc as
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
-\\Format asciichess asc    "ASCII (chess output)"  "" ""	""
-\\Format asciiimage asc    "ASCII (image)"         "" ""	""
-\\Format asciixfig  asc    "ASCII (xfig output)"   "" ""	""
-\\Format agr        agr     GRACE                  "" ""	""
+\\Format asciichess asc    "ASCII (chess output)"  "" ""	"$TEXT_EDITOR"
+\\Format asciiimage asc    "ASCII (image)"         "" ""	"$TEXT_EDITOR"
+\\Format asciixfig  asc    "ASCII (xfig output)"   "" ""	"$TEXT_EDITOR"
+\\Format agr        agr     GRACE                  "" "$GRACE_VIEWER"	"$GRACE_EDITOR"
 \\Format bmp        bmp     BMP                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 \\Format date       ""     "date command"          "" ""	""
-\\Format dateout    tmp    "date (output)"         "" ""	""
-\\Format docbook    sgml    DocBook                B  ""	""
-\\Format docbook-xml xml    "Docbook (xml)"        "" "" ""
+\\Format dateout    tmp    "date (output)"         "" ""	"$TEXT_EDITOR"
+\\Format docbook    sgml    DocBook                B  ""	"$TEXT_EDITOR"
+\\Format docbook-xml xml   "Docbook (xml)"         "" ""	"$TEXT_EDITOR"
 \\Format dvi        dvi     DVI                    D  "$DVI_VIEWER"	""
 \\Format eps        eps     EPS                    "" "$EPS_VIEWER"	""
 \\Format fax        ""      Fax                    "" ""	""
@@ -538,11 +550,11 @@ cat >$outfile <<EOF
 \\Format gif        gif     GIF                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 \\Format html       html    HTML                   H  "$HTML_VIEWER"	""
 \\Format jpg        jpg     JPG                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
-\\Format latex      tex     LaTeX                  L  ""	""
-\\Format linuxdoc   sgml    LinuxDoc               x  ""	""
-\\Format lyx        lyx     LyX                    "" ""	""
+\\Format latex      tex     LaTeX                  L  ""	"$TEXT_EDITOR"
+\\Format linuxdoc   sgml    LinuxDoc               x  ""	"$TEXT_EDITOR"
+\\Format lyx        lyx     LyX                    "" "lyx"	"lyx"
 \\Format lyxpreview lyxpreview "LyX Preview"       "" ""	""
-\\Format literate   nw      NoWeb                  N  ""	""
+\\Format literate   nw      NoWeb                  N  ""	"$TEXT_EDITOR"
 \\Format pbm        pbm     PBM                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 \\Format pdf        pdf    "PDF (ps2pdf)"          P  "$PDF_VIEWER"	""
 \\Format pdf2       pdf    "PDF (pdflatex)"        F  "$PDF_VIEWER"	""
@@ -554,9 +566,10 @@ cat >$outfile <<EOF
 \\Format program    ""      Program                "" ""	""
 \\Format ps         ps      Postscript             t  "$PS_VIEWER"	""
 \\Format pstex      pstex_t PSTEX                  "" ""	""
-\\Format text       txt     ASCII                  A  ""	""
-\\Format textparagraph txt "ASCII (paragraphs)"    "" ""	""
 \\Format tgif       obj     TGIF                   "" "$TGIF_VIEWER"	"$TGIF_EDITOR"
+\\Format sxw        sxw    "OpenOffice.Org Writer" O  ""	""
+\\Format text       txt     ASCII                  A  ""	"$TEXT_EDITOR"
+\\Format textparagraph txt "ASCII (paragraphs)"    "" ""	"$TEXT_EDITOR"
 \\Format tiff       tif     TIFF                   "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 \\Format word       doc     Word                   W  ""	""
 \\Format xbm        xbm     XBM                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
@@ -576,6 +589,7 @@ cat >$outfile <<EOF
 \\converter latex      dvi        "$latex_to_dvi"	"latex"
 \\converter latex      lyx        "$tex_to_lyx_command"	""
 \\converter latex      pdf2       "$latex_to_pdf"	"latex"
+\\converter latex      sxw        "$latex_to_sxw_command"	"latex"
 \\converter linuxdoc   dvi        "$linuxdoc_to_dvi_command"	""
 \\converter linuxdoc   html       "$linuxdoc_to_html_command"	""
 \\converter linuxdoc   latex      "$linuxdoc_to_latex_command"	""
@@ -586,6 +600,7 @@ cat >$outfile <<EOF
 \\converter lyxpreview ppm        "$lyxpreview_to_bitmap_command"	""
 \\converter ps         fax        "$fax_command"	""
 \\converter ps         pdf        "$ps_to_pdf_command"	""
+\\converter sxw        latex      "$sxw_to_latex_command"	""
 \\converter word       latex      "$word_to_latex_command"	""
 EOF
 
@@ -604,7 +619,7 @@ fi
 SEARCH_PROG([for an TIFF -> PS converter], TIFF2PS, tiff2ps)
 if test "$TIFF2PS" = "tiff2ps"; then
 cat >>$outfile <<EOF
-\\converter tiff        eps         "tiff2ps \$\$i > \$\$o" ""
+\\converter tiff       eps        "tiff2ps \$\$i > \$\$o" ""
 EOF
 fi
 
