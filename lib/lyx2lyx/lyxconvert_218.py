@@ -473,7 +473,7 @@ def change_listof(lines):
 	i = find_token(lines, "\\begin_inset LatexCommand \\listof", i)
 	if i == -1:
 	    break
-        type = lines[i][33:-3]
+        type = re.search(r"listof(\w*)", lines[i]).group(1)[:-1]
         lines[i] = "\\begin_inset FloatList "+type
         i = i+1
 
