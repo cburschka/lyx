@@ -87,13 +87,13 @@ GParams::GParams(InsetGraphicsParams const & iparams, string const & filepath)
 
 bool operator==(GParams const & a, GParams const & b)
 {
-	return (a.filename        == b.filename &&
-		a.display         == b.display &&
-		a.bb              == b.bb &&
-		a.width           == b.width &&
-		a.height          == b.height &&
-		a.scale           == b.scale &&
-		a.angle           == b.angle);
+	return (a.filename == b.filename &&
+		a.display  == b.display &&
+		a.bb       == b.bb &&
+		a.width    == b.width &&
+		a.height   == b.height &&
+		a.scale    == b.scale &&
+		a.angle    == b.angle);
 }
 
 
