@@ -268,7 +268,7 @@ SEARCH_PROG([for a DVI to PDF converter],dvi_to_pdf_command,dvipdfm)
 test $dvi_to_pdf_command = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
 
 # We have a script to convert previewlyx to ppm
-lyxpreview_to_bitmap_command="lyxpreview2bitmap.sh"
+lyxpreview_to_bitmap_command='$$s/lyxpreview2bitmap.sh'
 
 # Search a *roff program (used to translate tables in ASCII export)
 LYXRC_PROG([for a *roff formatter], \ascii_roff_command, dnl
