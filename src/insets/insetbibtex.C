@@ -66,11 +66,8 @@ std::auto_ptr<InsetBase> InsetBibtex::clone() const
 
 
 DispatchResult
-InsetBibtex::priv_dispatch(FuncRequest const & cmd,
-			   idx_type & idx, pos_type & pos)
+InsetBibtex::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
-	DispatchResult result(false);
-	
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
@@ -78,17 +75,12 @@ InsetBibtex::priv_dispatch(FuncRequest const & cmd,
 		InsetCommandMailer::string2params("bibtex", cmd.argument, p);
 		if (!p.getCmdName().empty())
 			setParams(p);
-		result.dispatched(true);
-		result.update(true);
+		return DispatchResult(true, true);
 	}
-		break;
 		
 	default:
-		result = InsetCommand::priv_dispatch(cmd, idx, pos);
-		break;
+		return InsetCommand::priv_dispatch(bv, cmd);
 	}
-
-	return result;
 }
 
 

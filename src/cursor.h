@@ -43,7 +43,7 @@ public:
 	/// dispatch from innermost inset upwards
 	DispatchResult dispatch(FuncRequest const & cmd);
 	///
-	void push(UpdatableInset * inset);
+	void push(InsetBase * inset);
 	/// restrict cursor nesting to given size
 	void pop(int depth);
 	/// pop one level off the cursor

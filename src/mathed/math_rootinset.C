@@ -78,13 +78,14 @@ void MathRootInset::normalize(NormalStream & os) const
 }
 
 
-bool MathRootInset::idxUpDown(idx_type & idx, pos_type & pos, bool up, int) const
+bool MathRootInset::idxUpDown(BufferView & bv, bool up, int) const
 {
+	CursorSlice & cur = cursorTip(bv);
 	bool target = !up; // up ? 0 : 1;
-	if (idx == target)
+	if (cur.idx() == target)
 		return false;
-	idx = target;
-	pos = target ? 0 : cell(0).size();
+	cur.idx() = target;
+	cur.pos() = up ? cur.lastpos() : 0;
 	return true;
 }
 

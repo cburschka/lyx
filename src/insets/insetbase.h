@@ -54,10 +54,7 @@ public:
 	virtual UpdatableInset * asUpdatableInset() { return 0; }
 
 	// the real dispatcher
-	DispatchResult
-	dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
-	// the real dispatcher
-	DispatchResult dispatch(FuncRequest const & cmd);
+	DispatchResult dispatch(BufferView & bv, FuncRequest const & cmd);
 
 	/// cursor enters
 	virtual void edit(BufferView * bv, bool left);
@@ -77,8 +74,7 @@ public:
 protected:
 	// the real dispatcher
 	virtual
-	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	DispatchResult priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 };
 
 #endif

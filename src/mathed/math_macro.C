@@ -155,30 +155,28 @@ void MathMacro::dump() const
 }
 
 
-bool MathMacro::idxUpDown(idx_type & idx, pos_type &, bool up, int x) const
+bool MathMacro::idxUpDown(BufferView & bv, bool up, int x) const
 {
-	pos_type pos;
+	CursorSlice & cur = cursorTip(bv);
 	if (up) {
-		if (!MathNestInset::idxLeft(idx, pos))
+		if (!MathNestInset::idxLeft(bv))
 			return false;
-		pos = cell(idx).x2pos(x);
-		return true;
 	} else {
-		if (!MathNestInset::idxRight(idx, pos))
+		if (!MathNestInset::idxRight(bv))
 			return false;
-		pos = cell(idx).x2pos(x);
-		return true;
 	}
+	cur.pos() = cur.cell().x2pos(x);
+	return true;
 }
 
 
-bool MathMacro::idxLeft(idx_type &, pos_type &) const
+bool MathMacro::idxLeft(BufferView &) const
 {
 	return false;
 }
 
 
-bool MathMacro::idxRight(idx_type &, pos_type &) const
+bool MathMacro::idxRight(BufferView &) const
 {
 	return false;
 }

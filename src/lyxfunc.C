@@ -257,9 +257,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		if (encoded_last_key != 0) {
 			string arg;
 			arg += encoded_last_key;
-
-			dispatch(FuncRequest(view(), LFUN_SELFINSERT, arg));
-
+			dispatch(FuncRequest(LFUN_SELFINSERT, arg));
 			lyxerr[Debug::KEY] << "SelfInsert arg[`"
 				   << argument << "']" << endl;
 		}
@@ -888,10 +886,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 			bool const fw = action == LFUN_WORDFINDFORWARD;
 			string const data =
-				lyx::find::find2string(searched_string,
-						       true, false, fw);
-			FuncRequest const fr(view(), LFUN_WORD_FIND, data);
-			view()->dispatch(fr);
+				lyx::find::find2string(searched_string, true, false, fw);
+			view()->dispatch(FuncRequest(LFUN_WORD_FIND, data));
 			break;
 		}
 
@@ -1295,7 +1291,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		case LFUN_INSET_DIALOG_SHOW: {
 			InsetOld * inset = view()->getLyXText()->getInset();
 			if (inset)
-				inset->dispatch(FuncRequest(view(), LFUN_INSET_DIALOG_SHOW));
+				inset->dispatch(*view(), FuncRequest(LFUN_INSET_DIALOG_SHOW));
 			break;
 		}
 
@@ -1304,9 +1300,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			// Can only update a dialog connected to an existing inset
 			InsetBase * inset = owner->getDialogs().getOpenInset(name);
 			if (inset) {
-				FuncRequest fr(view(), LFUN_INSET_DIALOG_UPDATE,
-								 func.argument);
-				inset->dispatch(fr);
+				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, func.argument);
+				inset->dispatch(*view(), fr);
 			} else if (name == "paragraph") {
 				dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 			}
@@ -1444,18 +1439,12 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			break;
 
 		case LFUN_EXTERNAL_EDIT:
-			InsetExternal().dispatch(FuncRequest(view(), action, argument));
+			InsetExternal().dispatch(*view(), FuncRequest(action, argument));
 			break;
 
-		default: {
-				DispatchResult result =
-					view()->fullCursor().dispatch(FuncRequest(func, view()));
-				if (result.dispatched())
-					lyxerr << "dispatched by Cursor::dispatch()" << endl;
-				else
-					lyxerr << "### NOT DISPATCHED BY Cursor::dispatch() ###" << endl;
-				break;
-			}
+		default:
+			view()->fullCursor().dispatch(FuncRequest(func));
+			break;
 		}
 	}
 

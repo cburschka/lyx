@@ -184,33 +184,30 @@ bool InsetNote::showInsetDialog(BufferView * bv) const
 
 
 DispatchResult
-InsetNote::priv_dispatch(FuncRequest const & cmd,
-			 idx_type & idx, pos_type & pos)
+InsetNote::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
-	BufferView * bv = cmd.view();
-
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetNoteMailer::string2params(cmd.argument, params_);
 		setButtonLabel();
-		bv->update();
+		bv.update();
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetNoteMailer(*this).updateDialog(bv);
+		InsetNoteMailer(*this).updateDialog(&bv);
 		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
-			InsetNoteMailer(*this).showDialog(bv);
+			InsetNoteMailer(*this).showDialog(&bv);
 			return DispatchResult(true, true);
 		}
-		// fallthrough:
+		return InsetCollapsable::priv_dispatch(bv, cmd);
 
 	default:
-		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
+		return InsetCollapsable::priv_dispatch(bv, cmd);
 	}
 }
 

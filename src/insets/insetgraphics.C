@@ -192,26 +192,26 @@ void InsetGraphics::statusChanged() const
 
 
 DispatchResult
-InsetGraphics::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
+InsetGraphics::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
-		Buffer const & buffer = *cmd.view()->buffer();
+		Buffer const & buffer = *bv.buffer();
 		InsetGraphicsParams p;
 		InsetGraphicsMailer::string2params(cmd.argument, buffer, p);
 		if (!p.filename.empty()) {
 			setParams(p);
-			cmd.view()->update();
+			bv.update();
 		}
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetGraphicsMailer(*this).updateDialog(cmd.view());
+		InsetGraphicsMailer(*this).updateDialog(&bv);
 		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
-		InsetGraphicsMailer(*this).showDialog(cmd.view());
+		InsetGraphicsMailer(*this).showDialog(&bv);
 		return DispatchResult(true, true);
 
 	default:

@@ -110,6 +110,7 @@ void recordUndo(Undo::undo_kind kind,
 
 /// convienience: prepare undo for the paragraph that contains the cursor
 void recordUndo(BufferView *, Undo::undo_kind kind);
+void recordUndo(BufferView &, Undo::undo_kind kind);
 
 /// are we avoiding tracking undos currently?
 extern bool undo_frozen;

@@ -76,7 +76,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
+	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 private:
 	///
 	void init();

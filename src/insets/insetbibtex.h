@@ -48,7 +48,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
+	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 };
 
 #endif // INSET_BIBTEX_H

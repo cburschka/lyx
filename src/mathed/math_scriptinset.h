@@ -48,15 +48,15 @@ public:
 	/// write content as something readable by Octave
 	void octave(OctaveStream &) const;
 	/// move cursor left
-	bool idxLeft(idx_type &, pos_type &) const;
+	bool idxLeft(BufferView &) const;
 	/// move cursor right
-	bool idxRight(idx_type &, pos_type &) const;
+	bool idxRight(BufferView &) const;
 	/// move cursor up or down
-	bool idxUpDown(idx_type & idx, pos_type & pos, bool up, int targetx) const;
+	bool idxUpDown(BufferView &, bool up, int targetx) const;
 	/// Target pos when we enter the inset from the left by pressing "Right"
-	bool idxFirst(idx_type & idx, pos_type & pos) const;
+	bool idxFirst(BufferView &) const;
 	/// Target pos when we enter the inset from the right by pressing "Left"
-	bool idxLast(idx_type & idx, pos_type & pos) const;
+	bool idxLast(BufferView &) const;
 	/// can we enter this cell?
 	bool validCell(idx_type i) const { return i == 2 || script_[i]; }
 
@@ -99,7 +99,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 private:
 	/// returns x offset for main part
 	int dxx() const;

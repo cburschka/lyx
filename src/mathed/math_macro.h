@@ -38,11 +38,11 @@ public:
 	void dump() const;
 
 	///
-	bool idxUpDown(idx_type & idx, pos_type & pos, bool up, int targetx) const;
+	bool idxUpDown(BufferView &, bool up, int targetx) const;
 	///
-	bool idxLeft(idx_type & idx, pos_type & pos) const;
+	bool idxLeft(BufferView &) const;
 	///
-	bool idxRight(idx_type & idx, pos_type & pos) const;
+	bool idxRight(BufferView &) const;
 
 	///
 	void validate(LaTeXFeatures &) const;

@@ -62,7 +62,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 };
 
 #endif

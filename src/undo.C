@@ -293,5 +293,11 @@ void recordUndo(Undo::undo_kind kind, LyXText const * text, paroffset_type par)
 
 void recordUndo(BufferView * bv, Undo::undo_kind kind)
 {
-	recordUndo(kind, bv->text(), bv->text()->cursor().par());
+	recordUndo(*bv, kind);
+}
+
+
+void recordUndo(BufferView & bv, Undo::undo_kind kind)
+{
+	recordUndo(kind, bv.text(), bv.text()->cursor().par());
 }

@@ -134,7 +134,7 @@ void InsetCharStyle::draw(PainterInfo & pi, int x, int y) const
 	int a = 0;
 	int d = 0;
 	font_metrics::rectText(params_.type, font, w, a, d);
-	pi.pain.rectText(x + 0.5 * (dim_.wid - w), 
+	pi.pain.rectText(x + (dim_.wid - w) / 2, 
 		y + inset.descent() + a,
 		params_.type, font, LColor::none, LColor::none);
 	}
@@ -148,8 +148,7 @@ void InsetCharStyle::getDrawFont(LyXFont & font) const
 
 
 DispatchResult
-InsetCharStyle::priv_dispatch(FuncRequest const & cmd,
-			idx_type & idx, pos_type & pos)
+InsetCharStyle::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	setStatus(Inlined);
 	switch (cmd.action) {
@@ -158,11 +157,10 @@ InsetCharStyle::priv_dispatch(FuncRequest const & cmd,
 				has_label_ = !has_label_;
 				return DispatchResult(true);
 			}
-			inset.dispatch(cmd);
+			inset.dispatch(bv, cmd);
 			return DispatchResult(true, true);
-			break;
 		default:
-			return InsetCollapsable::priv_dispatch(cmd, idx, pos);
+			return InsetCollapsable::priv_dispatch(bv, cmd);
 	}
 }
 

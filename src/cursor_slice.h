@@ -45,6 +45,10 @@ public:
 	typedef lyx::paroffset_type par_type;
 	/// type for cursor positions within a cell
 	typedef lyx::pos_type pos_type;
+	/// type for row indices
+	typedef size_t row_type;
+	/// type for col indices
+	typedef size_t col_type;
 
 	///
 	CursorSlice();
@@ -55,14 +59,26 @@ public:
 	void idx(idx_type idx);
 	/// return the paragraph this cursor is in
 	idx_type idx() const;
+	/// return the paragraph this cursor is in
+	idx_type & idx();
 	/// set the paragraph that contains this cursor
 	void par(par_type par);
 	/// return the paragraph this cursor is in
 	par_type par() const;
+	/// return the paragraph this cursor is in
+	par_type & par();
 	/// set the position within the paragraph
 	void pos(pos_type pos);
 	/// return the position within the paragraph
 	pos_type pos() const;
+	/// return the position within the paragraph
+	pos_type & pos();
+	/// return the last position within the paragraph
+	pos_type lastpos() const;
+	/// return the grid row of the current cell
+	row_type row() const;
+	/// return the grid row of the current cell
+	col_type col() const;
 
 	/// FIXME
 	void boundary(bool b);
@@ -81,8 +97,6 @@ public:
 	///
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
-	/// set cell corresponding to this position
-	void cell(idx_type idx) const;
 	/// gets screen position of the thing
 	void getScreenPos(int & x, int & y) const;
 	///

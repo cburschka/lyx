@@ -75,7 +75,7 @@ public:
 	///
 	virtual void mutateToText();
 	///
-	virtual void revealCodes(BufferView *) const;
+	virtual void revealCodes(BufferView & bv) const;
 	///
 	virtual EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
@@ -89,19 +89,18 @@ public:
 protected:
 	/// To allow transparent use of math editing functions
 	virtual
-	DispatchResult
-	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
+	DispatchResult priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 private:
 	/// unimplemented
 	void operator=(const InsetFormulaBase &);
 	/// common base for handling accents
-	void handleAccent(BufferView * bv, std::string const & arg, std::string const & name);
+	void handleAccent(BufferView & bv, std::string const & arg, std::string const & name);
 	/// lfun handler
-	DispatchResult lfunMousePress(FuncRequest const &);
+	DispatchResult lfunMousePress(BufferView &, FuncRequest const &);
 	///
-	DispatchResult lfunMouseRelease(FuncRequest const &);
+	DispatchResult lfunMouseRelease(BufferView &, FuncRequest const &);
 	///
-	DispatchResult lfunMouseMotion(FuncRequest const &);
+	DispatchResult lfunMouseMotion(BufferView &, FuncRequest const &);
 
 protected:
 
@@ -114,16 +113,16 @@ protected:
 	virtual void generatePreview(Buffer const &) const {}
 
 	///
-	void handleFont(BufferView * bv, std::string const & arg, std::string const & font);
+	void handleFont(BufferView & bv, std::string const & arg, std::string const & font);
 	///
-	void handleFont2(BufferView * bv, std::string const & arg);
+	void handleFont2(BufferView & bv, std::string const & arg);
 };
 
 // We don't really mess want around with mathed stuff outside mathed.
 // So do it here.
-void mathDispatch(FuncRequest const &);
+void mathDispatch(BufferView & bv, FuncRequest const & cmd);
 
 ///
-void releaseMathCursor(BufferView * bv);
+void releaseMathCursor(BufferView & bv);
 
 #endif

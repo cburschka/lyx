@@ -34,19 +34,15 @@ void ControlSearch::find(string const & search,
 	string const data =
 		lyx::find::find2string(search,
 				       casesensitive, matchword, forward);
-	FuncRequest const fr(bufferview(), LFUN_WORD_FIND, data);
-	lv_.dispatch(fr);
+	lv_.dispatch(FuncRequest(LFUN_WORD_FIND, data));
 }
 
 
 void ControlSearch::replace(string const & search, string const & replace,
-			    bool casesensitive, bool matchword,
-			    bool forward, bool all)
+			    bool casesensitive, bool matchword, bool forward, bool all)
 {
 	string const data =
 		lyx::find::replace2string(search, replace,
-					  casesensitive, matchword,
-					  all, forward);
-	FuncRequest const fr(bufferview(), LFUN_WORD_REPLACE, data);
-	lv_.dispatch(fr);
+					  casesensitive, matchword, all, forward);
+	lv_.dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }

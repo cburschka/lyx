@@ -441,14 +441,12 @@ void InsetExternal::statusChanged() const
 
 
 DispatchResult
-InsetExternal::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
+InsetExternal::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
 	case LFUN_EXTERNAL_EDIT: {
-		BOOST_ASSERT(cmd.view());
-
-		Buffer const & buffer = *cmd.view()->buffer();
+		Buffer const & buffer = *bv.buffer();
 		InsetExternalParams p;
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
 		external::editExternal(p, buffer);
@@ -456,22 +454,20 @@ InsetExternal::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 	}
 
 	case LFUN_INSET_MODIFY: {
-		BOOST_ASSERT(cmd.view());
-
-		Buffer const & buffer = *cmd.view()->buffer();
+		Buffer const & buffer = *bv.buffer();
 		InsetExternalParams p;
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
 		setParams(p, buffer);
-		cmd.view()->update();
+		bv.update();
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetExternalMailer(*this).updateDialog(cmd.view());
+		InsetExternalMailer(*this).updateDialog(&bv);
 		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
-		InsetExternalMailer(*this).showDialog(cmd.view());
+		InsetExternalMailer(*this).showDialog(&bv);
 		return DispatchResult(true, true);
 
 	default:

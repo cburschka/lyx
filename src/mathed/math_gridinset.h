@@ -145,19 +145,19 @@ public:
 	row_type row(idx_type idx) const;
 
 	///
-	bool idxUpDown(idx_type & idx, pos_type & pos, bool up, int targetx) const;
+	bool idxUpDown(BufferView &, bool up, int targetx) const;
 	///
-	bool idxLeft(idx_type & idx, pos_type & pos) const;
+	bool idxLeft(BufferView &) const;
 	///
-	bool idxRight(idx_type & idx, pos_type & pos) const;
+	bool idxRight(BufferView &) const;
 	///
-	bool idxFirst(idx_type & idx, pos_type & pos) const;
+	bool idxFirst(BufferView &) const;
 	///
-	bool idxLast(idx_type & idx, pos_type & pos) const;
+	bool idxLast(BufferView &) const;
 	///
-	bool idxHome(idx_type & idx, pos_type & pos) const;
+	bool idxHome(BufferView &) const;
 	///
-	bool idxEnd(idx_type & idx, pos_type & pos) const;
+	bool idxEnd(BufferView &) const;
 	///
 	bool idxDelete(idx_type & idx);
 	/// pulls cell after pressing erase
@@ -218,7 +218,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 
 	/// returns x offset of cell compared to inset
 	int cellXOffset(idx_type idx) const;
@@ -231,7 +231,7 @@ protected:
 	/// extract number of columns from alignment string
 	col_type guessColumns(std::string const & halign) const;
 	/// splits cells and shifts right part to the next cell
-	void splitCell(idx_type &, pos_type & pos);
+	void splitCell(BufferView & pos);
 
 public:
 	/// row info

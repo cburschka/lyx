@@ -81,9 +81,9 @@ public:
 	///
 	char defaultColAlign(col_type col);
 	///
-	bool idxFirst(idx_type &, pos_type &) const;
+	bool idxFirst(BufferView &) const;
 	///
-	bool idxLast(idx_type &, pos_type &) const;
+	bool idxLast(BufferView &) const;
 
 	///
 	std::string fileInsetLabel() const;
@@ -100,7 +100,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 	///
 	std::string eolString(row_type row, bool fragile) const;
 
@@ -116,7 +116,7 @@ private:
 	///
 	std::string nicelabel(row_type row) const;
 	///
-	void doExtern(FuncRequest const & func, idx_type & idx, pos_type & pos);
+	void doExtern(FuncRequest const & func, BufferView &);
 	///
 	void glueall();
 	///

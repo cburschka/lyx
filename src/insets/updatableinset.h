@@ -25,7 +25,7 @@ class UpdatableInset : public InsetOld {
 public:
 	///
 	virtual EDITABLE editable() const;
-	/// identification as math inset
+	/// identification as text inset in a cursor slice
 	UpdatableInset * asUpdatableInset() { return this; }
 
 	/// return the cursor pos, relative to the inset pos
@@ -37,18 +37,16 @@ public:
 		{ return InsetOld::scroll(recursive); }
 	///
 	virtual bool showInsetDialog(BufferView *) const { return false; }
-	///
-	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {}
 
 protected:
 	///  An updatable inset could handle lyx editing commands
 	virtual
 	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
+	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 	/// scrolls to absolute position in bufferview-workwidth * sx units
-	void scroll(BufferView *, float sx) const;
+	void scroll(BufferView &, float sx) const;
 	/// scrolls offset pixels
-	void scroll(BufferView *, int offset) const;
+	void scroll(BufferView &, int offset) const;
 };
 
 #endif

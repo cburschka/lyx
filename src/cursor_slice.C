@@ -51,6 +51,12 @@ CursorSlice::idx_type CursorSlice::idx() const
 }
 
 
+CursorSlice::idx_type & CursorSlice::idx()
+{
+	return idx_;
+}
+
+
 void CursorSlice::par(par_type par)
 {
 	par_ = par;
@@ -58,6 +64,12 @@ void CursorSlice::par(par_type par)
 
 
 CursorSlice::par_type CursorSlice::par() const
+{
+	return par_;
+}
+
+
+CursorSlice::par_type & CursorSlice::par()
 {
 	return par_;
 }
@@ -75,6 +87,20 @@ CursorSlice::pos_type CursorSlice::pos() const
 }
 
 
+CursorSlice::pos_type & CursorSlice::pos()
+{
+	return pos_;
+}
+
+
+CursorSlice::pos_type CursorSlice::lastpos() const
+{
+	BOOST_ASSERT(inset_);
+#warning implement me for texted, too.
+	return inset_->asMathInset() ? cell().size() : 0;
+}
+
+
 void CursorSlice::boundary(bool boundary)
 {
 	boundary_ = boundary;
@@ -87,6 +113,20 @@ bool CursorSlice::boundary() const
 }
 
 
+CursorSlice::row_type CursorSlice::row() const
+{
+	BOOST_ASSERT(asMathInset());
+	asMathInset()->row(idx_);
+}
+
+
+CursorSlice::col_type CursorSlice::col() const
+{
+	BOOST_ASSERT(asMathInset());
+	asMathInset()->col(idx_);
+}
+
+
 MathInset * CursorSlice::asMathInset() const
 {
 	return inset_ ? inset_->asMathInset() : 0;
@@ -96,13 +136,6 @@ MathInset * CursorSlice::asMathInset() const
 UpdatableInset * CursorSlice::asUpdatableInset() const
 {
 	return inset_ ? inset_->asUpdatableInset() : 0;
-}
-
-
-void CursorSlice::cell(CursorSlice::idx_type idx) const
-{
-	BOOST_ASSERT(asMathInset());
-	asMathInset()->cell(idx);
 }
 
 

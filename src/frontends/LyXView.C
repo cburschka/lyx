@@ -185,12 +185,9 @@ void LyXView::updateWindowTitle()
 }
 
 
-void LyXView::dispatch(FuncRequest const & req)
+void LyXView::dispatch(FuncRequest const & cmd)
 {
-	// substitute the correct BufferView here
-	FuncRequest r = req;
-	r.setView(view().get());
-	getLyXFunc().dispatch(r);
+	getLyXFunc().dispatch(cmd);
 }
 
 

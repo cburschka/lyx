@@ -48,16 +48,13 @@ void ControlThesaurus::replace(string const & newstr)
 					  true,  // match word
 					  false, // all words
 					  true); // forward
-	FuncRequest const fr(kernel().bufferview(), LFUN_WORD_REPLACE, data);
-	kernel().dispatch(fr);
+	kernel().dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }
 
 
-Thesaurus::Meanings const &
-ControlThesaurus::getMeanings(string const & str)
+Thesaurus::Meanings const & ControlThesaurus::getMeanings(string const & str)
 {
 	if (str != laststr_)
 		meanings_ = thesaurus.lookup(str);
-
 	return meanings_;
 }

@@ -208,19 +208,16 @@ int InsetERT::docbook(Buffer const &, ostream & os,
 }
 
 
-DispatchResult
-InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+DispatchResult InsetERT::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
-	case LFUN_INSET_MODIFY:
-                {
-			InsetCollapsable::CollapseStatus st;
-
-			InsetERTMailer::string2params(cmd.argument, st);
-			setStatus(st);
-			return DispatchResult(true, true);
-		}
+	case LFUN_INSET_MODIFY: {
+		InsetCollapsable::CollapseStatus st;
+		InsetERTMailer::string2params(cmd.argument, st);
+		setStatus(st);
+		return DispatchResult(true, true);
+	}
 
 	case LFUN_LAYOUT:
 	case LFUN_BOLD:
@@ -240,7 +237,7 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 		return DispatchResult(true);
 
 	default:
-		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
+		return InsetCollapsable::priv_dispatch(bv, cmd);
 	}
 }
 

@@ -69,9 +69,8 @@ using std::endl;
 using std::string;
 
 
-InsetOld * createInset(FuncRequest const & cmd)
+InsetOld * createInset(BufferView * bv, FuncRequest const & cmd)
 {
-	BufferView * bv = cmd.view();
 	BufferParams const & params = bv->buffer()->params();
 
 	switch (cmd.action) {
@@ -163,7 +162,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 		if (icp.getContents().empty()) {
 			lv->getDialogs().show("index", data, 0);
 		} else {
-			lv->dispatch(FuncRequest(bv, LFUN_INSET_APPLY, data));
+			lv->dispatch(FuncRequest(LFUN_INSET_APPLY, data));
 		}
 		return 0;
 	}
@@ -235,7 +234,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 			return new InsetERT(params, st);
 
 		} else if (name == "external") {
-			Buffer const & buffer = *cmd.view()->buffer();
+			Buffer const & buffer = *bv->buffer();
 			InsetExternalParams iep;
 			InsetExternalMailer::string2params(cmd.argument,
 							   buffer, iep);
@@ -244,7 +243,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 			return inset.release();
 
 		} else if (name == "graphics") {
-			Buffer const & buffer = *cmd.view()->buffer();
+			Buffer const & buffer = *bv->buffer();
 			InsetGraphicsParams igp;
 			InsetGraphicsMailer::string2params(cmd.argument,
 							   buffer, igp);

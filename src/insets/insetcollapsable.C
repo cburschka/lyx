@@ -213,13 +213,12 @@ FuncRequest InsetCollapsable::adjustCommand(FuncRequest const & cmd)
 }
 
 
-DispatchResult InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
+DispatchResult
+InsetCollapsable::lfunMouseRelease(BufferView & bv, FuncRequest const & cmd)
 {
-	BufferView * bv = cmd.view();
-
 	if (cmd.button() == mouse_button::button3) {
 		lyxerr << "InsetCollapsable::lfunMouseRelease 0" << endl;
-		showInsetDialog(bv);
+		showInsetDialog(&bv);
 		return DispatchResult(true, true);
 	}
 
@@ -227,7 +226,7 @@ DispatchResult InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 	case Collapsed:
 		lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
 		setStatus(Open);
-		edit(bv, true);
+		edit(&bv, true);
 		return DispatchResult(true, true);
 
 	case Open:
@@ -235,13 +234,12 @@ DispatchResult InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 			lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
 			setStatus(Collapsed);
 			return DispatchResult(false, FINISHED_RIGHT);
-		} else {
-			lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
-			return inset.dispatch(adjustCommand(cmd));
-		}	
+		}
+		lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
+		return inset.dispatch(bv, adjustCommand(cmd));
 
 	case Inlined:
-		return inset.dispatch(cmd);
+		return inset.dispatch(bv, cmd);
 	}
 
 	return DispatchResult(true, true);
@@ -329,27 +327,27 @@ void InsetCollapsable::edit(BufferView * bv, int x, int y)
 
 
 DispatchResult
-InsetCollapsable::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
+InsetCollapsable::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	//lyxerr << "\nInsetCollapsable::priv_dispatch (begin): cmd: " << cmd
 	//	<< "  button y: " << button_dim.y2 << endl;
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
 			if (status_ == Inlined)
-				inset.dispatch(cmd);
+				inset.dispatch(bv, cmd);
 			else if (status_ == Open && cmd.y > button_dim.y2)
-				inset.dispatch(adjustCommand(cmd));
+				inset.dispatch(bv, adjustCommand(cmd));
 			return DispatchResult(true, true);
 
 		case LFUN_MOUSE_MOTION:
 			if (status_ == Inlined)
-				inset.dispatch(cmd);
+				inset.dispatch(bv, cmd);
 			else if (status_ == Open && cmd.y > button_dim.y2)
-				inset.dispatch(adjustCommand(cmd));
+				inset.dispatch(bv, adjustCommand(cmd));
 			return DispatchResult(true, true);
 
 		case LFUN_MOUSE_RELEASE:
-			return lfunMouseRelease(cmd);
+			return lfunMouseRelease(bv, cmd);
 
 		case LFUN_INSET_TOGGLE:
 			if (inset.text_.toggleInset())
@@ -363,7 +361,7 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			}
 
 		default:
-			return inset.dispatch(adjustCommand(cmd));
+			return inset.dispatch(bv, adjustCommand(cmd));
 	}
 	//lyxerr << "InsetCollapsable::priv_dispatch (end)" << endl;
 }
@@ -463,13 +461,13 @@ void InsetCollapsable::setLabelFont(LyXFont & font)
 }
 
 
-void InsetCollapsable::scroll(BufferView * bv, float sx) const
+void InsetCollapsable::scroll(BufferView & bv, float sx) const
 {
 	UpdatableInset::scroll(bv, sx);
 }
 
 
-void InsetCollapsable::scroll(BufferView * bv, int offset) const
+void InsetCollapsable::scroll(BufferView & bv, int offset) const
 {
 	UpdatableInset::scroll(bv, offset);
 }

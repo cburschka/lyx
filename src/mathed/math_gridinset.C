@@ -751,115 +751,119 @@ int MathGridInset::cellYOffset(idx_type idx) const
 }
 
 
-bool MathGridInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
-	int targetx) const
+bool MathGridInset::idxUpDown(BufferView & bv, bool up, int targetx) const
 {
+	CursorSlice & cur = cursorTip(bv);
 	if (up) {
-		if (idx < ncols())
+		if (cur.idx() < ncols())
 			return false;
-		idx -= ncols();
-		pos = cell(idx).x2pos(targetx - cell(idx).xo());
-		return true;
+		cur.idx() -= ncols();
 	} else {
-		if (idx >= ncols() * (nrows() - 1))
+		if (cur.idx() >= ncols() * (nrows() - 1))
 			return false;
-		idx += ncols();
-		pos = cell(idx).x2pos(targetx - cell(idx).xo());
-		return true;
+		cur.idx() += ncols();
 	}
+	cur.pos() = cur.cell().x2pos(targetx - cur.cell().xo());
+	return true;
 }
 
 
-bool MathGridInset::idxLeft(idx_type & idx, pos_type & pos) const
+bool MathGridInset::idxLeft(BufferView & bv) const
 {
 	// leave matrix if on the left hand edge
-	if (col(idx) == 0)
+	CursorSlice & cur = cursorTip(bv);
+	if (cur.col() == 0)
 		return false;
-	--idx;
-	pos = cell(idx).size();
+	--cur.idx();
+	cur.pos() = cur.lastpos();
 	return true;
 }
 
 
-bool MathGridInset::idxRight(idx_type & idx, pos_type & pos) const
+bool MathGridInset::idxRight(BufferView & bv) const
 {
 	// leave matrix if on the right hand edge
-	if (col(idx) + 1 == ncols())
+	CursorSlice & cur = cursorTip(bv);
+	if (cur.col() + 1 == ncols())
 		return false;
-	++idx;
-	pos = 0;
+	++cur.idx();
+	cur.pos() = 0;
 	return true;
 }
 
 
-bool MathGridInset::idxFirst(idx_type & idx, pos_type & pos) const
+bool MathGridInset::idxFirst(BufferView & bv) const
 {
+	CursorSlice & cur = cursorTip(bv);
 	switch (v_align_) {
 		case 't':
-			idx = 0;
+			cur.idx() = 0;
 			break;
 		case 'b':
-			idx = (nrows() - 1) * ncols();
+			cur.idx() = (nrows() - 1) * ncols();
 			break;
 		default:
-			idx = ((nrows() - 1) / 2) * ncols();
+			cur.idx() = ((nrows() - 1) / 2) * ncols();
 	}
-	pos = 0;
+	cur.pos() = 0;
 	return true;
 }
 
 
-bool MathGridInset::idxLast(idx_type & idx, pos_type & pos) const
+bool MathGridInset::idxLast(BufferView & bv) const
 {
+	CursorSlice & cur = cursorTip(bv);
 	switch (v_align_) {
 		case 't':
-			idx = ncols() - 1;
+			cur.idx() = ncols() - 1;
 			break;
 		case 'b':
-			idx = nargs() - 1;
+			cur.idx() = nargs() - 1;
 			break;
 		default:
-			idx = ((nrows() - 1) / 2 + 1) * ncols() - 1;
+			cur.idx() = ((nrows() - 1) / 2 + 1) * ncols() - 1;
 	}
-	pos = cell(idx).size();
+	cur.pos() = cur.lastpos();
 	return true;
 }
 
 
-bool MathGridInset::idxHome(idx_type & idx, pos_type & pos) const
+bool MathGridInset::idxHome(BufferView & bv) const
 {
-	if (pos > 0) {
-		pos = 0;
+	CursorSlice & cur = cursorTip(bv);
+	if (cur.pos() > 0) {
+		cur.pos() = 0;
 		return true;
 	}
-	if (col(idx) > 0) {
-		idx -= idx % ncols();
-		pos = 0;
+	if (cur.col() > 0) {
+		cur.idx() -= cur.idx() % ncols();
+		cur.pos() = 0;
 		return true;
 	}
-	if (idx > 0) {
-		idx = 0;
-		pos = 0;
+	if (cur.idx() > 0) {
+		cur.idx() = 0;
+		cur.pos() = 0;
 		return true;
 	}
 	return false;
 }
 
 
-bool MathGridInset::idxEnd(idx_type & idx, pos_type & pos) const
+bool MathGridInset::idxEnd(BufferView & bv) const
 {
-	if (pos < cell(idx).size()) {
-		pos = cell(idx).size();
+	CursorSlice & cur = cursorTip(bv);
+	if (cur.pos() < cur.lastpos()) {
+		cur.pos() = cur.lastpos();
 		return true;
 	}
-	if (col(idx) < ncols() - 1) {
-		idx = idx - idx % ncols() + ncols() - 1;
-		pos = cell(idx).size();
+	if (cur.col() < ncols() - 1) {
+		cur.idx() = cur.idx() - cur.idx() % ncols() + ncols() - 1;
+		cur.pos() = cur.lastpos();
 		return true;
 	}
-	if (idx < nargs() - 1) {
-		idx = nargs() - 1;
-		pos = cell(idx).size();
+	if (cur.idx() < nargs() - 1) {
+		cur.idx() = nargs() - 1;
+		cur.pos() = cur.lastpos();
 		return true;
 	}
 	return false;
@@ -1029,22 +1033,24 @@ int MathGridInset::border() const
 }
 
 
-void MathGridInset::splitCell(idx_type & idx, pos_type & pos)
+void MathGridInset::splitCell(BufferView & bv)
 {
-	if (idx + 1 == nargs())
+	CursorSlice & cur = cursorTip(bv);
+	if (cur.idx() + 1 == nargs())
 		return;
-	MathArray ar = cell(idx);
-	ar.erase(0, pos);
-	cell(idx).erase(pos, cell(idx).size());
-	++idx;
-	pos = 0;
-	cell(idx).insert(0, ar);
+	MathArray ar = cur.cell();
+	ar.erase(0, cur.pos());
+	cur.cell().erase(cur.pos(), cur.lastpos());
+	++cur.idx();
+	cur.pos() = 0;
+	cur.cell().insert(0, ar);
 }
 
 
-DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
-	idx_type & idx, pos_type & pos)
+DispatchResult
+MathGridInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
+	CursorSlice & cur = cursorTip(bv);
 	switch (cmd.action) {
 
 		case LFUN_MOUSE_RELEASE:
@@ -1055,7 +1061,7 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 			return DispatchResult(false);
 
 		case LFUN_INSET_DIALOG_UPDATE:
-			GridInsetMailer(*this).updateDialog(cmd.view());
+			GridInsetMailer(*this).updateDialog(&bv);
 			return DispatchResult(false);
 
 		// insert file functions
@@ -1067,33 +1073,33 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 			//	return;
 			//}
 			if (nrows() > 1)
-				delRow(row(idx));
-			if (idx >= nargs())
-				idx = nargs() - 1;
-			if (pos > cell(idx).size())
-				pos = cell(idx).size();
+				delRow(cur.row());
+			if (cur.idx() >= nargs())
+				cur.idx() = nargs() - 1;
+			if (cur.pos() > cur.lastpos())
+				cur.pos() = cur.lastpos();
 			return DispatchResult(true, FINISHED);
 
 		case LFUN_CELL_SPLIT:
 			//recordUndo(bv, Undo::ATOMIC);
-			splitCell(idx, pos);
+			splitCell(bv);
 			return DispatchResult(true, FINISHED);
 
 		case LFUN_BREAKLINE: {
 			//recordUndo(bv, Undo::INSERT);
-			row_type const r = row(idx);
+			row_type const r = cur.row();
 			addRow(r);
 
 			// split line
-			for (col_type c = col(idx) + 1; c < ncols(); ++c)
+			for (col_type c = col(cur.idx()) + 1; c < ncols(); ++c)
 				std::swap(cell(index(r, c)), cell(index(r + 1, c)));
 
 			// split cell
-			splitCell(idx, pos);
-			std::swap(cell(idx), cell(idx + ncols() - 1));
-			if (idx > 0)
-				--idx;
-			pos = cell(idx).size();
+			splitCell(bv);
+			std::swap(cell(cur.idx()), cell(cur.idx() + ncols() - 1));
+			if (cur.idx() > 0)
+				--cur.idx();
+			cur.idx() = cur.lastpos();
 
 			//mathcursor->normalize();
 			return DispatchResult(true, FINISHED);
@@ -1111,45 +1117,45 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 			else if (s == "valign-bottom")
 				valign('b');
 			else if (s == "align-left")
-				halign('l', col(idx));
+				halign('l', col(cur.idx()));
 			else if (s == "align-right")
-				halign('r', col(idx));
+				halign('r', col(cur.idx()));
 			else if (s == "align-center")
-				halign('c', col(idx));
+				halign('c', col(cur.idx()));
 			else if (s == "append-row")
 				for (int i = 0, n = extractInt(is); i < n; ++i)
-					addRow(row(idx));
+					addRow(cur.row());
 			else if (s == "delete-row")
 				for (int i = 0, n = extractInt(is); i < n; ++i) {
-					delRow(row(idx));
-					if (idx > nargs())
-						idx -= ncols();
+					delRow(cur.row());
+					if (cur.idx() > nargs())
+						cur.idx() -= ncols();
 				}
 			else if (s == "copy-row")
 				for (int i = 0, n = extractInt(is); i < n; ++i)
-					copyRow(row(idx));
+					copyRow(cur.row());
 			else if (s == "swap-row")
-				swapRow(row(idx));
+				swapRow(cur.row());
 			else if (s == "append-column")
 				for (int i = 0, n = extractInt(is); i < n; ++i) {
-					row_type r = row(idx);
-					col_type c = col(idx);
+					row_type r = cur.row();
+					col_type c = col(cur.idx());
 					addCol(c);
-					idx = index(r, c);
+					cur.idx() = index(r, c);
 				}
 			else if (s == "delete-column")
 				for (int i = 0, n = extractInt(is); i < n; ++i) {
-					row_type r = row(idx);
-					col_type c = col(idx);
-					delCol(col(idx));
-					idx = index(r, c);
-					if (idx > nargs())
-						idx -= ncols();
+					row_type r = cur.row();
+					col_type c = col(cur.idx());
+					delCol(col(cur.idx()));
+					cur.idx() = index(r, c);
+					if (cur.idx() > nargs())
+						cur.idx() -= ncols();
 				}
 			else if (s == "copy-column")
-				copyCol(col(idx));
+				copyCol(col(cur.idx()));
 			else if (s == "swap-column")
-				swapCol(col(idx));
+				swapCol(col(cur.idx()));
 			else
 				return DispatchResult(false);
 			lyxerr << "returning DispatchResult(true, FINISHED)" << endl;
@@ -1162,19 +1168,21 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 			mathed_parse_normal(grid, cmd.argument);
 			if (grid.nargs() == 1) {
 				// single cell/part of cell
-				cell(idx).insert(pos, grid.cell(0));
-				pos += grid.cell(0).size();
+				cur.cell().insert(cur.pos(), grid.cell(0));
+				cur.pos() += grid.cell(0).size();
 			} else {
 				// multiple cells
-				col_type const numcols = min(grid.ncols(), ncols() - col(idx));
-				row_type const numrows = min(grid.nrows(), nrows() - row(idx));
+				col_type const numcols = min(grid.ncols(), ncols() -
+col(cur.idx()));
+				row_type const numrows = min(grid.nrows(), nrows() -
+cur.row());
 				for (row_type r = 0; r < numrows; ++r) {
 					for (col_type c = 0; c < numcols; ++c) {
-						idx_type i = index(r + row(idx), c + col(idx));
+						idx_type i = index(r + cur.row(), c + col(cur.idx()));
 						cell(i).insert(0, grid.cell(grid.index(r, c)));
 					}
 					// append the left over horizontal cells to the last column
-					idx_type i = index(r + row(idx), ncols() - 1);
+					idx_type i = index(r + cur.row(), ncols() - 1);
 					for (MathInset::col_type c = numcols; c < grid.ncols(); ++c)
 						cell(i).append(grid.cell(grid.index(r, c)));
 				}
@@ -1188,6 +1196,6 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 		}
 
 		default:
-			return MathNestInset::priv_dispatch(cmd, idx, pos);
+			return MathNestInset::priv_dispatch(bv, cmd);
 	}
 }

@@ -55,12 +55,11 @@ void CommandInset::draw(PainterInfo & pi, int x, int y) const
 
 
 DispatchResult
-CommandInset::priv_dispatch(FuncRequest const & cmd,
-			    idx_type & idx, pos_type & pos)
+CommandInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 		default:
-			return MathNestInset::priv_dispatch(cmd, idx, pos);
+			return MathNestInset::priv_dispatch(bv, cmd);
 	}
 	return DispatchResult(false);
 }

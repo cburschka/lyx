@@ -298,14 +298,13 @@ void InsetText::edit(BufferView * bv, int x, int y)
 }
 
 
-DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
-	idx_type &, pos_type &)
+DispatchResult
+InsetText::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	//lyxerr << "InsetText::priv_dispatch (begin), act: "
 	//      << cmd.action << " " << endl;
 
-	BufferView * bv = cmd.view();
-	setViewCache(bv);
+	setViewCache(&bv);
 
 	DispatchResult result;
 	result.dispatched(true);
@@ -314,10 +313,10 @@ DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
-		bv->fullCursor(theTempCursor);
+		bv.fullCursor(theTempCursor);
 		// fall through
 	default:
-		result = text_.dispatch(cmd);
+		result = text_.dispatch(bv, cmd);
 		break;
 	}
 
@@ -327,7 +326,7 @@ DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
 	if (!was_empty && paragraphs().begin()->empty() &&
 	    paragraphs().size() == 1) {
 		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setLanguage(bv->getParentLanguage(this));
+		font.setLanguage(bv.getParentLanguage(this));
 		text_.setFont(font, false);
 	}
 

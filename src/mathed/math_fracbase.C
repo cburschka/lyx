@@ -19,25 +19,25 @@ MathFracbaseInset::MathFracbaseInset()
 {}
 
 
-bool MathFracbaseInset::idxRight(idx_type &, pos_type &) const
+bool MathFracbaseInset::idxRight(BufferView &) const
 {
 	return false;
 }
 
 
-bool MathFracbaseInset::idxLeft(idx_type &, pos_type &) const
+bool MathFracbaseInset::idxLeft(BufferView &) const
 {
 	return false;
 }
 
 
-bool MathFracbaseInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
-	int targetx) const
+bool MathFracbaseInset::idxUpDown(BufferView & bv, bool up, int targetx) const
 {
+	CursorSlice & cur = cursorTip(bv);
 	MathInset::idx_type target = !up; // up ? 0 : 1, since upper cell has idx 0
-	if (idx == target)
+	if (cur.idx() == target)
 		return false;
-	idx = target;
-	pos = cell(idx).x2pos(targetx);
+	cur.idx() = target;
+	cur.pos() = cell(target).x2pos(targetx);
 	return true;
 }

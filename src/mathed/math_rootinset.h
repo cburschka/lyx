@@ -24,7 +24,7 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	bool idxUpDown(idx_type & idx, pos_type & pos, bool up, int targetx) const;
+	bool idxUpDown(BufferView &, bool up, int targetx) const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

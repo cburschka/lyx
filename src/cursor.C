@@ -54,7 +54,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	for (int i = cursor_.size() - 1; i >= 1; --i) {
 		CursorSlice const & citem = cursor_[i];
 		lyxerr << "trying to dispatch to inset " << citem.inset_ << endl;
-		DispatchResult res = citem.inset_->dispatch(cmd);
+		DispatchResult res = citem.inset_->dispatch(*bv_, cmd);
 		if (res.dispatched()) {
 			lyxerr << " successfully dispatched to inset " << citem.inset_ << endl;
 			return DispatchResult(true, true);
@@ -63,19 +63,19 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 		switch (res.val()) {
 			case FINISHED:
 				pop(i);
-				cmd = FuncRequest(bv_, LFUN_FINISHED_LEFT);
+				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 				break;
 			case FINISHED_RIGHT:
 				pop(i);
-				cmd = FuncRequest(bv_, LFUN_FINISHED_RIGHT);
+				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 				break;
 			case FINISHED_UP:
 				pop(i);
-				cmd = FuncRequest(bv_, LFUN_FINISHED_UP);
+				cmd = FuncRequest(LFUN_FINISHED_UP);
 				break;
 			case FINISHED_DOWN:
 				pop(i);
-				cmd = FuncRequest(bv_, LFUN_FINISHED_DOWN);
+				cmd = FuncRequest(LFUN_FINISHED_DOWN);
 				break;
 			default:
 				lyxerr << "not handled on level " << i << " val: " << res.val() << endl;
@@ -83,7 +83,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 		}
 	}
 	lyxerr << "trying to dispatch to main text " << bv_->text() << endl;
-	DispatchResult res = bv_->text()->dispatch(cmd);
+	DispatchResult res = bv_->text()->dispatch(*bv_, cmd);
 	lyxerr << "   result: " << res.val() << endl;
 
 	if (!res.dispatched()) {
@@ -97,7 +97,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 }
 
 
-void LCursor::push(UpdatableInset * inset)
+void LCursor::push(InsetBase * inset)
 {
 	lyxerr << "LCursor::push()  inset: " << inset << endl;
 	cursor_.push_back(CursorSlice(inset));
@@ -186,9 +186,11 @@ void LCursor::getPos(int & x, int & y) const
 		// inset->draw() is not called: this doesn't update
 		// inset.top_baseline, so getCursor() returns an old value.
 		// Ugly as you like.
-		inset->getCursorPos(cursor_.back().idx_, x, y);
-		x += inset->x();
-		y += cached_y_;
+		if (inset) {
+			inset->getCursorPos(cursor_.back().idx_, x, y);
+			x += inset->x();
+			y += cached_y_;
+		}
 	}
 }
 

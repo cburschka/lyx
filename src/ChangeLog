@@ -1,3 +1,19 @@
+
+2004-01-15  André Pönitz  <poenitz@gmx.net>
+
+	* cursor_slice.[Ch]: add a few covienience functions
+
+	* funcrequest.[Ch]: remove BufferView * member
+
+	* BufferView_pimpl.C:
+	* cursor.C:
+	* factory.[Ch]:
+	* lyxfind.[Ch]:
+	* lyxfunc.C:
+	* lyxtext.h:
+	* text3.C:
+	* undo.[Ch]: adjust to this and changed signature of Inset::priv_dispatch()
+
 2004-01-14  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* text.C (getWord): fix getWord (and thus LFUN_WORDSEL)

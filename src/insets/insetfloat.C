@@ -156,30 +156,27 @@ InsetFloat::~InsetFloat()
 
 
 DispatchResult
-InsetFloat::priv_dispatch(FuncRequest const & cmd,
-			  idx_type & idx, pos_type & pos)
+InsetFloat::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetFloatParams params;
 		InsetFloatMailer::string2params(cmd.argument, params);
-
 		params_.placement = params.placement;
 		params_.wide      = params.wide;
-
-		wide(params_.wide, cmd.view()->buffer()->params());
-		cmd.view()->update();
+		wide(params_.wide, bv.buffer()->params());
+		bv.update();
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE: {
-		InsetFloatMailer(*this).updateDialog(cmd.view());
+		InsetFloatMailer(*this).updateDialog(&bv);
 		return DispatchResult(true, true);
 	}
 
 	default:
-		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
+		return InsetCollapsable::priv_dispatch(bv, cmd);
 	}
 }
 

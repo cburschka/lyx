@@ -15,24 +15,14 @@
 #include "dispatchresult.h"
 
 
-DispatchResult
-InsetBase::dispatch(FuncRequest const & f, idx_type & i, pos_type & p)
+DispatchResult InsetBase::dispatch(BufferView & bv, FuncRequest const & cmd)
 {
-	return priv_dispatch(f, i, p);
+	return priv_dispatch(bv, cmd);
 }
 
 
 DispatchResult
-InsetBase::dispatch(FuncRequest const & f)
-{
-	idx_type i = 0;
-	pos_type p = 0;
-	return priv_dispatch(f, i, p);
-}
-
-
-DispatchResult
-InsetBase::priv_dispatch(FuncRequest const &, idx_type &, pos_type &)
+InsetBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	return DispatchResult(false);
 }

@@ -82,7 +82,7 @@ public:
 	///
 	std::string const editMessage() const;
 	///
-	void updateLocal(BufferView *) const;
+	void updateLocal(BufferView & bv) const;
 	///
 	bool insetAllowed(InsetOld::Code) const { return true; }
 	///
@@ -112,9 +112,9 @@ public:
 	/// get the absolute screen x,y of the cursor
 	void getCursorPos(int cell, int & x, int & y) const;
 	///
-	bool tabularFeatures(BufferView * bv, std::string const & what);
+	bool tabularFeatures(BufferView & bv, std::string const & what);
 	///
-	void tabularFeatures(BufferView * bv, LyXTabular::Feature feature,
+	void tabularFeatures(BufferView & bv, LyXTabular::Feature feature,
 			     std::string const & val = std::string());
 	///
 	void openLayoutDialog(BufferView *) const;
@@ -162,14 +162,14 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
+	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 private:
 	///
-	void lfunMousePress(FuncRequest const &);
+	void lfunMousePress(BufferView & bv, FuncRequest const & cmd);
 	///
-	void lfunMouseRelease(FuncRequest const &);
+	void lfunMouseRelease(BufferView & bv, FuncRequest const & cmd);
 	///
-	void lfunMouseMotion(FuncRequest const &);
+	void lfunMouseMotion(BufferView & bv, FuncRequest const & cmd);
 	///
 	void calculate_dimensions_of_cells(MetricsInfo & mi) const;
 	///
@@ -179,35 +179,35 @@ private:
 	void drawCellSelection(Painter &, int x, int baseline,
 			       int row, int column, int cell) const;
 	///
-	void setPos(BufferView *, int x, int y) const;
+	void setPos(BufferView &, int x, int y) const;
 	///
-	bool moveRight(BufferView *, CursorSlice & cur);
+	bool moveRight(BufferView &, CursorSlice & cur);
 	///
-	bool moveLeft(BufferView *, CursorSlice & cur);
+	bool moveLeft(BufferView &, CursorSlice & cur);
 	///
-	bool moveUp(BufferView *, CursorSlice & cur);
+	bool moveUp(BufferView &, CursorSlice & cur);
 	///
-	bool moveDown(BufferView *, CursorSlice & cur);
+	bool moveDown(BufferView &, CursorSlice & cur);
 
 	///
-	bool moveRightLock(BufferView *, CursorSlice & cur);
+	bool moveRightLock(BufferView &, CursorSlice & cur);
 	///
-	bool moveLeftLock(BufferView *, CursorSlice & cur);
+	bool moveLeftLock(BufferView &, CursorSlice & cur);
 	///
-	bool moveUpLock(BufferView *, CursorSlice & cur);
+	bool moveUpLock(BufferView &, CursorSlice & cur);
 	///
-	bool moveDownLock(BufferView *, CursorSlice & cur);
+	bool moveDownLock(BufferView &, CursorSlice & cur);
 
 	///
-	bool moveNextCell(BufferView *, CursorSlice & cur);
+	bool moveNextCell(BufferView &, CursorSlice & cur);
 	///
-	bool movePrevCell(BufferView *, CursorSlice & cur);
+	bool movePrevCell(BufferView &, CursorSlice & cur);
 
 
 	///
 	int getCellXPos(int cell) const;
 	///
-	void resetPos(BufferView *) const;
+	void resetPos(BufferView &) const;
 	///
 	void removeTabularRow();
 	///
@@ -215,24 +215,24 @@ private:
 	///
 	void setSelection(int start, int end) const;
 	///
-	void activateCellInset(BufferView *, int cell, int x, int y);
+	void activateCellInset(BufferView &, int cell, int x, int y);
 	///
-	void activateCellInset(BufferView *, int cell, bool behind);
+	void activateCellInset(BufferView &, int cell, bool behind);
 	///
 	bool hasPasteBuffer() const;
 	///
-	bool copySelection(BufferView *);
+	bool copySelection(BufferView &);
 	///
-	bool pasteSelection(BufferView *);
+	bool pasteSelection(BufferView &);
 	///
 	bool cutSelection(BufferParams const & bp);
 	///
-	bool isRightToLeft(BufferView *);
+	bool isRightToLeft(BufferView &);
 	///
 	void getSelection(int cell,
 		int & scol, int & ecol, int & srow, int & erow) const;
 	///
-	bool insertAsciiString(BufferView *, std::string const & buf, bool usePaste);
+	bool insertAsciiString(BufferView &, std::string const & buf, bool usePaste);
 
 	//
 	// Private structures and variables

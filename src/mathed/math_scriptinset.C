@@ -72,18 +72,20 @@ MathScriptInset * MathScriptInset::asScriptInset()
 }
 
 
-bool MathScriptInset::idxFirst(idx_type & idx, pos_type & pos) const
+bool MathScriptInset::idxFirst(BufferView & bv) const
 {
-	idx = 2;
-	pos = 0;
+	CursorSlice & cur = cursorTip(bv);
+	cur.idx() = 2;
+	cur.pos() = 0;
 	return true;
 }
 
 
-bool MathScriptInset::idxLast(idx_type & idx, pos_type & pos) const
+bool MathScriptInset::idxLast(BufferView & bv) const
 {
-	idx = 2;
-	pos = nuc().size();
+	CursorSlice & cur = cursorTip(bv);
+	cur.idx() = 2;
+	cur.pos() = nuc().size();
 	return true;
 }
 
@@ -313,36 +315,36 @@ bool MathScriptInset::hasDown() const
 }
 
 
-bool MathScriptInset::idxRight(idx_type &, pos_type &) const
+bool MathScriptInset::idxRight(BufferView &) const
 {
 	return false;
 }
 
 
-bool MathScriptInset::idxLeft(idx_type &, pos_type &) const
+bool MathScriptInset::idxLeft(BufferView &) const
 {
 	return false;
 }
 
 
-bool MathScriptInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
-	int) const
+bool MathScriptInset::idxUpDown(BufferView & bv, bool up, int) const
 {
-	if (idx == 1) {
+	CursorSlice & cur = cursorTip(bv);
+	if (cur.idx() == 1) {
 		// if we are 'up' we can't go further up
 		if (up)
 			return false;
 		// otherwise go to last base position
-		idx = 2;
-		pos = cell(2).size();
+		cur.idx() = 2;
+		cur.pos() = cur.lastpos();
 	}
 
-	else if (idx == 0) {
+	else if (cur.idx() == 0) {
 		// if we are 'down' we can't go further down
 		if (!up)
 			return false;
-		idx = 2;
-		pos = cell(2).size();
+		cur.idx() = 2;
+		cur.pos() = cur.lastpos();
 	}
 
 	else {
@@ -352,9 +354,9 @@ bool MathScriptInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
 			return false;
 		// go up/down only if in the last position
 		// or in the first position of something with displayed limits
-		if (pos == cell(2).size() || (pos == 0 && hasLimits())) {
-			idx = up;
-			pos = 0;
+		if (cur.pos() == cur.lastpos() || (cur.pos() == 0 && hasLimits())) {
+			cur.idx() = up;
+			cur.pos() = 0;
 			return true;
 		}
 		return false;
@@ -513,8 +515,7 @@ void MathScriptInset::notifyCursorLeaves(idx_type idx)
 
 
 DispatchResult
-MathScriptInset::priv_dispatch(FuncRequest const & cmd,
-			  idx_type & idx, pos_type & pos)
+MathScriptInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	if (cmd.action == LFUN_MATH_LIMITS) {
 		if (!cmd.argument.empty()) {
@@ -531,5 +532,5 @@ MathScriptInset::priv_dispatch(FuncRequest const & cmd,
 		return DispatchResult(true, true);
 	}
 
-	return MathNestInset::priv_dispatch(cmd, idx, pos);
+	return MathNestInset::priv_dispatch(bv, cmd);
 }

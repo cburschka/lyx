@@ -106,9 +106,9 @@ string const replace2string(string const & search, string const & replace,
 }
 
 
-void find(FuncRequest const & ev)
+void find(BufferView * bv, FuncRequest const & ev)
 {
-	if (!ev.view() || ev.action != LFUN_WORD_FIND)
+	if (!bv || ev.action != LFUN_WORD_FIND)
 		return;
 
 	// data is of the form
@@ -121,7 +121,6 @@ void find(FuncRequest const & ev)
 	bool matchword     = parse_bool(howto);
 	bool forward       = parse_bool(howto);
 
-	BufferView * bv = ev.view();
 	bool const found = ::find(bv, search,
 				  forward, casesensitive, matchword);
 
@@ -130,9 +129,9 @@ void find(FuncRequest const & ev)
 }
 
 
-void replace(FuncRequest const & ev)
+void replace(BufferView * bv, FuncRequest const & ev)
 {
-	if (!ev.view() || ev.action != LFUN_WORD_REPLACE)
+	if (!bv || ev.action != LFUN_WORD_REPLACE)
 		return;
 
 	// data is of the form
@@ -149,7 +148,6 @@ void replace(FuncRequest const & ev)
 	bool all           = parse_bool(howto);
 	bool forward       = parse_bool(howto);
 
-	BufferView * bv = ev.view();
 	LyXView * lv = bv->owner();
 
 	int const replace_count = all ?

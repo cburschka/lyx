@@ -108,7 +108,7 @@ InsetInclude::~InsetInclude()
 
 
 DispatchResult
-InsetInclude::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
+InsetInclude::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -116,23 +116,23 @@ InsetInclude::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		InsetCommandParams p;
 		InsetIncludeMailer::string2params(cmd.argument, p);
 		if (!p.getCmdName().empty()) {
-			set(p, *cmd.view()->buffer());
-			cmd.view()->update();
+			set(p, *bv.buffer());
+			bv.update();
 		}
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetIncludeMailer(*this).updateDialog(cmd.view());
+		InsetIncludeMailer(*this).updateDialog(&bv);
 		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
 		if (button_.box().contains(cmd.x, cmd.y))
-			InsetIncludeMailer(*this).showDialog(cmd.view());
+			InsetIncludeMailer(*this).showDialog(&bv);
 		return DispatchResult(true, true);
 
 	case LFUN_INSET_DIALOG_SHOW:
-		InsetIncludeMailer(*this).showDialog(cmd.view());
+		InsetIncludeMailer(*this).showDialog(&bv);
 		return DispatchResult(true, true);
 
 	default:

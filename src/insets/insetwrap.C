@@ -80,8 +80,7 @@ InsetWrap::~InsetWrap()
 
 
 DispatchResult
-InsetWrap::priv_dispatch(FuncRequest const & cmd,
-			 idx_type & idx, pos_type & pos)
+InsetWrap::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
@@ -91,16 +90,16 @@ InsetWrap::priv_dispatch(FuncRequest const & cmd,
 		params_.placement = params.placement;
 		params_.width     = params.width;
 
-		cmd.view()->update();
+		bv.update();
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetWrapMailer(*this).updateDialog(cmd.view());
+		InsetWrapMailer(*this).updateDialog(&bv);
 		return DispatchResult(true, true);
 
 	default:
-		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
+		return InsetCollapsable::priv_dispatch(bv, cmd);
 	}
 }
 

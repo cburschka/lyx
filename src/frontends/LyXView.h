@@ -130,7 +130,7 @@ public:
 	void resetAutosaveTimer();
 
 	/// dispatch to current BufferView
-	void dispatch(FuncRequest const & req);
+	void dispatch(FuncRequest const & cmd);
 
 	/** redraw \c inset in all the BufferViews in which it is currently
 	 *  visible. If successful return a pointer to the owning Buffer.

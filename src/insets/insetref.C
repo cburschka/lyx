@@ -40,21 +40,19 @@ InsetRef::InsetRef(InsetRef const & ir)
 
 
 DispatchResult
-InsetRef::priv_dispatch(FuncRequest const & cmd,
-			idx_type & idx, pos_type & pos)
+InsetRef::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
 		// Eventually trigger dialog with button 3 not 1
 		if (cmd.button() == mouse_button::button3)
-			cmd.view()->owner()->
-				dispatch(FuncRequest(LFUN_REF_GOTO, getContents()));
+			bv.owner()->dispatch(FuncRequest(LFUN_REF_GOTO, getContents()));
 		else
-			InsetCommandMailer("ref", *this).showDialog(cmd.view());
+			InsetCommandMailer("ref", *this).showDialog(&bv);
 		return DispatchResult(true, true);
 
 	default:
-		return InsetCommand::priv_dispatch(cmd, idx, pos);
+		return InsetCommand::priv_dispatch(bv, cmd);
 	}
 }
 

@@ -43,24 +43,24 @@ public:
 	void getScreenPos(idx_type idx, pos_type pos, int & x, int & y) const;
 
 	/// order of movement through the cells when pressing the left key
-	bool idxLeft(idx_type & idx, pos_type & pos) const;
+	bool idxLeft(BufferView &) const;
 	/// order of movement through the cells when pressing the right key
-	bool idxRight(idx_type & idx, pos_type & pos) const;
+	bool idxRight(BufferView &) const;
 
 	/// move one physical cell up
-	bool idxNext(idx_type & idx, pos_type & pos) const;
+	bool idxNext(BufferView &) const;
 	/// move one physical cell down
-	bool idxPrev(idx_type & idx, pos_type & pos) const;
+	bool idxPrev(BufferView &) const;
 
 	/// target pos when we enter the inset from the left by pressing "Right"
-	bool idxFirst(idx_type & idx, pos_type & pos) const;
+	bool idxFirst(BufferView &) const;
 	/// target pos when we enter the inset from the right by pressing "Left"
-	bool idxLast(idx_type & idx, pos_type & pos) const;
+	bool idxLast(BufferView &) const;
 
 	/// where should we go if we press home?
-	bool idxHome(idx_type & idx, pos_type & pos) const;
+	bool idxHome(BufferView &) const;
 	/// where should we go if we press end?
-	bool idxEnd(idx_type & idx, pos_type & pos) const;
+	bool idxEnd(BufferView &) const;
 
 	/// number of cells currently governed by us
 	idx_type nargs() const;
@@ -101,7 +101,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 
 	/// we store the cells in a vector
 	typedef std::vector<MathArray> cells_type;

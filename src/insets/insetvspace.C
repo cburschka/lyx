@@ -60,8 +60,7 @@ std::auto_ptr<InsetBase> InsetVSpace::clone() const
 
 
 DispatchResult
-InsetVSpace::priv_dispatch(FuncRequest const & cmd,
-			   idx_type & idx, pos_type & pos)
+InsetVSpace::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -71,11 +70,11 @@ InsetVSpace::priv_dispatch(FuncRequest const & cmd,
 	}
 
 	case LFUN_MOUSE_PRESS:
-		InsetVSpaceMailer(*this).showDialog(cmd.view());
+		InsetVSpaceMailer(*this).showDialog(&bv);
 		return DispatchResult(true, true);
 
 	default:
-		return InsetOld::priv_dispatch(cmd, idx, pos);
+		return InsetOld::priv_dispatch(bv, cmd);
 	}
 }
 

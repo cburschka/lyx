@@ -116,11 +116,11 @@ public:
 	///
 	int scroll(bool recursive = true) const;
 	///
-	void scroll(BufferView * bv, float sx) const {
+	void scroll(BufferView & bv, float sx) const {
 		UpdatableInset::scroll(bv, sx);
 	}
 	///
-	void scroll(BufferView * bv, int offset) const {
+	void scroll(BufferView & bv, int offset) const {
 		UpdatableInset::scroll(bv, offset);
 	}
 	///
@@ -156,7 +156,7 @@ public:
 private:
 	///
 	DispatchResult
-	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
+	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 	///
 	void updateLocal(BufferView *);
 	///

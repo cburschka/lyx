@@ -18,8 +18,6 @@
 #include <string>
 #include <iosfwd>
 
-class BufferView;
-
 /**
  * This class encapsulates a LyX action and its argument
  * in order to pass it around easily.
@@ -34,22 +32,9 @@ public:
 	FuncRequest(kb_action act, int x, int y, mouse_button::state button);
 	/// actions with extra argument
 	FuncRequest(kb_action act, std::string const & arg);
-	/// actions without extra argument
-	FuncRequest(BufferView * bv, kb_action act);
-	/// actions with extra argument
-	FuncRequest(BufferView * bv, kb_action act, std::string const & arg);
-	/// for mouse events
-	FuncRequest(BufferView * bv, kb_action act,
-		int x, int y, mouse_button::state button);
 	/// for changing requests a bit
 	FuncRequest(FuncRequest const & cmd, std::string const & arg);
-	/// for changing requests a bit
-	FuncRequest(FuncRequest const & cmd, BufferView * bv);
 
-	/// access to the view
-	BufferView * view() const;
-	/// access to the view
-	void setView(BufferView * bv);
 	/// access to button
 	mouse_button::state button() const;
 
@@ -61,10 +46,7 @@ public:
 	/// argument parsing, extract argument i as std::string
 	std::string getArg(unsigned int i) const;
 
-private:
-	/// the BufferView we are talking to
-	BufferView * view_;
-public:  // should be private, too...
+public:  // should be private
 	/// the action
 	kb_action action;
 	/// the action's std::string argument

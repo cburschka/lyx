@@ -135,18 +135,20 @@ MathInset::mode_type MathHullInset::currentMode() const
 }
 
 
-bool MathHullInset::idxFirst(idx_type & idx, pos_type & pos) const
+bool MathHullInset::idxFirst(BufferView & bv) const
 {
-	idx = 0;
-	pos = 0;
+	CursorSlice & cur = cursorTip(bv);
+	cur.idx() = 0;
+	cur.pos() = 0;
 	return true;
 }
 
 
-bool MathHullInset::idxLast(idx_type & idx, pos_type & pos) const
+bool MathHullInset::idxLast(BufferView & bv) const
 {
-	idx = nargs() - 1;
-	pos = cell(idx).size();
+	CursorSlice & cur = cursorTip(bv);
+	cur.idx() = nargs() - 1;
+	cur.pos() = cur.lastpos();
 	return true;
 }
 
@@ -694,9 +696,9 @@ void MathHullInset::check() const
 }
 
 
-void MathHullInset::doExtern
-	(FuncRequest const & func, idx_type & idx, pos_type & pos)
+void MathHullInset::doExtern(FuncRequest const & func, BufferView & bv)
 {
+	CursorSlice & cur = cursorTip(bv);
 	string lang;
 	string extra;
 	istringstream iss(func.argument.c_str());
@@ -719,72 +721,75 @@ void MathHullInset::doExtern
 	eq.push_back(MathAtom(new MathCharInset('=')));
 
 	// go to first item in line
-	idx -= idx % ncols();
-	pos = 0;
+	cur.idx() -= cur.idx() % ncols();
+	cur.pos() = 0;
 
 	if (getType() == "simple") {
-		size_type pos = cell(idx).find_last(eq);
+		size_type pos = cur.cell().find_last(eq);
 		MathArray ar;
 		if (mathcursor && mathcursor->selection()) {
 			asArray(mathcursor->grabAndEraseSelection(), ar);
-		} else if (pos == cell(idx).size()) {
-			ar = cell(idx);
+		} else if (pos == cur.cell().size()) {
+			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;
 		} else {
-			ar = MathArray(cell(idx).begin() + pos + 1, cell(idx).end());
+			ar = MathArray(cur.cell().begin() + pos + 1, cur.cell().end());
 			lyxerr << "use partial cell form pos: " << pos << endl;
 		}
-		cell(idx).append(eq);
-		cell(idx).append(pipeThroughExtern(lang, extra, ar));
-		pos = cell(idx).size();
+		cur.cell().append(eq);
+		cur.cell().append(pipeThroughExtern(lang, extra, ar));
+		cur.pos() = cur.lastpos();
 		return;
 	}
 
 	if (getType() == "equation") {
 		lyxerr << "use equation inset" << endl;
 		mutate("eqnarray");
-		MathArray & ar = cell(idx);
+		MathArray & ar = cur.cell();
 		lyxerr << "use cell: " << ar << endl;
-		cell(idx + 1) = eq;
-		cell(idx + 2) = pipeThroughExtern(lang, extra, ar);
+		++cur.idx();
+		cur.cell() = eq;
+		++cur.idx();
+		cur.cell() = pipeThroughExtern(lang, extra, ar);
 		// move to end of line
-		idx += 2;
-		pos = cell(idx).size();
+		cur.pos() = cur.lastpos();
 		return;
 	}
 
 	{
 		lyxerr << "use eqnarray" << endl;
-		idx -= idx % ncols();
-		idx += 2;
-		pos = 0;
-		MathArray ar = cell(idx);
+		cur.idx() += 2 - cur.idx() % ncols();
+		cur.pos() = 0;
+		MathArray ar = cur.cell();
 		lyxerr << "use cell: " << ar << endl;
 #ifdef WITH_WARNINGS
 #warning temporarily disabled
 #endif
-		addRow(row(idx));
-		cell(idx + 2) = eq;
-		cell(idx + 3) = pipeThroughExtern(lang, extra, ar);
-		idx += 3;
-		pos = cell(idx).size();
+		addRow(cur.row());
+		++cur.idx();
+		++cur.idx();
+		cur.cell() = eq;
+		++cur.idx();
+		cur.cell() = pipeThroughExtern(lang, extra, ar);
+		cur.pos() = cur.lastpos();
 	}
 }
 
 
-DispatchResult MathHullInset::priv_dispatch
-	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+DispatchResult
+MathHullInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
+	CursorSlice & cur = cursorTip(bv);
 	switch (cmd.action) {
 
 		case LFUN_BREAKLINE:
 			if (type_ == "simple" || type_ == "equation") {
 				mutate("eqnarray");
-				idx = 1;
-				pos = 0;
+				cur.idx() = 1;
+				cur.pos() = 0;
 				return DispatchResult(true, FINISHED);
 			}
-			return MathGridInset::priv_dispatch(cmd, idx, pos);
+			return MathGridInset::priv_dispatch(bv, cmd);
 
 		case LFUN_MATH_NUMBER:
 			//lyxerr << "toggling all numbers" << endl;
@@ -802,7 +807,7 @@ DispatchResult MathHullInset::priv_dispatch
 
 		case LFUN_MATH_NONUMBER:
 			if (display()) {
-				row_type r = (type_ == "multline") ? nrows() - 1 : row(idx);
+				row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
 				//recordUndo(bv, Undo::INSERT);
 				bool old = numbered(r);
 				//bv->owner()->message(old ? _("No number") : _("Number"));
@@ -811,7 +816,7 @@ DispatchResult MathHullInset::priv_dispatch
 			return DispatchResult(true, true);
 
 		case LFUN_INSERT_LABEL: {
-			row_type r = (type_ == "multline") ? nrows() - 1 : row(idx);
+			row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
 			string old_label = label(r);
 			string new_label = cmd.argument;
 
@@ -836,31 +841,31 @@ DispatchResult MathHullInset::priv_dispatch
 		}
 
 		case LFUN_MATH_EXTERN:
-			doExtern(cmd, idx, pos);
+			doExtern(cmd, bv);
 			return DispatchResult(true, FINISHED);
 
 		case LFUN_MATH_MUTATE: {
 			lyxerr << "Hull: MUTATE: " << cmd.argument << endl;
-			row_type r = row(idx);
-			col_type c = col(idx);
+			row_type r = cur.row();
+			col_type c = cur.col();
 			mutate(cmd.argument);
-			idx = r * ncols() + c;
-			if (idx >= nargs())
-				idx = nargs() - 1;
-			if (pos > cell(idx).size())
-				pos = cell(idx).size();
+			cur.idx() = r * ncols() + c;
+			if (cur.idx() >= nargs())
+				cur.idx() = nargs() - 1;
+			if (cur.pos() > cur.lastpos())
+				cur.pos() = cur.lastpos();
 			return DispatchResult(true, FINISHED);
 		}
 
 		case LFUN_MATH_DISPLAY: {
 			mutate(type_ == "simple" ? "equation" : "simple");
-			idx = 0;
-			pos = cell(idx).size();
+			cur.idx() = 0;
+			cur.pos() = cur.lastpos();
 			return DispatchResult(true, FINISHED);
 		}
 
 		default:
-			return MathGridInset::priv_dispatch(cmd, idx, pos);
+			return MathGridInset::priv_dispatch(bv, cmd);
 	}
 }
 

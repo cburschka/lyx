@@ -37,14 +37,14 @@ InsetOld::EDITABLE UpdatableInset::editable() const
 }
 
 
-void UpdatableInset::scroll(BufferView * bv, float s) const
+void UpdatableInset::scroll(BufferView & bv, float s) const
 {
 	if (!s) {
 		scx = 0;
 		return;
 	}
 
-	int const workW = bv->workWidth();
+	int const workW = bv.workWidth();
 	int const tmp_xo_ = xo_ - scx;
 
 	if (tmp_xo_ > 0 && tmp_xo_ + width() < workW)
@@ -60,7 +60,7 @@ void UpdatableInset::scroll(BufferView * bv, float s) const
 }
 
 
-void UpdatableInset::scroll(BufferView * bv, int offset) const
+void UpdatableInset::scroll(BufferView & bv, int offset) const
 {
 	if (offset > 0) {
 		if (!scx && xo_ >= 20)
@@ -72,10 +72,10 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 			scx += offset;
 	} else {
 #warning metrics?
-		if (!scx && xo_ + width() < bv->workWidth() - 20)
+		if (!scx && xo_ + width() < bv.workWidth() - 20)
 			return;
-		if (xo_ - scx + offset + width() < bv->workWidth() - 20) {
-			scx += bv->workWidth() - width() - xo_ - 20;
+		if (xo_ - scx + offset + width() < bv.workWidth() - 20) {
+			scx += bv.workWidth() - width() - xo_ - 20;
 		} else {
 			scx += offset;
 		}
@@ -85,7 +85,7 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 
 ///  An updatable inset could handle lyx editing commands
 DispatchResult
-UpdatableInset::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
+UpdatableInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_MOUSE_RELEASE:
@@ -94,10 +94,10 @@ UpdatableInset::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 	case LFUN_SCROLL_INSET:
 		if (!cmd.argument.empty()) {
 			if (cmd.argument.find('.') != cmd.argument.npos)
-				scroll(cmd.view(), static_cast<float>(strToDbl(cmd.argument)));
+				scroll(bv, static_cast<float>(strToDbl(cmd.argument)));
 			else
-				scroll(cmd.view(), strToInt(cmd.argument));
-			cmd.view()->update();
+				scroll(bv, strToInt(cmd.argument));
+			bv.update();
 			return DispatchResult(true, true);
 		}
 

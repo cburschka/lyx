@@ -91,9 +91,9 @@ public:
 	///
 	int scroll(bool recursive=true) const;
 	///
-	void scroll(BufferView *bv, float sx) const;
+	void scroll(BufferView & bv, float sx) const;
 	///
-	void scroll(BufferView *bv, int offset) const;
+	void scroll(BufferView & bv, int offset) const;
 	///
 	int numParagraphs() const;
 	///
@@ -121,7 +121,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
+	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 	///
 	void dimension_collapsed(Dimension &) const;
 	///
@@ -139,7 +139,7 @@ protected:
 
 private:
 	///
-	DispatchResult lfunMouseRelease(FuncRequest const &);
+	DispatchResult lfunMouseRelease(BufferView & bv, FuncRequest const &);
 	///
 	FuncRequest adjustCommand(FuncRequest const &);
 

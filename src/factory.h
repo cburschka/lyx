@@ -12,13 +12,15 @@
 #ifndef FACTORY_H
 #define FACTORY_H
 
-class InsetOld;
-class FuncRequest;
-class LyXLex;
 class Buffer;
+class BufferView;
+class FuncRequest;
+class InsetOld;
+class LyXLex;
+
 
 /// creates inset according to 'cmd'
-InsetOld * createInset(FuncRequest const & cmd);
+InsetOld * createInset(BufferView * bv, FuncRequest const & cmd);
 
 /// read inset from a file
 InsetOld * readInset(LyXLex & lex, Buffer const & buf);

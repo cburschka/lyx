@@ -13,6 +13,7 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
+#include "cursor_slice.h"
 #include "insets/insetbase.h"
 
 #include <string>
@@ -94,30 +95,28 @@ public:
 	virtual void drawT(TextPainter &, int x, int y) const;
 
 	/// Where should we go when we press the up or down cursor key?
-	virtual bool idxUpDown(idx_type & idx, pos_type & pos, bool up,
-		int targetx) const;
+	virtual bool idxUpDown(BufferView & bv, bool up, int targetx) const;
 	/// Where should we go when we press the up or down cursor key?
-	virtual bool idxUpDown2(idx_type & idx, pos_type & pos, bool up,
-		int targetx) const;
+	virtual bool idxUpDown2(BufferView & bv, bool up, int targetx) const;
 	/// The left key
-	virtual bool idxLeft(idx_type & idx, pos_type & pos) const;
+	virtual bool idxLeft(BufferView & bv) const;
 	/// The right key
-	virtual bool idxRight(idx_type & idx, pos_type & pos) const;
+	virtual bool idxRight(BufferView & bv) const;
 
 	/// Move one physical cell up
-	virtual bool idxNext(idx_type & idx, pos_type & pos) const;
+	virtual bool idxNext(BufferView & bv) const;
 	/// Move one physical cell down
-	virtual bool idxPrev(idx_type & idx, pos_type & pos) const;
+	virtual bool idxPrev(BufferView & bv) const;
 
 	/// Target pos when we enter the inset from the left by pressing "Right"
-	virtual bool idxFirst(idx_type & idx, pos_type & pos) const;
+	virtual bool idxFirst(BufferView & bv) const;
 	/// Target pos when we enter the inset from the right by pressing "Left"
-	virtual bool idxLast(idx_type & idx, pos_type & pos) const;
+	virtual bool idxLast(BufferView & bv) const;
 
 	/// Where should we go if we press home?
-	virtual bool idxHome(idx_type & idx, pos_type & pos) const;
+	virtual bool idxHome(BufferView & bv) const;
 	/// Where should we go if we press end?
-	virtual bool idxEnd(idx_type & idx, pos_type & pos) const;
+	virtual bool idxEnd(BufferView & bv) const;
 
 	/// Delete a cell and move cursor
 	virtual bool idxDelete(idx_type &) { return false; }

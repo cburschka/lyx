@@ -56,61 +56,61 @@ void MathInset::substitute(MathMacro const &)
 {}
 
 
-bool MathInset::idxNext(idx_type &, pos_type &) const
+bool MathInset::idxNext(BufferView &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxRight(idx_type &, pos_type &) const
+bool MathInset::idxRight(BufferView &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxPrev(idx_type &, pos_type &) const
+bool MathInset::idxPrev(BufferView &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxLeft(idx_type &, pos_type &) const
+bool MathInset::idxLeft(BufferView &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxUpDown(idx_type &, pos_type &, bool, int) const
+bool MathInset::idxUpDown(BufferView &, bool, int) const
 {
 	return false;
 }
 
 
-bool MathInset::idxUpDown2(idx_type &, pos_type &, bool, int) const
+bool MathInset::idxUpDown2(BufferView &, bool, int) const
 {
 	return false;
 }
 
 
-bool MathInset::idxFirst(idx_type &, pos_type &) const
+bool MathInset::idxFirst(BufferView &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxLast(idx_type &, pos_type &) const
+bool MathInset::idxLast(BufferView &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxHome(idx_type &, pos_type &) const
+bool MathInset::idxHome(BufferView &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxEnd(idx_type &, pos_type &) const
+bool MathInset::idxEnd(BufferView &) const
 {
 	return false;
 }

@@ -71,73 +71,78 @@ void MathNestInset::metrics(MetricsInfo const & mi) const
 }
 
 
-bool MathNestInset::idxNext(idx_type & idx, pos_type & pos) const
+bool MathNestInset::idxNext(BufferView & bv) const
 {
-	if (idx + 1 >= nargs())
+	CursorSlice & cur = cursorTip(bv);
+	if (cur.idx() + 1 >= nargs())
 		return false;
-	++idx;
-	pos = 0;
+	++cur.idx();
+	cur.pos() = 0;
 	return true;
 }
 
 
-bool MathNestInset::idxRight(idx_type & idx, pos_type & pos) const
+bool MathNestInset::idxRight(BufferView & bv) const
 {
-	return idxNext(idx, pos);
+	return idxNext(bv);
 }
 
 
-bool MathNestInset::idxPrev(idx_type & idx, pos_type & pos) const
+bool MathNestInset::idxPrev(BufferView & bv) const
 {
-	if (idx == 0)
+	CursorSlice & cur = cursorTip(bv);
+	if (cur.idx() == 0)
 		return false;
-	--idx;
-	pos = cell(idx).size();
+	--cur.idx();
+	cur.pos() = cur.lastpos();
 	return true;
 }
 
 
-bool MathNestInset::idxLeft(idx_type & idx, pos_type & pos) const
+bool MathNestInset::idxLeft(BufferView & bv) const
 {
-	return idxPrev(idx, pos);
+	return idxPrev(bv);
 }
 
 
-bool MathNestInset::idxFirst(idx_type & idx, pos_type & pos) const
+bool MathNestInset::idxFirst(BufferView & bv) const
 {
+	CursorSlice & cur = cursorTip(bv);
 	if (nargs() == 0)
 		return false;
-	idx = 0;
-	pos = 0;
+	cur.idx() = 0;
+	cur.pos() = 0;
 	return true;
 }
 
 
-bool MathNestInset::idxLast(idx_type & idx, pos_type & pos) const
+bool MathNestInset::idxLast(BufferView & bv) const
 {
+	CursorSlice & cur = cursorTip(bv);
 	if (nargs() == 0)
 		return false;
-	idx = nargs() - 1;
-	pos = cell(idx).size();
+	cur.idx() = nargs() - 1;
+	cur.pos() = cur.lastpos();
 	return true;
 }
 
 
-bool MathNestInset::idxHome(idx_type & /* idx */, pos_type & pos) const
+bool MathNestInset::idxHome(BufferView & bv) const
 {
-	if (pos == 0)
+	CursorSlice & cur = cursorTip(bv);
+	if (cur.pos() == 0)
 		return false;
-	pos = 0;
+	cur.pos() = 0;
 	return true;
 }
 
 
-bool MathNestInset::idxEnd(idx_type & idx, pos_type & pos) const
+bool MathNestInset::idxEnd(BufferView & bv) const
 {
-	pos_type n = cell(idx).size();
-	if (pos == n)
+	CursorSlice & cur = cursorTip(bv);
+	if (cur.lastpos() == cur.lastpos())
 		return false;
-	pos = n;
+	cur.pos() = cur.lastpos();
 	return true;
 }
 
@@ -276,33 +281,29 @@ void MathNestInset::notifyCursorLeaves(idx_type idx)
 
 
 DispatchResult
-MathNestInset::priv_dispatch(FuncRequest const & cmd,
-			     idx_type & idx, pos_type & pos)
+MathNestInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
-	BufferView * bv = cmd.view();
-
+	CursorSlice & cur = cursorTip(bv);
 	switch (cmd.action) {
 
 		case LFUN_PASTE: {
 			MathArray ar;
 			mathed_parse_cell(ar, cmd.argument);
-			cell(idx).insert(pos, ar);
-			pos += ar.size();
+			cur.cell().insert(cur.pos(), ar);
+			cur.pos() += ar.size();
 			return DispatchResult(true, true);
 		}
 
 		case LFUN_PASTESELECTION:
-			return
-				dispatch(
-					FuncRequest(bv, LFUN_PASTE, bv->getClipboard()), idx, pos);
+			return dispatch(bv, FuncRequest(LFUN_PASTE, bv.getClipboard())); 
 
 		case LFUN_MOUSE_PRESS:
 			if (cmd.button() == mouse_button::button2)
-				return priv_dispatch(FuncRequest(bv, LFUN_PASTESELECTION), idx, pos);
+				return priv_dispatch(bv, FuncRequest(LFUN_PASTESELECTION));
 			return DispatchResult(false);
 
 		default:
-			return MathInset::priv_dispatch(cmd, idx, pos);
+			return MathInset::priv_dispatch(bv, cmd);
 	}
 }
 

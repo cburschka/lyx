@@ -52,12 +52,8 @@ string const InsetLabel::getScreenLabel(Buffer const &) const
 
 
 DispatchResult
-InsetLabel::priv_dispatch(FuncRequest const & cmd,
-			  idx_type & idx, pos_type & pos)
+InsetLabel::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
-	BOOST_ASSERT(cmd.view());
-	BufferView * const bv = cmd.view();
-
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
@@ -65,20 +61,17 @@ InsetLabel::priv_dispatch(FuncRequest const & cmd,
 		InsetCommandMailer::string2params("label", cmd.argument, p);
 		if (p.getCmdName().empty())
 			return DispatchResult(false);
-
 		bool clean = true;
-		if (bv && p.getContents() != params().getContents()) {
-			clean = bv->ChangeRefsIfUnique(params().getContents(),
+		if (p.getContents() != params().getContents())
+			clean = bv.ChangeRefsIfUnique(params().getContents(),
 						       p.getContents());
-		}
-
 		setParams(p);
-		bv->update();
+		bv.update();
 		return DispatchResult(true, true);
 	}
 
 	default:
-		return InsetCommand::priv_dispatch(cmd, idx, pos);
+		return InsetCommand::priv_dispatch(bv, cmd);
 	}
 }
 

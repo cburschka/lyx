@@ -152,7 +152,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
+	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
 private:
 	/** This method is connected to the graphics loader, so we are
 	 *  informed when the image has been loaded.

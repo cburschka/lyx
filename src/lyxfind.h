@@ -49,13 +49,13 @@ std::string const replace2string(std::string const & search,
  *  \c ev.argument and act on it.
  * The string is encoded by \c find2string.
  */
-void find(FuncRequest const & ev);
+void find(BufferView * bv, FuncRequest const & ev);
 
 /** Parse the string encoding of the replace request that is found in
  *  \c ev.argument and act on it.
  * The string is encoded by \c replace2string.
  */
-void replace(FuncRequest const &);
+void replace(BufferView * bv, FuncRequest const &);
 
 /// find the next change in the buffer
 bool findNextChange(BufferView * bv);

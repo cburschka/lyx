@@ -49,7 +49,8 @@ void MathTextInset::getScreenPos(idx_type /*idx*/, pos_type pos, int & x, int & 
 }
 
 
-bool MathTextInset::idxUpDown2(idx_type &, pos_type & pos, bool up,
+#if 0
+bool MathTextInset::idxUpDown2(BufferView & pos, bool up,
 	int /*targetx*/) const
 {
 	// try to move only one screen row up or down if possible
@@ -70,6 +71,7 @@ bool MathTextInset::idxUpDown2(idx_type &, pos_type & pos, bool up,
 	pos = cell2.begin_ + cache_.cell(i).x2pos(x, cell2.glue_);
 	return true;
 }
+#endif
 
 
 void MathTextInset::metrics(MetricsInfo & mi, Dimension & dim) const

@@ -47,18 +47,20 @@ void MathOversetInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool MathOversetInset::idxFirst(idx_type & i, pos_type & pos) const
+bool MathOversetInset::idxFirst(BufferView & bv) const
 {
-	i = 1;
-	pos = 0;
+	CursorSlice & cur = cursorTip(bv);
+	cur.idx() = 1;
+	cur.pos() = 0;
 	return true;
 }
 
 
-bool MathOversetInset::idxLast(idx_type & i, pos_type & pos) const
+bool MathOversetInset::idxLast(BufferView & bv) const
 {
-	i = 1;
-	pos = cell(i).size();
+	CursorSlice & cur = cursorTip(bv);
+	cur.idx() = 1;
+	cur.pos() = cur.lastpos();
 	return true;
 }
 

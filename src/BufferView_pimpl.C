@@ -914,16 +914,16 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 	case LFUN_MOUSE_MOTION: {
 		if (!available())
 			return false;
-		FuncRequest cmd1(cmd, bv_);
+		FuncRequest cmd1 = cmd;
 		UpdatableInset * inset = bv_->fullCursor().innerInset();
 		DispatchResult res;
 		if (inset) {
 			cmd1.x -= inset->x();
 			cmd1.y -= inset->y();
-			res = inset->dispatch(cmd1);
+			res = inset->dispatch(*bv_, cmd1);
 		} else {
 			cmd1.y += bv_->top_y();
-			res = bv_->fullCursor().innerText()->dispatch(cmd1);
+			res = bv_->fullCursor().innerText()->dispatch(*bv_, cmd1);
 		}
 
 		if (bv_->fitCursor() || res.update()) {
@@ -955,17 +955,16 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 
 		// built temporary path to inset
 		InsetOld * inset = insetFromCoords(bv_, cmd.x, cmd.y);
-		FuncRequest cmd1(cmd, bv_);
 		DispatchResult res;
 
 		// try to dispatch to that inset
 		if (inset) {
-			FuncRequest cmd2 = cmd1;
+			FuncRequest cmd2 = cmd;
 			lyxerr << "dispatching action " << cmd2.action
 			       << " to inset " << inset << endl;
 			cmd2.x -= inset->x();
 			cmd2.y -= inset->y();
-			res = inset->dispatch(cmd2);
+			res = inset->dispatch(*bv_, cmd2);
 			if (res.update()) {
 				bv_->update();
 				bv_->fullCursor().updatePos();
@@ -992,12 +991,13 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 		// otherwise set cursor to surrounding LyXText
 		if (!res.dispatched()) {
 			lyxerr << "temp cursor is: " << theTempCursor << endl;
-			lyxerr << "dispatching " << cmd1
+			lyxerr << "dispatching " << cmd
 			       << " to surrounding LyXText "
 			       << theTempCursor.innerText() << endl;
 			bv_->fullCursor(theTempCursor);
+			FuncRequest cmd1 = cmd;
 			cmd1.y += bv_->top_y();
-			res = bv_->fullCursor().innerText()->dispatch(cmd1);
+			res = bv_->fullCursor().innerText()->dispatch(*bv_, cmd1);
 			if (bv_->fitCursor() || res.update())
 				bv_->update();
 
@@ -1027,12 +1027,9 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 }
 
 
-bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
+bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 {
 	// Make sure that the cached BufferView is correct.
-	FuncRequest ev = ev_in;
-	ev.setView(bv_);
-
 	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch:"
 		<< " action[" << ev.action << ']'
 		<< " arg[" << ev.argument << ']'
@@ -1138,13 +1135,13 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	case LFUN_MATH_IMPORT_SELECTION: // Imports LaTeX from the X selection
 	case LFUN_MATH_DISPLAY:          // Open or create a displayed math inset
 	case LFUN_MATH_MODE:             // Open or create an inlined math inset
-		mathDispatch(ev);
+		mathDispatch(*bv_, ev);
 		break;
 
 	case LFUN_INSET_INSERT: {
 		// Same as above.
 		BOOST_ASSERT(false);
-		InsetOld * inset = createInset(ev);
+		InsetOld * inset = createInset(bv_, ev);
 		if (!inset || !insertInset(inset))
 			delete inset;
 		break;
@@ -1236,11 +1233,11 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	}
 
 	case LFUN_WORD_FIND:
-		lyx::find::find(ev);
+		lyx::find::find(bv_, ev);
 		break;
 
 	case LFUN_WORD_REPLACE:
-		lyx::find::replace(ev);
+		lyx::find::replace(bv_, ev);
 		break;
 
 	case LFUN_MARK_OFF:
@@ -1275,7 +1272,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		break;
 
 	default:
-		return bv_->getLyXText()->dispatch(FuncRequest(ev, bv_)).dispatched();
+		return bv_->getLyXText()->dispatch(*bv_, ev).dispatched();
 	} // end of switch
 
 	return true;

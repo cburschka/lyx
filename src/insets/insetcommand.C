@@ -100,7 +100,7 @@ int InsetCommand::docbook(Buffer const &, ostream &,
 
 
 DispatchResult
-InsetCommand::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
+InsetCommand::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
@@ -108,21 +108,19 @@ InsetCommand::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		InsetCommandMailer::string2params(mailer_name_, cmd.argument, p);
 		if (p.getCmdName().empty())
 			return DispatchResult(false);
-
 		setParams(p);
-		cmd.view()->update();
+		bv.update();
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetCommandMailer(cmd.argument, *this).updateDialog(cmd.view());
+		InsetCommandMailer(cmd.argument, *this).updateDialog(&bv);
 		return DispatchResult(true, true);
 
 	case LFUN_INSET_DIALOG_SHOW:
 	case LFUN_MOUSE_RELEASE: {
 		if (!mailer_name_.empty())
-			InsetCommandMailer(mailer_name_, *this).
-				showDialog(cmd.view());
+			InsetCommandMailer(mailer_name_, *this).showDialog(&bv);
 		return DispatchResult(true);
 	}
 

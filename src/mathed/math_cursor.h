@@ -19,7 +19,6 @@
 
 #include <string>
 
-
 class InsetFormulaBase;
 class BufferView;
 class PainterInfo;
@@ -53,7 +52,7 @@ public:
 	typedef size_t             col_type;
 
 	///
-	explicit MathCursor(InsetFormulaBase *, bool left);
+	explicit MathCursor(BufferView *, InsetFormulaBase *, bool left);
 	///
 	~MathCursor();
 	///
@@ -280,10 +279,6 @@ private:
 	/// write access to cursor cell index
 	idx_type & idx();
 
-	/// path of positions the cursor had to go if it were leaving each inset
-	CursorBase Cursor_;
-	/// path of positions the anchor had to go if it were leaving each inset
-	mutable CursorBase Anchor_;
 	/// pointer to enclsing LyX inset
 	InsetFormulaBase * formula_;
 	// Selection stuff
@@ -295,11 +290,11 @@ private:
 	bool selection_;
 	/// are we entering a macro name?
 	bool macromode_;
-	/// are we targeting a certain x coordinate, if so, which one?
-	int targetx_;
+	///
+	BufferView * bv_;
 };
 
 extern MathCursor * mathcursor;
-void releaseMathCursor(BufferView * bv);
+void releaseMathCursor(BufferView & bv);
 
 #endif
