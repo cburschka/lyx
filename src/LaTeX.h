@@ -111,6 +111,9 @@ public:
 	   path = name of the files original path.
 	*/
 	LaTeX(string const & cmd, string const & file, string const & path);
+
+	///
+	virtual ~LaTeX() {}
 	
 	/// runs LaTeX several times
 	int run(TeXErrors &, MiniBuffer *);

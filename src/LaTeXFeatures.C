@@ -25,7 +25,7 @@
 
 using std::endl;
 
-LaTeXFeatures::LaTeXFeatures(BufferParams const & p, int n)
+LaTeXFeatures::LaTeXFeatures(BufferParams const & p, LyXTextClass::size_type n)
 	: layout(n, false), params(p)
 {
 	// packages

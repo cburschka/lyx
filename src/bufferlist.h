@@ -39,6 +39,8 @@ public:
 	///
 	typedef Container::const_iterator const_iterator;
 	///
+	typedef Container::size_type size_type;
+	///
 	bool empty() const { return container.empty(); }
 	///
 	void release(Buffer * buf);
@@ -57,7 +59,7 @@ public:
 	///
 	Buffer * operator[](int c) { return container[c]; }
 	///
-	int size() const { return container.size(); }
+	size_type size() const { return container.size(); }
 private:
 	///
 	Container container;

@@ -1026,11 +1026,17 @@ int InsetText::Latex(Buffer const * buf, ostream & os, bool, bool) const
 int InsetText::Ascii(Buffer const * buf, ostream & os, int linelen) const
 {
     LyXParagraph * p = par;
+    unsigned int lines = 0;
+    
     while (p) {
-	os << buf->asciiParagraph(p, linelen);
+	string const tmp = buf->asciiParagraph(p, linelen);
+	lines += countChar(tmp, '\n');
+	os << tmp;
 	p = p->next;
     }
     os << "\n";
+    ++lines;
+    return lines;
 }
 
 

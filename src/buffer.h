@@ -150,8 +150,11 @@ public:
 	
 	///
 	void writeFileAscii(string const & , int);
+	///
 	void writeFileAscii(std::ostream &, int);
-	string const asciiParagraph(LyXParagraph const *, int linelen) const;
+	///
+	string const asciiParagraph(LyXParagraph const *,
+				    unsigned int linelen) const;
 	///
 	void makeLaTeXFile(string const & filename,
 			   string const & original_path,

@@ -1461,18 +1461,21 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 //----------------------------------------------------------------------------
 #else
 //----------------------------------------------------------------------------
-string const Buffer::asciiParagraph(LyXParagraph const * par, int linelen) const
+string const Buffer::asciiParagraph(LyXParagraph const * par,
+				    unsigned int linelen) const
 {
 	ostringstream buffer;
 	LyXFont font1, font2;
 	Inset const * inset;
-	char c, footnoteflag = 0, depth = 0;
+	char c;
+	LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
+	char depth = 0;
 	string tmp;
 	LyXParagraph::size_type i;
-	int j;
+	unsigned int j;
 	int ltype = 0;
 	int ltype_depth = 0;
-	int currlinelen = 0;
+	unsigned int currlinelen = 0;
 	bool ref_printed = false;
 
 	int noparbreak = 0;
@@ -2691,8 +2694,8 @@ void Buffer::pop_tag(ostream & os, string const & tag,
 // checks, if newcol chars should be put into this line
 // writes newline, if necessary.
 static
-void linux_doc_line_break(ostream & os, unsigned int & colcount,
-			  const unsigned int newcol)
+void linux_doc_line_break(ostream & os, string::size_type & colcount,
+			  string::size_type newcol)
 {
 	colcount += newcol;
 	if (colcount > lyxrc.ascii_linelen) {
@@ -2703,7 +2706,7 @@ void linux_doc_line_break(ostream & os, unsigned int & colcount,
 
 
 void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
-				  int desc_on, int const /*depth*/)
+				  int desc_on, int /*depth*/)
 {
 	LyXFont font1;
 	char c;
@@ -2721,7 +2724,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 	int stack_num = -1;          // style stack position
 	// Can this be rewritten to use a std::stack, please. (Lgb)
 	char stack[5][3];    	     // style stack 
-        unsigned int char_line_count = 5;     // Heuristic choice ;-) 
+        string::size_type char_line_count = 5;     // Heuristic choice ;-) 
 
 	if (style.labeltype != LABEL_MANUAL)
 		main_body = 0;

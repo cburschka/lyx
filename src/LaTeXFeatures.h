@@ -21,9 +21,9 @@
 #include <set>
 
 #include "LString.h"
+#include "layout.h"
 
 class BufferParams; 
-class LyXTextClass;
 struct Language;
 
 /** The packages and commands that a buffer needs. This struct
@@ -34,7 +34,7 @@ struct Language;
 */
 struct LaTeXFeatures {
 	///
-	LaTeXFeatures(BufferParams const &, int n) ;
+	LaTeXFeatures(BufferParams const &, LyXTextClass::size_type n) ;
 	/// The packaes needed by the document
 	string const getPackages();
 	/// The macros definitions needed by the document

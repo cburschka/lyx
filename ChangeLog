@@ -1,3 +1,10 @@
+2000-09-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/insets/insettext.C (Ascii): return numer of '\n' in the text
+	outputed to the ostream.
+
+	* several files: fixed types based on warnings from cxx 
+
 2000-09-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* src/frontends/kde/Makefile.am: fix rule for
