@@ -26,6 +26,7 @@
 
 #include "delim.xbm"
 #include "delim0.xpm"
+#include "delim1.xpm"
 
 static int const delim_rversion[] = {
 	1,1,3,3,4,5,7,7,9,9,10,11,
@@ -59,10 +60,11 @@ void FormMathsDelim::build()
 	dialog_.reset(build_maths_delim());
 
 	fl_set_button(dialog_->radio_left, 1);
+	// Initialize button_pix to "()" as found in images/delim0.xpm:
 	fl_set_pixmap_data(dialog_->button_pix, const_cast<char**>(delim0));
 	dialog_->radio_left->u_ldata = 0;
 	dialog_->radio_right->u_ldata = 1;
-	dialog_->radio_both->u_ldata = 2;
+	//dialog_->radio_both->u_ldata = 2;
 
 	fl_set_bmtable_data(dialog_->bmtable, 6, 4,
 			    delim_width, delim_height, delim_bits);
@@ -107,16 +109,28 @@ bool FormMathsDelim::input(FL_OBJECT *, long)
 			right = i;
 		else {
 			left = i;
-			if (both)
+			if (both) {
 				right = delim_rversion[i];
+				// Add left delimiter in "both" case if right one was pressed:
+				for (int j = 0; j <= 23; ++j) {
+					if (delim_rversion[j] == left) {
+						right = left;
+						left = j;
+					}
+				}
+			}
 		}
 	}
 
-	Pixmap p1, p2;
-
-	p1 = fl_get_pixmap_pixmap(dialog_->button_pix, &p1, &p2);
-	fl_draw_bmtable_item(dialog_->bmtable, left, p1, 0, 0);
-	fl_draw_bmtable_item(dialog_->bmtable, right, p1, 16, 0);
+	// Re-initialize button_pix to solid blue 
+	// (not elegant but works, MV 24.5.2002)
+	fl_free_pixmap_pixmap(dialog_->button_pix);
+	fl_set_pixmap_data(dialog_->button_pix, const_cast<char**>(delim1));
+	Pixmap p1;
+	fl_get_pixmap_pixmap(dialog_->button_pix, &p1, 0);
+	
+	fl_draw_bmtable_item(dialog_->bmtable, left, p1, -2, 0);
+	fl_draw_bmtable_item(dialog_->bmtable, right, p1, 14, 0);
 	fl_redraw_object(dialog_->button_pix);
 
 	dialog_->radio_left->u_ldata  = left;

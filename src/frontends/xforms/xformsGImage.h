@@ -20,8 +20,13 @@
 
 #include "graphics/GraphicsImage.h"
 #include FORMS_H_LOCATION
+
 #ifdef HAVE_FLIMAGE_H
-#include FLIMAGE_H_LOCATION
+# include <flimage.h>
+#else
+# ifdef HAVE_X11_FLIMAGE_H
+# include <X11/flimage.h>
+# endif
 #endif
 
 namespace grfx {
