@@ -16,8 +16,7 @@
 #pragma interface
 #endif
 
-
-#include FORMS_H_LOCATION
+#include <X11/Xlib.h>
 #include "lyxfont.h"
 #include "LString.h"
 

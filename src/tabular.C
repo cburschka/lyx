@@ -2530,6 +2530,12 @@ InsetText * LyXTabular::GetCellInset(int cell) const
 
 InsetText * LyXTabular::GetCellInset(int row, int column) const
 {
+#ifdef WITH_WARNINGS
+#warning Juergen, should we check whether the row/column values are correct?
+// If we do not need to do that, the tests in GetCellNumber should be
+// changed to asserts.
+#endif
+	cur_cell = GetCellNumber(row, column);
 	return & cell_info[row][column].inset;
 }
 

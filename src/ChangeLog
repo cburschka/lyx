@@ -1,7 +1,11 @@
 2001-07-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* tabular.C (GetCellInset): update cur_cell also in the row/col
+	version of this function.
+
 	* lyxfunc.C: no need to include figure_form.h here.
 
+	* FontLoader.h: 
 	* lyxfunc.h: 
 	* lyxscreen.h: 
 	* text2.C: 
