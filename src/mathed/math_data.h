@@ -16,6 +16,7 @@
 #ifndef MATH_DATA_H
 #define MATH_DATA_H
 
+#include <iosfwd>
 #include <vector>
 
 #include "math_atom.h"
@@ -131,5 +132,9 @@ private:
 	/// Buffer
 	buffer_type bf_;
 };
+
+///
+std::ostream & operator<<(std::ostream & os, MathArray const & ar);
+
 
 #endif

@@ -1,3 +1,9 @@
+2001-12-11  André Pönitz <poenitz@gmx.net>
+
+	* math_defs.h:
+	* math_parser.C:
+	* math_hash.C: support for \mathfrak
+
 2001-12-12  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* math_streamstr.C: #include <iostream> to compile with DEC cxx

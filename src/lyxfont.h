@@ -57,6 +57,8 @@ public:
 		///
 		MSB_FAMILY,
 		///
+		EUFRAK_FAMILY,
+		///
 		INHERIT_FAMILY,
 		///
 		IGNORE_FAMILY,

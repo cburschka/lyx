@@ -44,6 +44,8 @@ enum MathTextCodes  {
 	///
 	LM_TC_CAL,
 	///
+	LM_TC_EUFRAK,
+	///
 	LM_TC_BF,
 	//
 	LM_TC_BB,

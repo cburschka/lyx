@@ -141,6 +141,11 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 				new FontInfo("-*-msbm-*-*-*-*-*-*-*-*-*-*-*-*");
 			return;
 
+		case LyXFont::EUFRAK_FAMILY:
+			fontinfo[family][series][shape] = 
+				new FontInfo("-*-eufrak-*-*-*-*-*-*-*-*-*-*-*-*");
+			return;
+
 		default:
 			break;
 	}

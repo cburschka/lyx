@@ -791,14 +791,14 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
 				return;
-			//lyxerr << "found '}' unexpectedly, array: '" << array << "'\n";
-			lyxerr << "found '}' unexpectedly\n";
+			lyxerr << "found '}' unexpectedly, array: '" << array << "'\n";
+			//lyxerr << "found '}' unexpectedly\n";
 			add(array, '}', LM_TC_TEX);
 		}
 		
 		else if (t.cat() == catAlign) {
-			//lyxerr << "found tab unexpectedly, array: '" << array << "'\n";
-			lyxerr << "found tab unexpectedly\n";
+			lyxerr << "found tab unexpectedly, array: '" << array << "'\n";
+			//lyxerr << "found tab unexpectedly\n";
 			add(array, '&', LM_TC_TEX);
 		}
 		

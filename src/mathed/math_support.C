@@ -78,6 +78,7 @@ enum MathFont {
 	FONT_CMEX,
 	FONT_MSA,
 	FONT_MSB,
+	FONT_EUFRAK,
 	FONT_NUM
 };
 
@@ -117,6 +118,7 @@ void mathed_init_fonts()
 	MathFonts[FONT_CMEX].setFamily(LyXFont::CMEX_FAMILY);
 	MathFonts[FONT_MSA].setFamily(LyXFont::MSA_FAMILY);
 	MathFonts[FONT_MSB].setFamily(LyXFont::MSB_FAMILY);
+	MathFonts[FONT_EUFRAK].setFamily(LyXFont::EUFRAK_FAMILY);
 
 	for (int i = 0; i < LM_FONT_END; ++i)
 		font_available_initialized[i] = false;
@@ -181,6 +183,12 @@ LyXFont const & whichFontBase(MathTextCodes type)
 
 	case LM_TC_MSB:
 		return MathFonts[FONT_MSB];
+
+	case LM_TC_EUFRAK:
+		if (math_font_available(LM_TC_EUFRAK))
+			return MathFonts[FONT_EUFRAK];
+		else
+			return MathFonts[FONT_BB];
 
 	default:
 		break;
@@ -744,6 +752,7 @@ char const * math_font_name(MathTextCodes code)
 	static char const * theFontNames[] = {
 		"mathrm",
 		"mathcal",
+		"mathfrak",
 		"mathbf",
 		"mathbb",
 		"mathsf",
