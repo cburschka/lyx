@@ -1039,7 +1039,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_GETLAYOUT:
-		cmd.message(tostr(cursorPar()->layout()));
+		cmd.message(cursorPar()->layout()->name());
 		break;
 
 	case LFUN_LAYOUT: {
