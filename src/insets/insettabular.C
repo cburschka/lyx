@@ -221,8 +221,11 @@ int InsetTabular::width(BufferView *, LyXFont const &) const
 void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 			float & x, bool cleared) const
 {
-	if (nodraw())
+	if (nodraw()) {
+		if (cleared)
+			need_update = FULL;
 		return;
+	}
 #if 0
 	if (need_update == INIT) {
 		if (calculate_dimensions_of_cells(bv, font, true))
@@ -1050,11 +1053,15 @@ InsetTabular::LocalDispatch(BufferView * bv,
 			break;
 		nodraw(true);
 		if (ActivateCellInset(bv)) {
+			// reset need_update setted in above function!
+			need_update = NONE;
 			result = the_locking_inset->LocalDispatch(bv, action, arg);
 			if ((result == UNDISPATCHED) || (result == FINISHED)) {
 				UnlockInsetInInset(bv, the_locking_inset);
 				nodraw(false);
 				the_locking_inset = 0;
+				// we need to update if this was requested before
+				UpdateLocal(bv, NONE, false);
 				return UNDISPATCHED;
 			}
 			nodraw(false);
@@ -2324,7 +2331,7 @@ bool InsetTabular::isRightToLeft(BufferView *bv )
 
 bool InsetTabular::nodraw() const
 {
-	if (the_locking_inset)
+	if (!UpdatableInset::nodraw() && the_locking_inset)
 		return the_locking_inset->nodraw();
 	return UpdatableInset::nodraw();
 }

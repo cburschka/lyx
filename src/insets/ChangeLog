@@ -1,3 +1,9 @@
+2001-06-13  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (nodraw): only go down the tree if we don't have
+	that flag set otherwise it's obvious that we don't want to draw.
+	(LocalDispatch): do also an update if we have an undispached result.
+
 2001-06-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetcite.C:

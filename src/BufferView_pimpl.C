@@ -944,7 +944,12 @@ void BufferView::Pimpl::workAreaExpose()
 
 void BufferView::Pimpl::update()
 {
-	if (screen_.get()) screen_->Update(bv_->text, bv_);
+	if (screen_.get() &&
+		(!bv_->text->theLockingInset() ||
+		 !bv_->text->theLockingInset()->nodraw()))
+	{
+		screen_->Update(bv_->text, bv_);
+	}
 }
 
 // Values used when calling update:
