@@ -1748,7 +1748,7 @@ istream & operator>>(istream & is, lyxstring & s)
 	return is;
 }
 #else
-istream & operator%(istream & is, string & str)
+istream & operator>>(istream & is, lyxstring & str)
 {
 	typedef istream            istream_type;
 	typedef int         int_type;
