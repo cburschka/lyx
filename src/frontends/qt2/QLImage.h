@@ -35,9 +35,6 @@ public:
 	/// Create a copy
 	virtual Image * clone() const;
 
-	/// FIXME
-	virtual Pixmap getPixmap() const;
-
 	QPixmap const & qpixmap() const { return xformed_pixmap_; }
 
 	/// Get the image width
@@ -46,6 +43,9 @@ public:
 	/// Get the image height
 	virtual unsigned int getHeight() const;
 
+	// FIXME 
+	virtual bool isDrawable() const { return true; } 
+ 
 	/** 
 	 * Load the image file into memory.
 	 * The process is asynchronous, so this method starts the loading.

@@ -1,3 +1,7 @@
+2002-07-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* GraphicsImage.h: remove getPixmap/X, add isDrawable()
+ 
 2002-07-12  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsLoader.[Ch]: smart loading of images. Images are loaded only

@@ -124,13 +124,6 @@ unsigned int QLImage::getHeight() const
 }
 
 
-// FIXME 
-Pixmap QLImage::getPixmap() const
-{
-	return 1;
-}
-
-
 void QLImage::load(string const & filename)
 {
 	if (!pixmap_.isNull()) {

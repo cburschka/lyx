@@ -23,7 +23,7 @@
 #include "encoding.h"
 #include "language.h"
 
-#include "graphics/GraphicsImage.h"
+#include "xformsImage.h"
 
 #include "support/LAssert.h"
 #include "support/lstrings.h"
@@ -150,8 +150,9 @@ Painter & XPainter::arc(int x, int y,
  
 Painter & XPainter::image(int x, int y, 
 	int w, int h,
-	grfx::Image const & image)
+	grfx::Image const & i)
 {
+	grfx::xformsImage const & image = static_cast<grfx::xformsImage const &>(i);
 	XGCValues val;
 	val.function = GXcopy;
 	GC gc = XCreateGC(fl_get_display(), owner_.getPixmap(),

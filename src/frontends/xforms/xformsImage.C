@@ -167,6 +167,12 @@ unsigned int xformsImage::getHeight() const
 }
 
 
+bool xformsImage::isDrawable() const
+{
+	return pixmap_;
+}
+
+ 
 Pixmap xformsImage::getPixmap() const
 {
 	if (!pixmap_status_ == PIXMAP_SUCCESS)

@@ -28,8 +28,6 @@
 #include <boost/function/function0.hpp>
 #include <boost/signals/signal1.hpp>
 
-#include <X11/X.h> // for Pixmap :-(
-
 #include <vector>
 #include <utility>
 
@@ -65,15 +63,15 @@ public:
 	/// Create a copy
 	virtual Image * clone() const = 0;
 
-	///
-	virtual Pixmap getPixmap() const = 0;
-
 	/// Get the image width
 	virtual unsigned int getWidth() const = 0;
 
 	/// Get the image height
 	virtual unsigned int getHeight() const = 0;
 
+	/// is the image drawable ?
+	virtual bool isDrawable() const = 0;
+ 
 	/** At the end of the loading process inform the outside world
 	 *  by emitting a signal.
 	 */

@@ -8,10 +8,6 @@ FileDialog
 	- add buttons for Documents, Templates, etc. to the file dialog toolbar
 	- work around Qt crash bug with double click
  
-GraphicsImage
-
-	- remove getPixmap() 
- 
 lyx_gui (qt)
 
 	- move out lyxserver
@@ -82,7 +78,6 @@ QLImage
 	- get mono/color to work
 	- get bgcolor and clipping to work 
 
- 
 QLPainter
 
 	- work out why buttons look ugly and fix

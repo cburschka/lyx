@@ -259,7 +259,7 @@ bool InsetGraphics::imageIsDrawable() const
 	if (!cache_->loader.image() || cache_->loader.status() != grfx::Ready)
 		return false;
 
-	return cache_->loader.image()->getPixmap() != 0;
+	return cache_->loader.image()->isDrawable();
 }
 
 
