@@ -559,7 +559,7 @@ unsigned int ImageXPM::Data::color_none_id() const
 	for (size_t i = 0; i < ncolors_; ++i) {
 		char const * const color = table[i].c_color;
 		if (color && ascii_lowercase(color) == "none")
-			return uint(i);
+			return static_cast<unsigned int>(i);
 	}
 	return 0;
 }
