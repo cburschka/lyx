@@ -1,5 +1,14 @@
 2000-10-13  John Levon  <moz@compsoc.man.ac.uk>
 
+	* src/frontends/kde/formprintdialog.C: add
+	file browser for selecting postscript output
+
+	* src/frontends/kde/formprintdialogdata.C:
+	* src/frontends/kde/formprintdialogdata.h: re-generate
+	correctly
+
+2000-10-13  John Levon  <moz@compsoc.man.ac.uk>
+
 	* src/frontends/gnome/Makefile.am:
 	* src/frontends/kde/Makefile.am:  FormCommand.C
 	disappeared from xforms
