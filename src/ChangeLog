@@ -25,6 +25,13 @@
 	* BufferView_pimpl.C (trackChanges): use for_each instead of
 	expilicit for loop
 
+2004-11-04  André Pönitz  <poenitz@gmx.net>
+
+	* undo.h:
+	* undo.C (textUndoOrRedo): fix crash when creating undo information. 
+
+	* dociterator.C (asDocIterator): use hard assert again.
+
 2004-11-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxlength.C (asLatexString): rewrite so that it does not use
@@ -199,7 +206,7 @@
 	* sgml.C (openTag, closeTag): removed unneeded newlines.
 	(closeEnvTags) removed.
 
-2003-10-23  André Pönitz  <poenitz@gmx.net>
+2004-10-23  André Pönitz  <poenitz@gmx.net>
 
 	* undo.C (textUndoOrRedo):
 	* dociterator.C (asDocIterator): work around crash
