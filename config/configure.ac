@@ -173,8 +173,7 @@ case "$lyx_use_frontend" in
 	LYX_PATH_XFORMS
 	LYX_CHECK_XFORMS_IMAGE_LOADER
 	FRONTEND="xforms"
-        RPM_FRONTEND="xforms"
-        RPM_FRONTEND_DEPS='libforms >= 1.0'
+	RPM_FRONTEND="xforms"
 	FRONTEND_GUILIB="xforms/*.lo xforms/forms/*.lo"
 	FRONTEND_INCLUDES="-I\$(srcdir)/xforms"
 	FRONTEND_LIBS="@XFORMS_IMAGE_LIB@ @XFORMS_LIB@ @XPM_LIB@"
@@ -198,7 +197,6 @@ dnl	;;
   qt)
     QT_DO_IT_ALL
     RPM_FRONTEND="qt"
-    RPM_FRONTEND_DEPS='qt >= 2.2.1'
     FRONTEND="qt2"
     FRONTEND_GUILIB="qt2/*.lo qt2/ui/*.lo qt2/moc/*.lo qt2/ui/moc/*.lo"
     FRONTEND_LDFLAGS="\$(QT_LDFLAGS)"
@@ -284,7 +282,6 @@ ${FRONTEND_INFO}\
 
 AC_SUBST(VERSION_INFO)
 AC_SUBST(RPM_FRONTEND)
-AC_SUBST(RPM_FRONTEND_DEPS)
 
 ## Some config.h stuff
 

@@ -1,5 +1,4 @@
 %define frontend @RPM_FRONTEND@
-%define frontdep @RPM_FRONTEND_DEPS@
 
 Summary: A WYSIWYM (What You See Is What You Mean) frontend to LaTeX
 Name: @PACKAGE@
@@ -13,7 +12,6 @@ Source: ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Icon: %{name}.xpm
 Prefix: %{_prefix}
-Requires: %{frontdep}, tetex-xdvi, tetex, tetex-latex
 Obsoletes: tetex-lyx
 
 %description
