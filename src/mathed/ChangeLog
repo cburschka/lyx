@@ -1,3 +1,12 @@
+2005-03-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_nestinset.C (doDispatch): create a MathBoxInset for mbox
+	rather than a MathMBoxInset, since the latter is not usable yet.
+	Fixes bug 1823.
+	* math_factory.C (createMathInset): Don't hardwire mbox, but read it
+	from lib/symbols again. This makes it possible to create other
+	"mbox-like" boxes.
+
 2005-03-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_parser.C (parse1): Don't parse "\|" following a "\left" or

@@ -253,8 +253,12 @@ MathAtom createMathInset(string const & s)
 			return MathAtom(new MathSpaceInset(l->name));
 		if (inset == "dots")
 			return MathAtom(new MathDotsInset(l));
-//		if (inset == "mbox")
-//			return MathAtom(new MathBoxInset(l->name));
+		if (inset == "mbox")
+			// return MathAtom(new MathMBoxInset);
+			// MathMBoxInset is proposed to replace MathBoxInset,
+			// but is not ready yet (it needs a BufferView for
+			// construction)
+			return MathAtom(new MathBoxInset(l->name));
 //		if (inset == "fbox")
 //			return MathAtom(new MathFboxInset(l));
 		if (inset == "style")
@@ -275,8 +279,6 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathMacroArgument(s[2] - '0'));
 	if (s == "boxed")
 		return MathAtom(new MathBoxedInset());
-	if (s == "mbox")
-		return MathAtom(new MathBoxInset("mbox"));
 	if (s == "fbox")
 		return MathAtom(new MathFboxInset());
 	if (s == "framebox")

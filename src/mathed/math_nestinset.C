@@ -13,6 +13,7 @@
 #include "math_nestinset.h"
 
 #include "math_arrayinset.h"
+#include "math_boxinset.h"
 #include "math_braceinset.h"
 #include "math_commentinset.h"
 #include "math_data.h"
@@ -21,7 +22,7 @@
 #include "math_hullinset.h"
 #include "math_mathmlstream.h"
 #include "math_macroarg.h"
-#include "math_mboxinset.h"
+//#include "math_mboxinset.h"
 #include "math_parser.h"
 #include "math_scriptinset.h"
 #include "math_spaceinset.h"
@@ -712,7 +713,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		cur.macroModeClose();
 		selClearOrDel(cur);
-		cur.plainInsert(MathAtom(new MathMBoxInset(cur.bv())));
+		//cur.plainInsert(MathAtom(new MathMBoxInset(cur.bv())));
+		cur.plainInsert(MathAtom(new MathBoxInset("mbox")));
 		cur.posLeft();
 		cur.pushLeft(*cur.nextInset());
 #else
