@@ -56,6 +56,15 @@ void MathExFuncInset::maplize(MapleStream & os) const
 }
 
 
+void MathExFuncInset::maximize(MaximaStream & os) const
+{
+	if (name_ == "det")
+		os << "determinant(" << cell(0) << ')';
+	else
+		os << name_ << '(' << cell(0) << ')';
+}
+
+
 string asMathematicaName(string const & name)
 {
 	if (name == "sin")    return "Sin";

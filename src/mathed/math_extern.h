@@ -9,6 +9,7 @@
 
 class NormalStream;
 class MapleStream;
+class MaximaStream;
 class MathematicaStream;
 class MathMLStream;
 class OctaveStream;
@@ -18,6 +19,7 @@ class MathArray;
 void write(MathArray const &, WriteStream &);
 void normalize(MathArray const &, NormalStream &);
 void maplize(MathArray const &, MapleStream &);
+void maximize(MathArray const &, MaximaStream &);
 void mathematicize(MathArray const &, MathematicaStream &);
 void mathmlize(MathArray const &, MathMLStream &);
 void octavize(MathArray const &, OctaveStream &);

@@ -31,6 +31,7 @@
 #include "support/lyxlib.h"
 #include "support/systemcall.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 
 #include <algorithm>
 
@@ -841,6 +842,15 @@ void maplize(MathArray const & dat, MapleStream & os)
 }
 
 
+void maximize(MathArray const & dat, MaximaStream & os)
+{
+	MathArray ar = dat;
+	extractStructure(ar);
+	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
+		(*it)->maximize(os);
+}
+
+
 void mathematicize(MathArray const & dat, MathematicaStream & os)
 {
 	MathArray ar = dat;
@@ -873,15 +883,71 @@ namespace {
 
 	string captureOutput(string const & cmd, string const & data)
 	{
-		string outfile = lyx::tempName(string(), "mathextern");
-		string full =  "echo '" + data + "' | (" + cmd + ") > " + outfile;
-		lyxerr << "calling: " << full << endl;
-		Systemcall dummy;
-		dummy.startscript(Systemcall::Wait, full);
-		string out = GetFileContents(outfile);
-		lyx::unlink(outfile);
-		lyxerr << "result: '" << out << "'" << endl;
-		return out;
+		string command =  "echo '" + data + "' | " + cmd;
+		lyxerr << "calling: " << command << endl;
+		cmd_ret const ret = RunCommand(command);
+		return ret.second;
+	}
+
+
+	MathArray pipeThroughMaxima(string const &, MathArray const & ar)
+	{
+		ostringstream os;
+		MaximaStream ms(os);
+		ms << ar;
+		string expr = os.str().c_str();
+		string const header = "SIMPSUM:true;";
+
+		string out;
+		for (int i = 0; i < 100; ++i) { // at most 100 attempts
+			// try to fix missing '*' the hard way
+			//
+			// > echo "2x;" | maxima
+			// ...
+			// (C1) Incorrect syntax: x is not an infix operator
+			// 2x;
+			//  ^
+			//
+			lyxerr << "checking expr: '" << expr << "'\n";
+			string full = header + "tex(" + expr + ");";
+			out = captureOutput("maxima", full);
+
+			// leave loop if expression syntax is probably ok
+			if (out.find("Incorrect syntax") == string::npos)
+				break;
+
+			// search line with "Incorrect syntax"
+			istringstream is(out.c_str());
+			string line;
+			while (is) {
+				getline(is, line);
+				if (line.find("Incorrect syntax") != string::npos)
+					break;
+			}
+
+			// 2nd next line is the one with caret
+			getline(is, line);
+			getline(is, line);
+			string::size_type pos = line.find('^');
+			lyxerr << "found caret at pos: '" << pos << "'\n";
+			if (pos == string::npos || pos < 4)
+				break; // caret position not found
+			pos -= 4; // skip the "tex(" part
+			if (expr[pos] == '*')
+				break; // two '*' in a row are definitely bad
+			expr.insert(pos,  "*");
+		}
+
+		std::vector<string> tmp = getVectorFromString(out, "$$");
+		if (tmp.size() < 2)
+			return MathArray();
+
+		out = subst(tmp[1],"\\>", "");
+
+		lyxerr << "out: '" << out << "'\n";
+		MathArray res;
+		mathed_parse_cell(res, out);
+		return res;
 	}
 
 
@@ -1038,6 +1104,9 @@ MathArray pipeThroughExtern(string const & lang, string const & extra,
 {
 	if (lang == "octave")
 		return pipeThroughOctave(extra, ar);
+
+	if (lang == "maxima")
+		return pipeThroughMaxima(extra, ar);
 
 	if (lang == "maple")
 		return pipeThroughMaple(extra, ar);

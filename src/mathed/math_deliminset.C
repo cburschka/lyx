@@ -141,6 +141,18 @@ void MathDelimInset::maplize(MapleStream & os) const
 		os << left_ << cell(0) << right_;
 }
 
+void MathDelimInset::maximize(MaximaStream & os) const
+{
+	if (isAbs()) {
+		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
+			os << "determinant(" << cell(0) << ")";
+		else
+			os << "abs(" << cell(0) << ")";
+	}
+	else
+		os << left_ << cell(0) << right_;
+}
+
 
 void MathDelimInset::mathematicize(MathematicaStream & os) const
 {

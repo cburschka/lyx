@@ -68,6 +68,7 @@ class InsetRef;
 class NormalStream;
 class OctaveStream;
 class MapleStream;
+class MaximaStream;
 class MathematicaStream;
 class MathMLStream;
 class WriteStream;
@@ -270,6 +271,8 @@ public:
 	virtual void normalize(NormalStream &) const;
 	/// write content as something readable by Maple
 	virtual void maplize(MapleStream &) const;
+	/// write content as something readable by Maxima
+	virtual void maximize(MaximaStream &) const;
 	/// write content as something readable by Mathematica
 	virtual void mathematicize(MathematicaStream &) const;
 	/// write content as something resembling MathML

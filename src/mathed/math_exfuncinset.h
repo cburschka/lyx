@@ -29,6 +29,8 @@ public:
 	///
 	void maplize(MapleStream &) const;
 	///
+	void maximize(MaximaStream &) const;
+	///
 	void mathematicize(MathematicaStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;

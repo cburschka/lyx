@@ -30,6 +30,8 @@ public:
 	///
 	void maplize(MapleStream &) const;
 	///
+	void maximize(MaximaStream &) const;
+	///
 	void mathmlize(MathMLStream &) const;
 	///
 	void octavize(OctaveStream &) const;

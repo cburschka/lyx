@@ -89,6 +89,12 @@ bool MathRootInset::idxUpDown(idx_type & idx, pos_type & pos, bool up, int) cons
 }
 
 
+void MathRootInset::maplize(MapleStream & os) const
+{
+	os << "(" << cell(1) << ")^(1/(" << cell(0) <<"))";
+}
+
+
 void MathRootInset::octavize(OctaveStream & os) const
 {
 	os << "root(" << cell(1) << ',' << cell(0) <<')';

@@ -174,7 +174,6 @@ void MathMLStream::cr()
 }
 
 
-
 //////////////////////////////////////////////////////////////////////
 
 
@@ -207,6 +206,44 @@ MapleStream & operator<<(MapleStream & ms, char c)
 
 
 MapleStream & operator<<(MapleStream & ms, int i)
+{
+	ms.os() << i;
+	return ms;
+}
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+MaximaStream & operator<<(MaximaStream & ms, MathAtom const & at)
+{
+	at->maximize(ms);
+	return ms;
+}
+
+
+MaximaStream & operator<<(MaximaStream & ms, MathArray const & ar)
+{
+	maximize(ar, ms);
+	return ms;
+}
+
+
+MaximaStream & operator<<(MaximaStream & ms, char const * s)
+{
+	ms.os() << s;
+	return ms;
+}
+
+
+MaximaStream & operator<<(MaximaStream & ms, char c)
+{
+	ms.os() << c;
+	return ms;
+}
+
+
+MaximaStream & operator<<(MaximaStream & ms, int i)
 {
 	ms.os() << i;
 	return ms;

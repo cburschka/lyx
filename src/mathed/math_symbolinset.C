@@ -131,6 +131,17 @@ void MathSymbolInset::maplize(MapleStream & os) const
 		os << name();
 }
 
+void MathSymbolInset::maximize(MaximaStream & os) const
+{
+	if (name() == "cdot")
+		os << '*';
+	else if (name() == "infty")
+		os << "INF";
+	else
+		os << name();
+}
+
+
 void MathSymbolInset::mathematicize(MathematicaStream & os) const
 {
 	if ( name() == "pi")    { os << "Pi"; return;}

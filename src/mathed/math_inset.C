@@ -224,6 +224,13 @@ void MathInset::maplize(MapleStream & os) const
 }
 
 
+void MathInset::maximize(MaximaStream & os) const
+{
+	MapleStream ns(os.os());
+	maplize(ns);
+}
+
+
 void MathInset::mathematicize(MathematicaStream & os) const
 {
 	NormalStream ns(os.os());

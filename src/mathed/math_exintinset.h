@@ -28,6 +28,8 @@ public:
 	///
 	void normalize(NormalStream &) const;
 	///
+	void maximize(MaximaStream &) const;
+	///
 	void maplize(MapleStream &) const;
 	///
 	void mathematicize(MathematicaStream &) const;

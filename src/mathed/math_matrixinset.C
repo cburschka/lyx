@@ -43,6 +43,24 @@ void MathMatrixInset::maplize(MapleStream & os) const
 }
 
 
+void MathMatrixInset::maximize(MaximaStream & os) const
+{
+	os << "matrix(";
+	for (row_type row = 0; row < nrows(); ++row) {
+		if (row)
+			os << ',';
+		os << '[';
+		for (col_type col = 0; col < ncols(); ++col) {
+			if (col)
+				os << ',';
+			os << cell(index(row, col));
+		}
+		os << ']';
+	}
+	os << ')';
+}
+
+
 void MathMatrixInset::mathmlize(MathMLStream & os) const
 {
 	MathGridInset::mathmlize(os);

@@ -160,8 +160,6 @@ NormalStream & operator<<(NormalStream &, char);
 NormalStream & operator<<(NormalStream &, int);
 
 
-
-
 //
 // Maple
 //
@@ -189,6 +187,35 @@ MapleStream & operator<<(MapleStream &, char const *);
 MapleStream & operator<<(MapleStream &, char);
 ///
 MapleStream & operator<<(MapleStream &, int);
+
+
+//
+// Maxima
+//
+
+
+class MaximaStream {
+public:
+	///
+	explicit MaximaStream(std::ostream & os) : os_(os) {}
+	///
+	std::ostream & os() { return os_; }
+private:
+	///
+	std::ostream & os_;
+};
+
+
+///
+MaximaStream & operator<<(MaximaStream &, MathAtom const &);
+///
+MaximaStream & operator<<(MaximaStream &, MathArray const &);
+///
+MaximaStream & operator<<(MaximaStream &, char const *);
+///
+MaximaStream & operator<<(MaximaStream &, char);
+///
+MaximaStream & operator<<(MaximaStream &, int);
 
 
 //

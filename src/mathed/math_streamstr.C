@@ -32,6 +32,13 @@ MapleStream & operator<<(MapleStream & ms, string const & s)
 }
 
 
+MaximaStream & operator<<(MaximaStream & ms, string const & s)
+{
+	ms.os() << s;
+	return ms;
+}
+
+
 MathematicaStream & operator<<(MathematicaStream & ms, string const & s)
 {
 	ms.os() << s;
