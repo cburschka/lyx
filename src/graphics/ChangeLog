@@ -1,3 +1,8 @@
+2003-10-22  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsConverter.C (Impl c-tor): add a warning message if the file
+	to contain the conversion script cannot be opened.
+
 2003-09-14  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C (remove): consider all InProgressProcesses when

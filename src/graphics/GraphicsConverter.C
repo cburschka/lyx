@@ -170,8 +170,13 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 			tostr(counter++) + ".sh";
 
 		std::ofstream fs(script_file_.c_str());
-		if (!fs.good())
+		if (!fs.good()) {
+			lyxerr << "Unable to write the conversion script to \""
+			       << script_file_ << '\n'
+			       << "Please check your directory permissions."
+			       << std::endl;
 			return;
+		}
 
 		fs << STRCONV(script.str());
 		fs.close();
