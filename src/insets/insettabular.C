@@ -426,16 +426,6 @@ void InsetTabular::edit(LCursor & cur, bool left)
 }
 
 
-InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y) const
-{
-	//lyxerr << "InsetTabular::editXY: " << this << endl;
-	cur.selection() = false;
-	cur.push(const_cast<InsetTabular&>(*this));
-	return setPos(cur, x, y);
-	//int xx = cursorx_ - xo() + tabular.getBeginningOfTextInCell(cur.idx());
-}
-
-
 void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 {
 	lyxerr << "# InsetTabular::dispatch: cmd: " << cmd << endl;
@@ -450,7 +440,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 
 		if (cmd.button() == mouse_button::button1) {
 			cur.selection() = false;
-			setPos(cur, cmd.x, cmd.y);
+			setCursorFromCoordinates(cur, cmd.x, cmd.y);
 			cur.resetAnchor();
 			bvcur = cur;
 			break;
@@ -474,7 +464,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (cmd.button() == mouse_button::button1) {
 			// only accept motions to places not deeper nested than the real anchor
 			if (bvcur.anchor_.hasPart(cur)) {
-				setPos(cur, cmd.x, cmd.y);
+				setCursorFromCoordinates(cur, cmd.x, cmd.y);
 				bvcur.setCursor(cur);
 				bvcur.selection() = true;
 			} else
@@ -1136,9 +1126,30 @@ int dist(InsetOld const & inset, int x, int y)
 } //namespace anon
 
 
-InsetBase * InsetTabular::setPos(LCursor & cur, int x, int y) const
+InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y) const
 {
-	lyxerr << "# InsetTabular::setPos()  x=" << x << " y=" << y << endl;
+	//lyxerr << "InsetTabular::editXY: " << this << endl;
+	cur.selection() = false;
+	cur.push(const_cast<InsetTabular&>(*this));
+	cur.idx() = getNearestCell(x, y);
+	resetPos(cur);
+	return cell(cur.idx())->text_.editXY(cur, x, y);
+	//int xx = cursorx_ - xo() + tabular.getBeginningOfTextInCell(cur.idx());
+}
+
+
+void InsetTabular::setCursorFromCoordinates(LCursor & cur, int x, int y) const
+{
+	//lyxerr << "# InsetTabular::setCursorFromCoordinates()\n" << cur << endl;
+	cur.idx() = getNearestCell(x, y);
+	resetPos(cur);
+	return cell(cur.idx())->text_.setCursorFromCoordinates(cur, x, y);
+}
+
+
+InsetTabular::idx_type InsetTabular::getNearestCell(int x, int y) const
+{
+	lyxerr << "# InsetTabular::getNearestCell()  x=" << x << " y=" << y << endl;
 	idx_type idx_min = 0;
 	int dist_min = std::numeric_limits<int>::max();
 	for (idx_type i = 0; i < nargs(); ++i) {
@@ -1150,10 +1161,7 @@ InsetBase * InsetTabular::setPos(LCursor & cur, int x, int y) const
 			}
 		}
 	}
-	cur.idx() = idx_min;
-	//lyxerr << "# InsetTabular::setPos()\n" << cur << endl;
-	resetPos(cur);
-	return cell(cur.idx())->text_.editXY(cur, x, y);
+	return idx_min;
 }
 
 

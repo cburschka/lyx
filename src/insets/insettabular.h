@@ -153,7 +153,7 @@ private:
 	void drawCellLines(Painter &, int x, int y, row_type row,
 	                   idx_type cell) const;
 	///
-	InsetBase * setPos(LCursor & cur, int x, int y) const;
+	void setCursorFromCoordinates(LCursor & cur, int x, int y) const;
 
 	///
 	void moveNextCell(LCursor & cur);
@@ -183,6 +183,9 @@ private:
 	/// are we operating on several cells?
 	bool tablemode(LCursor & cur) const;
 
+	/// return the cell nearest to x, y
+	idx_type getNearestCell(int x, int y) const;
+	
 	///
 	Buffer const * buffer_;
 	///
