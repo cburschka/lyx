@@ -1084,32 +1084,32 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 		}
 
 		switch (align) {
-    case LYX_ALIGN_BLOCK: {
-				int const ns = numberOfSeparators(*pit, row);
-				bool disp_inset = false;
-				if (row.endpos() < pit->size()) {
-					InsetBase * in = pit->getInset(row.endpos());
-					if (in)
-						disp_inset = in->display();
-				}
-				// If we have separators, this is not the last row of a
-				// par, does not end in newline, and is not row above a
-				// display inset... then stretch it
-				if (ns
-					&& row.endpos() < pit->size()
-					&& !pit->isNewline(row.endpos() - 1)
-					&& !disp_inset
-					) {
-						fill_separator = w / ns;
-				} else if (is_rtl) {
-					x += w;
-				}
-				break;
+		case LYX_ALIGN_BLOCK: {
+			int const ns = numberOfSeparators(*pit, row);
+			bool disp_inset = false;
+			if (row.endpos() < pit->size()) {
+				InsetBase * in = pit->getInset(row.endpos());
+				if (in)
+					disp_inset = in->display();
 			}
-    case LYX_ALIGN_RIGHT:
+			// If we have separators, this is not the last row of a
+			// par, does not end in newline, and is not row above a
+			// display inset... then stretch it
+			if (ns
+			    && row.endpos() < pit->size()
+			    && !pit->isNewline(row.endpos() - 1)
+			    && !disp_inset
+				) {
+				fill_separator = w / ns;
+			} else if (is_rtl) {
+				x += w;
+			}
+			break;
+		}
+		case LYX_ALIGN_RIGHT:
 			x += w;
 			break;
-    case LYX_ALIGN_CENTER:
+		case LYX_ALIGN_CENTER:
 			x += w / 2;
 			break;
 		}
