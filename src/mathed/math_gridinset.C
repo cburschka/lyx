@@ -40,7 +40,7 @@ MathGridInset::ColInfo::ColInfo()
 {}
 
 
-MathGridInset::MathGridInset(unsigned int m, unsigned int n)
+MathGridInset::MathGridInset(col_type m, row_type n)
 	: MathNestInset(m * n), rowinfo_(n), colinfo_(m), v_align_('c')
 {
 	if (m <= 0)
@@ -51,7 +51,7 @@ MathGridInset::MathGridInset(unsigned int m, unsigned int n)
 }
 
 
-unsigned int MathGridInset::index(unsigned int row, unsigned int col) const
+MathInset::idx_type MathGridInset::index(row_type row, col_type col) const
 {
 	return col + ncols() * row;
 }
@@ -59,7 +59,7 @@ unsigned int MathGridInset::index(unsigned int row, unsigned int col) const
 
 void MathGridInset::setDefaults()
 {
-	for (unsigned int col = 0; col < ncols(); ++col) {
+	for (col_type col = 0; col < ncols(); ++col) {
 		colinfo_[col].align_ = defaultColAlign(col);
 		colinfo_[col].skip_  = defaultColSpace(col);
 	}
@@ -68,21 +68,21 @@ void MathGridInset::setDefaults()
 
 void MathGridInset::halign(string const & hh)
 {
-	unsigned int n = hh.size();
+	col_type n = hh.size();
 	if (n > ncols())
 		n = ncols();
-	for (unsigned int i = 0; i < n; ++i)
-		colinfo_[i].align_ = hh[i];
+	for (col_type col = 0; col < n; ++col)
+		colinfo_[col].align_ = hh[col];
 }
 
 
-void MathGridInset::halign(char h, unsigned int col)
+void MathGridInset::halign(char h, col_type col)
 {
 	colinfo_[col].align_ = h;
 }
 
 
-char MathGridInset::halign(unsigned int col) const
+char MathGridInset::halign(col_type col) const
 {
 	return colinfo_[col].align_;
 }
@@ -102,13 +102,13 @@ char MathGridInset::valign() const
 
 
 
-void MathGridInset::vskip(LyXLength const & skip, unsigned int row)
+void MathGridInset::vskip(LyXLength const & skip, row_type row)
 {
 	rowinfo_[row].skip_ = skip;
 }
 
 
-LyXLength MathGridInset::vskip(unsigned int row) const
+LyXLength MathGridInset::vskip(row_type row) const
 {
 	return rowinfo_[row].skip_;
 }
@@ -121,10 +121,10 @@ void MathGridInset::metrics(MathStyles st) const
 	size_ = st;
 
 	// adjust vertical structure
-	for (unsigned int row = 0; row < nrows(); ++row) {
+	for (row_type row = 0; row < nrows(); ++row) {
 		int asc  = 0;
 		int desc = 0;
-		for (unsigned int col = 0; col < ncols(); ++col) {
+		for (col_type col = 0; col < ncols(); ++col) {
 			MathXArray const & c = xcell(index(row, col));
 			asc  = std::max(asc,  c.ascent());
 			desc = std::max(desc, c.descent());
@@ -156,15 +156,15 @@ void MathGridInset::metrics(MathStyles st) const
  		h = rowinfo_.back().offset_ / 2;
 	}
 
-	for (unsigned int row = 0; row < nrows(); ++row) {
+	for (row_type row = 0; row < nrows(); ++row) {
 		rowinfo_[row].offset_ -= h;
 		rowinfo_[row].offset_ += MATH_BORDER;
 	}
 	
 	// adjust horizontal structure
-	for (unsigned int col = 0; col < ncols(); ++col) {
+	for (col_type col = 0; col < ncols(); ++col) {
 		int wid  = 0;
-		for (unsigned int row = 0; row < nrows(); ++row) 
+		for (row_type row = 0; row < nrows(); ++row) 
 			wid = std::max(wid, xcell(index(row, col)).width());
 		colinfo_[col].width_  = wid;
 		colinfo_[col].offset_ = colinfo_[col].width_;
@@ -241,15 +241,15 @@ void MathGridInset::draw(Painter & pain, int x, int y) const
 {
 	xo(x);
 	yo(y);
-	for (unsigned int idx = 0; idx < nargs(); ++idx)
+	for (idx_type idx = 0; idx < nargs(); ++idx)
 		xcell(idx).draw(pain, x + cellXOffset(idx), y + cellYOffset(idx));
 }
 
 
 void MathGridInset::write(std::ostream & os, bool fragile) const
 {
-	for (unsigned int row = 0; row < nrows(); ++row) {
-		for (unsigned int col = 0; col < ncols(); ++col) {
+	for (row_type row = 0; row < nrows(); ++row) {
+		for (col_type col = 0; col < ncols(); ++col) {
 			cell(index(row, col)).write(os, fragile);
 			os << eocString(col);
 		}
@@ -258,7 +258,7 @@ void MathGridInset::write(std::ostream & os, bool fragile) const
 }
 
 
-string MathGridInset::eolString(unsigned int row) const
+string MathGridInset::eolString(row_type row) const
 {
 	if (row + 1 == nrows())	
 		return "";
@@ -275,7 +275,7 @@ string MathGridInset::eolString(unsigned int row) const
 }
 
 
-string MathGridInset::eocString(unsigned int col) const
+string MathGridInset::eocString(col_type col) const
 {
 	if (col + 1 == ncols())
 		return "";
@@ -283,7 +283,7 @@ string MathGridInset::eocString(unsigned int col) const
 }
 
 
-void MathGridInset::addRow(unsigned int row)
+void MathGridInset::addRow(row_type row)
 {
 	rowinfo_.insert(rowinfo_.begin() + row + 1, RowInfo());
 	cells_.insert(cells_.begin() + (row + 1) * ncols(), ncols(), MathXArray());
@@ -293,12 +293,12 @@ void MathGridInset::addRow(unsigned int row)
 void MathGridInset::appendRow()
 {
 	rowinfo_.push_back(RowInfo());
-	for (unsigned int i = 0; i < ncols(); ++i)
+	for (col_type col = 0; col < ncols(); ++col)
 		cells_.push_back(cells_type::value_type());
 }
 
 
-void MathGridInset::delRow(unsigned int row)
+void MathGridInset::delRow(row_type row)
 {
 	if (nrows() == 1)
 		return;
@@ -310,14 +310,14 @@ void MathGridInset::delRow(unsigned int row)
 }
 
 
-void MathGridInset::addCol(unsigned int newcol)
+void MathGridInset::addCol(col_type newcol)
 {
-	unsigned int const nc = ncols();
-	unsigned int const nr = nrows();
+	const col_type nc = ncols();
+	const row_type nr = nrows();
 	cells_type new_cells((nc + 1) * nr);
 	
-	for (unsigned int row = 0; row < nr; ++row)
-		for (unsigned int col = 0; col < nc; ++col)
+	for (row_type row = 0; row < nr; ++row)
+		for (col_type col = 0; col < nc; ++col)
 			new_cells[row * (nc + 1) + col + (col > newcol)]
 				= cells_[row * nc + col];
 	std::swap(cells_, new_cells);
@@ -329,13 +329,13 @@ void MathGridInset::addCol(unsigned int newcol)
 }
 
 
-void MathGridInset::delCol(unsigned int col)
+void MathGridInset::delCol(col_type col)
 {
 	if (ncols() == 1)
 		return;
 
 	cells_type tmpcells;
-	for (unsigned int i = 0; i < nargs(); ++i) 
+	for (col_type i = 0; i < nargs(); ++i) 
 		if (i % ncols() != col)
 			tmpcells.push_back(cells_[i]);
 	std::swap(cells_, tmpcells);
@@ -344,9 +344,9 @@ void MathGridInset::delCol(unsigned int col)
 }
 
 
-int MathGridInset::cellXOffset(unsigned int idx) const
+int MathGridInset::cellXOffset(idx_type idx) const
 {
-	unsigned int c = col(idx);
+	col_type c = col(idx);
 	int x = colinfo_[c].offset_;
 	char align = colinfo_[c].align_;
 	if (align == 'r' || align == 'R')
@@ -357,13 +357,13 @@ int MathGridInset::cellXOffset(unsigned int idx) const
 }
 
 
-int MathGridInset::cellYOffset(unsigned int idx) const
+int MathGridInset::cellYOffset(idx_type idx) const
 {
 	return rowinfo_[row(idx)].offset_;
 }
 
 
-bool MathGridInset::idxUp(unsigned int & idx, unsigned int & pos) const
+bool MathGridInset::idxUp(idx_type & idx, pos_type & pos) const
 {
 	if (idx < ncols())
 		return false;
@@ -373,7 +373,7 @@ bool MathGridInset::idxUp(unsigned int & idx, unsigned int & pos) const
 }
 
 	
-bool MathGridInset::idxDown(unsigned int & idx, unsigned int & pos) const
+bool MathGridInset::idxDown(idx_type & idx, pos_type & pos) const
 {
 	if (idx >= ncols() * (nrows() - 1))
 		return false;
@@ -383,7 +383,7 @@ bool MathGridInset::idxDown(unsigned int & idx, unsigned int & pos) const
 }
 	
 	
-bool MathGridInset::idxLeft(unsigned int & idx, unsigned int & pos) const
+bool MathGridInset::idxLeft(idx_type & idx, pos_type & pos) const
 {
 	// leave matrix if on the left hand edge
 	if (col(idx) == 0)
@@ -394,7 +394,7 @@ bool MathGridInset::idxLeft(unsigned int & idx, unsigned int & pos) const
 }
 	
 	
-bool MathGridInset::idxRight(unsigned int & idx, unsigned int & pos) const
+bool MathGridInset::idxRight(idx_type & idx, pos_type & pos) const
 {
 	// leave matrix if on the right hand edge
 	if (col(idx) == ncols() - 1)
@@ -405,7 +405,7 @@ bool MathGridInset::idxRight(unsigned int & idx, unsigned int & pos) const
 }
 
 
-bool MathGridInset::idxFirst(unsigned int & idx, unsigned int & pos) const
+bool MathGridInset::idxFirst(idx_type & idx, pos_type & pos) const
 {
 	switch (v_align_) {
 		case 't':
@@ -422,7 +422,7 @@ bool MathGridInset::idxFirst(unsigned int & idx, unsigned int & pos) const
 }
 
 
-bool MathGridInset::idxLast(unsigned int & idx, unsigned int & pos) const
+bool MathGridInset::idxLast(idx_type & idx, pos_type & pos) const
 {
 	switch (v_align_) {
 		case 't':
@@ -439,7 +439,7 @@ bool MathGridInset::idxLast(unsigned int & idx, unsigned int & pos) const
 }
 
 
-void MathGridInset::idxDelete(unsigned int & idx, bool & popit, bool & deleteit)
+void MathGridInset::idxDelete(idx_type & idx, bool & popit, bool & deleteit)
 {
 	popit    = false;
 	deleteit = false;
@@ -447,7 +447,7 @@ void MathGridInset::idxDelete(unsigned int & idx, bool & popit, bool & deleteit)
 	// delete entire row if in first cell of empty row
 	if (col(idx) == 0 && nrows() > 1) {
 		bool deleterow = true;
-		for (unsigned int i = idx; i < idx + ncols(); ++i)
+		for (idx_type i = idx; i < idx + ncols(); ++i)
 			if (cell(i).size()) {
 				deleterow = false;
 				break;
@@ -466,7 +466,7 @@ void MathGridInset::idxDelete(unsigned int & idx, bool & popit, bool & deleteit)
 }
 
 
-void MathGridInset::idxDeleteRange(unsigned int /*from*/, unsigned int /*to*/)
+void MathGridInset::idxDeleteRange(idx_type /*from*/, idx_type /*to*/)
 {
 // leave this unimplemented unless someone wants to have it.
 /*
@@ -482,28 +482,28 @@ void MathGridInset::idxDeleteRange(unsigned int /*from*/, unsigned int /*to*/)
 }
 
 
-MathGridInset::RowInfo const & MathGridInset::rowinfo(unsigned int i) const
+MathGridInset::RowInfo const & MathGridInset::rowinfo(row_type row) const
 {
-	return rowinfo_[i];
+	return rowinfo_[row];
 }
 
 
-MathGridInset::RowInfo & MathGridInset::rowinfo(unsigned int i)
+MathGridInset::RowInfo & MathGridInset::rowinfo(row_type row)
 {
-	return rowinfo_[i];
+	return rowinfo_[row];
 }
 
 
-std::vector<unsigned int>
-	MathGridInset::idxBetween(unsigned int from, unsigned int to) const
+std::vector<MathInset::idx_type>
+	MathGridInset::idxBetween(idx_type from, idx_type to) const
 {
-	unsigned int r1 = std::min(row(from), row(to));
-	unsigned int r2 = std::max(row(from), row(to));
-	unsigned int c1 = std::min(col(from), col(to));
-	unsigned int c2 = std::max(col(from), col(to));
-	std::vector<unsigned int> res;
-	for (unsigned int i = r1; i <= r2; ++i)
-		for (unsigned int j = c1; j <= c2; ++j)
+	row_type r1 = std::min(row(from), row(to));
+	row_type r2 = std::max(row(from), row(to));
+	col_type c1 = std::min(col(from), col(to));
+	col_type c2 = std::max(col(from), col(to));
+	std::vector<idx_type> res;
+	for (row_type i = r1; i <= r2; ++i)
+		for (col_type j = c1; j <= c2; ++j)
 			res.push_back(index(i, j));
 	return res;
 }

@@ -61,8 +61,9 @@ struct Selection
 		if (i1.idx_ == i2.idx_)
 			data_.push_back(MathArray(i1.cell(), i1.pos_, i2.pos_));
 		else {
-			std::vector<unsigned int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
-			for (unsigned i = 0; i < indices.size(); ++i)
+			std::vector<MathInset::idx_type> indices =
+				i1.par_->idxBetween(i1.idx_, i2.idx_);
+			for (MathInset::idx_type i = 0; i < indices.size(); ++i)
 				data_.push_back(i1.cell(indices[i]));
 		}
 	}

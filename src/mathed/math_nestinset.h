@@ -16,7 +16,7 @@ class LaTeXFeatures;
 class MathNestInset : public MathDimInset {
 public: 
 	///
-	explicit MathNestInset(unsigned int ncells);
+	explicit MathNestInset(idx_type ncells);
 
 	///
 	void metrics(MathStyles st) const;
@@ -26,36 +26,36 @@ public:
 	void substitute(MathMacro const & macro); 
 
 	/// The left key
-	bool idxLeft(unsigned int & idx, unsigned int & pos) const;
+	bool idxLeft(idx_type & idx, pos_type & pos) const;
 	/// The right key
-	bool idxRight(unsigned int & idx, unsigned int & pos) const;
+	bool idxRight(idx_type & idx, pos_type & pos) const;
 
 	/// Move one physical cell up
-	bool idxNext(unsigned int & idx, unsigned int & pos) const;
+	bool idxNext(idx_type & idx, pos_type & pos) const;
 	/// Move one physical cell down
-	bool idxPrev(unsigned int & idx, unsigned int & pos) const;
+	bool idxPrev(idx_type & idx, pos_type & pos) const;
 
 	/// Target pos when we enter the inset from the left by pressing "Right"
-	bool idxFirst(unsigned int & idx, unsigned int & pos) const;
+	bool idxFirst(idx_type & idx, pos_type & pos) const;
 	/// Target pos when we enter the inset from the right by pressing "Left"
-	bool idxLast(unsigned int & idx, unsigned int & pos) const;
+	bool idxLast(idx_type & idx, pos_type & pos) const;
 
 	/// Where should we go if we press home?
-	bool idxHome(unsigned int & idx, unsigned int & pos) const;
+	bool idxHome(idx_type & idx, pos_type & pos) const;
 	/// Where should we go if we press end?
-	bool idxEnd(unsigned int & idx, unsigned int & pos) const;
+	bool idxEnd(idx_type & idx, pos_type & pos) const;
 
 	///
-	unsigned int nargs() const;
+	idx_type nargs() const;
 
 	///
-	MathArray & cell(unsigned int);
+	MathArray & cell(idx_type);
 	///
-	MathArray const & cell(unsigned int) const;
+	MathArray const & cell(idx_type) const;
 	///
-	MathXArray & xcell(unsigned int);
+	MathXArray & xcell(idx_type);
 	///
-	MathXArray const & xcell(unsigned int) const;
+	MathXArray const & xcell(idx_type) const;
 			
 	///
 	bool isActive() const { return nargs() > 0; }

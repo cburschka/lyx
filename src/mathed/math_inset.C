@@ -85,7 +85,7 @@ void MathInset::yo(int y) const
 }
 
 
-unsigned int MathInset::nargs() const
+MathInset::size_type MathInset::nargs() const
 {
 	return 0;
 }
@@ -93,28 +93,28 @@ unsigned int MathInset::nargs() const
 
 MathXArray dummyCell;
 
-MathXArray & MathInset::xcell(unsigned int)
+MathXArray & MathInset::xcell(idx_type)
 {
 	lyxerr << "I don't have a cell\n";
 	return dummyCell;
 }
 
 
-MathXArray const & MathInset::xcell(unsigned int) const
+MathXArray const & MathInset::xcell(idx_type) const
 {
 	lyxerr << "I don't have a cell\n";
 	return dummyCell;
 }
 
 
-MathArray & MathInset::cell(unsigned int)
+MathArray & MathInset::cell(idx_type)
 {
 	lyxerr << "I don't have a cell\n";
 	return dummyCell.data_;
 }
 
 
-MathArray const & MathInset::cell(unsigned int) const
+MathArray const & MathInset::cell(idx_type) const
 {
 	lyxerr << "I don't have a cell\n";
 	return dummyCell.data_;
@@ -125,74 +125,74 @@ void MathInset::substitute(MathMacro const &)
 {}
 
 
-bool MathInset::idxNext(unsigned int &, unsigned int &) const
+bool MathInset::idxNext(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxRight(unsigned int &, unsigned int &) const
+bool MathInset::idxRight(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxPrev(unsigned int &, unsigned int &) const
+bool MathInset::idxPrev(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxLeft(unsigned int &, unsigned int &) const
+bool MathInset::idxLeft(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxUp(unsigned int &, unsigned int &) const
+bool MathInset::idxUp(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxDown(unsigned int &, unsigned int &) const
+bool MathInset::idxDown(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxFirst(unsigned int &, unsigned int &) const
+bool MathInset::idxFirst(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxLast(unsigned int &, unsigned int &) const
+bool MathInset::idxLast(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxHome(unsigned int &, unsigned int &) const
+bool MathInset::idxHome(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-bool MathInset::idxEnd(unsigned int &, unsigned int &) const
+bool MathInset::idxEnd(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-void MathInset::idxDelete(unsigned int &, bool & popit, bool & deleteit)
+void MathInset::idxDelete(idx_type &, bool & popit, bool & deleteit)
 {
 	popit    = false;
 	deleteit = false;
 }
 
 
-void MathInset::idxDeleteRange(unsigned int, unsigned int)
+void MathInset::idxDeleteRange(idx_type, idx_type)
 {}
 
 
@@ -255,11 +255,11 @@ void MathInset::validate(LaTeXFeatures &) const
 {}
 
 
-std::vector<unsigned int>
-	MathInset::idxBetween(unsigned int from, unsigned int to) const
+std::vector<MathInset::idx_type>
+	MathInset::idxBetween(idx_type from, idx_type to) const
 {
-	std::vector<unsigned int> res;
-	for (unsigned int i = from; i <= to; ++i)
+	std::vector<idx_type> res;
+	for (idx_type i = from; i <= to; ++i)
 		res.push_back(i);
 	return res;
 }

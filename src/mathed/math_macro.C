@@ -72,7 +72,7 @@ void MathMacro::metrics(MathStyles st) const
 		int lwid;
 		mathed_string_dim(LM_TC_TEXTRM, size_, "#1: ", lasc, ldes, lwid);
 
-		for (unsigned int i = 0; i < nargs(); ++i) {
+		for (idx_type i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
 			c.metrics(st);
 			width_    = std::max(width_, c.width() + lwid);
@@ -114,7 +114,7 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 		int lwid;
 		mathed_string_dim(LM_TC_TEXTRM, size_, "#1: ", lasc, ldes, lwid);
 
-		for (unsigned int i = 0; i < nargs(); ++i) {
+		for (idx_type i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
 			h += std::max(c.ascent(), lasc) + 5;
 			c.draw(pain, x + lwid, h);
@@ -147,7 +147,7 @@ void MathMacro::dump() const
 void MathMacro::write(std::ostream & os, bool fragile) const
 {
 	os << '\\' << name();
-	for (unsigned int i = 0; i < nargs(); ++i) {
+	for (idx_type i = 0; i < nargs(); ++i) {
 		os << '{';
 		cell(i).write(os, fragile);
 		os << '}';
@@ -160,7 +160,7 @@ void MathMacro::write(std::ostream & os, bool fragile) const
 void MathMacro::writeNormal(std::ostream & os) const
 {
 	os << "[macro " << name() << " ";
-	for (unsigned int i = 0; i < nargs(); ++i) {
+	for (idx_type i = 0; i < nargs(); ++i) {
 		cell(i).writeNormal(os);
 		os << ' ';
 	}
@@ -168,25 +168,25 @@ void MathMacro::writeNormal(std::ostream & os) const
 }
 
 
-bool MathMacro::idxUp(unsigned int & idx, unsigned int & pos) const
+bool MathMacro::idxUp(idx_type & idx, pos_type & pos) const
 {
 	return MathNestInset::idxLeft(idx, pos);
 }
 
 
-bool MathMacro::idxDown(unsigned int & idx, unsigned int & pos) const
+bool MathMacro::idxDown(idx_type & idx, pos_type & pos) const
 {
 	return MathNestInset::idxRight(idx, pos);
 }
 
 
-bool MathMacro::idxLeft(unsigned int &, unsigned int &) const
+bool MathMacro::idxLeft(idx_type &, pos_type &) const
 {
 	return false;
 }
 
 
-bool MathMacro::idxRight(unsigned int &, unsigned int &) const
+bool MathMacro::idxRight(idx_type &, pos_type &) const
 {
 	return false;
 }

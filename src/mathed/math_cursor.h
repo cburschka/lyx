@@ -22,6 +22,7 @@
 #endif
 
 #include "math_defs.h"
+#include "math_inset.h"
 
 class MathInset;
 class MathAtom;
@@ -41,17 +42,17 @@ struct MathCursorPos {
 	/// inset
 	MathInset * par_;
 	/// cell index
-	unsigned int idx_;
+	MathInset::idx_type idx_;
 	/// cell position
-	unsigned int pos_;
+	MathInset::pos_type pos_;
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
 	/// returns cell corresponding to this position
-	MathArray & cell(unsigned int idx) const;
+	MathArray & cell(MathInset::idx_type idx) const;
 	/// returns xcell corresponding to this position
 	MathXArray & xcell() const;
 	/// returns xcell corresponding to this position
-	MathXArray & xcell(unsigned int idx) const;
+	MathXArray & xcell(MathInset::idx_type idx) const;
 };
 
 /// 
@@ -63,6 +64,17 @@ bool operator<(MathCursorPos const &, MathCursorPos const &);
 /// This is the external interface of Math's subkernel
 class MathCursor {
 public:
+	/// short of anything else reasonable
+	typedef MathInset::size_type    size_type;
+	/// type for cursor positions within a cell
+	typedef MathInset::pos_type     pos_type;
+	/// type for cell indices
+	typedef MathInset::idx_type     idx_type;
+	/// type for row numbers
+	typedef MathInset::row_type     row_type;
+	/// type for column numbers
+	typedef MathInset::col_type     col_type;
+
 	///
 	explicit MathCursor(InsetFormulaBase *);
 	///
@@ -120,15 +132,15 @@ public:
 	///
 	MathInset * par() const;
 	/// return the next enclosing grid inset and the cursor's index in it
-	MathArrayInset * enclosingArray(unsigned int &) const;
+	MathArrayInset * enclosingArray(idx_type &) const;
 	///
 	InsetFormulaBase const * formula();
 	///
-	unsigned int pos() const;
+	pos_type pos() const;
 	///
-	unsigned int idx() const;
+	idx_type idx() const;
 	///
-	unsigned int size() const;
+	size_type size() const;
 	///
 	void interpret(string const &);
 	///
@@ -183,9 +195,9 @@ public:
 	///
 	char halign() const;
 	///
-	unsigned int col() const;
+	col_type col() const;
 	///
-	unsigned int row() const;
+	row_type row() const;
 
 	///
 	MathStyles style() const;
@@ -231,7 +243,7 @@ public:
 
 
 	///  
-	unsigned int last() const;
+	pos_type last() const;
 	///
 	MathInset * parInset(int i) const;
 	///
@@ -261,13 +273,13 @@ private:
 	/// can the setPos routine enter that inset?
 	MathInset * positionable(MathAtom *, int x, int y) const;
 	/// write access to cursor cell position
-	unsigned int & pos();
+	pos_type & pos();
 	/// write access to cursor cell index
-	unsigned int & idx();
+	idx_type & idx();
 	/// x-offset of current cell relative to par xo
-	unsigned int cellXOffset() const;
+	idx_type cellXOffset() const;
 	/// y-offset of current cell relative to par yo
-	unsigned int cellYOffset() const;
+	idx_type cellYOffset() const;
 	/// current x position relative to par xo
 	int xpos() const;
 	/// current y position relative to par yo
