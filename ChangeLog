@@ -1,3 +1,7 @@
+2000-10-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/trans.C (AddDeadkey): cast explicitly to char.
+
 2000-10-30  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/tabular.C (AsciiBottomHLine): simplify?
