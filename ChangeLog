@@ -1,3 +1,18 @@
+1999-12-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/lyxstring.C: remove the inline added earlier since
+	they cause a bunch of unsatisfied symbols when linking with dec
+	cxx. Cxx likes to have the body of inlines at the place where they
+	are declared.
+
+	* src/trans.C (AddDeadkey): add an 'unsigned char' cast to avoid
+	accessing negative bounds in array. This fixes the crash when
+	inserting accented characters.
+	* src/trans.h (Match): ditto
+
+	* src/buffer.C (Dispatch): since this is a void, it should not try
+	to return anything...
+
 1999-12-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/buffer.h: removed the two friends from Buffer. Some changes

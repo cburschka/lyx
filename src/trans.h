@@ -97,7 +97,7 @@ private:
 
 char * Trans::Match(char c)
 {
-	return keymap_[c];
+	return keymap_[static_cast<unsigned char>(c)];
 }
 
 #endif 

@@ -4198,7 +4198,7 @@ void Buffer::Dispatch(const string & command)
 	string cmd, line = frontStrip(command);
 	string arg = strip(frontStrip(split(line, cmd, ' ')));
 
-	return Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg.c_str());
+	Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg.c_str());
 }
 
 void Buffer::Dispatch(int action, const string & argument)
