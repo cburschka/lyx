@@ -1,8 +1,6 @@
-2001-11-25  Dekel Tsur  <dekelts@tau.ac.il>
+e2001-11-25  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* src/buffer.C (makeLaTeXFile): Use the twoside option for the geometry
-	package when necessary.
-	(parseSingleLyXformat2Token): Insert an error inset
+	* src/buffer.C (parseSingleLyXformat2Token): Insert an error inset
 	when encountering an unknown token.
 	(readLyXformat2): Show an error message if there were unknown tokens.
 
