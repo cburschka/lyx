@@ -355,10 +355,11 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
 
+
 bool BufferView::Pimpl::fitCursor()
 {
 	// this is enough to get the right y cursor info for fitCursor
-	cursor_.top().text()->redoParagraph(cursor_.top().par());
+	cursor_[0].text()->redoParagraph(cursor_[0].par());
 
 	if (!screen().fitCursor(bv_))
 		return false;

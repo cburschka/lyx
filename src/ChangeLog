@@ -1,6 +1,10 @@
 
 2004-04-03  Alfredo Braunstein  <abraunst@lyx.org>
 
+	* BufferView_pimpl.C (fitCursor): oversight
+	
+2004-04-03  Alfredo Braunstein  <abraunst@lyx.org>
+
 	* cursor.[Ch] (LCursor): remove cached_y_ and updatePos 
 	(getDim) remove outdated comment
 
