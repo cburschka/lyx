@@ -1347,9 +1347,9 @@ void BufferView::Pimpl::pasteClipboard(bool asPara)
 	if (clip.empty()) return;
 
 	if (asPara) {
-		bv_->text->insertStringAsParagraphs(bv_, clip);
+		bv_->getLyXText()->insertStringAsParagraphs(bv_, clip);
 	} else {
-		bv_->text->insertStringAsLines(bv_, clip);
+		bv_->getLyXText()->insertStringAsLines(bv_, clip);
 	}
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
