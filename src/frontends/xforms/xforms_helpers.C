@@ -19,13 +19,13 @@
  
 #include "xforms_helpers.h"
 #include "lyxlex.h"
+#include "gettext.h"
+#include "lyxlength.h"
+#include "lyxgluelength.h"
+#include "support/LAssert.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // frontStrip, strip
-#include "gettext.h"
-#include "support/LAssert.h"
-#include "lyxlength.h"
-#include "lyxgluelength.h"
 
 using std::ofstream;
 using std::pair;
@@ -364,6 +364,16 @@ string formatted(string const & sin, int w, int size, int style)
 }
 
 
+void setCursorColor(int color)
+{
+	fl_set_cursor_color(FL_DEFAULT_CURSOR, color, FL_WHITE);
+	fl_set_cursor_color(XC_question_arrow, color, FL_WHITE);
+	fl_set_cursor_color(XC_xterm,          color, FL_WHITE);
+	fl_set_cursor_color(XC_watch,          color, FL_WHITE);
+	fl_set_cursor_color(XC_sb_right_arrow, color, FL_WHITE);
+}
+
+
 namespace {
 
 // sorted by hand to prevent LyXLex from complaining on read().
@@ -420,13 +430,10 @@ bool XformsColor::read(string const & filename)
 		fl_mapcolor(le, col.r, col.g, col.b);
 
 		if (tag == "\\gui_pointer") {
-			fl_set_cursor_color(FL_DEFAULT_CURSOR,
-					    FL_FREE_COL16, FL_WHITE);
-			fl_set_cursor_color(XC_question_arrow,
-					    FL_FREE_COL16, FL_WHITE);
+			setCursorColor(FL_FREE_COL16);
 		}
 	}
-		
+
 	return true;
 }
 

@@ -425,10 +425,7 @@ void FormPreferences::Colors::apply()
 			if (cit->colorID == GUI_COLOR_CURSOR) {
 				fl_mapcolor(GUI_COLOR_CURSOR,
 					    cit->r, cit->g, cit->b);
-				fl_set_cursor_color(FL_DEFAULT_CURSOR,
-						    GUI_COLOR_CURSOR, FL_WHITE);
-				fl_set_cursor_color(XC_question_arrow,
-						    GUI_COLOR_CURSOR, FL_WHITE);
+				setCursorColor(GUI_COLOR_CURSOR);
 			}
 		}
 		Dialogs::redrawGUI();

@@ -70,16 +70,21 @@ void Tooltips::toggleTooltips()
 		fl_set_object_helper(ob, c_str);
 	}
 
-	// Set the cursor to a question mark or back to the default.
 	FL_OBJECT * const ob = tooltipsMap.begin()->first;
+
+	// The dialog is not visible
+	if (!ob->form->window)
+		return;
+
+	// Set the cursor to a question mark or back to the default.
 	int const cursor = enabled_ ? XC_question_arrow : FL_DEFAULT_CURSOR;
-	fl_set_cursor(FL_ObjWin(ob), cursor);
+	fl_set_cursor(ob->form->window, cursor);
 }
 
 
 void Tooltips::initTooltip(FL_OBJECT * ob, string const & tip)
 {
-	lyx::Assert(ob);
+	lyx::Assert(ob && ob->form);
 
 	// Paranoia check!
 	TooltipsMap::const_iterator it = tooltipsMap.find(ob);
@@ -152,16 +157,21 @@ void Tooltips::toggleTooltips()
 		// just go away. Don't change the cursor to a question mark.
 		return;
 
-	// Set the cursor to a question mark or back to the default.
 	FL_OBJECT * const ob = tooltipsMap.begin()->first;
+
+	// The dialog is not visible
+	if (!ob->form->window)
+		return;
+
+	// Set the cursor to a question mark or back to the default.
 	int const cursor = enabled_ ? XC_question_arrow : FL_DEFAULT_CURSOR;
-	fl_set_cursor(FL_ObjWin(ob), cursor);
+	fl_set_cursor(ob->form->window, cursor);
 }
 
 
 void Tooltips::initTooltip(FL_OBJECT * ob, string const & tip)
 {
-	lyx::Assert(ob);
+	lyx::Assert(ob && ob->form);
 
 	// Paranoia check!
 	TooltipsMap::const_iterator it = tooltipsMap.find(ob);
@@ -176,7 +186,6 @@ void Tooltips::initTooltip(FL_OBJECT * ob, string const & tip)
 	tooltipsMap[ob] = formatted(_(str), 400);
 
 	if (!tooltip_timer_) {
-		lyx::Assert(ob->form);
 		if (fl_current_form && ob->form != fl_current_form)
 			fl_end_form();
 

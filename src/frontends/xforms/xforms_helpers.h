@@ -81,6 +81,11 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 			     LyXLength const & len,
 			     string const & default_unit);
 
+
+/// Called from Preferences when the cursor color is changed.
+void setCursorColor(int color);
+
+
 /// struct holding xform-specific colors
 struct XformsColor : public NamedColor {
 	int colorID;
