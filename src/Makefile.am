@@ -35,8 +35,6 @@ EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version.C.in \
 	Sectioning.C \
 	Variables.C \
 	Variables.h \
-	counters.C \
-	counters.h \
 	tracer.C \
 	tracer.h
 
@@ -109,6 +107,8 @@ lyx_SOURCES = \
 	config.h.in \
 	converter.C \
 	converter.h \
+	counters.C \
+	counters.h \
 	debug.C \
 	debug.h \
 	encoding.C \

@@ -1,3 +1,11 @@
+2002-08-06  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* counters.[Ch]
+	* text2.C
+	* paragraph.[Ch]
+	* makefile.am: move counters functionality over from
+	text2.C/paragraph.[Ch] to counters.[Ch], and make proper C++.
+
 2002-08-06  John Levon  <levon@movementarian.org>
 
 	* WordLangTuple.h: new file for word + language code tuple
@@ -27,70 +35,78 @@
 2002-08-06  John Levon  <levon@movementarian.org>
 
 	* pspell.C: fix a crash, and allow new aspell to work
- 
+
 2002-08-06  John Levon  <levon@movementarian.org>
 
 	* lyxfunc.C:
 	* kbmap.C: small cleanup
- 
+
 	* vspace.h:
 	* vspace.C: add const
- 
+
 2002-08-05  John Levon  <levon@movementarian.org>
 
 	* LyXAction.C: back to tabular-insert
- 
+
 2002-08-04  John Levon  <levon@movementarian.org>
 
 	* BufferView.h:
 	* BufferView.C: cosmetic change
- 
+
 	* BufferView_pimpl.C: s/IGNORE_CODE/NOTE_CODE/
- 
+
 	* bufferlist.C:
 	* buffer.h:
 	* buffer.C:
 	* lyxcb.h:
 	* lyxcb.C:
-	* lyxserver.C: 
-	* lyxvc.C: 
-	* vc-backend.C: 
+	* lyxserver.C:
+	* lyxvc.C:
+	* vc-backend.C:
 	* BufferView2.C: purge all "Lyx" not "LyX" strings
- 
+
 	* lyxcursor.h:
 	* lyxcursor.C: attempt to add some documentation
- 
+
 	* lyxfunc.C:
 	* commandtags.h:
-	* LyXAction.C: 
-	* ToolbarDefaults.C: 
+	* LyXAction.C:
+	* ToolbarDefaults.C:
 	* BufferView_pimpl.C: remove LFUN_DIALOG_TABULAR_INSERT and
 	  merge with LFUN_TABULAR_INSERT
 
-	* Makefile.am: 
+	* Makefile.am:
 	* SpellBase.h:
 	* ispell.h:
-	* ispell.C: 
+	* ispell.C:
 	* pspell.h:
 	* pspell.C: split up i/pspell implementations into separate
 	  files, many cleanups
 
-	* lyxlex.C: unrevert, with a proper fix for prefix.length() == 0 
- 
+	* lyxlex.C: unrevert, with a proper fix for prefix.length() == 0
+
 	* text2.C: some cleanup
- 
+
 	* lyxfunc.C: don't check for isp_command == "none" any more, it
 	  didn't make any sense
- 
+
+2002-08-06	Martin Vermeer <martin.vermeer@hut.fi>
+
+	* counters.[Ch]
+	* text2.C
+	* paragraph.[Ch]
+	* makefile.am: move counters functionality over
+	from text2.C/paragraph.[Ch] to counters.[Ch], and
+	make proper C++.
 2002-08-02  John Levon  <levon@movementarian.org>
 
 	* buffer.C: s/lyxconvert/lyx2lyx/
- 
+
 2002-08-02  Angus Leeming  <leeming@lyx.org>
 
 	* lyxlex.C: revert John's change as it breaks reading of the user
 	preamble.
- 
+
 2002-08-02  Angus Leeming  <leeming@lyx.org>
 
 	* importer.C (Import):
@@ -100,14 +116,14 @@
 2002-08-02  John Levon  <levon@movementarian.org>
 
 	* lyxlex.C: small cleanup
- 
+
 2002-08-02  John Levon  <levon@movementarian.org>
 
 	* text2.C (status): small cleanup, no logic change
- 
+
 2002-08-01  John Levon  <levon@movementarian.org>
 
-	* buffer.h: 
+	* buffer.h:
 	* buffer.C (writeFile): don't output alerts, caller
 	  handles this
 
@@ -120,20 +136,20 @@
 
 	* lyxserver.C: don't let incidental errors get
 	  in the way (errno)
- 
+
 2002-07-30  John Levon  <levon@movementarian.org>
 
 	* lyxfunc.C: disable character dialog in ERT inset (partial fix)
- 
+
 2002-07-30  John Levon  <levon@movementarian.org>
 
 	* lyxserver.h:
 	* lyxserver.C: remove I/O callback too
- 
+
 2002-07-30  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxfunc.C (getStatus): disable LFUN_LATEX_LOG when there is no
-	log. 
+	log.
 
 2002-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

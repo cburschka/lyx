@@ -77,8 +77,6 @@ extern BufferView * current_view;
 Paragraph::Paragraph()
 	: pimpl_(new Paragraph::Pimpl(this))
 {
-	for (int i = 0; i < 10; ++i)
-		setCounter(i, 0);
 	next_ = 0;
 	previous_ = 0;
 	enumdepth = 0;
@@ -92,8 +90,6 @@ Paragraph::Paragraph()
 Paragraph::Paragraph(Paragraph * par)
 	: pimpl_(new Paragraph::Pimpl(this))
 {
-	for (int i = 0; i < 10; ++i)
-		setCounter(i, 0);
 	enumdepth = 0;
 	itemdepth = 0;
 
@@ -113,8 +109,6 @@ Paragraph::Paragraph(Paragraph * par)
 Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this, same_ids))
 {
-	for (int i = 0; i < 10; ++i)
-		setCounter(i, 0);
 	enumdepth = 0;
 	itemdepth = 0;
 	next_     = 0;
@@ -2153,25 +2147,6 @@ void Paragraph::clearContents()
 {
 	pimpl_->clear();
 }
-
-
-void Paragraph::setCounter(int i, int v)
-{
-	pimpl_->counter_[i] = v;
-}
-
-
-int Paragraph::getCounter(int i) const
-{
-	return pimpl_->counter_[i];
-}
-
-
-void Paragraph::incCounter(int i)
-{
-	pimpl_->counter_[i]++;
-}
-
 
 void Paragraph::setChar(pos_type pos, value_type c)
 {

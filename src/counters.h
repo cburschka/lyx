@@ -19,14 +19,11 @@
 #endif
 
 #include "LString.h"
-
-#include <boost/signals/signal0.hpp>
-#include <boost/signals/trackable.hpp>
-
 #include <map>
+#include <vector>
 
 ///
-class Counter : public boost::trackable {
+class Counter {
 public:
 	///
 	Counter();
@@ -41,10 +38,15 @@ public:
 	///
 	void reset();
 	///
-	boost::signal0<void> onstep;
-private:
+	string master() const;
 	///
+	void setMaster(string const & m);
+	///
+
+private:
 	int value_;
+	///
+	string master_;
 };
 
 
@@ -54,7 +56,9 @@ private:
 class Counters {
 public:
 	///
-	~Counters();
+	Counters();
+	///	
+	//~Counters();
 	///
 	void newCounter(string const & newc);
 	///
@@ -67,12 +71,29 @@ public:
 	int value(string const & ctr) const;
 	///
 	void step(string const & ctr);
-	// string refstep(string const & cou);
+	///
+	void reset(string const & match = "");
+	///
+	void copy(Counters & from, Counters & to, string const & match = "");
+	///
+	string labelItem(string const & ctr,
+			string const & labeltype, 
+			string const & langtype = "latin",
+			bool first = false);
+	///
+	string numberLabel(string const & ctr,
+			string const & labeltype, 
+			string const & langtype = "latin",
+			int head = 0);
+	///
+	std::vector<string> enums, sects;
+	
 private:
 	///
-	typedef std::map<string, Counter*> CounterList;
+	typedef std::map<string, Counter> CounterList;
 	///
 	CounterList counterList;
+
 };
 
 #endif

@@ -32,6 +32,7 @@
 #include "FloatList.h"
 #include "language.h"
 #include "ParagraphParameters.h"
+#include "counters.h"
 
 #include "insets/inseterror.h"
 #include "insets/insetbib.h"
@@ -387,7 +388,7 @@ void LyXText::insertParagraph(BufferView * bview, Paragraph * par,
 			      Row * row) const
 {
 	insertRow(row, par, 0);            /* insert a new row, starting
-					    * at postition 0 */
+					    * at position 0 */
 
 	setCounter(bview->buffer(), par);  // set the counters
 
@@ -1211,60 +1212,6 @@ void LyXText::setParagraph(BufferView * bview,
 }
 
 
-char loweralphaCounter(int n)
-{
-	if (n < 1 || n > 26)
-		return '?';
-	else
-		return 'a' + n - 1;
-}
-
-
-namespace {
-
-inline
-char alphaCounter(int n)
-{
-	if (n < 1 || n > 26)
-		return '?';
-	else
-		return 'A' + n - 1;
-}
-
-
-inline
-char hebrewCounter(int n)
-{
-	static const char hebrew[22] = {
-		'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è',
-		'é', 'ë', 'ì', 'î', 'ð', 'ñ', 'ò', 'ô', 'ö',
-		'÷', 'ø', 'ù', 'ú'
-	};
-	if (n < 1 || n > 22)
-		return '?';
-	else
-		return hebrew[n-1];
-}
-
-
-inline
-string const romanCounter(int n)
-{
-	static char const * roman[20] = {
-		"i",   "ii",  "iii", "iv", "v",
-		"vi",  "vii", "viii", "ix", "x",
-		"xi",  "xii", "xiii", "xiv", "xv",
-		"xvi", "xvii", "xviii", "xix", "xx"
-	};
-	if (n < 1 || n > 20)
-		return "??";
-	else
-		return roman[n-1];
-}
-
-} // namespace anon
-
-
 // set the counter of a paragraph. This includes the labels
 void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 {
@@ -1274,22 +1221,18 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	// copy the prev-counters to this one,
 	// unless this is the first paragraph
 	if (par->previous()) {
-		for (int i = 0; i < 10; ++i) {
-			par->setCounter(i, par->previous()->getFirstCounter(i));
-		}
+
+		par->ctrs.copy(par->previous()->ctrs, par->ctrs, "");
+		
 		par->params().appendix(par->previous()->params().appendix());
 		if (!par->params().appendix() && par->params().startOfAppendix()) {
 			par->params().appendix(true);
-			for (int i = 0; i < 10; ++i) {
-				par->setCounter(i, 0);
-			}
+			par->ctrs.reset("");
 		}
 		par->enumdepth = par->previous()->enumdepth;
 		par->itemdepth = par->previous()->itemdepth;
 	} else {
-		for (int i = 0; i < 10; ++i) {
-			par->setCounter(i, 0);
-		}
+		par->ctrs.reset("");
 		par->params().appendix(par->params().startOfAppendix());
 		par->enumdepth = 0;
 		par->itemdepth = 0;
@@ -1315,11 +1258,8 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	    && par->previous()->getDepth() > par->getDepth()
 	    && layout->labeltype != LABEL_BIBLIO) {
 		par->enumdepth = par->depthHook(par->getDepth())->enumdepth;
-		par->setCounter(6 + par->enumdepth,
-				par->depthHook(par->getDepth())->getCounter(6 + par->enumdepth));
-		// reset the counters.A depth change is like a breaking layout
-		for (int i = 6 + par->enumdepth + 1; i < 10; ++i)
-			par->setCounter(i, 0);
+		par->ctrs.set(par->ctrs.enums[par->enumdepth],
+			par->depthHook(par->getDepth())->ctrs.value(par->ctrs.enums[par->enumdepth]));
 	}
 
 	if (!par->params().labelString().empty()) {
@@ -1333,13 +1273,17 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	} else {
 		par->setLabelWidthString(string());
 	}
-
+   
 	// is it a layout that has an automatic label?
 	if (layout->labeltype >=  LABEL_COUNTER_CHAPTER) {
 
 		int i = layout->labeltype - LABEL_COUNTER_CHAPTER;
+		string numbertype, langtype;	
+		ostringstream s;
+
 		if (i >= 0 && i<= buf->params.secnumdepth) {
-			par->incCounter(i);	// increment the counter
+
+			par->ctrs.step(par->ctrs.sects[i]);
 
 			// Is there a label? Useful for Chapter layout
 			if (!par->params().appendix()) {
@@ -1354,195 +1298,40 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 					par->params().labelString(string());
 			}
 
-			ostringstream s;
-
+			// Use if an integer is here less than elegant. For now.
+			int head = textclass.maxcounter() - LABEL_COUNTER_CHAPTER;
 			if (!par->params().appendix()) {
-				switch (2 * LABEL_COUNTER_CHAPTER -
-					textclass.maxcounter() + i) {
-				case LABEL_COUNTER_CHAPTER:
-					s << par->getCounter(i);
-					break;
-				case LABEL_COUNTER_SECTION:
-					s << par->getCounter(i - 1) << '.'
-					  << par->getCounter(i);
-					break;
-				case LABEL_COUNTER_SUBSECTION:
-					s << par->getCounter(i - 2) << '.'
-					  << par->getCounter(i - 1) << '.'
-					  << par->getCounter(i);
-					break;
-				case LABEL_COUNTER_SUBSUBSECTION:
-					s << par->getCounter(i - 3) << '.'
-					  << par->getCounter(i - 2) << '.'
-					  << par->getCounter(i - 1) << '.'
-					  << par->getCounter(i);
-
-					break;
-				case LABEL_COUNTER_PARAGRAPH:
-					s << par->getCounter(i - 4) << '.'
-					  << par->getCounter(i - 3) << '.'
-					  << par->getCounter(i - 2) << '.'
-					  << par->getCounter(i - 1) << '.'
-					  << par->getCounter(i);
-					break;
-				case LABEL_COUNTER_SUBPARAGRAPH:
-					s << par->getCounter(i - 5) << '.'
-					  << par->getCounter(i - 4) << '.'
-					  << par->getCounter(i - 3) << '.'
-					  << par->getCounter(i - 2) << '.'
-					  << par->getCounter(i - 1) << '.'
-					  << par->getCounter(i);
-
-					break;
-				default:
-					// Can this ever be reached? And in the
-					// case it is, how can this be correct?
-					// (Lgb)
-					s << par->getCounter(i) << '.';
-					break;
-				}
-			} else { // appendix
-				switch (2 * LABEL_COUNTER_CHAPTER - textclass.maxcounter() + i) {
-				case LABEL_COUNTER_CHAPTER:
-					if (par->isRightToLeftPar(buf->params))
-						s << hebrewCounter(par->getCounter(i));
-					else
-						s << alphaCounter(par->getCounter(i));
-					break;
-				case LABEL_COUNTER_SECTION:
-					if (par->isRightToLeftPar(buf->params))
-						s << hebrewCounter(par->getCounter(i - 1));
-					else
-						s << alphaCounter(par->getCounter(i - 1));
-
-					s << '.'
-					  << par->getCounter(i);
-
-					break;
-				case LABEL_COUNTER_SUBSECTION:
-					if (par->isRightToLeftPar(buf->params))
-						s << hebrewCounter(par->getCounter(i - 2));
-					else
-						s << alphaCounter(par->getCounter(i - 2));
-
-					s << '.'
-					  << par->getCounter(i-1) << '.'
-					  << par->getCounter(i);
-
-					break;
-				case LABEL_COUNTER_SUBSUBSECTION:
-					if (par->isRightToLeftPar(buf->params))
-						s << hebrewCounter(par->getCounter(i-3));
-					else
-						s << alphaCounter(par->getCounter(i-3));
-
-					s << '.'
-					  << par->getCounter(i-2) << '.'
-					  << par->getCounter(i-1) << '.'
-					  << par->getCounter(i);
-
-					break;
-				case LABEL_COUNTER_PARAGRAPH:
-					if (par->isRightToLeftPar(buf->params))
-						s << hebrewCounter(par->getCounter(i-4));
-					else
-						s << alphaCounter(par->getCounter(i-4));
-
-					s << '.'
-					  << par->getCounter(i-3) << '.'
-					  << par->getCounter(i-2) << '.'
-					  << par->getCounter(i-1) << '.'
-					  << par->getCounter(i);
-
-					break;
-				case LABEL_COUNTER_SUBPARAGRAPH:
-					if (par->isRightToLeftPar(buf->params))
-						s << hebrewCounter(par->getCounter(i-5));
-					else
-						s << alphaCounter(par->getCounter(i-5));
-
-					s << '.'
-					  << par->getCounter(i-4) << '.'
-					  << par->getCounter(i-3) << '.'
-					  << par->getCounter(i-2) << '.'
-					  << par->getCounter(i-1) << '.'
-					  << par->getCounter(i);
-
-					break;
-				default:
-					// Can this ever be reached? And in the
-					// case it is, how can this be correct?
-					// (Lgb)
-					s << par->getCounter(i) << '.';
-
-					break;
-				}
+				numbertype = "sectioning";
+			} else {
+				numbertype = "appendix";
+				if (par->isRightToLeftPar(buf->params))
+					langtype = "hebrew";
+				else
+					langtype = "latin";
 			}
+		
+			s << par->ctrs.numberLabel(par->ctrs.sects[i], 
+				numbertype, langtype, head);
 
 			par->params().labelString(par->params().labelString() +s.str().c_str());
 			// We really want to remove the c_str as soon as
 			// possible...
 
-			for (i++; i < 10; ++i) {
-				// reset the following counters
-				par->setCounter(i, 0);
-			}
+			// reset enum counters
+			par->ctrs.reset("enum");
 		} else if (layout->labeltype < LABEL_COUNTER_ENUMI) {
-			for (i++; i < 10; ++i) {
-				// reset the following counters
-				par->setCounter(i, 0);
-			}
+			par->ctrs.reset("enum");
 		} else if (layout->labeltype == LABEL_COUNTER_ENUMI) {
-			par->incCounter(i + par->enumdepth);
-			int number = par->getCounter(i + par->enumdepth);
+			par->ctrs.step(par->ctrs.enums[par->enumdepth]);
 
-			ostringstream s;
-
-			switch (par->enumdepth) {
-			case 1:
-				if (par->isRightToLeftPar(buf->params))
-					s << '('
-					  << hebrewCounter(number)
-					  << ')';
-				else
-					s << '('
-					  << loweralphaCounter(number)
-					  << ')';
-				break;
-			case 2:
-				if (par->isRightToLeftPar(buf->params))
-					s << '.' << romanCounter(number);
-				else
-					s << romanCounter(number) << '.';
-				break;
-			case 3:
-				if (par->isRightToLeftPar(buf->params))
-					s << '.'
-					  << alphaCounter(number);
-				else
-					s << alphaCounter(number)
-					  << '.';
-				break;
-			default:
-				if (par->isRightToLeftPar(buf->params))
-					s << '.' << number;
-				else
-					s << number << '.';
-				break;
-			}
-
+			s << par->ctrs.numberLabel(par->ctrs.enums[par->enumdepth], 
+				"enumeration", langtype);
 			par->params().labelString(s.str().c_str());
-
-			for (i += par->enumdepth + 1; i < 10; ++i) {
-				// reset the following counters
-				par->setCounter(i, 0);
-			}
 
 		}
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
-		int i = LABEL_COUNTER_ENUMI - LABEL_COUNTER_CHAPTER + par->enumdepth;
-		par->incCounter(i);
-		int number = par->getCounter(i);
+		par->ctrs.step("bibitem");
+		int number = par->ctrs.value("bibitem");
 		if (!par->bibkey) {
 			InsetCommandParams p("bibitem" );
 			par->bibkey = new InsetBibKey(p);
@@ -1563,8 +1352,13 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 				InsetFloat * tmp = static_cast<InsetFloat*>(par->inInset()->owner());
 				Floating const & fl
 					= floatList.getType(tmp->type());
+
+				// Why doesn't it work? -- MV
+				par->ctrs.step(fl.name());
 				// We should get the correct number here too.
-				s = fl.name() + " #:";
+				ostringstream o;
+				o << fl.name() << " " << par->ctrs.value(fl.name()) << ":";
+				s = o.str();
 			} else {
 				/* par->SetLayout(0);
 				   s = layout->labelstring;  */
@@ -1576,8 +1370,9 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 
 		/* reset the enumeration counter. They are always resetted
 		 * when there is any other layout between */
-		for (int i = 6 + par->enumdepth; i < 10; ++i)
-			par->setCounter(i, 0);
+		for (int i = par->enumdepth + 1; i < 4; i++) {
+			par->ctrs.set(par->ctrs.enums[i], 0);
+		}
 	}
 }
 

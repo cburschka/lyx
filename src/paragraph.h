@@ -19,6 +19,7 @@
 #include "insets/inset.h" // Just for Inset::Code
 #include "lyxfont.h" // Just for LyXFont::FONT_SIZE
 #include "support/types.h"
+#include "counters.h"
 
 class ParagraphParameters;
 class BufferParams;
@@ -168,13 +169,6 @@ public:
 	LyXLayout_ptr const & layout() const;
 	///
 	void layout(LyXLayout_ptr const & new_layout);
-
-	///
-	void setCounter(int i, int v);
-	///
-	int getCounter(int i) const;
-	///
-	void incCounter(int i);
 
 	///
 	char enumdepth;
@@ -401,6 +395,9 @@ public:
 	/// returns inset iterator of the first inset at or after pos.
 	inset_iterator InsetIterator(lyx::pos_type pos);
 
+	///
+	Counters ctrs;
+	
 private:
 	/// if anything uses this we don't want it to.
 	Paragraph(Paragraph const &);
