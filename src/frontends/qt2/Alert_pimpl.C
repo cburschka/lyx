@@ -19,6 +19,7 @@
 #include <qlineedit.h>
 #include "ui/QAskForTextDialog.h"
 #include "qt_helpers.h"
+#include "gettext.h"
 
 #include <algorithm>
 
@@ -57,7 +58,7 @@ pair<bool, string> const
 askForText_pimpl(string const & msg, string const & dflt)
 {
 #if USE_BOOST_FORMAT
-	boost::format fmt(qt_("LyX: %1$s"));
+	boost::format fmt(_("LyX: %1$s"));
 	fmt % msg;
 	string const title = fmt.str();
 #else
