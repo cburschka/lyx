@@ -1,5 +1,5 @@
 /*
- * formcitationdialog.h
+ * urldlg.h
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -13,106 +13,68 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef FORMCITATIONDIALOG_H
-#define FORMCITATIONDIALOG_H
+#ifndef URLDLG_H
+#define URLDLG_H
 
 #include <config.h>
 #include <gettext.h>
 
 // to connect apply() and hide()
-#include "FormCitation.h"
+#include "FormUrl.h"
 
 #include <qdialog.h>
-#include <qlistbox.h> 
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qtooltip.h>
+#include <qcheckbox.h>
 #include <qlineedit.h>
-#include <qmultilinedit.h> 
 #include <qpushbutton.h>
 
-class FormCitationDialog : public QDialog  {
+class UrlDialog : public QDialog  {
    Q_OBJECT
 public:
-	FormCitationDialog(FormCitation *form, QWidget *parent=0, const char *name=0,
+	UrlDialog(FormUrl *form, QWidget *parent=0, const char *name=0,
 			    bool modal=false, WFlags f=0);
-	~FormCitationDialog();
+	~UrlDialog();
 
 	// widgets
  
-	QLabel *labelchosen;
-	QListBox *chosen;
-	QLabel *labelkeys;
-	QListBox *keys;
-	QLabel *labelentry;
-	QMultiLineEdit *entry;
-	QLabel *labelafter;
-	QLineEdit *after;
-	QPushButton *add;
-	QPushButton *up;
-	QPushButton *down;
-	QPushButton *remove;
+	QLabel *labelurl;
+	QLabel *labelurlname;
+	QLineEdit *url;
+	QLineEdit *urlname;
+	QCheckBox *htmlurl;
 	QPushButton *buttonOk;
 	QPushButton *buttonCancel;
- 
+
 protected:
 	void closeEvent(QCloseEvent *e);
  
 private:
-	FormCitation *form_;
+	FormUrl *form_;
 
 	// layouts
  
 	QHBoxLayout *topLayout;
 	QVBoxLayout *layout;
-	QHBoxLayout *browserLayout;
-	QVBoxLayout *chosenLayout;
-	QVBoxLayout *iconLayout;
-	QVBoxLayout *keysLayout; 
-	QVBoxLayout *entryLayout; 
-	QHBoxLayout *afterLayout;
+	QHBoxLayout *urlLayout;
+	QBoxLayout *urlnameLayout;
+	QBoxLayout *htmlurlLayout;
 	QHBoxLayout *buttonLayout;
 
 private slots:
+	/// adaptor to FormUrl::apply
 	void apply_adaptor(void) {
 		form_->apply();
 		form_->close();
 		hide();
 	}
 
+	/// adaptor to FormUrl::close
 	void close_adaptor(void) {
 		form_->close();
 		hide();
 	}
-
-	void add_adaptor(void) {
-		form_->add();
-	}
-
-	void up_adaptor(void) {
-		form_->up();
-	}
-
-	void down_adaptor(void) {
-		form_->down();
-	}
-
-	void remove_adaptor(void) {
-		form_->remove();
-	}
-
-	void select_key_adaptor(const char *key) {
-		form_->select_key(key);
-	}
- 
-	void highlight_key_adaptor(const char *key) {
-		form_->highlight_key(key);
-	}
-
-	void highlight_chosen_adaptor(const char *key) {
-		form_->highlight_chosen(key);
-	}
- 
 };
 
 #endif

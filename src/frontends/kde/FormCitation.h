@@ -24,7 +24,7 @@
  
 class Dialogs;
 class LyXView;
-class FormCitationDialog;
+class CitationDialog;
 
 class FormCitation : public DialogBase, public noncopyable {
 public: 
@@ -78,7 +78,7 @@ private:
 	void selectChosen();
  
 	/// Real GUI implementation.
-	FormCitationDialog * dialog_;
+	CitationDialog * dialog_;
 
 	/// the LyXView we belong to
 	LyXView * lv_;

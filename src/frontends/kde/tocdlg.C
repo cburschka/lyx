@@ -1,5 +1,5 @@
 /*
- * formtocdialog.C
+ * tocdlg.C
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -13,9 +13,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "formtocdialog.h"
+#include "tocdlg.h"
 
-FormTocDialog::FormTocDialog(FormToc *form, QWidget *parent, const char *name, bool, WFlags)
+TocDialog::TocDialog(FormToc *form, QWidget *parent, const char *name, bool, WFlags)
 	: QDialog(parent,name,false), form_(form)
 {
 	setCaption(name);
@@ -88,12 +88,12 @@ FormTocDialog::FormTocDialog(FormToc *form, QWidget *parent, const char *name, b
 	connect(depth, SIGNAL(valueChanged(int)), this, SLOT(depth_adaptor(int)));
 }
 
-void FormTocDialog::closeEvent(QCloseEvent *e)
+void TocDialog::closeEvent(QCloseEvent *e)
 {
 	form_->close();
 	e->accept();
 }
 
-FormTocDialog::~FormTocDialog()
+TocDialog::~TocDialog()
 {
 }

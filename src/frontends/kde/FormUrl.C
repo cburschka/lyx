@@ -21,7 +21,7 @@
 #include "buffer.h"
 #include "LyXView.h"
 #include "lyxfunc.h" 
-#include "formurldialog.h"
+#include "urldlg.h"
 
 FormUrl::FormUrl(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0)
@@ -120,7 +120,7 @@ void FormUrl::apply()
 void FormUrl::show()
 {
 	if (!dialog_)
-		dialog_ = new FormUrlDialog(this, 0, _("LyX: Url"), false);
+		dialog_ = new UrlDialog(this, 0, _("LyX: Url"), false);
  
 	if (!dialog_->isVisible()) {
 		h_ = d_->hideBufferDependent.connect(slot(this, &FormUrl::hide));

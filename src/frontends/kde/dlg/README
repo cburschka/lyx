@@ -10,11 +10,17 @@ You should compile in the KDE module when you compile qtarch-1.4.
 For me this was just a case of a make in the module/kde/ directory,
 and then you can add the .so library file in the qtarch GUI.
 
-Note that the formsomethingdialogdata.* files are automatically
-generated, but the derived class files are *not* (i.e. they have
-been edited by hand). So you should only ever generate the base
-class files, and then propogate any changes into the derived class
-by hand.
+The files in this and the kde/ directory have the following naming
+scheme :
+
+random.dlg         - the dlg file for qtarch
+FormRandom.[Ch]    - LyX's notion of the dialog, real implementation modified
+                     via functions only
+randomdlg.[Ch]     - Derived Qt class, edited by hand. The interface between widgets
+                     and LyX FormRandom file
+randomdlgdata.[Ch] - qtarch-generated files, not to be touched by human hands
+
+The class names are FormRandom, RandomDialog, and RandomDialogData
 
 Some tips and guidelines for qtarch and the KDE frontend :
 

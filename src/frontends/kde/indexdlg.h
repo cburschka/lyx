@@ -2,31 +2,31 @@
 
 	--- Qt Architect generated file ---
 
-	File: formindexdialog.h
+	File: indexdlg.h
 	Last generated: Thu Sep 14 12:08:37 2000
 
  *********************************************************************/
 
-#ifndef FormIndexDialog_included
-#define FormIndexDialog_included
+#ifndef IndexDialog_included
+#define IndexDialog_included
 
-#include "formindexdialogdata.h"
+#include "indexdlgdata.h"
 
 class FormIndex;
 
-class FormIndexDialog : public FormIndexDialogData
+class IndexDialog : public IndexDialogData
 {
     Q_OBJECT
 
 public:
 
-    FormIndexDialog
+    IndexDialog
     (
         FormIndex *, QWidget* parent = NULL,
         const char* name = NULL
     );
 
-    virtual ~FormIndexDialog();
+    virtual ~IndexDialog();
 
     void setIndexText(const char * str) { index->setText(str); }
     const char * getIndexText() { return index->text(); }
@@ -40,4 +40,4 @@ private:
     FormIndex *form_;
 
 };
-#endif // FormIndexDialog_included
+#endif // IndexDialog_included

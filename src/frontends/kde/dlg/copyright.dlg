@@ -1,11 +1,11 @@
 DlgEdit:v1.2:Dialog:
 Dialog {
-	ClassHeader {formcopyrightdialog.h}
-	ClassSource {formcopyrightdialog.C}
-	ClassName {FormCopyrightDialog}
-	DataHeader {formcopyrightdialogdata.h}
-	DataSource {formcopyrightdialogdata.C}
-	DataName {FormCopyrightDialogData}
+	ClassHeader {copyrightdlg.h}
+	ClassSource {copyrightdlg.C}
+	ClassName {CopyrightDialog}
+	DataHeader {copyrightdlgdata.h}
+	DataSource {copyrightdlgdata.C}
+	DataName {CopyrightDialogData}
 	WindowBaseClass {QWidget}
 	UseGetText {TRUE}
 	WindowFlags {53248}

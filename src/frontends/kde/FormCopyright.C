@@ -19,7 +19,7 @@
 
 #include "Dialogs.h"
 #include "FormCopyright.h"
-#include "formcopyrightdialog.h"
+#include "copyrightdlg.h"
 #include "gettext.h"
 
 FormCopyright::FormCopyright(LyXView *v, Dialogs *d)
@@ -39,7 +39,7 @@ FormCopyright::~FormCopyright()
 void FormCopyright::show()
 {
 	if (!dialog_)
-		dialog_ = new FormCopyrightDialog(0, _("LyX: Copyright and Warranty"));
+		dialog_ = new CopyrightDialog(0, _("LyX: Copyright and Warranty"));
 
 	if (!dialog_->isVisible())
 		h_ = d_->hideAll.connect(slot(this, &FormCopyright::hide));

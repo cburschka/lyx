@@ -1,5 +1,5 @@
 /*
- * formcitationdialog.C
+ * citationdlg.C
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -13,9 +13,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "formcitationdialog.h"
+#include "citationdlg.h"
 
-FormCitationDialog::FormCitationDialog(FormCitation *form, QWidget *parent, const char *name, bool, WFlags)
+CitationDialog::CitationDialog(FormCitation *form, QWidget *parent, const char *name, bool, WFlags)
 	: QDialog(parent,name,false), form_(form)
 {
 	setCaption(name);
@@ -162,12 +162,12 @@ FormCitationDialog::FormCitationDialog(FormCitation *form, QWidget *parent, cons
 	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(close_adaptor()));
 }
 
-void FormCitationDialog::closeEvent(QCloseEvent *e)
+CitationDialog::~CitationDialog()
+{
+}
+
+void CitationDialog::closeEvent(QCloseEvent *e)
 {
 	form_->close();
 	e->accept();
-}
-
-FormCitationDialog::~FormCitationDialog()
-{
 }

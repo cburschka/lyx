@@ -23,7 +23,7 @@
 #include "buffer.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
-#include "formcitationdialog.h"
+#include "citationdlg.h"
  
 using std::vector;
 using std::pair;
@@ -196,7 +196,7 @@ void FormCitation::apply()
 void FormCitation::show()
 {
 	if (!dialog_)
-		dialog_ = new FormCitationDialog(this, 0, _("LyX: Citation Reference"), false);
+		dialog_ = new CitationDialog(this, 0, _("LyX: Citation Reference"), false);
 
 	if (!dialog_->isVisible()) {
 		h_ = d_->hideBufferDependent.connect(slot(this, &FormCitation::hide));

@@ -2,16 +2,16 @@
 
 	--- Qt Architect generated file ---
 
-	File: formcopyrightdialog.C
+	File: copyrightdlg.C
 	Last generated: Thu Oct 12 18:32:40 2000
 
  *********************************************************************/
 
-#include "formcopyrightdialog.h"
+#include "copyrightdlg.h"
 
-#define Inherited FormCopyrightDialogData
+#define Inherited CopyrightDialogData
 
-FormCopyrightDialog::FormCopyrightDialog
+CopyrightDialog::CopyrightDialog
 (
 	QWidget* parent,
 	const char* name
@@ -23,11 +23,11 @@ FormCopyrightDialog::FormCopyrightDialog
 }
 
 
-FormCopyrightDialog::~FormCopyrightDialog()
+CopyrightDialog::~CopyrightDialog()
 {
 }
 
-void FormCopyrightDialog::clickedOK()
+void CopyrightDialog::clickedOK()
 {
 	hide();
 }

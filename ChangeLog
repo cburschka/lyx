@@ -1,3 +1,12 @@
+2000-10-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+2000-10-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/frontends/kde/<various>: The Great Renaming,
+	add FormParagraph
+
+
+	* src/frontends/support/Makefile.am (EXTRA_DIST): re-fix.
+
 2000-10-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/math_macro.C (MathMacroTemplate): initialize args to

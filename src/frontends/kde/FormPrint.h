@@ -20,7 +20,7 @@
 
 class Dialogs;
 class LyXView;
-class FormPrintDialog;
+class PrintDialog;
 
 class FormPrint : public DialogBase, public noncopyable {
 public: 
@@ -46,7 +46,7 @@ private:
 	void update(bool = false);
 
 	/// Real GUI implementation.
-	FormPrintDialog * dialog_;
+	PrintDialog * dialog_;
 
 	/// the LyXView we belong to
 	LyXView * lv_;

@@ -23,7 +23,7 @@
 
 class Dialogs;
 class LyXView;
-class FormCopyrightDialog;
+class CopyrightDialog;
 
 /**
   @author Jürgen Vigna
@@ -42,7 +42,7 @@ private:
 	void update(bool) {}
 
 	/// Real GUI implementation.
-	FormCopyrightDialog * dialog_;
+	CopyrightDialog * dialog_;
 	/** Which LyXFunc do we use?
 	    We could modify Dialogs to have a visible LyXFunc* instead and
 	    save a couple of bytes per dialog.

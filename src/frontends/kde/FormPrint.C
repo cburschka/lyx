@@ -15,7 +15,7 @@
 
 #include <config.h>
 
-#include "formprintdialog.h"
+#include "printdlg.h"
 #include "Dialogs.h"
 #include "FormPrint.h"
 #include "gettext.h"
@@ -36,6 +36,7 @@ using SigC::slot;
 #ifdef CXX_WORKING_NAMESPACES
 using Liason::printBuffer;
 using Liason::getPrinterParams;
+using std::max;
 #endif
 
 FormPrint::FormPrint(LyXView *v, Dialogs *d)
@@ -66,7 +67,7 @@ void FormPrint::update(bool)
 	dialog_->setWhichPages(pp.which_pages);
         dialog_->setReverse(pp.reverse_order);
 	dialog_->setSort(pp.unsorted_copies);
-	dialog_->setCount(tostr(pp.count_copies).c_str());
+	dialog_->setCount(pp.count_copies);
 	
        	if (!pp.from_page.empty()) {
 		dialog_->setFrom(pp.from_page.c_str());
@@ -98,7 +99,7 @@ void FormPrint::print()
 	retval = printBuffer(lv_->buffer(), PrinterParams(dialog_->getTarget(),
 		string(dialog_->getPrinter()), string(dialog_->getFile()), 
 		dialog_->getWhichPages(), from, to, dialog_->getReverse(), 
-		dialog_->getSort(), strToInt(dialog_->getCount())));
+		dialog_->getSort(), max(strToInt(dialog_->getCount()),1)));
 
 	if (!retval) {
 		// FIXME: should have a utility class for this
@@ -114,7 +115,7 @@ void FormPrint::print()
 void FormPrint::show()
 {
 	if (!dialog_)
-		dialog_ = new FormPrintDialog(this, 0, _("LyX: Print"));
+		dialog_ = new PrintDialog(this, 0, _("LyX: Print"));
  
 	if (!dialog_->isVisible()) {
 		h_ = d_->hideBufferDependent.connect(slot(this, &FormPrint::hide));

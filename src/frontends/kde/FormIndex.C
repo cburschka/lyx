@@ -21,7 +21,7 @@
 #include "buffer.h"
 #include "LyXView.h"
 #include "lyxfunc.h" 
-#include "formindexdialog.h"
+#include "indexdlg.h"
 
 FormIndex::FormIndex(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), inset_(0), h_(0), u_(0), ih_(0)
@@ -93,7 +93,7 @@ void FormIndex::apply()
 void FormIndex::show()
 {
 	if (!dialog_)
-		dialog_ = new FormIndexDialog(this, 0, _("LyX: Index"));
+		dialog_ = new IndexDialog(this, 0, _("LyX: Index"));
  
 	if (!dialog_->isVisible()) {
 		h_ = d_->hideBufferDependent.connect(slot(this, &FormIndex::hide));

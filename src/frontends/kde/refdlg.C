@@ -1,5 +1,5 @@
 /*
- * formrefdialog.C
+ * refdlg.C
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -13,9 +13,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "formrefdialog.h"
+#include "refdlg.h"
 
-FormRefDialog::FormRefDialog(FormRef *form, QWidget *parent, const char *name, bool, WFlags)
+RefDialog::RefDialog(FormRef *form, QWidget *parent, const char *name, bool, WFlags)
 	: QDialog(parent,name,false), form_(form)
 {
 	setCaption(name);
@@ -164,12 +164,12 @@ FormRefDialog::FormRefDialog(FormRef *form, QWidget *parent, const char *name, b
 	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(close_adaptor()));
 }
 
-void FormRefDialog::closeEvent(QCloseEvent *e)
+RefDialog::~RefDialog()
+{
+}
+
+void RefDialog::closeEvent(QCloseEvent *e)
 {
 	form_->close();
 	e->accept();
-}
-
-FormRefDialog::~FormRefDialog()
-{
 }

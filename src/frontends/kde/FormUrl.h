@@ -22,7 +22,7 @@
 
 class Dialogs;
 class LyXView;
-class FormUrlDialog;
+class UrlDialog;
 
 class FormUrl : public DialogBase, public noncopyable {
 public: 
@@ -53,7 +53,7 @@ private:
 	void showUrl(InsetCommand * const);
  
 	/// Real GUI implementation.
-	FormUrlDialog * dialog_;
+	UrlDialog * dialog_;
 
 	/// the LyXView we belong to
 	LyXView * lv_;

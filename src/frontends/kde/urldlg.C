@@ -1,5 +1,5 @@
 /*
- * formurldialog.C
+ * urldlg.C
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -13,9 +13,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "formurldialog.h"
+#include "urldlg.h"
 
-FormUrlDialog::FormUrlDialog(FormUrl *form, QWidget *parent, const char *name, bool, WFlags)
+UrlDialog::UrlDialog(FormUrl *form, QWidget *parent, const char *name, bool, WFlags)
 	: QDialog(parent,name,false), form_(form)
 {
 	setCaption(name);
@@ -103,12 +103,12 @@ FormUrlDialog::FormUrlDialog(FormUrl *form, QWidget *parent, const char *name, b
 	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(close_adaptor()));
 }
 
-void FormUrlDialog::closeEvent(QCloseEvent *e)
+UrlDialog::~UrlDialog()
+{
+}
+
+void UrlDialog::closeEvent(QCloseEvent *e)
 {
 	form_->close();
 	e->accept();
-}
-
-FormUrlDialog::~FormUrlDialog()
-{
 }

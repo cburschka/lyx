@@ -17,7 +17,7 @@
 
 #include <stack>
 
-#include "formtocdialog.h"
+#include "tocdlg.h"
 
 #include "Dialogs.h"
 #include "FormToc.h"
@@ -241,7 +241,7 @@ void FormToc::set_type(Buffer::TocType toctype)
 void FormToc::show()
 {
 	if (!dialog_)
-		dialog_ = new FormTocDialog(this, 0, _("LyX: Table of Contents"), false);
+		dialog_ = new TocDialog(this, 0, _("LyX: Table of Contents"), false);
 
 	if (!dialog_->isVisible()) {
 		h_ = d_->hideBufferDependent.connect(slot(this, &FormToc::hide));

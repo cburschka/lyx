@@ -21,7 +21,7 @@
 #include "buffer.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
-#include "formrefdialog.h"
+#include "refdlg.h"
 #include "debug.h"
 
 using std::endl;
@@ -246,7 +246,7 @@ void FormRef::apply()
 void FormRef::show()
 {
 	if (!dialog_)
-		dialog_ = new FormRefDialog(this, 0, _("LyX: Cross Reference"), false);
+		dialog_ = new RefDialog(this, 0, _("LyX: Cross Reference"), false);
 
 	if (!dialog_->isVisible()) {
 		h_ = d_->hideBufferDependent.connect(slot(this, &FormRef::hide));

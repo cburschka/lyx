@@ -1,5 +1,5 @@
 /*
- * formrefdialog.h
+ * refdlg.h
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -13,8 +13,8 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef FORMREFDIALOG_H
-#define FORMREFDIALOG_H
+#ifndef REFDLG_H
+#define REFDLG_H
 
 #include <config.h>
 #include <gettext.h>
@@ -31,12 +31,12 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
-class FormRefDialog : public QDialog  {
+class RefDialog : public QDialog  {
    Q_OBJECT
 public:
-	FormRefDialog(FormRef *form, QWidget *parent=0, const char *name=0,
+	RefDialog(FormRef *form, QWidget *parent=0, const char *name=0,
 			    bool modal=false, WFlags f=0);
-	~FormRefDialog();
+	~RefDialog();
 
 	// widgets
  

@@ -1,11 +1,11 @@
 DlgEdit:v1.2:Dialog:
 Dialog {
-	ClassHeader {formindexdialog.h}
-	ClassSource {formindexdialog.C}
-	ClassName {FormIndexDialog}
-	DataHeader {formindexdialogdata.h}
-	DataSource {formindexdialogdata.C}
-	DataName {FormIndexDialogData}
+	ClassHeader {indexdlg.h}
+	ClassSource {indexdlg.C}
+	ClassName {IndexDialog}
+	DataHeader {indexdlgdata.h}
+	DataSource {indexdlgdata.C}
+	DataName {IndexDialogData}
 	WindowBaseClass {QWidget}
 	UseGetText {TRUE}
 	WindowFlags {53248}

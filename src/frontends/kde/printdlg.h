@@ -1,24 +1,26 @@
 /*
- * formprintdialog.h
+ * printdlg.h
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */ 
  
-#ifndef FORMPRINTDIALOG_H
-#define FORMPRINTDIALOG_H
+#ifndef PRINTDLG_H
+#define PRINTDLG_H
 
-#include "formprintdialogdata.h"
+
+#include "printdlgdata.h"
+#include "support/lstrings.h"
 #include "lyxrc.h" 
 #include "PrinterParams.h"
 #include "FormPrint.h"
 
-class FormPrintDialog : public FormPrintDialogData
+class PrintDialog : public PrintDialogData
 {
 	Q_OBJECT
 public:
 
-	FormPrintDialog(FormPrint *f, QWidget* parent = NULL, const char* name = NULL);
-	virtual ~FormPrintDialog();
+	PrintDialog(FormPrint *f, QWidget* parent = NULL, const char* name = NULL);
+	virtual ~PrintDialog();
 	
 	const char *getFrom() {
 		return from->text();
@@ -99,8 +101,9 @@ public:
 		sort->setChecked(on);
 	}
 	 
-	void setCount(const char *num) {
-		count->setText(num);
+	void setCount(int num) {
+		count->setText(tostr(num).c_str());
+		sort->setEnabled(num > 1);
 	}
 
 	void setFrom(const char *text) {
@@ -123,9 +126,13 @@ protected slots:
 		hide();
 	}
 
+	/// open up the browser to select ps file 
 	void clickedBrowse();
+	
+	/// validate and change collate status
+	void changedCount(const char *text);
  
 private:
     	FormPrint *form_;
 };
-#endif // FORMPRINTDIALOG_H
+#endif // PRINTDLG_H

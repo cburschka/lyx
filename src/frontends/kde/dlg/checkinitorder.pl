@@ -7,9 +7,12 @@
 # usage: dlg/checkinitorder.pl *data.C
 
 $found{"this"} = 1;
+$found{"FALSE"} = 1; 
 while (<>) {
-	if (/new/ && ! /Layout/) {
+	# yes, this is a broken regexp, but the sources are machine generated 
+	if (/= new / && ! /Layout/) {
 		( $varname, $parent) = split('=');
+		# print "$varname: $parent"; 
 		$varname =~ s/^\s*//;
 		$varname =~ s/\s*$//;
 		$found{$varname} = 1;

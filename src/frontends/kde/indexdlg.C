@@ -2,7 +2,7 @@
 
 	--- Qt Architect generated file ---
 
-	File: formindexdialog.C
+	File: indexdlg.C
 	Last generated: Thu Sep 14 12:08:37 2000
 
  *********************************************************************/
@@ -10,14 +10,14 @@
 #include <config.h>
 #include <gettext.h>
 
-#include "formindexdialog.h"
+#include "indexdlg.h"
 #include "FormIndex.h"
 
 #include <qtooltip.h>
 
-#define Inherited FormIndexDialogData
+#define Inherited IndexDialogData
 
-FormIndexDialog::FormIndexDialog(FormIndex * f, QWidget *p, const char* name)
+IndexDialog::IndexDialog(FormIndex * f, QWidget *p, const char* name)
 	: Inherited( p, name ), form_(f)
 {
 	setCaption(name);
@@ -32,12 +32,12 @@ FormIndexDialog::FormIndexDialog(FormIndex * f, QWidget *p, const char* name)
 }
 
 
-FormIndexDialog::~FormIndexDialog()
+IndexDialog::~IndexDialog()
 {
 }
 
 
-void FormIndexDialog::clickedOK()
+void IndexDialog::clickedOK()
 {
     form_->apply();
     form_->close();
@@ -45,14 +45,14 @@ void FormIndexDialog::clickedOK()
 }
 
 
-void FormIndexDialog::clickedCancel()
+void IndexDialog::clickedCancel()
 {
     form_->close();
     hide();
 }
 
 
-void FormIndexDialog::setReadOnly(bool readonly)
+void IndexDialog::setReadOnly(bool readonly)
 {
     if (readonly) {
 	index->setFocusPolicy(QWidget::NoFocus);

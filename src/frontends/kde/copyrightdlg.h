@@ -2,32 +2,32 @@
 
 	--- Qt Architect generated file ---
 
-	File: formcopyrightdialog.h
+	File: copyrightdlg.h
 	Last generated: Thu Oct 12 18:32:40 2000
 
  *********************************************************************/
 
-#ifndef FormCopyrightDialog_included
-#define FormCopyrightDialog_included
+#ifndef CopyrightDialog_included
+#define CopyrightDialog_included
 
-#include "formcopyrightdialogdata.h"
+#include "copyrightdlgdata.h"
 
-class FormCopyrightDialog : public FormCopyrightDialogData
+class CopyrightDialog : public CopyrightDialogData
 {
     Q_OBJECT
 
 public:
 
-    FormCopyrightDialog
+    CopyrightDialog
     (
         QWidget* parent = NULL,
         const char* name = NULL
     );
 
-    virtual ~FormCopyrightDialog();
+    virtual ~CopyrightDialog();
 
 protected slots:
 
     virtual void clickedOK();
 };
-#endif // FormCopyrightDialog_included
+#endif // CopyrightDialog_included

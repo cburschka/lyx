@@ -22,7 +22,7 @@
 
 class Dialogs;
 class LyXView;
-class FormRefDialog;
+class RefDialog;
 
 class FormRef : public DialogBase, public noncopyable {
 public: 
@@ -74,7 +74,7 @@ private:
 	void updateRefs(void);
  
 	/// Real GUI implementation.
-	FormRefDialog * dialog_;
+	RefDialog * dialog_;
 
 	/// the LyXView we belong to
 	LyXView * lv_;

@@ -1,5 +1,5 @@
 /*
- * formtocdialog.h
+ * tocdlg.h
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -13,8 +13,8 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef FORMTOCDIALOG_H
-#define FORMTOCDIALOG_H
+#ifndef TOCDLG_H
+#define TOCDLG_H
 
 #include <config.h>
 #include <gettext.h>
@@ -30,12 +30,12 @@
 
 #include "FormToc.h"
 
-class FormTocDialog : public QDialog  {
+class TocDialog : public QDialog  {
    Q_OBJECT
 public:
-	FormTocDialog(FormToc *form, QWidget *parent=0, const char *name=0,
+	TocDialog(FormToc *form, QWidget *parent=0, const char *name=0,
 			    bool modal=false, WFlags f=0);
-	~FormTocDialog();
+	~TocDialog();
 
 	// widgets
 

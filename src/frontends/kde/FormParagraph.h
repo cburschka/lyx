@@ -1,4 +1,4 @@
-/* FormIndex.h
+/* FormParagraph.h
  * (C) 2000 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
@@ -12,30 +12,32 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef FORMINDEX_H
-#define FORMINDEX_H
+#ifndef FORMPARAGRAPH_H
+#define FORMPARAGRAPH_H
 
 #include "DialogBase.h"
 #include "LString.h"
 #include "boost/utility.hpp"
-#include "insets/insetindex.h"
+#include "insets/inseturl.h"
 
 class Dialogs;
 class LyXView;
-class IndexDialog;
+class ParaDialog;
 
-class FormIndex : public DialogBase, public noncopyable {
+class FormParagraph : public DialogBase, public noncopyable {
 public: 
 	/**@name Constructors and Destructors */
 	//@{
 	///
-	FormIndex(LyXView *, Dialogs *);
+	FormParagraph(LyXView *, Dialogs *);
 	/// 
-	~FormIndex();
+	~FormParagraph();
 	//@}
 
 	/// Apply changes
 	void apply();
+	/// Update the dialog.
+	void update(bool switched = false);
 	/// close the connections
 	void close();
  
@@ -44,37 +46,21 @@ private:
 	void show();
 	/// Hide the dialog.
 	void hide();
-	/// Update the dialog.
-	void update(bool = false);
 
-	/// create an Index inset
-	void createIndex(string const &);
-	/// edit an Index  inset
-	void showIndex(InsetCommand * const);
- 
 	/// Real GUI implementation.
-	IndexDialog * dialog_;
+	ParaDialog * dialog_;
 
 	/// the LyXView we belong to
 	LyXView * lv_;
  
-	/** Which Dialogs do we belong to?
-	    Used so we can get at the signals we have to connect to.
-	*/
+	/// Used so we can get at the signals we have to connect to.
 	Dialogs * d_;
-	/// pointer to the inset if any
-	InsetCommand * inset_;
-	/// insets params
-	InsetCommandParams params;
-	/// is the inset we are reading from a readonly buffer ?
-	bool readonly;
 	
 	/// Hide connection.
 	Connection h_;
-	/// Update connection.
-	Connection u_;
-	/// Inset hide connection.
-	Connection ih_;
+	
+	/// readonly file or not
+	bool readonly; 
 };
 
 #endif

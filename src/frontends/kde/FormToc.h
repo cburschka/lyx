@@ -22,7 +22,7 @@
 #include "buffer.h"
 
 class Dialogs;
-class FormTocDialog;
+class TocDialog;
 
 class FormToc : public DialogBase, public noncopyable {
 public:
@@ -63,7 +63,7 @@ private:
 	void setType(Buffer::TocType);
 
 	/// Real GUI implementation.
-	FormTocDialog * dialog_;
+	TocDialog * dialog_;
 
 	/// the LyXView we belong to
 	LyXView * lv_;
