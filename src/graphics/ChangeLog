@@ -1,3 +1,8 @@
+2002-02-28  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GraphicsImageXPM.C: properly resolve more warnings about comparison
+	between signed and unsigned integer expressions.
+
 2002-02-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsCache.C: improve commentary to graphicsInit and where it

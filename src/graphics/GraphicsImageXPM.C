@@ -230,8 +230,10 @@ void GImageXPM::clip(GParams const & params)
 		// No clipping is necessary.
 		return;
 
-	unsigned int const new_width  = params.bb.xr - params.bb.xl;
-	unsigned int const new_height = params.bb.yt - params.bb.yb;
+	typedef unsigned int dimension;
+
+	dimension const new_width  = params.bb.xr - params.bb.xl;
+	dimension const new_height = params.bb.yt - params.bb.yb;
 
 	if (new_width > image_.width() || new_height > image_.height())
 		// Bounds are invalid.
@@ -241,14 +243,14 @@ void GImageXPM::clip(GParams const & params)
 		// Bounds are unchanged.
 		return;
 
-	unsigned int * new_data = image_.initialisedData(new_width, new_height);
-	unsigned int const * old_data = image_.data();
+	dimension * new_data = image_.initialisedData(new_width, new_height);
+	dimension const * old_data = image_.data();
 
-	unsigned int * it = new_data;
-	unsigned int const * start_row = old_data;
-	for (int row = params.bb.yb; row < params.bb.yt; ++row) {
-		unsigned int const * begin = start_row + params.bb.xl;
-		unsigned int const * end   = start_row + params.bb.xr;
+	dimension * it = new_data;
+	dimension const * start_row = old_data;
+	for (size_t row = params.bb.yb; row < params.bb.yt; ++row) {
+		dimension const * begin = start_row + params.bb.xl;
+		dimension const * end   = start_row + params.bb.xr;
 		it = std::copy(begin, end, it);
 		start_row += image_.width();
 	}
@@ -295,28 +297,30 @@ void GImageXPM::rotate(GParams const & params)
 	max_x = std::max(max_x, x_rot); min_x = std::min(min_x, x_rot);
 	max_y = std::max(max_y, y_rot); min_y = std::min(min_y, y_rot);
 
-	unsigned int const new_width  = 1 + int(max_x - min_x); // round up!
-	unsigned int const new_height = 1 + int(max_y - min_y);
+	typedef unsigned int dimension;
+	
+	dimension const new_width  = 1 + int(max_x - min_x); // round up!
+	dimension const new_height = 1 + int(max_y - min_y);
 
-	unsigned int * new_data = image_.initialisedData(new_width, new_height);
-	unsigned int const * old_data = image_.data();
+	dimension * new_data = image_.initialisedData(new_width, new_height);
+	dimension const * old_data = image_.data();
 
 	// rotate the data
-	for (int y_old = 0; y_old < image_.height(); ++y_old) {
-		for (int x_old = 0; x_old < image_.width(); ++x_old) {
-			int x_new = int(cos_a * x_old - sin_a * y_old - min_x);
-			int y_new = int(sin_a * x_old + cos_a * y_old - min_y);
+	for (dimension y_old = 0; y_old < image_.height(); ++y_old) {
+		for (dimension x_old = 0; x_old < image_.width(); ++x_old) {
+			double const x_pos = cos_a*x_old - sin_a*y_old - min_x;
+			double const y_pos = sin_a*x_old + cos_a*y_old - min_y;
 
 			// ensure that there are no rounding errors
-			y_new = std::min(int(new_height - 1), y_new);
-			y_new = std::max(0, y_new);
-			x_new = std::min(int(new_width  - 1), x_new);
-			x_new = std::max(0, x_new);
+			dimension x_new = (x_pos > 0) ? dimension(x_pos) : 0;
+			dimension y_new = (y_pos > 0) ? dimension(y_pos) : 0;
+			x_new = std::min(new_width  - 1, x_new);
+			y_new = std::min(new_height - 1, y_new);
 
-			int const old_id = x_old + image_.width() * y_old;
-			int const new_id = x_new + new_width * y_new;
+			size_t const id_old = x_old + image_.width() * y_old;
+			size_t const id_new = x_new + new_width * y_new;
 
-			new_data[new_id] = old_data[old_id];
+			new_data[id_new] = old_data[id_old];
 		}
 	}
 
@@ -329,17 +333,19 @@ void GImageXPM::scale(GParams const & params)
 	if (image_.empty())
 		return;
 
+	typedef unsigned int dimension;
+
 	// boost::tie produces horrible compilation errors on my machine
 	// Angus 25 Feb 2002
-	std::pair<unsigned int, unsigned int> d = getScaledDimensions(params);
-	unsigned int const new_width  = d.first;
-	unsigned int const new_height = d.second;
+	std::pair<dimension, dimension> d = getScaledDimensions(params);
+	dimension const new_width  = d.first;
+	dimension const new_height = d.second;
 	if (new_width == getWidth() && new_height == getHeight())
 		// No scaling needed
 		return;
 
-	unsigned int * new_data = image_.initialisedData(new_width, new_height);
-	unsigned int const * old_data = image_.data();
+	dimension * new_data = image_.initialisedData(new_width, new_height);
+	dimension const * old_data = image_.data();
 
 	double const x_scale = double(image_.width())  / double(new_width);
 	double const y_scale = double(image_.height()) / double(new_height);
@@ -347,15 +353,16 @@ void GImageXPM::scale(GParams const & params)
 	// A very simple scaling routine.
 	// Ascertain the old pixel corresponding to the new one.
 	// There is no dithering at all here.
-	for (int x_new = 0; x_new < new_width; ++x_new) {
-		int x_old = int(x_new * x_scale);
-		for (int y_new = 0; y_new < new_height; ++y_new) {
-			int y_old = int(y_new * y_scale);
+	for (dimension x_new = 0; x_new < new_width; ++x_new) {
+		dimension x_old = dimension(x_new * x_scale);
 
-			int const old_id = x_old + image_.width() * y_old;
-			int const new_id = x_new + new_width * y_new;
+		for (dimension y_new = 0; y_new < new_height; ++y_new) {
+			dimension y_old = dimension(y_new * y_scale);
 
-			new_data[new_id] = old_data[old_id];
+			size_t const id_old = x_old + image_.width() * y_old;
+			size_t const id_new = x_new + new_width * y_new;
+
+			new_data[id_new] = old_data[id_old];
 		}
 	}
 
