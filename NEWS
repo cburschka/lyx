@@ -28,10 +28,22 @@ Switch to the so-called 'new' insets:
 - new ligature break special character, useful for words like
   shelfful, or many german words
 
-The math editor has been mostly rewritten, meaning more stability and
-the following new features:
+The math editor has been mostly rewritten (and thus may have many new
+bugs :). Most of the changes should not affect things visible for the
+user, except:
 
-  [Andre, can you help here?]
+- improvements to the parser
+
+- improvements to math text mode
+
+- (better) support for nested macros 
+
+- (better) support for \limits/\nolimits
+
+- enable size changes to arrays after creation (add/delete rows/columns)
+
+- enable switching between equation/eqnarray and align environment
+
 
 Most of the popups have been rewritten in the GUI-I framework:
 
