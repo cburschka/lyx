@@ -1070,8 +1070,8 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 		// no break here!
 	case LFUN_DELETE:
 		setUndo(bv, Undo::DELETE,
-			&*bv->text->cursor.par(),
-			&*boost::next(bv->text->cursor.par()));
+			bv->text->cursor.par(),
+			boost::next(bv->text->cursor.par()));
 		cutSelection(bv->buffer()->params);
 		updateLocal(bv, INIT);
 		break;
@@ -1155,8 +1155,8 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 	case LFUN_PASTE:
 		if (hasPasteBuffer()) {
 			setUndo(bv, Undo::INSERT,
-				&*bv->text->cursor.par(),
-				&*boost::next(bv->text->cursor.par()));
+				bv->text->cursor.par(),
+				boost::next(bv->text->cursor.par()));
 			pasteSelection(bv);
 			updateLocal(bv, INIT);
 			break;
@@ -1684,8 +1684,8 @@ void InsetTabular::setFont(BufferView * bv, LyXFont const & font, bool tall,
 	}
 	if (hasSelection()) {
 		setUndo(bv, Undo::EDIT,
-			&*bv->text->cursor.par(),
-			&*boost::next(bv->text->cursor.par()));
+			bv->text->cursor.par(),
+			boost::next(bv->text->cursor.par()));
 		bool const frozen = undo_frozen;
 		if (!frozen)
 			freezeUndo();
@@ -1808,8 +1808,8 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		sel_row_start = sel_row_end = tabular->row_of_cell(actcell);
 	}
 	setUndo(bv, Undo::FINISH,
-		&*bv->text->cursor.par(),
-		&*boost::next(bv->text->cursor.par()));
+		bv->text->cursor.par(),
+		boost::next(bv->text->cursor.par()));
 
 	int row =  tabular->row_of_cell(actcell);
 	int column = tabular->column_of_cell(actcell);
@@ -2930,7 +2930,7 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 #warning CHECK verify that this is a sane value to return.
 	if (in.empty())
 		return -1;
-	
+
 	if (lex.isOK()) {
 		lex.next();
 		string const token = lex.getString();

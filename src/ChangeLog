@@ -1,3 +1,22 @@
+2003-04-30  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text3.C (dispatch): do not convert iterator -> pointer
+	* undo_funcs.C (setCursorParUndo): ditto
+	* text_funcs.C (transposeChars): ditto
+
+	* text2.C (setLayout): ws changes only
+
+	* text.C (breakParagraph): do not convert iterator -> pointer
+	(insertChar): ditto
+	(acceptChange): ditto
+	(rejectChange): ditto
+	(changeCase): ditto
+	(Delete): ditto
+	(backspace): ditto
+
+	* BufferView.C (lockedInsetStoreUndo): do not convert iterator ->
+	pointer
+
 2003-04-29  Alfredo Braunstein  <abraunst@libero.it>
 
 	* text3.C (gotoInset): YABG (yet another bad getChar)
@@ -24,7 +43,7 @@
 	* paragraph.[Ch] (erase):
 	* paragraph_pimpl.[Ch] (erase): change return type and value
 	* text2.C (cutSelection): some rework
- 
+
 2003-04-28  John Levon  <levon@movementarian.org>
 
 	* bufferlist.C: changes for unsaved changes dialog

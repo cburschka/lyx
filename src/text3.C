@@ -419,7 +419,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		for (; tmp != end; ++tmp) {
 			if (tmp->params().startOfAppendix()) {
-				setUndo(bv, Undo::EDIT, &*tmp, &*boost::next(tmp));
+				setUndo(bv, Undo::EDIT, tmp, boost::next(tmp));
 				tmp->params().startOfAppendix(false);
 				int tmpy;
 				setHeightOfRow(getRow(tmp, 0, tmpy));
@@ -427,7 +427,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			}
 		}
 
-		setUndo(bv, Undo::EDIT, &*pit, &*boost::next(pit));
+		setUndo(bv, Undo::EDIT, pit, boost::next(pit));
 		pit->params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now

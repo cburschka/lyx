@@ -812,8 +812,8 @@ void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
 	setUndo(this, kind,
-		&*text->cursor.par(),
-		text->cursor.par()->next());
+		text->cursor.par(),
+		boost::next(text->cursor.par()));
 }
 
 

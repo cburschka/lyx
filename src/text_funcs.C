@@ -27,7 +27,7 @@ void transposeChars(LyXText & text, LyXCursor const & cursor)
 {
 	ParagraphList::iterator tmppit = cursor.par();
 
-	setUndo(text.bv(), Undo::FINISH, &*tmppit, &*boost::next(tmppit));
+	setUndo(text.bv(), Undo::FINISH, tmppit, boost::next(tmppit));
 
 	pos_type tmppos = cursor.pos();
 

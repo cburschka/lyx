@@ -1,3 +1,10 @@
+2003-04-30  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insettext.C (setFont): do not convert iterator -> pointer
+
+	* insettabular.C (localDispatch): do not convert iterator -> pointer
+	(setFont): ditto
+	(tabularFeatures): ditto
 
 2003-04-29 André Pönitz <poenitz@gmx.net>
 

@@ -1314,7 +1314,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	endpit = selection.end.par();
 	int endpos = selection.end.pos();
 
-	boost::tie(endpit, endpos) = realcut ? 
+	boost::tie(endpit, endpos) = realcut ?
 		CutAndPaste::cutSelection(ownerParagraphs(),
 					  selection.start.par(), endpit,
 					  selection.start.pos(), endpos,
@@ -1626,10 +1626,10 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	// same paragraph and there is a previous row then put the cursor on
 	// the end of the previous row
 	cur.iy(y + row->baseline());
-	if (row != beg && 
-	    pos && 
-	    boost::prior(row)->par() == row->par() && 
-	    pos < pit->size() && 
+	if (row != beg &&
+	    pos &&
+	    boost::prior(row)->par() == row->par() &&
+	    pos < pit->size() &&
 	    pit->getChar(pos) == Paragraph::META_INSET) {
 		Inset * ins = pit->getInset(pos);
 		if (ins && (ins->needFullRow() || ins->display())) {
@@ -1637,7 +1637,7 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 			y -= row->height();
 		}
 	}
-	
+
 	cur.row(row);
 	// y is now the beginning of the cursor row
 	y += row->baseline();
