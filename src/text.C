@@ -838,6 +838,8 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 			 && ! row->par()->isFirstInSequence()))
 		    && align == LYX_ALIGN_BLOCK
 		    && !row->par()->params().noindent()
+			// in tabulars paragraphs are never indented!
+			&& (!row->par()->inInset() || row->par()->inInset()->owner()->lyxCode() != Inset::TABULAR_CODE)
 		    && (row->par()->layout ||
 			bview->buffer()->params.paragraph_separation ==
 			BufferParams::PARSEP_INDENT))
