@@ -288,7 +288,7 @@ ParConstIterator & ParConstIterator::operator++()
 		// Try to find the next inset that contains paragraphs
 		InsetList::iterator end = p.pit->insetlist.end();
 		for (; *p.it != end; ++(*p.it)) {
-			if (LyXText * text = (*p.it)->inset->getText(*p.index)) {
+			if (LyXText * text = (*p.it)->inset->getText(0)) {
 				ParagraphList & plist = text->paragraphs();
 				if (!plist.empty()) {
 					p.index.reset(0);
