@@ -127,7 +127,7 @@ FD_form_character * FormCharacter::build_character()
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
   obj = fl_add_text(FL_NORMAL_TEXT, 10, 170, 85, 40, _("Language:"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+    fl_set_object_lalign(obj, FL_ALIGN_RIGHT|FL_ALIGN_INSIDE);
   fl_end_form();
 
   fdui->form->fdui = fdui;

@@ -14,6 +14,11 @@
 
 	* FormBase.h: clean-up comments. Remove mutable status of minw_, minh_.
 
+2001-09-06  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* forms/form_character.fd: small cosmetics (aligned "Language:" right
+	as suggested in Michael's Buglist).
+
 2001-09-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Toolbar_pimpl.C (updateLayoutList): do not display obsolete
