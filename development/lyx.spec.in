@@ -11,6 +11,7 @@ BuildRoot: /var/tmp/rpm/lyx-root
 Icon: lyx.xpm
 Prefix: /usr
 Requires: xforms >= 0.88, tetex-xdvi, tetex, tetex-latex
+Obsoletes: tetex-lyx
 
 %description
 LyX is a modern approach of writing documents with a computer
@@ -62,8 +63,8 @@ gzip -f9 ${RPM_BUILD_ROOT}/usr/man/man?/*
 #
 TEXMF=/usr/share/texmf
 mkdir -p ${RPM_BUILD_ROOT}${TEXMF}/tex/latex
-cp -r ${RPM_BUILD_ROOT}/usr/share/lyx/tex \
-      ${RPM_BUILD_ROOT}${TEXMF}/tex/latex/lyx
+mv ${RPM_BUILD_ROOT}/usr/share/lyx/tex \
+      ${RPM_BUILD_ROOT}/${TEXMF}/tex/latex/lyx
 
 #
 # Miscellaneous files
@@ -75,6 +76,9 @@ cp lib/reLyX/README README.reLyX
 rm -rf ${RPM_BUILD_ROOT}
 
 %post
+# Make TeX understand where LyX-specific packages are
+texhash
+
 # Before configuring lyx for the local system
 # PATH needs to be imported 
 if [ -f /etc/profile ]; then 
@@ -94,42 +98,13 @@ then
         ${RPM_INSTALL_PREFIX}/bin/reLyX
 fi
 
-%post -n tetex-lyx
+%postun
 # Fix the TeX file hash
 #
 texhash
-
-# Before configuring lyx for the local system
-# PATH needs to be imported 
-if [ -f /etc/profile ]; then 
-. /etc/profile
-fi 
-#
-# Now configure LyX
-#
-echo "Re-configuring LyX for your system..."
-cd $RPM_INSTALL_PREFIX/share/lyx
-./configure --srcdir
-
-%postun -n tetex-lyx
-# Fix the TeX file hash
-#
-texhash
-
-# Before configuring lyx for the local system
-# PATH needs to be imported 
-if [ -f /etc/profile ]; then 
-. /etc/profile
-fi 
-#
-# Now configure LyX
-#
-echo "Reconfiguring LyX for your system..."
-cd $RPM_INSTALL_PREFIX/share/lyx
-./configure --srcdir
 
 %files
-%attr(-,root,root) %doc ABOUT-NLS ANNOUNCE OLD-CHANGES COPYING 
+%attr(-,root,root) %doc ABOUT-NLS ANNOUNCE COPYING 
 %attr(-,root,root) %doc README UPGRADING ChangeLog NEWS
 %attr(-,root,root) %doc lib/CREDITS README.reLyX
 
@@ -137,6 +112,4 @@ cd $RPM_INSTALL_PREFIX/share/lyx
 %attr(-,root,root) /usr/man/*
 %attr(-,root,root) /usr/share/locale/*/LC_MESSAGES/*
 %attr(-,root,root) /usr/share/lyx
-
-%files -n tetex-lyx
 %attr(-,root,root) /usr/share/texmf/tex/latex/lyx
