@@ -13,7 +13,6 @@ CHMOD = chmod
 # We cannot use dist_pkgdata_SCRIPTS for configure, since a possible
 # version-suffix would get appended to the names. So we use dist_pkgdata_DATA
 # and chmod manually in install-data-hook.
-# configure.cmd (used on OS/2) is not installed because it is outdated.
 dist_pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx configure \
 	       lyxrc.defaults textclass.lst packages.lst external_templates \
 	       encodings languages symbols
