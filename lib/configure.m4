@@ -285,7 +285,7 @@ lyxpreview_to_bitmap_command="lyxpreview2ppm.py"
 
 # Search a *roff program (used to translate tables in ASCII export)
 LYXRC_PROG([for a *roff formatter], \ascii_roff_command, dnl
-  'groff -t -Tlatin1 $$FName' nroff,dnl
+  "groff -t -Tlatin1 \$\$FName" nroff,dnl
   test "$prog" = "nroff" && prog='tbl $$FName | nroff')
 
 # Search the ChkTeX program
