@@ -1,3 +1,8 @@
+2003-09-29  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.C (ReplaceEnvironmentPath): make it work for both
+	${HOME}/foo and $HOME/foo.
+
 2003-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* debugstream.h: add file, updated version of the DebugStream

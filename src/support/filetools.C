@@ -737,22 +737,29 @@ string const GetFileContents(string const & fname)
 }
 
 
-// Search the string for ${...} and replace the ... with the value of the
-// denoted environment variable
+// Search the string for ${VAR} and $VAR and replace VAR using getenv.
 string const ReplaceEnvironmentPath(string const & path)
 {
-	// A valid environment variable is defined as
+	// ${VAR} is defined as
 	// $\{[A-Za-z_][A-Za-z_0-9]*\}
-	string const valid_var = "[$]\\{([A-Za-z_][A-Za-z_0-9]*)\\}";
+	string const envvar_br = "[$]\\{([A-Za-z_][A-Za-z_0-9]*)\\}";
 
-	boost::regex re("(.*)" + valid_var + "(.*)");
+	// $VAR is defined as:
+	// $\{[A-Za-z_][A-Za-z_0-9]*\}
+	string const envvar = "[$]([A-Za-z_][A-Za-z_0-9]*)";
+
+	boost::regex envvar_br_re("(.*)" + envvar_br + "(.*)");
+	boost::regex envvar_re("(.*)" + envvar + "(.*)");
 	boost::smatch what;
 
 	string result = path;
 	while (1) {
-		regex_match(result, what, re, boost::match_partial);
-		if (!what[0].matched)
-			break;
+		regex_match(result, what, envvar_br_re);
+		if (!what[0].matched) {
+			regex_match(result, what, envvar_re);
+			if (!what[0].matched)
+				break;
+		}
 		result = what.str(1) + GetEnv(what.str(2)) + what.str(3);
 	}
 	return result;
