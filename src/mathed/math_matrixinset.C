@@ -142,8 +142,8 @@ void MathMatrixInset::write(std::ostream & os, bool fragile) const
 
 	for (int row = 0; row < nrows(); ++row) {
 		for (int col = 0; col < ncols(); ++col) {
-			os << eocString(col);
 			cell(index(row, col)).write(os, fragile);
+			os << eocString(col);
 		}
 		if (n) {
 			if (!label_[row].empty())

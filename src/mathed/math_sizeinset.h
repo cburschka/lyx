@@ -10,13 +10,15 @@
 #endif
 
 /** An inset for \scriptsize etc
-    \author André Poenitz
+    \author André Pönitz
 */
+
+class latexkeys;
 
 class MathSizeInset : public MathNestInset {
 public:
 	///
-	explicit MathSizeInset(MathStyles st);
+	explicit MathSizeInset(latexkeys const * l);
 	///
 	MathInset * clone() const;
 	///
@@ -29,10 +31,8 @@ public:
 	void writeNormal(std::ostream &) const;
 
 private:
-	///
-	char const * name() const;
 	/// 
-	MathStyles style_;
+	latexkeys const * key_;
 };
 
 #endif

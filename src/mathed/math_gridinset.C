@@ -251,7 +251,7 @@ string MathGridInset::eolString(int row) const
 	if (row == nrows() - 1)	
 		return "";
 
-	if (rowinfo_[row].skip_ != LyXLength())
+	if (rowinfo_[row].skip_.value() != 0)
 		return "\\\\[" + rowinfo_[row].skip_.asLatexString() + "]\n";
 
 	// make sure an upcoming '[' does not break anything

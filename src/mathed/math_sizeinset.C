@@ -3,28 +3,13 @@
 #endif
 
 #include "math_sizeinset.h"
+#include "math_parser.h"
 #include "support/LOstream.h"
 
 
-MathSizeInset::MathSizeInset(MathStyles st)
-	: MathNestInset(1), style_(st)
+MathSizeInset::MathSizeInset(latexkeys const * l)
+	: MathNestInset(1), key_(l)
 {}
-
-
-char const * MathSizeInset::name() const
-{
-	switch (style_) {
-		case LM_ST_DISPLAY:
-			return "displaystyle";
-		case LM_ST_TEXT:
-			return "textstyle";
-		case LM_ST_SCRIPT:
-			return "scriptstyle";
-		case LM_ST_SCRIPTSCRIPT:
-			return "scriptscriptstyle";
-	}
-	return "unknownstyle";
-}
 
 
 MathInset * MathSizeInset::clone() const
@@ -43,7 +28,7 @@ void MathSizeInset::draw(Painter & pain, int x, int y) const
 
 void MathSizeInset::metrics(MathStyles /* st */) const
 {
-	xcell(0).metrics(style_);
+	xcell(0).metrics(MathStyles(key_->id));
 	ascent_   = xcell(0).ascent_;
 	descent_  = xcell(0).descent_;
 	width_    = xcell(0).width_;
@@ -52,7 +37,7 @@ void MathSizeInset::metrics(MathStyles /* st */) const
 
 void MathSizeInset::write(std::ostream & os, bool fragile) const
 {
-	os << "{\\" << name() << " ";
+	os << "{\\" << key_->name << " ";
 	cell(0).write(os, fragile);
 	os << "}";
 }
@@ -60,7 +45,7 @@ void MathSizeInset::write(std::ostream & os, bool fragile) const
 
 void MathSizeInset::writeNormal(std::ostream & os) const
 {
-	os << "[" << name() << " ";
+	os << "[" << key_->name << " ";
 	cell(0).writeNormal(os);
 	os << "]";
 }
