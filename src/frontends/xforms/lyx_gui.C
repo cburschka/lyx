@@ -66,6 +66,15 @@ namespace {
 /// quit lyx
 bool finished = false;
 
+/// estimate DPI from X server
+float getDPI()
+{
+	Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen);
+	return ((HeightOfScreen(scr) * 25.4 / HeightMMOfScreen(scr)) +
+		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2; 
+}
+
+ 
 /// set default GUI configuration
 void setDefaults()
 {
@@ -167,14 +176,14 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 	Image::newImage = boost::bind(&ImageXPM::newImage);
 	Image::loadableFormats = boost::bind(&ImageXPM::loadableFormats);
 #endif
+
+	// must do this /before/ lyxrc gets read 
+	lyxrc.dpi = getDPI();
 }
 
 
 void lyx_gui::parse_lyxrc()
 {
-	// FIXME !!!!
-	//lyxrc.dpi = 95;
-
 	XformsColor::read(AddName(user_lyxdir, "preferences.xform"));
 
 	if (lyxrc.popup_font_encoding.empty())
