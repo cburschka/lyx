@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lyx", "lyx.vcproj", "{967779B1-EB60-49DD-BDA7-8F4C15790778}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FDBBC827-4BD2-4E7D-B050-0967A0B6C754} = {FDBBC827-4BD2-4E7D-B050-0967A0B6C754}
+		{3BF0EC29-8B64-460F-AE0A-96794D38088D} = {3BF0EC29-8B64-460F-AE0A-96794D38088D}
+		{3BF0EC29-8B64-460F-AE0A-96794D38088D} = {3BF0EC29-8B64-460F-AE0A-96794D38088D}
+		{3BF0EC29-8B64-460F-AE0A-96794D38088D} = {3BF0EC29-8B64-460F-AE0A-96794D38088D}
+		{3BF0EC29-8B64-460F-AE0A-96794D38088D} = {3BF0EC29-8B64-460F-AE0A-96794D38088D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libboost_regex", "..\..\boost\libs\regex\regex.vcproj", "{FDBBC827-4BD2-4E7D-B050-0967A0B6C754}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libboost_signals", "..\..\boost\libs\signals\signals.vcproj", "{3BF0EC29-8B64-460F-AE0A-96794D38088D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{967779B1-EB60-49DD-BDA7-8F4C15790778}.Debug.ActiveCfg = Debug|Win32
+		{967779B1-EB60-49DD-BDA7-8F4C15790778}.Debug.Build.0 = Debug|Win32
+		{967779B1-EB60-49DD-BDA7-8F4C15790778}.Release.ActiveCfg = Release|Win32
+		{967779B1-EB60-49DD-BDA7-8F4C15790778}.Release.Build.0 = Release|Win32
+		{FDBBC827-4BD2-4E7D-B050-0967A0B6C754}.Debug.ActiveCfg = Debug|Win32
+		{FDBBC827-4BD2-4E7D-B050-0967A0B6C754}.Debug.Build.0 = Debug|Win32
+		{FDBBC827-4BD2-4E7D-B050-0967A0B6C754}.Release.ActiveCfg = Release|Win32
+		{FDBBC827-4BD2-4E7D-B050-0967A0B6C754}.Release.Build.0 = Release|Win32
+		{3BF0EC29-8B64-460F-AE0A-96794D38088D}.Debug.ActiveCfg = Debug|Win32
+		{3BF0EC29-8B64-460F-AE0A-96794D38088D}.Debug.Build.0 = Debug|Win32
+		{3BF0EC29-8B64-460F-AE0A-96794D38088D}.Release.ActiveCfg = Release|Win32
+		{3BF0EC29-8B64-460F-AE0A-96794D38088D}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
