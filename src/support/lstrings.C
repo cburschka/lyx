@@ -676,18 +676,18 @@ string const getStringFromVector(vector<string> const & vec,
 
 #if USE_BOOST_FORMAT
 
-string bformat(char const * fmt, string const & arg1)
+string bformat(string const & fmt, string const & arg1)
 {
 	return STRCONV((boost::format(fmt) % STRCONV(arg1)).str());
 }
 
 
-string bformat(char const * fmt, string const & arg1, string const & arg2)
+string bformat(string const & fmt, string const & arg1, string const & arg2)
 {
 	return STRCONV((boost::format(fmt) % STRCONV(arg1) % STRCONV(arg2)).str());
 }
 
-string bformat(char const * fmt, string const & arg1, string const & arg2,
+string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3, string const & arg4)
 {
 	return STRCONV((boost::format(fmt) % STRCONV(arg1) % STRCONV(arg2)
@@ -696,7 +696,7 @@ string bformat(char const * fmt, string const & arg1, string const & arg2,
 
 #else 
 
-string bformat(char const * fmt, string const & arg1)
+string bformat(string const & fmt, string const & arg1)
 {
 	lyx::Assert(contains(fmt, "%1$s"));
 	string const str = subst(fmt, "%1$s", arg1);
@@ -704,7 +704,7 @@ string bformat(char const * fmt, string const & arg1)
 }
 
 
-string bformat(char const * fmt, string const & arg1, string const & arg2)
+string bformat(string const & fmt, string const & arg1, string const & arg2)
 {
 	lyx::Assert(contains(fmt, "%1$s"));
 	lyx::Assert(contains(fmt, "%2$s"));
