@@ -49,6 +49,12 @@ Style Paragraph
   LatexName     subsubsection
 End
 
+Style Affiliation
+    CopyStyle             Author
+    LatexName             affil
+End
+
+
 # SubSubsubsection* style (re-)definition
 Style Paragraph*
   CopyStyle     Paragraph
