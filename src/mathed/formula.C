@@ -166,7 +166,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			bv->lockedInsetStoreUndo(Undo::INSERT);
 			int x;
 			int y;
-			mathcursor->GetPos(x, y);
+			mathcursor->getPos(x, y);
 			mathcursor->breakLine();
 			mathcursor->normalize();
 			updateLocal(bv, true);
@@ -249,9 +249,9 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			bv->lockedInsetStoreUndo(Undo::EDIT);
 			int x;
 			int y;
-			mathcursor->GetPos(x, y);
+			mathcursor->getPos(x, y);
 			par()->mutate(arg);
-			mathcursor->SetPos(x, y);
+			mathcursor->setPos(x, y);
 			mathcursor->normalize();
 			updateLocal(bv, true);
 			break;
@@ -261,12 +261,12 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 		{
 			int x;
 			int y;
-			mathcursor->GetPos(x, y);
+			mathcursor->getPos(x, y);
 			if (par()->getType() == LM_OT_SIMPLE)
 				par()->mutate(LM_OT_EQUATION);
 			else
 				par()->mutate(LM_OT_SIMPLE);
-			mathcursor->SetPos(x, y);
+			mathcursor->setPos(x, y);
 			mathcursor->normalize();
 			updateLocal(bv, true);
 			break;

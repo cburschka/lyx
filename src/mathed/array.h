@@ -109,12 +109,12 @@ public:
 	///
 	MathInset * prevInset(int pos) const;
 	///
-	unsigned char GetChar(int pos) const;
+	unsigned char getChar(int pos) const;
 	/// read subsequent chars of the same kind.
 	// pos is afterwards one behind the last char belonging to the string
-	string GetString(int & pos) const;
+	string getString(int & pos) const;
 	///
-	MathTextCodes GetCode(int pos) const;
+	MathTextCodes getCode(int pos) const;
 	///
 	void setCode(int pos, MathTextCodes t);
 	///

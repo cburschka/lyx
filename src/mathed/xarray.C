@@ -42,8 +42,8 @@ void MathXArray::metrics(MathStyles st)
 			des = p->descent();
 			wid = p->width();
 		} else {
-			char cx = data_.GetChar(pos); 
-			MathTextCodes fc = data_.GetCode(pos); 
+			char cx = data_.getChar(pos); 
+			MathTextCodes fc = data_.getCode(pos); 
 			mathed_char_dim(fc, style_, cx, asc, des, wid);
 		}
 		ascent_  = max(ascent_, asc);
@@ -69,8 +69,8 @@ void MathXArray::draw(Painter & pain, int x, int y)
 			p->draw(pain, x, y);
 			x += p->width();
 		} else {
-			char cx = data_.GetChar(pos);
-			MathTextCodes fc = data_.GetCode(pos);
+			char cx = data_.getChar(pos);
+			MathTextCodes fc = data_.getCode(pos);
 			string s;
 			s += cx;
 			drawStr(pain, fc, style_, x, y, s);
@@ -113,7 +113,7 @@ int MathXArray::width(int pos) const
 	if (data_.isInset(pos)) 
 		return data_.nextInset(pos)->width();
 	else 
-		return mathed_char_width(data_.GetCode(pos), style_, data_.GetChar(pos));
+		return mathed_char_width(data_.getCode(pos), style_, data_.getChar(pos));
 }
 
 std::ostream & operator<<(std::ostream & os, MathXArray const & ar)

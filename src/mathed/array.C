@@ -82,7 +82,7 @@ void MathArray::substitute(MathMacro const & m)
 		if (isInset(pos)) 
 			nextInset(pos)->substitute(tmp, m);
 		else 
-			tmp.push_back(GetChar(pos), GetCode(pos));
+			tmp.push_back(getChar(pos), getCode(pos));
 	}
 	swap(tmp);
 }
@@ -114,29 +114,29 @@ MathInset * MathArray::prevInset(int pos) const
 }
 
 
-unsigned char MathArray::GetChar(int pos) const
+unsigned char MathArray::getChar(int pos) const
 {
 	return pos < size() ? bf_[pos + 1] : '\0';
 }
 
 
-string MathArray::GetString(int & pos) const
+string MathArray::getString(int & pos) const
 {
 	string s;
 	if (isInset(pos))
 		return s;
 
-	MathTextCodes const fcode = GetCode(pos);
+	MathTextCodes const fcode = getCode(pos);
 	do {
-		s += GetChar(pos);
+		s += getChar(pos);
 		next(pos);
-	} while (pos < size() && !isInset(pos) && GetCode(pos) == fcode);
+	} while (pos < size() && !isInset(pos) && getCode(pos) == fcode);
 
 	return s;
 }
 
 
-MathTextCodes MathArray::GetCode(int pos) const
+MathTextCodes MathArray::getCode(int pos) const
 {
 	return pos < size() ? MathTextCodes(bf_[pos]) : LM_TC_MIN;
 }
@@ -305,8 +305,8 @@ void MathArray::write(ostream & os, bool fragile) const
 
 		} else {
 
-			MathTextCodes fcode = GetCode(pos);
-			unsigned char c = GetChar(pos);
+			MathTextCodes fcode = getCode(pos);
+			unsigned char c = getChar(pos);
 
 			if (MathIsSymbol(fcode)) {
 				latexkeys const * l = lm_get_key_by_id(c, LM_TK_SYM);

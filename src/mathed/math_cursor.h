@@ -78,17 +78,17 @@ public:
 	///
 	void erase();
 	///
-	void Home();
+	void home();
 	///
-	void End();
+	void end();
 	///
-	bool Right(bool sel = false);
+	bool right(bool sel = false);
 	///
-	bool Left(bool sel = false);
+	bool left(bool sel = false);
 	///
-	bool Up(bool sel = false);
+	bool up(bool sel = false);
 	///
-	bool Down(bool sel = false);
+	bool down(bool sel = false);
 	/// Put the cursor in the first position
 	void first();
 	/// Put the cursor in the last position
@@ -98,13 +98,13 @@ public:
 	///
 	bool plainRight();
 	///
-	void Delete();
+	void plainErase();
 	///
-	void DelLine();
+	void delLine();
 	/// This is in pixels from (maybe?) the top of inset
-	void SetPos(int, int);
+	void setPos(int, int);
 	///
-	void GetPos(int & x, int & y);
+	void getPos(int & x, int & y);
 	///
 	MathInset * par() const;
 	/// return the next enclosing par of the given type and the cursor's
@@ -115,36 +115,36 @@ public:
 	///
 	int pos() const;
 	///
-	void Interpret(string const &);
+	void interpret(string const &);
 	///
-	void SetSize(MathStyles);
+	void setSize(MathStyles);
 	///
 	bool toggleLimits();
 	///
 	// Macro mode methods
-	void MacroModeOpen();
+	void macroModeOpen();
 	///
-	void MacroModeClose();
+	void macroModeClose();
 	///
-	bool InMacroMode() const;
+	bool inMacroMode() const;
 	
 	// Local selection methods
 	///
-	bool Selection() const;
+	bool selection() const;
 	///
-	void SelCopy();
+	void selCopy();
 	///
-	void SelCut();
+	void selCut();
 	///
-	void SelDel();
+	void selDel();
 	///
-	void SelPaste();
+	void selPaste();
 	///
-	void SelHandle(bool);
+	void selHandle(bool);
 	///
-	void SelStart();
+	void selStart();
 	///
-	void SelClear();
+	void selClear();
 	///
 	void drawSelection(Painter & pain) const;
 	///
@@ -198,16 +198,14 @@ public:
 
 //private:
 	///
-	bool macro_mode;
-	
-	// Selection stuff
-	/// do we currently select
-	bool selection;
-
-	///
 	InsetFormulaBase * const formula_;
 	///
-	MathTextCodes lastcode;
+	MathTextCodes lastcode_;
+	///
+	MathFuncInset * imacro_;
+	// Selection stuff
+	/// do we currently select
+	bool selection_;
 
 	///
 	MathArray & array() const;
@@ -264,9 +262,6 @@ public:
 	MathScriptInset * prevScriptInset() const;
 	///
 	MathSpaceInset * prevSpaceInset() const;
-
-	///
-	MathFuncInset * imacro;
 };
 
 extern MathCursor * mathcursor;

@@ -70,7 +70,7 @@ int firstRelOp(MathArray const & array)
 {
 	for (int pos = 0; pos < array.size(); array.next(pos))
 		if (!array.isInset(pos) &&
-				MathIsRelOp(array.GetChar(pos), array.GetCode(pos)))
+				MathIsRelOp(array.getChar(pos), array.getCode(pos)))
 			return pos;
 	return array.size();
 }

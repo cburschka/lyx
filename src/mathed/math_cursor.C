@@ -68,16 +68,9 @@ struct Selection
 		if (i1.idx_ == i2.idx_)
 			data_.push_back(MathArray(i1.cell(), i1.pos_, i2.pos_));
 		else {
-#ifdef RECTANGULAR_SELECT
 			std::vector<int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
 			for (unsigned i = 0; i < indices.size(); ++i)
 				data_.push_back(i1.cell(indices[i]));
-#else
-			data_.push_back(MathArray(i1.cell(), i1.pos_, i1.cell().size()));
-			for (int i = i1.idx_ + 1; i < i2.idx_; ++i)
-				data_.push_back(i1.cell(i));
-			data_.push_back(MathArray(i2.cell(), 0, i2.pos_));
-#endif
 		}
 	}
 
@@ -133,11 +126,8 @@ std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
 
 
 MathCursor::MathCursor(InsetFormulaBase * formula)
-	: formula_(formula)
+	: formula_(formula), lastcode_(LM_TC_MIN), imacro_(0), selection_(false)
 {
-	lastcode   = LM_TC_MIN;
-	macro_mode = false;
-	selection  = false;
 	first();
 }
 
@@ -180,7 +170,7 @@ void MathCursor::dump(char const * what) const
 			<< " idx: " << Cursor_[i].idx_
 			<< " par: " << Cursor_[i].par_ << "\n";
 
-	//lyxerr	<< " sel: " << selection << " data: " << array() << "\n";
+	//lyxerr	<< " sel: " << selection_ << " data: " << array() << "\n";
 }
 
 
@@ -233,19 +223,19 @@ bool MathCursor::plainLeft()
 }
 
 
-bool MathCursor::Left(bool sel)
+bool MathCursor::left(bool sel)
 {
 	dump("Left 1");
-	if (macro_mode) {
+	if (imacro_) {
 		// was MacroModeBack()
-		if (!imacro->name().empty()) {
-			imacro->setName(imacro->name().substr(0, imacro->name().length()-1));
-			imacro->metrics(imacro->size());
+		if (!imacro_->name().empty()) {
+			imacro_->setName(imacro_->name().substr(0, imacro_->name().length()-1));
+			imacro_->metrics(imacro_->size());
 		} else
-			MacroModeClose();
+			macroModeClose();
 		return true;
 	}
-	SelHandle(sel);
+	selHandle(sel);
 	clearLastCode();
 
 	MathInset * p = prevInset();
@@ -270,14 +260,14 @@ bool MathCursor::plainRight()
 }
 
 
-bool MathCursor::Right(bool sel)
+bool MathCursor::right(bool sel)
 {
 	dump("Right 1");
-	if (macro_mode) {
-		MacroModeClose();
+	if (imacro_) {
+		macroModeClose();
 		return true;
 	}
-	SelHandle(sel);
+	selHandle(sel);
 	clearLastCode();
 
 	MathInset * p = nextInset();
@@ -310,13 +300,13 @@ void MathCursor::last()
 }
 
 
-void MathCursor::SetPos(int x, int y)
+void MathCursor::setPos(int x, int y)
 {
-	dump("SetPos 1");
-	//lyxerr << "MathCursor::SetPos x: " << x << " y: " << y << "\n";
+	dump("setPos 1");
+	//lyxerr << "MathCursor::setPos x: " << x << " y: " << y << "\n";
 
-	MacroModeClose();
-	lastcode = LM_TC_MIN;
+	macroModeClose();
+	lastcode_ = LM_TC_MIN;
 	first();
 
 	cursor().par_  = formula()->par();
@@ -345,43 +335,43 @@ void MathCursor::SetPos(int x, int y)
 		//	<< cursor().pos_  << "\n";
 		MathInset * n = nextInset();
 		MathInset * p = prevInset();
-		if (openable(n, selection, true) && n->covers(x, y))
+		if (openable(n, selection_, true) && n->covers(x, y))
 			push(n, true);
-		else if (openable(p, selection, true) && p->covers(x, y)) {
+		else if (openable(p, selection_, true) && p->covers(x, y)) {
 			plainLeft();
 			push(p, false);
 		} else 
 			break;
 	}
-	dump("SetPos 2");
+	dump("setPos 2");
 }
 
 
-void MathCursor::Home()
+void MathCursor::home()
 {
-	dump("Home 1");
-	MacroModeClose();
+	dump("home 1");
+	macroModeClose();
 	clearLastCode();
 	if (!cursor().par_->idxHome(cursor().idx_, cursor().pos_)) 
 		pop();
-	dump("Home 2");
+	dump("home 2");
 }
 
 
-void MathCursor::End()
+void MathCursor::end()
 {
-	dump("End 1");
-	MacroModeClose();
+	dump("end 1");
+	macroModeClose();
 	clearLastCode();
 	if (!cursor().par_->idxEnd(cursor().idx_, cursor().pos_)) {
 		pop();
 		array().next(cursor().pos_);
 	}
-	dump("End 2");
+	dump("end 2");
 }
 
 
-void MathCursor::erase()
+void MathCursor::plainErase()
 {
 	array().erase(cursor().pos_);
 }
@@ -390,39 +380,37 @@ void MathCursor::erase()
 void MathCursor::insert(char c, MathTextCodes t)
 {
 	//lyxerr << "inserting '" << c << "'\n";
-	if (selection)
-		SelDel();
+	if (selection_)
+		selDel();
 
-	if (t == LM_TC_MIN)
-		t = lastcode;
+	if (t != LM_TC_MIN)
+		lastcode_ = t;
 
-	if (macro_mode && !(MathIsAlphaFont(t) || t == LM_TC_MIN))
-		MacroModeClose();
+	if (imacro_ && !(MathIsAlphaFont(t) || t == LM_TC_MIN))
+		macroModeClose();
 
-	if (macro_mode) {
+	if (imacro_) {
 		if (MathIsAlphaFont(t) || t == LM_TC_MIN) {
 			// was MacroModeinsert(c);
-			imacro->setName(imacro->name() + static_cast<char>(c));
+			imacro_->setName(imacro_->name() + c);
 			return;
 		}
 	}
 
 	array().insert(cursor().pos_, c, t);
 	array().next(cursor().pos_);
-
-	lastcode = t;
 }
 
 
 void MathCursor::insert(MathInset * p)
 {
-	MacroModeClose();
+	macroModeClose();
 
-	if (selection) {
+	if (selection_) {
 		if (p->nargs())
-			SelCut();
+			selCut();
 		else
-			SelDel();
+			selDel();
 	}
 
 	array().insert(cursor().pos_, p);
@@ -432,23 +420,23 @@ void MathCursor::insert(MathInset * p)
 
 void MathCursor::insert(MathArray const & ar)
 {
-	MacroModeClose();
-	if (selection)
-		SelCut();
+	macroModeClose();
+	if (selection_)
+		selCut();
 
 	array().insert(cursor().pos_, ar);
 	cursor().pos_ += ar.size();
 }
 
 
-void MathCursor::Delete()
+void MathCursor::erase()
 {
-	dump("Delete 1");
-	if (macro_mode)
+	dump("erase 1");
+	if (imacro_)
 		return;
 
-	if (selection) {
-		SelDel();
+	if (selection_) {
+		selDel();
 		return;
 	}
 
@@ -458,23 +446,23 @@ void MathCursor::Delete()
 		bool removeit;
 		cursor().par_->idxDelete(cursor().idx_, popit, removeit);
 		if (popit && pop() && removeit)
-			Delete();
+			plainErase();
 		return;
 	}
 
 	if (cursor().pos_ < array().size())
-		array().erase(cursor().pos_);
+		plainErase();
 
-	dump("Delete 2");
+	dump("erase 2");
 }
 
 
-void MathCursor::DelLine()
+void MathCursor::delLine()
 {
-	MacroModeClose();
+	macroModeClose();
 
-	if (selection) {
-		SelDel();
+	if (selection_) {
+		selDel();
 		return;
 	}
 
@@ -483,13 +471,13 @@ void MathCursor::DelLine()
 }
 
 
-bool MathCursor::Up(bool sel)
+bool MathCursor::up(bool sel)
 {
-	dump("Up 1");
-	MacroModeClose();
-	SelHandle(sel);
+	dump("up 1");
+	macroModeClose();
+	selHandle(sel);
 
-	if (selection) {
+	if (selection_) {
 		int x = xarray().pos2x(cursor().pos_);
 		if (cursor().idxDown()) {
 			cursor().pos_ = xarray().x2pos(x);
@@ -508,7 +496,7 @@ bool MathCursor::Up(bool sel)
 			push(p, true);
 			cursor().idx_ = idx;
 			cursor().pos_ = pos;
-			dump("Up 3");
+			dump("up 3");
 			return true;
 		}
 	}
@@ -521,7 +509,7 @@ bool MathCursor::Up(bool sel)
 			push(p, false);
 			cursor().idx_ = idx;
 			cursor().pos_ = pos;
-			dump("Up 4");
+			dump("up 4");
 			return true;
 		}
 	}
@@ -537,13 +525,13 @@ bool MathCursor::Up(bool sel)
 }
 
 
-bool MathCursor::Down(bool sel)
+bool MathCursor::down(bool sel)
 {
-	dump("Down 1");
-	MacroModeClose();
-	SelHandle(sel);
+	dump("down 1");
+	macroModeClose();
+	selHandle(sel);
 
-	if (selection) {
+	if (selection_) {
 		int x = xarray().pos2x(cursor().pos_);
 		if (cursor().idxDown()) {
 			cursor().pos_ = xarray().x2pos(x);
@@ -602,21 +590,21 @@ bool MathCursor::toggleLimits()
 }
 
 
-void MathCursor::SetSize(MathStyles size)
+void MathCursor::setSize(MathStyles size)
 {
 	cursor().par_->userSetSize(size);
 }
 
 
 
-void MathCursor::Interpret(string const & s)
+void MathCursor::interpret(string const & s)
 {
-	//lyxerr << "Interpret: '" << s << "'\n";
+	//lyxerr << "interpret: '" << s << "'\n";
 	//lyxerr << "in: " << in_word_set(s) << " \n";
 
 	if (s.size() && (s[0] == '^' || s[0] == '_')) {
 		bool const up = (s[0] == '^');
-		SelCut();	
+		selCut();	
 		MathScriptInset * p = prevScriptInset();
 		if (!p) {
 			MathInset * b = prevInset();
@@ -637,7 +625,7 @@ void MathCursor::Interpret(string const & s)
 			p->down(true);
 		cursor().idx_ = up ? 0 : 1;
 		cursor().pos_ = 0;
-		SelPaste();
+		selPaste();
 		return;
 	}
 
@@ -726,115 +714,111 @@ void MathCursor::Interpret(string const & s)
 	}
 
 	if (p) {
-		bool oldsel = selection;
+		bool oldsel = selection_;
 		if (oldsel) 
-			SelCut();
+			selCut();
 		insert(p);
 		if (p->nargs()) {
 			plainLeft();
-			//push(p, true);
-			Right();  // do not push for e.g. MathBigopInset
+			right();  // do not push for e.g. MathBigopInset
 			if (oldsel) 
-				SelPaste();
+				selPaste();
 		}
 		p->metrics(p->size());
 	}
 }
 
 
-void MathCursor::MacroModeOpen()
+void MathCursor::macroModeOpen()
 {
-	if (!macro_mode) {
-		imacro = new MathFuncInset("");
-		insert(imacro);
-		macro_mode = true;
+	if (!imacro_) {
+		imacro_ = new MathFuncInset("");
+		insert(imacro_);
 	} else
 		lyxerr << "Math Warning: Already in macro mode" << endl;
 }
 
 
-void MathCursor::MacroModeClose()
+void MathCursor::macroModeClose()
 {
-	if (macro_mode) {
-		string name = imacro->name();
+	if (imacro_) {
+		string name = imacro_->name();
 		plainLeft();
-		erase();
-		delete imacro;
-		macro_mode = false;
-		imacro = 0;
-		Interpret(name);
+		plainErase();
+		imacro_ = 0;
+		interpret(name);
 	}
 }
 
 
-void MathCursor::SelCopy()
+void MathCursor::selCopy()
 {
-	seldump("SelCopy");
-	if (selection) {
+	seldump("selCopy");
+	if (selection_) {
 		theSelection.grab(*this);
-		SelClear();
+		selClear();
 	}
 }
 
 
-void MathCursor::SelCut()
+void MathCursor::selCut()
 {
-	seldump("SelCut");
-	if (selection) {
+	seldump("selCut");
+	if (selection_) {
 		theSelection.grab(*this);
 		theSelection.erase(*this);
-		SelClear();
+		selClear();
 	}
 }
 
 
-void MathCursor::SelDel()
+void MathCursor::selDel()
 {
-	seldump("SelDel");
-	if (selection) {
+	seldump("selDel");
+	if (selection_) {
 		theSelection.erase(*this);
-		SelClear();
+		selClear();
 	}
 }
 
 
-void MathCursor::SelPaste()
+void MathCursor::selPaste()
 {
-	seldump("SelPaste");
+	seldump("selPaste");
 	theSelection.paste(*this);
-	SelClear();
+	selClear();
 }
 
 
-void MathCursor::SelHandle(bool sel)
+void MathCursor::selHandle(bool sel)
 {
-	if (sel && !selection)
-		SelStart();
-	if (!sel && selection)
-		SelClear();
+	if (sel && !selection_)
+		selStart();
+	if (!sel && selection_)
+		selClear();
 }
 
 
-void MathCursor::SelStart()
+void MathCursor::selStart()
 {
-	seldump("SelStart");
-	if (selection)
+	seldump("selStart");
+	if (selection_)
 		return;
 
 	Anchor_ = Cursor_;
-	selection = true;
+	selection_ = true;
 }
 
 
-void MathCursor::SelClear()
+void MathCursor::selClear()
 {
-	selection = false;
+	selection_ = false;
 }
 
 
 void MathCursor::drawSelection(Painter & pain) const
 {
-	if (!selection)
+	if (!selection_)
 		return;
 
 	MathCursorPos i1;
@@ -867,29 +851,28 @@ void MathCursor::drawSelection(Painter & pain) const
 
 void MathCursor::handleFont(MathTextCodes t)
 {
-	if (selection) {
+	if (selection_) {
 		MathCursorPos i1;
 		MathCursorPos i2;
 		getSelection(i1, i2); 
 		if (i1.idx_ == i2.idx_) {
 			MathArray & ar = i1.cell();
 			for (int pos = i1.pos_; pos != i2.pos_; ar.next(pos))
-				if (!ar.isInset(pos) && isalnum(ar.GetChar(pos))) { 
-					MathTextCodes c = ar.GetCode(pos) == t ? LM_TC_VAR : t;
+				if (!ar.isInset(pos) && isalnum(ar.getChar(pos))) { 
+					MathTextCodes c = ar.getCode(pos) == t ? LM_TC_VAR : t;
 					ar.setCode(pos, c);
 				}
 		}
-	} else {
-		lastcode = (lastcode == t) ? LM_TC_VAR : t;
-	}
+	} else 
+		lastcode_ = (lastcode_ == t) ? LM_TC_VAR : t;
 }
 
 
 void MathCursor::handleAccent(string const & name, int code)
 {
 	MathDecorationInset * p = new MathDecorationInset(name, code);
-	if (selection) {
-		SelCut();
+	if (selection_) {
+		selCut();
 		p->cell(0) = theSelection.glue();
 	}
 	insert(p);
@@ -900,8 +883,8 @@ void MathCursor::handleAccent(string const & name, int code)
 void MathCursor::handleDelim(int l, int r)
 {
 	MathDelimInset * p = new MathDelimInset(l, r);
-	if (selection) {
-		SelCut();
+	if (selection_) {
+		selCut();
 		p->cell(0) = theSelection.glue();
 	}
 	insert(p);
@@ -910,7 +893,7 @@ void MathCursor::handleDelim(int l, int r)
 }
 
 
-void MathCursor::GetPos(int & x, int & y)
+void MathCursor::getPos(int & x, int & y)
 {
 	x = xarray().xo() + xarray().pos2x(cursor().pos_);
 	y = xarray().yo();
@@ -919,13 +902,13 @@ void MathCursor::GetPos(int & x, int & y)
 
 MathTextCodes MathCursor::nextCode() const
 {
-	return array().GetCode(cursor().pos_); 
+	return array().getCode(cursor().pos_); 
 }
 
 
 MathTextCodes MathCursor::prevCode() const
 {
-	return array().GetCode(cursor().pos_ - 1); 
+	return array().getCode(cursor().pos_ - 1); 
 }
 
 
@@ -947,33 +930,33 @@ int MathCursor::pos() const
 }
 
 
-bool MathCursor::InMacroMode() const
+bool MathCursor::inMacroMode() const
 {
-	return macro_mode;
+	return imacro_;
 }
 
 
-bool MathCursor::Selection() const
+bool MathCursor::selection() const
 {
-	return selection;
+	return selection_;
 }
 
 
 void MathCursor::clearLastCode()
 {
-	lastcode = LM_TC_MIN;
+	lastcode_ = LM_TC_MIN;
 }
 
 
 void MathCursor::setLastCode(MathTextCodes t)
 {
-	lastcode = t;
+	lastcode_ = t;
 }
 
 
 MathTextCodes MathCursor::getLastCode() const
 {
-	return lastcode;
+	return lastcode_;
 }
 
 
@@ -996,7 +979,7 @@ void MathCursor::pullArg(bool goright)
 	dump("pullarg");
 	MathArray a = array();
 	if (pop()) {
-		array().erase(cursor().pos_);
+		plainErase();
 		array().insert(cursor().pos_, a);
 		if (goright) 
 			cursor().pos_ += a.size();
@@ -1042,9 +1025,9 @@ int MathCursor::row() const
 
 
 /*
-char MathCursorPos::GetChar() const
+char MathCursorPos::getChar() const
 {
-	return array().GetChar(cursor().pos_);
+	return array().getChar(cursor().pos_);
 }
 
 
@@ -1053,7 +1036,7 @@ string MathCursorPos::readString()
 	string s;
 	int code = nextCode();
 	for ( ; OK() && nextCode() == code; Next()) 
-		s += GetChar();
+		s += getChar();
 
 	return s;
 }
