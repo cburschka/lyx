@@ -625,7 +625,7 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 		if (fs::exists(configure_script) &&
 		    fs::exists(userDefaults) &&
 		    fs::last_write_time(configure_script)
-		    < fs::last_write_time(userDefaults)) {
+		    > fs::last_write_time(userDefaults)) {
 			reconfigure = true;
 		}
 		return reconfigure;

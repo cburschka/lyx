@@ -1,3 +1,7 @@
+2005-02-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyx_main.C (queryUserLyXDir): fix test for rerunning configure
+
 2005-02-15  Angus Leeming  <leeming@lyx.org>
 
 	* rowpainter.C (paintText): Ensure that "paragraphs().size() - 1"
