@@ -28,10 +28,21 @@ using std::vector;
 using lyx::support::rtrim;
 using lyx::support::suffixIs;
 
-// Do we need to output some \layout command before the next characters?
+// Do we need to output some \begin_layout command before the next characters?
 bool need_layout = true;
-// We may need to add something after this \layout command
+// We may need to add something after this \begin_layout command
 string extra_stuff;
+// Do we need to output some \end_layout command 
+bool need_end_layout = false;
+
+void check_end_layout(ostream & os) 
+{
+	if (need_end_layout) {
+		os << "\n\\end_layout\n";
+		need_end_layout = false;
+	}
+}
+
 
 namespace {
 
@@ -79,7 +90,9 @@ map<string, string> split_map(string const & s)
 void check_layout(ostream & os, LyXLayout_ptr layout)
 {
 	if (need_layout) {
-		os << "\n\\layout " << layout->name() << "\n\n";
+		check_end_layout(os);
+		os << "\n\\begin_layout " << layout->name() << "\n\n";
+		need_end_layout = true;
 		need_layout=false;
 		if (!extra_stuff.empty()) {
 			os << extra_stuff;
@@ -87,6 +100,7 @@ void check_layout(ostream & os, LyXLayout_ptr layout)
 		}
 	}
 }
+
 
 void begin_inset(ostream & os, string const & name)
 {
@@ -116,13 +130,15 @@ void skip_braces(Parser & p)
 void handle_ert(ostream & os, string const & s)
 {
 	begin_inset(os, "ERT");
-	os << "\nstatus Collapsed\n\n\\layout Standard\n\n";
+	os << "\nstatus Collapsed\n\n\\begin_layout Standard\n\n";
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
 			os << "\n\\backslash \n";
 		else
 			os << *it;
 	}
+	need_end_layout = true;
+	check_end_layout(os);
 	end_inset(os);
 }
 
@@ -158,8 +174,7 @@ void output_command_layout(ostream & os, LyXLayout_ptr const & layout,
 			p.get_token(); // eat '['
 			begin_inset(os, "OptArg\n");
 			os << "collapsed true\n";
-			need_layout = true;
-			parse_text(p, os, FLAG_BRACK_LAST, outer, textclass);
+			parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, textclass);
 			end_inset(os);
 		}
 	}
@@ -199,9 +214,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		}
 		os << "wide " << tostr(is_starred)
 		   << "\ncollapsed false\n";
-		need_layout = true;
-		parse_text(p, os, FLAG_END, outer, textclass);
-		end_inset(os);
+		parse_text_in_inset(p, os, FLAG_END, outer, textclass);
+			end_inset(os);
 	} else if (name == "center") {
 		parse_text(p, os, FLAG_END, outer, textclass);
 		// The single '=' is meant here.
@@ -226,6 +240,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		}
 		need_layout = true;
 		parse_text(p, os, FLAG_END, outer, textclass, newlayout);
+		check_end_layout(os);
 		if (deeper)
 			os << "\n\\end_deeper\n";
 		need_layout = true;
@@ -340,7 +355,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cat() == catActive) {
 			check_layout(os, layout);
 			if (t.character() == '~') {
-				if (active_environment() == "lyxcode")
+				if (layout->free_spacing)
 					os << ' ';
 				else 
 					os << "\\InsetSpace ~\n";
@@ -351,8 +366,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cat() == catBegin) {
 // FIXME??? 
 			// special handling of size changes
+			check_layout(os, layout);
 			bool const is_size = is_known(p.next_token().cs(), known_sizes);
+			need_end_layout = false;
 			string const s = parse_text(p, FLAG_BRACE_LAST, outer, textclass, layout);
+			need_end_layout = true;
 			if (s.empty() && p.next_token().character() == '`')
 				; // ignore it in  {}``
 			else if (is_size || s == "[" || s == "]" || s == "*")
@@ -365,8 +383,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cat() == catEnd) {
-			if (flags & FLAG_BRACE_LAST)
+			if (flags & FLAG_BRACE_LAST) {
+				check_end_layout(os);
 				return;
+			}
 			cerr << "stray '}' in text\n";
 			handle_ert(os, "}");
 		}
@@ -475,8 +495,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			check_layout(os, layout);
 			begin_inset(os, "Foot\n");
 			os << "collapsed true\n";
-			need_layout = true;
-			parse_text(p, os, FLAG_ITEM, false, textclass);
+			parse_text_in_inset(p, os, FLAG_ITEM, false, textclass);
 			end_inset(os);
 		}
 
@@ -496,6 +515,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			need_layout = true;
 			parse_text(p, os, FLAG_ITEM, false, textclass);
 			end_inset(os);
+			need_end_layout = true;
 		}
 
 		else if (t.cs() == "hfill") {
@@ -769,5 +789,13 @@ string parse_text(Parser & p, unsigned flags, const bool outer,
 	return os.str();
 }
 
-
+void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
+		LyXTextClass const & textclass, LyXLayout_ptr layout)
+{
+		need_layout = true;
+		need_end_layout = false;
+		parse_text(p, os, flags, outer, textclass, layout);
+		check_end_layout(os);
+		need_end_layout = true;
+}
 // }])

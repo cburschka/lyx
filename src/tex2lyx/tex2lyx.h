@@ -16,7 +16,9 @@ void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,
 		LyXTextClass const & textclass,
 		LyXLayout_ptr layout_ptr = LyXLayout_ptr());
 
-
+void parse_text_in_inset(Parser & p, std::ostream & os, unsigned flags, 
+			 bool outer, LyXTextClass const & textclass, 
+			 LyXLayout_ptr layout = LyXLayout_ptr());
 
 void parse_table(Parser & p, std::ostream & os, unsigned flags);
 
@@ -30,6 +32,7 @@ std::string parse_text(Parser & p, unsigned flags, const bool outer,
 		       LyXTextClass const & textclass, 
 		       LyXLayout_ptr layout_ptr = LyXLayout_ptr());
 
+void check_end_layout(std::ostream & os);
 void handle_comment(Parser & p);
 std::string const trim(std::string const & a, char const * p = " \t\n\r");
 

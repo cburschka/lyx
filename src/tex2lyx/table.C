@@ -399,7 +399,9 @@ void handle_tabular(Parser & p, ostream & os,
 				handle_colalign(p, t);
 				cellinfo[row][col].multi     = 1;
 				cellinfo[row][col].align     = t.front().align;
-				cellinfo[row][col].content   = parse_text(p, FLAG_ITEM, false, textclass);
+				ostringstream os;
+				parse_text_in_inset(p, os, FLAG_ITEM, false, textclass);
+				cellinfo[row][col].content   = os.str();
 				cellinfo[row][col].leftline  |= t.front().leftline;
 				cellinfo[row][col].rightline |= t.front().rightline;
 
@@ -419,9 +421,9 @@ void handle_tabular(Parser & p, ostream & os,
 				cellinfo[row][col].leftline = colinfo[col].leftline;
 				cellinfo[row][col].rightline = colinfo[col].rightline;
 				cellinfo[row][col].align = colinfo[col].align;
-				need_layout = true;
-				cellinfo[row][col].content = parse_text(p, FLAG_END, false, textclass);
-				need_layout = false;
+				ostringstream os;
+				parse_text_in_inset(p, os, FLAG_ITEM, false, textclass);
+				cellinfo[row][col].content   = os.str();
 			}
 		}
 

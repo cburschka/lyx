@@ -131,7 +131,8 @@ int main(int argc, char * argv[])
 	LyXTextClass textclass = parse_preamble(p, ss);
 	active_environments.push_back("document");
 	parse_text(p, ss, FLAG_END, true, textclass);
-	ss << "\n\\the_end\n";
+	check_end_layout(ss);
+	ss << "\n\\end_document\n";
 
 	ss.seekg(0);
 	cout << ss.str();

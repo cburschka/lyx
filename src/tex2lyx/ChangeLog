@@ -1,3 +1,17 @@
+2003-07-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C (check_layout): \layout -> \begin_layout
+	(parse_text_in_inset): convenience function
+
+	* tex2lyx.C (main): \the_end -> \end_document
+
+	* preamble.C (end_preamble): update version number to 225
+
+	* text.C (parse_text): replace test on "lyxcode" with test on
+	LyXLayout::freespacing.
+	(check_end_layout): new function, used to check whether we need to
+	add an \end_layout
+
 2003-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* tex2lyx.C (clean_layouts): remove
