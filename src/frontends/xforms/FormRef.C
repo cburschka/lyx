@@ -95,8 +95,8 @@ void FormRef::update()
 	fl_set_input(dialog_->ref,  params.getContents().c_str());
 	fl_set_input(dialog_->name, params.getOptions().c_str());
 
-	Type type = getType();
-	fl_set_choice(dialog_->type, type+1);
+	if (inset_)
+		fl_set_choice(dialog_->type, getType()+1);
 
 	toggle = GOBACK;
 	fl_set_object_label(dialog_->button_go, _("Goto reference"));

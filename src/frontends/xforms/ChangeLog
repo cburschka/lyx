@@ -1,3 +1,7 @@
+2001-01-21  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* FormRef.C (update): Do not update dialog_->type if inset_ == 0.
+
 2001-01-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormPrint.[Ch] (browse): new method to browse for file to print to.
