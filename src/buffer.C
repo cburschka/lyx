@@ -3236,12 +3236,18 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 			if (command_flag) {
 				if (cmd_depth < command_base) {
-					for (Paragraph::depth_type j = command_depth; j >= command_base; --j)
+					for (Paragraph::depth_type j = command_depth;
+					     j >= command_base; --j) {
 						sgmlCloseTag(ofs, j, command_stack[j]);
+						ofs << endl;
+					}
 					command_depth = command_base = cmd_depth;
 				} else if (cmd_depth <= command_depth) {
-					for (int j = command_depth; j >= int(cmd_depth); --j)
+					for (int j = command_depth;
+					     j >= int(cmd_depth); --j) {
 						sgmlCloseTag(ofs, j, command_stack[j]);
+						ofs << endl;
+					}
 					command_depth = cmd_depth;
 				} else
 					command_depth = cmd_depth;
@@ -3396,8 +3402,10 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	}
 
 	for (int j = command_depth; j >= 0 ; --j)
-		if (!command_stack[j].empty())
+		if (!command_stack[j].empty()) {
 			sgmlCloseTag(ofs, j, command_stack[j]);
+			ofs << endl;
+		}
 
 	ofs << "\n\n";
 	sgmlCloseTag(ofs, 0, top_element);
@@ -3432,10 +3440,18 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 		// handle <emphasis> tag
 		if (font_old.emph() != font.emph()) {
 			if (font.emph() == LyXFont::ON) {
+				if(style.latexparam() == "CDATA")
+					os << "]]>";
 				os << "<emphasis>";
+				if(style.latexparam() == "CDATA")
+					os << "<![CDATA[";
 				emph_flag = true;
 			} else if (i) {
+				if(style.latexparam() == "CDATA")
+					os << "]]>";
 				os << "</emphasis>";
+				if(style.latexparam() == "CDATA")
+					os << "<![CDATA[";
 				emph_flag = false;
 			}
 		}
@@ -3472,7 +3488,11 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 	}
 
 	if (emph_flag) {
+		if(style.latexparam() == "CDATA")
+			os << "]]>";
 		os << "</emphasis>";
+		if(style.latexparam() == "CDATA")
+			os << "<![CDATA[";
 	}
 
 	// resets description flag correctly

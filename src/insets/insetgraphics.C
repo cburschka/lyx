@@ -805,7 +805,7 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 	if (params().filename.empty())
 		return ;
 
-	features.includeFile(graphic_label, RemoveExtension(params_.filename));
+	features.includeFile(graphic_label, RemoveExtension(params().filename));
 
 	features.require("graphicx");
 

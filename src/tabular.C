@@ -2411,7 +2411,7 @@ int LyXTabular::docBook(Buffer const * buf, ostream & os) const
 				ret += docbookRow(buf, os, i);
 			}
 		}
-		os << "<thead>\n";
+		os << "</thead>\n";
 		++ret;
 	}
 	// output footer info
