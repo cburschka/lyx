@@ -230,6 +230,8 @@ public:
 	void setSelection(MathIterator const & where, size_type n);
 	/// grab selection marked by anchor and current cursor 
 	string grabSelection() const;
+	/// guess what
+	string grabAndEraseSelection();
 	///
 	void insert(char c);
 	///
@@ -267,8 +269,6 @@ private:
 
 	/// erase the selected part and re-sets the cursor
 	void eraseSelection();
-	/// guess what
-	string grabAndEraseSelection();
 
 	/// the name of the macro we are currently inputting
 	string macroName() const;

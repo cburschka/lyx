@@ -7,6 +7,7 @@
 #include "math_hullinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
+#include "math_cursor.h"
 #include "math_support.h"
 #include "math_extern.h"
 #include "math_charinset.h"
@@ -699,7 +700,9 @@ void MathHullInset::doExtern
 	if (getType() == "simple") {
 		size_type pos = cell(idx).find_last(eq);
 		MathArray ar;
-		if (pos == cell(idx).size()) {
+		if (mathcursor && mathcursor->selection()) {
+			ar = asArray(mathcursor->grabAndEraseSelection());
+		} else if (pos == cell(idx).size()) {
 			ar = cell(idx);
 			lyxerr << "use whole cell: " << ar << "\n";
 		} else {

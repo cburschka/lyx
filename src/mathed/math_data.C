@@ -408,8 +408,8 @@ void MathArray::notifyCursorLeaves()
 		if (p && q && p->name() == q->name()) {
 			p->cell(0).append(q->cell(0));
 			erase(i + 1);
+			mathcursor->adjust(i, -1);
 		}
-		mathcursor->adjust(i, -1);
 	}
 
 }
