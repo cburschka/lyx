@@ -1,3 +1,9 @@
+2002-06-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* INSTALL:
+	* configure.in: remove attempt to link against libiberty. It
+	is morally wrong, and potentially dangerous.
+ 
 2002-06-07  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* configure.in: move the test for xpm/xforms out of the frontends

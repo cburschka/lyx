@@ -376,16 +376,6 @@ notify us.
     Angus Leeming <leeming@lyx.org> for details.
     Angus 22 March, 2002.
 
-  o Some systems lack functions that LyX needs.  To fix this, configure
-    tries to link against the -liberty library, if it is available. 
-    If you experience problems with missing symbols at link time, you 
-    could try to install libiberty.a, which comes with several GNU 
-    packages (in particular libg++).  In any case, please report your 
-    problems to lyx-devel@lists.lyx.org. 
-
-    The option --without-liberty disable the detection of -liberty.  It
-    is meant for debugging purpose only.
-
   o According to David Sundqvist <David_Sundqvist@vd.volvo.se>, some
     changes are needed to compile with aCC on HP-UX 10.20. These are the
     relevant changes in the makefile (with comments tagged on):  

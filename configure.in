@@ -120,16 +120,6 @@ LYX_LOOP_DIR($lyx_cv_extra_prefix,[
 LYX_ADD_INC_DIR(CPPFLAGS,$dir/include)
   LYX_ADD_LIB_DIR(LDFLAGS,$dir/lib)])
 
-### Check for the -liberty library
-test "x$GXX" = xyes && lyx_use_liberty=yes
-AC_ARG_WITH(liberty,
-  [  --without-liberty       do not try to link against libiberty.a],
-  [lyx_use_liberty=$withval])
-if test x$lyx_use_liberty = xyes; then
-  # AC_CHECK_LIB(iberty,main,LIBS="-liberty $LIBS")
-  AC_CHECK_LIB(iberty,main)
-fi
-
 AC_ARG_WITH(aiksaurus,
   [  --without-aiksaurus     do not use the Aiksaurus library],
   [lyx_use_aiksaurus=$withval])
