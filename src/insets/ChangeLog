@@ -1,3 +1,8 @@
+2002-04-03  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (insetButtonPress): fix insetButtonPress events the same
+	way as in Bufferview_pimpl.
+
 2002-04-03  Allan Rae  <rae@lyx.org>
 
 	* insetgraphics.C (latex): one % too many makes living on the bleeding

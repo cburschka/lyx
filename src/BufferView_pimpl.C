@@ -651,6 +651,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		inset->insetButtonPress(bv_, xpos, ypos, button);
 		return;
 	}
+	// I'm not sure we should continue here if we hit an inset (Jug20020403)
 
 	// Right click on a footnote flag opens float menu
 	if (button == 3) {

@@ -937,7 +937,9 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 							    y - inset_y,
 							    button);
 			return;
-		} else if (inset) {
+		}
+#if 0
+		else if (inset) {
 			// otherwise unlock the_locking_inset and lock the new inset
 			the_locking_inset->insetUnlock(bv);
 			inset_x = cx(bv) - top_x + drawTextXOffset;
@@ -950,6 +952,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 				updateLocal(bv, CURSOR, false);
 			return;
 		}
+#endif
 		// otherwise only unlock the_locking_inset
 		the_locking_inset->insetUnlock(bv);
 		the_locking_inset = 0;
@@ -959,16 +962,13 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 
 	if (bv->theLockingInset()) {
 		if (isHighlyEditableInset(inset)) {
+			// We just have to lock the inset before calling a
+			// PressEvent on it!
 			UpdatableInset * uinset = static_cast<UpdatableInset*>(inset);
-			inset_x = cx(bv) - top_x + drawTextXOffset;
-			inset_y = cy(bv) + drawTextYOffset;
-			inset_pos = cpos(bv);
-			inset_par = cpar(bv);
-			inset_boundary = cboundary(bv);
-			the_locking_inset = uinset;
-			uinset->insetButtonPress(bv, x - inset_x, y - inset_y,
-						 button);
-			uinset->edit(bv, x - inset_x, y - inset_y, 0);
+			if (!bv->lockInset(uinset)) {
+				lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
+			}
+			inset->insetButtonPress(bv, x - inset_x, y - inset_y, button);
 			if (the_locking_inset)
 				updateLocal(bv, CURSOR, false);
 			return;
