@@ -25,7 +25,7 @@
 
 static char const * decoration_names[] = {
 	"widehat", "widetilde", "overbrace", "overleftarrow", "overrightarrow", 
-	"overline", "underbrace", "underline",
+	"overline", "underbrace", "underline", "underleftarrow", "underrightarrow",
 	"hat", "acute", "bar", "dot",
 	"check", "grave", "vec", "ddot", 
 	"breve", "tilde"
@@ -52,9 +52,9 @@ void FormMathsDeco::build()
 {
 	dialog_.reset(build_maths_deco());
 
-	fl_set_bmtable_data(dialog_->bmtable_deco1, 3, 3,
+	fl_set_bmtable_data(dialog_->bmtable_deco1, 3, 4,
 			    deco1_width, deco1_height, deco1_bits);
-	fl_set_bmtable_maxitems(dialog_->bmtable_deco1, 8);
+	fl_set_bmtable_maxitems(dialog_->bmtable_deco1, 10);
 
 	fl_set_bmtable_data(dialog_->bmtable_deco2, 4, 3,
 			    deco2_width, deco2_height, deco2_bits);
@@ -68,18 +68,20 @@ void FormMathsDeco::build()
 
 void FormMathsDeco::apply()
 {
-	if (deco_ >= nr_decoration_names)
-		return;
- 
-	parent_.insertSymbol(decoration_names[deco_]);
+	if (deco_ < nr_decoration_names)
+		parent_.insertSymbol(decoration_names[deco_]);
 }
+
 
 bool FormMathsDeco::input(FL_OBJECT * ob, long)
 {
 	deco_ = fl_get_bmtable(ob);
-	if (deco_ < 0) return false;
-	//if (ob == dialog_->bmtable_deco1) deco_ += 0; 
-	if (ob == dialog_->bmtable_deco2) deco_ += 8;
+	if (deco_ < 0)
+		return false;
+	//if (ob == dialog_->bmtable_deco1)
+	//	deco_ += 0; 
+	if (ob == dialog_->bmtable_deco2)
+		deco_ += 10;
 	apply();
 	return true;
 }

@@ -10,13 +10,13 @@ SnapGrid: 2
 =============== FORM ===============
 Name: form_maths_deco
 Width: 160
-Height: 257
+Height: 295
 Number of Objects: 4
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 160 257
+box: 0 0 160 295
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -34,7 +34,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: PUSH_BUTTON
-box: 10 10 140 90
+box: 10 10 140 120
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -52,7 +52,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 28 214 100 30
+box: 30 250 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -70,7 +70,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: PUSH_BUTTON
-box: 20 110 120 90
+box: 20 140 120 90
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
