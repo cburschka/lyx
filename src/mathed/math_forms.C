@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include "math_panel.h"
 
-FD_panel *create_form_panel(void)
+FD_panel * create_form_panel(void)
 {
   FL_OBJECT *obj;
   FD_panel *fdui = (FD_panel *) fl_calloc(1, sizeof(FD_panel));

@@ -13,8 +13,6 @@
 #pragma interface
 #endif
 
-#include <X11/Xlib.h>
-
 #include "LString.h"
 
 #define KB_PREALLOC  16
@@ -58,7 +56,7 @@ public:
 	void print(string & buf) const;
 	
 	/// Look up a key in the keymap
-	int lookup(KeySym key, unsigned mod, kb_sequence * seq);
+	int lookup(unsigned long key, unsigned mod, kb_sequence * seq);
 
 	/// Given an action, find all keybindings.
 	string findbinding(int action) const;
@@ -102,7 +100,7 @@ public:
 	/// Add a key to the key sequence and look it up in the curmap
 	/** Add a key to the key sequence and look it up in the curmap
 	    if the latter is defined. */
-	int addkey(KeySym key, unsigned mod, unsigned nmod = 0);
+	int addkey(unsigned long key, unsigned mod, unsigned nmod = 0);
 
 	///
 	int print(string & buf, bool when_defined = false) const;
@@ -117,7 +115,7 @@ public:
 	char getiso();
 	
 	///
-	KeySym getsym();
+	unsigned long getsym();
 	
 	///
 	void reset();

@@ -308,7 +308,7 @@ void fl_set_bmtable_file(FL_OBJECT * ob, int nx, int ny, char const * filename)
 
 #else
 
-void fl_set_bmtable_file(FL_OBJECT *, int, int, char const *) 
+void fl_set_bmtable_file(FL_OBJECT * ob, int nx, int ny, char const * filename)
 {
   fprintf(stderr, "Set bmtable file: Sorry, I need X11 release 6 to do " 
 	   "work!\n");

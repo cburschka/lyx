@@ -9,13 +9,6 @@
 #endif
 #include <cstdlib>
 
-#ifdef HAVE_SSTREAM
-#include <sstream>
-using std::ostringstream;
-#else
-#include <strstream>
-#endif
-
 #include "LString.h"
 #include "lstrings.h"
 #include "LRegex.h"
@@ -131,87 +124,6 @@ string uppercase(string const & a)
 	transform(tmp.begin(), tmp.end(), tmp.begin(), toupper);
 #endif
 	return tmp;
-}
-
-
-string tostr(long i)
-{
-#ifndef HAVE_SSTREAM
-	// "Hey!", you say. "Why do we need the char str[30]?".
-	// Since strstream does not handle memory for us we have to do
-	// that ourselves, if we don't pass str in we have to capture
-	// oss.str() in a tmp variable and delete that manually.
-	// Thus we then require more temporary variables and the code
-	// gets more obfuscated.
-	char str[30];
-	ostrstream oss(str, 30);
-	oss << i << '\0';
-	return oss.str();
-#else
-	ostringstream oss;
-	oss << i;
-	return oss.str().c_str();
-#endif
-}
-
-
-string tostr(unsigned long i)
-{
-#ifndef HAVE_SSTREAM	
-	char str[30];
-	ostrstream oss(str, 30);
-	oss << i << '\0';
-	return oss.str();
-#else
-	ostringstream oss;
-	oss << i;
-	return oss.str().c_str();
-#endif
-}
-
-
-string tostr(void * v)
-{
-	return tostr(long(v));
-}
-
-
-string tostr(int i)
-{
-	return tostr(long(i));
-}
-
-
-string tostr(unsigned int ui)
-{
-	return tostr(long(ui));
-}
-
-
-string tostr(char c)
-{
-	return string(1, c);
-}
-
-
-string tostr(bool b)
-{
-	return b ? "true" : "false";
-}
-
-
-string tostr(double d)
-{
-#ifndef HAVE_SSTREAM
-	char tmp[40];
-	ostrstream oss(tmp, 40);
-	oss << d << '\0';
-	return oss.str();
-#else
-	ostringstream oss;
-	oss << d;
-	return oss.str().c_str();
-#endif
 }
 
 

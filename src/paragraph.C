@@ -1577,8 +1577,7 @@ LyXParagraph * LyXParagraph::FirstPhysicalPar()
 		tmppar = tmppar->previous;
    
 	if (!tmppar) {
-		Assert(false); // let's get an abort then
-		return this; // This should never happen!
+		return this;
 	} else
 		return tmppar;
 }
@@ -1590,13 +1589,13 @@ LyXParagraph const * LyXParagraph::FirstPhysicalPar() const
 		return this;
 	LyXParagraph const * tmppar = this;
 
-	while (tmppar && (tmppar->IsDummy()
-			  || tmppar->footnoteflag != LyXParagraph::NO_FOOTNOTE))
+	while (tmppar &&
+	       (tmppar->IsDummy()
+		|| tmppar->footnoteflag != LyXParagraph::NO_FOOTNOTE))
 		tmppar = tmppar->previous;
    
 	if (!tmppar) {
-		Assert(false); // let's get an abort then
-		return this;  // This should never happen!
+		return this;
 	} else
 		return tmppar;
 }

@@ -418,6 +418,15 @@ void InsetLatexAccent::Draw(LyXFont font,
 					  tmpvar, wid,
 					  font.ascent('i') -
 					  font.ascent('x') - 1);
+			// the five lines below is a simple hack to
+			// make the display of accent 'i' and 'j'
+			// better. It makes the accent be written
+			// closer to the top of the dot-less 'i' or 'j'.
+			char tmpic = ic; // store the ic when we
+			ic = 'x';        // calculates the ascent of
+			asc = Ascent(font); // the dot-less version (here: 'x')
+			ic = tmpic;      // set the orig ic back
+			y = baseline - asc; // update to new y coord.
 		}
 		// now the rest - draw within (x, y, x+wid, y+hg)
 		switch (modtype) {

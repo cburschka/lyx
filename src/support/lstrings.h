@@ -9,39 +9,15 @@
 #define LSTRINGS_H
 
 #include <cstring>
-
-//#include "LAssert.h"
-
-//#warning verify this please. Lgb
-///
-//template<class T>
-//size_t lstrlen(T const * t)
-//{
-//	Assert(t); // we don't want null pointers
-//	size_t count = 0;
-//	T const * r = t;
-//	while(*r != 0) ++r, ++count;
-//	return count;
-//}
-
-
-//#Warning verify this please. Lgb
-///
-//template<class T>
-//T * lstrchr(T const * t, int c)
-//{
-//  Assert(t); // we don't want null pointers
-//  T * r = const_cast<T*>(t);
-//  while(*r != 0) { 
-//    if (*r == c) 
-//      return r; 
-//    else 
-//      ++r;
-//  }
-//  return 0;
-//}
-
 #include <cctype>
+
+#ifdef HAVE_SSTREAM
+#include <sstream>
+using std::ostringstream;
+#else
+#include <strstream>
+#endif
+
 #include "LString.h"
 
 
@@ -77,30 +53,35 @@ string lowercase(string const &);
 ///
 string uppercase(string const &);
 
-/// int to string
-string tostr(int i);
+/// convert T to string
+template<typename T>
+inline string tostr(T const & t) 
+{
+#ifdef HAVE_SSTREAM
+	ostringstream ostr;
+	ostr << t;
+	return ostr.str().c_str();
+	// We need to use the .c_str since we sometimes are using
+	// our own string class and that is not compatible with
+	// basic_string<char>.
+#else
+	// The buf is probably a bit large, but if we want to be safer
+	// we should leave it this big. As compiler/libs gets updated
+	// this part of the code will cease to be used and we loose
+	// nothing.
+	char buf[2048]; // a bit too large perhaps?
+	ostrstream ostr(buf, sizeof(buf));
+	ostr << t << '\0';
+	return buf;
+#endif
+}
 
-///
-string tostr(unsigned int);
-
-/// long to string
-string tostr(long l);
-
-///
-string tostr(unsigned long l); 
-
-///
-string tostr(char c);
-
-/// void * to string
-string tostr(void * v);
-
-/// bool to string
-string tostr(bool b);
-
-///
-string tostr(double d);
-
+inline
+string tostr(bool b)
+{
+	return (b ? "true" : "false");
+}
+	
 /// Does the string start with this prefix?
 bool prefixIs(string const &, char const *);
 

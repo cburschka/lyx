@@ -10,6 +10,8 @@
 
 #include <config.h>
 #include <cstring>
+#include <X11/Xlib.h>
+
 #include "support/lstrings.h"
 #include "gettext.h"
 
@@ -39,7 +41,7 @@ enum { ModsMask = ShiftMask | ControlMask | Mod1Mask};
    Returns   : length of printed string if ok, 0 otherwise.
 \* ---F------------------------------------------------------------------- */
 static
-void printKeysym(KeySym key, unsigned int mod, string & buf)
+void printKeysym(unsigned long key, unsigned int mod, string & buf)
 {
 	mod &= ModsMask;
 
@@ -90,7 +92,7 @@ void printKeyTab(kb_key * tabPt, string & buf)
     Returns   : action or -1 if error (no map defined or key not found)
 \* ---F------------------------------------------------------------------- */
 
-int kb_sequence::addkey(KeySym key,
+int kb_sequence::addkey(unsigned long key,
 			unsigned int mod, unsigned int nmod /*= 0*/)
 {
 	if(length < 0) length = 0;
@@ -343,7 +345,7 @@ int kb_keymap::bind(char const * seq, int action)
     Returns   : user defined action; 0 for prefix key, -1 if key not found
 \* ---F------------------------------------------------------------------- */
 
-int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence * seq)
+int kb_keymap::lookup(unsigned long key, unsigned int mod, kb_sequence * seq)
 {
 	unsigned int ksym, msk1, msk0;
 	kb_key * tab;
@@ -493,13 +495,13 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 	
 	// --- define rest of sequence --------------------------------------
 
-	if(idx+1 == seq->length) {
+	if(idx + 1 == seq->length) {
 		newone->action = action;
 		newone->table  = 0;
 		return 0;
 	} else {
 		newone->table = new kb_keymap;
-		int res = newone->table->defkey(seq, action, idx+1);
+		int res = newone->table->defkey(seq, action, idx + 1);
 		return res;
 	}
 }

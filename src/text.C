@@ -281,9 +281,6 @@ void LyXText::Draw(Row const * row, LyXParagraph::size_type & pos,
 // exactly the label-width.
 int LyXText::LeftMargin(Row const * row) const
 {
-	LyXFont labelfont;
-	LyXParagraph * newpar;
-	Row dummyrow;
 	LyXLayout const & layout = textclasslist.Style(parameters->textclass,
 						       row->par->GetLayout());
 	
@@ -315,7 +312,7 @@ int LyXText::LeftMargin(Row const * row) const
 		if (!row->par->GetLayout()) {
 			// find the previous same level paragraph
 			if (row->par->FirstPhysicalPar()->Previous()) {
-				newpar = row->par
+				LyXParagraph * newpar = row->par
 					->DepthHook(row->par->GetDepth());
 				if (newpar &&
 				    textclasslist.Style(parameters->textclass,
@@ -327,7 +324,7 @@ int LyXText::LeftMargin(Row const * row) const
 	} else {
 		// find the next level paragraph
 		
-		newpar = row->par->DepthHook(row->par->GetDepth()-1);
+		LyXParagraph * newpar = row->par->DepthHook(row->par->GetDepth()-1);
 		
 		// make a corresponding row. Needed to call LeftMargin()
 		
@@ -336,6 +333,7 @@ int LyXText::LeftMargin(Row const * row) const
 		    && textclasslist
 		        .Style(parameters->textclass, 
 			       newpar->GetLayout()).isEnvironment()) {
+			Row dummyrow;
 			dummyrow.par = newpar;
 			dummyrow.pos = newpar->Last();
 			x = LeftMargin(&dummyrow);
@@ -358,7 +356,7 @@ int LyXText::LeftMargin(Row const * row) const
 		
 	}
 	
-	labelfont = GetFont(row->par, -2);
+	LyXFont labelfont = GetFont(row->par, -2);
 	switch (layout.margintype) {
 	case MARGIN_DYNAMIC:
 		if (!layout.leftmargin.empty()) {
@@ -427,7 +425,7 @@ int LyXText::LeftMargin(Row const * row) const
 			tmprow = tmprow->previous;
 		
 		int minfill = tmprow->fill;
-		while (tmprow-> next && tmprow->next->par == row->par) {
+		while (tmprow->next && tmprow->next->par == row->par) {
 			tmprow = tmprow->next;
 			if (tmprow->fill < minfill)
 				minfill = tmprow->fill;
@@ -2932,14 +2930,26 @@ void LyXText::Delete()
 	// this is a very easy implementation
 
 	LyXCursor old_cursor = cursor;
+	int old_cur_par_id = old_cursor.par->id();
+	int old_cur_par_prev_id = old_cursor.par->previous->id();
 	
 	// just move to the right
 	CursorRightIntern();
-	
+
+	// This check is not very good...
+	// The CursorRightIntern calls DeleteEmptyParagrapgMechanism
+	// and that can very well delete the par or par->previous in
+	// old_cursor. Will a solution where we compare paragraph id's
+	//work better?
+#if 1
+	if (cursor.par->previous->id() == old_cur_par_prev_id
+	    && cursor.par->id() != old_cur_par_id)
+		return; // delete-empty-paragraph-mechanism has done it
+#else
 	if (cursor.par->previous == old_cursor.par->previous
 	    && cursor.par != old_cursor.par)
-		return; // delete-emty-paragraph-mechanism has done it
-	
+		return; // delete-empty-paragraph-mechanism has done it
+#endif
 	// if you had success make a backspace
 	if (old_cursor.par != cursor.par || old_cursor.pos != cursor.pos) {
 		LyXCursor tmpcursor = cursor;

@@ -1,3 +1,24 @@
+2000-01-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/bmtable.c (fl_set_bmtable_file): have arguments in the X r5
+	version also. 
+
+	* src/paragraph.C (FirstPhysicalPar): remove assert and comment
+	that obviously was wrong...
+
+	* src/lyxfont.C (textWidth): have c as char c[2] instead of char
+	c, this avoids warnings with purify and islower.
+
+	* src/insets/figinset.C: rename struct queue to struct
+	queue_element and rewrite to use a std::queue. gsqueue is now a
+	std::queue<queue_element>
+	(runqueue): reflect move to std::queue
+	(addwait): ditto
+
+	* src/support/lstrings.h (tostr): specialize for bool, otherwise
+	we would get "1" "0" instead of "true" "false. Also make the tostr
+	functions inline.
+
 2000-01-21  Juergen Vigna  <jug@sad.it>
 
 	* src/buffer.C (writeFileAscii): Disabled code for special groff
@@ -10,6 +31,13 @@
 	* src/support/lyxlib.h: ditto.
 
 2000-01-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/insets/insetlatexaccent.C (Draw): make accents on top of 'i'
+	and 'j' look better. This might fix the "macron" bug that has been
+	observed.
+
+	* src/support/lstrings.[Ch] (tostr): reimplement all the tostr
+	functions as one template function. Delete the old versions.
 
 	* src/support/lyxsum.C: move using std::ifstream inside
 	MODERN_STL_STREAMS

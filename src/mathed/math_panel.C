@@ -323,7 +323,7 @@ FD_panel * create_math_panel( )
    return fd_panel;
 }
 
-extern BitmapMenu* sym_menu;
+extern BitmapMenu * sym_menu;
 extern void  create_symbol_menues(FD_panel *);
 
 
@@ -333,7 +333,7 @@ void free_symbols_form()
       fl_hide_form(fd_panel->panel);
       fl_free_form(fd_panel->panel);
       delete sym_menu;
-      delete fd_panel;
+      free(fd_panel);
       fd_panel = 0;  
    }
 }

@@ -879,18 +879,18 @@ int LyXFont::textWidth(char const * s, int n) const
 	} else {
 		// emulate smallcaps since X doesn't support this
 		unsigned int result = 0;
-		char c;
+		char c[2]; c[1] = '\0';
 		LyXFont smallfont = *this;
 		smallfont.decSize();
 		smallfont.decSize();
 		smallfont.setShape(LyXFont::UP_SHAPE);
 		for (int i = 0; i < n; ++i) {
-			c = s[i];
-			if (islower(c)){
-				c = toupper(c);
-				result += XTextWidth(smallfont.getXFontstruct(), &c, 1);
+			c[0] = s[i];
+			if (islower(c[0])){
+				c[0] = toupper(c[0]);
+				result += XTextWidth(smallfont.getXFontstruct(), c, 1);
 			} else {
-				result += XTextWidth(getXFontstruct(), &c, 1);
+				result += XTextWidth(getXFontstruct(), c, 1);
 			}
 		}
 		return result;

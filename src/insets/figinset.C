@@ -40,8 +40,10 @@ extern long int background_pixels;
 #include <cctype>
 #include <cmath>
 #include <fstream>
+#include <queue>
 using std::ofstream;
 using std::ifstream;
+using std::queue;
 
 #include "figinset.h"
 #include "lyx.h"
@@ -87,11 +89,10 @@ static int figarrsize = 0;	/* current max number of figures */
 static int bmpinsref = 0;	/* number of bitmaps */
 static int bmparrsize = 0;	/* current max number of bitmaps */
 
-struct queue {
-	float rx, ry;		/* resolution x and y */
-	int ofsx, ofsy;		/* x and y translation */
-	figdata * data;		/* we are doing it for this data */
-	queue * next;	        /* next item in queue */
+struct queue_element {
+	float rx, ry;          // resolution x and y
+	int ofsx, ofsy;	       // x and y translation
+	figdata * data;	       // we are doing it for this data
 };
 
 struct pidwait {
@@ -103,7 +104,9 @@ static int const MAXGS = 3;			/* maximum 3 gs's at a time */
 
 static Figref ** figures;	/* all the figures */
 static figdata ** bitmaps;	/* all the bitmaps */
-static queue * gsqueue = 0;	/* queue for ghostscripting */
+
+static queue<queue_element> gsqueue; // queue for ghostscripting
+
 static int gsrunning = 0;	/* currently so many gs's are running */
 static bool bitmap_waiting = false; /* bitmaps are waiting finished */
 static char bittable[256];	/* bit reversion table */
@@ -509,7 +512,7 @@ static void runqueue()
 		Atom * prop;
 		int nprop, i;
 
-		if (!gsqueue) {
+		if (gsqueue.empty()) {
 			if (!gsrunning && gs_xcolor) {
 				// de-allocate rest of colors
 				// *****
@@ -517,10 +520,9 @@ static void runqueue()
 			}
 			return;
 		}
-		queue * p = gsqueue;
-
+		queue_element * p = &gsqueue.front();
 		if (!p->data) {
-			delete p;
+			gsqueue.pop();
 			continue;
 		}
 
@@ -720,10 +722,10 @@ static void runqueue()
 		if (lyxerr.debugging()) {
 			lyxerr << "GS ["  << pid << "] started" << endl;
 		}
-		gsqueue = gsqueue->next;
-		gsrunning++;
+
 		p->data->gspid = pid;
-		delete p;
+		++gsrunning;
+		gsqueue.pop();
 	}
 }
 
@@ -731,22 +733,15 @@ static void runqueue()
 static void addwait(int psx, int psy, int pswid, int pshgh, figdata * data)
 {
 	// recompute the stuff and put in the queue
-	queue * p = new queue;
-	p->ofsx = psx;
-	p->ofsy = psy;
-	p->rx = (float(data->raw_wid) * 72.0) / pswid;
-	p->ry = (float(data->raw_hgh) * 72.0) / pshgh;
+	queue_element p;
+	p.ofsx = psx;
+	p.ofsy = psy;
+	p.rx = (float(data->raw_wid) * 72.0) / pswid;
+	p.ry = (float(data->raw_hgh) * 72.0) / pshgh;
 
-	p->data = data;
-	p->next = 0;
+	p.data = data;
 
-	// now put into queue
-	queue * p2 = gsqueue;
-	if (!gsqueue) gsqueue = p;
-	else {
-		while (p2->next) p2 = p2->next;
-		p2->next = p;
-	}
+	gsqueue.push(p);
 
 	// if possible, run the queue
 	runqueue();
