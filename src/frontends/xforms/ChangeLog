@@ -1,5 +1,13 @@
 2003-07-23  Angus Leeming  <leeming@lyx.org>
 
+	* FormColorpicker.[Ch]
+	* forms/form_colorpicker.fd: new files. A color picker for xforms.
+
+	* FormPreferences.[Ch]
+	* forms/form_preferences.fd: use it.
+
+2003-07-23  Angus Leeming  <leeming@lyx.org>
+
 	* FormExternal.C (apply, update):
 	changes due to the use of the FileName class to store the external
 	file name.

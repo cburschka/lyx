@@ -77,6 +77,8 @@ libxforms_la_SOURCES = \
 	FormCharacter.h \
 	FormCitation.C \
 	FormCitation.h \
+	FormColorpicker.C \
+	FormColorpicker.h \
 	FormDocument.C \
 	FormDocument.h \
 	FormErrorList.C \

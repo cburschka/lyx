@@ -16,6 +16,7 @@
 #include "xformsBC.h"
 #include "ButtonController.h"
 
+#include "FormColorpicker.h"
 #include "Color.h"
 #include "input_validators.h"
 #include "forms_gettext.h"
@@ -506,48 +507,16 @@ void FormPreferences::Colors::apply()
 
 void FormPreferences::Colors::build()
 {
+	picker_.reset(new FormColorpicker);
 	dialog_.reset(build_preferences_colors(&parent_));
 
 	fl_set_object_color(dialog_->button_color,
 			    GUI_COLOR_CHOICE, GUI_COLOR_CHOICE);
 
-	fl_set_object_color(dialog_->dial_hue, GUI_COLOR_HUE_DIAL, FL_BLACK);
-	fl_set_dial_bounds(dialog_->dial_hue, 0.0, 360.0);
-	fl_set_dial_step(dialog_->dial_hue, 1.0);
-	fl_set_dial_return(dialog_->dial_hue, FL_RETURN_CHANGED);
-
-	fl_set_slider_bounds(dialog_->slider_saturation, 0.0, 1.0);
-	fl_set_slider_step(dialog_->slider_saturation, 0.01);
-	fl_set_slider_return(dialog_->slider_saturation, FL_RETURN_CHANGED);
-
-	fl_set_slider_bounds(dialog_->slider_value, 0.0, 1.0);
-	fl_set_slider_step(dialog_->slider_value, 0.01);
-	fl_set_slider_return(dialog_->slider_value, FL_RETURN_CHANGED);
-
-	fl_set_slider_bounds(dialog_->slider_red, 0.0, 255.0);
-	fl_set_slider_step(dialog_->slider_red, 1.0);
-	fl_set_slider_return(dialog_->slider_red, FL_RETURN_CHANGED);
-
-	fl_set_slider_bounds(dialog_->slider_green, 0.0, 255.0);
-	fl_set_slider_step(dialog_->slider_green, 1.0);
-	fl_set_slider_return(dialog_->slider_green, FL_RETURN_CHANGED);
-
-	fl_set_slider_bounds(dialog_->slider_blue, 0.0, 255.0);
-	fl_set_slider_step(dialog_->slider_blue, 1.0);
-	fl_set_slider_return(dialog_->slider_blue, FL_RETURN_CHANGED);
-
 	// set up the feedback mechanism
 	setPrehandler(dialog_->browser_lyx_objs);
 	setPrehandler(dialog_->button_color);
 	setPrehandler(dialog_->button_modify);
-	setPrehandler(dialog_->dial_hue);
-	setPrehandler(dialog_->slider_saturation);
-	setPrehandler(dialog_->slider_value);
-	setPrehandler(dialog_->slider_red);
-	setPrehandler(dialog_->slider_green);
-	setPrehandler(dialog_->slider_blue);
-	setPrehandler(dialog_->radio_rgb);
-	setPrehandler(dialog_->radio_hsv);
 }
 
 
@@ -560,17 +529,6 @@ FormPreferences::Colors::feedback(FL_OBJECT const * const ob) const
 	if (ob == dialog_->button_modify)
 		return _("Modify the LyX object's color. Note: you must then \"Apply\" the change.");
 
-	if (ob == dialog_->dial_hue ||
-	    ob == dialog_->slider_saturation ||
-	    ob == dialog_->slider_value ||
-	    ob == dialog_->slider_red ||
-	    ob == dialog_->slider_green ||
-	    ob == dialog_->slider_blue)
-		return  _("Find a new color.");
-
-	if (ob == dialog_->radio_rgb || ob == dialog_->radio_hsv)
-		return _("Toggle between RGB and HSV color spaces.");
-
 	return string();
 }
 
@@ -579,20 +537,6 @@ void FormPreferences::Colors::input(FL_OBJECT const * const ob)
 {
 	if (ob == dialog_->browser_lyx_objs) {
 		InputBrowserLyX();
-
-	} else if (ob == dialog_->dial_hue ||
-		   ob == dialog_->slider_saturation ||
-		   ob == dialog_->slider_value) {
-		InputHSV();
-
-	} else if (ob == dialog_->slider_red ||
-		   ob == dialog_->slider_green ||
-		   ob == dialog_->slider_blue) {
-		InputRGB();
-
-	} else if (ob == dialog_->radio_rgb ||
-		   ob == dialog_->radio_hsv) {
-		SwitchColorSpace();
 
 	} else if (ob == dialog_->button_modify) {
 		Modify();
@@ -640,105 +584,7 @@ void FormPreferences::Colors::InputBrowserLyX() const
 	fl_mapcolor(GUI_COLOR_CHOICE, col.r, col.g, col.b);
 	fl_redraw_object(dialog_->button_color);
 
-	// Display either RGB or HSV but not both!
-	SwitchColorSpace();
-
-	// Deactivate the modify button to begin with...
-	setEnabled(dialog_->button_modify, false);
-
 	fl_unfreeze_form(dialog_->form);
-}
-
-
-void FormPreferences::Colors::InputHSV()
-{
-	double const hue = fl_get_dial_value(dialog_->dial_hue);
-	double const sat = fl_get_slider_value(dialog_->slider_saturation);
-	double const val = fl_get_slider_value(dialog_->slider_value);
-
-	int const h = int(hue);
-	int const s = int(100.0 * sat);
-	int const v = int(100.0 * val);
-
-	string const label = tostr(h) + ", " + tostr(s) + ", " + tostr(v);
-	fl_set_object_label(dialog_->text_color_values, label.c_str());
-
-	RGBColor col = HSVColor(hue, sat, val);
-
-	fl_freeze_form(dialog_->form);
-
-	fl_mapcolor(GUI_COLOR_CHOICE, col.r, col.g, col.b);
-	fl_redraw_object(dialog_->button_color);
-
-	col = HSVColor(hue, 1.0, 1.0);
-	col.r = max(col.r, 0u);
-	fl_mapcolor(GUI_COLOR_HUE_DIAL, col.r, col.g, col.b);
-	fl_redraw_object(dialog_->dial_hue);
-
-	// Ascertain whether to activate the Modify button.
-	vector<NamedColor>::size_type const selLyX =
-		fl_get_browser(dialog_->browser_lyx_objs);
-
-	fl_unfreeze_form(dialog_->form);
-	if (selLyX < 1) return;
-
-	fl_getmcolor(GUI_COLOR_CHOICE, &col.r, &col.g, &col.b);
-	bool modify = false;
-
-	// Is the choice an Xforms color...
-	if (selLyX - 1 < xformsColorDB.size()) {
-		vector<XformsColor>::size_type const i = selLyX - 1;
-		modify = (xformsColorDB[i].color() != col);
-	}
-	// or a LyX Logical color?
-	else {
-		vector<NamedColor>::size_type const i = selLyX - 1 -
-			xformsColorDB.size();
-		modify = (lyxColorDB[i].color() != col);
-	}
-
-	setEnabled(dialog_->button_modify, modify);
-}
-
-
-void FormPreferences::Colors::InputRGB()
-{
-	int const red   = int(fl_get_slider_value(dialog_->slider_red));
-	int const green = int(fl_get_slider_value(dialog_->slider_green));
-	int const blue  = int(fl_get_slider_value(dialog_->slider_blue));
-
-	string const label = tostr(red) + string(", ") + tostr(green) +
-		string(", ") + tostr(blue);
-	fl_set_object_label(dialog_->text_color_values, label.c_str());
-
-	fl_freeze_form(dialog_->form);
-
-	RGBColor col = RGBColor(red, green, blue);
-	fl_mapcolor(GUI_COLOR_CHOICE, col.r, col.g, col.b);
-	fl_redraw_object(dialog_->button_color);
-
-	// Ascertain whether to activate the Modify button.
-	vector<NamedColor>::size_type const selLyX =
-		fl_get_browser(dialog_->browser_lyx_objs);
-
-	fl_unfreeze_form(dialog_->form);
-	if (selLyX < 1) return;
-
-	bool modify = false;
-
-	// Is the choice an Xforms color...
-	if (selLyX - 1 < xformsColorDB.size()) {
-		vector<XformsColor>::size_type const i = selLyX - 1;
-		modify = (xformsColorDB[i].color() != col);
-	}
-	// or a LyX Logical color?
-	else {
-		vector<NamedColor>::size_type const i = selLyX - 1 -
-			xformsColorDB.size();
-		modify = (lyxColorDB[i].color() != col);
-	}
-
-	setEnabled(dialog_->button_modify, modify);
 }
 
 
@@ -851,8 +697,15 @@ void FormPreferences::Colors::Modify()
 	if (selLyX < 1)
 		return;
 
-	RGBColor col;
-	fl_getmcolor(GUI_COLOR_CHOICE, &col.r, &col.g, &col.b);
+	RGBColor before;
+	fl_getmcolor(GUI_COLOR_CHOICE, &before.r, &before.g, &before.b);
+
+	RGBColor col = picker_->requestColor(before);
+	if (before == col)
+		return;
+
+	fl_mapcolor(GUI_COLOR_CHOICE, col.r, col.g, col.b);
+	fl_redraw_object(dialog_->button_color);
 
 	// Is the choice an Xforms color...
 	if (selLyX - 1 < xformsColorDB.size()) {
@@ -869,74 +722,6 @@ void FormPreferences::Colors::Modify()
 		lyxColorDB[i].g  = col.g;
 		lyxColorDB[i].b  = col.b;
 	}
-
-	fl_freeze_form(dialog_->form);
-	setEnabled(dialog_->button_modify, false);
-	fl_unfreeze_form(dialog_->form);
-}
-
-
-void FormPreferences::Colors::SwitchColorSpace() const
-{
-	bool const hsv = fl_get_button(dialog_->radio_hsv);
-
-	RGBColor col;
-	fl_getmcolor(GUI_COLOR_CHOICE, &col.r, &col.g, &col.b);
-
-	fl_freeze_form(dialog_->form);
-
-	if (hsv) {
-		fl_hide_object(dialog_->slider_red);
-		fl_hide_object(dialog_->slider_blue);
-		fl_hide_object(dialog_->slider_green);
-		fl_show_object(dialog_->dial_hue);
-		fl_show_object(dialog_->slider_saturation);
-		fl_show_object(dialog_->slider_value);
-
-		HSVColor hsv = HSVColor(col);
-		hsv.h = max(hsv.h, 0.0);
-
-		fl_set_dial_value(dialog_->dial_hue, hsv.h);
-		fl_set_slider_value(dialog_->slider_saturation, hsv.s);
-		fl_set_slider_value(dialog_->slider_value, hsv.v);
-
-		col = HSVColor(hsv.h, 1.0, 1.0);
-		col.r = max(col.r, 0u);
-		fl_mapcolor(GUI_COLOR_HUE_DIAL, col.r, col.g, col.b);
-		fl_redraw_object(dialog_->dial_hue);
-
-		// Adjust the label a bit, but not the actual values.
-		// Means that toggling from one space to the other has no
-		// effect on the final color.
-		int const h = int(hsv.h);
-		int const s = int(100 * hsv.s);
-		int const v = int(100 * hsv.v);
-		string const label = tostr(h) + ", " + tostr(s) +
-			", " + tostr(v);
-		fl_set_object_label(dialog_->text_color_values, label.c_str());
-
-	} else {
-		fl_show_object(dialog_->slider_red);
-		fl_show_object(dialog_->slider_blue);
-		fl_show_object(dialog_->slider_green);
-		fl_hide_object(dialog_->dial_hue);
-		fl_hide_object(dialog_->slider_saturation);
-		fl_hide_object(dialog_->slider_value);
-
-		fl_set_slider_value(dialog_->slider_red,   col.r);
-		fl_set_slider_value(dialog_->slider_green, col.g);
-		fl_set_slider_value(dialog_->slider_blue,  col.b);
-
-		// Adjust the label a bit. Same reasoning as above.
-		int const r = int(col.r);
-		int const g = int(col.g);
-		int const b = int(col.b);
-		string const label = tostr(r) + ", " + tostr(g) +
-			", " + tostr(b);
-		fl_set_object_label(dialog_->text_color_values, label.c_str());
-	}
-
-	fl_unfreeze_form(dialog_->form);
 }
 
 

@@ -32,6 +32,7 @@
 
 #include "ControlPrefs.h"
 #include "FormPreferences.h"
+#include "FormColorpicker.h"
 #include "forms/form_preferences.h"
 
 #include "ControlPrint.h"

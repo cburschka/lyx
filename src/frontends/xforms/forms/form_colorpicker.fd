@@ -1,0 +1,286 @@
+Magic: 13000
+
+Internal Form Definition File
+    (do not change)
+
+Number of forms: 3
+Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
+
+=============== FORM ===============
+Name: form_colorpicker
+Width: 270
+Height: 360
+Number of Objects: 6
+
+--------------------
+class: FL_BOX
+type: UP_BOX
+box: 0 0 270 360
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_TABFOLDER
+type: TOP_TABFOLDER
+box: 10 25 255 235
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: tabbed folder
+shortcut: 
+resize: FL_RESIZE_NONE
+gravity: FL_NorthWest FL_SouthEast
+name: tabfolder
+callback: C_FormColorpickerInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 280 100 30
+boxtype: FL_BORDER_BOX
+colors: FL_WHITE FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_color
+callback: 
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 115 280 150 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: text_color_values
+callback: 
+argument: 
+
+--------------------
+class: FL_BUTTON
+type: RETURN_BUTTON
+box: 80 330 90 25
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: OK
+shortcut: ^M
+resize: FL_RESIZE_ALL
+gravity: FL_SouthEast FL_SouthEast
+name: button_ok
+callback: C_FormColorpickerInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 175 330 90 25
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Cancel|^[
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_SouthEast FL_SouthEast
+name: button_close
+callback: C_FormColorpickerInputCB
+argument: 0
+
+=============== FORM ===============
+Name: form_colorpicker_rgb
+Width: 255
+Height: 220
+Number of Objects: 4
+
+--------------------
+class: FL_BOX
+type: UP_BOX
+box: 0 0 255 220
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_SLIDER
+type: VERT_FILL_SLIDER
+box: 55 30 40 140
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_RED
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: R|#R
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: slider_red
+callback: C_FormColorpickerInputCB
+argument: 0
+	slsize: 0.15
+
+--------------------
+class: FL_SLIDER
+type: VERT_FILL_SLIDER
+box: 110 30 40 140
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_GREEN
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: G|#G
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: slider_green
+callback: C_FormColorpickerInputCB
+argument: 0
+	slsize: 0.15
+
+--------------------
+class: FL_SLIDER
+type: VERT_FILL_SLIDER
+box: 165 30 40 140
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_BLUE
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: B|#B
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: slider_blue
+callback: C_FormColorpickerInputCB
+argument: 0
+	slsize: 0.15
+
+=============== FORM ===============
+Name: form_colorpicker_hsv
+Width: 255
+Height: 220
+Number of Objects: 4
+
+--------------------
+class: FL_BOX
+type: UP_BOX
+box: 0 0 255 220
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_DIAL
+type: NORMAL_DIAL
+box: 91 8 100 100
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_RIGHT_BCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: H|#H
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: dial_hue
+callback: C_FormColorpickerInputCB
+argument: 0
+
+--------------------
+class: FL_SLIDER
+type: HOR_NICE_SLIDER
+box: 65 115 150 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: S|#S
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: slider_saturation
+callback: C_FormColorpickerInputCB
+argument: 0
+	slsize: 0.15
+
+--------------------
+class: FL_SLIDER
+type: HOR_NICE_SLIDER
+box: 65 155 150 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: V|#V
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: slider_value
+callback: C_FormColorpickerInputCB
+argument: 0
+	slsize: 0.15
+
+==============================
+create_the_forms

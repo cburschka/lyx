@@ -16,6 +16,7 @@ SRCS =  form_aboutlyx.fd \
 	form_changes.fd \
 	form_character.fd \
 	form_citation.fd \
+	form_colorpicker.fd \
 	form_document.fd \
 	form_errorlist.fd \
 	form_ert.fd \

@@ -28,6 +28,8 @@ class ControlPrefs;
 class Dialogs;
 class LyXView;
 class RGBColor;
+class FormColorpicker;
+
 struct FD_preferences;
 struct FD_preferences_colors;
 struct FD_preferences_converters;
@@ -87,8 +89,7 @@ private:
 	public:
 		///
 		enum GuiColors {
-			GUI_COLOR_CHOICE   = FL_FREE_COL14,
-			GUI_COLOR_HUE_DIAL = FL_FREE_COL15,
+			GUI_COLOR_CHOICE   = FL_FREE_COL15,
 			GUI_COLOR_CURSOR   = FL_FREE_COL16
 		};
 		///
@@ -115,20 +116,16 @@ private:
 		///
 		void InputBrowserLyX() const;
 		///
-		void InputHSV();
-		///
-		void InputRGB();
-		///
 		void LoadBrowserLyX();
 		///
 		void Modify();
-		///
-		void SwitchColorSpace() const;
 
 		///
 		FormPreferences & parent_;
 		///
 		boost::scoped_ptr<FD_preferences_colors> dialog_;
+		///
+		boost::scoped_ptr<FormColorpicker> picker_;
 
 		/// A vector of LyX LColor GUI name and associated RGB color.
 		std::vector<NamedColor> lyxColorDB;

@@ -782,7 +782,7 @@ argument: 0
 Name: form_preferences_colors
 Width: 450
 Height: 360
-Number of Objects: 15
+Number of Objects: 4
 
 --------------------
 class: FL_BOX
@@ -821,213 +821,9 @@ callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
-class: FL_DIAL
-type: NORMAL_DIAL
-box: 276 23 100 100
-boxtype: FL_FLAT_BOX
-colors: FL_COL1 FL_RIGHT_BCOL
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: H|#H
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: dial_hue
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_SLIDER
-type: HOR_NICE_SLIDER
-box: 251 135 150 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: S|#S
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: slider_saturation
-callback: C_FormBaseInputCB
-argument: 0
-	slsize: 0.15
-
---------------------
-class: FL_SLIDER
-type: HOR_NICE_SLIDER
-box: 251 175 150 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_COL1
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: V|#V
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: slider_value
-callback: C_FormBaseInputCB
-argument: 0
-	slsize: 0.15
-
---------------------
-class: FL_SLIDER
-type: VERT_FILL_SLIDER
-box: 250 25 40 180
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_RED
-alignment: FL_ALIGN_BOTTOM
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: R|#R
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: slider_red
-callback: C_FormBaseInputCB
-argument: 0
-	slsize: 0.15
-
---------------------
-class: FL_SLIDER
-type: VERT_FILL_SLIDER
-box: 305 25 40 180
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_GREEN
-alignment: FL_ALIGN_BOTTOM
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: G|#G
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: slider_green
-callback: C_FormBaseInputCB
-argument: 0
-	slsize: 0.15
-
---------------------
-class: FL_SLIDER
-type: VERT_FILL_SLIDER
-box: 360 25 40 180
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_BLUE
-alignment: FL_ALIGN_BOTTOM
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: B|#B
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: slider_blue
-callback: C_FormBaseInputCB
-argument: 0
-	slsize: 0.15
-
---------------------
-class: FL_BEGIN_GROUP
-type: 0
-box: 0 10 10 0
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_ROUND3DBUTTON
-type: RADIO_BUTTON
-box: 250 220 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_RIGHT
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: HSV
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: radio_hsv
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_ROUND3DBUTTON
-type: RADIO_BUTTON
-box: 335 220 30 30
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_RIGHT
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: RGB
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: radio_rgb
-callback: C_FormBaseInputCB
-argument: 0
-	value: 1
-
---------------------
-class: FL_END_GROUP
-type: 0
-box: 0 0 0 0
-boxtype: FL_NO_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_CENTER
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: 
-callback: 
-argument: 
-
---------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 250 250 150 30
-boxtype: FL_DOWN_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: text_color_values
-callback: 
-argument: 
-
---------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 250 285 60 30
+box: 245 155 60 30
 boxtype: FL_BORDER_BOX
 colors: FL_WHITE FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1045,7 +841,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 310 285 90 30
+box: 310 155 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1238,13 +1034,13 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label:
-shortcut:
+label: 
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name:
-callback:
-argument:
+name: 
+callback: 
+argument: 
 
 --------------------
 class: FL_INPUT
@@ -1257,7 +1053,7 @@ style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Real name : |#R
-shortcut:
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_user_name
@@ -1275,13 +1071,13 @@ style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: Email address : |#E
-shortcut:
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_user_email
 callback: C_FormBaseInputCB
 argument: 0
- 
+
 =============== FORM ===============
 Name: form_preferences_spelloptions
 Width: 450
