@@ -18,6 +18,8 @@
 #pragma interface
 #endif
 
+#include <sigc++/signal_system.h>
+
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Signal0;
 #endif
