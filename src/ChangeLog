@@ -1,3 +1,18 @@
+2002-01-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* WorkArea.C (WorkArea): initialize the scrollbar bounds.
+
+	* DepTable.C (sumchange): do not evaluate end() on every iteratrion.
+	(extchanged): ditto
+	(ext_exist): ditto
+	(remove_files_with_extension): ditto
+	(remove_file): ditto
+	(write): ditto
+
+	* BufferView_pimpl.C (updateScrollbar): do the right thing if the
+	document is smaller than the work area height. Do not initialize
+	static variables to 0.
+
 2002-01-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyx_gui.C (init): give the toolbar tooltips a normal font.

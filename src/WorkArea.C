@@ -156,7 +156,8 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 	fl_set_object_gravity(obj, NorthEastGravity, SouthEastGravity);
 	obj->u_vdata = this;
 	fl_set_object_callback(obj, C_WorkArea_scroll_cb, 0);
-
+	setScrollbarBounds(0.0, 0.0);
+	
 	///
 	/// The free object
 

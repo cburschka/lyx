@@ -405,17 +405,26 @@ void BufferView::Pimpl::updateScrollbar()
 	}
 
 	long const text_height = bv_->text->height;
+	long const work_height = workarea_.height();
 
+	if (text_height <= work_height) {
+		workarea_.setScrollbarBounds(0.0, 0.0);
+		current_scrollbar_value = bv_->text->first;
+		workarea_.setScrollbar(current_scrollbar_value, 1.0);
+		return;
+	}
+	
 	double const lineh = bv_->text->defaultHeight();
 	double const slider_size =
 		(text_height == 0) ? 1.0 : 1.0 / double(text_height);
-
-	static long old_text_height = 0;
-	static double old_lineh = 0;
-	static double old_slider_size = 0;
+	
+	static long old_text_height;
+	static double old_lineh;
+	static double old_slider_size;
 
 	if (text_height != old_text_height) {
-		workarea_.setScrollbarBounds(0, text_height - workarea_.height());
+		workarea_.setScrollbarBounds(0.0,
+					     text_height - work_height);
 		old_text_height = text_height;
 	}
 	if (lineh != old_lineh) {
@@ -437,6 +446,7 @@ void BufferView::Pimpl::scrollCB(double value)
 	if (!buffer_) return;
 
 	current_scrollbar_value = long(value);
+
 	if (current_scrollbar_value < 0)
 		current_scrollbar_value = 0;
    
@@ -570,11 +580,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 	bv_->text->setSelection(bv_);
 	screen_->toggleToggle(bv_->text, bv_);
 	fitCursor();
-#if 0
-	screen_->showCursor(bv_->text, bv_);
-#else
 	showCursor();
-#endif
 }
 
 
@@ -630,11 +636,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	screen_->toggleSelection(bv_->text, bv_);
 	bv_->text->clearSelection();
 	bv_->text->fullRebreak(bv_);
-#if 0
-	screen_->update(bv_->text, bv_);
-#else
 	update();
-#endif
 	updateScrollbar();
 	
 	// Single left click in math inset?
@@ -740,7 +742,8 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 
 void BufferView::Pimpl::selectionRequested()
 {
-	string const sel(bv_->getLyXText()->selectionAsString(bv_->buffer(), false)); 
+	string const sel(bv_->getLyXText()->selectionAsString(bv_->buffer(),
+							      false)); 
 	if (!sel.empty()) {
 		workarea_.putClipboard(sel);
 	}
@@ -864,7 +867,8 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 }
 
 
-Box BufferView::Pimpl::insetDimensions(LyXText const & text, LyXCursor const & cursor) const
+Box BufferView::Pimpl::insetDimensions(LyXText const & text,
+				       LyXCursor const & cursor) const
 {
 	Paragraph /*const*/ & par = *cursor.par();
 	pos_type const pos = cursor.pos();
@@ -887,7 +891,9 @@ Box BufferView::Pimpl::insetDimensions(LyXText const & text, LyXCursor const & c
 }
  
  
-Inset * BufferView::Pimpl::checkInset(LyXText const & text, LyXCursor const & cursor, int & x, int & y) const
+Inset * BufferView::Pimpl::checkInset(LyXText const & text,
+				      LyXCursor const & cursor,
+				      int & x, int & y) const
 {
 	pos_type const pos(cursor.pos());
 	Paragraph /*const*/ & par(*cursor.par());

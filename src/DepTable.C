@@ -34,23 +34,26 @@
 using std::make_pair;
 using std::ofstream;
 using std::ifstream;
+using std::flush;
 using std::endl;
 
-inline bool DepTable::dep_info::changed() const
+
+inline
+bool DepTable::dep_info::changed() const
 {
 	return crc_prev != crc_cur && crc_cur != 0;
 }
 
-void DepTable::insert(string const & fi,
-		      bool upd)
+
+void DepTable::insert(string const & fi, bool upd)
 {
 	// not quite sure if this is the correct place for MakeAbsPath
-	string f = MakeAbsPath(fi);
+	string const f = MakeAbsPath(fi);
 	if (deplist.find(f) == deplist.end()) {
 		dep_info di;
 		di.crc_prev = 0;
 		if (upd) {
-			lyxerr[Debug::DEPEND] << " CRC..." << std::flush;
+			lyxerr[Debug::DEPEND] << " CRC..." << flush;
 			di.crc_cur = lyx::sum(f);
 			lyxerr[Debug::DEPEND] << "done." << endl;
 			struct stat f_info;
@@ -77,7 +80,7 @@ void DepTable::update()
 		dep_info &di = itr->second;
 
 		struct stat f_info;
-		if (0 == stat(itr->first.c_str(), &f_info) ) {
+		if (stat(itr->first.c_str(), &f_info) == 0) {
 			if (di.mtime_cur == f_info.st_mtime) {
 				di.crc_prev = di.crc_cur;
 				lyxerr[Debug::DEPEND] << itr->first << " same mtime";
@@ -113,10 +116,10 @@ void DepTable::update()
 
 bool DepTable::sumchange() const
 {
-	for (DepList::const_iterator cit = deplist.begin();
-	     cit != deplist.end();
-	     ++cit) {
-		if ((*cit).second.changed()) return true;
+	DepList::const_iterator cit = deplist.begin();
+	DepList::const_iterator end = deplist.end();
+	for (; cit != end; ++cit) {
+		if (cit->second.changed()) return true;
 	}
 	return false;
 }
@@ -125,7 +128,7 @@ bool DepTable::sumchange() const
 bool DepTable::haschanged(string const & f) const
 {
 	// not quite sure if this is the correct place for MakeAbsPath
-	string fil = MakeAbsPath(f);
+	string const fil = MakeAbsPath(f);
 	DepList::const_iterator cit = deplist.find(fil);
 	if (cit != deplist.end()) {
 		if (cit->second.changed())
@@ -137,9 +140,9 @@ bool DepTable::haschanged(string const & f) const
 
 bool DepTable::extchanged(string const & ext) const
 {
-	for (DepList::const_iterator cit = deplist.begin();
-	     cit != deplist.end();
-	     ++cit) {
+	DepList::const_iterator cit = deplist.begin();
+	DepList::const_iterator end = deplist.end();
+	for (; cit != end; ++cit) {
 		if (suffixIs(cit->first, ext)) {
 			if (cit->second.changed())
 				return true;
@@ -151,15 +154,16 @@ bool DepTable::extchanged(string const & ext) const
 
 bool DepTable::ext_exist(const string& ext ) const
 {
-	for (DepList::const_iterator cit = deplist.begin();
-		cit != deplist.end(); ++cit )  {
-		
-		if ( suffixIs(cit->first, ext) ) {
+	DepList::const_iterator cit = deplist.begin();
+	DepList::const_iterator end = deplist.end();
+	for (; cit != end; ++cit ) {
+		if (suffixIs(cit->first, ext)) {
 			return true;
 		}
 	}
 	return false;
 }
+
 
 bool DepTable::exist(string const & fil) const
 {
@@ -170,15 +174,18 @@ bool DepTable::exist(string const & fil) const
 void DepTable::remove_files_with_extension(string const & suf)
 {
 	DepList::iterator cit = deplist.begin();
-	while (cit != deplist.end()) {
+	DepList::iterator end = deplist.end();
+	while (cit != end) {
 		if (suffixIs(cit->first, suf)) {
-			// Can't erase the current iterator, but we can increment and then erase.
-			// deplist is a map so only the erased iterator is invalidated.
+			// Can't erase the current iterator, but we
+			// can increment and then erase.
+			// Deplist is a map so only the erased
+			// iterator is invalidated.
 			DepList::iterator doomed = cit++;
 			deplist.erase(doomed);
 			continue;
 		}
-		cit++;
+		++cit;
 	}
 }
 
@@ -186,15 +193,18 @@ void DepTable::remove_files_with_extension(string const & suf)
 void DepTable::remove_file(string const & filename)
 {
 	DepList::iterator cit = deplist.begin();
-	while (cit != deplist.end()) {
+	DepList::iterator end = deplist.end();
+	while (cit != end) {
 		if (OnlyFilename(cit->first) == filename) {
-			// Can't erase the current iterator, but we can increment and then erase.
-			// deplist is a map so only the erased iterator is invalidated.
+			// Can't erase the current iterator, but we
+			// can increment and then erase.
+			// deplist is a map so only the erased
+			// iterator is invalidated.
 			DepList::iterator doomed = cit++;
 			deplist.erase(doomed);
 			continue;
 		}
-		cit++;
+		++cit;
 	}
 }
 
@@ -202,10 +212,12 @@ void DepTable::remove_file(string const & filename)
 void DepTable::write(string const & f) const
 {
 	ofstream ofs(f.c_str());
-	for (DepList::const_iterator cit = deplist.begin();
-	     cit != deplist.end(); ++cit) {
+	DepList::const_iterator cit = deplist.begin();
+	DepList::const_iterator end = deplist.end();
+	for (; cit != end; ++cit) {
 		if (lyxerr.debugging(Debug::DEPEND)) {
-			// Store the second (most recently calculated) CRC value.
+			// Store the second (most recently calculated)
+			// CRC value.
 			// The older one is effectively set to 0 upon re-load.
 			lyxerr << "Write dep: "
 			       << cit->first << " "
