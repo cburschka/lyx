@@ -66,7 +66,7 @@ InsetERT::InsetERT(BufferParams const & bp, bool collapsed)
 
 
 InsetERT::InsetERT(InsetERT const & in)
-	: InsetCollapsable(in), status_(in.status_)
+	: InsetCollapsable(in)
 {
 	init();
 }
@@ -119,12 +119,12 @@ void InsetERT::read(Buffer const & buf, LyXLex & lex)
 			string const tmp_token = lex.getString();
 
 			if (tmp_token == "Inlined") {
-				status(Inlined);
+				status_ = Inlined;
 			} else if (tmp_token == "Collapsed") {
-				status(Collapsed);
+				status_ = Collapsed;
 			} else {
 				// leave this as default!
-				status(Open);
+				status_ = Open;
 			}
 
 			token_found = true;
@@ -154,9 +154,9 @@ void InsetERT::read(Buffer const & buf, LyXLex & lex)
 
 	if (!token_found) {
 		if (isOpen())
-			status(Open);
+			status_ = Open;
 		else
-			status(Collapsed);
+			status_ = Collapsed;
 	}
 	setButtonLabel();
 }
@@ -228,16 +228,10 @@ void InsetERT::updateStatus(bool swap) const
 {
 	if (status_ != Inlined) {
 		if (isOpen())
-			status(swap ? Collapsed : Open);
+			status_ = swap ? Collapsed : Open;
 		else
-			status(swap ? Open : Collapsed);
+			status_ = swap ? Open : Collapsed;
 	}
-}
-
-
-InsetOld::EDITABLE InsetERT::editable() const
-{
-	return (status_ == Collapsed) ? IS_EDITABLE : HIGHLY_EDITABLE;
 }
 
 
@@ -411,9 +405,7 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetERT::ERTStatus status_;
 		InsetERTMailer::string2params(cmd.argument, status_);
-		status(status_);
 		bv->update();
 		return DispatchResult(true, true);
 	}
@@ -457,24 +449,22 @@ void InsetERT::setButtonLabel() const
 }
 
 
+bool InsetERT::insetAllowed(InsetOld::Code code) const
+{
+	return code == InsetOld::NEWLINE_CODE;
+}
+
+
 void InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	setButtonLabel();
-	if (inlined())
-		inset.metrics(mi, dim);
-	else
-		InsetCollapsable::metrics(mi, dim);
-	// Make it stand out on its own as it is code, not part of running
-	// text:
-	if (isOpen() && !inlined())
-		dim.wid = mi.base.textwidth;
+	InsetCollapsable::metrics(mi, dim);
 	dim_ = dim;
 }
 
 
 void InsetERT::draw(PainterInfo & pi, int x, int y) const
 {
-	InsetCollapsable::draw(pi, x, y, inlined());
+	InsetCollapsable::draw(pi, x, y);
 }
 
 
@@ -489,25 +479,10 @@ void InsetERT::setLatexFont(BufferView * /*bv*/)
 }
 
 
-void InsetERT::status(ERTStatus const st) const
+void InsetERT::setStatus(CollapseStatus st)
 {
-	if (st == status_)
-		return;
-
 	status_ = st;
-
-	switch (st) {
-	case Inlined:
-		break;
-	case Open:
-		setCollapsed(false);
-		setButtonLabel();
-		break;
-	case Collapsed:
-		setCollapsed(true);
-		setButtonLabel();
-		break;
-	}
+	setButtonLabel();
 }
 
 
@@ -515,22 +490,6 @@ bool InsetERT::showInsetDialog(BufferView * bv) const
 {
 	InsetERTMailer(const_cast<InsetERT &>(*this)).showDialog(bv);
 	return true;
-}
-
-
-void InsetERT::open()
-{
-	if (!isOpen())
-		status(Open);
-}
-
-
-void InsetERT::close() const
-{
-	if (status_ == Collapsed || status_ == Inlined)
-		return;
-
-	status(Collapsed);
 }
 
 
@@ -556,9 +515,9 @@ string const InsetERTMailer::inset2string(Buffer const &) const
 
 
 void InsetERTMailer::string2params(string const & in,
-				   InsetERT::ERTStatus & status)
+				   InsetCollapsable::InsetCollapsable::CollapseStatus & status)
 {
-	status = InsetERT::Collapsed;
+	status = InsetCollapsable::Collapsed;
 
 	string name;
 	string body = split(in, name, ' ');
@@ -566,11 +525,12 @@ void InsetERTMailer::string2params(string const & in,
 	if (body.empty())
 		return;
 
-	status = static_cast<InsetERT::ERTStatus>(strToInt(body));
+	status = static_cast<InsetCollapsable::CollapseStatus>(strToInt(body));
 }
 
 
-string const InsetERTMailer::params2string(InsetERT::ERTStatus status)
+string const
+InsetERTMailer::params2string(InsetCollapsable::CollapseStatus status)
 {
 	return name_ + ' ' + tostr(status);
 }

@@ -30,12 +30,6 @@ class Language;
 class InsetERT : public InsetCollapsable {
 public:
 	///
-	enum ERTStatus {
-		Open,
-		Collapsed,
-		Inlined
-	};
-	///
 	InsetERT(BufferParams const &, bool collapsed = false);
 	///
 	InsetERT(InsetERT const &);
@@ -57,11 +51,7 @@ public:
 	///
 	bool insertInset(BufferView *, InsetOld *);
 	///
-	bool insetAllowed(InsetOld::Code code) const {
-		return code == InsetOld::NEWLINE_CODE;
-	}
-	///
-	EDITABLE editable() const;
+	bool insetAllowed(InsetOld::Code code) const;
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
@@ -77,29 +67,17 @@ public:
 	///
 	void validate(LaTeXFeatures &) const {}
 	///
-	// these are needed here because of the label/inlined functionallity
-	///
-	bool isOpen() const { return status_ == Open || status_ == Inlined; }
-	///
-	bool inlined() const { return status_ == Inlined; }
-	///
-	ERTStatus status() const { return status_; }
-	///
-	void open();
-	///
-	void close() const;
-	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	/// set the status of the inset
-	void status(ERTStatus const st) const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
 	void getDrawFont(LyXFont &) const;
 	///
 	bool forceDefaultParagraphs(InsetOld const *) const { return true; }
+	///
+	void setStatus(CollapseStatus st);
 protected:
 	///
 	virtual
@@ -128,9 +106,6 @@ private:
 	void edit(BufferView * bv, bool left);
 	///
 	bool allowSpellCheck() const { return false; }
-
-	///
-	mutable ERTStatus status_;
 };
 
 
@@ -147,9 +122,10 @@ public:
 	///
 	virtual std::string const inset2string(Buffer const &) const;
 	///
-	static void string2params(std::string const &, InsetERT::ERTStatus &);
+	static void string2params(std::string const &,
+		InsetCollapsable::CollapseStatus &);
 	///
-	static std::string const params2string(InsetERT::ERTStatus);
+	static std::string const params2string(InsetCollapsable::CollapseStatus);
 private:
 	///
 	static std::string const name_;

@@ -34,6 +34,12 @@ public:
 	static int const TEXT_TO_TOP_OFFSET = 2;
 	///
 	static int const TEXT_TO_BOTTOM_OFFSET = 2;
+	///
+	enum CollapseStatus {
+		Open,
+		Collapsed,
+		Inlined
+	};
 	/// inset is initially collapsed if bool = true
 	InsetCollapsable(BufferParams const &, bool collapsed = false);
 	///
@@ -46,8 +52,6 @@ public:
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	/// draw, either inlined (no button) or collapsed/open
-	void draw(PainterInfo & pi, int x, int y, bool inlined) const;
 	///
 	bool hitButton(FuncRequest const &) const;
 	///
@@ -55,7 +59,7 @@ public:
 	///
 	EDITABLE editable() const;
 	/// can we go further down on mouse click?
-	bool descendable() const { return isOpen(); }
+	bool descendable() const;
 	///
 	bool insertInset(BufferView *, InsetOld * inset);
 	///
@@ -101,19 +105,23 @@ public:
 	///
 	LyXText * getText(int) const;
 	///
-	bool display() const { return isOpen(); }
+	bool isOpen() const { return status_ == Open || status_ == Inlined; }
 	///
-	bool isOpen() const;
+	bool inlined() const { return status_ == Inlined; }
+	///
+	CollapseStatus status() const { return status_; }
 	///
 	void open();
 	///
-	void close() const;
+	void close();
 	///
 	void markErased();
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 	///
 	void setBackgroundColor(LColor_color);
+	///
+	virtual void setStatus(CollapseStatus st);
 
 protected:
 	///
@@ -128,8 +136,6 @@ protected:
 	void draw_collapsed(PainterInfo & pi, int x, int y) const;
 	///
 	int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
-	/// Should be non-const...
-	void setCollapsed(bool) const;
 	///
 	Box const & buttonDim() const;
 	///
@@ -146,9 +152,9 @@ private:
 public:
 	///
 	mutable InsetText inset;
-private:
+protected:
 	///
-	mutable bool collapsed_;
+	mutable CollapseStatus status_;
 	///
 	LyXFont labelfont_;
 	///

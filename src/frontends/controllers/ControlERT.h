@@ -23,9 +23,9 @@ public:
 	///
 	ControlERT(Dialog &);
 	///
-	InsetERT::ERTStatus status() const { return status_; }
+	InsetCollapsable::CollapseStatus status() const { return status_; }
 	///
-	void setStatus(InsetERT::ERTStatus status) { status_ = status; }
+	void setStatus(InsetCollapsable::CollapseStatus status) { status_ = status; }
 	///
 	virtual bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
@@ -36,7 +36,7 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 private:
 	///
-	InsetERT::ERTStatus status_;
+	InsetCollapsable::CollapseStatus status_;
 };
 
 #endif

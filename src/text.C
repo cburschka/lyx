@@ -282,6 +282,7 @@ int LyXText::leftMargin(ParagraphList::iterator pit, pos_type pos) const
 		break;
 
 	case MARGIN_RIGHT_ADDRESS_BOX: {
+#if 0
 		// ok, a terrible hack. The left margin depends on the widest
 		// row in this paragraph.
 		RowList::iterator rit = pit->rows.begin();
@@ -294,6 +295,9 @@ int LyXText::leftMargin(ParagraphList::iterator pit, pos_type pos) const
 		x += font_metrics::signedWidth(layout->leftmargin,
 			tclass.defaultfont());
 		x += minfill;
+#endif
+		// also wrong, but much shorter.
+		x += textwidth_ / 2;
 		break;
 	}
 	}
@@ -1620,7 +1624,7 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	// final dimension
 	dim.asc = firstRow()->ascent_of_text();
 	dim.des = height - dim.asc;
-	dim.wid = std::max(mi.base.textwidth, int(width));
+	dim.wid = width;
 }
 
 

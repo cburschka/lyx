@@ -237,7 +237,7 @@ public:
 	/// open the inset
 	virtual void open() {}
 	/// close the inset
-	virtual void close() const {}
+	virtual void close() {}
 	// should this inset be handled like a normal charater
 	virtual bool isChar() const { return false; }
 	// is this equivalent to a letter?

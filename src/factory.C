@@ -231,9 +231,9 @@ InsetOld * createInset(FuncRequest const & cmd)
 			return new InsetCitation(icp);
 
 		} else if (name == "ert") {
-			InsetERT::ERTStatus s;
-			InsetERTMailer::string2params(cmd.argument, s);
-			return new InsetERT(params, s);
+			InsetCollapsable::CollapseStatus st;
+			InsetERTMailer::string2params(cmd.argument, st);
+			return new InsetERT(params, st);
 
 		} else if (name == "external") {
 			Buffer const & buffer = *cmd.view()->buffer();
