@@ -1,11 +1,15 @@
+2002-12-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* QAbout.C (build_dialog): use old over-eager version for 1.3.0.
+
 2002-12-09  John Levon  <levon@movementarian.org>
 
 	* ui/*ModuleBase.ui: some capitalisation fixes
- 
+
 2002-12-08  John Levon  <levon@movementarian.org>
 
 	* ui/Makefile.am: use uic -tr; fix by Pauli Virtanen
- 
+
 2002-12-08  John Levon  <levon@movementarian.org>
 
 	* ui/QExternalDialog.ui: connect Edit button; fix by
@@ -15,7 +19,7 @@
 
 	* QMathMatrixDialog.C: row/column insert was inverted; fix
 	  by Alfredo Braunstein
- 
+
 2002-12-07  John Levon  <levon@movementarian.org>
 
 	* QDelimiterDialog.C:
@@ -23,11 +27,11 @@
 	* QMathDialog.C:
 	* QMathDialog.h:
 	* iconpalette.h: fix connections for Qt 3, hopefully
- 
+
 2002-12-05  John Levon  <levon@movementarian.org>
 
 	* QContentPane.C: set I-beam cursor
- 
+
 2002-11-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* qlkey.h (string_to_qkey): Add many missing entries
@@ -38,7 +42,7 @@
 	* qt_helpers.C:
 	* QDocument.h:
 	* QDocument.C: move methods below to helpers
- 
+
 2002-11-03  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* QDocument.C: new methods widgetsToLength, lengthToWidgets.
@@ -47,12 +51,12 @@
 2002-12-03  John Levon  <levon@movementarian.org>
 
 	* QIncludeDialog.C: another fix
- 
+
 2002-12-03  John Levon  <levon@movementarian.org>
 
 	* ui/QIncludeDialog.ui:
 	* QInclude.C: support preview()
- 
+
 2002-12-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* several files: ws changes

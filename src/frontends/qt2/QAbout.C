@@ -56,7 +56,7 @@ void QAbout::build_dialog()
 	dialog_->versionLA->setText(controller().getVersion().c_str());
 
 	// The code below should depend on a autoconf test. (Lgb)
-#if 0
+#if 1
 	// There are a lot of buggy stringstream implementations..., but the
 	// code below will work on all of them (I hope). The drawback with
 	// this solutions os the extra copying. (Lgb)
