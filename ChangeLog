@@ -1,5 +1,11 @@
 2000-11-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* configure.in (AC_OUTPUT): don't output src/xtl/Makefile
+
+	* src/lyx_sendfax.[Ch]  src/lyx_sendfax_main.C: delete files
+
+2000-11-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
 	* src/version.h: set back to 1.1.6cvs
 
 2000-11-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
