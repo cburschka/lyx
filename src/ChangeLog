@@ -1,3 +1,11 @@
+2005-01-20  Angus Leeming  <leeming@lyx.org>
+
+	* lyxfont.C (setLyXFamily, setLyXSeries, setLyXShape, setLyXSize) 
+	(setLyXMisc): (char string literal) != (char string literal) is
+	performing a comparison on the addresses. Convert one operand
+	explicitly to string to guarantee expected behaviour.
+	From MSVC warning.
+
 2005-01-20  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
 
 	* buffer.C:
