@@ -409,12 +409,14 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		updateLocal(bv, true);
 		break;
 
+	case LFUN_DELETE_WORD_BACKWARD:
 	case LFUN_BACKSPACE:
 		bv->lockedInsetStoreUndo(Undo::DELETE);
 		mathcursor->backspace();
 		bv->updateInset(this, true);
 		break;
 
+	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE:
 		bv->lockedInsetStoreUndo(Undo::DELETE);
 		mathcursor->erase();
