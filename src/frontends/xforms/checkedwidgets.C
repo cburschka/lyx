@@ -54,11 +54,11 @@ void setWidget(bool valid, FL_OBJECT * input, FL_OBJECT * label)
 		fl_set_object_lcol(input, lcol);
 	}
 
-	// set background color of input widget
-	FL_COLOR const icol1 = valid ? FL_INPUT_COL1 : alert_col;
-	FL_COLOR const icol2 = valid ? FL_INPUT_COL2 : alert_col;
-	if (input->col1 != icol1 || input->col2 != icol2) {
-		fl_set_object_color(input, icol1, icol2);
+	// Reflect the validity of the data in the background color of the
+	// input widget only when this widget is not being edited.
+	FL_COLOR const icol1 = valid ? FL_COL1 : alert_col;
+	if (input->col1 != icol1) {
+		fl_set_object_color(input, icol1, FL_MCOL);
 	}
 }
  

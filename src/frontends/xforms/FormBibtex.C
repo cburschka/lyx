@@ -26,8 +26,6 @@
 
 #include "helper_funcs.h"
 #include "gettext.h"
-#include "debug.h"
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
 #include "support/lyxalgo.h"

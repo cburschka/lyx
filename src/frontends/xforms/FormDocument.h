@@ -61,8 +61,6 @@ private:
 	virtual FL_FORM * form() const;
 
 	///
-	bool CheckDocumentInput(FL_OBJECT * ob, long);
-	///
 	void ChoiceBulletSize(FL_OBJECT * ob, long);
 	///
 	void InputBulletLaTeX(FL_OBJECT * ob, long);

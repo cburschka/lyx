@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Jürgen Vigna
+ * \author Rob Lahaye
  *
  * Full author contact details are available in file CREDITS
  */
@@ -36,6 +37,7 @@
 #include "CutAndPaste.h"
 #include "bufferview_funcs.h"
 #include "xforms_helpers.h"
+#include "checkedwidgets.h"
 #include "debug.h"
 #include "input_validators.h" // fl_unsigned_float_filter
 #include "helper_funcs.h"
@@ -57,11 +59,10 @@ using std::vector;
 
 
 FormDocument::FormDocument(LyXView & lv, Dialogs & d)
-	: FormBaseBD(lv, d, _("Document Layout")),
+	: FormBaseBD(lv, d, _("Document Layout"), false),
 	  ActCell(0), Confirmed(0),
 	  current_bullet_panel(0), current_bullet_depth(0), fbullet(0)
-{
-}
+{}
 
 
 void FormDocument::redraw()
@@ -86,8 +87,6 @@ FL_FORM * FormDocument::form() const
 
 void FormDocument::build()
 {
-	int n;
-
 	// the tabbed folder
 	dialog_.reset(build_document(this));
 
@@ -99,81 +98,42 @@ void FormDocument::build()
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_close);
 	bc().setRestore(dialog_->button_restore);
-	bc().addReadOnly (dialog_->button_save_defaults);
-	bc().addReadOnly (dialog_->button_reset_defaults);
-
-	// the document paper form
-	paper_.reset(build_document_paper(this));
-	fl_addto_choice(paper_->choice_papersize,
-			_(" Default | Custom | US letter | US legal "
-			  "| US executive | A3 | A4 | A5 | B3 | B4 | B5 "));
-	fl_addto_choice(paper_->choice_paperpackage,
-			_(" None "
-			  "| Small Margins "
-			  "| Very small Margins "
-			  "| Very wide Margins "));
-
-	fl_set_input_return(paper_->input_custom_width,  FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_custom_height, FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_top_margin,    FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_bottom_margin, FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_inner_margin,  FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_outer_margin,  FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_head_height,   FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_head_sep,      FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_foot_skip,     FL_RETURN_CHANGED);
-
-	setPrehandler(paper_->input_custom_width);
-	setPrehandler(paper_->input_custom_height);
-	setPrehandler(paper_->input_top_margin);
-	setPrehandler(paper_->input_bottom_margin);
-	setPrehandler(paper_->input_inner_margin);
-	setPrehandler(paper_->input_outer_margin);
-	setPrehandler(paper_->input_head_height);
-	setPrehandler(paper_->input_head_sep);
-	setPrehandler(paper_->input_foot_skip);
-
-	// Create the contents of the unit choices
-	// Don't include the "%" terms...
-	vector<string> units_vec = getLatexUnits();
-	vector<string>::iterator ret =
-		std::remove_if(units_vec.begin(),
-			       units_vec.end(),
-			       bind2nd(contains_functor(), "%"));
-	units_vec.erase(ret, units_vec.end());
-
-	string units = getStringFromVector(units_vec, "|");
-
-	fl_addto_choice(paper_->choice_custom_width_units,  units.c_str());
-	fl_addto_choice(paper_->choice_custom_height_units, units.c_str());
-	fl_addto_choice(paper_->choice_top_margin_units,    units.c_str());
-	fl_addto_choice(paper_->choice_bottom_margin_units, units.c_str());
-	fl_addto_choice(paper_->choice_inner_margin_units,  units.c_str());
-	fl_addto_choice(paper_->choice_outer_margin_units,  units.c_str());
-	fl_addto_choice(paper_->choice_head_height_units,   units.c_str());
-	fl_addto_choice(paper_->choice_head_sep_units,      units.c_str());
-	fl_addto_choice(paper_->choice_foot_skip_units,     units.c_str());
-
-	bc().addReadOnly (paper_->choice_paperpackage);
-	bc().addReadOnly (paper_->radio_portrait);
-	bc().addReadOnly (paper_->radio_landscape);
-	bc().addReadOnly (paper_->choice_papersize);
-	bc().addReadOnly (paper_->check_use_geometry);
-	bc().addReadOnly (paper_->input_custom_width);
-	bc().addReadOnly (paper_->input_custom_height);
-	bc().addReadOnly (paper_->input_top_margin);
-	bc().addReadOnly (paper_->input_bottom_margin);
-	bc().addReadOnly (paper_->input_inner_margin);
-	bc().addReadOnly (paper_->input_outer_margin);
-	bc().addReadOnly (paper_->input_head_height);
-	bc().addReadOnly (paper_->input_head_sep);
-	bc().addReadOnly (paper_->input_foot_skip);
 
 	// the document class form
 	class_.reset(build_document_class(this));
 
+	// disable for read-only documents
+	bc().addReadOnly(class_->radio_doc_indent);
+	bc().addReadOnly(class_->radio_doc_skip);
+	bc().addReadOnly(class_->choice_doc_pagestyle);
+	bc().addReadOnly(class_->choice_doc_fonts);
+	bc().addReadOnly(class_->choice_doc_fontsize);
+	bc().addReadOnly(class_->radio_doc_sides_one);
+	bc().addReadOnly(class_->radio_doc_sides_two);
+	bc().addReadOnly(class_->radio_doc_columns_one);
+	bc().addReadOnly(class_->radio_doc_columns_two);
+	bc().addReadOnly(class_->input_doc_extra);
+	bc().addReadOnly(class_->input_doc_skip);
+	bc().addReadOnly(class_->choice_doc_skip);
+	bc().addReadOnly(class_->choice_doc_spacing);
+	bc().addReadOnly(class_->input_doc_spacing);
+
+	// check validity of "length + unit" input
+	addCheckedGlueLength(bc(), class_->input_doc_skip,
+			     class_->choice_doc_skip);
+
+	// trigger an input event for cut&paste with middle mouse button.
+	setPrehandler(class_->input_doc_extra);
+	setPrehandler(class_->input_doc_skip);
+	setPrehandler(class_->input_doc_spacing);
+
+	fl_set_input_return(class_->input_doc_extra, FL_RETURN_CHANGED);
+	fl_set_input_return(class_->input_doc_skip, FL_RETURN_CHANGED);
+	fl_set_input_return(class_->input_doc_spacing, FL_RETURN_CHANGED);
+
 	FL_OBJECT * obj;
-	// The language is a combo-box and has to be inserted manually
+
+	// the class list is a combo-box and has to be inserted manually
 	obj = class_->choice_doc_class;
 	fl_deactivate_object(obj);
 	fl_addto_form(class_->form);
@@ -190,44 +150,115 @@ void FormDocument::build()
 	fl_addto_choice(class_->choice_doc_spacing,
 			_(" Single | OneHalf | Double | Custom "));
 	fl_addto_choice(class_->choice_doc_fontsize, "default|10|11|12");
-	for (n=0; tex_fonts[n][0]; ++n) {
+	for (int n = 0; tex_fonts[n][0]; ++n) {
 		fl_addto_choice(class_->choice_doc_fonts,tex_fonts[n]);
 	}
+
+	// Create the contents of the unit choices; don't include the
+	// "%" terms...
+	vector<string> units_vec = getLatexUnits();
+	vector<string>::iterator ret =
+		std::remove_if(units_vec.begin(),
+			       units_vec.end(),
+			       bind2nd(contains_functor(), "%"));
+	units_vec.erase(ret, units_vec.end());
+
+	string const units = getStringFromVector(units_vec, "|");
+
 	fl_addto_choice(class_->choice_doc_pagestyle,
 			"default|empty|plain|headings|fancy");
 	fl_addto_choice(class_->choice_doc_skip,
 			_(" Smallskip | Medskip | Bigskip | Length "));
-	fl_addto_choice(class_->choice_default_skip_units,  units.c_str());
-	fl_set_input_return(class_->input_doc_extra, FL_RETURN_CHANGED);
-	fl_set_input_return(class_->input_doc_skip, FL_RETURN_CHANGED);
-	fl_set_input_return(class_->input_doc_spacing, FL_RETURN_CHANGED);
-
-	setPrehandler(class_->input_doc_extra);
-	setPrehandler(class_->input_doc_skip);
-	setPrehandler(class_->input_doc_spacing);
+	fl_addto_choice(class_->choice_doc_skip_units,  units.c_str());
 
 	// Set input filters on doc spacing to make it accept only
 	// unsigned numbers.
-	fl_set_input_filter(class_->input_doc_spacing, fl_unsigned_float_filter);
+	fl_set_input_filter(class_->input_doc_spacing,
+			    fl_unsigned_float_filter);
 
-	bc().addReadOnly (class_->radio_doc_indent);
-	bc().addReadOnly (class_->radio_doc_skip);
+	// disable for read-only documents
+	bc().addReadOnly(dialog_->button_save_defaults);
+	bc().addReadOnly(dialog_->button_reset_defaults);
 
-	bc().addReadOnly (class_->choice_doc_pagestyle);
-	bc().addReadOnly (class_->choice_doc_fonts);
-	bc().addReadOnly (class_->choice_doc_fontsize);
-	bc().addReadOnly (class_->radio_doc_sides_one);
-	bc().addReadOnly (class_->radio_doc_sides_two);
-	bc().addReadOnly (class_->radio_doc_columns_one);
-	bc().addReadOnly (class_->radio_doc_columns_two);
-	bc().addReadOnly (class_->input_doc_extra);
-	bc().addReadOnly (class_->input_doc_skip);
-	bc().addReadOnly (class_->choice_doc_skip);
-	bc().addReadOnly (class_->choice_doc_spacing);
-	bc().addReadOnly (class_->input_doc_spacing);
+	// the document paper form
+	paper_.reset(build_document_paper(this));
+
+	// disable for read-only documents
+	bc().addReadOnly(paper_->choice_paperpackage);
+	bc().addReadOnly(paper_->radio_portrait);
+	bc().addReadOnly(paper_->radio_landscape);
+	bc().addReadOnly(paper_->choice_papersize);
+	bc().addReadOnly(paper_->check_use_geometry);
+	bc().addReadOnly(paper_->input_custom_width);
+	bc().addReadOnly(paper_->input_custom_height);
+	bc().addReadOnly(paper_->input_top_margin);
+	bc().addReadOnly(paper_->input_bottom_margin);
+	bc().addReadOnly(paper_->input_inner_margin);
+	bc().addReadOnly(paper_->input_outer_margin);
+	bc().addReadOnly(paper_->input_head_height);
+	bc().addReadOnly(paper_->input_head_sep);
+	bc().addReadOnly(paper_->input_foot_skip);
+
+	// check validity of "length + unit" input
+	addCheckedGlueLength(bc(), paper_->input_custom_width);
+	addCheckedGlueLength(bc(), paper_->input_custom_height);
+	addCheckedGlueLength(bc(), paper_->input_top_margin);
+	addCheckedGlueLength(bc(), paper_->input_bottom_margin);
+	addCheckedGlueLength(bc(), paper_->input_inner_margin);
+	addCheckedGlueLength(bc(), paper_->input_outer_margin);
+	addCheckedGlueLength(bc(), paper_->input_head_height);
+	addCheckedGlueLength(bc(), paper_->input_head_sep);
+	addCheckedGlueLength(bc(), paper_->input_foot_skip);
+
+	// trigger an input event for cut&paste with middle mouse button.
+	setPrehandler(paper_->input_custom_width);
+	setPrehandler(paper_->input_custom_height);
+	setPrehandler(paper_->input_top_margin);
+	setPrehandler(paper_->input_bottom_margin);
+	setPrehandler(paper_->input_inner_margin);
+	setPrehandler(paper_->input_outer_margin);
+	setPrehandler(paper_->input_head_height);
+	setPrehandler(paper_->input_head_sep);
+	setPrehandler(paper_->input_foot_skip);
+
+	fl_set_input_return(paper_->input_custom_width,  FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_custom_height, FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_top_margin,    FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_bottom_margin, FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_inner_margin,  FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_outer_margin,  FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_head_height,   FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_head_sep,      FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_foot_skip,     FL_RETURN_CHANGED);
+
+	fl_addto_choice(paper_->choice_papersize,
+			_(" Default | Custom | US letter | US legal "
+			  "| US executive | A3 | A4 | A5 | B3 | B4 | B5 "));
+	fl_addto_choice(paper_->choice_paperpackage,
+			_(" None "
+			  "| Small Margins "
+			  "| Very small Margins "
+			  "| Very wide Margins "));
+
+	fl_addto_choice(paper_->choice_custom_width_units,  units.c_str());
+	fl_addto_choice(paper_->choice_custom_height_units, units.c_str());
+	fl_addto_choice(paper_->choice_top_margin_units,    units.c_str());
+	fl_addto_choice(paper_->choice_bottom_margin_units, units.c_str());
+	fl_addto_choice(paper_->choice_inner_margin_units,  units.c_str());
+	fl_addto_choice(paper_->choice_outer_margin_units,  units.c_str());
+	fl_addto_choice(paper_->choice_head_height_units,   units.c_str());
+	fl_addto_choice(paper_->choice_head_sep_units,      units.c_str());
+	fl_addto_choice(paper_->choice_foot_skip_units,     units.c_str());
 
 	// the document language form
 	language_.reset(build_document_language(this));
+
+	// disable for read-only documents
+	bc().addReadOnly(language_->choice_inputenc);
+	bc().addReadOnly(language_->choice_quotes_language);
+	bc().addReadOnly(language_->radio_single);
+	bc().addReadOnly(language_->radio_double);
+
 	fl_addto_choice(language_->choice_inputenc,
 			"default|auto|latin1|latin2|latin3|latin4|latin5|latin9"
 			"|koi8-r|koi8-u|cp866|cp1251|iso88595|pt154");
@@ -257,51 +288,34 @@ void FormDocument::build()
 			_(" ``text'' | ''text'' | ,,text`` | ,,text'' |"
 			  " «text» | »text« "));
 
-	bc().addReadOnly (language_->choice_inputenc);
-	bc().addReadOnly (language_->choice_quotes_language);
-	bc().addReadOnly (language_->radio_single);
-	bc().addReadOnly (language_->radio_double);
-
 	// the document options form
 	options_.reset(build_document_options(this));
-	fl_set_input_return(options_->input_float_placement, FL_RETURN_CHANGED);
+
+	// disable for read-only documents
+	bc_.addReadOnly(options_->counter_secnumdepth);
+	bc_.addReadOnly(options_->counter_tocdepth);
+	bc_.addReadOnly(options_->check_use_amsmath);
+	bc_.addReadOnly(options_->check_use_natbib);
+	bc_.addReadOnly(options_->choice_citation_format);
+	bc_.addReadOnly(options_->input_float_placement);
+	bc_.addReadOnly(options_->choice_postscript_driver);
+
+	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(options_->input_float_placement);
 
-	fl_set_counter_bounds(options_->counter_secnumdepth,-2,5);
-	fl_set_counter_bounds(options_->counter_tocdepth,-1,5);
-	fl_set_counter_step(options_->counter_secnumdepth,1,1);
-	fl_set_counter_step(options_->counter_tocdepth,1,1);
-	fl_set_counter_precision(options_->counter_secnumdepth, 0);
-	fl_set_counter_precision(options_->counter_tocdepth, 0);
-	for (n=0; tex_graphics[n][0]; ++n) {
+	fl_set_input_return(options_->input_float_placement, FL_RETURN_CHANGED);
+
+	for (int n = 0; tex_graphics[n][0]; ++n) {
 		fl_addto_choice(options_->choice_postscript_driver,
 				tex_graphics[n]);
 	}
 	fl_addto_choice(options_->choice_citation_format,
 			_(" Author-year | Numerical "));
 
-	bc_.addReadOnly (options_->counter_secnumdepth);
-	bc_.addReadOnly (options_->counter_tocdepth);
-	bc_.addReadOnly (options_->check_use_amsmath);
-	bc_.addReadOnly (options_->check_use_natbib);
-	bc_.addReadOnly (options_->choice_citation_format);
-	bc_.addReadOnly (options_->input_float_placement);
-	bc_.addReadOnly (options_->choice_postscript_driver);
-
 	// the document bullets form
 	bullets_.reset(build_document_bullet(this));
-	fl_addto_choice(bullets_->choice_bullet_size,
-			_(" default | tiny | script | footnote | small |"
-			  " normal | large | Large | LARGE | huge | Huge"));
-	fl_set_choice(bullets_->choice_bullet_size, 1);
-	fl_set_input_return(bullets_->input_bullet_latex, FL_RETURN_CHANGED);
-	setPrehandler(bullets_->input_bullet_latex);
-	fl_set_input_maxchars(bullets_->input_bullet_latex, 80);
 
-	string const bmtablefile = LibFileSearch("images", "standard", "xpm");
-	fl_set_bmtable_pixmap_file(bullets_->bmtable_bullet_panel, 6, 6,
-				   bmtablefile.c_str());
-
+	// disable for read-only documents
 	bc_.addReadOnly(bullets_->radio_bullet_depth_1);
 	bc_.addReadOnly(bullets_->radio_bullet_depth_2);
 	bc_.addReadOnly(bullets_->radio_bullet_depth_3);
@@ -312,10 +326,25 @@ void FormDocument::build()
 	bc_.addReadOnly(bullets_->radio_bullet_panel_ding2);
 	bc_.addReadOnly(bullets_->radio_bullet_panel_ding3);
 	bc_.addReadOnly(bullets_->radio_bullet_panel_ding4);
+	bc().addReadOnly(bullets_->bmtable_bullet_panel);
+	bc().addReadOnly(bullets_->choice_bullet_size);
+	bc().addReadOnly(bullets_->input_bullet_latex);
 
-	bc().addReadOnly (bullets_->bmtable_bullet_panel);
-	bc().addReadOnly (bullets_->choice_bullet_size);
-	bc().addReadOnly (bullets_->input_bullet_latex);
+	// trigger an input event for cut&paste with middle mouse button.
+	setPrehandler(bullets_->input_bullet_latex);
+
+	fl_set_input_return(bullets_->input_bullet_latex, FL_RETURN_CHANGED);
+
+	fl_addto_choice(bullets_->choice_bullet_size,
+			_(" default | tiny | script | footnote | small |"
+			  " normal | large | Large | LARGE | huge | Huge"));
+	fl_set_choice(bullets_->choice_bullet_size, 1);
+
+	fl_set_input_maxchars(bullets_->input_bullet_latex, 80);
+
+	string const bmtablefile = LibFileSearch("images", "standard", "xpm");
+	fl_set_bmtable_pixmap_file(bullets_->bmtable_bullet_panel, 6, 6,
+				   bmtablefile.c_str());
 
 	fl_addto_tabfolder(dialog_->tabfolder,_("Document"),
 			   class_->form);
@@ -424,15 +453,19 @@ bool FormDocument::input(FL_OBJECT * ob, long)
 {
 	if (ob == class_->choice_doc_class) {
 		CheckChoiceClass(ob, 0);
+
 	} else if (ob == bullets_->choice_bullet_size) {
 		ChoiceBulletSize(ob, 0);
+
 	} else if (ob == bullets_->input_bullet_latex) {
 		InputBulletLaTeX(ob, 0);
+
 	} else if (ob == bullets_->radio_bullet_depth_1 ||
 		   ob == bullets_->radio_bullet_depth_2 ||
 		   ob == bullets_->radio_bullet_depth_3 ||
 		   ob == bullets_->radio_bullet_depth_4) {
 		BulletDepth(ob);
+
 	} else if (ob == bullets_->radio_bullet_panel_standard ||
 		   ob == bullets_->radio_bullet_panel_maths ||
 		   ob == bullets_->radio_bullet_panel_ding1 ||
@@ -440,45 +473,42 @@ bool FormDocument::input(FL_OBJECT * ob, long)
 		   ob == bullets_->radio_bullet_panel_ding3 ||
 		   ob == bullets_->radio_bullet_panel_ding4) {
 		BulletPanel(ob);
+
 	} else if (ob == bullets_->bmtable_bullet_panel) {
 		BulletBMTable(ob, 0);
-	}
 
-	bool const length_input = fl_get_choice(class_->choice_doc_skip) == 4;
-	if (ob == class_->choice_doc_skip) {
-		setEnabled(class_->input_doc_skip, length_input);
-		setEnabled(class_->choice_default_skip_units, length_input);
-	}
-
-	if (ob == class_->choice_doc_spacing)
+	} else if (ob == class_->choice_doc_spacing) {
 		setEnabled(class_->input_doc_spacing,
 			   fl_get_choice(class_->choice_doc_spacing) == 4);
 
-	bool const skip_used = fl_get_button(class_->radio_doc_skip);
-	if (ob == class_->radio_doc_skip ||
-	    ob == class_->radio_doc_indent) {
+	} else if (ob == class_->radio_doc_skip ||
+		   ob == class_->radio_doc_indent ||
+		   ob == class_->choice_doc_skip) {
+		bool const skip_used = fl_get_button(class_->radio_doc_skip);
 		setEnabled(class_->choice_doc_skip, skip_used);
+
+		bool const length_input =
+			fl_get_choice(class_->choice_doc_skip) == 4;
 		setEnabled(class_->input_doc_skip,
 			   skip_used && length_input);
-		setEnabled(class_->choice_default_skip_units,
+		setEnabled(class_->choice_doc_skip_units,
 			   skip_used && length_input);
+	
 		// Default unit choice is cm if metric, inches if US paper.
 		// If papersize is default, check the lyxrc-settings
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);
-		bool const metric = (paperchoice == 1 && lyxrc.default_papersize > 3)
+		bool const metric = (paperchoice == 1 && lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER)
 			|| paperchoice == 2 || paperchoice > 5;
-		int const default_unit = metric ? 8 : 9;
-		if (rtrim(fl_get_input(class_->input_doc_skip)).empty())
-			fl_set_choice(class_->choice_default_skip_units,
-				      default_unit);
-	}
+		string const default_unit = metric ? "cm" : "in";
+		if (getString(class_->input_doc_skip).empty())
+			fl_set_choice_text(class_->choice_doc_skip_units,
+						default_unit.c_str());
 
-	if (ob == options_->check_use_natbib) {
+	} else if (ob == options_->check_use_natbib) {
 		setEnabled(options_->choice_citation_format,
 			   fl_get_button(options_->check_use_natbib));
-	}
 
-	if (ob == dialog_->button_save_defaults) {
+	} else if (ob == dialog_->button_save_defaults) {
 		BufferParams params;
 		class_apply(params);
 		paper_apply(params);
@@ -487,20 +517,18 @@ bool FormDocument::input(FL_OBJECT * ob, long)
 		bullets_apply(params);
 		params.preamble = lv_.buffer()->params.preamble;
 		saveParamsAsDefault(params);
-	}
 
-	if (ob == dialog_->button_reset_defaults) {
+	} else if (ob == dialog_->button_reset_defaults) {
 		BufferParams params = lv_.buffer()->params;
 		params.textclass = combo_doc_class->get() - 1;
 		params.useClassDefaults();
 		UpdateLayoutDocument(params);
-	}
 
-	if (ob == paper_->radio_landscape)
+	} else if (ob == paper_->radio_landscape) {
 		fl_set_choice(paper_->choice_paperpackage,
 			      BufferParams::PACKAGE_NONE + 1);
 
-	if (ob == paper_->choice_papersize) {
+	} else if (ob == paper_->choice_papersize) {
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);
 		bool const defsize = paperchoice == 1;
 		bool const custom = paperchoice == 2;
@@ -541,75 +569,59 @@ bool FormDocument::input(FL_OBJECT * ob, long)
 
 		// Default unit choice is cm if metric, inches if US paper.
 		// If papersize is default, use the lyxrc-settings
-		bool const metric = (defsize && lyxrc.default_papersize > 3)
+		bool const metric = (defsize && lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER)
 			|| paperchoice == 2 || paperchoice > 5;
-		int const default_unit = metric ? 8 : 9;
-		if (rtrim(fl_get_input(paper_->input_custom_width)).empty())
-			fl_set_choice(paper_->choice_custom_width_units,
-				      default_unit);
-		if (rtrim(fl_get_input(paper_->input_custom_height)).empty())
-			fl_set_choice(paper_->choice_custom_height_units,
-				      default_unit);
-		if (rtrim(fl_get_input(paper_->input_top_margin)).empty())
-			fl_set_choice(paper_->choice_top_margin_units,
-				      default_unit);
-		if (rtrim(fl_get_input(paper_->input_bottom_margin)).empty())
-			fl_set_choice(paper_->choice_bottom_margin_units,
-				      default_unit);
-		if (rtrim(fl_get_input(paper_->input_inner_margin)).empty())
-			fl_set_choice(paper_->choice_inner_margin_units,
-				      default_unit);
-		if (rtrim(fl_get_input(paper_->input_outer_margin)).empty())
-			fl_set_choice(paper_->choice_outer_margin_units,
-				      default_unit);
-		if (rtrim(fl_get_input(paper_->input_head_height)).empty())
-			fl_set_choice(paper_->choice_head_height_units,
-				      default_unit);
-		if (rtrim(fl_get_input(paper_->input_head_sep)).empty())
-			fl_set_choice(paper_->choice_head_sep_units,
-				      default_unit);
-		if (rtrim(fl_get_input(paper_->input_foot_skip)).empty())
-			fl_set_choice(paper_->choice_foot_skip_units,
-				      default_unit);
-	}
+		string const default_unit = metric ? "cm" : "in";
+		if (getString(paper_->input_custom_width).empty())
+			fl_set_choice_text(paper_->choice_custom_width_units,
+					   default_unit.c_str());
+		if (getString(paper_->input_custom_height).empty())
+			fl_set_choice_text(paper_->choice_custom_height_units,
+					   default_unit.c_str());
+		if (getString(paper_->input_top_margin).empty())
+			fl_set_choice_text(paper_->choice_top_margin_units,
+					   default_unit.c_str());
+		if (getString(paper_->input_bottom_margin).empty())
+			fl_set_choice_text(paper_->choice_bottom_margin_units,
+					   default_unit.c_str());
+		if (getString(paper_->input_inner_margin).empty())
+			fl_set_choice_text(paper_->choice_inner_margin_units,
+					   default_unit.c_str());
+		if (getString(paper_->input_outer_margin).empty())
+			fl_set_choice_text(paper_->choice_outer_margin_units,
+					   default_unit.c_str());
+		if (getString(paper_->input_head_height).empty())
+			fl_set_choice_text(paper_->choice_head_height_units,
+					   default_unit.c_str());
+		if (getString(paper_->input_head_sep).empty())
+			fl_set_choice_text(paper_->choice_head_sep_units,
+					   default_unit.c_str());
+		if (getString(paper_->input_foot_skip).empty())
+			fl_set_choice_text(paper_->choice_foot_skip_units,
+					   default_unit.c_str());
 
-	if (ob == paper_->choice_papersize ||
-	    ob == paper_->radio_portrait ||
-	    ob == paper_->radio_landscape) {
+	} else if (ob == paper_->choice_paperpackage &&
+		   fl_get_choice(paper_->choice_paperpackage) != 1) {
 
-		setEnabled(paper_->choice_paperpackage,
-			   //either default papersize (preferences)
-			   //or document papersize has to be A4
-			   (fl_get_choice(paper_->choice_papersize) == 7
-			    || fl_get_choice(paper_->choice_papersize) == 1
-			    && lyxrc.default_papersize == 5)
-			   && fl_get_button(paper_->radio_portrait));
-	}
+		fl_set_button(paper_->check_use_geometry, 0);
+		setEnabled(paper_->input_top_margin,    false);
+		setEnabled(paper_->input_bottom_margin, false);
+		setEnabled(paper_->input_inner_margin,  false);
+		setEnabled(paper_->input_outer_margin,  false);
+		setEnabled(paper_->input_head_height,   false);
+		setEnabled(paper_->input_head_sep,      false);
+		setEnabled(paper_->input_foot_skip,     false);
+		setEnabled(paper_->choice_top_margin_units,    false);
+		setEnabled(paper_->choice_bottom_margin_units, false);
+		setEnabled(paper_->choice_inner_margin_units,  false);
+		setEnabled(paper_->choice_outer_margin_units,  false);
+		setEnabled(paper_->choice_head_height_units,   false);
+		setEnabled(paper_->choice_head_sep_units,      false);
+		setEnabled(paper_->choice_foot_skip_units,     false);
 
-	if (ob == paper_->choice_paperpackage) {
-		if (fl_get_choice(paper_->choice_paperpackage) != 1) {
-			fl_set_button(paper_->check_use_geometry, 0);
-
-			setEnabled(paper_->input_top_margin,    false);
-			setEnabled(paper_->input_bottom_margin, false);
-			setEnabled(paper_->input_inner_margin,  false);
-			setEnabled(paper_->input_outer_margin,  false);
-			setEnabled(paper_->input_head_height,   false);
-			setEnabled(paper_->input_head_sep,      false);
-			setEnabled(paper_->input_foot_skip,     false);
-			setEnabled(paper_->choice_top_margin_units,    false);
-			setEnabled(paper_->choice_bottom_margin_units, false);
-			setEnabled(paper_->choice_inner_margin_units,  false);
-			setEnabled(paper_->choice_outer_margin_units,  false);
-			setEnabled(paper_->choice_head_height_units,   false);
-			setEnabled(paper_->choice_head_sep_units,      false);
-			setEnabled(paper_->choice_foot_skip_units,     false);
-		}
-	}
-
-	if (ob == paper_->check_use_geometry) {
-		//don't allow switching geometry off in custom papersize mode
-		//nor in A3, B3, and B4
+	} else if (ob == paper_->check_use_geometry) {
+		// don't allow switching geometry off in custom papersize
+		// mode nor in A3, B3, and B4
 		int const choice = fl_get_choice(paper_->choice_papersize);
 		if (choice == 2 || choice == 6 || choice == 9 || choice == 10)
 			fl_set_button(paper_->check_use_geometry, 1);
@@ -634,7 +646,17 @@ bool FormDocument::input(FL_OBJECT * ob, long)
 		setEnabled(paper_->choice_foot_skip_units,     use_geom);
 	}
 
-	return CheckDocumentInput(ob, 0);
+	if (ob == paper_->choice_papersize || ob == paper_->radio_portrait
+			|| ob == paper_->radio_landscape) {
+		// either default papersize (preferences) or document
+		// papersize has to be A4
+		bool const enable = ( fl_get_choice(paper_->choice_papersize) == 1
+					&& lyxrc.default_papersize == BufferParams::PAPER_A4PAPER )
+				|| fl_get_choice(paper_->choice_papersize) == 7;
+		setEnabled(paper_->choice_paperpackage, enable && fl_get_button(paper_->radio_portrait));
+	}
+
+	return true;
 }
 
 
@@ -643,7 +665,7 @@ void FormDocument::ComboInputCB(int, void * v, Combox * combox)
 	FormDocument * pre = static_cast<FormDocument*>(v);
 	if (combox == pre->combo_doc_class.get())
 		pre->CheckChoiceClass(0, 0);
-	pre->bc().valid(pre->CheckDocumentInput(0,0));
+	pre->bc().valid();
 }
 
 
@@ -653,13 +675,13 @@ bool FormDocument::class_apply(BufferParams &params)
 
 	// If default skip is a "Length" but there's no text in the
 	// input field, reset the kind to "Medskip", which is the default.
-	if ((fl_get_choice (class_->choice_doc_skip) == 4) &&
-	    !*(fl_get_input (class_->input_doc_skip))) {
-		fl_set_choice (class_->choice_doc_skip, 2);
+	if (fl_get_choice(class_->choice_doc_skip) == 4 &&
+	    getString(class_->input_doc_skip).empty()) {
+		fl_set_choice(class_->choice_doc_skip, 2);
 	}
-	params.fonts = fl_get_choice_text(class_->choice_doc_fonts);
-	params.fontsize = fl_get_choice_text(class_->choice_doc_fontsize);
-	params.pagestyle = fl_get_choice_text(class_->choice_doc_pagestyle);
+	params.fonts = getString(class_->choice_doc_fonts);
+	params.fontsize = getString(class_->choice_doc_fontsize);
+	params.pagestyle = getString(class_->choice_doc_pagestyle);
 
 	params.textclass = combo_doc_class->get() - 1;
 
@@ -672,7 +694,7 @@ bool FormDocument::class_apply(BufferParams &params)
 		redo = true;
 
 	VSpace tmpdefskip = params.getDefSkip();
-	switch (fl_get_choice (class_->choice_doc_skip)) {
+	switch (fl_get_choice(class_->choice_doc_skip)) {
 	case 1:
 		params.setDefSkip(VSpace(VSpace::SMALLSKIP));
 		break;
@@ -686,7 +708,7 @@ bool FormDocument::class_apply(BufferParams &params)
 	{
 		string const length =
 			getLengthFromWidgets(class_->input_doc_skip,
-					     class_->choice_default_skip_units);
+					     class_->choice_doc_skip_units);
 
 		params.setDefSkip(VSpace(LyXGlueLength(length)));
 		break;
@@ -725,13 +747,13 @@ bool FormDocument::class_apply(BufferParams &params)
 	case 4:
 		lyxerr[Debug::INFO] << "Spacing: OTHER\n";
 		params.spacing.set(Spacing::Other,
-				   fl_get_input(class_->input_doc_spacing));
+				   getString(class_->input_doc_spacing));
 		break;
 	}
 	if (tmpSpacing != params.spacing)
 		redo = true;
 
-	params.options = fl_get_input(class_->input_doc_extra);
+	params.options = getString(class_->input_doc_extra);
 
 	return redo;
 }
@@ -888,7 +910,7 @@ bool FormDocument::language_apply(BufferParams & params)
 	}
 
 	params.language = new_language;
-	params.inputenc = fl_get_choice_text(language_->choice_inputenc);
+	params.inputenc = getString(language_->choice_inputenc);
 
 	return redo;
 }
@@ -904,8 +926,7 @@ bool FormDocument::options_apply(BufferParams & params)
 {
 	bool redo = false;
 
-	params.graphicsDriver =
-		fl_get_choice_text(options_->choice_postscript_driver);
+	params.graphicsDriver = getString(options_->choice_postscript_driver);
 	params.use_amsmath = fl_get_button(options_->check_use_amsmath);
 	params.use_natbib  = fl_get_button(options_->check_use_natbib);
 	params.use_numerical_citations  =
@@ -919,7 +940,7 @@ bool FormDocument::options_apply(BufferParams & params)
 	params.tocdepth = int(fl_get_counter_value(options_->counter_tocdepth));
 
 	params.float_placement =
-		fl_get_input(options_->input_float_placement);
+		getString(options_->input_float_placement);
 
 	return redo;
 }
@@ -979,92 +1000,84 @@ void FormDocument::class_update(BufferParams const & params)
 
 	UpdateClassParams(params);
 
-	fl_set_choice_text(class_->choice_doc_fonts,
-		params.fonts.c_str());
-	fl_set_button(class_->radio_doc_indent, 0);
-	fl_set_button(class_->radio_doc_skip, 0);
-	if (params.paragraph_separation == BufferParams::PARSEP_INDENT)
-		fl_set_button(class_->radio_doc_indent, 1);
-	else
-		fl_set_button(class_->radio_doc_skip, 1);
+	fl_set_choice_text(class_->choice_doc_fonts, params.fonts.c_str());
 
-	bool const input_length = fl_get_choice(class_->choice_doc_skip) == 4;
-	setEnabled(class_->choice_default_skip_units, input_length);
-	setEnabled(class_->input_doc_skip, input_length);
+	bool const indent = params.paragraph_separation == BufferParams::PARSEP_INDENT;
+	fl_set_button(class_->radio_doc_indent, indent);
+	fl_set_button(class_->radio_doc_skip, !indent);
 
-	switch (params.getDefSkip().kind()) {
-	case VSpace::SMALLSKIP:
-		fl_set_choice (class_->choice_doc_skip, 1);
-		break;
-	case VSpace::MEDSKIP:
-		fl_set_choice (class_->choice_doc_skip, 2);
-		break;
-	case VSpace::BIGSKIP:
-		fl_set_choice (class_->choice_doc_skip, 3);
-		break;
-	case VSpace::LENGTH:
-	{
+	int pos;
+	if (indent) {
+		pos = 2; // VSpace::MEDSKIP is default
+	} else {
+		switch (params.getDefSkip().kind()) {
+		case VSpace::LENGTH:
+			pos = 4;
+			break;
+		case VSpace::BIGSKIP:
+			pos = 3;
+			break;
+		case VSpace::SMALLSKIP:
+			pos = 1;
+			break;
+		case VSpace::MEDSKIP:
+		default:
+			pos = 2;
+			break;
+		}
+	}
+	fl_set_choice (class_->choice_doc_skip, pos);
+
+	bool const length_input = pos == 4;
+	if (length_input) {
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);
-		bool const metric = (paperchoice == 1 && lyxrc.default_papersize > 3)
+		bool const metric = (paperchoice == 1 && lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER)
 			|| paperchoice == 2 || paperchoice > 5;
 		string const default_unit = metric ? "cm" : "in";
 		string const length = params.getDefSkip().asLyXCommand();
 		updateWidgetsFromLengthString(class_->input_doc_skip,
-					      class_->choice_default_skip_units,
+					      class_->choice_doc_skip_units,
 					      length, default_unit);
-		break;
-	}
-	default:
-		fl_set_choice (class_->choice_doc_skip, 2);
-		break;
-	}
-	fl_set_button(class_->radio_doc_sides_one, 0);
-	fl_set_button(class_->radio_doc_sides_two, 0);
-	setEnabled(class_->choice_doc_skip,
-		   fl_get_button(class_->radio_doc_skip));
 
-	if (params.sides == LyXTextClass::TwoSides)
-		fl_set_button(class_->radio_doc_sides_two, 1);
-	else
-		fl_set_button(class_->radio_doc_sides_one, 1);
-	fl_set_button(class_->radio_doc_columns_one, 0);
-	fl_set_button(class_->radio_doc_columns_two, 0);
-	if (params.columns == 2)
-		fl_set_button(class_->radio_doc_columns_two, 1);
-	else
-		fl_set_button(class_->radio_doc_columns_one, 1);
+	} else {
+		fl_set_input(class_->input_doc_skip, "");
+	}
+	setEnabled(class_->choice_doc_skip, !indent);
+	setEnabled(class_->input_doc_skip, length_input);
+	setEnabled(class_->choice_doc_skip_units, length_input);
 
-	fl_set_input(class_->input_doc_spacing, "");
-	setEnabled(class_->input_doc_spacing, false);
+	bool const two_sides = params.sides == LyXTextClass::TwoSides;
+	fl_set_button(class_->radio_doc_sides_one, !two_sides);
+	fl_set_button(class_->radio_doc_sides_two, two_sides);
+
+	bool const two_columns = params.columns == 2;
+	fl_set_button(class_->radio_doc_columns_one, !two_columns);
+	fl_set_button(class_->radio_doc_columns_two, two_columns);
+
+	fl_set_input(class_->input_doc_extra, params.options.c_str());
 
 	switch (params.spacing.getSpace()) {
-	case Spacing::Default: // nothing bad should happen with this
-	case Spacing::Single:
-		// \singlespacing
-		fl_set_choice(class_->choice_doc_spacing, 1);
-		break;
-	case Spacing::Onehalf:
-		// \onehalfspacing
-		fl_set_choice(class_->choice_doc_spacing, 2);
-		break;
-	case Spacing::Double:
-		// \doublespacing
-		fl_set_choice(class_->choice_doc_spacing, 3);
-		break;
 	case Spacing::Other:
-	{
-		fl_set_choice(class_->choice_doc_spacing, 4);
-		char sval[20];
-		sprintf(sval,"%g",params.spacing.getValue());
-		fl_set_input(class_->input_doc_spacing, sval);
-		setEnabled(class_->input_doc_spacing, true);
+		pos = 4;
+		break;
+	case Spacing::Double: // \doublespacing
+		pos = 3;
+		break;
+	case Spacing::Onehalf: // \onehalfspacing
+		pos = 2;
+		break;
+	case Spacing::Single: // \singlespacing
+	case Spacing::Default: // nothing bad should happen with this
+	default:
+		pos = 1;
 		break;
 	}
-	}
-	if (!params.options.empty())
-		fl_set_input(class_->input_doc_extra, params.options.c_str());
-	else
-		fl_set_input(class_->input_doc_extra, "");
+	fl_set_choice(class_->choice_doc_spacing, pos);
+
+	bool const spacing_input = pos == 4;
+	setEnabled(class_->input_doc_spacing, spacing_input);
+	string const input = spacing_input ? tostr(params.spacing.getValue()) : string();
+	fl_set_input(class_->input_doc_spacing, input.c_str());
 }
 
 
@@ -1135,11 +1148,11 @@ void FormDocument::paper_update(BufferParams const & params)
 		   //either default papersize (preferences)
 		   //or document papersize has to be A4
 		   (paperchoice == 7
-		    || paperchoice == 1 && lyxrc.default_papersize == 5)
+		    || paperchoice == 1 && lyxrc.default_papersize == BufferParams::PAPER_A4PAPER)
 		   && fl_get_button(paper_->radio_portrait));
 
 	// Default unit choice is cm if metric, inches if US paper.
-	bool const metric = (paperchoice == 1 && lyxrc.default_papersize > 3)
+	bool const metric = (paperchoice == 1 && lyxrc.default_papersize > BufferParams::PAPER_EXECUTIVEPAPER)
 		|| paperchoice == 2 || paperchoice > 5;
 	string const default_unit = metric ? "cm" : "in";
 	updateWidgetsFromLengthString(paper_->input_custom_width,
@@ -1235,73 +1248,6 @@ void FormDocument::checkReadOnly()
 }
 
 
-bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
-{
-	string str;
-	bool ok = true;
-	char const * input;
-
-	// this has to be all out of if/elseif because it has to deactivate
-	// the document buttons and so the whole stuff has to be tested again.
-	// disable OK/Apply if input is not valid
-	str = fl_get_input(class_->input_doc_skip);
-	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
-	str = fl_get_input(paper_->input_custom_width);
-	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
-	str = fl_get_input(paper_->input_custom_height);
-	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
-	str = fl_get_input(paper_->input_outer_margin);
-	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
-	str = fl_get_input(paper_->input_inner_margin);
-	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
-	str = fl_get_input(paper_->input_top_margin);
-	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
-	str = fl_get_input(paper_->input_bottom_margin);
-	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
-	str = fl_get_input(paper_->input_head_height);
-	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
-	str = fl_get_input(paper_->input_head_sep);
-	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
-	str = fl_get_input(paper_->input_foot_skip);
-	ok = ok && (str.empty() || isValidLength(str) || isStrDbl(str));
-
-	//display warning if input is not valid
-	if (ob == class_->input_doc_skip
-	    || ob == paper_->input_custom_width
-	    || ob == paper_->input_custom_height
-	    || ob == paper_->input_outer_margin
-	    || ob == paper_->input_inner_margin
-	    || ob == paper_->input_top_margin
-	    || ob == paper_->input_bottom_margin
-	    || ob == paper_->input_head_height
-	    || ob == paper_->input_head_sep
-	    || ob == paper_->input_foot_skip) {
-		if (!ok) {
-			postWarning(_("Invalid Length (valid example: 10mm)"));
-			return false;
-		} else {
-			clearMessage();
-			return true;
-		}
-	}
-
-	// "Synchronize" the choice and the input field, so that it
-	// is impossible to commit senseless data.
-	input = fl_get_input (class_->input_doc_skip);
-	if ((fl_get_choice(class_->choice_doc_skip) == 4) && !*input)
-		ok = false;
-	else if (fl_get_choice(class_->choice_doc_skip) != 4)
-		fl_set_input (class_->input_doc_skip, "");
-
-	input = fl_get_input(class_->input_doc_spacing);
-	if ((fl_get_choice(class_->choice_doc_spacing) == 4) && !*input)
-		ok = false;
-	else if (fl_get_choice(class_->choice_doc_spacing) != 4)
-		fl_set_input (class_->input_doc_spacing, "");
-	return ok;
-}
-
-
 void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/)
 {
 	BufferParams & param = lv_.buffer()->params;
@@ -1318,7 +1264,7 @@ void FormDocument::InputBulletLaTeX(FL_OBJECT *, long)
 	BufferParams & param = lv_.buffer()->params;
 
 	param.temp_bullets[current_bullet_depth].
-		setText(fl_get_input(bullets_->input_bullet_latex));
+		setText(getString(bullets_->input_bullet_latex));
 }
 
 

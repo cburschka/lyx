@@ -1,3 +1,24 @@
+2002-10-23  Angus Leeming  <leeming@lyx.org>
+
+	* checkedwidgets.C (setWidget): Don't set icol2 to alert_col when
+	the input is invalid.
+
+2002-10-23  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* FormBibtex.C: remove two redundant header files.
+
+	* FeedbackController (postMessage): s/FL_BLACK/FL_LCOL/
+
+	* FormDocument.C: disable resizing of the dialog.
+	Remove redundant counter's bounds/step/precision (is set in
+	form_document.fd).
+
+	* FormDocument.[Ch] (CheckDocumentInput): removed. Use the
+	button controller and the checkedGlueLength class to check the validity
+	of any LyXGlueLengths.
+
+	* forms/form_document.fd: prettify.
+
 2002-10-23  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* forms/form_bibtex.fd:
