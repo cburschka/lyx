@@ -1,3 +1,9 @@
+
+2003-10-16  André Pönitz  <poenitz@gmx.net>
+
+	* filetools.C (ReplaceEnvironmentPath): set up patterns just once
+	using static variables.
+
 2003-10-13  João Luis Meloni Assirati  <assirati@fma.if.usp.br>
 
 	* socktools.[Ch]: New files. Wrapper around socket system calls.

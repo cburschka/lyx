@@ -742,14 +742,14 @@ string const ReplaceEnvironmentPath(string const & path)
 {
 	// ${VAR} is defined as
 	// $\{[A-Za-z_][A-Za-z_0-9]*\}
-	string const envvar_br = "[$]\\{([A-Za-z_][A-Za-z_0-9]*)\\}";
+	static string const envvar_br = "[$]\\{([A-Za-z_][A-Za-z_0-9]*)\\}";
 
 	// $VAR is defined as:
 	// $\{[A-Za-z_][A-Za-z_0-9]*\}
-	string const envvar = "[$]([A-Za-z_][A-Za-z_0-9]*)";
+	static string const envvar = "[$]([A-Za-z_][A-Za-z_0-9]*)";
 
-	boost::regex envvar_br_re("(.*)" + envvar_br + "(.*)");
-	boost::regex envvar_re("(.*)" + envvar + "(.*)");
+	static boost::regex envvar_br_re("(.*)" + envvar_br + "(.*)");
+	static boost::regex envvar_re("(.*)" + envvar + "(.*)");
 	boost::smatch what;
 
 	string result = path;
