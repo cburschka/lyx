@@ -1240,7 +1240,7 @@ int InsetFig::DocBook(string & file)
 	if(suffixIs(figurename, ".eps"))
 		figurename.erase(fname.length() - 5);
 
-	file += "@<graphic fileref= \"" + figurename + "\"></graphic>";
+	file += "@<graphic fileref=\"" + figurename + "\"></graphic>";
 	return 0;
 }
 

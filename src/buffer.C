@@ -1746,10 +1746,10 @@ void Buffer::makeLaTeXFile(string const & filename,
 			switch (params.papersize2) {
 			case BufferParams::VM_PAPER_CUSTOM:
 				if (!params.paperwidth.empty())
-					LFile += ",paperwidth= "
+					LFile += ",paperwidth="
 						 + params.paperwidth;
 				if (!params.paperheight.empty())
-					LFile += ",paperheight= "
+					LFile += ",paperheight="
 						 + params.paperheight;
 				break;
 			case BufferParams::VM_PAPER_USLETTER:
@@ -1807,19 +1807,19 @@ void Buffer::makeLaTeXFile(string const & filename,
 				}
 			}
 			if (!params.topmargin.empty())
-				LFile += ",tmargin= " + params.topmargin;
+				LFile += ",tmargin=" + params.topmargin;
 			if (!params.bottommargin.empty())
-				LFile += ",bmargin= " + params.bottommargin;
+				LFile += ",bmargin=" + params.bottommargin;
 			if (!params.leftmargin.empty())
-				LFile += ",lmargin= " + params.leftmargin;
+				LFile += ",lmargin=" + params.leftmargin;
 			if (!params.rightmargin.empty())
-				LFile += ",rmargin= " + params.rightmargin;
+				LFile += ",rmargin=" + params.rightmargin;
 			if (!params.headheight.empty())
-				LFile += ",headheight= " + params.headheight;
+				LFile += ",headheight=" + params.headheight;
 			if (!params.headsep.empty())
-				LFile += ",headsep= " + params.headsep;
+				LFile += ",headsep=" + params.headsep;
 			if (!params.footskip.empty())
-				LFile += ",footskip= " + params.footskip;
+				LFile += ",footskip=" + params.footskip;
 			LFile += "}\n";
 			texrow.newline();
 		}

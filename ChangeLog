@@ -2,6 +2,14 @@
 
 	* src/mathed/formula.C (LocalDispatch): fix small whitspace bug
 	introduced by faulty regex.
+	* src/buffer.C: ditto
+	* src/lastfiles.C: ditto
+	* src/paragraph.C: ditto
+	* src/table.C: ditto
+	* src/vspace.C: ditto
+	* src/insets/figinset.C: ditto
+	Note: most of these is absolutely harmless, except the one in
+	src/mathed formula.C.
 
 1999-11-30  Kayvan A. Sylvan  <kayvan@satyr.sylvan.com>
 

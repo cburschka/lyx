@@ -40,7 +40,7 @@ void LastFiles::setNumberOfFiles(unsigned int no)
 		num_files = no;
 	else {
 		lyxerr << "LyX: lastfiles: too many files\n"
-			"\tdefault (= " << int(DEFAULTFILES)
+			"\tdefault (=" << int(DEFAULTFILES)
 		       << ") used." << endl;
 		num_files = DEFAULTFILES;
 	}

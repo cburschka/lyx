@@ -91,7 +91,7 @@ static char nextToken (string & data)
 	else {
 		string::size_type i;
 
-		// I really mean assignment ("= ") below, not equality!
+		// I really mean assignment ("=") below, not equality!
 		if ((i = data.find_last_of("0123456789.")) != string::npos) {
 			if (number_index > 3) return 'E';  // Error
                         string buffer = data.substr(0, i + 1);

@@ -1475,7 +1475,7 @@ int LyXTable::DocBookEndOfCell(string & file, int cell, int &depth)
                 file += tostr(i+1);
                 file += "' COLNUM='";
                 file += tostr(i+1);
-               file += "' COLSEP= '";
+               file += "' COLSEP='";
                if (i == (columns-1)) {
                     file += '1';
                } else {
@@ -1497,11 +1497,11 @@ int LyXTable::DocBookEndOfCell(string & file, int cell, int &depth)
            addNewlineAndDepth(file,++depth);
             file += "<ROW>";
            addNewlineAndDepth(file,++depth);
-            file += "<ENTRY ALIGN= '";
+            file += "<ENTRY ALIGN='";
             file += getDocBookAlign(0);
            file += "'";
            if (IsMultiColumn(0)) {
-               file += " NAMEST= 'col1' NAMEEND= 'col";
+               file += " NAMEST='col1' NAMEEND='col";
                file += tostr(cells_in_multicolumn(0));
                file += "'";
            }
@@ -1517,13 +1517,13 @@ int LyXTable::DocBookEndOfCell(string & file, int cell, int &depth)
                addNewlineAndDepth(file, depth);
                file += "<ROW>";
                addNewlineAndDepth(file,++depth);
-                file += "<ENTRY ALIGN= '";
+                file += "<ENTRY ALIGN='";
                 file += getDocBookAlign(cell+1);
-                file += "' VALIGN= 'middle'";
+                file += "' VALIGN='middle'";
                if (IsMultiColumn(cell+1)) {
-                   file += " NAMEST= 'col";
+                   file += " NAMEST='col";
                    file += tostr(column_of_cell(cell+1) + 1);
-                   file += "' NAMEEND= 'col";
+                   file += "' NAMEEND='col";
                    file += tostr(column_of_cell(cell+1) +
                        cells_in_multicolumn(cell+1));
                    file += "'";
@@ -1535,13 +1535,13 @@ int LyXTable::DocBookEndOfCell(string & file, int cell, int &depth)
                addNewlineAndDepth(file,--depth);
                 file += "</ENTRY>";
                addNewlineAndDepth(file, depth);
-                file += "<ENTRY ALIGN= '";
+                file += "<ENTRY ALIGN='";
                 file += getDocBookAlign(cell+1);
-                file += "' VALIGN= 'middle'";
+                file += "' VALIGN='middle'";
                if (IsMultiColumn(cell+1)) {
-                   file += " NAMEST= 'col";
+                   file += " NAMEST='col";
                    file += tostr(column_of_cell(cell+1) + 1);
-                   file += "' NAMEEND= 'col";
+                   file += "' NAMEEND='col";
                    file += tostr(column_of_cell(cell+1) +
                        cells_in_multicolumn(cell+1));
                    file += "'";
