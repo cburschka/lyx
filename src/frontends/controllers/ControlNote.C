@@ -14,6 +14,11 @@
 #include "funcrequest.h"
 #include "insets/insetnote.h"
 #include "debug.h"
+#include "gettext.h"
+
+
+using std::vector;
+
 
 ControlNote::ControlNote(Dialog & parent)
 	: Dialog::Controller(parent)
@@ -36,9 +41,21 @@ void ControlNote::clearParams()
 	params_.reset();
 }
 
+
 void ControlNote::dispatchParams()
 {
 	string const lfun = InsetNoteMailer::params2string(string("note"), params());
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
 
+
+void note_gui_tokens(vector<string> & ids, vector<string> & gui_names)
+{
+	char const * const ids_[] = {"Note", "Comment", "Greyedout"};
+	size_t const ids_size = sizeof(ids_) / sizeof(char *);
+	ids = vector<string>(ids_, ids_ + ids_size);
+	gui_names.clear();
+	gui_names.push_back(_("LyX Note"));
+	gui_names.push_back(_("Comment"));
+	gui_names.push_back(_("Greyed Out"));
+}

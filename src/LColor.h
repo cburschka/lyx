@@ -78,6 +78,14 @@ public:
 		note,
 		/// Background color of notes
 		notebg,
+		/// Text color for comments
+		comment,
+		/// Background color of comments
+		commentbg,
+		/// Text color for greyedout inset
+		greyedout,
+		/// Background color of greyedout inset
+		greyedoutbg,
 
 
 		/// Color for the depth bars in the margin

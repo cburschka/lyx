@@ -15,6 +15,7 @@
 
 #include "Dialog.h"
 #include "debug.h"
+#include <vector>
 
 class InsetNoteParams;
 
@@ -39,5 +40,8 @@ private:
 	///
 	boost::scoped_ptr<InsetNoteParams> params_;
 };
+
+///
+void note_gui_tokens(std::vector<string> &, std::vector<string> &);
 
 #endif // CONTROLNOTE_H

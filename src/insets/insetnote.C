@@ -41,7 +41,7 @@ InsetNote::InsetNote(BufferParams const & bp, string const & label)
 {
 	params_.type = label;
 	init();
-	setLabel(label);
+	setButtonLabel();
 }
 
 
@@ -91,13 +91,18 @@ void InsetNote::setButtonLabel()
 	font.decSize();
 	font.decSize();
 
-	setLabel(params_.type);
-	if (params_.type == "Note" || params_.type == "Comment") {
+	if (params_.type == "Note") {
+		setLabel(_("LyX Note"));
 		font.setColor(LColor::note);
 		setBackgroundColor(LColor::notebg);
+	} else if (params_.type == "Comment") {
+		setLabel(_("Comment"));
+		font.setColor(LColor::comment);
+		setBackgroundColor(LColor::commentbg);
 	} else {
-		font.setColor(LColor::red);
-		setBackgroundColor(LColor::background);
+		setLabel(_("Greyed Out"));
+		font.setColor(LColor::greyedout);
+		setBackgroundColor(LColor::greyedoutbg);
 	}
 	setLabelFont(font);
 }

@@ -20,6 +20,11 @@
 #include "insets/insetnote.h"
 #include "debug.h"
 
+#include <vector>
+
+using std::vector;
+
+
 typedef FormController<ControlNote, FormView<FD_note> > base_class;
 
 FormNote::FormNote(Dialog & parent)
@@ -27,20 +32,22 @@ FormNote::FormNote(Dialog & parent)
 {}
 
 
-string const FormNote::predefineds() const
-{
-	return _("Note|Comment|Greyedout");
-}
-
-
 void FormNote::build()
 {
 	dialog_.reset(build_note(this));
 
-	fl_addto_choice(dialog_->choice_type, predefineds().c_str());
-	string str = _("Note: LyX internal only\n"
+	note_gui_tokens(ids_, gui_names_);
+
+	for (int i = 0; i < 3; ++i) {	
+	}
+	
+	for (int i = 0; i < 3; ++i) {	
+		fl_addto_choice(dialog_->choice_type, gui_names_[i].c_str());
+	}
+
+	string str = _("Lyx Note: LyX internal only\n"
 		       "Comment: Export to LaTeX but don't print\n"
-		       "Greyedout: Print as grey text");
+		       "Greyed Out: Print as grey text");
 	tooltips().init(dialog_->choice_type, str);
 
 	bcview().setOK(dialog_->button_ok);
@@ -52,12 +59,16 @@ void FormNote::build()
 void FormNote::update()
 {
 	string type(controller().params().type);
-	fl_set_choice_text(dialog_->choice_type, type.c_str());
+	for (int i = 0; i < 3; ++i) {	
+	if (type == ids_[i])
+		fl_set_choice_text(dialog_->choice_type, gui_names_[i].c_str());
+	}
 }
 
 
 void FormNote::apply()
 {
-	controller().params().type = fl_get_choice_text(dialog_->choice_type);
+	int i = fl_get_choice(dialog_->choice_type);
+	controller().params().type = ids_[i - 1];
 }
 

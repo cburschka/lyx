@@ -33,7 +33,9 @@ private:
 	/// Update dialog before showing it
 	virtual void update();
 	///
-	string const predefineds() const;
+	std::vector<string> ids_;
+	///
+	std::vector<string> gui_names_;
 };
 
 #endif // FORMNOTE_H
