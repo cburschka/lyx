@@ -1,3 +1,18 @@
+2004-04-19  Angus Leeming  <leeming@lyx.org>
+
+	* insetexternal.C (priv_dispatch): remove unnecessary invocation of
+	BufferView::update.
+	(add_preview): renamed as add_preview_and_start_loading. Invoke
+	RenderPreview::startLoading.
+
+	* insetinclude.C (metrics, draw): changes due to the changed
+	RenderPreview interface.
+
+	* render_preview.C: remove cached pimage_.
+	(previewReady): removed. Replaced by getPreviewImage(Buffer const &).
+	(draw): don't call startLoading. That's up to the user of
+	RenderPreview.
+
 2004-04-16  Angus Leeming  <leeming@lyx.org>
 
 	* render_graphic.h (checksum_, hasFileChanged): unused, so removed.

@@ -14,6 +14,7 @@
 #include "insets/inset.h"
 
 #include "BufferView.h"
+#include "debug.h"
 #include "dimension.h"
 #include "gettext.h"
 #include "LColor.h"
@@ -45,8 +46,7 @@ bool RenderPreview::activated()
 
 
 RenderPreview::RenderPreview(InsetBase const * inset)
-	: pimage_(0),
-	  parent_(inset)
+	: parent_(inset)
 {}
 
 
@@ -55,7 +55,6 @@ RenderPreview::RenderPreview(RenderPreview const & other,
 	: RenderBase(other),
 	  boost::signals::trackable(),
 	  snippet_(other.snippet_),
-	  pimage_(0),
 	  parent_(inset)
 {}
 
@@ -97,12 +96,26 @@ string const statusMessage(BufferView const * bv, string const & snippet)
 } // namespace anon
 
 
+graphics::PreviewImage const *
+RenderPreview::getPreviewImage(Buffer const & buffer) const
+{
+	graphics::Previews & previews = graphics::Previews::get();
+	graphics::PreviewLoader & loader = previews.loader(buffer);
+	return loader.preview(snippet_);
+}
+ 
+
 void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (previewReady()) {
-		dim.asc = pimage_->ascent();
-		dim.des = pimage_->descent();
-		dim.wid = pimage_->width();
+        BOOST_ASSERT(mi.base.bv && mi.base.bv->buffer());
+
+	graphics::PreviewImage const * const pimage =
+		getPreviewImage(*mi.base.bv->buffer());
+
+	if (pimage) {
+		dim.asc = pimage->ascent();
+		dim.des = pimage->descent();
+		dim.wid = pimage->width();
 	} else {
 		dim.asc = 50;
 		dim.des = 0;
@@ -121,13 +134,14 @@ void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 {
-	BOOST_ASSERT(pi.base.bv && pi.base.bv->buffer());
-	Buffer const & buffer = *pi.base.bv->buffer();
-	startLoading(buffer);
+        BOOST_ASSERT(pi.base.bv && pi.base.bv->buffer());
 
-	if (previewReady()) {
+	graphics::PreviewImage const * const pimage =
+		getPreviewImage(*pi.base.bv->buffer());
+
+	if (pimage && pimage->image()) {
 		pi.pain.image(x, y - dim_.asc, dim_.wid, dim_.height(),
-			      *(pimage_->image()));
+			      *(pimage->image()));
 		return;
 	}
 
@@ -154,6 +168,7 @@ void RenderPreview::startLoading(Buffer const & buffer) const
 	graphics::Previews & previews = graphics::Previews::get();
 	graphics::PreviewLoader & loader = previews.loader(buffer);
 	loader.startLoading();
+	lyxerr << "RenderPreview::startLoading: " << snippet_ << std::endl;
 }
 
 
@@ -176,12 +191,10 @@ void RenderPreview::addPreview(string const & latex_snippet,
 		return;
 
 	snippet_ = support::trim(latex_snippet);
-	pimage_ = 0;
 	if (snippet_.empty())
 		return;
 
-	pimage_ = ploader.preview(snippet_);
-	if (pimage_)
+	if (ploader.preview(snippet_))
 		return;
 
 	// If this is the first time of calling, connect to the
@@ -205,24 +218,14 @@ void RenderPreview::removePreview(Buffer const & buffer)
 	graphics::PreviewLoader & loader = previews.loader(buffer);
 	loader.remove(snippet_);
 	snippet_.erase();
-	pimage_ = 0;
-}
-
-
-bool RenderPreview::previewReady() const
-{
-	return pimage_ ? pimage_->image() : false;
 }
 
 
 void RenderPreview::imageReady(graphics::PreviewImage const & pimage)
 {
 	// Check the current snippet is the same as that previewed.
-	if (snippet_ != pimage.snippet())
-		return;
-
-	pimage_ = &pimage;
-	LyX::cref().updateInset(parent_);
+	if (snippet_ == pimage.snippet())
+		LyX::cref().updateInset(parent_);
 }
 
 

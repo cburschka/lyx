@@ -37,6 +37,7 @@
 
 #include "frontends/Alert.h"
 
+#include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 
 #include "support/std_sstream.h"
@@ -228,9 +229,14 @@ char const * MathHullInset::standardFont() const
 
 void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	bool const use_preview = (!editing(mi.base.bv) &&
-				  RenderPreview::activated() &&
-				  preview_->previewReady());
+	BOOST_ASSERT(mi.base.bv && mi.base.bv->buffer());
+
+	bool use_preview = false;
+	if (!editing(mi.base.bv) && RenderPreview::activated()) {
+		lyx::graphics::PreviewImage const * pimage =
+			preview_->getPreviewImage(*mi.base.bv->buffer());
+		use_preview = pimage && pimage->image();
+	}
 
 	if (use_preview) {
 		preview_->metrics(mi, dim);
@@ -276,10 +282,14 @@ void MathHullInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 {
-	// The previews are drawn only when we're not editing the inset.
-	bool const use_preview = (!editing(pi.base.bv) &&
-				  RenderPreview::activated() &&
-				  preview_->previewReady());
+	BOOST_ASSERT(pi.base.bv && pi.base.bv->buffer());
+
+	bool use_preview = false;
+	if (!editing(pi.base.bv) && RenderPreview::activated()) {
+		lyx::graphics::PreviewImage const * pimage =
+			preview_->getPreviewImage(*pi.base.bv->buffer());
+		use_preview = pimage && pimage->image();
+	}
 
 	if (use_preview) {
 		// one pixel gap in front

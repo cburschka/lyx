@@ -1,3 +1,8 @@
+2004-04-19  Angus Leeming  <leeming@lyx.org>
+
+	* math_hullinset.C (metrics, draw): changes due to the changed
+	RenderPreview interface.
+
 2004-04-13  Angus Leeming  <leeming@lyx.org>
 
 	* math_hullinset.[Ch]: add a RenderPreview variable.

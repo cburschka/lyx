@@ -1,3 +1,8 @@
+2004-04-19  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/lyxpreview2bitmap.py (extract_metrics_info): make the
+	regex a little more robust. Now recognizes negative integers.
+
 2004-04-15  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/lyxpreview2bitmap.sh: removed.

@@ -449,8 +449,6 @@ void InsetExternal::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		InsetExternalParams p;
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
 		setParams(p, buffer);
-#warning is this needed?
-		cur.bv().update();
 		break;
 	}
 
@@ -567,7 +565,9 @@ string const getScreenLabel(InsetExternalParams const & params,
 	return external::doSubstitution(params, buffer, ptr->guiName);
 }
 
-void add_preview(RenderMonitoredPreview &, InsetExternal const &, Buffer const &);
+void add_preview_and_start_loading(RenderMonitoredPreview &,
+				   InsetExternal const &,
+				   Buffer const &);
 
 } // namespace anon
 
@@ -621,7 +621,7 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 
 		if (preview_ptr->monitoring())
 			preview_ptr->stopMonitoring();
-		add_preview(*preview_ptr, *this, buffer);
+		add_preview_and_start_loading(*preview_ptr, *this, buffer);
 
 		break;
 	}
@@ -640,8 +640,7 @@ void InsetExternal::fileChanged() const
 
 	Buffer const & buffer = *buffer_ptr;
 	ptr->removePreview(buffer);
-	add_preview(*ptr, *this, buffer);
-	ptr->startLoading(buffer);
+	add_preview_and_start_loading(*ptr, *this, buffer);
 }
 
 
@@ -774,14 +773,18 @@ string const latex_string(InsetExternal const & inset, Buffer const & buffer)
 }
 
 
-void add_preview(RenderMonitoredPreview & renderer, InsetExternal const & inset,
-		 Buffer const & buffer)
+void add_preview_and_start_loading(RenderMonitoredPreview & renderer,
+				   InsetExternal const & inset,
+				   Buffer const & buffer)
 {
 	InsetExternalParams const & params = inset.params();
-	if (RenderPreview::activated() && preview_wanted(params)) {
+
+	if (RenderPreview::activated() &&
+	    preview_wanted(params)) {
 		renderer.setAbsFile(params.filename.absFilename());
 		string const snippet = latex_string(inset, buffer);
 		renderer.addPreview(snippet, buffer);
+		renderer.startLoading(buffer);
 	}
 }
 

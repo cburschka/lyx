@@ -102,7 +102,7 @@ def make_texcolor(hexcolor):
 
 def extract_metrics_info(dvipng_stdout, metrics_file):
     metrics = open(metrics_file, 'w')
-    metrics_re = re.compile("\[([0-9]+) depth=([0-9]+) height=([0-9]+)\]")
+    metrics_re = re.compile("\[([0-9]+) depth=(-?[0-9]+) height=(-?[0-9]+)")
 
     success = 0
     pos = 0

@@ -32,6 +32,7 @@
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
+#include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 
 #include "insets/render_preview.h"
@@ -568,7 +569,16 @@ void InsetInclude::fillWithBibKeys(Buffer const & buffer,
 
 void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (RenderPreview::activated() && preview_->previewReady()) {
+	BOOST_ASSERT(mi.base.bv && mi.base.bv->buffer());
+
+	bool use_preview = false;
+	if (RenderPreview::activated()) {
+		lyx::graphics::PreviewImage const * pimage =
+			preview_->getPreviewImage(*mi.base.bv->buffer());
+		use_preview = pimage && pimage->image();
+	}
+
+	if (use_preview) {
 		preview_->metrics(mi, dim);
 	} else {
 		if (!set_label_) {
@@ -592,12 +602,19 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
 
-	if (!RenderPreview::activated() || !preview_->previewReady()) {
-		button_.draw(pi, x + button_.box().x1, y);
-		return;
+	BOOST_ASSERT(pi.base.bv && pi.base.bv->buffer());
+
+	bool use_preview = false;
+	if (RenderPreview::activated()) {
+		lyx::graphics::PreviewImage const * pimage =
+			preview_->getPreviewImage(*pi.base.bv->buffer());
+		use_preview = pimage && pimage->image();
 	}
 
-	preview_->draw(pi, x + button_.box().x1, y);
+	if (use_preview)
+		preview_->draw(pi, x + button_.box().x1, y);
+	else
+		button_.draw(pi, x + button_.box().x1, y);
 }
 
 

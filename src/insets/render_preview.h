@@ -72,8 +72,11 @@ public:
 	 */
 	void removePreview(Buffer const &);
 
-	/// The preview has been generated and is ready to use.
-	bool previewReady() const;
+	/** \returns a pointer to the PreviewImage associated with this snippet
+	 *  of latex.
+	 */
+	lyx::graphics::PreviewImage const *
+	getPreviewImage(Buffer const & buffer) const;
 
 	/// equivalent to dynamic_cast
 	virtual RenderPreview * asPreview() { return this; }
@@ -87,9 +90,6 @@ private:
 
 	/// The thing that we're trying to generate a preview of.
 	std::string snippet_;
-
-	/// We don't own this. Cached for efficiency reasons.
-	lyx::graphics::PreviewImage const * pimage_;
 
 	/** Store the connection to the preview loader so that we connect
 	 *  only once.
