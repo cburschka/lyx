@@ -1,3 +1,16 @@
+2002-08-30  John Levon  <levon@movementarian.org>
+
+	* Makefile.dialogs:
+	* moc/Makefile.am:
+	* QMath.h:
+	* QMath.C:
+	* QMathDialog.h:
+	* QMathDialog.C:
+	* ui/QMathDialog.ui: start math panel
+
+	* iconpalette.h:
+	* iconpalette.C: new widget used by above
+ 
 2002-08-29  John Levon  <levon@movementarian.org>
 
 	* Toolbar_pimpl.C: defocus layout combo on select

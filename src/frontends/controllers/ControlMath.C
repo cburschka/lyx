@@ -1,5 +1,5 @@
 /**
- * \file MathsSymbols.C
+ * \file ControlMath.C
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
@@ -7,9 +7,7 @@
  * \author John Levon, moz@compsoc.man.ac.uk
  */
 
-#include "MathsSymbols.h"
-
-/* Latex code for those bitmaps */
+#include "ControlMath.h"
 
 char const * function_names[] = {
 	"arccos", "arcsin", "arctan", "arg", "bmod",
@@ -17,10 +15,10 @@ char const * function_names[] = {
 	"det", "dim", "exp", "gcd", "hom", "inf", "ker",
 	"lg", "lim", "liminf", "limsup", "ln", "log",
 	"max", "min", "sec", "sin", "sinh", "sup",
-	"tan", "tanh"
+	"tan", "tanh", ""
 };
 
-int const nr_function_names = sizeof(function_names) / sizeof(char const *);
+int const nr_function_names = sizeof(function_names) / sizeof(char const *) - 1;
 
 char const * latex_arrow[] = {
 	"downarrow", "leftarrow", "Downarrow", "Leftarrow",

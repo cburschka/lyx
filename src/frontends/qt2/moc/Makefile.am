@@ -19,6 +19,7 @@ nodist_libqt2moc_la_SOURCES = \
 	$(MOCDIALOGS) \
 	FileDialog_private_moc.C \
 	emptytable_moc.C \
+	iconpalette_moc.C \
 	lengthcombo_moc.C \
 	qttableview_moc.C \
 	Toolbar_pimpl_moc.C \

@@ -133,7 +133,12 @@ void Dialogs::showLogFile()
 
 
 void Dialogs::showMathPanel()
-{}
+{
+	// FIXME FIXME FIXME
+	extern void createMathPanel();
+
+	createMathPanel();
+}
 
 
 void Dialogs::showMinipage(InsetMinipage * im)

@@ -1,0 +1,62 @@
+/**
+ * \file QMath.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
+
+#include <config.h>
+
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
+#include "debug.h"
+ 
+#include "commandtags.h"
+#include "funcrequest.h"
+#include "LyXView.h"
+#include "BufferView.h"
+ 
+#include "QMathDialog.h"
+#include "QMath.h"
+
+#include "iconpalette.h"
+
+// FIXME temporary HACK ! 
+void createMathPanel()
+{
+	static QMath * dialog = 0; 
+	if (!dialog) {
+		dialog = new QMath();
+		dialog->build_dialog();
+	}
+	dialog->do_show();
+}
+ 
+ 
+QMath::QMath()
+{
+}
+
+
+void QMath::do_show()
+{
+	dialog_->show();
+}
+ 
+ 
+void QMath::build_dialog()
+{
+	dialog_ = new QMathDialog(this);
+}
+
+ 
+void QMath::insert_symbol(string const & name)
+{
+	// needless to say, this can't last for long
+	extern BufferView * current_view;
+
+	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + name));
+}

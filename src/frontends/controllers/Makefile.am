@@ -61,6 +61,8 @@ libcontrollers_la_SOURCES= \
 	ControlInset.h \
 	ControlLog.C \
 	ControlLog.h \
+	ControlMath.C \
+	ControlMath.h \
 	ControlMinipage.C \
 	ControlMinipage.h \
 	ControlParagraph.C \

@@ -56,6 +56,8 @@ libqt2_la_SOURCES = \
 	WorkAreaFactory.C \
 	emptytable.C \
 	emptytable.h \
+	iconpalette.h \
+	iconpalette.C \
 	io_callback.h \
 	lengthcombo.C \
 	lengthcombo.h \

@@ -15,10 +15,11 @@
 #pragma implementation
 #endif
 
+#include "ControlMath.h"
+ 
 #include "frontends/LyXView.h"
 #include "FormMathsPanel.h"
 #include "forms/form_maths_panel.h"
-#include "MathsSymbols.h"
 #include "funcrequest.h"
 
 #include "forms/form_maths_deco.h"
