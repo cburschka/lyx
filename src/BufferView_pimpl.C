@@ -807,6 +807,9 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 			// they call the actions they have to do with the insetButtonRel.
 			// function and not in the edit(). This should be changed
 			// (Jug 20020329)
+#ifdef WITH_WARNINGS
+#warning Please remove donot call inset->edit() here (Jug 20020812)
+#endif
 			inset_hit->edit(bv_, x, y, button);
 		}
 		return;

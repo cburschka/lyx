@@ -237,6 +237,12 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 			    mouse_button::state button)
 {
+#ifdef WITH_WARNINGS
+#warning Fix this properly in BufferView_pimpl::workAreaButtonRelease
+#endif
+	if (button == mouse_button::button3)
+		return;
+	
 	UpdatableInset::edit(bv, xp, yp, button);
 
 	if (collapsed_) {
