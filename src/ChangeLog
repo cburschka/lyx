@@ -1,3 +1,8 @@
+2001-09-29  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* paragraph_pimpl.C (simpleTeXSpecialChars): Call to textrow.start
+	after a multi-line inset.
+
 2001-09-28  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* paragraph.C (validate): Set NeedLyXFootnoteCode

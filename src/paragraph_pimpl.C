@@ -284,12 +284,13 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				os << "}";
 
 			if (tmp) {
+				for (int j = 0; j < tmp; ++j) {
+					texrow.newline();
+				}
+				texrow.start(owner_, i + 1);
 				column = 0;
 			} else {
 				column += int(os.tellp()) - len;
-			}
-			for (; tmp--;) {
-				texrow.newline();
 			}
 		}
 	}
