@@ -36,25 +36,35 @@ protected:
 	/// Slot launching dialog to (possibly) create a new inset.
 	void createInset(string const &);
 	/// Slot launching dialog to an existing inset.
-	void showInset(Inset * inset);
+	void showInset(Inset *);
 	/// Allow the daughter methods to access the inset.
 	Inset * inset() const;
 
 private:
-	/** These methods are all that the individual daughter classes
+	/** These 6 methods are all that the individual daughter classes
 	    should need to instantiate. */
 
 	/// if the inset exists then do this...
 	virtual void applyParamsToInset() = 0;
 	/// else this...
 	virtual void applyParamsNoInset() = 0;
+
 	/// get the parameters from the string passed to createInset.
 	virtual Params const getParams(string const &) = 0;
 	/// get the parameters from the inset passed to showInset.
 	virtual Params const getParams(Inset const &) = 0;
-	/// clean-up any daughter class-particular data on hide().
-	virtual void clearDaughterParams() = 0;
 
+	/** Most derived classes won't need these two, so they default to empty.
+	 */
+
+	/// set any daughter class-particular data on show().
+	virtual void setDaughterParams() {}
+	/// clean-up any daughter class-particular data on hide().
+	virtual void clearDaughterParams() {}
+
+
+
+	
 	/// Instantiation of ControlBase virtual methods.
 
 	/// Get changed parameters and Dispatch them to the kernel.
@@ -123,6 +133,8 @@ void ControlInset<Inset, Params>::show(Params const & params)
 {
 	if (params_) delete params_;
 	params_ = new Params(params);
+
+	setDaughterParams();
 
 	bc().readOnly(isReadonly());
 	view().show();

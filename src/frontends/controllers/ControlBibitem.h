@@ -23,8 +23,7 @@
 
 /** A controller for Bibitem dialogs.
  */
-class ControlBibitem : public ControlCommand
-{
+class ControlBibitem : public ControlCommand {
 public:
 	///
 	ControlBibitem(LyXView &, Dialogs &);
@@ -34,8 +33,6 @@ private:
 	virtual void applyParamsToInset();
 	/// not needed.
 	virtual void applyParamsNoInset() {}
-	/// not needed.
-	virtual void clearDaughterParams() {}
 };
 
 #endif // CONTROLBIBITEM_H

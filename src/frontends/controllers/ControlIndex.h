@@ -7,12 +7,12 @@
  *
  * ======================================================
  *
- * \file ControlRef.h
+ * \file ControlIndex.h
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
-#ifndef CONTROLREF_H
-#define CONTROLREF_H
+#ifndef CONTROLINDEX_H
+#define CONTROLINDEX_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -20,19 +20,12 @@
 
 #include "ControlCommand.h"
 
-/** A controller for the Ref Dialog.
+/** A controller for Index dialogs.
  */
-class ControlRef : public ControlCommand {
+class ControlIndex : public ControlCommand {
 public:
 	///
-	ControlRef(LyXView &, Dialogs &);
-
-	///
-	std::vector<string> const getLabelList() const;
-	///
-	void gotoRef(string const &) const;
-	///
-	void gotoBookmark() const;
+	ControlIndex(LyXView &, Dialogs &);
 };
 
-#endif // CONTROLREF_H
+#endif // CONTROLINDEX_H

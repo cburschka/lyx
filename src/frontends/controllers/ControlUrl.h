@@ -27,10 +27,6 @@ class ControlUrl : public ControlCommand
 public:
 	///
 	ControlUrl(LyXView &, Dialogs &);
-
-private:
-	/// not needed.
-	virtual void clearDaughterParams() {}
 };
 
 #endif // CONTROLURL_H

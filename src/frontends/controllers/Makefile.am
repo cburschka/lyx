@@ -10,6 +10,10 @@ LIBS =
 SUBDIRS = 
 ETAGS_ARGS = --lang=c++
 libcontrollers_la_SOURCES=\
+	biblio.C \
+	biblio.h \
+	character.C \
+	character.h \
 	ButtonController.C \
 	ButtonController.h \
 	ButtonPolicies.C \
@@ -35,8 +39,12 @@ libcontrollers_la_SOURCES=\
 	ControlDialogs.h \
 	ControlError.h \
 	ControlError.C \
+	ControlGraphics.h \
+	ControlGraphics.C \
 	ControlInclude.C \
 	ControlInclude.h \
+	ControlIndex.C \
+	ControlIndex.h \
 	ControlInset.h \
 	ControlLog.C \
 	ControlLog.h \

@@ -14,43 +14,13 @@
 #endif
 
 #include "ControlDialogs.h"
-#include "lyxfont.h"
-#include "LColor.h"
+#include "character.h"
 
 /** A controller for Character dialogs.
  */
 class ControlCharacter : public ControlDialog<ControlConnectBD>
 {
 public:
-	///
-	enum FONT_STATE {
-		///
-		IGNORE,
-		///
-		EMPH_TOGGLE,
-		///
-		UNDERBAR_TOGGLE,
-		///
-		NOUN_TOGGLE,
-		///
-		LATEX_TOGGLE,
-		///
-		INHERIT
-	};
-	
-	///
-	typedef std::pair<string, LyXFont::FONT_FAMILY> FamilyPair;
-	///
-	typedef std::pair<string, LyXFont::FONT_SERIES> SeriesPair;
-	///
-	typedef std::pair<string, LyXFont::FONT_SHAPE>  ShapePair;
-	///
-	typedef std::pair<string, LyXFont::FONT_SIZE>   SizePair;
-	///
-	typedef std::pair<string, FONT_STATE> BarPair;
-	///
-	typedef std::pair<string, LColor::color> ColorPair;
-
 	///
 	ControlCharacter(LyXView &, Dialogs &);
 
@@ -63,7 +33,7 @@ public:
 	///
 	void setSize(LyXFont::FONT_SIZE);
 	///
-	void setBar(FONT_STATE);
+	void setBar(character::FONT_STATE);
 	///
 	void setColor(LColor::color);
 	///
@@ -84,20 +54,5 @@ private:
 	///
 	bool toggleall_;
 };
-
-/// Helper functions
-std::vector<ControlCharacter::FamilyPair> const getFamilyData();
-///
-std::vector<ControlCharacter::SeriesPair> const getSeriesData();
-///
-std::vector<ControlCharacter::ShapePair>  const getShapeData();
-///
-std::vector<ControlCharacter::SizePair>   const getSizeData();
-///
-std::vector<ControlCharacter::BarPair>    const getBarData();
-///
-std::vector<ControlCharacter::ColorPair>  const getColorData();
-///
-std::vector<string> const getLanguageData();
 
 #endif // CONTROLCHARACTER_H

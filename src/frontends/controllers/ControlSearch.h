@@ -38,8 +38,6 @@ public:
 private:
 	/// not needed.
 	virtual void apply() {}
-	/// 
-	virtual void clearDaughterParams() {}
 };
 
 #endif // CONTROLSEARCH_H

@@ -140,6 +140,20 @@ public:
 };
 
 
+/** Specialization for Graphics dialog
+ */
+class ControlGraphics;
+
+template <class GUIview, class GUIbc>
+class GUIGraphics :
+	public GUI<ControlGraphics, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUIGraphics(LyXView & lv, Dialogs & d)
+		: GUI<ControlGraphics, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for Include dialog
  */
 class ControlInclude;
@@ -151,6 +165,20 @@ public:
 	///
 	GUIInclude(LyXView & lv, Dialogs & d)
 		: GUI<ControlInclude, GUIview, OkCancelReadOnlyPolicy, GUIbc>(lv, d) {}
+};
+
+
+/** Specialization for Index dialog
+ */
+class ControlIndex;
+
+template <class GUIview, class GUIbc>
+class GUIIndex :
+	public GUI<ControlIndex, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUIIndex(LyXView & lv, Dialogs & d)
+		: GUI<ControlIndex, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
 };
 
 
@@ -174,11 +202,11 @@ class ControlMinipage;
 
 template <class GUIview, class GUIbc>
 class GUIMinipage :
-	public GUI<ControlMinipage, GUIview, OkApplyCancelReadOnlyPolicy, GUIbc> {
+	public GUI<ControlMinipage, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
 public:
 	///
 	GUIMinipage(LyXView & lv, Dialogs & d)
-		: GUI<ControlMinipage, GUIview, OkApplyCancelReadOnlyPolicy, GUIbc>(lv, d) {}
+		: GUI<ControlMinipage, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
 };
 
 

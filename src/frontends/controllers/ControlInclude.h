@@ -35,8 +35,6 @@ private:
 	virtual void applyParamsToInset();
 	/// Should be used but currently isn't
 	virtual void applyParamsNoInset() {}
-	/// not needed.
-	virtual void clearDaughterParams() {}
 	/// get the parameters from the string passed to createInset.
 	virtual InsetInclude::Params const getParams(string const &)
 		{ return InsetInclude::Params(); }

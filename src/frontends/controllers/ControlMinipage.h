@@ -15,6 +15,8 @@
 #ifndef CONTROLMINIPAGE_H
 #define CONTROLMINIPAGE_H
 
+#include <vector>
+
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -59,13 +61,18 @@ private:
 	virtual void applyParamsToInset();
 	/// 
 	virtual void applyParamsNoInset();
-	/// 
-	virtual void clearDaughterParams() {}
 	/// get the parameters from the string passed to createInset.
 	virtual MinipageParams const getParams(string const &)
 		{ return MinipageParams(); }
 	/// get the parameters from the inset passed to showInset.
 	virtual MinipageParams const getParams(InsetMinipage const &);
 };
+
+/// Helper functions
+namespace minipage {
+
+	std::vector<string> const getUnits();
+
+} //  namespace minipage
 
 #endif

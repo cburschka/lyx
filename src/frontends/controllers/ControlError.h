@@ -36,8 +36,6 @@ private:
 	virtual void applyParamsToInset() {}
 	/// 
 	virtual void applyParamsNoInset() {}
-	/// 
-	virtual void clearDaughterParams() {}
 	/// get the parameters from the string passed to createInset.
 	virtual string const getParams(string const &) { return string(); }
 	/// get the parameters from the inset passed to showInset.

@@ -1,9 +1,46 @@
+2001-03-28  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlInset.h (clearDaughterParams): is empty by default, not pure.
+	(setDaughterParams): a (by default empty) new method called in show().
+
+	* ControlBibitem.h:
+	* ControlBibtex.h:
+	* ControlError.h:
+	* ControlInclude.h:
+	* ControlMinipage.h:
+	* ControlRef.h:
+	* ControlSearch.h:
+	* ControlUrl.h (clearDaughterParams): removed
+
+	* ControlMinipage.C (applyParamsToInset): update the view.
+	Added namespace minipage containing a helper function getUnits.
+
+	* GUI.h: changed Minipage policy to NoRepeatedApplyReadOnlyPolicy.
+
+	* ControlCharacter.[Ch]: moved out all the helper functions and the
+	enum into their own file.
+	* character.[Ch]: new files; contain the character helper functions,
+	now inside namespace character.
+
+	* ControlCitation.[Ch]: moved out all the helper functions and the
+	enums into their own file. Simplified interface.
+	* biblio.[Ch]: new files; contain the citation helper functions,
+	now inside namespace biblio. Will be of use also to an improved
+	BibTeX popup.
+
+	* ControlGraphics.[Ch]:
+	* ControlIndex.[Ch]: new files; controllers for the Graphics and Index
+	popups, respectively.
+
+	* GUI.h:
+	* Makefile.am: associated changes.
+
 2001-03-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlMinipage.[Ch]:
 	* ControlPreamble.[Ch]:
 	* ControlPrint.[Ch]:
-	* ControlSplash.[Ch]: new files; controller for the Minipage, Preamble
+	* ControlSplash.[Ch]: new files; controllers for the Minipage, Preamble
 	and Print popups and Splash screen, respectively.
 
 	* ViewBase.h (ViewSplash): new base class for GUI-specific Splash

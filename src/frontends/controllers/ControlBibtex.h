@@ -35,8 +35,6 @@ private:
 	virtual void applyParamsToInset();
 	/// 
 	virtual void applyParamsNoInset();
-	/// not needed.
-	virtual void clearDaughterParams() {}
 };
 
 #endif // CONTROLBIBTEX_H
