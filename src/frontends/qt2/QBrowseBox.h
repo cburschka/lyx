@@ -48,16 +48,16 @@ signals:
 	
 protected:
 	virtual void keyPressEvent(QKeyEvent * e);
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void mouseReleaseEvent(QMouseEvent * e);
+	virtual void resizeEvent(QResizeEvent *e);
+	virtual void contentsMouseReleaseEvent(QMouseEvent *);
 	virtual void closeEvent(QCloseEvent * e);
-	virtual void mouseMoveEvent(QMouseEvent * e);
+	virtual void contentsMouseMoveEvent(QMouseEvent * e);
 	virtual void paintCell(QPainter *, int row, int col);
 	
 private:
 	// make sure the automatically generated one is not used
 	QBrowseBox & operator=(QBrowseBox const &);
-	
+
 	void moveLeft();
 	void moveRight();
 	void moveUp();

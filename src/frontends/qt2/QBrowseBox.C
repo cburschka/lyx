@@ -44,9 +44,9 @@ QBrowseBox::QBrowseBox(int rows, int cols, QWidget* parent, const char* name, WF
 	else
 		setFrameStyle(QFrame::Panel | QFrame::Raised);
 
-	setFocusPolicy(QWidget::StrongFocus);
+	viewport()->setFocusPolicy(QWidget::StrongFocus);
 	// setMouseTracking must be called after setFocusPolicy
-	setMouseTracking(true);
+	viewport()->setMouseTracking(true);
 	inloop=false;
 	
 }
@@ -209,7 +209,7 @@ void QBrowseBox::keyPressEvent(QKeyEvent * e)
 	}
 }
 
-void QBrowseBox::mouseReleaseEvent(QMouseEvent *)
+void QBrowseBox::contentsMouseReleaseEvent(QMouseEvent *)
 {
 
 	if (firstrelease_)
@@ -267,12 +267,12 @@ void QBrowseBox::resizeEvent(QResizeEvent * e)
 }
 
 
-void QBrowseBox::mouseMoveEvent(QMouseEvent * e)
+void QBrowseBox::contentsMouseMoveEvent(QMouseEvent * e)
 {
 	qWarning("mouseMoveEvent");
 	int x = e->pos().x();
 	int y = e->pos().y();
-
+	
 	int cellx;
 	int celly;
 
