@@ -589,7 +589,8 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
                                             unsigned int button)
 {
-	if (!buffer_ || !screen_.get()) return;
+	if (!buffer_ || !screen_.get())
+		return;
 
 	Inset * inset_hit = checkInsetHit(bv_->text, xpos, ypos);
 
@@ -603,6 +604,16 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 			scrollDown(lyxrc.wheel_jump);
 			break;
 		}
+	}
+	
+	// Middle button press pastes if we have a selection
+	// We do this here as if the selection was inside an inset
+	// it could get cleared on the unlocking of the inset so
+	// we have to check this first
+	bool paste_internally = false;
+	if (button == 2 && bv_->getLyXText()->selection.set()) {
+		owner_->getLyXFunc()->dispatch(LFUN_COPY);
+		paste_internally = true;
 	}
 	
 	if (bv_->theLockingInset()) {
@@ -624,14 +635,6 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	screen_->hideCursor();
 
 	int const screen_first = bv_->text->first_y;
-	
-	// Middle button press pastes if we have a selection
-	bool paste_internally = false;
-	if (button == 2
-	    && bv_->text->selection.set()) {
-		owner_->getLyXFunc()->dispatch(LFUN_COPY);
-		paste_internally = true;
-	}
 	
 	// Clear the selection
 	screen_->toggleSelection(bv_->text, bv_);
@@ -679,7 +682,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 			owner_->getLyXFunc()->dispatch(LFUN_PASTE);
 		else
 			owner_->getLyXFunc()->dispatch(LFUN_PASTESELECTION,
-						       "paragraph");
+			                               "paragraph");
 		selection_possible = false;
 		return;
 	}
@@ -1388,14 +1391,16 @@ void BufferView::Pimpl::center()
 
 void BufferView::Pimpl::pasteClipboard(bool asPara) 
 {
-	if (!buffer_) return;
+	if (!buffer_)
+		return;
 
 	screen_->hideCursor();
 	beforeChange(bv_->text);
 	
 	string const clip(workarea_.getClipboard());
 	
-	if (clip.empty()) return;
+	if (clip.empty())
+		return;
 
 	if (asPara) {
 		bv_->getLyXText()->insertStringAsParagraphs(bv_, clip);
@@ -1574,7 +1579,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 	case LFUN_PASTESELECTION:
 	{
-	        bool asPara = false;
+		bool asPara = false;
 		if (argument == "paragraph")
 			asPara = true;
 		pasteClipboard(asPara);

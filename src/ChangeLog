@@ -1,3 +1,16 @@
+2002-03-18  Juergen Vigna  <jug@sad.it>
+
+	* BufferView2.C (copy): use getLyXText() so that we do it inside an
+	inset if we're there actually (probably not used right now but this
+	is the direction to go for unifying code).
+	(paste): disable code to clear the selection.
+
+	* BufferView_pimpl.C (workAreaButtonPress): check also for a selection
+	inside an InsetText and move the check further up as it is in the
+	wrong place.
+
+	* text2.C (pasteSelection): set a selection over the pasted text.
+
 2002-03-14  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* Makefile.am (lyx_DEPENDENCIES): Swap the order of libfrontend

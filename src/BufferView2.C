@@ -393,7 +393,7 @@ void BufferView::pasteEnvironment()
 void BufferView::copy()
 {
 	if (available()) {
-		text->copySelection(this);
+		getLyXText()->copySelection(this);
 		owner()->message(_("Copy"));
 	}
 }
@@ -413,7 +413,8 @@ void BufferView::cut(bool realcut)
 
 void BufferView::paste()
 {
-	if (!available()) return;
+	if (!available())
+		return;
 
 	owner()->message(_("Paste"));
 
@@ -426,11 +427,14 @@ void BufferView::paste()
 	// paste
 	text->pasteSelection(this);
 	update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-	
+// why fake a selection only I think it should be a real one and not only
+// a painted one (Jug 20020318).
+#if 0
 	// clear the selection 
 	toggleSelection();
 	text->clearSelection();
 	update(text, BufferView::SELECT|BufferView::FITCUR);
+#endif
 }
 
 
