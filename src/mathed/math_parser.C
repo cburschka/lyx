@@ -758,12 +758,12 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 		//
 		else if (t.cs() == "(") {
 			cell->push_back(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
-			parse_into2(cell->back(), FLAG_SIMPLE2, true, true);
+			parse_into2(cell->back(), FLAG_SIMPLE2, true, false);
 		}
 
 		else if (t.cs() == "[") {
 			cell->push_back(MathAtom(new MathHullInset(LM_OT_EQUATION)));
-			parse_into2(cell->back(), FLAG_EQUATION, true, true);
+			parse_into2(cell->back(), FLAG_EQUATION, true, false);
 		}
 
 		else if (t.cs() == "protect")
