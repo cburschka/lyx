@@ -176,6 +176,8 @@ public:
 	///
 	bool operator==(Token const & t) const;
 	///
+	bool operator!=(Token const & t) const;
+	///
 	string const & cs() const { return cs_; }
 	///
 	CatCode cat() const { return cat_; }
@@ -201,6 +203,11 @@ string Token::asString() const
 bool Token::operator==(Token const & t) const
 {
 	return char_ == t.char_ && cat_ == t.cat_ && cs_ == t.cs_; 
+}
+
+bool Token::operator!=(Token const & t) const
+{
+	return char_ != t.char_ && cat_ != t.cat_ && cs_ != t.cs_; 
 }
 
 ostream & operator<<(ostream & os, Token const & t)
@@ -401,7 +408,7 @@ void Parser::tokenize(string const & buffer)
 				if (catcode(c) == catNewline)
 					; //push_back(Token("par"));
 				else {
-					push_back(Token(' ',catSpace));
+					push_back(Token(' ', catSpace));
 					is.putback(c);	
 				}
 				break;
