@@ -334,6 +334,7 @@ void LyXAction::init()
 		{ LFUN_TEXTCLASS_LOAD, "textclass-load", Noop },
 		{ LFUN_SAVE_AS_DEFAULT, "buffer-save-as-default", Noop },
 		{ LFUN_BUFFERPARAMS_APPLY, "buffer-params-apply", Noop },
+		{ LFUN_LYXRC_APPLY, "lyxrc-apply", NoBuffer },
 		{ LFUN_NOACTION, "", Noop }
 	};
 

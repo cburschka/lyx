@@ -21,8 +21,10 @@
 #include "paper.h"
 #include "graphics/GraphicsTypes.h"
 
+#include <iosfwd>
 #include <string>
 
+class LyXLex;
 
 /// This contains the runtime configuration of LyX
 class LyXRC //: public noncopyable {
@@ -140,11 +142,17 @@ enum LyXRCTags {
 	///
 	int read(std::string const & filename);
 	///
+	int read(std::istream &);
+private:
+	///
+	int read(LyXLex &);
+public:
+	///
 	void write(std::string const & filename) const;
 	///
-	void print() const;
+	void write(std::ostream & os) const;
 	///
-	void output(std::ostream & os) const;
+	void print() const;
 	///
 	static std::string const getDescription(LyXRCTags);
 	///

@@ -1,5 +1,15 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* lfuns.h:
+	* LyXAction.C: new lfun LFUN_LYXRC_APPLY.
+
+	* lyxrc.[Ch] (read, write): overloaded member functions taking
+	a std::[io]stream arguments.
+
+	* lyxfunc.C (getStatus, dispatch): handle LFUN_LYXRC_APPLY.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* lyxfunc.C (loadTextclass): new helper function, invoked by two of
 	dispatch's case blocks, LFUN_TEXTCLASS_APPLY and LFUN_TEXTCLASS_LOAD.
 

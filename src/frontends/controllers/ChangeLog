@@ -1,3 +1,11 @@
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
+	* ControlPrefs.C: a bit of an overhaul, moving the local Converters
+	and Formats variables out of the various frontends to here,
+	and ensuring that nothing is actually dispatched to the core except
+	from apply().
+	Also use the new LFUN_LYXRC_APPLY lfun.
+
 2004-03-30  Angus Leeming  <leeming@lyx.org>
 
 	* ControlDocument.[Ch]: converted to the dialog-based scheme.

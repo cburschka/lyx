@@ -73,6 +73,18 @@ QPrefs::QPrefs()
 }
 
 
+Converters & QPrefs::converters()
+{
+	return controller().converters();
+}
+
+
+Formats & QPrefs::formats()
+{
+	return controller().formats();
+}
+
+
 void QPrefs::build_dialog()
 {
 	dialog_.reset(new QPrefsDialog(this));
@@ -286,9 +298,6 @@ void QPrefs::apply()
 		|| rc.zoom != oldrc.zoom || rc.dpi != oldrc.dpi) {
 		controller().updateScreenFonts();
 	}
-
-	controller().setFormats(formats_);
-	controller().setConverters(converters_);
 
 	QPrefColorsModule * colmod(dialog_->colorsModule);
 
@@ -582,11 +591,7 @@ void QPrefs::update_contents()
 	fontmod->screenHugeED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_HUGE])));
 	fontmod->screenHugerED->setText(toqstr(tostr(rc.font_sizes[LyXFont::SIZE_HUGER])));
 
-	formats_ = formats;
-
 	dialog_->updateFormats();
-
-	converters_ = converters;
 
 	dialog_->updateConverters();
 }

@@ -16,12 +16,9 @@
 #include "ViewBase.h"
 
 #include "bufferlist.h"
-#include "converter.h"
-#include "format.h"
 #include "gettext.h"
 #include "funcrequest.h"
 #include "LColor.h"
-#include "lfuns.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
@@ -30,6 +27,8 @@
 #include "support/globbing.h"
 #include "support/path_defines.h"
 
+#include "support/std_sstream.h"
+
 #include <utility>
 
 using lyx::support::AddName;
@@ -37,29 +36,65 @@ using lyx::support::FileFilterList;
 using lyx::support::system_lyxdir;
 using lyx::support::user_lyxdir;
 
+using std::ostringstream;
 using std::pair;
 using std::string;
+using std::vector;
 
 
 extern BufferList bufferlist;
 
 ControlPrefs::ControlPrefs(LyXView & lv, Dialogs & d)
-	: ControlDialogBI(lv, d)
+	: ControlDialogBI(lv, d),
+	  redraw_gui_(false),
+	  update_screen_font_(false)
 {}
 
 
 void ControlPrefs::setParams()
 {
 	rc_ = lyxrc;
+	formats_ = ::formats;
+	converters_ = ::converters;
+	converters_.update(formats_);
+	colors_.clear();
+	redraw_gui_ = false;
+	update_screen_font_ = false;
 }
 
 
 void ControlPrefs::apply()
 {
 	view().apply();
-	lyxrc = rc_;
 
+ 	ostringstream ss;
+ 	rc_.write(ss);
+ 	lv_.dispatch(FuncRequest(LFUN_LYXRC_APPLY, ss.str()));
+
+	// FIXME: these need lfuns
 	bufferlist.setCurrentAuthor(rc_.user_name, rc_.user_email);
+
+	::formats = formats_;
+
+	::converters = converters_;
+	::converters.update(::formats);
+	::converters.buildGraph();
+
+	vector<string>::const_iterator it = colors_.begin();
+	vector<string>::const_iterator const end = colors_.end();
+	for (; it != end; ++it)
+		lv_.dispatch(FuncRequest(LFUN_SET_COLOR, *it));
+	colors_.clear();
+
+	if (redraw_gui_) {
+		lv_.getDialogs().redrawGUI();
+		redraw_gui_ = false;
+	}
+
+	if (update_screen_font_) {
+		lv_.dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+		update_screen_font_ = false;
+	}
 
 	// The Save button has been pressed
 	if (isClosing()) {
@@ -68,17 +103,31 @@ void ControlPrefs::apply()
 }
 
 
+void ControlPrefs::redrawGUI()
+{
+	redraw_gui_ = true;
+}
+
+
+void ControlPrefs::setColor(LColor_color col, string const & hex)
+{
+	colors_.push_back(lcolor.getLyXName(col) + ' ' + hex);
+}
+
+
+void ControlPrefs::updateScreenFonts()
+{
+	update_screen_font_ = true;
+}
+
+
 string const ControlPrefs::browsebind(string const & file) const
 {
-	string dir  = AddName(system_lyxdir(), "bind");
-	// FIXME: stupid name
-	string name = _("System Bind|#S#s");
-	pair<string,string> dir1(name, dir);
+	pair<string,string> dir1(_("System Bind|#S#s"),
+				 AddName(system_lyxdir(), "bind"));
 
-	dir = AddName(user_lyxdir(), "bind");
-	// FIXME: stupid name
-	name = _("User Bind|#U#u");
-	pair<string,string> dir2(name, dir);
+	pair<string,string> dir2(_("User Bind|#U#u"),
+				 AddName(user_lyxdir(), "bind"));
 
 	return browseFile(file, _("Choose bind file"),
 			  FileFilterList("*.bind"), false, dir1, dir2);
@@ -87,15 +136,11 @@ string const ControlPrefs::browsebind(string const & file) const
 
 string const ControlPrefs::browseUI(string const & file) const
 {
-	string dir  = AddName(system_lyxdir(), "ui");
-	// FIXME: stupid name
-	string name = _("Sys UI|#S#s");
-	pair<string,string> dir1(name, dir);
+	pair<string,string> const dir1(_("Sys UI|#S#s"),
+				       AddName(system_lyxdir(), "ui"));
 
-	dir = AddName(user_lyxdir(), "ui");
-	// FIXME: stupid name
-	name = _("User UI|#U#u");
-	pair<string,string> dir2(name, dir);
+	pair<string,string> const dir2(_("User UI|#U#u"),
+				       AddName(user_lyxdir(), "ui"));
 
 	return browseFile(file, _("Choose UI file"),
 			  FileFilterList("*.ui"), false, dir1, dir2);
@@ -104,12 +149,11 @@ string const ControlPrefs::browseUI(string const & file) const
 
 string const ControlPrefs::browsekbmap(string const & file) const
 {
-	string const dir = AddName(system_lyxdir(), "kbd");
-	string const name = _("Key maps|#K#k");
-	pair<string, string> dir1(name, dir);
+	pair<string, string> dir(_("Key maps|#K#k"),
+				 AddName(system_lyxdir(), "kbd"));
 
 	return browseFile(file, _("Choose keyboard map"),
-			  FileFilterList("*.kmap"), false, dir1);
+			  FileFilterList("*.kmap"), false, dir);
 }
 
 
@@ -131,43 +175,4 @@ string const ControlPrefs::browsedir(string const & path,
 				     string const & title) const
 {
 	return browseDir(path, title);
-}
-
-
-void ControlPrefs::redrawGUI()
-{
-	// we must be sure to get the new values first
-	lyxrc = rc_;
-
-	lv_.getDialogs().redrawGUI();
-}
-
-
-void ControlPrefs::setColor(LColor_color col, string const & hex)
-{
-	string const s = lcolor.getLyXName(col) + ' ' + hex;
-	lv_.dispatch(FuncRequest(LFUN_SET_COLOR, s));
-}
-
-
-void ControlPrefs::updateScreenFonts()
-{
-	// we must be sure to get the new values first
-	lyxrc = rc_;
-
-	lv_.dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
-}
-
-
-void ControlPrefs::setConverters(Converters const & conv)
-{
-	converters = conv;
-	converters.update(formats);
-	converters.buildGraph();
-}
-
-
-void ControlPrefs::setFormats(Formats const & form)
-{
-	formats = form;
 }

@@ -20,6 +20,8 @@
 #include <boost/scoped_ptr.hpp>
 
 class ControlPrefs;
+class Converters;
+class Formats;
 
 class Dialogs;
 class FormColorpicker;
@@ -142,8 +144,6 @@ private:
 		///
 		FD_preferences_converters const * dialog();
 		///
-		void apply() const;
-		///
 		void build();
 		///
 		std::string const feedback(FL_OBJECT const * const) const;
@@ -154,7 +154,7 @@ private:
 		///
 		void UpdateBrowser();
 		///
-		void UpdateChoices() const;
+		void UpdateChoices();
 
 	private:
 		///
@@ -166,9 +166,12 @@ private:
 		///
 		bool Input();
 		///
-		std::string const GetFrom() const;
+		std::string const GetFrom();
 		///
-		std::string const GetTo() const;
+		std::string const GetTo();
+		///
+		::Converters & converters();
+		::Formats & formats();
 
 		///
 		FormPreferences & parent_;
@@ -186,8 +189,6 @@ private:
 		///
 		FD_preferences_formats const * dialog();
 		///
-		void apply() const;
-		///
 		void build();
 		///
 		std::string const feedback(FL_OBJECT const * const) const;
@@ -207,6 +208,9 @@ private:
 		bool erase();
 		///
 		bool Input();
+		//
+		::Converters & converters();
+		::Formats & formats();
 
 		///
 		FormPreferences & parent_;

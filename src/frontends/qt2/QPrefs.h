@@ -13,8 +13,6 @@
 #define QPREFS_H
 
 
-#include "converter.h"
-#include "format.h"
 #include "ControlPrefs.h"
 
 #include "Qt2Base.h"
@@ -22,6 +20,8 @@
 #include <vector>
 
 class QPrefsDialog;
+class Controllers;
+class Formats;
 
 class QPrefs
 	: public Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> >
@@ -42,14 +42,11 @@ private:
 	/// build the dialog
 	virtual void build_dialog();
 
+	Converters & converters();
+	Formats & formats();
+
 	/// languages
 	std::vector<std::string> lang_;
-
-	/// converters
-	Converters converters_;
-
-	/// formats
-	Formats formats_;
 };
 
 #endif // QPREFS_H

@@ -506,6 +506,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_TEXTCLASS_LOAD:
 	case LFUN_SAVE_AS_DEFAULT:
 	case LFUN_BUFFERPARAMS_APPLY:
+	case LFUN_LYXRC_APPLY:
 
 		// these are handled in our dispatch()
 		break;
@@ -1366,6 +1367,18 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		case LFUN_TEXTCLASS_LOAD:
 			loadTextclass(argument);
 			break;
+
+		case LFUN_LYXRC_APPLY: {
+			istringstream ss(argument);
+			bool const success = lyxrc.read(ss) == 0;
+			
+			if (!success) {
+				lyxerr << "Warning in LFUN_LYXRC_APPLY!\n"
+				       << "Unable to read lyxrc data"
+				       << endl;
+			}
+			break;
+		} 
 
 		default: {
 			DispatchResult res = view()->cursor().dispatch(cmd);

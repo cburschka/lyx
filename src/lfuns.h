@@ -347,6 +347,7 @@ enum kb_action {
 	LFUN_SAVE_AS_DEFAULT,
 	LFUN_BUFFERPARAMS_APPLY,
 	// 265
+	LFUN_LYXRC_APPLY,
 
 	LFUN_LASTACTION                  // end of the table
 };

@@ -282,8 +282,8 @@ void QPrefsDialog::updateConverters()
 	convertmod->converterFromCO->clear();
 	convertmod->converterToCO->clear();
 
-	Formats::const_iterator cit = form_->formats_.begin();
-	Formats::const_iterator end = form_->formats_.end();
+	Formats::const_iterator cit = form_->formats().begin();
+	Formats::const_iterator end = form_->formats().end();
 	for (; cit != end; ++cit) {
 		convertmod->converterFromCO->insertItem(toqstr(cit->prettyname()));
 		convertmod->converterToCO->insertItem(toqstr(cit->prettyname()));
@@ -291,8 +291,8 @@ void QPrefsDialog::updateConverters()
 
 	convertmod->convertersLB->clear();
 
-	Converters::const_iterator ccit = form_->converters_.begin();
-	Converters::const_iterator cend = form_->converters_.end();
+	Converters::const_iterator ccit = form_->converters().begin();
+	Converters::const_iterator cend = form_->converters().end();
 	for (; ccit != cend; ++ccit) {
 		string const name(ccit->From->prettyname() + " -> " +
 			ccit->To->prettyname());
@@ -306,9 +306,9 @@ void QPrefsDialog::updateConverters()
 
 void QPrefsDialog::switch_converter(int nr)
 {
-	Converter const & c(form_->converters_.get(nr));
-	convertersModule->converterFromCO->setCurrentItem(form_->formats_.getNumber(c.from));
-	convertersModule->converterToCO->setCurrentItem(form_->formats_.getNumber(c.to));
+	Converter const & c(form_->converters().get(nr));
+	convertersModule->converterFromCO->setCurrentItem(form_->formats().getNumber(c.from));
+	convertersModule->converterToCO->setCurrentItem(form_->formats().getNumber(c.to));
 	convertersModule->converterED->setText(toqstr(c.command));
 	convertersModule->converterFlagED->setText(toqstr(c.flags));
 }
@@ -318,13 +318,13 @@ void QPrefsDialog::switch_converter(int nr)
 // specify unique from/to or it doesn't appear. This is really bad UI
 void QPrefsDialog::new_converter()
 {
-	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem()));
-	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem()));
+	Format const & from(form_->formats().get(convertersModule->converterFromCO->currentItem()));
+	Format const & to(form_->formats().get(convertersModule->converterToCO->currentItem()));
 
-	Converter const * old = form_->converters_.getConverter(from.name(), to.name());
-	form_->converters_.add(from.name(), to.name(), "", "");
+	Converter const * old = form_->converters().getConverter(from.name(), to.name());
+	form_->converters().add(from.name(), to.name(), "", "");
 	if (!old) {
-		form_->converters_.updateLast(form_->formats_);
+		form_->converters().updateLast(form_->formats());
 	}
 	updateConverters();
 	convertersModule->convertersLB->setCurrentItem(convertersModule->convertersLB->count() - 1);
@@ -333,15 +333,15 @@ void QPrefsDialog::new_converter()
 
 void QPrefsDialog::modify_converter()
 {
-	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem()));
-	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem()));
+	Format const & from(form_->formats().get(convertersModule->converterFromCO->currentItem()));
+	Format const & to(form_->formats().get(convertersModule->converterToCO->currentItem()));
 	string flags(fromqstr(convertersModule->converterFlagED->text()));
 	string name(fromqstr(convertersModule->converterED->text()));
 
-	Converter const * old = form_->converters_.getConverter(from.name(), to.name());
-	form_->converters_.add(from.name(), to.name(), name, flags);
+	Converter const * old = form_->converters().getConverter(from.name(), to.name());
+	form_->converters().add(from.name(), to.name(), name, flags);
 	if (!old) {
-		form_->converters_.updateLast(form_->formats_);
+		form_->converters().updateLast(form_->formats());
 	}
 	updateConverters();
 }
@@ -349,9 +349,9 @@ void QPrefsDialog::modify_converter()
 
 void QPrefsDialog::remove_converter()
 {
-	Format const & from(form_->formats_.get(convertersModule->converterFromCO->currentItem()));
-	Format const & to(form_->formats_.get(convertersModule->converterToCO->currentItem()));
-	form_->converters_.erase(from.name(), to.name());
+	Format const & from(form_->formats().get(convertersModule->converterFromCO->currentItem()));
+	Format const & to(form_->formats().get(convertersModule->converterToCO->currentItem()));
+	form_->converters().erase(from.name(), to.name());
 	updateConverters();
 }
 
@@ -362,8 +362,8 @@ void QPrefsDialog::updateFormats()
 
 	formatmod->formatsLB->clear();
 
-	Formats::const_iterator cit = form_->formats_.begin();
-	Formats::const_iterator end = form_->formats_.end();
+	Formats::const_iterator cit = form_->formats().begin();
+	Formats::const_iterator end = form_->formats().end();
 	for (; cit != end; ++cit) {
 		formatmod->formatsLB->insertItem(toqstr(cit->prettyname()));
 	}
@@ -375,42 +375,42 @@ void QPrefsDialog::updateFormats()
 
 void QPrefsDialog::switch_format(int nr)
 {
-	Format const & f(form_->formats_.get(nr));
+	Format const & f(form_->formats().get(nr));
 	fileformatsModule->formatED->setText(toqstr(f.name()));
 	fileformatsModule->guiNameED->setText(toqstr(f.prettyname()));
 	fileformatsModule->extensionED->setText(toqstr(f.extension()));
 	fileformatsModule->shortcutED->setText(toqstr(f.shortcut()));
 	fileformatsModule->viewerED->setText(toqstr(f.viewer()));
 	fileformatsModule->formatRemovePB->setEnabled(
-		!form_->converters_.formatIsUsed(f.name()));
+		!form_->converters().formatIsUsed(f.name()));
 }
 
 
 void QPrefsDialog::new_format()
 {
-	form_->formats_.add(_("New"));
-	form_->formats_.sort();
+	form_->formats().add(_("New"));
+	form_->formats().sort();
 	updateFormats();
-	fileformatsModule->formatsLB->setCurrentItem(form_->formats_.getNumber(_("New")));
+	fileformatsModule->formatsLB->setCurrentItem(form_->formats().getNumber(_("New")));
 	updateConverters();
 }
 
 
 void QPrefsDialog::modify_format()
 {
-	Format const & oldformat(form_->formats_.get(fileformatsModule->formatsLB->currentItem()));
+	Format const & oldformat(form_->formats().get(fileformatsModule->formatsLB->currentItem()));
 	string const oldpretty(oldformat.prettyname());
 	string const name(fromqstr(fileformatsModule->formatED->text()));
-	form_->formats_.erase(oldformat.name());
+	form_->formats().erase(oldformat.name());
 
 	string const prettyname = fromqstr(fileformatsModule->guiNameED->text());
 	string const extension = fromqstr(fileformatsModule->extensionED->text());
 	string const shortcut = fromqstr(fileformatsModule->shortcutED->text());
 	string const viewer = fromqstr(fileformatsModule->viewerED->text());
 
-	form_->formats_.add(name, extension, prettyname, shortcut);
-	form_->formats_.sort();
-	form_->formats_.setViewer(name, viewer);
+	form_->formats().add(name, extension, prettyname, shortcut);
+	form_->formats().sort();
+	form_->formats().setViewer(name, viewer);
 
 	fileformatsModule->formatsLB->setUpdatesEnabled(false);
 	updateFormats();
@@ -426,7 +426,7 @@ void QPrefsDialog::remove_format()
 	int const nr(fileformatsModule->formatsLB->currentItem());
 	if (nr < 0)
 		return;
-	form_->formats_.erase(form_->formats_.get(nr).name());
+	form_->formats().erase(form_->formats().get(nr).name());
 	updateFormats();
 	updateConverters();
 }

@@ -303,6 +303,29 @@ int LyXRC::read(string const & filename)
 
 	lyxerr[Debug::LYXRC] << "Reading '" << filename << "'..." << endl;
 
+	return read(lexrc);
+}
+
+
+int LyXRC::read(std::istream & is)
+{
+	LyXLex lexrc(lyxrcTags, lyxrcCount);
+	if (lyxerr.debugging(Debug::PARSER))
+		lexrc.printTable(lyxerr);
+
+	lexrc.setStream(is);
+	if (!lexrc.isOK()) return -2;
+
+	lyxerr[Debug::LYXRC] << "Reading istream..." << endl;
+
+	return read(lexrc);
+}
+
+
+int LyXRC::read(LyXLex & lexrc)
+{
+	if (!lexrc.isOK()) return -2;
+
 	while (lexrc.isOK()) {
 		// By using two switches we take advantage of the compiler
 		// telling us if we have missed a LyXRCTags element in
@@ -569,7 +592,7 @@ int LyXRC::read(string const & filename)
 				dpi = lexrc.getInteger();
 			}
 			break;
-
+1G
 		case RC_SCREEN_ZOOM:
 			if (lexrc.next()) {
 				zoom = lexrc.getInteger();
@@ -1052,20 +1075,20 @@ void LyXRC::write(string const & filename) const
 {
 	ofstream ofs(filename.c_str());
 	if (ofs)
-		output(ofs);
+		write(ofs);
 }
 
 
 void LyXRC::print() const
 {
 	if (lyxerr.debugging())
-		output(lyxerr);
+		write(lyxerr);
 	else
-		output(cout);
+		write(cout);
 }
 
 
-void LyXRC::output(ostream & os) const
+void LyXRC::write(ostream & os) const
 {
 	os << "### This file is part of\n"
 	   << "### ========================================================\n"

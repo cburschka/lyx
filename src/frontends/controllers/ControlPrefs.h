@@ -12,26 +12,29 @@
 #ifndef CONTROLPREFS_H
 #define CONTROLPREFS_H
 
-
 #include "ControlDialog_impl.h"
+#include "converter.h"
+#include "format.h"
 #include "lyxrc.h"
 
+#include <string>
+#include <vector>
 
-class Converters;
 class LColor_color;
-class Formats;
+
 
 class ControlPrefs : public ControlDialogBI {
 public:
 	ControlPrefs(LyXView &, Dialogs &);
 
-	// FIXME: we should probably devolve the individual
-	// settings to methods here. But for now, this will
-	// do
-
 	LyXRC & rc() { return rc_; }
-
 	LyXRC const & rc() const { return rc_; }
+
+	Converters & converters() { return converters_; }
+	Converters const & converters() const { return converters_; }
+
+	Formats & formats() { return formats_; }
+	Formats const & formats() const { return formats_; }
 
 	/// various file pickers
 	std::string const browsebind(std::string const & file) const;
@@ -56,12 +59,6 @@ public:
 	/// update the screen fonts after change
 	void updateScreenFonts();
 
-	/// set global converters
-	void setConverters(Converters const & conv);
-
-	/// set global formats
-	void setFormats(Formats const & form);
-
 private:
 	/// get current lyxrc
 	virtual void setParams();
@@ -71,6 +68,18 @@ private:
 
 	/// temporary lyxrc
 	LyXRC rc_;
+
+	/// temporary converters
+	Converters converters_;
+
+	/// temporary formats
+	Formats formats_;
+
+	/// A list of colors to be dispatched
+	std::vector<std::string> colors_;
+
+	bool redraw_gui_;
+	bool update_screen_font_;
 };
 
 #endif // CONTROLPREFS_H
