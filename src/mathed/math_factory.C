@@ -46,7 +46,7 @@
 #include "math_substackinset.h"
 #include "math_symbolinset.h"
 #include "math_tabularinset.h"
-#include "math_tfracinset.h"
+//#include "math_tfracinset.h"
 #include "math_undersetinset.h"
 #include "math_unknowninset.h"
 #include "math_xarrowinset.h"
@@ -321,8 +321,8 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathColorInset(false));
 	if (s == "dfrac")
 		return MathAtom(new MathDfracInset);
-	if (s == "tfrac")
-		return MathAtom(new MathTfracInset);
+//	if (s == "tfrac")
+//		return MathAtom(new MathTfracInset);
 
 	if (MacroTable::globalMacros().has(s))
 		return MathAtom(new MathMacro(s,
