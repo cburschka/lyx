@@ -76,8 +76,6 @@ public:
 	///
 	void validate(LaTeXFeatures &) const {}
 	///
-	dispatch_result localDispatch(FuncRequest const &);
-	///
 	bool checkInsertChar(LyXFont &);
 	///
 	// these are needed here because of the label/inlined functionallity
@@ -110,7 +108,11 @@ public:
 	bool forceDefaultParagraphs(InsetOld const *) const {
 		return true;
 	}
-
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 private:
 	///
 	void lfunMousePress(FuncRequest const &);

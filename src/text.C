@@ -1639,7 +1639,7 @@ WordLangTuple const LyXText::selectNextWordToSpellcheck(float & value)
 	    cursorPar()->isInset(cursor.pos())) {
 		// lock the inset!
 		FuncRequest cmd(bv(), LFUN_INSET_EDIT, "left");
-		cursorPar()->getInset(cursor.pos())->localDispatch(cmd);
+		cursorPar()->getInset(cursor.pos())->dispatch(cmd);
 		// now call us again to do the above trick
 		// but obviously we have to start from down below ;)
 		return bv()->text->selectNextWordToSpellcheck(value);
@@ -2191,4 +2191,3 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	dim.des = height - dim.asc;
 	dim.wid = std::max(mi.base.textwidth, int(width));
 }
-

@@ -66,7 +66,7 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 		delete new_inset;
 		return false;
 	}
-	new_inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT, "left"));
+	new_inset->dispatch(FuncRequest(bv, LFUN_INSET_EDIT, "left"));
 	return true;
 }
 
@@ -316,7 +316,9 @@ dispatch_result InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
-dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
+				idx_type &, pos_type &)
 {
 	//lyxerr << "InsetFormulaBase::localDispatch: act: " << cmd.action
 	//	<< " arg: '" << cmd.argument
@@ -359,7 +361,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			return lfunMouseRelease(cmd);
 		case LFUN_MOUSE_DOUBLE:
 			//lyxerr << "Mouse double" << endl;
-			return localDispatch(FuncRequest(LFUN_WORDSEL));
+			return dispatch(FuncRequest(LFUN_WORDSEL));
 		default:
 			break;
 	}
@@ -710,7 +712,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 		if (base) {
 			FuncRequest fr(bv, LFUN_INSET_MODIFY, cmd.argument);
-			result = base->localDispatch(fr);
+			result = base->dispatch(fr);
 		} else {
 			MathArray ar;
 			if (createMathInset_fromDialogStr(cmd.argument, ar)) {
@@ -906,13 +908,13 @@ void mathDispatchCreation(FuncRequest const & cmd, bool display)
 		InsetFormula * f = new InsetFormula(bv);
 		if (openNewInset(bv, f)) {
 			bv->theLockingInset()->
-				localDispatch(FuncRequest(bv, LFUN_MATH_MUTATE, "simple"));
+				dispatch(FuncRequest(bv, LFUN_MATH_MUTATE, "simple"));
 			// don't do that also for LFUN_MATH_MODE unless you want end up with
 			// always changing to mathrm when opening an inlined inset
 			// -- I really hate "LyXfunc overloading"...
 			if (display)
-				f->localDispatch(FuncRequest(bv, LFUN_MATH_DISPLAY));
-			f->localDispatch(FuncRequest(bv, LFUN_INSERT_MATH, cmd.argument));
+				f->dispatch(FuncRequest(bv, LFUN_MATH_DISPLAY));
+			f->dispatch(FuncRequest(bv, LFUN_INSERT_MATH, cmd.argument));
 		}
 	} else {
 		// create a macro if we see "\\newcommand" somewhere, and an ordinary
@@ -969,8 +971,8 @@ void mathDispatch(FuncRequest const & cmd)
 			InsetFormula * f = new InsetFormula(bv);
 			if (openNewInset(bv, f)) {
 				bv->theLockingInset()->
-					localDispatch(FuncRequest(bv, LFUN_MATH_MUTATE, "simple"));
-				bv->theLockingInset()->localDispatch(cmd);
+					dispatch(FuncRequest(bv, LFUN_MATH_MUTATE, "simple"));
+				bv->theLockingInset()->dispatch(cmd);
 			}
 			break;
 		}

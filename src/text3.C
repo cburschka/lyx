@@ -380,7 +380,7 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 		if (bv->insertInset(inset)) {
 			if (edit) {
 				FuncRequest cmd(bv, LFUN_INSET_EDIT, "left");
-				inset->localDispatch(cmd);
+				inset->dispatch(cmd);
 			}
 			if (gotsel && pastesel)
 				bv->owner()->dispatch(FuncRequest(LFUN_PASTE));
@@ -598,7 +598,7 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 			InsetOld * tmpinset = cursorPar()->getInset(cursor.pos());
 			cmd.message(tmpinset->editMessage());
 			FuncRequest cmd1(bv, LFUN_INSET_EDIT, is_rtl ? "right" : "left");
-			tmpinset->localDispatch(cmd1);
+			tmpinset->dispatch(cmd1);
 			break;
 		}
 		if (!is_rtl)
@@ -623,7 +623,7 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 			InsetOld * tmpinset = cursorPar()->getInset(cursor.pos());
 			cmd.message(tmpinset->editMessage());
 			FuncRequest cmd1(bv, LFUN_INSET_EDIT, is_rtl ? "left" : "right");
-			tmpinset->localDispatch(cmd1);
+			tmpinset->dispatch(cmd1);
 			break;
 		}
 		if (is_rtl)
@@ -1223,7 +1223,7 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 			FuncRequest cmd1 = cmd;
 			cmd1.x = cmd.x - start_x;
 			cmd1.y = cmd.y - cursor.y() + bv->top_y();
-			tli->localDispatch(cmd1);
+			tli->dispatch(cmd1);
 			break;
 		}
 
@@ -1302,7 +1302,7 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 			// otherwise give the event to the inset
 			if (inset_hit == bv->theLockingInset()) {
 				FuncRequest cmd1(bv, LFUN_MOUSE_PRESS, x, y, cmd.button());
-				bv->theLockingInset()->localDispatch(cmd1);
+				bv->theLockingInset()->dispatch(cmd1);
 				break;
 			}
 			bv->unlockInset(bv->theLockingInset());
@@ -1326,7 +1326,7 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 			if (!bv->lockInset(inset))
 				lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
 			FuncRequest cmd1(bv, LFUN_MOUSE_PRESS, x, y, cmd.button());
-			inset->localDispatch(cmd1);
+			inset->dispatch(cmd1);
 			break;
 		}
 		// I'm not sure we should continue here if we hit an inset (Jug20020403)
@@ -1383,7 +1383,7 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 			// Only a ButtonPress FuncRequest outside the inset will
 			// force a insetUnlock.
 			FuncRequest cmd1(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
-			bv->theLockingInset()->localDispatch(cmd1);
+			bv->theLockingInset()->dispatch(cmd1);
 			break;
 		}
 
@@ -1440,7 +1440,7 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 			bv->owner()->message(inset_hit->editMessage());
 
 			FuncRequest cmd1(bv, LFUN_MOUSE_RELEASE, x, y, cmd.button());
-			inset_hit->localDispatch(cmd1);
+			inset_hit->dispatch(cmd1);
 		}
 
 		break;

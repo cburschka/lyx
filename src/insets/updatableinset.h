@@ -81,8 +81,6 @@ public:
 	virtual bool unlockInsetInInset(BufferView *, UpdatableInset *,
 					bool /*lr*/ = false)
 		{ return false; }
-	///  An updatable inset could handle lyx editing commands
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	// We need this method to not clobber the real method in Inset
 	int scroll(bool recursive = true) const
 		{ return InsetOld::scroll(recursive); }
@@ -113,6 +111,10 @@ public:
 				    bool = true, bool = false);
 
 protected:
+	///  An updatable inset could handle lyx editing commands
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 	/// scrolls to absolute position in bufferview-workwidth * sx units
 	void scroll(BufferView *, float sx) const;
 	/// scrolls offset pixels

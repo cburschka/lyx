@@ -53,30 +53,41 @@ void RefInset::infoize(std::ostream & os) const
 
 
 dispatch_result
-RefInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
+RefInset::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
-		case LFUN_MOUSE_RELEASE:
-			if (cmd.button() == mouse_button::button3) {
-				lyxerr << "trying to goto ref" << cell(0) << endl;
-				cmd.view()->dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
-				return DISPATCHED;
-			}
-			if (cmd.button() == mouse_button::button1) {
-				// Eventually trigger dialog with button 3
-				// not 1
-				string const data = createDialogStr("ref");
-				cmd.view()->owner()->getDialogs().
-					show("ref", data, this);
-				return DISPATCHED;
-			}
-			break;
-		case LFUN_MOUSE_PRESS:
-		case LFUN_MOUSE_MOTION:
-			// eat other mouse commands
+	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) == "ref") {
+			MathArray ar;
+			if (!createMathInset_fromDialogStr(cmd.argument, ar))
+				return UNDISPATCHED;
+
+			*this = *ar[0].nucleus()->asRefInset();
+
 			return DISPATCHED;
-		default:
-			return CommandInset::dispatch(cmd, idx, pos);
+		}
+		break;
+	case LFUN_MOUSE_RELEASE:
+		if (cmd.button() == mouse_button::button3) {
+			lyxerr << "trying to goto ref" << cell(0) << endl;
+			cmd.view()->dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
+			return DISPATCHED;
+		}
+		if (cmd.button() == mouse_button::button1) {
+			// Eventually trigger dialog with button 3
+			// not 1
+			string const data = createDialogStr("ref");
+			cmd.view()->owner()->getDialogs().
+				show("ref", data, this);
+			return DISPATCHED;
+		}
+		break;
+	case LFUN_MOUSE_PRESS:
+	case LFUN_MOUSE_MOTION:
+		// eat other mouse commands
+		return DISPATCHED;
+	default:
+		return CommandInset::priv_dispatch(cmd, idx, pos);
 	}
 	// not our business
 	return UNDISPATCHED;
@@ -138,22 +149,6 @@ int RefInset::docbook(std::ostream & os, bool) const
 }
 
 
-dispatch_result RefInset::localDispatch(FuncRequest const & cmd)
-{
-	if (cmd.action != LFUN_INSET_MODIFY || cmd.getArg(0) != "ref")
-		return UNDISPATCHED;
-
-	MathArray ar;
-	if (!createMathInset_fromDialogStr(cmd.argument, ar))
-		return UNDISPATCHED;
-
-	*this = *ar[0].nucleus()->asRefInset();
-//	if (cmd.view())
-//                 // This does not compile because updateInset expects
-//                 // an Inset* and 'this' isn't.
-//		cmd.view()->updateInset(this);
-	return DISPATCHED;
-}
 
 
 RefInset::ref_type_info RefInset::types[] = {

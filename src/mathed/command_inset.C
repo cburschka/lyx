@@ -57,7 +57,7 @@ CommandInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 		default:
-			return MathNestInset::dispatch(cmd, idx, pos);
+			return MathNestInset::priv_dispatch(cmd, idx, pos);
 	}
 	return UNDISPATCHED;
 }

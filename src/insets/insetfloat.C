@@ -159,7 +159,9 @@ InsetFloat::~InsetFloat()
 }
 
 
-dispatch_result InsetFloat::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetFloat::priv_dispatch(FuncRequest const & cmd,
+			  idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 
@@ -181,7 +183,7 @@ dispatch_result InsetFloat::localDispatch(FuncRequest const & cmd)
 	}
 
 	default:
-		return InsetCollapsable::localDispatch(cmd);
+		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 	}
 }
 

@@ -17,6 +17,7 @@
 #include "lyxfunc.h"
 #include "LyXAction.h"
 #include "funcrequest.h"
+
 #include "frontends/LyXView.h"
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"

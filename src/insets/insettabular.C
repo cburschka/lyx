@@ -451,7 +451,7 @@ bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 			}
 			if (in->getInsetFromID(id)) {
 				actcell = i;
-				in->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
+				in->dispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 				return the_locking_inset->lockInsetInInset(bv, inset);
 			}
 		}
@@ -567,7 +567,7 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 		FuncRequest cmd1 = cmd;
 		cmd1.x -= inset_x;
 		cmd1.y -= inset_y;
-		the_locking_inset->localDispatch(cmd1);
+		the_locking_inset->dispatch(cmd1);
 		return;
 	}
 
@@ -578,7 +578,7 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 	}
 
 	if (cmd.button() == mouse_button::button2) {
-		localDispatch(FuncRequest(bv, LFUN_PASTESELECTION, "paragraph"));
+		dispatch(FuncRequest(bv, LFUN_PASTESELECTION, "paragraph"));
 		return;
 	}
 
@@ -590,7 +590,7 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 		FuncRequest cmd1 = cmd;
 		cmd1.x -= inset_x;
 		cmd1.y -= inset_y;
-		the_locking_inset->localDispatch(cmd1);
+		the_locking_inset->dispatch(cmd1);
 	}
 }
 
@@ -602,7 +602,7 @@ bool InsetTabular::lfunMouseRelease(FuncRequest const & cmd)
 		FuncRequest cmd1 = cmd;
 		cmd1.x -= inset_x;
 		cmd1.y -= inset_y;
-		ret = the_locking_inset->localDispatch(cmd1);
+		ret = the_locking_inset->dispatch(cmd1);
 	}
 	if (cmd.button() == mouse_button::button3 && !ret) {
 		InsetTabularMailer(*this).showDialog(cmd.view());
@@ -618,7 +618,7 @@ void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 		FuncRequest cmd1 = cmd;
 		cmd1.x -= inset_x;
 		cmd1.y -= inset_y;
-		the_locking_inset->localDispatch(cmd1);
+		the_locking_inset->dispatch(cmd1);
 		return;
 	}
 
@@ -654,18 +654,20 @@ void InsetTabular::edit(BufferView * bv, int index)
 	bv->fitCursor();
 
 	UpdatableInset & inset = tabular.getCellInset(actcell);
-	inset.localDispatch(FuncRequest(bv, LFUN_INSET_EDIT, "left"));
+	inset.dispatch(FuncRequest(bv, LFUN_INSET_EDIT, "left"));
 	if (the_locking_inset)
 		updateLocal(bv);
 }
 
 
-dispatch_result InsetTabular::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetTabular::priv_dispatch(FuncRequest const & cmd,
+			    idx_type & idx, pos_type & pos)
 {
 	// We need to save the value of the_locking_inset as the call to
 	// the_locking_inset->localDispatch might unlock it.
 	old_locking_inset = the_locking_inset;
-	dispatch_result result = UpdatableInset::localDispatch(cmd);
+	dispatch_result result = UpdatableInset::priv_dispatch(cmd, idx, pos);
 	BufferView * bv = cmd.view();
 
 	if (cmd.action == LFUN_INSET_EDIT) {
@@ -763,7 +765,7 @@ dispatch_result InsetTabular::localDispatch(FuncRequest const & cmd)
 	kb_action action = cmd.action;
 	string    arg    = cmd.argument;
 	if (the_locking_inset) {
-		result = the_locking_inset->localDispatch(cmd);
+		result = the_locking_inset->dispatch(cmd);
 		if (result == DISPATCHED_NOUPDATE) {
 			int sc = scroll();
 			resetPos(bv);
@@ -1094,7 +1096,7 @@ dispatch_result InsetTabular::localDispatch(FuncRequest const & cmd)
 		if (result == DISPATCHED || the_locking_inset)
 			break;
 		if (activateCellInset(bv)) {
-			result = the_locking_inset->localDispatch(FuncRequest(bv, action, arg));
+			result = the_locking_inset->dispatch(FuncRequest(bv, action, arg));
 			if (result == UNDISPATCHED || result >= FINISHED) {
 				unlockInsetInInset(bv, the_locking_inset);
 				// we need to update if this was requested before
@@ -1599,7 +1601,7 @@ void checkLongtableSpecial(LyXTabular::ltType & ltt,
 	}
 }
 
-}
+} // anon namespace
 
 
 void InsetTabular::tabularFeatures(BufferView * bv,
@@ -1983,7 +1985,7 @@ bool InsetTabular::activateCellInset(BufferView * bv, int x, int y,
 	}
 	//inset_x = cursorx_ - top_x + tabular.getBeginningOfTextInCell(actcell);
 	//inset_y = cursory_;
-	inset.localDispatch(FuncRequest(bv, LFUN_INSET_EDIT, x,  y, button));
+	inset.dispatch(FuncRequest(bv, LFUN_INSET_EDIT, x,  y, button));
 	if (!the_locking_inset)
 		return false;
 	updateLocal(bv);
@@ -2416,7 +2418,7 @@ WordLangTuple const
 InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 {
 	if (the_locking_inset) {
-		WordLangTuple word = 
+		WordLangTuple word =
 			the_locking_inset->selectNextWordToSpellcheck(bv, value);
 		if (!word.word().empty())
 			return word;
@@ -2428,7 +2430,7 @@ InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 	}
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	tabular.getCellInset(actcell)
-		.localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
+		.dispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 	WordLangTuple word = selectNextWordInt(bv, value);
 	if (!word.word().empty())
 		resetPos(bv);
@@ -2454,7 +2456,7 @@ WordLangTuple InsetTabular::selectNextWordInt(BufferView * bv, float & value) co
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	++actcell;
 	tabular.getCellInset(actcell)
-		.localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
+		.dispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 	return selectNextWordInt(bv, value);
 }
 
@@ -2575,7 +2577,7 @@ bool InsetTabular::forceDefaultParagraphs(InsetOld const * in) const
 
 	// this is a workaround for a crash (New, Insert->Tabular,
 	// Insert->FootNote)
-	if (!owner()) 
+	if (!owner())
 		return false;
 
 	// well we didn't obviously find it so maybe our owner knows more

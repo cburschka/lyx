@@ -80,8 +80,6 @@ public:
 	bool unlockInsetInInset(BufferView *,
 				UpdatableInset *, bool lr = false);
 	///
-	dispatch_result localDispatch(FuncRequest const &);
-	///
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
@@ -202,6 +200,10 @@ public:
 	///
 	mutable ParagraphList paragraphs;
 protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 	///
 	void updateLocal(BufferView *, bool mark_dirty);
 	/// set parameters for an initial lock of this inset

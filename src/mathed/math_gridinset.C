@@ -1187,6 +1187,6 @@ dispatch_result MathGridInset::dispatch
 		}
 
 		default:
-			return MathNestInset::dispatch(cmd, idx, pos);
+			return MathNestInset::priv_dispatch(cmd, idx, pos);
 	}
 }

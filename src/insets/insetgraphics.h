@@ -33,8 +33,6 @@ public:
 	///
 	~InsetGraphics();
 	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);
-	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	EDITABLE editable() const;
@@ -76,7 +74,11 @@ public:
 	InsetGraphicsParams const & params() const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 private:
 	///
 	friend class InsetGraphicsMailer;

@@ -52,8 +52,6 @@ public:
 	///
 	void setButtonLabel();
 	///
-	dispatch_result localDispatch(FuncRequest const &);
-	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	/// show the note dialog
 	bool showInsetDialog(BufferView * bv) const;
@@ -70,7 +68,11 @@ public:
 	void validate(LaTeXFeatures &) const;
 	///
 	InsetNoteParams const & params() const { return params_; }
-
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 private:
 	friend class InsetNoteParams;
 
@@ -79,6 +81,7 @@ private:
 	///
 	InsetNoteParams params_;
 };
+
 
 #include "mailinset.h"
 

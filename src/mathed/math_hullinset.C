@@ -783,7 +783,7 @@ dispatch_result MathHullInset::dispatch
 				pos = 0;
 				return DISPATCHED_POP;
 			}
-			return MathGridInset::dispatch(cmd, idx, pos);
+			return MathGridInset::priv_dispatch(cmd, idx, pos);
 
 		case LFUN_MATH_NUMBER:
 			//lyxerr << "toggling all numbers" << endl;
@@ -858,7 +858,7 @@ dispatch_result MathHullInset::dispatch
 		}
 
 		default:
-			return MathGridInset::dispatch(cmd, idx, pos);
+			return MathGridInset::priv_dispatch(cmd, idx, pos);
 	}
 }
 

@@ -31,8 +31,6 @@ public:
 		return std::auto_ptr<InsetBase>(new InsetUrl(params()));
 	}
 	///
-	dispatch_result localDispatch(FuncRequest const & cmd);
-	///
 	InsetOld::Code lyxCode() const { return InsetOld::URL_CODE; }
 	///
 	void validate(LaTeXFeatures &) const;
@@ -51,6 +49,11 @@ public:
 	int linuxdoc(Buffer const &, std::ostream &) const;
 	///
 	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 };
 
 #endif

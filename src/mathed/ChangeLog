@@ -1,3 +1,16 @@
+2003-10-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ref_inset.C (priv_dispatch): take the code from localDispatch
+	into this
+	(localDispatch): delete
+
+	* math_nestinset.C (dispatch): 
+	* math_hullinset.C (dispatch):
+	* math_gridinset.C (dispatch):
+	* formulabase.C (openNewInset, priv_dispatch, mathDispatch):
+	* command_inset.C (dispatch): adjust for localDispatch -> dispatch and
+	priv_dispatch
+
 2003-10-14  Angus Leeming  <leeming@lyx.org>
 
 	* insetformulabase.[Ch] (view, cache, view_): remove the BufferView cache.
@@ -11,7 +24,7 @@
 
 2003-10-13  Angus Leeming  <leeming@lyx.org>
 
-	* formula.C (editing_inset): pass a pointer rather than a reference. 
+	* formula.C (editing_inset): pass a pointer rather than a reference.
 
 2003-10-13  Angus Leeming  <leeming@lyx.org>
 

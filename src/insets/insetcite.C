@@ -332,7 +332,9 @@ void InsetCitation::setLoadingBuffer(Buffer const & buffer, bool state) const
 }
 
 
-dispatch_result InsetCitation::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetCitation::priv_dispatch(FuncRequest const & cmd,
+			     idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_EDIT:
@@ -343,7 +345,7 @@ dispatch_result InsetCitation::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 
 	default:
-		return InsetCommand::localDispatch(cmd);
+		return InsetCommand::priv_dispatch(cmd, idx, pos);
 	}
 }
 

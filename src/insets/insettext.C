@@ -477,7 +477,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 
 	if (the_locking_inset) {
 		if (the_locking_inset == inset) {
-			the_locking_inset->localDispatch(cmd1);
+			the_locking_inset->dispatch(cmd1);
 			return;
 		}
 		// otherwise only unlock the_locking_inset
@@ -495,7 +495,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 			if (!bv->lockInset(uinset)) {
 				lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
 			}
-			inset->localDispatch(cmd1);
+			inset->dispatch(cmd1);
 			if (the_locking_inset)
 				updateLocal(bv, false);
 			return;
@@ -504,7 +504,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 	if (!inset) {
 		bool paste_internally = false;
 		if (cmd.button() == mouse_button::button2 && getLyXText(bv)->selection.set()) {
-			localDispatch(FuncRequest(bv, LFUN_COPY));
+			dispatch(FuncRequest(bv, LFUN_COPY));
 			paste_internally = true;
 		}
 		int old_top_y = bv->top_y();
@@ -528,9 +528,9 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 		// insert this
 		if (cmd.button() == mouse_button::button2) {
 			if (paste_internally)
-				localDispatch(FuncRequest(bv, LFUN_PASTE));
+				dispatch(FuncRequest(bv, LFUN_PASTE));
 			else
-				localDispatch(FuncRequest(bv, LFUN_PASTESELECTION, "paragraph"));
+				dispatch(FuncRequest(bv, LFUN_PASTESELECTION, "paragraph"));
 		}
 	} else {
 		getLyXText(bv)->clearSelection();
@@ -547,7 +547,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 
 	no_selection = true;
 	if (the_locking_inset)
-		return the_locking_inset->localDispatch(cmd1);
+		return the_locking_inset->dispatch(cmd1);
 
 	int tmp_x = cmd.x;
 	int tmp_y = cmd.y + dim_.asc - bv->top_y();
@@ -557,7 +557,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 
 	// We still need to deal properly with the whole relative vs.
 	// absolute mouse co-ords thing in a realiable, sensible way
-	bool ret = inset->localDispatch(cmd1);
+	bool ret = inset->dispatch(cmd1);
 	updateLocal(bv, false);
 	return ret;
 }
@@ -570,7 +570,7 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 	cmd1.y -= inset_y;
 
 	if (the_locking_inset) {
-		the_locking_inset->localDispatch(cmd1);
+		the_locking_inset->dispatch(cmd1);
 		return;
 	}
 
@@ -588,14 +588,16 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
-dispatch_result InsetText::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetText::priv_dispatch(FuncRequest const & cmd,
+			 idx_type & idx, pos_type & pos)
 {
 	BufferView * bv = cmd.view();
 	setViewCache(bv);
 
 	switch (cmd.action) {
 	case LFUN_INSET_EDIT: {
-		UpdatableInset::localDispatch(cmd);
+		UpdatableInset::priv_dispatch(cmd, idx, pos);
 
 		if (!bv->lockInset(this)) {
 			lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
@@ -668,7 +670,7 @@ dispatch_result InsetText::localDispatch(FuncRequest const & cmd)
 	bool was_empty = paragraphs.begin()->empty() && paragraphs.size() == 1;
 	no_selection = false;
 
-	dispatch_result result = UpdatableInset::localDispatch(cmd);
+	dispatch_result result = UpdatableInset::priv_dispatch(cmd, idx, pos);
 	if (result != UNDISPATCHED)
 		return DISPATCHED;
 
@@ -677,7 +679,7 @@ dispatch_result InsetText::localDispatch(FuncRequest const & cmd)
 		return FINISHED;
 
 	if (the_locking_inset) {
-		result = the_locking_inset->localDispatch(cmd);
+		result = the_locking_inset->dispatch(cmd);
 		if (result == DISPATCHED_NOUPDATE)
 			return result;
 		if (result == DISPATCHED) {
@@ -1363,7 +1365,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool front)
 	if (!isHighlyEditableInset(inset))
 		return false;
 	FuncRequest cmd(bv, LFUN_INSET_EDIT, front ? "left" : "right");
-	inset->localDispatch(cmd);
+	inset->dispatch(cmd);
 	if (!the_locking_inset)
 		return false;
 	updateLocal(bv, false);
@@ -1394,7 +1396,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 	inset_x = cx() - top_x;
 	inset_y = cy();
 	FuncRequest cmd(bv, LFUN_INSET_EDIT, x - inset_x, y - inset_y, button);
-	inset->localDispatch(cmd);
+	inset->dispatch(cmd);
 	if (!the_locking_inset)
 		return false;
 	updateLocal(bv, false);

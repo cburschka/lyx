@@ -29,8 +29,6 @@ public:
 	///
 	void infoize(std::ostream & os) const;
 	///
-	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
-	///
 	std::string const screenLabel() const;
 	///
 	void validate(LaTeXFeatures & features) const;
@@ -60,6 +58,11 @@ public:
 	static int getType(std::string const & name);
 	///
 	static std::string const & getName(int type);
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 };
 
 #endif

@@ -30,8 +30,6 @@ public:
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	/// small wrapper for the time being
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
@@ -50,6 +48,11 @@ public:
 	bool addDatabase(std::string const &);
 	///
 	bool delDatabase(std::string const &);
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 };
 
 #endif // INSET_BIBTEX_H

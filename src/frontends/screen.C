@@ -45,6 +45,7 @@
 
 using lyx::support::LibFileSearch;
 
+using std::endl;
 using std::min;
 using std::max;
 using std::string;
@@ -315,6 +316,8 @@ void LyXScreen::redraw(BufferView & bv)
 			workarea().workWidth(), y2 - y,
 			LColor::bottomarea);
 	}
+
+	lyxerr << "Redraw screen" << endl;
 
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 

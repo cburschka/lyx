@@ -387,7 +387,8 @@ void InsetExternal::statusChanged() const
 }
 
 
-dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetExternal::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 {
 	switch (cmd.action) {
 

@@ -85,11 +85,12 @@ public:
 	virtual std::auto_ptr<InsetBase> clone() const = 0;
 
 	// the real dispatcher
-	virtual dispatch_result dispatch
-		(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	dispatch_result
+	dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	// the real dispatcher
+	dispatch_result
+	dispatch(FuncRequest const & cmd);
 
-	/// small wrapper for the time being
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	/// compute the size of the object returned in dim
 	virtual void metrics(MetricsInfo & mi, Dimension & dim) const = 0;
 	/// draw inset and update (xo, yo)-cache
@@ -100,6 +101,10 @@ public:
 	/// Appends \c list with all labels found within this inset.
 	virtual void getLabelList(Buffer const &,
 				  std::vector<std::string> & /* list */) const {}
+protected:
+	// the real dispatcher
+	virtual dispatch_result priv_dispatch
+		(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 };
 
 #endif

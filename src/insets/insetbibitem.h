@@ -30,8 +30,6 @@ public:
 	~InsetBibitem();
 	///
 	std::auto_ptr<InsetBase> clone() const;
-	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	/** Currently \bibitem is used as a LyX2.x command,
 	    so we need this method.
 	*/
@@ -52,7 +50,11 @@ public:
 	int getCounter() const { return counter; }
 	///
 	std::string const getBibLabel() const;
-
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 private:
 	///
 	int counter;

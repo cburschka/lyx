@@ -13,15 +13,23 @@
 #include "insetbase.h"
 
 
-dispatch_result InsetBase::dispatch(FuncRequest const &, idx_type &, pos_type &)
+dispatch_result
+InsetBase::dispatch(FuncRequest const & f, idx_type & i, pos_type & p)
 {
-	return UNDISPATCHED;
+	return priv_dispatch(f, i, p);
+}
+
+dispatch_result
+InsetBase::dispatch(FuncRequest const & f)
+{
+	idx_type i = 0;
+	pos_type p = 0;
+	return priv_dispatch(f, i, p);
 }
 
 
-dispatch_result InsetBase::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetBase::priv_dispatch(FuncRequest const &, idx_type &, pos_type &)
 {
-	idx_type idx = 0;
-	pos_type pos = 0;
-	return dispatch(cmd, idx, pos);
+	return UNDISPATCHED;
 }

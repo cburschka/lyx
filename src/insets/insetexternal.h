@@ -93,9 +93,6 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);
-
-	///
 	virtual InsetOld::Code lyxCode() const { return EXTERNAL_CODE; }
 	///
 	virtual EDITABLE editable() const { return IS_EDITABLE; }
@@ -126,7 +123,11 @@ public:
 	///
 	InsetExternalParams const & params() const;
 	void setParams(InsetExternalParams const &, Buffer const &);
-
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 private:
 	/** This method is connected to the graphics loader, so we are
 	 *  informed when the image has been loaded.

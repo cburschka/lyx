@@ -84,7 +84,8 @@ int InsetCommand::docbook(Buffer const &, ostream &, bool) const
 }
 
 
-dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetCommand::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
@@ -103,7 +104,7 @@ dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 
 	case LFUN_MOUSE_RELEASE:
-		return localDispatch(FuncRequest(cmd.view(), LFUN_INSET_EDIT));
+		return dispatch(FuncRequest(cmd.view(), LFUN_INSET_EDIT));
 
 	default:
 		return UNDISPATCHED;

@@ -57,7 +57,9 @@ auto_ptr<InsetBase> InsetBibitem::clone() const
 }
 
 
-dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetBibitem::priv_dispatch(FuncRequest const & cmd,
+			    idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 
@@ -77,7 +79,7 @@ dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)
 	}
 
 	default:
-		return InsetCommand::localDispatch(cmd);
+		return InsetCommand::priv_dispatch(cmd, idx, pos);
 	}
 }
 

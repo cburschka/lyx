@@ -34,8 +34,6 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	dispatch_result localDispatch(FuncRequest const & cmd);
-	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
@@ -56,6 +54,11 @@ public:
 	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 };
 
 #endif

@@ -1140,7 +1140,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			// Note that the localDispatch performs updateInset
 			// also.
 			FuncRequest fr(bv_, LFUN_INSET_MODIFY, ev.argument);
-			inset->localDispatch(fr);
+			inset->dispatch(fr);
 		} else {
 			FuncRequest fr(bv_, LFUN_INSET_INSERT, ev.argument);
 			dispatch(fr);

@@ -56,7 +56,9 @@ string const InsetLabel::getScreenLabel(Buffer const &) const
 }
 
 
-dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetLabel::priv_dispatch(FuncRequest const & cmd,
+			  idx_type & idx, pos_type & pos)
 {
 	BOOST_ASSERT(cmd.view());
 	BufferView * const bv = cmd.view();
@@ -86,7 +88,7 @@ dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 	}
 
 	default:
-		return InsetCommand::localDispatch(cmd);
+		return InsetCommand::priv_dispatch(cmd, idx, pos);
 	}
 }
 

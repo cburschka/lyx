@@ -529,5 +529,5 @@ dispatch_result MathScriptInset::dispatch
 		return DISPATCHED;
 	}
 
-	return MathNestInset::dispatch(cmd, idx, pos);
+	return MathNestInset::priv_dispatch(cmd, idx, pos);
 }

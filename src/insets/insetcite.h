@@ -48,6 +48,11 @@ public:
 	    and that the cache of BibTeX keys should be reloaded in the future.
 	*/
 	void setLoadingBuffer(Buffer const & buffer, bool state) const;
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 private:
 	struct Cache {
 		///

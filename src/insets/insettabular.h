@@ -105,8 +105,6 @@ public:
 	///
 	bool display() const { return tabular.isLongTabular(); }
 	///
-	dispatch_result localDispatch(FuncRequest const &);
-	///
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
 	///
@@ -206,7 +204,11 @@ public:
 
 	/// set the owning buffer
 	void buffer(Buffer * buf);
-
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 private:
 	/// lock cell with given index
 	void edit(BufferView * bv, int index);

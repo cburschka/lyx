@@ -45,8 +45,6 @@ public:
 	///
 	~InsetFloat();
 	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);
-	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	void read(Buffer const & buf, LyXLex & lex);
@@ -79,7 +77,10 @@ public:
 	bool  showInsetDialog(BufferView *) const;
 	///
 	InsetFloatParams const & params() const { return params_; }
-
+protected:
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 private:
 	///
 	InsetFloatParams params_;

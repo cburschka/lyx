@@ -116,7 +116,9 @@ bool InsetBranch::showInsetDialog(BufferView * bv) const
 }
 
 
-dispatch_result InsetBranch::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetBranch::priv_dispatch(FuncRequest const & cmd,
+			   idx_type & idx, pos_type & pos)
 {
 	BufferView * bv = cmd.view();
 	switch (cmd.action) {
@@ -131,7 +133,7 @@ dispatch_result InsetBranch::localDispatch(FuncRequest const & cmd)
 		}
 	case LFUN_INSET_EDIT:
 		if (cmd.button() != mouse_button::button3)
-			return InsetCollapsable::localDispatch(cmd);
+			return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 
 		return UNDISPATCHED;
 	case LFUN_INSET_DIALOG_UPDATE:
@@ -144,7 +146,7 @@ dispatch_result InsetBranch::localDispatch(FuncRequest const & cmd)
 		}
 		// fallthrough:
 	default:
-		return InsetCollapsable::localDispatch(cmd);
+		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 	}
 }
 

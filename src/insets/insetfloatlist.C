@@ -118,7 +118,9 @@ void InsetFloatList::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-dispatch_result InsetFloatList::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetFloatList::priv_dispatch(FuncRequest const & cmd,
+			      idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 		case LFUN_MOUSE_RELEASE:
@@ -131,7 +133,7 @@ dispatch_result InsetFloatList::localDispatch(FuncRequest const & cmd)
 			return DISPATCHED;
 
 		default:
-			return InsetCommand::localDispatch(cmd);
+			return InsetCommand::priv_dispatch(cmd, idx, pos);
 	}
 }
 

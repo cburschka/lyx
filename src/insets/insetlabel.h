@@ -23,8 +23,6 @@ public:
 	///
 	std::auto_ptr<InsetBase> clone() const;
 	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);
-	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
@@ -41,6 +39,11 @@ public:
 	int linuxdoc(Buffer const &, std::ostream &) const;
 	///
 	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 };
 
 #endif

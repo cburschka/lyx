@@ -107,7 +107,8 @@ InsetInclude::~InsetInclude()
 }
 
 
-dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetInclude::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 {
 	switch (cmd.action) {
 

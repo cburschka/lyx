@@ -59,8 +59,6 @@ public:
 	///
 	InsetCommandParams const & params() const { return p_; }
 	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);
-	///
 	std::string const & getContents() const { return p_.getContents(); }
 	///
 	void setContents(std::string const & c) { p_.setContents(c); }
@@ -70,6 +68,10 @@ public:
 	RenderButton & button() const { return button_; }
 
 protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 	///
 	std::string const getCommand() const { return p_.getCommand(); }
 	///

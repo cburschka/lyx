@@ -1,3 +1,10 @@
+2003-10-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetbase.C (dispatch): new func
+	(priv_dispatch): new func replaces...
+	(localDispatch): this, deleted.
+
+	* all insets with dispatch modified for new code.
 
 2003-10-15  André Pönitz  <poenitz@gmx.net>
 

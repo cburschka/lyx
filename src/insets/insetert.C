@@ -280,9 +280,12 @@ InsetOld::EDITABLE InsetERT::editable() const
 void InsetERT::lfunMousePress(FuncRequest const & cmd)
 {
 	if (status_ == Inlined)
-		inset.localDispatch(cmd);
-	else
-		InsetCollapsable::localDispatch(cmd);
+		inset.dispatch(cmd);
+	else {
+		idx_type idx = 0;
+		pos_type pos = 0;
+		InsetCollapsable::priv_dispatch(cmd, idx, pos);
+	}
 }
 
 
@@ -304,10 +307,10 @@ bool InsetERT::lfunMouseRelease(FuncRequest const & cmd)
 
 		// inlined is special - the text appears above
 		if (status_ == Inlined)
-			inset.localDispatch(cmd1);
+			inset.dispatch(cmd1);
 		else if (isOpen() && (cmd.y > buttonDim().y2)) {
 			cmd1.y -= height_collapsed();
-			inset.localDispatch(cmd1);
+			inset.dispatch(cmd1);
 		}
 	}
 	return false;
@@ -317,9 +320,12 @@ bool InsetERT::lfunMouseRelease(FuncRequest const & cmd)
 void InsetERT::lfunMouseMotion(FuncRequest const & cmd)
 {
 	if (status_ == Inlined)
-		inset.localDispatch(cmd);
-	else
-		InsetCollapsable::localDispatch(cmd);
+		inset.dispatch(cmd);
+	else {
+		idx_type idx = 0;
+		pos_type pos = 0;
+		InsetCollapsable::priv_dispatch(cmd, idx, pos);
+	}
 }
 
 
@@ -415,7 +421,9 @@ int InsetERT::docbook(Buffer const &, ostream & os, bool) const
 }
 
 
-dispatch_result InsetERT::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetERT::priv_dispatch(FuncRequest const & cmd,
+			idx_type & idx, pos_type & pos)
 {
 	dispatch_result result = UNDISPATCHED;
 	BufferView * bv = cmd.view();
@@ -432,9 +440,9 @@ dispatch_result InsetERT::localDispatch(FuncRequest const & cmd)
 		if (status_ == Inlined) {
 			if (!bv->lockInset(this))
 				break;
-			result = inset.localDispatch(cmd);
+			result = inset.dispatch(cmd);
 		} else {
-			result = InsetCollapsable::localDispatch(cmd);
+			result = InsetCollapsable::priv_dispatch(cmd, idx, pos);
 		}
 		set_latex_font(bv);
 		updateStatus(bv);
@@ -479,7 +487,7 @@ dispatch_result InsetERT::localDispatch(FuncRequest const & cmd)
 		break;
 
 	default:
-		result = InsetCollapsable::localDispatch(cmd);
+		result = InsetCollapsable::priv_dispatch(cmd, idx, pos);
 	}
 
 	switch (cmd.action) {

@@ -317,7 +317,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		} else {
 			// no
 			setStatusMessage(N_("Command not allowed with"
-					   "out any document open"));
+					    "out any document open"));
 			return flag.disabled(true);
 		}
 	}
@@ -931,7 +931,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			}
 
 			// Hand-over to inset's own dispatch:
-			result = inset->localDispatch(FuncRequest(view(), action, argument));
+			result = inset->dispatch(FuncRequest(view(), action, argument));
 			if (result == DISPATCHED || result == DISPATCHED_NOUPDATE) {
 				goto exit_with_message;
 			}
@@ -1409,7 +1409,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			view()->unlockInset(view()->theLockingInset());
 		if (par->inInset()) {
 			FuncRequest cmd(view(), LFUN_INSET_EDIT, "left");
-			par->inInset()->localDispatch(cmd);
+			par->inInset()->dispatch(cmd);
 		}
 		// Set the cursor
 		view()->getLyXText()->setCursor(par.pit(), 0);
@@ -1498,7 +1498,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		InsetOld * inset = lt->getInset();
 		if (inset) {
 			FuncRequest cmd(view(), LFUN_INSET_DIALOG_SHOW);
-			inset->localDispatch(cmd);
+			inset->dispatch(cmd);
 		}
 	}
 	break;
@@ -1510,7 +1510,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		if (inset) {
 			FuncRequest fr(view(), LFUN_INSET_DIALOG_UPDATE,
 				       func.argument);
-			inset->localDispatch(fr);
+			inset->dispatch(fr);
 		} else if (name == "paragraph") {
 			dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 		}
@@ -1647,7 +1647,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		break;
 
 	case LFUN_EXTERNAL_EDIT: {
-		InsetExternal().localDispatch(FuncRequest(view(), action, argument));
+		InsetExternal().dispatch(FuncRequest(view(), action, argument));
 		break;
 	}
 

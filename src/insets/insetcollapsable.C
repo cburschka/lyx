@@ -233,7 +233,7 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 		bv->updateInset(this);
 		bv->buffer()->markDirty();
 	} else if (!collapsed_ && cmd.y > button_dim.y2) {
-		ret = inset.localDispatch(adjustCommand(cmd)) == DISPATCHED;
+		ret = inset.dispatch(adjustCommand(cmd)) == DISPATCHED;
 	}
 	if (cmd.button() == mouse_button::button3 && !ret)
 		showInsetDialog(bv);
@@ -276,12 +276,14 @@ void InsetCollapsable::edit(BufferView * bv, int index)
 	lyxerr << "InsetCollapsable: edit" << endl;
 	if (!bv->lockInset(this))
 		lyxerr << "InsetCollapsable: can't lock index " << index << endl;
-	inset.localDispatch(FuncRequest(bv, LFUN_INSET_EDIT, "left"));
+	inset.dispatch(FuncRequest(bv, LFUN_INSET_EDIT, "left"));
 	first_after_edit = true;
 }
 
 
-dispatch_result InsetCollapsable::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetCollapsable::priv_dispatch(FuncRequest const & cmd,
+				idx_type & idx, pos_type & pos)
 {
 	//lyxerr << "InsetCollapsable::localDispatch: "
 	//	<< cmd.action << " '" << cmd.argument << "'\n";
@@ -289,20 +291,20 @@ dispatch_result InsetCollapsable::localDispatch(FuncRequest const & cmd)
 	switch (cmd.action) {
 		case LFUN_INSET_EDIT: {
 			if (!cmd.argument.empty()) {
-				UpdatableInset::localDispatch(cmd);
+				UpdatableInset::priv_dispatch(cmd, idx, pos);
 				if (collapsed_) {
 					lyxerr << "branch collapsed_" << endl;
 					collapsed_ = false;
 					if (bv->lockInset(this)) {
 						bv->updateInset(this);
 						bv->buffer()->markDirty();
-						inset.localDispatch(cmd);
+						inset.dispatch(cmd);
 						first_after_edit = true;
 					}
 				} else {
 					lyxerr << "branch not collapsed_" << endl;
 					if (bv->lockInset(this))
-						inset.localDispatch(cmd);
+						inset.dispatch(cmd);
 				}
 				return DISPATCHED;
 			}
@@ -313,7 +315,7 @@ dispatch_result InsetCollapsable::localDispatch(FuncRequest const & cmd)
 			if (cmd.button() == mouse_button::button3)
 				return DISPATCHED;
 
-			UpdatableInset::localDispatch(cmd);
+			UpdatableInset::priv_dispatch(cmd, idx, pos);
 
 			if (collapsed_) {
 				collapsed_ = false;
@@ -324,28 +326,28 @@ dispatch_result InsetCollapsable::localDispatch(FuncRequest const & cmd)
 					return DISPATCHED;
 				bv->updateInset(this);
 				bv->buffer()->markDirty();
-				inset.localDispatch(cmd);
+				inset.dispatch(cmd);
 			} else {
 				if (!bv->lockInset(this))
 					return DISPATCHED;
 				if (cmd.y <= button_dim.y2) {
 					FuncRequest cmd1 = cmd;
 					cmd1.y = 0;
-					inset.localDispatch(cmd1);
+					inset.dispatch(cmd1);
 				} else
-					inset.localDispatch(adjustCommand(cmd));
+					inset.dispatch(adjustCommand(cmd));
 			}
 			return DISPATCHED;
 		}
 
 		case LFUN_MOUSE_PRESS:
 			if (!collapsed_ && cmd.y > button_dim.y2)
-				inset.localDispatch(adjustCommand(cmd));
+				inset.dispatch(adjustCommand(cmd));
 			return DISPATCHED;
 
 		case LFUN_MOUSE_MOTION:
 			if (!collapsed_ && cmd.y > button_dim.y2)
-				inset.localDispatch(adjustCommand(cmd));
+				inset.dispatch(adjustCommand(cmd));
 			return DISPATCHED;
 
 		case LFUN_MOUSE_RELEASE:
@@ -353,7 +355,7 @@ dispatch_result InsetCollapsable::localDispatch(FuncRequest const & cmd)
 			return DISPATCHED;
 
 		default:
-			dispatch_result result = inset.localDispatch(cmd);
+			dispatch_result result = inset.dispatch(cmd);
 			if (result >= FINISHED)
 				bv->unlockInset(this);
 			first_after_edit = false;

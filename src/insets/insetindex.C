@@ -60,7 +60,9 @@ void InsetPrintIndex::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-dispatch_result InsetIndex::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetIndex::priv_dispatch(FuncRequest const & cmd,
+			  idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 		case LFUN_INSET_EDIT:
@@ -68,7 +70,7 @@ dispatch_result InsetIndex::localDispatch(FuncRequest const & cmd)
 			return DISPATCHED;
 
 		default:
-			return InsetCommand::localDispatch(cmd);
+			return InsetCommand::priv_dispatch(cmd, idx, pos);
 	}
 }
 

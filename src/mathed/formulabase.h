@@ -56,8 +56,6 @@ public:
 	virtual void insetUnlock(BufferView *);
 
 	/// To allow transparent use of math editing functions
-	virtual dispatch_result localDispatch(FuncRequest const &);
-	/// To allow transparent use of math editing functions
 	//virtual void status(FuncRequest const &);
 
 	///
@@ -83,7 +81,11 @@ public:
 	bool display() const;
 	// return the selection as std::string
 	std::string selectionAsString() const;
-
+protected:
+	/// To allow transparent use of math editing functions
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 private:
 	/// unimplemented
 	void operator=(const InsetFormulaBase &);

@@ -87,7 +87,9 @@ void InsetBibtex::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-dispatch_result InsetBibtex::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetBibtex::priv_dispatch(FuncRequest const & cmd,
+			   idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 
@@ -109,7 +111,7 @@ dispatch_result InsetBibtex::localDispatch(FuncRequest const & cmd)
 	}
 
 	default:
-		return InsetCommand::localDispatch(cmd);
+		return InsetCommand::priv_dispatch(cmd, idx, pos);
 	}
 
 }

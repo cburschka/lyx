@@ -164,7 +164,9 @@ bool InsetBox::showInsetDialog(BufferView * bv) const
 }
 
 
-dispatch_result InsetBox::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetBox::priv_dispatch(FuncRequest const & cmd,
+			idx_type & idx, pos_type & pos)
 {
 	BufferView * bv = cmd.view();
 
@@ -188,7 +190,7 @@ dispatch_result InsetBox::localDispatch(FuncRequest const & cmd)
 		// fallthrough:
 
 	default:
-		return InsetCollapsable::localDispatch(cmd);
+		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 	}
 }
 

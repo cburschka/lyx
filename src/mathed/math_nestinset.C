@@ -311,7 +311,7 @@ dispatch_result MathNestInset::dispatch
 			return UNDISPATCHED;
 
 		default:
-			return MathInset::dispatch(cmd, idx, pos);
+			return MathInset::priv_dispatch(cmd, idx, pos);
 	}
 }
 
@@ -355,5 +355,3 @@ void MathNestInset::drawMarkers2(PainterInfo & pi, int x, int y) const
 	pi.pain.line(x, a, x + 3, a, LColor::mathframe);
 	pi.pain.line(t - 3, a, t, a, LColor::mathframe);
 }
-
-

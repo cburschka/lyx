@@ -74,8 +74,6 @@ public:
 	///
 	void setButtonLabel();
 	///
-	dispatch_result localDispatch(FuncRequest const &);
-	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	/// show the Box dialog
 	bool showInsetDialog(BufferView * bv) const;
@@ -101,7 +99,11 @@ public:
 		Shadowbox,
 		Doublebox
 	};
-
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const &, idx_type &, pos_type &);
 private:
 	friend class InsetBoxParams;
 

@@ -83,7 +83,9 @@ InsetWrap::~InsetWrap()
 }
 
 
-dispatch_result InsetWrap::localDispatch(FuncRequest const & cmd)
+dispatch_result
+InsetWrap::priv_dispatch(FuncRequest const & cmd,
+			 idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
@@ -102,7 +104,7 @@ dispatch_result InsetWrap::localDispatch(FuncRequest const & cmd)
 		return DISPATCHED;
 
 	default:
-		return InsetCollapsable::localDispatch(cmd);
+		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 	}
 }
 

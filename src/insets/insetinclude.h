@@ -34,9 +34,6 @@ public:
 	///
 	virtual std::auto_ptr<InsetBase> clone() const;
 
-	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);
-
 	/// Override these InsetButton methods if Previewing
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -78,7 +75,11 @@ public:
 	void validate(LaTeXFeatures &) const;
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
-
+protected:
+	///
+	virtual
+	dispatch_result
+	priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &);
 private:
 	/// Slot receiving a signal that the preview is ready to display.
 	void statusChanged() const;
