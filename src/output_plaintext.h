@@ -14,6 +14,8 @@
 
 #include "ParagraphList_fwd.h"
 
+#include <iosfwd>
+#include <string>
 
 class Buffer;
 class OutputParams;

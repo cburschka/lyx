@@ -13,6 +13,7 @@
 #define OUTPUT_H
 
 #include <iosfwd>
+#include <string>
 
 bool openFileWrite(std::ofstream & ofs, std::string const & fname);
 
