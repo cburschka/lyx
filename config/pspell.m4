@@ -16,34 +16,12 @@ AC_DEFUN(CHECK_WITH_PSPELL,
 	    USE_PSPELL="yes"
 	    ])
 
-    AC_ARG_WITH(pspell-includes,
-	AC_HELP_STRING([--with-pspell-include],[where the pspell.h is located]),
-	pspell_use_include="$withval",
-	[])
-
-    AC_ARG_WITH(pspell-libs,
-	AC_HELP_STRING([--with-pspell-lib],[where the libpspell.a is located]),
-	pspell_use_lib="$withval",
-	[])
-
     if test "$USE_PSPELL" = "yes" ; then
-	AC_CHECK_HEADER(pspell/pspell.h)
-	AC_CHECK_LIB(pspell, delete_pspell_config)
-
-	if test "$pspell_use_include" = "NO" || \
-	    test "$pspell_use_lib" = "NO"; then
-	    if test "$USE_PSPELL" = "yes"; then
-		USE_PSPELL="not found"
-	    fi
-	fi
+	AC_CHECK_HEADERS(pspell/pspell.h, break, USE_PSPELL=no)
+	AC_CHECK_LIB(pspell, new_pspell_config)
 
 	if test "$USE_PSPELL" = "yes"; then
 	    AC_DEFINE(USE_PSPELL, 1, [Define as 1 to use the pspell library])
-#	PSPELL_INCLUDES="-I$pspell_use_include"
-#	PSPELL_LIBS="-L$pspell_use_lib -lpspell"
-#	USE_PSPELL="yes ($pspell_use_include $pspell_use_lib)"
-	    AC_SUBST(PSPELL_INCLUDES)
-	    AC_SUBST(PSPELL_LIBS)
 	    lyx_flags="$lyx_flags use-pspell"
 	fi
     fi

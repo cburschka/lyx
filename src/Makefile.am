@@ -17,7 +17,7 @@ BOOST_LIBS = ../boost/libs/regex/src/libboostregex.la \
 	../boost/libs/signals/src/libboostsignals.la
 
 lyx_LDADD = $(LYX_CONV_LIBS) $(BOOST_LIBS) $(INTLLIBS) \
-	$(PSPELL_LIBS) $(AIKSAURUS_LIBS) @LIBS@
+	$(AIKSAURUS_LIBS) @LIBS@
 
 #lyx_LDFLAGS=-Wl,-O1
 
@@ -29,7 +29,7 @@ EXTRA_DIST = config.h.in stamp-h.in cheaders version.C.in \
 	tracer.C \
 	tracer.h
 
-INCLUDES = $(BOOST_INCLUDES) $(PSPELL_INCLUDES)
+INCLUDES = $(BOOST_INCLUDES)
 
 localedir = $(datadir)/locale
 
