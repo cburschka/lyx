@@ -1,3 +1,424 @@
+2000-06-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* LyX Developers Meeting: All files changed, due to random C++ (by
+	coincidence) code generator script.
+
+	- external inset (cool!)
+	- initial online editing of preferences
+	- insettabular breaks insettext(s contents)
+	- cleanup
+	- some DocBook fixes
+	- example files update
+	- other cool stuff, create a diff and look for yourself.
+
+2000-06-09  The Great LyX Application  <lyx@localhost.localdomain>
+
+	* src/insets/insettext.C (computeTextRows): if the maxWidth is
+	-1 this is a non-line-breaking textinset.
+
+	* src/insets/insettabular.C (GetMaxWidthOfCell): returns now -1
+	if there is no width set.
+
+2000-06-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* Lots of files: Merged the dialogbase branch.
+
+2000-06-09  Allan Rae  <rae@lyx.org>
+
+	* src/xtl/, src/lyxfunc.[Ch], src/buffer.[Ch]:  Removed XTL and
+	and the Dispatch methods that used it.
+
+	* src/frontends/Liason.[Ch]: replaced with a Liason namespace for 
+	access to functions formerly kept in Dispatch.
+
+2000-05-19  Allan Rae  <rae@lyx.org>
+
+	* src/PrinterParams.h, src/buffer.C, src/frontends/xforms/FormPrint.C:
+	made to_page and count_copies integers again.  from_page remains a
+	string however because I want to allow entry of a print range like
+	"1,4,22-25" using this field.
+
+	* src/LyXAction.C: added action info and commands for buffer-print-xtl
+	and printer-params-get.  These aren't useful from the minibuffer but
+	could be used by a script/LyXServer app provided it passes a suitable
+	auto_mem_buffer.  I guess I should take a look at how the LyXServer
+	works and make it support xtl buffers.
+
+	* sigc++/: updated to libsigc++-1.0.1
+
+	* src/xtl/: updated to xtl-1.3.pl.11
+
+	* forms/makefile, forms/fdfix.sh, forms/layout_forms.fd: Made sure
+	those changes done to the files in src/ are actually recreated when
+	they  get regenerated. Please don't ever accept a patch that changes a
+	dialog unless that patch includes the changes to the corresponding *.fd
+	file.
+
+	* src/lyx_cb.C, src/support/lstrings.[hC]: Moved Stephen Witt's
+	stringOnlyContains, renamed it and generalised it.
+
+	* lots-of-files: Rolled the "rae" branch over into the "dialogbase"
+	branch.  Removed the remaining old form_print code.
+
+2000-04-26  Allan Rae  <rae@lyx.org>
+
+	* ChangeLog, development/tools/lxtl.sh: D'oh! Got caught in the same
+	trap I was trying to fix with the ID: fields in src/xtl/  :-)
+
+2000-04-25  Allan Rae  <rae@lyx.org>
+
+	* src/xtl/: Updated to incorporate Angus's two patches as well as mine
+	against a base of xtl-1.3.pl.4
+
+	* development/tools/lxtl.sh: fixed a couple of silly typos and now
+	filter the Id: entries so they still show the xtl version number
+	they are based on.
+
+	* src/support/lxtl.h: removed auto_mem_buffer which is now incorporated
+	into the src/xtl code.  Patch still pending with José (XTL)
+
+2000-04-24  Allan Rae  <rae@lyx.org>
+
+	* src/lyxfunc.[Ch] (Dispatch): Use a mem buffer as a parameter. This is
+	both more generic and much safer. Use the new template functions.
+	* src/buffer.[Ch] (Dispatch): ditto.
+
+	* src/frontends/xforms/FormPrint.C (update): Use new template functions
+	and mem buffer more intelligently. Also a little general cleanup.
+	(apply): ditto.
+
+	* configure.in (AC_OUTPUT): Extra stuff for xtl that I forgot.
+	* development/tools/lxtl.sh: Ditto.  Makefile.am + .cvsignore
+	* src/xtl/Makefile.am: ditto.
+	* src/xtl/.cvsignore: ditto.
+	* src/Makefile.am: ditto.
+
+	* src/PrinterParams.h: Removed the macros member functions. Added a
+	testInvariant member function.  A bit of tidying up and commenting.
+	Included Angus's idea for fixing operation with egcs-1.1.2.
+
+	* src/support/lxtl.h: Many changes.  Added auto_mem_buffer -- a really
+	cool expansion of XTL's mem_buffer to support automatic memory
+	management within the buffer itself.  Removed the various macros and
+	replaced them with template functions that use either auto_mem_buffer
+	or mem_buffer depending on a #define.  The mem_buffer support will
+	disappear as soon as the auto_mem_buffer is confirmed to be good on
+	other platforms/compilers.  That is, it's there so you've got something
+	to compare against.
+
+	* src/xtl/objio.h: Changes to support auto_mem_buffer.  This has
+	effectively forked XTL.  However I expect José will include my code
+	into the next major release.  Also fixed a memory leak.
+	* src/xtl/text.h: ditto.
+	* src/xtl/xdr.h: ditto.
+	* src/xtl/giop.h: ditto.
+
+2000-04-16  Allan Rae  <rae@lyx.org>
+
+	* acinclude.m4, sigc++/acinclude.m4:  Removed -- they're generated
+	by autogen.sh and removed by maintainer-clean anyway.
+	* .cvsignore, sigc++/.cvsignore:  Support the above.
+
+	* sigc++/.cvsignore: Forgot that retbind.h was generated.
+
+	* src/buffer.C (Dispatch): Couldn't print a single page. Fixed.
+
+	* src/frontends/xforms/FormPrint.[Ch]: Switched to C callbacks using
+	macros, renamed static callback-target member functions to suit new
+	scheme and made them public.
+	* src/frontends/xforms/forms/form_print.fd: ditto.
+	* src/frontends/xforms/forms/form_copyright.fd: ditto.
+
+	* src/support/lxtl.h: small cleanup to use typedef instead of #define
+	for gui_format.
+
+	* src/xtl/: New directory containing a minimal distribution of XTL.
+	This is XTL-1.3.pl.4.
+
+	* development/tools/lxtl.sh: A script to generate the above mini-dist.
+
+2000-04-15  Allan Rae  <rae@lyx.org>
+
+	* development/tools/makeLyXsigc.sh: Remove the library version numbers
+
+	* sigc++/:  Updated to libsigc++-1.0.0
+
+2000-04-14  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/xforms/xform_macros.h: Remove specific macros and just
+	use the generic ones in future.  I'll modify my conversion script.
+
+	* src/frontends/xforms/FormCopyright.C: Reverse the earlier change.
+
+	* src/lyx_gui_misc.[Ch]: Removed references to form_print.
+	(CloseAllBufferRelatedDialogs): Renamed.
+	(updateAllVisibleBufferRelatedDialogs): ditto. Added LaTeXLog
+
+	* src/frontends/xforms/FormCopyright.C: Use the specific macros instead
+	of the generic ones.  These are the same ones my conversion script
+	generates.
+
+	* src/PrinterParams.h: Allow you to print a range of odd or even pages.
+	* src/frontends/xforms/FormPrint.C (apply, update): ditto+small cleanup
+	* src/buffer.C (Dispatch): ditto
+
+	* src/LyXView.C (LyXView): Use new signals instead of old hard coded
+	functions for updating and hiding buffer dependent dialogs.
+	* src/BufferView.C (buffer): ditto
+	* src/buffer.C (setReadonly): ditto
+	* src/lyxfunc.C (CloseBuffer): ditto
+
+	* src/buffer.h: Take setReadonly() out of line so I don't have to include
+	Dialogs.h, and hence all the SigC stuff, into every file that includes
+	buffer.h.  We also don't need to include lyx_gui_misc.h in everything.
+
+	* src/BufferView2.C: reduce the number of headers included by buffer.h
+
+2000-04-11  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/xforms/xform_macros.h:  A small collection of macros
+	for building C callbacks.
+
+	* src/frontends/xforms/Makefile.am: Added above file.
+
+	* src/frontends/xforms/FormCopyright.[Ch]: Revised the C callback
+	scheme again.  This time it should work for JMarc.  If this is
+	successful I'll revise my conversion script to automate some of this.
+	The static member functions in the class also have to be public for
+	this scheme will work.  If the scheme works (it's almost identical to
+	the way BufferView::cursorToggleCB is handled so it should work) then
+	FormCopyright and FormPrint will be ready for inclusion into the main
+	trunk immediately after 1.1.5 is released -- provided we're prepared
+	for complaints about lame compilers not handling XTL.
+
+	* src/support/lxtl.h: Switched to XDR_format instead of raw_format.
+
+2000-04-07  Allan Rae  <rae@lyx.org>
+
+	* config/lyxinclude.m4:  A bit more tidying up (Angus)
+
+	* src/LString.h: JMarc's <string> header fix
+
+	* src/PrinterParams.h: Used string for most data to remove some
+	ugly code in the Print dialog and avoid even uglier code when 
+	appending the ints to a string for output.
+
+	* src/buffer.C (Dispatch): Added a couple of braces to fix an error
+	and moved "default:" back to the end of switch statement.  Cleaned
+	up the printing so it uses the right function calls and so the
+	"print to file" option actually puts the file in the right directory.
+
+	* src/frontends/xforms/Dialogs.C: Added FormPrint (Angus).
+
+	* src/frontends/xforms/FormPrint.C (PrintInputCB): moved input checking
+	and Ok+Apply button control into a separate method: input (Angus).
+	(input) Cleaned it up and improved it to be very thorough now.
+	(All CB) static_cast used instead of C style cast (Angus).  This will
+	probably change again once we've worked out how to keep gcc-2.8.1 happy
+	with real C callbacks.
+	(update) add a few "default:" labels to switches. Egcs-1.1.2 seems to
+	ignore some of the bool settings and has random numbers instead. Needs
+	some more investigation.  Added other input length checks and checking
+	of file and printer names.
+
+	* src/frontends/xforms/FormPrint.h: Removed pragma statement so it
+	would link (Angus).  Seems the old code doesn't compile with the pragma
+	statement either.  Separated callback entries from internal methods.
+
+	* src/lyxfunc.C (Dispatch): LFUN_MENUPRINT calls new dialog (Angus).
+
+2000-03-17  Allan Rae  <rae@lyx.org>
+
+	* src/lyxfunc.[Ch] (isAvailable): This is only temporary.  Do we really
+	need it?  Maybe it could go in Dialogs instead?  I could make it a
+	LFUN but you'd have to call Dispatch(int, int, char*) with dummy
+	values to get the bool return value.
+	(Dispatch): New overloaded method for xtl support.
+
+	* src/frontends/xforms/FormCopyright.[Ch]: Modified to use a friendly
+	extern "C" callback instead of static member functions.  Hopefully,
+	JMarc will be able to compile this.  I haven't changed 
+	forms/form_copyright.fd yet. Breaking one of my own rules already.
+
+	* src/commandtags.h: New xtl-based LFUN's no description in LyXAction
+	because they aren't useful from the minibuffer.  Maybe a LyXServer
+	might want a help message though?
+
+	* src/buffer.[Ch] (Dispatch): New overloaded method for xtl support.
+
+	* config/lyxinclude.m4: Changes to g++ flags to suit compiling with
+	xtl which needs both rtti and exceptions.
+
+	* src/support/Makefile.am:
+	* src/support/lxtl.h: New file.  Some helper macros for using XTL.
+
+	* src/frontends/xforms/input_validators.[ch]: input filters and
+	validators.  These conrol what keys are valid in input boxes.
+	Use them and write some more.  Much better idea than waiting till
+	after the user has pressed Ok to say that the input fields don't make
+	sense.
+
+	* src/frontends/xforms/Makefile.am:
+	* src/frontends/xforms/forms/form_print.fd:
+	* src/frontends/xforms/forms/makefile:
+	* src/frontends/xforms/FormPrint.[Ch]: Ported previous print form to
+	new scheme.  Still have to make sure I haven't missed anything from
+	the current implementation.
+
+	* src/Makefile.am, src/PrinterParams.h: New data store.
+
+	* other files: Added a couple of copyright notices.
+
+2000-03-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/insetbib.h: move Holder struct in public space.
+
+	* src/frontends/include/DialogBase.h: use SigC:: only when
+	SIGC_CXX_NAMESPACES is defined.
+	* src/frontends/include/Dialogs.h: ditto.
+
+	* sigc++/Makefile.am (%.h): use the autodected GNU m4.
+
+	* src/frontends/xforms/FormCopyright.[Ch]: do not
+	mention SigC:: explicitely.
+
+2000-03-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* config/lyxinclude.m4 (LYX_USE_FRONTEND): move the code which
+	deals with testing KDE in main configure.in
+	* configure.in: ditto.
+
+2000-02-22  Allan Rae  <rae@lyx.org>
+
+	* Lots of files: Merged from HEAD
+
+	* All Makefile.am (ETAGS_ARGS): use parameter that is also compatible
+	with the etags shipped with SuSE-6.3 (fancier than gnu-etags).
+
+	* autogen.sh: Fix JMarcs complaints by building a sigc++/acinclude.m4
+
+	* sigc++/: new minidist.
+
+2000-02-14  Allan Rae  <rae@lyx.org>
+
+	* development/tools/makeLyXsigc.sh:  Small fix for Makefile.am
+
+2000-02-08  Juergen Vigna  <jug@sad.it>
+
+	* src/frontends/kde/dlg/formcopyrightdialog.kdevdlg: the dialog data
+	file for the buildin GUI builder of KDevelop of the copyright-dialog.
+
+	* src/frontends/kde/lyxgui.kdevprj: I added this as I use KDevelop
+	for this port and so it is much easier for other people to port
+	dialogs in a common development environment.
+
+	* src/frontends/kde/formcopyrightdialog_moc.C: needed MOC file for
+	the QT/KDE implementation.
+
+	* src/frontends/kde/Dialogs.C:
+	* src/frontends/kde/FormCopyright.C:
+	* src/frontends/kde/FormCopyright.h:
+	* src/frontends/kde/Makefile.am:
+	* src/frontends/kde/formcopyrightdialog.C:
+	* src/frontends/kde/formcopyrightdialog.h:
+	* src/frontends/kde/formcopyrightdialogdata.C: added this source-files
+	for the kde support of the Copyright-Dialog.
+
+	* src/frontends/Makefile.am (AUTOMAKE_OPTIONS): now uses @FRONTEND@
+	subdir-substitution instead of hardcoded 'xforms' as we now have also
+	the kde subdir.
+
+	* src/frontends/include/DialogBase.h (Object): just commented the
+	label after #endif (nasty warning and I don't like warnings ;)
+
+	* src/main.C (main): added KApplication initialization if using
+	KDE frontend-GUI.
+
+	* src/lyx_gui.C (runTime): added support for multiple toolkit support.
+	For now only the KDE event-loop is added if frontend==kde.
+
+	* src/Makefile.am (lyx_DEPENDENCIES): added @FRONTEND_xxx@ support
+
+	* configure.in: added support for the --with-frontend[=value] option
+
+	* autogen.sh: added kde.m4 file to list of config-files
+
+	* acconfig.h: added define for KDEGUI-support
+
+	* config/kde.m4: added configuration functions for KDE-port
+
+	* config/lyxinclude.m4: added --with-frontend[=value] option with
+	support for xforms and KDE.
+
+2000-02-08  Allan Rae <rae@lyx.org>
+
+	* all Makefile.am:  Fixed up so the make targets dist, distclean, 
+	install and uninstall all work even if builddir != srcdir.  Still
+	have a new sigc++ minidist update to come.
+
+	* config/lyxinclude.m4: Some more builddir!=srcdir fixes.
+
+2000-02-01  Allan Rae <rae@lyx.org>
+
+	* config/lyxinclude.m4, development/tools/makeLyXsigc.sh:
+	Many mods to get builddir != srcdir working.
+	
+	* sigc++/: Upgraded to 0.8.7.  This includes many needed fixes both
+	for building on NT and so we can do the builddir != srcdir stuff.
+
+2000-01-30  Allan Rae <rae@lyx.org>
+
+	* sigc++/doc/*: Selected documentation for the libsigc++ mini dist.
+	This will stay in "rae" branch.  We probably don't really need it in
+	the main trunk as anyone who wants to help programming it should get
+	a full library installed also.  So they can check both included and
+	system supplied library compilation.
+
+	* sigc++/*, sigc++/macros/*, config/sigc++.m4, config/lyxinclude.m4:
+	Added a 'mini' distribution of libsigc++.  If you feel the urge to 
+	change something in these directories - Resist it.  If you can't 
+	resist the urge then you should modify the following script and rebuild
+	the dist.  LYX_WITH_SIGC in lyxinclude.m4 is the wrapper to make it
+	all happen.  Still uses a hacked version of libsigc++'s configure.in.
+	I'm quite happy with the results.  I'm not sure the extra work to turn
+	the sigc++/configure.in into a few extra AC_DEFUNs in sigc++.m4 is
+	worth the trouble and would probably lead to extra maintenance 
+	headaches.
+	I haven't tested the following important make targets: install, dist.
+	Not ready for prime time but very close.  Maybe 1.1.5.
+
+	* development/tools/makeLyXsigc.sh:  A shell script to automatically
+	generate our mini-dist of libsigc++.  It can only be used with a CVS
+	checkout of libsigc++ not a tarball distribution.  It's well commented.
+	This will end up as part of the libsigc++ distribution so other apps
+	can easily have an included mini-dist.  If someone makes mods to the
+	sigc++ subpackage without modifying this script to generate those
+	changes I'll be very upset!
+
+	* src/frontends/:  Started the gui/system indep structure.
+
+	* src/frontends/include/Dialogs.h: Dialog container. All the Signal<>s
+	to access the gui-indep dialogs are in this class.  Much improved
+	design compared to previous revision.  Lars,  please refrain from
+	moving this header into src/ like you did with Popups.h last time.
+
+	* src/frontends/include/DialogBase.h: Abstract base class for dialogs.
+
+	* src/frontends/xforms/:  Started the gui-indep system with a single
+	dialog: FormCopyright.  Initial testing of use of libsigc++ was very
+	successful.
+
+	* src/frontends/xforms/forms: Repository for the xforms .fd files.
+	Here you'll find a very useful makefile and automated fdfix.sh that
+	makes updating dailogs a no-brainer -- provided you follow the rules
+	set out in the README.  I'm thinking about adding another script to
+	automatically generate skeleton code for a new dialog given just the
+	name of the dialog.
+
+	* src/commandtags.h, src/lyxfunc.C, src/menus.C:
+	* src/credits.{Ch}, src/credits_form.{Ch}, forms/credits_form.fd:
+	Made FormCopyright gui-indep and added a lyxfunc to get to it.
+
 2000-06-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/LSubstring.C (operator): simplify

@@ -19,6 +19,13 @@
 #include <cctype>
 
 #include <utility>
+#include <fstream>
+
+#ifdef HAVE_SSTREAM
+#include <sstream>
+#else
+#include <strstream>
+#endif
 
 #ifdef __GNUG__
 #pragma implementation "filetools.h"
@@ -53,6 +60,7 @@
 using std::make_pair;
 using std::pair;
 using std::endl;
+using std::ifstream;
 
 extern string system_lyxdir;
 extern string build_lyxdir;
@@ -711,6 +719,34 @@ string CleanupPath(string const & path)
 #else // On unix, nothing to do
 	return path;
 #endif
+}
+
+string GetFileContents(string const & fname) {
+	FileInfo finfo(fname);
+	if (finfo.exist()) {
+		ifstream ifs(fname.c_str());
+#ifdef HAVE_SSTREAM
+		std::ostringstream ofs;
+#else
+#warning The rumour goes that this might leak, but who really cares?
+		ostrstream ofs;
+#endif
+		if (ifs && ofs) {
+			ofs << ifs.rdbuf();
+			ifs.close();
+#ifdef HAVE_SSTREAM
+			return ofs.str();
+#else
+			ofs << '\0';
+			char const * tmp = ofs.str();
+			string ret(tmp);
+			delete[] tmp;
+			return ret;
+#endif
+		}
+	}
+	lyxerr << "LyX was not able to read file '" << fname << "'" << endl;
+	return string();
 }
 
 

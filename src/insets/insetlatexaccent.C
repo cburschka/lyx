@@ -605,13 +605,13 @@ void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 }
 
 
-void InsetLatexAccent::Write(ostream & os) const
+void InsetLatexAccent::Write(Buffer const *, ostream & os) const
 {
 	os << "\\i " << contents << "\n";
 }
 
 
-void InsetLatexAccent::Read(LyXLex & lex)
+void InsetLatexAccent::Read(Buffer const *, LyXLex & lex)
 {
 	lex.EatLine();
 	contents = lex.GetString();
@@ -619,7 +619,7 @@ void InsetLatexAccent::Read(LyXLex & lex)
 }
 
 
-int InsetLatexAccent::Latex(ostream & os,
+int InsetLatexAccent::Latex(Buffer const *, ostream & os,
 			    bool /*fragile*/, bool/*fs*/) const
 {
 	os << contents;
@@ -627,21 +627,21 @@ int InsetLatexAccent::Latex(ostream & os,
 }
 
 
-int InsetLatexAccent::Ascii(ostream & os) const
+int InsetLatexAccent::Ascii(Buffer const *, ostream & os) const
 {
 	os << contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::Linuxdoc(ostream & os) const
+int InsetLatexAccent::Linuxdoc(Buffer const *, ostream & os) const
 {
 	os << contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::DocBook(ostream & os) const
+int InsetLatexAccent::DocBook(Buffer const *, ostream & os) const
 {
 	os << contents;
 	return 0;

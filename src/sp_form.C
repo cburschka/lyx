@@ -6,7 +6,7 @@
 /* Form definition file generated with fdesign. */
 
 #include FORMS_H_LOCATION
-#include <stdlib.h>
+#include <cstdlib>
 #include "sp_form.h"
 
 FD_form_spell_options *create_form_form_spell_options(void)
@@ -102,11 +102,11 @@ FD_form_spell_check *create_form_form_spell_check(void)
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fdui->done = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 240, 220, 30, idex(_("Close Spellchecker|#C^[")));fl_set_button_shortcut(obj, scex(_("Close Spellchecker|#C^[")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    // xgettext:no-c-format
+  // xgettext:no-c-format
   obj = fl_add_box(FL_NO_BOX, 10, 250, 50, 20, _("0 %"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-    // xgettext:no-c-format
+  // xgettext:no-c-format
   obj = fl_add_box(FL_NO_BOX, 250, 250, 50, 20, _("100 %"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_RIGHT|FL_ALIGN_INSIDE);

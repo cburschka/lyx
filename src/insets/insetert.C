@@ -23,8 +23,7 @@
 
 using std::ostream;
 
-InsetERT::InsetERT(Buffer * bf)
-	: InsetCollapsable(bf)
+InsetERT::InsetERT() : InsetCollapsable()
 {
     setLabel(_("ERT"));
     LyXFont font(LyXFont::ALL_SANE);
@@ -41,8 +40,8 @@ InsetERT::InsetERT(Buffer * bf)
 
 Inset * InsetERT::Clone() const
 {
-    InsetERT * result = new InsetERT(buffer);
-    result->init(buffer, this);
+    InsetERT * result = new InsetERT();
+    result->init(this);
 
     result->collapsed = collapsed;
     return result;

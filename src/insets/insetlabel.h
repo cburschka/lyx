@@ -40,13 +40,13 @@ public:
 	///
 	void Edit(BufferView *, int, int, unsigned int);
 	///
-	int Latex(std::ostream &, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
 	///
-	int Ascii(std::ostream &) const;
+	int Ascii(Buffer const *, std::ostream &) const;
 	///
-	int Linuxdoc(std::ostream &) const;
+	int Linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(std::ostream &) const;
+	int DocBook(Buffer const *, std::ostream &) const;
 private:
 	/// This function escapes 8-bit characters
 	string escape(string const &) const;

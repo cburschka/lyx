@@ -151,15 +151,19 @@ pid_t Systemcalls::fork()
 		int  index = 0;
 		bool more;
 		do {
+			childcommand = frontStrip(childcommand);
 			if (syscmd == 0) {
 				syscmd = new char[childcommand.length() + 1];
 				childcommand.copy(syscmd, childcommand.length());
 				syscmd[childcommand.length()] = '\0';
 			}
+			if (!childcommand.empty()) {
 			char * tmp = new char[childcommand.length() + 1];
 			childcommand.copy(tmp, childcommand.length());
 			tmp[childcommand.length()] = '\0';
 			argv[index++] = tmp;
+			}
+			
 			// reinit
 			more = !rest.empty();
 			if (more) 

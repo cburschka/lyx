@@ -48,7 +48,6 @@ extern FD_form_table_options * fd_form_table_options;
 extern FD_form_quotes * fd_form_quotes;
 extern FD_form_preamble * fd_form_preamble;
 extern FD_form_table * fd_form_table;
-extern FD_form_print * fd_form_print;
 extern FD_form_sendto * fd_form_sendto;
 extern FD_form_figure * fd_form_figure;
 extern FD_form_toc * fd_form_toc;
@@ -88,7 +87,7 @@ extern "C" int IgnoreCloseBoxCB(FL_FORM *, void *)
 // This is also one of the functions that we _really_ dont want
 // we should try to finds way to help us with that.
 // The signal/slot mechanism can probably help. 
-void CloseAllBufferRelatedPopups()
+void CloseAllBufferRelatedDialogs()
 {
 	// don't forget to check that dynamically created forms
 	// have been created otherwise hiding one could cause a crash
@@ -114,9 +113,6 @@ void CloseAllBufferRelatedPopups()
 	}
 	if (fd_form_table->form_table->visible) {
 		fl_hide_form(fd_form_table->form_table);
-	}
-	if (fd_form_print->form_print->visible) {
-		fl_hide_form(fd_form_print->form_print);
 	}
 	if (fd_form_figure->form_figure->visible) {
 		fl_hide_form(fd_form_figure->form_figure);
@@ -199,7 +195,7 @@ void CloseAllBufferRelatedPopups()
 
 // This is another function we really don't want.
 // Again the Signal/Slot mechanism is tailor made for this task.
-void updateAllVisibleBufferRelatedPopups()
+void updateAllVisibleBufferRelatedDialogs()
 {
 	if (fd_form_document->form_document->visible) {
 		UpdateLayoutDocument();
@@ -229,6 +225,9 @@ void updateAllVisibleBufferRelatedPopups()
 	}
 	if (fd_form_toc->browser_toc->visible) {
 		TocUpdateCB(0, 0);
+	}
+	if (fd_latex_log->LaTeXLog->visible) {
+		LatexLogUpdate(0,0);
 	}
 #ifdef ALWAYS_UPDATE_REF
 	// Ideally, the RefUpdateCB should be modified so that if the

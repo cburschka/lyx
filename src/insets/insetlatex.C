@@ -80,7 +80,7 @@ void InsetLatex::Write(FILE * file)
 }
 
 
-void InsetLatex::Read(LyXLex & lex)
+void InsetLatex::Read(Buffer const *, LyXLex & lex)
 {
 	FILE * file = lex.getFile();
 	char c = 0;

@@ -16,8 +16,7 @@
 #pragma interface
 #endif
 
-#include "lyxinset.h"
-#include "LString.h"
+#include "insetbutton.h"
 
 // Created by Alejandro 970222
 /** Used to insert a LaTeX command automatically
@@ -25,7 +24,7 @@
  * Similar to InsetLaTeX but having control of the basic structure of a
  *   LaTeX command: \name[options]{contents}. 
  */
-class InsetCommand: public Inset {
+class InsetCommand: public InsetButton {
 public:
 	///
 	InsetCommand();
@@ -34,28 +33,21 @@ public:
 	InsetCommand(string const & name, string const & arg = string(), 
 		     string const & opt = string());
 	///
-	int ascent(Painter &, LyXFont const &) const;
-	///
-	int descent(Painter &, LyXFont const &) const;
-	///
-	int width(Painter &, LyXFont const &) const;
-	///
-	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
-	///
-	void Write(std::ostream &) const;
+	void Write(Buffer const *, std::ostream &) const;
+
 	/// Parse the command.
 	void scanCommand(string const & cmd);
 	/// Will not be used when lyxf3
-	void Read(LyXLex & lex);
+	void Read(Buffer const *, LyXLex & lex);
 	/// 
-	virtual int Latex(std::ostream &,
+	virtual int Latex(Buffer const *, std::ostream &,
 			  bool fragile, bool free_spc) const;
 	///
-	int Ascii(std::ostream &) const;
+	int Ascii(Buffer const *, std::ostream &) const;
 	///
-	virtual int Linuxdoc(std::ostream &) const;
+	virtual int Linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	virtual int DocBook(std::ostream &) const;
+	virtual int DocBook(Buffer const *, std::ostream &) const;
 	///
 	Inset * Clone() const;
 	///  

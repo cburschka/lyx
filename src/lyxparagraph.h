@@ -135,12 +135,13 @@ public:
 	bool isMultiLingual(BufferParams const &);
 	///
 
-	string String(BufferParams const &, bool label);
+	string String(Buffer const *, bool label);
 	///
-	string String(size_type beg, size_type end);
+	string String(Buffer const *, size_type beg, size_type end);
 	
 	///
-	void writeFile(std::ostream &, BufferParams const &, char, char) const;
+	void writeFile(Buffer const *, std::ostream &, BufferParams const &,
+		       char, char) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	
@@ -157,17 +158,17 @@ public:
 	void read();
 
 	///
-	LyXParagraph * TeXOnePar(BufferParams const &,
+	LyXParagraph * TeXOnePar(Buffer const *, BufferParams const &,
 				 std::ostream &, TexRow & texrow,
 				 bool moving_arg,
 				 std::ostream & foot, TexRow & foot_texrow,
 				 int & foot_count);
 	///
-	bool SimpleTeXOnePar(BufferParams const &,
+	bool SimpleTeXOnePar(Buffer const *, BufferParams const &,
 			     std::ostream &, TexRow & texrow, bool moving_arg);
 
 	///
-	LyXParagraph * TeXEnvironment(BufferParams const &,
+	LyXParagraph * TeXEnvironment(Buffer const *, BufferParams const &,
 				      std::ostream &, TexRow & texrow,
 				      std::ostream & foot, TexRow & foot_texrow,
 				      int & foot_count);
@@ -505,12 +506,12 @@ public:
 	///
 	bool linuxDocConvertChar(char c, string & sgml_string);
 	///
-	void DocBookContTableRows(BufferParams const &,
+	void DocBookContTableRows(Buffer const *,
 				  std::ostream &, string & extra,
 				  int & desc_on, size_type i,
 				  int current_cell_number, int & column);
 	///
-	void SimpleDocBookOneTablePar(BufferParams const &,
+	void SimpleDocBookOneTablePar(Buffer const *,
 				      std::ostream &, string & extra,
 				      int & desc_on, int depth);
 private:
@@ -571,21 +572,21 @@ private:
 	///
 	InsetList insetlist;
 	///
-	LyXParagraph * TeXDeeper(BufferParams const &,
+	LyXParagraph * TeXDeeper(Buffer const *, BufferParams const &,
 				 std::ostream &, TexRow & texrow,
 				 std::ostream & foot, TexRow & foot_texrow,
 				 int & foot_count);
 	///
-	LyXParagraph * TeXFootnote(BufferParams const &,
+	LyXParagraph * TeXFootnote(Buffer const *, BufferParams const &,
 				   std::ostream &, TexRow & texrow,
 				   std::ostream & foot, TexRow & foot_texrow,
 				   int & foot_count,
 				   bool parent_is_rtl);
 	///
-	bool SimpleTeXOneTablePar(BufferParams const &,
+	bool SimpleTeXOneTablePar(Buffer const *, BufferParams const &,
 				  std::ostream &, TexRow & texrow);
 	///
-	bool TeXContTableRows(BufferParams const &,
+	bool TeXContTableRows(Buffer const *, BufferParams const &,
 			      std::ostream &, size_type i,
 			      int current_cell_number,
                               int & column, TexRow & texrow);
@@ -595,7 +596,7 @@ private:
 			     int & column, LyXFont const & font,
 			     LyXLayout const & style);
 	///
-	void SimpleTeXSpecialChars(BufferParams const &,
+	void SimpleTeXSpecialChars(Buffer const *, BufferParams const &,
 				   std::ostream &, TexRow & texrow,
 				   bool moving_arg,
 				   LyXFont & font, LyXFont & running_font,

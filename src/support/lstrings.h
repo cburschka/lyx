@@ -49,6 +49,12 @@ bool isStrInt(string const & str);
 int strToInt(string const & str);
 
 ///
+bool isStrDbl(string const & str);
+
+///
+double strToDbl(string const & str);
+
+///
 string lowercase(string const &);
 
 ///
@@ -104,6 +110,18 @@ bool contains(string const & a, string const & b);
 
 ///
 bool contains(char const * a, char const * b);
+
+///
+bool containsOnly(string const &, char const *);
+
+///
+bool containsOnly(string const &, string const &);
+
+///
+bool containsOnly(char const *, char const *);
+
+///
+bool containsOnly(char const *, string const &);
 
 /// Counts how many of character c there is in a
 unsigned int countChar(string const & a, char const c);

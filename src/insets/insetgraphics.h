@@ -42,20 +42,20 @@ public:
 	///
 	EDITABLE Editable() const;
 	///
-	void Write(std::ostream &) const;
+	void Write(Buffer const *, std::ostream &) const;
 	///
-	void Read(LyXLex & lex);
+	void Read(Buffer const *, LyXLex & lex);
 	/** returns the number of rows (\n's) of generated tex code.
 	 fragile == true means, that the inset should take care about
 	 fragile commands by adding a \protect before.
 	 */
-	int Latex(std::ostream &, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
 	///
-	int Ascii(std::ostream &) const;
+	int Ascii(Buffer const *, std::ostream &) const;
 	///
-	int Linuxdoc(std::ostream &) const;
+	int Linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(std::ostream &) const;
+	int DocBook(Buffer const *, std::ostream &) const;
 
 	/// Updates needed features for this inset.
 	void Validate(LaTeXFeatures & features) const;

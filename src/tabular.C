@@ -54,15 +54,16 @@ LyXTabular::cellstruct::cellstruct()
     bottom_line = false;
     rotate = false;
     linebreaks = false;
+#ifdef INSET_POINTER
     inset = 0;
+#endif
 }
 
-
+#ifdef INSET_POINTER
 LyXTabular::cellstruct::~cellstruct() 
 {
     delete inset;
 }
-
 
 LyXTabular::cellstruct::cellstruct(cellstruct const & cs)
 {
@@ -74,11 +75,12 @@ LyXTabular::cellstruct::cellstruct(cellstruct const & cs)
     bottom_line = cs.bottom_line;
     rotate = cs.rotate;
     linebreaks = cs.linebreaks;
-    inset = 0;
-//    if (cs.inset)
-//	inset = static_cast<InsetText *>(cs.inset->Clone());
+    inset = cs.inset;
+#if 0
+    if (cs.inset)
+	inset = static_cast<InsetText *>(cs.inset->Clone());
+#endif
 }
-
 
 LyXTabular::cellstruct & 
 LyXTabular::cellstruct::operator=(cellstruct const & cs)
@@ -95,6 +97,7 @@ LyXTabular::cellstruct::operator=(cellstruct const & cs)
 	inset = static_cast<InsetText *>(cs.inset->Clone());
     return *this;
 }
+#endif
 
 
 LyXTabular::rowstruct::rowstruct() 
@@ -133,10 +136,10 @@ LyXTabular::LyXTabular(InsetTabular * inset, LyXTabular const & lt)
 }
 
 
-LyXTabular::LyXTabular(InsetTabular * inset, LyXLex & lex)
+LyXTabular::LyXTabular(Buffer const * buf, InsetTabular * inset, LyXLex & lex)
 {
     owner_ = inset;
-    Read(lex);
+    Read(buf, lex);
 }
 
 
@@ -183,10 +186,13 @@ LyXTabular * LyXTabular::Clone(InsetTabular * inset)
     int i,j;
     for(i=0; i < rows_; ++i) {
 	for(j=0; j < columns_; ++j) {
+#ifdef INSET_POINTER
 	    delete result->cell_info[i][j].inset;
-	    result->cell_info[i][j].inset=new InsetText(*cell_info[i][j].inset,
-							inset->BufferOwner());
-	    result->cell_info[i][j].inset->setOwner(inset);
+	    result->cell_info[i][j].inset=new InsetText(*cell_info[i][j].inset);
+#else
+	    result->cell_info[i][j].inset = cell_info[i][j].inset;
+#endif
+	    result->cell_info[i][j].inset.setOwner(inset);
 	}
     }
     return result;
@@ -209,10 +215,12 @@ void LyXTabular::Init(int rows_arg, int columns_arg)
     // Jürgen, use iterators.
     for (i = 0; i < rows_; ++i) {
         for (j = 0; j < columns_; ++j) {
+#ifdef INSET_POINTER
 	    if (!cell_info[i][j].inset)
-		cell_info[i][j].inset = new InsetText(owner_->BufferOwner());
-	    cell_info[i][j].inset->setOwner(owner_);
-	    cell_info[i][j].inset->SetDrawLockedFrame(true);
+		cell_info[i][j].inset = new InsetText();
+#endif
+	    cell_info[i][j].inset.setOwner(owner_);
+	    cell_info[i][j].inset.SetDrawLockedFrame(true);
             cell_info[i][j].cellno = cellno++;
         }
     }
@@ -240,45 +248,44 @@ void LyXTabular::Init(int rows_arg, int columns_arg)
 
 void LyXTabular::AppendRow(int cell )
 {
-//    cell_vector::iterator cit = cell_info.begin() + row;
-//    cell_info.insert(cit, vector<cellstruct>(columns_, cellstruct()));
-//    cell_info.insert(cell_info.begin(), vector<cellstruct>(columns_, cellstruct()));
-
     ++rows_;
    
-//    row_vector r_info = row_vector(rows_, rowstruct());
-
-    cell_vvector c_info = cell_vvector(rows_, cell_vector(columns_,
-							  cellstruct()));
     int row = row_of_cell(cell);
-    int i;
 
     row_vector::iterator rit = row_info.begin() + row;
     row_info.insert(rit, rowstruct());
 
-    for(i = 0; i <= row; ++i) {
-//	r_info[i] = row_info[i];
+#if 1
+    cell_vvector::iterator cit = cell_info.begin() + row;
+    cell_info.insert(cit, vector<cellstruct>(columns_, cellstruct()));
+#else
+    cell_vvector c_info = cell_vvector(rows_, cell_vector(columns_,
+							  cellstruct()));
+
+    for(int i = 0; i <= row; ++i) {
 	for(int j = 0; j < columns_; ++j) {
 	    c_info[i][j] = cell_info[i][j];
 	}
     }
-    for(i = row+1; i < rows_; ++i) {
-//	r_info[i] = row_info[i-1];
+    for(int i = row+1; i < rows_; ++i) {
 	for(int j = 0; j < columns_; ++j) {
 	    c_info[i][j] = cell_info[i-1][j];
 	}
     }
-//    row_info = r_info;
     cell_info = c_info;
-    for(i = 0; i < rows_; ++i) {
+#ifdef INSET_POINTER
+    for(int i = 0; i < rows_; ++i) {
 	for(int j = 0; j < columns_; ++j) {
-	    cell_info[i][j].inset = static_cast<InsetText *>(c_info[i][j].inset->Clone());
+	    if (!cell_info[i][j].inset)
+		cell_info[i][j].inset = static_cast<InsetText *>(c_info[i][j].inset->Clone());
 	}
     }
+#endif
     ++row;
     for (int j = 0; j < columns_; ++j) {
-	cell_info[row][j].inset->clear();
+	cell_info[row][j].inset.clear();
     }
+#endif
     Reinit();
 }
 
@@ -322,14 +329,16 @@ void LyXTabular::AppendColumn(int cell)
         }
     }
     cell_info = c_info;
+#ifdef INSET_POINTER
     for(i = 0; i < rows_; ++i) {
 	for(j = 0; j < columns_; ++j) {
 	    cell_info[i][j].inset = static_cast<InsetText *>(c_info[i][j].inset->Clone());
 	}
     }
+#endif
     ++column;
     for (i = 0; i < rows_; ++i) {
-	cell_info[i][column].inset->clear();
+	cell_info[i][column].inset.clear();
     }
     Reinit();
 }
@@ -358,6 +367,7 @@ void LyXTabular::Reinit()
     for (; i < rows_; ++i) {
 	for (j = 0; j < columns_; ++j) {
 	    cell_info[i][j].width_of_cell = 0;
+	    cell_info[i][j].inset.setOwner(owner_);
 	}
     }
   
@@ -411,7 +421,7 @@ void LyXTabular::set_row_column_number_info()
 	for (column = 0; column<columns_; ++column) {
 	    if (IsPartOfMultiColumn(row,column))
 		continue;
-	    cell_info[row][column].inset->SetAutoBreakRows(
+	    cell_info[row][column].inset.SetAutoBreakRows(
 		!GetPWidth(GetCellNumber(row, column)).empty());
 	}
     }
@@ -907,7 +917,7 @@ int LyXTabular::right_column_of_cell(int cell) const
 }
 
 
-void LyXTabular::Write(ostream & os) const
+void LyXTabular::Write(Buffer const * buf, ostream & os) const
 {
     int i, j;
 
@@ -946,7 +956,7 @@ void LyXTabular::Write(ostream & os) const
 	        "\" special=\"" << cell_info[i][j].align_special <<
 		"\">" << endl;
 	    os << "\\begin_inset ";
-	    cell_info[i][j].inset->Write(os);
+	    cell_info[i][j].inset.Write(buf, os);
 	    os << "\n\\end_inset " << endl;
 	    os << "</Cell>" << endl;
 	    os << "</Column>" << endl;
@@ -1039,7 +1049,7 @@ void l_getline(istream & is, string & str)
 }
 
 
-void LyXTabular::Read(LyXLex & lex)
+void LyXTabular::Read(Buffer const * buf, LyXLex & lex)
 {
     string line;
     istream & is = lex.getStream();
@@ -1112,7 +1122,7 @@ void LyXTabular::Read(LyXLex & lex)
 	    (void)getTokenValue(line, "special", cell_info[i][j].align_special);
 	    l_getline(is, line);
 	    if (prefixIs(line, "\\begin_inset")) {
-		cell_info[i][j].inset->Read(lex);
+		cell_info[i][j].inset.Read(buf, lex);
 		l_getline(is, line);
 	    }
 	    if (line != "</Cell>") {
@@ -1947,7 +1957,7 @@ int LyXTabular::TeXCellPostamble(ostream & os, int cell) const
 }
 
 
-int LyXTabular::Latex(ostream & os, bool fragile, bool fp) const
+int LyXTabular::Latex(Buffer const * buf, ostream & os, bool fragile, bool fp) const
 {
     int ret = 0;
     int i,j;
@@ -2003,7 +2013,7 @@ int LyXTabular::Latex(ostream & os, bool fragile, bool fp) const
 	    if (IsPartOfMultiColumn(i,j))
 		continue;
 	    ret += TeXCellPreamble(os, cell);
-	    ret += GetCellInset(cell)->Latex(os, fragile, fp);
+	    ret += GetCellInset(cell)->Latex(buf, os, fragile, fp);
 	    ret += TeXCellPostamble(os, cell);
 	    if (!IsLastCellInRow(cell)) { // not last cell in row
 		os << "&" << endl;
@@ -2056,7 +2066,7 @@ int LyXTabular::Latex(ostream & os, bool fragile, bool fp) const
 
 InsetText * LyXTabular::GetCellInset(int cell) const
 {
-    return cell_info[row_of_cell(cell)][column_of_cell(cell)].inset;
+    return & cell_info[row_of_cell(cell)][column_of_cell(cell)].inset;
 }
 
 void LyXTabular::Validate(LaTeXFeatures & features) const

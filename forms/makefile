@@ -38,16 +38,35 @@ c: $(OBJS)
 
 d: c $(COBJS)
 
+#
+# -e 's/\(extern\) \(void.*FL_OBJECT\)/\1 "C" \2/'
+#
+# We need the callbacks to all be declared as:  extern "C" void
+#
 e: c
 	for hfil in *.h ; do \
 		if [ -f "$$hfil.patch" ] ; then \
 			(echo "Patching $$hfil with $$hfil.patch" ; \
 			patch -s $$hfil < $$hfil.patch) \
 		fi; \
+		sed < $$hfil > $$hfil.tmp \
+			-e 's/\(extern\) \(void.*FL_OBJECT\)/\1 "C" \2/' ; \
+		mv $$hfil.tmp $$hfil; \
 	done
 
 updatesrc: d e
-	for fil in *.C *.h ; do cp $$fil ../src ; done
+	@echo
+	@echo "Beware some files may be installed in the wrong directory!" >&2
+	@echo "In particular be careful with gui-indep forms.  Make sure">&2
+	@echo "they have been removed from the files here otherwise we'll">&2
+	@echo "get junk code and errors at compile time.">&2
+	for fil in *.C *.h ; do \
+		if [ $$fil = "math_forms.C" -o $$fil = "math_forms.h" ]; then \
+			cp $$fil ../src/mathed ; \
+		else \
+			cp $$fil ../src ; \
+		fi \
+	done
 
 .fd.c:
 	$(FDESIGN) -convert $<

@@ -8,11 +8,14 @@
 
 #ifdef ENABLE_ASSERTIONS
 
+extern void emergencySave();
+
 template<class A>
 inline
 void Assert(A assertion)
 {
 	if (!assertion) {
+		::emergencySave();
 		lyx::abort();
 	}
 }

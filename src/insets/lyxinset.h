@@ -25,6 +25,7 @@
 
 class Painter;
 class BufferView;
+class Buffer;
 
 struct LaTeXFeatures;
 
@@ -92,7 +93,9 @@ public:
 		///
 		SPECIALCHAR_CODE,
 		///
-		TABULAR_CODE
+		TABULAR_CODE,
+		///
+		EXTERNAL_CODE
 	};
 
 	enum EDITABLE {
@@ -122,34 +125,34 @@ public:
 	virtual void Edit(BufferView *, int x, int y, unsigned int button);
 	///
 	virtual EDITABLE Editable() const;
-	///
+	/// This is called when the user clicks inside an inset
 	virtual void InsetButtonPress(BufferView *, int, int, int) {}
-	///
+	/// This is called when the user releases the button inside an inset
 	virtual void InsetButtonRelease(BufferView *, int, int, int) {}
-	///
+	/// This is caleld when the user moves the mouse inside an inset
 	virtual void InsetMotionNotify(BufferView *, int , int , int) {}
 	///
 	bool IsTextInset() const;
 	///
 	virtual bool AutoDelete() const;
 	///
-	virtual void Write(std::ostream &) const = 0;
+	virtual void Write(Buffer const *, std::ostream &) const = 0;
 	///
-	virtual void Read(LyXLex & lex) = 0;
+	virtual void Read(Buffer const *, LyXLex & lex) = 0;
 	/** returns the number of rows (\n's) of generated tex code.
 	 fragile == true means, that the inset should take care about
 	 fragile commands by adding a \protect before.
 	 If the free_spc (freespacing) variable is set, then this inset
 	 is in a free-spacing paragraph.
 	 */
-	virtual int Latex(std::ostream &, bool fragile,
+	virtual int Latex(Buffer const *, std::ostream &, bool fragile,
 			  bool free_spc) const = 0;
 	///
-	virtual int Ascii(std::ostream &) const = 0;
+	virtual int Ascii(Buffer const *, std::ostream &) const = 0;
 	///
-	virtual int Linuxdoc(std::ostream &) const = 0;
+	virtual int Linuxdoc(Buffer const *, std::ostream &) const = 0;
 	///
-	virtual int DocBook(std::ostream &) const = 0;
+	virtual int DocBook(Buffer const *, std::ostream &) const = 0;
 	/// Updates needed features for this inset.
 	virtual void Validate(LaTeXFeatures & features) const;
 	///

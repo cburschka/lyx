@@ -66,14 +66,14 @@ Inset * InsetFormulaMacro::Clone() const
 }
 
 
-void InsetFormulaMacro::Write(ostream & os) const
+void InsetFormulaMacro::Write(Buffer const *, ostream & os) const
 {
 	os << "FormulaMacro ";
 	tmacro->WriteDef(os, false);
 }
 
 
-int InsetFormulaMacro::Latex(ostream & os, bool /*fragile*/, 
+int InsetFormulaMacro::Latex(Buffer const *, ostream & os, bool /*fragile*/, 
 			     bool /*free_spacing*/) const
 {
 	tmacro->WriteDef(os, true); // or false?
@@ -81,19 +81,19 @@ int InsetFormulaMacro::Latex(ostream & os, bool /*fragile*/,
 }
 
 
-int InsetFormulaMacro::Linuxdoc(ostream &) const
+int InsetFormulaMacro::Linuxdoc(Buffer const * buf, ostream & os) const
 {
-    return 0;
+    return Ascii(buf, os);
 }
 
 
-int InsetFormulaMacro::DocBook(ostream &) const
+int InsetFormulaMacro::DocBook(Buffer const * buf, ostream & os) const
 {
-    return 0;
+    return Ascii(buf, os);
 }
 
 
-void InsetFormulaMacro::Read(LyXLex & lex)
+void InsetFormulaMacro::Read(Buffer const *, LyXLex & lex)
 {
 	istream & is = lex.getStream();
 	mathed_parser_file(is, lex.GetLineNo());   

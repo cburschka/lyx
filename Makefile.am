@@ -1,13 +1,14 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES= *.orig *.rej *~ *.bak lyx.1 core
-MAINTAINERCLEANFILES = Makefile.in aclocal.m4 configure \
-	development/lyx.spec
-SUBDIRS = intl po src lib
+MAINTAINERCLEANFILES = $(srcdir)/Makefile.in $(srcdir)/aclocal.m4 \
+	$(srcdir)/configure $(srcdir)/development/lyx.spec \
+	$(srcdir)/acinclude.m4
+SUBDIRS = intl po sigc++ src lib
 
 EXTRA_DIST = ANNOUNCE OLD-CHANGES INSTALL.OS2 INSTALL.autoconf README.OS2 \
 	UPGRADING lyx.man acconfig.h \
 	config development forms images
-ETAGS_ARGS = --c++
+ETAGS_ARGS = --lang=c++
 man_MANS = lyx.1
 lyx.1:
 	cp -p $(srcdir)/lyx.man lyx.1

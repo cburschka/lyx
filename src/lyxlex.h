@@ -86,7 +86,14 @@ public:
 	///
 	string const GetString() const;
 	
-	/// get a long string, ended by the tag `endtag'
+	/**
+	 * Get a long string, ended by the tag `endtag'
+	 * This string can span several lines. The first line
+	 * serves as a template for how many spaces the lines
+	 * are indented. This much white space is skipped from
+	 * each following line. This mechanism does not work
+	 * perfectly if you use tabs.
+	 */
 	string getLongString(string const & endtag);
 	
 	///

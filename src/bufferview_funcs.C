@@ -25,9 +25,9 @@ void Foot(BufferView * bv)
 	bv->owner()->getMiniBuffer()
 		->Set(_("Inserting Footnote..."));
 	bv->hideCursor();
-	bv->update(-2);
-	bv->text->InsertFootnoteEnvironment(LyXParagraph::FOOTNOTE);
-	bv->update(1);
+	bv->update(BufferView::SELECT|BufferView::FITCUR);
+	bv->text->InsertFootnoteEnvironment(bv, LyXParagraph::FOOTNOTE);
+	bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 
 
@@ -60,9 +60,9 @@ void Margin(BufferView * bv)
 	if (bv->available()) {
 		bv->owner()->getMiniBuffer()->Set(_("Inserting margin note..."));
 		bv->hideCursor();
-		bv->update(-2);
-		bv->text->InsertFootnoteEnvironment(LyXParagraph::MARGIN);
-		bv->update(1);
+		bv->update(BufferView::SELECT|BufferView::FITCUR);
+		bv->text->InsertFootnoteEnvironment(bv, LyXParagraph::MARGIN);
+		bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 }
 
@@ -86,9 +86,9 @@ void Melt(BufferView * bv)
 	bv->owner()->getMiniBuffer()->Set(_("Melt"));
 	bv->hideCursor();
 	bv->beforeChange();
-	bv->update(-2);
-	bv->text->MeltFootnoteEnvironment();
-	bv->update(1);
+	bv->update(BufferView::SELECT|BufferView::FITCUR);
+	bv->text->MeltFootnoteEnvironment(bv);
+	bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 
 
@@ -108,12 +108,12 @@ void changeDepth(BufferView * bv, int decInc)
 	if (!bv->available()) return;
 	
 	bv->hideCursor();
-	bv->update(-2);
+	bv->update(BufferView::SELECT|BufferView::FITCUR);
 	if (decInc >= 0)
-		bv->text->IncDepth();
+		bv->text->IncDepth(bv);
 	else
-		bv->text->DecDepth();
-	bv->update(1);
+		bv->text->DecDepth(bv);
+	bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	bv->owner()->getMiniBuffer()
 		->Set(_("Changed environment depth"
 			" (in possible range, maybe not)"));
@@ -287,22 +287,22 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font)
 {
 	if (bv->available()) { 
 		bv->hideCursor();
-		bv->update(-2);
+		bv->update(BufferView::SELECT|BufferView::FITCUR);
 		if (bv->the_locking_inset)
 			bv->the_locking_inset->SetFont(bv, font, toggleall);
 		else
-			bv->text->ToggleFree(font, toggleall);
-		bv->update(1);
+			bv->text->ToggleFree(bv, font, toggleall);
+		bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 		if (font.language() != ignore_language ||
 		    font.latex() != LyXFont::IGNORE) {
 			LyXText * text = bv->text;
 			LyXCursor & cursor = text->cursor;
-			text->ComputeBidiTables(cursor.row());
+			text->ComputeBidiTables(bv->buffer(), cursor.row());
 			if (cursor.boundary() != 
-			    text->IsBoundary(cursor.par(), cursor.pos(),
+			    text->IsBoundary(bv->buffer(), cursor.par(), cursor.pos(),
 					     text->real_current_font) )
-				text->SetCursor(cursor.par(), cursor.pos(),
+				text->SetCursor(bv, cursor.par(), cursor.pos(),
 						false, !cursor.boundary());
 		}
 	}

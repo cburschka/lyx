@@ -90,9 +90,57 @@ int  strToInt(string const & str)
 		tmpstr = frontStrip(strip(str, ' '), ' ');
 		// Do the conversion proper.
 		return atoi(tmpstr.c_str());
-	} else
+	} else {
 		return 0;
+	}
 }
+
+
+
+///
+bool isStrDbl(string const & str)
+{
+	if (str.empty()) return false;
+	
+	// Remove leading and trailing white space chars.
+	string tmpstr = frontStrip(strip(str, ' '), ' ');
+	if (tmpstr.empty()) return false;
+	//	if (1 < tmpstr.count('.')) return false;
+
+	string::const_iterator cit = tmpstr.begin();
+	bool found_dot(false);
+	if ( (*cit) == '-') ++cit;
+	for (; cit != tmpstr.end(); ++cit) {
+		if (!isdigit((*cit))
+		    && '.' != (*cit)) {
+			return false;
+		}
+		if ('.' == (*cit)) {
+			if (found_dot) {
+				return false;
+			} else {
+				found_dot = true;
+			}
+		}
+	}
+	return true;
+}
+
+///
+double strToDbl(string const & str)
+{
+	string tmpstr;
+
+	if (isStrDbl(str)) {
+		// Remove leading and trailing white space chars.
+		tmpstr = frontStrip(strip(str, ' '), ' ');
+		// Do the conversion proper.
+		return atof(tmpstr.c_str());
+	} else {
+		return 0.0;
+	}
+}
+
 
 
 string lowercase(string const & a)
@@ -182,6 +230,30 @@ bool contains(char const * a, char const * b)
 {
 	if (!a || !b || !*a || !*b) return false;
 	return strstr(a, b) != 0;
+}
+
+
+bool containsOnly(string const & s, char const * cset)
+{
+	return s.find_first_not_of(cset) == string::npos;
+}
+
+
+bool containsOnly(string const & s, string const & cset)
+{
+	return s.find_first_not_of(cset) == string::npos;
+}
+
+
+bool containsOnly(char const * s, char const * cset)
+{
+	return string(s).find_first_not_of(cset) == string::npos;
+}
+
+
+bool containsOnly(char const * s, string const & cset)
+{
+	return string(s).find_first_not_of(cset) == string::npos;
 }
 
 

@@ -23,8 +23,7 @@
 using std::ostream;
 using std::endl;
 
-InsetFoot::InsetFoot(Buffer * bf)
-	: InsetCollapsable(bf)
+InsetFoot::InsetFoot() : InsetCollapsable()
 {
     setLabel(_("foot"));
     LyXFont font(LyXFont::ALL_SANE);
@@ -39,8 +38,8 @@ InsetFoot::InsetFoot(Buffer * bf)
 
 Inset * InsetFoot::Clone() const
 {
-    InsetFoot * result = new InsetFoot(buffer);
-    result->init(buffer, this);
+    InsetFoot * result = new InsetFoot();
+    result->init(this);
 
     result->collapsed = collapsed;
     return result;
@@ -53,11 +52,11 @@ char const * InsetFoot::EditMessage() const
 }
 
 
-int InsetFoot::Latex(ostream & os, bool fragile, bool fp) const
+int InsetFoot::Latex(Buffer const * buf, ostream & os, bool fragile, bool fp) const
 {
     os << "\\footnote{%" << endl;
     
-    int i = InsetText::Latex(os, fragile, fp);
+    int i = InsetText::Latex(buf, os, fragile, fp);
     os << "}%" << endl;
     
     return i + 2;
@@ -83,9 +82,9 @@ bool InsetFoot::InsertInsetAllowed(Inset * inset) const
 }
 
 
-LyXFont InsetFoot::GetDrawFont(LyXParagraph * p, int pos) const
+LyXFont InsetFoot::GetDrawFont(Buffer const * buf, LyXParagraph * p, int pos) const
 {
-    LyXFont fn = InsetCollapsable::GetDrawFont(p, pos);
+    LyXFont fn = InsetCollapsable::GetDrawFont(buf, p, pos);
     fn.decSize().decSize();
     return fn;
 }

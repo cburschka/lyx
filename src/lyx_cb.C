@@ -19,7 +19,6 @@
 #include "lyx.h"
 #include "layout_forms.h"
 #include "bullet_forms.h"
-#include "print_form.h"
 #include "form1.h"
 #include "lyx_main.h"
 #include "lyx_cb.h"
@@ -70,7 +69,6 @@ extern FD_form_document * fd_form_document;
 extern FD_form_quotes * fd_form_quotes;
 extern FD_form_preamble * fd_form_preamble;
 extern FD_form_table * fd_form_table;
-extern FD_form_print * fd_form_print;
 extern FD_form_figure * fd_form_figure;
 extern FD_form_screen * fd_form_screen;
 extern FD_form_toc * fd_form_toc;
@@ -181,28 +179,6 @@ void ShowMessage(Buffer * buf,
 		cout << msg1 << msg2 << msg3 << endl;
 	}
 }
-
-
-
-
-#if 0
-// only called from this file, LyXView and LyXFunc
-char updatetimer = 0;
-// only called from BufferView_pimpl and LyXFunc
-void FreeUpdateTimer()
-{
-	/* a real free timer would be better but I don't know 
-	 * how to do this with xforms */
-	updatetimer = 0;
-}
-
-// Only called from LyXFunc
-void SetUpdateTimer(float time)
-{
-	fl_set_timer(current_view->owner()->getMainForm()->timer_update, time);
-	updatetimer = 1;
-}
-#endif
 
 
 //
@@ -820,27 +796,6 @@ void MenuMakeAscii(Buffer * buffer)
 }
 
 
-void MenuPrint(Buffer * buffer)
-{
-	// Who cares?
-	//if (!bv->text)
-	//	return;
-
-	string input_file = OnlyFilename(ChangeExtension(buffer->fileName(),
-					    lyxrc.print_file_extension));
-	fl_set_input(fd_form_print->input_file, input_file.c_str());
-	
-	if (fd_form_print->form_print->visible) {
-		fl_raise_form(fd_form_print->form_print);
-	} 
-	else {
-		fl_show_form(fd_form_print->form_print,
-			     FL_PLACE_MOUSE, FL_FULLBORDER,
-			     _("Print"));
-	}
-}
-
-
 void MenuMakeHTML(Buffer * buffer)
 {
 	// First, create LaTeX file
@@ -955,7 +910,9 @@ void MenuExport(Buffer * buffer, string const & extyp)
 	// postscript
 	else if (extyp == "postscript") {
 		// Start Print-dialog. Not as good as dvi... Bernhard.
-		MenuPrint(buffer);
+	//should start lyxview->getDialogs()->showPrint();
+	// to get same as before
+	//		MenuPrint(buffer);
 		// Since the MenuPrint is a pop-up, we can't use
 		// the same trick as above. (Asger)
 		// MISSING: Move of ps-file :-(
@@ -1157,10 +1114,10 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	// clear the selection
 	bv->beforeChange();
 	if (!asParagraph)
-		bv->text->InsertStringA(tmpstr);
+		bv->text->InsertStringA(bv, tmpstr);
 	else
-		bv->text->InsertStringB(tmpstr);
-	bv->update(1);
+		bv->text->InsertStringB(bv, tmpstr);
+	bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 
 
@@ -2179,7 +2136,8 @@ extern "C" void ParagraphApplyCB(FL_OBJECT *, long)
 	labelwidthstring = fl_get_input(fd_form_paragraph->input_labelwidth);
 	noindent = fl_get_button(fd_form_paragraph->check_noindent);
 
-	current_view->text->SetParagraph(line_top,
+	current_view->text->SetParagraph(current_view,
+					 line_top,
 					 line_bottom,
 					 pagebreak_top,
 					 pagebreak_bottom,
@@ -2188,7 +2146,7 @@ extern "C" void ParagraphApplyCB(FL_OBJECT *, long)
 					 align, 
 					 labelwidthstring,
 					 noindent);
-	current_view->update(1);
+	current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	current_view->owner()->getMiniBuffer()->Set(_("Paragraph layout set"));
 }
 
@@ -2392,7 +2350,8 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	if (!current_view->available())
 		return;
 
-        current_view->text->SetCursor(current_view->text->cursor.par(),
+        current_view->text->SetCursor(current_view,
+				      current_view->text->cursor.par(),
                                       current_view->text->cursor.pos());
         current_view->setState();
 
@@ -2638,29 +2597,29 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
    
 	current_view->hideCursor();
 	current_view->beforeChange();
-	current_view->update(-2);
+	current_view->update(BufferView::SELECT|BufferView::FITCUR);
    
-	current_view->text->SetCursorParUndo(); 
+	current_view->text->SetCursorParUndo(current_view->buffer()); 
 	current_view->text->FreezeUndo();
 
-	current_view->text->BreakParagraph();
-	current_view->update(-1);
+	current_view->text->BreakParagraph(current_view);
+	current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
    
 	if (current_view->text->cursor.par()->Last()) {
-		current_view->text->CursorLeft();
+		current_view->text->CursorLeft(current_view);
       
-		current_view->text->BreakParagraph();
-		current_view->update(-1);
+		current_view->text->BreakParagraph(current_view);
+		current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 
 	current_view->text->current_font.setLatex(LyXFont::OFF);
 	//if (!fl_get_button(fd_form_table->check_latex)){
 	// insert the new wysiwy table
-	current_view->text->SetLayout(0); // standard layout
+	current_view->text->SetLayout(current_view, 0); // standard layout
 	if (current_view->text->cursor.par()->footnoteflag == 
 	    LyXParagraph::NO_FOOTNOTE) {
 		current_view->text
-			->SetParagraph(0, 0,
+			->SetParagraph(current_view, 0, 0,
 				       0, 0,
 				       VSpace (0.3 * current_view->buffer()->
 					       params.spacing.getValue(),
@@ -2673,7 +2632,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 				       0);
 	} else {
 		current_view->text
-			->SetParagraph(0, 0,
+			->SetParagraph(current_view, 0, 0,
 				       0, 0,
 				       VSpace(VSpace::NONE),
 				       VSpace(VSpace::NONE),
@@ -2692,11 +2651,11 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 		current_view->text->cursor.par()->InsertChar(0, LyXParagraph::META_NEWLINE);
 		current_view->text->cursor.par()->SetFont(0, font);
 	}
-	current_view->text->RedoParagraph();
+	current_view->text->RedoParagraph(current_view);
    
 	current_view->text->UnFreezeUndo();
      
-	current_view->update(1);
+	current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	current_view->owner()->getMiniBuffer()->Set(_("Table inserted"));
 	current_view->setState();
 }
@@ -2712,187 +2671,6 @@ extern "C" void TableOKCB(FL_OBJECT * ob, long data)
 {
 	TableApplyCB(ob, data);
 	TableCancelCB(ob, data);
-}
-
-
-/* callbacks for form form_print */
-
-extern "C" void PrintCancelCB(FL_OBJECT *, long)
-{
-	fl_hide_form(fd_form_print->form_print);
-}
-
-
-static
-bool stringOnlyContains (string const & LStr, char const * cset)
-{
-	return LStr.find_first_not_of(cset) == string::npos;
-}
-
-
-extern "C" void PrintApplyCB(FL_OBJECT *, long)
-{
-	if (!current_view->available())
-		return;
-        Buffer * buffer = current_view->buffer();
-        string path = OnlyPath(buffer->fileName());
-
-	string pageflag;
-	if (fl_get_button(fd_form_print->radio_even_pages))
-		pageflag = lyxrc.print_evenpage_flag + ' ';
-	else if (fl_get_button(fd_form_print->radio_odd_pages))
-		pageflag = lyxrc.print_oddpage_flag + ' ';
-
-// Changes by Stephan Witt (stephan.witt@beusen.de), 19-Jan-99
-// User may give a page (range) list
-// User may print multiple (unsorted) copies
-	string pages = subst(fl_get_input(fd_form_print->input_pages), ';',',');
-	pages = subst(pages, '+',',');
-	pages = frontStrip(strip(pages)) ;
-	while (!pages.empty()) { // a page range was given
-		string piece ;
-		pages = split (pages, piece, ',') ;
-		piece = strip(piece) ;
-		piece = frontStrip(piece) ;
-		if ( !stringOnlyContains (piece, "0123456789-") ) {
-			WriteAlert(_("ERROR!  Unable to print!"),
-				   _("Check 'range of pages'!"));
-			return;
-		}
-		if (piece.find('-') == string::npos) { // not found
-			pageflag += lyxrc.print_pagerange_flag + piece + '-' + piece + ' ' ;
-		} else if (suffixIs(piece, "-") ) { // missing last page
-			pageflag += lyxrc.print_pagerange_flag + piece + "1000 ";
-		} else if (prefixIs(piece, "-") ) { // missing first page
-			pageflag += lyxrc.print_pagerange_flag + '1' + piece + ' ' ;
-		} else {
-			pageflag += lyxrc.print_pagerange_flag + piece + ' ' ;
-		}
-	}
-   
-	string copies = frontStrip(strip(fl_get_input(fd_form_print->input_copies)));
-	if (!copies.empty()) { // a number of copies was given
-		if ( !stringOnlyContains (copies, "0123456789") ) {
-			WriteAlert(_("ERROR!  Unable to print!"),
-				   _("Check 'number of copies'!"));
-			return;
-		}
-		if (fl_get_button(fd_form_print->do_unsorted))
-			pageflag += lyxrc.print_copies_flag;
-		else
-			pageflag += lyxrc.print_collcopies_flag;
-		pageflag += " " + copies + ' ' ;
-	}
-
-	string reverseflag;
-	if (fl_get_button(fd_form_print->radio_order_reverse))
-		reverseflag = lyxrc.print_reverse_flag + ' ';
-   
-	string orientationflag;
-	if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
-		orientationflag = lyxrc.print_landscape_flag + ' ';
-   
-	string ps_file = fl_get_input(fd_form_print->input_file);
-	string printer = strip(fl_get_input(fd_form_print->input_printer));
-
-	string printerflag;
-	if (lyxrc.print_adapt_output // printer name should be passed to dvips
-	    && ! printer.empty()) // a printer name has been given
-		printerflag = lyxrc.print_to_printer + printer + ' ';
-     
-	string extraflags;
-	if (!lyxrc.print_extra_options.empty())
-		extraflags = lyxrc.print_extra_options + ' ';
-
-	string command = lyxrc.print_command + ' ' 
-		+ printerflag + pageflag + reverseflag 
-		+ orientationflag + extraflags;
- 
-	char real_papersize = buffer->params.papersize;
-	if (real_papersize == BufferParams::PAPER_DEFAULT)
-		real_papersize = lyxrc.default_papersize;
-	
-        string paper;
-	switch (real_papersize) {
-	case BufferParams::PAPER_USLETTER:
-		paper = "letter";
-		break;
-	case BufferParams::PAPER_A3PAPER:
-		paper = "a3";
-		break;
-	case BufferParams::PAPER_A4PAPER:
-		paper = "a4";
-		break;
-	case BufferParams::PAPER_A5PAPER:
-		paper = "a5";
-		break;
-	case BufferParams::PAPER_B5PAPER:
-		paper = "b5";
-		break;
-	case BufferParams::PAPER_EXECUTIVEPAPER:
-		paper = "foolscap";
-		break;
-	case BufferParams::PAPER_LEGALPAPER:
-		paper = "legal";
-		break;
-	default: /* If nothing else fits, keep an empty value... */
-		break;
-	}
-
-	if (buffer->params.use_geometry
-	    && buffer->params.papersize2 == BufferParams::VM_PAPER_CUSTOM
-	    && !lyxrc.print_paper_dimension_flag.empty()
-	    && !buffer->params.paperwidth.empty()
-	    && !buffer->params.paperheight.empty()) {
-		// using a custom papersize
-		command += ' ';
-		command += lyxrc.print_paper_dimension_flag + ' ';
-		command += buffer->params.paperwidth + ',';
-		command += buffer->params.paperheight + ' ';
-	} else if (!lyxrc.print_paper_flag.empty()
-		   && !paper.empty()
-		   && (real_papersize != BufferParams::PAPER_USLETTER ||
-		       buffer->params.orientation == BufferParams::ORIENTATION_PORTRAIT)) {
-		command += " " + lyxrc.print_paper_flag + " " + paper + " ";
-	}
-	if (fl_get_button(fd_form_print->radio_file))
-		command += lyxrc.print_to_file 
-			+ QuoteName(MakeAbsPath(ps_file, path));
-	else if (!lyxrc.print_spool_command.empty())
-		command += lyxrc.print_to_file 
-			+ QuoteName(ps_file);
-	
-	// push directorypath, if necessary 
-        if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)){
-		path = buffer->tmppath;
-        }
-        Path p(path);
-
-	bool result;
-	if (!lyxrc.print_spool_command.empty() && 
-	    !fl_get_button(fd_form_print->radio_file)) {
-	    	string command2 = lyxrc.print_spool_command + ' ';
-		if (!printer.empty())
-			command2 += lyxrc.print_spool_printerprefix 
-				+ printer;
-		// First run dvips and, if succesful, then spool command
-		if ((result = RunScript(buffer, true, command))) {
-			result = RunScript(buffer, false, command2, ps_file);
-		}
-        } else
-		result = RunScript(buffer, false, command);
-
-	if (!result)
-		WriteAlert(_("Error:"),
-			   _("Unable to print"),
-			   _("Check that your parameters are correct"));
-}
-
-
-extern "C" void PrintOKCB(FL_OBJECT * ob, long data)
-{
-	PrintCancelCB(ob, data);  
-	PrintApplyCB(ob, data);
 }
 
 
@@ -2941,29 +2719,29 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	}
 	
 	current_view->hideCursor();
-	current_view->update(-2);
+	current_view->update(BufferView::SELECT|BufferView::FITCUR);
 	current_view->beforeChange();
       
-	current_view->text->SetCursorParUndo(); 
+	current_view->text->SetCursorParUndo(current_view->buffer()); 
 	current_view->text->FreezeUndo();
 
-	current_view->text->BreakParagraph();
-	current_view->update(-1);
+	current_view->text->BreakParagraph(current_view);
+	current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
       
 	if (current_view->text->cursor.par()->Last()) {
-		current_view->text->CursorLeft();
+		current_view->text->CursorLeft(current_view);
 	 
-		current_view->text->BreakParagraph();
-		current_view->update(-1);
+		current_view->text->BreakParagraph(current_view);
+		current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 
 	// The standard layout should always be numer 0;
-	current_view->text->SetLayout(0);
+	current_view->text->SetLayout(current_view, 0);
 	
 	if (current_view->text->cursor.par()->footnoteflag == 
 	    LyXParagraph::NO_FOOTNOTE) {
 		current_view->text->
-			SetParagraph(0, 0,
+			SetParagraph(current_view, 0, 0,
 				     0, 0,
 				     VSpace (0.3 * buffer->params.spacing.getValue(),
 					     LyXLength::CM),
@@ -2972,7 +2750,7 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 					     LyXLength::CM),
 				     LYX_ALIGN_CENTER, string(), 0);
 	} else {
-		current_view->text->SetParagraph(0, 0,
+		current_view->text->SetParagraph(current_view, 0, 0,
 						 0, 0,
 						 VSpace(VSpace::NONE),
 						 VSpace(VSpace::NONE),
@@ -2981,12 +2759,12 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 						 0);
 	}
 	
-	current_view->update(-1);
+	current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
       
 	Inset * new_inset = new InsetFig(100, 100, buffer);
 	current_view->insertInset(new_inset);
 	new_inset->Edit(current_view, 0, 0, 0);
-	current_view->update(0);
+	current_view->update(BufferView::SELECT|BufferView::FITCUR);
 	current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
 	current_view->text->UnFreezeUndo();
 	current_view->setState();
@@ -3095,10 +2873,10 @@ extern "C" void TocSelectCB(FL_OBJECT * ob, long)
 	unsigned int choice = fl_get_browser(ob);
 	if (0 < choice && choice - 1 < toclist.size()) {
  		current_view->beforeChange();
-		current_view->text->SetCursor(toclist[choice-1].par, 0);
+		current_view->text->SetCursor(current_view, toclist[choice-1].par, 0);
 		current_view->text->sel_cursor = 
 			current_view->text->cursor;
-		current_view->update(0);
+		current_view->update(BufferView::SELECT|BufferView::FITCUR);
 	} else {
 		WriteAlert(_("Error"), 
 			   _("Couldn't find this label"), 

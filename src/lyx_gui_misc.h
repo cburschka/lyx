@@ -24,10 +24,10 @@ extern "C" int CancelCloseBoxCB(FL_FORM *, void *);
 extern "C" int IgnoreCloseBoxCB(FL_FORM *, void *);
 
 /// Prevents LyX from crashing when no buffers available
-void CloseAllBufferRelatedPopups();
+void CloseAllBufferRelatedDialogs();
 
 /// Ensures info in visible popups are always correct.
-void updateAllVisibleBufferRelatedPopups();
+void updateAllVisibleBufferRelatedDialogs();
 
 /// Extract shortcut from <ident>|<shortcut> string
 char const * flyx_shortcut_extract(char const * sc);

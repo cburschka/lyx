@@ -16,6 +16,11 @@
 #include <string>
 using std::string;
 #else
+#ifdef __STRING__
+#error The <string> header has been included before LString.h
+#else
+#define __STRING__
+#endif
 #include "support/lyxstring.h"
 // using lyx::string;
 typedef lyxstring string;

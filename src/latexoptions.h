@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Mon Apr 12 19:09:41 1999.**/
+/** Header file generated with fdesign on Mon Jun 12 06:32:31 2000.**/
 
 #ifndef FD_LaTeXOptions_h_
 #define FD_LaTeXOptions_h_

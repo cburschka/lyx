@@ -277,19 +277,8 @@ void MathParInset::Write(ostream & os, bool fragile)
 		}
 	}
 
-	// CHECK
-	// Just make sure that the correct number of braces are output.
-	// (Lgb)
-#if 0
-	while (brace > 0) {
-		os << '}';
-		--brace;
-	}
-#else
-	// Something like this should work too:
 	if (brace > 0)
-		os << string(brace, '}'); // not one-off error I hope.
-#endif
+		os << string(brace, '}');
 }
 
 
@@ -335,23 +324,6 @@ void mathed_write(MathParInset * p, ostream & os, int * newlines,
 	   os << "\\( "; // changed from " \\( " (Albrecht Dress)
    } 
    else {
-	   // CHECK
-	   // Is this '\n' really needed, what can go wrong
-	   //if it is not there? The reason why I want to avoid this is
-	   // because of the "backlook" into the output stream.
-	   // Lgb.
-#if 0
-     if (!suffixIs(outf, '\n')) {
-       // in batchmode we need to make sure
-       // a space before an equation doesn't
-       // make the LaTeX output different 
-       // compared to "Exported LaTeX"  ARRae
-       // Modified to work in a cleaner and hopefully more general way
-       // (JMarc)
-       outf += "\n";
-       ++number_of_newlines;
-     }
-#endif
      if (mathed_env == LM_EN_DISPLAY){
 	     os << "\\[\n";
      } else {

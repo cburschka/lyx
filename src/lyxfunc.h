@@ -33,7 +33,7 @@ public:
 	explicit
 	LyXFunc(LyXView *);
     
-	/// LyX distpatcher, executes lyx actions.
+	/// LyX dispatcher, executes lyx actions.
 	string Dispatch(int action, char const * arg = 0);
 			 
 	/// The same but uses the name of a lyx command.
@@ -72,6 +72,7 @@ public:
 	
 	/// Should a hint message be displayed?
 	void setHintMessage(bool);
+
 private:
 	///
 	LyXView * owner;

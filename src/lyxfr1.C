@@ -67,22 +67,22 @@ string GetCurrentSelectionAsString(LyXText * lt)
 // If nothing selected, select the word at the cursor.
 // Returns the current selection
 static inline
-string GetSelectionOrWordAtCursor(LyXText * lt) 
+string GetSelectionOrWordAtCursor(BufferView * bv) 
 {
-	lt->SelectWordWhenUnderCursor();
-	return GetCurrentSelectionAsString(lt);
+	bv->text->SelectWordWhenUnderCursor(bv);
+	return GetCurrentSelectionAsString(bv->text);
 }
 
 
 // This is a copy of SetSelectionOverString from text.C
 // It does the same, but uses only the length as a parameter
 static inline
-void SetSelectionOverLenChars(LyXText * lt, int len)
+void SetSelectionOverLenChars(BufferView * bv, int len)
 {
-	lt->sel_cursor = lt->cursor;
+	bv->text->sel_cursor = bv->text->cursor;
 	for (int i = 0; i < len; ++i)
-		lt->CursorRight();
-	lt->SetSelection();
+		bv->text->CursorRight(bv);
+	bv->text->SetSelection(bv);
 }
 
 
@@ -105,7 +105,7 @@ void LyXFindReplace::StartSearch(BufferView * b)
 	SF.replaceEnabled(!bv->buffer()->isReadonly());
 	searchForward = true;
 	if (SF.SearchString().empty()) 
-		SF.SetSearchString(GetSelectionOrWordAtCursor(bv->text));
+		SF.SetSearchString(GetSelectionOrWordAtCursor(bv));
 }	
 
 
@@ -129,17 +129,17 @@ void LyXFindReplace::SearchReplaceCB()
 	string const replacestring = SF.ReplaceString();
 
 	bv->hideCursor();
-	bv->update(-2);
+	bv->update(BufferView::SELECT|BufferView::FITCUR);
 
 	LyXText * ltCur = bv->text;	
 	if (ltCur->selection) {
 		// clear the selection (if there is any) 
 		bv->toggleSelection(false);
 		bv->text->
-			ReplaceSelectionWithString(replacestring.c_str());
+			ReplaceSelectionWithString(bv, replacestring.c_str());
 		bv->text->
-			SetSelectionOverString(replacestring.c_str());
-		bv->update(1);
+			SetSelectionOverString(bv, replacestring.c_str());
+		bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 	
 	// jump to next match:
@@ -169,20 +169,20 @@ void LyXFindReplace::SearchReplaceAllCB()
 
 	// start at top
 	bv->text->ClearSelection();
-	bv->text->CursorTop();
+	bv->text->CursorTop(bv);
 
 	int replace_count = 0;
 	LyXText	* ltCur;
 	do {
 		ltCur = bv->text;	
 		if (ltCur->selection) {
-			bv->update(-2);
+			bv->update(BufferView::SELECT|BufferView::FITCUR);
 			bv->toggleSelection(false);
 			bv->text->
-				ReplaceSelectionWithString(replacestring.c_str());
+				ReplaceSelectionWithString(bv, replacestring.c_str());
 			bv->text->
-				SetSelectionOverString(replacestring.c_str());
-			bv->update(1); 
+				SetSelectionOverString(bv, replacestring.c_str());
+			bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE); 
 			++replace_count;
 		}
 	} while (SearchCB(true));
@@ -212,7 +212,7 @@ bool LyXFindReplace::SearchCB(bool fForward)
 		return false;
    
 	bv->hideCursor();
-	bv->update(-2);
+	bv->update(BufferView::SELECT|BufferView::FITCUR);
 	LyXText * ltCur = bv->text;
 	if (ltCur->selection) 
 		ltCur->cursor = fForward ? ltCur->sel_end_cursor :
@@ -222,15 +222,15 @@ bool LyXFindReplace::SearchCB(bool fForward)
 	bool result;
    
 	if (!SF.ValidSearchData() ||
-	    (fForward ? SearchForward(ltCur) : SearchBackward(ltCur))) {
-		bv->update(-2);
+	    (fForward ? SearchForward(bv):SearchBackward(bv))) {
+		bv->update(BufferView::SELECT|BufferView::FITCUR);
 
 		// clear the selection (if there is any) 
 		bv->toggleSelection();
 		bv->text->ClearSelection();
 
 		// set the new selection 
-		SetSelectionOverLenChars(bv->text, iLenSelected);
+		SetSelectionOverLenChars(bv, iLenSelected);
 		bv->toggleSelection(false);
 		bv->owner()->getMiniBuffer()->Set(_("Found."));
 		result = true;
@@ -250,10 +250,10 @@ bool LyXFindReplace::SearchCB(bool fForward)
 // if the string can be found: return true and set the cursor to
 // the new position 
 // (was: LyXText::SearchForward(char const* string) in text2.C )
-bool LyXFindReplace::SearchForward(LyXText * lt)
+bool LyXFindReplace::SearchForward(BufferView * bv)
 {
-	LyXParagraph * par = lt->cursor.par();
-	LyXParagraph::size_type pos = lt->cursor.pos();
+	LyXParagraph * par = bv->text->cursor.par();
+	LyXParagraph::size_type pos = bv->text->cursor.pos();
 
 	while (par && !IsSearchStringInText(par, pos)) {
 		if (pos < par->Last() - 1)
@@ -264,7 +264,7 @@ bool LyXFindReplace::SearchForward(LyXText * lt)
 		}
 	}
 	if (par) {
-		lt->SetCursor(par, pos);
+		bv->text->SetCursor(bv, par, pos);
 		return true;
 	} else
 		return false;
@@ -274,10 +274,10 @@ bool LyXFindReplace::SearchForward(LyXText * lt)
 // if the string can be found: return true and set the cursor to
 // the new position 
 // (was: LyXText::SearchBackward(char const* string) in text2.C )
-bool LyXFindReplace::SearchBackward(LyXText * lt)
+bool LyXFindReplace::SearchBackward(BufferView * bv)
 {
-	LyXParagraph * par = lt->cursor.par();
-	int pos = lt->cursor.pos();
+	LyXParagraph * par = bv->text->cursor.par();
+	int pos = bv->text->cursor.pos();
 
 	do {
 		if (pos > 0)
@@ -293,7 +293,7 @@ bool LyXFindReplace::SearchBackward(LyXText * lt)
 	} while (par && !IsSearchStringInText(par, pos));
   
 	if (par) {
-		lt->SetCursor(par, pos);
+		bv->text->SetCursor(bv, par, pos);
 		return true;
 	} else
 		return false;

@@ -22,17 +22,21 @@ fi
 
 # Generate acinclude.m4
 echo -n "Generate acinclude.m4... "
-rm -rf acinclude.m4
+rm -f acinclude.m4 sigc++/acinclude.m4
 touch acinclude.m4
-for fil in config/lyxinclude.m4 config/libtool.m4 config/gettext.m4 config/lcmessage.m4 config/progtest.m4 ; do
+for fil in config/lyxinclude.m4 config/libtool.m4 config/gettext.m4 config/lcmessage.m4 config/progtest.m4 config/sigc++.m4 config/kde.m4; do
     cat $fil >> acinclude.m4
+done
+touch sigc++/acinclude.m4
+for fil in config/libtool.m4 ; do
+    cat $fil >> sigc++/acinclude.m4
 done
 echo "done."
 
 # Generate the Makefiles and configure files
 if ( aclocal --version ) </dev/null > /dev/null 2>&1; then
 	echo -n "Building macros... "
-	$ACLOCAL ; (cd lib/reLyX; $ACLOCAL )
+	$ACLOCAL ; ( cd lib/reLyX; $ACLOCAL ) ; ( cd sigc++; $ACLOCAL ) 
 	echo "done."
 else
 	echo "aclocal not found -- aborting"
@@ -41,7 +45,7 @@ fi
 
 if ( autoheader --version ) </dev/null > /dev/null 2>&1; then
 	echo -n "Building config header template... "
-	$AUTOHEADER
+	$AUTOHEADER ; ( cd sigc++; $AUTOHEADER )
 	echo "done."
 else
 	echo "autoheader not found -- aborting"
@@ -50,7 +54,7 @@ fi
 
 if ( $AUTOMAKE --version ) </dev/null > /dev/null 2>&1; then
 	echo -n "Building Makefile templates... "
-	$AUTOMAKE ; (cd lib/reLyX ; $AUTOMAKE )
+	$AUTOMAKE ; ( cd lib/reLyX ; $AUTOMAKE ) ; ( cd sigc++; $AUTOMAKE )
 	echo "done."
 else
 	echo "automake not found -- aborting"
@@ -59,7 +63,7 @@ fi
 
 if ( $AUTOCONF --version ) </dev/null > /dev/null 2>&1; then
 	echo -n "Building configure... "
-	$AUTOCONF ; ( cd lib/reLyX ; $AUTOCONF )
+	$AUTOCONF ; ( cd lib/reLyX ; $AUTOCONF ) ; ( cd sigc++; $AUTOCONF )
 	echo "done."
 else
 	echo "autoconf not found -- aborting"

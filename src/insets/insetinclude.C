@@ -264,15 +264,15 @@ void InsetInclude::Edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-void InsetInclude::Write(ostream & os) const
+void InsetInclude::Write(Buffer const *, ostream & os) const
 {
 	os << "Include " << getCommand() << "\n";
 }
 
 
-void InsetInclude::Read(LyXLex & lex)
+void InsetInclude::Read(Buffer const * buf, LyXLex & lex)
 {
-	InsetCommand::Read(lex);
+	InsetCommand::Read(buf, lex);
     
 	if (getCmdName() == "include")
 		setInclude();
@@ -334,7 +334,7 @@ bool InsetInclude::loadIfNeeded() const
 }
 
 
-int InsetInclude::Latex(ostream & os,
+int InsetInclude::Latex(Buffer const *, ostream & os,
 			bool /*fragile*/, bool /*fs*/) const
 {
 	// Do nothing if no file name has been specified
@@ -383,8 +383,7 @@ int InsetInclude::Latex(ostream & os,
 
 	if (isVerb()) {
 		os << '\\' << getCmdName() << '{' << incfile << '}';
-	} 
-	else if (isInput()) {
+	} else if (isInput()) {
 		// \input wants file with extension (default is .tex)
 		if (!IsLyXFilename(getFileName())) {
 			os << '\\' << getCmdName() << '{' << incfile << '}';

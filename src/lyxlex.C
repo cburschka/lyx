@@ -167,7 +167,7 @@ string LyXLex::getLongString(string const & endtoken)
 			    && prefixIs(tmpstr, prefix.c_str())) {
 				tmpstr.erase(0, prefix.length() - 1);
 			}
-			str += tmpstr + '\n';
+			str += frontStrip(tmpstr, "\t") + '\n';
                 }
 		else // token == endtoken
 			break;

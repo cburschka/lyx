@@ -51,8 +51,8 @@ extern "C" void bibitem_cb(FL_OBJECT *, long data)
 			inset->setOptions(fl_get_input(bibitem_form->label));
 			fl_hide_form(bibitem_form->bibitem_form);
 			// Does look like a hack? It is! (but will change at 0.13)
-			holder->view->text->RedoParagraph();
-			holder->view->update(1);
+			holder->view->text->RedoParagraph(holder->view);
+			holder->view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			break;
 		} // fall through to Cancel on RO-mode
 	}
@@ -128,7 +128,7 @@ void InsetBibKey::setCounter(int c)
 // as a LyX 2.x command, and lyxlex is not enough smart to understand
 // real LaTeX commands. Yes, that could be fixed, but would be a waste 
 // of time cause LyX3 won't use lyxlex anyway.  (ale)
-void InsetBibKey::Write(ostream & os) const
+void InsetBibKey::Write(Buffer const *, ostream & os) const
 {
 	os << "\\bibitem ";
 	if (! getOptions().empty()) {
@@ -208,7 +208,7 @@ string InsetBibtex::getScreenLabel() const
 }
 
 
-int InsetBibtex::Latex(ostream & os,
+int InsetBibtex::Latex(Buffer const *, ostream & os,
 		       bool /*fragile*/, bool/*fs*/) const
 {
 	// this looks like an horrible hack and it is :) The problem

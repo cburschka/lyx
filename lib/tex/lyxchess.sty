@@ -1,0 +1,575 @@
+%
+% chess.sty
+% ---------
+% Style file for writing about chess games
+% Author : Piet Tutelaers (internet: rcpt@urc.tue.nl)
+% Version: 1.2 (Febr. 1992)
+%    Improvements over version 1.1
+%     - added `\v{S}ahovski Informator' symbols
+%     -`en passant capture' bug fixed (reported by Jonathan Mestel)
+%     -change {--} into \hbox{--} to prevent hyphenation within move
+%     -\move's lined up on last row (or digit in case of castling)
+%     -handling of promotion improved
+%       * Black promotion problem solved (plain TeX)
+%       * comment allowed also with promotion
+%       * if no promotion piece is provided a default Q(ueen) is supposed
+%     Thanks to: Jan Jaap Spreij (puls@cs.rug.nl)
+%     -improved interface to plain TeX
+%     -language support using the babel package from Johannes Braams
+%      (currently support for english, dutch, german and french but you
+%       can add an extra language `foreign' by:
+%	  1. creating `foreign.sty' for cooperating with `babel'
+%	  2. search for FOREIGN and follow the instructions in the comments)
+%     - \begin{nochess} ... \end{nochess}
+%     -chessfig10 renamed to chessf10 (service to MSDOS users)
+% Version: 1.1 (17 Nov 1990)
+%    Improvements over version 1.0:
+%     -TeX code cleaned up (thanks to TeX-wizzard Victor Eijkhout)
+%     -moving a King does not generate a castling move when this 
+%      King already moved
+%     -renamed internal macro `\\' because LaTeX uses that
+%     -better hooks for foreign languages (look for lines marked with
+%      %%FOREIGN%%)
+%    Torture test:
+%      If you change something in the chess.sty style check if everything 
+%      else is still working with torture-test.ltx (LaTeX) or 
+%      torture-test.tex (plain TeX).
+%    Known problems:
+%     -The analysis mode can not be used within arguments of macros
+%         not: \centerline{|21.N5*f3|}	but: |\centerline{21.N5*f3}|
+% Version: 1.0 (5 Jan 1990)
+%
+
+%
+% Macro specific initialisations
+%
+{\def\format{plain}
+\ifx\fmtname\format
+   \ifcat/@ \gdef\makeatletter{\catcode`@=11\relax}
+      \gdef\resetat{\catcode`@=12\relax}
+   \else\let\makeatletter\relax\let\resetat\relax\fi
+   \gdef\mbox#1{\leavevmode\hbox{#1}}
+   \gdef\Box{\vbox{\hrule height .1pt\hbox{\vrule width .1pt\kern3pt
+             \vbox{\kern6pt}\kern3pt\vrule width .1pt}\hrule height .1pt}}
+   \global\font\sc=cmcsc10
+\else
+   \gdef\line#1{\hbox to \textwidth{#1}}
+\fi}
+
+\makeatletter
+
+%
+% Do we have language support? Otherwise take default language!
+%
+% \ifx\undefined\babel@core@loaded\input english.sty\fi
+
+
+\def\@set[#1#2](#3){%arguments: [a-h1-8](<letter>)
+    \expandafter\xdef\csname#1#2\endcsname{#3}}
+
+\def\@get#1[#2#3]{%arguments:\cs[a-h1-8]
+    \edef#1{\csname#2#3\endcsname}}
+
+\font\Chess=chess20
+
+\newcount\@c % column
+\newcount\@r % row
+\newcount\@sum % row+column
+
+\def\@col{\ifcase\@c\or a\or b\or c\or d\or e\or f\or g\or h\fi}
+
+\def\@showchar{
+   \@get\piece[\@col\the\@r]
+   \if\piece E \ifodd\@sum 0\else Z\fi\else
+   \if\piece P \ifodd\@sum P\else O\fi\else
+   \if\piece p \ifodd\@sum p\else o\fi\else
+   \if\piece R \ifodd\@sum R\else S\fi\else
+   \if\piece B \ifodd\@sum B\else A\fi\else
+   \if\piece N \ifodd\@sum N\else M\fi\else
+   \if\piece r \ifodd\@sum r\else s\fi\else
+   \if\piece b \ifodd\@sum b\else a\fi\else
+   \if\piece n \ifodd\@sum n\else m\fi\else
+   \if\piece K \ifodd\@sum K\else J\fi\else
+   \if\piece Q \ifodd\@sum Q\else L\fi\else
+   \if\piece k \ifodd\@sum k\else j\fi\else
+   \if\piece q \ifodd\@sum q\else l\fi\else
+   \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
+
+\def\@showrow#1{
+   \@r=#1\@c=1
+   \@sum=\@r\advance\@sum by\@c
+   \loop
+      \@showchar
+      \ifnum\@c<8 \advance\@c by1\advance\@sum by1
+   \repeat
+}
+
+\def\showboard{
+\vbox{\offinterlineskip
+   \hrule height1pt
+   \hbox{\vrule width1pt\Chess
+         \vbox{\hbox{\@showrow8}
+               \hbox{\@showrow7}
+               \hbox{\@showrow6}
+               \hbox{\@showrow5}
+               \hbox{\@showrow4}
+               \hbox{\@showrow3}
+               \hbox{\@showrow2}
+               \hbox{\@showrow1}}%
+         \vrule width1pt}
+   \hrule height1pt}
+}
+
+% inner loop needs extra { ... }
+
+\def\@emptyboard{
+   \@r=1
+   \loop
+      {\@c=1
+       \loop
+         \@set[\@col\the\@r](E)
+         \ifnum\@c<8 \advance\@c by1
+       \repeat}
+       \ifnum\@r<8 \advance\@r by 1
+   \repeat
+}
+
+\def\@initboard{
+% empty squares
+   \@r=3
+   \loop
+     {\@c=1
+      \loop
+         \@set[\@col\the\@r](E)
+         \ifnum\@c<8 \advance\@c by1
+      \repeat}
+      \ifnum\@r<6 \advance\@r by 1
+   \repeat
+% pawns
+   \@c=1
+   \loop
+      \@set[\@col2](P)\@set[\@col7](p)
+      \ifnum\@c<8 \advance\@c by1
+   \repeat
+% pieces
+   \@set[a1](R)\@set[h1](R)
+   \@set[a8](r)\@set[h8](r)
+   \@set[b1](N)\@set[g1](N)
+   \@set[b8](n)\@set[g8](n)
+   \@set[c1](B)\@set[f1](B)
+   \@set[c8](b)\@set[f8](b)
+   \@set[d1](Q)\@set[e1](K)
+   \@set[d8](q)\@set[e8](k)
+}
+
+%
+% The next part defines a user friendly notation for chess moves. 
+% Some examples:  |21. Nf3-e5, Ke8*f8 22. 0-0-0+, Bh8*a1|
+%              :  |21.: Ke8*f8 22. Bh8*a1, 0-0|
+%              :  |21 Nfe5 K*f8 22 0-0-0! B*a1|
+%              :  |21: K*f8 22 B*a1 0-0|
+%
+
+\font\Fig=chessf10
+
+\gdef\@king{{\Fig K}}
+\gdef\@queen{{\Fig Q}}
+\gdef\@rook{{\Fig R}}
+\gdef\@bishop{{\Fig B}}
+\gdef\@knight{{\Fig N}}
+\gdef\@dash{\hbox{--}}
+\gdef\@capt{$\times$}
+\gdef\@dots{~$\ldots$,}
+\gdef\@dot{\char46 }
+
+%
+% Make character codes for pieces depending on current language.
+% (I cann't derive the Black values from the White using `\lowercase'!)
+%
+
+\def\define@White@pieces#1#2#3#4#5#6{% define character codes for White pieces
+   \chardef\king@=`#1  \def\uc@king{#1}
+   \chardef\queen@=`#2 \def\uc@queen{#2}
+   \chardef\rook@=`#3  \def\uc@rook{#3}
+   \chardef\bishop@=`#4\def\uc@bishop{#4}
+   \chardef\knight@=`#5\def\uc@knight{#5}
+   \chardef\pawn@=`#6  \def\uc@pawn{#6}}
+\def\define@Black@pieces#1#2#3#4#5#6{% and now the Black pieces
+   \def\lc@king{#1}\def\lc@queen{#2}\def\lc@rook{#3}
+   \def\lc@bishop{#4}\def\lc@knight{#5}\def\lc@pawn{#6}}
+\def\activate@pieces{% make them active
+   \catcode\king@=\active\catcode\queen@=\active\catcode\rook@=\active%
+   \catcode\bishop@=\active\catcode\knight@=\active}
+\def\deactivate@pieces{% make them inactive
+   \catcode\king@=11\catcode\queen@=11\catcode\rook@=11%
+   \catcode\bishop@=11\catcode\knight@=11}
+\def\ifcurrentlanguage#1#2{%if language defined then compare with \language
+   \expandafter\ifx\csname l@#1\endcsname\relax%
+   \else\ifnum\language=\expandafter\csname l@#1\endcsname\relax#2\fi\fi}
+\def\select@pieces{% select pieces depending on language
+   \ifcurrentlanguage{english}{%
+      \define@White@pieces{K}{Q}{R}{B}{N}{P}
+      \define@Black@pieces{k}{q}{r}{b}{n}{p}}
+   \ifcurrentlanguage{dutch}{%
+      \define@White@pieces{K}{D}{T}{L}{P}{I}
+      \define@Black@pieces{k}{d}{t}{l}{p}{i}}
+   \ifcurrentlanguage{german}{%
+      \define@White@pieces{K}{D}{T}{L}{S}{B}
+      \define@Black@pieces{k}{d}{t}{l}{s}{b}}
+   \ifcurrentlanguage{french}{%
+      \define@White@pieces{R}{D}{T}{F}{C}{P}
+      \define@Black@pieces{r}{d}{t}{f}{c}{p}}
+% Define here your language and choose an unique set of uppercase letters
+% for the White pieces (KING, QUEEN, etc.) and the corresponding lowercase
+% letters for the Black pieces (king, queen, etc.). 
+%  \ifcurrentlanguage{FOREIGN}{%
+%     \define@White@pieces{KING}{QUEEN}{ROOK}{BISHOP}{KNIGHT}{PAWN}
+%     \define@Black@pieces{king}{queen}{rook}{bishop}{knight}{pawn}}
+   }
+\def\let@pieces#1#2#3#4#5{% let character codes be macros
+   \let#1=\@king\let#2=\@queen\let#3=\@rook%
+   \let#4=\@bishop\let#5=\@knight}
+
+\catcode`|=\active\select@pieces
+{\catcode`:=\active\catcode`.=\active\catcode`*=\active\catcode`-=\active
+ \activate@pieces
+ \gdef\trigger@pieces{
+     \catcode`:=\active\catcode`.=\active\catcode`*=\active\catcode`-=\active
+     \activate@pieces
+     % I would like to say ``\let\king@=\@king'' but how?
+     \ifcurrentlanguage{english}{\let@pieces{K}{Q}{R}{B}{N}}%
+     \ifcurrentlanguage{dutch}{\let@pieces{K}{D}{T}{L}{P}}%
+     \ifcurrentlanguage{german}{\let@pieces{K}{D}{T}{L}{S}}%
+     \ifcurrentlanguage{french}{\let@pieces{R}{D}{T}{F}{C}}%
+% Fill in your language and the uppercase letters for KING, QUEEN, etc.
+% \ifcurrentlanguage{FOREIGN}{\let@pieces{KING}{QUEEN}{ROOK}{BISHOP}{KNIGHT}}%
+% Your language will be activated by FOREIGN.sty.
+     \let-=\@dash\let*=\@capt\let:=\@dots\let.=\@dot}%
+ \gdef\@notation{\begingroup\let|=\endgroup\trigger@pieces}%
+%
+% Provide a `nochess' environment in which the `|' character becomes
+% inactive for situations where the `|' is already in use (like in 
+% the LaTeX `tabular' environment for example).
+%
+ \gdef\nochess{\begingroup\let|=\relax\catcode`\|=12\relax
+         \catcode`:=12 \catcode`.=12 \catcode`*=12 \catcode`-=12
+         \deactivate@pieces\let\endnochess=\endgroup}
+ \gdef\chess{\begingroup\let\endchess=\endgroup\trigger@pieces}
+}
+\let|=\@notation
+
+%
+% Next part provides a ply (half move) generator
+%
+
+\newif\ifWhite     \newif\ifFigure    \newif\ifcapture
+
+%
+% next newif's needed for castling
+%
+\newif\ifKnotmoved \newif\ifknotmoved
+\newif\ifcastling  \newif\ifoo
+
+%
+% Globals for special pawn moves (en passant capture and promotion)
+%
+
+\newif\ifenpassant \newif\ifpromotion
+
+\def\@color#1{ %  Color of a piece     0: none, -1: black, 1: white
+   \if #1E0\else
+   \ifnum`#1=\uccode`#11\else-1\fi\fi}
+
+%
+% No checking is done for validity of moves, only legal moves behave well!!
+%
+
+\def\@ply#1#2#3#4#5 {% Syntax: [a-h][1-8][a-h][1-8]{Q|R|B|N}{Comment}
+   \@get\piece[#1#2]\@get\capture[#3#4]\Figuretrue
+   \if\capture E\capturefalse\else\capturetrue\fi
+   \ifWhite
+      \if\piece P\Figurefalse
+         \if#46
+             \if\eprow#3\capturetrue\enpassanttrue\fi
+             \xdef\eprow{x}%
+         \else
+            \xdef\eprow{x}%
+            \if#22
+               \if#44\xdef\eprow{#3}\fi
+            \else
+               \if#48\promotiontrue\fi
+            \fi
+         \fi
+      \else\xdef\eprow{x}
+         \if\piece K% check for possible castling
+            \ifKnotmoved
+               \if#3g\if#41\castlingtrue\ootrue\fi
+               \else\if#3c\if#41\castlingtrue\oofalse\fi\fi
+               \fi
+               \global\Knotmovedfalse
+            \fi
+         \fi
+      \fi
+      \ifcastling
+          \@set[#1#2](E)\@set[#3#4](K)%
+          \ifoo 0\@dash0\rlap{#5}\@set[f1](R)\@set[h1](E)%
+          \else 0\@dash0\@dash0\rlap{#5}\@set[d1](R)\@set[a1](E)\fi
+          \castlingfalse
+      \else
+          \ifFigure{\Fig\piece}\fi
+          #1#2\ifcapture\@capt\else\@dash\fi#3#4%
+          \rlap{\ifpromotion\expandafter\promovendus#5XYZ\else#5\fi}%
+          \@set[#1#2](E)%
+          \ifpromotion\@set[#3#4](\PROM)\else\@set[#3#4](\piece)\fi
+          \ifenpassant\@set[#3#2](E)\enpassantfalse\fi
+      \fi
+      \global\Whitefalse
+   \else % ``same'' for Black
+      \if\piece p\Figurefalse
+         \if#43
+             \if\eprow#3\capturetrue\enpassanttrue\fi
+             \xdef\eprow{x}%
+         \else
+            \xdef\eprow{x}%
+            \if#27
+               \if#45\xdef\eprow{#3}\fi
+            \else
+               \if#41\promotiontrue\fi
+            \fi
+         \fi
+      \else\xdef\eprow{x}
+         \if\piece k
+            \ifknotmoved
+               \if#3g\if#48\castlingtrue\ootrue\fi
+               \else\if#3c\if#48\castlingtrue\oofalse\fi\fi
+               \fi
+               \global\knotmovedfalse
+            \fi
+         \fi
+      \fi
+      \ifcastling
+          \@set[#1#2](E)\@set[#3#4](k)%
+          \ifoo 0\@dash0\rlap{#5}\@set[f8](r)\@set[h8](E)%
+          \else 0\@dash0\@dash0\rlap{#5}\@set[d8](r)\@set[a8](E)\fi%
+          \castlingfalse
+      \else
+          \ifFigure{\Fig\if\piece rR\else\if\piece bB\else\if\piece nN\else
+                        \if\piece qQ\else K\fi\fi\fi\fi}\fi
+          #1#2\ifcapture\@capt\else\@dash\fi#3#4%
+          \rlap{\ifpromotion\expandafter\promovendus#5XYZ\else#5\fi}%
+          \@set[#1#2](E)%
+          \ifpromotion\@set[#3#4](\prom)\else\@set[#3#4](\piece)\fi
+          \ifenpassant\@set[#3#2](E)\enpassantfalse\fi
+      \fi
+      \global\Whitetrue
+   \fi}
+
+%
+% Promovendus: treat first char of argument as promotion piece if queen, 
+% rook, knight or bishop; otherwise consider it as comment and take queen
+% as default promotion. Leave in \PROM White promoting piece (Q|R|B|N) 
+% and in \prom Black's version (q|r|b|n).
+%
+
+\def\promovendus#1#2Z{%
+   \if#1X\def\C{}\gdef\PROM{Q}\gdef\prom{q}%
+   \else
+     \ifnum`#1=\queen@ \gdef\PROM{Q}\gdef\prom{q}\def\C{\@comment#2}\else
+     \ifnum`#1=\rook@  \gdef\PROM{R}\gdef\prom{r}\def\C{\@comment#2}\else
+     \ifnum`#1=\bishop@\gdef\PROM{B}\gdef\prom{b}\def\C{\@comment#2}\else
+     \ifnum`#1=\knight@\gdef\PROM{N}\gdef\prom{n}\def\C{\@comment#2}\else
+       \gdef\PROM{Q}\gdef\prom{q}\def\C{\comment#1#2}%
+   \fi\fi\fi\fi\fi%
+   {\Fig\PROM}{\C}}
+\def\@comment#1XY{#1}
+
+\newcount\movecount \movecount=0
+
+\def\showmove#1#2{\par
+   \line{\strut\hbox to1cm{\hfil\the\movecount.}%
+   \hbox to2.8cm{\hfil#1}\hbox to2.8cm{\hfil#2}\hfil}\par}
+
+\def\move#1 #2 {
+   \advance\movecount by 1
+   \showmove{\@ply#1 }{\@ply#2 }}
+
+\def\ply#1 {
+   \ifWhite
+     \advance\movecount by 1
+     \showmove{\@ply#1 }{}
+   \else
+     \showmove{$\ldots$}{\@ply#1 }
+   \fi}
+
+\def\newgame{\vskip0pt\movecount=0 \@initboard
+    \Whitetrue\castlingfalse\xdef\eprow{x}
+    \Knotmovedtrue\knotmovedtrue
+    \promotionfalse\enpassantfalse}
+
+\def\@dolist{\afterassignment\@dodolist\let\@@next= } % Answer 11.5 TeXbook
+\def\@dodolist{\ifx\@@next\@endlist \let\@@next\relax % adapted to generate
+  \else \@nextitem\let\@@next\@dolist \fi             % chess diagrams
+  \@@next}
+
+\def\@endlist{\@endlist}
+
+\def\@nextitem{%
+       \if\@@next\space      \@set[\@col\the\@r](E)\else
+       \if\@@next *          \@set[\@col\the\@r](E)\else
+       \if\@@next\uc@pawn    \@set[\@col\the\@r](P)\else
+       \if\@@next\lc@pawn    \@set[\@col\the\@r](p)\else
+       \if\@@next\uc@rook    \@set[\@col\the\@r](R)\else
+       \if\@@next\lc@rook    \@set[\@col\the\@r](r)\else
+       \if\@@next\uc@bishop  \@set[\@col\the\@r](B)\else
+       \if\@@next\lc@bishop  \@set[\@col\the\@r](b)\else
+       \if\@@next\uc@knight  \@set[\@col\the\@r](N)\else
+       \if\@@next\lc@knight  \@set[\@col\the\@r](n)\else
+       \if\@@next\uc@queen   \@set[\@col\the\@r](Q)\else
+       \if\@@next\lc@queen   \@set[\@col\the\@r](q)\else
+       \if\@@next\uc@king    \@set[\@col\the\@r](K)\else
+       \if\@@next\lc@king    \@set[\@col\the\@r](k)\else
+       \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
+       \advance\@c by1}
+
+\def\@initrow#1#2{\@r=#1\@c=1\@dolist#2\@endlist}
+
+%
+% For setting up a position
+%
+\def\board#1#2#3#4#5#6#7#8{
+	\@initrow8{#1}
+	\@initrow7{#2}
+	\@initrow6{#3}
+	\@initrow5{#4}
+	\@initrow4{#5}
+	\@initrow3{#6}
+	\@initrow2{#7}
+	\@initrow1{#8}}
+
+%
+% Next macros for defining chess position (thanks to Victor Eijkhout)
+%
+\def\White(#1){\def\match{xxx}\xWhite#1,xxx,}
+\def\xWhite#1,{\def\temp{#1}
+  \ifx\temp\match \else \WhitePieceOrPawn#1XY \expandafter\xWhite \fi}
+\def\WhitePieceOrPawn#1#2#3#4Y{%
+  \if#3X \@set[#1#2](P)
+  \else\ifnum`#1=\king@	 \@set[#2#3](K)\else % King
+       \ifnum`#1=\queen@ \@set[#2#3](Q)\else % Queen
+       \ifnum`#1=\rook@	 \@set[#2#3](R)\else % Rook
+       \ifnum`#1=\bishop@\@set[#2#3](B)\else % Bishop
+       \ifnum`#1=\knight@\@set[#2#3](N)\else % kNight
+       \fi\fi\fi\fi\fi
+  \fi}
+
+\def\Black(#1){\def\match{xxx}\xBlack#1,xxx,}
+\def\xBlack#1,{\def\temp{#1}
+  \ifx\temp\match \else \BlackPieceOrPawn#1XY \expandafter\xBlack \fi}
+\def\BlackPieceOrPawn#1#2#3#4Y{
+  \if#3X\@set[#1#2](p)
+  \else\ifnum`#1=\king@  \@set[#2#3](k)\else % King
+       \ifnum`#1=\queen@ \@set[#2#3](q)\else % Queen
+       \ifnum`#1=\rook@  \@set[#2#3](r)\else % Rook
+       \ifnum`#1=\bishop@\@set[#2#3](b)\else % Bishop
+       \ifnum`#1=\knight@\@set[#2#3](n)\else % kNight
+       \fi\fi\fi\fi\fi
+  \fi}
+
+\def\position{\begingroup%
+    \@emptyboard\movecount=0\xdef\eprow{x}
+    \global\Whitetrue\global\castlingfalse
+    \global\Knotmovedtrue\global\knotmovedtrue
+    \global\promotionfalse\global\enpassantfalse}
+\def\endposition{\endgroup}
+
+% And now we define most symbols that are used in `\v{S}ahovski Informator'
+% (Chess Informant). For a complete list see Informant#51 (1991) pp 10-12.
+% If you add symbols realize that the macros should be usable by plain TeX
+% and LaTeX and that the (La)TeX names should be suggestive and clear!
+% But don't use uppercase letters or existing names (center)!
+% Thanks go to John Saba (saba@ccit.arizona.edu) and Henry Thomas 
+% (hthomas@irisa.fr) for their help in defining next symbols.
+\font\symbolten=cmsy10 \font\smrm=cmr6 \font\symbolsix=cmsy6
+\def\wbetter{\mbox{\baselineskip0pt$\vcenter{\vbox{\hbox{+}\hbox{=}}}$}}
+\def\bbetter{\mbox{\baselineskip0pt
+   $\vcenter{\vbox{\hbox{=}\kern-.3ex\hbox{+}}}$}}
+\def\wupperhand{\mbox{$\pm$}}
+\def\bupperhand{\mbox{$\mp$}}
+\def\wdecisive{\mbox{$+\hbox{}-$}}
+\def\bdecisive{\mbox{$-\hbox{}+$}}
+\def\equal{=}
+\def\unclear{\mbox{$\infty$}}
+\def\compensation{\mbox{\baselineskip0pt$\vcenter{\vbox{%
+   \hbox{\kern.056em\vbox{\hrule width0.89em\kern0.35ex\hrule width0.89em}}
+   \kern.2ex\hbox{$\infty$}}}$}}
+% next symbol should be build using METAFONT
+\def\devadvantage{{\symbolten\char'015}\kern-4.8pt
+   \vrule width 2.4pt height6pt depth-5.6pt
+   \vrule width .4pt height8pt depth-5.6pt\kern2.4pt}
+\def\moreroom{{\symbolten\char'015}}
+\def\withattack{$\rightarrow$}
+\def\withinit{$\uparrow$}
+\def\counterplay{\hbox{\baselineskip0pt%
+   $\vcenter{\vbox{\hbox{$\leftarrow$}\hbox{$\rightarrow$}}}$}}
+\def\zugzwang{$\odot$}
+\def\mate{\kern.4pt\mbox{%
+   \vrule width2ex height1.18ex depth-1.1ex\kern-2ex
+   \vrule width2ex height.52ex depth-.44ex\kern-1.381ex
+   \vrule width.08ex height1.8ex depth.2ex\kern0.615ex
+   \vrule width.08ex height1.8ex depth.2ex\kern0.406ex}\kern.4pt}
+\def\withidea{$\triangle$}
+\def\onlymove{$\Box$}
+\def\betteris{\mbox{\baselineskip0pt
+   $\vcenter{\vbox{\hbox{$\frown$}\kern-0.35ex\hrule width0.95em}}$}}
+\def\file{$\Leftrightarrow$}
+% next symbol should be build using METAFONT
+\def\diagonal{$\nearrow$}
+\def\centre{$\Box$\kern-.6em\raise.54ex\hbox{\smrm\char'053}}
+\def\kside{$\gg$}
+\def\qside{$\ll$}
+\def\weakpt{$\times$}
+\def\ending{$\perp$}
+% John Saba's method:
+\def\blackbox{\vrule height .8ex width 1.2ex depth 0ex}
+\def\whitebox{\vbox{\hrule height .1pt\hbox{\vrule width .1pt\kern.6ex
+              \vbox{\kern.8ex}\kern.6ex\vrule width .1pt}\hrule height .1pt}}
+\def\bishoppair{\whitebox\kern-2pt\raise1.8pt\hbox{\whitebox}}
+\def\opposbishops{\whitebox\kern-2pt\raise1.8pt\hbox{\blackbox}}
+\def\samebishops{\blackbox\kern-2pt\raise1.8pt\hbox{\blackbox}}
+% My method
+%\def\bishoppair{\setbox0=\hbox{%
+%   \vrule width1.4ex height1ex depth-.92ex\kern-1.4ex
+%   \vrule width1.4ex height.08ex depth0pt\kern-1.4ex
+%   \vrule width.08ex height1ex depth0ex\kern1.24ex
+%   \vrule width.08ex height1ex depth0ex}%
+%   \kern.4pt\mbox{\copy0\kern-.6ex\raise0.56ex\box0}\kern.4pt}
+%\def\opposbishops{\kern.4pt\mbox{%
+%   \vrule width1.4ex height1ex depth-.92ex\kern-1.4ex
+%   \vrule width1.4ex height.08ex depth0pt\kern-1.4ex
+%   \vrule width.08ex height1ex depth0ex\kern1.24ex
+%   \vrule width.08ex height1ex depth0ex\kern-.6ex
+%   \vrule width1.4ex height1.56ex depth-0.56ex}\kern.4pt }
+%\def\samebishops{\kern.4pt\mbox{%
+%   \vrule width1.4ex height1ex depth0ex\kern-.6ex
+%   \vrule width1.4ex height1.56ex depth-0.56ex}\kern.4pt}
+\def\unitedpawns{$\circ\kern-.05em\circ$}
+\def\seppawns{$\circ\kern-.3em\cdot\kern-.35em\cdot\kern-.1em\circ$}
+\def\doublepawns{\mbox{\baselineskip0pt
+   $\vcenter{\vbox{\hbox{$\circ$}\vskip.8pt\hbox{$\circ$}}}$}}
+% Next symbol still not perfect ...
+\def\passedpawn{\mbox{\baselineskip0pt
+   $\vcenter{\vbox{\hbox{\kern0.14em\symbolsix\char'042}\hbox{$\circ$}}}$}}
+\def\morepawns{$>$}
+\def\timelimit{$\oplus$}
+\def\novelty{{\sc N}}
+\def\comment{{\sc RR}}
+\def\various{{\sc R}}
+\def\without{\kern.4pt\mbox{%
+   \vrule width 1ex height.08ex depth0ex\kern-0.08ex
+   \vrule width0.08ex height1.5ex depth0ex}\kern.4pt}
+\def\with{\kern.4pt\mbox{%
+   \vrule width 0.08ex height1.5ex depth0ex\kern-0.08ex
+   \vrule width 1ex height.08ex depth0ex}\kern.4pt}
+\def\etc{$\parallel$}
+\def\see{\kern.4pt\mbox{\vrule width 1em height.54ex depth-.46ex}\kern.4pt}
+

@@ -1,9 +1,7 @@
-/** Header file generated with fdesign on Fri Apr 30 16:14:04 1999.**/
+/** Header file generated with fdesign on Mon Jun 12 06:32:31 2000.**/
 
 #ifndef FD_KeyMap_h_
 #define FD_KeyMap_h_
-
-#include FORMS_H_LOCATION
 
 /** Callbacks, globals and object handlers **/
 

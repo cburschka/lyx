@@ -99,7 +99,7 @@ void LyXScreen::DrawFromTo(int y1, int y2)
 	// y1 is now the real beginning of row on the screen
 	
 	while (row != 0 && y < y2) {
-		text->GetVisibleRow(y, row, y + first);
+		text->GetVisibleRow(owner.owner(), y, 0, row, y + first);
 		y += row->height();
 		row = row->next();
 	}
@@ -121,7 +121,7 @@ void LyXScreen::DrawOneRow(Row * row, long y_text)
 	if (y + row->height() > 0
 	    && y - row->height() <= long(owner.height())) {
 		// ok there is something visible
-		text->GetVisibleRow(y, row, y + first);
+		text->GetVisibleRow(owner.owner(), y, 0, row, y + first);
 	}
 }
 
@@ -186,9 +186,9 @@ void LyXScreen::ShowCursor()
 	if (!cursor_visible) {
 		Cursor_Shape shape = BAR_SHAPE;
 		if (text->real_current_font.language() !=
-		    text->buffer()->params.language_info
+		    owner.owner()->buffer()->params.language_info
 		    || text->real_current_font.isVisibleRightToLeft()
-		    != text->buffer()->params.language_info->RightToLeft())
+		    != owner.owner()->buffer()->params.language_info->RightToLeft())
 			shape = (text->real_current_font.isVisibleRightToLeft())
 				? REVERSED_L_SHAPE : L_SHAPE;
 		ShowManualCursor(text->cursor.x(), text->cursor.y(),

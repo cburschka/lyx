@@ -70,9 +70,9 @@ public:
     ///
     Inset * Clone() const;
     ///
-    void Read(LyXLex &);
+    void Read(Buffer const *, LyXLex &);
     ///
-    void Write(std::ostream &) const;
+    void Write(Buffer const *, std::ostream &) const;
     ///
     int ascent(Painter &, LyXFont const &) const;
     ///
@@ -116,13 +116,13 @@ public:
     ///
     UpdatableInset::RESULT LocalDispatch(BufferView *, int, string const &);
     ///
-    int Latex(std::ostream &, bool, bool) const;
+    int Latex(Buffer const *, std::ostream &, bool, bool) const;
     ///
-    int Ascii(std::ostream &) const;
+    int Ascii(Buffer const *, std::ostream &) const;
     ///
-    int Linuxdoc(std::ostream &) const;
+    int Linuxdoc(Buffer const *, std::ostream &) const;
     ///
-    int DocBook(std::ostream &) const;
+    int DocBook(Buffer const *, std::ostream &) const;
     ///
     void Validate(LaTeXFeatures & features) const;
     ///

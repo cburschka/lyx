@@ -103,13 +103,13 @@ bool BufferView::removeAutoInsets()
 	while (par) {
 		// this has to be done before the delete
 		if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE)
-			text->SetCursor(cursor, par, 0);
+			text->SetCursor(this, cursor, par, 0);
 		if (par->AutoDeleteInsets()){
 			a = true;
 			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
-				text->RedoParagraphs(cursor,
+				text->RedoParagraphs(this, cursor,
 						     cursor.par()->Next());
-				text->FullRebreak();
+				text->FullRebreak(this);
 			}
 		}
 		par = par->next;
@@ -117,7 +117,7 @@ bool BufferView::removeAutoInsets()
 	// avoid forbidden cursor positions caused by error removing
 	if (tmpcursor.pos() > tmpcursor.par()->Last())
 		tmpcursor.pos(tmpcursor.par()->Last());
-	text->SetCursorIntern(tmpcursor.par(), tmpcursor.pos());
+	text->SetCursorIntern(this, tmpcursor.par(), tmpcursor.pos());
 
 	return a;
 }
@@ -159,12 +159,12 @@ void BufferView::insertErrors(TeXErrors & terr)
 			continue;
 
 		InsetError * new_inset = new InsetError(msgtxt);
-		text->SetCursorIntern(texrowpar, tmppos);
-		text->InsertInset(new_inset);
-		text->FullRebreak();
+		text->SetCursorIntern(this, texrowpar, tmppos);
+		text->InsertInset(this, new_inset);
+		text->FullRebreak(this);
 	}
 	// Restore the cursor position
-	text->SetCursorIntern(cursor.par(), cursor.pos());
+	text->SetCursorIntern(this, cursor.par(), cursor.pos());
 }
 
 
@@ -183,7 +183,7 @@ void BufferView::setCursorFromRow(int row)
 	} else {
 		texrowpar = text->GetParFromID(tmpid);
 	}
-	text->SetCursor(texrowpar, tmppos);
+	text->SetCursor(this, texrowpar, tmppos);
 }
 
 bool BufferView::insertInset(Inset * inset, string const & lout,
@@ -209,20 +209,20 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 #endif
 
 	// not quite sure if we want this...
-	text->SetCursorParUndo();
+	text->SetCursorParUndo(buffer());
 	text->FreezeUndo();
 	
 	beforeChange();
 	if (!lout.empty()) {
-		update(-2);
-		text->BreakParagraph();
-		update(-1);
+		update(BufferView::SELECT|BufferView::FITCUR);
+		text->BreakParagraph(this);
+		update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		
 		if (text->cursor.par()->Last()) {
-			text->CursorLeft();
+			text->CursorLeft(this);
 			
-			text->BreakParagraph();
-			update(-1);
+			text->BreakParagraph(this);
+			update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 
 		pair<bool, LyXTextClass::size_type> lres =
@@ -237,20 +237,20 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 			lay = 0;
 		}
 		 
-		text->SetLayout(lay);
+		text->SetLayout(this, lay);
 		
-		text->SetParagraph(0, 0,
+		text->SetParagraph(this, 0, 0,
 				   0, 0,
 				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
 				   LYX_ALIGN_LAYOUT, 
 				   string(),
 				   0);
-		update(-1);
+		update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		
 		text->current_font.setLatex(LyXFont::OFF);
 	}
 	
-	text->InsertInset(inset);
+	text->InsertInset(this, inset);
 #if 1
 	// if we enter a text-inset the cursor should be to the left side
 	// of it! This couldn't happen before as Undo was not handled inside
@@ -259,12 +259,12 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 	// does not return the inset!
 	if (inset->IsTextInset()) {
 		if (text->cursor.par()->isRightToLeftPar(buffer()->params))
-			text->CursorRight();
+			text->CursorRight(this);
 		else
-			text->CursorLeft();
+			text->CursorLeft(this);
 	}
 #endif
-	update(-1);
+	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 	text->UnFreezeUndo();
 	return true;
@@ -277,8 +277,8 @@ void BufferView::open_new_inset(UpdatableInset * new_inset)
 	beforeChange();
 	text->FinishUndo();
 	insertInset(new_inset);
-	text->CursorLeft();
-	update(1);
+	text->CursorLeft(this);
+	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
     	new_inset->Edit(this, 0, 0, 0);
 }
 
@@ -296,9 +296,9 @@ bool BufferView::gotoLabel(string const & label)
 		if ( find(labels.begin(),labels.end(),label)
 		     != labels.end()) {
 			beforeChange();
-			text->SetCursor(it.getPar(), it.getPos());
+			text->SetCursor(this, it.getPar(), it.getPos());
 			text->sel_cursor = text->cursor;
-			update(0);
+			update(BufferView::SELECT|BufferView::FITCUR);
 			return true;
 		}
 	}
@@ -348,9 +348,10 @@ void BufferView::allFloats(char flag, char figmar)
 				if (par->previous
 				    && par->previous->footnoteflag != 
 				    LyXParagraph::CLOSED_FOOTNOTE){ /* should be */ 
-					text->SetCursorIntern(par->previous,
+					text->SetCursorIntern(this, 
+							      par->previous,
 							      0);
-					text->OpenFootnote();
+					text->OpenFootnote(this);
 				}
 			}
 		} else {
@@ -377,14 +378,14 @@ void BufferView::allFloats(char flag, char figmar)
 					    )
 				    )
 				) {
-				text->SetCursorIntern(par, 0);
-				text->CloseFootnote();
+				text->SetCursorIntern(this, par, 0);
+				text->CloseFootnote(this);
 			}
 		}
 		par = par->next;
 	}
 
-	text->SetCursorIntern(cursor.par(), cursor.pos());
+	text->SetCursorIntern(this, cursor.par(), cursor.pos());
 	redraw();
 	fitCursor();
 	//updateScrollbar();
@@ -405,9 +406,9 @@ void BufferView::openStuff()
 		owner()->getMiniBuffer()->Set(_("Open/Close..."));
 		hideCursor();
 		beforeChange();
-		update(-2);
-		text->OpenStuff();
-		update(0);
+		update(BufferView::SELECT|BufferView::FITCUR);
+		text->OpenStuff(this);
+		update(BufferView::SELECT|BufferView::FITCUR);
 		setState();
 	}
 }
@@ -419,9 +420,9 @@ void BufferView::toggleFloat()
 		owner()->getMiniBuffer()->Set(_("Open/Close..."));
 		hideCursor();
 		beforeChange();
-		update(-2);
-		text->ToggleFootnote();
-		update(0);
+		update(BufferView::SELECT|BufferView::FITCUR);
+		text->ToggleFootnote(this);
+		update(BufferView::SELECT|BufferView::FITCUR);
 		setState();
 	}
 }
@@ -432,11 +433,11 @@ void BufferView::menuUndo()
 		owner()->getMiniBuffer()->Set(_("Undo"));
 		hideCursor();
 		beforeChange();
-		update(-2);
-		if (!text->TextUndo())
+		update(BufferView::SELECT|BufferView::FITCUR);
+		if (!text->TextUndo(this))
 			owner()->getMiniBuffer()->Set(_("No further undo information"));
 		else
-			update(-1);
+			update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		setState();
 	}
 }
@@ -453,11 +454,11 @@ void BufferView::menuRedo()
 		owner()->getMiniBuffer()->Set(_("Redo"));
 		hideCursor();
 		beforeChange();
-		update(-2);
-		if (!text->TextRedo())
+		update(BufferView::SELECT|BufferView::FITCUR);
+		if (!text->TextRedo(this))
 			owner()->getMiniBuffer()->Set(_("No further redo information"));
 		else
-			update(-1);
+			update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		setState();
 	}
 }
@@ -467,7 +468,7 @@ void BufferView::hyphenationPoint()
 {
 	if (available()) {
 		hideCursor();
-		update(-2);
+		update(BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::HYPHENATION);
 		insertInset(new_inset);
@@ -479,7 +480,7 @@ void BufferView::ldots()
 {
 	if (available())  {
 		hideCursor();
-		update(-2);
+		update(BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::LDOTS);
 		insertInset(new_inset);
@@ -491,7 +492,7 @@ void BufferView::endOfSentenceDot()
 {
 	if (available()) {
 		hideCursor();
-		update(-2);
+		update(BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::END_OF_SENTENCE);
 		insertInset(new_inset);
@@ -503,7 +504,7 @@ void BufferView::menuSeparator()
 {
 	if (available()) {
 		hideCursor();
-		update(-2);
+		update(BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR);
 		insertInset(new_inset);
@@ -515,9 +516,9 @@ void BufferView::newline()
 {
 	if (available()) {
 		hideCursor();
-		update(-2);
-		text->InsertChar(LyXParagraph::META_NEWLINE);
-		update(-1);
+		update(BufferView::SELECT|BufferView::FITCUR);
+		text->InsertChar(this, LyXParagraph::META_NEWLINE);
+		update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 }
 
@@ -526,7 +527,7 @@ void BufferView::protectedBlank()
 {
 	if (available()) {
 		hideCursor();
-		update(-2);
+		update(BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset =
 			new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
 		insertInset(new_inset);
@@ -538,9 +539,9 @@ void BufferView::hfill()
 {
 	if (available()) {
 		hideCursor();
-		update(-2);
-		text->InsertChar(LyXParagraph::META_HFILL);
-		update(-1);
+		update(BufferView::SELECT|BufferView::FITCUR);
+		text->InsertChar(this, LyXParagraph::META_HFILL);
+		update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 }
 
@@ -551,7 +552,7 @@ void BufferView::copyEnvironment()
 		// clear the selection, even if mark_set
 		toggleSelection();
 		text->ClearSelection();
-		update(-2);
+		update(BufferView::SELECT|BufferView::FITCUR);
 		owner()->getMiniBuffer()->Set(_("Paragraph environment type copied"));
 	}
 }
@@ -560,9 +561,9 @@ void BufferView::copyEnvironment()
 void BufferView::pasteEnvironment()
 {
 	if (available()) {
-		text->pasteEnvironmentType();
+		text->pasteEnvironmentType(this);
 		owner()->getMiniBuffer()->Set(_("Paragraph environment type set"));
-		update(1);
+		update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 }
 
@@ -570,11 +571,11 @@ void BufferView::pasteEnvironment()
 void BufferView::copy()
 {
 	if (available()) {
-		text->CopySelection();
+		text->CopySelection(buffer());
 		// clear the selection, even if mark_set
 		toggleSelection();
 		text->ClearSelection();
-		update(-2);
+		update(BufferView::SELECT|BufferView::FITCUR);
 		owner()->getMiniBuffer()->Set(_("Copy"));
 	}
 }
@@ -583,9 +584,9 @@ void BufferView::cut()
 {
 	if (available()) {
 		hideCursor();
-		update(-2);
-		text->CutSelection();
-		update(1);
+		update(BufferView::SELECT|BufferView::FITCUR);
+		text->CutSelection(this);
+		update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		owner()->getMiniBuffer()->Set(_("Cut"));
 	}
 }
@@ -600,16 +601,16 @@ void BufferView::paste()
 	// clear the selection
 	toggleSelection();
 	text->ClearSelection();
-	update(-2);
+	update(BufferView::SELECT|BufferView::FITCUR);
 	
 	// paste
-	text->PasteSelection();
-	update(1);
+	text->PasteSelection(this);
+	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	
 	// clear the selection 
 	toggleSelection();
 	text->ClearSelection();
-	update(-2);
+	update(BufferView::SELECT|BufferView::FITCUR);
 }
 
 
@@ -619,16 +620,16 @@ void BufferView::gotoNote()
    
 	hideCursor();
 	beforeChange();
-	update(-2);
+	update(BufferView::SELECT|BufferView::FITCUR);
 	LyXCursor tmp;
    
-	if (!text->GotoNextNote()) {
+	if (!text->GotoNextNote(this)) {
 		if (text->cursor.pos() 
 		    || text->cursor.par() != text->FirstParagraph()) {
 				tmp = text->cursor;
 				text->cursor.par(text->FirstParagraph());
 				text->cursor.pos(0);
-				if (!text->GotoNextNote()) {
+				if (!text->GotoNextNote(this)) {
 					text->cursor = tmp;
 					owner()->getMiniBuffer()->Set(_("No more notes"));
 					LyXBell();
@@ -638,7 +639,7 @@ void BufferView::gotoNote()
 				LyXBell();
 			}
 	}
-	update(0);
+	update(BufferView::SELECT|BufferView::FITCUR);
 	text->sel_cursor = text->cursor;
 }
 
@@ -664,7 +665,7 @@ char * BufferView::nextWord(float & value)
 		return 0;
 	}
 
-	char * string = text->SelectNextWord(value);
+	char * string = text->SelectNextWord(this, value);
 
 	return string;
 }
@@ -676,9 +677,9 @@ void BufferView::selectLastWord()
    
 	hideCursor();
 	beforeChange();
-	text->SelectSelectedWord();
+	text->SelectSelectedWord(this);
 	toggleSelection(false);
-	update(0);
+	update(BufferView::SELECT|BufferView::FITCUR);
 }
 
 
@@ -688,9 +689,9 @@ void BufferView::endOfSpellCheck()
    
 	hideCursor();
 	beforeChange();
-	text->SelectSelectedWord();
+	text->SelectSelectedWord(this);
 	text->ClearSelection();
-	update(0);
+	update(BufferView::SELECT|BufferView::FITCUR);
 }
 
 
@@ -699,23 +700,23 @@ void BufferView::replaceWord(string const & replacestring)
 	if (!available()) return;
 
 	hideCursor();
-	update(-2);
+	update(BufferView::SELECT|BufferView::FITCUR);
    
 	/* clear the selection (if there is any) */ 
 	toggleSelection(false);
-	update(-2);
+	update(BufferView::SELECT|BufferView::FITCUR);
    
 	/* clear the selection (if there is any) */ 
 	toggleSelection(false);
-	text->ReplaceSelectionWithString(replacestring.c_str());
+	text->ReplaceSelectionWithString(this, replacestring.c_str());
    
-	text->SetSelectionOverString(replacestring.c_str());
+	text->SetSelectionOverString(this, replacestring.c_str());
 
 	// Go back so that replacement string is also spellchecked
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) {
-		text->CursorLeftIntern();
+		text->CursorLeftIntern(this);
 	}
-	update(1);
+	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 // End of spellchecker stuff
 
@@ -741,7 +742,7 @@ void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 		     LyXParagraph::META_INSET) &&
 		    (cursor.par()->GetInset(cursor.pos() - 1) ==
 		     the_locking_inset->GetLockingInset()))
-			text->SetCursor(cursor,
+			text->SetCursor(this, cursor,
 					cursor.par(), cursor.pos() - 1);
 		y += cursor.y() + the_locking_inset->InsetInInsetY();
 		pimpl_->screen->ShowManualCursor(x, y, asc, desc,
@@ -790,7 +791,7 @@ void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 		return; // shouldn't happen
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
-	text->SetUndo(kind,
+	text->SetUndo(buffer(), kind,
 		      text->cursor.par()->
 		      ParFromPos(text->cursor.pos())->previous, 
 		      text->cursor.par()->
@@ -806,7 +807,7 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 	// first check for locking insets
 	if (the_locking_inset) {
 		if (the_locking_inset == inset) {
-			if (text->UpdateInset(inset)){
+			if (text->UpdateInset(this, inset)){
 				update();
 				if (mark_dirty){
 					if (buffer()->isLyxClean())
@@ -818,7 +819,7 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 				return;
 			}
 		} else if (the_locking_inset->UpdateInsetInInset(this,inset)) {
-			if (text->UpdateInset(the_locking_inset)) {
+			if (text->UpdateInset(this, the_locking_inset)) {
 				update();
 				if (mark_dirty){
 					if (buffer()->isLyxClean())
@@ -835,12 +836,12 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 	// then check the current buffer
 	if (available()) {
 		hideCursor();
-		update(-3);
-		if (text->UpdateInset(inset)){
+		update(BufferView::UPDATE);
+		if (text->UpdateInset(this, inset)){
 			if (mark_dirty)
-				update(1);
+				update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			else 
-				update(3);
+				update(SELECT);
 			return;
 		}
 	}
@@ -872,14 +873,14 @@ bool BufferView::ChangeRefs(string const & from, string const & to)
 			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
 				// this is possible now, since SetCursor takes
 				// care about footnotes
-				text->SetCursorIntern(par, 0);
-				text->RedoParagraphs(text->cursor,
+				text->SetCursorIntern(this, par, 0);
+				text->RedoParagraphs(this, text->cursor,
 						     text->cursor.par()->Next());
-				text->FullRebreak();
+				text->FullRebreak(this);
 			}
 		}
 		par = par->next;
 	}
-	text->SetCursorIntern(cursor.par(), cursor.pos());
+	text->SetCursorIntern(this, cursor.par(), cursor.pos());
 	return flag;
 }

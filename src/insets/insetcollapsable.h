@@ -35,15 +35,15 @@ public:
     static int const TEXT_TO_BOTTOM_OFFSET = 2;
     ///
     explicit
-    InsetCollapsable(Buffer *);
+    InsetCollapsable();
     ///
     ~InsetCollapsable() {}
     ///
     Inset * Clone() const;
     ///
-    void Read(LyXLex &);
+    void Read(Buffer const *, LyXLex &);
     ///
-    void Write(std::ostream &) const;
+    void Write(Buffer const *, std::ostream &) const;
     ///
     int ascent(Painter &, LyXFont const &) const;
     ///

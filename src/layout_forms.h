@@ -1,7 +1,9 @@
-/** Header file generated with fdesign on Mon Apr 12 19:09:42 1999.**/
+/** Header file generated with fdesign on Mon Jun 12 06:32:31 2000.**/
 
 #ifndef FD_form_document_h_
 #define FD_form_document_h_
+
+extern "C" {
 
 /** Callbacks, globals and object handlers **/
 extern "C" void ChoiceClassCB(FL_OBJECT *, long);
@@ -46,11 +48,13 @@ extern "C" void ParagraphExtraCancelCB(FL_OBJECT *, long);
 extern "C" void TableOptionsCB(FL_OBJECT *, long);
 extern "C" void TableSpeCloseCB(FL_OBJECT *, long);
 
+}
+
 /* Additional Functions/Methods */
 
 #include "bufferparams.h"
 
-extern bool UpdateLayoutDocument(BufferParams * params = 0);
+extern bool UpdateLayoutDocument(BufferParams *params = NULL);
 extern bool UpdateLayoutPreamble();
 extern bool UpdateLayoutPaper();
 extern bool UpdateLayoutQuotes();
@@ -65,6 +69,8 @@ extern void MenuLayoutPaper();
 extern void MenuLayoutQuotes();
 extern void MenuLayoutParagraph();
 extern void MenuLayoutTable(int);
+
+extern "C" {
 
 /**** Forms and Objects ****/
 typedef struct {
@@ -109,6 +115,7 @@ typedef struct {
 	void *vdata;
 	char *cdata;
 	long  ldata;
+	FL_OBJECT *choice_language;
 	FL_OBJECT *choice_family;
 	FL_OBJECT *choice_series;
 	FL_OBJECT *choice_shape;
@@ -117,7 +124,6 @@ typedef struct {
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_close;
 	FL_OBJECT *choice_color;
-   	FL_OBJECT *choice_language;
 	FL_OBJECT *check_toggle_all;
 } FD_form_character;
 
@@ -274,5 +280,7 @@ typedef struct {
 } FD_form_table_extra;
 
 extern FD_form_table_extra * create_form_form_table_extra(void);
+
+}
 
 #endif /* FD_form_document_h_ */

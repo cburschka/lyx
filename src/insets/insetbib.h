@@ -41,7 +41,7 @@ public:
 	///
         Inset * Clone() const { return new InsetBibKey(this); }
 	/// Currently \bibitem is used as a LyX2.x command, so we need this method.
-        void Write(std::ostream &) const;
+        void Write(Buffer const *, std::ostream &) const;
 	///
 	virtual string getScreenLabel() const;
         ///
@@ -63,7 +63,7 @@ public:
 		InsetBibKey * inset;
 		BufferView * view;
 	};
-
+ 
  private:
 	///
         int counter;
@@ -99,7 +99,7 @@ public:
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	/// 
-	int Latex(std::ostream &, bool fragile, bool freespace) const;
+	int Latex(Buffer const *, std::ostream &, bool fragile, bool freespace) const;
 	///
 	std::vector< std::pair<string,string> > getKeys() const;
 	///

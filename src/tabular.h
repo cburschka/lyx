@@ -19,10 +19,11 @@
 
 #include "lyxlex.h"
 #include "LString.h"
+#include "insets/insettext.h"
 
 class InsetTabular;
-class InsetText;
 class LaTeXFeatures;
+class Buffer;
 
 /* The features the text class offers for tables */ 
 
@@ -76,7 +77,7 @@ public:
     LyXTabular(InsetTabular *, LyXTabular const &);
     ///
     explicit
-    LyXTabular(InsetTabular *, LyXLex & lex);
+    LyXTabular(Buffer const *, InsetTabular *, LyXLex & lex);
     ///
     ~LyXTabular();
     ///
@@ -169,9 +170,9 @@ public:
     ///
     int NumberOfCellsInRow(int cell) const;
     ///
-    void Write(std::ostream &) const;
+    void Write(Buffer const *, std::ostream &) const;
     ///
-    void Read(LyXLex &);
+    void Read(Buffer const *, LyXLex &);
     ///
     void OldFormatRead(LyXLex &, string const &);
     ///
@@ -182,7 +183,7 @@ public:
     int TeXCellPreamble(std::ostream &, int cell) const;
     int TeXCellPostamble(std::ostream &, int cell) const;
     ///
-    int Latex(std::ostream &, bool, bool) const;
+    int Latex(Buffer const *, std::ostream &, bool, bool) const;
     ///
     int DocBookEndOfCell(std::ostream &, int cell, int & depth) const;
 #if 0
@@ -271,11 +272,13 @@ private: //////////////////////////////////////////////////////////////////
 	///
         cellstruct();
 	///
+#ifdef INSET_POINTER
 	~cellstruct();
 	///
         cellstruct(cellstruct const &);
 	///
 	cellstruct & operator=(cellstruct const &);
+#endif
 	///
 	int cellno;
 	///
@@ -297,7 +300,7 @@ private: //////////////////////////////////////////////////////////////////
 	///
 	string p_width; // this is only set for multicolumn!!!
 	///
-	InsetText * inset;
+	InsetText inset;
     };
     typedef std::vector<cellstruct> cell_vector;
     typedef std::vector<cell_vector> cell_vvector;

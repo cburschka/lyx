@@ -22,8 +22,7 @@
 
 using std::ostream;
 
-InsetCollapsable::InsetCollapsable(Buffer * bf)
-		: InsetText(bf)
+InsetCollapsable::InsetCollapsable() : InsetText()
 {
     collapsed = true;
     label = "Label";
@@ -38,25 +37,25 @@ InsetCollapsable::InsetCollapsable(Buffer * bf)
 
 Inset * InsetCollapsable::Clone() const
 {
-    InsetCollapsable * result = new InsetCollapsable(buffer);
-    result->init(buffer, this);
+    InsetCollapsable * result = new InsetCollapsable();
+    result->init(this);
 
     result->collapsed = collapsed;
     return result;
 }
 
-void InsetCollapsable::Write(ostream & os) const
+void InsetCollapsable::Write(Buffer const * buf, ostream & os) const
 {
     os << getInsetName() << "\n\ncollapsed ";
     if (display())
 	os << "false\n";
     else
 	os << "true\n";
-    WriteParagraphData(os);
+    WriteParagraphData(buf, os);
 }
 
 
-void InsetCollapsable::Read(LyXLex & lex)
+void InsetCollapsable::Read(Buffer const * buf, LyXLex & lex)
 {
     if (lex.IsOK()) {
 	lex.next();
@@ -66,7 +65,7 @@ void InsetCollapsable::Read(LyXLex & lex)
 	    collapsed = lex.GetBool();
 	}
     }
-    InsetText::Read(lex);
+    InsetText::Read(buf, lex);
 }
 
 

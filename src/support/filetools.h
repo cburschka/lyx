@@ -173,6 +173,9 @@ string NormalizePath(string const & path);
 /// Strips path from filename
 string OnlyFilename(string const & fname);
 
+/// Get the contents of a file as a huge string
+string GetFileContents(string const & fname);
+
 /// Cleanup a path if necessary. Currently only useful with OS/2
 string CleanupPath(string const & path) ;
 

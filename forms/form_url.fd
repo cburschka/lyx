@@ -8,14 +8,14 @@ Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
 Name: form_url
-Width: 530
-Height: 150
+Width: 520
+Height: 140
 Number of Objects: 5
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 530 150
+box: 0 0 520 140
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -33,14 +33,14 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 50 20 460 30
+box: 70 20 440 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Url
+label: URL
 shortcut: Url|#U
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
@@ -51,12 +51,12 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 50 60 460 30
+box: 70 60 440 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Name
 shortcut: Name|#N
@@ -69,12 +69,12 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 50 110 250 30
+box: 70 100 230 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: HTML type
 shortcut: HTML type|#H
@@ -87,14 +87,14 @@ argument:
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 410 110 100 30
+box: 410 100 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Close
+label: Close|#C^[
 shortcut: ^M
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast

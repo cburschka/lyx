@@ -40,6 +40,8 @@ public:
 	///
 	ToolbarDefaults toolbardefaults;
 	///
+	string bind_file;
+	///
 	string printer;
 	///
 	string print_command;

@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES= *.orig *.rej *~ *.bak reLyX reLyX.1
-MAINTAINERCLEANFILES = Makefile.in
+MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 bin_SCRIPTS = reLyX noweb2lyx
 LYXDATADIRS = reLyX reLyX/Text
 LYXDISTDIRS = Text

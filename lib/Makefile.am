@@ -1,34 +1,35 @@
 AUTOMAKE_OPTIONS = foreign
-DISTCLEANFILES = *.orig *.rej *~ *.bak textclass.lst packages.lst \
-		lyxrc.defaults doc/LaTeXConfig.lyx
+DISTCLEANFILES = *.orig *.rej *~ *.bak core textclass.lst packages.lst \
+		lyxrc.defaults doc/LyXConfig.lyx
 pkgdata_SCRIPTS = configure configure.cmd
-MAINTAINERCLEANFILES = Makefile.in
+MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 SUBDIRS    = reLyX
 
 BIND = bind/*.bind
 CLIPART = clipart/*.eps
-DOCDIST = doc/LaTeXConfig.lyx*
+DOCDIST = doc/LyXConfig.lyx*
 DOCINST = doc/*
 EXAMPLES = examples/*.lyx
 IMAGES = images/*.xpm images/*.xbm
 KBD = kbd/*.kmap kbd/*.cdef
 LAYOUT = layouts/*.layout layouts/*.inc 
+LYXSCRIPTS = scripts/*
 TEMPL = templates/*.lyx
 TEXSUPPORT = tex/*.cls
 
 LIBINSTFILES = $(BIND) $(CLIPART) $(DOCINST) $(EXAMPLES) $(IMAGES) $(KBD) \
-	$(LAYOUT) $(TEMPL) $(TEXSUPPORT)
+	$(LAYOUT) $(TEMPL) $(TEXSUPPORT) $(LYXSCRIPTS)
 
 LIBDISTFILES = $(BIND) $(CLIPART) $(DOCDIST) $(EXAMPLES) $(IMAGES) $(KBD) \
-	$(LAYOUT) $(TEMPL) $(TEXSUPPORT)
+	$(LAYOUT) $(TEMPL) $(TEXSUPPORT) $(LYXSCRIPTS)
 
 pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
-               textclass.lst packages.lst
+               textclass.lst packages.lst external_templates
 
-LYXLIBDIRS = bind clipart doc examples images kbd layouts templates tex
+LYXLIBDIRS = bind clipart doc examples images kbd layouts scripts templates tex
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
-	$(LYXLIBDIRS)
+	external_templates $(LYXLIBDIRS)
 
 libinstalldirs:
 	for dir in $(LYXLIBDIRS) ; do \
@@ -41,8 +42,16 @@ install-data-local: libinstalldirs
 	   $(INSTALL_DATA) ${srcdir}/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \
 	done
 
+uninstall-local:
+	@$(NORMAL_UNINSTALL)
+	files=`cd ${srcdir} ; echo $(LIBINSTFILES)` ; \
+	for i in $${files} ; do \
+	   rm -f $(pkgdatadir)/$$i ; \
+	done
+
 dist-hook:
 	cd ${distdir} ; rm -rf `find . -name \*CVS\*` ; \
 	rm -rf doc/BUGS.lyx ; \
 	{ cvs -Q export -r HEAD -d doc lyxdoc || \
 	  echo "WARNING: Unable to get LyX Documentation from CVS!" ; true ; }
+

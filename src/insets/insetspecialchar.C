@@ -141,7 +141,7 @@ void InsetSpecialChar::draw(Painter & pain, LyXFont const & f,
 
 
 // In lyxf3 this will be just LaTeX
-void InsetSpecialChar::Write(ostream & os) const
+void InsetSpecialChar::Write(Buffer const *, ostream & os) const
 {
 	string command;
 	switch (kind) {
@@ -159,7 +159,7 @@ void InsetSpecialChar::Write(ostream & os) const
 
 
 // This function will not be necessary when lyx3
-void InsetSpecialChar::Read(LyXLex & lex)
+void InsetSpecialChar::Read(Buffer const *, LyXLex & lex)
 {    
 	lex.nextToken();
 	string command = lex.GetString();
@@ -180,7 +180,7 @@ void InsetSpecialChar::Read(LyXLex & lex)
 }
 
 
-int InsetSpecialChar::Latex(ostream & os, bool /*fragile*/,
+int InsetSpecialChar::Latex(Buffer const *, ostream & os, bool /*fragile*/,
 			    bool free_space) const
 {
 	switch (kind) {
@@ -193,7 +193,7 @@ int InsetSpecialChar::Latex(ostream & os, bool /*fragile*/,
 	return 0;
 }
 
-int InsetSpecialChar::Ascii(ostream & os) const
+int InsetSpecialChar::Ascii(Buffer const *, ostream & os) const
 {
 	switch (kind) {
 	case HYPHENATION:	                break;
@@ -206,15 +206,15 @@ int InsetSpecialChar::Ascii(ostream & os) const
 }
 
 
-int InsetSpecialChar::Linuxdoc(ostream & os) const
+int InsetSpecialChar::Linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return Ascii(os);
+	return Ascii(buf, os);
 }
 
 
-int InsetSpecialChar::DocBook(ostream & os) const
+int InsetSpecialChar::DocBook(Buffer const * buf, ostream & os) const
 {
-	return Ascii(os);
+	return Ascii(buf, os);
 }
 
 

@@ -94,36 +94,36 @@ void InsetError::draw(Painter & pain, LyXFont const & font,
 }
 
 
-void InsetError::Write(ostream &) const
+void InsetError::Write(Buffer const *, ostream &) const
 {
 }
 
 
-void InsetError::Read(LyXLex &)
+void InsetError::Read(Buffer const *, LyXLex &)
 {
 }
 
 
-int InsetError::Latex(ostream &,
+int InsetError::Latex(Buffer const *, ostream &,
 		      bool /*fragile*/, bool /*fs*/) const
 {
 	return 0;
 }
 
 
-int InsetError::Ascii(ostream &) const
+int InsetError::Ascii(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetError::Linuxdoc(ostream &) const
+int InsetError::Linuxdoc(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetError::DocBook(ostream &) const
+int InsetError::DocBook(Buffer const *, ostream &) const
 {
 	return 0;
 }

@@ -1,42 +1,15 @@
-/** Header file generated with fdesign on Mon Apr 12 19:09:43 2000.**/
+/** Header file generated with fdesign on Mon Jun 12 06:32:31 2000.**/
 
-#ifndef FD_form_print_h_
-#define FD_form_print_h_
+#ifndef FD_form_sendto_h_
+#define FD_form_sendto_h_
 
 /** Callbacks, globals and object handlers **/
-extern "C" void PrintOKCB(FL_OBJECT *, long);
-extern "C" void PrintApplyCB(FL_OBJECT *, long);
-extern "C" void PrintCancelCB(FL_OBJECT *, long);
-
 extern "C" void SendtoOKCB(FL_OBJECT *, long);
 extern "C" void SendtoApplyCB(FL_OBJECT *, long);
 extern "C" void SendtoCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
-typedef struct {
-	FL_FORM *form_print;
-	void *vdata;
-	char *cdata;
-	long  ldata;
-	FL_OBJECT *input_printer;
-	FL_OBJECT *input_file;
-	FL_OBJECT *group_radio_printto;
-	FL_OBJECT *radio_printer;
-	FL_OBJECT *radio_file;
-	FL_OBJECT *group_radio_pages;
-	FL_OBJECT *radio_all_pages;
-	FL_OBJECT *radio_odd_pages;
-	FL_OBJECT *radio_even_pages;
-	FL_OBJECT *group_radio_order;
-	FL_OBJECT *radio_order_normal;
-	FL_OBJECT *radio_order_reverse;
-	FL_OBJECT *input_pages;
-	FL_OBJECT *input_copies;
-	FL_OBJECT *do_unsorted;
-} FD_form_print;
-
-extern FD_form_print * create_form_form_print(void);
 typedef struct {
 	FL_FORM *form_sendto;
 	void *vdata;
@@ -53,4 +26,4 @@ typedef struct {
 
 extern FD_form_sendto * create_form_form_sendto(void);
 
-#endif /* FD_form_print_h_ */
+#endif /* FD_form_sendto_h_ */

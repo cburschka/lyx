@@ -306,14 +306,14 @@ Inset * InsetFormula::Clone() const
 }
 
 
-void InsetFormula::Write(ostream & os) const
+void InsetFormula::Write(Buffer const * buf, ostream & os) const
 {
 	os << "Formula ";
-	Latex(os, false, false);
+	Latex(buf, os, false, false);
 }
 
 
-int InsetFormula::Latex(ostream & os, bool fragile, bool) const
+int InsetFormula::Latex(Buffer const *, ostream & os, bool fragile, bool) const
 {
     int ret = 0;      
 //#warning Alejandro, the number of lines is not returned in this case
@@ -323,22 +323,22 @@ int InsetFormula::Latex(ostream & os, bool fragile, bool) const
 }
 
 
-int InsetFormula::Ascii(ostream & os) const
+int InsetFormula::Ascii(Buffer const *, ostream & os) const
 {
     par->Write(os, false);
     return 0;
 }
 
 
-int InsetFormula::Linuxdoc(ostream &) const
+int InsetFormula::Linuxdoc(Buffer const * buf, ostream & os) const
 {
-    return 0;
+    return Ascii(buf, os);
 }
 
 
-int InsetFormula::DocBook(ostream&) const
+int InsetFormula::DocBook(Buffer const * buf, ostream & os) const
 {
-    return 0;
+    return Ascii(buf, os);
 }
 
 
@@ -351,7 +351,7 @@ void InsetFormula::Validate(LaTeXFeatures & features) const
 }
 
 
-void InsetFormula::Read(LyXLex & lex)
+void InsetFormula::Read(Buffer const *, LyXLex & lex)
 {
 	istream & is = lex.getStream();
     

@@ -72,8 +72,33 @@ echo >> $2
 #  sizeof(*fdui) before fdui has been given a value and output a warning. 
 #  This will not be needed anymore as soon as fdesign is fixed (already 
 #  reported to its authors).
-
-
+#
+# -e 's/,\([^ ]\)/, \1/g' \
+# -e 's/\("[^"]*,\) \("\)/\1\2/g'
+#
+# Someone got busy and put spaces in after commas but didn't allow for the
+# autogeneration of the files so their pretty formatting got lost. Not anymore.
+# The second rule cleans up one special case where a comma appears at the end
+# of a string.
+#
+# -e 's/stdlib.h/cstdlib/'
+#
+# Include the right C header.  Another one of those changes made by someone
+# who forgot that these files are regenerated.
+#
+# -e '/fl_.*"[^"]*%.*"/i\
+#   //xgettext:no-c-format'
+#
+# Something else someone got busy adding only to have them removed by the
+# autogeneration.  Maybe someday I won't have to clean up after everyone else
+# and will be able to spend my time working on what I want to work on.
+#
+# -e 's/NULL/0/'
+#
+# Hopefully the last thing that I'll ever have to merge in because in future
+# everyone will do their own merging when they decide they want to modify a
+# generated file.
+#
 cat $1 | sed \
 -e 's/#include "forms\.h"/#include FORMS_H_LOCATION/' \
 -e '/fl_/ s/".[^|]*"/_(&)/' \
@@ -82,4 +107,10 @@ cat $1 | sed \
 -e '/fl_add/ s/idex(\(.*\)").*$/&fl_set_button_shortcut(obj,scex(\1")),1);/' \
 -e 's/fl_set_object_lcolor/fl_set_object_lcol/' \
 -e 's/fdui->.*->fdui = fdui/\/\/&/' \
--e 's/\(\(FD_[^ ]*\) \*fdui.*\)sizeof(\*fdui)/\1sizeof(\2)/' >> $2
+-e 's/\(\(FD_[^ ]*\) \*fdui.*\)sizeof(\*fdui)/\1sizeof(\2)/' \
+-e 's/,\([^ ]\)/, \1/g' \
+-e 's/\("[^"]*,\) \("\)/\1\2/g' \
+-e '/fl_.*"[^"]*%.*"/i\
+  // xgettext:no-c-format' \
+-e 's/NULL/0/' \
+-e 's/stdlib.h/cstdlib/' >> $2

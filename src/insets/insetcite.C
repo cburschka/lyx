@@ -432,7 +432,7 @@ void InsetCitation::setCiteButtons( FD_citation_form * form, State status ) cons
 		fl_activate_object( form->delBtn );
 		fl_set_object_lcol( form->delBtn, FL_BLACK );
 
-		unsigned int sel = fl_get_browser( form->citeBrsr );
+		int sel = fl_get_browser( form->citeBrsr );
 
 		if( sel != 1 ) {
 			fl_activate_object( form->upBtn );
@@ -442,7 +442,7 @@ void InsetCitation::setCiteButtons( FD_citation_form * form, State status ) cons
 			fl_set_object_lcol( form->upBtn, FL_INACTIVE );
 		}
 
-		if( sel != fl_get_browser_maxline( form->citeBrsr ) ) {
+		if( sel != fl_get_browser_maxline(form->citeBrsr)) {
 			fl_activate_object( form->downBtn );
 			fl_set_object_lcol( form->downBtn, FL_BLACK );
 		} else {

@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include "math_panel.h"
 
-FD_panel * create_form_panel(void)
+FD_panel *create_form_panel(void)
 {
   FL_OBJECT *obj;
   FD_panel *fdui = (FD_panel *) fl_calloc(1, sizeof(FD_panel));
@@ -133,7 +133,7 @@ FD_matrix *create_form_matrix(void)
   fdui->rows = obj = fl_add_valslider(FL_HOR_NICE_SLIDER, 10, 30, 160, 30, _("Rows"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
-    fl_set_object_callback(obj, matrix_cb,-1);
+    fl_set_object_callback(obj, matrix_cb, -1);
     fl_set_slider_precision(obj, 0);
     fl_set_slider_bounds(obj, 1, 20);
      fl_set_slider_return(obj, FL_RETURN_END_CHANGED);
@@ -148,7 +148,7 @@ FD_matrix *create_form_matrix(void)
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
-    fl_set_object_callback(obj, matrix_cb,-1);
+    fl_set_object_callback(obj, matrix_cb, -1);
   fdui->halign = obj = fl_add_input(FL_NORMAL_INPUT, 180, 90, 90, 30, idex(_("Horizontal align|#H")));fl_set_button_shortcut(obj, scex(_("Horizontal align|#H")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP);

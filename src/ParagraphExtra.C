@@ -199,9 +199,9 @@ void ParagraphExtraApplyCB(FL_OBJECT *, long)
 		} else if (fl_get_button(fd_form_paragraph_extra->radio_pextra_floatflt)) {
 			type = LyXParagraph::PEXTRA_FLOATFLT;
 		}
-		text->SetParagraphExtraOpt(type, width, widthp, alignment, hfill,
+		text->SetParagraphExtraOpt(current_view, type, width, widthp, alignment, hfill,
 					   start_minipage);
-		current_view->update(1);
+		current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		current_view->owner()->getMiniBuffer()->
 			Set(_("ParagraphExtra layout set"));
 	}

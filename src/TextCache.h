@@ -19,11 +19,11 @@
 #endif
 
 #include <iosfwd>
+#include <map>
 
 #include "LString.h"
 #include "lyxtext.h"
-
-class Buffer;
+#include "buffer.h"
 
 // This is only the very first implemetation and use of the TextCache,
 // operations on it needs to be put into a class or a namespace, that part
@@ -112,21 +112,22 @@ class Buffer;
 class TextCache {
 public:
 	///
-	typedef std::vector<LyXText*> Cache;
+	typedef std::map<Buffer *, std::pair<int,LyXText *> > Cache;
+	
 	///
-	typedef LyXText * value_type;
+	typedef Cache::value_type value_type;
 
 	/** Returns a pointer to a LyXText that fits the provided buffer
 	    and width. Of there is no match 0 is returned. */
-	LyXText * findFit(Buffer * b, unsigned short p);
+	LyXText * findFit(Buffer * b, int p);
 	/** Lists all the LyXText's currently in the cache.
 	    Uses msg as header for the list. */
 	void show(std::ostream & o, string const & msg);
 	/// Gives info on a single LyXText (buffer and width)
-	static void show(std::ostream & o, LyXText *);
+	static void show(std::ostream & o, value_type const &);
 	/** Adds a LyXText to the cache iff its buffer is
 	    present in bufferlist. */
-	void add(LyXText *);
+	void add(Buffer *, int witdth, LyXText *);
 	/** Clears the cache. Deletes all LyXText's and releases
 	    the allocated memory. */
 	void clear();

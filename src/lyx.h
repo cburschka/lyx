@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Mon Apr 12 19:09:42 1999.**/
+/** Header file generated with fdesign on Mon Jun 12 06:32:31 2000.**/
 
 #ifndef FD_form_title_h_
 #define FD_form_title_h_
@@ -21,6 +21,14 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long);
 extern "C" void RefUpdateCB(FL_OBJECT *, long);
 extern "C" void RefHideCB(FL_OBJECT *, long);
 extern "C" void RefSelectCB(FL_OBJECT *, long);
+
+extern "C" void ExternalTemplateCB(FL_OBJECT *, long);
+extern "C" void ExternalBrowseCB(FL_OBJECT *, long);
+extern "C" void ExternalEditCB(FL_OBJECT *, long);
+extern "C" void ExternalViewCB(FL_OBJECT *, long);
+extern "C" void ExternalUpdateCB(FL_OBJECT *, long);
+extern "C" void ExternalOKCB(FL_OBJECT *, long);
+extern "C" void ExternalCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
@@ -85,5 +93,23 @@ typedef struct {
 } FD_form_ref;
 
 extern FD_form_ref * create_form_form_ref(void);
+typedef struct {
+	FL_FORM *form_external;
+	void *vdata;
+	char *cdata;
+	long  ldata;
+	FL_OBJECT *templatechoice;
+	FL_OBJECT *filename;
+	FL_OBJECT *filenamebrowse;
+	FL_OBJECT *parameters;
+	FL_OBJECT *edit;
+	FL_OBJECT *view;
+	FL_OBJECT *update;
+	FL_OBJECT *ok;
+	FL_OBJECT *cancel;
+	FL_OBJECT *helptext;
+} FD_form_external;
+
+extern FD_form_external * create_form_form_external(void);
 
 #endif /* FD_form_title_h_ */

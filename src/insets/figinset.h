@@ -33,17 +33,17 @@ public:
 	void draw(Painter &, LyXFont const & font,
 		  int baseline, float & x) const;
 	///
-	void Write(std::ostream &) const;
+	void Write(Buffer const *, std::ostream &) const;
 	///
-	void Read(LyXLex & lex);
+	void Read(Buffer const *, LyXLex & lex);
 	///
-	int Latex(std::ostream &, bool fragile, bool free_space) const;
+	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_space) const;
 	///
-	int Ascii(std::ostream &) const;
+	int Ascii(Buffer const *, std::ostream &) const;
 	///
-	int Linuxdoc(std::ostream &) const;
+	int Linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(std::ostream &) const;
+	int DocBook(Buffer const *, std::ostream &) const;
 	/// Updates needed features for this inset.
 	void Validate(LaTeXFeatures & features) const;
 

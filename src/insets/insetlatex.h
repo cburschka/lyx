@@ -44,7 +44,7 @@ public:
 	///
 	void Write(FILE * file);
 	///
-	void Read(LyXLex & lex);
+	void Read(Buffer const *, LyXLex & lex);
 	///
 	int Latex(FILE * file, signed char fragile, bool free_spc);
 	///

@@ -24,14 +24,14 @@ void InsetTOC::Edit(BufferView * bv, int, int, unsigned int)
 	bv->owner()->getLyXFunc()->Dispatch(LFUN_TOCVIEW);
 }
 
-int InsetTOC::Linuxdoc(ostream & os) const
+int InsetTOC::Linuxdoc(Buffer const *, ostream & os) const
 {
 	os << "<toc>";
 	return 0;
 }
 
 
-int InsetTOC::DocBook(ostream & os) const
+int InsetTOC::DocBook(Buffer const *, ostream & os) const
 {
 	os << "<toc></toc>";
 	return 0;

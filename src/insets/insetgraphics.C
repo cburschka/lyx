@@ -171,7 +171,7 @@ Inset::EDITABLE InsetGraphics::Editable() const
 }
 
 
-void InsetGraphics::Write(ostream & os) const
+void InsetGraphics::Write(Buffer const *, ostream & os) const
 {
 	// The question on the file format is still open.
 	// Suggestions?
@@ -181,7 +181,7 @@ void InsetGraphics::Write(ostream & os) const
 }
 
 
-void InsetGraphics::Read(LyXLex & /*lex*/) 
+void InsetGraphics::Read(Buffer const *, LyXLex & /*lex*/) 
 {
 	// For now we only use a static file...
 	graphicsfile = "testfile.xpm";
@@ -191,7 +191,7 @@ void InsetGraphics::Read(LyXLex & /*lex*/)
 }
 
 
-int InsetGraphics::Latex(ostream & os,
+int InsetGraphics::Latex(Buffer const *, ostream & os,
 			 bool /*fragile*/, bool/*fs*/) const
 {
 	// MISSING: We have to decide how to do the order of the options
@@ -334,19 +334,19 @@ int InsetGraphics::Latex(ostream & os,
 }
 
 
-int InsetGraphics::Ascii(ostream &) const
+int InsetGraphics::Ascii(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetGraphics::Linuxdoc(ostream &) const
+int InsetGraphics::Linuxdoc(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetGraphics::DocBook(ostream &) const
+int InsetGraphics::DocBook(Buffer const *, ostream &) const
 {
 	return 0;
 }

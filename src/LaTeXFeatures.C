@@ -45,6 +45,7 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, int n)
 	url = false;
 	varioref = false;
 	prettyref = false;
+	chess = false;
 	
 	// commands
 	lyx = false;
@@ -71,6 +72,53 @@ LaTeXFeatures::LaTeXFeatures(BufferParams const & p, int n)
 	NeedLyXMinipageIndent = false;
 }
 
+void LaTeXFeatures::require(string const & name) {
+	if (name == "color") {
+		color = true;
+	} else if (name == "graphics") {
+#ifdef USE_GRAPHICX
+		graphicx = true;
+#else
+		graphics = true;
+#endif
+	} else if (name == "setspace") {
+		setspace = true;
+	} else if (name == "makeidx") {
+		makeidx = true;
+	} else if (name == "verbatim") {
+		verbatim = true;
+	} else if (name == "longtable") {
+		longtable = true;
+	} else if (name == "algorithm") {
+		algorithm = true;
+	} else if (name == "rotating") {
+		rotating = true;
+	} else if (name == "amssymb") {
+		amssymb = true;
+	} else if (name == "latexsym") {
+		latexsym = true;
+	} else if (name == "pifont") {
+		pifont = true;
+	} else if (name == "subfigure") {
+		subfigure = true;
+	} else if (name == "floatflt") {
+		floatflt = true;
+	} else if (name == "url") {
+		url = true;
+	} else if (name == "varioref") {
+		varioref = true;
+	} else if (name == "prettyref") {
+		prettyref = true;
+	} else if (name == "chess") {
+		chess = true;
+	} else if (name == "amsstyle") {
+		amsstyle = true;
+	} else if (name == "boldsymbol") {
+		boldsymbol = true;
+	} else if (name == "binom") {
+		binom = true;
+	}
+}
 
 string LaTeXFeatures::getPackages()
 {
@@ -105,12 +153,17 @@ string LaTeXFeatures::getPackages()
 				+ params.graphicsDriver + "]{graphics}\n";
 	}
 
-	//verbatim.sty
+	// verbatim.sty
 	if (verbatim)
 		packages += "\\usepackage{verbatim}\n";
 
 	if (algorithm) {
 		packages += "\\usepackage{algorithm}\n";
+	}
+
+	// lyxchess.sty
+	if (chess) {
+		packages += "\\usepackage{lyxchess}\n";
 	}
 
 	// setspace.sty
@@ -191,6 +244,8 @@ string LaTeXFeatures::getPackages()
 	// prettyref.sty
 	if (prettyref)
 		packages += "\\usepackage{prettyref}\n";
+
+	packages += externalPreambles;
 
 	return packages;
 }

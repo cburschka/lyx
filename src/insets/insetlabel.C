@@ -61,39 +61,40 @@ void InsetLabel::Edit(BufferView * bv, int, int, unsigned int)
 			bv->buffer()->markDirty();
 			bool flag = bv->ChangeRefs(getContents(),new_contents);
 			setContents( new_contents );
-			bv->text->RedoParagraph();
+			bv->text->RedoParagraph(bv);
 			if (flag) {
 				bv->redraw();
 				bv->fitCursor();
 				//bv->updateScrollbar();
 			} else
-				bv->update(1);
+				bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 	}
 }
 
-int InsetLabel::Latex(ostream & os,
+
+int InsetLabel::Latex(Buffer const *, ostream & os,
 		      bool /*fragile*/, bool /*fs*/) const
 {
 	os << escape(getCommand());
 	return 0;
 }
 
-int InsetLabel::Ascii(ostream & os) const
+int InsetLabel::Ascii(Buffer const *, ostream & os) const
 {
 	os << "<" << getContents()  << ">";
 	return 0;
 }
 
 
-int InsetLabel::Linuxdoc(ostream & os) const
+int InsetLabel::Linuxdoc(Buffer const *, ostream & os) const
 {
 	os << "<label id=\"" << getContents() << "\" >";
 	return 0;
 }
 
 
-int InsetLabel::DocBook(ostream & os) const
+int InsetLabel::DocBook(Buffer const *, ostream & os) const
 {
 	os << "<anchor id=\"" << getContents() << "\" >";
 	return 0;

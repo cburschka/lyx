@@ -120,7 +120,8 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 }
 
 
-void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
+void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
+			     BufferParams const & params,
 			     char footflag, char dth) const
 {
 	LyXFont font1, font2;
@@ -245,7 +246,7 @@ void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
 #endif
 	// bibitem  ale970302
 	if (bibkey)
-		bibkey->Write(os);
+		bibkey->Write(buf, os);
 
 	font1 = LyXFont(LyXFont::ALL_INHERIT,params.language_info);
 
@@ -274,10 +275,10 @@ void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
 					// international char, let it write
 					// code directly so it's shorter in
 					// the file
-					inset->Write(os);
+					inset->Write(buf, os);
 				} else {
 					os << "\n\\begin_inset ";
-					inset->Write(os);
+					inset->Write(buf, os);
 					os << "\n\\end_inset \n\n";
 					column = 0;
 				}
@@ -322,7 +323,7 @@ void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
 
 	// now write the next paragraph
 	if (next)
-		next->writeFile(os, params, footflag, dth);
+		next->writeFile(buf, os, params, footflag, dth);
 }
 
 
@@ -2007,7 +2008,8 @@ int LyXParagraph::GetPositionOfInset(Inset * inset) const
 }
 
 
-LyXParagraph * LyXParagraph::TeXOnePar(BufferParams const & bparams,
+LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
+				       BufferParams const & bparams,
 				       ostream & os, TexRow & texrow,
 				       bool moving_arg, 
 				       ostream & foot,
@@ -2077,7 +2079,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(BufferParams const & bparams,
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
 	        if (bibkey) {
-			bibkey->Latex(os, false, false);
+			bibkey->Latex(buf, os, false, false);
 		} else
 			os << "\\item ";
 		break;
@@ -2088,7 +2090,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(BufferParams const & bparams,
 		break;
 	}
 
-	bool need_par = SimpleTeXOnePar(bparams, os, texrow, moving_arg);
+	bool need_par = SimpleTeXOnePar(buf, bparams, os, texrow, moving_arg);
  
 	// Spit out footnotes
 	LyXParagraph * par = next;
@@ -2106,11 +2108,11 @@ LyXParagraph * LyXParagraph::TeXOnePar(BufferParams const & bparams,
 				is_rtl = getParLanguage(bparams)->RightToLeft();
 			while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 			       && par->footnoteflag != footnoteflag) {
-				par = par->TeXFootnote(bparams,
+				par = par->TeXFootnote(buf, bparams,
 						       os, texrow, foot,
 						       foot_texrow, foot_count,
 						       is_rtl);
-				par->SimpleTeXOnePar(bparams,
+				par->SimpleTeXOnePar(buf, bparams,
 						     os, texrow, moving_arg);
 				is_rtl = (par->size() > 0)
 					? par->GetFontSettings(bparams,
@@ -2128,11 +2130,11 @@ LyXParagraph * LyXParagraph::TeXOnePar(BufferParams const & bparams,
 	} else {
 		while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 		       && par->footnoteflag != footnoteflag) {
-			par = par->TeXFootnote(bparams,
+			par = par->TeXFootnote(buf, bparams,
 					       os, texrow,
 					       foot, foot_texrow, foot_count,
 					       false);
-			par->SimpleTeXOnePar(bparams, os, texrow, moving_arg);
+			par->SimpleTeXOnePar(buf, bparams, os, texrow, moving_arg);
 			par = par->next;
 		}
 	}
@@ -2244,7 +2246,8 @@ LyXParagraph * LyXParagraph::TeXOnePar(BufferParams const & bparams,
 
 
 // This one spits out the text of the paragraph
-bool LyXParagraph::SimpleTeXOnePar(BufferParams const & bparams,
+bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
+				   BufferParams const & bparams,
 				   ostream & os, TexRow & texrow,
 				   bool moving_arg)
 {
@@ -2252,7 +2255,7 @@ bool LyXParagraph::SimpleTeXOnePar(BufferParams const & bparams,
 
 #ifndef NEW_TABULAR
 	if (table)
-		return SimpleTeXOneTablePar(bparams, os, texrow);
+		return SimpleTeXOneTablePar(buf, bparams, os, texrow);
 #endif
 
 	bool return_value = false;
@@ -2430,7 +2433,7 @@ bool LyXParagraph::SimpleTeXOnePar(BufferParams const & bparams,
 			texrow.start(this, i + 1);
 			column = 0;
 		} else {
-			SimpleTeXSpecialChars(bparams,
+			SimpleTeXSpecialChars(buf, bparams,
 					      os, texrow, moving_arg,
 					      font, running_font, basefont,
 					      open_font, style, i, column, c);
@@ -2460,7 +2463,8 @@ bool LyXParagraph::SimpleTeXOnePar(BufferParams const & bparams,
 
 
 // This one spits out the text of a table paragraph
-bool LyXParagraph::SimpleTeXOneTablePar(BufferParams const & bparams,
+bool LyXParagraph::SimpleTeXOneTablePar(Buffer const * buf,
+					BufferParams const & bparams,
 					ostream & os, TexRow & texrow)
 {
 	lyxerr[Debug::LATEX] << "SimpleTeXOneTablePar...     " << this << endl;
@@ -2590,7 +2594,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(BufferParams const & bparams,
 			running_font = basefont;
 			++current_cell_number;
 			if (table->CellHasContRow(current_cell_number) >= 0) {
-				TeXContTableRows(bparams, os, i + 1,
+				TeXContTableRows(buf, bparams, os, i + 1,
 						 current_cell_number,
 						 column, texrow);
 			}
@@ -2618,7 +2622,7 @@ bool LyXParagraph::SimpleTeXOneTablePar(BufferParams const & bparams,
 			}
 			texrow.start(this, i + 1);
 		} else {
-			SimpleTeXSpecialChars(bparams,
+			SimpleTeXSpecialChars(buf, bparams,
 					      os, texrow, false,
 					      font, running_font, basefont,
 					      open_font, style, i, column, c);
@@ -2641,7 +2645,8 @@ bool LyXParagraph::SimpleTeXOneTablePar(BufferParams const & bparams,
 
 
 // This one spits out the text off ContRows in tables
-bool LyXParagraph::TeXContTableRows(BufferParams const & bparams,
+bool LyXParagraph::TeXContTableRows(Buffer const * buf,
+				    BufferParams const & bparams,
 				    ostream & os,
 				    LyXParagraph::size_type i,
 				    int current_cell_number,
@@ -2731,7 +2736,7 @@ bool LyXParagraph::TeXContTableRows(BufferParams const & bparams,
 					column += 9;
 				}
 			}
-			SimpleTeXSpecialChars(bparams,
+			SimpleTeXSpecialChars(buf, bparams,
 					      os, texrow, false, font,
 					      running_font, basefont,
 					      open_font, style, i, column, c);
@@ -2815,10 +2820,11 @@ bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
 }
 
 
-void LyXParagraph::SimpleDocBookOneTablePar(BufferParams const & bparams,
+void LyXParagraph::SimpleDocBookOneTablePar(Buffer const * buffer, 
 					    ostream & os, string & extra,
 					    int & desc_on, int depth) 
 {
+	BufferParams const & bparams = buffer->params;
 	if (!table) return;
 	lyxerr[Debug::LATEX] << "SimpleDocbookOneTablePar... " << this << endl;
 	int column = 0;
@@ -2884,7 +2890,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(BufferParams const & bparams,
 			font1 = font2 = getFont(bparams, -1);
 			++current_cell_number;
 			if (table->CellHasContRow(current_cell_number) >= 0) {
-				DocBookContTableRows(bparams,
+				DocBookContTableRows(buffer,
 						     os, extra, desc_on, i + 1,
 						     current_cell_number,
 						     column);
@@ -2906,11 +2912,11 @@ void LyXParagraph::SimpleDocBookOneTablePar(BufferParams const & bparams,
 			inset = GetInset(i);
 #ifdef HAVE_SSTREAM
 			std::ostringstream ost;
-			inset->DocBook(ost);
+			inset->DocBook(buffer, ost);
 			string tmp_out = ost.str().c_str();
 #else
 			ostrstream ost;
-			inset->DocBook(ost);
+			inset->DocBook(buffer, ost);
 			ost << '\0';
 			char * ctmp = ost.str();
 			string tmp_out(ctmp);
@@ -2993,7 +2999,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(BufferParams const & bparams,
 }
 
 
-void LyXParagraph::DocBookContTableRows(BufferParams const & bparams,
+void LyXParagraph::DocBookContTableRows(Buffer const * buffer,
 					ostream & os, string & extra,
                                         int & desc_on,
 					LyXParagraph::size_type i,
@@ -3001,6 +3007,8 @@ void LyXParagraph::DocBookContTableRows(BufferParams const & bparams,
 
 {
 	if (!table) return;
+
+	BufferParams const & bparams = buffer->params;
 	
 	lyxerr[Debug::LATEX] << "DocBookContTableRows... " << this << endl;
 
@@ -3073,11 +3081,11 @@ void LyXParagraph::DocBookContTableRows(BufferParams const & bparams,
 				inset = GetInset(i);
 #ifdef HAVE_SSTREAM
 				std::ostringstream ost;
-				inset->DocBook(ost);
+				inset->DocBook(buffer, ost);
 				string tmp_out = ost.str().c_str();
 #else
 				ostrstream ost;
-				inset->DocBook(ost);
+				inset->DocBook(buffer, ost);
 				ost << '\0';
 				char * ctmp = ost.str();
 				string tmp_out(ctmp);
@@ -3183,7 +3191,8 @@ void LyXParagraph::SimpleTeXBlanks(ostream & os, TexRow & texrow,
 }
 
 
-void LyXParagraph::SimpleTeXSpecialChars(BufferParams const & bparams,
+void LyXParagraph::SimpleTeXSpecialChars(Buffer const * buf,
+					 BufferParams const & bparams,
 					 ostream & os, TexRow & texrow,
 					 bool moving_arg,
 					 LyXFont & font,
@@ -3211,7 +3220,7 @@ void LyXParagraph::SimpleTeXSpecialChars(BufferParams const & bparams,
 				close = true;
 			}
 
-			int tmp = inset->Latex(os, moving_arg,
+			int tmp = inset->Latex(buf, os, moving_arg,
 					       style.free_spacing);
 
 			if (close)
@@ -3478,7 +3487,7 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 				if ((inset = GetInset(i))) {
 #ifdef HAVE_SSTREAM
 					stringstream ss(ios::in | ios::out);
-					inset->Ascii(ss);
+					inset->Ascii(buffer, ss);
 					ss.seekp(0);
 					ss.get(c);
 					while (!ss) {
@@ -3490,7 +3499,7 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 					}
 #else
 					strstream ss;
-					inset->Ascii(ss);
+					inset->Ascii(buffer, ss);
 					ss.seekp(0);
 					ss.get(c);
 					while (!ss) {
@@ -3528,7 +3537,8 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 #endif
 
 
-LyXParagraph * LyXParagraph::TeXDeeper(BufferParams const & bparams,
+LyXParagraph * LyXParagraph::TeXDeeper(Buffer const * buf,
+				       BufferParams const & bparams,
 				       ostream & os, TexRow & texrow,
 				       ostream & foot,
 				       TexRow & foot_texrow,
@@ -3545,12 +3555,12 @@ LyXParagraph * LyXParagraph::TeXDeeper(BufferParams const & bparams,
 		if (textclasslist.Style(bparams.textclass, 
 					par->layout).isEnvironment()
 		    || par->pextra_type != PEXTRA_NONE) {
-			par = par->TeXEnvironment(bparams,
+			par = par->TeXEnvironment(buf, bparams,
 						  os, texrow,
 						  foot, foot_texrow,
 						  foot_count);
 		} else {
-			par = par->TeXOnePar(bparams,
+			par = par->TeXOnePar(buf, bparams,
 					     os, texrow, false,
 					     foot, foot_texrow,
 					     foot_count);
@@ -3562,7 +3572,8 @@ LyXParagraph * LyXParagraph::TeXDeeper(BufferParams const & bparams,
 }
 
 
-LyXParagraph * LyXParagraph::TeXEnvironment(BufferParams const & bparams,
+LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
+					    BufferParams const & bparams,
 					    ostream & os, TexRow & texrow,
 					    ostream & foot,
 					    TexRow & foot_texrow,
@@ -3703,7 +3714,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(BufferParams const & bparams,
 	}
 	LyXParagraph * par = this;
 	do {
-		par = par->TeXOnePar(bparams,
+		par = par->TeXOnePar(buf, bparams,
 				     os, texrow, false,
 				     foot, foot_texrow, foot_count);
 
@@ -3739,7 +3750,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(BufferParams const & bparams,
 				os << '\n';
 				texrow.newline();
 			}
-			par = par->TeXDeeper(bparams, os, texrow,
+			par = par->TeXDeeper(buf, bparams, os, texrow,
 					     foot, foot_texrow, foot_count);
 		}
 		if (par && par->layout == layout && par->depth == depth &&
@@ -3847,7 +3858,8 @@ LyXParagraph * LyXParagraph::TeXEnvironment(BufferParams const & bparams,
 }
 
 
-LyXParagraph * LyXParagraph::TeXFootnote(BufferParams const & bparams,
+LyXParagraph * LyXParagraph::TeXFootnote(Buffer const * buf,
+					 BufferParams const & bparams,
 					 ostream & os, TexRow & texrow,
 					 ostream & foot, TexRow & foot_texrow,
 					 int & foot_count,
@@ -3997,18 +4009,19 @@ LyXParagraph * LyXParagraph::TeXFootnote(BufferParams const & bparams,
 				// environments. Shouldn't be circular because
 				// we don't support footnotes inside
 				// floats (yet). ARRae
-				par = par->TeXEnvironment(bparams, os, texrow,
+				par = par->TeXEnvironment(buf, bparams, os,
+							  texrow,
 							  foot, foot_texrow,
 							  foot_count);
 			} else {
-				par = par->TeXOnePar(bparams,
+				par = par->TeXOnePar(buf, bparams,
 						     os, texrow, moving_arg,
 						     foot, foot_texrow,
 						     foot_count);
 			}
 			
 			if (par && !par->IsDummy() && par->depth > depth) {
-				par = par->TeXDeeper(bparams, os, texrow,
+				par = par->TeXDeeper(buf, bparams, os, texrow,
 						     foot, foot_texrow,
 						     foot_count);
 			}
@@ -4037,12 +4050,12 @@ LyXParagraph * LyXParagraph::TeXFootnote(BufferParams const & bparams,
 				// environments. Shouldn't be circular because
 				// we don't support footnotes inside
 				// floats (yet). ARRae
-				par = par->TeXEnvironment(bparams,
+				par = par->TeXEnvironment(buf, bparams,
 							  foot, foot_texrow,
 							  dummy, dummy_texrow,
 							  dummy_count);
 			} else {
-				par = par->TeXOnePar(bparams,
+				par = par->TeXOnePar(buf, bparams,
 						     foot, foot_texrow,
 						     moving_arg,
 						     dummy, dummy_texrow,
@@ -4050,7 +4063,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(BufferParams const & bparams,
 			}
 
 			if (par && !par->IsDummy() && par->depth > depth) {
-				par = par->TeXDeeper(bparams,
+				par = par->TeXDeeper(buf, bparams,
 						     foot, foot_texrow,
 						     dummy, dummy_texrow,
 						     dummy_count);
@@ -4339,8 +4352,9 @@ bool LyXParagraph::isMultiLingual(BufferParams const & bparams)
 
 // Convert the paragraph to a string.
 // Used for building the table of contents
-string LyXParagraph::String(BufferParams const & bparams, bool label)
+string LyXParagraph::String(Buffer const * buffer, bool label)
 {
+	BufferParams const & bparams = buffer->params;
 	string s;
 	if (label && !IsDummy() && !labelstring.empty())
 		s += labelstring + ' ';
@@ -4354,10 +4368,10 @@ string LyXParagraph::String(BufferParams const & bparams, bool label)
 			 GetInset(i)->LyxCode() == Inset::MATH_CODE) {
 #ifdef HAVE_SSTREAM
 			std::ostringstream ost;
-			GetInset(i)->Ascii(ost);
+			GetInset(i)->Ascii(buffer, ost);
 #else
 			ostrstream ost;
-			GetInset(i)->Ascii(ost);
+			GetInset(i)->Ascii(buffer, ost);
 			ost << '\0';
 #endif
 			s += subst(ost.str(),'\n',' ');
@@ -4366,7 +4380,7 @@ string LyXParagraph::String(BufferParams const & bparams, bool label)
 
 	if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE 
 	    && footnoteflag == LyXParagraph::NO_FOOTNOTE)
-		s += NextAfterFootnote()->String(bparams, false);
+		s += NextAfterFootnote()->String(buffer, false);
 
 	if (!IsDummy()) {
 		if (isRightToLeftPar(bparams))
@@ -4376,7 +4390,8 @@ string LyXParagraph::String(BufferParams const & bparams, bool label)
 }
 
 
-string LyXParagraph::String(LyXParagraph::size_type beg,
+string LyXParagraph::String(Buffer const * buffer, 
+			    LyXParagraph::size_type beg,
 			    LyXParagraph::size_type end)
 {
 	string s;
@@ -4404,10 +4419,10 @@ string LyXParagraph::String(LyXParagraph::size_type beg,
 		else if (c == META_INSET) {
 #ifdef HAVE_SSTREAM
 			std::ostringstream ost;
-			GetInset(i)->Ascii(ost);
+			GetInset(i)->Ascii(buffer, ost);
 #else
 			ostrstream ost;
-			GetInset(i)->Ascii(ost);
+			GetInset(i)->Ascii(buffer, ost);
 			ost << '\0';
 #endif
 			s += ost.str();

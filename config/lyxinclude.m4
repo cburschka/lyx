@@ -676,6 +676,58 @@ dnl Usage: LYX_ADD_INC_DIR(var-name,dir) Adds a -I directive to variable
 dnl var-name. 
 AC_DEFUN(LYX_ADD_INC_DIR,[$1="${$1} -I$2 "])
 
+### Check which libsigc++ we're using and make sure any external one works
+### Check for libsigc++ library
+AC_DEFUN(LYX_WITH_SIGC,
+[AC_MSG_CHECKING(whether the included libsigc++ should be used)
+AC_ARG_WITH([included-libsigc],
+  [  --without-included-libsigc
+                             Use the libsigc++ installed on the system],
+  [lyx_use_included_libsigc=$withval],
+  [lyx_use_included_libsigc=yes])
+AC_MSG_RESULT([$lyx_use_included_libsigc])
+if test x$lyx_use_included_libsigc = xno; then
+  ### Check for libsigc++
+  ## can't use AC_SUBST right here!
+  AM_PATH_SIGC(0.8.7,
+    [ INCLUDED_SIGC=
+    ],
+    [LYX_ERROR(dnl
+    [Cannot find libsigc++ library or headers at least as recent as 0.8.7.
+     Check your installation.  Have you installed the development package?])
+  ])
+else
+  ### Use the included libsigc++
+  ### sigc-config hasn't been created yet so we can't just do the same as above
+  ### unless of course someone gets keen and merges the sigc++ configure.in 
+  ### with this one.  We don't really gain much by doing that though except
+  ### a considerably smaller dist and more difficult maintenance.
+  ### It'd also mean we'd have the equivalent of config/gettext.m4
+  lyx_flags="$lyx_flags included-libsigc"
+  SIGC_LIBS="\`\${top_builddir}/sigc++/sigc-config --libs-names | sed -e 's/-lsigc//'\`"
+  # Libsigc++ always installs into a subdirectory called sigc++.  Therefore we
+  # have to always use #include <sigc++/signal_system.h> in our code.
+  # Remember if you decide to do anything to the sigc++ code to do your mods on
+  # the makeLyXsigc.sh script in development/tools using a current cvs checkout
+  # of libsigc++.  A tarball distribution doesn't have everything in it that we
+  # need.
+  # We need both these -I entries to build when builddir != srcdir
+  if test "x$src_dir" = "x." ; then
+    SIGC_CFLAGS="-I\${top_srcdir}"
+  else
+    SIGC_CFLAGS="-I\${top_builddir} -I\${top_srcdir}"
+  fi
+  INCLUDED_SIGC="\${top_builddir}/sigc++/libsigc.la"
+  ## can't substitute these here like this otherwise all remaining tests fail
+  ## instead we SUBST directly into the Makefiles
+  ##LIBS="$LIBS \$SIGC_LIBS"
+  ##CPPFLAGS="$CPPFLAGS \$SIGC_CFLAGS"
+  AC_SUBST(SIGC_LIBS)
+  AC_SUBST(SIGC_CFLAGS)
+fi
+AC_SUBST(INCLUDED_SIGC)
+])
+
 ### Check for a headers existence and location iff it exists
 ## This is supposed to be a generalised version of LYX_STL_STRING_FWD
 ## It almost works.  I've tried a few variations but they give errors
@@ -787,3 +839,19 @@ extern int select ($ac_cv_func_select_arg1,$ac_cv_func_select_arg234,$ac_cv_func
  AC_DEFINE_UNQUOTED(SELECT_TYPE_ARG5,($ac_cv_func_select_arg5))
 ])
 
+### Check which frontend we want to use. The default is XForms
+###
+AC_DEFUN(LYX_USE_FRONTEND,
+[AC_MSG_CHECKING(what frontend should be used as main GUI)
+AC_ARG_WITH(frontend,
+  [  --with-frontend[=value] Use THIS frontend as main GUI:
+                          Possible values: xforms,kde],
+  [lyx_use_frontend="$withval"], [lyx_use_frontend="xforms"])
+AC_MSG_RESULT($lyx_use_frontend)
+lyx_flags="$lyx_flags frontend-$lyx_use_frontend"
+AC_SUBST(FRONTEND)
+AC_SUBST(FRONTEND_GUILIB)
+AC_SUBST(FRONTEND_LDFLAGS)
+AC_SUBST(FRONTEND_INCLUDES)
+AC_SUBST(FRONTEND_LIBS)
+])

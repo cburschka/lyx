@@ -187,10 +187,12 @@ public:
     int TexEndOfCell(std::ostream &, int cell);
     ///
     int DocBookEndOfCell(std::ostream &, int cell, int & depth);
+
 #if 0
     ///
     int RoffEndOfCell(std::ostream &, int cell);
 #endif
+
     ///
     char const * getDocBookAlign(int cell, bool isColumn = false);
 

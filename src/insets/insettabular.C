@@ -97,21 +97,21 @@ Inset * InsetTabular::Clone() const
 }
 
 
-void InsetTabular::Write(ostream & os) const
+void InsetTabular::Write(Buffer const * buf, ostream & os) const
 {
     os << " Tabular" << endl;
-    tabular->Write(os);
+    tabular->Write(buf, os);
 }
 
 
-void InsetTabular::Read(LyXLex & lex)
+void InsetTabular::Read(Buffer const * buf, LyXLex & lex)
 {
     bool old_format = (lex.GetString() == "\\LyXTable");
     string token;
 
     if (tabular)
 	delete tabular;
-    tabular = new LyXTabular(this, lex);
+    tabular = new LyXTabular(buf, this, lex);
 
     init_inset = true;
 
@@ -696,24 +696,24 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 }
 
 
-int InsetTabular::Latex(ostream & os, bool fragile, bool fp) const
+int InsetTabular::Latex(Buffer const * buf, ostream & os, bool fragile, bool fp) const
 {
-    return tabular->Latex(os, fragile, fp);
+    return tabular->Latex(buf, os, fragile, fp);
 }
 
 
-int InsetTabular::Ascii(ostream &) const
-{
-    return 0;
-}
-
-int InsetTabular::Linuxdoc(ostream &) const
+int InsetTabular::Ascii(Buffer const *, ostream &) const
 {
     return 0;
 }
 
+int InsetTabular::Linuxdoc(Buffer const *, ostream &) const
+{
+    return 0;
+}
 
-int InsetTabular::DocBook(ostream &) const
+
+int InsetTabular::DocBook(Buffer const *, ostream &) const
 {
     return 0;
 }
@@ -1046,7 +1046,7 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
 	sel_col_start = sel_col_end = tabular->column_of_cell(actcell);
 	sel_row_start = sel_row_end = tabular->row_of_cell(actcell);
     }
-    bv->text->SetUndo(Undo::FINISH, 
+    bv->text->SetUndo(bv->buffer(), Undo::FINISH, 
 	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
 	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next);
 
@@ -1068,6 +1068,7 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
 	break;
     case LyXTabular::APPEND_ROW:
 	// append the row into the tabular
+	UnlockInsetInInset(bv, the_locking_inset);
 	tabular->AppendRow(actcell);
 	UpdateLocal(bv, true);
 	break;
@@ -1271,12 +1272,12 @@ bool InsetTabular::InsetHit(BufferView * bv, int x, int ) const
 
 // This returns paperWidth() if the cell-width is unlimited or the width
 // in pixels if we have a pwidth for this cell.
-int InsetTabular::GetMaxWidthOfCell(Painter & pain, int cell) const
+int InsetTabular::GetMaxWidthOfCell(Painter &, int cell) const
 {
     string w;
-	
+
     if ((w=tabular->GetPWidth(cell)).empty())
-	return pain.paperWidth();
+	return -1;
     return VSpace(w).inPixels( 0, 0);
 }
 
@@ -1290,7 +1291,7 @@ int InsetTabular::getMaxWidth(Painter & pain,
 	    break;
     }
     if (cell >= n)
-	return pain.paperWidth();
+	return -1;
     int w = GetMaxWidthOfCell(pain, cell);
     // this because text insets remove the xpos from the maxwidth because
     // otherwise the would not break good!!!

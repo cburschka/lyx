@@ -6,7 +6,7 @@
 /* Form definition file generated with fdesign. */
 
 #include FORMS_H_LOCATION
-#include <stdlib.h>
+#include <cstdlib>
 #include "lyx_sendfax.h"
 
 FD_xsendfax *create_form_xsendfax(void)

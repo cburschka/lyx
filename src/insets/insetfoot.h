@@ -29,7 +29,7 @@ class InsetFoot : public InsetCollapsable {
 public:
     ///
 	explicit
-    InsetFoot(Buffer *);
+    InsetFoot();
     ///
     ~InsetFoot() {}
     ///
@@ -37,7 +37,7 @@ public:
     ///
     Inset::Code LyxCode() const { return Inset::FOOT_CODE; }
     ///
-    int Latex(std::ostream &, bool fragile, bool fp) const;
+    int Latex(Buffer const *, std::ostream &, bool fragile, bool fp) const;
     ///
     const char * EditMessage() const;
     ///
@@ -45,7 +45,7 @@ public:
     ///
     bool InsertInsetAllowed(Inset * inset) const;
     ///
-    LyXFont GetDrawFont(LyXParagraph * par, int pos) const;
+    LyXFont GetDrawFont(Buffer const *, LyXParagraph * par, int pos) const;
     ///
 };
 

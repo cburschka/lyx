@@ -443,7 +443,14 @@ int LyXRC::read(string const & filename)
 			break;
 		case RC_BINDFILE:                     // RVDK_PATCH_5
 			if (lexrc.next()) {
-				ReadBindFile(lexrc.GetString());
+				string tmp(lexrc.GetString());
+				if (bind_file.empty()) {
+					// we only need the name of the first
+					// bind file since that (usually)
+					// includes several others.
+					bind_file = tmp;
+				}
+				ReadBindFile(tmp);
 			}
 			break;
 			
@@ -841,9 +848,10 @@ int LyXRC::read(string const & filename)
 			// we should not do an explicit binding before
 			// loading a bind file. So, in this case, load
 			// the default bind file.
-			if (!hasBindFile)
+			if (!hasBindFile) {
 				ReadBindFile();
-			
+				bind_file = bindFile;
+			}
 			// !!!chb, dynamic key binding...
 			int action, res = 0;
 			string seq, cmd;
@@ -1324,7 +1332,7 @@ void LyXRC::output(ostream & os) const
 	case RC_RTL_SUPPORT:
 		os << "\\rtl " << tostr(rtl_support) << "\n";
 	case RC_AUTO_NUMBER:
-		os << "\\auto_number" << tostr(auto_number) << "\n";
+		os << "\\auto_number " << tostr(auto_number) << "\n";
 	case RC_MARK_FOREIGN_LANGUAGE:
 		os << "\\mark_foreign_language " << 
 			tostr(mark_foreign_language) << "\n";
@@ -1345,7 +1353,7 @@ void LyXRC::output(ostream & os) const
 	case RC_MAKE_BACKUP:
 		os << "\\make_backup " << tostr(make_backup) << "\n";
 	case RC_BACKUPDIR_PATH:
-		os << "\\backupdir_path" << backupdir_path << "\n";
+		os << "\\backupdir_path \"" << backupdir_path << "\"\n";
 	case RC_DATE_INSERT_FORMAT:
 		os << "\\date_insert_format \"" << date_insert_format
 		   << "\"\n";

@@ -83,7 +83,7 @@ void InsetRef::Edit(BufferView * bv, int, int, unsigned int)
 string InsetRef::getScreenLabel() const
 {
 	static char const * labels[REF_LAST+1]
-		= { N_("Ref: "), N_("Page: "), N_("vRef: "), N_("vPage: "),
+		= { N_("Ref: "), N_("Page: "), N_("TextRef: "), N_("TextPage: "),
 		    N_("PrettyRef: ")};
 	string temp = _(labels[flag]) + getContents();
 	if(!current_view->buffer()->isLatex()
@@ -95,7 +95,7 @@ string InsetRef::getScreenLabel() const
 }
 
 
-int InsetRef::Latex(ostream & os,
+int InsetRef::Latex(Buffer const *, ostream & os,
 		    bool /*fragile*/, bool /*fs*/) const
 {
 	if(getOptions().empty())
@@ -110,14 +110,14 @@ int InsetRef::Latex(ostream & os,
 }
 
 
-int InsetRef::Ascii(ostream & os) const
+int InsetRef::Ascii(Buffer const *, ostream & os) const
 {
 	os << "[" << getContents() << "]";
 	return 0;
 }
 
 
-int InsetRef::Linuxdoc(ostream & os) const
+int InsetRef::Linuxdoc(Buffer const *, ostream & os) const
 {
 	os << "<ref id=\"" << getContents()
 	   << "\" name=\"" << getOptions() << "\" >";
@@ -125,7 +125,7 @@ int InsetRef::Linuxdoc(ostream & os) const
 }
 
 
-int InsetRef::DocBook(ostream & os) const
+int InsetRef::DocBook(Buffer const *, ostream & os) const
 {
 	os << "<link linkend=\"" << getContents()
 	   << "\">" << getOptions() << "</link>";

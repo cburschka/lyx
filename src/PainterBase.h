@@ -66,6 +66,8 @@ public:
 	int paperMargin() const;
 	///
 	int paperWidth() const;
+	///
+	int paperHeight() const;
 	
 	/**@Basic drawing routines */
 	/// Draw a line from point to point

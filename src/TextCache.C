@@ -27,29 +27,31 @@ using std::for_each;
 using std::remove_if;
 using std::find_if;
 using std::endl;
+using std::make_pair;
 
 extern BufferList bufferlist;
 
 class text_fits {
 public:
-	text_fits(Buffer * b, unsigned short p)
+	text_fits(Buffer * b, int p)
 		: buf(b), pw(p) {}
 	bool operator()(TextCache::value_type & vt) {
-		if (vt->buffer() == buf && vt->paperWidth() == pw) return true;
+		if (vt.first == buf && vt.second.first == pw)
+			return true;
 		return false;
 	}
 private:
 	Buffer * buf;
-	unsigned short pw;
+	int pw;
 };
 
 
-LyXText * TextCache::findFit(Buffer * b, unsigned short p)
+LyXText * TextCache::findFit(Buffer * b, int p)
 {
 	Cache::iterator it = find_if(cache.begin(), cache.end(),
 				     text_fits(b, p));
 	if (it != cache.end()) {
-		LyXText * tmp = (*it);
+		LyXText * tmp = (*it).second.second;
 		cache.erase(it);
 		return tmp;
 	}
@@ -60,9 +62,9 @@ LyXText * TextCache::findFit(Buffer * b, unsigned short p)
 class show_text {
 public:
 	show_text(ostream & o) : os(o) {}
-	void operator()(TextCache::value_type & vt) {
-		os << "\tBuffer: " << vt->buffer()
-		   << "\tWidth: " << vt->paperWidth() << endl;
+	void operator()(TextCache::value_type const & vt) {
+		os << "\tBuffer: " << vt.first
+		   << "\tWidth: " << vt.second.first << endl;
 	}
 private:
 	ostream & os;
@@ -75,18 +77,18 @@ void TextCache::show(ostream & os, string const & str)
 }
 
 
-void TextCache::show(ostream & os, LyXText * lt)
+void TextCache::show(ostream & os, TextCache::value_type const & vt)
 {
 	show_text st(os);
-	st(lt);
+	st(vt);
 }
 
 
-void TextCache::add(LyXText * text)
+void TextCache::add(Buffer *buf, int workwidth, LyXText * text)
 {
 	lyxerr.debug() << "TextCache::add " << text;
-	if (bufferlist.isLoaded(text->buffer())) {
-		cache.push_back(text);
+	if (bufferlist.isLoaded(buf)) {
+		cache[buf] = make_pair(workwidth, text);
 		lyxerr.debug() << " added" << endl;
 	} else {
 		delete text;
@@ -98,7 +100,7 @@ void TextCache::add(LyXText * text)
 class delete_text {
 public:
 	void operator()(TextCache::value_type & vt) {
-		delete vt;
+		delete vt.second.second;
 	}
 };
 
@@ -115,28 +117,17 @@ public:
 	has_buffer(Buffer * b)
 		: buf(b) {}
 	bool operator()(TextCache::value_type & vt) {
-		if (vt->buffer() == buf) return true;
+		if (vt.first == buf) return true;
 		return false;
 	}
 private:
-	Buffer * buf;
+	Buffer const * buf;
 };
 
 
 void TextCache::removeAllWithBuffer(Buffer * buf)
 {
-	Cache::iterator it = remove_if(cache.begin(), cache.end(),
-				       has_buffer(buf));
-	if (it != cache.end()) {
-		if (lyxerr.debugging()) {
-			lyxerr.debug() << "TextCache::removeAllWithbuffer "
-				"Removing:\n";
-			for_each(it, cache.end(), show_text(lyxerr));
-			lyxerr << endl;
-		}
-		for_each(it, cache.end(), delete_text());
-		cache.erase(it, cache.end());
-	}
+	cache.erase(buf);
 }
 
 // Global instance

@@ -33,7 +33,7 @@ public:
 	///
 	Painter & getPainter() { return painter_; }
 	///
-	unsigned int workWidth() const { return work_area->w; }
+	int workWidth() const { return work_area->w; }
 	///
 	unsigned int width() const { return work_area->w + scrollbar->w; }
 	///
@@ -95,6 +95,9 @@ public:
 	string getClipboard() const;
 	///
 	void putClipboard(string const &) const;
+	///
+	BufferView * owner() const { return owner_; }
+
 private:
 	///
 	void createPixmap(int, int);
@@ -105,7 +108,7 @@ private:
 	///
 	FL_OBJECT * scrollbar;
 	///
-	BufferView * owner;
+	BufferView * owner_;
 	/// The pixmap overlay on the workarea
 	Pixmap workareapixmap;
 	///

@@ -52,6 +52,8 @@
 #include "insets/insettabular.h"
 #include "tabular.h"
 
+#include "frontends/Dialogs.h"
+
 using std::vector;
 using std::endl;
 using std::max;
@@ -66,7 +68,6 @@ extern BufferList bufferlist;
 
 extern void MenuLayoutSave();
 extern void ShowCredits();
-extern void ShowCopyright();
 extern void show_symbols_form(LyXFunc *);
 extern void LaTeXOptions(BufferView *);
 
@@ -1240,7 +1241,7 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 			men->currentView()->hideCursor();
 			if (!men->currentView()->text->selection){
 				men->currentView()->beforeChange(); 
-				men->currentView()->update(-2);
+				men->currentView()->update(BufferView::SELECT|BufferView::FITCUR);
 			}
 			if (men->currentView()->the_locking_inset &&
 			    (men->currentView()->the_locking_inset->LyxCode()
@@ -1251,8 +1252,8 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 				inset->TabularFeatures(men->currentView(), choice - 32);
 			} else {
 				men->currentView()->text->
-					TableFeatures(choice - 32);
-				men->currentView()->update(1);
+					TableFeatures(men->currentView(), choice - 32);
+				men->currentView()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			}
 		}
 		break;
@@ -1414,9 +1415,9 @@ void Menus::ShowTocMenu(FL_OBJECT * ob, long)
 		int num = (choice % BIG_NUM) - 1;
 		BufferView *bv = men->currentView();
 		bv->beforeChange();
-		bv->text->SetCursor(toclist[type][num].par, 0);
+		bv->text->SetCursor(bv, toclist[type][num].par, 0);
 		bv->text->sel_cursor = bv->text->cursor;
-		bv->update(0);
+		bv->update(BufferView::SELECT|BufferView::FITCUR);
 	}
 	for (unsigned int i = 0; i < menus.size(); ++i)
 		fl_freepup(menus[i]);
@@ -1747,7 +1748,8 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 				     "|Table...%l"
 				     "|Include File..." 
 				     "|Import ASCII File%m"
-				     "|Insert LyX File...%l"
+				     "|Insert LyX File..."
+				     "|Insert external material...%l"
 				     "|Footnote"
 				     "|Margin Note"
 				     "|Floats%m%l"      
@@ -1769,25 +1771,26 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(InsertMenu, 3, scex(_("IM|cC#c#C")));
 	fl_setpup_shortcut(InsertMenu, 4, scex(_("IM|Aa#a#A")));
 	fl_setpup_shortcut(InsertMenu, 5, scex(_("IM|Xx#x#X")));
-	fl_setpup_shortcut(InsertMenu, 6, scex(_("IM|Ff#f#F")));
-	fl_setpup_shortcut(InsertMenu, 7, scex(_("IM|Mm#m#M")));
-	fl_setpup_shortcut(InsertMenu, 8, scex(_("IM|oO#o#O")));
-	fl_setpup_shortcut(InsertMenu, 9, scex(_("IM|Tt#t#T")));
-	fl_setpup_shortcut(InsertMenu, 10, scex(_("IM|Ss#s#S")));
-	fl_setpup_shortcut(InsertMenu, 11, scex(_("IM|Nn#n#N")));
-	fl_setpup_shortcut(InsertMenu, 12, scex(_("IM|Ll#l#L")));
-	fl_setpup_shortcut(InsertMenu, 13, scex(_("IM|rR#r#R")));     
-	fl_setpup_shortcut(InsertMenu, 14, scex(_("IM|iI#i#I")));
-	fl_setpup_shortcut(InsertMenu, 15, scex(_("IM|dD#d#D")));
-	fl_setpup_shortcut(InsertMenu, 16, scex(_("IM|wW#w#W")));
+	fl_setpup_shortcut(InsertMenu, 6, scex(_("IM|Ee#e#E")));
+	fl_setpup_shortcut(InsertMenu, 7, scex(_("IM|Ff#f#F")));
+	fl_setpup_shortcut(InsertMenu, 8, scex(_("IM|Mm#m#M")));
+	fl_setpup_shortcut(InsertMenu, 9, scex(_("IM|oO#o#O")));
+	fl_setpup_shortcut(InsertMenu, 10, scex(_("IM|Tt#t#T")));
+	fl_setpup_shortcut(InsertMenu, 11, scex(_("IM|Ss#s#S")));
+	fl_setpup_shortcut(InsertMenu, 12, scex(_("IM|Nn#n#N")));
+	fl_setpup_shortcut(InsertMenu, 13, scex(_("IM|Ll#l#L")));
+	fl_setpup_shortcut(InsertMenu, 14, scex(_("IM|rR#r#R")));     
+	fl_setpup_shortcut(InsertMenu, 15, scex(_("IM|iI#i#I")));
+	fl_setpup_shortcut(InsertMenu, 16, scex(_("IM|dD#d#D")));
+	fl_setpup_shortcut(InsertMenu, 17, scex(_("IM|wW#w#W")));
 
 	fl_addtopup(InsertMenu, _("|URL..."));
-	fl_setpup_shortcut(InsertMenu, 17, scex(_("IM|Uu#u#U")));
+	fl_setpup_shortcut(InsertMenu, 18, scex(_("IM|Uu#u#U")));
 
 	if (tmpbuffer->isReadonly()) {
-                for (int ii = 1; ii <= 16; ++ii)
+                for (int ii = 1; ii <= 17; ++ii)
 	                fl_setpup_mode(InsertMenu, ii, FL_PUP_GREY);
-		fl_setpup_mode(InsertMenu, 17, FL_PUP_GREY);
+		fl_setpup_mode(InsertMenu, 18, FL_PUP_GREY);
 	}
 
 	fl_setpup_position(
@@ -1815,11 +1818,13 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 		case 43: 
 			break;
 
-		case 6: tmpfunc->Dispatch(LFUN_FOOTMELT); break
+		case 6: tmpfunc->Dispatch(LFUN_INSET_EXTERNAL); break;
+
+		case 7: tmpfunc->Dispatch(LFUN_FOOTMELT); break
 								  ;
-		case 7: tmpfunc->Dispatch(LFUN_MARGINMELT); break;
+		case 8: tmpfunc->Dispatch(LFUN_MARGINMELT); break;
   
-		case 8: // Float sub-menu
+		case 9: // Float sub-menu
                 case 71:
 			tmpfunc->Dispatch(LFUN_INSERTFOOTNOTE, "figure");
 			break;
@@ -1836,7 +1841,7 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 			tmpfunc->Dispatch(LFUN_INSERTFOOTNOTE, "algorithm");
 			break;
 
-		case 9: // Table/List submenu
+		case 10: // Table/List submenu
 			break;
 		case 21: tmpfunc->Dispatch(LFUN_TOC_INSERT); break;
 		case 22: tmpfunc->Dispatch(LFUN_LOF_INSERT); break;
@@ -1845,7 +1850,7 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 		case 25: tmpfunc->Dispatch(LFUN_INDEX_PRINT); break;
 		case 26: tmpfunc->Dispatch(LFUN_INSERT_BIBTEX); break;
 
-		case 10: // Special Character submenu
+		case 11: // Special Character submenu
 			break;
 		case 31: tmpfunc->Dispatch(LFUN_HFILL); break;
 		case 32: tmpfunc->Dispatch(LFUN_HYPHENATION); break;
@@ -1856,13 +1861,13 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 		case 37: tmpfunc->Dispatch(LFUN_QUOTE); break;
 		case 38: tmpfunc->Dispatch(LFUN_MENU_SEPARATOR); break;
 
-		case 11: tmpfunc->Dispatch(LFUN_INSERT_NOTE); break;
-		case 12: tmpfunc->Dispatch(LFUN_INSERT_LABEL); break;
-		case 13: tmpfunc->Dispatch(LFUN_INSERT_REF); break;
-		case 14: tmpfunc->Dispatch(LFUN_INSERT_CITATION); break;
-		case 15: tmpfunc->Dispatch(LFUN_INDEX_INSERT); break;
-		case 16: tmpfunc->Dispatch(LFUN_INDEX_INSERT_LAST); break;
-		case 17: tmpfunc->Dispatch(LFUN_URL); break;
+		case 12: tmpfunc->Dispatch(LFUN_INSERT_NOTE); break;
+		case 13: tmpfunc->Dispatch(LFUN_INSERT_LABEL); break;
+		case 14: tmpfunc->Dispatch(LFUN_INSERT_REF); break;
+		case 15: tmpfunc->Dispatch(LFUN_INSERT_CITATION); break;
+		case 16: tmpfunc->Dispatch(LFUN_INDEX_INSERT); break;
+		case 17: tmpfunc->Dispatch(LFUN_INDEX_INSERT_LAST); break;
+		case 18: tmpfunc->Dispatch(LFUN_URL); break;
 		}
 	}
 	fl_freepup(InsertMenu);
@@ -1953,7 +1958,7 @@ void Menus::ShowMathMenu(FL_OBJECT * ob, long)
 			show_symbols_form(tmpfunc);
 			break;
 		}
-		men->currentView()->update(0);
+		men->currentView()->update(BufferView::SELECT|BufferView::FITCUR);
 	} 
 	fl_freepup(MathMenu);
 }
@@ -1976,13 +1981,15 @@ void Menus::ShowOptionsMenu(FL_OBJECT * ob, long)
 				      "|Spellchecker Options..."
 				      "|Keyboard..."
 				      "|LaTeX...%l"
-				      "|Reconfigure" ));
+				      "|Reconfigure"
+				      "|Preferences"));
 
 	fl_setpup_shortcut(OptionsMenu, 1, scex(_("OM|Ff#f#F")));
 	fl_setpup_shortcut(OptionsMenu, 2, scex(_("OM|Ss#s#S")));
 	fl_setpup_shortcut(OptionsMenu, 3, scex(_("OM|Kk#k#K")));
 	fl_setpup_shortcut(OptionsMenu, 4, scex(_("OM|Ll#l#L")));
 	fl_setpup_shortcut(OptionsMenu, 5, scex(_("OM|Rr#r#R")));
+	fl_setpup_shortcut(OptionsMenu, 6, scex(_("OM|Pp#p#P")));
 
 	if(lyxrc.isp_command == "none") 
 		fl_setpup_mode(OptionsMenu, 2, FL_PUP_GREY);
@@ -2002,6 +2009,7 @@ void Menus::ShowOptionsMenu(FL_OBJECT * ob, long)
 	case 3: men->_view->getIntl()->MenuKeymap(); break;
 	case 4: LaTeXOptions(men->_view->view()); break;
 	case 5: tmpfunc->Dispatch(LFUN_RECONFIGURE); break;
+	case 6: men->_view->getDialogs()->showPreferences(); break;
 	default: break;
 	}   
 	fl_freepup(OptionsMenu);
@@ -2049,11 +2057,12 @@ char const * doc_files [] = {"Intro", "Tutorial",
 			     "UserGuide", "Extended",
 			     "Customization", "Reference",
 			     "FAQ", "TOC",  
-			     "BUGS", "LaTeXConfig"}; 
+			     "BUGS", "LyXConfig"}; 
 
 void Menus::ShowHelpMenu(FL_OBJECT * ob, long)
 {
 	Menus * men = static_cast<Menus*>(ob->u_vdata);
+	LyXFunc * tmpfunc = men->_view->getLyXFunc();
 
 	// set the pseudo menu-button
 	fl_set_object_boxtype(ob, FL_UP_BOX);
@@ -2106,7 +2115,7 @@ void Menus::ShowHelpMenu(FL_OBJECT * ob, long)
 		men->MenuDocu(doc_files[choice - 1]);
 		AllowInput(men->currentView());
 		break;
-	case 11: ShowCopyright(); break;
+	case 11: tmpfunc->Dispatch(LFUN_HELP_COPYRIGHT); break;
 	case 12: ShowCredits(); break;
 	case 13:
 		ProhibitInput(men->currentView());

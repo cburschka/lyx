@@ -24,6 +24,7 @@ struct Row;
 typedef unsigned short Dimension;
 
 class WorkArea;
+class Buffer;
 
 /** The class LyXScreen is used for the main Textbody.
     Concretely, the screen is held in a pixmap.  This pixmap is kept up to

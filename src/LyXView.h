@@ -27,25 +27,12 @@ class Intl;
 class Buffer;
 class Menus;
 class BufferView;
+class Dialogs;
 
 ///
 struct  FD_form_main {
 	///
 	FL_FORM * form_main;
-#if 0
-	///
-	FL_OBJECT * timer_autosave;
-#endif
-#if 0
-	///
-	FL_OBJECT * timer_update;
-#endif
-#if 0
-	///
-	void * vdata;
-	///
-	long ldata;
-#endif
 };
 
 
@@ -102,6 +89,9 @@ public:
 	Intl * getIntl() const;
 
 	///
+	Dialogs * getDialogs() { return dialogs_; }
+
+	///
 	void updateLayoutChoice();
 
 	/// Updates the title of the window
@@ -120,6 +110,8 @@ private:
 	Menus * menus;
 	///
 	Intl * intl;
+	///
+	Dialogs * dialogs_;
 
 	/** This is supposed to be a pointer or a list of pointers to the
 	   BufferViews currently being shown in the LyXView. So far
@@ -139,10 +131,6 @@ public:
 	void AutoSave();
 	/// A callback
 	static void UpdateTimerCB(void *);
-#if 1
-	///
-	//Timeout update_timeout;
-#endif
 private:
 	///
 	Timeout autosave_timeout;

@@ -1,17 +1,15 @@
---- bullet_forms.c	Wed Sep 24 22:03:42 1997
-+++ bullet_forms.c.patched	Wed Sep 24 22:05:31 1997
-@@ -3,6 +3,10 @@
+--- bullet_forms.c.orig	Fri Jun  9 17:38:18 2000
++++ bullet_forms.c	Fri Jun  9 17:39:31 2000
+@@ -3,6 +3,8 @@
  #include "forms.h"
  #include <stdlib.h>
  #include "bullet_forms.h"
 +#include "bmtable.h"
-+#include "filetools.h"
-+
-+extern int mono_video;
++#include "support/filetools.h"
  
  FD_form_bullet *create_form_form_bullet(void)
  {
-@@ -10,10 +14,28 @@
+@@ -10,10 +12,21 @@
    FD_form_bullet *fdui = (FD_form_bullet *) fl_calloc(1, sizeof(*fdui));
  
    fdui->form_bullet = fl_bgn_form(FL_NO_BOX, 370, 390);
@@ -28,26 +26,20 @@
 +     fl_set_object_callback(obj, BulletBMTableCB, 0);
 +     fl_set_object_lcol(obj, FL_BLUE);
 +     fl_set_object_boxtype(obj, FL_UP_BOX);
-+     if (mono_video) {
-+        fl_set_bmtable_file(obj, 6, 6,
-+                           LibFileSearch("images",
-+                                         "standard.xbm").c_str());
-+     }
-+     else {
-+        fl_set_bmtable_pixmap_file(obj, 6, 6,
-+                                  LibFileSearch("images",
-+                                                "standard.xpm").c_str());
-+    }
++     fl_set_bmtable_pixmap_file(obj, 6, 6,
++				LibFileSearch("images",
++					      "standard.xpm").c_str());
 +
 +  fl_set_border_width(-1);
    obj = fl_add_frame(FL_ENGRAVED_FRAME,95,20,255,70,"");
    obj = fl_add_frame(FL_ENGRAVED_FRAME,0,340,370,50,"");
    fdui->choice_bullet_size = obj = fl_add_choice(FL_NORMAL_CHOICE,15,45,65,30,"Size|#z");
-@@ -38,5 +60,7 @@
+@@ -33,6 +46,8 @@
+   fdui->input_bullet_latex = obj = fl_add_input(FL_NORMAL_INPUT,80,300,275,30,"LaTeX|#L");
      fl_set_object_lsize(obj,FL_NORMAL_SIZE);
      fl_set_object_lstyle(obj,FL_FIXED_STYLE);
 +    fl_set_input_return(obj, FL_RETURN_CHANGED);
-+    fl_set_input_maxchars(obj,80);
++    fl_set_input_maxchars(obj, 80);
      fl_set_object_callback(obj,InputBulletLaTeXCB,0);
  
    fdui->radio_bullet_depth = fl_bgn_group();

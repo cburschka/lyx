@@ -1088,7 +1088,7 @@ void InsetFig::draw(Painter & pain, LyXFont const & f,
 }
 
 
-void InsetFig::Write(ostream & os) const
+void InsetFig::Write(Buffer const *, ostream & os) const
 {
 	Regenerate();
 	os << "Figure size " << wid << " " << hgh << "\n";
@@ -1107,7 +1107,7 @@ void InsetFig::Write(ostream & os) const
 }
 
 
-void InsetFig::Read(LyXLex & lex)
+void InsetFig::Read(Buffer const *, LyXLex & lex)
 {
 	string buf;
 	bool finished = false;
@@ -1191,7 +1191,7 @@ void InsetFig::Read(LyXLex & lex)
 }
 
 
-int InsetFig::Latex(ostream & os,
+int InsetFig::Latex(Buffer const *, ostream & os,
 		    bool /* fragile*/, bool /* fs*/) const
 {
 	Regenerate();
@@ -1200,28 +1200,29 @@ int InsetFig::Latex(ostream & os,
 }
 
 
-int InsetFig::Ascii(ostream &) const
+int InsetFig::Ascii(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetFig::Linuxdoc(ostream &) const
+int InsetFig::Linuxdoc(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetFig::DocBook(ostream & os) const
+int InsetFig::DocBook(Buffer const *, ostream & os) const
 {
-	string figurename = fname;
+	string buf1 = OnlyPath(owner->fileName());
+	string figurename = MakeRelPath(fname, buf1);
 
 	if(suffixIs(figurename, ".eps"))
 		figurename.erase(fname.length() - 4);
 
 	os << "@<graphic fileref=\"" << figurename << "\"></graphic>";
 	return 0;
-}
+} 
 
 
 void InsetFig::Validate(LaTeXFeatures & features) const

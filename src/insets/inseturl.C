@@ -164,16 +164,16 @@ string InsetUrl::getScreenLabel() const
 		temp += _("HtmlUrl: ");
 	else 
 		temp += _("Url: ");
-	temp += getContents();
 	if(!getOptions().empty()) {
-		temp += "||";
 		temp += getOptions();
+	} else {
+	  temp += getContents();
 	}
 	return temp;
 }
 
 
-int InsetUrl::Latex(ostream & os,
+int InsetUrl::Latex(Buffer const *, ostream & os,
 		    bool fragile, bool /*free_spc*/) const
 {
 	if (!getOptions().empty())
@@ -185,7 +185,7 @@ int InsetUrl::Latex(ostream & os,
 }
 
 
-int InsetUrl::Ascii(ostream & os) const
+int InsetUrl::Ascii(Buffer const *, ostream & os) const
 {
 	if (getOptions().empty())
 		os << "[" << getContents() << "]";
@@ -195,7 +195,7 @@ int InsetUrl::Ascii(ostream & os) const
 }
 
 
-int InsetUrl::Linuxdoc(ostream & os) const
+int InsetUrl::Linuxdoc(Buffer const *, ostream & os) const
 {
 	os << "<" << getCmdName()
 	   << " url=\""  << getContents() << "\""
@@ -205,7 +205,7 @@ int InsetUrl::Linuxdoc(ostream & os) const
 }
 
 
-int InsetUrl::DocBook(ostream & os) const
+int InsetUrl::DocBook(Buffer const *, ostream & os) const
 {
 	os << "<ulink url=\"" << getContents() << "\">"
 	   << getOptions() << "</ulink>";

@@ -28,31 +28,33 @@ class Buffer;
 class LyXCursor;
 class LyXParagraph;
 class LColor;
+class LyXText;
 
-/** A text inset is like a TeX box
-  
-  To write full text (including styles and other insets) in a given
-  space. 
-*/
+/**
+ * A text inset is like a TeX box to write full text
+ * (including styles and other insets) in a given space. 
+ */
 class InsetText : public UpdatableInset {
 public:
     ///
     enum { TEXT_TO_INSET_OFFSET = 2 };
     ///
     explicit
-    InsetText(Buffer *);
+    InsetText();
     ///
-    InsetText(InsetText const &, Buffer *);
+    InsetText(InsetText const &);
     ///
     ~InsetText();
     ///
     Inset * Clone() const;
     ///
+    InsetText & operator= (InsetText const & it);
+    ///
     void clear() const { par->clearContents(); }
     ///
-    void Read(LyXLex &);
+    void Read(Buffer const *, LyXLex &);
     ///
-    void Write(std::ostream &) const;
+    void Write(Buffer const *, std::ostream &) const;
     ///
     int ascent(Painter &, LyXFont const &) const;
     ///
@@ -84,13 +86,13 @@ public:
     ///
     UpdatableInset::RESULT LocalDispatch(BufferView *, int, string const &);
     ///
-    int Latex(std::ostream &, bool fragile, bool free_spc) const;
+    int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
     ///
-    int Ascii(std::ostream &) const { return 0; }
+    int Ascii(Buffer const *, std::ostream &) const { return 0; }
     ///
-    int Linuxdoc(std::ostream &) const { return 0; }
+    int Linuxdoc(Buffer const *, std::ostream &) const { return 0; }
     ///
-    int DocBook(std::ostream &) const { return 0; }
+    int DocBook(Buffer const *, std::ostream &) const { return 0; }
     ///
     void Validate(LaTeXFeatures & features) const;
     ///
@@ -110,7 +112,7 @@ public:
     ///
     void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
     ///
-    void init(Buffer *, InsetText const * ins = 0);
+    void init(InsetText const * ins = 0);
     ///
     void SetParagraphData(LyXParagraph *);
     ///
@@ -122,15 +124,14 @@ public:
     ///
     void computeTextRows(Painter &) const;
     ///
-    Buffer * BufferOwner() const { return buffer; }
-
     LyXParagraph * par;
+    ///
 
 protected:
     ///
     void UpdateLocal(BufferView *, bool);
     ///
-    void WriteParagraphData(std::ostream &) const;
+    void WriteParagraphData(Buffer const *, std::ostream &) const;
     ///
     void resetPos(Painter &) const;
     ///
@@ -141,13 +142,13 @@ protected:
     ///
     int SingleWidth(Painter &, LyXParagraph * par, int pos) const;
     ///
-    LyXFont GetFont(LyXParagraph * par, int pos) const;
+    LyXFont GetFont(Buffer const *, LyXParagraph * par, int pos) const;
     ///
-    virtual LyXFont GetDrawFont(LyXParagraph * par, int pos) const;
+    virtual LyXFont GetDrawFont(Buffer const *, LyXParagraph * par, int pos) const;
     ///
     virtual int getMaxTextWidth(Painter &, UpdatableInset const *) const;
 
-    Buffer * buffer;
+    LyXText * text;
     ///
     LyXFont current_font;
     ///
@@ -177,7 +178,7 @@ private:
     ///
     void computeBaselines(int) const;
     ///
-    int BeginningOfMainBody(LyXParagraph * par) const;
+    int BeginningOfMainBody(Buffer const *, LyXParagraph * par) const;
     ///
     void ShowInsetCursor(BufferView *);
     ///
@@ -186,25 +187,25 @@ private:
     void setPos(Painter &, int x, int y) const;
     ///
     UpdatableInset::RESULT moveRight(BufferView *, bool activate_inset = true);
-	///
+    ///
     UpdatableInset::RESULT moveLeft(BufferView *, bool activate_inset = true);
-	///
+    ///
     UpdatableInset::RESULT moveUp(BufferView *);
-	///
+    ///
     UpdatableInset::RESULT moveDown(BufferView *);
-	///
+    ///
     bool Delete();
-	///
-    bool cutSelection();
-	///
-    bool copySelection();
-	///
-    bool pasteSelection();
+    ///
+    bool cutSelection(Buffer const *);
+    ///
+    bool copySelection(Buffer const *);
+    ///
+    bool pasteSelection(Buffer const *);
     ///
     bool hasSelection() const
-		{ return (selection_start_cursor != selection_end_cursor); }
+        { return (selection_start_cursor != selection_end_cursor); }
     ///
-    void SetCharFont(int pos, LyXFont const & font);
+    void SetCharFont(Buffer const *, int pos, LyXFont const & font);
     ///
     string getText(int);
     ///
@@ -255,25 +256,5 @@ private:
     typedef std::vector<row_struct> RowList;
     ///
     mutable RowList rows;
-	///
-    InsetText & operator = (InsetText const & it) {
-	par = it.par;
-	buffer = it.buffer; // suspect
-	current_font = it.current_font;
-	real_current_font = it.real_current_font;
-	maxAscent = it.maxAscent;
-	maxDescent = it.maxDescent;
-	insetWidth = it.insetWidth;
-	inset_pos = it.inset_pos;
-	inset_x = it.inset_x;
-	inset_y = it.inset_y;
-	interline_space = it.interline_space;
-	selection_start_cursor = selection_end_cursor = cursor = it.cursor;
-	actrow = it.actrow;
-	no_selection = it.no_selection;
-	the_locking_inset = it.the_locking_inset; // suspect
-	rows = it.rows;
-	return * this;
-    }
 };
 #endif

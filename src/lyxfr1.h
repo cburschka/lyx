@@ -41,9 +41,9 @@ private:
 	bool searchForward;
     
 	///
-	bool SearchForward(LyXText * lt);
+	bool SearchForward(BufferView *);
 	///
-	bool SearchBackward(LyXText * lt); 
+	bool SearchBackward(BufferView *); 
 
 	/** Compares 2 char values. 
 	return value is

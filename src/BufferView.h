@@ -28,6 +28,14 @@ class Buffer;
 class BufferView {
 public:
 	///
+	enum UpdateCodes {
+		UPDATE = 0,
+		SELECT = 1,
+		FITCUR = 2,
+		CHANGE = 4
+	};
+					    
+	///
 	BufferView(LyXView * owner, int , int , int, int);
 	///
 	~BufferView();
@@ -48,7 +56,7 @@ public:
 	///
 	void update();
 	///
-	void update(signed char f);
+	void update(UpdateCodes uc);
 	///
 	void updateScrollbar();
 	///
@@ -78,7 +86,7 @@ public:
 	*/
 	LyXText * text;
 	///
-	unsigned short paperWidth() const;
+	int workWidth() const;
 	///
 	UpdatableInset * the_locking_inset;
 	///
@@ -228,5 +236,9 @@ private:
 	struct Pimpl;
 	Pimpl * pimpl_;
 };
+
+
+BufferView::UpdateCodes operator|(BufferView::UpdateCodes uc1,
+				  BufferView::UpdateCodes uc2);
 
 #endif

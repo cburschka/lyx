@@ -6,7 +6,7 @@
 /* Form definition file generated with fdesign. */
 
 #include FORMS_H_LOCATION
-#include <stdlib.h>
+#include <cstdlib>
 #include "lyx.h"
 
 FD_form_title *create_form_form_title(void)
@@ -72,23 +72,23 @@ FD_form_screen *create_form_form_screen(void)
 
   fdui->form_screen = fl_bgn_form(FL_NO_BOX, 390, 220);
   obj = fl_add_box(FL_UP_BOX, 0, 0, 390, 220, "");
-  fdui->input_roman = obj = fl_add_input(FL_NORMAL_INPUT, 140, 10, 240, 30, idex(_("Roman Font|#R")));fl_set_button_shortcut(obj, scex(_("Roman Font|#R")), 1);
+  fdui->input_roman = obj = fl_add_input(FL_NORMAL_INPUT, 140, 10, 240, 30, idex(_("Roman font|#R")));fl_set_button_shortcut(obj, scex(_("Roman font|#R")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
     fl_set_object_resize(obj, FL_RESIZE_X);
-  fdui->input_sans = obj = fl_add_input(FL_NORMAL_INPUT, 140, 40, 240, 30, idex(_("Sans Serif Font|#S")));fl_set_button_shortcut(obj, scex(_("Sans Serif Font|#S")), 1);
+  fdui->input_sans = obj = fl_add_input(FL_NORMAL_INPUT, 140, 40, 240, 30, idex(_("Sans serif font|#S")));fl_set_button_shortcut(obj, scex(_("Sans serif font|#S")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
     fl_set_object_resize(obj, FL_RESIZE_X);
-  fdui->input_typewriter = obj = fl_add_input(FL_NORMAL_INPUT, 140, 70, 240, 30, idex(_("Typewriter Font|#T")));fl_set_button_shortcut(obj, scex(_("Typewriter Font|#T")), 1);
+  fdui->input_typewriter = obj = fl_add_input(FL_NORMAL_INPUT, 140, 70, 240, 30, idex(_("Typewriter font|#T")));fl_set_button_shortcut(obj, scex(_("Typewriter font|#T")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
     fl_set_object_resize(obj, FL_RESIZE_X);
-  fdui->input_font_norm = obj = fl_add_input(FL_NORMAL_INPUT, 140, 100, 240, 30, idex(_("Font Norm|#N")));fl_set_button_shortcut(obj, scex(_("Font Norm|#N")), 1);
+  fdui->input_font_norm = obj = fl_add_input(FL_NORMAL_INPUT, 140, 100, 240, 30, idex(_("Font norm|#N")));fl_set_button_shortcut(obj, scex(_("Font norm|#N")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
     fl_set_object_resize(obj, FL_RESIZE_X);
-  fdui->intinput_size = obj = fl_add_input(FL_INT_INPUT, 140, 140, 50, 30, idex(_("Font Zoom|#Z")));fl_set_button_shortcut(obj, scex(_("Font Zoom|#Z")), 1);
+  fdui->intinput_size = obj = fl_add_input(FL_INT_INPUT, 140, 140, 50, 30, idex(_("Font zoom|#Z")));fl_set_button_shortcut(obj, scex(_("Font zoom|#Z")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NoGravity);
     fl_set_object_resize(obj, FL_RESIZE_X);
@@ -160,15 +160,15 @@ FD_form_ref *create_form_form_ref(void)
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, RefHideCB, 0);
-  fdui->ref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 60, 160, 30, idex(_("Insert Reference|#I^M")));fl_set_button_shortcut(obj, scex(_("Insert Reference|#I^M")), 1);
+  fdui->ref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 60, 160, 30, idex(_("Insert reference|#I^M")));fl_set_button_shortcut(obj, scex(_("Insert reference|#I^M")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, RefSelectCB, 0);
-  fdui->pageref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 100, 160, 30, idex(_("Insert Page Number|#P")));fl_set_button_shortcut(obj, scex(_("Insert Page Number|#P")), 1);
+  fdui->pageref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 100, 160, 30, idex(_("Insert page number|#P")));fl_set_button_shortcut(obj, scex(_("Insert page number|#P")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, RefSelectCB, 1);
-  fdui->gotoref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 280, 160, 30, idex(_("Go to Reference|#G")));fl_set_button_shortcut(obj, scex(_("Go to Reference|#G")), 1);
+  fdui->gotoref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 280, 160, 30, idex(_("Go to reference|#G")));fl_set_button_shortcut(obj, scex(_("Go to reference|#G")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, RefSelectCB, 5);
@@ -179,25 +179,82 @@ FD_form_ref *create_form_form_ref(void)
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, RefUpdateCB, 0);
     fl_set_button(obj, 1);
-  fdui->vref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 140, 160, 30, idex(_("Insert vReference|#V")));fl_set_button_shortcut(obj, scex(_("Insert vReference|#V")), 1);
+  fdui->vref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 140, 160, 30, idex(_("Insert text reference|#V")));fl_set_button_shortcut(obj, scex(_("Insert text reference|#V")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, RefSelectCB, 2);
-  fdui->vpageref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 180, 160, 30, idex(_("Insert vPage Number|#N")));fl_set_button_shortcut(obj, scex(_("Insert vPage Number|#N")), 1);
+  fdui->vpageref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 180, 160, 30, idex(_("Insert text page number|#N")));fl_set_button_shortcut(obj, scex(_("Insert text page number|#N")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, RefSelectCB, 3);
-  fdui->prettyref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 220, 160, 30, idex(_("Insert Pretty Ref|#T")));fl_set_button_shortcut(obj, scex(_("Insert Pretty Ref|#T")), 1);
+  fdui->prettyref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 220, 160, 30, idex(_("Insert pretty reference|#T")));fl_set_button_shortcut(obj, scex(_("Insert pretty reference|#T")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
     fl_set_object_callback(obj, RefSelectCB, 4);
-  fdui->back = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 320, 160, 30, idex(_("Go Back|#B")));fl_set_button_shortcut(obj,scex(_("Go Back|#B")), 1);
-    fl_set_object_lsize(obj,FL_NORMAL_SIZE);
+  fdui->back = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 320, 160, 30, idex(_("Go back|#B")));fl_set_button_shortcut(obj, scex(_("Go back|#B")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj,RefSelectCB, 6);
+    fl_set_object_callback(obj, RefSelectCB, 6);
   fl_end_form();
 
   //fdui->form_ref->fdui = fdui;
+
+  return fdui;
+}
+/*---------------------------------------*/
+
+FD_form_external *create_form_form_external(void)
+{
+  FL_OBJECT *obj;
+  FD_form_external *fdui = (FD_form_external *) fl_calloc(1, sizeof(FD_form_external));
+
+  fdui->form_external = fl_bgn_form(FL_NO_BOX, 560, 310);
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 560, 310, "");
+  fdui->templatechoice = obj = fl_add_choice(FL_NORMAL_CHOICE, 130, 10, 300, 30, idex(_("Template|#t")));fl_set_button_shortcut(obj, scex(_("Template|#t")), 1);
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
+    fl_set_object_callback(obj, ExternalTemplateCB, 0);
+  fdui->filename = obj = fl_add_input(FL_NORMAL_INPUT, 130, 190, 190, 30, idex(_("File|#F")));fl_set_button_shortcut(obj, scex(_("File|#F")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_gravity(obj, FL_SouthWest, FL_SouthEast);
+  fdui->filenamebrowse = obj = fl_add_button(FL_NORMAL_BUTTON, 330, 190, 100, 30, idex(_("Browse...|#B")));fl_set_button_shortcut(obj, scex(_("Browse...|#B")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
+    fl_set_object_callback(obj, ExternalBrowseCB, 0);
+  fdui->parameters = obj = fl_add_input(FL_NORMAL_INPUT, 130, 230, 300, 30, idex(_("Parameters|#P")));fl_set_button_shortcut(obj, scex(_("Parameters|#P")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_gravity(obj, FL_SouthWest, FL_SouthEast);
+  fdui->edit = obj = fl_add_button(FL_NORMAL_BUTTON, 435, 50, 110, 30, idex(_("Edit file|#E")));fl_set_button_shortcut(obj, scex(_("Edit file|#E")), 1);
+    fl_set_object_color(obj, FL_COL1, FL_BLACK);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
+    fl_set_object_callback(obj, ExternalEditCB, 0);
+  fdui->view = obj = fl_add_button(FL_NORMAL_BUTTON, 435, 90, 110, 30, idex(_("View result|#V")));fl_set_button_shortcut(obj, scex(_("View result|#V")), 1);
+    fl_set_object_color(obj, FL_COL1, FL_BLACK);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
+    fl_set_object_callback(obj, ExternalViewCB, 0);
+  fdui->update = obj = fl_add_button(FL_NORMAL_BUTTON, 435, 130, 110, 30, idex(_("Update result|#U")));fl_set_button_shortcut(obj, scex(_("Update result|#U")), 1);
+    fl_set_object_color(obj, FL_COL1, FL_BLACK);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
+    fl_set_object_callback(obj, ExternalUpdateCB, 0);
+  fdui->ok = obj = fl_add_button(FL_RETURN_BUTTON, 315, 270, 110, 30, _("OK"));
+    fl_set_object_color(obj, FL_COL1, FL_BLACK);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
+    fl_set_object_callback(obj, ExternalOKCB, 0);
+  fdui->cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 435, 270, 110, 30, idex(_("Cancel|#C^[")));fl_set_button_shortcut(obj, scex(_("Cancel|#C^[")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
+    fl_set_object_callback(obj, ExternalCancelCB, 0);
+  fdui->helptext = obj = fl_add_browser(FL_NORMAL_BROWSER, 130, 50, 300, 130, "");
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
+    fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
+  fl_end_form();
+
+  //fdui->form_external->fdui = fdui;
 
   return fdui;
 }

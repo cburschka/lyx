@@ -38,7 +38,7 @@ struct BufferView::Pimpl {
 	///
 	void update();
 	///
-	void update(signed char f);
+	void update(BufferView::UpdateCodes);
 	///
 	void gotoError();
   	/// Update pixmap of screen
@@ -49,10 +49,6 @@ struct BufferView::Pimpl {
 	void updateScrollbar();
 	///
 	void scrollCB(double value);
-#if 0
-	///
-	void create_view();
-#endif
 	///
 	Inset * checkInsetHit(int & x, int & y, unsigned int button);
 	/// 
@@ -131,18 +127,14 @@ struct BufferView::Pimpl {
 	bool work_area_focus;
 	///
 	FL_OBJECT * figinset_canvas;
-#if 0
 	///
-	FL_OBJECT * timer_cursor;
-#else
 	Timeout cursor_timeout;
-#endif
         ///
         BackStack backstack;
 	///
 	int last_click_x, last_click_y;
 	///
-	WorkArea * workarea;
+	WorkArea * workarea_;
 	///
 	UpdateInset updatelist;
 	///

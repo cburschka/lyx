@@ -82,17 +82,17 @@ public:
 	///
 	LyXFont ConvertFont(LyXFont font);
 	///
-	void Write(std::ostream &) const;
+	void Write(Buffer const *, std::ostream &) const;
 	///
-	void Read(LyXLex & lex);
+	void Read(Buffer const *, LyXLex & lex);
 	///
-	int Latex(std::ostream &, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
 	///
-	int Ascii(std::ostream &) const;
+	int Ascii(Buffer const *, std::ostream &) const;
 	///
-	int Linuxdoc(std::ostream &) const;
+	int Linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int DocBook(std::ostream &) const;
+	int DocBook(Buffer const *, std::ostream &) const;
 	///
 	void Validate(LaTeXFeatures &) const;
 	///

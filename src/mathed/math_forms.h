@@ -1,20 +1,19 @@
-/** Header file generated with fdesign on Mon Apr 12 19:09:42 1999.**/
+/** Header file generated with fdesign on Mon Jun 12 06:32:31 2000.**/
 
 #ifndef FD_panel_h_
 #define FD_panel_h_
 
 /** Callbacks, globals and object handlers **/
-extern "C" {
-extern void button_cb(FL_OBJECT *, long);
+extern "C" void button_cb(FL_OBJECT *, long);
 
-extern void delim_cb(FL_OBJECT *, long);
+extern "C" void delim_cb(FL_OBJECT *, long);
 
-extern void matrix_cb(FL_OBJECT *, long);
+extern "C" void matrix_cb(FL_OBJECT *, long);
 
-extern void deco_cb(FL_OBJECT *, long);
+extern "C" void deco_cb(FL_OBJECT *, long);
 
-extern void space_cb(FL_OBJECT *, long);
-}
+extern "C" void space_cb(FL_OBJECT *, long);
+
 
 /**** Forms and Objects ****/
 typedef struct {

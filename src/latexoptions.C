@@ -6,7 +6,7 @@
 /* Form definition file generated with fdesign. */
 
 #include FORMS_H_LOCATION
-#include <stdlib.h>
+#include <cstdlib>
 #include "latexoptions.h"
 
 FD_LaTeXOptions *create_form_LaTeXOptions(void)

@@ -18,6 +18,7 @@
 #include "BufferView.h"
 #include "BufferView_pimpl.h"
 #include "lyxtext.h"
+#include "WorkArea.h"
 
 
 BufferView::BufferView(LyXView * o, int xpos, int ypos,
@@ -120,15 +121,6 @@ void BufferView::gotoError()
 	pimpl_->gotoError();
 }
 
-
-#if 0
-extern "C" {
-	void C_BufferView_CursorToggleCB(FL_OBJECT * ob, long buf)
-	{
-		BufferView::cursorToggleCB(ob, buf);
-	}
-}
-#endif
 
 void BufferView::enterView()
 {
@@ -236,7 +228,7 @@ bool BufferView::NoSavedPositions()
 }
 
 
-void BufferView::update(signed char f)
+void BufferView::update(UpdateCodes f)
 {
 	pimpl_->update(f);
 }
@@ -284,9 +276,9 @@ bool BufferView::active() const
 }
 
 
-unsigned short BufferView::paperWidth() const
+int BufferView::workWidth() const
 {
-    return text->paperWidth();
+    return pimpl_->workarea_->workWidth();
 }
 
 
@@ -335,4 +327,12 @@ void BufferView::pasteClipboard(bool asPara)
 void BufferView::stuffClipboard(string const & stuff) const
 {
 	pimpl_->stuffClipboard(stuff);
+}
+
+
+BufferView::UpdateCodes operator|(BufferView::UpdateCodes uc1,
+				  BufferView::UpdateCodes uc2)
+{
+	return static_cast<BufferView::UpdateCodes>
+		(static_cast<int>(uc1) | static_cast<int>(uc2));
 }

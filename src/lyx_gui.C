@@ -15,9 +15,13 @@
 #pragma implementation
 #endif
 
+#ifdef KDEGUI
+#    include <kapp.h>
+#endif
+
 #include <fcntl.h>
-#include FORMS_H_LOCATION
 #include "lyx_gui.h"
+#include FORMS_H_LOCATION
 #include "combox.h"
 #include "lyx.h"
 #include "form1.h"
@@ -58,7 +62,6 @@ FD_form_table_extra * fd_form_table_extra;
 FD_form_quotes * fd_form_quotes;
 FD_form_preamble * fd_form_preamble;
 FD_form_table * fd_form_table;
-FD_form_print * fd_form_print;
 FD_form_sendto * fd_form_sendto;
 FD_form_figure * fd_form_figure;
 FD_form_screen * fd_form_screen;
@@ -239,10 +242,6 @@ void LyXGUI::init()
         // all lyxrc settings has to be done here as lyxrc has not yet
         // been read when the GUI is created (Jug)
 
-	// the print form
-	fl_set_input(fd_form_print->input_printer, 
-		     lyxrc.printer.c_str());	
-        
 	// the sendto form
         if (!lyxrc.custom_export_command.empty())
                 fl_set_input(fd_form_sendto->input_cmd,
@@ -344,6 +343,7 @@ void LyXGUI::create_forms()
 			    FL_RETURN_ALWAYS);
 	fl_set_input_return(fd_form_paragraph_extra->input_pextra_widthp,
 			    FL_RETURN_ALWAYS);
+	lyxerr[Debug::INIT] << "Initializing form_paragraph...done" << endl;
 
 	// the character form
 	fd_form_character = create_form_form_character();
@@ -368,12 +368,14 @@ void LyXGUI::create_forms()
 	fl_set_form_minsize(fd_form_character->form_character,
 			    fd_form_character->form_character->w,
 			    fd_form_character->form_character->h);
+	lyxerr[Debug::INIT] << "Initializing form_character::combox..." << endl;
 	fl_addto_form(fd_form_character->form_character);
 	combo_language2 = new Combox(FL_COMBOX_DROPLIST);
 	FL_OBJECT * ob = fd_form_character->choice_language;
 	combo_language2->add(ob->x, ob->y, ob->w, ob->h, 250);
 	combo_language2->shortcut("#L", 1);
 	fl_end_form();
+	lyxerr[Debug::INIT] << "Initializing form_character...done" << endl;
 
 	// the document form
 	fd_form_document = create_form_form_document();
@@ -430,6 +432,7 @@ void LyXGUI::create_forms()
 	fl_set_form_minsize(fd_form_document->form_document,
 			    fd_form_document->form_document->w,
 			    fd_form_document->form_document->h);
+	lyxerr[Debug::INIT] << "Initializing form_document...done" << endl;
 
         // the paper form
 	fd_form_paper = create_form_form_paper();
@@ -461,6 +464,7 @@ void LyXGUI::create_forms()
 			    FL_RETURN_ALWAYS);
 	fl_set_input_return(fd_form_paper->input_foot_skip,
 			    FL_RETURN_ALWAYS);
+	lyxerr[Debug::INIT] << "Initializing form_paper...done" << endl;
 
         // the table_options form
 	fd_form_table_options = create_form_form_table_options();
@@ -477,6 +481,7 @@ void LyXGUI::create_forms()
 			    FL_RETURN_ALWAYS);
 	fl_set_input_return(fd_form_table_extra->input_special_multialign,
 			    FL_RETURN_ALWAYS);
+	lyxerr[Debug::INIT] << "Initializing form_table_extra...done" << endl;
 
 	// the quotes form
 	fd_form_quotes = create_form_form_quotes();
@@ -501,17 +506,7 @@ void LyXGUI::create_forms()
 	fl_set_slider_value(fd_form_table->slider_columns, 5);
 	fl_set_slider_precision(fd_form_table->slider_rows, 0);
 	fl_set_slider_precision(fd_form_table->slider_columns, 0);
-
-	// the print form
-	fd_form_print = create_form_form_print();
-	fl_set_form_atclose(fd_form_print->form_print, CancelCloseBoxCB, 0);
-       	fl_set_button(fd_form_print->radio_printer, 1);
-	fl_set_button(fd_form_print->radio_file, 0);
-	fl_set_button(fd_form_print->radio_order_normal, 1);
-	fl_set_button(fd_form_print->radio_order_reverse, 0);
-	fl_set_button(fd_form_print->radio_all_pages, 1);
-	fl_set_button(fd_form_print->radio_odd_pages, 0);
-	fl_set_button(fd_form_print->radio_even_pages, 0);
+	lyxerr[Debug::INIT] << "Initializing form_table...done" << endl;
 
 	// the sendto form
 	fd_form_sendto = create_form_form_sendto();
@@ -592,6 +587,9 @@ void LyXGUI::runTime()
 	XEvent ev;
 
 	while (!finished) {
+#ifdef KDEGUI
+		kapp->processEvents();
+#endif
 		if (fl_check_forms() == FL_EVENT) {
 			lyxerr << "LyX: This shouldn't happen..." << endl;
 			fl_XNextEvent(&ev);

@@ -30,7 +30,7 @@ class Painter;
 class InsetERT : public InsetCollapsable {
 public:
     ///
-    InsetERT(Buffer *);
+    InsetERT();
     ///
     ~InsetERT() {}
     ///

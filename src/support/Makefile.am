@@ -1,7 +1,9 @@
 AUTOMAKE_OPTIONS = foreign
+DISTCLEANFILES= *.orig *.rej *~ *.bak core
+MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libsupport.la
 LIBS =
-ETAGS_ARGS = --c++
+ETAGS_ARGS = --lang=c++
 INCLUDES = -I${srcdir}/../
 
 EXTRA_DIST = lyxstring.C lyxstring.h regex.c lyxregex.h
@@ -18,6 +20,7 @@ libsupport_la_SOURCES = \
 	DebugStream.h \
 	FileInfo.C \
 	FileInfo.h \
+	LAssert.C \
 	LAssert.h \
 	LIstream.h \
 	LOstream.h \
@@ -36,6 +39,7 @@ libsupport_la_SOURCES = \
 	kill.C \
 	lstrings.C \
 	lstrings.h \
+	lxtl.h \
 	lyxalgo.h \
 	lyxlib.h \
 	lyxmanip.h \

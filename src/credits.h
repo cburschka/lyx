@@ -3,6 +3,5 @@
 #define CREDITS_H
 
 void ShowCredits();
-void ShowCopyright();
 
 #endif

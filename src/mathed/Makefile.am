@@ -1,8 +1,9 @@
 AUTOMAKE_OPTIONS = foreign 1.4
-MAINTAINERCLEANFILES = Makefile.in
+DISTCLEANFILES= *.orig *.rej *~ *.bak core
+MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libmathed.la
 LIBS=
-ETAGS_ARGS = --c++
+ETAGS_ARGS = --lang=c++
 INCLUDES = -I${top_srcdir}/images -I${srcdir}/../ 
 
 libmathed_la_SOURCES = array.h \

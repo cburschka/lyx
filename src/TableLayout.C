@@ -434,14 +434,14 @@ void TableOptionsCB(FL_OBJECT * ob, long l)
         current_view->hideCursor();
         if (!current_view->text->selection){
             current_view->beforeChange();
-            current_view->update(-2);
+            current_view->update(BufferView::SELECT|BufferView::FITCUR);
         }
         if ((num == LyXTable::SET_SPECIAL_COLUMN) ||
             (num == LyXTable::SET_SPECIAL_MULTI))
-            current_view->text->TableFeatures(num, special);
+            current_view->text->TableFeatures(current_view, num, special);
         else
-            current_view->text->TableFeatures(num);
-        current_view->update(1);
+            current_view->text->TableFeatures(current_view, num);
+        current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
     }
     if (num == LyXTable::DELETE_TABLE) {
 	fl_set_focus_object(fd_form_table_options->form_table_options,
@@ -490,10 +490,10 @@ void SetPWidthCB(FL_OBJECT * ob, long l)
             current_view->hideCursor();
             if (!current_view->text->selection) {
                 current_view->beforeChange(); 
-                current_view->update(-2);
+                current_view->update(BufferView::SELECT|BufferView::FITCUR);
             }
-            current_view->text->TableFeatures(LyXTable::SET_PWIDTH, str);
-            current_view->update(1);
+            current_view->text->TableFeatures(current_view, LyXTable::SET_PWIDTH, str);
+            current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
         }
         MenuLayoutTable(0); // update for alignment
     }

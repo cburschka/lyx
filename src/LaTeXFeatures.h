@@ -44,6 +44,12 @@ struct LaTeXFeatures {
 	///
 	void showStruct();
 
+	/// Provide a string name-space to the requirements
+	void require(string const & name);
+
+	/// Static preamble bits from the external material insets
+	string externalPreambles;
+
 	//@Man: Packages
 	//@{
 	///
@@ -83,6 +89,8 @@ struct LaTeXFeatures {
 	bool varioref;  // varioref.sty
 	///
 	bool prettyref; // prettyref.sty
+	///
+	bool chess;	// chess.sty
 	//@}
 
 	

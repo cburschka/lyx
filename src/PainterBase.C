@@ -34,6 +34,12 @@ int PainterBase::paperWidth() const
 }
 
 
+int PainterBase::paperHeight() const
+{
+	return owner.height();
+}
+
+
 PainterBase & PainterBase::circle(int x, int y, unsigned int d,
 				  LColor::color col)
 {

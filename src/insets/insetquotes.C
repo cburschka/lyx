@@ -207,7 +207,7 @@ void InsetQuotes::draw(Painter & pain, LyXFont const & font,
 }
 
 
-void InsetQuotes::Write(ostream & os) const
+void InsetQuotes::Write(Buffer const *, ostream & os) const
 {
 	string text;
 	text += language_char[language];
@@ -217,14 +217,14 @@ void InsetQuotes::Write(ostream & os) const
 }
 
 
-void InsetQuotes::Read(LyXLex & lex)
+void InsetQuotes::Read(Buffer const *, LyXLex & lex)
 {
 	lex.nextToken();
 	ParseString(lex.GetString());
 }
 
 
-int InsetQuotes::Latex(ostream & os, bool /*fragile*/, bool) const
+int InsetQuotes::Latex(Buffer const *, ostream & os, bool /*fragile*/, bool) const
 {
 	string doclang = 
 		current_view->buffer()->GetLanguage();
@@ -244,42 +244,32 @@ int InsetQuotes::Latex(ostream & os, bool /*fragile*/, bool) const
 			qstr = "\\og{}";
 		else 
 			qstr = " \\fg{}";
-	} 
-	else 
+	} else 
 		qstr = latex_quote_babel[times][quoteind];
 
-	// protect against !` and ?` ligatures.
-	// Is it very bad of us to always protect against those ligatures?
-	// CHECK
-#if 0
-	if ((suffixIs(file, '?') || suffixIs(file, '!'))
-	    && qstr[0] == '`')
-		qstr = "{}" + qstr;
-#else
 	// Always guard against unfortunate ligatures (!` ?`)
 	qstr.insert(0, "{}");
-#endif
 
 	os << qstr;
 	return 0;
 }
 
 
-int InsetQuotes::Ascii(ostream & os) const
+int InsetQuotes::Ascii(Buffer const *, ostream & os) const
 {
 	os << "\"";
 	return 0;
 }
 
 
-int InsetQuotes::Linuxdoc(ostream & os) const
+int InsetQuotes::Linuxdoc(Buffer const *, ostream & os) const
 {
 	os << "\"";
 	return 0;
 }
 
 
-int InsetQuotes::DocBook(ostream & os) const
+int InsetQuotes::DocBook(Buffer const *, ostream & os) const
 {
 	if(times == InsetQuotes::DoubleQ) {
 		if (side == InsetQuotes::LeftQ)

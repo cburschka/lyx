@@ -99,13 +99,13 @@ void InsetInfo::draw(Painter & pain, LyXFont const & f,
 }
 
 
-void InsetInfo::Write(ostream & os) const
+void InsetInfo::Write(Buffer const *, ostream & os) const
 {
 	os << "Info " << contents;
 }
 
 
-void InsetInfo::Read(LyXLex & lex)
+void InsetInfo::Read(Buffer const *, LyXLex & lex)
 {
 	string tmp = lex.GetString(); // should be "Info"
 	if (tmp != "Info")
@@ -132,26 +132,26 @@ void InsetInfo::Read(LyXLex & lex)
 }
       
 
-int InsetInfo::Latex(ostream &,
+int InsetInfo::Latex(Buffer const *, ostream &,
 		     bool /*fragile*/, bool /*free_spc*/) const
 {
 	return 0;
 }
 
 
-int InsetInfo::Ascii(ostream &) const
+int InsetInfo::Ascii(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetInfo::Linuxdoc(ostream &) const
+int InsetInfo::Linuxdoc(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetInfo::DocBook(ostream &) const
+int InsetInfo::DocBook(Buffer const *, ostream &) const
 {
 	return 0;
 }

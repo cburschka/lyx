@@ -1,13 +1,16 @@
 AUTOMAKE_OPTIONS = foreign
-SUBDIRS = mathed insets support
-DISTCLEANFILES = libintl.h config.h
-MAINTAINERCLEANFILES = Makefile.in config.h.in
+SUBDIRS = mathed insets support frontends
+DISTCLEANFILES= *.orig *.rej *~ *.bak core libintl.h config.h
+MAINTAINERCLEANFILES = $(srcdir)/Makefile.in $(srcdir)/config.h.in
 bin_PROGRAMS = lyx
-lyx_DEPENDENCIES = mathed/libmathed.la insets/libinsets.la support/libsupport.la
-lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS)
+lyx_DEPENDENCIES = mathed/libmathed.la insets/libinsets.la \
+	support/libsupport.la @FRONTEND_GUILIB@ frontends/libfrontends.la \
+	@INCLUDED_SIGC@
+lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS) $(SIGC_LIBS) \
+	@FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 EXTRA_DIST = config.h.in stamp-h.in cheaders
-ETAGS_ARGS = --c++
-INCLUDES = -I${top_srcdir}/images
+ETAGS_ARGS = --lang=c++
+INCLUDES = -I${top_srcdir}/images $(SIGC_CFLAGS) @FRONTEND_INCLUDES@
 localedir = $(datadir)/locale
 lyx_SOURCES = \
 	BackStack.h \
@@ -56,6 +59,7 @@ lyx_SOURCES = \
 	PainterBase.h \
 	PaperLayout.C \
 	ParagraphExtra.C \
+	PrinterParams.h \
 	Spacing.C \
 	Spacing.h \
 	TableLayout.C \

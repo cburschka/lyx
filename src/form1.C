@@ -193,11 +193,11 @@ FD_Figure *create_form_Figure(void)
   fdui->in1 = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 110, 80, 30, idex(_("inches|#n")));fl_set_button_shortcut(obj, scex(_("inches|#n")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, GraphicsCB, 12);
-    // xgettext:no-c-format
+  // xgettext:no-c-format
   fdui->page1 = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 130, 110, 30, idex(_("% of Page|#P")));fl_set_button_shortcut(obj, scex(_("% of Page|#P")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, GraphicsCB, 13);
-    // xgettext:no-c-format
+  // xgettext:no-c-format
   fdui->column1 = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 150, 110, 30, idex(_("% of Column|#o")));fl_set_button_shortcut(obj, scex(_("% of Column|#o")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, GraphicsCB, 14);
@@ -323,11 +323,11 @@ FD_form_search *create_form_form_search(void)
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 200, 80, 90, 30, idex(_("@>|#F")));fl_set_button_shortcut(obj, scex(_("@>|#F")), 1);
+  obj = fl_add_button(FL_NORMAL_BUTTON, 200, 80, 90, 30, idex(_("@>|#F^s")));fl_set_button_shortcut(obj, scex(_("@>|#F^s")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, SearchForwardCB, 0);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 110, 80, 90, 30, idex(_("@<|#B")));fl_set_button_shortcut(obj, scex(_("@<|#B")), 1);
+  obj = fl_add_button(FL_NORMAL_BUTTON, 110, 80, 90, 30, idex(_("@<|#B^r")));fl_set_button_shortcut(obj, scex(_("@<|#B^r")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, SearchBackwardCB, 0);

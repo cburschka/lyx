@@ -141,7 +141,7 @@ void UpdatableInset::Edit(BufferView * bv, int, int, unsigned int)
 
     scx = 0;
 
-    mx_scx = abs((width(bv->painter(), font) - bv->paperWidth()) / 2);
+    mx_scx = abs((width(bv->painter(), font) - bv->workWidth()) / 2);
 }
 
 

@@ -38,8 +38,6 @@ class LyXRC;
 class TeXErrors;
 class LaTeXFeatures;
 
-extern void updateAllVisibleBufferRelatedPopups();
-
 ///
 struct DEPCLEAN {
 	///
@@ -158,7 +156,7 @@ public:
 	// if endpar == 0 then to the end
 	//
 	void latexParagraphs(std::ostream & os, LyXParagraph *par,
-			     LyXParagraph *endpar, TexRow & texrow);
+			     LyXParagraph *endpar, TexRow & texrow) const;
 
 	///
 	int runLaTeX();

@@ -31,6 +31,8 @@ enum kb_action {
 	LFUN_PREVIEW,
 	LFUN_PREVIEWPS,
 	LFUN_CLOSEBUFFER,
+	LFUN_BUFFER_PRINT,		// ARRae 20000313
+	LFUN_PRINTER_PARAMS_GET,	// ARRae 20000313
 	LFUN_QUIT,
 	LFUN_AUTOSAVE,
 	LFUN_UNDO,
@@ -239,6 +241,7 @@ enum kb_action {
 	LFUN_MENU_SEPARATOR,            // Asger 990220
 	LFUN_SEQUENCE,                  // Andre' 991111
 	LFUN_SAVEPREFERENCES,           // Lgb 991127
+	LFUN_HELP_COPYRIGHT,		// ARRae 20000129
 	LFUN_DATE_INSERT,		// jdblair 20000131
 	LFUN_LANGUAGE,                  // Dekel 20000203
 	LFUN_INSET_TEXT,		// Jug 20000214
@@ -250,6 +253,7 @@ enum kb_action {
 	LFUN_LOFVIEW,			// Dekel 20000519	
 	LFUN_LOTVIEW,			// Dekel 20000519
 	LFUN_LOAVIEW,			// Dekel 20000519
+	LFUN_INSET_EXTERNAL,		// Alstrup 20000609
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

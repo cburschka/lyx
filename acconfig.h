@@ -40,6 +40,9 @@
   e.g. <xpm.h> */
 #undef XPM_H_LOCATION
 
+/* here are the defines for what Toolkit to use (default is XForms) */
+#undef KDEGUI
+
 @BOTTOM@ 
 
 /************************************************************ 

@@ -34,90 +34,8 @@ InsetCommand::InsetCommand(string const & cmd, string const & arg,
 }
 
 
-int InsetCommand::ascent(Painter & pain, LyXFont const &) const
-{
-	LyXFont font(LyXFont::ALL_SANE);
-	font.decSize();
-	
-	int width, ascent, descent;
-        string s = getScreenLabel();
-	
-        if (Editable()) {
-		pain.buttonText(0, 0, s, font,
-				false, width, ascent, descent);
-	} else {
-		pain.rectText(0, 0, s, font,
-			      LColor::commandbg, LColor::commandframe,
-			      false, width, ascent, descent);
-	}
-	return ascent;
-}
-
-
-int InsetCommand::descent(Painter & pain, LyXFont const &) const
-{
-	LyXFont font(LyXFont::ALL_SANE);
-	font.decSize();
-	
-	int width, ascent, descent;
-        string s = getScreenLabel();
-	
-        if (Editable()) {
-		pain.buttonText(0, 0, s, font,
-				false, width, ascent, descent);
-	} else {
-		pain.rectText(0, 0, s, font,
-			      LColor::commandbg, LColor::commandframe,
-			      false, width, ascent, descent);
-	}
-	return descent;
-}
-
-
-int InsetCommand::width(Painter & pain, LyXFont const &) const
-{
-	LyXFont font(LyXFont::ALL_SANE);
-	font.decSize();
-	
-	int width, ascent, descent;
-        string s = getScreenLabel();
-	
-        if (Editable()) {
-		pain.buttonText(0, 0, s, font,
-				false, width, ascent, descent);
-	} else {
-		pain.rectText(0, 0, s, font,
-			      LColor::commandbg, LColor::commandframe,
-			      false, width, ascent, descent);
-	}
-	return width + 4;
-}
-
-
-void InsetCommand::draw(Painter & pain, LyXFont const &,
-			int baseline, float & x) const
-{
-	// Draw it as a box with the LaTeX text
-	LyXFont font(LyXFont::ALL_SANE);
-	font.setColor(LColor::command).decSize();
-
-	int width;
-	string s = getScreenLabel();
-
-	if (Editable()) {
-		pain.buttonText(int(x)+2, baseline, s, font, true, width);
-	} else {
-		pain.rectText(int(x)+2, baseline, s, font,
-			      LColor::commandbg, LColor::commandframe,
-			      true, width);
-	}
-
-	x += width + 4;
-}
-
-
 // In lyxf3 this will be just LaTeX
-void InsetCommand::Write(ostream & os) const
+void InsetCommand::Write(Buffer const *, ostream & os) const
 {
 	os << "LatexCommand " << getCommand() << "\n";
 }
@@ -187,7 +105,7 @@ void InsetCommand::scanCommand(string const & cmd)
 
 
 // This function will not be necessary when lyx3
-void InsetCommand::Read(LyXLex & lex)
+void InsetCommand::Read(Buffer const *, LyXLex & lex)
 {    
 	if (lex.EatLine()) {
 		string t = lex.GetString();
@@ -197,26 +115,26 @@ void InsetCommand::Read(LyXLex & lex)
 }
 
 
-int InsetCommand::Latex(ostream & os, bool /*fragile*/, bool/*fs*/) const
+int InsetCommand::Latex(Buffer const *, ostream & os, bool /*fragile*/, bool/*fs*/) const
 {
 	os << getCommand();
 	return 0;
 }
 
 
-int InsetCommand::Ascii(ostream &) const
+int InsetCommand::Ascii(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetCommand::Linuxdoc(ostream &) const
+int InsetCommand::Linuxdoc(Buffer const *, ostream &) const
 {
 	return 0;
 }
 
 
-int InsetCommand::DocBook(ostream &) const
+int InsetCommand::DocBook(Buffer const *, ostream &) const
 {
 	return 0;
 }

@@ -11,6 +11,9 @@
 #include <config.h>
 #include <iostream>
 
+#ifdef KDEGUI
+#    include <kapp.h>
+#endif
 #include FORMS_H_LOCATION
 
 #include "lyx_main.h"
@@ -57,7 +60,11 @@ int main(int argc, char * argv[])
 			"in continuing executing LyX!" << endl;
 		return 1;
 	}
-	
+
+#ifdef KDEGUI
+	KApplication a( argc, argv );
+#endif
+
 	// lyx_localedir is used by gettext_init() is we have
 	//   i18n support built-in
 	string lyx_localedir = GetEnvPath("LYX_LOCALEDIR");

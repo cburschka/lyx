@@ -67,7 +67,7 @@ void LyXAction::init()
 	// instead of calling newFunc numerous times because of compilation
 	// times. Since the array is not static we get back the memory it
 	// occupies after the init is completed. It compiles several
-	//magnitudes faster.
+	// magnitudes faster.
 	
 	static bool init = false;
 	if (init) return;
@@ -128,6 +128,10 @@ void LyXAction::init()
 		  N_("Import document"), NoBuffer },
 		{ LFUN_BUFFERBULLETSSELECT, "buffer-itemize-bullets-select",
 		  "", Noop },
+		{ LFUN_BUFFER_PRINT, "buffer-print-xtl", N_("Print"),
+		  ReadOnly },
+		{ LFUN_PRINTER_PARAMS_GET, "printer-params-get",
+		  N_("Get the printer parameters"), ReadOnly },
 		{ LFUN_MENUNEW, "buffer-new", N_("New document") , NoBuffer },
 		{ LFUN_MENUNEWTMPLT,"buffer-new-template",
 		  N_("New document from template"), NoBuffer },
@@ -183,6 +187,8 @@ void LyXAction::init()
 		  N_("Remove all error boxes"), ReadOnly },
 		{ LFUN_INSET_ERT, "ert-inset-insert",
 		  N_("Insert a new ERT Inset"), Noop },
+		{ LFUN_INSET_EXTERNAL, "external-inset-insert",
+		  N_("Insert a new external inset"), Noop },
 		{ LFUN_FIGURE, "figure-insert", N_("Insert Figure"), Noop },
 		{ LFUN_INSERT_GRAPHICS, "graphics-insert",
 		  N_("Insert Graphics"), Noop },
@@ -216,6 +222,8 @@ void LyXAction::init()
 		  ReadOnly },
 		{ LFUN_HFILL, "hfill-insert",
 		  N_("Insert horizontal fill"), Noop },
+		{ LFUN_HELP_COPYRIGHT, "help-copyright",
+		  N_("Display copyright information"), NoBuffer },
 		{ LFUN_HTMLURL, "html-insert", "", Noop },
 		{ LFUN_HYPHENATION, "hyphenation-point-insert",
 		  N_("Insert hyphenation point"), Noop },

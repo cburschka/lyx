@@ -45,15 +45,16 @@ public:
 	///
 	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
 	///
-	void Read(LyXLex & lex);
+	void Read(Buffer const *, LyXLex & lex);
         ///
-	void Write(std::ostream & os) const;
+	void Write(Buffer const *, std::ostream & os) const;
 	///
-	int Latex(std::ostream & os, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream & os, bool fragile,
+		  bool free_spc) const;
 	///
-	int Linuxdoc(std::ostream &) const;
+	int Linuxdoc(Buffer const *, std::ostream & os) const;
 	///
-	int DocBook(std::ostream &) const;
+	int DocBook(Buffer const *, std::ostream &) const;
 	///
 	Inset * Clone() const;
 

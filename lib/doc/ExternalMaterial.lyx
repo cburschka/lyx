@@ -1,0 +1,556 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 2.16
+\textclass article
+\language default
+\inputencoding latin1
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Section
+
+The external material inset
+\layout Subsection
+
+Background
+\layout Standard
+
+One often requested feature from LyX users is to be able to interface LyX
+ with XFig, Dia, or other similar applications that specialize in producing
+ a certain kind of diagram, figure, schematic or whatever material might
+ be relevant to include in your document.
+ Previously, it was only possible to include boring, static, fixed images
+ in LyX documents with the figure inset, but there are several limitations
+ attached to this approach:
+\layout Itemize
+
+If you want to change the figure, you have to invoke an external program
+ by hand
+\layout Itemize
+
+LyX does not notice that the referenced files change, so the on-screen display
+ can fast become obsolete, and this is aggravated by the lack of a means
+ of updating the display
+\layout Itemize
+
+The figure inset only supports PostScript material
+\layout Itemize
+
+The figure inset does not provide any mechanisms for coping with different
+ exported formats such as DocBook, HTML or rawAscii
+\layout Standard
+
+The external material inset attempts to solve all of these problems
+\begin_float footnote 
+\layout Standard
+
+Even if the figure inset can't solve all problems, it is still valuable
+ because it does provide in-line preview of the figure, and supports advanced
+ geometric transformations with a comfortable user interface.
+\end_float 
+.
+ It does this by offering a general method to interface LyX to external
+ applications.
+ Instead of introducing a long list of different insets taylored for each
+ specific application, we chose to sacrify the in-line displaying of the
+ included material in order to provide a general construct to cover a wide
+ range of applications.
+ The result is the external inset.
+ An external inset presents itself in the document simply as a button, but
+ don't let this fool you.
+ When you click on it, a dialog will appear that allows you to chose exactly
+ what material to include, and in the following you will learn that this
+ is indeed a powerful mechanism that can solve all of the above problems,
+ and more.
+\layout Subsection
+
+How does it work?
+\layout Standard
+
+The external inset is based on the concept of a
+\emph on 
+ template
+\emph default 
+.
+ A template is a specification of how LyX should interface with a certain
+ kind of material.
+ As bundled, LyX comes with predefined templates for XFig figures, Dia diagrams,
+ various raster format images, gnuplot, and more.
+ You can check the actual list by using the 
+\family sans 
+Insert\SpecialChar \menuseparator
+Insert external material 
+\family default 
+command.
+ Furthermore, it is possible to roll your own template to support a specific
+ kind of material.
+ Later we'll describe in more detail what is involved, and hopefully you
+ will submit all the templates you create so we can include them in a later
+ LyX version.
+\layout Standard
+
+Another basic idea of the external inset is to distinguish between the original
+ file that serves as a base for final material and the produced file that
+ is included in your exported or printed document.
+ For example, consider the case of a figure produced with XFig.
+ The XFig application itself works on an original file with the 
+\family typewriter 
+.fig
+\family default 
+ extension.
+ Within XFig, you create and change your figure, and when you are done,
+ you save the 
+\family typewriter 
+fig
+\family default 
+-file.
+ When you want to include the figure in your document, you invoke 
+\family typewriter 
+transfig
+\family default 
+ in order to create a PostScript file that can readily be included in your
+ LaTeX file.
+ In this case, the 
+\family typewriter 
+.fig
+\family default 
+ file is the original file, and the PostScript file is the produced file.
+\layout Standard
+
+This distinction is important in order to allow updating of the material
+ while you are in the process of writing the document.
+ Furthermore, it provides us with the flexibility that is needed to support
+ multiple export formats.
+ For instance, in the case of an Ascii resulting file, it is not exactly
+ an award-winning idea to include the figure as raw PostScript.
+ Instead, you'd either prefer to just include a reference to the figure,
+ or try to invoke some graphics to Ascii converter to make the final result
+ look similar to the real graphics.
+ The external material inset allows you to do this, because it is parameterized
+ on the different export formats that LyX supports.
+\layout Standard
+
+Besides supporting the production of different products according to the
+ exported format, the external inset supports tight integration with editing
+ and viewing applications.
+ In the case of an XFig figure, you are able to invoke xfig on the original
+ file with a single click from within the external inset in LyX, and also
+ preview the produced PostScript file with ghostview with another click.
+ No more fiddling around with the command line and/or file browsers to locate
+ and manipulate the original or produced files.
+ In this way, you are finally able to take full advantage of the many different
+ applications that are relevant to use when you write your documents, and
+ ultimately be more productive.
+\layout Standard
+
+So, all in all, LyX has information about a number of different programs
+ to use behind the scenes in order to realize all of this machinery.
+ This information, in fact, is exactly what is contained in the templates.
+ To each template, there is associated a list of command lines that are
+ used to invoke applications, convert the original file to the produced
+ file, and more.
+ This mechanism allows the advanced user to extend the capabilities of LyX
+ without fiddling with the source code.
+ It requires some footwork to define all the different commands and flags,
+ but luckily, the LyX team did all the hard work and specified these for
+ you.
+\layout Standard
+
+But before the trees grow into the skies, we have to admit that we did take
+ one tiny short-cut.
+ Since the external inset can produce many different kinds of produced files
+ to go with each exported format, one could also expect that it would be
+ possible to preview each product.
+ But, the LyX team decides against this in order to keep the user interface
+ simple.
+ Instead of providing a button for each exported file format, we decided
+ to introduce the concept of the primary file format and just have one button.
+ When you press 
+\family sans 
+View result
+\family default 
+ in the external inset dialog, you will get a view of the produced file
+ in the primary file format.
+ And the primary file format is specified by your document class.
+ For most document classes, the primary file format is LaTeX, but for the
+ DocBook document classes, the primary file format is DocBook.
+ So, when you view the produced file, keep in mind that it will only be
+ a preview of what the main result will be.
+ If you want to see how other exported formats turn out, you have to export
+ them and preview them by hand.
+\layout Subsection
+
+The external material inset dialog
+\layout Standard
+
+You insert an external inset from the 
+\family sans 
+Insert
+\family default 
+ menu.
+ When you do this, a button is inserted into your document, and the external
+ material inset dialog is shown.
+ This dialog allows you to describe exactly what material should be included,
+ and also how it should be included.
+ Furthermore, it provides access to the external applications to either
+ view, edit or produce the material that is used in the resulting file.
+\layout Standard
+
+At the top of this dialog, there is a drop-down list where you can chose
+ which template the inset should use.
+ Just below the template drop-down, there's an text area with a short blurp
+ about the chosen template that should help you use it.
+ Most often, it will provide a short description of the template, and a
+ few hints on how to parameterize the use of it.
+ Further down, you'll find a filename input field along with a browse-button
+ that allows you to chose which file should be included, with the standard
+ file browser.
+ Thus this field specifies the original file.
+ Since the produced file is automatically generated when needed, there is
+ no need to give access to it in the user interface.
+\layout Standard
+
+At the bottom of the dialog, you'll find a general input box called 
+\family sans 
+Parameters
+\family default 
+.
+ This box is generally used to parameterize the specific template.
+ The specific use should be covered in the help blurp associated with the
+ template, but in general it typically allows you to define variations on
+ how the produced file should be generated.
+\layout Standard
+
+At the right side of the dialog, you'll find three buttons: 
+\family sans 
+Edit file
+\family default 
+, 
+\family sans 
+View result
+\family default 
+, and 
+\family sans 
+Update result
+\family default 
+.
+ These in turn allows you to edit your original file with the appropriate
+ editing application, view the produced file as included in the primary
+ format document, and finally force an update of the resulting material
+ in the primary format.
+ Normally, the 
+\family sans 
+Update result
+\family default 
+ button will be disabled, because most templates are configured to automatically
+ update the produced file when needed.
+ In those cases, there is no need to force the production of a new produced
+ file.
+ However, some templates are configured to not be automatically producing
+ the residual product, because the cost of producing the produced file might
+ be so large that it would be a pain to do it all the time.
+ Those insets are known as 
+\emph on 
+manual
+\emph default 
+ external insets.
+ In those cases, you can use the button to force the production of the produced
+ file exactly when you need it, and thus control the amount of work that
+ is done.
+ In fact, it is 
+\emph on 
+your
+\emph default 
+ responsibility to do this to keep the produced files current at all times:
+ before printing, before exporting, before viewing, etc.
+ To help you with this task, you can use the 
+\family sans 
+Edit\SpecialChar \menuseparator
+Update all external inset
+\family default 
+ command that will update all external insets that use a manual template.
+ But be prepared that it might take some time for the updating to finish.
+\layout Standard
+
+At the bottom of the dialog, you find the normal 
+\family sans 
+OK
+\family default 
+ and 
+\family sans 
+Cancel
+\family default 
+ buttons.
+ The only thing worth mentioning about these is that any changes in the
+ template, filename or parameters are actually applied whenever you press
+ 
+\family sans 
+Edit file
+\family default 
+, 
+\family sans 
+View result
+\family default 
+ or 
+\family sans 
+Update result
+\family default 
+ buttons.
+ This implies that after using one of those, you will only be able to undo
+ changes that occured after the use of those buttons, by pressing 
+\family sans 
+Cancel
+\family default 
+.
+ Fortunately, you can use the general undo feature in LyX to revert to a
+ previous state.
+\layout Subsection
+
+Examples
+\layout Standard
+
+In this section, we should include some examples of use of the external
+ material inset.
+ Those examples could include:
+\layout Itemize
+
+External raster images
+\layout Itemize
+
+External XFig figures
+\layout Itemize
+
+Chess diagrams
+\layout Itemize
+
+Sound samples
+\layout Itemize
+
+The use of makefiles
+\layout Itemize
+
+Recursive external LyX templates
+\layout Subsection
+
+The external template configuration file
+\layout Standard
+
+It is relatively easy to add custom external template definitions to LyX.
+ However, be aware this doing this in an careless manner most probably 
+\emph on 
+will
+\emph default 
+ introduce an easily exploitable security hole.
+ So before you do this, please read the discussion about security which
+ will follow later.
+\layout Standard
+
+Having said that, we encourage you to submit any interesting templates that
+ you create.
+ 
+\layout Standard
+
+The external templates are defined in the 
+\family typewriter 
+lib/external_templates
+\family default 
+ file.
+ You can place your own version in 
+\family typewriter 
+.lyx/external_templates
+\family default 
+.
+ At some point in time, hopefully somebody will document the template contents,
+ and the syntax used to define your templates.
+\layout Subsection
+
+The substitution mechanism
+\layout Standard
+
+When the external material inset invokes an external program, it is done
+ on the basis of a command defined in the template configuration file.
+ These commands can contain various macros that are expanded before execution.
+ Execution always take place in the directory of the containing document.
+\layout Standard
+
+Also, whenever an external inset is to be displayed, the name will be produced
+ by the substitution mechanism.
+\layout Standard
+
+The available macros are the following:
+\layout Description
+
+$$FName The filename of the file specified in the external inset dialog.
+\layout Description
+
+$$Basename The filename without the extension.
+\layout Description
+
+$$Tempname A name and full path to a temporary file which will be automatically
+ deleted whenever the containing document is closed, or the external inset
+ deleted.
+\layout Description
+
+$$Contents(
+\begin_inset Quotes eld
+\end_inset 
+
+filename.ext
+\begin_inset Quotes erd
+\end_inset 
+
+) This macro will expand to the contents of the file with the name 
+\family typewriter 
+filename.ext
+\family default 
+.
+\layout Description
+
+$$Sysdir This macro will expand to the absolute path of the system directory.
+ This is typically used to point to the various helper scripts that are
+ bundled with LyX.
+\layout Standard
+
+In addition to these, the facility will expand general environment variables
+ with a syntax like 
+\family typewriter 
+${PATH}
+\family default 
+.
+\layout Subsection
+
+Security discussion
+\layout Standard
+
+The external material inset interfaces with a lot of external programs and
+ does so automatically, so we have to consider the security implications
+ of this.
+ In particular, since you have the option of including your own filenames
+ and/or parameter strings and those are expanded into a command, it seems
+ that it would be possible to create a malicious document which executes
+ arbitrary commands when a user views or prints the document.
+ This is something we definately want to avoid.
+\layout Standard
+
+However, since the external program commands are specified in the template
+ configuration file only, there are no security issues if LyX is properly
+ configured with safe templates only.
+ This is so because the external programs are invoked with the 
+\family typewriter 
+execvp
+\family default 
+-system call rather than the 
+\family typewriter 
+system
+\family default 
+ system-call, so it's not possible to execute arbitrary commands from the
+ filename or parameter section via the shell.
+\layout Standard
+
+This also implies that you are restricted in what command strings you can
+ use in the external material templates.
+ In particular, pipes and redirection are not readily available.
+ This has to be so if LyX should remain safe.
+ If you want to use some of the shell features, you should write a safe
+ script to do this in a controlled manner, and then invoke the script from
+ the command string.
+ In the 
+\family typewriter 
+lib/scripts
+\family default 
+ directory of the LyX installation, you can find a safe wrapper script 
+\family typewriter 
+general_command_wrapper.py
+\family default 
+ that supports redirection of input and output.
+ That can serve as an example for how to write safe template scripts.
+ For a more advanced example that uses 
+\family typewriter 
+fork
+\family default 
+ and friends, take a look at the 
+\family typewriter 
+pic2ascii.py
+\family default 
+ converter script.
+\layout Standard
+
+It is possible to design a template that interacts directly with the shell,
+ but since this would allow a malicious user to execute arbitrary commands
+ by writing clever filenames and/or parameters, we generally recommend that
+ you only use safe scripts that work with the 
+\family typewriter 
+execvp
+\family default 
+ system call in a controlled manner.
+ Of course, for use in a controlled environment, it can be tempting to just
+ fall back to use ordinary shell scripts.
+ If you do so, be aware that you 
+\emph on 
+will
+\emph default 
+ provide an easily exploitable security hole in your system.
+ Of course it stands to reason that such unsafe templates will never be
+ included in the standard LyX distribution, although we do encourage people
+ to submit new templates in the open source tradition.
+ But LyX as shipped from the official distribution channels will never have
+ unsafe templates.
+\layout Standard
+
+The external material inset provides a lot of power, and you have to be
+ careful not to introduce security hazards with this power.
+ A subtile error in a single line in an innocent looking script can open
+ the door to huge security problems.
+ So if you do not fully understand the issues, we recommend that you consult
+ a knowledgable security professional or the LyX development team if you
+ have any questions about whether a given template is safe or not.
+ And do this before you use it in an uncontrolled environment.
+\layout Subsection
+
+The future of the external inset
+\layout Standard
+
+The current implementation of the external inset is a stable and powerful
+ construct that provides raw access to the inner parts of LyX, but as with
+ any feature in LyX, it should always be considered work-in-progress.
+ When and if somebody has time to continue work on it, here are some general
+ directions that could be approached:
+\layout Itemize
+
+Support in-line previewing in various formats, rather than the button text
+ we are restricted to now.
+\layout Itemize
+
+Support in-line editing using OpenParts or any other relevant protocol.
+\layout Itemize
+
+Extend the dynamic information to have optional parameter fields for the
+ conversion commands in all export formats, and to have optional parameter
+ fields for what is produced into all the different exported formats.
+ At the moment, we are restricted to only one parameter string that is multiplex
+ed across these many applications.
+ Also, a change like this would allow us to get rid of the strange primary
+ target format restrictions.
+\layout Itemize
+
+Extend the framework to provide more intelligent customization options in
+ addition to the rather simplistic raw parameter strings.
+ With a suitable scripting language, it would be possible to implement user
+ friendly versions of many customizable insets that supports a wide range
+ of formats, LaTeX packages, editors, etc.
+\the_end

@@ -52,11 +52,11 @@ public:
 		return IS_EDITABLE;
 	}
         /// With lyx3 we won't overload these 3 methods
-        void Write(std::ostream &) const;
+        void Write(Buffer const *, std::ostream &) const;
         ///
-	void Read(LyXLex &);
+	void Read(Buffer const *, LyXLex &);
 	/// 
-	int Latex(std::ostream &, bool fragile, bool free_spc) const;
+	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
 	///
 	void Validate(LaTeXFeatures &) const;
 	

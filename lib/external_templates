@@ -1,0 +1,159 @@
+# Basic External Templates for LyX
+
+Template RasterImage
+	GuiName "[Bitmap: $$FName]"
+	HelpText
+		A bitmap file.
+		In the parameters box, you can provide optional
+		parameters for the ImageMagick convert program.
+		E.g., use `-border 10x10 -bordercolor black'
+		to surround the picture with a black border 
+		when you export to LaTeX.
+		When you export to Ascii, you can provide a
+		number describing how many columns the picture
+		should expand to.
+		This template uses Gimp for editing, and 
+		ImageMagick to do conversions. It requires 
+		Python for exporting to Ascii and DocBook, 
+		and gifscii for exporting to Ascii.
+	HelpTextEnd
+	FileFilter "*.(gif|png|jpg|bmp|pbm|ppm|tga|tif|xpm|xbm)"
+	ViewCommand "display $$Basename.eps"
+	EditCommand "gimp $$FName"
+	AutomaticProduction true
+	Format LaTeX
+		Product "\\includegraphics{$$Basename.eps}"
+		UpdateCommand "convert $$Parameters $$FName $$Basename.eps"
+		Requirement "graphics"
+	FormatEnd
+	Format Ascii
+		Product "$$Contents(\"$$Basename.asc\")"
+		UpdateCommand "python $$Sysdir/scripts/pic2ascii.py $$FName $$Parameters"
+	FormatEnd
+	Format DocBook
+		Product "<graphic fileref=\"$$Basename.eps\"></graphic>"
+		UpdateCommand "python $$Sysdir/scripts/pic2png_eps.py $$FName $$Parameters"
+	FormatEnd
+	Format LinuxDoc
+		Product "[Bitmap: $$FName]"
+	FormatEnd
+TemplateEnd
+
+Template XFig
+	GuiName "[XFig: $$Basename]"
+	HelpText
+		An XFig figure.
+		In the parameters box, you can provide
+		optional parameters for fig2dev in the
+		case of LaTeX export.
+		For Ascii export, you can provide a
+		number that specifies the width of an
+		Ascii approximation of the figure.
+		For DocBook export, you can provide
+		optional parameters for the ImageMagick
+		convert script.
+		This template uses XFig for editing, and 
+		fig2dev and ImageMagick to do conversions. 
+		It requires Python for exporting to Ascii
+		and DocBook, and gifscii for exporting to 
+		Ascii.
+	HelpTextEnd
+	FileFilter "*.fig"
+	ViewCommand "xfig $$FName"
+	EditCommand "xfig $$FName"
+	AutomaticProduction true
+	Format LaTeX
+		Product "$$Contents(\"$$Basename.tex\")"
+		UpdateCommand "fig2dev $$Parameters -L latex $$FName $$Basename.tex"
+	FormatEnd
+	Format Ascii
+		Product "$$Contents(\"$$Basename.asc\")"
+		UpdateCommand "python $$Sysdir/scripts/pic2ascii.py $$FName $$Parameters"
+	FormatEnd
+	Format DocBook
+		Product "<graphic fileref=\"$$Basename.eps\"></graphic>"
+		UpdateCommand "python $$Sysdir/scripts/pic2png_eps.py $$FName $$Parameters"
+	FormatEnd
+	Format LinuxDoc
+		Product "[XFig: $$FName]"
+	FormatEnd
+TemplateEnd
+
+Template ChessDiagram
+	GuiName "[Chess: $$Basename]"
+	HelpText
+		A chess position diagram.
+		This template will use XBoard to view
+		and edit the position. Use the
+		'File->Save Position' in XBoard to save 
+		the position that you want to display.
+		Make sure to give it a '.fen' extension
+		and remember to type in a relative path
+		to the LyX document location.
+		Within XBoard, use 'Edit->Edit Position'
+		to enable general editing of the board.
+		You might also check out the
+		'Options->Test legality' option, and
+		remember to right click to insert new
+		material in the board.
+		In order for this to work, you have to
+		install the lyxchess.sty which is bundled
+		with LyX, and the chess.sty from CTAN.
+	HelpTextEnd
+	FileFilter "*.fen"
+	ViewCommand "xboard -lpf $$FName"
+	EditCommand "xboard -lpf $$FName"
+	AutomaticProduction true
+	Format LaTeX
+		Product "$$Contents(\"$$Basename.tex\")"
+		UpdateCommand "python $$Sysdir/scripts/fen2latex.py $$FName $$Basename.tex"
+		Requirement "chess"
+	FormatEnd
+	Format Ascii
+		Product "$$Contents(\"$$Basename.asc\")"
+		UpdateCommand "python $$Sysdir/scripts/fen2ascii.py $$FName $$Basename.tex"
+	FormatEnd
+	Format DocBook
+		Product "[Chess: $$Basename]"
+	FormatEnd
+	Format LinuxDoc
+		Product "[Chess: $$FName]"
+	FormatEnd
+TemplateEnd
+
+Template Date
+	GuiName "[Date]"
+	HelpText
+		Todays date.
+		In the parameters box, you can provide
+		optional parameters for the date
+		command.
+		Use empty to get "Mon Jun 12 05:20:41 CEST 2000"
+		Use -u to get "Mon Jun 12 03:20:41 UTC 2000"
+		Use -I to get "2000-06-12".
+		Use -R to get "Mon, 12 Jun 2000 05:20:41 +0200"
+		Use +%d-%m-%Y to get "20-06-2000"
+		Use +%T to get the time as "23:23:00"
+		Read 'info date' for more information.
+	HelpTextEnd
+	FileFilter "*"
+	ViewCommand "xterm -e less $$Tempname"
+	AutomaticProduction true
+	Format LaTeX
+		Product "$$Contents(\"$$Tempname\")"
+		UpdateCommand "python $$Sysdir/scripts/general_command_wrapper.py - $$Tempname date $$Parameters"
+	FormatEnd
+	Format Ascii
+		Product "$$Contents(\"$$Tempname\")"
+		UpdateCommand "python $$Sysdir/scripts/general_command_wrapper.py - $$Tempname date $$Parameters"
+	FormatEnd
+	Format DocBook
+		Product "$$Contents(\"$$Tempname\")"
+		UpdateCommand "python $$Sysdir/scripts/general_command_wrapper.py - $$Tempname date $$Parameters"
+	FormatEnd
+	Format LinuxDoc
+		Product "$$Contents(\"$$Tempname\")"
+		UpdateCommand "python $$Sysdir/scripts/general_command_wrapper.py - $$Tempname date $$Parameters"
+	FormatEnd
+TemplateEnd
+

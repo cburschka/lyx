@@ -1,12 +1,15 @@
 AUTOMAKE_OPTIONS = foreign
-MAINTAINERCLEANFILES = Makefile.in
+DISTCLEANFILES= *.orig *.rej *~ *.bak core
+MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libinsets.la
 LIBS =
-ETAGS_ARGS = --c++
+ETAGS_ARGS = --lang=c++
 INCLUDES = -I${srcdir}/../ 
 
 libinsets_la_SOURCES = \
 	BoundingBox.h \
+	ExternalTemplate.C \
+	ExternalTemplate.h \
 	figinset.C \
 	figinset.h \
 	form_graphics.C \
@@ -16,6 +19,8 @@ libinsets_la_SOURCES = \
 	inset.C \
 	insetbib.C \
 	insetbib.h \
+	insetbutton.C \
+	insetbutton.h \
 	insetcite.C \
 	insetcite.h \
 	insetcollapsable.C \
@@ -26,6 +31,8 @@ libinsets_la_SOURCES = \
 	inseterror.h \
 	insetert.C \
 	insetert.h \
+	insetexternal.C \
+	insetexternal.h \
 	insetfoot.C \
 	insetfoot.h \
 	insetgraphics.C \
