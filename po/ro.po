@@ -100,8 +100,7 @@ msgstr "Eroare!"
 
 #: src/buffer.C:1129 src/buffer.C:1155
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr ""
-"Formatul de fiºier LyX este vechi. Utilizaþi LyX 0.10.x pentru a-l citi!"
+msgstr "Formatul de fiºier LyX este vechi. Utilizaþi LyX 0.10.x pentru a-l citi!"
 
 #: src/buffer.C:1148
 msgid "LyX file format is newer that what"
@@ -3803,9 +3802,7 @@ msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
-msgstr ""
-" implicit | tiny | script | notã subsol | small | normal | large | Large | "
-"LARGE | huge | Huge"
+msgstr " implicit | tiny | script | notã subsol | small | normal | large | Large | LARGE | huge | Huge"
 
 #: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 #: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
@@ -4676,9 +4673,7 @@ msgstr ""
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr ""
-" implicit | tiny | script | notã subsol | small | normal | large | Large | "
-"LARGE | huge | Huge"
+msgstr " implicit | tiny | script | notã subsol | small | normal | large | Large | LARGE | huge | Huge"
 
 #: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
@@ -7845,8 +7840,8 @@ msgstr ""
 
 #: src/lyxrc.C:1876
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
 #: src/lyxrc.C:1880
@@ -7891,8 +7886,8 @@ msgstr ""
 
 #: src/lyxrc.C:1908
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
 #: src/lyxrc.C:1912
@@ -8440,9 +8435,7 @@ msgstr "îmi pare rãu."
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
-msgstr ""
-"Nu puteþi insera un spaþiu la începutul unui paragraf.  Citiþi mai întîi "
-"Tutorialul."
+msgstr "Nu puteþi insera un spaþiu la începutul unui paragraf.  Citiþi mai întîi Tutorialul."
 
 #: src/text.C:2005
 msgid "You cannot type two spaces this way.  Please read the Tutorial."

@@ -1,5 +1,10 @@
 2001-07-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/version.h (LYX_RELEASE): LyX 1.1.6fix3 released.
+
+	* sigc++/Makefile.am (EXTRA_DIST): make sure BUILT_SOURCES is in
+	the distribution
+
 	* lib/examples/fr_splash.lyx: update from Afrien Rebollo
 
 2001-07-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>

@@ -77,8 +77,7 @@ msgstr "-- substituindo o padrão"
 #: src/buffer.C:1105
 #, fuzzy, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f"
-msgstr ""
-"Advertência: o formato lyxformat %.2f é requerido mas foi achado o %.2f\n"
+msgstr "Advertência: o formato lyxformat %.2f é requerido mas foi achado o %.2f\n"
 
 #: src/buffer.C:1109
 #, fuzzy, c-format
@@ -335,8 +334,7 @@ msgstr "Derreter"
 
 #: src/bufferview_funcs.C:145
 msgid "Changed environment depth (in possible range, maybe not)"
-msgstr ""
-"A formatação de níveis foi modificada (em um âmbito possivel, talvez não)"
+msgstr "A formatação de níveis foi modificada (em um âmbito possivel, talvez não)"
 
 #: src/bufferview_funcs.C:267
 msgid "Font: "
@@ -4148,9 +4146,7 @@ msgstr "Formatação do Documento"
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
-msgstr ""
-" Padrão | Definido | Carta EUA | Legal EUA | Executivo EUA | A3 | A4 | A5 | "
-"B3 | B4 | B5 "
+msgstr " Padrão | Definido | Carta EUA | Legal EUA | Executivo EUA | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:120
 msgid ""
@@ -4175,9 +4171,7 @@ msgstr " ``texto'' | ''texto'' | ,,texto`` | ,,texto'' | «texto» | »texto« "
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
-msgstr ""
-" padrão | fino | script | rodapé | pequeno | normal | largo | Largo | LARGO "
-"| grande | Grande"
+msgstr " padrão | fino | script | rodapé | pequeno | normal | largo | Largo | LARGO | grande | Grande"
 
 #: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 #: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
@@ -4247,9 +4241,7 @@ msgstr "Revertendo para a classe de documento original."
 #: src/frontends/xforms/FormDocument.C:825
 #, fuzzy
 msgid "Document is read-only. No changes to layout permitted."
-msgstr ""
-"Esse documento é somente para leitura. Nenhuma mudança de layout será "
-"permitida"
+msgstr "Esse documento é somente para leitura. Nenhuma mudança de layout será permitida"
 
 #: src/frontends/xforms/FormDocument.C:1100
 msgid "Should I set some parameters to"
@@ -5039,9 +5031,7 @@ msgstr "Palavra chave:|#c"
 #: src/frontends/xforms/FormPreferences.C:1979
 #, fuzzy
 msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" Padrão | Definido | Carta EUA | Legal EUA | Executivo EUA | A3 | A4 | A5 | "
-"B3 | B4 | B5 "
+msgstr " Padrão | Definido | Carta EUA | Legal EUA | Executivo EUA | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2231
 #, fuzzy
@@ -5084,9 +5074,7 @@ msgstr ""
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr ""
-" padrão | fino | script | rodapé | pequeno | normal | largo | Largo | LARGO "
-"| grande | Grande"
+msgstr " padrão | fino | script | rodapé | pequeno | normal | largo | Largo | LARGO | grande | Grande"
 
 #: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
@@ -7824,32 +7812,23 @@ msgstr " Nenhuma mudança %l| Médio | Negrito %l| Redefinir "
 
 #: src/lyx_gui.C:319
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
-msgstr ""
-" Nenhuma mudança %l| Vertical | Itálico | Inclinado | Caixa Baixa %l| "
-"Redefinir "
+msgstr " Nenhuma mudança %l| Vertical | Itálico | Inclinado | Caixa Baixa %l| Redefinir "
 
 #: src/lyx_gui.C:322
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
-msgstr ""
-" Nenhuma mudança %l| Fino | Bem Menor | Menor | Pequeno | Normal | Largo | "
-"Mais Largo | Largest | Grande | Bem Grande %l| Incrementar | Decrementar | "
-"Redefinir "
+msgstr " Nenhuma mudança %l| Fino | Bem Menor | Menor | Pequeno | Normal | Largo | Mais Largo | Largest | Grande | Bem Grande %l| Incrementar | Decrementar | Redefinir "
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
-msgstr ""
-" Nenhuma Mudança %l| Enfatizado | Sublinhado | Caixa Alta | Modo LaTeX %l| "
-"Redefinir "
+msgstr " Nenhuma Mudança %l| Enfatizado | Sublinhado | Caixa Alta | Modo LaTeX %l| Redefinir "
 
 #: src/lyx_gui.C:328
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
-msgstr ""
-" Nenhuma mudança %l| Sem cor | Preto | Branco | Vermelho | Verde | Azul | "
-"Verde Escuro | Rosa | Amarelo %l| Redefinir "
+msgstr " Nenhuma mudança %l| Sem cor | Preto | Branco | Vermelho | Verde | Azul | Verde Escuro | Rosa | Amarelo %l| Redefinir "
 
 #: src/lyx_gui.C:333
 msgid " English %l| German | French "
@@ -7932,8 +7911,7 @@ msgstr "Tente o parâmetro de linha de comando '-sysdir' ou"
 #: src/lyx_main.C:323
 #, fuzzy
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
-msgstr ""
-"definir a variável de ambiente LYX_DIR_10x para o diretório base do LyX"
+msgstr "definir a variável de ambiente LYX_DIR_10x para o diretório base do LyX"
 
 #: src/lyx_main.C:325
 msgid "containing the file `chkconfig.ltx'."
@@ -8319,8 +8297,8 @@ msgstr ""
 
 #: src/lyxrc.C:1876
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
 #: src/lyxrc.C:1880
@@ -8365,8 +8343,8 @@ msgstr ""
 
 #: src/lyxrc.C:1908
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
 #: src/lyxrc.C:1912
@@ -8884,9 +8862,7 @@ msgstr "Nada para fazer"
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
-msgstr ""
-"Nenhuma mudança de fonte foi definida. Use Charactere no menu Layout para "
-"definir a mudança de fonte."
+msgstr "Nenhuma mudança de fonte foi definida. Use Charactere no menu Layout para definir a mudança de fonte."
 
 #: src/text2.C:2198 src/text2.C:2311
 msgid "Don't know what to do with half floats."
@@ -8900,9 +8876,7 @@ msgstr "Sinto muito."
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
-msgstr ""
-"Você não pode inserir um espaço no começo de um parágrafo. Por favor, leia o "
-"Tutorial."
+msgstr "Você não pode inserir um espaço no começo de um parágrafo. Por favor, leia o Tutorial."
 
 #: src/text.C:2005
 msgid "You cannot type two spaces this way.  Please read the Tutorial."

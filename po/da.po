@@ -3789,9 +3789,7 @@ msgstr ""
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-"Ingen | A4 smalle marginer (kun som højformat) | A4 ekstra smalle marginer "
-"(kun som højformat) | A4 ekstra brede marginer (kun som højformat) "
+msgstr "Ingen | A4 smalle marginer (kun som højformat) | A4 ekstra smalle marginer (kun som højformat) | A4 ekstra brede marginer (kun som højformat) "
 
 #: src/frontends/xforms/FormDocument.C:179
 msgid " Single | OneHalf | Double | Other "
@@ -3809,9 +3807,7 @@ msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | «tekst» | »tekst« "
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
-msgstr ""
-" standard | lillebitte | skriveskrift | fodnote | lille | normal | stor | "
-"større | størst | kæmpe | enorm"
+msgstr " standard | lillebitte | skriveskrift | fodnote | lille | normal | stor | større | størst | kæmpe | enorm"
 
 #: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 #: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
@@ -4445,8 +4441,7 @@ msgstr "LyX-objekter, de kan få tilknyttet en farve."
 #: src/frontends/xforms/FormPreferences.C:536
 msgid ""
 "Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
+msgstr "Ændr farven på LyX-objekt. Bemærk: du skal trykke \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:544
 msgid "Find a new color."
@@ -4496,9 +4491,7 @@ msgstr "Konvertér \"til\" dette format"
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file."
-msgstr ""
-"Konverteringsprogrammet. $$i er inddata-filnavnet. $$b er filnavnet uden sin "
-"filudvidelse og $$o er navnet på uddata-filen."
+msgstr "Konverteringsprogrammet. $$i er inddata-filnavnet. $$b er filnavnet uden sin filudvidelse og $$o er navnet på uddata-filen."
 
 #: src/frontends/xforms/FormPreferences.C:1012
 msgid "Flags that control the converter behavior"
@@ -4508,9 +4501,7 @@ msgstr "Flag, der styrer konverteringsopførslen"
 msgid ""
 "Remove the current converter from the list of available converters. Note: "
 "you must then \"Apply\" the change."
-msgstr ""
-"Fjern det aktuelle konverteringsprogram fra listen over tilgængelige "
-"programmer. Bemærk: du skal vælge \"Anvend\" for at gemme."
+msgstr "Fjern det aktuelle konverteringsprogram fra listen over tilgængelige programmer. Bemærk: du skal vælge \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:1016
 #: src/frontends/xforms/FormPreferences.C:1288
@@ -4521,17 +4512,13 @@ msgstr "Tilføj"
 msgid ""
 "Add the current converter to the list of available converters. Note: you "
 "must then \"Apply\" the change."
-msgstr ""
-"Tilføj det aktuelle konverteringsprogram til listen over tilgængelige "
-"programmer. Bemærk: du skal vælge \"Anvend\" for at gemme."
+msgstr "Tilføj det aktuelle konverteringsprogram til listen over tilgængelige programmer. Bemærk: du skal vælge \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:1019
 msgid ""
 "Modify the contents of the current converter. Note: you must then \"Apply\" "
 "the change."
-msgstr ""
-"Ændr indholdet af det aktuelle konverteringsprogram. Bemærk: du skal vælge "
-"\"Anvend\" for at gemme."
+msgstr "Ændr indholdet af det aktuelle konverteringsprogram. Bemærk: du skal vælge \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:1112
 #: src/frontends/xforms/FormPreferences.C:1114
@@ -4582,31 +4569,23 @@ msgstr "Kommandoen, der starter fremviser-programmet."
 msgid ""
 "Remove the current format from the list of available formats. Note: you must "
 "then \"Apply\" the change."
-msgstr ""
-"Fjern det aktuelle format fra listen over tilgængelige formater. Bemærk: du "
-"skal vælge \"Anvend\" for at gemme."
+msgstr "Fjern det aktuelle format fra listen over tilgængelige formater. Bemærk: du skal vælge \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:1289
 msgid ""
 "Add the current format to the list of available formats. Note: you must then "
 "\"Apply\" the change."
-msgstr ""
-"Tilføej det aktuelle format til listen over tilgængelige formater. Bemærk: "
-"du skal vælge \"Anvend\" for at gemme."
+msgstr "Tilføej det aktuelle format til listen over tilgængelige formater. Bemærk: du skal vælge \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:1291
 msgid ""
 "Modify the contents of the current format. Note: you must then \"Apply\" the "
 "change."
-msgstr ""
-"Ændr indholdet af det aktuelle format. Bemærk: du skal vælge \"Anvend\" for "
-"at gemme."
+msgstr "Ændr indholdet af det aktuelle format. Bemærk: du skal vælge \"Anvend\" for at gemme."
 
 #: src/frontends/xforms/FormPreferences.C:1407
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"Kan ikke fjerne et format, der er tilknyttet et konverteringsprogram. Fjern "
-"konverteringsprogrammet fra listen først."
+msgstr "Kan ikke fjerne et format, der er tilknyttet et konverteringsprogram. Fjern konverteringsprogrammet fra listen først."
 
 #: src/frontends/xforms/FormPreferences.C:1578
 msgid "Sys Bind"
@@ -4682,9 +4661,7 @@ msgstr "Skrifter skal være positive!"
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr ""
-"Skrifter skal angives i rækkefølgen lillebitte > skriveskrift > fodnote > "
-"lille > normal > stor > større > størst > enorm > kæmpe."
+msgstr "Skrifter skal angives i rækkefølgen lillebitte > skriveskrift > fodnote > lille > normal > stor > større > størst > enorm > kæmpe."
 
 #: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
@@ -7198,16 +7175,13 @@ msgstr " Ingen ændring %l| Medium | Fed %l| Nulstil "
 
 #: src/lyx_gui.C:319
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
-msgstr ""
-" Ingen ændring %l| Stående | Kursiv | Skråtstillet | Kapitæler %l| Nulstil "
+msgstr " Ingen ændring %l| Stående | Kursiv | Skråtstillet | Kapitæler %l| Nulstil "
 
 #: src/lyx_gui.C:322
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
-msgstr ""
-" Ingen ændring %l| Lillebitte | Mindst | Mindre | Lille | Normal | Stor | "
-"Større | Størst | Enorm | Kæmpe %l| Forøg | Formindsk | Nulstil "
+msgstr " Ingen ændring %l| Lillebitte | Mindst | Mindre | Lille | Normal | Stor | Større | Størst | Enorm | Kæmpe %l| Forøg | Formindsk | Nulstil "
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
@@ -7217,9 +7191,7 @@ msgstr "Ingen ændring %l| Fremhævet | Understreget | Navn | LaTeX %l| Nulstil "
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
-msgstr ""
-"Ingen ændring %l| Ingen farve | Sort | Hvid | Rød | Grøn | Blå | Lyseblå | "
-"Lilla | Gul %l| Nulstil "
+msgstr "Ingen ændring %l| Ingen farve | Sort | Hvid | Rød | Grøn | Blå | Lyseblå | Lilla | Gul %l| Nulstil "
 
 #: src/lyx_gui.C:333
 msgid " English %l| German | French "
@@ -7439,16 +7411,13 @@ msgstr "Mangler filtype [f.eks. latex, ps...] efter "
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
-msgstr ""
-"Tegnsættet, der bruges i LaTeX2e fontenc-pakken. T1 anbefalesfor "
-"ikke-engelske sprog."
+msgstr "Tegnsættet, der bruges i LaTeX2e fontenc-pakken. T1 anbefalesfor ikke-engelske sprog."
 
 #: src/lyxrc.C:1648
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr ""
-"Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablenPRINTER."
+msgstr "Standardprinteren. Hvis ingen angives, vil LyX bruge miljøvariablenPRINTER."
 
 #: src/lyxrc.C:1652
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -7464,8 +7433,7 @@ msgstr "Her angives, om kun ulige sider skal udskrives."
 
 #: src/lyxrc.C:1664
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
-"Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
+msgstr "Her kan indsættes en kommasepareret liste af sider, der skal udskrives."
 
 #: src/lyxrc.C:1668
 msgid "The option for specifying the number of copies to print."
@@ -7517,53 +7485,41 @@ msgstr "Filudvidelse for udskriftprogrammets udfil. Normalt \".ps\"."
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr ""
-"Ekstra tilvalg, der gives til udskriftprogrammet efter alt andet, dog "
-"førfilnavnet på DVI-filen."
+msgstr "Ekstra tilvalg, der gives til udskriftprogrammet efter alt andet, dog førfilnavnet på DVI-filen."
 
 #: src/lyxrc.C:1712
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
-msgstr ""
-"Udskriv automatisk til en fil og udfør derefter et separat udskriftprogram "
-"på denne fil med det givne navn og parametre."
+msgstr "Udskriv automatisk til en fil og udfør derefter et separat udskriftprogram på denne fil med det givne navn og parametre."
 
 #: src/lyxrc.C:1716
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
-msgstr ""
-"Hvis du angiver et printernavn i udskriftdialogen, vil det følgende "
-"parameter blive foranstillet printernavnet efter udskriftkommandoen."
+msgstr "Hvis du angiver et printernavn i udskriftdialogen, vil det følgende parameter blive foranstillet printernavnet efter udskriftkommandoen."
 
 #: src/lyxrc.C:1720
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
-msgstr ""
-"DPI (pixler per tomme) på din skærm bestemmes automatisk af LyX. Gennemtving "
-"en indstilling her, hvis det går galt."
+msgstr "DPI (pixler per tomme) på din skærm bestemmes automatisk af LyX. Gennemtving en indstilling her, hvis det går galt."
 
 #: src/lyxrc.C:1725
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
-msgstr ""
-"Forstørrelse for skærmskrifter. En indstilling på 100% vil give nogenlunde "
-"samme størrelser som på papir."
+msgstr "Forstørrelse for skærmskrifter. En indstilling på 100% vil give nogenlunde samme størrelser som på papir."
 
 #: src/lyxrc.C:1729
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
+msgstr "Skriftstørrelserne, der benyttes ved beregning af skærmskrifternes størrelse."
 
 #: src/lyxrc.C:1735
 msgid "The screen fonts used to display the text while editing."
-msgstr ""
-"Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
+msgstr "Skrifttyper, der benyttes til at vise tekst på skærmen under redigering."
 
 #: src/lyxrc.C:1739
 msgid "The font for menus (and groups titles in popups)."
@@ -7599,17 +7555,13 @@ msgstr "Stien, som LyX vi bruge, når den tilbyder at vælge en skabelon."
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
-msgstr ""
-"LyX vil lægge sine midlertidige filer i denne sti. De vil blive slettet, når "
-"du afslutter LyX."
+msgstr "LyX vil lægge sine midlertidige filer i denne sti. De vil blive slettet, når du afslutter LyX."
 
 #: src/lyxrc.C:1774
 msgid ""
 "Select if you wish to use a temporary directory structure to store temporary "
 "TeX output."
-msgstr ""
-"Vælges, hvis du ønsker at bruge en midlertidigt katalogstruktur til at gemme "
-"midlertidige TeX-uddata."
+msgstr "Vælges, hvis du ønsker at bruge en midlertidigt katalogstruktur til at gemme midlertidige TeX-uddata."
 
 #: src/lyxrc.C:1778
 msgid "The file where the last-files information should be stored."
@@ -7619,50 +7571,37 @@ msgstr "Filen, hvor listen over nylige filer skal gemmes."
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
-msgstr ""
-"Fravælg, hvis du ikke ønsker at det markerede skal erstattes automatisk af "
-"hvad du måtte skrive."
+msgstr "Fravælg, hvis du ikke ønsker at det markerede skal erstattes automatisk af hvad du måtte skrive."
 
 #: src/lyxrc.C:1786
 msgid ""
 "Select if LyX is to take over the handling of the dead keys (a.k.a. accent "
 "keys) that may be defined for your keyboard."
-msgstr ""
-"Vælg, hvis LyX skal overtage håndteringen af døde taster (som f.eks. "
-"accenter), som måtte være defineret på dit tastatur."
+msgstr "Vælg, hvis LyX skal overtage håndteringen af døde taster (som f.eks. accenter), som måtte være defineret på dit tastatur."
 
 #: src/lyxrc.C:1791
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
-msgstr ""
-"Dette starter lyxserveren. Videreførsler får påsat filudvidelser\".in\" og "
-"\".out\". Kun for avancerede brugere."
+msgstr "Dette starter lyxserveren. Videreførsler får påsat filudvidelser\".in\" og \".out\". Kun for avancerede brugere."
 
 #: src/lyxrc.C:1795
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
-msgstr ""
-"Tastaturudlægningsfil. Kan angive en absolut sti. Ellers vil LyX lede i "
-"sineglobale og lokale 'bind/'-kataloger."
+msgstr "Tastaturudlægningsfil. Kan angive en absolut sti. Ellers vil LyX lede i sineglobale og lokale 'bind/'-kataloger."
 
 #: src/lyxrc.C:1799
 msgid ""
 "The  UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
-msgstr ""
-"Brugergrænseflade-fil. Kan angive en absolut sti. Ellers vil LyX lede i sine "
-"globale og lokale 'ui/'-kataloger."
+msgstr "Brugergrænseflade-fil. Kan angive en absolut sti. Ellers vil LyX lede i sine globale og lokale 'ui/'-kataloger."
 
 #: src/lyxrc.C:1805
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
-msgstr ""
-"Brug dette til at angive en korrekt tastaturudlægningsfil for dit tastatur. "
-"Kan være nyttigt, hvis du f.eks. vil skrive græske tekster på et dansk "
-"tastatur."
+msgstr "Brug dette til at angive en korrekt tastaturudlægningsfil for dit tastatur. Kan være nyttigt, hvis du f.eks. vil skrive græske tekster på et dansk tastatur."
 
 #: src/lyxrc.C:1819
 msgid ""
@@ -7678,9 +7617,7 @@ msgstr ""
 msgid ""
 "This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
 "plain text)."
-msgstr ""
-"Dette er den maksimale linielængde på en eksporteret ascii-fil.(LaTeX, SGML "
-"eller ren tekst)."
+msgstr "Dette er den maksimale linielængde på en eksporteret ascii-fil.(LaTeX, SGML eller ren tekst)."
 
 #: src/lyxrc.C:1827
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
@@ -7709,10 +7646,7 @@ msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you can't spellcheck words with international letters in them. This may "
 "not work with all dictionaries."
-msgstr ""
-"Angiv, om tegnsæt-tilvalget -T skal gives til ispell. Vælg dette, hvis du "
-"ikke kan kontrollere ord med fremmede bogstaver i dem. Dette virker ikke med "
-"alle ordbøger."
+msgstr "Angiv, om tegnsæt-tilvalget -T skal gives til ispell. Vælg dette, hvis du ikke kan kontrollere ord med fremmede bogstaver i dem. Dette virker ikke med alle ordbøger."
 
 #: src/lyxrc.C:1858
 msgid ""
@@ -7734,44 +7668,34 @@ msgid ""
 "Allow the use of scalable screen fonts? If false, LyX will use the closest "
 "existing size for a match. Use this if the scalable fonts look bad and you "
 "have many fixed size fonts."
-msgstr ""
-"Tillad brugen af skalérbare skærmskrifter? Hvis deaktiveret, vil LyX benytte "
-"sin nærmeste eksisterende størrelse. Bruges, hvis du synes at de skalérbare "
-"skrifter er grimme, og du har mange skrifter med fast størrelse."
+msgstr "Tillad brugen af skalérbare skærmskrifter? Hvis deaktiveret, vil LyX benytte sin nærmeste eksisterende størrelse. Bruges, hvis du synes at de skalérbare skrifter er grimme, og du har mange skrifter med fast størrelse."
 
 #: src/lyxrc.C:1876
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 msgstr ""
-"Angiv, hvordan chktex skal kaldes. F.eks. \"chktex -n11 -n1 -n3 -n6 -n9 -22 "
-"-n25 -n30 -n38\". Der henvises til ChkTeX's dokumentation."
+"Angiv, hvordan chktex skal kaldes. F.eks. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -"
+"n25 -n30 -n38\". Der henvises til ChkTeX's dokumentation."
 
 #: src/lyxrc.C:1880
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
-msgstr ""
-"Det påvirker normalt ikke markørpositionen, når du flytter rullebjælken. "
-"Aktivér, hvis du foretrækker, altid at have markøren indenfor skærmen."
+msgstr "Det påvirker normalt ikke markørpositionen, når du flytter rullebjælken. Aktivér, hvis du foretrækker, altid at have markøren indenfor skærmen."
 
 #: src/lyxrc.C:1884
 msgid ""
 "Sets whether LyX asks for a second confirmation to exit when you have "
 "changed documents. (LyX will still ask to save changed documents.)"
-msgstr ""
-"Angiver, om LyX skal spørge en ekstra gang, når du forsøger at afslutte med "
-"ændrede dokumenter. (LyX vil stadig spørge for hvert enkelt ændret dokument.)"
+msgstr "Angiver, om LyX skal spørge en ekstra gang, når du forsøger at afslutte med ændrede dokumenter. (LyX vil stadig spørge for hvert enkelt ændret dokument.)"
 
 #: src/lyxrc.C:1888
 msgid ""
 "LyX continously displays names of last command executed, along with a list "
 "of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
 "slow."
-msgstr ""
-"Lyx viser hele tiden navnet på den sidst udførte kommando sammen med en "
-"liste med genveje til denne i statuslinien. Deaktivér, hvis LyX virker "
-"langsom."
+msgstr "Lyx viser hele tiden navnet på den sidst udførte kommando sammen med en liste med genveje til denne i statuslinien. Deaktivér, hvis LyX virker langsom."
 
 #: src/lyxrc.C:1892
 msgid "De-select if you don't want LyX to create backup files."
@@ -7788,9 +7712,7 @@ msgstr ""
 #: src/lyxrc.C:1900
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. "
-"hebraisk og arabisk)."
+msgstr "Vælg for at aktivere understøttelse af højre-til-venstre-sprog (f.eks. hebraisk og arabisk)."
 
 #: src/lyxrc.C:1904
 msgid ""
@@ -7800,8 +7722,8 @@ msgstr "Fremhæv ord med et andet sprog end dokumentets standardsprog."
 
 #: src/lyxrc.C:1908
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 "Latex-kommandoen for at hente sprogpakken. F.eks. \"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"."
@@ -7835,10 +7757,7 @@ msgid ""
 "The latex command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
-msgstr ""
-"LaTeX-kommandoen, der skifter fra dokumentets standardsprog til et andet "
-"sprog. F.eks. \\selectlanguage{$$lang}, hvor $$lang erstattes med navnet på "
-"det andet sprog."
+msgstr "LaTeX-kommandoen, der skifter fra dokumentets standardsprog til et andet sprog. F.eks. \\selectlanguage{$$lang}, hvor $$lang erstattes med navnet på det andet sprog."
 
 #: src/lyxrc.C:1932
 msgid "The latex command for changing back to the language of the document."
@@ -7855,8 +7774,8 @@ msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
-"Her accepteres normale strftime-formater. Se 'man strftime' for "
-"detaljerne.F.eks.\"%A, %e. %B %Y\"."
+"Her accepteres normale strftime-formater. Se 'man strftime' for detaljerne.F."
+"eks.\"%A, %e. %B %Y\"."
 
 #: src/lyxrc.C:1945
 msgid "De-select if you don't want the startup banner."
@@ -7870,9 +7789,7 @@ msgstr "Musehjulets bevægelsesfaktor (for mus med hjul eller fem-knaps mus)."
 msgid ""
 "This sets the behaviour if you want to be asked for a filename when creating "
 "a new document or wait until you save it and be asked then."
-msgstr ""
-"Her angives, om du ønsker at blive spurgt om et filnavn, når du opretter et "
-"nyt dokument eller vente til du gemmer det."
+msgstr "Her angives, om du ønsker at blive spurgt om et filnavn, når du opretter et nyt dokument eller vente til du gemmer det."
 
 #: src/lyxrc.C:1966
 msgid "New documents will be assigned this language."
@@ -7880,8 +7797,7 @@ msgstr "Nye dokumenter vil oprettes med dette standardsprog."
 
 #: src/lyxrc.C:1970
 msgid "Maximum number of words in the initialization string for a new label"
-msgstr ""
-"Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
+msgstr "Maksimalt antal ord i initialisationsstrengen for et nyt referencemærke"
 
 #: src/LyXSendto.C:40
 msgid "Send Document to Command"
@@ -8323,9 +8239,7 @@ msgstr "Ingenting at gøre"
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
-msgstr ""
-"Ingen skriftændring er defineret. Brug Tegn under Layout-menuen til at "
-"definere skriftændring."
+msgstr "Ingen skriftændring er defineret. Brug Tegn under Layout-menuen til at definere skriftændring."
 
 #: src/text2.C:2198 src/text2.C:2311
 msgid "Don't know what to do with half floats."
@@ -8339,14 +8253,11 @@ msgstr "beklager."
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
-msgstr ""
-"Du kan ikke indsætte et mellemrum i begyndelsen af et afsnit. Læs venligst "
-"Tutorial."
+msgstr "Du kan ikke indsætte et mellemrum i begyndelsen af et afsnit. Læs venligst Tutorial."
 
 #: src/text.C:2005
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
-msgstr ""
-"Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Tutorial."
+msgstr "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Tutorial."
 
 #: src/text.C:3462 src/text.C:3468
 msgid "Page Break (top)"

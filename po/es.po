@@ -104,9 +104,7 @@ msgstr "¡ERROR!"
 
 #: src/buffer.C:1129 src/buffer.C:1155
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr ""
-"Se encontró formato de archivos de LyX antiguo. ¡Use LyX 0.10.x para leer "
-"esto!"
+msgstr "Se encontró formato de archivos de LyX antiguo. ¡Use LyX 0.10.x para leer esto!"
 
 #: src/buffer.C:1148
 msgid "LyX file format is newer that what"
@@ -3786,9 +3784,7 @@ msgstr ""
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Ninguno | A4 márgenes pequeños (sólo retrato) | A4 márgenes muy pequeños "
-"(sólo retrato) | A4 márgenes muy anchos (sólo retrato) "
+msgstr " Ninguno | A4 márgenes pequeños (sólo retrato) | A4 márgenes muy pequeños (sólo retrato) | A4 márgenes muy anchos (sólo retrato) "
 
 #: src/frontends/xforms/FormDocument.C:179
 msgid " Single | OneHalf | Double | Other "
@@ -3806,9 +3802,7 @@ msgstr " ``texto'' | ''texto'' | ,,texto`` | ,,texto'' | «texto» | »texto« "
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
-msgstr ""
-" por defecto | enano | manual | nota a pie | pequeño | normal | grande | más "
-"grande | muy grande | enorme | gigante"
+msgstr " por defecto | enano | manual | nota a pie | pequeño | normal | grande | más grande | muy grande | enorme | gigante"
 
 #: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 #: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
@@ -4232,9 +4226,7 @@ msgstr "Formato párrafo (más)"
 #: src/frontends/xforms/FormParagraph.C:92
 #: src/frontends/xforms/FormParagraph.C:95
 msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
-msgstr ""
-" Ninguno | Separación definida | Separación pequeña | Separación mediana | "
-"Separación grande | VFill | Longitud "
+msgstr " Ninguno | Separación definida | Separación pequeña | Separación mediana | Separación grande | VFill | Longitud "
 
 #. now make them fit together
 #: src/frontends/xforms/FormParagraph.C:132
@@ -4446,9 +4438,7 @@ msgstr "Objetos LyX a los cuales se les puede asignar un color."
 #: src/frontends/xforms/FormPreferences.C:536
 msgid ""
 "Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Modificar el color del objeto LyX.  Nota: debe \"Aplicar\" para que se "
-"efectúe el cambio."
+msgstr "Modificar el color del objeto LyX.  Nota: debe \"Aplicar\" para que se efectúe el cambio."
 
 #: src/frontends/xforms/FormPreferences.C:544
 msgid "Find a new color."
@@ -4498,9 +4488,7 @@ msgstr "Convertir \"a\" este formato"
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file."
-msgstr ""
-"Comando de conversión. $$i es el nombre del archivo de entrada, $b es el "
-"nombre del archivo sin extensión y $$o es nombre delarchivo de salida."
+msgstr "Comando de conversión. $$i es el nombre del archivo de entrada, $b es el nombre del archivo sin extensión y $$o es nombre delarchivo de salida."
 
 #: src/frontends/xforms/FormPreferences.C:1012
 msgid "Flags that control the converter behavior"
@@ -4679,9 +4667,7 @@ msgstr "¡Tipos deben ser positivos!"
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr ""
-" por defecto | enano | manual | nota a pie | pequeño | normal | grande | más "
-"grande | muy grande | enorme | gigante"
+msgstr " por defecto | enano | manual | nota a pie | pequeño | normal | grande | más grande | muy grande | enorme | gigante"
 
 #: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
@@ -7194,8 +7180,7 @@ msgstr "No se pudo insertar el documento"
 
 #: src/lyx_gui.C:315
 msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
-msgstr ""
-" Sin cambios %l| Romana | Sans Serif | Máquina de escribir %l| Reponer "
+msgstr " Sin cambios %l| Romana | Sans Serif | Máquina de escribir %l| Reponer "
 
 #: src/lyx_gui.C:317
 msgid " No change %l| Medium | Bold %l| Reset "
@@ -7209,22 +7194,17 @@ msgstr " Sin cambios %l| Recto | Itálica | Inclinado | Versales %l| Reponer "
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
-msgstr ""
-" Sin cambios | Diminuto | El más pequeño | Más pequeño| Pequeño | Normal | "
-"Grande | Más grande | Enorme | Gigante %l| Aumentar | Reducir | Reponer "
+msgstr " Sin cambios | Diminuto | El más pequeño | Más pequeño| Pequeño | Normal | Grande | Más grande | Enorme | Gigante %l| Aumentar | Reducir | Reponer "
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
-msgstr ""
-" Sin cambios %l| Énfasis | Subrayado | Nombres | Modo LaTeX %l| Reponer"
+msgstr " Sin cambios %l| Énfasis | Subrayado | Nombres | Modo LaTeX %l| Reponer"
 
 #: src/lyx_gui.C:328
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
-msgstr ""
-" Sin cambios %l| Sin color | Negro | Blanco | Rojo | Verde | Azul | Oceáno | "
-"Magenta | Amarillo %l| Reponer "
+msgstr " Sin cambios %l| Sin color | Negro | Blanco | Rojo | Verde | Azul | Oceáno | Magenta | Amarillo %l| Reponer "
 
 #: src/lyx_gui.C:333
 msgid " English %l| German | French "
@@ -7699,8 +7679,8 @@ msgstr ""
 
 #: src/lyxrc.C:1876
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
 #: src/lyxrc.C:1880
@@ -7745,8 +7725,8 @@ msgstr ""
 
 #: src/lyxrc.C:1908
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
 #: src/lyxrc.C:1912
@@ -8254,9 +8234,7 @@ msgstr "Nada que hacer"
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
-msgstr ""
-"No se ha definido un cambio de tipo. Use Carácter en el menú Formato para "
-"definir uno."
+msgstr "No se ha definido un cambio de tipo. Use Carácter en el menú Formato para definir uno."
 
 #: src/text2.C:2198 src/text2.C:2311
 msgid "Don't know what to do with half floats."
@@ -8270,9 +8248,7 @@ msgstr "perdón."
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
-msgstr ""
-"No se puede insertar un espacio al principio de un párrafo. Por favor lea el "
-"Tutorial."
+msgstr "No se puede insertar un espacio al principio de un párrafo. Por favor lea el Tutorial."
 
 #: src/text.C:2005
 msgid "You cannot type two spaces this way.  Please read the Tutorial."

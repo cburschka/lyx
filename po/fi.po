@@ -579,8 +579,7 @@ msgstr "Matthias"
 
 #: src/credits_form.C:29
 msgid "All these people have contributed to the LyX project. Thanks,"
-msgstr ""
-"Kaikki nämä ihmiset ovat työskennelleet LyX-projektin hyväksi. Kiittäen,"
+msgstr "Kaikki nämä ihmiset ovat työskennelleet LyX-projektin hyväksi. Kiittäen,"
 
 #: src/CutAndPaste.C:450
 msgid ""
@@ -2914,16 +2913,8 @@ msgid ""
 "along with this program; if not, write to the Free Software Foundation, "
 "Inc.,  675 Mass Ave, Cambridge, MA 02139, USA."
 msgstr ""
-"Tämä ohjelma on vapaata ohjelmistoa: sen jälleenjakelu sekä muuttelu on "
-"sallittua Free Software Foundationin julkaiseman GNU General Public Licensen "
-"version 2, tai oman valintanne mukaan, jonkin myöhemmän version ehtojen "
-"mukaisesti.\n"
-"LyXiä levitetään toivoen, että siitä olisi jotakin hyötyä, mutta ILMAN "
-"MINKÄÄNLAISTA TAKUUTA: ei edes takuuta myyntikelpoisuudesta tai sopivuudesta "
-"johonkin käyttöön. Lisätietoja löytyy Free Software Foundationin GNU General "
-"Public Licensestä, jonka kopion pitäisi olla toimitettu tämän ohjelman "
-"mukana. Jos ei ole, niin kirjoita Free Software Foundationille, Inc. 675 "
-"Mass Ave, Cambridge, MA 02139 USA."
+"Tämä ohjelma on vapaata ohjelmistoa: sen jälleenjakelu sekä muuttelu on sallittua Free Software Foundationin julkaiseman GNU General Public Licensen version 2, tai oman valintanne mukaan, jonkin myöhemmän version ehtojen mukaisesti.\n"
+"LyXiä levitetään toivoen, että siitä olisi jotakin hyötyä, mutta ILMAN MINKÄÄNLAISTA TAKUUTA: ei edes takuuta myyntikelpoisuudesta tai sopivuudesta johonkin käyttöön. Lisätietoja löytyy Free Software Foundationin GNU General Public Licensestä, jonka kopion pitäisi olla toimitettu tämän ohjelman mukana. Jos ei ole, niin kirjoita Free Software Foundationille, Inc. 675 Mass Ave, Cambridge, MA 02139 USA."
 
 #: src/frontends/gnome/FormError.C:89
 msgid " Error "
@@ -3743,11 +3734,7 @@ msgid ""
 "under the terms of the GNU General Public License as published by the Free "
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
-msgstr ""
-"Tämä ohjelma on vapaata ohjelmistoa: sen jälleenjakelu sekä muuttelu on "
-"sallittua Free Software Foundationin julkaiseman GNU General Public Licensen "
-"version 2, tai oman valintanne mukaan, jonkin myöhemmän version ehtojen "
-"mukaisesti."
+msgstr "Tämä ohjelma on vapaata ohjelmistoa: sen jälleenjakelu sekä muuttelu on sallittua Free Software Foundationin julkaiseman GNU General Public Licensen version 2, tai oman valintanne mukaan, jonkin myöhemmän version ehtojen mukaisesti."
 
 #: src/frontends/xforms/FormCopyright.C:61
 msgid ""
@@ -3757,13 +3744,7 @@ msgid ""
 "details. You should have received a copy of the GNU General Public License "
 "along with this program; if not, write to the Free Software Foundation, "
 "Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
-msgstr ""
-"LyXiä levitetään toivoen, että siitä olisi jotakin hyötyä, mutta ILMAN "
-"MINKÄÄNLAISTA TAKUUTA: ei edes takuuta MYYNTIKELPOISUUDESTA tai SOPIVUUDESTA "
-"JOHONKIN KÄYTTÖÖN. Lisätietoja löytyy Free Software Foundationin GNU General "
-"Public Licensestä, jonka kopion pitäisi olla toimitettu tämän ohjelman "
-"mukana. Jos ei ole, niin kirjoita Free Software Foundationille, Inc., 675 "
-"Mass Ave, Cambridge, MA 02139 USA."
+msgstr "LyXiä levitetään toivoen, että siitä olisi jotakin hyötyä, mutta ILMAN MINKÄÄNLAISTA TAKUUTA: ei edes takuuta MYYNTIKELPOISUUDESTA tai SOPIVUUDESTA JOHONKIN KÄYTTÖÖN. Lisätietoja löytyy Free Software Foundationin GNU General Public Licensestä, jonka kopion pitäisi olla toimitettu tämän ohjelman mukana. Jos ei ole, niin kirjoita Free Software Foundationille, Inc., 675 Mass Ave, Cambridge, MA 02139 USA."
 
 #: src/frontends/xforms/form_copyright.C:41
 #: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
@@ -3786,9 +3767,7 @@ msgstr ""
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Ei mitään | A4 kapeat marginaalit (vain pysty) | A4 hyvin kapeat "
-"marginaalit (vain pysty) | A4 hyvin leveät marginaalit (vain pysty) "
+msgstr " Ei mitään | A4 kapeat marginaalit (vain pysty) | A4 hyvin kapeat marginaalit (vain pysty) | A4 hyvin leveät marginaalit (vain pysty) "
 
 #: src/frontends/xforms/FormDocument.C:179
 msgid " Single | OneHalf | Double | Other "
@@ -3800,8 +3779,7 @@ msgstr " Pieni | Keski | Suuri | Annettu pituus "
 
 #: src/frontends/xforms/FormDocument.C:236
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-msgstr ""
-" ``teksti'' | ''teksti'' | ,,teksti`` | ,,teksti'' | «teksti» | »teksti« "
+msgstr " ``teksti'' | ''teksti'' | ,,teksti`` | ,,teksti'' | «teksti» | »teksti« "
 
 #: src/frontends/xforms/FormDocument.C:263
 msgid ""
@@ -4442,9 +4420,7 @@ msgstr "LyX-osat, joiden väriä voi muuttaa."
 #: src/frontends/xforms/FormPreferences.C:536
 msgid ""
 "Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Muuta LyXin osan väriä. Huom.: paina \"Toteuta\" tai \"Tallenna\" ottaaksesi "
-"muutoksen käyttöön."
+msgstr "Muuta LyXin osan väriä. Huom.: paina \"Toteuta\" tai \"Tallenna\" ottaaksesi muutoksen käyttöön."
 
 #: src/frontends/xforms/FormPreferences.C:544
 msgid "Find a new color."
@@ -4494,9 +4470,7 @@ msgstr "Muunna jokin muu muoto täksi"
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file."
-msgstr ""
-"Muuntokomento. $$i on syötetiedoston nimi, $$b on sama ilman päätettä ja $$o "
-"on tulostetiedoston nimi."
+msgstr "Muuntokomento. $$i on syötetiedoston nimi, $$b on sama ilman päätettä ja $$o on tulostetiedoston nimi."
 
 #: src/frontends/xforms/FormPreferences.C:1012
 msgid "Flags that control the converter behavior"
@@ -4506,9 +4480,7 @@ msgstr "Asetukset, jotka vaikuttavat muuntimen toimintaan."
 msgid ""
 "Remove the current converter from the list of available converters. Note: "
 "you must then \"Apply\" the change."
-msgstr ""
-"Poista valittu muunnin luettelosta. Huom.: paina \"Toteuta\" tai "
-"\"Tallenna\" ottaaksesi muutoksen käyttöön."
+msgstr "Poista valittu muunnin luettelosta. Huom.: paina \"Toteuta\" tai \"Tallenna\" ottaaksesi muutoksen käyttöön."
 
 #: src/frontends/xforms/FormPreferences.C:1016
 #: src/frontends/xforms/FormPreferences.C:1288
@@ -4519,17 +4491,13 @@ msgstr "Lisää"
 msgid ""
 "Add the current converter to the list of available converters. Note: you "
 "must then \"Apply\" the change."
-msgstr ""
-"Lisää valittu muunnin luetteloon. Huom.: paina \"Toteuta\" tai \"Tallenna\" "
-"ottaaksesi muutoksen käyttöön."
+msgstr "Lisää valittu muunnin luetteloon. Huom.: paina \"Toteuta\" tai \"Tallenna\" ottaaksesi muutoksen käyttöön."
 
 #: src/frontends/xforms/FormPreferences.C:1019
 msgid ""
 "Modify the contents of the current converter. Note: you must then \"Apply\" "
 "the change."
-msgstr ""
-"Muuta valitun muuntimen asetuksia. Huom.: paina \"Toteuta\" tai \"Tallenna\" "
-"ottaaksesi muutoksen käyttöön."
+msgstr "Muuta valitun muuntimen asetuksia. Huom.: paina \"Toteuta\" tai \"Tallenna\" ottaaksesi muutoksen käyttöön."
 
 #: src/frontends/xforms/FormPreferences.C:1112
 #: src/frontends/xforms/FormPreferences.C:1114
@@ -4566,8 +4534,7 @@ msgstr "Tiedostomuoto sellaisena kuin se näkyy valikoissa."
 
 #: src/frontends/xforms/FormPreferences.C:1280
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr ""
-"Pikanäppäin. Käytä kirjainta, joka on näyttönimessä. Kirjainkoko merkitsee."
+msgstr "Pikanäppäin. Käytä kirjainta, joka on näyttönimessä. Kirjainkoko merkitsee."
 
 #: src/frontends/xforms/FormPreferences.C:1282
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
@@ -4581,31 +4548,23 @@ msgstr "Komento, joka käynnistää katseluohjelman."
 msgid ""
 "Remove the current format from the list of available formats. Note: you must "
 "then \"Apply\" the change."
-msgstr ""
-"Poista valittu tiedostomuoto luettelosta. Huom.: paina \"Toteuta\" tai "
-"\"Tallenna\" ottaaksesi muutoksen käyttöön."
+msgstr "Poista valittu tiedostomuoto luettelosta. Huom.: paina \"Toteuta\" tai \"Tallenna\" ottaaksesi muutoksen käyttöön."
 
 #: src/frontends/xforms/FormPreferences.C:1289
 msgid ""
 "Add the current format to the list of available formats. Note: you must then "
 "\"Apply\" the change."
-msgstr ""
-"Lisää nykyinen tiedostomuoto luetteloon. Huom.: paina \"Toteuta\" tai "
-"\"Tallenna\" ottaaksesi muutoksen käyttöön."
+msgstr "Lisää nykyinen tiedostomuoto luetteloon. Huom.: paina \"Toteuta\" tai \"Tallenna\" ottaaksesi muutoksen käyttöön."
 
 #: src/frontends/xforms/FormPreferences.C:1291
 msgid ""
 "Modify the contents of the current format. Note: you must then \"Apply\" the "
 "change."
-msgstr ""
-"Muuta valitun tiedostomuodon asetuksia. Huom.: paina \"Toteuta\" tai "
-"\"Tallenna\" ottaaksesi muutoksen käyttöön."
+msgstr "Muuta valitun tiedostomuodon asetuksia. Huom.: paina \"Toteuta\" tai \"Tallenna\" ottaaksesi muutoksen käyttöön."
 
 #: src/frontends/xforms/FormPreferences.C:1407
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"Ei voi poistaa tiedostomuotoa, jota jokin muunnin käyttää. Poista muunnin "
-"ensin."
+msgstr "Ei voi poistaa tiedostomuotoa, jota jokin muunnin käyttää. Poista muunnin ensin."
 
 #: src/frontends/xforms/FormPreferences.C:1578
 msgid "Sys Bind"
@@ -4681,9 +4640,7 @@ msgstr "Kirjasinten täytyy olla positiivisia!"
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr ""
-"Kirjasimet täytyy antaa järjestyksessä pikkuruinen > skripti > alaviite > "
-"pieni > tavallinen > suuri > suurempi > suurin > valtava > valtavampi."
+msgstr "Kirjasimet täytyy antaa järjestyksessä pikkuruinen > skripti > alaviite > pieni > tavallinen > suuri > suurempi > suurin > valtava > valtavampi."
 
 #: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
@@ -7087,8 +7044,7 @@ msgstr "Set-color \""
 
 #: src/lyxfunc.C:2920
 msgid "\" failed - color is undefined or may not be redefined"
-msgstr ""
-"\" epäonnistui: väriä ei ole määritelty, tai sitä ei voi uudelleenmääritellä."
+msgstr "\" epäonnistui: väriä ei ole määritelty, tai sitä ei voi uudelleenmääritellä."
 
 #: src/lyxfunc.C:2935
 msgid "No document open"
@@ -7202,10 +7158,7 @@ msgstr " Ei muutosta %l| Pysty | Kursiivi | Kalteva | Kapiteeli %l| Palauta "
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
-msgstr ""
-" Ei muutosta %l| Pikkuruinen | Pienin | Pienempi | Pieni | Tavallinen | "
-"Suuri | Suurempi | Suurin | Valtava | Valtavampi %l| Suurenna | Pienennä | "
-"Palauta"
+msgstr " Ei muutosta %l| Pikkuruinen | Pienin | Pienempi | Pieni | Tavallinen | Suuri | Suurempi | Suurin | Valtava | Valtavampi %l| Suurenna | Pienennä | Palauta"
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
@@ -7216,9 +7169,7 @@ msgstr ""
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
-msgstr ""
-"Ei muutosta %l| Ei väriä | Musta | Valkoinen | Punainen | Vihreä | Sininen | "
-"Syaani | Violetti | Keltainen %l| Palauta"
+msgstr "Ei muutosta %l| Ei väriä | Musta | Valkoinen | Punainen | Vihreä | Sininen | Syaani | Violetti | Keltainen %l| Palauta"
 
 #: src/lyx_gui.C:333
 msgid " English %l| German | French "
@@ -7397,10 +7348,8 @@ msgstr ""
 "\t-sysdir hakemisto  yritä käyttää annettua järjestelmähakemistoa\n"
 "\t-geometry WxH+X+Y  aseta pääikkunan mitat\n"
 "\t-dbg ominaisuus[,ominaisuus]...\n"
-"                           valitse ominaisuudet, joista näytetään "
-"tarvittaessa\n"
-"                           lisävirheilmoituksia. Kirjoita lyx -dbg "
-"nähdäksesi \n"
+"                           valitse ominaisuudet, joista näytetään tarvittaessa\n"
+"                           lisävirheilmoituksia. Kirjoita lyx -dbg nähdäksesi \n"
 "                           luettelon näistä ominaisuuksista.\n"
 "\t-x [--execute] komento\n"
 "                           suorita annettu LyXin komento.\n"
@@ -7445,22 +7394,17 @@ msgstr "Tyyppi [esim. latex, ps...] puuttuu "
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
-msgstr ""
-"Kirjasinmerkistö, jota LaTeX2e fontenc-paketti käyttää. T1 on suositeltu "
-"valinta ei-englantilaisille kielille."
+msgstr "Kirjasinmerkistö, jota LaTeX2e fontenc-paketti käyttää. T1 on suositeltu valinta ei-englantilaisille kielille."
 
 #: src/lyxrc.C:1648
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr ""
-"Oletustulostin. Jos tätä ei ole määritelty, niin LyX käyttää "
-"ympäristömuuttujan PRINTER arvoa."
+msgstr "Oletustulostin. Jos tätä ei ole määritelty, niin LyX käyttää ympäristömuuttujan PRINTER arvoa."
 
 #: src/lyxrc.C:1652
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
-msgstr ""
-"Mieluiten käyttämäsi tulostinohjelma. Esimerkiksi \"dvips\" tai \"dvilj4\"."
+msgstr "Mieluiten käyttämäsi tulostinohjelma. Esimerkiksi \"dvips\" tai \"dvilj4\"."
 
 #: src/lyxrc.C:1656
 msgid "The option to print only even pages."
@@ -7502,8 +7446,7 @@ msgstr "Valitsin, jolla määritetään paperin mitat."
 
 #: src/lyxrc.C:1692
 msgid "Option to pass to the print program to print on a specific printer."
-msgstr ""
-"Valitsin, joka määrää tulostusohjelman tulostamaan tietyllä tulostimella."
+msgstr "Valitsin, joka määrää tulostusohjelman tulostamaan tietyllä tulostimella."
 
 #: src/lyxrc.C:1696
 msgid ""
@@ -7523,49 +7466,37 @@ msgstr "Tulostusohjelman luomien tiedostojen pääte. Yleensä \".ps\""
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr ""
-"Lisävalitsimia, jotka välittyvät tulostusohjelmalle muiden valitsimien "
-"jälkeen, mutta ennen tulostettavan tiedoston nimeä."
+msgstr "Lisävalitsimia, jotka välittyvät tulostusohjelmalle muiden valitsimien jälkeen, mutta ennen tulostettavan tiedoston nimeä."
 
 #: src/lyxrc.C:1712
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
-msgstr ""
-"Kun tämä tulostusvalitsin on asetettu, niin tuloste muodostuu tiedostoon. "
-"Tämän jälkeen kutsutaan annettua erillistä kirjoittimen jonokomentoa "
-"annettujen valitsimien kanssa."
+msgstr "Kun tämä tulostusvalitsin on asetettu, niin tuloste muodostuu tiedostoon. Tämän jälkeen kutsutaan annettua erillistä kirjoittimen jonokomentoa annettujen valitsimien kanssa."
 
 #: src/lyxrc.C:1716
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
-msgstr ""
-"Jos annat tulostimen nimet Tulosta-valintaikkunassa, niin seuraava valitsin "
-"liitetään tulostimen nimen kanssa jonokomennon perään."
+msgstr "Jos annat tulostimen nimet Tulosta-valintaikkunassa, niin seuraava valitsin liitetään tulostimen nimen kanssa jonokomennon perään."
 
 #: src/lyxrc.C:1720
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
-msgstr ""
-"Näyttösi tarkkuus pisteinä tuumalle (DPI). LyX määrittää tämän "
-"automaattisesti, mutta jos tulos on väärin, niin laita oikea arvo tähän."
+msgstr "Näyttösi tarkkuus pisteinä tuumalle (DPI). LyX määrittää tämän automaattisesti, mutta jos tulos on väärin, niin laita oikea arvo tähän."
 
 #: src/lyxrc.C:1725
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
-msgstr ""
-"Näyttökirjasinten suurennusprosentti. Arvolla 100% kirjasimet ovat "
-"suunnilleen saman kokoisia kuin paperilla."
+msgstr "Näyttökirjasinten suurennusprosentti. Arvolla 100% kirjasimet ovat suunnilleen saman kokoisia kuin paperilla."
 
 #: src/lyxrc.C:1729
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Kirjasinkoot, joita käytetään näyttökirjasinten skaalaamisen laskemiseen."
+msgstr "Kirjasinkoot, joita käytetään näyttökirjasinten skaalaamisen laskemiseen."
 
 #: src/lyxrc.C:1735
 msgid "The screen fonts used to display the text while editing."
@@ -7590,9 +7521,7 @@ msgstr "Valikko- sekä valintaikkunakirjasinten merkistö."
 #: src/lyxrc.C:1758
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr ""
-"Määrittää automaattisten tallennusten välisen ajan sekunteina. 0 tarkoittaa, "
-"että automaattitallennus ei ole käytössä."
+msgstr "Määrittää automaattisten tallennusten välisen ajan sekunteina. 0 tarkoittaa, että automaattitallennus ei ole käytössä."
 
 #: src/lyxrc.C:1762
 msgid "The default path for your documents."
@@ -7606,17 +7535,13 @@ msgstr "Hakemisto, jonka LyX näyttää, kun valitset mallia."
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
-msgstr ""
-"LyX käyttää tätä hakemistoa väliaikaisten tiedostojensa tallentamiseen. Se "
-"myös poistaa ne, kun lopetat sen."
+msgstr "LyX käyttää tätä hakemistoa väliaikaisten tiedostojensa tallentamiseen. Se myös poistaa ne, kun lopetat sen."
 
 #: src/lyxrc.C:1774
 msgid ""
 "Select if you wish to use a temporary directory structure to store temporary "
 "TeX output."
-msgstr ""
-"Aseta tämä, jos haluat tallentaa väliaikaisen TeX-tulosteen väliaikaiseen "
-"hakemistoon."
+msgstr "Aseta tämä, jos haluat tallentaa väliaikaisen TeX-tulosteen väliaikaiseen hakemistoon."
 
 #: src/lyxrc.C:1778
 msgid "The file where the last-files information should be stored."
@@ -7626,67 +7551,50 @@ msgstr "Tiedosto, johon viimeisimpien tiedostojen nimet tallentuvat."
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
-msgstr ""
-"Poista tämä käytöstä, jos et halua valitsemasi tekstin korvautuvan, kun alat "
-"kirjoittaa."
+msgstr "Poista tämä käytöstä, jos et halua valitsemasi tekstin korvautuvan, kun alat kirjoittaa."
 
 #: src/lyxrc.C:1786
 msgid ""
 "Select if LyX is to take over the handling of the dead keys (a.k.a. accent "
 "keys) that may be defined for your keyboard."
-msgstr ""
-"Aseta tämä, jos haluat LyXin käsittelevän itse mahdolliset näppäimistöllesi "
-"määritellyt \"kuolleet\" näppäimet eli aksenttimerkit."
+msgstr "Aseta tämä, jos haluat LyXin käsittelevän itse mahdolliset näppäimistöllesi määritellyt \"kuolleet\" näppäimet eli aksenttimerkit."
 
 #: src/lyxrc.C:1791
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
-msgstr ""
-"Tämä käynnistää lyxserverin. Putket saavat liitteet \".in\" ja \".out\". "
-"Suositellaan vain edistyneille käyttäjille."
+msgstr "Tämä käynnistää lyxserverin. Putket saavat liitteet \".in\" ja \".out\". Suositellaan vain edistyneille käyttäjille."
 
 #: src/lyxrc.C:1795
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
-msgstr ""
-"Pikanäppäintiedosto. Voit joko antaa sen koko polun, tai LyX etsii sitä sen "
-"sekä yleisestä että paikallisesta bind/-hakemistosta."
+msgstr "Pikanäppäintiedosto. Voit joko antaa sen koko polun, tai LyX etsii sitä sen sekä yleisestä että paikallisesta bind/-hakemistosta."
 
 #: src/lyxrc.C:1799
 msgid ""
 "The  UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
-msgstr ""
-"Käyttöliittymätiedosto. Voit joko antaa sen koko polun, tai LyX etsii sitä "
-"sen sekä yleisestä että paikallisesta ui/-hakemistosta."
+msgstr "Käyttöliittymätiedosto. Voit joko antaa sen koko polun, tai LyX etsii sitä sen sekä yleisestä että paikallisesta ui/-hakemistosta."
 
 #: src/lyxrc.C:1805
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
-msgstr ""
-"Määrittele mitä merkkejä eri näppäimet tuottavat. Tarvitset tätä, jos "
-"esimerkiksi haluat kirjoittaa suomea amerikkalaisella näppäimistöllä."
+msgstr "Määrittele mitä merkkejä eri näppäimet tuottavat. Tarvitset tätä, jos esimerkiksi haluat kirjoittaa suomea amerikkalaisella näppäimistöllä."
 
 #: src/lyxrc.C:1819
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
 "\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
 "is specified, an internal routine is used."
-msgstr ""
-"Määrittele taulukoita Ascii-muodossa tuottava erillinen ohjelma. Esim. "
-"\"groff -t -Tlatin1 $$FName\", jossa \"$$FName\" on syötetiedosto. Jos "
-"asetat arvoksi \"none\", niin LyX muotoilee taulukot itse."
+msgstr "Määrittele taulukoita Ascii-muodossa tuottava erillinen ohjelma. Esim. \"groff -t -Tlatin1 $$FName\", jossa \"$$FName\" on syötetiedosto. Jos asetat arvoksi \"none\", niin LyX muotoilee taulukot itse."
 
 #: src/lyxrc.C:1823
 msgid ""
 "This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
 "plain text)."
-msgstr ""
-"Tämä on Ascii-tiedoston (LaTeX, SGML, tai pelkkä teksti) viedyn tiedoston "
-"suurin rivipituus."
+msgstr "Tämä on Ascii-tiedoston (LaTeX, SGML, tai pelkkä teksti) viedyn tiedoston suurin rivipituus."
 
 #: src/lyxrc.C:1827
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
@@ -7706,9 +7614,7 @@ msgstr "Anna oletuspaperikoko."
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
-msgstr ""
-"Pidetäänkö yhdyssanoja, kuten \"tämäpäivä\" vs. \"tämä päivä\", oikein "
-"kirjoitettuina?"
+msgstr "Pidetäänkö yhdyssanoja, kuten \"tämäpäivä\" vs. \"tämä päivä\", oikein kirjoitettuina?"
 
 #: src/lyxrc.C:1849
 msgid "What command runs the spell checker?"
@@ -7719,10 +7625,7 @@ msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you can't spellcheck words with international letters in them. This may "
 "not work with all dictionaries."
-msgstr ""
-"Määritä, annetaanko syötemerkistön valitsin -T ispellille. Käytä tätä, jos "
-"et voi oikolukea sanoja, joissa on kansainvälisiä merkkejä. Tämä ei "
-"välttämättä toimi kaikkien sanastojen kanssa."
+msgstr "Määritä, annetaanko syötemerkistön valitsin -T ispellille. Käytä tätä, jos et voi oikolukea sanoja, joissa on kansainvälisiä merkkejä. Tämä ei välttämättä toimi kaikkien sanastojen kanssa."
 
 #: src/lyxrc.C:1858
 msgid ""
@@ -7733,9 +7636,7 @@ msgstr "Anna vaihtoehtoinen kieli. Asiakirjan kieltä käytetään oletuksena."
 #: src/lyxrc.C:1863
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
-msgstr ""
-"Anna vaihtoehtoinen henkilökohtainen sanasto. Esimerkiksi "
-"\".ispell_english\"."
+msgstr "Anna vaihtoehtoinen henkilökohtainen sanasto. Esimerkiksi \".ispell_english\"."
 
 #: src/lyxrc.C:1868
 msgid "Specify additional chars that can be part of a word."
@@ -7748,45 +7649,32 @@ msgid ""
 "Allow the use of scalable screen fonts? If false, LyX will use the closest "
 "existing size for a match. Use this if the scalable fonts look bad and you "
 "have many fixed size fonts."
-msgstr ""
-"Sallitko skaalautuvien näyttökirjasinten käytön? Jos et, niin LyX käyttää "
-"lähinnä sopivaa kokoa. Tee näin, jos skaalautuvat kirjasimet näyttävät "
-"rumilta ja sinulla on paljon tavallisia kirjasinlajeja."
+msgstr "Sallitko skaalautuvien näyttökirjasinten käytön? Jos et, niin LyX käyttää lähinnä sopivaa kokoa. Tee näin, jos skaalautuvat kirjasimet näyttävät rumilta ja sinulla on paljon tavallisia kirjasinlajeja."
 
 #: src/lyxrc.C:1876
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
-msgstr ""
-"Määrittele, miten ChkTeX-ohjelma ajetaan. Esim. \"chktex -n11 -n1 -n3 -n6 "
-"-n9 -22 -n25 -n30 -n38\". Lisätietoja saat ChkTeXin ohjeista."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
+msgstr "Määrittele, miten ChkTeX-ohjelma ajetaan. Esim. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\". Lisätietoja saat ChkTeXin ohjeista."
 
 #: src/lyxrc.C:1880
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
-msgstr ""
-"LyX ei siirrä tavallisesti kohdistinta, kun liikutat vierityspalkkia. Aseta "
-"todeksi, jos haluat kohdistimen olevan aina näkyvissä."
+msgstr "LyX ei siirrä tavallisesti kohdistinta, kun liikutat vierityspalkkia. Aseta todeksi, jos haluat kohdistimen olevan aina näkyvissä."
 
 #: src/lyxrc.C:1884
 msgid ""
 "Sets whether LyX asks for a second confirmation to exit when you have "
 "changed documents. (LyX will still ask to save changed documents.)"
-msgstr ""
-"Määrittää, kysyykö LyX uudestaan vahvistusta lopetukselle, kun olet "
-"muuttanut asiakirjoja. (LyX kysyy silti kerran, haluatko tallentaa "
-"muuttuneet asiakirjat.)"
+msgstr "Määrittää, kysyykö LyX uudestaan vahvistusta lopetukselle, kun olet muuttanut asiakirjoja. (LyX kysyy silti kerran, haluatko tallentaa muuttuneet asiakirjat.)"
 
 #: src/lyxrc.C:1888
 msgid ""
 "LyX continously displays names of last command executed, along with a list "
 "of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
 "slow."
-msgstr ""
-"LyX näyttää jatkuvasti viimeisimpien suoritettujen komentojen nimet, sekä "
-"niille määritellyt pikanäppäimet minipuskurissa. Aseta tämä pois päältä, jos "
-"LyX vaikuttaa hitaalta."
+msgstr "LyX näyttää jatkuvasti viimeisimpien suoritettujen komentojen nimet, sekä niille määritellyt pikanäppäimet minipuskurissa. Aseta tämä pois päältä, jos LyX vaikuttaa hitaalta."
 
 #: src/lyxrc.C:1892
 msgid "De-select if you don't want LyX to create backup files."
@@ -7796,16 +7684,12 @@ msgstr "Aseta epätodeksi, jos et halua LyXin luovan varmuuskopioita."
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
-msgstr ""
-"Hakemisto, johon varmuuskopiot tallentuvat. Jos et anna hakemistoa, niin LyX "
-"tallentaa varmuuskopion hakemistoon, jossa alkuperäinen tiedosto on."
+msgstr "Hakemisto, johon varmuuskopiot tallentuvat. Jos et anna hakemistoa, niin LyX tallentaa varmuuskopion hakemistoon, jossa alkuperäinen tiedosto on."
 
 #: src/lyxrc.C:1900
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Ota oikealta vasemmalle kirjoitettavien kielten (esim. heprea ja arabia) "
-"tuki käyttöön."
+msgstr "Ota oikealta vasemmalle kirjoitettavien kielten (esim. heprea ja arabia) tuki käyttöön."
 
 #: src/lyxrc.C:1904
 msgid ""
@@ -7815,8 +7699,8 @@ msgstr "Muuta muiden kuin asiakirjan kielellä kirjoitettujen osien merkintää."
 
 #: src/lyxrc.C:1908
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 "LaTeX-komento, joka lataa kielipaketin. Esimerkiksi \"\\usepackage{babel}\" "
 "tai \"\\usepackage{omega}\"."
@@ -7850,10 +7734,7 @@ msgid ""
 "The latex command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
-msgstr ""
-"LaTeX-komento, joka vaihtaa asiakirjan kielen toiseksi. Esimerkiksi "
-"\"\\selectlanguage{$$lang}\", jossa \"$$lang\" korvautuu toisen kielen "
-"nimellä."
+msgstr "LaTeX-komento, joka vaihtaa asiakirjan kielen toiseksi. Esimerkiksi \"\\selectlanguage{$$lang}\", jossa \"$$lang\" korvautuu toisen kielen nimellä."
 
 #: src/lyxrc.C:1932
 msgid "The latex command for changing back to the language of the document."
@@ -7869,9 +7750,7 @@ msgstr "LaTeX-komento, joka vaihtaa kielen takaisin asiakirjan kieleksi."
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
-msgstr ""
-"Tähän käy tavallinen funktion strftime hyväksymä muoto, esimerkiksi \"%A, "
-"%d. %Bta %Y\". Katso lisätietoja strftimen manuaalisivuilta. "
+msgstr "Tähän käy tavallinen funktion strftime hyväksymä muoto, esimerkiksi \"%A, %d. %Bta %Y\". Katso lisätietoja strftimen manuaalisivuilta. "
 
 #: src/lyxrc.C:1945
 msgid "De-select if you don't want the startup banner."
@@ -7885,9 +7764,7 @@ msgstr "Rullan vierityskerroin (rullahiirille tai viisinäppäimisille hiirille)"
 msgid ""
 "This sets the behaviour if you want to be asked for a filename when creating "
 "a new document or wait until you save it and be asked then."
-msgstr ""
-"Tämä määrittää, kysyykö LyX sinulta uuden asiakirjan nimeä, kun luot "
-"sellaisen, vaiko tekeekö se tämän vasta kun tallennat asiakirjan."
+msgstr "Tämä määrittää, kysyykö LyX sinulta uuden asiakirjan nimeä, kun luot sellaisen, vaiko tekeekö se tämän vasta kun tallennat asiakirjan."
 
 #: src/lyxrc.C:1966
 msgid "New documents will be assigned this language."
@@ -8335,9 +8212,7 @@ msgstr "Ei mitään tehtävissä"
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
-msgstr ""
-"Kirjasinlajin muutosta ei määritetty. Määritä kirjasinlajin muutos "
-"Muotoilu-valikon Merkki-alivalikon avulla."
+msgstr "Kirjasinlajin muutosta ei määritetty. Määritä kirjasinlajin muutos Muotoilu-valikon Merkki-alivalikon avulla."
 
 #: src/text2.C:2198 src/text2.C:2311
 msgid "Don't know what to do with half floats."

@@ -98,8 +98,7 @@ msgstr "HIBA!"
 
 #: src/buffer.C:1129 src/buffer.C:1155
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr ""
-"A fájl régi LyX-formátumú. Olvasásához használja a LyX 0.10.x-es verzióját"
+msgstr "A fájl régi LyX-formátumú. Olvasásához használja a LyX 0.10.x-es verzióját"
 
 #: src/buffer.C:1148
 msgid "LyX file format is newer that what"
@@ -3717,17 +3716,13 @@ msgstr "Dokumentum formátum"
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
-msgstr ""
-" Alapérték | Egyedi | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
+msgstr " Alapérték | Egyedi | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:120
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Nincs | A4 kis margók (csak álló) | A4 nagyon kis margók (csak álló) | A4 "
-"nagyon széles margók (csak álló) "
+msgstr " Nincs | A4 kis margók (csak álló) | A4 nagyon kis margók (csak álló) | A4 nagyon széles margók (csak álló) "
 
 #: src/frontends/xforms/FormDocument.C:179
 msgid " Single | OneHalf | Double | Other "
@@ -3745,9 +3740,7 @@ msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
-msgstr ""
-" alapérték | apró | kézírás | lábjegyzet | kicsi | normál |nagy | Nagy | "
-"NAGY | óriási | Óriási"
+msgstr " alapérték | apró | kézírás | lábjegyzet | kicsi | normál |nagy | Nagy | NAGY | óriási | Óriási"
 
 #: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 #: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
@@ -4380,9 +4373,7 @@ msgstr "LyX objektumok, amikhez színt lehet rendelni."
 #: src/frontends/xforms/FormPreferences.C:536
 msgid ""
 "Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Módósítja a LyX objektum színét. Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
+msgstr "Módósítja a LyX objektum színét. Figyelem! ne felejtse \"Alkalmazni\" a módosításokat."
 
 #: src/frontends/xforms/FormPreferences.C:544
 msgid "Find a new color."
@@ -4432,9 +4423,7 @@ msgstr "A kívánt formátum"
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file."
-msgstr ""
-"Az átalakító parancs. A $$i jelenti a forrás fájl nevét, a $$b a "
-"fájlnévkiterjesztés nélkül és a $$o jelenti a célfájl nevét"
+msgstr "Az átalakító parancs. A $$i jelenti a forrás fájl nevét, a $$b a fájlnévkiterjesztés nélkül és a $$o jelenti a célfájl nevét"
 
 #: src/frontends/xforms/FormPreferences.C:1012
 msgid "Flags that control the converter behavior"
@@ -4444,9 +4433,7 @@ msgstr "Kapcsolók, amik befolyásolják az átalakító viselkedését"
 msgid ""
 "Remove the current converter from the list of available converters. Note: "
 "you must then \"Apply\" the change."
-msgstr ""
-"Törli az aktuális átalakítót. Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
+msgstr "Törli az aktuális átalakítót. Figyelem! ne felejtse \"Alkalmazni\" a módosításokat."
 
 #: src/frontends/xforms/FormPreferences.C:1016
 #: src/frontends/xforms/FormPreferences.C:1288
@@ -4457,17 +4444,13 @@ msgstr "Hozzáad"
 msgid ""
 "Add the current converter to the list of available converters. Note: you "
 "must then \"Apply\" the change."
-msgstr ""
-"Hozzáadja az aktuális átalakítót.Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
+msgstr "Hozzáadja az aktuális átalakítót.Figyelem! ne felejtse \"Alkalmazni\" a módosításokat."
 
 #: src/frontends/xforms/FormPreferences.C:1019
 msgid ""
 "Modify the contents of the current converter. Note: you must then \"Apply\" "
 "the change."
-msgstr ""
-"Módosítja az aktuális átalakítót.Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
+msgstr "Módosítja az aktuális átalakítót.Figyelem! ne felejtse \"Alkalmazni\" a módosításokat."
 
 #: src/frontends/xforms/FormPreferences.C:1112
 #: src/frontends/xforms/FormPreferences.C:1114
@@ -4518,31 +4501,23 @@ msgstr "A nézegetõt elindító parancs."
 msgid ""
 "Remove the current format from the list of available formats. Note: you must "
 "then \"Apply\" the change."
-msgstr ""
-"Törli az aktuális formátumot.Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
+msgstr "Törli az aktuális formátumot.Figyelem! ne felejtse \"Alkalmazni\" a módosításokat."
 
 #: src/frontends/xforms/FormPreferences.C:1289
 msgid ""
 "Add the current format to the list of available formats. Note: you must then "
 "\"Apply\" the change."
-msgstr ""
-"Hozzáadja az aktuális formátumot.Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
+msgstr "Hozzáadja az aktuális formátumot.Figyelem! ne felejtse \"Alkalmazni\" a módosításokat."
 
 #: src/frontends/xforms/FormPreferences.C:1291
 msgid ""
 "Modify the contents of the current format. Note: you must then \"Apply\" the "
 "change."
-msgstr ""
-"Módosítja az aktuális formátumot.Figyelem! ne felejtse \"Alkalmazni\" a "
-"módosításokat."
+msgstr "Módosítja az aktuális formátumot.Figyelem! ne felejtse \"Alkalmazni\" a módosításokat."
 
 #: src/frontends/xforms/FormPreferences.C:1407
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"Nem lehet olyan formátumaot eltávolítani, amit egy átalakító használ. "
-"Elõször törölje az átalakítót."
+msgstr "Nem lehet olyan formátumaot eltávolítani, amit egy átalakító használ. Elõször törölje az átalakítót."
 
 #: src/frontends/xforms/FormPreferences.C:1578
 msgid "Sys Bind"
@@ -4618,9 +4593,7 @@ msgstr "A betûméretnek nagyobbnak kell lennie 0 -nál!"
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr ""
-"A betûméreteknek a következõ sorrendben kell növekedniük:apró > kézírás > "
-"lábjegyzet > kicsi > normál > nagy > nagyobb > legnagyobb > óriás > hatalmas."
+msgstr "A betûméreteknek a következõ sorrendben kell növekedniük:apró > kézírás > lábjegyzet > kicsi > normál > nagy > nagyobb > legnagyobb > óriás > hatalmas."
 
 #: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
@@ -7139,23 +7112,17 @@ msgstr " Változatlan %l| Álló | Dõlt | Döntött | Kiskapitális %l| Alapállapot "
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
-msgstr ""
-" Változatlan %l| Apró| legkisebb | Kisebb | Kicsi | Normál | Nagy | Nagyobb "
-"| Legnagyobb | Óriás | Hatalmas %l| Növel | Csökkent | Alapállapot "
+msgstr " Változatlan %l| Apró| legkisebb | Kisebb | Kicsi | Normál | Nagy | Nagyobb | Legnagyobb | Óriás | Hatalmas %l| Növel | Csökkent | Alapállapot "
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
-msgstr ""
-" Változatlan %l| Kiemelt | Aláhúzott | Kiskapitális | LaTeX mód %l| "
-"Alapállapot "
+msgstr " Változatlan %l| Kiemelt | Aláhúzott | Kiskapitális | LaTeX mód %l| Alapállapot "
 
 #: src/lyx_gui.C:328
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
-msgstr ""
-" Változatlan %l| Nincs színe | Fekete | Fehér | Piros | Zöld | Kék | Türkiz "
-"| Lila | Sárga %l| Alapállapot "
+msgstr " Változatlan %l| Nincs színe | Fekete | Fehér | Piros | Zöld | Kék | Türkiz | Lila | Sárga %l| Alapállapot "
 
 #: src/lyx_gui.C:333
 msgid " English %l| German | French "
@@ -7212,8 +7179,7 @@ msgstr "Figyelem: nem sikerült meghatározni a program elérési útvonalát."
 
 #: src/lyx_main.C:221
 msgid "If you have problems, try starting LyX with an absolute path."
-msgstr ""
-"Ha gondjai vannak, próbálja abszolút elérési útvonallal indítani a LyX -et."
+msgstr "Ha gondjai vannak, próbálja abszolút elérési útvonallal indítani a LyX -et."
 
 #: src/lyx_main.C:311
 msgid "LYX_DIR_11x environment variable no good."
@@ -7233,8 +7199,7 @@ msgstr "Próbálja '-sysdir' kapcsolót használni, vagy "
 
 #: src/lyx_main.C:323
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
-msgstr ""
-"állítsa a LYX_DIR_11x környezeti változót arra a könyvtárra beállítani, "
+msgstr "állítsa a LYX_DIR_11x környezeti változót arra a könyvtárra beállítani, "
 
 #: src/lyx_main.C:325
 msgid "containing the file `chkconfig.ltx'."
@@ -7337,8 +7302,7 @@ msgstr ""
 "\t-geometry WxH+X+Y  a fõablak méreteit állítja be\n"
 "\t-dbg lehetõség[,lehetõség]...\n"
 "                  az ellenõrzés lehetõségeit lehet megadni.\n"
-"                  Gépelje be: `lyx -dbg' hogy megkapja a rendelkezésre álló "
-"lehetõségek listáját\n"
+"                  Gépelje be: `lyx -dbg' hogy megkapja a rendelkezésre álló lehetõségek listáját\n"
 "\t-x [--execute] parancs\n"
 "                  ahol a parancs egy lyx parancs.\n"
 "\t-e [--export] fmt\n"
@@ -7380,17 +7344,13 @@ msgstr "Hiányzik a típus [pl.: latex, ps...]  a"
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
-msgstr ""
-"A használatos karakterkódolás a LaTeX2e csomaghoz. A 'T1' javasolt a nem "
-"angol nyelvekhez."
+msgstr "A használatos karakterkódolás a LaTeX2e csomaghoz. A 'T1' javasolt a nem angol nyelvekhez."
 
 #: src/lyxrc.C:1648
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr ""
-"Az alapértelmezett nyomtató. Ha nem adja meg, a LyX a PRINTER "
-"környezetiváltozóból veszi ezt."
+msgstr "Az alapértelmezett nyomtató. Ha nem adja meg, a LyX a PRINTER környezetiváltozóból veszi ezt."
 
 #: src/lyxrc.C:1652
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -7448,25 +7408,20 @@ msgstr "A kapcsoló a fájlba nyomtatás megadásához."
 
 #: src/lyxrc.C:1704
 msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr ""
-"A nyomtatóprogram által létrehozott fájl kiterjesztése. Általában \".ps\"."
+msgstr "A nyomtatóprogram által létrehozott fájl kiterjesztése. Általában \".ps\"."
 
 #: src/lyxrc.C:1708
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr ""
-"Egyéb kapcsolók, amit az összes többi kapcsoló után, de a DVI fájl neve "
-"elõtt kell megadni."
+msgstr "Egyéb kapcsolók, amit az összes többi kapcsoló után, de a DVI fájl neve elõtt kell megadni."
 
 #: src/lyxrc.C:1712
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
-msgstr ""
-"Ha ez be van állítva, a nyomtatóprogram automatikusan fájlba nyomtat, majd "
-"meghív egy különálló 'spooling' programot az adott paraméterekkel."
+msgstr "Ha ez be van állítva, a nyomtatóprogram automatikusan fájlba nyomtat, majd meghív egy különálló 'spooling' programot az adott paraméterekkel."
 
 #: src/lyxrc.C:1716
 msgid ""
@@ -7478,18 +7433,14 @@ msgstr ""
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
-msgstr ""
-"A monitor felbontása - DPI (dots per inch) - ezt a LyX automatikusan "
-"beállítja. Ezt felülbírálhatja itt."
+msgstr "A monitor felbontása - DPI (dots per inch) - ezt a LyX automatikusan beállítja. Ezt felülbírálhatja itt."
 
 #: src/lyxrc.C:1725
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
-msgstr ""
-"A képernyõn megjelenõ betûméretek nagyítása. Ha 100% -ra állítja, körülbelül "
-"ugyan akkora betûket lát a képernyõn, mint a papíron."
+msgstr "A képernyõn megjelenõ betûméretek nagyítása. Ha 100% -ra állítja, körülbelül ugyan akkora betûket lát a képernyõn, mint a papíron."
 
 #: src/lyxrc.C:1729
 msgid "The font sizes used for calculating the scaling of the screen fonts."
@@ -7518,9 +7469,7 @@ msgstr "A kezelõfelületen megjelenõ betûk kódolása."
 #: src/lyxrc.C:1758
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr ""
-"Az automatikus mentések közötti idõ (másodpercben). A 0 azt jelenti, hogy "
-"nincs automatikus mentés."
+msgstr "Az automatikus mentések közötti idõ (másodpercben). A 0 azt jelenti, hogy nincs automatikus mentés."
 
 #: src/lyxrc.C:1762
 msgid "The default path for your documents."
@@ -7534,17 +7483,13 @@ msgstr "Az alapértelmezett könyvtár, amit a LyX felajánl a sablonválasztáskor."
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
-msgstr ""
-"A LyX itt fogja elhalyezni az ideiglenes könyvtárait. Ezeket törölni fogja "
-"kilépéskor."
+msgstr "A LyX itt fogja elhalyezni az ideiglenes könyvtárait. Ezeket törölni fogja kilépéskor."
 
 #: src/lyxrc.C:1774
 msgid ""
 "Select if you wish to use a temporary directory structure to store temporary "
 "TeX output."
-msgstr ""
-"Jelölje meg, ha ideiglenes könyvtárszerkezetet szeretne használni az "
-"ideiglenes TeX kimenetek számára."
+msgstr "Jelölje meg, ha ideiglenes könyvtárszerkezetet szeretne használni az ideiglenes TeX kimenetek számára."
 
 #: src/lyxrc.C:1778
 msgid "The file where the last-files information should be stored."
@@ -7554,9 +7499,7 @@ msgstr "A fájl, amiben az 'utoljára megnyitott' információkat tárolja a LyX."
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
-msgstr ""
-"Kapcsolja ki ha nem akarja, hogy az aktuális kijelölés "
-"automatikusanfelülíródjon azzal amit gépel."
+msgstr "Kapcsolja ki ha nem akarja, hogy az aktuális kijelölés automatikusanfelülíródjon azzal amit gépel."
 
 #: src/lyxrc.C:1786
 msgid ""
@@ -7574,25 +7517,19 @@ msgstr ""
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
-msgstr ""
-"Billentyû kombinációk fájlja. Meg lehet adni abszolút elérési útvonalat is, "
-"vagy a LyX megkeresi a lokális és globális bind/ könyvtárakban."
+msgstr "Billentyû kombinációk fájlja. Meg lehet adni abszolút elérési útvonalat is, vagy a LyX megkeresi a lokális és globális bind/ könyvtárakban."
 
 #: src/lyxrc.C:1799
 msgid ""
 "The  UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
-msgstr ""
-"Az UI fájl.  lehet adni abszolút elérési útvonalat is, vagy a LyX megkeresi "
-"a lokális és globális ui/ könyvtárakban."
+msgstr "Az UI fájl.  lehet adni abszolút elérési útvonalat is, vagy a LyX megkeresi a lokális és globális ui/ könyvtárakban."
 
 #: src/lyxrc.C:1805
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
-msgstr ""
-"Használja ezt a helyes billentyûzetkiosztás beállításához. Erre akkor van "
-"szüksége, ha például Magyar dokumentumokat akar írni Amerikai billentyûzeten."
+msgstr "Használja ezt a helyes billentyûzetkiosztás beállításához. Erre akkor van szüksége, ha például Magyar dokumentumokat akar írni Amerikai billentyûzeten."
 
 #: src/lyxrc.C:1819
 msgid ""
@@ -7605,21 +7542,15 @@ msgstr ""
 msgid ""
 "This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
 "plain text)."
-msgstr ""
-"Ez a maximum sorhossz egy exportált ASCII fájl esetén (LaTeX, SGML vagy "
-"egyszerû szöveg)."
+msgstr "Ez a maximum sorhossz egy exportált ASCII fájl esetén (LaTeX, SGML vagy egyszerû szöveg)."
 
 #: src/lyxrc.C:1827
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
-msgstr ""
-"Az utoljára megnyitott fájlok maximális száma. Maximum 9 -et jeleníthet meg "
-"a fájl menüben."
+msgstr "Az utoljára megnyitott fájlok maximális száma. Maximum 9 -et jeleníthet meg a fájl menüben."
 
 #: src/lyxrc.C:1831
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"Kapcsolja be, ha ellenõrizni kívánja hogy az utoljára megnyitott fájlok "
-"léteznek -e."
+msgstr "Kapcsolja be, ha ellenõrizni kívánja hogy az utoljára megnyitott fájlok léteznek -e."
 
 #: src/lyxrc.C:1838
 msgid "Specify the default paper size."
@@ -7662,79 +7593,58 @@ msgid ""
 "Allow the use of scalable screen fonts? If false, LyX will use the closest "
 "existing size for a match. Use this if the scalable fonts look bad and you "
 "have many fixed size fonts."
-msgstr ""
-"Engedélyezi a méretezhetõ betûk használatát a képernyõn? Ha nem, a LyX a "
-"legközelebbi létezõ méretû betût fogja használni a képernyõn. Kapcsolja ki, "
-"ha a méretezhetõ betûk nem szépek és önnek sok fix méretû betûtípusa van."
+msgstr "Engedélyezi a méretezhetõ betûk használatát a képernyõn? Ha nem, a LyX a legközelebbi létezõ méretû betût fogja használni a képernyõn. Kapcsolja ki, ha a méretezhetõ betûk nem szépek és önnek sok fix méretû betûtípusa van."
 
 #: src/lyxrc.C:1876
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
-msgstr ""
-"Adja meg hogy futtassam a chktex -et. Pl.: \"chktex -n11 -n1 -n3 -n6 -n9 -22 "
-"-n25 -n30 -n38\" Hivatkozva a ChkTeX dokumentációjára."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
+msgstr "Adja meg hogy futtassam a chktex -et. Pl.: \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\" Hivatkozva a ChkTeX dokumentációjára."
 
 #: src/lyxrc.C:1880
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
-msgstr ""
-"A LyX normálisan nem frissíti a kurzor pozícióját, ha a gördítõsávot "
-"mozgatja. Kapcsolja be, ha szeretné hogy a kurzor mindíg kövesse a "
-"gördítõsávot."
+msgstr "A LyX normálisan nem frissíti a kurzor pozícióját, ha a gördítõsávot mozgatja. Kapcsolja be, ha szeretné hogy a kurzor mindíg kövesse a gördítõsávot."
 
 #: src/lyxrc.C:1884
 msgid ""
 "Sets whether LyX asks for a second confirmation to exit when you have "
 "changed documents. (LyX will still ask to save changed documents.)"
-msgstr ""
-"Kilépés elõtt a LyX mégegyszer rákérdez, ha módosított dokumentum van "
-"nyitva. (A LyX mindíg rákérdez, hogy mentse -e a módósított dokumentumokat.)"
+msgstr "Kilépés elõtt a LyX mégegyszer rákérdez, ha módosított dokumentum van nyitva. (A LyX mindíg rákérdez, hogy mentse -e a módósított dokumentumokat.)"
 
 #: src/lyxrc.C:1888
 msgid ""
 "LyX continously displays names of last command executed, along with a list "
 "of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
 "slow."
-msgstr ""
-"LyX continously displays names of last command executed, along with a list "
-"of defined short-cuts for it in the minibuffer. Kapcsolja ki, ha lassúnak "
-"tûnik a LyX mûködése."
+msgstr "LyX continously displays names of last command executed, along with a list of defined short-cuts for it in the minibuffer. Kapcsolja ki, ha lassúnak tûnik a LyX mûködése."
 
 #: src/lyxrc.C:1892
 msgid "De-select if you don't want LyX to create backup files."
-msgstr ""
-"Kapcsolja ki, ha nem akarja hogy a LyX biztonsági mentéseket készítsen."
+msgstr "Kapcsolja ki, ha nem akarja hogy a LyX biztonsági mentéseket készítsen."
 
 #: src/lyxrc.C:1896
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
-msgstr ""
-"A biztonsági mentések könyvtára. Ha üresen hagyja, a LyX ugyanabba a "
-"könyvtárba teszi a biztonsági mentéseket, ahol az eredeti dokumentum "
-"található."
+msgstr "A biztonsági mentések könyvtára. Ha üresen hagyja, a LyX ugyanabba a könyvtárba teszi a biztonsági mentéseket, ahol az eredeti dokumentum található."
 
 #: src/lyxrc.C:1900
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Kapcsolja be, ha használni kívánja a jobbról-balra író nyelveket (pl.: "
-"Héber, Arab)."
+msgstr "Kapcsolja be, ha használni kívánja a jobbról-balra író nyelveket (pl.: Héber, Arab)."
 
 #: src/lyxrc.C:1904
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
-msgstr ""
-"Kapcsolja be, ha ki szeretné emeltetni az idegen nyelvû reszleteket a "
-"dokumentumban. (a dokumentum nyelvéhez képest)"
+msgstr "Kapcsolja be, ha ki szeretné emeltetni az idegen nyelvû reszleteket a dokumentumban. (a dokumentum nyelvéhez képest)"
 
 #: src/lyxrc.C:1908
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
 #: src/lyxrc.C:1912
@@ -7781,9 +7691,7 @@ msgstr ""
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
-msgstr ""
-"Használja az strftime formátumot; részletes leírást a strftime kéziköny "
-"oldalain (man) talál. Pl.: \"%A, %e. %B %Y\"."
+msgstr "Használja az strftime formátumot; részletes leírást a strftime kéziköny oldalain (man) talál. Pl.: \"%A, %e. %B %Y\"."
 
 #: src/lyxrc.C:1945
 msgid "De-select if you don't want the startup banner."
@@ -7797,9 +7705,7 @@ msgstr "A görgõ mozgási sebessége (görgõs vagy 5 gombos egereknél)."
 msgid ""
 "This sets the behaviour if you want to be asked for a filename when creating "
 "a new document or wait until you save it and be asked then."
-msgstr ""
-"Ezzel azt lehet beállítani, hogy új dokumentum nyitásakor a LyX kérje -e a "
-"fájlnevet, vagy csak akkor, ha el akarja menteni."
+msgstr "Ezzel azt lehet beállítani, hogy új dokumentum nyitásakor a LyX kérje -e a fájlnevet, vagy csak akkor, ha el akarja menteni."
 
 #: src/lyxrc.C:1966
 msgid "New documents will be assigned this language."
@@ -8259,8 +8165,7 @@ msgstr "sajnálom."
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
-msgstr ""
-"Nem Lehet szóközzel kezdeni a bekezdést. Kérem olvassa el a Tankönyvet."
+msgstr "Nem Lehet szóközzel kezdeni a bekezdést. Kérem olvassa el a Tankönyvet."
 
 #: src/text.C:2005
 msgid "You cannot type two spaces this way.  Please read the Tutorial."

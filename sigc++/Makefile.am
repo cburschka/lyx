@@ -11,6 +11,8 @@ BUILT_SOURCES = slot.h object_slot.h func_slot.h class_slot.h \
                 basic_signal.h \
                 convert.h bind.h rettype.h retbind.h
 
+EXTRA_DIST = $(BUILT_SOURCES)
+
 libsigc_la_SOURCES= $(BUILT_SOURCES) \
    object.cc   scope.cc   marshal.cc   slot.cc\
    basic_signal.cc adaptor.cc thread.cc

@@ -4135,17 +4135,13 @@ msgstr "Formát dokumentu"
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
-msgstr ""
-"Implicitní | Atypický | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 "
-"| B4 | B5 "
+msgstr "Implicitní | Atypický | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:120
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-"Nic | A4 malé okraje (jen portrét) | A4 velmi malé okraje (jen portrét) | A4 "
-"velmi ¹iroké okraje (jen portrét) "
+msgstr "Nic | A4 malé okraje (jen portrét) | A4 velmi malé okraje (jen portrét) | A4 velmi ¹iroké okraje (jen portrét) "
 
 #: src/frontends/xforms/FormDocument.C:179
 msgid " Single | OneHalf | Double | Other "
@@ -4163,9 +4159,7 @@ msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
-msgstr ""
-" implicitní | drobné | index | poznámka | malé | normální | velké | vìt¹í | "
-"nejvìt¹í | obrovské | obrovité"
+msgstr " implicitní | drobné | index | poznámka | malé | normální | velké | vìt¹í | nejvìt¹í | obrovské | obrovité"
 
 #: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 #: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
@@ -5019,9 +5013,7 @@ msgstr "Klíè:|#K"
 #: src/frontends/xforms/FormPreferences.C:1979
 #, fuzzy
 msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr ""
-"Implicitní | Atypický | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 "
-"| B4 | B5 "
+msgstr "Implicitní | Atypický | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2231
 #, fuzzy
@@ -5064,9 +5056,7 @@ msgstr ""
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr ""
-" implicitní | drobné | index | poznámka | malé | normální | velké | vìt¹í | "
-"nejvìt¹í | obrovské | obrovité"
+msgstr " implicitní | drobné | index | poznámka | malé | normální | velké | vìt¹í | nejvìt¹í | obrovské | obrovité"
 
 #: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
@@ -7799,9 +7789,7 @@ msgstr "Beze zmìny %l| Vzpøímené | Kurzíva | Sklonìné | Kapitálky %l| Pùvodní "
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
-msgstr ""
-"Beze zmìny %l| Drobné | Nejmen¹í | Men¹í | Malé | Normální | Velké | Vìt¹í | "
-"Nejvìt¹í | Obrovské | Obrovité %l| Vìt¹í | Men¹í | Pùvodní "
+msgstr "Beze zmìny %l| Drobné | Nejmen¹í | Men¹í | Malé | Normální | Velké | Vìt¹í | Nejvìt¹í | Obrovské | Obrovité %l| Vìt¹í | Men¹í | Pùvodní "
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
@@ -7811,9 +7799,7 @@ msgstr "Beze zmìny %l| Zvýraznìné | Podtr¾ené | Jméno | LaTeX %l| Pùvodní "
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
-msgstr ""
-"Beze zmìny %l| ®ádná | Èerná | Bílá | Èervená | Zelená | Modrá | Azurová | "
-"Purpurová | ®lutá %l| Pùvodní "
+msgstr "Beze zmìny %l| ®ádná | Èerná | Bílá | Èervená | Zelená | Modrá | Azurová | Purpurová | ®lutá %l| Pùvodní "
 
 #: src/lyx_gui.C:333
 msgid " English %l| German | French "
@@ -8282,8 +8268,8 @@ msgstr ""
 
 #: src/lyxrc.C:1876
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
 #: src/lyxrc.C:1880
@@ -8328,8 +8314,8 @@ msgstr ""
 
 #: src/lyxrc.C:1908
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
 #: src/lyxrc.C:1912
@@ -8436,15 +8422,11 @@ msgstr "Ignorovat zmìny a pokraèovat?"
 #. changes made since the last check in.
 #: src/lyxvc.C:172
 msgid "When you revert, you will loose all changes made"
-msgstr ""
-"Pokud se vrátíte zpìt ztratíte v¹echny zmìny, které byly v dokumentu "
-"provedeny od posledního záznamu."
+msgstr "Pokud se vrátíte zpìt ztratíte v¹echny zmìny, které byly v dokumentu provedeny od posledního záznamu."
 
 #: src/lyxvc.C:173
 msgid "to the document since the last check in."
-msgstr ""
-"Pokud se vrátíte zpìt ztratíte v¹echny zmìny, které byly v dokumentu "
-"provedeny od posledního záznamu."
+msgstr "Pokud se vrátíte zpìt ztratíte v¹echny zmìny, které byly v dokumentu provedeny od posledního záznamu."
 
 #: src/lyxvc.C:174
 msgid "Do you still want to do it?"

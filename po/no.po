@@ -3759,9 +3759,7 @@ msgstr ""
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-"Ingen | A4 smale marger (bare høydeformat) | A4 veldig smale marger (bare "
-"høydeformat) | A4 veldig vide marger (bare høydeformat) "
+msgstr "Ingen | A4 smale marger (bare høydeformat) | A4 veldig smale marger (bare høydeformat) | A4 veldig vide marger (bare høydeformat) "
 
 #: src/frontends/xforms/FormDocument.C:179
 msgid " Single | OneHalf | Double | Other "
@@ -3779,9 +3777,7 @@ msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | «tekst» | »tekst« "
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
-msgstr ""
-"standad | bitteliten | minst | mindre | liten | normal | stor | større | "
-"størst | enorm | gigantisk"
+msgstr "standad | bitteliten | minst | mindre | liten | normal | stor | større | størst | enorm | gigantisk"
 
 #: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 #: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
@@ -4465,9 +4461,7 @@ msgstr "Konverter \"til\" dette formatet"
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file."
-msgstr ""
-"Konverterings kommandoen. $$i er navnet på inn filen, $$b er navnet på filen "
-"uten dennes ekstensjon og $$o er navnet på ut filen."
+msgstr "Konverterings kommandoen. $$i er navnet på inn filen, $$b er navnet på filen uten dennes ekstensjon og $$o er navnet på ut filen."
 
 #: src/frontends/xforms/FormPreferences.C:1012
 msgid "Flags that control the converter behavior"
@@ -4477,9 +4471,7 @@ msgstr "Flag som kontrolerer konverterens oppførsel"
 msgid ""
 "Remove the current converter from the list of available converters. Note: "
 "you must then \"Apply\" the change."
-msgstr ""
-"Fjern den merkede konverteren fra listen over tilgjengelige konvertere. NB: "
-"du må så \"Bruk\"e endringe."
+msgstr "Fjern den merkede konverteren fra listen over tilgjengelige konvertere. NB: du må så \"Bruk\"e endringe."
 
 #: src/frontends/xforms/FormPreferences.C:1016
 #: src/frontends/xforms/FormPreferences.C:1288
@@ -7153,9 +7145,7 @@ msgstr " Ingen endring %l| Stående | Skråstilt | Skjev | Small Caps %l| Reset "
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
-msgstr ""
-" Ingen Endring %l| Bitteliten | Minst | Mindre | Liten | Normal | Stor | "
-"Større | Størst | Enda større | Kjempestor %l| Øk | Minsk | Reset "
+msgstr " Ingen Endring %l| Bitteliten | Minst | Mindre | Liten | Normal | Stor | Større | Størst | Enda større | Kjempestor %l| Øk | Minsk | Reset "
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
@@ -7167,9 +7157,7 @@ msgstr ""
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
-msgstr ""
-"Ingen endring %l| Ingen farge | Sort | Hvit | Rød | Grønn | Blå | Cyan | "
-"Magenta | Gul%l | Resett "
+msgstr "Ingen endring %l| Ingen farge | Sort | Hvit | Rød | Grønn | Blå | Cyan | Magenta | Gul%l | Resett "
 
 #: src/lyx_gui.C:333
 msgid " English %l| German | French "
@@ -7647,8 +7635,8 @@ msgstr ""
 
 #: src/lyxrc.C:1876
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
 #: src/lyxrc.C:1880
@@ -7693,8 +7681,8 @@ msgstr ""
 
 #: src/lyxrc.C:1908
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
 #: src/lyxrc.C:1912
@@ -8202,9 +8190,7 @@ msgstr "Ingenting å gjøre"
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
-msgstr ""
-"Ingen font endring definert. Bruk Tegn under Stil menyen to å definere font "
-"endring."
+msgstr "Ingen font endring definert. Bruk Tegn under Stil menyen to å definere font endring."
 
 #: src/text2.C:2198 src/text2.C:2311
 msgid "Don't know what to do with half floats."

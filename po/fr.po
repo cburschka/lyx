@@ -163,8 +163,8 @@ msgstr ""
 "POT-Creation-Date: 2001-07-24 15:15+0200\n"
 "PO-Revision-Date: 2001-06-23 02:56+01:00\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
-"Language-Team: lyxfr "
-"<http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr.html>\n"
+"Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
+"html>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -264,8 +264,7 @@ msgstr "Le format du fichier est plus récent que"
 
 #: src/buffer.C:1149
 msgid "is supported in this LyX version. Expect some problems."
-msgstr ""
-"celui supporté par cette version de LyX. Attendez-vous à des problèmes."
+msgstr "celui supporté par cette version de LyX. Attendez-vous à des problèmes."
 
 #: src/buffer.C:1173
 msgid "Not a LyX file!"
@@ -3069,17 +3068,8 @@ msgid ""
 "along with this program; if not, write to the Free Software Foundation, "
 "Inc.,  675 Mass Ave, Cambridge, MA 02139, USA."
 msgstr ""
-"Ce programme est un logiciel libre ; vous pouvez le redistribuer et/ou le "
-"modifier selon les termes de la Licence Publique Générale GNU telle qu'elle "
-"est publiée par la Free Software Foundation ; soit la version 2 de la "
-"Licence, soit (à votre choix) une version ultérieure.\n"
-"LyX est distribué en espérant qu'il sera utile, mais SANS AUCUNE GARANTIE ; "
-"sans même la garantie implicite qu'il est COMMERCIALEMENT VALABLE ou qu'il "
-"est ADAPTÉ À UNE TÂCHE DONNÉE. Reportez-vous à la Licence Publique Générale "
-"GNU pour plus de détails. Vous devez avoir reçu une copie de la Licence "
-"Publique Générale GNU en même temps que ce programme ; si ce n'est pas le "
-"cas, écrivez à la Free Software Foundation, Inc., 59 Temple Place, Suite "
-"330, Boston, MA 02111-1307, États-Unis."
+"Ce programme est un logiciel libre ; vous pouvez le redistribuer et/ou le modifier selon les termes de la Licence Publique Générale GNU telle qu'elle est publiée par la Free Software Foundation ; soit la version 2 de la Licence, soit (à votre choix) une version ultérieure.\n"
+"LyX est distribué en espérant qu'il sera utile, mais SANS AUCUNE GARANTIE ; sans même la garantie implicite qu'il est COMMERCIALEMENT VALABLE ou qu'il est ADAPTÉ À UNE TÂCHE DONNÉE. Reportez-vous à la Licence Publique Générale GNU pour plus de détails. Vous devez avoir reçu une copie de la Licence Publique Générale GNU en même temps que ce programme ; si ce n'est pas le cas, écrivez à la Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, États-Unis."
 
 #: src/frontends/gnome/FormError.C:89
 msgid " Error "
@@ -3908,11 +3898,7 @@ msgid ""
 "under the terms of the GNU General Public License as published by the Free "
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
-msgstr ""
-"Ce programme est un logiciel libre ; vous pouvez le redistribuer et/ou le "
-"modifier selon les termes de la Licence Publique Générale GNU telle qu'elle "
-"est publiée par la Free Software Foundation ; soit la version 2 de la "
-"Licence, soit (à votre choix) une version ultérieure."
+msgstr "Ce programme est un logiciel libre ; vous pouvez le redistribuer et/ou le modifier selon les termes de la Licence Publique Générale GNU telle qu'elle est publiée par la Free Software Foundation ; soit la version 2 de la Licence, soit (à votre choix) une version ultérieure."
 
 #: src/frontends/xforms/FormCopyright.C:61
 msgid ""
@@ -3922,14 +3908,7 @@ msgid ""
 "details. You should have received a copy of the GNU General Public License "
 "along with this program; if not, write to the Free Software Foundation, "
 "Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
-msgstr ""
-"LyX est distribué en espérant qu'il sera utile, mais SANS AUCUNE GARANTIE ; "
-"sans même la garantie implicite qu'il est COMMERCIALEMENT VALABLE ou qu'il "
-"est ADAPTÉ À UNE TÂCHE DONNÉE. Reportez-vous à la Licence Publique Générale "
-"GNU pour plus de détails. Vous devez avoir reçu une copie de la Licence "
-"Publique Générale GNU en même temps que ce programme ; si ce n'est pas le "
-"cas, écrivez à la Free Software Foundation, Inc., 59 Temple Place, Suite "
-"330, Boston, MA 02111-1307, États-Unis."
+msgstr "LyX est distribué en espérant qu'il sera utile, mais SANS AUCUNE GARANTIE ; sans même la garantie implicite qu'il est COMMERCIALEMENT VALABLE ou qu'il est ADAPTÉ À UNE TÂCHE DONNÉE. Reportez-vous à la Licence Publique Générale GNU pour plus de détails. Vous devez avoir reçu une copie de la Licence Publique Générale GNU en même temps que ce programme ; si ce n'est pas le cas, écrivez à la Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, États-Unis."
 
 #: src/frontends/xforms/form_copyright.C:41
 #: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
@@ -3944,17 +3923,13 @@ msgstr "Style de Document"
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
-msgstr ""
-" Défaut | Personnalisée | Lettre US | Légal US | Executive US | A3 | A4 | A5 "
-"| B3 | B4 | B5 "
+msgstr " Défaut | Personnalisée | Lettre US | Légal US | Executive US | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:120
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Rien | A4 petites marges (portrait seulement) | A4 très petites marges "
-"(portrait seulement) | A4 très grandes marges (portrait seulement) "
+msgstr " Rien | A4 petites marges (portrait seulement) | A4 très petites marges (portrait seulement) | A4 très grandes marges (portrait seulement) "
 
 #: src/frontends/xforms/FormDocument.C:179
 msgid " Single | OneHalf | Double | Other "
@@ -3972,9 +3947,7 @@ msgstr " ``texte'' | ''texte'' | ,,texte`` | ,,texte'' | «texte» | »texte« "
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
-msgstr ""
-" défaut | minuscule(-4) | très très petit(-3) | très petit(-2)  | petit(-1) "
-"| normal | grand(+1) | Grand(+2) | GRAND(+3) | énorme(+4) | Énorme(+5)"
+msgstr " défaut | minuscule(-4) | très très petit(-3) | très petit(-2)  | petit(-1) | normal | grand(+1) | Grand(+2) | GRAND(+3) | énorme(+4) | Énorme(+5)"
 
 #: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 #: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
@@ -4680,9 +4653,7 @@ msgstr "Convertir \"vers\" ce format"
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file."
-msgstr ""
-"La commande de conversion. $$i est le nom du fichier d'entrée, $$b est le "
-"nom du fichier sans l'extension et $$o est le nom du fichier de sortie."
+msgstr "La commande de conversion. $$i est le nom du fichier d'entrée, $$b est le nom du fichier sans l'extension et $$o est le nom du fichier de sortie."
 
 #: src/frontends/xforms/FormPreferences.C:1012
 msgid "Flags that control the converter behavior"
@@ -4692,9 +4663,7 @@ msgstr "Options qui modifient le comportement du convertisseur"
 msgid ""
 "Remove the current converter from the list of available converters. Note: "
 "you must then \"Apply\" the change."
-msgstr ""
-"Enlève le convertisseur de la liste des convertisseurs disponibles. Vous "
-"devez ensuite \"Appliquer\" la modification."
+msgstr "Enlève le convertisseur de la liste des convertisseurs disponibles. Vous devez ensuite \"Appliquer\" la modification."
 
 #: src/frontends/xforms/FormPreferences.C:1016
 #: src/frontends/xforms/FormPreferences.C:1288
@@ -4705,9 +4674,7 @@ msgstr "Ajouter"
 msgid ""
 "Add the current converter to the list of available converters. Note: you "
 "must then \"Apply\" the change."
-msgstr ""
-"Ajoute le convertisseur à la liste des convertisseurs disponibles. Vous "
-"devez ensuite \"Appliquer\" la modification."
+msgstr "Ajoute le convertisseur à la liste des convertisseurs disponibles. Vous devez ensuite \"Appliquer\" la modification."
 
 #: src/frontends/xforms/FormPreferences.C:1019
 msgid ""
@@ -4752,9 +4719,7 @@ msgstr "Le nom du format tel qu'il apparaîtra dans les menus."
 
 #: src/frontends/xforms/FormPreferences.C:1280
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr ""
-"Le raccourci clavier. Choisissez une lettre du nom d'interface. Sensible à "
-"la casse"
+msgstr "Le raccourci clavier. Choisissez une lettre du nom d'interface. Sensible à la casse"
 
 #: src/frontends/xforms/FormPreferences.C:1282
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
@@ -4768,17 +4733,13 @@ msgstr "La commande pour lancer la visionneuse."
 msgid ""
 "Remove the current format from the list of available formats. Note: you must "
 "then \"Apply\" the change."
-msgstr ""
-"Enlève le format de la liste des formats disponibles. Vous devez ensuite "
-"\"Appliquer\" la modification."
+msgstr "Enlève le format de la liste des formats disponibles. Vous devez ensuite \"Appliquer\" la modification."
 
 #: src/frontends/xforms/FormPreferences.C:1289
 msgid ""
 "Add the current format to the list of available formats. Note: you must then "
 "\"Apply\" the change."
-msgstr ""
-"Ajoute le format à la liste des formats disponibles. Vous devez ensuite "
-"\"Appliquer\" la modification."
+msgstr "Ajoute le format à la liste des formats disponibles. Vous devez ensuite \"Appliquer\" la modification."
 
 #: src/frontends/xforms/FormPreferences.C:1291
 msgid ""
@@ -4790,9 +4751,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:1407
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-"Impossible d'enlever un Format utilisé par un Convertisseur. Enlevez d'abord "
-"le convertisseur."
+msgstr "Impossible d'enlever un Format utilisé par un Convertisseur. Enlevez d'abord le convertisseur."
 
 #: src/frontends/xforms/FormPreferences.C:1578
 msgid "Sys Bind"
@@ -4868,10 +4827,7 @@ msgstr "Les tailles de police doivent être positives !"
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr ""
-"Les tailles de police doivent être dans l'ordre minuscule > très très petit "
-"> très petit > petit > normal > grand > très grand > très très grand > "
-"énorme > très énorme."
+msgstr "Les tailles de police doivent être dans l'ordre minuscule > très très petit > très petit > petit > normal > grand > très grand > très très grand > énorme > très énorme."
 
 #: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
@@ -7310,8 +7266,7 @@ msgstr "'Set-color' \""
 
 #: src/lyxfunc.C:2920
 msgid "\" failed - color is undefined or may not be redefined"
-msgstr ""
-"\" a échoué - la couleur n'est pas définie ou ne peut pas être redéfinie"
+msgstr "\" a échoué - la couleur n'est pas définie ou ne peut pas être redéfinie"
 
 #: src/lyxfunc.C:2935
 msgid "No document open"
@@ -7425,10 +7380,7 @@ msgstr " Idem %l| Droit | Italique | Incliné | Petites capitales %l| RàZ "
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
-msgstr ""
-" Idem %l| Petit(4) | Petit(3) | Petit(2) | Petit(1) | Normal | Grand (1) | "
-"Grand (2) | Grand (3) | Grand (4) | Grand (5) | <- Augmenter -> | -> "
-"Diminuer <- | RàZ "
+msgstr " Idem %l| Petit(4) | Petit(3) | Petit(2) | Petit(1) | Normal | Grand (1) | Grand (2) | Grand (3) | Grand (4) | Grand (5) | <- Augmenter -> | -> Diminuer <- | RàZ "
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
@@ -7438,9 +7390,7 @@ msgstr " Idem %l| Italique | Souligné | Nom propre | Mode LaTeX %l | RàZ "
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
-msgstr ""
-" Idem %l| incolore | noir | blanc | rouge | vert | bleu | cyan | magenta | "
-"jaune %l | RàZ "
+msgstr " Idem %l| incolore | noir | blanc | rouge | vert | bleu | cyan | magenta | jaune %l | RàZ "
 
 #: src/lyx_gui.C:333
 msgid " English %l| German | French "
@@ -7518,9 +7468,7 @@ msgstr "Essayer le paramètre de ligne de commande '-sysdir' ou "
 
 #: src/lyx_main.C:323
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
-msgstr ""
-"positionner la variable d'environnement LYX_DIR_11x sur le répertoire "
-"système "
+msgstr "positionner la variable d'environnement LYX_DIR_11x sur le répertoire système "
 
 #: src/lyx_main.C:325
 msgid "containing the file `chkconfig.ltx'."
@@ -7665,17 +7613,13 @@ msgstr "Type de fichier manquant [par ex. latex, ps...] après "
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
-msgstr ""
-"L'encodage de police pour le paquetage LaTeX2e fontenc. T1 est vivement "
-"recommandé pour toutes les langues autres que l'anglais."
+msgstr "L'encodage de police pour le paquetage LaTeX2e fontenc. T1 est vivement recommandé pour toutes les langues autres que l'anglais."
 
 #: src/lyxrc.C:1648
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr ""
-"L'imprimante par défaut. Si aucune n'est spécifiée, LyX se sert de la "
-"variable d'environnement PRINTER."
+msgstr "L'imprimante par défaut. Si aucune n'est spécifiée, LyX se sert de la variable d'environnement PRINTER."
 
 #: src/lyxrc.C:1652
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -7691,9 +7635,7 @@ msgstr "L'option pour n'imprimer que les pages impaires."
 
 #: src/lyxrc.C:1664
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr ""
-"L'option pour spécifier la liste des pages à imprimer, séparées par une "
-"virgule"
+msgstr "L'option pour spécifier la liste des pages à imprimer, séparées par une virgule"
 
 #: src/lyxrc.C:1668
 msgid "The option for specifying the number of copies to print."
@@ -7721,23 +7663,17 @@ msgstr "L'option pour spécifier les dimensions du papier."
 
 #: src/lyxrc.C:1692
 msgid "Option to pass to the print program to print on a specific printer."
-msgstr ""
-"L'option à transmettre au programme d'impression pour imprimer sur une "
-"imprimante donnée."
+msgstr "L'option à transmettre au programme d'impression pour imprimer sur une imprimante donnée."
 
 #: src/lyxrc.C:1696
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
-msgstr ""
-"Sélectionnez pour que LyX transmette le nom de l'imprimante de destination à "
-"votre commande d'impression."
+msgstr "Sélectionnez pour que LyX transmette le nom de l'imprimante de destination à votre commande d'impression."
 
 #: src/lyxrc.C:1700
 msgid "Option to pass to the print program to print to a file."
-msgstr ""
-"L'option à transmettre au programme d'impression pour imprimer dans un "
-"fichier donné."
+msgstr "L'option à transmettre au programme d'impression pour imprimer dans un fichier donné."
 
 #: src/lyxrc.C:1704
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -7749,55 +7685,41 @@ msgstr ""
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr ""
-"Options supplémentaires à transmettre au programme d'impression après toutes "
-"les autres, mais avant le nom du fichier DVI à imprimer."
+msgstr "Options supplémentaires à transmettre au programme d'impression après toutes les autres, mais avant le nom du fichier DVI à imprimer."
 
 #: src/lyxrc.C:1712
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
-msgstr ""
-"Quand elle est définie, cette option imprime automatiquement vers un fichier "
-"puis appelle sur ce fichier un programme de spoule d'impression séparé, avec "
-"le nom et les paramètres indiqués."
+msgstr "Quand elle est définie, cette option imprime automatiquement vers un fichier puis appelle sur ce fichier un programme de spoule d'impression séparé, avec le nom et les paramètres indiqués."
 
 #: src/lyxrc.C:1716
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
-msgstr ""
-"Si vous spécifiez un nom d'imprimante dans la fenêtre Imprimer, le paramètre "
-"est transmis avec le nom de l'imprimante à la commande de spoule."
+msgstr "Si vous spécifiez un nom d'imprimante dans la fenêtre Imprimer, le paramètre est transmis avec le nom de l'imprimante à la commande de spoule."
 
 #: src/lyxrc.C:1720
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
-msgstr ""
-"LyX détecte tout seul la résolution de votre moniteur en DPI (points par "
-"pouce). Si ça ne va pas, changez le réglage ici."
+msgstr "LyX détecte tout seul la résolution de votre moniteur en DPI (points par pouce). Si ça ne va pas, changez le réglage ici."
 
 #: src/lyxrc.C:1725
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
-msgstr ""
-"Le facteur d'agrandissement des polices d'écran. Avec 100% les polices "
-"feront à peu près la même taille que sur le papier."
+msgstr "Le facteur d'agrandissement des polices d'écran. Avec 100% les polices feront à peu près la même taille que sur le papier."
 
 #: src/lyxrc.C:1729
 msgid "The font sizes used for calculating the scaling of the screen fonts."
-msgstr ""
-"Les tailles de police utilisées pour calculer l'ajustement des polices "
-"d'écran"
+msgstr "Les tailles de police utilisées pour calculer l'ajustement des polices d'écran"
 
 #: src/lyxrc.C:1735
 msgid "The screen fonts used to display the text while editing."
-msgstr ""
-"Les polices d'écran dans lesquelles s'affiche le texte en cours d'édition."
+msgstr "Les polices d'écran dans lesquelles s'affiche le texte en cours d'édition."
 
 #: src/lyxrc.C:1739
 msgid "The font for menus (and groups titles in popups)."
@@ -7834,17 +7756,13 @@ msgstr "Le répertoire dans lequel LyX enregistre par défaut les modèles."
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
-msgstr ""
-"LyX y mettra ses répertoires temporaires. Ils seront effacés quand vous "
-"quitterez LyX."
+msgstr "LyX y mettra ses répertoires temporaires. Ils seront effacés quand vous quitterez LyX."
 
 #: src/lyxrc.C:1774
 msgid ""
 "Select if you wish to use a temporary directory structure to store temporary "
 "TeX output."
-msgstr ""
-"Sélectionnez si vous voulez utiliser une structure de répertoires "
-"temporaires pour stocker les sorties TeX temporaires."
+msgstr "Sélectionnez si vous voulez utiliser une structure de répertoires temporaires pour stocker les sorties TeX temporaires."
 
 #: src/lyxrc.C:1778
 msgid "The file where the last-files information should be stored."
@@ -7854,73 +7772,54 @@ msgstr "Le fichier qui retient les fichiers récemment ouverts."
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
-msgstr ""
-"Désélectionnez si vous ne voulez pas que le texte sélectionné soit remplacé "
-"automatiquement par ce que vous tapez."
+msgstr "Désélectionnez si vous ne voulez pas que le texte sélectionné soit remplacé automatiquement par ce que vous tapez."
 
 #: src/lyxrc.C:1786
 msgid ""
 "Select if LyX is to take over the handling of the dead keys (a.k.a. accent "
 "keys) that may be defined for your keyboard."
-msgstr ""
-"Cochez pour que LyX se charge de gérer les touches mortes (comme l'accent "
-"cironflexe) définies sur votre clavier."
+msgstr "Cochez pour que LyX se charge de gérer les touches mortes (comme l'accent cironflexe) définies sur votre clavier."
 
 #: src/lyxrc.C:1791
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
-msgstr ""
-"Démarre le serveur LyX. Les tubes reçoivent l'extension supplémentaire "
-"\".in\" et \".out\". Réservé aux utilisateurs avancés."
+msgstr "Démarre le serveur LyX. Les tubes reçoivent l'extension supplémentaire \".in\" et \".out\". Réservé aux utilisateurs avancés."
 
 #: src/lyxrc.C:1795
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
-msgstr ""
-"Fichier de raccourcis clavier (bind). Vous pouvez mettre son chemin absolu, "
-"ou bien LyX cherchera dans ses répertoires bind/ global et local."
+msgstr "Fichier de raccourcis clavier (bind). Vous pouvez mettre son chemin absolu, ou bien LyX cherchera dans ses répertoires bind/ global et local."
 
 #: src/lyxrc.C:1799
 msgid ""
 "The  UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
-msgstr ""
-"Le fichier d'interface utilisateur (UI). Vous pouvez mettre son chemin "
-"absolu, ou bien LyX cherchera dans ses répertoires ui/ global et local."
+msgstr "Le fichier d'interface utilisateur (UI). Vous pouvez mettre son chemin absolu, ou bien LyX cherchera dans ses répertoires ui/ global et local."
 
 #: src/lyxrc.C:1805
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
-msgstr ""
-"Pour choisir le fichier de réaffectation clavier. Vous en avez besoin si "
-"vous tapez par exemple des documents en allemand sur un clavier français."
+msgstr "Pour choisir le fichier de réaffectation clavier. Vous en avez besoin si vous tapez par exemple des documents en allemand sur un clavier français."
 
 #: src/lyxrc.C:1819
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
 "\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
 "is specified, an internal routine is used."
-msgstr ""
-"Sert à désigner un programme externe pour rendre les tableaux dans une "
-"sortie ASCII. Par ex. \"groff -t -Tlatin1 $$FName\" où $$FName est le "
-"fichier d'entrée. Si vous mettez \"none\", LyX utilise une fonction interne."
+msgstr "Sert à désigner un programme externe pour rendre les tableaux dans une sortie ASCII. Par ex. \"groff -t -Tlatin1 $$FName\" où $$FName est le fichier d'entrée. Si vous mettez \"none\", LyX utilise une fonction interne."
 
 #: src/lyxrc.C:1823
 msgid ""
 "This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
 "plain text)."
-msgstr ""
-"Longueur maximum d'une ligne dans un fichier exporté en ASCII (LaTeX, SGML "
-"ou texte brut)."
+msgstr "Longueur maximum d'une ligne dans un fichier exporté en ASCII (LaTeX, SGML ou texte brut)."
 
 #: src/lyxrc.C:1827
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
-msgstr ""
-"Nombre maximum de fichiers récents. On peut en avoir jusqu'à 9 dans le menu "
-"Fichier."
+msgstr "Nombre maximum de fichiers récents. On peut en avoir jusqu'à 9 dans le menu Fichier."
 
 #: src/lyxrc.C:1831
 msgid "Select to check whether the lastfiles still exist."
@@ -7935,9 +7834,7 @@ msgstr "Spécifie la taille de papier par défaut."
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
-msgstr ""
-"Autoriser ou non les mots composés accolés, comme \"diskdrive\" pour \"disk "
-"drive\"."
+msgstr "Autoriser ou non les mots composés accolés, comme \"diskdrive\" pour \"disk drive\"."
 
 #: src/lyxrc.C:1849
 msgid "What command runs the spell checker?"
@@ -7948,10 +7845,7 @@ msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you can't spellcheck words with international letters in them. This may "
 "not work with all dictionaries."
-msgstr ""
-"Si l'on doit transmettre à ispell l'option -T d'encodage d'entrée. Cochez si "
-"vous n'arrivez pas à vérifier les mots avec des caractères accentués. Ne "
-"marche pas forcément avec tous les dictionnaires."
+msgstr "Si l'on doit transmettre à ispell l'option -T d'encodage d'entrée. Cochez si vous n'arrivez pas à vérifier les mots avec des caractères accentués. Ne marche pas forcément avec tous les dictionnaires."
 
 #: src/lyxrc.C:1858
 msgid ""
@@ -7962,9 +7856,7 @@ msgstr "Spécifie une autre langue. La langue par défaut est celle du document."
 #: src/lyxrc.C:1863
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
-msgstr ""
-"Spécifie un fichier de dictionnaire personnel. Par exemple "
-"\"ispell_francais\"."
+msgstr "Spécifie un fichier de dictionnaire personnel. Par exemple \"ispell_francais\"."
 
 #: src/lyxrc.C:1868
 msgid "Specify additional chars that can be part of a word."
@@ -7975,79 +7867,58 @@ msgid ""
 "Allow the use of scalable screen fonts? If false, LyX will use the closest "
 "existing size for a match. Use this if the scalable fonts look bad and you "
 "have many fixed size fonts."
-msgstr ""
-"Autorise l'ajustement des polices d'écran ? Si non, LyX utilisera la taille "
-"existante la plus proche. Désélectionnez si vos polices ajustées ne sont pas "
-"belles et si vous avez beaucoup de tailles de police."
+msgstr "Autorise l'ajustement des polices d'écran ? Si non, LyX utilisera la taille existante la plus proche. Désélectionnez si vos polices ajustées ne sont pas belles et si vous avez beaucoup de tailles de police."
 
 #: src/lyxrc.C:1876
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
-msgstr ""
-"Définit comment lancer chktex. Par ex. \"chktex -n11 -n1 -n3 -n6 -n9 -n22 "
-"-n25 -n30 -n38\". Voir la documentation de ChkTeX."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
+msgstr "Définit comment lancer chktex. Par ex. \"chktex -n11 -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38\". Voir la documentation de ChkTeX."
 
 #: src/lyxrc.C:1880
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
-msgstr ""
-"LyX normalement ne change pas la position du curseur quand vous vous "
-"déplacez avec la barre de défilement. Cochez si vous préférez avoir toujours "
-"le curseur à l'écran."
+msgstr "LyX normalement ne change pas la position du curseur quand vous vous déplacez avec la barre de défilement. Cochez si vous préférez avoir toujours le curseur à l'écran."
 
 #: src/lyxrc.C:1884
 msgid ""
 "Sets whether LyX asks for a second confirmation to exit when you have "
 "changed documents. (LyX will still ask to save changed documents.)"
-msgstr ""
-"Si LyX demande une seconde confirmation avant de quitter avec des documents "
-"modifiés. (LyX demandera toujours si vous voulez enregistrer les documents "
-"modifiés.)"
+msgstr "Si LyX demande une seconde confirmation avant de quitter avec des documents modifiés. (LyX demandera toujours si vous voulez enregistrer les documents modifiés.)"
 
 #: src/lyxrc.C:1888
 msgid ""
 "LyX continously displays names of last command executed, along with a list "
 "of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
 "slow."
-msgstr ""
-"LyX affiche constamment dans le minibuffer le nom de la dernière commande "
-"exécutée, avec une liste de raccourcis lui correspondant. Désélectionnez si "
-"LyX paraît lent."
+msgstr "LyX affiche constamment dans le minibuffer le nom de la dernière commande exécutée, avec une liste de raccourcis lui correspondant. Désélectionnez si LyX paraît lent."
 
 #: src/lyxrc.C:1892
 msgid "De-select if you don't want LyX to create backup files."
-msgstr ""
-"Désélectionnez si vous ne voulez pas que LyX crée des copies de sauvegarde "
+msgstr "Désélectionnez si vous ne voulez pas que LyX crée des copies de sauvegarde "
 
 #: src/lyxrc.C:1896
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
-msgstr ""
-"Le répertoire dans lequel mettre les copies de sauvegarde. Si laissé vide, "
-"LyX mettra la copie de sauvegarde dans le même répertoire que l'original."
+msgstr "Le répertoire dans lequel mettre les copies de sauvegarde. Si laissé vide, LyX mettra la copie de sauvegarde dans le même répertoire que l'original."
 
 #: src/lyxrc.C:1900
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Sélectionnez pour activer le support des langues écrites de droite à gauche "
-"(par ex. l'hébreu ou l'arabe)."
+msgstr "Sélectionnez pour activer le support des langues écrites de droite à gauche (par ex. l'hébreu ou l'arabe)."
 
 #: src/lyxrc.C:1904
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
-msgstr ""
-"Sélectionnez pour activer le soulignement des mots dans une langue autre que "
-"celle du document."
+msgstr "Sélectionnez pour activer le soulignement des mots dans une langue autre que celle du document."
 
 #: src/lyxrc.C:1908
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 "La commande latex pour charger le paquetage linguistique. Par exemple "
 "\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
@@ -8056,17 +7927,13 @@ msgstr ""
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Désélectionnez si vous ne voulez pas que la langue soit un paramètre de "
-"\\documentclass."
+msgstr "Désélectionnez si vous ne voulez pas que la langue soit un paramètre de \\documentclass."
 
 #: src/lyxrc.C:1916
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
-msgstr ""
-"Désélectionnez si vous ne voulez pas utiliser babel quand la langue du "
-"document est la langue par défaut."
+msgstr "Désélectionnez si vous ne voulez pas utiliser babel quand la langue du document est la langue par défaut."
 
 #: src/lyxrc.C:1920
 msgid ""
@@ -8084,10 +7951,7 @@ msgid ""
 "The latex command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
-msgstr ""
-"La commande latex pour passer de la langue du document à une autre langue. "
-"Par exemple \\selectlanguage{$$lang} où $$lang est le nom de la seconde "
-"langue."
+msgstr "La commande latex pour passer de la langue du document à une autre langue. Par exemple \\selectlanguage{$$lang} où $$lang est le nom de la seconde langue."
 
 #: src/lyxrc.C:1932
 msgid "The latex command for changing back to the language of the document."
@@ -8102,9 +7966,7 @@ msgstr "La commande latex pour un changement local de langue."
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
-msgstr ""
-"Accepte les formats strftime normaux ; faites man strftime pour plus de "
-"détails. Par ex. \"%A, %e. %B %Y\"."
+msgstr "Accepte les formats strftime normaux ; faites man strftime pour plus de détails. Par ex. \"%A, %e. %B %Y\"."
 
 #: src/lyxrc.C:1945
 msgid "De-select if you don't want the startup banner."
@@ -8112,17 +7974,13 @@ msgstr "Désélectionnez si vous ne voulez pas la bannière de démarrage."
 
 #: src/lyxrc.C:1949
 msgid "The wheel movement factor (for mice with wheels or five button mice)."
-msgstr ""
-"Le pas de déplacement de la molette (pour les souris à molette ou à cinq "
-"boutons)."
+msgstr "Le pas de déplacement de la molette (pour les souris à molette ou à cinq boutons)."
 
 #: src/lyxrc.C:1962
 msgid ""
 "This sets the behaviour if you want to be asked for a filename when creating "
 "a new document or wait until you save it and be asked then."
-msgstr ""
-"Si vous voulez déterminer un nom de fichier à la création du document ou au "
-"premier enregistrement."
+msgstr "Si vous voulez déterminer un nom de fichier à la création du document ou au premier enregistrement."
 
 #: src/lyxrc.C:1966
 msgid "New documents will be assigned this language."
@@ -8580,9 +8438,7 @@ msgstr "Rien à faire"
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
-msgstr ""
-"Pas de changement de police défini. Utiliser Format->Caractère pour le "
-"définir."
+msgstr "Pas de changement de police défini. Utiliser Format->Caractère pour le définir."
 
 #: src/text2.C:2198 src/text2.C:2311
 msgid "Don't know what to do with half floats."
@@ -8596,9 +8452,7 @@ msgstr "désolé."
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
-msgstr ""
-"Vous ne pouvez pas entrer d'espace en début de paragraphe. Lisez le Manuel "
-"d'Apprentissage."
+msgstr "Vous ne pouvez pas entrer d'espace en début de paragraphe. Lisez le Manuel d'Apprentissage."
 
 #: src/text.C:2005
 msgid "You cannot type two spaces this way.  Please read the Tutorial."

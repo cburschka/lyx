@@ -4096,17 +4096,13 @@ msgstr "Dokumentstil"
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
-msgstr ""
-" Förvalt | Eget | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 "
-"| B5 "
+msgstr " Förvalt | Eget | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:120
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Ingen | A4 små marginaler (bara stående) | A4 mycket små marginaler (bara "
-"liggande) | A4 mycket breda marginaler (bara stående) "
+msgstr " Ingen | A4 små marginaler (bara stående) | A4 mycket små marginaler (bara liggande) | A4 mycket breda marginaler (bara stående) "
 
 #: src/frontends/xforms/FormDocument.C:179
 msgid " Single | OneHalf | Double | Other "
@@ -4124,9 +4120,7 @@ msgstr ""
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
-msgstr ""
-" förvalt | pytteliten | script | fotnot | liten | brödstil | stor | större | "
-"störst | störstare | störstast"
+msgstr " förvalt | pytteliten | script | fotnot | liten | brödstil | stor | större | störst | störstare | störstast"
 
 #: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 #: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
@@ -4982,9 +4976,7 @@ msgstr "Sakord:|#S"
 #: src/frontends/xforms/FormPreferences.C:1979
 #, fuzzy
 msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" Förvalt | Eget | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 "
-"| B5 "
+msgstr " Förvalt | Eget | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2231
 #, fuzzy
@@ -5026,9 +5018,7 @@ msgstr ""
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr ""
-" förvalt | pytteliten | script | fotnot | liten | brödstil | stor | större | "
-"störst | störstare | störstast"
+msgstr " förvalt | pytteliten | script | fotnot | liten | brödstil | stor | större | störst | störstare | störstast"
 
 #: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
@@ -7763,22 +7753,17 @@ msgstr " Oförändrat %l| Rak | Kursiv | Lutande | Kapitäler %l| Återställ "
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
-msgstr ""
-" Oförändrat %l| Pytteliten | Minst | Mindre | Liten | Normal | Stor | Större "
-"| Störst | Störstare | Störstast %l| Öka | Minska | Återställ "
+msgstr " Oförändrat %l| Pytteliten | Minst | Mindre | Liten | Normal | Stor | Större | Störst | Störstare | Störstast %l| Öka | Minska | Återställ "
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
-msgstr ""
-"Oförändrat %l| Betonad | Understruken | Namn | LaTeX-läge %l| Återställ "
+msgstr "Oförändrat %l| Betonad | Understruken | Namn | LaTeX-läge %l| Återställ "
 
 #: src/lyx_gui.C:328
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
-msgstr ""
-"Oförändrat %l| Ingen färg | Svart | Vit | Röd | Grön | Blå | Cyan | Magenta "
-"| Gul %l| Återställ "
+msgstr "Oförändrat %l| Ingen färg | Svart | Vit | Röd | Grön | Blå | Cyan | Magenta | Gul %l| Återställ "
 
 #: src/lyx_gui.C:333
 msgid " English %l| German | French "
@@ -8247,8 +8232,8 @@ msgstr ""
 
 #: src/lyxrc.C:1876
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
 #: src/lyxrc.C:1880
@@ -8293,8 +8278,8 @@ msgstr ""
 
 #: src/lyxrc.C:1908
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
 #: src/lyxrc.C:1912
@@ -8818,9 +8803,7 @@ msgstr "Ingenting att göra"
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
-msgstr ""
-"Ingen fontändring definerat. Välj Tecken under Stil-menyn för att definera "
-"fontändring."
+msgstr "Ingen fontändring definerat. Välj Tecken under Stil-menyn för att definera fontändring."
 
 #: src/text2.C:2198 src/text2.C:2311
 msgid "Don't know what to do with half floats."
@@ -8834,9 +8817,7 @@ msgstr "beklagar."
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
-msgstr ""
-"Du kan inte mata in ett mellanslag i början på ett stycke. Läs "
-"Nybörjarkursen."
+msgstr "Du kan inte mata in ett mellanslag i början på ett stycke. Läs Nybörjarkursen."
 
 #: src/text.C:2005
 msgid "You cannot type two spaces this way.  Please read the Tutorial."

@@ -4171,17 +4171,13 @@ msgstr "Формат документа"
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
-msgstr ""
-" по умолчанию | пользовательский | US-письмо | US-документ | US-записка | A3 "
-"| A4 | A5 | B3 | B4 | B5 "
+msgstr " по умолчанию | пользовательский | US-письмо | US-документ | US-записка | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:120
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" нет | A4 небольшие поля (только портрет) | А4 очень маленькие поля (только "
-"портрет) | A4 очень широкие поля (только портрет) "
+msgstr " нет | A4 небольшие поля (только портрет) | А4 очень маленькие поля (только портрет) | A4 очень широкие поля (только портрет) "
 
 #: src/frontends/xforms/FormDocument.C:179
 msgid " Single | OneHalf | Double | Other "
@@ -4199,9 +4195,7 @@ msgstr " ``текст'' | ''текст'' | ,,текст`` | ,,текст'' | ╚текст╩ | ╩текст╚ "
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
-msgstr ""
-" по-умолчанию | крохотный | рукописный | сноска | маленький | нормальный | "
-"большой | Большой | БОЛЬШОЙ | огромный | Огромный"
+msgstr " по-умолчанию | крохотный | рукописный | сноска | маленький | нормальный | большой | Большой | БОЛЬШОЙ | огромный | Огромный"
 
 #: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 #: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
@@ -4271,8 +4265,7 @@ msgstr "Возвращаюсь к оригинальному классу документа."
 #: src/frontends/xforms/FormDocument.C:825
 #, fuzzy
 msgid "Document is read-only. No changes to layout permitted."
-msgstr ""
-"Документ доступен только для чтения. Никакие изменения формата недопустимы."
+msgstr "Документ доступен только для чтения. Никакие изменения формата недопустимы."
 
 #: src/frontends/xforms/FormDocument.C:1100
 msgid "Should I set some parameters to"
@@ -5090,9 +5083,7 @@ msgstr ""
 #: src/frontends/xforms/FormPreferences.C:1979
 #, fuzzy
 msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" по умолчанию | пользовательский | US-письмо | US-документ | US-записка | A3 "
-"| A4 | A5 | B3 | B4 | B5 "
+msgstr " по умолчанию | пользовательский | US-письмо | US-документ | US-записка | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2231
 #, fuzzy
@@ -5135,9 +5126,7 @@ msgstr ""
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr ""
-" по-умолчанию | крохотный | рукописный | сноска | маленький | нормальный | "
-"большой | Большой | БОЛЬШОЙ | огромный | Огромный"
+msgstr " по-умолчанию | крохотный | рукописный | сноска | маленький | нормальный | большой | Большой | БОЛЬШОЙ | огромный | Огромный"
 
 #: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
@@ -7906,30 +7895,23 @@ msgstr " Без изменений %l| Нормальный | Полужирный %l| Сброс"
 
 #: src/lyx_gui.C:319
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
-msgstr ""
-" Без изменений %l| Прямой | Курсив | Наклонный | Малые прописные %l| Сброс "
+msgstr " Без изменений %l| Прямой | Курсив | Наклонный | Малые прописные %l| Сброс "
 
 #: src/lyx_gui.C:322
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
-msgstr ""
-" Без изменений %l| Крохотный | Наименьший | Меньший | Маленький | Нормальный "
-"| Большой | Больше | Наибольший | Огромный | Огромнее %l| Увеличить | "
-"Уменьшить | Сброс "
+msgstr " Без изменений %l| Крохотный | Наименьший | Меньший | Маленький | Нормальный | Большой | Больше | Наибольший | Огромный | Огромнее %l| Увеличить | Уменьшить | Сброс "
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
-msgstr ""
-" Без изменений %l| Акцент | Подстрочник | Выделение | Режим LaTeX %l| Сброс "
+msgstr " Без изменений %l| Акцент | Подстрочник | Выделение | Режим LaTeX %l| Сброс "
 
 #: src/lyx_gui.C:328
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
-msgstr ""
-" Без изменений %l| Бесцветный | Черный | Белый | Красный | Зеленый | Голубой "
-"| Синий | Пурпурный | Желтый %l| Сброс "
+msgstr " Без изменений %l| Бесцветный | Черный | Белый | Красный | Зеленый | Голубой | Синий | Пурпурный | Желтый %l| Сброс "
 
 #: src/lyx_gui.C:333
 msgid " English %l| German | French "
@@ -7989,8 +7971,7 @@ msgstr "Предупреждение: не удается определить путь к исполняемому файлу."
 
 #: src/lyx_main.C:221
 msgid "If you have problems, try starting LyX with an absolute path."
-msgstr ""
-"Если у вас есть возникли проблемы, попытайтесь запустить LyX с полным путем."
+msgstr "Если у вас есть возникли проблемы, попытайтесь запустить LyX с полным путем."
 
 #: src/lyx_main.C:311
 #, fuzzy
@@ -8004,9 +7985,7 @@ msgstr "Системный каталог установлен в: "
 #: src/lyx_main.C:321
 #, fuzzy
 msgid "LyX Warning! Couldn't determine system directory. "
-msgstr ""
-"Предупреждение LyX! Невозможно определить местонахождение системного "
-"каталога."
+msgstr "Предупреждение LyX! Невозможно определить местонахождение системного каталога."
 
 #: src/lyx_main.C:322
 #, fuzzy
@@ -8404,8 +8383,8 @@ msgstr ""
 
 #: src/lyxrc.C:1876
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
 #: src/lyxrc.C:1880
@@ -8450,8 +8429,8 @@ msgstr ""
 
 #: src/lyxrc.C:1908
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
 #: src/lyxrc.C:1912
@@ -8986,8 +8965,7 @@ msgstr "извините."
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
-msgstr ""
-"Вы не можете вставлять пробел в начале абзаца (см. Помощь|Путеводитель)."
+msgstr "Вы не можете вставлять пробел в начале абзаца (см. Помощь|Путеводитель)."
 
 #: src/text.C:2005
 msgid "You cannot type two spaces this way.  Please read the Tutorial."

@@ -4150,17 +4150,13 @@ msgstr "Belge Düzeni"
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
-msgstr ""
-" Öntanýmlý | Özel | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
+msgstr " Öntanýmlý | Özel | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:120
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Hiçbiri | A4 küçük boþluk (sadece boyuna) | A4 çok küçük boþluk "
-"(sadeceboyuna) | A4 çok geniþ boþluk (sadece boyuna) "
+msgstr " Hiçbiri | A4 küçük boþluk (sadece boyuna) | A4 çok küçük boþluk (sadeceboyuna) | A4 çok geniþ boþluk (sadece boyuna) "
 
 #: src/frontends/xforms/FormDocument.C:179
 msgid " Single | OneHalf | Double | Other "
@@ -4178,9 +4174,7 @@ msgstr " ``metin'' | ''metin'' | ,,metin`` | ,,metin'' | «metin» | »metin« "
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
-msgstr ""
-" öntanýmlý | minik | betik | dipnot | küçük | normal | büyük | Büyük | BÜYÜK "
-"| dev | Dev"
+msgstr " öntanýmlý | minik | betik | dipnot | küçük | normal | büyük | Büyük | BÜYÜK | dev | Dev"
 
 #: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 #: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
@@ -4621,9 +4615,7 @@ msgstr "'ParagraphExtra' Düzeni"
 #: src/frontends/xforms/FormParagraph.C:92
 #: src/frontends/xforms/FormParagraph.C:95
 msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
-msgstr ""
-" Hiçbiri | Tanýmlý-ara | Küçük-ara | Orta-ara | Büyük-ara | Dikey-Doldur | "
-"Uzunluk "
+msgstr " Hiçbiri | Tanýmlý-ara | Küçük-ara | Orta-ara | Büyük-ara | Dikey-Doldur | Uzunluk "
 
 #. now make them fit together
 #: src/frontends/xforms/FormParagraph.C:132
@@ -5036,9 +5028,7 @@ msgstr "Tuþ:|#K"
 #: src/frontends/xforms/FormPreferences.C:1979
 #, fuzzy
 msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" Öntanýmlý | Özel | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
+msgstr " Öntanýmlý | Özel | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2231
 #, fuzzy
@@ -5081,9 +5071,7 @@ msgstr ""
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr ""
-" öntanýmlý | minik | betik | dipnot | küçük | normal | büyük | Büyük | BÜYÜK "
-"| dev | Dev"
+msgstr " öntanýmlý | minik | betik | dipnot | küçük | normal | büyük | Büyük | BÜYÜK | dev | Dev"
 
 #: src/frontends/xforms/FormPreferences.C:2840
 msgid " none | ispell | aspell "
@@ -7829,9 +7817,7 @@ msgstr " Deðiþtirme %l| Dik | Ýtalik | Eðik | Small Caps %l| Baþtan "
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
-msgstr ""
-" Deðiþtirme %l| Minicik | Çok küçük | Daha küçük | Küçük | Normal | Büyük | "
-"Daha büyük | Çok büyük | Kocaman | Dev gibi %l| Arttýr | Azalt | Baþtan "
+msgstr " Deðiþtirme %l| Minicik | Çok küçük | Daha küçük | Küçük | Normal | Büyük | Daha büyük | Çok büyük | Kocaman | Dev gibi %l| Arttýr | Azalt | Baþtan "
 
 #: src/lyx_gui.C:326
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
@@ -7841,9 +7827,7 @@ msgstr " Deðiþtirme %l| Vurgu | Altçizgi | Ýsim | LaTeX kipi %l| Baþtan "
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
-msgstr ""
-" Deðiþtirme %l| Renksiz | Siyah | Beyaz | Kýrmýzý | Yeþil | Mavi | Turkuaz | "
-"Mor | Sarý %l| Baþtan "
+msgstr " Deðiþtirme %l| Renksiz | Siyah | Beyaz | Kýrmýzý | Yeþil | Mavi | Turkuaz | Mor | Sarý %l| Baþtan "
 
 #: src/lyx_gui.C:333
 msgid " English %l| German | French "
@@ -8331,8 +8315,8 @@ msgstr ""
 
 #: src/lyxrc.C:1876
 msgid ""
-"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
-"-n38\" Refer to the ChkTeX documentation."
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
 #: src/lyxrc.C:1880
@@ -8377,8 +8361,8 @@ msgstr ""
 
 #: src/lyxrc.C:1908
 msgid ""
-"The latex command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
 #: src/lyxrc.C:1912
@@ -8902,9 +8886,7 @@ msgstr "Yapacak bir þey yok."
 msgid ""
 "No font change defined. Use Character under the Layout menu to define font "
 "change."
-msgstr ""
-"Tanýmlý yazýtipi deðiþimi yok. Yazýtipi deðiþimini tanýmlamak için Düzen "
-"menüsünden Karakter'i seçin"
+msgstr "Tanýmlý yazýtipi deðiþimi yok. Yazýtipi deðiþimini tanýmlamak için Düzen menüsünden Karakter'i seçin"
 
 #: src/text2.C:2198 src/text2.C:2311
 msgid "Don't know what to do with half floats."
@@ -8918,9 +8900,7 @@ msgstr "üzgünüm."
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
-msgstr ""
-"Paragraf baþýna bir boþluk ekleyemezsiniz. Lütfen kullaným "
-"kýlavuzunabaþvurunuz."
+msgstr "Paragraf baþýna bir boþluk ekleyemezsiniz. Lütfen kullaným kýlavuzunabaþvurunuz."
 
 #: src/text.C:2005
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
