@@ -17,26 +17,13 @@
 
 #include "XWorkArea.h"
 #include "debug.h"
-#include "LyXView.h"
 #include "XLyXKeySym.h"
-#include "ColorHandler.h"
 #include "funcrequest.h"
 #include "Timeout.h"
 
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 #include "lyxlookup.h"
 #endif
-
-#include "support/filetools.h" // LibFileSearch
-#include "support/lstrings.h"
-#include "support/LAssert.h"
-
-#include <cmath>
-#include <cctype>
-
-// xforms doesn't define this (but it should be in <forms.h>).
-extern "C"
-FL_APPEVENT_CB fl_set_preemptive_callback(Window, FL_APPEVENT_CB, void *);
 
 using std::endl;
 using std::abs;
@@ -46,23 +33,9 @@ using std::dec;
 namespace {
 
 inline
-void waitForX()
+void waitForX(bool discard)
 {
-	XSync(fl_get_display(), 0);
-}
-
-
-void setXtermCursor(Window win)
-{
-	static Cursor cursor;
-	static bool cursor_undefined = true;
-	if (cursor_undefined) {
-		cursor = XCreateFontCursor(fl_get_display(), XC_xterm);
-		XFlush(fl_get_display());
-		cursor_undefined = false;
-	}
-	XDefineCursor(fl_get_display(), win, cursor);
-	XFlush(fl_get_display());
+	XSync(fl_get_display(), discard);
 }
 
 
@@ -85,8 +58,6 @@ mouse_button::state x_button_state(unsigned int button)
 	case FL_MBUTTON5:
 		b = mouse_button::button5;
 		break;
-	default: // FIXME
-		break;
 	}
 	return b;
 }
@@ -105,62 +76,56 @@ key_modifier::state x_key_state(unsigned int state)
 }
 
 
-} // anon namespace
-
-
 extern "C" {
-	// Just a bunch of C wrappers around static members of XWorkArea
-	static
-	void C_XWorkArea_scroll_cb(FL_OBJECT * ob, long)
-	{
-		XWorkArea * area = static_cast<XWorkArea*>(ob->u_vdata);
-		area->scroll_cb();
-	}
 
-
-	static
-	int C_XWorkArea_work_area_handler(FL_OBJECT * ob, int event,
-					 FL_Coord, FL_Coord,
-					 int key, void * xev)
-	{
-		return XWorkArea::work_area_handler(ob, event,
-						   0, 0, key, xev);
-	}
-
-	static
-	int C_XWorkAreaEventCB(FL_FORM * form, void * xev) {
-		XWorkArea * wa = static_cast<XWorkArea*>(form->u_vdata);
-		return wa->event_cb(static_cast<XEvent*>(xev));
-	}
+void C_scroll_cb(FL_OBJECT * ob, long)
+{
+	XWorkArea * area = static_cast<XWorkArea *>(ob->u_vdata);
+	area->scroll_cb();
 }
+
+
+int C_work_area_handler(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
+			int key, void * xev)
+{
+	return XWorkArea::work_area_handler(ob, event, 0, 0, key, xev);
+}
+
+
+int C_event_cb(FL_FORM * form, void * xev)
+{
+	XWorkArea * area = static_cast<XWorkArea *>(form->u_vdata);
+	return area->event_cb(static_cast<XEvent *>(xev));
+}
+
+} // extern "C"
+} // namespace anon
 
 
 XWorkArea::XWorkArea(int x, int y, int w, int h)
 	: workareapixmap(0), painter_(*this)
 {
+	if (lyxerr.debugging(Debug::WORKAREA)) {
+		lyxerr << "\tbackground box: +"
+		       << x << '+' << y << ' '
+		       << w - 15 << 'x' << h << endl;
+	}
+
 	fl_freeze_all_forms();
 
 	FL_OBJECT * obj;
 
-	if (lyxerr.debugging(Debug::WORKAREA))
-		lyxerr << "\tbackground box: +"
-		       << x << '+' << y << ' '
-		       << w - 15 << 'x' << h << endl;
-	backgroundbox = obj = fl_add_box(FL_BORDER_BOX,
-					 x, y,
-					 w - 15,
-					 h, "");
+	obj = fl_add_box(FL_BORDER_BOX, x, y, w - 15, h, "");
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
 
 	scrollbar = obj = fl_add_scrollbar(FL_VERT_SCROLLBAR,
-					   x + w - 15,
-					   y, 17, h, "");
+					   x + w - 15, y, 17, h, "");
 	fl_set_object_boxtype(obj, FL_UP_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthEastGravity, SouthEastGravity);
 	obj->u_vdata = this;
-	fl_set_object_callback(obj, C_XWorkArea_scroll_cb, 0);
+	fl_set_object_callback(obj, C_scroll_cb, 0);
 	fl_set_scrollbar_bounds(scrollbar, 0.0, 0.0);
 	fl_set_scrollbar_value(scrollbar, 0.0);
 	fl_set_scrollbar_size(scrollbar, scrollbar->h);
@@ -183,7 +148,7 @@ XWorkArea::XWorkArea(int x, int y, int w, int h)
 				      x + bw, y + bw,
 				      w - 15 - 2 * bw,
 				      h - 2 * bw, "",
-				      C_XWorkArea_work_area_handler);
+				      C_work_area_handler);
 	obj->wantkey = FL_KEY_ALL;
 	obj->u_vdata = this;
 
@@ -193,7 +158,7 @@ XWorkArea::XWorkArea(int x, int y, int w, int h)
 
 	/// X selection hook - xforms gets it wrong
 	fl_current_form->u_vdata = this;
-	fl_register_raw_callback(fl_current_form, FL_ALL_EVENT, C_XWorkAreaEventCB);
+	fl_register_raw_callback(fl_current_form, FL_ALL_EVENT, C_event_cb);
 
 	fl_unfreeze_all_forms();
 
@@ -201,7 +166,7 @@ XWorkArea::XWorkArea(int x, int y, int w, int h)
 
 	val.function = GXcopy;
 	copy_gc = XCreateGC(fl_get_display(), RootWindow(fl_get_display(), 0),
-		GCFunction, &val);
+			    GCFunction, &val);
 }
 
 
@@ -213,21 +178,6 @@ XWorkArea::~XWorkArea()
 }
 
 
-namespace {
-void destroy_object(FL_OBJECT * obj)
-{
-	if (!obj)
-		return;
-
-	if (obj->visible) {
-		fl_hide_object(obj);
-	}
-	fl_delete_object(obj);
-	fl_free_object(obj);
-}
-} // namespace anon
-
-
 void XWorkArea::redraw(int width, int height)
 {
 	static int cur_width = -1;
@@ -235,8 +185,8 @@ void XWorkArea::redraw(int width, int height)
 
 	if (cur_width == width && cur_height == height && workareapixmap) {
 		XCopyArea(fl_get_display(),
-			getPixmap(), getWin(), copy_gc,
-			0, 0, width, height, xpos(), ypos());
+			  getPixmap(), getWin(), copy_gc,
+			  0, 0, width, height, xpos(), ypos());
 		return;
 	}
 
@@ -275,14 +225,17 @@ void XWorkArea::setScrollbarParams(int height, int pos, int line_height)
 
 	long const work_height = workHeight();
 
-	lyxerr[Debug::GUI] << "scroll: height now " << height << endl;
-	lyxerr[Debug::GUI] << "scroll: work_height " << work_height << endl;
+	if (lyxerr.debugging(Debug::GUI)) {
+		lyxerr << "scroll: height now " << height << '\n'
+		       << "scroll: work_height " << work_height << endl;
+	}
 
 	/* If the text is smaller than the working area, the scrollbar
 	 * maximum must be the working area height. No scrolling will
 	 * be possible */
 	if (height <= work_height) {
-		lyxerr[Debug::GUI] << "scroll: doc smaller than workarea !" << endl;
+		lyxerr[Debug::GUI] << "scroll: doc smaller than workarea !"
+				   << endl;
 		fl_set_scrollbar_bounds(scrollbar, 0.0, 0.0);
 		fl_set_scrollbar_value(scrollbar, pos);
 		fl_set_scrollbar_size(scrollbar, scrollbar->h);
@@ -305,24 +258,22 @@ void XWorkArea::setScrollbarParams(int height, int pos, int line_height)
 void XWorkArea::scroll_cb()
 {
 	double const val = fl_get_scrollbar_value(scrollbar);
-	lyxerr[Debug::GUI] << "scroll: val: " << val << endl;
-	lyxerr[Debug::GUI] << "scroll: height: " << scrollbar->h << endl;
-	lyxerr[Debug::GUI] << "scroll: docheight: " << doc_height_ << endl;
+
+	if (lyxerr.debugging(Debug::GUI)) {
+		lyxerr << "scroll: val: " << val << '\n'
+		       << "scroll: height: " << scrollbar->h << '\n'
+		       << "scroll: docheight: " << doc_height_ << endl;
+	}
+
 	scrollDocView(int(val));
-	waitForX();
+	waitForX(false);
 }
 
 
 int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
-				FL_Coord, FL_Coord,
-				int key, void * xev)
+				 FL_Coord, FL_Coord,
+				 int key, void * xev)
 {
-	static int x_old = -1;
-	static int y_old = -1;
-	static double scrollbar_value_old = -1.0;
-	static int const motion_interval = 200;
-	static Timeout timdel(motion_interval);
-
 	XEvent * ev = static_cast<XEvent*>(xev);
 	XWorkArea * area = static_cast<XWorkArea*>(ob->u_vdata);
 
@@ -330,8 +281,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 	switch (event) {
 	case FL_DRAW:
-		if (!area->work_area ||
-		    !area->work_area->form->visible)
+		if (!area->work_area || !area->work_area->form->visible)
 			return 1;
 		lyxerr[Debug::WORKAREA] << "Workarea event: DRAW" << endl;
 		area->redraw(area->workWidth(), area->workHeight());
@@ -362,30 +312,50 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	case FL_DRAG:
 #endif
 	{
+		if (!ev || !area->scrollbar)
+			break;
+
+		int const drag_x = ev->xmotion.x;
 		int const drag_y = ev->xmotion.y;
+		int const area_x = ob->x;
 		int const area_y = ob->y;
+		int const area_w = ob->w;
 		int const area_h = ob->h;
 
 		// Check if the mouse is above or below the workarea
-		if (drag_y >= area_y + area_h || drag_y <= area_y) {
-			// we are outside, then we must not give too many
-			// motion events.
-			if (timdel.running())
+		if (drag_y <= area_y || drag_y >= area_y + area_h) {
+			// The mouse button is depressed and we are outside the
+			// workarea. That means we are simultaneously selecting
+			// text and scrolling the view.
+			// Use a Timeout to react to a drag events only every
+			// 200ms. All intervening events are discarded,
+			// allowing the user to control position easily.
+			static int const discard_interval = 200;
+			static Timeout timeout(discard_interval);
+
+			if (timeout.running())
 				break;
-			else
-				timdel.start();
+			// The timeout is not running, so process the
+			// event, first starting the timeout to discard future
+			// events.
+			timeout.start();
 		}
 
-		if (!ev || !area->scrollbar)
-			break;
-		if (ev->xmotion.x != x_old ||
-		    ev->xmotion.y != y_old ||
-		    fl_get_scrollbar_value(area->scrollbar) != scrollbar_value_old
-			) {
-			x_old = ev->xmotion.x;
-			y_old = ev->xmotion.y;
-			scrollbar_value_old = fl_get_scrollbar_value(area->scrollbar);
-			lyxerr[Debug::WORKAREA] << "Workarea event: MOUSE" << endl;
+		static int x_old = -1;
+		static int y_old = -1;
+		static double scrollbar_value_old = -1.0;
+
+		double const scrollbar_value =
+			fl_get_scrollbar_value(area->scrollbar);
+
+		if (drag_x != x_old || drag_y != y_old ||
+		    scrollbar_value != scrollbar_value_old) {
+			x_old = drag_x;
+			y_old = drag_y;
+			scrollbar_value_old = scrollbar_value;
+
+			lyxerr[Debug::WORKAREA] << "Workarea event: DRAG"
+						<< endl;
 
 			// It transpires that ev->xbutton.button == 0 when
 			// the mouse is dragged, so it cannot be used to
@@ -404,7 +374,6 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 					ev->xbutton.y - ob->y,
 					x_button_state(key));
 			area->dispatch(cmd);
-
 		}
 		break;
 	}
@@ -415,7 +384,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	case FL_KEYPRESS:
 #endif
 	{
-		lyxerr[Debug::WORKAREA] << "Workarea event: KEYBOARD" << endl;
+		lyxerr[Debug::WORKAREA] << "Workarea event: KEYPRESS" << endl;
 
 		KeySym keysym = 0;
 		char dummy[1];
@@ -426,21 +395,18 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		LyXLookupString(ev, dummy, 1, &keysym);
 #else
 		XLookupString(xke, dummy, 1, &keysym, 0);
-//		int num_keys = XLookupString(xke, dummy, 10, &keysym, &xcs);
-//		lyxerr << "We have " << num_keys << " keys in the returned buffer" << endl;
-//		lyxerr << "Our dummy string is " << dummy << endl;
 #endif
 
 		if (lyxerr.debugging(Debug::KEY)) {
-			char const * tmp = XKeysymToString(key);
-			char const * tmp2 = XKeysymToString(keysym);
-			string const stm = (tmp ? tmp : "");
-			string const stm2 = (tmp2 ? tmp2 : "");
+			char const * const tmp  = XKeysymToString(key);
+			char const * const tmp2 = XKeysymToString(keysym);
+			string const stm  = (tmp ? tmp : string());
+			string const stm2 = (tmp2 ? tmp2 : string());
 
-			lyxerr[Debug::KEY] << "XWorkArea: Key is `" << stm
-					   << "' [" << key << ']' << endl;
-			lyxerr[Debug::KEY] << "XWorkArea: Keysym is `" << stm2
-					   << "' [" << keysym << ']' << endl;
+			lyxerr << "XWorkArea: Key is `" << stm
+			       << "' [" << key << "]\n"
+			       << "XWorkArea: Keysym is `" << stm2
+			       << "' [" << keysym << ']' << endl;
 		}
 
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
@@ -454,11 +420,11 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 #else
 		// Note that we need this handling because of a bug
 		// in XForms 0.89, if this bug is resolved in the way I hope
-		// we can just use the keysym directly with out looking
+		// we can just use the keysym directly without looking
 		// at key at all. (Lgb)
 		KeySym ret_key = 0;
 		if (!key) {
-			// We migth have to add more keysyms here also,
+			// We might have to add more keysyms here also,
 			// we will do that as the issues arise. (Lgb)
 			if (keysym == XK_space) {
 				ret_key = keysym;
@@ -477,9 +443,9 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			//		<< static_cast<unsigned char>(key)
 			//		<< endl;
 			//} else {
-				ret_key = (keysym ? keysym : key);
-				lyxerr[Debug::KEY] << "Using keysym [B]"
-						   << endl;
+			ret_key = (keysym ? keysym : key);
+			lyxerr[Debug::KEY] << "Using keysym [B]"
+					   << endl;
 				//}
 		}
 
@@ -504,8 +470,8 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			//       << XEventsQueued(fl_get_display(), QueuedAlready)
 			//       << endl;
 			if (XEventsQueued(fl_get_display(), QueuedAlready) > 0)
-				XSync(fl_get_display(), 1);
-			// This purge make f.ex. scrolling stop immidiatly when
+				waitForX(true);
+			// This purge make f.ex. scrolling stop immediately when
 			// releasing the PageDown button. The question is if
 			// this purging of XEvents can cause any harm...
 			// after some testing I can see no problems, but
@@ -573,51 +539,43 @@ bool clipboard_read = false;
 
 extern "C" {
 
-	static
-	int request_clipboard_cb(FL_OBJECT * /*ob*/, long /*type*/,
-				 void const * data, long size)
-	{
-		clipboard_selection.erase();
+int request_clipboard_cb(FL_OBJECT * /*ob*/, long /*type*/,
+			 void const * data, long size)
+{
+	clipboard_selection.erase();
 
-		if (size > 0)
-			clipboard_selection.reserve(size);
-		for (int i = 0; i < size; ++i)
-			clipboard_selection +=
-				static_cast<char const *>(data)[i];
-		clipboard_read = true;
-		return 0;
-	}
-
+	if (size > 0)
+		clipboard_selection.reserve(size);
+	for (int i = 0; i < size; ++i)
+		clipboard_selection += static_cast<char const *>(data)[i];
+	clipboard_read = true;
+	return 0;
 }
 
+} // extern "C"
 } // namespace anon
 
 
 int XWorkArea::event_cb(XEvent * xev)
 {
-	int ret = 0;
 	switch (xev->type) {
-		case SelectionRequest:
-			lyxerr[Debug::GUI] << "X requested selection." << endl;
-			selectionRequested();
-			break;
-		case SelectionClear:
-			lyxerr[Debug::GUI] << "Lost selection." << endl;
-			selectionLost();
-			break;
+	case SelectionRequest:
+		lyxerr[Debug::GUI] << "X requested selection." << endl;
+		selectionRequested();
+		break;
+	case SelectionClear:
+		lyxerr[Debug::GUI] << "Lost selection." << endl;
+		selectionLost();
+		break;
 	}
-	return ret;
+	return 0;
 }
 
 
 void XWorkArea::haveSelection(bool yes) const
 {
-	if (!yes) {
-		XSetSelectionOwner(fl_get_display(), XA_PRIMARY, None, CurrentTime);
-		return;
-	}
-
-	XSetSelectionOwner(fl_get_display(), XA_PRIMARY, FL_ObjWin(work_area), CurrentTime);
+	Window const owner = yes ? FL_ObjWin(work_area) : None;
+	XSetSelectionOwner(fl_get_display(), XA_PRIMARY, owner, CurrentTime);
 }
 
 
@@ -633,9 +591,10 @@ string const XWorkArea::getClipboard() const
 	while (!clipboard_read) {
 		if (fl_check_forms() == FL_EVENT) {
 			fl_XNextEvent(&ev);
-			lyxerr << "Received unhandled X11 event" << endl;
-			lyxerr << "Type: 0x" << hex << ev.xany.type <<
-				" Target: 0x" << hex << ev.xany.window << dec << endl;
+			lyxerr << "Received unhandled X11 event\n"
+			       << "Type: 0x" << hex << ev.xany.type
+			       << " Target: 0x" << hex << ev.xany.window
+			       << dec << endl;
 		}
 	}
 	return clipboard_selection;
