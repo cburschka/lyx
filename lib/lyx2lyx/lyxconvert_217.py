@@ -41,10 +41,7 @@ def update_tabular(lines):
             break
 
         new_table = table_update(lines[i:j])
-        tail = lines[j:]
-        lines[i:] = []
-        lines.extend(new_table)
-        lines.extend(tail)
+	lines = lines[:i] + new_table + lines[j:]
         i = i + len(new_table)
 
 col_re = re.compile(r'<column alignment="(\d)" valignment="(\d)" leftline="(\d)" rightline="(\d)" width="(.*)" special="(.*)">')
