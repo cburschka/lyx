@@ -670,9 +670,19 @@ void MathCursor::handleNest(MathAtom const & a)
 }
 
 
-void MathCursor::getPos(int & x, int & y)
+void MathCursor::getPos(int & x, int & y) const
 {
 	par()->getPos(idx(), pos(), x, y);
+}
+
+
+int MathCursor::targetX() const
+{
+	if (targetx_ != -1)
+		return targetx_;
+	int x = 0, y = 0;
+	getPos(x, y);
+	return x;
 }
 
 

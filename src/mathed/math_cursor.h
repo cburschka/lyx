@@ -102,7 +102,9 @@ public:
 	/// in pixels from top of screen
 	void setPos(int x, int y);
 	/// in pixels from top of screen
-	void getPos(int & x, int & y);
+	void getPos(int & x, int & y) const;
+	/// in pixels from left of screen
+	int targetX() const;
 	/// current inset
 	MathInset * par() const;
 	/// return the next enclosing grid inset and the cursor's index in it
