@@ -831,7 +831,7 @@ void LyXTabular::recalculateMulticolumnsOfColumn(int column)
 
 
 // returns 1 if a complete update is necessary, otherwise 0
-bool LyXTabular::setWidthOfCell(int cell, int new_width)
+void LyXTabular::setWidthOfCell(int cell, int new_width)
 {
 	int const row = row_of_cell(cell);
 	int const column1 = column_of_cell(cell);
@@ -843,12 +843,12 @@ bool LyXTabular::setWidthOfCell(int cell, int new_width)
 		column1 < columns_ - 1 &&
 		leftLine(cell_info[row][column1+1].cellno, true))
 	{
-		// additional width
 		add_width = WIDTH_OF_LINE;
 	}
-	if (getWidthOfCell(cell) == new_width + 2 * WIDTH_OF_LINE + add_width) {
-		return false;
-	}
+
+	if (getWidthOfCell(cell) == new_width + 2 * WIDTH_OF_LINE + add_width)
+		return;
+
 	if (isMultiColumn(cell, true)) {
 		tmp = setWidthOfMulticolCell(cell, new_width);
 	} else {
@@ -862,9 +862,7 @@ bool LyXTabular::setWidthOfCell(int cell, int new_width)
 		for (int i = 0; i < columns_; ++i)
 			calculate_width_of_column(i);
 		calculate_width_of_tabular();
-		return true;
 	}
-	return false;
 }
 
 
@@ -1734,21 +1732,19 @@ bool LyXTabular::haveLTLastFoot() const
 
 // end longtable support functions
 
-bool LyXTabular::setAscentOfRow(int row, int height)
+void LyXTabular::setAscentOfRow(int row, int height)
 {
 	if (row >= rows_ || row_info[row].ascent_of_row == height)
-		return false;
+		return;
 	row_info[row].ascent_of_row = height;
-	return true;
 }
 
 
-bool LyXTabular::setDescentOfRow(int row, int height)
+void LyXTabular::setDescentOfRow(int row, int height)
 {
 	if (row >= rows_ || row_info[row].descent_of_row == height)
-		return false;
+		return;
 	row_info[row].descent_of_row = height;
-	return true;
 }
 
 

@@ -251,26 +251,6 @@ void Paragraph::validate(LaTeXFeatures & features) const
 }
 
 
-// First few functions needed for cut and paste and paragraph breaking.
-void Paragraph::copyIntoMinibuffer(Buffer const & buffer, pos_type pos) const
-{
-	BufferParams bparams = buffer.params;
-
-	minibuffer_char = getChar(pos);
-	minibuffer_font = getFontSettings(bparams, pos);
-	minibuffer_inset = 0;
-	if (minibuffer_char == Paragraph::META_INSET) {
-		if (getInset(pos)) {
-			minibuffer_inset = static_cast<InsetOld *>(getInset(pos)->clone().release());
-		} else {
-			minibuffer_inset = 0;
-			minibuffer_char = ' ';
-			// This reflects what GetInset() does (ARRae)
-		}
-	}
-}
-
-
 void Paragraph::cutIntoMinibuffer(BufferParams const & bparams, pos_type pos)
 {
 	minibuffer_char = getChar(pos);
@@ -304,6 +284,7 @@ bool Paragraph::insertFromMinibuffer(pos_type pos)
 	}
 	return true;
 }
+
 
 // end of minibuffer
 

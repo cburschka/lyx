@@ -166,9 +166,8 @@ LyXFont LyXText::getLayoutFont(ParagraphList::iterator pit) const
 {
 	LyXLayout_ptr const & layout = pit->layout();
 
-	if (!pit->getDepth()) {
+	if (!pit->getDepth())
 		return layout->resfont;
-	}
 
 	LyXFont font = layout->font;
 	// Realize with the fonts of lesser depth.
@@ -183,9 +182,8 @@ LyXFont LyXText::getLabelFont(ParagraphList::iterator pit) const
 {
 	LyXLayout_ptr const & layout = pit->layout();
 
-	if (!pit->getDepth()) {
+	if (!pit->getDepth())
 		return layout->reslabelfont;
-	}
 
 	LyXFont font = layout->labelfont;
 	// Realize with the fonts of lesser depth.

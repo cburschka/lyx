@@ -261,8 +261,6 @@ public:
 	/** important for cut and paste
 	    Temporary change from BufferParams to Buffer. Will revert when we
 	    get rid of the argument to InsetOld::clone(Buffer const &) */
-	void copyIntoMinibuffer(Buffer const &, lyx::pos_type pos) const;
-	///
 	void cutIntoMinibuffer(BufferParams const &, lyx::pos_type pos);
 	///
 	bool insertFromMinibuffer(lyx::pos_type pos);

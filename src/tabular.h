@@ -210,11 +210,11 @@ public:
 	///
 	int getHeightOfTabular() const;
 	/// Returns true if a complete update is necessary, otherwise false
-	bool setAscentOfRow(int row, int height);
+	void setAscentOfRow(int row, int height);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool setDescentOfRow(int row, int height);
+	void setDescentOfRow(int row, int height);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool setWidthOfCell(int cell, int new_width);
+	void setWidthOfCell(int cell, int new_width);
 	///
 	void setAllLines(int cell, bool line);
 	///
