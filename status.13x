@@ -38,7 +38,8 @@ What's new
   keyboard; update to Scientific Word-compatible bindings
   (documentation has been updated too)
 
-- updates to the french and polish translation of menus
+- updates to the danish, dutch, french, german, norwegian and polish
+  translation of menus
 
 - updates to the Extended and Customization manuals; updates to the
   french translations of the manuals
@@ -57,6 +58,9 @@ What's new
 
 - add floats definition to the LLNCS class [bug #923]
 
+- fix a bug where the DVI file was not updated due to an old format
+  .dep file (this happened only when use_tempdir was set to false)
+
 - graphics that have been set to not display in LyX are no longer
   converted [bug #920]
 
@@ -73,8 +77,8 @@ What's new
 - prevent incorrect warning message about failing to find a graphics file to 
   load when all is actually fine and dandy
 
-- fix a bug where ERT {} in math formulas would have a wrong descent
-  on screen
+- fix a bug where ERT curly braces in math formulas would have a wrong
+  descent on screen
 
 - The printer parameter preferences for "spool command" and "file
   extension" were accidentally made the same [Qt only]
@@ -135,5 +139,3 @@ What's new
 
 - improve the lyx.spec file used to produce rpms
 
-- fix a bug where the DVI file was not updated due to an old format
-  .dep file (this happened only when use_tempdir was set to false)
