@@ -1,6 +1,8 @@
 #ifndef SP_ISPELL_H
 #define SP_ISPELL_H
 
+#include <cstdio>
+
 #include "sp_base.h"
 
 class BufferParams;
