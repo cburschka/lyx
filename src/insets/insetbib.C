@@ -327,14 +327,14 @@ int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
 	int w = 0;
 	// Ha, now we are mainly at 1.2.0 and it is still here (Jug)
 	// Does look like a hack? It is! (but will change at 0.13)
-	Paragraph * par = &*(bv->buffer()->paragraphs.begin());
-
-	while (par) {
-		if (par->bibkey) {
-			int const wx = par->bibkey->width(bv, font);
-			if (wx > w) w = wx;
+	ParagraphList::iterator it = bv->buffer()->paragraphs.begin();
+	ParagraphList::iterator end = bv->buffer()->paragraphs.end();
+	for (; it != end; ++it) {
+		if (it->bibkey) {
+			int const wx = it->bibkey->width(bv, font);
+			if (wx > w)
+				w = wx;
 		}
-		par = par->next();
 	}
 	return w;
 }
@@ -345,21 +345,22 @@ string const bibitemWidest(Buffer const * buffer)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
-	Paragraph * par = &*(buffer->paragraphs.begin());
+
 	InsetBibKey * bkey = 0;
 	LyXFont font;
 
-	while (par) {
-		if (par->bibkey) {
+	ParagraphList::iterator it = buffer->paragraphs.begin();
+	ParagraphList::iterator end = buffer->paragraphs.end();
+	for (; it != end; ++it) {
+		if (it->bibkey) {
 			int const wx =
-				font_metrics::width(par->bibkey->getBibLabel(),
-					       font);
+				font_metrics::width(it->bibkey->getBibLabel(),
+						    font);
 			if (wx > w) {
 				w = wx;
-				bkey = par->bibkey;
+				bkey = it->bibkey;
 			}
 		}
-		par = par->next();
 	}
 
 	if (bkey && !bkey->getBibLabel().empty())

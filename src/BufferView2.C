@@ -525,26 +525,24 @@ bool BufferView::lockInset(UpdatableInset * inset)
 			}
 		}
 		// Then do a deep look of the inset and lock the right one
-		Paragraph * par = &*(buffer()->paragraphs.begin());
 		int const id = inset->id();
-		while (par) {
-			InsetList::iterator it =
-				par->insetlist.begin();
-			InsetList::iterator const end =
-				par->insetlist.end();
+		ParagraphList::iterator pit = buffer()->paragraphs.begin();
+		ParagraphList::iterator pend = buffer()->paragraphs.end();
+		for (; pit != pend; ++pit) {
+			InsetList::iterator it = pit->insetlist.begin();
+			InsetList::iterator end = pit->insetlist.end();
 			for (; it != end; ++it) {
 				if (it.getInset() == inset) {
-					text->setCursorIntern(this, par, it.getPos());
+					text->setCursorIntern(this, &*pit, it.getPos());
 					theLockingInset(inset);
 					return true;
 				}
 				if (it.getInset()->getInsetFromID(id)) {
-					text->setCursorIntern(this, par, it.getPos());
+					text->setCursorIntern(this, &*pit, it.getPos());
 					it.getInset()->edit(this);
 					return theLockingInset()->lockInsetInInset(this, inset);
 				}
 			}
-			par = par->next();
 		}
 		return false;
 	}

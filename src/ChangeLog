@@ -1,7 +1,24 @@
+2002-08-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* paragraph.C (Paragraph): reformat a bit
+	(cutIntoMinibuffer): use builtin InsetList function instad of
+	doing it manually.
+	(getInset): ditto
+
+	* buffer.C: include boost/bind.hpp, add using std::for_each
+	(writeFileAscii): use ParagraphList iterators
+	(validate): use for_each for validate traversal of paragraphs
+	(getBibkeyList): use ParagraphList iterators
+	(resizeInsets): use for_each to resizeInsetsLyXText for all
+	paragraphs.
+	(getParFromID): use ParagraphList iterators
+
+	* BufferView2.C (lockInset): use paragraph list and iterators
+
 2002-08-14  John Levon  <levon@movementarian.org>
 
 	* lyxserver.C: remove spurious xforms include
- 
+
 2002-08-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxfunc.C (getStatus): disable math-extern outside of math mode
@@ -17,7 +34,7 @@
 
 	* funcrequest.C: move stuff here from .h
 
-	* Makefile.am: 
+	* Makefile.am:
 	* BufferView_pimpl.C:
 	* LyXAction.C:
 	* toc.C:
@@ -109,7 +126,7 @@
 	* paragraph_pimpl.h: remove inclusion of boost/array.hpp, remove
 	unused class variable counter_,
 
-	* paragraph.[Ch] (getFirstCounter): delete unused function 
+	* paragraph.[Ch] (getFirstCounter): delete unused function
 
 	* counters.C: include LAssert.h
 	(reset): add a new function with no arg, change other version to

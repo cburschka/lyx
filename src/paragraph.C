@@ -127,10 +127,11 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 
 	// copy everything behind the break-position to the new paragraph
 	insetlist = lp.insetlist;
-	for (InsetList::iterator it = insetlist.begin();
-	     it != insetlist.end(); ++it)
-	{
-		it.setInset(it.getInset()->clone(*current_view->buffer(), same_ids));
+	InsetList::iterator it = insetlist.begin();
+	InsetList::iterator end = insetlist.end();
+	for (; it != end; ++it) {
+		it.setInset(it.getInset()->clone(*current_view->buffer(),
+						 same_ids));
 		// tell the new inset who is the boss now
 		it.getInset()->parOwner(this);
 	}
@@ -349,21 +350,8 @@ void Paragraph::cutIntoMinibuffer(BufferParams const & bparams, pos_type pos)
 	minibuffer_inset = 0;
 	if (minibuffer_char == Paragraph::META_INSET) {
 		if (getInset(pos)) {
-			minibuffer_inset = getInset(pos);
-			// This is a little hack since I want exactly
-			// the inset, not just a clone. Otherwise
-			// the inset would be deleted when calling Erase(pos)
-			// find the entry
-			InsetList::iterator it = insetlist.begin();
-			InsetList::iterator end = insetlist.end();
-			for (; it != end; ++it) {
-				if (it.getPos() == pos)
-					break;
-			}
-
-			if (it != end && it.getPos() == pos)
-				it.setInset(0);
 			// the inset is not in a paragraph anymore
+			minibuffer_inset = insetlist.release(pos);
 			minibuffer_inset->parOwner(0);
 		} else {
 			minibuffer_inset = 0;
@@ -452,27 +440,7 @@ Inset * Paragraph::getInset(pos_type pos)
 {
 	lyx::Assert(pos < size());
 
-	// Find the inset.
-	InsetList::iterator it = insetlist.begin();
-	InsetList::iterator end = insetlist.end();
-	for (; it != end; ++it) {
-		if (it.getPos() == pos)
-			break;
-	}
-
-	if (it != end && it.getPos() == pos)
-		return it.getInset();
-
-	lyxerr << "ERROR (Paragraph::getInset): "
-	       << "Inset does not exist: " << pos << endl;
-	//::raise(SIGSTOP);
-
-	// text[pos] = ' '; // WHY!!! does this set the pos to ' '????
-	// Did this commenting out introduce a bug? So far I have not
-	// see any, please enlighten me. (Lgb)
-	// My guess is that since the inset does not exist, we might
-	// as well replace it with a space to prevent craches. (Asger)
-	return 0;
+	return insetlist.get(pos);
 }
 
 
@@ -2055,5 +2023,3 @@ bool Paragraph::isFreeSpacing() const
 		return (pimpl_->inset_owner->owner()->lyxCode() == Inset::ERT_CODE);
 	return false;
 }
-
-

@@ -739,11 +739,12 @@ void InsetText::edit(BufferView * bv, bool front)
 	if (front)
 		lt->setCursor(bv, &*(paragraphs.begin()), 0);
 	else {
-		Paragraph * p = &*(paragraphs.begin());
-		while (p->next())
-			p = p->next();
+		ParagraphList::iterator it = paragraphs.begin();
+		ParagraphList::iterator end = paragraphs.end();
+		while (boost::next(it) != end)
+			++it;
 //		int const pos = (p->size() ? p->size()-1 : p->size());
-		lt->setCursor(bv, p, p->size());
+		lt->setCursor(bv, &*it, it->size());
 	}
 	lt->clearSelection();
 	finishUndo();

@@ -95,6 +95,9 @@
 #include "support/lyxmanip.h"
 #include "support/lyxalgo.h" // for lyx::count
 
+#include <boost/bind.hpp>
+#include <boost/tuple/tuple.hpp>
+
 #include <fstream>
 #include <iomanip>
 #include <map>
@@ -107,8 +110,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <utime.h>
-
-#include <boost/tuple/tuple.hpp>
 
 #ifdef HAVE_LOCALE
 #include <locale>
@@ -133,6 +134,7 @@ using std::max;
 using std::set;
 using std::stack;
 using std::list;
+using std::for_each;
 
 using lyx::pos_type;
 using lyx::textclass_type;
@@ -2116,10 +2118,11 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 
 void Buffer::writeFileAscii(ostream & ofs, int linelen)
 {
-	Paragraph * par = &*(paragraphs.begin());
-	while (par) {
-		ofs << asciiParagraph(par, linelen, par->previous() == 0);
-		par = par->next();
+	ParagraphList::iterator beg = paragraphs.begin();
+	ParagraphList::iterator end = paragraphs.end();
+	ParagraphList::iterator it = beg;
+	for (; it != end; ++it) {
+		ofs << asciiParagraph(&*it, linelen, it == beg);
 	}
 	ofs << "\n";
 }
@@ -3621,25 +3624,14 @@ int Buffer::runChktex()
 
 void Buffer::validate(LaTeXFeatures & features) const
 {
-	Paragraph * par = &*(paragraphs.begin());
 	LyXTextClass const & tclass = params.getLyXTextClass();
 
 	// AMS Style is at document level
 	if (params.use_amsmath || tclass.provides(LyXTextClass::amsmath))
 		features.require("amsmath");
 
-	while (par) {
-		// We don't use "lyxerr.debug" because of speed. (Asger)
-		if (lyxerr.debugging(Debug::LATEX))
-			lyxerr << "Paragraph: " <<  par << endl;
-
-		// Now just follow the list of paragraphs and run
-		// validate on each of them.
-		par->validate(features);
-
-		// and then the next paragraph
-		par = par->next();
-	}
+	for_each(paragraphs.begin(), paragraphs.end(),
+		 boost::bind(&Paragraph::validate, _1, boost::ref(features)));
 
 	// the bullet shapes are buffer level not paragraph level
 	// so they are tested here
@@ -3726,17 +3718,17 @@ vector<pair<string, string> > const Buffer::getBibkeyList() const
 	}
 
 	vector<StringPair> keys;
-	Paragraph * par = &*(paragraphs.begin());
-	while (par) {
-		if (par->bibkey) {
-			string const key = par->bibkey->getContents();
-			string const opt = par->bibkey->getOptions();
-			string const ref = par->asString(this, false);
+	ParagraphList::iterator pit = paragraphs.begin();
+	ParagraphList::iterator pend = paragraphs.end();
+	for (; pit != pend; ++pit) {
+		if (pit->bibkey) {
+			string const key = pit->bibkey->getContents();
+			string const opt = pit->bibkey->getOptions();
+			string const ref = pit->asString(this, false);
 			string const info = opt + "TheBibliographyRef" + ref;
 
 			keys.push_back(StringPair(key, info));
 		}
-		par = par->next();
 	}
 
 	// Might be either using bibtex or a child has bibliography
@@ -3826,10 +3818,8 @@ bool Buffer::dispatch(int action, string const & argument, bool * result)
 void Buffer::resizeInsets(BufferView * bv)
 {
 	/// then remove all LyXText in text-insets
-	Paragraph * par = &*(paragraphs.begin());
-	for (; par; par = par->next()) {
-	    par->resizeInsetsLyXText(bv);
-	}
+	for_each(paragraphs.begin(), paragraphs.end(),
+		 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
 }
 
 
@@ -3908,17 +3898,19 @@ Inset * Buffer::getInsetFromID(int id_arg) const
 
 Paragraph * Buffer::getParFromID(int id) const
 {
-	if (id < 0) return 0;
-	Paragraph * par = &*(paragraphs.begin());
-	while (par) {
-		if (par->id() == id) {
-			return par;
+	if (id < 0)
+		return 0;
+
+	ParagraphList::iterator it = paragraphs.begin();
+	ParagraphList::iterator end = paragraphs.end();
+	for (; it != end; ++it) {
+		if (it->id() == id) {
+			return &*it;
 		}
-		Paragraph * tmp = par->getParFromID(id);
+		Paragraph * tmp = it->getParFromID(id);
 		if (tmp) {
 			return tmp;
 		}
-		par = par->next();
 	}
 	return 0;
 }
