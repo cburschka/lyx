@@ -33,6 +33,7 @@
 // fcntl()
 #include <fcntl.h>
 
+#include <cerrno>
 #include <cstdlib>
 #include <string>
 #include <vector>
@@ -115,7 +116,9 @@ int connect(string const & name)
 		     << strerror(errno) << endl;
 		return -1;
 	}
-	if (::connect(fd, (struct sockaddr *)&addr, SUN_LEN(&addr)) == -1) {
+	if (::connect(fd,
+		      reinterpret_cast<struct sockaddr *>(&addr),
+		      sizeof(addr)) == -1) {
 		cerr << "lyxclient: Could not connect to socket " << name
 		     << ": " << strerror(errno) << endl;
 		::close(fd);
