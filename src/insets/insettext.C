@@ -315,32 +315,34 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     x += TEXT_TO_INSET_OFFSET;
     int y = 0;
     Row * row = TEXT(bv)->GetRowNearY(y);
-    int fa = row->ascent_of_text();
-    y += baseline - fa;
-    while (row != 0) {
-	if (((y+row->height()) > 0) && (y < pain.paperHeight()))
-	    break;
+    int y_offset = baseline - row->ascent_of_text();
+    int ph = pain.paperHeight();
+    y += y_offset;
+    while ((row != 0) && ((y+row->height()) <= 0)) {
 	y += row->height();
 	row = row->next();
     }
-    TEXT(bv)->first = y - top_baseline + fa;
+    y -= y_offset;
+    TEXT(bv)->first = y;
     if (cleared || !locked || (need_update == FULL)) {
-	while (row != 0) {
-	    if (((y+row->height()) > 0) && (y < pain.paperHeight()))
-		TEXT(bv)->GetVisibleRow(bv, int(y), int(x), row, y, cleared);
+	int first = y;
+	y = 0;
+	while ((row != 0) && (y < ph)) {
+	    TEXT(bv)->GetVisibleRow(bv, y+first+y_offset, int(x), row,
+				    y+first, cleared);
 	    y += row->height();
 	    row = row->next();
 	}
     } else if (need_update == SELECTION) {
-	bv->screen()->ToggleToggle(TEXT(bv), int(y), int(x));
+	bv->screen()->ToggleToggle(TEXT(bv), y+y_offset, int(x));
     } else {
 	locked = false;
 	if (need_update == CURSOR) {
-	    bv->screen()->ToggleSelection(TEXT(bv), true, int(y), int(x));
+	    bv->screen()->ToggleSelection(TEXT(bv), true, y+y_offset, int(x));
 	    TEXT(bv)->ClearSelection();
 	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	}
-	bv->screen()->Update(TEXT(bv), int(y), int(x));
+	bv->screen()->Update(TEXT(bv), y, int(x));
 	locked = true;
     }
     TEXT(bv)->refresh_y = 0;

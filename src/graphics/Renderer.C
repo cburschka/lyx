@@ -87,5 +87,5 @@ string const & Renderer::getFilename() const
 void Renderer::freePixmap()
 {
 	if (pixmapLoaded_)
-		XFreePixmap(fl_get_display(), pixmap_);
+		XFreePixmap(fl_get_display(), pixmap_->getPixmap());
 }
