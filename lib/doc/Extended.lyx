@@ -5087,14 +5087,17 @@ AASTeX is a set of macros produced by the American Astronomical Society
  publish: the Astrophysical Journal (including the Letters and Supplement),
  the Astronomical Journal, and the Publications of the Astronomical Society
  of the Pacific.
- LyX requires version 5.0 (or higher) of these macros.
+ LyX has proven to be an excellent tool for generating these documents,
+ especially given its equation, citation, and figure handling capabilities.
+ LyX requires version 5.0 (or higher) of these macros; preferably 5.2, which
+ is the version described here, or higher.
  Versions prior to 5.0 are intended for use with LaTeX2.09 and are fundamentally
  incompatible with LyX.
- The AASTeX package may be downloaded from the AAS's ftp site
+ The AASTeX package may be downloaded from the AASTeX Web site
 \layout Standard
 \added_space_top medskip \added_space_bottom medskip \align center 
 
-\begin_inset LatexCommand \url{ftp://ftp.aas.org/pubs}
+\begin_inset LatexCommand \url{http://www.journals.uchicago.edu/AAS/AASTeX}
 
 \end_inset 
 
@@ -5156,7 +5159,7 @@ altaffiltext
  marked as such.
  Such commands are referred to as ERT, or Evil Red Text.
  I tried to minimize the amount of ERT needed in an AASTeX document, but
- there is still more required than any of us would like.
+ there is still a bit more required than any of us would like.
 \layout Subsection
 
 Finishing Your Paper
@@ -5190,7 +5193,7 @@ xport\SpecialChar \menuseparator
 \bar under 
 L
 \bar default 
-ateX
+aTeX
 \family default 
 ).
  
@@ -5260,42 +5263,6 @@ User specified LaTeX commands
 .tex
 \family default 
  file).
-\layout Enumerate
-
-search for any 
-\family typewriter 
-
-\backslash 
-figcaption
-\family default 
- commands and replace 
-\begin_inset Quotes eld
-\end_inset 
-
-
-\family typewriter 
-FileName
-\family default 
-
-\begin_inset Quotes erd
-\end_inset 
-
- with the correct, real file name.
-\layout Enumerate
-
-alter any 
-\family typewriter 
-
-\backslash 
-cite
-\family default 
- commands, if necessary (see section\SpecialChar ~
-
-\begin_inset LatexCommand \ref{cite}
-
-\end_inset 
-
- below).
 \end_deeper 
 \layout Enumerate
 
@@ -5407,113 +5374,124 @@ subsubsection
 \backslash 
 paragraph
 \family default 
- (2.7), 
+ (2.7),
+\family typewriter 
+ 
+\backslash 
+facility
+\family default 
+ (2.10), 
 \family typewriter 
 
 \backslash 
 begin{displaymath}
 \family default 
- (2.11), 
+ (2.12), 
 \family typewriter 
 
 \backslash 
 begin{equation}
 \family default 
- (2.11), 
+ (2.12), 
 \family typewriter 
 
 \backslash 
 begin{eqnarray}
 \family default 
- (2.11), 
+ (2.12), 
 \family typewriter 
 
 \backslash 
 begin{mathletters}
 \family default 
- (2.11), 
+ (2.12), 
 \family typewriter 
 
 \backslash 
 begin{thebibliography}
 \family default 
- (2.12.1), 
+ (2.13.1), 
 \family typewriter 
 
 \backslash 
 bibitem
 \family default 
- (2.12.2), 
+ (2.13.2), all the cite commands and their variations (2.13.2), the generic
+ graphicx figure commands (2.14.1),
 \family typewriter 
-
+ 
 \backslash 
 begin{table}
-\family default 
- (2.14.4), 
-\family typewriter 
-
-\backslash 
-begin{tabular}
-\family default 
- (2.14.4), 
-\family typewriter 
-
-\backslash 
-caption
-\family default 
- (2.14.4), 
-\family typewriter 
-
-\backslash 
-label
-\family default 
- (2.14.4, amongst other places), 
-\family typewriter 
-
-\backslash 
-tablerefs
-\family default 
- (2.14.5), 
-\family typewriter 
-
-\backslash 
-tablecomments
-\family default 
- (2.14.5), 
-\family typewriter 
-
-\backslash 
-url
 \family default 
  (2.15.4), 
 \family typewriter 
 
 \backslash 
+begin{tabular}
+\family default 
+ (2.15.4), 
+\family typewriter 
+
+\backslash 
+caption
+\family default 
+ (2.15.4), 
+\family typewriter 
+
+\backslash 
+label
+\family default 
+ (2.15.4, amongst other places), 
+\family typewriter 
+
+\backslash 
+tablerefs
+\family default 
+ (2.15.5), 
+\family typewriter 
+
+\backslash 
+tablecomments
+\family default 
+ (2.15.5), 
+\family typewriter 
+
+\backslash 
+url
+\family default 
+ (2.17.4), 
+\family typewriter 
+
+\backslash 
 end{document}
 \family default 
- (2.16).
+ (2.18).
 \layout Standard
 
 The following style options also work correctly: 
 \family typewriter 
+longabstract
+\family default 
+ (2.4), 
+\family typewriter 
 preprint
 \family default 
-, 
+ (3.2.1), 
 \family typewriter 
 preprint2
 \family default 
-, 
+ (3.2.2), 
 \family typewriter 
 eqsecnum
 \family default 
-, 
+ (3.3), 
 \family typewriter 
 flushrt
 \family default 
- (3, 3.1, 3.2).
- Simply put them in 
+ (3.4).
+ Simply put them in the 
 \family sans 
-Extra Options
+Options
 \family default 
  box in 
 \family sans 
@@ -5683,7 +5661,7 @@ acknowledgements
 \backslash 
 appendix
 \family default 
- (2.10) -- will have extra {} after it.
+ (2.11) -- will have extra {} after it.
  This should not cause an error.
 \layout Itemize
 
@@ -5693,8 +5671,59 @@ appendix
 \backslash 
 figcaption
 \family default 
- (2.13.2) -- you will have to edit the optional argument by hand in the final
- LaTeX file.
+ (2.14.2) -- you can insert an optional filename argument by placing the cursor
+ at the beginning of the text and selecting 
+\family sans 
+Insert\SpecialChar \menuseparator
+Short Title
+\family default 
+.
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+Short Title
+\begin_inset Quotes erd
+\end_inset 
+
+ inserts an optional argument of the type needed by 
+\family typewriter 
+
+\backslash 
+figcaption
+\family default 
+.
+ Hopefully it will be renamed someday.
+\layout Itemize
+
+
+\family typewriter 
+
+\backslash 
+objectname
+\family default 
+ (2.17.1) -- same as 
+\family typewriter 
+
+\backslash 
+figcaption
+\family default 
+ for the catalog ID optional parameter
+\layout Itemize
+
+
+\family typewriter 
+
+\backslash 
+dataset
+\family default 
+ (2.17.1) -- same as 
+\family typewriter 
+
+\backslash 
+figcaption
+\family default 
+ for the catalog ID optional parameter
 \layout Subsubsection
 
 Things not implemented, use ERT
@@ -5731,61 +5760,49 @@ altaffiltext
 \backslash 
 eqnum
 \family default 
- (2.11), 
+ (2.12), 
 \family typewriter 
 
 \backslash 
 setcounter{equation}
 \family default 
- (2.11), 
-\family typewriter 
-
-\backslash 
-citet
-\family default 
- (2.12), 
-\family typewriter 
-
-\backslash 
-citep
-\family default 
- (2.12), Journal name abbreviations (2.12.4), 
+ (2.12), Journal name abbreviations (2.13.4), 
 \family typewriter 
 
 \backslash 
 figurenum
 \family default 
- (2.13.1), 
+ (2.14.1), 
 \family typewriter 
 
 \backslash 
 epsscale
 \family default 
- (2.13.1), 
+ (2.14.1), 
 \family typewriter 
 
 \backslash 
 plotone
 \family default 
- (2.13.1), 
+ (2.14.1), 
 \family typewriter 
 
 \backslash 
 plottwo
 \family default 
- (2.13.1), 
+ (2.14.1), 
 \family typewriter 
 
 \backslash 
 tablenum
 \family default 
- (2.14.4), 
+ (2.15.4), 
 \family typewriter 
 
 \backslash 
 tableline
 \family default 
- (2.14.4, insert it as the first element in the lefthand cell after where
+ (2.15.4, insert it as the first element in the lefthand cell after where
  you want it.
  Don't use any of LyX's rules in the table), 
 \family typewriter 
@@ -5793,19 +5810,31 @@ tableline
 \backslash 
 tablenotemark
 \family default 
- (2.14.5), 
+ (2.15.5), 
 \family typewriter 
 
 \backslash 
 tablenotetext
 \family default 
- (2.14.5), most everything in Misc (2.15, except 
+ (2.15.5), much of Misc (2.17, except 
 \family typewriter 
 
 \backslash 
+objectname
+\family default 
+,
+\family typewriter 
+ 
+\backslash 
+dataset
+\family default 
+,
+\family typewriter 
+ 
+\backslash 
 url
 \family default 
- and 
+, and 
 \family typewriter 
 
 \backslash 
@@ -5856,8 +5885,8 @@ Things that cannot be implemented
 
 \SpecialChar \ldots{}
  at least in any meaningful sort of way, so I suggest ignoring them.
- They are the references environment (2.12.3), and the deluxetable environment
- (2.14).
+ They are the references environment (2.13.3), and the deluxetable environment
+ (2.15).
  If you really, really need to use deluxetable, I suggest editing it in
  a separate file with a text editor, then using 
 \family sans 
@@ -5999,8 +6028,8 @@ References
 
 \layout Standard
 
-A few things: 1) I have noticed some funny spacing in the reference entries
- in the text.
+A couple of things: 1) I have noticed some funny spacing in the reference
+ entries in the text.
  When you enter the bibliography item data, make sure their is 
 \emph on 
 no
@@ -6020,77 +6049,7 @@ type
 Ressler (1992)
 \family default 
 .
- 2) I am really unhappy that I can't make 
-\family typewriter 
-
-\backslash 
-citet
-\family default 
- and 
-\family typewriter 
-
-\backslash 
-citep
-\family default 
- more automatic, but that would require changes to the LyX source code.
- For now you can do one of two things: a) enter all your citations using
- the built-in 
-\family sans 
-Insert\SpecialChar \menuseparator
-Citation Reference
-\family default 
- mechanism; at least you can take advantage of the automatic insertions.
- Then edit the exported LaTeX file by hand changing the 
-\family typewriter 
-
-\backslash 
-cite
-\family default 
- entries to the appropriate 
-\family typewriter 
-
-\backslash 
-citet
-\family default 
- or 
-\family typewriter 
-
-\backslash 
-citep
-\family default 
- commands before you submit it (
-\family typewriter 
-
-\backslash 
-cite
-\family default 
- is currently equivalent to 
-\family typewriter 
-
-\backslash 
-citet
-\family default 
-, so you wouldn't necessarily have to change those).
- Or b) you can simply enter all your citations as ERT using the same key
- for the argument that you used in the bibliography dialog, 
-\emph on 
-e.g.
-
-\emph default 
- 
-\family typewriter 
-
-\backslash 
-citet{key}
-\family default 
-.
- Neither choice is pleasant, but until LyX's citation mechanism understands
- 
-\family typewriter 
-natbib
-\family default 
-, we'll have to put up with it.
- 3) Entering the references at all is not obvious.
+ 2) Entering the references at all is not obvious.
  The easiest thing is to start typing your first reference at the end of
  the document, then mark it as type 
 \family sans 
@@ -6106,43 +6065,41 @@ References
 Including EPS files
 \layout Standard
 
-With all due respect to Chris Biemesderfer and the others who have helped
- to write the AASTeX package, the figure handling mechanism smells really
- foul.
+Even though AASTeX provides its own figure commands (
+\family typewriter 
+
+\backslash 
+plotone
+\family default 
+, for example), I much prefer LaTeX's standard figure commands (with the
+ default graphicx).
  You can insert the 
 \family typewriter 
 
 \backslash 
 plotone
 \family default 
-, etc.
-\begin_inset ERT
-status Inlined
-
-\layout Standard
-
-\backslash 
- 
-\end_inset 
-
-commands as ERT into a Figure Float box, but I never have much luck getting
- the layout right.
- My advice would be to avoid all EPS inclusions in the manuscript you submit
- to the journal, but then use the standard LyX EPS file inclusion mechanism
- when you want to make your nicer looking preprints.
- LyX will insert a 
+, etc.\SpecialChar ~
+commands as ERT into a Figure Float box if you desire, but I never
+ have much luck getting the layout right.
+ With the standard graphics, LyX will insert a 
 \family typewriter 
 
 \backslash 
-usepackage{graphics}
+usepackage{graphicx}
 \family default 
  command into the LaTeX preamble and handle the figures in the standard
- LaTeX2e way.
- Anyone who attempts to print your AASTeX 5.0 manuscript must have a LaTeX2e
- installation anyway, so why not take advantage of the infinitely better
- graphics handling mechanism? If they complain about LaTeX2e or the graphics
- package, point out that it appears in the second edition of Lamport (1994),
- so it was time to upgrade many years ago.
+ LaTeX2e way, interspersing the figures in the text.
+ I believe ApJ accepts figures exactly this way now; AJ might still use
+ the 
+\begin_inset Quotes eld
+\end_inset 
+
+stack everything at the end
+\begin_inset Quotes erd
+\end_inset 
+
+ technique.
 \layout Subsubsection
 
 Things I could have done, but didn't
@@ -6163,43 +6120,19 @@ pretty
  styles.
  Since I assume you will spend most of your time in the plain manuscript
  mode anyway, I decided not to chew up more disk space with this.
- If you feel strongly that I should make such layouts, I will adhere to
- the spirit of the rules laid out by the Mudgeeraba Creek Emu-Riding and
- Boomerang-Throwing Association:
-\layout Quotation
-
-
-\begin_inset Quotes eld
-\end_inset 
-
-Decisions of the judges will be final unless shouted down by a really overwhelmi
-ng majority of the crowd present.
- Abusive and obscene language may not be used by contestants when addressing
- members of the judging panel, or, conversely, by members of the judging
- panel when addressing contestants (unless struck by a boomerang).
-\begin_inset Quotes erd
-\end_inset 
-
-
+ 
 \layout Subsection
 
 Final Caveat
 \layout Standard
 
-To mangle the infamous quote by Donald Knuth about a computer algorithm,
- 
-\begin_inset Quotes eld
-\end_inset 
-
-I have only proved this to be correct, I have not actually tried it.
-\begin_inset Quotes erd
-\end_inset 
-
- I believe following the above procedures will produce an acceptable AASTeX
- document, but as of this update (Jan 25, 2000), I have not yet submitted
- a paper using it.
- Hopefully in the next few months \SpecialChar \ldots{}
-
+Your mileage may vary.
+ I've now had papers published by both ApJ and AJ that have had 98% of the
+ effort done in LyX; the last 2% was the LaTeX post-processing and a few
+ cleanups.
+ I have had no trouble with the submission process, and I'm sure the journals
+ were never aware that there might be a difference.
+ So, go forth and publish!
 \layout Section
 
 ijmpd
