@@ -145,9 +145,12 @@ def convert_minipage(lines):
         # in a different order.
         if lines[i][:6] == "height":
             height = lines[i][6:]
+            # test for default value of 221 and convert it accordingly
+            if height == ' "0pt"':
+                height = ' "1pt"'
             del lines[i]
         else:
-            height = ' "0"'
+            height = ' "1pt"'
 
         if lines[i][:5] == "width":
             width = lines[i][5:]
@@ -163,7 +166,7 @@ def convert_minipage(lines):
         i = i + 1
         lines.insert(i, 'height' + height)
         i = i + 1
-        lines.insert(i, 'height_special "totalheight"')
+        lines.insert(i, 'height_special "height"')
         i = i + 1
 
 ##
