@@ -404,9 +404,11 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 	case LFUN_RUNCHKTEX:
 		disable = lyxrc.chktex_command == "none";
 		break;
+#ifndef NEW_TABULAR
 	case LFUN_LAYOUT_TABLE:
 		disable = ! owner->view()->text->cursor.par()->table;
 		break;
+#endif
 	default:
 		break;
         }

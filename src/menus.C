@@ -909,6 +909,7 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 
 	// Table submenu
 	int SubEditTable = fl_newpup(FL_ObjWin(ob));
+#ifndef NEW_TABULAR
 	if (men->currentView()->available() && 
 	    men->currentView()->text->cursor.par()->table &&
 	    !tmpbuffer->isReadonly()){
@@ -1005,7 +1006,9 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 		// xgettext:no-c-format
 		fl_addtopup(SubEditTable, _("|Delete Table%x43"));
 		fl_setpup_shortcut(SubEditTable, 43, scex(_("EMT|Dd#d#D")));
-	} else if (men->currentView()->the_locking_inset &&
+	} else
+#endif
+		if (men->currentView()->the_locking_inset &&
 		   (men->currentView()->the_locking_inset->LyxCode() ==
 		    Inset::TABULAR_CODE) &&
 		   !tmpbuffer->isReadonly()) {
@@ -1250,11 +1253,14 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 				    static_cast<InsetTabular *>
 				       (men->currentView()->the_locking_inset);
 				inset->TabularFeatures(men->currentView(), choice - 32);
-			} else {
+			}
+#ifndef NEW_TABULAR
+			else {
 				men->currentView()->text->
 					TableFeatures(men->currentView(), choice - 32);
 				men->currentView()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			}
+#endif
 		}
 		break;
 		// version control sub-menu
@@ -1632,11 +1638,12 @@ void Menus::ShowLayoutMenu(FL_OBJECT * ob, long)
 		fl_setpup_mode(LayoutMenu, 9, FL_PUP_CHECK);
 	if (font.latex() == LyXFont::ON)
 		fl_setpup_mode(LayoutMenu, 10, FL_PUP_CHECK);
-	   
+
 	// Grey out unavailable entries
+#ifndef NEW_TABULAR
 	if (!men->currentView()->text->cursor.par()->table)
 		fl_setpup_mode(LayoutMenu, 5, FL_PUP_GREY);
-
+#endif
 	if (tmpbuffer->isReadonly()) {
 	        fl_setpup_mode(LayoutMenu, 1, FL_PUP_GREY);
 		fl_setpup_mode(LayoutMenu, 6, FL_PUP_GREY);

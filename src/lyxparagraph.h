@@ -37,6 +37,10 @@ class BufferView;
 // up. (Lgb)
 //#define NEW_INSETS 1
 
+// I dare you to try this one too. It is ortogonal with NEW_INSETS so you
+// can try both or just one of them.
+//#define NEW_TABULAR 1
+
 /// A LyXParagraph holds all text, attributes and insets in a text paragraph
 class LyXParagraph  {
 public:
@@ -329,11 +333,12 @@ public:
 	///
 	LyXParagraph * previous;
 
+#ifndef NEW_TABULAR
 	/* table stuff -- begin*/
 	///
 	LyXTable * table;
 	/* table stuff -- end*/
-
+#endif
         /// 
         InsetBibKey * bibkey;  // ale970302
 
@@ -534,6 +539,7 @@ public:
         void UnsetPExtraType(BufferParams const &);
 	///
 	bool linuxDocConvertChar(char c, string & sgml_string);
+#ifndef NEW_TABULAR
 	///
 	void DocBookContTableRows(Buffer const *,
 				  std::ostream &, string & extra,
@@ -543,6 +549,7 @@ public:
 	void SimpleDocBookOneTablePar(Buffer const *,
 				      std::ostream &, string & extra,
 				      int & desc_on, int depth);
+#endif
 private:
 	///
 	struct InsetTable {
@@ -623,6 +630,7 @@ private:
 				   int & foot_count,
 				   bool parent_is_rtl);
 #endif
+#ifndef NEW_TABULAR
 	///
 	bool SimpleTeXOneTablePar(Buffer const *, BufferParams const &,
 				  std::ostream &, TexRow & texrow);
@@ -631,6 +639,7 @@ private:
 			      std::ostream &, size_type i,
 			      int current_cell_number,
                               int & column, TexRow & texrow);
+#endif
 	///
 	void SimpleTeXBlanks(std::ostream &, TexRow & texrow,
 			     size_type const i,

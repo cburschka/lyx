@@ -260,8 +260,11 @@ void LyXText::ComputeBidiTables(Buffer const * buf, Row * row) const
 		LyXParagraph::size_type pos =
 			(is_space && lpos + 1 <= bidi_end &&
 			 !row->par()->IsLineSeparator(lpos + 1) &&
-			 (!row->par()->table
-			  || !row->par()->IsNewline(lpos + 1)) )
+			 (
+#ifndef NEW_TABULAR
+				 !row->par()->table ||
+#endif
+				 !row->par()->IsNewline(lpos + 1)) )
 			? lpos + 1 : lpos;
 		LyXFont font = row->par()->GetFontSettings(buf->params, pos);
 		bool new_rtl = font.isVisibleRightToLeft();
@@ -342,14 +345,20 @@ bool LyXText::IsBoundary(Buffer const * buf, LyXParagraph * par,
 	if (!lyxrc.rtl_support)
 		return false;    // This is just for speedup
 
-	if (!bidi_InRange(pos - 1) ||
-	    (par->table && par->IsNewline(pos-1)) )
+	if (!bidi_InRange(pos - 1)
+#ifndef NEW_TABULAR
+	    || (par->table && par->IsNewline(pos-1))
+#endif
+		)
 		return false;
 
 	bool rtl = bidi_level(pos - 1) % 2;
 	bool rtl2 = rtl;
-	if (pos == par->Last() ||
-	    (par->table && par->IsNewline(pos)))
+	if (pos == par->Last()
+#ifndef NEW_TABULAR
+	    || (par->table && par->IsNewline(pos))
+#endif
+		)
 		rtl2 = par->isRightToLeftPar(buf->params);
 	else if (bidi_InRange(pos))
 		rtl2 = bidi_level(pos) % 2;
@@ -366,8 +375,11 @@ bool LyXText::IsBoundary(Buffer const * buf, LyXParagraph * par,
 
 	bool rtl = font.isVisibleRightToLeft();
 	bool rtl2 = rtl;
-	if (pos == par->Last() ||
-	    (par->table && par->IsNewline(pos)))
+	if (pos == par->Last()
+#ifndef NEW_TABULAR
+	    || (par->table && par->IsNewline(pos))
+#endif
+		)
 		rtl2 = par->isRightToLeftPar(buf->params);
 	else if (bidi_InRange(pos))
 		rtl2 =  bidi_level(pos) % 2;
@@ -1921,7 +1933,11 @@ void LyXText::BreakParagraph(BufferView * bview, char keep_layout)
 
    SetHeightOfRow(bview, cursor.row());
    
-   while (!cursor.par()->Next()->table && cursor.par()->Next()->Last()
+   while (
+#ifndef NEW_TABULAR
+	   !cursor.par()->Next()->table &&
+#endif
+	   cursor.par()->Next()->Last()
 	  && cursor.par()->Next()->IsNewline(0))
 	   cursor.par()->Next()->Erase(0);
    
@@ -3962,8 +3978,8 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		} else if (sel_start_cursor.row() == row_ptr ||
 			   sel_end_cursor.row() == row_ptr) {
 			float tmpx = x;
-			int cell = 0;
 #ifndef NEW_TABULAR
+			int cell = 0;
 			if (row_ptr->par()->table) {
 				cell = NumberOfCell(row_ptr->par(), row_ptr->pos());
 				tmpx += row_ptr->par()->table->GetBeginningOfTextInCell(cell);
@@ -4888,9 +4904,12 @@ int LyXText::GetColumnNearX(BufferView * bview, Row * row, int & x,
 		   (!rtl && vc == last + 1 && x > tmpx + 5) ))
 		c = last + 1;
 #endif
-	else if (vc == row->pos() ||
-		 (row->par()->table
-		  && vc <= last && row->par()->IsNewline(vc-1)) ) {
+	else if (vc == row->pos()
+#ifndef NEW_TABULAR
+		 || (row->par()->table
+		  && vc <= last && row->par()->IsNewline(vc-1))
+#endif
+		) {
 		c = vis2log(vc);
 		if (bidi_level(c) % 2 == 1)
 			++c;
@@ -4903,8 +4922,12 @@ int LyXText::GetColumnNearX(BufferView * bview, Row * row, int & x,
 		}
 	}
 
-	if (!row->par()->table && row->pos() <= last && c > last
-	    && row->par()->IsNewline(last)) {
+	if (
+#ifndef NEW_TABULAR
+		!row->par()->table &&
+#endif
+		row->pos() <= last && c > last
+		&& row->par()->IsNewline(last)) {
 		if (bidi_level(last) % 2 == 0)
 			tmpx -= SingleWidth(bview, row->par(), last);
 		else

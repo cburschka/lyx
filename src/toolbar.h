@@ -20,8 +20,10 @@
 
 #include <vector>
 #include FORMS_H_LOCATION
-#include "lyxfunc.h"
+#include "commandtags.h"
 #include "combox.h"
+
+class LyXView;
 
 /** The LyX toolbar class
   This class {\em is} the LyX toolbar, and is not likely to be enhanced
@@ -92,30 +94,13 @@ private:
 		///
 		FL_OBJECT * icon;
 		///
-		toolbarItem() {
-			action = LFUN_NOACTION;
-			icon = 0;
-		}
+		toolbarItem();
 		///
-		void clean() {
-			if (icon) {
-				fl_delete_object(icon);
-				fl_free_object(icon);
-				icon = 0;
-			}
-		}
+		void clean();
 		///
-		~toolbarItem() {
-			clean();
-		}
-			
-		toolbarItem & operator=(const toolbarItem & ti) {
-			// do we have to check icon and IsBitmap too?
-		        action = ti.action;
-			icon = 0; // locally we need to get the icon anew
-
-			return *this;
-		}
+		~toolbarItem();
+		///
+		toolbarItem & operator=(toolbarItem const & ti);
 	};
 
 	/// typedef to simplify things
@@ -152,12 +137,7 @@ private:
 
 	/** more...
 	 */
-	void reset();// {
-//		toollist = 0;
-//		cleaned = false;
-//		
-//		lightReset();
-//	}
+	void reset();
 
 	/** more...
 	 */

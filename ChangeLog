@@ -1,5 +1,25 @@
 2000-07-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/toolbar.h: include commandtags.h instead of lyxfunc.h,
+	forward decl of LyXView.
+
+	* src/toolbar.C (toolbarItem): moved from toolbar.h
+	(toolbarItem::clean): ditto
+	(toolbarItem::~toolbarItem): ditto
+	(toolbarItem::operator): ditto
+
+	* src/text2.C (SetLayout): commetn out USE_OLD_SETUP_LAYOUT stuff
+
+	* src/paragraph.h: control the NEW_TABULAR define from here
+
+	* src/buffer.C: remove define USE_PARSE_FUNCTION, change
+	USE_TABULAR_INSETS to NEW_TABULAR
+
+	* src/ToolbarDefaults.C: add include "lyxlex.h"
+
+	* files using the old table/tabular: use NEW_TABULAR to control
+	compilation of old tabular stuff. 
+
 	* src/paragraph.C (SimpleTeXOnePar): NEW_INSETS: move some #ifdef
 	to correct place.
 

@@ -235,8 +235,6 @@ void Buffer::fileName(string const & newfile)
 // if par = 0 normal behavior
 // else insert behavior
 // Returns false if "\the_end" is not read for formats >= 2.13. (Asger)
-#define USE_PARSE_FUNCTION 1
-//#define USE_TABULAR_INSETS 1
 bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 {
 	string tmptok;
@@ -1027,7 +1025,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		par->InsertChar(pos, LyXParagraph::META_NEWLINE, font);
 		++pos;
 	} else if (token == "\\LyXTable") {
-#ifdef USE_TABULAR_INSETS
+#ifdef NEW_TABULAR
 		Inset * inset = new InsetTabular(this);
 		inset->Read(this, lex);
 		par->InsertInset(pos, inset, font);
@@ -1291,9 +1289,18 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 	char c, footnoteflag = 0, depth = 0;
 	string tmp;
 	LyXParagraph::size_type i;
-	int j, h, ltype = 0, ltype_depth = 0,
-		* clen = 0, actcell = 0, actpos = 0, cell = 0, cells = 0,
-	        currlinelen = 0;
+	int j;
+	int ltype = 0;
+	int ltype_depth = 0;
+	int * actcell = 0;
+	int actpos = 0;
+#ifndef NEW_TABULAR
+	int h;
+	int * clen = 0;
+	int cell = 0;
+	int cells = 0;
+#endif
+	int currlinelen = 0;
 	long fpos = 0;
 	bool ref_printed = false;
 

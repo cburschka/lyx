@@ -4,6 +4,7 @@
 #include "LyXAction.h"
 #include "toolbar.h"
 #include "debug.h"
+#include "lyxlex.h"
 
 using std::endl;
 

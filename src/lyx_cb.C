@@ -2629,7 +2629,8 @@ void TableApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->available())
 		return;
-   
+
+#ifndef NEW_TABULAR
 	// check for tables in tables
 	if (current_view->text->cursor.par()->table){
 		WriteAlert(_("Impossible Operation!"),
@@ -2637,7 +2638,7 @@ void TableApplyCB(FL_OBJECT *, long)
 			   _("Sorry."));
 		return;
 	}
- 
+#endif
 	current_view->owner()->getMiniBuffer()->Set(_("Inserting table..."));
 
 	int ysize = int(fl_get_slider_value(fd_form_table->slider_columns) + 0.5);
@@ -2693,10 +2694,10 @@ void TableApplyCB(FL_OBJECT *, long)
 				       0);
 	}
 #endif
-	
+#ifndef NEW_TABULAR
 	current_view->text->cursor.par()->table =
 		new LyXTable(xsize, ysize);
-
+#endif
 	Language const * lang = 
 		current_view->text->cursor.par()->getParLanguage(current_view->buffer()->params);
 	LyXFont font(LyXFont::ALL_INHERIT, lang);
@@ -2766,7 +2767,10 @@ void FigureApplyCB(FL_OBJECT *, long)
 	
 	current_view->owner()->getMiniBuffer()->Set(_("Inserting figure..."));
 	if (fl_get_button(fd_form_figure->radio_inline)
-	    || current_view->text->cursor.par()->table) {
+#ifndef NEW_TABULAR
+	    || current_view->text->cursor.par()->table
+#endif
+		) {
 		InsetFig * new_inset = new InsetFig(100, 20, buffer);
 		current_view->insertInset(new_inset);
 		current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));

@@ -41,6 +41,40 @@ extern char const ** get_pixmap_from_symbol(char const * arg, int, int);
 extern LyXAction lyxaction;
 
 
+Toolbar::toolbarItem::toolbarItem()
+{
+	action = LFUN_NOACTION;
+	icon = 0;
+}
+
+
+void Toolbar::toolbarItem::clean()
+{
+	if (icon) {
+		fl_delete_object(icon);
+		fl_free_object(icon);
+		icon = 0;
+	}
+}
+
+
+Toolbar::toolbarItem::~toolbarItem()
+{
+	clean();
+}
+
+
+Toolbar::toolbarItem &
+Toolbar::toolbarItem::operator=(Toolbar::toolbarItem const & ti)
+{
+	// do we have to check icon and IsBitmap too?
+	action = ti.action;
+	icon = 0; // locally we need to get the icon anew
+	
+	return *this;
+}
+
+
 Toolbar::Toolbar(LyXView * o, int x, int y)
 	: owner(o), sxpos(x), sypos(y)
 {

@@ -397,8 +397,10 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 			(*cit).inset->Validate(features);
 	}
 
+#ifndef NEW_TABULAR
         if (table && table->IsLongTable())
 		features.longtable = true;
+#endif
         if (pextra_type == PEXTRA_INDENT)
                 features.LyXParagraphIndent = true;
         if (pextra_type == PEXTRA_FLOATFLT)
@@ -411,8 +413,10 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
         if (params.paragraph_separation == BufferParams::PARSEP_INDENT
             && pextra_type == LyXParagraph::PEXTRA_MINIPAGE)
 		features.NeedLyXMinipageIndent = true;
+#ifndef NEW_TABULAR
         if (table && table->NeedRotating())
 		features.rotating = true;
+#endif
 #ifndef NEW_INSETS
 	if (footnoteflag != NO_FOOTNOTE && footnotekind == ALGORITHM)
 		features.algorithm = true;
@@ -1572,7 +1576,12 @@ int LyXParagraph::StripLeadingSpaces(LyXTextClassList::size_type tclass)
 #ifndef NEW_INSETS
 		!IsDummy() &&
 #endif
-		!table){
+#ifndef NEW_TABULAR
+		!table
+#else
+		true
+#endif
+		){
 		while (Last()
 		       && (IsNewline(0) || IsLineSeparator(0))){
 			Erase(0);
@@ -2388,15 +2397,17 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	default:
 		// we don't need it for the last paragraph!!!
 		if (next
-		    && !(
 #ifndef NEW_INSETS
-			    footnoteflag != LyXParagraph::NO_FOOTNOTE
+			&& !(    footnoteflag != LyXParagraph::NO_FOOTNOTE
 		      && footnotekind != LyXParagraph::FOOTNOTE
-		      && footnotekind != LyXParagraph::MARGIN &&
+		      && footnotekind != LyXParagraph::MARGIN)
 #endif
-		      (table
+#ifndef NEW_TABULAR
+		      && !(table
 			  || (par
-			      && par->table)))) {
+			      && par->table))
+#endif
+			) {
 			// don't insert this if we would be adding it
 			// before or after a table in a float.  This 
 			// little trick is needed in order to allow
@@ -2682,6 +2693,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 }
 
 
+#ifndef NEW_TABULAR
 // This one spits out the text of a table paragraph
 bool LyXParagraph::SimpleTeXOneTablePar(Buffer const * buf,
 					BufferParams const & bparams,
@@ -2866,8 +2878,10 @@ bool LyXParagraph::SimpleTeXOneTablePar(Buffer const * buf,
 	lyxerr[Debug::LATEX] << "SimpleTeXOneTablePar...done " << this << endl;
 	return return_value;
 }
+#endif
 
 
+#ifndef NEW_TABULAR
 // This one spits out the text off ContRows in tables
 bool LyXParagraph::TeXContTableRows(Buffer const * buf,
 				    BufferParams const & bparams,
@@ -2978,6 +2992,7 @@ bool LyXParagraph::TeXContTableRows(Buffer const * buf,
 	lyxerr[Debug::LATEX] << "TeXContTableRows...done " << this << endl;
 	return return_value;
 }
+#endif
 
 
 bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
@@ -3044,6 +3059,7 @@ bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
 }
 
 
+#ifndef NEW_TABULAR
 void LyXParagraph::SimpleDocBookOneTablePar(Buffer const * buffer, 
 					    ostream & os, string & extra,
 					    int & desc_on, int depth) 
@@ -3228,8 +3244,10 @@ void LyXParagraph::SimpleDocBookOneTablePar(Buffer const * buffer,
 	lyxerr[Debug::LATEX] << "SimpleDocbookOneTablePar...done "
 			     << this << endl;
 }
+#endif
 
 
+#ifndef NEW_TABULAR
 void LyXParagraph::DocBookContTableRows(Buffer const * buffer,
 					ostream & os, string & extra,
                                         int & desc_on,
@@ -3378,6 +3396,7 @@ void LyXParagraph::DocBookContTableRows(Buffer const * buffer,
 	}
 	lyxerr[Debug::LATEX] << "DocBookContTableRows...done " << this << endl;
 }
+#endif
 
 
 void LyXParagraph::SimpleTeXBlanks(ostream & os, TexRow & texrow,
@@ -3894,7 +3913,9 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 		if (par && par->depth > depth) {
 			if (textclasslist.Style(bparams.textclass,
 						par->layout).isParagraph()
+#ifndef NEW_TABULAR
 			    && !par->table
+#endif
 			    // Thinko!
 			    // How to handle this? (Lgb)
 			    //&& !suffixIs(os, "\n\n")
@@ -4509,14 +4530,17 @@ LyXParagraph::getParLanguage(BufferParams const & bparams) const
 #endif
 	else if (previous)
 		return previous->getParLanguage(bparams);
-	else
+	//else
 		return bparams.language_info;
 }
 
 
 bool LyXParagraph::isRightToLeftPar(BufferParams const & bparams) const
 {
-	return lyxrc.rtl_support && !table
+	return lyxrc.rtl_support
+#ifndef NEW_TABULAR
+		&& !table
+#endif
 		&& getParLanguage(bparams)->RightToLeft();
 }
 
@@ -4598,9 +4622,9 @@ string LyXParagraph::String(Buffer const * buffer,
 			    LyXParagraph::size_type end)
 {
 	string s;
+#ifndef NEW_TABULAR
 	int actcell = 0;
 	int cell = 1;
-#ifndef NEW_TABULAR
 	if (table)
 		for (LyXParagraph::size_type i = 0; i < beg; ++i)
 			if (IsNewline(i)) {
@@ -4633,7 +4657,9 @@ string LyXParagraph::String(Buffer const * buffer,
 			ost << '\0';
 #endif
 			s += ost.str();
-		} else if (table && IsNewlineChar(c)) {
+		}
+#ifndef NEW_TABULAR
+		else if (table && IsNewlineChar(c)) {
 			if (cell >= table->NumberOfCellsInRow(actcell)) {
 				s += '\n';
 				cell = 1;
@@ -4643,6 +4669,7 @@ string LyXParagraph::String(Buffer const * buffer,
 			}
 			++actcell;
 		}
+#endif
 	}
 
 	return s;

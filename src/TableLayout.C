@@ -17,7 +17,6 @@
 #include "layout.h"
 #include "insets/lyxinset.h"
 
-
 // Prototypes
 extern FD_form_table_options * fd_form_table_options;
 extern FD_form_table_extra * fd_form_table_extra;
@@ -42,7 +41,8 @@ bool UpdateLayoutTable(int flag)
     bool update = true;
     if (!current_view->available())
         update = false;
-    
+
+#ifndef NEW_TABULAR
     if (update && current_view->text->cursor.par()->table) {
         char buf[12];
         string pwidth, special;
@@ -212,7 +212,9 @@ bool UpdateLayoutTable(int flag)
 		      table->RotateTable());
 	fl_set_focus_object(fd_form_table_options->form_table_options,
 			    fd_form_table_options->button_table_delete);
-    } else if (fd_form_table_options->form_table_options->visible) {
+    } else
+#endif
+	    if (fd_form_table_options->form_table_options->visible) {
 	fl_set_focus_object(fd_form_table_options->form_table_options,
 			    fd_form_table_options->button_table_delete);
         fl_hide_form(fd_form_table_options->form_table_options);
@@ -257,6 +259,7 @@ void MenuLayoutTable(int flag)
 
 void TableOptionsCB(FL_OBJECT * ob, long)
 {
+#ifndef NEW_TABULAR
     LyXTable * table = 0;
     int s, num = 0;
     string special, str;
@@ -438,6 +441,7 @@ void TableOptionsCB(FL_OBJECT * ob, long)
     } else
         UpdateLayoutTable(true);
     return;
+#endif
 }
 
 
@@ -459,6 +463,7 @@ void TableSpeCloseCB(FL_OBJECT *, long)
 
 void SetPWidthCB(FL_OBJECT * ob, long)
 {
+#ifndef NEW_TABULAR
     fl_set_object_label(fd_form_table_options->text_warning, "");
     Confirmed = false;
     if (ob == fd_form_table_options->input_column_width) {
@@ -480,4 +485,5 @@ void SetPWidthCB(FL_OBJECT * ob, long)
         }
         MenuLayoutTable(0); // update for alignment
     }
+#endif
 }
