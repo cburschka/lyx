@@ -1,5 +1,10 @@
 2003-06-03  John Levon  <levon@movementarian.org>
 
+	* ispell.C: HPUX doesn't have sys/select.h
+	(from Albert Chin)
+
+2003-06-03  John Levon  <levon@movementarian.org>
+
 	* CutAndPaste.C: update tabular and include inset
 	buffer references
 
