@@ -534,6 +534,16 @@ void MathHullInset::footer_write(WriteStream & os) const
 }
 
 
+bool MathHullInset::rowChangeOK() const
+{
+	return
+		type_ == "eqnarray" || type_ == "align" ||
+		type_ == "flalign" || type_ == "alignat" ||
+		type_ == "xalignat" || type_ == "xxalignat" ||
+		type_ == "gather" || type_ == "multline";
+}
+
+
 bool MathHullInset::colChangeOK() const
 {
 	return
@@ -544,6 +554,8 @@ bool MathHullInset::colChangeOK() const
 
 void MathHullInset::addRow(row_type row)
 {
+	if (!rowChangeOK())
+		return;
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
 	label_.insert(label_.begin() + row + 1, string());
 	MathGridInset::addRow(row);
@@ -552,7 +564,7 @@ void MathHullInset::addRow(row_type row)
 
 void MathHullInset::swapRow(row_type row)
 {
-	if (nrows() == 1)
+	if (nrows() <= 1)
 		return;
 	if (row + 1 == nrows())
 		--row;
@@ -564,7 +576,7 @@ void MathHullInset::swapRow(row_type row)
 
 void MathHullInset::delRow(row_type row)
 {
-	if (nrows() <= 1)
+	if (nrows() <= 1 || !rowChangeOK())
 		return;
 	MathGridInset::delRow(row);
 	nonum_.erase(nonum_.begin() + row);
@@ -574,19 +586,17 @@ void MathHullInset::delRow(row_type row)
 
 void MathHullInset::addCol(col_type col)
 {
-	if (colChangeOK())
-		MathGridInset::addCol(col);
-	else
-		lyxerr << "Can't change number of columns in '" << type_ << "'" << endl;
+	if (!colChangeOK())
+		return;
+	MathGridInset::addCol(col);
 }
 
 
 void MathHullInset::delCol(col_type col)
 {
-	if (colChangeOK())
-		MathGridInset::delCol(col);
-	else
-		lyxerr << "Can't change number of columns in '" << type_ << "'" << endl;
+	if (ncols() <= 1 || !colChangeOK())
+		return;
+	MathGridInset::delCol(col);
 }
 
 
@@ -1084,24 +1094,24 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		// we handle these
 		return true;
 	case LFUN_TABULAR_FEATURE: {
-		// should be more precise
 		istringstream is(cmd.argument);
 		string s;
 		is >> s;
-		if ((type_ == "simple" || type_ == "equation")
-		    && (s == "append-column"
-			|| s == "delete-column"
-			|| s == "swap-column"
-			|| s == "copy-column"
-			|| s == "delete-column"
-			|| s == "append-row"
+		if (!rowChangeOK()
+		    && (s == "append-row"
 			|| s == "delete-row"
-			|| s == "swap-row"
 			|| s == "copy-row"))
 			return false;
-		if ((type_ == "eqnarray")
+		if (nrows() <= 1
+		    && (s == "delete-row" || s == "swap-row"))
+			return false;
+		if (!colChangeOK()
 		    && (s == "append-column"
-			|| s == "delete-column"))
+			|| s == "delete-column"
+			|| s == "copy-column"))
+			return false;
+		if (ncols() <= 1
+		    && (s == "delete-column" || s == "swap-column"))
 			return false;
 		return MathGridInset::getStatus(cur, cmd, flag);
 	}

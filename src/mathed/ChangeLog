@@ -1,3 +1,12 @@
+2004-11-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_hullinset.[Ch] (rowChangeOK): new
+	* math_hullinset.C (addRow, delRow): check wether rows can be changed
+	* math_hullinset.C (addCol, delCol): remove lyxerr warning since we
+	should never come here if colChangeOK() is false
+	* math_hullinset.C (delCol): don't delete if this is the only column
+	* math_hullinset.C (getStatus): fix LFUN_TABULAR_FEATURE
+
 2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* math_inset.h: include math_data.h to satisfy concept checks.

@@ -69,7 +69,7 @@ public:
 	void addRow(row_type row);
 	/// delete a row
 	void delRow(row_type row);
-	///
+	/// swap two rows
 	void swapRow(row_type row);
 	/// add a column
 	void addCol(col_type col);
@@ -165,6 +165,8 @@ private:
 	char const * standardFont() const;
 	/// consistency check
 	void check() const;
+	/// can this change its number of rows?
+	bool rowChangeOK() const;
 	/// can this change its number of cols?
 	bool colChangeOK() const;
 
