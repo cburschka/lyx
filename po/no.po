@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.3.0\n"
-"POT-Creation-Date: 2003-05-06 16:32+0200\n"
+"POT-Creation-Date: 2003-09-12 15:24+0200\n"
 "PO-Revision-Date: 2003-02-06 00:13+0100\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -3268,7 +3268,7 @@ msgstr "Øverst"
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
 #: src/frontends/controllers/ControlGraphics.C:158
-#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:302
 msgid "Center"
 msgstr "Sentrert"
 
@@ -3334,14 +3334,14 @@ msgstr "Justert"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
-#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
+#: src/frontends/qt2/QTabular.C:179 src/frontends/xforms/FormParagraph.C:309
 msgid "Left"
 msgstr "Venstre"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
-#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
+#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:316
 msgid "Right"
 msgstr "Høyre"
 
@@ -4307,7 +4307,7 @@ msgid "Merge cells"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:109
-#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
+#: src/frontends/qt2/QTabular.C:183 src/frontends/xforms/FormParagraph.C:295
 msgid "Block"
 msgstr "Blokk"
 
@@ -4364,7 +4364,7 @@ msgid "Width unit"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
-msgid "Fixed with of the column"
+msgid "Fixed width of the column"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:398
@@ -4683,7 +4683,7 @@ msgstr "Del*"
 #: ../lib/layouts/siamltex.layout:18 ../lib/layouts/slides.layout:72
 #: ../lib/layouts/stdclass.inc:27 ../lib/layouts/stdletter.inc:21
 #: ../lib/layouts/svjour.inc:26 ../lib/layouts/scrlttr2.layout:7
-#: ../lib/layouts/elsart.layout:44 src/insets/insetref.C:118
+#: ../lib/layouts/elsart.layout:48 src/insets/insetref.C:118
 #: src/mathed/ref_inset.C:127
 msgid "Standard"
 msgstr "Standard"
@@ -4695,7 +4695,8 @@ msgstr ""
 #: ../lib/layouts/IEEEtran.layout:82 ../lib/layouts/amsdefs.inc:27
 #: ../lib/layouts/foils.layout:301 ../lib/layouts/heb-article.layout:97
 #: ../lib/layouts/llncs.layout:405 ../lib/layouts/siamltex.layout:234
-#: ../lib/layouts/svjour.inc:470 ../lib/layouts/ijmpd.layout:141
+#: ../lib/layouts/svjour.inc:470 ../lib/layouts/elsart.layout:295
+#: ../lib/layouts/ijmpd.layout:141
 msgid "Proof"
 msgstr "Bevis"
 
@@ -4703,7 +4704,7 @@ msgstr "Bevis"
 #: ../lib/layouts/amsmaths-seq.inc:32 ../lib/layouts/amsmaths.inc:59
 #: ../lib/layouts/foils.layout:232 ../lib/layouts/heb-article.layout:24
 #: ../lib/layouts/llncs.layout:441 ../lib/layouts/siamltex.layout:189
-#: ../lib/layouts/svjour.inc:506 ../lib/layouts/elsart.layout:257
+#: ../lib/layouts/svjour.inc:506 ../lib/layouts/elsart.layout:262
 #: ../lib/layouts/ijmpd.layout:125
 msgid "Theorem"
 msgstr "Teorem"
@@ -4712,7 +4713,7 @@ msgstr "Teorem"
 #: ../lib/layouts/amsmaths-seq.inc:48 ../lib/layouts/amsmaths.inc:128
 #: ../lib/layouts/foils.layout:262 ../lib/layouts/heb-article.layout:52
 #: ../lib/layouts/llncs.layout:387 ../lib/layouts/siamltex.layout:203
-#: ../lib/layouts/svjour.inc:452 ../lib/layouts/elsart.layout:290
+#: ../lib/layouts/svjour.inc:452 ../lib/layouts/elsart.layout:327
 msgid "Lemma"
 msgstr "Lemma"
 
@@ -4720,7 +4721,7 @@ msgstr "Lemma"
 #: ../lib/layouts/amsmaths-seq.inc:40 ../lib/layouts/amsmaths.inc:105
 #: ../lib/layouts/foils.layout:269 ../lib/layouts/heb-article.layout:61
 #: ../lib/layouts/llncs.layout:352 ../lib/layouts/siamltex.layout:209
-#: ../lib/layouts/svjour.inc:409 ../lib/layouts/elsart.layout:302
+#: ../lib/layouts/svjour.inc:409 ../lib/layouts/elsart.layout:339
 msgid "Corollary"
 msgstr "Korollar"
 
@@ -4728,20 +4729,20 @@ msgstr "Korollar"
 #: ../lib/layouts/amsmaths-seq.inc:56 ../lib/layouts/amsmaths.inc:152
 #: ../lib/layouts/foils.layout:276 ../lib/layouts/llncs.layout:417
 #: ../lib/layouts/siamltex.layout:215 ../lib/layouts/svjour.inc:482
-#: ../lib/layouts/elsart.layout:314
+#: ../lib/layouts/elsart.layout:351
 msgid "Proposition"
 msgstr ""
 
 #: ../lib/layouts/IEEEtran.layout:134 ../lib/layouts/amsmaths-plain.inc:76
 #: ../lib/layouts/amsmaths-seq.inc:64 ../lib/layouts/amsmaths.inc:176
 #: ../lib/layouts/llncs.layout:346 ../lib/layouts/svjour.inc:403
-#: ../lib/layouts/elsart.layout:373
+#: ../lib/layouts/elsart.layout:410
 msgid "Conjecture"
 msgstr ""
 
 #: ../lib/layouts/IEEEtran.layout:145 ../lib/layouts/amsmaths-plain.inc:87
 #: ../lib/layouts/amsmaths-seq.inc:72 ../lib/layouts/amsmaths.inc:200
-#: ../lib/layouts/elsart.layout:326
+#: ../lib/layouts/elsart.layout:363
 msgid "Criterion"
 msgstr "Kriterie"
 
@@ -4759,14 +4760,14 @@ msgstr "Aksiom"
 #: ../lib/layouts/amsmaths-seq.inc:104 ../lib/layouts/amsmaths.inc:260
 #: ../lib/layouts/foils.layout:283 ../lib/layouts/heb-article.layout:79
 #: ../lib/layouts/llncs.layout:369 ../lib/layouts/siamltex.layout:221
-#: ../lib/layouts/svjour.inc:426 ../lib/layouts/elsart.layout:350
+#: ../lib/layouts/svjour.inc:426 ../lib/layouts/elsart.layout:387
 msgid "Definition"
 msgstr "Definisjon"
 
 #: ../lib/layouts/IEEEtran.layout:189 ../lib/layouts/amsmaths-plain.inc:142
 #: ../lib/layouts/amsmaths-seq.inc:112 ../lib/layouts/amsmaths.inc:294
 #: ../lib/layouts/llncs.layout:375 ../lib/layouts/svjour.inc:432
-#: ../lib/layouts/elsart.layout:385
+#: ../lib/layouts/elsart.layout:422
 msgid "Example"
 msgstr "Eksempel"
 
@@ -4778,7 +4779,7 @@ msgstr "Forutsetning"
 #: ../lib/layouts/IEEEtran.layout:211 ../lib/layouts/amsmaths-plain.inc:164
 #: ../lib/layouts/amsmaths-seq.inc:128 ../lib/layouts/amsmaths.inc:330
 #: ../lib/layouts/llncs.layout:399 ../lib/layouts/svjour.inc:464
-#: ../lib/layouts/elsart.layout:397
+#: ../lib/layouts/elsart.layout:434
 msgid "Problem"
 msgstr "Problem"
 
@@ -4791,14 +4792,14 @@ msgstr "Øvelse"
 #: ../lib/layouts/IEEEtran.layout:233 ../lib/layouts/amsmaths-plain.inc:186
 #: ../lib/layouts/amsmaths-seq.inc:144 ../lib/layouts/amsmaths.inc:354
 #: ../lib/layouts/llncs.layout:429 ../lib/layouts/svjour.inc:494
-#: ../lib/layouts/elsart.layout:409
+#: ../lib/layouts/elsart.layout:446
 msgid "Remark"
 msgstr "Merknad"
 
 #: ../lib/layouts/IEEEtran.layout:244 ../lib/layouts/amsmaths-plain.inc:197
 #: ../lib/layouts/amsmaths-seq.inc:152 ../lib/layouts/amsmaths.inc:389
 #: ../lib/layouts/heb-article.layout:70 ../lib/layouts/llncs.layout:340
-#: ../lib/layouts/svjour.inc:379 ../lib/layouts/elsart.layout:425
+#: ../lib/layouts/svjour.inc:379 ../lib/layouts/elsart.layout:462
 msgid "Claim"
 msgstr "Påstand"
 
@@ -4806,7 +4807,7 @@ msgstr "Påstand"
 #: ../lib/layouts/amsmaths-seq.inc:160 ../lib/layouts/amsmaths.inc:413
 #: ../lib/layouts/apa.layout:204 ../lib/layouts/llncs.layout:393
 #: ../lib/layouts/slides.layout:173 ../lib/layouts/svjour.inc:458
-#: ../lib/layouts/elsart.layout:417
+#: ../lib/layouts/elsart.layout:454
 msgid "Note"
 msgstr "Notis"
 
@@ -4817,7 +4818,7 @@ msgstr "Notasjon"
 
 #: ../lib/layouts/IEEEtran.layout:277 ../lib/layouts/amsmaths-plain.inc:255
 #: ../lib/layouts/amsmaths-seq.inc:192 ../lib/layouts/amsmaths.inc:485
-#: ../lib/layouts/llncs.layout:316 ../lib/layouts/elsart.layout:441
+#: ../lib/layouts/llncs.layout:316 ../lib/layouts/elsart.layout:478
 msgid "Case"
 msgstr ""
 
@@ -4900,7 +4901,7 @@ msgstr "Sammendrag"
 #: ../lib/layouts/aastex.layout:256 ../lib/layouts/amsdefs.inc:241
 #: ../lib/layouts/kluwer.layout:283 ../lib/layouts/paper.layout:165
 #: ../lib/layouts/revtex4.layout:243 ../lib/layouts/siamltex.layout:159
-#: ../lib/layouts/spie.layout:42 ../lib/layouts/elsart.layout:59
+#: ../lib/layouts/spie.layout:42 ../lib/layouts/elsart.layout:63
 msgid "Keywords"
 msgstr "Nøkkelord"
 
@@ -5000,7 +5001,7 @@ msgstr "Liste"
 #: ../lib/layouts/scrlettr.layout:204 ../lib/layouts/siamltex.layout:103
 #: ../lib/layouts/stdtitle.inc:11 ../lib/layouts/svjour.inc:138
 #: ../lib/layouts/svprobth.layout:37 ../lib/layouts/scrlttr2.layout:281
-#: ../lib/layouts/elsart.layout:90 ../lib/layouts/ijmpd.layout:39
+#: ../lib/layouts/elsart.layout:94 ../lib/layouts/ijmpd.layout:39
 msgid "Title"
 msgstr "Tittel"
 
@@ -5024,7 +5025,7 @@ msgstr "Undertittel"
 #: ../lib/layouts/revtex.layout:114 ../lib/layouts/revtex4.layout:130
 #: ../lib/layouts/scrclass.inc:166 ../lib/layouts/siamltex.layout:119
 #: ../lib/layouts/stdtitle.inc:33 ../lib/layouts/svjour.inc:197
-#: ../lib/layouts/svprobth.layout:57 ../lib/layouts/elsart.layout:111
+#: ../lib/layouts/svprobth.layout:57 ../lib/layouts/elsart.layout:115
 #: ../lib/layouts/ijmpd.layout:48
 msgid "Author"
 msgstr "Forfatter"
@@ -5073,7 +5074,7 @@ msgstr "Dato"
 #: ../lib/layouts/ltugboat.layout:190 ../lib/layouts/revtex.layout:154
 #: ../lib/layouts/revtex4.layout:205 ../lib/layouts/stdstruct.inc:12
 #: ../lib/layouts/svjog.layout:32 ../lib/layouts/svjour.inc:272
-#: ../lib/layouts/elsart.layout:198
+#: ../lib/layouts/elsart.layout:202
 msgid "Abstract "
 msgstr "Sammendrag"
 
@@ -5081,7 +5082,7 @@ msgstr "Sammendrag"
 #: ../lib/layouts/aapaper.inc:87 ../lib/layouts/aapaper.layout:83
 #: ../lib/layouts/amsmaths-plain.inc:243 ../lib/layouts/amsmaths-seq.inc:184
 #: ../lib/layouts/amsmaths.inc:462 ../lib/layouts/egs.layout:615
-#: ../lib/layouts/svjour.inc:345 ../lib/layouts/elsart.layout:461
+#: ../lib/layouts/svjour.inc:345 ../lib/layouts/elsart.layout:498
 msgid "Acknowledgement"
 msgstr ""
 
@@ -5221,7 +5222,7 @@ msgid "Current_Address"
 msgstr ""
 
 #: ../lib/layouts/amsdefs.inc:260 ../lib/layouts/revtex4.layout:176
-#: ../lib/layouts/elsart.layout:185
+#: ../lib/layouts/elsart.layout:189
 msgid "Thanks"
 msgstr "Takk"
 
@@ -5239,12 +5240,12 @@ msgstr ""
 
 #: ../lib/layouts/amsmaths-plain.inc:98 ../lib/layouts/amsmaths-seq.inc:80
 #: ../lib/layouts/amsmaths.inc:212 ../lib/layouts/stdfloats.inc:31
-#: ../lib/layouts/elsart.layout:338
+#: ../lib/layouts/elsart.layout:375
 msgid "Algorithm"
 msgstr "Algoritme"
 
 #: ../lib/layouts/amsmaths-plain.inc:231 ../lib/layouts/amsmaths-seq.inc:176
-#: ../lib/layouts/amsmaths.inc:450 ../lib/layouts/elsart.layout:433
+#: ../lib/layouts/amsmaths.inc:450 ../lib/layouts/elsart.layout:470
 msgid "Summary"
 msgstr ""
 
@@ -5951,11 +5952,11 @@ msgstr ""
 msgid "Preprint"
 msgstr ""
 
-#: ../lib/layouts/revtex4.layout:182 ../lib/layouts/elsart.layout:145
+#: ../lib/layouts/revtex4.layout:182 ../lib/layouts/elsart.layout:149
 msgid "Author_Email"
 msgstr ""
 
-#: ../lib/layouts/revtex4.layout:197 ../lib/layouts/elsart.layout:164
+#: ../lib/layouts/revtex4.layout:197 ../lib/layouts/elsart.layout:168
 msgid "Author_URL"
 msgstr ""
 
@@ -6202,7 +6203,7 @@ msgstr "EMail"
 msgid "Logo"
 msgstr "Logg"
 
-#: ../lib/layouts/elsart.layout:131
+#: ../lib/layouts/elsart.layout:135
 #, fuzzy
 msgid "Author_Address"
 msgstr "Returadresse"
@@ -8238,15 +8239,15 @@ msgid "Error: Wrong depth for LatexType Command.\n"
 msgstr "Feil: Gal dybde for LaTeXType-kommando.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3101
+#: src/buffer.C:3113
 msgid "Running chktex..."
 msgstr "Kjører chktex..."
 
-#: src/buffer.C:3114
+#: src/buffer.C:3126
 msgid "chktex did not work!"
 msgstr "chktex fungerte ikke!"
 
-#: src/buffer.C:3115
+#: src/buffer.C:3127
 msgid "Could not run with file:"
 msgstr "Kunne ikke kjøre filen:"
 
@@ -8670,55 +8671,55 @@ msgstr "Bruker folder: "
 msgid "Character set"
 msgstr "Tegnsett"
 
-#: src/frontends/controllers/ControlDocument.C:80
+#: src/frontends/controllers/ControlDocument.C:84
 msgid "Document settings applied"
 msgstr "Dokumentinnstillinger satt"
 
-#: src/frontends/controllers/ControlDocument.C:120
+#: src/frontends/controllers/ControlDocument.C:123
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokument til ny tekstklasse..."
 
-#: src/frontends/controllers/ControlDocument.C:128
+#: src/frontends/controllers/ControlDocument.C:131
 msgid "One paragraph couldn't be converted"
 msgstr "Ett avsnitt var umulig å konvertere"
 
-#: src/frontends/controllers/ControlDocument.C:131
+#: src/frontends/controllers/ControlDocument.C:134
 #, c-format
 msgid "%1$s paragraphs couldn't be converted"
 msgstr "%1$s avsnittet kunne ikke bli konvertert"
 
-#: src/frontends/controllers/ControlDocument.C:136
+#: src/frontends/controllers/ControlDocument.C:139
 msgid " paragraphs couldn't be converted"
 msgstr " avsnitt var umulig å konvertere"
 
 #. problem changing class
 #. -- warn user (to retain old style)
-#: src/frontends/controllers/ControlDocument.C:139
-#: src/frontends/controllers/ControlDocument.C:151
+#: src/frontends/controllers/ControlDocument.C:142
+#: src/frontends/controllers/ControlDocument.C:154
 msgid "Conversion Errors!"
 msgstr "Konverteringsfeil!"
 
-#: src/frontends/controllers/ControlDocument.C:140
+#: src/frontends/controllers/ControlDocument.C:143
 msgid "into chosen document class"
 msgstr "til valgete tekstklasse"
 
-#: src/frontends/controllers/ControlDocument.C:152
+#: src/frontends/controllers/ControlDocument.C:155
 msgid "Errors loading new document class."
 msgstr "Feil under lesing av ny dokumentklasse."
 
-#: src/frontends/controllers/ControlDocument.C:153
+#: src/frontends/controllers/ControlDocument.C:156
 msgid "Reverting to original document class."
 msgstr "Går tilbake til opprinnelig dokument klasse."
 
-#: src/frontends/controllers/ControlDocument.C:161
+#: src/frontends/controllers/ControlDocument.C:164
 msgid "Do you want to save the current settings"
 msgstr "Ønsker du å lagre de nåværende innstillingene?"
 
-#: src/frontends/controllers/ControlDocument.C:162
+#: src/frontends/controllers/ControlDocument.C:165
 msgid "for the document layout as default?"
 msgstr "for dokumentet som standard innstillinger?"
 
-#: src/frontends/controllers/ControlDocument.C:163
+#: src/frontends/controllers/ControlDocument.C:166
 msgid "(they will be valid for any new document)"
 msgstr "(de vil være gyldige for alle nye dokumenter)"
 
@@ -8727,7 +8728,6 @@ msgid "Select external file"
 msgstr "Velg extern fil"
 
 #: src/frontends/controllers/ControlGraphics.C:84
-#: src/frontends/qt2/QGraphicsDialog.C:95
 msgid "Select graphics file"
 msgstr "Velg grafikkfil"
 
@@ -9304,10 +9304,6 @@ msgstr "Grafikk"
 #: src/frontends/qt2/QGraphics.C:244
 msgid "Scale%"
 msgstr "Skaler%"
-
-#: src/frontends/qt2/QGraphicsDialog.C:94
-msgid "Files (*)"
-msgstr "Filer (*)"
 
 #: src/frontends/qt2/QLPrintDialog.C:55
 msgid "PostScript files (*.ps)"
@@ -11145,6 +11141,33 @@ msgstr ""
 msgid "Opened Wrap Inset"
 msgstr ""
 
+#: src/ispell.C:201 src/ispell.C:208 src/ispell.C:217
+#, fuzzy
+msgid "Can't create pipe for spellchecker."
+msgstr "Begynn stavekontrollen."
+
+#: src/ispell.C:222 src/ispell.C:227 src/ispell.C:232
+#, fuzzy
+msgid "Can't open pipe for spellchecker."
+msgstr "Stopp stavekontrollen."
+
+#: src/ispell.C:241
+msgid ""
+"Could not create an ispell process.\n"
+"You may not have the right languages installed."
+msgstr ""
+
+#. select returned error
+#: src/ispell.C:263
+msgid ""
+"The spell process returned an error.\n"
+"Perhaps it has been configured wrongly ?"
+msgstr ""
+
+#: src/ispell.C:372
+msgid "Could not communicate with the spell-checker program."
+msgstr ""
+
 #: src/kbsequence.C:157
 msgid "   options: "
 msgstr "   opsjoner: "
@@ -12408,6 +12431,9 @@ msgstr "Merke satt"
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX funksjonen 'layout' behøver et argument."
 
+#~ msgid "Files (*)"
+#~ msgstr "Filer (*)"
+
 #~ msgid "Start|#S"
 #~ msgstr "Start|#S"
 
@@ -12426,14 +12452,8 @@ msgstr "LyX funksjonen 'layout' behøver et argument."
 #~ msgid "Spellcheck complete"
 #~ msgstr "Stavekontroll fullført"
 
-#~ msgid "Start the spellingchecker."
-#~ msgstr "Begynn stavekontrollen."
-
 #~ msgid "Stop|#S"
 #~ msgstr "Stopp|#S"
-
-#~ msgid "Stop the spellingchecker."
-#~ msgstr "Stopp stavekontrollen."
 
 #~ msgid "footnote"
 #~ msgstr "fotnote"
