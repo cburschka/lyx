@@ -83,7 +83,10 @@ public:
 #ifdef BOOST_HAS_THREADS
         mutex_type::scoped_lock lock(mtx_);
 #endif
+#ifndef BOOST_NO_EXCEPTIONS
         if(use_count_ == 0 && weak_count_ != 0) throw use_count_is_zero();
+#endif
+        BOOST_NOEH_ASSERT(!(use_count_ == 0 && weak_count_ != 0));
         ++use_count_;
         ++weak_count_;
     }
@@ -237,7 +240,10 @@ public:
         catch(...)
         {
             d(p); // delete p
+#ifndef BOOST_NO_EXCEPTIONS
             throw;
+#endif
+            BOOST_NOEH_ASSERT(false);
         }
     }
 
@@ -256,7 +262,7 @@ public:
         r.release();
     }
 
-#endif 
+#endif
 
     ~shared_count() // nothrow
     {

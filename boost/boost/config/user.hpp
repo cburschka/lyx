@@ -66,3 +66,29 @@
 // #define BOOST_DISABLE_WIN32
 
 
+#define BOOST_NO_EXCEPTIONS 1
+#define BOOST_NO_WREGEX 1
+#define BOOST_NO_WSTRING 1
+
+#ifdef BOOST_NO_EXCEPTIONS
+//
+// If there are no exceptions then we must report critical-errors
+// the only way we know how; by terminating.
+//
+#ifdef __BORLANDC__
+// <cstdio> seems not to make stderr usable with Borland:
+#include <stdio.h>
+#endif
+#  define BOOST_NOEH_ASSERT(x)\
+if(0 == (x))\
+{\
+   std::fprintf(stderr, "Error: critical boost failure in \"%s\"", #x);\
+   std::abort();\
+}
+#else
+//
+// With exceptions then error handling is taken care of and
+// there is no need for these checks:
+//
+#  define BOOST_NOEH_ASSERT(x)
+#endif
