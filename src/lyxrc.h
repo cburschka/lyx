@@ -131,6 +131,7 @@ enum LyXRCTags {
 	RC_USE_SPELL_LIB,
 	RC_USER_NAME,
 	RC_USER_EMAIL,
+        RC_INDEX_COMMAND,
 	RC_LAST
 };
 
@@ -209,6 +210,8 @@ public:
 	std::string chktex_command;
 	/// command to run bibtex incl. options
 	std::string bibtex_command;
+        /// command to run makeindex incl. options or other index programs
+        std::string index_command;
 	///
 	std::string document_path;
 	///

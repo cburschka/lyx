@@ -1,3 +1,8 @@
+2004-10-05  Angus Leeming  <leeming@lyx.org>
+
+	* QPrefs.C, QPRefsDialog.C, ui/QPrefLatexModule.ui: add code to
+	input/output the indexing command (usually 'makeindex').
+
 2004-09-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* qfont_loader.C (addFontPath): quote the name of the font dir in

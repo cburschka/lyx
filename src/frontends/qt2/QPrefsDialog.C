@@ -205,6 +205,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(latexModule->latexEncodingED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexChecktexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexBibtexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(latexModule->latexIndexED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexAutoresetCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexDviPaperED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(latexModule->latexPaperSizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));

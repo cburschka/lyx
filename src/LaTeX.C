@@ -398,12 +398,7 @@ bool LaTeX::runMakeIndex(string const & f)
 	lyxerr[Debug::LATEX] << "idx file has been made,"
 		" running makeindex on file "
 			     <<  f << endl;
-
-	// It should be possible to set the switches for makeindex
-	// sorting style and such. It would also be very convenient
-	// to be able to make style files from within LyX. This has
-	// to come for a later time.
-	string tmp = "makeindex -c -q ";
+        string tmp = lyxrc.index_command + " ";
 	tmp += QuoteName(f);
 	Systemcall one;
 	one.startscript(Systemcall::Wait, tmp);

@@ -1,3 +1,12 @@
+2004-10-05  Angus Leeming  <leeming@lyx.org>
+
+	* FormPreferences.C: add code to input/output the indexing command.
+
+2004-10-05  Hartmut Haase  <hha4491@atomstromfrei.de>
+
+	* forms/form_preferences.fd: add widgets to enable the indexing command
+	(usually 'makeindex') to be input.
+
 2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* pch.h: use proper signal include

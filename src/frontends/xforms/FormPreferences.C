@@ -24,6 +24,7 @@
 #include "controllers/helper_funcs.h" // getSecond
 
 #include "buffer.h"
+#include "lastfiles.h"
 #include "LColor.h"
 #include "lyxfont.h"
 
@@ -1775,6 +1776,7 @@ void FormPreferences::OutputsMisc::apply(LyXRC & rc) const
 	rc.ascii_roff_command = fl_get_input(dialog_->input_ascii_roff);
 	rc.chktex_command = fl_get_input(dialog_->input_checktex);
 	rc.bibtex_command = fl_get_input(dialog_->input_bibtex);
+	rc.index_command = fl_get_input(dialog_->input_index);
 	rc.view_dvi_paper_option = fl_get_input(dialog_->input_paperoption);
 	rc.auto_reset_options = fl_get_button(dialog_->check_autoreset_classopt);
 }
@@ -1789,7 +1791,9 @@ void FormPreferences::OutputsMisc::build()
 	fl_set_counter_return(dialog_->counter_line_len, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_tex_encoding, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_ascii_roff,   FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_bibtex,       FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_checktex,     FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_index,        FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_paperoption,  FL_RETURN_CHANGED);
 
 	fl_addto_choice(dialog_->choice_default_papersize,
@@ -1801,7 +1805,9 @@ void FormPreferences::OutputsMisc::build()
 	setPrehandler(dialog_->input_tex_encoding);
 	setPrehandler(dialog_->choice_default_papersize);
 	setPrehandler(dialog_->input_ascii_roff);
+	setPrehandler(dialog_->input_bibtex);
 	setPrehandler(dialog_->input_checktex);
+	setPrehandler(dialog_->input_index);
 	setPrehandler(dialog_->input_paperoption);
 	setPrehandler(dialog_->check_autoreset_classopt);
 }
@@ -1816,8 +1822,12 @@ FormPreferences::OutputsMisc::feedback(FL_OBJECT const * const ob) const
 		return LyXRC::getDescription(LyXRC::RC_FONT_ENCODING);
 	if (ob == dialog_->input_ascii_roff)
 		return LyXRC::getDescription(LyXRC::RC_ASCIIROFF_COMMAND);
+	if (ob == dialog_->input_bibtex)
+		return LyXRC::getDescription(LyXRC::RC_BIBTEX_COMMAND);
 	if (ob == dialog_->input_checktex)
 		return LyXRC::getDescription(LyXRC::RC_CHKTEX_COMMAND);
+	if (ob == dialog_->input_index)
+		return LyXRC::getDescription(LyXRC::RC_INDEX_COMMAND);
 	if (ob == dialog_->choice_default_papersize)
 		return LyXRC::getDescription(LyXRC::RC_DEFAULT_PAPERSIZE);
 	if (ob == dialog_->input_paperoption)
@@ -1842,6 +1852,8 @@ void FormPreferences::OutputsMisc::update(LyXRC const & rc)
 		     rc.chktex_command.c_str());
 	fl_set_input(dialog_->input_bibtex,
 		     rc.bibtex_command.c_str());
+	fl_set_input(dialog_->input_index,
+		     rc.index_command.c_str());
 	fl_set_input(dialog_->input_paperoption,
 		     rc.view_dvi_paper_option.c_str());
 	fl_set_button(dialog_->check_autoreset_classopt,
@@ -1900,6 +1912,7 @@ void FormPreferences::Paths::build()
 	fl_set_input_return(dialog_->input_temp_dir, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_lastfiles, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_backup_path, FL_RETURN_CHANGED);
+	fl_set_counter_bounds(dialog_->counter_lastfiles, 0, maxlastfiles);
 	fl_set_counter_return(dialog_->counter_lastfiles, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_serverpipe, FL_RETURN_CHANGED);
 

@@ -10,13 +10,13 @@ SnapGrid: 5
 =============== FORM ===============
 Name: form_preferences
 Width: 470
-Height: 500
+Height: 600
 Number of Objects: 8
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 470 500
+box: 0 0 470 600
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -34,7 +34,7 @@ argument:
 --------------------
 class: FL_TABFOLDER
 type: TOP_TABFOLDER
-box: 5 10 455 375
+box: 5 10 455 475
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -52,7 +52,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 5 390 100 30
+box: 5 490 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -70,7 +70,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 170 390 90 30
+box: 170 490 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -88,7 +88,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 270 390 90 30
+box: 270 490 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -106,7 +106,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 370 390 90 30
+box: 370 490 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -124,7 +124,7 @@ argument: 0
 --------------------
 class: FL_FRAME
 type: ENGRAVED_FRAME
-box: 0 425 470 1
+box: 0 525 470 1
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -142,7 +142,7 @@ argument:
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 5 430 460 70
+box: 5 530 460 70
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
@@ -160,13 +160,13 @@ argument:
 =============== FORM ===============
 Name: form_preferences_inner_tab
 Width: 455
-Height: 375
+Height: 475
 Number of Objects: 2
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 455 375
+box: 0 0 455 475
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -184,7 +184,7 @@ argument:
 --------------------
 class: FL_TABFOLDER
 type: TOP_TABFOLDER
-box: 0 0 455 375
+box: 0 0 455 475
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -2241,7 +2241,7 @@ gravity: FL_NoGravity FL_NoGravity
 name: counter_lastfiles
 callback: C_FormDialogView_InputCB
 argument: 0
-  bounds: 0 9
+  bounds: 0 20
   precision: 0
   value: 4
   sstep: 1
@@ -2766,13 +2766,13 @@ argument:
 =============== FORM ===============
 Name: form_preferences_outputs_misc
 Width: 455
-Height: 375
-Number of Objects: 11
+Height: 400
+Number of Objects: 12
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 455 375
+box: 0 0 455 400
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -2866,7 +2866,7 @@ argument: 0
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 10 190 435 165
+box: 10 190 435 200
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -2920,7 +2920,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 145 310 285 30
+box: 145 275 285 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -2956,7 +2956,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 145 275 285 30
+box: 145 310 285 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -2968,6 +2968,24 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_bibtex
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 145 345 285 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Index:|#I
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_index
 callback: C_FormDialogView_InputCB
 argument: 0
 

@@ -25,6 +25,7 @@
 #include "converter.h"
 #include "format.h"
 #include "gettext.h"
+#include "lastfiles.h"
 #include "LColor.h"
 #include "lyxlex.h"
 #include "lyxfont.h"
@@ -37,6 +38,7 @@
 #include "support/userinfo.h"
 
 using lyx::support::ascii_lowercase;
+using lyx::support::bformat;
 using lyx::support::ExpandPath;
 using lyx::support::GetEnv;
 using lyx::support::LibFileSearch;
@@ -81,6 +83,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
 	{ "\\format", LyXRC::RC_FORMAT },
+        { "\\index_command", LyXRC::RC_INDEX_COMMAND },
 	{ "\\input", LyXRC::RC_INPUT },
 	{ "\\kbmap", LyXRC::RC_KBMAP },
 	{ "\\kbmap_primary", LyXRC::RC_KBMAP_PRIMARY },
@@ -204,6 +207,7 @@ void LyXRC::setDefaults() {
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
 	bibtex_command = "bibtex";
 	fontenc = "default";
+        index_command = "makeindex -c -q";
 	dpi = 75;
 	// Because a screen typically is wider than a piece of paper:
 	zoom = 150;
@@ -232,7 +236,7 @@ void LyXRC::setDefaults() {
 	auto_region_delete = true;
 	auto_reset_options = false;
 	ascii_linelen = 65;
-	num_lastfiles = 4;
+	num_lastfiles = maxlastfiles;
 	check_lastfiles = true;
 	make_backup = true;
 	backupdir_path.erase();
@@ -583,6 +587,12 @@ int LyXRC::read(LyXLex & lexrc)
 				bibtex_command = lexrc.getString();
 			}
 			break;
+
+                case RC_INDEX_COMMAND:
+                        if (lexrc.next()) {
+                                index_command = lexrc.getString();
+                        }
+                        break;
 
 		case RC_SCREEN_DPI:
 			if (lexrc.next()) {
@@ -1244,6 +1254,11 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		    bibtex_command != system_lyxrc.bibtex_command) {
 			os << "\\bibtex_command \"" << bibtex_command << "\"\n";
 		}
+        case RC_INDEX_COMMAND:
+                if (ignore_system_lyxrc ||
+                    index_command != system_lyxrc.index_command) {
+                        os << "\\index_command \"" << index_command << "\"\n";
+                }
 	case RC_KBMAP:
 		if (ignore_system_lyxrc ||
 		    use_kbmap != system_lyxrc.use_kbmap) {
@@ -2099,7 +2114,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_NUMLASTFILES:
-		str = _("Maximal number of lastfiles. Up to 9 can appear in the file menu.");
+		str = bformat(_("Maximal number of lastfiles. Up to %1$s can appear in the file menu."), tostr(maxlastfiles));
 		break;
 
 	case RC_CHECKLASTFILES:
@@ -2150,7 +2165,11 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_BIBTEX_COMMAND:
-		str = _("Define the options of bibtex (cf. man bibtex) or select and alternative compiler (e.g. mlbibtex or bibulus).");
+		str = _("Define the options of bibtex (cf. man bibtex) or select an alternative compiler (e.g. mlbibtex or bibulus).");
+		break;
+
+        case RC_INDEX_COMMAND:
+                str = _("Define the options of makeindex (cf. man makeindex) or select an alternative compiler (e.g. xindy).");
 		break;
 
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:

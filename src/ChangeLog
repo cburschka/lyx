@@ -1,3 +1,12 @@
+2004-10-05  Hartmut Haase  <hha4491@atomstromfrei.de>
+
+	* LaTeX.C (runMakeIndex):
+	* lyxrc.[Ch] (read, write, getDescription): make the indexing command
+	(usually 'makeindex') configurable.
+
+	* lastfiles.h (maxlastfiles): define the maximum number of 'lastfiles'
+	with a variable rather than with a number.
+
 2004-09-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* output_latex.C (TeXOnePar): make sure font setting is the first
