@@ -1211,27 +1211,26 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	    << " -->\n";
 
 	Paragraph::depth_type depth = 0; // paragraph depth
-	Paragraph * par = &*(paragraphs.begin());
 	string item_name;
 	vector<string> environment_stack(5);
 
-	while (par) {
-		LyXLayout_ptr const & style = par->layout();
+	ParagraphList::iterator pit = paragraphs.begin();
+	ParagraphList::iterator pend = paragraphs.end();
+	for (; pit != pend; ++pit) {
+		LyXLayout_ptr const & style = pit->layout();
 		// treat <toc> as a special case for compatibility with old code
-		if (par->isInset(0)) {
-			Inset * inset = par->getInset(0);
+		if (pit->isInset(0)) {
+			Inset * inset = pit->getInset(0);
 			Inset::Code lyx_code = inset->lyxCode();
 			if (lyx_code == Inset::TOC_CODE) {
 				string const temp = "toc";
 				sgml::openTag(ofs, depth, false, temp);
-
-				par = par->next();
 				continue;
 			}
 		}
 
 		// environment tag closing
-		for (; depth > par->params().depth(); --depth) {
+		for (; depth > pit->params().depth(); --depth) {
 			sgml::closeTag(ofs, depth, false, environment_stack[depth]);
 			environment_stack[depth].erase();
 		}
@@ -1239,7 +1238,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		// write opening SGML tags
 		switch (style->latextype) {
 		case LATEX_PARAGRAPH:
-			if (depth == par->params().depth()
+			if (depth == pit->params().depth()
 			   && !environment_stack[depth].empty()) {
 				sgml::closeTag(ofs, depth, false, environment_stack[depth]);
 				environment_stack[depth].erase();
@@ -1252,8 +1251,8 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			break;
 
 		case LATEX_COMMAND:
-			if (depth!= 0)
-				sgmlError(par, 0,
+			if (depth != 0)
+				sgmlError(&*pit, 0,
 					  _("Error: Wrong depth for LatexType Command.\n"));
 
 			if (!environment_stack[depth].empty()) {
@@ -1271,14 +1270,14 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		{
 			string const & latexname = style->latexname();
 
-			if (depth == par->params().depth()
+			if (depth == pit->params().depth()
 			    && environment_stack[depth] != latexname) {
 				sgml::closeTag(ofs, depth, false,
 					     environment_stack[depth]);
 				environment_stack[depth].erase();
 			}
-			if (depth < par->params().depth()) {
-			       depth = par->params().depth();
+			if (depth < pit->params().depth()) {
+			       depth = pit->params().depth();
 			       environment_stack[depth].erase();
 			}
 			if (environment_stack[depth] != latexname) {
@@ -1311,9 +1310,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			break;
 		}
 
-		simpleLinuxDocOnePar(ofs, par, depth);
-
-		par = par->next();
+		simpleLinuxDocOnePar(ofs, &*pit, depth);
 
 		ofs << "\n";
 		// write closing SGML tags

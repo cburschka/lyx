@@ -1,3 +1,13 @@
+2003-04-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* paragraph.h: make ParagraphList and ParagraphList::iterator
+	friends of Paragraph.
+
+	* buffer.C (makeLinuxDocFile): move towards ParagraphList
+
+	* ParagraphList.C: Use the private next_ and previous_ from
+	Paragraph.
+
 2003-04-01  John Levon  <levon@movementarian.org>
 
 	* ToolbarBackend.h:

@@ -18,6 +18,7 @@
 #include "support/types.h"
 #include "changes.h"
 
+#include "ParagraphList.h"
 #include "LString.h"
 
 class BufferParams;
@@ -37,6 +38,10 @@ class TexRow;
 /// A Paragraph holds all text, attributes and insets in a text paragraph
 class Paragraph  {
 public:
+	// Remove this whan ParagraphList transition is over. (Lgb)
+	friend class ParagraphList;
+	friend class ParagraphList::iterator;
+
 	///
 	enum META_KIND {
 		/// Note that this is 1 right now to avoid
@@ -334,6 +339,9 @@ private:
 	Paragraph * next_;
 	///
 	Paragraph * previous_;
+#else
+	Paragraph * next_par_;
+	Paragraph * prev_par_;
 #endif
 	struct Pimpl;
 	///

@@ -1,5 +1,20 @@
 2003-04-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* insettext.C (update): move towards ParagraphList
+	(updateLocal): ditto
+	(edit): ditto
+	(insetUnlock): ditto
+	(lockInset): ditto
+	(lockInsetInInset): ditto
+	(updateInsetInInset): ditto
+	(localDispatch): ditto
+	(docbook): ditto
+	(setFont): ditto
+	(resizeLyXText): ditto
+	(searchBackward): ditto
+	(collapseParagraphs): ditto
+	(addPreview): ditto
+
 	* insetwrap.C (InsetWrap): adjust
 	(addToToc): adjust and rewrite loop
 

@@ -489,7 +489,7 @@ void LyXText::incDepth()
 
 		if (pit == end)
 			break;
-	
+
 		++pit;
 	}
 

@@ -33,7 +33,7 @@ ParagraphList::iterator::operator->()
 ParagraphList::iterator &
 ParagraphList::iterator::operator++()
 {
-	ptr = ptr->next();
+	ptr = ptr->next_;
 	return *this;
 }
 
@@ -50,7 +50,7 @@ ParagraphList::iterator::operator++(int)
 ParagraphList::iterator &
 ParagraphList::iterator::operator--()
 {
-	ptr = ptr->previous();
+	ptr = ptr->previous_;
 	return *this;
 }
 
@@ -89,20 +89,20 @@ ParagraphList::iterator
 ParagraphList::insert(ParagraphList::iterator it, Paragraph * par)
 {
 	if (it != end()) {
-		Paragraph * prev = it->previous();
-		par->next(&*it);
-		par->previous(prev);
-		prev->next(par);
-		it->previous(par);
+		Paragraph * prev = it->previous_;
+		par->next_ = &*it;
+		par->previous_ = prev;
+		prev->next_ = par;
+		it->previous_ = par;
 	} else if (parlist == 0) {
 		parlist = par;
 	} else {
 		// Find last par.
 		Paragraph * last = parlist;
-		while (last->next())
-			last = last->next();
-		last->next(par);
-		par->previous(last);
+		while (last->next_)
+			last = last->next_;
+		last->next_ = par;
+		par->previous_ = last;
 	}
 	return iterator(par);
 }
@@ -111,7 +111,7 @@ ParagraphList::insert(ParagraphList::iterator it, Paragraph * par)
 void ParagraphList::clear()
 {
 	while (parlist) {
-		Paragraph * tmp = parlist->next();
+		Paragraph * tmp = parlist->next_;
 		delete parlist;
 		parlist = tmp;
 	}
@@ -120,16 +120,16 @@ void ParagraphList::clear()
 
 void ParagraphList::erase(ParagraphList::iterator it)
 {
-	Paragraph * prev = it->previous();
-	Paragraph * next = it->next();
+	Paragraph * prev = it->previous_;
+	Paragraph * next = it->next_;
 
 	if (prev)
-		prev->next(next);
+		prev->next_ = next;
 	else
 		parlist = next;
 
 	if (next)
-		next->previous(prev);
+		next->previous_ = prev;
 
 	delete &*it;
 }
@@ -174,8 +174,8 @@ Paragraph & ParagraphList::front()
 Paragraph const & ParagraphList::back() const
 {
 	Paragraph * tmp = parlist;
-	while (tmp->next())
-		tmp = tmp->next();
+	while (tmp->next_)
+		tmp = tmp->next_;
 	return *tmp;
 }
 
@@ -183,8 +183,8 @@ Paragraph const & ParagraphList::back() const
 Paragraph & ParagraphList::back()
 {
 	Paragraph * tmp = parlist;
-	while (tmp->next())
-		tmp = tmp->next();
+	while (tmp->next_)
+		tmp = tmp->next_;
 	return *tmp;
 }
 
@@ -203,10 +203,10 @@ void ParagraphList::push_back(Paragraph * p)
 	}
 
 	Paragraph * pos = parlist;
-	while (pos->next())
-		pos = pos->next();
-	pos->next(p);
-	p->previous(pos);
+	while (pos->next_)
+		pos = pos->next_;
+	pos->next_ = p;
+	p->previous_ = pos;
 }
 
 
@@ -218,7 +218,7 @@ int ParagraphList::size() const
 	int c = 0;
 	while (tmp) {
 		++c;
-		tmp = tmp->next();
+		tmp = tmp->next_;
 	}
 	return c;
 }

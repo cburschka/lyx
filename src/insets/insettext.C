@@ -482,7 +482,8 @@ void InsetText::update(BufferView * bv, bool reinit)
 		return;
 	}
 
-	if (!autoBreakRows && paragraphs.begin()->next())
+	if (!autoBreakRows &&
+	    boost::next(paragraphs.begin()) != paragraphs.end())
 		collapseParagraphs(bv);
 
 	if (the_locking_inset) {
@@ -544,7 +545,8 @@ void InsetText::setUpdateStatus(BufferView * bv, int what) const
 
 void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 {
-	if (!autoBreakRows && paragraphs.begin()->next())
+	if (!autoBreakRows &&
+	    boost::next(paragraphs.begin()) != paragraphs.end())
 		collapseParagraphs(bv);
 	bool clear = false;
 	if (!lt) {
@@ -620,7 +622,8 @@ void InsetText::edit(BufferView * bv, int x, int y, mouse_button::state button)
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text (if different).
-	if (paragraphs.begin()->empty() && !paragraphs.begin()->next() &&
+	if (paragraphs.begin()->empty() &&
+	    boost::next(paragraphs.begin()) == paragraphs.end()&&
 		bv->getParentLanguage(this) != lt->current_font.language())
 	{
 		LyXFont font(LyXFont::ALL_IGNORE);
@@ -674,7 +677,8 @@ void InsetText::edit(BufferView * bv, bool front)
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text (if different).
-	if (paragraphs.begin()->empty() && !paragraphs.begin()->next() &&
+	if (paragraphs.begin()->empty() &&
+	    boost::next(paragraphs.begin()) == paragraphs.end() &&
 		bv->getParentLanguage(this) != lt->current_font.language()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
@@ -718,8 +722,8 @@ void InsetText::insetUnlock(BufferView * bv)
 	// hack for deleteEmptyParMech
 	if (!paragraphs.begin()->empty()) {
 		lt->setCursor(&*(paragraphs.begin()), 0);
-	} else if (paragraphs.begin()->next()) {
-		lt->setCursor(paragraphs.begin()->next(), 0);
+	} else if (boost::next(paragraphs.begin()) != paragraphs.end()) {
+		lt->setCursor(&*boost::next(paragraphs.begin()), 0);
 	}
 	if (clear)
 		lt = 0;
@@ -750,7 +754,8 @@ void InsetText::lockInset(BufferView * bv)
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text (if different).
-	if (paragraphs.begin()->empty() && !paragraphs.begin()->next() &&
+	if (paragraphs.begin()->empty() &&
+	    boost::next(paragraphs.begin()) == paragraphs.end() &&
 		bv->getParentLanguage(this) != lt->current_font.language()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
@@ -784,26 +789,27 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 	if (!inset)
 		return false;
 	if (!the_locking_inset) {
-		Paragraph * p = &*(paragraphs.begin());
+		ParagraphList::iterator pit = paragraphs.begin();
+		ParagraphList::iterator pend = paragraphs.end();
+
 		int const id = inset->id();
-		while(p) {
+		for (; pit != pend; ++pit) {
 			InsetList::iterator it =
-				p->insetlist.begin();
+				pit->insetlist.begin();
 			InsetList::iterator const end =
-				p->insetlist.end();
+				pit->insetlist.end();
 			for (; it != end; ++it) {
 				if (it.getInset() == inset) {
-					getLyXText(bv)->setCursorIntern(p, it.getPos());
+					getLyXText(bv)->setCursorIntern(&*pit, it.getPos());
 					lockInset(bv, inset);
 					return true;
 				}
 				if (it.getInset()->getInsetFromID(id)) {
-					getLyXText(bv)->setCursorIntern(p, it.getPos());
+					getLyXText(bv)->setCursorIntern(&*pit, it.getPos());
 					it.getInset()->edit(bv);
 					return the_locking_inset->lockInsetInInset(bv, inset);
 				}
 			}
-			p = p->next();
 		}
 		return false;
 	}
@@ -852,7 +858,8 @@ bool InsetText::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 
 bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 {
-	if (!autoBreakRows && paragraphs.begin()->next())
+	if (!autoBreakRows &&
+	    boost::next(paragraphs.begin()) != paragraphs.end())
 		collapseParagraphs(bv);
 	if (inset == this)
 		return true;
@@ -1097,7 +1104,8 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			break;
 	}
 
-	bool was_empty = (paragraphs.begin()->empty() && !paragraphs.begin()->next());
+	bool was_empty = (paragraphs.begin()->empty() &&
+			  boost::next(paragraphs.begin()) == paragraphs.end());
 	no_selection = false;
 	RESULT result = UpdatableInset::localDispatch(ev);
 	if (result != UNDISPATCHED)
@@ -1469,7 +1477,8 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		updateLocal(bv, updwhat, updflag);
 	/// If the action has deleted all text in the inset, we need to change the
 	// language to the language of the surronding text.
-	if (!was_empty && paragraphs.begin()->empty() && !paragraphs.begin()->next()) {
+	if (!was_empty && paragraphs.begin()->empty() &&
+	    boost::next(paragraphs.begin()) == paragraphs.end()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
 		setFont(bv, font, false);
@@ -1513,7 +1522,6 @@ int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 
 int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
-	Paragraph * p = &*(paragraphs.begin());
 	unsigned int lines = 0;
 
 	vector<string> environment_stack(10);
@@ -1524,14 +1532,17 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 
 	Paragraph::depth_type depth = 0; // paragraph depth
 
-	while (p) {
+	ParagraphList::iterator pit = paragraphs.begin();
+	ParagraphList::iterator pend = paragraphs.end();
+
+	for (; pit != pend; ++pit) {
 		string sgmlparam;
 		int desc_on = 0; // description mode
 
-		LyXLayout_ptr const & style = p->layout();
+		LyXLayout_ptr const & style = pit->layout();
 
 		// environment tag closing
-		for (; depth > p->params().depth(); --depth) {
+		for (; depth > pit->params().depth(); --depth) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name = "listitem";
 				lines += sgml::closeTag(os, command_depth + depth, mixcont, item_name);
@@ -1543,7 +1554,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 			environment_inner[depth].erase();
 		}
 
-		if (depth == p->params().depth()
+		if (depth == pit->params().depth()
 		   && environment_stack[depth] != style->latexname()
 		   && !environment_stack[depth].empty()) {
 			if (environment_inner[depth] != "!-- --") {
@@ -1566,14 +1577,14 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 			break;
 
 		case LATEX_COMMAND:
-			buf->sgmlError(p, 0,  _("Error: LatexType Command not allowed here.\n"));
+			buf->sgmlError(&*pit, 0,  _("Error: LatexType Command not allowed here.\n"));
 			return -1;
 			break;
 
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT:
-			if (depth < p->params().depth()) {
-				depth = p->params().depth();
+			if (depth < pit->params().depth()) {
+				depth = pit->params().depth();
 				environment_stack[depth].erase();
 			}
 
@@ -1618,8 +1629,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 			break;
 		}
 
-		buf->simpleDocBookOnePar(os, p, desc_on, depth + 1 + command_depth);
-		p = p->next();
+		buf->simpleDocBookOnePar(os, &*pit, desc_on, depth + 1 + command_depth);
 
 		string end_tag;
 		// write closing SGML tags
@@ -1915,7 +1925,8 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 		the_locking_inset->setFont(bv, font, toggleall, selectall);
 		return;
 	}
-	if ((!paragraphs.begin()->next() && paragraphs.begin()->empty()) || cpar(bv)->empty()) {
+	if ((boost::next(paragraphs.begin()) == paragraphs.end() &&
+	     paragraphs.begin()->empty()) || cpar(bv)->empty()) {
 		getLyXText(bv)->setFont(font, toggleall);
 		return;
 	}
@@ -2250,7 +2261,8 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 		return;
 	}
 	do_resize = 0;
-	if (!paragraphs.begin()->next() && paragraphs.begin()->empty()) { // no data, resize not neccessary!
+	if (boost::next(paragraphs.begin()) == paragraphs.end() &&
+	    paragraphs.begin()->empty()) { // no data, resize not neccessary!
 		// we have to do this as a fixed width may have changed!
 		LyXText * t = getLyXText(bv);
 		saveLyXTextState(t);
@@ -2617,10 +2629,13 @@ bool InsetText::searchBackward(BufferView * bv, string const & str,
 		clear = true;
 	}
 	if (!locked) {
-		Paragraph * p = &*(paragraphs.begin());
-		while (p->next())
-			p = p->next();
-		lt->setCursor(p, p->size());
+		ParagraphList::iterator pit = paragraphs.begin();
+		ParagraphList::iterator pend = paragraphs.end();
+
+		while (boost::next(pit) != pend)
+			++pit;
+
+		lt->setCursor(&*pit, pit->size());
 	}
 	lyxfind::SearchResult result =
 		lyxfind::LyXFind(bv, lt, str, false, cs, mw);
@@ -2652,19 +2667,20 @@ void InsetText::collapseParagraphs(BufferView * bv)
 {
 	LyXText * llt = getLyXText(bv);
 
-	while (paragraphs.begin()->next()) {
-		if (!paragraphs.begin()->empty() && !paragraphs.begin()->next()->empty() &&
+	while (boost::next(paragraphs.begin()) != paragraphs.end()) {
+		if (!paragraphs.begin()->empty() &&
+		    !boost::next(paragraphs.begin())->empty() &&
 			!paragraphs.begin()->isSeparator(paragraphs.begin()->size() - 1))
 		{
 			paragraphs.begin()->insertChar(paragraphs.begin()->size(), ' ');
 		}
 		if (llt->selection.set()) {
-			if (llt->selection.start.par() == paragraphs.begin()->next()) {
+			if (llt->selection.start.par() == boost::next(paragraphs.begin())) {
 				llt->selection.start.par(&*(paragraphs.begin()));
 				llt->selection.start.pos(
 					llt->selection.start.pos() + paragraphs.begin()->size());
 			}
-			if (llt->selection.end.par() == paragraphs.begin()->next()) {
+			if (llt->selection.end.par() == boost::next(paragraphs.begin())) {
 				llt->selection.end.par(&*(paragraphs.begin()));
 				llt->selection.end.pos(
 					llt->selection.end.pos() + paragraphs.begin()->size());
@@ -2725,14 +2741,14 @@ void InsetText::appendParagraphs(Buffer * buffer,
 
 void InsetText::addPreview(grfx::PreviewLoader & loader) const
 {
-	Paragraph * par = getFirstParagraph(0);
-	while (par) {
-		InsetList::iterator it  = par->insetlist.begin();
-		InsetList::iterator end = par->insetlist.end();
+	ParagraphList::iterator pit = paragraphs.begin();
+	ParagraphList::iterator pend = paragraphs.end();
+
+	for (; pit != pend; ++pit) {
+		InsetList::iterator it  = pit->insetlist.begin();
+		InsetList::iterator end = pit->insetlist.end();
 		for (; it != end; ++it) {
 			it.getInset()->addPreview(loader);
 		}
-
-		par = par->next();
 	}
 }
