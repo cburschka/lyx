@@ -286,7 +286,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		buf = owner->buffer();
 
 	if (cmd.action == LFUN_NOACTION) {
-		setStatusMessage(N_("Nothing to do"));
+		flag.message(N_("Nothing to do"));
 		flag.enabled(false);
 		return flag;
 	}
@@ -304,19 +304,19 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	if (flag.unknown()) {
-		setStatusMessage(N_("Unknown action"));
+		flag.message(N_("Unknown action"));
 		return flag;
 	}
 
 	// the default error message if we disable the command
-	setStatusMessage(N_("Command disabled"));
+	flag.message(N_("Command disabled"));
 	if (!flag.enabled())
 		return flag;
 
 	// Check whether we need a buffer
 	if (!lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer) && !buf) {
 		// no, exit directly
-		setStatusMessage(N_("Command not allowed with"
+		flag.message(N_("Command not allowed with"
 				    "out any document open"));
 		flag.enabled(false);
 		return flag;
@@ -522,8 +522,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 
 	default:
 
-		cur.getStatus(cmd, flag);
-		if (!flag.enabled())
+		if (!cur.getStatus(cmd, flag))
 			flag = view()->getStatus(cmd);
 	}
 
@@ -534,7 +533,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	if (buf && buf->isReadonly()
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::ReadOnly)
 	    && !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)) {
-		setStatusMessage(N_("Document is read-only"));
+		flag.message(N_("Document is read-only"));
 		flag.enabled(false);
 	}
 
@@ -615,14 +614,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 	bool update = true;
 
-	// We cannot use this function here
-	if (!getStatus(cmd).enabled()) {
+	FuncStatus const flag = getStatus(cmd);
+	if (!flag.enabled()) {
+		// We cannot use this function here
 		lyxerr[Debug::ACTION] << "LyXFunc::dispatch: "
 		       << lyxaction.getActionName(action)
 		       << " [" << action << "] is disabled at this location"
 		       << endl;
-		setErrorMessage(getStatusMessage());
-
+		setErrorMessage(flag.message());
 	} else {
 
 		if (view()->available())
@@ -1477,9 +1476,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 
 		if (view()->cursor().inTexted()) {
 			view()->owner()->updateLayoutChoice();
-			sendDispatchMessage(getMessage(), cmd);
 		}
 	}
+	sendDispatchMessage(getMessage(), cmd);
 }
 
 
@@ -1776,12 +1775,6 @@ void LyXFunc::setErrorMessage(string const & m) const
 void LyXFunc::setMessage(string const & m) const
 {
 	dispatch_buffer = m;
-}
-
-
-void LyXFunc::setStatusMessage(string const & m) const
-{
-	status_buffer = m;
 }
 
 

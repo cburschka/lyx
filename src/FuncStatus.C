@@ -12,6 +12,8 @@
 
 #include "FuncStatus.h"
 
+using std::string;
+
 FuncStatus::FuncStatus() : v_(OK)
 {
 }
@@ -20,12 +22,15 @@ FuncStatus::FuncStatus() : v_(OK)
 void FuncStatus::clear()
 {
 	v_ = OK;
+	message_.erase();
 }
 
 
 void FuncStatus::operator|=(FuncStatus const & f)
 {
 	v_ |= f.v_;
+	if (!f.message_.empty())
+		message_ = f.message_;
 }
 
 
@@ -72,4 +77,16 @@ bool FuncStatus::onoff(bool b) const
 		return (v_ & ON);
 	else
 		return (v_ & OFF);
+}
+
+
+void FuncStatus::message(string const & m)
+{
+	message_ = m;
+}
+
+
+string const & FuncStatus::message() const
+{
+	return message_;
 }

@@ -12,6 +12,8 @@
 #ifndef FUNC_STATUS_H
 #define FUNC_STATUS_H
 
+#include <string>
+
 /// The status of a function.
 
 class FuncStatus
@@ -33,10 +35,12 @@ private:
 
 	unsigned int v_;
 
+	std::string message_;
+
 public:
 	///
 	FuncStatus();
-	//
+	///
 	void clear();
 	///
 	void operator|=(FuncStatus const & f);
@@ -54,6 +58,11 @@ public:
 	void setOnOff(bool b);
 	///
 	bool onoff(bool b) const;
+
+	///
+	void message(std::string const & m);
+	///
+	std::string const & message() const;
 };
 
 #endif

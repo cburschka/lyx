@@ -64,12 +64,8 @@ public:
 	void setMessage(std::string const & m) const;
 	/// Buffer to store result messages
 	void setErrorMessage(std::string const &) const;
-	/// Buffer to store result messages from getStatus
-	void setStatusMessage(std::string const &) const;
 	/// Buffer to store result messages
 	std::string const getMessage() const { return dispatch_buffer; }
-	/// Buffer to store result messages
-	std::string const getStatusMessage() const { return status_buffer; }
 	/// Handle a accented char key sequence
 	void handleKeyFunc(kb_action action);
 
@@ -98,8 +94,6 @@ private:
 	    good reason to have this one as static in Dispatch? (Ale)
 	*/
 	mutable std::string dispatch_buffer;
-	/// Buffer to store messages and result data from getStatus
-	mutable std::string status_buffer;
 
 	/// send a post-dispatch status message
 	void sendDispatchMessage(std::string const & msg,

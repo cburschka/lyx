@@ -1,3 +1,17 @@
+2004-11-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (getStatus, dispatch): use FuncStatus::message; only
+	call BufferView::getStatus if LCursor::getStatus did nothing
+	(setStatusMessage, getStatusMessage): removed.
+
+	* FuncStatus.C (message): new methods. Used to provide an error
+	message indicating why a command is disabled.
+	(clear, |=, FuncStatus): update for message.
+	
+2004-11-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyxfunc.C (dispatch): always call sendDispatchMessage
+	
 2004-11-24  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* BufferView.C:
@@ -36,7 +50,7 @@
 2004-11-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfind.C (findNextChange): update the bufferview after setting
-	the selection
+	the selection.
 
 2004-11-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
