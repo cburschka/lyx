@@ -36,23 +36,27 @@ char const encode(string const & encoding, QString const & str)
 
 	EncodingMap::const_iterator cit = encoding_map.find(encoding);
 	if (cit == encoding_map.end()) {
-		lyxerr[Debug::KEY] << "Unrecognised encoding "
-			<< encoding << endl;
+		if (lyxerr.debugging())
+			lyxerr[Debug::KEY] << "Unrecognised encoding "
+				<< encoding << endl;
 		codec = QTextCodec::codecForLocale();
 	} else {
 		codec = cit->second;
 	}
 
 	if (!codec) {
-		lyxerr[Debug::KEY] << "No codec exists for encoding "
-			<< encoding << endl;
+		if (lyxerr.debugging())
+			lyxerr[Debug::KEY] << "No codec exists for encoding "
+				<< encoding << endl;
 		codec = QTextCodec::codecForLocale();
 	}
 
-	lyxerr[Debug::KEY] << "Using codec " << fromqstr(codec->name()) << endl;
+	if (lyxerr.debugging())
+		lyxerr[Debug::KEY] << "Using codec " << fromqstr(codec->name()) << endl;
 
 	if (!codec->canEncode(str)) {
-		lyxerr[Debug::KEY] << "Oof. Can't encode the text !" << endl;
+		if (lyxerr.debugging())
+			lyxerr[Debug::KEY] << "Oof. Can't encode the text !" << endl;
 		return 0;
 	}
 
@@ -101,12 +105,15 @@ void QLyXKeySym::set(QKeyEvent * ev)
 {
 	key_ = ev->key();
 	if (ev->text().isNull()) {
-		lyxerr[Debug::KEY] << "keyevent has isNull() text !" << endl;
+		if (lyxerr.debugging())
+			lyxerr[Debug::KEY] << "keyevent has isNull() text !" << endl;
 		text_ = "";
 		return;
 	}
 	text_ = ev->text();
-	lyxerr[Debug::KEY] << "Setting key to " << key_ << ", " <<  fromqstr(text_) << endl;
+	if (lyxerr.debugging()) {
+		lyxerr[Debug::KEY] << "Setting key to " << key_ << ", " <<  fromqstr(text_) << endl;
+	}
 }
 
 
@@ -114,14 +121,18 @@ void QLyXKeySym::init(string const & symbolname)
 {
 	key_ = string_to_qkey(symbolname);
 	text_ = toqstr(symbolname);
-	lyxerr[Debug::KEY] << "Init key to " << key_ << ", " << fromqstr(text_) << endl;
+	if (lyxerr.debugging()) {
+		lyxerr[Debug::KEY] << "Init key to " << key_ << ", " << fromqstr(text_) << endl;
+	}
 }
 
 
 bool QLyXKeySym::isOK() const
 {
 	bool const ok(!(text_.isEmpty() && key_ == Qt::Key_unknown));
-	lyxerr[Debug::KEY] << "isOK is " << ok << endl;
+	if (lyxerr.debugging()) {
+		lyxerr[Debug::KEY] << "isOK is " << ok << endl;
+	}
 	return ok;
 }
 
@@ -129,7 +140,9 @@ bool QLyXKeySym::isOK() const
 bool QLyXKeySym::isModifier() const
 {
 	bool const mod(q_is_modifier(key_));
-	lyxerr[Debug::KEY] << "isMod is " << mod << endl;
+	if (lyxerr.debugging()) {
+		lyxerr[Debug::KEY] << "isMod is " << mod << endl;
+	}
 	return mod;
 }
 
@@ -148,9 +161,11 @@ string QLyXKeySym::getSymbolName() const
 
 char QLyXKeySym::getISOEncoded(string const & encoding) const
 {
-	lyxerr[Debug::KEY] << "encoding is " << encoding << endl;
+	if (lyxerr.debugging())
+		lyxerr[Debug::KEY] << "encoding is " << encoding << endl;
 	unsigned char const c = encode(encoding, text_);
-	lyxerr[Debug::KEY] << "ISOEncoded returning value " << int(c) << endl;
+	if (lyxerr.debugging())
+		lyxerr[Debug::KEY] << "ISOEncoded returning value " << int(c) << endl;
 	return c;
 }
 
@@ -158,13 +173,15 @@ char QLyXKeySym::getISOEncoded(string const & encoding) const
 bool QLyXKeySym::isText() const
 {
 	if (text_.isEmpty()) {
-		lyxerr[Debug::KEY] << "text_ empty, isText() == false" << endl;
+		if (lyxerr.debugging())
+			lyxerr[Debug::KEY] << "text_ empty, isText() == false" << endl;
 		return false;
 	}
 
 	QChar const c(text_[0]);
-	lyxerr[Debug::KEY] << "isText for key " << key_
-		<< " isPrint is " << c.isPrint() << endl;
+	if (lyxerr.debugging())
+		lyxerr[Debug::KEY] << "isText for key " << key_
+			<< " isPrint is " << c.isPrint() << endl;
 	return c.isPrint();
 }
 
