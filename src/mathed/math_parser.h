@@ -119,10 +119,6 @@ struct latexkeys {
 ///
 latexkeys const * in_word_set(string const & str);
 
-///
-latexkeys const * lm_get_key_by_id(unsigned int id, short tc);
-
-
 MathMatrixInset * mathed_parse_normal(string const &);
 MathMatrixInset * mathed_parse_normal(std::istream &);
 MathMatrixInset * mathed_parse_normal(LyXLex &);

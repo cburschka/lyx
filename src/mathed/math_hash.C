@@ -1,14 +1,13 @@
 #include <config.h>
-#include <map>
 
-#include "math_defs.h"
 #include "math_parser.h"
-#include "support/lstrings.h"
-#include <iostream>
+#include <algorithm>
 
 namespace {
 
-latexkeys const wordlist[] = 
+// This lists needs to remain sorted all the time!
+
+latexkeys wordlist[] = 
 {
 	//{"displaystyle",  LM_TK_STY, LM_ST_DISPLAY, LMB_NONE},
 	//{"oint",  LM_TK_BIGSYM, LM_oint, LMB_NONE},
@@ -302,50 +301,22 @@ latexkeys const wordlist[] =
 };
 
 
-struct symbolindex {
-	unsigned int id;
-	short token;
+bool operator<(const latexkeys & a, const latexkeys & b)
+{
+	return string(a.name) < string(b.name);
+}
 
-	symbolindex(unsigned int i, short t) : id(i), token(t)
-	{}
-
-	bool operator<(symbolindex const & s) const
-	{
-		return (id < s.id) || (id == s.id && token < s.token);
-	}
-};
-
-
-// global maps 
-std::map<symbolindex, int>  LatexkeyById;
-std::map<string, int>       LatexkeyByName;
-
-
-// helper structure to initialize the maps on startup:
-struct init {
-	init() {
-		int const n = sizeof(wordlist)/sizeof(wordlist[0]);
-		for (latexkeys const * it = wordlist; it != wordlist + n; ++it) {
-			if (LatexkeyByName.find(it->name) != LatexkeyByName.end()) {
-				std::cerr << "math_hash.C: Bug: Duplicate entry: " 
-					  << it->name << std::endl;
-			}
-			LatexkeyByName[it->name] = it - wordlist;
-			if (it->id != 0 && 
-			    LatexkeyById.find(symbolindex(it->id, it->token)) !=
-			    LatexkeyById.end()) {
-				std::cerr << "math_hash.C: Bug: Duplicate entry: "
-					  << it->name << " Id: "
-					  << it->id << " token: " << it->token
-					  << std::endl;
-			}
-			LatexkeyById[symbolindex(it->id, it->token)] = it - wordlist;
-		}
-	}
-};
 
 // the "Initializer": Its default constructor is executed on loading and
-// fills the maps
+// sorts the list. Not exactly needed as long as the list is kept sorted
+// but who knows...
+
+struct init {
+	init() {
+		std::sort(wordlist, wordlist + sizeof(wordlist)/sizeof(wordlist[0]));
+	}
+};
+
 static init dummy;
 
 } // namespace anon
@@ -353,14 +324,12 @@ static init dummy;
 
 latexkeys const * in_word_set(string const & str)
 {
-	std::map<string, int>::const_iterator pos = LatexkeyByName.find(str);
-	return pos == LatexkeyByName.end() ? 0 : &wordlist[pos->second];
-}
-
-
-latexkeys const * lm_get_key_by_id(unsigned int id, short tc)
-{
-	std::map<symbolindex, int>::const_iterator pos
-		= LatexkeyById.find(symbolindex(id, tc));
-	return pos == LatexkeyById.end() ? 0 : &wordlist[pos->second];
+#ifdef WITH_WARNINGS
+#warning Not nice yet...
+#endif
+	latexkeys tmp;
+	tmp.name = str.c_str();
+	int const n = sizeof(wordlist)/sizeof(wordlist[0]);
+	latexkeys const * pos = std::lower_bound(wordlist, wordlist + n, tmp);
+	return (string(pos->name) == str) ? pos : 0;
 }
