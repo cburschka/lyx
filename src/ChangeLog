@@ -1,3 +1,8 @@
+2005-02-13  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.C (init): invoke prependEnvPath to adjust the PATH
+	only if lyxrc.path_prefix is not empty.
+
 2005-02-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (dispatch): remove a bogus cast (bug 1781)

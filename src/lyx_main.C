@@ -361,7 +361,8 @@ void LyX::init(bool gui)
 		lyxrc.print();
 	}
 
-	prependEnvPath("PATH", lyxrc.path_prefix);
+	if (!lyxrc.path_prefix.empty())
+		prependEnvPath("PATH", lyxrc.path_prefix);
 
 	// Having reset the PATH we're now in a position to run configure
 	// if necessary.
