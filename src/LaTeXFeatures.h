@@ -155,7 +155,7 @@ struct LaTeXFeatures {
 	///
 	FloatList usedFloats;
 	///
-	typedef map<string , string> FileMap;
+	typedef std::map<string , string> FileMap;
 	///
 	FileMap IncludedFiles;                                                                     
 	//@}
