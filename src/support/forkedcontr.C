@@ -34,7 +34,6 @@ using boost::bind;
 using std::endl;
 using std::find_if;
 using std::string;
-using std::vector;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strerror;
@@ -81,7 +80,6 @@ void ForkedcallsController::addCall(ForkedProcess const & newcall)
 		timeout_->start();
 
 	forkedCalls.push_back(newcall.clone().release());
-	childrenChanged();
 }
 
 
@@ -89,8 +87,6 @@ void ForkedcallsController::addCall(ForkedProcess const & newcall)
 // Check the list and, if there is a stopped child, emit the signal.
 void ForkedcallsController::timer()
 {
-	ListType::size_type start_size = forkedCalls.size();
-
 	ListType::iterator it  = forkedCalls.begin();
 	ListType::iterator end = forkedCalls.end();
 	while (it != end) {
@@ -155,44 +151,6 @@ void ForkedcallsController::timer()
 	if (!forkedCalls.empty() && !timeout_->running()) {
 		timeout_->start();
 	}
-
-	if (start_size != forkedCalls.size())
-		childrenChanged();
-}
-
-
-// Return a vector of the pids of all the controlled processes.
-vector<pid_t> const ForkedcallsController::getPIDs() const
-{
-	vector<pid_t> pids;
-
-	if (forkedCalls.empty())
-		return pids;
-
-	pids.resize(forkedCalls.size());
-
-	vector<pid_t>::iterator vit = pids.begin();
-	for (ListType::const_iterator lit = forkedCalls.begin();
-	     lit != forkedCalls.end(); ++lit, ++vit) {
-		*vit = (*lit)->pid();
-	}
-
-	std::sort(pids.begin(), pids.end());
-	return pids;
-}
-
-
-// Get the command string of the process.
-string const ForkedcallsController::getCommand(pid_t pid) const
-{
-	ListType::const_iterator it =
-		find_if(forkedCalls.begin(), forkedCalls.end(),
-			lyx::compare_memfun(&Forkedcall::pid, pid));
-
-	if (it == forkedCalls.end())
-		return string();
-
-	return (*it)->command();
 }
 
 

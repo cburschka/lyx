@@ -1,3 +1,8 @@
+2004-03-22  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcontr.[Ch] (childrenChanged, getPIDs, getCommand): remove
+	cruft left over from the removal of the Forks dialog.
+
 2004-03-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* filename.[Ch] (mangledFilename): make sure that mangled names are
