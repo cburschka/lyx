@@ -168,7 +168,7 @@ void QRef::redoRefs()
 	dialog_->referenceED->setText(tmp);
 
 	for (unsigned int i = 0; i < dialog_->refsLB->count(); ++i) {
-		if (tmp != dialog_->refsLB->text(i))
+		if (tmp == dialog_->refsLB->text(i))
 			dialog_->refsLB->setCurrentItem(i);
 	}
 
