@@ -11,20 +11,15 @@
 #include <config.h>
 
 
-#include "debug.h"
-#include "LyXView.h"
-#include "version.h" // lyx_version
-
-#include "support/filetools.h" // LibFileSearch
-#include "support/lstrings.h"
-#include "support/LAssert.h"
-
 #include "QWorkArea.h"
+#include "debug.h"
+#include "lfuns.h"
 #include "qt_helpers.h"
 #include "lcolorcache.h"
 
 #include <qapplication.h>
 #include <qevent.h>
+#include <qdragobject.h>
 #include <qpainter.h>
 #include <qmainwindow.h>
 #include <qlayout.h>
@@ -34,13 +29,9 @@
 #include <X11/Xlib.h>
 #endif
 
-#include <cmath>
 #include <cctype>
 
 using std::endl;
-using std::abs;
-using std::hex;
-
 
 QWorkArea::QWorkArea(int, int, int, int)
 	: WorkArea(), QWidget(qApp->mainWidget()), painter_(*this)
@@ -51,6 +42,7 @@ QWorkArea::QWorkArea(int, int, int, int)
 	(static_cast<QMainWindow*>(qApp->mainWidget()))->setCentralWidget(this);
 
 	setFocusProxy(content_);
+	setAcceptDrops(true);
 
 	content_->show();
 
@@ -141,4 +133,24 @@ void QWorkArea::putClipboard(string const & str) const
 	QApplication::clipboard()->setSelectionMode(true);
 #endif
 	QApplication::clipboard()->setText(toqstr(str));
+}
+
+
+void QWorkArea::dragEnterEvent(QDragEnterEvent * event)
+{
+	event->accept(QUriDrag::canDecode(event));
+}
+
+
+void QWorkArea::dropEvent(QDropEvent* event)
+{
+	QStringList files;
+	
+	if (QUriDrag::decodeLocalFiles(event, files)) {
+		lyxerr[Debug::GUI] << "QWorkArea::dropEvent: got URIs!"
+				   << endl;
+		for (QStringList::Iterator i = files.begin();
+		     i!=files.end(); ++i)
+			dispatch(FuncRequest(LFUN_FILE_OPEN, fromqstr(*i)));
+	}
 }

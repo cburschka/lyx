@@ -1,3 +1,9 @@
+2003-08-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QWorkArea.C (QWorkArea): 
+	(dragEnterEvent): 
+	(dropEvent): add support for drag and drop of URIs
+
 2003-08-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ui/moc/Makefile.am (INCLUDES): forgot to use QT_INCLUDES

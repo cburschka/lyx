@@ -955,37 +955,49 @@ void BufferView::Pimpl::trackChanges()
 }
 
 
-// Doesn't go through lyxfunc, so we need to update the
-// layout choice etc. ourselves
-bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & ev_in)
+bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & ev)
 {
-	// e.g. Qt mouse press when no buffer
-	if (!available())
-		return false;
+	switch (ev.action) {
+	case LFUN_MOUSE_PRESS:
+	case LFUN_MOUSE_MOTION:
+	case LFUN_MOUSE_RELEASE:
+	case LFUN_MOUSE_DOUBLE:
+	case LFUN_MOUSE_TRIPLE:
+	{
+		// We pass those directly to the Bufferview, since
+		// otherwise selection handling breaks down
 
-	screen().hideCursor();
+		// Doesn't go through lyxfunc, so we need to update
+		// the layout choice etc. ourselves
 
-	// Make sure that the cached BufferView is correct.
-	FuncRequest ev = ev_in;
-	ev.setView(bv_);
+		// e.g. Qt mouse press when no buffer
+		if (!available())
+			return false;
 
-	bool const res = dispatch(ev);
+		screen().hideCursor();
 
-	// see workAreaKeyPress
-	cursor_timeout.restart();
-	screen().showCursor(*bv_);
+		bool const res = dispatch(ev);
+		
+		// see workAreaKeyPress
+		cursor_timeout.restart();
+		screen().showCursor(*bv_);
 
-	// FIXME: we should skip these when selecting
-	bv_->owner()->updateLayoutChoice();
-	bv_->owner()->updateToolbar();
-	bv_->fitCursor();
+		// FIXME: we should skip these when selecting
+		owner_->updateLayoutChoice();
+		owner_->updateToolbar();
+		fitCursor();
 
-	// slight hack: this is only called currently when
-	// we clicked somewhere, so we force through the display
-	// of the new status here.
-	bv_->owner()->clearMessage();
+		// slight hack: this is only called currently when we
+		// clicked somewhere, so we force through the display
+		// of the new status here.
+		owner_->clearMessage();
 
-	return res;
+		return res;
+	}
+	default:
+		owner_->dispatch(ev);
+		return true;
+	}
 }
 
 

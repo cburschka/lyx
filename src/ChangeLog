@@ -1,3 +1,8 @@
+2003-08-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView_pimpl.C (workAreaDispatch): change to use
+	LyXView::dispatch instead of BufferView::Pimpl::dispatch for lfuns
+	that are no mouse related.
 
 2003-08-05  André Pönitz  <poenitz@gmx.net>
 
