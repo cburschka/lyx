@@ -46,27 +46,12 @@ MathInset * MathCharInset::clone() const
 }
 
 
-int MathCharInset::ascent() const
-{
-	return mathed_char_ascent(code_, mi_, char_);
-}
-
-
-int MathCharInset::descent() const
-{
-	return mathed_char_descent(code_, mi_, char_);
-}
-
-
-int MathCharInset::width() const
-{
-	return mathed_char_width(code_, mi_, char_);
-}
-
-
 void MathCharInset::metrics(MathMetricsInfo const & mi) const
 {
 	mi_ = mi;
+	ascent_  = mathed_char_ascent(code_, mi_, char_);
+	descent_ = mathed_char_descent(code_, mi_, char_);
+	width_   = mathed_char_width(code_, mi_, char_);
 }
 
 

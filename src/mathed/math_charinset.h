@@ -2,7 +2,7 @@
 #ifndef MATH_CHARINSET_H
 #define MATH_CHARINSET_H
 
-#include "math_inset.h"
+#include "math_diminset.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -12,7 +12,7 @@
     \author André Pönitz
  */
 
-class MathCharInset : public MathInset {
+class MathCharInset : public MathDimInset {
 public:
 	///
 	explicit MathCharInset(char c);
@@ -36,12 +36,6 @@ public:
 	void writeRaw(std::ostream &) const;
 	///
 	void normalize(NormalStream &) const;
-	/// 
-	int ascent() const;
-	///
-	int descent() const;
-	///
-	int width() const;
 	/// identifies Charinsets
 	MathCharInset const * asCharInset() const { return this; }
 	///
