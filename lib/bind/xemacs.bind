@@ -61,7 +61,6 @@
 \bind "C-w"                    "cut"
 #bind "C-x"                    "------"
 \bind "C-y"                    "paste"
-\bind "C-S-Y"                  "layout-paste"
 
 #should be "lyx-iconify"
 #bind "C-z"                    "------"   # see end of file
@@ -203,7 +202,6 @@
 \bind "C-period"		"end-of-sentence-period-insert"
 \bind "M-period"		"dots-insert"
 \bind "M-w"			"copy"
-\bind "M-S-W"			"layout-copy"
 \bind "Escape"			"meta-prefix"
 
 # Numeric keypad (if Shift+KP_XXX does not switch the NumLock state)
