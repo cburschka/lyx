@@ -2124,7 +2124,7 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 	float fill_hfill;
 	float fill_label_hfill;
 	prepareToPrint(bview, row, x, fill_separator, fill_hfill,
-		       fill_label_hfill);
+	               fill_label_hfill);
 	pos_type cursor_vpos = 0;
 	pos_type last = rowLastPrintable(row);
 

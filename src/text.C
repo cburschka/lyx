@@ -1548,6 +1548,8 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 	float x = 0;
 	if (layout.margintype != MARGIN_RIGHT_ADDRESS_BOX) {
 		float dummy;
+		// this IS needed
+		row_ptr->width(maxwidth);
 		prepareToPrint(bview, row_ptr, x, dummy, dummy, dummy, false);
 	}
 	row_ptr->width(int(maxwidth + x));
@@ -2079,7 +2081,7 @@ void LyXText::prepareToPrint(BufferView * bview,
 	fill_separator = 0;
 	fill_label_hfill = 0;
 
-        bool const is_rtl =
+	bool const is_rtl =
 		row->par()->isRightToLeftPar(bview->buffer()->params);
 	if (is_rtl) {
 		x = (workWidth(bview) > 0)
@@ -2106,7 +2108,10 @@ void LyXText::prepareToPrint(BufferView * bview,
 	if (nh) {
 		if (w > 0)
 			fill_hfill = w / nh;
-	} else  {
+	// we don't have to look at the alignment if it is ALIGN_LEFT and
+	// if the row is already larger then the permitted width as then
+	// we force the LEFT_ALIGN'edness!
+	} else if (static_cast<int>(row->width()) < workWidth(bview)) {
 		// is it block, flushleft or flushright? 
 		// set x how you need it
 		int align;
