@@ -33,7 +33,7 @@ dnl
 dnl Source packaging numbers
 SIGC_MAJOR_VERSION=1
 SIGC_MINOR_VERSION=0
-SIGC_MICRO_VERSION=0
+SIGC_MICRO_VERSION=1
 
 dnl Library extension
 SIGC_RELEASE=1.0
@@ -609,7 +609,7 @@ ac_thread_mutex_impl_size=
 ac_thread_thread_attr_size=
 ac_thread_thread_impl_size=
 ac_thread_key_impl_size=
-' > ac_thread.sh
+' > ./ac_thread.sh
    AC_MSG_ERROR(
 [You are attempting a cross compile, but the necessary information regarding
 your thread library is not available.  Please fill out the ac_thread.sh file.

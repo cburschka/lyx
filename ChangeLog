@@ -1,3 +1,9 @@
+2000-09-25  Allan Rae  <rae@lyx.org>
+
+	* sigc++: updated libsigc++.  Fixes struct timespec bug.
+
+	* development/tools/makeLyXsigc.sh:  .cvsignore addition
+
 2000-09-23  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* several files: removed almost all traces of the old table

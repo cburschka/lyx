@@ -121,7 +121,7 @@ struct Condition
 
      // unlocks a mutex while waiting on a condition, then reaquires lock
      // with a fixed maximum duration.
-     int wait(Mutex &m,timespec* spec);
+     int wait(Mutex &m,struct timespec* spec);
 
   };
 

@@ -360,6 +360,7 @@ sigc-config
 stamp*
 sigc++config.h
 sigc++config.h.in
+acinclude.m4
 EOF
 )
 
