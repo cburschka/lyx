@@ -1,5 +1,15 @@
 2000-07-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/frontends/xforms/FormGraphics.C (apply): add some
+	static_cast. Not very nice, but required by compaq cxx.
+
+	* src/frontends/xforms/RadioButtonGroup.h: include header
+	<utility> instead of <pair.h>
+
+	* src/insets/insetgraphicsParams.C: add using directive. 
+	(readResize): change return type to void. 
+	(readOrigin): ditto.
+
 	* src/lyxfunc.C (getStatus): add missing break for build-program
 	function; add test for Literate for export functions.
 

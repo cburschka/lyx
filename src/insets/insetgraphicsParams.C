@@ -23,6 +23,8 @@
 #include "support/LAssert.h"
 #endif
 
+using std::endl;
+
 /// This variable keeps a tab on whether the translator was set with the
 /// translations.
 static bool translatorsSet = false;
@@ -341,7 +343,8 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
         os << " rotateAngle " << rotateAngle << endl;
 }
    
-static readResize(InsetGraphicsParams * igp, bool height, string const & token)
+static void readResize(InsetGraphicsParams * igp, bool height, 
+		       string const & token)
 {
     InsetGraphicsParams::Resize resize = InsetGraphicsParams::DEFAULT_SIZE;
 
@@ -370,7 +373,7 @@ static readResize(InsetGraphicsParams * igp, bool height, string const & token)
         igp->widthResize = resize;
 }
     
-static readOrigin(InsetGraphicsParams * igp, string const & token)
+static void readOrigin(InsetGraphicsParams * igp, string const & token)
 { // TODO: complete this function.
     igp->rotateOrigin = originTranslator.find(token);
 }

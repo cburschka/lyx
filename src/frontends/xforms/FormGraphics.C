@@ -41,6 +41,8 @@
 #include "support/LAssert.h"
 #endif
 
+using std::endl;
+
 C_RETURNCB(FormGraphics, WMHideCB)
 C_GENERICCB(FormGraphics, OKCB)
 C_GENERICCB(FormGraphics, ApplyCB)
@@ -259,12 +261,15 @@ void FormGraphics::apply()
 
     igp.filename = fl_get_input(dialog_->input_filename);
 
-    igp.display = displayButtons.getButton();
+    igp.display = static_cast<InsetGraphicsParams::DisplayType>
+	    (displayButtons.getButton());
     
-    igp.widthResize = widthButtons.getButton();
+    igp.widthResize = static_cast<InsetGraphicsParams::Resize>
+	    (widthButtons.getButton());
     igp.widthSize = strToDbl(fl_get_input(dialog_->input_width));
 
-    igp.heightResize = heightButtons.getButton();
+    igp.heightResize = static_cast<InsetGraphicsParams::Resize>
+	    (heightButtons.getButton());
     igp.heightSize = strToDbl(fl_get_input(dialog_->input_height));
 
     igp.rotateAngle = strToInt(fl_get_input(dialog_->input_rotate_angle));

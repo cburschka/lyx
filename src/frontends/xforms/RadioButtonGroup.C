@@ -23,6 +23,7 @@
 #include <algorithm>
 #include <iterator>
 using std::find_if;
+using std::endl;
 
 void RadioButtonGroup::registerRadioButton(FL_OBJECT *button, int value)
 {
