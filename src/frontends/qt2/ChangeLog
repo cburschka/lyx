@@ -1,3 +1,8 @@
+2004-08-19  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* BulletsModule.C (setBullet): use toqstr() for a string passed to
+	qt, otherwise it won't compile on SuSE 9.0
+
 2004-08-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Some pch work.
