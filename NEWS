@@ -1,3 +1,13 @@
+What's new in version 1.3.5?
+----------------------------
+
+This is mainly a bugfix release, with few notable user-visible
+improvements. However, we would like to highlight two fixes in particular:
+  * Nested documents (with Insert>Include File...), which have been
+    broken since LyX 1.2.0, should now work properly, including the
+    case where the files are in different directories.
+  * It is now possible to compile LyX with gcc 3.4.
+
 What's new in version 1.3.4?
 ----------------------------
 

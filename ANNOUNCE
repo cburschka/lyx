@@ -1,7 +1,3 @@
-
-[[[WARNING! THIS IS NOT A REAL ANNOUNCEMENT! LYX 1.3.5 IS NOT RELEASED YET.
-   THIS IS JUST A FILE FOR DEVELOPERS]]
-
 Public release of LyX version 1.3.5
 ===================================
 
@@ -9,12 +5,10 @@ We are pleased to announce the release of LyX 1.3.5.
 
 This is mainly a bugfix release, with few notable user-visible
 improvements. However, we would like to highlight two fixes in particular:
-
-  - Nested documents (with Insert>Include File...), which have been
+  * Nested documents (with Insert>Include File...), which have been
     broken since LyX 1.2.0, should now work properly, including the
     case where the files are in different directories.
-
-  - It is now possible to compile LyX with gcc 3.4.
+  * It is now possible to compile LyX with gcc 3.4.
 
 
 The complete list of improvements and fixes can be found at the end of
@@ -93,8 +87,9 @@ What's new
 
 - Add support for Icelandic, Latvian, Lithuanian and Nynorsk.
 
-- Updated the Basque, Danish, German, Italian and Romanian localizations.
-  Updated the Basque and German documentation.
+- Updated the Basque, Danish, German, Italian, Romanian, Russian (fix crash 
+  when autosaving) and Spanish localizations. Updated the Basque and German 
+  documentation.
 
 ** Bug fixes
 
@@ -104,7 +99,7 @@ What's new
   working correctly [bug #605].
 
 - Fix nesting of language change commands, especially important for
-  Arabic [bug #1404].
+  Arabic [bugs #1225, #1404].
 
 - Fix missing line break in front of \end{...} in some cases [bug #1225].
 
@@ -120,10 +115,14 @@ What's new
 
 - Fix handling of counters in the scrlettr and scrlttr2 classes.
 
-- Fix off-by-one-error which caused LyX to chose the wrong custom margin
+- Fix off-by-one-error which caused LyX to choose the wrong custom margin
   package.
 
 - Remove extra spaces around math insets in plain text output.
+
+- Quote shell variables correctly in the generated sh script used
+  to control the conversion of graphics images to a loadable format.
+  Ditto for the convertDefault.sh script.
 
 * User Interface:
 
@@ -161,6 +160,9 @@ What's new
 
 - The Qt-related parts of the configure script honors the environment
   variables MOC and UIC if they are set.
+
+- The precompiled .pyc files in the lib/lyx2lyx/ directory are not
+  distributed anymore, since they were not correct anyway.
 
 - Fix compilation for OpenBSD.
 
