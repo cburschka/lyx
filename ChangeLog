@@ -1,3 +1,21 @@
+2000-07-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* configure.in: use -isystem instead of -I for X headers. This
+	fixes a problem on solaris with a recent gcc.
+
+2000-06-20  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/lyx_gui.C (create_forms): Add "Reset" option to the language 
+	combox in the character popup
+
+	* src/lyx_cb.C (UserFreeFont): Add argument to the method:
+	BufferParams const & params
+
+2000-07-08  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/WorkArea.C  (request_clipboard_cb): Set clipboard_read to
+	true when clipboard is empty.
+
 2000-07-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* configure.in: add check for strings.h header.

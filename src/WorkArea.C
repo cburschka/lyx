@@ -369,12 +369,11 @@ int request_clipboard_cb(FL_OBJECT * /*ob*/, long /*type*/,
 			void const * data, long size) 
 {
 	clipboard_selection.erase();
-	if (size == 0) return 0; // no selection
-	 
-	clipboard_selection.reserve(size);
-	for (int i = 0; i < size; ++i) {
+
+	if (size > 0)
+		clipboard_selection.reserve(size);
+	for (int i = 0; i < size; ++i)
 		clipboard_selection += static_cast<char const *>(data)[i];
-	}
 	clipboard_read = true;
 	return 0;
 }

@@ -122,7 +122,7 @@ void changeDepth(BufferView * bv, int decInc)
 
 void Free(BufferView * bv)
 {
-	ToggleAndShow(bv, UserFreeFont());
+	ToggleAndShow(bv, UserFreeFont(bv->buffer()->params));
 }
 
 
