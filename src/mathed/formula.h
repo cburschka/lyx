@@ -82,7 +82,9 @@ public:
 	///
 	MathAtom & par() { return par_; }
 	///
-	void generatePreview(grfx::PreviewLoader &) const;
+	void generatePreview() const;
+	///
+	void addPreview(grfx::PreviewLoader &) const;
 	///
 	void mutate(string const & type);
 

@@ -18,6 +18,7 @@
 #include "insetcommand.h"
 
 #include <boost/signals/signal0.hpp>
+#include <boost/scoped_ptr.hpp>
 
 class Buffer;
 struct LaTeXFeatures;
@@ -64,6 +65,15 @@ public:
 	InsetInclude(InsetCommandParams const &, Buffer const &);
 	///
 	~InsetInclude();
+
+	/// Override these InsetButton methods if Previewing
+	int ascent(BufferView *, LyXFont const &) const;
+	///
+	int descent(BufferView *, LyXFont const &) const;
+	///
+	int width(BufferView *, LyXFont const &) const;
+	///
+	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 
 	/// get the parameters
 	Params const & params(void) const;
@@ -117,6 +127,9 @@ public:
 	/// return true if the file is or got loaded.
 	bool loadIfNeeded() const;
 
+	///
+	void addPreview(grfx::PreviewLoader &) const;
+
 	/// hide a dialog if about
 	boost::signal0<void> hideDialog;
 private:
@@ -133,6 +146,12 @@ private:
 	Params params_;
 	/// holds the entity name that defines the file location (SGML)
 	string const include_label;
+
+	/// Use the Pimpl idiom to hide the internals of the previewer.
+	class PreviewImpl;
+	friend class PreviewImpl;
+	/// The pointer never changes although *preview_'s contents may.
+	boost::scoped_ptr<PreviewImpl> const preview_;
 };
 
 

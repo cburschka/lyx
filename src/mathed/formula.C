@@ -47,16 +47,11 @@
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
-#include "graphics/GraphicsImage.h"
-#include "graphics/PreviewLoader.h"
+#include "graphics/PreviewedInset.h"
 #include "graphics/PreviewImage.h"
-#include "graphics/Previews.h"
 
 #include <fstream>
-#include <boost/bind.hpp>
-#include <boost/signals/trackable.hpp>
-#include <boost/signals/connection.hpp>
-#include <boost/utility.hpp>
+
 
 using std::ostream;
 using std::ifstream;
@@ -67,30 +62,26 @@ using std::vector;
 using std::getline;
 
 
-struct InsetFormula::PreviewImpl : public boost::signals::trackable {
+class InsetFormula::PreviewImpl : public grfx::PreviewedInset {
+public:
 	///
-	PreviewImpl(InsetFormula & p) : parent_(p), pimage_(0) {}
+	PreviewImpl(InsetFormula & p) : PreviewedInset(p) {}
 
+private:
 	///
-	void generatePreview(grfx::PreviewLoader & previewer);
-
-	/** This method is connected to the grfx::PreviewLoader::imageReady
-	 *  signal.
-	 */
-	void previewReady(grfx::PreviewImage const &);
-
-	/// A helper method.
+	bool previewWanted() const;
+	///
 	string const latexString() const;
-
 	///
-	bool usePreview() const;
-
+	BufferView * view() const
+	{
+		return parent().view();
+	}
 	///
-	InsetFormula & parent_;
-	///
-	mutable grfx::PreviewImage const * pimage_;
-	///
-	boost::signals::connection connection_;
+	InsetFormula & parent() const
+	{
+		return *static_cast<InsetFormula*>(inset());
+	}
 };
 
 
@@ -216,7 +207,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 {
 	// This initiates the loading of the preview, so should come
 	// before the metrics are computed.
-	bool const use_preview = preview_->usePreview();
+	bool const use_preview = preview_->previewReady();
 
 	int const x = int(xx);
 	int const w = width(bv, font);
@@ -228,7 +219,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 
 	if (use_preview) {
 		pi.pain.image(x, y - a, w, h,
-			      *(preview_->pimage_->image(*this, *bv)));
+			      *(preview_->pimage()->image(*this, *bv)));
 	} else {
 		//pi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
 		pi.base.style = LM_ST_TEXT;
@@ -441,17 +432,17 @@ bool InsetFormula::insetAllowed(Inset::Code code) const
 
 int InsetFormula::ascent(BufferView *, LyXFont const &) const
 {
-	return preview_->usePreview() ?
-		preview_->pimage_->ascent() : 1 + par_->ascent();
+	return preview_->previewReady() ?
+		preview_->pimage()->ascent() : 1 + par_->ascent();
 }
 
 
 int InsetFormula::descent(BufferView *, LyXFont const &) const
 {
-	if (!preview_->usePreview())
+	if (!preview_->previewReady())
 		return 1 + par_->descent();
 
-	int const descent = preview_->pimage_->descent();
+	int const descent = preview_->pimage()->descent();
 	return display() ? descent + 12 : descent;
 }
 
@@ -459,8 +450,8 @@ int InsetFormula::descent(BufferView *, LyXFont const &) const
 int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 {
 	metrics(bv, font);
-	return preview_->usePreview() ?
-		preview_->pimage_->width() : par_->width();
+	return preview_->previewReady() ?
+		preview_->pimage()->width() : par_->width();
 }
 
 
@@ -480,58 +471,21 @@ void InsetFormula::mutate(string const & type)
 // preview stuff
 //
 
-void InsetFormula::generatePreview(grfx::PreviewLoader & ploader) const
+void InsetFormula::addPreview(grfx::PreviewLoader & ploader) const
 {
-	// Do nothing if no preview is desired.
-	if (!grfx::Previews::activated())
-		return;
-
-	preview_->generatePreview(ploader);
+	preview_->addPreview(ploader);
 }
 
 
-void InsetFormula::PreviewImpl::generatePreview(grfx::PreviewLoader & ploader)
+void InsetFormula::generatePreview() const
 {
-	// Generate the LaTeX snippet.
-	string const snippet = latexString();
-
-	pimage_ = ploader.preview(snippet);
-	if (pimage_)
-		return;
-
-	// If this is the first time of calling, connect to the
-	// grfx::PreviewLoader signal that'll inform us when the preview image
-	// is ready for loading.
-	if (!connection_.connected()) {
-		connection_ = ploader.connect(
-			boost::bind(&PreviewImpl::previewReady, this, _1));
-	}
-
-	ploader.add(snippet);
+	preview_->generatePreview();
 }
 
 
-bool InsetFormula::PreviewImpl::usePreview() const
+bool InsetFormula::PreviewImpl::previewWanted() const
 {
-	BufferView * view = parent_.view();
-
-	if (!grfx::Previews::activated() ||
-	    parent_.par_->asNestInset()->editing() ||
-	    !view || !view->buffer())
-		return false;
-
-	// If the cached grfx::PreviewImage is invalid, update it.
-	string const snippet = latexString();
-	if (!pimage_ || snippet != pimage_->snippet()) {
-		grfx::PreviewLoader & ploader =
-			grfx::Previews::get().loader(view->buffer());
-		pimage_ = ploader.preview(snippet);
-	}
-
-	if (!pimage_)
-		return false;
-
-	return pimage_->image(parent_, *view);
+	return !parent().par_->asNestInset()->editing();
 }
 
 
@@ -539,19 +493,6 @@ string const InsetFormula::PreviewImpl::latexString() const
 {
 	ostringstream ls;
 	WriteStream wi(ls, false, false);
-	parent_.par_->write(wi);
+	parent().par_->write(wi);
 	return ls.str().c_str();
-}
-
-
-void InsetFormula::PreviewImpl::previewReady(grfx::PreviewImage const & pimage)
-{
-	// Check snippet against the Inset's current contents
-	if (latexString() != pimage.snippet())
-		return;
-
-	pimage_ = &pimage;
-	BufferView * view = parent_.view();
-	if (view)
-		view->updateInset(&parent_, false);
 }

@@ -1,3 +1,18 @@
+2002-08-01  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewedInset.[Ch]: new files. An abstract base class that can help
+	insets to generate previews.
+	The daughter class must instantiate three small methods.
+	The Inset would own an instance of this daughter class and invoke it
+	as necessary. For example, mathd/formula.C gets previews at the cost
+	of 15 or so lines of code.
+
+	* Makefile.am: add PreviewedInset.[Ch].
+
+	* PreviewLoader.C (add): add debug message.
+
+	* Previews.C (generateBufferPreviews): remove if-block from loop.
+
 2002-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* PreviewLoader.C (setFontScalingFactor): strip,frontStrip ->

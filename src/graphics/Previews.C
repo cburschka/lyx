@@ -94,9 +94,7 @@ void Previews::generateBufferPreviews(Buffer const & buffer) const
 	Buffer::inset_iterator end = buffer.inset_const_iterator_end();
 
 	for (; it != end; ++it) {
-		if ((*it)->lyxCode() == Inset::MATH_CODE) {
-			(*it)->generatePreview(ploader);
-		}
+		(*it)->addPreview(ploader);
 	}
 
 	ploader.startLoading();

@@ -15,10 +15,14 @@
 #include "gettext.h"
 
 #include "frontends/Dialogs.h"
+#include "frontends/Painter.h"
 
 #include "support/filetools.h"
 #include "support/FileInfo.h"
 #include "support/lstrings.h"
+
+#include "graphics/PreviewedInset.h"
+#include "graphics/PreviewImage.h"
 
 #include <cstdlib>
 
@@ -29,6 +33,26 @@ using std::vector;
 using std::pair;
 
 extern BufferList bufferlist;
+extern BufferView * current_view;
+
+class InsetInclude::PreviewImpl : public grfx::PreviewedInset {
+public:
+	///
+	PreviewImpl(InsetInclude & p) : PreviewedInset(p) {}
+
+	///
+	bool previewWanted() const;
+	///
+	string const latexString() const;
+
+	///
+	BufferView * view() const { return current_view; }
+	///
+	InsetInclude & parent() const {
+		return *static_cast<InsetInclude*>(inset());
+	}
+};
+
 
 namespace {
 
@@ -47,12 +71,14 @@ string const uniqueID()
 
 
 InsetInclude::InsetInclude(Params const & p)
-	: params_(p), include_label(uniqueID())
+	: params_(p), include_label(uniqueID()),
+	  preview_(new PreviewImpl(*this))
 {}
 
 
 InsetInclude::InsetInclude(InsetCommandParams const & p, Buffer const & b)
-	: include_label(uniqueID())
+	: include_label(uniqueID()),
+	  preview_(new PreviewImpl(*this))
 {
 	params_.cparams = p;
 	params_.masterFilename_ = b.fileName();
@@ -110,6 +136,9 @@ void InsetInclude::set(Params const & p)
 	}
 
 	params_.cparams.setCmdName(command);
+
+	if (grfx::PreviewedInset::activated() && params_.flag == INPUT)
+		preview_->generatePreview();
 }
 
 
@@ -444,4 +473,89 @@ vector<pair<string,string> > const InsetInclude::getKeys() const
 	}
 
 	return keys;
+}
+
+
+int InsetInclude::ascent(BufferView * bv, LyXFont const & font) const
+{
+	return preview_->previewReady() ?
+		preview_->pimage()->ascent() : InsetButton::ascent(bv, font);
+}
+
+
+int InsetInclude::descent(BufferView * bv, LyXFont const & font) const
+{
+	return preview_->previewReady() ?
+		preview_->pimage()->descent() : InsetButton::descent(bv, font);
+}
+
+
+int InsetInclude::width(BufferView * bv, LyXFont const & font) const
+{
+	return preview_->previewReady() ?
+		preview_->pimage()->width() : InsetButton::width(bv, font);
+}
+
+
+void InsetInclude::draw(BufferView * bv, LyXFont const & font, int y,
+			float & xx, bool b) const
+{
+	if (!preview_->previewReady()) {
+		InsetButton::draw(bv, font, y, xx, b);
+		return;
+	}
+
+	int const x = int(xx);
+	int const w = width(bv, font);
+	int const d = descent(bv, font);
+	int const a = ascent(bv, font);
+	int const h = a + d;
+
+	bv->painter().image(x, y - a, w, h,
+			    *(preview_->pimage()->image(*this, *bv)));
+
+	xx += w;
+}
+
+
+//
+// preview stuff
+//
+
+void InsetInclude::addPreview(grfx::PreviewLoader & ploader) const
+{
+	lyxerr << "InsetInclude::addPreview" << endl;
+	preview_->addPreview(ploader);
+}
+
+
+bool InsetInclude::PreviewImpl::previewWanted() const
+{
+	return parent().params_.flag == InsetInclude::INPUT;
+}
+
+
+string const InsetInclude::PreviewImpl::latexString() const
+{
+	if (!view() || !view()->buffer())
+		return string();
+
+	ostringstream os;
+	parent().latex(view()->buffer(), os, false, false);
+
+	// This fails if the file has a relative path.
+	// return os.str().c_str();
+
+	// I would /really/ like not to do this...
+	// HELP!
+	string command;
+	string file = rtrim(split(os.str().c_str(), command, '{'), "}");
+
+	if (!AbsolutePath(file))
+		file = MakeAbsPath(file, view()->buffer()->filePath());
+
+	ostringstream out;
+	out << command << '{' << file << '}' << endl;
+	
+	return out.str().c_str();
 }

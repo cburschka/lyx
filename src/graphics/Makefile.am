@@ -31,5 +31,7 @@ libgraphics_la_SOURCES = \
 	PreviewLoader.h \
 	PreviewLoader.C \
 	Previews.h \
-	Previews.C
+	Previews.C \
+	PreviewedInset.h \
+	PreviewedInset.C
 

@@ -6,11 +6,8 @@
 #include "math_cursor.h"
 #include "math_mathmlstream.h"
 #include "formulabase.h"
-#include "BufferView.h"
 #include "debug.h"
 #include "frontends/Painter.h"
-#include "graphics/PreviewLoader.h"
-#include "graphics/Previews.h"
 
 using std::vector;
 
@@ -323,22 +320,10 @@ void MathNestInset::normalize(NormalStream & os) const
 
 void MathNestInset::notifyCursorLeaves()
 {
-	// Generate a preview only if previews are active and we are leaving
-	// the InsetFormula itself
-	if (!grfx::Previews::activated() ||
-	    !mathcursor || mathcursor->depth() != 1)
+	// Generate a preview only if we are leaving the InsetFormula itself
+	if (!mathcursor || mathcursor->depth() != 1)
 		return;
 
 	InsetFormulaBase * inset = mathcursor->formula();
-	BufferView * bufferview = inset->view();
-
-	// Paranoia check
-	if (!bufferview || !bufferview->buffer())
-		return;
-
-	grfx::Previews & previews = grfx::Previews::get();
-	grfx::PreviewLoader & loader = previews.loader(bufferview->buffer());
-
-	inset->generatePreview(loader);
-	loader.startLoading();
+	inset->generatePreview();
 }

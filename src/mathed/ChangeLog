@@ -1,3 +1,13 @@
+2002-08-01  Angus Leeming  <leeming@lyx.org>
+
+	* formula.C: move code into the new PreviewedInset class.
+
+	* formula.[Ch] (generatePreview): renamed as addPreview.
+	(generatePreview): new method invoking PreviewedInset::generatePreview.
+
+	* math_nestinset.C (notifyCursorLeaves): simplify. Now just calls
+	Inset::generatePreview.
+
 2002-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* formula.C (localDispatch): strip,frontStrip -> trim,ltrim,rtrim

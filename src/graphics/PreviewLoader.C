@@ -383,6 +383,8 @@ void PreviewLoader::Impl::add(string const & latex_snippet)
 	if (!pconverter_ || status(latex_snippet) != NotFound)
 		return;
 
+	lyxerr[Debug::GRAPHICS] << "adding snippet:\n" << latex_snippet << endl;
+
 	pending_.push_back(latex_snippet);
 }
 

@@ -332,14 +332,20 @@ public:
 	virtual int latexTextWidth(BufferView *) const;
 
 	/** Adds a LaTeX snippet to the Preview Loader for transformation
-	 *  into a bitmap image. Also connects to PreviewLoader::imageReady
-	 *  so that the inset is informed when the image has been generated
-	 *  in order to initiate its loading into LyX.
+	 *  into a bitmap image. Does not start the laoding process.
 	 *
 	 *  Most insets have no interest in this capability, so the method
 	 *  defaults to empty.
 	 */
-	virtual void generatePreview(grfx::PreviewLoader &) const {}
+	virtual void addPreview(grfx::PreviewLoader &) const {}
+
+	/** Find the PreviewLoader, add a LaTeX snippet to it and
+	 *  start the loading process.
+	 *
+	 *  Most insets have no interest in this capability, so the method
+	 *  defaults to empty.
+	 */
+	virtual void generatePreview() const {}
 
 protected:
 	///
