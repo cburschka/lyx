@@ -12,7 +12,8 @@
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
 
-#include "insetcommand.h"
+#include "inset.h"
+#include "insetcommandparams.h"
 #include "renderers.h"
 #include <boost/scoped_ptr.hpp>
 
@@ -26,22 +27,13 @@ struct LaTeXFeatures;
 /// for including tex/lyx files
 class InsetInclude: public InsetOld {
 public:
-	struct Params {
-		Params(InsetCommandParams const & cp = InsetCommandParams("input"),
-		       string const & name = string())
-			: cparams(cp),
-			  masterFilename_(name) {}
-
-		InsetCommandParams cparams;
-		string masterFilename_;
-	};
+	///
+	InsetInclude(InsetCommandParams const &);
+	InsetInclude(InsetInclude const &);
+	~InsetInclude();
 
 	///
-	InsetInclude(Params const &);
-	InsetInclude(InsetCommandParams const &, Buffer const &);
-	InsetInclude(InsetInclude const &);
-
-	~InsetInclude();
+	virtual std::auto_ptr<InsetBase> clone() const;
 
 	///
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
@@ -54,12 +46,8 @@ public:
 	virtual BufferView * view() const;
 
 	/// get the parameters
-	Params const & params(void) const;
-	/// set the parameters
-	void set(Params const & params);
+	InsetCommandParams const & params(void) const;
 
-	///
-	virtual std::auto_ptr<InsetBase> clone() const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::INCLUDE_CODE; }
 	/** Fills \c list
@@ -76,17 +64,13 @@ public:
 	void fillWithBibKeys(Buffer const & buffer,
 		std::vector<std::pair<string,string> > & keys) const;
 	///
-	EDITABLE editable() const
-	{
-		return IS_EDITABLE;
-	}
+	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///
 	void read(Buffer const &, LyXLex &);
 	///
-	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+	int latex(Buffer const &, std::ostream &, LatexRunParams const &) const;
 	///
 	int ascii(Buffer const &, std::ostream &, int linelen) const;
 	///
@@ -95,29 +79,23 @@ public:
 	int docbook(Buffer const &, std::ostream &, bool mixcont) const;
 	///
 	void validate(LaTeXFeatures &) const;
-
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 private:
 	friend class InsetIncludeMailer;
 
-	/// return true if the file is or got loaded.
-	bool loadIfNeeded() const;
-
+	/// set the parameters
+	void set(InsetCommandParams const & params, Buffer const &);
+	/// get the text displayed on the button
+	string const getScreenLabel(Buffer const &) const;
 	///
 	void write(std::ostream &) const;
 	///
 	void read(LyXLex &);
-	/// get the text displayed on the button
-	string const getScreenLabel(Buffer const &) const;
-	/// get the filename of the master buffer
-	string const getMasterFilename() const;
-	/// get the included file name
-	string const getFileName() const;
 
 	/// the parameters
-	Params params_;
+	InsetCommandParams params_;
 	/// holds the entity name that defines the file location (SGML)
 	string const include_label;
 
@@ -146,9 +124,9 @@ public:
 	///
 	virtual string const inset2string(Buffer const &) const;
 	///
-	static void string2params(string const &, InsetInclude::Params &);
+	static void string2params(string const &, InsetCommandParams &);
 	///
-	static string const params2string(InsetInclude::Params const &);
+	static string const params2string(InsetCommandParams const &);
 private:
 	///
 	static string const name_;

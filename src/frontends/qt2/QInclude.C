@@ -47,16 +47,16 @@ void QInclude::build_dialog()
 
 void QInclude::update_contents()
 {
-	InsetInclude::Params const & params = controller().params();
+	InsetCommandParams const & params = controller().params();
 
-	dialog_->filenameED->setText(toqstr(params.cparams.getContents()));
+	dialog_->filenameED->setText(toqstr(params.getContents()));
 
 	dialog_->visiblespaceCB->setChecked(false);
 	dialog_->visiblespaceCB->setEnabled(false);
 	dialog_->previewCB->setChecked(false);
 	dialog_->previewCB->setEnabled(false);
 
-	string cmdname = controller().params().cparams.getCmdName();
+	string cmdname = controller().params().getCmdName();
 	if (cmdname != "include" &&
 	    cmdname != "verbatiminput" &&
 	    cmdname != "verbatiminput*")
@@ -65,7 +65,7 @@ void QInclude::update_contents()
 	if (cmdname == "input") {
 		dialog_->typeCO->setCurrentItem(0);
 		dialog_->previewCB->setEnabled(true);
-		dialog_->previewCB->setChecked(params.cparams.preview());
+		dialog_->previewCB->setChecked(params.preview());
 		
 	} else if (cmdname == "include") {
 		dialog_->typeCO->setCurrentItem(1);
@@ -84,21 +84,21 @@ void QInclude::update_contents()
 
 void QInclude::apply()
 {
-	InsetInclude::Params params = controller().params();
+	InsetCommandParams params = controller().params();
 
-	params.cparams.setContents(fromqstr(dialog_->filenameED->text()));
-	params.cparams.preview(dialog_->previewCB->isChecked());
+	params.setContents(fromqstr(dialog_->filenameED->text()));
+	params.preview(dialog_->previewCB->isChecked());
 
 	int const item = dialog_->typeCO->currentItem();
 	if (item == 0)
-		params.cparams.setCmdName("input");
+		params.setCmdName("input");
 	else if (item == 1)
-		params.cparams.setCmdName("include");
+		params.setCmdName("include");
 	else {
 		if (dialog_->visiblespaceCB->isChecked())
-			params.cparams.setCmdName("verbatiminput*");
+			params.setCmdName("verbatiminput*");
 		else
-			params.cparams.setCmdName("verbatiminput");
+			params.setCmdName("verbatiminput");
 	}
 	controller().setParams(params);
 }

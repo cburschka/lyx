@@ -304,7 +304,7 @@ public:
 	 *  Most insets have no interest in this capability, so the method
 	 *  defaults to empty.
 	 */
-	virtual void generatePreview() const {}
+	virtual void generatePreview(Buffer const &) const {}
 
 protected:
 	///

@@ -42,7 +42,7 @@ public:
 	/** Find the PreviewLoader, add a LaTeX snippet to it and
 	 *  start the loading process.
 	 */
-	void generatePreview();
+	void generatePreview(Buffer const &);
 
 	/** Add a LaTeX snippet to the PreviewLoader but do not start the
 	 *  loading process.
@@ -73,7 +73,7 @@ private:
 	void imageReady(PreviewImage const &) const;
 
 	/// Does the owning inset want a preview?
-	virtual bool previewWanted() const = 0;
+	virtual bool previewWanted(Buffer const &) const = 0;
 	/// a wrapper to Inset::latex
 	virtual string const latexString(Buffer const &) const = 0;
 

@@ -16,7 +16,7 @@
 
 
 #include "Dialog.h"
-#include "insets/insetinclude.h" // InsetIncludeParams
+#include "insets/insetcommandparams.h"
 
 
 /** A controller for the Include file dialog.
@@ -45,10 +45,9 @@ public:
 	virtual bool isBufferDependent() const { return true; }
 
 	///
-	InsetInclude::Params const & params() const
-		{ return inset_->params(); }
+	InsetCommandParams const & params() const { return params_; }
 	///
-	void setParams(InsetInclude::Params const &);
+	void setParams(InsetCommandParams const &);
 
 	/// Browse for a file
 	string const Browse(string const &, Type);
@@ -60,7 +59,7 @@ public:
 	bool fileExists(string const & file);
 private:
 	///
-	boost::scoped_ptr<InsetInclude> inset_;
+	InsetCommandParams params_;
 };
 
 #endif // CONTROLINCLUDE_H

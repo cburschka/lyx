@@ -44,7 +44,7 @@ public:
 
 private:
 	///
-	bool previewWanted() const;
+	bool previewWanted(Buffer const &) const;
 	///
 	string const latexString(Buffer const &) const;
 	///
@@ -302,13 +302,13 @@ void InsetFormula::addPreview(lyx::graphics::PreviewLoader & ploader) const
 }
 
 
-void InsetFormula::generatePreview() const
+void InsetFormula::generatePreview(Buffer const & buffer) const
 {
-	preview_->generatePreview();
+	preview_->generatePreview(buffer);
 }
 
 
-bool InsetFormula::PreviewImpl::previewWanted() const
+bool InsetFormula::PreviewImpl::previewWanted(Buffer const &) const
 {
 	return !parent().par_->asNestInset()->editing();
 }

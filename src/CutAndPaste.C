@@ -24,7 +24,6 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 
-#include "insets/insetinclude.h"
 #include "insets/insettabular.h"
 
 #include "support/lstrings.h"
@@ -297,14 +296,6 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 
 		for (; lit != eit; ++lit) {
 			switch (lit->inset->lyxCode()) {
-			case InsetOld::INCLUDE_CODE: {
-				InsetInclude * ii = static_cast<InsetInclude*>(lit->inset);
-				InsetInclude::Params ip = ii->params();
-				ip.masterFilename_ = buffer.fileName();
-				ii->set(ip);
-				break;
-			}
-
 			case InsetOld::TABULAR_CODE: {
 				InsetTabular * it = static_cast<InsetTabular*>(lit->inset);
 				it->buffer(const_cast<Buffer*>(&buffer));

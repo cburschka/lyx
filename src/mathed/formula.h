@@ -67,7 +67,7 @@ public:
 	///
 	MathAtom & par() { return par_; }
 	///
-	void generatePreview() const;
+	void generatePreview(Buffer const &) const;
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 	///

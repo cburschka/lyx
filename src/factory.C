@@ -231,7 +231,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 			return inset;
 
 		} else if (name == "include") {
-			InsetInclude::Params iip;
+			InsetCommandParams iip;
 			InsetIncludeMailer::string2params(cmd.argument, iip);
 			return new InsetInclude(iip);
 
@@ -328,7 +328,7 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 		} else if (cmdName == "index") {
 			inset = new InsetIndex(inscmd);
 		} else if (cmdName == "include") {
-			inset = new InsetInclude(inscmd, buf);
+			inset = new InsetInclude(inscmd);
 		} else if (cmdName == "label") {
 			inset = new InsetLabel(inscmd);
 		} else if (cmdName == "url"
@@ -373,7 +373,7 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 			inset = new InsetBranch(buf.params(), tmptok);
 		} else if (tmptok == "Include") {
 			InsetCommandParams p("Include");
-			inset = new InsetInclude(p, buf);
+			inset = new InsetInclude(p);
 		} else if (tmptok == "Environment") {
 			lex.next();
 			inset = new InsetEnvironment(buf.params(), lex.getString());

@@ -144,7 +144,8 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 		}
 		releaseMathCursor(bv);
 	}
-	generatePreview();
+	if (bv->buffer())
+		generatePreview(*bv->buffer());
 	bv->updateInset(this);
 }
 

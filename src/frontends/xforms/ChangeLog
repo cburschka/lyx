@@ -1,3 +1,8 @@
+2003-09-19  Angus Leeming  <leeming@lyx.org>
+
+	* FormInclude.C: changes dues to the changed storage in InsetInclude,
+	from an InsetInclude::params to an InsetCommandParams.
+
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 
 	* FormInclude.C (apply): No need to set InsetInclude::Params::flag;

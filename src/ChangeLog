@@ -1,3 +1,10 @@
+2003-09-19  Angus Leeming  <leeming@lyx.org>
+
+	* CutAndPaste.C (pasteSelection): remove fudge used to set the
+	masterFilename_ parameter in the include inset.
+
+	* factory.C (createInset): changes due to the changes to InsetInclude.
+
 2003-09-19  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* paragraph.C: use appropriate alignment tags inside floats (bug 1290)

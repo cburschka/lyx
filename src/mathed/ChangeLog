@@ -1,3 +1,10 @@
+2003-09-19  Angus Leeming  <leeming@lyx.org>
+
+	* formula.[Ch] (previewWanted, generatePreview): now passed a
+	'Bufer const &' arg.
+
+	* formalabase.C (insetUnlock): pass a buffer arg to generatePreview.
+
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 
 	* matheformula.[Ch] (getLabelList):

@@ -1,3 +1,10 @@
+2003-09-19  Angus Leeming  <leeming@lyx.org>
+
+	* ControlInclude.[Ch]: Store and access the params as an
+	InsetCommandParams, rather than access them as a InsetInclude::Params
+	and store 'em as a boost::scoped_ptr<InsetInclude>.
+	Other clean-ups due to the changes in InsetInclude.
+
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 
 	* ControlCommand.C (clearParams): simplify.

@@ -14,10 +14,14 @@
 
 #include "ControlInclude.h"
 #include "helper_funcs.h"
+#include "Kernel.h"
 
+#include "buffer.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "lyxrc.h"
+
+#include "insets/insetinclude.h"
 
 #include "support/filetools.h"
 
@@ -37,31 +41,29 @@ ControlInclude::ControlInclude(Dialog & parent)
 
 bool ControlInclude::initialiseParams(string const & data)
 {
-	InsetInclude::Params params;
-	InsetIncludeMailer::string2params(data, params);
-	inset_.reset(new InsetInclude(params));
+	InsetIncludeMailer::string2params(data, params_);
 	return true;
 }
 
 
 void ControlInclude::clearParams()
 {
-	inset_.reset();
+	params_ = InsetCommandParams();
 }
 
 
 void ControlInclude::dispatchParams()
 {
-	InsetInclude::Params p = params();
-	string const lfun = InsetIncludeMailer::params2string(p);
+	string const lfun = InsetIncludeMailer::params2string(params_);
 	kernel().dispatch(FuncRequest(LFUN_INSET_APPLY, lfun));
 }
 
 
-void ControlInclude::setParams(InsetInclude::Params const & params)
+void ControlInclude::setParams(InsetCommandParams const & params)
 {
-	inset_->set(params);
+	params_ = params;
 }
+
 
 string const ControlInclude::Browse(string const & in_name, Type in_type)
 {
@@ -86,7 +88,7 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 	pair<string, string> dir1(N_("Documents|#o#O"),
 				  string(lyxrc.document_path));
 
-	string const docpath = OnlyPath(params().masterFilename_);
+	string const docpath = OnlyPath(kernel().buffer().fileName());
 
 	return browseRelFile(in_name, docpath, title, pattern, false, dir1);
 }
@@ -101,7 +103,8 @@ void ControlInclude::load(string const & file)
 bool ControlInclude::fileExists(string const & file)
 {
 	string const fileWithAbsPath
-		= MakeAbsPath(file, OnlyPath(params().masterFilename_));
+		= MakeAbsPath(file,
+			      OnlyPath(kernel().buffer().fileName()));
 
 	if (IsFileReadable(fileWithAbsPath))
 		return true;

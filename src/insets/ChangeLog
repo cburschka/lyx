@@ -1,3 +1,18 @@
+2003-09-19  Angus Leeming  <leeming@lyx.org>
+
+	* inset.h (generatePreview): passed a 'Buffer const &' arg.
+
+	* insetcommand.C (string2params): clear params using the default c-tor.
+
+	* insetinclude[Ch]: get rid of the masterFilename_ parameter in
+	InsetInclude::Params. No more data in this struct than in
+	InsetCommandParams, so get rid of it and use InsetCommandParams instead.
+	(c-tor): no need to pass a 'Buffer const &' arg anymore.
+	(clone): remove #warning as it's now redundant.
+	(set): add a 'Buffer const &' arg. Make private.
+	(loadIfNeeded) move out of the class definition and into namespace anon.
+	(getMasterFilename, getFileName): ditto.
+
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 
 	* insetcommand.C (setParams): use the params' copy constructor.

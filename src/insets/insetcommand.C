@@ -131,9 +131,7 @@ string const InsetCommandMailer::inset2string(Buffer const &) const
 void InsetCommandMailer::string2params(string const & in,
 				       InsetCommandParams & params)
 {
-	params.setCmdName(string());
-	params.setContents(string());
-	params.setOptions(string());
+	params = InsetCommandParams();
 
 	if (in.empty())
 		return;

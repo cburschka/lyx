@@ -50,6 +50,7 @@ using lyx::support::IsFileReadable;
 using lyx::support::IsLyXFilename;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
+using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
 using lyx::support::subst;
 
@@ -70,7 +71,7 @@ public:
 	PreviewImpl(InsetInclude & p) : PreviewedInset(p) {}
 
 	///
-	bool previewWanted() const;
+	bool previewWanted(Buffer const &) const;
 	///
 	string const latexString(Buffer const &) const;
 	///
@@ -81,7 +82,7 @@ public:
 	///
 	bool monitoring() const { return monitor_.get(); }
 	///
-	void startMonitoring();
+	void startMonitoring(string const & file);
 	///
 	void stopMonitoring() { monitor_.reset(); }
 
@@ -104,21 +105,11 @@ string const uniqueID()
 } // namespace anon
 
 
-InsetInclude::InsetInclude(Params const & p)
+InsetInclude::InsetInclude(InsetCommandParams const & p)
 	: params_(p), include_label(uniqueID()),
 	  preview_(new PreviewImpl(*this)),
 	  set_label_(false)
 {}
-
-
-InsetInclude::InsetInclude(InsetCommandParams const & p, Buffer const & b)
-	: include_label(uniqueID()),
-	  preview_(new PreviewImpl(*this)),
-	  set_label_(false)
-{
-	params_.cparams = p;
-	params_.masterFilename_ = b.fileName();
-}
 
 
 InsetInclude::InsetInclude(InsetInclude const & other)
@@ -142,11 +133,10 @@ dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetInclude::Params p;
+		InsetCommandParams p;
 		InsetIncludeMailer::string2params(cmd.argument, p);
-		if (!p.cparams.getCmdName().empty()) {
-			p.masterFilename_ = cmd.view()->buffer()->fileName();
-			set(p);
+		if (!p.getCmdName().empty()) {
+			set(p, *cmd.view()->buffer());
 			cmd.view()->updateInset(this);
 		}
 		return DISPATCHED;
@@ -171,7 +161,7 @@ dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 }
 
 
-InsetInclude::Params const & InsetInclude::params() const
+InsetCommandParams const & InsetInclude::params() const
 {
 	return params_;
 }
@@ -188,9 +178,9 @@ enum Types {
 };
 
 
-Types type(InsetInclude::Params const & params)
+Types type(InsetCommandParams const & params)
 {
-	string const command_name = params.cparams.getCmdName();
+	string const command_name = params.getCmdName();
 
 	if (command_name == "input")
 		return INPUT;
@@ -202,9 +192,9 @@ Types type(InsetInclude::Params const & params)
 }
  
 
-bool isVerbatim(InsetInclude::Params const & params)
+bool isVerbatim(InsetCommandParams const & params)
 {
-	string const command_name = params.cparams.getCmdName();
+	string const command_name = params.getCmdName();
 	return command_name == "verbatiminput" ||
 		command_name == "verbatiminput*";
 }
@@ -212,26 +202,23 @@ bool isVerbatim(InsetInclude::Params const & params)
 } // namespace anon
 
 
-void InsetInclude::set(Params const & p)
+void InsetInclude::set(InsetCommandParams const & p, Buffer const & buffer)
 {
 	params_ = p;
+	set_label_ = false;
 
 	if (preview_->monitoring())
 		preview_->stopMonitoring();
 
 	if (lyx::graphics::PreviewedInset::activated() &&
 	    type(params_) == INPUT)
-		preview_->generatePreview();
+		preview_->generatePreview(buffer);
 }
 
 
 auto_ptr<InsetBase> InsetInclude::clone() const
 {
-	//Params p(params_);
-	//p.masterFilename_ = buffer.fileName();
-#warning FIXME: broken cross-doc copy/paste - must fix
-
-	return auto_ptr<InsetBase>(new InsetInclude(params_));
+	return auto_ptr<InsetBase>(new InsetInclude(*this));
 }
 
 
@@ -243,8 +230,8 @@ void InsetInclude::write(Buffer const &, ostream & os) const
 
 void InsetInclude::write(ostream & os) const
 {
-	os << "Include " << params_.cparams.getCommand() << '\n'
-	   << "preview " << tostr(params_.cparams.preview()) << '\n';
+	os << "Include " << params_.getCommand() << '\n'
+	   << "preview " << tostr(params_.preview()) << '\n';
 }
 
 
@@ -256,7 +243,7 @@ void InsetInclude::read(Buffer const &, LyXLex & lex)
 
 void InsetInclude::read(LyXLex & lex)
 {
-	params_.cparams.read(lex);
+	params_.read(lex);
 }
 
 
@@ -273,64 +260,74 @@ string const InsetInclude::getScreenLabel(Buffer const &) const
 
 	temp += ": ";
 
-	if (params_.cparams.getContents().empty())
+	if (params_.getContents().empty())
 		temp += "???";
 	else
-		temp += params_.cparams.getContents();
+		temp += OnlyFilename(params_.getContents());
 
 	return temp;
 }
 
 
-string const InsetInclude::getFileName() const
+namespace {
+
+string const masterFilename(Buffer const & buffer)
 {
-	return MakeAbsPath(params_.cparams.getContents(),
-			   OnlyPath(getMasterFilename()));
+	return buffer.fileName();
 }
 
 
-string const InsetInclude::getMasterFilename() const
+string const includedFilename(Buffer const & buffer,
+			      InsetCommandParams const & params)
 {
-	return params_.masterFilename_;
+	return MakeAbsPath(params.getContents(),
+			   OnlyPath(masterFilename(buffer)));
 }
 
 
-bool InsetInclude::loadIfNeeded() const
+/// return true if the file is or got loaded.
+bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 {
-	if (isVerbatim(params_))
+	if (isVerbatim(params))
 		return false;
 
-	if (!IsLyXFilename(getFileName()))
+	string const included_file = includedFilename(buffer, params);
+	if (!IsLyXFilename(included_file))
 		return false;
 
-	if (bufferlist.exists(getFileName()))
+	if (bufferlist.exists(included_file))
 		return true;
 
 	// the readonly flag can/will be wrong, not anymore I think.
-	FileInfo finfo(getFileName());
+	FileInfo finfo(included_file);
 	if (!finfo.isOK())
 		return false;
-	return loadLyXFile(bufferlist.newBuffer(getFileName()),
-			   getFileName());
+	return loadLyXFile(bufferlist.newBuffer(included_file),
+			   included_file);
 }
+
+
+} // namespace anon
 
 
 int InsetInclude::latex(Buffer const & buffer, ostream & os,
 			LatexRunParams const & runparams) const
 {
-	string incfile(params_.cparams.getContents());
+	string incfile(params_.getContents());
 
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
 		return 0;
 
-	if (loadIfNeeded()) {
-		Buffer * tmp = bufferlist.getBuffer(getFileName());
+	string const included_file = includedFilename(buffer, params_);
+
+	if (loadIfNeeded(buffer, params_)) {
+		Buffer * tmp = bufferlist.getBuffer(included_file);
 
 		// FIXME: this should be a GUI warning
 		if (tmp->params().textclass != buffer.params().textclass) {
 			lyxerr << "WARNING: Included file `"
-			       << MakeDisplayPath(getFileName())
+			       << MakeDisplayPath(included_file)
 			       << "' has textclass `"
 			       << tmp->params().getLyXTextClass().name()
 			       << "' while parent file has textclass `"
@@ -340,7 +337,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		}
 
 		// write it to a file (so far the complete file)
-		string writefile = ChangeExtension(getFileName(), ".tex");
+		string writefile = ChangeExtension(included_file, ".tex");
 
 		if (!buffer.temppath().empty() && !runparams.nice) {
 			incfile = subst(incfile, '/','@');
@@ -349,32 +346,33 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 #endif
 			writefile = AddName(buffer.temppath(), incfile);
 		} else
-			writefile = getFileName();
+			writefile = included_file;
 		writefile = ChangeExtension(writefile, ".tex");
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
 		tmp->markDepClean(buffer.temppath());
 
-		tmp->makeLaTeXFile(writefile, OnlyPath(getMasterFilename()),
+		tmp->makeLaTeXFile(writefile,
+				   OnlyPath(masterFilename(buffer)),
 				   runparams, false);
 	}
 
 	if (isVerbatim(params_)) {
-		os << '\\' << params_.cparams.getCmdName() << '{' << incfile << '}';
+		os << '\\' << params_.getCmdName() << '{' << incfile << '}';
 	} else if (type(params_) == INPUT) {
 		// \input wants file with extension (default is .tex)
-		if (!IsLyXFilename(getFileName())) {
-			os << '\\' << params_.cparams.getCmdName() << '{' << incfile << '}';
+		if (!IsLyXFilename(included_file)) {
+			os << '\\' << params_.getCmdName() << '{' << incfile << '}';
 		} else {
-			os << '\\' << params_.cparams.getCmdName() << '{'
+			os << '\\' << params_.getCmdName() << '{'
 			   << ChangeExtension(incfile, ".tex")
 			   <<  '}';
 		}
 	} else {
 		// \include don't want extension and demands that the
 		// file really have .tex
-		os << '\\' << params_.cparams.getCmdName() << '{'
+		os << '\\' << params_.getCmdName() << '{'
 		   << ChangeExtension(incfile, string())
 		   << '}';
 	}
@@ -383,34 +381,36 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 }
 
 
-int InsetInclude::ascii(Buffer const &, ostream & os, int) const
+int InsetInclude::ascii(Buffer const & buffer, ostream & os, int) const
 {
 	if (isVerbatim(params_))
-		os << GetFileContents(getFileName());
+		os << GetFileContents(includedFilename(buffer, params_));
 	return 0;
 }
 
 
 int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os) const
 {
-	string incfile(params_.cparams.getContents());
+	string incfile(params_.getContents());
 
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
 		return 0;
 
-	if (loadIfNeeded()) {
-		Buffer * tmp = bufferlist.getBuffer(getFileName());
+	string const included_file = includedFilename(buffer, params_);
+
+	if (loadIfNeeded(buffer, params_)) {
+		Buffer * tmp = bufferlist.getBuffer(included_file);
 
 		// write it to a file (so far the complete file)
-		string writefile = ChangeExtension(getFileName(), ".sgml");
+		string writefile = ChangeExtension(included_file, ".sgml");
 		if (!buffer.temppath().empty() && !buffer.niceFile()) {
 			incfile = subst(incfile, '/','@');
 			writefile = AddName(buffer.temppath(), incfile);
 		} else
-			writefile = getFileName();
+			writefile = included_file;
 
-		if (IsLyXFilename(getFileName()))
+		if (IsLyXFilename(included_file))
 			writefile = ChangeExtension(writefile, ".sgml");
 
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
@@ -421,7 +421,7 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os) const
 
 	if (isVerbatim(params_)) {
 		os << "<![CDATA["
-		   << GetFileContents(getFileName())
+		   << GetFileContents(included_file)
 		   << "]]>";
 	} else
 		os << '&' << include_label << ';';
@@ -433,23 +433,25 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os) const
 int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 			  bool /*mixcont*/) const
 {
-	string incfile(params_.cparams.getContents());
+	string incfile(params_.getContents());
 
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
 		return 0;
 
-	if (loadIfNeeded()) {
-		Buffer * tmp = bufferlist.getBuffer(getFileName());
+	string const included_file = includedFilename(buffer, params_);
+
+	if (loadIfNeeded(buffer, params_)) {
+		Buffer * tmp = bufferlist.getBuffer(included_file);
 
 		// write it to a file (so far the complete file)
-		string writefile = ChangeExtension(getFileName(), ".sgml");
+		string writefile = ChangeExtension(included_file, ".sgml");
 		if (!buffer.temppath().empty() && !buffer.niceFile()) {
 			incfile = subst(incfile, '/','@');
 			writefile = AddName(buffer.temppath(), incfile);
 		} else
-			writefile = getFileName();
-		if (IsLyXFilename(getFileName()))
+			writefile = included_file;
+		if (IsLyXFilename(included_file))
 			writefile = ChangeExtension(writefile, ".sgml");
 
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
@@ -471,18 +473,22 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 
 void InsetInclude::validate(LaTeXFeatures & features) const
 {
-	string incfile(params_.cparams.getContents());
+	string incfile(params_.getContents());
 	string writefile;
 
-	Buffer const & b = features.buffer();
+	Buffer const & buffer = features.buffer();
 
-	if (!b.temppath().empty() && !b.niceFile() && !isVerbatim(params_)) {
+	string const included_file = includedFilename(buffer, params_);
+
+	if (!buffer.temppath().empty() &&
+	    !buffer.niceFile() &&
+	    !isVerbatim(params_)) {
 		incfile = subst(incfile, '/','@');
-		writefile = AddName(b.temppath(), incfile);
+		writefile = AddName(buffer.temppath(), incfile);
 	} else
-		writefile = getFileName();
+		writefile = included_file;
 
-	if (IsLyXFilename(getFileName()))
+	if (IsLyXFilename(included_file))
 		writefile = ChangeExtension(writefile, ".sgml");
 
 	features.includeFile(include_label, writefile);
@@ -493,36 +499,39 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	// Here we must do the fun stuff...
 	// Load the file in the include if it needs
 	// to be loaded:
-	if (loadIfNeeded()) {
+	if (loadIfNeeded(buffer, params_)) {
 		// a file got loaded
-		Buffer * const tmp = bufferlist.getBuffer(getFileName());
+		Buffer * const tmp = bufferlist.getBuffer(included_file);
 		if (tmp) {
-			tmp->niceFile() = b.niceFile();
+			tmp->niceFile() = buffer.niceFile();
 			tmp->validate(features);
 		}
 	}
 }
 
 
-void InsetInclude::getLabelList(Buffer const &, std::vector<string> & list) const
+void InsetInclude::getLabelList(Buffer const & buffer,
+				std::vector<string> & list) const
 {
-	if (loadIfNeeded()) {
-		Buffer * tmp = bufferlist.getBuffer(getFileName());
+	if (loadIfNeeded(buffer, params_)) {
+		string const included_file = includedFilename(buffer, params_);
+		Buffer * tmp = bufferlist.getBuffer(included_file);
 		tmp->setParentName("");
 		tmp->getLabelList(list);
-		tmp->setParentName(getMasterFilename());
+		tmp->setParentName(masterFilename(buffer));
 	}
 }
 
 
-void InsetInclude::fillWithBibKeys(Buffer const &,
+void InsetInclude::fillWithBibKeys(Buffer const & buffer,
 				   std::vector<std::pair<string,string> > & keys) const
 {
-	if (loadIfNeeded()) {
-		Buffer * tmp = bufferlist.getBuffer(getFileName());
+	if (loadIfNeeded(buffer, params_)) {
+		string const included_file = includedFilename(buffer, params_);
+		Buffer * tmp = bufferlist.getBuffer(included_file);
 		tmp->setParentName("");
 		tmp->fillWithBibKeys(keys);
-		tmp->setParentName(getMasterFilename());
+		tmp->setParentName(masterFilename(buffer));
 	}
 }
 
@@ -559,8 +568,11 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 		return;
 	}
 
-	if (!preview_->monitoring())
-		preview_->startMonitoring();
+	if (!preview_->monitoring()) {
+		string const included_file =
+			includedFilename(*view()->buffer(), params_);
+		preview_->startMonitoring(included_file);
+	}
 
 	pi.pain.image(x + button_.box().x1, y - dim_.asc, dim_.wid, dim_.height(),
 			    *(preview_->pimage()->image()));
@@ -583,11 +595,13 @@ void InsetInclude::addPreview(lyx::graphics::PreviewLoader & ploader) const
 }
 
 
-bool InsetInclude::PreviewImpl::previewWanted() const
+bool InsetInclude::PreviewImpl::previewWanted(Buffer const & buffer) const
 {
+	string const included_file = includedFilename(buffer, parent().params());
+
 	return type(parent().params_) == INPUT &&
-		parent().params_.cparams.preview() &&
-		IsFileReadable(parent().getFileName());
+		parent().params_.preview() &&
+		IsFileReadable(included_file);
 }
 
 
@@ -602,9 +616,9 @@ string const InsetInclude::PreviewImpl::latexString(Buffer const & buffer) const
 }
 
 
-void InsetInclude::PreviewImpl::startMonitoring()
+void InsetInclude::PreviewImpl::startMonitoring(string const & file)
 {
-	monitor_.reset(new FileMonitor(parent().getFileName(), 2000));
+	monitor_.reset(new FileMonitor(file, 2000));
 	monitor_->connect(boost::bind(&PreviewImpl::restartLoading, this));
 	monitor_->start();
 }
@@ -613,9 +627,11 @@ void InsetInclude::PreviewImpl::startMonitoring()
 void InsetInclude::PreviewImpl::restartLoading()
 {
 	removePreview();
-	if (view())
-		view()->updateInset(&parent());
-	generatePreview();
+	if (!view())
+		return;
+	view()->updateInset(&parent());
+	if (view()->buffer())
+		generatePreview(*view()->buffer());
 }
 
 
@@ -633,9 +649,9 @@ string const InsetIncludeMailer::inset2string(Buffer const &) const
 
 
 void InsetIncludeMailer::string2params(string const & in,
-				       InsetInclude::Params & params)
+				       InsetCommandParams & params)
 {
-	params = InsetInclude::Params();
+	params = InsetCommandParams();
 
 	if (in.empty())
 		return;
@@ -669,10 +685,9 @@ void InsetIncludeMailer::string2params(string const & in,
 
 
 string const
-InsetIncludeMailer::params2string(InsetInclude::Params const & params)
+InsetIncludeMailer::params2string(InsetCommandParams const & params)
 {
 	InsetInclude inset(params);
-	inset.set(params);
 	ostringstream data;
 	data << name_ << ' ';
 	inset.write(data);

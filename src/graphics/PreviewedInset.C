@@ -46,14 +46,13 @@ BufferView * PreviewedInset::view() const
 }
 
 
-void PreviewedInset::generatePreview()
+void PreviewedInset::generatePreview(Buffer const & buffer)
 {
-	if (!Previews::activated() || !previewWanted() ||
-	    !view() || !view()->buffer())
+	if (!Previews::activated() || !previewWanted(buffer))
 		return;
 
 	Previews & previews = Previews::get();
-	PreviewLoader & loader = previews.loader(*view()->buffer());
+	PreviewLoader & loader = previews.loader(buffer);
 	addPreview(loader);
 	if (!snippet_.empty())
 		loader.startLoading();
@@ -62,7 +61,7 @@ void PreviewedInset::generatePreview()
 
 void PreviewedInset::addPreview(PreviewLoader & ploader)
 {
-	if (!Previews::activated() || !previewWanted())
+	if (!Previews::activated() || !previewWanted(ploader.buffer()))
 		return;
 
 	snippet_ = support::trim(latexString(ploader.buffer()));
@@ -100,8 +99,10 @@ void PreviewedInset::removePreview()
 
 bool PreviewedInset::previewReady() const
 {
-	if (!Previews::activated() || !previewWanted() ||
-	    !view() || !view()->buffer())
+	if (!Previews::activated() || !view() || !view()->buffer())
+		return false;
+
+	if (!previewWanted(*view()->buffer()))
 		return false;
 
 	if (!pimage_ || snippet_ != pimage_->snippet()) {

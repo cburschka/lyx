@@ -79,9 +79,9 @@ void FormInclude::build()
 
 void FormInclude::update()
 {
-	string const filename = controller().params().cparams.getContents();
-	string const cmdname = controller().params().cparams.getCmdName();
-	bool const preview = static_cast<bool>((controller().params().cparams.preview()));
+	string const filename = controller().params().getContents();
+	string const cmdname = controller().params().getCmdName();
+	bool const preview = static_cast<bool>((controller().params().preview()));
 
 	fl_set_input(dialog_->input_filename, filename.c_str());
 
@@ -114,21 +114,21 @@ void FormInclude::update()
 
 void FormInclude::apply()
 {
-	InsetInclude::Params params = controller().params();
+	InsetCommandParams params = controller().params();
 
-	params.cparams.preview(fl_get_button(dialog_->check_preview));
-	params.cparams.setContents(getString(dialog_->input_filename));
+	params.preview(fl_get_button(dialog_->check_preview));
+	params.setContents(getString(dialog_->input_filename));
 
 	ControlInclude::Type const type = ControlInclude::Type(type_.get());
 	if (type == ControlInclude::INPUT)
-		params.cparams.setCmdName("input");
+		params.setCmdName("input");
 	else if (type == ControlInclude::INCLUDE)
-		params.cparams.setCmdName("include");
+		params.setCmdName("include");
 	else if (type == ControlInclude::VERBATIM) {
 		if (fl_get_button(dialog_->check_visiblespace))
-			params.cparams.setCmdName("verbatiminput*");
+			params.setCmdName("verbatiminput*");
 		else
-			params.cparams.setCmdName("verbatiminput");
+			params.setCmdName("verbatiminput");
 	}
 
 	controller().setParams(params);
