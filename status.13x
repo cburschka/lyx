@@ -52,7 +52,7 @@ What's new
 
 - when inserting a float or a note over a selection, make sure that
   the insets and font changes in the selection are correctly kept
-  [note however that doing this now modifies the clipboard]
+  (note however that doing this now modifies the clipboard)
 
 - work around a Qt 3.1.2 bug with the environment combo box [bug #1136]
 
@@ -62,7 +62,13 @@ What's new
 - do not write in preference file the colors which are still at their
   default value [bug #1069, Qt only]
 
-- fix the math panel symbols for Qt 3.2.0
+- fix the math panel symbols [Qt 3.2.0 only]
+
+- do not reset natbib style when adding a new entry to a citation [Qt
+  only]
+
+- allow insertion of width strings like "2.5in" into tabular dialog
+  [Qt only]
 
 - fix some cases where the View>TeX information dialog would get
   confused because the same file gets listed several times
@@ -81,8 +87,4 @@ What's new
 
 - fix compilation on HP-UX 11.x
 
-- do not reset natbib style when adding a new entry to a citation (Qt only)
-
-- allow insertion of width strings like "2.5in" into tabular dialog (Qt only)
-
-- Do not report failed inlining when compiling with gcc.
+- do not report failed inlining when compiling with gcc
