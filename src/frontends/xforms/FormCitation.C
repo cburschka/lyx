@@ -37,7 +37,7 @@ using std::find;
 static int min_wform;
 
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Citation"), HIDE), dialog_(0)
+	: FormCommand(lv, d, _("Citation")), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -60,11 +60,13 @@ FL_FORM * FormCitation::form() const
 }
 
 
-void FormCitation::clearStore()
+void FormCitation::disconnect()
 {
 	citekeys.clear();
 	bibkeys.clear();
 	bibkeysInfo.clear();
+
+	FormCommand::disconnect();
 }
 
 
@@ -75,8 +77,13 @@ void FormCitation::build()
 }
 
 
-void FormCitation::update()
+void FormCitation::update(bool switched)
 {
+	if (switched) {
+		hide();
+		return;
+	}
+
 	bibkeys.clear();
 	bibkeysInfo.clear();
 

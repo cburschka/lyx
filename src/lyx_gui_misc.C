@@ -143,7 +143,7 @@ void CloseAllBufferRelatedDialogs()
 
 // This is another function we really don't want.
 // Again the Signal/Slot mechanism is tailor made for this task.
-void updateAllVisibleBufferRelatedDialogs()
+void updateAllVisibleBufferRelatedDialogs(bool)
 {
 	if (fd_form_preamble->form_preamble->visible) {
 		UpdateLayoutPreamble();

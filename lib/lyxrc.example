@@ -583,8 +583,8 @@
 #\kbmap true
 #\kbmap_primary null
 #\kbmap_secondary hebrew
-#\converter tex dvi elatex
-#\converter tex pdf pdfelatex
+#\converter tex dvi elatex ""
+#\converter tex pdf pdfelatex ""
 #\font_encoding default
 
 # You also need to bind a key for switching between Hebrew and English.

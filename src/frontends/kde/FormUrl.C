@@ -63,8 +63,14 @@ void FormUrl::createUrl(string const & arg)
 	show();
 }
  
-void FormUrl::update()
+void FormUrl::update(bool switched)
 {
+	if (switched) {
+		// I suspect a buffer switch should cause hide() here. ARRae
+		hide();
+		return;
+	}
+
 	dialog_->url->setText(params.getContents().c_str());
 	dialog_->urlname->setText(params.getOptions().c_str());
 

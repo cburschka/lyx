@@ -190,7 +190,8 @@ void FormToc::set_depth(int newdepth)
 		updateToc(newdepth);
 }
 
-void FormToc::update()
+// we can safely ignore the parameter because we can always update
+void FormToc::update(bool)
 {
 	if (params.getCmdName()=="tableofcontents") {
 		setType(Buffer::TOC_TOC);

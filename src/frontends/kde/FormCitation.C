@@ -109,7 +109,9 @@ void FormCitation::updateAvailableList()
 	dialog_->keys->update();
 }
  
-void FormCitation::update()
+
+// we can safely ignore the parameter because we can always update
+void FormCitation::update(bool)
 {
 	keys.clear();
  

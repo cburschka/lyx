@@ -34,7 +34,7 @@ static int formw;
 static int formh;
 
 FormRef::FormRef(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Reference"), HIDE), toggle(GOBACK), dialog_(0)
+	: FormCommand(lv, d, _("Reference")), toggle(GOBACK), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -57,9 +57,10 @@ FL_FORM * FormRef::form() const
 }
 
 
-void FormRef::clearStore()
+void FormRef::disconnect()
 {
 	refs.clear();
+	FormCommand::disconnect();
 }
 
 
@@ -90,8 +91,13 @@ void FormRef::build()
 }
 
 
-void FormRef::update()
+void FormRef::update(bool switched)
 {
+	if (switched) {
+		hide();
+		return;
+	}
+
 	fl_set_input(dialog_->ref,  params.getContents().c_str());
 	fl_set_input(dialog_->name, params.getOptions().c_str());
 
@@ -272,7 +278,8 @@ bool FormRef::input( FL_OBJECT *, long data )
 		case GOBACK:
 		{
 			lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
-			fl_set_object_label(dialog_->button_go, _("Goto reference"));
+			fl_set_object_label(dialog_->button_go,
+					    _("Goto reference"));
 		}
 		break;
 
@@ -316,7 +323,8 @@ bool FormRef::input( FL_OBJECT *, long data )
 	// changed reference type
 	case 4:
 	{
-		Type type = static_cast<Type>( fl_get_choice(dialog_->type)-1 );
+		Type type = static_cast<Type>( 
+			fl_get_choice(dialog_->type) - 1 );
 		if ( params.getCmdName() == getName( type )
 		    && inset_ ) {
 			activate = false;

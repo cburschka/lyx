@@ -25,8 +25,9 @@ struct FD_form_paragraph_general;
 struct FD_form_paragraph_extra;
 
 /** This class provides an XForms implementation of the FormParagraph Popup.
+ *           @author Jürgen Vigna
  */
-class FormParagraph : public FormBase {
+class FormParagraph : public FormBaseBD {
 public:
 	///
 	FormParagraph(LyXView *, Dialogs *);
@@ -35,11 +36,11 @@ public:
 
 private:
 	/// Build the popup
-	void build();
+	virtual void build();
 	/// Apply from popup
-	void apply();
+	virtual void apply();
 	/// Update the popup.
-	void update();
+	virtual void update(bool);
 	/// Filter the inputs on callback from xforms
 	virtual bool input(FL_OBJECT * ob, long);
 

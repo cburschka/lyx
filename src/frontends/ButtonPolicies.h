@@ -38,6 +38,7 @@
     NoRepeatedApply		|	N  |	Y	  |	N
     NoRepeatedApplyReadOnly	|	Y  |	Y	  |	N
     Preferences			|	N  |	Y	  | No (Ok-Close)
+    Ignorant			|      N/A |	N/A	  |    N/A
     ========================================================================
 
     Policy
@@ -61,6 +62,8 @@
 	has its own special version of repeated apply handling because its Ok
 	button is actually a Save button -- its always reasonable to Save the
 	preferences if the dialog has changed since the last save.
+
+    The IgnorantPolicy is a special case that allows anything.
  */
 class ButtonPolicy : public noncopyable {
 public:
@@ -415,6 +418,29 @@ private:
 	StateOutputs outputs_;
 	///
 	StateMachine state_machine_;
+};
+
+
+/** Defines the policy used by dialogs that are forced to support a button
+    controller when they either don't have a use for one or are not ready to
+    use one.  This may be useful when testing a new button policy but wishing
+    to minimise problems to users by supplying an anything-goes policy via a
+    preprocessor directive.
+ */
+class IgnorantPolicy : public ButtonPolicy {
+public:
+	virtual ~IgnorantPolicy() {}
+	
+	/// Trigger a transition with this input.
+	virtual void input(SMInput) {}
+	/// Activation status of a button.
+	virtual bool buttonStatus(Button) const {
+		return true;
+	}
+	/// Are we in a read-only state?
+	virtual bool isReadOnly() const {
+		return false;
+	}
 };
 
 #endif

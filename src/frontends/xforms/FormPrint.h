@@ -31,7 +31,7 @@ struct FD_form_print;
 /** This class provides an XForms implementation of the FormPrint Dialog.
     The print dialog allows users to print their documents.
  */
-class FormPrint : public FormBase {
+class FormPrint : public FormBaseBD {
 public:
 	/// #FormPrint x(LyXView ..., Dialogs ...);#
 	FormPrint(LyXView *, Dialogs *);
@@ -40,7 +40,7 @@ public:
 
 private:
 	/// Update the dialog.
-	virtual void update();
+	virtual void update(bool switched = false);
 	/// Apply from dialog
 	virtual void apply();
 	/// Filter the inputs

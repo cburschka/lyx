@@ -7,8 +7,6 @@
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2000 The LyX Team.
  *
- *	    This file copyright 1999-2000
- *	    Allan Rae
  *======================================================*/
 /* FormTabular.h
  * FormTabular Interface Class
@@ -70,7 +68,7 @@ private:
     ///
     void hideInset(InsetTabular *);
     /// Update the dialog.
-    void update();
+    void update(bool = false);
     ///
     void updateInset(InsetTabular *);
     ///

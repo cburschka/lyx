@@ -45,7 +45,7 @@ private:
 	/// Hide the dialog.
 	void hide();
 	/// Update the dialog.
-	void update();
+	void update(bool = false);
 
 	/// create an Index inset
 	void createIndex(string const &);

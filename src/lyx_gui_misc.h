@@ -33,7 +33,7 @@ extern "C" int IgnoreCloseBoxCB(FL_FORM *, void *);
 void CloseAllBufferRelatedDialogs();
 
 /// Ensures info in visible popups are always correct.
-void updateAllVisibleBufferRelatedDialogs();
+void updateAllVisibleBufferRelatedDialogs(bool switched = false);
 
 /* These shortcut extractors should be shifted to frontends/xforms/ eventually */
 

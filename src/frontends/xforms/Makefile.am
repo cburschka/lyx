@@ -21,8 +21,6 @@ libxforms_la_SOURCES = \
 	FormCitation.h \
 	form_citation.C \
 	form_citation.h \
-	FormCommand.C \
-	FormCommand.h \
 	FormCopyright.C \
 	FormCopyright.h \
 	form_copyright.C \
@@ -43,6 +41,8 @@ libxforms_la_SOURCES = \
 	FormIndex.h \
 	form_index.C \
 	form_index.h \
+	FormInset.C \
+	FormInset.h \
 	FormParagraph.C \
 	FormParagraph.h \
 	form_paragraph.C \

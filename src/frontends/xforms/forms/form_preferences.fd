@@ -510,7 +510,7 @@ argument: 0
 Name: form_interface
 Width: 450
 Height: 320
-Number of Objects: 8
+Number of Objects: 9
 
 --------------------
 class: FL_BOX
@@ -533,7 +533,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 230 50 200 30
+box: 230 30 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -551,7 +551,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 230 80 200 30
+box: 230 60 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -569,7 +569,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 230 110 200 30
+box: 230 90 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -587,7 +587,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 160 210 190 30
+box: 160 178 190 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -605,7 +605,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 350 210 80 30
+box: 350 178 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -623,7 +623,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 160 180 190 30
+box: 160 148 190 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -641,7 +641,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 350 180 80 30
+box: 350 148 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -655,6 +655,25 @@ gravity: FL_NoGravity FL_NoGravity
 name: button_ui_file_browse
 callback: 
 argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 24 230 310 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Override X-Windows dead-keys|#O
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_override_x_dead_keys
+callback: C_FormBaseInputCB
+argument: 0
+	value: 1
 
 =============== FORM ===============
 Name: form_printer
@@ -1026,7 +1045,7 @@ argument:
 Name: form_paths
 Width: 450
 Height: 320
-Number of Objects: 15
+Number of Objects: 17
 
 --------------------
 class: FL_BOX
@@ -1305,6 +1324,42 @@ name: button_backup_path_browse
 callback: 
 argument: 
 
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 169 217 170 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: LyXServer pipe
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_serverpipe
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 339 217 90 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Browse...
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_serverpipe_browse
+callback: 
+argument: 
+
 =============== FORM ===============
 Name: form_preferences
 Width: 470
@@ -1499,14 +1554,14 @@ argument:
 
 =============== FORM ===============
 Name: form_outputs_general
-Width: 450
-Height: 320
+Width: 455
+Height: 345
 Number of Objects: 2
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 450 320
+box: 0 0 455 345
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

@@ -16,7 +16,7 @@
 #pragma interface
 #endif
 
-#include "FormCommand.h"
+#include "FormInset.h"
 struct FD_form_citation;
 
 /** This class provides an XForms implementation of the FormCitation Dialog.
@@ -47,16 +47,17 @@ private:
 		///
 		OFF
 	};
+	/// Disconnect signals. Also perform any necessary housekeeping.
+	virtual void disconnect();
+
 	/// Build the dialog
 	virtual void build();
 	/// Filter the inputs
 	virtual bool input( FL_OBJECT *, long );
 	/// Update dialog before showing it
-	virtual void update();
+	virtual void update(bool switched = false);
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();
-	/// delete derived class variables from hide()
-	virtual void clearStore();
 	/// Pointer to the actual instantiation of the xform's form
 	virtual FL_FORM * form() const;
 

@@ -27,34 +27,17 @@ class LyXView;
 #pragma interface
 #endif
 
-/** This class is an XForms GUI base class
+/** This class is an XForms GUI base class.
+    It is meant to be used solely as the parent class to FormBaseBI and FormBaseBD
     @author Angus Leeming
  */
 class FormBase : public DialogBase, public noncopyable {
 public:
-	///
-	enum BufferDependency {
-		///
-		BUFFER_DEPENDENT,
-		///
-		BUFFER_INDEPENDENT
-	};
-	///
-	enum ChangedBufferAction {
-		///
-		UPDATE,
-		///
-		HIDE
-	};
-
 	/** Constructor.
 	    #FormBase(lv, d, _("DialogName"), BUFFER_DEPENDENT, new ButtonPolicy)#
 	 */
 	FormBase(LyXView *, Dialogs *, string const &,
-		 BufferDependency, ChangedBufferAction,
-		 ButtonPolicy * bp = new OkApplyCancelReadOnlyPolicy,
-		 char const * close = N_("Close"),
-		 char const * cancel = N_("Cancel"));
+		 ButtonPolicy *, char const *, char const *);
 	///
 	virtual ~FormBase();
 
@@ -76,10 +59,12 @@ protected: // methods
 	void show();
 	/// Hide the dialog.
 	virtual void hide();
-	/// Connect signals
-	virtual void connect();
-	/// Disconnect signals
-	virtual void disconnect();
+	/// bool indicates if a buffer switch took place
+	virtual void update(bool = false) {}
+	/// Connect signals. Also perform any necessary initialisation.
+	virtual void connect() = 0;
+	/// Disconnect signals. Also perform any necessary housekeeping.
+	virtual void disconnect() = 0;
 	/// Build the dialog
 	virtual void build() = 0;
 	/** Filter the inputs on callback from xforms
@@ -88,8 +73,6 @@ protected: // methods
 	virtual bool input( FL_OBJECT *, long ) {
 		return true;
 	}
-	/// Update dialog before showing it
-	virtual void update() {}
 	/// Apply from dialog (modify or create inset)
 	virtual void apply() {}
 	/// OK from dialog
@@ -105,18 +88,10 @@ protected: // methods
 	virtual void restore() {
 		update();
 	}
-	/// delete derived class variables when hide()ing
-	virtual void clearStore() {}
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const = 0;
 
-private: // methods
-	/// method connected to updateBufferDependent signal.
-	void updateOrHide();
-
 protected: // data
-	/// block opening of form twice at the same time.
-	bool dialogIsOpen;
 	/** Which LyXFunc do we use?
 	    We could modify Dialogs to have a visible LyXFunc* instead and
 	    save a couple of bytes per dialog.
@@ -124,18 +99,8 @@ protected: // data
 	LyXView * lv_;
 	/// Useable even in derived-class's const functions.
 	mutable ButtonController bc_;
-
-private: // data
 	/// Used so we can get at the signals we have to connect to.
 	Dialogs * d_;
-	/// flag whether dialog is buffer dependent or not.
-	BufferDependency const bd_;
-	/// flag whether to hide or update on updateBufferDependent signal.
-	ChangedBufferAction const cba_;
-	/// stores parent buffer when popup was launched.
-	Buffer * parent_;
-	/// Update connection.
-	Connection u_;
 	/// Hide connection.
 	Connection h_;
 	/// dialog title, displayed by WM.
@@ -143,5 +108,47 @@ private: // data
 	///
 	ButtonPolicy * bp_;
 };
+
+
+/** This class is an XForms GUI base class for Buffer Independent dialogs.
+    Such dialogs do not require an update Connection although they may use
+    an update() function which is also supported by restore().
+ */
+class FormBaseBI : public FormBase {
+public:
+	/// Constructor
+	FormBaseBI(LyXView *, Dialogs *, string const &,
+		   ButtonPolicy * bp = new OkApplyCancelPolicy,
+		   char const * close = N_("Close"),
+		   char const * cancel = N_("Cancel"));
+
+protected:
+	/// Connect signals
+	virtual void connect();
+	/// Disconnect signals
+	virtual void disconnect();
+};
+
+
+/** This class is an XForms GUI base class for Buffer Dependent dialogs
+ */
+class FormBaseBD : public FormBase {
+public:
+	/// Constructor
+	FormBaseBD(LyXView *, Dialogs *, string const &,
+		   ButtonPolicy * bp = new OkApplyCancelReadOnlyPolicy,
+		   char const * close = N_("Close"),
+		   char const * cancel = N_("Cancel"));
+
+protected:
+	/// Connect signals
+	virtual void connect();
+	/// Disconnect signals
+	virtual void disconnect();
+
+	/// Update connection.
+	Connection u_;
+};
+
 
 #endif

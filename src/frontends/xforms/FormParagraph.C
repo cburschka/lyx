@@ -30,8 +30,8 @@ using Liason::setMinibuffer;
 #endif
 
 FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
-	: FormBase(lv, d, _("Paragraph Layout"), BUFFER_DEPENDENT, UPDATE,
-		   new NoRepeatedApplyReadOnlyPolicy),
+	: FormBaseBD(lv, d, _("Paragraph Layout"),
+		     new NoRepeatedApplyReadOnlyPolicy),
 	dialog_(0), general_(0), extra_(0)
 {
     // let the popup be shown
@@ -88,6 +88,8 @@ void FormParagraph::build()
     bc_.addReadOnly (general_->radio_align_center);
     bc_.addReadOnly (general_->check_lines_top);
     bc_.addReadOnly (general_->check_lines_bottom);
+    bc_.addReadOnly (general_->check_pagebreaks_top);
+    bc_.addReadOnly (general_->check_pagebreaks_bottom);
     bc_.addReadOnly (general_->choice_space_above);
     bc_.addReadOnly (general_->input_space_above);
     bc_.addReadOnly (general_->check_space_above);
@@ -106,6 +108,8 @@ void FormParagraph::build()
     bc_.addReadOnly (extra_->radio_pextra_indent);
     bc_.addReadOnly (extra_->radio_pextra_minipage);
     bc_.addReadOnly (extra_->radio_pextra_floatflt);
+    bc_.addReadOnly (extra_->radio_pextra_hfill);
+    bc_.addReadOnly (extra_->radio_pextra_startmp);
 
     // now make them fit together
     fl_addto_tabfolder(dialog_->tabbed_folder,_("General"), general_->form);
@@ -128,13 +132,15 @@ void FormParagraph::apply()
 }
 
 
-void FormParagraph::update()
+// we can safely ignore the parameter because we can always update
+void FormParagraph::update(bool)
 {
     if (!dialog_)
         return;
 
     general_update();
     extra_update();
+    bc_.readOnly(lv_->buffer()->isReadonly());
 }
 
 
@@ -183,7 +189,8 @@ void FormParagraph::general_apply()
 	space_top = VSpace(VSpace::VFILL);
 	break;
     case 7:
-	space_top = VSpace(LyXGlueLength(fl_get_input(general_->input_space_above)));
+	space_top =
+		VSpace(LyXGlueLength(fl_get_input(general_->input_space_above)));
 	break;
     }
     if (fl_get_button (general_->check_space_above))
@@ -208,7 +215,8 @@ void FormParagraph::general_apply()
 	space_bottom = VSpace(VSpace::VFILL);
 	break;
     case 7:
-	space_bottom = VSpace(LyXGlueLength(fl_get_input(general_->input_space_below)));
+	space_bottom =
+		VSpace(LyXGlueLength(fl_get_input(general_->input_space_below)));
 	break;
     }
     if (fl_get_button (general_->check_space_below))

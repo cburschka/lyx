@@ -26,7 +26,7 @@
 #include "lyxfunc.h"
 
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Url"), HIDE), minh(0), minw(0), dialog_(0)
+	: FormCommand(lv, d, _("Url")), minh(0), minw(0), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -53,14 +53,23 @@ void FormUrl::build()
 {
 	dialog_ = build_url();
 
+#ifdef WITH_WARNINGS
+#warning use the buttoncontroller
+#endif
 	// XFORMS bug workaround
 	// Define the min/max dimensions. Actually applied in update()
-	minw = form()->w; minh = form()->h;
+	minw = form()->w;
+	minh = form()->h;
 }
 
 
-void FormUrl::update()
+void FormUrl::update(bool switched)
 {
+	if (switched) {
+		hide();
+		return;
+	}
+
 	fl_set_form_minsize(form(), minw, minh);
 	fl_set_form_maxsize(form(), 2*minw, minh);
 

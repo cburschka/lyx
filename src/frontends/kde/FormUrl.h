@@ -45,7 +45,7 @@ private:
 	/// Hide the dialog.
 	void hide();
 	/// Update the dialog.
-	void update();
+	void update(bool switched = false);
 
 	/// create a URL inset
 	void createUrl(string const &);

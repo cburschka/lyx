@@ -150,8 +150,13 @@ void FormUrl::show()
     }
 }
 
-void FormUrl::update()
+void FormUrl::update(bool switched)
 {
+  if (switched) {
+      hide();
+      return;
+  }
+
   if (dialog_ != NULL &&
       lv_->view()->available())
     {

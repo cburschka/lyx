@@ -70,6 +70,7 @@ struct FD_form_interface {
 	FL_OBJECT *button_bind_file_browse;
 	FL_OBJECT *input_ui_file;
 	FL_OBJECT *button_ui_file_browse;
+	FL_OBJECT *check_override_x_dead_keys;
 };
 struct FD_form_printer {
 	~FD_form_printer();
@@ -112,6 +113,8 @@ struct FD_form_paths {
 	FL_OBJECT *check_make_backups;
 	FL_OBJECT *input_backup_path;
 	FL_OBJECT *button_backup_path_browse;
+	FL_OBJECT *input_serverpipe;
+	FL_OBJECT *button_serverpipe_browse;
 };
 struct FD_form_preferences {
 	~FD_form_preferences();

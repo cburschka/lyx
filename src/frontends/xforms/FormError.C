@@ -23,8 +23,8 @@
 static int minh, minw;
 
 FormError::FormError( LyXView * lv, Dialogs * d )
-	: FormBase( lv, d, _("LaTeX Error"), BUFFER_DEPENDENT, HIDE ),
-	  dialog_(0), ih_(0), message_("")
+	: FormInset( lv, d, _("LaTeX Error") ),
+	  dialog_(0), inset_(0), message_("")
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -46,26 +46,35 @@ FL_FORM * FormError::form() const
 }
 
 
-void FormError::clearStore()
+void FormError::disconnect()
 {
-	ih_.disconnect();
+	inset_ = 0;
 	message_.empty();
+	FormInset::disconnect();
 }
 
 
 void FormError::showInset( InsetError * inset )
 {
-	if ( dialogIsOpen || inset == 0 ) return;
+	if (inset == 0) return;
 
-	ih_ = inset->hide.connect(slot(this, &FormError::hide));
+	// If connected to another inset, disconnect from it.
+	if (inset_)
+		ih_.disconnect();
 
-	message_ = inset->getContents();
+	inset_    = inset;
+	message_  = inset->getContents();
 	show();
 }
 
 
-void FormError::update()
+void FormError::update(bool switched)
 {
+	if (switched) {
+		hide();
+		return;
+	}
+
 	fl_set_form_minsize(form(), minw, minh);
 	fl_set_object_label(dialog_->message, message_.c_str());
 }

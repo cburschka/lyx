@@ -16,28 +16,29 @@
 #pragma interface
 #endif
 
-#include "FormBase.h"
+#include "FormInset.h"
 
 class InsetError;
 struct FD_form_error;
 
 /** This class provides an XForms implementation of the FormError Dialog.
  */
-class FormError : public FormBase {
+class FormError : public FormInset {
 public:
 	/// Constructor
 	FormError(LyXView *, Dialogs *);
 	///
 	~FormError();
 private:
+	/// Disconnect signals. Also perform any necessary housekeeping.
+	virtual void disconnect();
+
 	/// Slot launching dialog to an existing inset
 	void showInset( InsetError * );
 	/// Update dialog before showing it
-	virtual void update();
+	virtual void update(bool switched = false);
 	/// Build the dialog
 	virtual void build();
-	/// Reset data when hide() is called
-	virtual void clearStore();
 	/// Pointer to the actual instantiation of the xform's form
 	virtual FL_FORM * form() const;
 	/// Fdesign generated method
@@ -45,8 +46,8 @@ private:
 
 	/// Real GUI implementation.
 	FD_form_error * dialog_;
-	/// inset::hide connection.
-	Connection ih_;
+	/// pointer to the inset passed through showInset
+	InsetError * inset_;
 	/// the error message
   	string message_;
 };

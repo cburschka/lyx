@@ -1,3 +1,129 @@
+2000-10-12  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/encoding.C (read): Fixed bug that caused an error message at 
+	the end of the file.
+
+	* po/Makefile.in.in: Fixed rule for ext_l10n.h
+
+	* lib/lyxrc.example: Fixed hebrew example.
+
+2000-10-13  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/xforms/FormPreferences.C (input): reworking the checking
+	(build, update, apply): New inputs in various tabfolders
+
+	* src/frontends/xforms/FormToc.C: use new button policy.
+	* src/frontends/ButtonPolicies.h (class IgnorantPolicy): for dialogs that
+	either can't use any existing policy or where it just doesn't care.
+
+	* src/frontends/xforms/FormTabular.h: removed copyright notice that
+	said it was mine.
+
+	* src/lyx_gui_misc.[Ch] (updateAllVisibleBufferRelatedDialogs): added a
+	bool parameter which is ignored.
+
+	* src/buffer.C (setReadonly):
+	* src/BufferView_pimpl.C (buffer): 
+	* src/frontends/kde/FormCopyright.h (update): 
+	* src/frontends/kde/FormCitation.[Ch] (update): 
+	* src/frontends/kde/FormIndex.[Ch] (update): 
+	* src/frontends/kde/FormPrint.[Ch] (update): 
+	* src/frontends/kde/FormRef.[Ch] (update): 
+	* src/frontends/kde/FormToc.[Ch] (update): 
+	* src/frontends/kde/FormUrl.[Ch] (update): 
+	* src/frontends/gnome/FormCopyright.h (update): 
+	* src/frontends/gnome/FormCitation.[Ch] (update): 
+	* src/frontends/gnome/FormError.[Ch] (update): 
+	* src/frontends/gnome/FormIndex.[Ch] (update): 
+	* src/frontends/gnome/FormPrint.[Ch] (update): 
+	* src/frontends/gnome/FormRef.h (update): 
+	* src/frontends/gnome/FormToc.[Ch] (update): 
+	* src/frontends/gnome/FormUrl.[Ch] (update): 
+	* src/frontends/xforms/FormGraphics.[Ch] (update): reflect new changes
+	to updateBufferDependent and DialogBase
+
+	* src/frontends/xforms/FormCitation.[hC]: 
+	* src/frontends/xforms/FormDocument.[hC]: also removed restore()
+	* src/frontends/xforms/FormError.[Ch]: 
+	* src/frontends/xforms/FormGraphics.[Ch]: 
+	* src/frontends/xforms/FormIndex.[Ch]: 
+	* src/frontends/xforms/FormParagraph.[Ch]: also added missing "virtual"s
+	and fixed readOnly handling.
+	* src/frontends/xforms/FormPrint.[Ch]: 
+	* src/frontends/xforms/FormRef.[Ch]: 
+	* src/frontends/xforms/FormTabular.[Ch]:
+	* src/frontends/xforms/FormToc.[Ch]:
+	* src/frontends/xforms/FormUrl.[Ch]: 
+	* src/frontends/xforms/FormInset.[Ch]:
+	* src/frontends/xforms/FormBase.[hC]: modifications to use the new
+	form of updateBufferDependent.
+
+	* src/frontends/xforms/FormBase.C (hide): only call disconnect()
+	if form()->visible just in case someone does stuff to the form in a
+	derived class.
+
+	* src/frontends/DialogBase.h (enum): removed enum since we can now use
+	the buttoncontroller for everything the enum used to be used for.
+	(update) It would seem we need to force all dialogs to use a bool
+	parameter or have two update functions.  I chose to go with one.
+	I did try removing update() from here and FormBase and defining the
+	appropriate update signatures in FormBaseB[DI] but then ran into the
+	problem of the update() call in FormBase::show().  Whatever I did to get
+	around that would require another function and that just got more
+	confusing.  Hence the decision to make everyone have an update(bool).
+	An alternative might have been to override show() in FormBaseB[DI] and
+	that would allow the different and appropriate update signatures.
+
+	* src/frontends/Dialogs.h (updateBufferDependent): now takes a bool.
+	true == buffer change occurred.  I decided against using a default
+	template parameter since not all compilers support that at present.
+
+2000-10-11  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/FormBase.[Ch] (FormBase) : made less of a "swiss
+	army knife" by removing functionality.
+	(clearStore): removed. All such housekeeping on hide()ing the dialog
+	is to be carried out by overloaded disconnect() methods.
+	(dialogIsOpen): removed. Relevant only to Inset dialogs anyway, but
+	superceded by Baruch's neat test (FormGraphics) to update an existing
+	dialog if a new signal is recieved rather than block all new signals
+	until it is closed.
+	(cba_, parent_, updateOrHide): removed to new FormInset class. Relevant
+	only to Inset dialogs.
+	(FormBaseBI, FormBaseBD): new classes derived from FormBase for
+	"Buffer Independent" and "Buffer Dependent" dialogs respectively.
+
+	* src/frontends/xforms/FormCommand.[Ch]: renamed as FormInset.[Ch]
+
+	* src/frontends/xforms/FormInset.[Ch] (FormInset): New class, defined
+	as a base class to all inset dialogs. Used solely to connect/disconnect
+	the Inset::hide signal and to define what action to take on receipt of
+	a UpdateBufferDependent signal.
+	(FormCommand): now derived from FormInset.
+
+	* src/frontends/xforms/FormCitation.[Ch] (clearStore): reworked as
+	disconnect().
+
+	* src/frontends/xforms/FormCopyright.[Ch]:
+	* src/frontends/xforms/FormPreferences.[Ch]:
+	now derived from FormBaseBI.
+
+	* src/frontends/xforms/FormDocument.[Ch]:
+	* src/frontends/xforms/FormParagraph.[Ch]:
+	* src/frontends/xforms/FormPrint.[Ch]:
+	now derived from FormBaseBD.
+
+	* src/frontends/xforms/FormError.[Ch]: now derived from FormInset.
+
+	* src/frontends/xforms/FormCitation.[Ch]:
+	* src/frontends/xforms/FormError.[Ch]:
+	* src/frontends/xforms/FormRef.[Ch]:
+	* src/frontends/xforms/FormToc.[Ch]:
+	(clearStore): reworked as disconnect().
+
+	* src/frontends/xforms/Makefile.am: removed FormCommand.[Ch], adding
+	FormInset.[Ch].
+
 2000-10-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/converter.C (runLaTeX): constify buffer argument

@@ -52,7 +52,8 @@ FormPrint::~FormPrint()
 	delete dialog_;
 }
 
-void FormPrint::update()
+// we can safely ignore the parameter because we can always update
+void FormPrint::update(bool)
 {
 	if (!lv_->view()->available())
 	       return;

@@ -27,7 +27,7 @@ struct FD_form_copyright;
 
 /** This class provides an XForms implementation of the FormCopyright Dialog.
  */
-class FormCopyright : public FormBase {
+class FormCopyright : public FormBaseBI {
 public:
 	/// #FormCopyright x(LyXFunc ..., Dialogs ...);#
 	FormCopyright(LyXView *, Dialogs *);

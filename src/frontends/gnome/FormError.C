@@ -102,7 +102,7 @@ void FormError::show()
     }
 }
       
-void FormError::update()
+void FormError::update(bool)
 {
 }
 

@@ -288,8 +288,17 @@ void FormGraphics::apply()
 	lv_->view()->updateInset(inset_, changed);
 }
 
-void FormGraphics::update()
+
+// it doesn't look this is capable of updating on a buffer switch
+// inset_ would be accessible but it's not in the new buffer so
+// ok or apply will call something that won't like it. ARRae.
+void FormGraphics::update(bool switched)
 {
+	if (switched) {
+		hide();
+		return;
+	}
+
 	Assert(inset_ != 0);
 
 	// Update dialog with details from inset

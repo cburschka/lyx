@@ -46,7 +46,7 @@ private:
   void showInset( InsetCommand * const );
 
   /// The following three methods do nothing in this implementation
-  virtual void update() { }
+  virtual void update(bool = false) { }
   virtual void apply() { }
   void show() { }
 

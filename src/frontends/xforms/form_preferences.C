@@ -170,27 +170,32 @@ FD_form_interface * FormPreferences::build_interface()
   fdui->form = fl_bgn_form(FL_NO_BOX, 450, 320);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 320, "");
-  fdui->input_popup_font = obj = fl_add_input(FL_NORMAL_INPUT, 230, 50, 200, 30, _("Popup Font"));
+  fdui->input_popup_font = obj = fl_add_input(FL_NORMAL_INPUT, 230, 30, 200, 30, _("Popup Font"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->input_menu_font = obj = fl_add_input(FL_NORMAL_INPUT, 230, 80, 200, 30, _("Menu Font"));
+  fdui->input_menu_font = obj = fl_add_input(FL_NORMAL_INPUT, 230, 60, 200, 30, _("Menu Font"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->input_popup_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 230, 110, 200, 30, _("Popup Encoding"));
+  fdui->input_popup_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 230, 90, 200, 30, _("Popup Encoding"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->input_bind_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 210, 190, 30, idex(_("Bind file|#B")));
+  fdui->input_bind_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 178, 190, 30, idex(_("Bind file|#B")));
     fl_set_button_shortcut(obj, scex(_("Bind file|#B")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->button_bind_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 210, 80, 30, _("Browse..."));
+  fdui->button_bind_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 178, 80, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->input_ui_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 180, 190, 30, idex(_("User Interface file|#U")));
+  fdui->input_ui_file = obj = fl_add_input(FL_NORMAL_INPUT, 160, 148, 190, 30, idex(_("User Interface file|#U")));
     fl_set_button_shortcut(obj, scex(_("User Interface file|#U")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->button_ui_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 180, 80, 30, _("Browse..."));
+  fdui->button_ui_file_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 148, 80, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+  fdui->check_override_x_dead_keys = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 24, 230, 310, 30, idex(_("Override X-Windows dead-keys|#O")));
+    fl_set_button_shortcut(obj, scex(_("Override X-Windows dead-keys|#O")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_button(obj, 1);
   fl_end_form();
 
   fdui->form->fdui = fdui;
@@ -339,6 +344,11 @@ FD_form_paths * FormPreferences::build_paths()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->button_backup_path_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 170, 90, 30, _("Browse..."));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+  fdui->input_serverpipe = obj = fl_add_input(FL_NORMAL_INPUT, 169, 217, 170, 30, _("LyXServer pipe"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->button_serverpipe_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 339, 217, 90, 30, _("Browse..."));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
   fl_end_form();
 
   fdui->form->fdui = fdui;
@@ -427,9 +437,9 @@ FD_form_outputs_general * FormPreferences::build_outputs_general()
   FL_OBJECT *obj;
   FD_form_outputs_general *fdui = new FD_form_outputs_general;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 320);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 455, 345);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 320, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 455, 345, "");
   fdui->counter_line_len = obj = fl_add_counter(FL_SIMPLE_COUNTER, 295, 50, 120, 30, idex(_("Ascii line length|#A")));
     fl_set_button_shortcut(obj, scex(_("Ascii line length|#A")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

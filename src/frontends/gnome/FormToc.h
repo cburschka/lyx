@@ -41,7 +41,7 @@ private:
   void showInset( InsetCommand * const );
   
   /// Update dialog before showing it
-  virtual void update();
+  virtual void update(bool = false);
   /// Explicitly free the dialog.
   void free();
   /// Create the dialog if necessary, update it and display it.

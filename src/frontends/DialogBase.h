@@ -50,19 +50,9 @@ public:
 	virtual void show() = 0;
 	///
 	virtual void hide() = 0;
-	///
-	virtual void update() = 0;
+	/// Parameter defines if a buffer switch occurred
+	virtual void update(bool = false) = 0;
 	//@}
-
-	///
-	enum EnumDialogStatus {
-		///
-		DIALOG_UNMODIFIED,
-		///
-		DIALOG_MODIFIED,
-		///
-		DIALOG_READONLY
-	};
 };
 
 #endif // DIALOGBASE_H

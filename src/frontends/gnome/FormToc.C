@@ -136,7 +136,8 @@ void FormToc::show()
 }
 
 
-void FormToc::update()
+// we can safely ignore the parameter because we can always update
+void FormToc::update(bool)
 {
   Buffer::TocType type;
   string wintitle;

@@ -88,7 +88,7 @@ private:
 	/// Hide the dialog.
 	void hide();
 	/// Update the dialog
-	void update();
+	void update(bool switched = false);
 
 	/// Apply the changes to the inset.
 	void apply();

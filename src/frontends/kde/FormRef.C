@@ -154,8 +154,13 @@ void FormRef::do_ref_update()
 	updateRefs();
 }
 
-void FormRef::update()
+void FormRef::update(bool switched)
 {
+	if (switched) {
+		hide();
+		return;
+	}
+
 	dialog_->reference->setText(params.getContents().c_str());
 	dialog_->refname->setText(params.getOptions().c_str());
 

@@ -16,8 +16,7 @@
 #include "FormCopyright.h"
 
 FormCopyright::FormCopyright( LyXView * lv, Dialogs * d	)
-	: FormBase( lv, d, _("Copyright and Warranty"),
-		    BUFFER_INDEPENDENT, HIDE ),
+	: FormBaseBI( lv, d, _("Copyright and Warranty") ),
 	  dialog_(0)
 {
 	// let the dialog be shown

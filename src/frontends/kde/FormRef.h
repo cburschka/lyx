@@ -43,7 +43,7 @@ public:
 	/// goto a ref (or back)
 	void goto_ref(); 
 	/// update dialog
-	void update(); 
+	void update(bool = false); 
 	/// update just the refs
 	void do_ref_update();
 	/// Apply changes

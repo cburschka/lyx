@@ -38,7 +38,7 @@ struct FD_form_outputs_general;
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.
  */
-class FormPreferences : public FormBase {
+class FormPreferences : public FormBaseBI {
 public:
 	/// #FormPreferences x(LyXFunc ..., Dialogs ...);#
 	FormPreferences(LyXView *, Dialogs *);
@@ -48,7 +48,7 @@ private:
 	///
 	virtual void connect();
 	/// Update the dialog.
-	virtual void update();
+	virtual void update(bool = false);
 	///
 	virtual void hide();
 	/// OK from dialog

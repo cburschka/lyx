@@ -31,10 +31,8 @@ C_GENERICCB(FormBase, RestoreCB)
 
 
 FormBase::FormBase(LyXView * lv, Dialogs * d, string const & t,
-		   BufferDependency bd, ChangedBufferAction cba, 
 		   ButtonPolicy * bp, char const * close, char const * cancel)
-	: dialogIsOpen(false), lv_(lv), bc_(bp, cancel, close),
-	  d_(d), bd_(bd), cba_(cba), parent_(0), u_(0), h_(0), title(t), bp_(bp)
+	: lv_(lv), bc_(bp, cancel, close), d_(d), h_(0), title(t), bp_(bp)
 {}
 
 
@@ -52,13 +50,10 @@ void FormBase::show()
 				    C_FormBaseWMHideCB, 0);
 	}
 
-	parent_ = lv_->buffer();
-	
 	fl_freeze_form( form() );
 	update();  // make sure its up-to-date
 	fl_unfreeze_form( form() );
 
-	dialogIsOpen = true;
 	if (form()->visible) {
 		fl_raise_form(form());
 	} else {
@@ -74,48 +69,11 @@ void FormBase::show()
 void FormBase::hide()
 {
 	if (form() && form()->visible) {
-		fl_hide_form(form());
+		// some dialogs might do things to the form first
+		// such as the nested tabfolder problem in Preferences
 		disconnect();
+		fl_hide_form(form());
 	}
-
-	// free up the dialog for another inset
-	dialogIsOpen = false;
-	parent_ = 0;
-	clearStore();
-}
-
-
-void FormBase::connect()
-{
-	switch( bd_ ) {
-	case BUFFER_DEPENDENT:
-		u_ = d_->updateBufferDependent.
-			connect(slot(this, &FormBase::updateOrHide));
-		h_ = d_->hideBufferDependent.
-			connect(slot(this, &FormBase::hide));
-		break;
-	case BUFFER_INDEPENDENT:
-		h_ = d_->hideAll.connect(slot(this, &FormBase::hide));
-		break;
-	}
-}
-
-
-void FormBase::disconnect()
-{
-	u_.disconnect();
-	h_.disconnect();
-}
-
-
-void FormBase::updateOrHide()
-{
-	if( cba_ == UPDATE )
-		update();
-	else if( parent_ == lv_->buffer() )
-		update();
-	else
-		hide();
 }
 
 
@@ -166,4 +124,47 @@ void FormBase::RestoreCB(FL_OBJECT * ob, long)
 	FormBase * pre = static_cast<FormBase*>(ob->form->u_vdata);
 	pre->restore();
 	pre->bc_.undoAll();
+}
+
+
+FormBaseBI::FormBaseBI(LyXView * lv, Dialogs * d, string const & t,
+		       ButtonPolicy * bp,
+		       char const * close, char const * cancel)
+	: FormBase( lv, d, t, bp, close, cancel )
+{}
+
+
+void FormBaseBI::connect()
+{
+	h_ = d_->hideAll.connect(slot(this, &FormBaseBI::hide));
+}
+
+
+void FormBaseBI::disconnect()
+{
+	h_.disconnect();
+}
+
+
+FormBaseBD::FormBaseBD(LyXView * lv, Dialogs * d, string const & t,
+		       ButtonPolicy * bp,
+		       char const * close, char const * cancel)
+	: FormBase( lv, d, t, bp, close, cancel ),
+	  u_(0)
+{}
+
+
+void FormBaseBD::connect()
+{
+	u_ = d_->updateBufferDependent.
+		 connect(slot(this, &FormBaseBD::update));
+	h_ = d_->hideBufferDependent.
+		 connect(slot(this, &FormBaseBD::hide));
+}
+
+
+void FormBaseBD::disconnect()
+{
+	u_.disconnect();
+	h_.disconnect();
 }

@@ -34,8 +34,7 @@ using Liason::getPrinterParams;
 
 
 FormPrint::FormPrint(LyXView * lv, Dialogs * d)
-	: FormBase(lv, d, _("Print"),
-		   BUFFER_DEPENDENT, HIDE, new OkApplyCancelPolicy),
+	: FormBaseBD(lv, d, _("Print"), new OkApplyCancelPolicy),
 	  dialog_(0), target_(2), order_(2), which_(3)
 {
 	// let the dialog be shown
@@ -110,7 +109,7 @@ void FormPrint::build()
 
 void FormPrint::connect()
 {
-	FormBase::connect();
+	FormBaseBD::connect();
 	fl_set_form_minsize(dialog_->form,
 			    dialog_->form->w,
 			    dialog_->form->h);
@@ -164,7 +163,8 @@ void FormPrint::apply()
 }
 
 
-void FormPrint::update()
+// we can safely ignore the parameter because we can always update
+void FormPrint::update(bool)
 {
 	if (dialog_
 	    && lv_->view()->available()) {

@@ -63,8 +63,13 @@ void FormIndex::createIndex(string const & arg)
 	show();
 }
  
-void FormIndex::update()
+void FormIndex::update(bool switched)
 {
+	if (switched) {
+		hide();
+		return;
+	}
+
 	dialog_->setIndexText(params.getContents().c_str());
 //	dialog_->setReadOnly(readonly);
 }

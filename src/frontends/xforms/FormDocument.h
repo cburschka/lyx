@@ -34,8 +34,9 @@ struct FD_form_doc_bullet;
 
 /** This class provides an XForms implementation of the FormDocument Popup.
     The table-layout-form here changes values for latex-tabulars
+    @author Jürgen Vigna
  */
-class FormDocument : public FormBase {
+class FormDocument : public FormBaseBD {
 public:
 	/// #FormDocument x(Communicator ..., Popups ...);#
 	FormDocument(LyXView *, Dialogs *);
@@ -83,15 +84,11 @@ private:
 	/// Filter the inputs
 	virtual bool input( FL_OBJECT *, long );
 	/// Update the popup.
-	virtual void update();
+	virtual void update(bool switched = false);
 	/// Apply from popup
 	virtual void apply();
 	/// Cancel from popup
 	virtual void cancel();
-	///
-	virtual void restore() {
-		update();
-	}
 
 	///
 	virtual FL_FORM * form() const;

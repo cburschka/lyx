@@ -36,7 +36,7 @@ private:
 	/// Hide the dialog.
 	void hide();
 	/// Not used but we've got to implement it.
-	void update() {}
+	void update(bool) {}
 
 	/// Real GUI implementation.
 	 Gnome::About * dialog_;

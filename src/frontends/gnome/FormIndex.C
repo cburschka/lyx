@@ -138,8 +138,13 @@ void FormIndex::show()
     }
 }
       
-void FormIndex::update()
+void FormIndex::update(bool switched)
 {
+  if (switched) {
+      hide();
+      return;
+  }
+
   if (dialog_ != NULL &&
       lv_->view()->available())
     {

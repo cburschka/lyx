@@ -94,6 +94,9 @@ void FormCitation::showInset( InsetCommand * const inset )
   inset_ = inset;
   ih_ = inset_->hide.connect(slot(this, &FormCitation::hide));
 
+#ifdef WITH_WARNINGS
+#warning This connection to update will do nothing!
+#endif
   u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::update));
   h_ = d_->hideBufferDependent.connect(slot(this, &FormCitation::hide));
   

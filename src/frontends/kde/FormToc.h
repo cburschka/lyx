@@ -39,7 +39,7 @@ public:
 	/// Choose which type
 	void set_type(Buffer::TocType);
 	/// Update the dialog.
-	void update();
+	void update(bool = false);
 	/// change the depth shown
 	void set_depth(int);
 	/// close the connections

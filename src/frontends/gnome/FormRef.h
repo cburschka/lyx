@@ -72,7 +72,7 @@ private:
   void showInset( InsetCommand * const );
   
   /// Update dialog before showing it (not used in this implementation)
-  virtual void update() { hide(); }
+  virtual void update(bool = false) { hide(); }
   /// Apply from dialog (modify or create inset)
   virtual void apply();
   /// Explicitly free the dialog.

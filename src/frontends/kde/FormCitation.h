@@ -61,7 +61,7 @@ private:
 	/// Hide the dialog.
 	void hide();
 	/// Update the dialog.
-	void update();
+	void update(bool switched = false);
 
 	/// create a Citation inset
 	void createCitation(string const &);

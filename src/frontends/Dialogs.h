@@ -65,11 +65,14 @@ public:
 	/// Hide all visible popups
 	Signal0<void> hideAll;
 	
-	/// Hide any popups that require a buffer for them to operate
+	/// Hide any dialogs that require a buffer for them to operate
 	Signal0<void> hideBufferDependent;
 	
-	/// Update visible, buffer-dependent popups
-	Signal0<void> updateBufferDependent;
+	/** Update visible, buffer-dependent dialogs
+	    If the bool is true then a buffer change has occurred
+	    else its still the same buffer.
+	 */
+	Signal1<void, bool> updateBufferDependent;
 	//@}
 
 	/**@name Dialog Access Signals.

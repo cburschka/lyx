@@ -150,7 +150,7 @@ void FormTabular::hideInset(InsetTabular * ti)
 }
 
 
-void FormTabular::update()
+void FormTabular::update(bool)
 {
     if (dialog_) {
 	local_update(true);

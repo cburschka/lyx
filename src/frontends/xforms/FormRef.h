@@ -16,7 +16,7 @@
 #pragma interface
 #endif
 
-#include "FormCommand.h"
+#include "FormInset.h"
 struct FD_form_ref;
 
 /** This class provides an XForms implementation of the FormRef Dialog.
@@ -51,16 +51,17 @@ private:
 		GOFIRST
 	};
 
+	/// Disconnect signals. Also perform any necessary housekeeping.
+	virtual void disconnect();
+
 	/// Build the dialog
 	virtual void build();
 	/// Filter the input
 	virtual bool input( FL_OBJECT *, long );
 	/// Update dialog before showing it
-	virtual void update();
+	virtual void update(bool switched = false);
 	/// Not used but must be instantiated
 	virtual void apply();
-	/// delete derived class variables from hide()
-	virtual void clearStore();
 	/// Pointer to the actual instantiation of the xform's form
 	virtual FL_FORM * form() const;
 

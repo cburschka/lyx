@@ -16,7 +16,7 @@
 #pragma interface
 #endif
 
-#include "FormCommand.h"
+#include "FormInset.h"
 #include "buffer.h"
 struct FD_form_toc;
 
@@ -29,14 +29,15 @@ public:
 	///
 	~FormToc();
 private:
+	/// Disconnect signals. Also perform any necessary housekeeping.
+	virtual void disconnect();
+
 	/// Build the dialog
 	virtual void build();
 	/// Update dialog before showing it
-	virtual void update();
+	virtual void update(bool switched = false);
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();
-	/// delete derived class variables from hide()
-	virtual void clearStore();
 	/// Pointer to the actual instantiation of the xform's form
 	virtual FL_FORM * form() const;
 	///

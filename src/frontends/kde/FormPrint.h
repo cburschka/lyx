@@ -43,7 +43,7 @@ private:
 	/// Hide the dialog.
 	void hide();
 	/// Update the dialog.
-	void update();
+	void update(bool = false);
 
 	/// Real GUI implementation.
 	FormPrintDialog * dialog_;

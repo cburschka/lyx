@@ -164,7 +164,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		// Similarly, buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
-		owner_->getDialogs()->updateBufferDependent();
+		owner_->getDialogs()->updateBufferDependent(true);
 		redraw();
 		bv_->insetWakeup();
 	} else {

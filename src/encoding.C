@@ -333,6 +333,8 @@ void Encodings::read(string const & filename)
 		case et_end:
 			lex.printError("Encodings::read: Misplaced end");
 			break;
+		case LyXLex::LEX_FEOF:
+			break;
 		default:
 			lex.printError("Encodings::read: "
 				       "Unknown tag: `$$Token'");

@@ -58,7 +58,7 @@ private:
   /// Hide the dialog.
   void hide();
   /// Update the dialog.
-  void update();
+  void update(bool = false);
   /// Free memory
   void free();
   //@}

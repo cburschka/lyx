@@ -28,8 +28,7 @@ using SigC::slot;
 
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
-	: FormBase(lv, d, _("Preferences"),
-		   BUFFER_INDEPENDENT, HIDE, new PreferencesPolicy),
+	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
 	  dialog_(0), outputs_tab_(0), look_n_feel_tab_(0), inputs_tab_(0),
 	  lnf_general_(0), screen_fonts_(0), interface_(0),
 	  printer_(0), paths_(0), outputs_general_(0), minw_(0), minh_(0)
@@ -156,6 +155,7 @@ void FormPreferences::build()
 	fl_set_input_return(paths_->input_lastfiles, FL_RETURN_CHANGED);
 	fl_set_input_return(paths_->input_backup_path, FL_RETURN_CHANGED);
 	fl_set_counter_return(paths_->counter_lastfiles, FL_RETURN_CHANGED);
+	fl_set_input_return(paths_->input_serverpipe, FL_RETURN_CHANGED);
 	// outputs general
 	fl_set_counter_return(outputs_general_->counter_line_len,
 			      FL_RETURN_CHANGED);
@@ -206,6 +206,7 @@ void FormPreferences::build()
 	fl_deactivate_object(paths_->button_temp_dir_browse);
 	fl_deactivate_object(paths_->button_lastfiles_browse);
 	fl_deactivate_object(paths_->button_backup_path_browse);
+	fl_deactivate_object(paths_->button_serverpipe_browse);
 	fl_set_object_lcol(interface_->button_bind_file_browse, FL_INACTIVE);
 	fl_set_object_lcol(interface_->button_ui_file_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_document_browse, FL_INACTIVE);
@@ -213,6 +214,7 @@ void FormPreferences::build()
 	fl_set_object_lcol(paths_->button_temp_dir_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_lastfiles_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_backup_path_browse, FL_INACTIVE);
+	fl_set_object_lcol(paths_->button_serverpipe_browse, FL_INACTIVE);
 }
 
 
@@ -225,7 +227,7 @@ FL_FORM * FormPreferences::form() const
 
 void FormPreferences::connect()
 {
-	FormBase::connect();
+	FormBaseBI::connect();
 	fl_set_form_minsize(dialog_->form,
 			    minw_,
 			    minh_);
@@ -266,6 +268,8 @@ void FormPreferences::apply()
 		fl_get_input(interface_->input_popup_encoding);
 	lyxrc.bind_file = fl_get_input(interface_->input_bind_file);
 	lyxrc.ui_file = fl_get_input(interface_->input_ui_file);
+	lyxrc.override_x_deadkeys =
+		fl_get_button(interface_->check_override_x_dead_keys);
 	// Screen fonts
 	if (lyxrc.roman_font_name !=
 	    fl_get_input(screen_fonts_->input_roman) ||
@@ -370,13 +374,15 @@ void FormPreferences::apply()
 	lyxrc.make_backup = fl_get_button(paths_->check_make_backups);
 	lyxrc.num_lastfiles = static_cast<unsigned int>
 		(fl_get_counter_value(paths_->counter_lastfiles));
+	lyxrc.lyxpipes = fl_get_input(paths_->input_serverpipe);
 	// outputs general
 	lyxrc.ascii_linelen = static_cast<unsigned int>
 		(fl_get_counter_value(outputs_general_->counter_line_len));
 }
 
 
-void FormPreferences::update()
+// we can safely ignore the parameter because we can always update
+void FormPreferences::update(bool)
 {
 	if (dialog_) {
 		// read lyxrc entries
@@ -441,6 +447,8 @@ void FormPreferences::update()
 			     lyxrc.bind_file.c_str());
 		fl_set_input(interface_->input_ui_file,
 			     lyxrc.ui_file.c_str());
+		fl_set_button(interface_->check_override_x_dead_keys,
+			      lyxrc.override_x_deadkeys);
 		// printer
 		fl_set_button(printer_->check_adapt_output,
 			      lyxrc.print_adapt_output);
@@ -497,6 +505,7 @@ void FormPreferences::update()
 			      lyxrc.make_backup);
 		fl_set_counter_value(paths_->counter_lastfiles,
 				     lyxrc.num_lastfiles);
+		fl_set_input(paths_->input_serverpipe, lyxrc.lyxpipes.c_str());
 		// outputs general
 		fl_set_counter_value(outputs_general_->counter_line_len,
 				     lyxrc.ascii_linelen);
@@ -511,37 +520,86 @@ bool FormPreferences::input(FL_OBJECT *, long)
 	//
 	// whatever checks you need to ensure the user hasn't entered
 	// some totally ridiculous value somewhere.  Change activate to suit.
-	//
-	// Examples:
-	//  paths -- all dirs in the path should exist, be writable & absolute
+	// comments before each test describe what is _valid_
+
+	// input path -- dir should exist, be writable & absolute
 	if (!AbsolutePath(fl_get_input(paths_->input_default_path))
-	    || 1 != IsDirWriteable(fl_get_input(paths_->input_default_path))
-	    // template_path should be a readable directory
-	    || !AbsolutePath(fl_get_input(paths_->input_template_path))
-	    || 1 != FileInfo(fl_get_input(paths_->input_template_path)).isDir()
-	    || 1 != FileInfo(fl_get_input(paths_->input_template_path)).readable()
-	    // lastfiles: exists && writeable || non-existent && isn't a dir
-	    // NOTE: assumes IsFileWriteable == -1 means non-existent hence
-	    //       the extra check to see if its a directory
-	    || !AbsolutePath(fl_get_input(paths_->input_lastfiles))
-	    || 1 != IsDirWriteable(OnlyPath(fl_get_input(paths_->
-							 input_lastfiles)))
-	    || 0 == IsFileWriteable(OnlyPath(fl_get_input(paths_->
-							  input_lastfiles)))
-	    || FileInfo(fl_get_input(paths_->input_lastfiles)).isDir()
-	    // tmpdir: only check if we are using it
-	    || (fl_get_button(paths_->check_use_temp_dir)
-		&& (1 != IsDirWriteable(fl_get_input(paths_->input_temp_dir))
-		    || !AbsolutePath(fl_get_input(paths_->input_temp_dir))))
-	    // backupdir: can safely be left empty
-	    || (fl_get_button(paths_->check_make_backups)
-		&& (!string(fl_get_input(paths_->input_backup_path)).empty()
-		    && (1 != IsDirWriteable(fl_get_input(paths_->
-							input_backup_path))
-			|| !AbsolutePath(fl_get_input(paths_->
-						      input_backup_path)))))) {
+	    || 1 != IsDirWriteable(fl_get_input(paths_->input_default_path))) {
 		activate = false;
-		lyxerr[Debug::GUI] << "Preferences: Path is wrong\n";
+		lyxerr[Debug::GUI] << "Preferences: input path is wrong\n";
+	}
+
+	{
+		// template_path should be a readable directory
+		string temp(fl_get_input(paths_->input_template_path));
+		FileInfo tp(temp);
+		if (!AbsolutePath(temp)
+		    || !tp.isDir()
+		    || !tp.readable()) {
+			activate = false;
+			lyxerr[Debug::GUI] << "Preferences: template path is wrong\n";
+		}
+	}
+
+	// tmpdir:  not used
+	//          || writable directory
+	if (fl_get_button(paths_->check_use_temp_dir)
+	    && (1 != IsDirWriteable(fl_get_input(paths_->input_temp_dir))
+		|| !AbsolutePath(fl_get_input(paths_->input_temp_dir)))) {
+		activate = false;
+		lyxerr[Debug::GUI] << "Preferences: tmpdir is wrong\n";
+	}
+
+	// backupdir: not used
+	//            || empty
+	//            || writable dir
+	if (fl_get_button(paths_->check_make_backups)
+	    && (!string(fl_get_input(paths_->input_backup_path)).empty()
+		&& (1 != IsDirWriteable(fl_get_input(paths_->
+						     input_backup_path))
+		    || !AbsolutePath(fl_get_input(paths_->
+						  input_backup_path))))) {
+		activate = false;
+		lyxerr[Debug::GUI] << "Preferences: backupdir is wrong\n";
+	}
+
+	// lastfiles: exists && writeable
+	//            || non-existent && isn't a dir
+#ifdef WITH_WARNINGS
+#warning incorrectly allows files in /, other tests might also do this
+#endif
+	{
+		string lastfiles(fl_get_input(paths_->input_lastfiles));
+		FileInfo lf(lastfiles);
+		if (!AbsolutePath(lastfiles)
+		    || 1 != IsDirWriteable(OnlyPath(lastfiles))
+		    || (lf.exist()
+			&& (lf.isDir()
+			    || !lf.writable()))) {
+			activate = false;
+			lyxerr[Debug::GUI] << "Preferences: lastfiles is wrong\n";
+		}
+	}
+
+	// serverpipe:  empty
+	//              || non-existent && isn't a dir
+	//              || exists && writeable
+	// remember we append .in and .out later
+	if (!string(fl_get_input(paths_->input_serverpipe)).empty()) {
+		string pipe(fl_get_input(paths_->input_serverpipe));
+		FileInfo sp_in(pipe + ".in");
+		FileInfo sp_out(pipe + ".out");
+		if (!AbsolutePath(pipe)
+		    || 1 != IsDirWriteable(OnlyPath(pipe))
+		    || (sp_in.exist()
+			&& (!sp_in.writable()
+			    || sp_in.isDir()))
+		    || (sp_out.exist()
+			&& (!sp_out.writable()
+			    || sp_out.isDir()))) {
+			activate = false;
+			lyxerr[Debug::GUI] << "Preferences: Serverpipe is wrong\n";
+		}
 	}
 
 	//  fontsizes -- tiny < script < footnote etc.

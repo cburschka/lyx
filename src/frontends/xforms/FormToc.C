@@ -27,8 +27,13 @@
 #include "lyxfunc.h"
 #include "support/lstrings.h"
 
+// The current code uses the apply() for handling the Update button and the
+// type-of-table selection and cancel() for the close button.  This is a little
+// confusing to the button controller so I've made an IgnorantPolicy to cover
+// this situation since the dialog doesn't care about buttons. ARRae 20001013
 FormToc::FormToc(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Table of Contents"), UPDATE), dialog_(0)
+	: FormCommand(lv, d, _("Table of Contents"), new IgnorantPolicy),
+	  dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -51,9 +56,10 @@ FL_FORM * FormToc::form() const
 }
 
 
-void FormToc::clearStore()
+void FormToc::disconnect()
 {
 	toclist.clear();
+	FormCommand::disconnect();
 }
 
 
@@ -67,7 +73,8 @@ void FormToc::build()
 }
 
 
-void FormToc::update()
+// we can safely ignore the parameter because we can always update
+void FormToc::update(bool)
 {
 	Buffer::TocType type;
 
@@ -94,7 +101,8 @@ void FormToc::updateToc()
   	if (!lv_->view()->available()) {
 		toclist.clear();
 		fl_clear_browser( dialog_->browser );
-		fl_add_browser_line( dialog_->browser, _("*** No Document ***"));
+		fl_add_browser_line( dialog_->browser,
+				     _("*** No Document ***"));
 		return;
 	}
 
@@ -129,7 +137,8 @@ void FormToc::updateToc()
 	for (vector<Buffer::TocItem>::const_iterator it = toclist.begin();
 	     it != toclist.end(); ++it)
 		fl_add_browser_line( dialog_->browser,
-				     (string(4*(*it).depth,' ')+(*it).str).c_str());
+				     (string(4 * (*it).depth, ' ')
+				      + (*it).str).c_str());
 
 	fl_set_browser_topline( dialog_->browser, topline );
 	fl_select_browser_line( dialog_->browser, line );
