@@ -260,9 +260,11 @@ void BulletsModule::setCustom()
 		qt_( "Enter a custom bullet" ),
 		QLineEdit::Normal,
 		QString::null, &ok, this );
-	
-	activeitem_->setPixmap(0,QPixmap());
-	activeitem_->setText(0,text);
-	activebullet_->setText(fromqstr(text));
-	activebullet_->setFont(-1);
+
+	if (ok) {
+		activeitem_->setPixmap(0,QPixmap());
+		activeitem_->setText(0,text);
+		activebullet_->setText(fromqstr(text));
+		activebullet_->setFont(-1);
+	}
 }
