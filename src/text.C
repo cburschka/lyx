@@ -2152,34 +2152,18 @@ RowList::iterator LyXText::cursorIRow() const
 RowList::iterator LyXText::getRowNearY(int & y,
 	ParagraphList::iterator & pit) const
 {
-	ParagraphList::iterator const end = ownerParagraphs().end();
 	//lyxerr << "getRowNearY: y " << y << endl;
-
-	for (pit = ownerParagraphs().begin(); pit != end; ++pit) {
-		RowList::iterator rit = pit->rows.begin();
-		RowList::iterator rend = pit->rows.end();
-
-		for ( ; rit != rend; ++rit) {
-			//rit->dump();
-			if (rit->y() >= y) {
-				if (rit != firstRow())
-					previousRow(pit, rit);
-				y = rit->y();
-				return rit;
-			}
-		}
-	}
-
-#if 1
 	pit = ownerParagraphs().begin();
-	y = 0;
-	lyxerr << "row not found near " << y << "  pit: " << &*pit << endl;
-	return firstRow();
-#else
-	pit = boost::prior(ownerParagraphs().end());
-	lyxerr << "row not found near " << y << "  pit: " << &*pit << endl;
-	return lastRow();
-#endif
+	RowList::iterator rit = firstRow();
+	RowList::iterator rend = endRow();
+
+	for (; rit != rend; nextRow(pit, rit))
+		if (rit->y() > y)
+			break;
+
+	previousRow(pit, rit);
+	y = rit->y();
+	return rit;
 }
 
 
@@ -2210,12 +2194,11 @@ RowList::iterator LyXText::endRow() const
 void LyXText::nextRow(ParagraphList::iterator & pit,
 	RowList::iterator & rit) const
 {
-	if (boost::next(rit) != pit->rows.end()) {
-		rit = boost::next(rit);
-	} else {
+	++rit;
+	if (rit == pit->rows.end()) {
 		++pit;
 		if (pit == ownerParagraphs().end())
-			rit = boost::next(rit);
+			--pit;
 		else
 			rit = pit->rows.begin();
 	}
@@ -2226,7 +2209,7 @@ void LyXText::previousRow(ParagraphList::iterator & pit,
 	RowList::iterator & rit) const
 {
 	if (rit != pit->rows.begin())
-		rit = boost::prior(rit);
+		--rit;
 	else {
 		Assert(pit != ownerParagraphs().begin());
 		--pit;
