@@ -1,3 +1,27 @@
+2001-03-01  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* math_parinset.h: add pragma
+	(SetAlign): move inline out of class def
+	(GetColumns): ditto
+	(GetRows): ditto
+	(isMatrix): ditto
+	(setArgumentIdx): ditto
+	(setNextArgIdx): ditto
+	(getArgumentIdx): ditto
+	(getMaxArgumentIdx): ditto
+	(setRowSt): ditto
+	(xo): ditto
+	(yo): ditto
+
+	* math_parinset.C: add pragma
+	(Write): change the else clause, lessen depth
+
+	* math_macroarg.h: small whitespace change
+
+	* array.C: include support/LOstream.h add using ostream and endl
+
+	* array.h (dump): add std:: on ostream
+
 2001-02-28  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* math_macrotemplate.h: remove default arg on update
