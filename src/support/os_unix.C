@@ -67,15 +67,11 @@ string::size_type os::common_path(string const &p1, string const &p2) {
 	return i;
 }
 
-string os::slashify_path(string p) {
+string os::internal_path(string const & p) {
 	return p;
 }
 
-string os::external_path(string const &p) {
-	return p;
-}
-
-string os::internal_path(string const &p) {
+string os::external_path(string const & p) {
 	return p;
 }
 

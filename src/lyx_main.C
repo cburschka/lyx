@@ -288,8 +288,18 @@ void LyX::init(bool gui)
 	bool followlink;
 	do {
 		// Path of binary/../share/name of binary/
-		searchpath += NormalizePath(AddPath(binpath, "../share/") +
-		      OnlyFilename(binname)) + ';';
+		string const exe_name = OnlyFilename(binname);
+#ifdef _WIN32
+		string const lyx_system_dir_name =
+			suffixIs(exe_name, ".exe") ?
+				ChangeExtension(exe_name, "") :
+				exe_name;
+#else
+		string const lyx_system_dir_name = exe_name;
+#endif
+		string const shared_dir_name =
+			NormalizePath(AddPath(binpath, "../share/"));
+		searchpath += shared_dir_name + lyx_system_dir_name + ';';
 
 		// Follow Symlinks
 		FileInfo file(fullbinpath, true);

@@ -1,4 +1,13 @@
- 2004-12-14  Angus Leeming  <leeming@lyx.org>
+2004-12-19  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.C (init): on a Windows build, remove the ".exe"
+	extension from the name of the LyX binary when trying to
+	ascertain the name of the LyX system directory.
+	(Usually, <path to binary>/../share/<name of binary>/).
+
+	* buffer.C (save): s/slashify_path/internal_path/.
+
+2004-12-14  Angus Leeming  <leeming@lyx.org>
  
 	* LaTeX.C: (operator()): use os::nulldev() rather than "/dev/null".
 

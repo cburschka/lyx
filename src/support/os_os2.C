@@ -34,7 +34,7 @@ void os::init(int argc, char * argv[])
 	if (rc != NO_ERROR)
 		exit(rc);
 	string p(tmp);
-	p = slashify_path(p);
+	p = internal_path(p);
 	binname_ = OnlyFilename(p);
 	binname_.erase(binname_.length()-4, string::npos);
 	binpath_ = OnlyPath(p);
@@ -96,8 +96,8 @@ string::size_type os::common_path(string const &p1, string const &p2) {
 	COUNTRYCODE cntry;
 	cntry.country = 0;
 	cntry.codepage = cp_;
-	string temp1 = slashify_path(p1);
-	string temp2 = slashify_path(p2);
+	string temp1 = internal_path(p1);
+	string temp2 = internal_path(p2);
 	char * tmp1 = const_cast<char*> (temp1.c_str());
 	char * tmp2 = const_cast<char*> (temp2.c_str());
 	/* rc = */ DosMapCase(p1.length(), &cntry, tmp1);
@@ -120,7 +120,7 @@ string::size_type os::common_path(string const &p1, string const &p2) {
 	return i;
 }
 
-string os::slashify_path(string p) {
+string os::internal_path(string const & p) {
 	static bool initialized = false;
 	static bool leadbyte[256] = {false};
 	if (!initialized) {
@@ -158,12 +158,7 @@ string os::slashify_path(string p) {
 }
 
 
-string os::external_path(string const &p) {
-	return p;
-}
-
-
-string os::internal_path(string const &p) {
+string os::external_path(string const & p) {
 	return p;
 }
 

@@ -1,3 +1,17 @@
+2004-12-19  Angus Leeming  <leeming@lyx.org>
+
+	* os.h, os_os2.C, os_unix.C, os_win32.C (slashify_path): remove.
+
+	* os_win32.C (init): ensure that the name of the lyx executable is
+	stored internally with a unix-style path.
+
+	* os_win32.C (internal_path, external_path): differentiate between
+	cygwin and windows builds.
+
+	* filetools.C (FileOpenSearch, GetEnvPath, createDirectory,
+	MakeAbsPath, AddName, MakeRelPath, ChangeExtension):
+	s/slashify_path/internal_path/.
+
 2004-12-16  Angus Leeming  <leeming@lyx.org>
 
 	* mkdir.C: move the HAVE_MKDIR conditional code out of config.h

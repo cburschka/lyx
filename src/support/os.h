@@ -43,8 +43,6 @@ public:
 	static string::size_type common_path(string const &p1,
 					     string const &p2);
 
-	// no-op on UNIX, '\\'->'/' on OS/2 and Win32, ':'->'/' on MacOS, etc.
-	static string slashify_path(string p);
 	// Converts a unix style path to host OS style.
 	static string external_path(string const &p);
 	// Converts a host OS style path to unix style.
