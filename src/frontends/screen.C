@@ -214,7 +214,7 @@ bool LyXScreen::fitCursor(BufferView * bv)
 	bv->cursor().getPos(x, y);
 	bv->cursor().getDim(asc, desc);
 	//lyxerr << "LyXScreen::fitCursor: x: " << x << " y: " << y
-	//	<< "  top_y: " << top_y << endl;
+	//      << "  top_y: " << top_y << endl;
 	
 	bool const big_row = h / 4 < asc + desc && asc + desc < h;
 

@@ -355,11 +355,14 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
 }
 
-
 bool BufferView::Pimpl::fitCursor()
 {
+	// this is enough to get the right y cursor info for fitCursor
+	cursor_.top().text()->redoParagraph(cursor_.top().par());
+
 	if (!screen().fitCursor(bv_))
 		return false;
+
 	updateScrollbar();
 	return true;
 }
@@ -388,7 +391,6 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 
 	text->init(bv_);
 	update();
-	bv_->cursor().updatePos();
 	fitCursor();
 
 	switchKeyMap();
@@ -892,14 +894,12 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 
 	// If the request was dispatched the temp cursor should have been 
 	// in a way to be used as new 'real' cursor.
-	if (res.dispatched())
+	if (res.dispatched()) {
 		bv_->cursor() = cur;
-
-	// Redraw if requested or necessary.
-	if (res.update())
-		update();
-	if (fitCursor())
-		update();
+		// Redraw if requested or necessary.
+		if (fitCursor() || res.update())
+			update();
+	}
 
 	// see workAreaKeyPress
 	cursor_timeout.restart();

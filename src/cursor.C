@@ -84,8 +84,7 @@ void region(CursorSlice const & i1, CursorSlice const & i2,
 
 
 LCursor::LCursor(BufferView & bv)
-	: DocIterator(), bv_(&bv),
-	  anchor_(), cached_y_(0), x_target_(-1),
+	: DocIterator(), bv_(&bv), anchor_(), x_target_(-1),
 	  selection_(false), mark_(false)
 {}
 
@@ -95,7 +94,6 @@ void LCursor::reset(InsetBase & inset)
 	clear();
 	push_back(CursorSlice(inset));
 	anchor_ = DocIterator(inset);
-	cached_y_ = 0;
 	clearTargetX();
 	selection_ = false;
 	mark_ = false;
@@ -236,15 +234,6 @@ int LCursor::currentMode()
 }
 
 
-void LCursor::updatePos()
-{
-	BOOST_ASSERT(!empty());
-	if (size() > 1)
-		cached_y_ = bv().top_y() + back().inset().yo();
-		//cached_y_ = back().inset().yo();
-}
-
-
 void LCursor::getDim(int & asc, int & des) const
 {
 	if (inMathed()) {
@@ -270,16 +259,6 @@ void LCursor::getPos(int & x, int & y) const
 	y = 0;
 	if (!empty())
 		inset().getCursorPos(back(), x, y);
-	// getCursorPos gives _screen_ coordinates. We need to add
-	// top_y to get document coordinates. This is hidden in cached_y_.
-	//y += cached_y_ - inset().yo();
-	// The rest is non-obvious. The reason we have to have these
-	// extra computation is that the getCursorPos() calls rely
-	// on the inset's own knowledge of its screen position.
-	// If we scroll up or down in a big enough increment,
-	// inset->draw() is not called: this doesn't update
-	// inset.yo_, so getCursor() returns an old value.
-	// Ugly as you like.
 }
 
 

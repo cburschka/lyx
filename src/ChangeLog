@@ -1,4 +1,18 @@
 
+2004-04-03  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* cursor.[Ch] (LCursor): remove cached_y_ and updatePos 
+	(getDim) remove outdated comment
+
+	* BufferView_pimpl.C (fitCursor): call redoParagraph on the outer
+	cursor paragraph to obtain good cursor y info
+	(workAreaDispatch): remove unneeded update call
+
+	* BufferView.C (setCursor): call redoParagraph, as some insets
+	could have been opened
+	(putSelectionAt): remove the double update and all that cleverness
+	(simplified and transfered to fitCursor where it belongs).
+
 2004-04-01  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* text3.C (getStatus): add LFUN_BEGINNINGBUF
