@@ -70,8 +70,6 @@ private:
 	/// GC used for copying to the screen
 	GC copy_gc;
 
-	///
-	FL_OBJECT * backgroundbox;
 	/// the workarea free object
 	FL_OBJECT * work_area;
 	/// the scrollbar objcet
