@@ -1,3 +1,16 @@
+2004-07-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* lyxlex_pimpl.C (compare_tags): chagne return type of operator()
+	to bool. 
+
+	* converter.C (showMessage): inherit from unary_function, make
+	operator() const.
+
+	* buffer.C (writeFile): initialize retval
+
+	* InsetList.h: rename private variable list to list_
+	* InsetList.[Ch]: adjust accordingly.
+
 2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* text3.C, text2.C, text.C, tabular.C, paragraph_funcs.C, paragraph.C:

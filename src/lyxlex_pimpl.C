@@ -37,9 +37,11 @@ using std::ostream;
 
 namespace {
 
-struct compare_tags : public std::binary_function<keyword_item, keyword_item, int> {
+struct compare_tags
+	: public std::binary_function<keyword_item, keyword_item, bool> {
 	// used by lower_bound, sort and sorted
-	int operator()(keyword_item const & a, keyword_item const & b) const {
+	bool operator()(keyword_item const & a, keyword_item const & b) const
+	{
 		// we use the ascii version, because in turkish, 'i'
 		// is not the lowercase version of 'I', and thus
 		// turkish locale breaks parsing of tags.

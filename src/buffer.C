@@ -751,7 +751,7 @@ bool Buffer::writeFile(string const & fname) const
 	if (finfo.exist() && !finfo.writable())
 		return false;
 
-	bool retval;
+	bool retval = false;
 
 	if (params().compressed) {
 		gz::ogzstream ofs(fname.c_str());
@@ -852,6 +852,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 	lyxerr[Debug::LATEX] << "  Buffer validation done." << endl;
 
 	texrow().reset();
+
 	// The starting paragraph of the coming rows is the
 	// first paragraph of the document. (Asger)
 	texrow().start(paragraphs().begin()->id(), 0);

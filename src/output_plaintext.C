@@ -25,9 +25,6 @@
 #include "support/gzstream.h"
 #include "support/lstrings.h"
 
-#ifdef HAVE_LOCALE
-#endif
-
 using lyx::support::ascii_lowercase;
 using lyx::support::compare_ascii_no_case;
 using lyx::support::compare_no_case;

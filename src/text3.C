@@ -195,10 +195,10 @@ InsetBase * LyXText::checkInsetHit(int x, int y)
 
 	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
 	lyxerr << "  pit: " << pit << " end: " << end << endl;
-	for ( ; pit != end; ++pit) {
+	for (; pit != end; ++pit) {
 		InsetList::iterator iit = pars_[pit].insetlist.begin();
 		InsetList::iterator iend = pars_[pit].insetlist.end();
-		for ( ; iit != iend; ++iit) {
+		for (; iit != iend; ++iit) {
 			InsetBase * inset = iit->inset;
 #if 0
 			lyxerr << "examining inset " << inset

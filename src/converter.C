@@ -512,10 +512,10 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 
 namespace {
 
-class showMessage : public boost::signals::trackable {
+class showMessage : public std::unary_function<string, void>, public boost::signals::trackable {
 public:
 	showMessage(Buffer const & b) : buffer_(b) {};
-	void operator()(string const & m)
+	void operator()(string const & m) const
 	{
 		buffer_.message(m);
 	}

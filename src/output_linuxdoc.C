@@ -23,9 +23,6 @@
 
 #include <stack>
 
-#ifdef HAVE_LOCALE
-#endif
-
 using std::ostream;
 using std::stack;
 using std::vector;

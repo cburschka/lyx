@@ -1765,7 +1765,7 @@ void LyXText::redoParagraphInternal(par_type pit)
 
 void LyXText::redoParagraphs(par_type pit, par_type end)
 {
-	for ( ; pit != end; ++pit)
+	for (; pit != end; ++pit)
 		redoParagraphInternal(pit);
 	updateParPositions();
 	updateCounters();
@@ -1839,7 +1839,7 @@ bool LyXText::isFirstRow(par_type pit, Row const & row) const
 void LyXText::getWord(CursorSlice & from, CursorSlice & to,
 	word_location const loc)
 {
-	Paragraph & from_par = pars_[from.par()];
+	Paragraph const & from_par = pars_[from.par()];
 	switch (loc) {
 	case lyx::WHOLE_WORD_STRICT:
 		if (from.pos() == 0 || from.pos() == from_par.size()
@@ -1895,7 +1895,7 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex)
 
 	while (lex.isOK()) {
 		lex.nextToken();
-		string token = lex.getString();
+		string const token = lex.getString();
 
 		if (token.empty())
 			continue;
@@ -2025,8 +2025,8 @@ int LyXText::cursorX(CursorSlice const & cur) const
 
 int LyXText::cursorY(CursorSlice const & cur) const
 {
-	Paragraph & par = getPar(cur.par());
-	Row & row = *par.getRow(cur.pos());
+	Paragraph const & par = getPar(cur.par());
+	Row const & row = *par.getRow(cur.pos());
 	return yo_ + par.y + row.y_offset() + row.baseline();
 }
 

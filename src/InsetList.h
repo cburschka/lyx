@@ -42,15 +42,15 @@ public:
 	///
 	~InsetList();
 	///
-	iterator begin() { return list.begin(); }
+	iterator begin() { return list_.begin(); }
 	///
-	iterator end() { return list.end(); }
+	iterator end() { return list_.end(); }
 	///
-	const_iterator begin() const { return list.begin(); }
+	const_iterator begin() const { return list_.begin(); }
 	///
-	const_iterator end() const { return list.end(); }
+	const_iterator end() const { return list_.end(); }
 	///
-	bool empty() const { return list.empty(); }
+	bool empty() const { return list_.empty(); }
 	///
 	iterator insetIterator(lyx::pos_type pos);
 	///
@@ -70,7 +70,7 @@ public:
 
 private:
 	///
-	List list;
+	List list_;
 };
 
 #endif

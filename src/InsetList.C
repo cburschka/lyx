@@ -46,8 +46,8 @@ InsetList::~InsetList()
 {
 	// If we begin storing a shared_ptr in the List
 	// this code can be removed. (Lgb)
-	List::iterator it = list.begin();
-	List::iterator end = list.end();
+	List::iterator it = list_.begin();
+	List::iterator end = list_.end();
 	for (; it != end; ++it) {
 		delete it->inset;
 	}
@@ -57,7 +57,7 @@ InsetList::~InsetList()
 InsetList::iterator InsetList::insetIterator(pos_type pos)
 {
 	InsetTable search_elem(pos, 0);
-	return lower_bound(list.begin(), list.end(), search_elem,
+	return lower_bound(list_.begin(), list_.end(), search_elem,
 			   InsetTablePosLess());
 }
 
@@ -65,38 +65,38 @@ InsetList::iterator InsetList::insetIterator(pos_type pos)
 InsetList::const_iterator InsetList::insetIterator(pos_type pos) const
 {
 	InsetTable search_elem(pos, 0);
-	return lower_bound(list.begin(), list.end(), search_elem,
+	return lower_bound(list_.begin(), list_.end(), search_elem,
 			   InsetTablePosLess());
 }
 
 
 void InsetList::insert(InsetBase * inset, lyx::pos_type pos)
 {
-	List::iterator end = list.end();
+	List::iterator end = list_.end();
 	List::iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos) {
 		lyxerr << "ERROR (InsetList::insert): "
 		       << "There is an inset in position: " << pos << endl;
 	} else {
-		list.insert(it, InsetTable(pos, inset));
+		list_.insert(it, InsetTable(pos, inset));
 	}
 }
 
 
 void InsetList::erase(pos_type pos)
 {
-	List::iterator end = list.end();
+	List::iterator end = list_.end();
 	List::iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos) {
 		delete it->inset;
-		list.erase(it);
+		list_.erase(it);
 	}
 }
 
 
 InsetBase * InsetList::release(pos_type pos)
 {
-	List::iterator end = list.end();
+	List::iterator end = list_.end();
 	List::iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos) {
 		InsetBase * tmp = it->inset;
@@ -109,7 +109,7 @@ InsetBase * InsetList::release(pos_type pos)
 
 InsetBase * InsetList::get(pos_type pos) const
 {
-	List::const_iterator end = list.end();
+	List::const_iterator end = list_.end();
 	List::const_iterator it = insetIterator(pos);
 	if (it != end && it->pos == pos)
 		return it->inset;
@@ -119,7 +119,7 @@ InsetBase * InsetList::get(pos_type pos) const
 
 void InsetList::increasePosAfterPos(pos_type pos)
 {
-	List::iterator end = list.end();
+	List::iterator end = list_.end();
 	List::iterator it = insetIterator(pos);
 	for (; it != end; ++it) {
 		++it->pos;
@@ -129,7 +129,7 @@ void InsetList::increasePosAfterPos(pos_type pos)
 
 void InsetList::decreasePosAfterPos(pos_type pos)
 {
-	List::iterator end = list.end();
+	List::iterator end = list_.end();
 	List::iterator it = insetIterator(pos);
 	for (; it != end; ++it) {
 		--it->pos;
