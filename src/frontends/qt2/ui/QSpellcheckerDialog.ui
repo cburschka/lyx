@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>306</width>
+            <width>302</width>
             <height>379</height>
         </rect>
     </property>
@@ -282,12 +282,6 @@
 </widget>
 <connections>
     <connection>
-        <sender>suggestionsLB</sender>
-        <signal>highlighted(const QString&amp;)</signal>
-        <receiver>QSpellcheckerDialogBase</receiver>
-        <slot>suggestionChanged(const QString &amp;)</slot>
-    </connection>
-    <connection>
         <sender>replaceCO</sender>
         <signal>highlighted(const QString&amp;)</signal>
         <receiver>QSpellcheckerDialogBase</receiver>
@@ -322,6 +316,18 @@
         <signal>clicked()</signal>
         <receiver>QSpellcheckerDialogBase</receiver>
         <slot>spellcheckClicked()</slot>
+    </connection>
+    <connection>
+        <sender>suggestionsLB</sender>
+        <signal>doubleClicked(QListBoxItem*)</signal>
+        <receiver>QSpellcheckerDialogBase</receiver>
+        <slot>replaceClicked()</slot>
+    </connection>
+    <connection>
+        <sender>suggestionsLB</sender>
+        <signal>highlighted(const QString&amp;)</signal>
+        <receiver>QSpellcheckerDialogBase</receiver>
+        <slot>suggestionChanged(const QString &amp;)</slot>
     </connection>
     <slot access="public">acceptClicked()</slot>
     <slot access="public">addClicked()</slot>
