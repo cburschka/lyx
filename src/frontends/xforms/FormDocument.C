@@ -421,7 +421,8 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		bool const b4size =
 			fl_get_choice(paper_->choice_papersize) == 10;
 
-		fl_set_button(paper_->radio_portrait, int(custom));
+		if (custom)
+			fl_set_button(paper_->radio_portrait, 1);
 
 		bool const use_geom = (custom || a3size || b3size || b4size);
 
