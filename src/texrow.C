@@ -1,12 +1,10 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file texrow.C
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author Matthias Ettrich
+ */
 
 #include <config.h>
 
@@ -21,9 +19,57 @@
 #include "debug.h"
 
 using std::find_if;
+using std::for_each;
 using std::endl;
 
-// Delete linked list
+namespace {
+ 
+/// function object returning true when row number is found
+class same_rownumber {
+public:
+	same_rownumber(int row) : row_(row) {}
+	bool operator()(TexRow::RowList::value_type const & vt) const {
+		return vt.rownumber() == row_;
+	}
+ 
+private:
+	int row_;
+};
+
+
+/// increment the pos value of the argument if the par id
+/// is the same, and the pos parameter is larger
+class increase_pos {
+public:
+	increase_pos(int id, int pos)
+		: id_(id), pos_(pos) {}
+
+	void operator()(TexRow::RowList::value_type & vt) const {
+		if (vt.id() != id_ || vt.pos() >= pos_)
+			return;
+		vt.pos(vt.pos() + 1);
+ 
+		lyxerr[Debug::INFO]
+			<< "TeXRow::increasePos: ideally this "
+			"should never happen..." << endl;
+
+		// FIXME: When verified to work this clause should be deleted.
+		if (id_ == vt.id() && pos_ == vt.pos()) {
+			lyxerr[Debug::INFO]
+				<< "TexRow::increasePos: this should happen "
+				"maximum one time for each run of "
+				"increasePos!" << endl;
+		}
+	}
+
+private:
+	int id_;
+	int pos_;
+};
+ 
+} // namespace anon 
+
+ 
 void TexRow::reset()
 {
 	rowlist.clear();
@@ -33,7 +79,6 @@ void TexRow::reset()
 }
 
 
-// Defines paragraph and position for the beginning of this row
 void TexRow::start(Paragraph * par, int pos)
 {
 	lastpar = par;
@@ -41,39 +86,20 @@ void TexRow::start(Paragraph * par, int pos)
 }
 
 
-// Insert node when line is completed
 void TexRow::newline()
 {
-	RowItem tmp;
-	tmp.pos(lastpos);
-	if (lastpar)
-		tmp.id(lastpar->id());
-	else
-		tmp.id(-1);
-	tmp.rownumber(++count);
+	int const id = lastpar ? lastpar->id() : -1;
+	RowList::value_type tmp(id, lastpos, ++count);
 	rowlist.push_back(tmp);
 }
 
 
-class same_rownumber {
-public:
-	same_rownumber(TexRow::RowList::value_type const & v):vt(v) {}
-	bool operator()(TexRow::RowList::value_type const & vt1) const {
-		return vt.rownumber() == vt1.rownumber();
-	}
-private:
-	TexRow::RowList::value_type const & vt;
-};
-
-
-
 bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 {
-	RowList::value_type vt;
-	vt.rownumber(row);
 	RowList::const_iterator cit =
-		find_if(rowlist.begin(), rowlist.end(), same_rownumber(vt));
-
+		find_if(rowlist.begin(), rowlist.end(), 
+			same_rownumber(row));
+ 
 	if (cit != rowlist.end()) {
 		id = cit->id();
 		pos = cit->pos();
@@ -85,36 +111,15 @@ bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 }
 
 
-// should perhaps have a better name...
-// Increase the pos of all rows with the
-// same id (and where the pos is larger)
-// to avoid putting errorinsets at the
-// same pos.
-void TexRow::increasePos(int id, int pos) const
+void TexRow::increasePos(int id, int pos)
 {
-	RowList::iterator kit = rowlist.begin();
+	RowList::iterator it = rowlist.begin();
 	RowList::iterator end = rowlist.end();
-	for (; kit != end; ++kit) {
-		if (id == kit->id()
-		    && pos < kit->pos()) {
-			kit->pos(kit->pos() + 1);
-			lyxerr[Debug::INFO]
-				<< "TeXRow::increasePos: ideally this "
-				"should never happen..." << endl;
-		}
-		// When verified to work this clause should be deleted.
-		if (id == kit->id()
-		    && pos == kit->pos()) {
-			lyxerr[Debug::INFO]
-				<< "TexRow::increasePos: this should happen "
-				"maximum one time for each run of "
-				"increasePos!" << endl;
-		}
-	}
+	for_each(it, end, increase_pos(id, pos));
 }
 
 
-TexRow & TexRow::operator+= (TexRow const & tr)
+TexRow & TexRow::operator+=(TexRow const & tr)
 {
 	rowlist.insert(rowlist.end(), tr.rowlist.begin(), tr.rowlist.end());
 	return *this;

@@ -87,19 +87,6 @@ bool Importer::Import(LyXView * lv, string const & filename,
 }
 
 
-#if 0
-bool Importer::IsImportable(string const & format)
-{
-	vector<string> loaders = Loaders();
-	for (vector<string>::const_iterator it = loaders.begin();
-	     it != loaders.end(); ++it)
-		if (converters.IsReachable(format, *it))
-			return true;
-	return false;
-}
-#endif
-
-
 vector<Format const *> const Importer::GetImportableFormats()
 {
 	vector<string> loaders = Loaders();

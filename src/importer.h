@@ -1,13 +1,11 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file importer.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author unknown
+ */
 
 #ifndef IMPORTER_H
 #define IMPORTER_H
@@ -28,11 +26,7 @@ public:
 	static
 	bool Import(LyXView * lv, string const & filename,
 		    string const & format);
-#if 0
-	///
-	static
-	bool IsImportable(string const & format);
-#endif
+
 	///
 	static
 	std::vector<Format const *> const GetImportableFormats();

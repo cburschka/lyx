@@ -666,11 +666,12 @@ private:
 	///
 	lyx::pos_type beginningOfMainBody(Buffer const *, Paragraph const * par) const;
 
-	/** Returns the left beginning of the text.
-	  This information cannot be taken from the layouts-objekt, because
-	  in LaTeX the beginning of the text fits in some cases
-	  (for example sections) exactly the label-width.
-	  */
+	/** 
+	 * Returns the left beginning of the text.
+	 * This information cannot be taken from the layout object, because
+	 * in LaTeX the beginning of the text fits in some cases
+	 * (for example sections) exactly the label-width.
+	 */
 	int leftMargin(BufferView *, Row const * row) const;
 	///
 	int rightMargin(Buffer const *, Row const * row) const;

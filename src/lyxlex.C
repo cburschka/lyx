@@ -236,21 +236,22 @@ void LyXLex::pushToken(string const & pt)
 
 int LyXLex::findToken(char const * str[])
 {
-	int i = 0;
-
-	if (next()) {
-		if (compare(pimpl_->buff, "default")) {
-			while (str[i][0] && compare(str[i], pimpl_->buff)) {
-				++i;
-			}
-			if (!str[i][0]) {
-				pimpl_->printError("Unknown argument `$$Token'");
-				i = -1;
-			}
-		}
-	} else {
+	if (!next()) {
 		pimpl_->printError("file ended while scanning string token");
-		i = -1;
+		return -1;
 	}
+ 
+	int i = 0;
+   
+	if (compare(pimpl_->buff, "default")) {
+		while (str[i][0] && compare(str[i], pimpl_->buff)) {
+			++i;
+		}
+		if (!str[i][0]) {
+			pimpl_->printError("Unknown argument `$$Token'");
+			i = -1;
+		}
+	}
+ 
 	return i;
 }

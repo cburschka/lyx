@@ -1,13 +1,12 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file texrow.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team
- *
- * ====================================================== */
+ * \author Matthias Ettrich
+ */
+
 
 #ifndef TEXROW_H
 #define TEXROW_H
@@ -20,7 +19,7 @@
 
 class Paragraph;
 
-// Controls correspondance between paragraphs and the generated LaTeX file
+/// Represents the correspondence between paragraphs and the generated LaTeX file
 class TexRow {
 public:
 	///
@@ -35,65 +34,69 @@ public:
 	/// Insert node when line is completed
 	void newline();
 
-	/// Returns paragraph id and position from a row number
+	/**
+	 * getIdFromRow - find pid and position for a given row
+	 * @param row row number to find
+	 * @param id set to id if found
+	 * @param pos set to paragraph position if found
+	 * @return true if found, false otherwise
+	 *
+	 * If the row could not be found, pos is set to zero and
+	 * id is set to -1
+	 */
 	bool getIdFromRow(int row, int & id, int & pos) const;
 
-	/// Appends another TexRow
 	TexRow & operator+= (TexRow const &);
 
-	/// Returns the number of rows in this texrow
+	/// Returns the number of rows contained
 	int rows() const { return count; }
 
-	/// Linked list of items
+	/// an individual id/pos <=> row mapping
 	class RowItem {
 	public:
-		///
-		RowItem() : id_(-1), pos_(-1), rownumber_(0) {}
-		///
-		void id(int i) {
-			id_ = i;
-		}
-		///
+		RowItem(int id, int pos, int row) 
+			: id_(id), pos_(pos), rownumber_(row)
+		{}
+
+		/// paragraph id
 		int id() const {
 			return id_;
 		}
-		///
+ 
+		/// set paragraph position
 		void pos(int p) {
 			pos_ = p;
 		}
-		///
+
+		/// paragraph position
 		int pos() const {
 			return pos_;
 		}
-		///
-		void rownumber(int r) {
-			rownumber_ = r;
-		}
-		///
+
+		/// row number
 		int rownumber() const {
 			return rownumber_;
 		}
 	private:
-		///
 		int id_;
-		///
 		int pos_;
-		///
 		int rownumber_;
 	};
 	///
 	typedef std::list<RowItem> RowList;
-	///
-	void increasePos(int id, int pos) const;
+	/// increment position of all other RowItems
+	/// with same par id, to avoid placing error insets
+	/// at the same position
+	void increasePos(int id, int pos);
 private:
-	///
+	/// number of lines
 	unsigned int count;
-	///
-	mutable RowList rowlist;
+	/// container of id/pos <=> row mapping
+	RowList rowlist;
 	/// Last paragraph
 	Paragraph * lastpar;
 	/// Last position
 	int lastpos;
-
 };
-#endif
+ 
+#endif // TEXROW_H

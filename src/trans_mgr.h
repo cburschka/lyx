@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef Trans_Manager_h
-#define Trans_Manager_h
+#ifndef TRANS_MANAGER_H
+#define TRANS_MANAGER_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -14,7 +14,7 @@
 class LyXText;
 class Trans;
 
-/// Translation State
+/// Translation state
 class TransState {
 public:
 	///
@@ -187,4 +187,4 @@ string const TransManager::deadkey(char c, KmodInfo t)
 	return trans_fsm_.currentState->deadkey(c, t);
 }
 
-#endif
+#endif // TRANS_MANAGER_H

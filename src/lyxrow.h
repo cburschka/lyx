@@ -25,6 +25,7 @@ class Row {
 public:
 	///
 	Row();
+ 
 	///
 	void par(Paragraph * p);
 	///

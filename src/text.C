@@ -697,10 +697,6 @@ bool LyXText::draw(DrawRowParams & p, pos_type & vpos)
 }
 
 
-// Returns the left beginning of the text.
-// This information cannot be taken from the layouts-objekt, because in
-// LaTeX the beginning of the text fits in some cases (for example sections)
-// exactly the label-width.
 int LyXText::leftMargin(BufferView * bview, Row const * row) const
 {
 	Inset * ins;

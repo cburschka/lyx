@@ -1,37 +1,22 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file lyx_sty.h
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
+ * A number of LaTeX command definitions for various
+ * things. The name of this file is a holdover from the
+ * days of yore.
  *
- * ====================================================== */
+ * \author Lars Gullik Bjornes <larsbj@lyx.org>
+ */
 
 #ifndef LYX_STY_H
 #define LYX_STY_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
-// This seems to be fixed now (JMarc)
-//#ifdef WITH_WARNINGS
-//#warning README!!
-//#endif
-// I suddenly began to get segfaults in guilsinglleft_def and had no clue
-// on why this happened, then I tried a rewrite and added lyx_sty.C. Now
-// the segfault has moved to bibcombox... It seems that we(or gcc) have a
-// problem with static (non-pointer) objects , if someone knows why please
-// tell me. I am using gcc 2.7.2.1 (Linux) and when I get this segfault it
-// always has to do with a static object of some kind... I tried to rewrite
-// the objects causing the segfault, but the segfault then just moves to
-// another object. I'll let some others have a look now... (Lgb)
-
-// include this always
 ///
 extern string const lyx_def;
 ///
@@ -65,4 +50,4 @@ extern string const binom_def;
 ///
 extern string const mathcircumflex_def;
 
-#endif
+#endif // LYX_STY_H

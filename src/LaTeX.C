@@ -376,7 +376,7 @@ bool LaTeX::runMakeIndex(string const & f)
 	// It should be possible to set the switches for makeindex
 	// sorting style and such. It would also be very convenient
 	// to be able to make style files from within LyX. This has
-	// to come for a later time. (0.13 perhaps?)
+	// to come for a later time.
 	string tmp = "makeindex -c -q ";
 	tmp += f;
 	Systemcall one;

@@ -1704,6 +1704,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 				}
 				if (moving_arg)
 					os << "\\protect ";
+ 
 				os << "\\\\\n";
 			}
 			texrow.newline();

@@ -261,7 +261,7 @@ public:
 	value_type getUChar(BufferParams const &, lyx::pos_type pos) const;
 	/// The position must already exist.
 	void setChar(lyx::pos_type pos, value_type c);
-	///
+	/// pos <= size() (there is a dummy font change at the end of each par)
 	void setFont(lyx::pos_type pos, LyXFont const & font);
 	/// Returns the height of the highest font in range
 	LyXFont::FONT_SIZE highestFontInRange(lyx::pos_type startpos,

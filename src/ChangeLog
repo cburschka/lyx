@@ -1,3 +1,20 @@
+2002-05-30  John Levon  <moz@compsoc.man.ac.uk>
+
+	* LaTeX.C: 
+	* importer.h:
+	* importer.C:
+	* lyx_sty.h:
+	* lyx_sty.C: 
+	* lyxlex.C: 
+	* lyxrow.h: 
+	* lyxtext.h: 
+	* paragraph.h: 
+	* paragraph.C: 
+	* texrow.h:
+	* texrow.C: 
+	* text.C:
+	* trans_mgr.h: srcdocs, and some minor cleanups
+ 
 2002-05-29  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* paragraph_pimpl.C (isTextAt): rewrite to be much faster (do not

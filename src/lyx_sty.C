@@ -1,18 +1,12 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file lyx_sty.C
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
  *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * \author Lars Gullik Bjornes <larsbj@lyx.org>
+ */
 
 #include <config.h>
-
-#ifdef __GNUG__
-#pragma implementation
-#endif
 
 #include "lyx_sty.h"
 
@@ -20,7 +14,6 @@
 //\ProvidesPackage{lyx}[1996/01/11 LLE v0.2 (LyX LaTeX Extensions)]
 //\message{LyX LaTeX Extensions (LLE v0.2) of 11-Jan-1996.}
 
-// include this always
 string const lyx_def =
 	"\\providecommand{\\LyX}{L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}";
 
@@ -36,8 +29,6 @@ string const lyxarrow_def =
 
 // for quotes without babel. This does not give perfect results, but
 // anybody serious about non-english quotes should use babel (JMarc).
-
-
 
 string const quotedblbase_def =
 	"\\ProvideTextCommandDefault{\\quotedblbase}{%\n"
@@ -81,6 +72,8 @@ string const paragraphleftindent_def =
 	"  \\begin{list}{}{%\n"
 	"    \\setlength\\topsep{0pt}%\n"
 	"    \\addtolength{\\leftmargin}{#1}\n"
+// ho hum, yet more things commented out with no hint as to why they
+// weren't just removed
 //	"%%    \\addtolength{\\leftmargin}{#1\\textwidth}\n"
 //	"%%    \\setlength{\\textwidth}{#2\\textwidth}\n"
 //	"%%    \\setlength\\listparindent\\parindent%\n"
