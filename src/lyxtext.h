@@ -41,10 +41,10 @@ class MetricsInfo;
 class PainterInfo;
 class Paragraph;
 class Row;
+class RowMetrics;
 class Spacing;
 class UpdatableInset;
 class VSpace;
-
 
 /// This class encapsulates the main text data and operations in LyX
 class LyXText {
@@ -320,7 +320,8 @@ public:
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	void prepareToPrint(ParagraphList::iterator pit, Row & row) const;
+	RowMetrics
+	prepareToPrint(ParagraphList::iterator pit, Row const & row) const;
 
 	/// access to our paragraphs
 	ParagraphList & paragraphs() const;

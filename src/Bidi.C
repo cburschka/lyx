@@ -52,7 +52,7 @@ bool Bidi::same_direction() const
 
 
 void Bidi::computeTables(Paragraph const & par,
-	Buffer const & buf, Row & row)
+	Buffer const & buf, Row const & row)
 {
 	same_direction_ = true;
 	if (!lyxrc.rtl_support) {

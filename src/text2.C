@@ -87,7 +87,7 @@ void LyXText::init(BufferView * bv)
 	for (ParagraphList::iterator pit = beg; pit != end; ++pit)
 		pit->rows.clear();
 
-	width = 0;
+	width = bv->workWidth();
 	height = 0;
 
 	current_font = getFont(beg, 0);
@@ -1197,11 +1197,8 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	Row const & row, int & x, bool & boundary) const
 {
 	x -= xo_;
-	double tmpx             = row.x();
-	double fill_separator   = row.fill_separator();
-	double fill_hfill       = row.fill_hfill();
-	double fill_label_hfill = row.fill_label_hfill();
-
+	RowMetrics const r = prepareToPrint(pit, row);
+	
 	pos_type vc = row.pos();
 	pos_type end = row.endpos();
 	pos_type c = 0;
@@ -1210,6 +1207,8 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	bool left_side = false;
 
 	pos_type body_pos = pit->beginOfBody();
+
+	double tmpx = r.x;
 	double last_tmpx = tmpx;
 
 	if (body_pos > 0 &&
@@ -1226,7 +1225,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		c = bidi.vis2log(vc);
 		last_tmpx = tmpx;
 		if (body_pos > 0 && c == body_pos - 1) {
-			tmpx += fill_label_hfill +
+			tmpx += r.label_hfill +
 				font_metrics::width(layout->labelsep, getLabelFont(pit));
 			if (pit->isLineSeparator(body_pos - 1))
 				tmpx -= singleWidth(pit, body_pos - 1);
@@ -1235,13 +1234,13 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 		if (hfillExpansion(*pit, row, c)) {
 			tmpx += singleWidth(pit, c);
 			if (c >= body_pos)
-				tmpx += fill_hfill;
+				tmpx += r.hfill;
 			else
-				tmpx += fill_label_hfill;
+				tmpx += r.label_hfill;
 		} else if (pit->isSeparator(c)) {
 			tmpx += singleWidth(pit, c);
 			if (c >= body_pos)
-				tmpx += fill_separator;
+				tmpx += r.separator;
 		} else {
 			tmpx += singleWidth(pit, c);
 		}

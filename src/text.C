@@ -368,6 +368,7 @@ int LyXText::leftMargin(ParagraphList::iterator pit, pos_type pos) const
 		break;
 	}
 	}
+	
 
 	if (!pit->params().leftIndent().zero())
 		x += pit->params().leftIndent().inPixels(textWidth());
@@ -1005,19 +1006,18 @@ void LyXText::charInserted()
 }
 
 
-void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
+RowMetrics
+LyXText::prepareToPrint(ParagraphList::iterator pit, Row const & row) const
 {
-	double w = textWidth() - row.width();
-	double fill_hfill = 0;
-	double fill_label_hfill = 0;
-	double fill_separator = 0;
-	double x = 0;
+	RowMetrics result;
+
+	double w = width - row.width();
 
 	bool const is_rtl = isRTL(*pit);
 	if (is_rtl)
-		x = rightMargin(*pit);
+		result.x = rightMargin(*pit);
 	else
-		x = leftMargin(pit, row.pos());
+		result.x = leftMargin(pit, row.pos());
 
 	// is there a manual margin with a manual label
 	LyXLayout_ptr const & layout = pit->layout();
@@ -1036,7 +1036,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 			++nlh;
 
 		if (nlh && !pit->getLabelWidthString().empty())
-			fill_label_hfill = labelFill(pit, row) / double(nlh);
+			result.label_hfill = labelFill(pit, row) / double(nlh);
 	}
 
 	// are there any hfills in the row?
@@ -1044,7 +1044,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 
 	if (nh) {
 		if (w > 0)
-			fill_hfill = w / nh;
+			result.hfill = w / nh;
 	// we don't have to look at the alignment if it is ALIGN_LEFT and
 	// if the row is already larger then the permitted width as then
 	// we force the LEFT_ALIGN'edness!
@@ -1085,17 +1085,17 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 			    && !pit->isNewline(row.endpos() - 1)
 			    && !disp_inset
 				) {
-				fill_separator = w / ns;
+				result.separator = w / ns;
 			} else if (is_rtl) {
-				x += w;
+				result.x += w;
 			}
 			break;
 		}
 		case LYX_ALIGN_RIGHT:
-			x += w;
+			result.x += w;
 			break;
 		case LYX_ALIGN_CENTER:
-			x += w / 2;
+			result.x += w / 2;
 			break;
 		}
 	}
@@ -1108,16 +1108,13 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 		if (body_pos > 0
 		    && (body_pos > end || !pit->isLineSeparator(body_pos - 1)))
 		{
-			x += font_metrics::width(layout->labelsep, getLabelFont(pit));
+			result.x += font_metrics::width(layout->labelsep, getLabelFont(pit));
 			if (body_pos <= end)
-				x += fill_label_hfill;
+				result.x += result.label_hfill;
 		}
 	}
 
-	row.fill_hfill(fill_hfill);
-	row.fill_label_hfill(fill_label_hfill);
-	row.fill_separator(fill_separator);
-	row.x(x);
+	return result;
 }
 
 
@@ -1578,7 +1575,6 @@ void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 		Row row(z);
 		rowBreakPoint(pit, row);
 		setRowWidth(pit, row);
-		prepareToPrint(pit, row);
 		setHeightOfRow(pit, row);
 		row.y_offset(pit->height);
 		pit->rows.push_back(row);
@@ -1817,13 +1813,15 @@ int LyXText::cursorX(CursorSlice const & cur) const
 	ParagraphList::iterator pit = getPar(cur);
 	if (pit->rows.empty())
 		return xo_;
-	Row const & row         = *pit->getRow(cur.pos());
-	pos_type pos            = cur.pos();
-	pos_type cursor_vpos    = 0;
-	double x                = row.x();
-	double fill_separator   = row.fill_separator();
-	double fill_hfill       = row.fill_hfill();
-	double fill_label_hfill = row.fill_label_hfill();
+	Row const & row = *pit->getRow(cur.pos());
+	
+	
+	pos_type pos = cur.pos();
+	pos_type cursor_vpos = 0;
+
+	RowMetrics const m = prepareToPrint(pit, row);
+	double x = m.x;
+
 	pos_type const row_pos  = row.pos();
 	pos_type const end      = row.endpos();
 
@@ -1848,7 +1846,7 @@ int LyXText::cursorX(CursorSlice const & cur) const
 	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
 		pos_type pos = bidi.vis2log(vpos);
 		if (body_pos > 0 && pos == body_pos - 1) {
-			x += fill_label_hfill
+			x += m.label_hfill
 				+ font_metrics::width(pit->layout()->labelsep,
 						      getLabelFont(pit));
 			if (pit->isLineSeparator(body_pos - 1))
@@ -1858,13 +1856,13 @@ int LyXText::cursorX(CursorSlice const & cur) const
 		if (hfillExpansion(*pit, row, pos)) {
 			x += singleWidth(pit, pos);
 			if (pos >= body_pos)
-				x += fill_hfill;
+				x += m.hfill;
 			else
-				x += fill_label_hfill;
+				x += m.label_hfill;
 		} else if (pit->isSeparator(pos)) {
 			x += singleWidth(pit, pos);
 			if (pos >= body_pos)
-				x += fill_separator;
+				x += m.separator;
 		} else
 			x += singleWidth(pit, pos);
 	}

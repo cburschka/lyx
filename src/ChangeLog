@@ -1,3 +1,16 @@
+
+2004-03-01  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* Bidi.[Ch] (computeTables): const correctness
+	* lyxrow.[Ch]: add RowMetrics class, move there fill_separator,
+	fill_hfill, fill_label_hfill and x from Row
+	* lyxtext.h: prepareToPrint returns a RowMetrics
+	* rowPainter.C: adjust
+	* text.C (prepareToPrint): use width, not textWidth. adjust
+	(redoParagraphInternal, cursorX): adjust
+	* text2.C (getColumnNearX): adjust
+	(init): put a default value to the top LyXText::width
+
 2004-03-01  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* FontIterator.[Ch]: move FontIterator from lyxtext.h/text.C to here 

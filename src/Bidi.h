@@ -45,7 +45,7 @@ struct  Bidi {
 	bool same_direction() const;
 	///
 	void computeTables(Paragraph const & par,
-			   Buffer const &, Row & row);
+			   Buffer const &, Row const & row);
 private: 
 	/// 
 	bool same_direction_;
