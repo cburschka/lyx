@@ -69,7 +69,10 @@ namespace {
 string const sortEntries(string & str_in)
 {
 	std::vector<string> dbase = getVectorFromString(str_in,"\n");
-	std::sort(dbase.begin(), dbase.end()); 	// sort entries
+	std::sort(dbase.begin(), dbase.end()); 		// sort entries
+	std::vector<string>::iterator p = 
+	    std::unique(dbase.begin(), dbase.end()); 	// compact
+	dbase.erase(p, dbase.end()); 			// shrink
 	return getStringFromVector(dbase,"\n");
 }
 
