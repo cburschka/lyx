@@ -67,13 +67,13 @@ public:
     ///
     MathedArray * GetData();
     ///
-    MathedRowSt * getRowSt() const { return args[idx].row; }
+    MathedRowSt * getRowSt() const { return args_[idx].row; }
     ///
     void SetData(MathedArray *);
     ///
     MathedTextCodes getTCode() const { return tcode; }
     ///
-    bool Permit(short);
+    bool Permit(short) const;
     
 private:
     ///
@@ -89,7 +89,7 @@ private:
 	///
 	MacroArgumentBase() { x = y = 0;  array = 0; row = 0; }
     };
-    MacroArgumentBase * args;
+    std::vector<MacroArgumentBase> args_;
     ///
     int idx;
     ///
@@ -177,7 +177,7 @@ private:
     ///
     MathedTextCodes tcode;
     ///
-    MathMacroArgument * args;
+    std::vector<MathMacroArgument> args_;
     ///
     int nargs;
     ///
@@ -250,14 +250,14 @@ int MathMacro::getMaxArgumentIdx() const
 inline
 MathedArray * MathMacro::GetData() 
 { 
-    return args[idx].array; 
+    return args_[idx].array; 
 } 
 
 
 inline
 void MathMacro::SetData(MathedArray * a)
 {
-   args[idx].array = a;
+   args_[idx].array = a;
 }
 
 

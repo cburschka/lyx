@@ -377,7 +377,7 @@ class MathParInset: public MathedInset  {
     ///
     virtual void setRowSt(MathedRowSt *) {}
     ///
-    virtual bool Permit(short f) { return bool(f & flag); }
+    virtual bool Permit(short f) const { return bool(f & flag); }
     
  protected:
     /// Paragraph data is stored here
