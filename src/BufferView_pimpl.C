@@ -1075,6 +1075,14 @@ void BufferView::Pimpl::update()
 				st = LyXText::NEED_MORE_REFRESH;
 				bv_->text->setCursor(bv_, bv_->text->cursor.par(),
 									 bv_->text->cursor.pos());
+				if (bv_->text->selection.set()) {
+					bv_->text->setCursor(bv_, bv_->text->selection.start,
+								  bv_->text->selection.start.par(),
+								  bv_->text->selection.start.pos());
+					bv_->text->setCursor(bv_, bv_->text->selection.end,
+								  bv_->text->selection.end.par(),
+								  bv_->text->selection.end.pos());
+				}
 				fitc = true;
 			}
 			bv_->text->status(bv_, st);

@@ -1,5 +1,8 @@
 2002-04-19  Juergen Vigna  <jug@sad.it>
 
+	* insettext.C (draw): call a fullRebreak on the row where we had a
+	change and reset the cursor and selection-cursors.
+
 	* insettabular.C (insetUnlock): 
 	(insetButtonPress): call an update before setting the_locking_inset = 0
 	as otherwise we don't repaint!

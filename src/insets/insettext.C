@@ -465,6 +465,21 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		while ((row != 0) && (yf < ph)) {
 			lt->getVisibleRow(bv, y+y_offset+first, int(x), row,
 						y+lt->first_y, cleared);
+			if (bv->text->status() == LyXText::CHANGED_IN_DRAW) {
+				lt->need_break_row = row;
+				if (lt->fullRebreak(bv)) {
+					lt->setCursor(bv, lt->cursor.par(),lt->cursor.pos());
+					if (lt->selection.set()) {
+						lt->setCursor(bv, lt->selection.start,
+									  lt->selection.start.par(),
+									  lt->selection.start.pos());
+						lt->setCursor(bv, lt->selection.end,
+									  lt->selection.end.par(),
+									  lt->selection.end.pos());
+					}
+				}
+				break;
+			}
 			y += row->height();
 			yf += row->height();
 			row = row->next();

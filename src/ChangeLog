@@ -2,6 +2,8 @@
 
 	* BufferView_pimpl.C (resizeCurrentBuffer): resize the insets before
 	reinitializing the buffer otherwise row-dimensions may be wrong.
+	(update): reset also the selection cursors if they do exits otherwise
+	their x/y positions may be wrong.
 
 	* text2.C (cursorDown): don't enter the inset if we came from a row
 	above and are one row over the inset.
