@@ -21,6 +21,7 @@
 
 #include "FormBaseDeprecated.h"
 
+class LyXParagraph;
 struct FD_form_tabbed_paragraph;
 struct FD_form_paragraph_general;
 struct FD_form_paragraph_extra;
@@ -46,7 +47,14 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual bool input(FL_OBJECT * ob, long);
-
+	/// Connect signals
+	virtual void connect();
+	/// Disconnect signals
+	virtual void disconnect();
+	///
+	void changedParagraph();
+	///
+	LyXParagraph const * getCurrentParagraph() const;
 	///
 	virtual FL_FORM * form() const;
 	
@@ -67,6 +75,11 @@ private:
 	boost::scoped_ptr<FD_form_paragraph_general> general_;
 	/// The ButtonController
 	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
+	/// Changed Paragraph connection.
+	SigC::Connection cp_;
+
+	/// The current LyXParagraph
+	LyXParagraph const * par_;
 };
 
 

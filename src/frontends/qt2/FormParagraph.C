@@ -30,7 +30,7 @@ FormParagraph::FormParagraph(LyXView *v, Dialogs *d)
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
-	d->showLayoutParagraph.connect(slot(this, &FormParagraph::show));
+	d->showParagraph.connect(slot(this, &FormParagraph::show));
 }
 
 

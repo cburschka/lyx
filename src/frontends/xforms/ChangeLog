@@ -1,3 +1,13 @@
+2001-06-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormDocument.C:
+	* FormParagraph.C (c-tor): cosmetic name change of signal.
+
+	* FormParagraph.[Ch]: added machinery to act on an updateParagraph
+	signal. It's pretty crude at the moment! Mental note: would be more
+	elegant if we passed a LyXParagraph & with both the signals rather than
+	search through the Buffer.
+
 2001-06-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* *.[h]: added // -*- C++ -*-

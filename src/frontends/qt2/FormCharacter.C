@@ -29,7 +29,7 @@ FormCharacter::FormCharacter(LyXView *v, Dialogs *d)
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
-	d->showLayoutCharacter.connect(slot(this, &FormCharacter::show));
+	d->showCharacter.connect(slot(this, &FormCharacter::show));
 	// for LFUN_FREE
 	d->setUserFreeFont.connect(slot(this, &FormCharacter::apply));
 }

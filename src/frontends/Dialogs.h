@@ -44,6 +44,7 @@ class InsetInfo;
 class InsetTabular;
 class InsetCommand;
 class InsetMinipage;
+class LyXParagraph;
 
 /** Container of all dialogs and signals a LyXView needs or uses to access them
     The list of dialog signals isn't comprehensive but should be a good guide
@@ -90,6 +91,8 @@ public:
 	SigC::Signal1<void, InsetCommand *> showBibtex;
 	///
 	SigC::Signal0<void> showCharacter;
+	/// connected to the character dialog also
+	SigC::Signal0<void> setUserFreeFont;
 	///
 	SigC::Signal1<void, InsetCommand *> showCitation;
 	///
@@ -98,6 +101,8 @@ public:
 	SigC::Signal0<void> showCopyright;
 	///
 	SigC::Signal0<void> showCredits;
+	///
+	SigC::Signal0<void> showDocument;
 	///
 	SigC::Signal1<void, InsetError *> showError;
 	/// show the external inset dialog
@@ -112,20 +117,18 @@ public:
 	SigC::Signal1<void, string const &> createIndex;
 	///
 	SigC::Signal1<void, InsetInfo *> showInfo;
-	///
-	SigC::Signal0<void> showLayoutDocument;
-	///
-	SigC::Signal0<void> showLayoutParagraph;
-	///
-	SigC::Signal0<void> showLayoutCharacter;
-	///
-	SigC::Signal0<void> setUserFreeFont;
-	/// show the version control log
-	SigC::Signal0<void> showVCLogFile;
 	/// show the LaTeX log or build file
 	SigC::Signal0<void> showLogFile;
  	/// display the top-level maths panel
  	SigC::Signal0<void> showMathPanel;
+	///
+	SigC::Signal1<void, InsetMinipage *> showMinipage;
+	///
+	SigC::Signal1<void, InsetMinipage *> updateMinipage;
+	///
+	SigC::Signal0<void> showParagraph;
+	///
+	SigC::Signal0<void> updateParagraph;
 	///
 	SigC::Signal0<void> showPreamble;
 	///
@@ -149,10 +152,6 @@ public:
 	///
 	SigC::Signal0<void> showTabularCreate;
 	///
-	SigC::Signal1<void, InsetMinipage *> showMinipage;
-	///
-	SigC::Signal1<void, InsetMinipage *> updateMinipage;
-	///
 	SigC::Signal1<void, InsetCommand *> showTOC;
 	///
 	SigC::Signal1<void, string const &> createTOC;
@@ -160,8 +159,8 @@ public:
 	SigC::Signal1<void, InsetCommand *> showUrl;
 	///
 	SigC::Signal1<void, string const &> createUrl;
-	///
-	SigC::Signal0<void> updateCharacter;  // allow update as cursor moves
+	/// show the version control log
+	SigC::Signal0<void> showVCLogFile;
 	//@}
 private:
 	/// Add a dialog to the vector of dialogs.

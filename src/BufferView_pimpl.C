@@ -251,7 +251,9 @@ void BufferView::Pimpl::redraw()
 bool BufferView::Pimpl::fitCursor(LyXText * text)
 {
 	lyx::Assert(screen_.get());
- 
+
+	bv_->owner()->getDialogs()->updateParagraph();
+
 	bool const ret = screen_->FitCursor(text, bv_);
 	if (ret)
 	    updateScrollbar();
@@ -297,7 +299,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		selendpos = bv_->text->selection.end.pos();
 		selection = bv_->text->selection.set();
 		mark_set = bv_->text->selection.mark();
-		the_locking_inset = bv_->text->the_locking_inset;
+		the_locking_inset = bv_->theLockingInset();
 		delete bv_->text;
 		bv_->text = new LyXText(bv_);
 	} else {
@@ -336,7 +338,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 			bv_->text->selection.set(false);
 		}
 		// remake the inset locking
-		bv_->text->the_locking_inset = the_locking_inset;
+		bv_->theLockingInset(the_locking_inset);
 	}
 	bv_->text->first = screen_->TopCursorVisible(bv_->text);
 	buffer_->resizeInsets(bv_);

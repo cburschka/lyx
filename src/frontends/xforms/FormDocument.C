@@ -49,7 +49,7 @@ FormDocument::FormDocument(LyXView * lv, Dialogs * d)
     // let the dialog be shown
     // This is a permanent connection so we won't bother
     // storing a copy because we won't be disconnecting.
-    d->showLayoutDocument.connect(slot(this, &FormDocument::show));
+    d->showDocument.connect(slot(this, &FormDocument::show));
 }
 
 

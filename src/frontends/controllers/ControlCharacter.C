@@ -33,7 +33,7 @@ ControlCharacter::ControlCharacter(LyXView & lv, Dialogs & d)
 	: ControlDialog<ControlConnectBD>(lv, d),
 	  font_(0), toggleall_(false)
 {
-	d_.showLayoutCharacter.connect(slot(this, &ControlCharacter::show));
+	d_.showCharacter.connect(slot(this, &ControlCharacter::show));
 	d_.setUserFreeFont.connect(slot(this, &ControlCharacter::apply));
 }
 

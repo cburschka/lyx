@@ -1,3 +1,12 @@
+2001-06-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* BufferView_pimpl.C (fitCursor): emit a signal updateParagraph.
+	(resizeCurrentBuffer): have functions BufferView::theLockingInset()
+	and BufferView::theLockingInset(Inset*), so should use them and not
+	access bv_->text->the_locking_inset directly.
+
+	* lyxfunc.C (Dispatch): cosmetic name change of three signals.
+
 2001-06-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:

@@ -1152,15 +1152,15 @@ string const LyXFunc::Dispatch(int ac,
 	}
 		
 	case LFUN_LAYOUT_DOCUMENT:
-		owner->getDialogs()->showLayoutDocument();
+		owner->getDialogs()->showDocument();
 		break;
 		
 	case LFUN_LAYOUT_PARAGRAPH:
-		owner->getDialogs()->showLayoutParagraph();
+		owner->getDialogs()->showParagraph();
 		break;
 		
 	case LFUN_LAYOUT_CHARACTER:
-		owner->getDialogs()->showLayoutCharacter();
+		owner->getDialogs()->showCharacter();
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
