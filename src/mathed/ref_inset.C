@@ -21,6 +21,8 @@
 #include "math_data.h"
 #include "math_factory.h"
 #include "math_support.h"
+#include "outputparams.h"
+#include "sgml.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
@@ -131,17 +133,21 @@ int RefInset::plaintext(std::ostream & os, OutputParams const &) const
 int RefInset::linuxdoc(std::ostream & os, OutputParams const &) const
 {
 	os << "<ref id=\"" << asString(cell(0))
-	   << "\" name=\"" << asString(cell(1)) << "\" >";
+	   << "\" name=\"" << asString(cell(1)) << "\">";
 	return 0;
 }
 
 
-int RefInset::docbook(std::ostream & os, OutputParams const &) const
+int RefInset::docbook(std::ostream & os, OutputParams const & runparams) const
 {
 	if (cell(1).empty()) {
-		os << "<xref linkend=\"" << asString(cell(0)) << "\">";
+		os << "<xref linkend=\"" << sgml::cleanID(asString(cell(0)));
+		if (runparams.flavor == OutputParams::XML) 
+			os << "\"/>";
+		else
+			os << "\">";
 	} else {
-		os << "<link linkend=\"" << asString(cell(0))
+		os << "<link linkend=\"" << sgml::cleanID(asString(cell(0)))
 		   << "\">" << asString(cell(1)) << "</link>";
 	}
 

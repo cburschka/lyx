@@ -20,6 +20,7 @@
 #include "lyxtext.h"
 #include "paragraph.h"
 #include "pariterator.h"
+#include "sgml.h"
 
 #include "frontends/LyXView.h"
 
@@ -135,7 +136,7 @@ int InsetLabel::plaintext(Buffer const &, ostream & os,
 int InsetLabel::linuxdoc(Buffer const &, ostream & os,
 			 OutputParams const &) const
 {
-	os << "<label id=\"" << getContents() << "\" >";
+	os << "<label id=\"" << sgml::cleanID(getContents()) << "\" >";
 	return 0;
 }
 
@@ -143,6 +144,6 @@ int InsetLabel::linuxdoc(Buffer const &, ostream & os,
 int InsetLabel::docbook(Buffer const &, ostream & os,
 			OutputParams const &) const
 {
-	os << "<!-- anchor id=\"" << getContents() << "\" -->";
+	os << "<!-- anchor id=\"" << sgml::cleanID(getContents()) << "\" -->";
 	return 0;
 }

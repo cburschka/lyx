@@ -25,12 +25,13 @@
 
 #include <boost/tuple/tuple.hpp>
 
+#include <map>
 #include <sstream>
 
 using lyx::support::subst;
 
 using std::make_pair;
-
+using std::map;
 using std::ostream;
 using std::ostringstream;
 using std::pair;
@@ -112,6 +113,75 @@ string escapeString(string const & raw)
 }
 
 
+string const uniqueID(string const label)
+{
+	static unsigned int seed = 1000;
+	return label + tostr(++seed);
+}
+
+
+string cleanID(std::string const & orig, std::string const & allowed)
+{
+	// The standard DocBook SGML declaration only allows letters,
+	// digits, '-' and '.' in a name.
+	// Since users might change that declaration one has to cater
+	// for additional allowed characters.
+	// This routine replaces illegal characters by '-' or '.'
+	// and adds a number for uniqueness.
+	// If you know what you are doing, you can set allowed==""
+	// to disable this mangling.
+	
+	string::const_iterator it  = orig.begin();
+	string::const_iterator end = orig.end();
+
+	string content;
+
+	if (allowed.empty()) {
+		return orig;
+	}
+
+	typedef map<string, string> MangledMap;
+	static MangledMap mangledNames;
+	static int mangleID = 1;
+
+	MangledMap::const_iterator const known = mangledNames.find(orig);
+	if (known != mangledNames.end())
+		return (*known).second;
+
+	// make sure it starts with a letter
+	if (!isalpha(*it) && allowed.find(*it) >= allowed.size())
+		content += "x";
+	
+	bool mangle = false;	
+	for (; it != end; ++it) {
+		char c = *it;
+		if (isalpha(c) || isdigit(c) || c == '-' || c == '.' || allowed.find(c) < allowed.size())
+			content += c;
+		else if (c == '_' || c == ' ') {
+			mangle = true;
+			content += "-";
+		}
+		else if (c == ':' || c == ',' || c == ';' || c == '!') {
+			mangle = true;
+			content += ".";
+		}
+		else {
+			mangle = true;
+		}
+	}
+	if (mangle) {
+		content += "-" + tostr(mangleID++);
+	}
+	else if (isdigit(content[content.size()-1])) {
+		content += ".";
+	}
+
+	mangledNames[orig] = content;
+
+	return content;
+}
+
+
 void openTag(ostream & os, string const & name, string const & attribute)
 {
 	// This should be fixed in layout files later.
@@ -141,8 +211,7 @@ void openTag(Buffer const & buf, ostream & os, Paragraph const & par)
 	string param = style->latexparam();
 	Counters & counters = buf.params().getLyXTextClass().counters();
 
-	string id = par.getDocbookId();
-	id = id.empty()? "" : " id = \"" + id + "\"";
+	string id = par.getID();
 
 	string attribute;
 	if(!id.empty()) {

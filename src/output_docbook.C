@@ -133,8 +133,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 	while (par != pend) {
 		LyXLayout_ptr const & style = par->layout();
 		ParagraphList::const_iterator send;
-		string id = par->getDocbookId();
-		id = id.empty()? "" : " id = \"" + id + "\"";
+		string id = par->getID();
 		string wrapper = "";
 		pos_type sep = 0;
 

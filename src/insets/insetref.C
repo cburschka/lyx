@@ -19,6 +19,7 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "outputparams.h"
+#include "sgml.h"
 
 #include "frontends/LyXView.h"
 
@@ -104,7 +105,7 @@ int InsetRef::plaintext(Buffer const &, ostream & os,
 int InsetRef::linuxdoc(Buffer const &, ostream & os,
 		       OutputParams const &) const
 {
-	os << "<ref id=\"" << getContents()
+	os << "<ref id=\"" << sgml::cleanID(getContents())
 	   << "\" name=\"" << getOptions() << "\" >";
 	return 0;
 }
@@ -114,11 +115,11 @@ int InsetRef::docbook(Buffer const &, ostream & os,
 		      OutputParams const & runparams) const
 {
 	if (getOptions().empty() && runparams.flavor == OutputParams::XML) {
-		os << "<xref linkend=\"" << getContents() << "\" />";
+		os << "<xref linkend=\"" << sgml::cleanID(getContents()) << "\" />";
 	} else if (getOptions().empty()) {
-		os << "<xref linkend=\"" << getContents() << "\">";
+		os << "<xref linkend=\"" << sgml::cleanID(getContents()) << "\">";
 	} else {
-		os << "<link linkend=\"" << getContents()
+		os << "<link linkend=\"" << sgml::cleanID(getContents())
 		   << "\">" << getOptions() << "</link>";
 	}
 

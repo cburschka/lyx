@@ -1331,14 +1331,15 @@ void Paragraph::simpleLinuxDocOnePar(Buffer const & buf,
 }
 
 
-string Paragraph::getDocbookId() const
+string Paragraph::getID() const
 {
 	for (pos_type i = 0; i < size(); ++i) {
 		if (isInset(i)) {
 			InsetBase const * inset = getInset(i);
 			InsetBase::Code lyx_code = inset->lyxCode();
 			if (lyx_code == InsetBase::LABEL_CODE) {
-				return static_cast<InsetCommand const *>(inset)->getContents();
+				string const id = static_cast<InsetCommand const *>(inset)->getContents();
+				return "id=\"" + sgml::cleanID(id) + "\"";
 			}
 		}
 

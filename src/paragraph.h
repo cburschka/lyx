@@ -129,8 +129,8 @@ public:
 				  OutputParams const & runparams,
 				  lyx::depth_type depth) const;
 
-	/// Get the id of the paragraph, usefull for docbook
-	std::string getDocbookId() const;
+	/// Get the id of the paragraph, usefull for docbook and linuxdoc
+	std::string getID() const;
 
 	// Get the first word of a paragraph, return the position where it left
 	lyx::pos_type getFirstWord(Buffer const & buf,

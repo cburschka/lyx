@@ -34,6 +34,12 @@ std::pair<bool, std::string> escapeChar(char c);
 /// Escape a word instead of a single character
 std::string escapeString(std::string const & raw);
 
+/// replaces illegal chars like ':' or '_' from SGML ID attributes
+std::string cleanID(std::string const & orig, std::string const & allowed = std::string());
+
+/// returns a uniq numeric id
+std::string const uniqueID(std::string const label);
+
 /// Opens tag
 void openTag(std::ostream & os, std::string const & name,
 	    std::string const & attribute = std::string());

@@ -1,3 +1,12 @@
+2004-10-29  José Matos  <jamatos@lyx.org>
+
+	* insetgraphics.C (uniqueID): transfered to sgml.C
+
+2004-10-29 Andreas Vox  <vox@isp.uni-luebeck.de>
+
+	* insetlabel.C (docbook, linuxdoc):
+	* insetref.C (docbook, linuxdoc) sanitize id.
+
 2004-10-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* ExternalSupport.C: s/getExtFromContents/getFormatFromContents/

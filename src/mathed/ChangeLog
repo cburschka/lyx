@@ -1,3 +1,8 @@
+2004-10-29  Andreas Vox  <vox@isp.uni-luebeck.de>
+
+	* math_hullinset.C (docbook):
+	* ref_inset.C (docbook): sanitize ids, clean exported docbook.
+
 2004-10-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_hullinset.C (mutate): fix endless loop for unknown types

@@ -30,6 +30,7 @@
 #include "lyx_main.h"
 #include "lyxrc.h"
 #include "outputparams.h"
+#include "sgml.h"
 #include "textpainter.h"
 #include "undo.h"
 
@@ -40,11 +41,14 @@
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 
+#include "support/lstrings.h"
+
 #include <boost/bind.hpp>
 
 #include <sstream>
 
 using lyx::cap::grabAndEraseSelection;
+using lyx::support::subst;
 
 using std::endl;
 using std::max;
@@ -1122,7 +1126,6 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 
-#include "support/lstrings.h"
 #include "support/lyxlib.h"
 
 
@@ -1342,25 +1345,44 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 		name = "informalequation";
 
 	string bname = name;
-	if (! label(0).empty()) bname += " id=\"" + label(0)+ "\"";
+	if (!label(0).empty()) 
+		bname += " id=\"" + sgml::cleanID(label(0)) + "\"";
 	ms << MTag(bname.c_str());
 
+	ostringstream ls;
 	if (runparams.flavor == OutputParams::XML) {
-		ms <<   MTag("math");
-		MathGridInset::mathmlize(ms);
-		ms <<   ETag("math");
-		ms <<   MTag("alt role=\"tex\" ");
-		ostringstream ls;
+		ms << MTag("alt role=\"tex\" ");
+		// Workaround for db2latex: db2latex always includes equations with
+		// \ensuremath{} or \begin{display}\end{display}
+		// so we strip LyX' math environment
 		WriteStream wi(ls, false, false);
 		MathGridInset::write(wi);
-		ms << ls.str();
-		ms <<   ETag("alt");
+		ms << subst(subst(ls.str(), "&", "&amp;"), "<", "&lt;");
+		ms << ETag("alt");
+		ms << MTag("math");
+		MathGridInset::mathmlize(ms);
+		ms << ETag("math");
 	} else {
-		ms <<   MTag("alt role=\"tex\" ");
-		res = latex(buf, ms.os(), runparams);
-		ms <<   ETag("alt");
+		ms << MTag("alt role=\"tex\"");		
+		res = latex(buf, ls, runparams);
+		ms << subst(subst(ls.str(), "&", "&amp;"), "<", "&lt;");
+		ms << ETag("alt");
 	}
-
+	
+	ms <<  "<graphic fileref=\"eqn/";
+	if ( !label(0).empty()) 
+		ms << sgml::cleanID(label(0));
+	else {
+		// Some arbitrary unique number for this os. 
+		// Note that each call of math_hullinset::docbook()
+		// will increase the os position by at least 60 chars or more
+		ms << sgml::uniqueID("anon");
+	}
+	if (runparams.flavor == OutputParams::XML) 
+		ms << "\"/>";
+	else 
+		ms << "\">";
+		
 	ms << ETag(name.c_str());
 	return ms.line() + res;
 }

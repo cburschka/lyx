@@ -69,6 +69,7 @@ TODO
 #include "metricsinfo.h"
 #include "mover.h"
 #include "outputparams.h"
+#include "sgml.h"
 
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"
@@ -78,7 +79,6 @@ TODO
 #include "support/lyxlib.h" // float_equal
 #include "support/os.h"
 #include "support/systemcall.h"
-#include "support/tostr.h"
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
@@ -126,13 +126,6 @@ string const RemoveExtension(string const & filename)
 }
 
 
-string const uniqueID()
-{
-	static unsigned int seed = 1000;
-	return "graph" + tostr(++seed);
-}
-
-
 string findTargetFormat(string const & format, OutputParams const & runparams)
 {
 	// Are we using latex or pdflatex?
@@ -160,7 +153,7 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 
 
 InsetGraphics::InsetGraphics()
-	: graphic_label(uniqueID()),
+	: graphic_label(sgml::uniqueID("graph")),
 	  graphic_(new RenderGraphic(this))
 {}
 
@@ -168,7 +161,7 @@ InsetGraphics::InsetGraphics()
 InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 	: InsetOld(ig),
 	  boost::signals::trackable(),
-	  graphic_label(uniqueID()),
+	  graphic_label(sgml::uniqueID("graph")),
 	  graphic_(new RenderGraphic(*ig.graphic_, this))
 {
 	setParams(ig.params());

@@ -1,3 +1,14 @@
+2004-10-29  José Matos  <jamatos@lyx.org>
+
+	* output_docbook.C (makeEnvironment):
+	* sgml.C (openTag):
+	* paragraph.[Ch] (getID): rename function, and return it enclosed in id="...".
+
+2004-10-29 Andreas Vox  <vox@isp.uni-luebeck.de>
+
+	* sgml.[Ch] (uniqueID): returns a unique id for a given label.
+	(cleanID): sanitize any id.
+
 2004-10-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* buffer.C, lyxlex_pimpl.C:
