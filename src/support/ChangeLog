@@ -1,5 +1,9 @@
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
+	* copy.C (copy): open the ifstream with ios::binary.
+
+2004-12-14  Angus Leeming  <leeming@lyx.org>
+
 	* os.C: Add _WIN32 to the #define.
 
 	* systemcall.C (startscript): remove trailing '/n' from request to
