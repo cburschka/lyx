@@ -1,4 +1,5 @@
 #include <config.h>
+#include <algorithm>
 
 #include "math_mathmlstream.h"
 #include "math_inset.h"
@@ -213,10 +214,7 @@ WriteStream & operator<<(WriteStream & ws, MathArray const & ar)
 WriteStream & operator<<(WriteStream & ws, char const * s)
 {
 	ws.os() << s;
-	for ( ; *s ; ++s) {
-		if (*s == '\n')
-			++ws.line();
-	}
+	ws.line() += std::count(s, s + strlen(s), '\n');
 	return ws;
 }
 
