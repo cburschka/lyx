@@ -1,6 +1,8 @@
 2001-07-18  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* buffer.C (readLyXformat2): Add filename to the error dialog
+	* src/buffer.C (readLyXformat2): Add filename to the error dialog
+
+	* lib/encodings: Change latex encoding 'unknown' to 'latin1'
 
 2001-07-16  Dekel Tsur  <dekelts@tau.ac.il>
 
