@@ -111,6 +111,7 @@ void InsetText::init(InsetText const * ins)
 	old_par = 0;
 	last_drawn_width = -1;
 	frame_is_visible = false;
+	cached_bview = 0;
 }
 
 
@@ -118,6 +119,7 @@ InsetText::~InsetText()
 {
 	// delete all instances of LyXText before deleting the paragraps used
 	// by it.
+	cached_bview = 0;
 	for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit) {
 		delete (*cit).second;
 		(*cit).second = 0;
@@ -135,6 +137,7 @@ void InsetText::clear()
 {
 	// delete all instances of LyXText before deleting the paragraps used
 	// by it.
+	cached_bview = 0;
 	for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit) {
 		delete (*cit).second;
 		(*cit).second = 0;
@@ -1498,6 +1501,7 @@ void InsetText::setParagraphData(Paragraph * p)
 {
 	// delete all instances of LyXText before deleting the paragraps used
 	// by it.
+	cached_bview = 0;
 	for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit){
 		delete (*cit).second;
 		(*cit).second = 0;
@@ -1613,28 +1617,34 @@ Row * InsetText::crow(BufferView * bv) const
 LyXText * InsetText::getLyXText(BufferView const * lbv,
 				bool const recursive) const
 {
+	if (!recursive && cached_bview && (cached_bview == lbv))
+		return cached_text;
+
 	// Super UGLY! (Lgb)
 	BufferView * bv = const_cast<BufferView *>(lbv);
 	
+	cached_bview = bv;
 	if ((cache.find(bv) != cache.end()) && cache[bv]) {
+		cached_text = cache[bv];
 		if (recursive && the_locking_inset)
 			return the_locking_inset->getLyXText(bv);
-		return cache[bv];
+		return cached_text;
 	}
-	LyXText * lt = new LyXText(const_cast<InsetText *>(this));
-	lt->init(bv);
-	cache[bv] = lt;
+	cached_text = new LyXText(const_cast<InsetText *>(this));
+	cached_text->init(bv);
+	cache[bv] = cached_text;
 	if (the_locking_inset) {
-		lt->setCursor(bv, inset_par, inset_pos, true, inset_boundary);
+		cached_text->setCursor(bv, inset_par, inset_pos, true, inset_boundary);
 		if (recursive)
 			return the_locking_inset->getLyXText(bv);
 	}
-	return lt;
+	return cached_text;
 }
 
 
 void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 {
+	cached_bview = 0;
 	if ((cache.find(bv) == cache.end()) || !cache[bv])
 		return;
 	delete cache[bv];

@@ -322,5 +322,8 @@ private:
 	mutable int last_drawn_width;
 	///
 	mutable bool frame_is_visible;
+	///
+	mutable BufferView * cached_bview;
+	mutable LyXText * cached_text;
 };
 #endif

@@ -1,3 +1,11 @@
+2001-07-02  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (getLyXText): introduce a cache in getLyXText so that
+	following calls are only returned the right pointer without the over
+	head to search in the map.
+	(various funcs): reset the cached_bview variable as this signs that
+	the cache is not valid anymore.
+
 2001-06-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insettabular.C (clone): do not copy the LyXTabular twice
