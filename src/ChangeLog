@@ -1,3 +1,11 @@
+2003-01-30  Angus Leeming  <leeming@lyx.org>
+
+	* factory.C (createInset): create an InsetCommandParam of type "index"
+	and use it to 'do the right thing'.
+
+	* text2.C (getStringToIndex): ensure that cursor position is always
+	reset to the reset_cursor position.
+
 2003-01-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxfunc.C (getStatus): "buffer-export custom" should never be

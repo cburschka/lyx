@@ -93,11 +93,16 @@ Inset * createInset(FuncRequest const & cmd)
 			return 0;
 
 		case LFUN_INDEX_INSERT: {
-			string entry = cmd.argument;
-			if (entry.empty())
-				entry = bv->getLyXText()->getStringToIndex(bv);
-			if (!entry.empty())
-				return new InsetIndex(InsetCommandParams("index", entry));
+			string const entry = cmd.argument.empty() ?
+				"index" : cmd.argument;
+			InsetCommandParams icp;
+			icp.setFromString(entry);
+
+			if (icp.getContents().empty())
+				icp.setContents(bv->getLyXText()->getStringToIndex(bv));
+			if (!icp.getContents().empty())
+				return new InsetIndex(icp);
+			
 			bv->owner()->getDialogs().createIndex();
 			return 0;
 		}

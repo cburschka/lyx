@@ -129,7 +129,7 @@ void Dialogs::showIndex(InsetCommand * ic)
 
 void Dialogs::createIndex()
 {
-	pimpl_->index.controller().createInset(string());
+	pimpl_->index.controller().createInset("index");
 }
 
 
