@@ -49,13 +49,9 @@ namespace {
 
 bool readFile(Buffer * b, string const & s)
 {
-	string ts(s);
-	string e = OnlyPath(s);
-	string a = e;
 	// File information about normal file
-	FileInfo fileInfo(s);
-
-	if (!fileInfo.exist()) {
+	FileInfo fileN(s);
+	if (!fileN.exist()) {
 		string const file = MakeDisplayPath(s, 50);
 		string text = bformat(_("The specified document\n%1$s"
 					"\ncould not be read."), file);
@@ -64,58 +60,59 @@ bool readFile(Buffer * b, string const & s)
 	}
 
 	// Check if emergency save file exists and is newer.
-	e += OnlyFilename(s) + ".emergency";
-	FileInfo fileInfoE(e);
+	string const e = OnlyPath(s) + OnlyFilename(s) + ".emergency";
+	FileInfo fileE(e);
 
-	bool use_emergency = false;
-
-	if (fileInfoE.exist() && fileInfo.exist()) {
-		if (fileInfoE.getModificationTime()
-		    > fileInfo.getModificationTime()) {
-			string const file = MakeDisplayPath(s, 20);
-			string text = bformat(_("An emergency save of the document %1$s exists.\n"
-				"\nRecover emergency save?"), file);
-			int const ret = Alert::prompt(_("Load emergency save?"),
-				text, 0, 1, _("&Recover"), _("&Load Original"));
-
-			if (ret == 0) {
-				ts = e;
-				// the file is not saved if we load the
-				// emergency file.
-				b->markDirty();
-				use_emergency = true;
-			}
+	if (fileE.exist() && fileN.exist()
+	    && fileE.getModificationTime() > fileN.getModificationTime())
+	{
+		string const file = MakeDisplayPath(s, 20);
+		string text = bformat(_("An emergency save of the document "
+					"%1$s exists.\n\n"
+					"Recover emergency save?"), file);
+		switch (Alert::prompt(_("Load emergency save?"), text, 0, 2,
+				      _("&Recover"),  _("&Load Original"),
+				      _("&Cancel")))
+		{
+		case 0:
+			// the file is not saved if we load the emergency file.
+			b->markDirty();
+			return b->readFile(e);
+		case 1:
+			break;
+		default:
+			return false;
 		}
 	}
 
-	if (!use_emergency) {
-		// Now check if autosave file is newer.
-		a += '#';
-		a += OnlyFilename(s);
-		a += '#';
-		FileInfo fileInfoA(a);
-		if (fileInfoA.exist() && fileInfo.exist()) {
-			if (fileInfoA.getModificationTime()
-			    > fileInfo.getModificationTime()) {
-				string const file = MakeDisplayPath(s, 20);
-				string text = bformat(_("The backup of the document %1$s is newer.\n\n"
-					"Load the backup instead?"), file);
-				int const ret = Alert::prompt(_("Load backup?"),
-					text, 0, 1, _("&Load backup"), _("Load &original"));
+	// Now check if autosave file is newer.
+	string const a = OnlyPath(s) + '#' + OnlyFilename(s) + '#';
+	FileInfo fileA(a);
 
-				if (ret == 0) {
-					ts = a;
-					// the file is not saved if we load the
-					// autosave file.
-					b->markDirty();
-				} else {
-					// Here, we should delete the autosave
-					unlink(a);
-				}
-			}
+	if (fileA.exist() && fileN.exist()
+	    && fileA.getModificationTime() > fileN.getModificationTime())
+	{
+		string const file = MakeDisplayPath(s, 20);
+		string text = bformat(_("The backup of the document "
+					"%1$s is newer.\n\nLoad the "
+					"backup instead?"), file);
+		switch (Alert::prompt(_("Load backup?"), text, 0, 2,
+				      _("&Load backup"), _("Load &original"),
+				      _("&Cancel") ))
+		{
+		case 0:
+			// the file is not saved if we load the autosave file.
+			b->markDirty();
+			return b->readFile(a);
+		case 1:
+			// Here we delete the autosave
+			unlink(a);
+			break;
+		default:
+			return false;
 		}
 	}
-	return b->readFile(ts);
+	return b->readFile(s);
 }
 
 
