@@ -435,7 +435,7 @@ LyXText * InsetCollapsable::getLyXText(BufferView * bv) const
 }
 
 
-void InsetCollapsable::deleteLyXText(BufferView * bv)
+void InsetCollapsable::deleteLyXText(BufferView * bv) const
 {
     inset->deleteLyXText(bv);
 }
