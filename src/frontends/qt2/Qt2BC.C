@@ -1,5 +1,5 @@
 /**
- * \file qt2BC.C
+ * \file Qt2BC.C
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
@@ -13,28 +13,31 @@
 #pragma implementation
 #endif
 
-#include "qt2BC.h"
+#include "Qt2BC.h"
 
 #include <qbutton.h>
 
-qt2BC::qt2BC(string const & cancel, string const & close)
+Qt2BC::Qt2BC(string const & cancel, string const & close)
 	: GuiBC<QButton, QWidget>(cancel, close)
 {}
 
 
-void qt2BC::setButtonEnabled(QButton * obj, bool enabled)
+void Qt2BC::setButtonEnabled(QButton * obj, bool enabled)
 {
 	obj->setEnabled(enabled);
 }
 
 
-void qt2BC::setWidgetEnabled(QWidget * obj, bool enabled)
+void Qt2BC::setWidgetEnabled(QWidget * obj, bool enabled)
 {
 	obj->setEnabled(enabled);
+	QWidget::FocusPolicy const p =
+		(enabled) ? QWidget::StrongFocus : QWidget::NoFocus; 
+	obj->setFocusPolicy(p);
 }
 
 
-void qt2BC::setButtonLabel(QButton * obj, string const & label)
+void Qt2BC::setButtonLabel(QButton * obj, string const & label)
 {
 	obj->setText(label.c_str());
 }

@@ -15,7 +15,7 @@
 #include <boost/smart_ptr.hpp>
 
 #include "Qt2Base.h"
-#include "qt2BC.h"
+#include "Qt2BC.h"
 #include "QtLyXView.h" 
 
 #ifdef __GNUG_
@@ -69,7 +69,7 @@ private:
 		BULLETBMTABLE
 	};
 	/// Pointer to the actual instantiation of the ButtonController.
-	virtual qt2BC & bc();
+	virtual Qt2BC & bc();
 	/// Build the dialog
 	virtual void build();
 // 	/// Filter the inputs
@@ -158,12 +158,12 @@ private:
 // 	///
 // 	boost::scoped_ptr<Combox> combo_doc_class;
 	/// The ButtonController
-	ButtonController<NoRepeatedApplyReadOnlyPolicy, qt2BC> bc_;
+	ButtonController<NoRepeatedApplyReadOnlyPolicy, Qt2BC> bc_;
 };
 
 
 inline
-qt2BC & QDocument::bc()
+Qt2BC & QDocument::bc()
 {
 	return bc_;
 }

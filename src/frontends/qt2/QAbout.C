@@ -20,7 +20,7 @@
 #include "QtLyXView.h"
  
 #include "ButtonControllerBase.h"
-#include "qt2BC.h"
+#include "Qt2BC.h"
 #include "ControlAboutlyx.h"
 #include "QAbout.h"
 

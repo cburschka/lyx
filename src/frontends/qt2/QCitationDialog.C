@@ -11,7 +11,6 @@
 #include "QCitationDialog.h"
 #include "Dialogs.h"
 #include "QCitation.h"
-#include "qt2BC.h"
 #include "controllers/ControlCitation.h"
 
 #include <qcheckbox.h>
@@ -41,6 +40,8 @@ QCitationDialog::QCitationDialog(QCitation * form, QWidget * parent,  const char
 		form, SLOT(slotRestore()));
 	connect(applyPB, SIGNAL(clicked()),
 		form, SLOT(slotApply()));
+	connect(searchED, SIGNAL(returnPressed()),
+		form, SLOT(slotNextClicked()));
 }
 
  

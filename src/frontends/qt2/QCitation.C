@@ -24,7 +24,7 @@
 #include <qpushbutton.h>
 
 #include "QtLyXView.h" 
-#include "qt2BC.h"
+#include "Qt2BC.h"
 #include "ControlCitation.h"
 #include "gettext.h"
 #include "support/lstrings.h"

@@ -36,6 +36,12 @@ void QIndexDialog::close_adaptor()
 }
 
 
+void QIndexDialog::change_adaptor()
+{
+	form_->changed();
+}
+
+ 
 void QIndexDialog::closeEvent(QCloseEvent *e)
 {
 	form_->slotWMHide();

@@ -30,7 +30,7 @@
 #include "Dialogs.h"
 #include "BufferView.h"
 #include "buffer.h"
-#include "qt2BC.h"
+#include "Qt2BC.h"
 
 // xforms implementations
 #include "../xforms/FormError.h"
@@ -84,9 +84,9 @@ Dialogs::Dialogs(LyXView * lv)
 	splash_.reset(new QSplash(lv, this));
 
 	// dialogs that have been converted to new scheme
-	add(new GUICitation<QCitation, qt2BC>(*lv, *this));
-	add(new GUIAboutlyx<QAbout, qt2BC>(*lv, *this));
-	add(new GUIIndex<QIndex, qt2BC>(*lv, *this));
+	add(new GUICitation<QCitation, Qt2BC>(*lv, *this));
+	add(new GUIAboutlyx<QAbout, Qt2BC>(*lv, *this));
+	add(new GUIIndex<QIndex, Qt2BC>(*lv, *this));
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file qt2BC.h
+ * \file Qt2BC.h
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
@@ -27,11 +27,11 @@ class QButton;
     the activation policy and which buttons correspond to which output of the
     state machine.
 */
-class qt2BC : public GuiBC<QButton, QWidget>
+class Qt2BC : public GuiBC<QButton, QWidget>
 {
 public:
 	///
-	qt2BC(string const &, string const &);
+	Qt2BC(string const &, string const &);
 
 private:
 	/// Updates the button sensitivity (enabled/disabled)

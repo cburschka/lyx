@@ -21,14 +21,14 @@
 #include "QtLyXView.h" 
 #include "Dialogs.h"
 #include "Qt2Base.h"
-#include "qt2BC.h"
+#include "Qt2BC.h"
 #include "support/LAssert.h"
 
 #include <stdio.h>
 
 
 Qt2Base::Qt2Base(ControlButtons & c, QString const & t)
-	: ViewBC<qt2BC>(c), title_(t)
+	: ViewBC<Qt2BC>(c), title_(t)
 {}
 
 
@@ -58,9 +58,18 @@ void Qt2Base::hide()
 }
 
 
+bool Qt2Base::isValid()
+{
+	return true;
+}
+
+ 
 void Qt2Base::changed()
 {
-	bc().valid(); 
+	if (isValid())
+		bc().valid(); 
+	else
+		bc().invalid();
 }
 
 

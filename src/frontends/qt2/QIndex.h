@@ -40,9 +40,6 @@ private:
 	void createIndex(string const &);
 	/// edit an Index  inset
 	void showIndex(InsetCommand * const);
- 
-	/// is the inset we are reading from a readonly buffer ?
-	bool readonly;
 };
 
 #endif // QINDEX_H

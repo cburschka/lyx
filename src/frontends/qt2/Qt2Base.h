@@ -32,11 +32,11 @@ class QDialog;
 
 #include <boost/smart_ptr.hpp>
 
-class qt2BC;
+class Qt2BC;
 
 /** This class is an Qt2 GUI base class.
  */
-class Qt2Base : public QObject, public ViewBC<qt2BC>
+class Qt2Base : public QObject, public ViewBC<Qt2BC>
 {
 	Q_OBJECT
 public:
@@ -56,6 +56,9 @@ protected:
 	/// the dialog has changed contents
 	virtual void changed(); 
 
+	/// is the dialog currently valid ? 
+	virtual bool isValid();
+ 
 protected slots:
 	// dialog closed from WM
 	void slotWMHide();

@@ -82,7 +82,7 @@ libqt2_la_SOURCES = \
 	FileDialog_private.C \
 	Qt2Base.C	\
 	Qt2Base.h	\
+	Qt2BC.C	\
+	Qt2BC.h	\
 	emptytable.C \
-	emptytable.h \
-	qt2BC.C	\
-	qt2BC.h	
+	emptytable.h

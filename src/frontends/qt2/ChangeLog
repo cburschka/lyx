@@ -1,3 +1,25 @@
+2001-08-23  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
+	* Makefile.am:
+	* Qt2BC.h:
+	* Qt2BC.C:
+ 	* QAbout.C:
+	* QCitation.C:
+ 	* QDocument.h:
+	* Qt2Base.C:
+	* Qt2Base.h: rename qt2BC -> Qt2BC, set focus for widget enable
+
+	* QIndex.h:
+	* QIndex.C:
+	* ui/QIndexDialog.ui: use the BC properly
+
+	* Qt2Base.h:
+	* Qt2Base.C: add a virtual isValid(), and predicate what changed()
+	  tells the BC on the return value
+ 
+	* README: update
+ 
 2001-08-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C: add QIndex
