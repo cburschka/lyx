@@ -339,7 +339,7 @@ int Buffer::readHeader(LyXLex & lex)
 // if par = 0 normal behavior
 // else insert behavior
 // Returns false if "\the_end" is not read (Asger)
-bool Buffer::readBody(LyXLex & lex, Paragraph * par)
+bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 {
 	unknown_layouts = 0;
 	int unknown_tokens = 0;
@@ -348,17 +348,9 @@ bool Buffer::readBody(LyXLex & lex, Paragraph * par)
 	Paragraph::depth_type depth = 0;
 	bool the_end_read = false;
 
-	Paragraph * first_par = 0;
 	LyXFont font(LyXFont::ALL_INHERIT, params.language);
 
-	if (!par) {
-		// New document
-		par = new Paragraph;
-		par->layout(params.getLyXTextClass().defaultLayout());
-		// mark the first paragraph
-		if (params.tracking_changes)
-			par->trackChanges();
-
+	if (paragraphs.empty()) {
 		unknown_tokens += readHeader(lex);
 
 		if (!params.getLyXTextClass().load()) {
@@ -378,7 +370,6 @@ bool Buffer::readBody(LyXLex & lex, Paragraph * par)
 	} else {
 		// We are inserting into an existing document
 		users->text->breakParagraph(users, paragraphs);
-		first_par = users->text->ownerParagraph();
 		pos = 0;
 		markDirty();
 
@@ -405,14 +396,8 @@ bool Buffer::readBody(LyXLex & lex, Paragraph * par)
 			continue;
 		}
 
-		unknown_tokens += readToken(lex, par, first_par,
-		                            token, pos, depth, font);
+		unknown_tokens += readToken(lex, paragraphs, pit, token, pos, depth, font);
 	}
-
-	if (!first_par)
-		first_par = par;
-
-	paragraphs.set(first_par);
 
 	if (unknown_layouts > 0) {
 		string s = _("Couldn't set the layout for ");
@@ -453,12 +438,11 @@ bool Buffer::readBody(LyXLex & lex, Paragraph * par)
 
 
 int
-Buffer::readToken(LyXLex & lex, Paragraph *& par,
-				   Paragraph *& first_par,
-				   string const & token, int & pos,
-				   Paragraph::depth_type & depth,
-				   LyXFont & font
-	)
+Buffer::readToken(LyXLex & lex, ParagraphList & pars,
+                  ParagraphList::iterator & pit,
+                  string const & token, int & pos,
+                  Paragraph::depth_type & depth,
+                  LyXFont & font)
 {
 	static Change current_change;
 	int unknown = 0;
@@ -471,7 +455,7 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 	if (token[0] != '\\') {
 		for (string::const_iterator cit = token.begin();
 		     cit != token.end(); ++cit) {
-			par->insertChar(pos, (*cit), font, current_change);
+			pit->insertChar(pos, (*cit), font, current_change);
 			++pos;
 		}
 	} else if (token == "\\layout") {
@@ -547,18 +531,14 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 			tmplex.setStream(is);
 			Inset * inset = new InsetCaption;
 			inset->Read(this, tmplex);
-			par->InsertInset(pos, inset, font);
+			pit->InsertInset(pos, inset, font);
 			++pos;
 		} else {
 #endif
-			if (!first_par)
-				first_par = par;
-			else {
-				par = new Paragraph(par);
-				par->layout(params.getLyXTextClass().defaultLayout());
-				if (params.tracking_changes)
-					par->trackChanges();
-			}
+			Paragraph * par = new Paragraph();
+			par->layout(params.getLyXTextClass().defaultLayout());
+			if (params.tracking_changes)
+				par->trackChanges();
 			pos = 0;
 			par->layout(params.getLyXTextClass()[layoutname]);
 			// Test whether the layout is obsolete.
@@ -566,6 +546,10 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 			if (!layout->obsoleted_by().empty())
 				par->layout(params.getLyXTextClass()[layout->obsoleted_by()]);
 			par->params().depth(depth);
+			// insert after
+			if (pit != pars.end())
+				++pit;
+			pit = pars.insert(pit, par);
 #if USE_CAPTION
 		}
 #endif
@@ -578,7 +562,7 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 		// But insets should read it, it is a part of
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
-		readInset(lex, par, pos, font, current_change);
+		readInset(lex, pit, pos, font, current_change);
 	} else if (token == "\\family") {
 		lex.next();
 		font.setLyXFamily(lex.getString());
@@ -627,17 +611,17 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 		lex.next();
 		font.setLyXColor(lex.getString());
 	} else if (token == "\\SpecialChar") {
-		LyXLayout_ptr const & layout = par->layout();
+		LyXLayout_ptr const & layout = pit->layout();
 
 		// Insets don't make sense in a free-spacing context! ---Kayvan
-		if (layout->free_spacing || par->isFreeSpacing()) {
+		if (layout->free_spacing || pit->isFreeSpacing()) {
 			if (lex.isOK()) {
 				lex.next();
 				string const next_token = lex.getString();
 				if (next_token == "\\-") {
-					par->insertChar(pos, '-', font, current_change);
+					pit->insertChar(pos, '-', font, current_change);
 				} else if (next_token == "~") {
-					par->insertChar(pos, ' ', font, current_change);
+					pit->insertChar(pos, ' ', font, current_change);
 				} else {
 					lex.printError("Token `$$Token' "
 						       "is in free space "
@@ -648,16 +632,16 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 		} else {
 			Inset * inset = new InsetSpecialChar;
 			inset->read(this, lex);
-			par->insertInset(pos, inset, font, current_change);
+			pit->insertInset(pos, inset, font, current_change);
 		}
 		++pos;
 	} else if (token == "\\i") {
 		Inset * inset = new InsetLatexAccent;
 		inset->read(this, lex);
-		par->insertInset(pos, inset, font, current_change);
+		pit->insertInset(pos, inset, font, current_change);
 		++pos;
 	} else if (token == "\\backslash") {
-		par->insertChar(pos, '\\', font, current_change);
+		pit->insertChar(pos, '\\', font, current_change);
 		++pos;
 	} else if (token == "\\begin_deeper") {
 		++depth;
@@ -669,37 +653,37 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 		else
 			--depth;
 	} else if (token == "\\noindent") {
-		par->params().noindent(true);
+		pit->params().noindent(true);
 	} else if (token == "\\leftindent") {
 		lex.nextToken();
 		LyXLength value(lex.getString());
-		par->params().leftIndent(value);
+		pit->params().leftIndent(value);
 	} else if (token == "\\fill_top") {
-		par->params().spaceTop(VSpace(VSpace::VFILL));
+		pit->params().spaceTop(VSpace(VSpace::VFILL));
 	} else if (token == "\\fill_bottom") {
-		par->params().spaceBottom(VSpace(VSpace::VFILL));
+		pit->params().spaceBottom(VSpace(VSpace::VFILL));
 	} else if (token == "\\line_top") {
-		par->params().lineTop(true);
+		pit->params().lineTop(true);
 	} else if (token == "\\line_bottom") {
-		par->params().lineBottom(true);
+		pit->params().lineBottom(true);
 	} else if (token == "\\pagebreak_top") {
-		par->params().pagebreakTop(true);
+		pit->params().pagebreakTop(true);
 	} else if (token == "\\pagebreak_bottom") {
-		par->params().pagebreakBottom(true);
+		pit->params().pagebreakBottom(true);
 	} else if (token == "\\start_of_appendix") {
-		par->params().startOfAppendix(true);
+		pit->params().startOfAppendix(true);
 	} else if (token == "\\paragraph_spacing") {
 		lex.next();
 		string const tmp = rtrim(lex.getString());
 		if (tmp == "single") {
-			par->params().spacing(Spacing(Spacing::Single));
+			pit->params().spacing(Spacing(Spacing::Single));
 		} else if (tmp == "onehalf") {
-			par->params().spacing(Spacing(Spacing::Onehalf));
+			pit->params().spacing(Spacing(Spacing::Onehalf));
 		} else if (tmp == "double") {
-			par->params().spacing(Spacing(Spacing::Double));
+			pit->params().spacing(Spacing(Spacing::Double));
 		} else if (tmp == "other") {
 			lex.next();
-			par->params().spacing(Spacing(Spacing::Other,
+			pit->params().spacing(Spacing(Spacing::Other,
 					 lex.getFloat()));
 		} else {
 			lex.printError("Unknown spacing token: '$$Token'");
@@ -709,7 +693,7 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 		if (tmpret == -1)
 			++tmpret;
 		int const tmpret2 = int(pow(2.0, tmpret));
-		par->params().align(LyXAlignment(tmpret2));
+		pit->params().align(LyXAlignment(tmpret2));
 	} else if (token == "\\added_space_top") {
 		lex.nextToken();
 		VSpace value = VSpace(lex.getString());
@@ -718,7 +702,7 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 		if ((value.length().len().value() != 0) ||
 		    value.keep() ||
 		    (value.kind() != VSpace::LENGTH))
-			par->params().spaceTop(value);
+			pit->params().spaceTop(value);
 	} else if (token == "\\added_space_bottom") {
 		lex.nextToken();
 		VSpace value = VSpace(lex.getString());
@@ -727,33 +711,33 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 		if ((value.length().len().value() != 0) ||
 		   value.keep() ||
 		    (value.kind() != VSpace::LENGTH))
-			par->params().spaceBottom(value);
+			pit->params().spaceBottom(value);
 	} else if (token == "\\labelwidthstring") {
 		lex.eatLine();
-		par->params().labelWidthString(lex.getString());
+		pit->params().labelWidthString(lex.getString());
 		// do not delete this token, it is still needed!
 	} else if (token == "\\newline") {
-		par->insertChar(pos, Paragraph::META_NEWLINE, font, current_change);
+		pit->insertChar(pos, Paragraph::META_NEWLINE, font, current_change);
 		++pos;
 	} else if (token == "\\LyXTable") {
 		Inset * inset = new InsetTabular(*this);
 		inset->read(this, lex);
-		par->insertInset(pos, inset, font, current_change);
+		pit->insertInset(pos, inset, font, current_change);
 		++pos;
 	} else if (token == "\\bibitem") {  // ale970302
 		InsetCommandParams p("bibitem", "dummy");
 		InsetBibitem * inset = new InsetBibitem(p);
 		inset->read(this, lex);
-		par->insertInset(pos, inset, font, current_change);
+		pit->insertInset(pos, inset, font, current_change);
 		++pos;
 	} else if (token == "\\hfill") {
-		par->insertInset(pos, new InsetHFill(),
+		pit->insertInset(pos, new InsetHFill(),
 			LyXFont(LyXFont::ALL_INHERIT, params.language));
 		++pos;
 	} else if (token == "\\change_unchanged") {
 		// Hack ! Needed for empty paragraphs :/
 		if (!pos)
-			par->cleanChanges();
+			pit->cleanChanges();
 		current_change = Change(Change::UNCHANGED);
 	} else if (token == "\\change_inserted") {
 		lex.nextToken();
@@ -786,7 +770,7 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 		// we can do this here this way because we're actually reading
 		// the buffer and don't care about LyXText right now.
 		InsetError * new_inset = new InsetError(s);
-		par->insertInset(pos, new_inset, LyXFont(LyXFont::ALL_INHERIT,
+		pit->insertInset(pos, new_inset, LyXFont(LyXFont::ALL_INHERIT,
 				 params.language));
 
 	}
@@ -854,7 +838,7 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 }
 
 
-void Buffer::readInset(LyXLex & lex, Paragraph *& par,
+void Buffer::readInset(LyXLex & lex, ParagraphList::iterator pit,
 		       int & pos, LyXFont & font, Change current_change)
 {
 	// consistency check
@@ -970,13 +954,19 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 	}
 
 	if (inset) {
-		par->insertInset(pos, inset, font, current_change);
+		pit->insertInset(pos, inset, font, current_change);
 		++pos;
 	}
 }
 
 
-bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
+bool Buffer::readFile(LyXLex & lex, string const & filename)
+{
+	return readFile(lex, filename, paragraphs.begin());
+}
+
+
+bool Buffer::readFile(LyXLex & lex, string const & filename, ParagraphList::iterator pit)
 {
 	if (lex.isOK()) {
 		lex.next();
@@ -1031,7 +1021,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 					istringstream is(STRCONV(ret.second));
 					LyXLex tmplex(0, 0);
 					tmplex.setStream(is);
-					return readFile(tmplex, string(), par);
+					return readFile(tmplex, string(), pit);
 				} else {
 					// This code is reached if lyx2lyx failed (for
 					// some reason) to change the file format of
@@ -1040,7 +1030,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 					return false;
 				}
 			}
-			bool the_end = readBody(lex, par);
+			bool the_end = readBody(lex, pit);
 			params.setPaperStuff();
 
 			if (!the_end) {

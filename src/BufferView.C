@@ -318,12 +318,13 @@ bool BufferView::insertLyXFile(string const & filen)
 	bool res = true;
 
 	if (c == '#') {
+		// FIXME: huh ? No we won't !
 		lyxerr[Debug::INFO] << "Will insert file with header" << endl;
-		res = buffer()->readFile(lex, fname, text->cursor.par());
+		res = buffer()->readFile(lex, fname, ParagraphList::iterator(text->cursor.par()));
 	} else {
 		lyxerr[Debug::INFO] << "Will insert file without header"
 				    << endl;
-		res = buffer()->readBody(lex, text->cursor.par());
+		res = buffer()->readBody(lex, ParagraphList::iterator(text->cursor.par()));
 	}
 
 	resize();

@@ -1446,17 +1446,15 @@ void LyXTabular::OldFormatRead(BufferParams const & bp,
 	}
 	set_row_column_number_info(true);
 
-	Paragraph * par = new Paragraph;
-	Paragraph * return_par = 0;
-
-	par->layout(bp.getLyXTextClass().defaultLayout());
-
 	string tmptok;
 	int pos = 0;
 	Paragraph::depth_type depth = 0;
 	LyXFont font(LyXFont::ALL_INHERIT);
 	font.setLanguage(owner_->bufferOwner()->getLanguage());
 
+	ParagraphList parlist;
+	ParagraphList::iterator pit = parlist.begin();
+       
 	while (lex.isOK()) {
 		lex.nextToken();
 		string const token = lex.getString();
@@ -1476,17 +1474,13 @@ void LyXTabular::OldFormatRead(BufferParams const & bp,
 			break;
 		}
 
-		owner_->bufferOwner()->readToken(lex, par, return_par,
+		owner_->bufferOwner()->readToken(lex, parlist, pit,
 		                                 token, pos, depth, font);
 
-		if (return_par) {
-			lex.printError("New Paragraph allocated! This should not happen!");
-			lex.pushToken(token);
-			delete par;
-			par = return_par;
-			break;
-		}
 	}
+
+	Paragraph * par = &(*parlist.begin());
+
 	// now we have the par we should fill the insets with this!
 	int cell = 0;
 	InsetText * inset = GetCellInset(cell);

@@ -1,5 +1,13 @@
 2003-03-12  John Levon  <levon@movementarian.org>
 
+	* BufferView.C (insertLyXFile):
+	* buffer.h:
+	* buffer.C:
+	* tabular.C: use a parlist iterator for creating the
+	  document.
+
+2003-03-12  John Levon  <levon@movementarian.org>
+
 	* buffer.C: make current_change static local not
 	  static file-scope
 

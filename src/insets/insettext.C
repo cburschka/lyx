@@ -262,7 +262,6 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 {
 	string token;
 	int pos = 0;
-	Paragraph * return_par = 0;
 	Paragraph::depth_type depth = 0;
 	LyXFont font(LyXFont::ALL_INHERIT);
 
@@ -270,6 +269,10 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 
 	if (buf->params.tracking_changes)
 		paragraphs.begin()->trackChanges();
+
+	// delete the initial paragraph
+	paragraphs.clear();
+	ParagraphList::iterator pit = paragraphs.begin();
 
 	while (lex.isOK()) {
 		lex.nextToken();
@@ -280,24 +283,21 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 			break;
 		}
 
-		Paragraph * tmp = &*(paragraphs.begin());
-
 		if (token == "\\the_end") {
 			lex.printError("\\the_end read in inset! Error in document!");
 			return;
 		}
 
-		const_cast<Buffer*>(buf)->readToken(lex, tmp, return_par,
+		// FIXME: ugly.
+
+		const_cast<Buffer*>(buf)->readToken(lex, paragraphs, pit,
 		                                    token, pos, depth, font);
-		paragraphs.set(tmp);
 	}
-	if (!return_par)
-		return_par = &*(paragraphs.begin());
-	paragraphs.set(return_par);
-	while (return_par) {
-		return_par->setInsetOwner(this);
-		return_par = return_par->next();
-	}
+
+	pit = paragraphs.begin();
+	ParagraphList::iterator const end = paragraphs.end();
+	for (; pit != end; ++pit)
+		pit->setInsetOwner(this);
 
 	if (token != "\\end_inset") {
 		lex.printError("Missing \\end_inset at this point. "

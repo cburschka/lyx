@@ -92,11 +92,15 @@ public:
 	/// Load the autosaved file.
 	void loadAutoSaveFile();
 
-	/** Reads a file.
+	/** Inserts a file into a document
 	    \param par if != 0 insert the file.
 	    \return \c false if method fails.
 	*/
-	bool readFile(LyXLex &, string const &, Paragraph * par = 0);
+	bool readFile(LyXLex &, string const &, ParagraphList::iterator pit);
+
+	// FIXME: it's very silly to pass a lex in here
+	/// load a new file
+	bool readFile(LyXLex &, string const &);
 
 	/// read the header, returns number of unknown tokens
 	int readHeader(LyXLex & lex);
@@ -105,11 +109,11 @@ public:
 	    \param par if != 0 insert the file.
 	    \return \c false if file is not completely read.
 	*/
-	bool readBody(LyXLex &, Paragraph * par = 0);
+	bool readBody(LyXLex &, ParagraphList::iterator pit);
 
 	/// This parses a single token
-	int readToken(LyXLex &, Paragraph *& par,
-	              Paragraph *& return_par,
+	int readToken(LyXLex &, ParagraphList & pars,
+	              ParagraphList::iterator & pit,
 	              string const & token, int & pos,
 	              Paragraph::depth_type & depth,
 	              LyXFont &);
@@ -119,9 +123,11 @@ public:
 				 LyXFont const &, string const &);
 	///
 	Paragraph * getParFromID(int id) const;
+
 private:
 	/// Parse a single inset.
-	void readInset(LyXLex &, Paragraph *& par, int & pos, LyXFont &);
+	void readInset(LyXLex &, ParagraphList::iterator pit, int & pos, LyXFont &, Change current_change);
+
 public:
 	/** Save file.
 	    Takes care of auto-save files and backup file if requested.
