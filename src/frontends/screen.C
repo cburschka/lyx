@@ -444,28 +444,14 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 	int y1, int y2, int yo, int xo)
 {
 	lyxerr[Debug::GUI] << "screen: drawFromTo " << y1 << '-' << y2 << endl;
+	hideCursor();
 
 	int const topy = text->top_y();
 	int y_text = topy + y1;
 	RowList::iterator rit = text->getRowNearY(y_text);
 	int y = y_text - topy;
-	// y1 is now the real beginning of row on the screen
 
-	hideCursor();
-
-#if 0
-	// some day it should look like that:
-	// redo metrics
-	Dimension dim;
-	LyXFont font;
-	MetricsInfo mi(bv, font, workarea().workWidth());
-	text->metrics(mi, dim);
-#endif
-
-	// draw it
-	RowList::iterator const rend = text->rows().end();
-	int yf = y;
-	paintRows2(*bv, *text, rit, rend, xo, y, yf, y2, yo);
+	y = paintRows(*bv, *text, rit, xo, y, y, y2, yo);
 
 	// maybe we have to clear the screen at the bottom
 	if (y < y2 && !text->isInInset()) {

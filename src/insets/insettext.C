@@ -362,21 +362,17 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 		first = 0;
 	}
 
-	int yf = y_offset + first;
-	y = 0;
 	int yo = y_offset + first;
 
-	paintRows2(*bv, text_, rit, end, x, y, yf, y2, yo);
+	paintRows(*bv, text_, rit, x, 0, yo, y2, yo);
 
 	text_.clearPaint();
 
-	if (drawFrame_ == ALWAYS || (drawFrame_ == LOCKED && locked)) {
+	if (drawFrame_ == ALWAYS || (drawFrame_ == LOCKED && locked))
 		drawFrame(pain, int(start_x));
-	}
 
-	if (need_update != INIT) {
+	if (need_update != INIT)
 		need_update = NONE;
-	}
 }
 
 

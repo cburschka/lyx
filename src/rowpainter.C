@@ -1058,7 +1058,7 @@ int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
 }
 
 
-void paintRows(BufferView const & bv, LyXText const & text,
+void paintRowsHelper(BufferView const & bv, LyXText const & text,
 	RowList::iterator rit, int y_offset, int x_offset, int y)
 {
 	// fix up missing metrics() call for main LyXText
@@ -1094,15 +1094,16 @@ void paintRows(BufferView const & bv, LyXText const & text,
 }
 
 
-void paintRows2(BufferView const & bv, LyXText const & text,
-	RowList::iterator rit, RowList::iterator end,
-	int xo, int & y, int yf, int y2, int yo)
+int paintRows(BufferView const & bv, LyXText const & text,
+	RowList::iterator rit, int xo, int y, int yf, int y2, int yo)
 {
+	RowList::iterator end = text.rows().end();
 	while (rit != end && yf < y2) {
-		paintRows(bv, text, rit, y + yo, xo, y + text.top_y());
+		paintRowsHelper(bv, text, rit, y + yo, xo, y + text.top_y());
 		y += rit->height();
 		yf += rit->height();
 		++rit;
 	}
+	return y;
 }
 

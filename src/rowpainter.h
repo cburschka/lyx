@@ -21,10 +21,10 @@ class LyXText;
 class BufferView;
 class VSpace;
 
-/// initialise painter and paint the rows
-void paintRows2(BufferView const & bv, LyXText const & text,
-	RowList::iterator rit, RowList::iterator end,
-	int xo, int & y, int yf, int y2, int yo);
+/// paint the rows
+// return last used y
+int paintRows(BufferView const & bv, LyXText const & text,
+	RowList::iterator rit, int xo, int y, int yf, int y2, int yo);
 
 /// return the pixel height of a space marker before/after a par
 int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp);
