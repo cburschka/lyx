@@ -14,8 +14,6 @@
 #pragma interface
 #endif
 
-#include <cstdio>
-
 #include "lyxlex.h"
 #include "LString.h"
 #include "support/LOstream.h"
@@ -162,7 +160,7 @@ public:
 	///
 	void Write(ostream &);
 	///
-	void Read(FILE * file);
+	void Read(istream &);
 
 	// cell <0 will tex the preamble
 	// returns the number of printed newlines

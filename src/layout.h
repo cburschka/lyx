@@ -258,16 +258,16 @@ public:
 	Spacing spacing;
 
 	///
-	LyXAlignment align; // add approp. signedness
+	LyXAlignment align;
 
 	///
-	LyXAlignment alignpossible; // add approp. signedness
+	LyXAlignment alignpossible;
 
 	///
-	char labeltype; // add approp. signedness
+	char labeltype; // add approp. type
 
 	///
-	char margintype; // add approp. signedness
+	char margintype; // add approp. type
 
 	///
 	bool fill_top;
@@ -340,7 +340,8 @@ public:
 	typedef vector<LyXLayout> LayoutList;
 	///
 	typedef LayoutList::const_iterator const_iterator;
-
+	///
+	typedef LayoutList::size_type size_type;
 	///
 	LyXTextClass (string const & = string(), 
 		      string const & = string(), 
@@ -422,9 +423,9 @@ public:
         ///
 	int maxcounter() const { return maxcounter_; }
 	///
-	LayoutList::size_type numLayouts() const { return layoutlist.size(); }
+	size_type numLayouts() const { return layoutlist.size(); }
 	///
-	LyXLayout const & operator[](LayoutList::size_type i) const {
+	LyXLayout const & operator[](size_type i) const {
 		return layoutlist[i];
 	}
 private:
@@ -512,41 +513,43 @@ public:
 	///
 	typedef ClassList::const_iterator const_iterator;
 	///
+	typedef ClassList::size_type size_type;
+	///
 	const_iterator begin() const { return classlist.begin(); }
 	///
 	const_iterator end() const { return classlist.end(); }
 	
 	/// Gets layout structure from layout number and textclass number
-	LyXLayout const & Style(ClassList::size_type textclass,
-				LyXTextClass::LayoutList::size_type layout) const;
+	LyXLayout const & Style(size_type textclass,
+				LyXTextClass::size_type layout) const;
 
 	/// Gets layout number from textclass number and layout name
-	pair<bool, LyXTextClass::LayoutList::size_type>
-	NumberOfLayout(ClassList::size_type textclass,
+	pair<bool, LyXTextClass::size_type>
+	NumberOfLayout(size_type textclass,
 		       string const & name) const;
 
 	/// Gets a layout name from layout number and textclass number
 	string const &
-	NameOfLayout(ClassList::size_type textclass,
-		     LyXTextClass::LayoutList::size_type layout) const;
+	NameOfLayout(size_type textclass,
+		     LyXTextClass::size_type layout) const;
 
 	/** Gets textclass number from name.
 	    Returns -1 if textclass name does not exist
 	*/
-	pair<bool, ClassList::size_type>
+	pair<bool, size_type>
 	NumberOfClass(string const & textclass) const;
 
 	///
-	string const & NameOfClass(ClassList::size_type number) const;
+	string const & NameOfClass(size_type number) const;
 
 	///
-	string const & LatexnameOfClass(ClassList::size_type number) const;
+	string const & LatexnameOfClass(size_type number) const;
 
 	///
-	string const & DescOfClass(ClassList::size_type number) const;
+	string const & DescOfClass(size_type number) const;
 
 	///
-	LyXTextClass const & TextClass(ClassList::size_type textclass) const;
+	LyXTextClass const & TextClass(size_type textclass) const;
 
 	/** Read textclass list.
 	    Returns false if this fails
@@ -556,7 +559,7 @@ public:
 	/** Load textclass.
 	    Returns false if this fails
 	*/
-	bool Load(ClassList::size_type number) const;
+	bool Load(size_type number) const;
 private:
 	///
 	mutable ClassList classlist;

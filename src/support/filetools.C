@@ -17,6 +17,7 @@
 #include <config.h>
 
 #include <cctype>
+#include <fstream>
 #include <utility>
 using std::make_pair;
 using std::pair;
@@ -153,15 +154,13 @@ bool IsFileReadable (string const & path)
 //	 -1 error (doesn't exist, no access, anything else) 
 int IsFileWriteable (string const & path)
 {
-	FilePtr fp(path, FilePtr::update);
-	if (!fp()) {
-		if ((errno == EACCES) || (errno == EROFS)) {
-			fp.reopen(path, FilePtr::read);
-			if (fp()) {
-				return 0;
-			}
-		}
-		return -1;
+	fstream fs(path.c_str(), ios::out|ios::ate);
+	if (!fs) {
+		fs.open(path.c_str(), ios::in|ios::ate);
+		if (fs)
+			return 0;
+		else
+			return -1;
 	}
 	return 1;
 }
@@ -179,23 +178,10 @@ int IsDirWriteable (string const & path)
 			     _("Could not test if directory is writeable"));
 		return -1;
 	} else {
-	FilePtr fp(tmpfl, FilePtr::truncate);
-	if (!fp()) {
-		if (errno == EACCES) {
-			return 0;
-		} else { 
-        		WriteFSAlert(_("LyX Internal Error!"), 
-				     _("Cannot open directory test file"));
-			return -1;
-		}
-		}
+		FileInfo fi(path);
+		if (fi.writable()) return 1;
+		return 0;
 	}
-		if (remove(tmpfl.c_str())) {
-			WriteFSAlert(_("LyX Internal Error!"), 
-				    _("Created test file but cannot remove it?"));
- 			return -1;
-	}
-	return 1;
 }
 
 
@@ -334,7 +320,10 @@ bool PutEnv(string const & envstr)
         // this leaks, but what can we do about it?
         //   Is doing a getenv() and a free() of the older value 
         //   a good idea? (JMarc)
-        int retval = putenv(const_cast<PUTENV_TYPE_ARG>((new string(envstr))->c_str()));
+	// Actually we don't have to leak...calling putenv like this
+	// should be enough:
+	int retval = putenv(const_cast<PUTENV_TYPE_ARG>(envstr.c_str()));
+	//int retval = putenv(const_cast<PUTENV_TYPE_ARG>((new string(envstr))->c_str()));
 #else
 #ifdef HAVE_SETENV 
         string varname;
@@ -979,7 +968,7 @@ static cmdret do_popen(string const & cmd)
 	// create our own popen based on fork, exec, pipe
 	// of course the best would be to have a
 	// pstream (process stream), with the
-	// variants ipstream, opstream and
+	// variants ipstream, opstream
 	FILE * inf = popen(cmd.c_str(), "r");
 	string ret;
 	int c = fgetc(inf);

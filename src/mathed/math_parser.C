@@ -86,13 +86,13 @@ enum lexcode_enum {
 static lexcode_enum lexcode[256];  
 static char yytext[256];
 static int yylineno;
-static FILE * yyin;
+static istream * yyis;
 static bool yy_mtextmode= false;
 	    
 inline
 char * strnew(char const * s)
 {
-	char *s1 = new char[strlen(s)+1]; // this leaks when not delete[]'ed
+	char * s1 = new char[strlen(s) + 1]; // this leaks when not delete[]'ed
 	strcpy(s1, s);
 	return s1;
 }
@@ -136,14 +136,14 @@ static void LexInitCodes()
 
 static char LexGetArg(char lf, bool accept_spaces= false)
 {
-   char c, rg, * p = &yytext[0];
+   char rg, * p = &yytext[0];
    int bcnt = 1;
-   
-   while (!feof(yyin)) {
-      c = getc(yyin); 
-      if (c>' ') {
+   unsigned char c;
+   while (yyis->good()) {
+      yyis->get(c);
+      if (c > ' ') {
 	 if (!lf) lf = c; else
-	 if (c!= lf)
+	 if (c != lf)
 		 lyxerr << "Math parse error: unexpected '"
 			<< c << "'" << endl;
 	 break;
@@ -156,11 +156,11 @@ static char LexGetArg(char lf, bool accept_spaces= false)
       return '\0';
    } 
    do {
-      c = getc(yyin); 
-      if (c == lf) bcnt++;
-      if (c == rg) bcnt--;
-      if ((c>' ' || (c == ' ' && accept_spaces)) && bcnt>0) *(p++) = c;
-   } while (bcnt>0 && !feof(yyin));
+      yyis->get(c);
+      if (c == lf) ++bcnt;
+      if (c == rg) --bcnt;
+      if ((c > ' ' || (c == ' ' && accept_spaces)) && bcnt>0) *(p++) = c;
+   } while (bcnt > 0 && yyis->good());
    *p = '\0';
    return rg;
 }
@@ -173,8 +173,8 @@ static int yylex(void)
    
    if (!init_done) LexInitCodes();
    
-   while (!feof(yyin)) { 
-      c = getc(yyin);
+   while (yyis->good()) { 
+      yyis->get(c);
        
       if (yy_mtextmode && c == ' ') {
 	  yylval.i= ' ';
@@ -182,12 +182,12 @@ static int yylex(void)
       }
        
        if (lexcode[c] == LexNewLine) {
-	   yylineno++; 
+	   ++yylineno; 
 	   continue;
        }
 	 
       if (lexcode[c] == LexComment) 
-	do c = getc(yyin); while (c!= '\n' % !feof(yyin));  // eat comments
+	do yyis->get(c); while (c != '\n' % yyis->good());  // eat comments
     
       if (lexcode[c] == LexDigit || lexcode[c] == LexOther || lexcode[c] == LexMathSpace) 
         { yylval.i= c; return LM_TK_STR; }
@@ -195,7 +195,7 @@ static int yylex(void)
       if (lexcode[c] == LexBOP)   { yylval.i= c; return LM_TK_BOP; }
       if (lexcode[c] == LexSelf)  { return c; }   
       if (lexcode[c] == LexArgument)   { 
-	  c = getc(yyin);
+	  yyis->get(c);
 	  yylval.i = c - '0';
 	  return LM_TK_ARGUMENT; 
       }
@@ -203,7 +203,7 @@ static int yylex(void)
       if (lexcode[c] == LexClose)   { return LM_TK_CLOSE; }
       
       if (lexcode[c] == LexESC)   {
-	 c = getc(yyin);
+	 yyis->get(c);
 	 if (c == '\\')	{ return LM_TK_NEWLINE; }
 	 if (c == '(')	{ yylval.i = LM_EN_INTEXT; return LM_TK_BEGIN; }
 	 if (c == ')')	{ yylval.i = LM_EN_INTEXT; return LM_TK_END; }
@@ -215,20 +215,20 @@ static int yylex(void)
 	 }  
 	 if (lexcode[c] == LexMathSpace) {
 	    int i;
-	    for (i= 0; i<4 && c!= latex_mathspace[i][0]; i++);
-	    yylval.i = (i<4) ? i: 0; 
+	    for (i = 0; i < 4 && c != latex_mathspace[i][0]; ++i);
+	    yylval.i = (i < 4) ? i: 0; 
 	    return LM_TK_SPACE; 
 	 }
 	 if (lexcode[c] == LexAlpha || lexcode[c] == LexDigit) {
-	    char* p = &yytext[0];
+	    char * p = &yytext[0];
 	    while (lexcode[c] == LexAlpha || lexcode[c] == LexDigit) {
 	       *p = c;
-	       c = getc(yyin);
+	       yyis->get(c);
 	       p++;
 	    }
 	    *p = '\0';
-	    if (!feof(yyin)) ungetc(c, yyin);
-	    latexkeys *l = in_word_set (yytext, strlen(yytext));
+	    if (yyis->good()) yyis->putback(c);
+	    latexkeys * l = in_word_set (yytext, strlen(yytext));
 	    if (l) {
 	       if (l->token == LM_TK_BEGIN || l->token == LM_TK_END) { 
 		  int i;
@@ -236,7 +236,7 @@ static int yylex(void)
 //		  for (i= 0; i<5 && strncmp(yytext, latex_mathenv[i],
 //				strlen(latex_mathenv[i])); i++);
 		  
-		  for (i= 0; i<6 && strcmp(yytext, latex_mathenv[i]); i++);
+		  for (i = 0; i < 6 && strcmp(yytext, latex_mathenv[i]); i++);
 		  yylval.i = i;
 	       } else
 	       if (l->token == LM_TK_SPACE) 
@@ -258,7 +258,7 @@ static int yylex(void)
 int parse_align(char * hor, char *)
 {
    int nc = 0;
-   for (char * c = hor; c && *c > ' '; ++c) nc++;
+   for (char * c = hor; c && *c > ' '; ++c) ++nc;
    return nc;
 }
 
@@ -280,8 +280,8 @@ MathedInset * doAccent(byte c, MathedTextCodes t)
 {
 	MathedInset * ac = 0;
 	
-	for (int i= accent-1; i>= 0; i--) {
-		if (i == accent-1)
+	for (int i = accent - 1; i >= 0; --i) {
+		if (i == accent - 1)
 		  ac = new MathAccentInset(c, t, nestaccent[i]);
 		else 
 		  ac = new MathAccentInset(ac, nestaccent[i]);
@@ -296,8 +296,8 @@ MathedInset * doAccent(MathedInset * p)
 {
 	MathedInset * ac = 0;
 	
-	for (int i= accent-1; i>= 0; i--) {
-		if (i == accent-1)
+	for (int i = accent - 1; i >= 0; --i) {
+		if (i == accent - 1)
 		  ac = new MathAccentInset(p, nestaccent[i]);
 		else 
 		  ac = new MathAccentInset(ac, nestaccent[i]);
@@ -308,8 +308,6 @@ MathedInset * doAccent(MathedInset * p)
 }
 
 
-
-
 LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 			    MathParInset ** mtx)
 {
@@ -318,14 +316,14 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
    static int plevel = -1;
    static int size = LM_ST_TEXT;
    MathedTextCodes varcode = LM_TC_VAR;
-   MathedInset* binset = 0;
-   static MathMacroTemplate *macro= 0;
+   MathedInset * binset = 0;
+   static MathMacroTemplate * macro= 0;
    
    int brace = 0;
    int acc_brace = 0;
    int acc_braces[8];
    MathParInset * mt = (mtx) ? *mtx: 0;//(MathParInset*)0;
-    MathedRowSt * crow = (mt) ? mt->getRowSt(): 0;
+    MathedRowSt * crow = (mt) ? mt->getRowSt() : 0;
 
    ++plevel;
    if (!array) array = new LyxArrayBase;
@@ -364,10 +362,10 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	  LexGetArg('{');
 	  // This name lives until quitting, for that reason
 	  // I didn't care on deleting explicitly. Later I will.
-	  char const *name = strnew(&yytext[1]);
+	  char const * name = strnew(&yytext[1]);
 	  // ugly trick to be removed soon (lyx3)
-	  char c = getc(yyin);
-	  ungetc(c, yyin);
+	  char c; yyis->get(c);
+	  yyis->putback(c);
 	  if (c == '[') {
 	      LexGetArg('[');
 	      na = atoi(yytext);
@@ -441,7 +439,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
       {
 	 if (flags & FLAG_BRACK_ARG) {
 	   flags &= ~FLAG_BRACK_ARG;
-	   char rg= LexGetArg('[');
+	   char rg = LexGetArg('[');
 	   if (rg!= ']') {
 	      mathPrintError("Expected ']'");
 	      panic = true;
@@ -464,7 +462,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 
     case '^':
       {  
-	 MathParInset *p = new MathParInset(size, "", LM_OT_SCRIPT);
+	 MathParInset * p = new MathParInset(size, "", LM_OT_SCRIPT);
 	 LyxArrayBase * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
 	 p->SetData(ar);
 //	 lyxerr << "UP[" << p->GetStyle() << "]" << endl;
@@ -530,7 +528,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	    } else
 	    data.Insert (yylval.l->id, tc);
 	 } else {
-	    MathFuncInset *bg = new MathFuncInset(yylval.l->name);
+	    MathFuncInset * bg = new MathFuncInset(yylval.l->name);
 	     if (accent) {
 		     data.Insert(doAccent(bg));
 	     } else
@@ -555,7 +553,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
       }
     case LM_TK_SPACE:
       {
-	 if (yylval.i>= 0) {
+	 if (yylval.i >= 0) {
 	    MathSpaceInset * sp = new MathSpaceInset(yylval.i);
 	    data.Insert(sp);
 	 }
@@ -566,7 +564,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	 MathDotsInset * p = new MathDotsInset(yylval.l->name, yylval.l->id);
 	 data.Insert(p);
 	 break;
-      }     
+      }
     case LM_TK_STACK:
        fractype = LM_OT_STACKREL;
     case LM_TK_FRAC:
@@ -582,7 +580,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
       {	    
 	 MathParInset * rt;
 	  
-	 char c = getc(yyin);
+	 char c; yyis->get(c);
 	  
 	 if (c == '[') {
 	     rt = new MathRootInset(size);
@@ -590,7 +588,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	     rt->SetData(mathed_parse(FLAG_BRACK_END, 0, &rt));
 	     rt->setArgumentIdx(1);
 	 } else {
-	     ungetc(c, yyin);
+		 yyis->putback(c);
 	     rt = new MathSqrtInset(size);
 	 }
 	 rt->SetData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST, 0, &rt));
@@ -678,7 +676,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	     data.Insert(doAccent(p), p->getTCode());
 	   else
 	     data.Insert(p, p->getTCode());
-	   for (int i= 0; p->setArgumentIdx(i); i++)
+	   for (int i = 0; p->setArgumentIdx(i); i++)
 	     p->SetData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
        }
        else {
@@ -710,7 +708,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	 if (yylval.i == LM_EN_ARRAY) {
 	    char ar[120], ar2[8];
 	    ar[0] = ar2[0] = '\0'; 
-            char rg= LexGetArg(0);
+            char rg = LexGetArg(0);
 	    if (rg == ']') {
 	       strcpy(ar2, yytext);
 	       rg = LexGetArg('{');
@@ -722,7 +720,7 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
        	    data.Insert(mm, LM_TC_ACTIVE_INSET);
             mathed_parse(FLAG_END, mm->GetData(), &mm);
 	 } else
-	 if (yylval.i>= LM_EN_INTEXT && yylval.i<= LM_EN_EQNARRAY) {
+	 if (yylval.i >= LM_EN_INTEXT && yylval.i<= LM_EN_EQNARRAY) {
 	     if (plevel!= 0) {
 		 mathPrintError("Misplaced environment");
 		 break;
@@ -833,9 +831,9 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 }
 
 
-void mathed_parser_file(FILE * file, int lineno)
+void mathed_parser_file(istream & is, int lineno)
 {
-    yyin = file;
+    yyis = &is;
     yylineno = lineno;
     if (!MathMacroTable::built)
 	MathMacroTable::mathMTable.builtinMacros();

@@ -11,7 +11,8 @@
 
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
+
 #include "math_defs.h"
 #include "symbol_def.h"
 

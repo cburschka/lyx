@@ -74,8 +74,8 @@ string FontInfo::resize(string const & font, int size) const
 	string ret(font);
 	// Find the position of the size spec
 	int cut = 0;
-	string::iterator before = 0;
-	string::iterator after = 0;
+	string::iterator before = string::iterator(0);
+	string::iterator after = string::iterator(0);
 	for (string::iterator sit = ret.begin();
 	     sit != ret.end(); ++sit)
 		if ((*sit) == '-') {

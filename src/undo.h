@@ -51,24 +51,9 @@ public:
 	Undo(undo_kind kind_arg,
 	     int number_before_arg, int number_behind_arg,
 	     int cursor_par_arg, int cursor_pos_arg,
-	     LyXParagraph * par_arg)
-	{
-		kind = kind_arg;
-		number_of_before_par = number_before_arg;
-		number_of_behind_par = number_behind_arg;
-		number_of_cursor_par = cursor_par_arg;
-		cursor_pos = cursor_pos_arg;
-		par = par_arg;
-	}
+	     LyXParagraph * par_arg);
 	///
-	~Undo() {
-		LyXParagraph * tmppar;
-		while (par) {
-			tmppar = par;
-			par = par->next;
-			delete tmppar;
-		}
-	}
+	~Undo();
 };
 
 
@@ -89,7 +74,7 @@ public:
 	///
 	Undo * top();
 	///
-	bool empty() const { return stakk.empty(); }
+	bool empty() const;
 	///
 	~UndoStack();
 	///

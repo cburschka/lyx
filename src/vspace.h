@@ -16,7 +16,6 @@
 #pragma interface
 #endif
 
-#include <cstdio>
 #include "LString.h"
 
 ///  LyXLength Class

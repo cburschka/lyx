@@ -42,9 +42,21 @@ fi
 # Autogenerate lib/configure.m4. We need GNU m4 for that and thus have
 # to try several ones.  
 ok=no
+#for prog in $M4 gm4 gnum4 m4 ; do
+#  case `$prog --help < /dev/null 2>&1 | grep traditional` in
+#    *traditional*) echo "Building lib/configure"
+#		   rm -f lib/configure
+#		   $prog lib/configure.m4 >lib/configure
+#		   chmod a+x lib/configure
+#		   ok=yes
+#		   break ;;
+#    *) ;;
+#  esac
+#done
+# Why not use --version ? (Lgb)
 for prog in $M4 gm4 gnum4 m4 ; do
-  case `$prog --help < /dev/null 2>&1 | grep traditional` in
-    *traditional*) echo "Building lib/configure"
+  case `$prog --version 2>&1` in
+    *GNU*) echo "Building lib/configure"
 		   rm -f lib/configure
 		   $prog lib/configure.m4 >lib/configure
 		   chmod a+x lib/configure

@@ -72,7 +72,7 @@ LYX_CXX_CHEADERS
 LYX_STD_COUNT
 dnl we disable rtti for now
 dnl LYX_CXX_RTTI
-AC_CHECK_HEADERS(ostream istream)
+AC_CHECK_HEADERS(ostream istream sstream)
 LYX_CXX_STL_MODERN_STREAMS
 
 ### We need a regex implementation, so we provide our own if none is found.

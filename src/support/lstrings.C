@@ -1,9 +1,18 @@
 #include <config.h>
 
 #include <algorithm>
+#ifdef __GLIBCPP__
+#include <ctype.h>
+#else
 #include <cctype>
-#include <cstdio>
+#endif
 #include <cstdlib>
+
+#ifdef HAVE_SSTREAM
+#include <sstream>
+#else
+#include <strstream>
+#endif
 
 #include "LString.h"
 #include "lstrings.h"
@@ -11,6 +20,8 @@
 
 using std::count;
 using std::transform;
+using std::tolower;
+using std::toupper;
 
 int compare_no_case(string const & s, string const & s2)
 {
@@ -34,6 +45,7 @@ int compare_no_case(string const & s, string const & s2)
 	return 1;
 }
 
+
 int compare_no_case(string const & s, string const & s2, unsigned int len)
 {
 //#warning verify this func please
@@ -55,6 +67,7 @@ int compare_no_case(string const & s, string const & s2, unsigned int len)
 		return -1;
 	return 1;
 }
+
 
 bool isStrInt(string const & str)
 {
@@ -90,7 +103,15 @@ int  strToInt(string const & str)
 string lowercase(string const & a)
 {
 	string tmp(a);
+#ifdef __GLIBCPP__
+	string::iterator result = tmp.begin();
+	for (string::iterator first = tmp.begin();
+	     first != tmp.end(); ++first, ++result) {
+		*result = tolower(*first);
+	}
+#else
 	transform(tmp.begin(), tmp.end(), tmp.begin(), tolower);
+#endif
 	return tmp;
 }
 
@@ -98,26 +119,50 @@ string lowercase(string const & a)
 string uppercase(string const & a)
 {
 	string tmp(a);
+#ifdef __GLIBCPP__
+	string::iterator result = tmp.begin();
+	for (string::iterator first = tmp.begin();
+	     first != tmp.end(); ++first, ++result) {
+		*result = toupper(*first);
+	}
+#else
 	transform(tmp.begin(), tmp.end(), tmp.begin(), toupper);
+#endif
 	return tmp;
 }
 
 
 string tostr(long i)
 {
-	// should use string stream
+#ifndef HAVE_SSTREAM
+	// "Hey!", you say. "Why do we need the char str[30]?".
+	// Since strstream does not handle memory for us we have to do
+	// that ourselves, if we don't pass str in we have to capture
+	// oss.str() in a tmp variable and delete that manually.
+	// Thus we then require more temporary variables and the code
+	// gets more obfuscated.
 	char str[30];
-	sprintf(str, "%ld", i);
-	return string(str);
+	ostrstream oss(str, 30);
+	oss << i << '\0';
+#else
+	ostringstream oss;
+	oss << i;
+#endif
+	return oss.str();
 }
 
 
 string tostr(unsigned long i)
 {
-	// should use string stream
+#ifndef HAVE_SSTREAM	
 	char str[30];
-	sprintf(str, "%lu", i);
-	return string(str);
+	ostrstream oss(str, 30);
+	oss << i << '\0';
+#else
+	ostringstream oss;
+	oss << i;
+#endif
+	return oss.str();
 }
 
 
@@ -153,10 +198,15 @@ string tostr(bool b)
 
 string tostr(double d)
 {
-	// should use string stream
+#ifndef HAVE_SSTREAM
 	char tmp[40];
-	sprintf(tmp, "%f", d);
-	return string(tmp);
+	ostrstream oss(tmp, 40);
+	oss << d << '\0';
+#else
+	ostringstream oss;
+	oss << d;
+#endif
+	return oss.str();
 }
 
 

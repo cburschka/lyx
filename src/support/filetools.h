@@ -11,110 +11,13 @@
 #pragma interface
 #endif
 
-#include <cstdio>
 #include <cstdlib>
 #include <fcntl.h>
 #include <cerrno>
+
 #include "debug.h"
 #include "LString.h"
 #include "support/lstrings.h"
-
-/** A file class.
-  Use this instead of FILE *, it gives a much better structure.
-  It should prehaps do a bit more error checking than it does now.
-  Currently it is a verbatim copy from p309 of Bjarne Stroupstrups
-  The C++ Programming Language. + some additions.
- */
-class FilePtr {
-public:
-	///
-	enum file_mode {
-		read,
-		write,
-		update,
-		truncate
-	};
-	///
-	FilePtr(string const & name, file_mode mode) {
-		init();
-		do_open(name, mode);
-	}
-	///
-	FilePtr(FILE * pp) { init(); p = pp; }
-	///
-	~FilePtr() { close(); }
-
-	/** Use this if you want to rebind the FilePtr to another file.
-	 */
-	FilePtr & reopen(string const & name, file_mode mode) {
-		// close the file it it is already open
-		close();
-		// Now open the file.
-		do_open(name, mode);
-
-		return *this;
-	}
-	/** Close the file.
-	    Use this with some carefullness. After it has been used
-	    the FilePtr is unusable. Only use it if it is important
-	    that the file is closed before the FilePtr goes out
-	    of scope. */
-	int close() { 
-		if (p) {
-			int result = fclose(p); 
-			p = 0; 
-			return result;
-		} else 
-			return 0;
-	}
-	/// automatic converson to FILE* if that is needed.
-	operator FILE*() { return p; }
-	///
-	FilePtr & operator=(FILE * f) { p= f; return *this;}
-	///
-	FILE * operator()() { return p; }
-private:
-	///
-	void do_open(string const & name, file_mode mode) {
-		string modestr;
-		
-		switch(mode) {
-			// do appropiate #ifdef here so support EMX
-#ifndef __EMX__
-		case read: modestr = "r"; break;
-		case write: modestr = "w"; break;
-#else
-		case read: modestr = "rt"; break; // Can read both DOS & UNIX text files.
-		case write: modestr = "w"; break; // Write UNIX text files.
-#endif
-			
-		case update: modestr = "r+"; break;
-		case truncate: modestr = "w+"; break;
-		}
-		// Should probably be rewritten to use open(2)
-		if((p = fopen(name.c_str(), modestr.c_str()))) {
-			// file succesfully opened.
-			if (fcntl(fileno(p), F_SETFD, FD_CLOEXEC) == -1) {
-				p = 0;
-			}
-		} else {
-			// we have an error let's check what it is.
-			switch(errno) {
-			case EINVAL:
-				// Internal LyX error.
-				lyxerr << "FilePtr: Wrong parameter given to fopen." << endl;
-				break;
-			default:
-				// unknown error
-				break;
-			}
-		}
-	}
-	///
-	void init() { p = 0; }
-	///
-	FILE * p;
-};
 
 
 ///

@@ -101,7 +101,6 @@ using std::setw;
 
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
-extern void SmallUpdate(signed char);
 extern unsigned char GetCurrentTextClass();
 extern void BeforeChange();
 
@@ -244,17 +243,17 @@ bool Buffer::insertLyXFile(string const & filen)
 	
 	BeforeChange();
 
-	FilePtr myfile(fname, FilePtr::read);
-	if (!myfile()) {
+	ifstream ifs(fname.c_str());
+	if (!ifs) {
 		WriteAlert(_("Error!"),
 			   _("Cannot open specified file: "),
 			   MakeDisplayPath(fname, 50));
 		return false;
 	}
 	LyXLex lex(0, 0);
-	lex.setFile(myfile);
-	int c = fgetc(myfile());
-	ungetc(c, myfile);
+	lex.setStream(ifs);
+	char c; ifs.get(c);
+	ifs.putback(c);
 
 	bool res = true;
 
@@ -331,10 +330,10 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			continue;
 		else if (token[0] != '\\') {
 			int n = token.length();
-			for (int i = 0; i < n; i++) {
+			for (int i = 0; i < n; ++i) {
 				par->InsertChar(pos, token[i]);
 				par->SetFont(pos, font);
-				pos++;
+				++pos;
 			}
 		} else if (token == "\\i") {
 			inset = new InsetLatexAccent;
@@ -389,7 +388,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			font = LyXFont(LyXFont::ALL_INHERIT);
 		} else if (token == "\\begin_float") {
 			tmpret = lex.FindToken(string_footnotekinds);
-			if (tmpret == -1) tmpret++;
+			if (tmpret == -1) ++tmpret;
 			if (tmpret != LYX_LAYOUT_DEFAULT) 
 				footnotekind = static_cast<LyXParagraph::footnote_kind>(tmpret); // bad
 			if (footnotekind == LyXParagraph::FOOTNOTE
@@ -398,19 +397,19 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			else 
 				footnoteflag = LyXParagraph::OPEN_FOOTNOTE;
 		} else if (token == "\\begin_deeper") {
-			depth++;
+			++depth;
 		} else if (token == "\\end_deeper") {
 			if (!depth) {
 				lex.printError("\\end_deeper: "
 					       "depth is already null");
 			}
 			else
-				depth--;
+				--depth;
 		} else if (token == "\\begin_preamble") {
 			params.readPreamble(lex);
 		} else if (token == "\\textclass") {
 			lex.EatLine();
-			pair<bool, LyXTextClassList::ClassList::size_type> pp = 
+			pair<bool, LyXTextClassList::size_type> pp = 
 				textclasslist.NumberOfClass(lex.GetString());
 			if (pp.first) {
 				params.textclass = pp.second;
@@ -434,7 +433,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			lex.EatLine();
 			params.options = lex.GetString();
 		} else if (token == "\\language") {
-			params.readLanguage(lex);	    
+			params.readLanguage(lex);    
 		} else if (token == "\\fontencoding") {
 			lex.EatLine();
 		} else if (token == "\\inputencoding") {
@@ -470,11 +469,11 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 		} else if (token == "\\defskip") {
 			lex.nextToken();
 			params.defskip = VSpace(lex.GetString());
-		} else if (token == "\\no_isolatin1") {
+		} else if (token == "\\no_isolatin1") { // obsolete
 			lex.nextToken();
-		} else if (token == "\\no_babel") {
+		} else if (token == "\\no_babel") { // obsolete
 			lex.nextToken();
-		} else if (token == "\\no_epsfig") {
+		} else if (token == "\\no_epsfig") { // obsolete
 			lex.nextToken();
 		} else if (token == "\\epsfig") { // obsolete
 			// Indeed it is obsolete, but we HAVE to be backwards
@@ -642,7 +641,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 		} else if (token == "\\tocdepth") {
 			lex.nextToken();
 			params.tocdepth = lex.GetInteger();
-		} else if (token == "\\baselinestretch") { // now obsolete
+		} else if (token == "\\baselinestretch") { // obsolete
 			lex.nextToken(); // should not be used directly
 			// anymore.
 			// Will probably keep a kind of support just for
@@ -667,7 +666,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 		} else if (token == "\\float_placement") {
 			lex.nextToken();
 			params.float_placement = lex.GetString();
-		} else if (token == "\\cursor") {
+		} else if (token == "\\cursor") { // obsolete
 			// this is obsolete, so we just skip it.
 			lex.nextToken();
 		} else if (token == "\\family") { 
@@ -720,13 +719,13 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 		} else if (token == "\\align") {
 			tmpret = lex.FindToken(string_align);
 			if (tmpret == -1) tmpret++;
-			if (tmpret != LYX_LAYOUT_DEFAULT) {
+			if (tmpret != LYX_LAYOUT_DEFAULT) { // tmpret != 99 ???
 				tmpret2 = 1;
-				for (; tmpret>0; tmpret--)
+				for (; tmpret > 0; --tmpret)
 					tmpret2 = tmpret2 * 2;
 				par->align = LyXAlignment(tmpret2);
 			}
-		} else if (token == "\\added_space_top"){
+		} else if (token == "\\added_space_top") {
 			lex.nextToken();
 			par->added_space_top = lex.GetString();
 		} else if (token == "\\added_space_bottom") {
@@ -900,6 +899,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 				par->InsertInset(pos, inset);
 				par->SetFont(pos, font);
 				pos++;
+#if 0
 			} else if (tmptok == "Label") {
 				// Kept for compability. Remove in 0.13.
 				if (lex.EatLine()) {
@@ -912,6 +912,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 					par->SetFont(pos, font);
 					pos++;
 				}
+#endif
 			} else if (tmptok == "Info") {
 				inset = new InsetInfo;
 				inset->Read(lex);
@@ -950,9 +951,11 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 					if (!inscmd.getOptions().empty() || !inscmd.getContents().empty()) {
 						inset = new InsetRef(inscmd, this);
 					}
-					/* This condition comes from a temporary solution
-					   to the latexdel ref inset that was transformed to an empty ref
-					   inset plus the body surronded by latexdel insets */
+					// This condition comes from a
+					// temporary solution to the latexdel
+					// ref inset that was transformed to
+					// an empty ref inset plus the body
+					// surronded by latexdel insets
 					else {
 						string cont, opt, tmptmptok, cmdname;
 						lex.next();
@@ -1013,7 +1016,10 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 					inset = new InsetPrintIndex(this);
 				} else if (inscmd.getCmdName() == "lyxparent") {
 					inset = new InsetParent(inscmd.getContents(), this);
-				} else 
+				}
+#if 0
+				// Do we need this at all now?
+				else 
 					// The following three are only for compatibility
 					if (inscmd.getCmdName() == "-") {
 						inset = new InsetSpecialChar(InsetSpecialChar::HYPHENATION);
@@ -1023,12 +1029,13 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 						inset = new InsetSpecialChar(InsetSpecialChar::LDOTS);
 					} else
 						inset = inscmd.Clone();
+#endif
 			       
 				if (inset) {
 					par->InsertChar(pos, LyXParagraph::META_INSET);
 					par->InsertInset(pos, inset);
 					par->SetFont(pos, font);
-					pos++;
+					++pos;
 				}
 			}
 		} else if (token == "\\InsetQuotes") {
@@ -1037,7 +1044,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			par->InsertChar(pos, LyXParagraph::META_INSET); 
 			par->InsertInset(pos, inset);
 			par->SetFont(pos, font);
-			pos++;
+			++pos;
 #if 0
 		} else if (token == "\\InsetLatex") {
 			inset = new InsetLatex;
@@ -1045,7 +1052,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			par->InsertChar(pos, LyXParagraph::META_INSET); 
 			par->InsertInset(pos, inset);
 			par->SetFont(pos, font);
-			pos++;
+			++pos;
 		} else if (token == "\\InsetLatexDel") {
 			lex.printError(_("Warning: Ignoring Old Inset"));
 #endif
@@ -1055,35 +1062,35 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			par->InsertChar(pos, LyXParagraph::META_INSET); 
 			par->InsertInset(pos, inset);
 			par->SetFont(pos, font);
-			pos++;
+			++pos;
 		} else if (token == "\\SpecialChar") {
 			inset = new InsetSpecialChar;
 			inset->Read(lex);
 			par->InsertChar(pos, LyXParagraph::META_INSET); 
 			par->InsertInset(pos, inset);
 			par->SetFont(pos, font);
-			pos++;
+			++pos;
 		} else if (token == "\\Figure") {
 			inset = new InsetFig(100, 100, this);
 			inset->Read(lex);
 			par->InsertChar(pos, LyXParagraph::META_INSET); 
 			par->InsertInset(pos, inset);
 			par->SetFont(pos, font);
-			pos++;
+			++pos;
 		} else if (token == "\\newline") {
 			par->InsertChar(pos, LyXParagraph::META_NEWLINE);
 			par->SetFont(pos, font);
-			pos++;
+			++pos;
 		} else if (token == "\\LyXTable") {
 			par->table = new LyXTable(lex);
 		} else if (token == "\\hfill") {
 			par->InsertChar(pos, LyXParagraph::META_HFILL);
 			par->SetFont(pos, font);
-			pos++;
+			++pos;
 		} else if (token == "\\protected_separator") {
 			par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
 			par->SetFont(pos, font);
-			pos++;
+			++pos;
 		} else if (token == "\\bibitem") {  // ale970302
 		        if (!par->bibkey)
 				par->bibkey = new InsetBibKey;
@@ -1091,7 +1098,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 		}else if (token == "\\backslash") {
 			par->InsertChar(pos, '\\');
 			par->SetFont(pos, font);
-			pos++;
+			++pos;
 		}else if (token == "\\the_end") {
 			the_end_read = true;
 		} else {
@@ -1099,10 +1106,10 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 			lex.printError("Unknown token `$$Token'. "
 				       "Inserting as text.");
 			int n = token.length();
-			for (int i = 0; i < n; i++) {
+			for (int i = 0; i < n; ++i) {
 				par->InsertChar(pos, token[i]);
 				par->SetFont(pos, font);
-				pos++;
+				++pos;
 			}
 		}
 	}
@@ -1607,7 +1614,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	}
 	lyxerr.debug() << "lyx header finished" << endl;
 	// There are a few differences between nice LaTeX and usual files:
-	// usual is \batchmode, uses \listfiles and has a 
+	// usual is \batchmode and has a 
 	// special input@path to allow the including of figures
 	// with either \input or \includegraphics (what figinsets do).
 	// batchmode is not set if there is a tex_code_break_column.
@@ -1621,9 +1628,6 @@ void Buffer::makeLaTeXFile(string const & fname,
 			LFile += "\\batchmode\n"; // changed
 			// from \nonstopmode
 			texrow.newline();
-			// We don't need listfiles anymore
-			//LFile += "\\listfiles\n";
-			//texrow.newline();
 		}
 		if (!original_path.empty()) {
 			LFile += "\\makeatletter\n";
@@ -2452,18 +2456,16 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 void Buffer::push_tag(ostream & os, char const * tag,
 		      int & pos, char stack[5][3])
 {
-	int j;
-
 	/* pop all previous tags */
-	for (j = pos; j >= 0; --j)
+	for (int j = pos; j >= 0; --j)
 		os << "</" << stack[j] << ">";
 
 	/* add new tag */
 	sprintf(stack[++pos], "%s", tag);
 
 	/* push all tags */
-	for (j = 0; j <= pos; ++j)
-		os << "<" << stack[j] << ">";
+	for (int i = 0; i <= pos; ++i)
+		os << "<" << stack[i] << ">";
 }
 
 
@@ -2471,19 +2473,17 @@ void Buffer::push_tag(ostream & os, char const * tag,
 void Buffer::pop_tag(ostream & os, char const * tag,
 		     int & pos, char stack[5][3])
 {
-	int j;
-
 	// pop all tags till specified one
-	for (j = pos; (j >= 0) && (strcmp(stack[j], tag)); --j)
+	for (int j = pos; (j >= 0) && (strcmp(stack[j], tag)); --j)
 		os << "</" << stack[j] << ">";
 
 	// closes the tag
 	os << "</" << tag << ">";
 
 	// push all tags, but the specified one
-	for (j = j + 1; j <= pos; ++j) {
-		os << "<" << stack[j] << ">";
-		strcpy(stack[j-1], stack[j]);
+	for (int i = i + 1; i <= pos; ++i) {
+		os << "<" << stack[i] << ">";
+		strcpy(stack[i - 1], stack[i]);
 	}
 	--pos;
 }
@@ -2750,7 +2750,6 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 		return;
 	}
    
-	//ResetTexRow();
 	texrow.reset();
 
 	ofs << "<!doctype " << top_element

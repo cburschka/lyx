@@ -1,6 +1,5 @@
 #include <config.h>
 
-#include <cstdio>
 #include "Spacing.h"
 using std::ios;
 

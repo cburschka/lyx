@@ -16,6 +16,32 @@
 #pragma implementation
 #endif
 
+
+Undo::Undo(undo_kind kind_arg,
+	   int number_before_arg, int number_behind_arg,
+	   int cursor_par_arg, int cursor_pos_arg,
+	   LyXParagraph * par_arg)
+{
+	kind = kind_arg;
+	number_of_before_par = number_before_arg;
+	number_of_behind_par = number_behind_arg;
+	number_of_cursor_par = cursor_par_arg;
+	cursor_pos = cursor_pos_arg;
+	par = par_arg;
+}
+
+
+Undo::~Undo()
+{
+	LyXParagraph * tmppar;
+	while (par) {
+		tmppar = par;
+		par = par->next;
+		delete tmppar;
+	}
+}
+
+
 UndoStack::UndoStack()
 	: limit(100) {}
 
@@ -68,4 +94,9 @@ void UndoStack::push(Undo * undo_arg)
 		stakk.pop_back();
 		delete tmp;
 	}
+}
+
+
+bool UndoStack::empty() const {
+	return stakk.empty();
 }

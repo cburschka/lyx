@@ -1,3 +1,8 @@
+2000-01-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/BufferView.C: first go at a TextCache to speed up switching
+	between documents.
+
 2000-01-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/examples/ItemizeBullets.lyx: update from Tino Meinen. 
@@ -33,6 +38,60 @@
 	* src/lyx_gui_misc.[Ch] (askForText): now returns a bool also so we 
 	know when a user has cancelled input. Fixes annoying problems with
 	inserting labels and version control.
+
+1999-12-29  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lstrings.C (tostr): rewritten to use strstream and
+	stringstream
+
+1999-12-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/filetools.C (IsFileWriteable): use fstream to check
+	(IsDirWriteable): use fileinfo to check
+
+	* src/support/filetools.h (FilePtr): whole class deleted
+
+	* src/insets/figinset.C (GetPSSizes): rewritten to use ifstream.
+
+	* src/lyxparagraph.h (readSimpleWholeFile): make arg istream
+
+	* src/lyx_cb.C (InsertAsciiFile): use ifstream instead of FilePtr
+
+	* src/bufferlist.C (write): use ifstream and ofstream instead of
+	FILE*
+
+	* src/Spacing.h: use istrstream instead of sscanf
+
+	* src/mathed/math_defs.h: change first arg to istream from FILE*
+
+	* src/buffer.C (insertLyXFile): use ifstream instead of FilePtr
+
+	* src/mathed/math_parser.C: have yyis to be an istream 
+	(LexGetArg): use istream (yyis)
+	(yylex): ditto
+	(mathed_parse): ditto
+	(mathed_parser_file): first arg istream instead of FILE*, set yyis
+
+	* src/mathed/formula.C (Read): rewritten to use istream
+
+	* src/mathed/formulamacro.C (Read): rewritten to use istream
+
+	* src/lyxlex.h (~LyXLex): deleted desturctor 
+	(getStream): new function, returns an istream
+	(getFile): deleted funtion
+	(IsOK): return is.good();
+
+	* src/lyxlex.C (LyXLex): delete file and owns_file
+	(setFile): open an filebuf and assign that to a istream instead of
+	using FILE*
+	(setStream): new function, takes an istream as arg. 
+	(setFile): deleted function
+	(EatLine): rewritten us use istream instead of FILE*
+	(next): ditto
+	(nextToken): ditto
+
+	* src/table.C (LyXTable): use istream instead of FILE*
+	(Read): rewritten to take an istream instead of FILE*
 
 1999-12-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

@@ -48,11 +48,19 @@ protected:
 		// fakes a purge of the buffer by returning n
 		return n;
 	}
+#ifdef MODERN_STL_STREAMS
+	///
+	virtual int_type overflow(int_type c = traits_type::eof()) {
+		// fakes success by returning c
+		return c == traits_type::eof() ? ' ' : c;
+	}
+#else
 	///
 	virtual int_type overflow(int_type c = EOF) {
 		// fakes success by returning c
 		return c == EOF ? ' ' : c;
 	}
+#endif
 };
 
 /** A streambuf that sends the output to two different streambufs. These
@@ -64,40 +72,41 @@ public:
 	teebuf(streambuf * b1, streambuf * b2)
 		: streambuf(), sb1(b1), sb2(b2) {}
 protected:
-#ifndef MODERN_STL_STREAMS
-	typedef char char_type;
-	typedef int int_type;
-#endif
+#ifdef MODERN_STL_STREAMS
 	///
 	virtual int sync() {
-#ifdef MODERN_STL_STREAMS
 		sb2->pubsync();
 		return sb1->pubsync();
-#else
-		sb2->sync();
-		return sb1->sync();
-#endif
 	}
 	///
 	virtual streamsize xsputn(char_type const * p, streamsize n) {
-#ifdef MODERN_STL_STREAMS
 		sb2->sputn(p, n);
 		return sb1->sputn(p, n);
+	}
+	///
+	virtual int_type overflow(int_type c = traits_type::eof()) {
+		sb2->sputc(c);
+		return sb1->sputc(c);
+	}
 #else
+	typedef char char_type;
+	typedef int int_type;
+	///
+	virtual int sync() {
+		sb2->sync();
+		return sb1->sync();
+	}
+	///
+	virtual streamsize xsputn(char_type const * p, streamsize n) {
 		sb2->xsputn(p, n);
 		return sb1->xsputn(p, n);
-#endif
 	}
 	///
 	virtual int_type overflow(int_type c = EOF) {
-#ifdef MODERN_STL_STREAMS
-		sb2->sputc(c);
-		return sb1->sputc(c);
-#else
 		sb2->overflow(c);
 		return sb1->overflow(c);
-#endif
 	}
+#endif
 private:
 	///
 	streambuf * sb1;
@@ -112,34 +121,35 @@ public:
 	debugbuf(streambuf * b)
 		: streambuf(), sb(b) {}
 protected:
-#ifndef MODERN_STL_STREAMS
-	typedef char char_type;
-	typedef int int_type;
-#endif
+#ifdef MODERN_STL_STREAMS
 	///
 	virtual int sync() {
-#ifdef MODERN_STL_STREAMS
 		return sb->pubsync();
-#else
-		return sb->sync();
-#endif
 	}
 	///
 	virtual streamsize xsputn(char_type const * p, streamsize n) {
-#ifdef MODERN_STL_STREAMS
 		return sb->sputn(p, n);
+	}
+	///
+	virtual int_type overflow(int_type c = traits_type::eof()) {
+		return sb->sputc(c);
+	}
 #else
+	typedef char char_type;
+	typedef int int_type;
+	///
+	virtual int sync() {
+		return sb->sync();
+	}
+	///
+	virtual streamsize xsputn(char_type const * p, streamsize n) {
 		return sb->xsputn(p, n);
-#endif
 	}
 	///
 	virtual int_type overflow(int_type c = EOF) {
-#ifdef MODERN_STL_STREAMS
-		return sb->sputc(c);
-#else
 		return sb->overflow(c);
-#endif
 	}
+#endif
 private:
 	///
 	streambuf * sb;

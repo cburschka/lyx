@@ -20,7 +20,6 @@
 #include "vspace.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
-#include <cstdio>
 #include <cstring>
 #include "BufferView.h"
 #include "support/lstrings.h"

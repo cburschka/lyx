@@ -110,7 +110,6 @@ extern void MenuSeparator();
 extern void HFill();
 extern void MenuUndo();
 extern void MenuRedo();
-extern void SmallUpdate(signed char);
 extern void SetUpdateTimer(float timer = 0.3);
 extern void FreeUpdateTimer();
 extern bool MenuPreview(Buffer *);
@@ -330,19 +329,21 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 						   LyXAction::ReadOnly)) {
 				// no
 				setErrorMessage(N_("Document is read-only"));
-				flag = func_status(flag | LyXFunc::Disabled);
+				flag |= LyXFunc::Disabled;
 			}
 		} else {
 			// no
 			setErrorMessage(N_("Command not allowed with"
 					   "out any document open"));
-			flag = func_status(flag | LyXFunc::Disabled);
+			flag |= LyXFunc::Disabled;
 		}
 	}
 
 	if (flag & LyXFunc::Disabled)
 		return flag;
 
+	// I would really like to avoid having this switch and rather try to
+	// encode this in the function itself.
         static bool noLaTeX = lyxrc->latex_command == "none";
         bool disable = false;
         switch (action) {
@@ -1565,7 +1566,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_BREAKLINE:
 		BeforeChange();
 		owner->view()->text->InsertChar(LyXParagraph::META_NEWLINE);
-		SmallUpdate(1);
+		owner->view()->smallUpdate(1);
 		SetUpdateTimer(0.01);
 		moveCursorUpdate(false);
 		break;
@@ -1574,7 +1575,7 @@ string LyXFunc::Dispatch(int ac,
 		BeforeChange();
 		owner->view()->text->
 			InsertChar(LyXParagraph::META_PROTECTED_SEPARATOR);
-		SmallUpdate(1);
+		owner->view()->smallUpdate(1);
 		SetUpdateTimer();
                 moveCursorUpdate(false);
 		break;
@@ -1600,7 +1601,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->text->Delete();
 			owner->view()->text->sel_cursor = 
 				owner->view()->text->cursor;
-			SmallUpdate(1);
+			owner->view()->smallUpdate(1);
 			// It is possible to make it a lot faster still
 			// just comment out the lone below...
 			owner->view()->getScreen()->ShowCursor();
@@ -1640,13 +1641,13 @@ string LyXFunc::Dispatch(int ac,
 					owner->view()->text->Delete();
 					owner->view()->text->sel_cursor = 
 						owner->view()->text->cursor;
-					SmallUpdate(1);
+					owner->view()->smallUpdate(1);
 				}
 			} else {
 				owner->view()->text->Delete();
 				owner->view()->text->sel_cursor = 
 					owner->view()->text->cursor;
-				SmallUpdate(1);
+				owner->view()->smallUpdate(1);
 			}
 		} else {
 			CutCB();
@@ -1712,7 +1713,7 @@ string LyXFunc::Dispatch(int ac,
 				owner->view()->text->Backspace();
 				owner->view()->text->sel_cursor = 
 					owner->view()->text->cursor;
-				SmallUpdate(1);
+				owner->view()->smallUpdate(1);
 				// It is possible to make it a lot faster still
 				// just comment out the lone below...
 				owner->view()->getScreen()->ShowCursor();
@@ -1748,7 +1749,7 @@ string LyXFunc::Dispatch(int ac,
 				owner->view()->text->Backspace();
 				owner->view()->text->sel_cursor 
 					= cursor;
-				SmallUpdate (1);
+				owner->view()->smallUpdate (1);
 			}
 		} else
 			CutCB();
@@ -1760,7 +1761,7 @@ string LyXFunc::Dispatch(int ac,
 	{
 		BeforeChange();
 		owner->view()->text->BreakParagraph(0);
-		SmallUpdate(1);
+		owner->view()->smallUpdate(1);
 		SetUpdateTimer(0.01);
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
@@ -1771,7 +1772,7 @@ string LyXFunc::Dispatch(int ac,
 	{
 		BeforeChange();
 		owner->view()->text->BreakParagraph(1);
-		SmallUpdate(1);
+		owner->view()->smallUpdate(1);
 		SetUpdateTimer(0.01);
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
@@ -1802,7 +1803,7 @@ string LyXFunc::Dispatch(int ac,
 		}
 		else {
 			owner->view()->text->BreakParagraph(0);
-			SmallUpdate(1);
+			owner->view()->smallUpdate(1);
 		}
 		SetUpdateTimer(0.01);
 		owner->view()->text->sel_cursor = cursor;
@@ -1812,7 +1813,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_QUOTE:
 		BeforeChange();
 		owner->view()->text->InsertChar('\"');  // This " matches the single quote in the code
-		SmallUpdate(1);
+		owner->view()->smallUpdate(1);
 		SetUpdateTimer();
                 moveCursorUpdate(false);
 		break;
@@ -1982,7 +1983,7 @@ string LyXFunc::Dispatch(int ac,
 		keyseq.length = 0;
 		
 		// copied verbatim from do_accent_char
-		SmallUpdate(1);
+		owner->view()->smallUpdate(1);
 		SetUpdateTimer();
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
@@ -2339,7 +2340,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->text->InsertChar(argument[i]);
 			// This needs to be in the loop, or else we
 			// won't break lines correctly. (Asger)
-			SmallUpdate(1);
+			owner->view()->smallUpdate(1);
 		}
 		SetUpdateTimer();
 		owner->view()->text->sel_cursor = 
@@ -2405,7 +2406,7 @@ string LyXFunc::Dispatch(int ac,
 					owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->view()->text);
 			}
 			
-			SmallUpdate(1);
+			owner->view()->smallUpdate(1);
 			SetUpdateTimer();
 
 			owner->view()->text->sel_cursor = 

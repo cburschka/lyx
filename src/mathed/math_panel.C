@@ -15,7 +15,6 @@
 #include <config.h>
 
 #include FORMS_H_LOCATION
-#include <cstdio>
 #include <cstdlib>
 
 #include "lyx_gui_misc.h" 

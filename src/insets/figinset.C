@@ -1006,20 +1006,16 @@ static void UnregisterFigure(InsetFig * fi)
 }
 
 
-static char * NextToken(FILE * myfile)
+static string NextToken(istream & is)
 {
-	char * token = 0;
+	string token;
 	char c;
-	int i = 0;
-   
-	if (!feof(myfile)) {
-		token = new char[256];
+	if (!is.eof()) {
 		do {
-			c = fgetc(myfile);
-			token[i++]= c;
-		} while (!feof(myfile) && !isspace(c));
-      
-		token[i-1]= '\0';         /* just the end of a command  */
+			is.get(c);
+			token += c;
+		} while (!is.eof() && !isspace(c));
+		token.erase(token.length() - 1); // remove the isspace
 	}
 	return token;
 }
@@ -1718,11 +1714,7 @@ void InsetFig::Recompute()
 
 void InsetFig::GetPSSizes()
 {
-#ifdef WITH_WARNINGS
-#warning rewrite this method to use ifstream
-#endif
 	/* get %%BoundingBox: from postscript file */
-	char * p = 0;
 	
 	/* defaults to associated size
 	 * ..just in case the PS-file is not readable (Henner, 24-Aug-97) 
@@ -1733,10 +1725,10 @@ void InsetFig::GetPSSizes()
 	pshgh = hgh;
 
 	if (fname.empty()) return;
+	string p;
+	ifstream ifs(fname.c_str());
 
-	FilePtr f(fname, FilePtr::read);
-
-	if (!f()) return;	// file not found !!!!
+	if (!ifs) return;	// file not found !!!!
 
 	/* defaults to A4 page */
 	psx = 0;
@@ -1744,30 +1736,29 @@ void InsetFig::GetPSSizes()
 	pswid = 595;
 	pshgh = 842;
 
-	int lastchar = fgetc(f);
+	char lastchar = 0; ifs.get(lastchar);
 	for (;;) {
-		int c = fgetc(f);
-		if (c == EOF) {
+		char c = 0; ifs.get(c);
+		if (ifs.eof()) {
 			lyxerr.debug() << "End of (E)PS file reached and"
 				" no BoundingBox!" << endl;
 			break;
 		}
 		if (c == '%' && lastchar == '%') {
-			p = NextToken(f);
-			if (!p) break;
+			p = NextToken(ifs);
+			if (p.empty()) break;
 			// we should not use this, with it we cannot
 			// discover bounding box and end of file.
 			//if (strcmp(p, "EndComments") == 0) break;
-			if (strcmp(p, "BoundingBox:") == 0) {
+			lyxerr.debug() << "Token: `" << p << "'" << endl;
+			if (p == "BoundingBox:") {
 				float fpsx, fpsy, fpswid, fpshgh;
-				if (fscanf(f, "%f %f %f %f", &fpsx, &fpsy,
-					   &fpswid, &fpshgh) == 4) {
+				if (ifs >> fpsx >> fpsy >> fpswid >> fpshgh) {
 					psx = int(fpsx);
 					psy = int(fpsy);
 					pswid = int(fpswid);
 					pshgh = int(fpshgh);
-				} 
-
+				}
 				if (lyxerr.debugging()) {
 					lyxerr << "%%%%BoundingBox:"
 					       << psx << ' '
@@ -1778,12 +1769,9 @@ void InsetFig::GetPSSizes()
 				break;
 			}
 			c = 0;
-			delete[] p;
-			p = 0;
 		}
 		lastchar = c;
 	}
-	if (p) delete[] p;
 	pswid -= psx;
 	pshgh -= psy;
 

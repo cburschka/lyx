@@ -35,7 +35,6 @@
 #include "LyXView.h"
 
 extern BufferView * current_view;
-extern void SmallUpdate(signed char);
 extern void BeforeChange();
 extern int RunLinuxDoc(int, string const &);
 
@@ -169,27 +168,20 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 			times->modtime = finfo.getModificationTime();
 			long blksize = finfo.getBlockSize();
 			lyxerr.debug() << "BlockSize: " << blksize << endl;
-			FilePtr fin(buf->fileName(), FilePtr::read);
-			FilePtr fout(s, FilePtr::truncate);
-			if (fin() && fout()) {
-				char * cbuf = new char[blksize+1];
-				size_t c_read = 0;
-				size_t c_write = 0;
-				do {
-					c_read = fread(cbuf, 1, blksize, fin);
-					if (c_read != 0)
-						c_write = 
-							fwrite(cbuf, 1,
-							       c_read, fout);
-				} while (c_read);
-				fin.close();
-				fout.close();
+			ifstream ifs(buf->fileName().c_str());
+			ofstream ofs(s.c_str(), ios::out|ios::trunc);
+			if (ifs && ofs) {
+				char c = 0;
+				while (ifs.get(c)) {
+					ofs.put(c);
+				};
+				ifs.close();
+				ofs.close();
 				chmod(s.c_str(), fmode);
 				
 				if (utime(s.c_str(), times)) {
 					lyxerr << "utime error." << endl;
 				}
-				delete [] cbuf;
 			} else {
 				lyxerr << "LyX was not able to make "
 					"backupcopy. Beware." << endl;

@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include <unistd.h>
-#include <cstdio>
 #include <cstdlib>
 #include <pwd.h>
 #include <grp.h>

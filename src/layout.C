@@ -1208,7 +1208,7 @@ void LyXTextClass::load()
 //////////////////////////////////////////
 
 // Gets textclass number from name
-pair<bool, LyXTextClassList::ClassList::size_type>
+pair<bool, LyXTextClassList::size_type>
 LyXTextClassList::NumberOfClass(string const & textclass) const
 {
 	for (ClassList::const_iterator cit = classlist.begin();
@@ -1216,14 +1216,14 @@ LyXTextClassList::NumberOfClass(string const & textclass) const
 		if ((*cit).name() == textclass)
 			return make_pair(true, cit - classlist.begin());
 	}
-	return make_pair(false, 0);
+	return make_pair(false, size_type(0));
 }
 
 
 // Gets layout structure from style number and textclass number
 LyXLayout const &
-LyXTextClassList::Style(LyXTextClassList::ClassList::size_type textclass,
-			LyXTextClass::LayoutList::size_type layout) const
+LyXTextClassList::Style(LyXTextClassList::size_type textclass,
+			LyXTextClass::size_type layout) const
 {
 	classlist[textclass].load();
 	if (layout < classlist[textclass].numLayouts())
@@ -1233,8 +1233,9 @@ LyXTextClassList::Style(LyXTextClassList::ClassList::size_type textclass,
 
 
 // Gets layout number from name and textclass number
-pair<bool, LyXTextClass::LayoutList::size_type>
-LyXTextClassList::NumberOfLayout(LyXTextClassList::ClassList::size_type textclass, string const & name) const
+pair<bool, LyXTextClass::size_type>
+LyXTextClassList::NumberOfLayout(LyXTextClassList::size_type textclass,
+				 string const & name) const
 {
 	classlist[textclass].load();
 	for(unsigned int i = 0; i < classlist[textclass].numLayouts(); ++i) {
@@ -1243,23 +1244,23 @@ LyXTextClassList::NumberOfLayout(LyXTextClassList::ClassList::size_type textclas
 	}
 	if (name == "dummy")
 		return make_pair(true, LYX_DUMMY_LAYOUT);
-	return make_pair(false, 0); // not found
+	return make_pair(false, LyXTextClass::LayoutList::size_type(0)); // not found
 }
 
 
 // Gets a layout (style) name from layout number and textclass number
 string const &
-LyXTextClassList::NameOfLayout(LyXTextClassList::ClassList::size_type textclass,
-			       LyXTextClass::LayoutList::size_type layout) const
+LyXTextClassList::NameOfLayout(LyXTextClassList::size_type textclass,
+			       LyXTextClass::size_type layout) const
 {
 	static string dummy("dummy");
-#if 1
+#if 0
 	static string end("@@end@@");
 #endif
 	classlist[textclass].load();
 	if (layout < classlist[textclass].numLayouts())
 		return classlist[textclass][layout].name();
-#if 1
+#if 0
 	else if (layout == LYX_DUMMY_LAYOUT)
 		return dummy;
 	else
@@ -1272,21 +1273,21 @@ LyXTextClassList::NameOfLayout(LyXTextClassList::ClassList::size_type textclass,
 
 // Gets a textclass name from number
 string const &
-LyXTextClassList::NameOfClass(LyXTextClassList::ClassList::size_type number) const
+LyXTextClassList::NameOfClass(LyXTextClassList::size_type number) const
 {
 	static string dummy("dummy");
-#if 1
+#if 0
 	static string end("@@end@@");
 #endif
 	if (classlist.size() == 0) {
-#if 1
+#if 0
 		if (number == 0) return dummy;
 		else return end;
 #else
 		return dummy;
 #endif
 	}
-#if 1
+#if 0
 	if (number < classlist.size())
 		return classlist[number].name();
 	else
@@ -1300,22 +1301,22 @@ LyXTextClassList::NameOfClass(LyXTextClassList::ClassList::size_type number) con
 
 // Gets a textclass latexname from number
 string const &
-LyXTextClassList::LatexnameOfClass(LyXTextClassList::ClassList::size_type number) const
+LyXTextClassList::LatexnameOfClass(LyXTextClassList::size_type number) const
 {
 	static string dummy("dummy");
-#if 1
+#if 0
 	static string end("@@end@@");
 #endif
 	classlist[number].load();
 	if (classlist.size() == 0) {
-#if 1
+#if 0
 		if (number == 0) return dummy;
 		else return end;
 #else
 		return dummy;
 #endif
 	}
-#if 1
+#if 0
 	if (number < classlist.size())
 		return classlist[number].latexname();
 	
@@ -1330,21 +1331,21 @@ LyXTextClassList::LatexnameOfClass(LyXTextClassList::ClassList::size_type number
 
 // Gets a textclass description from number
 string const &
-LyXTextClassList::DescOfClass(LyXTextClassList::ClassList::size_type number) const
+LyXTextClassList::DescOfClass(LyXTextClassList::size_type number) const
 {
 	static string dummy("dummy");
-#if 1
+#if 0
 	static string end("@@end@@");
 #endif
 	if (classlist.size() == 0) {
-#if 1
+#if 0
 		if (number == 0) return dummy;
 		else return end;
 #else
 		return dummy;
 #endif
 	}
-#if 1
+#if 0
 	if (number < classlist.size())
 		return classlist[number].description();
 	else
@@ -1358,7 +1359,7 @@ LyXTextClassList::DescOfClass(LyXTextClassList::ClassList::size_type number) con
 
 // Gets a textclass structure from number
 LyXTextClass const &
-LyXTextClassList::TextClass(LyXTextClassList::ClassList::size_type textclass) const
+LyXTextClassList::TextClass(LyXTextClassList::size_type textclass) const
 {
 	classlist[textclass].load();
 	if (textclass < classlist.size())
@@ -1407,7 +1408,11 @@ bool LyXTextClassList::Read ()
 		// compiled in... (Lgb)
 	}
 
-	lex.setFile(real_file);
+	if (!lex.setFile(real_file)) {
+		lyxerr << "LyXTextClassList::Read: "
+			"lyxlex was not able to set file: "
+		       << real_file << endl;
+	}
 	
 	if (!lex.IsOK()) {
 		lyxerr << "LyXTextClassList::Read: unable to open "
@@ -1468,7 +1473,7 @@ bool LyXTextClassList::Read ()
    Returns false if this fails
 */
 bool
-LyXTextClassList::Load (LyXTextClassList::ClassList::size_type number) const
+LyXTextClassList::Load (LyXTextClassList::size_type number) const
 {
 	bool result = true;
 	if (number < classlist.size()) {

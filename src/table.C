@@ -32,10 +32,10 @@ LyXTable::LyXTable(int rows_arg, int columns_arg)
 }
 
 
-LyXTable::LyXTable(LyXLex &lex)
+LyXTable::LyXTable(LyXLex & lex)
 {
-	FILE * file = lex.getFile();
-	Read(file);
+	istream & is = lex.getStream();
+	Read(is);
 }
 
 
@@ -844,140 +844,113 @@ void LyXTable::Write(ostream & os)
 }
 
 
-void LyXTable::Read(FILE * file)
+void LyXTable::Read(istream & is)
 {
-    int version;
-    int i, j;
-    int rows_arg = 0;
-    int columns_arg = 0;
-    int is_long_table_arg = false;
-    int rotate_arg = false;
-    string s;
-    int a = 0;
-    int b = 0;
-    int c = 0;
-    int d = 0;
-    int e = 0;
-    int f = 0;
-    int g = 0;
-    int h = 0;
-    char vtmp[100], stmp[100], atmp[100];
-
-    fscanf(file, "%s\n", vtmp);
-    s = vtmp;
-    if (s.length() > 8)
-        version = atoi(s.c_str() + 8);
-    else
-        version = 1;
+	int version;
+	int i, j;
+	int rows_arg = 0;
+	int columns_arg = 0;
+	int is_long_table_arg = false;
+	int rotate_arg = false;
+	int a = -1;
+	int b = -1;
+	int c = -1;
+	int d = -1;
+	int e = 0;
+	int f = 0;
+	int g = 0;
+	int h = 0;
+	
+	string s;
+	getline(is, s);
+	if (s.length() > 8)
+		version = atoi(s.c_str() + 8);
+	else
+		version = 1;
 #ifdef WITH_WARNINGS
 #warning Insert a error message window here that this format is not supported anymore
 #endif
-    a = b = c = d = -1;
-    if (version < 5) {
-	lyxerr << "Tabular format < 5 is not supported anymore\n"
-	    "Get an older version of LyX (< 1.1.x) for conversion!"
-	       << endl;
-	if (version > 2) {
-	    fgets(vtmp,sizeof(vtmp),file);
-	    sscanf(vtmp, "%d %d %d %d %d %d %d %d\n",
-		   &rows_arg, &columns_arg,
-		   &is_long_table_arg, &rotate_arg, &a, &b, &c, &d);
-	} else
-	    fscanf(file, "%d %d\n",
-		   &rows_arg, &columns_arg);
+	if (version < 5) {
+		lyxerr << "Tabular format < 5 is not supported anymore\n"
+			"Get an older version of LyX (< 1.1.x) for conversion!"
+		       << endl;
+		if (version > 2) {
+			is >> rows_arg >> columns_arg >> is_long_table_arg
+			   >> rotate_arg >> a >> b >> c >> d;
+		} else
+			is >> rows_arg >> columns_arg;
+		Init(rows_arg, columns_arg);
+		SetLongTable(is_long_table_arg);
+		SetRotateTable(rotate_arg);
+		string tmp;
+		for (i = 0; i < rows; ++i) {
+			getline(is, tmp);
+		}
+		for (i = 0; i < columns; ++i) {
+			getline(is, tmp);
+		}
+		for (i = 0; i < rows; ++i) {
+			for (j = 0; j < columns; ++j) {
+				getline(is, tmp);
+			}
+		}
+		set_row_column_number_info();
+		return;
+	}
+	is >> rows_arg >> columns_arg >> is_long_table_arg
+	   >> rotate_arg >> a >> b >> c >> d;
 	Init(rows_arg, columns_arg);
 	SetLongTable(is_long_table_arg);
 	SetRotateTable(rotate_arg);
-	for (i = 0; i<rows; i++){
-	    fgets(vtmp, sizeof(vtmp), file);
+	endhead = a;
+	endfirsthead = b;
+	endfoot = c;
+	endlastfoot = d;
+	for (i = 0; i < rows; ++i) {
+		a = b = c = d = e = f = g = h = 0;
+		is >> a >> b >> c >> d;
+		row_info[i].top_line = a;
+		row_info[i].bottom_line = b;
+		row_info[i].is_cont_row = c;
+		row_info[i].newpage = d;
 	}
-	for (i = 0; i<columns; i++){
-	    fgets(vtmp, sizeof(vtmp), file);
+	for (i = 0; i < columns; ++i) {
+		string s1;
+		string s2;
+		is >> a >> b >> c;
+		char ch; // skip '"'
+		is >> ch;
+		getline(is, s1, '"');
+		is >> ch; // skip '"'
+		getline(is, s2, '"');
+		column_info[i].alignment = static_cast<char>(a);
+		column_info[i].left_line = b;
+		column_info[i].right_line = c;
+		column_info[i].p_width = s1;
+		column_info[i].align_special = s2;
 	}
 	for (i = 0; i < rows; ++i) {
-	    for (j = 0; j < columns; ++j) {
-		fgets(vtmp, sizeof(vtmp), file);
-	    }
+		for (j = 0; j < columns; ++j) {
+			string s1;
+			string s2;
+			is >> a >> b >> c >> d >> e >> f >> g;
+			char ch;
+			is >> ch; // skip '"'
+			getline(is, s1, '"');
+			is >> ch; // skip '"'
+			getline(is, s2, '"');
+			cell_info[i][j].multicolumn = static_cast<char>(a);
+			cell_info[i][j].alignment = static_cast<char>(b);
+			cell_info[i][j].top_line = static_cast<char>(c);
+			cell_info[i][j].bottom_line = static_cast<char>(d);
+			cell_info[i][j].has_cont_row = static_cast<bool>(e);
+			cell_info[i][j].rotate = static_cast<bool>(f);
+			cell_info[i][j].linebreaks = static_cast<bool>(g);
+			cell_info[i][j].align_special = s1;
+			cell_info[i][j].p_width = s2;
+		}
 	}
 	set_row_column_number_info();
-	return;
-    }
-    fgets(vtmp, sizeof(vtmp), file);
-    sscanf(vtmp, "%d %d %d %d %d %d %d %d\n", &rows_arg, &columns_arg,
-	   &is_long_table_arg, &rotate_arg, &a, &b, &c, &d);
-    Init(rows_arg, columns_arg);
-    SetLongTable(is_long_table_arg);
-    SetRotateTable(rotate_arg);
-    endhead = a;
-    endfirsthead = b;
-    endfoot = c;
-    endlastfoot = d;
-    for (i = 0; i<rows; i++){
-        a = b = c = d = e = f = g = h = 0;
-        fgets(vtmp, sizeof(vtmp), file);
-        sscanf(vtmp, "%d %d %d %d\n",
-               &a, &b, &c, &d);
-        row_info[i].top_line = a;
-        row_info[i].bottom_line = b;
-        row_info[i].is_cont_row = c;
-        row_info[i].newpage = d;
-    }
-    for (i = 0; i<columns; i++){
-        *stmp = 0;
-        *atmp = 0;
-        fgets(vtmp, sizeof(vtmp), file);
-        sscanf(vtmp, "%d %d %d %s %s", &a, &b, &c, stmp, atmp);
-        column_info[i].alignment = static_cast<char>(a);
-        column_info[i].left_line = b;
-        column_info[i].right_line = c;
-        if (*stmp == '"') { /* strip quotes if they exists */
-            *stmp = 0;
-            *atmp = 0;
-            // there are quotes so I have to reread the string correctly
-            // this is only because the old format did not have "
-            // this means also that atmp is ONLY set here!!!
-            if (stmp[1] == '"')
-                sscanf(vtmp, "%*d %*d %*d %*s \"%[^\"]\"", atmp);
-            else // otherwise after the first empty "" read is aborded
-                sscanf(vtmp, "%*d %*d %*d \"%[^\"]\" \"%[^\"]\"", stmp, atmp);
-            column_info[i].p_width = stmp;
-            column_info[i].align_special = atmp;
-        } else if (*stmp)
-            column_info[i].p_width = stmp;
-    }
-    for (i = 0; i < rows; ++i) {
-	for (j = 0; j < columns; ++j) {
-	    *stmp = 0;
-	    *atmp = 0;
-	    a = b = c = d = e = f = g = 0;
-	    fgets(vtmp, sizeof(vtmp), file);
-	    sscanf(vtmp, "%d %d %d %d %d %d %d %s %s\n",
-		   &a, &b, &c, &d, &e, &f, &g, stmp, atmp);
-	    cell_info[i][j].multicolumn = static_cast<char>(a);
-	    cell_info[i][j].alignment = static_cast<char>(b);
-	    cell_info[i][j].top_line = static_cast<char>(c);
-	    cell_info[i][j].bottom_line = static_cast<char>(d);
-	    cell_info[i][j].has_cont_row = static_cast<bool>(e);
-	    cell_info[i][j].rotate = static_cast<bool>(f);
-	    cell_info[i][j].linebreaks = static_cast<bool>(g);
-	    // this is only to see if I have an empty string first
-	    // this clause should be always TRUE!!!
-	    if (*stmp == '"') {
-		*stmp = 0;
-		*atmp = 0;
-		if (stmp[1] == '"')
-		    sscanf(vtmp, "%*d %*d %*d %*d %*d %*d %*d %*s \"%[^\"]\"",
-			   atmp);
-		else // otherwise after the first empty "" read is aborded
-		    sscanf(vtmp, "%*d %*d %*d %*d %*d %*d %*d \"%[^\"]\" \"%[^\"]\"",
-			   stmp, atmp);
-		cell_info[i][j].align_special = stmp;
-		cell_info[i][j].p_width = atmp;
-	    } else if (*stmp)
-		cell_info[i][j].align_special = stmp;
-	}
-    }
-    set_row_column_number_info();
 }
 
 

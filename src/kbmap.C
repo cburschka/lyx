@@ -10,7 +10,6 @@
 
 #include <config.h>
 #include <cstring>
-#include <cstdio>
 #include "support/lstrings.h"
 #include "gettext.h"
 

@@ -26,7 +26,6 @@
 #pragma interface
 #endif
 
-#include <cstdio>
 #include "math_defs.h"
 #include "symbol_def.h"
 #include "LString.h"

@@ -17,10 +17,9 @@
 #include "support/filetools.h"
 
 LyXLex::LyXLex(keyword_item * tab, int num)
-	: table(tab), no_items(num)
+	: is(&fb__), table(tab), no_items(num)
 {
-	file = 0;
-	owns_file = false;
+	
 	status = 0;
 	pushed = 0;
 }
@@ -74,45 +73,45 @@ void LyXLex::printError(string const & message) const
 
 bool LyXLex::setFile(string const & filename)
 {
-        if (file)
-		lyxerr << "Error in LyXLex::setFile: file already set." <<endl;
-	file = fopen(filename.c_str(), "r");
+	if (fb__.is_open())
+		lyxerr << "Error in LyXLex::setFile: "
+			"file or stream already set." << endl;
+	fb__.open(filename.c_str(), ios::in);
+	is.rdbuf(&fb__);
 	name = filename;
-	owns_file = true;
 	lineno = 0;
-	return (file ? true : false);
+	return fb__.is_open() && is.good();
 }
 
 
-void LyXLex::setFile(FILE * f)
+void LyXLex::setStream(istream & i)
 {
-        if (file) 
-		lyxerr << "Error in LyXLex::setFile: file already set."
-		       << endl;
-	file = f;
-	owns_file = false;
-	lineno = 0; // this is bogus if the file already has been read from
+	if (fb__.is_open() || is.rdbuf()->in_avail())
+		lyxerr << "Error in LyXLex::setStream: "
+			"file or stream already set." << endl;
+	is.rdbuf(i.rdbuf());
+	lineno = 0;
 }
 
 
 int LyXLex::lex()
 {
 	//NOTE: possible bug.
-   if (next() && status == LEX_TOKEN)
-       return search_kw(buff);
-   else
-       return status;
+	if (next() && status == LEX_TOKEN)
+		return search_kw(buff);
+	else
+		return status;
 }
 
 
 int LyXLex::GetInteger() const
 {
-   if (buff[0] > ' ')   
-       return atoi(buff);
-   else {
-	printError("Bad integer `$$Token'");
-	return -1;
-   }
+	if (buff[0] > ' ')   
+		return atoi(buff);
+	else {
+		printError("Bad integer `$$Token'");
+		return -1;
+	}
 }
 
 
@@ -185,26 +184,26 @@ string LyXLex::getLongString(string const & endtoken)
 
 bool LyXLex::GetBool() const
 {
-   if (compare(buff, "true") == 0)
-	return true;
-   else if (compare(buff, "false") != 0)
-	printError("Bad boolean `$$Token'. Use \"false\" or \"true\"");
-   return false;
+	if (compare(buff, "true") == 0)
+		return true;
+	else if (compare(buff, "false") != 0)
+		printError("Bad boolean `$$Token'. Use \"false\" or \"true\"");
+	return false;
 }
 
 
 bool LyXLex::EatLine()
 {
 	int i = 0;
-	int c = '\0'; // getc() returns an int
+	unsigned char c = '\0';
 
-	while (!feof(file) && c!= '\n' && i!= (LEX_MAX_BUFF-1)) {
-		c = getc(file);
+	while(is && c != '\n' && i != (LEX_MAX_BUFF - 1)) {
+		is.get(c);
 		if (c != '\r')
 			buff[i++] = c;
 	}
-	if (i == (LEX_MAX_BUFF-1) && c != '\n') {
-   		printError("Line too long");
+	if (i == (LEX_MAX_BUFF - 1) && c != '\n') {
+		printError("Line too long");
 		c = '\n'; // Pretend we had an end of line
 		--lineno; // but don't increase line counter (netto effect)
 		++i; // and preserve last character read.
@@ -249,14 +248,15 @@ int LyXLex::search_kw(char const * const tag) const
 bool LyXLex::next(bool esc)
 {
 	if (!esc) {
-		int c; // getc() returns an int
+		unsigned char c; // getc() returns an int
 		
 		status = 0;
-		while (!feof(file) && !status) { 
-			c = getc(file);
+		while (is && !status) { 
+			is.get(c);
 			if (c == '#') {
 				// Read rest of line (fast :-)
-				fgets(buff, sizeof(buff), file);
+				is.get(buff, sizeof(buff));
+				lyxerr[Debug::LYXLEX] << "Comment read: " << c << buff << endl;
 				++lineno;
 				continue;
 			}
@@ -264,19 +264,19 @@ bool LyXLex::next(bool esc)
 			if (c == '\"') {
 				int i = -1;
 				do {
-					c = getc(file);
+					is.get(c);
 					if (c != '\r')
 						buff[++i] = c;
-				} while (c!= '\"' && c!= '\n' && !feof(file) &&
-					 i!= (LEX_MAX_BUFF-2));
+				} while (c != '\"' && c != '\n' && is &&
+					 i != (LEX_MAX_BUFF - 2));
 				
-				if (i == (LEX_MAX_BUFF-2)) {
+				if (i == (LEX_MAX_BUFF - 2)) {
 					printError("Line too long");
 					c = '\"'; // Pretend we got a "
 					++i;
 				}
 				
-				if (c!= '\"') {
+				if (c != '\"') {
 					printError("Missing quote");
 					if (c == '\n')
 						++lineno;
@@ -289,27 +289,35 @@ bool LyXLex::next(bool esc)
 			
 			if (c == ',')
 				continue;              /* Skip ','s */
-			
-			if (c > ' ' && !feof(file))  {
+
+			// using relational operators with chars other
+			// than == and != is not safe. And if it is done
+			// the type _have_ to be unsigned. It usually a
+			// lot better to use the functions from cctype
+			if (c > ' ' && is)  {
+#warning Verify this! (Lgb)
+				//if (isalnum(static_cast<unsigned char>(c)) && is) {
 				int i = 0;
 				do {
 					buff[i++] = c;
-					c = getc(file);
-				} while (c > ' ' && c != ',' && !feof(file) &&
-					 (i != LEX_MAX_BUFF-1) );
-				if (i == LEX_MAX_BUFF-1) {
+					is.get(c);
+				} while (c > ' ' && c != ',' && is
+				//} while (isalnum(static_cast<unsigned char>(c))
+					 //&& c != ',' && is
+					 && (i != LEX_MAX_BUFF - 1) );
+				if (i == LEX_MAX_BUFF - 1) {
 					printError("Line too long");
 				}
 				buff[i] = '\0';
 				status = LEX_TOKEN;
 			}
 			
-			if (c == '\r' && !feof(file)) {
+			if (c == '\r' && is) {
 				// The Windows support has lead to the
 				// possibility of "\r\n" at the end of
 				// a line.  This will stop LyX choking
 				// when it expected to find a '\n'
-				c = getc(file);
+				is.get(c);
 			}
 
 			if (c == '\n')
@@ -318,15 +326,15 @@ bool LyXLex::next(bool esc)
 		}
 		if (status) return true;
 		
-		status = (feof(file)) ? LEX_FEOF: LEX_UNDEF;
+		status = is.eof() ? LEX_FEOF: LEX_UNDEF;
 		buff[0] = '\0';
 		return false;
 	} else {
-		int c; // getc() returns an int
+		unsigned char c; // getc() returns an int
 		
 		status = 0;
-		while (!feof(file) && !status) { 
-			c = getc(file);
+		while (is && !status) {
+			is.get(c);
 
 			// skip ','s
 			if (c == ',') continue;
@@ -337,13 +345,15 @@ bool LyXLex::next(bool esc)
 				do {
 					if (c == '\\') {
 						// escape the next char
-						c = getc(file);
+						is.get(c);
 					}
 					buff[i++] = c;
-					c = getc(file);
-				} while (c > ' ' && c != ',' && !feof(file) &&
-					 (i != LEX_MAX_BUFF-1) );
-				if (i == LEX_MAX_BUFF-1) {
+					is.get(c);
+				} while (c > ' ' && c != ',' && is
+				//} while (isalnum(static_cast<unsigned char>(c))
+					 //&& c != ',' && is
+					 && (i != LEX_MAX_BUFF - 1) );
+				if (i == LEX_MAX_BUFF - 1) {
 					printError("Line too long");
 				}
 				buff[i] = '\0';
@@ -353,7 +363,8 @@ bool LyXLex::next(bool esc)
 			
 			if (c == '#') {
 				// Read rest of line (fast :-)
-				fgets(buff, sizeof(buff), file);
+				is.get(buff, sizeof(buff));
+				lyxerr[Debug::LYXLEX] << "Comment read: " << c << buff << endl;
 				++lineno;
 				continue;
 			}
@@ -364,26 +375,26 @@ bool LyXLex::next(bool esc)
 				bool escaped = false;
 				do {
 					escaped = false;
-					c = getc(file);
+					is.get(c);
 					if (c == '\r') continue;
 					if (c == '\\') {
 						// escape the next char
-						c = getc(file);
+						is.get(c);
 						escaped = true;
 					}
 					buff[++i] = c;
 				
 					if (!escaped && c == '\"') break;
-				} while (c!= '\n' && !feof(file) &&
-					 i!= (LEX_MAX_BUFF-2));
+				} while (c != '\n' && is &&
+					 i != (LEX_MAX_BUFF - 2));
 				
-				if (i == (LEX_MAX_BUFF-2)) {
+				if (i == (LEX_MAX_BUFF - 2)) {
 					printError("Line too long");
 					c = '\"'; // Pretend we got a "
 					++i;
 				}
 				
-				if (c!= '\"') {
+				if (c != '\"') {
 					printError("Missing quote");
 					if (c == '\n')
 						++lineno;
@@ -394,25 +405,27 @@ bool LyXLex::next(bool esc)
 				break; 
 			}
 			
-			if (c > ' ' && !feof(file))  {
+			if (c > ' ' && is) {
+				//if (isalnum(static_cast<unsigned char>(c)) && is) {
 				int i = 0;
 				do {
 					if (c == '\\') {
 						// escape the next char
-						c = getc(file);
+						is.get(c);
 						//escaped = true;
 					}
 					buff[i++] = c;
-					c = getc(file);
-				} while (c > ' ' && c != ',' && !feof(file) &&
-					 (i != LEX_MAX_BUFF-1) );
+					is.get(c);
+				} while (c > ' ' && c != ',' && is
+				//} while (isalnum(static_cast<unsigned char>(c))
+					 //!= ',' && is
+					 && (i != LEX_MAX_BUFF-1) );
 				if (i == LEX_MAX_BUFF-1) {
 					printError("Line too long");
 				}
 				buff[i] = '\0';
 				status = LEX_TOKEN;
 			}
-
 			// new line
 			if (c == '\n')
 				++lineno;
@@ -420,7 +433,7 @@ bool LyXLex::next(bool esc)
 		
 		if (status) return true;
 		
-		status = (feof(file)) ? LEX_FEOF: LEX_UNDEF;
+		status = is.eof() ? LEX_FEOF: LEX_UNDEF;
 		buff[0] = '\0';
 		return false;	
 	}
@@ -430,30 +443,36 @@ bool LyXLex::next(bool esc)
 bool LyXLex::nextToken()
 {
         status = 0;
-	while (!feof(file) && !status) { 
-		int c = getc(file); // getc() returns an int
+	while (is && !status) { 
+		unsigned char c;
+		is.get(c);
 	   
-		if (c >= ' ' && !feof(file))  {
+		if (c >= ' ' && is) {
+			//if (isprint(static_cast<unsigned char>(c)) && is) {
 			int i = 0;
 			if (c == '\\') { // first char == '\\'
 				do {
 					buff[i++] = c;
-					c = getc(file);
-				} while (c > ' ' && c != '\\' && !feof(file) &&
-					 i != (LEX_MAX_BUFF-1));
+					is.get(c);
+				} while (c > ' ' && c != '\\' && is
+				//} while (isalnum(static_cast<unsigned char>(c))
+				//	 && c != '\\' && is
+					 && i != (LEX_MAX_BUFF-1));
 			} else {
 				do {
 					buff[i++] = c;
-					c = getc(file);
-				} while (c >= ' ' && c != '\\' && !feof(file)
+					is.get(c);
+				} while (c >= ' ' && c != '\\' && is
+				//} while (isprint(static_cast<unsigned char>(c))
+					 // && c != '\\' && is
 					 && i != (LEX_MAX_BUFF-1));
 			}
 
-			if (i == (LEX_MAX_BUFF-1)) {
+			if (i == (LEX_MAX_BUFF - 1)) {
 				printError("Line too long");
 			}
 
-			if (c == '\\') ungetc(c, file); // put it back
+			if (c == '\\') is.putback(c); // put it back
 			buff[i] = '\0';
 		        status = LEX_TOKEN;
 		}
@@ -464,7 +483,7 @@ bool LyXLex::nextToken()
 	}
         if (status)  return true;
         
-        status = (feof(file)) ? LEX_FEOF: LEX_UNDEF;
+        status = is.eof() ? LEX_FEOF: LEX_UNDEF;
         buff[0] = '\0';
         return false;
 }

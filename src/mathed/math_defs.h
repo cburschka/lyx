@@ -24,12 +24,10 @@
 #pragma interface
 #endif
 
-#include <cstdio>
 #include "LString.h"
 #include "debug.h"
 
 #include "array.h"
-
 
 ///
 enum math_align {
@@ -543,14 +541,12 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * data,
 ///
 void mathed_write(MathParInset *, ostream &, int *, char fragile,
 		  char const * label = 0);
-///
-//void mathed_write(MathParInset *, FILE *, int *, char fragile,
-//		  char const * label = 0);
+
 ///
 void mathed_write(MathParInset *, string &, int *, char fragile,
 		  char const * label = 0);
 ///
-void mathed_parser_file(FILE *, int);
+void mathed_parser_file(istream &, int);
 ///
 int mathed_parser_lineno();
 ///

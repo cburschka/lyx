@@ -182,6 +182,9 @@ public:
 	  cursor in a text (and thus not in a buffer). By keeping this it is
 	  (I think) impossible to have several views with the same buffer, but
 	  the cursor placed at different places.
+	  [later]
+	  Since the LyXText now has been moved from Buffer to BufferView
+	  it should not be absolutely needed to move the cursor...
 	  */
 	LyXCursor cursor;
    
@@ -461,8 +464,13 @@ public:
         bool IsEmptyTableCell() const;
         ///
         void toggleAppendix();
+	///
+	unsigned short paperWidth() const { return paperwidth; }
 
 private:
+	/// width of the paper
+	unsigned short  paperwidth;
+
 	///
 	Row * firstrow;
 	///
@@ -478,8 +486,6 @@ private:
 	Row * currentrow;		/* pointer to the current row  */
 	/// position in the text 
 	long  currentrow_y;
-	/// width of the paper
-	unsigned short  paperwidth;
    
 	/** inserts a new row behind the specified row, increments
 	 * the touched counters */

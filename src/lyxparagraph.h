@@ -136,9 +136,9 @@ public:
 
 	///
 	void read();
-	
+
 	///
-	void readSimpleWholeFile(FILE *);
+	void readSimpleWholeFile(istream &);
 
 	///
 	LyXParagraph * TeXOnePar(string & file, TexRow & texrow,

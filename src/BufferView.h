@@ -50,6 +50,8 @@ public:
 	///
 	void update(signed char f);
 	///
+	void smallUpdate(signed char f);
+	///
 	void updateScrollbar();
 	///
 	void redoCurrentBuffer();

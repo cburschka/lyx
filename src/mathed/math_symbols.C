@@ -39,7 +39,6 @@ using std::max;
 #include "math_panel.h"                 
 #include "math_parser.h"
 
-extern void SmallUpdate(signed char);
 extern void BeforeChange();
 extern void Update(signed char);
 extern int UnlockInset(UpdatableInset *);

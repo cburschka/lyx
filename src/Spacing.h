@@ -12,9 +12,13 @@
 #ifndef SPACING_H
 #define SPACING_H
 
-#include <cstdio>
-#include "support/LOstream.h"
+#ifdef HAVE_SSTREAM
+#include <sstream>
+#else
+#include <strstream>
+#endif
 
+#include "support/LOstream.h"
 
 ///
 class Spacing {
@@ -69,7 +73,12 @@ public:
 	void set(Spacing::Space sp, char const * val)
 	{
 		float fval;
-		sscanf(val, "%f", &fval);
+#ifdef HAVE_SSTREAM
+		istringstream istr(val);
+#else
+		istrstream istr(val);
+#endif
+		istr >> fval;
 		set(sp, fval);
 	}
 	///

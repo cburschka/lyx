@@ -45,13 +45,15 @@ struct Debug {
 		///
 		ROFF       = (1 << 13),  // 8192
 		///
-		ACTION     = (1 << 14)   // 16384
+		ACTION     = (1 << 14),   // 16384
+		///
+		LYXLEX     = (1 << 15)
 	};
 	///
 	static const type ANY = type(INFO | INIT | KEY | TOOLBAR |
 				     PARSER | LYXRC | KBMAP | LATEX |
 				     MATHED | FONT | TCLASS | LYXVC |
-				     LYXSERVER | ROFF | ACTION);
+				     LYXSERVER | ROFF | ACTION | LYXLEX);
 	///
 	friend inline void operator|=(Debug::type & d1, Debug::type d2);
 	

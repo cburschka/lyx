@@ -16,6 +16,7 @@
  */
 
 #include <config.h>
+
 #include "LString.h"
 #include "math_inset.h"
 #include "math_iter.h"

@@ -39,6 +39,7 @@ static error_item errorTags[] = {
 	{ Debug::LYXSERVER,	"lyxserver",	"External control interface"},
 	{ Debug::ROFF,		"roff",		"Keep *roff temporary files"},
 	{ Debug::ACTION,	"action",	"User commands"},
+	{ Debug::LYXLEX,        "lyxlex",       "The LyX Lexxer"},
 	{ Debug::NONE,		"none",		"No debugging message"},
         { Debug::ANY,		"any",          "All debugging messages"}
 };
@@ -93,6 +94,3 @@ void Debug::showTags(ostream & os)
 		   << "  " << errorTags[i].desc << '\n';
 	os.flush();
 }
-
-
-

@@ -2226,18 +2226,14 @@ int LyXParagraph::GetPositionOfInset(Inset * inset) const
 }
 
 
-void LyXParagraph::readSimpleWholeFile(FILE * myfile)
+void LyXParagraph::readSimpleWholeFile(istream & is)
 {
-	rewind(myfile);
-   
-	if (!feof(myfile)) {
-		char c = 0;
-		do {
-			c = fgetc(myfile);
-			InsertChar(text.size(), c);
-		} while (!feof(myfile));
-      
-	}
+	is.seekg(0);
+	char c = 0;
+	while(!is.eof()) {
+		is.get(c);
+		InsertChar(text.size(), c);
+	};
 }
 
 

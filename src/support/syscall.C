@@ -9,7 +9,6 @@
 #include <sys/wait.h>
 #include <csignal>
 #include <cstdlib>
-#include <cstdio>
 #include <unistd.h>
 #include "debug.h"
 #include "syscall.h"

@@ -300,35 +300,6 @@ void BeforeChange()
 }
 
 
-// candidate for move to BufferView
-void SmallUpdate(signed char f)
-{
-	current_view->getScreen()->SmallUpdate();
-	if (current_view->getScreen()->TopCursorVisible()
-	    != current_view->getScreen()->first) {
-		current_view->update(f);
-		return;
-	}
-
-	current_view->fitCursor();
-	current_view->updateScrollbar();
-
-	if (!current_view->text->selection)
-		current_view->text->sel_cursor = 
-			current_view->text->cursor;
-
-	if (f == 1 || f == -1) {
-		if (current_view->buffer()->isLyxClean()) {
-			current_view->buffer()->markDirty();
-			current_view->owner()->getMiniBuffer()->setTimer(4);
-		}
-		else {
-			current_view->buffer()->markDirty();
-		}
-	}
-}
-
-
 //
 // Menu callbacks
 //
@@ -1190,14 +1161,14 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 		return;
 	}
 
-	FilePtr myfile(fname, FilePtr::read);
-	if (!myfile()) {
+	ifstream ifs(fname.c_str());
+	if (!ifs) {
 		WriteFSAlert(_("Error! Cannot open specified file: "),
 			     MakeDisplayPath(fname, 50));
 		return;
 	}
 	LyXParagraph * tmppar = new LyXParagraph;
-	tmppar->readSimpleWholeFile(myfile);
+	tmppar->readSimpleWholeFile(ifs);
 	
 	// set the end of the string
 #ifdef WITH_WARNINGS

@@ -103,16 +103,16 @@ int InsetFormulaMacro::DocBook(string &/*file*/)
 
 void InsetFormulaMacro::Read(LyXLex & lex)
 {
-    FILE * file = lex.getFile();
-    mathed_parser_file(file, lex.GetLineNo());   
-    mathed_parse(0, 0, reinterpret_cast<MathParInset **>(&tmacro));
+	istream & is = lex.getStream();
+	mathed_parser_file(is, lex.GetLineNo());   
+	mathed_parse(0, 0, reinterpret_cast<MathParInset **>(&tmacro));
     
-    // Update line number
-    lex.setLineNo(mathed_parser_lineno());
-    
-    MathMacroTable::mathMTable.addTemplate(tmacro);
-    name = tmacro->GetName();
-    par = tmacro;
+	// Update line number
+	lex.setLineNo(mathed_parser_lineno());
+	
+	MathMacroTable::mathMTable.addTemplate(tmacro);
+	name = tmacro->GetName();
+	par = tmacro;
 }
 
 

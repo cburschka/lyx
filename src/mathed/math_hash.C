@@ -1,7 +1,7 @@
 /* C code produced by gperf version 2.5 (GNU C++ version) */
 /* Command-line: gperf -a -p -o -t -G -D keywords  */
 #include <config.h>
-#include <cstdio>
+
 #include <cstdlib>
 #include <cstring>
 

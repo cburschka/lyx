@@ -380,27 +380,26 @@ void InsetFormula::Validate(LaTeXFeatures & features) const
 
 void InsetFormula::Read(LyXLex & lex)
 {
-    FILE * file = lex.getFile();
+	istream & is = lex.getStream();
     
-    mathed_parser_file(file, lex.GetLineNo());   
+	mathed_parser_file(is, lex.GetLineNo());   
    
-   // Silly hack to read labels. 
-   mathed_label = 0;
-   mathed_parse(0, 0, &par);
-   par->Metrics();
-   disp_flag = (par->GetType() > 0);
-   
-    // Update line number
-    lex.setLineNo(mathed_parser_lineno());
-    
-   if (mathed_label) {
-      label = mathed_label;
-      mathed_label = 0;
-   }
+	// Silly hack to read labels. 
+	mathed_label = 0;
+	mathed_parse(0, 0, &par);
+	par->Metrics();
+	disp_flag = (par->GetType() > 0);
+	
+	// Update line number
+	lex.setLineNo(mathed_parser_lineno());
+	
+	if (mathed_label) {
+		label = mathed_label;
+		mathed_label = 0;
+	}
    
 #ifdef DEBUG
-   Write(stdout);
-   fflush(stdout);
+	Write(lyxerr);
 #endif
 }
 

@@ -19,7 +19,6 @@
 #pragma interface
 #endif
 
-#include <cstdio>
 #include "math_defs.h"
 #include "math_inset.h"
 #include "symbol_def.h"

@@ -38,7 +38,6 @@
 #include <config.h>
 
 #include <cstring>
-#include <cstdio>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>

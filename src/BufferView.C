@@ -11,6 +11,7 @@
 
 #include <config.h>
 
+#include <algorithm>
 #include <cstdlib>
 #include <csignal>
 
@@ -41,6 +42,8 @@
 #include "lyx_cb.h"
 #include "gettext.h"
 #include "layout.h"
+
+using std::find_if;
 
 extern BufferList bufferlist;
 void sigchldhandler(pid_t pid, int * status);
@@ -88,14 +91,126 @@ BufferView::~BufferView()
 	delete text;
 }
 
+// This is only the very first implemetation and use of the TextCache,
+// operations on it needs to be put into a class or a namespace, that part
+// is _NOT_ finished so don't bother to come with too many comments on it
+// (unless you have some nice ideas on where/how to do it)
+//
+// I think we need a TextCache that is common for all BufferViews,
+// please tell if you don't agree.
+//
+// Q. What are we caching?
+// A. We are caching the screen representations (LyXText) of the
+//    documents (Buffer,LyXParagraph) for specific BufferView widths.
+// Q. Why the cache?
+// A. It is not really needed, but it speeds things up a lot
+//    when you have more than one document loaded at once since a total
+//    rebreak (reformatting) need not be done when switching between
+//    documents. When the cache is in function a document only needs to be
+//    formatted upon loading and when the with of the BufferView changes.
+//    Later it will also be unneccessary to reformat when having two
+//    BufferViews of equal width with the same document, a simple copy
+//    of the LyXText structure will do.
+// Invariant for the TextCache:
+//        - The buffer of the text  in the TextCache _must_ exists
+//          in the bufferlist.
+//        - For a text in the TextCache there _must not_ be an equivalent
+//          text in any BufferView. (same buffer and width).
+// Among others this mean:
+//        - When a document is closed all trace of it must be removed from
+//          the TextCache.
+// Senarios:
+//    I belive there are only three possible senarios where the two first
+//    are also covered by the third.
+//        - The simplest senario is what we have now, a single BufferView only.
+//          o Opening
+//            Nothing to do with the TextCache is done when opening a file.
+//          o Switching
+//            We switch from buffer A to buffer B.
+//            * A's text is cached in TextCache.
+//            * We make a search for a text in TextCache that fits B
+//              (same buffer and same width).
+//          o Horisontal resize
+//            If the BufferView's width (LyXView) is horisontaly changed all
+//            the entries in the TextCache is deleted. (This causes
+//            reformat of all loaded documents when next viewed)
+//          o Close
+//            When a buffer is closed we don't have to do anything, becuase
+//            to close a single buffer it is required to only exist in the
+//            BufferView and not in the TextCache. Upon LFUN_QUIT we
+//            don't really care since everything is deleted anyway.
+//        - The next scenario is when we have several BufferViews (in one or
+//          more LyXViews) of equal width.
+//          o Opening
+//            Nothing to do with the TextCache is done when opening a file.
+//          o Switching
+//            We switch from buffer A to buffer B.
+//            * If A is in another Bufferview we do not put it into TextCache.
+//              else we put A into TextCache.
+//            * If B is viewed in another BufferView we make a copy of its
+//              text and use that, else we search in TextCache for a match.
+//              (same buffer same width)
+//          o Horisontal resize
+//            If the BufferView's width (LyXView) is horisontaly changed all
+//            the entries in the TextCache is deleted. (This causes
+//            reformat of all loaded documents when next viewed)
+//          o Close
+//        - The last scenario should cover both the previous ones, this time
+//          we have several BufferViews (in one or more LyXViews) with no
+//          limitations on width. (And if you wonder why the two other
+//          senarios are needed... I used them to get to this one.)
+//          o Opening
+//            Nothing to do with the TextCache is done when opening a file.
+//          o Switching
+//            We switch from buffer A to buffer B.
+//          o Horisontal resize
+//          o Close
 
+typedef vector<LyXText*> TextCache;
+TextCache textcache;
+
+class text_fits {
+public:
+	text_fits(Buffer * b, unsigned short p)
+		: buf(b), pw(p) {}
+	bool operator()(TextCache::value_type & vt) {
+		if (vt->params == buf && vt->paperWidth() == pw) return true;
+		return false;
+	}
+private:
+	Buffer * buf;
+	unsigned short pw;
+};
+
+
+class show_text {
+public:
+	show_text(ostream & o) : os(o) {}
+	void operator()(TextCache::value_type & vt) {
+		os << "Buffer: " << vt->params
+		   << "\nWidth: " << vt->paperWidth() << endl;
+	}
+private:
+	ostream & os;
+};
+
+void showTextCache(string const & str)
+{
+	lyxerr << "TextCache: " << str << endl;
+	for_each(textcache.begin(), textcache.end(), show_text(lyxerr));
+}
+
+	      
 void BufferView::buffer(Buffer * b)
 {
 	lyxerr[Debug::INFO] << "Setting buffer in BufferView" << endl;
 	if (buffer_) {
 		buffer_->InsetSleep();
 		buffer_->delUser(this);
-		delete text;
+		// Put the old text into the TextCache.
+		textcache.push_back(text);
+		showTextCache("buffer");
+		// delete text;
 		text = 0;
 	}
 
@@ -135,6 +250,13 @@ void BufferView::buffer(Buffer * b)
 		owner_->getMenus()->hideMenus();
 		updateScrollbar();
 		fl_redraw_object(work_area);
+		// Also remove all remaining text's from the testcache.
+		showTextCache("buffer delete all");
+		while (!textcache.empty()) {
+			LyXText * tt = textcache.front();
+			textcache.erase(textcache.begin());
+			delete tt;
+		}
 	}
 	// should update layoutchoice even if we don't have a buffer.
 	owner_->updateLayoutChoice();
@@ -293,9 +415,24 @@ int BufferView::resizeCurrentBuffer()
 		selection = text->selection;
 		mark_set = text->mark_set;
 		delete text;
+		text = new LyXText(work_area->w, buffer_);
+	} else {
+		// See if we have a text in TextCache that fits
+		// the new buffer_ with the correct width.
+		TextCache::iterator it =
+			find_if(textcache.begin(),
+				textcache.end(),
+				text_fits(buffer_,
+					  work_area->w));
+		if (it != textcache.end()) {
+			text = *it;
+			// take it out of textcache.
+			textcache.erase(it);
+			showTextCache("resizeCurrentBuffer");
+		} else {
+			text = new LyXText(work_area->w, buffer_);
+		}
 	}
-	text = new LyXText(work_area->w, buffer_);
-
 	updateScreen();
 
 	if (par) {
@@ -1266,6 +1403,14 @@ int BufferView::workAreaExpose()
 		if (widthChange) {
 			// All buffers need a resize
 			bufferlist.resize();
+
+			// Remove all texts from the textcache
+			showTextCache("Expose delete all");
+			while(!textcache.empty()) {
+				LyXText * tt = textcache.front();
+				textcache.erase(textcache.begin());
+				delete tt;
+			}
 		} else if (heightChange) {
 			// Rebuild image of current screen
 			updateScreen();
@@ -1558,6 +1703,32 @@ void BufferView::update(signed char f)
 		fitCursor();
 		updateScrollbar();
       	}
+
+	if (f == 1 || f == -1) {
+		if (buffer()->isLyxClean()) {
+			buffer()->markDirty();
+			owner()->getMiniBuffer()->setTimer(4);
+		} else {
+			buffer()->markDirty();
+		}
+	}
+}
+
+
+void BufferView::smallUpdate(signed char f)
+{
+	getScreen()->SmallUpdate();
+	if (getScreen()->TopCursorVisible()
+	    != getScreen()->first) {
+		update(f);
+		return;
+	}
+
+	fitCursor();
+	updateScrollbar();
+
+	if (!text->selection)
+		text->sel_cursor = text->cursor;
 
 	if (f == 1 || f == -1) {
 		if (buffer()->isLyxClean()) {
