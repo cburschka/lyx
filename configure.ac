@@ -26,10 +26,6 @@ AM_INIT_AUTOMAKE($lyxname, $VERSION)
 # This is needed by GNU gettext
 ALL_LINGUAS="bg ca cs da de es eu fi fr he hu it nl nn no pl pt ro ru sk sl sv tr wa"
 
-# fix the value of the prefixes.
-test "x$prefix" = xNONE && prefix=$ac_default_prefix
-test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
-
 ### Set the execute permissions of the various scripts correctly
 for file in config/install-sh config/mkinstalldirs lib/configure ; do
   chmod 755 ${srcdir}/${file}

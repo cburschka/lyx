@@ -31,7 +31,7 @@ public:
 	///
 	void set(Spacing::Space, float = 1.0) {}
 	///
-	void set(Spacing::Space sp, std::string const & val) {}
+	void set(Spacing::Space, std::string const &) {}
 };
 
 #endif // NOT SPACING_H
