@@ -1,3 +1,13 @@
+2002-01-27  Herbert Voss  <voss@lyx.org>
+
+	* FormGraphic.[Ch]: 
+	* form_graphic.[Ch]: 
+	* forms/form_graphic.fd: rewritten to support graphicx with
+	all options and to be sure that the old figinsets are correct
+	converted.
+	* xforms-helpers.h: added two choice const for the LyXLength
+	one with all and one only with length which have a unit.
+
 2002-01-28  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormAboutlyx.[Ch]: Removed redundant form() method and

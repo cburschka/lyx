@@ -41,6 +41,8 @@ public:
 		///
 		Loading = 1,
 		///
+		Converting,
+		///
 		ErrorConverting,
 		///
 		ErrorReading,

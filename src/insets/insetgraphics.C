@@ -3,21 +3,11 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *           Copyright 1995-2001 the LyX Team.
+ *           Copyright 1995-2002 the LyX Team.
  *           
- *           This file Copyright 2000 Baruch Even.
+ * \author Baruch Even
+ * \author Herbert Voss <voss@lyx.org>
  * ====================================================== */
-
-/*
-Major tasks:
-	* Switch to convert the images in the background, this requires work on
-		the converter, the systemcontroller and the graphics cache.
-
-Minor tasks:
-    * Pop up a dialog if the widget version is higher than what we accept.
-	* Provide sed/awk/C code to downgrade from InsetGraphics to FigInset(?)
-        
-*/
 
 /*
 Known BUGS:
@@ -47,10 +37,6 @@ Known BUGS:
 		its original size and color, resizing is done in the final output,
 		but not in the LyX window.
 
-	* The scale option is only handled for the horizontal part, the vertical
-		part will not work. For now it is also shown only for horizontal
-		resizing on the form.
-
 	* EPS figures are not fully detected, they may have a lot of possible
 		suffixes so we need to read the file and detect if it's EPS or not.
 		[Implemented, need testing]
@@ -62,13 +48,6 @@ TODO Before initial production release:
           And act upon them. Make sure not to remove InsetFig code for the 
 		  1.2.0 release, only afterwards, after deployment shows InsetGraphics
 		  to be ok.
- 
-TODO Extended features:
- 
-    * Advanced Latex tab folder.
-    * Add support for more features so that it will be better than insetfig.
-        * Keep aspect ratio radio button
-        * Support for complete control over the latex parameters for TeXperts
         * What advanced features the users want to do?
             Implement them in a non latex dependent way, but a logical way.
             LyX should translate it to latex or any other fitting format.
@@ -83,43 +62,16 @@ TODO Extended features:
 	* Add support for the 'picinpar' package.
 	* Improve support for 'subfigure' - Allow to set the various options
 		that are possible.
-	* Add resizing by percentage of image size (50%, 150%) -
-	  usefull for two images of different size to be resized where
-	  they both should have the same scale compared to each other.
  */
 
 /* NOTES:
- *
- * Intentions:
- *  This is currently a moving target, I'm trying stuff and learning what
- *  is needed and how to accomplish it, since there is no predefined goal or
- *  way to go I invent it as I go.
- *
- *  My current intention is for seperation from LaTeX, the basic needs are 
- *  resizing and rotating, displaying on screen in various depths and printing
- *  conversion of depths (independent of the display depth). For this I'll 
- *  provide a simple interface.
- *
- *  The medium level includes clipping of the image, but in a limited way.
- *
- *  For the LaTeX gurus I'll provide a complete control over the output, but
- *  this is latex dependent and guru dependent so I'd rather avoid doing this
- *  for the normal user. This stuff includes clipping, special image size
- *  specifications (\textwidth\minus 2in) which I see no way to generalize
- *  to non-latex specific way.
- *
- * Used packages:
- *  'graphicx' for the graphics inclusion.
- *  'subfigure' for the subfigures.
- *
  * Fileformat:
- *
  * Current version is 1 (inset file format version), when changing it
  * it should be changed in the Write() function when writing in one place
  * and when reading one should change the version check and the error message.
- *
  * The filename is kept in  the lyx file in a relative way, so as to allow
  * moving the document file and its images with no problem.
+ * 
  *
  * Conversions:
  *   Postscript output means EPS figures.
@@ -155,6 +107,7 @@ TODO Extended features:
 #include "lyx_gui_misc.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "frontends/controllers/helper_funcs.h"
 #include "support/lyxlib.h"
 #include "lyxtext.h"
 #include "lyxrc.h"
@@ -171,6 +124,9 @@ using std::ifstream;
 using std::ostream;
 using std::endl;
 
+///////////////////////////////////////////////////////////////////////////
+int VersionNumber = 1;
+///////////////////////////////////////////////////////////////////////////
 
 // This function is a utility function
 // ... that should be with ChangeExtension ...
@@ -209,31 +165,28 @@ string const
 InsetGraphics::statusMessage() const
 {
 	string msg;
-
 	if (cacheHandle.get()) {
 		switch (cacheHandle->getImageStatus()) {
 		case GraphicsCacheItem::UnknownError:
 			msg = _("Unknown Error");
 			break;
-
 		case GraphicsCacheItem::Loading:
 			msg = _("Loading...");
 			break;
-
 		case GraphicsCacheItem::ErrorReading:
 			msg = _("Error reading");
 			break;
-
+		case GraphicsCacheItem::Converting:
+			msg = _("Converting Image");
+			break;
 		case GraphicsCacheItem::ErrorConverting:
 			msg = _("Error converting");
 			break;
-
 		case GraphicsCacheItem::Loaded:
 			// No message to write.
 			break;
 		}
 	}
-
 	return msg;
 }
 
@@ -369,8 +322,7 @@ Inset::EDITABLE InsetGraphics::editable() const
 
 void InsetGraphics::write(Buffer const * buf, ostream & os) const
 {
-	os << "Graphics FormatVersion 1\n";
-
+	os << "Graphics FormatVersion " << VersionNumber << '\n';
 	params.Write(buf, os);
 }
 
@@ -407,7 +359,7 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 		} else if (token == "FormatVersion") {
 			lex.next();
 			int version = lex.getInteger();
-			if (version > 1)
+			if (version > VersionNumber)
 				lyxerr
 				<< "This document was created with a newer Graphics widget"
 				", You should use a newer version of LyX to read this"
@@ -426,6 +378,8 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 
 void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 {
+	std::vector<string> const oldUnits =
+		getVectorFromString("pt,cm,in,p%,c%");
 	bool finished = false;
 	
 	while (lex.isOK() && !finished) {
@@ -450,6 +404,7 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 		} else if (token == "subcaption") {
 			if (lex.eatLine())
 				params.subcaptionText = lex.getString();
+			params.subcaption = true;
 		} else if (token == "label") {
 			if (lex.next());
 			// kept for backwards compability. Delete in 0.13.x
@@ -457,14 +412,10 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 			if (lex.next())
 				params.rotateAngle = lex.getFloat();
 		} else if (token == "size") {
-			// Size of image on screen is ignored in InsetGraphics, just eat
-			// the input.
-			if (lex.next()) {
-				lex.getInteger();
-			}
-			if (lex.next()) {
-				lex.getInteger();
-			}
+			if (lex.next())
+				params.lyxwidth = LyXLength(lex.getString()+"pt");
+			if (lex.next())
+				params.lyxheight = LyXLength(lex.getString()+"pt");
 		} else if (token == "flags") {
 			InsetGraphicsParams::DisplayType tmp = InsetGraphicsParams::COLOR;
 			if (lex.next())
@@ -476,78 +427,73 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 		} else if (token == "subfigure") {
 			params.subcaption = true;
 		} else if (token == "width") {
+		    if (lex.next()) {
+			int i = lex.getInteger();
 			if (lex.next()) {
-				params.widthResize = static_cast<InsetGraphicsParams::Resize>(lex.getInteger());
+			    if (i == 5) {
+				params.scale = lex.getInteger();
+				params.size_type = InsetGraphicsParams::SCALE;
+			    } else {
+				params.width = LyXLength(lex.getString()+oldUnits[i]);
+				params.size_type = InsetGraphicsParams::WH;
+			    }
 			}
-			if (lex.next()) {
-				params.widthSize = lex.getFloat();
-			}
+		    }
 		} else if (token == "height") {
+		    if (lex.next()) {
+			int i = lex.getInteger();
 			if (lex.next()) {
-				params.heightResize = static_cast<InsetGraphicsParams::Resize>(lex.getInteger());
+			    params.height = LyXLength(lex.getString()+oldUnits[i]);
+			    params.size_type = InsetGraphicsParams::WH;
 			}
-			if (lex.next()) {
-				params.heightSize = lex.getFloat();
-			}
+		    }
 		}
 	}
 }
 
-
-namespace {
-
-void formatResize(ostream & os, string const & key,
-		  InsetGraphicsParams::Resize resizeType, double size)
-{
-	switch (resizeType) {
-	case InsetGraphicsParams::DEFAULT_SIZE:
-		break;
-
-	case InsetGraphicsParams::CM:
-		os << key << '=' << size << "cm,";
-		break;
-
-	case InsetGraphicsParams::INCH:
-		os << key << '=' << size << "in,";
-		break;
-
-	case InsetGraphicsParams::PERCENT_PAGE:
-		os << key << '=' << size / 100 << "\\text" << key << ',';
-		break;
-
-	case InsetGraphicsParams::PERCENT_COLUMN:
-		os << key << '=' << size / 100 << "\\column" << key << ',';
-		break;
-
-	case InsetGraphicsParams::SCALE:
-		os << "scale" << '=' << size/100 << ',';
-	}
-}
-
-} // namespace anon
-
-
-string const
-InsetGraphics::createLatexOptions() const
+string const InsetGraphics::createLatexOptions() const
 {
 	// Calculate the options part of the command, we must do it to a string
 	// stream since we might have a trailing comma that we would like to remove
 	// before writing it to the output stream.
 	ostringstream options;
-
-	formatResize(options, "width", params.widthResize, params.widthSize);
-	formatResize(options, "height", params.heightResize, params.heightSize);
-
+	if (!params.bb.empty())
+	    options << "bb=" << strip(params.bb) << ',';
+	if (params.draft)
+	    options << "%\n  draft,";
+	if (params.clip)
+	    options << "%\n  clip,";
+	if (params.size_type == InsetGraphicsParams::WH) {
+	    if (!params.width.zero())
+		options << "%\n  width=" << params.width.asLatexString() << ',';
+	    if (!params.height.zero())
+		options << "%\n  height=" << params.height.asLatexString() << ',';
+	} else if (params.size_type == InsetGraphicsParams::SCALE) {
+	    if (params.scale > 0)
+		options << "%\n  scale=" << double(params.scale)/100.0 << ',';
+	}
+	if (params.keepAspectRatio)
+	    options << "%\n  keepaspectratio,";
 	// Make sure it's not very close to zero, a float can be effectively
 	// zero but not exactly zero.
 	if (!lyx::float_equal(params.rotateAngle, 0, 0.001)) {
-		options << "angle="
-			<< params.rotateAngle << ',';
+	    options << "%\n  angle=" << params.rotateAngle << ',';
+	    if (!params.rotateOrigin.empty()) {
+		options << "%\n  origin=";
+		options << params.rotateOrigin[0];
+		if (contains(params.rotateOrigin,"Top"))
+		    options << 't';
+		else if (contains(params.rotateOrigin,"Bottom"))
+		    options << 'b';
+		else if (contains(params.rotateOrigin,"Baseline"))
+		    options << 'B';
+		options << ',';
+	    }
 	}
-
+	if (!params.special.empty())
+	    options << params.special << ',';
 	string opts = options.str().c_str();
 	opts = strip(opts, ',');
-
 	return opts;
 }
 
@@ -612,8 +558,7 @@ string decideOutputImageFormat(string const & suffix, enum FileType type)
 {
 	// lyxrc.pdf_mode means:
 	// Are we creating a PDF or a PS file?
-	// (Should actually mean, are we using latex or pdflatex).
-	
+	// (Should actually mean, are we using latex or pdflatex).	
 	if (lyxrc.pdf_mode) {
 		if (type == EPS || type == EPS || type == PDF)
 			return "pdf";
@@ -635,14 +580,11 @@ string decideOutputImageFormat(string const & suffix, enum FileType type)
 
 } // Anon. namespace
 
-string const 
-InsetGraphics::prepareFile(Buffer const *buf) const
+string const InsetGraphics::prepareFile(Buffer const *buf) const
 {
-
 	// do_convert = Do we need to convert the file?
 	// nice = Do we create a nice version?
 	//        This is used when exporting the latex file only.
-	// 
 	// 
 	// if (!do_convert)
 	//   return original filename
@@ -680,9 +622,7 @@ InsetGraphics::prepareFile(Buffer const *buf) const
 		string const relname = MakeRelPath(params.filename, path);
 		outfile = RemoveExtension(relname);
 	}
-
 	converters.convert(buf, params.filename, outfile, extension, image_target);
-	
 	return outfile;
 }
 
@@ -690,58 +630,36 @@ InsetGraphics::prepareFile(Buffer const *buf) const
 int InsetGraphics::latex(Buffer const *buf, ostream & os,
 			 bool /*fragile*/, bool/*fs*/) const
 {
-	// MISSING: We have to decide how to do the order of the options
-	// that is dependent of order, like width, height, angle. Should
-	// we rotate before scale? Should we let the user decide?
-	// bool rot_before_scale; ?
-
-	// (BE) As a first step we should do a scale before rotate since this is
-	// more like the natural thought of how to do it.
-	// (BE) I believe that a priority list presented to the user with
-	// a default order would be the best, though it would be better to
-	// hide such a thing in an "Advanced options" dialog.
-	// (BE) This should go an advanced LaTeX options dialog.
-
 	// If there is no file specified, just output a message about it in
 	// the latex output.
 	if (params.filename.empty()) {
 		os  << "\\fbox{\\rule[-0.5in]{0pt}{1in}"
-			<< _("empty figure path")
-			<< "}\n";
-
+			<< _("empty figure path") << "}\n";
 		return 1; // One end of line marker added to the stream.
 	}
-
 	// Keep count of newlines that we issued.
 	int newlines = 0;
-
 	// This variables collect all the latex code that should be before and
 	// after the actual includegraphics command.
 	string before;
 	string after;
-
 	// Do we want subcaptions?
 	if (params.subcaption) {
 		before += "\\subfigure[" + params.subcaptionText + "]{";
 		after = '}' + after;
 	}
-
 	// We never use the starred form, we use the "clip" option instead.
 	os << before << "\\includegraphics";
-
 	// Write the options if there are any.
 	string const opts = createLatexOptions();
 	if (!opts.empty()) {
-		os << '[' << opts << ']';
+		os << "[%\n  " << opts << ']';
 	}
-
 	// Make the filename relative to the lyx file
 	// and remove the extension so the LaTeX will use whatever is
 	// appropriate (when there are several versions in different formats)
 	string const filename = prepareFile(buf);
-	
 	os << '{' << filename << '}' << after;
-
 	// Return how many newlines we issued.
 	return newlines;
 }
@@ -849,3 +767,4 @@ Inset * InsetGraphics::clone(Buffer const &, bool same_id) const
 {
 	return new InsetGraphics(*this, same_id);
 }
+

@@ -9,9 +9,11 @@
  *
  * \file ControlGraphics.C
  * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Herbert Voss <voss@perce.de>
  */
 
 #include <config.h> 
+#include <fstream>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -31,11 +33,14 @@
 
 #include "support/FileInfo.h"  // for FileInfo
 #include "helper_funcs.h"      // for browseFile
+#include "support/lstrings.h"
 #include "support/filetools.h" // for AddName
 #include "BufferView.h"
 
 using std::pair;
 using std::make_pair;
+
+using std::ifstream;
 
 ControlGraphics::ControlGraphics(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetGraphics, InsetGraphicsParams>(lv, d)
@@ -80,7 +85,7 @@ string const ControlGraphics::Browse(string const & in_name)
 {
 	string const title = N_("Graphics");
 	// FIXME: currently we need the second '|' to prevent mis-interpretation 
-	string const pattern = "*.(ps|eps|png|jpeg|jpg|gif)|";
+	string const pattern = "*.(ps|eps|png|jpeg|jpg|gif|gz)|";
 
   	// Does user clipart directory exist?
   	string clipdir = AddName (user_lyxdir, "clipart");
@@ -93,3 +98,33 @@ string const ControlGraphics::Browse(string const & in_name)
 	// Show the file browser dialog
 	return browseFile(&lv_, in_name, title, pattern, dir1);
 }
+
+string const ControlGraphics::readBB(string const & file)
+{
+// in a file it's an entry like %%BoundingBox:23 45 321 345
+// the first number can following without a space, so we have
+// to check a bit more. 
+//	ControlGraphics::bbChanged = false;
+	std::ifstream is(file.c_str());
+	while (is) {
+		string s;
+		is >> s;
+		if (contains(s,"%%BoundingBox:")) {
+			string a, b, c, d;
+			is >> a >> b >> c >> d;
+			if (is) {
+				if (s != "%%BoundingBox:") 
+				    return (s.substr(14)+" "+a+" "+b+" "+c+" ");
+				else
+				    return (a+" "+b+" "+c+" "+d+" ");
+			}
+		}
+	}
+	return string();
+}
+
+void ControlGraphics::help() const
+{
+	lv_.getDialogs()->showFile(i18nLibFileSearch("help","Graphics.hlp"));
+}
+

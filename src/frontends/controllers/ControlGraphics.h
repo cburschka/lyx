@@ -10,7 +10,8 @@
  *
  * \file ControlGraphics.h
  * \author Angus Leeming <a.leeming@ic.ac.uk>
- */
+ * \author Herbert Voss <voss@perce.de>
+*/
 
 #ifndef CONTROLGRAPHICS_H
 #define CONTROLGRAPHICS_H
@@ -35,6 +36,12 @@ public:
 
 	/// Browse for a file
 	string const Browse(string const &);
+	/// Read the Bounding Box from a eps or ps-file
+	string const readBB(string const & file);
+	/// Control the bb
+	bool bbChanged;
+	/// Show Help file
+	void help() const;
 
 private:
 	/// Dispatch the changed parameters to the kernel.
@@ -48,3 +55,4 @@ private:
 };
 
 #endif // CONTROLGRAPHICS_H
+

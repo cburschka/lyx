@@ -1,3 +1,13 @@
+2002-01-27  Herbert Voss  <voss@lyx.org>
+
+	* insetgraphic.[Ch]: mostly newritten to support graphicx with
+	all options and to be sure that the old figinsets are correct
+	converted.
+	* insetgraphicParams.[Ch]: a lot of chamges to have a clean data-
+	structure and to support all lengths as LyXLength. The Parameter
+	structure changed again, but reading of "old" 1.2 graphic insets
+	is no problem.
+
 2002-01-20  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetert.h (forceDefaultParagraphs): Added

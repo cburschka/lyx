@@ -7,6 +7,8 @@
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 the LyX Team.
  *
+ * \author Baruch Even
+ * \author Herbert Voss <voss@lyx.org>
  * ====================================================== */
 
 #ifndef INSET_GRAPHICS_H

@@ -5,7 +5,9 @@
  *          Copyright 1995 Matthias Ettrich.
  *          Copyright 1995-2001 The LyX Team.
  *
- *          This file Copyright 2000 Baruch Even
+ * \author Baruch Even
+ * \author Herbert Voss <voss@lyx.org>
+ *
  * ================================================= */
 
 #include <config.h> 
@@ -29,20 +31,30 @@ namespace {
 /// translations.
 bool translatorsSet = false;
 
-/// This is the translator between the Resize enum and corresponding lyx
-/// file strings.
-Translator< InsetGraphicsParams::Resize, string >
-resizeTranslator(InsetGraphicsParams::DEFAULT_SIZE, "default");
-
-/// This is the translator between the Origin enum and corresponding lyx
-/// file strings.
-Translator< InsetGraphicsParams::Origin, string >
-originTranslator(InsetGraphicsParams::DEFAULT, "default");
-
 /// This is the translator between the Display enum and corresponding lyx
 /// file strings.
 Translator< InsetGraphicsParams::DisplayType, string >
 displayTranslator(InsetGraphicsParams::MONOCHROME, "monochrome");
+
+// this is only compatibility stuff for the first 1.2 version
+// it is obselete until 1.3
+LyXLength convertResizeValue(string const token, LyXLex & lex) {
+    lex.next();
+    string value = lex.getString();	// "width" or "height"	
+    lex.next();				// anyway not interesting
+    value = lex.getString();
+    if (token == "default")
+	return (LyXLength(value+"pt"));
+    else if (token == "cm")
+	return (LyXLength(value+"cm"));
+    else if (token == "inch")
+	return (LyXLength(value+"in"));
+    else if (token == "percentOfColumn")
+	return (LyXLength(value+"c%"));
+    else if (token == "percentOfPage")
+	return (LyXLength(value+"p%"));
+    else return LyXLength("0pt");	// nothing with figinset
+}
 
 } // namespace anon
 
@@ -50,42 +62,15 @@ displayTranslator(InsetGraphicsParams::MONOCHROME, "monochrome");
 InsetGraphicsParams::InsetGraphicsParams()
 {
 	init();
-
 	// Set translators
 	if (! translatorsSet) {
 		translatorsSet = true;
-
-		// Fill the resize translator
-		resizeTranslator.addPair(DEFAULT_SIZE, "default");
-		resizeTranslator.addPair(CM, "cm");
-		resizeTranslator.addPair(INCH, "inch");
-		resizeTranslator.addPair(PERCENT_PAGE, "percentOfPage");
-		resizeTranslator.addPair(PERCENT_COLUMN, "percentOfColumn");
-		resizeTranslator.addPair(SCALE, "scale");
-
-		// Fill the origin translator
-		originTranslator.addPair(DEFAULT, "default");
-		originTranslator.addPair(LEFTTOP, "leftTop");
-		originTranslator.addPair(LEFTCENTER, "leftCenter");
-		originTranslator.addPair(LEFTBASELINE, "leftBaseLine");
-		originTranslator.addPair(LEFTBOTTOM, "leftBottom");
-		originTranslator.addPair(CENTERTOP, "centerTop");
-		originTranslator.addPair(CENTER, "center");
-		originTranslator.addPair(CENTERBASELINE, "centerBaseLine");
-		originTranslator.addPair(CENTERBOTTOM, "centerBottom");
-		originTranslator.addPair(RIGHTTOP, "rightTop");
-		originTranslator.addPair(RIGHTCENTER, "rightCenter");
-		originTranslator.addPair(RIGHTBASELINE, "rightBaseLine");
-		originTranslator.addPair(RIGHTBOTTOM, "rightBottom");
-		originTranslator.addPair(REFERENCE_POINT, "referencePoint");
-
 		// Fill the display translator
 		displayTranslator.addPair(MONOCHROME, "monochrome");
 		displayTranslator.addPair(GRAYSCALE, "grayscale");
 		displayTranslator.addPair(COLOR, "color");
 		displayTranslator.addPair(NONE, "none");
 	}
-
 }
 
 
@@ -103,7 +88,6 @@ InsetGraphicsParams::operator=(InsetGraphicsParams const & params)
 	// Are we assigning the object into itself?
 	if (this == &params)
 		return * this;
-
 	copy(params);
 	return *this;
 }
@@ -111,15 +95,21 @@ InsetGraphicsParams::operator=(InsetGraphicsParams const & params)
 void InsetGraphicsParams::init()
 {
 	subcaptionText = filename = string();
-	display = MONOCHROME;
-	subcaption = false;
-	keepAspectRatio = true;
-	widthResize = DEFAULT_SIZE;
-	widthSize = 0.0;
-	heightResize = DEFAULT_SIZE;
-	heightSize = 0.0;
-	rotateOrigin = DEFAULT;
-	rotateAngle = 0.0;
+	bb = string();			// bounding box
+	draft = false;			// draft mode
+	clip = false;			// clip image
+	display = MONOCHROME;		// LyX-View
+	subcaption = false;		// subfigure
+	width = LyXLength();		// set to 0pt
+	height = LyXLength();
+	lyxwidth = LyXLength();		// for the view in lyx
+	lyxheight = LyXLength();
+	scale = 0;
+	size_type = DEFAULT_SIZE;
+	keepAspectRatio = false;
+	rotateOrigin = string();	// 
+	rotateAngle = 0.0;		// in degrees
+	special = string();		// userdefined stuff
 
 	testInvariant();
 }
@@ -127,16 +117,22 @@ void InsetGraphicsParams::init()
 void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 {
 	filename = igp.filename;
+	bb = igp.bb;
+	draft = igp.draft;
+	clip = igp.clip;
 	display = igp.display;
 	subcaption = igp.subcaption;
 	subcaptionText = igp.subcaptionText;
 	keepAspectRatio = igp.keepAspectRatio;
-	widthResize = igp.widthResize;
-	widthSize = igp.widthSize;
-	heightResize = igp.heightResize;
-	heightSize = igp.heightSize;
+	width = igp.width;
+	height = igp.height;
+	scale = igp.scale;
+	size_type = igp.size_type;
+	lyxwidth = igp.lyxwidth;
+	lyxheight = igp.lyxheight;
 	rotateOrigin = igp.rotateOrigin;
 	rotateAngle = igp.rotateAngle;
+	special = igp.special;
 
 	testInvariant();
 }
@@ -145,32 +141,11 @@ void InsetGraphicsParams::testInvariant() const
 {
 	// Filename might be empty (when the dialog is first created).
 	// Assert(!filename.empty());
-
 	lyx::Assert(display == COLOR ||
 	       display == MONOCHROME ||
 	       display == GRAYSCALE ||
 	       display == NONE
 	      );
-
-	lyx::Assert(widthResize == DEFAULT_SIZE ||
-	       widthResize == CM ||
-	       widthResize == INCH ||
-	       widthResize == PERCENT_PAGE ||
-	       widthResize == PERCENT_COLUMN ||
-		   widthResize == SCALE
-	      );
-
-	lyx::Assert(heightResize == DEFAULT_SIZE ||
-	       heightResize == CM ||
-	       heightResize == INCH ||
-	       heightResize == PERCENT_PAGE ||
-		   heightResize == SCALE
-	      );
-
-	// For SCALE these can be negative.
-	//lyx::Assert(widthSize >= 0.0);
-	//lyx::Assert(heightSize >= 0.0);
-
 	// Angle is in degrees and ranges -360 < angle < 360
 	// The reason for this is that in latex there is a meaning for the
 	// different angles and they are not necessarliy interchangeable,
@@ -184,16 +159,22 @@ bool operator==(InsetGraphicsParams const & left,
                 InsetGraphicsParams const & right)
 {
 	if (left.filename == right.filename &&
+	        left.bb == right.bb &&
+	        left.draft == right.draft &&
+	        left.clip == right.clip &&
 	        left.display == right.display &&
 	        left.subcaption == right.subcaption &&
 	        left.subcaptionText == right.subcaptionText &&
 	        left.keepAspectRatio == right.keepAspectRatio &&
-	        left.widthResize == right.widthResize &&
-	        left.widthSize == right.widthSize &&
-	        left.heightResize == right.heightResize &&
-	        left.heightSize == right.heightSize &&
+	        left.width == right.width &&
+	        left.height == right.height &&
+	        left.scale == right.scale &&
+	        left.size_type == right.size_type &&
+	        left.lyxwidth == right.lyxwidth &&
+	        left.lyxheight == right.lyxheight &&
 	        left.rotateOrigin == right.rotateOrigin &&
-	        lyx::float_equal(left.rotateAngle, right.rotateAngle, 0.001)
+	        lyx::float_equal(left.rotateAngle, right.rotateAngle, 0.001 &&
+		left.special == right.special) 
 	   )
 		return true;
 
@@ -207,79 +188,51 @@ bool operator!=(InsetGraphicsParams const & left,
 }
 
 
-namespace {
-
-void writeResize(ostream & os, string const & key,
-                        InsetGraphicsParams::Resize resize, double size)
-{
-	os << ' ' << key << "Resize ";
-
-	os << resizeTranslator.find(resize);
-	os << ' ' << key << ' ' << size << '\n';
-}
-
-void writeOrigin(ostream & os,
-                        InsetGraphicsParams::Origin origin)
-{
-	os << " rotateOrigin " << originTranslator.find(origin);
-	os << '\n';
-}
-
-} // namespace anon
-
-
 void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 {
 	// If there is no filename, write nothing for it.
 	if (! filename.empty()) {
-		os << "filename "
+		os << "\tfilename "
 		<< MakeRelPath(filename, buf->filePath())
 		<< '\n';
 	}
-
+	if (!bb.empty())		// bounding box
+		os << "\tBoundingBox " << bb << '\n';
+	if (clip)			// clip image
+		os << "\tclip\n";
+	if (draft)			// draft mode
+		os << "\tdraft\n";
 	// Save the display type
-	os << " display " << displayTranslator.find(display) << '\n';
-
+	os << "\tdisplay " << displayTranslator.find(display) << '\n';
 	// Save the subcaption status
 	if (subcaption)
-		os << " subcaption";
-
-	if (! subcaptionText.empty())
-		os << " subcaptionText \"" << subcaptionText << '\"' << '\n';
-
-	writeResize(os, "width", widthResize, widthSize);
-	writeResize(os, "height", heightResize, heightSize);
-
-	writeOrigin(os, rotateOrigin);
-	if (!lyx::float_equal(rotateAngle, 0.0, 0.001)) {
-		os << " rotateAngle " << rotateAngle << '\n';
-	}
+	    os << "\tsubcaption\n";
+	if (!subcaptionText.empty())
+	    os << "\tsubcaptionText \"" << subcaptionText << '\"' << '\n';
+    // we always need the size type
+    // 0: no special
+    // 1: width/height combination
+    // 2: scale
+	os << "\tsize_type " <<  size_type << '\n';
+	if (!width.zero())
+	    os << "\twidth " << width.asString() << '\n';
+	if (!height.zero())
+	    os << "\theight " << height.asString() << '\n';
+	if (scale != 0)
+	    os << "\tscale " << scale << '\n';
+	if (keepAspectRatio)
+		os << "\tkeepAspectRatio\n";
+	if (!lyx::float_equal(rotateAngle, 0.0, 0.001))
+		os << "\trotateAngle " << rotateAngle << '\n';
+	if (!rotateOrigin.empty())
+		os << "\trotateOrigin " << rotateOrigin << '\n';
+	if (!special.empty())
+		os << "\tspecial " << special << '\n';
+	if (!lyxwidth.zero())		// the lyx-viewsize
+	    os << "\tlyxwidth " << lyxwidth.asString() << '\n';
+	if (!lyxheight.zero())
+	    os << "\tlyxheight " << lyxheight.asString();
 }
-
-
-namespace {
-
-void readResize(InsetGraphicsParams * igp, bool height,
-                       string const & token)
-{
-	InsetGraphicsParams::Resize resize = InsetGraphicsParams::DEFAULT_SIZE;
-
-	resize = resizeTranslator.find(token);
-
-	if (height)
-		igp->heightResize = resize;
-	else
-		igp->widthResize = resize;
-}
-
-
-void readOrigin(InsetGraphicsParams * igp, string const & token)
-{
-	// TODO: complete this function.
-	igp->rotateOrigin = originTranslator.find(token);
-}
-
-} // namespace anon
 
 
 bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
@@ -288,15 +241,22 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 	if (token == "filename") {
 		lex.next();
 		filename = lex.getString();
-
 		if (!filename.empty()) {
 			// Make the filename with absolute directory.
 			filename = MakeAbsPath(filename, buf->filePath());
 		}
+	} else if (token == "BoundingBox") {
+		for (int i=0; i<4 ;i++) {
+		    lex.next();
+		    bb += (lex.getString()+" ");
+		}
+	} else if (token == "clip") {
+		clip = true;
+	} else if (token == "draft") {
+		draft = true;
 	} else if (token == "display") {
 		lex.next();
 		string const type = lex.getString();
-
 		display = displayTranslator.find(type);
 	} else if (token == "subcaption") {
 		subcaption = true;
@@ -304,33 +264,55 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 		lex.next();
 		subcaptionText = lex.getString();
 	} else if (token == "widthResize") {
+		if (lex.next()) {
+		    string const token = lex.getString();
+		    if (token == "scale") {
+			lex.next();
+			scale = lex.getInteger();
+			size_type = SCALE;
+		    }
+		    else {
+			width = convertResizeValue(token, lex);
+			size_type = WH;
+		    }
+		}
+	} else if (token == "size_type") {
 		lex.next();
-		string const token = lex.getString();
-
-		readResize(this, false, token);
+		switch (lex.getInteger()) {
+		    case 0 : size_type = DEFAULT_SIZE;
+			break;
+		    case 1 : size_type = WH;
+			break;
+		    case 2 : size_type = SCALE;
+		}
 	} else if (token == "width") {
 		lex.next();
-		widthSize = lex.getFloat();
+		width = LyXLength(lex.getString());
+		size_type = WH;
 	} else if (token == "heightResize") {
-		lex.next();
-		string const token = lex.getString();
-
-		readResize(this, true, token);
+		if (lex.next())
+			height = convertResizeValue(lex.getString(), lex);
 	} else if (token == "height") {
 		lex.next();
-		heightSize = lex.getFloat();
-	} else if (token == "rotateOrigin") {
-		lex.next();
-		string const token = lex.getString();
-
-		readOrigin(this, token);
+		height = LyXLength(lex.getString());
+		size_type = WH;
+	} else if (token == "keepAspectRatio") {
+		keepAspectRatio = true;
 	} else if (token == "rotateAngle") {
 		lex.next();
 		rotateAngle = lex.getFloat();
+	} else if (token == "rotateOrigin") {
+		lex.next();
+		rotateOrigin=lex.getString();
+	} else if (token == "lyxwidth") {
+		lex.next();
+		lyxwidth = LyXLength(lex.getString());
+	} else if (token == "lyxheight") {
+		lex.next();
+		lyxheight = LyXLength(lex.getString());
 	} else {
 		// If it's none of the above, its not ours.
 		return false;
 	}
-
 	return true;
 }

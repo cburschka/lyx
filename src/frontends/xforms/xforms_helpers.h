@@ -16,6 +16,12 @@
 
 class LyXLength;
 
+// what we always need for lengths
+string const choice_Length_All =
+    "cm|mm|in|%%|c%%|p%%|l%%|ex|em|pt|sp|bp|dd|pc|cc|mu";
+string const choice_Length_WithUnit =
+    "cm|mm|in|ex|em|pt|sp|bp|dd|pc|cc|mu"; 	// all with a Unit
+
 /// Extract shortcut from <ident>|<shortcut> string
 char const * flyx_shortcut_extract(char const * sc);
 /// Shortcut for flyx_shortcut_extract
