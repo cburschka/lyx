@@ -55,35 +55,35 @@ foreach $pofilename ( @ARGV )
 
         # Check colon at the end of a message
         if ( ( $msgid =~ m/: *(\|.*)?$/ ) != ( $msgstr =~ m/: *(\|.*)?$/ ) ) {
-          print( "Missing or redundant colon:\n" );
+          print( "Missing or unexpected colon:\n" );
           print( "  '$msgid' => '$msgstr'\n" );
           $warn++;
         }
 
         # Check period at the end of a message; uncomment code if you are paranoid
         #if ( ( $msgid =~ m/\. *(\|.*)?$/ ) != ( $msgstr =~ m/\. *(\|.*)?$/ ) ) {
-        #  print( "Missing or redundant period:\n" );
+        #  print( "Missing or unexpected period:\n" );
         #  print( "  '$msgid' => '$msgstr'\n" );
         #  $warn++;
         #}
 
         # Check space at the end of a message
         if ( ( $msgid =~ m/  *?(\|.*)?$/ ) != ( $msgstr =~ m/  *?(\|.*)?$/ ) ) {
-          print( "Missing or redundant space:\n" );
+          print( "Missing or unexpected space:\n" );
           print( "  '$msgid' => '$msgstr'\n" );
           $warn++;
         }
 
         # Check for "&" shortcuts
         if ( ( $msgid =~ m/&[^ ]/ ) != ( $msgstr =~ m/&[^ ]/ ) ) {
-          print( "Missing or redundant QT shortcut:\n" );
+          print( "Missing or unexpected Qt shortcut:\n" );
           print( "  '$msgid' => '$msgstr'\n" );
           $warn++;
         }
 
         # Check for "|..." shortcut(s)
         if ( ( $msgid =~ m/\|[^ ]/ ) != ( $msgstr =~ m/\|[^ ]/ ) ) {
-          print( "Missing or redundant xforms shortcut:\n" );
+          print( "Missing or unexpected xforms shortcut:\n" );
           print( "  '$msgid' => '$msgstr'\n" );
           $warn++;
         }
@@ -96,18 +96,25 @@ foreach $pofilename ( @ARGV )
         $msgstr_clean =~ s/|.*?$//;
         $msgstr_clean =~ s/&([^ ])/$1/; 
 
-        if ( defined( $trans{$msgid_clean} ) && $msgstr_clean ne $trans{$msgid_clean}{'msgstr_clean'} ) {
-          print( "Different translations for '$msgid_clean':\n" );
-          print( "  '$msgid' => '$msgstr'\n" );
-          print( "  '$trans{$msgid_clean}{'msgid'}' => '$trans{$msgid_clean}{'msgstr'}'\n" );
-          $warn++;
-        } else {
-          $trans{$msgid_clean} = { 'msgid' => $msgid, 'msgstr' => $msgstr, 'msgstr_clean' => $msgstr_clean };
-        }
+        $trans{$msgid_clean}{$msgstr_clean} = [ $msgid, $msgstr ];
       }
     } else {
       $i++;
     }
   }
+
+  foreach $msgid ( keys %trans ) {
+    $ref = $trans{$msgid};
+    @msgstrkeys = keys %$ref;
+
+    if ( $#msgstrkeys > 0 ) {
+      print( "Different translations for '$msgid':\n" );
+      foreach $msgstr ( @msgstrkeys ) {
+        print( "  '" . $trans{$msgid}{$msgstr}[0] . "' => '" . $trans{$msgid}{$msgstr}[1] . "'\n" );
+      }
+      $warn++;
+    }
+  }
+
   print( "\nTotal number of warnings: $warn\n\n" );
 }
