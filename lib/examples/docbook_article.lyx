@@ -73,7 +73,7 @@ Here goes the information about the article:
 \end_layout
 
 \begin_layout Title
-\added_space_top vfill \added_space_bottom vfill 
+
 Docbook with LyX
 \end_layout
 
@@ -122,7 +122,7 @@ It is always possible to have more than one author.
 \begin_layout Author
 
 
-\begin_inset FirstName
+\begin_inset CharStyle Firstname
 collapsed true
 
 \begin_layout Standard
@@ -133,7 +133,7 @@ Jose'
 \end_inset 
 
 
-\begin_inset Surname
+\begin_inset CharStyle Surname
 collapsed true
 
 \begin_layout Standard
@@ -319,7 +319,7 @@ The only fonts supported are
 Emphasis
 \emph default 
  and 
-\begin_inset Literal
+\begin_inset CharStyle Literal
 collapsed true
 
 \begin_layout Standard
@@ -442,7 +442,7 @@ wide false
 collapsed false
 
 \begin_layout Standard
-\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+\align center 
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="5">
