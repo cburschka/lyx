@@ -1,3 +1,7 @@
+2002-03-28  Juergen Vigna  <jug@sad.it>
+
+	* tabular.C (OldFormatRead): fix ert compatibility read inside cells.
+
 2002-03-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxfunc.C (getStatus): return 'disabled' early for LFUN_NOACTION

@@ -2781,7 +2781,10 @@ bool InsetTabular::insetAllowed(Inset::Code code) const
 {
 	if (the_locking_inset)
 		return the_locking_inset->insetAllowed(code);
-	return false;
+	// we return true here because if the inset is not locked someone
+	// wants to insert something in one of our insettexts and we generally
+	// allow to do so.
+	return true;
 }
 
 
