@@ -208,6 +208,13 @@ void GToolbar::update()
 			ToolbarBackend::Item * item =
 			reinterpret_cast<ToolbarBackend::Item*>(
 				widget->get_data(gToolData));
+			if (item->first.action == ToolbarBackend::LAYOUTS) {
+				LyXFunc const & lf = view_->getLyXFunc();
+				bool const sensitive =
+					!lf.getStatus(FuncRequest(LFUN_LAYOUT)).disabled();
+				widget->set_sensitive(sensitive);
+				continue;
+			}
 			FuncStatus const status = view_->
 				getLyXFunc().getStatus(item->first);
 			bool sensitive = !status.disabled();
