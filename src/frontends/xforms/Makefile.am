@@ -143,7 +143,6 @@ libxforms_la_SOURCES = \
 	FormUrl.h \
 	FormVCLog.C \
 	FormVCLog.h \
-	guiapi.C \
 	LyXKeySymFactory.C \
 	LyXScreenFactory.C \
 	MathsSymbols.C \

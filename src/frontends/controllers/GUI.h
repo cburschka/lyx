@@ -4,7 +4,7 @@
  * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #ifndef GUI_H
@@ -18,7 +18,7 @@
  */
 template <typename Controller, typename GUIview,
 	  typename Policy,     typename GUIbc>
-class GUI : public boost::noncopyable {
+class GUI : boost::noncopyable {
 public:
 	///
 	GUI(LyXView & lv, Dialogs & d);

@@ -4,7 +4,7 @@
  * Copyright 2000-2002 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 /* A base class for those remaining xforms dialogs that haven't yet undergone
@@ -34,11 +34,11 @@ class Dialogs;
 class LyXView;
 class Tooltips;
 
-class FormBaseDeprecated : public boost::noncopyable, public FeedbackController
+class FormBaseDeprecated : boost::noncopyable, public FeedbackController
 {
 public:
 	///
-	FormBaseDeprecated(LyXView *, Dialogs *, string const &, bool);
+	FormBaseDeprecated(LyXView &, Dialogs &, string const &, bool);
 	///
 	virtual ~FormBaseDeprecated();
 
@@ -118,9 +118,9 @@ protected: // methods
 	 *  We could modify Dialogs to have a visible LyXFunc* instead and
 	 *  save a couple of bytes per dialog.
 	 */
-	LyXView * lv_;
+	LyXView & lv_;
 	/// Used so we can get at the signals we have to connect to.
-	Dialogs * d_;
+	Dialogs & d_;
 	/// Hide connection.
 	boost::signals::connection h_;
 	/// Redraw connection.
@@ -147,7 +147,7 @@ private:
 class FormBaseBI : public FormBaseDeprecated {
 protected:
 	/// Constructor
-	FormBaseBI(LyXView *, Dialogs *, string const &,
+	FormBaseBI(LyXView &, Dialogs &, string const &,
 		   bool allowResize = true);
 
 	/// Connect signals
@@ -160,7 +160,7 @@ protected:
 class FormBaseBD : public FormBaseDeprecated {
 protected:
 	/// Constructor
-	FormBaseBD(LyXView *, Dialogs *, string const &,
+	FormBaseBD(LyXView &, Dialogs &, string const &,
 		   bool allowResize = true);
 
 	/// Connect signals

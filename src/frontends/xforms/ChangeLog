@@ -2,6 +2,19 @@
 
 	* lots: changed my email address to leeming@lyx.org.
 
+	* FormBaseDeprecated.[Ch]: return it to private derivation from
+	boost::noncopyable.
+
+	* FormBaseDeprecated.[Ch]:
+	* FormDocument.[Ch]:
+	* FormInset.[Ch]:
+	* FormMaths*.[Ch]:
+	* FormPreferences.[Ch]:
+	* FormTabular.[Ch]:
+	pass and store references to LyXView and Dialogs, not pointers.
+
+	* FormInset.[Ch]: remove class FormCommand.
+
 2002-08-14  Angus Leeming  <leeming@lyx.org>
 
 	* FormBaseDeprecated.h: public derivation from boost::noncopyable.

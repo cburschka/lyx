@@ -2,6 +2,8 @@
 
 	* lots: changed my email address to leeming@lyx.org.
 
+	* GUI.h: return it to private derivation from boost::noncopyable.
+
 2002-08-14  Angus Leeming  <leeming@lyx.org>
 
 	* GUI.h: public derivation from boost::noncopyable.

@@ -4,7 +4,7 @@
  * Copyright 2000-2001 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 /* A base class for dialogs connected to insets. This class is temporary in that
@@ -30,7 +30,7 @@ class InsetCommand;
 class FormInset : public FormBaseBD {
 protected:
 	/// Constructor
-	FormInset(LyXView *, Dialogs *, string const &);
+	FormInset(LyXView &, Dialogs &, string const &);
 
 	/// Connect signals. Also perform any necessary initialisation.
 	virtual void connect();
@@ -42,29 +42,6 @@ protected:
 
 	/// inset::hide connection.
 	boost::signals::connection ih_;
-};
-
-
-/** This class is an XForms GUI base class to insets derived from
-    InsetCommand
- */
-class FormCommand : public FormInset {
-protected:
-	/// Constructor
-	FormCommand(LyXView *, Dialogs *, string const &);
-
-	/// Disconnect signals. Also perform any necessary housekeeping.
-	virtual void disconnect();
-
-	/// Slot launching dialog to (possibly) create a new inset
-	void createInset(string const &);
-	/// Slot launching dialog to an existing inset
-	void showInset(InsetCommand *);
-
-	/// pointer to the inset passed through showInset
-	InsetCommand * inset_;
-	/// the nitty-griity. What is modified and passed back
-	InsetCommandParams params;
 };
 
 #endif

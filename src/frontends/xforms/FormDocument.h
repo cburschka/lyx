@@ -35,7 +35,7 @@ struct FD_document_bullet;
  */
 class FormDocument : public FormBaseBD {
 public:
-	FormDocument(LyXView *, Dialogs *);
+	FormDocument(LyXView &, Dialogs &);
 	///
 	static void ComboInputCB(int, void *, Combox *);
 private:

@@ -39,7 +39,7 @@ using std::remove_if;
 
 
 FormTabular::FormTabular(LyXView & lv, Dialogs & d)
-	: FormInset(&lv, &d, _("Tabular Layout")),
+	: FormInset(lv, d, _("Tabular Layout")),
 	  inset_(0), actCell_(-1), closing_(false)
 {
 }
@@ -246,7 +246,7 @@ void FormTabular::update()
 					cell_options_->choice_value_mcolumn_width,
 					pwidth, default_unit);
 
-		if (!lv_->buffer()->isReadonly()) {
+		if (!lv_.buffer()->isReadonly()) {
 			setEnabled(cell_options_->input_special_multialign, true);
 			setEnabled(cell_options_->input_mcolumn_width, true);
 			setEnabled(cell_options_->choice_value_mcolumn_width, true);
@@ -322,7 +322,7 @@ void FormTabular::update()
 	special = tabular->GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
 	fl_set_input(column_options_->input_special_alignment, special.c_str());
 
-	bool const isReadonly = lv_->buffer()->isReadonly();
+	bool const isReadonly = lv_.buffer()->isReadonly();
 	setEnabled(column_options_->input_special_alignment, !isReadonly);
 
 	pwidth = tabular->GetColumnPWidth(cell);
@@ -548,7 +548,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 	}
 	// No point in processing directives that you can't do anything with
 	// anyhow, so exit now if the buffer is read-only.
-	if (lv_->buffer()->isReadonly()) {
+	if (lv_.buffer()->isReadonly()) {
 		update();
 		return false;
 	}
@@ -557,7 +557,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 		string const str =
 			getLengthFromWidgets(column_options_->input_column_width,
 					     column_options_->choice_value_column_width);
-		inset_->tabularFeatures(lv_->view().get(), LyXTabular::SET_PWIDTH, str);
+		inset_->tabularFeatures(lv_.view().get(), LyXTabular::SET_PWIDTH, str);
 
 		//check if the input is valid
 		string const input =
@@ -576,7 +576,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 		string const str =
 			getLengthFromWidgets(cell_options_->input_mcolumn_width,
 					     cell_options_->choice_value_mcolumn_width);
-		inset_->tabularFeatures(lv_->view().get(), LyXTabular::SET_MPWIDTH, str);
+		inset_->tabularFeatures(lv_.view().get(), LyXTabular::SET_MPWIDTH, str);
 
 		//check if the input is valid
 		string const input =
@@ -689,7 +689,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 	else
 		return false;
 
-	inset_->tabularFeatures(lv_->view().get(), num, special);
+	inset_->tabularFeatures(lv_.view().get(), num, special);
 	update();
 
 	return true;

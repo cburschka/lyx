@@ -3,7 +3,7 @@
  * Copyright 2000-2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>
@@ -72,7 +72,7 @@ Converters local_converters;
 
 
 FormPreferences::FormPreferences(LyXView & lv, Dialogs & d)
-	: FormBaseBI(&lv, &d, _("Preferences"), false),
+	: FormBaseBI(lv, d, _("Preferences"), false),
 	  colors_(*this), converters_(*this), inputs_misc_(*this),
 	  formats_(*this), interface_(*this), language_(*this),
 	  lnf_misc_(*this), outputs_misc_(*this), paths_(*this),
@@ -132,7 +132,7 @@ void FormPreferences::ok()
 		colors_.modifiedXformsPrefs = !XformsColor::write(filename);
 	}
 
-	lv_->dispatch(FuncRequest(LFUN_SAVEPREFERENCES));
+	lv_.dispatch(FuncRequest(LFUN_SAVEPREFERENCES));
 }
 
 
@@ -415,7 +415,7 @@ void FormPreferences::Colors::apply()
 				setCursorColor(GUI_COLOR_CURSOR);
 			}
 		}
-		parent_.lv_->getDialogs().redrawGUI();
+		parent_.lv_.getDialogs().redrawGUI();
 	}
 
 	// Now do the same for the LyX LColors...
@@ -437,7 +437,7 @@ void FormPreferences::Colors::apply()
 
 			string const s = lcolor.getLyXName(lc) + string(" ") +
 				hexname;
-			parent_.lv_->dispatch(FuncRequest(LFUN_SET_COLOR, s));
+			parent_.lv_.dispatch(FuncRequest(LFUN_SET_COLOR, s));
 		}
 	}
 }
@@ -744,7 +744,7 @@ void FormPreferences::Colors::LoadBrowserLyX()
 			       << "\". Set to \"black\"!" << endl;
 
 			string const arg = lcolor.getLyXName(lc) + " black";
-			parent_.lv_->dispatch(FuncRequest(LFUN_SET_COLOR, arg));
+			parent_.lv_.dispatch(FuncRequest(LFUN_SET_COLOR, arg));
 			continue;
 		}
 
@@ -2556,7 +2556,7 @@ void FormPreferences::ScreenFonts::apply() const
 	if (changed) {
 		// Now update the buffers
 		// Can anything below here affect the redraw process?
-		parent_.lv_->dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+		parent_.lv_.dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 	}
 }
 
@@ -2979,7 +2979,7 @@ void FormPreferences::browse(FL_OBJECT * inpt,
 
 	// Show the file browser dialog
 	string const new_filename =
-		browseFile(lv_, filename, title, pattern, dir1, dir2);
+		browseFile(&lv_, filename, title, pattern, dir1, dir2);
 
 	// Save the filename to the dialog
 	if (new_filename != filename && !new_filename.empty()) {

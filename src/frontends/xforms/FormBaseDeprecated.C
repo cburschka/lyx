@@ -3,7 +3,7 @@
  * Copyright 2000-2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>
@@ -39,14 +39,12 @@ static int C_PrehandlerCB(FL_OBJECT *, int, FL_Coord, FL_Coord, int, void *);
 } // extern "C"
 
 
-FormBaseDeprecated::FormBaseDeprecated(LyXView * lv, Dialogs * d,
+FormBaseDeprecated::FormBaseDeprecated(LyXView & lv, Dialogs & d,
 				       string const & t, bool allowResize)
 	: lv_(lv), d_(d), title_(t),
 	  minw_(0), minh_(0), allow_resize_(allowResize),
 	  tooltips_(new Tooltips())
-{
-	lyx::Assert(lv && d);
-}
+{}
 
 
 FormBaseDeprecated::~FormBaseDeprecated()
@@ -71,7 +69,7 @@ void FormBaseDeprecated::redraw()
 void FormBaseDeprecated::connect()
 {
 	fl_set_form_minsize(form(), minw_, minh_);
-	r_ = d_->redrawGUI.connect(boost::bind(&FormBaseDeprecated::redraw, this));
+	r_ = d_.redrawGUI.connect(boost::bind(&FormBaseDeprecated::redraw, this));
 }
 
 
@@ -205,7 +203,7 @@ void FormBaseDeprecated::RestoreCB()
 }
 
 
-FormBaseBI::FormBaseBI(LyXView * lv, Dialogs * d, string const & t,
+FormBaseBI::FormBaseBI(LyXView & lv, Dialogs & d, string const & t,
 		       bool allowResize)
 	: FormBaseDeprecated(lv, d, t, allowResize)
 {}
@@ -213,12 +211,12 @@ FormBaseBI::FormBaseBI(LyXView * lv, Dialogs * d, string const & t,
 
 void FormBaseBI::connect()
 {
-	h_ = d_->hideAll.connect(boost::bind(&FormBaseBI::hide, this));
+	h_ = d_.hideAll.connect(boost::bind(&FormBaseBI::hide, this));
 	FormBaseDeprecated::connect();
 }
 
 
-FormBaseBD::FormBaseBD(LyXView * lv, Dialogs * d, string const & t,
+FormBaseBD::FormBaseBD(LyXView & lv, Dialogs & d, string const & t,
 		       bool allowResize)
 	: FormBaseDeprecated(lv, d, t, allowResize)
 {}
@@ -226,9 +224,9 @@ FormBaseBD::FormBaseBD(LyXView * lv, Dialogs * d, string const & t,
 
 void FormBaseBD::connect()
 {
-	u_ = d_->updateBufferDependent.
+	u_ = d_.updateBufferDependent.
 		connect(boost::bind(&FormBaseBD::updateSlot, this, _1));
-	h_ = d_->hideBufferDependent.
+	h_ = d_.hideBufferDependent.
 		connect(boost::bind(&FormBaseBD::hide, this));
 	FormBaseDeprecated::connect();
 }

@@ -40,7 +40,6 @@ libfrontends_la_SOURCES = \
 	WorkAreaFactory.h \
 	font_metrics.h \
 	guiapi.h \
-	guiapi.C \
 	key_state.h \
 	lyx_gui.h \
 	mouse_state.h \

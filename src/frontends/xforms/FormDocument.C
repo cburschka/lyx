@@ -56,7 +56,7 @@ using std::bind2nd;
 using Liason::setMinibuffer;
 using std::vector;
 
-FormDocument::FormDocument(LyXView * lv, Dialogs * d)
+FormDocument::FormDocument(LyXView & lv, Dialogs & d)
 	: FormBaseBD(lv, d, _("Document Layout")),
 	  ActCell(0), Confirmed(0),
 	  current_bullet_panel(0), current_bullet_depth(0), fbullet(0)
@@ -341,7 +341,7 @@ void FormDocument::build()
 
 void FormDocument::apply()
 {
-	if (!lv_->view()->available() || !dialog_.get())
+	if (!lv_.view()->available() || !dialog_.get())
 		return;
 
 	bool redo = class_apply();
@@ -351,17 +351,17 @@ void FormDocument::apply()
 	bullets_apply();
 
 	if (redo) {
-		lv_->view()->redoCurrentBuffer();
+		lv_.view()->redoCurrentBuffer();
 	}
-	lv_->buffer()->markDirty();
-	setMinibuffer(lv_, _("Document layout set"));
+	lv_.buffer()->markDirty();
+	setMinibuffer(&lv_, _("Document layout set"));
 }
 
 
 void FormDocument::cancel()
 {
 	// this avoids confusion when reopening
-	BufferParams & param = lv_->buffer()->params;
+	BufferParams & param = lv_.buffer()->params;
 	param.temp_bullets[0] = param.user_defined_bullets[0];
 	param.temp_bullets[1] = param.user_defined_bullets[1];
 	param.temp_bullets[2] = param.user_defined_bullets[2];
@@ -377,7 +377,7 @@ void FormDocument::update()
 
 	checkReadOnly();
 
-	BufferParams const & params = lv_->buffer()->params;
+	BufferParams const & params = lv_.buffer()->params;
 
 	class_update(params);
 	paper_update(params);
@@ -481,12 +481,12 @@ bool FormDocument::input(FL_OBJECT * ob, long)
 		language_apply(params);
 		options_apply(params);
 		bullets_apply(params);
-		params.preamble = lv_->buffer()->params.preamble;
+		params.preamble = lv_.buffer()->params.preamble;
 		saveParamsAsDefault(params);
 	}
 
 	if (ob == dialog_->button_reset_defaults) {
-		BufferParams params = lv_->buffer()->params;
+		BufferParams params = lv_.buffer()->params;
 		params.textclass = combo_doc_class->get() - 1;
 		params.useClassDefaults();
 		UpdateLayoutDocument(params);
@@ -735,7 +735,7 @@ bool FormDocument::class_apply(BufferParams &params)
 
 bool FormDocument::class_apply()
 {
-	BufferParams &params = lv_->buffer()->params;
+	BufferParams &params = lv_.buffer()->params;
 
 	unsigned int const old_class = params.textclass;
 
@@ -746,11 +746,11 @@ bool FormDocument::class_apply()
 		if (textclasslist[params.textclass].load()) {
 			// successfully loaded
 			redo = true;
-			setMinibuffer(lv_, _("Converting document to new document class..."));
+			setMinibuffer(&lv_, _("Converting document to new document class..."));
 			int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
 				old_class, params.textclass,
-				&*(lv_->buffer()->paragraphs.begin()),
-				lv_->buffer()->params);
+				&*(lv_.buffer()->paragraphs.begin()),
+				lv_.buffer()->params);
 			if (ret) {
 				string s;
 				if (ret == 1) {
@@ -833,7 +833,7 @@ void FormDocument::paper_apply(BufferParams & params)
 
 void FormDocument::paper_apply()
 {
-	paper_apply(lv_->buffer()->params);
+	paper_apply(lv_.buffer()->params);
 }
 
 
@@ -876,8 +876,8 @@ bool FormDocument::language_apply(BufferParams & params)
 
 	if (old_language != new_language
 	    && old_language->RightToLeft() == new_language->RightToLeft()
-	    && !lv_->buffer()->isMultiLingual())
-		lv_->buffer()->changeLanguage(old_language, new_language);
+	    && !lv_.buffer()->isMultiLingual())
+		lv_.buffer()->changeLanguage(old_language, new_language);
 
 	if (old_language != new_language) {
 		redo = true;
@@ -892,7 +892,7 @@ bool FormDocument::language_apply(BufferParams & params)
 
 bool FormDocument::language_apply()
 {
-	return language_apply(lv_->buffer()->params);
+	return language_apply(lv_.buffer()->params);
 }
 
 
@@ -923,14 +923,14 @@ bool FormDocument::options_apply(BufferParams & params)
 
 bool FormDocument::options_apply()
 {
-	return options_apply(lv_->buffer()->params);
+	return options_apply(lv_.buffer()->params);
 }
 
 
 void FormDocument::bullets_apply(BufferParams & params)
 {
 	/* update the bullet settings */
-	BufferParams & buf_params = lv_->buffer()->params;
+	BufferParams & buf_params = lv_.buffer()->params;
 
 	// a little bit of loop unrolling
 	params.user_defined_bullets[0] = buf_params.temp_bullets[0];
@@ -942,7 +942,7 @@ void FormDocument::bullets_apply(BufferParams & params)
 
 void FormDocument::bullets_apply()
 {
-	bullets_apply(lv_->buffer()->params);
+	bullets_apply(lv_.buffer()->params);
 }
 
 void FormDocument::UpdateClassParams(BufferParams const & params)
@@ -1203,7 +1203,7 @@ void FormDocument::bullets_update(BufferParams const & params)
 	     (XpmVersion==4 && XpmRevision<7)))
 		return;
 
-	bool const isLinuxDoc = lv_->buffer()->isLinuxDoc();
+	bool const isLinuxDoc = lv_.buffer()->isLinuxDoc();
 	setEnabled(fbullet, !isLinuxDoc);
 
 	if (isLinuxDoc) return;
@@ -1218,7 +1218,7 @@ void FormDocument::bullets_update(BufferParams const & params)
 
 void FormDocument::checkReadOnly()
 {
-	if (bc().readOnly(lv_->buffer()->isReadonly())) {
+	if (bc().readOnly(lv_.buffer()->isReadonly())) {
 		combo_doc_class->deactivate();
 		combo_language->deactivate();
 		postWarning(_("Document is read-only."
@@ -1300,7 +1300,7 @@ bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 
 void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/)
 {
-	BufferParams & param = lv_->buffer()->params;
+	BufferParams & param = lv_.buffer()->params;
 
 	// convert from 1-6 range to -1-4
 	param.temp_bullets[current_bullet_depth].setSize(fl_get_choice(ob) - 2);
@@ -1311,7 +1311,7 @@ void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/)
 
 void FormDocument::InputBulletLaTeX(FL_OBJECT *, long)
 {
-	BufferParams & param = lv_->buffer()->params;
+	BufferParams & param = lv_.buffer()->params;
 
 	param.temp_bullets[current_bullet_depth].
 		setText(fl_get_input(bullets_->input_bullet_latex));
@@ -1328,7 +1328,7 @@ void FormDocument::BulletDepth(FL_OBJECT * ob)
 	/*                                                            */
 	/* I'm inclined to just go with 3 and 4 at the moment and     */
 	/* maybe try to support the others later                      */
-	BufferParams & param = lv_->buffer()->params;
+	BufferParams & param = lv_.buffer()->params;
 
 	int data = 0;
 	if (ob == bullets_->radio_bullet_depth_1)
@@ -1413,7 +1413,7 @@ void FormDocument::BulletBMTable(FL_OBJECT * ob, long /*data*/)
 	/* to that extracted from the current chosen position of the BMTable  */
 	/* Don't forget to free the button's old pixmap first.                */
 
-	BufferParams & param = lv_->buffer()->params;
+	BufferParams & param = lv_.buffer()->params;
 	int bmtable_button = fl_get_bmtable(ob);
 
 	/* try to keep the button held down till another is pushed */
@@ -1430,13 +1430,13 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 	if (!ob)
 		ob = class_->choice_doc_class;
 
-	lv_->prohibitInput();
+	lv_.prohibitInput();
 
 	unsigned int tc = combo_doc_class->get() - 1;
 	if (textclasslist[tc].load()) {
 		// we use a copy of the bufferparams because we do not
 		// want to modify them yet.
-		BufferParams params = lv_->buffer()->params;
+		BufferParams params = lv_.buffer()->params;
 
 		if (lyxrc.auto_reset_options) {
 			params.textclass = tc;
@@ -1454,9 +1454,9 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 		Alert::alert(_("Conversion Errors!"),
 			     _("Unable to switch to new document class."),
 			     _("Reverting to original document class."));
-		combo_doc_class->select(int(lv_->buffer()->params.textclass) + 1);
+		combo_doc_class->select(int(lv_.buffer()->params.textclass) + 1);
 	}
-	lv_->allowInput();
+	lv_.allowInput();
 }
 
 
