@@ -49,7 +49,7 @@ LyXFileDialog::LyXFileDialog(string const & p, string const & m,
 			     string const & t,
 		FileDialog::Button const & b1, FileDialog::Button const & b2)
 	: QFileDialog(p.c_str(), m.c_str(),
-		      qApp->mainWidget(), t.c_str(), true),
+		      qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), t.c_str(), true),
 	  b1_(0), b2_(0)
 {
 	setCaption(t.c_str());
