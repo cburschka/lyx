@@ -1377,7 +1377,7 @@ void BufferView::Pimpl::updateInset()
 		return;
 
 	// this should not be needed, but it is...
-	//bv_->text->redoParagraph(bv_->text->cursor.par());
+	bv_->text->redoParagraph(bv_->text->cursor.par());
 	//bv_->text->fullRebreak();
 
 	update();
