@@ -80,6 +80,7 @@
 #include "insets/insetfloatlist.h"
 #include "support/filetools.h"
 #include "support/path.h"
+#include "support/os.h"
 #include "LaTeX.h"
 #include "Chktex.h"
 #include "LyXView.h"
@@ -1341,7 +1342,7 @@ bool Buffer::save() const
 		s = fileName() + '~';
 		if (!lyxrc.backupdir_path.empty())
 			s = AddName(lyxrc.backupdir_path,
-				    subst(CleanupPath(s),'/','!'));
+				    subst(os::slashify_path(s),'/','!'));
 
 		// Rename is the wrong way of making a backup,
 		// this is the correct way.
@@ -1769,7 +1770,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		if (!original_path.empty()) {
 			ofs << "\\makeatletter\n"
 			    << "\\def\\input@path{{"
-			    << original_path << "/}}\n"
+			    << os::external_path(original_path) << "/}}\n"
 			    << "\\makeatother\n";
 			texrow.newline();
 			texrow.newline();

@@ -7,10 +7,10 @@
 #include "support/lyxlib.h"
 #include "support/filetools.h"
 #include "debug.h"
+#include "os.h"
 
 using std::endl;
 
-extern string system_tempdir;
 
 namespace {
 
@@ -23,7 +23,7 @@ int make_tempfile(char * templ)
 #ifdef HAVE_MKTEMP
 	// This probably just barely works...
 	::mktemp(templ);
-	return ::open(templ, O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
+	return ::open(templ, O_RDWR | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
 #else
 #ifdef WITH_WARNINGS
 #warning FIX FIX FIX
@@ -37,7 +37,7 @@ int make_tempfile(char * templ)
 
 string const lyx::tempName(string const & dir, string const & mask)
 {
-	string const tmpdir(dir.empty() ? system_tempdir : dir);
+	string const tmpdir(dir.empty() ? os::getTmpDir() : dir);
 	string tmpfl(AddName(tmpdir, mask));
 	tmpfl += tostr(getpid());
 	tmpfl += "XXXXXX";

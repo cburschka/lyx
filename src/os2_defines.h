@@ -13,16 +13,22 @@
 #ifndef OS2_DEFINES_H
 #define OS2_DEFINES_H
 
+#if defined (__cplusplus)
 #include <cctype>
-#include <process.h>
 #include <cstdlib>
+extern "C" inline int readlink(const char *, char *, size_t) {return -1;}
+#else
+#include <ctype.h>
+#include <stdlib.h>
+#define readlink(s, t, l) (-1)
+#endif
+#include <process.h>
 #include <unistd.h>
 #include <X11/Xlocale.h>
 /* #include <malloc.h> */
 #define lstat stat
 #define S_ISLNK(x) false
 #define S_ISBLK(x) false
-#define readlink(s, t, l) (strcpy(t, s), strlen(t))
 /*#define mkfifo(p, m) (0) *//* LyXserver is temporary disabled. */
 #define chdir _chdir2
 #define strcasecmp stricmp

@@ -17,6 +17,7 @@
 #include "lyxtext.h"
 #include "support/filetools.h"
 #include "support/path.h"
+#include "support/os.h"
 #include "lyxrc.h"
 #include "font.h"
 #include "LyXView.h" 
@@ -141,7 +142,7 @@ int InsetBibtex::Latex(Buffer const * buffer, ostream & os,
 	while(!adb.empty()) {
 		if (!buffer->niceFile &&
 		    IsFileReadable(MakeAbsPath(adb, buffer->filepath)+".bib")) 
-                         adb = MakeAbsPath(adb, buffer->filepath);
+                         adb = os::external_path(MakeAbsPath(adb, buffer->filepath));
 
 		db_out += adb;
 		db_out += ',';

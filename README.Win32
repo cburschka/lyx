@@ -1,0 +1,39 @@
+================================================================
+README for Win32 by Ruurd Reitsma (R.A.Reitsma@wbmt.tudelft.nl)
+================================================================
+
+Lyx has been ported to Win32 using the Cygwin environement. The port
+consists of a few small tweaks to deal with DOS-style pathnames, so
+LyX can use Win32 TeX distros like fptex and MiKTeX. There's also a
+cygwin TeTeX port, but the native Win32 ports have a definite speed
+advantage. Besides that, nothing fancy.
+
+The prerequisites are (obviously?):
+
+* cygwin installation (http://www.cygwin.com/). 
+* decent X server; eXceed, X-Win32, or maybe even Cygwin/XFree86.
+* working TeX installation; fpTex, MikTex.
+
+It should compile out of the box, but there might be some libraries
+missing in the final link step. You'll have to add them to the Makefile
+by hand. Be sure to include -lregex, because cygwin's builtin regex is
+sortof weird (filedialogs will turn up empty...)
+
+If you want to run lyx with no console windows open, there's a small
+program in development/Win32 that will set the proper environment vars
+and start lyx.
+
+Compile with:
+
+gcc lyxwin32.C -O2 -o lyxwin32 -static -Wall -Wno-format \
+-Wstrict-prototypes -Wmissing-prototypes -mwindows -e _mainCRTStartup
+
+Also make sure the latex binaries are in your Windows path. Windvi and
+Yap are auto detected, and you might want to make a symlink to Adobe
+Acrobat so it's detected too:
+
+ln -s //c/Program\ Files/adobe/Acrobat\ 4.0/Reader/AcroRd32.exe \
+/usr/bin/acroread
+
+Many thanks to Steven van Dijk, Claus Hentschel and Miyata Shigeru for
+starting the porting business.

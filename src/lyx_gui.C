@@ -19,6 +19,7 @@
 #include "lyx_gui.h"
 #include FORMS_H_LOCATION
 #include "support/filetools.h"
+#include "support/os.h"
 #include "figure_form.h"
 #include "print_form.h"
 #include "tex-strings.h"
@@ -117,6 +118,7 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	Display * display = fl_get_display();
 	if (!display) {
 		lyxerr << "LyX: unable to access X display, exiting" << endl;
+		os::warn("Unable to access X display, exiting");
 		exit(1);
 	}
 	fcntl(ConnectionNumber(display), F_SETFD, FD_CLOEXEC);

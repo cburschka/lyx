@@ -41,6 +41,7 @@
 #include "encoding.h"
 #include "converter.h"
 #include "language.h"
+#include "support/os.h"
 
 using std::endl;
 
@@ -106,7 +107,7 @@ LyX::LyX(int * argc, char * argv[])
 	
 	// Initialization of LyX (reads lyxrc and more)
 	lyxerr[Debug::INIT] << "Initializing LyX::init..." << endl;
-	init(argc, argv, gui);
+	init(gui);
 	lyxerr[Debug::INIT] << "Initializing LyX::init...done" << endl;
 
 	lyxGUI->init();
@@ -184,7 +185,7 @@ LyX::~LyX()
 
 extern "C" void error_handler(int err_sig);
 
-void LyX::init(int */*argc*/, char **argv, bool gui)
+void LyX::init(bool gui)
 {
 	// Install the signal handlers
 	signal(SIGHUP, error_handler);
@@ -198,27 +199,9 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	//
 
 	string fullbinpath;
-	string binpath = subst(argv[0], '\\', '/');
-	string binname = OnlyFilename(argv[0]);
-	// Sorry for system specific code. (SMiyata)
-	if (suffixIs(binname, ".exe")) 
-		binname.erase(binname.length()-4, string::npos);
-	
-	binpath = ExpandPath(binpath); // This expands ./ and ~/
-	
-	if (!AbsolutePath(binpath)) {
-		string binsearchpath = GetEnvPath("PATH");
-		// This will make "src/lyx" work always :-)
-		binsearchpath += ";."; 
-		binpath = FileOpenSearch(binsearchpath, argv[0]);
-	}
-
+	string binpath = os::binpath();
+	string binname = os::binname();
 	fullbinpath = binpath;
-	binpath = MakeAbsPath(OnlyPath(binpath));
-
-	// In case we are running in place and compiled with shared libraries
-	if (suffixIs(binpath, "/.libs/"))
-		binpath.erase(binpath.length()-6, string::npos);
 
 	if (binpath.empty()) {
 		lyxerr << _("Warning: could not determine path of binary.")
@@ -444,7 +427,8 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	}
 
 	// Create temp directory	
-	system_tempdir = CreateLyXTmpDir(lyxrc.tempdir_path);
+	os::setTmpDir(CreateLyXTmpDir(lyxrc.tempdir_path));
+	system_tempdir = os::getTmpDir();
 	if (lyxerr.debugging(Debug::INIT)) {
 		lyxerr << "LyX tmp dir: `" << system_tempdir << '\'' << endl;
 	}

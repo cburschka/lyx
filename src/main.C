@@ -14,11 +14,13 @@
 #include "gettext.h"
 #include "LString.h"
 #include "support/filetools.h"
+#include "support/os.h"
 #include "frontends/GUIRunTime.h"
 
 
 int main(int argc, char * argv[])
 {
+	os::init(&argc, &argv);
 	int const val = GUIRunTime::initApplication(argc, argv);
 	if (val)
 		return val;
@@ -32,10 +34,6 @@ int main(int argc, char * argv[])
 	// initialize for internationalized version *EK*
 	locale_init(); 
 	gettext_init(lyx_localedir); 
-
-#ifdef __EMX__
-	_wildcard(&argc, &argv);
-#endif
 
 	LyX lyx(&argc, argv);
 	return 0; // SUCCESS

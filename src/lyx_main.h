@@ -61,7 +61,7 @@ private:
 	///
 	void runtime();
 	///
-	void init(int * argc, char * argv[], bool);
+	void init(bool);
 	///
 	void defaultKeyBindings(kb_keymap * kbmap);
 	///

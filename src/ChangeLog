@@ -1,3 +1,19 @@
+2001-05-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* kbmap.C (findbinding): clean it up and make it work correctly.
+
+	* lyx_main.C (init): do not pass argc and argv as parameters
+
+2001-05-16  Ruurd Reitsma  <r.a.reitsma@wbmt.tudelft.nl>
+
+	* buffer.C: fix path for OS/2 & Win32
+
+	* lyx_gui.C
+	* lyx_main
+	* lyx_main.C: Added os:: class.
+	
+	* os2_defines.h: update
+
 2001-05-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxfunc.[Ch] (processKeySym): return void. Handle unknown actions

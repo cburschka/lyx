@@ -182,9 +182,6 @@ string const OnlyFilename(string const & fname);
 /// Get the contents of a file as a huge string
 string const GetFileContents(string const & fname);
 
-/// Cleanup a path if necessary. Currently only useful with OS/2
-string const CleanupPath(string const & path);
-
 /** Check and Replace Environmentvariables ${NAME} in Path.
     Replaces all occurences of these, if they are found in the
     environment.

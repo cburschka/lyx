@@ -29,6 +29,8 @@ libsupport_la_SOURCES = \
 	LRegex.h \
 	LSubstring.C \
 	LSubstring.h \
+	os.C \
+	os.h \
 	StrPool.C \
 	StrPool.h \
 	abort.C \

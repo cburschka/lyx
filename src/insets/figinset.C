@@ -57,6 +57,7 @@
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
+#include "support/os.h"
 #include "Painter.h"
 #include "font.h"
 #include "bufferview_funcs.h"
@@ -1919,7 +1920,7 @@ void InsetFig::Preview(string const & p)
 	if (GetExtension(tfname).empty())
 	    tfname += ".eps";
 	string buf1 = OnlyPath(owner->fileName());
-	string buf2 = MakeAbsPath(tfname, buf1);
+	string buf2 = os::external_path(MakeAbsPath(tfname, buf1));
 	if (!formats.View(owner, buf2, "eps"))
 		lyxerr << "Can't view " << buf2 << endl;
 }

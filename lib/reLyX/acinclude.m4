@@ -10,15 +10,24 @@ relyx_warning=yes])
 dnl RELYX_SEARCH_PROG(VARIABLE-NAME,PROGRAMS-LIST,ACTION-IF-FOUND)
 dnl             
 define(RELYX_SEARCH_PROG,[dnl
+case "`uname -s 2> /dev/null`" in
+OS/2)
+  PATH=`echo -E "$PATH" | sed 's+\\\\+/+g'`
+  PATH_IFS=';'
+  ;;
+*)
+  PATH_IFS=':'
+  ;;
+esac
 for ac_prog in $2 ; do
 # Extract the first word of "$ac_prog", so it can be a program name with
 # args.
   set dummy $ac_prog ; ac_word=$[2]
   if test ! -n "[$]$1"; then
-    IFS="${IFS=         }"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+    IFS="${IFS=         }"; ac_save_ifs="$IFS"; IFS="${IFS}$PATH_IFS"
     for ac_dir in $PATH; do
       test -z "$ac_dir" && ac_dir=.
-      if test -f [$ac_dir/$ac_word]; then
+      if test -f [$ac_dir/$ac_word] -o -f [$ac_dir/$ac_word$ac_exeext]; then
         $1="$ac_prog"
         break
       fi

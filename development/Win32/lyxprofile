@@ -1,0 +1,27 @@
+PATH="/usr/local/lyx/bin:/usr/local/bin:/usr/X11R6/bin:/usr/bin:/bin:$PATH"
+unset DOSDRIVE
+unset DOSDIR
+unset TMPDIR
+unset TMP
+
+USER="`id -un`"
+
+# Set up USER's home directory; no spaces allowed in the path!
+export HOME=//c/Docs/Lyx
+
+export USER PATH
+
+for i in /etc/profile.d/*.sh ; do
+  if [ -f $i ]; then
+    . $i
+  fi
+done
+
+export DISPLAY=localhost:0
+
+export MAKE_MODE=unix
+
+
+cd "$HOME"
+
+test -f ./.bashrc && . ./.bashrc

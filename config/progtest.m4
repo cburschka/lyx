@@ -11,6 +11,19 @@
 dnl AM_PATH_PROG_WITH_TEST(VARIABLE, PROG-TO-CHECK-FOR,
 dnl   TEST-PERFORMED-ON-FOUND_PROGRAM [, VALUE-IF-NOT-FOUND [, PATH]])
 AC_DEFUN(AM_PATH_PROG_WITH_TEST,
+[case "`uname -s 2> /dev/null`" in
+OS/2)
+  PATH=`echo -E "$PATH" | sed 's+\\\\+/+g'`
+  PATH_IFS=';'
+  EXE_EXT='.exe'
+  CMD_EXT='.cmd'
+  ;;
+*)
+  PATH_IFS=':'
+  EXE_EXT=''
+  CMD_EXT=''
+  ;;
+esac]
 [# Extract the first word of "$2", so it can be a program name with args.
 set dummy $2; ac_word=[$]2
 AC_MSG_CHECKING([for $ac_word])
@@ -20,10 +33,12 @@ AC_CACHE_VAL(ac_cv_path_$1,
   ac_cv_path_$1="[$]$1" # Let the user override the test with a path.
   ;;
   *)
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}$PATH_IFS"
   for ac_dir in ifelse([$5], , $PATH, [$5]); do
     test -z "$ac_dir" && ac_dir=.
-    if test -f $ac_dir/$ac_word; then
+    if test -f $ac_dir/$ac_word \
+	 -o -f $ac_dir/$ac_word$EXE_EXT \
+	 -o -f $ac_dir/$ac_word$CMD_EXT; then
       if [$3]; then
 	ac_cv_path_$1="$ac_dir/$ac_word"
 	break

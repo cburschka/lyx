@@ -34,6 +34,7 @@
 #include "support/path.h"        // I know it's OS/2 specific (SMiyata)
 #include "gettext.h"
 #include "lyxlib.h"
+#include "os.h"
 
 // Which part of this is still necessary? (JMarc).
 #if HAVE_DIRENT_H
@@ -103,12 +104,9 @@ string const MakeLatexName(string const & file)
 // Substitutes spaces with underscores in filename (and path)
 string const QuoteName(string const & name)
 {
-	// CHECK Add proper emx support here!
-#ifndef __EMX__
-	return "\'" + name + "\'";
-#else
-	return name; 
-#endif
+	return (os::shell() == os::UNIX) ?
+		"\'" + name + "\'":
+		"\"" + name + "\"";
 }
 
 
@@ -172,7 +170,7 @@ string const FileOpenSearch (string const & path, string const & name,
 	string tmppath = split(path, path_element, ';');
 	
 	while (notfound && !path_element.empty()) {
-		path_element = CleanupPath(path_element);
+		path_element = os::slashify_path(path_element);
 		if (!suffixIs(path_element, '/'))
 			path_element+= '/';
 		path_element = subst(path_element, "$$LyX", system_lyxdir);
@@ -249,7 +247,6 @@ string const FileSearch(string const & path, string const & name,
 	// Expand Environmentvariables in 'name'
 	string const tmpname = ReplaceEnvironmentPath(name);
 	string fullname = MakeAbsPath(tmpname, path);
-	
 	// search first without extension, then with it.
 	if (IsFileReadable(fullname))
 		return fullname;
@@ -321,7 +318,7 @@ string const GetEnvPath(string const & name)
 #ifndef __EMX__
         string const pathlist = subst(GetEnv(name), ':', ';');
 #else
-        string const pathlist = subst(GetEnv(name), '\\', '/');
+        string const pathlist = os::slashify_path(GetEnv(name));
 #endif
         return strip(pathlist, ';');
 }
@@ -469,7 +466,18 @@ int DestroyTmpDir(string const & tmpdir, bool Allfiles)
 
 string const CreateBufferTmpDir(string const & pathfor)
 {
-	return CreateTmpDir(pathfor, "lyx_tmpbuf");
+	static int count = 0;
+	static string const tmpdir(pathfor.empty() ? os::getTmpDir() : pathfor);
+	// We are in our own directory.  Why bother to mangle name?
+	// In fact I wrote this code to circumvent a problematic behaviour (bug?)
+	// of EMX mkstemp().
+	string tmpfl = tmpdir + "/lyx_tmpbuf" + tostr(count++);
+	if (lyx::mkdir(tmpfl, 0777)) {
+		WriteFSAlert(_("Error! Couldn't create temporary directory:"),
+			     tmpdir);
+		return string();
+	}
+	return tmpfl;
 }
 
 
@@ -509,7 +517,7 @@ int DestroyLyXTmpDir(string const & tmpdir)
 // Creates directory. Returns true if succesfull
 bool createDirectory(string const & path, int permission)
 {
-	string temp(strip(CleanupPath(path), '/'));
+	string temp(strip(os::slashify_path(path), '/'));
 
 	if (temp.empty()) {
 		WriteAlert(_("Internal error!"),
@@ -546,32 +554,21 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 {
 	// checks for already absolute path
 	if (AbsolutePath(RelPath))
-#ifdef __EMX__
-		if (RelPath[0]!= '/' && RelPath[0]!= '\\')
-#endif
 		return RelPath;
 
 	// Copies given paths
-	string TempRel(CleanupPath(RelPath));
+	string TempRel(os::slashify_path(RelPath));
+	lyxerr << "TempRel=" << TempRel <<endl;
+	// Since TempRel is NOT absolute, we can safely replace "//" with "/"
+	TempRel = subst(TempRel, "//", "/");
 
 	string TempBase;
 
-	if (!BasePath.empty()) {
-#ifndef __EMX__
+	if (AbsolutePath(BasePath))
 		TempBase = BasePath;
-#else
-		char * with_drive = new char[_MAX_PATH];
-		_abspath(with_drive, BasePath.c_str(), _MAX_PATH);
-		TempBase = with_drive;
-		delete[] with_drive;
-#endif
-	} else
-		TempBase = lyx::getcwd(); //GetCWD();
-#ifdef __EMX__
-	if (AbsolutePath(TempRel))
-		return TempBase.substr(0, 2) + TempRel;
-#endif
-
+	else
+		TempBase = AddPath(lyx::getcwd(), BasePath);
+	
 	// Handle /./ at the end of the path
 	while(suffixIs(TempBase, "/./"))
 		TempBase.erase(TempBase.length() - 2);
@@ -600,6 +597,9 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 				TempBase.erase(i, string::npos);
 			else
 				TempBase += '/';
+		} else if (Temp.empty() && !RTemp.empty()) {
+				TempBase = os::current_root() + RTemp;
+				RTemp.erase();
 		} else {
 			// Add this piece to TempBase
 			if (!suffixIs(TempBase, '/'))
@@ -609,7 +609,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 	}
 
 	// returns absolute path
-	return TempBase;
+	return os::slashify_path(TempBase);
 }
 
 
@@ -624,7 +624,7 @@ string const AddName(string const & path, string const & fname)
 	string buf;
 
 	if (path != "." && path != "./" && !path.empty()) {
-		buf = CleanupPath(path);
+		buf = os::slashify_path(path);
 		if (!suffixIs(path, '/'))
 			buf += '/';
 	}
@@ -654,7 +654,7 @@ bool AbsolutePath(string const & path)
 #ifndef __EMX__
 	return (!path.empty() && path[0] == '/');
 #else
-	return (!path.empty() && (path[0] == '/' || (isalpha(static_cast<unsigned char>(path[0])) && path.length()>1 && path[1] == ':')));
+	return (!path.empty() && isalpha(static_cast<unsigned char>(path[0])) && path.length() > 1 && path[1] == ':');
 #endif
 }
 
@@ -723,18 +723,6 @@ string const NormalizePath(string const & path)
 
 	// returns absolute path
 	return TempBase;	
-}
-
-
-string const CleanupPath(string const & path) 
-{
-#ifdef __EMX__	  /* SMiyata: This should fix searchpath bug. */
-	string temppath = subst(path, '\\', '/');
-	temppath = subst(temppath, "//", "/");
-	return lowercase(temppath);
-#else // On unix, nothing to do
-	return path;
-#endif
 }
 
 
@@ -849,33 +837,16 @@ string const ReplaceEnvironmentPath(string const & path)
 
 
 // Make relative path out of two absolute paths
-string const MakeRelPath(string const & abspath0, string const & basepath0)
+string const MakeRelPath(string const & abspath, string const & basepath)
 // Makes relative path out of absolute path. If it is deeper than basepath,
 // it's easy. If basepath and abspath share something (they are all deeper
 // than some directory), it'll be rendered using ..'s. If they are completely
 // different, then the absolute path will be used as relative path.
 {
-	// This is a hack. It should probaly be done in another way. Lgb.
-	string const abspath = CleanupPath(abspath0);
-	string const basepath = CleanupPath(basepath0);
-	if (abspath.empty())
-		return "<unknown_path>";
-
 	string::size_type const abslen = abspath.length();
 	string::size_type const baselen = basepath.length();
-	
-	// Find first different character
-	string::size_type i = 0;
-	while (i < abslen && i < baselen && abspath[i] == basepath[i]) ++i;
 
-	// Go back to last /
-	if (i < abslen && i < baselen
-	    || (i < abslen && abspath[i] != '/' && i == baselen)
-	    || (i < baselen && basepath[i] != '/' && i == abslen))
-	{
-		if (i) --i;	// here was the last match
-		while (i && abspath[i] != '/') --i;
-	}
+	string::size_type i = os::common_path(abspath, basepath);
 
 	if (i == 0) {
 		// actually no match - cannot make it relative
@@ -912,17 +883,20 @@ string const MakeRelPath(string const & abspath0, string const & basepath0)
 string const AddPath(string const & path, string const & path_2)
 {
 	string buf;
-	string const path2 = CleanupPath(path_2);
+	string const path2 = os::slashify_path(path_2);
 
 	if (!path.empty() && path != "." && path != "./") {
-		buf = CleanupPath(path);
+		buf = os::slashify_path(path);
 		if (path[path.length() - 1] != '/')
 			buf += '/';
 	}
 
-	if (!path2.empty())
-		buf += frontStrip(strip(path2, '/'), '/') + '/';
-
+	if (!path2.empty()) {
+	        string::size_type const p2start = path2.find_first_not_of('/');
+		string::size_type const p2end = path2.find_last_not_of('/');
+		string const tmp = path2.substr(p2start, p2end - p2start + 1);
+		buf += tmp + '/';
+	}
 	return buf;
 }
 
@@ -947,7 +921,7 @@ ChangeExtension(string const & oldname, string const & extension)
 	else
 		ext = extension;
 
-	return CleanupPath(oldname.substr(0, last_dot) + ext);
+	return os::slashify_path(oldname.substr(0, last_dot) + ext);
 }
 
 

@@ -15,6 +15,8 @@
 #include "syscontr.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "support/filetools.h"
+#include "support/os.h"
 
 using std::endl;
 
@@ -137,8 +139,10 @@ void Systemcalls::waitForChild() {
 
 pid_t Systemcalls::fork()
 {
+	#ifndef __EMX__
 	pid_t cpid= ::fork();
 	if (cpid == 0) { // child
+	#endif
 		// TODO: Consider doing all of this before the fork, otherwise me
 		// might have troubles with multi-threaded access. (Baruch 20010228)
 		string childcommand(command); // copy
@@ -169,10 +173,15 @@ pid_t Systemcalls::fork()
 		}
 		argv[index] = 0;
 		// replace by command. Expand using PATH-environment-var.
+#ifndef __EMX__
 		execvp(syscmd, argv);
 		// If something goes wrong, we end up here:
 		lyxerr << "LyX: execvp failed: " << strerror(errno) << endl;
 	} else if (cpid < 0) { // error
+#else
+	pid_t cpid = spawnvp(P_SESSION|P_DEFAULT|P_MINIMIZE|P_BACKGROUND, syscmd, argv);
+	if (cpid < 0) { // error
+#endif
 		lyxerr << "LyX: Could not fork: " << strerror(errno) << endl;
 	} else { // parent
 		return cpid;
@@ -193,25 +202,8 @@ int Systemcalls::startscript(Starttype how, string const & what,
 	retval	= 0;
 
 	if (how == SystemDontWait) {
-#ifndef __EMX__
-		command += " &";
-#else
-		// OS/2 cmd.exe has another use for '&'
-		// This is not NLS safe, but it's OK, I think.
-		string sh = OnlyFilename(GetEnvPath("EMXSHELL"));
-		if (sh.empty()) {
-			// COMSPEC is set, unless user unsets 
-			sh = OnlyFilename(GetEnvPath("COMSPEC"));
-			if (sh.empty())
-				sh = "cmd.exe";
-		}
-		sh = lowercase(sh);
-		if (contains(sh, "cmd.exe")
-		    || contains(sh, "4os2.exe"))
-			command = "start /min/n " + command;
-		else
-			command += " &";
-#endif
+		(os::shell() == os::UNIX) ? command += " &"
+					  : command = "start /min/n " + command;
 	}
 
         return startscript();

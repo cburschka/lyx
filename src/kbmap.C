@@ -234,7 +234,7 @@ string const kb_keymap::keyname(kb_key const & k)
 
 
 // Finds a key for a keyaction, if possible
-string const kb_keymap::findbinding(int act) const
+string const kb_keymap::findbinding(int act, string const & prefix) const
 {
 	string res;
 	if (table.empty()) return res;
@@ -243,17 +243,13 @@ string const kb_keymap::findbinding(int act) const
 	for (Table::const_iterator cit = table.begin();
 	    cit != end; ++cit) {
 		if ((*cit).table.get()) {
-			string suffix = (*cit).table->findbinding(act);
-			suffix = strip(suffix, ' ');
-			suffix = strip(suffix, ']');
-			suffix = frontStrip(suffix, '[');
-			if (!suffix.empty()) {
-				res += "[" + keyname((*cit)) + " "
-					+ suffix + "] ";
-			}
+			res += (*cit).table->findbinding(act,
+							 prefix
+							 + keyname((*cit))
+							 + " ");
 		} else if ((*cit).action == act) {
 			res += "[";
-			res += keyname((*cit));
+			res += prefix + keyname((*cit));
 			res += "] ";
 		}
 	}

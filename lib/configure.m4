@@ -148,6 +148,12 @@ if test ! -r ${srcdir}/chkconfig.ltx ; then
   exit 1
 fi
 
+#### Adjust PATH for Win32 (Cygwin)
+if test "x$OSTYPE" = xcygwin; then
+  echo "configure: cygwin detected; path correction"
+  srcdir=`cygpath -w "${srcdir}" | tr '\\\\' /`
+  echo "srcdir=${srcdir}"
+fi
 
 #### Create the build directories if necessary
 for dir in bind clipart doc examples images kbd layouts reLyX \
@@ -219,7 +225,7 @@ SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gv ghostview)
 SEARCH_PROG([for a PDF preview],PDF_VIEWER,acroread gv ghostview xpdf)
 
 # Search something to preview dvi
-SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi)
+SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi windvi yap)
 
 # Search something to preview html
 SEARCH_PROG([for a HTML previewer],HTML_VIEWER, netscape)
