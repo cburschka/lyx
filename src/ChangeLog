@@ -2,6 +2,8 @@
 
 	* BufferView2.C (removeAutoInsets): fix remaining freed memory read.
 	Iterators might be simple to use but they also get invalidated.
+	(removeAutoInsets): renamed saved cursor tracking variables and added
+	some comments to clarify what everything does.
 
 2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
 

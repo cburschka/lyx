@@ -107,10 +107,11 @@ bool BufferView::insertLyXFile(string const & filen)
 
 bool BufferView::removeAutoInsets()
 {
-	Paragraph * cur_par = text->cursor.par();
-	Paragraph * cur_par_prev = cur_par ? cur_par->previous() : 0;
-	Paragraph * cur_par_next = cur_par ? cur_par->next() : 0;
-	pos_type cur_pos = text->cursor.pos();
+	// keep track of which pos and par the cursor was on
+	Paragraph * cursor_par = text->cursor.par();
+	Paragraph * cursor_par_prev = cursor_par ? cursor_par->previous() : 0;
+	Paragraph * cursor_par_next = cursor_par ? cursor_par->next() : 0;
+	pos_type cursor_pos = text->cursor.pos();
 
 	bool found = false;
 
@@ -119,27 +120,30 @@ bool BufferView::removeAutoInsets()
 	// In reality this should mean we only execute the body of the while
 	// loop once at most.  However for safety we iterate rather than just
 	// make this an if () conditional.
-	while ((cur_par_prev || cur_par_next)
+	while ((cursor_par_prev || cursor_par_next)
 	       && text->setCursor(this,
-				  cur_par_prev ? cur_par_prev : cur_par_next,
+				  cursor_par_prev ? cursor_par_prev : cursor_par_next,
 				  0)) {
-		// We just removed cur_par so have to fix the "cursor"
-		if (cur_par_prev) {
-			// '.' = cur_par
+		// We just removed cursor_par so have to fix the "cursor"
+		if (cursor_par_prev) {
+			// '.' = cursor_par
 			//  a -> a.
 			// .
-			cur_par = cur_par_prev;
-			cur_pos = cur_par->size();
+			cursor_par = cursor_par_prev;
+			cursor_pos = cursor_par->size();
 		} else {
 			// .  -> .a
 			//  a
-			cur_par = cur_par_next;
-			cur_pos = 0;
+			cursor_par = cursor_par_next;
+			cursor_pos = 0;
 		}
-		cur_par_prev = cur_par->previous();
-		cur_par_next = cur_par->next();
+		cursor_par_prev = cursor_par->previous();
+		cursor_par_next = cursor_par->next();
 	}
 
+	// Iterate through the paragraphs removing autoDelete insets as we go.
+	// If the paragraph ends up empty after all the autoDelete insets are
+	// removed that paragraph will be removed by the next setCursor() call.
 	ParIterator it = buffer()->par_iterator_begin();
 	ParIterator end = buffer()->par_iterator_end();
 	for (; it != end; ++it) {
@@ -148,35 +152,35 @@ bool BufferView::removeAutoInsets()
 		bool removed = false;
 
 		if (text->setCursor(this, par, 0)
-		    && cur_par == par_prev) {
+		    && cursor_par == par_prev) {
 			// The previous setCursor line was deleted and that
-			// was the cur_par line.  This can only happen if an
-			// error box was the sole item on cur_par.
-			// It is possible for cur_par_prev to be stray if
+			// was the cursor_par line.  This can only happen if an
+			// error box was the sole item on cursor_par.
+			// It is possible for cursor_par_prev to be stray if
 			// the line it pointed to only had a error box on it
 			// so we have to set it to a known correct value.
 			// This is often the same value it already had.
-			cur_par_prev = par->previous();
-			if (cur_par_prev) {
-				// '|' = par, '.' = cur_par, 'E' = error box
+			cursor_par_prev = par->previous();
+			if (cursor_par_prev) {
+				// '|' = par, '.' = cursor_par, 'E' = error box
 				// First step below may occur before while{}
 				//  a    |a      a     a     a.
 				//  E -> .E -> |.E -> .  -> |b
 				// .      b      b    |b
 				//  b
-				cur_par = cur_par_prev;
-				cur_pos = cur_par_prev->size();
-				cur_par_prev = cur_par->previous();
-				// cur_par_next remains the same 
-			} else if (cur_par_next) {
+				cursor_par = cursor_par_prev;
+				cursor_pos = cursor_par_prev->size();
+				cursor_par_prev = cursor_par->previous();
+				// cursor_par_next remains the same 
+			} else if (cursor_par_next) {
 				// First step below may occur before while{}
 				// .
 				//  E -> |.E -> |.  -> . -> .|a
 				//  a      a      a    |a
-				cur_par = cur_par_next;
-				cur_pos = 0;
-				// cur_par_prev remains unset
-				cur_par_next = cur_par->next();
+				cursor_par = cursor_par_next;
+				cursor_pos = 0;
+				// cursor_par_prev remains unset
+				cursor_par_next = cursor_par->next();
 			} else {
 				// I can't find a way to trigger this
 				// so it should be unreachable code
@@ -193,14 +197,16 @@ bool BufferView::removeAutoInsets()
 				pos_type const pos = pit.getPos();
 
 				par->erase(pos);
-				// get the next valid iterator position
+				// We just invalidated par's inset iterators so
+				// we get the next valid iterator position
 				pit = par->InsetIterator(pos);
-				// ensure we have a valid end iterator
+				// and ensure we have a valid end iterator.
 				pend = par->inset_iterator_end();
 
-				if (cur_par == par) {
-					if (cur_pos > pos)
-						--cur_pos;
+				if (cursor_par == par) {
+					// update the saved cursor position
+					if (cursor_pos > pos)
+						--cursor_pos;
 				}
 			} else {
 				++pit;
@@ -212,21 +218,23 @@ bool BufferView::removeAutoInsets()
 		}
 	}
 
-	// It is possible that the last line is empty if it was cur_par and/or
-	// only had an error inset on it.
+	// It is possible that the last line is empty if it was cursor_par
+	// and/or only had an error inset on it.  So we set the cursor to the
+	// start of the doc to force its removal and ensure a valid saved cursor
 	if (text->setCursor(this, text->ownerParagraph(), 0)
-	    && 0 == cur_par_next) {
-		cur_par = cur_par_prev;
-		cur_pos = cur_par->size();
-	} else if (cur_pos > cur_par->size()) {
+	    && 0 == cursor_par_next) {
+		cursor_par = cursor_par_prev;
+		cursor_pos = cursor_par->size();
+	} else if (cursor_pos > cursor_par->size()) {
 		// Some C-Enter lines were removed by the setCursor call which
-		// then invalidated cur_pos. It could still be "wrong" because
+		// then invalidated cursor_pos. It could still be "wrong" because
 		// the cursor may appear to have jumped but since we collapsed
 		// some C-Enter lines this should be a reasonable compromise.
-		cur_pos = cur_par->size();
+		cursor_pos = cursor_par->size();
 	}
 
-	text->setCursorIntern(this, cur_par, cur_pos);
+	// restore the original cursor in its corrected location.
+	text->setCursorIntern(this, cursor_par, cursor_pos);
 
 	return found;
 }
