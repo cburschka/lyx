@@ -6,78 +6,81 @@
 #pragma interface
 #endif
 
+#include "LString.h"
 #include FORMS_H_LOCATION
+#include "form1.h"
 
+class LyXFindReplace;
 
 /**
+   The comments below are most likely not valied anymore since
+   the rewrite of LyXFindReplace0 and LyXFindReplace1. (Lgb)
+   
   LyXFindReplace0
  
   This is a virtual base class. It does not handle text specific
   items. It only manages the Find & Replace form and the variables.
   
-To be added:
+  To be added:
 
-- Confirm replace lightbutton (checkbox)
+  - Confirm replace lightbutton (checkbox)
 
-- A history list for search and replace strings.
-These 2 stringlists should match, so that you can replay previous replaces.
-If you select another search string, then the first choice should be the 
-replace string you have typed before.
-
-- regex searches (I'm working on that -- dnaber, 1999-02-24)
+  - A history list for search and replace strings.
+  These 2 stringlists should match, so that you can replay previous replaces.
+  If you select another search string, then the first choice should be the 
+  replace string you have typed before.
+  
+  - regex searches (I'm working on that -- dnaber, 1999-02-24)
 
 */
-class LyXFindReplace0 {
+
+class SearchForm {
 public:
 	///
-	LyXFindReplace0();
+	SearchForm();
 	///
-	virtual ~LyXFindReplace0() {};	
+	~SearchForm();	
 	
+	///
+	bool CaseSensitive() const {
+		return fl_get_button(search_form->btnCaseSensitive);
+	}
+
+	///
+	bool MatchWord() const {
+		return fl_get_button(search_form->btnMatchWord);
+	}
+
+	///
+	string SearchString() const {
+		return fl_get_input(search_form->input_search);
+	}
+
 	/// Initialize internal variables and dialog
-	virtual void StartSearch();
+	void StartSearch(LyXFindReplace *);
+
+	///
+	void replaceEnabled(bool fEnabled);
+	///
+	bool replaceEnabled() const { return fReplaceEnabled; }
 
 	// Callbacks from form
 	///
-	virtual void SearchCancelCB();
-	///
-	virtual bool SearchCB(bool fForward) = 0;
-	///
-	virtual void SearchReplaceCB() = 0;
-	///
-	virtual void SearchReplaceAllCB() = 0;
-protected:
-	///
-	bool		fCaseSensitive;
-	/// Match complete word only.
-	bool		fMatchWord;
-	/// replace buttons enabled?
-	bool		fReplaceEnabled;
-	/// search string
-	string		lsSearch;
-
-	///
-	void SetReplaceEnabled(bool fEnabled);
-	///
-	bool ReplaceEnabled() { return fReplaceEnabled; }
-
-	/// Initialize search variables from Find & Replace form
-	virtual void ReInitFromForm();
+	void SearchCancelCB();
 
 	// Return values
 	///
-	bool CaseSensitive() { return fCaseSensitive; }
+	void SetSearchString(string const & ls);
 	///
-	bool MatchWord() { return fMatchWord; }
-	///
-	string const SearchString() { return lsSearch; }
-	///
-	void SetSearchString(string const &ls);
-	///
-	string const ReplaceString();
+	string ReplaceString() const;
 
 	///
-	bool ValidSearchData() { return !lsSearch.empty(); }	 	
+	bool ValidSearchData() const { return !(SearchString().empty()); }
+private:
+	///
+	FD_form_search * search_form;
+	/// replace buttons enabled?
+	bool fReplaceEnabled;
 };
 
 #endif

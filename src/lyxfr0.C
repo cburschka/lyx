@@ -10,156 +10,126 @@
 
 #include <config.h>
 
-#include <cctype>
-#include <cstring>
-#include <cstdlib>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include "LString.h"
-#include "lyx_main.h"
-#include FORMS_H_LOCATION
-#include "form1.h"
 #include "lyxfr0.h"
 #include "lyxfr1.h"
-#include "lyxfunc.h"
-#include "debug.h"
-#include "lyxtext.h"
-#include "gettext.h"
-#include "LyXView.h" // only because of form_main
-
-//---------------------------------------------------------------
-// I hate global variables, but the same search object must be used everywhere,
-// and the form is also global, so... 
-LyXFindReplace1	_FR;
-
-// This one should be a protected member of LyXFindReplace1
-// Form creation/destruction must also be done in LyXFindReplace1
-extern FD_form_search *fd_form_search;
-
-//---------------------------------------------------------------
+#include "lyx_gui_misc.h"
 
 
 // callbacks for form form_search
-void SearchCancelCB(FL_OBJECT *, long)
+void SearchCancelCB(FL_OBJECT * ob, long)
 {
-	_FR.SearchCancelCB();
+	fl_hide_form(ob->form);
 }
 
 
-void SearchForwardCB(FL_OBJECT *, long)
+void SearchForwardCB(FL_OBJECT * ob, long)
 {
-	_FR.SearchCB(true);
+	LyXFindReplace * lfr = static_cast<LyXFindReplace*>(ob->form->u_vdata);
+	lfr->SearchCB(true);
 }
 
 
-void SearchBackwardCB(FL_OBJECT *, long)
+void SearchBackwardCB(FL_OBJECT * ob, long)
 {
-	_FR.SearchCB(false);
+	LyXFindReplace * lfr = static_cast<LyXFindReplace*>(ob->form->u_vdata);
+	lfr->SearchCB(false);
 }
 
 
-void SearchReplaceAllCB(FL_OBJECT *, long)
+void SearchReplaceAllCB(FL_OBJECT * ob, long)
 {
-	_FR.SearchReplaceAllCB();
+	LyXFindReplace * lfr = static_cast<LyXFindReplace*>(ob->form->u_vdata);
+	lfr->SearchReplaceAllCB();
 }
 
 
-void SearchReplaceCB(FL_OBJECT *, long)
+void SearchReplaceCB(FL_OBJECT * ob, long)
 {
-	_FR.SearchReplaceCB();
+	LyXFindReplace * lfr = static_cast<LyXFindReplace*>(ob->form->u_vdata);
+	lfr->SearchReplaceCB();
 }
 
 
-//--------------------- LyXFindReplace0's implementation ------------
 
-LyXFindReplace0::LyXFindReplace0()
+SearchForm::SearchForm()
+	: search_form(0)
+{}
+
+
+SearchForm::~SearchForm()
 {
-    	fCaseSensitive = false;
-	fMatchWord = false;
+	// The search_form should be closed and freed when SearchForm
+	// is destructed.
 }
 
 
-void LyXFindReplace0::StartSearch()
+void SearchForm::SearchCancelCB()
+{
+	fl_hide_form(search_form->form_search);
+}
+
+
+void SearchForm::StartSearch(LyXFindReplace * lfr)
 {
 	static int ow = -1, oh;
 
-	FD_form_search *fd_fs = fd_form_search;
-
-	if (fd_fs->form_search->visible) {
-		fl_raise_form(fd_fs->form_search);
+	if (!search_form) {
+		search_form = create_form_form_search();
+		fl_set_form_atclose(search_form->form_search,
+				    CancelCloseBoxCB, 0);
+	}
+	// Set the u_vdata
+	search_form->form_search->u_vdata = lfr;
+		
+	
+	if (search_form->form_search->visible) {
+		fl_raise_form(search_form->form_search);
 	} else {
-		fl_show_form(fd_fs->form_search,
+		fl_show_form(search_form->form_search,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
 			     _("Find & Replace"));	// RVDK_PATCH_5
 		if (ow < 0) {
-			ow = fd_form_search->form_search->w;
-			oh = fd_form_search->form_search->h;
+			ow = search_form->form_search->w;
+			oh = search_form->form_search->h;
 		}
-		fl_set_form_minsize(fd_form_search->form_search, ow, oh);
+		fl_set_form_minsize(search_form->form_search, ow, oh);
 	}
-	ReInitFromForm();
-}
-
-
-void LyXFindReplace0::ReInitFromForm()
-{
-	FD_form_search *fd_fs = fd_form_search;
-
-	lsSearch = fl_get_input(fd_fs->input_search);
-	fCaseSensitive = fl_get_button(fd_fs->btnCaseSensitive);
-	fMatchWord = fl_get_button(fd_fs->btnMatchWord);
 }
 
 
 // Returns the value of the replace string in the form
-string const LyXFindReplace0::ReplaceString()
+string SearchForm::ReplaceString() const
 {
-	return string(fl_get_input(fd_form_search->input_replace));
+	return fl_get_input(search_form->input_replace);
 }
 
 
-void LyXFindReplace0::SearchCancelCB()
+void SearchForm::replaceEnabled(bool fEnable)
 {
-	fl_hide_form(fd_form_search->form_search);
-}
-
-
-void LyXFindReplace0::SetReplaceEnabled(bool fEnable)
-{
-	FD_form_search *fd_fs = fd_form_search;
 	fReplaceEnabled = fEnable;
 	if (fEnable) {
-        fl_activate_object(fd_fs->replace_button);
-        fl_activate_object(fd_fs->replaceall_button);
-        fl_activate_object(fd_fs->input_replace);
-		fl_set_object_lcol(fd_fs->replace_button, FL_BLACK);
-		fl_set_object_lcol(fd_fs->replaceall_button, FL_BLACK);
-		fl_set_object_lcol(fd_fs->input_replace, FL_BLACK);
+		fl_activate_object(search_form->replace_button);
+		fl_activate_object(search_form->replaceall_button);
+		fl_activate_object(search_form->input_replace);
+		fl_set_object_lcol(search_form->replace_button, FL_BLACK);
+		fl_set_object_lcol(search_form->replaceall_button, FL_BLACK);
+		fl_set_object_lcol(search_form->input_replace, FL_BLACK);
 	} else {
-        fl_deactivate_object(fd_fs->replace_button);
-        fl_deactivate_object(fd_fs->replaceall_button);
-        fl_deactivate_object(fd_fs->input_replace);
-		fl_set_object_lcol(fd_fs->replace_button, FL_INACTIVE);
-		fl_set_object_lcol(fd_fs->replaceall_button, FL_INACTIVE);
-		fl_set_object_lcol(fd_fs->input_replace, FL_INACTIVE);
+		fl_deactivate_object(search_form->replace_button);
+		fl_deactivate_object(search_form->replaceall_button);
+		fl_deactivate_object(search_form->input_replace);
+		fl_set_object_lcol(search_form->replace_button, FL_INACTIVE);
+		fl_set_object_lcol(search_form->replaceall_button, FL_INACTIVE);
+		fl_set_object_lcol(search_form->input_replace, FL_INACTIVE);
 	}
 }
 
 
-void LyXFindReplace0::SetSearchString(string const &ls)
+void SearchForm::SetSearchString(string const & ls)
 {
-	lsSearch = ls;
-	fl_set_input(fd_form_search->input_search, ls.c_str());	
-}
-
-
-//---------------------------------------------------------------
-//HB??: Maybe _FR.StartSearch should be called in lyxfunc.C instead of MenuSearch() ?
-
-void MenuSearch()
-{
-	_FR.StartSearch();   
+	fl_set_input(search_form->input_search, ls.c_str());	
 }

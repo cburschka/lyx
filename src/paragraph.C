@@ -1731,7 +1731,7 @@ int LyXParagraph::BeginningOfMainBody() const
 	    && GetChar(i) != LyXParagraph::META_NEWLINE
 		) {
 		++i;
-		char previous_char, temp;
+		char previous_char = 0, temp = 0; 
 		if (i < size()
 		    && (previous_char = GetChar(i)) != LyXParagraph::META_NEWLINE) {
 			// Yes, this  ^ is supposed to be "= " not "=="

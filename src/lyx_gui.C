@@ -46,7 +46,6 @@
 FD_form_title * fd_form_title;
 FD_form_paragraph * fd_form_paragraph;
 FD_form_paragraph_extra * fd_form_paragraph_extra;
-FD_form_search * fd_form_search;
 FD_form_character * fd_form_character;
 FD_form_document * fd_form_document;
 FD_form_paper * fd_form_paper;
@@ -360,11 +359,6 @@ void LyXGUI::create_forms()
 			    FL_RETURN_ALWAYS);
 	fl_set_input_return(fd_form_paragraph_extra->input_pextra_widthp,
 			    FL_RETURN_ALWAYS);
-
-	// the search form
-	fd_form_search = create_form_form_search();
-	fl_set_form_atclose(fd_form_search->form_search,
-			    CancelCloseBoxCB, 0);
 
 	// the character form
 	fd_form_character = create_form_form_character();

@@ -66,6 +66,7 @@
 #include "ImportNoweb.h"
 #include "layout.h"
 #include "WorkArea.h"
+#include "lyxfr1.h"
 
 extern bool cursor_follows_scrollbar;
 
@@ -97,7 +98,6 @@ extern LyXAction lyxaction;
 extern tex_accent_struct get_accent(kb_action action);
 
 extern void AutoSave();
-extern void MenuSearch();
 extern void SetUpdateTimer(float timer = 0.3);
 extern void FreeUpdateTimer();
 extern bool PreviewDVI(Buffer *);
@@ -857,7 +857,14 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_MENUSEARCH:
-		MenuSearch();
+	{
+		// Ok this is one _very_ bad solution, but I think that some
+		// of this will be rewritten as part of GUI indep anyway.
+		// Lgb
+		static LyXFindReplace FR_;
+		FR_.StartSearch(owner->view());
+	}
+	
 		break;
 		
 	case LFUN_PASTE:

@@ -38,7 +38,6 @@ extern BufferView * current_view;
 
 extern FD_form_paragraph * fd_form_paragraph;
 extern FD_form_paragraph_extra * fd_form_paragraph_extra;
-extern FD_form_search * fd_form_search;
 extern FD_form_character * fd_form_character;
 extern FD_form_document * fd_form_document;
 extern FD_form_paper * fd_form_paper;
@@ -97,9 +96,6 @@ void CloseAllBufferRelatedPopups()
 	}
 	if (fd_form_paragraph_extra->form_paragraph_extra->visible) {
 		fl_hide_form(fd_form_paragraph_extra->form_paragraph_extra);
-	}
-	if (fd_form_search->form_search->visible) {
-		fl_hide_form(fd_form_search->form_search);
 	}
 	if (fd_form_character->form_character->visible) {
 		fl_hide_form(fd_form_character->form_character);

@@ -1,3 +1,26 @@
+2000-03-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/paragraph.C (BeginningOfMainBody): initialize previous_char
+	and temp.
+
+	* src/lyxfunc.C (Dispatch(LFUN_MENUSEARCH)): Do the Search dialog
+	directly instead of going through a func. One very bad thing: a
+	static LyXFindReplace, but I don't know where to place it. 
+
+	* src/lyxfr1.C (GetCurrentSelectionAsString): rewritten to use a
+	string instead of char[]. Also changed to static.
+	(GetSelectionOrWordAtCursor): changed to static inline
+	(SetSelectionOverLenChars): ditto.
+
+	* src/lyxfr0.[Ch] src/lyxfr1.[Ch]: rewrite to get rid of
+	current_view and global variables. both classes has changed names
+	and LyXFindReplace is not inherited from SearchForm.
+	
+	* src/lyx_gui_misc.C (CloseAllBufferRelatedPopups): remove the
+	fl_form_search form.
+
+	* src/lyx_gui.C (create_forms): removed the fl_form_search form.
+
 2000-03-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/bind/*.bind: make sure 'buffer-previous' function is not
