@@ -1,6 +1,13 @@
+2003-01-27  Angus Leeming  <angus@localhost.localdomain>
+
+	* postats.sh (first): 
+
 2003-01-27  Angus Leeming  <leeming@lyx.org>
 
 	* postats.sh: == is a bash extension. Use =.
+	The <ul> tag does not nest inside a <p>. With this change, the
+	generated i18n.php3 file now validates as strictly conformant
+	xhtml 1.0.
 
 2003-01-27  Claus Hindsgaul  <claus_h@image.dk>
 

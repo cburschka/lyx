@@ -117,14 +117,14 @@ cat <<EOF
 	</p>
 	<p>
 		Explanation:
-		<ul>
+	</p>
+	<ul>
 		<li><i>Translated:</i> The number of translated messages</li>
 		<li><i>Fuzzy:</i> The number of fuzzy messages; these are not considered
 		    for LyX output but solely serve as a hint for the translators</li>
 		<li><i>Untranslated:</i> The number of untranslated messages; the
 		    default language (i.e., English) will be used in the LyX outputs</li>
-		</ul>
-	</p>
+	</ul>
 	<table class="center" frame="box" rules="all" border="2" cellpadding="5">
 		<thead>
 			<tr>
