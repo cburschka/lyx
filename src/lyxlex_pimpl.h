@@ -37,6 +37,8 @@ struct LyXLex::Pimpl : public noncopyable {
 	///
 	void setStream(std::istream & i);
 	///
+	void setCommentChar(char c);
+	///
 	bool next(bool esc = false);
 	///
 	int search_kw(char const * const tag) const;
@@ -66,6 +68,8 @@ struct LyXLex::Pimpl : public noncopyable {
 	int lineno;
 	///
 	string pushTok;
+	///
+	char commentChar;
 private:
 	///
 	void verifyTable();

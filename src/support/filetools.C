@@ -269,7 +269,13 @@ vector<string> const DirList( string const & dir, string const & ext)
 	// This is a non-error checking C/system implementation
 	// of the above.
 	string extension(ext);
-	if (extension[0] != '.') extension.insert(0u, 1u, '.');
+	if (extension[0] != '.')
+		// If I do not use the explicit cast below, compaq cxx
+		// is not able to guess between
+		//   insert(size_type, size_type, value_type)
+		// and
+		//   insert(iterator, size_type, value_type)		
+		extension.insert(string::size_type(0), 1u, '.');
 	vector<string> dirlist;
 	DIR * dirp = ::opendir(dir.c_str());
 	dirent * dire;

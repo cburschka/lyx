@@ -104,6 +104,11 @@ void LyXLex::setStream(istream & i)
 }
 
 
+void LyXLex::setCommentChar(char c)
+{
+	pimpl_->setCommentChar(c);
+}
+
 int LyXLex::lex()
 {
 	return pimpl_->lex();

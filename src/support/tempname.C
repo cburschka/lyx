@@ -10,6 +10,8 @@
 #include "debug.h"
 #include "filetools.h"
 
+using std::endl;
+
 extern string system_tempdir;
 
 string const lyx::tempName(string const & dir, string const & mask)

@@ -1,3 +1,18 @@
+2000-11-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/FormPreferences.C (ColoursLoadBrowser): use
+	lyxlex to parse the rgb.txt file.
+
+	* src/lyxlex.[Ch]:
+	* src/lyxlex_pimpl.[Ch]: implement setCommentChar method, to
+	replace the default '#' comment character.
+	
+	* src/support/tempname.C: add "using" directive
+	* src/frontends/ButtonPolicies.C: ditto.
+
+	* src/support/filetools.C (DirList): add an explicit cast to avoid
+	a compile error (probably not the right fix)
+
 2000-11-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/filetools.C (DirList): implement using system functions

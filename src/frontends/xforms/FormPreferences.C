@@ -39,8 +39,6 @@ using SigC::slot;
 
 using std::find;
 using std::find_if;
-using std::getline;
-using std::istream;
 using std::pair;
 using std::sort;
 using std::vector;
@@ -426,58 +424,47 @@ bool FormPreferences::inputColours( FL_OBJECT const * const ob )
 bool FormPreferences::ColoursLoadBrowser(string const & filename)
 {
 	LyXLex lex(0, 0);
-
+	lex.setCommentChar('!');
+	
 	if (!lex.setFile(filename))
 		return false;
-
-	istream & is = lex.getStream();
-	string line;
 
 	vector<RGB> cols;
 	vector<string> names;
 	
-	while (true) {
-		getline( is, line );
-		if (line.empty() )
-			break;
+	while (lex.next()) {
+		RGB col;
+		col.r = lex.GetInteger();
+		lex.next();
+		col.g = lex.GetInteger();
+		lex.next();
+		col.b = lex.GetInteger();
+		lex.EatLine();
+		string name = frontStrip(lex.GetString(), " \t");
 
-		if (line[0] != '!') {
-			RGB col;
-			string name;
+		// remove redundant entries on the fly
+		bool add = cols.empty();
+		if (!add) {
+			vector<RGB>::const_iterator it = 
+				find( cols.begin(), cols.end(), col );
+			add = (it == cols.end());
+		}
+		
+		if (add) {
+			name = lowercase( name );
+			if (name == "gray0" )   name = "black";
+			if (name == "gray100" ) name = "white";
 			
-			istringstream iss(line.c_str());
-			iss >> col.r >> col.g >> col.b;
-			while (iss.good()) {
-				string next;
-				iss >> next;
-				if (!name.empty() ) name += " ";
-				name += next;
+			if (name == "black" || name == "white") {
+				cols.insert(cols.begin(), col);
+				names.insert(names.begin(), name);
+			} else {
+				cols.push_back(col);
+				names.push_back(name);
 			}
-
-			// remove redundant entries on the fly
-			bool add = cols.empty();
-			if (!add) {
-				vector<RGB>::const_iterator it = 
-					find( cols.begin(), cols.end(), col );
-				add = (it == cols.end());
-			}
-			
-			if (add) {
-				name = lowercase( name );
-				if (name == "gray0" )   name = "black";
-				if (name == "gray100" ) name = "white";
-
-				if (name == "black" || name == "white") {
-					cols.insert(cols.begin(), col);
-					names.insert(names.begin(), name);
-				} else {
-					cols.push_back(col);
-					names.push_back(name);
-  				}
-  			}
-  		}
- 	}
-
+		}
+	}
+	
 	vector<string>::iterator sit = names.begin();
 	for (vector<RGB>::const_iterator iit = cols.begin();
 	     iit != cols.end(); ++iit, ++sit) {

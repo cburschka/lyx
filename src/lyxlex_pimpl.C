@@ -30,7 +30,7 @@ struct compare_tags {
 
 LyXLex::Pimpl::Pimpl(keyword_item * tab, int num) 
 	: is(&fb__), table(tab), no_items(num),
-	  status(0), lineno(0)
+	  status(0), lineno(0), commentChar('#')
 {
 	verifyTable();
 }
@@ -130,6 +130,11 @@ void LyXLex::Pimpl::setStream(istream & i)
 	lineno = 0;
 }
 
+void LyXLex::Pimpl::setCommentChar(char c)
+{
+	commentChar = c;
+}
+
 
 bool LyXLex::Pimpl::next(bool esc /* = false */)
 {
@@ -146,7 +151,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 		while (is && !status) {
 			is.get(cc);
 			c = cc;
-			if (c == '#') {
+			if (c == commentChar) {
 				// Read rest of line (fast :-)
 				// That is not fast... (Lgb)
 #if 1
@@ -262,7 +267,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 				continue;
 			}
 			
-			if (c == '#') {
+			if (c == commentChar) {
 				// Read rest of line (fast :-)
 				// That is still not fast... (Lgb)
 #if 1

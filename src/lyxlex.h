@@ -58,7 +58,9 @@ public:
 	std::istream & getStream();
 	/// Danger! Don't use it unless you know what you are doing.
 	void setLineNo(int l);
-	
+	/// Change the character that begins a comment. Default is '#'
+	void setCommentChar(char c);
+
 	/// returns a lex code
 	int lex();
 

@@ -21,6 +21,7 @@
 #include "ButtonPolicies.h"
 #include "debug.h"
 
+using std::endl;
 
 /// Helper function
 static inline
@@ -38,7 +39,7 @@ void nextState(ButtonPolicy::State & state,
 		       << in
 		       << " from state "
 		       << state
-		       << std::endl;
+		       << endl;
 	}
 }
 
