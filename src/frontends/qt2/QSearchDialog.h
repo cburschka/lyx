@@ -34,7 +34,7 @@ protected:
 
 private:
 	// add a string to the combo if needed
-	void QSearchDialog::remember(string const & find, QComboBox & combo);
+	void remember(string const & find, QComboBox & combo);
  
 	QSearch * form_;
 

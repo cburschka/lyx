@@ -1,3 +1,13 @@
+2002-01-25  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Dialogs.C: removed now redundant #include "QParagraph.h".
+
+	* QSearchDialog.h (remember): removed unnecessary
+	QSearchDialog qualifier.
+
+	* QTexinfo.C:
+	* QToc.C: added various using std::xyz directives.
+
 2002-01-25  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* Makefile.am:

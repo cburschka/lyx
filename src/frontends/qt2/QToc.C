@@ -28,6 +28,9 @@
 
 #include "QtLyXView.h"
  
+using std::endl;
+using std::pair;
+using std::stack;
 using std::vector;
  
 typedef Qt2CB<ControlToc, Qt2DB<QTocDialog> > base_class;

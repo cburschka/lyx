@@ -25,6 +25,8 @@
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 
+using std::vector;
+
 typedef Qt2CB<ControlTexinfo, Qt2DB<QTexinfoDialog> > base_class;
  
 QTexinfo::QTexinfo(ControlTexinfo & c)

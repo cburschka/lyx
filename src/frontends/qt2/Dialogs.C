@@ -52,7 +52,6 @@
 #include "QIndex.h"
 #include "QLog.h"
 #include "QMinipage.h"
-#include "QParagraph.h"
 #include "QPreamble.h"
 #include "QPrint.h"
 #include "QRef.h"
