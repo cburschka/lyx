@@ -445,7 +445,9 @@ void InsetMinipageMailer::string2params(string const & in,
 			return;
 	}
 
-	params.read(lex);
+	if (lex.isOK()) {
+		params.read(lex);
+	}
 }
 
 

@@ -667,9 +667,11 @@ void InsetIncludeMailer::string2params(string const & in,
 			return;
 	}
 
-	InsetInclude inset(params);	
-	inset.read(0, lex);
-	params = inset.params();
+	if (lex.isOK()) {
+		InsetInclude inset(params);	
+		inset.read(0, lex);
+		params = inset.params();
+	}
 }
 
 

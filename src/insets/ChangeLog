@@ -1,3 +1,15 @@
+2003-03-10  Angus Leeming  <leeming@lyx.org>
+
+	* insetcommand.C (string2params):
+	* insetexternal.C (string2params):
+	* insetfloat.C (string2params):
+	* insetgraphics.C (string2params):
+	* insetinclude.C (string2params):
+	* insetminipage.C (string2params):
+	* insettabular.C (string2params):
+	* insetwrap.C (string2params): cure warning message about missing
+	'\end_inset'.
+
 2003-03-09  Angus Leeming  <leeming@lyx.org>
 
 	* insettabular.[Ch]: define a new class InsetTabularMailer and use

@@ -127,7 +127,17 @@ void InsetCommandMailer::string2params(string const & in,
 		string const name = lex.getString();
 	}
 
-	params.read(lex);
+	// This is part of the inset proper that is usually swallowed
+	// by Buffer::readInset
+	if (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+		if (token != "LatexCommand")
+			return;
+	}
+	if (lex.isOK()) {
+		params.read(lex);
+	}
 }
 
 

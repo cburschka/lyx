@@ -907,9 +907,11 @@ void InsetGraphicsMailer::string2params(string const & in,
 			return;
 	}
 
-	InsetGraphics inset;	
-	inset.readInsetGraphics(lex);
-	params = inset.params();
+	if (lex.isOK()) {
+		InsetGraphics inset;	
+		inset.readInsetGraphics(lex);
+		params = inset.params();
+	}
 }
 
 

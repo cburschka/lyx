@@ -401,9 +401,11 @@ void InsetExternalMailer::string2params(string const & in,
 			return;
 	}
 
-	InsetExternal inset;	
-	inset.read(0, lex);
-	params = inset.params();
+	if (lex.isOK()) {
+		InsetExternal inset;	
+		inset.read(0, lex);
+		params = inset.params();
+	}
 }
 
 

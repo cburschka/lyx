@@ -3085,6 +3085,9 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 			return -1;
 	}
 
+	if (!lex.isOK())
+		return -1;
+
 	BufferView * const bv = inset.view();
 	Buffer const * const buffer = bv ? bv->buffer() : 0;
 	if (buffer)
