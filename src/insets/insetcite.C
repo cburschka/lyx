@@ -63,6 +63,11 @@ void InsetCitation::edit(BufferView * bv, int, int, unsigned int)
 	bv->owner()->getDialogs()->showCitation(this);
 }
 
+void InsetCitation::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
 int InsetCitation::ascii(Buffer const *, std::ostream & os, int) const
 {
         os << "[" << getContents() << "]";
@@ -96,4 +101,3 @@ void InsetCitation::validate(LaTeXFeatures & features) const
 	if (getCmdName() != "cite" && features.bufferParams().use_natbib)
 		features.natbib = true;
 }
-

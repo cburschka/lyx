@@ -42,8 +42,10 @@ public:
 	void read(Buffer const *, LyXLex & lex);
 	///
 	virtual string const getScreenLabel() const;
-        ///
+	///
 	void edit(BufferView *, int x, int y, unsigned int button);
+	///
+	void edit(BufferView * bv, bool front = true);
 	///
 	EDITABLE editable() const {
 		return IS_EDITABLE;
@@ -52,10 +54,10 @@ public:
 	bool deletable() const {
 		return false;
 	}
-        ///
-        void setCounter(int);
-        ///
-        int  getCounter() const { return counter; }
+	///
+	void setCounter(int);
+	///
+	int  getCounter() const { return counter; }
 	///
 	string const getBibLabel() const;
 	///
@@ -66,7 +68,7 @@ public:
  
 private:
 	///
-        int counter;
+	int counter;
 	///
 	Holder holder;
 	///
@@ -94,15 +96,17 @@ public:
 	Inset::Code lyxCode() const { return Inset::BIBTEX_CODE; }
 	///
 	void edit(BufferView *, int x, int y, unsigned int button);
+	///
+	void edit(BufferView * bv, bool front = true);
 	/// 
 	int latex(Buffer const *, std::ostream &,
-		  bool fragile, bool freespace) const;
+	          bool fragile, bool freespace) const;
 	///
 	std::vector<std::pair<string,string> > const getKeys(Buffer const *) const;
-        ///
-        bool addDatabase(string const &);
-        ///
-        bool delDatabase(string const &);
+	///
+	bool addDatabase(string const &);
+	///
+	bool delDatabase(string const &);
 	///
 	bool display() const { return true; } 
 	///

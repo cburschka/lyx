@@ -87,6 +87,7 @@ public:
 	virtual string const editMessage() const;
 	///
 	virtual void edit(BufferView *, int x, int y, unsigned int button);
+	virtual void edit(BufferView *, bool front = true);
 	///
 	virtual void toggleInsetCursor(BufferView *);
 	///

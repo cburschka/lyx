@@ -32,18 +32,20 @@ public:
 	virtual Inset * clone(Buffer const & buffer, bool same_id = false) const {
 		return new InsetParent(params(), buffer, same_id);
 	}
-    	///
+	///
 	string const getScreenLabel() const;
-        ///
+	///
 	EDITABLE editable() const { return IS_EDITABLE; }
-        ///
-        Inset::Code lyxCode() const { return Inset::PARENT_CODE; }
-        ///
+	///
+	Inset::Code lyxCode() const { return Inset::PARENT_CODE; }
+	///
 	void edit(BufferView *, int, int, unsigned int);
+	///
+	void edit(BufferView * bv, bool front = true);
 	/// 
 	int latex(Buffer const *, std::ostream &,
-		  bool fragile, bool free_spc) const;
-        ///
-        void setParent(string fn) { setContents(fn); }
+	          bool fragile, bool free_spc) const;
+	///
+	void setParent(string fn) { setContents(fn); }
 };
 #endif

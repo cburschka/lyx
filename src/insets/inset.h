@@ -148,6 +148,8 @@ public:
 	///
 	virtual void edit(BufferView *, int x, int y, unsigned int button);
 	///
+	virtual void edit(BufferView *, bool front = true);
+	///
 	virtual EDITABLE editable() const;
 	/// This is called when the user clicks inside an inset
 	virtual void insetButtonPress(BufferView *, int, int, int) {}
@@ -353,6 +355,8 @@ public:
 	///
 	virtual void hideInsetCursor(BufferView *);
 	///
+	virtual void fitInsetCursor(BufferView *) const;
+	///
 	virtual void getCursorPos(BufferView *, int &, int &) const {}
 	///
 	virtual void insetButtonPress(BufferView *, int x, int y, int button);
@@ -367,6 +371,8 @@ public:
 	virtual void insetUnlock(BufferView *);
 	///
 	virtual void edit(BufferView *, int x, int y, unsigned int button);
+	///
+	virtual void edit(BufferView *, bool front = true);
 	///
 	virtual void draw(BufferView *, LyXFont const &,
 			  int baseline, float & x, bool cleared) const;
@@ -423,6 +429,13 @@ public:
 	virtual void toggleSelection(BufferView *, bool /*kill_selection*/) {
 		return;
 	}
+	///
+	// needed for search/replace functionality
+	///
+	virtual bool searchForward(BufferView *, string const &,
+	                           bool const & = true, bool const & = false);
+	virtual bool searchBackward(BufferView *, string const &,
+	                            bool const & = true, bool const & = false);
 
 protected:
 	///

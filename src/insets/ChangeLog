@@ -1,3 +1,24 @@
+2001-07-20  Juergen Vigna  <jug@sad.it>
+
+	* insetcollapsable.C (update): recoded hopefully works now!
+
+2001-07-19  Juergen Vigna  <jug@sad.it>
+
+	* most files: implemented the below new introduced function.
+	
+	* inset.h: added new edit(BufferView *, bool front) method to be able
+	to enter an inset from the front/back without knowing x/y positions
+	and baselines inside the inset. So I just can tell the inset activate
+	me and set the cursor on the front/back of yourself.
+
+2001-07-18  Juergen Vigna  <jug@sad.it>
+
+	* insetcollapsable.C (edit): fixed hopefully the y parameter which
+	is givven to the InsetText.
+	(insetButtonPress): ditto
+	(insetButtonRelease): ditto
+	(insetMotionNotify): ditto
+
 2001-07-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insetspecialchar.[Ch]: change HYPHENATION_BREAK to
@@ -63,6 +84,8 @@
 
 	* insettabular.C (selectNextWord): fixed spellchecking for the
 	first cell of a tabular (wasn't entered!)
+	(getLyXText): changed to enter automatically insettext and return
+	it's LyXText if we're locked.
 
 2001-07-17  Juergen Vigna  <jug@sad.it>
 

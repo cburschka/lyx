@@ -69,6 +69,12 @@ void InsetLabel::edit(BufferView * bv, int, int, unsigned int)
 }
 
 
+void InsetLabel::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 int InsetLabel::latex(Buffer const *, ostream & os,
 		      bool /*fragile*/, bool /*fs*/) const
 {

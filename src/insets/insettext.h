@@ -107,6 +107,8 @@ public:
 	///
 	void edit(BufferView *, int, int, unsigned int);
 	///
+	void edit(BufferView *, bool front = true);
+	///
 	bool isTextInset() const { return true; }
 	///
 	bool doClearArea() const;
@@ -149,6 +151,12 @@ public:
 	unsigned int insetInInsetY();
 	///
 	void toggleInsetCursor(BufferView *);
+	///
+	void showInsetCursor(BufferView *, bool show=true);
+	///
+	void hideInsetCursor(BufferView *);
+	///
+	void fitInsetCursor(BufferView *) const;
 	///
 	bool insertInset(BufferView *, Inset *);
 	///
@@ -221,11 +229,19 @@ public:
 	void selectSelectedWord(BufferView *);
 	void toggleSelection(BufferView *, bool kill_selection);
 	///
+	bool searchForward(BufferView *, string const &,
+	                   bool const & = true, bool const & = false);
+	bool searchBackward(BufferView *, string const &,
+	                    bool const & = true, bool const & = false);
+	
+	//
+	// Public structures and variables
+	///
 	mutable int need_update;
 
 protected:
 	///
-	void updateLocal(BufferView *, int what, bool mark_dirty);
+	void updateLocal(BufferView *, int what, bool mark_dirty) const;
 	///
 	mutable int drawTextXOffset;
 	///
@@ -250,10 +266,6 @@ private:
 	typedef Cache::value_type value_type;
 	///
 	int beginningOfMainBody(Buffer const *, Paragraph * par) const;
-	///
-	void showInsetCursor(BufferView *, bool show=true);
-	///
-	void hideInsetCursor(BufferView *);
 	///
 	UpdatableInset::RESULT moveRight(BufferView *,
 					 bool activate_inset = true,
@@ -344,7 +356,7 @@ private:
 	///
 	UpdatableInset * the_locking_inset;
 	///
-	Paragraph * old_par;
+	mutable Paragraph * old_par;
 	/// The cache.
 	mutable Cache cache;
 	///

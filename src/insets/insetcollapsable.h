@@ -60,6 +60,8 @@ public:
 	///
 	void edit(BufferView *, int, int, unsigned int);
 	///
+	void edit(BufferView *, bool front = true);
+	///
 	EDITABLE editable() const;
 	///
 	bool insertInset(BufferView *, Inset * inset);
@@ -111,6 +113,13 @@ public:
 	///
 	void toggleInsetCursor(BufferView *);
 	///
+	void showInsetCursor(BufferView *, bool show = true);
+	///
+	void hideInsetCursor(BufferView *);
+	///
+	void fitInsetCursor(BufferView * bv) const {
+		inset.fitInsetCursor(bv);
+	}
 	UpdatableInset * getLockingInset() const;
 	///
 	UpdatableInset * getFirstLockingInsetOfType(Inset::Code);
@@ -165,6 +174,15 @@ public:
 	}
 	void toggleSelection(BufferView * bv, bool kill_selection) {
 		inset.toggleSelection(bv, kill_selection);
+	}
+	///
+	bool searchForward(BufferView * bv, string const & str,
+	                   bool const & cs = true, bool const & mw = false) {
+		return inset.searchForward(bv, str, cs, mw);
+	}
+	bool searchBackward(BufferView * bv, string const & str,
+	                    bool const & cs = true, bool const & mw = false) {
+		return inset.searchBackward(bv, str, cs, mw);
 	}
 
 protected:

@@ -28,6 +28,12 @@ void InsetIndex::edit(BufferView * bv, int, int, unsigned int)
 }
 
 
+void InsetIndex::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 InsetPrintIndex::InsetPrintIndex(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}

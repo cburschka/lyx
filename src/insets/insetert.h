@@ -43,15 +43,17 @@ public:
 	virtual bool insetAllowed(Inset::Code) const { return false; }
 	///
 	virtual void setFont(BufferView *, LyXFont const &,
-			     bool toggleall = false, bool selectall = false);
+	                     bool toggleall = false, bool selectall = false);
 	///
 	virtual void edit(BufferView *, int, int, unsigned int);
 	///
+	virtual void edit(BufferView * bv, bool front = true);
+	///
 	virtual int latex(Buffer const *, std::ostream &, bool fragile,
-			  bool free_spc) const;
+	                  bool free_spc) const;
 	///
 	virtual int ascii(Buffer const *,
-			  std::ostream &, int linelen = 0) const;
+	                  std::ostream &, int linelen = 0) const;
 	///
 	virtual int linuxdoc(Buffer const *, std::ostream &) const;
 	///

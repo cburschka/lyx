@@ -510,8 +510,28 @@ void InsetTabular::edit(BufferView * bv, int x, int y, unsigned int button)
 	if (insetHit(bv, x, y) && (button != 3)) {
 		activateCellInsetAbs(bv, x, y, button);
 	}
-//    UpdateLocal(bv, NONE, false);
-//    bv->getOwner()->getPopups().updateFormTabular();
+}
+
+
+void InsetTabular::edit(BufferView * bv, bool front)
+{
+	UpdatableInset::edit(bv, front);
+	
+	if (!bv->lockInset(this)) {
+		lyxerr[Debug::INSETS] << "InsetTabular::Cannot lock inset" << endl;
+		return;
+	}
+	locked = true;
+	the_locking_inset = 0;
+	inset_x = 0;
+	inset_y = 0;
+	if (front)
+		actcell = 0;
+	else
+		actcell = tabular->GetNumberOfCells() - 1;
+	sel_cell_start = sel_cell_end = actcell;
+	resetPos(bv);
+	finishUndo();
 }
 
 
@@ -1969,10 +1989,19 @@ void InsetTabular::resizeLyXText(BufferView * bv, bool force) const
 
 
 LyXText * InsetTabular::getLyXText(BufferView const * bv,
-				   bool const recursive) const
+                                   bool const recursive) const
 {
 	if (the_locking_inset)
 		return the_locking_inset->getLyXText(bv, recursive);
+#if 0
+	// if we're locked lock the actual insettext and return it's LyXText!!!
+	if (locked) {
+		UpdatableInset * inset =
+			static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
+		inset->edit(const_cast<BufferView *>(bv), 0,  0, 0);
+		return the_locking_inset->getLyXText(bv, recursive);
+	}
+#endif
 	return Inset::getLyXText(bv, recursive);
 }
 
@@ -2497,4 +2526,52 @@ void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
 	if (the_locking_inset) {
 		the_locking_inset->toggleSelection(bv, kill_selection);
 	}
+}
+
+
+bool InsetTabular::searchForward(BufferView * bv, string const & str,
+                              bool const & cs, bool const & mw)
+{
+	if (the_locking_inset) {
+		if (the_locking_inset->searchForward(bv, str, cs, mw))
+			return true;
+		if (tabular->IsLastCell(actcell)) {
+			bv->unlockInset(const_cast<InsetTabular *>(this));
+			return false;
+		}
+		++actcell;
+	}
+	nodraw(true);
+	// otherwise we have to lock the next inset and search there
+	UpdatableInset * inset =
+		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
+	inset->edit(bv);
+	bool res = searchForward(bv, str, cs, mw);
+	updateLocal(bv, NONE, false);
+	nodraw(false);
+	bv->updateInset(const_cast<InsetTabular *>(this), false);
+	return res;
+}
+
+bool InsetTabular::searchBackward(BufferView * bv, string const & str,
+                               bool const & cs, bool const & mw)
+{
+	if (the_locking_inset) {
+		if (the_locking_inset->searchBackward(bv, str, cs, mw))
+			return true;
+		if (!actcell) { // we are already in the first cell
+			bv->unlockInset(const_cast<InsetTabular *>(this));
+			return false;
+		}
+		--actcell;
+	}
+	nodraw(true);
+	// otherwise we have to lock the next inset and search there
+	UpdatableInset * inset =
+		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
+	inset->edit(bv, false);
+	bool res = searchBackward(bv, str, cs, mw);
+	nodraw(false);
+	bv->updateInset(const_cast<InsetTabular *>(this), false);
+	return res;
 }

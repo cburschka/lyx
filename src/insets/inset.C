@@ -65,6 +65,10 @@ void Inset::edit(BufferView *, int, int, unsigned int)
 {}
 
 
+void Inset::edit(BufferView *, bool)
+{}
+
+
 LyXFont const Inset::convertFont(LyXFont const & font) const
 {
 	return LyXFont(font);
@@ -150,7 +154,15 @@ void UpdatableInset::hideInsetCursor(BufferView *)
 {}
 
 
+void UpdatableInset::fitInsetCursor(BufferView *) const
+{}
+
+
 void UpdatableInset::edit(BufferView *, int, int, unsigned int)
+{}
+
+
+void UpdatableInset::edit(BufferView *, bool)
 {}
 
 
@@ -265,4 +277,20 @@ string UpdatableInset::selectNextWord(BufferView *bv, float & value) const
 	bv->unlockInset(const_cast<UpdatableInset *>(this));
 	value = 0;
 	return string();
+}
+
+bool UpdatableInset::searchForward(BufferView * bv, string const &,
+                                   bool const &, bool const &)
+{
+	// we have to unlock ourself in this function by default!
+	bv->unlockInset(const_cast<UpdatableInset *>(this));
+	return false;
+}
+
+bool UpdatableInset::searchBackward(BufferView * bv, string const &,
+                                    bool const &, bool const &)
+{
+	// we have to unlock ourself in this function by default!
+	bv->unlockInset(const_cast<UpdatableInset *>(this));
+	return false;
 }

@@ -31,11 +31,13 @@ public:
 	Inset * clone(Buffer const &, bool = false) const {
 		return new InsetFloatList(*this);
 	}
-    	///
+	///
 	string const getScreenLabel() const;
 	///
 	void edit(BufferView * bv, int, int, unsigned int);
-        ///
+	///
+	void edit(BufferView * bv, bool front = true);
+	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	bool display() const { return true; }

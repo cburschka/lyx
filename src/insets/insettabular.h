@@ -102,6 +102,8 @@ public:
 	///
 	void edit(BufferView *, int x, int y, unsigned int);
 	///
+	void edit(BufferView * bv, bool front = true);
+	///
 	bool doClearArea() const;
 	///
 	void insetUnlock(BufferView *);
@@ -213,6 +215,11 @@ public:
 	string selectNextWord(BufferView *, float & value) const;
 	void selectSelectedWord(BufferView *);
 	void toggleSelection(BufferView *, bool kill_selection);
+	///
+	bool searchForward(BufferView *, string const &,
+	                   bool const & = true, bool const & = false);
+	bool searchBackward(BufferView *, string const &,
+	                    bool const & = true, bool const & = false);
 
 	//
 	// Public structures and variables

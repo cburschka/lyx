@@ -33,8 +33,10 @@ public:
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	Inset::Code lyxCode() const { return Inset::CITE_CODE; }
-        ///
+	///
 	void edit(BufferView *, int, int, unsigned int);
+	///
+	void edit(BufferView * bv, bool front = true);
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
         ///

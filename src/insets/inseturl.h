@@ -26,7 +26,7 @@ public:
 	///
 	explicit
 	InsetUrl(InsetCommandParams const &, bool same_id = false);
-        ///
+	///
 	virtual Inset * clone(Buffer const &, bool same_id = false) const {
 		return new InsetUrl(params(), same_id);
 	}
@@ -40,11 +40,13 @@ public:
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	void edit(BufferView *, int, int, unsigned int);
-        ///
+	///
+	void edit(BufferView * bv, bool front = true);
+	///
 	bool display() const { return false; }
 	///
 	int latex(Buffer const *, std::ostream &,
-		  bool fragile, bool free_spc) const;
+	          bool fragile, bool free_spc) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///

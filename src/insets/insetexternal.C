@@ -77,6 +77,12 @@ void InsetExternal::edit(BufferView * bv,
 }
 
 
+void InsetExternal::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 void InsetExternal::write(Buffer const *, std::ostream & os) const
 {
 	os << "External " << params_.templ.lyxName << ",\"" << params_.filename 

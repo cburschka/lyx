@@ -33,6 +33,11 @@ void InsetRef::edit(BufferView * bv, int, int, unsigned int button)
 }
 
 
+void InsetRef::edit(BufferView * bv, bool)
+{
+}
+
+
 string const InsetRef::getScreenLabel() const
 {
 	string temp;

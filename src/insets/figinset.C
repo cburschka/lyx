@@ -1240,6 +1240,12 @@ void InsetFig::edit(BufferView * bv, int, int, unsigned int)
 }
 
 
+void InsetFig::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 Inset * InsetFig::clone(Buffer const & buffer, bool) const
 {
 	InsetFig * tmp = new InsetFig(100, 100, buffer);

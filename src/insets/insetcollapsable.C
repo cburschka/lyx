@@ -225,7 +225,7 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 
 
 void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
-			    unsigned int button)
+                            unsigned int button)
 {
 	UpdatableInset::edit(bv, xp, yp, button);
 
@@ -238,7 +238,30 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 	} else {
 		if (!bv->lockInset(this))
 			return;
-		inset.edit(bv, xp, yp + (top_baseline - inset.y()), button);
+		LyXFont font(LyXFont::ALL_SANE);
+		int yy = ascent(bv, font) + yp -
+		    (ascent_collapsed(bv->painter(), font) +
+		     descent_collapsed(bv->painter(), font) +
+		     inset.ascent(bv, font));
+		inset.edit(bv, xp, yy, button);
+	}
+}
+
+
+void InsetCollapsable::edit(BufferView * bv, bool front)
+{
+	UpdatableInset::edit(bv, front);
+
+	if (collapsed_) {
+		collapsed_ = false;
+		if (!bv->lockInset(this))
+			return;
+		bv->updateInset(this, false);
+		inset.edit(bv, front);
+	} else {
+		if (!bv->lockInset(this))
+			return;
+		inset.edit(bv, front);
 	}
 }
 
@@ -267,8 +290,12 @@ void InsetCollapsable::insetButtonPress(BufferView * bv, int x, int y,
 					int button)
 {
 	if (!collapsed_ && (y > button_bottom_y)) {
-		inset.insetButtonPress(bv, x, y + (top_baseline - inset.y()),
-				       button);
+		LyXFont font(LyXFont::ALL_SANE);
+		int yy = ascent(bv, font) + y -
+		    (ascent_collapsed(bv->painter(), font) +
+		     descent_collapsed(bv->painter(), font) +
+		     inset.ascent(bv, font));
+		inset.insetButtonPress(bv, x, yy, button);
 	}
 }
 
@@ -288,8 +315,12 @@ void InsetCollapsable::insetButtonRelease(BufferView * bv,
 			bv->updateInset(this, false);
 		}
 	} else if (!collapsed_ && (y > button_top_y)) {
-		inset.insetButtonRelease(bv, x, y + (top_baseline-inset.y()),
-					 button);
+		LyXFont font(LyXFont::ALL_SANE);
+		int yy = ascent(bv, font) + y -
+		    (ascent_collapsed(bv->painter(), font) +
+		     descent_collapsed(bv->painter(), font) +
+		     inset.ascent(bv, font));
+		inset.insetButtonRelease(bv, x, yy, button);
 	}
 }
 
@@ -298,8 +329,12 @@ void InsetCollapsable::insetMotionNotify(BufferView * bv,
 					 int x, int y, int state)
 {
 	if (x > button_bottom_y) {
-		inset.insetMotionNotify(bv, x, y + (top_baseline - inset.y()),
-					state);
+		LyXFont font(LyXFont::ALL_SANE);
+		int yy = ascent(bv, font) + y -
+		    (ascent_collapsed(bv->painter(), font) +
+		     descent_collapsed(bv->painter(), font) +
+		     inset.ascent(bv, font));
+		inset.insetMotionNotify(bv, x, yy, state);
 	}
 }
 
@@ -335,6 +370,7 @@ int InsetCollapsable::getMaxWidth(BufferView * bv,
 void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
 			      bool reinit)
 {
+#if 0
 	if (reinit) {
 		need_update = FULL;
 		if (owner())
@@ -359,7 +395,11 @@ void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
 			return;
 		}
 	}
-	inset.update(bv, font);
+#else
+	if (!widthCollapsed)
+		widthCollapsed = width_collapsed(bv->painter(), font);
+	inset.update(bv, font, reinit);
+#endif
 }
 
 
@@ -422,6 +462,18 @@ void InsetCollapsable::getCursorPos(BufferView * bv, int & x, int & y) const
 void InsetCollapsable::toggleInsetCursor(BufferView * bv)
 {
 	inset.toggleInsetCursor(bv);
+}
+
+
+void InsetCollapsable::showInsetCursor(BufferView * bv, bool show)
+{
+	inset.showInsetCursor(bv, show);
+}
+
+
+void InsetCollapsable::hideInsetCursor(BufferView * bv)
+{
+	inset.hideInsetCursor(bv);
 }
 
 

@@ -50,6 +50,12 @@ void InsetParent::edit(BufferView * bv, int, int, unsigned int)
 }
 
 
+void InsetParent::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 // LaTeX must just ignore this command
 int InsetParent::latex(Buffer const * buf, ostream & os,
 		       bool fragile, bool free_spc) const

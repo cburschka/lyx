@@ -89,3 +89,9 @@ void InsetError::edit(BufferView * bv, int, int, unsigned int)
 {
 	bv->owner()->getDialogs()->showError( this );
 }
+
+
+void InsetError::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}

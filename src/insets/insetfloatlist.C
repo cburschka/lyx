@@ -68,6 +68,12 @@ void InsetFloatList::edit(BufferView *, int, int, unsigned int)
 }
 
 
+void InsetFloatList::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 int InsetFloatList::latex(Buffer const *, std::ostream & os, bool, bool) const
 {
 	FloatList::const_iterator cit = floatList[float_type];

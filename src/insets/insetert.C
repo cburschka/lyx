@@ -114,6 +114,12 @@ void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 }
 
 
+void InsetERT::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 		    bool /*free_spc*/) const
 {

@@ -61,8 +61,8 @@ void FormSearch::show()
 void FormSearch::find(string const & searchstr, bool const & casesensitive,
 				bool const & matchword, bool const & searchback)
 {
-	bool found = LyXFind(lv_->view(), searchstr,	casesensitive, matchword,
-			searchback);
+	bool found = LyXFind(lv_->view(), searchstr, searchback,
+						 casesensitive, matchword);
 	
 	if (!found)
 		setMinibuffer(lv_, _("String not found!"));
@@ -73,7 +73,7 @@ void FormSearch::replace(string const & searchstr, string const & replacestr,
 			 bool const & searchback, bool const & replaceall)
 {
 	int replace_count = LyXReplace(lv_->view(), searchstr, replacestr,
-				  casesensitive, matchword, searchback,
+				  searchback, casesensitive, matchword,
 				  replaceall);
 				  
 	if (replace_count == 0) {

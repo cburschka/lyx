@@ -46,6 +46,8 @@ public:
 	///
 	virtual void edit(BufferView *, int x, int y, unsigned int button);
 	///
+	virtual void edit(BufferView * bv, bool front = true);
+	///
 	virtual EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	virtual void write(Buffer const *, std::ostream &) const;
@@ -59,7 +61,7 @@ public:
 	 is in a free-spacing paragraph.
 	 */
 	virtual int latex(Buffer const *, std::ostream &, bool fragile,
-			  bool free_spc) const;
+	                  bool free_spc) const;
 	/// write ASCII output to the ostream
 	virtual int ascii(Buffer const *, std::ostream &, int linelen) const;
 	/// write LinuxDoc output to the ostream

@@ -763,7 +763,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 							     .textclass)
 						  .defaultfont());
 		else if (layout.labeltype == LABEL_BIBLIO) {
-		       	// ale970405 Right width for bibitems
+			// ale970405 Right width for bibitems
 			x += bibitemMaxWidth(bview,textclasslist
 					     .TextClass(bview->buffer()->params
 							.textclass)
@@ -2276,9 +2276,10 @@ string const LyXText::selectNextWord(BufferView * bview,
 		cursor.par()->isInset(cursor.pos()))
 	{
 		// lock the inset!
-		cursor.par()->getInset(cursor.pos())->edit(bview, 0, 0, 0);
+		cursor.par()->getInset(cursor.pos())->edit(bview);
 		// now call us again to do the above trick
-		return selectNextWord(bview, value);
+		// but obviously we have to start from down below ;)
+		return bview->text->selectNextWord(bview, value);
 	}		
   
 	// Update the value if we changed paragraphs
@@ -3626,7 +3627,7 @@ int LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 
 // returns pointer to a specified row
 Row * LyXText::getRow(Paragraph * par,
-		      Paragraph::size_type pos, int & y) const
+                      Paragraph::size_type pos, int & y) const
 {
 	if (!firstrow)
 		return 0;

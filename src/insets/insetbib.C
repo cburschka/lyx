@@ -113,6 +113,12 @@ void InsetBibKey::edit(BufferView * bv, int, int, unsigned int)
 }
 
 
+void InsetBibKey::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 InsetBibtex::InsetBibtex(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
 {}
@@ -217,6 +223,12 @@ void InsetBibtex::edit(BufferView * bv, int, int, unsigned int)
 }
 
 
+void InsetBibtex::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 bool InsetBibtex::addDatabase(string const & db)
 {
 	string contents(getContents());
@@ -253,6 +265,7 @@ bool InsetBibtex::delDatabase(string const & db)
 int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
 {
 	int w = 0;
+#warning Ha, now we are mainly at 1.2.0 and it is still here (Jug)
 	// Does look like a hack? It is! (but will change at 0.13)
 	Paragraph * par = bv->buffer()->paragraph;
     

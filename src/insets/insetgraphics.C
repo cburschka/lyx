@@ -316,6 +316,12 @@ void InsetGraphics::edit(BufferView *bv, int, int, unsigned int)
 }
 
 
+void InsetGraphics::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 Inset::EDITABLE InsetGraphics::editable() const
 {
 	return IS_EDITABLE;

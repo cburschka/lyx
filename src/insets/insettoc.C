@@ -39,6 +39,12 @@ void InsetTOC::edit(BufferView * bv, int, int, unsigned int)
 }
 
 
+void InsetTOC::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 int InsetTOC::ascii(Buffer const * buffer, std::ostream & os, int) const
 {
 	os << getScreenLabel() << "\n\n";

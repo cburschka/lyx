@@ -29,11 +29,13 @@ public:
 	virtual Inset * clone(Buffer const &, bool same_id = false) const {
 		return new InsetTOC(params(), same_id);
 	}
-    	///
+	///
 	string const getScreenLabel() const;
 	///
 	void edit(BufferView * bv, int, int, unsigned int);
-        ///
+	///
+	void edit(BufferView * bv, bool front = true);
+	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	bool display() const { return true; }

@@ -50,6 +50,7 @@
 #include "lyxfunc.h"
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
+#include "lyxfind.h"
 
 using std::ostream;
 using std::ifstream;
@@ -540,7 +541,7 @@ void InsetText::setUpdateStatus(BufferView * bv, int what) const
 }
 
 
-void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
+void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty) const
 {
 	bool clear = false;
 	if (!lt) {
@@ -552,7 +553,7 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 	if ((need_update != CURSOR) || (lt->status() != LyXText::UNCHANGED) ||
 		lt->selection.set())
 	{
-		bv->updateInset(this, mark_dirty);
+		bv->updateInset(const_cast<InsetText *>(this), mark_dirty);
 	}
 	bv->owner()->showState();
 	if (old_par != cpar(bv)) {
@@ -572,7 +573,6 @@ string const InsetText::editMessage() const
 
 void InsetText::edit(BufferView * bv, int x, int y, unsigned int button)
 {
-//    par->SetInsetOwner(this);
 	UpdatableInset::edit(bv, x, y, button);
 	
 	if (!bv->lockInset(this)) {
@@ -595,7 +595,52 @@ void InsetText::edit(BufferView * bv, int x, int y, unsigned int button)
 	if (!checkAndActivateInset(bv, x, tmp_y, button))
 		lt->setCursorFromCoordinates(bv, x - drawTextXOffset,
 		                            y + insetAscent);
-	lt->selection.cursor = lt->cursor;
+	lt->clearSelection(bv);
+	finishUndo();
+	showInsetCursor(bv);
+	updateLocal(bv, CURSOR, false);
+
+	// If the inset is empty set the language of the current font to the
+	// language to the surronding text (if different).
+	if (par->size() == 0 && !par->next() &&
+		bv->getParentLanguage(this) != lt->current_font.language()) {
+		LyXFont font(LyXFont::ALL_IGNORE);
+		font.setLanguage(bv->getParentLanguage(this));
+		setFont(bv, font, false);
+	}
+	if (clear)
+		lt = 0;
+}
+
+
+void InsetText::edit(BufferView * bv, bool front)
+{
+	UpdatableInset::edit(bv, front);
+	
+	if (!bv->lockInset(this)) {
+		lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
+		return;
+	}
+	locked = true;
+	the_locking_inset = 0;
+	inset_pos = inset_x = inset_y = 0;
+	inset_boundary = false;
+	inset_par = 0;
+	old_par = 0;
+	bool clear = false;
+	if (!lt) {
+		lt = getLyXText(bv);
+		clear = true;
+	}
+	if (front)
+		lt->setCursor(bv, par, 0);
+	else {
+		Paragraph * p = par;
+		while(p->next())
+			p = p->next();
+		lt->setCursor(bv, p, p->size()-1);
+	}
+	lt->clearSelection(bv);
 	finishUndo();
 	showInsetCursor(bv);
 	updateLocal(bv, CURSOR, false);
@@ -1308,7 +1353,7 @@ void InsetText::toggleInsetCursor(BufferView * bv)
 void InsetText::showInsetCursor(BufferView * bv, bool show)
 {
 	if (the_locking_inset) {
-		the_locking_inset->showInsetCursor(bv);
+		the_locking_inset->showInsetCursor(bv, show);
 		return;
 	}
 	if (!isCursorVisible()) {
@@ -1334,6 +1379,22 @@ void InsetText::hideInsetCursor(BufferView * bv)
 	}
 	if (the_locking_inset)
 		the_locking_inset->hideInsetCursor(bv);
+}
+
+
+void InsetText::fitInsetCursor(BufferView * bv) const
+{
+	if (the_locking_inset) {
+		the_locking_inset->fitInsetCursor(bv);
+		return;
+	}
+	LyXFont const font =
+		getLyXText(bv)->getFont(bv->buffer(), cpar(bv), cpos(bv));
+	
+	int const asc = lyxfont::maxAscent(font);
+	int const desc = lyxfont::maxDescent(font);
+
+	bv->fitLockedInsetCursor(cx(bv), cy(bv), asc, desc);
 }
 
 
@@ -1791,24 +1852,27 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	}
 	lyx::Assert(it->second.text.get());
 
-	deleteLyXText(bv, (the_locking_inset == 0) || force);
-
-	if (bv->screen()) {
-			LyXText * t = getLyXText(bv);
-			t->first = bv->screen()->topCursorVisible(t);
+	LyXText * t = it->second.text.get();
+	saveLyXTextState(t);
+	for (Paragraph * p = par; p; p = p->next()) {
+		p->resizeInsetsLyXText(bv);
 	}
-	
-	// this will scroll the screen such that the cursor becomes visible 
-	bv->updateScrollbar();
+	t->init(bv, true);
+	restoreLyXTextState(bv, t);
 	if (the_locking_inset) {
-		/// then resize all LyXText in text-insets
 		inset_x = cx(bv) - top_x + drawTextXOffset;
 		inset_y = cy(bv) + drawTextYOffset;
-		for (Paragraph * p = par; p; p = p->next()) {
-			p->resizeInsetsLyXText(bv);
-		}
 	}
-	need_update = FULL;
+
+	if (bv->screen()) {
+			t->first = bv->screen()->topCursorVisible(t);
+	}
+	if (!owner())
+		updateLocal(bv, FULL, false);
+	else
+		need_update = FULL;
+	// this will scroll the screen such that the cursor becomes visible 
+	bv->updateScrollbar();
 }
 
 
@@ -2026,7 +2090,38 @@ void InsetText::toggleSelection(BufferView * bv, bool kill_selection)
 	if (y_offset < 0)
 		y_offset = y;
 	
+	if (need_update & SELECTION)
+		need_update = NONE;
 	bv->screen()->toggleSelection(lt, bv, kill_selection, y_offset, x);
 	if (clear)
 		lt = 0;
+}
+
+
+bool InsetText::searchForward(BufferView * bv, string const & str,
+                              bool const & cs, bool const & mw)
+{
+	if (the_locking_inset)
+		if (the_locking_inset->searchForward(bv, str, cs, mw))
+			return true;
+	if (LyXFind(bv, str, true, true, cs , mw)) {
+		return true;
+	}
+	// we have to unlock ourself in this function by default!
+	bv->unlockInset(const_cast<InsetText *>(this));
+	return false;
+}
+
+bool InsetText::searchBackward(BufferView * bv, string const & str,
+                               bool const & cs, bool const & mw)
+{
+	if (the_locking_inset)
+		if (the_locking_inset->searchBackward(bv, str, cs, mw))
+			return true;
+	if (LyXFind(bv, str, false, true, cs, mw)) {
+		return true;
+	}
+	// we have to unlock ourself in this function by default!
+	bv->unlockInset(const_cast<InsetText *>(this));
+	return false;
 }

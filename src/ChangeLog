@@ -1,3 +1,29 @@
+2001-07-20  Juergen Vigna  <jug@sad.it>
+
+	* lyxfunc.C (dispatch): use always LyXFind now!
+
+	* text2.C (init): add a reinit flag so that the LyXText can be
+	reinited instead of deleted and reallocated (used in InsetText).
+
+	* BufferView_pimpl.C: use the new Inset::edit(BV, bool) where needed.
+
+	* text.C: ditto
+
+	* text2.C: ditto
+
+2001-07-18  Juergen Vigna  <jug@sad.it>
+
+	* text.C (selectNextWord): handle insets inside inset by calling
+	always the bv->text functions so that we can go up the_locking_inset!
+
+	* BufferView_pimpl.C (show/hideCursor): fixed cursor showing up
+	in strange locations when inside an inset!
+
+	* lyxfind.[Ch]: give all functions a LyXText * parameter and implement
+	handling to include insets.
+
+	* lyxfunc.C (dispatch): changes to calls SearchBackward/Forward.
+
 2001-07-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* LyXAction.C (init): 

@@ -329,7 +329,7 @@ void InsetMinipage::width(string const & ll)
 bool InsetMinipage::showInsetDialog(BufferView * bv) const
 {
 	if (!inset.showInsetDialog(bv))
-	bv->owner()->getDialogs()->showMinipage(const_cast<InsetMinipage *>(this));
+		bv->owner()->getDialogs()->showMinipage(const_cast<InsetMinipage *>(this));
 	return true;
 }
 
@@ -338,8 +338,8 @@ void InsetMinipage::insetButtonRelease(BufferView * bv, int x, int y,
 				       int button)
 {
 	if (button == 3) {
-	showInsetDialog(bv);
-	return;
+		showInsetDialog(bv);
+		return;
 	}
 	InsetCollapsable::insetButtonRelease(bv, x, y, button);
 }
@@ -349,7 +349,7 @@ int InsetMinipage::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 	const
 {
 	if (!width_.empty())
-	return VSpace(width_).inPixels(bv);
+		return VSpace(width_).inPixels(bv);
 	// this should not happen!
 	return InsetCollapsable::getMaxWidth(bv, inset);
 }

@@ -256,9 +256,16 @@ bool BufferView::Pimpl::fitCursor(LyXText * text)
 {
 	lyx::Assert(screen_.get());
 
-	bv_->owner()->getDialogs()->updateParagraph();
+	bool ret;
 
-	bool const ret = screen_->fitCursor(text, bv_);
+	if (bv_->theLockingInset()) {
+		bv_->theLockingInset()->fitInsetCursor(bv_);
+		ret = true;
+	} else {
+		ret = screen_->fitCursor(text, bv_);
+	}
+
+	bv_->owner()->getDialogs()->updateParagraph();
 	if (ret)
 	    updateScrollbar();
 	return ret;
@@ -1004,14 +1011,15 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 	text->fullRebreak(bv_);
 
 	if (text->inset_owner) {
-	    text->inset_owner->setUpdateStatus(bv_, InsetText::NONE);
+		text->inset_owner->setUpdateStatus(bv_, InsetText::NONE);
 	    updateInset(text->inset_owner, true);
-	} else
+	} else {
 	    update();
-
+	}
+		
 	if ((f & FITCUR)) {
 		fitCursor(text);
-      	}
+	}
 
 	if ((f & CHANGE)) {
 		buffer_->markDirty();
@@ -1252,15 +1260,23 @@ bool BufferView::Pimpl::belowMouse() const
 
 void BufferView::Pimpl::showCursor()
 {
-	if (screen_.get())
-		screen_->showCursor(bv_->text, bv_);
+	if (screen_.get()) {
+		if (bv_->theLockingInset())
+			bv_->theLockingInset()->showInsetCursor(bv_);
+		else
+			screen_->showCursor(bv_->text, bv_);
+	}
 }
 
 
 void BufferView::Pimpl::hideCursor()
 {
-	if (screen_.get())
-		screen_->hideCursor();
+	if (screen_.get()) {
+		if (!bv_->theLockingInset())
+//			bv_->theLockingInset()->hideInsetCursor(bv_);
+//		else
+			screen_->hideCursor();
+	}
 }
 
 
@@ -1467,7 +1483,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		} else {
 			// this is need because you don't use a inset->Edit()
 			updateInset(new_inset, true);
-			new_inset->edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_);
 		}
 		break;
 	}
@@ -1814,15 +1830,10 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		    && lt->cursor.par()->getInset(lt->cursor.pos())->editable() == Inset::HIGHLY_EDITABLE){
 			Inset * tmpinset = lt->cursor.par()->getInset(lt->cursor.pos());
 			owner_->getLyXFunc()->setMessage(tmpinset->editMessage());
-			int y = 0;
-			if (is_rtl) {
-				LyXFont const font = 
-					lt->getFont(buffer_,
-						    lt->cursor.par(),
-						    lt->cursor.pos());	
-				y = tmpinset->descent(bv_,font);
-			}
-			tmpinset->edit(bv_, 0, y, 0);
+			if (is_rtl)
+				tmpinset->edit(bv_, false);
+			else
+				tmpinset->edit(bv_);
 			break;
 		}
 		if (!is_rtl)
@@ -1855,15 +1866,10 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		{
 			Inset * tmpinset = lt->cursor.par()->getInset(lt->cursor.pos());
 			owner_->getLyXFunc()->setMessage(tmpinset->editMessage());
-			LyXFont const font = lt->getFont(buffer_,
-							 lt->cursor.par(),
-							 lt->cursor.pos());
-			int y = is_rtl ? 0 
-				: tmpinset->descent(bv_,font);
-			tmpinset->edit(bv_,
-				       tmpinset->x() +
-				       tmpinset->width(bv_,font),
-				       y, 0);
+			if (is_rtl)
+				tmpinset->edit(bv_);
+			else
+				tmpinset->edit(bv_, false);
 			break;
 		}
 		if  (is_rtl)
@@ -2686,7 +2692,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetText * new_inset = new InsetText;
 		if (insertInset(new_inset))
-			new_inset->edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_);
 		else
 			delete new_inset;
 	}
@@ -2696,7 +2702,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetERT * new_inset = new InsetERT;
 		if (insertInset(new_inset))
-			new_inset->edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_);
 		else
 			delete new_inset;
 	}
@@ -2706,7 +2712,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetExternal * new_inset = new InsetExternal;
 		if (insertInset(new_inset))
-			new_inset->edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_);
 		else
 			delete new_inset;
 	}
@@ -2716,7 +2722,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetFoot * new_inset = new InsetFoot;
 		if (insertInset(new_inset))
-			new_inset->edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_);
 		else
 			delete new_inset;
 	}
@@ -2726,7 +2732,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetMarginal * new_inset = new InsetMarginal;
 		if (insertInset(new_inset))
-			new_inset->edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_);
 		else
 			delete new_inset;
 	}
@@ -2736,7 +2742,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetMinipage * new_inset = new InsetMinipage;
 		if (insertInset(new_inset))
-			new_inset->edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_);
 		else
 			delete new_inset;
 	}
@@ -2748,7 +2754,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (floatList.typeExist(argument)) {
 			InsetFloat * new_inset = new InsetFloat(argument);
 			if (insertInset(new_inset))
-				new_inset->edit(bv_, 0, 0, 0);
+				new_inset->edit(bv_);
 			else
 				delete new_inset;
 		} else {
@@ -2766,7 +2772,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			InsetFloat * new_inset = new InsetFloat(argument);
 			new_inset->wide(true);
 			if (insertInset(new_inset))
-				new_inset->edit(bv_, 0, 0, 0);
+				new_inset->edit(bv_);
 			else
 				delete new_inset;
 		} else {
@@ -2781,7 +2787,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetList * new_inset = new InsetList;
 		if (insertInset(new_inset))
-			new_inset->edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_);
 		else
 			delete new_inset;
 	}
@@ -2791,7 +2797,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		InsetTheorem * new_inset = new InsetTheorem;
 		if (insertInset(new_inset))
-			new_inset->edit(bv_, 0, 0, 0);
+			new_inset->edit(bv_);
 		else
 			delete new_inset;
 	}
@@ -2809,7 +2815,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			new_inset->setDrawFrame(0, InsetText::LOCKED);
 			new_inset->setFrameColor(0, LColor::captionframe);
 			if (insertInset(new_inset))
-				new_inset->edit(bv_, 0, 0, 0);
+				new_inset->edit(bv_);
 			else
 				delete new_inset;
 		}
@@ -2980,7 +2986,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 		if (insertInset(inset)) {
 			if (argument.empty())
-				inset->edit(bv_, 0, 0, 0);
+				inset->edit(bv_);
 		} else
 			delete inset;
 	}
@@ -3263,6 +3269,7 @@ void BufferView::Pimpl::protectedBlank(LyXText * lt)
 	}
 }
 
+
 void BufferView::Pimpl::specialChar(InsetSpecialChar::Kind kind)
 {
 	if (available()) {
@@ -3281,7 +3288,7 @@ void BufferView::Pimpl::insertNote()
 {
 	Inset * inset = new InsetNote;
 	insertInset(inset);
-	inset->edit(bv_, 0, 0, 0);
+	inset->edit(bv_);
 }
 
 
@@ -3296,11 +3303,7 @@ bool BufferView::Pimpl::open_new_inset(UpdatableInset * new_inset, bool behind)
 		delete new_inset;
 		return false;
 	}
-	if (behind) {
-		LyXFont & font = lt->real_current_font;
-		new_inset->edit(bv_, new_inset->width(bv_, font), 0, 0);
-	} else
-		new_inset->edit(bv_, 0, 0, 0);
+	new_inset->edit(bv_, !behind);
 	return true;
 }
 

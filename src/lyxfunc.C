@@ -918,34 +918,11 @@ string const LyXFunc::dispatch(int ac,
 		} else {
 			searched_string = last_search;
 		}
-
-		if (!searched_string.empty() &&
-		    ((action == LFUN_WORDFINDBACKWARD) ? 
-		     SearchBackward(owner->view(), searched_string) :
-		     SearchForward(owner->view(), searched_string))) {
-
-			// ??? What is that ???
-			owner->view()->update(TEXT(), BufferView::SELECT|BufferView::FITCUR);
-
-			// ??? Needed ???
-			// clear the selection (if there is any) 
-			owner->view()->toggleSelection();
-			TEXT()->clearSelection(owner->view());
-
-			// Move cursor so that successive C-s 's will not stand in place. 
-			if (action == LFUN_WORDFINDFORWARD ) 
-				TEXT()->cursorRightOneWord(owner->view());
-			finishUndo();
-			moveCursorUpdate(true, false);
-
-			// ??? Needed ???
-			// set the new selection 
-			// SetSelectionOverLenChars(owner->view()->currentBuffer()->text, iLenSelected);
-			owner->view()->toggleSelection(false);
+		bool fw = (action == LFUN_WORDFINDBACKWARD);
+		if (!searched_string.empty()) {
+			LyXFind(owner->view(), searched_string, fw);
 		}
-	 
-		// REMOVED : if (owner->view()->getWorkArea()->focus)
-		owner->view()->showCursor();
+//		owner->view()->showCursor();
 	}
 	break;
 		

@@ -65,9 +65,21 @@ LyXText::LyXText(InsetText * inset)
 	   copylayouttype(0)
 {}
 
-void LyXText::init(BufferView * bview)
+void LyXText::init(BufferView * bview, bool reinit)
 {
-	if (firstrow)
+	if (reinit) {
+		// Delete all rows, this does not touch the paragraphs!
+		Row * tmprow = firstrow;
+		while (firstrow) {
+			tmprow = firstrow->next();
+			delete firstrow;
+			firstrow = tmprow;
+		}
+		lastrow = refresh_row = need_break_row = 0;
+		width = height = copylayouttype = 0;
+		number_of_rows = first = refresh_y = 0;
+		status_ = LyXText::UNCHANGED;
+	} else if (firstrow)
 		return;
 
 	Paragraph * par = ownerParagraph();
@@ -271,7 +283,7 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 // inserts a new row behind the specified row, increments
 // the touched counters
 void LyXText::insertRow(Row * row, Paragraph * par,
-			Paragraph::size_type pos) const
+                        Paragraph::size_type pos) const
 {
 	Row * tmprow = new Row;
 	if (!row) {
@@ -343,10 +355,10 @@ void LyXText::removeParagraph(Row * row) const
 
 // insert the specified paragraph behind the specified row
 void LyXText::insertParagraph(BufferView * bview, Paragraph * par,
-			      Row * row) const
+                              Row * row) const
 {
-	insertRow(row, par, 0);	       /* insert a new row, starting 
-					* at postition 0 */
+	insertRow(row, par, 0);            /* insert a new row, starting 
+	                                    * at postition 0 */
 
 	setCounter(bview->buffer(), par);  // set the counters
    
@@ -363,7 +375,7 @@ void LyXText::insertParagraph(BufferView * bview, Paragraph * par,
 Inset * LyXText::getInset() const
 {
 	Inset * inset = 0;
-     	if (cursor.pos() == 0 && cursor.par()->bibkey){
+	if (cursor.pos() == 0 && cursor.par()->bibkey) {
 		inset =	cursor.par()->bibkey;
 	} else if (cursor.pos() < cursor.par()->size() 
 		   && cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET) {
@@ -953,7 +965,7 @@ void LyXText::clearSelection(BufferView * /*bview*/) const
 {
 	selection.set(false);
 	selection.mark(false);
-	selection.end = selection.start = cursor;
+	selection.end = selection.start = selection.cursor = cursor;
 }
 
 

@@ -26,6 +26,12 @@ void InsetUrl::edit(BufferView * bv, int, int, unsigned int)
 }
 
 
+void InsetUrl::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 string const InsetUrl::getScreenLabel() const
 {
 	string temp;

@@ -63,7 +63,7 @@ public:
 	/// Destructor
 	~LyXText();
 
-	void init(BufferView *);
+	void init(BufferView *, bool reinit = false);
 	///
 	mutable int number_of_rows;
 	///

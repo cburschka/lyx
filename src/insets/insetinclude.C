@@ -127,6 +127,12 @@ void InsetInclude::edit(BufferView * bv, int, int, unsigned int)
 }
 
 
+void InsetInclude::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, 0);
+}
+
+
 void InsetInclude::write(Buffer const *, ostream & os) const
 {
 	os << "Include " << params_.cparams.getCommand() << "\n";

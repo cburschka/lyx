@@ -36,6 +36,8 @@ public:
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	void edit(BufferView *, int, int, unsigned int);
+	///
+	void edit(BufferView * bv, bool front = true);
 };
 
 
@@ -51,6 +53,8 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	void edit(BufferView *, int, int, unsigned int) {}
+	///
+	void edit(BufferView * bv, bool front = true) {}
 	///
 	EDITABLE editable() const{ return NOT_EDITABLE; }
 	///

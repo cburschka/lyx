@@ -59,6 +59,8 @@ public:
 	///
 	void edit(BufferView *, int, int, unsigned int);
 	///
+	void edit(BufferView * bv, bool front = true);
+	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
 	Inset * clone(Buffer const &, bool same_id = false) const {

@@ -53,6 +53,8 @@ public:
 	///
 	void edit(BufferView *, int, int, unsigned int);
 	///
+	void edit(BufferView * bv, bool front = true);
+	///
 	EDITABLE editable() const;
 	///
 	bool deletable() const;

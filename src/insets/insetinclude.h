@@ -79,17 +79,19 @@ public:
 	///
 	void edit(BufferView *, int x, int y, unsigned int button);
 	///
+	void edit(BufferView * bv, bool front = true);
+	///
 	EDITABLE editable() const
 	{
 		return IS_EDITABLE;
 	}
-        /// With lyx3 we won't overload these 3 methods
-        void write(Buffer const *, std::ostream &) const;
-        ///
+	/// With lyx3 we won't overload these 3 methods
+	void write(Buffer const *, std::ostream &) const;
+	///
 	void read(Buffer const *, LyXLex &);
 	///
 	int latex(Buffer const *, std::ostream &,
-		  bool fragile, bool free_spc) const;
+	          bool fragile, bool free_spc) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
