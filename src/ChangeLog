@@ -1,5 +1,13 @@
 2002-01-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* tabular.C (Validate): remove broken optimization (fixes bug #201)
+
+	* paragraph.C (startTeXParParams): 
+	(endTeXParParams): new methods. The LaTeX code to
+	start/end paragraph formatting
+	(simpleTeXOnePar): call startTeXParParams also when paragraph is
+	empty (fixes bug #200)
+
 	* vspace.C (inPixels): adapt to the change below
 	(inPixels): [later] more cleanups (remove unused variables)
 

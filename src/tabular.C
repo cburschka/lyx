@@ -2653,7 +2653,7 @@ void LyXTabular::Validate(LaTeXFeatures & features) const
 		features.require("longtable");
 	if (NeedRotating())
 		features.require("rotating");
-	for (int cell = 0; !features.isRequired("array") && (cell < numberofcells); ++cell) {
+	for (int cell = 0; cell < numberofcells; ++cell) {
 		if (GetVAlignment(cell) != LYX_VALIGN_TOP)
 			features.require("array");
 		GetCellInset(cell)->validate(features);

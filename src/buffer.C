@@ -2545,15 +2545,15 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 		if ((in == 0) || !in->forceDefaultParagraphs(in)) {
 			LyXLayout const & layout =
 				textclasslist.Style(params.textclass, par->layout);
-	    
-	        if (layout.intitle) {
+			
+			if (layout.intitle) {
 				if (already_title) {
 					lyxerr <<"Error in latexParagraphs: You"
 						" should not mix title layouts"
 						" with normal ones." << endl;
 				} else
 					was_title = true;
-	        } else if (was_title && !already_title) {
+			} else if (was_title && !already_title) {
 				ofs << "\\maketitle\n";
 				texrow.newline();
 				already_title = true;

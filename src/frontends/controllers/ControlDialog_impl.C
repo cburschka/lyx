@@ -18,5 +18,5 @@ ControlDialogBD::ControlDialogBD(LyXView & lv, Dialogs & d)
 
 
 ControlDialogBI::ControlDialogBI(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBD>(lv, d)
+	: ControlDialog<ControlConnectBI>(lv, d)
 {}

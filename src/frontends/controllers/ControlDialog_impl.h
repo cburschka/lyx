@@ -28,7 +28,7 @@ public:
 };
 
 
-class ControlDialogBI : public ControlDialog<ControlConnectBD>
+class ControlDialogBI : public ControlDialog<ControlConnectBI>
 {
 public:
 	///

@@ -894,7 +894,7 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 		
 		// copy everything behind the break-position
 		// to the new paragraph
-		pos_type pos_end = pimpl_->size() - 1;
+		pos_type pos_end = size() - 1;
 		pos_type i = pos;
 		pos_type j = pos;
 		for (; i <= pos_end; ++i) {
@@ -970,7 +970,7 @@ void Paragraph::breakParagraphConservative(BufferParams const & bparams,
 	if (size() > pos) {
 		// copy everything behind the break-position to the new
 		// paragraph
-		pos_type pos_end = pimpl_->size() - 1;
+		pos_type pos_end = size() - 1;
 
 		//pos_type i = pos;
 		//pos_type j = pos;
@@ -1440,6 +1440,88 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	return next_;
 }
 
+// This could go to ParagraphParameters if we want to
+int Paragraph::startTeXParParams(BufferParams const & bparams,
+				 ostream & os) const
+{
+	int column = 0;
+	
+	if (params().noindent()) {
+		os << "\\noindent ";
+		column += 10;
+	}
+			
+	switch (params().align()) {
+	case LYX_ALIGN_NONE:
+	case LYX_ALIGN_BLOCK:
+	case LYX_ALIGN_LAYOUT:
+	case LYX_ALIGN_SPECIAL:
+		break;
+	case LYX_ALIGN_LEFT:
+		if (getParLanguage(bparams)->babel() != "hebrew") {
+			os << "\\begin{flushleft}";
+			column += 17;
+		} else {
+			os << "\\begin{flushright}";
+			column += 18;
+		}
+		break;
+	case LYX_ALIGN_RIGHT:
+		if (getParLanguage(bparams)->babel() != "hebrew") {
+			os << "\\begin{flushright}";
+			column += 18;
+		} else {
+			os << "\\begin{flushleft}";
+			column += 17;
+		}
+		break;
+	case LYX_ALIGN_CENTER:
+		os << "\\begin{center}";
+		column += 14;
+		break;
+	}
+	
+	return column;
+}
+
+// This could go to ParagraphParameters if we want to
+int Paragraph::endTeXParParams(BufferParams const & bparams,
+			       ostream & os) const
+{
+	int column = 0;
+	
+	switch (params().align()) {
+	case LYX_ALIGN_NONE:
+	case LYX_ALIGN_BLOCK:
+	case LYX_ALIGN_LAYOUT:
+	case LYX_ALIGN_SPECIAL:
+		break;
+	case LYX_ALIGN_LEFT:
+		if (getParLanguage(bparams)->babel() != "hebrew") {
+			os << "\\end{flushleft}";
+			column = 15;
+		} else {
+			os << "\\end{flushright}";
+			column = 16;
+		}
+		break;
+	case LYX_ALIGN_RIGHT:
+		if (getParLanguage(bparams)->babel() != "hebrew") {
+			os << "\\end{flushright}";
+			column+= 16;
+		} else {
+			os << "\\end{flushleft}";
+			column = 15;
+		}
+		break;
+	case LYX_ALIGN_CENTER:
+		os << "\\end{center}";
+		column = 12;
+		break;
+	}
+	return column;
+}
+
 
 // This one spits out the text of the paragraph
 bool Paragraph::simpleTeXOnePar(Buffer const * buf,
@@ -1485,13 +1567,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		basefont = getLayoutFont(bparams);
 	}
 
-	if (main_body >= 0 && !pimpl_->size()) {
-		if (style.isCommand()) {
-			os << '{';
-			++column;
-		}
-	}
-
 	moving_arg |= style.needprotect;
  
 	// Which font is currently active?
@@ -1500,6 +1575,17 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	bool open_font = false;
 
 	texrow.start(this, 0);
+
+	// if the paragraph is empty, the loop will not be entered at all
+	if (!size()) {
+		if (style.isCommand()) {
+			os << '{';
+			++column;
+		}
+		if (!asdefault)
+			column += startTeXParParams(bparams, os);
+
+	}
 
 	for (pos_type i = 0; i < size(); ++i) {
 		++column;
@@ -1519,45 +1605,11 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 				os << '{';
 				++column;
 			}
-
-			if (!asdefault) {
-				if (params().noindent()) {
-					os << "\\noindent ";
-					column += 10;
-				}
 			
-				switch (params().align()) {
-				case LYX_ALIGN_NONE:
-				case LYX_ALIGN_BLOCK:
-				case LYX_ALIGN_LAYOUT:
-				case LYX_ALIGN_SPECIAL:
-					break;
-				case LYX_ALIGN_LEFT:
-					if (getParLanguage(bparams)->babel() != "hebrew") {
-						os << "\\begin{flushleft}";
-						column += 17;
-					} else {
-						os << "\\begin{flushright}";
-						column += 18;
-					}
-					break;
-				case LYX_ALIGN_RIGHT:
-					if (getParLanguage(bparams)->babel() != "hebrew") {
-						os << "\\begin{flushright}";
-						column += 18;
-					} else {
-						os << "\\begin{flushleft}";
-						column += 17;
-					}
-					break;
-				case LYX_ALIGN_CENTER:
-					os << "\\begin{center}";
-					column += 14;
-					break;
-				}
-			}
+			if (!asdefault)
+				column += startTeXParParams(bparams, os);
 		}
-
+		
 		value_type c = getChar(i);
 
 		// Fully instantiated font
@@ -1663,35 +1715,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	}
 
 	if (!asdefault) {
-		switch (params().align()) {
-		case LYX_ALIGN_NONE:
-		case LYX_ALIGN_BLOCK:
-		case LYX_ALIGN_LAYOUT:
-		case LYX_ALIGN_SPECIAL:
-			break;
-		case LYX_ALIGN_LEFT:
-			if (getParLanguage(bparams)->babel() != "hebrew") {
-				os << "\\end{flushleft}";
-				column+= 15;
-			} else {
-				os << "\\end{flushright}";
-				column+= 16;
-			}
-			break;
-		case LYX_ALIGN_RIGHT:
-			if (getParLanguage(bparams)->babel() != "hebrew") {
-				os << "\\end{flushright}";
-				column+= 16;
-			} else {
-				os << "\\end{flushleft}";
-				column+= 15;
-			}
-			break;
-		case LYX_ALIGN_CENTER:
-			os << "\\end{center}";
-			column+= 12;
-			break;
-		}
+		column += endTeXParParams(bparams, os);
 	}
 
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...done " << this << endl;
