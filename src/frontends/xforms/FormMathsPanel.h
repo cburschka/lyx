@@ -37,7 +37,6 @@ struct FD_maths_panel;
  */
 class FormMathsPanel : public FormBaseBD {
 public:
-	friend void gui_ShowMathPanel(LyXView &, Dialogs &);
 	///
 	FormMathsPanel(LyXView *, Dialogs *);
 	///

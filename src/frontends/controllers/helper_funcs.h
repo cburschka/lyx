@@ -15,11 +15,14 @@
 #ifndef HELPERFUNCS_H
 #define HELPERFUNCS_H
 
-#include <utility> // pair
-
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include "LString.h"
+
+#include <utility> // pair
+#include <vector> // pair
 
 class LyXView;
 

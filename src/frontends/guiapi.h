@@ -11,7 +11,6 @@ class InsetExternal;
 class InsetFloat;
 class InsetGraphics;
 class InsetInclude;
-class InsetInfo;
 class InsetMinipage;
 class InsetTabular;
 
@@ -36,7 +35,6 @@ extern "C" {
 	void gui_ShowInclude(InsetInclude *, LyXView & lv, Dialogs & d);
 	void gui_ShowIndex(InsetCommand *, LyXView & lv, Dialogs & d);
 	void gui_CreateIndex(LyXView & lv, Dialogs & d);
-	void gui_ShowInfo(InsetInfo *, LyXView & lv, Dialogs & d);
 	void gui_ShowLogFile(LyXView & lv, Dialogs & d);
 	void gui_ShowMathPanel(LyXView & lv, Dialogs & d);
 	void gui_ShowMinipage(InsetMinipage *, LyXView & lv, Dialogs & d);

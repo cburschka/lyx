@@ -50,7 +50,6 @@ struct FD_preferences_spelloptions;
  */
 class FormPreferences : public FormBaseBI {
 public:
-	friend void gui_ShowPreferences(LyXView &, Dialogs &);
 	///
 	FormPreferences(LyXView &, Dialogs &);
 

@@ -14,12 +14,17 @@
 
 #include "FormPreferences.h"
 #include "forms/form_preferences.h"
-#include "Dialogs.h"
+
+#include "combox.h"
+#include "Color.h"
+#include "input_validators.h"
+#include "forms_gettext.h"
+#include "xforms_helpers.h"
+#include "helper_funcs.h"
 
 #include "buffer.h"
 #include "converter.h"
 #include "debug.h"
-#include "frontends/LyXView.h"
 #include "language.h"
 #include "frnt_lang.h"
 #include "lyxlex.h"
@@ -28,12 +33,8 @@
 #include "Lsstream.h"
 #include "funcrequest.h"
 
-#include "combox.h"
-#include "Color.h"
-#include "input_validators.h"
-#include "forms_gettext.h"
-#include "xforms_helpers.h"
-#include "helper_funcs.h"
+#include "frontends/LyXView.h"
+#include "frontends/Dialogs.h"
 
 #include "support/lyxfunctional.h"
 #include "support/lyxmanip.h"

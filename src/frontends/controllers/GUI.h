@@ -12,12 +12,13 @@
 
 #include "ButtonController.h"
 
+#include <boost/utility.hpp>
 
 /** This class makes a whole out of the disparate parts of a dialog.
  */
 template <typename Controller, typename GUIview,
 	  typename Policy,     typename GUIbc>
-class GUI {
+class GUI : boost::noncopyable {
 public:
 	///
 	GUI(LyXView & lv, Dialogs & d);

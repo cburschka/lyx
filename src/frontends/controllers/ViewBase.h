@@ -16,10 +16,12 @@
 
 #include "support/LAssert.h"
 
+#include <boost/utility.hpp>
+
 class ControlButtons;
 
 
-class ViewBase {
+class ViewBase : boost::noncopyable {
 public:
 	///
 	ViewBase() : controller_ptr_(0) {}

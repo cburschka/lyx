@@ -5,7 +5,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author John Levon, moz@compsoc.man.ac.uk
- * \author Angus Leeming, a.leeming@.ac.uk
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #include <config.h>
@@ -15,13 +15,16 @@
 #endif
 
 #include "ControlInclude.h"
-#include "Alert.h"
-#include "BufferView.h"
-#include "lyxfunc.h"
-#include "gettext.h"
+
 #include "helper_funcs.h"
-#include "lyxrc.h"
+
+#include "BufferView.h"
 #include "funcrequest.h"
+#include "gettext.h"
+#include "lyxfunc.h"
+#include "lyxrc.h"
+
+#include "frontends/Alert.h"
 
 #include "support/filetools.h"
 

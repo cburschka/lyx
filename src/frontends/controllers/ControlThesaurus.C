@@ -13,9 +13,11 @@
 #endif
 
 #include "ControlThesaurus.h"
-#include "Liason.h"
-#include "lyxfind.h"
+
 #include "gettext.h"
+#include "lyxfind.h"
+
+#include "frontends/Liason.h"
 
 
 using Liason::setMinibuffer;

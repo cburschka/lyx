@@ -13,14 +13,16 @@
 #endif
 
 #include "ControlCharacter.h"
+
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
+
 #include "buffer.h"
-#include "Liason.h"
 #include "bufferview_funcs.h" // ToggleAndShow
 #include "gettext.h"
 #include "language.h"
 
+#include "frontends/Liason.h"
 #include "frontends/LyXView.h"
 
 using Liason::setMinibuffer;

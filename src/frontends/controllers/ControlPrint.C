@@ -18,14 +18,18 @@
 #endif
 
 #include "ControlPrint.h"
+
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
+
 #include "buffer.h"
-#include "PrinterParams.h"
-#include "Liason.h"
-#include "helper_funcs.h"
-#include "frontends/Alert.h"
 #include "gettext.h"
+#include "helper_funcs.h"
+#include "PrinterParams.h"
+
+#include "frontends/Alert.h"
+#include "frontends/Liason.h"
+
 #include "support/LAssert.h"
 
 using Liason::printBuffer;

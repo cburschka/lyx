@@ -1,22 +1,17 @@
 // -*- C++ -*-
-/* Dialogs.h
- * Container of all dialogs and signals a LyXView needs or uses to access them.
- * Author: Allan Rae <rae@lyx.org>
- * This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- *           This file Copyright 2000
- *           Allan Rae
- * ======================================================
+/**
+ * \file Dialogs.h
+ * Copyright 1995-2002 The LyX Team.
+ * See the file COPYING.
+ * \author Allan Rae, rae@lyx.org
  */
 
 #ifndef DIALOGS_H
 #define DIALOGS_H
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 #include "LString.h"
 
@@ -24,30 +19,23 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
-#include <vector>
-
-#ifdef __GNUG__
-#pragma interface
-#endif
-
-#include "DialogBase.h"
 
 // Maybe this should be a UIFunc modelled on LyXFunc
 class LyXView;
 
-class InsetGraphics;
 class InsetBibKey;
 class InsetBibtex;
+class InsetCommand;
 class InsetError;
+class InsetERT;
 class InsetExternal;
+class InsetFloat;
+class InsetGraphics;
 class InsetInclude;
 class InsetInfo;
-class InsetTabular;
-class InsetCommand;
 class InsetMinipage;
-class InsetFloat;
-class InsetERT;
 class Paragraph;
+class InsetTabular;
 
 /** Container of all dialogs and signals a LyXView needs or uses to access them
     The list of dialog signals isn't comprehensive but should be a good guide
@@ -57,12 +45,9 @@ class Dialogs : boost::noncopyable
 {
 public:
 	///
-	typedef boost::shared_ptr<DialogBase> db_ptr;
-	/**@name Constructor */
-	//@{
+	typedef boost::shared_ptr<boost::noncopyable> db_ptr;
 	///
 	Dialogs(LyXView *);
-	//@}
 
 	/** Redraw all visible dialogs because, for example, the GUI colours
 	    have been re-mapped. */
@@ -110,10 +95,16 @@ public:
 	void showDocument();
 	///
 	void showError(InsetError *);
+	///
+	void showERT(InsetERT *);
+	///
+	void updateERT(InsetERT *);
 	/// show the external inset dialog
 	void showExternal(InsetExternal *);
 	/// show the contents of a file.
 	void showFile(string const &);
+	///
+	void showFloat(InsetFloat *);
 	/// show all forked child processes
 	void showForks();
 	///
@@ -124,8 +115,6 @@ public:
 	void showIndex(InsetCommand *);
 	///
 	void createIndex();
-	///
-	void showInfo(InsetInfo *);
 	/// show the LaTeX log or build file
 	void showLogFile();
 	/// display the top-level maths panel
@@ -134,12 +123,6 @@ public:
 	void showMinipage(InsetMinipage *);
 	///
 	void updateMinipage(InsetMinipage *);
-	///
-	void showERT(InsetERT *);
-	///
-	void updateERT(InsetERT *);
-	///
-	void showFloat(InsetFloat *);
 	///
 	void showParagraph();
 	///
@@ -181,11 +164,6 @@ public:
 	/// show the version control log
 	void showVCLogFile();
 	//@}
-private:
-	/// Add a dialog to the vector of dialogs.
-	//void add(DialogBase *);
-	/// the dialogs being managed
-	//std::vector<db_ptr> dialogs_;
 };
 
 #endif

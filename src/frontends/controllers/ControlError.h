@@ -21,6 +21,7 @@
 #endif
 
 #include "ControlInset.h"
+#include "insets/inseterror.h" // needed for proper instantiation of GUI<>.
 
 class InsetError;
 

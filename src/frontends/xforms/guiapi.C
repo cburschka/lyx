@@ -347,13 +347,6 @@ extern "C" {
 	}
 
 
-#if 0
-	void gui_ShowInfo(InsetInfo *, LyXView & lv, Dialogs & d)
-	{
-	}
-#endif
-
-
 	void gui_ShowLogFile(LyXView & lv, Dialogs & d)
 	{
 		static GUI<ControlLog, FormLog,

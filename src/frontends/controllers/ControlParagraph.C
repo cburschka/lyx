@@ -14,16 +14,21 @@
 #endif
 
 #include "ControlParagraph.h"
+
 #include "ButtonControllerBase.h"
 #include "ViewBase.h"
-#include "ParagraphParameters.h"
-#include "Liason.h"
+
+#include "buffer.h"
 #include "BufferView.h"
 #include "gettext.h"
-#include "buffer.h"
 #include "lyxtext.h"
+#include "ParagraphParameters.h"
+
+#include "frontends/Dialogs.h"
+#include "frontends/Liason.h"
+
 #include "support/LAssert.h"
-#include "Dialogs.h"
+
 #include <boost/bind.hpp>
 
 using Liason::setMinibuffer;
@@ -32,9 +37,8 @@ using Liason::setMinibuffer;
 ControlParagraph::ControlParagraph(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d), pp_(0), ininset_(false)
 {
-     d_.updateParagraph.connect(
-	     boost::bind(&ControlParagraph::changedParagraph, this));
-
+	d_.updateParagraph.connect(
+		boost::bind(&ControlParagraph::changedParagraph, this));
 }
 
 

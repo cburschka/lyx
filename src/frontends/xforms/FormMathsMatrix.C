@@ -15,17 +15,22 @@
 #pragma implementation
 #endif
 
-#include <algorithm>
-
 #include "FormMathsMatrix.h"
 #include "forms/form_maths_matrix.h"
-#include "Dialogs.h"
-#include "frontends/LyXView.h"
-#include "Lsstream.h"
+
 #include "funcrequest.h"
+#include "lyxfunc.h"
+
+#include "frontends/LyXView.h"
+
 #include "support/LAssert.h"
 #include "support/lyxalgo.h" // lyx::count
+
+#include "Lsstream.h"
+
 #include FORMS_H_LOCATION
+
+#include <algorithm>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;

@@ -17,7 +17,6 @@
 #include "FormTabular.h"
 #include "forms/form_tabular.h"
 #include "frontends/LyXView.h"
-#include "Dialogs.h"
 #include "buffer.h"
 #include "xforms_helpers.h"
 #include "lyxrc.h" // to set the default length values

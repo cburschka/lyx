@@ -18,10 +18,11 @@
 #endif
 
 #include "ControlSearch.h"
-#include "Liason.h"
-#include "lyxfind.h"
-#include "gettext.h"
 
+#include "gettext.h"
+#include "lyxfind.h"
+
+#include "frontends/Liason.h"
 
 #include "support/lstrings.h"
 

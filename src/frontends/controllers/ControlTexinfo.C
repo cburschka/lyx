@@ -18,11 +18,11 @@
 #endif
 
 #include "ControlTexinfo.h"
-#include "Dialogs.h"
-#include "gettext.h"
+
 #include "helper_funcs.h"
 #include "tex_helpers.h"
 
+#include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 
 #include "support/filetools.h" // FileSearch

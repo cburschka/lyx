@@ -150,14 +150,6 @@ void Dialogs::createIndex()
 }
 
 
-void Dialogs::showInfo(InsetInfo * /*ii*/)
-{
-#if 0
-	gui_ShowInfo(ii, *dialogs_lyxview, *this);
-#endif
-}
-
-
 void Dialogs::showLogFile()
 {
 	gui_ShowLogFile(*dialogs_lyxview, *this);

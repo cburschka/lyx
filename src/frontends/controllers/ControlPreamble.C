@@ -13,10 +13,13 @@
 #endif
 
 #include "ControlPreamble.h"
+
 #include "ViewBase.h"
+
 #include "buffer.h"
-#include "Liason.h"
 #include "gettext.h"
+
+#include "frontends/Liason.h"
 
 
 ControlPreamble::ControlPreamble(LyXView & lv, Dialogs & d)

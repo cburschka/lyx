@@ -16,12 +16,12 @@
 #ifndef FEEDBACKCONTROLLER_H
 #define FEEDBACKCONTROLLER_H
 
-#include "forms_fwd.h"
-#include "LString.h"
-
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include "forms_fwd.h"
+#include "LString.h"
 
 class FeedbackController
 {

@@ -15,7 +15,6 @@
 #pragma implementation
 #endif
 
-#include "Dialogs.h"
 #include "frontends/LyXView.h"
 #include "FormMathsPanel.h"
 #include "forms/form_maths_panel.h"

@@ -13,16 +13,15 @@
 #endif
 
 #include "ControlSpellchecker.h"
-#include "buffer.h"
-#include "lyxrc.h"
-#include "BufferView.h"
-#include "lyxtext.h"
-#include "gettext.h"
-#include "language.h"
 
 #include "ViewBase.h"
-#include "Dialogs.h"
-#include "Liason.h"
+
+#include "buffer.h"
+#include "BufferView.h"
+#include "gettext.h"
+#include "language.h"
+#include "lyxrc.h"
+#include "lyxtext.h"
 
 #include "frontends/Alert.h"
 

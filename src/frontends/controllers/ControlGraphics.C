@@ -22,10 +22,9 @@
 
 #include "helper_funcs.h"
 
-#include "converter.h"
 #include "buffer.h"
 #include "BufferView.h"
-#include "Dialogs.h"
+#include "converter.h"
 #include "gettext.h"
 #include "lyxrc.h"
 

@@ -17,7 +17,6 @@
 
 #include "FormMathsDeco.h"
 #include "forms/form_maths_deco.h"
-#include "Dialogs.h"
 #include "bmtable.h"
 #include FORMS_H_LOCATION
 

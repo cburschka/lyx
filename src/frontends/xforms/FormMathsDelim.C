@@ -17,12 +17,19 @@
 
 #include "FormMathsDelim.h"
 #include "forms/form_maths_delim.h"
-#include "Dialogs.h"
-#include "frontends/LyXView.h"
+
 #include "bmtable.h"
+
 #include "debug.h"
 #include "funcrequest.h"
+#include "lyxfunc.h"
+
+#include "frontends/LyXView.h"
+
+#include "support/lstrings.h"
+
 #include "Lsstream.h"
+
 #include FORMS_H_LOCATION
 
 #include "delim.xbm"

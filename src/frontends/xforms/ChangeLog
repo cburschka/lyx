@@ -1,8 +1,31 @@
+2002-08-14  Angus Leeming  <leeming@lyx.org>
+
+	* FormBaseDeprecated.h: no longer derives from DialogBase, but instead
+	derives directly from boost::noncopyable.
+	(show): made public.
+
+	* FeedbackController.h: rearrange #includes.
+
+	* FormDocument.C:
+	* FormMathsDeco.C:
+	* FormMathsDelim.C:
+	* FormMathsMatrix.C:
+	* FormMathsPanel.C:
+	* FormTabular.C: remove #include "Dialogs.h"
+
+	* FormMathsBitmap.C: remove #include "Dialogs.h", "LyXView.h".
+
+	* FormPreferences.C: rearrange #includes.
+
+	* FormTabular.h (showInset, updateInset): make public.
+
+	* FormDocument.C (build): enable the bmtable to find the right file!
+
+	* guiapi.C (gui_ShowInfo): removed.
 
 2002-08-13  André Poenitz  <poenitz@gmx.net>
 
 	* Toolbar_pimpl.C: small cleanup
-
 
 2002-08-13  Angus Leeming  <leeming@lyx.org>
 

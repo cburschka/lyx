@@ -18,11 +18,13 @@
 #endif
 
 #include "ControlConnections.h"
+
 #include "ViewBase.h"
-#include "Dialogs.h"
+
 #include "buffer.h"
 #include "BufferView.h"
 
+#include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 
 #include <boost/bind.hpp>

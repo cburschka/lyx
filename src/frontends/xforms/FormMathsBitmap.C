@@ -15,8 +15,6 @@
 #endif
 
 #include "FormMathsBitmap.h"
-#include "Dialogs.h"
-#include "frontends/LyXView.h"
 #include "bmtable.h"
 #include "debug.h"
 #include "forms_gettext.h"

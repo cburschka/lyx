@@ -20,13 +20,13 @@
 #pragma interface
 #endif
 
-#include "DialogBase.h"
 #include "LString.h"
 #include "xformsBC.h"
 #include "FeedbackController.h"
 
 #include "forms_fwd.h"
 
+#include <boost/utility.hpp>
 #include <boost/signals/connection.hpp>
 
 class Buffer;
@@ -34,7 +34,7 @@ class Dialogs;
 class LyXView;
 class Tooltips;
 
-class FormBaseDeprecated : public DialogBase, public FeedbackController
+class FormBaseDeprecated : boost::noncopyable, public FeedbackController
 {
 public:
 	///
@@ -57,7 +57,8 @@ public:
 
 	Tooltips & tooltips();
 
-	friend void gui_ShowDocument(LyXView &, Dialogs &);
+	/// Create the dialog if necessary, update it and display it.
+	virtual void show();
 
 protected: // methods
 
@@ -71,8 +72,6 @@ protected: // methods
 	 */
 	virtual void redraw();
 
-	/// Create the dialog if necessary, update it and display it.
-	virtual void show();
 	/// Hide the dialog.
 	virtual void hide();
 	/// Update the dialog.

@@ -8,6 +8,10 @@
 
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "tex_helpers.h"
 
 #include "debug.h"

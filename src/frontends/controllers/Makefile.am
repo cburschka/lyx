@@ -3,7 +3,6 @@ include $(top_srcdir)/config/common.am
 noinst_LTLIBRARIES = libcontrollers.la
 
 INCLUDES = -I$(top_srcdir)/src/ \
-	-I$(top_srcdir)/src/frontends/ \
 	$(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 EXTRA_DIST = ButtonController.tmpl ControlDialog.tmpl ControlInset.tmpl

@@ -1,3 +1,34 @@
+2002-08-14  Angus Leeming  <leeming@lyx.org>
+
+	* GUI.h: class GUI deries from boost::noncopyable
+
+	* ControlButtons.h: no longer derives from DialogBase, but instead
+	derives directly from boost::noncopyable.
+
+	* ViewBase.h: derives from boost::noncopyable.
+
+	* ControlCharacter.C:
+	* ControlCommand.C:
+	* ControlConnections.C:
+	* ControlGraphics.C:
+	* ControlInclude.C:
+	* ControlParagraph.C:
+	* ControlPreamble.C:
+	* ControlPrint.C:
+	* ControlSearch.C:
+	* ControlSpellchecker.C:
+	* ControlTexinfo.C:
+	* ControlThesaurus.C:
+	rearrange #includes. Remove unnecessary ones.
+
+	* ControlError.h: add "insets/inseterror.h".
+
+	* helper_funcs.h: add necessary #includes.
+
+	* tex_helpers.[Ch]: add #pragma directives for g++.
+
+	* Makefile.am: remove src/frontends from -I list to compiler.
+
 2002-08-13  Angus Leeming  <leeming@lyx.org>
 
 	* ControlConnections.C:

@@ -33,14 +33,14 @@
 #pragma interface
 #endif
 
-#include "DialogBase.h" // This can go eventually
+#include <boost/utility.hpp>
 
 class ViewBase;
 class ButtonControllerBase;
 
 /** Abstract base class for Controllers with a ButtonController.
  */
-class ControlButtons : public DialogBase
+class ControlButtons : boost::noncopyable
 {
 public:
 	///

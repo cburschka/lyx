@@ -17,14 +17,11 @@
 #pragma implementation
 #endif
 
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
 #include "ControlCommand.h"
-#include "buffer.h"
-#include "Dialogs.h"
-#include "lyxfunc.h"
+
 #include "BufferView.h"
 #include "funcrequest.h"
+#include "lyxfunc.h"
 
 
 ControlCommand::ControlCommand(LyXView & lv, Dialogs & d, kb_action ac)

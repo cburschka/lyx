@@ -18,7 +18,6 @@
 #include "FormDocument.h"
 #include "forms/form_document.h"
 #include "Alert.h"
-#include "Dialogs.h"
 #include "lyxtextclasslist.h"
 #include "combox.h"
 #include "tex-strings.h"
@@ -300,6 +299,10 @@ void FormDocument::build()
 	fl_set_input_return(bullets_->input_bullet_latex, FL_RETURN_CHANGED);
 	setPrehandler(bullets_->input_bullet_latex);
 	fl_set_input_maxchars(bullets_->input_bullet_latex, 80);
+
+	string const bmtablefile = LibFileSearch("images", "standard", "xpm");
+	fl_set_bmtable_pixmap_file(bullets_->bmtable_bullet_panel, 6, 6,
+				   bmtablefile.c_str());
 
 	bc_.addReadOnly(bullets_->radio_bullet_depth_1);
 	bc_.addReadOnly(bullets_->radio_bullet_depth_2);
