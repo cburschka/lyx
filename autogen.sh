@@ -24,7 +24,7 @@ fi
 echo -n "Generate acinclude.m4... "
 rm -f acinclude.m4 sigc++/acinclude.m4
 touch acinclude.m4
-for fil in config/lyxinclude.m4 config/libtool.m4 config/gettext.m4 config/lcmessage.m4 config/progtest.m4 config/sigc++.m4 config/kde.m4 config/qt2.m4 config/gtk--.m4 config/gnome--.m4 config/gnome.m4 config/pspell.m4; do
+for fil in config/lyxinclude.m4 config/libtool.m4 config/gettext.m4 config/lcmessage.m4 config/progtest.m4 config/sigc++.m4 config/qt2.m4 config/gtk--.m4 config/gnome--.m4 config/gnome.m4 config/pspell.m4; do
     cat $fil >> acinclude.m4
 done
 touch sigc++/acinclude.m4

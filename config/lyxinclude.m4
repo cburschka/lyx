@@ -985,3 +985,39 @@ if eval "test \"\${lyx_cv_declare_${tr_hdr}_$1}\" = \"yes\""; then
      got="yes"
 fi
 done])
+
+
+## ------------------------------------------------------------------------
+## Find a file (or one of more files in a list of dirs)
+## ------------------------------------------------------------------------
+##
+AC_DEFUN(AC_FIND_FILE,
+[
+$3=NO
+for i in $2;
+do
+  for j in $1;
+  do
+    if test -r "$i/$j"; then
+      $3=$i
+      break 2
+    fi
+  done
+done
+])
+
+dnl just a wrapper to clean up configure.in
+AC_DEFUN(LYX_PROG_LIBTOOL,
+[
+AC_REQUIRE([AC_ENABLE_SHARED])
+AC_REQUIRE([AC_ENABLE_STATIC])
+dnl libtool is only for C, so I must force him
+dnl to find the correct flags for C++
+ac_save_cc=$CC
+ac_save_cflags="$CFLAGS"
+CC=$CXX
+CFLAGS="$CXXFLAGS"
+AM_PROG_LIBTOOL dnl for libraries
+CC=$ac_save_cc
+CFLAGS="$ac_save_cflags"
+])

@@ -76,7 +76,8 @@ LYX_PROG_CXX
 AC_PROG_CXXCPP
 AC_DISABLE_SHARED
 AC_LIBTOOL_WIN32_DLL
-AC_PROG_LIBTOOL
+#AM_PROG_LIBTOOL
+LYX_PROG_LIBTOOL
 
 ### Some checks on what the C++ compiler can(not) do
 LYX_CXX_MUTABLE
@@ -161,13 +162,6 @@ AC_CHECK_FUNCS(XOpenIM)
 dnl The code below is not in a macro, because this would cause big
 dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.  
 case "$lyx_use_frontend" in 
-  kde) 
-    KDE_DO_IT_ALL
-    FRONTEND="kde"
-    FRONTEND_GUILIB="kde/libkde.la"
-    FRONTEND_LDFLAGS="\$(QT_LDFLAGS) \$(KDE_LDFLAGS)"
-    FRONTEND_INCLUDES="-I\${srcdir}/kde \$(QT_INCLUDES) \$(KDE_INCLUDES)"
-    FRONTEND_LIBS="\$(KDE_LIBS)";;
   xforms) 
   # for now don't set it for xforms as this is always entered
     FRONTEND=""
@@ -321,10 +315,6 @@ AC_OUTPUT([Makefile \
        src/frontends/controllers/Makefile \
        src/frontends/xforms/Makefile \
        src/frontends/qt2/Makefile \
-       src/frontends/kde/Makefile \
-       src/frontends/kde/moc/Makefile \
-       src/frontends/kde/dlg/Makefile \
-       src/frontends/kde/dlg/moc/Makefile \
        src/frontends/gnome/Makefile \
 ],  [sed -e "/POTFILES =/r po/POTFILES" po/Makefile.in > po/Makefile])
 
