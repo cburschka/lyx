@@ -295,7 +295,7 @@ test "$latex_to_sxw_command" != "none" && latex_to_sxw_command="$latex_to_sxw_co
 # Search something to preview postscript
 SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gsview32 gv ghostview kghostview)
 case $GHOSTVIEW in
-  gv|ghostview) PS_VIEWER="$GHOSTVIEW -swap" ;;
+  ghostview) PS_VIEWER="$GHOSTVIEW -swap" ;;
   *) PS_VIEWER="$GHOSTVIEW";;
 esac
 EPS_VIEWER=$GHOSTVIEW
