@@ -1,5 +1,10 @@
 2003-12-12  Angus Leeming  <leeming@lyx.org>
 
+	* insetinclude.C (draw): cache x,y and so enable the
+	dialog to be opened.
+
+2003-12-12  Angus Leeming  <leeming@lyx.org>
+
 	* mailinset.C (print_mailer_error): tidy up the output.
 
 2003-12-11  Angus Leeming  <leeming@lyx.org>
