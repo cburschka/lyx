@@ -10,9 +10,6 @@
 
 #include <config.h>
 
-#include FORMS_H_LOCATION
-
-
 #ifdef __GNUG__
 #pragma implementation "lyxtext.h"
 #endif

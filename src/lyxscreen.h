@@ -16,7 +16,6 @@
 #pragma interface
 #endif
 
-#include FORMS_H_LOCATION
 #include <X11/Xlib.h>
 
 class LyXText;

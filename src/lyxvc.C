@@ -6,7 +6,6 @@
 
 #include <unistd.h>
 
-#include FORMS_H_LOCATION
 #include "lyxvc.h"
 #include "vc-backend.h"
 #include "debug.h"

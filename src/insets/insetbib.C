@@ -7,7 +7,6 @@
 #pragma implementation
 #endif
 
-#include FORMS_H_LOCATION  
 #include "frontends/Dialogs.h"
 #include "insetbib.h"
 #include "buffer.h"

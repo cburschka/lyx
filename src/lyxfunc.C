@@ -32,7 +32,6 @@
 #include "BufferView.h"
 #include "ColorHandler.h"
 #include "lyxserver.h"
-#include "figure_form.h"
 #include "intl.h"
 #include "lyx_main.h"
 #include "lyx_cb.h"

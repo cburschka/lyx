@@ -8,7 +8,6 @@
 #pragma interface
 #endif
 
-#include FORMS_H_LOCATION
 #include "commandtags.h"
 #include "func_status.h"
 #include "kbsequence.h"
