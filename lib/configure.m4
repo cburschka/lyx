@@ -423,11 +423,7 @@ PROVIDE_DEFAULT_FILE(textclass.lst,dnl
 # It contains only default values, since chkconfig.ltx could not be run
 # for some reason. Run ./configure if you need to update it after a
 # configuration change.
-article	article	article
-report	report	report
-book	book	book
-linuxdoc	linuxdoc	linuxdoc
-letter	letter	letter])
+article	article	article false])
 
 PROVIDE_DEFAULT_FILE(chkconfig.sed,[s/@.*@/???/g])
 
