@@ -353,15 +353,15 @@ void MathAtom::write(std::ostream & os, bool fragile) const
 	} else
 		os << "{}";
 
-	if (up()) {
-		os << "^{";
-		up()->write(os, fragile);
-		os << "}";
-	}
-
 	if (down()) {
 		os << "_{";
 		down()->write(os, fragile);
+		os << "}";
+	}
+
+	if (up()) {
+		os << "^{";
+		up()->write(os, fragile);
 		os << "}";
 	}
 }
