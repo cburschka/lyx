@@ -24,7 +24,7 @@ using std::max;
 #pragma implementation
 #endif
 
-extern void addNewlineAndDepth(string & file, int const depth); // Jug 990923
+extern void addNewlineAndDepth(string & file, int depth); // Jug 990923
 
 static int const WIDTH_OF_LINE = 5;
 
@@ -1289,6 +1289,7 @@ int LyXTable::TexEndOfCell(string & file, int cell)
 }
 
 
+#if 0
 // cell <0 will tex the preamble
 // returns the number of printed newlines
 int LyXTable::RoffEndOfCell(ostream & os, int cell)
@@ -1381,6 +1382,7 @@ int LyXTable::RoffEndOfCell(ostream & os, int cell)
     }
     return ret;
 }
+#endif
 
 
 char const *LyXTable::getDocBookAlign(int cell, bool isColumn)

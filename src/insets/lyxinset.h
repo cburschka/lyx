@@ -78,7 +78,9 @@ public:
 		///
 		BIBTEX_CODE,
 		///
-		TEXT_CODE
+		TEXT_CODE,
+		///
+		SPECIALCHAR_CODE
 	};
 
 	///

@@ -14,31 +14,43 @@
 #include <cctype>
 
 ///
-inline bool IsNewlineChar(char c) {
+inline
+bool IsNewlineChar(char c) {
 	return (c == LyXParagraph::META_NEWLINE);
 }
 
 
 ///
-inline bool IsSeparatorChar(char c) {
+#if 0
+inline
+bool IsSeparatorChar(char c) {
 	return (c == ' ' || c == LyXParagraph::META_PROTECTED_SEPARATOR);
 }
+#else
+inline
+bool IsSeparatorChar(char c) {
+	return (c == ' ');
+}
+#endif
 
 
 ///
-inline bool IsHfillChar(char c) {
+inline
+bool IsHfillChar(char c) {
 	return (c == LyXParagraph::META_HFILL);
 }
 
 
 ///
-inline bool IsInsetChar(char c) {
+inline
+bool IsInsetChar(char c) {
 	return (c == LyXParagraph::META_INSET);
 }
 
 
 ///
-inline bool IsFloatChar(char c) {
+inline
+bool IsFloatChar(char c) {
 	return (c == LyXParagraph::META_FOOTNOTE
 		|| c == LyXParagraph::META_MARGIN
 		|| c == LyXParagraph::META_FIG
@@ -50,13 +62,15 @@ inline bool IsFloatChar(char c) {
 
 
 ///
-inline bool IsLineSeparatorChar(char c) {
+inline
+bool IsLineSeparatorChar(char c) {
 	return (c == ' ');
 }
 
 
 ///
-inline bool IsKommaChar(char c) {
+inline
+bool IsKommaChar(char c) {
 	return (c == ',' 
 		|| c == '('
 		|| c == ')'
@@ -81,13 +95,16 @@ inline bool IsKommaChar(char c) {
 		|| c == '/' 
 		|| c == '\\'
 		|| c == LyXParagraph::META_NEWLINE
+#if 0
 		|| c == LyXParagraph::META_PROTECTED_SEPARATOR
+#endif
 		);
 }
 
 
 ///
-inline bool IsLetterChar(unsigned char c) {
+inline
+bool IsLetterChar(unsigned char c) {
 	return ((c >= 'A' && c <= 'Z')
 		|| (c >= 'a' && c <= 'z')
 		|| (c >= 192)); // in iso-8859-x these are accented chars
@@ -95,23 +112,26 @@ inline bool IsLetterChar(unsigned char c) {
 
 
 ///
-inline bool IsPrintable(unsigned char c) {
+inline
+bool IsPrintable(unsigned char c) {
 	return (c >= ' ');
 }
 
 
 /// Word is not IsSeparator or IsKomma or IsHfill or IsFloat or IsInset. 
-inline bool IsWordChar(unsigned char c) {
-  return !( IsSeparatorChar( c ) 
-	    || IsKommaChar( c )  
-	    || IsHfillChar( c )  
-	    || IsFloatChar( c )  
-	    || IsInsetChar( c ) ) ;
+inline
+bool IsWordChar(unsigned char c) {
+	return !( IsSeparatorChar( c ) 
+		  || IsKommaChar( c )  
+		  || IsHfillChar( c )  
+		  || IsFloatChar( c )  
+		  || IsInsetChar( c ) ) ;
 }
 
 
 ///
-inline bool IsLetterCharOrDigit(char ch)
+inline
+bool IsLetterCharOrDigit(char ch)
 {
 	return IsLetterChar(ch) || isdigit(ch);
 }

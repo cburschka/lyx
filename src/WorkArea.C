@@ -381,16 +381,16 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	// Done by the raw callback:
 	//  case FL_KEYBOARD: WorkAreaKeyPress(ob, 0,0,0,ev,0); break;
 	case FL_FOCUS:
-		lyxerr.debug() << "Workarea event: FOCUS" << endl;
+		lyxerr << "Workarea event: FOCUS" << endl;
 		break;
 	case FL_UNFOCUS:
-		lyxerr.debug() << "Workarea event: UNFOCUS" << endl;
+		lyxerr << "Workarea event: UNFOCUS" << endl;
 		break;
 	case FL_ENTER:
-		lyxerr.debug() << "Workarea event: ENTER" << endl;
+		lyxerr << "Workarea event: ENTER" << endl;
 		break;
 	case FL_LEAVE:
-		lyxerr.debug() << "Workarea event: LEAVE" << endl;
+		lyxerr << "Workarea event: LEAVE" << endl;
 		break;
 	case FL_DBLCLICK:
 		if (!ev) break;
@@ -402,7 +402,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	case FL_TRPLCLICK:
 		if (!ev) break;
 		lyxerr.debug() << "Workarea event: TRPLCLICK" << endl;
-		area->owner->trippleClick(ev->xbutton.x - ob->x,
+		area->owner->tripleClick(ev->xbutton.x - ob->x,
 					 ev->xbutton.y - ob->y,
 					 ev->xbutton.button);
 		break;

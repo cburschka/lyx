@@ -88,7 +88,7 @@ Style List
       {\settowidth{\labelwidth}{#1}
        \setlength{\leftmargin}{\labelwidth}
        \addtolength{\leftmargin}{\labelsep}
-       \renewcommand{\makelabel}[1]{##1 \hfill}}}
+       \renewcommand{\makelabel}[1]{\makebox[\labelwidth][l]{##1}}}}
     {\end{list}}
   EndPreamble
 

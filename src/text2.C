@@ -22,6 +22,7 @@
 #include "lyxparagraph.h"
 #include "insets/inseterror.h"
 #include "insets/insetbib.h"
+#include "insets/insetspecialchar.h"
 #include "layout.h"
 #include "LyXView.h"
 #include "support/textutils.h"
@@ -439,11 +440,11 @@ void LyXText::CloseFootnote()
 // Asger is not sure we want to do this...
 void LyXText::MakeFontEntriesLayoutSpecific(LyXParagraph * par)
 {
-	LyXFont layoutfont, tmpfont;
    
 	LyXLayout const & layout =
 		textclasslist.Style(parameters->textclass, par->GetLayout());
 
+	LyXFont layoutfont, tmpfont;
 	for (LyXParagraph::size_type pos = 0;
 	     pos < par->Last(); ++pos) {
 		if (pos < BeginningOfMainBody(par))
@@ -459,7 +460,7 @@ void LyXText::MakeFontEntriesLayoutSpecific(LyXParagraph * par)
 
 
 // set layout over selection and make a total rebreak of those paragraphs
-void  LyXText::SetLayout(LyXTextClass::size_type layout)
+void LyXText::SetLayout(LyXTextClass::size_type layout)
 {
 	LyXCursor tmpcursor;
 
@@ -694,7 +695,7 @@ void  LyXText::DecDepth()
 
 
 // set font over selection and make a total rebreak of those paragraphs
-void  LyXText::SetFont(LyXFont const & font, bool toggleall)
+void LyXText::SetFont(LyXFont const & font, bool toggleall)
 {
 	// if there is no selection just set the current_font
 	if (!selection) {
@@ -1472,8 +1473,7 @@ void LyXText::SetCounter(LyXParagraph * par) const
 		if (par->labelwidthstring.empty()) {
 			par->SetLabelWidthString(layout.labelstring());
 		}
-	}
-	else {
+	} else {
 		par->SetLabelWidthString(string());
 	}
    
@@ -2574,7 +2574,7 @@ void LyXText::InsertStringA(char const * s)
 	
 	SetCursorParUndo();
 	
-	char flag =
+	bool flag =
 		textclasslist.Style(parameters->textclass, 
 				    cursor.par->GetLayout()).isEnvironment();
 	// only to be sure, should not be neccessary
@@ -2604,11 +2604,23 @@ void LyXText::InsertStringA(char const * s)
 					++pos;
 				}
                         } else if (str[i] == ' ') {
+#if 1
+				InsetSpecialChar * new_inset =
+					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
+				par->InsertInset(pos, new_inset);
+#else
 				par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
+#endif
 				++pos;
 			} else if (str[i] == '\t') {
 				for (a = pos; a < (pos / 8 + 1) * 8 ; ++a) {
+#if 1
+				InsetSpecialChar * new_inset =
+					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
+				par->InsertInset(pos, new_inset);
+#else
 					par->InsertChar(a, LyXParagraph::META_PROTECTED_SEPARATOR);
+#endif
 				}
 				pos = a;
 			} else if (str[i]!= 13 && 
@@ -2630,6 +2642,7 @@ void LyXText::InsertStringA(char const * s)
                                 cell = NumberOfCell(par, pos);
                                 while((pos < par->size()) &&
                                       !(par->table->IsFirstCell(cell))) {
+
                                         while((pos < par->size()) &&
                                               (par->GetChar(pos) != LyXParagraph::META_NEWLINE))
                                                 ++pos;
@@ -2641,7 +2654,13 @@ void LyXText::InsertStringA(char const * s)
                                         break;
                         } else {
                                 if (!par->text.size()) {
+#if 1
+					InsetSpecialChar * new_inset =
+						new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
+					par->InsertInset(pos, new_inset);
+#else
                                         par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
+#endif
                                         ++pos;
                                 }
                                 par->BreakParagraph(pos, flag);
@@ -2753,7 +2772,8 @@ bool LyXText::GotoNextNote() const
 }
 
 
-int LyXText::SwitchLayoutsBetweenClasses(char class1, char class2,
+int LyXText::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type class1,
+					 LyXTextClassList::size_type class2,
 					 LyXParagraph * par)
 {
 	int ret = 0;

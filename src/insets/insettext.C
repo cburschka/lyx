@@ -347,10 +347,14 @@ void InsetText::Read(LyXLex & lex)
             ++pos;
         } else if (token == "\\protected_separator") {
             // now obsolete, but we have a back compability
+#if 0
             par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
-            //Inset * inset = new InsetSpecialChar(LyXParagraph::META_PROTECTED_SEPARATOR);
-//            par->InsertChar(pos, LyXParagraph::META_INSET);
-//            par->InsertInset(pos, inset);
+#else
+            Inset * inset =
+		   new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
+            par->InsertChar(pos, LyXParagraph::META_INSET);
+            par->InsertInset(pos, inset);
+#endif
             par->SetFont(pos, font);
             ++pos;
 #endif
@@ -358,7 +362,7 @@ void InsetText::Read(LyXLex & lex)
             if (!par->bibkey)
                 par->bibkey = new InsetBibKey;
             par->bibkey->Read(lex);                 
-        }else if (token == "\\backslash") {
+        } else if (token == "\\backslash") {
             par->InsertChar(pos, '\\');
             par->SetFont(pos, font);
             ++pos;
@@ -377,7 +381,7 @@ void InsetText::Read(LyXLex & lex)
 }
 
 
-int InsetText::ascent(Painter &pain, LyXFont const & font) const
+int InsetText::ascent(Painter & pain, LyXFont const & font) const
 {
     if (init_inset) {
 	computeTextRows(pain);
@@ -389,7 +393,7 @@ int InsetText::ascent(Painter &pain, LyXFont const & font) const
 }
 
 
-int InsetText::descent(Painter &pain, LyXFont const & font) const
+int InsetText::descent(Painter & pain, LyXFont const & font) const
 {
     if (init_inset) {
 	computeTextRows(pain);
@@ -401,7 +405,7 @@ int InsetText::descent(Painter &pain, LyXFont const & font) const
 }
 
 
-int InsetText::width(Painter &pain, LyXFont const &) const
+int InsetText::width(Painter & pain, LyXFont const &) const
 {
     if (init_inset) {
 	computeTextRows(pain);
@@ -418,7 +422,7 @@ int InsetText::getMaxWidth(UpdatableInset * inset) const
 	return 0;
     }
 
-    if (the_locking_inset==inset) 
+    if (the_locking_inset == inset) 
 	return maxWidth;
 
     return the_locking_inset->getMaxWidth(inset);
@@ -439,9 +443,9 @@ void InsetText::draw(Painter & pain, LyXFont const & f,
     top_baseline = baseline;
     computeBaselines(baseline);
     for(unsigned int r = 0; r < rows.size() - 1; ++r) {
-        drawRowSelection(pain, rows[r].pos, rows[r+1].pos, r, 
+        drawRowSelection(pain, rows[r].pos, rows[r + 1].pos, r, 
                          rows[r].baseline, x);
-        drawRowText(pain, rows[r].pos, rows[r+1].pos, rows[r].baseline, x);
+        drawRowText(pain, rows[r].pos, rows[r + 1].pos, rows[r].baseline, x);
     }
     x += insetWidth;
     if (!the_locking_inset && do_reset_pos) {
@@ -604,11 +608,11 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
     }
     no_selection = false;
     if (the_locking_inset) {
-	setPos(bv, x,y,false);
+	setPos(bv, x, y, false);
 	UpdatableInset
-	    *inset=0;
-	if (par->GetChar(actpos)==LyXParagraph::META_INSET)
-	    inset=(UpdatableInset*)par->GetInset(actpos);
+	    *inset = 0;
+	if (par->GetChar(actpos) == LyXParagraph::META_INSET)
+	    inset = static_cast<UpdatableInset*>(par->GetInset(actpos));
 	if (the_locking_inset == inset) {
 	    the_locking_inset->InsetButtonPress(bv,x-inset_x,y-inset_y,button);
 	    return;
@@ -826,7 +830,7 @@ UpdatableInset::RESULT InsetText::LocalDispatch(BufferView * bv,
 }
 
 
-int InsetText::Latex(ostream &os, signed char fragile) const
+int InsetText::Latex(ostream & os, signed char fragile) const
 {
     string fstr;
 
@@ -859,7 +863,7 @@ int InsetText::SingleWidth(Painter & pain, LyXParagraph * par, int pos) const
     if (IsPrintable(c)) {
         return font.width(c);
     } else if (c == LyXParagraph::META_INSET) {
-        Inset const * tmpinset=par->GetInset(pos);
+        Inset const * tmpinset = par->GetInset(pos);
         if (tmpinset)
             return tmpinset->width(pain, font);
         else
@@ -905,7 +909,7 @@ LyXFont InsetText::GetFont(LyXParagraph * par, int pos) const
 {
     char par_depth = par->GetDepth();
 
-    LyXLayout layout =
+    LyXLayout const & layout =
 	    textclasslist.Style(buffer->params.textclass, par->GetLayout());
 
     // We specialize the 95% common case:
@@ -989,8 +993,7 @@ int InsetText::InsetInInsetY()
     if (!the_locking_inset)
 	return 0;
 
-    int
-	y = inset_y;
+    int y = inset_y;
     return (y + the_locking_inset->InsetInInsetY());
 }
 
@@ -1038,8 +1041,9 @@ void InsetText::HideInsetCursor(BufferView * bv)
 
 void InsetText::setPos(BufferView * bv, int x, int y, bool activate_inset)
 {
-    int ox = x,
-	oy = y;
+	int ox = x;
+	int oy = y;
+	
     // search right X-pos x==0 -> top_x
     actpos = actrow = 0;
     cy = top_baseline;
@@ -1247,7 +1251,7 @@ void InsetText::SetCharFont(int pos, LyXFont const & f)
 	if (par->GetInset(pos))
 	    font = par->GetInset(pos)->ConvertFont(font);
     }
-    LyXLayout layout =
+    LyXLayout const & layout =
 	    textclasslist.Style(buffer->params.textclass,par->GetLayout());
 
     // Get concrete layout font to reduce against
@@ -1292,7 +1296,7 @@ void InsetText::computeTextRows(Painter & pain) const
     row.baseline = 0;
     rows.push_back(row);
     if (maxWidth < 0) {
-	for(p=0; p < par->Last(); ++p) {
+	for(p = 0; p < par->Last(); ++p) {
 	    insetWidth += SingleWidth(pain, par, p);
 	    SingleHeight(pain, par, p, asc, desc);
 	    if (asc > maxAscent)
@@ -1310,7 +1314,7 @@ void InsetText::computeTextRows(Painter & pain) const
     bool is_first_word_in_row = true;
 
     int cw,
-	lastWordWidth=0;
+	lastWordWidth = 0;
 
     for(p = 0; p < par->Last(); ++p) {
 	cw = SingleWidth(pain, par, p);
@@ -1323,13 +1327,13 @@ void InsetText::computeTextRows(Painter & pain) const
 	    wordDescent = desc;
 	Inset const * inset = 0;
 	if (((p + 1) < par->Last()) &&
-	    (par->GetChar(p+1)==LyXParagraph::META_INSET))
-	    inset = par->GetInset(p+1);
+	    (par->GetChar(p + 1)==LyXParagraph::META_INSET))
+	    inset = par->GetInset(p + 1);
 	if (inset && inset->display()) {
 	    if (!is_first_word_in_row && (width >= maxWidth)) {
 		// we have to split also the row above
-		rows[rows.size()-1].asc = oasc;
-		rows[rows.size()-1].desc = odesc;
+		rows[rows.size() - 1].asc = oasc;
+		rows[rows.size() - 1].desc = odesc;
 		row.pos = nwp;
 		rows.push_back(row);
 		oasc = wordAscent;
@@ -1360,14 +1364,14 @@ void InsetText::computeTextRows(Painter & pain) const
 	} else if (par->IsSeparator(p)) {
 	    if (width >= maxWidth) {
 		if (is_first_word_in_row) {
-		    rows[rows.size()-1].asc = wordAscent;
-		    rows[rows.size()-1].desc = wordDescent;
-		    row.pos = p+1;
+		    rows[rows.size() - 1].asc = wordAscent;
+		    rows[rows.size() - 1].desc = wordDescent;
+		    row.pos = p + 1;
 		    rows.push_back(row);
 		    oasc = odesc = width = 0;
 		} else {
-		    rows[rows.size()-1].asc = oasc;
-		    rows[rows.size()-1].desc = odesc;
+		    rows[rows.size() - 1].asc = oasc;
+		    rows[rows.size() - 1].desc = odesc;
 		    row.pos = nwp;
 		    rows.push_back(row);
 		    oasc = wordAscent;
@@ -1377,7 +1381,7 @@ void InsetText::computeTextRows(Painter & pain) const
 		    width = lastWordWidth;
 		}
 		wordAscent = wordDescent = lastWordWidth = 0;
-		nwp = p+1;
+		nwp = p + 1;
 		continue;
 	    }
 	    owidth = width;
@@ -1386,7 +1390,7 @@ void InsetText::computeTextRows(Painter & pain) const
 	    if (odesc < wordDescent)
 		odesc = wordDescent;
 	    wordAscent = wordDescent = lastWordWidth = 0;
-	    nwp = p+1;
+	    nwp = p + 1;
 	    is_first_word_in_row = false;
 	}
     }
@@ -1394,13 +1398,13 @@ void InsetText::computeTextRows(Painter & pain) const
     if (p) {
 	if (width >= maxWidth) {
 	    // assign upper row
-	    rows[rows.size()-1].asc = oasc;
-	    rows[rows.size()-1].desc = odesc;
+	    rows[rows.size() - 1].asc = oasc;
+	    rows[rows.size() - 1].desc = odesc;
 	    // assign and allocate lower row
 	    row.pos = nwp;
 	    rows.push_back(row);
-	    rows[rows.size()-1].asc = wordAscent;
-	    rows[rows.size()-1].desc = wordDescent;
+	    rows[rows.size() - 1].asc = wordAscent;
+	    rows[rows.size() - 1].desc = wordDescent;
 	    if (insetWidth < owidth)
 		insetWidth = owidth;
 	    width -= owidth;
@@ -1412,8 +1416,8 @@ void InsetText::computeTextRows(Painter & pain) const
 		oasc = wordAscent;
 	    if (odesc < wordDescent)
 		odesc = wordDescent;
-	    rows[rows.size()-1].asc = oasc;
-	    rows[rows.size()-1].desc = odesc;
+	    rows[rows.size() - 1].asc = oasc;
+	    rows[rows.size() - 1].desc = odesc;
 	}
     }
     // alocate a dummy row for the endpos
@@ -1422,7 +1426,7 @@ void InsetText::computeTextRows(Painter & pain) const
     // calculate maxAscent/Descent
     maxAscent = rows[0].asc;
     maxDescent = rows[0].desc;
-    for (unsigned int i=1; i<rows.size()-1; ++i) {
+    for (unsigned int i = 1; i < rows.size() - 1; ++i) {
 	maxDescent += rows[i].asc + rows[i].desc + interline_space;
     }
 #if 0
@@ -1430,7 +1434,7 @@ void InsetText::computeTextRows(Painter & pain) const
 	computeBaselines(top_baseline);
 	actpos = inset_pos;
 	resetPos(bv);
-	inset_x = cx-top_x;
+	inset_x = cx - top_x;
 	inset_y = cy;
     }
 #endif
@@ -1440,8 +1444,8 @@ void InsetText::computeTextRows(Painter & pain) const
 void InsetText::computeBaselines(int baseline) const
 {
     rows[0].baseline = baseline;
-    for (unsigned int i=1; i<rows.size()-1; i++) {
-	rows[i].baseline = rows[i-1].baseline + rows[i-1].desc + 
+    for (unsigned int i = 1; i < rows.size() - 1; i++) {
+	rows[i].baseline = rows[i - 1].baseline + rows[i - 1].desc + 
 	    rows[i].asc + interline_space;
     }
 }

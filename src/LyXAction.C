@@ -180,6 +180,8 @@ void LyXAction::init()
 		{ LFUN_INSET_ERT, "ert-inset-insert",
 		  N_("Insert a new ERT Inset"), Noop },
 		{ LFUN_FIGURE, "figure-insert", N_("Insert Figure"), Noop },
+		{ LFUN_INSERT_GRAPHICS, "graphics-insert",
+		  N_("Insert Graphics"), Noop },
 		{ LFUN_FILE_INSERT, "file-insert", "", Noop },
 		{ LFUN_FILE_INSERT_ASCII, "file-insert-ascii", "", Noop },
 		{ LFUN_FILE_NEW, "file-new", "", NoBuffer },

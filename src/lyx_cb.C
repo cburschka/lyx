@@ -3549,7 +3549,7 @@ extern "C" void RefHideCB(FL_OBJECT *, long)
 // way to do this (and the cleanest for now). This function just inserts
 // a newline in the string and the inserts 'depth'-spaces so that the
 // code is indented in the right way!!!
-void addNewlineAndDepth(string & file, int const depth)
+void addNewlineAndDepth(string & file, int depth)
 {
 	file += '\n';
 	file.append(depth, ' ');

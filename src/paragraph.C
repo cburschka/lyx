@@ -35,7 +35,7 @@ using std::ios;
 #include "texrow.h"
 
 
-extern void addNewlineAndDepth(string & file, int const depth); // Jug 990923
+extern void addNewlineAndDepth(string & file, int depth); // Jug 990923
 int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 // this is a bad idea, but how can LyXParagraph find its buffer to get
 // parameters? (JMarc)
@@ -280,10 +280,12 @@ void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
 			os << "\n\\hfill \n";
 			column = 0;
 			break;
+#if 0
 		case META_PROTECTED_SEPARATOR: 
 			os << "\n\\protected_separator \n";
 			column = 0;
 			break;
+#endif
 		case '\\':
 			os << "\n\\backslash \n";
 			column = 0;
@@ -297,7 +299,7 @@ void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
 			break;
 		default:
 			if ((column > 70 && c == ' ')
-			    || column > 79){
+			    || column > 79) {
 				os << "\n";
 				column = 0;
 			}
@@ -1566,7 +1568,7 @@ void LyXParagraph::CloseFootnote(LyXParagraph::size_type pos)
 }
 
 
-LyXTextClass::LayoutList::size_type LyXParagraph::GetLayout() const
+LyXTextClass::size_type LyXParagraph::GetLayout() const
 {
 	return FirstPhysicalPar()->layout;
 }
@@ -1614,7 +1616,7 @@ void LyXParagraph::SetLabelWidthString(string const & s)
 }
 
 
-void LyXParagraph::SetOnlyLayout(LyXTextClass::LayoutList::size_type new_layout)
+void LyXParagraph::SetOnlyLayout(LyXTextClass::size_type new_layout)
 {
 	LyXParagraph * par = FirstPhysicalPar();
 	LyXParagraph * ppar = 0;
@@ -1659,7 +1661,7 @@ void LyXParagraph::SetOnlyLayout(LyXTextClass::LayoutList::size_type new_layout)
 }
 
 
-void LyXParagraph::SetLayout(LyXTextClass::LayoutList::size_type new_layout)
+void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
 {
 	LyXParagraph
 		* par = FirstPhysicalPar(),
@@ -1726,7 +1728,8 @@ int LyXParagraph::BeginningOfMainBody() const
 	// remove unnecessary GetChar() calls
 	size_type i = 0;
 	if (i < size()
-	    && GetChar(i) != LyXParagraph::META_NEWLINE) {
+	    && GetChar(i) != LyXParagraph::META_NEWLINE
+		) {
 		++i;
 		char previous_char, temp;
 		if (i < size()
@@ -2054,15 +2057,15 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 	if (table)
 		return SimpleTeXOneTablePar(file, texrow);
 
-	char c;
-	size_type main_body;
-	
 	bool return_value = false;
 
-	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass, GetLayout());
+	LyXLayout const & style =
+		textclasslist.Style(current_view->buffer()->params.textclass,
+				    GetLayout());
 	LyXFont basefont, last_font;
 
 	// Maybe we have to create a optional argument.
+	size_type main_body;
 	if (style.labeltype != LABEL_MANUAL)
 		main_body = 0;
 	else
@@ -2144,7 +2147,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 			}	 
 		}
 
-		c = GetChar(i);
+		int c = GetChar(i);
 
 		// Fully instantiated font
 		LyXFont font = getFont(i);
@@ -2505,9 +2508,11 @@ bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
 	case LyXParagraph::META_HFILL:
 		sgml_string.clear();
 		break;
+#if 0
 	case LyXParagraph::META_PROTECTED_SEPARATOR: 
 		sgml_string = ' ';
 		break;
+#endif
 	case LyXParagraph::META_NEWLINE:
 		sgml_string = '\n';
 		break;
@@ -2976,10 +2981,11 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 			// but I'll leave it as a switch statement
 			// so its simpler to extend. (ARRae)
 			switch (c) {
+#if 0
 			case LyXParagraph::META_PROTECTED_SEPARATOR: 
 			        file += ' ';
 			        break;
-
+#endif
 			default:
 				// make sure that we will not print
 				// error generating chars to the tex
@@ -2994,10 +3000,11 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 		} else {
 			// Plain mode (i.e. not LaTeX)
 			switch (c) {
+#if 0
 			case LyXParagraph::META_PROTECTED_SEPARATOR: 
 			        file += '~';
 			        break;
-
+#endif
 			case '\\': 
 				file += "\\textbackslash{}";
 				column += 15;
@@ -3169,6 +3176,7 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 }
 
 
+#if 0
 bool LyXParagraph::RoffContTableRows(ostream & os,
 				     LyXParagraph::size_type i,
 				     int actcell)
@@ -3209,6 +3217,34 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 			switch (c) {
 			case LyXParagraph::META_INSET:
 				if ((inset = GetInset(i))) {
+#if 1
+#ifdef HAVE_SSTREAM
+					stringstream ss(ios::in | ios::out);
+					inset->Latex(ss, -1);
+					ss.seekp(0);
+					ss.get(c);
+					while (!ss) {
+						if (c == '\\')
+							os << "\\\\";
+						else
+							os << c;
+						ss.get(c);
+					}
+#else
+					strstream ss;
+					inset->Latex(ss, -1);
+					ss.seekp(0);
+					ss.get(c);
+					while (!ss) {
+						if (c == '\\')
+							os << "\\\\";
+						else
+							os << c;
+						ss.get(c);
+					}
+					delete [] ss.str();
+#endif
+#else
 					fstream fs(fname2.c_str(),
 						   ios::in|ios::out);
 					if (!fs) {
@@ -3228,14 +3264,17 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 						fs.get(c);
 					}
 					fs.close();
+#endif
 				}
 				break;
 			case LyXParagraph::META_NEWLINE:
 				break;
 			case LyXParagraph::META_HFILL: 
 				break;
+#if 0
 			case LyXParagraph::META_PROTECTED_SEPARATOR:
 				break;
+#endif
 			case '\\': 
 				os << "\\\\";
 				break;
@@ -3253,6 +3292,7 @@ bool LyXParagraph::RoffContTableRows(ostream & os,
 	}
 	return true;
 }
+#endif
 
 
 LyXParagraph * LyXParagraph::TeXDeeper(string & file, TexRow & texrow,
@@ -3575,8 +3615,9 @@ LyXParagraph * LyXParagraph::TeXFootnote(string & file, TexRow & texrow,
 			"No footnote!" << endl;
 
 	LyXParagraph * par = this;
-	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass, 
-						      previous->GetLayout());
+	LyXLayout const & style =
+		textclasslist.Style(current_view->buffer()->params.textclass, 
+				    previous->GetLayout());
 	
 	if (style.needprotect && footnotekind != LyXParagraph::FOOTNOTE){
 		lyxerr << "ERROR (LyXParagraph::TeXFootnote): "
@@ -3702,8 +3743,10 @@ LyXParagraph * LyXParagraph::TeXFootnote(string & file, TexRow & texrow,
 		// Process text for all floats except footnotes in body
 		do {
 			LyXLayout const & style =
-				textclasslist.Style(current_view->buffer()->params.textclass,
-						    par->layout);
+				textclasslist
+				.Style(current_view->buffer()->params
+				       .textclass,
+				       par->layout);
 			if (par->IsDummy())
 				lyxerr << "ERROR (LyXParagraph::TeXFootnote)"
 				       << endl;
@@ -3737,8 +3780,10 @@ LyXParagraph * LyXParagraph::TeXFootnote(string & file, TexRow & texrow,
 		int dummy_count = 0;
 		do {
 			LyXLayout const & style =
-				textclasslist.Style(current_view->buffer()->params.textclass,
-						    par->layout);
+				textclasslist
+				.Style(current_view->buffer()->params
+				       .textclass,
+				       par->layout);
 			if (par->IsDummy())
 				lyxerr << "ERROR (LyXParagraph::TeXFootnote)"
 				       << endl;

@@ -116,9 +116,9 @@ void InsetERT::draw_closed(Painter & pain, LyXFont const & f,
 	font.decSize();
 	font.setColor(LColor::ert);
 	int width;
-	pain.buttonText(int(x)+TEXT_TO_INSET_OFFSET, baseline, _("ERT"), font,
-			true, width);
-	x += width + (2*TEXT_TO_INSET_OFFSET);
+	pain.buttonText(int(x) + TEXT_TO_INSET_OFFSET, baseline,
+			_("ERT"), font, true, width);
+	x += width + (2 * TEXT_TO_INSET_OFFSET);
 }
 
 

@@ -19,6 +19,8 @@ libinsets_la_SOURCES = \
 	inseterror.h \
 	insetert.C \
 	insetert.h \
+	insetgraphics.C \
+	insetgraphics.h \
 	insetinclude.C \
 	insetinclude.h \
 	insetindex.C \

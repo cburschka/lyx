@@ -361,10 +361,12 @@ private:
 	/// LinuxDoc.
 	void pop_tag(ostream & os, char const * tag,
 		     int & pos, char stack[5][3]);
-	
+
+#if 0
 	///
 	void RoffAsciiTable(ostream &, LyXParagraph * par);
-
+#endif
+	
 	/// is save needed
 	mutable bool lyx_clean;
 	

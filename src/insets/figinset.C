@@ -235,11 +235,10 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 				// query current colormap
 					XColor * cmap = new XColor[gs_allcolors];
 					for (i = 0; i < gs_allcolors; ++i) cmap[i].pixel = i;
-#if 1
-					XQueryColors(tmpdisp, fl_state[fl_get_vclass()].colormap, cmap, gs_allcolors);
-#else
-					XQueryColors(tmpdisp, color_map, cmap, gs_allcolors);
-#endif
+					XQueryColors(tmpdisp,
+						     fl_state[fl_get_vclass()]
+						     .colormap, cmap,
+						     gs_allcolors);
 					XFlush(tmpdisp);
 					wid1 = p->wid - 1;
 				// now we process all the image
@@ -304,7 +303,8 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 }
 
 
-static void AllocColors(int num)
+static
+void AllocColors(int num)
 // allocate color cube numxnumxnum, if possible
 {
 	if (lyxerr.debugging()) {
@@ -458,7 +458,8 @@ int FindBmpIndex(figdata * tmpdata)
 }
 
 
-static void freefigdata(figdata * tmpdata)
+static
+void freefigdata(figdata * tmpdata)
 {
 	tmpdata->ref--;
 	if (tmpdata->ref) return;
@@ -484,7 +485,8 @@ static void freefigdata(figdata * tmpdata)
 }
 
 
-static void runqueue()
+static
+void runqueue()
 {
 	// run queued requests for ghostscript, if any
 	if (!gsrunning && gs_color && !gs_xcolor) {
@@ -700,7 +702,8 @@ static void runqueue()
 }
 
 
-static void addwait(int psx, int psy, int pswid, int pshgh, figdata * data)
+static
+void addwait(int psx, int psy, int pswid, int pshgh, figdata * data)
 {
 	// recompute the stuff and put in the queue
 	queue_element p;
@@ -718,7 +721,8 @@ static void addwait(int psx, int psy, int pswid, int pshgh, figdata * data)
 }
 
 
-static figdata * getfigdata(int wid, int hgh, string const & fname, 
+static
+figdata * getfigdata(int wid, int hgh, string const & fname, 
 			    int psx, int psy, int pswid, int pshgh, 
 			    int raw_wid, int raw_hgh, float angle, char flags)
 {
@@ -808,8 +812,6 @@ void makeupdatelist(figdata * p)
 			}
 			// add inset figures[i]->inset into to_update list
 			current_view->pushIntoUpdateList(figures[i]->inset);
-			
-			//PutInsetIntoInsetUpdateList(figures[i]->inset);
 		}
 }
 
@@ -896,7 +898,8 @@ void sigchldchecker(pid_t pid, int * status)
 }
 
 
-static void getbitmaps()
+static
+void getbitmaps()
 {
 	bitmap_waiting = false;
 	for (int i = 0; i < bmpinsref; ++i)
@@ -905,7 +908,8 @@ static void getbitmaps()
 }
 
 
-static void RegisterFigure(InsetFig * fi)
+static
+void RegisterFigure(InsetFig * fi)
 {
 	if (figinsref == 0) InitFigures();
 	fi->form = 0;
@@ -916,7 +920,7 @@ static void RegisterFigure(InsetFig * fi)
 		typedef Figref * Figref_p;
 		Figref ** tmp = new Figref_p[figarrsize];
 		memcpy(tmp, figures,
-		       sizeof(Figref*)*(figarrsize-figallocchunk));
+		       sizeof(Figref*) * (figarrsize-figallocchunk));
 		delete[] figures;
 		figures = tmp;
 	}
@@ -944,7 +948,8 @@ int FindFigIndex(Figref * tmpfig)
 }
 
 
-static void UnregisterFigure(InsetFig * fi)
+static
+void UnregisterFigure(InsetFig * fi)
 {
 	Figref * tmpfig = fi->figure;
 
@@ -975,7 +980,8 @@ static void UnregisterFigure(InsetFig * fi)
 }
 
 
-static string NextToken(istream & is)
+static
+string NextToken(istream & is)
 {
 	string token;
 	char c;
@@ -1036,7 +1042,8 @@ int InsetFig::width(Painter &, LyXFont const &) const
 }
 
 
-void InsetFig::draw(Painter & pain, LyXFont const & f, int baseline, float & x) const
+void InsetFig::draw(Painter & pain, LyXFont const & f,
+		    int baseline, float & x) const
 {
 	LyXFont font(f);
 	

@@ -789,7 +789,7 @@ void BufferView::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 }
 
 
-void BufferView::trippleClick(int /*x*/, int /*y*/, unsigned int button)
+void BufferView::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 {
 	// select a line
 	if (buffer_ && screen && button == 1) {

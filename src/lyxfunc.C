@@ -43,6 +43,7 @@
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
 #include "insets/insetert.h"
+#include "insets/insetgraphics.h"
 #include "mathed/formulamacro.h"
 #include "toolbar.h"
 #include "spellchecker.h" // RVDK_PATCH_5
@@ -117,7 +118,7 @@ extern Buffer * NewLyxFile(string const &);
 extern void LoadLyXFile(string const &);
 extern void Reconfigure(BufferView *);
 
-extern int current_layout;
+extern LyXTextClass::size_type current_layout;
 extern int getISOCodeFromLaTeX(char *);
 
 extern void ShowLatexLog();
@@ -835,7 +836,14 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_FIGURE:
 		Figure();
 		break;
-		
+
+	case LFUN_INSERT_GRAPHICS:
+	{
+		Inset * new_inset = new InsetGraphics;
+		owner->view()->insertInset(new_inset);
+		break;
+	}
+	
 	case LFUN_AUTOSAVE:
 		AutoSave();
 		break;
@@ -1081,7 +1089,7 @@ string LyXFunc::Dispatch(int ac,
 		// and current buffer's textclass (number). */    
 		LyXTextClassList::ClassList::size_type tclass =
 			owner->view()->text->parameters->textclass;
-		pair <bool, int> layout = 
+		pair <bool, LyXTextClass::size_type> layout = 
 			textclasslist.NumberOfLayout(tclass, argument);
 
 		// If the entry is obsolete, use the new one instead.
@@ -1614,20 +1622,28 @@ string LyXFunc::Dispatch(int ac,
 
 		// --- text changing commands ------------------------
 	case LFUN_BREAKLINE:
+#if 1
 		owner->view()->beforeChange();
 		owner->view()->text->InsertChar(LyXParagraph::META_NEWLINE);
 		owner->view()->smallUpdate(1);
 		SetUpdateTimer(0.01);
 		moveCursorUpdate(false);
+#else
+		owner->view()->newline();
+#endif
 		break;
 		
 	case LFUN_PROTECTEDSPACE:
+#if 1
+		owner->view()->protectedBlank();
+#else
 		owner->view()->beforeChange();
 		owner->view()->text->
 			InsertChar(LyXParagraph::META_PROTECTED_SEPARATOR);
 		owner->view()->smallUpdate(1);
 		SetUpdateTimer();
                 moveCursorUpdate(false);
+#endif
 		break;
 		
 	case LFUN_SETMARK:

@@ -242,6 +242,7 @@ enum kb_action {
 	LFUN_RTL,                       // Dekel 20000203
 	LFUN_INSET_TEXT,		// Jug 20000214
 	LFUN_INSET_ERT,			// Jug 20000218
+	LFUN_INSERT_GRAPHICS,           // Lgb 20000226
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

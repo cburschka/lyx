@@ -38,26 +38,36 @@ int InsetSpecialChar::descent(Painter &, LyXFont const & font) const
 
 int InsetSpecialChar::width(Painter &, LyXFont const & font) const
 {
-	LyXFont f(font);
 	switch (kind) {
 	case HYPHENATION:
 	{
-		int w = f.textWidth("-", 1);
+		int w = font.textWidth("-", 1);
 		if (w > 5) 
 			w -= 2; // to make it look shorter
 		return w;
 	}
 	case END_OF_SENTENCE:
 	{
-		return f.textWidth(".", 1);
+		return font.textWidth(".", 1);
 	}
 	case LDOTS:
 	{
-		return f.textWidth(". . .", 5);
+		return font.textWidth(". . .", 5);
 	}
-	case MENU_SEPARATOR: {
-		return f.textWidth(" x ", 3);
+	case MENU_SEPARATOR:
+	{
+		return font.textWidth(" x ", 3);
 	}
+#if 0
+	case NEWLINE:
+	{
+	}
+#endif
+	case PROTECTED_SEPARATOR:
+	{
+		return font.textWidth("x", 1);
+	}
+	
 	}
 	return 1; // To shut up gcc
 }
@@ -104,6 +114,34 @@ void InsetSpecialChar::draw(Painter & pain, LyXFont const & f,
 		
 		pain.lines(xp, yp, 4, LColor::special);
 		x += width(pain, font);
+		break;
+	}
+#if 0
+	case NEWLINE:
+	{
+	}
+#endif
+	case PROTECTED_SEPARATOR:
+	{
+		float w = width(pain, font);
+		int h = font.ascent('x');
+		int xp[4], yp[4];
+		
+		xp[0] = int(x);
+		yp[0] = baseline - max(h / 4, 1);
+
+		xp[1] = int(x);
+		yp[1] = baseline;
+
+		xp[2] = int(x + w);
+		yp[2] = baseline;
+
+		xp[3] = int(x + w);
+		yp[3] = baseline - max(h / 4, 1);
+		
+		pain.lines(xp, yp, 4, LColor::special);
+		x += w;
+		break;
 	}
 	}
 }
@@ -118,6 +156,11 @@ void InsetSpecialChar::Write(ostream & os) const
 	case END_OF_SENTENCE:	command = "\\@.";	break;
 	case LDOTS:		command = "\\ldots{}";	break;
 	case MENU_SEPARATOR:    command = "\\menuseparator"; break;
+#if 0
+	case NEWLINE:           command = "\\newline";  break;
+#endif
+	case PROTECTED_SEPARATOR:
+		                command = "\\protected_separator";          break;
 	}
 	os << "\\SpecialChar " << command << "\n";
 }
@@ -137,6 +180,8 @@ void InsetSpecialChar::Read(LyXLex & lex)
 		kind = LDOTS;
 	else if (command == "\\menuseparator")
 	        kind = MENU_SEPARATOR;
+	else if (command == "\\protected_separator")
+		kind = PROTECTED_SEPARATOR;
 	else
 		lex.printError("InsetSpecialChar: Unknown kind: `$$Token'");
 }
@@ -159,6 +204,7 @@ int InsetSpecialChar::Latex(string & file, signed char /*fragile*/) const
 	case END_OF_SENTENCE:	file += "\\@.";	break;
 	case LDOTS:		file += "\\ldots{}";	break;
 	case MENU_SEPARATOR:    file += "\\lyxarrow{}"; break;
+	case PROTECTED_SEPARATOR: file += "~";          break;
 	}
 	return 0;
 }
@@ -171,6 +217,7 @@ int InsetSpecialChar::Linuxdoc(string & file) const
 	case END_OF_SENTENCE:	file += "";	break;
 	case LDOTS:		file += "...";	break;
 	case MENU_SEPARATOR:    file += "->";   break;
+	case PROTECTED_SEPARATOR:    file += " ";   break;
 	}
 	return 0;
 }
@@ -183,6 +230,7 @@ int InsetSpecialChar::DocBook(string & file) const
 	case END_OF_SENTENCE:	file += "";	break;
 	case LDOTS:		file += "...";	break;
 	case MENU_SEPARATOR:    file += "->";   break;
+	case PROTECTED_SEPARATOR:    file += " ";   break;
 	}
 	return 0;
 }

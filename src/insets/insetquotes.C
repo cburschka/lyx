@@ -81,7 +81,10 @@ InsetQuotes::InsetQuotes(char c, BufferParams const & params)
 	switch(c) {
 	case ' ': case '(': case '{': case '[': case '-': case ':':
 	case LyXParagraph::META_HFILL:
+#warning think about this
+#if 0
 	case LyXParagraph::META_PROTECTED_SEPARATOR:
+#endif
 	case LyXParagraph::META_NEWLINE: 
 		side = InsetQuotes::LeftQ;   // left quote 
 		break;

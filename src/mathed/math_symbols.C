@@ -39,8 +39,6 @@ using std::max;
 #include "math_panel.h"                 
 #include "math_parser.h"
 
-//extern void Update(signed char);
-//extern int UnlockInset(UpdatableInset *);
 extern short greek_kb_flag;
 
 extern BufferView * current_view;
@@ -271,7 +269,7 @@ extern "C" int C_peek_event(FL_FORM *form, void *ptr) {
 
 extern "C" void math_cb(FL_OBJECT* ob, long data)
 {
-   BitmapMenu* menu = (BitmapMenu*)ob->u_vdata;
+   BitmapMenu * menu = static_cast<BitmapMenu*>(ob->u_vdata);
    int i = menu->GetIndex(ob);   
    char const *s = 0;
 

@@ -244,7 +244,7 @@ private:
 	///
 	void doubleClick(int x, int y, unsigned int button);
 	///
-	void trippleClick(int x, int y, unsigned int button);
+	void tripleClick(int x, int y, unsigned int button);
 	///
 	LyXView * owner_;
 	///

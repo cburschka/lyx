@@ -94,6 +94,7 @@ enum LayoutTags {
 };
 
 
+#if 0
 // This table is sorted alphabetically [asierra 30March96]
 static keyword_item layoutTags[] = {
 	{ "align",			LT_ALIGN },
@@ -133,6 +134,7 @@ static keyword_item layoutTags[] = {
 	{ "textfont",                   LT_TEXTFONT },
 	{ "topsep",			LT_TOPSEP }
 };
+#endif
 
 
 /////////////////////
@@ -171,6 +173,47 @@ LyXLayout::LyXLayout ()
 // Reads a layout definition from file
 bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 {
+#if 1
+	// This table is sorted alphabetically [asierra 30March96]
+	keyword_item layoutTags[] = {
+		{ "align",			LT_ALIGN },
+		{ "alignpossible",		LT_ALIGNPOSSIBLE },
+		{ "bottomsep",			LT_BOTTOMSEP },
+		{ "copystyle",                  LT_COPYSTYLE },
+		{ "end",			LT_END },
+		{ "fill_bottom",		LT_FILL_BOTTOM },
+		{ "fill_top",			LT_FILL_TOP },
+		{ "font",                  	LT_FONT },
+		{ "freespacing",	   	LT_FREE_SPACING },
+		{ "intitle",                    LT_INTITLE },
+		{ "itemsep",               	LT_ITEMSEP },
+		{ "keepempty",                  LT_KEEPEMPTY },
+		{ "labelbottomsep",             LT_LABEL_BOTTOMSEP },
+		{ "labelfont",             	LT_LABELFONT },
+		{ "labelindent",           	LT_LABELINDENT },
+		{ "labelsep",              	LT_LABELSEP },
+		{ "labelstring",           	LT_LABELSTRING },
+		{ "labelstringappendix",        LT_LABELSTRING_APPENDIX },
+		{ "labeltype",             	LT_LABELTYPE },
+		{ "latexname",             	LT_LATEXNAME },
+		{ "latexparam",			LT_LATEXPARAM },
+		{ "latextype",             	LT_LATEXTYPE },
+		{ "leftmargin",            	LT_LEFTMARGIN },
+		{ "margin",                	LT_MARGIN },
+		{ "needprotect",                LT_NEED_PROTECT },
+		{ "newline",			LT_NEWLINE },
+		{ "nextnoindent",		LT_NEXTNOINDENT },
+		{ "obsoletedby",                LT_OBSOLETEDBY },
+		{ "parindent",			LT_PARINDENT },
+		{ "parsep",			LT_PARSEP },
+		{ "parskip",			LT_PARSKIP },
+		{ "preamble",                   LT_PREAMBLE },
+		{ "rightmargin",		LT_RIGHTMARGIN },
+		{ "spacing",                    LT_SPACING },
+		{ "textfont",                   LT_TEXTFONT },
+		{ "topsep",			LT_TOPSEP }
+	};
+#endif
 	bool error = false;
 	bool finished = false;
 	lexrc.pushTable(layoutTags, LT_INTITLE);
@@ -392,6 +435,7 @@ enum AlignTags {
 };
 
 
+#if 0
 static keyword_item alignTags[] = {
 	{ "block",  AT_BLOCK },
 	{ "center", AT_CENTER },
@@ -399,10 +443,19 @@ static keyword_item alignTags[] = {
 	{ "left",   AT_LEFT },
 	{ "right",  AT_RIGHT }
 };
-
+#endif
 
 void LyXLayout::readAlign(LyXLex & lexrc)
 {
+#if 1
+	keyword_item alignTags[] = {
+		{ "block",  AT_BLOCK },
+		{ "center", AT_CENTER },
+		{ "layout", AT_LAYOUT },
+		{ "left",   AT_LEFT },
+		{ "right",  AT_RIGHT }
+	};
+#endif
 	pushpophelper pph(lexrc, alignTags, AT_LAYOUT);
 	int le = lexrc.lex();
 	switch (le) {
@@ -433,6 +486,15 @@ void LyXLayout::readAlign(LyXLex & lexrc)
 
 void LyXLayout::readAlignPossible(LyXLex & lexrc)
 {
+#if 1
+	keyword_item alignTags[] = {
+		{ "block",  AT_BLOCK },
+		{ "center", AT_CENTER },
+		{ "layout", AT_LAYOUT },
+		{ "left",   AT_LEFT },
+		{ "right",  AT_RIGHT }
+	};
+#endif
 	lexrc.pushTable(alignTags, AT_LAYOUT);
 	alignpossible = LYX_ALIGN_NONE;
 	int lineno = lexrc.GetLineNo();
@@ -487,6 +549,7 @@ enum LabelTypeTags {
 };
 
 
+#if 0
 static keyword_item labelTypeTags[] = {
 	{ "bibliography",             LA_BIBLIO },
 	{ "centered_top_environment", LA_CENTERED_TOP_ENVIRONMENT },
@@ -506,10 +569,32 @@ static keyword_item labelTypeTags[] = {
 	{ "static",                   LA_STATIC },
 	{ "top_environment",          LA_TOP_ENVIRONMENT }
 };
+#endif
 
 
 void LyXLayout::readLabelType(LyXLex & lexrc)
 {
+#if 1
+	keyword_item labelTypeTags[] = {
+	{ "bibliography",             LA_BIBLIO },
+	{ "centered_top_environment", LA_CENTERED_TOP_ENVIRONMENT },
+	{ "counter_chapter",	      LA_COUNTER_CHAPTER },
+	{ "counter_enumi",            LA_COUNTER_ENUMI },
+	{ "counter_enumii",           LA_COUNTER_ENUMII },
+	{ "counter_enumiii",          LA_COUNTER_ENUMIII },
+	{ "counter_enumiv",           LA_COUNTER_ENUMIV },
+	{ "counter_paragraph",        LA_COUNTER_PARAGRAPH },
+	{ "counter_section",          LA_COUNTER_SECTION },
+	{ "counter_subparagraph",     LA_COUNTER_SUBPARAGRAPH },
+	{ "counter_subsection",	      LA_COUNTER_SUBSECTION },
+	{ "counter_subsubsection",    LA_COUNTER_SUBSUBSECTION },
+	{ "manual",                   LA_MANUAL },
+	{ "no_label",                 LA_NO_LABEL },
+	{ "sensitive",                LA_SENSITIVE },
+	{ "static",                   LA_STATIC },
+	{ "top_environment",          LA_TOP_ENVIRONMENT }
+};
+#endif
 	pushpophelper pph(lexrc, labelTypeTags, LA_BIBLIO);
 	int le = lexrc.lex();
 	switch (le) {
@@ -574,97 +659,87 @@ void LyXLayout::readLabelType(LyXLex & lexrc)
 }
 
 
-enum MarginTags {
-	MT_STATIC = 1,
-	MT_MANUAL,
-	MT_DYNAMIC,
-	MT_FIRST_DYNAMIC,
-	MT_RIGHT_ADDRESS_BOX
-};
-
-
+#if 0
 static keyword_item marginTags[] = {
-	{ "dynamic",           MT_DYNAMIC },
-	{ "first_dynamic",     MT_FIRST_DYNAMIC },
-	{ "manual",            MT_MANUAL },
-	{ "right_address_box", MT_RIGHT_ADDRESS_BOX },
-	{ "static",            MT_STATIC }
+	{ "dynamic",           MARGIN_DYNAMIC },
+	{ "first_dynamic",     MARGIN_FIRST_DYNAMIC },
+	{ "manual",            MARGIN_MANUAL },
+	{ "right_address_box", MARGIN_RIGHT_ADDRESS_BOX },
+	{ "static",            MARGIN_STATIC }
 };
-
+#endif
 
 void LyXLayout::readMargin(LyXLex & lexrc)
 {
-	pushpophelper pph(lexrc, marginTags, MT_RIGHT_ADDRESS_BOX);
+#if 1
+	keyword_item marginTags[] = {
+		{ "dynamic",           MARGIN_DYNAMIC },
+		{ "first_dynamic",     MARGIN_FIRST_DYNAMIC },
+		{ "manual",            MARGIN_MANUAL },
+		{ "right_address_box", MARGIN_RIGHT_ADDRESS_BOX },
+		{ "static",            MARGIN_STATIC }
+	};
+#endif
+	pushpophelper pph(lexrc, marginTags, MARGIN_RIGHT_ADDRESS_BOX);
+
 	int le = lexrc.lex();
 	switch(le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown margin type tag `$$Token'");
-		return; 
-	default: break;
-	}
-	switch(static_cast<MarginTags>(le)) {
-	case MT_STATIC:
-		margintype = MARGIN_STATIC;
+		return;
+	case MARGIN_STATIC:
+	case MARGIN_MANUAL:
+	case MARGIN_DYNAMIC:
+	case MARGIN_FIRST_DYNAMIC:
+	case MARGIN_RIGHT_ADDRESS_BOX:
+		margintype = static_cast<LYX_MARGIN_TYPE>(le);
 		break;
-	case MT_MANUAL:
-		margintype = MARGIN_MANUAL;
-		break;
-	case MT_DYNAMIC:
-		margintype = MARGIN_DYNAMIC;
-		break;
-	case MT_FIRST_DYNAMIC:
-		margintype = MARGIN_FIRST_DYNAMIC;
-		break;
-	case MT_RIGHT_ADDRESS_BOX:
-		margintype = MARGIN_RIGHT_ADDRESS_BOX;
+	default:
+		lyxerr << "Unhandled value " << le
+		       << " in LyXLayout::readMargin." << endl;
 		break;
 	}
 }
 
 
-enum LatexTypeTags {
-	LX_PARAGRAPH = 1,
-	LX_COMMAND,
-	LX_ENVIRONMENT,
-	LX_ITEM_ENVIRONMENT,
-	LX_LIST_ENVIRONMENT
-};
-
-
+#if 0
 static keyword_item latexTypeTags[] = {
-	{ "command",          LX_COMMAND },
-	{ "environment",      LX_ENVIRONMENT },
-	{ "item_environment", LX_ITEM_ENVIRONMENT },
-	{ "list_environment", LX_LIST_ENVIRONMENT },
-	{ "paragraph",        LX_PARAGRAPH }
+	{ "command",          LATEX_COMMAND },
+	{ "environment",      LATEX_ENVIRONMENT },
+	{ "item_environment", LATEX_ITEM_ENVIRONMENT },
+	{ "list_environment", LATEX_LIST_ENVIRONMENT },
+	{ "paragraph",        LATEX_PARAGRAPH }
 };
+#endif
 
 
 void LyXLayout::readLatexType(LyXLex & lexrc)
 {
-	pushpophelper pph(lexrc, latexTypeTags, LX_LIST_ENVIRONMENT);
+#if 1
+	keyword_item latexTypeTags[] = {
+		{ "command",          LATEX_COMMAND },
+		{ "environment",      LATEX_ENVIRONMENT },
+		{ "item_environment", LATEX_ITEM_ENVIRONMENT },
+		{ "list_environment", LATEX_LIST_ENVIRONMENT },
+		{ "paragraph",        LATEX_PARAGRAPH }
+};
+#endif
+	pushpophelper pph(lexrc, latexTypeTags, LATEX_LIST_ENVIRONMENT);
 	int le = lexrc.lex();
 	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown latextype tag `$$Token'");
-		return; 
-	default: break;
-	}
-	switch (static_cast<LatexTypeTags>(le)) {
-	case LX_PARAGRAPH:
-		latextype= LATEX_PARAGRAPH;
+		return;
+	case LATEX_PARAGRAPH:
+	case LATEX_COMMAND:
+	case LATEX_ENVIRONMENT:
+	case LATEX_ITEM_ENVIRONMENT:
+	case LATEX_LIST_ENVIRONMENT:
+		latextype = static_cast<LYX_LATEX_TYPES>(le);
 		break;
-	case LX_COMMAND:
-		latextype= LATEX_COMMAND;
-		break;
-	case LX_ENVIRONMENT:
-		latextype= LATEX_ENVIRONMENT;
-		break;
-	case LX_ITEM_ENVIRONMENT:
-		latextype= LATEX_ITEM_ENVIRONMENT;
-		break;
-	case LX_LIST_ENVIRONMENT:
-		latextype= LATEX_LIST_ENVIRONMENT;
+	default:
+		lyxerr << "Unhandled value " << le
+		       << " in LyXLayout::readLatexType." << endl;
 		break;
 	}
 }
@@ -678,16 +753,26 @@ enum SpacingTags {
 };
 
 
+#if 0
 static keyword_item spacingTags[] = {
 	{"double",  ST_SPACING_DOUBLE },
 	{"onehalf", ST_SPACING_ONEHALF },
 	{"other",   ST_OTHER },
 	{"single",  ST_SPACING_SINGLE }
 };
+#endif
 
 
 void LyXLayout::readSpacing(LyXLex & lexrc)
 {
+#if 1
+	keyword_item spacingTags[] = {
+		{"double",  ST_SPACING_DOUBLE },
+		{"onehalf", ST_SPACING_ONEHALF },
+		{"other",   ST_OTHER },
+		{"single",  ST_SPACING_SINGLE }
+	};
+#endif
 	pushpophelper pph(lexrc, spacingTags, ST_OTHER);
 	int le = lexrc.lex();
 	switch(le) {
@@ -773,6 +858,7 @@ enum TextClassTags {
 };
 
 
+#if 0
 static keyword_item textClassTags[] = {
 	{ "classoptions",    TC_CLASSOPTIONS },
 	{ "columns",         TC_COLUMNS },
@@ -793,11 +879,34 @@ static keyword_item textClassTags[] = {
 	{ "style",           TC_STYLE },
 	{ "tocdepth",        TC_TOCDEPTH }
 };
+#endif
 
 
 // Reads a textclass structure from file.
 bool LyXTextClass::Read(string const & filename, bool merge)
 {
+#if 1
+	keyword_item textClassTags[] = {
+		{ "classoptions",    TC_CLASSOPTIONS },
+		{ "columns",         TC_COLUMNS },
+		{ "defaultfont",     TC_DEFAULTFONT },
+		{ "input",           TC_INPUT },
+		{ "leftmargin",      TC_LEFTMARGIN },
+		{ "maxcounter",      TC_MAXCOUNTER },
+		{ "nostyle",         TC_NOSTYLE },
+		{ "outputtype",      TC_OUTPUTTYPE },
+		{ "pagestyle",       TC_PAGESTYLE },
+		{ "preamble",        TC_PREAMBLE },
+		{ "providesamsmath", TC_PROVIDESAMSMATH },
+		{ "providesmakeidx", TC_PROVIDESMAKEIDX },
+		{ "providesurl",     TC_PROVIDESURL },
+		{ "rightmargin",     TC_RIGHTMARGIN },
+		{ "secnumdepth",     TC_SECNUMDEPTH },
+		{ "sides",           TC_SIDES },
+		{ "style",           TC_STYLE },
+		{ "tocdepth",        TC_TOCDEPTH }
+};
+#endif
 	if (!merge)
 		lyxerr[Debug::TCLASS] << "Reading textclass "
 				      << MakeDisplayPath(filename)
@@ -972,44 +1081,42 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 }
 
 
-enum OutputTypeTags {
-	OT_OTLATEX = 1,
-	OT_OTLINUXDOC,
-	OT_OTDOCBOOK,
-	OT_OTLITERATE
-};
-
-
+#if 0
 static keyword_item outputTypeTags[] = {
-	{ "docbook", OT_OTDOCBOOK },
-	{ "latex", OT_OTLATEX },
-	{ "linuxdoc", OT_OTLINUXDOC },
-	{ "literate", OT_OTLITERATE }
+	{ "docbook", DOCBOOK },
+	{ "latex", LATEX },
+	{ "linuxdoc", LINUXDOC },
+	{ "literate", LITERATE }
 };
-
+#endif
 
 void LyXTextClass::readOutputType(LyXLex & lexrc)
 {
-	pushpophelper pph(lexrc, outputTypeTags, OT_OTLITERATE);
+#if 1
+	keyword_item outputTypeTags[] = {
+		{ "docbook", DOCBOOK },
+		{ "latex", LATEX },
+		{ "linuxdoc", LINUXDOC },
+		{ "literate", LITERATE }
+};
+#endif
+	pushpophelper pph(lexrc, outputTypeTags, LITERATE);
+
 	int le = lexrc.lex();
 	switch(le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown output type `$$Token'");
-		return; 
-	default: break;
-	}
-	switch(static_cast<OutputTypeTags>(le)) {
-	case OT_OTLATEX:
-		outputType_ = LATEX;
+		return;
+	case LATEX:
+	case LINUXDOC:
+	case DOCBOOK:
+	case LITERATE:
+		outputType_ = static_cast<OutputType>(le);
 		break;
-	case OT_OTLINUXDOC:
-		outputType_ = LINUXDOC;
-		break;
-	case OT_OTDOCBOOK:
-		outputType_ = DOCBOOK;
-		break;
-	case OT_OTLITERATE:
-		outputType_ = LITERATE;
+	default:
+		lyxerr << "Unhandled value " << le
+		       << " in LyXTextClass::readOutputType." << endl;
+
 		break;
 	}
 }
@@ -1029,6 +1136,7 @@ enum MaxCounterTags {
 };
 
 
+#if 0
 static keyword_item maxCounterTags[] = {
 	{"counter_chapter", MC_COUNTER_CHAPTER },
 	{"counter_enumi", MC_COUNTER_ENUMI },
@@ -1041,10 +1149,25 @@ static keyword_item maxCounterTags[] = {
 	{"counter_subsection", MC_COUNTER_SUBSECTION },
 	{"counter_subsubsection", MC_COUNTER_SUBSUBSECTION }
 };
+#endif
 
 
 void LyXTextClass::readMaxCounter(LyXLex & lexrc)
 {
+#if 1
+	keyword_item maxCounterTags[] = {
+		{"counter_chapter", MC_COUNTER_CHAPTER },
+		{"counter_enumi", MC_COUNTER_ENUMI },
+		{"counter_enumii", MC_COUNTER_ENUMII },
+		{"counter_enumiii", MC_COUNTER_ENUMIII },
+		{"counter_enumiv", MC_COUNTER_ENUMIV },
+		{"counter_paragraph", MC_COUNTER_PARAGRAPH },
+		{"counter_section", MC_COUNTER_SECTION },
+		{"counter_subparagraph", MC_COUNTER_SUBPARAGRAPH },
+		{"counter_subsection", MC_COUNTER_SUBSECTION },
+		{"counter_subsubsection", MC_COUNTER_SUBSUBSECTION }
+	};
+#endif
 	pushpophelper pph(lexrc, maxCounterTags, MC_COUNTER_ENUMIV);
 	int le = lexrc.lex();
 	switch(le) {
@@ -1096,16 +1219,26 @@ enum ClassOptionsTags {
 };
 
 
+#if 0
 static keyword_item classOptionsTags[] = {
 	{"end", CO_END },
 	{"fontsize", CO_FONTSIZE },
 	{"other", CO_OTHER },
 	{"pagestyle", CO_PAGESTYLE }
 };
+#endif
 
 
 void LyXTextClass::readClassOptions(LyXLex & lexrc)
 {
+#if 1
+	keyword_item classOptionsTags[] = {
+		{"end", CO_END },
+		{"fontsize", CO_FONTSIZE },
+		{"other", CO_OTHER },
+		{"pagestyle", CO_PAGESTYLE }
+	};
+#endif
 	lexrc.pushTable(classOptionsTags, CO_END);
 	bool getout = false;
 	while (!getout && lexrc.IsOK()) {

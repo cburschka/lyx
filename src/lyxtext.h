@@ -392,7 +392,8 @@ public:
 	  for a list of paragraphs beginning with the specified par 
 	  return value is the number of wrong conversions
 	  */ 
-	int SwitchLayoutsBetweenClasses(char class1, char class2,
+	int SwitchLayoutsBetweenClasses(LyXTextClassList::size_type class1,
+					LyXTextClassList::size_type class2,
 					LyXParagraph * par);
 
 	/* for the greater insets */

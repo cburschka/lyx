@@ -38,7 +38,7 @@ extern FD_form_document * fd_form_document;
 extern void AutoSave();
 extern char updatetimer;
 extern void QuitLyX();
-int current_layout = 0;
+LyXTextClass::size_type current_layout = 0;
 
 // This is very temporary
 BufferView * current_view;

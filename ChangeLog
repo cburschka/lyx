@@ -1,3 +1,34 @@
+2000-03-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* some things that I should comment but the local pub says head to
+	swirly... 
+	
+	* comment out all code that belongs to the Roff code for Ascii
+	export of tables. (this is unused)
+	
+	* src/LyXView.C: use correct type for global variable
+	current_layout. (LyXTextClass::size_type)
+
+	* some code to get the new insetgraphics closer to working I'd be
+	grateful for any help.
+	
+	* src/BufferView2.C (insertInset): use the return type of
+	NumberOfLayout properly. (also changes in other files)
+
+	* src/insets/insetspecialchar.[Ch]: add the PROTECTED SEPARATOR to
+	this as a test. I want to know what breaks because of this.
+
+	* src/BufferView.[Ch] (tripleClick): name change from trippleClick.
+
+2000-02-29  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* lib/layouts/stdlists.inc: changed the lyxlist latex definition
+	to use a \makebox in the label, this allows proper justification
+	with out using protected spaces or multiple hfills. Now it is
+	"label" for left justified, "\hfill label\hfill" for center, and
+	"\hfill label" for right justified. UserGuide.lyx sec. 3.3.6.5
+	should be changed accordingly. 
+
 2000-02-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxtext.h: change SetLayout() to take a
@@ -13,6 +44,15 @@
 
 	* lib/layouts/llncs.layout: new layout, contributed by Martin
 	Vermeer. 
+
+2000-02-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* config/lyxinclude.m4 (LYX_PROG_CXX): remove case support for gcc
+	2.7.* and add case support for gcc 2.96*. Gcc 2.96 only exists in
+	cvs at gcc.gnu.org (currently it fails with ICE on insetbib.C,
+	insetindex.C, insetloa.C, insettext.C, filetools.C, BufferView.C,
+	BufferView2.C, LyXView.C, buffer.C, lyx_cb.C, lyxfunc.C,
+	paragraph.C, text.C, text2.C)
 
 2000-02-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

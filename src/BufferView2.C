@@ -203,12 +203,18 @@ void BufferView::insertInset(Inset * inset, string const & lout,
 			update(-1);
 		}
 
-		int lay = textclasslist.NumberOfLayout(buffer()->params.textclass,
-						       lout).second;
-		if (lay == -1) // layout not found
-			// use default layout "Standard" (0)
+		pair<bool, LyXTextClass::size_type> lres =
+			textclasslist.NumberOfLayout(buffer()->params
+						     .textclass, lout);
+		LyXTextClass::size_type lay;
+		if (lres.first != false) {
+			// layout found
+			lay = lres.second;
+		} else {
+			// layout not fount using default "Standard" (0)
 			lay = 0;
-		
+		}
+		 
 		text->SetLayout(lay);
 		
 		text->SetParagraph(0, 0,
@@ -481,8 +487,14 @@ void BufferView::newline()
 	if (available()) {
 		hideCursor();
 		update(-2);
+#if 0
+		InsetSpecialChar * new_inset =
+			new InsetSpecialChar(InsetSpecialChar::NEWLINE);
+		insertInset(new_inset);
+#else
 		text->InsertChar(LyXParagraph::META_NEWLINE);
 		update(-1);
+#endif
 	}
 }
 
@@ -492,8 +504,14 @@ void BufferView::protectedBlank()
 	if (available()) {
 		hideCursor();
 		update(-2);
+#if 1
+		InsetSpecialChar * new_inset =
+			new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
+		insertInset(new_inset);
+#else
 		text->InsertChar(LyXParagraph::META_PROTECTED_SEPARATOR);
 		update(-1);
+#endif
 	}
 }
 

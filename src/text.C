@@ -1826,7 +1826,7 @@ void LyXText::TableFeatures(int feature) const
           int cell = 0;
           do{
               if (pos && (cursor.par->IsNewline(pos-1))){
-                  if (cursor.par->table->AppendCellAfterCell(cell_org, cell)){
+                  if (cursor.par->table->AppendCellAfterCell(cell_org, cell)) {
                       cursor.par->InsertChar(pos, LyXParagraph::META_NEWLINE);
                       if (pos <= cursor.pos)
                           cursor.pos++;
@@ -1837,7 +1837,7 @@ void LyXText::TableFeatures(int feature) const
               ++pos;
           } while (pos <= cursor.par->Last());
           /* remember that the very last cell doesn't end with a newline.
-             This saves one byte memory per table ;-) */ 
+             This saves one byte memory per table ;-) */
           if (cursor.par->table->AppendCellAfterCell(cell_org, cell))
               cursor.par->InsertChar(cursor.par->Last(), LyXParagraph::META_NEWLINE);
 		
@@ -2383,7 +2383,7 @@ void LyXText::RedoParagraph() const
 
 /* insert a character, moves all the following breaks in the 
  * same Paragraph one to the right and make a rebreak */
-void  LyXText::InsertChar(char c)
+void LyXText::InsertChar(char c)
 {
 	SetUndo(Undo::INSERT, 
 		cursor.par->ParFromPos(cursor.pos)->previous, 
@@ -2391,14 +2391,18 @@ void  LyXText::InsertChar(char c)
 
 	/* When the free-spacing option is set for the current layout,
 	 * all spaces are converted to protected spaces. */
+#warning think about this
+#if 0
 	bool freeSpacingBo = 
 		textclasslist.Style(parameters->textclass,
 			       cursor.row->par->GetLayout()).free_spacing;
-   
+
 	if (freeSpacingBo && IsLineSeparatorChar(c) 
-	    && (!cursor.pos || cursor.par->IsLineSeparator(cursor.pos - 1))) 
+	    && (!cursor.pos || cursor.par->IsLineSeparator(cursor.pos - 1))) {
 		c = LyXParagraph::META_PROTECTED_SEPARATOR;
-   
+	}
+#endif
+	
 	/* table stuff -- begin*/
   	if (cursor.par->table) {
 		InsertCharInTable(c);
@@ -3942,8 +3946,10 @@ void LyXText::GetVisibleRow(int offset,
 			} else if (row_ptr->par->IsSeparator(pos)) {
 				tmpx = x;
 				x+= SingleWidth(row_ptr->par, pos);
-				/* -------> Only draw protected spaces when not in
-				 * free-spacing mode. */
+#warning Think about this.
+#if 0
+				/* -------> Only draw protected spaces when
+				 * not in free-spacing mode. */
 				if (row_ptr->par->GetChar(pos) == LyXParagraph::META_PROTECTED_SEPARATOR && !layout.free_spacing) {
 					pain.line(int(tmpx),
 						  offset + row_ptr->baseline - 3,
@@ -3973,6 +3979,7 @@ void LyXText::GetVisibleRow(int offset,
 							  offset + row_ptr->baseline + 2);
 					}
 				}
+#endif
 				++vpos;
 			} else
 				draw(row_ptr, vpos, offset, x);
@@ -4079,8 +4086,10 @@ void LyXText::GetVisibleRow(int offset,
 				x+= SingleWidth(row_ptr->par, pos);
 				if (pos >= main_body)
 					x+= fill_separator;
-				/* -------> Only draw protected spaces when not in
-				 * free-spacing mode. */
+#warning Think about this
+#if 0
+				/* -------> Only draw protected spaces when
+				 * not in free-spacing mode. */
 				if (row_ptr->par->GetChar(pos) == LyXParagraph::META_PROTECTED_SEPARATOR && !layout.free_spacing) {
 					
 					pain.line(int(tmpx),
@@ -4111,6 +4120,7 @@ void LyXText::GetVisibleRow(int offset,
 							  offset + row_ptr->baseline + 2);
 					}
 				}
+#endif
 				++vpos;
 			} else
 				draw(row_ptr, vpos, offset, x);
@@ -4142,7 +4152,7 @@ int LyXText::GetColumnNearX(Row * row, int & x) const
 	LyXParagraph::size_type c;
 
 	LyXLayout const & layout = textclasslist.Style(parameters->textclass,
-					   row->par->GetLayout());
+						       row->par->GetLayout());
 	/* table stuff -- begin */
 	if (row->par->table) {
 		if (row->next && row->next->par == row->par //the last row doesn't need a newline at the end
@@ -4356,11 +4366,17 @@ void LyXText::InsertFootnoteEnvironment(LyXParagraph::footnote_kind kind)
                || kind == LyXParagraph::WIDE_TAB
 	       || kind == LyXParagraph::WIDE_FIG 
                || kind == LyXParagraph::ALGORITHM) {
-		   int lay = textclasslist.NumberOfLayout(parameters->textclass,
-						     "Caption").second;
-		   if (lay == -1) // layout not found
-			   // use default layout "Standard" (0)
-			   lay = 0;
+		   pair<bool, LyXTextClass::size_type> lres =
+			   textclasslist.NumberOfLayout(parameters->textclass,
+							"Caption");
+		   LyXTextClass::size_type lay;
+		   if (lres.first) {
+			   // layout fount
+			   lay = lres.second;
+		   } else {
+			   // layout not found
+			   lay = 0; // use default layout "Standard" (0)
+		   }
 		   tmppar->SetLayout(lay);
 	   }
    }

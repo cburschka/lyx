@@ -107,6 +107,7 @@ void UpdatableInset::ToggleInsetCursor(BufferView *)
 {
 }
 
+
 void UpdatableInset::Edit(BufferView * bv, int, int, unsigned int)
 {
     LyXFont

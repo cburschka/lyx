@@ -48,8 +48,13 @@ struct LaTeXFeatures {
 	//@{
 	///
 	bool color;     // color.sty
+#ifdef USE_GRAPHICX
+	///
+	bool graphicx; // graphicx.sty
+#else
 	///
 	bool graphics;  // graphics.sty
+#endif
 	///
 	bool setspace;  // setspace.sty
 	///

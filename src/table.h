@@ -166,8 +166,10 @@ public:
 	// returns the number of printed newlines
 	///
 	int TexEndOfCell(string & file, int cell);
+#if 0
 	///
 	int RoffEndOfCell(ostream &, int cell);
+#endif
 	///
 	char const * getDocBookAlign(int cell, bool isColumn = false);
 	///

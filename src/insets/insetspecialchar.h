@@ -33,7 +33,13 @@ public:
 		/// End of sentence punctuation (\@)
 		END_OF_SENTENCE,
 		/// Menu separator
-		MENU_SEPARATOR
+		MENU_SEPARATOR,
+#if 0
+		/// Newline
+		NEWLINE,
+#endif
+		/// Protected Separator
+		PROTECTED_SEPARATOR
 	};
 
 	///
@@ -65,7 +71,7 @@ public:
 	///  
 	Inset::Code LyxCode() const
 	{
-		return Inset::NO_CODE;
+		return Inset::SPECIALCHAR_CODE;
 	}
 	/// We don't need \begin_inset and \end_inset
 	bool DirectWrite() const 

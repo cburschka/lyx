@@ -78,7 +78,7 @@ public:
 		///
 		META_NEWLINE,
 		///
-		META_PROTECTED_SEPARATOR,
+		//META_PROTECTED_SEPARATOR,
 		///
 		META_INSET
 	};
@@ -465,8 +465,10 @@ public:
         void SetPExtraType(int type, char const * width, char const * widthp);
 	///
         void UnsetPExtraType();
+#if 0
 	///
 	bool RoffContTableRows(ostream &, size_type i, int actcell);
+#endif
 	///
 	void DocBookContTableRows(string & file, string & extra, int & desc_on,
 				  size_type i,

@@ -42,7 +42,7 @@ enum { // no good name for this
 /// The different output types
 enum OutputType {
         ///
-        LATEX,
+        LATEX = 1,
 	///
 	LINUXDOC,
 	///
@@ -54,7 +54,7 @@ enum OutputType {
 /// The different margin types
 enum LYX_MARGIN_TYPE {
 	///
-	MARGIN_MANUAL,
+	MARGIN_MANUAL = 1,
 	///
 	MARGIN_FIRST_DYNAMIC,
 	///
@@ -92,7 +92,7 @@ inline void operator|=(LyXAlignment & la1, LyXAlignment la2) {
 /// The different LaTeX-Types
 enum LYX_LATEX_TYPES {
 	///
-	LATEX_PARAGRAPH,
+	LATEX_PARAGRAPH = 1,
 	///
 	LATEX_COMMAND,
 	///
@@ -268,7 +268,7 @@ public:
 	char labeltype; // add approp. type
 
 	///
-	char margintype; // add approp. type
+	LYX_MARGIN_TYPE margintype;
 
 	///
 	bool fill_top;
