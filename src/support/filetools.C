@@ -1320,3 +1320,40 @@ string const readBB_from_PSFile(string const & file)
 	readBB_lyxerrMessage(file_, zipped, "no bb found");
 	return string();
 }
+
+
+string copyFileToDir(string const & path, string const & file_in)
+{
+	lyx::Assert(AbsolutePath(path));
+
+	// First, make the file path relative to path.
+	string file_out = MakeRelPath(path, NormalizePath(file_in));
+	file_out = os::slashify_path(file_out);
+
+	// Now generate a unique filename.
+	// Remove the extension.
+	file_out = ChangeExtension(file_out, string());
+	// Replace '/' in the file name with '_'
+	file_out = subst(file_out, "/", "_");
+	// Replace '.' in the file name with '_'
+	file_out = subst(file_out, ".", "_");
+	// Add the extension back on
+	file_out = ChangeExtension(file_out, GetExtension(file_in));
+	// Put this file in the buffer's temp dir
+	file_out = MakeAbsPath(file_out, path);
+
+	// If the original is newer than the copy, then copy the original
+	// to the new directory.
+	FileInfo fi(file_in);
+	FileInfo fi2(file_out);
+
+	bool success = true;
+	if (fi.exist()) {
+		if (!fi2.exist() ||
+		    difftime(fi.getModificationTime(),
+			     fi2.getModificationTime()) >= 0)
+			success = lyx::copy(file_in, file_out);
+	}
+
+	return success ? file_out : string();
+}

@@ -43,6 +43,6 @@ namespace os {
 	char const * popen_read_mode();
 	//
 	void warn(string const & mesg);
-};
+}
 
 #endif

@@ -1,3 +1,9 @@
+2003-06-02  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.[Ch] (copyFileToDir): new helper function.
+
+	* os.h: remove trailing semi-colon from end of namespace os block.
+
 2003-06-01  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.h (LibScriptSearch): give the function a meaningful

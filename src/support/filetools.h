@@ -11,6 +11,7 @@
 #include <vector>
 #include <utility>
 #include "LString.h"
+#include "os.h"
 
 
 /// remove directory and all contents, returns 0 on success
@@ -199,6 +200,13 @@ void removeAutosaveFile(string const & filename);
 
 /// read the BoundingBox entry from a ps/eps/pdf-file
 string const readBB_from_PSFile(string const & file);
+
+/** Copy \param file to directory \param path. The file name is manipulated
+    so that eg some/path/to/file becomes some_path_to_file.
+    \returns this file name if the file is copied successfully, else
+    \returns an empty string.
+ */
+string copyFileToDir(string const & path, string const & file);
 
 typedef std::pair<int, string> cmd_ret;
 
