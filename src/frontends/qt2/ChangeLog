@@ -1,5 +1,11 @@
 2002-09-07  John Levon  <levon@movementarian.org>
 
+	* qfont_metrics.C: unrevert per-char metrics. Droppings
+	  are better than entirely wrong metrics. Hopefully
+	  Andre can fix it ...
+ 
+2002-09-07  John Levon  <levon@movementarian.org>
+
 	* qfont_loader.C: fix sizes for symbols etc.
  
 2002-09-07  John Levon  <levon@movementarian.org>
