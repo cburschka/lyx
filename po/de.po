@@ -59,8 +59,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
-"POT-Creation-Date: 2004-09-10 12:25+0200\n"
-"PO-Revision-Date: 2004-06-01 15:18+0100\n"
+"POT-Creation-Date: 2004-09-15 14:54+0200\n"
+"PO-Revision-Date: 2004-09-14 23:48+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -5184,7 +5184,7 @@ msgstr "Tabellen-Verweise"
 
 #: ../lib/layouts/aastex.layout:116 ../lib/layouts/aastex.layout:403
 msgid "MathLetters"
-msgstr ""
+msgstr "Mathe-Buchstaben"
 
 #: ../lib/layouts/aastex.layout:118 ../lib/layouts/aastex.layout:441
 msgid "NoteToEditor"
@@ -5979,7 +5979,7 @@ msgstr ""
 
 #: ../lib/layouts/llncs.layout:185
 msgid "TOC_Title"
-msgstr ""
+msgstr "Inhaltsverz. Titel"
 
 #: ../lib/layouts/llncs.layout:217 ../lib/layouts/svjour.inc:224
 msgid "Author_Running"
@@ -5987,7 +5987,7 @@ msgstr ""
 
 #: ../lib/layouts/llncs.layout:225
 msgid "TOC_Author"
-msgstr ""
+msgstr "Inhaltsverz. Autor"
 
 #: ../lib/layouts/llncs.layout:411 ../lib/layouts/svjour.inc:479
 msgid "Property"
@@ -6220,7 +6220,7 @@ msgstr "Tabellen-Beschriftung"
 
 #: ../lib/layouts/amsdefs.inc:186
 msgid "Current_Address"
-msgstr ""
+msgstr "Aktuelle Adresse"
 
 #: ../lib/layouts/amsdefs.inc:279
 msgid "Dedicatory"
@@ -6509,7 +6509,7 @@ msgstr "Hebräisch"
 
 #: ../lib/languages:35
 msgid "Icelandic"
-msgstr ""
+msgstr "Isländisch"
 
 #: ../lib/languages:36
 msgid "Irish"
@@ -6524,13 +6524,12 @@ msgid "Kazakh"
 msgstr "Kasachisch"
 
 #: ../lib/languages:39
-#, fuzzy
 msgid "Latvian"
-msgstr "Adresszusatz"
+msgstr "Lettisch"
 
 #: ../lib/languages:40
 msgid "Lithuanian"
-msgstr ""
+msgstr "Litauisch"
 
 #: ../lib/languages:41
 msgid "Lsorbian"
@@ -6545,66 +6544,70 @@ msgid "Norsk"
 msgstr "Norwegisch"
 
 #: ../lib/languages:45
+msgid "Nynorsk"
+msgstr "Neu-Norwegisch"
+
+#: ../lib/languages:46
 msgid "Polish"
 msgstr "Polnisch"
 
-#: ../lib/languages:46
+#: ../lib/languages:47
 msgid "Portugese"
 msgstr "Portugiesisch"
 
-#: ../lib/languages:47
+#: ../lib/languages:48
 msgid "Romanian"
 msgstr "Rumänisch"
 
-#: ../lib/languages:48
+#: ../lib/languages:49
 msgid "Russian"
 msgstr "Russisch"
 
-#: ../lib/languages:49
+#: ../lib/languages:50
 msgid "Scottish"
 msgstr "Schottisch"
 
-#: ../lib/languages:50
+#: ../lib/languages:51
 msgid "Serbian"
 msgstr "Serbisch"
 
-#: ../lib/languages:51
+#: ../lib/languages:52
 msgid "Serbo-Croatian"
 msgstr "Serbokroatisch"
 
-#: ../lib/languages:52
+#: ../lib/languages:53
 msgid "Spanish"
 msgstr "Spanisch"
 
-#: ../lib/languages:53
+#: ../lib/languages:54
 msgid "Slovak"
 msgstr "Slowakisch"
 
-#: ../lib/languages:54
+#: ../lib/languages:55
 msgid "Slovene"
 msgstr "Slowenisch"
 
-#: ../lib/languages:55
+#: ../lib/languages:56
 msgid "Swedish"
 msgstr "Schwedisch"
 
-#: ../lib/languages:56
+#: ../lib/languages:57
 msgid "Thai"
 msgstr "Thailändisch"
 
-#: ../lib/languages:57
+#: ../lib/languages:58
 msgid "Turkish"
 msgstr "Türkisch"
 
-#: ../lib/languages:58
+#: ../lib/languages:59
 msgid "Ukrainian"
 msgstr "Ukrainisch"
 
-#: ../lib/languages:59
+#: ../lib/languages:60
 msgid "Usorbian"
 msgstr "Sorbisch (U)"
 
-#: ../lib/languages:61
+#: ../lib/languages:62
 msgid "Welsh"
 msgstr "Walisisch"
 
@@ -8775,7 +8778,7 @@ msgstr "Von LyX verwendete Dateien"
 
 #: src/debug.C:58
 msgid "Workarea events"
-msgstr ""
+msgstr "Ereignisse im Arbeitsbereich"
 
 #: src/debug.C:59
 msgid "Insettext/tabular messages"
@@ -9590,19 +9593,19 @@ msgstr "LyX: Mathe-Stil festlegen"
 
 #: src/frontends/qt2/QMathDialog.C:142
 msgid "Display style\t\\displaystyle"
-msgstr ""
+msgstr "Display-Stil\t\\displaystyle"
 
 #: src/frontends/qt2/QMathDialog.C:143
 msgid "Normal text style\t\\textstyle"
-msgstr ""
+msgstr "Normaler Text-Stil\t\\textstyle"
 
 #: src/frontends/qt2/QMathDialog.C:144
 msgid "Script (small) style\t\\scriptstyle"
-msgstr ""
+msgstr "Script-Stil (klein)\t\\scriptstyle"
 
 #: src/frontends/qt2/QMathDialog.C:145
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
-msgstr ""
+msgstr "Scriptscript-Stil (kleiner)\t\\scriptscriptstyle"
 
 #: src/frontends/qt2/QMathDialog.C:150
 msgid "LyX: Set math font"
@@ -9735,7 +9738,7 @@ msgstr "Wählen Sie ein Dokumentverzeichnis"
 
 #: src/frontends/qt2/QPrefsDialog.C:586
 msgid "Give a filename for the LyX server pipe"
-msgstr ""
+msgstr "Geben Sie einen Dateinamen für die LyX-Server-Weiterleitung an"
 
 #: src/frontends/qt2/QRef.C:45
 msgid "Cross Reference"
@@ -9934,7 +9937,7 @@ msgstr "Der im LyX-Dokument verwendete Schlüssel."
 
 #: src/frontends/xforms/FormBibitem.C:53
 msgid "Label used for final output."
-msgstr ""
+msgstr "Die für die endgültige Ausgabe verwendete Marke."
 
 #: src/frontends/xforms/FormBibtex.C:41
 msgid "BibTeX Database"
@@ -10711,7 +10714,7 @@ msgstr "Pfad für Sicherungen"
 
 #: src/frontends/xforms/FormPreferences.C:2242
 msgid "LyX server pipes"
-msgstr "LyX-Server-Pipes"
+msgstr "LyX-Server-Weiterleitungen"
 
 #: src/frontends/xforms/FormPreferences.C:2701
 msgid "Fonts must be positive!"
@@ -11451,6 +11454,8 @@ msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
 msgstr ""
+"Es konnte kein ispell-Prozess erzeugt werden.\n"
+"Sie haben möglicherweise nicht die passende Sprache installiert."
 
 #. select returned error
 #: src/ispell.C:263
@@ -11458,10 +11463,13 @@ msgid ""
 "The spell process returned an error.\n"
 "Perhaps it has been configured wrongly ?"
 msgstr ""
+"Der Prozess für die Rechtschreibprüfung hat einen Fehler zurückgeliefert.\n"
+"Wurde er vielleicht falsch konfiguriert?"
 
 #: src/ispell.C:372
 msgid "Could not communicate with the spell-checker program."
 msgstr ""
+"Das Programm für die Rechtschreibprüfung konnte nicht angesprochen werden."
 
 #: src/kbsequence.C:157
 msgid "   options: "
@@ -12350,8 +12358,8 @@ msgid ""
 "\".out\". Only for advanced users."
 msgstr ""
 "Ist hier ein Name angegeben, wird automatisch der LyX-Server gestartet. Die "
-"Pipes erhalten automatisch die Endungen \".in\" und \".out\".  Diese Option "
-"ist vor allem für Fortgeschrittene interessant."
+"Weiterleitungen erhalten automatisch die Endungen \".in\" und \".out\".  "
+"Diese Option ist vor allem für Fortgeschrittene interessant."
 
 #: src/lyxrc.C:1982
 msgid ""
