@@ -10,7 +10,6 @@
 #include "math_macro.h"
 #include "math_macrotemplate.h"
 #include "math_parser.h"
-#include "math_deliminset.h"
 #include "math_fracinset.h"
 #include "debug.h"
 
@@ -98,32 +97,5 @@ void MathMacroTable::builtinMacros()
 	createTemplate("to",           0, "\\rightarrow");
 	//createTemplate("lint",       4, "\\int_{#1}^{#2}#3 d#4");
 	//createTemplate("silentmult", 0, "\\cdot");
-	//createTemplate("binomi",     2, "\\left(\\frac{#1}{#2}\\right)");
-
-	// binom has two arguments
-	{
-		MathFracInset * frac = new MathFracInset;
-		frac->cell(0).push_back(new MathMacroArgument(1));
-		frac->cell(1).push_back(new MathMacroArgument(2));
-
-		MathInset * inset = new MathDelimInset('(', ')');
-		inset->push_back(frac);
-
-		MathMacroTemplate t("binom", 2);
-		t.push_back(inset);
-		insertTemplate(t);
-	}
-
-/*
-	{
-		MathFracInset * frac = new MathFracInset(LM_OT_ATOP);
-		frac->cell(0)->push_back(new MathMacroArgument(1));
-		frac->cell(1)->push_back(new MathMacroArgument(2));
-
-		MathMacroTemplate * t = new MathMacroTemplate("choose", 2);
-		t->push_back(frac);
-
-		insertTemplate(t);
-	}
-*/
+	createTemplate("binom",        2, "\\left(\\frac{#1}{#2}\\right)");
 }

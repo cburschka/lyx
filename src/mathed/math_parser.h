@@ -71,6 +71,10 @@ enum MathTokenEnum
 	///
 	LM_TK_BIGSYM,
 	///
+	LM_TK_NOGLYPH,
+	///
+	LM_TK_NOGLYPHB,
+	///
 	LM_TK_LABEL,
 	///
 	LM_TK_NONUM,

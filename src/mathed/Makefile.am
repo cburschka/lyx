@@ -62,6 +62,8 @@ libmathed_la_SOURCES = \
 	math_matrixinset.h \
 	math_nestinset.C \
 	math_nestinset.h \
+	math_noglyphinset.C \
+	math_noglyphinset.h \
 	math_parser.C \
 	math_parser.h \
 	math_rootinset.C \

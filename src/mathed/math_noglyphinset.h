@@ -1,18 +1,18 @@
 // -*- C++ -*-
-#ifndef MATH_SYMBOLINSET_H
-#define MATH_SYMBOLINSET_H
+#ifndef MATH_NOGLYPHINSET_H
+#define MATH_NOGLYPHINSET_H
 
 #include "math_diminset.h"
 
 struct latexkeys;
 
-// "normal" symbols that don't take limits and don't grow in displayed
-// formulae
+// "normal" symbols for which we don't have a glyph aailable to display
+// them properly
 
-class MathSymbolInset : public MathDimInset {
+class MathNoglyphInset : public MathDimInset {
 public:
 	///
-	explicit MathSymbolInset(latexkeys const *);
+	explicit MathNoglyphInset(latexkeys const *);
 	///
 	MathInset * clone() const;
 	///
@@ -23,8 +23,6 @@ public:
 	void metrics(MathStyles st) const;
 	///
 	void draw(Painter &, int x, int y) const;
-	///
-	bool isRelOp() const;
 
 private:
 	///

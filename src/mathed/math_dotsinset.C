@@ -23,12 +23,12 @@ MathInset * MathDotsInset::clone() const
 
 void MathDotsInset::draw(Painter & pain, int x, int y) const
 {
-	mathed_draw_deco(pain, x + 2, y - dh_, width_ - 2, ascent_, key_->id);
+	mathed_draw_deco(pain, x + 2, y - dh_, width_ - 2, ascent_, key_);
 	if (key_->id == LM_vdots || key_->id == LM_ddots)
 		++x;
 	if (key_->id != LM_vdots)
 		--y;
-	mathed_draw_deco(pain, x + 2, y - dh_, width_ - 2, ascent_, key_->id);
+	mathed_draw_deco(pain, x + 2, y - dh_, width_ - 2, ascent_, key_);
 }
 
 

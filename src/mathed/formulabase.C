@@ -74,17 +74,13 @@ void handleFont(BufferView * bv, MathTextCodes t)
 	mathcursor->handleFont(t);
 }
 
+
 void handleAccent(BufferView * bv, string const & name)
 {
 	bv->lockedInsetStoreUndo(Undo::EDIT);
 	mathcursor->handleAccent(name);
 }
 
-void handleDelim(BufferView * bv, int l, int r)
-{
-	bv->lockedInsetStoreUndo(Undo::EDIT);
-	mathcursor->handleDelim(l, r);
-}
 
 bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 {
@@ -590,45 +586,19 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_MATH_DELIM:
 	{
 		bv->lockedInsetStoreUndo(Undo::INSERT);
-		static const string vdelim("(){}[]./|");
 		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
-
-		if (arg.empty())
-			break;
-
-		// try to read integers first
-		int ilt = '(';
-		int irt = '.';
+		string ls;
+		string rs;
 		istringstream is(arg.c_str());
-		is >> ilt >> irt;
-
-		if (!is) { // ok, the beasties are no integers... try something else
-			ilt = '(';
-			irt = '.';
-
-			istringstream is(arg.c_str());
-			string lt;
-			string rt;
-			is >> lt >> rt;
-			//lyxerr << "formulabase::LFUN_MATH_DELIM, lt: '" << lt << "'\n";
-			//lyxerr << "formulabase::LFUN_MATH_DELIM, rt: '" << rt << "'\n";
-
-			if (lt.size() > 1) {
-				latexkeys const * l = in_word_set(lt);
-				if (l)
-					ilt = l->id;
-			} else if (vdelim.find(lt[0]) != string::npos)
-					ilt = lt[0];
-
-			if (rt.size() > 1) {
-				latexkeys const * l = in_word_set(rt);
-				if (l)
-					irt = l->id;
-			} else if (vdelim.find(rt[0]) != string::npos)
-					irt = rt[0];
+		is >> ls >> rs;
+		latexkeys const * l = in_word_set(ls);
+		latexkeys const * r = in_word_set(rs);
+		if (!is || !l || !r) {
+			lyxerr << "can't parse delimeters from '" << arg << "'\n";
+			break;
 		}
-
-		handleDelim(bv, ilt, irt);
+		bv->lockedInsetStoreUndo(Undo::EDIT);
+		mathcursor->handleDelim(l, r);
 		updateLocal(bv, true);
 		break;
 	}
@@ -804,7 +774,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 				if (code != LM_TC_TEXTRM)
 					code = LM_TC_BOP;
 				mathcursor->insert(c, code);
-			} else if (strchr("#$%^{|}", c)) {
+			} else if (strchr("#$%{|}", c)) {
 				MathTextCodes code = mathcursor->getLastCode();
 				if (code != LM_TC_TEXTRM)
 					code = LM_TC_SPECIAL;

@@ -28,13 +28,6 @@ bool MathIsBinary(MathTextCodes x)
 }
 
 
-bool MathIsSymbol(MathTextCodes x)
-{
-	return x == LM_TC_SYMB || x == LM_TC_BSYM;
-}
-     
-
-
 ///
 class Matrix {
 public:
@@ -433,7 +426,7 @@ math_deco_struct math_deco_table[] = {
 	{ '|',              &vert[0],       0 },
 	{ '/',              &slash[0],      0 },
 	{ LM_Vert,          &Vert[0],       0 },
-	{ LM_backslash,     &slash[0],      1 },
+	{ '\\',             &slash[0],      1 },
 	{ LM_langle,        &angle[0],      0 },
 	{ LM_lceil,         &corner[0],     0 }, 
 	{ LM_lfloor,        &corner[0],     1 },  
@@ -608,20 +601,19 @@ math_deco_struct const * search_deco(int code)
 
 }
 
-void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
+void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
+	latexkeys const * l)
 {
 	Matrix mt;
 	Matrix sqmt;
-	float xx;
-	float yy;
-	float x2;
-	float y2;
 	int i = 0;
+	string name = l->name;
+	int code = (name.size() > 1) ? l->id : name[0];
 	
 	math_deco_struct const * mds = search_deco(code);
 	if (!mds) {
-		// Should this ever happen?
-		lyxerr << "Deco was not found. Programming error?" << endl;
+		lyxerr << "Deco was not found. Programming error?\n";
+		lyxerr << "name: '" << l->name << "', code: " << code << "\n";
 		return;
 	}
 	
@@ -635,11 +627,22 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 	mt.escalate(w, h);
 	
 	int const n = (w < h) ? w : h;
+
 	sqmt.rotate(r);
 	sqmt.escalate(n, n);
-	if (r > 0 && r < 3) y += h;   
-	if (r >= 2) x += w;   
+
+	if (r > 0 && r < 3)
+		y += h;
+
+	if (r >= 2)
+		x += w;   
+
 	do {
+		float xx;
+		float yy;
+		float x2;
+		float y2;
+
 		code = int(d[i++]);
 		switch (code) {
 		case 0: break;

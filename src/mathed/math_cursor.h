@@ -33,6 +33,7 @@ class InsetFormulaBase;
 class MathArray;
 class MathXArray;
 class Painter;
+class latexkeys;
 
 /// Description of a position 
 struct MathCursorPos {
@@ -171,7 +172,7 @@ public:
 	///
 	void handleAccent(string const & name);
 	///
-	void handleDelim(int l, int r);
+	void handleDelim(latexkeys const * l, latexkeys const * r);
 	///
 	void handleNest(MathInset * p);
 	/// Splits cells and shifts right part to the next cell

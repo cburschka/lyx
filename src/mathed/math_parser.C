@@ -41,6 +41,7 @@
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "math_matrixinset.h"
+#include "math_noglyphinset.h"
 #include "math_rootinset.h"
 #include "math_scriptinset.h"
 #include "math_sizeinset.h"
@@ -65,7 +66,6 @@ enum lexcode_enum {
 	LexAlpha,
 	LexDigit,
 	LexBOP,         // Binary operators or relations
-	LexMathSpace,
 	LexOpen,
 	LexClose,
 	LexComment,
@@ -112,7 +112,7 @@ enum {
 };
 
 ///
-union {
+struct {
 	///
 	int i;
 	///
@@ -179,9 +179,6 @@ void lexInit()
 	lexcode['$'] = LexMath;
 	lexcode['+'] = lexcode['-'] = lexcode['*'] = lexcode['/']
 		= lexcode['<'] = lexcode['>'] = lexcode['='] = LexBOP;
-	
-	lexcode['!'] = lexcode[','] = lexcode[':']
-		= lexcode[';'] = LexMathSpace;
 	
 	lexcode['('] = lexcode[')'] = lexcode['|'] = lexcode['.'] =
 		lexcode['?'] = LexOther; 
@@ -257,9 +254,7 @@ int yylex()
 			do {
 				c = getuchar(yyis);
 			} while (c != '\n' && yyis->good());  // eat comments
-		} else if (lexcode[c] == LexDigit
-			   || lexcode[c] == LexOther
-			   || lexcode[c] == LexMathSpace) {
+		} else if (lexcode[c] == LexDigit || lexcode[c] == LexOther) {
 			yylval.i = c;
 			return LM_TK_STR;
 		} else if (lexcode[c] == LexAlpha || lexcode[c] == LexSpace) {
@@ -283,12 +278,15 @@ int yylex()
 			return LM_TK_CLOSE;
 		} else if (lexcode[c] == LexESC)   {
 			c = getuchar(yyis);
+			//lyxerr << "reading second byte: '" << c << "' code: " << lexcode[c] << endl;
 			string s;
 			s += c;
 			latexkeys const * l = in_word_set(s);
 			if (l) {
-				//lyxerr << "found special token for '" << l->name
-				//	<< "' : " << l->id << " \n";
+				//lyxerr << "found key: " << l << endl;
+				//lyxerr << "found key name: " << l->name << endl;
+				//lyxerr << "found key token: " << l->token << endl;
+				yylval.l = l;
 				yylval.i = l->id;
 				return l->token;
 			}
@@ -304,6 +302,7 @@ int yylex()
 					yyis->putback(c);
 			
 				//lyxerr[Debug::MATHED] << "reading: text '" << yytext << "'\n";
+				//lyxerr << "reading: text '" << yytext << "'\n";
 				latexkeys const * l = in_word_set(yytext);
 				if (!l) 
 					return LM_TK_UNDEF;
@@ -484,6 +483,30 @@ MathMatrixInset * mathed_parse_normal()
 }
 
 
+latexkeys const * read_delim()
+{
+	int ld = yylex();
+	lyxerr << "found symbol: " << ld << "\n";
+	latexkeys const * l = in_word_set(".");
+	switch (ld) {
+		case LM_TK_SYM:
+		case LM_TK_NOGLYPH:
+		case LM_TK_SPECIAL:
+		case LM_TK_BEGIN:
+			l = yylval.l;
+			lyxerr << "found key 1: '" << l << "'\n";
+			lyxerr << "found key 1: '" << l->name << "'\n";
+			break;
+		case LM_TK_STR:
+			string s;
+			s += yylval.i;
+			l = in_word_set(s);
+			lyxerr << "found key 2: '" << l->name << "'\n";
+	}
+	return l;
+}
+
+
 void mathed_parse_into(MathArray & array, unsigned flags)
 {
 	static int plevel = -1;
@@ -620,6 +643,12 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 		case LM_TK_PROTECT: 
 			break;
 
+		case LM_TK_NOGLYPH: 
+		case LM_TK_NOGLYPHB: 
+			limits = 0;
+			array.push_back(new MathNoglyphInset(yylval.l));
+			break;
+
 		case LM_TK_BIGSYM:  
 			limits = 0;
 			array.push_back(new MathBigopInset(yylval.l));
@@ -683,22 +712,11 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 		
 		case LM_TK_LEFT:
 		{
-			int ld = yylex();
-			if (ld == LM_TK_SYM)
-				ld = yylval.l->id;
-			else if (ld == LM_TK_STR || ld == LM_TK_BOP || ld == LM_TK_SPECIAL)
-				ld = yylval.i;
-
+			latexkeys const * l = read_delim();
 			MathArray ar;
 			mathed_parse_into(ar, FLAG_RIGHT);
-
-			int rd = yylex();
-			if (rd == LM_TK_SYM)
-				rd = yylval.l->id;
-			else if (rd == LM_TK_STR || rd == LM_TK_BOP || rd == LM_TK_SPECIAL)
-				rd = yylval.i;	 
-
-			MathDelimInset * dl = new MathDelimInset(ld, rd);
+			latexkeys const * r = read_delim();
+			MathDelimInset * dl = new MathDelimInset(l, r);
 			dl->cell(0) = ar;
 			array.push_back(dl);
 			break;

@@ -56,7 +56,7 @@ void MathDecorationInset::draw(Painter & pain, int x, int y) const
 	xo(x);
 	yo(x);
 	xcell(0).draw(pain, x, y);
-	mathed_draw_deco(pain, x, y + dy_, width_, dh_, key_->id);
+	mathed_draw_deco(pain, x, y + dy_, width_, dh_, key_);
 }
 
 

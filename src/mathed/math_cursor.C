@@ -45,6 +45,7 @@
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "math_matrixinset.h"
+#include "math_noglyphinset.h"
 #include "math_rootinset.h"
 #include "math_spaceinset.h"
 #include "math_sqrtinset.h"
@@ -675,6 +676,11 @@ void MathCursor::interpret(string const & s)
 			p = new MathFuncInset(s);
 	} else {
 		switch (l->token) {
+			case LM_TK_NOGLYPH:
+			case LM_TK_NOGLYPHB:
+				p = new MathNoglyphInset(l);
+				break;
+
 			case LM_TK_BIGSYM:
 				p = new MathBigopInset(l);
 				break;
@@ -897,7 +903,7 @@ void MathCursor::handleAccent(string const & name)
 }
 
 
-void MathCursor::handleDelim(int l, int r)
+void MathCursor::handleDelim(latexkeys const * l, latexkeys const * r)
 {
 	handleNest(new MathDelimInset(l, r));
 }
