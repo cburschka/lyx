@@ -18,11 +18,15 @@ namespace {
 
 string convertDelimToLatexName(string const & name)
 {
+	if (name == "<")
+		return name;
 	if (name == "(")
 		return name;
 	if (name == "[")
 		return name;
 	if (name == ".")
+		return name;
+	if (name == ">")
 		return name;
 	if (name == ")")
 		return name;
