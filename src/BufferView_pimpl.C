@@ -427,6 +427,10 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 		selendpar = bv_->text->ownerParagraphs().end();
 	}
 
+#warning doesn't help much
+	bv_->text->redoParagraphs(bv_->text->ownerParagraphs().begin(),
+		bv_->text->ownerParagraphs().end());
+
 	if (par != bv_->text->ownerParagraphs().end()) {
 		bv_->text->selection.set(true);
 		// At this point just to avoid the Delete-Empty-Paragraph-

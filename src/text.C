@@ -223,26 +223,12 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 
 	if (c == Paragraph::META_INSET) {
 		InsetOld * tmpinset = pit->getInset(pos);
-		if (tmpinset) {
-			if (tmpinset->lyxCode() == InsetOld::HFILL_CODE) {
-				// Because of the representation as vertical lines
-				return 3;
-			}
-#if 0
-#warning enabling this fixes the 'insets of width 0 on load' problem
-			// this IS needed otherwise on initialitation we don't get the fill
-			// of the row right (ONLY on initialization if we read a file!)
-			// should be changed! (Jug 20011204)
-			//tmpinset->update(bv());
-			Dimension dim;
-			MetricsInfo mi(bv(), font, workWidth());
-			tmpinset->metrics(mi, dim);
-			return dim.wid;
-#else
-			return tmpinset->width();
-#endif
+		Assert(tmpinset);
+		if (tmpinset->lyxCode() == InsetOld::HFILL_CODE) {
+			// Because of the representation as vertical lines
+			return 3;
 		}
-		return 0;
+		return tmpinset->width();
 	}
 
 	if (IsSeparatorChar(c))
