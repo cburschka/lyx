@@ -34,7 +34,7 @@ Bullet const ITEMIZE_DEFAULTS[4] = { Bullet( 0, 8 ),//"\\(\\bullet\\)"
 // and wasysym when that panel is created
 
 
-Bullet::Bullet(const int f, const int c, const int s)
+Bullet::Bullet(int f, int c, int s)
   : font(f), character(c), size(s), user_text(0)
 {
 	if (f < MIN || f >= FONTMAX) {

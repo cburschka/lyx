@@ -463,15 +463,6 @@ void LyXText::draw(Row const * row,
 		switch (c) {
 		case LyXParagraph::META_MARGIN:
 			fs = "margin";
-#ifdef WITH_WARNINGS
-#warning I think we do not need that '!' (JMarc)
-#endif
-#if 0
-			// Draw a sign at the left margin!
-			owner_->painter()
-				.text((LYX_PAPER_MARGIN - lyxfont::width('!', font))/2,
-				      offset + row->baseline, "!", 1, font);
-#endif
 			break;
 		case LyXParagraph::META_FIG:
 			fs = "fig";

@@ -1,3 +1,18 @@
+2000-05-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyx_main.C (LyX): adapted the code for default bindings.
+
+	* src/lyxrc.C (defaultKeyBinfings): moved to kbmap.C 
+
+	* src/kbmap.C (defaultBindings): new method. Performs the default
+	bindings for basic functionality.
+
+	* src/lyxfont.C (stateText): use a saner method to determine
+	whether the font is "default". Seems to fix the crash with DEC
+	cxx. 
+
+	* src/Bullet.[Ch] (Bullet): remove const on parameters.
+
 2000-05-08  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (InsetButtonRelease): Now opens the

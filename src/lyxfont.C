@@ -408,11 +408,7 @@ string LyXFont::stateText() const
 		ost << _("Noun ") << _(GUIMiscNames[noun()]) << ", ";
 	if (latex() != INHERIT)
 		ost << _("Latex ") << _(GUIMiscNames[latex()]) << ", ";
-	//if (buf.empty())
-	//	ost << _("Default");
-	unsigned int opos = ost.tellp();
-	//lyxerr << "Opos: " << opos << endl;
-	if (opos == 0 || opos == -1)
+	if (bits == inherit)
 		ost << _("Default") << ", ";
 	ost << _("Language: ") << _(language()->display.c_str());
 #ifdef HAVE_SSTREAM
