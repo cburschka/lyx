@@ -1,10 +1,10 @@
-How do I upgrade my existing LyX system to version 1.3.0?
+How do I upgrade my existing LyX system to version 1.3.x?
 ---------------------------------------------------------
 
 One of the perennial bug bears of LyX users in the past has been that
 they have had to run Edit->Reconfigure when starting their new version
 of the code for the first time. Strange and wonderful things would
-often result if they forgot to do this, so LyX 1.3.0 now runs
+often result if they forgot to do this, so LyX 1.3.x now runs
 Edit->Reconfigure automatically the first time the program is run.
 
 If you have your own layout files, you may need to update them a little:
@@ -53,23 +53,23 @@ in order to get previews of your document's graphics.
 Document transfer
 -----------------
 
-LyX 1.3.0 uses an external python script, lyx2lyx, to import documents
+LyX 1.3.x uses an external python script, lyx2lyx, to import documents
 written using previous versions of LyX. All versions of LyX as far back as
 0.12 are supported, so any klyx users still holding out for an alternative
 to xforms will finally be able to put their dinosaur to rest ;-)
 
 Of course, this means that you must have python (at least version 1.5)
-installed in order to use LyX 1.3.0 with your old documents.
+installed in order to use LyX 1.3.x with your old documents.
 
 lyx2lyx also has the framework in place to be able to convert documents
 to an earlier format. However, these converters have not yet been written
 so older versions of LyX will NOT be able to read documents saved with
-LyX 1.3.0.
+LyX 1.3.x.
 
 If you were previously (in LyX 1.1.x) using the floatflt paragraph
 option to wrap text around a figure, it was necessary to modify this
 for LyX 1.2.0 manually, as described in the manuals. The feature has
-been re-implemented as "Floting figure" inset in 1.3.0. Old files will
+been re-implemented as "Floating figure" inset in 1.3.x. Old files will
 be converted automatically, but you may want to convert the
 1.2.x-style ERT constructs with the native solution (see section 3.8
 of the Extended Features manual).
