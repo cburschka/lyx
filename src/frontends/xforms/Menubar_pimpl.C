@@ -54,17 +54,9 @@ const int air = 2;
 char const * menu_tabstop = "aa";
 char const * default_tabstop = "aaaaaaaa";
 
-
-Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb) 
-	: frame_(0), owner_(view), menubackend_(&mb)
-{
-	// Should we do something here?
-}
-
-Menubar::Pimpl::~Pimpl() 
-{
-	// Should we do something here?
-}
+//Defined later, used in makeMenubar().
+extern "C"
+void C_Menubar_Pimpl_MenuCallback(FL_OBJECT * ob, long button);
 
 // This is used a few times below.
 inline
@@ -74,92 +66,50 @@ int string_width(string const & str)
 				      str.c_str(), str.length());
 }
 
-//Defined later, used in set().
-extern "C"
-void C_Menubar_Pimpl_MenuCallback(FL_OBJECT * ob, long button);
 
-void Menubar::Pimpl::set(string const & menu_name) 
+Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb) 
+	: owner_(view), menubackend_(&mb), current_group_(0)
 {
-	lyxerr[Debug::GUI] << "Entering Menubar::Pimpl::set " 
-			   << "for menu `" << menu_name << "'" << endl;
-
-	if (menu_name == current_menu) {
-		lyxerr[Debug::GUI] << "Nothing to do." << endl;
-		return;
+	for(MenuBackend::const_iterator menu = menubackend_->begin();
+	    menu != menubackend_->end() ; ++menu) {
+		if (menu->menubar()) {
+			FL_OBJECT * group = fl_bgn_group();
+			makeMenubar(*menu);
+			fl_end_group();
+			fl_hide_object(group);
+			lyxerr[Debug::GUI]
+				<< "Menubar::Pimpl::Pimpl: "
+				<< "creating and hiding group " << group
+				<< " for menubar " << menu->name() << endl;
+			menubarmap_[menu->name()] = group;
+		}
 	}
+}
 
-	// If the backend has not been initialized yet, we use a
-	// default instead.  
-	if (menubackend_->empty()) {
-		lyxerr << "Menubar::Pimpl::set: menubackend is empty! "
-			"using default values." << endl;
-		MenuBackend * mb = new MenuBackend();
-		mb->defaults();
-		menubackend_ = mb;
-	}
 
-	if (!menubackend_->hasMenu(menu_name)){ 
-		lyxerr << "ERROR:set: Unknown menu `" << menu_name
-		       << "'" << endl;
-		return;
-	}
+Menubar::Pimpl::~Pimpl() 
+{
+	// Should we do something here?
+}
 
-	Menu menu = menubackend_->getMenu(menu_name);
 
-	if (!menu.menubar()) {
-		lyxerr << "Only a menubar-type object can go in a "
-			"toplevel menu" << endl;
-		return;
-	}
-
-	current_menu = menu_name;
+void Menubar::Pimpl::makeMenubar(Menu const &menu)
+{
 	FL_FORM * form = owner_->getForm(); 
 	int moffset = 0;
-	bool form_was_open, form_was_frozen;
-
-	if (fl_current_form == form)
-		form_was_open = true;
-	else if (fl_current_form == 0) {
-		form_was_open = false;
-		fl_addto_form(form);
-	} 
-  	else {
-  		lyxerr << "Something is wrong: unknown form " 
-		       << fl_current_form << " is already open" 
-		       << "(main form is " << form << ")" << endl;
-  		return;
-  	}
-	if (form->frozen)
-		form_was_frozen = true;
-	else {
-		form_was_frozen = false;
-		fl_freeze_form(form);
-	}
-
-	// Delete old buttons if there are some.
-	for(ButtonList::const_iterator cit = buttonlist_.begin();
-	    cit != buttonlist_.end(); ++cit) {
-		if ((*cit)->obj_) {
-			fl_delete_object((*cit)->obj_);
-			fl_free_object((*cit)->obj_);
-		}
-		delete (*cit);
-	}
-	buttonlist_.clear();
 
 	// Create menu frame if there is non yet.
-	if (!frame_) {
-		frame_ = fl_add_frame(FL_UP_FRAME, 0, 0, form->w, mheight, "");
-		fl_set_object_resize(frame_, FL_RESIZE_ALL);
-		fl_set_object_gravity(frame_, NorthWestGravity, 
-				      NorthEastGravity);
-	} 
+	FL_OBJECT * frame = fl_add_frame(FL_UP_FRAME, 0, 0,
+					 form->w, mheight, "");
+	fl_set_object_resize(frame, FL_RESIZE_ALL);
+	fl_set_object_gravity(frame, NorthWestGravity, 
+			      NorthEastGravity);
 
 	for (Menu::const_iterator i = menu.begin(); 
 	     i != menu.end(); ++i) {
 		FL_OBJECT * obj;
 		if (i->kind() != MenuItem::Submenu) {
-			lyxerr << "ERROR: Menubar::Pimpl::Pimpl:"
+			lyxerr << "ERROR: Menubar::Pimpl::createMenubar:"
 				" only submenus can appear in a menubar";
 			break;
 		}
@@ -186,28 +136,41 @@ void Menubar::Pimpl::set(string const & menu_name)
 						   new MenuItem(*i), obj);
 		buttonlist_.push_back(iteminfo);
 		obj->u_vdata = iteminfo;
-//  		lyxerr << "MenuCallback: ItemInfo address=" << iteminfo
-//  		       << " Val=(pimpl_=" << iteminfo->pimpl_
-//  		       << ", item_=" << iteminfo->item_
-//  		       << ", obj_=" << iteminfo->obj_ << ")" <<endl;
 	}
 
-	if (!form_was_frozen) {
-		fl_unfreeze_form(form);
-	}
-	if (!form_was_open) 
-		fl_end_form();
+}
 
-	// Force the redraw of the buttons (probably not the best
-	// method, but...) 
-	for(ButtonList::const_iterator cit = buttonlist_.begin();
-	    cit != buttonlist_.end(); ++cit) {
-		if ((*cit)->obj_) {
-			fl_redraw_object((*cit)->obj_);
+void Menubar::Pimpl::set(string const & menu_name) 
+{
+	lyxerr[Debug::GUI] << "Entering Menubar::Pimpl::set " 
+			   << "for menu `" << menu_name << "'" << endl;
+
+	if (menu_name != current_menu_name_) {
+		MenubarMap::iterator mbit = menubarmap_.find(menu_name);
+
+		if (mbit == menubarmap_.end()) {
+			lyxerr << "ERROR:set: Unknown menu `" << menu_name
+			       << "'" << endl;
+			return;
 		}
-	}
 
-	lyxerr[Debug::GUI] << "Menubar set." << endl;
+		if (current_group_) {
+			lyxerr[Debug::GUI] << "  hiding group "
+					   << current_group_ << endl;
+			fl_hide_object(current_group_);
+		}
+		
+		lyxerr[Debug::GUI] << "  showing group "
+				   << mbit->second << endl;
+		fl_show_object(mbit->second);
+		current_menu_name_ = menu_name;
+		current_group_ = mbit->second;
+		lyxerr[Debug::GUI] << "Menubar::Pimpl::set: Menubar set."
+				   << endl;
+	}
+	else
+		lyxerr [Debug::GUI] << "Menubar::Pimpl::set: Nothing to do."
+				    << endl;
 } 
 
 void Menubar::Pimpl::openByName(string const & name)

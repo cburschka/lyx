@@ -89,11 +89,11 @@ struct lyx {
 	///
 	static int putenv(char const * str);
         ///
-        int unlink(string const & file);
+        static int unlink(string const & file);
         ///
-        int rmdir(string const & file);
+        static int rmdir(string const & file);
         ///
-        int atoi(string const & nstr);
+        static int atoi(string const & nstr);
 };
 #endif // CXX_WORKING_NAMESPACES
 #endif

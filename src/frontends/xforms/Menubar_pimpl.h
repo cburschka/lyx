@@ -19,6 +19,7 @@
 #endif
 
 #include <vector>
+#include <map>
 #include "LString.h"
 #include "frontends/Menubar.h"
 #include "commandtags.h"
@@ -26,6 +27,7 @@
 class LyXView;
 class MenuBackend;
 class MenuItem;
+class Menu;
 
 #include "debug.h"
 
@@ -72,14 +74,13 @@ public:
         /// update the state of the menuitems
         void update() {}
 private:
-	///
-	FL_OBJECT * frame_;
+	//
+	void makeMenubar(Menu const &menu);
+
 	/// 
 	LyXView * owner_;
 	///
 	MenuBackend const * menubackend_;
-	///
-	string current_menu;
 	///
 	struct ItemInfo {
 		///
@@ -98,5 +99,14 @@ private:
 	typedef std::vector<ItemInfo *> ButtonList;
 	///
 	ButtonList buttonlist_;
+
+	///
+	typedef std::map<string, FL_OBJECT *> MenubarMap;
+	///
+	MenubarMap menubarmap_;
+	///
+	string current_menu_name_;
+	///
+	FL_OBJECT * current_group_;
 };
 #endif
