@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "POT-Creation-Date: 2003-11-24 18:00+0100\n"
-"PO-Revision-Date: 2003-12-14 21:23+0100\n"
+"PO-Revision-Date: 2004-05-26 18:49+0200\n"
 "Last-Translator: Ingar Parelisussen <ingar.pareliussen@chembio.ntnu.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -8044,12 +8044,12 @@ msgstr "Formaterer dokumentet ..."
 #: src/BufferView_pimpl.C:643
 #, c-format
 msgid "Saved bookmark %1$s"
-msgstr "Lagra bokmerke %1$d"
+msgstr "Lagra bokmerke %1$s"
 
 #: src/BufferView_pimpl.C:676
 #, c-format
 msgid "Moved to bookmark %1$s"
-msgstr "Flytta bokmerke %1$d"
+msgstr "Flytta bokmerke %1$s"
 
 #: src/BufferView_pimpl.C:793
 msgid "Select LyX document to insert"
@@ -8336,7 +8336,7 @@ msgstr "ignorer"
 #: src/LaTeX.C:87
 #, c-format
 msgid "Waiting for LaTeX run number %1$s"
-msgstr "Ventar: LaTeX køyring nummer %1$d"
+msgstr "Ventar: LaTeX køyring nummer %1$s"
 
 #: src/LaTeX.C:277 src/LaTeX.C:345
 msgid "Running MakeIndex."
@@ -8595,7 +8595,7 @@ msgstr "  Lagring fungerte ikkje. Diverre har dokumentet gått tapt."
 #: src/bufferparams.C:230
 #, c-format
 msgid "The document uses a missing TeX class \"%1$s\".\n"
-msgstr "Dokumentet nyttar ei ukjent tekstklasse \"%1$\".\n"
+msgstr "Dokumentet nyttar ei ukjent tekstklasse \"%1$s\".\n"
 
 #: src/bufferparams.C:232
 msgid "Document class not available"
@@ -12189,7 +12189,7 @@ msgstr "Kunne ikkje opna dokumentet %1$s"
 #: src/lyxfunc.C:1618
 #, c-format
 msgid "Select %1$s file to import"
-msgstr "Vel stilen som skal importerast:"
+msgstr "Vel %1$s filen som skal importerast:"
 
 #: src/lyxfunc.C:1735
 msgid "Welcome to LyX!"

@@ -1,3 +1,10 @@
+2004-05-26  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add m4.
+	(DIST_SUBDIRS): Add m4.
+	(ACLOCAL_AMFLAGS): New variable.
+	* configure.ac (AC_CONFIG_FILES): Add m4/Makefile.
+
 2004-04-19  Angus Leeming  <leeming@lyx.org>
 
 	* README.MacOSX: update to reflect Jean-Marc's comments to the list.
