@@ -1,3 +1,8 @@
+2002-11-08  Juergen Vigna  <jug@sad.it>
+
+	* undo_funcs.C (textHandleUndo): fixed problems with undo introduced
+	by my last patch (hopefully).
+
 2002-11-08  John Levon  <levon@movementarian.org>
 
 	* iterators.h:

@@ -193,13 +193,18 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			it->getLyXText(bv)->setCursorIntern(bv, before, 0);
 		else
 			bv->text->setCursorIntern(bv, before, 0);
-	} else { // otherwise this is the first one and we start here
+	}
+// we are not ready for this we cannot set the cursor for a paragraph
+// which is not already in a row of LyXText!!!
+#if 0
+	else { // otherwise this is the first one and we start here
 		Inset * it = undopar->inInset();
 		if (it)
 			it->getLyXText(bv)->setCursorIntern(bv, undopar, 0);
 		else
 			bv->text->setCursorIntern(bv, undopar, 0);
 	}
+#endif
 
 	Paragraph * endpar = 0;
 	// calculate the endpar for redoing the paragraphs.
