@@ -1,3 +1,16 @@
+2001-09-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* text2.C (copySelection): 
+	(cutSelection): 
+	* lyxfind.C (LyXReplace): 
+	* BufferView_pimpl.C (Dispatch): pass the correct flag to
+	LyXText::selectionAsString. 
+
+	* paragraph.C (asString): add "label" argument to the second form
+
+	* text2.C (selectionAsString): add "label" argument and pass it to
+	Paragraph::asString. 
+
 2001-09-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyx_main.C (commandLineHelp): remove version information

@@ -3071,13 +3071,14 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		string arg = argument;
 
 		if (arg.empty()) {
-			arg = bv_->getLyXText()->selectionAsString(buffer_);
+			arg = bv_->getLyXText()->selectionAsString(buffer_,
+								   false);
  
 			// FIXME
 			if (arg.size() > 100 || arg.empty()) {
 				// Get word or selection
 				bv_->getLyXText()->selectWordWhenUnderCursor(bv_, LyXText::WHOLE_WORD);
-				arg = bv_->getLyXText()->selectionAsString(buffer_);
+				arg = bv_->getLyXText()->selectionAsString(buffer_, false);
 				// FIXME: where is getLyXText()->unselect(bv_) ?
 			}
 		}

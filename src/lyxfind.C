@@ -80,10 +80,10 @@ int LyXReplace(BufferView * bv,
 	string str2;
 	if (casesens) {
 		str1 = searchstr;
-		str2 = text->selectionAsString(bv->buffer());
+		str2 = text->selectionAsString(bv->buffer(), false);
 	} else {
 		str1 = lowercase(searchstr);
-		str2 = lowercase(text->selectionAsString(bv->buffer()));
+		str2 = lowercase(text->selectionAsString(bv->buffer(), false));
 	}
 	if (str1 != str2) {
 		if (!LyXFind(bv, searchstr, fw, false, casesens, matchwrd) ||

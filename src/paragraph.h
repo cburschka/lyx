@@ -111,7 +111,8 @@ public:
 
 	string const asString(Buffer const *, bool label);
 	///
-	string const asString(Buffer const *, size_type beg, size_type end);
+	string const asString(Buffer const *, size_type beg, size_type end,
+			      bool label);
 	
 	///
 	void writeFile(Buffer const *, std::ostream &, BufferParams const &,

@@ -1013,7 +1013,8 @@ void LyXText::setSelection(BufferView * bview)
 }
 
 
-string const LyXText::selectionAsString(Buffer const * buffer) const
+string const LyXText::selectionAsString(Buffer const * buffer,
+					bool label) const
 {
 	if (!selection.set()) return string();
 	string result;
@@ -1022,7 +1023,8 @@ string const LyXText::selectionAsString(Buffer const * buffer) const
 	if (selection.start.par() == selection.end.par()) {
 		result += selection.start.par()->asString(buffer,
 							  selection.start.pos(),
-							  selection.end.pos());
+							  selection.end.pos(),
+							  label);
 		return result;
 	}
 	
@@ -1031,7 +1033,8 @@ string const LyXText::selectionAsString(Buffer const * buffer) const
 	// First paragraph in selection
 	result += selection.start.par()->asString(buffer,
 						  selection.start.pos(),
-						  selection.start.par()->size())
+						  selection.start.par()->size(),
+						  label)
 		+ "\n\n";
 	
 	// The paragraphs in between (if any)
@@ -1039,13 +1042,14 @@ string const LyXText::selectionAsString(Buffer const * buffer) const
 	tmpcur.par(tmpcur.par()->next());
 	while (tmpcur.par() != selection.end.par()) {
 		result += tmpcur.par()->asString(buffer, 0,
-						 tmpcur.par()->size()) +"\n\n";
+						 tmpcur.par()->size(),
+						 label) + "\n\n";
 		tmpcur.par(tmpcur.par()->next());
 	}
 
 	// Last paragraph in selection
 	result += selection.end.par()->asString(buffer, 0,
-						selection.end.pos());
+						selection.end.pos(), label);
 	
 	return result;
 }
@@ -1153,7 +1157,7 @@ LyXText::getStringToIndex(BufferView * bview)
 		return string();
 	}
 
-	idxstring = selectionAsString(bview->buffer());
+	idxstring = selectionAsString(bview->buffer(), false);
 	
 	// Implicit selections are cleared afterwards
 	//and cursor is set to the original position.
@@ -1723,7 +1727,7 @@ void LyXText::cutSelection(BufferView * bview, bool doclear, bool realcut)
 	// finished. The solution used currently just works, to make it
 	// faster we need to be more clever and probably also have more
 	// calls to stuffClipboard. (Lgb)
-	bview->stuffClipboard(selectionAsString(bview->buffer()));
+	bview->stuffClipboard(selectionAsString(bview->buffer(), true));
 
 	// This doesn't make sense, if there is no selection
 	if (!selection.set())
@@ -1802,7 +1806,7 @@ void LyXText::copySelection(BufferView * bview)
 	// finished. The solution used currently just works, to make it
 	// faster we need to be more clever and probably also have more
 	// calls to stuffClipboard. (Lgb)
-	bview->stuffClipboard(selectionAsString(bview->buffer()));
+	bview->stuffClipboard(selectionAsString(bview->buffer(), true));
 
 	// this doesnt make sense, if there is no selection
 	if (!selection.set())

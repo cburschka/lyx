@@ -732,7 +732,8 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 		//	sel = "";
 		//else
 
-		string sel = bv->getLyXText()->selectionAsString(bv->buffer());
+		string sel = bv->getLyXText()->selectionAsString(bv->buffer(),
+								 false);
 
 		InsetFormulaBase * f;
 		if (sel.empty()) {

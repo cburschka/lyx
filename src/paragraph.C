@@ -1930,12 +1930,13 @@ string const Paragraph::asString(Buffer const * buffer, bool label)
 
 
 string const Paragraph::asString(Buffer const * buffer, 
-			    Paragraph::size_type beg,
-			    Paragraph::size_type end)
+				 Paragraph::size_type beg,
+				 Paragraph::size_type end,
+				 bool label)
 {
 	ostringstream ost;
 
-	if (beg == 0 && !params().labelString().empty())
+	if (beg == 0 && label && !params().labelString().empty())
 		ost << params().labelString() << ' ';
 
 	for (Paragraph::size_type i = beg; i < end; ++i) {

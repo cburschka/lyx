@@ -1,3 +1,8 @@
+2001-09-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* formulabase.C (mathDispatchCreation): pass second argument
+	'false' (no label) to selectionAsString
+
 2001-09-11  André Pönitz  <poenitz@gmx.net>
 
 	* math_atom.[Ch]: new basic item in the MathArray
