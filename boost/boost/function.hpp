@@ -1,6 +1,6 @@
 // Boost.Function library
 
-// Copyright (C) 2001 Doug Gregor (gregod@cs.rpi.edu)
+// Copyright (C) 2001, 2002 Doug Gregor (gregod@cs.rpi.edu)
 //
 // Permission to copy, use, sell and distribute this software is granted
 // provided this copyright notice appears in all copies.
@@ -36,210 +36,14 @@
 #include <boost/function/function9.hpp>
 #include <boost/function/function10.hpp>
 
+// Don't compile any of this code if we've asked not to include the deprecated
+// syntax and we don't have partial specialization, because none of this code
+// can work.
+#if !defined (BOOST_FUNCTION_NO_DEPRECATED) || !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
+
 namespace boost {
   namespace detail {
     namespace function {
-#ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-      template<typename Signature> 
-      struct function_traits
-      {
-        typedef void result_type;
-        typedef void arg1_type;
-        typedef void arg2_type;
-        typedef void arg3_type;
-        typedef void arg4_type;
-        typedef void arg5_type;
-        typedef void arg6_type;
-        typedef void arg7_type;
-        typedef void arg8_type;
-        typedef void arg9_type;
-        typedef void arg10_type;
-      };
-
-      template<typename R>
-      struct function_traits<R (*)(void)>
-      {
-        typedef R result_type;
-        typedef unusable arg1_type;
-        typedef unusable arg2_type;
-        typedef unusable arg3_type;
-        typedef unusable arg4_type;
-        typedef unusable arg5_type;
-        typedef unusable arg6_type;
-        typedef unusable arg7_type;
-        typedef unusable arg8_type;
-        typedef unusable arg9_type;
-        typedef unusable arg10_type;
-      };
-      
-      template<typename R, typename T1>
-      struct function_traits<R (*)(T1)>
-      {
-        typedef R result_type;
-        typedef T1 arg1_type;
-        typedef unusable arg2_type;
-        typedef unusable arg3_type;
-        typedef unusable arg4_type;
-        typedef unusable arg5_type;
-        typedef unusable arg6_type;
-        typedef unusable arg7_type;
-        typedef unusable arg8_type;
-        typedef unusable arg9_type;
-        typedef unusable arg10_type;
-      };
-      
-      template<typename R, typename T1, typename T2>
-      struct function_traits<R (*)(T1, T2)>
-      {
-        typedef R result_type;
-        typedef T1 arg1_type;
-        typedef T2 arg2_type;
-        typedef unusable arg3_type;
-        typedef unusable arg4_type;
-        typedef unusable arg5_type;
-        typedef unusable arg6_type;
-        typedef unusable arg7_type;
-        typedef unusable arg8_type;
-        typedef unusable arg9_type;
-        typedef unusable arg10_type;
-      };
-
-      template<typename R, typename T1, typename T2, typename T3>
-      struct function_traits<R (*)(T1, T2, T3)>
-      {
-        typedef R result_type;
-        typedef T1 arg1_type;
-        typedef T2 arg2_type;
-        typedef T3 arg3_type;
-        typedef unusable arg4_type;
-        typedef unusable arg5_type;
-        typedef unusable arg6_type;
-        typedef unusable arg7_type;
-        typedef unusable arg8_type;
-        typedef unusable arg9_type;
-        typedef unusable arg10_type;
-      };
-
-      template<typename R, typename T1, typename T2, typename T3, typename T4>
-      struct function_traits<R (*)(T1, T2, T3, T4)>
-      {
-        typedef R result_type;
-        typedef T1 arg1_type;
-        typedef T2 arg2_type;
-        typedef T3 arg3_type;
-        typedef T4 arg4_type;
-        typedef unusable arg5_type;
-        typedef unusable arg6_type;
-        typedef unusable arg7_type;
-        typedef unusable arg8_type;
-        typedef unusable arg9_type;
-        typedef unusable arg10_type;
-      };
-
-      template<typename R, typename T1, typename T2, typename T3, typename T4,
-               typename T5>
-      struct function_traits<R (*)(T1, T2, T3, T4, T5)>
-      {
-        typedef R result_type;
-        typedef T1 arg1_type;
-        typedef T2 arg2_type;
-        typedef T3 arg3_type;
-        typedef T4 arg4_type;
-        typedef T5 arg5_type;
-        typedef unusable arg6_type;
-        typedef unusable arg7_type;
-        typedef unusable arg8_type;
-        typedef unusable arg9_type;
-        typedef unusable arg10_type;
-      };
-
-      template<typename R, typename T1, typename T2, typename T3, typename T4,
-               typename T5, typename T6>
-      struct function_traits<R (*)(T1, T2, T3, T4, T5, T6)>
-      {
-        typedef R result_type;
-        typedef T1 arg1_type;
-        typedef T2 arg2_type;
-        typedef T3 arg3_type;
-        typedef T4 arg4_type;
-        typedef T5 arg5_type;
-        typedef T6 arg6_type;
-        typedef unusable arg7_type;
-        typedef unusable arg8_type;
-        typedef unusable arg9_type;
-        typedef unusable arg10_type;
-      };
-
-      template<typename R, typename T1, typename T2, typename T3, typename T4,
-               typename T5, typename T6, typename T7>
-      struct function_traits<R (*)(T1, T2, T3, T4, T5, T6, T7)>
-      {
-        typedef R result_type;
-        typedef T1 arg1_type;
-        typedef T2 arg2_type;
-        typedef T3 arg3_type;
-        typedef T4 arg4_type;
-        typedef T5 arg5_type;
-        typedef T6 arg6_type;
-        typedef T7 arg7_type;
-        typedef unusable arg8_type;
-        typedef unusable arg9_type;
-        typedef unusable arg10_type;
-      };
-
-      template<typename R, typename T1, typename T2, typename T3, typename T4,
-               typename T5, typename T6, typename T7, typename T8>
-      struct function_traits<R (*)(T1, T2, T3, T4, T5, T6, T7, T8)>
-      {
-        typedef R result_type;
-        typedef T1 arg1_type;
-        typedef T2 arg2_type;
-        typedef T3 arg3_type;
-        typedef T4 arg4_type;
-        typedef T5 arg5_type;
-        typedef T6 arg6_type;
-        typedef T7 arg7_type;
-        typedef T8 arg8_type;
-        typedef unusable arg9_type;
-        typedef unusable arg10_type;
-      };
-
-      template<typename R, typename T1, typename T2, typename T3, typename T4,
-               typename T5, typename T6, typename T7, typename T8, typename T9>
-      struct function_traits<R (*)(T1, T2, T3, T4, T5, T6, T7, T8, T9)>
-      {
-        typedef R result_type;
-        typedef T1 arg1_type;
-        typedef T2 arg2_type;
-        typedef T3 arg3_type;
-        typedef T4 arg4_type;
-        typedef T5 arg5_type;
-        typedef T6 arg6_type;
-        typedef T7 arg7_type;
-        typedef T8 arg8_type;
-        typedef T9 arg9_type;
-        typedef unusable arg10_type;
-      };
-
-      template<typename R, typename T1, typename T2, typename T3, typename T4,
-               typename T5, typename T6, typename T7, typename T8, typename T9,
-               typename T10>
-      struct function_traits<R (*)(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)>
-      {
-        typedef R result_type;
-        typedef T1 arg1_type;
-        typedef T2 arg2_type;
-        typedef T3 arg3_type;
-        typedef T4 arg4_type;
-        typedef T5 arg5_type;
-        typedef T6 arg6_type;
-        typedef T7 arg7_type;
-        typedef T8 arg8_type;
-        typedef T9 arg9_type;
-        typedef T10 arg10_type;
-      };
-#endif
-
       // Choose the appropriate underlying implementation
       template<int Args> struct real_get_function_impl {};
 
@@ -258,13 +62,19 @@ namespace boost {
           typename T8,
           typename T9,
           typename T10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
           typename Policy,
           typename Mixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
           typename Allocator
         >
         struct params
         {
-          typedef function0<R, Policy, Mixin, Allocator> type;
+          typedef function0<R, 
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                            Policy, Mixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+                            Allocator> type;
         };
       };
 
@@ -283,13 +93,19 @@ namespace boost {
           typename T8,
           typename T9,
           typename T10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
           typename Policy,
           typename Mixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
           typename Allocator
         >
         struct params
         {
-          typedef function1<R, T1, Policy, Mixin, Allocator> type;
+          typedef function1<R, T1, 
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                            Policy, Mixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+                            Allocator> type;
         };
       };
 
@@ -308,13 +124,19 @@ namespace boost {
           typename T8,
           typename T9,
           typename T10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
           typename Policy,
           typename Mixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
           typename Allocator
         >
         struct params
         {
-          typedef function2<R, T1, T2, Policy, Mixin, Allocator> type;
+          typedef function2<R, T1, T2, 
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                            Policy, Mixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+                            Allocator> type;
         };
       };
 
@@ -333,13 +155,19 @@ namespace boost {
           typename T8,
           typename T9,
           typename T10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
           typename Policy,
           typename Mixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
           typename Allocator
         >
         struct params
         {
-          typedef function3<R, T1, T2, T3, Policy, Mixin, Allocator> type;
+          typedef function3<R, T1, T2, T3, 
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                            Policy, Mixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+                            Allocator> type;
         };
       };
 
@@ -358,13 +186,19 @@ namespace boost {
           typename T8,
           typename T9,
           typename T10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
           typename Policy,
           typename Mixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
           typename Allocator
         >
         struct params
         {
-          typedef function4<R, T1, T2, T3, T4, Policy, Mixin, Allocator> type;
+          typedef function4<R, T1, T2, T3, T4, 
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                            Policy, Mixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+                            Allocator> type;
         };
       };
 
@@ -383,13 +217,19 @@ namespace boost {
           typename T8,
           typename T9,
           typename T10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
           typename Policy,
           typename Mixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
           typename Allocator
         >
         struct params
         {
-          typedef function5<R, T1, T2, T3, T4, T5, Policy, Mixin, Allocator> 
+          typedef function5<R, T1, T2, T3, T4, T5, 
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                            Policy, Mixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+                            Allocator> 
           type;
         };
       };
@@ -409,13 +249,19 @@ namespace boost {
           typename T8,
           typename T9,
           typename T10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
           typename Policy,
           typename Mixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
           typename Allocator
         >
         struct params
         {
-          typedef function6<R, T1, T2, T3, T4, T5, T6, Policy, Mixin, Allocator>
+          typedef function6<R, T1, T2, T3, T4, T5, T6, 
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                            Policy, Mixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+                            Allocator>
           type;
         };
       };
@@ -435,13 +281,18 @@ namespace boost {
           typename T8,
           typename T9,
           typename T10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
           typename Policy,
           typename Mixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
           typename Allocator
         >
         struct params
         {
-          typedef function7<R, T1, T2, T3, T4, T5, T6, T7, Policy, Mixin, 
+          typedef function7<R, T1, T2, T3, T4, T5, T6, T7, 
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                            Policy, Mixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                             Allocator> type;
         };
       };
@@ -461,13 +312,18 @@ namespace boost {
           typename T8,
           typename T9,
           typename T10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
           typename Policy,
           typename Mixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
           typename Allocator
         >
         struct params
         {
-          typedef function8<R, T1, T2, T3, T4, T5, T6, T7, T8, Policy, Mixin, 
+          typedef function8<R, T1, T2, T3, T4, T5, T6, T7, T8, 
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                            Policy, Mixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                             Allocator> type;
         };
       };
@@ -487,14 +343,19 @@ namespace boost {
           typename T8,
           typename T9,
           typename T10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
           typename Policy,
           typename Mixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
           typename Allocator
         >
         struct params
         {
-          typedef function9<R, T1, T2, T3, T4, T5, T6, T7, T8, T9, Policy, 
-                            Mixin, Allocator> type;
+          typedef function9<R, T1, T2, T3, T4, T5, T6, T7, T8, T9, 
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                            Policy, Mixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+                            Allocator> type;
         };
       };
 
@@ -513,22 +374,255 @@ namespace boost {
           typename T8,
           typename T9,
           typename T10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
           typename Policy,
           typename Mixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
           typename Allocator
         >
         struct params
         {
           typedef function10<R, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, 
-                             Policy, Mixin, Allocator> type;
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                             Policy, Mixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+                             Allocator> type;
         };
       };
 
-      template<typename T1, typename T2>
-      struct is_not_same
+#ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+      template<bool GetIt, typename Traits> 
+      struct get_arg1_type
       {
-  	    BOOST_STATIC_CONSTANT(bool, value = !(is_same<T1, T2>::value));
+        typedef unusable type;
       };
+
+      template<typename Traits> 
+      struct get_arg1_type<true, Traits>
+      {
+        typedef typename Traits::arg1_type type;
+      };
+
+      template<bool GetIt, typename Traits> 
+      struct get_arg2_type
+      {
+        typedef unusable type;
+      };
+
+      template<typename Traits> 
+      struct get_arg2_type<true, Traits>
+      {
+        typedef typename Traits::arg2_type type;
+      };
+
+      template<bool GetIt, typename Traits> 
+      struct get_arg3_type
+      {
+        typedef unusable type;
+      };
+
+      template<typename Traits> 
+      struct get_arg3_type<true, Traits>
+      {
+        typedef typename Traits::arg3_type type;
+      };
+
+      template<bool GetIt, typename Traits> 
+      struct get_arg4_type
+      {
+        typedef unusable type;
+      };
+
+      template<typename Traits> 
+      struct get_arg4_type<true, Traits>
+      {
+        typedef typename Traits::arg4_type type;
+      };
+
+      template<bool GetIt, typename Traits> 
+      struct get_arg5_type
+      {
+        typedef unusable type;
+      };
+
+      template<typename Traits> 
+      struct get_arg5_type<true, Traits>
+      {
+        typedef typename Traits::arg5_type type;
+      };
+
+      template<bool GetIt, typename Traits> 
+      struct get_arg6_type
+      {
+        typedef unusable type;
+      };
+
+      template<typename Traits> 
+      struct get_arg6_type<true, Traits>
+      {
+        typedef typename Traits::arg6_type type;
+      };
+
+      template<bool GetIt, typename Traits> 
+      struct get_arg7_type
+      {
+        typedef unusable type;
+      };
+
+      template<typename Traits> 
+      struct get_arg7_type<true, Traits>
+      {
+        typedef typename Traits::arg7_type type;
+      };
+
+      template<bool GetIt, typename Traits> 
+      struct get_arg8_type
+      {
+        typedef unusable type;
+      };
+
+      template<typename Traits> 
+      struct get_arg8_type<true, Traits>
+      {
+        typedef typename Traits::arg8_type type;
+        };
+
+      template<bool GetIt, typename Traits> 
+      struct get_arg9_type
+      {
+        typedef unusable type;
+      };
+
+      template<typename Traits> 
+      struct get_arg9_type<true, Traits>
+      {
+        typedef typename Traits::arg9_type type;
+      };
+
+      template<bool GetIt, typename Traits> 
+      struct get_arg10_type
+      {
+        typedef unusable type;
+      };
+
+      template<typename Traits> 
+      struct get_arg10_type<true, Traits>
+      {
+        typedef typename Traits::arg10_type type;
+      };
+
+      template<int X, int Y> 
+      struct gte
+      {
+        BOOST_STATIC_CONSTANT(bool, value = (X >= Y));
+      };
+
+      template<bool IsFunction,
+               typename InR, 
+               typename InT1, 
+               typename InT2, 
+               typename InT3, 
+               typename InT4,
+               typename InT5, 
+               typename InT6, 
+               typename InT7, 
+               typename InT8, 
+               typename InT9,
+               typename InT10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+               typename InPolicy,
+               typename InMixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+               typename InAllocator>
+      struct maybe_decode_function_args
+      {
+        typedef function_traits<InR> traits;
+
+        typedef typename traits::result_type R;
+        typedef typename get_arg1_type<(gte<(traits::arity), 1>::value), 
+                                       traits>::type T1;
+        typedef typename get_arg2_type<(gte<(traits::arity), 2>::value), 
+                                       traits>::type T2;
+        typedef typename get_arg3_type<(gte<(traits::arity), 3>::value), 
+                                       traits>::type T3;
+        typedef typename get_arg4_type<(gte<(traits::arity), 4>::value), 
+                                       traits>::type T4;
+        typedef typename get_arg5_type<(gte<(traits::arity), 5>::value), 
+                                       traits>::type T5;
+        typedef typename get_arg6_type<(gte<(traits::arity), 6>::value), 
+                                       traits>::type T6;
+        typedef typename get_arg7_type<(gte<(traits::arity), 7>::value), 
+                                       traits>::type T7;
+        typedef typename get_arg8_type<(gte<(traits::arity), 8>::value), 
+                                       traits>::type T8;
+        typedef typename get_arg9_type<(gte<(traits::arity), 9>::value), 
+                                       traits>::type T9;
+        typedef typename get_arg10_type<(gte<(traits::arity), 10>::value), 
+                                        traits>::type T10;
+
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+        typedef typename ct_if<(is_same<InT1, unusable>::value),
+                               empty_function_policy,
+                               InT1>::type Policy;
+        typedef typename ct_if<(is_same<InT2, unusable>::value),
+                               empty_function_mixin,
+                               InT2>::type Mixin;
+        typedef typename ct_if<(is_same<InT3, unusable>::value),
+                               std::allocator<function_base>,
+                               InT3>::type Allocator;
+#else
+        typedef typename ct_if<(is_same<InT1, unusable>::value),
+                               std::allocator<function_base>,
+                               InT1>::type Allocator;
+#endif // BOOST_FUNCTION_NO_DEPRECATED
+      };
+
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+      template<typename InR, 
+               typename InT1, 
+               typename InT2, 
+               typename InT3, 
+               typename InT4,
+               typename InT5, 
+               typename InT6, 
+               typename InT7, 
+               typename InT8, 
+               typename InT9,
+               typename InT10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+               typename InPolicy,
+               typename InMixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+               typename InAllocator>
+      struct maybe_decode_function_args<false, InR, InT1, InT2, InT3, InT4,
+                                        InT5, InT6, InT7, InT8, InT9, InT10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                                        InPolicy, InMixin,
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED 
+                                        InAllocator>
+      {
+        // Not a function, so just map the types directly
+        typedef InR R;
+        typedef InT1 T1;
+        typedef InT2 T2;
+        typedef InT3 T3;
+        typedef InT4 T4;
+        typedef InT5 T5;
+        typedef InT6 T6;
+        typedef InT7 T7;
+        typedef InT8 T8;
+        typedef InT9 T9;
+        typedef InT10 T10;
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+        typedef InPolicy Policy;
+        typedef InMixin Mixin;
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+        typedef InAllocator Allocator;
+
+      };
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+
+#endif // ndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
       template<
         typename InR, 
@@ -546,70 +640,33 @@ namespace boost {
         typename InMixin = empty_function_mixin,
         typename InAllocator = std::allocator<function_base> 
       >
-      class get_function_impl
+      struct get_function_impl
       {
 #ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-        typedef function_traits<typename add_pointer<InR>::type> traits;
-      public:                       
-
-        typedef typename ct_if<(is_function<InR>::value),
-                               typename traits::result_type,
-                               InR>::type R;
-        typedef typename ct_if<(is_function<InR>::value),
-                               typename traits::arg1_type,
-                               InT1>::type T1;
-        typedef typename ct_if<(is_function<InR>::value),
-                               typename traits::arg2_type,
-                               InT2>::type T2;
-        typedef typename ct_if<(is_function<InR>::value),
-                               typename traits::arg3_type,
-                               InT3>::type T3;
-        typedef typename ct_if<(is_function<InR>::value),
-                               typename traits::arg4_type,
-                               InT4>::type T4;
-        typedef typename ct_if<(is_function<InR>::value),
-                               typename traits::arg5_type,
-                               InT5>::type T5;
-        typedef typename ct_if<(is_function<InR>::value),
-                               typename traits::arg6_type,
-                               InT6>::type T6;
-        typedef typename ct_if<(is_function<InR>::value),
-                               typename traits::arg7_type,
-                               InT7>::type T7;
-        typedef typename ct_if<(is_function<InR>::value),
-                               typename traits::arg8_type,
-                               InT8>::type T8;
-        typedef typename ct_if<(is_function<InR>::value),
-                               typename traits::arg9_type,
-                               InT9>::type T9;
-        typedef typename ct_if<(is_function<InR>::value),
-                               typename traits::arg10_type,
-                               InT10>::type T10;        
-        typedef typename ct_if<
-	                   (type_traits::ice_and<
-	                     (is_function<InR>::value),
-			     (is_not_same<InT1, unusable>::value)
-	                    >::value),
-                           InT1,
-                           InPolicy>::type Policy;
-
-        typedef typename ct_if<
-	                   (type_traits::ice_and<
-	                     (is_function<InR>::value),
-			     (is_not_same<InT2, unusable>::value)
-	                    >::value),
-                           InT2,
-                           InMixin>::type Mixin;
-
-        typedef typename ct_if<
-	                   (type_traits::ice_and<
-	                     (is_function<InR>::value),
-			     (is_not_same<InT3, unusable>::value)
-	                    >::value),
-                           InT3,
-                           InAllocator>::type Allocator;
+        typedef maybe_decode_function_args<(is_function<InR>::value),
+                                           InR, InT1, InT2, InT3, InT4, InT5,
+                                           InT6, InT7, InT8, InT9, InT10,
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                                           InPolicy, InMixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+                                           InAllocator> decoder;
+        typedef typename decoder::R R;
+        typedef typename decoder::T1 T1;
+        typedef typename decoder::T2 T2;
+        typedef typename decoder::T3 T3;
+        typedef typename decoder::T4 T4;
+        typedef typename decoder::T5 T5;
+        typedef typename decoder::T6 T6;
+        typedef typename decoder::T7 T7;
+        typedef typename decoder::T8 T8;
+        typedef typename decoder::T9 T9;
+        typedef typename decoder::T10 T10;
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+        typedef typename decoder::Policy Policy;
+        typedef typename decoder::Mixin Mixin;
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+        typedef typename decoder::Allocator Allocator;
 #else
-      public:                       
 		typedef InR R;
 		typedef InT1 T1;
 		typedef InT2 T2;
@@ -624,14 +681,19 @@ namespace boost {
 		typedef InPolicy Policy;
 		typedef InMixin Mixin;
 		typedef InAllocator Allocator;
-#endif
+#endif // def BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+
         typedef typename real_get_function_impl<
           (count_used_args<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>::value)
           >::template params<R, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, 
-                             Policy, Mixin, Allocator>::type
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+                             Policy, Mixin, 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
+                             Allocator>::type
         type;
       };
 
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
   template<
     typename InR, 
     typename InT1, 
@@ -724,9 +786,9 @@ namespace boost {
                                                Allocator>::type
         type;
     };
-#endif
+#endif // ndef NO_DEPENDENT_NESTED_DERIVATIONS
   };
-
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
     } // end namespace function
   } // end namespace detail
 
@@ -745,9 +807,11 @@ namespace boost {
   >
   class function :
     public detail::function::get_function_impl<R, T1, T2, T3, T4, T5, T6, T7, 
-                                               T8, T9, T10>::type,
-    public detail::function::function_traits_builder<R, T1, T2, T3, T4, T5, T6,
-                                                     T7, T8, T9, T10>
+                                               T8, T9, T10>::type
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
+    , public detail::function::function_traits_builder<R, T1, T2, T3, T4, T5, 
+                                                       T6, T7, T8, T9, T10>
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
   {
     typedef typename detail::function::get_function_impl<R, T1, T2, T3, T4, T5,
                                                          T6, T7, T8, T9, T10
@@ -755,8 +819,10 @@ namespace boost {
       base_type;
 
   public:
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
     typedef typename base_type::policy_type policy_type;
     typedef typename base_type::mixin_type mixin_type;
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
     typedef typename base_type::allocator_type allocator_type;              
     typedef function self_type;                                     
                                                                             
@@ -786,24 +852,29 @@ namespace boost {
       return *this;
     }
 
+#ifndef BOOST_FUNCTION_NO_DEPRECATED
     template<typename Functor>
+    BOOST_FUNCTION_DEPRECATED_PRE 
     void set(Functor BOOST_FUNCTION_TARGET_FIX(const &) f)
     {
-      int deprecated;
+      BOOST_FUNCTION_DEPRECATED_INNER
       self_type(f).swap(*this);
     }
 
+    BOOST_FUNCTION_DEPRECATED_PRE
     void set(const base_type& f)
     {
-      int deprecated;
+      BOOST_FUNCTION_DEPRECATED_INNER
       self_type(f).swap(*this);
     }
 
+    BOOST_FUNCTION_DEPRECATED_PRE
     void set(const self_type& f)                             
     {
-      int deprecated;
+      BOOST_FUNCTION_DEPRECATED_INNER
       self_type(f).swap(*this);
     }   
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
   };
 
   template<typename R,
@@ -823,5 +894,7 @@ namespace boost {
     f1.swap(f2);
   }
 } // end namespace boost
+
+#endif // !no deprecated || !no partial specialization
 
 #endif

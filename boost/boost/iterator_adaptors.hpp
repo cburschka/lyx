@@ -382,7 +382,7 @@ namespace detail {
   };
 
 
-# ifdef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
+# if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) || defined(BOOST_NO_STD_ITERATOR_TRAITS)
 
    // Select default pointer and reference types for adapted non-pointer
    // iterators based on the iterator and the value_type. Poor man's partial
@@ -1150,7 +1150,7 @@ template <class OuterIterator,      // Mutable or Immutable, does not matter
 #else
                 = Value &
 #endif
-          , class ConstReference = const Value&
+          , class ConstReference = Value const&
           , class Category = BOOST_ARG_DEPENDENT_TYPENAME boost::detail::iterator_traits<
                 OuterIterator>::iterator_category
           , class Pointer
@@ -1160,7 +1160,7 @@ template <class OuterIterator,      // Mutable or Immutable, does not matter
 #else
                 = Value*
 #endif
-          , class ConstPointer = const Value*
+          , class ConstPointer = Value const*
            >
 struct indirect_iterator_pair_generator
 {

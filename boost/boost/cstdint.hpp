@@ -228,9 +228,9 @@ namespace boost
 #    else
 #       error defaults not correct; you must hand modify boost/cstdint.hpp
 #    endif
-# elif (defined(BOOST_MSVC) && (BOOST_MSVC >= 1100)) || (defined(__BORLANDC__) && (__BORLANDC__ >= 0x520))
+# elif defined(BOOST_HAS_MS_INT64)
      //
-     // we have Borland/Microsoft __int64:
+     // we have Borland/Intel/Microsoft __int64:
      //
      typedef __int64             intmax_t;
      typedef unsigned __int64    uintmax_t;
@@ -272,9 +272,9 @@ BOOST_HAS_STDINT_H is defined (John Maddock).
 
 #if defined(__STDC_CONSTANT_MACROS) && !defined(BOOST__STDC_CONSTANT_MACROS_DEFINED) && !defined(BOOST_HAS_STDINT_H)
 # define BOOST__STDC_CONSTANT_MACROS_DEFINED
-# if (defined(BOOST_MSVC) && (BOOST_MSVC >= 1100)) || (defined(__BORLANDC__) && (__BORLANDC__ >= 0x520))
+# if defined(BOOST_HAS_MS_INT64)
 //
-// Borland/Microsoft compilers have width specific suffixes:
+// Borland/Intel/Microsoft compilers have width specific suffixes:
 //
 #  define INT8_C(value)     value##i8
 #  define INT16_C(value)    value##i16

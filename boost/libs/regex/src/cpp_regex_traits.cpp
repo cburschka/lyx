@@ -145,7 +145,6 @@ parser_buf<charT, traits>::seekoff(off_type off, ::std::ios_base::seekdir way, :
       else
 	 this->setg(g, g + newpos, g + size);
    }
-   default: ;
    }
    return static_cast<pos_type>(this->gptr() - this->eback());
 }

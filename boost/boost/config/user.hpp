@@ -59,7 +59,7 @@
 
 // define if you want to disable threading support, even
 // when available:
-// #define BOOST_DISABLE_THREADS
+#define BOOST_DISABLE_THREADS 1
 
 // define when you want to disable Win32 specific features
 // even when available:
