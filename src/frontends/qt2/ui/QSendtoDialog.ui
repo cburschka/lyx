@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>278</width>
+            <width>276</width>
             <height>262</height>
         </rect>
     </property>
@@ -25,209 +25,174 @@
         <name>sizeGripEnabled</name>
         <bool>true</bool>
     </property>
-    <widget>
-        <class>QComboBox</class>
+    <grid>
         <property stdset="1">
-            <name>name</name>
-            <cstring>commandCO</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>15</x>
-                <y>185</y>
-                <width>245</width>
-                <height>22</height>
-            </rect>
+            <name>margin</name>
+            <number>11</number>
         </property>
         <property stdset="1">
-            <name>sizePolicy</name>
-            <sizepolicy>
-                <hsizetype>3</hsizetype>
-                <vsizetype>0</vsizetype>
-            </sizepolicy>
+            <name>spacing</name>
+            <number>6</number>
         </property>
-        <property stdset="1">
-            <name>focusPolicy</name>
-            <enum>StrongFocus</enum>
-        </property>
-        <property stdset="1">
-            <name>editable</name>
-            <bool>true</bool>
-        </property>
-        <property stdset="1">
-            <name>sizeLimit</name>
-            <number>10</number>
-        </property>
-        <property stdset="1">
-            <name>maxCount</name>
-            <number>666</number>
-        </property>
-        <property stdset="1">
-            <name>insertionPolicy</name>
-            <enum>AtTop</enum>
-        </property>
-        <property stdset="1">
-            <name>autoCompletion</name>
-            <bool>true</bool>
-        </property>
-        <property stdset="1">
-            <name>duplicatesEnabled</name>
-            <bool>false</bool>
-        </property>
-        <property>
-            <name>toolTip</name>
-            <string>Process the converted file with this command ($$FName = file name)</string>
-        </property>
-    </widget>
-    <widget>
-        <class>QLabel</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>commandLA</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>15</x>
-                <y>165</y>
-                <width>126</width>
-                <height>16</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>text</name>
-            <string>&amp;Command:</string>
-        </property>
-        <property>
-            <name>buddy</name>
-            <cstring>commandCO</cstring>
-        </property>
-    </widget>
-    <widget>
-        <class>QLabel</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>formatLA</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>15</x>
-                <y>10</y>
-                <width>115</width>
-                <height>16</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>text</name>
-            <string>&amp;Export formats:</string>
-        </property>
-        <property>
-            <name>buddy</name>
-            <cstring>formatLB</cstring>
-        </property>
-    </widget>
-    <widget>
-        <class>QListBox</class>
-        <item>
-            <property>
+        <widget row="2"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>commandLA</cstring>
+            </property>
+            <property stdset="1">
                 <name>text</name>
-                <string>New Item</string>
+                <string>&amp;Command:</string>
             </property>
-        </item>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>formatLB</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>15</x>
-                <y>30</y>
-                <width>245</width>
-                <height>125</height>
-            </rect>
-        </property>
-        <property stdset="1">
-            <name>maximumSize</name>
-            <size>
-                <width>32767</width>
-                <height>32767</height>
-            </size>
-        </property>
-        <property>
-            <name>toolTip</name>
-            <string>Available export converters</string>
-        </property>
-    </widget>
-    <widget>
-        <class>QLayoutWidget</class>
-        <property stdset="1">
-            <name>name</name>
-            <cstring>Layout6</cstring>
-        </property>
-        <property stdset="1">
-            <name>geometry</name>
-            <rect>
-                <x>11</x>
-                <y>225</y>
-                <width>256</width>
-                <height>24</height>
-            </rect>
-        </property>
-        <hbox>
+            <property>
+                <name>buddy</name>
+                <cstring>commandCO</cstring>
+            </property>
+        </widget>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
             <property stdset="1">
-                <name>margin</name>
-                <number>0</number>
+                <name>name</name>
+                <cstring>formatLA</cstring>
             </property>
             <property stdset="1">
-                <name>spacing</name>
-                <number>6</number>
+                <name>text</name>
+                <string>&amp;Export formats:</string>
             </property>
-            <widget>
-                <class>QPushButton</class>
+            <property>
+                <name>buddy</name>
+                <cstring>formatLB</cstring>
+            </property>
+        </widget>
+        <widget row="4"  column="0" >
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout6</cstring>
+            </property>
+            <hbox>
                 <property stdset="1">
-                    <name>name</name>
-                    <cstring>okPB</cstring>
+                    <name>margin</name>
+                    <number>0</number>
                 </property>
                 <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>okPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>OK</string>
+                    </property>
+                    <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>true</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>default</name>
+                        <bool>false</bool>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>applyPB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Apply</string>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>closePB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Cancel</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget row="3"  column="0" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>commandCO</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>focusPolicy</name>
+                <enum>StrongFocus</enum>
+            </property>
+            <property stdset="1">
+                <name>editable</name>
+                <bool>true</bool>
+            </property>
+            <property stdset="1">
+                <name>sizeLimit</name>
+                <number>10</number>
+            </property>
+            <property stdset="1">
+                <name>maxCount</name>
+                <number>666</number>
+            </property>
+            <property stdset="1">
+                <name>insertionPolicy</name>
+                <enum>AtTop</enum>
+            </property>
+            <property stdset="1">
+                <name>autoCompletion</name>
+                <bool>true</bool>
+            </property>
+            <property stdset="1">
+                <name>duplicatesEnabled</name>
+                <bool>false</bool>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Process the converted file with this command ($$FName = file name)</string>
+            </property>
+        </widget>
+        <widget row="1"  column="0" >
+            <class>QListBox</class>
+            <item>
+                <property>
                     <name>text</name>
-                    <string>OK</string>
+                    <string>New Item</string>
                 </property>
-                <property stdset="1">
-                    <name>autoDefault</name>
-                    <bool>true</bool>
-                </property>
-                <property stdset="1">
-                    <name>default</name>
-                    <bool>false</bool>
-                </property>
-            </widget>
-            <widget>
-                <class>QPushButton</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>applyPB</cstring>
-                </property>
-                <property stdset="1">
-                    <name>text</name>
-                    <string>&amp;Apply</string>
-                </property>
-            </widget>
-            <widget>
-                <class>QPushButton</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>closePB</cstring>
-                </property>
-                <property stdset="1">
-                    <name>text</name>
-                    <string>Cancel</string>
-                </property>
-            </widget>
-        </hbox>
-    </widget>
+            </item>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>formatLB</cstring>
+            </property>
+            <property stdset="1">
+                <name>maximumSize</name>
+                <size>
+                    <width>32767</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Available export converters</string>
+            </property>
+        </widget>
+    </grid>
 </widget>
 <connections>
     <connection>
