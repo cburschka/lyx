@@ -168,6 +168,7 @@ void LyXAction::init()
 		  N_("Choose Paragraph Environment"), ReadOnly },
 		{ LFUN_END_OF_SENTENCE, "end-of-sentence-period-insert",
 		  N_("Insert end of sentence period"), Noop },
+		{ LFUN_ENVIRONMENT_INSERT, "environment-insert", "", Noop },
 		{ LFUN_GOTOERROR, "error-next",
 		  N_("Go to next error"), ReadOnly },
 		{ LFUN_REMOVEERRORS, "error-remove-all",
