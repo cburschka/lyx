@@ -23,6 +23,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "lastfiles.h"
+#include "LaTeXFeatures.h"
 #include "lyx_main.h"
 #include "lyxlayout.h"
 #include "lyxrc.h"
@@ -449,6 +450,8 @@ void Reconfigure(BufferView * bv)
 	p.pop();
 	bv->owner()->message(_("Reloading configuration..."));
 	lyxrc.read(LibFileSearch(string(), "lyxrc.defaults"));
+	// Re-read packages.lst
+	LaTeXFeatures::getAvailable();
 
 	Alert::information(_("System reconfigured"),
 		_("The system has been reconfigured.\n"
