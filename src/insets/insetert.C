@@ -205,7 +205,7 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 	ParagraphList::iterator par = inset.paragraphs.begin();
 	ParagraphList::iterator end = inset.paragraphs.end();
 	for (; par != end; ++par) {
-		os << "\n\\layout " << layout << "\n";
+		os << "\n\\begin_layout " << layout << "\n";
 		pos_type siz = par->size();
 		for (pos_type i = 0; i < siz; ++i) {
 			Paragraph::value_type c = par->getChar(i);
@@ -227,6 +227,7 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 				break;
 			}
 		}
+		os << "\n\\end_layout\n";
 	}
 }
 

@@ -68,19 +68,19 @@ def add_end_layout(lines):
         lines.insert(i, "\\end_layout")
         return
 
-## def layout2begin_layout(lines):
-##     i = 0
-##     while 1:
-##         i = find_token(lines, '\\layout', i)
-##         if i == -1:
-##             return
+def layout2begin_layout(lines):
+    i = 0
+    while 1:
+        i = find_token(lines, '\\layout', i)
+        if i == -1:
+            return
 
-##         lines[i]= replace(lines[i], '\\layout', '\\begin_layout')
-##         i = i + 1
+        lines[i]= replace(lines[i], '\\layout', '\\begin_layout')
+        i = i + 1
 
 def convert(header, body):
     add_end_layout(body)
-##     layout2begin_layout(body)
+    layout2begin_layout(body)
 
 if __name__ == "__main__":
     pass

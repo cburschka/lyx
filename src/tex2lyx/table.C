@@ -490,7 +490,7 @@ void handle_tabular(Parser & p, ostream & os,
 			os << " usebox=\"none\""
 			   << ">"
 			   << "\n\\begin_inset Text"
-			   << "\n\n\\layout Standard\n\n"
+			   << "\n\n\\begin_layout Standard\n\n"
 			   << cell.content
 			   << "\n\\end_inset \n"
 			   << "</cell>\n";

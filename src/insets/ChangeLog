@@ -1,3 +1,8 @@
+2003-07-28  José Matos  <jamatos@fep.up.pt>
+
+	* insetert.C (write): \layout -> \begin_layout.
+	Add missing \end_layout.
+	
 2003-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insettabular.C (write): remove extra space

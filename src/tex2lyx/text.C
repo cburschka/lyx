@@ -100,7 +100,7 @@ void skip_braces(Parser & p)
 void handle_ert(ostream & os, string const & s)
 {
 	begin_inset(os, "ERT");
-	os << "\nstatus Collapsed\n\n\\layout Standard\n\n";
+	os << "\nstatus Collapsed\n\n\\begin_layout Standard\n\n";
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
 			os << "\n\\backslash \n";
@@ -115,7 +115,7 @@ void handle_par(ostream & os)
 {
 	if (active_environments.empty())
 		return;
-	os << "\n\\layout ";
+	os << "\n\\begin_layout ";
 	string s = active_environment();
 	if (s == "document" || s == "table")
 		os << "Standard\n\n";
@@ -156,19 +156,19 @@ void output_layout(ostream & os, LyXLayout_ptr const & layout_ptr,
 		  Parser & p, bool outer, LyXTextClass const & textclass)
 {
 	string name = layout_ptr->name();
-	os << "\n\n\\layout " << name << "\n\n";
+	os << "\n\n\\begin_layout " << name << "\n\n";
 	if (layout_ptr->optionalargs > 0) {
 		string s; 
 		if (p.next_token().character() == '[') {
 			p.get_token(); // eat '['
 			begin_inset(os, "OptArg\n");
-			os << "collapsed true\n\n\\layout Standard\n\n";
+			os << "collapsed true\n\n\\begin_layout Standard\n\n";
 			parse_text(p, os, FLAG_BRACK_LAST, outer, textclass);
 			end_inset(os);
 		}
 	}
 	parse_text(p, os, FLAG_ITEM, outer, textclass);
-	os << "\n\n\\layout Standard\n\n";
+	os << "\n\n\\begin_layout Standard\n\n";
 }
 
 } // anonymous namespace
@@ -327,7 +327,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				}
 				os << "wide " << tostr(is_starred)
 				   << "\ncollapsed false\n\n"
-				   << "\\layout Standard\n";
+				   << "\\begin_layout Standard\n";
 				parse_text(p, os, FLAG_END, outer,
 					   textclass);
 				end_inset(os);
@@ -344,7 +344,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
  					|| s == "lyxlist";
  				if (deeper)
  					os << "\n\\begin_deeper";
-				os << "\n\\layout " << layout_ptr->name() 
+				os << "\n\\begin_layout " << layout_ptr->name() 
 				   << "\n\n";
 				switch (layout_ptr->latextype) {
 				case  LATEX_LIST_ENVIRONMENT:
@@ -438,7 +438,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		
 		else if (t.cs() == "footnote") {
 			begin_inset(os, "Foot\n");
-			os << "collapsed true\n\n\\layout Standard\n\n";
+			os << "collapsed true\n\n\\begin_layout Standard\n\n";
 			parse_text(p, os, FLAG_ITEM, false, textclass);
 			end_inset(os);
 		}
@@ -453,7 +453,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "marginpar") {
 			begin_inset(os, "Marginal\n");
-			os << "collapsed true\n\n\\layout Standard\n\n";
+			os << "collapsed true\n\n\\begin_layout Standard\n\n";
 			parse_text(p, os, FLAG_ITEM, false, textclass);
 			end_inset(os);
 		}
@@ -523,7 +523,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "bibitem") {
-			os << "\n\\layout Bibliography\n\\bibitem ";
+			os << "\n\\begin_layout Bibliography\n\\bibitem ";
 			os << p.getOpt();
 			os << '{' << p.verbatim_item() << '}' << "\n";
 		}

@@ -1,3 +1,9 @@
+2003-07-28  José Matos  <jamatos@fep.up.pt>
+
+	* buffer.C (readParagraph):
+	* params_func (readParToken, readParagraph):
+	* paragraph.C (write): \layout -> \begin_layout.
+
 2003-07-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxlex_pimpl.C (setFile): clean up slightly.

@@ -166,7 +166,7 @@ void end_preamble(ostream & os, LyXTextClass const & textclass)
 	   << "\\papersides " << h_papersides << "\n"
 	   << "\\paperpagestyle " << h_paperpagestyle << "\n"
 	   << "\\tracking_changes " << h_tracking_changes << "\n"
-	   << "\\end_header\n\n\\layout Standard\n";
+	   << "\\end_header\n\n\\begin_layout Standard\n";
 }
 
 

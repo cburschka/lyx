@@ -793,7 +793,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		for (; cit != token.end(); ++cit) {
 			par.insertChar(par.size(), (*cit), font, change);
 		}
-	} else if (token == "\\layout") {
+	} else if (token == "\\begin_layout") {
 		lex.eatLine();
 		string layoutname = lex.getString();
 
@@ -828,7 +828,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 
 	} else if (token == "\\end_layout") {
 		lyxerr << "Solitary \\end_layout in line " << lex.getLineNo() << "\n"
-		       << "Missing \\layout?.\n";
+		       << "Missing \\begin_layout?.\n";
 	} else if (token == "\\end_inset") {
 		lyxerr << "Solitary \\end_inset in line " << lex.getLineNo() << "\n"
 		       << "Missing \\begin_inset?.\n";
@@ -988,7 +988,7 @@ int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex)
 
 		lyxerr[Debug::PARSER] << "Handling paragraph token: `"
 				      << token << '\'' << endl;
-		if (token == "\\layout" || token == "\\the_end"
+		if (token == "\\begin_layout" || token == "\\the_end"
 		    || token == "\\end_inset" || token == "\\begin_deeper"
 		    || token == "\\end_deeper") {
 			lex.pushToken(token);

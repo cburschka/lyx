@@ -1,3 +1,10 @@
+2003-07-28  José Matos  <jamatos@lyx.org>
+
+	* text.C:
+	* tex2lyx.C:
+	* preamble.C:
+	* table.C: \layout -> \begin_layout.
+
 2003-07-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C (parse_text): read environment from layout file too. Now,

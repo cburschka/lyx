@@ -348,7 +348,7 @@ int Buffer::readParagraph(LyXLex & lex, string const & token,
 	static Change current_change;
 	int unknown = 0;
 
-	if (token == "\\layout") {
+	if (token == "\\begin_layout") {
 		lex.pushToken(token);
 
 		Paragraph par;

@@ -121,7 +121,7 @@ void clean_layouts(istream & is, ostream & os)
 	bool eating = false;
 	while (getline(is, line)) {
 		string tline = trim(line, " ");
-		if (line.substr(0, 8) == "\\layout ") {
+		if (line.substr(0, 8) == "\\begin_layout ") {
 			//cerr << "layout: " << line << "\n";
 			last = line;
 			eating = true;

@@ -156,7 +156,7 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 	}
 
 	// First write the layout
-	os << "\n\\layout " << layout()->name() << '\n';
+	os << "\n\\begin_layout " << layout()->name() << '\n';
 
 	params().write(os);
 
