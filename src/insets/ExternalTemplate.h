@@ -12,8 +12,8 @@
 #ifndef EXTERNALTEMPLATE_H
 #define EXTERNALTEMPLATE_H
 
-#include "support/std_string.h"
 #include <boost/utility.hpp>
+#include "support/std_string.h"
 #include <iosfwd>
 #include <map>
 #include <vector>
@@ -92,7 +92,6 @@ public:
 	/** return the preamble definition by LyX name.
 	 *  If it isn't found, return an empty string.
 	 */
-	ExternalTemplate const & getTemplateByName(string const & name);
 	string const getPreambleDefByName(string const & name) const;
 private:
 	ExternalTemplateManager();
