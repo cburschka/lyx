@@ -1,5 +1,7 @@
 2001-03-12  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* buffer.C: add using std::stringstream.
+
 	* lyx_cb.C: readd using std::ios.
 
 	* buffer.C: add using std::map.

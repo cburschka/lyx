@@ -97,6 +97,7 @@
 #include "Lsstream.h"
 #include "converter.h"
 
+using std::stringstream;
 using std::ostream;
 using std::ofstream;
 using std::ifstream;
