@@ -1020,19 +1020,8 @@ int paintText(BufferView & bv)
 void paintTextInset(BufferView & bv, LyXText & text, int xo, int baseline)
 {
 	RowList::iterator rit = text.firstRow();
-	RowList::iterator end = text.endRow();
 	ParagraphList::iterator pit = text.ownerParagraphs().begin();
-
-	int y_offset = baseline - rit->ascent_of_text();
-	int y = y_offset;
-	while (rit != end && y + rit->height() <= 0) {
-		y += rit->height();
-		text.nextRow(pit, rit);
-	}
-	if (y_offset < 0)
-		paintRows(bv, text, pit, rit, xo, y, 0);
-	else
-		paintRows(bv, text, pit, rit, xo, y_offset, 0);
+	paintRows(bv, text, pit, rit, xo, baseline - rit->ascent_of_text(), 0);
 }
 
 
