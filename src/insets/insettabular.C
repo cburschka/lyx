@@ -800,7 +800,9 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 		return;
 	}
 	if (inset_hit && bv->theLockingInset()) {
-		if (activateCellInsetAbs(bv, x, y, button))
+		// only activate the Inset so that no internal inset is hit
+		// by this call. It should be only hit by the insetButtonPress call.
+		if (activateCellInsetAbs(bv, 0, 0, 0))
 			the_locking_inset->insetButtonPress(bv,
 							    x - inset_x,
 							    y - inset_y,
