@@ -30,6 +30,9 @@
 #include "debug.h"
 #include "LyXView.h"
 
+using std::max;
+using std::min;
+
 static const int LYX_PAPER_MARGIN = 20;
 
 extern int mono_video;

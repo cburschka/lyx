@@ -1,3 +1,7 @@
+2000-01-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/text.C: add using directives for std::min and std::max.
+
 2000-01-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/texrow.C (getIdFromRow): actually return something useful in
