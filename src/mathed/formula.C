@@ -18,6 +18,7 @@
 #include "math_mathmlstream.h"
 #include "textpainter.h"
 
+#include "BufferView.h"
 #include "debug.h"
 #include "latexrunparams.h"
 #include "LColor.h"
@@ -195,7 +196,8 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 	cache(pi.base.bv);
 	// This initiates the loading of the preview, so should come
 	// before the metrics are computed.
-	bool const use_preview = preview_->previewReady();
+	Buffer const * buffer_ptr = pi.base.bv ? pi.base.bv->buffer() : 0;
+	bool const use_preview = buffer_ptr && preview_->previewReady(*buffer_ptr);
 
 	int const w = dim_.wid;
 	int const d = dim_.des;
@@ -260,7 +262,8 @@ bool InsetFormula::insetAllowed(InsetOld::Code code) const
 void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
 {
 	view_ = m.base.bv;
-	if (preview_->previewReady()) {
+	Buffer const * buffer_ptr = m.base.bv ? m.base.bv->buffer() : 0;
+	if (buffer_ptr && preview_->previewReady(*buffer_ptr)) {
 		dim.asc = preview_->pimage()->ascent();
 		dim.des = preview_->pimage()->descent();
 		// insert a one pixel gap in front of the formula

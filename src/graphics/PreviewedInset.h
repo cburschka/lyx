@@ -51,10 +51,10 @@ public:
 	/** Remove a snippet from the cache of previews.
 	 *  Useful if previewing the contents of a file that has changed.
 	 */
-	void removePreview();
+	void removePreview(Buffer const &);
 
 	/// The preview has been generated and is ready to use.
-	bool previewReady() const;
+	bool previewReady(Buffer const &) const;
 
 	/// If !previewReady() returns 0.
 	PreviewImage const * pimage() const;
@@ -83,8 +83,10 @@ private:
 
 	/// We don't own this. Cached for efficiency reasons.
 	mutable PreviewImage const * pimage_;
-	///
-	boost::signals::connection connection_;
+	/** Store the connection to the preview loader so that we connect
+	 *  only once.
+	 */
+	boost::signals::connection ploader_connection_;
 };
 
 

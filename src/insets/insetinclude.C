@@ -538,7 +538,8 @@ void InsetInclude::fillWithBibKeys(Buffer const & buffer,
 
 void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (preview_->previewReady()) {
+	Buffer const * buffer_ptr = mi.base.bv ? mi.base.bv->buffer() : 0;
+	if (buffer_ptr && preview_->previewReady(*buffer_ptr)) {
 		dim.asc = preview_->pimage()->ascent();
 		dim.des = preview_->pimage()->descent();
 		dim.wid = preview_->pimage()->width();
@@ -563,7 +564,10 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
 	cache(pi.base.bv);
-	if (!preview_->previewReady()) {
+	Buffer const * buffer_ptr = pi.base.bv ? pi.base.bv->buffer() : 0;
+	bool const use_preview = buffer_ptr && preview_->previewReady(*buffer_ptr);
+
+	if (!use_preview) {
 		button_.draw(pi, x + button_.box().x1, y);
 		return;
 	}
@@ -626,12 +630,14 @@ void InsetInclude::PreviewImpl::startMonitoring(string const & file)
 
 void InsetInclude::PreviewImpl::restartLoading()
 {
-	removePreview();
 	if (!view())
 		return;
 	view()->updateInset(&parent());
-	if (view()->buffer())
-		generatePreview(*view()->buffer());
+	if (view()->buffer()) {
+		Buffer const & buffer = *view()->buffer();
+		removePreview(buffer);
+		generatePreview(buffer);
+	}
 }
 
 

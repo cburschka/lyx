@@ -1,3 +1,7 @@
+2003-10-09  Angus Leeming  <leeming@lyx.org>
+
+	* formula.C (metrics, draw): pass a buffer arg to PreviewedInset's
+	previewReady and removePreview member functions.
 
 2003-10-07  André Pönitz  <poenitz@gmx.net>
 

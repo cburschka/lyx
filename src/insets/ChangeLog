@@ -1,3 +1,7 @@
+2003-10-09  Angus Leeming  <leeming@lyx.org>
+
+	* insetinclude.C (metrics, draw, restartLoading): pass a buffer arg
+	to PreviewedInset's previewReady and removePreview member functions.
 
 2003-10-08  André Pönitz  <poenitz@gmx.net>
 

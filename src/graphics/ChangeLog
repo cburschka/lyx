@@ -1,3 +1,9 @@
+2003-10-09  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewedInset.[Ch] (removePreview, previewReady): these functions
+	are now passed a 'Buffer const &', eliminating most of the remaining
+	need for PreviewedInset to use a BufferView cache.
+
 2003-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* GraphicsCache.h: 

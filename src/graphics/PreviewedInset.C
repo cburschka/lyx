@@ -75,8 +75,8 @@ void PreviewedInset::addPreview(PreviewLoader & ploader)
 	// If this is the first time of calling, connect to the
 	// PreviewLoader signal that'll inform us when the preview image
 	// is ready for loading.
-	if (!connection_.connected()) {
-		connection_ = ploader.connect(
+	if (!ploader_connection_.connected()) {
+		ploader_connection_ = ploader.connect(
 			boost::bind(&PreviewedInset::imageReady, this, _1));
 	}
 
@@ -84,43 +84,36 @@ void PreviewedInset::addPreview(PreviewLoader & ploader)
 }
 
 
-void PreviewedInset::removePreview()
+void PreviewedInset::removePreview(Buffer const & buffer)
 {
-	if (!view() || !view()->buffer() || snippet_.empty())
+	if (snippet_.empty())
 		return;
 
 	Previews & previews = Previews::get();
-	PreviewLoader & loader = previews.loader(*view()->buffer());
+	PreviewLoader & loader = previews.loader(buffer);
 	loader.remove(snippet_);
 	snippet_.erase();
 	pimage_ = 0;
 }
 
 
-bool PreviewedInset::previewReady() const
+bool PreviewedInset::previewReady(Buffer const & buffer) const
 {
-	if (!Previews::activated() || !view() || !view()->buffer())
-		return false;
-
-	if (!previewWanted(*view()->buffer()))
+	if (!Previews::activated() || !previewWanted(buffer))
 		return false;
 
 	if (!pimage_ || snippet_ != pimage_->snippet()) {
-		PreviewLoader & ploader =
-			Previews::get().loader(*view()->buffer());
+		PreviewLoader & ploader = Previews::get().loader(buffer);
 		pimage_ = ploader.preview(snippet_);
 	}
 
-	if (!pimage_)
-		return false;
-
-	return pimage_->image();
+	return pimage_ ? pimage_->image() : false;
 }
 
 
 void PreviewedInset::imageReady(PreviewImage const & pimage) const
 {
-	// Check snippet against the Inset's current contents
+	// Check the current snippet is the same as that previewed.
 	if (snippet_ != pimage.snippet())
 		return;
 
