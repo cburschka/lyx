@@ -13,7 +13,7 @@
 #include "LString.h"
 #include "support/filetools.h"
 #include "support/os.h"
- 
+
 int main(int argc, char * argv[])
 {
 	os::init(&argc, &argv);
