@@ -361,7 +361,7 @@ public:
 	///
 	virtual bool isCursorVisible() const { return cursor_visible; }
 	///
-	virtual int getMaxWidth(Painter & pain, UpdatableInset const *) const;
+	virtual int getMaxWidth(BufferView * bv, UpdatableInset const *) const;
 	///
 	int scroll() const { return scx; }
 	///

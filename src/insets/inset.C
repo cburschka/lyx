@@ -229,9 +229,9 @@ UpdatableInset::LocalDispatch(BufferView * bv,
 }
 
 
-int UpdatableInset::getMaxWidth(Painter & pain, UpdatableInset const *) const
+int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 {
     if (owner())
-        return static_cast<UpdatableInset*>(owner())->getMaxWidth(pain, this);
-    return pain.paperWidth();
+        return static_cast<UpdatableInset*>(owner())->getMaxWidth(bv, this);
+    return bv->workWidth();
 }

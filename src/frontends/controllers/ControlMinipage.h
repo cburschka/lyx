@@ -40,8 +40,6 @@ struct MinipageParams {
 	///
 	string width;
 	///
-	int widthp;
-	///
 	InsetMinipage::Position pos;
 };
 

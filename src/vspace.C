@@ -34,7 +34,8 @@ int const num_units = LyXLength::UNIT_NONE;
 // I am not sure if "mu" should be possible to select (Lgb)
 char const * unit_name[num_units] = { "sp", "pt", "bp", "dd",
 				      "mm", "pc", "cc", "cm",
-				      "in", "ex", "em", "mu" }; 
+				      "in", "ex", "em", "mu",
+				      "%",  "c%", "p%", "l%" }; 
 
 
 /*  The following static items form a simple scanner for
@@ -104,7 +105,7 @@ char nextToken(string & data)
 			} else return 'E';
 		}
 		
-		i = data.find_first_not_of("abcdefghijklmnopqrstuvwxyz");
+		i = data.find_first_not_of("abcdefghijklmnopqrstuvwxyz%");
 		if (i != 0) {
 			if (unit_index > 3) return 'E';
 
@@ -161,6 +162,13 @@ LaTeXLength table[] = {
 };
 
 } // namespace anon
+
+const char * stringFromUnit(int unit)
+{
+    if (unit < 0 || unit >= num_units)
+	return 0;
+    return unit_name[unit];
+}
 
 
 LyXLength::UNIT unitFromString (string const & data)
@@ -319,6 +327,28 @@ string const LyXLength::asString() const
 {
 	std::ostringstream buffer;
 	buffer << val << unit_name[uni]; // setw?
+	return buffer.str().c_str();
+}
+
+
+string const LyXLength::asLatexString() const
+{
+	std::ostringstream buffer;
+	switch(uni) {
+	case PW:
+	case PE:
+	    buffer << "." << abs(static_cast<int>(val)) << "\\columnwidth";
+	    break;
+	case PP:
+	    buffer << "." << abs(static_cast<int>(val)) << "\\pagewidth";
+	    break;
+	case PL:
+	    buffer << "." << abs(static_cast<int>(val)) << "\\linewidth";
+	    break;
+	default:
+	    buffer << val << unit_name[uni]; // setw?
+	    break;
+	}
 	return buffer.str().c_str();
 }
 
@@ -521,13 +551,15 @@ int VSpace::inPixels(BufferView * bv) const
 	// Height of a normal line in pixels (zoom factor considered)
 	int height = bv->text->DefaultHeight(); // [pixels]
 	int skip = 0;
+	int width = bv->workWidth();
+
 	if (kin == DEFSKIP)
 	    skip = bv->buffer()->params.getDefSkip().inPixels(bv);
 
-	return inPixels(height, skip);
+	return inPixels(height, skip, width);
 }
 
-int VSpace::inPixels(int default_height, int default_skip) const
+int VSpace::inPixels(int default_height, int default_skip, int default_width) const
 {
 	// Height of a normal line in pixels (zoom factor considered)
 	int height = default_height; // [pixels]
@@ -622,6 +654,12 @@ int VSpace::inPixels(int default_height, int default_skip) const
 		case LyXLength::MU: // This is probably only allowed in
 			// math mode
 			result = zoom * value * height;
+			break;
+		case LyXLength::PW: // Always % of workarea
+		case LyXLength::PE:
+		case LyXLength::PP:
+		case LyXLength::PL:
+			result = value * default_width / 100;
 			break;
 		case LyXLength::UNIT_NONE:
 			result = 0;  // this cannot happen

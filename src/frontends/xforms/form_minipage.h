@@ -18,7 +18,7 @@ struct FD_form_minipage {
 
 	FL_FORM *form;
 	FL_OBJECT *input_width;
-	FL_OBJECT *input_widthp;
+	FL_OBJECT *choice_width_units;
 	FL_OBJECT *group_alignment;
 	FL_OBJECT *radio_top;
 	FL_OBJECT *radio_middle;

@@ -52,7 +52,7 @@ extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 int LyXText::workWidth(BufferView * bview) const
 {
 	if (inset_owner) {
-		return inset_owner->textWidth(bview->painter());
+		return inset_owner->textWidth(bview);
 	}
 	return bview->workWidth();
 }

@@ -50,6 +50,13 @@ public:
 		EM,
 		/// Math unit (18mu = 1em) for positioning in math mode
 		MU,
+		/// Percent of columnwidth both "%" or "%c"
+		PW,
+		PE,
+		/// Percent of pagewidth
+		PP,
+		/// Percent of linewidth
+		PL,
 		/// no unit
 		UNIT_NONE
 	};
@@ -71,9 +78,7 @@ public:
 	/// conversion
 	virtual string const asString() const;
 	///
-	virtual string const asLatexString() const {
-		return this->asString();
-	}
+	virtual string const asLatexString() const;
 
 	/** If "data" is valid, the length represented by it is
 	  stored into "result", if that is not 0. */
@@ -99,6 +104,8 @@ bool operator==(LyXLength const & l1, LyXLength const & l2)
 extern LyXLength::UNIT unitFromString (string const & data);
 ///
 extern bool isValidLength(string const & data, LyXLength * result);
+///
+extern const char * stringFromUnit(int unit);
 
 /// LyXGlueLength class
 class LyXGlueLength : public LyXLength {
@@ -239,7 +246,7 @@ public:
 	///
 	int inPixels(BufferView * bv) const;
 	///
-	int inPixels(int default_height, int default_skip) const;
+	int inPixels(int default_height, int default_skip, int default_width=0) const;
 private:
 	/// This VSpace kind
 	vspace_kind kin;

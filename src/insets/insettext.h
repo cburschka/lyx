@@ -93,7 +93,7 @@ public:
     ///
     int width(BufferView *, LyXFont const & f) const;
     ///
-    int textWidth(Painter &) const;
+    int textWidth(BufferView *) const;
     ///
     void draw(BufferView *, LyXFont const &, int , float &, bool) const;
     ///
@@ -154,7 +154,7 @@ public:
     ///
     void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
     ///
-    int getMaxWidth(Painter &, UpdatableInset const *) const;
+    int getMaxWidth(BufferView *, UpdatableInset const *) const;
     ///
     void init(InsetText const * ins = 0);
     ///

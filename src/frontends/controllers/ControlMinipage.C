@@ -7,7 +7,7 @@
  *
  * ======================================================
  *
- * \author Juergen Vigna, jug@sad.it
+ * \author Jürgen Vigna, jug@sad.it
  * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
@@ -25,6 +25,9 @@
 using std::vector;
 using SigC::slot;
 
+// sorry this is just a temporary hack we should include vspace.h! (Jug)
+extern const char * stringFromUnit(int);
+
 ControlMinipage::ControlMinipage(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetMinipage, MinipageParams>(lv, d)
 {
@@ -40,7 +43,6 @@ ControlMinipage::ControlMinipage(LyXView & lv, Dialogs & d)
 void ControlMinipage::applyParamsToInset()
 {
 	inset()->width(params().width);
-	inset()->widthp(params().widthp);
 	inset()->pos(params().pos);
 
 	lv_.view()->updateInset(inset(), true);
@@ -59,16 +61,16 @@ MinipageParams const ControlMinipage::getParams(InsetMinipage const & inset)
 
 
 MinipageParams::MinipageParams()
-	: widthp(0), pos(InsetMinipage::top)
+	: pos(InsetMinipage::top)
 {}
 
 MinipageParams::MinipageParams(InsetMinipage const & inset)
-	: width(inset.width()), widthp(inset.widthp()), pos(inset.pos())
+	: width(inset.width()), pos(inset.pos())
 {}
 
 bool MinipageParams::operator==(MinipageParams const & o) const
 {
-	return (width == o.width && widthp == o.widthp && pos == o.pos);
+	return (width == o.width && pos == o.pos);
 }
 
 bool MinipageParams::operator!=(MinipageParams const & o) const
@@ -81,16 +83,11 @@ namespace minipage {
 vector<string> const getUnits()
 {
 	vector<string> units;
-	units.push_back("mm");
-	units.push_back("in");
-	units.push_back("em");
-	units.push_back("%%");
-	units.push_back("%%c");
-	units.push_back("%%l");
-	units.push_back("%%p");
+	const char * str;
+	for(int i=0;(str=stringFromUnit(i));++i)
+	    units.push_back(str);
 
 	return units;
 }
  
 } // namespace minipage
-

@@ -77,17 +77,11 @@ public:
 	///
 	void width(string const &);
 	///
-	int widthp() const;
-	///
-	void widthp(int);
-	///
-	void widthp(string const &);
-	///
 	SigC::Signal0<void> hideDialog;
 	///
 	void InsetButtonRelease(BufferView * bv, int x, int y, int button);
 	///
-	int getMaxWidth(Painter &, UpdatableInset const *) const;
+	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
 	bool needFullRow() const { return false; }
 	///
@@ -101,8 +95,6 @@ private:
 	string height_;
 	///
 	string width_;
-	///
-	int widthp_;
 };
 
 #endif

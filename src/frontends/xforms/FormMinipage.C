@@ -22,6 +22,8 @@
 #include "FormMinipage.h"
 #include "form_minipage.h"
 #include "support/lstrings.h"
+#include "helper_funcs.h"
+#include "debug.h"
 
 typedef FormCB<ControlMinipage, FormDB<FD_form_minipage> > base_class;
 
@@ -35,7 +37,9 @@ void FormMinipage::build()
 	dialog_.reset(build_minipage());
 
 	fl_set_input_return(dialog_->input_width, FL_RETURN_CHANGED);
-	fl_set_input_return(dialog_->input_widthp, FL_RETURN_CHANGED);
+
+	string const choice = getStringFromVector(minipage::getUnits(), "|");
+	fl_addto_choice(dialog_->choice_width_units, subst(choice, "%", "%%").c_str());
 
 	// Manage the ok, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
@@ -44,7 +48,7 @@ void FormMinipage::build()
 	bc().setUndoAll(dialog_->button_restore);
 
 	bc().addReadOnly(dialog_->input_width);
-	bc().addReadOnly(dialog_->input_widthp);
+	bc().addReadOnly(dialog_->choice_width_units);
 	bc().addReadOnly(dialog_->radio_top);
 	bc().addReadOnly(dialog_->radio_middle);
 	bc().addReadOnly(dialog_->radio_bottom);
@@ -55,9 +59,11 @@ void FormMinipage::build()
 
 void FormMinipage::apply()
 {
-	controller().params().width = fl_get_input(dialog_->input_width);
-	controller().params().widthp =
-		strToInt(fl_get_input(dialog_->input_widthp));
+	string const units = fl_get_choice_text(dialog_->choice_width_units);
+	double const val = strToDbl(fl_get_input(dialog_->input_width));
+
+	controller().params().width =
+		tostr(val) + frontStrip(strip(subst(units,"%%","%")));
 
 	if (fl_get_button(dialog_->radio_top))
 		controller().params().pos = InsetMinipage::top;
@@ -70,11 +76,10 @@ void FormMinipage::apply()
 
 void FormMinipage::update()
 {
-    fl_set_input(dialog_->input_width,
-		 controller().params().width.c_str());
-    fl_set_input(dialog_->input_widthp,
-		 tostr(controller().params().widthp).c_str());
-		 
+    LyXLength len(controller().params().width.c_str());
+    fl_set_input(dialog_->input_width,tostr(len.value()).c_str());
+    fl_set_choice(dialog_->choice_width_units, len.unit()+1);
+
     switch (controller().params().pos) {
     case InsetMinipage::top:
 	fl_set_button(dialog_->radio_top, 1);

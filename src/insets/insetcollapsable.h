@@ -121,7 +121,7 @@ public:
     ///
     void setAutoCollapse(bool f) { autocollapse = f; }
     ///
-    int getMaxWidth(Painter & pain, UpdatableInset const *) const;
+    int getMaxWidth(BufferView *, UpdatableInset const *) const;
     ///
     LyXText * getLyXText(BufferView const *, bool const recursive) const;
     ///

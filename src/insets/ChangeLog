@@ -1,3 +1,8 @@
+2001-03-29  Juergen Vigna  <jug@sad.it>
+
+	* insetminipage.C: removed widthp_ and all it's functions and changed
+	to use new %-lengths of LyXLength.
+
 2001-03-28  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insets/figinset.[Ch]: changed headers lyx.h, form1.h -> figure_form.h.

@@ -299,10 +299,10 @@ int InsetCollapsable::Latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetCollapsable::getMaxWidth(Painter & pain,
+int InsetCollapsable::getMaxWidth(BufferView * bv,
 				  UpdatableInset const * inset) const
 {
-    int const w = UpdatableInset::getMaxWidth(pain, inset);
+    int const w = UpdatableInset::getMaxWidth(bv, inset);
 
     if (w < 0) {
 	// What does a negative max width signify? (Lgb)

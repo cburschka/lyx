@@ -1993,7 +1993,6 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 	    if (LeftLine(cell))
 		os << '|';
 	    if (!GetPWidth(cell).empty()) {
-#warning Jürgen, are these alignments correct? (Lgb)
 		switch (GetVAlignment(cell)) {
 		case LYX_VALIGN_TOP:
 		    os << "p";
@@ -2044,7 +2043,6 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
     } else if (GetUsebox(cell) == BOX_MINIPAGE) {
 	os << "\\begin{minipage}[";
 	switch (GetVAlignment(cell)) {
-#warning Jürgen, are these alignments correct? (Lgb)
 	case LYX_VALIGN_TOP:
 	    os << "t";
 	    break;
@@ -2109,7 +2107,6 @@ int LyXTabular::Latex(Buffer const * buf,
 	    os << column_info[i].align_special;
 	} else if (!column_info[i].p_width.empty()) {
 	    switch (column_info[i].valignment) {
-#warning Jürgen, are these alignments correct? (Lgb)
 	    case LYX_VALIGN_TOP:
 		os << "p";
 		break;

@@ -1153,7 +1153,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			InsetMinipage * mini = new InsetMinipage;
 			mini->pos(static_cast<InsetMinipage::Position>(par->params.pextraAlignment()));
 			mini->width(par->params.pextraWidth());
-			mini->widthp(par->params.pextraWidthp());
+			if (!par->params.pextraWidthp().empty()) {
+			    lyxerr << "WP:" << mini->width() << endl;
+			    mini->width(tostr(par->params.pextraWidthp())+"%");
+			}
 			mini->inset->par = par;
 			// Insert the minipage last in the
 			// previous paragraph.
@@ -1220,7 +1223,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		InsetMinipage * mini = new InsetMinipage;
 		mini->pos(static_cast<InsetMinipage::Position>(minipar->params.pextraAlignment()));
 		mini->width(minipar->params.pextraWidth());
-		mini->widthp(minipar->params.pextraWidthp());
+		if (!par->params.pextraWidthp().empty()) {
+		    lyxerr << "WP:" << mini->width() << endl;
+		    mini->width(tostr(par->params.pextraWidthp())+"%");
+		}
 		mini->inset->par = minipar;
 			
 		// Insert the minipage last in the

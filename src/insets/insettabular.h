@@ -159,7 +159,7 @@ public:
     ///
     void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
     ///
-    int getMaxWidth(Painter & pain, UpdatableInset const *) const;
+    int getMaxWidth(BufferView *, UpdatableInset const *) const;
     ///
     Buffer * BufferOwner() const { return const_cast<Buffer *>(buffer); }
     ///
@@ -232,7 +232,7 @@ private:
     ///
     bool InsetHit(BufferView * bv, int x, int y) const;
     ///
-    int GetMaxWidthOfCell(Painter &, int cell) const;
+    int GetMaxWidthOfCell(BufferView * bv, int cell) const;
     ///
     bool hasPasteBuffer() const;
     ///

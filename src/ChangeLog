@@ -1,3 +1,11 @@
+2001-03-29  Juergen Vigna  <jug@sad.it>
+
+	* vspace.C: added support for %, c%, p%, l%.
+	(stringFromUnit): added helper function.
+	(asLatexString): changed to give right results for the %-values.
+
+	* buffer.C: convert the widthp in a width%.
+
 2001-03-28  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Makefile.am: removed form1.[Ch], lyx.[Ch] and added figure_form.[Ch],

@@ -1812,17 +1812,17 @@ bool InsetTabular::InsetHit(BufferView *, int x, int) const
 
 // This returns paperWidth() if the cell-width is unlimited or the width
 // in pixels if we have a pwidth for this cell.
-int InsetTabular::GetMaxWidthOfCell(Painter &, int cell) const
+int InsetTabular::GetMaxWidthOfCell(BufferView * bv, int cell) const
 {
     string const s = tabular->GetPWidth(cell);
 
     if (s.empty())
 	return -1;
-    return VSpace(s).inPixels(0, 0);
+    return VSpace(s).inPixels(bv);
 }
 
 
-int InsetTabular::getMaxWidth(Painter & pain,
+int InsetTabular::getMaxWidth(BufferView * bv,
 			      UpdatableInset const * inset) const
 {
     int const n = tabular->GetNumberOfCells();
@@ -1833,7 +1833,7 @@ int InsetTabular::getMaxWidth(Painter & pain,
     }
     if (cell >= n)
 	return -1;
-    int w = GetMaxWidthOfCell(pain, cell);
+    int w = GetMaxWidthOfCell(bv, cell);
     if (w > 0)
 	// because the inset then subtracts it's top_x and owner->x()
 	w += (inset->x() - top_x);

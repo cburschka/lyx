@@ -288,15 +288,15 @@ int InsetText::descent(BufferView * bv, LyXFont const &) const
 
 int InsetText::width(BufferView * bv, LyXFont const &) const
 {
-    insetWidth = max(textWidth(bv->painter()),
+    insetWidth = max(textWidth(bv),
 		     (int)TEXT(bv)->width + (2 * TEXT_TO_INSET_OFFSET));
     return insetWidth;
 }
 
 
-int InsetText::textWidth(Painter & pain) const
+int InsetText::textWidth(BufferView * bv) const
 {
-    int const w = getMaxWidth(pain, this);
+    int const w = getMaxWidth(bv, this);
     return w;
 }
 
@@ -470,7 +470,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
     // static_cast<int>(TEXT(bv)->width) + drawTextXOffset) +
     // (2 * TEXT_TO_INSET_OFFSET);
 #else
-    insetWidth = textWidth(bv->painter());
+    insetWidth = textWidth(bv);
     if (insetWidth < 0)
 	    insetWidth = static_cast<int>(TEXT(bv)->width);
 #endif
@@ -1517,9 +1517,9 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 }
 
 
-int InsetText::getMaxWidth(Painter & pain, UpdatableInset const * inset) const
+int InsetText::getMaxWidth(BufferView * bv, UpdatableInset const * inset) const
 {
-    int w = UpdatableInset::getMaxWidth(pain, inset);
+    int w = UpdatableInset::getMaxWidth(bv, inset);
     if (w < 0) {
 	return w;
     }

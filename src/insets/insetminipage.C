@@ -69,7 +69,7 @@ InsetMinipage::InsetMinipage()
 	setLabelFont(font);
 	setAutoCollapse(false);
 	setInsetName("Minipage");
-	widthp_ = 100; // set default to 100% of column_width
+	width_ = "100%"; // set default to 100% of column_width
 }
 
 
@@ -85,8 +85,7 @@ void InsetMinipage::Write(Buffer const * buf, ostream & os) const
 	   << "position " << pos_ << "\n"
 	   << "inner_position " << inner_pos_ << "\n"
 	   << "height \"" << height_ << "\"\n"
-	   << "width \"" << width_ << "\"\n"
-	   << "widthp " << widthp_ << "\n";
+	   << "width \"" << width_ << "\"\n";
 	InsetCollapsable::Write(buf, os);
 }
 
@@ -149,6 +148,9 @@ void InsetMinipage::Read(Buffer const * buf, LyXLex & lex)
 		       << endl;
 	}
     }
+#warning Remove me before final 1.2.0 (Jug)
+    // this is only for compatibility to the intermediate format and should
+    // vanish till the final 1.2.0!
     if (lex.IsOK()) {
 	if (token.empty()) {
 	    lex.next();
@@ -156,13 +158,17 @@ void InsetMinipage::Read(Buffer const * buf, LyXLex & lex)
 	}
 	if (token == "widthp") {
 	    lex.next();
-	    widthp_ = lex.GetInteger();
+	    // only do this if the width_-string was not already set!
+	    if (width_.empty())
+		width_ = lex.GetString() + "%";
 	    token = string();
 	} else {
 		lyxerr << "InsetMinipage::Read: Missing 'widthp_'-tag!"
 		       << endl;
 	}
     }
+    if (!token.empty())
+	lex.pushToken(token);
     InsetCollapsable::Read(buf, lex);
 }
 
@@ -177,7 +183,6 @@ Inset * InsetMinipage::Clone(Buffer const &) const
 	result->inner_pos_ = inner_pos_;
 	result->height_ = height_;
 	result->width_ = width_;
-	result->widthp_ = widthp_;
 	return result;
 }
 
@@ -251,18 +256,12 @@ int InsetMinipage::Latex(Buffer const * buf,
 		s_pos += "b";
 		break;
 	}
-	
-	if (width_.empty()) {
-	    os << "\\begin{minipage}[" << s_pos << "]{."
-	       << widthp_ << "\\columnwidth}%\n";
-	} else {
-	    os << "\\begin{minipage}[" << s_pos << "]{"
-	       << width_ << "}%\n";
-	}
+	os << "\\begin{minipage}[" << s_pos << "]{"
+	   << LyXLength(width_).asLatexString() << "}%\n";
 	
 	int i = inset->Latex(buf, os, fragile, fp);
+
 	os << "\\end{minipage}%\n";
-	
 	return i + 2;
 }
 
@@ -324,23 +323,6 @@ void InsetMinipage::width(string const & ll)
 	width_ = ll;
 }
 
-int InsetMinipage::widthp() const
-{
-	return widthp_;
-}
-
-
-void InsetMinipage::widthp(int ll)
-{
-	widthp_ = ll;
-}
-
-
-void InsetMinipage::widthp(string const & ll)
-{
-	widthp_ = strToInt(ll);
-}
-
 
 bool InsetMinipage::ShowInsetDialog(BufferView * bv) const
 {
@@ -361,10 +343,11 @@ void InsetMinipage::InsetButtonRelease(BufferView * bv, int x, int y,
 }
 
 
-int InsetMinipage::getMaxWidth(Painter & pain, UpdatableInset const * inset)
+int InsetMinipage::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
     const
 {
     if (!width_.empty())
-	return VSpace(width_).inPixels(0, 0);
-    return InsetCollapsable::getMaxWidth(pain, inset) / 100 * widthp_;
+	return VSpace(width_).inPixels(bv);
+    // this should not happen!
+    return InsetCollapsable::getMaxWidth(bv, inset);
 }

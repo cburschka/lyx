@@ -25,33 +25,17 @@ FD_form_minipage * FormMinipage::build_minipage()
   fdui->form = fl_bgn_form(FL_NO_BOX, 430, 170);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 430, 170, "");
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 230, 20, 190, 100, "");
-    fl_set_object_color(obj, FL_COL1, FL_COL1);
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 20, 20, 200, 100, "");
-    fl_set_object_color(obj, FL_COL1, FL_COL1);
-  {
-    char const * const dummy = N_("Length|#L");
-    fdui->input_width = obj = fl_add_input(FL_NORMAL_INPUT, 100, 30, 110, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 20, 20, 200, 60, _("Width"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 240, 20, 180, 100, _("Alignment"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
+  fdui->input_width = obj = fl_add_input(FL_NORMAL_INPUT, 30, 30, 110, 30, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  {
-    // xgettext:no-c-format
-    char const * const dummy = N_("or %|#o");
-    fdui->input_widthp = obj = fl_add_input(FL_INT_INPUT, 100, 70, 110, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+  fdui->choice_width_units = obj = fl_add_choice(FL_NORMAL_CHOICE2, 150, 30, 60, 30, "");
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  obj = fl_add_text(FL_NORMAL_TEXT, 30, 10, 100, 20, _("Width"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-  obj = fl_add_text(FL_NORMAL_TEXT, 240, 10, 140, 20, _("Alignment"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
 
   fdui->group_alignment = fl_bgn_group();
   {
