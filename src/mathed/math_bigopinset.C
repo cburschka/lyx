@@ -19,8 +19,7 @@ MathedInset * MathBigopInset::Clone()
 }
 
 
-void
-MathBigopInset::draw(Painter & pain, int x, int y)
+void MathBigopInset::draw(Painter & pain, int x, int y)
 {
 	string s;
 	short t;
@@ -63,7 +62,7 @@ void MathBigopInset::WriteNormal(ostream & os)
 {
 	bool const limp = GetLimits();
 	
-	os << "{bigop " << name;
+	os << "[bigop " << name;
 	
 	if (limp && !(sym_ != LM_int && sym_ != LM_oint
 		      && (GetStyle() == LM_ST_DISPLAY)))
@@ -73,7 +72,7 @@ void MathBigopInset::WriteNormal(ostream & os)
 			      && (GetStyle() == LM_ST_DISPLAY)))
 			os << " nolimits";
 	
-	os << "} ";
+	os << "] ";
 }
 
 void MathBigopInset::Metrics()

@@ -51,9 +51,9 @@ void MathSqrtInset::Write(ostream & os, bool fragile)
 
 void MathSqrtInset::WriteNormal(ostream & os)
 {
-	os << "{sqrt ";
+	os << "[sqrt ";
 	MathParInset::WriteNormal(os); 
-	os << "} ";
+	os << "] ";
 }
 
 

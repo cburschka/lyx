@@ -287,8 +287,10 @@ void MathMacro::Write(ostream & os, bool fragile)
 
 void MathMacro::WriteNormal(ostream & os)
 {
-	os << "{macro " << name << " ";
-	for (int i = 0; i < nargs(); ++i) 
+	os << "[macro " << name << " ";
+	for (int i = 0; i < nargs(); ++i) {
 		arg(i)->WriteNormal(os);
-	os << "} ";
+		os << ' ';
+	}
+	os << "] ";
 }

@@ -47,9 +47,10 @@ void MathFuncInset::Write(std::ostream & os, bool /* fragile */)
 	os << "\\" << name << ' ';
 }
 
+
 void MathFuncInset::WriteNormal(std::ostream & os)
 {
-	os << "{" << name << "} ";
+	os << "[" << name << "] ";
 }
 
 

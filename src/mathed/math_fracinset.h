@@ -50,6 +50,8 @@ public:
 	int getMaxArgumentIdx() const;
 	///
 	void  SetStyle(short);
+	///
+	MathParInset * denom(); 
 private:
 	///
 	int idx_;

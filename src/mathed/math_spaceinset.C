@@ -52,7 +52,7 @@ void MathSpaceInset::Write(ostream & os, bool /* fragile */)
 
 void MathSpaceInset::WriteNormal(ostream & os)
 {
-	os << "{space " << space_ << "} ";
+	os << "[space " << space_ << "] ";
 }
 
 

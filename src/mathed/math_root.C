@@ -154,11 +154,12 @@ void MathRootInset::Write(ostream & os, bool fragile)
 	os << '}';
 }
 
+
 void MathRootInset::WriteNormal(ostream & os)
 {
-	os << "{root ";
+	os << "[root ";
 	uroot_.WriteNormal(os);  
 	os << " ";
 	MathParInset::WriteNormal(os);
-	os << "} ";
+	os << "] ";
 }

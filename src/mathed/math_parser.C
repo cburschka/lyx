@@ -141,7 +141,6 @@ istream * yyis;
 bool yy_mtextmode= false;
 
 
-inline
 void mathPrintError(string const & msg) 
 {
 	lyxerr << "Line ~" << yylineno << ": Math parse error: " << msg << endl;
@@ -346,7 +345,6 @@ int yylex(void)
 }
 
 
-inline
 int parse_align(char * hor, char *)
 {
 	int nc = 0;
@@ -359,7 +357,6 @@ int parse_align(char * hor, char *)
 int accent = 0;
 int nestaccent[8];
 
-inline
 void setAccent(int ac)
 {
 	if (ac > 0 && accent < 8)
@@ -407,6 +404,18 @@ void do_insert(MathedIter & it, MathedInset * m, MathedTextCodes t)
 		it.insertInset(doAccent(m), t);
 	else
 		it.insertInset(m, t);
+}
+
+
+void handle_frac(MathedIter & it, MathParInset * & par, MathedInsetTypes t) 
+{
+	MathFracInset fc(t);
+	MathedArray num;
+	mathed_parse(num, par, FLAG_BRACE|FLAG_BRACE_LAST);
+	MathedArray den;
+	mathed_parse(den, par, FLAG_BRACE|FLAG_BRACE_LAST);
+	fc.SetData(num, den);
+	it.insertInset(fc.Clone(), LM_TC_ACTIVE_INSET);
 }
 
 } // namespace anon
@@ -675,19 +684,17 @@ void mathed_parse(MathedArray & array, MathParInset * & par, unsigned flags)
 		}
 		
 		case LM_TK_CHOOSE:
-		case LM_TK_STACK:
-		case LM_TK_FRAC:
-		{
-			MathFracInset fc(t);
-			MathedArray num;
-			mathed_parse(num, par, FLAG_BRACE|FLAG_BRACE_LAST);
-			MathedArray den;
-			mathed_parse(den, par, FLAG_BRACE|FLAG_BRACE_LAST);
-			fc.SetData(num, den);
-			data.insertInset(fc.Clone(), LM_TC_ACTIVE_INSET);
+			handle_frac(data, par, LM_OT_ATOP);	
 			break;
-		}
-		
+
+		case LM_TK_STACK:
+			handle_frac(data, par, LM_OT_STACKREL);	
+			break;
+
+		case LM_TK_FRAC:
+			handle_frac(data, par, LM_OT_FRAC);	
+			break;
+
 		case LM_TK_SQRT:
 		{	    
 			char c;

@@ -411,11 +411,11 @@ void MathParInset::Write(ostream & os, bool fragile)
 void MathParInset::WriteNormal(ostream & os)
 {
 	if (array.empty()) {
-		os << "{}";
+		os << "[par] ";
 		return;
 	}
 
-	os << "{par ";
+	os << "[par ";
 
 	int brace = 0;
 	latexkeys const * l;
@@ -435,7 +435,7 @@ void MathParInset::WriteNormal(ostream & os)
 			string str = data.GetString();
 			
 			if (data.fcode() >= LM_TC_RM && data.fcode() <= LM_TC_TEXTRM) {
-				os << "{font " << math_font_name[data.fcode()-LM_TC_RM] << '{';
+				os << "[font " << math_font_name[data.fcode()-LM_TC_RM] << " [";
 			}
 			for (string::const_iterator s = str.begin();
 			     s != str.end(); ++s) {
@@ -444,7 +444,7 @@ void MathParInset::WriteNormal(ostream & os)
 					l = lm_get_key_by_id(c, (data.fcode() == LM_TC_BSYM) ?
 							     LM_TK_BIGSYM : LM_TK_SYM);
 					if (l) {
-						os << '{' << l->name << '}';
+						os << " [" << l->name << "] ";
 					} else {
 #ifdef WITH_WARNINGS
 #warning this does not compile on gcc 2.97
@@ -456,7 +456,7 @@ void MathParInset::WriteNormal(ostream & os)
 					// Is there a standard logical XOR?
 					if ((data.fcode() == LM_TC_TEX && c != '{' && c != '}') ||
 					    (data.fcode() == LM_TC_SPECIAL))
-						os << '{';
+						os << "[";
 					else {
 						if (c == '{')
 							++brace;
@@ -471,29 +471,29 @@ void MathParInset::WriteNormal(ostream & os)
 				}
 			}
 			if (data.fcode()>= LM_TC_RM && data.fcode()<= LM_TC_TEXTRM)
-				os << "} ";
+				os << "] ";
 		} else {
 			if (MathIsInset(cx)) {
 				MathedInset * p = data.GetInset();
 				if (cx == LM_TC_UP)
-					os << "{superscript ";
+					os << "[superscript ";
 				if (cx == LM_TC_DOWN)
-					os << "{subscript ";
+					os << "[subscript ";
 				p->WriteNormal(os);
 				if (cx == LM_TC_UP || cx == LM_TC_DOWN)
-					os << "} ";
+					os << "] ";
 				data.Next();
 			} else {
 				switch (cx) {
 				case LM_TC_TAB:
 				{
-					os << "} {";
+					os << "] [";
 					data.Next();
 					break;
 				}
 				case LM_TC_CR:
 				{
-					os << "}} ";
+					os << "] ] ";
 					data.Next();
 					break;
 				}
@@ -508,7 +508,7 @@ void MathParInset::WriteNormal(ostream & os)
 	if (brace > 0)
 		os << string(brace, '}');
 
-	os << "} ";
+	os << "] ";
 }
 
 
@@ -561,6 +561,11 @@ bool MathParInset::Permit(short f) const
 MathedArray & MathParInset::GetData()
 {
 	return array;
+}
+
+void MathParInset::push_back(MathedInset * inset, int t)
+{
+	array.push_back(inset, t);
 }
 
 

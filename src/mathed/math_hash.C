@@ -1,10 +1,10 @@
-
 #include <config.h>
 
 #include <map>
 
 #include "math_defs.h"
 #include "math_parser.h"
+#include "support/lstrings.h"
 
 namespace {
 

@@ -115,24 +115,25 @@ void MathAccentInset::Write(ostream & os, bool fragile)
 		os << '}';
 }
 
+
 void MathAccentInset::WriteNormal(ostream & os)
 {
 	latexkeys const * l = lm_get_key_by_id(code, LM_TK_ACCENT);
-	os << "{accent " << l->name << " ";
+	os << "[accent " << l->name << " ";
 
 	if (inset) {
 		inset->WriteNormal(os);
 	} else {
 		if (fn>= LM_TC_RM && fn <= LM_TC_TEXTRM) {
-			os << "{font " << math_font_name[fn - LM_TC_RM] << "}";
+			os << "[font " << math_font_name[fn - LM_TC_RM] << "]";
 		}
 		if (MathIsSymbol(fn)) {
 			latexkeys const * l = lm_get_key_by_id(c, LM_TK_SYM);
 			if (l) 
-				os << "{symbol " << l->name << "}";
+				os << "[symbol " << l->name << "] ";
 		} else
-			os << "{char " << char(c) << "}";
+			os << "[char " << char(c) << "] ";
 	}
 
-	os << "} ";
+	os << "] ";
 }

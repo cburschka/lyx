@@ -20,6 +20,7 @@
 #include <iosfwd>
 
 #include "mathed/support.h"
+#include "math_defs.h"
 
 class MathedInset;
 class MathMacro;
@@ -120,6 +121,10 @@ public:
 	void deep_copy();
 	///
 	void substitute(MathMacro *);
+	///
+	void push_back(MathedInset * inset, int t);
+	///
+	void push_back(byte, MathedTextCodes);
 private:
 	/// Buffer
 	buffer_type bf_;

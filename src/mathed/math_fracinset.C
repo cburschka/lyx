@@ -165,6 +165,11 @@ void MathFracInset::Metrics()
 	idx_ = idxp;
 }
 
+MathParInset * MathFracInset::denom() 
+{
+	return &den_;
+}
+
 
 void MathFracInset::Write(ostream & os, bool fragile)
 {
@@ -175,11 +180,12 @@ void MathFracInset::Write(ostream & os, bool fragile)
 	os << '}';
 }
 
+
 void MathFracInset::WriteNormal(ostream & os)
 {
-	os << '{' << name << ' ';
+	os << '[' << name << ' ';
 	MathParInset::WriteNormal(os);
 	os << " ";
 	den_.WriteNormal(os);
-	os << "} ";
+	os << "] ";
 }

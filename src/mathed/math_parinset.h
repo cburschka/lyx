@@ -42,6 +42,8 @@ public:
 	virtual MathedArray & GetData();
 	///
 	virtual MathedArray const & GetData() const;
+	///
+	//virtual MathedArray & GetData(int i);
 	/// Paragraph position
 	virtual void GetXY(int &, int &) const;
 	///
@@ -82,6 +84,8 @@ public:
 	void clear();
 	///
 	string label() const;
+	///
+	void push_back(MathedInset *, int);
 //protected:
 	/// Paragraph data is stored here
 	MathedArray array;

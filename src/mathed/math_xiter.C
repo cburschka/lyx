@@ -137,8 +137,13 @@ void MathedXIter::Clean(int pos2)
 }
 
 
-void MathedXIter::Merge(MathedArray const & a)
+void MathedXIter::Merge(MathedArray const & arr)
 {
+#ifdef WITH_WARNINGS
+#warning quick and really dirty: make sure that we really own our inset
+#endif
+	MathedArray a = arr;
+
 #if 0
 	array->insert(array->begin() + pos,
 		      a.begin(), a.end());

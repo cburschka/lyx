@@ -50,7 +50,8 @@ void MathDotsInset::Write(ostream & os, bool /* fragile */)
 	os << '\\' << name << ' ';
 }
 
+
 void MathDotsInset::WriteNormal(ostream & os)
 {
-	os << "{" << name << "} ";
+	os << "[" << name << "] ";
 }

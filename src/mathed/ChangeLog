@@ -1,6 +1,24 @@
+
+2001-04-27 André Pönitz  <poenitz@htwm.de>
+
+	* math_parser.C: fix \frac handling bug introduced on 04-24
+	* math_xiter.C: hotfix for merging "shared" insets
+
+2001-04-25 André Pönitz  <poenitz@htwm.de>
+
+	* math_*.[Ch]: WriteNormal
+	* formula.C: Support for new "math extern" command
+
 2001-04-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* math_macrotable.C: include <iostream>
+
+2001-04-24 André Pönitz  <poenitz@htwm.de>
+
+	* math_macro.[Ch]:
+	* math_macrotable.[Ch]:
+	* math_macroarg.[Ch]: restructuring of macro handling
+	* several files: 
 
 2001-04-25  Angus Leeming  <a.leeming@ic.ac.uk>
 

@@ -96,6 +96,19 @@ void MathedArray::substitute(MathMacro * m)
 				inset = m->arg(n)->Clone();
 			} else {
 				inset->substitute(m);
+/*				
+				if (it.IsActive()) {
+					MathParInset * pinset = static_cast<MathParInset *>(inset);
+					int n = pinset->getMaxArgumentIdx();
+					int idx = pinset->getArgumentIdx();
+					for (int i = 0; i <= n; ++i) {
+						pinset->setArgumentIdx(i);
+						pinset->GetData().substitute(m);
+					}
+					pinset->setArgumentIdx(idx);
+				}
+*/
+
 				//lyxerr << "substituting in an ordinary inset\n";
 			}
 			raw_pointer_insert(inset, it.getPos() + 1);
@@ -110,6 +123,22 @@ MathedArray & MathedArray::operator=(MathedArray const & array)
 	MathedArray tmp(array);
 	swap(tmp);
 	return *this;
+}
+
+void MathedArray::push_back(MathedInset * inset, int t)
+{
+	MathedIter it(this);
+	while (it.Next())
+		;
+	it.insertInset(inset, t);
+}
+
+void MathedArray::push_back(byte b, MathedTextCodes c)
+{
+	MathedIter it(this);
+	while (it.Next())
+		;
+	it.insert(b, c);
 }
 
 void MathedArray::clear()
