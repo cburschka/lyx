@@ -72,7 +72,6 @@ enum lexcode_enum {
 lexcode_enum lexcode[256];  
 
 
-
 char const * latex_special_chars = "#$%&_{}";
 
 
@@ -82,8 +81,8 @@ void mathed_parse(MathArray & data, unsigned flags);
 
 namespace {
 
-const char LM_TK_OPEN  = '{';
-const char LM_TK_CLOSE = '}';
+const unsigned char LM_TK_OPEN  = '{';
+const unsigned char LM_TK_CLOSE = '}';
 
 enum {
 	FLAG_BRACE      = 1 << 0,  //  A { needed              //}
@@ -151,14 +150,12 @@ void mathPrintError(string const & msg)
 void LexInitCodes()
 {
 	for (int i = 0; i <= 255; ++i) {
-		if (isalpha(i))
-			lexcode[i] = LexAlpha;
-		else if (isdigit(i))
+		if (isdigit(i))
 			lexcode[i] = LexDigit;
 		else if (isspace(i))
 			lexcode[i] = LexSpace;
 		else
-			lexcode[i] = LexNone;
+			lexcode[i] = LexAlpha;
 	}
 	
 	lexcode['\t'] = lexcode['\f'] = lexcode[' '] = LexSpace;
@@ -185,10 +182,10 @@ void LexInitCodes()
 }
 
 
-char LexGetArg(char lf, bool accept_spaces = false)
+unsigned char LexGetArg(unsigned char lf, bool accept_spaces = false)
 {
 	while (yyis->good()) {
-		char c;
+		unsigned char c;
 		yyis->get(c);
 		if (c > ' ') {
 			if (!lf) 
@@ -200,7 +197,7 @@ char LexGetArg(char lf, bool accept_spaces = false)
 			break;
 		}
 	}
-	char rg = 0;
+	unsigned char rg = 0;
 	if (lf == '{') rg = '}';
 	if (lf == '[') rg = ']';
 	if (lf == '(') rg = ')';
@@ -211,7 +208,7 @@ char LexGetArg(char lf, bool accept_spaces = false)
 	yytext.erase();
 	int bcnt = 1;
 	do {
-		char c;
+		unsigned char c;
 		yyis->get(c);
 		if (c == lf) ++bcnt;
 		if (c == rg) --bcnt;
@@ -230,8 +227,10 @@ int yylex()
 	if (!init_done) LexInitCodes();
 	
 	while (yyis->good()) {
-		char c;
+		unsigned char c;
 		yyis->get(c);
+		lyxerr << "reading byte: '" << c << "' code: " << lexcode[c] << endl;
+		lyxerr << "              code: " << lexcode['ü'] << endl;
 		
 		if (yyvarcode == LM_TC_TEXTRM && c == ' ') {
 			yylval.i = ' ';
@@ -341,7 +340,7 @@ void setAccent(int ac)
 }
 
 
-MathInset * doAccent(byte c, MathTextCodes t)
+MathInset * doAccent(unsigned char c, MathTextCodes t)
 {
 	MathInset * ac = 0;
 	
@@ -381,7 +380,7 @@ void do_insert(MathArray & dat, MathInset * m)
 		dat.push_back(m);
 }
 
-void do_insert(MathArray & dat, byte ch, MathTextCodes fcode)
+void do_insert(MathArray & dat, unsigned char ch, MathTextCodes fcode)
 {
 	if (accent) 
 		dat.push_back(doAccent(ch, fcode));
@@ -465,7 +464,7 @@ MathInset * mathed_parse()
 			string name = yytext.substr(1);
 			
 			int na = 0; 
-			char const c = yyis->peek();
+			unsigned char const c = yyis->peek();
 			if (c == '[') {
 				LexGetArg('[');
 				na = atoi(yytext.c_str());
@@ -625,7 +624,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		case '[':
 			if (flags & FLAG_BRACK_ARG) {
 				flags &= ~FLAG_BRACK_ARG;
-				char const rg = LexGetArg('[');
+				unsigned char const rg = LexGetArg('[');
 				if (rg != ']') {
 					mathPrintError("Expected ']'");
 					panic = true;
@@ -734,7 +733,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 
 		case LM_TK_SQRT:
 		{	    
-			char c;
+			unsigned char c;
 			yyis->get(c);
 			if (c == '[') {
 				MathRootInset * rt = new MathRootInset;
@@ -834,6 +833,8 @@ void mathed_parse(MathArray & array, unsigned flags)
 					lyxerr << "reading cell " << i << " '" << m->cell(i) << "'\n";
 				}
 				do_insert(array, m);
+				lyxerr << "macro: " << *m << "\n";
+				m->Metrics(LM_ST_TEXT);
 			} else
 				do_insert(array, new MathFuncInset(yytext, LM_OT_UNDEF));
 			break;
@@ -849,7 +850,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 
 			if (typ == LM_OT_MATRIX) {
 				string valign = "\0";
-				char rg = LexGetArg(0);
+				unsigned char rg = LexGetArg(0);
 				if (rg == ']') {
 					valign = yytext;
 					rg = LexGetArg('{');
@@ -876,7 +877,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		
 		case LM_TK_LABEL:
 		{	
-			char const rg = LexGetArg('\0', true);
+			unsigned char const rg = LexGetArg('\0', true);
 			if (rg != '}') {
 				mathPrintError("Expected '{'");
 				// debug info
