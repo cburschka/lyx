@@ -56,16 +56,42 @@ void QGraphics::build_dialog()
 	bc().setRestore(dialog_->restorePB);
 	bc().setCancel(dialog_->closePB);
 
-	// FIXME: and the rest ?
 	bc().addReadOnly(dialog_->rotateGB);
-	bc().addReadOnly(dialog_->latexoptionsGB);
-	bc().addReadOnly(dialog_->bbGB);
+	bc().addReadOnly(dialog_->latexoptions);
 	bc().addReadOnly(dialog_->subfigure);
 	bc().addReadOnly(dialog_->subcaption);
 	bc().addReadOnly(dialog_->filenameL);
 	bc().addReadOnly(dialog_->filename);
 	bc().addReadOnly(dialog_->browsePB);
+	bc().addReadOnly(dialog_->unzipCB);
+	bc().addReadOnly(dialog_->filename);
+	bc().addReadOnly(dialog_->lbX);
+	bc().addReadOnly(dialog_->lbY);
+	bc().addReadOnly(dialog_->rtX);
+	bc().addReadOnly(dialog_->rtY);
+	bc().addReadOnly(dialog_->lbXunit);
+	bc().addReadOnly(dialog_->lbYunit);
+	bc().addReadOnly(dialog_->rtXunit);
+	bc().addReadOnly(dialog_->rtYunit);
+	bc().addReadOnly(dialog_->draftCB);
+	bc().addReadOnly(dialog_->clip);
+	bc().addReadOnly(dialog_->unzipCB);
+	bc().addReadOnly(dialog_->subfigure);
+	bc().addReadOnly(dialog_->subcaption);
+	bc().addReadOnly(dialog_->showCB);
+	bc().addReadOnly(dialog_->width);
+	bc().addReadOnly(dialog_->height);
+	bc().addReadOnly(dialog_->displayCB);
+	bc().addReadOnly(dialog_->displayscale);
+	bc().addReadOnly(dialog_->widthUnit);
+	bc().addReadOnly(dialog_->heightUnit);
+	bc().addReadOnly(dialog_->aspectratio);
+	bc().addReadOnly(dialog_->angle);
+	bc().addReadOnly(dialog_->origin);
+	bc().addReadOnly(dialog_->latexoptions);
+	bc().addReadOnly(dialog_->getPB);
 }
+
 
 void QGraphics::update_contents()
 {
@@ -85,10 +111,7 @@ void QGraphics::update_contents()
 		case BufferParams::PAPER_A5PAPER:
 		case BufferParams::PAPER_B5PAPER: unit = "cm"; break;
 	}
-	// ?? defaultUnit is not used !!
-	string const defaultUnit = string(unit);
 
-	// Update dialog with details from inset
 	dialog_->filename->setText(igp.filename.c_str());
 
 	// set the bounding box values, if exists. First we need the whole
@@ -115,8 +138,9 @@ void QGraphics::update_contents()
 	}
 
 	// Update the draft and clip mode
-	dialog_->draft->setChecked(igp.draft);
+	dialog_->draftCB->setChecked(igp.draft);
 	dialog_->clip->setChecked(igp.clip);
+	dialog_->unzipCB->setChecked(igp.noUnzip);
 
 	// Update the subcaption check button and input field
 	dialog_->subfigure->setChecked(igp.subcaption);
@@ -128,10 +152,12 @@ void QGraphics::update_contents()
 		case grfx::MonochromeDisplay: item = 1; break;
 		case grfx::GrayscaleDisplay: item = 2; break;
 		case grfx::ColorDisplay: item = 3; break;
-		case grfx::NoDisplay: item = 4; break;
+		case grfx::NoDisplay: item = 0; break;
 	}
-	dialog_->show->setCurrentItem(item);
-
+	dialog_->showCB->setCurrentItem(item);
+	dialog_->showCB->setEnabled(igp.display != grfx::NoDisplay && !readOnly());
+	dialog_->displayCB->setChecked(igp.display != grfx::NoDisplay);
+	dialog_->displayscale->setEnabled(igp.display != grfx::NoDisplay && !readOnly());
 	dialog_->displayscale->setText(tostr(igp.lyxscale).c_str());
 
 	dialog_->widthUnit->setCurrentItem(igp.width.unit());
@@ -187,32 +213,38 @@ void QGraphics::apply()
 		igp.bb = bb;
 	}
 
-	igp.draft = dialog_->draft->isChecked();
+	igp.draft = dialog_->draftCB->isChecked();
 	igp.clip = dialog_->clip->isChecked();
 	igp.subcaption = dialog_->subfigure->isChecked();
 	igp.subcaptionText = dialog_->subcaption->text();
 
-	switch (dialog_->show->currentItem()) {
+	switch (dialog_->showCB->currentItem()) {
 		case 0: igp.display = grfx::DefaultDisplay; break;
 		case 1: igp.display = grfx::MonochromeDisplay; break;
 		case 2: igp.display = grfx::GrayscaleDisplay; break;
 		case 3: igp.display = grfx::ColorDisplay; break;
-		case 4: igp.display = grfx::NoDisplay; break;
 		default:;
 	}
 
+	if (!dialog_->displayCB->isChecked())
+		igp.display = grfx::NoDisplay;
+ 
 	string value(dialog_->width->text());
 	igp.width = LyXLength(strToDbl(value), dialog_->widthUnit->currentLengthItem());
 	value = string(dialog_->height->text());
 	igp.height = LyXLength(strToDbl(value), dialog_->heightUnit->currentLengthItem());
 
 	igp.keepAspectRatio = dialog_->aspectratio->isChecked();
+
+	igp.noUnzip = dialog_->unzipCB->isChecked();
  
 	igp.lyxscale = strToInt(string(dialog_->displayscale->text()));
 
 	igp.rotateAngle = strToDbl(string(dialog_->angle->text()));
-	while (igp.rotateAngle < -360.0) igp.rotateAngle += 360.0;
-	while (igp.rotateAngle >  360.0) igp.rotateAngle -= 360.0;
+	while (igp.rotateAngle < -360.0)
+		igp.rotateAngle += 360.0;
+	while (igp.rotateAngle >  360.0)
+		igp.rotateAngle -= 360.0;
 
 	if ((dialog_->origin->currentItem()) > 0)
 		igp.rotateOrigin = dialog_->origin->currentText();
