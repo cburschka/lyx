@@ -1,3 +1,10 @@
+2005-03-23  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/convertDefault.sh: remove the test that "convert" really,
+	really succeeded, because it reports failures on Windows that are
+	actually successes. See, eg,
+	http://marc.theaimsgroup.com/?l=lyx-users&m=110561697803860&w=2
+
 2005-02-26  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* ui/default.ui: change "BibTeX Reference..." to "BibTeX Bibliography...";
