@@ -98,4 +98,17 @@ private:
 	std::string separator_;
 };
 
+
+class BranchNamesEqual : public std::unary_function<Branch, bool> {
+public:
+	BranchNamesEqual(std::string const & name)
+		: name_(name) {}
+	bool operator()(Branch const & branch) const
+	{
+		return branch.getBranch() == name_;
+	}
+private:
+	std::string name_;
+};
+
 #endif

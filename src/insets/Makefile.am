@@ -117,4 +117,4 @@ libinsets_la_SOURCES = \
 #	insetsection.h \
 #	insetsection.C \
 #	insettheorem.C \
-#	insettheorem.h \
+#	insettheorem.h

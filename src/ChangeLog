@@ -1,5 +1,8 @@
 2004-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* BranchList.h: move the BranchNamesEqual functor here from...
+	* BranchList.C: ... to here
+
 	* BranchList.C: new BranchListEqual fuctor, use it. Remove
 	SameName and match.
 	(add): replace a finding loop with std::find_if.

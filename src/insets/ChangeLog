@@ -1,3 +1,11 @@
+2004-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* insetbranch.C (isBranchSelected): use the BranchNamesEqual
+	functor
+	get rid of the SameName functor
+
+	* insettabular.C: improve the functor.
+
 2003-12-29  Angus Leeming  <leeming@lyx.org>
 
 	* insetexternal.C (setParams): update defaultTemplateName.

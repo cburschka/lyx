@@ -14,22 +14,6 @@
 
 using std::string;
 
-namespace {
-
-class BranchNamesEqual : public std::unary_function<Branch, bool> {
-public:
-	BranchNamesEqual(string const & name)
-		: name_(name) {}
-	bool operator()(Branch const & branch) const
-	{
-		return branch.getBranch() == name_;
-	}
-private:
-	string name_;
-};
-
-} // namespace anon
-
 
 string const & Branch::getBranch() const
 {

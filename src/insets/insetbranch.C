@@ -25,7 +25,6 @@
 
 #include "support/std_sstream.h"
 
-
 using std::string;
 using std::auto_ptr;
 using std::istringstream;
@@ -140,31 +139,19 @@ InsetBranch::priv_dispatch(FuncRequest const & cmd,
 			return DispatchResult(true);
 		}
 		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
-		
+
 	default:
 		return InsetCollapsable::priv_dispatch(cmd, idx, pos);
 	}
 }
 
 
-namespace {
-
-struct SameBranch {
-	SameBranch(string const & branch_name) : bn(branch_name) {}
-	bool operator()(Branch const & branch) const
-		{ return bn == branch.getBranch(); }
-private:
-	string bn;
-};
-
-} // namespace anon
-
-
 bool InsetBranch::isBranchSelected(BranchList const & branchlist) const
 {
-	BranchList::const_iterator it = branchlist.begin();
 	BranchList::const_iterator const end = branchlist.end();
-	it = std::find_if(it, end, SameBranch(params_.branch));
+	BranchList::const_iterator it =
+		std::find_if(branchlist.begin(), end,
+			     BranchNamesEqual(params_.branch));
 	if (it == end)
 		return false;
 	return it->getSelected();

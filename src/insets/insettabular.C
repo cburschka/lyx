@@ -38,6 +38,7 @@
 #include "frontends/Painter.h"
 
 #include "support/std_sstream.h"
+
 #include <iostream>
 
 using lyx::graphics::PreviewLoader;
@@ -120,18 +121,15 @@ TabularFeature tabularFeature[] =
 	{ LyXTabular::LAST_ACTION, "" }
 };
 
-struct FindFeature {
-	///
-	FindFeature(LyXTabular::Feature feature)
-		: feature_(feature)
-	{}
-	///
-	bool operator()(TabularFeature & tf)
-	{
+
+class FeatureEqual : public std::unary_function<TabularFeature, bool> {
+public:
+	FeatureEqual(LyXTabular::Feature feature)
+		: feature_(feature) {}
+	bool operator()(TabularFeature const & tf) const {
 		return tf.action == feature_;
 	}
 private:
-	///
 	LyXTabular::Feature feature_;
 };
 
@@ -140,10 +138,10 @@ private:
 
 string const featureAsString(LyXTabular::Feature feature)
 {
-	TabularFeature * it  = tabularFeature;
-	TabularFeature * end = it +
+	TabularFeature * end = tabularFeature +
 		sizeof(tabularFeature) / sizeof(TabularFeature);
-	it = std::find_if(it, end, FindFeature(feature));
+	TabularFeature * it = std::find_if(tabularFeature, end,
+					   FeatureEqual(feature));
 	return (it == end) ? string() : it->feature;
 }
 
@@ -282,7 +280,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 				continue;
 			if (first_visible_cell < 0)
 				first_visible_cell = cell;
-			if (hasSelection()) 
+			if (hasSelection())
 				drawCellSelection(pi.pain, nx, y, i, j, cell);
 
 			int const cx = nx + tabular.getBeginningOfTextInCell(cell);
@@ -507,16 +505,16 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_MOUSE_RELEASE:
 		lfunMouseRelease(cmd);
 		return DispatchResult(true, true);
-	
+
 	default:
 		break;
 	}
 
 	int cell = bv->cursor().data_.back().idx_;
 	if (cell != -1) {
-		
+
 		if (cell != actcell) {
-			lyxerr << "## ERROR ## InsetTabular::priv_dispatch: actcell: " 
+			lyxerr << "## ERROR ## InsetTabular::priv_dispatch: actcell: "
 				<< actcell << " and cell " << cell << " should be the same "
 				<< "here" << endl;
 		}
