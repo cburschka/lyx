@@ -257,7 +257,7 @@ void InsetTabular::read(Buffer const * buf, LyXLex & lex)
 void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (mi.base.bv) {
-		calculate_dimensions_of_cells(mi.base.bv, true);
+		calculate_dimensions_of_cells(mi.base.bv);
 		//lyxerr << "InsetTabular::metrics, bv: " << mi.base.bv << endl;
 		for (int i = 0; i < tabular.getNumberOfCells(); ++i) {
 			tabular.cellinfo_of_cell(i)->inset.text_.bv_owner = mi.base.bv;
@@ -437,7 +437,7 @@ void InsetTabular::insetUnlock(BufferView * bv)
 void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what) const
 {
 	if (what == INIT) {
-		calculate_dimensions_of_cells(bv, true);
+		calculate_dimensions_of_cells(bv);
 	}
 	if (!locked && what == CELL)
 		what = FULL;
@@ -1228,22 +1228,18 @@ void InsetTabular::validate(LaTeXFeatures & features) const
 }
 
 
-bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv, bool reinit) const
+void InsetTabular::calculate_dimensions_of_cells(BufferView * bv) const
 {
-	int cell = -1;
-	int maxAsc = 0;
-	int maxDesc = 0;
-	InsetText * inset;
-	bool changed = false;
-
 	// FIXME: since InsetText ignores this anyway, it doesn't
 	// matter what we pass it. Ugly
 	LyXFont font;
 
 	// if we have a locking_inset we should have to check only this cell for
 	// change so I'll try this to have a boost, but who knows ;)
-	if ((need_update != INIT) &&
-	    (the_locking_inset == tabular.getCellInset(actcell))) {
+	if (need_update != INIT &&
+	    the_locking_inset == tabular.getCellInset(actcell)) {
+		int maxAsc = 0;
+		int maxDesc = 0;
 		for(int i = 0; i < tabular.columns(); ++i) {
 			Dimension dim;
 			MetricsInfo mi(bv, font);
@@ -1251,11 +1247,14 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv, bool reinit) c
 			maxAsc = max(dim.asc, maxAsc);
 			maxDesc = max(dim.des, maxDesc);
 		}
-		changed = tabular.setWidthOfCell(actcell, the_locking_inset->width(bv, font));
-		changed = tabular.setAscentOfRow(actrow, maxAsc + ADD_TO_HEIGHT) || changed;
-		changed = tabular.setDescentOfRow(actrow, maxDesc + ADD_TO_HEIGHT) || changed;
-		return changed;
+		tabular.setWidthOfCell(actcell, the_locking_inset->width(bv, font));
+		tabular.setAscentOfRow(actrow, maxAsc + ADD_TO_HEIGHT);
+		tabular.setDescentOfRow(actrow, maxDesc + ADD_TO_HEIGHT);
+		return;
 	}
+
+	int cell = -1;
+	bool changed = false;
 	for (int i = 0; i < tabular.rows(); ++i) {
 		maxAsc = 0;
 		maxDesc = 0;
@@ -1275,7 +1274,6 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv, bool reinit) c
 	}
 	if (changed)
 		tabular.reinit();
-	return changed;
 }
 
 

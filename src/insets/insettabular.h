@@ -240,7 +240,7 @@ private:
 	///
 	void lfunMouseMotion(FuncRequest const &);
 	///
-	bool calculate_dimensions_of_cells(BufferView *, bool = false) const;
+	void calculate_dimensions_of_cells(BufferView *) const;
 	///
 	void drawCellLines(Painter &, int x, int baseline,
 			   int row, int cell) const;
