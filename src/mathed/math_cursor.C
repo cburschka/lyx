@@ -733,7 +733,7 @@ void MathCursor::selHandle(bool sel)
 {
 	if (sel == selection_)
 		return;
-	theSelection.clear();
+	//theSelection.clear();
 	Anchor_    = Cursor_;
 	selection_ = sel;
 }
@@ -742,7 +742,7 @@ void MathCursor::selHandle(bool sel)
 void MathCursor::selStart()
 {
 	seldump("selStart");
-	theSelection.clear();
+	//theSelection.clear();
 	Anchor_ = Cursor_;
 	selection_ = true;
 }
@@ -1359,7 +1359,7 @@ bool MathCursor::interpret(char c)
 	}
 
 	if (selection_)
-		selDel();
+		selClear();
 
 	if (lastcode_ == LM_TC_TEXTRM) {
 		// suppress direct insertion of to spaces in a row
