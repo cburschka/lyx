@@ -150,6 +150,8 @@ void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 		} else {
 			lyxerr << "InsetFloat::Read: Missing placement!"
 			       << endl;
+			// take countermeasures
+			lex.pushToken(token);
 		}
 		lex.next();
 		token = lex.GetString();
@@ -163,6 +165,8 @@ void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 		} else {
 			lyxerr << "InsetFloat::Read:: Missing wide!"
 			       << endl;
+			// take countermeasures
+			lex.pushToken(token);
 		}
 	}
 	InsetCollapsable::read(buf, lex);

@@ -1,5 +1,7 @@
 2001-07-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* insetfloat.C (read): handle missing parameters.
+
 	* insettext.C (read): handle old latex end_inset
 
 	* insetert.C (setButtonLabel): new method
