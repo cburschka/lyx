@@ -1,5 +1,13 @@
 2003-04-03  Angus Leeming  <leeming@lyx.org>
 
+	* freebrowser.[ch] (fl_get_freebrowser_browser): removed spurious
+	accessor function.
+
+	* XMinibuffer.C:
+	* combox.c: associated changes.
+
+2003-04-03  Angus Leeming  <leeming@lyx.org>
+
 	* combox.[ch]: add an FL_NORMAL_COMBOX type.
 
 	* forms/fdfixc.sed: enable the use of both combox types.

@@ -116,12 +116,6 @@ void fl_hide_freebrowser(FL_FREEBROWSER * fb)
 }
 
 
-FL_OBJECT * fl_get_freebrowser_browser(FL_FREEBROWSER * fb)
-{
-    return fb->browser;
-}
-
-
 static void browser_cb(FL_OBJECT * ob, long data)
 {
     FL_FREEBROWSER * fb = ob->u_vdata;

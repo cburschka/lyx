@@ -25,7 +25,7 @@ typedef struct {
      /** A pointer to the parent widget */
     FL_OBJECT * combox;
 
-    FL_FREEBROWSER * browser;
+    FL_FREEBROWSER * freebrowser;
     int browser_height;
 
     /** The browser will be displayed either below or above the main body. */
@@ -87,8 +87,8 @@ FL_OBJECT * fl_create_combox(FL_COMBOX_TYPE type,
     sp->browser_height = 100;
     sp->browser_position = FL_FREEBROWSER_BELOW;
 
-    sp->browser = fl_create_freebrowser(sp);
-    sp->browser->callback = update_button_chosen;
+    sp->freebrowser = fl_create_freebrowser(sp);
+    sp->freebrowser->callback = update_button_chosen;
 
     sp->button_state = 0;
     if (type == FL_DROPLIST_COMBOX) {
@@ -174,7 +174,7 @@ void fl_clear_combox(FL_OBJECT * ob)
 	return;
 
     sp = ob->spec;
-    browser = fl_get_freebrowser_browser(sp->browser);
+    browser = sp->freebrowser->browser;
 
     fl_clear_browser(browser);
     fl_set_object_label(sp->button_chosen, "");
@@ -193,7 +193,7 @@ void fl_addto_combox(FL_OBJECT * ob, char const * text)
 	return;
 
     sp = ob->spec;
-    browser = fl_get_freebrowser_browser(sp->browser);
+    browser = sp->freebrowser->browser;
 
     /* Split the string on '|' boundaries. */
     i = j = 0;
@@ -232,7 +232,7 @@ void fl_set_combox(FL_OBJECT * ob, int sel)
 	return;
 
     sp = ob->spec;
-    browser = fl_get_freebrowser_browser(sp->browser);
+    browser = sp->freebrowser->browser;
 
     if (sel < 1 || sel > fl_get_browser_maxline(browser))
 	return;
@@ -251,7 +251,7 @@ int fl_get_combox(FL_OBJECT * ob)
 	return 0;
 
     sp = ob->spec;
-    browser = fl_get_freebrowser_browser(sp->browser);
+    browser = sp->freebrowser->browser;
     return fl_get_browser(browser);
 }
 
@@ -278,7 +278,7 @@ char const * fl_get_combox_line(FL_OBJECT * ob, int line)
 	return 0;
 
     sp = ob->spec;
-    browser = fl_get_freebrowser_browser(sp->browser);
+    browser = sp->freebrowser->browser;
 
     maxlines = fl_get_browser_maxline(browser);
     if (line > maxlines)
@@ -297,7 +297,7 @@ int fl_get_combox_maxitems(FL_OBJECT * ob)
 	return 0;
 
     sp = ob->spec;
-    browser = fl_get_freebrowser_browser(sp->browser);
+    browser = sp->freebrowser->browser;
     return fl_get_browser_maxline(browser);
 }
 
@@ -319,7 +319,7 @@ void fl_hide_combox_browser(FL_OBJECT * ob)
 	return;
 
     sp = ob->spec;
-    fl_free_freebrowser(sp->browser);
+    fl_free_freebrowser(sp->freebrowser);
 }
 
 
@@ -363,7 +363,7 @@ static int combox_handle(FL_OBJECT * ob, int event, FL_Coord mx, FL_Coord my,
 	break;
     case FL_FREEMEM: {
 	COMBOX_SPEC * sp = ob->spec;
-	fl_free_freebrowser(sp->browser);
+	fl_free_freebrowser(sp->freebrowser);
 	/* children take care of themselves, but we must make sure that
 	   sp itself is free-d eventually. */
 	fl_addto_freelist(sp);
@@ -402,7 +402,7 @@ static void show_browser(COMBOX_SPEC * sp)
     abs_y += (sp->browser_position == FL_FREEBROWSER_BELOW) ? ob->h : -bh;
 
     set_state_label(sp, COMBOX_OPEN);
-    fl_show_freebrowser(sp->browser, abs_x, abs_y, bw, bh);
+    fl_show_freebrowser(sp->freebrowser, abs_x, abs_y, bw, bh);
 }
 
 
@@ -422,7 +422,7 @@ static void update_button_chosen(FL_FREEBROWSER * fb, int action)
 {
     COMBOX_SPEC * sp = fb->parent;
 
-    FL_OBJECT * browser = fl_get_freebrowser_browser(sp->browser);
+    FL_OBJECT * browser = sp->freebrowser->browser;
     FL_OBJECT * combox = sp->combox;
     if (!browser || !combox) return;
 

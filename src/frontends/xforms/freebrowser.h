@@ -39,10 +39,13 @@ typedef struct fl_freebrowser_ {
     /** Is set only if want_printable is true. */
     char last_printable;
 
-    /** Details of the implementation. */
+    /** The "owner" of the freebrowser. Not used by the struct. */
     void * parent;
-    FL_FORM * form;
+    /** The browser itself. */
     FL_OBJECT * browser;
+
+    /** Details of the implementation. */
+    FL_FORM * form;
     Window save_window;
 } FL_FREEBROWSER;
 
@@ -62,9 +65,6 @@ FL_EXPORT void fl_show_freebrowser(FL_FREEBROWSER *,
 				   FL_Coord w, FL_Coord h);
 
 FL_EXPORT void fl_hide_freebrowser(FL_FREEBROWSER *);
-
-/** Return the browser itself. */
-FL_EXPORT FL_OBJECT * fl_get_freebrowser_browser(FL_FREEBROWSER *);
 
 #if defined(__cplusplus)
 }

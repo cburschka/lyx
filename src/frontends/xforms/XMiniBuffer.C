@@ -43,8 +43,6 @@ FL_OBJECT * create_input_box(void * parent, int type,
 
 FL_FREEBROWSER * create_freebrowser(void * parent);
 
-FL_OBJECT * get_freebrowser_browser(boost::shared_ptr<FL_FREEBROWSER> &);
-
 } // namespace anon
 
 
@@ -89,7 +87,7 @@ void XMiniBuffer::freebrowserCB(int action)
 	} else {
 		// Fill the input widget with the selected
 		// browser entry.
-		FL_OBJECT * browser = get_freebrowser_browser(freebrowser_);
+		FL_OBJECT * browser = freebrowser_->browser;
 		string const str = getString(browser);
 
 		if (!str.empty()) {
@@ -172,8 +170,7 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 
 			// Fill freebrowser_'s browser with the list of
 			// available completions
-			FL_OBJECT * browser =
-				get_freebrowser_browser(freebrowser_);
+			FL_OBJECT * browser = freebrowser_->browser;
 			fl_clear_browser(browser);
 			vector<string>::const_iterator cit = comp.begin();
 			vector<string>::const_iterator end = comp.end();
@@ -349,12 +346,6 @@ FL_FREEBROWSER * create_freebrowser(void * parent)
 	fb->want_printable = 1;
 	fb->callback = C_freebrowserCB;
 	return fb;
-}
-
-FL_OBJECT * get_freebrowser_browser(boost::shared_ptr<FL_FREEBROWSER> & fb)
-{
-	FL_FREEBROWSER * ptr = fb.get();
-	return ptr ? fl_get_freebrowser_browser(ptr) : 0;
 }
 
 } // namespace anon
