@@ -22,6 +22,10 @@ public:
 
 	/// the size is usuall some sort of convex hull of the cells
 	void metrics(MathMetricsInfo const & mi) const;
+	/// add space for markers
+	void metricsMarkers() const;
+	/// add space for markers
+	void metricsMarkers2() const;
 	/// draw background if locked
 	void draw(MathPainterInfo & pi, int x, int y) const;
 	/// draw two angular markers

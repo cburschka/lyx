@@ -1062,12 +1062,6 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 					return;
 				}
 
-				else if (l->inset == "mbox") {
-					// switch to text mode
-					cell->push_back(createMathInset(t.cs()));
-					parse_into(cell->back()->cell(0), FLAG_ITEM, mathmode);
-				}
-
 				else if (l->inset == "style") {
 					cell->push_back(createMathInset(t.cs()));
 					parse_into(cell->back()->cell(0), flags, mathmode);
@@ -1088,7 +1082,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 				else {
 					MathAtom p = createMathInset(t.cs());
 					for (MathInset::idx_type i = 0; i < p->nargs(); ++i)
-						parse_into(p->cell(i), FLAG_ITEM, l->extra == "mathmode");
+						parse_into(p->cell(i), FLAG_ITEM, l->extra != "forcetext");
 					cell->push_back(p);
 				}
 			}

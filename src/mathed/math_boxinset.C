@@ -12,7 +12,7 @@
 
 
 MathBoxInset::MathBoxInset(string const & name)
-	: MathGridInset(1, 1), name_(name)
+	: MathNestInset(1), name_(name)
 {}
 
 
@@ -45,15 +45,18 @@ void MathBoxInset::rebreak()
 void MathBoxInset::metrics(MathMetricsInfo & mi) const
 {
 	MathFontSetChanger dummy(mi.base, "textnormal");
-	MathGridInset::metrics(mi);
+	xcell(0).metrics(mi);
+	ascent_  = xcell(0).ascent()  + 1;
+	descent_ = xcell(0).descent() + 1;
+	width_   = xcell(0).width()   + 2;
 }
 
 
 void MathBoxInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	MathFontSetChanger dummy(pi.base, "textnormal");
-	MathGridInset::draw(pi, x, y);
-	mathed_draw_framebox(pi, x, y, this);
+	xcell(0).draw(pi, x, y);
+	drawMarkers2(pi, x + 1, y);
 }
 
 

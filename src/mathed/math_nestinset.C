@@ -63,6 +63,21 @@ void MathNestInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
+void MathNestInset::metricsMarkers() const
+{
+	descent_ += 1;
+	width_   += 2;
+}
+
+
+void MathNestInset::metricsMarkers2() const
+{
+	ascent_  += 1;
+	descent_ += 1;
+	width_   += 2;
+}
+
+
 bool MathNestInset::idxNext(idx_type & idx, pos_type & pos) const
 {
 	if (idx + 1 >= nargs())

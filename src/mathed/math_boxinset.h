@@ -2,7 +2,7 @@
 #ifndef MATH_BOXINSET_H
 #define MATH_BOXINSET_H
 
-#include "math_gridinset.h"
+#include "math_nestinset.h"
 #include "LString.h"
 
 #ifdef __GNUG__
@@ -13,7 +13,7 @@ class LyXFont;
 
 /// Support for \\mbox
 
-class MathBoxInset : public MathGridInset {
+class MathBoxInset : public MathNestInset {
 public:
 	///
 	explicit MathBoxInset(string const & name);
@@ -37,8 +37,6 @@ public:
 	void infoize(std::ostream & os) const;
 
 private:
-	///
-	mutable MathMetricsInfo mi_;
 	///
 	string name_;
 };
