@@ -4938,7 +4938,8 @@ msgstr "&Vis"
 #: src/ext_l10n.h:1170
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
-msgstr "Show contents of marked file. Only possible when files are shown with path"
+msgstr ""
+"Show contents of marked file. Only possible when files are shown with path"
 
 #: src/ext_l10n.h:1172
 msgid "Close this dialog"
@@ -5215,7 +5216,11 @@ msgid ""
 "under the terms of the GNU General Public License as published by the Free "
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
-msgstr "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
+msgstr ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
 
 #: src/frontends/controllers/ControlAboutlyx.C:78
 msgid ""
@@ -5227,9 +5232,13 @@ msgid ""
 "this program; if not, write to the Free Software Foundation, Inc., 675 Mass "
 "Ave, Cambridge, MA 02139, USA."
 msgstr ""
-"LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.\n"
 "See the GNU General Public License for more details.\n"
-"You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 675 Mass "
+"Ave, Cambridge, MA 02139, USA."
 
 #: src/frontends/controllers/ControlAboutlyx.C:85
 msgid "LyX Version "
@@ -5771,7 +5780,10 @@ msgid ""
 "The database you want to cite from. Insert it without the default extension "
 "\".bib\". If you insert it with the browser, LyX strips the extension. "
 "Several databases must be separated by a comma: \"natbib, books\"."
-msgstr "The database you want to cite from. Insert it without the default extension \".bib\". If you insert it with the browser, LyX strips the extension. Several databases must be separated by a comma: \"natbib, books\"."
+msgstr ""
+"The database you want to cite from. Insert it without the default extension "
+"\".bib\". If you insert it with the browser, LyX strips the extension. "
+"Several databases must be separated by a comma: \"natbib, books\"."
 
 #: src/frontends/xforms/FormBibtex.C:65
 msgid "Browse your directory for BibTeX stylefiles."
@@ -5783,13 +5795,19 @@ msgid ""
 "extension \".bst\" and without path. Most of the bibstyles are stored in "
 "$TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help-"
 ">TeX Info\" you can list all installed styles."
-msgstr "The BibTeX style to use (only one allowed). Insert it without the default extension \".bst\" and without path. Most of the bibstyles are stored in $TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help->TeX Info\" you can list all installed styles."
+msgstr ""
+"The BibTeX style to use (only one allowed). Insert it without the default "
+"extension \".bst\" and without path. Most of the bibstyles are stored in "
+"$TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help-"
+">TeX Info\" you can list all installed styles."
 
 #: src/frontends/xforms/FormBibtex.C:71
 msgid ""
 "Activate this option if you want the bibliography to appear in the Table of "
 "Contents (which doesn't happen by default)."
-msgstr "Activate this option if you want the bibliography to appear in the Table of Contents (which doesn't happen by default)."
+msgstr ""
+"Activate this option if you want the bibliography to appear in the Table of "
+"Contents (which doesn't happen by default)."
 
 #: src/frontends/xforms/form_browser.C:31 src/frontends/xforms/form_error.C:31
 #: src/frontends/xforms/form_texinfo.C:107 src/frontends/xforms/form_toc.C:48
@@ -5874,7 +5892,6 @@ msgid "Inset keys|#I"
 msgstr "Sett in nøkkler|i"
 
 #: src/frontends/xforms/form_citation.C:40
-#, fuzzy
 msgid "Bibliography keys|#y"
 msgstr ""
 
@@ -5988,14 +6005,19 @@ msgstr "Move the selected entry downwards (in the current list)."
 msgid ""
 "The entries which will be cited. Select them with the arrow buttons from the "
 "right browser window."
-msgstr "The entries which will be cited. Select them with the arrow buttons from the right browser window."
+msgstr ""
+"The entries which will be cited. Select them with the arrow buttons from the "
+"right browser window."
 
 #: src/frontends/xforms/FormCitation.C:191
 msgid ""
 "All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex "
 "Reference\"). Move the ones you want to cite with the arrow buttons into the "
 "left browser window."
-msgstr "All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex Reference\"). Move the ones you want to cite with the arrow buttons into the left browser window."
+msgstr ""
+"All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex "
+"Reference\"). Move the ones you want to cite with the arrow buttons into the "
+"left browser window."
 
 #: src/frontends/xforms/FormCitation.C:194
 msgid "Information about the selected entry"
@@ -6005,30 +6027,39 @@ msgstr "Information about the selected entry"
 msgid ""
 "Here you may select how the citation label should look inside the text "
 "(Natbib)."
-msgstr "Here you may select how the citation label should look inside the text (Natbib)."
+msgstr ""
+"Here you may select how the citation label should look inside the text "
+"(Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:200
 msgid ""
 "Activate if you want to print all authors in a reference with more than "
 "three authors, and not \"<First Author> et.al.\" (Natbib)."
-msgstr "Activate if you want to print all authors in a reference with more than three authors, and not \"<First Author> et.al.\" (Natbib)."
+msgstr ""
+"Activate if you want to print all authors in a reference with more than "
+"three authors, and not \"<First Author> et.al.\" (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:203
 msgid ""
 "Activate if you want to print the first character of the author name as "
 "uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
 "sentences (Natbib)."
-msgstr "Activate if you want to print the first character of the author name as uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of sentences (Natbib)."
+msgstr ""
+"Activate if you want to print the first character of the author name as "
+"uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of "
+"sentences (Natbib)."
 
 #: src/frontends/xforms/FormCitation.C:206
 msgid ""
 "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
-msgstr "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgstr ""
+"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:209
 msgid ""
 "Optional text which appears after the citation reference, e.g. \"pp. 12\""
-msgstr "Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgstr ""
+"Optional text which appears after the citation reference, e.g. \"pp. 12\""
 
 #: src/frontends/xforms/FormCitation.C:212
 msgid "Search your database (all fields will be searched)."
@@ -6038,7 +6069,9 @@ msgstr "Search your database (all fields will be searched)."
 msgid ""
 "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
 "\", but not \"BibTeX\"."
-msgstr "Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex\", but not \"BibTeX\"."
+msgstr ""
+"Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex"
+"\", but not \"BibTeX\"."
 
 #: src/frontends/xforms/FormCitation.C:218
 msgid "Activate if you want to enter Regular Expressions."
@@ -6514,7 +6547,8 @@ msgstr "Add all processes to the list of processes to kill."
 #: src/frontends/xforms/FormForks.C:63
 msgid ""
 "Add the currently selected child process to the list of processes to kill."
-msgstr "Add the currently selected child process to the list of processes to kill."
+msgstr ""
+"Add the currently selected child process to the list of processes to kill."
 
 #: src/frontends/xforms/FormForks.C:66
 msgid "Remove the currently selected item from the list of processes to kill."
@@ -7727,13 +7761,17 @@ msgstr "Legg til"
 msgid ""
 "Add the current converter to the list of available converters. Note: you "
 "must then \"Apply\" the change."
-msgstr "Add the current converter to the list of available converters. Note: you must then \"Apply\" the change."
+msgstr ""
+"Add the current converter to the list of available converters. Note: you "
+"must then \"Apply\" the change."
 
 #: src/frontends/xforms/FormPreferences.C:981
 msgid ""
 "Modify the contents of the current converter. Note: you must then \"Apply\" "
 "the change."
-msgstr "Modify the contents of the current converter. Note: you must then \"Apply\" the change."
+msgstr ""
+"Modify the contents of the current converter. Note: you must then \"Apply\" "
+"the change."
 
 #: src/frontends/xforms/FormPreferences.C:1229
 msgid "All the currently defined formats known to LyX."
@@ -7749,7 +7787,8 @@ msgstr "The format name as it will appear in the menus."
 
 #: src/frontends/xforms/FormPreferences.C:1235
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgstr ""
+"The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
 
 #: src/frontends/xforms/FormPreferences.C:1237
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
@@ -7763,23 +7802,30 @@ msgstr "The command used to launch the viewer application."
 msgid ""
 "Remove the current format from the list of available formats. Note: you must "
 "then \"Apply\" the change."
-msgstr "Remove the current format from the list of available formats. Note: you must then \"Apply\" the change."
+msgstr ""
+"Remove the current format from the list of available formats. Note: you must "
+"then \"Apply\" the change."
 
 #: src/frontends/xforms/FormPreferences.C:1244
 msgid ""
 "Add the current format to the list of available formats. Note: you must then "
 "\"Apply\" the change."
-msgstr "Add the current format to the list of available formats. Note: you must then \"Apply\" the change."
+msgstr ""
+"Add the current format to the list of available formats. Note: you must then "
+"\"Apply\" the change."
 
 #: src/frontends/xforms/FormPreferences.C:1246
 msgid ""
 "Modify the contents of the current format. Note: you must then \"Apply\" the "
 "change."
-msgstr "Modify the contents of the current format. Note: you must then \"Apply\" the change."
+msgstr ""
+"Modify the contents of the current format. Note: you must then \"Apply\" the "
+"change."
 
 #: src/frontends/xforms/FormPreferences.C:1358
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+"Cannot remove a Format used by a Converter. Remove the converter first."
 
 #: src/frontends/xforms/FormPreferences.C:1528
 msgid "Sys Bind|#S#s"
@@ -7859,7 +7905,9 @@ msgstr "Fonter må være positive!"
 msgid ""
 "Fonts must be input in the order tiny > script> footnote > small > normal > "
 "large > larger > largest > huge > huger."
-msgstr "Fonts must be input in the order tiny > script> footnote > small > normal > large > larger > largest > huge > huger."
+msgstr ""
+"Fonts must be input in the order tiny > script> footnote > small > normal > "
+"large > larger > largest > huge > huger."
 
 #: src/frontends/xforms/FormPreferences.C:2841
 #, fuzzy
@@ -8008,13 +8056,16 @@ msgstr "Send dokumentet til kommando"
 #: src/frontends/xforms/FormSendto.C:46
 msgid ""
 "Export the buffer to this format before running the command below on it."
-msgstr "Export the buffer to this format before running the command below on it."
+msgstr ""
+"Export the buffer to this format before running the command below on it."
 
 #: src/frontends/xforms/FormSendto.C:49
 msgid ""
 "Run this command on the buffer exported to the chosen format. $$FName will "
 "be replaced by the name of this file."
-msgstr "Run this command on the buffer exported to the chosen format. $$FName will be replaced by the name of this file."
+msgstr ""
+"Run this command on the buffer exported to the chosen format. $$FName will "
+"be replaced by the name of this file."
 
 #: src/frontends/xforms/form_spellchecker.C:34
 msgid "Replace"
@@ -8327,39 +8378,52 @@ msgstr "Runs the script \"TexFiles.sh\" to build new file lists."
 
 #: src/frontends/xforms/FormTexinfo.C:46
 msgid "Shows the contents of the marked file. Only possible in full path mode."
-msgstr "Shows the contents of the marked file. Only possible in full path mode."
+msgstr ""
+"Shows the contents of the marked file. Only possible in full path mode."
 
 #: src/frontends/xforms/FormTexinfo.C:49
 msgid ""
 "Runs the script \"texhash\" which builds the a new LaTeX tree. Needed if you "
 "install a new TeX class or style. To execute it, you need the write "
 "permissions for the tex-dirs, often /var/lib/texmf and other."
-msgstr "Runs the script \"texhash\" which builds the a new LaTeX tree. Needed if you install a new TeX class or style. To execute it, you need the write permissions for the tex-dirs, often /var/lib/texmf and other."
+msgstr ""
+"Runs the script \"texhash\" which builds the a new LaTeX tree. Needed if you "
+"install a new TeX class or style. To execute it, you need the write "
+"permissions for the tex-dirs, often /var/lib/texmf and other."
 
 #: src/frontends/xforms/FormTexinfo.C:52
 msgid ""
 "View full path or only file name. Full path is needed to view the contents "
 "of a file."
-msgstr "View full path or only file name. Full path is needed to view the contents of a file."
+msgstr ""
+"View full path or only file name. Full path is needed to view the contents "
+"of a file."
 
 #: src/frontends/xforms/FormTexinfo.C:55
 msgid ""
 "Shows the installed LaTeX Document classes. Remember, that these classes are "
 "only available in LyX if a corresponding LyX layout file exists!"
-msgstr "Shows the installed LaTeX Document classes. Remember, that these classes are only available in LyX if a corresponding LyX layout file exists!"
+msgstr ""
+"Shows the installed LaTeX Document classes. Remember, that these classes are "
+"only available in LyX if a corresponding LyX layout file exists!"
 
 #: src/frontends/xforms/FormTexinfo.C:58
 msgid ""
 "Shows the installed LaTeX style files, which are available in LyX by "
 "default, like \"babel\" or through \\usepackage{<the stylefile>} in LaTeX "
 "preamble."
-msgstr "Shows the installed LaTeX style files, which are available in LyX by default, like \"babel\" or through \\usepackage{<the stylefile>} in LaTeX preamble."
+msgstr ""
+"Shows the installed LaTeX style files, which are available in LyX by "
+"default, like \"babel\" or through \\usepackage{<the stylefile>} in LaTeX "
+"preamble."
 
 #: src/frontends/xforms/FormTexinfo.C:61
 msgid ""
 "Shows the installed style files for BibTeX. They can be loaded through "
 "insert->Lists&Toc->BibTeX Reference->Style."
-msgstr "Shows the installed style files for BibTeX. They can be loaded through insert->Lists&Toc->BibTeX Reference->Style."
+msgstr ""
+"Shows the installed style files for BibTeX. They can be loaded through "
+"insert->Lists&Toc->BibTeX Reference->Style."
 
 #: src/frontends/xforms/form_thesaurus.C:30
 #, fuzzy
@@ -10026,13 +10090,17 @@ msgstr "Mangler fil type [eks. latex, ps...] etter "
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
-msgstr "The font encoding used for the LaTeX2e fontenc package. T1 is highly recommended for non-English languages."
+msgstr ""
+"The font encoding used for the LaTeX2e fontenc package. T1 is highly "
+"recommended for non-English languages."
 
 #: src/lyxrc.C:1681
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
-msgstr "The default printer to print on. If none is specified, LyX will use the environment variable PRINTER."
+msgstr ""
+"The default printer to print on. If none is specified, LyX will use the "
+"environment variable PRINTER."
 
 #: src/lyxrc.C:1685
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
@@ -10082,7 +10150,9 @@ msgstr "Option to pass to the print program to print on a specific printer."
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
-msgstr "Select for LyX to pass the name of the destination printer to your print command."
+msgstr ""
+"Select for LyX to pass the name of the destination printer to your print "
+"command."
 
 #: src/lyxrc.C:1733
 msgid "Option to pass to the print program to print to a file."
@@ -10096,33 +10166,44 @@ msgstr "Extension of printer program output file. Usually \".ps\"."
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr "Extra options to pass to printing program after everything else, but before the filename of the DVI file to be printed."
+msgstr ""
+"Extra options to pass to printing program after everything else, but before "
+"the filename of the DVI file to be printed."
 
 #: src/lyxrc.C:1745
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
 "arguments."
-msgstr "When set, this printer option automatically prints to a file and then calls a separate print spooling program on that file with the given name and arguments."
+msgstr ""
+"When set, this printer option automatically prints to a file and then calls "
+"a separate print spooling program on that file with the given name and "
+"arguments."
 
 #: src/lyxrc.C:1749
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
-msgstr "If you specify a printer name in the print dialog, the following argument is prepended along with the printer name after the spool command."
+msgstr ""
+"If you specify a printer name in the print dialog, the following argument is "
+"prepended along with the printer name after the spool command."
 
 #: src/lyxrc.C:1753
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
-msgstr "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes wrong, override the setting here."
+msgstr ""
+"DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
+"wrong, override the setting here."
 
 #: src/lyxrc.C:1758
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
-msgstr "The zoom percentage for screen fonts. A setting of 100% will make the fonts roughly the same size as on paper."
+msgstr ""
+"The zoom percentage for screen fonts. A setting of 100% will make the fonts "
+"roughly the same size as on paper."
 
 #: src/lyxrc.C:1762
 msgid "The font sizes used for calculating the scaling of the screen fonts."
@@ -10151,31 +10232,40 @@ msgstr "The encoding for the menu/popups fonts."
 #: src/lyxrc.C:1791
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
-msgstr "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 
 #: src/lyxrc.C:1795
 msgid ""
 "The default path for your documents.  An empty value selects the directory "
 "LyX was started from."
-msgstr "The default path for your documents.  An empty value selects the directory LyX was started from."
+msgstr ""
+"The default path for your documents.  An empty value selects the directory "
+"LyX was started from."
 
 #: src/lyxrc.C:1799
 msgid ""
 "The path that LyX will set when offering to choose a template.  An empty "
 "value selects the directory LyX was started from."
-msgstr "The path that LyX will set when offering to choose a template.  An empty value selects the directory LyX was started from."
+msgstr ""
+"The path that LyX will set when offering to choose a template.  An empty "
+"value selects the directory LyX was started from."
 
 #: src/lyxrc.C:1803
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
-msgstr "LyX will place its temporary directories in this path. They will be deleted when you quit LyX."
+msgstr ""
+"LyX will place its temporary directories in this path. They will be deleted "
+"when you quit LyX."
 
 #: src/lyxrc.C:1807
 msgid ""
 "Select if you wish to use a temporary directory structure to store temporary "
 "TeX output."
-msgstr "Select if you wish to use a temporary directory structure to store temporary TeX output."
+msgstr ""
+"Select if you wish to use a temporary directory structure to store temporary "
+"TeX output."
 
 #: src/lyxrc.C:1811
 msgid "The file where the last-files information should be stored."
@@ -10185,56 +10275,75 @@ msgstr "The file where the last-files information should be stored."
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
-msgstr "De-select if you don't want the current selection to be replaced automatically by what you type."
+msgstr ""
+"De-select if you don't want the current selection to be replaced "
+"automatically by what you type."
 
 #: src/lyxrc.C:1819
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
-msgstr "De-select if you don't want the class options to be reset to defaults after class change."
+msgstr ""
+"De-select if you don't want the class options to be reset to defaults after "
+"class change."
 
 #: src/lyxrc.C:1823
 msgid ""
 "Select if LyX is to take over the handling of the dead keys (a.k.a. accent "
 "keys) that may be defined for your keyboard."
-msgstr "Select if LyX is to take over the handling of the dead keys (a.k.a. accent keys) that may be defined for your keyboard."
+msgstr ""
+"Select if LyX is to take over the handling of the dead keys (a.k.a. accent "
+"keys) that may be defined for your keyboard."
 
 #: src/lyxrc.C:1828
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
-msgstr "This starts the lyxserver. The pipes get an additional extension \".in\" and \".out\". Only for advanced users."
+msgstr ""
+"This starts the lyxserver. The pipes get an additional extension \".in\" and "
+"\".out\". Only for advanced users."
 
 #: src/lyxrc.C:1832
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
-msgstr "Keybindings file. Can either specify an absolute path, or LyX will look in its global and local bind/ directories."
+msgstr ""
+"Keybindings file. Can either specify an absolute path, or LyX will look in "
+"its global and local bind/ directories."
 
 #: src/lyxrc.C:1836
 msgid ""
 "The  UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
-msgstr "The  UI (user interface) file. Can either specify an absolute path, or LyX will look in its global and local ui/ directories."
+msgstr ""
+"The  UI (user interface) file. Can either specify an absolute path, or LyX "
+"will look in its global and local ui/ directories."
 
 #: src/lyxrc.C:1842
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
-msgstr "Use this to set the correct mapping file for your keyboard. You'll need this if you for instance want to type German documents on an American keyboard."
+msgstr ""
+"Use this to set the correct mapping file for your keyboard. You'll need this "
+"if you for instance want to type German documents on an American keyboard."
 
 #: src/lyxrc.C:1846
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
 "\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
 "is specified, an internal routine is used."
-msgstr "Use to define an external program to render tables in the ASCII output. E.g. \"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" is specified, an internal routine is used."
+msgstr ""
+"Use to define an external program to render tables in the ASCII output. E.g. "
+"\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
+"is specified, an internal routine is used."
 
 #: src/lyxrc.C:1850
 msgid ""
 "This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
 "plain text)."
-msgstr "This is the maximum line length of an exported ASCII file (LaTeX, SGML or plain text)."
+msgstr ""
+"This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
+"plain text)."
 
 #: src/lyxrc.C:1854
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
@@ -10246,7 +10355,8 @@ msgstr "Select to check whether the lastfiles still exist."
 
 #: src/lyxrc.C:1862
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
-msgstr "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
+msgstr ""
+"Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 
 #: src/lyxrc.C:1866
 msgid "Specify the default paper size."
@@ -10256,7 +10366,9 @@ msgstr "Specify the default paper size."
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
-msgstr "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as legal words?"
+msgstr ""
+"Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
+"legal words?"
 
 #: src/lyxrc.C:1877
 msgid "What command runs the spell checker?"
@@ -10267,18 +10379,24 @@ msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you can't spellcheck words with international letters in them. This may "
 "not work with all dictionaries."
-msgstr "Specify whether to pass the -T input encoding option to ispell. Enable this if you can't spellcheck words with international letters in them. This may not work with all dictionaries."
+msgstr ""
+"Specify whether to pass the -T input encoding option to ispell. Enable this "
+"if you can't spellcheck words with international letters in them. This may "
+"not work with all dictionaries."
 
 #: src/lyxrc.C:1886
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
-msgstr "Specify an alternate language. The default is to use the language of the document."
+msgstr ""
+"Specify an alternate language. The default is to use the language of the "
+"document."
 
 #: src/lyxrc.C:1891
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
-msgstr "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgstr ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 
 #: src/lyxrc.C:1896
 msgid "Specify additional chars that can be part of a word."
@@ -10289,31 +10407,42 @@ msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
-msgstr "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting this option may make some fonts look blocky in LyX. Deselecting this option makes LyX use the nearest bitmap font size available, instead of scaling."
+msgstr ""
+"Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
+"this option may make some fonts look blocky in LyX. Deselecting this option "
+"makes LyX use the nearest bitmap font size available, instead of scaling."
 
 #: src/lyxrc.C:1904
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
-msgstr "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\" Refer to the ChkTeX documentation."
+msgstr ""
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
 
 #: src/lyxrc.C:1908
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
-msgstr "LyX normally doesn't update the cursor position if you move the scrollbar. Set to true if you'd prefer to always have the cursor on screen."
+msgstr ""
+"LyX normally doesn't update the cursor position if you move the scrollbar. "
+"Set to true if you'd prefer to always have the cursor on screen."
 
 #: src/lyxrc.C:1912
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
-msgstr "Iconify the dialogs when the main window is iconified. (Affects only dialogs shown after the change has been made.)"
+msgstr ""
+"Iconify the dialogs when the main window is iconified. (Affects only dialogs "
+"shown after the change has been made.)"
 
 #: src/lyxrc.C:1916
 msgid ""
 "Sets whether LyX asks for a second confirmation to exit when you have "
 "changed documents. (LyX will still ask to save changed documents.)"
-msgstr "Sets whether LyX asks for a second confirmation to exit when you have changed documents. (LyX will still ask to save changed documents.)"
+msgstr ""
+"Sets whether LyX asks for a second confirmation to exit when you have "
+"changed documents. (LyX will still ask to save changed documents.)"
 
 #: src/lyxrc.C:1920
 msgid "Select how LyX will display any graphics."
@@ -10324,7 +10453,10 @@ msgid ""
 "LyX continously displays names of last command executed, along with a list "
 "of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
 "slow."
-msgstr "LyX continously displays names of last command executed, along with a list of defined short-cuts for it in the minibuffer. Set to false if LyX seems slow."
+msgstr ""
+"LyX continously displays names of last command executed, along with a list "
+"of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
+"slow."
 
 #: src/lyxrc.C:1928
 msgid "De-select if you don't want LyX to create backup files."
@@ -10334,54 +10466,71 @@ msgstr "De-select if you don't want LyX to create backup files."
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
-msgstr "The path for storing backup files. If it is an empty string, LyX will store the backup file in the same directory as the original file."
+msgstr ""
+"The path for storing backup files. If it is an empty string, LyX will store "
+"the backup file in the same directory as the original file."
 
 #: src/lyxrc.C:1936
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 
 #: src/lyxrc.C:1940
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
-msgstr "Select to control the highlighting of words with a language foreign to that of the document."
+msgstr ""
+"Select to control the highlighting of words with a language foreign to that "
+"of the document."
 
 #: src/lyxrc.C:1944
 msgid ""
 "The latex command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
-msgstr "The latex command for loading the language package. E.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+msgstr ""
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/lyxrc.C:1948
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr "De-select if you don't want the language(s) used as an argument to \\documentclass."
+msgstr ""
+"De-select if you don't want the language(s) used as an argument to "
+"\\documentclass."
 
 #: src/lyxrc.C:1952
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
-msgstr "De-select if you don't want babel to be used when the language of the document is the default language."
+msgstr ""
+"De-select if you don't want babel to be used when the language of the "
+"document is the default language."
 
 #: src/lyxrc.C:1956
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
-msgstr "Select if a language switching command is needed at the beginning of the document."
+msgstr ""
+"Select if a language switching command is needed at the beginning of the "
+"document."
 
 #: src/lyxrc.C:1960
 msgid ""
 "Select if a language switching command is needed at the end of the document."
-msgstr "Select if a language switching command is needed at the end of the document."
+msgstr ""
+"Select if a language switching command is needed at the end of the document."
 
 #: src/lyxrc.C:1964
 msgid ""
 "The latex command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
-msgstr "The latex command for changing from the language of the document to another language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the name of the second language."
+msgstr ""
+"The latex command for changing from the language of the document to another "
+"language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
+"name of the second language."
 
 #: src/lyxrc.C:1968
 msgid "The latex command for changing back to the language of the document."
@@ -10396,7 +10545,9 @@ msgstr "The latex command for local changing of the language."
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
-msgstr "This accepts the normal strftime formats; see man strftime for full details. E.g.\"%A, %e. %B %Y\"."
+msgstr ""
+"This accepts the normal strftime formats; see man strftime for full details. "
+"E.g.\"%A, %e. %B %Y\"."
 
 #: src/lyxrc.C:1981
 msgid "De-select if you don't want the startup banner."
@@ -10410,7 +10561,9 @@ msgstr "The wheel movement factor (for mice with wheels or five button mice)."
 msgid ""
 "This sets the behaviour if you want to be asked for a filename when creating "
 "a new document or wait until you save it and be asked then."
-msgstr "This sets the behaviour if you want to be asked for a filename when creating a new document or wait until you save it and be asked then."
+msgstr ""
+"This sets the behaviour if you want to be asked for a filename when creating "
+"a new document or wait until you save it and be asked then."
 
 #: src/lyxrc.C:2002
 msgid "New documents will be assigned this language."

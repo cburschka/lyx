@@ -1,3 +1,9 @@
+2002-03-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* no.po: updated
+
+	* da.po: updated
+
 2002-03-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* bg.po: new language from Georgi Tellalov
@@ -15,7 +21,7 @@
 2001-11-04  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.in.in: consider Qt2 dialogs for translation
- 
+
 2001-10-08  gettextize  <bug-gnu-utils@gnu.org>
 
 	* Makefile.in.in: Upgrade to gettext-0.10.40.
@@ -169,7 +175,7 @@
 2000-11-30  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* *.po: Ensure they have valid shortcuts. Ie, replace "|xyz" with
-	"xyz". 
+	"xyz".
 	Also removed all instances of "%x".
 
 2000-11-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
@@ -183,7 +189,7 @@
 2000-10-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* Makefile.in.in (ext_l10n.h): fix a bug in the generation that
-	could lead to _("") + some simplification 
+	could lead to _("") + some simplification
 
 	* all po files updated again
 
@@ -260,7 +266,7 @@
 	* nl.po: update from Ivo Timmermans
 
 	* eu.po: new file from Iñaki Larrañaga (aka Dooteo)
-	<blackzig@freemail.it> 
+	<blackzig@freemail.it>
 
 2000-02-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -273,12 +279,12 @@
 	* fi.po: update from Pauli Virtanen
 
 	* sl.po: update from Roman Maurer
-	
+
 2000-04-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* remove obsolete entries from po files. Make all po files pass
 	the verification test.
-	
+
 2000-04-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* fi.po: update from Pauli Virtanen
@@ -308,11 +314,11 @@
 2000-01-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* ca.po: updated from Francesc Burrull i Mestres
-	
+
 	* sl.po: updated from Roman Maurer
 
 2000-01-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
-	
+
 	* *.po: updated as part of make distdir
 
 	* ro.po: new po file for romanian, written for klyx but included
@@ -339,12 +345,12 @@
 1999-11-30  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* *.po: obsolete entries removed after merge with
-        up to date lyx.pot because of make distdir.
+	up to date lyx.pot because of make distdir.
 
 1999-10-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* *.po: obsolete entries and merged with lyx.pot because of make
-	distdir.  
+	distdir.
 
 1999-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -365,4 +371,3 @@
 1999-09-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* Added this file. Needed by the dist targets.
-
