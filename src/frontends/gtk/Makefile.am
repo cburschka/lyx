@@ -42,6 +42,8 @@ libgtk_la_SOURCES = \
 	Alert_pimpl.C \
 	GView.h \
 	GView.C \
+	IdSc.h \
+	IdSc.C \
 	Dialogs.C \
 	GAboutlyx.h \
 	GAboutlyx.C \
@@ -54,8 +56,12 @@ libgtk_la_SOURCES = \
 	FileDialog.C \
 	GText.h \
 	GText.C \
-	IdSc.h \
-	IdSc.C
+	GUrl.h \
+	GUrl.C \
+	GTableCreate.h \
+	GTableCreate.C \
+	GMathPanel.h \
+	GMathPanel.C
 
 #	GPrint.h
 #	GPrint.C
@@ -90,7 +96,6 @@ xforms_objects = \
 	../xforms/FormMathsBitmap.lo \
 	../xforms/FormMathsDelim.lo \
 	../xforms/FormMathsMatrix.lo \
-	../xforms/FormMathsPanel.lo \
 	../xforms/FormMathsSpace.lo \
 	../xforms/FormMathsStyle.lo \
 	../xforms/FormMinipage.lo \
@@ -105,13 +110,11 @@ xforms_objects = \
 	../xforms/forms_gettext.lo \
 	../xforms/FormShowFile.lo \
 	../xforms/FormSpellchecker.lo \
-	../xforms/FormTabularCreate.lo \
 	../xforms/FormTabular.lo \
 	../xforms/FormTexinfo.lo \
 	../xforms/FormText.lo \
 	../xforms/FormThesaurus.lo \
 	../xforms/FormToc.lo \
-	../xforms/FormUrl.lo \
 	../xforms/FormVCLog.lo \
 	../xforms/FormWrap.lo \
 	../xforms/freebrowser.lo \
@@ -127,6 +130,9 @@ xforms_objects = \
 #	../xforms/FormFiledialog.lo
 #	../xforms/FileDialog.lo
 #	../xforms/FormAboutlyx.lo
+#	../xforms/FormUrl.lo
+#	../xforms/FormTabularCreate.lo
+#	../xforms/FormMathsPanel.lo
 
 xforms.lo: $(xforms_objects) ../xforms/forms/*.lo
 	$(CXXLINK) $(xforms_objects) ../xforms/forms/*.lo

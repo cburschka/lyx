@@ -23,14 +23,14 @@ FileDialog::Private::Private(string const & title,
 	action_(action)
 {
 	fileSelection_.set_title(title);
-	fileSelection_.get_button_area()->children().push_back(
+/*	fileSelection_.get_button_area()->children().push_back(
 		Gtk::Box_Helpers::Element(button1_));
 	fileSelection_.get_button_area()->children().push_back(
 		Gtk::Box_Helpers::Element(button2_));
 	button1_.signal_clicked().connect(
 		SigC::slot(*this, &FileDialog::Private::onButton1Clicked));
 	button2_.signal_clicked().connect(
-		SigC::slot(*this, &FileDialog::Private::onButton2Clicked));
+	SigC::slot(*this, &FileDialog::Private::onButton2Clicked));
 	if (!b1.first.empty() && !b1.second.empty()) {
 		string::size_type pos = b1.first.find('|');
 		button1_.set_label(
@@ -44,7 +44,7 @@ FileDialog::Private::Private(string const & title,
 			Glib::locale_to_utf8(b2.first.substr(0, pos)));
 		dir2_ = b2.second;
 		button2_.show();
-	}
+	}*/
 }
 
 

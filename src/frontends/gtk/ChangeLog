@@ -1,3 +1,12 @@
+2003-10-28  Huang Ying <hying_caritas@163.com>
+        * codeConvert.h (etc): Change FcChar to XftChar according to the libxft
+        interface changing.
+        * FileDialogPrivate.C : get rid of button support in FileDialog
+        because of the implementation of Gtk::FileSelection changed.
+        * glade/.cvsignore : add *.gladep, which is generated during editing
+        *.galde
+        * Add MathPanel, TableCreate and Url dialog
+
 2003-10-15  José Matos  <jamatos@lyx.org>
 
 	* lyx_gui.C (start): add lyxsocket.

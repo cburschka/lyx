@@ -232,7 +232,7 @@ Painter & GPainter::text(int x, int y, wchar_t const * s, int ls,
 	XftDraw * draw = owner_.getXftDraw();
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		XftDrawString32(draw, xftClr, font, x, y,
-				wcsToFcChar32StrFast(s), ls);
+				wcsToXftChar32StrFast(s), ls);
 	} else {
 		LyXFont smallfont(f);
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
@@ -243,11 +243,11 @@ Painter & GPainter::text(int x, int y, wchar_t const * s, int ls,
 			c = lyx::support::uppercase(s[i]);
 			if(c != s[i]) {
 				XftDrawString32(draw, xftClr, fontS, tmpx, y,
-						wcsToFcChar32StrFast(&c), 1);
+						wcsToXftChar32StrFast(&c), 1);
 				tmpx += font_metrics::width(c, smallfont);
 			} else {
 				XftDrawString32(draw, xftClr, font, tmpx, y,
-						wcsToFcChar32StrFast(&c), 1);
+						wcsToXftChar32StrFast(&c), 1);
 				tmpx += font_metrics::width(c, f);
 			}
 		}

@@ -57,7 +57,7 @@
 #include "FormGraphics.h"
 #include "FormInclude.h"
 #include "FormLog.h"
-#include "FormMathsPanel.h"
+#include "GMathPanel.h"
 #include "FormMathsBitmap.h"
 #include "FormMathsDelim.h"
 #include "FormMathsMatrix.h"
@@ -70,9 +70,9 @@
 #include "FormTabular.h"
 #include "FormTexinfo.h"
 #include "FormShowFile.h"
-#include "FormTabularCreate.h"
+#include "GTableCreate.h"
 #include "FormToc.h"
-#include "FormUrl.h"
+#include "GUrl.h"
 #include "FormVCLog.h"
 #include "FormWrap.h"
 
@@ -230,8 +230,9 @@ Dialog * Dialogs::build(string const & name)
 		dialog->bc().bp(new OkCancelPolicy);
 
 	} else if (name == "mathpanel") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlMath(*dialog));
-		dialog->setView(new FormMathsPanel(*dialog));
+		dialog->setView(new GMathPanel(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
 
 	} else if (name == "mathaccents") {
@@ -435,8 +436,9 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setView(new FormTabular(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "tabularcreate") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlTabularCreate(*dialog));
-		dialog->setView(new FormTabularCreate(*dialog));
+		dialog->setView(new GTableCreate(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
 	} else if (name == "texinfo") {
 		dialog->setController(new ControlTexinfo(*dialog));
@@ -453,8 +455,9 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setView(new FormToc(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "url") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlCommand(*dialog, name));
-		dialog->setView(new FormUrl(*dialog));
+		dialog->setView(new GUrl(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "vclog") {
 		dialog->setController(new ControlVCLog(*dialog));

@@ -82,7 +82,9 @@ XftColor * ColorHandler::getXftColor(LColor_color clr)
 		Visual * visual = GDK_VISUAL_XVISUAL(
 			owner_.getColormap()->get_visual()->gobj());
 		XftColorAllocName(owner_.getDisplay(), visual, colormap,
-				  lcolor.getX11Name(clr).c_str(), xclr);
+				  const_cast<char*>(
+					  lcolor.getX11Name(clr).c_str())
+				  , xclr);
 		colorCache.cacheXftColor(clr, xclr);
 	}
 	return xclr;

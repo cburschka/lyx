@@ -15,21 +15,21 @@
 #include <X11/Xft/Xft.h>
 
 
-inline FcChar32 * wcsToFcChar32StrFast(wchar_t * wcs)
+inline XftChar32 * wcsToXftChar32StrFast(wchar_t * wcs)
 {
-	return reinterpret_cast<FcChar32*>(wcs);
+	return reinterpret_cast<XftChar32 *>(wcs);
 }
 
 
-inline FcChar32 const * wcsToFcChar32StrFast(wchar_t const * wcs)
+inline XftChar32 * wcsToXftChar32StrFast(wchar_t const * wcs)
 {
-	return reinterpret_cast<FcChar32 const *>(wcs);
+	return reinterpret_cast<XftChar32 *>(const_cast<wchar_t *>(wcs));
 }
 
 
-inline FcChar32 wcToFcChar32(wchar_t wc)
+inline XftChar32 wcToXftChar32(wchar_t wc)
 {
-	return static_cast<FcChar32>(wc);
+	return static_cast<XftChar32>(wc);
 }
 
 

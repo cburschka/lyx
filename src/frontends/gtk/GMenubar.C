@@ -153,7 +153,7 @@ bool GMenubar::submenuDisabled(MenuItem const * item)
 
 
 void GMenubar::onSubMenuActivate(MenuItem const * item,
-				       Gtk::MenuItem * gitem)
+				 Gtk::MenuItem * gitem)
 {
 	Gtk::Menu * gmenu = gitem->get_submenu();
 	ClearMenu(gmenu);

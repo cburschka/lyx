@@ -101,7 +101,7 @@ int ascent(wchar_t c,LyXFont const & f)
 	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
 	XftTextExtents32(getDisplay(), font,
-			 wcsToFcChar32StrFast(&c),
+			 wcsToXftChar32StrFast(&c),
 			 1,
 			 &glyph);
 	return XGlyphAscent(glyph);
@@ -119,7 +119,7 @@ int descent(wchar_t c,LyXFont const & f)
 	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
 	XftTextExtents32(getDisplay(), font,
-			 wcsToFcChar32StrFast(&c),
+			 wcsToXftChar32StrFast(&c),
 			 1,
 			 &glyph);
 	return XGlyphDescent(glyph);
@@ -137,7 +137,7 @@ int lbearing(wchar_t c,LyXFont const & f)
 	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
 	XftTextExtents32(getDisplay(), font,
-			 wcsToFcChar32StrFast(&c),
+			 wcsToXftChar32StrFast(&c),
 			 1,
 			 &glyph);
 	return XGlyphLbearing(glyph);
@@ -149,7 +149,7 @@ int rbearing(wchar_t c,LyXFont const & f)
 	XftFont * font = getXftFont(f);
 	XGlyphInfo glyph;
 	XftTextExtents32(getDisplay(), font,
-			 wcsToFcChar32StrFast(&c),
+			 wcsToXftChar32StrFast(&c),
 			 1,
 			 &glyph);
 	return XGlyphRbearing(glyph);
@@ -174,7 +174,8 @@ int width(wchar_t const * s, size_t n, LyXFont const & f)
 	XGlyphInfo glyph;
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE){
 		XftTextExtents32(getDisplay(), font,
-				 wcsToFcChar32StrFast(s),
+				 const_cast<XftChar32*>(
+					 wcsToXftChar32StrFast(s)),
 				 n,
 				 &glyph);
 		return XGlyphLogWidth(glyph);
@@ -187,13 +188,13 @@ int width(wchar_t const * s, size_t n, LyXFont const & f)
 			wchar_t wc = lyx::support::uppercase(s[i]);
 			if (wc != s[i]) {
 				XftTextExtents32(getDisplay(), fontS,
-						 wcsToFcChar32StrFast(&wc),
+						 wcsToXftChar32StrFast(&wc),
 						 1,
 						 &glyph);
 				result += XGlyphLogWidth(glyph);
 			} else {
 				XftTextExtents32(getDisplay(), font,
-						 wcsToFcChar32StrFast(&wc),
+						 wcsToXftChar32StrFast(&wc),
 						 1,
 						 &glyph);
 				result += XGlyphLogWidth(glyph);
