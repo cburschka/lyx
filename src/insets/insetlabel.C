@@ -53,12 +53,16 @@ void InsetLabel::edit(BufferView * bv, int, int, unsigned int)
 			bool flag = bv->ChangeRefsIfUnique(getContents(),
 							   new_contents);
 			setContents(new_contents);
+#if 0
 			bv->text->redoParagraph(bv);
 			if (flag) {
 				bv->redraw();
 				bv->fitCursor();
 			} else
 				bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+#else
+			bv->updateInset(this, !flag);
+#endif
 		}
 	}
 }

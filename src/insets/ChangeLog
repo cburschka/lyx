@@ -1,5 +1,9 @@
 2002-02-26  Juergen Vigna  <jug@sad.it>
 
+	* insetlabel.C (edit): Fixed wrong update handling after change I
+	leave in the wrong code for the one who wrote it to remove and have
+	a look what he did wrong.
+
 	* insettabular.C (localDispatch): force a SELECTION update if we
 	had a selection and we passed the event down to the inset (fix #213)
 	(localDispatch): handle font changing stuff when we have a cell
