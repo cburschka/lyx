@@ -308,7 +308,7 @@ case $LPR in
 esac
 
 SEARCH_PROG([for a LaTeX -> HTML converter], TOHTML, tth latex2html hevea)
-latex_to_html_command = $TOHTML
+latex_to_html_command=$TOHTML
 case $TOHTML in
 	tth) latex_to_html_command="tth -t -e2 -L\$\$BaseName < \$\$FName > \$\$OutName";;
  latex2html) latex_to_html_command="latex2html -no_subdir -split 0 -show_section_numbers \$\$FName";;

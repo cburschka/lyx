@@ -1,3 +1,15 @@
+2000-11-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/reLyX/acinclude.m4 (RELYX_CHECK_ERRORS): remove useless message.
+
+	* lib/configure.m4 (latex_to_html_command): avoid spaces around =
+	for variable assignment.
+
+2000-11-07 Rob Lahaye <lahaye@postech.edu>
+
+	* src/lib/ui/default.ui: added sub/superscripts to menu as
+	Insert->Special characters  and  cleaned-up the file a bit
+
 2000-11-07  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/xforms/FormPreferences.C (feedback): make sure

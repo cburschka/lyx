@@ -1,6 +1,5 @@
 dnl Usage: RELYX_WARNING(message)  Displays the warning "message" and sets
-the
-dnl flag lyx_warning to yes.
+dnl the flag lyx_warning to yes.
 AC_DEFUN(RELYX_WARNING,[
 relyx_warning_txt="$relyx_warning_txt
 == $1
@@ -90,10 +89,5 @@ cat <<EOF
 $relyx_warning_txt
 EOF
 fi
-cat <<EOF
-Configuration of LyX was successful.  
-Type 'make' to compile the program, 
-and then 'make install' to install it.
-EOF
 fi])
 

@@ -995,7 +995,7 @@ if test -z "$TOHTML" ; then
   TOHTML=none
 fi
 
-latex_to_html_command = $TOHTML
+latex_to_html_command=$TOHTML
 case $TOHTML in
 	tth) latex_to_html_command="tth -t -e2 -L\$\$BaseName < \$\$FName > \$\$OutName";;
  latex2html) latex_to_html_command="latex2html -no_subdir -split 0 -show_section_numbers \$\$FName";;
