@@ -1,53 +1,6 @@
-This file is intended to provide information about the status of the
-different translation files. Please help us out to keep them up to date.
-
-If you want to make one for your language, please read "Help->Customization" 
-for more information, and the information below.
-
-Status
-------
-
-The intention here is to provide information about the status of the
-different translation files.
-
-   1998-02-03: no.po for Norwegian by Lars G. Bjønnes (larsbj@ifi.uio.no)
-	Pretty much done except for some keyboard-shortcuts, and a few
-	things that I don't know how to translate yet.
-	Updated for 0.12.0
-
-   1998-01-23: es.po, Spanish by Daniel Manrique and Alejandro Aguilar
-        Sierra. Advanced but not yet complete. Send comments about this
-	translation to (lyxesp@modelos1.atmosfcu.unam.mx) and get the 
-	latest version from http://www.linux.org.mx/lyx/es.html.
-
-   1999-04-30: da.po for Danish by Asger Alstrup (alstrup@diku.dk):
-	Pretty much done for 1.0.2, except for some keyboard shortcuts.
-
-   1998-07-27: Updated sv.po, Swedish by Joacim Persson (sp2joap1@ida.his.se)
-	Complete, in the sense that it works. (except some shortcuts in a
-	few hard-to-crack dialogs)
-	
-   1998-02-01: de.po, German by Peter Metternich and Peter Sütterlin
-        Complete as of pre8, allthough some translations could be nicer.
-        Shortcuts do work, allthough some are missing (not enough
-        unique letters...).  Additional shortcut definition file 
-        menus_de.bind available.
-
-   1998-02-11: hu.po, Hungarian by Peter Kremer & Andras Kadar
-        Menus and some simple dialog box are done. Additional shortcut
-	definition file menus_hu.bind available.
-
-   1998-11-27: fr.po, by Emmanuel Gureghian <gureghia@spi.lip6.fr>, with
-        *slight* changes by Jean-Marc Lasgouttes. All strings are basically
-        translated, but the keyboard shortcuts have not been updated and
-	the translation could really be improved. Feel free to contact 
-	Emmanuel if you want to help.
-
-   1998-12-02: ru.po, by Victor Lavrenko <lyx@lavrenko.pp.ru>. Last updated
-        on 1999-01-29. 
-
-The status of the other files is unknown at this point in time, but
-most should be pretty good.
+This file is intended to provide information about the different translation
+files. If you want to make one for your language, please read
+"Help->Customization" for more information, and the information below.
 
 How can I update an existing po file?
 -------------------------------------
@@ -59,47 +12,45 @@ the procedure should be relatively easy:
 
 Get and install gettext (available from ftp://alpha.gnu.org). Read the
 documentation for gettext. Then get the latest LyX distribution including 
-patches, and unpack it in your home directory. Read README in the LyX
-distribution. Read the files in development/Code_rules/.
+patches, and unpack it in your home directory. It is yet better if you checkout
+the CVS version of LyX.
+Read the README in the LyX distribution.
 Check the mailing list archives to learn what is going on at the moment. 
-Consider subscribing to the developer's mailing list.
+Consider subscribing to the developer's mailing list, lyx-devel@lists.lyx.org.
 
 2) Preparing a patch
 
-Now do (if you want to update the no.po file):
+Now do (where XX stands for the code of your language):
 
         cp -R lyx-*.*.* lyx.new
-		(which makes a copy of the source distribution for 
-		 you to change)
-	cd lyx.new/po/
+			(Which makes a copy of the source distribution for 
+			 you to change, but you should work in a CVS workarea)
+ 	 	cd lyx.new/po/
 
-        msgmerge no.po lyx.pot > no.pox
-		(use no.pox as a temporary)
-        emacs no.pox                           
-		(using po-mode.)
-	        (finish editing no.pox, save)
-        msgfmt no.pox
-        mv messages no.gmo
-        mv no.pox no.po
-        rm no.pox~
+		make XX.pox
+			(It merges the po file into the temporary file XX.pox)
+        emacs XX.pox                           
+			(Using po-mode. Emacs is convenient for po editing, but not
+			 mandatory.)
+	    (Make all necessary changes in XX.pox, and save.)
+        mv XX.pox XX.po
+        rm XX.pox~
+			(To remove Emacs autosave.)
+		make XX.gmo
+		(Update the ChangeLog file.)
 
-	(update the status list in this README file)
+		cd ..
 
-	cd ..
+		(Maybe update lib/CREDITS)
 
-	(update CHANGES and maybe also lib/CREDITS)
-
-	lyx.new/development/tools/makepatch lyx-*.*.* lyx.new
-		(which will create a patch file)
+		cvs diff -u > XX_po_update.patch
+			(Or whatever good method to have a patch in unified diff format)
 
 3) Submitting the patch
 
-	zcat *.patch.gz | less
-		(to check that the patch is ok)
-
-	Mail the patch along with an announcement mail to 
-	lyx-devel@lists.lyx.org)
+	Check your patch and mail it to lyx-devel@lists.lyx.org
 
 Thanks!
 
 The LyX Team.
+
