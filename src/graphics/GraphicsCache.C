@@ -16,6 +16,7 @@
 #endif
 
 #include "GraphicsCache.h"
+#include "GraphicsCacheItem.h"
 
 #include "support/LAssert.h"
 
@@ -43,26 +44,24 @@ GraphicsCache::~GraphicsCache()
 }
 
 
-GraphicsCacheItem *
+GraphicsCache::shared_ptr_item
 GraphicsCache::addFile(string const & filename)
 {
 	CacheType::iterator it = cache.find(filename);
 	
 	if (it != cache.end()) {
-		return new GraphicsCacheItem( *((*it).second) );
+		return (*it).second;
 	}
 	
-	GraphicsCacheItem * cacheItem = new GraphicsCacheItem();
-	if (cacheItem == 0)
-		return 0;
-	
-	cacheItem->setFilename(filename);
+	shared_ptr_item cacheItem(new GraphicsCacheItem(filename));
+	if (cacheItem.get() == 0)
+		return cacheItem;
 	
 	cache[filename] = cacheItem;
-	
-	// We do not want to return the main cache object, otherwise when the
-	// will destroy their copy they will destroy the main copy.
-	return new GraphicsCacheItem( *cacheItem );
+
+	// GraphicsCacheItem_ptr is a shared_ptr and thus reference counted,
+	// it is safe to return it directly.
+	return cacheItem;
 }
 
 

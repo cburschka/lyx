@@ -30,6 +30,13 @@ ImageLoader::~ImageLoader()
 	freeImage();
 }
 
+void
+ImageLoader::freeImage()
+{
+	delete image_;
+	image_ = 0;
+}
+
 bool ImageLoader::isImageFormatOK(string const & /*filename*/) const
 {
 	return false;
@@ -37,15 +44,14 @@ bool ImageLoader::isImageFormatOK(string const & /*filename*/) const
 
 void ImageLoader::setImage(LyXImage * image)
 {
-	freeImage();
-
 	image_ = image;
 }
 
-void ImageLoader::freeImage()
+LyXImage * ImageLoader::getImage()
 {
-	delete image_;
+	LyXImage * tmp = image_;
 	image_ = 0;
+	return tmp;
 }
 
 ImageLoader::FormatList const

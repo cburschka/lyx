@@ -1,3 +1,8 @@
+2001-02-21  Baruch Even  <baruch@ev-en.org>
+
+	* insetgraphics.[Ch]: Changed to use boost::shared_ptr<GraphicsCacheItem>
+	instead of GraphicsCacheItem *.
+
 2001-02-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insetcollapsable.C (getLyXText): add const qualifier to second

@@ -17,87 +17,106 @@
 
 #include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsCacheItem.h"
-#include "graphics/GraphicsCacheItem_pimpl.h"
 #include "frontends/support/LyXImage.h"
+#include "graphics/ImageLoaderXPM.h"
+#include "support/filetools.h"
+#include "support/lyxlib.h"
+#include "support/syscall.h"
 
+#include "debug.h"
 
-GraphicsCacheItem::GraphicsCacheItem()
-	: pimpl(new GraphicsCacheItem_pimpl)
+using std::endl;
+
+GraphicsCacheItem::GraphicsCacheItem(string const & filename)
+	: imageStatus_(GraphicsCacheItem::Loading)
 {
-	pimpl->refCount = 1;
+	filename_ = filename;
+	
+	renderXPM(filename);
+	// For now we do it synchronously
+	imageConverted(0);
 }
 
 
 GraphicsCacheItem::~GraphicsCacheItem()
-{
-	destroy();
-}
-
-
-bool
-GraphicsCacheItem::setFilename(string const & filename)
-{
-	filename_ = filename;
-	return pimpl->setFilename(filename);
-}
-
-
-GraphicsCacheItem::GraphicsCacheItem(GraphicsCacheItem const & gci)
-	: pimpl(0)
-{
-	// copy will set the actual value of the pimpl.
-	copy(gci);
-}
-
-GraphicsCacheItem &
-GraphicsCacheItem::operator=(GraphicsCacheItem const & gci)
-{
-	// Are we trying to copy the object onto itself.
-	if (this == &gci)
-		return *this;
-
-	// Destroy old copy 
-	destroy();
-
-	// And then copy new object.
-	copy(gci);
-
-	return *this;
-}
-
-GraphicsCacheItem *
-GraphicsCacheItem::Clone() const
-{
-	return new GraphicsCacheItem(*this);
-}
-
-void
-GraphicsCacheItem::copy(GraphicsCacheItem const & gci)
-{
-	pimpl = gci.pimpl;
-	++(pimpl->refCount);
-}
-
-
-void
-GraphicsCacheItem::destroy()
-{
-	if (!pimpl) 
-		return;
-
-	--(pimpl->refCount);
-	if (pimpl->refCount == 0) {
-		delete pimpl;
-		pimpl = 0;
-
-		GraphicsCache * gc = GraphicsCache::getInstance();
-		gc->removeFile(filename_);
-	}
-}
+{}
 
 
 GraphicsCacheItem::ImageStatus 
-GraphicsCacheItem::getImageStatus() const { return pimpl->imageStatus_; }
+GraphicsCacheItem::getImageStatus() const { return imageStatus_; }
+
 
 LyXImage * 
-GraphicsCacheItem::getImage() const { return pimpl->getImage(); }
+GraphicsCacheItem::getImage() const { return image_.get(); }
+
+
+void
+GraphicsCacheItem::imageConverted(int retval)
+{
+	lyxerr << "imageConverted, retval=" << retval << endl;
+
+	if (retval) {
+		lyxerr << "(GraphicsCacheItem::imageConverter) "
+			"Error converting image." << endl;
+		imageStatus_ = GraphicsCacheItem::ErrorConverting;
+		return;
+	}
+
+	// Do the actual image loading from XPM to memory.
+	loadXPMImage();	
+}
+
+	
+bool
+GraphicsCacheItem::renderXPM(string const & filename)
+{
+	// Create the command to do the conversion, this depends on ImageMagicks
+	// convert program.
+	string command = "convert ";
+	command += filename;
+	command += " XPM:";
+
+	// Take only the filename part of the file, without path or extension.
+	string temp = OnlyFilename(filename);
+	temp = ChangeExtension(filename, string());
+	
+	// Add some stuff to have it a unique temp file.
+	// This tempfile is deleted in loadXPMImage after it is loaded to memory.
+	tempfile = lyx::tempName(string(), temp);
+	// Remove the temp file, we only want the name...
+	lyx::unlink(tempfile);
+	tempfile = ChangeExtension(tempfile, ".xpm");	
+	
+	command += tempfile;
+
+	// Run the convertor.
+	lyxerr << "Launching convert to xpm, command=" << command << endl;
+	Systemcalls syscall;
+	syscall.startscript(Systemcalls::Wait, command);
+
+	return true;
+}
+
+
+// This function gets called from the callback after the image has been
+// converted successfully.
+void
+GraphicsCacheItem::loadXPMImage()
+{
+	lyxerr << "Loading XPM Image... ";
+
+	ImageLoaderXPM imageLoader;
+	if (imageLoader.loadImage(tempfile) == ImageLoader::OK) {
+		lyxerr << "Success." << endl;
+		image_.reset(imageLoader.getImage());
+		imageStatus_ = GraphicsCacheItem::Loaded;
+	} else {
+		lyxerr << "Fail." << endl;
+		imageStatus_ = GraphicsCacheItem::ErrorReading;
+	}
+
+	// remove the xpm file now.
+	lyx::unlink(tempfile);
+	// and remove the reference to the filename.
+	tempfile = string();
+}

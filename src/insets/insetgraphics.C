@@ -181,7 +181,7 @@ InsetGraphics::statusMessage() const
 {
 	char const * msg = 0;
 
-	if (cacheHandle) {
+	if (cacheHandle.get()) {
 		switch (cacheHandle->getImageStatus()) {
 		case GraphicsCacheItem::UnknownError:
 			msg = _("Unknown Error");
@@ -211,7 +211,7 @@ InsetGraphics::statusMessage() const
 int InsetGraphics::ascent(BufferView *, LyXFont const &) const
 {
 	LyXImage * pixmap = 0;
-	if (cacheHandle && (pixmap = cacheHandle->getImage()))
+	if (cacheHandle.get() && (pixmap = cacheHandle->getImage()))
 		return pixmap->getHeight();
 	else
 		return 50;
@@ -229,7 +229,7 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 {
 	LyXImage * pixmap = 0;
 	
-	if (cacheHandle && (pixmap = cacheHandle->getImage()))
+	if (cacheHandle.get() && (pixmap = cacheHandle->getImage()))
 		return pixmap->getWidth();
 	else {
 		char const * msg = statusMessage();
@@ -266,7 +266,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		
 		// Get the image status, default to unknown error.
 		GraphicsCacheItem::ImageStatus status = GraphicsCacheItem::UnknownError;
-		if (cacheHandle)
+		if (cacheHandle.get())
 			status = cacheHandle->getImageStatus();
 		
 		// Check if the image is now ready.
@@ -576,8 +576,10 @@ void InsetGraphics::Validate(LaTeXFeatures & features) const
 void InsetGraphics::updateInset() const
 {
 	GraphicsCache * gc = GraphicsCache::getInstance();
-	GraphicsCacheItem * temp = 0;
+	boost::shared_ptr<GraphicsCacheItem> temp(0);
 
+	// We do it this way so that in the face of some error, we will still
+	// be in a valid state.
 	if (!params.filename.empty()) {
 		temp = gc->addFile(params.filename);
 	}
@@ -585,7 +587,6 @@ void InsetGraphics::updateInset() const
 	// Mark the image as unloaded so that it gets updated.
 	imageLoaded = false;
 
-	delete cacheHandle;
 	cacheHandle = temp;
 }
 
@@ -614,10 +615,7 @@ Inset * InsetGraphics::Clone(Buffer const &) const
 {
 	InsetGraphics * newInset = new InsetGraphics;
 
-	if (cacheHandle)
-		newInset->cacheHandle = cacheHandle->Clone();
-	else
-		newInset->cacheHandle = 0;
+	newInset->cacheHandle = cacheHandle;
 	newInset->imageLoaded = imageLoaded;
 
 	newInset->setParams(getParams());

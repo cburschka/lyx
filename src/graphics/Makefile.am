@@ -12,8 +12,6 @@ libgraphics_la_SOURCES = \
 	GraphicsCache.C \
 	GraphicsCacheItem.h \
 	GraphicsCacheItem.C \
-	GraphicsCacheItem_pimpl.h \
-	GraphicsCacheItem_pimpl.C \
 	ImageLoaderXPM.h \
 	ImageLoaderXPM.C \
 	ImageLoader.h \

@@ -1,5 +1,18 @@
 2001-02-20  Baruch Even  <baruch@ev-en.org>
 
+	* GraphicsCache.C: Changed to use shared_ptr<GraphicsCacheItem>
+	instead of a pure pointer.
+
+	* GraphicsCacheItem.[Ch]:
+	* GraphicsCacheItem_pimpl.[Ch]: Collapsed them into GraphicsCacheItem,
+	removed the reference counting that was inside. Also fixed a bug where
+	a temporary file wouldn't get erased.
+
+	* ImageLoader.[Ch]: Changed the semantics of the image_ pointers usage.
+	Ownership is now dropped when the caller requests the image_ pointer.
+
+2001-02-20  Baruch Even  <baruch@ev-en.org>
+
 	* GraphicsCache.C: Cleared up the confusion on when and how it is
 	emptied.
 

@@ -50,8 +50,17 @@ public:
 	/// Start loading the image file.
 	ImageLoader::Result loadImage(string const & filename);
 
-	/// Get the last rendered pixmap. Returns 0 if no image is ready.
-	LyXImage * getImage() const { return image_; };
+	/** Get the last rendered pixmap. Returns 0 if no image is ready.
+	 *  
+	 *  It is a one time operation, that is, after you get the image
+	 *  you are completely responsible to destroy it and the ImageLoader
+	 *  will not know about the image.
+	 *
+	 *  This way we avoid deleting the image if you still use it and the 
+	 *  ImageLoader is destructed, and if you don't use it we get to 
+	 *  destruct the image to avoid memory leaks.
+	 */
+	LyXImage * getImage();
 
 	/// Return the list of loadable formats.
 	virtual FormatList const loadableFormats() const;
@@ -70,7 +79,8 @@ private:
 	/// Free the loaded image.
 	void freeImage();
 	
-	/// The loaded image.
+	/// The loaded image. An auto_ptr would be great here, but it's not
+	/// available everywhere (gcc 2.95.2 doesnt have it).
 	LyXImage * image_;
 };
 

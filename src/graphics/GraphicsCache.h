@@ -21,6 +21,9 @@
 #include "LString.h"
 #include "GraphicsCacheItem.h"
 #include <boost/utility.hpp>
+#include <boost/smart_ptr.hpp>
+
+class GraphicsCacheItem;
 
 /** GraphicsCache is the manager of the image cache.
     It is responsible of create the GraphicsCacheItem's and maintain them.
@@ -33,8 +36,10 @@ public:
 	/// Get the instance of the class.
 	static GraphicsCache * getInstance();
 
+	typedef boost::shared_ptr<GraphicsCacheItem> shared_ptr_item;
+
 	/// Add a file to the cache.
-	GraphicsCacheItem * addFile(string const & filename);
+	shared_ptr_item addFile(string const & filename);
 
 private:
 	/// Remove a cache item if it's count has gone to zero.
@@ -49,7 +54,7 @@ private:
 	/// Holder of the single instance of the class.
 	static GraphicsCache * singleton;
 	///
-	typedef std::map<string, GraphicsCacheItem *> CacheType;
+	typedef std::map<string, shared_ptr_item> CacheType;
 	///
 	CacheType cache;
 	

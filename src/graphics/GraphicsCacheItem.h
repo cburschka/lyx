@@ -21,33 +21,24 @@
 #include XPM_H_LOCATION
 #include "LString.h"
 
+#include <boost/utility.hpp>
+#include <boost/smart_ptr.hpp>
+
 #include "sigc++/signal_system.h"
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Signal0;
 #endif
 
 
-/* (Baruch Even 2000-08-05)
- * This has a major drawback: it is only designed for X servers, no easy
- * porting to non X-server based platform is offered right now, this is done
- * in order to get a first version out of the door.
- *
- * Later versions should consider how to do this with more platform 
- * independence, this will probably involve changing the Painter class too.
- */
-
-class GraphicsCacheItem_pimpl;
 class LyXImage;
 
 /// A GraphicsCache item holder.
-class GraphicsCacheItem {
+class GraphicsCacheItem : public noncopyable {
 public:
+	/// c-tor
+	GraphicsCacheItem(string const & filename);
 	/// d-tor, frees the image structures.
 	~GraphicsCacheItem();
-	/// copy c-tor.
-	GraphicsCacheItem(GraphicsCacheItem const &);
-	/// Assignment operator.
-	GraphicsCacheItem & operator=(GraphicsCacheItem const &);
 	
 	/// Return a pixmap that can be displayed on X server.
 	LyXImage * getImage() const; 
@@ -73,31 +64,20 @@ public:
 	*/
 	void imageConverted(int retval);
 
-	/// Create another copy of the object.
-	GraphicsCacheItem * Clone() const;
-	
 private:
-	/// Private c-tor so that only GraphicsCache can create an instance.
-	GraphicsCacheItem();
-
-	/// internal copy mechanism.
-	void copy(GraphicsCacheItem const &);
-	/// internal destroy mechanism.
-	void destroy();
-
-	/// Set the filename this item will be pointing too.
-	bool setFilename(string const & filename);
-
-	///
-	friend class GraphicsCache;
-
-	///
-	GraphicsCacheItem_pimpl * pimpl;
+	bool renderXPM(string const & filename);
+	void loadXPMImage();
 
 	/** The filename we refer too.
 	    This is used when removing ourselves from the cache.
 	*/
 	string filename_;
+	/// The temporary file that we use
+	string tempfile;
+	/// The image status
+	ImageStatus imageStatus_;
+	/// The image (if it got loaded)
+	boost::scoped_ptr<LyXImage> image_;
 };
 
 #endif

@@ -20,6 +20,7 @@
 #include "insets/lyxinset.h"
 #include "insets/insetgraphicsParams.h"
 #include "graphics/GraphicsCacheItem.h"
+#include <boost/smart_ptr.hpp>
 
 #include "LaTeXFeatures.h"
 
@@ -113,7 +114,7 @@ private:
 	string const prepareFile(Buffer const * buf) const;
 
 	/// The graphics cache handle.
-	mutable GraphicsCacheItem * cacheHandle;
+	mutable boost::shared_ptr<GraphicsCacheItem> cacheHandle;
 
 	/// is the pixmap initialized?
 	mutable bool imageLoaded;
