@@ -27,6 +27,8 @@ libkde_la_OBJADD = \
 	../xforms/FormInclude.lo \
 	../xforms/form_include.lo \
 	../xforms/FormInset.lo \
+        ../xforms/FormPreamble.lo \
+        ../xforms/form_preamble.lo \
         ../xforms/FormPreferences.lo \
         ../xforms/form_preferences.lo \
 	../xforms/FormSplash.lo \

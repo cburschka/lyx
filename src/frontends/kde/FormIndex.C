@@ -38,7 +38,7 @@ void FormIndex::showIndex(InsetCommand * const inset)
 
 	inset_ = inset;
 	readonly = lv_->buffer()->isReadonly();
-	ih_ = inset_->hide.connect(slot(this,&FormIndex::hide));
+	ih_ = inset_->hideDialog.connect(slot(this,&FormIndex::hide));
 	params = inset->params();
 	
 	show();

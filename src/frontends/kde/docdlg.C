@@ -446,7 +446,7 @@ bool DocDialog::updateParams(BufferParams & params)
 			break;
 	}
 	
-	if (tmpskip != params.getDefSkip()) {
+	if (!(tmpskip == params.getDefSkip())) {
 		redo = true;
 		params.setDefSkip(tmpskip);
 	}

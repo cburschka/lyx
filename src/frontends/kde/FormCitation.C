@@ -45,7 +45,7 @@ void FormCitation::showCitation(InsetCommand * const inset)
 
 	inset_ = inset;
 	readonly = lv_->buffer()->isReadonly();
-	ih_ = inset_->hide.connect(slot(this,&FormCitation::hide));
+	ih_ = inset_->hideDialog.connect(slot(this,&FormCitation::hide));
 	params = inset->params();
 	
 	show();

@@ -53,7 +53,7 @@ void FormToc::showTOC(InsetCommand * const inset)
 		return;
 
 	inset_ = inset;
-	ih_ = inset_->hide.connect(slot(this,&FormToc::hide));
+	ih_ = inset_->hideDialog.connect(slot(this,&FormToc::hide));
 	params = inset->params();
 	
 	show();

@@ -38,7 +38,7 @@ void FormUrl::showUrl(InsetCommand * const inset)
 
 	inset_ = inset;
 	readonly = lv_->buffer()->isReadonly();
-	ih_ = inset_->hide.connect(slot(this,&FormUrl::hide));
+	ih_ = inset_->hideDialog.connect(slot(this,&FormUrl::hide));
 	params = inset->params();
 	
 	show();
