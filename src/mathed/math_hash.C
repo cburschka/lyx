@@ -43,7 +43,6 @@ latexkeys_a wordlist_array[] =
 	{"arctan",  LM_TK_FUNC, 0},
 	{"arg",  LM_TK_FUNC, 0},
 	{"atop",  LM_TK_ATOP, 0},
-	{"backslash",  LM_TK_SPECIAL, '\\'},
 	{"bar",  LM_TK_DECORATION, 0},
 	{"begin",  LM_TK_BEGIN, 0},
 	{"binom",  LM_TK_BINOM, 0},
