@@ -3,6 +3,8 @@
 	* insettabular.C (insetUnlock): 
 	(insetButtonPress): call an update before setting the_locking_inset = 0
 	as otherwise we don't repaint!
+	(update): reset the cursor position when we changed dimensions as
+	otherwise our cursor may be on the wrong spot.
 
 2002-04-18  Juergen Vigna  <jug@sad.it>
 

@@ -530,8 +530,10 @@ void InsetTabular::update(BufferView * bv, LyXFont const & font, bool reinit)
 	case INIT:
 	case FULL:
 	case CELL:
-		if (calculate_dimensions_of_cells(bv, font, false))
+		if (calculate_dimensions_of_cells(bv, font, false)) {
 			need_update = INIT;
+			resetPos(bv);
+		}
 		break;
 	case SELECTION:
 		need_update = FULL;

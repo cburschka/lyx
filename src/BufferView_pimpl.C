@@ -326,10 +326,12 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		selection = bv_->text->selection.set();
 		mark_set = bv_->text->selection.mark();
 		the_locking_inset = bv_->theLockingInset();
+		buffer_->resizeInsets(bv_);
+		// I don't think the delete and new are necessary here we just could
+		// call only init! (Jug 20020419)
 		delete bv_->text;
 		bv_->text = new LyXText(bv_);
 		bv_->text->init(bv_);
-		buffer_->resizeInsets(bv_);
 	} else {
 		// See if we have a text in TextCache that fits
 		// the new buffer_ with the correct width.

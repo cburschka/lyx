@@ -1,5 +1,8 @@
 2002-04-19  Juergen Vigna  <jug@sad.it>
 
+	* BufferView_pimpl.C (resizeCurrentBuffer): resize the insets before
+	reinitializing the buffer otherwise row-dimensions may be wrong.
+
 	* text2.C (cursorDown): don't enter the inset if we came from a row
 	above and are one row over the inset.
 
