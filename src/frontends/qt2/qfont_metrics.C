@@ -45,18 +45,15 @@ int maxDescent(LyXFont const & f)
 
 int ascent(char c, LyXFont const & f)
 {
-	// FIXME - must do ascent for char not maxascent
-	//QRect r = metrics(f).boundingRect(c);
-	//lyxerr << r.x() << "," << r.y() <<
-	//	" : " << r.width() << "," << r.height() << endl;
-	return metrics(f).ascent();
+	QRect r = metrics(f).boundingRect(c);
+	return abs(r.top());
 }
 
 
-int descent(char, LyXFont const & f)
+int descent(char c, LyXFont const & f)
 {
-	// FIXME
-	return metrics(f).descent();
+	QRect r = metrics(f).boundingRect(c);
+	return abs(r.bottom());
 }
 
 
