@@ -1,5 +1,10 @@
 2002-01-07  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FormDocument.C:
+	* forms/form_document.fd: change the labels and variable names of
+	left_margin, right_margin to inner_margin, outer_margin, in line
+	with bugzilla bug #157.
+
 	* FormFiledialog.C (Reread): used locally stored modtime variable
 	rather than make repeated calls to fileInfo.getModificationTime().
 

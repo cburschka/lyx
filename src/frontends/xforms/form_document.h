@@ -54,10 +54,10 @@ struct FD_form_doc_paper {
 	FL_OBJECT *choice_top_margin_units;
 	FL_OBJECT *input_bottom_margin;
 	FL_OBJECT *choice_bottom_margin_units;
-	FL_OBJECT *input_left_margin;
-	FL_OBJECT *choice_left_margin_units;
-	FL_OBJECT *input_right_margin;
-	FL_OBJECT *choice_right_margin_units;
+	FL_OBJECT *input_inner_margin;
+	FL_OBJECT *choice_inner_margin_units;
+	FL_OBJECT *input_outer_margin;
+	FL_OBJECT *choice_outer_margin_units;
 	FL_OBJECT *input_head_height;
 	FL_OBJECT *choice_head_height_units;
 	FL_OBJECT *input_head_sep;

@@ -124,7 +124,7 @@ FD_form_doc_paper * FormDocument::build_doc_paper()
 
   fdui->group_radio_orientation = fl_bgn_group();
   {
-    char const * const dummy = N_("Portrait|#o");
+    char const * const dummy = N_("Portrait|#r");
     fdui->radio_portrait = obj = fl_add_round3dbutton(FL_RADIO_BUTTON, 255, 40, 120, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
@@ -180,27 +180,27 @@ FD_form_doc_paper * FormDocument::build_doc_paper()
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("Left:|#e");
-    fdui->input_left_margin = obj = fl_add_input(FL_NORMAL_INPUT, 80, 260, 55, 30, idex(_(dummy)));
+    char const * const dummy = N_("Inner:|#I");
+    fdui->input_inner_margin = obj = fl_add_input(FL_NORMAL_INPUT, 80, 260, 55, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->choice_left_margin_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 140, 260, 55, 30, "");
+  fdui->choice_inner_margin_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 140, 260, 55, 30, "");
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("Right:|#R");
-    fdui->input_right_margin = obj = fl_add_input(FL_NORMAL_INPUT, 80, 295, 55, 30, idex(_(dummy)));
+    char const * const dummy = N_("Outer:|#u");
+    fdui->input_outer_margin = obj = fl_add_input(FL_NORMAL_INPUT, 80, 295, 55, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, INPUT);
-  fdui->choice_right_margin_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 140, 295, 55, 30, "");
+  fdui->choice_outer_margin_units = obj = fl_add_choice(FL_NORMAL_CHOICE, 140, 295, 55, 30, "");
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
-    char const * const dummy = N_("Headheight:|#i");
+    char const * const dummy = N_("Headheight:|#H");
     fdui->input_head_height = obj = fl_add_input(FL_NORMAL_INPUT, 300, 225, 55, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }

@@ -109,15 +109,15 @@ void FormDocument::build()
 			  "| Very small Margins "
 			  "| Very wide Margins "));
 
-	fl_set_input_return(paper_->input_custom_width, FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_custom_width,  FL_RETURN_CHANGED);
 	fl_set_input_return(paper_->input_custom_height, FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_top_margin, FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_top_margin,    FL_RETURN_CHANGED);
 	fl_set_input_return(paper_->input_bottom_margin, FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_left_margin, FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_right_margin, FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_head_height, FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_head_sep, FL_RETURN_CHANGED);
-	fl_set_input_return(paper_->input_foot_skip, FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_inner_margin,  FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_outer_margin,  FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_head_height,   FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_head_sep,      FL_RETURN_CHANGED);
+	fl_set_input_return(paper_->input_foot_skip,     FL_RETURN_CHANGED);
 
 	// Set input filters on width and height to make them accept only
 	// unsigned numbers.
@@ -129,9 +129,9 @@ void FormDocument::build()
 			    fl_unsigned_float_filter);
 	fl_set_input_filter(paper_->input_bottom_margin,
 			    fl_unsigned_float_filter);
-	fl_set_input_filter(paper_->input_left_margin,
+	fl_set_input_filter(paper_->input_inner_margin,
 			    fl_unsigned_float_filter);
-	fl_set_input_filter(paper_->input_right_margin,
+	fl_set_input_filter(paper_->input_outer_margin,
 			    fl_unsigned_float_filter);
 	fl_set_input_filter(paper_->input_head_height,
 			    fl_unsigned_float_filter);
@@ -154,8 +154,8 @@ void FormDocument::build()
 	fl_addto_choice(paper_->choice_custom_height_units, units.c_str());
 	fl_addto_choice(paper_->choice_top_margin_units,    units.c_str());
 	fl_addto_choice(paper_->choice_bottom_margin_units, units.c_str());
-	fl_addto_choice(paper_->choice_left_margin_units,   units.c_str());
-	fl_addto_choice(paper_->choice_right_margin_units,  units.c_str());
+	fl_addto_choice(paper_->choice_inner_margin_units,  units.c_str());
+	fl_addto_choice(paper_->choice_outer_margin_units,  units.c_str());
 	fl_addto_choice(paper_->choice_head_height_units,   units.c_str());
 	fl_addto_choice(paper_->choice_head_sep_units,      units.c_str());
 	fl_addto_choice(paper_->choice_foot_skip_units,     units.c_str());
@@ -170,8 +170,8 @@ void FormDocument::build()
 	bc().addReadOnly (paper_->input_custom_height);
 	bc().addReadOnly (paper_->input_top_margin);
 	bc().addReadOnly (paper_->input_bottom_margin);
-	bc().addReadOnly (paper_->input_left_margin);
-	bc().addReadOnly (paper_->input_right_margin);
+	bc().addReadOnly (paper_->input_inner_margin);
+	bc().addReadOnly (paper_->input_outer_margin);
 	bc().addReadOnly (paper_->input_head_height);
 	bc().addReadOnly (paper_->input_head_sep);
 	bc().addReadOnly (paper_->input_foot_skip);
@@ -504,15 +504,15 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 
 		setEnabled(paper_->input_top_margin,    use_geom);
 		setEnabled(paper_->input_bottom_margin, use_geom);
-		setEnabled(paper_->input_left_margin,   use_geom);
-		setEnabled(paper_->input_right_margin,  use_geom);
+		setEnabled(paper_->input_inner_margin,  use_geom);
+		setEnabled(paper_->input_outer_margin,  use_geom);
 		setEnabled(paper_->input_head_height,   use_geom);
 		setEnabled(paper_->input_head_sep,      use_geom);
 		setEnabled(paper_->input_foot_skip,     use_geom);
 		setEnabled(paper_->choice_top_margin_units,    use_geom);
 		setEnabled(paper_->choice_bottom_margin_units, use_geom);
-		setEnabled(paper_->choice_left_margin_units,   use_geom);
-		setEnabled(paper_->choice_right_margin_units,  use_geom);
+		setEnabled(paper_->choice_inner_margin_units,  use_geom);
+		setEnabled(paper_->choice_outer_margin_units,  use_geom);
 		setEnabled(paper_->choice_head_height_units,   use_geom);
 		setEnabled(paper_->choice_head_sep_units,      use_geom);
 		setEnabled(paper_->choice_foot_skip_units,     use_geom);
@@ -543,11 +543,11 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		if (strip(fl_get_input(paper_->input_bottom_margin)).empty())
 			fl_set_choice(paper_->choice_bottom_margin_units,
 				      default_unit);
-		if (strip(fl_get_input(paper_->input_left_margin)).empty())
-			fl_set_choice(paper_->choice_left_margin_units,
+		if (strip(fl_get_input(paper_->input_inner_margin)).empty())
+			fl_set_choice(paper_->choice_inner_margin_units,
 				      default_unit);
-		if (strip(fl_get_input(paper_->input_right_margin)).empty())
-			fl_set_choice(paper_->choice_right_margin_units,
+		if (strip(fl_get_input(paper_->input_outer_margin)).empty())
+			fl_set_choice(paper_->choice_outer_margin_units,
 				      default_unit);
 		if (strip(fl_get_input(paper_->input_head_height)).empty())
 			fl_set_choice(paper_->choice_head_height_units,
@@ -579,15 +579,15 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 
 			setEnabled(paper_->input_top_margin,    false);
 			setEnabled(paper_->input_bottom_margin, false);
-			setEnabled(paper_->input_left_margin,   false);
-			setEnabled(paper_->input_right_margin,  false);
+			setEnabled(paper_->input_inner_margin,  false);
+			setEnabled(paper_->input_outer_margin,  false);
 			setEnabled(paper_->input_head_height,   false);
 			setEnabled(paper_->input_head_sep,      false);
 			setEnabled(paper_->input_foot_skip,     false);
 			setEnabled(paper_->choice_top_margin_units,    false);
 			setEnabled(paper_->choice_bottom_margin_units, false);
-			setEnabled(paper_->choice_left_margin_units,   false);
-			setEnabled(paper_->choice_right_margin_units,  false);
+			setEnabled(paper_->choice_inner_margin_units,  false);
+			setEnabled(paper_->choice_outer_margin_units,  false);
 			setEnabled(paper_->choice_head_height_units,   false);
 			setEnabled(paper_->choice_head_sep_units,      false);
 			setEnabled(paper_->choice_foot_skip_units,     false);
@@ -607,15 +607,15 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		bool const use_geom = fl_get_button(paper_->check_use_geometry);
 		setEnabled(paper_->input_top_margin,    use_geom);
 		setEnabled(paper_->input_bottom_margin, use_geom);
-		setEnabled(paper_->input_left_margin,   use_geom);
-		setEnabled(paper_->input_right_margin,  use_geom);
+		setEnabled(paper_->input_inner_margin,  use_geom);
+		setEnabled(paper_->input_outer_margin,  use_geom);
 		setEnabled(paper_->input_head_height,   use_geom);
 		setEnabled(paper_->input_head_sep,      use_geom);
 		setEnabled(paper_->input_foot_skip,     use_geom);
 		setEnabled(paper_->choice_top_margin_units,    use_geom);
 		setEnabled(paper_->choice_bottom_margin_units, use_geom);
-		setEnabled(paper_->choice_left_margin_units,   use_geom);
-		setEnabled(paper_->choice_right_margin_units,  use_geom);
+		setEnabled(paper_->choice_inner_margin_units,  use_geom);
+		setEnabled(paper_->choice_outer_margin_units,  use_geom);
 		setEnabled(paper_->choice_head_height_units,   use_geom);
 		setEnabled(paper_->choice_head_sep_units,      use_geom);
 		setEnabled(paper_->choice_foot_skip_units,     use_geom);
@@ -804,16 +804,16 @@ void FormDocument::paper_apply(BufferParams & params)
 				     paper_->choice_custom_height_units);
 
 	params.leftmargin =
-		getLengthFromWidgets(paper_->input_left_margin,
-				     paper_->choice_left_margin_units);
+		getLengthFromWidgets(paper_->input_inner_margin,
+				     paper_->choice_inner_margin_units);
 
 	params.topmargin =
 		getLengthFromWidgets(paper_->input_top_margin,
 				     paper_->choice_top_margin_units);
 
 	params.rightmargin =
-		getLengthFromWidgets(paper_->input_right_margin,
-				     paper_->choice_right_margin_units);
+		getLengthFromWidgets(paper_->input_outer_margin,
+				     paper_->choice_outer_margin_units);
 
 	params.bottommargin =
 		getLengthFromWidgets(paper_->input_bottom_margin,
@@ -1140,11 +1140,11 @@ void FormDocument::paper_update(BufferParams const & params)
 	setEnabled(paper_->input_custom_height, useCustom);
 	setEnabled(paper_->choice_custom_height_units, useCustom);
 
-	updateWidgetsFromLengthString(paper_->input_left_margin,
-				      paper_->choice_left_margin_units,
+	updateWidgetsFromLengthString(paper_->input_inner_margin,
+				      paper_->choice_inner_margin_units,
 				      params.leftmargin, default_unit);
-	setEnabled(paper_->input_left_margin, useGeom);
-	setEnabled(paper_->choice_left_margin_units, useGeom);
+	setEnabled(paper_->input_inner_margin, useGeom);
+	setEnabled(paper_->choice_inner_margin_units, useGeom);
 
 	updateWidgetsFromLengthString(paper_->input_top_margin,
 				      paper_->choice_top_margin_units,
@@ -1152,11 +1152,11 @@ void FormDocument::paper_update(BufferParams const & params)
 	setEnabled(paper_->input_top_margin, useGeom);
 	setEnabled(paper_->choice_top_margin_units, useGeom);
 
-	updateWidgetsFromLengthString(paper_->input_right_margin,
-				      paper_->choice_right_margin_units,
+	updateWidgetsFromLengthString(paper_->input_outer_margin,
+				      paper_->choice_outer_margin_units,
 				      params.rightmargin, default_unit);
-	setEnabled(paper_->input_right_margin, useGeom);
-	setEnabled(paper_->choice_right_margin_units, useGeom);
+	setEnabled(paper_->input_outer_margin, useGeom);
+	setEnabled(paper_->choice_outer_margin_units, useGeom);
 
 	updateWidgetsFromLengthString(paper_->input_bottom_margin,
 				      paper_->choice_bottom_margin_units,

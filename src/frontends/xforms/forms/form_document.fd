@@ -353,7 +353,7 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Portrait|#o
+label: Portrait|#r
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -533,11 +533,11 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Left:|#e
+label: Inner:|#I
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: input_left_margin
+name: input_inner_margin
 callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
 
@@ -555,7 +555,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_left_margin_units
+name: choice_inner_margin_units
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -569,11 +569,11 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Right:|#R
+label: Outer:|#u
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: input_right_margin
+name: input_outer_margin
 callback: C_FormBaseDeprecatedInputCB
 argument: INPUT
 
@@ -591,7 +591,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_right_margin_units
+name: choice_outer_margin_units
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
@@ -605,7 +605,7 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Headheight:|#i
+label: Headheight:|#H
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
