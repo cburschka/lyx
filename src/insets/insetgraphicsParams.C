@@ -276,9 +276,23 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 		subcaptionText = lex.getString();
 	} else if (token == "noUnzip") {
 		noUnzip = true;
-	} else if (token == "size_kind") {
+	} else if (token == "size_kind")  {
 		lex.next();
 		size_kind = getSizeKind(lex.getString());
+	// compatibility-stuff 1.20->1.3.0
+	} else if (token == "size_type") {
+		lex.next();
+		switch (lex.getInteger()) {
+		case 0:
+			size_kind = DEFAULT_SIZE;
+			break;
+		case 1:
+			size_kind = WH;
+			break;
+		case 2:
+			size_kind = SCALE;
+			break;
+		}
 	} else if (token == "width") {
 		lex.next();
 		width = LyXLength(lex.getString());

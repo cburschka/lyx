@@ -1,5 +1,9 @@
 2002-07-22  Herbert Voss  <voss@lyx.org>
 
+	* insetgraphicsParams.[Ch]: support size_type for old docs
+
+2002-07-22  Herbert Voss  <voss@lyx.org>
+
 	* insetgraphics.C:
 	* insetgraphicsParams.[Ch]: change size_type to size_kind and
 	other small changes
