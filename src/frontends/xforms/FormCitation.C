@@ -452,8 +452,8 @@ void FormCitation::update()
 	bool const natbib = controller().usingNatbib();
 	setEnabled(dialog_->check_full_author_list, natbib);
 	setEnabled(dialog_->check_force_uppercase, natbib);
-	setEnabled(dialog_->choice_style, natbib);
-	setEnabled(dialog_->input_before, natbib);
+	setEnabled(dialog_->choice_style, natbib || controller().usingJurabib());
+	setEnabled(dialog_->input_before, natbib || controller().usingJurabib());
 
 	// No keys have been selected yet, so...
 	fl_clear_browser(dialog_->browser_info);

@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>450</width>
+            <width>426</width>
             <height>376</height>
         </rect>
     </property>
@@ -21,7 +21,7 @@
         <name>caption</name>
         <string>Form1</string>
     </property>
-    <vbox>
+    <grid>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -30,28 +30,77 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget>
-            <class>QLayoutWidget</class>
+        <widget row="0"  column="0" >
+            <class>QButtonGroup</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout4</cstring>
+                <cstring>CiteStyleBG</cstring>
             </property>
-            <hbox>
+            <property stdset="1">
+                <name>title</name>
+                <string>Cite Style</string>
+            </property>
+            <grid>
                 <property stdset="1">
                     <name>margin</name>
-                    <number>0</number>
+                    <number>11</number>
                 </property>
                 <property stdset="1">
                     <name>spacing</name>
                     <number>6</number>
                 </property>
-                <widget>
+                <widget row="2"  column="0" >
+                    <class>QRadioButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>citeJurabibRB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Jurabib</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Use the jurabib styles for law and humanities</string>
+                    </property>
+                </widget>
+                <widget row="1"  column="0" >
+                    <class>QRadioButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>citeNatbibRB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Natbib</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Use the natbib styles for natural sciences and arts</string>
+                    </property>
+                </widget>
+                <widget row="0"  column="0" >
+                    <class>QRadioButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>citeDefaultRB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Default (numerical)</string>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Use BibTeX's default numerical styles</string>
+                    </property>
+                </widget>
+                <widget row="1"  column="1" >
                     <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>Layout3</cstring>
+                        <cstring>Layout2</cstring>
                     </property>
-                    <vbox>
+                    <hbox>
                         <property stdset="1">
                             <name>margin</name>
                             <number>0</number>
@@ -61,100 +110,47 @@
                             <number>6</number>
                         </property>
                         <widget>
-                            <class>QCheckBox</class>
+                            <class>QLabel</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>natbibCB</cstring>
+                                <cstring>citationStyleL</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
                             </property>
                             <property stdset="1">
                                 <name>text</name>
-                                <string>Use &amp;NatBib</string>
+                                <string>Natbib &amp;style:</string>
                             </property>
                             <property>
-                                <name>toolTip</name>
-                                <string>Use the LaTeX natbib package</string>
+                                <name>buddy</name>
+                                <cstring>citeStyleCO</cstring>
                             </property>
                         </widget>
                         <widget>
-                            <class>QLayoutWidget</class>
+                            <class>QComboBox</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>Layout2</cstring>
+                                <cstring>citeStyleCO</cstring>
                             </property>
-                            <hbox>
-                                <property stdset="1">
-                                    <name>margin</name>
-                                    <number>0</number>
-                                </property>
-                                <property stdset="1">
-                                    <name>spacing</name>
-                                    <number>6</number>
-                                </property>
-                                <widget>
-                                    <class>QLabel</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>citationStyleL</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>enabled</name>
-                                        <bool>false</bool>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string>Cite &amp;style:</string>
-                                    </property>
-                                    <property>
-                                        <name>buddy</name>
-                                        <cstring>citeStyleCO</cstring>
-                                    </property>
-                                </widget>
-                                <widget>
-                                    <class>QComboBox</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>citeStyleCO</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>enabled</name>
-                                        <bool>false</bool>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>sizePolicy</name>
-                                        <sizepolicy>
-                                            <hsizetype>5</hsizetype>
-                                            <vsizetype>0</vsizetype>
-                                        </sizepolicy>
-                                    </property>
-                                </widget>
-                            </hbox>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                            <property stdset="1">
+                                <name>sizePolicy</name>
+                                <sizepolicy>
+                                    <hsizetype>5</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                </sizepolicy>
+                            </property>
                         </widget>
-                    </vbox>
+                    </hbox>
                 </widget>
-                <spacer>
-                    <property>
-                        <name>name</name>
-                        <cstring>Spacer1</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>orientation</name>
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>sizeType</name>
-                        <enum>Minimum</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-            </hbox>
+            </grid>
         </widget>
-        <spacer>
+        <spacer row="1"  column="0" >
             <property>
                 <name>name</name>
                 <cstring>Spacer2</cstring>
@@ -175,17 +171,17 @@
                 </size>
             </property>
         </spacer>
-    </vbox>
+    </grid>
 </widget>
 <connections>
     <connection>
-        <sender>natbibCB</sender>
+        <sender>citeNatbibRB</sender>
         <signal>toggled(bool)</signal>
         <receiver>citationStyleL</receiver>
         <slot>setEnabled(bool)</slot>
     </connection>
     <connection>
-        <sender>natbibCB</sender>
+        <sender>citeNatbibRB</sender>
         <signal>toggled(bool)</signal>
         <receiver>citeStyleCO</receiver>
         <slot>setEnabled(bool)</slot>

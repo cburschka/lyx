@@ -42,7 +42,7 @@ namespace {
 string const getNatbibLabel(Buffer const & buffer,
 			    string const & citeType, string const & keyList,
 			    string const & before, string const & after,
-			    bool numerical)
+			    bool numerical, bool jura)
 {
 	// Only start the process off after the buffer is loaded from file.
 	if (!buffer.fully_loaded())
@@ -76,6 +76,8 @@ string const getNatbibLabel(Buffer const & buffer,
 	// CITEAUTHOR:	author
 	// CITEYEAR:	year
 	// CITEYEARPAR:	(year)
+	// jurabib supports these plus
+	// CITE:	author/<before field>
 
 	// We don't currently use the full or forceUCase fields.
 	// bool const forceUCase = citeType[0] == 'C';
@@ -98,6 +100,11 @@ string const getNatbibLabel(Buffer const & buffer,
 		    cite_type == "citealp" ||
 		    cite_type == "citeyearpar")
 			before_str = before + ' ';
+		// In CITE (jurabib), the "before" string is used to attach
+		// the annotator (of legal texts) to the author(s) of the 
+		// first reference. 
+		else if (cite_type == "cite")
+			before_str = '/' + before;
 	}
 
 	string after_str;
@@ -129,11 +136,23 @@ string const getNatbibLabel(Buffer const & buffer,
 		if (author.empty() || year.empty())
 			return string();
 
+		// authors1/<before>;  ... ;
+		//  authors_last, <after>
+		if (cite_type == "cite" && jura) {
+			if (it == keys.begin())
+				label += author + before_str + sep_str;
+			else
+				label += author + sep_str;
+		
 		// (authors1 (<before> year);  ... ;
 		//  authors_last (<before> year, <after>)
-		if (cite_type == "citet") {
+		} else if (cite_type == "citet") {
 			string const tmp = numerical ? '#' + *it : year;
-			label += author + op_str + before_str + tmp +
+			if (!jura)
+				label += author + op_str + before_str + tmp +
+				cp + sep_str;
+			else
+				label += before_str + author + op_str + tmp +
 				cp + sep_str;
 
 		// author, year; author, year; ...
@@ -149,7 +168,10 @@ string const getNatbibLabel(Buffer const & buffer,
 		//  authors_last <before> year, <after>)
 		} else if (cite_type == "citealt") {
 			string const tmp = numerical ? '#' + *it : year;
-			label += author + ' ' + before_str + tmp + sep_str;
+			if (!jura)
+				label += author + ' ' + before_str + tmp + sep_str;
+			else
+				label += before_str + author + ' ' + tmp + sep_str;
 
 		// author; author; ...
 		} else if (cite_type == "citeauthor") {
@@ -225,9 +247,9 @@ string const InsetCitation::generateLabel(Buffer const & buffer) const
 	string const after  = getOptions();
 
 	string label;
-	if (buffer.params().use_natbib) {
+	if (buffer.params().use_natbib || buffer.params().use_jurabib) {
 		string cmd = getCmdName();
-		if (cmd == "cite") {
+		if (buffer.params().use_natbib && cmd == "cite") {
 			// We may be "upgrading" from an older LyX version.
 			// If, however, we use "cite" because the necessary
 			// author/year info is not present in the biblio
@@ -240,7 +262,8 @@ string const InsetCitation::generateLabel(Buffer const & buffer) const
 		}
 		label = getNatbibLabel(buffer, cmd, getContents(),
 				       before, after,
-				       buffer.params().use_numerical_citations);
+				       buffer.params().use_numerical_citations,
+				       buffer.params().use_jurabib);
 	}
 
 	// Fallback to fail-safe
@@ -263,6 +286,9 @@ InsetCitation::Cache::Style InsetCitation::getStyle(Buffer const & buffer) const
 			style = Cache::NATBIB_AY;
 		}
 	}
+	
+	if (buffer.params().use_jurabib)
+		style = Cache::JURABIB;
 
 	return style;
 }
@@ -317,12 +343,23 @@ int InsetCitation::latex(Buffer const & buffer, ostream & os,
 	os << "\\";
 	if (buffer.params().use_natbib)
 		os << getCmdName();
-	else
+	else if (buffer.params().use_jurabib) {
+		// jurabib does not (yet) support "force upper case" 
+		// and "full author name". Fallback.
+		string cmd = getCmdName();
+		if (cmd[0] == 'C')
+			cmd[0] = 'c';
+		size_t n = cmd.size() - 1;
+		if (cmd[n] == '*')
+			cmd = cmd.substr(0,n);
+		os << cmd;
+	} else
 		os << "cite";
 
 	string const before = getSecOptions();
 	string const after  = getOptions();
-	if (!before.empty() && buffer.params().use_natbib)
+	if (!before.empty() 
+		&& (buffer.params().use_natbib || buffer.params().use_jurabib))
 		os << '[' << before << "][" << after << ']';
 	else if (!after.empty())
 		os << '[' << after << ']';
@@ -349,4 +386,6 @@ void InsetCitation::validate(LaTeXFeatures & features) const
 {
 	if (features.bufferParams().use_natbib)
 		features.require("natbib");
+	else if (features.bufferParams().use_jurabib)
+		features.require("jurabib");
 }

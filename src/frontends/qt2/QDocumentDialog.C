@@ -85,8 +85,10 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	// preamble
 	connect(preambleModule->preambleMLE, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 	// biblio
-	connect(biblioModule->natbibCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(biblioModule->citeDefaultRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(biblioModule->citeNatbibRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(biblioModule->citeJurabibRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 	// language & quote
 	connect(langModule->languageCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(langModule->defaultencodingCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));

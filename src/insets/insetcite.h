@@ -48,7 +48,9 @@ private:
 			///
 			NATBIB_AY,
 			///
-			NATBIB_NUM
+			NATBIB_NUM,
+			///
+			JURABIB
 		};
 		///
 		Cache() : style(BASIC) {}

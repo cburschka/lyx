@@ -36,8 +36,10 @@ bool ControlCitation::initialiseParams(string const & data)
 	vector<pair<string, string> > blist;
 	kernel().buffer().fillWithBibKeys(blist);
 
+	bool use_styles = (usingNatbib() || usingJurabib());
+	
 	typedef std::map<string, string>::value_type InfoMapValue;
-
+	
 	for (vector<pair<string,string> >::size_type i = 0;
 	     i < blist.size(); ++i) {
 		bibkeysInfo_.insert(InfoMapValue(blist[i].first,
@@ -45,11 +47,12 @@ bool ControlCitation::initialiseParams(string const & data)
 	}
 
 	if (citeStyles_.empty())
-		citeStyles_ = biblio::getCiteStyles(usingNatbib());
+		citeStyles_ = biblio::getCiteStyles(usingNatbib(), usingJurabib());
 	else {
-		if ((usingNatbib() && citeStyles_.size() == 1) ||
-		    (!usingNatbib() && citeStyles_.size() != 1))
-			citeStyles_ = biblio::getCiteStyles(usingNatbib());
+		if ((use_styles && citeStyles_.size() == 1) ||
+		    (!use_styles && citeStyles_.size() != 1))
+			citeStyles_ = biblio::getCiteStyles(usingNatbib(), 
+				usingJurabib());
 	}
 
 	return true;
@@ -76,12 +79,18 @@ bool ControlCitation::usingNatbib() const
 }
 
 
+bool ControlCitation::usingJurabib() const
+{
+    return kernel().buffer().params().use_jurabib;
+}
+
+
 vector<string> const ControlCitation::getCiteStrings(string const & key) const
 {
 	vector<string> styles;
 
 	vector<biblio::CiteStyle> const cs =
-		biblio::getCiteStyles(usingNatbib());
+		biblio::getCiteStyles(usingNatbib(), usingJurabib());
 
 	if (kernel().buffer().params().use_numerical_citations)
 		styles = biblio::getNumericalStrings(key, bibkeysInfo_, cs);

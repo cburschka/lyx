@@ -115,6 +115,7 @@ BufferParams::BufferParams()
 	use_amsmath = AMS_AUTO;
 	use_natbib = false;
 	use_numerical_citations = false;
+	use_jurabib = false;
 	tracking_changes = false;
 	secnumdepth = 3;
 	tocdepth = 3;
@@ -321,6 +322,9 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 	} else if (token == "\\use_numerical_citations") {
 		lex.nextToken();
 		use_numerical_citations = lex.getInteger();
+	} else if (token == "\\use_jurabib") {
+		lex.nextToken();
+		use_jurabib = lex.getInteger();
 	} else if (token == "\\tracking_changes") {
 		lex.nextToken();
 		tracking_changes = lex.getInteger();
@@ -537,6 +541,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_amsmath " << use_amsmath
 	   << "\n\\use_natbib " << use_natbib
 	   << "\n\\use_numerical_citations " << use_numerical_citations
+	   << "\n\\use_jurabib " << use_jurabib
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << '\n';
 
@@ -919,6 +924,14 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
+	// If we use jurabib, we have to call babel here.
+	if (use_babel && features.isRequired("jurabib")) {
+		os << babelCall(language_options.str())
+		   << '\n'
+		   << features.getBabelOptions();
+		texrow.newline();
+	}
+	
 	// Now insert the LyX specific LaTeX commands...
 
 	// The optional packages;
@@ -987,15 +1000,10 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		lyxpreamble += bullets_def + "}\n\n";
 
 	// We try to load babel late, in case it interferes
-	// with other packages.
-	if (use_babel) {
-		string tmp = lyxrc.language_package;
-		if (!lyxrc.language_global_options
-		    && tmp == "\\usepackage{babel}")
-			tmp = string("\\usepackage[") +
-				language_options.str() +
-				"]{babel}";
-		lyxpreamble += tmp + "\n";
+	// with other packages. 
+	// Jurabib has to be called after babel, though.
+	if (use_babel && !features.isRequired("jurabib")) {
+		lyxpreamble += babelCall(language_options.str()) + '\n';
 		lyxpreamble += features.getBabelOptions();
 	}
 
@@ -1186,4 +1194,13 @@ string const BufferParams::dvips_options() const
 	    papersize2 != VM_PAPER_CUSTOM)
 		result += ' ' + lyxrc.print_landscape_flag;
 	return result;
+}
+
+
+string const BufferParams::babelCall(string const & lang_opts) const
+{
+	string tmp = lyxrc.language_package;
+	if (!lyxrc.language_global_options && tmp == "\\usepackage{babel}")
+		tmp = string("\\usepackage[") + lang_opts + "]{babel}";
+	return tmp;
 }

@@ -38,10 +38,12 @@ public:
 
 	///
 	bool usingNatbib() const;
+	///
+	bool usingJurabib() const;
 	/// Possible citations based on this key
 	std::vector<std::string> const getCiteStrings(std::string const & key) const;
 
-	/// available CiteStyle-s (depends on availability of Natbib
+	/// available CiteStyle-s (depends on availability of Natbib/Jurabib)
 	static std::vector<biblio::CiteStyle> const & getCiteStyles() {
 		return citeStyles_;
 	}

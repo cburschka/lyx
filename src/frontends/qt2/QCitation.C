@@ -125,9 +125,10 @@ void QCitation::fillStyles()
 
 	vector<string> const & sty = controller().getCiteStrings(key);
 
-	bool const natbib = controller().usingNatbib();
-	dialog_->citationStyleCO->setEnabled(!sty.empty() && natbib);
-	dialog_->citationStyleLA->setEnabled(!sty.empty() && natbib);
+	bool const use_styles = (controller().usingNatbib() || 
+		controller().usingJurabib());
+	dialog_->citationStyleCO->setEnabled(!sty.empty() && use_styles);
+	dialog_->citationStyleLA->setEnabled(!sty.empty() && use_styles);
 
 	for (vector<string>::const_iterator it = sty.begin();
 		it != sty.end(); ++it) {
@@ -145,7 +146,8 @@ void QCitation::updateStyle()
 
 	dialog_->fulllistCB->setEnabled(natbib);
 	dialog_->forceuppercaseCB->setEnabled(natbib);
-	dialog_->textBeforeED->setEnabled(natbib);
+	dialog_->textBeforeED->setEnabled(natbib || 
+		controller().usingJurabib());
 
 	string const & command = controller().params().getCmdName();
 

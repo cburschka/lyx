@@ -191,7 +191,8 @@ char const * simplefeatures[] = {
 	"wasy",
 	"dvipost",
 	"fancybox",
-	"calc"
+	"calc",
+	"jurabib"
 };
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);

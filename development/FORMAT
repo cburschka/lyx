@@ -4,11 +4,18 @@ LyX file-format changes
 2004-02-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* format incremented to 230.
+	
 	* Support for a second optional argument in insetcommand.
 	currently, citation uses this to support natbibs second
 	optional argument \cite[before][after]{key}.
 	I think there's nothing to convert upwards. Downwards, the 
-	commands need to be converted to ERT I suppose. 
+	commands with 2 optional args need to be converted to ERT.
+	
+	* Support for jurabib (param \use_jurabib [1|0], default is 0).
+	When converting downwards, \usepackage{jurabib} has to be added
+	to the preamble and, if babel is used, \usepackage{babel} before
+	(jurabib fails if babel is called afterwards). If the natbib commands
+	are used together with jurabib, they have to be converted to ERT too.
 
 2003-12-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 

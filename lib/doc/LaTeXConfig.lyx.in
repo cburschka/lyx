@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 229
+\lyxformat 230
 \textclass article
 \language english
 \inputencoding default
@@ -13,6 +13,7 @@
 \use_amsmath 0
 \use_natbib 0
 \use_numerical_citations 0
+\use_jurabib 0
 \paperorientation portrait
 \secnumdepth 2
 \tocdepth 3
@@ -2483,6 +2484,50 @@ Layout->Paragraph->ExtraOpt
 
 \begin_layout Subsection
 
+jurabib
+\end_layout
+
+\begin_layout Description
+
+Found: @chk_jurabib@
+\end_layout
+
+\begin_layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/contrib/jurabib/
+\end_layout
+
+\begin_layout Description
+
+Notes: The package 
+\family typewriter 
+jura
+\family sans 
+bib
+\family default 
+ 
+\color None
+(
+\begin_inset LatexCommand \url{http://www.jurabib.org}
+
+\end_inset 
+
+)
+\color default
+ can be used as an alternative to 
+\family sans 
+natbib
+\family default 
+, to get flexible bibliographic styles with LyX.
+ It supports cite styles which are common in human sciences and law studies,
+ footcites, ibidems, and more.
+ You'll need to have jurabib version 0.6 at least.
+\end_layout
+
+\begin_layout Subsection
+
 natbib
 \end_layout
 
@@ -2505,7 +2550,15 @@ Notes: The package
 natbib
 \family default 
  is needed by LyX to produce a flexible interface to most of the available
- bibliographic styles.
+ bibliographic styles
+\family typewriter 
+ 
+\family default 
+(you can also use 
+\family sans 
+jurabib
+\family default 
+ instead).
 \end_layout
 
 \begin_layout Subsection

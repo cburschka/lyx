@@ -528,6 +528,10 @@ bool LaTeX::runBibTeX(vector<Aux_Info> const & bibtex_info)
 			continue;
 		result = true;
 
+		// FIXME: the bibtex call should not be hardcoded. bibtex has 
+		// options (--min-crossrefs is useful) and there are also 
+		// alternatives (bibtex8, bibulus, mlbibtex, clbibtex etc.). 
+		// Move to converters? (JSpitzm)
 		string tmp = "bibtex ";
 		tmp += OnlyFilename(ChangeExtension(it->aux_file, string()));
 		Systemcall one;

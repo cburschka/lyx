@@ -182,6 +182,8 @@ public:
 	bool use_natbib;
 	///
 	bool use_numerical_citations;
+	///
+	bool use_jurabib;
 	/// revision tracking for this buffer ?
 	bool tracking_changes;
 	/// Time ago we agreed that this was a buffer property [ale990407]
@@ -199,6 +201,8 @@ public:
 	std::string const dvips_options() const;
 	///
 	std::string const paperSizeName() const;
+	///
+	std::string const babelCall(std::string const & lang_opts) const;
 
 private:
 	/** Use the Pimpl idiom to hide those member variables that would otherwise

@@ -116,7 +116,7 @@ a flag forcing upper case, e.g. "della Casa" becomes "Della Case"
 std::string const getCiteCommand(CiteStyle, bool full, bool forceUCase);
 
 /// Returns a vector of available Citation styles.
-std::vector<CiteStyle> const getCiteStyles(bool usingNatbib);
+std::vector<CiteStyle> const getCiteStyles(bool usingNatbib, bool usingJurabib);
 
 /**
    "Translates" the available Citation Styles into strings for this key.

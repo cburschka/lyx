@@ -560,7 +560,7 @@ string const getCiteCommand(CiteStyle command, bool full, bool forceUCase)
 }
 
 
-vector<CiteStyle> const getCiteStyles(bool usingNatbib)
+vector<CiteStyle> const getCiteStyles(bool usingNatbib, bool usingJurabib)
 {
 	unsigned int nStyles = 1;
 	unsigned int start = 0;
@@ -568,6 +568,8 @@ vector<CiteStyle> const getCiteStyles(bool usingNatbib)
 		nStyles = nCiteStyles - 1;
 		start = 1;
 	}
+	if (usingJurabib)
+		nStyles = nCiteStyles;
 
 	vector<CiteStyle> styles(nStyles);
 
@@ -655,6 +657,11 @@ getAuthorYearStrings(string const & key,
 
 		switch (styles[i]) {
 		case CITE:
+			// jurabib only: Author/Annotator
+			// (i.e. the "before" field, 2nd opt arg)
+			str = author + "/<" + _("before") + '>';
+			break;
+
 		case CITET:
 			str = author + " (" + year + ')';
 			break;
