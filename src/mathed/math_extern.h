@@ -14,4 +14,7 @@ void maplize(MathArray const &, MapleStream &);
 void mathmlize(MathArray const &, MathMLStream &);
 void octavize(MathArray const &, OctaveStream &);
 
+bool extractNumber(MathArray const & ar, int & i);
+bool extractNumber(MathArray const & ar, double & i);
+
 #endif

@@ -130,7 +130,9 @@ public:
 	///
 	bool idxEnd(idx_type &, pos_type &) const;
 	///
-	void idxDelete(idx_type &, bool &, bool &);
+	bool idxDelete(idx_type &);
+	/// pulls cell after pressing erase
+	void idxGlue(idx_type idx);
 
 	///
 	virtual void addRow(row_type);

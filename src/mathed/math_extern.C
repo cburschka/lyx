@@ -204,6 +204,17 @@ bool extractNumber(MathArray const & ar, int & i)
 }
 
 
+bool extractNumber(MathArray const & ar, double & i)
+{
+	string s;
+	MathTextCodes c;
+	charSequence(ar.begin(), ar.end(), s, c);
+	istringstream is(s.c_str());
+	is >> i;
+	return is;
+}
+
+
 bool testString(MathInset * p, const string & str)
 {
 	string s;

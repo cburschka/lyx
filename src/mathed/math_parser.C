@@ -757,18 +757,21 @@ bool Parser::parse_macro(string & name)
 		return false;
 	}
 
-	MathArray ar;
-	parse_into(ar, FLAG_BRACE_LAST);
+	MathArray ar1;
+	parse_into(ar1, FLAG_BRACE_LAST);
 
 	// we cannot handle recursive stuff at all
 	MathArray test;
 	test.push_back(createMathInset(name));
-	if (ar.contains(test)) {
+	if (ar1.contains(test)) {
 		lyxerr << "we cannot handle recursive macros at all.\n";
 		return false;
 	}
 
-	MathMacroTable::create(name, narg, ar);
+	MathArray ar2;
+	parse_into(ar2, FLAG_ITEM);
+
+	MathMacroTable::create(name, narg, ar1, ar2);
 	return true;
 }
 
@@ -1109,6 +1112,7 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 				lyxerr << "unknow math inset begin '" << name << "'\n";
 		}
 
+/*
 		else if (t.cs() == "kern") {
 #ifdef WITH_WARNINGS
 #warning A hack...
@@ -1125,6 +1129,12 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 					break;
 			}
 			array.push_back(MathAtom(new MathKernInset(s)));
+*/
+
+		else if (t.cs() == "lyxkern") {
+			MathAtom p = createMathInset(t.cs());
+			parse_into(p->cell(0), flags, code);
+			array.push_back(p);
 		}
 
 		else if (t.cs() == "label") {

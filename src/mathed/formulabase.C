@@ -933,7 +933,7 @@ void mathDispatchMathMacro(BufferView * bv, string const & arg)
 		if (arg.empty())
 			bv->owner()->getLyXFunc()->setErrorMessage(N_("Missing argument"));
 		else {
-			string s(arg);
+			string s = arg;
 			string const s1 = token(s, ' ', 1);
 			int const na = s1.empty() ? 0 : lyx::atoi(s1);
 			openNewInset(bv, new InsetFormulaMacro(token(s, ' ', 0), na));

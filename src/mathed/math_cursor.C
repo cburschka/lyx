@@ -133,15 +133,25 @@ struct Selection
 			cursor.insert(data_.cell(0));
 		} else {
 			// mulitple cells
-			idx_type idx;
+			idx_type idx; // index of upper left cell
 			MathGridInset * p = cursor.enclosingGrid(idx);
 			col_type const numcols = min(data_.ncols(), p->ncols() - p->col(idx));
 			row_type const numrows = min(data_.nrows(), p->nrows() - p->row(idx));
-			for (row_type row = 0; row < numrows; ++row)
+			for (row_type row = 0; row < numrows; ++row) {
 				for (col_type col = 0; col < numcols; ++col) {
 					idx_type i = p->index(row + p->row(idx), col + p->col(idx));
 					p->cell(i).push_back(data_.cell(data_.index(row, col)));
 				}
+				// append the left over horizontal cells to the last column
+				idx_type i = p->index(row + p->row(idx), p->ncols() - 1);
+				for (col_type col = numcols; col < data_.ncols(); ++col) 
+					p->cell(i).push_back(data_.cell(data_.index(row, col)));
+			}
+			// append the left over vertical cells to the last _cell_
+			idx_type i = p->nargs() - 1;
+			for (row_type row = numrows; row < data_.nrows(); ++row) 
+				for (col_type col = 0; col < data_.ncols(); ++col) 
+					p->cell(i).push_back(data_.cell(data_.index(row, col)));
 		}
 	}
 
@@ -537,18 +547,16 @@ void MathCursor::erase()
 		return;
 	}
 
-	// delete empty cells if necessary
-	if (array().empty()) {
-		bool popit;
-		bool removeit;
-		par()->idxDelete(idx(), popit, removeit);
-		if (popit && popLeft() && removeit)
-			plainErase();
+	// delete empty cells if possible
+	if (array().empty())
+		if (par()->idxDelete(idx()))
+			return;
+
+	// old behaviour when in last position of cell
+	if (pos() == size()) {
+		par()->idxGlue(idx());
 		return;
 	}
-
-	if (pos() == size())
-		return;
 
 	MathScriptInset * p = nextAtom()->asScriptInset();
 	if (p) {
@@ -957,7 +965,7 @@ void MathCursor::normalize()
 		lyxerr << "this should not really happen - 2: "
 			<< pos() << " " << size() <<  " in idx: " << idx()
 			<< " in atom: '";
-		WriteStream wi(lyxerr, false);
+		WriteStream wi(lyxerr, false, true);
 		par()->write(wi);
 		lyxerr << "\n";
 		dump("error 4");

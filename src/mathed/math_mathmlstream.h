@@ -160,13 +160,15 @@ OctaveStream & operator<<(OctaveStream &, char);
 class WriteStream {
 public:
 	///
-	WriteStream(std::ostream & os, bool fragile);
+	WriteStream(std::ostream & os, bool fragile, bool latex);
 	///
 	explicit WriteStream(std::ostream & os_);
 	///
 	int line() const { return line_; }
 	///
 	bool fragile() const { return fragile_; }
+	///
+	bool latex() const { return latex_; }
 	///
 	std::ostream & os() { return os_; }
 	///
@@ -178,6 +180,8 @@ private:
 	std::ostream & os_;
 	///
 	bool fragile_;
+	/// are we writing to .tex?
+	int latex_;
 	/// are we at the beginning of an MathArray?
 	bool firstitem_;
 	///

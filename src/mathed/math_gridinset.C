@@ -697,19 +697,16 @@ bool MathGridInset::idxEnd(idx_type & idx, pos_type & pos) const
 }
 
 
-void MathGridInset::idxDelete(idx_type & idx, bool & popit, bool & deleteit)
+bool MathGridInset::idxDelete(idx_type & idx)
 {
-	popit    = false;
-	deleteit = false;
-
 	// nothing to do if we are in the middle of the last row of the inset
 	if (idx + ncols() > nargs())
-		return;
+		return false;
 
 	// try to delete entire sequence of ncols() empty cells if possible
 	for (idx_type i = idx; i < idx + ncols(); ++i)
 		if (cell(i).size())
-			return;
+			return false;
 
 	// move cells if necessary
 	for (idx_type i = index(row(idx), 0); i < idx; ++i)
@@ -723,6 +720,29 @@ void MathGridInset::idxDelete(idx_type & idx, bool & popit, bool & deleteit)
 	// undo effect of Ctrl-Tab (i.e. pull next cell)
 	//if (idx + 1 != nargs())
 	//	cell(idx).swap(cell(idx + 1));
+
+	// we handled the event..
+	return true;
+}
+
+
+// reimplement old behaviour when pressing Delete in the last position
+// of a cell
+void MathGridInset::idxGlue(idx_type idx)
+{
+	col_type c = col(idx);
+	if (c + 1 == ncols()) {
+		if (row(idx) + 1 != nrows()) {
+			for (col_type cc = 0; cc < ncols(); ++cc)
+				cell(idx).push_back(cell(idx + cc + 1));
+			delRow(row(idx) + 1);
+		}
+	} else {
+		cell(idx).push_back(cell(idx + 1));
+		for (col_type cc = c + 2; cc < ncols(); ++cc)
+			cell(idx - c + cc - 1) = cell(idx - c + cc);
+		cell(idx - c + ncols() - 1).erase();
+	}
 }
 
 

@@ -5,23 +5,15 @@
 #endif
 
 #include "math_kerninset.h"
+#include "math_extern.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "math_support.h"
-#include "lyxrc.h"
+#include "font.h"
 
 
 MathKernInset::MathKernInset()
-{}
-
-
-MathKernInset::MathKernInset(LyXLength const & w)
-	: wid_(w)
-{}
-
-
-MathKernInset::MathKernInset(string const & s)
-	: wid_(s)
+	: MathNestInset(1)
 {}
 
 
@@ -31,31 +23,29 @@ MathInset * MathKernInset::clone() const
 }
 
 
+void MathKernInset::metrics(MathMetricsInfo const & mi) const
+{
+	LyXFont font;
+	whichFont(font, LM_TC_TEXTRM, mi);
+	double t;
+	extractNumber(cell(0), t);
+	width_   = int(t * lyxfont::width('m', font));
+	ascent_  = 0;
+	descent_ = 0;
+}
+
+
 void MathKernInset::draw(Painter &, int, int) const
 {}
 
 
-void MathKernInset::metrics(MathMetricsInfo const &) const
-{
-	ascent_  = 0;
-	descent_ = 0;
-#ifdef WITH_WARNINGS
-#warning fix this once the interface to LyXLength has improved
-#endif
-	// this uses the numerical valu in pixels, even if the unit is cm or ex!
-	width_   = static_cast<int>(wid_.value());
-	width_   = (width_*static_cast<int>(lyxrc.zoom))/150;
-	//cerr << "handling kern of width " << wid_.value() << "\n";
-}
-
-
 void MathKernInset::write(WriteStream & os) const
 {
-	os << "\\kern" << wid_.asLatexString() << " ";
+	os << "\\lyxkern" << cell(0) << "em ";
 }
 
 
 void MathKernInset::normalize(NormalStream & os) const
 {
-	os << "[kern " << wid_.asLatexString() << "]";
+	os << "[lyxkern " << cell(0) << "em]";
 }

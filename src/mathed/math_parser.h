@@ -108,8 +108,6 @@ enum MathTokenEnum
 	///
 	LM_TK_NOT,
 	///
-	LM_TK_KERN,
-	///
 	LM_TK_UNDERSET,
 	///
 	LM_TK_STACK

@@ -187,13 +187,13 @@ NormalStream & operator<<(NormalStream & ns, char c)
 //////////////////////////////////////////////////////////////////////
 
 
-WriteStream::WriteStream(ostream & os, bool fragile)
-	: os_(os), fragile_(fragile), firstitem_(false), line_(0)
+WriteStream::WriteStream(ostream & os, bool fragile, bool latex)
+	: os_(os), fragile_(fragile), latex_(latex), firstitem_(false), line_(0)
 {}
 
 
 WriteStream::WriteStream(ostream & os)
-	: os_(os), fragile_(false), firstitem_(false), line_(0)
+	: os_(os), fragile_(false), latex_(false), firstitem_(false), line_(0)
 {}
 
 

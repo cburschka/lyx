@@ -9,6 +9,11 @@
 #include "math_mathmlstream.h"
 
 
+char const * latex_mathspace[] = {
+	"!", ",", ":", ";", "quad", "qquad", "lyxnegspace"
+};
+
+
 
 MathSpaceInset::MathSpaceInset(int sp)
 	: space_(sp)
@@ -23,12 +28,16 @@ MathInset * MathSpaceInset::clone() const
 
 void MathSpaceInset::metrics(MathMetricsInfo const &) const
 {
-	width_ = space_ ? space_ * 2 : 2;
-	if (space_ > 3)
-		width_ *= 2;
-	if (space_ == 5)
-		width_ *= 2;
-	width_  += 4;
+	switch (space_) {
+		case 0: width_ = 6; break;
+		case 1: width_ = 6; break;
+		case 2: width_ = 8; break;
+		case 3: width_ = 10; break;
+		case 4: width_ = 20; break;
+		case 5: width_ = 40; break;
+		case 6: width_ = -2; break;
+		default: width_ = 6; break;
+	}
 	ascent_  = 4;
 	descent_ = 0;
 }
@@ -37,9 +46,10 @@ void MathSpaceInset::metrics(MathMetricsInfo const &) const
 void MathSpaceInset::draw(Painter & pain, int x, int y) const
 {
 
-// XPoint p[4] = {{++x, y-3}, {x, y}, {x+width-2, y}, {x+width-2, y-3}};
-
 // Sadly, HP-UX CC can't handle that kind of initialization.
+// XPoint p[4] = {{++x, y-3}, {x, y}, {x+width-2, y}, {x+width-2, y-3}};
+	if (space_ == 6)
+		return;
 
 	int xp[4];
 	int yp[4];
@@ -79,6 +89,6 @@ void MathSpaceInset::normalize(NormalStream & os) const
 
 void MathSpaceInset::write(WriteStream & os) const
 {
-	if (space_ >= 0 && space_ < 6)
+	if (space_ >= 0 && space_ < 7)
 		os << '\\' << latex_mathspace[space_] << ' ';
 }

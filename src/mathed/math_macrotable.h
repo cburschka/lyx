@@ -18,7 +18,7 @@ public:
 	///
 	static void create(string const &, int, string const &);
 	///
-	static void create(string const &, int, MathArray const &);
+	static void create(string const &, int, MathArray const &, MathArray const &);
 	///
 	static MathAtom & provide(string const &);
 	///

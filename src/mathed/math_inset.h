@@ -145,9 +145,9 @@ public:
 	virtual bool idxEnd(idx_type & idx, pos_type & pos) const;
 
 	/// Delete a cell and move cursor
-	// the return value indicates whether the cursor should leave the inset
-	// and/or the whole inset should be deleted
-	virtual void idxDelete(idx_type & idx, bool & popit, bool & deleteit);
+	virtual bool idxDelete(idx_type &) { return false; }
+	/// pulls cell after pressing erase
+	virtual void idxGlue(idx_type) {}
 	// returns list of cell indices that are "between" from and to for
 	// selection purposes
 	virtual std::vector<idx_type> idxBetween(idx_type from, idx_type to) const;

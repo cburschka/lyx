@@ -278,16 +278,17 @@ Inset * InsetFormula::clone(Buffer const &, bool) const
 }
 
 
-void InsetFormula::write(Buffer const * buf, ostream & os) const
+void InsetFormula::write(Buffer const *, ostream & os) const
 {
 	os << "Formula ";
-	latex(buf, os, false, false);
+	WriteStream wi(os, false, false);
+	par_->write(wi);
 }
 
 
-int InsetFormula::latex(Buffer const *, ostream & os, bool fragil, bool) const
+int InsetFormula::latex(Buffer const *, ostream & os, bool fragile, bool) const
 {
-	WriteStream wi(os, fragil);
+	WriteStream wi(os, fragile, true);
 	par_->write(wi);
 	return wi.line();
 }

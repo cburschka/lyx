@@ -56,10 +56,12 @@ void MathMacroTable::create(string const & name, int na, string const & text)
 
 
 
-void MathMacroTable::create(string const & name, int na, MathArray const & ar)
+void MathMacroTable::create
+	(string const & name, int na, MathArray const & ar1, MathArray const & ar2)
 {
 	MathAtom t(new MathMacroTemplate(name, na));
-	t->cell(0) = ar;
+	t->cell(0) = ar1;
+	t->cell(1) = ar2;
 	macro_table[name] = t;
 }
 

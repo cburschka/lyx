@@ -8,20 +8,17 @@
 #include "debug.h"
 
 
-using std::endl;
-
-
 MathMacroTemplate::MathMacroTemplate()
-	: MathNestInset(1), numargs_(0), name_()
+	: MathNestInset(2), numargs_(0), name_()
 {}
 
 
 MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs)
-	: MathNestInset(1), numargs_(numargs), name_(nm)
+	: MathNestInset(2), numargs_(numargs), name_(nm)
 {
 	if (numargs_ > 9)
 		lyxerr << "MathMacroTemplate::MathMacroTemplate: wrong # of arguments: "
-			<< numargs_ << endl;
+			<< numargs_ << std::endl;
 }
 
 
@@ -53,23 +50,39 @@ string const & MathMacroTemplate::name() const
 void MathMacroTemplate::metrics(MathMetricsInfo const & mi) const
 {
 	xcell(0).metrics(mi);
-	width_   = xcell(0).width() + 4;
-	ascent_  = xcell(0).ascent() + 2;
-	descent_ = xcell(0).descent() + 2;
+	xcell(1).metrics(mi);
+	width_   = xcell(0).width() + xcell(1).width() + 10;
+	ascent_  = std::max(xcell(0).ascent(),  xcell(1).ascent())  + 2;
+	descent_ = std::max(xcell(0).descent(), xcell(1).descent()) + 2;
 }
 
 
 void MathMacroTemplate::draw(Painter & pain, int x, int y) const
 {
+	int const w0 = xcell(0).width();
+	int const w1 = xcell(1).width();
 	xcell(0).draw(pain, x + 2, y + 1);
-	pain.rectangle(x, y - ascent(), width(), height(), LColor::blue);
+	pain.rectangle(x, y - ascent() + 1, w0 + 4, height(), LColor::blue);
+	xcell(1).draw(pain, x + 8 + w0, y + 1);
+	pain.rectangle(x + w0 + 6 , y - ascent() + 1, w1 + 4, height(), LColor::blue);
 }
 
 
 void MathMacroTemplate::write(WriteStream & os) const
 {
-	os << "\n\\newcommand{\\" << name_.c_str() << '}';
-	if (numargs_ > 0)
-		os << '[' << numargs_ << ']';
-	os << '{' << cell(0) << "}\n";
+	if (os.latex()) {
+		os << "\n\\newcommand{\\" << name_.c_str() << '}';
+		if (numargs_ > 0)
+			os << '[' << numargs_ << ']';
+		os << '{' << cell(0) << "}\n";
+	} else {
+		// writing .lyx
+		os << "\n\\newcommand{\\" << name_.c_str() << '}';
+		if (numargs_ > 0)
+			os << '[' << numargs_ << ']';
+		os << '{' << cell(0) << '}';
+		// write special .tex export only if necessary
+		if (!cell(1).empty())
+			os << "\n{" << cell(1) << '}';
+	}
 }

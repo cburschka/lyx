@@ -40,7 +40,7 @@ int MathInset::height() const
 
 ostream & operator<<(ostream & os, MathInset const & inset)
 {
-	WriteStream wi(os, false);
+	WriteStream wi(os, false, false);
 	inset.write(wi);
 	return os;
 }
@@ -149,17 +149,10 @@ bool MathInset::idxEnd(idx_type &, pos_type &) const
 }
 
 
-void MathInset::idxDelete(idx_type &, bool & popit, bool & deleteit)
-{
-	popit    = false;
-	deleteit = false;
-}
-
-
 void MathInset::normalize(NormalStream & os) const
 {
 	os << "[unknown ";
-	WriteStream wi(os.os(), false);
+	WriteStream wi(os.os(), false, true);
 	write(wi);
 	os << "] ";
 }
@@ -168,7 +161,7 @@ void MathInset::normalize(NormalStream & os) const
 void MathInset::dump() const
 {
 	lyxerr << "---------------------------------------------\n";
-	WriteStream wi(lyxerr, false);
+	WriteStream wi(lyxerr, false, true);
 	write(wi);
 	lyxerr << "\n---------------------------------------------\n";
 }

@@ -730,12 +730,6 @@ void math_font_max_dim(LyXFont const & font, int & asc, int & des)
 }
 
 
-char const * latex_mathspace[] = {
-	"!", ",", ":", ";", "quad", "qquad"
-};
-
-
-
 char const * math_font_name(MathTextCodes code)
 {
 	static char const * theFontNames[] = {

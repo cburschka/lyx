@@ -13,8 +13,6 @@ class MathMetricsInfo;
 class MathInset;
 class LyXFont;
 
-extern char const * latex_mathspace[];
-
 void mathed_char_dim(LyXFont const &, unsigned char c,
 	int & asc, int & des, int & wid);
 int mathed_char_width(LyXFont const &, unsigned char c);

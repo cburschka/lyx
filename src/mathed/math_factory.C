@@ -52,8 +52,6 @@ MathAtom createMathInset(latexkeys const * l)
 		return MathAtom(new MathStackrelInset);
 	case LM_TK_UNDERSET:
 		return MathAtom(new MathUndersetInset);
-	case LM_TK_KERN:
-		return MathAtom(new MathKernInset);
 	case LM_TK_BINOM:
 	case LM_TK_CHOOSE:
 		return MathAtom(new MathBinomInset);
@@ -97,6 +95,9 @@ MathAtom createMathInset(string const & s)
 	if (s.size() == 3 && s[0] == '\\' && s[1] == '#'
 			&& s[2] >= '1' && s[2] <= '9')
 		return MathAtom(new MathMacroArgument(s[2] - '0'));
+
+	if (s == "lyxkern")
+		return MathAtom(new MathKernInset);
 
 	if (s == "xymatrix")
 		return MathAtom(new MathXYMatrixInset);

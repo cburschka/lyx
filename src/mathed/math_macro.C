@@ -66,6 +66,12 @@ bool MathMacro::defining() const
 }
 
 
+void MathMacro::expand() const
+{
+	expanded_ = tmplate_->xcell(tmplate_->cell(1).empty() ? 0 : 1);
+}
+
+
 void MathMacro::metrics(MathMetricsInfo const & mi) const
 {
 	whichFont(font_, LM_TC_TEX, mi);
@@ -77,7 +83,7 @@ void MathMacro::metrics(MathMetricsInfo const & mi) const
 	}
 
 	if (editing()) {
-		expanded_ = tmplate_->xcell(0);
+		expand();
 		expanded_.metrics(mi_);
 		width_   = expanded_.width()   + 4;
 		ascent_  = expanded_.ascent()  + 2;
@@ -100,7 +106,7 @@ void MathMacro::metrics(MathMetricsInfo const & mi) const
 		return;
 	}
 
-	expanded_ = tmplate_->xcell(0);
+	expand();
 	expanded_.data_.substitute(*this);
 	expanded_.metrics(mi_);
 	width_   = expanded_.width();
@@ -232,6 +238,6 @@ void MathMacro::write(WriteStream & os) const
 
 void MathMacro::updateExpansion() const
 {
-	expanded_ = tmplate_->xcell(0);
+	expand();
 	expanded_.data_.substitute(*this);
 }
