@@ -16,7 +16,6 @@
 #include "math_streamstr.h"
 #include "math_support.h"
 
-
 using std::string;
 using std::auto_ptr;
 
@@ -37,10 +36,11 @@ void MathXArrowInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
-	dim_.wid = std::max(cell(0).width(), cell(1).width()) + 10;
-	dim_.asc = cell(0).height() + 10;
-	dim_.des = cell(1).height();
-	dim = dim_;
+	dim.wid = std::max(cell(0).width(), cell(1).width()) + 10;
+	dim.asc = cell(0).height() + 10;
+	dim.des = cell(1).height();
+	metricsMarkers(dim);
+	dim_ = dim;
 }
 
 
@@ -49,7 +49,8 @@ void MathXArrowInset::draw(PainterInfo & pi, int x, int y) const
 	ScriptChanger dummy(pi.base);
 	cell(0).draw(pi, x + 5, y - 10);
 	cell(1).draw(pi, x + 5, y + cell(1).height());
-	mathed_draw_deco(pi, x + 1, y - 7, pi.width - 2, 5, name_);
+	mathed_draw_deco(pi, x + 1, y - 7, width() - 2, 5, name_);
+	drawMarkers(pi, x, y);
 }
 
 

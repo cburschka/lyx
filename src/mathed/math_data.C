@@ -263,7 +263,6 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	for (const_iterator it = begin(), et = end(); it != et; ++it) {
-		//pi.width = it->width_;
 		(*it)->drawSelection(pi, x, y);
 		(*it)->draw(pi, x, y);
 		x += (*it)->width();
