@@ -65,6 +65,8 @@ using std::string;
 extern int const NEST_MARGIN = 20;
 /// margin for changebar
 extern int const CHANGEBAR_MARGIN = 10;
+/// right margin
+extern int const RIGHT_MARGIN = 10;
 
 
 namespace {
@@ -340,6 +342,7 @@ int LyXText::rightMargin(Paragraph const & par) const
 	LyXTextClass const & tclass = bv()->buffer()->params().getLyXTextClass();
 
 	return 
+		RIGHT_MARGIN
 		+ font_metrics::signedWidth(tclass.rightmargin(),
 				       tclass.defaultfont())
 		+ font_metrics::signedWidth(par.layout()->rightmargin,
