@@ -1,3 +1,22 @@
+2000-09-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/Makefile.am (lyx_SOURCES): remove table.C and Table.h
+
+2000-09-20  Marko Vendelin <markov@ioc.ee>
+
+	* src/frontends/gnome/FormCitation.C
+	* src/frontends/gnome/FormIndex.C
+	* src/frontends/gnome/FormToc.C
+	* src/frontends/gnome/FormUrl.C: cleanup the loops, reordering
+	the variable initialization to shut up the warnings
+
+2000-09-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/table.[Ch]: deleted files
+	
+	* src/lyxfunc.C (Dispatch): Don't pass 0 as argument to Dispatch
+	second arg.
+
 2000-09-18  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (LocalDispatch): fixed Backspace/Delete

@@ -78,7 +78,7 @@ static string const CONF_SEARCH("FormCitation_search");
 static string const CONF_TEXTAFTER("FormCitation_textafter");
 
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
-	: lv_(lv), d_(d), u_(0), h_(0), ih_(0), inset_(0), dialog_(NULL)
+	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(NULL)
 {
   // let the dialog be shown
   // These are permanent connections so we won't bother
@@ -365,15 +365,13 @@ void FormCitation::showStageSelect()
       gtk_widget_grab_default (GTK_WIDGET(b_ok->gtkobj()));
 
       // setting sizes of the widgets
-      string path;
-      string w, h;
-      path = PACKAGE "/" + LOCAL_CONFIGURE_PREFIX;
+      string path = PACKAGE "/" + LOCAL_CONFIGURE_PREFIX;
+      string w = path + "/" + CONF_PANE_INFO + CONF_PANE_INFO_DEFAULT;
 
-      w = path + "/" + CONF_PANE_INFO + CONF_PANE_INFO_DEFAULT;
       paned_info_->set_position( gnome_config_get_int(w.c_str()) );
 
-      int i, sz;
-      for (i = 0, sz = clist_bib_->columns().size(); i < sz; ++i)
+      int sz = clist_bib_->columns().size();
+      for (int i = 0; i < sz; ++i)
 	{
 	  w = path + "/" + CONF_COLUMN + "_" + tostr(i) + CONF_COLUMN_DEFAULT;
 	  clist_bib_->column(i).set_width( gnome_config_get_int(w.c_str()) );
@@ -392,8 +390,9 @@ void FormCitation::showStageSelect()
 					    false, false));
       // retrieving data
       vector<pair<string,string> > blist = lv_->buffer()->getBibkeyList();
-      
-      for ( i = 0, sz = blist.size(); i < sz; ++i )
+
+      sz = blist.size();
+      for (int i = 0; i < sz; ++i )
 	{
 	  bibkeys.push_back(blist[i].first);
 	  bibkeysInfo.push_back(blist[i].second);
@@ -566,16 +565,16 @@ void FormCitation::update()
   vector<pair<string,string> > blist =
     lv_->buffer()->getBibkeyList();
 
-  int i, sz;
-  for ( i = 0, sz = blist.size(); i < sz; ++i )
+  int sz = blist.size();
+  for ( int i = 0; i < sz; ++i )
     {
       bibkeys.push_back(blist[i].first);
       bibkeysInfo.push_back(blist[i].second);
     }
 
   blist.clear();
-
-  for ( i = 0, sz = bibkeys.size(); i < sz; ++i )
+  sz = bibkeys.size();
+  for ( int i = 0; i < sz; ++i )
     addItemToBibList(i);
 
   clist_bib_->sort();
@@ -608,9 +607,9 @@ void FormCitation::updateButtons()
   sens = (clist_selected_->selection().size()>0);
   button_unselect_->set_sensitive(sens);
   button_up_->set_sensitive(sens &&
-			    clist_selected_->selection().operator[](0).get_row_num()>0);
+			    clist_selected_->selection()[0].get_row_num()>0);
   button_down_->set_sensitive(sens &&
-			      clist_selected_->selection().operator[](0).get_row_num() <
+			      clist_selected_->selection()[0].get_row_num() <
 			      clist_selected_->rows().size()-1);
 
   sens = (clist_bib_->selection().size()>0);
@@ -630,10 +629,9 @@ void FormCitation::selection_toggled(gint            row,
       if (citeselected)
 	{
 	  // lookup the record with the same key in bibkeys and show additional Info
-	  int i;
-	  int sz = bibkeys.size();
+	  int const sz = bibkeys.size();
 	  string key = clist_selected_->cell(row,0).get_text();
-	  for (i=0; !keyfound && i<sz; ++i)
+	  for (int i=0; !keyfound && i<sz; ++i)
 	    if (bibkeys[i] == key)
 	      {
 		info = bibkeysInfo[i];
@@ -660,13 +658,13 @@ void FormCitation::selection_toggled(gint            row,
 
 void FormCitation::removeCitation()
 {
-  clist_selected_->rows().remove(clist_selected_->selection().operator[](0));
+  clist_selected_->rows().remove(clist_selected_->selection()[0]);
   updateButtons();
 }
 
 void FormCitation::moveCitationUp()
 {
-  int i = clist_selected_->selection().operator[](0).get_row_num();
+  int i = clist_selected_->selection()[0].get_row_num();
   clist_selected_->swap_rows( i-1, i );
   clist_selected_->row(i-1).select();
   updateButtons();
@@ -674,7 +672,7 @@ void FormCitation::moveCitationUp()
 
 void FormCitation::moveCitationDown()
 {
-  int i = clist_selected_->selection().operator[](0).get_row_num();
+  int i = clist_selected_->selection()[0].get_row_num();
   clist_selected_->swap_rows( i+1, i );
   clist_selected_->row(i+1).select();
   updateButtons();
@@ -684,7 +682,7 @@ void FormCitation::newCitation()
 {
   // citation key is in the first column of clist_bib_ list
   vector<string> r;
-  r.push_back( clist_bib_->selection().operator[](0).operator[](1).get_text() );
+  r.push_back( clist_bib_->selection()[0][1].get_text() );
   clist_selected_->rows().push_back(r);
   clist_selected_->row( clist_selected_->rows().size()-1 ).select();
   updateButtons();
@@ -741,16 +739,16 @@ void FormCitation::applySelect()
   if( lv_->buffer()->isReadonly() ) return;
 
   string contents;
-  int i, sz;
+  int sz;
 
   contents = frontStrip( strip(params.getContents()) );
   if (!contents.empty()) contents += ", ";
   
   sz = clist_bib_->selection().size();
-  for (i=0; i < sz; ++i)
+  for (int i=0; i < sz; ++i)
     {
       if (i > 0) contents += ", ";
-      contents += clist_bib_->selection().operator[](i).operator[](1).get_text();
+      contents += clist_bib_->selection()[i][1].get_text();
     }
   
   params.setContents( contents );
@@ -768,20 +766,19 @@ void FormCitation::applySelect()
   else
     {
       lv_->getLyXFunc()->Dispatch( LFUN_CITATION_INSERT,
-				   params.getAsString().c_str() );
+				   params.getAsString() );
     }
 
   // save config
   text_after_->save_history();
 
-  string path;
-  string w, h;
-  path  = PACKAGE "/" + LOCAL_CONFIGURE_PREFIX;
+  string path = PACKAGE "/" + LOCAL_CONFIGURE_PREFIX;
+  string w = path + "/" + CONF_PANE_INFO;
 
-  w = path + "/" + CONF_PANE_INFO;
   gnome_config_set_int(w.c_str(), paned_info_->width() - info_->width());
-  
-  for (i = 0, sz = clist_bib_->columns().size(); i < sz; ++i)
+
+  sz = clist_bib_->columns().size();
+  for (int i = 0; i < sz; ++i)
     {
       w = path + "/" + CONF_COLUMN + "_" + tostr(i);
       gnome_config_set_int(w.c_str(), clist_bib_->get_column_width(i));
@@ -798,7 +795,8 @@ void FormCitation::apply()
   if( lv_->buffer()->isReadonly() ) return;
 
   string contents;
-  for( unsigned int i = 0; i < clist_selected_->rows().size(); ++i )
+  int const sz = clist_selected_->rows().size();
+  for( int i = 0; i < sz; ++i )
     {
       if (i > 0) contents += ", ";
       contents += clist_selected_->cell(i, 0).get_text();
@@ -819,7 +817,7 @@ void FormCitation::apply()
   else
     {
       lv_->getLyXFunc()->Dispatch( LFUN_CITATION_INSERT,
-				   params.getAsString().c_str() );
+				   params.getAsString() );
     }
 }
 
@@ -848,9 +846,9 @@ void FormCitation::searchReg()
 
   clist_bib_->freeze();
 
-  int i, sz;
+  int const sz = bibkeys.size();
   bool additem;
-  for ( i = 0, sz = bibkeys.size(); i < sz; ++i )
+  for ( int i = 0; i < sz; ++i )
     {
       string data = bibkeys[i] + bibkeysInfo[i];
 
@@ -882,9 +880,9 @@ void FormCitation::searchSimple()
 
   clist_bib_->freeze();
 
-  int i, sz;
+  int const sz = bibkeys.size();
   bool additem;
-  for ( i = 0, sz = bibkeys.size(); i < sz; ++i )
+  for ( int i = 0; i < sz; ++i )
     {
       string data = bibkeys[i] + bibkeysInfo[i];
 

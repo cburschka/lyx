@@ -39,7 +39,7 @@ static string const CONF_ENTRY_URL("FormUrl_url");
 static string const CONF_ENTRY_NAME("FormUrl_name");
 
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
-	: lv_(lv), d_(d), u_(0), h_(0), ih_(0), inset_(0), dialog_(NULL)
+	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(NULL)
 {
   // let the dialog be shown
   // These are permanent connections so we won't bother
@@ -209,7 +209,7 @@ void FormUrl::apply()
   else
     {
       lv_->getLyXFunc()->Dispatch( LFUN_INSERT_URL,
-				   params.getAsString().c_str() );
+				   params.getAsString() );
     }
 
   // save history

@@ -39,7 +39,7 @@ extern "C" {
 using SigC::bind;
 
 FormToc::FormToc(LyXView * lv, Dialogs * d)
-  : lv_(lv), d_(d), u_(0), h_(0), ih_(0), inset_(0), dialog_(NULL), ignore_callback_(false)
+  : lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(NULL), ignore_callback_(false)
 {
   // let the dialog be shown
   // These are permanent connections so we won't bother

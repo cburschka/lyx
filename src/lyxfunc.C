@@ -893,7 +893,7 @@ string const LyXFunc::Dispatch(int ac,
 		meta_fake_bit = 0;
 		if(owner->view()->available())
 			// cancel any selection
-			Dispatch(LFUN_MARK_OFF, 0);
+			Dispatch(LFUN_MARK_OFF);
 		setMessage(N_("Cancel"));
 		break;
 

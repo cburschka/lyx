@@ -46,7 +46,7 @@ extern GLyxAppWin * mainAppWin;
 static string const CONF_ENTRY("FormIndex_entry");
 
 FormIndex::FormIndex(LyXView * lv, Dialogs * d)
-	: lv_(lv), d_(d), u_(0), h_(0), ih_(0), inset_(0), dialog_(NULL)
+	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0), dialog_(NULL)
 {
   // let the dialog be shown
   // These are permanent connections so we won't bother
@@ -187,7 +187,7 @@ void FormIndex::apply()
   else
     {
       lv_->getLyXFunc()->Dispatch( LFUN_INDEX_INSERT,
-				   params.getAsString().c_str() );
+				   params.getAsString() );
     }
 
   // save history

@@ -207,8 +207,6 @@ lyx_SOURCES = \
 	spellchecker.C \
 	spellchecker.h \
 	stl_string_fwd.h \
-	table.h \
-	table.C \
 	tabular.C \
 	tabular.h \
 	tex-accent.C \
