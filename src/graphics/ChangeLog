@@ -2,6 +2,8 @@
 
 	* ImageLoaderXPM.C (runImageLoader): If the pixmap contains a
 	transparent colour, then set it to the colour of the background.
+	Also take account of the monochrome, grayscale of color
+	preferences option.
 
 2001-09-20  Angus Leeming  <a.leeming@ic.ac.uk>
 

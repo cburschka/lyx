@@ -14,6 +14,7 @@
 #include <config.h>
 #include "ImageLoaderXPM.h"
 #include "ColorHandler.h"
+#include "lyxrc.h"
 #include "frontends/support/LyXImage.h"
 #include "frontends/GUIRunTime.h"
 #include "support/filetools.h"
@@ -76,11 +77,38 @@ ImageLoaderXPM::runImageLoader(string const & filename)
 	xpm_col.pixel = lyxColorHandler->colorPixel(LColor::graphicsbg);
 
 	XpmAttributes attrib;
-	attrib.valuemask = XpmCloseness | XpmColorSymbols;
+	attrib.valuemask = XpmCloseness | XpmColorSymbols | XpmColorKey;
+
 	attrib.closeness = 10000;
-	attrib.valuemask = XpmColorSymbols;
+
 	attrib.numsymbols = 1;
 	attrib.colorsymbols = &xpm_col;
+
+	// Set color_key to monochrome, grayscale or color
+	// (Angus 21 Sep 2001)
+	int color_key = 0;
+	if (lyxrc.display_graphics == "color") {
+		color_key = XPM_COLOR;
+
+	} else if (lyxrc.display_graphics == "gray") {
+		color_key = XPM_GRAY;
+
+	} else if (lyxrc.display_graphics == "mono") {
+		color_key = XPM_MONO;
+	}
+
+	// If setting color_key failed, then fail gracefully!
+	if (color_key != 0) {
+		attrib.valuemask = attrib.valuemask | XpmColorKey;
+		attrib.color_key = color_key;
+
+	} else {
+		lyxerr << "Warning in ImageLoaderXPM::runImageLoader"
+		       << "lyxrc.display_graphics == \""
+		       << lyxrc.display_graphics
+		       << "\""
+		       << endl;
+	}		
 
 	int status = XpmReadFileToPixmap(
 			display, 
@@ -90,8 +118,8 @@ ImageLoaderXPM::runImageLoader(string const & filename)
 
 	if (status != XpmSuccess) {
 		lyxerr << "Error reading XPM file '" 
-			<< XpmGetErrorString(status) << "'"
-			<< endl;
+		       << XpmGetErrorString(status) << "'"
+		       << endl;
 		return ErrorWhileLoading;
 	}
 
