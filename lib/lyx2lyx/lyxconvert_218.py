@@ -271,6 +271,14 @@ def remove_oldert(lines):
 	lines[i:j+1] = new
 	i = i+1
 
+    i = 0
+    while 1:
+	i = find_token(lines, "\\latex default", i)
+	if i == -1:
+	    break
+	del lines[i]
+
+
 def remove_oldertinset(lines):
     i = 0
     while 1:
