@@ -1,5 +1,7 @@
 2001-02-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* math_xiter.h: remove a couple of "inline"
+
 	* array.C (strange_copy): fix bug (hopefully) 
 	* many files: add a lot of new files and move methods to the class
 	files they belong to. Only first attempt at cleanup more will

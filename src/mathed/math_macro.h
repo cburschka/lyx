@@ -191,11 +191,6 @@ typedef MathMacroTemplate * MathMacroTemplateP;
 class MathMacroTable {
 public:
     ///
-    explicit
-    MathMacroTable(int);
-    ///
-    ~MathMacroTable();
-    ///
     void addTemplate(MathMacroTemplate *);
     ///
     MathMacro * getMacro(string const &) const;
@@ -210,11 +205,11 @@ public:
     
 private:
     ///
-    const int max_macros;
+    typedef std::vector<MathMacroTemplateP> table_type;
+		///
+    typedef table_type::size_type size_type;
     ///
-    int num_macros;
-    ///
-    MathMacroTemplateP * macro_table;
+    table_type macro_table;
 };
 
 

@@ -406,37 +406,20 @@ void MathMacroTemplate::SetMacroFocus(int &idx, int x, int y)
 
 /* -------------------------- MathMacroTable -----------------------*/
 
-MathMacroTable::MathMacroTable(int n) : max_macros(n)
-{
-    macro_table = new MathMacroTemplateP[max_macros];
-    num_macros = 0;
-}
-
-
-MathMacroTable::~MathMacroTable()
-{
-    delete[] macro_table;
-}
-
-
 // The search is currently linear but will be binary or hash, later.
 MathMacroTemplate * MathMacroTable::getTemplate(string const & name) const
 {
-    for (int i = 0; i < num_macros; ++i) {
-      if (name == macro_table[i]->GetName()) 
-	return macro_table[i];
-    }
-    
-    return 0;
+	for (size_type i = 0; i < macro_table.size(); ++i) {
+		if (name == macro_table[i]->GetName()) 
+			return macro_table[i];
+	}
+
+	return 0;
 }
 
 void MathMacroTable::addTemplate(MathMacroTemplate * m)
 {
-    if (num_macros < max_macros)
-      macro_table[num_macros++] = m;
-    else
-	    lyxerr << "Error (MathMacroTable::addTemplate): "
-		    "Macro table exhausted!" << endl;
+	macro_table.push_back(m);
 }
 
 
@@ -531,5 +514,5 @@ void MathMacroTable::builtinMacros()
 }
 
 
-MathMacroTable MathMacroTable::mathMTable(255);
+MathMacroTable MathMacroTable::mathMTable;
 bool MathMacroTable::built = false;

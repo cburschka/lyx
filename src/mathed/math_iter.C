@@ -27,16 +27,22 @@
 #include "symbol_def.h"
 #include "support/lstrings.h"
 #include "debug.h"
+#include "mathed/support.h"
 
 using std::endl;
 
 const int SizeInset = sizeof(char*) + 2;
 
-extern int mathed_char_width(short type, int style, byte c);
-extern int mathed_string_width(short type, int style, string const & s);
-extern int mathed_char_height(short, int, byte, int &, int &);
+//extern int mathed_char_width(short type, int style, byte c);
+//extern int mathed_string_width(short type, int style, string const & s);
+//extern int mathed_char_height(short, int, byte, int &, int &);
 
- 
+
+MathedIter::MathedIter()
+	: flags(0), fcode(0), pos(0), row(0), col(0), ncols(0), array(0)
+{}
+
+
 void MathedIter::SetData(MathedArray * a)
 {
 	array = a; Reset();

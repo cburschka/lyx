@@ -30,10 +30,10 @@ class MathedInset;
 
 ///
 enum mathIterFlags {
-    /// Allow newlines
-    MthIF_CR = 1,
-    /// Allow tabs
-    MthIF_Tabs = 2
+	/// Allow newlines
+	MthIF_CR = 1,
+	/// Allow tabs
+	MthIF_Tabs = 2
 };
 
 
@@ -43,13 +43,7 @@ enum mathIterFlags {
 class MathedIter {
 public:
 	///
-	MathedIter() {
-		pos = 0;
-		fcode = 0;
-		array = 0;
-		flags = 0;
-		ncols = row = col = 0;
-	}
+	MathedIter();
 	///
 	explicit
 	MathedIter(MathedArray *);
@@ -131,7 +125,11 @@ protected:
 	///
 	mutable int pos;
 	///
-	int row, col, ncols;
+	int row;
+	///
+	int col;
+	///
+	int ncols;
 	///
 	MathedArray * array;
 	// one element stack
@@ -139,9 +137,15 @@ protected:
 		///
 		short fcode;
 		///
-		int x, y;
+		int x;
 		///
-		int pos, row, col;
+		int y;
+		///
+		int pos;
+		///
+		int row;
+		///
+		int col;
 	};
 	///
 	MIState stck;
@@ -152,8 +156,8 @@ protected:
 };
 
 ///
-#define MX_WAS_SUB   1
+//#define MX_WAS_SUB   1
 ///
-#define MX_WAS_SUPER 2
+//#define MX_WAS_SUPER 2
 
 #endif

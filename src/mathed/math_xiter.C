@@ -16,6 +16,12 @@ MathedXIter::MathedXIter()
 }
 
 
+MathParInset * MathedXIter::getPar() const
+{
+	return p;
+}
+
+
 void MathedXIter::GetPos(int & xx, int & yy) const
 { 
 	if (p) 
