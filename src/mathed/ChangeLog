@@ -1,4 +1,8 @@
-<<<<<<< ChangeLog
+2005-02-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* math_nestinset.C (doDispatch): normalize() cursor after moving up/down
+	(fixes assert and bug 1598).
+
 2005-02-09  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_gridinset.[hC]: add facilities for drawing/deleting partition

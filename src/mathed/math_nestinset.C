@@ -509,6 +509,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.selHandle(cmd.action == LFUN_UPSEL);
 		if (!cur.up())
 			cmd = FuncRequest(LFUN_FINISHED_UP);
+		// fixes bug 1598. Please check!
+		cur.normalize();
 		break;
 
 	case LFUN_DOWNSEL:
@@ -516,6 +518,8 @@ void MathNestInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		cur.selHandle(cmd.action == LFUN_DOWNSEL);
 		if (!cur.down())
 			cmd = FuncRequest(LFUN_FINISHED_DOWN);
+		// fixes bug 1598. Please check!
+		cur.normalize();
 		break;
 
 	case LFUN_MOUSE_DOUBLE:
