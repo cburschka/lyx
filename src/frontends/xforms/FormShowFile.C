@@ -10,12 +10,12 @@
 
 #include <config.h>
 
+#include "FormShowFile.h"
+#include "ControlShowFile.h"
+#include "forms/form_browser.h"
 
 #include "xformsBC.h"
-#include "ControlShowFile.h"
-#include "FormShowFile.h"
-#include "forms/form_browser.h"
-#include "gettext.h"
+
 #include "lyx_forms.h"
 
 

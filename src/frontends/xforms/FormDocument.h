@@ -12,8 +12,8 @@
 #ifndef FORM_DOCUMENT_H
 #define FORM_DOCUMENT_H
 
-
 #include "FormBase.h"
+#include "BranchList.h"
 
 #include <boost/scoped_ptr.hpp>
 

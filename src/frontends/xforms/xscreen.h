@@ -17,7 +17,9 @@
 #include "screen.h"
 #include <X11/Xlib.h> // for Pixmap, GC
 
+class WorkArea;
 class XWorkArea;
+
 
 /** The class XScreen is used for the main Textbody.
     Concretely, the screen is held in a pixmap.  This pixmap is kept up to
@@ -37,7 +39,7 @@ public:
 
 protected:
 	/// get the work area
-	virtual WorkArea & workarea() const { return owner_; }
+	virtual WorkArea & workarea() const;
 
 	/// Copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int w, int h);

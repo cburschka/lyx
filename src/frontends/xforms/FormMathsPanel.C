@@ -13,10 +13,10 @@
 
 #include <config.h>
 
-
-#include "ControlMath.h"
 #include "FormMathsPanel.h"
+#include "ControlMath.h"
 #include "forms/form_maths_panel.h"
+
 #include "xformsBC.h"
 
 #include "lyx_forms.h"

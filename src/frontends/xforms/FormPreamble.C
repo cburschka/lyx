@@ -10,14 +10,15 @@
 
 #include <config.h>
 
-
-#include "xformsBC.h"
-#include "ControlPreamble.h"
 #include "FormPreamble.h"
+#include "ControlPreamble.h"
 #include "forms/form_preamble.h"
+
 #include "xforms_helpers.h"
+#include "xformsBC.h"
 
 #include "lyx_forms.h"
+
 
 typedef FormCB<ControlPreamble, FormDB<FD_preamble> > base_class;
 

@@ -11,17 +11,20 @@
 
 #include <config.h>
 
-#include "support/lstrings.h"
-#include "frontends/lyx_gui.h"
 #include "xfont_metrics.h"
 #include "xfont_loader.h"
-#include "lyxrc.h"
+
 #include "encoding.h"
 #include "language.h"
+
+#include "frontends/lyx_gui.h"
+
+#include "support/lstrings.h"
 
 #include <boost/scoped_array.hpp>
 
 using namespace lyx::support;
+
 
 namespace {
 

@@ -13,27 +13,24 @@
 
 #include <config.h>
 
-
 #include "XFormsToolbar.h"
-#include "debug.h"
-#include "XFormsView.h"
-#include "lyxfunc.h"
-#include "FuncStatus.h"
-#include "buffer.h"
-#include "funcrequest.h"
-#include "gettext.h"
+
 #include "Tooltips.h"
+#include "xforms_helpers.h"
+#include "XFormsView.h"
+
+#include "buffer.h"
+#include "debug.h"
+#include "funcrequest.h"
+#include "FuncStatus.h"
+#include "gettext.h"
+#include "lyxfunc.h"
+
 #include "lyx_forms.h"
 #include "combox.h"
-#include "xforms_helpers.h"
-
-#include "LyXAction.h"
-
-#include "support/LAssert.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
 
 using std::endl;
+
 
 // some constants
 const int standardspacing = 2; // the usual space between items

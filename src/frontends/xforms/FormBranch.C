@@ -11,14 +11,16 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
-#include "ControlBranch.h"
 #include "FormBranch.h"
+#include "ControlBranch.h"
 #include "forms/form_branch.h"
-#include "xforms_helpers.h" // formatted
-#include "lyx_forms.h"
+
+#include "xformsBC.h"
+
 #include "insets/insetbranch.h"
-#include "debug.h"
+
+#include "lyx_forms.h"
+
 
 typedef FormController<ControlBranch, FormView<FD_branch> > base_class;
 

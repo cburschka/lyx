@@ -10,23 +10,21 @@
 
 #include <config.h>
 
-
 #include "FormToc.h"
-#include "xformsBC.h"
-#include "xforms_helpers.h"
 #include "ControlToc.h"
 #include "forms/form_toc.h"
-#include "support/lstrings.h" // frontStrip, strip
-#include "debug.h"
-#include "gettext.h"
-#include "lyx_forms.h"
 
-#include <vector>
+#include "xforms_helpers.h"
+#include "xformsBC.h"
+
+#include "support/lstrings.h" // frontStrip, strip
+
+#include "lyx_forms.h"
 
 using namespace lyx::support;
 
-using std::vector;
 using std::endl;
+using std::vector;
 
 
 typedef FormController<ControlToc, FormView<FD_toc> > base_class;

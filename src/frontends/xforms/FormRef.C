@@ -10,18 +10,19 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
-#include "ControlRef.h"
 #include "FormRef.h"
-#include "Tooltips.h"
+#include "ControlRef.h"
 #include "forms/form_ref.h"
-#include "xforms_helpers.h"
-#include "insets/insetref.h"
-#include "helper_funcs.h" // getStringFromVector
-#include "support/lstrings.h" // trim
-#include "lyx_forms.h"
 
-#include <algorithm>
+#include "Tooltips.h"
+#include "xforms_helpers.h"
+#include "xformsBC.h"
+
+#include "insets/insetref.h"
+
+#include "support/lstrings.h" // trim
+
+#include "lyx_forms.h"
 
 using namespace lyx::support;
 
@@ -29,6 +30,7 @@ using std::find;
 using std::max;
 using std::sort;
 using std::vector;
+
 
 typedef FormController<ControlRef, FormView<FD_ref> > base_class;
 

@@ -13,53 +13,44 @@
 
 #include <config.h>
 
-#include "ControlDocument.h"
 #include "FormDocument.h"
+#include "ControlDocument.h"
 #include "forms/form_document.h"
-#include "xformsBC.h"
-#include "ButtonController.h"
 
-#include "FormColorpicker.h"
-#include "LColor.h"
-#include "Lsstream.h"
 #include "bmtable.h"
 #include "checkedwidgets.h"
-#include "Tooltips.h"
+#include "ColorHandler.h"
+#include "combox.h"
+#include "FormColorpicker.h"
 #include "input_validators.h" // fl_unsigned_float_filter
+#include "Tooltips.h"
 #include "xforms_helpers.h"
+#include "xformsBC.h"
 
-#include "bufferparams.h"
-#include "CutAndPaste.h"
-#include "debug.h"
+#include "controllers/ButtonController.h"
+#include "controllers/frnt_lang.h"
+#include "controllers/helper_funcs.h"
+
 #include "language.h"
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"
-#include "ColorHandler.h"
-
-#include "controllers/frnt_lang.h"
-#include "controllers/helper_funcs.h"
 
 #include "support/tostr.h"
 #include "support/lstrings.h" // contains_functor, getStringFromVector
 #include "support/filetools.h" // LibFileSearch
 
 #include "lyx_xpm.h"
-#include "lyx_forms.h"
-#include "combox.h"
 
-#include <boost/bind.hpp>
-
-#include <functional>
 #include <iomanip>
 
 using namespace lyx::support;
 
 using std::bind2nd;
-using std::vector;
 using std::endl;
 using std::setw;
 using std::setfill;
+using std::vector;
 
 
 namespace {

@@ -10,19 +10,18 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
 #include "FormTexinfo.h"
 #include "forms/form_texinfo.h"
+
 #include "Tooltips.h"
-#include "gettext.h"
-#include "xforms_helpers.h"
-#include "support/LAssert.h"
-#include "support/lstrings.h"
+#include "xformsBC.h"
+
 #include "support/filetools.h"
 
 #include "lyx_forms.h"
 
 using namespace lyx::support;
+
 
 typedef FormController<ControlTexinfo, FormView<FD_texinfo> > base_class;
 

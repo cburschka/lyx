@@ -10,10 +10,10 @@
 
 #include <config.h>
 
-
 #include "FormBrowser.h"
 #include "forms/form_browser.h"
 #include "xformsBC.h"
+
 
 FormBrowser::FormBrowser(Dialog & parent,
 			 string const & title, bool allowResize)

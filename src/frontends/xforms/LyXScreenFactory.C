@@ -12,8 +12,9 @@
 
 #include "frontends/LyXScreenFactory.h"
 
-#include "XWorkArea.h"
 #include "xscreen.h"
+#include "XWorkArea.h"
+
 
 namespace LyXScreenFactory {
 

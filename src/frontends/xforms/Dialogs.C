@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "Dialogs.h"
-#include "Dialog.h"
 
 #include "Tooltips.h"
 
@@ -19,9 +18,7 @@
 #include "ControlBibtex.h"
 #include "ControlBranch.h"
 #include "ControlChanges.h"
-#include "ControlCharacter.h"
 #include "ControlCitation.h"
-#include "ControlCommand.h"
 #include "ControlErrorList.h"
 #include "ControlERT.h"
 #include "ControlExternal.h"
@@ -37,7 +34,6 @@
 #include "ControlShowFile.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
-#include "ControlTexinfo.h"
 #include "ControlToc.h"
 #include "ControlVCLog.h"
 #include "ControlWrap.h"
@@ -99,7 +95,6 @@
 #include "ams_nrel.xbm"
 #include "ams_ops.xbm"
 
-#include <vector>
 
 
 namespace {

@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "fdesign_base.h"
 #include "lyx_forms.h"
 

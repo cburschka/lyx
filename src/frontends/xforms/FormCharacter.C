@@ -11,27 +11,25 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
-#include "ButtonController.h"
-#include "ControlCharacter.h"
 #include "FormCharacter.h"
 #include "forms/form_character.h"
-#include "gettext.h"
-#include "helper_funcs.h"
-#include "xforms_helpers.h"
-#include "lyx_forms.h"
-#include "combox.h"
 
-#include "frnt_lang.h"
+#include "xforms_helpers.h"
+#include "xformsBC.h"
+
+#include "controllers/frnt_lang.h"
+#include "controllers/helper_funcs.h"
 
 #include "support/lstrings.h"
 
-#include <vector>
+#include "lyx_forms.h"
+#include "combox.h"
 
 using namespace lyx::support;
 
-using std::vector;
 using std::find;
+using std::vector;
+
 
 using namespace frnt;
 

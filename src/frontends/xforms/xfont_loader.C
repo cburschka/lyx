@@ -9,25 +9,24 @@
  */
 
 #include <config.h>
-#include <cmath>	// fabs()
-
 
 #include "xfont_loader.h"
 #include "FontInfo.h"
-#include "gettext.h"
+
 #include "debug.h"
 #include "lyxrc.h"	// lyxrc.font_*
-#include "BufferView.h"
-#include "frontends/LyXView.h"
+
 #include "frontends/lyx_gui.h"
-#include "support/systemcall.h"
+
 #include "support/filetools.h"
+#include "support/systemcall.h"
 
 #include "lyx_forms.h"
 
 using namespace lyx::support;
 
 using std::endl;
+
 
 // The global fontloader
 xfont_loader fontloader;

@@ -14,18 +14,17 @@
 
 #include <config.h>
 
-
 #include "FormMathsStyle.h"
 #include "forms/form_maths_style.h"
 #include "ControlMath.h"
 #include "xformsBC.h"
 
-#include "bmtable.h"
-
 #include "lyx_forms.h"
+#include "bmtable.h"
 
 #include "style.xbm"
 #include "font.xbm"
+
 
 char const * latex_mathstyle[] = {
 	"displaystyle", "textstyle", "scriptstyle", "scriptscriptstyle"

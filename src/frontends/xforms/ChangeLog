@@ -1,3 +1,8 @@
+2003-09-05  Angus Leeming  <angus@localhost.localdomain>
+
+	* *.C: strip out redundant #includes. (180 in total.)
+	Reorder remaining #includes in consistent fashion.
+
 2003-09-04  Angus Leeming  <angus@localhost.localdomain>
 
 	* Alert_pimpl.C:  move #include "debug.h" out of the header file.

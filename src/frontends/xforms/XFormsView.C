@@ -10,32 +10,28 @@
 
 #include <config.h>
 
-
 #include "XFormsView.h"
-#include "lyx_forms.h"
 
-#include "XMiniBuffer.h"
 #include "XFormsMenubar.h"
 #include "XFormsToolbar.h"
-#include "debug.h"
-#include "intl.h"
-#include "lyxrc.h"
-#include "support/filetools.h"        // OnlyFilename()
-#include "frontends/Timeout.h"
-#include "frontends/Dialogs.h"
-#include "MenuBackend.h"
-#include "ToolbarBackend.h"
-#include "lyxfunc.h"
-#include "bufferview_funcs.h"
+#include "XMiniBuffer.h"
+
 #include "BufferView.h"
+#include "debug.h"
+#include "lyxfunc.h"
+#include "MenuBackend.h"
+
+#include "frontends/Dialogs.h"
+
+#include "support/filetools.h"        // OnlyFilename()
 
 #include <boost/bind.hpp>
-#include <boost/signals/connection.hpp>
 
 using namespace lyx::support;
 
 using std::abs;
 using std::endl;
+
 
 //extern void AutoSave(BufferView *);
 extern void QuitLyX();

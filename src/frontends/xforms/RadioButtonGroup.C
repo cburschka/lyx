@@ -11,22 +11,21 @@
 
 #include <config.h>
 
-
 #include "RadioButtonGroup.h"
-#include "lyx_forms.h"
+
 #include "xforms_helpers.h"
 
+#include "debug.h"
+
 #include "support/LAssert.h"
-#include "debug.h" // for lyxerr
 #include "support/lyxfunctional.h"
 
-#include <algorithm>
-#include <iterator>
+#include "lyx_forms.h"
 
 using namespace lyx::support;
 
-using std::find_if;
 using std::endl;
+using std::find_if;
 
 
 void RadioButtonGroup::init(FL_OBJECT * ob, size_type value)

@@ -13,21 +13,17 @@
 #include "FormColorpicker.h"
 #include "forms/form_colorpicker.h"
 
-#include "xforms_resize.h"
 #include "Tooltips.h"
-#include "Color.h"
+#include "xforms_resize.h"
 
 #include "gettext.h"
 #include "lyxrc.h"
 
-#include "support/LAssert.h"
 #include "support/filetools.h" //  LibFileSearch
+#include "support/LAssert.h"
 #include "support/tostr.h"
 
 #include "lyx_forms.h"
-
-#include "Lsstream.h"
-#include <iomanip>
 
 
 namespace {

@@ -11,19 +11,23 @@
 #include <config.h>
 
 #include "FormSendto.h"
-#include "forms/form_sendto.h"
 #include "ControlSendto.h"
-#include "xformsBC.h"
+#include "forms/form_sendto.h"
+
 #include "Tooltips.h"
 #include "xforms_helpers.h"
+#include "xformsBC.h"
+
 #include "format.h"
-#include "gettext.h"
-#include "lyx_forms.h"
+
 #include "support/lstrings.h"
+
+#include "lyx_forms.h"
 
 using namespace lyx::support;
 
 using std::vector;
+
 
 typedef FormCB<ControlSendto, FormDB<FD_sendto> > base_class;
 

@@ -9,17 +9,15 @@
  */
 
 #include <config.h>
-#include <utility>
 
-
-#include "xformsBC.h"
-#include "ControlTabularCreate.h"
 #include "FormTabularCreate.h"
+#include "ControlTabularCreate.h"
 #include "forms/form_tabular_create.h"
-#include "Tooltips.h"
-#include "support/lstrings.h"
-#include "lyx_forms.h"
 
+#include "Tooltips.h"
+#include "xformsBC.h"
+
+#include "lyx_forms.h"
 
 using std::make_pair;
 

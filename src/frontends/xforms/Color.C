@@ -10,14 +10,14 @@
 
 #include <config.h>
 
-
 #include "Color.h"
-#include <algorithm> // max
-#include <cmath> // floor
-#include <iomanip>
-#include "lyx_forms.h"
-#include "Lsstream.h"
+
 #include "support/LAssert.h"
+
+#include "lyx_forms.h"
+
+#include "Lsstream.h"
+#include <iomanip>
 
 namespace support = lyx::support;
 

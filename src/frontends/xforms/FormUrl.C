@@ -11,12 +11,14 @@
 
 #include <config.h>
 
+#include "FormUrl.h"
+#include "ControlCommand.h"
+#include "forms/form_url.h"
 
 #include "xformsBC.h"
-#include "ControlCommand.h"
-#include "FormUrl.h"
-#include "forms/form_url.h"
+
 #include "lyx_forms.h"
+
 
 typedef  FormController<ControlCommand, FormView<FD_url> > base_class;
 

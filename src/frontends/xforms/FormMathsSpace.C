@@ -13,13 +13,13 @@
 
 #include <config.h>
 
-
 #include "FormMathsSpace.h"
 #include "forms/form_maths_space.h"
 #include "ControlMath.h"
 #include "xformsBC.h"
 
 #include "lyx_forms.h"
+
 
 extern char * latex_mathspace[];
 

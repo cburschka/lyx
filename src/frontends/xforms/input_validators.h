@@ -18,6 +18,7 @@
 #ifndef INPUT_VALIDATORS_H
 #define INPUT_VALIDATORS_H
 
+#include "forms_fwd.h"
 
 #if defined(__cplusplus)
 extern "C"

@@ -16,17 +16,19 @@
 
 #include <config.h>
 
-
 #include "Tooltips.h"
+
 #include "xforms_helpers.h" // formatted
-#include "gettext.h"
-#include "support/lstrings.h"
+
 #include "support/LAssert.h"
+#include "support/lstrings.h"
+
 #include "lyx_forms.h"
 
 #include <boost/bind.hpp>
 
 using namespace lyx::support;
+
 
 bool Tooltips::enabled_ = true;
 

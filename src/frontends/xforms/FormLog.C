@@ -10,13 +10,14 @@
 
 #include <config.h>
 
+#include "FormLog.h"
+#include "ControlLog.h"
+#include "forms/form_browser.h"
 
 #include "xformsBC.h"
-#include "ControlLog.h"
-#include "FormLog.h"
-#include "forms/form_browser.h"
-#include "gettext.h"
+
 #include "lyx_forms.h"
+
 
 FormLog::FormLog(Dialog & parent)
 	: FormController<ControlLog, FormBrowser>(parent, _("LaTeX Log"))

@@ -11,8 +11,8 @@
 #include <config.h>
 
 #include "frontends/WorkAreaFactory.h"
-
 #include "XWorkArea.h"
+
 
 namespace WorkAreaFactory {
 

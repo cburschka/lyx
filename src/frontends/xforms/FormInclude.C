@@ -12,21 +12,20 @@
 
 #include <config.h>
 
-#include "debug.h"
-
-#include "xformsBC.h"
-#include "ControlInclude.h"
 #include "FormInclude.h"
+#include "ControlInclude.h"
 #include "forms/form_include.h"
-#include "insets/insetinclude.h"
+
 #include "Tooltips.h"
 #include "xforms_helpers.h" // setEnabled
+#include "xformsBC.h"
+
 #include "support/lstrings.h" // strip
+
 #include "lyx_forms.h"
 
-#include <algorithm>
-
 using namespace lyx::support;
+
 
 typedef FormController<ControlInclude, FormView<FD_include> > base_class;
 

@@ -12,27 +12,28 @@
 #include <config.h>
 
 #include "XFormsMenubar.h"
-#include "MenuBackend.h"
+
 #include "XFormsView.h"
+
+#include "debug.h"
+#include "gettext.h"
 #include "lyxfunc.h"
+#include "MenuBackend.h"
+
+#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
-#include "support/LAssert.h"
-#include "gettext.h"
-#include "debug.h"
+
 #include "lyx_forms.h"
-
-//#include <boost/scoped_ptr.hpp>
-
-#include <algorithm>
 
 using namespace lyx::support;
 
 using std::endl;
-using std::vector;
+using std::for_each;
 using std::max;
 using std::min;
-using std::for_each;
+using std::vector;
+
 
 typedef vector<int>::size_type size_type;
 

@@ -11,16 +11,16 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
-#include "ControlNote.h"
 #include "FormNote.h"
+#include "ControlNote.h"
 #include "forms/form_note.h"
-#include "Tooltips.h"
-#include "lyx_forms.h"
-#include "insets/insetnote.h"
-#include "debug.h"
 
-#include <vector>
+#include "Tooltips.h"
+#include "xformsBC.h"
+
+#include "insets/insetnote.h"
+
+#include "lyx_forms.h"
 
 using std::vector;
 

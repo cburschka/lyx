@@ -12,23 +12,23 @@
 #include <config.h>
 
 #include "FontInfo.h"
+
 #include "debug.h"
 #include "lyxrc.h"	// lyxrc.use_scalable_fonts
 
-#include "support/tostr.h"
-#include "support/lstrings.h"
-#include "support/lyxlib.h"
-
 #include "frontends/lyx_gui.h"
 
-#include <cmath>	// abs()
+#include "support/lstrings.h"
+#include "support/lyxlib.h"
+#include "support/tostr.h"
+
+#include "lyx_forms.h"
 
 using namespace lyx::support;
 
-using std::endl;
 using std::abs;
+using std::endl;
 
-#include "lyx_forms.h"
 
 /// Load font close to this size
 string const FontInfo::getFontname(int size)

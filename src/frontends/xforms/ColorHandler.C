@@ -10,17 +10,17 @@
 
 #include <config.h>
 
-
 #include "ColorHandler.h"
-#include "LColor.h"
-#include "gettext.h"
+
 #include "debug.h"
+#include "gettext.h"
+
+#include "support/lstrings.h"
+#include "support/tostr.h"
+
+#include "lyx_forms.h"
 
 #include <boost/scoped_array.hpp>
-#include "support/tostr.h"
-#include "support/lstrings.h"
-
-#include <cmath>
 
 using namespace lyx::support;
 
@@ -30,7 +30,6 @@ using std::pow;
 
 using std::endl;
 
-#include "lyx_forms.h"
 
 namespace {
 

@@ -10,62 +10,44 @@
 
 #include <config.h>
 
-#include "ControlPrefs.h"
 #include "FormPreferences.h"
+#include "ControlPrefs.h"
 #include "forms/form_preferences.h"
-#include "xformsBC.h"
-#include "ButtonController.h"
 
 #include "FormColorpicker.h"
-#include "Color.h"
-#include "input_validators.h"
 #include "forms_gettext.h"
-#include "xforms_helpers.h"
-#include "helper_funcs.h" // getSecond
+#include "input_validators.h"
+#include "xformsBC.h"
+
+#include "controllers/helper_funcs.h" // getSecond
 
 #include "buffer.h"
 #include "converter.h"
 #include "format.h"
-#include "debug.h"
-#include "language.h"
 #include "frnt_lang.h"
-#include "lyxlex.h"
-#include "lyxrc.h"
-#include "LColor.h"
-#include "Lsstream.h"
-#include "funcrequest.h"
-#include "author.h"
 
+#include "support/LAssert.h"
 #include "support/lstrings.h"
-#include "support/lyxfunctional.h"
-#include "support/lyxmanip.h"
 #include "support/tostr.h"
 #include "support/path_defines.h"
 #include "support/filetools.h"
-#include "support/LAssert.h"
-
-#include "graphics/GraphicsCache.h"
-#include "graphics/GraphicsTypes.h"
-
-#include <boost/bind.hpp>
 
 #include "lyx_forms.h"
 #include "combox.h"
 
-#include <utility>
 #include <iomanip>
-#include <X11/Xlib.h>
 
 using std::endl;
-using std::pair;
 using std::make_pair;
 using std::max;
 using std::min;
-using std::vector;
-using std::setw;
 using std::setfill;
+using std::setw;
+using std::pair;
+using std::vector;
 
 using namespace lyx::support;
+
 
 namespace {
 

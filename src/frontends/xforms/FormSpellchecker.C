@@ -10,19 +10,20 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
 #include "FormSpellchecker.h"
 #include "ControlSpellchecker.h"
 #include "forms/form_spellchecker.h"
 
-#include "forms_gettext.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h"
+#include "xformsBC.h"
+
 #include "support/tostr.h"
 
 #include "lyx_forms.h"
 
 using std::endl;
+
 
 typedef FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > base_class;
 

@@ -10,30 +10,24 @@
 
 #include <config.h>
 
-#include "ControlTabular.h"
-#include "xformsBC.h"
-#include "ButtonController.h"
-#include "insets/insettabular.h"
-
 #include "FormTabular.h"
+#include "ControlTabular.h"
 #include "forms/form_tabular.h"
-#include "debug.h"
+
 #include "xforms_helpers.h"
-#include "gettext.h"
-#include "lyxrc.h"
-#include "helper_funcs.h"
-#include "input_validators.h"
+#include "xformsBC.h"
+
+#include "controllers/ButtonController.h"
+#include "controllers/helper_funcs.h"
+
 #include "support/lstrings.h"
 
 #include "lyx_forms.h"
 
-#include <vector>
-#include <algorithm>
-
 using namespace lyx::support;
 
-using std::vector;
 using std::bind2nd;
+using std::vector;
 
 
 namespace {

@@ -10,13 +10,15 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
-#include "ControlChanges.h"
 #include "FormChanges.h"
+#include "ControlChanges.h"
 #include "forms/form_changes.h"
+
+#include "xformsBC.h"
 #include "xforms_helpers.h"
 
 #include "lyx_forms.h"
+
 
 typedef FormController<ControlChanges, FormView<FD_changes> > base_class;
 

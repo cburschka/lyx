@@ -9,15 +9,16 @@
  */
 
 #include <config.h>
-#include "Lsstream.h"
 
+#include "FormVCLog.h"
+#include "ControlVCLog.h"
+#include "forms/form_browser.h"
 
 #include "xformsBC.h"
-#include "ControlVCLog.h"
-#include "FormVCLog.h"
-#include "forms/form_browser.h"
-#include "gettext.h"
+
 #include "lyx_forms.h"
+
+#include "Lsstream.h"
 
 
 FormVCLog::FormVCLog(Dialog & parent)

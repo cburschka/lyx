@@ -9,18 +9,21 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
 #include <config.h>
-#include "xformsBC.h"
-#include "ControlCommand.h"
+
 #include "FormBibitem.h"
-#include "Tooltips.h"
+#include "ControlCommand.h"
 #include "forms/form_bibitem.h"
-#include "lyx_forms.h"
-#include "gettext.h"
+
+#include "Tooltips.h"
+#include "xformsBC.h"
+
 #include "support/lstrings.h" // compare
 
+#include "lyx_forms.h"
+
 using namespace lyx::support;
+
 
 typedef FormController<ControlCommand, FormView<FD_bibitem> > base_class;
 

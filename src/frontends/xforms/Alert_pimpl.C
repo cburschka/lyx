@@ -10,21 +10,22 @@
 
 #include <config.h>
 
-#include "Alert.h"
 #include "Alert_pimpl.h"
+
 #include "forms_gettext.h"
-#include "gettext.h"
 #include "xforms_helpers.h"
 
 #include "debug.h"
+#include "gettext.h"
 
-#include <algorithm>
 #include <boost/tuple/tuple.hpp>
+
 #include "lyx_forms.h"
 
-using std::pair;
-using std::make_pair;
 using std::endl;
+using std::make_pair;
+using std::pair;
+
 
 void warning_pimpl(string const &, string const & message)
 {

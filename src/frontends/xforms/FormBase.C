@@ -12,22 +12,22 @@
 
 #include "FormBase.h"
 
-#include "ControlButtons.h"
-#include "xformsBC.h"
-#include "ButtonController.h"
-#include "xforms_resize.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h" // formatted
+#include "xforms_resize.h"
+#include "xformsBC.h"
 
-#include "gettext.h"        // _()
+#include "controllers/ButtonController.h"
+#include "controllers/ControlButtons.h"
 
-#include "support/lstrings.h"
-#include "support/LAssert.h"
 #include "support/filetools.h" //  LibFileSearch
+#include "support/LAssert.h"
+#include "support/lstrings.h"
 
 #include "lyx_forms.h"
 
 using namespace lyx::support;
+
 
 extern "C" {
 

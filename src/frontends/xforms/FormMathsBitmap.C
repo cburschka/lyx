@@ -12,28 +12,24 @@
 
 #include <config.h>
 
-
 #include "FormMathsBitmap.h"
-#include "ControlMath.h"
-#include "xformsBC.h"
 
 #include "bmtable.h"
 #include "forms_gettext.h"
-#include "gettext.h"
+#include "xformsBC.h"
+
+#include "ControlMath.h"
+
 #include "support/LAssert.h"
-
-#include "lyx_xpm.h"
-
-#include <algorithm>
-
-extern  "C" void C_FormDialogView_CancelCB(FL_OBJECT *, long);
-extern  "C" void C_FormDialogView_InputCB(FL_OBJECT *, long);
 
 using namespace lyx::support;
 
-using std::vector;
 using std::max;
+using std::vector;
 
+
+extern  "C" void C_FormDialogView_CancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormDialogView_InputCB(FL_OBJECT *, long);
 
 FD_maths_bitmap::~FD_maths_bitmap()
 {

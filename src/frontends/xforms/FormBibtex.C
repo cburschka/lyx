@@ -11,26 +11,26 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
 #include <config.h>
-#include "xformsBC.h"
-#include "ControlBibtex.h"
+
 #include "FormBibtex.h"
+#include "ControlBibtex.h"
 #include "forms/form_bibtex.h"
+
 #include "Tooltips.h"
 #include "xforms_helpers.h"
-#include "lyx_forms.h"
+#include "xformsBC.h"
 
-#include "helper_funcs.h"
-#include "gettext.h"
-#include "support/lstrings.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "support/lyxalgo.h"
+
+#include "lyx_forms.h"
 
 using namespace lyx::support;
 
-using std::vector;
 using std::sort;
+using std::vector;
 
 
 typedef FormController<ControlBibtex, FormView<FD_bibtex> > base_class;

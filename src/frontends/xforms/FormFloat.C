@@ -12,18 +12,22 @@
 
 #include <config.h>
 
-
-#include "xformsBC.h"
-#include "ControlFloat.h"
 #include "FormFloat.h"
+#include "ControlFloat.h"
 #include "forms/form_float.h"
+
 #include "Tooltips.h"
 #include "xforms_helpers.h"
+#include "xformsBC.h"
+
 #include "insets/insetfloat.h"
+
 #include "support/lstrings.h"
+
 #include "lyx_forms.h"
 
 using namespace lyx::support;
+
 
 namespace {
 

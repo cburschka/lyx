@@ -11,22 +11,23 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
-#include "ControlPrint.h"
 #include "FormPrint.h"
+#include "ControlPrint.h"
 #include "forms/form_print.h"
+
+#include "input_validators.h"
 #include "Tooltips.h"
+#include "xforms_helpers.h"
+#include "xformsBC.h"
 
 #include "PrinterParams.h"
 
-#include "input_validators.h"
-#include "xforms_helpers.h"
+#include "support/tostr.h"
 
 #include "lyx_forms.h"
-#include "support/tostr.h"
-#include "support/lstrings.h"
 
 using namespace lyx::support;
+
 
 typedef FormCB<ControlPrint, FormDB<FD_print> > base_class;
 

@@ -11,35 +11,32 @@
 
 #include <config.h>
 
-#include "ControlParagraph.h"
 #include "FormParagraph.h"
+#include "ControlParagraph.h"
 #include "forms/form_paragraph.h"
-#include "Tooltips.h"
 
+#include "checkedwidgets.h"
+#include "input_validators.h"
+#include "Tooltips.h"
+#include "xforms_helpers.h"
+#include "xformsBC.h"
+
+#include "controllers/helper_funcs.h"
+
+#include "lyxrc.h" // to set the deafult length values
 #include "ParagraphParameters.h"
 
-#include "xforms_helpers.h"
-#include "lyxrc.h" // to set the deafult length values
-#include "input_validators.h"
-#include "helper_funcs.h"
-#include "checkedwidgets.h"
-#include "gettext.h"
-#include "xformsBC.h"
-#include "layout.h" // LyXAlignment
-
+#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
-#include "support/LAssert.h"
 
 #include "lyx_forms.h"
 
-#include <functional>
-
 using namespace lyx::support;
 
-using std::vector;
 using std::bind2nd;
 using std::remove_if;
+using std::vector;
 
 
 namespace

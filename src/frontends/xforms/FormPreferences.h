@@ -26,6 +26,7 @@
 class ControlPrefs;
 
 class Dialogs;
+class LyXRC;
 class LyXView;
 class RGBColor;
 class FormColorpicker;

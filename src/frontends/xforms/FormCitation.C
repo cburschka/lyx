@@ -11,30 +11,27 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
-#include "ControlCitation.h"
 #include "FormCitation.h"
+#include "ControlCitation.h"
 #include "forms/form_citation.h"
-#include "Kernel.h"
-#include "Tooltips.h"
-#include "helper_funcs.h"
-#include "xforms_helpers.h"
-#include "lyx_forms.h"
 
-#include "gettext.h"
-#include "support/LAssert.h"
+#include "Tooltips.h"
+#include "xforms_helpers.h"
+#include "xformsBC.h"
+
 #include "support/lstrings.h"
 
-#include <algorithm>
+#include "lyx_forms.h"
 
 using namespace lyx::support;
 
 using std::find;
 using std::max;
 using std::min;
-using std::pair;
 using std::sort;
+using std::pair;
 using std::vector;
+
 
 namespace {
 

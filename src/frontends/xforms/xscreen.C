@@ -11,28 +11,17 @@
 
 #include <config.h>
 
-
-#include <algorithm>
-#include <X11/Xlib.h>
-
-#include "frontends/screen.h"
-#include "frontends/font_metrics.h"
-#include "XWorkArea.h"
 #include "xscreen.h"
-#include "lyxtext.h"
-#include "lyxrow.h"
-#include "Painter.h"
-#include "WorkArea.h"
-#include "buffer.h"
-#include "BufferView.h"
-#include "insets/insettext.h"
+
 #include "ColorHandler.h"
-#include "language.h"
+#include "XWorkArea.h"
+
 #include "debug.h"
 
 using std::endl;
 using std::max;
 using std::min;
+
 
 namespace {
 
@@ -66,6 +55,12 @@ XScreen::XScreen(XWorkArea & o)
 XScreen::~XScreen()
 {
 	XFreeGC(fl_get_display(), gc_copy);
+}
+
+
+WorkArea & XScreen::workarea() const
+{
+	return owner_;
 }
 
 

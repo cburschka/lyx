@@ -9,16 +9,17 @@
  */
 #include <config.h>
 
-
 #include "forms_gettext.h"
+
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+namespace support = lyx::support;
+
 
 // Extract shortcut from "<identifier>|<shortcut>" string
 string const scex(string const & str)
 {
-	return split(str, '|');
+	return support::split(str, '|');
 }
 
 
@@ -26,6 +27,6 @@ string const scex(string const & str)
 string const idex(string const & str)
 {
 	string identifier;
-	split(str, identifier, '|');
+	support::split(str, identifier, '|');
 	return identifier;
 }

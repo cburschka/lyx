@@ -10,18 +10,22 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
-#include "ControlMinipage.h"
 #include "FormMinipage.h"
+#include "ControlMinipage.h"
 #include "forms/form_minipage.h"
+
+#include "xforms_helpers.h"
+#include "xformsBC.h"
+
+#include "controllers/helper_funcs.h"
+
 #include "support/lstrings.h"
 #include "support/tostr.h"
-#include "helper_funcs.h"
-#include "debug.h"
-#include "xforms_helpers.h"
+
 #include "lyx_forms.h"
 
 using namespace lyx::support;
+
 
 typedef FormController<ControlMinipage, FormView<FD_minipage> > base_class;
 

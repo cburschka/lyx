@@ -10,15 +10,16 @@
 
 #include <config.h>
 
-
-#include "xformsBC.h"
-#include "ControlSearch.h"
 #include "FormSearch.h"
+#include "ControlSearch.h"
 #include "forms/form_search.h"
+
 #include "Tooltips.h"
 #include "xforms_helpers.h"
+#include "xformsBC.h"
 
 #include "lyx_forms.h"
+
 
 typedef FormCB<ControlSearch, FormDB<FD_search> > base_class;
 

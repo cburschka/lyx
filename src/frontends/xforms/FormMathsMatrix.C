@@ -13,21 +13,20 @@
 
 #include <config.h>
 
-
 #include "FormMathsMatrix.h"
 #include "forms/form_maths_matrix.h"
 #include "ControlMath.h"
+
 #include "xformsBC.h"
-#include "ButtonController.h"
+
+#include "controllers/ButtonController.h"
 
 #include "support/LAssert.h"
 #include "support/lyxalgo.h" // lyx::count
 
-#include "Lsstream.h"
-
 #include "lyx_forms.h"
 
-#include <algorithm>
+#include "Lsstream.h"
 
 using namespace lyx::support;
 

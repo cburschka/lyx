@@ -12,38 +12,35 @@
 #include <config.h>
 
 #include "lyx_gui.h"
+#include "ColorHandler.h"
+#include "xfont_loader.h"
+#include "xforms_helpers.h"
+#include "xformsImage.h"
+#include "XFormsView.h"
+
+#include "bufferlist.h"
+#include "BufferView.h"
+#include "debug.h"
+#include "gettext.h"
+#include "lyx_main.h"
+#include "lyxfunc.h"
+#include "lyxrc.h"
+#include "lyxserver.h"
+
+#include "graphics/LoaderQueue.h"
 
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/filetools.h"
 #include "support/path_defines.h"
 
-#include "debug.h"
-#include "gettext.h"
-
-#include "lyx_main.h"
-#include "lyxrc.h"
-#include "lyxfont.h"
-#include "graphics/LoaderQueue.h"
-
-// FIXME: move this stuff out again
-#include "bufferlist.h"
-#include "buffer_funcs.h"
-#include "lyxfunc.h"
-#include "lyxserver.h"
-#include "BufferView.h"
-#include "XFormsView.h"
-
 #include "lyx_forms.h"
-#include "ColorHandler.h"
-#include "xforms_helpers.h"
-#include "xfont_loader.h"
-#include "xformsImage.h"
+
+#include <boost/bind.hpp>
 
 #include "Lsstream.h"
 #include <iomanip>
 #include <fcntl.h>
-#include <boost/bind.hpp>
 
 using namespace lyx::support;
 
@@ -51,13 +48,14 @@ using namespace lyx::support;
 using std::exit;
 #endif
 
-using std::vector;
-using std::hex;
 using std::dec;
 using std::endl;
+using std::hex;
 using std::setbase;
 using std::setfill;
 using std::setw;
+using std::vector;
+
 
 extern BufferList bufferlist;
 

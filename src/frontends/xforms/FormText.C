@@ -10,18 +10,21 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
-#include "ButtonController.h"
-#include "ControlCommand.h"
 #include "FormText.h"
+#include "ControlCommand.h"
 #include "forms/form_text.h"
+
+#include "xformsBC.h"
 #include "forms_gettext.h"
+
+#include "controllers/ButtonController.h"
 
 #include "support/lstrings.h"
 
 #include "lyx_forms.h"
 
 using namespace lyx::support;
+
 
 typedef FormController<ControlCommand, FormView<FD_text> > base_class;
 

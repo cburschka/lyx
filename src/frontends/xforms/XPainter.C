@@ -12,24 +12,17 @@
 #include <config.h>
 
 #include "XPainter.h"
-#include "LString.h"
-#include "debug.h"
-#include "XWorkArea.h"
-#include "xfont_metrics.h"
-#include "lyxfont.h"
+
 #include "ColorHandler.h"
-#include "lyxrc.h"
+#include "xfont_metrics.h"
+#include "xformsImage.h"
+#include "XWorkArea.h"
+
 #include "encoding.h"
 #include "language.h"
+#include "lyxfont.h"
 
-#include "xformsImage.h"
-
-#include "support/LAssert.h"
 #include "support/lstrings.h"
-
-#include <boost/scoped_array.hpp>
-
-#include <cmath>
 
 using namespace lyx::support;
 

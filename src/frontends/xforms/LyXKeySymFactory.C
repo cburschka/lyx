@@ -14,6 +14,7 @@
 
 #include "XLyXKeySym.h"
 
+
 namespace LyXKeySymFactory {
 
 LyXKeySym * create()

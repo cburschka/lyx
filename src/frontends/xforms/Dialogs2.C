@@ -15,7 +15,6 @@
 #include "controllers/GUI.h"
 #include "ButtonController.h"
 
-#include "Tooltips.h"
 #include "xformsBC.h"
 
 #include "ControlDocument.h"

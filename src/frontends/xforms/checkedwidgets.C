@@ -13,15 +13,15 @@
 
 #include "checkedwidgets.h"
 #include "xforms_helpers.h"
-#include "lyxlength.h"
 #include "lyxgluelength.h"
+
 #include "support/LAssert.h"
 #include "support/lstrings.h"
-#include "LString.h"
 
 #include "lyx_forms.h"
 
 using namespace lyx::support;
+
 
 void addCheckedLyXLength(BCView & bcview,
 			 FL_OBJECT * input, FL_OBJECT * label)

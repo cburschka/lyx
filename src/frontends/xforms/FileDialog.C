@@ -10,22 +10,19 @@
 
 #include <config.h>
 
-
 #include "FormFiledialog.h"
-#include "frontends/FileDialog.h"
-#include "frontends/LyXView.h"
-#include "bufferview_funcs.h"
-#include "gettext.h"
-#include "lfuns.h"
+
 #include "debug.h"
+#include "gettext.h"
+
 #include "support/lstrings.h"
-#include <utility>
 
 using namespace lyx::support;
 
+using std::endl;
 using std::make_pair;
 using std::pair;
-using std::endl;
+
 
 FileDialog::FileDialog(string const &t, kb_action s, Button b1, Button b2)
 	: private_(0), title_(t), success_(s)

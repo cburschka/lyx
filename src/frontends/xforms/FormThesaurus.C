@@ -10,16 +10,16 @@
 
 #include <config.h>
 
-#include "ControlThesaurus.h"
 #include "FormThesaurus.h"
+#include "ControlThesaurus.h"
 #include "forms/form_thesaurus.h"
-#include "xformsBC.h"
-#include "xforms_helpers.h"
-#include "debug.h"
-#include "support/lstrings.h"
-#include "lyx_forms.h"
 
-#include <cctype>
+#include "xforms_helpers.h"
+#include "xformsBC.h"
+
+#include "support/lstrings.h"
+
+#include "lyx_forms.h"
 
 using namespace lyx::support;
 

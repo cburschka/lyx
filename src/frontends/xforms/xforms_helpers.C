@@ -12,17 +12,15 @@
 
 #include "xforms_helpers.h"
 
-#include "lyxlex.h"
 #include "gettext.h"
-#include "lyxlength.h"
 #include "lyxgluelength.h"
-#include "Lsstream.h"
+#include "lyxlex.h"
 
-#include "support/LAssert.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
-#include "support/tostr.h"
+#include "support/LAssert.h"
 #include "support/lstrings.h" // frontStrip, strip
+#include "support/tostr.h"
 
 #include "lyx_forms.h"
 #include "combox.h"
@@ -31,10 +29,10 @@
 
 using namespace lyx::support;
 
+using std::make_pair;
 using std::ofstream;
 using std::pair;
 using std::vector;
-using std::make_pair;
 
 
 bool isActive(FL_OBJECT * ob)

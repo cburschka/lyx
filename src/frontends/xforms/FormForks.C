@@ -11,24 +11,27 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
-#include "ButtonController.h"
 #include "FormForks.h"
 #include "ControlForks.h"
 #include "forms/form_forks.h"
+
 #include "Tooltips.h"
-#include "helper_funcs.h"
 #include "xforms_helpers.h"
-#include "gettext.h"
+#include "xformsBC.h"
+
+#include "controllers/ButtonController.h"
+
 #include "support/lstrings.h"
-#include "lyx_forms.h"
 #include "support/tostr.h"
+
+#include "lyx_forms.h"
 
 using namespace lyx::support;
 
-using std::vector;
 using std::find;
 using std::find_if;
+using std::vector;
+
 
 typedef FormCB<ControlForks, FormDB<FD_forks> > base_class;
 

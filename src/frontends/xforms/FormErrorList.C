@@ -10,16 +10,12 @@
 
 #include <config.h>
 
-
-#include "errorlist.h"
 #include "FormErrorList.h"
-#include "xformsBC.h"
-#include "xforms_helpers.h"
 #include "ControlErrorList.h"
 #include "forms/form_errorlist.h"
-#include "support/lstrings.h" // frontStrip, strip
-#include "debug.h"
-#include "gettext.h"
+
+#include "xformsBC.h"
+#include "xforms_helpers.h"
 #include "lyx_forms.h"
 
 

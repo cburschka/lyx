@@ -11,20 +11,13 @@
 
 #include <config.h>
 
-#include <unistd.h>
-#include <cstdlib>
-#include <pwd.h>
-#include <grp.h>
-#include <map>
-#include <algorithm>
+#include "FormFiledialog.h"
+#include "forms/form_filedialog.h"
 
-using std::map;
-using std::max;
-using std::sort;
-
-#include "gettext.h"
 #include "forms_gettext.h"
 #include "xforms_helpers.h"
+
+#include "frontends/Dialogs.h"
 
 #include "support/FileInfo.h"
 #include "support/lyxlib.h"
@@ -32,10 +25,14 @@ using std::sort;
 #include "support/tostr.h"
 #include "support/filetools.h"
 
-#include "frontends/Alert.h"
-#include "frontends/Dialogs.h"
+#include "lyx_forms.h"
 
 #include <boost/bind.hpp>
+
+#include <algorithm>
+#include <map>
+#include <grp.h>
+#include <pwd.h>
 
 //#ifdef HAVE_ERRNO_H
 //#include <cerrno>
@@ -56,12 +53,12 @@ using std::sort;
 # endif
 #endif
 
-
-#include "FormFiledialog.h"
-#include "forms/form_filedialog.h"
-#include "lyx_forms.h"
+using std::max;
+using std::sort;
+using std::map;
 
 using namespace lyx::support;
+
 
 namespace {
 

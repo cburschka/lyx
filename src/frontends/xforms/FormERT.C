@@ -10,15 +10,14 @@
 
 #include <config.h>
 
+#include "FormERT.h"
+#include "ControlERT.h"
+#include "forms/form_ert.h"
 
 #include "xformsBC.h"
-#include "ControlERT.h"
-#include "FormERT.h"
-#include "forms/form_ert.h"
-#include "support/lstrings.h"
-#include "helper_funcs.h"
-#include "debug.h"
+
 #include "lyx_forms.h"
+
 
 typedef  FormController<ControlERT, FormView<FD_ert> > base_class;
 

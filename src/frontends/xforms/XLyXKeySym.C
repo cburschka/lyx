@@ -10,15 +10,14 @@
 
 #include <config.h>
 
-
 #include "XLyXKeySym.h"
 
 #include "debug.h"
 
-#include <X11/Xlib.h>
 #include <X11/keysym.h>
 
 using std::endl;
+
 
 XLyXKeySym::XLyXKeySym()
 	: LyXKeySym(), keysym_(NoSymbol)

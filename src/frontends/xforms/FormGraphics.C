@@ -12,31 +12,26 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
-#include "ControlGraphics.h"
 #include "FormGraphics.h"
+#include "ControlGraphics.h"
 #include "forms/form_graphics.h"
+
+#include "controllers/helper_funcs.h" // for getStringFromVector
 
 #include "checkedwidgets.h"
 #include "input_validators.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h"
+#include "xformsBC.h"
 
-#include "debug.h" // for lyxerr
 #include "lyxrc.h" // for lyxrc.display_graphics
 
 #include "insets/insetgraphicsParams.h"
 
-#include "controllers/helper_funcs.h" // for getStringFromVector
-
 #include "frontends/Alert.h"
 
-#include "support/tostr.h"
-#include "support/lstrings.h"  // for strToDbl
 #include "support/lyxlib.h"  // for float_equal
-#include "support/filetools.h"  // for MakeAbsPath etc
-
-#include "support/BoostFormat.h"
+#include "support/tostr.h"
 
 #include "lyx_forms.h"
 

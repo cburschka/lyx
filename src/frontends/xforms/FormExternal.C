@@ -12,25 +12,24 @@
 
 #include <config.h>
 
-#include "xformsBC.h"
-#include "ControlExternal.h"
 #include "FormExternal.h"
+#include "ControlExternal.h"
 #include "forms/form_external.h"
 
-#include "helper_funcs.h"
 #include "input_validators.h"
 #include "Tooltips.h"
 #include "xforms_helpers.h"
-
-#include "gettext.h"
+#include "xformsBC.h"
 
 #include "insets/ExternalTemplate.h"
 
-#include "support/tostr.h"
 #include "support/lstrings.h"
+#include "support/tostr.h"
+
 #include "lyx_forms.h"
 
 using namespace lyx::support;
+
 
 typedef FormController<ControlExternal, FormView<FD_external> > base_class;
 

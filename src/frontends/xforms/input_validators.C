@@ -10,11 +10,14 @@
 
 #include <config.h>
 
-#include "lyx_forms.h"
-#include "support/lstrings.h"
 #include "input_validators.h"
 
-using namespace lyx::support;
+#include "support/lstrings.h"
+
+#include "lyx_forms.h"
+
+namespace support = lyx::support;
+
 
 #if defined(__cplusplus)
 extern "C"
@@ -26,7 +29,7 @@ int fl_int_filter(FL_OBJECT * ob,
 {
 	if (c == 0 /* final test before handing contents to app */
 	    || strchr("0123456789+-", c)) {
-		if (isStrInt(fl_get_input(ob)))
+		if (support::isStrInt(fl_get_input(ob)))
 			return FL_VALID;
 	}
 	return FL_INVALID|FL_RINGBELL;
@@ -50,7 +53,7 @@ int fl_float_filter(FL_OBJECT * ob,
 {
 	if (c == 0 /* final test before handing contents to app */
 	    || strchr("0123456789.+-", c)) {
-		if (isStrDbl(fl_get_input(ob)))
+		if (support::isStrDbl(fl_get_input(ob)))
 			return FL_VALID;
 	}
 	return FL_INVALID|FL_RINGBELL;
@@ -64,7 +67,7 @@ int fl_unsigned_float_filter(FL_OBJECT * ob,
 {
 	if (c == 0 /* final test before handing contents to app */
 	    || strchr("0123456789.", c)) {
-		if (isStrDbl(fl_get_input(ob)))
+		if (support::isStrDbl(fl_get_input(ob)))
 			return FL_VALID;
 	}
 	return FL_INVALID|FL_RINGBELL;

@@ -13,20 +13,16 @@
 
 #include <config.h>
 
-
 #include "FormMathsDelim.h"
 #include "forms/form_maths_delim.h"
 #include "ControlMath.h"
-#include "xformsBC.h"
-#include "ButtonController.h"
 
 #include "bmtable.h"
+#include "xformsBC.h"
 
-#include "support/lstrings.h"
+#include "controllers/ButtonController.h"
 
 #include "Lsstream.h"
-
-#include "lyx_forms.h"
 
 #include "delim.xbm"
 #include "delim0.xpm"

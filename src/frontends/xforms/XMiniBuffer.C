@@ -12,19 +12,18 @@
 #include <config.h>
 
 #include "XMiniBuffer.h"
-#include "ControlCommandBuffer.h"
+
 #include "freebrowser.h"
 #include "xforms_helpers.h"
 
-#include "gettext.h"
+#include "controllers/ControlCommandBuffer.h"
 
 #include "frontends/Timeout.h"
 
-#include "support/lstrings.h"
+#include "gettext.h"
 
 #include <boost/bind.hpp>
 
-#include <vector>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::isprint;
