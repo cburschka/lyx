@@ -521,6 +521,12 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 				flag.setOnOff(type == LM_OT_EQNARRAY);
 			} else if (argument == "align") {
 				flag.setOnOff(type == LM_OT_ALIGN);
+			} else if (argument == "alignat") {
+				flag.setOnOff(type == LM_OT_ALIGNAT);
+			} else if (argument == "xalignat") {
+				flag.setOnOff(type == LM_OT_XALIGNAT);
+			} else if (argument == "xxalignat") {
+				flag.setOnOff(type == LM_OT_XXALIGNAT);
 			} else if (argument == "none") {
 				flag.setOnOff(type == LM_OT_NONE);
 			} else {

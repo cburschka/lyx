@@ -1,3 +1,8 @@
+
+2002-06-24  André Pönitz <poenitz@gmx.net>
+
+	* lyxfunc.C: fix #487
+
 2002-06-21  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxrc.h:
@@ -113,7 +118,7 @@
 	* LaTeX.C:
 	* vspace.C: wrap using std::sscanf inside a CXX_GLOBAL_CSTD block.
 
-2002-06-12  "Andrew Zabolotny"  <zap@cobra.ru>
+2002-06-12  Andrew Zabolotny  <zap@cobra.ru>
 
 	* kbmap.C (getiso): add support for cyrillic and greek
 
