@@ -86,6 +86,7 @@ src/frontends/qt2/QThesaurus.C
 src/frontends/qt2/QToc.C
 src/frontends/qt2/QURL.C
 src/frontends/qt2/QVCLog.C
+src/frontends/qt2/QVSpace.C
 src/frontends/qt2/QWrap.C
 src/frontends/qt2/Qt2BC.h
 src/frontends/qt2/QtView.C
@@ -106,6 +107,7 @@ src/frontends/xforms/FormCitation.C
 src/frontends/xforms/FormColorpicker.C
 src/frontends/xforms/FormDialogView.C
 src/frontends/xforms/FormDocument.C
+src/frontends/xforms/FormDocumentNew.C
 src/frontends/xforms/FormERT.C
 src/frontends/xforms/FormErrorList.C
 src/frontends/xforms/FormExternal.C
@@ -201,6 +203,7 @@ src/output_plaintext.C
 src/paragraph.C
 src/paragraph_funcs.C
 src/rowpainter.C
+src/support/path_defines.C
 src/text.C
 src/text2.C
 src/text3.C

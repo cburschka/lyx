@@ -35,6 +35,7 @@
 #include "ControlTabularCreate.h"
 #include "ControlToc.h"
 #include "ControlVCLog.h"
+#include "ControlVSpace.h"
 #include "ControlWrap.h"
 
 #include "Qt2BC.h"
@@ -70,6 +71,7 @@
 #include "QToc.h"
 #include "QURL.h"
 #include "QVCLog.h"
+#include "QVSpace.h"
 #include "QWrap.h"
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -94,7 +96,7 @@ char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "branch",
 "thesaurus",
 #endif
 
-"toc", "url", "vclog", "wrap" };
+"toc", "url", "vclog", "vspace", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -257,6 +259,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlVCLog(*dialog));
 		dialog->setView(new QVCLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
+	} else if (name == "vspace") {
+		dialog->setController(new ControlVSpace(*dialog));
+		dialog->setView(new QVSpace(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "wrap") {
 		dialog->setController(new ControlWrap(*dialog));
 		dialog->setView(new QWrap(*dialog));

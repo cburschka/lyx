@@ -64,6 +64,7 @@ libqt2_la_SOURCES = \
 	QToc.C QToc.h \
 	QURL.C QURL.h \
 	QVCLog.C QVCLog.h \
+	QVSpace.C QVSpace.h \
 	QWorkArea.h QWorkArea.C \
 	QWrap.C QWrap.h \
 	Qt2BC.C	Qt2BC.h	\

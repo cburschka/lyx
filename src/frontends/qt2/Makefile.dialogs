@@ -66,6 +66,7 @@ UIFILES = \
 	QTocDialogBase.ui \
 	QURLDialogBase.ui \
 	QVCLogDialogBase.ui \
+	QVSpaceDialogBase.ui \
 	QWrapDialogBase.ui
 
 MOCFILES = \
@@ -124,6 +125,7 @@ MOCFILES = \
 	QtView.C QtView.h \
 	QURLDialog.C QURLDialog.h \
 	QVCLogDialog.C QVCLogDialog.h \
+	QVSpaceDialog.C QVSpaceDialog.h \
 	QWrapDialog.C QWrapDialog.h \
 	QLToolbar.C QLToolbar.h \
 	socket_callback.C socket_callback.h
