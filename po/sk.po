@@ -5,7 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.3.0\n"
-"POT-Creation-Date: 2005-03-07 12:50+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-03-30 16:43+0200\n"
 "PO-Revision-Date: 2003-02-10 21:20+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -2509,7 +2510,7 @@ msgstr "Odstráni» oznaèenú citáciu"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:293
 #, fuzzy
-msgid "Remove citation of the selected bibiography entry"
+msgid "Remove citation of the selected bibliography entry"
 msgstr "Odstráni» oznaèenú citáciu"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:319
@@ -4672,7 +4673,7 @@ msgstr "&Umiestnenie:"
 #: ../lib/layouts/kluwer.layout:35 ../lib/layouts/linuxdoc.layout:17
 #: ../lib/layouts/llncs.layout:23 ../lib/layouts/ltugboat.layout:30
 #: ../lib/layouts/manpage.layout:17 ../lib/layouts/paper.layout:15
-#: ../lib/layouts/revtex.layout:24 ../lib/layouts/revtex4.layout:24
+#: ../lib/layouts/revtex.layout:24 ../lib/layouts/revtex4.layout:26
 #: ../lib/layouts/scrlettr.layout:7 ../lib/layouts/scrlttr2.layout:7
 #: ../lib/layouts/siamltex.layout:18 ../lib/layouts/slides.layout:72
 #: ../lib/layouts/db_stdclass.inc:28 ../lib/layouts/scrclass.inc:13
@@ -4826,7 +4827,7 @@ msgstr ""
 #: ../lib/layouts/linuxdoc.layout:68 ../lib/layouts/llncs.layout:44
 #: ../lib/layouts/ltugboat.layout:46 ../lib/layouts/manpage.layout:41
 #: ../lib/layouts/paper.layout:46 ../lib/layouts/revtex.layout:42
-#: ../lib/layouts/revtex4.layout:45 ../lib/layouts/siamltex.layout:38
+#: ../lib/layouts/revtex4.layout:47 ../lib/layouts/siamltex.layout:38
 #: ../lib/layouts/spie.layout:23 ../lib/layouts/aguplus.inc:23
 #: ../lib/layouts/db_stdsections.inc:25 ../lib/layouts/scrclass.inc:70
 #: ../lib/layouts/stdsections.inc:63 ../lib/layouts/svjour.inc:42
@@ -4842,7 +4843,7 @@ msgstr "Oddiel"
 #: ../lib/layouts/kluwer.layout:64 ../lib/layouts/latex8.layout:46
 #: ../lib/layouts/linuxdoc.layout:94 ../lib/layouts/llncs.layout:57
 #: ../lib/layouts/ltugboat.layout:70 ../lib/layouts/paper.layout:54
-#: ../lib/layouts/revtex.layout:55 ../lib/layouts/revtex4.layout:58
+#: ../lib/layouts/revtex.layout:55 ../lib/layouts/revtex4.layout:60
 #: ../lib/layouts/siamltex.layout:56 ../lib/layouts/aguplus.inc:35
 #: ../lib/layouts/db_stdsections.inc:32 ../lib/layouts/scrclass.inc:77
 #: ../lib/layouts/stdsections.inc:88 ../lib/layouts/svjour.inc:52
@@ -4857,7 +4858,7 @@ msgstr "Pododdiel"
 #: ../lib/layouts/kluwer.layout:73 ../lib/layouts/linuxdoc.layout:121
 #: ../lib/layouts/llncs.layout:66 ../lib/layouts/ltugboat.layout:93
 #: ../lib/layouts/paper.layout:62 ../lib/layouts/revtex.layout:64
-#: ../lib/layouts/revtex4.layout:67 ../lib/layouts/siamltex.layout:62
+#: ../lib/layouts/revtex4.layout:69 ../lib/layouts/siamltex.layout:62
 #: ../lib/layouts/db_stdsections.inc:39 ../lib/layouts/scrclass.inc:84
 #: ../lib/layouts/stdsections.inc:113 ../lib/layouts/svjour.inc:61
 msgid "Subsubsection"
@@ -4894,7 +4895,7 @@ msgstr "Výòatok"
 #: ../lib/layouts/IEEEtran.layout:382 ../lib/layouts/aastex.layout:99
 #: ../lib/layouts/aastex.layout:263 ../lib/layouts/elsart.layout:63
 #: ../lib/layouts/kluwer.layout:283 ../lib/layouts/paper.layout:165
-#: ../lib/layouts/revtex4.layout:243 ../lib/layouts/siamltex.layout:159
+#: ../lib/layouts/revtex4.layout:245 ../lib/layouts/siamltex.layout:159
 #: ../lib/layouts/spie.layout:42 ../lib/layouts/amsdefs.inc:241
 msgid "Keywords"
 msgstr "Kµúèové slová"
@@ -4991,7 +4992,7 @@ msgstr "Zoznam"
 #: ../lib/layouts/latex8.layout:32 ../lib/layouts/linuxdoc.layout:40
 #: ../lib/layouts/llncs.layout:107 ../lib/layouts/ltugboat.layout:151
 #: ../lib/layouts/paper.layout:110 ../lib/layouts/revtex.layout:104
-#: ../lib/layouts/revtex4.layout:120 ../lib/layouts/scrlettr.layout:206
+#: ../lib/layouts/revtex4.layout:122 ../lib/layouts/scrlettr.layout:206
 #: ../lib/layouts/scrlttr2.layout:283 ../lib/layouts/siamltex.layout:103
 #: ../lib/layouts/svprobth.layout:37 ../lib/layouts/amsdefs.inc:65
 #: ../lib/layouts/db_stdtitle.inc:11 ../lib/layouts/scrclass.inc:158
@@ -5016,7 +5017,7 @@ msgstr "Podnadpis"
 #: ../lib/layouts/ijmpd.layout:48 ../lib/layouts/kluwer.layout:161
 #: ../lib/layouts/linuxdoc.layout:296 ../lib/layouts/llncs.layout:193
 #: ../lib/layouts/ltugboat.layout:172 ../lib/layouts/paper.layout:121
-#: ../lib/layouts/revtex.layout:114 ../lib/layouts/revtex4.layout:130
+#: ../lib/layouts/revtex.layout:114 ../lib/layouts/revtex4.layout:132
 #: ../lib/layouts/siamltex.layout:119 ../lib/layouts/svprobth.layout:57
 #: ../lib/layouts/amsdefs.inc:88 ../lib/layouts/db_stdtitle.inc:18
 #: ../lib/layouts/scrclass.inc:166 ../lib/layouts/stdtitle.inc:33
@@ -5029,7 +5030,7 @@ msgstr "Autor"
 #: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
 #: ../lib/layouts/g-brief2.layout:798 ../lib/layouts/ijmpd.layout:58
 #: ../lib/layouts/kluwer.layout:179 ../lib/layouts/revtex.layout:135
-#: ../lib/layouts/revtex4.layout:170 ../lib/layouts/scrlettr.layout:157
+#: ../lib/layouts/revtex4.layout:172 ../lib/layouts/scrlettr.layout:157
 #: ../lib/layouts/scrlttr2.layout:50 ../lib/layouts/aapaper.inc:31
 #: ../lib/layouts/amsdefs.inc:167 ../lib/layouts/lyxmacros.inc:78
 msgid "Address"
@@ -5051,7 +5052,7 @@ msgstr "Po¹ta"
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
 #: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:820
 #: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
-#: ../lib/layouts/revtex.layout:123 ../lib/layouts/revtex4.layout:139
+#: ../lib/layouts/revtex.layout:123 ../lib/layouts/revtex4.layout:141
 #: ../lib/layouts/scrlettr.layout:178 ../lib/layouts/scrlttr2.layout:251
 #: ../lib/layouts/siamltex.layout:129 ../lib/layouts/amsdefs.inc:111
 #: ../lib/layouts/db_stdtitle.inc:57 ../lib/layouts/scrclass.inc:173
@@ -5066,7 +5067,7 @@ msgstr "Dátum"
 #: ../lib/layouts/entcs.layout:56 ../lib/layouts/kluwer.layout:259
 #: ../lib/layouts/latex8.layout:98 ../lib/layouts/llncs.layout:265
 #: ../lib/layouts/ltugboat.layout:190 ../lib/layouts/revtex.layout:154
-#: ../lib/layouts/revtex4.layout:205 ../lib/layouts/svglobal.layout:28
+#: ../lib/layouts/revtex4.layout:207 ../lib/layouts/svglobal.layout:28
 #: ../lib/layouts/svjog.layout:32 ../lib/layouts/amsdefs.inc:138
 #: ../lib/layouts/stdstruct.inc:12 ../lib/layouts/svjour.inc:275
 msgid "Abstract "
@@ -5096,7 +5097,7 @@ msgstr "E-mail"
 #: ../lib/layouts/kluwer.layout:82 ../lib/layouts/linuxdoc.layout:146
 #: ../lib/layouts/llncs.layout:75 ../lib/layouts/ltugboat.layout:117
 #: ../lib/layouts/paper.layout:70 ../lib/layouts/revtex.layout:73
-#: ../lib/layouts/revtex4.layout:76 ../lib/layouts/siamltex.layout:68
+#: ../lib/layouts/revtex4.layout:78 ../lib/layouts/siamltex.layout:68
 #: ../lib/layouts/aguplus.inc:48 ../lib/layouts/db_stdsections.inc:46
 #: ../lib/layouts/scrclass.inc:91 ../lib/layouts/stdsections.inc:138
 #: ../lib/layouts/svjour.inc:71
@@ -5105,7 +5106,7 @@ msgstr "Odstavec"
 
 #: ../lib/layouts/aastex.layout:89 ../lib/layouts/aastex.layout:245
 #: ../lib/layouts/apa.layout:148 ../lib/layouts/latex8.layout:78
-#: ../lib/layouts/revtex4.layout:150 ../lib/layouts/aguplus.inc:52
+#: ../lib/layouts/revtex4.layout:152 ../lib/layouts/aguplus.inc:52
 msgid "Affiliation"
 msgstr "Prièlenenie"
 
@@ -5211,7 +5212,7 @@ msgstr "Denník"
 msgid "CopNum"
 msgstr ""
 
-#: ../lib/layouts/apa.layout:232 ../lib/layouts/revtex4.layout:215
+#: ../lib/layouts/apa.layout:232 ../lib/layouts/revtex4.layout:217
 #: ../lib/layouts/spie.layout:88
 msgid "Acknowledgments"
 msgstr "Poïakovanie"
@@ -5482,15 +5483,15 @@ msgstr "LyX-Code"
 msgid "Author_Address"
 msgstr "Aktuálna_Adresa"
 
-#: ../lib/layouts/elsart.layout:151 ../lib/layouts/revtex4.layout:182
+#: ../lib/layouts/elsart.layout:151 ../lib/layouts/revtex4.layout:184
 msgid "Author_Email"
 msgstr "Autorov_Email"
 
-#: ../lib/layouts/elsart.layout:170 ../lib/layouts/revtex4.layout:197
+#: ../lib/layouts/elsart.layout:170 ../lib/layouts/revtex4.layout:199
 msgid "Author_URL"
 msgstr "Autor_URL"
 
-#: ../lib/layouts/elsart.layout:191 ../lib/layouts/revtex4.layout:176
+#: ../lib/layouts/elsart.layout:191 ../lib/layouts/revtex4.layout:178
 #: ../lib/layouts/amsdefs.inc:260
 msgid "Thanks"
 msgstr "Vïaka"
@@ -6032,15 +6033,15 @@ msgstr "Podnadpis"
 msgid "Institution"
 msgstr "In¹titúcia"
 
-#: ../lib/layouts/revtex.layout:175 ../lib/layouts/revtex4.layout:256
+#: ../lib/layouts/revtex.layout:175 ../lib/layouts/revtex4.layout:258
 msgid "REVTEX_Title"
 msgstr "REVTEX_Nadpis"
 
-#: ../lib/layouts/revtex4.layout:107
+#: ../lib/layouts/revtex4.layout:109
 msgid "Preprint"
 msgstr "Predtlaè"
 
-#: ../lib/layouts/revtex4.layout:234
+#: ../lib/layouts/revtex4.layout:236
 msgid "PACS"
 msgstr ""
 
@@ -8459,28 +8460,28 @@ msgstr "Chyba: Nemô¾em zapísa» súbor:"
 msgid "Error: Cannot open file: "
 msgstr "Chyba: Nemô¾em otvori» súbor: "
 
-#: src/buffer.C:2308 src/buffer.C:2763
+#: src/buffer.C:2310 src/buffer.C:2765
 msgid "LYX_ERROR:"
 msgstr "LYX_CHYBA: "
 
-#: src/buffer.C:2308 src/buffer.C:2763
+#: src/buffer.C:2310 src/buffer.C:2765
 msgid "Cannot write file"
 msgstr "Nemô¾em zapísa» súbor"
 
-#: src/buffer.C:2396 src/buffer.C:2869
+#: src/buffer.C:2398 src/buffer.C:2871
 msgid "Error: Wrong depth for LatexType Command.\n"
 msgstr "Chyba: Nesprávna håbka pre LatexType príkaz.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3156
+#: src/buffer.C:3158
 msgid "Running chktex..."
 msgstr "chktex pracuje..."
 
-#: src/buffer.C:3169
+#: src/buffer.C:3171
 msgid "chktex did not work!"
 msgstr "chktex nefunguje!"
 
-#: src/buffer.C:3170
+#: src/buffer.C:3172
 msgid "Could not run with file:"
 msgstr "Nemô¾em pracova» so súborom:"
 
@@ -8811,19 +8812,19 @@ msgstr "Nie je mo¾né exportova» súbor"
 msgid "No information for exporting to "
 msgstr "Nie sú ¾iadne informácie pre export do"
 
-#: src/exporter.C:87
+#: src/exporter.C:88
 msgid "Cannot run LaTeX."
 msgstr "Nemô¾em spusti» LaTeX."
 
-#: src/exporter.C:88
+#: src/exporter.C:89
 msgid "The path to the lyx file cannot contain spaces."
 msgstr "Cesta k súboru lyx nemô¾e obsahova» medzery."
 
-#: src/exporter.C:102
+#: src/exporter.C:103
 msgid "Document exported as "
 msgstr "Dokument exportovaný ako "
 
-#: src/exporter.C:104
+#: src/exporter.C:105
 msgid " to file `"
 msgstr " do súboru `"
 
@@ -9513,7 +9514,7 @@ msgstr ""
 msgid "LaTeX ERT"
 msgstr "LaTeX ERT"
 
-#: src/frontends/qt2/QExternal.C:31 src/insets/insetexternal.C:212
+#: src/frontends/qt2/QExternal.C:31 src/insets/insetexternal.C:214
 msgid "External"
 msgstr "Externý"
 
@@ -9936,7 +9937,6 @@ msgstr ""
 msgid "Label used for final output."
 msgstr ""
 
-#. set up the tooltips
 #: src/frontends/xforms/FormBibtex.C:67
 msgid ""
 "The database you want to cite from. Insert it without the default extension "
@@ -10273,7 +10273,6 @@ msgstr ""
 msgid "Clip image to the bounding box values."
 msgstr ""
 
-#. set up the tooltips for the extra section
 #: src/frontends/xforms/FormGraphics.C:251
 msgid ""
 "Insert the rotation angle in degrees. Positive value rotates anti-clockwise, "
@@ -10797,7 +10796,6 @@ msgid ""
 "be replaced by the name of this file."
 msgstr ""
 
-#. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:57
 msgid "Type replacement for unknown word or select from suggestions."
 msgstr ""
@@ -10864,7 +10862,6 @@ msgstr "Vlo¾i» tabuµku"
 msgid "LaTeX classes|LaTeX styles|BibTeX styles"
 msgstr ""
 
-#. set up the tooltips
 #: src/frontends/xforms/FormTexinfo.C:47
 msgid ""
 "Shows the installed classses and styles for LaTeX/BibTeX; available only if "
@@ -11357,7 +11354,6 @@ msgid ""
 "You may not have the right languages installed."
 msgstr ""
 
-#. select returned error
 #: src/ispell.C:259
 msgid ""
 "The spell process returned an error.\n"
@@ -11577,28 +11573,28 @@ msgstr "Musíte LyX spusti» znovu, aby ste mohli pou¾íva»"
 msgid "updated document class specifications."
 msgstr "aktualizované ¹pecifikácie tried dokumentov."
 
-#: src/lyx_main.C:87
+#: src/lyx_main.C:88
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: rekonfigurujem pou¾ívateµov prieèinok"
 
-#: src/lyx_main.C:90
+#: src/lyx_main.C:91
 msgid "Done!"
 msgstr "Hotovo!"
 
-#: src/lyx_main.C:132
+#: src/lyx_main.C:133
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Zlá mo¾nos» príkazového riadku `%1$s'. Ukonèujem."
 
-#: src/lyx_main.C:136
+#: src/lyx_main.C:137
 msgid "Wrong command line option `"
 msgstr "Zlá mo¾nos» príkazového riadku `"
 
-#: src/lyx_main.C:137
+#: src/lyx_main.C:138
 msgid "'. Exiting."
 msgstr "'. Ukonèujem."
 
-#: src/lyx_main.C:380
+#: src/lyx_main.C:381
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -11606,86 +11602,86 @@ msgid ""
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:387
+#: src/lyx_main.C:388
 #, fuzzy
 msgid "Could not create a temporary directory in\n"
 msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
 
-#: src/lyx_main.C:389
+#: src/lyx_main.C:390
 msgid ""
 ". Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
 
-#: src/lyx_main.C:393
+#: src/lyx_main.C:394
 #, fuzzy
 msgid "Could not create temporary directory"
 msgstr "Chyba! Nemô¾em vytvori» doèasný prieèinok:"
 
-#: src/lyx_main.C:539
+#: src/lyx_main.C:538
 #, fuzzy
 msgid "You have specified a non-existent user LyX directory."
 msgstr "©pecifikovali ste neplatný LyX prieèinok."
 
-#: src/lyx_main.C:540
+#: src/lyx_main.C:539
 msgid "It is needed to keep your own configuration."
 msgstr "Potrebujete ho pre uchovávanie vá¹ho nastavenia."
 
-#: src/lyx_main.C:541
+#: src/lyx_main.C:540
 #, fuzzy
 msgid "Should I try to set it up for you? I'll exit if \"No\"."
 msgstr "Mám ho pre vás vytvori» (doporuèené)?"
 
-#: src/lyx_main.C:542
+#: src/lyx_main.C:541
 msgid "No user LyX directory. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:547
+#: src/lyx_main.C:546
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Vytváram prieèinok "
 
-#: src/lyx_main.C:551
+#: src/lyx_main.C:550
 msgid "LyX: Creating directory "
 msgstr "LyX: Vytváram prieèinok "
 
 #. Failed, so let's exit.
-#: src/lyx_main.C:558
+#: src/lyx_main.C:557
 #, fuzzy
 msgid "Failed to create directory. Exiting."
 msgstr "Volanie na vytvorenie prieèinku s neplatným názvom"
 
-#: src/lyx_main.C:577 src/lyx_main.C:581
+#: src/lyx_main.C:576 src/lyx_main.C:580
 msgid "LyX Warning!"
 msgstr "Varovanie LyXu!"
 
-#: src/lyx_main.C:578
+#: src/lyx_main.C:577
 #, c-format
 msgid "Error while reading %1$s."
 msgstr "Chyba pri èítaní %1$s."
 
-#: src/lyx_main.C:579 src/lyx_main.C:583
+#: src/lyx_main.C:578 src/lyx_main.C:582
 msgid "Using built-in defaults."
 msgstr "Pou¾ijú sa prednastavené hodnoty."
 
-#: src/lyx_main.C:582
+#: src/lyx_main.C:581
 msgid "Error while reading "
 msgstr "Chyba pri èítaní "
 
-#: src/lyx_main.C:692
+#: src/lyx_main.C:691
 msgid "List of supported debug flags:"
 msgstr "Zoznam podporovaných ladiacich parametrov: "
 
-#: src/lyx_main.C:697
+#: src/lyx_main.C:696
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
-#: src/lyx_main.C:701
+#: src/lyx_main.C:700
 msgid "Setting debug level to "
 msgstr "Nastavenie úroveò ladenia na "
 
-#: src/lyx_main.C:712
+#: src/lyx_main.C:711
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11724,27 +11720,27 @@ msgstr ""
 "                  and file.xxx is the file to be imported.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu"
 
-#: src/lyx_main.C:748
+#: src/lyx_main.C:747
 msgid "Missing directory for -sysdir switch"
 msgstr "Chýba prieèinok pre prepínaè -sysdir!"
 
-#: src/lyx_main.C:758
+#: src/lyx_main.C:757
 msgid "Missing directory for -userdir switch"
 msgstr "Chýba prieèinok pre prepínaè -userdir!"
 
-#: src/lyx_main.C:768
+#: src/lyx_main.C:767
 msgid "Missing command string after --execute switch"
 msgstr "Chýba príkazový re»azec po prepínaèi -x!"
 
-#: src/lyx_main.C:781
+#: src/lyx_main.C:780
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínaèi  --export"
 
-#: src/lyx_main.C:793
+#: src/lyx_main.C:792
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Chýba typ súboru [napr. latex, ps...] po prepínaèi --import"
 
-#: src/lyx_main.C:798
+#: src/lyx_main.C:797
 msgid "Missing filename for --import"
 msgstr "Chýba názov súboru pre --import"
 
@@ -11849,7 +11845,6 @@ msgstr "Príkaz nie je povolený"
 msgid "Document is read-only"
 msgstr "Dokument je iba na èítanie"
 
-#. no
 #: src/lyxfunc.C:311
 msgid "Command not allowed without any document open"
 msgstr "Príkaz nie je povolený pokiaµ nie je otvorený dokument"
@@ -11992,7 +11987,7 @@ msgstr "u¾ existuje. Prepísa»?"
 msgid "Welcome to LyX!"
 msgstr "Vitajte v LyXe!"
 
-#: src/lyxrc.C:1853
+#: src/lyxrc.C:1866
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -12000,7 +11995,7 @@ msgstr ""
 "Kódovanie písma pou¾íva pre LaTeX2e balíèek fontenc. T1 je vrelo odporúèané "
 "pre neanglické jazyky."
 
-#: src/lyxrc.C:1857
+#: src/lyxrc.C:1870
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -12008,68 +12003,68 @@ msgstr ""
 "Prednastavená tlaèiareò pre tlaè. Ak niè nie je nastavené, tak LyX pou¾ije "
 "premennú prostredia PRINTER."
 
-#: src/lyxrc.C:1861
+#: src/lyxrc.C:1874
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Vá¹ obµúbený program na tlaè, napr. \"dvips\", \"dvilj4\"."
 
-#: src/lyxrc.C:1865
+#: src/lyxrc.C:1878
 msgid "The option to print only even pages."
 msgstr "Nastavenie, èi tlaèi» iba párne strany."
 
-#: src/lyxrc.C:1869
+#: src/lyxrc.C:1882
 msgid "The option to print only odd pages."
 msgstr "Nastavenie, èi tlaèi» iba nepárne strany."
 
-#: src/lyxrc.C:1873
+#: src/lyxrc.C:1886
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 "Nastavenie pre ¹pecifikáciu zoznamu strán oddelených èiarkou, ktoré sa majú "
 "vytlaèi»."
 
-#: src/lyxrc.C:1877
+#: src/lyxrc.C:1890
 msgid "The option for specifying the number of copies to print."
 msgstr "Nastavenie pre ¹pecifikáciu poètu kópií pre tlaè."
 
-#: src/lyxrc.C:1881
+#: src/lyxrc.C:1894
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Nastavenie pre urèenie, èi sa kópie by» usporiadané."
 
-#: src/lyxrc.C:1885
+#: src/lyxrc.C:1898
 msgid "The option to reverse the order of the pages printed."
 msgstr "Nastavenie pre tlaè strán v opaènom poradí."
 
-#: src/lyxrc.C:1889
+#: src/lyxrc.C:1902
 msgid "The option to print out in landscape."
 msgstr "Nastavenie na tlaè na ¹írku."
 
-#: src/lyxrc.C:1893
+#: src/lyxrc.C:1906
 msgid "The option to specify paper type."
 msgstr "©pecifikácia typu papiera."
 
-#: src/lyxrc.C:1897
+#: src/lyxrc.C:1910
 msgid "Option to specify the dimensions of the print paper."
 msgstr "©pecifikácia veµkosti papiera, na ktorý sa bude tlaèi»."
 
-#: src/lyxrc.C:1901
+#: src/lyxrc.C:1914
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "Nastavenie, ktoré bude odoslané programu na tlaè pre konkrétnu tlaèiareò."
 
-#: src/lyxrc.C:1905
+#: src/lyxrc.C:1918
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Nastavenie, èi má LyX posla» názov tlaèiarne príkazu pre tlaè."
 
-#: src/lyxrc.C:1909
+#: src/lyxrc.C:1922
 msgid "Option to pass to the print program to print to a file."
 msgstr "Parametre, ktoré sa pou¾ijú pri tlaèi do súboru."
 
-#: src/lyxrc.C:1913
+#: src/lyxrc.C:1926
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Prípona výstupu tlaèe. Obyèajne \".ps\"."
 
-#: src/lyxrc.C:1917
+#: src/lyxrc.C:1930
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -12077,7 +12072,7 @@ msgstr ""
 "Extra nastavenia pre program tlaèe, ktoré sa pou¾ije tesne pred tlaèou DVI "
 "súboru."
 
-#: src/lyxrc.C:1921
+#: src/lyxrc.C:1934
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -12086,7 +12081,7 @@ msgstr ""
 "Keï je toto nastavené, tak tlaèiareò automaticky tlaèí do súboru a potom "
 "volá oddelený spool program pre tlaè toho súboru s parametrami."
 
-#: src/lyxrc.C:1925
+#: src/lyxrc.C:1938
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -12094,7 +12089,7 @@ msgstr ""
 "Ak ¹pecifikujete názov tlaèiarne v dialógu pre tlaè, tak nasledujúci "
 "argument sa spolu s názvom tlaèiarne pou¾ije po spool príkaze."
 
-#: src/lyxrc.C:1929
+#: src/lyxrc.C:1942
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -12102,7 +12097,7 @@ msgstr ""
 "DPI (dots per inch) pre vá¹ monitor je automaticky zis»ované LyXom. Ak to "
 "nefunguje správne, tu to mô¾ete prepísa»."
 
-#: src/lyxrc.C:1934
+#: src/lyxrc.C:1947
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -12111,39 +12106,39 @@ msgstr ""
 "Percentuálne zväè¹enie písma na obrazovke. Nastavenie 100% bude predstavova» "
 "zhruba rovnakú veµkos» ako na papieri."
 
-#: src/lyxrc.C:1938
+#: src/lyxrc.C:1951
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr "Veµkos» písma pou¾ívaného pre zmenu veµkosti písma obrazovky."
 
-#: src/lyxrc.C:1944
+#: src/lyxrc.C:1957
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 "Písmo obrazovky, ktoré sa pou¾ije na zobrazovanie textu pri upravovaní."
 
-#: src/lyxrc.C:1948
+#: src/lyxrc.C:1961
 msgid "The bold font in the dialogs."
 msgstr ""
 
-#: src/lyxrc.C:1952
+#: src/lyxrc.C:1965
 msgid "The normal font in the dialogs."
 msgstr ""
 
-#: src/lyxrc.C:1956
+#: src/lyxrc.C:1969
 msgid "The encoding for the screen fonts."
 msgstr "Kódovanie pre písma na obrazovke."
 
-#: src/lyxrc.C:1960
+#: src/lyxrc.C:1973
 msgid "The encoding for the menu/popups fonts."
 msgstr "Kódovanie pre písmo ponuky a popup dialógy"
 
-#: src/lyxrc.C:1967
+#: src/lyxrc.C:1980
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Èasový interval pri automatickom ukladaní (v sekundách). 0 znamená bez "
 "automatického ukladania."
 
-#: src/lyxrc.C:1971
+#: src/lyxrc.C:1984
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -12151,7 +12146,7 @@ msgstr ""
 "¹tandardná cesta k va¹im dokumentom. Prázdna hodnota spôsobí, ¾e bude "
 "nastavený prieèinok, v ktorom bol LyX spustení."
 
-#: src/lyxrc.C:1975
+#: src/lyxrc.C:1988
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -12159,7 +12154,7 @@ msgstr ""
 "Cesta, ktorú vám LyX ponúkne, pri voµbe ¹ablóny. Prázdna hodnota spôsobí, ¾e "
 "bude nastavený prieèinok, v ktorom bol LyX spustení."
 
-#: src/lyxrc.C:1979
+#: src/lyxrc.C:1992
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -12167,7 +12162,7 @@ msgstr ""
 "LyX bude umiestòova» svoje doèasné prieèinky do svojej cesty. Tieto budú "
 "odstránené pri ukonèení LyXu."
 
-#: src/lyxrc.C:1983
+#: src/lyxrc.C:1996
 msgid ""
 "Select if you wish to use a temporary directory structure to store temporary "
 "TeX output."
@@ -12175,11 +12170,11 @@ msgstr ""
 "Zvoµte, ak si prajete pou¾i» doèasnú prieèinkovú ¹truktúru na ukladanie "
 "doèasných TeX výstupov."
 
-#: src/lyxrc.C:1987
+#: src/lyxrc.C:2000
 msgid "The file where the last-files information should be stored."
 msgstr "Súbor, do ktorého by sa mali uklada» informácie o posledných súboroch."
 
-#: src/lyxrc.C:1991
+#: src/lyxrc.C:2004
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -12187,7 +12182,7 @@ msgstr ""
 "Oznaète, ak nechcete, aby aktuálna voµba bola automaticky nahradená s tým, "
 "èo pí¹ete."
 
-#: src/lyxrc.C:1995
+#: src/lyxrc.C:2008
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -12195,7 +12190,7 @@ msgstr ""
 "Odznaète, ak nechcete, aby nastavenie triedy bolo nahradené ¹tandardom po "
 "zmene triedy."
 
-#: src/lyxrc.C:1999
+#: src/lyxrc.C:2012
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -12203,7 +12198,7 @@ msgstr ""
 "Toto spú¹»a lyxserver. Rúry sú roz¹írené o \".in\" a \".out\". Iba pre "
 "pokroèilých u¾ívateµov."
 
-#: src/lyxrc.C:2003
+#: src/lyxrc.C:2016
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -12211,7 +12206,7 @@ msgstr ""
 "Súbor s klávesovými skratkami. Mô¾ete pou¾i» absolútnu cestu, alebo LyX bude "
 "hµada» v globálnych alebo lokálnych bind prieèinkoch."
 
-#: src/lyxrc.C:2007
+#: src/lyxrc.C:2020
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -12219,7 +12214,7 @@ msgstr ""
 "UI (u¾ívateµské rozhranie) súbor. Mô¾ete pou¾i» absolútnu cestu, alebo LyX "
 "bude hµada» v globálnych alebo lokálnych ui prieèinkoch."
 
-#: src/lyxrc.C:2013
+#: src/lyxrc.C:2026
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -12228,7 +12223,7 @@ msgstr ""
 "potrebova» napríklad, keï budete chcie» písa» dokument v Slovenèine na "
 "americkej klávesnici."
 
-#: src/lyxrc.C:2017
+#: src/lyxrc.C:2030
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
 "\"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"none\" "
@@ -12238,7 +12233,7 @@ msgstr ""
 "výstupe. Napr.\"groff -t -Tlatin2 $$FName\", kde $$FName je názov vstupného "
 "súboru. Ak je ¹pecifikované \"none\", pou¾ije sa interná funkcia."
 
-#: src/lyxrc.C:2021
+#: src/lyxrc.C:2034
 msgid ""
 "This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
 "plain text)."
@@ -12246,23 +12241,23 @@ msgstr ""
 "Toto je maximálna då¾ka riadku pri exporte ASCII súboru (LaTeX, SGML alebo "
 "be¾ný text)."
 
-#: src/lyxrc.C:2025
+#: src/lyxrc.C:2038
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
 msgstr "Maximálny poèet posledných súborov. A¾ 9 ich mô¾e by» v ponuke."
 
-#: src/lyxrc.C:2029
+#: src/lyxrc.C:2042
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Nastavenie, èi kontrolova» existenciu posledných súborov."
 
-#: src/lyxrc.C:2033
+#: src/lyxrc.C:2046
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 
-#: src/lyxrc.C:2037
+#: src/lyxrc.C:2050
 msgid "Specify the default paper size."
 msgstr "Urèenie prednastavenej veµkosti papiera"
 
-#: src/lyxrc.C:2044
+#: src/lyxrc.C:2057
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -12270,11 +12265,11 @@ msgstr ""
 "Pova¾ova» spojené slová ako sú \"kedytedy\" namiesto \"kedy tedy\" ako "
 "správne slová?"
 
-#: src/lyxrc.C:2048
+#: src/lyxrc.C:2061
 msgid "What command runs the spell checker?"
 msgstr "Aký program spú¹»a kontrolu pravopisu?"
 
-#: src/lyxrc.C:2052
+#: src/lyxrc.C:2065
 msgid ""
 "Specify whether to pass the -T input encoding option to ispell. Enable this "
 "if you can't spellcheck words with international letters in them. This may "
@@ -12284,32 +12279,32 @@ msgstr ""
 "toto Ak nemô¾e kontrolova» slová s medzinárodnými znakmi. Toto nemusí "
 "fungova» so v¹etkými slovníkmi."
 
-#: src/lyxrc.C:2057
+#: src/lyxrc.C:2070
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
 "Nastavenie alternatívneho jazyka. Implicitne sa pou¾ije jazyk dokumentu."
 
-#: src/lyxrc.C:2062
+#: src/lyxrc.C:2075
 msgid ""
 "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr ""
 "©pecifikovanie alternatívneho súboru osobného slovníka. Napr. \"."
 "ispell_english\"."
 
-#: src/lyxrc.C:2067
+#: src/lyxrc.C:2080
 msgid "Specify additional chars that can be part of a word."
 msgstr "©pecifikovanie dodatoèných znakov, ktoré mô¾u by» èas»ou slova."
 
-#: src/lyxrc.C:2071
+#: src/lyxrc.C:2084
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 
-#: src/lyxrc.C:2075
+#: src/lyxrc.C:2088
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -12317,7 +12312,7 @@ msgstr ""
 "Definuje ako spusti» chktex. Napr. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -"
 "n30 -n38\" Pozrite si dokumentáciu k ChkTeX."
 
-#: src/lyxrc.C:2079
+#: src/lyxrc.C:2092
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -12325,21 +12320,21 @@ msgstr ""
 "LyX normálne neaktualizuje pozíciu kurzora, ak ste pohli posuvníkom. "
 "Nastavte túto voµbu, ak preferuje ma» pozíciu kurzora na obrazovke."
 
-#: src/lyxrc.C:2083
+#: src/lyxrc.C:2096
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr ""
 
-#: src/lyxrc.C:2087
+#: src/lyxrc.C:2100
 msgid "Select how LyX will display any graphics."
 msgstr ""
 
-#: src/lyxrc.C:2091
+#: src/lyxrc.C:2104
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Odznaète, ak nechcete, aby LyX vytváral zálo¾né súbory."
 
-#: src/lyxrc.C:2095
+#: src/lyxrc.C:2108
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -12347,14 +12342,14 @@ msgstr ""
 "Cesta pre ukladanie zálo¾ných súborov. Ak je to prázdny re»azec, LyX bude "
 "uklada» zálo¾né súbory do toho istého prieèinku ako originálny súbor."
 
-#: src/lyxrc.C:2099
+#: src/lyxrc.C:2112
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
 "Zvoµte pre zapnutie podpory písania zprava doµava (napr. pre Hebrejèinu, "
 "Arabèinu)."
 
-#: src/lyxrc.C:2103
+#: src/lyxrc.C:2116
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -12362,7 +12357,7 @@ msgstr ""
 "Zvoµte pre ovládanie zvýrazòovania slov v inom jazyku ako je prednastavený "
 "jazyk dokumentu."
 
-#: src/lyxrc.C:2107
+#: src/lyxrc.C:2120
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -12370,13 +12365,13 @@ msgstr ""
 "Príkaz LaTeXu pre naèítanie jazykového balíka. Napr. \"\\usepackage{babel}"
 "\", \"\\usepackage{omega}\"."
 
-#: src/lyxrc.C:2111
+#: src/lyxrc.C:2124
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr "Odznaète, ak nechcete pou¾i» jazyk ako argument k \\documentclass."
 
-#: src/lyxrc.C:2115
+#: src/lyxrc.C:2128
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -12384,18 +12379,18 @@ msgstr ""
 "Odznaète, ak nechcete pou¾i» babel, ak jazyk dokumentu je prednastavený "
 "jazyk."
 
-#: src/lyxrc.C:2119
+#: src/lyxrc.C:2132
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Zvoµte, ak príkaz pre zmenu jazyku je potrebný na zaèiatku dokumentu."
 
-#: src/lyxrc.C:2123
+#: src/lyxrc.C:2136
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Zvoµte, ak príkaz pre zmenu jazyku je potrebný na konci dokumentu."
 
-#: src/lyxrc.C:2127
+#: src/lyxrc.C:2140
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -12404,15 +12399,15 @@ msgstr ""
 "LaTeX príkaz pre zmenu z jazyka dokumentu do iného jazyka. Napr. "
 "\\selectlanguage{$$lang}, kde $$lang je nahradené názvom druhého jazyka."
 
-#: src/lyxrc.C:2131
+#: src/lyxrc.C:2144
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "LaTeXovský príkaz pre návrat k pôvodnému jazyku dokumentu."
 
-#: src/lyxrc.C:2135
+#: src/lyxrc.C:2148
 msgid "The LaTeX command for local changing of the language."
 msgstr "LaTeXovský príkaz pre lokálnu zmenu jazyka."
 
-#: src/lyxrc.C:2140
+#: src/lyxrc.C:2153
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -12421,11 +12416,11 @@ msgstr ""
 "Tu je akceptovaný be¾ný strftime formát;  detaily sú v man strftime. Napr.\"%"
 "A, %e. %B %Y\"."
 
-#: src/lyxrc.C:2144
+#: src/lyxrc.C:2157
 msgid "De-select if you don't want the startup banner."
 msgstr "Voµba, èi si neprajete transparent pri ¹tarte."
 
-#: src/lyxrc.C:2148
+#: src/lyxrc.C:2161
 msgid ""
 "The number of lines that are scrolled by mice with wheels or five button "
 "mice."
@@ -12433,27 +12428,27 @@ msgstr ""
 "Poèet riadkov, o ktoré sa posunie text pri pohybe kolieska my¹i alebo pä» "
 "tlaèítkovej my¹i."
 
-#: src/lyxrc.C:2161
+#: src/lyxrc.C:2174
 msgid "New documents will be assigned this language."
 msgstr "Novému dokumentu bude priradený tento jazyk."
 
-#: src/lyxrc.C:2165
+#: src/lyxrc.C:2178
 msgid "Maximum number of words in the initialization string for a new label"
 msgstr "Maximálny poèet slov v poèiatoènom re»azci pre nové oznaèenie"
 
-#: src/lyxrc.C:2169
+#: src/lyxrc.C:2182
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
 
-#: src/lyxrc.C:2173
+#: src/lyxrc.C:2186
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 
-#: src/lyxrc.C:2177
+#: src/lyxrc.C:2190
 msgid "Scale the preview size to suit."
 msgstr ""
 
-#: src/lyxrc.C:2181
+#: src/lyxrc.C:2194
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."

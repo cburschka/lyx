@@ -39,6 +39,8 @@ What's new
 
 - update the aastex textclass to AASTeX 5.2
 
+- new Turkish translation.
+
 ** Bug fixes
 
 * Document input/output:
@@ -49,10 +51,8 @@ What's new
   [bug 1542].
 
 - Make sure that the amsmath package is used in LaTeX output when
-  using some over and under arrows in equations.
-
-- Make sure that the amsmath package is used in LaTeX output when
-  using the cases environment in equations.
+  using the AMS-specific array environments and over/under arrows in
+  equations.
 
 - Make sure that the wasysym package is used in LaTeX output when
   using symbols from the wasy font.
@@ -71,7 +71,7 @@ What's new
 
 - When reading an equation, don't parse \| following a \left or \right as |.
 
-- When executing generating PDF, handle properly pdfTeX warnings [bug 1824]
+- When executing generating PDF, handle properly pdfTeX warnings [bug 1824].
 
 - Fix lyxpreview2ppm.py to work with python versions older than 2.1.
 
@@ -85,7 +85,10 @@ What's new
 
 - Fix math fonts display in LyX/Mac.
 
-- Fix font metrics problems with Qt/Win 3.2.1
+- Make LyX behave normally when a file has been open from the Explorer
+  [Windows only].
+
+- Fix font metrics problems with Qt/Win 3.2.1.
 
 - Fix bindings for depth-increment/decrement for LyX/Mac.
 
