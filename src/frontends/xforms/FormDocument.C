@@ -1458,7 +1458,11 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 			params.textclass = tc;
 			params.useClassDefaults();
 			UpdateLayoutDocument(params);
+		} else {
+			params.textclass = tc;
+			UpdateLayoutDocument(params);
 		}
+
 	} else {
 		// unable to load new style
 		Alert::alert(_("Conversion Errors!"),
