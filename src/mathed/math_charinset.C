@@ -76,3 +76,9 @@ void MathCharInset::writeNormal(std::ostream & os) const
 {
 	os << char_;
 }
+
+
+bool MathCharInset::isRelOp() const
+{
+	return char_ == '=' || char_ == '<' || char_ == '>';
+}

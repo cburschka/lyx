@@ -42,6 +42,14 @@ class LaTeXFeatures;
 class MathArray  {
 public:
 	///
+	typedef std::vector<MathInset *>     buffer_type;
+	///
+	typedef buffer_type::const_iterator  const_iterator;
+	///
+	typedef buffer_type::iterator        iterator;
+
+public:
+	///
 	MathArray();
 	///
 	MathArray(MathArray const &);
@@ -102,22 +110,22 @@ public:
 	///
 	MathInset const * nextInset(int pos) const;
 	///
-	unsigned char getChar(int pos) const;
-	///
-	MathTextCodes getCode(int pos) const;
-	///
-	void setCode(int pos, MathTextCodes t);
-	///
 	void write(std::ostream &, bool) const;
 	///
 	void writeNormal(std::ostream &) const;
 	///
 	void validate(LaTeXFeatures &) const;
+	///
+	const_iterator begin() const;	
+	///
+	const_iterator end() const;	
+	///
+	iterator begin();
+	///
+	iterator end();
 private:
 	///
-	typedef std::vector<MathInset *>           buffer_type;
-	///
-	void deep_copy(int pos1, int pos2);
+	void deep_copy(iterator from, iterator to);
 	/// Buffer
 	buffer_type bf_;
 };

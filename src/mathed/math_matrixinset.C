@@ -68,9 +68,9 @@ int getCols(short int type)
 // used for "intelligent splitting"
 int firstRelOp(MathArray const & array)
 {
-	for (int pos = 0; pos < array.size(); ++pos)
-		if (MathIsRelOp(array.getChar(pos), array.getCode(pos)))
-			return pos;
+	for (MathArray::const_iterator it = array.begin(); it != array.end(); ++it)
+		if ((*it)->isRelOp())
+			return it - array.begin();
 	return array.size();
 }
 

@@ -16,12 +16,6 @@ using std::endl;
 using std::max;
 
 
-bool MathIsInset(MathTextCodes x)
-{
-	return LM_TC_INSET == x;
-}
-
-
 bool MathIsAlphaFont(MathTextCodes x)
 {
 	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
@@ -739,18 +733,6 @@ MathStyles smallerStyleFrac(MathStyles st)
 		default:            st = LM_ST_SCRIPTSCRIPT;
 	}
 	return st;
-}
-
-bool MathIsRelOp(unsigned char c, MathTextCodes f)
-{
-	if (f == LM_TC_BOP && (c == '=' || c == '<' || c == '>'))
-		return true;
-#ifndef WITH_WARNINGS
-#warning implement me properly
-#endif
-	if (f == LM_TC_SYMB && (c == LM_leq || c == LM_geq))
-		return true;
-	return false;
 }
 
 

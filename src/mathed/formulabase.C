@@ -789,11 +789,9 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 					mathcursor->left();
 				}
 				mathcursor->clearLastCode();
-				//	       varcode = LM_TC_MIN;
 			} else if (c == '_' && varcode == LM_TC_TEX) {
 				mathcursor->insert(c, LM_TC_SPECIAL);
 				mathcursor->clearLastCode();
-				//	       varcode = LM_TC_MIN;
 			} else if ('0' <= c && c <= '9' && (varcode == LM_TC_TEX||was_macro)) {
 				mathcursor->macroModeOpen();
 				mathcursor->clearLastCode();

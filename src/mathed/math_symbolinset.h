@@ -23,6 +23,8 @@ public:
 	void metrics(MathStyles st) const;
 	///
 	void draw(Painter &, int x, int y) const;
+	///
+	bool isRelOp() const;
 
 private:
 	///

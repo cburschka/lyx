@@ -32,10 +32,8 @@ int mathed_string_width(MathTextCodes type, MathStyles size, string const & s);
 int mathed_string_ascent(MathTextCodes type, MathStyles size, string const & s);
 int mathed_string_descent(MathTextCodes type, MathStyles size, string const & s);
 
-bool MathIsInset(MathTextCodes x);
 bool MathIsAlphaFont(MathTextCodes x);
 bool MathIsSymbol(MathTextCodes x);
-bool MathIsRelOp(unsigned char c, MathTextCodes f);
 
 void drawStr(Painter & pain, MathTextCodes type, MathStyles siz,
 	int x, int y, string const & s);

@@ -179,6 +179,8 @@ public:
 	///
 	virtual bool isActive() const { return nargs() > 0; }
 	///
+	virtual bool isRelOp() const { return false; }
+	///
 	virtual char getChar() const { return 0; }
 
 	///

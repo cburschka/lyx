@@ -187,8 +187,6 @@ public:
 	///
 	MathTextCodes nextCode() const;
 	///
-	MathTextCodes prevCode() const;
-	///
 	char valign() const;
 	///
 	char halign() const;

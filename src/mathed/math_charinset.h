@@ -36,6 +36,8 @@ public:
 	bool isCharInset() const { return true; }
 	///
 	char getChar() const { return char_; }
+	///
+	bool isRelOp() const;
 
 private:
 	/// the character

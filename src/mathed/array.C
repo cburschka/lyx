@@ -25,24 +25,21 @@ MathArray::~MathArray()
 MathArray::MathArray(MathArray const & array)
 	: bf_(array.bf_)
 {
-	deep_copy(0, size());
+	deep_copy(begin(), end());
 }
 
 
 MathArray::MathArray(MathArray const & array, int from, int to)
-	: bf_(array.bf_.begin() + from, array.bf_.begin() + to)
+	: bf_(array.begin() + from, array.begin() + to)
 {
-	deep_copy(0, size());
+	deep_copy(begin(), end());
 }
 
 
-void MathArray::deep_copy(int pos1, int pos2)
+void MathArray::deep_copy(iterator from, iterator to)
 {
-	for (int pos = pos1; pos < pos2; ++pos) {
-		MathInset * p = bf_[pos]->clone();
-		//lyxerr << "cloning: '" <<  bf_[pos] << " to " << p << "'\n";
-		bf_[pos] = p;
-	}
+	for (iterator it = from; it != to; ++it)
+		*it = (*it)->clone();
 }
 
 
@@ -55,8 +52,8 @@ int MathArray::last() const
 void MathArray::substitute(MathMacro const & m)
 {
 	MathArray tmp;
-	for (int pos = 0; pos < size(); ++pos) 
-		bf_[pos]->substitute(tmp, m);
+	for (iterator it = begin(); it != end(); ++it)
+		(*it)->substitute(tmp, m);
 	swap(tmp);
 }
 
@@ -81,40 +78,22 @@ MathInset const * MathArray::nextInset(int pos) const
 }
 
 
-unsigned char MathArray::getChar(int pos) const
-{
-	return (pos == size()) ? 0 : (bf_[pos]->getChar());
-}
-
-
-MathTextCodes MathArray::getCode(int pos) const
-{
-	return pos < size() ? (bf_[pos]->code()) : LM_TC_MIN;
-}
-
-
-void MathArray::setCode(int pos, MathTextCodes t)
-{
-	bf_[pos]->code(t);
-}
-
-
 void MathArray::insert(int pos, MathInset * p)
 {
-	bf_.insert(bf_.begin() + pos, p);
+	bf_.insert(begin() + pos, p);
 }
 
 
 void MathArray::insert(int pos, unsigned char b, MathTextCodes t)
 {
-	bf_.insert(bf_.begin() + pos, new MathCharInset(b, t));
+	bf_.insert(begin() + pos, new MathCharInset(b, t));
 }
 
 
 void MathArray::insert(int pos, MathArray const & array)
 {
-	bf_.insert(bf_.begin() + pos, array.bf_.begin(), array.bf_.end());
-	deep_copy(pos, pos + array.size());
+	bf_.insert(begin() + pos, array.begin(), array.end());
+	deep_copy(begin() + pos, begin() + pos + array.size());
 }
 
 
@@ -176,9 +155,9 @@ void MathArray::erase(int pos)
 
 void MathArray::erase(int pos1, int pos2)
 {
-	for (int pos = pos1; pos < pos2; ++pos)
-		delete bf_[pos];
-	bf_.erase(bf_.begin() + pos1, bf_.begin() + pos2);
+	for (iterator it = begin() + pos1; it != begin() + pos2; ++it)
+		delete *it;
+	bf_.erase(begin() + pos1, begin() + pos2);
 }
 
 
@@ -190,15 +169,15 @@ MathInset * MathArray::back() const
 
 void MathArray::dump2(ostream & os) const
 {
-	for (buffer_type::const_iterator it = bf_.begin(); it != bf_.end(); ++it)
+	for (const_iterator it = begin(); it != end(); ++it)
 		os << *it << ' ';
 }
 
 
 void MathArray::dump(ostream & os) const
 {
-	for (int pos = 0; pos < size(); ++pos)
-		os << "<" << nextInset(pos) << ">";
+	for (const_iterator it = begin(); it != end(); ++it)
+		os << "<" << *it << ">";
 }
 
 
@@ -211,8 +190,8 @@ std::ostream & operator<<(std::ostream & os, MathArray const & ar)
 
 void MathArray::write(ostream & os, bool fragile) const
 {
-	for (int pos = 0; pos < size(); ++pos)
-		nextInset(pos)->write(os, fragile);
+	for (const_iterator it = begin(); it != end(); ++it)
+		(*it)->write(os, fragile);
 }
 
 
@@ -229,8 +208,8 @@ void MathArray::writeNormal(ostream & os) const
 
 void MathArray::validate(LaTeXFeatures & features) const
 {
-	for (int pos = 0; pos < size(); ++pos)
-		nextInset(pos)->validate(features);
+	for (const_iterator it = begin(); it != end(); ++it)
+		(*it)->validate(features);
 }
 
 
@@ -244,3 +223,26 @@ void MathArray::pop_back()
 	bf_.pop_back();
 }
 
+
+MathArray::const_iterator MathArray::begin() const
+{
+	return bf_.begin();
+}
+
+
+MathArray::const_iterator MathArray::end() const
+{
+	return bf_.end();
+}
+
+
+MathArray::iterator MathArray::begin()
+{
+	return bf_.begin();
+}
+
+
+MathArray::iterator MathArray::end()
+{
+	return bf_.end();
+}

@@ -52,3 +52,9 @@ void MathSymbolInset::draw(Painter & pain, int x, int y) const
 
 	drawStr(pain, code_, size_, x, y, ssym_);
 }
+
+
+bool MathSymbolInset::isRelOp() const
+{
+	return sym_->id == LM_leq || sym_->id == LM_geq;
+}
