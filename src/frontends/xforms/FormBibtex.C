@@ -55,12 +55,8 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 	if (ob == dialog_->database_browse) {
 		// When browsing, take the first file only 
 		string const in_name = fl_get_input(dialog_->database);
-		string first;
-		split(in_name, first, ',');
-		first = strip(first);
-
 		string out_name = 
-			controller().Browse(first,
+			controller().Browse("",
 					    "Select Database",
 					    "*.bib| BibTeX Databases (*.bib)");
 		if (!out_name.empty()) {
@@ -136,7 +132,7 @@ string const unique_and_no_extensions(string const & str_in)
 		*it = ChangeExtension(*it, "");
 	}
 	eliminate_duplicates(dbase);
-	return getStringFromVector(dbase);
+	return subst(getStringFromVector(dbase),",",", ");
 }
  
 } // namespace anon
@@ -144,7 +140,14 @@ string const unique_and_no_extensions(string const & str_in)
 
 void FormBibtex::apply()
 {
-	string db = fl_get_input(dialog_->database);
+	string const db = fl_get_input(dialog_->database);
+	if (db.empty()) {
+		// no database -> no bibtex-command and no options!
+		controller().params().setContents("");
+		controller().params().setOptions("");
+		return;
+	}
+	
 	controller().params().setContents(unique_and_no_extensions(db));
 
 	// empty is valid!
@@ -154,17 +157,18 @@ void FormBibtex::apply()
 		bibstyle = ChangeExtension(OnlyFilename(bibstyle), "");
 	}
 
-	if ((fl_get_button(dialog_->radio_bibtotoc) > 0) &&
-	    (!bibstyle.empty())) {
+	bool const bibtotoc = fl_get_button(dialog_->radio_bibtotoc);
+	
+	if (bibtotoc && (!bibstyle.empty())) {
 		// both bibtotoc and style
 		controller().params().setOptions("bibtotoc,"+bibstyle);
-	} else {
-		if (fl_get_button(dialog_->radio_bibtotoc) > 0) {
-			// bibtotoc and no style
-			controller().params().setOptions("bibtotoc");
-		} else {
-			// only style
-			controller().params().setOptions(bibstyle);
-		}
+
+	} else if (bibtotoc) {
+		// bibtotoc and no style
+		controller().params().setOptions("bibtotoc");
+
+	} else if (!bibstyle.empty()){
+		// only style
+		controller().params().setOptions(bibstyle);
 	}
 }

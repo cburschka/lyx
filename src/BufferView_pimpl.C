@@ -2933,9 +2933,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		// The argument can be up to two tokens separated 
 		// by a space. The first one is the bibstyle.
 		string const db       = token(argument, ' ', 0);
-		string bibstyle = token(argument, ' ', 1);
-		if (bibstyle.empty())
-			bibstyle = "plain";
+		string const bibstyle = token(argument, ' ', 1);
 
 		InsetCommandParams p( "BibTeX", db, bibstyle );
 		InsetBibtex * inset = new InsetBibtex(p);
