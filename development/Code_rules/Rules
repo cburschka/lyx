@@ -269,7 +269,13 @@ Formatting
 	};
 	-NOT-
 	enum { one = 1, two = 2, three 3 }; // wrong
-
+	-NOT-
+	enum {
+		ONE = 1,
+		TWO = 2,
+		THREE = 3
+	};
+ 
 * Naming rules for classes
 
   - Use descriptive but simple and short names. For stuff specific to LyX
