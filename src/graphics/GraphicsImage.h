@@ -11,9 +11,9 @@
  *  Allows the user to retrieve the pixmap, once loaded and to issue commands
  *  to modify it.
  *
- *  The signals newImage and loadableFormats are connected to the approriate
- *  derived classes elsewhere, allowing the graphics cache to access them
- *  without knowing anything about their instantiation.
+ *  The boost::functions newImage and loadableFormats are connected to the
+ *  appropriate derived classes elsewhere, allowing the graphics cache to
+ *  access them without knowing anything about their instantiation.
  *
  *  The loading process can be asynchronous, but cropping, rotating and
  *  scaling block execution.
