@@ -232,7 +232,7 @@ lyx_SOURCES = \
 lyx_main.o: lyx_main.C lyx_main.h config.h version.h \
 	lyxrc.h support/path.h support/filetools.h \
 	bufferlist.h debug.h support/FileInfo.h lastfiles.h intl.h \
-	lyxserver.h layout.h gettext.h kbmap.h commandtags.h language.h
+	lyxserver.h layout.h gettext.h kbmap.h lfuns.h language.h
 	$(CXXCOMPILE) -DLYX_DIR=\"$(pkgdatadir)\" \
 	  -DTOP_SRCDIR=\"$(top_srcdir)\" -c $(top_srcdir)/src/lyx_main.C
 
