@@ -4,6 +4,13 @@
 	cursor by hand and reordering some calls. Use bv->lockInset instead
 	of inset->edit because the latter loses cursor information
 
+2003-10-25  Alfredo Braunstein  <abraunst@libero.it>
+
+	* text.C (prepareToPrint): fix linebreak rowbreaking as suggested 
+	by Martin
+	(rowBreakPoint): fix width. change point to point + 1. 
+	Add a missing check.
+
 2003-10-25  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* MenuBackend.C:

@@ -454,11 +454,13 @@ namespace {
 // this needs special handling - only newlines count as a break point
 pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 {
-	for (; i < par.size(); ++i)
+	pos_type const end = par.size();
+	
+	for (; i < end; ++i)
 		if (par.isNewline(i))
 			return i + 1;
 
-	return par.size();
+	return end;
 }
 
 };
@@ -466,39 +468,34 @@ pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 
 void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 {
-	if (pit->empty()) {
-		row.endpos(pit->size());
+	pos_type const end = pit->size();
+	pos_type const pos = row.pos();
+	if (pos == end) {
+		row.endpos(end);
 		return;
 	}
 	
 	// maximum pixel width of a row.
 	int width = workWidth()
-		- rightMargin(*pit, *bv()->buffer(), row)
-		- leftMargin(pit, row);
+		- rightMargin(*pit, *bv()->buffer(), row);
+//		- leftMargin(pit, row);
 
 	// inset->textWidth() returns -1 via workWidth(),
 	// but why ?
 	if (width < 0) {
-		row.endpos(pit->size());
+		row.endpos(end);
 		return;
 	}
 
 	LyXLayout_ptr const & layout = pit->layout();
 
 	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
-		row.endpos(addressBreakPoint(row.pos(), *pit));
+		row.endpos(addressBreakPoint(pos, *pit));
 		return;
 	}
 
-	pos_type const pos = row.pos();
 	pos_type const body_pos = pit->beginningOfBody();
-	pos_type const end = pit->size();
-	pos_type point = end - 1;
 
-	if (pos == end) {
-		row.endpos(end);
-		return;
-	}
 
 	// Now we iterate through until we reach the right margin
 	// or the end of the par, then choose the possible break
@@ -510,28 +507,28 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 	// pixel width since last breakpoint
 	int chunkwidth = 0;
 
-	pos_type i = pos;
-
 	// We re-use the font resolution for the entire font span when possible
-	LyXFont font = getFont(pit, i);
-	lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
+	LyXFont font = getFont(pit, pos);
+	lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(pos);
 
+	pos_type point = end;
+	pos_type i = pos;
 	for ( ; i < end; ++i) {
 		if (pit->isNewline(i)) {
-			point = i;
+			point = i + 1;
 			break;
 		}
 		// Break before...	
 		if (i + 1 < end) {
 			InsetOld * in = pit->getInset(i + 1);
 			if (in && in->display()) {
-				point = i;
+				point = i + 1;
 				break;
 			}
 			// ...and after.
 			in = pit->getInset(i);
 			if (in && in->display()) {
-				point = i;
+				point = i + 1;
 				break;
 			}
 		}
@@ -541,38 +538,38 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 			font = getFont(pit, i);
 			endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 		}
+		
+		{
+			int thiswidth = singleWidth(pit, i, c, font);
 
-		int thiswidth;
+			// add the auto-hfill from label end to the body
+			if (body_pos && i == body_pos) {
+				int add = font_metrics::width(layout->labelsep, getLabelFont(pit));
+				if (pit->isLineSeparator(i - 1))
+					add -= singleWidth(pit, i - 1);
 
-		// add the auto-hfill from label end to the body
-		if (body_pos && i == body_pos) {
-			thiswidth = font_metrics::width(layout->labelsep, getLabelFont(pit));
-			if (pit->isLineSeparator(i - 1))
-				thiswidth -= singleWidth(pit, i - 1);
-			int left_margin = labelEnd(pit, row);
-			if (thiswidth + x < left_margin)
-				thiswidth = left_margin - x;
-			thiswidth += singleWidth(pit, i, c, font);
-		} else {
-			thiswidth = singleWidth(pit, i, c, font);
+				add = std::max(add, labelEnd(pit, row) - x);
+				thiswidth += add;
+			}
+
+			x += thiswidth;
+			//lyxerr << "i: " << i << " x: "
+			//<< x << " width: " << width << endl;
+			chunkwidth += thiswidth;
 		}
-
-		x += thiswidth;
-		//lyxerr << "i: " << i << " x: " << x << " width: " << width << endl;
-		chunkwidth += thiswidth;
+		
 
 		// break before a character that will fall off
 		// the right of the row
 		if (x >= width) {
 			// if no break before, break here
 			if (point == end || chunkwidth >= width - left) {
-				if (pos < i) {
-					point = i - 1;
-					// exit on last registered breakpoint:
+				if (i > pos) {
+					point = i;
 					break;  
 				}
 			}
-			// emergency exit:
+			// exit on last registered breakpoint:
 			if (i + 1 < end)
 				break;  
 		}
@@ -582,28 +579,27 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 			// some insets are line separators too
 			if (pit->isLineSeparator(i)) {
 				// register breakpoint:
-				point = i; 
+				point = i + 1; 
 				chunkwidth = 0;
 			}
 		}
 	}
 
-	if (point == end && x >= width) {
+	if (point == end && i != end && x >= width) {
 		// didn't find one, break at the point we reached the edge
-		point = i;
+		point = i + 1;
 	} else if (i == end && x < width) {
-		// found one, but we fell off the end of the par, so prefer
-		// that.
-		point = end - 1;
+		// maybe found one, but the par is short enough.
+		point = end;
 	}
 
 	// manual labels cannot be broken in LaTeX. But we
 	// want to make our on-screen rendering of footnotes
 	// etc. still break
 	if (body_pos && point < body_pos)
-		point = body_pos - 1;
+		point = body_pos;
 
-	row.endpos(point + 1);
+	row.endpos(point);
 }
 
 
@@ -1254,7 +1250,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 			// display inset... then stretch it
 			if (ns
 				&& row.endpos() < pit->size()
-				&& !pit->isNewline(row.endpos())
+				&& !pit->isNewline(row.endpos() - 1)
 				&& !disp_inset
 				) {
 					fill_separator = w / ns;
