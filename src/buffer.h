@@ -155,7 +155,7 @@ public:
 	///
 	void writeFileAscii(std::ostream &, int);
 	///
-	string const asciiParagraph(Paragraph const *, unsigned int linelen,
+	string const asciiParagraph(Paragraph const &, unsigned int linelen,
 				    bool noparbreak = false) const;
 	/// Just a wrapper for the method below, first creating the ofstream.
 	void makeLaTeXFile(string const & filename,
@@ -367,47 +367,28 @@ public:
 		typedef ptrdiff_t difference_type;
 		typedef Inset * pointer;
 		typedef Inset & reference;
+		typedef ParagraphList::iterator base_type;
 
+ 		///
+ 		inset_iterator();
+ 		///
+ 		inset_iterator(base_type p, base_type e);
+ 		///
+ 		inset_iterator(base_type p, lyx::pos_type pos, base_type e);
 
+ 		/// prefix ++
+ 		inset_iterator & operator++();
+		/// postfix ++
+		inset_iterator operator++(int);
 		///
-		inset_iterator() : par(0) /*, it(0)*/ {}
-		//
-		inset_iterator(Paragraph * paragraph) : par(paragraph) {
-			setParagraph();
-		}
+		reference operator*();
 		///
-		inset_iterator(Paragraph * paragraph, lyx::pos_type pos);
-		///
-		inset_iterator & operator++() { // prefix ++
-			if (par) {
-				++it;
-				if (it == par->insetlist.end()) {
-					par = par->next();
-					setParagraph();
-				}
-			}
-			return *this;
-		}
-		///
-		inset_iterator operator++(int) { // postfix ++
-			inset_iterator tmp(par, it.getPos());
-			if (par) {
-				++it;
-				if (it == par->insetlist.end()) {
-					par = par->next();
-					setParagraph();
-				}
-			}
-			return tmp;
-		}
+		pointer operator->();
 
 		///
-		Inset * operator*() { return it.getInset(); }
-
+		Paragraph * getPar();
 		///
-		Paragraph * getPar() { return par; }
-		///
-		lyx::pos_type getPos() const { return it.getPos(); }
+		lyx::pos_type getPos() const;
 		///
 		friend
 		bool operator==(inset_iterator const & iter1,
@@ -416,23 +397,28 @@ public:
 		///
 		void setParagraph();
 		///
-		Paragraph * par;
+		ParagraphList::iterator pit;
+		///
+		ParagraphList::iterator pend;
 		///
 		InsetList::iterator it;
 	};
 
 	///
 	inset_iterator inset_iterator_begin() {
-		return inset_iterator(&*paragraphs.begin());
+		return inset_iterator(paragraphs.begin(), paragraphs.end());
 	}
+
 	///
 	inset_iterator inset_iterator_end() {
 		return inset_iterator();
 	}
+
 	///
 	inset_iterator inset_const_iterator_begin() const {
-		return inset_iterator(&*paragraphs.begin());
+		return inset_iterator(paragraphs.begin(), paragraphs.end());
 	}
+
 	///
 	inset_iterator inset_const_iterator_end() const {
 		return inset_iterator();
@@ -446,144 +432,5 @@ public:
 	///
 	Inset * getInsetFromID(int id_arg) const;
 };
-
-
-inline
-void Buffer::addUser(BufferView * u)
-{
-	users = u;
-}
-
-
-inline
-void Buffer::delUser(BufferView *)
-{
-	users = 0;
-}
-
-
-inline
-Language const * Buffer::getLanguage() const
-{
-	return params.language;
-}
-
-
-inline
-bool Buffer::isClean() const
-{
-	return lyx_clean;
-}
-
-
-inline
-bool Buffer::isBakClean() const
-{
-	return bak_clean;
-}
-
-
-inline
-void Buffer::markClean() const
-{
-	if (!lyx_clean) {
-		lyx_clean = true;
-		updateTitles();
-	}
-	// if the .lyx file has been saved, we don't need an
-	// autosave
-	bak_clean = true;
-}
-
-
-inline
-void Buffer::markBakClean()
-{
-	bak_clean = true;
-}
-
-
-inline
-void Buffer::setUnnamed(bool flag)
-{
-	unnamed = flag;
-}
-
-
-inline
-bool Buffer::isUnnamed()
-{
-	return unnamed;
-}
-
-
-inline
-void Buffer::markDirty()
-{
-	if (lyx_clean) {
-		lyx_clean = false;
-		updateTitles();
-	}
-	bak_clean = false;
-	DEPCLEAN * tmp = dep_clean;
-	while (tmp) {
-		tmp->clean = false;
-		tmp = tmp->next;
-	}
-}
-
-
-inline
-string const & Buffer::fileName() const
-{
-	return filename_;
-}
-
-
-inline
-string const & Buffer::filePath() const
-{
-	return filepath_;
-}
-
-
-inline
-bool Buffer::isReadonly() const
-{
-	return read_only;
-}
-
-
-inline
-BufferView * Buffer::getUser() const
-{
-	return users;
-}
-
-
-inline
-void Buffer::setParentName(string const & name)
-{
-	params.parentname = name;
-}
-
-
-///
-inline
-bool operator==(Buffer::inset_iterator const & iter1,
-		Buffer::inset_iterator const & iter2)
-{
-	return iter1.par == iter2.par
-		&& (iter1.par == 0 || iter1.it == iter2.it);
-}
-
-
-///
-inline
-bool operator!=(Buffer::inset_iterator const & iter1,
-		Buffer::inset_iterator const & iter2)
-{
-	return !(iter1 == iter2);
-}
 
 #endif

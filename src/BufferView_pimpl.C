@@ -1400,6 +1400,7 @@ void BufferView::Pimpl::moveCursorUpdate(bool selecting, bool fitcur)
 
 Inset * BufferView::Pimpl::getInsetByCode(Inset::Code code)
 {
+#if 0
 	LyXCursor cursor = bv_->getLyXText()->cursor;
 	Buffer::inset_iterator it =
 		find_if(Buffer::inset_iterator(
@@ -1407,6 +1408,42 @@ Inset * BufferView::Pimpl::getInsetByCode(Inset::Code code)
 			buffer_->inset_iterator_end(),
 			lyx::compare_memfun(&Inset::lyxCode, code));
 	return it != buffer_->inset_iterator_end() ? (*it) : 0;
+#else
+	// Ok, this is a little bit too brute force but it
+	// should work for now. Better infrastructure is comming. (Lgb)
+
+	Buffer * b = bv_->buffer();
+	LyXCursor cursor = bv_->getLyXText()->cursor;
+
+	Buffer::inset_iterator beg = b->inset_iterator_begin();
+	Buffer::inset_iterator end = b->inset_iterator_end();
+
+	bool cursor_par_seen = false;
+	
+	for (; beg != end; ++beg) {
+		if (beg.getPar() == cursor.par()) {
+			cursor_par_seen = true;
+		}
+		if (cursor_par_seen) {
+			if (beg.getPar() == cursor.par()
+			    && beg.getPos() >= cursor.pos()) {
+				break;
+			} else if (beg.getPar() != cursor.par()) {
+				break;
+			}
+		}
+		
+	}
+	if (beg != end) {
+		// Now find the first inset that matches code.
+		for (; beg != end; ++beg) {
+			if (beg->lyxCode() == code) {
+				return &(*beg);
+			}
+		}
+	}
+	return 0;
+#endif
 }
 
 

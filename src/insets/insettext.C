@@ -1563,7 +1563,7 @@ int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 	ParagraphList::iterator end = paragraphs.end();
 	ParagraphList::iterator it = beg;
 	for (; it != end; ++it) {
-		string const tmp = buf->asciiParagraph(&*it, linelen, it == beg);
+		string const tmp = buf->asciiParagraph(*it, linelen, it == beg);
 		lines += lyx::count(tmp.begin(), tmp.end(), '\n');
 		os << tmp;
 	}

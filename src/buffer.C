@@ -1888,7 +1888,7 @@ pair<int, string> const addDepth(int depth, int ldepth)
 }
 
 
-string const Buffer::asciiParagraph(Paragraph const * par,
+string const Buffer::asciiParagraph(Paragraph const & par,
 				    unsigned int linelen,
 				    bool noparbreak) const
 {
@@ -1912,11 +1912,11 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 		}
 	}
 #else
-	depth = par->params().depth();
+	depth = par.params().depth();
 #endif
 
 	// First write the layout
-	string const & tmp = par->layout()->name();
+	string const & tmp = par.layout()->name();
 	if (compare_no_case(tmp, "itemize") == 0) {
 		ltype = 1;
 		ltype_depth = depth + 1;
@@ -1958,7 +1958,7 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 //		lyxerr << "Should this ever happen?" << endl;
 //	}
 
-	// linelen <= 0 is special and means we don't have pargraph breaks
+	// linelen <= 0 is special and means we don't have paragraph breaks
 
 	string::size_type currlinelen = 0;
 
@@ -2005,7 +2005,7 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 			break;
 		default:
 		{
-			string const parlab = par->params().labelString();
+			string const parlab = par.params().labelString();
 			buffer << parlab << " ";
 			currlinelen += parlab.length() + 1;
 		}
@@ -2026,12 +2026,12 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 
 	string word;
 
-	for (pos_type i = 0; i < par->size(); ++i) {
-		char c = par->getUChar(params, i);
+	for (pos_type i = 0; i < par.size(); ++i) {
+		char c = par.getUChar(params, i);
 		switch (c) {
 		case Paragraph::META_INSET:
 		{
-			Inset const * inset = par->getInset(i);
+			Inset const * inset = par.getInset(i);
 			if (inset) {
 				if (linelen > 0) {
 					buffer << word;
@@ -2116,15 +2116,15 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 }
 
 
-void Buffer::writeFileAscii(ostream & ofs, int linelen)
+void Buffer::writeFileAscii(ostream & os, int linelen)
 {
 	ParagraphList::iterator beg = paragraphs.begin();
 	ParagraphList::iterator end = paragraphs.end();
 	ParagraphList::iterator it = beg;
 	for (; it != end; ++it) {
-		ofs << asciiParagraph(&*it, linelen, it == beg);
+		os << asciiParagraph(*it, linelen, it == beg);
 	}
-	ofs << "\n";
+	os << "\n";
 }
 
 
@@ -2642,7 +2642,7 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 	while (par != endpar) {
 		Inset * in = par->inInset();
 		// well we have to check if we are in an inset with unlimited
-		// lenght (all in one row) if that is true then we don't allow
+		// length (all in one row) if that is true then we don't allow
 		// any special options in the paragraph and also we don't allow
 		// any environment other then "Standard" to be valid!
 		if ((in == 0) || !in->forceDefaultParagraphs(in)) {
@@ -3669,13 +3669,12 @@ string const Buffer::getIncludeonlyList(char delim)
 	string lst;
 	for (inset_iterator it = inset_iterator_begin();
 	    it != inset_iterator_end(); ++it) {
-		if ((*it)->lyxCode() == Inset::INCLUDE_CODE) {
-			InsetInclude * insetinc =
-				static_cast<InsetInclude *>(*it);
-			if (insetinc->isIncludeOnly()) {
+		if (it->lyxCode() == Inset::INCLUDE_CODE) {
+			InsetInclude & inc = static_cast<InsetInclude &>(*it);
+			if (inc.isIncludeOnly()) {
 				if (!lst.empty())
 					lst += delim;
-				lst += insetinc->getRelFileBaseName();
+				lst += inc.getRelFileBaseName();
 			}
 		}
 	}
@@ -3698,7 +3697,7 @@ vector<string> const Buffer::getLabelList() const
 	vector<string> label_list;
 	for (inset_iterator it = inset_const_iterator_begin();
 	     it != inset_const_iterator_end(); ++it) {
-		vector<string> const l = (*it)->getLabelList();
+		vector<string> const l = it->getLabelList();
 		label_list.insert(label_list.end(), l.begin(), l.end());
 	}
 	return label_list;
@@ -3736,13 +3735,13 @@ vector<pair<string, string> > const Buffer::getBibkeyList() const
 		for (inset_iterator it = inset_const_iterator_begin();
 			it != inset_const_iterator_end(); ++it) {
 			// Search for Bibtex or Include inset
-			if ((*it)->lyxCode() == Inset::BIBTEX_CODE) {
+			if (it->lyxCode() == Inset::BIBTEX_CODE) {
 				vector<StringPair> tmp =
-					static_cast<InsetBibtex*>(*it)->getKeys(this);
+					static_cast<InsetBibtex &>(*it).getKeys(this);
 				keys.insert(keys.end(), tmp.begin(), tmp.end());
-			} else if ((*it)->lyxCode() == Inset::INCLUDE_CODE) {
+			} else if (it->lyxCode() == Inset::INCLUDE_CODE) {
 				vector<StringPair> const tmp =
-					static_cast<InsetInclude*>(*it)->getKeys();
+					static_cast<InsetInclude &>(*it).getKeys();
 				keys.insert(keys.end(), tmp.begin(), tmp.end());
 			}
 		}
@@ -3857,27 +3856,14 @@ Counters & Buffer::counters() const
 }
 
 
-Buffer::inset_iterator::inset_iterator(Paragraph * paragraph, pos_type pos)
-	: par(paragraph)
-{
-	it = par->insetlist.insetIterator(pos);
-	if (it == par->insetlist.end()) {
-		par = par->next();
-		setParagraph();
-	}
-}
-
-
 void Buffer::inset_iterator::setParagraph()
 {
-	while (par) {
-		it = par->insetlist.begin();
-		if (it != par->insetlist.end())
+	while (pit != pend) {
+		it = pit->insetlist.begin();
+		if (it != pit->insetlist.end())
 			return;
-		par = par->next();
+		++pit;
 	}
-	//it = 0;
-	// We maintain an invariant that whenever par = 0 then it = 0
 }
 
 
@@ -3886,9 +3872,9 @@ Inset * Buffer::getInsetFromID(int id_arg) const
 	for (inset_iterator it = inset_const_iterator_begin();
 		 it != inset_const_iterator_end(); ++it)
 	{
-		if ((*it)->id() == id_arg)
-			return *it;
-		Inset * in = (*it)->getInsetFromID(id_arg);
+		if (it->id() == id_arg)
+			return &(*it);
+		Inset * in = it->getInsetFromID(id_arg);
 		if (in)
 			return in;
 	}
@@ -3926,3 +3912,181 @@ ParIterator Buffer::par_iterator_end()
 {
 	return ParIterator();
 }
+
+
+void Buffer::addUser(BufferView * u)
+{
+	users = u;
+}
+
+
+void Buffer::delUser(BufferView *)
+{
+	users = 0;
+}
+
+
+Language const * Buffer::getLanguage() const
+{
+	return params.language;
+}
+
+
+bool Buffer::isClean() const
+{
+	return lyx_clean;
+}
+
+
+bool Buffer::isBakClean() const
+{
+	return bak_clean;
+}
+
+
+void Buffer::markClean() const
+{
+	if (!lyx_clean) {
+		lyx_clean = true;
+		updateTitles();
+	}
+	// if the .lyx file has been saved, we don't need an
+	// autosave
+	bak_clean = true;
+}
+
+
+void Buffer::markBakClean()
+{
+	bak_clean = true;
+}
+
+
+void Buffer::setUnnamed(bool flag)
+{
+	unnamed = flag;
+}
+
+
+bool Buffer::isUnnamed()
+{
+	return unnamed;
+}
+
+
+void Buffer::markDirty()
+{
+	if (lyx_clean) {
+		lyx_clean = false;
+		updateTitles();
+	}
+	bak_clean = false;
+	DEPCLEAN * tmp = dep_clean;
+	while (tmp) {
+		tmp->clean = false;
+		tmp = tmp->next;
+	}
+}
+
+
+string const & Buffer::fileName() const
+{
+	return filename_;
+}
+
+
+string const & Buffer::filePath() const
+{
+	return filepath_;
+}
+
+
+bool Buffer::isReadonly() const
+{
+	return read_only;
+}
+
+
+BufferView * Buffer::getUser() const
+{
+	return users;
+}
+
+
+void Buffer::setParentName(string const & name)
+{
+	params.parentname = name;
+}
+
+
+Buffer::inset_iterator::inset_iterator()
+	: pit(0), pend(0)
+{}
+
+
+Buffer::inset_iterator::inset_iterator(base_type p, base_type e)
+	: pit(p), pend(e)
+{
+	setParagraph();
+}
+
+
+Buffer::inset_iterator & Buffer::inset_iterator::operator++()
+{
+	if (pit != pend) {
+		++it;
+		if (it == pit->insetlist.end()) {
+			++pit;
+			setParagraph();
+		}
+	}
+	return *this;
+}
+
+
+Buffer::inset_iterator Buffer::inset_iterator::operator++(int)
+{
+	inset_iterator tmp = *this;
+	++*this;
+	return tmp;
+}
+
+
+Buffer::inset_iterator::reference Buffer::inset_iterator::operator*()
+{
+	return *it.getInset();
+}
+
+
+Buffer::inset_iterator::pointer Buffer::inset_iterator::operator->()
+{
+	return it.getInset();
+}
+
+
+Paragraph * Buffer::inset_iterator::getPar()
+{
+	return &(*pit);
+}
+
+
+lyx::pos_type Buffer::inset_iterator::getPos() const
+{
+	return it.getPos();
+}
+
+
+bool operator==(Buffer::inset_iterator const & iter1,
+                Buffer::inset_iterator const & iter2)
+{
+	return iter1.pit == iter2.pit
+		&& (iter1.pit == iter1.pend || iter1.it == iter2.it);
+}
+
+
+bool operator!=(Buffer::inset_iterator const & iter1,
+                Buffer::inset_iterator const & iter2)
+{
+	return !(iter1 == iter2);
+}
+

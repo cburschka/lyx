@@ -80,7 +80,7 @@ int LyXText::workWidth(BufferView * bview, Inset * inset) const
 		Buffer::inset_iterator it = bview->buffer()->inset_iterator_begin();
 		Buffer::inset_iterator end = bview->buffer()->inset_iterator_end();
 		for (; it != end; ++it) {
-			if (*it == inset) {
+			if (&(*it) == inset) {
 				par = it.getPar();
 				pos = it.getPos();
 				break;
@@ -735,8 +735,7 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 	} else {
 		// find the next level paragraph
 
-		Paragraph * newpar =
-			row->par()->outerHook();
+		Paragraph * newpar = row->par()->outerHook();
 
 		// make a corresponding row. Needed to call LeftMargin()
 

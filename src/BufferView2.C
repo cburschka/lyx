@@ -315,17 +315,16 @@ bool BufferView::insertInset(Inset * inset, string const & lout)
 }
 
 
-/* This is also a buffer property (ale) */
+// This is also a buffer property (ale)
 // Not so sure about that. a goto Label function can not be buffer local, just
-// think how this will work in a multiwindo/buffer environment, all the
+// think how this will work in a multiwindow/buffer environment, all the
 // cursors in all the views showing this buffer will move. (Lgb)
 // OK, then no cursor action should be allowed in buffer. (ale)
 bool BufferView::gotoLabel(string const & label)
-
 {
 	for (Buffer::inset_iterator it = buffer()->inset_iterator_begin();
 	     it != buffer()->inset_iterator_end(); ++it) {
-		vector<string> labels = (*it)->getLabelList();
+		vector<string> labels = it->getLabelList();
 		if (find(labels.begin(),labels.end(),label)
 		     != labels.end()) {
 			beforeChange(text);

@@ -1,3 +1,13 @@
+
+2002-08-20  André Pönitz <poenitz@gmx.net>
+
+	* buffer.[Ch]: move inline functions to .C
+		
+	* BufferView2.C:
+	* BufferView_pimpl.C:
+	* text.C:
+	* buffer.[Ch]: use improved inset_iterator
+
 2002-08-20  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* BufferView_pimpl.C (dispatch): Insert insetbibtex with "plain"

@@ -205,7 +205,7 @@ int InsetQuotes::width(BufferView *, LyXFont const & font) const
 	for (string::size_type i = 0; i < text.length(); ++i) {
 		if (text[i] == ' ')
 			w += font_metrics::width('i', font);
-		else if (i == 0 || text[i] != text[i-1])
+		else if (i == 0 || text[i] != text[i - 1])
 			w += font_metrics::width(text[i], font);
 		else
 			w += font_metrics::width(',', font);
