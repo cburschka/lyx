@@ -93,7 +93,6 @@ xforms_objects = \
 	../xforms/FormERT.lo \
 	../xforms/FormExternal.lo \
 	../xforms/FormFloat.lo \
-	../xforms/FormForks.lo \
 	../xforms/FormGraphics.lo \
 	../xforms/FormInclude.lo \
 	../xforms/FormLog.lo \

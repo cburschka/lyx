@@ -60,8 +60,6 @@ libcontrollers_la_SOURCES= \
 	ControlExternal.h \
 	ControlFloat.C \
 	ControlFloat.h \
-	ControlForks.C \
-	ControlForks.h \
 	ControlGraphics.C \
 	ControlGraphics.h \
 	ControlInclude.C \

@@ -22,10 +22,6 @@
 #include "FormDocument.h"
 #include "forms/form_document.h"
 
-#include "ControlForks.h"
-#include "FormForks.h"
-#include "forms/form_forks.h"
-
 #include "ControlPreamble.h"
 #include "FormPreamble.h"
 #include "forms/form_preamble.h"
@@ -50,9 +46,6 @@
 typedef GUI<ControlDocument, FormDocument, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 DocumentDialog;
 
-typedef GUI<ControlForks, FormForks, OkApplyCancelPolicy, xformsBC>
-ForksDialog;
-
 typedef GUI<ControlPreamble, FormPreamble, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 PreambleDialog;
 
@@ -73,7 +66,6 @@ struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
 	DocumentDialog      document;
-	ForksDialog         forks;
 	PreambleDialog      preamble;
 	PreferencesDialog   preferences;
 	PrintDialog         print;
@@ -84,7 +76,6 @@ struct Dialogs::Impl {
 
 Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	: document(lv, d),
-	  forks(lv, d),
 	  preamble(lv, d),
 	  preferences(lv, d),
 	  print(lv, d),
@@ -108,12 +99,6 @@ Dialogs::~Dialogs()
 void Dialogs::showDocument()
 {
 	pimpl_->document.controller().show();
-}
-
-
-void Dialogs::showForks()
-{
-	pimpl_->forks.controller().show();
 }
 
 

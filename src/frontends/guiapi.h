@@ -21,7 +21,6 @@ extern "C" {
 void gui_show_dialog(Dialogs *, char const * name, char const * data);
 
 void gui_ShowDocument(Dialogs &);
-void gui_ShowForks(Dialogs &);
 void gui_ShowPreamble(Dialogs &);
 void gui_ShowPreferences(Dialogs &);
 void gui_ShowPrint(Dialogs &);

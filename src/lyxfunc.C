@@ -518,7 +518,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		if (!buf) {
 			disable = !(name == "aboutlyx" ||
 				    name == "file" ||
-				    name == "forks" ||
 				    name == "preferences" ||
 				    name == "texinfo");
 			break;
@@ -1143,8 +1142,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			}
 			else if (name == "document")
 				owner->getDialogs().showDocument();
-			else if (name == "forks")
-				owner->getDialogs().showForks();
 			else if (name == "preamble")
 				owner->getDialogs().showPreamble();
 			else if (name == "preferences")
@@ -1370,11 +1367,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 
 		case LFUN_MESSAGE:
 			owner->message(argument);
-			break;
-
-		case LFUN_FORKS_KILL:
-			if (isStrInt(argument))
-				ForkedcallsController::get().kill(strToInt(argument));
 			break;
 
 		case LFUN_TOOLTIPS_TOGGLE:

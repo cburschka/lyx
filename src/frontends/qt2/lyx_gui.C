@@ -232,7 +232,7 @@ FuncStatus getStatus(FuncRequest const & ev)
 	FuncStatus flag;
 	switch (ev.action) {
 	case LFUN_DIALOG_SHOW:
-		if (ev.argument == "preamble" || ev.argument == "forks")
+		if (ev.argument == "preamble")
 			flag.unknown(true);
 		break;
 	case LFUN_TOOLTIPS_TOGGLE:

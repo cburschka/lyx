@@ -299,7 +299,6 @@ void LyXAction::init()
 		{ LFUN_TRANSPOSE_CHARS, "chars-transpose", Noop },
 		{ LFUN_FLOAT_LIST, "float-list", Noop },
 		{ LFUN_ESCAPE, "escape", ReadOnly },
-		{ LFUN_FORKS_KILL, "kill-forks", NoBuffer },
 		{ LFUN_TOOLTIPS_TOGGLE, "toggle-tooltips", NoBuffer },
 		{ LFUN_TRACK_CHANGES, "track-changes", Noop },
 		{ LFUN_MERGE_CHANGES, "merge-changes", Noop },

@@ -31,7 +31,6 @@ xforms_objects = \
 	../xforms/FormCitation.lo \
 	../xforms/FormDocument.lo \
 	../xforms/FormExternal.lo \
-	../xforms/FormForks.lo \
 	../xforms/FormGraphics.lo \
 	../xforms/FormInclude.lo \
 	../xforms/FormIndex.lo \
@@ -88,7 +87,6 @@ xforms_objects = \
 	../xforms/forms/form_external.lo \
 	../xforms/forms/form_filedialog.lo \
 	../xforms/forms/form_float.lo \
-	../xforms/forms/form_forks.lo \
 	../xforms/forms/form_graphics.lo \
 	../xforms/forms/form_include.lo \
 	../xforms/forms/form_index.lo \

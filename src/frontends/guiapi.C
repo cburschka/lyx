@@ -28,12 +28,6 @@ void gui_ShowDocument(Dialogs & d)
 }
 
 
-void gui_ShowForks(Dialogs & d)
-{
-	d.showForks();
-}
-
-
 void gui_ShowPreamble(Dialogs & d)
 {
 	d.showPreamble();

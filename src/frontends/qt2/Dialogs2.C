@@ -24,7 +24,6 @@
 
 #include "QDocument.h"
 #include "QDocumentDialog.h"
-//#include "QForks.h"
 // Here would be an appropriate point to lecture on the evils
 // of the Qt headers, those most fucked up of disgusting ratholes.
 // But I won't.
@@ -92,10 +91,6 @@ void Dialogs::showDocument()
 {
 	pimpl_->document.controller().show();
 }
-
-
-void Dialogs::showForks()
-{}
 
 
 void Dialogs::showPreamble()

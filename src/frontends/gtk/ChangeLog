@@ -1,4 +1,9 @@
+2004-03-17  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: remove mention of the forks dialog.
+
 2004-02-09  Huang Ying <hying_caritas@163.com>
+
 	* GXpmBtnTbl.C : add a GXpmBtnTbl class to automate creating a Xpm
 	Button Table according to a set of xpm data or xbm data, is equivalent
 	with bmtable in xforms frontend.
@@ -7,6 +12,7 @@
 	* GMathDelim.C : math delimiter dialog.
 
 2004-02-07  Huang Ying <hying_caritas@163.com>
+
 	* GViewBase.C : add addCancel, addOK, addApply, add Restore to 
 	facilitate setup buttons signal.
 	* GAboutLyx.C : using addxxx series functions.

@@ -67,8 +67,6 @@ public:
 	//@{
 	///
 	void showDocument();
-	/// show all forked child processes
-	void showForks();
 	///
 	void showPreamble();
 	///

@@ -105,7 +105,6 @@ src/frontends/xforms/FormErrorList.C
 src/frontends/xforms/FormExternal.C
 src/frontends/xforms/FormFiledialog.C
 src/frontends/xforms/FormFloat.C
-src/frontends/xforms/FormForks.C
 src/frontends/xforms/FormGraphics.C
 src/frontends/xforms/FormInclude.C
 src/frontends/xforms/FormMathsBitmap.C
@@ -177,7 +176,6 @@ src/lyxfont.C
 src/lyxfunc.C
 src/lyxrc.C
 src/lyxvc.C
-src/mathed/formula.C
 src/mathed/formulamacro.C
 src/mathed/math_hullinset.C
 src/mathed/math_macrotemplate.C
@@ -192,8 +190,6 @@ src/paragraph.C
 src/paragraph_funcs.C
 src/rowpainter.C
 src/support/globbing.C
-src/support/path_defines.C
-src/tex2lyx/lengthcommon.C
 src/text.C
 src/text2.C
 src/text3.C
