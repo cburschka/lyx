@@ -168,8 +168,6 @@ public:
 	void menuUndo();
 	///
 	void menuRedo();
-	///
-	void insertNote();
 	/// removes all autodeletable insets
 	bool removeAutoInsets();
 	///
@@ -182,8 +180,6 @@ public:
 	*/
 	bool insertInset(Inset * inset, string const & lout = string(),
 			 bool no_table = false);
-	/// open and lock an updatable inset
-	bool open_new_inset(UpdatableInset * new_inset, bool behind = false);
 	/** Inserts a lyx file at cursor position.
 	    @return #false# if it fails.
 	*/

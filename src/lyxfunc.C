@@ -237,6 +237,10 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 		return;
 	}
 
+#if 0
+	// This if clause should not be here, but should rather be changed
+	// to a lyxfunc and get XK_Escape bound to it (Lgb)
+#warning Fix this please. (Lgb)
 	if (owner->view()->available()) {
 		// this function should be used always [asierra060396]
 		UpdatableInset * tli = owner->view()->theLockingInset();
@@ -256,6 +260,7 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 			return;
 		}
 	}
+#endif
 	
 	// Can we be sure that this will work for all X-Windows
 	// implementations? (Lgb)
@@ -321,27 +326,6 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	}
 
 	if (action == -1) {
-#if 0
-		if (keyseq.length < -1) { // unknown key sequence...
-			string buf;
-			keyseq.print(buf);
-			owner->message(_("Unknown sequence:") + ' ' + buf);
-			return 0;
-		}
-	
-		char const isochar = keyseq.getiso();
-		if (!(state & ControlMask) &&
-		    !(state & Mod1Mask) &&
-		    (isochar && keysym < 0xF000)) {
-			argument += isochar;
-		}
-		if (argument.empty()) {
-			lyxerr.debug() << "Empty argument!" << endl;
-			// This can`t possibly be of any use
-			// so we`ll skip the dispatch.
-			return 0;
-		}
-#else
 		// It is unknown, but what if we remove all
 		// the modifiers? (Lgb)
 		action = keyseq.addkey(keysym, 0);
@@ -360,7 +344,6 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 			//return 0;
 			return;
 		}
-#endif
 	}
 
 	if (action == LFUN_SELFINSERT) {
@@ -775,6 +758,31 @@ string const LyXFunc::Dispatch(int ac,
 	lyx::Assert(action != LFUN_SELECT_FILE_SYNC);
 
 	switch (action) {
+		
+	case LFUN_ESCAPE:
+	{
+		if (!owner->view()->available()) break;
+		
+		// this function should be used always [asierra060396]
+		UpdatableInset * tli =
+			owner->view()->theLockingInset();
+		if (tli) {
+			UpdatableInset * lock = tli->GetLockingInset();
+			
+			if (tli == lock) {
+				owner->view()->unlockInset(tli);
+				TEXT()->CursorRight(owner->view());
+				moveCursorUpdate(true, false);
+				owner->showState();
+			} else {
+				tli->UnlockInsetInInset(owner->view(),
+							lock,
+							true);
+			}
+		}
+	}
+	break;
+			
 		// --- Misc -------------------------------------------
 	case LFUN_WORDFINDFORWARD  : 
 	case LFUN_WORDFINDBACKWARD : {
@@ -826,7 +834,6 @@ string const LyXFunc::Dispatch(int ac,
 		}
 		string buf;
 		keyseq.print(buf, true);
-		//owner->getMiniBuffer()->Set(buf, string(), string(), 1);
 		owner->message(buf);
 	}
 	break;

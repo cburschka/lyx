@@ -407,6 +407,7 @@ void LyXAction::init()
 		  NoBuffer },
 		{ LFUN_TRANSPOSE_CHARS, "chars-transpose", "", Noop },
 		{ LFUN_FLOAT_LIST, "float-list", "Insert a float list", Noop },
+		{ LFUN_ESCAPE, "escape", "", Noop },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

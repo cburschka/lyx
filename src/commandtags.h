@@ -279,8 +279,13 @@ enum kb_action {
 	LFUN_MESSAGE_PUSH,              // Lgb 20010410
 	LFUN_MESSAGE_POP,               // Lgb 20010410
 	LFUN_TRANSPOSE_CHARS,           // Lgb 20010425
+	LFUN_ESCAPE,                    // Lgb 20010517
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 
 std::ostream & operator<<(std::ostream &, kb_action);
 #endif
+
+
+
+

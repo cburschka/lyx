@@ -40,6 +40,7 @@
 #include "insets/insetref.h"
 #include "insets/insetparent.h"
 #include "insets/insetindex.h"
+#include "insets/insetinfo.h"
 #include "insets/insetinclude.h"
 #include "insets/insetcite.h"
 #include "insets/insetert.h"
@@ -2565,7 +2566,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			new InsetTabular(*buffer_, r, c);
 		bool rtl =
 			TEXT(bv_)->real_current_font.isRightToLeft();
-		if (!bv_->open_new_inset(new_inset, rtl))
+		if (!open_new_inset(new_inset, rtl))
 			delete new_inset;
 	}
 	break;
@@ -2664,8 +2665,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_INSERT_MATRIX:
 	{ 	   
 		if (available()) { 
-			if (bv_->open_new_inset(new InsetFormula(false)))
-			{
+			if (open_new_inset(new InsetFormula(false))) {
 				bv_->theLockingInset()
 					->LocalDispatch(bv_, action, argument);
 			}
@@ -2679,7 +2679,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			break;
  
 		InsetFormula * f = new InsetFormula(true);
-		bv_->open_new_inset(f);
+		open_new_inset(f);
 		f->LocalDispatch(bv_, LFUN_INSERT_MATH, argument);
 	}
 	break;
@@ -2687,7 +2687,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_MATH_DISPLAY:
 	{
 		if (available())
-			bv_->open_new_inset(new InsetFormula(true));
+			open_new_inset(new InsetFormula(true));
 		break;
 	}
 		    
@@ -2700,7 +2700,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		        else {
 				string const s1 = token(s, ' ', 1);
 				int const na = s1.empty() ? 0 : lyx::atoi(s1);
-				bv_->open_new_inset(new InsetFormulaMacro(token(s, ' ', 0), na));
+				open_new_inset(new InsetFormulaMacro(token(s, ' ', 0), na));
 			}
 		}
 	}
@@ -2709,7 +2709,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_MATH_MODE:   // Open or create a math inset
 	{		
 		if (available())
-			bv_->open_new_inset(new InsetFormula);
+			open_new_inset(new InsetFormula);
 		owner_->getLyXFunc()->setMessage(N_("Math editor mode"));
 	}
 	break;
@@ -2882,7 +2882,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	break;
 	
 	case LFUN_INSERT_NOTE:
-		bv_->insertNote();
+		insertNote();
 		break;
 
 	case LFUN_SELFINSERT:
@@ -2932,67 +2932,39 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	break;
 
 	case LFUN_UNKNOWN_ACTION:
-	{
-		// Ok what does this break.
-#if 0
-		if (!buffer_) {
-			owner_->getLyXFunc()->setErrorMessage(N_("No document open"));
-			break;
-		}
-
-		if (buffer_->isReadonly()) {
-			owner_->getLyXFunc()->setErrorMessage(N_("Document is read only"));
-			break;
-		}
-		if (!argument.empty()) {
-			/* Automatically delete the currently selected
-			 * text and replace it with what is being
-			 * typed in now. Depends on lyxrc settings
-			 * "auto_region_delete", which defaults to
-			 * true (on). */
-		
-			if (lyxrc.auto_region_delete) {
-				if (TEXT(bv_)->selection){
-					TEXT(bv_)->CutSelection(bv_, false);
-					update(TEXT(bv_),
-					       BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-				}
-			}
-			
-			beforeChange(TEXT(bv_));
-			LyXFont const old_font(TEXT(bv_)->real_current_font);
-			for (string::size_type i = 0;
-			     i < argument.length(); ++i) {
-				if (greek_kb_flag) {
-					if (!math_insert_greek(bv_, argument[i]))
-						owner_->getIntl()->getTrans().TranslateAndInsert(argument[i], TEXT(bv_));
-				} else
-					owner_->getIntl()->getTrans().TranslateAndInsert(argument[i], TEXT(bv_));
-			}
-
-			update(TEXT(bv_),BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-
-			TEXT(bv_)->sel_cursor = TEXT(bv_)->cursor;
-			moveCursorUpdate(false);
-
-			// real_current_font.number can change so we need to
-			// update the minibuffer
-			if (old_font != TEXT(bv_)->real_current_font)
-				owner_->showState();
-		} else {
-			// if we don't have an argument there was something
-			// strange going on so we just tell this to someone!
-			owner_->getLyXFunc()->setErrorMessage(N_("No argument given"));
-		}
-#else
 		owner_->getLyXFunc()->setErrorMessage(N_("Unknow function!"));
-		
-#endif
 		break;
-	}
+	
 	default:
 		return false;
 	} // end of switch
 
 	return true;
 }
+
+
+void BufferView::Pimpl::insertNote()
+{
+	InsetInfo * new_inset = new InsetInfo();
+	bv_->insertInset(new_inset);
+	new_inset->Edit(bv_, 0, 0, 0);
+}
+
+
+// Open and lock an updatable inset
+bool BufferView::Pimpl::open_new_inset(UpdatableInset * new_inset, bool behind)
+{
+	beforeChange(TEXT(bv_));
+	TEXT(bv_)->FinishUndo();
+	if (!bv_->insertInset(new_inset)) {
+		delete new_inset;
+		return false;
+	}
+	if (behind) {
+		LyXFont & font = bv_->getLyXText()->real_current_font;
+		new_inset->Edit(bv_, new_inset->width(bv_, font), 0, 0);
+	} else
+		new_inset->Edit(bv_, 0, 0, 0);
+	return true;
+}
+

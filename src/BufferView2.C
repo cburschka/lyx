@@ -252,23 +252,6 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 }
 
 
-// Open and lock an updatable inset
-bool BufferView::open_new_inset(UpdatableInset * new_inset, bool behind)
-{
-	beforeChange(text);
-	text->FinishUndo();
-	if (!insertInset(new_inset)) {
-		delete new_inset;
-		return false;
-	}
-	if (behind) {
-		LyXFont & font = getLyXText()->real_current_font;
-		new_inset->Edit(this, new_inset->width(this, font), 0, 0);
-	} else
-		new_inset->Edit(this, 0, 0, 0);
-	return true;
-}
-
 /* This is also a buffer property (ale) */
 // Not so sure about that. a goto Label function can not be buffer local, just
 // think how this will work in a multiwindo/buffer environment, all the
@@ -290,14 +273,6 @@ bool BufferView::gotoLabel(string const & label)
 		}
 	}
 	return false;
-}
-
-
-void BufferView::insertNote()
-{
-	InsetInfo * new_inset = new InsetInfo();
-	insertInset(new_inset);
-	new_inset->Edit(this, 0, 0, 0);
 }
 
 

@@ -1,3 +1,21 @@
+2001-05-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxfunc.C (processKeySym): comment the Escape handling, remove
+	commented code.
+	(Dispatch): implement LFUN_ESCAPE
+
+	* commandtags.h: add LFUN_ESCAPE
+
+	* LyXAction.C (init): add entry for LFUN_ESCAPE
+
+	* BufferView_pimpl.C (Dispatch): adjust for open_new_inset move.
+	Remove commented code.
+	(insertNote): moved here
+	(open_new_inset): moved here
+
+	* BufferView[2].[Ch]: move insertNote and open_new_inset to
+	BufferView_pimpl
+
 2001-05-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* kbmap.C (findbinding): clean it up and make it work correctly.
