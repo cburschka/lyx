@@ -266,7 +266,6 @@ bool findNextChange(BufferView * bv)
 		}
 	}
 	pos_type length = end - pos;
-	bv->text->init(bv);
 	put_selection_at(bv, cur, length, true);
 	return true;
 }
