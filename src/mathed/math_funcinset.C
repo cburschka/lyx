@@ -55,7 +55,7 @@ void MathFuncInset::WriteNormal(std::ostream & os) const
 }
 
 
-void MathFuncInset::Metrics(MathStyles st) 
+void MathFuncInset::Metrics(MathStyles st, int, int) 
 {
 	LyXFont font = WhichFont(LM_TC_TEXTRM, size());
 #ifndef NO_LATEX

@@ -15,6 +15,8 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
+// {[(
+
 #include <config.h>
 
 #include <cctype>
@@ -38,6 +40,7 @@
 #include "math_funcinset.h"
 #include "math_spaceinset.h"
 #include "math_sizeinset.h"
+#include "math_scriptinset.h"
 #include "math_dotsinset.h"
 #include "math_fracinset.h"
 #include "math_deliminset.h"
@@ -75,11 +78,9 @@ lexcode_enum lexcode[256];
 char const * latex_special_chars = "#$%&_{}";
 
 
-/// Read TeX into data, flags give stop conditions
-void mathed_parse(MathArray & data, unsigned flags);
-
-
 namespace {
+
+void mathed_parse(MathArray & array, unsigned flags);
 
 unsigned char getuchar(std::istream * is)
 {
@@ -93,16 +94,21 @@ const unsigned char LM_TK_CLOSE = '}';
 
 enum {
 	FLAG_BRACE      = 1 << 0,  //  A { needed              //}
-	FLAG_BRACE_OPT  = 1 << 2,  //  Optional {              
-	FLAG_BRACE_LAST = 1 << 3,  //  Last } ends the parsing process
-	FLAG_BRACK_ARG  = 1 << 4,  //  Optional [     
+	FLAG_BRACE_OPT  = 1 << 2,  //  Optional {              //}
+	FLAG_BRACE_LAST = 1 << 3,  //  // { Last } ends the parsing process
+	FLAG_BRACK_ARG  = 1 << 4,  //  Optional [              //]
 	FLAG_RIGHT      = 1 << 5,  //  Next right ends the parsing process
 	FLAG_END        = 1 << 6,  //  Next end ends the parsing process
-	FLAG_BRACE_FONT = 1 << 7,  //  Next } closes a font
-	FLAG_BRACK_END  = 1 << 9,  //  Next ] ends the parsing process
+	FLAG_BRACE_FONT = 1 << 7,  //  // { Next } closes a font
+	FLAG_BRACK_END  = 1 << 9,  //  // [ Next ] ends the parsing process
 	FLAG_AMPERSAND  = 1 << 10, //  Next & ends the parsing process
-	FLAG_NEWLINE    = 1 << 11  //  Next \\ ends the parsing process
+	FLAG_NEWLINE    = 1 << 11, //  Next \\ ends the parsing process
+
+	//  Read a (possibly braced token)
+	FLAG_ITEM       = FLAG_BRACE_OPT | FLAG_BRACE_LAST
 };
+
+}
 
 
 ///
@@ -112,6 +118,7 @@ union {
 	///
 	latexkeys const * l;
 } yylval;
+
 
 
 string yytext;
@@ -302,9 +309,9 @@ int yylex()
 				yylval.i = (i < 4) ? i : 0; 
 				return LM_TK_SPACE; 
 			}
-			if (lexcode[c] == LexAlpha || lexcode[c] == LexDigit) {
+			if (lexcode[c] == LexAlpha) {
 				yytext.erase();
-				while (lexcode[c] == LexAlpha || lexcode[c] == LexDigit) {
+				while (lexcode[c] == LexAlpha) {
 					yytext += c;
 					c = getuchar(yyis);
 				}
@@ -333,25 +340,26 @@ int yylex()
 }
 
 
-void handle_frac(MathArray & dat, string const & name)
-{
-	MathFracInset * p = new MathFracInset(name);
-	mathed_parse(p->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
-	mathed_parse(p->cell(1), FLAG_BRACE | FLAG_BRACE_LAST);
-	dat.push_back(p);
-}
-
-
-MathScriptInset * lastScriptInset(MathArray & array)
+MathInset * lastUpDownInset(MathArray & array, bool up, bool down)
 {
 	MathInset * p = array.back_inset();
-	if (!p || !p->isScriptInset()) {
-		p = new MathScriptInset;
+	if (!p || !p->isUpDownInset()) {
+		p = new MathScriptInset(up, down);
 		array.push_back(p);
 	}
-	return static_cast<MathScriptInset *>(p);
+	MathUpDownInset * q = static_cast<MathScriptInset *>(p);
+	if (up)
+		q->up(true);
+	if (down)
+		q->down(down);
+	return p;
 }
 
+
+MathBigopInset * lastBigopInset(MathArray & array)
+{
+	MathInset * p = array.back_inset();
+	return (p && p->isBigopInset()) ? static_cast<MathBigopInset *>(p) : 0;
 }
 
 
@@ -480,10 +488,21 @@ MathInset * mathed_parse()
 }
 
 
+
+namespace {
+
+void handle_frac(MathArray & array, string const & name)
+{
+	MathFracInset * p = new MathFracInset(name);
+	mathed_parse(p->cell(0), FLAG_ITEM);
+	mathed_parse(p->cell(1), FLAG_ITEM);
+	array.push_back(p);
+}
+
+
 void mathed_parse(MathArray & array, unsigned flags)
 {
 	int  t = yylex();
-	int  tprev = 0;
 	bool panic = false;
 	static int plevel = -1;
 	yyvarcode = LM_TC_VAR;
@@ -577,28 +596,16 @@ void mathed_parse(MathArray & array, unsigned flags)
 			break;
 		
 		case '^':
-		{
-			MathArray ar;
-			mathed_parse(ar, FLAG_BRACE_OPT | FLAG_BRACE_LAST);
-			MathScriptInset * p = lastScriptInset(array);
-			p->setData(ar, 0);
-			p->up(true);
+			mathed_parse(lastUpDownInset(array, true, false)->cell(0), FLAG_ITEM);
 			break;
-		}
 		
 		case '_':
-		{
-			MathArray ar;
-			mathed_parse(ar, FLAG_BRACE_OPT | FLAG_BRACE_LAST);
-			MathScriptInset * p = lastScriptInset(array);
-			p->setData(ar, 1);
-			p->down(true);
+			mathed_parse(lastUpDownInset(array, false, true)->cell(1), FLAG_ITEM);
 			break;
-		}
 		
 		case LM_TK_LIMIT:
 		{
-			MathScriptInset * p = lastScriptInset(array);
+			MathBigopInset * p = lastBigopInset(array);
 			if (p) 
 				p->limits(yylval.l->id ? 1 : -1);
 			break;
@@ -669,15 +676,13 @@ void mathed_parse(MathArray & array, unsigned flags)
 		{	    
 			unsigned char c = getuchar(yyis);
 			if (c == '[') {
-				MathRootInset * rt = new MathRootInset;
-				mathed_parse(rt->cell(0), FLAG_BRACK_END);
-				mathed_parse(rt->cell(1), FLAG_BRACE | FLAG_BRACE_LAST);
-				array.push_back(rt);
+				array.push_back(new MathRootInset);
+				mathed_parse(array.back_inset()->cell(0), FLAG_BRACK_END);
+				mathed_parse(array.back_inset()->cell(1), FLAG_ITEM);
 			} else {
 				yyis->putback(c);
-				MathSqrtInset * sq = new MathSqrtInset;
-				mathed_parse(sq->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
-				array.push_back(sq);
+				array.push_back(new MathSqrtInset);
+				mathed_parse(array.back_inset()->cell(0), FLAG_ITEM);
 			}
 			break;
 		}
@@ -700,7 +705,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 				rd = yylval.i;	 
 
 			MathDelimInset * dl = new MathDelimInset(ld, rd);
-			dl->setData(ar, 0);
+			dl->cell(0) = ar;
 			array.push_back(dl);
 			break;
 		}
@@ -766,7 +771,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 			if (MathMacroTable::hasTemplate(yytext)) {
 				MathMacro * m = MathMacroTable::cloneTemplate(yytext);
 				for (int i = 0; i < m->nargs(); ++i) 
-					mathed_parse(m->cell(i), FLAG_BRACE_OPT | FLAG_BRACE_LAST);
+					mathed_parse(m->cell(i), FLAG_ITEM);
 				array.push_back(m);
 				m->Metrics(LM_ST_TEXT);
 			} else
@@ -831,7 +836,6 @@ void mathed_parse(MathArray & array, unsigned flags)
 
 		} // end of big switch
 		
-		tprev = t;
 		if (panic) {
 			lyxerr << " Math Panic, expect problems!" << endl;
 			//   Search for the end command. 
@@ -847,6 +851,8 @@ void mathed_parse(MathArray & array, unsigned flags)
 		}
 	}
 	--plevel;
+}
+
 }
 
 
@@ -879,3 +885,5 @@ MathInset * mathed_parse(LyXLex & lex)
 
 	return p;
 }
+
+//]})

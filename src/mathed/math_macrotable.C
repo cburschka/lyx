@@ -114,7 +114,7 @@ void MathMacroTable::builtinMacros()
 	{
 		MathMacroTemplate * t = new MathMacroTemplate("emptyset", 0);
 		MathAccentInset * p = new MathAccentInset(LM_not);
-		p->cell(0).push_back('0', LM_TC_VAR);
+		p->cell(0).push_back('O', LM_TC_VAR);
 		t->push_back(p);
 		insertTemplate(t);
 	}

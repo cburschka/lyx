@@ -18,7 +18,7 @@ public:
 	///
 	MathXArray();
 	///
-	void Metrics(MathStyles st);
+	void Metrics(MathStyles st, int asc = 0, int des = 0);
 	///
 	void draw(Painter & pain, int x, int y);
 

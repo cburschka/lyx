@@ -45,7 +45,7 @@ void MathSizeInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathSizeInset::Metrics(MathStyles /* st */)
+void MathSizeInset::Metrics(MathStyles /* st */, int, int)
 {
 	xcell(0).Metrics(style_);
 	ascent_   = xcell(0).ascent_;

@@ -97,7 +97,7 @@ MathInset * MathMatrixInset::clone() const
 }
 
 
-void MathMatrixInset::Metrics(MathStyles /* st */)
+void MathMatrixInset::Metrics(MathStyles /* st */, int, int)
 {
 	size_ = (GetType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
 
@@ -245,7 +245,7 @@ void MathMatrixInset::Validate1(LaTeXFeatures & features)
 	MathIter it(cell());
 
 	while (it.OK() && !(features.binom && features.boldsymbol)) {
-		MathInset * p = it.GetInset();
+		MathInset * p = it.nextInset();
 		if (p) {
 			p = it.GetActiveInset();
 			if (p) {

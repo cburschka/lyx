@@ -58,7 +58,7 @@ public:
 	///
 	void Write(std::ostream &, bool fragile) const;
 	///
-	void Metrics(MathStyles st);
+	void Metrics(MathStyles st, int asc = 0, int des = 0);
 	///
 	void draw(Painter &, int, int);
 	///

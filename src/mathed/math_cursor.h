@@ -25,7 +25,7 @@
 
 class MathInset;
 class MathFuncInset;
-class MathScriptInset;
+class MathUpDownInset;
 class InsetFormulaBase;
 class MathArray;
 class MathXArray;
@@ -217,7 +217,7 @@ private:
 	///
 	MathInset * prevInset() const;
 	///
-	MathScriptInset * nearbyScriptInset() const;
+	MathUpDownInset * nearbyUpDownInset() const;
 
 	///
 	MathFuncInset * imacro;

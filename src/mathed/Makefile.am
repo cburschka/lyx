@@ -66,6 +66,8 @@ libmathed_la_SOURCES = \
 	math_spaceinset.h \
 	math_sqrtinset.C \
 	math_sqrtinset.h \
+	math_updowninset.C \
+	math_updowninset.h \
 	math_utils.C \
 	math_utils.h \
 	matriz.C \

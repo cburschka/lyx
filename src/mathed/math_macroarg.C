@@ -38,7 +38,7 @@ void MathMacroArgument::draw(Painter & pain, int x, int y)
 }
 
 
-void MathMacroArgument::Metrics(MathStyles st)
+void MathMacroArgument::Metrics(MathStyles st, int, int)
 {
 	char str[] = "#0";
 	str[1] += number_; 

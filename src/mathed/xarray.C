@@ -14,12 +14,13 @@
 using std::max;
 using std::min;
 
+
 MathXArray::MathXArray()
 	: width_(0), ascent_(0), descent_(0), xo_(0), yo_(0), style_(LM_ST_TEXT)
 {}
 
 
-void MathXArray::Metrics(MathStyles st)
+void MathXArray::Metrics(MathStyles st, int, int)
 {
 	if (data_.empty()) {
 		mathed_char_dim(LM_TC_VAR, st, 'I', ascent_, descent_, width_); 
@@ -31,24 +32,28 @@ void MathXArray::Metrics(MathStyles st)
 	width_   = 0;
 	style_    = st;
 
+	// keep last values for scriptInset's need to look back
+	int asc = 0;
+	int des = 0;
+	int wid = 0;
+	mathed_char_height(LM_TC_VAR, st, 'I', asc, des);
+
 	for (int pos = 0; pos < data_.size(); data_.next(pos)) {
-		MathInset * p = data_.GetInset(pos);
+		MathInset * p = data_.nextInset(pos);
 		if (p) {
-			p->Metrics(st);
-			ascent_  = max(ascent_,  p->ascent());
-			descent_ = max(descent_, p->descent());
-			width_   += p->width();
+			// only MathUpDownInsets will use the asc/des information...
+			p->Metrics(st, asc, des);
+			asc = p->ascent();
+			des = p->descent();
+			wid = p->width();
 		} else {
 			char cx = data_.GetChar(pos); 
 			MathTextCodes fc = data_.GetCode(pos); 
-			int asc;
-			int des;
-			int wid;
 			mathed_char_dim(fc, style_, cx, asc, des, wid);
-			ascent_  = max(ascent_, asc);
-			descent_ = max(descent_, des);
-			width_   += wid;
 		}
+		ascent_  = max(ascent_, asc);
+		descent_ = max(descent_, des);
+		width_   += wid;
 	}
 }
 
@@ -64,7 +69,7 @@ void MathXArray::draw(Painter & pain, int x, int y)
 	}
 
 	for (int pos = 0; pos < data_.size(); data_.next(pos)) {
-		MathInset * p = data_.GetInset(pos);
+		MathInset * p = data_.nextInset(pos);
 		if (p) {
 			p->draw(pain, x, y);
 			x += p->width();
@@ -104,7 +109,7 @@ int MathXArray::width(int pos) const
 		return 0;
 
 	if (data_.isInset(pos)) 
-		return data_.GetInset(pos)->width();
+		return data_.nextInset(pos)->width();
 	else 
 		return mathed_char_width(data_.GetCode(pos), style_, data_.GetChar(pos));
 }

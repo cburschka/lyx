@@ -1,4 +1,11 @@
 
+2001-07-12 André Pönitz  <poenitz@htwm.de>
+
+	* math_updowninset.[hC]: new base class for script and bigop insets
+		*.[hC]: subsequnet changes to all Metric() functions
+	
+	* math_parser.C: small changes (\sqrt0 is read properly now)
+	
 2001-07-10 André Pönitz  <poenitz@htwm.de>
 	
 	* math_accentinset.[hC]: rewrite

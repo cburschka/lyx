@@ -24,7 +24,6 @@
 #include "LString.h"
 
 class MathInset;
-class MathScriptInset;
 class MathMacro;
 class Painter;
 
@@ -33,9 +32,7 @@ class Painter;
 #endif
 
 /** \class MathArray
-    \brief A resizable array.
-    
-    A general purpose resizable array.
+    \brief Low level container for math insets
     
     \author Alejandro Aguilar Sierra
     \author André Pönitz
@@ -101,11 +98,9 @@ public:
 	///
 
 	///
-	MathInset * GetInset(int pos) const;
+	MathInset * nextInset(int pos) const;
 	///
-	MathScriptInset * prevScriptInset(int pos) const;
-	///
-	MathScriptInset * nextScriptInset(int pos) const;
+	MathInset * prevInset(int pos) const;
 	///
 	byte GetChar(int pos) const;
 	/// read subsequent chars of the same kind.

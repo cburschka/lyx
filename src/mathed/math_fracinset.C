@@ -24,7 +24,7 @@ MathInset * MathFracInset::clone() const
 }
 
 
-void MathFracInset::Metrics(MathStyles st)
+void MathFracInset::Metrics(MathStyles st, int, int)
 {
 	size_    = smallerStyleFrac(st);
 	xcell(0).Metrics(size_);

@@ -23,7 +23,7 @@ MathArray::~MathArray()
 {
 	for (int pos = 0; pos < size(); next(pos)) 
 		if (MathIsInset(pos)) 
-			delete GetInset(pos);
+			delete nextInset(pos);
 }
 
 
@@ -32,7 +32,7 @@ MathArray::MathArray(MathArray const & array)
 {
 	for (int pos = 0; pos < size(); next(pos)) 
 		if (isInset(pos)) 
-			replace(pos, GetInset(pos)->clone());
+			replace(pos, nextInset(pos)->clone());
 }
 
 
@@ -75,7 +75,7 @@ void MathArray::substitute(MathMacro const & m)
 	MathArray tmp;
 	for (int pos = 0; pos < size(); next(pos)) {
 		if (isInset(pos)) 
-			GetInset(pos)->substitute(tmp, m);
+			nextInset(pos)->substitute(tmp, m);
 		else 
 			tmp.push_back(GetChar(pos), GetCode(pos));
 	}
@@ -91,13 +91,21 @@ MathArray & MathArray::operator=(MathArray const & array)
 }
 
 
-MathInset * MathArray::GetInset(int pos) const
+MathInset * MathArray::nextInset(int pos) const
 {
 	if (!isInset(pos))
 		return 0;
 	MathInset * p;
 	memcpy(&p, &bf_[0] + pos + 1, sizeof(p));
 	return p;
+}
+
+MathInset * MathArray::prevInset(int pos) const
+{
+	if (!pos)
+		return 0;
+	prev(pos);
+	return nextInset(pos);
 }
 
 byte MathArray::GetChar(int pos) const
@@ -157,7 +165,7 @@ void MathArray::insert(int pos, MathArray const & array)
 	bf_.insert(bf_.begin() + pos, array.bf_.begin(), array.bf_.end());
 	for (int p = pos; p < pos + array.size(); next(p)) 
 		if (isInset(p)) 
-			replace(p, GetInset(p)->clone());
+			replace(p, nextInset(p)->clone());
 }
 
 
@@ -230,31 +238,8 @@ MathInset * MathArray::back_inset() const
 		int pos = size();
 		prev(pos);
 		if (isInset(pos))
-			return GetInset(pos);
+			return nextInset(pos);
 	}
-	return 0;
-}
-
-
-MathScriptInset * MathArray::prevScriptInset(int pos) const
-{
-	if (!pos)
-		return 0;
-	prev(pos);
-
-	MathInset * inset = GetInset(pos);
-	if (inset && inset->isScriptInset()) 
-		return static_cast<MathScriptInset *>(inset);
-
-	return 0;
-}
-
-MathScriptInset * MathArray::nextScriptInset(int pos) const
-{
-	MathInset * inset = GetInset(pos);
-	if (inset && inset->isScriptInset()) 
-		return static_cast<MathScriptInset *>(inset);
-
 	return 0;
 }
 
@@ -272,7 +257,7 @@ void MathArray::dump(ostream & os) const
 {
 	for (int pos = 0; pos < size(); next(pos)) {
 		if (isInset(pos)) 
-			os << "<inset: " << GetInset(pos) << ">";
+			os << "<inset: " << nextInset(pos) << ">";
 		else 
 			os << "<" << int(bf_[pos]) << " " << int(bf_[pos+1]) << ">";
 	}
@@ -296,7 +281,7 @@ void MathArray::Write(ostream & os, bool fragile) const
 	for (int pos = 0; pos < size(); next(pos)) {
 		if (isInset(pos)) {
 
-			GetInset(pos)->Write(os, fragile);
+			nextInset(pos)->Write(os, fragile);
 
 		} else {
 

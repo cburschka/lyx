@@ -34,7 +34,7 @@ public:
 	///
 	void draw(Painter &, int, int);
 	///
-	void Metrics(MathStyles st);
+	void Metrics(MathStyles st, int asc = 0, int des = 0);
 private:
 	///
 	int numargs_;

@@ -17,7 +17,7 @@ MathInset * MathAccentInset::clone() const
 	return new MathAccentInset(*this);
 }
 
-void MathAccentInset::Metrics(MathStyles st)
+void MathAccentInset::Metrics(MathStyles st, int, int)
 {
 	xcell(0).Metrics(st);
 	ascent_  = xcell(0).ascent();

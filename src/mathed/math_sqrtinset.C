@@ -22,7 +22,7 @@ MathInset * MathSqrtInset::clone() const
 }
 
 
-void MathSqrtInset::Metrics(MathStyles st)
+void MathSqrtInset::Metrics(MathStyles st, int, int)
 {
 	xcell(0).Metrics(st);
 	size_    = st;
@@ -51,7 +51,7 @@ void MathSqrtInset::draw(Painter & pain, int x, int y)
 
 void MathSqrtInset::Write(std::ostream & os, bool fragile) const
 {
-	os << '\\' << name_ << '{';
+	os << "\\sqrt{";
 	cell(0).Write(os, fragile); 
 	os << '}';
 }

@@ -60,7 +60,7 @@ public:
 	/// Appends itself with macro arguments substituted
 	virtual void substitute(MathArray & array, MathMacro const & macro) const;
 	/// Compute the size of the object
-	virtual void Metrics(MathStyles st) = 0;
+	virtual void Metrics(MathStyles st, int = 0, int = 0) = 0;
 	/// 
 	virtual int ascent() const;
 	///
@@ -69,8 +69,6 @@ public:
 	virtual int width() const;
 	///
 	virtual int height() const;
-	///
-	virtual bool hasLimits() const;
 	///
 	virtual int limits() const;
 	///
@@ -136,8 +134,6 @@ public:
 	MathXArray & xcell(int);
 	///
 	MathXArray const & xcell(int) const;
-	///
-	void setData(MathArray const &, int);
 			
 	///
 	int xo() const;
@@ -174,9 +170,11 @@ public:
 	///
 	bool covers(int x, int y) const;
 	/// Identifies ScriptInsets
-	virtual bool isScriptInset() const { return false; }
+	virtual bool isUpDownInset() const { return false; }
 	/// Identifies AccentInsets
 	virtual bool isAccentInset() const { return false; }
+	/// Identifies BigopInsets
+	virtual bool isBigopInset() const { return false; }
 	///
 	virtual bool isActive() const { return nargs() > 0; }
 

@@ -306,9 +306,9 @@ void MathCursor::SetPos(int x, int y)
 		lyxerr << "found idx: " << idx_ << " cursor: " << cursor_  << "\n";
 		MathInset * n = nextInset();
 		MathInset * p = prevInset();
-		if (n && (n->isActive() || n->isScriptInset()) && n->covers(x, y))
+		if (n && (n->isActive() || n->isUpDownInset()) && n->covers(x, y))
 			push(n, true);
-		else if (p && (p->isActive() || p->isScriptInset()) && p->covers(x, y)) {
+		else if (p && (p->isActive() || p->isUpDownInset()) && p->covers(x, y)) {
 			array().prev(cursor_);
 			push(p, false);
 		} else 
@@ -536,7 +536,7 @@ bool MathCursor::toggleLimits()
 		return false;
 	MathInset * p = prevInset();
 	int old = p->limits();
-	p->limits(old == -1 ? 1 : -1);
+	p->limits(old < 0 ? 1 : -1);
 	return old != p->limits();
 }
 
@@ -554,29 +554,27 @@ void MathCursor::Interpret(string const & s)
 in_word_set(s) << " \n";
 
 	if (s[0] == '^') {
-		MathScriptInset * p = nearbyScriptInset();
+		MathUpDownInset * p = nearbyUpDownInset();
 		if (!p) {
-			p = new MathScriptInset;
+			p = new MathScriptInset(true, false);
 			insert(p);
 			array().prev(cursor_);
 		}
 		push(p, true);
-		if (!p->up())
-			p->up(true);
+		p->up(true);
 		idx_ = 0;
 		return;
 	}
 
 	if (s[0] == '_') {
-		MathScriptInset * p = nearbyScriptInset();
+		MathUpDownInset * p = nearbyUpDownInset();
 		if (!p) {
-			p = new MathScriptInset;
+			p = new MathScriptInset(false, true);
 			insert(p);
 			array().prev(cursor_);
 		}
 		push(p, true);
-		if (!p->down())
-			p->down(true);
+		p->down(true);
 		idx_ = 1;
 		return;
 	}
@@ -1064,26 +1062,28 @@ MathInset * MathCursor::prevInset() const
 	int c = cursor_;
 	if (!array().prev(c))
 		return 0;
-	return array().GetInset(c);
+	return array().nextInset(c);
 }
 
 
 MathInset * MathCursor::nextInset() const
 {
 	normalize();
-	return array().GetInset(cursor_);
+	return array().nextInset(cursor_);
 }
 
 
-MathScriptInset * MathCursor::nearbyScriptInset() const
+MathUpDownInset * MathCursor::nearbyUpDownInset() const
 {
 	normalize();
-	MathScriptInset * p = array().prevScriptInset(cursor_);
- 	if (p)
-		return p;
-	return array().nextScriptInset(cursor_);
+	MathInset * p = array().prevInset(cursor_);
+	if (p && p->isUpDownInset())
+		return static_cast<MathUpDownInset *>(p);
+	p = array().nextInset(cursor_);
+	if (p && p->isUpDownInset())
+		return static_cast<MathUpDownInset *>(p);
+	return 0;
 }
-
 
 
 MathArray & MathCursor::array() const

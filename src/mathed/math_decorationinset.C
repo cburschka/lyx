@@ -28,7 +28,7 @@ MathInset * MathDecorationInset::clone() const
 
 
 
-void MathDecorationInset::Metrics(MathStyles st)
+void MathDecorationInset::Metrics(MathStyles st, int, int)
 {
 	xcell(0).Metrics(st);
 	size_    = st;

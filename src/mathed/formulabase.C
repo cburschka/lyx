@@ -147,6 +147,7 @@ LyXFont WhichFont(short type, int size)
 
 	case LM_TC_SPECIAL: //f = Math_Fonts[0]; break;
 	case LM_TC_TEXTRM:
+	case LM_TC_TEX:
 	case LM_TC_RM:
 		f = Math_Fonts[6];
 		break;
@@ -183,6 +184,9 @@ LyXFont WhichFont(short type, int size)
 
 	if (type != LM_TC_TEXTRM)
 		f.setColor(LColor::math);
+
+	if (type == LM_TC_TEX)
+		f.setColor(LColor::latex);
 
 	return f;
 }

@@ -70,12 +70,6 @@ void MathInset::limits(int)
 {
 }
 
-bool MathInset::hasLimits() const
-{
-	return false;
-}
-
-
 string const & MathInset::name() const
 {
 	return name_;
@@ -172,12 +166,6 @@ MathArray const & MathInset::cell(int i) const
 }
 
 
-void MathInset::setData(MathArray const & a, int idx)
-{
-	cells_[idx].data_ = a;
-}
-
-
 void MathInset::substitute(MathArray & array, MathMacro const & m) const
 {
 	MathInset * p = clone();
@@ -186,7 +174,7 @@ void MathInset::substitute(MathArray & array, MathMacro const & m) const
 	array.push_back(p);
 }
 
-void MathInset::Metrics(MathStyles st)
+void MathInset::Metrics(MathStyles st, int, int)
 {
 	size_ = st;
 	for (int i = 0; i < nargs(); ++i)
@@ -373,4 +361,3 @@ bool MathInset::covers(int x, int y) const
 		y >= yo_ - ascent_ &&
 		y <= yo_ + descent_;
 }
-

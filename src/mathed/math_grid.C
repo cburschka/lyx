@@ -7,7 +7,6 @@
 #include "math_grid.h"
 #include "support/LOstream.h"
 #include "debug.h"
-#include "Painter.h"
 
 
 namespace {
@@ -77,7 +76,7 @@ char MathGridInset::valign() const
 	return v_align_;
 }
 
-void MathGridInset::Metrics(MathStyles st)
+void MathGridInset::Metrics(MathStyles st, int, int)
 {
 	// let the cells adjust themselves
 	MathInset::Metrics(st);

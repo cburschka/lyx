@@ -25,7 +25,7 @@ public:
 	///
 	void WriteNormal(std::ostream &) const;
 	///
-	void Metrics(MathStyles st);
+	void Metrics(MathStyles st, int asc = 0, int des = 0);
 private:
 	///
 	bool lims_;

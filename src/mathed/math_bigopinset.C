@@ -1,17 +1,15 @@
 #include <config.h>
 
-#include <functional>
-
 #include "math_bigopinset.h"
-#include "LColor.h"
 #include "Painter.h"
 #include "mathed/support.h"
 #include "support/LOstream.h"
 
+
 using std::ostream;
 
 MathBigopInset::MathBigopInset(string const & name, int id)
-	: MathScriptInset(false, true), lims_(0), sym_(id)
+	: MathUpDownInset(false, false), sym_(id), limits_(0)
 {
 	SetName(name);
 }
@@ -23,132 +21,116 @@ MathInset * MathBigopInset::clone() const
 }
 
 
+int MathBigopInset::limits() const 
+{
+	return limits_;	
+} 
+
+
+void MathBigopInset::limits(int limits) 
+{  
+	limits_ = limits;
+}
+
+
+bool MathBigopInset::hasLimits() const
+{
+	return limits_ == 1 || (limits_ == 0 && size() == LM_ST_DISPLAY);
+}
+
 
 void MathBigopInset::Write(ostream & os, bool fragile) const
 {
 	//bool f = sym_ != LM_int && sym_ != LM_oint && size() == LM_ST_DISPLAY;
 	os << '\\' << name();
-	if (limits() == 1)
-		os << "\\limits ";
-	else if (limits() == -1)
-		os << "\\nolimits ";
-	else 
-		os << ' ';
-	MathScriptInset::Write(os, fragile);
+	MathUpDownInset::Write(os, fragile);
 }
 
 
 void MathBigopInset::WriteNormal(ostream & os) const
 {
-	os << "[bigop " << name();
-	if (limits() == 1)
-		os << "\\limits ";
-	else if (limits() == -1)
-		os << "\\nolimits ";
-	else 
-		os << ' ';
-	MathScriptInset::WriteNormal(os);
-	os << "] ";
+	os << "[bigop " << name() << "] ";
 }
 
-void MathBigopInset::Metrics(MathStyles st)
+
+void MathBigopInset::Metrics(MathStyles st, int, int)
 {
-	MathScriptInset::Metrics(st);
+	//cerr << "\nBigopDraw\n";
 	size(st);
-	string s;
-	short t;
 	
 	if (sym_ < 256 || sym_ == LM_oint) {
-		char const c = (sym_ == LM_oint) ? LM_int : sym_;
-		s += c;
-		t = LM_TC_BSYM;
+		ssym_ = string();
+		ssym_ += (sym_ == LM_oint) ? LM_int : sym_;
+		code_ = LM_TC_BSYM;
 	} else {
-		s = name();
-		t = LM_TC_TEXTRM;
+		ssym_ = name();
+		code_ = LM_TC_TEXTRM;
 	}
 
-	int asc, des, wid;
-	mathed_string_dim(t, size(), s, asc, des, wid);
+	int wid;
+	mathed_string_dim(code_, size(), ssym_, ascent_, descent_, wid);
 	if (sym_ == LM_oint)
 		wid += 2;
+	//cerr << "  asc: " << ascent_ << " des: " << descent_
+	//	<< " wid: " << wid << "\n";
+	//cerr << "  hasLimits: " << hasLimits() << " up: "
+	//	<< up() << " down: " << down() << "\n";
+	
+	width_ = wid;
 
 	if (hasLimits()) {
-		ascent_  = asc + xcell(0).height() + 2;
-		descent_ = des + xcell(1).height() + 2;
-		width_   = std::max(width_, wid);
+		xcell(0).Metrics(st);
+		xcell(1).Metrics(st);
+		//cerr << "  0: ascent_: " << xcell(0).ascent() << " descent_: " <<
+		//	xcell(0).descent() << " width_: " << xcell(0).width() << "\n";
+		//cerr << "  1: ascent_: " << xcell(1).ascent() << " descent_: " <<
+		//	xcell(1).descent() << " width_: " << xcell(1).width() << "\n";
+		if (up()) {
+			ascent_  += xcell(0).height() + 1;
+			width_   = std::max(width_, xcell(0).width());
+			dy0_     = - (ascent_ - xcell(0).ascent());
+		}
+		if (down()) {
+			descent_ += xcell(1).height() + 1;
+			width_   = std::max(width_, xcell(1).width());
+			dy1_     = descent_ - xcell(1).descent();
+		}
+		dxx_  = (width_ - wid) / 2;
+		dx0_  = (width_ - xcell(0).width()) / 2;
+		dx1_  = (width_ - xcell(1).width()) / 2;
+		//cerr << "  ascent_: " << ascent_ << " descent_: "
+		//	<< descent_ << " width_: " << width_ << "\n";
+		//cerr << "  dx0_: " << dx0_ << " dx1_: " << dx1_
+		//	<< " dxx_: " << dxx_ << "\n";
+		//cerr << "  dy0_: " << dy0_ << " dy1_: " << dy1_
+		//	<< "\n";
 	} else {
-		ascent_  = std::max(ascent_, asc);
-		descent_ = std::max(descent_, des);
-		width_  += wid;
+		MathUpDownInset::Metrics(st, ascent_, descent_);
+		width_   += wid;
+		dx0_     = wid;
+		dx1_     = wid;
+		dxx_     = 0;
 	}
-
 }
 
 
 void MathBigopInset::draw(Painter & pain, int x, int y)
-{
+{  
 	xo(x);
 	yo(y);
 
-	string s;
-	short t;
-	
-	if (sym_ < 256 || sym_ == LM_oint) {
-		s += (sym_ == LM_oint) ? LM_int : sym_;
-		t = LM_TC_BSYM;
-	} else {
-		s = name();
-		t = LM_TC_TEXTRM;
-	}
+	pain.text(x + dxx_, y, ssym_, mathed_get_font(code_, size()));
+
+	if (up())
+		xcell(0).draw(pain, x + dx0_, y + dy0_);
+	if (down())
+		xcell(1).draw(pain, x + dx1_, y + dy1_);
+
 	if (sym_ == LM_oint) {
-		int wid;
-		int asc;
-		int des;
-		mathed_char_dim(t, size(), LM_int, asc, des, wid);
-		wid += 2;
-		pain.arc(x - 1, y - (asc - des) / 2, wid, wid, 0, 360 * 64, LColor::mathline);
-	}
-
-	int asc, des, wid;
-	mathed_string_dim(t, size(), s, asc, des, wid);
-
-	if (hasLimits()) {
-		int w = width();
-		pain.text(x + (w - wid)/2, y, s, mathed_get_font(t, size()));
-		xcell(0).draw
-			(pain, x + (w - xcell(0).width())/2, y - asc - xcell(0).descent() - 1);
-		xcell(1).draw
-			(pain, x + (w - xcell(1).width())/2, y + des + xcell(1).ascent()  + 1);
-	} else {
-		pain.text(x, y, s, mathed_get_font(t, size()));
-		MathScriptInset::draw(pain, x + wid, y);
+		int xx = x - 1;
+		int yy = y - (ascent_ - descent_) / 2;
+		pain.arc(xx, yy, width_, width_, 0, 360 * 64, LColor::mathline);
 	}
 }
 
 
-int MathBigopInset::limits() const 
-{
-	return lims_;	
-} 
-
-
-void MathBigopInset::limits(int limit) 
-{  
-	lims_ = limit;
-}
-
-bool MathBigopInset::hasLimits() const
-{
-	return limits() == 1 || (limits() == 0 && size() == LM_ST_DISPLAY);
-}
-
-
-void MathBigopInset::idxDelete(int & idx, bool & popit, bool & deleteit)
-{
-	if (idx == 0)
-		up(false);
-	else
-		down(false);
-	popit    = true;
-	deleteit = true;
-}
