@@ -68,6 +68,7 @@ MathedArray::MathedArray(MathedArray const & array)
 	deep_copy();
 }
 
+
 void MathedArray::deep_copy()
 {
 	MathedIter it(this);
@@ -80,6 +81,7 @@ void MathedArray::deep_copy()
 		it.Next();
 	}
 }
+
 
 void MathedArray::substitute(MathMacro * m)
 {
@@ -125,6 +127,7 @@ MathedArray & MathedArray::operator=(MathedArray const & array)
 	return *this;
 }
 
+
 void MathedArray::push_back(MathedInset * inset, int t)
 {
 	MathedIter it(this);
@@ -132,6 +135,7 @@ void MathedArray::push_back(MathedInset * inset, int t)
 		;
 	it.insertInset(inset, t);
 }
+
 
 void MathedArray::push_back(byte b, MathedTextCodes c)
 {
@@ -141,12 +145,14 @@ void MathedArray::push_back(byte b, MathedTextCodes c)
 	it.insert(b, c);
 }
 
+
 void MathedArray::clear()
 {
 	last_ = 0;
 	bf_.resize(1);
 	bf_[0] = 0;
 }
+
 
 void MathedArray::swap(MathedArray & array)
 {
@@ -348,6 +354,7 @@ void MathedArray::dump2(ostream & os) const
 	os << endl;
 }
 
+
 void MathedArray::dump(ostream & os) const
 {
 	MathedIter it( const_cast<MathedArray*>(this) );
@@ -371,5 +378,3 @@ void MathedArray::dump(ostream & os) const
 		it.Next();
 	}
 }
-
-	

@@ -42,8 +42,6 @@ public:
 	///
 	InsetCollapsable();
 	///
-	//Inset * Clone(Buffer const &) const;
-	///
 	void Read(Buffer const *, LyXLex &);
 	///
 	void Write(Buffer const *, std::ostream &) const;
@@ -132,9 +130,11 @@ public:
 	bool nodraw() const;
 	///
 	int scroll(bool recursive=true) const;
+	///
 	void scroll(BufferView *bv, float sx) const {
 		UpdatableInset::scroll(bv, sx);
 	}
+	///
 	void scroll(BufferView *bv, int offset) const {
 		UpdatableInset::scroll(bv, offset);
 	}
@@ -167,7 +167,6 @@ protected:
 	mutable int button_top_y;
 	///
 	mutable int button_bottom_y;
-
 private:
 	///
 	string label;

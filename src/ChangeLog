@@ -1,3 +1,11 @@
+2001-05-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxparagraph.[Ch]: add copy constructor, remove Clone
+
+	* CutAndPaste.C (copySelection): use LyXParagraph copy constructor
+	(pasteSelection): likewise
+	* text2.C (CreateUndo): likewise
+
 2001-05-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* minibuffer.C (peek_event): temporarily reduce the functionality

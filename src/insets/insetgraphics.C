@@ -164,11 +164,13 @@ InsetGraphics::InsetGraphics()
 	: cacheHandle(0), imageLoaded(false)
 {}
 
+
 InsetGraphics::~InsetGraphics()
 {
 	// Emits the hide signal to the dialog connected (if any)
 	hideDialog();
 }
+
 
 char const *
 InsetGraphics::statusMessage() const
@@ -201,6 +203,7 @@ InsetGraphics::statusMessage() const
 
 	return msg;
 }
+
 
 int InsetGraphics::ascent(BufferView *, LyXFont const &) const
 {
@@ -235,6 +238,7 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 		return std::max(50, font_width + 15);
 	}
 }
+
 
 void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
                          int baseline, float & x, bool) const
@@ -406,7 +410,6 @@ InsetGraphics::createLatexOptions() const
 }
 
 
-
 string const 
 InsetGraphics::prepareFile(Buffer const *buf) const
 {
@@ -456,6 +459,7 @@ InsetGraphics::prepareFile(Buffer const *buf) const
 	
 	return outfile;
 }
+
 
 int InsetGraphics::Latex(Buffer const *buf, ostream & os,
 		bool /*fragile*/, bool/*fs*/) const
@@ -542,6 +546,7 @@ int InsetGraphics::Linuxdoc(Buffer const *, ostream &) const
 	return 0;
 }
 
+
 // For explanation on inserting graphics into DocBook checkout:
 // http://linuxdoc.org/LDP/LDP-Author-Guide/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
@@ -571,6 +576,7 @@ void InsetGraphics::Validate(LaTeXFeatures & features) const
 		features.subfigure = true;
 }
 
+
 // Update the inset after parameters changed (read from file or changed in
 // dialog.
 void InsetGraphics::updateInset() const
@@ -590,6 +596,7 @@ void InsetGraphics::updateInset() const
 	cacheHandle = temp;
 }
 
+
 bool InsetGraphics::setParams(InsetGraphicsParams const & params)
 {
 	// If nothing is changed, just return and say so.
@@ -606,13 +613,16 @@ bool InsetGraphics::setParams(InsetGraphicsParams const & params)
 	return true;
 }
 
+
 InsetGraphicsParams InsetGraphics::getParams() const
 {
 	return params;
 }
 
+
 Inset * InsetGraphics::Clone(Buffer const &) const
 {
+#warning use the copy constructor instead. (Lgb)
 	InsetGraphics * newInset = new InsetGraphics;
 
 	newInset->cacheHandle = cacheHandle;

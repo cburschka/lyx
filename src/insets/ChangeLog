@@ -1,3 +1,8 @@
+2001-05-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insettext.C (Read): use clear
+	(SetParagraphData): use LyXParagraph copy constructor instead of clone
+
 2001-05-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insetfloatlist.h: add a bunch of std:: qualifiers.

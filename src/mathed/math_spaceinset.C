@@ -50,6 +50,7 @@ void MathSpaceInset::Write(ostream & os, bool /* fragile */)
 	}
 }
 
+
 void MathSpaceInset::WriteNormal(ostream & os)
 {
 	os << "[space " << space_ << "] ";

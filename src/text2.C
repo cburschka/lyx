@@ -2672,8 +2672,6 @@ Undo * LyXText::CreateUndo(Buffer * buf, Undo::undo_kind kind,
 	}
 	// create a new Undo
 	LyXParagraph * undopar;
-	LyXParagraph * tmppar;
-	LyXParagraph * tmppar2;
 
 	LyXParagraph * start = 0;
 	LyXParagraph * end = 0;
@@ -2691,8 +2689,12 @@ Undo * LyXText::CreateUndo(Buffer * buf, Undo::undo_kind kind,
 	}
 	if (start && end && (start != end->next()) &&
 	    ((before != behind) || (!before && !behind))) {
-		tmppar = start;
-		tmppar2 = tmppar->Clone();
+		LyXParagraph * tmppar = start;
+#if 0
+		LyXParagraph * tmppar2 = tmppar->Clone();
+#else
+		LyXParagraph * tmppar2 = new LyXParagraph(*tmppar);
+#endif
 		tmppar2->id(tmppar->id());
 
 		// a memory optimization: Just store the layout information
@@ -2706,7 +2708,11 @@ Undo * LyXText::CreateUndo(Buffer * buf, Undo::undo_kind kind,
   
 		while (tmppar != end && tmppar->next()) {
 			tmppar = tmppar->next();
+#if 0
 			tmppar2->next(tmppar->Clone());
+#else
+			tmppar2->next(new LyXParagraph(*tmppar));
+#endif
 			tmppar2->next()->id(tmppar->id());
 			// a memory optimization: Just store the layout
 			// information when only edit

@@ -135,7 +135,7 @@ void InsetText::clear()
 {
 	// delete all instances of LyXText before deleting the paragraps used
 	// by it.
-	for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit){
+	for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit) {
 		delete (*cit).second;
 		(*cit).second = 0;
 	}
@@ -177,6 +177,7 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
 	char depth = 0; // signed or unsigned?
 	LyXFont font(LyXFont::ALL_INHERIT);
 
+#if 0
 	// delete all instances of LyXText before deleting the paragraps used
 	// by it.
 	for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit) {
@@ -191,6 +192,10 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
 	}
 
 	par = new LyXParagraph;
+#else
+	clear();
+#endif
+	
 	while (lex.IsOK()) {
 		lex.nextToken();
 		token = lex.GetString();
@@ -1482,12 +1487,20 @@ void InsetText::SetParagraphData(LyXParagraph * p)
 		par = tmp;
 	}
 
+#if 0
 	par = p->Clone();
+#else
+	par = new LyXParagraph(*p);
+#endif
 	par->SetInsetOwner(this);
 	LyXParagraph * np = par;
 	while (p->next()) {
 		p = p->next();
+#if 0
 		np->next(p->Clone());
+#else
+		np->next(new LyXParagraph(*p));
+#endif
 		np->next()->previous(np);
 		np = np->next();
 		np->SetInsetOwner(this);

@@ -119,6 +119,63 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 }
 
 
+LyXParagraph::LyXParagraph(LyXParagraph const & lp)
+{
+	for (int i = 0; i < 10; ++i) setCounter(i , 0);
+	enumdepth = 0;
+	itemdepth = 0;
+	next_ = 0;
+	previous_ = 0;
+	id_ = paragraph_id++;
+	Clear();
+   
+	MakeSameLayout(&lp);
+
+	// this is because of the dummy layout of the paragraphs that
+	// follow footnotes
+	layout = lp.layout;
+
+	inset_owner = lp.inset_owner;
+   
+        // ale970302
+	if (lp.bibkey)
+		bibkey = static_cast<InsetBibKey *>
+			(lp.bibkey->Clone(*current_view->buffer()));
+	else
+		bibkey = 0;
+	
+	// copy everything behind the break-position to the new paragraph
+
+	text = lp.text;
+	fontlist = lp.fontlist;
+	insetlist = lp.insetlist;
+	for (InsetList::iterator it = insetlist.begin();
+	     it != insetlist.end(); ++it)
+		it->inset = it->inset->Clone(*current_view->buffer());
+}
+
+
+// the destructor removes the new paragraph from the list
+LyXParagraph::~LyXParagraph()
+{
+	if (previous_)
+		previous_->next_ = next_;
+	if (next_)
+		next_->previous_ = previous_;
+
+	for (InsetList::iterator it = insetlist.begin();
+	     it != insetlist.end(); ++it) {
+		delete (*it).inset;
+	}
+
+        // ale970302
+	delete bibkey;
+	//
+	//lyxerr << "LyXParagraph::paragraph_id = "
+	//       << LyXParagraph::paragraph_id << endl;
+}
+
+
 void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			     BufferParams const & bparams,
 			     char footflag, char dth) const
@@ -405,27 +462,6 @@ void LyXParagraph::Clear()
 	
 	layout = 0;
 	bibkey = 0;
-}
-
-
-// the destructor removes the new paragraph from the list
-LyXParagraph::~LyXParagraph()
-{
-	if (previous_)
-		previous_->next_ = next_;
-	if (next_)
-		next_->previous_ = previous_;
-
-	for (InsetList::iterator it = insetlist.begin();
-	     it != insetlist.end(); ++it) {
-		delete (*it).inset;
-	}
-
-        // ale970302
-	delete bibkey;
-	//
-	//lyxerr << "LyXParagraph::paragraph_id = "
-	//       << LyXParagraph::paragraph_id << endl;
 }
 
 
@@ -1013,6 +1049,7 @@ int LyXParagraph::StripLeadingSpaces(LyXTextClassList::size_type tclass)
 }
 
 
+#if 0
 LyXParagraph * LyXParagraph::Clone() const
 {
 	// create a new paragraph
@@ -1043,6 +1080,7 @@ LyXParagraph * LyXParagraph::Clone() const
 		(*it).inset = (*it).inset->Clone(*current_view->buffer());
 	return result;
 }
+#endif
 
 
 bool LyXParagraph::HasSameLayout(LyXParagraph const * par) const

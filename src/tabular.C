@@ -115,6 +115,12 @@ LyXTabular::LyXTabular(Buffer const * buf, InsetTabular * inset, LyXLex & lex)
 
 LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 {
+#if 0
+#warning This while method should look like this: (Lgb)
+
+		LyXTabular tmp(lt);
+		tmp.swap(*this);
+#else
 	// If this and lt is not of the same size we have a serious bug
 	// So then it is ok to throw an exception, or for now
 	// call abort()
@@ -134,7 +140,7 @@ LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 	rotate = lt.rotate;
 
 	Reinit();
-	
+#endif
 	return *this;
 }
 

@@ -88,6 +88,8 @@ public:
 	/// this constructor inserts the new paragraph in a list
 	explicit
 	LyXParagraph(LyXParagraph * par);
+	///
+	LyXParagraph(LyXParagraph const &);
 	/// the destructor removes the new paragraph from the list
 	~LyXParagraph();
 
@@ -130,9 +132,10 @@ public:
 	///
 	LyXParagraph * TeXEnvironment(Buffer const *, BufferParams const &,
 				      std::ostream &, TexRow & texrow);
+#if 0
 	///
 	LyXParagraph * Clone() const;
-	
+#endif
 	///
 	bool HasSameLayout(LyXParagraph const * par) const;
 	

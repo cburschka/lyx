@@ -26,6 +26,7 @@ MathedRowContainer & MathParInset::getRowSt()
 	return row_;
 }
 
+
 string MathParInset::label() const
 {
 	if (row_.size() == 0) {
@@ -52,6 +53,7 @@ MathedInset * MathParInset::Clone()
 {
 	return new MathParInset(*this);
 }
+
 
 void MathParInset::substitute(MathMacro * m)
 {

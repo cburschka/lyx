@@ -12,6 +12,7 @@
 
 using std::endl;
 
+
 MathMacroArgument::MathMacroArgument(int n)
 	: MathedInset(string(), LM_OT_MACRO_ARG, LM_ST_TEXT),
 		number_(n)
@@ -23,16 +24,19 @@ MathMacroArgument::MathMacroArgument(int n)
 	}
 }
 
+
 MathedInset * MathMacroArgument::Clone()
 {
 	//return new MathMacroArgument(*this);
 	return this;
 }
 
+
 int MathMacroArgument::number() const
 {
 	return number_;
 }
+
 
 void MathMacroArgument::substitute(MathMacro * /*m*/)
 {

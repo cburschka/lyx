@@ -49,19 +49,6 @@ InsetCollapsable::InsetCollapsable()
 }
 
 
-#if 0
-Inset * InsetCollapsable::Clone(Buffer const &) const
-{
-	InsetCollapsable * result = new InsetCollapsable;
-	result->inset.init(&inset);
-	result->inset.setOwner(result);
-
-	result->collapsed = collapsed;
-	return result;
-}
-#endif
-
-
 bool InsetCollapsable::InsertInset(BufferView * bv, Inset * in)
 {
 	if (!InsertInsetAllowed(in)) {
