@@ -14,12 +14,17 @@
 #ifdef KDEGUI
 #    include <kapp.h>
 #endif
+#ifdef GTKGUI
+#    include <gnome--/main.h>
+#endif
+
 #include FORMS_H_LOCATION
 
 #include "lyx_main.h"
 #include "gettext.h"
 #include "LString.h"
 #include "support/filetools.h"
+
 
 // I keep these here so that it will be processed as early in
 // the compilation process as possible.
@@ -64,7 +69,10 @@ int main(int argc, char * argv[])
 #ifdef KDEGUI
 	KApplication a( argc, argv );
 #endif
-
+#ifdef GTKGUI
+	Gnome::Main  a(PACKAGE,VERSION,argc, argv );
+#endif
+	
 	// lyx_localedir is used by gettext_init() is we have
 	//   i18n support built-in
 	string lyx_localedir = GetEnvPath("LYX_LOCALEDIR");

@@ -19,6 +19,10 @@
 #    include <kapp.h>
 #endif
 
+#ifdef GTKGUI
+#    include <gnome--/main.h>
+#endif
+
 #include <fcntl.h>
 #include "lyx_gui.h"
 #include FORMS_H_LOCATION
@@ -590,6 +594,10 @@ void LyXGUI::runTime()
 #ifdef KDEGUI
 		kapp->processEvents();
 #endif
+#ifdef GTKGUI
+		Gnome::Main::instance()->iteration(FALSE);
+#endif
+		
 		if (fl_check_forms() == FL_EVENT) {
 			lyxerr << "LyX: This shouldn't happen..." << endl;
 			fl_XNextEvent(&ev);

@@ -62,7 +62,7 @@ LYX_SCO
 AC_EXEEXT
 
 ### Check for a C++ compiler
-AC_LANG_CPLUSPLUS
+#AC_LANG_CPLUSPLUS
 LYX_PROG_CXX
 AC_PROG_CXXCPP
 AC_DISABLE_SHARED
@@ -159,6 +159,21 @@ case "$lyx_use_frontend" in
   xforms) 
     FRONTEND="xforms"
     FRONTEND_GUILIB="\${top_builddir}/src/frontends/xforms/libxforms.la";;
+  gtk)    
+    GNOME_INIT
+    GNOME_COMPILE_WARNINGS
+    GNOME_X_CHECKS
+
+    AM_PATH_GTKMM(1.2.1,,
+        AC_MSG_ERROR(Cannot find GTK--: Please install Version 1.2.1+))
+    AM_PATH_GNOMEMM
+
+    FRONTEND="gtk"
+    FRONTEND_GUILIB="\${top_builddir}/src/frontends/gtk/libgtk.la"
+    FRONTEND_LDFLAGS="\$(GNOMEMM_LIBDIR) \$(GNOME_LIBDIR)"
+    FRONTEND_INCLUDES="\$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS) \$(GNOME_INCLUDEDIR) \$(GTK_CFLAGS)"
+    FRONTEND_LIBS="\$(GNOMEMM_LIBS) \$(GTKMM_LIBS) \$(GNOME_LIBS) \$(GTK_LIBS)"
+    AC_DEFINE(GTKGUI);;
   *)
     LYX_ERROR(Unknown frontend $lyx_use_frontend);;
 esac
@@ -267,6 +282,7 @@ AC_OUTPUT([Makefile \
        src/frontends/Makefile \
        src/frontends/xforms/Makefile \
        src/frontends/kde/Makefile \
+       src/frontends/gtk/Makefile \
 ],  [sed -e "/POTFILES =/r po/POTFILES" po/Makefile.in > po/Makefile])
 
 
