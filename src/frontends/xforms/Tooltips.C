@@ -52,12 +52,10 @@ void Tooltips::toggleEnabled()
 void Tooltips::set()
 {
 	if (tooltipsMap.empty())
-		// There are no objects with tooltips in this dialog, so
-		// just go away. Don't change the cursor to a question mark.
 		return;
 
-	TooltipsMap::iterator it  = tooltipsMap.begin();
-	TooltipsMap::iterator end = tooltipsMap.end();
+	TooltipsMap::const_iterator it  = tooltipsMap.begin();
+	TooltipsMap::const_iterator end = tooltipsMap.end();
 	for (; it != end; ++it) {
 		FL_OBJECT * const ob = it->first;
 		char const * const c_str = enabled_ ? it->second.c_str() : 0;
@@ -70,17 +68,8 @@ void Tooltips::init(FL_OBJECT * ob, string const & tip)
 {
 	lyx::Assert(ob && ob->form);
 
-	// Paranoia check!
-	TooltipsMap::const_iterator it = tooltipsMap.find(ob);
-	if (it != tooltipsMap.end())
-		return;
-
-	string str = trim(tip);
-	if (str.empty())
-		return;
-
 	// Store the tooltip string
-	str = formatted(str, 400);
+  	string const str = formatted(trim(tip), 400);
 	tooltipsMap[ob] = str;
 
 	// Set the tooltip

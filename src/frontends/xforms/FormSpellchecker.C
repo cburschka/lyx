@@ -14,12 +14,14 @@
 #pragma implementation
 #endif
 
-#include "Tooltips.h"
 #include "xformsBC.h"
-#include "xforms_helpers.h"
 #include "ControlSpellchecker.h"
 #include "FormSpellchecker.h"
 #include "forms/form_spellchecker.h"
+
+#include "forms_gettext.h"
+#include "Tooltips.h"
+#include "xforms_helpers.h"
 #include "support/lstrings.h"
 
 #include FORMS_H_LOCATION
@@ -28,7 +30,7 @@ typedef FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > base_class;
 
 
 FormSpellchecker::FormSpellchecker()
-	: base_class(_("Spellchecker")), state_(STOP)
+	: base_class(_("Spellchecker")), state_(STOPPED)
 {}
 
 
@@ -80,15 +82,27 @@ void FormSpellchecker::build()
 void FormSpellchecker::updateState(State state)
 {
 	switch (state) {
-	case START:
+	case READY_TO_START:
 		fl_set_slider_value(dialog_->slider_progress, 0.0);
 		fl_set_object_label(dialog_->slider_progress, "0 %");
 		break;
 
-	case RUNNING: 
+	case CHECKING:
 	{
-		controller().check();
+		// Set suggestions.
+		string w = controller().getWord();
+		fl_set_input(dialog_->input_replacement, w.c_str());
+		fl_set_object_label(dialog_->text_unknown, w.c_str());
+		fl_clear_browser(dialog_->browser_suggestions);
+		while (!(w = controller().getSuggestion()).empty()) {
+			fl_add_browser_line(dialog_->browser_suggestions,
+					    w.c_str());
+		}
+		// Fall through...
+	}
 
+	case STARTED:
+	{
 		int const progress = controller().getProgress();
 		if (progress == 0)
 			break;
@@ -103,7 +117,7 @@ void FormSpellchecker::updateState(State state)
 		break;
 	}
 
-	case STOP: 
+	case STOPPED:
 	{
 		controller().stop();
 
@@ -122,24 +136,24 @@ void FormSpellchecker::updateState(State state)
 	if (!state_change)
 		return;
 
-	bool const set_running = (state == RUNNING);
-	string const label = set_running ? _("Stop") : _("Start");
-	
-	fl_set_object_label(dialog_->button_start, label.c_str());	
-	fl_set_button_shortcut(dialog_->button_start, "#S", 1);
+	bool const running = (state == STARTED || state == CHECKING);
+	string const label = running ? _("Stop|#S") : _("Start|#S");
+
+	fl_set_object_label(dialog_->button_start, idex(label).c_str());
+	fl_set_button_shortcut(dialog_->button_start, scex(label).c_str(), 1);
 	fl_redraw_object(dialog_->button_start);
 
-	string const tip = set_running ?
+	string const tip = running ?
 		_("Stop the spellingchecker.") :
 		_("Start the spellingchecker.");
 	tooltips().init(dialog_->button_start, tip);
-	
-	setEnabled(dialog_->button_replace,      set_running);
-	setEnabled(dialog_->button_ignore,       set_running);
-	setEnabled(dialog_->button_accept,       set_running);
-	setEnabled(dialog_->button_add,          set_running);
-	setEnabled(dialog_->browser_suggestions, set_running);
-	setEnabled(dialog_->input_replacement,   set_running);
+
+	setEnabled(dialog_->button_replace,      running);
+	setEnabled(dialog_->button_ignore,       running);
+	setEnabled(dialog_->button_accept,       running);
+	setEnabled(dialog_->button_add,          running);
+	setEnabled(dialog_->browser_suggestions, running);
+	setEnabled(dialog_->input_replacement,   running);
 }
 
 
@@ -151,14 +165,15 @@ void FormSpellchecker::update()
 	fl_clear_browser(dialog_->browser_suggestions);
 
 	// reset dialog and buttons into start condition
-	updateState(START);
+	updateState(READY_TO_START);
 }
 
 
 ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * ob, long ob_value)
 {
 	if (ob == dialog_->button_start) {
-		updateState(RUNNING);
+		updateState(STARTED);
+		controller().check();
 
 	} else if (ob == dialog_->button_replace) {
 		string const tmp = getString(dialog_->input_replacement);
@@ -200,21 +215,12 @@ void FormSpellchecker::partialUpdate(int id)
 {
 	switch (id) {
 	case 1:
-	{
 		// Set suggestions.
-		string w = controller().getWord();
-		fl_set_input(dialog_->input_replacement, w.c_str());
-		fl_set_object_label(dialog_->text_unknown, w.c_str());
-		fl_clear_browser(dialog_->browser_suggestions);
-		while (!(w = controller().getSuggestion()).empty()) {
-			fl_add_browser_line(dialog_->browser_suggestions,
-					    w.c_str());
-		}
+		updateState(CHECKING);
 		break;
-	}
 	case 2:
 		// End of spell checking.
-		updateState(STOP);
+		updateState(STOPPED);
 		break;
 	}
 }

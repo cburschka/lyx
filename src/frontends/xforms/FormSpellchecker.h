@@ -23,7 +23,8 @@ struct FD_spellchecker;
 
 /** This class provides an XForms implementation of the FormSpellchecker Dialog.
  */
-class FormSpellchecker : public FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > {
+class FormSpellchecker
+	: public FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > {
 public:
 	///
 	FormSpellchecker();
@@ -43,9 +44,10 @@ private:
 
 	///
 	enum State {
-		START,
-		RUNNING,
-		STOP
+		READY_TO_START,
+		STARTED,
+		CHECKING,
+		STOPPED
 	};
 	///
 	void updateState(State state);

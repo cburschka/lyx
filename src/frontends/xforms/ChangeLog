@@ -1,5 +1,10 @@
 2002-11-29  Angus Leeming  <leeming@lyx.org>
 
+	* Tooltips.C (init): allow tooltips to be reset.
+
+	* FormSpellchecker.C: having broken Rob's word count update, I guess
+	I should fix it too ;-)
+
 	* FormPreferences.C (apply): if controller().isClosing() (ie, if the
 	"save" button has been pressed), then save any modified gui colors.
 
