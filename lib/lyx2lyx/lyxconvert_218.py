@@ -48,6 +48,21 @@ font_tokens = ["\\family", "\\series", "\\shape", "\\size", "\\emph",
 # Change \begin_float .. \end_float into \begin_inset Float .. \end_inset
 #
 
+pextra_type3_rexp = re.compile(r".*\\pextra_type\s+3")
+pextra_rexp = re.compile(r"\\pextra_type\s+(\S+)"+\
+			 r"(\s+\\pextra_alignment\s+(\S+))?"+\
+			 r"(\s+\\pextra_hfill\s+(\S+))?"+\
+			 r"(\s+\\pextra_start_minipage\s+(\S+))?"+\
+			 r"(\s+(\\pextra_widthp?)\s+(\S*))?")
+
+def get_width(mo):
+    if mo.group(9) == "\\pextra_widthp":
+	return mo.group(10)+"col%"
+    elif mo.group(10):
+	return mo.group(10)
+    else:
+	return "100col%"
+
 def remove_oldfloat(lines, language):
     i = 0
     while 1:
@@ -71,6 +86,18 @@ def remove_oldfloat(lines, language):
 	    lines[j2:j2] = ["\\end_deeper "]*(i2-(i+1))
 
 	new = floats[floattype]+[""]
+
+	# Check if the float is floatingfigure
+	k = find_re(lines, pextra_type3_rexp, i, j)
+	if k != -1:
+	    mo = pextra_rexp.search(lines[k])
+	    width = get_width(mo)
+	    lines[k] = re.sub(pextra_rexp, "", lines[k])
+	    new = ["\\begin_inset Wrap figure",
+		   'width "%s"' % width,
+		   "collapsed false",
+		   ""]
+
 	new = new+lines[i2:j]+["\\end_inset ", ""]
 
 	# After a float, all font attributes are reseted.
@@ -97,27 +124,22 @@ def remove_oldfloat(lines, language):
 	lines[i:j+1] = new
 	i = i+1
 
+pextra_type2_rexp = re.compile(r".*\\pextra_type\s+2")
+pextra_type2_rexp2 = re.compile(r".*(\\layout|\\pextra_type\s+2)")
+
 def remove_oldminipage(lines):
     i = 0
     flag = 0
     while 1:
-	i = find_token(lines, "\\pextra_type 2", i)
+	i = find_re(lines, pextra_type2_rexp, i)
 	if i == -1:
 	    break
-	hfill = 0
-	line = string.split(lines[i])
-	if line[4] == "\\pextra_hfill":
-	    hfill = 1
-	    line[4:6] = []
-	if line[4] == "\\pextra_start_minipage":
-	    # We just ignore this
-	    line[4:6] = []
-
-	position = line[3]
-	width = line[5]
-	if line[4] == "\\pextra_widthp":
-	    width = line[5]+"col%"
 	
+	mo = pextra_rexp.search(lines[i])
+	position = mo.group(3)
+	hfill = mo.group(5)
+	width = get_width(mo)
+	lines[i] = re.sub(pextra_rexp, "", lines[i])
 
 	start = ["\\begin_inset Minipage",
 		 "position " + position,
@@ -147,13 +169,13 @@ def remove_oldminipage(lines):
 	    count = count+1
 	    if j == -1 or not check_token(lines[j], "\\layout"):
 		break
-	    i = find_tokens(lines, ["\\layout", "\\pextra_type"], j+1)
-	    if i == -1 or not check_token(lines[i], "\\pextra_type"):
+	    i = find_re(lines, pextra_type2_rexp2, j+1)
+	    if i == -1:
 		break
-	    line = string.split(lines[i])
-	    if line[4] == "\\pextra_hfill":
-		line[4:6] = []
-	    if line[4] == "\\pextra_start_minipage" and line[5] == "1":
+	    mo = pextra_rexp.search(lines[i])
+	    if not mo:
+		break
+	    if mo.group(7) == "1":
 		flag = 1
 		break
 	    j = find_token_backwards(lines,"\\layout", i-1)
