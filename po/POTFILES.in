@@ -91,6 +91,7 @@ src/frontends/xforms/FormBibtex.C
 src/frontends/xforms/FormChanges.C
 src/frontends/xforms/FormCharacter.C
 src/frontends/xforms/FormCitation.C
+src/frontends/xforms/FormDialogView.C
 src/frontends/xforms/FormDocument.C
 src/frontends/xforms/FormERT.C
 src/frontends/xforms/FormError.C
@@ -134,7 +135,7 @@ src/frontends/xforms/xforms_helpers.C
 src/gettext.h
 src/importer.C
 src/insets/inset.C
-src/insets/insetbib.C
+src/insets/insetbibtex.C
 src/insets/insetcaption.C
 src/insets/inseterror.C
 src/insets/insetert.C
