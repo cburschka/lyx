@@ -602,7 +602,7 @@ Converters::getReachableTo(string const & target, bool clear_visited)
 
 vector<Format const *> const
 Converters::getReachable(string const & from, bool only_viewable,
-	     bool clear_visited)
+			 bool clear_visited)
 {
 	vector<int> const & reachables =
 		G_.getReachable(formats.getNumber(from),

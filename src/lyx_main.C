@@ -142,6 +142,7 @@ LyX::LyX(int & argc, char * argv[])
 
 	// Execute batch commands if available
 	if (!batch_command.empty()) {
+
 		lyxerr[Debug::INIT] << "About to handle -x '"
 		       << batch_command << '\'' << endl;
 
@@ -155,25 +156,28 @@ LyX::LyX(int & argc, char * argv[])
 			// the filename if necessary
 			string s = FileSearch(string(), *it, "lyx");
 			if (s.empty()) {
-				s = *it;
+				last_loaded = newFile(*it, "");
+			} else {
+				last_loaded = bufferlist.newBuffer(s, false);
+				last_loaded->error.connect(boost::bind(&LyX::printError, this, _1));
+				if (!loadLyXFile(last_loaded, s)) {
+					bufferlist.release(last_loaded);
+					last_loaded = newFile(*it, string());
+				}
 			}
-
-			last_loaded = bufferlist.newBuffer(s, false);
-			last_loaded->error.connect(boost::bind(&LyX::printError, this, _1));
-			loadLyXFile(last_loaded, s);
 		}
-
-		files.clear();
 
 		bool success = false;
 
 		// try to dispatch to last loaded buffer first
-		bool const dispatched = last_loaded->dispatch(batch_command, &success);
+		if (last_loaded)
+			last_loaded->dispatch(batch_command, &success);
+		else
+			lyxerr << _("Batch command specified but no "
+				    "file loaded. Exiting.") << endl;
 
-		if (dispatched) {
-			QuitLyX();
-			exit(!success);
-		}
+		QuitLyX();
+		exit(!success);
 	}
 
 	lyx_gui::start(batch_command, files);
