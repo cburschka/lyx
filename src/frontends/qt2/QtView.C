@@ -146,11 +146,11 @@ void QtView::show(int x, int y, string const & title)
 // check on a rainy day.
 void QtView::prohibitInput() const
 {
-	setFocusPolicy(QWidget::NoFocus);
+	//setFocusPolicy(QWidget::NoFocus);
 }
 
 
 void QtView::allowInput() const
 {
-	setFocusPolicy(QWidget::strongFocus);
+	//setFocusPolicy(QWidget::strongFocus);
 }
