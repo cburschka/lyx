@@ -297,7 +297,7 @@ SEARCH_PROG([for a DVI to PDF converter],dvi_to_pdf_command,dvipdfm)
 test $dvi_to_pdf_command = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
 
 # We have a script to convert previewlyx to ppm
-lyxpreview_to_bitmap_command="lyxpreview2ppm.py"
+lyxpreview_to_bitmap_command="python \$\$s/scripts/lyxpreview2ppm.py"
 
 # Search a *roff program (used to translate tables in ASCII export)
 LYXRC_PROG([for a *roff formatter], \ascii_roff_command, dnl

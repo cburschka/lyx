@@ -96,11 +96,13 @@ string const
 i18nLibFileSearch(string const & dir, string const & name,
 		  string const & ext = string());
 
-/** Takes a command with arguments as input and tries to see whether
-  the command itself can be found in one of the scripts/ directories.
-  If it is found, return the command with fully qualified script name,
-  either return it unchanged */
-string const LibScriptSearch(string const & command);
+/** Takes a command such as "sh $$s/scripts/convertDefault.sh file.in file.out"
+ *  and replaces "$$s/" with the path to the LyX support directory containing
+ *  this script. If the script is not found, "$$s/" is removed. Executing the
+ *  command will still fail, but the error message will make some sort of
+ *  sense ;-)
+ */
+std::string const LibScriptSearch(std::string const & command);
 
 ///
 string const GetEnv(string const & envname);

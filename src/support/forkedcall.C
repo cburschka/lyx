@@ -35,6 +35,7 @@
 
 #include <boost/bind.hpp>
 
+#include <vector>
 #include <cerrno>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -45,6 +46,7 @@
 #endif
 
 using std::endl;
+using std::vector;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strerror;
@@ -251,31 +253,70 @@ int Forkedcall::startscript(string const & what, SignalTypePtr signal)
 // generate child in background
 int Forkedcall::generateChild()
 {
-	// Split command_ up into a char * array
-	int const MAX_ARGV = 255;
-	char *argv[MAX_ARGV];
+	string line = trim(command_);
+	if (line.empty())
+		return 1;
 
-	string line = command_;
-	int index = 0;
-	for (; index < MAX_ARGV-1; ++index) {
-		string word;
-		line = split(line, word, ' ');
-		if (word.empty())
-			break;
+	// Split the input command up into an array of words stored
+	// in a contiguous block of memory. The array contains pointers
+	// to each word.
+	// Don't forget the terminating `\0' character.
+	char const * const c_str = line.c_str();
+	vector<char> vec(c_str, c_str + line.size() + 1);
 
-		char * tmp = new char[word.length() + 1];
-		word.copy(tmp, word.length());
-		tmp[word.length()] = '\0';
-
-		argv[index] = tmp;
+	// Splitting the command up into an array of words means replacing
+	// the whitespace between words with '\0'. Life is complicated
+	// however, because words protected by quotes can contain whitespace.
+	//
+	// The strategy we adopt is:
+	// 1. If we're not inside quotes, then replace white space with '\0'.
+	// 2. If we are inside quotes, then don't replace the white space
+	//    but do remove the quotes themselves. We do this naively by
+	//    replacing the quote with '\0' which is fine if quotes
+	//    delimit the entire word.
+	char inside_quote = 0;
+	vector<char>::iterator it = vec.begin();
+	vector<char>::iterator const end = vec.end();
+	for (; it != end; ++it) {
+		char const c = *it;
+		if (!inside_quote) {
+			if (c == ' ')
+				*it = '\0';
+			else if (c == '\'' || c == '"') {
+				*it = '\0';
+				inside_quote = c;
+			}
+		} else if (c == inside_quote) {
+			*it = '\0';
+			inside_quote = 0;
+		}
 	}
-	argv[index] = 0;
+
+	// Build an array of pointers to each word.
+	it = vec.begin();
+	vector<char *> argv;
+	char prev = '\0';
+	for (; it != end; ++it) {
+		if (*it != '\0' && prev == '\0')
+			argv.push_back(&*it);
+		prev = *it;
+	}
+	argv.push_back(0);
+
+	// Debug output.
+	vector<char *>::iterator ait = argv.begin();
+	vector<char *>::iterator const aend = argv.end();
+	lyxerr << "<command>\n";
+	for (; ait != aend; ++ait)
+		if (*ait)
+			lyxerr << '\t'<< *ait << '\n';
+	lyxerr << "</command>" << std::endl;
 
 #ifndef __EMX__
 	pid_t const cpid = ::fork();
 	if (cpid == 0) {
 		// Child
-		execvp(argv[0], argv);
+		execvp(argv[0], &*argv.begin());
 
 		// If something goes wrong, we end up here
 		lyxerr << "execvp of \"" << command_ << "\" failed: "
@@ -284,19 +325,12 @@ int Forkedcall::generateChild()
 	}
 #else
 	pid_t const cpid = spawnvp(P_SESSION|P_DEFAULT|P_MINIMIZE|P_BACKGROUND,
-				   argv[0], argv);
+				   argv[0], &*argv.begin());
 #endif
 
 	if (cpid < 0) {
 		// Error.
 		lyxerr << "Could not fork: " << strerror(errno) << endl;
-	}
-
-	// Clean-up.
-	for (int i = 0; i < MAX_ARGV; ++i) {
-		if (argv[i] == 0)
-			break;
-		delete [] argv[i];
 	}
 
 	return cpid;

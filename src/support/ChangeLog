@@ -1,3 +1,12 @@
+2005-01-20  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.[Ch] (LibScriptSearch): backport the 1.4.x code so
+	that the function now substitutes the $$s placeholder for the
+	path to the appropriate LyX support directory.
+	
+	* forkedcall.C (generateChild): backport the 1.4.x code to split
+	the input command up into an array of words and to strip any quotes.
+
 2005-01-30  Angus Leeming  <leeming@lyx.org>
 
 	* os_cygwin.C (cygwin_path_fix):

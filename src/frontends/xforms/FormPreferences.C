@@ -993,9 +993,9 @@ FormPreferences::Converters::feedback(FL_OBJECT const * const ob) const
 
 	if (ob == dialog_->input_converter)
 		return _("The conversion command. $$i is the input file name, "
-			 "$$b is the file name without its extension and $$o is "
-			 "the name of the output file. $$s can be used as path to "
-			 "LyX's own collection of conversion scripts.");
+			 "$$b is the file name without its extension and $$o "
+			 "is the name of the output file. $$s can be used "
+			 "as the path to LyX's support directory.");
 
 	if (ob == dialog_->input_flags)
 		return _("Extra information for the Converter class, whether and "
