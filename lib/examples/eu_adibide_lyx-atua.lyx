@@ -1,0 +1,216 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 2.16
+\textclass article
+\language spanish
+\inputencoding latin1
+\fontscheme default
+\graphics dvips
+\paperfontsize 12
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Title
+
+HAU IDAZKIAREN IZENBURUA DA
+\layout Author
+
+egilea: Norbait
+\layout Date
+
+1973ko urriak 23
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Section
+
+Oinarrizko Izakera
+\layout Standard
+
+LyX-en oinarrizko izakeran idatzi beharrekoan datza, eta ez itxuran.
+\layout Subsection
+
+LyX-ek nola lantzen duen
+\layout Standard
+
+LyX-ek LaTeX erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
+ prestaketa sisteman.
+ TeX (Donald Knuth-ek 1984-ean sortuta) izeneko osaketa hizkuntzaren gain
+ eraikia izan zen.
+ LaTeX LyX-en antzeko izakera baten gain diseinatuta dago.
+ Leslie Lamport-ek esan zuen (
+\begin_inset LatexCommand \cite{Lamport}
+
+\end_inset 
+
+ erreferentzia ikusi) :
+\layout Quote
+
+Tipografi diseinuaren betebeharra irakurtzaileak egilearen burutazioak ulerttu
+ araztean datza.
+ Idazki bat irakur erraza izan dadin, bere ikus egitura bere logika egituraren
+ islada izan behar du.
+ Aipamenak eta ordenagailu programek, egitura ezberdineko elementuak izaterakoan
+, bata bestearengandik begi bistara ezberdindu beharra daukate [...] Eta nola
+ LaTeX-ek zuzenean ezin zaituen ulertu, zerorrek eskuz agindu berezi batzuek
+ idatziz nahi duzun logika egitura esan behar diozu [...] Idazki bat idazten
+ duzun bitartean, bere logikaren egituran arduratu beharra daukazu, ez bere
+ itxuran.
+\layout Subsection
+
+LyX zergatik da hobeagoa
+\layout Standard
+
+
+\begin_inset LatexCommand \label{atal:lyxhobeagoa}
+
+\end_inset 
+
+LyX erabiltzaileentzat LaTeX baino erabilgarriagoa izan daiteke.
+ Askoz ere erabil errazagokoa da, LaTeX zer den ikasi beharrik ez bait daukazu
+ (azken finean ia programaketa hizkuntza denez).
+ LyX ia beste 
+\begin_inset Quotes eld
+\end_inset 
+
+ikusten duzuna lortzen duzu
+\begin_inset Quotes erd
+\end_inset 
+
+-n idazki prozesatzaileen bezalakoa da, LyX ordea 
+\begin_inset Quotes eld
+\end_inset 
+
+ikusten duzuna esan nahi duzu
+\begin_inset Quotes erd
+\end_inset 
+
+ da.
+ Era honetan, idazki prozesatzaileen erreztasuna LaTeX-en indarrarekin batzen
+ da.
+ Eta hau onuragarria da.
+ Horretaz gain, fitxategiaren egitura erabiltzen duzun ordenagailu/sistema-tik
+ aske dago.
+ Eta onena zera da, ASKEA eta DOHAINEKOA dela.
+\layout Section
+
+LyX-en Ezaugarriak
+\layout Standard
+
+LyX-ek idazkiak idazteko erreztasun asko eskeintzen dituen ezugarri ugari
+ ditu.
+\begin_float footnote 
+\layout Standard
+
+bestela, zertarako nahiko zenuke erabiltzea?
+\end_float 
+ Beraietaz mintzatzeak 
+\emph on 
+asko unkitzen
+\emph default 
+ nau.
+ Hemen, beraietariko batzuen zerrenda bat daukazu.
+\layout Itemize
+
+Margenak eta Orri Oineko Oharren zenbaketetaz LyX bera arduratzen da
+\layout Itemize
+
+LyX-ek matematika ekuazioak idaztean izugarrizko erreztasuna eskeintzen
+ du.
+\layout Standard
+
+LyX beste testu prozesatzaileen baino hobeago izatearen zergatia eztabaidatzeko,
+ 
+\begin_inset LatexCommand \ref{atal:lyxhobeagoa}
+
+\end_inset 
+
+ atala ikusi, 
+\begin_inset LatexCommand \pageref{atal:lyxhobeagoa}
+
+\end_inset 
+
+ orrialdean aurkitzen da.
+\layout Section
+
+LyX-eko gauz gehiago erabiltzean saiakera hutsak
+\layout Standard
+
+Lehengo batean programa bat idatzi nuen.
+ Ondoko hau zen:
+\layout LyX-Code
+
+5 REMARK NERE PROGRAMA IKUSGARRIA
+\layout LyX-Code
+
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset 
+
+IKUSGARRIA NAIZ
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout LyX-Code
+
+20 GOTO 10 
+\layout Standard
+
+Zientzilan ikaragarri haundi honen ondoren, artista bat nintzela sentitzen
+ hasi nintzen, eta ondorengo hori idatzi nuen:
+\layout Verse
+
+LyX idazki prozezatzaile
+\newline 
+Zoragarri bat da
+\newline 
+Hainbeste denbora aurrezten du
+\layout Section
+
+Matematikak
+\layout Standard
+
+Nere ekuazio gogokoena bigarren mailako ekuazio baten emaitza da.
+ Baldin eta 
+\begin_inset Formula \( ax^{2}+bx+c=0 \)
+\end_inset 
+
+ (1.ek), orduan 
+\begin_inset Formula \( x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a} \)
+\end_inset 
+
+ (2.
+ ek) .
+\layout Standard
+
+Beste ekuazio polita kalkulu oinarria da: 
+\begin_inset Formula \( f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \)
+\end_inset 
+
+ (3.
+ ek).
+\layout Bibliography
+\bibitem {Lamport}
+
+Lamport, Leslie.
+ LaTeX: A Document Preparation System.
+ Addison-Wesley, Reading, Massachusetts, bigarren argitaraketa, 1994.
+\the_end
