@@ -1,6 +1,12 @@
+2003-04-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* bufferlist.C (newFile): set language (messages_) for new
+	documents also.
+
+	* buffer.C (readFile): ws changes only.
 
 2003-04-28 André Pönitz <poenitz@gmx.net>
-	
+
 	* undo_funcs.C:
 	* lyxfunc.C:
 	* buffer.[Ch]:

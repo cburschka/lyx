@@ -501,7 +501,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 	// language is set and used in the gui.
 	// If you know of a better place to put this, please tell me. (Lgb)
 	updateDocLang(params.language);
-	
+
 	return ret;
 }
 
@@ -2215,7 +2215,7 @@ void Buffer::redraw()
 void Buffer::changeLanguage(Language const * from, Language const * to)
 {
 	lyxerr << "Changing Language!" << endl;
-	
+
 	// Take care of l10n/i18n
 	updateDocLang(to);
 
@@ -2224,7 +2224,7 @@ void Buffer::changeLanguage(Language const * from, Language const * to)
 		(*it)->changeLanguage(params, from, to);
 }
 
-	
+
 void Buffer::updateDocLang(Language const * nlang)
 {
 	messages_.reset(new Messages(nlang->code()));
@@ -2340,7 +2340,7 @@ string const Buffer::B_(string const & l10n) const
 	if (messages_.get()) {
 		return messages_->get(l10n);
 	}
-	
+
 	return _(l10n);
 }
 

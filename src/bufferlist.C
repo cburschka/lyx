@@ -201,7 +201,7 @@ bool BufferList::close(Buffer * buf, bool ask)
 	} else if (ret == 2) {
 		return false;
 	}
-	
+
 	if (buf->isUnnamed()) {
 		removeAutosaveFile(buf->fileName());
 	}
@@ -499,7 +499,8 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 	}
 
 	b->setReadonly(false);
-
+	b->updateDocLang(b->params.language);
+	
 	return b;
 }
 
