@@ -87,6 +87,7 @@ void MathMacroTable::builtinMacros()
 	//lyxerr[Debug::MATHED] << "Building macros\n";
    
 	createTemplate("emptyset",     0, "\\not0");
+	createTemplate("ne",           0, "\\not=");
 	createTemplate("ge",           0, "\\geq");
 	createTemplate("gets",         0, "\\leftarrow");
 	createTemplate("land",         0, "\\wedge");
