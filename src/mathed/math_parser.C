@@ -940,8 +940,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "hline") {
-			if (grid.asHullInset())
-				grid.asHullInset()->rowinfo(cellrow + 1);
+			grid.rowinfo(cellrow).lines_ ++;
 		}
 
 		else if (t.cs() == "sqrt") {
