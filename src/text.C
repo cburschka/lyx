@@ -2412,7 +2412,7 @@ void LyXText::SelectWord(BufferView * bview)
 	SetCursor(bview, cursor.par(), cursor.pos() );
 	
 	// finally set the selection
-	SetSelection();
+	SetSelection(bview);
 }
 
 
@@ -2523,7 +2523,7 @@ void LyXText::SelectSelectedWord(BufferView * bview)
 	SetCursor(bview, cursor.par(), cursor.pos());
 	
 	// finally set the selection
-	SetSelection();
+	SetSelection(bview);
 }
 
 
@@ -2540,7 +2540,7 @@ void LyXText::DeleteWordForward(BufferView * bview)
 		SetCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
 		sel_cursor = cursor;
 		cursor = tmpcursor;
-		SetSelection(); 
+		SetSelection(bview); 
 		
 		/* -----> Great, CutSelection() gets rid of multiple spaces. */
 		CutSelection(bview);
@@ -2561,7 +2561,7 @@ void LyXText::DeleteWordBackward(BufferView * bview)
 	       SetCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
 	       sel_cursor = cursor;
 	       cursor = tmpcursor;
-	       SetSelection();
+	       SetSelection(bview);
 	       CutSelection(bview);
        }
 }
@@ -2583,7 +2583,7 @@ void LyXText::DeleteLineForward(BufferView * bview)
 		SetCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
 		sel_cursor = cursor;
 		cursor = tmpcursor;
-		SetSelection();
+		SetSelection(bview);
 		// What is this test for ??? (JMarc)
 		if (!selection) {
 			DeleteWordForward(bview);

@@ -67,7 +67,7 @@ bool BufferView::insertLyXFile(string const & filen)
 		return false;
 	}
 	
-	beforeChange();
+	beforeChange(text);
 
 	ifstream ifs(fname.c_str());
 	if (!ifs) {
@@ -217,7 +217,7 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 	text->SetCursorParUndo(buffer());
 	text->FreezeUndo();
 	
-	beforeChange();
+	beforeChange(text);
 	if (!lout.empty()) {
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->BreakParagraph(this);
@@ -266,7 +266,7 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 // Open and lock an updatable inset
 bool BufferView::open_new_inset(UpdatableInset * new_inset, bool behind)
 {
-	beforeChange();
+	beforeChange(text);
 	text->FinishUndo();
 	if (!insertInset(new_inset)) {
 		delete new_inset;
@@ -293,7 +293,7 @@ bool BufferView::gotoLabel(string const & label)
 		vector<string> labels = (*it)->getLabelList();
 		if (find(labels.begin(),labels.end(),label)
 		     != labels.end()) {
-			beforeChange();
+			beforeChange(text);
 			text->SetCursor(this, it.getPar(), it.getPos());
 			text->sel_cursor = text->cursor;
 			update(text, BufferView::SELECT|BufferView::FITCUR);
@@ -325,7 +325,7 @@ void BufferView::allFloats(char flag, char figmar)
 		    && cursor.par()->footnotekind != LyXParagraph::ALGORITHM)))
 		toggleFloat();
 	else
-		beforeChange();
+		beforeChange(text);
 
 	LyXCursor tmpcursor = cursor;
 	cursor.par(tmpcursor.par()->ParFromPos(tmpcursor.pos()));
@@ -408,7 +408,7 @@ void BufferView::openStuff()
 	if (available()) {
 		owner()->getMiniBuffer()->Set(_("Open/Close..."));
 		hideCursor();
-		beforeChange();
+		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->OpenStuff(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
@@ -422,7 +422,7 @@ void BufferView::toggleFloat()
 	if (available()) {
 		owner()->getMiniBuffer()->Set(_("Open/Close..."));
 		hideCursor();
-		beforeChange();
+		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->ToggleFootnote(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
@@ -436,7 +436,7 @@ void BufferView::menuUndo()
 	if (available()) {
 		owner()->getMiniBuffer()->Set(_("Undo"));
 		hideCursor();
-		beforeChange();
+		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		if (!text->TextUndo(this))
 			owner()->getMiniBuffer()->Set(_("No further undo information"));
@@ -457,7 +457,7 @@ void BufferView::menuRedo()
 	if (available()) {
 		owner()->getMiniBuffer()->Set(_("Redo"));
 		hideCursor();
-		beforeChange();
+		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		if (!text->TextRedo(this))
 			owner()->getMiniBuffer()->Set(_("No further redo information"));
@@ -627,7 +627,7 @@ void BufferView::gotoInset(std::vector<Inset::Code> const & codes,
 	if (!available()) return;
    
 	hideCursor();
-	beforeChange();
+	beforeChange(text);
 	update(text, BufferView::SELECT|BufferView::FITCUR);
 
 	string contents;
@@ -695,7 +695,7 @@ void BufferView::selectLastWord()
 	if (!available()) return;
    
 	hideCursor();
-	beforeChange();
+	beforeChange(text);
 	text->SelectSelectedWord(this);
 	toggleSelection(false);
 	update(text, BufferView::SELECT|BufferView::FITCUR);
@@ -707,7 +707,7 @@ void BufferView::endOfSpellCheck()
 	if (!available()) return;
    
 	hideCursor();
-	beforeChange();
+	beforeChange(text);
 	text->SelectSelectedWord(this);
 	text->ClearSelection();
 	update(text, BufferView::SELECT|BufferView::FITCUR);

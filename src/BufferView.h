@@ -92,7 +92,7 @@ public:
 	///
 	LyXView * owner() const;
 	///
-	void beforeChange();
+	void beforeChange(LyXText *);
         ///
         void savePosition(unsigned int i);
         ///

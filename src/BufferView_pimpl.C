@@ -295,7 +295,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 			bv_->text->SetCursor(bv_, selstartpar, selstartpos);
 			bv_->text->sel_cursor = bv_->text->cursor;
 			bv_->text->SetCursor(bv_, selendpar, selendpos);
-			bv_->text->SetSelection();
+			bv_->text->SetSelection(bv_);
 			bv_->text->SetCursor(bv_, par, pos);
 		} else {
 			bv_->text->SetCursor(bv_, par, pos);
@@ -522,7 +522,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 	if (!bv_->text->selection)
 		update(bv_->text, BufferView::UPDATE); // Maybe an empty line was deleted
       
-	bv_->text->SetSelection();
+	bv_->text->SetSelection(bv_);
 	screen_->ToggleToggle(bv_->text, bv_);
 	fitCursor(bv_->text);
 	screen_->ShowCursor(bv_->text, bv_);
@@ -674,7 +674,7 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 		text->CursorHome(bv_);
 		text->sel_cursor = text->cursor;
 		text->CursorEnd(bv_);
-		text->SetSelection();
+		text->SetSelection(bv_);
 		screen_->ToggleSelection(text, bv_, false);
 		/* This will fit the cursor on the screen
 		 * if necessary */
@@ -1029,9 +1029,10 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 
 	text->FullRebreak(bv_);
 
-	if (text->inset_owner)
+	if (text->inset_owner) {
+	    text->inset_owner->SetUpdateStatus(bv_, InsetText::CURSOR_PAR);
 	    bv_->updateInset(text->inset_owner, true);
-	else
+	} else
 	    update();
 
 	if ((f & FITCUR)) {
@@ -1141,10 +1142,10 @@ bool BufferView::Pimpl::available() const
 }
 
 
-void BufferView::Pimpl::beforeChange()
+void BufferView::Pimpl::beforeChange(LyXText * text)
 {
 	toggleSelection();
-	bv_->text->ClearSelection();
+	text->ClearSelection();
 }
 
 
@@ -1167,7 +1168,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 	string fname = saved_positions[i].filename;
 
-	beforeChange();
+	beforeChange(bv_->text);
 
 	if (fname != buffer_->fileName()) {
 		Buffer * b = bufferlist.exists(fname) ?
@@ -1299,7 +1300,7 @@ void BufferView::Pimpl::toggleToggle()
 
 void BufferView::Pimpl::center() 
 {
-	beforeChange();
+	beforeChange(bv_->text);
 	if (bv_->text->cursor.y() > static_cast<int>((workarea_->height() / 2))) {
 		screen_->Draw(bv_->text, bv_, bv_->text->cursor.y() - workarea_->height() / 2);
 	} else {
@@ -1315,7 +1316,7 @@ void BufferView::Pimpl::pasteClipboard(bool asPara)
 	if (!buffer_) return;
 
 	screen_->HideCursor();
-	bv_->beforeChange();
+	beforeChange(bv_->text);
 	
 	string const clip(workarea_->getClipboard());
 	

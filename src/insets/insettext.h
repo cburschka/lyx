@@ -99,7 +99,7 @@ public:
     ///
     void update(BufferView *, LyXFont const &, bool =false);
     ///
-    void SetUpdateStatus(UpdateCodes);
+    void SetUpdateStatus(BufferView *, UpdateCodes);
     ///
     string const EditMessage() const;
     ///

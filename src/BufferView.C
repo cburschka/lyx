@@ -211,9 +211,9 @@ bool BufferView::available() const
 }
 
 
-void BufferView::beforeChange()
+void BufferView::beforeChange(LyXText * text)
 {
-	pimpl_->beforeChange();
+	pimpl_->beforeChange(text);
 }
 
 

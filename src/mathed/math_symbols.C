@@ -340,7 +340,7 @@ bool math_insert_greek(BufferView * bv, char c)
       if (!bv->theLockingInset() || bv->theLockingInset()->IsTextInset()) {
 	 int greek_kb_flag_save = greek_kb_flag;
 	 InsetFormula * new_inset = new InsetFormula();
-	 bv->beforeChange();
+	 bv->beforeChange(bv->text);
 	 if (!bv->insertInset(new_inset)) {
 	     delete new_inset;
 	     return false;
@@ -370,7 +370,7 @@ void math_insert_symbol(BufferView * bv, string const & s)
    if (bv->available())   {
       if (!bv->theLockingInset() || bv->theLockingInset()->IsTextInset()) {
 	 InsetFormula * new_inset = new InsetFormula();
-	 bv->beforeChange();
+	 bv->beforeChange(bv->text);
 	 if (!bv->insertInset(new_inset)) {
 	     delete new_inset;
 	     return;

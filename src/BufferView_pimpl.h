@@ -84,7 +84,7 @@ struct BufferView::Pimpl : public Object {
 	///
 	bool available() const;
 	///
-	void beforeChange();
+	void beforeChange(LyXText *);
 	///
 	void savePosition(unsigned int i);
 	///

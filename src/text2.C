@@ -658,7 +658,7 @@ void LyXText::SetLayout(BufferView * bview, LyXTextClass::size_type layout)
 		  false);
 	UpdateCounters(bview, cursor.row());
 	ClearSelection();
-	SetSelection();
+	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos(), true);
 }
 
@@ -776,7 +776,7 @@ void  LyXText::IncDepth(BufferView * bview)
 	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
 	UpdateCounters(bview, cursor.row());
 	ClearSelection();
-	SetSelection();
+	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos());
 }
 
@@ -853,7 +853,7 @@ void  LyXText::DecDepth(BufferView * bview)
 	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
 	UpdateCounters(bview, cursor.row());
 	ClearSelection();
-	SetSelection();
+	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos());
 }
 
@@ -935,7 +935,7 @@ void LyXText::SetFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	sel_cursor = cursor;
 	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
 	ClearSelection();
-	SetSelection();
+	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos(), true,
 		  tmpcursor.boundary());
 }
@@ -1117,7 +1117,7 @@ bool LyXText::FullRebreak(BufferView * bview)
  * They also delete the corresponding row */
    
 // need the selection cursor:
-void LyXText::SetSelection()
+void LyXText::SetSelection(BufferView * bview)
 {
 	const bool lsel = selection;
 
@@ -1168,7 +1168,7 @@ void LyXText::SetSelection()
 		selection = false;
 
 	if (inset_owner && (selection || lsel))
-		inset_owner->SetUpdateStatus(InsetText::SELECTION);
+		inset_owner->SetUpdateStatus(bview, InsetText::SELECTION);
 }
 
 
@@ -1304,7 +1304,7 @@ void LyXText::ToggleFree(BufferView * bview,
 		sel_cursor = cursor;
 	}
 	if (inset_owner)
-		inset_owner->SetUpdateStatus(InsetText::CURSOR_PAR);
+		inset_owner->SetUpdateStatus(bview, InsetText::CURSOR_PAR);
 }
 
 
@@ -1524,7 +1524,7 @@ void LyXText::SetParagraph(BufferView * bview,
 	SetCursor(bview, sel_start_cursor.par(), sel_start_cursor.pos());
 	sel_cursor = cursor;
 	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
-	SetSelection();
+	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos());
 	if (inset_owner)
 	    bview->updateInset(inset_owner, true);
@@ -1614,7 +1614,7 @@ void LyXText::SetParagraphExtraOpt(BufferView * bview, int type,
 	SetCursor(bview, sel_start_cursor.par(), sel_start_cursor.pos());
 	sel_cursor = cursor;
 	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
-	SetSelection();
+	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos());
 }
 
@@ -2373,7 +2373,7 @@ void LyXText::PasteSelection(BufferView * bview)
    
 	sel_cursor = cursor;
 	SetCursor(bview, actpar, pos);
-	SetSelection();
+	SetSelection(bview);
 	UpdateCounters(bview, cursor.row());
 }
 
@@ -2411,7 +2411,7 @@ void LyXText::SetSelectionOverString(BufferView * bview, string const & str)
 	sel_cursor = cursor;
 	for (int i = 0; str[i]; ++i)
 		CursorRight(bview);
-	SetSelection();
+	SetSelection(bview);
 }
 
 
@@ -2572,7 +2572,7 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 	SetCursor(bview, cursor.par(), cursor.pos());
 	sel_cursor = cursor;
 	SetCursor(bview, par, pos);
-	SetSelection();
+	SetSelection(bview);
 }
 
 

@@ -108,7 +108,7 @@ void Melt(BufferView * bv)
 	
 	bv->owner()->getMiniBuffer()->Set(_("Melt"));
 	bv->hideCursor();
-	bv->beforeChange();
+	bv->beforeChange(bv->text);
 	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 	bv->text->MeltFootnoteEnvironment(bv);
 	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);

@@ -82,7 +82,7 @@ void SetSelectionOverLenChars(BufferView * bv, int len)
 	bv->text->sel_cursor = bv->text->cursor;
 	for (int i = 0; i < len; ++i)
 		bv->text->CursorRight(bv);
-	bv->text->SetSelection();
+	bv->text->SetSelection(bv);
 }
 
 

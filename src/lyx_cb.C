@@ -505,7 +505,7 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	bv->hideCursor();
 	
 	// clear the selection
-	bv->beforeChange();
+	bv->beforeChange(bv->text);
 	if (!asParagraph)
 		bv->text->InsertStringA(bv, tmpstr);
 	else
@@ -879,7 +879,7 @@ void FigureApplyCB(FL_OBJECT *, long)
 	
 	current_view->hideCursor();
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR);
-	current_view->beforeChange();
+	current_view->beforeChange(current_view->text);
       
 	current_view->text->SetCursorParUndo(current_view->buffer()); 
 	current_view->text->FreezeUndo();

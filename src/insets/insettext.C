@@ -450,8 +450,10 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 	TEXT_TO_INSET_OFFSET;
 }
 
-void InsetText::SetUpdateStatus(UpdateCodes what)
+void InsetText::SetUpdateStatus(BufferView * bv, UpdateCodes what)
 {
+    if (TEXT(bv)->status == LyXText::NEED_MORE_REFRESH)
+	need_update = FULL;
     if (what > need_update)
 	need_update = what;
 }
@@ -718,7 +720,7 @@ void InsetText::InsetMotionNotify(BufferView * bv, int x, int y, int state)
 	HideInsetCursor(bv);
 	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
 					   y+insetAscent);
-	TEXT(bv)->SetSelection();
+	TEXT(bv)->SetSelection(bv);
 	if (TEXT(bv)->toggle_cursor.par()!=TEXT(bv)->toggle_end_cursor.par() ||
 	    TEXT(bv)->toggle_cursor.pos()!=TEXT(bv)->toggle_end_cursor.pos())
 	    UpdateLocal(bv, SELECTION, false);
@@ -841,7 +843,7 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_RIGHTSEL:
 	bv->text->FinishUndo();
 	moveRight(bv, false, true);
-	TEXT(bv)->SetSelection();
+	TEXT(bv)->SetSelection(bv);
 	UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_RIGHT:
@@ -853,7 +855,7 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_LEFTSEL:
 	bv->text->FinishUndo();
 	moveLeft(bv, false, true);
-	TEXT(bv)->SetSelection();
+	TEXT(bv)->SetSelection(bv);
 	UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_LEFT:
@@ -865,7 +867,7 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_DOWNSEL:
 	bv->text->FinishUndo();
 	moveDown(bv);
-	TEXT(bv)->SetSelection();
+	TEXT(bv)->SetSelection(bv);
 	UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_DOWN:
@@ -878,7 +880,7 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_UPSEL:
 	bv->text->FinishUndo();
 	moveUp(bv);
-	TEXT(bv)->SetSelection();
+	TEXT(bv)->SetSelection(bv);
 	UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_UP:
@@ -1658,7 +1660,7 @@ void InsetText::resizeLyXText(BufferView * bv) const
 				selstartboundary);
 	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	    TEXT(bv)->SetCursor(bv, selendpar, selendpos, true, selendboundary);
-	    TEXT(bv)->SetSelection();
+	    TEXT(bv)->SetSelection(bv);
 	    TEXT(bv)->SetCursor(bv, lpar, pos);
 	} else {
 	    TEXT(bv)->SetCursor(bv, lpar, pos, true, boundary);

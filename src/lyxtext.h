@@ -231,7 +231,7 @@ public:
 	LyXCursor toggle_end_cursor;
    
 	/// need the selection cursor:
-	void SetSelection();
+	void SetSelection(BufferView *);
 	///
 	void ClearSelection() const;
 	///
