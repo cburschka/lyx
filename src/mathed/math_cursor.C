@@ -1171,12 +1171,12 @@ void MathCursor::interpret(string const & s)
 	//owner_->getIntl()->getTrans().TranslateAndInsert(c, lt);	
 	//lyxerr << "trans: '" << c << "'  int: " << int(c) << endl;
 
-	if (s.size() > 8 && s.substr(0, 8) == "\\matrix ") {
+	if (s.size() > 7 && s.substr(0, 7) == "matrix ") {
 		int m = 1;
 		int n = 1;
 		string v_align;
 		string h_align;
-		istringstream is(s.substr(8).c_str());
+		istringstream is(s.substr(7).c_str());
 		is >> m >> n >> v_align >> h_align;
 		m = std::max(1, m);
 		n = std::max(1, n);
