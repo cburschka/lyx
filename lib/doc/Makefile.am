@@ -2,10 +2,9 @@ include $(top_srcdir)/config/common.am
 
 DISTCLEANFILES += LyXConfig.lyx LaTeXConfig.lyx
 
-EXTRA_DIST = LaTeXConfig.lyx.in LyXConfig.lyx.in
+EXTRA_DIST = LaTeXConfig.lyx.in LyXConfig.lyx.in $(docfiles)
 
-docdir = $(pkgdatadir)/doc
-doc_DATA = \
+docfiles = \
 	cs_TOC.lyx \
 	da_TOC.lyx \
 	de_Customization.lyx \
@@ -27,7 +26,6 @@ doc_DATA = \
 	he_TOC.lyx \
 	hu_TOC.lyx \
 	it_TOC.lyx \
-	LaTeXConfig.lyx \
 	nl_TOC.lyx \
 	no_Intro.lyx \
 	no_TOC.lyx \
@@ -40,3 +38,8 @@ doc_DATA = \
 	sv_TOC.lyx \
 	TOC.lyx \
 	UserGuide.lyx
+
+docdir = $(pkgdatadir)/doc
+doc_DATA = \
+	$(docfiles) \
+	LaTeXConfig.lyx
