@@ -102,23 +102,28 @@ bool BufferView::insertLyXFile(string const & filen)
 
 bool BufferView::removeAutoInsets()
 {
-	Paragraph * par = buffer()->paragraph;
-
 	LyXCursor tmpcursor = text->cursor;
 	LyXCursor cursor;
+	bool found = false;
 
-	bool a = false;
-
-	while (par) {
+	ParIterator end = buffer()->par_iterator_end();
+	for (ParIterator it = buffer()->par_iterator_begin();
+	     it != end; ++it) {
+		Paragraph * par = *it;
 		// this has to be done before the delete
-		text->setCursor(this, cursor, par, 0);
-		if (par->autoDeleteInsets()){
-			a = true;
-			text->redoParagraphs(this, cursor,
-					     cursor.par()->next());
-			text->fullRebreak(this);
+		if (par->autoDeleteInsets()) {
+			found = true;
+#ifdef WITH_WARNINGS
+#warning FIXME
+#endif
+			// The test it.size()==1 was needed to prevent crashes.
+			if (it.size() == 1) {
+				text->setCursor(this, cursor, par, 0);
+				text->redoParagraphs(this, cursor,
+						     cursor.par()->next());
+				text->fullRebreak(this);
+			}
 		}
-		par = par->next();
 	}
 
 	// avoid forbidden cursor positions caused by error removing
@@ -127,7 +132,7 @@ bool BufferView::removeAutoInsets()
 
 	text->setCursorIntern(this, tmpcursor.par(), tmpcursor.pos());
 
-	return a;
+	return found;
 }
 
 

@@ -2,7 +2,7 @@
 
 #include "iterators.h"
 
-ParIterator  & ParIterator::operator++()
+ParIterator & ParIterator::operator++()
 {
 	while (!positions.empty()) {
 		ParPosition & p = positions.back();
@@ -16,7 +16,11 @@ ParIterator  & ParIterator::operator++()
 				return *this;
 			}
 			++p.it;
-		}
+		} else
+			// The following line is needed because the value of
+			// p.it may be invalid if inset was added/removed to
+			// the paragraph pointed by the iterator
+			p.it = p.par->inset_iterator_begin();
 
 		// Try to find the next inset that contains paragraphs
 		for ( ; p.it != p.par->inset_iterator_end(); ++p.it) {

@@ -17,6 +17,7 @@
 #include "lyx_gui_misc.h"
 #include "lyxcursor.h"
 #include "gettext.h"
+#include "iterators.h"
 
 #ifdef __GNUG__
 #pragma implementation
@@ -366,16 +367,18 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 	int ret = 0;
 	if (!par || c1 == c2)
 		return ret;
-	
-	while (par) {
+
+	ParIterator end = ParIterator();
+	for (ParIterator it = ParIterator(par); it != end; ++it) {
+		par = *it;
 		string const name = textclasslist.NameOfLayout(c1, par->layout);
 		int lay = 0;
 		pair<bool, layout_type> pp =
 			textclasslist.NumberOfLayout(c2, name);
 		if (pp.first) {
 			lay = pp.second;
-		} else { // layout not found
-			// use default layout "Standard" (0)
+		} else {
+			// not found: use default layout "Standard" (0)
 			lay = 0;
 		}
 		par->layout = lay;
@@ -391,7 +394,6 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 			InsetError * new_inset = new InsetError(s);
 			par->insertInset(0, new_inset);
 		}
-		par = par->next();
 	}
 	return ret;
 }

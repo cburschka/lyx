@@ -1,3 +1,12 @@
+2001-12-07  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* iterators.C (operator++): Make the iterator more robust
+
+	* BufferView2.C (removeAutoInsets): Use paragraph iterators
+	(John's patch)
+	* CutAndPaste.C (SwitchLayoutsBetweenClasses): Ditto
+
+
 2001-12-05  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxtext.h:
