@@ -4,7 +4,6 @@ DISTCLEANFILES = *.orig *.rej *~ *.bak core textclass.lst packages.lst \
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 SUBDIRS = reLyX
 
-M4=m4
 CHMOD=chmod
 
 BIND = bind/*.bind

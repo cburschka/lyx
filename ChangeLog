@@ -1,5 +1,8 @@
 2002-04-24  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* configure.in: add check for GNU m4 (does not check that program
+	is actually gnu m4, but better than nothing)
+
 	* configure.in: small hack for compatibility with autoconf 2.52.
 	Basically, there is a weird interference with stdlib.h with g++
 	and _some_ functions (mkstemp, mktemp...)

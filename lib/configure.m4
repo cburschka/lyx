@@ -355,29 +355,65 @@ esac
 #### Search for image conversion ####
 SEARCH_PROG([for an Image -> EPS converter], TOEPS, convert pnmtops)
 case $TOEPS in
-	convert) bmp_to_eps="convert BMP:\$\$i EPS:\$\$o" fits_to_eps="convert FITS:\$\$i EPS:\$\$o" gif_to_eps="convert GIF:\$\$i EPS:\$\$o" jpg_to_eps="convert JPG:\$\$i EPS:\$\$o" pbm_to_eps="convert PBM:\$\$i EPS:\$\$o" pgm_to_eps="convert PGM:\$\$i EPS:\$\$o" png_to_eps="convert PNG:\$\$i EPS:\$\$o" ppm_to_eps="convert PPM:\$\$i EPS:\$\$o" sgi_to_eps="convert SGI:\$\$i EPS:\$\$o" xbm_to_eps="convert XBM:\$\$i EPS:\$\$o" xwd_to_eps="convert XWD:\$\$i EPS:\$\$o" ;;
-	pnmtops) gif_to_eps="giftopnm \$\$i | pnmtops > \$\$o" png_to_eps="pngtopnm \$\$i | pnmtops >\$\$o" jpg_to_eps="jpegtopnm \$\$i | pnmtops >\$\$o";;
+  convert)
+    bmp_to_eps="convert BMP:\$\$i EPS:\$\$o"
+    fits_to_eps="convert FITS:\$\$i EPS:\$\$o"
+    gif_to_eps="convert GIF:\$\$i EPS:\$\$o"
+    jpg_to_eps="convert JPG:\$\$i EPS:\$\$o"
+    pbm_to_eps="convert PBM:\$\$i EPS:\$\$o"
+    pgm_to_eps="convert PGM:\$\$i EPS:\$\$o"
+    png_to_eps="convert PNG:\$\$i EPS:\$\$o"
+    ppm_to_eps="convert PPM:\$\$i EPS:\$\$o"
+    sgi_to_eps="convert SGI:\$\$i EPS:\$\$o"
+    xbm_to_eps="convert XBM:\$\$i EPS:\$\$o"
+    xwd_to_eps="convert XWD:\$\$i EPS:\$\$o"
+    xpm_to_eps="convert XPM:\$\$i EPS:\$\$o" ;;
+  pnmtops) gif_to_eps="giftopnm \$\$i | pnmtops > \$\$o"
+    png_to_eps="pngtopnm \$\$i | pnmtops >\$\$o"
+    jpg_to_eps="jpegtopnm \$\$i | pnmtops >\$\$o";;
 esac
 
-SEARCH_PROG([for a Image -> PNG converter], TOPNG, convert pnmtopng)
+SEARCH_PROG([for an Image -> PNG converter], TOPNG, convert pnmtopng)
 case $TOPNG in
-	convert) gif_to_png="convert GIF:\$\$i PNG:\$\$o" eps_to_png="convert EPS:\$\$i PNG:\$\$o" jpg_to_png="convert JPG:\$\$i PNG:\$\$o";;
-	pnmtopng) gif_to_png="giftopnm \$\$i | pnmtopng >\$\$o" eps_to_png="pstopnm \$\$i| pnmtopng >\$\$o" jpg_to_png="jpegtopnm \$\$i | pnmtopng >\$\$o";;
+  convert)
+    gif_to_png="convert GIF:\$\$i PNG:\$\$o"
+    eps_to_png="convert EPS:\$\$i PNG:\$\$o"
+    jpg_to_png="convert JPG:\$\$i PNG:\$\$o";;
+  pnmtopng)
+    gif_to_png="giftopnm \$\$i | pnmtopng >\$\$o"
+    eps_to_png="pstopnm \$\$i| pnmtopng >\$\$o"
+    jpg_to_png="jpegtopnm \$\$i | pnmtopng >\$\$o";;
 esac
 
-SEARCH_PROG([for a Image -> XPM converter], TOXPM, convert)
+SEARCH_PROG([for an Image -> XPM converter], TOXPM, convert)
 if test "$TOXPM" = "convert"; then
-	gif_to_xpm="convert GIF:\$\$i XPM:\$\$o"
-	eps_to_xpm="convert EPS:\$\$i XPM:\$\$o"
-	jpg_to_xpm="convert JPG:\$\$i XPM:\$\$o"
-	png_to_xpm="convert PNG:\$\$i XPM:\$\$o"
-	ps_to_xpm="convert PS:\$\$i XPM:\$\$o"
-	xbm_to_xpm="convert XBM:\$\$i XPM:\$\$o"
+  gif_to_xpm="convert GIF:\$\$i XPM:\$\$o"
+  eps_to_xpm="convert EPS:\$\$i XPM:\$\$o"
+  jpg_to_xpm="convert JPG:\$\$i XPM:\$\$o"
+  png_to_xpm="convert PNG:\$\$i XPM:\$\$o"
+  ps_to_xpm="convert PS:\$\$i XPM:\$\$o"
+  xbm_to_xpm="convert XBM:\$\$i XPM:\$\$o"
 fi
 
-SEARCH_PROG([For an EPS -> PDF converter], EPSTOPDF, epstopdf)
+SEARCH_PROG([for an EPS -> PDF converter], EPSTOPDF, epstopdf)
 case $EPSTOPDF in
-	epstopdf) eps_to_pdf="epstopdf --outfile=\$\$o \$\$i";;
+  epstopdf) eps_to_pdf="epstopdf --outfile=\$\$o \$\$i";;
+esac
+
+#### Add Grace conversions (xmgrace needs an Xserver, gracebat doesn't.)
+SEARCH_PROG([for a Grace -> Image converter], GRACE, gracebat)
+case $GRACE in
+ gracebat) 
+  for device in `gracebat -version 2>/dev/null | grep "^Dummy"` ; do
+    case $device in
+      EPS)
+        agr_to_eps="xmgrace -hardcopy -printfile \$\$o -hdevice $device \$\$i";;
+      PDF)
+        agr_to_pdf="xmgrace -hardcopy -printfile \$\$o -hdevice $device \$\$i";;
+      PNG)
+        agr_to_png="xmgrace -hardcopy -printfile \$\$o -hdevice $device \$\$i";;
+    esac
+  done 
 esac
 
 #### Explore the LaTeX configuration
@@ -504,7 +540,6 @@ cat >$outfile <<EOF
 \\converter html latex "$html_to_latex_command" ""
 \\converter word latex "$word_to_latex_command" ""
 
-\\converter agr  eps "xmgrace -hardcopy -printfile \$\$o -hdevice EPS \$\$i" ""
 \\converter bmp  eps "$bmp_to_eps" ""
 \\converter fits  eps "$fits_to_eps" ""
 \\converter gif  eps "$gif_to_eps" ""
@@ -517,6 +552,7 @@ cat >$outfile <<EOF
 \\converter tgif eps "tgif -print -eps \$\$i" ""
 \\converter tiff eps "tiff2ps \$\$i > \$\$o" ""
 \\converter xbm  eps "$xbm_to_eps" ""
+\\converter xpm  eps "$xpm_to_eps" ""
 \\converter xwd  eps "$xwd_to_eps" ""
 
 \\converter tgif xpm "tgif -print -stdout -xpm \$\$i > \$\$o" ""
@@ -538,6 +574,10 @@ cat >$outfile <<EOF
 
 \\converter eps  pdf "$eps_to_pdf" ""
 \\converter epsi pdf "$eps_to_pdf" ""
+
+\\converter agr  eps "$agr_to_eps" ""
+\\converter agr  pdf "$agr_to_pdf" ""
+\\converter agr  png "$agr_to_png" ""
 
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"

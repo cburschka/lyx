@@ -40,6 +40,7 @@ if test "x$KPSEWHICH" = xkpsewhich ; then
     AC_DEFINE(HAVE_KPSEWHICH, 1,
     [Define this if you have the kpsewhich program working on your system.])
 fi
+AC_CHECK_PROGS(M4, gm4 gnum4 m4, m4)
 
 # Work around a problem in automake 1.4: when invoking install-strip,
 # INSTALL_PROGRAM is changed to 'install -s', and since
