@@ -19,6 +19,7 @@
 #include "form_bibtex.h"
 #include "gettext.h"
 #include "debug.h"
+#include "helper_funcs.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
@@ -52,17 +53,20 @@ void FormBibtex::build()
 ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 {
 	if (ob == dialog_->database_browse) {
-		string const in_name  = fl_get_input(dialog_->database);
+		// When browsing, take the first file only 
+		string const in_name = fl_get_input(dialog_->database);
+		string first;
+		split(in_name, first, ',');
+		first = strip(first);
+
 		string out_name = 
-			controller().Browse(in_name,
+			controller().Browse(first,
 					    "Select Database",
 					    "*.bib| BibTeX Databases (*.bib)");
 		if (!out_name.empty()) {
-			if (suffixIs(out_name,".bib")) {
-				// to prevent names like xxxbib.bib
-				// (because latex needs it without suffix)
-				out_name = ChangeExtension(out_name,"");
-			}
+			// add the database to any existing ones
+			if (!in_name.empty())
+				out_name = in_name + ", " + out_name;
 
 			fl_freeze_form(form()); 
 			fl_set_input(dialog_->database, out_name.c_str());
@@ -77,13 +81,6 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 					    "Select BibTeX-Style",
 					    "*.bst| BibTeX Styles (*.bst)");
 		if (!out_name.empty()) {
-			out_name = OnlyFilename(out_name);
-			if (suffixIs(out_name,".bst")) {
-				// to prevent names like xxxbst.bst
-				// (because bibtex needs it without the suffix)
-				out_name = ChangeExtension(out_name,"");
-			}
-
 			fl_freeze_form(form()); 
 			fl_set_input(dialog_->style, out_name.c_str());
 			fl_unfreeze_form(form()); 
@@ -120,11 +117,42 @@ void FormBibtex::update()
 	}
 }
 
+namespace {
+
+// Remove all duplicate entries in c.
+// Taken stright out of Stroustrup
+template<class C> void eliminate_duplicates(C & c)
+{
+	std::sort(c.begin(), c.end()); // sort
+	typename C::iterator p = std::unique(c.begin(), c.end()); // compact
+	c.erase(p, c.end()); // shrink
+}
+
+string const unique_and_no_extensions(string const & str_in)
+{
+	std::vector<string> dbase = getVectorFromString(str_in);
+	for (std::vector<string>::iterator it = dbase.begin();
+	     it != dbase.end(); ++it) {
+		*it = ChangeExtension(*it, "");
+	}
+	eliminate_duplicates(dbase);
+	return getStringFromVector(dbase);
+}
+ 
+} // namespace anon
+
 
 void FormBibtex::apply()
 {
-	controller().params().setContents(fl_get_input(dialog_->database));
-	string const bibstyle = fl_get_input(dialog_->style); // may be empty!
+	string db = fl_get_input(dialog_->database);
+	controller().params().setContents(unique_and_no_extensions(db));
+
+	// empty is valid!
+	string bibstyle = fl_get_input(dialog_->style);
+	if (!bibstyle.empty()) {
+		// save the BibTeX style without any ".bst" extension
+		bibstyle = ChangeExtension(OnlyFilename(bibstyle), "");
+	}
 
 	if ((fl_get_button(dialog_->radio_bibtotoc) > 0) &&
 	    (!bibstyle.empty())) {

@@ -1,3 +1,11 @@
+2001-08-21  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBibtex.C: make sure that any database is stored only once.
+
+2001-08-22  Herbert Voss  <voss@perce.de>
+
+	* FormBibtex.C (input): fix for multiple databases
+
 2001-08-21  Herbert Voss  <voss@perce.de>
 
 	* FormBibtex.C (input): extension handling for ".bst"
