@@ -14,10 +14,16 @@
  ***************************************************************************/
 
 #include <config.h>
+
+#include "dlg/helpers.h"
 #include "citationdlg.h"
 
+#ifdef CXX_WORKING_NAMESPACES
+using kde_helpers::setSizeHint;
+#endif
+
 CitationDialog::CitationDialog(FormCitation *form, QWidget *parent, const char *name, bool, WFlags)
-	: QDialog(parent,name,false), form_(form)
+	: QWidget(parent,name,0), form_(form)
 {
 	setCaption(name);
 	setMinimumWidth(500);
@@ -26,25 +32,25 @@ CitationDialog::CitationDialog(FormCitation *form, QWidget *parent, const char *
 
 	labelchosen = new QLabel(this);
 	labelchosen->setText(_("Selected keys"));
-	labelchosen->setMinimumSize(labelchosen->sizeHint());
+	setSizeHint(labelchosen);
 	labelchosen->setMaximumSize(labelchosen->sizeHint());
 
 	chosen = new QListBox(this);
 
 	labelkeys = new QLabel(this);
 	labelkeys->setText(_("Available keys"));
-	labelkeys->setMinimumSize(labelkeys->sizeHint());
+	setSizeHint(labelkeys);
 	labelkeys->setMaximumSize(labelkeys->sizeHint());
 
 	keys = new QListBox(this);
 
 	labelentry = new QLabel(this);
 	labelentry->setText(_("Reference entry"));
-	labelentry->setMinimumSize(labelentry->sizeHint());
+	setSizeHint(labelentry);
 	labelentry->setMaximumSize(labelentry->sizeHint());
 
 	after = new QLineEdit(this);
-	after->setMinimumSize(after->sizeHint());
+	setSizeHint(after);
 
 	entry = new QMultiLineEdit(this);
 	entry->setReadOnly(true);
@@ -53,39 +59,39 @@ CitationDialog::CitationDialog(FormCitation *form, QWidget *parent, const char *
 	labelafter = new QLabel(this);
 	labelafter->setText(_("Text after"));
 	labelafter->setMargin(5);
-	labelafter->setMinimumSize(labelafter->sizeHint());
+	setSizeHint(labelafter);
 	labelafter->setMaximumSize(labelafter->sizeHint());
 
 	/* FIXME: icons */
 	add = new QPushButton(this); 
 	add->setText(_("&Add"));
-	add->setMinimumSize(add->sizeHint());
+	setSizeHint(add); 
 	add->setMaximumSize(add->sizeHint());
  
 	up = new QPushButton(this); 
 	up->setText(_("&Up"));
-	up->setMinimumSize(up->sizeHint());
+	setSizeHint(up); 
 	up->setMaximumSize(up->sizeHint());
  
 	down = new QPushButton(this); 
 	down->setText(_("&Down"));
-	down->setMinimumSize(down->sizeHint());
+	setSizeHint(down); 
 	down->setMaximumSize(down->sizeHint());
  
 	remove = new QPushButton(this); 
 	remove->setText(_("&Remove"));
-	remove->setMinimumSize(remove->sizeHint());
+	setSizeHint(remove); 
 	remove->setMaximumSize(remove->sizeHint());
 
 	buttonOk = new QPushButton(this);
 	buttonOk->setText(_("&OK"));
 	buttonOk->setDefault(true);
-	buttonOk->setMinimumSize(buttonOk->sizeHint());
+	setSizeHint(buttonOk); 
 	buttonOk->setMaximumSize(buttonOk->sizeHint());
 
 	buttonCancel = new QPushButton(this);
 	buttonCancel->setText(_("&Cancel"));
-	buttonCancel->setMinimumSize(buttonCancel->sizeHint());
+	setSizeHint(buttonCancel); 
 	buttonCancel->setMaximumSize(buttonCancel->sizeHint());
 
 	// tooltips
@@ -161,6 +167,8 @@ CitationDialog::CitationDialog(FormCitation *form, QWidget *parent, const char *
 	connect(remove, SIGNAL(clicked()), this, SLOT(remove_adaptor()));
 	connect(buttonOk, SIGNAL(clicked()), this, SLOT(apply_adaptor()));
 	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(close_adaptor()));
+	
+	resize(sizeHint());
 }
 
 CitationDialog::~CitationDialog()

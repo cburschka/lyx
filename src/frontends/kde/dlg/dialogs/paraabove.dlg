@@ -12,7 +12,7 @@ Dialog {
 }
 WidgetLayout {
 InitialPos {-1 -1}
-Size {315 290}
+Size {465 435}
 MinSize {0 0}
 MaxSize {32767 32767}
 Grid {5}
@@ -22,7 +22,7 @@ CheckBox {
 		Text {Page break}
 		AutoRepeat {false}
 		AutoResize {false}
-		Rect {5 5 305 73}
+		Rect {5 5 228 67}
 		Name {pagebreakabove}
 		Variable {pagebreakabove}
 		MinimumSize {0 0}
@@ -47,7 +47,7 @@ CheckBox {
 		Text {Keep space when at top of page}
 		AutoRepeat {false}
 		AutoResize {false}
-		Rect {5 83 305 73}
+		Rect {5 77 228 66}
 		Name {keepabove}
 		Variable {keepabove}
 		MinimumSize {0 0}
@@ -76,7 +76,7 @@ Label {
 		LineWidth {1}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {5 161 100 36}
+		Rect {5 148 113 67}
 		Name {abovelabel}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -102,7 +102,7 @@ ComboBox {
 		AutoResize {false}
 		MaxCount {2147483647}
 		AutoCompletion {false}
-		Rect {110 161 200 36}
+		Rect {235 148 113 67}
 		Name {spaceabove}
 		Variable {spaceabove}
 		Signal {[Protected]  highlighted --> spaceaboveHighlighted  (int)}
@@ -132,7 +132,7 @@ Label {
 		LineWidth {1}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {5 202 58 24}
+		Rect {61 220 96 67}
 		Name {ValueLabel}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -160,7 +160,7 @@ Label {
 		LineWidth {1}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {5 231 58 25}
+		Rect {61 292 96 66}
 		Name {Label_14}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -188,7 +188,7 @@ Label {
 		LineWidth {1}
 		MidLineWidth {0}
 		FrameMargin {0}
-		Rect {5 261 58 24}
+		Rect {61 363 96 67}
 		Name {aboveminuslabel}
 		MinimumSize {0 0}
 		MaximumSize {32767 32767}
@@ -207,13 +207,10 @@ Label {
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
-KDE::KRestrictedLine {
-		ValidChars {0123456789.,}
-		Text {}
-		EchoMode {Normal}
-		MaxLength {8}
-		FrameShown {true}
-		Rect {68 202 3 24}
+User {
+		UserClassHeader {lengthentry.h}
+		UserClassName {LengthEntry}
+		Rect {217 220 187 67}
 		Name {spaceabovevalue}
 		Variable {spaceabovevalue}
 		MinimumSize {0 0}
@@ -227,19 +224,16 @@ KDE::KRestrictedLine {
 		minWidthSizeHint {true}
 		minHeightSizeHint {true}
 		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {StrongFocus}
-		BackgroundMode {PaletteBase}
+		maxHeightSizeHint {false}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
-KDE::KRestrictedLine {
-		ValidChars {0123456789.,}
-		Text {}
-		EchoMode {Normal}
-		MaxLength {8}
-		FrameShown {true}
-		Rect {68 231 3 25}
+User {
+		UserClassHeader {lengthentry.h}
+		UserClassName {LengthEntry}
+		Rect {217 292 187 66}
 		Name {spaceaboveplus}
 		Variable {spaceaboveplus}
 		MinimumSize {0 0}
@@ -253,19 +247,16 @@ KDE::KRestrictedLine {
 		minWidthSizeHint {true}
 		minHeightSizeHint {true}
 		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {StrongFocus}
-		BackgroundMode {PaletteBase}
+		maxHeightSizeHint {false}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
 }
-KDE::KRestrictedLine {
-		ValidChars {0123456789.,}
-		Text {}
-		EchoMode {Normal}
-		MaxLength {8}
-		FrameShown {true}
-		Rect {68 261 3 24}
+User {
+		UserClassHeader {lengthentry.h}
+		UserClassName {LengthEntry}
+		Rect {217 363 187 67}
 		Name {spaceaboveminus}
 		Variable {spaceaboveminus}
 		MinimumSize {0 0}
@@ -279,92 +270,11 @@ KDE::KRestrictedLine {
 		minWidthSizeHint {true}
 		minHeightSizeHint {true}
 		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {StrongFocus}
-		BackgroundMode {PaletteBase}
+		maxHeightSizeHint {false}
+		FocusPolicy {NoFocus}
+		BackgroundMode {PaletteBackground}
 		FontPropagation {NoChildren}
 		PalettePropagation {NoChildren}
-}
-ComboBox {
-		Style {ReadOnly}
-		SizeLimit {10}
-		Policy {AtBottom}
-		AutoResize {false}
-		MaxCount {2147483647}
-		AutoCompletion {false}
-		Rect {76 202 234 24}
-		Name {spaceabovevalueunits}
-		Variable {spaceabovevalueunits}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {StrongFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {AllChildren}
-		PalettePropagation {AllChildren}
-}
-ComboBox {
-		Style {ReadOnly}
-		SizeLimit {10}
-		Policy {AtBottom}
-		AutoResize {false}
-		MaxCount {2147483647}
-		AutoCompletion {false}
-		Rect {76 231 234 25}
-		Name {spaceaboveplusunits}
-		Variable {spaceaboveplusunits}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {StrongFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {AllChildren}
-		PalettePropagation {AllChildren}
-}
-ComboBox {
-		Style {ReadOnly}
-		SizeLimit {10}
-		Policy {AtBottom}
-		AutoResize {false}
-		MaxCount {2147483647}
-		AutoCompletion {false}
-		Rect {76 261 234 24}
-		Name {spaceaboveminusunits}
-		Variable {spaceaboveminusunits}
-		MinimumSize {0 0}
-		MaximumSize {32767 32767}
-		BackgroundPixmap {}
-		UseBackgroundPixmap {false}
-		AdjustSize {false}
-		ReadPixmapFromData {false}
-		DataVarName {}
-		DataLenName {}
-		minWidthSizeHint {true}
-		minHeightSizeHint {true}
-		maxWidthSizeHint {false}
-		maxHeightSizeHint {true}
-		FocusPolicy {StrongFocus}
-		BackgroundMode {PaletteBackground}
-		FontPropagation {AllChildren}
-		PalettePropagation {AllChildren}
 }
 
 Box_Layout-1{
@@ -375,15 +285,37 @@ Box_Layout-1{
 	Strut {0}
 	Stretch {1}
 }
-Layout_Widget-1.1{
-	Widget {pagebreakabove}
-	BoxStretch {2}
-	Alignment {1}
+Box_Layout-1.1{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
 }
-Layout_Widget-1.2{
+Layout_Widget-1.1.1{
+	Widget {pagebreakabove}
+	BoxStretch {1}
+	Alignment {33}
+}
+Box_Stretch-1.1.2{
+	Stretch {1}
+}
+Box_Layout-1.2{
+	Direction {LeftToRight}
+	Border {5}
+	AutoBorder {5}
+	Name {}
+	Strut {0}
+	Stretch {1}
+}
+Layout_Widget-1.2.1{
 	Widget {keepabove}
-	BoxStretch {2}
-	Alignment {1}
+	BoxStretch {1}
+	Alignment {33}
+}
+Box_Stretch-1.2.2{
+	Stretch {1}
 }
 Box_Layout-1.3{
 	Direction {LeftToRight}
@@ -396,77 +328,88 @@ Box_Layout-1.3{
 Layout_Widget-1.3.1{
 	Widget {abovelabel}
 	BoxStretch {1}
-	Alignment {1}
+	Alignment {33}
 }
-Layout_Widget-1.3.2{
+Box_Stretch-1.3.2{
+	Stretch {1}
+}
+Layout_Widget-1.3.3{
 	Widget {spaceabove}
-	BoxStretch {2}
-	Alignment {36}
+	BoxStretch {1}
+	Alignment {33}
+}
+Box_Stretch-1.3.4{
+	Stretch {1}
 }
 Grid_Layout-1.4{
 	Border {5}
 	AutoBorder {5}
 	Name {}
-	ColumnInfo {1 1}
-	ColumnInfo {3 0}
+	ColumnInfo {5 1}
+	ColumnInfo {5 2}
+	ColumnInfo {5 1}
 	ColumnInfo {5 4}
-	BoxStretch {2}
+	ColumnInfo {5 1}
+	BoxStretch {3}
 }
 Grid_Row-1.4.1{
 	Stretch {1}
 	Spacing {0}
 }
-Layout_Widget-1.4.1.1{
-	Widget {ValueLabel}
-	BoxStretch {1}
-	Alignment {36}
+Grid_Spacer-1.4.1.1{
 }
 Layout_Widget-1.4.1.2{
+	Widget {ValueLabel}
+	BoxStretch {1}
+	Alignment {33}
+}
+Grid_Spacer-1.4.1.3{
+}
+Layout_Widget-1.4.1.4{
 	Widget {spaceabovevalue}
 	BoxStretch {1}
-	Alignment {36}
+	Alignment {33}
 }
-Layout_Widget-1.4.1.3{
-	Widget {spaceabovevalueunits}
-	BoxStretch {1}
-	Alignment {36}
+Grid_Spacer-1.4.1.5{
 }
 Grid_Row-1.4.2{
 	Stretch {1}
 	Spacing {0}
 }
-Layout_Widget-1.4.2.1{
-	Widget {Label_14}
-	BoxStretch {1}
-	Alignment {36}
+Grid_Spacer-1.4.2.1{
 }
 Layout_Widget-1.4.2.2{
+	Widget {Label_14}
+	BoxStretch {1}
+	Alignment {33}
+}
+Grid_Spacer-1.4.2.3{
+}
+Layout_Widget-1.4.2.4{
 	Widget {spaceaboveplus}
 	BoxStretch {1}
-	Alignment {36}
+	Alignment {33}
 }
-Layout_Widget-1.4.2.3{
-	Widget {spaceaboveplusunits}
-	BoxStretch {1}
-	Alignment {36}
+Grid_Spacer-1.4.2.5{
 }
 Grid_Row-1.4.3{
 	Stretch {1}
 	Spacing {0}
 }
-Layout_Widget-1.4.3.1{
-	Widget {aboveminuslabel}
-	BoxStretch {1}
-	Alignment {36}
+Grid_Spacer-1.4.3.1{
 }
 Layout_Widget-1.4.3.2{
+	Widget {aboveminuslabel}
+	BoxStretch {1}
+	Alignment {33}
+}
+Grid_Spacer-1.4.3.3{
+}
+Layout_Widget-1.4.3.4{
 	Widget {spaceaboveminus}
 	BoxStretch {1}
-	Alignment {36}
+	Alignment {33}
 }
-Layout_Widget-1.4.3.3{
-	Widget {spaceaboveminusunits}
-	BoxStretch {1}
-	Alignment {36}
+Grid_Spacer-1.4.3.5{
 }
 }

@@ -1,3 +1,84 @@
+2000-01-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormParagraph.C: update readonly in correct
+	  place
+
+	* FormParagraph.h: remove bogus include
+
+	* FormRef.C: add tooltip for Goto Ref/Back
+
+	* Makefile.am: add library dependencies
+	  add FormDocument
+
+	* citationdlg.h:
+	* citationdlg.C: use setSizeHint(). Derive from QWidget
+
+	* dlg/helpers.C:
+	* dlg/helpers.h: useful widget manipulators
+
+	* dlg/lengthentry.C:
+	* dlg/lengthentry.h: widget for manipulating LyXLengths
+
+	* dlg/Makefile.am:
+	* dlg/moc/Makefile.am:
+	* moc/Makefile.am:
+	* dlg/copyrightdlgdata.C:
+	* dlg/copyrightdlgdata.h:
+	* dlg/docbulletsdlgdata.C:
+	* dlg/docbulletsdlgdata.h:
+	* dlg/docdlgdata.C:
+	* dlg/docdlgdata.h:
+	* dlg/docextradlgdata.C:
+	* dlg/docextradlgdata.h:
+	* dlg/docgeometrydlgdata.C:
+	* dlg/docgeometrydlgdata.h:
+	* dlg/doclanguagedlgdata.C:
+	* dlg/doclanguagedlgdata.h:
+	* dlg/docsettingsdlgdata.C:
+	* dlg/docsettingsdlgdata.h:
+	* dlg/dialogs/doc.dlg:
+	* dlg/dialogs/docbullets.dlg:
+	* dlg/dialogs/docextra.dlg:
+	* dlg/dialogs/docgeometry.dlg:
+	* dlg/dialogs/doclanguage.dlg:
+	* dlg/dialogs/docsettings.dlg:
+	* dlg/dialogs/paraabove.dlg:
+	* dlg/dialogs/parabelow.dlg:
+	* FormDocument.C:
+	* FormDocument.h:
+	* docdlg.h:
+	* docdlg.C:
+		new FormDocument (incomplete)
+
+	* dlg/paraabovedlgdata.C:
+	* dlg/paraabovedlgdata.h:
+	* dlg/parabelowdlgdata.C:
+	* dlg/parabelowdlgdata.h:
+	* dlg/paradlgdata.C:
+	* paradlg.h:
+	* paradlg.C:
+	* parageneraldlg.C:
+	* parageneraldlg.h:
+	* paraextradlg.C: use setSizeHint(). Add tooltips.
+	  use LengthEntry widget.
+
+	* tabstack.C:
+	* tabstack.h: fix drawing problems
+
+	* printdlg.C: small fix to tooltip
+
+	* refdlg.h:
+	* refdlg.C: use setSizeHint(). Derive from QWidget. Add
+	  tooltips.
+
+	* tabcreatedlg.C: add tooltip
+	
+	* tocdlg.h:
+	* tocdlg.C: derive from QWidget. Use setSizeHint()
+
+	* urldlg.h:
+	* urldlg.C: derive from QWidget. Use setSizeHint()
+
 2000-01-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormTabularCreate.C: use LFUN_INSET_TABULAR Dispatch

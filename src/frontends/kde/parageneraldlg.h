@@ -31,7 +31,6 @@ protected slots:
 	void spacebelowHighlighted(int);
 
 private:
-	void createUnits(QComboBox *box);
 	ParaAboveDialogData *abovepage;
 	ParaBelowDialogData *belowpage;
 };

@@ -24,6 +24,8 @@
 #include "refdlg.h"
 #include "debug.h"
 
+#include <qtooltip.h>
+
 using std::endl;
 
 FormRef::FormRef(LyXView *v, Dialogs *d)
@@ -101,11 +103,15 @@ void FormRef::goto_ref()
 			lv_->getLyXFunc()->Dispatch(LFUN_REF_GOTO, dialog_->reference->text());
 			gotowhere=GOTOBACK;
 			dialog_->buttonGoto->setText(_("&Go back"));
+			QToolTip::remove(dialog_->buttonGoto); 
+			QToolTip::add(dialog_->buttonGoto,_("Jump back to original position"));
 			break;
 		case GOTOBACK:
 			lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
 			gotowhere=GOTOREF;
 			dialog_->buttonGoto->setText(_("&Goto reference"));
+			QToolTip::remove(dialog_->buttonGoto); 
+			QToolTip::add(dialog_->buttonGoto,_("Jump to selected reference"));
 			break;
 		}
 }
@@ -117,6 +123,8 @@ void FormRef::updateRefs()
 		lv_->getLyXFunc()->Dispatch(LFUN_REF_BACK);
 		gotowhere = GOTOREF;
 		dialog_->buttonGoto->setText(_("&Goto reference"));
+		QToolTip::remove(dialog_->buttonGoto); 
+		QToolTip::add(dialog_->buttonGoto,_("Jump to selected reference"));
 	}
 
 	dialog_->refs->setAutoUpdate(false);
@@ -182,6 +190,8 @@ void FormRef::update(bool switched)
 	}
 
 	dialog_->buttonGoto->setText(_("&Goto reference"));
+	QToolTip::remove(dialog_->buttonGoto); 
+	QToolTip::add(dialog_->buttonGoto,_("Jump to selected reference"));
 
 	gotowhere = GOTOREF;
 

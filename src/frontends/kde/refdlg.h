@@ -21,7 +21,6 @@
 
 #include "FormRef.h"
 
-#include <qdialog.h>
 #include <qlayout.h>
 #include <qcombobox.h> 
 #include <qcheckbox.h>
@@ -31,7 +30,7 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
-class RefDialog : public QDialog  {
+class RefDialog : public QWidget {
    Q_OBJECT
 public:
 	RefDialog(FormRef *form, QWidget *parent=0, const char *name=0,

@@ -9,13 +9,13 @@ INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 
+libkde_la_DEPENDENCIES = moc/libkdemoc.la dlg/libkdedlg.la dlg/moc/libkdedlgmoc.la
+
 libkde_la_OBJADD = \
 	moc/libkdemoc.la \
 	dlg/libkdedlg.la \
 	dlg/moc/libkdedlgmoc.la \
         ../xforms/FormBase.lo \
-        ../xforms/FormDocument.lo \
-        ../xforms/form_document.lo \
         ../xforms/FormError.lo \
         ../xforms/form_error.lo \
         ../xforms/FormGraphics.lo \
@@ -44,6 +44,8 @@ libkde_la_SOURCES = \
 	FormCitation.h \
 	FormCopyright.C \
 	FormCopyright.h \
+	FormDocument.C \
+	FormDocument.h \
 	FormIndex.C \
 	FormIndex.h \
 	FormParagraph.C \
@@ -62,6 +64,8 @@ libkde_la_SOURCES = \
 	citationdlg.h \
 	copyrightdlg.C \
 	copyrightdlg.h \
+	docdlg.C \
+	docdlg.h \
 	indexdlg.C \
 	indexdlg.h \
 	paradlg.C \
@@ -83,6 +87,7 @@ libkde_la_SOURCES = \
 
 moc/citationdlg_moc.C: citationdlg.C citationdlg.h
 moc/copyrightdlg_moc.C: copyrightdlg.C copyrightdlg.h
+moc/docdlg_moc.C: docdlg.C docdlg.h
 moc/indexdlg_moc.C: indexdlg.C indexdlg.h
 moc/paradlg_moc.C: paradlg.C paradlg.h
 moc/parageneraldlg_moc.C: parageneraldlg.C parageneraldlg.h

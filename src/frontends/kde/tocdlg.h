@@ -30,7 +30,7 @@
 
 #include "FormToc.h"
 
-class TocDialog : public QDialog  {
+class TocDialog : public QWidget {
    Q_OBJECT
 public:
 	TocDialog(FormToc *form, QWidget *parent=0, const char *name=0,

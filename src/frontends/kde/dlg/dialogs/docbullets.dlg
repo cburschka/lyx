@@ -1,0 +1,21 @@
+DlgEdit:v1.2:Dialog:
+Dialog {
+	ClassHeader {}
+	ClassSource {}
+	ClassName {}
+	DataHeader {docbulletsdlgdata.h}
+	DataSource {docbulletsdlgdata.C}
+	DataName {DocBulletsDialogData}
+	WindowBaseClass {QWidget}
+	UseGetText {true}
+	WindowFlags {0}
+}
+WidgetLayout {
+InitialPos {-1 -1}
+Size {545 460}
+MinSize {0 0}
+MaxSize {32767 32767}
+Grid {5}
+
+
+}

@@ -10,7 +10,15 @@
 #include <config.h>
 #include "paraextradlg.h"
 
+#include "dlg/helpers.h"
+
+#include <qtooltip.h>
+
 #include <gettext.h>
+
+#ifdef CXX_WORKING_NAMESPACES
+using kde_helpers::setSizeHint;
+#endif
 
 #define Inherited ParaExtraDialogData
 
@@ -26,6 +34,7 @@ ParaExtraDialog::ParaExtraDialog
 	type->insertItem(_("Indented paragraph"));
 	type->insertItem(_("Minipage"));
 	type->insertItem(_("Wrap text around floats (floatflt)"));
+	setSizeHint(type);
 	
 	widthvalueunits->insertItem(_("Centimetres"));
 	widthvalueunits->insertItem(_("Inches"));
@@ -39,8 +48,11 @@ ParaExtraDialog::ParaExtraDialog
 	widthvalueunits->insertItem(_("Didot points"));
 	widthvalueunits->insertItem(_("Cicero points"));
 	widthvalueunits->insertItem(_("Percent of column"));
+	setSizeHint(widthvalueunits);
+	
+	QToolTip::add(hfillbetween, _("FIXME please !"));
+	QToolTip::add(startnewminipage, _("FIXME please !"));
 }
-
 
 ParaExtraDialog::~ParaExtraDialog()
 {

@@ -161,10 +161,6 @@ private:
 		return VSpace::NONE;
 	}
 
-	void setUnits(QComboBox *box, LyXGlueLength::UNIT unit);
-
-	LyXLength::UNIT getUnits(QComboBox *box) const;
-
 private slots:
 
 	void ok_adaptor(void) {

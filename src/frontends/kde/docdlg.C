@@ -1,0 +1,498 @@
+/*
+ * docdlg.C
+ * (C) 2001 LyX Team
+ * John Levon, moz@compsoc.man.ac.uk
+ */
+
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
+
+#include <config.h>
+
+#include <qtooltip.h>
+
+#include "docdlg.h"
+
+#include "layout.h"
+#include "tex-strings.h"
+#include "bufferparams.h"
+
+#include "dlg/helpers.h"
+
+#include "gettext.h"
+#include "debug.h"
+
+#ifdef CXX_WORKING_NAMESPACES
+using kde_helpers::setSizeHint;
+using kde_helpers::setComboFromStr;
+#endif
+
+using std::endl;
+
+DocDialog::DocDialog(FormDocument *form, QWidget *parent, const char *name, bool, WFlags)
+	: DocDialogData(parent,name), form_(form)
+{
+	setCaption(name);
+
+	settings = new DocSettingsDialogData(this, "settings");
+	extra = new DocExtraDialogData(this, "extra");
+	geometry = new DocGeometryDialogData(this, "geometry");
+	language = new DocLanguageDialogData(this, "language");
+	bullets = new DocBulletsDialogData(this, "bullets");
+	
+	tabstack->addTabPage(settings, _("&Settings"));
+	tabstack->addTabPage(extra, _("&Extra"));
+	tabstack->addTabPage(geometry, _("&Geometry"));
+	tabstack->addTabPage(language, _("&Language"));
+	tabstack->addTabPage(bullets, _("&Bullets"));
+	
+	// document classes
+	for (LyXTextClassList::const_iterator cit = textclasslist.begin();
+		cit != textclasslist.end(); ++cit)
+		settings->docclass->insertItem((*cit).description().c_str());
+	setSizeHint(settings->docclass);
+	
+	settings->pagestyle->insertItem(_("default"));
+	settings->pagestyle->insertItem(_("empty"));
+	settings->pagestyle->insertItem(_("plain"));
+	settings->pagestyle->insertItem(_("headings"));
+	settings->pagestyle->insertItem(_("fancy"));
+	setSizeHint(settings->pagestyle);
+	
+	// available fonts
+	for (int i=0; tex_fonts[i][0]; i++)
+		settings->font->insertItem(tex_fonts[i]);
+	setSizeHint(settings->font);
+
+	settings->fontsize->insertItem(_("default"));
+	settings->fontsize->insertItem(_("10 point"));
+	settings->fontsize->insertItem(_("11 point"));
+	settings->fontsize->insertItem(_("12 point"));
+	setSizeHint(settings->fontsize);
+	
+	settings->linespacing->insertItem(_("single"));
+	settings->linespacing->insertItem(_("1 1/2 spacing"));
+	settings->linespacing->insertItem(_("double"));
+	settings->linespacing->insertItem(_("custom"));
+	setSizeHint(settings->linespacing);
+
+	connect(settings->linespacing, SIGNAL(highlighted(const char *)),
+		this, SLOT(linespacingChanged(const char *)));
+
+	settings->skipspacing->insertItem(_("small"));
+	settings->skipspacing->insertItem(_("medium"));
+	settings->skipspacing->insertItem(_("big"));
+	settings->skipspacing->insertItem(_("custom"));
+	setSizeHint(settings->skipspacing);
+
+	connect(settings->skipspacing, SIGNAL(highlighted(const char *)),
+		this, SLOT(skipspacingChanged(const char *)));
+
+	// ps driver options
+	for (int i = 0; tex_graphics[i][0]; i++)
+		extra->psdriver->insertItem(tex_graphics[i]);
+	setSizeHint(extra->psdriver);
+
+	geometry->papersize->insertItem(_("default"));
+	geometry->papersize->insertItem(_("US letter"));
+	geometry->papersize->insertItem(_("US legal"));
+	geometry->papersize->insertItem(_("US executive"));
+	geometry->papersize->insertItem("A3");
+	geometry->papersize->insertItem("A4");
+	geometry->papersize->insertItem("A5");
+	geometry->papersize->insertItem("B3");
+	geometry->papersize->insertItem("B4");
+	geometry->papersize->insertItem("B5");
+	setSizeHint(geometry->papersize);
+	
+	geometry->margins->insertItem(_("default"));
+	geometry->margins->insertItem(_("A4 small margins"));
+	geometry->margins->insertItem(_("A4 very small margins"));
+	geometry->margins->insertItem(_("A4 very wide margins"));
+	setSizeHint(geometry->margins);
+	
+#ifdef DO_USE_DEFAULT_LANGUAGE
+	language->language->insertItem(_("default"));
+#endif
+	for (Languages::const_iterator cit = languages.begin();
+		cit != languages.end(); ++cit)
+		language->language->insertItem((*cit).second.lang().c_str());
+	setSizeHint(language->language);
+	
+	language->encoding->insertItem(_("default"));
+	language->encoding->insertItem(_("auto"));
+	language->encoding->insertItem(_("latin1"));
+	language->encoding->insertItem(_("latin2"));
+	language->encoding->insertItem(_("latin5"));
+	language->encoding->insertItem(_("koi8-r"));
+	language->encoding->insertItem(_("koi8-u"));
+	language->encoding->insertItem(_("cp866"));
+	language->encoding->insertItem(_("cp1251"));
+	language->encoding->insertItem(_("iso88595"));
+	setSizeHint(language->encoding);
+	
+	language->quotes->insertItem(_("`text'"));
+	language->quotes->insertItem(_("``text''"));
+	language->quotes->insertItem(_("'text'"));
+	language->quotes->insertItem(_("''text''"));
+	language->quotes->insertItem(_(",text`"));
+	language->quotes->insertItem(_(",,text``"));
+	language->quotes->insertItem(_(",text'"));
+	language->quotes->insertItem(_(",,text''"));
+	language->quotes->insertItem(_("<text>"));
+	language->quotes->insertItem(_("«text»"));
+	language->quotes->insertItem(_(">text<"));
+	language->quotes->insertItem(_("»text«"));
+	setSizeHint(language->quotes);
+
+	/* FIXME: bullets */
+	
+	QToolTip::add(settings->pagestyle, _("Specify header + footer style etc"));
+	QToolTip::add(settings->separation, _("FIXME please !"));
+	QToolTip::add(settings->linespacingVal, _("Custom line spacing in line units"));
+	QToolTip::add(settings->extraoptions, _("Additional LaTeX options"));
+	QToolTip::add(extra->floatplacement, _("Specify preferred order for\nplacing floats"));
+	QToolTip::add(extra->sectiondepth, _("How far in the (sub)sections are numbered"));
+	QToolTip::add(extra->tocdepth, _("How detailed the Table of Contents is"));
+	QToolTip::add(extra->psdriver, _("Program to produce PostScript output"));
+	QToolTip::add(extra->amsmath, _("FIXME please !"));
+	QToolTip::add(geometry->headheight, _("FIXME please !"));
+	QToolTip::add(geometry->headsep, _("FIXME please !"));
+	QToolTip::add(geometry->footskip, _("FIXME please !"));
+}
+
+DocDialog::~DocDialog()
+{
+}
+
+void DocDialog::closeEvent(QCloseEvent *e)
+{
+	form_->close();
+	e->accept();
+}
+
+void DocDialog::setReadOnly(bool readonly)
+{
+	/* FIXME */
+	cancel->setText(readonly ? _("&Close") : _("&Cancel"));
+}
+
+void DocDialog::setFromParams(BufferParams const & params)
+{
+	if (!setComboFromStr(settings->docclass, textclasslist.DescOfClass(params.textclass)))
+		lyxerr[Debug::GUI] << "Couldn't set docclass " << textclasslist.DescOfClass(params.textclass) << endl;
+
+	if (!setComboFromStr(settings->font, params.fonts))
+		lyxerr[Debug::GUI] << "Couldn't set font " << params.fonts << endl;
+
+	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
+	
+	// opt_fontsize is a string like "10|11|12"
+	// FIXME: check + 1 ?
+	settings->fontsize->setCurrentItem(tokenPos(tclass.opt_fontsize(), '|', params.fontsize) + 1);
+
+	// "empty|plain|headings|fancy"
+	// FIXME: check + 1 ?
+	settings->pagestyle->setCurrentItem(tokenPos(tclass.opt_pagestyle(), '|', params.pagestyle) + 1);
+	
+	settings->separation->setChecked(params.paragraph_separation == BufferParams::PARSEP_INDENT);
+
+	int item=0;
+
+	switch (params.getDefSkip().kind()) {
+		case VSpace::SMALLSKIP: item = 0; break;
+		case VSpace::MEDSKIP: item = 1; break;
+		case VSpace::BIGSKIP: item = 2; break;
+		case VSpace::LENGTH: item = 3; break;
+		default:
+			lyxerr[Debug::GUI] << "Unknown defskip " << int(params.getDefSkip().kind()) << endl;
+	}
+
+	/* FIXME */ 
+	settings->skipspacing->setCurrentItem(item);
+	//setFromLengthStr(settings->skipspacingVal, settings->skipspacingUnits, params.getDefSkip().asLyXCommand());
+
+	settings->sides->setChecked(params.sides == LyXTextClass::TwoSides);
+	settings->columns->setChecked(params.columns == 2);
+
+	switch (params.spacing.getSpace()) {
+		case Spacing::Default:
+		case Spacing::Single: item = 0; break;
+		case Spacing::Onehalf: item = 1; break;
+		case Spacing::Double: item = 2; break;
+		case Spacing::Other: item = 3; break;
+		default:
+			lyxerr[Debug::GUI] << "Unknown line spacing " << int(params.spacing.getSpace()) << endl;
+	}
+
+	settings->linespacing->setCurrentItem(item);
+	settings->linespacingVal->setEnabled(item == 3);
+	
+	if (item == 3)
+		settings->linespacingVal->setText(tostr(params.spacing.getValue()).c_str());
+	else
+		settings->linespacingVal->setText("");
+
+	if (params.options.empty())
+		settings->extraoptions->setText("");
+	else
+		settings->extraoptions->setText(params.options.c_str());
+
+	// geometry page
+
+	geometry->papersize->setCurrentItem(params.papersize2);
+	
+	geometry->margins->setCurrentItem(params.paperpackage);
+	
+	geometry->portrait->setChecked(params.orientation == BufferParams::ORIENTATION_PORTRAIT);
+	geometry->landscape->setChecked(params.orientation != BufferParams::ORIENTATION_PORTRAIT);
+	
+	geometry->width->setFromLengthStr(params.paperwidth);
+	geometry->height->setFromLengthStr(params.paperheight);
+	geometry->left->setFromLengthStr(params.leftmargin);
+	geometry->right->setFromLengthStr(params.rightmargin);
+	geometry->top->setFromLengthStr(params.topmargin);
+	geometry->bottom->setFromLengthStr(params.bottommargin);
+	geometry->headheight->setFromLengthStr(params.headheight);
+	geometry->headsep->setFromLengthStr(params.headsep);
+	geometry->footskip->setFromLengthStr(params.footskip);
+	
+	// language page
+
+	if (!setComboFromStr(language->language, params.language->lang()))
+		lyxerr[Debug::GUI] << "Couldn't set language " << params.language->lang() << endl;
+	
+	if (!setComboFromStr(language->encoding, params.inputenc))
+		lyxerr[Debug::GUI] << "Couldn't set encoding " << params.inputenc << endl;
+
+	switch (params.quotes_language) {
+		case InsetQuotes::EnglishQ: item = 0; break;
+		case InsetQuotes::SwedishQ: item = 2; break;
+		case InsetQuotes::GermanQ: item = 4; break;
+		case InsetQuotes::PolishQ: item = 6; break;
+		case InsetQuotes::FrenchQ: item = 8; break;
+		case InsetQuotes::DanishQ: item = 10; break;
+		default:
+			lyxerr[Debug::GUI] << "Unknown quote style " << int(params.quotes_language) << endl;
+	}
+
+	if (params.quotes_times == InsetQuotes::DoubleQ)
+		item++;
+
+	language->quotes->setCurrentItem(item);
+	
+	// extra page
+
+	if (!setComboFromStr(extra->psdriver, params.graphicsDriver))
+		lyxerr[Debug::GUI] << "Couldn't set psdriver " << params.graphicsDriver << endl;
+	
+	extra->amsmath->setChecked(params.use_amsmath);
+	extra->sectiondepth->setValue(params.secnumdepth);
+	extra->tocdepth->setValue(params.tocdepth);
+
+	/* FIXME */
+	if (params.float_placement.empty())
+		extra->floatplacement->setText("");
+	else
+		extra->floatplacement->setText(params.float_placement.c_str());
+		
+	/* FIXME: bullets ! */
+}
+
+bool DocDialog::updateParams(BufferParams & params)
+{
+	bool redo = false;
+
+	params.fonts = string(settings->font->currentText());
+	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
+	params.fontsize = token(tclass.opt_fontsize(), '|', settings->fontsize->currentItem() - 1);
+	params.pagestyle = token(tclass.opt_pagestyle(), '|', settings->pagestyle->currentItem() - 1);
+
+	// set and update class
+
+	unsigned int const new_class = settings->docclass->currentItem();
+
+	if (new_class != params.textclass) {
+		if (!form_->changeClass(params, new_class)) {
+			// FIXME: error msg
+			// restore old class
+			if (!setComboFromStr(settings->docclass, textclasslist.DescOfClass(params.textclass)))
+				lyxerr[Debug::GUI] << "Couldn't set docclass " << textclasslist.DescOfClass(params.textclass) << endl;
+		} else
+			redo = true;
+	}
+
+	// paragraph separation, skip or indent
+	// FIXME: what does this do
+
+	BufferParams::PARSEP tmpsep = params.paragraph_separation;
+
+	(settings->separation->isChecked())
+		? params.paragraph_separation = BufferParams::PARSEP_INDENT
+		: params.paragraph_separation = BufferParams::PARSEP_SKIP;
+		
+	redo = (tmpsep != params.paragraph_separation) || redo;
+
+	// the skip spacing
+
+	VSpace tmpskip;
+
+	switch (settings->skipspacing->currentItem()) {
+		case 0: tmpskip = VSpace(VSpace::SMALLSKIP); break;
+		case 1: tmpskip = VSpace(VSpace::MEDSKIP); break;
+		case 2: tmpskip = VSpace(VSpace::BIGSKIP); break;
+		case 3:
+			tmpskip = VSpace(LyXGlueLength("23mm"));
+			/* FIXME: read glue length from skip bits !!! */
+			break;
+		default:
+			lyxerr[Debug::GUI] << "Unknown skip spacing " <<
+				settings->skipspacing->currentItem() << endl;
+	}
+	
+	if (tmpskip != params.getDefSkip()) {
+		redo = true;
+		params.setDefSkip(tmpskip);
+	}
+
+	// columns and sides
+
+	(settings->sides->isChecked())
+		? params.sides = LyXTextClass::TwoSides
+		: params.sides = LyXTextClass::OneSide;
+
+	(settings->columns->isChecked())
+		? params.columns = 2
+		: params.columns = 1;
+
+	// line spacing
+
+	Spacing tmpspacing = params.spacing;
+
+	switch (settings->linespacing->currentItem()) {
+		case 0: params.spacing.set(Spacing::Single); break;
+		case 1: params.spacing.set(Spacing::Onehalf); break;
+		case 2: params.spacing.set(Spacing::Double); break;
+		case 3:
+			params.spacing.set(Spacing::Other, settings->linespacingVal->text());
+			break;
+		default:
+			lyxerr[Debug::GUI] << "Unknown line spacing " <<
+				settings->linespacing->currentItem();
+	}
+
+	if (tmpspacing != params.spacing)
+		redo = true;
+
+	// extra options
+
+	params.options = settings->extraoptions->text();
+		
+	
+	// paper package and margin package
+	params.papersize2 = static_cast<char>(geometry->papersize->currentItem());
+	params.paperpackage = static_cast<char>(geometry->margins->currentItem());
+	if (geometry->landscape->isChecked())
+		params.orientation = BufferParams::ORIENTATION_LANDSCAPE;
+	else
+		params.orientation = BufferParams::ORIENTATION_PORTRAIT;
+
+	params.paperwidth = geometry->width->getLengthStr();
+	params.paperheight = geometry->height->getLengthStr();
+	params.leftmargin = geometry->left->getLengthStr();
+	params.rightmargin = geometry->right->getLengthStr();
+	params.topmargin = geometry->top->getLengthStr();
+	params.bottommargin = geometry->bottom->getLengthStr();
+	params.headheight = geometry->headheight->getLengthStr();
+	params.headsep = geometry->headsep->getLengthStr();
+	params.footskip = geometry->footskip->getLengthStr();
+	
+	/* FIXME: is geometry required for headheight,sep,footskip ? */
+	params.use_geometry =
+		(params.paperwidth != "" ||
+		params.paperheight != "" ||
+		params.leftmargin != "" ||
+		params.rightmargin != "" ||
+		params.topmargin != "" ||
+		params.bottommargin != "");
+
+
+	// language dialog
+
+	InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
+
+	switch (language->quotes->currentItem()) {
+		case 0: case 2: case 4: case 6: case 8: case 10:
+			params.quotes_times = InsetQuotes::SingleQ;
+			break;
+		default:
+			params.quotes_times = InsetQuotes::DoubleQ;
+	}
+
+	switch (language->quotes->currentItem()) {
+		case 0: case 1: lga = InsetQuotes::EnglishQ; break;
+		case 2: case 3: lga = InsetQuotes::SwedishQ; break;
+		case 4: case 5: lga = InsetQuotes::GermanQ; break;
+		case 6: case 7: lga = InsetQuotes::PolishQ; break;
+		case 8: case 9: lga = InsetQuotes::FrenchQ; break;
+		case 10: case 11: lga = InsetQuotes::DanishQ; break;
+		default:
+			lyxerr[Debug::GUI] << "unknown quotes style" <<
+				language->quotes->currentItem() << endl;
+	}
+
+	params.quotes_language = lga;
+
+	/* wow, tongue twister */
+	Language const * old_language = params.language;
+	Language const * new_language = languages.getLanguage(language->language->currentText());
+
+	/* FIXME */
+	if (old_language != new_language
+		&& old_language->RightToLeft() == new_language->RightToLeft()
+		/*&& !lv_->buffer()->isMultiLingual()*/) {
+		//lv_->buffer()->ChangeLanguage(old_language, new_language);
+	}
+	
+	redo = (old_language != new_language) || redo;
+	params.language = new_language;
+
+	params.inputenc = language->encoding->currentText();
+
+	// extra dialog
+
+	params.graphicsDriver = extra->psdriver->currentText();
+	params.use_amsmath = extra->amsmath->isChecked();
+	
+	if (extra->sectiondepth->value() != params.secnumdepth) {
+		redo = true;
+		params.secnumdepth = extra->sectiondepth->value();
+	}
+
+	params.tocdepth = extra->tocdepth->value();
+
+	/* FIXME */
+	params.float_placement = extra->floatplacement->text();
+
+	/* FIXME: bullets */
+	
+	return redo;
+}
+
+void DocDialog::linespacingChanged(const char *sel)
+{
+	bool custom = !strcmp(sel, _("custom"));
+
+	settings->linespacingVal->setEnabled(custom);
+}
+
+void DocDialog::skipspacingChanged(const char *sel)
+{
+	bool custom = !strcmp(sel, _("custom"));
+}

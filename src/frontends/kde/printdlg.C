@@ -33,7 +33,7 @@ PrintDialog::PrintDialog(FormPrint *f, QWidget* parent, const char * name)
 	QToolTip::add(count, _("Number of copies to print"));
 	QToolTip::add(sort, _("Collate multiple copies"));
 	QToolTip::add(printername, _("Printer name"));
-	QToolTip::add(filename, _("Output filename"));
+	QToolTip::add(filename, _("Output filename (PostScript)"));
 	QToolTip::add(browse, _("Select output filename"));
 }
 

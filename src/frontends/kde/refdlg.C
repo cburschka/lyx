@@ -16,8 +16,14 @@
 #include <config.h>
 #include "refdlg.h"
 
+#include "dlg/helpers.h"
+
+#ifdef CXX_WORKING_NAMESPACES
+using kde_helpers::setSizeHint;
+#endif
+
 RefDialog::RefDialog(FormRef *form, QWidget *parent, const char *name, bool, WFlags)
-	: QDialog(parent,name,false), form_(form)
+	: QWidget(parent,name,0), form_(form)
 {
 	setCaption(name);
 
@@ -29,33 +35,33 @@ RefDialog::RefDialog(FormRef *form, QWidget *parent, const char *name, bool, WFl
 	labelrefs = new QLabel(this);
 	labelrefs->setText(_("Available References"));
 	labelrefs->setMargin(5);
-	labelrefs->setMinimumSize(labelrefs->sizeHint());
+	setSizeHint(labelrefs);
 	labelrefs->setMaximumSize(labelrefs->sizeHint());
 
 	refname = new QLineEdit(this);
-	refname->setMinimumSize(refname->sizeHint());
+	setSizeHint(refname);
 	// FIXME: should user be able to edit this ? what's it for ? - jbl 
 	refname->setFocusPolicy(QWidget::NoFocus);
  
 	reference = new QLineEdit(this); 
-	reference->setMinimumSize(reference->sizeHint());
+	setSizeHint(reference);
 	reference->setFocusPolicy(QWidget::NoFocus);
 
 	labelrefname = new QLabel(this);
 	labelrefname->setText(_("Name :"));
 	labelrefname->setMargin(5);
-	labelrefname->setMinimumSize(labelrefname->sizeHint());
+	setSizeHint(labelrefname);
 	labelrefname->setMaximumSize(labelrefname->sizeHint());
 
 	labelreference = new QLabel(this);
 	labelreference->setText(_("Reference :"));
 	labelreference->setMargin(5);
-	labelreference->setMinimumSize(labelreference->sizeHint());
+	setSizeHint(labelreference);
 	labelreference->setMaximumSize(labelreference->sizeHint());
 
 	sort = new QCheckBox(this); 
 	sort->setText(_("Sort"));
-	sort->setMinimumSize(sort->sizeHint());
+	setSizeHint(sort);
 	sort->setMaximumSize(sort->sizeHint());
  
 	type = new QComboBox(this);
@@ -64,39 +70,42 @@ RefDialog::RefDialog(FormRef *form, QWidget *parent, const char *name, bool, WFl
 	type->insertItem(_("Ref on page xxx"));
 	type->insertItem(_("on page xxx"));
 	type->insertItem(_("Pretty reference"));
-	type->setMinimumSize(type->sizeHint());
+	setSizeHint(type);
 	 
 	labeltype = new QLabel(this); 
 	labeltype->setText(_("Reference Type"));
 	labeltype->setMargin(5);
-	labeltype->setMinimumSize(labeltype->sizeHint());
+	setSizeHint(labeltype);
 	labeltype->setMaximumSize(labeltype->sizeHint());
  
 	buttonGoto = new QPushButton(this);
 	buttonGoto->setText(_("&Goto reference"));
-	buttonGoto->setMinimumSize(buttonGoto->sizeHint());
+	setSizeHint(buttonGoto);
 	buttonGoto->setMaximumSize(buttonGoto->sizeHint());
 
 	buttonUpdate = new QPushButton(this);
 	buttonUpdate->setText(_("&Update"));
-	buttonUpdate->setMinimumSize(buttonUpdate->sizeHint());
+	setSizeHint(buttonUpdate);
 	buttonUpdate->setMaximumSize(buttonUpdate->sizeHint());
 
 	buttonOk = new QPushButton(this);
 	buttonOk->setText(_("&OK"));
-	buttonOk->setMinimumSize(buttonOk->sizeHint());
+	setSizeHint(buttonOk);
 	buttonOk->setMaximumSize(buttonOk->sizeHint());
 	buttonOk->setDefault(true);
 
 	buttonCancel = new QPushButton(this);
 	buttonCancel->setText(_("&Cancel"));
-	buttonCancel->setMinimumSize(buttonCancel->sizeHint());
+	setSizeHint(buttonCancel);
 	buttonCancel->setMaximumSize(buttonCancel->sizeHint());
 
 	// tooltips
 
 	QToolTip::add(type,_("Reference as it appears in output"));
 	QToolTip::add(sort,_("Sort references in alphabetical order ?"));
+	QToolTip::add(buttonUpdate,_("Update list of references shown"));
+	QToolTip::add(buttonGoto,_("Jump to reference in document"));
+	QToolTip::add(refname,_("FIXME please !")); 
 
 	// layouts
 
@@ -163,6 +172,8 @@ RefDialog::RefDialog(FormRef *form, QWidget *parent, const char *name, bool, WFl
 	connect(buttonUpdate, SIGNAL(clicked()), this, SLOT(update_adaptor()));
 	connect(buttonGoto, SIGNAL(clicked()), this, SLOT(goto_adaptor())); 
 	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(close_adaptor()));
+	
+	resize(sizeHint());
 }
 
 RefDialog::~RefDialog()

@@ -8,6 +8,9 @@
 #include "tabcreatedlg.h"
 #include "support/lstrings.h"
 
+#include <gettext.h>
+#include <qtooltip.h>
+
 TabularCreateDialog::TabularCreateDialog (FormTabularCreate *form, QWidget *parent, const char* name)
 	: TabularCreateDialogData(parent, name), form_(form)
 {
@@ -19,6 +22,7 @@ TabularCreateDialog::TabularCreateDialog (FormTabularCreate *form, QWidget *pare
 	connect(cols,SIGNAL(valueChanged(int)),table,SLOT(setNumberColumns(int)));
 	connect(table,SIGNAL(colsChanged(unsigned int)),this,SLOT(colsChanged(unsigned int))); 
 	connect(table,SIGNAL(rowsChanged(unsigned int)),this,SLOT(rowsChanged(unsigned int))); 
+	QToolTip::add(table, _("Drag with left mouse button to resize")); 
 }
 
 TabularCreateDialog::~TabularCreateDialog()

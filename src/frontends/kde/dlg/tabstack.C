@@ -1,21 +1,12 @@
 /*
  * tabstack.C
- * (C) 2000 LyX Team
+ * (C) 2001 LyX Team
  * John Levon, moz@compsoc.man.ac.uk
  */
 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
-
 #include "tabstack.h"
 
-#include "qlayout.h" 
+#include "qlayout.h"
 #include "qwidgetstack.h"
 #include "qtabbar.h"
 #include "qpainter.h"
@@ -25,22 +16,76 @@
  */
 
 TabStack::TabStack(QWidget * parent, const char * name)
-	: QWidget(parent,name), tabs(0), stack(0)
+	: QWidget(parent,name), tabs(0), stack(0), topLayout(0)
 {
 	stack = new QWidgetStack(this, "stack");
 	tabs = new QTabBar(this, "tabbar");
 	connect(tabs, SIGNAL(selected(int)), this, SLOT(selected(int)));
-	
-	topLayout = new QHBoxLayout(this, 1);
-
-	layout = new QVBoxLayout();
-	topLayout->addLayout(layout);
-	layout->addWidget(tabs, 0);
-	layout->addWidget(stack, 1);
 }
 
 TabStack::~TabStack()
 {
+}
+
+void TabStack::show()
+{
+	doLayout();
+	QWidget::show();
+}
+
+void TabStack::doLayout()
+{
+	const int margin = 6;
+
+	delete topLayout;
+	topLayout = new QBoxLayout(this, QBoxLayout::Down);
+
+	topLayout->addSpacing(margin);
+
+	QBoxLayout * tmp = new QBoxLayout(QBoxLayout::LeftToRight);
+	topLayout->addLayout(tmp, 0);
+	tmp->addSpacing(margin);
+	tmp->addWidget(tabs, 0);
+	tmp->addStretch(1);
+	tmp->addSpacing(margin + 2);
+
+	tmp = new QBoxLayout(QBoxLayout::LeftToRight);
+	topLayout->addLayout(tmp, 1);
+	tmp->addSpacing(margin + 1);
+	tmp->addWidget(stack, 1);
+	tmp->addSpacing(margin + 2);
+
+	topLayout->addSpacing(margin);
+
+	topLayout->activate();
+}
+
+void TabStack::paintEvent(QPaintEvent *)
+{
+	if (!tabs)
+		return;
+
+	QPainter p;
+	p.begin(this);
+
+	QRect s(stack->geometry());
+
+	QCOORD t = s.top() - 1;
+	QCOORD b = s.bottom() + 2;
+	QCOORD r = s.right() + 2;
+	QCOORD l = s.left() - 1;
+
+	p.setPen(colorGroup().light());
+	p.drawLine(l, t, r - 1, t);
+	p.drawLine(l, t + 1, l, b);
+	p.setPen(black);
+	p.drawLine(r, b, l,b);
+	p.drawLine(r, b-1, r, t);
+	p.setPen(colorGroup().dark());
+	p.drawLine(l+1, b-1, r-1, b-1);
+	p.drawLine(r-1, b-2, r-1, t+1);
+
+	p.end();
 }
 
 int TabStack::addTabPage(QWidget *page, const char *label)
@@ -63,7 +108,7 @@ void TabStack::setTabPageEnabled(int id, bool enable)
 bool TabStack::isTabPageEnabled(int id) const
 {
 	return tabs->isTabEnabled(id);
-} 
+}
 
 void TabStack::setCurrentTabPage(int id)
 {
@@ -80,34 +125,4 @@ void TabStack::selected(int id)
 	if (tabs->currentTab() != id)
 		tabs->setCurrentTab(id);
 	stack->raiseWidget(id);
-}
-
-void TabStack::paintEvent(QPaintEvent *)
-{
-	if (!tabs)
-		return;
-	
-	QPainter p;
-	p.begin(this);
-	QRect geom(stack->geometry());
-	 
-	QCOORD top = geom.top() - 1;
-	QCOORD bottom = geom.bottom() + 2;
-	QCOORD right = geom.right() + 2;
-	QCOORD left = geom.left() - 1;
-
-	p.setPen(white);
-	p.drawLine(left, top, right - 1, top);
-	p.drawLine(left, top + 1, left, bottom);
-	p.setPen(black);
-	p.drawLine(right, bottom, left, bottom);
-	p.drawLine(right, bottom-1, right, top);
-	p.setPen(colorGroup().dark());
-	p.drawLine(left+1, bottom-1, right-1, bottom-1);
-	p.drawLine(right-1, bottom-2, right-1, top+1);
-
-	p.end(); 
-	
-	// FIXME: do this better ?
-	tabs->update();
 }

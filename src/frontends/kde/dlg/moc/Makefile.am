@@ -6,6 +6,12 @@ INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 	${FRONTEND_INCLUDES} ${BOOST_INCLUDES}
 
 libkdedlgmoc_la_SOURCES = copyrightdlgdata_moc.C \
+		docdlgdata_moc.C \
+		docsettingsdlgdata_moc.C \
+		docgeometrydlgdata_moc.C \
+		doclanguagedlgdata_moc.C \
+		docextradlgdata_moc.C \
+		docbulletsdlgdata_moc.C \
 		indexdlgdata_moc.C \
 		paradlgdata_moc.C \
 		parageneraldlgdata_moc.C \
@@ -15,7 +21,8 @@ libkdedlgmoc_la_SOURCES = copyrightdlgdata_moc.C \
 		printdlgdata_moc.C \
 		tabcreatedlgdata_moc.C \
 		emptytable_moc.C \
-		tabstack_moc.C
+		tabstack_moc.C \
+		lengthentry_moc.C
 
 DISTCLEANFILES = $(libkdedlgmoc_la_SOURCES) *.orig *.rej *~ *.bak core
 
@@ -24,6 +31,18 @@ ETAGS_ARGS = --lang=c++
 	$(BUILTSOURCES)
 
 copyrightdlgdata_moc.C: ../copyrightdlgdata.h
+	$(MOC) $< -o $@
+docdlgdata_moc.C: ../docdlgdata.h
+	$(MOC) $< -o $@
+docsettingsdlgdata_moc.C: ../docsettingsdlgdata.h
+	$(MOC) $< -o $@
+docgeometrydlgdata_moc.C: ../docgeometrydlgdata.h
+	$(MOC) $< -o $@
+doclanguagedlgdata_moc.C: ../doclanguagedlgdata.h
+	$(MOC) $< -o $@
+docextradlgdata_moc.C: ../docextradlgdata.h
+	$(MOC) $< -o $@
+docbulletsdlgdata_moc.C: ../docbulletsdlgdata.h
 	$(MOC) $< -o $@
 emptytable_moc.C: ../emptytable.h
 	$(MOC) $< -o $@
@@ -44,4 +63,6 @@ printdlgdata_moc.C: ../printdlgdata.h
 tabcreatedlgdata_moc.C: ../tabcreatedlgdata.h
 	$(MOC) $< -o $@
 tabstack_moc.C: ../tabstack.h
+	$(MOC) $< -o $@
+lengthentry_moc.C: ../lengthentry.h
 	$(MOC) $< -o $@

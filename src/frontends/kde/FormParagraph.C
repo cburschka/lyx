@@ -58,6 +58,11 @@ void FormParagraph::update(bool switched)
 
 	Buffer *buf = lv_->view()->buffer();
 	
+	if (readonly!=buf->isReadonly()) {
+		readonly = buf->isReadonly();
+		dialog_->setReadOnly(readonly);
+	}
+
 	LyXText *text = 0;
 
 	if (lv_->view()->theLockingInset())
@@ -94,11 +99,6 @@ void FormParagraph::update(bool switched)
 			below.unit(), below.plusUnit(), below.minusUnit());
 	} else
 		dialog_->setBelowLength(0.0, 0.0, 0.0, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE);
-
-	if (readonly!=buf->isReadonly()) {
-		readonly = buf->isReadonly();
-		dialog_->setReadOnly(readonly);
-	}
 
 	dialog_->setLabelWidth(text->cursor.par()->GetLabelWidthString().c_str());
 	dialog_->setAlign(align);
@@ -191,10 +191,11 @@ void FormParagraph::show()
 	if (!dialog_->isVisible())
 		h_ = d_->hideBufferDependent.connect(slot(this, &FormParagraph::hide));
 
+	 
 	dialog_->raise();
 	dialog_->setActiveWindow();
-
 	update();
+	 
 	dialog_->show();
 }
 

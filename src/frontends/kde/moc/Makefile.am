@@ -7,6 +7,7 @@ INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 
 libkdemoc_la_SOURCES = citationdlg_moc.C \
 		copyrightdlg_moc.C \
+		docdlg_moc.C \
 		indexdlg_moc.C \
 		paradlg_moc.C \
 		parageneraldlg_moc.C \
@@ -25,6 +26,8 @@ ETAGS_ARGS = --lang=c++
 citationdlg_moc.C: ../citationdlg.h
 	$(MOC) $< -o $@
 copyrightdlg_moc.C: ../copyrightdlg.h
+	$(MOC) $< -o $@
+docdlg_moc.C: ../docdlg.h
 	$(MOC) $< -o $@
 indexdlg_moc.C: ../indexdlg.h
 	$(MOC) $< -o $@

@@ -22,7 +22,6 @@
 // to connect apply() and hide()
 #include "FormCitation.h"
 
-#include <qdialog.h>
 #include <qlistbox.h> 
 #include <qlayout.h>
 #include <qlabel.h>
@@ -31,7 +30,7 @@
 #include <qmultilinedit.h> 
 #include <qpushbutton.h>
 
-class CitationDialog : public QDialog  {
+class CitationDialog : public QWidget {
    Q_OBJECT
 public:
 	CitationDialog(FormCitation *form, QWidget *parent=0, const char *name=0,

@@ -22,7 +22,6 @@
 // to connect apply() and hide()
 #include "FormUrl.h"
 
-#include <qdialog.h>
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qtooltip.h>
@@ -30,7 +29,7 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
-class UrlDialog : public QDialog  {
+class UrlDialog : public QWidget {
    Q_OBJECT
 public:
 	UrlDialog(FormUrl *form, QWidget *parent=0, const char *name=0,

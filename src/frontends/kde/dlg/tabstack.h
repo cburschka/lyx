@@ -20,8 +20,7 @@
 
 class QTabBar;
 class QWidgetStack; 
-class QHBoxLayout;
-class QVBoxLayout;
+class QBoxLayout;
 
 #include "boost/utility.hpp"
 
@@ -47,17 +46,24 @@ public:
 	/// which tab page is currently on top
 	virtual int currentTabPage(void) const;
 
+public slots:
+	/// show the widget 
+	virtual void show(void);
+
 protected slots: 
+	/// a tab page has been selected 
 	virtual void selected(int);
 
-protected:
+	/// paint widget
 	virtual void paintEvent(QPaintEvent *);
-
+ 
 private:
+	/// set up layout
+	void doLayout(void);
+
 	QTabBar *tabs;
 	QWidgetStack *stack;
-	QHBoxLayout *topLayout; 
-	QVBoxLayout *layout;
+	QBoxLayout *topLayout;
 };
 
 #endif

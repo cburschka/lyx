@@ -16,10 +16,17 @@
 #include <config.h>
 #include "support/lstrings.h" 
 
+#include "dlg/helpers.h"
+#include "dlg/lengthentry.h"
+
 #include "paradlg.h"
 
 #include "gettext.h"
 #include "debug.h"
+
+#ifdef CXX_WORKING_NAMESPACES
+using kde_helpers::setSizeHint;
+#endif
 
 using std::endl;
 
@@ -59,16 +66,10 @@ void ParaDialog::setReadOnly(bool readonly)
 	generalpage->belowpage->spacebelow->setEnabled(!readonly);
 	generalpage->abovepage->spaceabovevalue->setEnabled(!readonly);
 	generalpage->belowpage->spacebelowvalue->setEnabled(!readonly);
-	generalpage->abovepage->spaceabovevalueunits->setEnabled(!readonly);
-	generalpage->belowpage->spacebelowvalueunits->setEnabled(!readonly);
 	generalpage->abovepage->spaceaboveplus->setEnabled(!readonly);
 	generalpage->belowpage->spacebelowplus->setEnabled(!readonly);
-	generalpage->abovepage->spaceaboveplusunits->setEnabled(!readonly);
-	generalpage->belowpage->spacebelowplusunits->setEnabled(!readonly);
 	generalpage->abovepage->spaceaboveminus->setEnabled(!readonly);
 	generalpage->belowpage->spacebelowminus->setEnabled(!readonly);
-	generalpage->abovepage->spaceaboveminusunits->setEnabled(!readonly);
-	generalpage->belowpage->spacebelowminusunits->setEnabled(!readonly);
 	generalpage->block->setEnabled(!readonly);
 	generalpage->left->setEnabled(!readonly);
 	generalpage->right->setEnabled(!readonly);
@@ -130,7 +131,7 @@ void ParaDialog::setChecks(bool labove, bool lbelow, bool pabove, bool pbelow, b
 
 void ParaDialog::setSpace(VSpace::vspace_kind kindabove, VSpace::vspace_kind kindbelow, bool keepabove, bool keepbelow)
 {
-	int item;
+	int item=0;
 
 	switch (kindabove) {
 		case VSpace::NONE: item = 0; break;
@@ -155,83 +156,50 @@ void ParaDialog::setSpace(VSpace::vspace_kind kindabove, VSpace::vspace_kind kin
 	generalpage->belowpage->spacebelow->setCurrentItem(item);
 	 
 	generalpage->abovepage->spaceabovevalue->setEnabled(kindabove == VSpace::LENGTH);
-	generalpage->abovepage->spaceabovevalueunits->setEnabled(kindabove == VSpace::LENGTH);
 	generalpage->abovepage->spaceaboveplus->setEnabled(kindabove == VSpace::LENGTH);
-	generalpage->abovepage->spaceaboveplusunits->setEnabled(kindabove == VSpace::LENGTH);
 	generalpage->abovepage->spaceaboveminus->setEnabled(kindabove == VSpace::LENGTH);
-	generalpage->abovepage->spaceaboveminusunits->setEnabled(kindabove == VSpace::LENGTH);
 	generalpage->belowpage->spacebelowvalue->setEnabled(kindbelow == VSpace::LENGTH);
-	generalpage->belowpage->spacebelowvalueunits->setEnabled(kindbelow == VSpace::LENGTH);
 	generalpage->belowpage->spacebelowplus->setEnabled(kindbelow == VSpace::LENGTH);
-	generalpage->belowpage->spacebelowplusunits->setEnabled(kindbelow == VSpace::LENGTH);
 	generalpage->belowpage->spacebelowminus->setEnabled(kindbelow == VSpace::LENGTH);
-	generalpage->belowpage->spacebelowminusunits->setEnabled(kindbelow == VSpace::LENGTH);
 
 	generalpage->abovepage->keepabove->setChecked(keepabove);
 	generalpage->belowpage->keepbelow->setChecked(keepbelow);
-}
-
-void ParaDialog::setUnits(QComboBox *box, LyXLength::UNIT unit)
-{
-	switch (unit) {
-		case LyXLength::CM: box->setCurrentItem(0); break;
-		case LyXLength::IN: box->setCurrentItem(1); break;
-		case LyXLength::PT: box->setCurrentItem(2); break;
-		case LyXLength::MM: box->setCurrentItem(3); break;
-		case LyXLength::PC: box->setCurrentItem(4); break;
-		case LyXLength::EX: box->setCurrentItem(5); break;
-		case LyXLength::EM: box->setCurrentItem(6); break;
-		case LyXLength::SP: box->setCurrentItem(7); break;
-		case LyXLength::BP: box->setCurrentItem(8); break;
-		case LyXLength::DD: box->setCurrentItem(9); break;
-		case LyXLength::CC: box->setCurrentItem(10); break;
-		case LyXLength::MU: box->setCurrentItem(0); break;
-		case LyXLength::UNIT_NONE: box->setCurrentItem(0); break;
-		default:
-			lyxerr[Debug::GUI] << "Unknown unit " << long(unit) << endl;
-	}
 }
 
 void ParaDialog::setAboveLength(float val, float plus, float minus, 
 	LyXLength::UNIT vunit, LyXLength::UNIT punit, LyXLength::UNIT munit)
 {
 	if (vunit==LyXLength::UNIT_NONE) {
-		generalpage->abovepage->spaceabovevalue->setText(""); 
-		generalpage->abovepage->spaceaboveplus->setText(""); 
-		generalpage->abovepage->spaceaboveminus->setText(""); 
-		setUnits(generalpage->abovepage->spaceabovevalueunits, LyXLength::CM);
-		setUnits(generalpage->abovepage->spaceaboveplusunits, LyXLength::CM);
-		setUnits(generalpage->abovepage->spaceaboveminusunits, LyXLength::CM);
-		return;
+		generalpage->abovepage->spaceabovevalue->setValue("");
+		generalpage->abovepage->spaceaboveplus->setValue("");
+		generalpage->abovepage->spaceaboveminus->setValue("");
+	} else { 
+		generalpage->abovepage->spaceabovevalue->setValue(tostr(val));
+		generalpage->abovepage->spaceaboveplus->setValue(tostr(plus));
+		generalpage->abovepage->spaceaboveminus->setValue(tostr(minus));
 	}
-
-	generalpage->abovepage->spaceabovevalue->setText(tostr(val).c_str());
-	generalpage->abovepage->spaceaboveplus->setText(tostr(plus).c_str());
-	generalpage->abovepage->spaceaboveminus->setText(tostr(minus).c_str());
-	setUnits(generalpage->abovepage->spaceabovevalueunits, vunit);
-	setUnits(generalpage->abovepage->spaceaboveplusunits, punit);
-	setUnits(generalpage->abovepage->spaceaboveminusunits, munit);
+ 
+	generalpage->abovepage->spaceabovevalue->setUnits(vunit);
+	generalpage->abovepage->spaceaboveplus->setUnits(punit);
+	generalpage->abovepage->spaceaboveminus->setUnits(munit);
 }
 
 void ParaDialog::setBelowLength(float val, float plus, float minus, 
 	LyXLength::UNIT vunit, LyXLength::UNIT punit, LyXLength::UNIT munit)
 {
 	if (vunit==LyXLength::UNIT_NONE) {
-		generalpage->belowpage->spacebelowvalue->setText(""); 
-		generalpage->belowpage->spacebelowplus->setText(""); 
-		generalpage->belowpage->spacebelowminus->setText(""); 
-		setUnits(generalpage->belowpage->spacebelowvalueunits, LyXLength::CM);
-		setUnits(generalpage->belowpage->spacebelowplusunits, LyXLength::CM);
-		setUnits(generalpage->belowpage->spacebelowminusunits, LyXLength::CM);
-		return;
+		generalpage->belowpage->spacebelowvalue->setValue("");
+		generalpage->belowpage->spacebelowplus->setValue("");
+		generalpage->belowpage->spacebelowminus->setValue("");
+	} else { 
+		generalpage->belowpage->spacebelowvalue->setValue(tostr(val));
+		generalpage->belowpage->spacebelowplus->setValue(tostr(plus));
+		generalpage->belowpage->spacebelowminus->setValue(tostr(minus));
 	}
-
-	generalpage->belowpage->spacebelowvalue->setText(tostr(val).c_str());
-	generalpage->belowpage->spacebelowplus->setText(tostr(plus).c_str());
-	generalpage->belowpage->spacebelowminus->setText(tostr(minus).c_str());
-	setUnits(generalpage->belowpage->spacebelowvalueunits, vunit); 
-	setUnits(generalpage->belowpage->spacebelowplusunits, punit); 
-	setUnits(generalpage->belowpage->spacebelowminusunits, munit); 
+ 
+	generalpage->belowpage->spacebelowvalue->setUnits(vunit);
+	generalpage->belowpage->spacebelowplus->setUnits(punit);
+	generalpage->belowpage->spacebelowminus->setUnits(munit);
 }
 
 void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string percent, int align, 
@@ -242,10 +210,28 @@ void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string pe
 		lyxerr[Debug::GUI] << "percent : $" << percent << "$ widthval " << widthval << " unit " << long(units) << endl;
 		if (percent != "") {
 			extrapage->widthvalue->setText(percent.c_str());
-			extrapage->widthvalueunits->setCurrentItem(12);
+			extrapage->widthvalueunits->setCurrentItem(11);
 		} else {
+			int unit = 0; 
 			extrapage->widthvalue->setText(tostr(widthval).c_str());
-			setUnits(extrapage->widthvalueunits,units);
+			switch (units) {
+				case LyXLength::CM: unit = 0; break;
+				case LyXLength::IN: unit = 1; break;
+				case LyXLength::PT: unit = 2; break;
+				case LyXLength::MM: unit = 3; break;
+				case LyXLength::PC: unit = 4; break;
+				case LyXLength::EX: unit = 5; break;
+				case LyXLength::EM: unit = 6; break;
+				case LyXLength::SP: unit = 7; break;
+				case LyXLength::BP: unit = 8; break;
+				case LyXLength::DD: unit = 9; break;
+				case LyXLength::CC: unit = 10; break;
+				case LyXLength::MU: unit = 0; break;
+				case LyXLength::UNIT_NONE: unit = 0; break;
+				default:
+					lyxerr[Debug::GUI] << "Unknown unit " << long(units) << endl;
+			} 
+			extrapage->widthvalueunits->setCurrentItem(unit);
 		}
 	} else
 		extrapage->widthvalue->setText("");
@@ -290,35 +276,15 @@ void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string pe
 	}
 }
 
-LyXLength::UNIT ParaDialog::getUnits(QComboBox *box) const
-{
-	switch (box->currentItem()) {
-		case 0: return LyXLength::CM;
-		case 1: return LyXLength::IN;
-		case 2: return LyXLength::PT;
-		case 3: return LyXLength::MM;
-		case 4: return LyXLength::PC;
-		case 5: return LyXLength::EX;
-		case 6: return LyXLength::EM;
-		case 7: return LyXLength::SP;
-		case 8: return LyXLength::BP;
-		case 9: return LyXLength::DD;
-		case 10: return LyXLength::CC;
-		default:
-			lyxerr[Debug::GUI] << "Unknown combo choice " << box->currentItem() << endl;
-	}
-	return LyXLength::UNIT_NONE;
-}
-
 LyXGlueLength ParaDialog::getAboveLength() const
 {
 	LyXGlueLength len(
-		strToDbl(generalpage->abovepage->spaceabovevalue->text()),
-		getUnits(generalpage->abovepage->spaceabovevalueunits),
-		strToDbl(generalpage->abovepage->spaceaboveplus->text()),
-		getUnits(generalpage->abovepage->spaceaboveplusunits),
-		strToDbl(generalpage->abovepage->spaceaboveminus->text()),
-		getUnits(generalpage->abovepage->spaceaboveminusunits)
+		generalpage->abovepage->spaceabovevalue->getValue(),
+		generalpage->abovepage->spaceabovevalue->getUnits(),
+		generalpage->abovepage->spaceaboveplus->getValue(),
+		generalpage->abovepage->spaceaboveplus->getUnits(),
+		generalpage->abovepage->spaceaboveminus->getValue(),
+		generalpage->abovepage->spaceaboveminus->getUnits()
 		);
 	
 	return len;
@@ -327,12 +293,12 @@ LyXGlueLength ParaDialog::getAboveLength() const
 LyXGlueLength ParaDialog::getBelowLength() const
 {
 	LyXGlueLength len(
-	 	strToDbl(generalpage->belowpage->spacebelowvalue->text()),
-		getUnits(generalpage->belowpage->spacebelowvalueunits),
-		strToDbl(generalpage->belowpage->spacebelowplus->text()),
-		getUnits(generalpage->belowpage->spacebelowplusunits),
-		strToDbl(generalpage->belowpage->spacebelowminus->text()),
-		getUnits(generalpage->belowpage->spacebelowminusunits)
+		generalpage->belowpage->spacebelowvalue->getValue(),
+		generalpage->belowpage->spacebelowvalue->getUnits(),
+		generalpage->belowpage->spacebelowplus->getValue(),
+		generalpage->belowpage->spacebelowplus->getUnits(),
+		generalpage->belowpage->spacebelowminus->getValue(),
+		generalpage->belowpage->spacebelowminus->getUnits()
 		);
 	
 	return len;
@@ -342,7 +308,24 @@ LyXLength ParaDialog::getExtraWidth() const
 {
 
 	if (extrapage->widthvalueunits->currentItem()!=11) {
-		LyXLength len(strToDbl(extrapage->widthvalue->text()), getUnits(extrapage->widthvalueunits));
+		LyXLength::UNIT unit = LyXLength::CM; 
+		switch (extrapage->widthvalueunits->currentItem()) {
+			case 0: unit = LyXLength::CM; break;
+			case 1: unit = LyXLength::IN; break;
+			case 2: unit = LyXLength::PT; break;
+			case 3: unit = LyXLength::MM; break;
+			case 4: unit = LyXLength::PC; break;
+			case 5: unit = LyXLength::EX; break;
+			case 6: unit = LyXLength::EM; break;
+			case 7: unit = LyXLength::SP; break;
+			case 8: unit = LyXLength::BP; break;
+			case 9: unit = LyXLength::DD; break;
+			case 10: unit = LyXLength::CC; break;
+			case 11: unit = LyXLength::CM; break; 
+			default:
+				lyxerr[Debug::GUI] << "Unknown unit " << extrapage->widthvalueunits->currentItem() << endl;
+		}
+		LyXLength len(strToDbl(extrapage->widthvalue->text()), unit);
 		return len;
 	} else {
 		LyXLength len(0.0, LyXLength::UNIT_NONE);

@@ -10,9 +10,17 @@
 #include <config.h>
 #include "parageneraldlg.h"
 
+#include "dlg/helpers.h"
+
 #include <gettext.h>
 
+#include <qtooltip.h>
+
 #define Inherited ParaGeneralDialogData
+
+#ifdef CXX_WORKING_NAMESPACES
+using kde_helpers::setSizeHint;
+#endif
 
 ParaGeneralDialog::ParaGeneralDialog
 (
@@ -26,8 +34,6 @@ ParaGeneralDialog::ParaGeneralDialog
 	abovepage = new ParaAboveDialogData(this, "abovepage");
 	belowpage = new ParaBelowDialogData(this, "belowpage");
 
-	// FIXME: free punctuation to whoever can make the value
-	// boxes not be overly large
 	spacetab->addTabPage(abovepage, _("&Spacing Above"));
 	spacetab->addTabPage(belowpage, _("Spacing &Below"));
 
@@ -41,6 +47,7 @@ ParaGeneralDialog::ParaGeneralDialog
 	abovepage->spaceabove->insertItem(_("Big skip"));
 	abovepage->spaceabove->insertItem(_("VFill"));
 	abovepage->spaceabove->insertItem(_("Length"));
+	setSizeHint(abovepage->spaceabove); 
 	belowpage->spacebelow->insertItem(_("None"));
 	belowpage->spacebelow->insertItem(_("Defskip"));
 	belowpage->spacebelow->insertItem(_("Small skip"));
@@ -48,29 +55,26 @@ ParaGeneralDialog::ParaGeneralDialog
 	belowpage->spacebelow->insertItem(_("Big skip"));
 	belowpage->spacebelow->insertItem(_("VFill"));
 	belowpage->spacebelow->insertItem(_("Length"));
+	setSizeHint(belowpage->spacebelow); 
+	
+	QToolTip::add(block, _("Alignment of current paragraph")); 
+	QToolTip::add(center, _("Alignment of current paragraph")); 
+	QToolTip::add(left, _("Alignment of current paragraph")); 
+	QToolTip::add(right, _("Alignment of current paragraph")); 
+	QToolTip::add(noindent, _("No indent on first line of paragraph")); 
+	QToolTip::add(labelwidth, _("FIXME please !")); 
+	
+	QToolTip::add(abovepage->pagebreakabove, _("New page above this paragraph"));
+	QToolTip::add(abovepage->keepabove, _("Don't hug margin if at top of page"));
+	QToolTip::add(abovepage->spaceabovevalue, _("Size of extra space above paragraph"));
+	QToolTip::add(abovepage->spaceaboveplus, _("Maximum extra space that can be added"));
+	QToolTip::add(abovepage->spaceaboveminus, _("Minimum space required"));
  
-	createUnits(abovepage->spaceabovevalueunits);
-	createUnits(abovepage->spaceaboveplusunits);
-	createUnits(abovepage->spaceaboveminusunits);
-	createUnits(belowpage->spacebelowvalueunits);
-	createUnits(belowpage->spacebelowplusunits);
-	createUnits(belowpage->spacebelowminusunits);
-}
-
-void ParaGeneralDialog::createUnits(QComboBox *box)
-{
-	// if you change this, remember to change ParaDialog::get/setUnits()
-	box->insertItem(_("Centimetres"));
-	box->insertItem(_("Inches"));
-	box->insertItem(_("Points (1/72.27 inch)"));
-	box->insertItem(_("Millimetres"));
-	box->insertItem(_("Picas"));
-	box->insertItem(_("ex units"));
-	box->insertItem(_("em units"));
-	box->insertItem(_("Scaled points (1/65536 pt)"));
-	box->insertItem(_("Big/PS points (1/72 inch)"));
-	box->insertItem(_("Didot points"));
-	box->insertItem(_("Cicero points"));
+	QToolTip::add(belowpage->pagebreakbelow, _("New page below this paragraph"));
+	QToolTip::add(belowpage->keepbelow, _("Don't hug margin if at bottom of page"));
+	QToolTip::add(belowpage->spacebelowvalue, _("Size of extra space below paragraph"));
+	QToolTip::add(belowpage->spacebelowplus, _("Maximum extra space that can be added"));
+	QToolTip::add(belowpage->spacebelowminus, _("Minimum space required"));
 }
 
 ParaGeneralDialog::~ParaGeneralDialog()
@@ -80,19 +84,13 @@ ParaGeneralDialog::~ParaGeneralDialog()
 void ParaGeneralDialog::spaceaboveHighlighted(int val)
 {
 	abovepage->spaceabovevalue->setEnabled(val == 6);
-	abovepage->spaceabovevalueunits->setEnabled(val == 6);
 	abovepage->spaceaboveplus->setEnabled(val == 6);
-	abovepage->spaceaboveplusunits->setEnabled(val == 6);
 	abovepage->spaceaboveminus->setEnabled(val == 6);
-	abovepage->spaceaboveminusunits->setEnabled(val == 6);
 }
 
 void ParaGeneralDialog::spacebelowHighlighted(int val)
 {
 	belowpage->spacebelowvalue->setEnabled(val == 6);
-	belowpage->spacebelowvalueunits->setEnabled(val == 6);
 	belowpage->spacebelowplus->setEnabled(val == 6);
-	belowpage->spacebelowplusunits->setEnabled(val == 6);
 	belowpage->spacebelowminus->setEnabled(val == 6);
-	belowpage->spacebelowminusunits->setEnabled(val == 6);
 }
