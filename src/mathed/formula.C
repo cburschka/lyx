@@ -56,11 +56,11 @@ namespace {
 	string captureOutput(string const & cmd, string const & data)
 	{
 		string outfile = lyx::tempName(string(), "mathextern");
-		string full =  "echo '" + data + "' | " + cmd + " > " + outfile;
+		string full =  "echo '" + data + "' | (" + cmd + ") > " + outfile;
 		lyxerr << "calling: " << full << "\n";
 		Systemcalls dummy(Systemcalls::System, full, 0);
 		string out = GetFileContents(outfile);
-		lyxerr << "result: " << out << "\n";
+		lyxerr << "result: '" << out << "'\n";
 		return out;
 	}
 
@@ -99,7 +99,10 @@ namespace {
 			string::size_type pos = line.find('^');
 			if (pos == string::npos || pos < 15)
 				break; // caret position not found
-			expr.insert(pos - 15,  "*");
+			pos -= 15; // skip the "on line ..." part
+			if (expr[pos] == '*')
+				break; // two '*' in a row are definitely bad
+			expr.insert(pos,  "*");
 		}
 
 		string full = "latex(" +  extra + '(' + expr + "));";
@@ -116,9 +119,52 @@ namespace {
 	
 	MathArray pipeThroughOctave(string const &, MathArray const & ar)
 	{
-		string out = captureOutput("octave -q", ar.octavize());
-		if (out.size() > 6) // remove 'ans = '
-			out = out.substr(6);
+		string expr = ar.octavize();
+		string out;
+
+		for (int i = 0; i < 100; ++i) { // at most 100 attempts
+			//
+			// try to fix missing '*' the hard way 
+			// parse error:
+			// >>> ([[1 2 3 ];[2 3 1 ];[3 1 2 ]])([[1 2 3 ];[2 3 1 ];[3 1 2 ]])
+			//                                   ^
+			//
+			lyxerr << "checking expr: '" << expr << "'\n";
+ 			out = captureOutput("octave -q 2>&1", expr);
+			lyxerr << "checking out: '" << out << "'\n";
+
+			// leave loop if expression syntax is probably ok
+			if (out.find("parse error:") == string::npos)
+				break;
+
+			// search line with single caret
+			istringstream is(out);
+			string line;
+			while (is) {
+				getline(is, line);
+				lyxerr << "skipping line: '" << line << "'\n";
+				if (line.find(">>> ") != string::npos)
+					break;
+			}
+
+			// found line with error, next line is the one with caret
+			getline(is, line);
+			string::size_type pos = line.find('^');
+			lyxerr << "caret line: '" << line << "'\n";
+			lyxerr << "found caret at pos: '" << pos << "'\n";
+			if (pos == string::npos || pos < 4)
+				break; // caret position not found
+			pos -= 4; // skip the ">>> " part
+			if (expr[pos] == '*')
+				break; // two '*' in a row are definitely bad
+			expr.insert(pos,  "*");
+		}
+
+		if (out.size() < 6)
+			return MathArray();
+
+		// remove 'ans = '
+		out = out.substr(6);
 
 		// parse output as matrix or single number
 		MathAtom at(new MathArrayInset(out));
