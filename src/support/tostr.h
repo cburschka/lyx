@@ -28,6 +28,8 @@ string const tostr(int);
 ///
 string const tostr(unsigned int);
 ///
+string const tostr(long int);
+///
 string const tostr(double);
 ///
 string const tostr(string const & s);

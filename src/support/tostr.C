@@ -18,6 +18,14 @@ string const tostr(unsigned int i)
 }
 
 
+string const tostr(long int i)
+{
+	ostringstream os;
+	os << i;
+	return STRCONV(os.str());
+}
+
+
 string const tostr(double d)
 {
 	ostringstream os;
