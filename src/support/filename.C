@@ -18,7 +18,11 @@
 
 #include <boost/assert.hpp>
 
+#include <map>
+#include <sstream>
 
+
+using std::map;
 using std::string;
 
 
@@ -65,6 +69,15 @@ string const FileName::outputFilename(string const & path) const
 
 string const FileName::mangledFilename() const
 {
+	// We need to make sure that every FileName instance for a given
+	// filename returns the same mangled name.
+    typedef map<string, string> MangledMap;
+	static MangledMap mangledNames;
+	MangledMap::const_iterator const it = mangledNames.find(name_);
+	if (it != mangledNames.end())
+		return (*it).second;
+
+	// Now the real work
 	string mname = os::slashify_path(name_);
 	// Remove the extension.
 	mname = ChangeExtension(name_, string());
@@ -73,7 +86,15 @@ string const FileName::mangledFilename() const
 	// Replace '.' in the file name with '_'
 	mname = subst(mname, ".", "_");
 	// Add the extension back on
-	return ChangeExtension(mname, GetExtension(name_));
+	mname = ChangeExtension(mname, GetExtension(name_));
+	// Prepend a counter to the filename. This is necessary to make
+	// the mangled name unique.
+	static int counter = 0;
+	std::ostringstream s;
+	s << counter++;
+	mname = s.str() + mname;
+	mangledNames[name_] = mname;
+	return mname;
 }
 
 

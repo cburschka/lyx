@@ -46,6 +46,10 @@ public:
 	/** \return a mangled version of the absolute file name,
 	 *  suitable for use in the temp dir when, for example, converting
 	 *  an image file to another format.
+	 *  It is guaranteed that
+	 *  - two different filenames have different mangled names
+	 *  - two FileName instances with the same filename have identical
+	 *    mangled names
 	 */
 	std::string const mangledFilename() const;
 
