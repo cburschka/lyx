@@ -27,7 +27,7 @@ namespace Gtk {
 /**
  * This class implements the dialog to insert/modify urls.
  */
-class GERT : public FormCB<ControlERT> {
+class GERT : public GnomeCB<ControlERT> {
 public:
 	///
 	GERT(ControlERT & c);

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file Dialogs_impl.h
+ * \file qt2/Dialogs_impl.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  * \author Angus Leeming

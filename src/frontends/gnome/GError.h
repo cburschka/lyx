@@ -30,7 +30,7 @@ class TextView;
 /**
  * This class implements the dialog to show error messages.
  */
-class GErrorDialog : public FormCB<ControlError> {
+class GErrorDialog : public GnomeCB<ControlError> {
 public:
 	///
 	GErrorDialog(ControlError & c);

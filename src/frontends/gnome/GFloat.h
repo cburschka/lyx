@@ -30,7 +30,7 @@ namespace Gtk {
 /**
  * This class implements the dialog to modify the LaTeX preamble
  */
-class GFloat : public FormCB<ControlFloat> {
+class GFloat : public GnomeCB<ControlFloat> {
 public:
 	///
 	GFloat(ControlFloat & c);

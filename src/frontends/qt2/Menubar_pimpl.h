@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file Menubar_pimpl.h
+ * \file qt2/Menubar_pimpl.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *

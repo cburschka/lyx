@@ -22,7 +22,7 @@
 #include <gtkmm/button.h>
 
 GTabularCreate::GTabularCreate(ControlTabularCreate & c)
-	: FormCB<ControlTabularCreate>(c, "GTabularCreate")
+	: GnomeCB<ControlTabularCreate>(c, "GTabularCreate")
 {}
 
 

@@ -1,5 +1,5 @@
 /**
- * \file Toolbar_pimpl.C
+ * \file xforms/Toolbar_pimpl.C
  * Copyright 1995 Matthias Ettrich
  * Copyright 1996-1998 Lars Gullik Bjønnes
  * This file is part of LyX, the document processor.

@@ -46,7 +46,7 @@ protected:
 private:
 	/// the owning timer
 	Timeout * owner_;
-	/// xforms id
+	/// QTimer id
 	int timeout_id;
 };
 

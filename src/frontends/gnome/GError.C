@@ -22,7 +22,7 @@
 #include <gtkmm/textview.h>
 
 GErrorDialog::GErrorDialog(ControlError & c)
-	: FormCB<ControlError>(c, "GError")
+	: GnomeCB<ControlError>(c, "GError")
 {}
 
 

@@ -21,7 +21,7 @@
 #include <gtkmm/button.h>
 
 GERT::GERT(ControlERT & c)
-	: FormCB<ControlERT>(c, "GERT")
+	: GnomeCB<ControlERT>(c, "GERT")
 {}
 
 

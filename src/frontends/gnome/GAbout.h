@@ -29,7 +29,7 @@ namespace Gtk {
 /**
  * This class implements the dialog to display the information About LyX
  */
-class GAbout : public FormCB<ControlAboutlyx> {
+class GAbout : public GnomeCB<ControlAboutlyx> {
 public:
 	///
 	GAbout(ControlAboutlyx & c);

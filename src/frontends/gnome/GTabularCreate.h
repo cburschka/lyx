@@ -27,7 +27,7 @@ namespace Gtk {
 /**
  * This class implements the dialog to insert/modify urls.
  */
-class GTabularCreate : public FormCB<ControlTabularCreate> {
+class GTabularCreate : public GnomeCB<ControlTabularCreate> {
 public:
 	///
 	GTabularCreate(ControlTabularCreate & c);

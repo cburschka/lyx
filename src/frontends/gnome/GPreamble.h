@@ -27,7 +27,7 @@ class TextView;
 /**
  * This class implements the dialog to modify the LaTeX preamble
  */
-class GPreamble : public FormCB<ControlPreamble> {
+class GPreamble : public GnomeCB<ControlPreamble> {
 public:
 	///
 	GPreamble(ControlPreamble & c);

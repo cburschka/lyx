@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file sp_ispell.h
+ * \file ispell.h
  * Copyright 2002 the LyX Team
  * Read the file COPYING
  *

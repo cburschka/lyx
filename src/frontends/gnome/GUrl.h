@@ -29,7 +29,7 @@ class Entry;
 /**
  * This class implements the dialog to insert/modify urls.
  */
-class GUrl : public FormCB<ControlUrl> {
+class GUrl : public GnomeCB<ControlUrl> {
 public:
 	///
 	GUrl(ControlUrl & c);

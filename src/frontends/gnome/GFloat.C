@@ -24,7 +24,7 @@
 #include <gtkmm/box.h>
 
 GFloat::GFloat(ControlFloat & c)
-	: FormCB<ControlFloat>(c, "GFloat")
+	: GnomeCB<ControlFloat>(c, "GFloat")
 {}
 
 

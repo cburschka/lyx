@@ -28,7 +28,7 @@ namespace Gtk {
 /**
  * This class implements the dialog to modify the LaTeX preamble
  */
-class GLog : public FormCB<ControlLog> {
+class GLog : public GnomeCB<ControlLog> {
 public:
 	///
 	GLog(ControlLog & c);

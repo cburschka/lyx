@@ -23,7 +23,7 @@
 #include <gtkmm/button.h>
 
 GUrl::GUrl(ControlUrl & c)
-	: FormCB<ControlUrl>(c, "GUrl")
+	: GnomeCB<ControlUrl>(c, "GUrl")
 {}
 
 

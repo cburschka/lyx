@@ -25,7 +25,7 @@
 #include <gtkmm/textview.h>
 
 GAbout::GAbout(ControlAboutlyx & c)
-	: FormCB<ControlAboutlyx>(c, "GAbout")
+	: GnomeCB<ControlAboutlyx>(c, "GAbout")
 {}
 
 

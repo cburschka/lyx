@@ -1,5 +1,5 @@
 /**
- * \file WorkAreaFactory.C
+ * \file xforms/WorkAreaFactory.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *

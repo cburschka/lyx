@@ -23,7 +23,7 @@
 #include <gtkmm/dialog.h>
 
 GLog::GLog(ControlLog & c)
-	: FormCB<ControlLog>(c, "GLog")
+	: GnomeCB<ControlLog>(c, "GLog")
 {}
 
 

@@ -21,7 +21,7 @@
 #include <gtkmm/button.h>
 
 GPreamble::GPreamble(ControlPreamble & c)
-	: FormCB<ControlPreamble>(c, "GPreamble")
+	: GnomeCB<ControlPreamble>(c, "GPreamble")
 {}
 
 

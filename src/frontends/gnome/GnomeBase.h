@@ -97,27 +97,27 @@ T* GnomeBase::getWidget(const string & name) const
  * We chose not to make GnomeBase a template since it has some size and we
  * have no reason to duplicate it by making it a template.
  *
- * Basically the FormCB<Controller> template instantiates GnomeBase and passes
+ * Basically the GnomeCB<Controller> template instantiates GnomeBase and passes
  * the parameters to it and it also adds the controller() method to give us
  * a reference to the controller of the correct type (the type is set by the
  * template parameter).
 */
 template <class Controller>
-class FormCB : public GnomeBase {
+class GnomeCB : public GnomeBase {
 public:
-	FormCB(Controller & c, string const & name);
+	GnomeCB(Controller & c, string const & name);
 protected:
 	Controller & controller();
 };
 
 template <class Controller>
-FormCB<Controller>::FormCB(Controller & c,  string const & name)
+GnomeCB<Controller>::GnomeCB(Controller & c,  string const & name)
 	: GnomeBase(c, name)
 {}
 
 template <class Controller>
 Controller &
-FormCB<Controller>::controller()
+GnomeCB<Controller>::controller()
 {
 	return static_cast<Controller &>(controller_);
 }

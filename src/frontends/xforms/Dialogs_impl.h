@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file Dialogs_impl.h
+ * \file xforms/Dialogs_impl.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  * \author Angus Leeming 

@@ -1,3 +1,20 @@
+2002-09-25  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* FileDialog.C: doxygen fixes.
+
+	* GnomeBase.h: rename template FormCB as GnomeCB to avoid doxygen
+	problems with multiple classes (xforms amd gnome) having the same name.
+
+	* GAbout.[Ch]:
+	* GERT.[Ch]:
+	* GError.[Ch]:
+	* GFloat.[Ch]:
+	* GLog.[Ch]:
+	* GPreamble.[Ch]:
+	* GTabularCreate.[Ch]:
+	* GUrl.[Ch]: associated change.
+
 2002-06-15  Michael A. Koziarski  <michael@koziarski.com>
 
 	* Dialogs.C
