@@ -38,7 +38,8 @@ public:
 		   unsigned int mod, kb_sequence * seq) const;
 
 	/// Given an action, find all keybindings.
-	string const findbinding(int action) const;
+	string const findbinding(int action,
+				 string const & prefix = string()) const;
 private:
 	///
 	struct kb_key {
