@@ -277,12 +277,6 @@ string const InsetInclude::getScreenLabel(Buffer const *) const
 }
 
 
-string const InsetInclude::getRelFileBaseName() const
-{
-	return OnlyFilename(ChangeExtension(params_.cparams.getContents(), string()));
-}
-
-
 string const InsetInclude::getFileName() const
 {
 	return MakeAbsPath(params_.cparams.getContents(),

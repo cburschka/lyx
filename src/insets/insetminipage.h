@@ -81,22 +81,6 @@ public:
 	///
 	bool insetAllowed(Inset::Code) const;
 	///
-	Position pos() const;
-	///
-	void pos(Position);
-	///
-	InnerPosition innerPos() const;
-	///
-	void innerPos(InnerPosition);
-	///
-	LyXLength const & pageHeight() const;
-	///
-	void pageHeight(LyXLength const &);
-	///
-	LyXLength const & pageWidth() const;
-	///
-	void pageWidth(LyXLength const &);
-	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
 	bool needFullRow() const { return false; }

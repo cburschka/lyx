@@ -65,16 +65,6 @@ public:
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
-	string const & type() const;
-	///
-	LyXLength const & pageWidth() const;
-	///
-	void pageWidth(LyXLength const &);
-	///
-	void placement(string const & p);
-	///
-	string const & placement() const;
-	///
 	void addToToc(toc::TocList &, Buffer const *) const;
 	///
 	bool  showInsetDialog(BufferView *) const;

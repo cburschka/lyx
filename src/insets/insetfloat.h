@@ -72,13 +72,7 @@ public:
 	///
 	string const & type() const;
 	///
-	void placement(string const & p);
-	///
-	string const & placement() const;
-	///
 	void wide(bool w, BufferParams const &);
-	///
-	bool wide() const;
 	///
 	void addToToc(toc::TocList &, Buffer const *) const;
 	///

@@ -253,39 +253,6 @@ int InsetWrap::latexTextWidth(BufferView * bv) const
 }
 
 
-string const & InsetWrap::type() const
-{
-	return params_.type;
-}
-
-
-LyXLength const & InsetWrap::pageWidth() const
-{
-	return params_.width;
-}
-
-
-void InsetWrap::pageWidth(LyXLength const & ll)
-{
-	if (ll != params_.width) {
-		params_.width = ll;
-		need_update = FULL;
-	}
-}
-
-
-void InsetWrap::placement(string const & p)
-{
-	params_.placement = p;
-}
-
-
-string const & InsetWrap::placement() const
-{
-	return params_.placement;
-}
-
-
 bool InsetWrap::showInsetDialog(BufferView * bv) const
 {
 	if (!inset.showInsetDialog(bv)) {
@@ -305,7 +272,7 @@ void InsetWrap::addToToc(toc::TocList & toclist, Buffer const * buf) const
 	Paragraph * tmp = inset.paragraph();
 	while (tmp) {
 		if (tmp->layout()->name() == caplayout) {
-			string const name = floatname(type(), buf->params);
+			string const name = floatname(params_.type, buf->params);
 			string const str =
 				tostr(toclist[name].size() + 1)
 				+ ". " + tmp->asString(buf, false);

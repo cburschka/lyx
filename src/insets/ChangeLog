@@ -1,5 +1,16 @@
 2003-03-19  John Levon  <levon@movementarian.org>
 
+	* insetfloat.h:
+	* insetfloat.C:
+	* insetinclude.h:
+	* insetinclude.C:
+	* insetminipage.h:
+	* insetminipage.C:
+	* insetwrap.h:
+	* insetwrap.C: remove unused getter/setters
+
+2003-03-19  John Levon  <levon@movementarian.org>
+
 	* several files: bv->updateInset() doesn't take
 	a bool mark_dirty any more
 

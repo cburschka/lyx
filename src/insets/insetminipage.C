@@ -305,63 +305,6 @@ bool InsetMinipage::insetAllowed(Inset::Code code) const
 }
 
 
-InsetMinipage::Position InsetMinipage::pos() const
-{
-	return params_.pos;
-}
-
-
-void InsetMinipage::pos(InsetMinipage::Position p)
-{
-	if (params_.pos != p) {
-		params_.pos = p;
-		need_update = FULL;
-	}
-}
-
-
-InsetMinipage::InnerPosition InsetMinipage::innerPos() const
-{
-	return params_.inner_pos;
-}
-
-
-void InsetMinipage::innerPos(InsetMinipage::InnerPosition ip)
-{
-	params_.inner_pos = ip;
-}
-
-
-LyXLength const & InsetMinipage::pageHeight() const
-{
-	return params_.height;
-}
-
-
-void InsetMinipage::pageHeight(LyXLength const & ll)
-{
-	if (params_.height != ll) {
-		params_.height = ll;
-		need_update = FULL;
-	}
-}
-
-
-LyXLength const & InsetMinipage::pageWidth() const
-{
-	return params_.width;
-}
-
-
-void InsetMinipage::pageWidth(LyXLength const & ll)
-{
-	if (ll != params_.width) {
-		params_.width = ll;
-		need_update = FULL;
-	}
-}
-
-
 bool InsetMinipage::showInsetDialog(BufferView * bv) const
 {
 	if (!inset.showInsetDialog(bv)) {

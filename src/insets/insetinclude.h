@@ -107,13 +107,8 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 
-	/** Input inserts anything inside a paragraph.
-	    Display can give some visual feedback
-	*/
+	/// take up a whole row if we're not type INPUT
 	bool display() const;
-
-	/// return the filename stub of the included file
-	string const getRelFileBaseName() const;
 
 	/// return true if the file is or got loaded.
 	bool loadIfNeeded() const;

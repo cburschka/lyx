@@ -245,7 +245,7 @@ void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 
 void InsetFloat::validate(LaTeXFeatures & features) const
 {
-	if (contains(placement(), "H")) {
+	if (contains(params_.placement, "H")) {
 		features.require("float");
 	}
 
@@ -347,20 +347,6 @@ string const & InsetFloat::type() const
 }
 
 
-void InsetFloat::placement(string const & p)
-{
-	// FIX: Here we should only allow the placement to be set
-	// if a valid value.
-	params_.placement = p;
-}
-
-
-string const & InsetFloat::placement() const
-{
-	return params_.placement;
-}
-
-
 void InsetFloat::wide(bool w, BufferParams const & bp)
 {
 	params_.wide = w;
@@ -372,12 +358,6 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 		lab += '*';
 
 	setLabel(lab);
-}
-
-
-bool InsetFloat::wide() const
-{
-	return params_.wide;
 }
 
 
