@@ -56,228 +56,209 @@ public:
 	///
 	~MathCursor();
 	///
-	void insert(MathAtom const &);
+	void insert(BufferView & bv, MathAtom const &);
 	///
-	void insert(MathArray const &);
+	void insert(BufferView & bv, MathArray const &);
 	///
-	void insert2(std::string const &);
+	void insert2(BufferView & bv, std::string const &);
 	///
-	void paste(std::string const & data);
+	void paste(BufferView & bv, std::string const & data);
 	/// return false for empty math insets
-	bool erase();
+	bool erase(BufferView & bv);
 	/// return false for empty math insets
-	bool backspace();
+	bool backspace(BufferView & bv);
 	/// called for LFUN_HOME etc
-	bool home(bool sel = false);
+	bool home(BufferView & bv, bool sel = false);
 	/// called for LFUN_END etc
-	bool end(bool sel = false);
+	bool end(BufferView & bv, bool sel = false);
 	/// called for LFUN_RIGHT and LFUN_RIGHTSEL
-	bool right(bool sel = false);
+	bool right(BufferView & bv, bool sel = false);
 	/// called for LFUN_LEFT etc
-	bool left(bool sel = false);
+	bool left(BufferView & bv, bool sel = false);
 	/// called for LFUN_UP etc
-	bool up(bool sel = false);
+	bool up(BufferView & bv, bool sel = false);
 	/// called for LFUN_DOWN etc
-	bool down(bool sel = false);
+	bool down(BufferView & bv, bool sel = false);
 	/// Put the cursor in the first position
-	void first();
+	void first(BufferView & bv);
 	/// Put the cursor in the last position
-	void last();
+	void last(BufferView & bv);
 	/// move to next cell in current inset
-	void idxNext();
+	void idxNext(BufferView & bv);
 	/// move to previous cell in current inset
-	void idxPrev();
+	void idxPrev(BufferView & bv);
 	///
-	void plainErase();
+	void plainErase(BufferView & bv);
 	///
-	void plainInsert(MathAtom const &);
+	void plainInsert(BufferView & bv, MathAtom const & at);
 	///
-	void niceInsert(MathAtom const &);
+	void niceInsert(BufferView & bv, MathAtom const & at);
 	///
-	void niceInsert(std::string const &);
+	void niceInsert(BufferView & bv, std::string const & str);
 
 	/// in pixels from top of screen
-	void setScreenPos(int x, int y);
+	void setScreenPos(BufferView & bv, int x, int y);
 	/// in pixels from top of screen
-	void getScreenPos(int & x, int & y) const;
+	void getScreenPos(BufferView & bv, int & x, int & y) const;
 	/// in pixels from left of screen
-	int targetX() const;
-	/// current inset
-	MathInset * inset() const;
+	int targetX(BufferView & bv) const;
 	/// return the next enclosing grid inset and the cursor's index in it
-	MathGridInset * enclosingGrid(idx_type & idx) const;
+	MathGridInset * enclosingGrid(BufferView & bv, idx_type & idx) const;
 	/// go up to enclosing grid
-	void popToEnclosingGrid();
+	void popToEnclosingGrid(BufferView & bv);
 	/// go up to the hull inset
-	void popToEnclosingHull();
+	void popToEnclosingHull(BufferView & bv);
 	/// go up to the hull inset
-	void popToHere(MathInset const * p);
+	void popToHere(BufferView & bv, MathInset const * p);
 	/// adjust anchor position after deletions/insertions
-	void adjust(pos_type from, difference_type diff);
+	void adjust(BufferView & bv, pos_type from, difference_type diff);
 	///
 	InsetFormulaBase * formula() const;
 	/// current offset in the current cell
-	pos_type pos() const;
-	/// current cell
-	idx_type idx() const;
-	/// size of current cell
-	size_type size() const;
 	///
-	bool script(bool);
+	bool script(BufferView & bv, bool);
 	///
-	bool interpret(char);
+	bool interpret(BufferView & bv, char);
 	/// interpret name a name of a macro
-	void macroModeClose();
+	void macroModeClose(BufferView & bv);
 	/// are we currently typing the name of a macro?
-	bool inMacroMode() const;
+	bool inMacroMode(BufferView & bv) const;
 	/// get access to the macro we are currently typing
-	MathUnknownInset * activeMacro();
+	MathUnknownInset * activeMacro(BufferView & bv);
 	/// get access to the macro we are currently typing
-	MathUnknownInset const * activeMacro() const;
+	MathUnknownInset const * activeMacro(BufferView & bv) const;
 	/// are we currently typing '#1' or '#2' or...?
-	bool inMacroArgMode() const;
+	bool inMacroArgMode(BufferView & bv) const;
 	/// are we in math mode (1), text mode (-1) or unsure?
-	MathInset::mode_type currentMode() const;
+	MathInset::mode_type currentMode(BufferView & bv) const;
 
 	// Local selection methods
 	///
 	bool selection() const;
 	///
-	void selCopy();
+	void selCopy(BufferView & bv);
 	///
-	void selCut();
+	void selCut(BufferView & bv);
 	///
-	void selDel();
+	void selDel(BufferView & bv);
 	/// pastes n-th element of cut buffer
-	void selPaste(size_t n);
+	void selPaste(BufferView & bv, size_t n);
 	///
-	void selHandle(bool);
+	void selHandle(BufferView & bv, bool);
 	///
-	void selStart();
+	void selStart(BufferView & bv);
 	///
-	void selClear();
+	void selClear(BufferView & bv);
 	/// clears or deletes selection depending on lyxrc setting
-	void selClearOrDel();
+	void selClearOrDel(BufferView & bv);
 	/// draws light-blue selection background
 	void drawSelection(PainterInfo & pi) const;
 	/// replace selected stuff with at, placing the former
 	// selection in given cell of atom
-	void handleNest(MathAtom const & at, int cell = 0);
+	void handleNest(BufferView & bv, MathAtom const & at, int cell = 0);
 	/// remove this as soon as LyXFunc::getStatus is "localized"
 	std::string getLastCode() const { return "mathnormal"; }
 	///
 	bool isInside(MathInset const *) const;
 	///
-	char valign() const;
+	char valign(BufferView & bv) const;
 	///
-	char halign() const;
+	char halign(BufferView & bv) const;
 
 	/// make sure cursor position is valid
-	void normalize();
+	void normalize(BufferView & bv);
 	/// mark current cursor trace for redraw
 	void touch();
-	///
-	UpdatableInset * asHyperActiveInset() const;
 
 	/// enter a MathInset
-	void push(MathAtom & par);
+	void push(BufferView & bv, MathAtom & par);
 	/// enter a MathInset from the front
-	void pushLeft(MathAtom & par);
+	void pushLeft(BufferView & bv, MathAtom & par);
 	/// enter a MathInset from the back
-	void pushRight(MathAtom & par);
+	void pushRight(BufferView & bv, MathAtom & par);
 	/// leave current MathInset to the left
-	bool popLeft();
+	bool popLeft(BufferView & bv);
 	/// leave current MathInset to the left
-	bool popRight();
+	bool popRight(BufferView & bv);
 
 	///
-	MathArray & array() const;
+	bool hasPrevAtom(BufferView & bv) const;
 	///
-	bool hasPrevAtom() const;
+	bool hasNextAtom(BufferView & bv) const;
 	///
-	bool hasNextAtom() const;
+	MathAtom const & prevAtom(BufferView & bv) const;
 	///
-	MathAtom const & prevAtom() const;
+	MathAtom & prevAtom(BufferView & bv);
 	///
-	MathAtom & prevAtom();
+	MathAtom const & nextAtom(BufferView & bv) const;
 	///
-	MathAtom const & nextAtom() const;
-	///
-	MathAtom & nextAtom();
+	MathAtom & nextAtom(BufferView & bv);
 
 	/// returns the selection
-	void getSelection(CursorSlice &, CursorSlice &) const;
+	void getSelection(BufferView & bv, CursorSlice &, CursorSlice &) const;
 	/// returns the normalized anchor of the selection
-	CursorSlice normalAnchor() const;
+	CursorSlice normalAnchor(BufferView & bv) const;
 
-	/// reference to the last item of the path, i.e. "The Cursor"
-	CursorSlice & cursor();
-	/// reference to the last item of the path, i.e. "The Cursor"
-	CursorSlice const & cursor() const;
 	/// how deep are we nested?
-	unsigned depth() const;
+	unsigned depth(BufferView & bv) const;
 	/// describe the situation
-	std::string info() const;
+	std::string info(BufferView & bv) const;
 	/// dump selection information for debugging
 	void seldump(char const * str) const;
 	/// dump selection information for debugging
 	void dump(char const * str) const;
 	/// moves on
-	void setSelection(CursorBase const & where, size_type n);
+	void setSelection(BufferView & bv, CursorBase const & where, size_type n);
 	/// grab selection marked by anchor and current cursor
-	std::string grabSelection() const;
+	std::string grabSelection(BufferView & bv) const;
 	/// guess what
-	std::string grabAndEraseSelection();
+	std::string grabAndEraseSelection(BufferView & bv);
 	///
-	void insert(char c);
+	void insert(BufferView & bv, char c);
 	///
-	void insert(std::string const & str);
+	void insert(BufferView & bv, std::string const & str);
 	/// lock/unlock inset
-	void insetToggle();
+	void insetToggle(BufferView & bv);
 
 	/// hack for reveal codes
-	void markInsert();
-	void markErase();
+	void markInsert(BufferView & bv);
+	void markErase(BufferView & bv);
 	/// injects content of a cell into parent
-	void pullArg();
+	void pullArg(BufferView & bv);
 	/// split font inset etc
-	void handleFont(std::string const & font);
+	void handleFont(BufferView & bv, std::string const & font);
 	///
-	DispatchResult
-	dispatch(FuncRequest const & cmd);
+	DispatchResult dispatch(BufferView & bv, FuncRequest const & cmd);
 private:
 	/// moves cursor index one cell to the left
-	bool idxLeft();
+	bool idxLeft(BufferView & bv);
 	/// moves cursor index one cell to the right
-	bool idxRight();
+	bool idxRight(BufferView & bv);
 	/// moves cursor to end of last cell of current line
-	bool idxLineLast();
+	bool idxLineLast(BufferView & bv);
 	/// moves cursor position one cell to the left
-	bool posLeft();
+	bool posLeft(BufferView & bv);
 	/// moves cursor position one cell to the right
-	bool posRight();
+	bool posRight(BufferView & bv);
 	/// moves position somehow up or down
-	bool goUpDown(bool up);
+	bool goUpDown(BufferView & bv, bool up);
 	/// moves position closest to (x, y) in given box
-	bool bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhigh);
+	bool bruteFind(BufferView & bv,
+		int x, int y, int xlow, int xhigh, int ylow, int yhigh);
 	/// moves position closest to (x, y) in current cell
-	void bruteFind2(int x, int y);
+	void bruteFind2(BufferView & bv, int x, int y);
 	/// are we in a nucleus of a script inset?
-	bool inNucleus() const;
+	bool inNucleus(BufferView & bv) const;
 
 	/// erase the selected part and re-sets the cursor
-	void eraseSelection();
+	void eraseSelection(BufferView & bv);
 
 	/// the name of the macro we are currently inputting
-	std::string macroName() const;
+	std::string macroName(BufferView & bv) const;
 	/// where in the curent cell does the macro name start?
-	difference_type macroNamePos() const;
+	difference_type macroNamePos(BufferView & bv) const;
 	/// can we enter the inset?
 	bool openable(MathAtom const &, bool selection) const;
-	/// write access to cursor cell position
-	pos_type & pos();
-	/// write access to cursor cell index
-	idx_type & idx();
 
 	/// pointer to enclsing LyX inset
 	InsetFormulaBase * formula_;
@@ -290,8 +271,6 @@ private:
 	bool selection_;
 	/// are we entering a macro name?
 	bool macromode_;
-	///
-	BufferView * bv_;
 };
 
 extern MathCursor * mathcursor;

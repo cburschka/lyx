@@ -45,7 +45,7 @@ class FuncRequest;
 ///
 struct BufferView::Pimpl : public boost::signals::trackable {
 	///
-	Pimpl(BufferView * bv, LyXView * owner,
+	Pimpl(BufferView & bv, LyXView * owner,
 	      int xpos, int ypos, int width, int height);
 	///
 	Painter & painter() const;
@@ -75,9 +75,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void updateScrollbar();
 	///
 	void scrollDocView(int value);
-	/**
-	 * Wheel mouse scroll, move by multiples of text->defaultRowHeight().
-	 */
+	/// Wheel mouse scroll, move by multiples of text->defaultRowHeight().
 	void scroll(int lines);
 	///
 	typedef boost::shared_ptr<LyXKeySym> LyXKeySymPtr;

@@ -38,8 +38,10 @@ public:
 	/// type for cursor positions within a cell
 	typedef CursorSlice::pos_type pos_type;
 
+	/// create 'empty' cursor. REMOVE ME
+	LCursor();
 	/// create 'empty' cursor
-	explicit LCursor(BufferView * bv);
+	explicit LCursor(BufferView & bv);
 	/// dispatch from innermost inset upwards
 	DispatchResult dispatch(FuncRequest const & cmd);
 	///
@@ -73,6 +75,8 @@ public:
 	void updatePos();
 	/// sets anchor to cursor position
 	void resetAnchor(); 
+	/// sets anchor to cursor position
+	BufferView & bv() const; 
 	///
 	friend std::ostream & operator<<(std::ostream &, LCursor const &);
 public:
@@ -85,11 +89,6 @@ public:
 private:
 	///
 	int cached_y_;
-};
-
-
-class LCursorS
-{
 };
 
 #endif // LYXCURSOR_H

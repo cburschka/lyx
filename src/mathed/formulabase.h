@@ -46,7 +46,7 @@ public:
 	/// what appears in the minibuffer when opening
 	virtual std::string const editMessage() const;
 	///
-	virtual void getCursorPos(int cell, int & x, int & y) const;
+	virtual void getCursorPos(BufferView & bv, int & x, int & y) const;
 	///
 	virtual void getCursorDim(int &, int &) const;
 	/// get the absolute document x,y of the cursor
@@ -54,7 +54,7 @@ public:
 	///
 	virtual void toggleInsetSelection(BufferView * bv);
 	///
-	virtual void insetUnlock(BufferView *);
+	virtual void insetUnlock(BufferView & bv);
 
 	/// To allow transparent use of math editing functions
 	//virtual void status(FuncRequest const &);
@@ -81,7 +81,7 @@ public:
 	///
 	bool display() const;
 	// return the selection as std::string
-	std::string selectionAsString() const;
+	std::string selectionAsString(BufferView & bv) const;
 	///
 	void edit(BufferView * bv, bool);
 	///

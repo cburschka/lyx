@@ -58,7 +58,7 @@ extern BufferList bufferlist;
 
 BufferView::BufferView(LyXView * owner, int xpos, int ypos,
 		       int width, int height)
-	: pimpl_(new Pimpl(this, owner, xpos, ypos, width, height)),
+	: pimpl_(new Pimpl(*this, owner, xpos, ypos, width, height)),
 	  x_target_(0)
 {}
 

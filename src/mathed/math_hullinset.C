@@ -728,7 +728,7 @@ void MathHullInset::doExtern(FuncRequest const & func, BufferView & bv)
 		size_type pos = cur.cell().find_last(eq);
 		MathArray ar;
 		if (mathcursor && mathcursor->selection()) {
-			asArray(mathcursor->grabAndEraseSelection(), ar);
+			asArray(mathcursor->grabAndEraseSelection(bv), ar);
 		} else if (pos == cur.cell().size()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;

@@ -41,8 +41,13 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 }
 
 
-LCursor::LCursor(BufferView * bv)
-	: cursor_(1), anchor_(1), bv_(bv)
+LCursor::LCursor()
+	: cursor_(1), anchor_(1), bv_(0)
+{}
+
+
+LCursor::LCursor(BufferView & bv)
+	: cursor_(1), anchor_(1), bv_(&bv)
 {}
 
 
@@ -153,7 +158,7 @@ LyXText * LCursor::innerText() const
 void LCursor::updatePos()
 {
 	if (cursor_.size() > 1)
-		cached_y_ = bv_->top_y() + innerInset()->y();
+		cached_y_ = bv_->top_y() + cursor_.back().inset()->y();
 }
 
 
@@ -165,8 +170,9 @@ void LCursor::getDim(int & asc, int & desc) const
 		Row const & row = *txt->cursorRow();
 		asc = row.baseline();
 		desc = row.height() - asc;
-	} else
+	} else {
 		innerInset()->getCursorDim(asc, desc);
+	}
 }
 
 

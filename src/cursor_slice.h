@@ -55,6 +55,8 @@ public:
 	///
 	explicit CursorSlice(InsetBase *);
 
+	/// the current inset
+	InsetBase * inset() const { return inset_; }
 	/// set the paragraph that contains this cursor
 	void idx(idx_type idx);
 	/// return the paragraph this cursor is in
@@ -75,6 +77,12 @@ public:
 	pos_type & pos();
 	/// return the last position within the paragraph
 	pos_type lastpos() const;
+	/// return the number of embedded cells
+	size_t nargs() const;
+	/// return the number of embedded cells
+	size_t ncols() const;
+	/// return the number of embedded cells
+	size_t nrows() const;
 	/// return the grid row of the current cell
 	row_type row() const;
 	/// return the grid row of the current cell

@@ -150,18 +150,14 @@ bool string2font(string const & data, LyXFont & font, bool & toggle)
 
 bool changeDepthAllowed(BufferView * bv, LyXText * text, DEPTH_CHANGE type)
 {
-	if (!bv->available() || !text)
-		return false;
-
-	return text->changeDepthAllowed(type);
+	return bv->available() && text && text->changeDepthAllowed(type);
 }
 
 
 void changeDepth(BufferView * bv, LyXText * text, DEPTH_CHANGE type)
 {
-	if (!bv->available() || !text)
-		return;
-	text->changeDepth(type);
+	if (bv->available() && text)
+		text->changeDepth(type);
 }
 
 
@@ -172,7 +168,7 @@ string const currentState(BufferView * bv)
 		return string();
 
 	if (mathcursor)
-		return mathcursor->info();
+		return mathcursor->info(*bv);
 
 	ostringstream state;
 

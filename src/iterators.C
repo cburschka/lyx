@@ -401,9 +401,7 @@ ParIterator::ParIterator(PosIterator const & pos)
 
 void ParIterator::lockPath(BufferView * bv) const
 {
-	bv->fullCursor() = LCursor(bv);
-	int last = size() - 1;
-#warning this seems to create just one entry for InsetTabulars
-	for (int i = 0; i < last; ++i)
+	bv->fullCursor() = LCursor(*bv);
+	for (int i = 0, last = size() - 1; i < last; ++i)
 		(*pimpl_->positions[i].it)->inset->edit(bv, true);
 }

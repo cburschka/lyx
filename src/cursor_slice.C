@@ -45,6 +45,18 @@ void CursorSlice::idx(idx_type idx)
 }
 
 
+size_t CursorSlice::nargs() const
+{
+	return inset_->nargs();
+}
+
+
+size_t CursorSlice::ncols() const
+{
+	return inset_->ncols();
+}
+
+
 CursorSlice::idx_type CursorSlice::idx() const
 {
 	return idx_;

@@ -111,9 +111,9 @@ boost::signals::connection lostcon;
 } // anon namespace
 
 
-BufferView::Pimpl::Pimpl(BufferView * bv, LyXView * owner,
+BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
 	     int xpos, int ypos, int width, int height)
-	: bv_(bv), owner_(owner), buffer_(0), cursor_timeout(400),
+	: bv_(&bv), owner_(owner), buffer_(0), cursor_timeout(400),
 	  using_xterm_cursor(false), cursor_(bv)
 {
 	xsel_cache_.set = false;
@@ -160,13 +160,20 @@ void BufferView::Pimpl::connectBuffer(Buffer & buf)
 	if (errorConnection_.connected())
 		disconnectBuffer();
 
-	errorConnection_ = buf.error.connect(boost::bind(&BufferView::Pimpl::addError, this, _1));
-	messageConnection_ = buf.message.connect(boost::bind(&LyXView::message, owner_, _1));
-	busyConnection_ = buf.busy.connect(boost::bind(&LyXView::busy, owner_, _1));
-	titleConnection_ = buf.updateTitles.connect(boost::bind(&LyXView::updateWindowTitle, owner_));
-	timerConnection_ = buf.resetAutosaveTimers.connect(boost::bind(&LyXView::resetAutosaveTimer, owner_));
-	readonlyConnection_ = buf.readonly.connect(boost::bind(&BufferView::Pimpl::showReadonly, this, _1));
-	closingConnection_ = buf.closing.connect(boost::bind(&BufferView::Pimpl::buffer, this, (Buffer *)0));
+	errorConnection_ =
+		buf.error.connect(boost::bind(&BufferView::Pimpl::addError, this, _1));
+	messageConnection_ =
+		buf.message.connect(boost::bind(&LyXView::message, owner_, _1));
+	busyConnection_ =
+		buf.busy.connect(boost::bind(&LyXView::busy, owner_, _1));
+	titleConnection_ =
+		buf.updateTitles.connect(boost::bind(&LyXView::updateWindowTitle, owner_));
+	timerConnection_ =
+		buf.resetAutosaveTimers.connect(boost::bind(&LyXView::resetAutosaveTimer, owner_));
+	readonlyConnection_ =
+		buf.readonly.connect(boost::bind(&BufferView::Pimpl::showReadonly, this, _1));
+	closingConnection_ =
+		buf.closing.connect(boost::bind(&BufferView::Pimpl::buffer, this, (Buffer *)0));
 }
 
 
@@ -872,7 +879,7 @@ void BufferView::Pimpl::trackChanges()
 }
 
 #warning remove me
-LCursor theTempCursor(0);
+LCursor theTempCursor;
 
 namespace {
 
@@ -881,7 +888,7 @@ namespace {
 		lyxerr << "insetFromCoords" << endl;
 		LyXText * text = bv->text();
 		InsetOld * inset = 0;
-		theTempCursor = LCursor(bv);
+		theTempCursor = LCursor(*bv);
 		while (true) {
 			InsetOld * const inset_hit = text->checkInsetHit(x, y);
 			if (!inset_hit) {

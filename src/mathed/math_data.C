@@ -403,6 +403,7 @@ void MathArray::notifyCursorLeaves()
 {
 	// do not recurse!
 
+/*
 	// remove base-only "scripts"
 	for (pos_type i = 0; i + 1 < size(); ++i) {
 		MathScriptInset * p = operator[](i).nucleus()->asScriptInset();
@@ -424,5 +425,5 @@ void MathArray::notifyCursorLeaves()
 			mathcursor->adjust(i, -1);
 		}
 	}
-
+*/
 }

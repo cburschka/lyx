@@ -71,6 +71,17 @@ public:
 	/// Appends \c list with all labels found within this inset.
 	virtual void getLabelList(Buffer const &,
 				  std::vector<std::string> & /* list */) const {}
+	/// last drawn position for 'important' insets
+	virtual int x() const { return 0; }
+	/// last drawn position for 'important' insets
+	virtual int y() const { return 0; }
+ 
+ 	/// number of embedded cells
+ 	virtual size_t nargs() const { return 0; }
+ 	/// number of rows in gridlike structures
+ 	virtual size_t nrows() const { return 0; }
+ 	/// number of columns in gridlike structures
+ 	virtual size_t ncols() const { return 0; }
 protected:
 	// the real dispatcher
 	virtual
