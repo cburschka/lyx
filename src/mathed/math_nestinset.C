@@ -443,7 +443,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.autocorrect() = false;
 		cur.clearTargetX();
 		cur.macroModeClose();
-		else if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
+		if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
 			cur.pushLeft(*cur.nextAtom().nucleus());
 			cur.inset().idxFirst(cur);
 		} else if (cur.posRight() || idxRight(cur)
