@@ -1113,7 +1113,6 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_UP_PARAGRAPH:
 	case LFUN_UP_PARAGRAPHSEL:
 	case LFUN_BACKSPACE:
-	case LFUN_DELETE:
 	case LFUN_HOME:
 	case LFUN_HOMESEL:
 	case LFUN_END:
@@ -1147,6 +1146,8 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_CUT:
 		if (!copySelection(bv))
 			break;
+		// no break here!
+	case LFUN_DELETE:
 		setUndo(bv, Undo::DELETE,
 			bv->text->cursor.par(),
 			bv->text->cursor.par()->next());

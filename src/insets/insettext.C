@@ -1272,7 +1272,7 @@ InsetText::localDispatch(BufferView * bv,
 			bv->setState();
 			if (lyxrc.auto_region_delete) {
 				if (lt->selection.set()) {
-					lt->cutSelection(bv, false);
+					lt->cutSelection(bv, false, false);
 				}
 			}
 			lt->clearSelection();
@@ -1343,7 +1343,7 @@ InsetText::localDispatch(BufferView * bv,
 		setUndo(bv, Undo::DELETE,
 			lt->cursor.par(), lt->cursor.par()->next());
 		if (lt->selection.set())
-			lt->cutSelection(bv);
+			lt->cutSelection(bv, true, false);
 		else
 			lt->backspace(bv);
 		updwhat = CURSOR_PAR;
@@ -1355,7 +1355,7 @@ InsetText::localDispatch(BufferView * bv,
 		setUndo(bv, Undo::DELETE,
 			lt->cursor.par(), lt->cursor.par()->next());
 		if (lt->selection.set()) {
-			lt->cutSelection(bv);
+			lt->cutSelection(bv, true, false);
 		} else {
 			lt->Delete(bv);
 		}
