@@ -22,10 +22,6 @@ TEMPL = templates/*.lyx
 TEXSUPPORT = tex/*.cls tex/*.sty
 UI = ui/*.ui
 
-configure: configure.m4
-	$(M4) $< > $@
-	$(CHMOD) 755 $@
- 
 LIBINSTFILES = $(BIND) $(CLIPART) $(DOCINST) $(EXAMPLES) $(HELP) $(IMAGES) \
 	$(KBD) $(LAYOUT) $(TEMPL) $(TEXSUPPORT) $(UI)
 
@@ -41,7 +37,14 @@ LYXLIBDIRS = bind clipart doc examples help images kbd layouts scripts \
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
 	external_templates $(LYXLIBDIRS) build-listerrors \
-	encodings languages symbols configure.m4
+	encodings languages symbols configure configure.m4
+
+$(srcdir)/configure: $(srcdir)/configure.m4
+	$(M4) $< > $@
+	$(CHMOD) 755 $@
+
+lyxrc.defaults: $(srcdir)/configure
+	$<
 
 libinstalldirs:
 	for dir in $(LYXLIBDIRS) ; do \

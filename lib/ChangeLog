@@ -1,3 +1,12 @@
+2002-03-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* configure: removed from cvs
+
+	* .cvsignore: add configure
+
+	* Makefile.am: set up automatic creation and execution of
+	configure script.
+
 2002-03-05  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* CREDITS: document that Martin Vermeer is also a very good bug
