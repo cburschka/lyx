@@ -1054,6 +1054,18 @@ Paragraph::depth_type Paragraph::getDepth() const
 }
 
 
+Paragraph::depth_type Paragraph::getMaxDepthAfter(Buffer const * buffer) const
+{
+	const bool isenv = textclasslist.Style(buffer->params.textclass,
+					       getLayout()).isEnvironment();
+
+	if (isenv)
+		return params().depth() + 1;
+	else
+		return params().depth();
+
+}
+
 char Paragraph::getAlign() const
 {
 	return params().align();

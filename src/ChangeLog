@@ -1,5 +1,10 @@
 2002-02-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* paragraph.C (getMaxDepthAfter): new method. The maximal depth
+	that the paragraph following this one can have.
+
+	* text2.C (incDepth): use Paragraph::getMaxDepthAfter
+
 	* vspace.C (asLatexCommand): fix bogus gcc warning
 
 	* Makefile.am (lyx_SOURCES): remove vms_defines.h

@@ -221,8 +221,10 @@ public:
 	lyx::layout_type getLayout() const;
 	///
 	char getAlign() const;
-	///
+	/// The nesting depth of a paragraph
 	depth_type getDepth() const;
+	/// The maximal possible depth of a paragraph after this one
+	depth_type getMaxDepthAfter(Buffer const *) const;
 	///
 	void setLayout(lyx::layout_type new_layout);
 	///

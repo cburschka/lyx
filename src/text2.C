@@ -641,19 +641,10 @@ void  LyXText::incDepth(BufferView * bview)
 					cursor.par()->getLayout()).labeltype != LABEL_BIBLIO) {
 			Paragraph * prev = cursor.par()->previous();
 
-			if (prev) { 
-				const int depth_diff
-					= prev->getDepth() - cursor.par()->getDepth();
-				// go deeper only if 
-				// (1) the previous para is already
-				//     deeper (depth_diff > 0) 
-				// (2) the previous para is a
-				//     list-environment at the same
-				//     depth as this para. 
-				if (depth_diff > 0 || (depth_diff > -1
-				    && textclasslist.Style(bview->buffer()->params.textclass,
-							   prev->getLayout()).isEnvironment())) {
-					cursor.par()->params().depth(cursor.par()->params().depth() + 1);
+			if (prev) {
+				if (cursor.par()->getDepth()
+				    < prev->getMaxDepthAfter(bview->buffer())){
+					cursor.par()->params().depth(cursor.par()->getDepth() + 1);
 					anything_changed = true;
 				}
 			}
