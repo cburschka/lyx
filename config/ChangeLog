@@ -1,3 +1,8 @@
+2002-06-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* xforms.m4 (LYX_USE_XFORMS_IMAGE_LOADER): fix and simplify the
+	check for flimage.h header.
+
 2002-06-07  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* xforms.m4 (LYX_USE_XFORMS_IMAGE_LOADER): test for jpeg library

@@ -88,19 +88,7 @@ if test $lyx_use_xforms_image_loader = yes ; then
   AC_DEFINE(USE_XFORMS_IMAGE_LOADER, 1, 
             [Define if you want to use xforms built-in image loader])
   AC_CHECK_FUNCS(flimage_enable_ps flimage_enable_jpeg)
-  AC_CHECK_HEADER(flimage.h,[
-    ac_cv_header_flimage_h=yes
-    lyx_cv_flimage_h_location="<flimage.h>"],
-    [AC_CHECK_HEADER(X11/flimage.h,[
-      ac_cv_header_flimage_h=yes
-      lyx_cv_flimage_h_location="<X11/flimage.h>"],
-      ac_cv_header_flimage_h=no)])
-  if test $ac_cv_header_flimage_h = yes ; then
-    AC_DEFINE(HAVE_FLIMAGE_H, 1, [Define if you have the <flimage.h> header file.])
-    AC_DEFINE_UNQUOTED(FLIMAGE_H_LOCATION, $lyx_cv_flimage_h_location, 
-      [define this to the location of flimage.h to be used with #include, e.g. <flimage.h>
-      ])
-  fi
+  AC_CHECK_HEADERS(flimage.h X11/flimage.h, break)
 fi
 
 ### If the gui cannot load images itself, then we default to the

@@ -557,7 +557,7 @@ namespace {
 string const convertTo7chars(string const & input)
 {
 	string::size_type size = input.size();
-	if (size != 13 && size != 10 && size != 4)
+	if (size != 13 && size != 10 && size != 9 && size != 4)
 		// Can't deal with it.
 		return input;
 
@@ -577,6 +577,9 @@ string const convertTo7chars(string const & input)
 		format.erase(3, 1);
 		format.erase(5, 1);
 		format.erase(7, 1);
+		break;
+	case 9: // 
+		format.erase(7);
 		break;
 	case 4: // #rgb
 		format.insert(2, 1, '0');

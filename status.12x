@@ -60,6 +60,8 @@ What's new
 - fix the default tgif format entry to use .obj as file extension and
   not .tgif
 
+- fix reading of xpm files produced by some versions of imagemagick
+
 - fix interaction between sixpack and LyX via lyxserver
 
 - fix command line crash and give useful exit status on some errors

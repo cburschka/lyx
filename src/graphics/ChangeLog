@@ -1,3 +1,8 @@
+2002-06-10  Herbert Voss  <voss@lyx.org>
+
+	* GraphicsImageXPM.C (convertTo7chars): get another special color
+	format from convert work in the right way
+
 2002-06-06  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsImageXPM.C (rotate): rotate in the same sense as xdvi!
