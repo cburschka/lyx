@@ -514,10 +514,8 @@ fi
 SEARCH_PROG([for an TGIF -> EPS/PPM converter], TGIF, tgif)
 if test "$TGIF" = "tgif"; then
 cat >>$outfile <<EOF
-\\converter tgif eps "tgif -print -eps \$\$i" ""
-\\converter tgif pdf "tgif -print -pdf \$\$i" ""
-\\converter tgif png "tgif -print -png \$\$i" ""
-\\converter tgif ppm "tgif -print -stdout -xpm \$\$i | xpmtoppm > \$\$o" ""
+\\converter tgif eps "tgif -stdout -print -color -eps \$\$i > \$\$o" ""
+\\converter tgif png "tgif -stdout -print -color -xpm \$\$i | xpmtoppm | pnmtopng > \$\$o" ""
 EOF
 fi
 
