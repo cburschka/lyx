@@ -18,6 +18,7 @@
 #include "form_bibtex.h"
 #include "gettext.h"
 #include "debug.h"
+#include "support/lstrings.h"
 
 typedef FormCB<ControlBibtex, FormDB<FD_form_bibtex> > base_class;
 

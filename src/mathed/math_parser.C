@@ -47,6 +47,7 @@
 #include "debug.h"
 #include "mathed/support.h"
 #include "lyxlex.h"
+#include "support/lstrings.h"
 
 using std::istream;
 using std::endl;

@@ -32,6 +32,7 @@
 #include "support/LOstream.h"
 #include "support/lyxlib.h"
 #include "support/syscall.h"
+#include "support/lstrings.h"
 #include "LyXView.h"
 #include "Painter.h"
 #include "lyxrc.h"

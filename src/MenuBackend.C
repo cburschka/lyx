@@ -30,6 +30,7 @@
 #include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/lyxfunctional.h"
+#include "support/lstrings.h"
 
 extern LyXAction lyxaction;
 extern LastFiles * lastfiles; 
@@ -76,6 +77,16 @@ MenuItem::MenuItem(Kind kind, string const & label,
 		submenu_ = command;
 		break;
 	}
+}
+
+string const MenuItem::label() const 
+{ 
+	return token(label_, '|', 0); 
+}
+
+string const MenuItem::shortcut() const
+{ 
+	return token(label_, '|', 1); 
 }
 
 
@@ -234,7 +245,6 @@ void Menu::checkShortcuts() const
 		}
 	}
 }
-
 
 namespace {
 

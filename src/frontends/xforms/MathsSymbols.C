@@ -17,8 +17,8 @@
 #endif
 
 #include "support/LAssert.h" 
+#include "support/lstrings.h"
 #include "debug.h"
-
 #include "MathsSymbols.h"
 #include "FormMathsPanel.h"
  

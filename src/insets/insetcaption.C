@@ -22,6 +22,7 @@
 #include "insets/insetfloat.h"
 #include "debug.h"
 #include "gettext.h"
+#include "support/lstrings.h"
 
 using std::ostream;
 using std::endl;

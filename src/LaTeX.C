@@ -28,6 +28,7 @@
 #include "support/path.h"
 #include "support/LRegex.h"
 #include "support/LSubstring.h"
+#include "support/lstrings.h"
 #include "bufferlist.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h"

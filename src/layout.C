@@ -25,6 +25,7 @@
 #include "gettext.h"
 #include "support/LAssert.h"
 #include "support/lyxfunctional.h"
+#include "support/lstrings.h"
 
 using std::pair;
 using std::make_pair;

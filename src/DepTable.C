@@ -20,6 +20,7 @@
 #include "DepTable.h"
 #include "support/lyxlib.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include <fstream>
 #include "debug.h"
 

@@ -35,6 +35,7 @@
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "lyx_gui_misc.h"
 #include "texrow.h"
 #include "support/lyxmanip.h"

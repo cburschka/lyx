@@ -22,6 +22,7 @@
 #include "bmtable.h"
 #include "debug.h"
 #include "mathed/symbol_def.h"
+#include "support/lstrings.h"
 #include "lyxfunc.h"
 
 #include "delim.xbm"

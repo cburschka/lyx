@@ -28,6 +28,7 @@
 #include "support/syscall.h"
 #include "support/syscontr.h"
 #include "support/path.h"
+#include "support/lstrings.h"
 #include "gettext.h"
 
 using std::ifstream;

@@ -22,6 +22,7 @@
 #include "bufferparams.h"
 #include "layout.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "FloatList.h"
 #include "language.h"
 

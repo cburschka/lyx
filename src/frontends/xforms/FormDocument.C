@@ -31,6 +31,7 @@
 #include "vspace.h"
 #include "bmtable.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "language.h"
 #include "LyXView.h"
 #include "BufferView.h"

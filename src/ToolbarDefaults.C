@@ -20,6 +20,7 @@
 #include "lyxlex.h"
 #include "debug.h"
 #include "lyxlex.h"
+#include "support/lstrings.h"
 
 using std::endl;
 

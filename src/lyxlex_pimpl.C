@@ -8,6 +8,7 @@
 #include "lyxlex_pimpl.h"
 #include "support/lyxalgo.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "debug.h"
 
 using std::sort;

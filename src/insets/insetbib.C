@@ -17,6 +17,7 @@
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/os.h"
+#include "support/lstrings.h"
 #include "lyxrc.h"
 #include "font.h"
 #include "LyXView.h" 

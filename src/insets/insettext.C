@@ -40,6 +40,7 @@
 #include "LColor.h"
 #include "support/textutils.h"
 #include "support/LAssert.h"
+#include "support/lstrings.h"
 #include "lyxrow.h"
 #include "lyxrc.h"
 #include "intl.h"

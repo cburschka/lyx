@@ -2,19 +2,20 @@
 #ifndef LYXFUNC_H
 #define LYXFUNC_H
 
-#include <sigc++/signal_system.h>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "commandtags.h"
+#include <X11/Xlib.h>
+#include <sigc++/signal_system.h>
+
+#include "commandtags.h" // for kb_action enum
 #include "func_status.h"
 #include "kbsequence.h"
-#include "insets/inset.h"
 #include "LString.h"
 
 class LyXView;
+class LyXText;
 
 
 /** This class encapsulates all the LyX command operations. 

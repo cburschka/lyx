@@ -19,7 +19,6 @@
 #endif
 
 #include "LString.h"
-#include "support/lstrings.h"
 #include <vector>
 
 class LyXLex;
@@ -76,9 +75,9 @@ public:
 		  action_(action), submenu_(), optional_(optional) {}
  
 	/// The label of a given menuitem
-	string const label() const { return token(label_, '|', 0); }
+	string const label() const;
 	/// The keyboard shortcut (usually underlined in the entry)
-	string const shortcut() const { return token(label_, '|', 1); }
+	string const shortcut() const;
 	/// The complete label, with label and shortcut separated by a '|'
 	string const fulllabel() const { return label_;}
 	/// The kind of entry

@@ -6,7 +6,12 @@
 
 #include "UpdateInset.h"
 #include "BufferView.h"
-//#include "insets/inset.h"
+#include "support/LAssert.h"
+
+void UpdateInset::push(Inset * inset) {
+	  lyx::Assert(inset);
+	  insetqueue.push(inset);
+}
 
 void UpdateInset::update(BufferView * bv) 
 {

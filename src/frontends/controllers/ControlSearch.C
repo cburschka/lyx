@@ -28,6 +28,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "BufferView.h"
+#include "support/lstrings.h"
 
 using Liason::setMinibuffer;
 using SigC::slot;

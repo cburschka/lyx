@@ -20,6 +20,7 @@
 #include "LaTeXFeatures.h"
 #include "gettext.h"
 #include "support/FileInfo.h"
+#include "support/lstrings.h"
 #include "layout.h"
 
 using std::ostream;

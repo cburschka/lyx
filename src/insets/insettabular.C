@@ -41,6 +41,7 @@
 #include "BufferView.h"
 #include "undo_funcs.h"
 #include "support/LAssert.h"
+#include "support/lstrings.h"
 
 using std::ostream;
 using std::ifstream;

@@ -8,7 +8,6 @@
 #endif
 
 #include <queue>
-#include "support/LAssert.h"
 
 class Inset;
 class BufferView;
@@ -17,10 +16,8 @@ class BufferView;
 class UpdateInset {
 public:
 	///
-	void push(Inset * inset) {
-		lyx::Assert(inset);
-		insetqueue.push(inset);
-	}
+	void push(Inset * inset);
+
 	///
 	void update(BufferView *);
 private:

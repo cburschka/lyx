@@ -25,6 +25,7 @@
 #include "layout.h"
 #include "LyXView.h"
 #include "support/textutils.h"
+#include "support/lstrings.h"
 #include "undo_funcs.h"
 #include "buffer.h"
 #include "bufferparams.h"

@@ -13,6 +13,7 @@
 #include "support/LSubstring.h"
 #include "support/path.h"
 #include "support/filetools.h"
+#include "support/lstrings.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "LyXView.h"

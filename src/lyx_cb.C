@@ -33,6 +33,7 @@
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/syscall.h"
+#include "support/lstrings.h"
 #include "gettext.h"
 #include "BufferView.h"
 
