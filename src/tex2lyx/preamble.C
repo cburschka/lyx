@@ -85,6 +85,7 @@ string h_papercolumns            = "1";
 string h_papersides              = string();
 string h_paperpagestyle          = "default";
 string h_tracking_changes        = "false";
+string h_output_changes          = "false";
 
 
 void handle_opt(vector<string> & opts, char const * const * what, string & target)
@@ -225,7 +226,7 @@ void handle_package(string const & name, string const & opts)
 void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 {
 	os << "#LyX file created by  tex2lyx 0.1.2\n"
-	   << "\\lyxformat 237\n"
+	   << "\\lyxformat 241\n"
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
 	   << "\\textclass " << h_textclass << "\n"
@@ -255,6 +256,7 @@ void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 	   << "\\papersides " << h_papersides << "\n"
 	   << "\\paperpagestyle " << h_paperpagestyle << "\n"
 	   << "\\tracking_changes " << h_tracking_changes << "\n"
+	   << "\\output_changes " << h_output_changes << "\n"
 	   << "\\end_header\n\n"
 	   << "\\begin_body\n";
 	// clear preamble for subdocuments
@@ -365,6 +367,10 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			split(p.getArg('[', ']'), opts, ',');
 			handle_opt(opts, known_languages, h_language);
 			handle_opt(opts, known_fontsizes, h_paperfontsize);
+			// delete "pt" at the end
+			string::size_type i = h_paperfontsize.find("pt");
+			if (i != string::npos)
+				h_paperfontsize.erase(i);
 			h_quotes_language = h_language;
 			h_options = join(opts, ",");
 			h_textclass = p.getArg('{', '}');
@@ -393,8 +399,8 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			ss << p.getOpt();
 			ss << '{' << p.verbatim_item() << '}';
 			ss << '{' << p.verbatim_item() << '}';
-			if (name != "lyxcode" && name != "lyxlist"
-					&& name != "lyxrightadress" && name != "lyxaddress")
+			if (name != "lyxcode" && name != "lyxlist" &&
+			    name != "lyxrightadress" && name != "lyxaddress")
 				h_preamble << ss.str();
 		}
 
@@ -402,7 +408,8 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			string name = p.get_token().cs();
 			while (p.next_token().cat() != catBegin)
 				name += p.get_token().asString();
-			h_preamble << "\\def\\" << name << '{' << p.verbatim_item() << "}";
+			h_preamble << "\\def\\" << name << '{'
+			           << p.verbatim_item() << "}";
 		}
 
 		else if (t.cs() == "newcolumntype") {

@@ -197,7 +197,7 @@ map<string, string> split_map(string const & s)
  * The latter can be a real unit like "pt", or a latex length variable
  * like "\textwidth". The unit may contain additional stuff like glue
  * lengths, but we don't care, because such lengths are ERT anyway.
- * \return true if \param value and \param unit are valid.
+ * \returns true if \p value and \p unit are valid.
  */
 bool splitLatexLength(string const & len, string & value, string & unit)
 {
@@ -283,10 +283,10 @@ string translate_len(string const & length)
 
 
 /*!
- * Translates a LaTeX length into \param value, \param unit and
- * \param special parts suitable for a box inset.
+ * Translates a LaTeX length into \p value, \p unit and
+ * \p special parts suitable for a box inset.
  * The difference from translate_len() is that a box inset knows about
- * some special "units" that are stored in \param special.
+ * some special "units" that are stored in \p special.
  */
 void translate_box_len(string const & length, string & value, string & unit, string & special)
 {
@@ -362,9 +362,10 @@ void handle_ert(ostream & os, string const & s, Context & context, bool check_la
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
 			os << "\n\\backslash\n";
-		else if (*it == '\n')
-			os << "\n\\newline\n";
-		else
+		else if (*it == '\n') {
+			newcontext.new_paragraph(os);
+			newcontext.check_layout(os);
+		} else
 			os << *it;
 	}
 	newcontext.check_end_layout(os);
@@ -386,7 +387,8 @@ void handle_comment(ostream & os, string const & s, Context & context)
 			os << *it;
 	}
 	// make sure that our comment is the last thing on the line
-	os << "\n\\newline";
+	newcontext.new_paragraph(os);
+	newcontext.check_layout(os);
 	newcontext.check_end_layout(os);
 	end_inset(os);
 }
@@ -687,11 +689,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parent_context.new_paragraph(os);
 		}
 		if (name == "flushleft" || name == "raggedright")
-			parent_context.add_extra_stuff("\\align left ");
+			parent_context.add_extra_stuff("\\align left\n");
 		else if (name == "flushright" || name == "raggedleft")
-			parent_context.add_extra_stuff("\\align right ");
+			parent_context.add_extra_stuff("\\align right\n");
 		else
-			parent_context.add_extra_stuff("\\align center ");
+			parent_context.add_extra_stuff("\\align center\n");
 		parse_text(p, os, FLAG_END, outer, parent_context);
 		// Just in case the environment is empty ..
 		parent_context.extra_stuff.erase();
@@ -1141,12 +1143,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cs() == "noindent") {
 			p.skip_spaces();
-			context.add_extra_stuff("\\noindent ");
+			context.add_extra_stuff("\\noindent\n");
 		}
 
 		else if (t.cs() == "appendix") {
 			p.skip_spaces();
-			context.add_extra_stuff("\\start_of_appendix ");
+			context.add_extra_stuff("\\start_of_appendix\n");
 		}
 
 		// Must attempt to parse "Section*" before "Section".
@@ -1347,6 +1349,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "makeindex" || t.cs() == "maketitle") {
+			// FIXME: Somehow prevent title layouts if
+			// "maketitle" was not found
 			p.skip_spaces();
 			skip_braces(p); // swallow this
 		}
@@ -1471,8 +1475,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (use_natbib &&
 		         is_known(t.cs(), known_natbib_commands) &&
 		         ((t.cs() != "citefullauthor" &&
-			   t.cs() != "citeyear" &&
-			   t.cs() != "citeyearpar") ||
+		           t.cs() != "citeyear" &&
+		           t.cs() != "citeyearpar") ||
 		          p.next_token().asInput() != "*")) {
 			context.check_layout(os);
 			// tex                       lyx
@@ -1541,12 +1545,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string const citation = p.verbatim_item();
 			if (!before.empty() && argumentOrder == '\0') {
 				cerr << "Warning: Assuming argument order "
-				     << "of jurabib version 0.6 for\n'"
+				        "of jurabib version 0.6 for\n'"
 				     << command << before << after << '{'
 				     << citation << "}'.\n"
-				     << "Add 'jurabiborder' to the jurabib "
-				     << "package options if you used an\n"
-				     << "earlier jurabib version." << endl;
+				        "Add 'jurabiborder' to the jurabib "
+				        "package options if you used an\n"
+				        "earlier jurabib version." << endl;
 			}
 			begin_inset(os, "LatexCommand ");
 			os << command << after << before

@@ -36,13 +36,13 @@ void end_layout(ostream & os)
 
 void begin_deeper(ostream & os)
 {
-	os << "\n\\begin_deeper\n";
+	os << "\n\\begin_deeper";
 }
 
 
 void end_deeper(ostream & os)
 {
-	os << "\n\\end_deeper\n";
+	os << "\n\\end_deeper";
 }
 
 }
@@ -73,7 +73,10 @@ void Context::check_layout(ostream & os)
 		// are we in a list-like environment?
 		if (layout->isEnvironment()
 		    && layout->latextype != LATEX_ENVIRONMENT) {
+			// A list-like environment
 			if (has_item) {
+				// a new item. If we had a standard
+				// paragraph before, we have to end it.
 				if (deeper_paragraph) {
 					end_deeper(os);
 					deeper_paragraph = false;
@@ -94,6 +97,7 @@ void Context::check_layout(ostream & os)
 				deeper_paragraph = true;
 			}
 		} else {
+			// No list-like environment
 			begin_layout(os, layout);
 			need_layout=false;
 			need_end_layout = true;
@@ -119,6 +123,8 @@ void Context::check_end_layout(ostream & os)
 void Context::check_deeper(ostream & os)
 {
 	if (parent_layout->isEnvironment()) {
+		// We start a nested environment.
+		// We need to increase the depth.
 		if (need_end_deeper) {
 			// no need to have \end_deeper \begin_deeper
 			need_end_deeper = false;

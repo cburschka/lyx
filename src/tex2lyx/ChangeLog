@@ -1,3 +1,14 @@
+2005-02-05  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* context.C (begin_deeper, end_deeper): adjust output to LyX
+	* preamble.C (h_output_changes): new
+	* preamble.C (end_preamble): output paperfontsize without unit
+	* preamble.C (end_preamble): change file format from 237 to 241
+	* text.C (parse_environment, parse_text): adjust paragraph parameters
+	to new file format
+	* text.C (handle_ert, handle_comment): adjust newlines to new file
+	format
+
 2005-02-03  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: make -lz conditional on USE_COMPRESSION.
