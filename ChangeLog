@@ -1,5 +1,8 @@
 2000-09-25  Allan Rae  <rae@lyx.org>
 
+	* src/frontends/xforms/forms/form_preferences.fd: resize to stop
+	segfault.  This will be completely redesigned soon.
+
 	* sigc++: updated libsigc++.  Fixes struct timespec bug.
 
 	* development/tools/makeLyXsigc.sh:  .cvsignore addition

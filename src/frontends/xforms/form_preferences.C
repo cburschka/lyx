@@ -360,9 +360,9 @@ FD_form_preferences * FormPreferences::build_preferences()
   FL_OBJECT *obj;
   FD_form_preferences *fdui = new FD_form_preferences;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 475, 435);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 625, 435);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 475, 435, "");
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 625, 435, "");
   fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 275, 395, 90, 30, idex(_("Apply|#A")));
     fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -374,7 +374,7 @@ FD_form_preferences * FormPreferences::build_preferences()
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 175, 395, 90, 30, _("Save"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormPreferencesOKCB, 0);
-  fdui->tabfolder_prefs = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 5, 5, 450, 385, "");
+  fdui->tabfolder_prefs = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 5, 5, 585, 385, "");
     fl_set_object_boxtype(obj, FL_FLAT_BOX);
   fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 395, 90, 30, idex(_("Restore|#R")));
     fl_set_button_shortcut(obj, scex(_("Restore|#R")), 1);

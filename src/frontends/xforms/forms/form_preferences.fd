@@ -1239,14 +1239,14 @@ argument:
 
 =============== FORM ===============
 Name: form_preferences
-Width: 475
+Width: 625
 Height: 435
 Number of Objects: 6
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 475 435
+box: 0 0 625 435
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1318,7 +1318,7 @@ argument: 0
 --------------------
 class: FL_TABFOLDER
 type: TOP_TABFOLDER
-box: 5 5 450 385
+box: 5 5 585 385
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
