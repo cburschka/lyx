@@ -24,7 +24,6 @@ class FuncRequest;
 
 // these should go
 class MathUnknownInset;
-class MathGridInset;
 class Encoding;
 
 
@@ -250,8 +249,6 @@ public:
 	void setScreenPos(int x, int y);
 	/// in pixels from left of screen
 	int targetX() const;
-	/// return the next enclosing grid inset and the cursor's index in it
-	MathGridInset * enclosingGrid(idx_type & idx) const;
 	/// adjust anchor position after deletions/insertions
 	void adjust(pos_type from, int diff);
 	/// current offset in the top cell
@@ -261,20 +258,12 @@ public:
 	bool inMacroMode() const;
 	/// get access to the macro we are currently typing
 	MathUnknownInset * activeMacro();
-	/// are we currently typing '#1' or '#2' or...?
-	bool inMacroArgMode() const;
 
 	/// replace selected stuff with at, placing the former
 	// selection in given cell of atom
 	void handleNest(MathAtom const & at, int cell = 0);
-	/// remove this as soon as LyXFunc::getStatus is "localized"
-	//inline std::string getLastCode() { return "mathnormal"; }
 	///
 	bool isInside(InsetBase const *);
-	///
-	char valign();
-	///
-	char halign();
 
 	/// make sure cursor position is valid
 	void normalize();

@@ -203,7 +203,7 @@ bool LCursor::popLeft()
 {
 	BOOST_ASSERT(!empty());
 	//lyxerr << "Leaving inset to the left" << endl;
-	inset().notifyCursorLeaves(idx());
+	inset().notifyCursorLeaves(*this);
 	if (depth() == 1)
 		return false;
 	pop();
@@ -215,7 +215,7 @@ bool LCursor::popRight()
 {
 	BOOST_ASSERT(!empty());
 	//lyxerr << "Leaving inset to the right" << endl;
-	inset().notifyCursorLeaves(idx());
+	inset().notifyCursorLeaves(*this);
 	if (depth() == 1)
 		return false;
 	pop();
@@ -593,7 +593,6 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 #include "mathed/math_factory.h"
 #include "mathed/math_gridinset.h"
 #include "mathed/math_macroarg.h"
-#include "mathed/math_macrotemplate.h"
 #include "mathed/math_mathmlstream.h"
 #include "mathed/math_scriptinset.h"
 #include "mathed/math_support.h"
@@ -665,7 +664,7 @@ void LCursor::plainErase()
 
 void LCursor::markInsert()
 {
-	cell().insert(pos(), MathAtom(new MathCharInset(0)));
+	insert(char(0));
 }
 
 
@@ -684,7 +683,7 @@ void LCursor::plainInsert(MathAtom const & t)
 
 void LCursor::insert(string const & str)
 {
-	lyxerr << "LCursor::insert str '" << str << "'" << endl;
+	//lyxerr << "LCursor::insert str '" << str << "'" << endl;
 	for (string::const_iterator it = str.begin(); it != str.end(); ++it)
 		insert(*it);
 }
@@ -696,7 +695,7 @@ void LCursor::insert(char c)
 	BOOST_ASSERT(!empty());
 	if (inMathed()) {
 		selClearOrDel();
-		plainInsert(MathAtom(new MathCharInset(c)));
+		insert(new MathCharInset(c));
 	} else {
 		text()->insertChar(*this, c);
 	}
@@ -709,6 +708,7 @@ void LCursor::insert(MathAtom const & t)
 	macroModeClose();
 	selClearOrDel();
 	plainInsert(t);
+	lyxerr << "LCursor::insert MathAtom: cur:\n" << *this << endl;
 }
 
 
@@ -785,6 +785,7 @@ bool LCursor::backspace()
 	if (pos() != 0 && prevAtom()->nargs() > 0) {
 		// let's require two backspaces for 'big stuff' and
 		// highlight on the first
+		resetAnchor();
 		selection() = true;
 		--pos();
 	} else {
@@ -823,7 +824,9 @@ bool LCursor::erase()
 		return true;
 	}
 
+	// 'clever' UI hack: only erase large items if previously slected
 	if (pos() != lastpos() && inset().nargs() > 0) {
+		resetAnchor();
 		selection() = true;
 		++pos();
 	} else {
@@ -938,28 +941,6 @@ MathUnknownInset * LCursor::activeMacro()
 }
 
 
-bool LCursor::inMacroArgMode() const
-{
-	return pos() > 0 && prevAtom()->getChar() == '#';
-}
-
-
-MathGridInset * LCursor::enclosingGrid(idx_type & idx) const
-{
-	for (MathInset::difference_type i = depth() - 1; i >= 0; --i) {
-		MathInset * m = operator[](i).inset().asMathInset();
-		if (!m)
-			return 0;
-		MathGridInset * p = m->asGridInset();
-		if (p) {
-			idx = operator[](i).idx();
-			return p;
-		}
-	}
-	return 0;
-}
-
-
 void LCursor::pullArg()
 {
 #ifdef WITH_WARNINGS
@@ -1008,22 +989,6 @@ void LCursor::normalize()
 		lyxerr << endl;
 	}
 	pos() = min(pos(), lastpos());
-}
-
-
-char LCursor::valign()
-{
-	idx_type idx;
-	MathGridInset * p = enclosingGrid(idx);
-	return p ? p->valign() : '\0';
-}
-
-
-char LCursor::halign()
-{
-	idx_type idx;
-	MathGridInset * p = enclosingGrid(idx);
-	return p ? p->halign(idx % p->ncols()) : '\0';
 }
 
 
