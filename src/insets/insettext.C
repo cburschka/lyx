@@ -114,11 +114,8 @@ void InsetText::init()
 	for (; pit != end; ++pit)
 		pit->setInsetOwner(this);
 	text_.paragraphs_ = &paragraphs;
-	no_selection = true;
 	old_par = -1;
 	in_insetAllowed = false;
-	mouse_x = 0;
-	mouse_y = 0;
 }
 
 
@@ -289,7 +286,6 @@ void InsetText::updateLocal(BufferView * bv, bool /*mark_dirty*/)
 	if (!text_.selection.set())
 		text_.selection.cursor = text_.cursor;
 
-//	bv->fitCursor();
 	bv->owner()->view_state_changed();
 	bv->owner()->updateMenubar();
 	bv->owner()->updateToolbar();
@@ -319,49 +315,6 @@ void InsetText::sanitizeEmptyText(BufferView * bv)
 
 
 extern LCursor theTempCursor;
-
-void InsetText::lfunMousePress(FuncRequest const & cmd)
-{
-	lyxerr << "InsetText::lfunMousePress, inset: " << this << endl;
-	no_selection = true;
-
-	// use this to check mouse motion for selection
-	mouse_x = cmd.x;
-	mouse_y = cmd.y;
-
-	BufferView * bv = cmd.view();
-	no_selection = false;
-	text_.clearSelection();
-
-	// set global cursor
-	bv->cursor() = theTempCursor;
-	lyxerr << "new global cursor: \n" << bv->cursor() << endl;
-	text_.setCursorFromCoordinates(cmd.x, cmd.y);
-}
-
-
-void InsetText::lfunMouseMotion(FuncRequest const & cmd)
-{
-	lyxerr << "InsetText::lfunMouseMotion, inset: " << this << endl;
-	if (no_selection || (mouse_x == cmd.x && mouse_y == cmd.y))
-		return;
-
-	BufferView * bv = cmd.view();
-	LyXCursor cur = text_.cursor;
-	text_.setCursorFromCoordinates(cmd.x, cmd.y + dim_.asc);
-	bv->x_target(text_.cursor.x());
-	if (cur != text_.cursor) {
-		text_.setSelection();
-		updateLocal(bv, false);
-	}
-}
-
-
-void InsetText::lfunMouseRelease(FuncRequest const &)
-{
-	lyxerr << "InsetText::lfunMouseRelease, inset: " << this << endl;
-	no_selection = true;
-}
 
 
 void InsetText::edit(BufferView * bv, bool left)
@@ -403,41 +356,28 @@ DispatchResult InsetText::priv_dispatch(FuncRequest const & cmd,
 	idx_type &, pos_type &)
 {
 	lyxerr << "InsetText::priv_dispatch (begin), act: "
-		<< cmd.action << " " << endl;
+	       << cmd.action << " " << endl;
+	
 	BufferView * bv = cmd.view();
 	setViewCache(bv);
+
 	DispatchResult result;
 	result.dispatched(true);
 
 	bool was_empty = paragraphs.begin()->empty() && paragraphs.size() == 1;
-	if (cmd.action != LFUN_MOUSE_PRESS
-			&& cmd.action != LFUN_MOUSE_MOTION
-			&& cmd.action != LFUN_MOUSE_RELEASE)
-		no_selection = false;
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
-		lfunMousePress(cmd);
-		result = DispatchResult(true, true);	
-		break;
-
-	case LFUN_MOUSE_MOTION:
-		lfunMouseMotion(cmd);
-		result = DispatchResult(true, true);
-		break;
-
-	case LFUN_MOUSE_RELEASE:
-		lfunMouseRelease(cmd);
-		result = DispatchResult(true, true);
-		break;
-
+		bv->cursor() = theTempCursor;
+		// fall through
 	default:
 		result = text_.dispatch(cmd);
 		break;
 	}
 
-	/// If the action has deleted all text in the inset, we need to change the
-	// language to the language of the surronding text.
+	// If the action has deleted all text in the inset, we need
+	// to change the language to the language of the surronding
+	// text.
 	if (!was_empty && paragraphs.begin()->empty() &&
 	    paragraphs.size() == 1) {
 		LyXFont font(LyXFont::ALL_IGNORE);
@@ -513,7 +453,6 @@ bool InsetText::insertInset(BufferView * bv, InsetOld * inset)
 {
 	inset->setOwner(this);
 	text_.insertInset(inset);
-//	bv->fitCursor();
 	updateLocal(bv, true);
 	return true;
 }
@@ -580,7 +519,6 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 	if (selectall)
 		text_.clearSelection();
 
-//	bv->fitCursor();
 	updateLocal(bv, true);
 }
 

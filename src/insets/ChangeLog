@@ -1,3 +1,9 @@
+2003-11-17  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insetcollapsable.C: 
+	* insettext.C:
+	* insettext.h: hand on MOUSE_* events to the LyXText when appropriate
+	remove mouse_x mouse_y etc.
 
 2003-11-17  André Pönitz  <poenitz@gmx.net>
 

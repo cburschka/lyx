@@ -1,5 +1,15 @@
 2003-11-17  Alfredo Braunstein  <abraunst@lyx.org>
 
+	* BufferView_pimpl.C: send LFUN_MOUSE_MOTION to the cursor
+	* paragraph_funcs.[Ch]: correct comment
+	* rowpainter.C: do not paint selections away from bv->cursor()
+	Fix a long standing selection painting bug.
+	* text3.C: generalize mouse-selection code to LyXTexts other that
+	top one
+	* textcursor.C: do not use y coords if we can use par offsets
+
+2003-11-17  Alfredo Braunstein  <abraunst@lyx.org>
+
 	* lyxfunc.C (dispatch): add a missing LCursor::updatePos (fix
 	cursor position after e.g. inset insert)
 

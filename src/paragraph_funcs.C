@@ -612,8 +612,6 @@ Paragraph const & ownerPar(Buffer const & buf, InsetOld const * inset)
 }
 
 
-
-
 void getParsInRange(ParagraphList & pl,
 		    int ystart, int yend,
 		    ParagraphList::iterator & beg,

@@ -75,7 +75,7 @@ ParagraphList::iterator outerPar(Buffer const & buf, InsetOld const * inset);
 /// find owning paragraph containing an inset
 Paragraph const & ownerPar(Buffer const & buf, InsetOld const * inset);
 
-/// stretch range beg,end to the minimum containing ystart, yend
+/// return the range of pars [beg, end[ owning the range of y [ystart, yend] 
 void getParsInRange(ParagraphList & pl,
 		    int ystart, int yend,
 		    ParagraphList::iterator & beg,

@@ -1031,6 +1031,7 @@ void LyXText::insertInset(InsetOld * inset)
 	// does not return the inset!
 	if (isHighlyEditableInset(inset))
 		cursorLeft(true);
+	
 	unFreezeUndo();
 }
 

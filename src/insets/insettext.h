@@ -177,12 +177,6 @@ protected:
 private:
 	///
 	void init();
-	///
-	void lfunMousePress(FuncRequest const &);
-	///
-	void lfunMouseMotion(FuncRequest const &);
-	///
-	void lfunMouseRelease(FuncRequest const &);
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text (if different).
 	void sanitizeEmptyText(BufferView *);
@@ -217,15 +211,10 @@ private:
 	///
 	mutable lyx::paroffset_type old_par;
 
-	///
-	// to remember old painted frame dimensions to clear it on the right spot!
-	///
+	/** to remember old painted frame dimensions to clear it on
+	 *  the right spot!
+	 */
 	mutable bool in_insetAllowed;
-	///
-	// these are used to check for mouse movement in Motion selection code
-	///
-	int mouse_x;
-	int mouse_y;
 public:
 	///
 	mutable LyXText text_;

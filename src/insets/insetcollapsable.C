@@ -185,7 +185,7 @@ InsetOld::EDITABLE InsetCollapsable::editable() const
 FuncRequest InsetCollapsable::adjustCommand(FuncRequest const & cmd)
 {
 	FuncRequest cmd1 = cmd;
-	cmd1.y = ascent() + cmd.y - height_collapsed() - inset.ascent();
+	cmd1.y += ascent() - height_collapsed();
 	return cmd1;
 }
 
@@ -299,7 +299,7 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			return DispatchResult(true, true);
 
 		case LFUN_MOUSE_MOTION:
-			if (!collapsed_ && cmd.y > button_dim.y2)
+			if (!collapsed_)
 				inset.dispatch(adjustCommand(cmd));
 			return DispatchResult(true, true);
 
@@ -311,7 +311,7 @@ InsetCollapsable::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 			return DispatchResult(true, true);
 
 		default:
-			return inset.dispatch(cmd);
+			return inset.dispatch(adjustCommand(cmd));
 	}
 	lyxerr << "InsetCollapsable::priv_dispatch (end)" << endl;
 }

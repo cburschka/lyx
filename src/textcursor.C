@@ -13,6 +13,7 @@
 #include "textcursor.h"
 #include "paragraph.h"
 #include "ParagraphList_fwd.h"
+#include "debug.h"
 
 #include <string>
 
@@ -37,9 +38,9 @@ void TextCursor::setSelection()
 			selection.end = selection.cursor;
 			selection.start = cursor;
 		}
-	else if (selection.cursor.y() < cursor.y() ||
-		 (selection.cursor.y() == cursor.y()
-		  && selection.cursor.x() < cursor.x())) {
+	else if (selection.cursor.par() < cursor.par() ||
+		 (selection.cursor.par() == cursor.par()
+		  && selection.cursor.pos() < cursor.pos())) {
 		selection.end = cursor;
 		selection.start = selection.cursor;
 	}

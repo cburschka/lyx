@@ -896,8 +896,28 @@ namespace {
 bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 {
 	switch (cmd.action) {
+	case LFUN_MOUSE_MOTION: {
+		FuncRequest cmd1(cmd, bv_);
+		UpdatableInset * inset = bv_->cursor().innerInset();
+		DispatchResult res;
+		if (inset) {
+			cmd1.x -= inset->x();
+			cmd1.y -= inset->y();
+			res = inset->dispatch(cmd1);
+		} else {
+			cmd1.y += bv_->top_y();
+			res = bv_->cursor().innerText()->dispatch(cmd1);
+		}
+			
+		if (bv_->fitCursor() || res.update()) {
+			bv_->update();
+			bv_->cursor().updatePos();
+		}
+		
+		return true;
+	}
+
 	case LFUN_MOUSE_PRESS:
-	case LFUN_MOUSE_MOTION:
 	case LFUN_MOUSE_RELEASE:
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_MOUSE_TRIPLE: {
@@ -925,7 +945,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 		if (inset) {
 			FuncRequest cmd2 = cmd1;
 			lyxerr << "dispatching action " << cmd2.action 
-				<< " to inset " << inset << endl;
+			       << " to inset " << inset << endl;
 			cmd2.x -= inset->x();
 			cmd2.y -= inset->y();
 			res = inset->dispatch(cmd2);
@@ -958,6 +978,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			       << " to surrounding LyXText "
 			       << theTempCursor.innerText() << endl;
 			bv_->cursor() = theTempCursor;
+			cmd1.y += bv_->top_y();
 			res = bv_->cursor().innerText()->dispatch(cmd1);
 			if (bv_->fitCursor() || res.update())
 				bv_->update();

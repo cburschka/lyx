@@ -14,6 +14,7 @@
 #include "rowpainter.h"
 
 #include "buffer.h"
+#include "cursor.h"
 #include "debug.h"
 #include "bufferparams.h"
 #include "BufferView.h"
@@ -389,11 +390,12 @@ void RowPainter::paintSelection()
 	RowList::iterator endrow = endpit->getRow(text_.selection.end.pos());
 	int const h = row_.height();
 
+	int const row_y = pit_->y + row_.y_offset();
+	
 	if (text_.bidi.same_direction()) {
 		int x;
 		int y = yo_;
 		int w;
-
 		if (startrow == rit_ && endrow == rit_) {
 			if (startx < endx) {
 				x = int(xo_) + startx;
@@ -411,7 +413,8 @@ void RowPainter::paintSelection()
 			int const x = is_rtl ? int(xo_ + endx) : int(xo_);
 			int const w = is_rtl ? (width_ - endx) : endx;
 			pain_.fillRectangle(x, y, w, h, LColor::selection);
-		} else if (y_ > starty && y_ < endy) {
+		} else if (row_y > starty && row_y < endy) {
+		
 			pain_.fillRectangle(int(xo_), y, width_, h, LColor::selection);
 		}
 		return;
@@ -945,7 +948,7 @@ void RowPainter::paint()
 		paintBackground();
 
 	// paint the selection background
-	if (text_.selection.set())
+	if (text_.selection.set() && &text_ == bv_.cursor().innerText())
 		paintSelection();
 
 	// vertical lines for appendix

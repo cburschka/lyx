@@ -1289,55 +1289,27 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 
 		if (!bv->buffer())
 			break;
-
-		// Check for inset locking
-#ifdef LOCK
-		if (bv->innerInset()) {
-			InsetOld * tli = bv->innerInset();
-			LyXCursor cursor = bv->text->cursor;
-			LyXFont font = bv->text->getFont(bv->text->cursorPar(), cursor.pos());
-			int width = tli->width();
-			int inset_x = font.isVisibleRightToLeft()
-				? cursor.x() - width : cursor.x();
-			int start_x = inset_x + tli->scroll();
-			FuncRequest cmd1 = cmd;
-			cmd1.x = cmd.x - start_x;
-			cmd1.y = cmd.y - cursor.y() + bv->top_y();
-			tli->dispatch(cmd1);
-			break;
-		}
-#endif
-
-		// The test for not selection possible is needed, that only motion
-		// events are used, where the bottom press event was on
-		//  the drawing area too
+		// The test for not selection possible is needed, that
+		// only motion events are used, where the bottom press
+		// event was on the drawing area too
 		if (!selection_possible) {
-			lyxerr[Debug::ACTION]
-				<< "BufferView::Pimpl::Dispatch: no selection possible\n";
+			lyxerr[Debug::ACTION] << "BufferView::Pimpl::"
+				"Dispatch: no selection possible\n";
 			break;
 		}
+		RowList::iterator cursorrow = cursorRow();
 
-		RowList::iterator cursorrow = bv->text->cursorRow();
-		bv->text->setCursorFromCoordinates(cmd.x, cmd.y + bv->top_y());
-	#if 0
-		// sorry for this but I have a strange error that the y value jumps at
-		// a certain point. This seems like an error in my xforms library or
-		// in some other local environment, but I would like to leave this here
-		// for the moment until I can remove this (Jug 20020418)
-		if (y_before < bv->text->cursor.y())
-			lyxerr << y_before << ':'
-			       << bv->text->cursor.y() << endl;
-	#endif
+		setCursorFromCoordinates(cmd.x, cmd.y);
+
 		// This is to allow jumping over large insets
-		if (cursorrow == cursorRow()) {
-			if (cmd.y >= bv->workHeight())
+		// FIXME: shouldn't be top-text-specific
+		if (cursorrow == cursorRow() && !in_inset_) {
+			if (cmd.y - bv->top_y() >= bv->workHeight())
 				cursorDown(false);
-			else if (cmd.y < 0)
+			else if (cmd.y - bv->top_y() < 0)
 				cursorUp(false);
 		}
-
-		bv->text->setSelection();
-//		bv->update();
+		setSelection();
 		break;
 	}
 
@@ -1369,24 +1341,21 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			paste_internally = true;
 		}
 
-		int const screen_first = bv->top_y();
 		selection_possible = true;
 
 		// Clear the selection
-		bv->text->clearSelection();
-		bv->update();
-		bv->updateScrollbar();
-
+		clearSelection();
+	
 		// Right click on a footnote flag opens float menu
 		if (cmd.button() == mouse_button::button3) {
 			selection_possible = false;
 			break;
 		}
 
-		bv->text->setCursorFromCoordinates(cmd.x, cmd.y + screen_first);
+		setCursorFromCoordinates(cmd.x, cmd.y);
+		selection.cursor = cursor;
 		finishUndo();
-		bv->text->selection.cursor = bv->text->cursor;
-		bv->x_target(bv->text->cursor.x());
+		bv->x_target(cursor.x());
 
 		if (bv->fitCursor())
 			selection_possible = false;
@@ -1414,7 +1383,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			return DispatchResult(true, false);
 
 		selection_possible = false;
-
+		
 		if (cmd.button() == mouse_button::button2)
 			break;
 
