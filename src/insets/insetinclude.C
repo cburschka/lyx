@@ -372,7 +372,7 @@ int InsetInclude::docbook(Buffer const * buffer, ostream & os) const
 	if (isVerbatim()) {
 		os << "<inlinegraphic fileref=\""
 		   << '&' << include_label << ';'
-		   << "\" format=\"linespecific\">"
+		   << "\" format=\"linespecific\">";
 	} else
 		os << '&' << include_label << ';';
 	
