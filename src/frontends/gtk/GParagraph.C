@@ -113,7 +113,7 @@ void GParagraph::update()
 			leftradio_->set_active(false);
 	}
 
-	//Find out which alignments options are available
+	// Find out which alignments options are available
 	LyXAlignment alignpos = controller().alignPossible();
 	blockradio_->set_sensitive(bool(alignpos & LYX_ALIGN_BLOCK));
 	centerradio_->set_sensitive(bool(alignpos & LYX_ALIGN_CENTER));

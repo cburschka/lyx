@@ -75,7 +75,6 @@ private:
 
 	GView & owner_;
 	Gtk::Toolbar toolbar_;
-	Gtk::Tooltips tooltips_;
 	boost::scoped_ptr<GLayoutBox> layout_;
 };
 

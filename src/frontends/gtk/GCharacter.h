@@ -27,7 +27,7 @@ namespace frontend {
  * in their documents.
  */
 class GCharacter
-	: public GViewCB<ControlCharacter, GViewGladeB > {
+	: public GViewCB<ControlCharacter, GViewGladeB> {
 public:
 	///
 	GCharacter(Dialog &);
@@ -59,6 +59,9 @@ private:
 	Gtk::ComboBox * languagecombo_;
 	Gtk::ComboBox * sizecombo_;
 	Gtk::ComboBox * misccombo_;
+
+	Gtk::TreeModelColumn<Glib::ustring> stringcol_;
+	Gtk::TreeModel::ColumnRecord cols_;
 
 	Gtk::CheckButton * toggleallcheck_;
 

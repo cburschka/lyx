@@ -66,9 +66,9 @@ GLayoutBox::GLayoutBox(LyXView & owner,
 	combo_.pack_start(*cell, true);
 	combo_.add_attribute(*cell,"text",0);
 	combo_.set_wrap_width(2);
-	//Initially there's nothing in the liststore, so set the size
-	//to avoid it jumping too much when the user does something that
-	//causes the first update()
+	// Initially there's nothing in the liststore, so set the size
+	// to avoid it jumping too much when the user does something that
+	// causes the first update()
 	combo_.set_size_request(130,-1);
 
 
@@ -123,8 +123,8 @@ void GLayoutBox::update()
 		}
 	internal_ = false;
 
-	//now that we've loaded something into the combobox, forget
-	//the initial fixed size and let GTK decide.
+	// now that we've loaded something into the combobox, forget
+	// the initial fixed size and let GTK decide.
 	combo_.set_size_request(-1,-1);
 }
 
@@ -209,7 +209,7 @@ GToolbar::GToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
 	owner_.getBox(position).children().push_back(
 		Gtk::Box_Helpers::Element(toolbar_, Gtk::PACK_SHRINK));
 
-	tooltips_.enable();
+	toolbar_.set_tooltips(true);
 }
 
 void GToolbar::add(FuncRequest const & func, string const & tooltip)
@@ -249,7 +249,9 @@ void GToolbar::add(FuncRequest const & func, string const & tooltip)
 		toolbutton->set_data(gToolData,
 			reinterpret_cast<void*>(&const_cast<FuncRequest &>(func)));
 
-		toolbutton->set_tooltip(tooltips_,tip);
+		toolbutton->set_tooltip(*toolbar_.get_tooltips_object(),tip);
+		/*toolbar_.get_tooltips_object()->set_tip(*toolbutton, tip);*/
+
 		toolbutton->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this,
 			&GToolbar::clicked), FuncRequest(func)));
 		toolbar_.append(*toolbutton);

@@ -33,29 +33,15 @@ GCharacter::GCharacter(Dialog & parent)
 {}
 
 
-class stringcolumns : public Gtk::TreeModel::ColumnRecord {
-public:
-	stringcolumns()
-	{
-		add(name);
-	}
-
-	Gtk::TreeModelColumn<Glib::ustring> name;
-};
-
-
 void GCharacter::PopulateComboBox(Gtk::ComboBox * combo,
 				  vector<string> const & strings)
 {
-	stringcolumns * cols = new stringcolumns;
-	Glib::RefPtr<Gtk::ListStore> model = Gtk::ListStore::create(*cols);
+	Glib::RefPtr<Gtk::ListStore> model = Gtk::ListStore::create(cols_);
 	vector<string>::const_iterator it = strings.begin();
 	vector<string>::const_iterator end = strings.end();
-	for(; it != end; ++it){
-		Gtk::TreeModel::iterator iter = model->append();
-		Gtk::TreeModel::Row row = *iter;
-		row[cols->name] = *it;
-	}
+	for(; it != end; ++it)
+		(*model->append())[stringcol_] = *it;
+
 	combo->set_model(model);
 	Gtk::CellRendererText * cell = Gtk::manage(new Gtk::CellRendererText);
 	combo->pack_start(*cell, true);
@@ -79,7 +65,7 @@ void GCharacter::doBuild()
 
 	xml_->get_widget("ToggleAll", toggleallcheck_);
 
-	//Get combobox addresses
+	// Get combobox addresses
 	xml_->get_widget("Family", familycombo_);
 	xml_->get_widget("Series", seriescombo_);
 	xml_->get_widget("Shape", shapecombo_);
@@ -88,7 +74,7 @@ void GCharacter::doBuild()
 	xml_->get_widget("Size", sizecombo_);
 	xml_->get_widget("Misc", misccombo_);
 
-	//Don't let the user change anything for read only documents
+	// Don't let the user change anything for read only documents
 	bcview().addReadOnly(familycombo_);
 	bcview().addReadOnly(seriescombo_);
 	bcview().addReadOnly(shapecombo_);
@@ -98,7 +84,7 @@ void GCharacter::doBuild()
 	bcview().addReadOnly(misccombo_);
 	bcview().addReadOnly(toggleallcheck_);
 
-	//Caption/identifier pairs for the parameters
+	// Caption/identifier pairs for the parameters
 	vector<FamilyPair>   const family = getFamilyData();
 	vector<SeriesPair>   const series = getSeriesData();
 	vector<ShapePair>    const shape  = getShapeData();
@@ -116,6 +102,8 @@ void GCharacter::doBuild()
 	color_  = getSecond(color);
 	lang_   = getSecond(language);
 
+	// Setup the columnrecord we use for all combos
+	cols_.add(stringcol_);
 	// Load the captions into the comboboxes
 	PopulateComboBox(familycombo_, getFirst(family));
 	PopulateComboBox(seriescombo_, getFirst(series));
@@ -128,10 +116,10 @@ void GCharacter::doBuild()
 	/* We use a table so that people with decent size screens don't
 	* have to scroll.  However, this risks the popup being too wide
 	* for people with small screens, and it doesn't scroll horizontally.
-	* Hopefully this is not too wide (and hopefully gtk gets fixed).*/
+	* Hopefully this is not too wide */
 	languagecombo_->set_wrap_width(3);
 
-	//Load in the current settings
+	// We have to update *before* the signals are connected
 	update();
 
 	familycombo_->signal_changed().connect(

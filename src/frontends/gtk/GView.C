@@ -75,7 +75,6 @@ GView::GView()
 	box_map_[Right]  = box_store_[5];
 
 	// Make all Boxes visible.
-	top_box_.show();
 	top_box_.show_all();
 
 	// Define the components making up the window.
