@@ -1,3 +1,10 @@
+2000-11-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/LaTeX.C (deplog): change reg1 to handle (/.../.../fil.sty)
+
+	* config/lyxinclude.m4 (LYX_PROG_CXX): remove -fno-rtti when
+	compiling with gcc-2.96
+
 2000-11-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/lyxstring.C: add a couple "using" directives.
