@@ -1,3 +1,11 @@
+2004-11-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* output_latex.C (TeXOnePar): override runparams.moving_arg
+	according to the needprotect value of the current paragraph (bug 1739)
+
+	* paragraph.C (simpleTeXOnePar): no need to override
+	runparams.moving_args here
+
 2004-11-14  John Spray  <spray_john@users.sourceforge.net>
 
 	* vspace.C: fix off-by-one-error, related to fix #1682

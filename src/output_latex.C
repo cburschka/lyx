@@ -18,6 +18,7 @@
 #include "encoding.h"
 #include "language.h"
 #include "lyxrc.h"
+#include "outputparams.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
@@ -214,7 +215,7 @@ TeXOnePar(Buffer const & buf,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::const_iterator pit,
 	  ostream & os, TexRow & texrow,
-	  OutputParams const & runparams,
+	  OutputParams const & runparams_in,
 	  string const & everypar)
 {
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << &*pit << " '"
@@ -229,6 +230,9 @@ TeXOnePar(Buffer const & buf,
 		style = pit->layout();
 	else
 		style = bparams.getLyXTextClass().defaultLayout();
+
+	OutputParams runparams = runparams_in;
+	runparams.moving_arg |= style->needprotect;
 
 	Language const * language = pit->getParLanguage(bparams);
 	Language const * doc_language = bparams.language;

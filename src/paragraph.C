@@ -929,8 +929,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		basefont = getLayoutFont(bparams, outerfont);
 	}
 
-	bool const moving_arg = runparams.moving_arg | style->needprotect;
-
 	// Which font is currently active?
 	LyXFont running_font(basefont);
 	// Do we have an open font change?
@@ -947,7 +945,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 			++column;
 		}
 		if (!asdefault)
-			column += startTeXParParams(bparams, os, moving_arg);
+			column += startTeXParParams(bparams, os, 
+						    runparams.moving_arg);
 	}
 
 	for (pos_type i = 0; i < size(); ++i) {
@@ -971,7 +970,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 			if (!asdefault)
 				column += startTeXParParams(bparams, os,
-							    moving_arg);
+							    runparams.moving_arg);
 		}
 
 		value_type c = getChar(i);
@@ -1029,7 +1028,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		running_change = change;
 
 		OutputParams rp = runparams;
-		rp.moving_arg = moving_arg;
 		rp.free_spacing = style->free_spacing;
 		rp.local_language = font.language()->babel();
 		rp.intitle = style->intitle;
@@ -1073,7 +1071,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	}
 
 	if (!asdefault) {
-		column += endTeXParParams(bparams, os, moving_arg);
+		column += endTeXParParams(bparams, os, runparams.moving_arg);
 	}
 
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...done " << this << endl;
