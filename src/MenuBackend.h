@@ -110,8 +110,8 @@ public:
 	///
 	typedef ItemList::const_iterator const_iterator;
 	///
-	explicit Menu(string const & name = string(), bool mb = false)
-		: menubar_(mb), name_(name) {}
+	explicit Menu(string const & name = string())
+		: name_(name) {}
 	///
 	Menu & add(MenuItem const &);
 	///
@@ -122,8 +122,6 @@ public:
 	    ViewFormats, ExportFormats, UpdateFormats
 	*/
 	void expand(Menu & tomenu, Buffer *) const;
-	///
-	bool menubar() const { return menubar_; }
 	///
 	string const & name() const { return name_; }
 	///
@@ -148,8 +146,6 @@ private:
 	///
 	ItemList items_;
 	///
-	bool menubar_;
-	///
 	string name_;
 };
 
@@ -173,7 +169,9 @@ public:
 	Menu & getMenu (string const &);
 	///
 	Menu const & getMenu (string const &) const;
-	//
+	///
+	Menu const & getMenubar() const;
+	///
 	bool empty() const { return menulist_.empty(); }
 	///
 	const_iterator begin() const {
@@ -186,6 +184,8 @@ public:
 private:
 	///
 	MenuList menulist_;
+	///
+	Menu menubar_;
 };
 
 ///

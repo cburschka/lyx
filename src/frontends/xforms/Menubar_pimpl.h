@@ -39,14 +39,17 @@ struct Menubar::Pimpl {
 public:
 	///
 	Pimpl(LyXView *, MenuBackend const &);
-	///
-	void set(string const &);
+
+	/// update the state of the menuitems
+	void update();
+
 	/// Opens a top-level submenu given its name
 	void openByName(string const &);
 
 	///
 	static void MenuCallback(FL_OBJECT *, long);
 
+private:
 	///
 	void add_toc(int menu, string const & extra_label,
 		     std::vector<int> & smn, Window win);
@@ -58,9 +61,6 @@ public:
 			   string const & menuname,
 			   std::vector<int> & smn);
 
-	/// update the state of the menuitems
-	void update() {}
-private:
 	//
 	void makeMenubar(Menu const &menu);
 
@@ -87,14 +87,5 @@ private:
 	typedef std::vector<boost::shared_ptr<ItemInfo> > ButtonList;
 	///
 	ButtonList buttonlist_;
-
-	///
-	typedef std::map<string, FL_OBJECT *> MenubarMap;
-	///
-	MenubarMap menubarmap_;
-	///
-	string current_menu_name_;
-	///
-	FL_OBJECT * current_group_;
 };
 #endif

@@ -1,5 +1,11 @@
 2002-07-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* MenuBackend.C (getMenubar): new method: return the menubar of
+	this menu set
+	(read): treat differently reading of menu and menubar (in
+	particular, the menubar has no name now)
+	(Menu::menubar): remove
+
 	* lyxfunc.C (dispatch): add 'done' message to minibuffer when
 	saving is finished
 

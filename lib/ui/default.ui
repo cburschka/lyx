@@ -1,17 +1,9 @@
 # This is the default LyX user interface definition file.         -*- text -*-
-# The syntax should be straightforward enough. The menubar
-# "main_nobuffer" (if it exists) is used when there is no buffer open;
-# otherwise, the menubar "main" is used. 
+# The syntax should be straightforward enough. 
 
 Menuset
 
-    Menubar "main_nobuffer"
-	Submenu "File|F" "file_nobuffer"
-	Submenu "Edit|E" "edit_nobuffer"
-	Submenu "Help|H" "help"
-    End
-
-    Menubar "main"
+    Menubar
 	Submenu "File|F" "file"
 	Submenu "Edit|E" "edit"
 	Submenu "Insert|I" "insert"
@@ -25,17 +17,6 @@ Menuset
 #
 # FILE MENU
 #
-    Menu "file_nobuffer"
-	Item "New|N" "buffer-new"
-	Item "New from Template...|T" "buffer-new-template"
-	Item "Open...|O" "file-open"
-	Separator
-	Submenu "Import|I" "file_import"
-	Separator
-	Item "Exit|x" "lyx-quit"
-	Separator
-	Lastfiles
-    End
 
     Menu "file"
 	Item "New|N" "buffer-new"
@@ -79,10 +60,6 @@ Menuset
 #
 # EDIT MENU
 #
-    Menu "edit_nobuffer"
-	Item "Preferences|P" "dialog-preferences"
-	Item "Reconfigure|R" "reconfigure"
-    End
 
     Menu "edit"
 	Item "Undo|U" "undo"

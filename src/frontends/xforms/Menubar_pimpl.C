@@ -87,23 +87,9 @@ extern "C" {
 
 
 Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb)
-	: owner_(static_cast<XFormsView*>(view)), menubackend_(&mb),
-	  current_group_(0)
+	: owner_(static_cast<XFormsView*>(view)), menubackend_(&mb)
 {
-	for (MenuBackend::const_iterator menu = menubackend_->begin();
-	     menu != menubackend_->end() ; ++menu) {
-		if (menu->menubar()) {
-			FL_OBJECT * group = fl_bgn_group();
-			makeMenubar(*menu);
-			fl_end_group();
-			fl_hide_object(group);
-			lyxerr[Debug::GUI]
-				<< "Menubar::Pimpl::Pimpl: "
-				<< "creating and hiding group " << group
-				<< " for menubar " << menu->name() << endl;
-			menubarmap_[menu->name()] = group;
-		}
-	}
+	makeMenubar(menubackend_->getMenubar());
 }
 
 
@@ -157,46 +143,22 @@ void Menubar::Pimpl::makeMenubar(Menu const & menu)
 }
 
 
-void Menubar::Pimpl::set(string const & menu_name)
+void Menubar::Pimpl::update()
 {
-	if (menu_name == current_menu_name_)
-		return;
- 
-	MenubarMap::iterator mbit = menubarmap_.find(menu_name);
-
-	if (mbit == menubarmap_.end()) {
-		lyxerr << "ERROR:set: Unknown menu `" << menu_name
-		       << "'" << endl;
-		return;
-	}
-
-	if (current_group_) {
-		lyxerr[Debug::GUI] << "  hiding group "
-				   << current_group_ << endl;
-		fl_hide_object(current_group_);
-	}
-
-	lyxerr[Debug::GUI] << "  showing group "
-			   << mbit->second << endl;
-	fl_show_object(mbit->second);
-	current_menu_name_ = menu_name;
-	current_group_ = mbit->second;
-	lyxerr[Debug::GUI] << "Menubar::Pimpl::set: Menubar set."
-			   << endl;
+	// nothing yet
 }
 
 
 void Menubar::Pimpl::openByName(string const & name)
 {
-	if (menubackend_->getMenu(current_menu_name_).hasSubmenu(name)) {
-		for (ButtonList::const_iterator cit = buttonlist_.begin();
-		     cit != buttonlist_.end(); ++cit) {
-			if ((*cit)->item_->submenu() == name) {
-				MenuCallback((*cit)->obj_, 1);
-				return;
-			}
+	for (ButtonList::const_iterator cit = buttonlist_.begin();
+	     cit != buttonlist_.end(); ++cit) {
+		if ((*cit)->item_->submenu() == name) {
+			MenuCallback((*cit)->obj_, 1);
+			return;
 		}
 	}
+
 	lyxerr << "Menubar::Pimpl::openByName: menu "
 	       << name << " not found" << endl;
 }

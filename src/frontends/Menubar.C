@@ -33,12 +33,6 @@ Menubar::~Menubar()
 }
 
 
-void Menubar::set(string const & name)
-{
-	pimpl_->set(name);
-}
-
-
 void Menubar::openByName(string const & name)
 {
 	pimpl_->openByName(name);

@@ -213,7 +213,7 @@ Menu & Menu::read(LyXLex & lex)
 			break;
 
 		default:
-			lex.printError("menubar::read: "
+			lex.printError("Menu::read: "
 				       "Unknown menu tag: `$$Token'");
 			break;
 		}
@@ -464,29 +464,22 @@ void MenuBackend::read(LyXLex & lex)
 		lex.printTable(lyxerr);
 
 	bool quit = false;
-	bool menubar = false;
 
 	while (lex.isOK() && !quit) {
 		switch (lex.lex()) {
 		case md_menubar:
-			menubar = true;
-			// fallback to md_menu
+			menubar_.read(lex);
+			break;
 		case md_menu: {
 			lex.next(true);
 			string const name = lex.getString();
 			if (hasMenu(name)) {
-				if (getMenu(name).menubar() == menubar) {
-					getMenu(name).read(lex);
-				} else {
-					lex.printError("Cannot append to menu `$$Token' unless it is of the same type");
-					return;
-				}
+				getMenu(name).read(lex);
 			} else {
-				Menu menu(name, menubar);
+				Menu menu(name);
 				menu.read(lex);
 				add(menu);
 			}
-			menubar = false;
 			break;
 		}
 		case md_endmenuset:
@@ -539,25 +532,11 @@ void MenuBackend::defaults()
 	documents.add(MenuItem(MenuItem::Documents));
 	add(documents);
 
-	Menu main("main", true);
-	main
-		.add(MenuItem(MenuItem::Submenu, _("File|F"), "file"))
+	menubar_.add(MenuItem(MenuItem::Submenu, _("File|F"), "file"))
 		.add(MenuItem(MenuItem::Submenu, _("Edit|E"), "edit"))
 		.add(MenuItem(MenuItem::Submenu,
 			      _("Documents|D"), "documents"));
-	add(main);
 
-	Menu main_nobuffer("main_nobuffer", true);
-	main_nobuffer.add(MenuItem(MenuItem::Submenu, _("File|F"), "file"));
-	add(main_nobuffer);
-
-	if (lyxerr.debugging(Debug::GUI)) {
-		for (const_iterator cit = begin();
-		    cit != end() ; ++cit)
-			lyxerr << "Menu name: " << cit->name()
-			       << ", Menubar: " << cit->menubar()
-			       << endl;
-	}
 }
 
 
@@ -590,4 +569,10 @@ Menu & MenuBackend::getMenu(string const & name)
 			lyx::compare_memfun(&Menu::name, name));
 	lyx::Assert(it != menulist_.end());
 	return (*it);
+}
+
+
+Menu const & MenuBackend::getMenubar() const
+{
+	return menubar_;
 }

@@ -124,12 +124,6 @@ Menubar * LyXView::getMenubar() const
 
 void LyXView::updateMenubar()
 {
-	if (!view()->buffer() && menubackend.hasMenu("main_nobuffer")) {
-		menubar_->set("main_nobuffer");
-	} else {
-		menubar_->set("main");
-	}
-
 	menubar_->update();
 }
 
