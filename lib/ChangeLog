@@ -1,3 +1,9 @@
+2005-01-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* reLyX/configure.ac: make sure the prefix is correctly quoted.
+
+	* configure.m4: small visual fix to the search for groff
+
 2005-01-06  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: remove mention of configure.cmd.
