@@ -49,7 +49,7 @@ private:
 	    combox is changed */
 	static void ComboInputCB(int, void *, Combox *);
 
-	/// Type definition from the fdesign produced header file.
+	/// Fdesign generated method
 	FD_form_character * build_character();
 	
 	///

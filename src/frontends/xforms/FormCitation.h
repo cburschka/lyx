@@ -50,7 +50,7 @@ private:
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
-	/// Type definition from the fdesign produced header file.
+	/// Fdesign generated method
 	FD_form_citation * build_citation();
 
 	///

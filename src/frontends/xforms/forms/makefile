@@ -17,7 +17,7 @@
 SHELL = /bin/sh
 .SUFFIXES: .fd .c
 
-SRCS := form_bibitem.fd \
+SRCS =  form_bibitem.fd \
 	form_bibtex.fd \
 	form_browser.fd \
 	form_character.fd \
@@ -49,7 +49,7 @@ SRCS := form_bibitem.fd \
 	form_toc.fd \
 	form_url.fd
 
-OBJS := $(SRCS:.fd=.C)
+OBJS = $(SRCS:.fd=.C)
 
 all:
 	@echo "This is a makefile intended for the maintainer only."

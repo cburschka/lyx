@@ -138,7 +138,7 @@ private:
 	///
 	void bullets_apply();
 
-	/// Typedefinitions from the fdesign produced Header file
+	/// Fdesign generated methods
 	FD_form_tabbed_document * build_tabbed_document();
 	///
 	FD_form_doc_paper * build_doc_paper();

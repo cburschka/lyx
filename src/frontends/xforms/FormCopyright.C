@@ -3,7 +3,7 @@
  * Copyright 2000-2001 The LyX Team.
  * See the file COPYING.
  *
- * \author Allan Rae
+ * \author Allan Rae, rae@lyx.org
  * \author Angus Leeming, a.leeming@.ac.uk
  */
 

@@ -100,7 +100,7 @@ private:
 		     std::pair<string,string> const & dir1,
 		     std::pair<string,string> const & dir2 );
 	
-	/// Type definitions from the fdesign produced header file.
+	/// Fdesign generated methods
 	FD_form_preferences * build_preferences();
 	///
 	FD_form_outer_tab * build_outer_tab();

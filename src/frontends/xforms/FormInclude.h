@@ -39,7 +39,8 @@ private:
 
 	///
 	ButtonPolicy::SMInput inputBrowse();
-	/// Type definition from the fdesign produced header file.
+
+	/// Fdesign generated method
 	FD_form_include * build_include();
 };
 

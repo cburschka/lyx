@@ -42,7 +42,8 @@ private:
 
 	///
 	void updateBrowser(std::vector<string> const &) const;
-	/// Type definition from the fdesign produced header file.
+
+	/// Fdesign generated method
 	FD_form_ref * build_ref();
 
 	///

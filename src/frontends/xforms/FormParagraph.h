@@ -65,7 +65,7 @@ private:
 	///
 	void extra_apply();
 #endif
-	/// Typedefinitions from the fdesign produced Header file
+	/// Fdesign generated methods
 	FD_form_tabbed_paragraph * build_tabbed_paragraph();
 	///
 	FD_form_paragraph_general * build_paragraph_general();

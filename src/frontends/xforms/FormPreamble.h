@@ -42,8 +42,8 @@ private:
 	///
 	virtual FL_FORM * form() const;
    
-	/// Typedefinitions from the fdesign produced Header file
-	FD_form_preamble  * build_preamble();
+	/// Fdesign generated method
+	FD_form_preamble * build_preamble();
    
 	/// Real GUI implementation.
 	boost::scoped_ptr<FD_form_preamble> dialog_;
