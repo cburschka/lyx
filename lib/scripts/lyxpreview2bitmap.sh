@@ -135,9 +135,9 @@ ${LATEX} ${TEXFILE} ||
 # ${METRICSFILE}.
 # This extracts lines starting "Preview: Tightpage" and
 # "Preview: Snippet".
-grep -E 'Preview: [ST]' ${LOGFILE} > ${METRICSFILE} ||
+grep 'Preview: [ST]' ${LOGFILE} > ${METRICSFILE} ||
 {
-	echo "Failed: grep -E 'Preview: [ST]' ${LOGFILE}"
+	echo "Failed: grep 'Preview: [ST]' ${LOGFILE}"
 	REQUIRED_VERSION ${LOGFILE}
 	BAIL_OUT
 }
