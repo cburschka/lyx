@@ -432,12 +432,12 @@ void BufferView::Pimpl::scrollCB(double value)
 		LyXText * vbt = bv_->text;
 		int height = vbt->DefaultHeight();
 		
-		if (vbt->cursor.y() < (int)(bv_->text->first + height)) {
+		if (vbt->cursor.y() < static_cast<int>((bv_->text->first + height))) {
 			vbt->SetCursorFromCoordinates(bv_, 0,
 						      bv_->text->first +
 						      height);
 		} else if (vbt->cursor.y() >
-			   (int)(bv_->text->first+workarea_->height()-height))
+			   static_cast<int>((bv_->text->first+workarea_->height()-height)))
 		{
 			vbt->SetCursorFromCoordinates(bv_, 0,
 						      bv_->text->first +
@@ -1221,11 +1221,11 @@ void BufferView::Pimpl::restorePosition()
 
 	beforeChange();
 
-	if( fname != buffer_->fileName() ) {
+	if (fname != buffer_->fileName()) {
 		Buffer * b = bufferlist.exists(fname) ?
 	 		bufferlist.getBuffer(fname) :
 			bufferlist.loadLyXFile(fname); // don't ask, just load it
-		if( b != 0 ) buffer(b);
+		if (b != 0 ) buffer(b);
 	}
 
 	bv_->text->SetCursorFromCoordinates(bv_, x, y);
@@ -1341,7 +1341,7 @@ void BufferView::Pimpl::toggleToggle()
 void BufferView::Pimpl::center() 
 {
 	beforeChange();
-	if (bv_->text->cursor.y() > (int)(workarea_->height() / 2)) {
+	if (bv_->text->cursor.y() > static_cast<int>((workarea_->height() / 2))) {
 		screen_->Draw(bv_->text, bv_->text->cursor.y() - workarea_->height() / 2);
 	} else {
 		screen_->Draw(bv_->text, 0);

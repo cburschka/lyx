@@ -128,7 +128,7 @@ void FontInfo::query()
 		strings = new string[matches];
 
 		// We have matches. Run them through
-		for(int i = 0; i < matches; ++i) {
+		for (int i = 0; i < matches; ++i) {
 			string name(list[i]);
 			sizes[i] = lyx::atoi(token(name, '-', 7));
 			strings[i] = name;

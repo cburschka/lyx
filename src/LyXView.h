@@ -133,10 +133,6 @@ private:
 	///
 	void invalidateLayoutChoice();
 public:
-#if 0
- 	///
- 	static int KeyPressMask_raw_callback(FL_FORM *, void * xev);
-#endif
 	/** This callback is run when a close event is sent from the
 	  window manager. */
 	static int atCloseMainFormCB(FL_FORM *, void *);

@@ -48,7 +48,7 @@ string const DefaultTrans::process(char c, TransManager & k)
 
 Trans::Trans()
 {
-	for(int i = 0; i < TEX_MAX_ACCENT + 1; ++i)
+	for (int i = 0; i < TEX_MAX_ACCENT + 1; ++i)
 		kmod_list_[i] = 0;
 }
 
@@ -87,11 +87,11 @@ void Trans::FreeException(Trans::keyexc & exclist)
 
 void Trans::FreeKeymap()
 {
-	for(int i = 0; i < 256; ++i)
+	for (int i = 0; i < 256; ++i)
 		if (!keymap_[i].empty()) {
 			keymap_[i].erase();
 		}
-	for(int i = 0; i < TEX_MAX_ACCENT + 1; ++i)
+	for (int i = 0; i < TEX_MAX_ACCENT + 1; ++i)
 		if (kmod_list_[i]) {
 			FreeException(kmod_list_[i]->exception_list);
 			delete kmod_list_[i];
@@ -150,18 +150,7 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys,
 		kmod_list_[accent]->allowed = allowed;
 	}
 	
-	for(string::size_type i = 0; i < keys.length(); ++i) {
-#if 0
-		string * temp =
-			&keymap_[static_cast<unsigned char>(keys[i])];
-#warning this is not really clean we should find a cleaner way (Jug)
-		*temp = "xx"; /* this is needed for the being sure that
-				 the below assignment is not assigned to
-				 a nullpointer (if size of string = 0)
-                      */
-		(*temp)[0] = 0;
-		(*temp)[1] = accent;
-#else
+	for (string::size_type i = 0; i < keys.length(); ++i) {
 		string & temp =
 			keymap_[static_cast<unsigned char>(keys[i])];
 		if (!temp.empty())
@@ -172,7 +161,6 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys,
 		// Lgb
 		temp += char(0);
 		temp += char(accent);
-#endif
 	}
 	kmod_list_[accent]->exception_list = 0;
 }
@@ -183,7 +171,7 @@ int Trans::Load(LyXLex & lex)
 	bool error = false;
 
 	while (lex.IsOK() && !error) {
-		switch(lex.lex()) {
+		switch (lex.lex()) {
 		case KMOD:
 		{
 			if (lyxerr.debugging(Debug::KBMAP))
@@ -198,7 +186,7 @@ int Trans::Load(LyXLex & lex)
 			string keys = lex.GetString();
 
 			if (lex.next(true)) {
-				if ( lyxerr.debugging(Debug::KBMAP))
+				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "accent\t`" << lex.text()
 					       << "'" << endl;
 			} else
@@ -250,7 +238,7 @@ int Trans::Load(LyXLex & lex)
 			// Find what key accent_2 is on - should
 			// check about accent_1 also
 			int key = 0;
-			for(; key < 256; ++key) {
+			for (; key < 256; ++key) {
 				if (!keymap_[key].empty()
 				    && keymap_[key][0] == 0
 				    && keymap_[key][1] == accent_2)
@@ -404,7 +392,7 @@ tex_accent getkeymod(string const & p)
 			       << "].name = `" << lyx_accent_table[i].name
 			       << "'" << endl;
 		
-		if ( lyx_accent_table[i].name
+		if (lyx_accent_table[i].name
 		     && contains(p, lyx_accent_table[i].name)) {
 			lyxerr[Debug::KBMAP] << "Found it!" << endl;
 			return static_cast<tex_accent>(i);

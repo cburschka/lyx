@@ -1805,7 +1805,7 @@ int LyXParagraph::GetEndLabel(BufferParams const & bparams) const
 		if (endlabeltype != END_LABEL_NO_LABEL) {
 			LyXParagraph const * last = this;
 #ifndef NEW_INSETS
-			if( footnoteflag == NO_FOOTNOTE)
+			if (footnoteflag == NO_FOOTNOTE)
 				last = LastPhysicalPar();
 			else if (next->footnoteflag == NO_FOOTNOTE)
 				return endlabeltype;
@@ -2315,7 +2315,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 				? GetFontSettings(bparams,
 						  size()-1).isRightToLeft()
 				: language->RightToLeft();
-			if ( (p = NextAfterFootnote()) != 0 &&
+			if ((p = NextAfterFootnote()) != 0 &&
 			     p->size() > 0 &&
 			     p->GetFontSettings(bparams, 0).isRightToLeft() != is_rtl)
 				is_rtl = getParLanguage(bparams)->RightToLeft();
@@ -2922,7 +2922,7 @@ void LyXParagraph::SimpleTeXSpecialChars(Buffer const * buf,
 				} 
 				// Otherwise, we use what LaTeX
 				// provides us.
-				switch(c) {
+				switch (c) {
 				case '<':
 					os << "\\textless{}";
 					column += 10;
@@ -3169,7 +3169,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 			texrow.newline();
 		}
 		os << "\\begin{minipage}";
-		switch(pextra_alignment) {
+		switch (pextra_alignment) {
 		case MINIPAGE_ALIGN_TOP:
 			os << "[t]";
 			break;
@@ -3308,7 +3308,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 				texrow.newline();
 			}
 			os << "\\begin{minipage}";
-			switch(par->pextra_alignment) {
+			switch (par->pextra_alignment) {
 			case MINIPAGE_ALIGN_TOP:
 				os << "[t]";
 				break;
@@ -3842,7 +3842,7 @@ bool LyXParagraph::IsLetter(LyXParagraph::size_type pos) const
 	if (IsLetterChar(c))
 		return true;
 	// '\0' is not a letter, allthough every string contains "" (below)
-	if( c == '\0')
+	if (c == '\0')
 		return false;
 	// We want to pass the ' and escape chars to ispell
 	string extra = lyxrc.isp_esc_chars + '\'';
@@ -3892,7 +3892,7 @@ bool LyXParagraph::isRightToLeftPar(BufferParams const & bparams) const
 void LyXParagraph::ChangeLanguage(BufferParams const & bparams,
 				  Language const * from, Language const * to)
 {
-	for(size_type i = 0; i < size(); ++i) {
+	for (size_type i = 0; i < size(); ++i) {
 		LyXFont font = GetFontSettings(bparams, i);
 		if (font.language() == from) {
 			font.setLanguage(to);

@@ -43,7 +43,7 @@ void my_memcpy( void * ps_in, const void * pt_in, size_t n )
     char * ps = static_cast<char *>(ps_in);
     char const * pt = static_cast<char const *>(pt_in);
     /*
-    for(size_t i = n; i--;)
+    for (size_t i = n; i--;)
 	*ps++ = *pt++;
 	*/
     while (n--) *ps++ = *pt++;

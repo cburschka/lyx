@@ -373,7 +373,7 @@ bool FileInfo::isSocket() const
 
 
 // should not be in FileInfo
-bool FileInfo::access(int p)
+bool FileInfo::access(int p) const
 {
 	// if we don't have a filename we fail
 	if (fname.empty()) return false;

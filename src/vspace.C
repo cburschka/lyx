@@ -168,7 +168,7 @@ bool isValidGlueLength (string const & data, LyXGlueLength * result)
 	// To make isValidGlueLength recognize negative values as
 	// the first number this little hack is needed:
 	short val_sign = 1; // positive as default
-	switch(buffer[0]) {
+	switch (buffer[0]) {
 	case '-':
 		lyx_advance(buffer, 1);
 		val_sign = -1;
@@ -232,7 +232,7 @@ bool isValidLength(string const & data, LyXLength * result)
 	// To make isValidLength recognize negative values
 	// this little hack is needed:
 	short val_sign = 1; // positive as default
-	switch(buffer[0]) {
+	switch (buffer[0]) {
 	case '-':
 		lyx_advance(buffer, 1);
 		val_sign = -1;

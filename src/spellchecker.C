@@ -301,7 +301,7 @@ void init_spell_checker(BufferParams const & params, string const & lang)
 
 	isp_pid = -1;
 
-	if(pipe(pipein) == -1 || pipe(pipeout) == -1) {
+	if (pipe(pipein) == -1 || pipe(pipeout) == -1) {
 		lyxerr << "LyX: Can't create pipe for spellchecker!" << endl;
 		goto END;
 	}
@@ -324,13 +324,13 @@ void init_spell_checker(BufferParams const & params, string const & lang)
 
 	isp_pid = fork();
 
-	if(isp_pid == -1) {
+	if (isp_pid == -1) {
 		lyxerr << "LyX: Can't create child process for spellchecker!"
 		       << endl;
 		goto END;
 	}
 	
-	if(isp_pid == 0) {        
+	if (isp_pid == 0) {        
 		/* child process */
 		dup2(pipein[0], STDIN_FILENO);
 		dup2(pipeout[1], STDOUT_FILENO);
@@ -584,7 +584,7 @@ void sc_accept_word(string const & word)
 
 static inline
 void sc_store_replacement(string const & mis, string const & cor) {
-        if(actual_spell_checker == ASC_ASPELL) {
+        if (actual_spell_checker == ASC_ASPELL) {
                 ::fputs("$$ra ", out);
                 ::fputs(mis.c_str(), out);
                 ::fputc(',', out);
@@ -840,7 +840,7 @@ bool RunSpellChecker(BufferView * bv)
 		
 		// Update slider if and only if value has changed
 		newvalue = int(100.0*newval);
-		if(newvalue!= oldval) {
+		if (newvalue!= oldval) {
 			oldval = newvalue;
 			fl_set_slider_value(fd_form_spell_check->slider, oldval);
 		}
@@ -946,7 +946,7 @@ bool RunSpellChecker(BufferView * bv)
 		}
 	}
    
-	if(sc_still_alive()) {
+	if (sc_still_alive()) {
 		close_spell_checker();
 		string word_msg(tostr(word_count));
 		if (word_count != 1) {

@@ -44,7 +44,7 @@ FormUrl::~FormUrl()
 
 FL_FORM * FormUrl::form() const
 {
-	if ( dialog_ ) return dialog_->form;
+	if (dialog_ ) return dialog_->form;
 	return 0;
 }
 
@@ -74,12 +74,12 @@ void FormUrl::update()
 	fl_set_input(dialog_->url,  params.getContents().c_str());
 	fl_set_input(dialog_->name, params.getOptions().c_str());
 
-	if ( params.getCmdName() == "url" )
+	if (params.getCmdName() == "url" )
 		fl_set_button(dialog_->radio_html, 0);
 	else
 		fl_set_button(dialog_->radio_html, 1);
 
-	if ( lv_->buffer()->isReadonly() ) {
+	if (lv_->buffer()->isReadonly()) {
 		fl_deactivate_object( dialog_->url );
 		fl_deactivate_object( dialog_->name );
 		fl_deactivate_object( dialog_->radio_html );

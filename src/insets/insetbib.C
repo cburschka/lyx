@@ -84,7 +84,7 @@ InsetBibKey::InsetBibKey(InsetCommandParams const & p)
 
 InsetBibKey::~InsetBibKey()
 {
-	if(bibitem_form && bibitem_form->bibitem_form
+	if (bibitem_form && bibitem_form->bibitem_form
 	   && bibitem_form->bibitem_form->visible
 	   && bibitem_form->bibitem_form->u_vdata == &holder)
 		fl_hide_form(bibitem_form->bibitem_form);
@@ -106,7 +106,7 @@ void InsetBibKey::callback( FD_bibitem_form * form, long data )
 		// Do NOT change this to
 		// holder.view->buffer() as this code is used by both
 		// InsetBibKey and InsetBibtex! Ughhhhhhh!!!!
-		if(!current_view->buffer()->isReadonly()) {
+		if (!current_view->buffer()->isReadonly()) {
 			setContents(fl_get_input(form->key));
 			setOptions(fl_get_input(form->label));
 			// shouldn't mark the buffer dirty unless
@@ -176,7 +176,7 @@ string const InsetBibKey::getScreenLabel() const
 */
 void InsetBibKey::Edit(BufferView * bv, int, int, unsigned int)
 {
-	if(bv->buffer()->isReadonly())
+	if (bv->buffer()->isReadonly())
 		WarnReadonly(bv->buffer()->fileName());
 	
 	if (!bibitem_form) {
@@ -213,7 +213,7 @@ InsetBibtex::InsetBibtex(InsetCommandParams const & p)
 
 InsetBibtex::~InsetBibtex()
 {
-	if(bibitem_form && bibitem_form->bibitem_form
+	if (bibitem_form && bibitem_form->bibitem_form
 	   && bibitem_form->bibitem_form->visible
 	   && bibitem_form->bibitem_form->u_vdata == &holder)
 		fl_hide_form(bibitem_form->bibitem_form);
@@ -283,7 +283,7 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 			string linebuf0;
 			while (getline(ifs, linebuf0)) {
 				string linebuf = frontStrip(strip(linebuf0));
-				if( linebuf.empty() ) continue;
+				if (linebuf.empty() ) continue;
 				if (prefixIs(linebuf, "@")) {
 					linebuf = subst(linebuf, '{', '(');
 					linebuf = split(linebuf, tmp, '(');
@@ -296,7 +296,7 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 							keys.push_back(pair<string,string>(tmp,string()));
 						}
 					}
-				} else if( !keys.empty() ) {
+				} else if (!keys.empty()) {
 					keys.back().second += linebuf + "\n";
 				}
 			}

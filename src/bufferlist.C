@@ -109,7 +109,7 @@ bool BufferList::QwriteAll()
 				fname = MakeDisplayPath((*it)->fileName(), 50);
 			bool reask = true;
 			while(reask) {
-				switch(AskConfirmation(_("Changes in document:"),
+				switch (AskConfirmation(_("Changes in document:"),
 						       fname,
 						       _("Save document?"))) {
 				case 1: // Yes
@@ -185,7 +185,7 @@ bool BufferList::close(Buffer * buf)
 			fname = MakeDisplayPath(buf->fileName(), 50);
 		bool reask = true;
 		while (reask) {
-			switch(AskConfirmation(_("Changes in document:"),
+			switch (AskConfirmation(_("Changes in document:"),
 					       fname,
 					       _("Save document?"))){
 			case 1: // Yes
@@ -291,50 +291,6 @@ void BufferList::emergencyWrite(Buffer * buf)
 		      buf->isUnnamed() ? OnlyFilename(buf->fileName()).c_str()
 		      : buf->fileName().c_str()) << endl;
 	
-	//if (buf->isUnnamed())
-	//	lyxerr << OnlyFilename(buf->fileName());
-	//else
-	//	lyxerr << buf->fileName();
-	//lyxerr << _(" as...") << endl;
-	
-	// Let's unroll this loop (Lgb)
-#if 0
-	bool madeit = false;
-	
-	for (int i = 0; i < 3 && !madeit; ++i) {
-		string s;
-		
-		// We try to save three places:
-		// 1) Same place as document.
-		// 2) In HOME directory.
-		// 3) In "/tmp" directory.
-		if (i == 0) {
-			if (buf->isUnnamed())
-				continue;
-			s = buf->fileName();
-		} else if (i == 1) {
-			s = AddName(GetEnvPath("HOME"), buf->fileName());
-		} else {
-			// MakeAbsPath to prepend the current
-			// drive letter on OS/2
-			s = AddName(MakeAbsPath("/tmp/"), buf->fileName());
-		}
-		s += ".emergency";
-		
-		lyxerr << "  " << i + 1 << ") " << s << endl;
-		
-		if (buf->writeFile(s, true)) {
-			buf->markLyxClean();
-			lyxerr << _("  Save seems successful. Phew.") << endl;
-			madeit = true;
-		} else if (i != 2) {
-			lyxerr << _("  Save failed! Trying...") << endl;
-		} else {
-			lyxerr << _("  Save failed! Bummer. Document is lost.")
-			       << endl;
-		}
-	}
-#else
 	// We try to save three places:
 
 	// 1) Same place as document. Unless it is an unnamed doc.
@@ -375,7 +331,6 @@ void BufferList::emergencyWrite(Buffer * buf)
 		return;
 	}
 	lyxerr << _("  Save failed! Bummer. Document is lost.") << endl;
-#endif
 }
 
 

@@ -285,7 +285,7 @@ bool BufferView::gotoLabel(string const & label)
 	for (Buffer::inset_iterator it = buffer()->inset_iterator_begin();
 	     it != buffer()->inset_iterator_end(); ++it) {
 		vector<string> labels = (*it)->getLabelList();
-		if ( find(labels.begin(),labels.end(),label)
+		if (find(labels.begin(),labels.end(),label)
 		     != labels.end()) {
 			beforeChange();
 			text->SetCursor(this, it.getPar(), it.getPos());

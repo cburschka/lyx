@@ -44,7 +44,7 @@ FormIndex::~FormIndex()
 
 FL_FORM * FormIndex::form() const
 {
-	if ( dialog_ ) return dialog_->form;
+	if (dialog_ ) return dialog_->form;
 	return 0;
 }
 
@@ -73,7 +73,7 @@ void FormIndex::update()
 {
 	fl_set_input(dialog_->key, params.getContents().c_str());
 
-	if ( lv_->buffer()->isReadonly() ) {
+	if (lv_->buffer()->isReadonly()) {
 		fl_deactivate_object( dialog_->key );
 		fl_deactivate_object( dialog_->ok );
 		fl_set_object_lcol( dialog_->ok, FL_INACTIVE );

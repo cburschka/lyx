@@ -153,7 +153,7 @@ void ExternalTemplateManager::readTemplates(string const & path)
 	}
 	
 	while (lex.IsOK()) {
-		switch(lex.lex()) {
+		switch (lex.lex()) {
 		case TM_TEMPLATE: {
 			lex.next();
 			string temp = lex.GetString();
@@ -273,7 +273,7 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 	pushpophelper pph(lex, formattags, FO_END);
 	
 	while (lex.IsOK()) {
-		switch(lex.lex()) {
+		switch (lex.lex()) {
 		case FO_PRODUCT:
 			lex.next(true);
 			product = lex.GetString();

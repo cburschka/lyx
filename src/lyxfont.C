@@ -192,7 +192,7 @@ LyXFont & LyXFont::decSize()
 /// Increases font size by one
 LyXFont & LyXFont::incSize() 
 {
-	switch(size()) {
+	switch (size()) {
 	case SIZE_HUGER:	break;
 	case SIZE_HUGE:         setSize(SIZE_HUGER);    break;
 	case SIZE_LARGEST:      setSize(SIZE_HUGE);     break;
@@ -245,7 +245,7 @@ LyXFont::FONT_MISC_STATE LyXFont::setMisc(FONT_MISC_STATE newfont,
 void LyXFont::update(LyXFont const & newfont,
 		     Language const * document_language, bool toggleall)
 {
-	if(newfont.family() == family() && toggleall)
+	if (newfont.family() == family() && toggleall)
 		setFamily(INHERIT_FAMILY); // toggle 'back'
 	else if (newfont.family() != IGNORE_FAMILY)
 		setFamily(newfont.family());
@@ -268,7 +268,7 @@ void LyXFont::update(LyXFont const & newfont,
 		break;
 	}
 
-	if(newfont.shape() == shape() && toggleall)
+	if (newfont.shape() == shape() && toggleall)
 		setShape(INHERIT_SHAPE); // toggle 'back'
 	else if (newfont.shape() != IGNORE_SHAPE)
 		setShape(newfont.shape());

@@ -180,7 +180,7 @@ int LyXLookupString(XEvent * event,
 		result =  XmbLookupString(xic, &event->xkey, buffer_return,
 				       bytes_buffer, keysym_return,
 				       &status_return);
-		switch(status_return) {
+		switch (status_return) {
 		case XBufferOverflow:
 			lyxerr[Debug::KEY] << "XBufferOverflow" << endl;
 			break;

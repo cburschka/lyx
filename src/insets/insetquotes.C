@@ -78,7 +78,7 @@ InsetQuotes::InsetQuotes(char c, BufferParams const & params)
 	: language(params.quotes_language), times(params.quotes_times)
 {
 	// Decide whether left or right 
-	switch(c) {
+	switch (c) {
 	case ' ': case '(': case '{': case '[': case '-': case ':':
 	case LyXParagraph::META_HFILL:
 	case LyXParagraph::META_NEWLINE: 
@@ -272,7 +272,7 @@ int InsetQuotes::Linuxdoc(Buffer const *, ostream & os) const
 
 int InsetQuotes::DocBook(Buffer const *, ostream & os) const
 {
-	if(times == InsetQuotes::DoubleQ) {
+	if (times == InsetQuotes::DoubleQ) {
 		if (side == InsetQuotes::LeftQ)
 			os << "&ldquo;";
 		else

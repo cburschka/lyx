@@ -88,7 +88,7 @@ bool isStrInt(string const & str)
 	if (tmpstr.empty()) return false;
        
 	string::const_iterator cit = tmpstr.begin();
-	if ( (*cit) == '-') ++cit;
+	if ((*cit) == '-') ++cit;
 	string::const_iterator end = tmpstr.end();
 	for (; cit != end; ++cit) {
 		if (!isdigit((*cit))) return false;
@@ -121,7 +121,7 @@ bool isStrDbl(string const & str)
 
 	string::const_iterator cit = tmpstr.begin();
 	bool found_dot(false);
-	if ( (*cit) == '-') ++cit;
+	if ((*cit) == '-') ++cit;
 	string::const_iterator end = tmpstr.end();
 	for (; cit != end; ++cit) {
 		if (!isdigit((*cit))
@@ -427,7 +427,7 @@ string const subst(string const & a, char oldchar, char newchar)
 	string tmp(a);
 	string::iterator lit = tmp.begin();
 	string::iterator end = tmp.end();
-	for(; lit != end; ++lit)
+	for (; lit != end; ++lit)
 		if ((*lit) == oldchar)
 			(*lit) = newchar;
 	return tmp;

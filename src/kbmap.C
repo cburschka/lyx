@@ -167,7 +167,7 @@ void kb_keymap::print(string & buf) const
 int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 {
 	unsigned int code = seq->sequence[idx];
-	if(code == NoSymbol) return -1;
+	if (code == NoSymbol) return -1;
 
 	unsigned int modmsk = seq->modifiers[idx];
 
@@ -185,7 +185,7 @@ int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 					<< buf
 					<< "' is overriding old binding..."
 					<< endl;
-				if((*it).table) {
+				if ((*it).table) {
 					delete (*it).table;
 					(*it).table = 0;
 				}

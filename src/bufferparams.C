@@ -57,7 +57,7 @@ BufferParams::BufferParams()
 	sides = LyXTextClass::OneSide;
 	columns = 1;
 	pagestyle = "default";
-	for(int iter = 0; iter < 4; ++iter) {
+	for (int iter = 0; iter < 4; ++iter) {
 		user_defined_bullets[iter] = temp_bullets[iter] 
 			                   = ITEMIZE_DEFAULTS[iter];
 	}
@@ -139,7 +139,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\defskip " << defskip.asLyXCommand()
 	   << "\n\\quotes_language "
 	   << string_quotes_language[quotes_language] << '\n';
-	switch(quotes_times) {
+	switch (quotes_times) {
 		// An output operator for insetquotes would be nice
 	case InsetQuotes::SingleQ:
 		os << "\\quotes_times 1\n"; break;

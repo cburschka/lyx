@@ -40,7 +40,7 @@ string const InsetCitation::getScreenLabel() const
 			keys = frontStrip(split(keys, key, ','));
 
 			string::size_type size = label.size() + 2 + key.size();
-			if( size >= maxSize ) {
+			if (size >= maxSize) {
 				label += ", ...";
 				break;
 			}

@@ -188,7 +188,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 	while (!finished && lexrc.IsOK() && !error) {
 		int le = lexrc.lex();
 		// See comment in lyxrc.C.
-		switch(le) {
+		switch (le) {
 		case LyXLex::LEX_FEOF:
 			continue; 
 
@@ -198,7 +198,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			continue; 
 		default: break;
 		}
-		switch(static_cast<LayoutTags>(le)) {
+		switch (static_cast<LayoutTags>(le)) {
 		case LT_END:		// end of structure
 			finished = true;
 			break;
@@ -429,7 +429,7 @@ void LyXLayout::readAlign(LyXLex & lexrc)
 		return; 
 	default: break;
 	};
-	switch(static_cast<AlignTags>(le)) {
+	switch (static_cast<AlignTags>(le)) {
 	case AT_BLOCK:
 		align = LYX_ALIGN_BLOCK;
 		break;
@@ -610,7 +610,7 @@ void LyXLayout::readEndLabelType(LyXLex & lexrc)
 	pushpophelper pph(lexrc, endlabelTypeTags,
 			  END_LABEL_ENUM_LAST-END_LABEL_ENUM_FIRST+1);
 	int le = lexrc.lex();
-	switch(le) {
+	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown labeltype tag `$$Token'");
 		break;
@@ -641,7 +641,7 @@ void LyXLayout::readMargin(LyXLex & lexrc)
 	pushpophelper pph(lexrc, marginTags, MARGIN_RIGHT_ADDRESS_BOX);
 
 	int le = lexrc.lex();
-	switch(le) {
+	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown margin type tag `$$Token'");
 		return;
@@ -710,13 +710,13 @@ void LyXLayout::readSpacing(LyXLex & lexrc)
 
 	pushpophelper pph(lexrc, spacingTags, ST_OTHER);
 	int le = lexrc.lex();
-	switch(le) {
+	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown spacing token `$$Token'");
 		return;
 	default: break;
 	}
-	switch(static_cast<SpacingTags>(le)) {
+	switch (static_cast<SpacingTags>(le)) {
 	case ST_SPACING_SINGLE:
 		spacing.set(Spacing::Single);
 		break;
@@ -835,7 +835,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 	// parsing
 	while (lexrc.IsOK() && !error) {
 		int le = lexrc.lex();
-		switch(le) {
+		switch (le) {
 		case LyXLex::LEX_FEOF:
 			continue; 
 
@@ -845,7 +845,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			continue; 
 		default: break;
 		}
-		switch(static_cast<TextClassTags>(le)) {
+		switch (static_cast<TextClassTags>(le)) {
 		case TC_OUTPUTTYPE:   // output type definition
 			readOutputType(lexrc);
 			break;
@@ -901,7 +901,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			
 		case TC_SIDES:
 			if (lexrc.next()) {
-				switch(lexrc.GetInteger()) {
+				switch (lexrc.GetInteger()) {
 				case 1: sides_ = OneSide; break;
 				case 2: sides_ = TwoSides; break;
 				default:
@@ -1003,7 +1003,7 @@ void LyXTextClass::readOutputType(LyXLex & lexrc)
 	pushpophelper pph(lexrc, outputTypeTags, LITERATE);
 
 	int le = lexrc.lex();
-	switch(le) {
+	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown output type `$$Token'");
 		return;
@@ -1053,7 +1053,7 @@ void LyXTextClass::readMaxCounter(LyXLex & lexrc)
 
 	pushpophelper pph(lexrc, maxCounterTags, MC_COUNTER_ENUMIV);
 	int le = lexrc.lex();
-	switch(le) {
+	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown MaxCounter tag `$$Token'");
 		return; 
@@ -1237,7 +1237,7 @@ LyXTextClassList::NumberOfLayout(LyXTextClassList::size_type textclass,
 				 string const & name) const
 {
 	classlist[textclass].load();
-	for(unsigned int i = 0; i < classlist[textclass].numLayouts(); ++i) {
+	for (unsigned int i = 0; i < classlist[textclass].numLayouts(); ++i) {
 		if (classlist[textclass][i].name() == name)
 			return make_pair(true, i);
 	}

@@ -52,7 +52,7 @@ FormRef::~FormRef()
 
 FL_FORM * FormRef::form() const
 {
-	if ( dialog_ ) return dialog_->form;
+	if (dialog_ ) return dialog_->form;
 	return 0;
 }
 
@@ -84,7 +84,7 @@ void FormRef::build()
 	minw_sb = minw_;
 
 	// Name is irrelevant to LaTeX documents
-	if ( lv_->buffer()->isLatex() ) {
+	if (lv_->buffer()->isLatex()) {
 		fl_deactivate_object( dialog_->name );
 		fl_set_object_lcol( dialog_->name, FL_INACTIVE );
 	}
@@ -111,7 +111,7 @@ void FormRef::update()
 	fl_set_object_label(dialog_->button_go, _("Goto reference"));
 
 	refs.clear();
-	if ( inset_ == 0 ) {
+	if (inset_ == 0) {
 		refs = lv_->buffer()->getLabelList();
 		updateBrowser( refs );
 		showBrowser();
@@ -124,15 +124,15 @@ void FormRef::update()
 
 void FormRef::updateBrowser( vector<string> keys ) const
 {
-	if ( fl_get_button( dialog_->sort ) )
+	if (fl_get_button( dialog_->sort ) )
 		sort( keys.begin(), keys.end() );
 
 	fl_clear_browser( dialog_->browser );
-	for( vector<string>::const_iterator it = keys.begin();
+	for (vector<string>::const_iterator it = keys.begin();
 	     it != keys.end(); ++it )
 		fl_add_browser_line( dialog_->browser, (*it).c_str());
 
-	if ( keys.empty() ) {
+	if (keys.empty()) {
 		fl_add_browser_line( dialog_->browser,
 				     _("*** No labels found in document ***"));
 
@@ -203,7 +203,7 @@ void FormRef::setSize( int w, int dx ) const
 	static int x6 = dialog_->button_cancel->x;
 	static int y6 = dialog_->button_cancel->y;
 
-	if ( form()->w != w ) {
+	if (form()->w != w) {
 		minw_ = w;
 		fl_set_form_size( form(), minw_, minh_ );
 	} else
@@ -218,7 +218,7 @@ void FormRef::setSize( int w, int dx ) const
 
 	// These two must be reset apparently
 	// Name is irrelevant to LaTeX documents
-	if ( lv_->buffer()->isLatex() ) {
+	if (lv_->buffer()->isLatex()) {
 		fl_deactivate_object( dialog_->name );
 		fl_set_object_lcol( dialog_->name, FL_INACTIVE );
 	}
@@ -259,12 +259,12 @@ void FormRef::apply()
 bool FormRef::input( FL_OBJECT *, long data )
 {
 	bool activate( true );
-	switch( data ) {
+	switch (data) {
 	// goto reference / go back
 	case 1:
 	{
 		toggle = static_cast<Goto>(toggle + 1);
-		if ( toggle == GOFIRST ) toggle = GOREF;
+		if (toggle == GOFIRST ) toggle = GOREF;
 	
 		switch (toggle) {
 		case GOREF:
@@ -294,7 +294,7 @@ bool FormRef::input( FL_OBJECT *, long data )
 	case 2:
 	{
 		unsigned int sel = fl_get_browser( dialog_->browser );
-		if ( sel < 1 || sel > refs.size() ) break;
+		if (sel < 1 || sel > refs.size() ) break;
 
 		string s = fl_get_browser_line( dialog_->browser, sel );
 		fl_set_input( dialog_->ref, s.c_str());
@@ -326,8 +326,8 @@ bool FormRef::input( FL_OBJECT *, long data )
 	{
 		Type type = static_cast<Type>( 
 			fl_get_choice(dialog_->type) - 1 );
-		if ( params.getCmdName() == getName( type )
-		    && inset_ ) {
+		if (params.getCmdName() == getName( type )
+		    && inset_) {
 			activate = false;
 		}
 	}
@@ -344,16 +344,16 @@ FormRef::Type FormRef::getType() const
 {
 	Type type;
 
-	if ( params.getCmdName() == "ref" )
+	if (params.getCmdName() == "ref" )
 		type = REF;
 
-	else if ( params.getCmdName() == "pageref" )
+	else if (params.getCmdName() == "pageref" )
 		type = PAGEREF;
 
-	else if ( params.getCmdName() == "vref" )
+	else if (params.getCmdName() == "vref" )
 		type = VREF;
 
-	else if ( params.getCmdName() == "vpageref" )
+	else if (params.getCmdName() == "vpageref" )
 		type = VPAGEREF;
 
 	else
@@ -367,7 +367,7 @@ string FormRef::getName( Type type ) const
 {
 	string name;
 
-	switch( type ) {
+	switch (type) {
 	case REF:
 		name = "ref";
 		break;

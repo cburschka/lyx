@@ -319,7 +319,7 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 		char c;
 		int tmpx = x;
-		for(size_t i = 0; i < ls; ++i) {
+		for (size_t i = 0; i < ls; ++i) {
 			c = s[i];
 			if (islower(static_cast<unsigned char>(c))) {
 				c = toupper(c);
@@ -359,7 +359,7 @@ PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 		static XChar2b c = {0, 0};
 		int tmpx = x;
-		for(int i = 0; i < ls; ++i) {
+		for (int i = 0; i < ls; ++i) {
 			if (s[i].byte1 == 0 && islower(s[i].byte2)) {
 				c.byte2 = toupper(s[i].byte2);
 				lyxfont::XSetFont(display, gc, smallfont);

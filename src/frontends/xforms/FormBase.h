@@ -70,7 +70,7 @@ protected: // methods
 	/** Filter the inputs on callback from xforms
 	    Return true if inputs are valid.
 	 */
-	virtual bool input( FL_OBJECT *, long ) {
+	virtual bool input( FL_OBJECT *, long) {
 		return true;
 	}
 	/// Apply from dialog (modify or create inset)

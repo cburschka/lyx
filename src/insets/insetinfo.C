@@ -173,7 +173,7 @@ void InsetInfo::CloseInfoCB(FL_OBJECT * ob, long)
 	InsetInfo * inset = static_cast<InsetInfo*>(ob->u_vdata);
 	string tmp = fl_get_input(inset->strobj);
 	Buffer * buffer = current_view->buffer();
-	if(tmp != inset->contents && !(buffer->isReadonly()) ) {
+	if (tmp != inset->contents && !(buffer->isReadonly())) {
 		buffer->markDirty();
 		inset->contents = tmp;
 	}
@@ -203,7 +203,7 @@ void InsetInfo::Edit(BufferView *bv, int, int, unsigned int)
 {
 	static int ow = -1, oh;
 
-	if(bv->buffer()->isReadonly())
+	if (bv->buffer()->isReadonly())
 		WarnReadonly(bv->buffer()->fileName());
 	
 	if (!form) {

@@ -58,7 +58,7 @@ public:
 	///
 	string const & getContents() const { return contents; }
 	///
-	void setCmdName( string const & n ) { cmdname = n; }
+	void setCmdName( string const & n) { cmdname = n; }
 	///
 	void setOptions(string const & o) { options = o; }
 	///

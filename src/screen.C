@@ -126,9 +126,8 @@ void LyXScreen::DrawOneRow(LyXText * text, Row * row, int y_text,
 {
 	int y = y_text - text->first + y_offset;
 
-	if (((y+row->height()) > 0) &&
-	    ((y-row->height()) <= (int)owner.height()))
-	{
+	if (((y + row->height()) > 0) &&
+	    ((y - row->height()) <= static_cast<int>(owner.height()))) {
 		// ok there is something visible
 		LyXText::text_status st = text->status;
 		do {
@@ -221,16 +220,16 @@ bool LyXScreen::FitManualCursor(LyXText * text,
 {
 	int newtop = text->first;
   
-	if (y + desc - text->first >= (int)owner.height())
+	if (y + desc - text->first >= static_cast<int>(owner.height()))
 		newtop = y - 3 * owner.height() / 4;  // the scroll region must be so big!!
-	else if (y - asc < (int)text->first
+	else if (y - asc < static_cast<int>(text->first)
 		&& text->first > 0) {
 		newtop = y - owner.height() / 4;
 	}
 
 	newtop = max(newtop, 0); // can newtop ever be < 0? (Lgb)
   
-	if (newtop != (int)text->first) {
+	if (newtop != static_cast<int>(text->first)) {
 		Draw(text, newtop);
 		text->first = newtop;
 		return true;
@@ -243,7 +242,7 @@ void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 				 int asc, int desc, Cursor_Shape shape)
 {
 	int y1 = max(y - text->first - asc, 0);
-	int y2 = min(y - text->first + desc, (int)owner.height());
+	int y2 = min(y - text->first + desc, static_cast<int>(owner.height()));
 
 	// Secure against very strange situations
 	y2 = max(y2, y1);
@@ -253,11 +252,11 @@ void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 		cursor_pixmap = 0;
 	}
 
-	if ((y2 > 0) && (y1 < int(owner.height()))) {
+	if (y2 > 0 && y1 < int(owner.height())) {
 		cursor_pixmap_h = y2 - y1 + 1;
 		cursor_pixmap_y = y1;
 
-		switch(shape) {
+		switch (shape) {
 		case BAR_SHAPE:
 			cursor_pixmap_w = 1;
 			cursor_pixmap_x = x;
@@ -294,7 +293,7 @@ void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 			  y1 + owner.ypos(),
 			  x + owner.xpos(),
 			  y2 + owner.ypos());
-		switch(shape) {
+		switch (shape) {
 		case BAR_SHAPE:
 			break;
 		case L_SHAPE:
@@ -358,7 +357,7 @@ unsigned int LyXScreen::TopCursorVisible(LyXText const * text)
 		else
 			newtop = text->cursor.y()
 				- 3 * owner.height() / 4;   /* the scroll region must be so big!! */
-	} else if ((int)(text->cursor.y() - text->cursor.row()->baseline()) <
+	} else if (static_cast<int>((text->cursor.y()) - text->cursor.row()->baseline()) <
 		   text->first && text->first > 0)
 	{
 		if (text->cursor.row()->height() < owner.height()
@@ -391,7 +390,7 @@ bool LyXScreen::FitCursor(LyXText * text)
    
 void LyXScreen::Update(LyXText * text, int y_offset, int x_offset)
 {
-	switch(text->status) {
+	switch (text->status) {
 	case LyXText::NEED_MORE_REFRESH:
 	{
 		int y = max(int(text->refresh_y - text->first), 0);
@@ -425,14 +424,15 @@ void LyXScreen::ToggleSelection(LyXText * text,  bool kill_selection,
 	// only if there is a selection
 	if (!text->selection) return;
 
-	int bottom = min(max((int)(text->sel_end_cursor.y()
+	int bottom = min(max(static_cast<int>(text->sel_end_cursor.y()
 			      - text->sel_end_cursor.row()->baseline()
-			      + text->sel_end_cursor.row()->height()), text->first),
-			  (int)(text->first + owner.height()));
-	int top = min(max((int)(text->sel_start_cursor.y() -
+			      + text->sel_end_cursor.row()->height()),
+					      text->first),
+			  static_cast<int>(text->first + owner.height()));
+	int top = min(max(static_cast<int>(text->sel_start_cursor.y() -
 			  text->sel_start_cursor.row()->baseline()),
 			  text->first),
-		      (int)(text->first + owner.height()));
+		      static_cast<int>(text->first + owner.height()));
 
 	if (kill_selection)
 		text->selection = 0;
@@ -456,8 +456,10 @@ void LyXScreen::ToggleToggle(LyXText * text, int y_offset, int x_offset)
 		- text->toggle_end_cursor.row()->baseline() 
 		+ text->toggle_end_cursor.row()->height();
 	
-	bottom = min(max(bottom, text->first), (int)(text->first + owner.height()));
-	top = min(max(top, text->first), (int)(text->first + owner.height()));
+	bottom = min(max(bottom, text->first),
+		     static_cast<int>(text->first + owner.height()));
+	top = min(max(top, text->first),
+		  static_cast<int>(text->first + owner.height()));
 
 	DrawFromTo(text, top - text->first, bottom - text->first, y_offset,
 		   x_offset);

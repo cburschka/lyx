@@ -120,7 +120,7 @@ void LyXFindReplace::SearchReplaceCB()
 	// in order to avoid endless loop :-(
 	if (SF.SearchString().length() == 0
 	    || (SF.SearchString().length() == 1
-		&& SF.SearchString()[0] == ' ') ) {
+		&& SF.SearchString()[0] == ' ')) {
 		WriteAlert(_("Sorry!"), _("You cannot replace a single space, "
 					  "nor an empty character."));
 		return;
@@ -157,7 +157,7 @@ void LyXFindReplace::SearchReplaceAllCB()
 	// in order to avoid endless loop :-(
 	if (SF.SearchString().length() == 0
 	    || (SF.SearchString().length() == 1
-		&& SF.SearchString()[0] == ' ') ) {
+		&& SF.SearchString()[0] == ' ')) {
 		WriteAlert(_("Sorry!"), _("You cannot replace a single space, "
 					  "nor an empty character."));
 		return;
@@ -186,7 +186,7 @@ void LyXFindReplace::SearchReplaceAllCB()
 			++replace_count;
 		}
 	} while (SearchCB(true));
-	if( replace_count == 0 ) {
+	if (replace_count == 0) {
 		LyXBell();	
 		bv->owner()->getMiniBuffer()->Set(
 			_("String not found!"));

@@ -24,9 +24,6 @@
 #endif
 
 #include "version.h"
-#if 0
-#include "lyxlookup.h"
-#endif
 #include "kbmap.h"
 #include "lyxfunc.h"
 #include "bufferlist.h"
@@ -217,7 +214,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	// implementations? (Lgb)
 	// This code snippet makes lyx ignore some keys. Perhaps
 	// all of them should be explictly mentioned?
-	if((keysym >= XK_Shift_L && keysym <= XK_Hyper_R)
+	if ((keysym >= XK_Shift_L && keysym <= XK_Hyper_R)
 	   || keysym == XK_Mode_switch || keysym == 0x0)
 		return 0;
 
@@ -232,7 +229,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	// When not cancel or meta-fake, do the normal lookup. 
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
 	// Mostly, meta_fake_bit = 0. RVDK_PATCH_5.
-	if ( (action != LFUN_CANCEL) && (action != LFUN_META_FAKE) ) {
+	if ((action != LFUN_CANCEL) && (action != LFUN_META_FAKE)) {
 
 		// remove Caps Lock and Mod2 as a modifiers
 		action = keyseq.addkey(keysym,
@@ -258,7 +255,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	// why not return already here if action == -1 and
 	// num_bytes == 0? (Lgb)
 
-	if(keyseq.length > 1 || keyseq.length < -1) {
+	if (keyseq.length > 1 || keyseq.length < -1) {
 		string buf;
 		keyseq.print(buf);
 		owner->getMiniBuffer()->Set(buf);
@@ -294,141 +291,6 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	
 	return 0;
 } 
-
-
-#if 0
-int LyXFunc::processKeyEvent(XEvent * ev)
-{
-	char s_r[10];
-	KeySym keysym_return = 0;
-	string argument;
-	XKeyEvent * keyevent = &ev->xkey;
-	int num_bytes = LyXLookupString(ev, s_r, 10, &keysym_return);
-	s_r[num_bytes] = '\0';
-
-	if (lyxerr.debugging(Debug::KEY)) {
-		char * tmp = XKeysymToString(keysym_return);
-		string stm = (tmp ? tmp : "");
-		lyxerr << "KeySym is "
-		       << stm
-		       << "["
-		       << keysym_return << "]"
-		       << " and num_bytes is "
-		       << num_bytes
-		       << " the string returned is \""
-		       << s_r << '\"'
-		       << endl;
-	}
-	// Do nothing if we have nothing (JMarc)
-	if (num_bytes == 0 && keysym_return == NoSymbol) {
-		lyxerr[Debug::KEY] << "Empty kbd action (probably composing)"
-				   << endl;
-		return 0;
-	}
-	
-	// this function should be used always [asierra060396]
-	UpdatableInset * tli = owner->view()->theLockingInset();
-	if (owner->view()->available() && tli && (keysym_return==XK_Escape)) {
-		if (tli == tli->GetLockingInset()) {
-			owner->view()->unlockInset(tli);
-			owner->view()->text->CursorRight(owner->view());
-			moveCursorUpdate(false);
-			owner->showState();
-		} else {
-			tli->UnlockInsetInInset(owner->view(),
-						tli->GetLockingInset(),true);
-		}
-		return 0;
-	}
-
-	// Can we be sure that this will work for all X-Windows
-	// implementations? (Lgb)
-	// This code snippet makes lyx ignore some keys. Perhaps
-	// all of them should be explictly mentioned?
-	if((keysym_return >= XK_Shift_L && keysym_return <= XK_Hyper_R)
-	   || keysym_return == XK_Mode_switch || keysym_return == 0x0)
-		return 0;
-
-	// Do a one-deep top-level lookup for
-	// cancel and meta-fake keys. RVDK_PATCH_5
-	cancel_meta_seq.reset();
-
-	int action = cancel_meta_seq.addkey(keysym_return, keyevent->state
-					    &(ShiftMask|ControlMask
-					      |Mod1Mask)); 
-
-	// When not cancel or meta-fake, do the normal lookup. 
-	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
-	// Mostly, meta_fake_bit = 0. RVDK_PATCH_5.
-	if ( (action != LFUN_CANCEL) && (action != LFUN_META_FAKE) ) {
-
-		// remove Caps Lock and Mod2 as a modifiers
-		action = keyseq.addkey(keysym_return,
-				       (keyevent->state | meta_fake_bit)
-				       &(ShiftMask|ControlMask
-					 |Mod1Mask));      
-	}
-	// Dont remove this unless you know what you are doing.
-	meta_fake_bit = 0;
-		
-	if (action == 0) action = LFUN_PREFIX;
-
-	if (lyxerr.debugging(Debug::KEY)) {
-		string buf;
-		keyseq.print(buf);
-		lyxerr << "Key ["
-		       << action << "]["
-		       << buf << "]"
-		       << "["
-		       << num_bytes << "]"
-		       << endl;
-	}
-
-	// already here we know if it any point in going further
-	// why not return already here if action == -1 and
-	// num_bytes == 0? (Lgb)
-
-	if(keyseq.length > 1 || keyseq.length < -1) {
-		string buf;
-		keyseq.print(buf);
-		owner->getMiniBuffer()->Set(buf);
-	}
-
-	if (action == -1) {
-		if (keyseq.length < -1) { // unknown key sequence...
-			string buf;
-			LyXBell();
-			keyseq.print(buf);
-			owner->getMiniBuffer()->Set(_("Unknown sequence:"), buf);
-			return 0;
-		}
-	
-		char isochar = keyseq.getiso();
-		if (!(keyevent->state&ControlMask) &&
-		    !(keyevent->state&Mod1Mask) &&
-		    (isochar && keysym_return < 0xF000)) {
-			argument += isochar;
-		}
-		if (argument.empty()) {
-			lyxerr.debug() << "Empty argument!" << endl;
-			// This can`t possibly be of any use
-			// so we`ll skip the dispatch.
-			return 0;
-		}
-	}
-	else
-		if (action == LFUN_SELFINSERT) {
-			argument = s_r[0];
-		}
-
-        bool tmp_sc = show_sc;
-	show_sc = false;
-	Dispatch(action, argument);
-	show_sc = tmp_sc;
-	
-	return 0;
-} 
-#endif
 
 
 LyXFunc::func_status LyXFunc::getStatus(int ac) const
@@ -613,6 +475,9 @@ string const LyXFunc::Dispatch(string const & s)
 string const LyXFunc::Dispatch(int ac,
 			 string const & do_not_use_this_arg)
 {
+	lyxerr[Debug::ACTION] << "LyXFunc::Dispatch: action[" << ac
+			      <<"] arg[" << do_not_use_this_arg << "]" << endl;
+	
 	string argument;
 	kb_action action;
 	LyXText * text = 0;
@@ -743,7 +608,7 @@ string const LyXFunc::Dispatch(int ac,
 				return string();
 			else {
 				setMessage(N_("Text mode"));
-				switch(action) {
+				switch (action) {
 				case LFUN_UNKNOWN_ACTION:
 				case LFUN_BREAKPARAGRAPH:
 				case LFUN_BREAKLINE:
@@ -783,7 +648,7 @@ string const LyXFunc::Dispatch(int ac,
 	if (!text)
 	    text = owner->view()->text;
 
-	switch(action) {
+	switch (action) {
 		// --- Misc -------------------------------------------
 	case LFUN_WORDFINDFORWARD  : 
 	case LFUN_WORDFINDBACKWARD : {
@@ -813,7 +678,7 @@ string const LyXFunc::Dispatch(int ac,
 			owner->view()->text->ClearSelection();
 
 			// Move cursor so that successive C-s 's will not stand in place. 
-			if( action == LFUN_WORDFINDFORWARD ) 
+			if (action == LFUN_WORDFINDFORWARD ) 
 				owner->view()->text->CursorRightOneWord(owner->view());
 			owner->view()->text->FinishUndo();
 			moveCursorUpdate(false);
@@ -849,7 +714,7 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_CANCEL:                   // RVDK_PATCH_5
 		keyseq.reset();
 		meta_fake_bit = 0;
-		if(owner->view()->available())
+		if (owner->view()->available())
 			// cancel any selection
 			Dispatch(LFUN_MARK_OFF);
 		setMessage(N_("Cancel"));
@@ -971,11 +836,11 @@ string const LyXFunc::Dispatch(int ac,
 	{
 		InsetCommandParams p;
 		
-		if( action == LFUN_TOCVIEW )
+		if (action == LFUN_TOCVIEW )
 			p.setCmdName( "tableofcontents" );
-		else if( action == LFUN_LOAVIEW )
+		else if (action == LFUN_LOAVIEW )
 			p.setCmdName( "listofalgorithms" );
-		else if( action == LFUN_LOFVIEW )
+		else if (action == LFUN_LOFVIEW )
 			p.setCmdName( "listoffigures" );
 		else
 			p.setCmdName( "listoftables" );
@@ -991,17 +856,17 @@ string const LyXFunc::Dispatch(int ac,
 	{
 		InsetCommandParams p;
 		
-		if( action == LFUN_TOC_INSERT )
+		if (action == LFUN_TOC_INSERT )
 			p.setCmdName( "tableofcontents" );
-		else if( action == LFUN_LOA_INSERT )
+		else if (action == LFUN_LOA_INSERT )
 			p.setCmdName( "listofalgorithms" );
-		else if( action == LFUN_LOF_INSERT )
+		else if (action == LFUN_LOF_INSERT )
 			p.setCmdName( "listoffigures" );
 		else
 			p.setCmdName( "listoftables" );
 
 		Inset * inset = new InsetTOC( p );
-		if( !owner->view()->insertInset( inset, "Standard", true ) )
+		if (!owner->view()->insertInset( inset, "Standard", true ) )
 			delete inset;
 		break;
 	}
@@ -1165,7 +1030,7 @@ string const LyXFunc::Dispatch(int ac,
 		    && owner->view()->text->cursor.par()->footnoteflag
 		    != LyXParagraph::NO_FOOTNOTE)
 			{ // only melt footnotes with FOOTMELT, not margins etc
-				if(owner->view()->text->cursor.par()->footnotekind == LyXParagraph::FOOTNOTE)
+				if (owner->view()->text->cursor.par()->footnotekind == LyXParagraph::FOOTNOTE)
 					Melt(owner->view());
 			}
 		else
@@ -1179,7 +1044,7 @@ string const LyXFunc::Dispatch(int ac,
 		    && owner->view()->text->cursor.par()->footnoteflag
 		    != LyXParagraph::NO_FOOTNOTE) {
 			// only melt margins
-			if(owner->view()->text->cursor.par()->footnotekind == LyXParagraph::MARGIN)
+			if (owner->view()->text->cursor.par()->footnotekind == LyXParagraph::MARGIN)
 				Melt(owner->view());
 		} else
 			Margin(owner->view()); 
@@ -1567,7 +1432,7 @@ string const LyXFunc::Dispatch(int ac,
 	{
 		LyXText * tmptext = owner->view()->text;
 		bool is_rtl = tmptext->cursor.par()->isRightToLeftPar(owner->buffer()->params);
-		if(!tmptext->mark_set)
+		if (!tmptext->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
 		if (is_rtl)
@@ -1596,7 +1461,7 @@ string const LyXFunc::Dispatch(int ac,
 		// it simpler? (Lgb)
 		LyXText * txt = owner->view()->text;
 		bool is_rtl = txt->cursor.par()->isRightToLeftPar(owner->buffer()->params);
-		if(!txt->mark_set) owner->view()->beforeChange();
+		if (!txt->mark_set) owner->view()->beforeChange();
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
 		LyXCursor cur = txt->cursor;
 		if (!is_rtl)
@@ -1631,7 +1496,7 @@ string const LyXFunc::Dispatch(int ac,
 	break;
 		
 	case LFUN_UP:
-		if(!owner->view()->text->mark_set) owner->view()->beforeChange();
+		if (!owner->view()->text->mark_set) owner->view()->beforeChange();
 		owner->view()->update(BufferView::UPDATE);
 		owner->view()->text->CursorUp(owner->view());
 		owner->view()->text->FinishUndo();
@@ -1640,7 +1505,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_DOWN:
-		if(!owner->view()->text->mark_set)
+		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::UPDATE);
 		owner->view()->text->CursorDown(owner->view());
@@ -1650,7 +1515,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 
 	case LFUN_UP_PARAGRAPH:
-		if(!owner->view()->text->mark_set)
+		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::UPDATE);
 		owner->view()->text->CursorUpParagraph(owner->view());
@@ -1660,7 +1525,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_DOWN_PARAGRAPH:
-		if(!owner->view()->text->mark_set)
+		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::UPDATE);
 		owner->view()->text->CursorDownParagraph(owner->view());
@@ -1670,7 +1535,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_PRIOR:
-		if(!text->mark_set)
+		if (!text->mark_set)
 		    owner->view()->beforeChange();
 		owner->view()->update(BufferView::UPDATE);
 		owner->view()->cursorPrevious(text);
@@ -1683,7 +1548,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_NEXT:
-		if(!text->mark_set)
+		if (!text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::UPDATE);
 		owner->view()->cursorNext(text);
@@ -1696,7 +1561,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_HOME:
-		if(!owner->view()->text->mark_set)
+		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorHome(owner->view());
@@ -1706,7 +1571,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_END:
-		if(!owner->view()->text->mark_set)
+		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorEnd(owner->view());
@@ -1717,7 +1582,7 @@ string const LyXFunc::Dispatch(int ac,
 		
 	case LFUN_SHIFT_TAB:
 	case LFUN_TAB:
-		if(!owner->view()->text->mark_set)
+		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorTab(owner->view());
@@ -1727,7 +1592,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_WORDRIGHT:
-		if(!text->mark_set)
+		if (!text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
 		if (text->cursor.par()->isRightToLeftPar(owner->buffer()->params))
@@ -1742,7 +1607,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_WORDLEFT:
-		if(!text->mark_set)
+		if (!text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
 		if (text->cursor.par()->isRightToLeftPar(owner->buffer()->params))
@@ -1757,7 +1622,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_BEGINNINGBUF:
-		if(!owner->view()->text->mark_set)
+		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorTop(owner->view());
@@ -1767,7 +1632,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_ENDBUF:
-		if(!owner->view()->text->mark_set)
+		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorBottom(owner->view());
@@ -1933,7 +1798,7 @@ string const LyXFunc::Dispatch(int ac,
 	break;
 		
 	case LFUN_SETMARK:
-		if(text->mark_set) {
+		if (text->mark_set) {
 			owner->view()->beforeChange();
 			owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
 			setMessage(N_("Mark removed"));
@@ -2385,7 +2250,7 @@ string const LyXFunc::Dispatch(int ac,
 	{
 		LyXParagraph::size_type pos = 
 			owner->view()->text->cursor.pos();
-		if(pos < owner->view()->text->cursor.par()->size())
+		if (pos < owner->view()->text->cursor.par()->size())
 			//dispatch_buffer = owner->view()->text->
 			//	cursor.par()->text[pos];
 			dispatch_buffer =
@@ -2419,9 +2284,9 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_GETFONT:
 	{
 		LyXFont & font = owner->view()->text->current_font;
-                if(font.shape() == LyXFont::ITALIC_SHAPE)
+                if (font.shape() == LyXFont::ITALIC_SHAPE)
 			dispatch_buffer = 'E';
-                else if(font.shape() == LyXFont::SMALLCAPS_SHAPE)
+                else if (font.shape() == LyXFont::SMALLCAPS_SHAPE)
 			dispatch_buffer = 'N';
                 else
 			dispatch_buffer = '0';
@@ -2432,7 +2297,7 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_GETLATEX:
 	{
 		LyXFont & font = owner->view()->text->current_font;
-                if(font.latex() == LyXFont::ON)
+                if (font.latex() == LyXFont::ON)
 			dispatch_buffer = 'L';
                 else
 			dispatch_buffer = '0';
@@ -2755,13 +2620,13 @@ string const LyXFunc::Dispatch(int ac,
 	{
 		InsetCommandParams p( "index" );
 		
-		if( argument.empty() ) {
+		if (argument.empty()) {
 			// Get the word immediately preceding the cursor
 			LyXParagraph::size_type curpos = 
 				owner->view()->text->cursor.pos() - 1;
 
 			string curstring;
-			if( curpos >= 0 )
+			if (curpos >= 0 )
 				curstring = owner->view()->text
 					    ->cursor.par()->GetWord(curpos);
 
@@ -2793,7 +2658,7 @@ string const LyXFunc::Dispatch(int ac,
 		LyXParagraph::size_type curpos = 
 			owner->view()->text->cursor.pos() - 1;
 	  	// Can't do that at the beginning of a paragraph
-	  	if( curpos < 0 ) break;
+	  	if (curpos < 0 ) break;
 
 		string curstring( owner->view()->text
 				  ->cursor.par()->GetWord(curpos) );
@@ -3013,7 +2878,7 @@ string const LyXFunc::Dispatch(int ac,
 
 	case LFUN_UNKNOWN_ACTION:
 	{
-		if(!owner->buffer()) {
+		if (!owner->buffer()) {
 			LyXBell();
 			setErrorMessage(N_("No document open"));
 			break;
@@ -3033,7 +2898,7 @@ string const LyXFunc::Dispatch(int ac,
 			 * "auto_region_delete", which defaults to
 			 * true (on). */
 		
-			if ( lyxrc.auto_region_delete ) {
+			if (lyxrc.auto_region_delete) {
 				if (owner->view()->text->selection){
 					owner->view()->text->CutSelection(owner->view(), false);
 					owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
@@ -3144,7 +3009,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 
 		// Check if the document already is open
 		if (bufferlist.exists(s)) {
-			switch(AskConfirmation(_("Document is already open:"), 
+			switch (AskConfirmation(_("Document is already open:"), 
 					       MakeDisplayPath(s, 50),
 					       _("Do you want to close that document now?\n"
 						 "('No' will just switch to the open version)")))
@@ -3307,7 +3172,7 @@ void LyXFunc::doImport(string const & argument)
 
 	// Check if the document already is open
 	if (bufferlist.exists(lyxfile)) {
-		switch(AskConfirmation(_("Document is already open:"), 
+		switch (AskConfirmation(_("Document is already open:"), 
 				       MakeDisplayPath(lyxfile, 50),
 				       _("Do you want to close that document now?\n"
 					 "('No' will just switch to the open version)")))

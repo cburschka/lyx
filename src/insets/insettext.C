@@ -114,7 +114,7 @@ InsetText::~InsetText()
 {
     // delete all instances of LyXText before deleting the paragraps used
     // by it.
-    for(Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
+    for (Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
 	delete (*cit).second;
     LyXParagraph * p = par->next;
     delete par;
@@ -130,7 +130,7 @@ void InsetText::clear()
 {
     // delete all instances of LyXText before deleting the paragraps used
     // by it.
-    for(Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
+    for (Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
 	delete (*cit).second;
     LyXParagraph * p = par->next;
     delete par;
@@ -177,7 +177,7 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
 
     // delete all instances of LyXText before deleting the paragraps used
     // by it.
-    for(Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
+    for (Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
 	delete (*cit).second;
 
     LyXParagraph * p = par->next;
@@ -644,7 +644,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	    paste_internally = true;
 	}
 	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
-					   y+insetAscent);
+					   y + insetAscent);
 	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	bv->owner()->setLayout(cpar(bv)->GetLayout());
@@ -742,7 +742,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	    UpdateLocal(bv, CURSOR_PAR, false);
             return result;
         } else if (result == FINISHED) {
-	    switch(action) {
+	    switch (action) {
 	    case -1:
 	    case LFUN_RIGHT:
 		moveRight(bv, false);
@@ -1390,7 +1390,7 @@ void InsetText::SetParagraphData(LyXParagraph *p)
 {
     // delete all instances of LyXText before deleting the paragraps used
     // by it.
-    for(Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
+    for (Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
 	delete (*cit).second;
 
     LyXParagraph * np;
@@ -1509,7 +1509,7 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
     if (recursive) {
 	/// then remove all LyXText in text-insets
 	LyXParagraph * p = par;
-	for(;p;p = p->next) {
+	for (;p;p = p->next) {
 	    p->deleteInsetsLyXText(bv);
 	}
     }
@@ -1572,7 +1572,7 @@ void InsetText::resizeLyXText(BufferView * bv) const
 	/// then resize all LyXText in text-insets
 	inset_x = cx(bv) - top_x + drawTextXOffset;
 	inset_y = cy(bv) + drawTextYOffset;
-	for(LyXParagraph * p = par; p; p = p->next) {
+	for (LyXParagraph * p = par; p; p = p->next) {
 	    p->resizeInsetsLyXText(bv);
 	}
     }
@@ -1582,8 +1582,8 @@ void InsetText::resizeLyXText(BufferView * bv) const
 
 void InsetText::removeNewlines()
 {
-    for(LyXParagraph * p = par; p; p = p->next) {
-	for(int i = 0; i < p->Last(); ++i) {
+    for (LyXParagraph * p = par; p; p = p->next) {
+	for (int i = 0; i < p->Last(); ++i) {
 	    if (p->GetChar(i) == LyXParagraph::META_NEWLINE)
 		p->Erase(i);
 	}

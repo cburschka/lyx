@@ -285,7 +285,7 @@ int LyXRC::read(string const & filename)
 		// compiler.
 
 		int le = lexrc.lex();
-		switch(le) {
+		switch (le) {
 		case LyXLex::LEX_UNDEF:
 			lexrc.printError("Unknown tag `$$Token'");
 			continue; 
@@ -849,7 +849,7 @@ int LyXRC::read(string const & filename)
 			break;
 			
 		case RC_NEW_ASK_FILENAME:
-			if ( lexrc.next())
+			if (lexrc.next())
 				new_ask_filename = lexrc.GetBool();
 			break;
 		case RC_CONVERTER: {
@@ -888,7 +888,7 @@ int LyXRC::read(string const & filename)
 			break;
 		}
 		case RC_DEFAULT_LANGUAGE:
-			if ( lexrc.next())
+			if (lexrc.next())
 				default_language = lexrc.GetString();
 			break;
 
@@ -938,7 +938,7 @@ void LyXRC::output(ostream & os) const
 	// The nice thing is that we will get a warning from the compiler
 	// if we forget an element.
 	LyXRCTags tag = RC_LAST;
-	switch(tag) {
+	switch (tag) {
 	case RC_LAST:
 	case RC_INPUT:
 		// input/include files are not done here
@@ -1495,7 +1495,7 @@ string LyXRC::getDescription(LyXRCTags tag)
 {
 	string str;
 	
-	switch( tag ) {
+	switch (tag) {
 	case RC_FONT_ENCODING:
 		str = N_("The font encoding used for the LaTeX2e fontenc package. T1 is highly recommended for non-English languages.");
 		break;

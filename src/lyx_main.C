@@ -637,7 +637,7 @@ void LyX::ReadUIFile(string const & name)
 		lex.printTable(lyxerr);
 
 	while (lex.IsOK()) {
-		switch(lex.lex()) {
+		switch (lex.lex()) {
 		case ui_menuset: 
 			menubackend.read(lex);
 			break;
@@ -717,7 +717,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 {
 	bool gui = true;
 	int removeargs = 0; // used when options are read
-	for(int i = 1; i < *argc; ++i) {
+	for (int i = 1; i < *argc; ++i) {
 		string arg = argv[i];
 
 		// Check for -dbg int
@@ -857,7 +857,7 @@ void error_handler(int err_sig)
 	bufferlist.emergencyWriteAll();
 
 	lyxerr << "Bye." << endl;
-	if(err_sig!= SIGHUP && 
+	if (err_sig!= SIGHUP && 
 	   (!GetEnv("LYXDEBUG").empty() || err_sig == SIGSEGV))
 		lyx::abort();
 	exit(0);

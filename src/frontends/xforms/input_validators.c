@@ -81,16 +81,16 @@ void fl_print_range_filter(FL_OBJECT * ob,
 		pages = split (pages, piece, ',') ;
 		piece = strip(piece) ;
 		piece = frontStrip(piece) ;
-		if ( !stringOnlyContains (piece, "0123456789-") ) {
+		if (!stringOnlyContains (piece, "0123456789-")) {
 			WriteAlert(_("ERROR!  Unable to print!"),
 				   _("Check 'range of pages'!"));
 			return;
 		}
 		if (piece.find('-') == string::npos) { // not found
 			pageflag += lyxrc.print_pagerange_flag + piece + '-' + piece + ' ' ;
-		} else if (suffixIs(piece, "-") ) { // missing last page
+		} else if (suffixIs(piece, "-")) { // missing last page
 			pageflag += lyxrc.print_pagerange_flag + piece + "1000 ";
-		} else if (prefixIs(piece, "-") ) { // missing first page
+		} else if (prefixIs(piece, "-")) { // missing first page
 			pageflag += lyxrc.print_pagerange_flag + '1' + piece + ' ' ;
 		} else {
 			pageflag += lyxrc.print_pagerange_flag + piece + ' ' ;

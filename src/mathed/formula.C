@@ -1011,7 +1011,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
 	     if (lf[1]) {
 		 l = in_word_set(lf, strlen(lf));
 		 // Long words will cause l == 0; so check.
-		 if(l) ilf = l->id;
+		 if (l) ilf = l->id;
 	     } else
 	     if (vdelim.find(lf[0]) != string::npos)
 	       ilf = lf[0];
@@ -1022,7 +1022,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
 	       else 
 		 if (rg[1]) {
 		     l = in_word_set(rg, strlen(rg));
-		     if(l) irg = l->id;
+		     if (l) irg = l->id;
 		 } else
 		 if (vdelim.find(rg[0]) != string::npos)
 		   irg = rg[0];
@@ -1274,7 +1274,7 @@ void mathedValidate(LaTeXFeatures & features, MathParInset * par)
     
     while (it.OK() && !(features.binom && features.boldsymbol)) {
 	if (it.IsInset()) {
-	    if(it.IsActive()) {
+	    if (it.IsActive()) {
 		MathParInset * p = it.GetActiveInset();
 		if (!features.binom && p->GetType() == LM_OT_MACRO && 
 		    p->GetName() == "binom") {

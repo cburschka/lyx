@@ -138,7 +138,7 @@ void include_cb(FL_OBJECT *, long arg)
 	}
 
 	case 1:
-		if(!current_view->buffer()->isReadonly()) {
+		if (!current_view->buffer()->isReadonly()) {
 			inset->setContents(fl_get_input(form->input));
 			// don't typeset
 			inset->setNoLoad(fl_get_button(form->flag1));
@@ -160,7 +160,7 @@ void include_cb(FL_OBJECT *, long arg)
 		fl_hide_form(form->include);
 		break;
 	case 5:
-		if(!current_view->buffer()->isReadonly()) {
+		if (!current_view->buffer()->isReadonly()) {
 			inset->setContents(fl_get_input(form->input));
 			inset->setNoLoad(fl_get_button(form->flag1));
 			if (fl_get_button(form->flag2))
@@ -247,7 +247,7 @@ Inset * InsetInclude::Clone(Buffer const & buffer) const
 
 void InsetInclude::Edit(BufferView * bv, int, int, unsigned int)
 {
-	if(bv->buffer()->isReadonly())
+	if (bv->buffer()->isReadonly())
 		WarnReadonly(bv->buffer()->fileName());
 
 	if (!form) {
@@ -440,7 +440,7 @@ int InsetInclude::Linuxdoc(Buffer const * buffer, ostream & os) const
 		} else
 			writefile = getFileName();
 
-		if(IsLyXFilename(getFileName()))
+		if (IsLyXFilename(getFileName()))
 			writefile = ChangeExtension(writefile, ".sgml");
 
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
@@ -476,7 +476,7 @@ int InsetInclude::DocBook(Buffer const * buffer, ostream & os) const
 			writefile = AddName(buffer->tmppath, incfile);
 		} else
 			writefile = getFileName();
-		if(IsLyXFilename(getFileName()))
+		if (IsLyXFilename(getFileName()))
 			writefile = ChangeExtension(writefile, ".sgml");
 
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
@@ -507,7 +507,7 @@ void InsetInclude::Validate(LaTeXFeatures & features) const
 		// Use the relative path.
 		writefile = incfile;
 
-	if(IsLyXFilename(getFileName()))
+	if (IsLyXFilename(getFileName()))
 		writefile = ChangeExtension(writefile, ".sgml");
 
 	features.IncludedFiles[include_label] = writefile;

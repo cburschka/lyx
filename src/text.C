@@ -1027,8 +1027,8 @@ LyXText::NextBreakPoint(BufferView * bview, Row const * row, int width) const
 				// non-display
 				if (par->GetInset(i)->display() &&
 				    (layout.isCommand() ||
-				     ((layout.labeltype == LABEL_MANUAL) &&
-				      (i < BeginningOfMainBody(bview->buffer(), par))))) {
+				     (layout.labeltype == LABEL_MANUAL
+				      && i < BeginningOfMainBody(bview->buffer(), par)))) {
 					// display istn't allowd
 					par->GetInset(i)->display(false);
 					x += SingleWidth(bview, par, i, c);
@@ -1633,7 +1633,7 @@ void LyXText::BreakAgain(BufferView * bview, Row * row) const
 	LyXParagraph::size_type z = NextBreakPoint(bview, row, workWidth(bview));
       Row * tmprow = row;
       
-      if (z < row->par()->Last() ) {
+      if (z < row->par()->Last()) {
 	 if (!row->next() || (row->next() && row->next()->par() != row->par())) {
 		 // insert a new row
 	    ++z;
@@ -1677,7 +1677,7 @@ void LyXText::BreakAgainOneRow(BufferView * bview, Row * row)
 	LyXParagraph::size_type z = NextBreakPoint(bview, row, workWidth(bview));
 	Row * tmprow = row;
 	
-	if (z < row->par()->Last() ) {
+	if (z < row->par()->Last()) {
 		if (!row->next()
 		    || (row->next() && row->next()->par() != row->par())) {
 			/* insert a new row */ 
@@ -1923,7 +1923,7 @@ void LyXText::InsertChar(BufferView * bview, char c)
 				    (cursor.pos() == 1 ||
 				     cursor.par()->IsSeparator(cursor.pos() - 2) ||
 				     cursor.par()->IsNewline(cursor.pos() - 2) )
-				    ) {
+				   ) {
 					SetCharFont(bview->buffer(),
 						    cursor.par(),
 						    cursor.pos() - 1,
@@ -2040,7 +2040,7 @@ void LyXText::InsertChar(BufferView * bview, char c)
 		LyXParagraph::size_type z = NextBreakPoint(bview,
 							   row->previous(),
 							   workWidth(bview));
-		if ( z >= row->pos()) {
+		if (z >= row->pos()) {
 			row->pos(z + 1);
 			
 			// set the dimensions of the row above
@@ -2083,7 +2083,7 @@ void LyXText::InsertChar(BufferView * bview, char c)
 			      * will set fill to -1. Otherwise
 			      * we would not get a rebreak! */
 		row->fill(Fill(bview, row, workWidth(bview)));
-	if (row->fill() < 0 ) {
+	if (row->fill() < 0) {
 		refresh_y = y;
 		refresh_row = row; 
 		refresh_x = cursor.x();
@@ -2295,7 +2295,7 @@ void LyXText::CursorRightOneWord(BufferView * bview) const
 		int steps = 0;
 
 		// Skip through initial nonword stuff.
-		while ( tmpcursor.pos() < tmpcursor.par()->Last() &&
+		while (tmpcursor.pos() < tmpcursor.par()->Last() &&
 			! tmpcursor.par()->IsWord( tmpcursor.pos() ) ) 
 		{
 		  //    printf("Current pos1 %d", tmpcursor.pos()) ;
@@ -2303,7 +2303,7 @@ void LyXText::CursorRightOneWord(BufferView * bview) const
 			++steps;
 		}
 		// Advance through word.
-		while ( tmpcursor.pos() < tmpcursor.par()->Last() &&
+		while (tmpcursor.pos() < tmpcursor.par()->Last() &&
 		        tmpcursor.par()->IsWord( tmpcursor.pos() ) )
 		{
 		  //     printf("Current pos2 %d", tmpcursor.pos()) ;
@@ -2376,17 +2376,17 @@ void LyXText::CursorLeftOneWord(BufferView * bview)  const
 void LyXText::SelectWord(BufferView * bview) 
 {
 	// Move cursor to the beginning, when not already there.
-	if ( cursor.pos()
-	     && !cursor.par()->IsSeparator(cursor.pos()-1)
-	     && !cursor.par()->IsKomma(cursor.pos()-1) )
+	if (cursor.pos()
+	    && !cursor.par()->IsSeparator(cursor.pos()-1)
+	    && !cursor.par()->IsKomma(cursor.pos()-1) )
 		CursorLeftOneWord(bview);
 
 	// set the sel cursor
 	sel_cursor = cursor;
 
-	while ( cursor.pos() < cursor.par()->Last()
-			&& !cursor.par()->IsSeparator(cursor.pos())
-			&& !cursor.par()->IsKomma(cursor.pos()) )
+	while (cursor.pos() < cursor.par()->Last()
+	       && !cursor.par()->IsSeparator(cursor.pos())
+	       && !cursor.par()->IsKomma(cursor.pos()) )
 		cursor.pos(cursor.pos() + 1);
 	SetCursor(bview, cursor.par(), cursor.pos() );
 	
@@ -2406,7 +2406,7 @@ bool LyXText::SelectWordWhenUnderCursor(BufferView * bview)
 	    && !cursor.par()->IsSeparator(cursor.pos())
 	    && !cursor.par()->IsKomma(cursor.pos())
 	    && !cursor.par()->IsSeparator(cursor.pos() -1)
-	    && !cursor.par()->IsKomma(cursor.pos() -1) ) {
+	    && !cursor.par()->IsKomma(cursor.pos() -1)) {
 		SelectWord(bview);
 		return true;
 	}
@@ -2900,7 +2900,7 @@ void LyXText::Backspace(BufferView * bview)
 		if (row->previous() && row->previous()->par() == row->par()) {
 			z = NextBreakPoint(bview, row->previous(),
 					   workWidth(bview));
-			if ( z >= row->pos()) {
+			if (z >= row->pos()) {
 				row->pos(z + 1);
 				
 				Row * tmprow = row->previous();
@@ -3015,7 +3015,9 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	/* returns a printed row */
 	Painter & pain = bview->painter();
 	
-	bool is_rtl = row_ptr->par()->isRightToLeftPar(bview->buffer()->params);
+	bool const is_rtl =
+		row_ptr->par()->isRightToLeftPar(bview->buffer()->params);
+	
 	LyXParagraph::size_type last = RowLastPrintable(row_ptr);
 
 	LyXParagraph::size_type vpos, pos;
@@ -3048,9 +3050,9 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	bool clear_area = true;
 	Inset * inset = 0;
 
-	if (!bview->screen()->forceClear() && (last == row_ptr->pos()) &&
-	    (row_ptr->par()->GetChar(row_ptr->pos()) == LyXParagraph::META_INSET) &&
-	    (inset = row_ptr->par()->GetInset(row_ptr->pos()))) {
+	if (!bview->screen()->forceClear() && last == row_ptr->pos()
+	    && row_ptr->par()->GetChar(row_ptr->pos()) == LyXParagraph::META_INSET
+	    && (inset = row_ptr->par()->GetInset(row_ptr->pos()))) {
 		clear_area = inset->doClearArea();
 	}
 	// we don't need to clear it's already done!!!
@@ -3128,7 +3130,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 						   row_ptr->height(),
 						   LColor::selection);
 			}
-		} else if ( sel_start_cursor.row() != row_ptr &&
+		} else if (sel_start_cursor.row() != row_ptr &&
 			    sel_end_cursor.row() != row_ptr &&
 			    y > sel_start_cursor.y()
 			    && y < sel_end_cursor.y()) {
@@ -3138,7 +3140,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		} else if (sel_start_cursor.row() == row_ptr ||
 			   sel_end_cursor.row() == row_ptr) {
 			float tmpx = x;
-			if ( (sel_start_cursor.row() != row_ptr && !is_rtl) ||
+			if ((sel_start_cursor.row() != row_ptr && !is_rtl) ||
 			     (sel_end_cursor.row() != row_ptr && is_rtl))
 				pain.fillRectangle(x_offset, y_offset,
 						   int(tmpx),
@@ -3173,7 +3175,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				} else
 					tmpx += SingleWidth(bview, row_ptr->par(), pos);
 				
-				if ( (sel_start_cursor.row() != row_ptr ||
+				if ((sel_start_cursor.row() != row_ptr ||
 				      sel_start_cursor.pos() <= pos) &&
 				     (sel_end_cursor.row() != row_ptr ||
 				      pos < sel_end_cursor.pos()) )
@@ -3184,7 +3186,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 							   LColor::selection);
 			}
 
-			if ( (sel_start_cursor.row() != row_ptr && is_rtl) ||
+			if ((sel_start_cursor.row() != row_ptr && is_rtl) ||
 			     (sel_end_cursor.row() != row_ptr && !is_rtl) )
 				pain.fillRectangle(x_offset + int(tmpx),
 						   y_offset,
@@ -3587,11 +3589,11 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 #endif
 	if (
 #ifndef NEW_INSETS
-		(row_ptr->par()->ParFromPos(last + 1) == par)
+		row_ptr->par()->ParFromPos(last + 1) == par
 #else
-		(row_ptr->par() == par)
+		row_ptr->par() == par
 #endif
-	    && (!row_ptr->next() || (row_ptr->next()->par() != row_ptr->par())))
+		&& (!row_ptr->next() || row_ptr->next()->par() != row_ptr->par()))
 	{
 		/* think about the margins */ 
 		if (!row_ptr->next() && bv_owner)

@@ -85,7 +85,7 @@ bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 #else
 	(startpar == (*endpar))
 #endif
-	    ) {
+	   ) {
 	// only within one paragraph
 	buf = new LyXParagraph;
 	LyXParagraph::size_type i = start;
@@ -181,7 +181,7 @@ bool CutAndPaste::copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
 #else
 	(startpar == endpar)
 #endif
-	    ) {
+	   ) {
 	// only within one paragraph
 	buf = new LyXParagraph;
 	LyXParagraph::size_type i = start;

@@ -191,7 +191,7 @@ void InsetLatexAccent::checkContents()
 	// special clause for \i{}, \j{} \l{} and \L{}
 	if ((modtype == DOT_LESS_I || modtype == DOT_LESS_J
 	     || modtype == lSLASH || modtype == LSLASH)
-	    && contents[3] == '}' ) {
+	    && contents[3] == '}') {
 		switch (modtype) {
 		case DOT_LESS_I: ic = 'i'; break;
 		case DOT_LESS_J: ic = 'j'; break;
@@ -225,13 +225,13 @@ void InsetLatexAccent::checkContents()
 				remdot = true;
 			else
 				return;
-		} else if ( (ic == 'i'|| ic == 'j') && contents[4] == '}') {
+		} else if ((ic == 'i'|| ic == 'j') && contents[4] == '}') {
 			// Do a rewrite: \<foo>{i} --> \<foo>{\i}
 			string temp = contents;
 			temp.erase(3, string::npos);
 			temp += '\\';
 			temp += char(ic);
-			for(string::size_type j = 4;
+			for (string::size_type j = 4;
 			    j < contents.length(); ++j)
 				temp+= contents[j];
 			contents= temp;

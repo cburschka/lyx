@@ -131,14 +131,14 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	if (height < 400) height = 400;
 	
 	// If width is not set by geometry, check it against monitor width
-	if ( !(geometryBitmask & 4) ) {
+	if (!(geometryBitmask & 4)) {
 		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen); //DefaultScreen(fl_get_display());
 		if (WidthOfScreen(scr) - 8 < width)
 			width = WidthOfScreen(scr) - 8;
 	}
 
 	// If height is not set by geometry, check it against monitor height
-	if ( !(geometryBitmask & 8) ) {
+	if (!(geometryBitmask & 8)) {
 		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen); //DefaultScreen(fl_get_display());
 		if (HeightOfScreen(scr) - 24 < height)
 			height = HeightOfScreen(scr) - 24;
@@ -340,7 +340,7 @@ void LyXGUI::create_forms()
 	// build up the combox entries
 	combo_language2->addline(_("No change"));
 	combo_language2->addline(_("Reset"));
-	for(Languages::const_iterator cit = languages.begin();
+	for (Languages::const_iterator cit = languages.begin();
 	    cit != languages.end(); ++cit) {
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	    if ((*cit).second.lang() != "default")

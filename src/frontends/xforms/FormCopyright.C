@@ -34,7 +34,7 @@ FormCopyright::~FormCopyright()
 
 FL_FORM * FormCopyright::form() const
 {
-	if ( dialog_ ) return dialog_->form;
+	if (dialog_ ) return dialog_->form;
 	return 0;
 }
 

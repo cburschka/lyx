@@ -1055,7 +1055,7 @@ lyxstring::size_type lyxstring::find_first_of(value_type const * ptr,
 	if (!n) return npos;
 
 	for (size_type t = i; t < rep->sz; ++t) {
-		if(memchr(ptr, rep->s[t], n) != 0) return t;
+		if (memchr(ptr, rep->s[t], n) != 0) return t;
 	}
 	return npos;
 }
@@ -1109,7 +1109,7 @@ lyxstring::size_type lyxstring::find_last_of(value_type const * ptr,
 
 	size_type ii = min(rep->sz - 1, i);
 	for (int t = ii; t >= 0; --t) {
-		if(memchr(ptr, rep->s[t], n) != 0) return t;
+		if (memchr(ptr, rep->s[t], n) != 0) return t;
 	}
 	return npos;
 }
@@ -1165,7 +1165,7 @@ lyxstring::size_type lyxstring::find_first_not_of(value_type const * ptr,
 
 	if (!n) return (i < rep->sz) ? i : npos;
 	for (size_type t = i; t < rep->sz; ++t) {
-		if(memchr(ptr, rep->s[t], n) == 0) return t;
+		if (memchr(ptr, rep->s[t], n) == 0) return t;
 	}
 	return npos;
 }
@@ -1222,7 +1222,7 @@ lyxstring::size_type lyxstring::find_last_not_of(value_type const * ptr,
 	size_type ii = min(rep->sz - 1, i);
 
 	for (int t = ii; t >= 0; --t) {
-		if(memchr(ptr, rep->s[t], n) == 0) return t;
+		if (memchr(ptr, rep->s[t], n) == 0) return t;
 	}
 	return npos;
 }

@@ -21,12 +21,12 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-
+#include <boost/utility.hpp>
 #include "LString.h"
 
 /** Use objects of this class to get information about files.
  */
-class FileInfo {
+class FileInfo : public noncopyable {
 public:
 	///
 	FileInfo();
@@ -101,15 +101,15 @@ public:
 		eperm = F_OK
 	};
 	/// Test whether the current user has a given set of permissions
-	bool access(int p);
+	bool access(int p) const;
 	/// Is the file writable for the current user?
-	bool writable() { return access(FileInfo::wperm); }
+	bool writable() const { return access(FileInfo::wperm); }
 	/// Is the file readable for the current user?
-	bool readable() { return access(FileInfo::rperm); }
+	bool readable() const { return access(FileInfo::rperm); }
 	/// Is the file executable for the current user?
-	bool executable() { return access(FileInfo::xperm); }
+	bool executable() const { return access(FileInfo::xperm); }
 	/// Does the file exist?
-	bool exist() { return access(FileInfo::eperm); }
+	bool exist() const { return access(FileInfo::eperm); }
 	///
 	bool isLink() const;
 	///

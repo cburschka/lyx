@@ -691,7 +691,7 @@ int portable_vsnprintf(char *str, size_t str_m, const char *fmt, va_list ap) {
          /* Actually it uses 0x prefix even for a zero value. */
                    && long_arg != 0
 #endif
-                  ) { tmp[str_arg_l++] = '0'; tmp[str_arg_l++] = 'x'; }
+                 ) { tmp[str_arg_l++] = '0'; tmp[str_arg_l++] = 'x'; }
 #endif
         }
         zero_padding_insertion_ind = str_arg_l;
@@ -703,7 +703,7 @@ int portable_vsnprintf(char *str, size_t str_m, const char *fmt, va_list ap) {
           * converting a zero value with a precision of zero is a null string.
           * Actually it returns all zeroes. */
 #endif
-        ) {  /* converted to null string */  }
+       ) {  /* converted to null string */  }
         else {
           char f[5]; int f_l = 0;
           f[f_l++] = '%';
@@ -736,7 +736,7 @@ int portable_vsnprintf(char *str, size_t str_m, const char *fmt, va_list ap) {
               && !(zero_padding_insertion_ind < str_arg_l
                    && tmp[zero_padding_insertion_ind] == '0')
 #endif
-          ) {      /* assure leading zero for alternative-form octal numbers */
+         ) {      /* assure leading zero for alternative-form octal numbers */
             if (!precision_specified || precision < num_of_digits+1)
               { precision = num_of_digits+1; precision_specified = 1; }
           }

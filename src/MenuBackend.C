@@ -46,7 +46,7 @@ MenuItem::MenuItem(Kind kind, string const & label,
 		   string const & command, bool optional) 
 	: kind_(kind), label_(label), optional_(optional)
 {
-	switch(kind) {
+	switch (kind) {
 	case Separator:
 	case Documents:
 	case Lastfiles:
@@ -122,7 +122,7 @@ Menu & Menu::read(LyXLex & lex)
 	bool optional = false;
 
 	while (lex.IsOK() && !quit) {
-		switch(lex.lex()) {
+		switch (lex.lex()) {
 		case md_optitem:
 			optional = true;
 			// fallback to md_item
@@ -351,7 +351,7 @@ void MenuBackend::read(LyXLex & lex)
 	bool menubar = false;
 
 	while (lex.IsOK() && !quit) {
-		switch(lex.lex()) {
+		switch (lex.lex()) {
 		case md_menubar: 
 			menubar = true;
 			// fallback to md_menu
@@ -436,7 +436,7 @@ void MenuBackend::defaults()
 	add(main_nobuffer);
 
 	if (lyxerr.debugging(Debug::GUI)) {
-		for(const_iterator cit = begin();
+		for (const_iterator cit = begin();
 		    cit != end() ; ++cit)
 			lyxerr << "Menu name: " << cit->name() 
 			       << ", Menubar: " << cit->menubar() 

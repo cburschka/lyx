@@ -469,7 +469,7 @@ void FormParagraph::extra_update()
 		 par->pextra_width.c_str());
     fl_set_input(extra_->input_pextra_widthp,
 		 par->pextra_widthp.c_str());
-    switch(par->pextra_alignment) {
+    switch (par->pextra_alignment) {
     case LyXParagraph::MINIPAGE_ALIGN_TOP:
 	fl_set_button(extra_->radio_pextra_top, 1);
 	break;

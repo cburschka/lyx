@@ -209,7 +209,7 @@ void FormDocument::build()
 #ifdef DO_USE_DEFAULT_LANGUAGE
     combo_language->addto("default");
 #endif
-    for(Languages::const_iterator cit = languages.begin();
+    for (Languages::const_iterator cit = languages.begin();
 	cit != languages.end(); ++cit) {
 	combo_language->addto((*cit).second.lang());
     }
@@ -324,7 +324,7 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 {
 	State cb = static_cast<State>( data );
 
-	switch( cb ) {
+	switch (cb) {
 	case CHECKCHOICECLASS:
 		CheckChoiceClass(ob, 0);
 		break;
@@ -355,7 +355,7 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		break;
 	}
 	
-	switch( data ) {
+	switch (data) {
 	case INPUT:
 	case CHECKCHOICECLASS:
 	case CHOICEBULLETSIZE:
@@ -476,7 +476,7 @@ bool FormDocument::class_apply()
 		params.sides = LyXTextClass::OneSide;
 	
 	Spacing tmpSpacing = params.spacing;
-	switch(fl_get_choice(class_->choice_doc_spacing)) {
+	switch (fl_get_choice(class_->choice_doc_spacing)) {
 	case 1:
 		lyxerr[Debug::INFO] << "Spacing: SINGLE\n";
 		params.spacing.set(Spacing::Single);
@@ -536,7 +536,7 @@ bool FormDocument::language_apply()
     InsetQuotes::quote_language lga = InsetQuotes::EnglishQ;
     bool redo = false;
 
-    switch(fl_get_choice(language_->choice_quotes_language) - 1) {
+    switch (fl_get_choice(language_->choice_quotes_language) - 1) {
     case 0:
 	lga = InsetQuotes::EnglishQ;
 	break;
@@ -952,13 +952,13 @@ void FormDocument::BulletDepth(FL_OBJECT * ob, State cb)
     BufferParams & param = lv_->buffer()->params;
 
     int data = 0;
-    if( cb == BULLETDEPTH1 )
+    if (cb == BULLETDEPTH1 )
 	    data = 0;
-    else if ( cb == BULLETDEPTH2 )
+    else if (cb == BULLETDEPTH2 )
 	    data = 1;
-    else if ( cb == BULLETDEPTH3 )
+    else if (cb == BULLETDEPTH3 )
 	    data = 2;
-    else if ( cb == BULLETDEPTH4 )
+    else if (cb == BULLETDEPTH4 )
 	    data = 3;
 
     switch (fl_get_button_numb(ob)) {
@@ -981,17 +981,17 @@ void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, State cb)
     /* by the user. (eg. standard.xpm, psnfss1.xpm etc...)           */
     
     int data = 0;
-    if( cb == BULLETPANEL1 )
+    if (cb == BULLETPANEL1 )
 	    data = 0;
-    else if ( cb == BULLETPANEL2 )
+    else if (cb == BULLETPANEL2 )
 	    data = 1;
-    else if ( cb == BULLETPANEL3 )
+    else if (cb == BULLETPANEL3 )
 	    data = 2;
-    else if ( cb == BULLETPANEL4 )
+    else if (cb == BULLETPANEL4 )
 	    data = 3;
-    else if ( cb == BULLETPANEL5 )
+    else if (cb == BULLETPANEL5 )
 	    data = 4;
-    else if ( cb == BULLETPANEL6 )
+    else if (cb == BULLETPANEL6 )
 	    data = 5;
 
     if (data != current_bullet_panel) {

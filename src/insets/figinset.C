@@ -168,7 +168,7 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 {
 	XClientMessageEvent * e = reinterpret_cast<XClientMessageEvent*>(ev);
 
-	if(lyxerr.debugging()) {
+	if (lyxerr.debugging()) {
 		lyxerr << "ClientMessage, win:[xx] gs:[" << e->data.l[0]
 		       << "] pm:[" << e->data.l[1] << "]" << endl;
 	}
@@ -322,7 +322,7 @@ void AllocColors(int num)
 			if (i) XFreeColors(fl_get_display(),
 					   fl_state[fl_get_vclass()].colormap,
 					   gs_pixels, i, 0);
-			if(lyxerr.debugging()) {
+			if (lyxerr.debugging()) {
 				lyxerr << "Cannot allocate color cube "
 				       << num << endl;;
 			}
@@ -772,7 +772,7 @@ void getbitmap(figdata * p)
 static
 void makeupdatelist(figdata * p)
 {
-	for(figures_type::iterator it = figures.begin();
+	for (figures_type::iterator it = figures.begin();
 	    it != figures.end(); ++it)
 		if ((*it)->data == p) {
 			if (lyxerr.debugging()) {
@@ -1158,7 +1158,7 @@ int InsetFig::DocBook(Buffer const *, ostream & os) const
 	string buf1 = OnlyPath(owner->fileName());
 	string figurename = MakeRelPath(fname, buf1);
 
-	if(suffixIs(figurename, ".eps"))
+	if (suffixIs(figurename, ".eps"))
 		figurename.erase(figurename.length() - 4);
 
 	os << "@<graphic fileref=\"" << figurename << "\"></graphic>";
@@ -1199,7 +1199,7 @@ void InsetFig::Edit(BufferView * bv, int, int, unsigned int)
 	// We should have RO-versions of the form instead.
 	// The actual prevention of altering a readonly doc
 	// is done in CallbackFig()
-	if(bv->buffer()->isReadonly()) 
+	if (bv->buffer()->isReadonly()) 
 		WarnReadonly(bv->buffer()->fileName());
 
 	if (!form) {
@@ -1703,7 +1703,7 @@ void InsetFig::CallbackFig(long arg)
 		break;
 	case 7:				/* apply */
 	case 8:				/* ok (apply and close) */
-		if(!current_view->buffer()->isReadonly()) {
+		if (!current_view->buffer()->isReadonly()) {
 			wtype = twtype;
 			htype = thtype;
 			xwid = atof(fl_get_input(form->Width));
@@ -1744,7 +1744,7 @@ void InsetFig::CallbackFig(long arg)
 			break;
 		} //if not readonly
 		//  The user has already been informed about RO in ::Edit
-		if(arg == 7) // if 'Apply'
+		if (arg == 7) // if 'Apply'
 			break;
 		// fall through
 	case 9:				/* cancel = restore and close */
@@ -1888,7 +1888,7 @@ void InsetFig::RestoreForm()
 	}
 	else fl_set_input(form->EpsFile, "");
 	fl_set_input(form->Subcaption, subcaption.c_str());
-	if(current_view->buffer()->isReadonly()) 
+	if (current_view->buffer()->isReadonly()) 
 	        DisableFigurePanel(form);
 
 	TempRegenerate();

@@ -147,7 +147,7 @@ void FormGraphics::build()
 
 FL_FORM * FormGraphics::form() const
 {
-	if ( dialog_ ) return dialog_->form;
+	if (dialog_ ) return dialog_->form;
 	return 0;
 }
 
@@ -279,7 +279,7 @@ bool FormGraphics::input(FL_OBJECT *, long data )
 
 	bool inputOK = true;
 
-	switch( cb ) {
+	switch (cb) {
 	case CHECKINPUT:
 		inputOK = checkInput();
 		break;

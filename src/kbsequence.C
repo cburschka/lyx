@@ -61,24 +61,24 @@ void printKeysym(unsigned int key, unsigned int mod, string & buf);
 int kb_sequence::addkey(unsigned int key,
 			unsigned int mod, unsigned int nmod /*= 0*/)
 {
-	if(length < 0) length = 0;
+	if (length < 0) length = 0;
 
-	if(length + 1 >= size) {
+	if (length + 1 >= size) {
 		unsigned int * nseq = new unsigned int[size + KB_PREALLOC];
 		size += KB_PREALLOC;
 		memcpy(nseq, sequence, length * sizeof(unsigned int));
-		if(sequence != staticseq) delete sequence;
+		if (sequence != staticseq) delete sequence;
 		sequence = nseq;
 		nseq = new unsigned int[size];
 		memcpy(nseq, modifiers, length * sizeof(unsigned int));
-		if(modifiers != staticmod) delete modifiers;
+		if (modifiers != staticmod) delete modifiers;
 		modifiers = nseq;
 	}
 
 	modifiers[length]  = mod + (nmod << 16);
 	sequence[length++] = key;
    
-	if(curmap)
+	if (curmap)
 		return curmap->lookup(key, mod, this);
 	
 	return -1;
@@ -98,16 +98,16 @@ int kb_sequence::addkey(unsigned int key,
 
 int kb_sequence::parse(string const & s)
 {
-	if(s.empty()) return 1;
+	if (s.empty()) return 1;
 
 	string::size_type i = 0;
 	unsigned int mod = 0, nmod = 0;
 	while (i < s.length()) {
-		if(s[i] && (s[i]) <= ' ') ++i;
-		if(i >= s.length()) break;
+		if (s[i] && (s[i]) <= ' ') ++i;
+		if (i >= s.length()) break;
 		
-		if(s[i + 1] == '-')	{ // is implicit that s[i] == true
-			switch(s[i]) {
+		if (s[i + 1] == '-')	{ // is implicit that s[i] == true
+			switch (s[i]) {
 			case 's': case 'S':
 				mod |= ShiftMask;
 				i += 2;
@@ -123,8 +123,8 @@ int kb_sequence::parse(string const & s)
 			default:
 				return i + 1;
 			}
-		} else if(s[i] == '~' && s[i + 1] && s[i + 2] == '-') {
-			switch(s[i + 1]) {
+		} else if (s[i] == '~' && s[i + 1] && s[i + 2] == '-') {
+			switch (s[i + 1]) {
 			case 's': case 'S':
 				nmod |= ShiftMask;
 				i += 3;
@@ -143,11 +143,11 @@ int kb_sequence::parse(string const & s)
 		} else {
 			string tbuf;
 			string::size_type j = i;
-			for(; j < s.length() && s[j] > ' '; ++j)
+			for (; j < s.length() && s[j] > ' '; ++j)
 				tbuf += s[j];    // (!!!check bounds :-)
 			
 			KeySym key = XStringToKeysym(tbuf.c_str());
-			if(key == NoSymbol) {
+			if (key == NoSymbol) {
 				lyxerr[Debug::KBMAP]
 					<< "kbmap.C: No such keysym: "
 					<< tbuf << endl;
@@ -179,15 +179,15 @@ int kb_sequence::print(string & buf, bool when_defined) const
 	KeySym key;
 	unsigned int mod;
 	int l = length;
-	if ( l < 0 && !when_defined ) l = -l;
+	if (l < 0 && !when_defined ) l = -l;
 	
-	for(int i = 0; i < l; ++i) {
+	for (int i = 0; i < l; ++i) {
 		key = sequence[i];
 		mod = modifiers[i] & 0xffff;
 
 		printKeysym(key, mod, buf);  // RVDK_PATCH_5
 
-		if(i + 1 < l) {  // append a blank
+		if (i + 1 < l) {  // append a blank
 			buf += ' ';
 		}
 	}
@@ -243,8 +243,8 @@ void kb_sequence::delseq()
 unsigned int kb_sequence::getsym() const
 {
 	int l = length;
-	if(l == 0) return NoSymbol;
-	if(l < 0) l = -l;
+	if (l == 0) return NoSymbol;
+	if (l < 0) l = -l;
 	return sequence[l - 1];
 }
 
@@ -261,7 +261,7 @@ char kb_sequence::getiso() const
 {
 	int c = getsym();
 	
-	if(c > 0xff)
+	if (c > 0xff)
 		return '\0';
 	return c;
 }

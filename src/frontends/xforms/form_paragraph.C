@@ -12,7 +12,7 @@
 
 FD_form_paragraph_general::~FD_form_paragraph_general()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -136,7 +136,7 @@ FD_form_paragraph_general * FormParagraph::build_paragraph_general()
 
 FD_form_paragraph_extra::~FD_form_paragraph_extra()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -225,7 +225,7 @@ FD_form_paragraph_extra * FormParagraph::build_paragraph_extra()
 
 FD_form_tabbed_paragraph::~FD_form_tabbed_paragraph()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 

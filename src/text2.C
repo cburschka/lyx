@@ -1721,7 +1721,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
         // entry in the marginnote and the enclosing
         // environment is an enum/item then correct for the
         // LaTeX behaviour (ARRae)
-        if(par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE
+        if (par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE
 	   && par->footnotekind == LyXParagraph::MARGIN
            && par->Previous()
            && par->Previous()->footnoteflag != LyXParagraph::OPEN_FOOTNOTE
@@ -2663,7 +2663,7 @@ void LyXText::CheckParagraph(BufferView * bview, LyXParagraph * par,
 	// is there a break one row above
 	if (row->previous() && row->previous()->par() == row->par()) {
 		z = NextBreakPoint(bview, row->previous(), workWidth(bview));
-		if ( z >= row->pos()) {
+		if (z >= row->pos()) {
 			// set the dimensions of the row above
 			y -= row->previous()->height();
 			refresh_y = y;
@@ -3094,7 +3094,7 @@ void LyXText::DeleteEmptyParagraphMechanism(BufferView * bview,
 	LyXCursor tmpcursor;
 
 	if (old_cursor.par() != cursor.par()) {
-		if ( (old_cursor.par()->Last() == 0
+		if ((old_cursor.par()->Last() == 0
 		      || (old_cursor.par()->Last() == 1
 			  && old_cursor.par()->IsLineSeparator(0)))
 #ifndef NEW_INSETS

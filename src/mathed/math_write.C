@@ -239,7 +239,7 @@ void MathParInset::Write(ostream & os, bool fragile)
 					os << '}';
 				data.Next();
 			} else
-				switch(cx) {
+				switch (cx) {
 				case LM_TC_TAB:
 				{
 					os << " & ";

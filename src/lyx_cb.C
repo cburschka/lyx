@@ -657,7 +657,7 @@ LyXFont const UserFreeFont(BufferParams const & params)
 	LyXFont font(LyXFont::ALL_IGNORE);
 
 	int pos = fl_get_choice(fd_form_character->choice_family);
-	switch(pos) {
+	switch (pos) {
 	case 1: font.setFamily(LyXFont::IGNORE_FAMILY); break;
 	case 2: font.setFamily(LyXFont::ROMAN_FAMILY); break;
 	case 3: font.setFamily(LyXFont::SANS_FAMILY); break;
@@ -666,7 +666,7 @@ LyXFont const UserFreeFont(BufferParams const & params)
 	}
 
 	pos = fl_get_choice(fd_form_character->choice_series);
-	switch(pos) {
+	switch (pos) {
 	case 1: font.setSeries(LyXFont::IGNORE_SERIES); break;
 	case 2: font.setSeries(LyXFont::MEDIUM_SERIES); break;
 	case 3: font.setSeries(LyXFont::BOLD_SERIES); break;
@@ -674,7 +674,7 @@ LyXFont const UserFreeFont(BufferParams const & params)
 	}
 
 	pos = fl_get_choice(fd_form_character->choice_shape);
-	switch(pos) {
+	switch (pos) {
 	case 1: font.setShape(LyXFont::IGNORE_SHAPE); break;
 	case 2: font.setShape(LyXFont::UP_SHAPE); break;
 	case 3: font.setShape(LyXFont::ITALIC_SHAPE); break;
@@ -684,7 +684,7 @@ LyXFont const UserFreeFont(BufferParams const & params)
 	}
 
 	pos = fl_get_choice(fd_form_character->choice_size);
-	switch(pos) {
+	switch (pos) {
 	case 1: font.setSize(LyXFont::IGNORE_SIZE); break;
 	case 2: font.setSize(LyXFont::SIZE_TINY); break;
 	case 3: font.setSize(LyXFont::SIZE_SCRIPT); break;
@@ -702,7 +702,7 @@ LyXFont const UserFreeFont(BufferParams const & params)
 	}
 
 	pos = fl_get_choice(fd_form_character->choice_bar);
-	switch(pos) {
+	switch (pos) {
 	case 1: font.setEmph(LyXFont::IGNORE);
 		font.setUnderbar(LyXFont::IGNORE);
 		font.setNoun(LyXFont::IGNORE);
@@ -720,7 +720,7 @@ LyXFont const UserFreeFont(BufferParams const & params)
 	}
 
 	pos = fl_get_choice(fd_form_character->choice_color);
-	switch(pos) {
+	switch (pos) {
 	case 1: font.setColor(LColor::ignore); break;
 	case 2: font.setColor(LColor::none); break;
 	case 3: font.setColor(LColor::black); break;
@@ -835,7 +835,7 @@ void FigureApplyCB(FL_OBJECT *, long)
 		return;
 
 	Buffer * buffer = current_view->buffer();
-	if(buffer->isReadonly()) // paranoia
+	if (buffer->isReadonly()) // paranoia
 		return;
 	
 	current_view->owner()->getMiniBuffer()->Set(_("Inserting figure..."));

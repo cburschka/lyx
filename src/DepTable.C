@@ -46,7 +46,7 @@ void DepTable::insert(string const & fi,
 
 void DepTable::update()
 {
-	for(DepList::iterator itr = deplist.begin();
+	for (DepList::iterator itr = deplist.begin();
 	    itr != deplist.end();
 	    ++itr) {
 		unsigned long const one = (*itr).second.second;

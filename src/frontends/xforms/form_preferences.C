@@ -12,7 +12,7 @@
 
 FD_form_preferences::~FD_form_preferences()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -57,7 +57,7 @@ FD_form_preferences * FormPreferences::build_preferences()
 
 FD_form_outer_tab::~FD_form_outer_tab()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -83,7 +83,7 @@ FD_form_outer_tab * FormPreferences::build_outer_tab()
 
 FD_form_screen_fonts::~FD_form_screen_fonts()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -171,7 +171,7 @@ FD_form_screen_fonts * FormPreferences::build_screen_fonts()
 
 FD_form_outputs_misc::~FD_form_outputs_misc()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -223,7 +223,7 @@ FD_form_outputs_misc * FormPreferences::build_outputs_misc()
 
 FD_form_spellchecker::~FD_form_spellchecker()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -287,7 +287,7 @@ FD_form_spellchecker * FormPreferences::build_spellchecker()
 
 FD_form_inputs_misc::~FD_form_inputs_misc()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -314,7 +314,7 @@ FD_form_inputs_misc * FormPreferences::build_inputs_misc()
 
 FD_form_language::~FD_form_language()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -386,7 +386,7 @@ FD_form_language * FormPreferences::build_language()
 
 FD_form_colours::~FD_form_colours()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -449,7 +449,7 @@ FD_form_colours * FormPreferences::build_colours()
 
 FD_form_converters::~FD_form_converters()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -497,7 +497,7 @@ FD_form_converters * FormPreferences::build_converters()
 
 FD_form_formats::~FD_form_formats()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -549,7 +549,7 @@ FD_form_formats * FormPreferences::build_formats()
 
 FD_form_lnf_misc::~FD_form_lnf_misc()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -617,7 +617,7 @@ FD_form_lnf_misc * FormPreferences::build_lnf_misc()
 
 FD_form_interface::~FD_form_interface()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -666,7 +666,7 @@ FD_form_interface * FormPreferences::build_interface()
 
 FD_form_printer::~FD_form_printer()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -745,7 +745,7 @@ FD_form_printer * FormPreferences::build_printer()
 
 FD_form_paths::~FD_form_paths()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 

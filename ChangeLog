@@ -1,3 +1,24 @@
+2000-11-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/frontends/xforms/FormPreferences.h (operator=): move out of RGB
+	(operator!): ditto
+
+	* src/frontends/xforms/FormPreferences.C (WriteableFile): simplify
+	the use of FileInfo
+
+	* src/lyxfunc.C (processKeyEvent): removed
+
+	* src/bufferlist.C (emergencyWrite): removed the out commented
+	emergency write code.
+
+	* src/Makefile.am (lyx_main.o): add dep for commandtags.h
+
+	* src/LyXView.[Ch]: remove the outcommented raw_callback code
+
+	* many files: change formatting to be a bit more uniform for
+	if,while,for,switch statements, remove some parantesis not needed.
+	
+
 2000-11-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* config/kde.m4: make config more robust when KDEDIR is set

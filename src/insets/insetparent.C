@@ -32,7 +32,7 @@ using std::ostream;
 InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf)
 	: InsetCommand(p)
 {
-	string fn = p.getContents();
+	string const fn = p.getContents();
 	setContents(MakeAbsPath(fn, OnlyPath(bf.fileName())));
 }
 

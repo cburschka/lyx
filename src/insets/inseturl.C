@@ -28,12 +28,12 @@ void InsetUrl::Edit(BufferView * bv, int, int, unsigned int)
 string const InsetUrl::getScreenLabel() const
 {
 	string temp;
-	if( getCmdName() == "url" )
+	if (getCmdName() == "url" )
 		temp = _("Url: ");
 	else 
 		temp = _("HtmlUrl: ");
 
-	if(!getOptions().empty())
+	if (!getOptions().empty())
 		temp += getOptions();
 	else
 		temp += getContents();

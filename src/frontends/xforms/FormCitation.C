@@ -52,7 +52,7 @@ FormCitation::~FormCitation()
 
 FL_FORM * FormCitation::form() const
 {
-	if ( dialog_ ) return dialog_->form;
+	if (dialog_ ) return dialog_->form;
 	return 0;
 }
 
@@ -99,7 +99,7 @@ void FormCitation::update()
 	vector<pair<string,string> > blist =
 		lv_->buffer()->getBibkeyList();
 
-	for( unsigned int i = 0; i < blist.size(); ++i ) {
+	for (unsigned int i = 0; i < blist.size(); ++i) {
 		bibkeys.push_back(blist[i].first);
 		bibkeysInfo.push_back(blist[i].second);
 	}
@@ -108,7 +108,7 @@ void FormCitation::update()
 	citekeys.clear();
 	string tmp, keys( params.getContents() );
 	keys = frontStrip( split(keys, tmp, ',') );
-	while( !tmp.empty() ) {
+	while (!tmp.empty()) {
 		citekeys.push_back( tmp );
 		keys = frontStrip( split(keys, tmp, ',') );
 	}
@@ -140,7 +140,7 @@ void FormCitation::updateBrowser( FL_OBJECT * browser,
 {
 	fl_clear_browser( browser );
 
-	for( unsigned int i = 0; i < keys.size(); ++i )
+	for (unsigned int i = 0; i < keys.size(); ++i )
 		fl_add_browser_line( browser, keys[i].c_str());
 }
 
@@ -166,7 +166,7 @@ void FormCitation::setBibButtons( State status ) const
 
 void FormCitation::setCiteButtons( State status ) const
 {
-	switch( status ) {
+	switch (status) {
 	case ON:
         {
 		fl_activate_object( dialog_->delBtn );
@@ -174,7 +174,7 @@ void FormCitation::setCiteButtons( State status ) const
 
 		int sel = fl_get_browser( dialog_->citeBrsr );
 
-		if ( sel != 1 ) {
+		if (sel != 1) {
 			fl_activate_object( dialog_->upBtn );
 			fl_set_object_lcol( dialog_->upBtn, FL_BLACK );
 		} else {
@@ -182,7 +182,7 @@ void FormCitation::setCiteButtons( State status ) const
 			fl_set_object_lcol( dialog_->upBtn, FL_INACTIVE );
 		}
 
-		if ( sel != fl_get_browser_maxline(dialog_->citeBrsr)) {
+		if (sel != fl_get_browser_maxline(dialog_->citeBrsr)) {
 			fl_activate_object( dialog_->downBtn );
 			fl_set_object_lcol( dialog_->downBtn, FL_BLACK );
 		} else {
@@ -233,11 +233,11 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 	static int const hok    = dialog_->button_ok->h;
 
 	int hform = dh1 + hbrsr + dh1;
-	if ( bibPresent ) hform += hinfo + dh1;
-	if ( natbib ) hform += hstyle + dh1 + htext + dh2;
+	if (bibPresent ) hform += hinfo + dh1;
+	if (natbib ) hform += hstyle + dh1 + htext + dh2;
 	hform += htext + dh1 + hok + dh2;
 
-	if ( hform != minh_ ) {
+	if (hform != minh_) {
 		minh_ = hform;
 		fl_set_form_size( dialog_->form, minw_, minh_ );
 	} else
@@ -264,7 +264,7 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 
 	y = dh1 + hbrsr + dh1; // in position for next element
 
-	if ( bibPresent ) {
+	if (bibPresent) {
 		x = dialog_->infoBrsr->x;
 		fl_set_object_position( dialog_->infoBrsr, x, y );
 		fl_show_object( dialog_->infoBrsr );
@@ -272,7 +272,7 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 	} else
 		fl_hide_object( dialog_->infoBrsr );
 
-	if ( natbib ) {
+	if (natbib) {
 		x = dialog_->style->x;
 		fl_set_object_position( dialog_->style, x, y );
 		fl_show_object( dialog_->style );
@@ -309,13 +309,13 @@ bool FormCitation::input( FL_OBJECT *, long data )
 	bool activate = false;
 	State cb = static_cast<State>( data );
 
-	switch( cb ) {
+	switch (cb) {
 	case BIBBRSR:
 	{
 		fl_deselect_browser( dialog_->citeBrsr );
 		
 		unsigned int sel = fl_get_browser( dialog_->bibBrsr );
-		if ( sel < 1 || sel > bibkeys.size() ) break;
+		if (sel < 1 || sel > bibkeys.size() ) break;
 
 		// Put into infoBrsr the additional info associated with
 		// the selected bibBrsr key
@@ -327,14 +327,14 @@ bool FormCitation::input( FL_OBJECT *, long data )
 		vector<string>::iterator it =
 			find( citekeys.begin(), citekeys.end(), bibkeys[sel-1] );
 
-		if ( it != citekeys.end() ) {
+		if (it != citekeys.end()) {
 			int n = static_cast<int>( it - citekeys.begin() );
 			fl_select_browser_line( dialog_->citeBrsr, n+1 );
 			fl_set_browser_topline( dialog_->citeBrsr, n+1 );
 		}
 
-		if ( !lv_->buffer()->isReadonly() ) {
-			if ( it != citekeys.end() ) {
+		if (!lv_->buffer()->isReadonly()) {
+			if (it != citekeys.end()) {
 				setBibButtons( OFF );
 				setCiteButtons( ON );
 			} else {
@@ -347,9 +347,9 @@ bool FormCitation::input( FL_OBJECT *, long data )
 	case CITEBRSR:
 	{
 		unsigned int sel = fl_get_browser( dialog_->citeBrsr );
-		if ( sel < 1 || sel > citekeys.size() ) break;
+		if (sel < 1 || sel > citekeys.size() ) break;
 
-		if ( !lv_->buffer()->isReadonly() ) {
+		if (!lv_->buffer()->isReadonly()) {
 			setBibButtons( OFF );
 			setCiteButtons( ON );
 		}
@@ -373,10 +373,10 @@ bool FormCitation::input( FL_OBJECT *, long data )
 	break;
 	case ADD:
 	{
-		if ( lv_->buffer()->isReadonly() ) break;
+		if (lv_->buffer()->isReadonly() ) break;
 
 		unsigned int sel = fl_get_browser( dialog_->bibBrsr );
-		if ( sel < 1 || sel > bibkeys.size() ) break;
+		if (sel < 1 || sel > bibkeys.size() ) break;
 
 		// Add the selected bibBrsr key to citeBrsr
 		fl_addto_browser( dialog_->citeBrsr,
@@ -393,10 +393,10 @@ bool FormCitation::input( FL_OBJECT *, long data )
 	break;
 	case DELETE:
 	{
-		if ( lv_->buffer()->isReadonly() ) break;
+		if (lv_->buffer()->isReadonly() ) break;
 
 		unsigned int sel = fl_get_browser( dialog_->citeBrsr );
-		if ( sel < 1 || sel > citekeys.size() ) break;
+		if (sel < 1 || sel > citekeys.size() ) break;
 
 		// Remove the selected key from citeBrsr
 		fl_delete_browser_line( dialog_->citeBrsr, sel ) ;
@@ -409,10 +409,10 @@ bool FormCitation::input( FL_OBJECT *, long data )
 	break;
 	case UP:
 	{
-		if ( lv_->buffer()->isReadonly() ) break;
+		if (lv_->buffer()->isReadonly() ) break;
 
 		unsigned int sel = fl_get_browser( dialog_->citeBrsr );
-		if ( sel < 2 || sel > citekeys.size() ) break;
+		if (sel < 2 || sel > citekeys.size() ) break;
 
 		// Move the selected key up one line
 		vector<string>::iterator it = citekeys.begin() + sel-1;
@@ -430,10 +430,10 @@ bool FormCitation::input( FL_OBJECT *, long data )
 	break;
 	case DOWN:
 	{
-		if ( lv_->buffer()->isReadonly() ) break;
+		if (lv_->buffer()->isReadonly() ) break;
 
 		unsigned int sel = fl_get_browser( dialog_->citeBrsr );
-		if ( sel < 1 || sel > citekeys.size()-1 ) break;
+		if (sel < 1 || sel > citekeys.size()-1 ) break;
 
 		// Move the selected key down one line
 		vector<string>::iterator it = citekeys.begin() + sel-1;
@@ -461,7 +461,7 @@ void FormCitation::apply()
 	if (lv_->buffer()->isReadonly()) return;
 
 	string contents;
-	for(unsigned int i = 0; i < citekeys.size(); ++i) {
+	for (unsigned int i = 0; i < citekeys.size(); ++i) {
 		if (i > 0) contents += ", ";
 		contents += citekeys[i];
 	}

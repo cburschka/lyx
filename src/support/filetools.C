@@ -546,7 +546,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 	// checks for already absolute path
 	if (AbsolutePath(RelPath))
 #ifdef __EMX__
-		if(RelPath[0]!= '/' && RelPath[0]!= '\\')
+		if (RelPath[0]!= '/' && RelPath[0]!= '\\')
 #endif
 		return RelPath;
 

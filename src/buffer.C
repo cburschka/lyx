@@ -254,7 +254,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 	bool has_token = false;
 	string pretoken;
 
-	if(!par) {
+	if (!par) {
 		par = new LyXParagraph;
 	} else {
 		users->text->BreakParagraph(users);
@@ -550,7 +550,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		if (tmpret != LYX_LAYOUT_DEFAULT) {
 			InsetQuotes::quote_language tmpl = 
 				InsetQuotes::EnglishQ;
-			switch(tmpret) {
+			switch (tmpret) {
 			case 0:
 				tmpl = InsetQuotes::EnglishQ;
 				break;
@@ -574,7 +574,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		}
 	} else if (token == "\\quotes_times") {
 		lex.nextToken();
-		switch(lex.GetInteger()) {
+		switch (lex.GetInteger()) {
 		case 1: 
 			params.quotes_times = InsetQuotes::SingleQ; 
 			break;
@@ -641,7 +641,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		params.columns = lex.GetInteger();
 	} else if (token == "\\papersides") {
 		lex.nextToken();
-		switch(lex.GetInteger()) {
+		switch (lex.GetInteger()) {
 		default:
 		case 1: params.sides = LyXTextClass::OneSide; break;
 		case 2: params.sides = LyXTextClass::TwoSides; break;
@@ -921,7 +921,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			       "Inserting as text.");
 		string::const_iterator cit = token.begin();
 		string::const_iterator end = token.end();
-		for(; cit != end; ++cit) {
+		for (; cit != end; ++cit) {
 			par->InsertChar(pos, (*cit), font);
 			++pos;
 		}
@@ -1389,10 +1389,10 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 		for (i = 0, actpos = 1; i < par->size(); ++i, ++actpos) {
 			if (!i && !footnoteflag && !noparbreak){
 				ofs << "\n\n";
-				for(j = 0; j < depth; ++j)
+				for (j = 0; j < depth; ++j)
 					ofs << "  ";
 				currlinelen = depth * 2;
-				switch(ltype) {
+				switch (ltype) {
 				case 0: /* Standard */
 				case 4: /* (Sub)Paragraph */
                                 case 5: /* Description */
@@ -1411,7 +1411,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 					break;
 				}
 				if (ltype_depth > depth) {
-					for(j = ltype_depth - 1; j > depth; --j)
+					for (j = ltype_depth - 1; j > depth; --j)
 						ofs << "  ";
 					currlinelen += (ltype_depth-depth)*2;
 				}
@@ -1439,11 +1439,11 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 				break;
 			case LyXParagraph::META_NEWLINE:
 				ofs << "\n";
-				for(j = 0; j < depth; ++j)
+				for (j = 0; j < depth; ++j)
 					ofs << "  ";
 				currlinelen = depth * 2;
 				if (ltype_depth > depth) {
-					for(j = ltype_depth;
+					for (j = ltype_depth;
 					    j > depth; --j)
 						ofs << "  ";
 					currlinelen += (ltype_depth - depth) * 2;
@@ -1459,11 +1459,11 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 				if (currlinelen > linelen - 10
                                     && c == ' ' && i + 2 < par->size()) {
 					ofs << "\n";
-					for(j = 0; j < depth; ++j)
+					for (j = 0; j < depth; ++j)
 						ofs << "  ";
 					currlinelen = depth * 2;
 					if (ltype_depth > depth) {
-						for(j = ltype_depth;
+						for (j = ltype_depth;
 						    j > depth; --j)
 							ofs << "  ";
 						currlinelen += (ltype_depth-depth)*2;
@@ -1597,10 +1597,10 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 		if (!i && !footnoteflag && !noparbreak){
 			if (linelen > 0)
 				buffer << "\n\n";
-			for(char j = 0; j < depth; ++j)
+			for (char j = 0; j < depth; ++j)
 				buffer << "  ";
 			currlinelen = depth * 2;
-			switch(ltype) {
+			switch (ltype) {
 			case 0: /* Standard */
 			case 4: /* (Sub)Paragraph */
 			case 5: /* Description */
@@ -1625,7 +1625,7 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 				break;
 			}
 			if (ltype_depth > depth) {
-				for(char j = ltype_depth - 1; j > depth; --j)
+				for (char j = ltype_depth - 1; j > depth; --j)
 					buffer << "  ";
 				currlinelen += (ltype_depth-depth)*2;
 			}
@@ -1659,12 +1659,12 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 		case LyXParagraph::META_NEWLINE:
 			if (linelen > 0) {
 				buffer << "\n";
-				for(char j = 0; j < depth; ++j)
+				for (char j = 0; j < depth; ++j)
 					buffer << "  ";
 			}
 			currlinelen = depth * 2;
 			if (ltype_depth > depth) {
-				for(char j = ltype_depth;
+				for (char j = ltype_depth;
 				    j > depth; --j)
 					buffer << "  ";
 				currlinelen += (ltype_depth - depth) * 2;
@@ -1681,11 +1681,11 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 			    (c == ' ') && ((i + 2) < par->size()))
 			{
 				buffer << "\n";
-				for(char j = 0; j < depth; ++j)
+				for (char j = 0; j < depth; ++j)
 					buffer << "  ";
 				currlinelen = depth * 2;
 				if (ltype_depth > depth) {
-					for(char j = ltype_depth;
+					for (char j = ltype_depth;
 					    j > depth; --j)
 						buffer << "  ";
 					currlinelen += (ltype_depth-depth)*2;
@@ -1856,7 +1856,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 			features.UsedLanguages.insert(default_language);
 #ifdef DO_USE_DEFAULT_LANGUAGE
 		if (params.language->lang() != "default" ||
-		    !features.UsedLanguages.empty() ) {
+		    !features.UsedLanguages.empty()) {
 #endif
 			use_babel = true;
 			for (LaTeXFeatures::LanguageList::const_iterator cit =
@@ -2372,7 +2372,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	LaTeXFeatures features(params, tclass.numLayouts());
 	validate(features);
 
-	//if(nice)
+	//if (nice)
 	tex_code_break_column = lyxrc.ascii_linelen;
 	//else
 	//tex_code_break_column = 0;
@@ -2389,7 +2389,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			    << params.preamble << sgml_includedfiles << " \n]>\n\n";
 		}
 
-		if(params.options.empty())
+		if (params.options.empty())
 			sgmlOpenTag(ofs, 0, top_element);
 		else {
 			string top = top_element;
@@ -2434,11 +2434,11 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		// write opening SGML tags
 		switch (style.latextype) {
 		case LATEX_PARAGRAPH:
-			if(depth == par->depth 
+			if (depth == par->depth 
 			   && !environment_stack[depth].empty()) {
 				sgmlCloseTag(ofs, depth, environment_stack[depth]);
 				environment_stack[depth].erase();
-				if(depth) 
+				if (depth) 
 					--depth;
 				else
 				        ofs << "</p>";
@@ -2477,7 +2477,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			       environment_stack[depth].erase();
 			}
 			if (environment_stack[depth] != style.latexname()) {
-				if(depth == 0) {
+				if (depth == 0) {
 					string const temp = "p";
 					sgmlOpenTag(ofs, depth, temp);
 				}
@@ -2485,11 +2485,11 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 				sgmlOpenTag(ofs, depth,
 					    environment_stack[depth]);
 			}
-			if(style.latextype == LATEX_ENVIRONMENT) break;
+			if (style.latextype == LATEX_ENVIRONMENT) break;
 
 			desc_on = (style.labeltype == LABEL_MANUAL);
 
-			if(desc_on)
+			if (desc_on)
 				item_name = "tag";
 			else
 				item_name = "item";
@@ -2515,7 +2515,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 		ofs << "\n";
 		// write closing SGML tags
-		switch(style.latextype) {
+		switch (style.latextype) {
 		case LATEX_COMMAND:
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT:
@@ -2527,10 +2527,10 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	}
    
 	// Close open tags
-	for(; depth > 0; --depth)
+	for (; depth > 0; --depth)
 	        sgmlCloseTag(ofs, depth, environment_stack[depth]);
 
-	if(!environment_stack[depth].empty())
+	if (!environment_stack[depth].empty())
 	        sgmlCloseTag(ofs, depth, environment_stack[depth]);
 
 	if (!body_only) {
@@ -2579,7 +2579,7 @@ void Buffer::DocBookHandleCaption(ostream & os, string & inner_tag,
 		SimpleDocBookOnePar(os, extra_par, tpar,
 				    desc_on, depth + 2);
 		sgmlCloseTag(os, depth+1, inner_tag);
-		if(!extra_par.empty())
+		if (!extra_par.empty())
 			os << extra_par;
 	}
 }
@@ -2678,9 +2678,9 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 		par = par->next;
 	}
 	os << tmp_par;
-	if(!inner_tag.empty()) sgmlCloseTag(os, depth + 1, inner_tag);
-	if(!extra_par.empty()) os << extra_par;
-	if(!tag.empty()) sgmlCloseTag(os, depth, tag);
+	if (!inner_tag.empty()) sgmlCloseTag(os, depth + 1, inner_tag);
+	if (!extra_par.empty()) os << extra_par;
+	if (!tag.empty()) sgmlCloseTag(os, depth, tag);
 }
 #endif
 
@@ -2797,7 +2797,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 		LyXFont const font2 = par->getFont(params, i);
 
 		if (font1.family() != font2.family()) {
-			switch(family_type) {
+			switch (family_type) {
 			case 0:
 			       	if (font2.family() == LyXFont::TYPEWRITER_FAMILY) {
 			        	push_tag(os, "tt", stack_num, stack);
@@ -2841,7 +2841,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 
 		// handle italic and slanted fonts
 		if (font1.shape() != font2.shape()) {
-			switch(shape_type) {
+			switch (shape_type) {
 			case 0:
 			       	if (font2.shape() == LyXFont::ITALIC_SHAPE) {
 			        	push_tag(os, "it", stack_num, stack);
@@ -2931,7 +2931,7 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 	}
 
 	// resets description flag correctly
-	switch(desc_on){
+	switch (desc_on){
 	case 1:
 		// <tag> not closed...
 		linux_doc_line_break(os, char_line_count, 6);
@@ -2986,7 +2986,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	LaTeXFeatures features(params, tclass.numLayouts());
 	validate(features);
 
-	//if(nice)
+	//if (nice)
 	tex_code_break_column = lyxrc.ascii_linelen;
 	//else
 	//tex_code_break_column = 0;
@@ -2999,7 +2999,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
    
 	texrow.reset();
 
-	if(!only_body) {
+	if (!only_body) {
 		string sgml_includedfiles=features.getIncludedFiles();
 
 		ofs << "<!doctype " << top_element
@@ -3011,7 +3011,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			ofs << "\n [ " << params.preamble 
 			    << sgml_includedfiles << " \n]>\n\n";
 
-		if(params.options.empty())
+		if (params.options.empty())
 			sgmlOpenTag(ofs, 0, top_element);
 		else {
 			string top = top_element;
@@ -3031,12 +3031,12 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 					    par->layout);
 
 		// environment tag closing
-		for( ; depth > par->depth; --depth) {
-			if(environment_inner[depth] != "!-- --") {
+		for (; depth > par->depth; --depth) {
+			if (environment_inner[depth] != "!-- --") {
 				item_name= "listitem";
 				sgmlCloseTag(ofs, command_depth + depth,
 					     item_name);
-				if( environment_inner[depth] == "varlistentry")
+				if (environment_inner[depth] == "varlistentry")
 					sgmlCloseTag(ofs, depth+command_depth,
 						     environment_inner[depth]);
 			}
@@ -3046,14 +3046,14 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			environment_inner[depth].erase();
 		}
 
-		if(depth == par->depth
+		if (depth == par->depth
 		   && environment_stack[depth] != style.latexname()
 		   && !environment_stack[depth].empty()) {
-			if(environment_inner[depth] != "!-- --") {
+			if (environment_inner[depth] != "!-- --") {
 				item_name= "listitem";
 				sgmlCloseTag(ofs, command_depth+depth,
 					     item_name);
-				if( environment_inner[depth] == "varlistentry")
+				if (environment_inner[depth] == "varlistentry")
 					sgmlCloseTag(ofs,
 						     depth + command_depth,
 						     environment_inner[depth]);
@@ -3067,9 +3067,9 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
                 }
 
 		// Write opening SGML tags.
-		switch(style.latextype) {
+		switch (style.latextype) {
 		case LATEX_PARAGRAPH:
-			if(style.latexname() != "dummy")
+			if (style.latexname() != "dummy")
                                sgmlOpenTag(ofs, depth+command_depth,
                                            style.latexname());
 			break;
@@ -3087,18 +3087,18 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			
 			cmd_depth= lyx::atoi(c_depth);
 			
-			if(command_flag) {
-				if(cmd_depth<command_base) {
-					for(int j = command_depth;
+			if (command_flag) {
+				if (cmd_depth<command_base) {
+					for (int j = command_depth;
 					    j >= command_base; --j)
-						if(!command_stack[j].empty())
+						if (!command_stack[j].empty())
 							sgmlCloseTag(ofs, j, command_stack[j]);
 					command_depth= command_base= cmd_depth;
-				} else if(cmd_depth <= command_depth) {
-					for(int j = command_depth;
+				} else if (cmd_depth <= command_depth) {
+					for (int j = command_depth;
 					    j >= cmd_depth; --j)
 
-						if(!command_stack[j].empty())
+						if (!command_stack[j].empty())
 							sgmlCloseTag(ofs, j, command_stack[j]);
 					command_depth= cmd_depth;
 				} else
@@ -3140,7 +3140,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 				sgmlOpenTag(ofs, depth + command_depth,
 					    environment_stack[depth]);
 			} else {
-				if(environment_inner[depth] != "!-- --") {
+				if (environment_inner[depth] != "!-- --") {
 					item_name= "listitem";
 					sgmlCloseTag(ofs,
 						     command_depth + depth,
@@ -3152,8 +3152,8 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 				}
 			}
 			
-			if(style.latextype == LATEX_ENVIRONMENT) {
-				if(!style.latexparam().empty())
+			if (style.latextype == LATEX_ENVIRONMENT) {
+				if (!style.latexparam().empty())
 			  		sgmlOpenTag(ofs, depth + command_depth,
 						    style.latexparam());
 				break;
@@ -3161,7 +3161,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 			desc_on = (style.labeltype == LABEL_MANUAL);
 
-			if(desc_on)
+			if (desc_on)
 				environment_inner[depth]= "varlistentry";
 			else
 				environment_inner[depth]= "listitem";
@@ -3169,7 +3169,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			sgmlOpenTag(ofs, depth + 1 + command_depth,
 				    environment_inner[depth]);
 
-			if(desc_on) {
+			if (desc_on) {
 				item_name= "term";
 				sgmlOpenTag(ofs, depth + 1 + command_depth,
 					    item_name);
@@ -3200,23 +3200,23 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 #endif
 		string end_tag;
 		// write closing SGML tags
-		switch(style.latextype) {
+		switch (style.latextype) {
 		case LATEX_COMMAND:
 			end_tag = "title";
 			sgmlCloseTag(ofs, depth + command_depth, end_tag);
 			break;
 		case LATEX_ENVIRONMENT:
-			if(!style.latexparam().empty())
+			if (!style.latexparam().empty())
 				sgmlCloseTag(ofs, depth + command_depth,
 					     style.latexparam());
 			break;
 		case LATEX_ITEM_ENVIRONMENT:
-			if(desc_on == 1) break;
+			if (desc_on == 1) break;
 			end_tag= "para";
 			sgmlCloseTag(ofs, depth + 1 + command_depth, end_tag);
 			break;
 		case LATEX_PARAGRAPH:
-			if(style.latexname() != "dummy")
+			if (style.latexname() != "dummy")
 				sgmlCloseTag(ofs, depth + command_depth,
 					     style.latexname());
 			break;
@@ -3228,13 +3228,13 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	}
 
 	// Close open tags
-	for(; depth >= 0; --depth) {
-		if(!environment_stack[depth].empty()) {
-			if(environment_inner[depth] != "!-- --") {
+	for (; depth >= 0; --depth) {
+		if (!environment_stack[depth].empty()) {
+			if (environment_inner[depth] != "!-- --") {
 				item_name= "listitem";
 				sgmlCloseTag(ofs, command_depth + depth,
 					     item_name);
-                               if( environment_inner[depth] == "varlistentry")
+                               if (environment_inner[depth] == "varlistentry")
 				       sgmlCloseTag(ofs, depth + command_depth,
 						    environment_inner[depth]);
 			}
@@ -3244,8 +3244,8 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		}
 	}
 	
-	for(int j = command_depth; j >= command_base; --j)
-		if(!command_stack[j].empty())
+	for (int j = command_depth; j >= command_base; --j)
+		if (!command_stack[j].empty())
 			sgmlCloseTag(ofs, j, command_stack[j]);
 
 	if (!only_body) {
@@ -3277,7 +3277,7 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 	LyXFont font1 = main_body > 0 ? style.labelfont : style.font;
 	
 	int char_line_count = depth;
-	if(!style.free_spacing)
+	if (!style.free_spacing)
 		for (int j = 0; j < depth; ++j)
 			os << ' ';
 
@@ -3315,9 +3315,9 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 			//   and title should come first
 			//         desc_on == 4
 			//
-			if(desc_on!= 3 || i!= 0) {
-				if(!tmp_out.empty() && tmp_out[0] == '@') {
-					if(desc_on == 4)
+			if (desc_on!= 3 || i!= 0) {
+				if (!tmp_out.empty() && tmp_out[0] == '@') {
+					if (desc_on == 4)
 						extra += frontStrip(tmp_out, '@');
 					else
 						os << frontStrip(tmp_out, '@');
@@ -3360,7 +3360,7 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 	}
 	
 	// resets description flag correctly
-	switch(desc_on){
+	switch (desc_on){
 	case 1:
 		// <term> not closed...
 		os << "</term>";
@@ -3714,7 +3714,7 @@ void Buffer::resizeInsets(BufferView * bv)
 {
 	/// then remove all LyXText in text-insets
 	LyXParagraph * par = paragraph;
-	for(; par; par = par->next) {
+	for (; par; par = par->next) {
 	    par->resizeInsetsLyXText(bv);
 	}
 }

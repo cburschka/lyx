@@ -64,7 +64,7 @@ int string_width(string const & str)
 Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb) 
 	: owner_(view), menubackend_(&mb), current_group_(0)
 {
-	for(MenuBackend::const_iterator menu = menubackend_->begin();
+	for (MenuBackend::const_iterator menu = menubackend_->begin();
 	    menu != menubackend_->end() ; ++menu) {
 		if (menu->menubar()) {
 			FL_OBJECT * group = fl_bgn_group();
@@ -169,7 +169,7 @@ void Menubar::Pimpl::set(string const & menu_name)
 
 void Menubar::Pimpl::openByName(string const & name)
 {
-	for(ButtonList::const_iterator cit = buttonlist_.begin();
+	for (ButtonList::const_iterator cit = buttonlist_.begin();
 	    cit != buttonlist_.end(); ++cit) {
 		if ((*cit)->item_->submenu() == name) {
 			MenuCallback((*cit)->obj_, 1);
@@ -510,7 +510,7 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 		MenuItem const & item = (*i);
 		string & extra_label = *it;
 
-		switch(item.kind()) {
+		switch (item.kind()) {
 		case MenuItem::Command: {
 			LyXFunc::func_status flag = 
 				view->getLyXFunc()->getStatus(item.action()); 

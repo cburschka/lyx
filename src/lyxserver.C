@@ -72,7 +72,7 @@ using std::endl;
 // provide an empty mkfifo() if we do not have one. This disables the
 // lyxserver. 
 #ifndef HAVE_MKFIFO
-int mkfifo(char const * __path, mode_t __mode ) {
+int mkfifo(char const * __path, mode_t __mode) {
         return 0;
 }
 #endif
@@ -240,7 +240,7 @@ void LyXComm::closeConnection() {
 		return;
 	}
  
-	if(infd > -1) {
+	if (infd > -1) {
 		fl_remove_io_callback(infd, FL_READ, C_LyXComm_callback);
  
 		string tmp = pipename + ".in";
@@ -264,7 +264,7 @@ void LyXComm::closeConnection() {
 		};
 #endif
 	}
-	if(outfd > -1) {
+	if (outfd > -1) {
 		string tmp = pipename + ".out";
 #ifdef __EMX__
 		rc = DosDisConnectNPipe(outfd);
@@ -309,7 +309,7 @@ void LyXComm::callback(int fd, void *v)
 	// the single = is intended here.
 	while((status = read(fd, charbuf, CMDBUFLEN-1)))
 	{// break and return in loop
-		if(status > 0) // got something
+		if (status > 0) // got something
 		{
 			charbuf[status]= '\0'; // turn it into a c string
 			lsbuf += strip(charbuf, '\r');
@@ -325,22 +325,22 @@ void LyXComm::callback(int fd, void *v)
 					<< "LyXComm: status:" << status
 					<< ", lsbuf:" << lsbuf 
 					<< ", cmd:" << cmd << endl;
-				if(!cmd.empty())
+				if (!cmd.empty())
 					c->clientcb(c->client, cmd); 
 				        //\n or not \n?
 			}
 		}
-		if(errno == EAGAIN)
+		if (errno == EAGAIN)
 		{  // EAGAIN is not really an error , it means we're
 		   // only reading too fast for the writing process on
 		   // the other end of the pipe. 
 			errno = 0;
 			return; // up to libforms select-loop (*crunch*)
 		}
-		if(errno != 0 )
+		if (errno != 0 )
 		{
 			lyxerr << "LyXComm: " << strerror(errno) << endl;
-			if(!lsbuf.empty())
+			if (!lsbuf.empty())
 			{
 				lyxerr << "LyxComm: truncated command: " 
 				       << lsbuf << endl;
@@ -434,7 +434,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 
 	        if (strncmp(p, "LYXSRV:", 7) == 0) {
 			server_only = true; 
-		} else if(0!= strncmp(p, "LYXCMD:", 7)) {
+		} else if (0!= strncmp(p, "LYXCMD:", 7)) {
 			lyxerr << "LyXServer: Unknown request" << endl;
 			return;
 		}
@@ -444,8 +444,8 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 		string client;
 		while(*p && *p != ':')
 			client += char(*p++);
-		if(*p == ':') ++p;
-		if(!*p) return;
+		if (*p == ':') ++p;
+		if (!*p) return;
 		
 		// --- 3. get function name ---
 		string cmd;
@@ -454,10 +454,10 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 		
 		// --- 4. parse the argument ---
 		string arg;
-		if(!server_only && *p == ':' && *(++p)) {
+		if (!server_only && *p == ':' && *(++p)) {
 			while(*p && *p != '\n')
 				arg += char(*p++);
-			if(*p) ++p;
+			if (*p) ++p;
 		}
  
 		lyxerr[Debug::LYXSERVER]
@@ -473,7 +473,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			// we are listening.
 			if (cmd == "hello") {
 				// One more client
-				if(serv->numclients == MAX_CLIENTS){ //paranoid check
+				if (serv->numclients == MAX_CLIENTS){ //paranoid check
 					lyxerr[Debug::LYXSERVER]
 						<< "LyXServer: too many clients..."
 						<< endl;

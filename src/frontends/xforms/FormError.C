@@ -39,7 +39,7 @@ FormError::~FormError()
 
 FL_FORM * FormError::form() const
 {
-	if ( dialog_ ) return dialog_->form;
+	if (dialog_ ) return dialog_->form;
 	return 0;
 }
 

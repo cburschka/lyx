@@ -23,10 +23,10 @@ InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf)
 void InsetRef::Edit(BufferView * bv, int, int, unsigned int button)
 {
 	// Eventually trigger dialog with button 3 not 1
-	if( button == 3 )
+	if (button == 3 )
 	  	bv->owner()->getLyXFunc()->
 			Dispatch(LFUN_REF_GOTO, getContents());
-	else if( button == 1 )
+	else if (button == 1 )
 		bv->owner()->getDialogs()->showRef( this );
 }
 
@@ -47,7 +47,7 @@ string const InsetRef::getScreenLabel() const
 
 	temp += getContents();
 
-	if(!isLatex
+	if (!isLatex
 	   && !getOptions().empty()) {
 		temp += "||";
 		temp += getOptions();
@@ -59,7 +59,7 @@ string const InsetRef::getScreenLabel() const
 int InsetRef::Latex(Buffer const *, ostream & os,
 		    bool /*fragile*/, bool /*fs*/) const
 {
-	if(getOptions().empty())
+	if (getOptions().empty())
 		os << escape(getCommand());
 	else {
 		InsetCommandParams p( getCmdName(), getContents(), "" );
@@ -117,6 +117,6 @@ void InsetRef::Validate(LaTeXFeatures & features) const
 {
 	if (getCmdName() == "vref" || getCmdName() == "vpageref")
 		features.varioref = true;
-	else if(getCmdName() == "prettyref")
+	else if (getCmdName() == "prettyref")
 		features.prettyref = true;
 }

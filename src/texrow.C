@@ -82,7 +82,7 @@ bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 		// same id (and where the pos is larger)
 		// to avoid putting errorinsets at the
 		// same pos.
-		for(; kit != end; ++kit) {
+		for (; kit != end; ++kit) {
 			if (&(*kit) != &(*cit)
 			    && (*kit).id() == (*cit).id()
 			    && (*kit).pos() >= (*cit).pos())
@@ -108,7 +108,7 @@ void TexRow::increasePos(int id, int pos) const
 {
 	RowList::iterator kit = rowlist.begin();
 	RowList::iterator end = rowlist.end();
-	for(; kit != end; ++kit) {
+	for (; kit != end; ++kit) {
 		if (id == (*kit).id()
 		    && pos < (*kit).pos()) {
 			(*kit).pos((*kit).pos() + 1);

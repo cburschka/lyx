@@ -46,7 +46,7 @@ extern Languages languages;
 typedef pair<string, FormPreferences::RGB> X11Colour;
 
 static vector<X11Colour> colourDB;
-static string const colourFile = "/usr/lib/X11/rgb.txt";
+static string const colourFile("/usr/lib/X11/rgb.txt");
 
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
@@ -260,29 +260,29 @@ void FormPreferences::feedback( FL_OBJECT * ob )
 {
 	string str;
 
-	if( ob->form->fdui == colours_ ) {
+	if (ob->form->fdui == colours_) {
 		str = feedbackColours( ob );
-	} else if( ob->form->fdui == converters_ ) {
+	} else if (ob->form->fdui == converters_) {
 		str = feedbackConverters( ob );
-	} else if( ob->form->fdui == formats_ ) {
+	} else if (ob->form->fdui == formats_) {
 		str = feedbackFormats( ob );
-	} else if( ob->form->fdui == inputs_misc_ ) {
+	} else if (ob->form->fdui == inputs_misc_) {
 		str = feedbackInputsMisc( ob );
-	} else if( ob->form->fdui == interface_ ) {
+	} else if (ob->form->fdui == interface_) {
 		str = feedbackInterface( ob );
-	} else if( ob->form->fdui == language_ ) {
+	} else if (ob->form->fdui == language_) {
 		str = feedbackLanguage( ob );
-	} else if( ob->form->fdui == lnf_misc_ ) {
+	} else if (ob->form->fdui == lnf_misc_) {
 		str = feedbackLnFmisc( ob );
-	} else if( ob->form->fdui == outputs_misc_ ) {
+	} else if (ob->form->fdui == outputs_misc_) {
 		str = feedbackOutputsMisc( ob );
-	} else if( ob->form->fdui == paths_ ) {
+	} else if (ob->form->fdui == paths_) {
 		str = feedbackPaths( ob );
-	} else if( ob->form->fdui == printer_ ) {
+	} else if (ob->form->fdui == printer_) {
 		str = feedbackPrinter( ob );
-	} else if( ob->form->fdui == screen_fonts_ ) {
+	} else if (ob->form->fdui == screen_fonts_) {
 		str = feedbackScreenFonts( ob );
-	} else if( ob->form->fdui == spellchecker_ ) {
+	} else if (ob->form->fdui == spellchecker_) {
 		str = feedbackSpellChecker( ob );
 	}
 
@@ -302,20 +302,20 @@ bool FormPreferences::input(FL_OBJECT * ob, long)
 	// some totally ridiculous value somewhere.  Change activate to suit.
 	// comments before each test describe what is _valid_
 
-	if( ob->form->fdui == colours_ ) {
-		if( ! inputColours( ob ) )
+	if (ob->form->fdui == colours_) {
+		if (! inputColours( ob ) )
 			activate = false;
-	} else if( ob->form->fdui == language_ ) {
-		if( ! inputLanguage( ob ) )
+	} else if (ob->form->fdui == language_) {
+		if (! inputLanguage( ob ) )
 			activate = false;
-	} else if( ob->form->fdui == paths_ ) {
-		if( ! inputPaths( ob ) )
+	} else if (ob->form->fdui == paths_) {
+		if (! inputPaths( ob ) )
 			activate = false;
-	} else if( ob->form->fdui == screen_fonts_ ) {
-		if( ! inputScreenFonts() )
+	} else if (ob->form->fdui == screen_fonts_) {
+		if (! inputScreenFonts() )
 			activate = false;
-	} else if( ob->form->fdui == spellchecker_ ) {
-		if( ! inputSpellChecker( ob ) )
+	} else if (ob->form->fdui == spellchecker_) {
+		if (! inputSpellChecker( ob ) )
 			activate = false;
 	}
 
@@ -373,7 +373,7 @@ void FormPreferences::buildColours()
 	
 	fl_set_input_return(colours_->input_name, FL_RETURN_END_CHANGED);
 
-	if( ColoursLoadBrowser(colourFile) )
+	if (ColoursLoadBrowser(colourFile) )
 		fl_set_input(colours_->input_name, colourFile.c_str());
 	else
 		fl_set_input(colours_->input_name, N_("No file found"));
@@ -384,7 +384,7 @@ void FormPreferences::buildColours()
 }
 
 
-string FormPreferences::feedbackColours( FL_OBJECT const * const ) const
+string const FormPreferences::feedbackColours( FL_OBJECT const * const ) const
 {
 	return string();
 }
@@ -394,22 +394,22 @@ bool FormPreferences::inputColours( FL_OBJECT const * const ob )
 {
 	bool activate = true;
 	
-	if( ob == colours_->browser_x11 ) {
+	if (ob == colours_->browser_x11) {
 		int i = fl_get_browser(colours_->browser_x11);
-		if( i > 0) {
+		if (i > 0) {
 			ColoursUpdateBrowser(i-1);
 		}
 
-	} else if( ob == colours_->valslider_red
+	} else if (ob == colours_->valslider_red
 		   || ob == colours_->valslider_green
-		   || ob == colours_->valslider_blue ) {
+		   || ob == colours_->valslider_blue) {
 		ColoursUpdateRGB();
 
-	} else if( ob == colours_->input_name) {
+	} else if (ob == colours_->input_name) {
 		string file = fl_get_input(colours_->input_name);
-		if( ColoursLoadBrowser(file) )
+		if (ColoursLoadBrowser(file) )
 			fl_set_input(colours_->input_name, file.c_str());
-		else if( ColoursLoadBrowser(colourFile) )
+		else if (ColoursLoadBrowser(colourFile) )
 			fl_set_input(colours_->input_name, colourFile.c_str());
 		else
 			fl_set_input(colours_->input_name, N_("No file found"));
@@ -419,7 +419,7 @@ bool FormPreferences::inputColours( FL_OBJECT const * const ob )
 }
 
 
-bool FormPreferences::ColoursLoadBrowser( string const & filename )
+bool FormPreferences::ColoursLoadBrowser(string const & filename)
 {
 	LyXLex lex(0, 0);
 
@@ -432,38 +432,38 @@ bool FormPreferences::ColoursLoadBrowser( string const & filename )
 	vector<RGB> cols;
 	vector<string> names;
 	
-	while( 1 ) {
+	while (true) {
 		getline( is, line );
-		if( line.empty() )
+		if (line.empty() )
 			break;
 
-		if( line[0] != '!' ) {
+		if (line[0] != '!') {
 			RGB col;
 			string name;
 			
 			istringstream iss(line);
 			iss >> col.r >> col.g >> col.b;
-			while( iss.good() ) {
+			while (iss.good()) {
 				string next;
 				iss >> next;
-				if( !name.empty() ) name += " ";
+				if (!name.empty() ) name += " ";
 				name += next;
 			}
 
 			// remove redundant entries on the fly
 			bool add = cols.empty();
-			if( !add ) {
+			if (!add) {
 				vector<RGB>::const_iterator it =
 					find( cols.begin(), cols.end(), col );
 				add = (it == cols.end());
 			}
 			
-			if ( add ) {
+			if (add) {
 				name = lowercase( name );
-				if( name == "gray0" )   name = "black";
-				if( name == "gray100" ) name = "white";
+				if (name == "gray0" )   name = "black";
+				if (name == "gray100" ) name = "white";
 
-				if( name == "black" || name == "white" ) {
+				if (name == "black" || name == "white") {
 					cols.insert(cols.begin(), col);
 					names.insert(names.begin(), name);
 				} else {
@@ -475,8 +475,8 @@ bool FormPreferences::ColoursLoadBrowser( string const & filename )
  	}
 
 	vector<string>::iterator sit = names.begin();
-	for( vector<RGB>::const_iterator iit = cols.begin();
-	     iit != cols.end(); ++iit, ++sit ) {
+	for (vector<RGB>::const_iterator iit = cols.begin();
+	     iit != cols.end(); ++iit, ++sit) {
 		colourDB.push_back( X11Colour(*sit, *iit) );
 	}
 	
@@ -484,8 +484,8 @@ bool FormPreferences::ColoursLoadBrowser( string const & filename )
 	fl_freeze_form(colours_->form);
 	fl_clear_browser( colbr );
 
-	for( vector<X11Colour>::const_iterator cit = colourDB.begin();
-	     cit != colourDB.end(); ++cit ) {
+	for (vector<X11Colour>::const_iterator cit = colourDB.begin();
+	     cit != colourDB.end(); ++cit) {
 		string name = (*cit).first;
 		//RGB col     = (*cit).second;
 		//name += "  (" + tostr(col.r) + ", " + tostr(col.g) +
@@ -502,13 +502,13 @@ bool FormPreferences::ColoursLoadBrowser( string const & filename )
 }
 
 
-int FormPreferences::ColoursSearchEntry(RGB const & col ) const
+int FormPreferences::ColoursSearchEntry(RGB const & col) const
 {
 	int mindiff = 0x7fffffff;
 	vector<X11Colour>::const_iterator mincit = colourDB.begin();
 
-	for( vector<X11Colour>::const_iterator cit = colourDB.begin();
-	     cit != colourDB.end(); ++cit ) {
+	for (vector<X11Colour>::const_iterator cit = colourDB.begin();
+	     cit != colourDB.end(); ++cit) {
 		RGB colDB = (*cit).second;
 		RGB diff;
 		diff.r = col.r - colDB.r;
@@ -519,7 +519,7 @@ int FormPreferences::ColoursSearchEntry(RGB const & col ) const
 		         3 * (diff.g * diff.g) +
 		             (diff.b * diff.b));
 
-		if( mindiff > d ) {
+		if (mindiff > d) {
 			mindiff = d;
 			mincit = cit;
 		}
@@ -560,7 +560,7 @@ void FormPreferences::ColoursUpdateRGB()
 	int i = ColoursSearchEntry( col );
 	// change topline only if necessary
 	// int top = fl_get_browser_topline(colours_->browser_x11);
-	// if(i < top || i > (top+15))
+	// if (i < top || i > (top+15))
 	fl_set_browser_topline(colours_->browser_x11, i-5);
 	fl_select_browser_line(colours_->browser_x11, i + 1);
 
@@ -569,13 +569,11 @@ void FormPreferences::ColoursUpdateRGB()
 
 
 void FormPreferences::updateColours()
-{
-}
+{}
 
 
 void FormPreferences::applyConverters() const
-{
-}
+{}
 
 
 void FormPreferences::buildConverters()
@@ -585,20 +583,19 @@ void FormPreferences::buildConverters()
 }
 
 
-string FormPreferences::feedbackConverters( FL_OBJECT const * const ) const
+string const
+FormPreferences::feedbackConverters( FL_OBJECT const * const ) const
 {
 	return string();
 }
 
 
 void FormPreferences::updateConverters()
-{
-}
+{}
 
 
 void FormPreferences::applyFormats() const
-{
-}
+{}
 
 
 void FormPreferences::buildFormats()
@@ -614,7 +611,7 @@ void FormPreferences::buildFormats()
 }
 
 
-string FormPreferences::feedbackFormats( FL_OBJECT const * const ) const
+string const FormPreferences::feedbackFormats( FL_OBJECT const * const ) const
 {
 	string str;
 
@@ -629,13 +626,13 @@ bool FormPreferences::inputFormats( FL_OBJECT const * const )
 
 
 void FormPreferences::updateFormats()
-{
-}
+{}
 
 
 void FormPreferences::applyInputsMisc() const
 {
-	lyxrc.date_insert_format = fl_get_input(inputs_misc_->input_date_format);
+	lyxrc.date_insert_format =
+		fl_get_input(inputs_misc_->input_date_format);
 }
 
 
@@ -655,11 +652,12 @@ void FormPreferences::buildInputsMisc()
 }
 
 
-string FormPreferences::feedbackInputsMisc( FL_OBJECT const * const ob ) const
+string const
+FormPreferences::feedbackInputsMisc(FL_OBJECT const * const ob) const
 {
 	string str;
 
-	if( ob == inputs_misc_->input_date_format )
+	if (ob == inputs_misc_->input_date_format )
 		str = lyxrc.getDescription( LyXRC::RC_DATE_INSERT_FORMAT );
 
 	return str;
@@ -720,22 +718,22 @@ void FormPreferences::buildInterface()
 }
 
 
-
-string FormPreferences::feedbackInterface( FL_OBJECT const * const ob ) const
+string const
+FormPreferences::feedbackInterface( FL_OBJECT const * const ob ) const
 {
 	string str;
 
-	if( ob == interface_->input_popup_font )
+	if (ob == interface_->input_popup_font )
 		str = lyxrc.getDescription( LyXRC::RC_SCREEN_FONT_POPUP );
-	else if ( ob == interface_->input_menu_font )
+	else if (ob == interface_->input_menu_font )
 		str = lyxrc.getDescription( LyXRC::RC_SCREEN_FONT_MENU );
-	else if ( ob == interface_->input_popup_encoding )
+	else if (ob == interface_->input_popup_encoding )
 		str = lyxrc.getDescription( LyXRC::RC_SCREEN_FONT_ENCODING_MENU );
-	else if ( ob == interface_->input_bind_file )
+	else if (ob == interface_->input_bind_file )
 		str = lyxrc.getDescription( LyXRC::RC_BINDFILE );
-	else if ( ob == interface_->input_ui_file )
+	else if (ob == interface_->input_ui_file )
 		str = lyxrc.getDescription( LyXRC::RC_UIFILE );
-	else if ( ob == interface_->check_override_x_dead_keys )
+	else if (ob == interface_->check_override_x_dead_keys )
 		str = lyxrc.getDescription( LyXRC::RC_OVERRIDE_X_DEADKEYS );
 
 	return str;
@@ -766,7 +764,7 @@ void FormPreferences::applyLanguage() const
 	int button = fl_get_button(language_->check_use_kbmap);
 	lyxrc.use_kbmap = static_cast<bool>(button);
 
-	if( button ) {
+	if (button) {
 	    lyxrc.primary_kbmap = combo_kbmap_1->getline();
 	    lyxrc.secondary_kbmap = combo_kbmap_2->getline();
 	}
@@ -853,31 +851,32 @@ void FormPreferences::buildLanguage()
 }
 
 
-string FormPreferences::feedbackLanguage( FL_OBJECT const * const ob ) const
+string const
+FormPreferences::feedbackLanguage(FL_OBJECT const * const ob) const
 {
 	string str;
 
-	if( reinterpret_cast<Combox const *>(ob) == combo_default_lang )
+	if (reinterpret_cast<Combox const *>(ob) == combo_default_lang )
 		str = lyxrc.getDescription( LyXRC::RC_DEFAULT_LANGUAGE );
-	else if( ob == language_->check_use_kbmap )
+	else if (ob == language_->check_use_kbmap )
 		str = lyxrc.getDescription( LyXRC::RC_KBMAP );
-	else if( reinterpret_cast<Combox const *>(ob) == combo_kbmap_1)
+	else if (reinterpret_cast<Combox const *>(ob) == combo_kbmap_1)
 		str = lyxrc.getDescription( LyXRC::RC_KBMAP_PRIMARY );
-	else if( reinterpret_cast<Combox const *>(ob) == combo_kbmap_2 )
+	else if (reinterpret_cast<Combox const *>(ob) == combo_kbmap_2 )
 		str = lyxrc.getDescription( LyXRC::RC_KBMAP_SECONDARY );
-	else if( ob == language_->check_rtl_support )
+	else if (ob == language_->check_rtl_support )
 		str = lyxrc.getDescription( LyXRC::RC_RTL_SUPPORT );
-	else if( ob == language_->check_auto_begin )
+	else if (ob == language_->check_auto_begin )
 		str = lyxrc.getDescription( LyXRC::RC_LANGUAGE_AUTO_BEGIN );
-	else if( ob == language_->check_auto_end )
+	else if (ob == language_->check_auto_end )
 		str = lyxrc.getDescription( LyXRC::RC_LANGUAGE_AUTO_END );
-	else if( ob == language_->check_mark_foreign )
+	else if (ob == language_->check_mark_foreign )
 		str = lyxrc.getDescription( LyXRC::RC_MARK_FOREIGN_LANGUAGE );
-	else if( ob == language_->input_package )
+	else if (ob == language_->input_package )
 		str = lyxrc.getDescription( LyXRC::RC_LANGUAGE_PACKAGE );
-	else if( ob == language_->input_command_begin )
+	else if (ob == language_->input_command_begin )
 		str = lyxrc.getDescription( LyXRC::RC_LANGUAGE_COMMAND_BEGIN );
-	else if( ob == language_->input_command_end )
+	else if (ob == language_->input_command_end )
 		str = lyxrc.getDescription( LyXRC::RC_LANGUAGE_COMMAND_END );
 
 	return str;
@@ -888,8 +887,8 @@ bool FormPreferences::inputLanguage( FL_OBJECT const * const ob )
 {
 	bool activate = true;
 
-	if( !ob || ob == language_->check_use_kbmap ) {
-		if( fl_get_button(language_->check_use_kbmap) ) {
+	if (!ob || ob == language_->check_use_kbmap) {
+		if (fl_get_button(language_->check_use_kbmap)) {
 			combo_kbmap_1->activate();
 			combo_kbmap_2->activate();
 		} else {
@@ -909,7 +908,7 @@ void FormPreferences::updateLanguage()
 
 	combo_default_lang->select_text( lyxrc.default_language );
 
-	if( lyxrc.use_kbmap ) {
+	if (lyxrc.use_kbmap) {
 		combo_kbmap_1->select_text( lyxrc.primary_kbmap );
 		combo_kbmap_2->select_text( lyxrc.secondary_kbmap );
 	} else {
@@ -938,7 +937,7 @@ void FormPreferences::updateLanguage()
 
 void FormPreferences::LanguagesAdd( Combox & combo ) const
 {
-	for(Languages::const_iterator cit = languages.begin();
+	for (Languages::const_iterator cit = languages.begin();
 	    cit != languages.end(); cit++) {
 		combo.addto((*cit).second.lang());
 	}
@@ -988,29 +987,30 @@ void FormPreferences::buildLnFmisc()
 }
 
 
-string FormPreferences::feedbackLnFmisc( FL_OBJECT const * const ob ) const
+string const FormPreferences::feedbackLnFmisc(FL_OBJECT const * const ob) const
 {
 	string str;
 
-	if( ob == lnf_misc_->check_banner )
+	if (ob == lnf_misc_->check_banner )
 		str = lyxrc.getDescription( LyXRC::RC_SHOW_BANNER );
-	else if( ob == lnf_misc_->check_auto_region_delete )
+	else if (ob == lnf_misc_->check_auto_region_delete )
 		str = lyxrc.getDescription( LyXRC::RC_AUTOREGIONDELETE );
-	else if( ob == lnf_misc_->check_exit_confirm )
+	else if (ob == lnf_misc_->check_exit_confirm )
 		str = lyxrc.getDescription( LyXRC::RC_EXIT_CONFIRMATION );
-	else if( ob == lnf_misc_->check_display_shortcuts )
+	else if (ob == lnf_misc_->check_display_shortcuts )
 		str = lyxrc.getDescription( LyXRC::RC_DISPLAY_SHORTCUTS );
-	else if( ob == lnf_misc_->check_ask_new_file )
+	else if (ob == lnf_misc_->check_ask_new_file )
 		str = lyxrc.getDescription( LyXRC::RC_NEW_ASK_FILENAME );
-	else if( ob == lnf_misc_->check_cursor_follows_scrollbar )
+	else if (ob == lnf_misc_->check_cursor_follows_scrollbar )
 		str = lyxrc.getDescription( LyXRC::RC_CURSOR_FOLLOWS_SCROLLBAR );
-	else if( ob == lnf_misc_->counter_autosave )
+	else if (ob == lnf_misc_->counter_autosave )
 		str = lyxrc.getDescription( LyXRC::RC_AUTOSAVE );
-	else if( ob == lnf_misc_->counter_wm_jump )
+	else if (ob == lnf_misc_->counter_wm_jump )
 		str = lyxrc.getDescription( LyXRC::RC_WHEEL_JUMP );
 
 	return str;
 }
+
 
 void FormPreferences::updateLnFmisc()
 {
@@ -1076,19 +1076,20 @@ void FormPreferences::buildOutputsMisc()
 }
 
 
-string FormPreferences::feedbackOutputsMisc(FL_OBJECT const * const ob ) const
+string const
+FormPreferences::feedbackOutputsMisc(FL_OBJECT const * const ob) const
 {
 	string str;
 
-	if( ob == outputs_misc_->counter_line_len )
+	if (ob == outputs_misc_->counter_line_len )
 		str = lyxrc.getDescription( LyXRC::RC_ASCII_LINELEN );
-	else if( ob == outputs_misc_->input_tex_encoding )
+	else if (ob == outputs_misc_->input_tex_encoding )
 		str = lyxrc.getDescription( LyXRC::RC_FONT_ENCODING );
-	else if( ob == outputs_misc_->input_ascii_roff )
+	else if (ob == outputs_misc_->input_ascii_roff )
 		str = lyxrc.getDescription( LyXRC::RC_ASCIIROFF_COMMAND );
-	else if( ob == outputs_misc_->input_checktex )
+	else if (ob == outputs_misc_->input_checktex )
 		str = lyxrc.getDescription( LyXRC::RC_CHKTEX_COMMAND );
-	else if( ob == outputs_misc_->choice_default_papersize )
+	else if (ob == outputs_misc_->choice_default_papersize )
 		str = lyxrc.getDescription( LyXRC::RC_DEFAULT_PAPERSIZE );
 
 	return str;
@@ -1117,14 +1118,14 @@ void FormPreferences::applyPaths()
 
 	int button = fl_get_button(paths_->check_use_temp_dir);
 	string str  = fl_get_input(paths_->input_temp_dir);
-	if( !button ) str.erase();
+	if (!button ) str.erase();
 
 	lyxrc.use_tempdir = button;
 	lyxrc.tempdir_path = str;
 
 	button = fl_get_button(paths_->check_last_files);
 	str = fl_get_input(paths_->input_lastfiles);
-	if( !button ) str.erase();
+	if (!button ) str.erase();
 	
 	lyxrc.check_lastfiles = button;
 	lyxrc.lastfiles = str;
@@ -1133,7 +1134,7 @@ void FormPreferences::applyPaths()
 
 	button = fl_get_button(paths_->check_make_backups);
 	str = fl_get_input(paths_->input_backup_path);
-	if( !button ) str.erase();
+	if (!button ) str.erase();
 
 	lyxrc.make_backup = button;
 	lyxrc.backupdir_path = str;
@@ -1195,29 +1196,29 @@ void FormPreferences::buildPaths()
 }
 
 
-string FormPreferences::feedbackPaths( FL_OBJECT const * const ob ) const
+string const FormPreferences::feedbackPaths( FL_OBJECT const * const ob ) const
 {
 	string str;
 
-	if( ob == paths_->input_default_path )
+	if (ob == paths_->input_default_path )
 		str = lyxrc.getDescription( LyXRC::RC_DOCUMENTPATH );
-	else if ( ob == paths_->input_template_path )
+	else if (ob == paths_->input_template_path )
 		str = lyxrc.getDescription( LyXRC::RC_TEMPLATEPATH );
-	else if ( ob == paths_->check_use_temp_dir )
+	else if (ob == paths_->check_use_temp_dir )
 		str = lyxrc.getDescription( LyXRC::RC_USETEMPDIR );
-	else if ( ob == paths_->input_temp_dir )
+	else if (ob == paths_->input_temp_dir )
 		str = lyxrc.getDescription( LyXRC::RC_TEMPDIRPATH );
-	else if ( ob == paths_->check_last_files )
+	else if (ob == paths_->check_last_files )
 		str = lyxrc.getDescription( LyXRC::RC_CHECKLASTFILES );
-	else if ( ob == paths_->input_lastfiles )
+	else if (ob == paths_->input_lastfiles )
 		str = lyxrc.getDescription( LyXRC::RC_LASTFILES );
-	else if ( ob == paths_->counter_lastfiles )
+	else if (ob == paths_->counter_lastfiles )
 		str = lyxrc.getDescription( LyXRC::RC_NUMLASTFILES );
-	else if ( ob == paths_->check_make_backups )
+	else if (ob == paths_->check_make_backups )
 		str = lyxrc.getDescription( LyXRC::RC_MAKE_BACKUP );
-	else if ( ob == paths_->input_backup_path )
+	else if (ob == paths_->input_backup_path )
 		str = lyxrc.getDescription( LyXRC::RC_BACKUPDIR_PATH );
-	else if ( ob == paths_->input_serverpipe )
+	else if (ob == paths_->input_serverpipe )
 		str = lyxrc.getDescription( LyXRC::RC_SERVERPIPE );
 
 	return str;
@@ -1228,8 +1229,8 @@ bool FormPreferences::inputPaths( FL_OBJECT const * const ob )
 {
 	bool activate = true;
 	
-	if( !ob || ob == paths_->check_use_temp_dir ) {
-		if( fl_get_button(paths_->check_use_temp_dir) ) {
+	if (!ob || ob == paths_->check_use_temp_dir) {
+		if (fl_get_button(paths_->check_use_temp_dir)) {
 			fl_activate_object(paths_->input_temp_dir);
 			fl_set_object_lcol(paths_->input_temp_dir,
 					   FL_BLACK);
@@ -1240,8 +1241,8 @@ bool FormPreferences::inputPaths( FL_OBJECT const * const ob )
 		}
 	}
 
-	if( !ob || ob == paths_->check_last_files ) {
-		if( fl_get_button(paths_->check_last_files) ) {
+	if (!ob || ob == paths_->check_last_files) {
+		if (fl_get_button(paths_->check_last_files)) {
 			fl_activate_object(paths_->input_lastfiles);
 			fl_set_object_lcol(paths_->input_lastfiles,
 					   FL_BLACK);
@@ -1252,8 +1253,8 @@ bool FormPreferences::inputPaths( FL_OBJECT const * const ob )
 		}
 	}
 
-	if( !ob || ob == paths_->check_make_backups ) {
-		if( fl_get_button(paths_->check_make_backups) ) {
+	if (!ob || ob == paths_->check_make_backups) {
+		if (fl_get_button(paths_->check_make_backups)) {
 			fl_activate_object(paths_->input_backup_path);
 			fl_set_object_lcol(paths_->input_backup_path,
 					   FL_BLACK);
@@ -1264,48 +1265,48 @@ bool FormPreferences::inputPaths( FL_OBJECT const * const ob )
 		}
 	}
 
-	if( !ob || ob == paths_->input_default_path ) {
+	if (!ob || ob == paths_->input_default_path) {
 		string name = fl_get_input(paths_->input_default_path);
-		if( !WriteableDir(name) )
+		if (!WriteableDir(name) )
 			return false;
 	}
 
-	if( !ob || ob == paths_->input_template_path ) {
+	if (!ob || ob == paths_->input_template_path) {
 		string name = fl_get_input(paths_->input_template_path);
-		if( !ReadableDir(name) )
+		if (!ReadableDir(name) )
 		    return false;
 	}
 
-	if( !ob || ob == paths_->input_temp_dir ) {
+	if (!ob || ob == paths_->input_temp_dir) {
 		string name = fl_get_input(paths_->input_temp_dir);
-		if( fl_get_button(paths_->check_make_backups)
+		if (fl_get_button(paths_->check_make_backups)
 		    && !name.empty()
 		    && !WriteableDir(name) )
 			return false;
 	}
 
-	if( !ob || ob == paths_->input_backup_path ) {
+	if (!ob || ob == paths_->input_backup_path) {
 		string name = fl_get_input(paths_->input_backup_path);
-		if( fl_get_button(paths_->check_make_backups)
+		if (fl_get_button(paths_->check_make_backups)
 		    && !name.empty()
 		    && !WriteableDir(name) )
 			return false;
 	}
 
-	if( !ob || ob == paths_->input_lastfiles ) {
+	if (!ob || ob == paths_->input_lastfiles) {
 		string name = fl_get_input(paths_->input_lastfiles);
-		if( fl_get_button(paths_->check_last_files)
+		if (fl_get_button(paths_->check_last_files)
 		    && !name.empty()
 		    && !WriteableFile(name) )
 			return false;
 	}
 
-	if( !ob || ob == paths_->input_serverpipe ) {
+	if (!ob || ob == paths_->input_serverpipe) {
 		string name = fl_get_input(paths_->input_serverpipe);
-		if( !name.empty() ) {
-			if( !WriteableFile(name, ".in") )
+		if (!name.empty()) {
+			if (!WriteableFile(name, ".in"))
 				return false;
-			if( !WriteableFile(name, ".out") )
+			if (!WriteableFile(name, ".out"))
 				return false;
 		}
 	}
@@ -1321,22 +1322,22 @@ void FormPreferences::updatePaths()
 	fl_set_input(paths_->input_template_path,
 		     lyxrc.template_path.c_str());
 
-	string str = string();
-	if( lyxrc.make_backup ) str = lyxrc.backupdir_path;
+	string str;
+	if (lyxrc.make_backup) str = lyxrc.backupdir_path;
 
 	fl_set_button(paths_->check_make_backups,
 		      lyxrc.make_backup);
 	fl_set_input(paths_->input_backup_path, str.c_str());
 
 	str.erase();
-	if( lyxrc.use_tempdir ) str = lyxrc.tempdir_path;
+	if (lyxrc.use_tempdir) str = lyxrc.tempdir_path;
 
 	fl_set_button(paths_->check_use_temp_dir,
 		      lyxrc.use_tempdir);
 	fl_set_input(paths_->input_temp_dir, str.c_str());
 
 	str.erase();
-	if( lyxrc.check_lastfiles ) str = lyxrc.lastfiles;
+	if (lyxrc.check_lastfiles) str = lyxrc.lastfiles;
 
 	fl_set_button(paths_->check_last_files,
 		      lyxrc.check_lastfiles);		
@@ -1380,45 +1381,45 @@ void FormPreferences::applyPrinter() const
 }
 
 
-string FormPreferences::feedbackPrinter( FL_OBJECT const * const ob ) const
+string const FormPreferences::feedbackPrinter(FL_OBJECT const * const ob) const
 {
 	string str;
 
-	if( ob == printer_->input_command )
+	if (ob == printer_->input_command )
 		str = lyxrc.getDescription( LyXRC::RC_PRINT_COMMAND );
-	else if( ob == printer_->check_adapt_output )
+	else if (ob == printer_->check_adapt_output )
 		str = lyxrc.getDescription( LyXRC::RC_PRINT_ADAPTOUTPUT );
-	else if( ob == printer_->input_to_printer )
+	else if (ob == printer_->input_to_printer )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTTOPRINTER );
-	else if( ob == printer_->input_to_file )
+	else if (ob == printer_->input_to_file )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTTOFILE );
-	else if( ob == printer_->input_file_extension )
+	else if (ob == printer_->input_file_extension )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTFILEEXTENSION );
-	else if( ob == printer_->input_extra_options )
+	else if (ob == printer_->input_extra_options )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTEXSTRAOPTIONS );
-	else if( ob == printer_->input_spool_command )
+	else if (ob == printer_->input_spool_command )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTSPOOL_COMMAND );
-	else if( ob == printer_->input_spool_prefix )
+	else if (ob == printer_->input_spool_prefix )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTSPOOL_PRINTERPREFIX );
-	else if( ob == printer_->input_name )
+	else if (ob == printer_->input_name )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTER );
-	else if( ob == printer_->input_even_pages )
+	else if (ob == printer_->input_even_pages )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTEVENPAGEFLAG );
-	else if( ob == printer_->input_odd_pages )
+	else if (ob == printer_->input_odd_pages )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTODDPAGEFLAG );
-	else if( ob == printer_->input_page_range )
+	else if (ob == printer_->input_page_range )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTPAGERANGEFLAG );
-	else if( ob == printer_->input_reverse )
+	else if (ob == printer_->input_reverse )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTREVERSEFLAG );
-	else if( ob == printer_->input_landscape )
+	else if (ob == printer_->input_landscape )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTLANDSCAPEFLAG );
-	else if( ob == printer_->input_copies )
+	else if (ob == printer_->input_copies )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTCOLLCOPIESFLAG );
-	else if( ob == printer_->input_collated )
+	else if (ob == printer_->input_collated )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTCOPIESFLAG );
-	else if( ob == printer_->input_paper_type )
+	else if (ob == printer_->input_paper_type )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTPAPERFLAG );
-	else if( ob == printer_->input_paper_size )
+	else if (ob == printer_->input_paper_size )
 		str = lyxrc.getDescription( LyXRC::RC_PRINTPAPERDIMENSIONFLAG );
 
 	return str;
@@ -1519,38 +1520,38 @@ void FormPreferences::applyScreenFonts() const
 	bool changed = false;
 
 	string str = fl_get_input(screen_fonts_->input_roman);
-	if( lyxrc.roman_font_name != str ) {
+	if (lyxrc.roman_font_name != str) {
 		changed = true;
 		lyxrc.roman_font_name = str;
 	}
 
 	str = fl_get_input(screen_fonts_->input_sans);
-	if( lyxrc.sans_font_name != str ) {
+	if (lyxrc.sans_font_name != str) {
 		changed = true;
 		lyxrc.sans_font_name = str;
 	}
 
 	str = fl_get_input(screen_fonts_->input_typewriter);
-	if( lyxrc.typewriter_font_name != str ) {
+	if (lyxrc.typewriter_font_name != str) {
 		changed = true;
 		lyxrc.typewriter_font_name = str;
 	}
 
 	str = fl_get_input(screen_fonts_->input_screen_encoding);
-	if( lyxrc.font_norm != str ) {
+	if (lyxrc.font_norm != str) {
 		changed = true;
 		lyxrc.font_norm = str;
 	}
 
 	bool button = fl_get_button(screen_fonts_->check_scalable);
-	if( lyxrc.use_scalable_fonts != button ) {
+	if (lyxrc.use_scalable_fonts != button) {
 		changed = true;
 		lyxrc.use_scalable_fonts = button;
 	}
 
 	unsigned int ivalue = static_cast<unsigned int>
 		(fl_get_counter_value(screen_fonts_->counter_zoom));
-	if( lyxrc.zoom != ivalue) {
+	if (lyxrc.zoom != ivalue) {
 		changed = true;
 		lyxrc.zoom = ivalue;
 	}
@@ -1563,66 +1564,66 @@ void FormPreferences::applyScreenFonts() const
 	}
 	
 	double dvalue = strToDbl(fl_get_input(screen_fonts_->input_tiny));
-	if( lyxrc.font_sizes[LyXFont::SIZE_TINY] != dvalue ) {
+	if (lyxrc.font_sizes[LyXFont::SIZE_TINY] != dvalue) {
 		changed = true;
 		lyxrc.font_sizes[LyXFont::SIZE_TINY] = dvalue;
 	}
 
 	dvalue = strToDbl(fl_get_input(screen_fonts_->input_script));
-	if( lyxrc.font_sizes[LyXFont::SIZE_SCRIPT] != dvalue ) {
+	if (lyxrc.font_sizes[LyXFont::SIZE_SCRIPT] != dvalue) {
 		changed = true;
 		lyxrc.font_sizes[LyXFont::SIZE_SCRIPT] = dvalue;
 	}
 
 	dvalue = strToDbl(fl_get_input(screen_fonts_->input_footnote));
-	if( lyxrc.font_sizes[LyXFont::SIZE_FOOTNOTE] != dvalue ) {
+	if (lyxrc.font_sizes[LyXFont::SIZE_FOOTNOTE] != dvalue) {
 		changed = true;
 		lyxrc.font_sizes[LyXFont::SIZE_FOOTNOTE] = dvalue;
 	}
 
 	dvalue = strToDbl(fl_get_input(screen_fonts_->input_small));
-	if( lyxrc.font_sizes[LyXFont::SIZE_SMALL] != dvalue ) {
+	if (lyxrc.font_sizes[LyXFont::SIZE_SMALL] != dvalue) {
 		changed = true;
 		lyxrc.font_sizes[LyXFont::SIZE_SMALL] = dvalue;
 	}
 
 	dvalue = strToDbl(fl_get_input(screen_fonts_->input_normal));
-	if( lyxrc.font_sizes[LyXFont::SIZE_NORMAL] != dvalue ) {
+	if (lyxrc.font_sizes[LyXFont::SIZE_NORMAL] != dvalue) {
 		changed = true;
 		lyxrc.font_sizes[LyXFont::SIZE_NORMAL] = dvalue;
 	}
 
 	dvalue = strToDbl(fl_get_input(screen_fonts_->input_large));
-	if( lyxrc.font_sizes[LyXFont::SIZE_LARGE] != dvalue ) {
+	if (lyxrc.font_sizes[LyXFont::SIZE_LARGE] != dvalue) {
 		changed = true;
 		lyxrc.font_sizes[LyXFont::SIZE_LARGE] = dvalue;
 	}
 
 	dvalue = strToDbl(fl_get_input(screen_fonts_->input_larger));
-	if( lyxrc.font_sizes[LyXFont::SIZE_LARGER] != dvalue ) {
+	if (lyxrc.font_sizes[LyXFont::SIZE_LARGER] != dvalue) {
 		changed = true;
 		lyxrc.font_sizes[LyXFont::SIZE_LARGER] = dvalue;
 	}
 
 	dvalue = strToDbl(fl_get_input(screen_fonts_->input_largest));
-	if( lyxrc.font_sizes[LyXFont::SIZE_LARGEST] != dvalue ) {
+	if (lyxrc.font_sizes[LyXFont::SIZE_LARGEST] != dvalue) {
 		changed = true;
 		lyxrc.font_sizes[LyXFont::SIZE_LARGEST] = dvalue;
 	}
 
 	dvalue = strToDbl(fl_get_input(screen_fonts_->input_huge));
-	if( lyxrc.font_sizes[LyXFont::SIZE_HUGE] != dvalue ) {
+	if (lyxrc.font_sizes[LyXFont::SIZE_HUGE] != dvalue) {
 		changed = true;
 		lyxrc.font_sizes[LyXFont::SIZE_HUGE] = dvalue;
 	}
 
 	dvalue = strToDbl(fl_get_input(screen_fonts_->input_huger));
-	if( lyxrc.font_sizes[LyXFont::SIZE_HUGER] != dvalue ) {
+	if (lyxrc.font_sizes[LyXFont::SIZE_HUGER] != dvalue) {
 		changed = true;
 		lyxrc.font_sizes[LyXFont::SIZE_HUGER] = dvalue;
 	}
 
-	if( changed ) {
+	if (changed) {
 		// Now update the buffers
 		// Can anything below here affect the redraw process?
 		lv_->getLyXFunc()->Dispatch(LFUN_SCREEN_FONT_UPDATE);
@@ -1699,25 +1700,26 @@ void FormPreferences::buildScreenFonts()
 }
 
 	
-string FormPreferences::feedbackScreenFonts(FL_OBJECT const * const ob ) const
+string const
+FormPreferences::feedbackScreenFonts(FL_OBJECT const * const ob ) const
 {
 	string str;
 
-	if( ob == screen_fonts_->input_roman )
+	if (ob == screen_fonts_->input_roman )
 		str = lyxrc.getDescription( LyXRC::RC_SCREEN_FONT_ROMAN );
-	else if( ob == screen_fonts_->input_sans )
+	else if (ob == screen_fonts_->input_sans )
 		str = lyxrc.getDescription( LyXRC::RC_SCREEN_FONT_SANS );
-	else if( ob == screen_fonts_->input_typewriter )
+	else if (ob == screen_fonts_->input_typewriter )
 		str = lyxrc.getDescription( LyXRC::RC_SCREEN_FONT_TYPEWRITER );
-	else if( ob == screen_fonts_->check_scalable )
+	else if (ob == screen_fonts_->check_scalable )
 		str = lyxrc.getDescription( LyXRC::RC_SCREEN_FONT_SCALABLE );
-	else if( ob == screen_fonts_->input_screen_encoding )
+	else if (ob == screen_fonts_->input_screen_encoding )
 		str = lyxrc.getDescription( LyXRC::RC_SCREEN_FONT_ENCODING );
-	else if( ob == screen_fonts_->counter_zoom )
+	else if (ob == screen_fonts_->counter_zoom )
 		str = lyxrc.getDescription( LyXRC::RC_SCREEN_ZOOM );
-	else if( ob == screen_fonts_->counter_dpi ) 
+	else if (ob == screen_fonts_->counter_dpi ) 
 		str = lyxrc.getDescription( LyXRC::RC_SCREEN_DPI );
-	else if( ob == screen_fonts_->input_tiny
+	else if (ob == screen_fonts_->input_tiny
 		 || ob == screen_fonts_->input_script
 		 || ob == screen_fonts_->input_footnote
 		 || ob == screen_fonts_->input_small
@@ -1778,7 +1780,7 @@ bool FormPreferences::inputScreenFonts()
 		str = N_("WARNING! Fonts must be input in the order tiny > script>\nfootnote > small > normal > large > larger > largest > huge > huger.");
 	}
 
-	if( !activate ) {
+	if (!activate) {
 		fl_set_object_label(dialog_->text_warning, str.c_str());
 		fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 	}
@@ -1828,7 +1830,7 @@ void FormPreferences::applySpellChecker()
 {
 
 	string choice = "none";
-	switch(fl_get_choice(spellchecker_->choice_spell_command)) {
+	switch (fl_get_choice(spellchecker_->choice_spell_command)) {
 	case 1:
 		choice = "none";
 		break;
@@ -1844,7 +1846,7 @@ void FormPreferences::applySpellChecker()
 	lyxrc.isp_command = choice;
 
 	// If spell checker == "none", all other input set to off.
-	if( fl_get_choice(spellchecker_->choice_spell_command) == 1 ) {
+	if (fl_get_choice(spellchecker_->choice_spell_command) == 1) {
 		lyxrc.isp_use_alt_lang = false;
 		lyxrc.isp_alt_lang.erase();
 
@@ -1859,24 +1861,24 @@ void FormPreferences::applySpellChecker()
 	} else {
 		int button = fl_get_button(spellchecker_->check_alt_lang);
 		choice = fl_get_input(spellchecker_->input_alt_lang);
-		if( button && choice.empty() ) button = 0;
-		if( !button ) choice.erase();
+		if (button && choice.empty() ) button = 0;
+		if (!button ) choice.erase();
 
 		lyxrc.isp_use_alt_lang = static_cast<bool>(button);
 		lyxrc.isp_alt_lang = choice;
 
 		button = fl_get_button(spellchecker_->check_escape_chars);
 		choice = fl_get_input(spellchecker_->input_escape_chars);
-		if( button && choice.empty() ) button = 0;
-		if( !button ) choice.erase();
+		if (button && choice.empty() ) button = 0;
+		if (!button ) choice.erase();
 	
 		lyxrc.isp_use_esc_chars = static_cast<bool>(button);
 		lyxrc.isp_esc_chars = choice;
 
 		button = fl_get_button(spellchecker_->check_personal_dict);
 		choice = fl_get_input(spellchecker_->input_personal_dict);
-		if( button && choice.empty() ) button = 0;
-		if( !button ) choice.erase();
+		if (button && choice.empty() ) button = 0;
+		if (!button ) choice.erase();
 
 		lyxrc.isp_use_pers_dict = static_cast<bool>(button);
 		lyxrc.isp_pers_dict = choice;
@@ -1929,27 +1931,28 @@ void FormPreferences::buildSpellchecker()
 }
 
 
-string FormPreferences::feedbackSpellChecker( FL_OBJECT const * const ob ) const
+string const
+FormPreferences::feedbackSpellChecker(FL_OBJECT const * const ob) const
 {
 	string str;
 
-	if( ob == spellchecker_->choice_spell_command )
+	if (ob == spellchecker_->choice_spell_command )
 		str = lyxrc.getDescription( LyXRC::RC_SPELL_COMMAND );
-	else if( ob == spellchecker_->check_alt_lang )
+	else if (ob == spellchecker_->check_alt_lang )
 		str = lyxrc.getDescription( LyXRC::RC_USE_ALT_LANG );
-	else if( ob == spellchecker_->input_alt_lang )
+	else if (ob == spellchecker_->input_alt_lang )
 		str = lyxrc.getDescription( LyXRC::RC_ALT_LANG );
-	else if( ob == spellchecker_->check_escape_chars )
+	else if (ob == spellchecker_->check_escape_chars )
 		str = lyxrc.getDescription( LyXRC::RC_USE_ESC_CHARS );
-	else if( ob == spellchecker_->input_escape_chars )
+	else if (ob == spellchecker_->input_escape_chars )
 		str = lyxrc.getDescription( LyXRC::RC_ESC_CHARS );
-	else if( ob == spellchecker_->check_personal_dict )
+	else if (ob == spellchecker_->check_personal_dict )
 		str = lyxrc.getDescription( LyXRC::RC_USE_PERS_DICT );
-	else if( ob == spellchecker_->input_personal_dict )
+	else if (ob == spellchecker_->input_personal_dict )
 		str = lyxrc.getDescription( LyXRC::RC_PERS_DICT );
-	else if( ob == spellchecker_->check_compound_words )
+	else if (ob == spellchecker_->check_compound_words )
 		str = lyxrc.getDescription( LyXRC::RC_ACCEPT_COMPOUND );
-	else if( ob == spellchecker_->check_input_enc )
+	else if (ob == spellchecker_->check_input_enc )
 		str = lyxrc.getDescription( LyXRC::RC_USE_INP_ENC );
 
 	return str;
@@ -1961,8 +1964,8 @@ bool FormPreferences::inputSpellChecker( FL_OBJECT const * const ob )
 	// Allow/dissallow input
 
 	// If spell checker == "none", disable all input.
-	if( !ob || ob == spellchecker_->choice_spell_command ) {
-		if( fl_get_choice(spellchecker_->choice_spell_command) == 1 ) {
+	if (!ob || ob == spellchecker_->choice_spell_command) {
+		if (fl_get_choice(spellchecker_->choice_spell_command) == 1) {
 			fl_deactivate_object( spellchecker_->check_alt_lang );
 			fl_deactivate_object( spellchecker_->input_alt_lang );
 			fl_deactivate_object( spellchecker_->check_escape_chars );
@@ -1981,8 +1984,8 @@ bool FormPreferences::inputSpellChecker( FL_OBJECT const * const ob )
 		}
 	}
 
-	if( !ob || ob == spellchecker_->check_alt_lang ) {
-		if( fl_get_button(spellchecker_->check_alt_lang) ) {
+	if (!ob || ob == spellchecker_->check_alt_lang) {
+		if (fl_get_button(spellchecker_->check_alt_lang)) {
 			fl_activate_object(spellchecker_->input_alt_lang);
 			fl_set_object_lcol(spellchecker_->input_alt_lang,
 					   FL_BLACK);
@@ -1993,8 +1996,8 @@ bool FormPreferences::inputSpellChecker( FL_OBJECT const * const ob )
 		}
 	}
 
-	if( !ob || ob == spellchecker_->check_escape_chars ) {
-		if( fl_get_button(spellchecker_->check_escape_chars) ) {
+	if (!ob || ob == spellchecker_->check_escape_chars) {
+		if (fl_get_button(spellchecker_->check_escape_chars)) {
 			fl_activate_object(spellchecker_->input_escape_chars);
 			fl_set_object_lcol(spellchecker_->input_escape_chars,
 					   FL_BLACK);
@@ -2005,8 +2008,8 @@ bool FormPreferences::inputSpellChecker( FL_OBJECT const * const ob )
 		}
 	}
 
-	if( !ob || ob == spellchecker_->check_personal_dict ) {
-		if( fl_get_button(spellchecker_->check_personal_dict) ) {
+	if (!ob || ob == spellchecker_->check_personal_dict) {
+		if (fl_get_button(spellchecker_->check_personal_dict)) {
 			fl_activate_object(spellchecker_->input_personal_dict);
 			fl_set_object_lcol(spellchecker_->input_personal_dict,
 					   FL_BLACK);
@@ -2024,30 +2027,30 @@ bool FormPreferences::inputSpellChecker( FL_OBJECT const * const ob )
 void FormPreferences::updateSpellChecker()
 {
 	int choice = 1;
-	if( lyxrc.isp_command == "none" )
+	if (lyxrc.isp_command == "none" )
 		choice = 1;
-	else if( lyxrc.isp_command == "ispell" )
+	else if (lyxrc.isp_command == "ispell" )
 		choice = 2;
-	else if( lyxrc.isp_command == "aspell" )
+	else if (lyxrc.isp_command == "aspell" )
 		choice = 3;
 	fl_set_choice(spellchecker_->choice_spell_command, choice);
 	
 	string str = string();
-	if( lyxrc.isp_use_alt_lang ) str = lyxrc.isp_alt_lang;
+	if (lyxrc.isp_use_alt_lang ) str = lyxrc.isp_alt_lang;
 
 	fl_set_button(spellchecker_->check_alt_lang,
 		      lyxrc.isp_use_alt_lang);
 	fl_set_input(spellchecker_->input_alt_lang, str.c_str());
 	
 	str.erase();
-	if( lyxrc.isp_use_esc_chars ) str = lyxrc.isp_esc_chars;
+	if (lyxrc.isp_use_esc_chars ) str = lyxrc.isp_esc_chars;
 
 	fl_set_button(spellchecker_->check_escape_chars,
 		      lyxrc.isp_use_esc_chars);
 	fl_set_input(spellchecker_->input_escape_chars, str.c_str());
 
 	str.erase();
-	if( lyxrc.isp_use_pers_dict ) str = lyxrc.isp_pers_dict;
+	if (lyxrc.isp_use_pers_dict ) str = lyxrc.isp_pers_dict;
 
 	fl_set_button(spellchecker_->check_personal_dict,
 		      lyxrc.isp_use_pers_dict);
@@ -2069,23 +2072,23 @@ bool FormPreferences::WriteableDir( string const & name ) const
 	bool success = true;
 	string str;
 
-	if( !AbsolutePath(name) ) {
+	if (!AbsolutePath(name)) {
 		success = false;
 		str = N_("WARNING! The absolute path is required.");
 	}
 
-	FileInfo tp(name);
-	if( success && !tp.isDir() ) {
+	FileInfo const tp(name);
+	if (success && !tp.isDir()) {
 		success = false;
 		str = N_("WARNING! Directory does not exist.");
 	}
 
-	if( success && !tp.writable() ) {
+	if (success && !tp.writable()) {
 		success = false;
 		str = N_("WARNING! Cannot write to this directory.");
 	}
 
-	if( !success ) {
+	if (!success) {
 		fl_set_object_label(dialog_->text_warning, str.c_str());
 		fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 	}
@@ -2099,23 +2102,23 @@ bool FormPreferences::ReadableDir( string const & name ) const
 	bool success = true;
 	string str;
 
-	if( !AbsolutePath(name) ) {
+	if (!AbsolutePath(name)) {
 		success = false;
 		str = N_("WARNING! The absolute path is required.");
 	}
 
-	FileInfo tp(name);
-	if( success && !tp.isDir() ) {
+	FileInfo const tp(name);
+	if (success && !tp.isDir()) {
 		success = false;
 		str = N_("WARNING! Directory does not exist.");
 	}
 
-	if( success && !tp.readable() ) {
+	if (success && !tp.readable()) {
 		success = false;
 		str = N_("WARNING! Cannot read this directory.");
 	}
 
-	if( !success ) {
+	if (!success) {
 		fl_set_object_label(dialog_->text_warning, str.c_str());
 		fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 	}
@@ -2124,7 +2127,8 @@ bool FormPreferences::ReadableDir( string const & name ) const
 }
 
 
-bool FormPreferences::WriteableFile( string const & name, string const & suffix ) const
+bool FormPreferences::WriteableFile(string const & name,
+				    string const & suffix) const
 {
 	// A writeable file is either:
 	// * An existing file to which we have write access, or
@@ -2134,49 +2138,58 @@ bool FormPreferences::WriteableFile( string const & name, string const & suffix 
 	bool success = true;
 	string str;
 
-	if( name.empty() ) {
+	if (name.empty()) {
 		success = false;
 		str = N_("WARNING! No file input.");
 	}
 
-	string dir = OnlyPath(name);
-	if( success && !AbsolutePath(dir) ) {
+	string const dir = OnlyPath(name);
+	if (success && !AbsolutePath(dir)) {
 		success = false;
 		str = N_("WARNING! The absolute path is required.");
 	}
 
+	// This is not a nice way to use FileInfo (Lgb)
+#if 0
 	FileInfo d;
+	
 	{
 		FileInfo d1(dir);
 		FileInfo d2(name);
-		if( d2.isDir() )
+		if (d2.isDir() )
 			d = d2;
 		else
 			d = d1;
 	}
-	
-	if( success && !d.isDir()) {
+#else
+	// This should be equivalent (Lgb)
+	FileInfo d(name);
+	if (!d.isDir()) {
+		d.newFile(dir);
+	}
+#endif
+	if (success && !d.isDir()) {
 		success = false;
 		str = N_("WARNING! Directory does not exist.");
 	}
 	
-	if( success && !d.writable() ) {
+	if (success && !d.writable()) {
 		success = false;
 		str = N_("WARNING! Cannot write to this directory.");
 	}
 
 	FileInfo f(name+suffix);
-	if( success && (dir == name || f.isDir()) ) {
+	if (success && (dir == name || f.isDir())) {
 		success = false;
 		str = N_("WARNING! A file is required, not a directory.");
 	}
 
-	if( success && (f.exist() && !f.writable()) ) {
+	if (success && (f.exist() && !f.writable())) {
 		success = false;
 		str = N_("WARNING! Cannot write to this file.");
 	}
 	
-	if( !success ) {
+	if (!success) {
 		fl_set_object_label(dialog_->text_warning, str.c_str());
 		fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
 	}
@@ -2197,6 +2210,7 @@ void FormPreferences::ComboLanguageCB(int, void * v, Combox * combox)
 // C functions for the timer callback used to give the user feedback
 C_GENERICCB(FormPreferences, FeedbackCB)
 
+	
 void FormPreferences::FeedbackCB(FL_OBJECT * ob, long)
 {
 	FormPreferences * pre =
@@ -2204,13 +2218,15 @@ void FormPreferences::FeedbackCB(FL_OBJECT * ob, long)
 	pre->feedback( pre->feedbackObj );
 }
 
-extern "C" int C_FormPreferencesFeedbackPost(FL_OBJECT * ob, int event,
-					     FL_Coord, FL_Coord, int, void *)
+
+extern "C"
+int C_FormPreferencesFeedbackPost(FL_OBJECT * ob, int event,
+				  FL_Coord, FL_Coord, int, void *)
 {
 	// can occur when form is being deleted. This seems an easier fix than
 	// a call "fl_set_object_posthandler(ob, 0)" for each and every object
 	// in the destructor.
-	if( !ob->form ) return 0;
+	if (!ob->form ) return 0;
 
 	FormPreferences * pre =
 		static_cast<FormPreferences*>(ob->form->u_vdata);
@@ -2220,10 +2236,10 @@ extern "C" int C_FormPreferencesFeedbackPost(FL_OBJECT * ob, int event,
 
 
 // post_handler for feedback messages
-void FormPreferences::feedbackPost(FL_OBJECT *ob, int event)
+void FormPreferences::feedbackPost(FL_OBJECT * ob, int event)
 {
 	// We do not test for empty help here, since this can never happen
-	if(event == FL_ENTER){
+	if (event == FL_ENTER){
 		// Used as a placeholder for ob, so that we don't have to
 		// a horrible reinterpret_cast to long and pass it as an
 		// argument in fl_set_object_callback.
@@ -2233,7 +2249,7 @@ void FormPreferences::feedbackPost(FL_OBJECT *ob, int event)
 				       0);
 		fl_set_timer(dialog_->timer_feedback, 0.5);
 	}
-	else if(event != FL_MOTION){
+	else if (event != FL_MOTION){
 		fl_set_timer(dialog_->timer_feedback, 0);
 		feedbackObj = 0;
 		fl_set_object_label(dialog_->text_warning, "");
@@ -2241,7 +2257,7 @@ void FormPreferences::feedbackPost(FL_OBJECT *ob, int event)
 }
 
 
-void FormPreferences::setPostHandler( FL_OBJECT * ob ) const
+void FormPreferences::setPostHandler(FL_OBJECT * ob) const
 {
 	fl_set_object_posthandler(ob, C_FormPreferencesFeedbackPost);
 }

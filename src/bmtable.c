@@ -298,7 +298,7 @@ void fl_set_bmtable_file(FL_OBJECT * ob, int nx, int ny, char const * filename)
    unsigned int bw, bh;
    unsigned char * bdata;
    
-   if(XReadBitmapFileData(filename, &bw, &bh,
+   if (XReadBitmapFileData(filename, &bw, &bh,
 			  &bdata, &xh, &yh) == BitmapSuccess)
      fl_set_bmtable_data(ob, nx, ny, bw, bh, bdata);
    XFlush(fl_get_display());

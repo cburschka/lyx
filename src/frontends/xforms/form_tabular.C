@@ -12,7 +12,7 @@
 
 FD_form_tabular::~FD_form_tabular()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -51,7 +51,7 @@ FD_form_tabular * FormTabular::build_tabular()
 
 FD_form_tabular_options::~FD_form_tabular_options()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -106,7 +106,7 @@ FD_form_tabular_options * FormTabular::build_tabular_options()
 
 FD_form_column_options::~FD_form_column_options()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -196,7 +196,7 @@ FD_form_column_options * FormTabular::build_column_options()
 
 FD_form_cell_options::~FD_form_cell_options()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 
@@ -293,7 +293,7 @@ FD_form_cell_options * FormTabular::build_cell_options()
 
 FD_form_longtable_options::~FD_form_longtable_options()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 

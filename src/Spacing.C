@@ -28,7 +28,7 @@ char const * spacing_string[] = {"single", "onehalf", "double", "other"};
 
 float Spacing::getValue() const 
 {
-	switch(space) {
+	switch (space) {
 	case Default: // nothing special should happen with this...
 	case Single: return 1.0;
 	case Onehalf: return 1.25;
@@ -43,7 +43,7 @@ void Spacing::set(Spacing::Space sp, float val)
 {
 	space = sp;
 	if (sp == Other) {
-		switch(int(val * 1000 + 0.5)) {
+		switch (int(val * 1000 + 0.5)) {
 		case 1000: space = Single; break;
 		case 1250: space = Onehalf; break;
 		case 1667: space = Double; break;
@@ -81,7 +81,7 @@ void Spacing::writeFile(ostream & os, bool para) const
 
 string const Spacing::writeEnvirBegin() const
 {
-	switch(space) {
+	switch (space) {
 	case Default: break; // do nothing
 	case Single:
 		return "\\begin{singlespace}";
@@ -103,7 +103,7 @@ string const Spacing::writeEnvirBegin() const
 
 string const Spacing::writeEnvirEnd() const
 {
-	switch(space) {
+	switch (space) {
 	case Default: break; // do nothing
 	case Single:
 		return "\\end{singlespace}";

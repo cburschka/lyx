@@ -160,7 +160,7 @@ void Combox::add(int x, int y, int w, int hmin, int hmax)
 {  
 	FL_OBJECT * obj;
 	
-	switch(type) {
+	switch (type) {
 	case FL_COMBOX_DROPLIST:
 	{
 		button = obj = fl_add_button(FL_NORMAL_BUTTON,

@@ -120,13 +120,13 @@ int BubblePost(FL_OBJECT *ob, int event,
 	FL_OBJECT * bubble_timer = reinterpret_cast<FL_OBJECT *>(ob->u_cdata);
 	
 	// We do not test for empty help here, since this can never happen
-	if(event == FL_ENTER){
+	if (event == FL_ENTER){
 		fl_set_object_callback(bubble_timer,
 				       C_Toolbar_BubbleTimerCB,
 				       reinterpret_cast<long>(ob));
 		fl_set_timer(bubble_timer, 1);
 	}
-	else if(event != FL_MOTION){
+	else if (event != FL_MOTION){
 		fl_set_timer(bubble_timer, 0);
 		fl_hide_oneliner();
 	}
@@ -252,7 +252,7 @@ void ToolbarCB(FL_OBJECT * ob, long ac)
 	LyXView * owner = static_cast<LyXView *>(ob->u_vdata);
 	
 	string res = owner->getLyXFunc()->Dispatch(int(ac));
-	if(!res.empty())
+	if (!res.empty())
 		lyxerr[Debug::GUI] << "ToolbarCB: Function returned: " 
 				   << res << endl;
 }
@@ -349,7 +349,7 @@ void Toolbar::Pimpl::set(bool doingmain)
 	ToolbarList::iterator item = toollist.begin();
 	ToolbarList::iterator end = toollist.end();
 	for (; item != end; ++item) {
-		switch(item->action){
+		switch (item->action){
 		case ToolbarDefaults::SEPARATOR:
 			xpos += sepspace;
 			break;

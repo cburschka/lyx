@@ -235,12 +235,12 @@ int peek_event(FL_FORM * /*form*/, void *xev)
    if (BitmapMenu::active == 0)
      return 0;
   
-   if(static_cast<XEvent *>(xev)->type == ButtonPress)
+   if (static_cast<XEvent *>(xev)->type == ButtonPress)
    {
 	 BitmapMenu::active->Hide();
 	 return 1;
    }
-   if(static_cast<XEvent *>(xev)->type == KeyPress)
+   if (static_cast<XEvent *>(xev)->type == KeyPress)
    {
       char c[5];
       KeySym keysym;

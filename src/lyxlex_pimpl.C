@@ -53,7 +53,7 @@ void LyXLex::Pimpl::printError(string const & message) const
 void LyXLex::Pimpl::printTable(ostream & os)
 {
 	os << "\nNumber of tags: " << no_items << '\n';
-	for(int i= 0; i < no_items; ++i)
+	for (int i= 0; i < no_items; ++i)
 		os << "table[" << i
 		   << "]:  tag: `" << table[i].tag
 		   << "'  code:" << table[i].code << '\n';

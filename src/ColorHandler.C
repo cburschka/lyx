@@ -105,7 +105,7 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 
 		XColor * cmap = new XColor[vi->map_entries];
 
-		for(int i = 0; i < vi->map_entries; ++i) {
+		for (int i = 0; i < vi->map_entries; ++i) {
 			cmap[i].pixel = i;
 		}
 		XQueryColors(display, colormap, cmap, vi->map_entries);
@@ -114,7 +114,7 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 		int closest_pixel = 0;
 		double closest_distance = 1e20; // we want to minimize this
 		double distance = 0;
-		for(int t = 0; t < vi->map_entries; ++t) {
+		for (int t = 0; t < vi->map_entries; ++t) {
 			// The Euclidean distance between two points in 
 			// a three-dimensional space, the RGB color-cube,
 			// is used as the distance measurement between two

@@ -64,10 +64,6 @@ public:
 		int b;
 		RGB() : r(0), g(0), b(0) {}
 		RGB(int red, int green, int blue) : r(red), g(green), b(blue) {}
-		bool operator==(RGB const & o) const
-			{ return( r == o.r && g == o.g && b == o.b ); }
-		bool operator!=(RGB const & o) const
-			{ return( r != o.r || g != o.g || b != o.b ); }
 	};
 
 private:
@@ -148,29 +144,29 @@ private:
 	 */
 	
 	///
-	string feedbackColours(FL_OBJECT const * const) const;
+	string const feedbackColours(FL_OBJECT const * const) const;
 	///
-	string feedbackConverters(FL_OBJECT const * const) const;
+	string const feedbackConverters(FL_OBJECT const * const) const;
 	///
-	string feedbackFormats( FL_OBJECT const * const ) const;
+	string const feedbackFormats( FL_OBJECT const * const ) const;
 	///
-	string feedbackInputsMisc(FL_OBJECT const * const) const;
+	string const feedbackInputsMisc(FL_OBJECT const * const) const;
 	///
-	string feedbackInterface(FL_OBJECT const * const) const;
+	string const feedbackInterface(FL_OBJECT const * const) const;
 	///
-	string feedbackLanguage(FL_OBJECT const * const) const;
+	string const feedbackLanguage(FL_OBJECT const * const) const;
 	///
-	string feedbackLnFmisc(FL_OBJECT const * const) const;
+	string const feedbackLnFmisc(FL_OBJECT const * const) const;
 	///
-	string feedbackOutputsMisc(FL_OBJECT const * const) const;
+	string const feedbackOutputsMisc(FL_OBJECT const * const) const;
 	///
-	string feedbackPaths(FL_OBJECT const * const) const;
+	string const feedbackPaths(FL_OBJECT const * const) const;
 	///
-	string feedbackPrinter(FL_OBJECT const * const) const;
+	string const feedbackPrinter(FL_OBJECT const * const) const;
 	///
-	string feedbackScreenFonts(FL_OBJECT const * const) const;
+	string const feedbackScreenFonts(FL_OBJECT const * const) const;
 	///
-	string feedbackSpellChecker(FL_OBJECT const * const) const;
+	string const feedbackSpellChecker(FL_OBJECT const * const) const;
 
 	/** Folder specific input functions. Not all folders require one.
 	 */
@@ -282,9 +278,9 @@ private:
 	/// Spellchecker, language stuff, etc
 	FD_form_outer_tab * usage_tab_;
 	///
-	FD_form_converters * converters_;
-	///
 	FD_form_colours * colours_;
+	///
+	FD_form_converters * converters_;
 	///
 	FD_form_formats * formats_;
 	///
@@ -314,5 +310,21 @@ private:
 	///
 	FL_OBJECT * feedbackObj;
 };
+
+
+inline
+bool operator==(FormPreferences::RGB const & c1,
+		FormPreferences::RGB const & c2)
+{
+	return (c1.r == c2.r && c1.g == c2.g && c1.b == c2.b);
+}
+
+
+inline
+bool operator!=(FormPreferences::RGB const & c1,
+		FormPreferences::RGB const & c2)
+{
+	return !(c1 == c2);
+}
 
 #endif

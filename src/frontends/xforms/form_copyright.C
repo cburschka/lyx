@@ -12,7 +12,7 @@
 
 FD_form_copyright::~FD_form_copyright()
 {
-  if( form->visible ) fl_hide_form( form );
+  if (form->visible ) fl_hide_form( form );
   fl_free_form( form );
 }
 

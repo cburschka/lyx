@@ -302,12 +302,6 @@ void LyXView::create_form_form_main(int width, int height)
 }
 
 
-#if 0
-extern "C"
-int C_LyXView_KeyPressMask_raw_callback(FL_FORM * fl, void * xev);
-#endif
-
-
 void LyXView::init()
 {
 	// Set the textclass choice
@@ -321,12 +315,6 @@ void LyXView::init()
 		autosave_timeout.start();
 	}
 
-#if 0
-	// Install the raw callback for keyboard events 
-	fl_register_raw_callback(form_,
-				 KeyPressMask,
-				 C_LyXView_KeyPressMask_raw_callback);
-#endif
         intl->InitKeyMapper(lyxrc.use_kbmap);
 }
 
@@ -364,71 +352,6 @@ void LyXView::updateLayoutChoice()
 		current_layout = layout;
 	}
 }
-
-
-#if 0
-// This is necessary, since FL_FREE-Objects doesn't get all keypress events
-// as FL_KEYBOARD events :-(   Matthias 280596
-int LyXView::KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
-{
-	LyXView * view = static_cast<LyXView*>(fl->u_vdata);
-	int retval = 0;  // 0 means XForms should have a look at this event
-
-	XKeyEvent * xke = static_cast<XKeyEvent*>(xev);
-	static Time last_time_pressed = 0;
-	static Time last_time_released = 0;
-	static unsigned int last_key_pressed = 0;
-	static unsigned int last_key_released = 0;
-	static unsigned int last_state_pressed = 0;
-	static unsigned int last_state_released = 0;
-
-	// funny. Even though the raw_callback is registered with KeyPressMask,
-	// also KeyRelease-events are passed through:-(
-	// [It seems that XForms puts them in pairs... (JMarc)]
-	if (static_cast<XEvent*>(xev)->type == KeyPress
-	    && view->bufferview->focus()
-	    && view->bufferview->active())
-		{
-		last_time_pressed = xke->time;
-		last_key_pressed = xke->keycode;
-		last_state_pressed = xke->state;
-		retval = view->getLyXFunc()
-			->processKeyEvent(static_cast<XEvent*>(xev));
-	}
-	else if (static_cast<XEvent*>(xev)->type == KeyRelease
-		 && view->bufferview->focus()
-		 && view->bufferview->active())
-{
-		last_time_released = xke->time;
-		last_key_released = xke->keycode;
-		last_state_released = xke->state;
-	}
-
-	if (last_key_released == last_key_pressed
-	    && last_state_released == last_state_pressed
-	    && last_time_released == last_time_pressed) {
-		// When the diff between last_time_released and
-		// last_time_pressed is 0, that sinifies an autoreapeat
-		// at least on my system. It like some feedback from
-		// others, especially from user running LyX remote.
-		lyxerr[Debug::KEY] << "Syncing - purging X events." << endl;
-		XSync(fl_get_display(), 1);
-		// This purge make f.ex. scrolling stop imidiatly when
-		// releaseing the PageDown button. The question is if this
-		// purging of XEvents can cause any harm...after some testing
-		// I can see no problems, but I'd like other reports too.
-	}
-	return retval;
-}
-
-
-// wrapper for the above
-extern "C"
-int C_LyXView_KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
-{
-	return LyXView::KeyPressMask_raw_callback(fl, xev);
-}
-#endif
 
 
 // Updates the title of the window with the filename of the current document
