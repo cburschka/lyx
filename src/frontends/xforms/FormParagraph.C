@@ -38,8 +38,8 @@ using std::remove_if;
 
 typedef FormCB<ControlParagraph, FormDB<FD_paragraph> > base_class;
 
-FormParagraph::FormParagraph(ControlParagraph & c)
-	: base_class(c, _("Paragraph Layout"), false)
+FormParagraph::FormParagraph(ControlParagraph & c, Dialogs & d)
+	: base_class(c, d, _("Paragraph Layout"), false)
 {}
 
 void FormParagraph::build()

@@ -22,8 +22,8 @@
 
 typedef FormCB<ControlBibitem, FormDB<FD_bibitem> > base_class;
 
-FormBibitem::FormBibitem(ControlBibitem & c)
-	: base_class(c, _("Bibliography Entry"))
+FormBibitem::FormBibitem(ControlBibitem & c, Dialogs & d)
+	: base_class(c, d, _("Bibliography Entry"))
 {}
 
 

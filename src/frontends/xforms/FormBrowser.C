@@ -16,8 +16,9 @@
 #include "forms/form_browser.h"
 #include "xformsBC.h"
 
-FormBrowser::FormBrowser(ControlButtons & c, string const & t, bool allowResize)
-	: FormDB<FD_browser>(c, t, allowResize)
+FormBrowser::FormBrowser(ControlButtons & c, Dialogs & d,
+			 string const & t, bool allowResize)
+	: FormDB<FD_browser>(c, d, t, allowResize)
 {}
 
 

@@ -26,8 +26,7 @@ struct FD_bibtex;
 class FormBibtex : public FormCB<ControlBibtex, FormDB<FD_bibtex> > {
 public:
 	///
-	FormBibtex(ControlBibtex &);
-
+	FormBibtex(ControlBibtex &, Dialogs &);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

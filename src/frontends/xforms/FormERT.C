@@ -23,8 +23,8 @@
 
 typedef FormCB<ControlERT, FormDB<FD_ert> > base_class;
 
-FormERT::FormERT(ControlERT & c)
-	: base_class(c, _("ERT Options"))
+FormERT::FormERT(ControlERT & c, Dialogs & d)
+	: base_class(c, d, _("ERT Options"))
 {}
 
 

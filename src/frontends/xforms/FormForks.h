@@ -22,7 +22,7 @@ struct FD_forks;
 class FormForks : public FormCB<ControlForks, FormDB<FD_forks> > {
 public:
 	///
-	FormForks(ControlForks &);
+	FormForks(ControlForks &, Dialogs &);
 
 	/// preemptive handler for feedback messages
 	void feedbackCB(FL_OBJECT *, int);

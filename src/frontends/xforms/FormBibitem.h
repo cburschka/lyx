@@ -26,8 +26,7 @@ struct FD_bibitem;
 class FormBibitem : public FormCB<ControlBibitem, FormDB<FD_bibitem> > {
 public:
 	///
-	FormBibitem(ControlBibitem &);
-
+	FormBibitem(ControlBibitem &, Dialogs &);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

@@ -22,8 +22,7 @@ struct FD_texinfo;
 class FormTexinfo : public FormCB<ControlTexinfo, FormDB<FD_texinfo> > {
 public:
 	///
-	FormTexinfo(ControlTexinfo &);
-
+	FormTexinfo(ControlTexinfo &, Dialogs &);
 private:
 	/// not needed
 	virtual void apply() {}

@@ -24,8 +24,7 @@ struct FD_error;
 class FormError : public FormCB<ControlError, FormDB<FD_error> > {
 public:
 	/// Constructor
-	FormError(ControlError &);
-
+	FormError(ControlError &, Dialogs &);
 private:
 	/// not needed.
 	virtual void apply() {}

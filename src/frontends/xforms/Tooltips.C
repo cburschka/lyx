@@ -35,12 +35,12 @@ boost::signal0<void> Tooltips::toggled;
 
 #if FL_VERSION > 0 || FL_REVISION >= 89
 
-Tooltips::Tooltips()
+Tooltips::Tooltips(Dialogs & d)
 {
 	static bool first = true;
 	if (first) {
 		first = false;
-		Dialogs::toggleTooltips.connect(boost::bind(&Tooltips::toggleEnabled));
+		d.toggleTooltips.connect(boost::bind(&Tooltips::toggleEnabled));
 	}
 	toggled.connect(boost::bind(&Tooltips::set, this));
 }

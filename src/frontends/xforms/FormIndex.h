@@ -24,8 +24,7 @@ struct FD_index;
 class FormIndex : public FormCB<ControlIndex, FormDB<FD_index> > {
 public:
 	///
-	FormIndex(ControlIndex &);
-
+	FormIndex(ControlIndex &, Dialogs &);
 private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();

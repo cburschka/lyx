@@ -22,6 +22,7 @@
 
 class LyXView;
 class ToolbarDefaults;
+class Dialogs;
 
 /** The LyX GUI independent toolbar class
   The GUI interface is implemented in the corresponding Toolbar_pimpl class.
@@ -29,7 +30,8 @@ class ToolbarDefaults;
 class Toolbar {
 public:
 	///
-	Toolbar(LyXView * o, int x, int y, ToolbarDefaults const &);
+	Toolbar(LyXView * o, Dialogs & d,
+		int x, int y, ToolbarDefaults const &);
 
 	///
 	~Toolbar();
@@ -55,8 +57,8 @@ public:
 
 	/// update the layout combox
 	void setLayout(string const & layout);
-	/** 
-	 * Populate the layout combox - returns whether we did a full 
+	/**
+	 * Populate the layout combox - returns whether we did a full
 	 * update or not
 	 */
 	bool updateLayoutList(int textclass);

@@ -20,8 +20,8 @@
 
 typedef FormCB<ControlSearch, FormDB<FD_search> > base_class;
 
-FormSearch::FormSearch(ControlSearch & c)
-	: base_class(c, _("LyX: Find and Replace"))
+FormSearch::FormSearch(ControlSearch & c, Dialogs & d)
+	: base_class(c, d, _("LyX: Find and Replace"))
 {}
 
 
@@ -43,7 +43,7 @@ void FormSearch::update()
 	fl_set_focus_object(dialog_->form, dialog_->input_search);
 }
 
- 
+
 ButtonPolicy::SMInput FormSearch::input(FL_OBJECT * obj, long)
 {
 	if (obj == dialog_->button_findnext ||

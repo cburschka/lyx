@@ -36,8 +36,8 @@ using std::sort;
 
 typedef FormCB<ControlBibtex, FormDB<FD_bibtex> > base_class;
 
-FormBibtex::FormBibtex(ControlBibtex & c)
-	: base_class(c, _("BibTeX Database"))
+FormBibtex::FormBibtex(ControlBibtex & c, Dialogs & d)
+	: base_class(c, d, _("BibTeX Database"))
 {}
 
 
@@ -75,13 +75,13 @@ void FormBibtex::build()
 
 	str = _("Activate this option if you want the bibliography to appear in the Table of Contents (which doesn't happen by default)");
 	tooltips().init(dialog_->check_bibtotoc, str);
-	
+
 	str = _("Choose a BibTeX style from the browsers list");
 	tooltips().init(dialog_->button_style_choose, str);
-	
+
 	str = _("Updates your TeX system for a new bibstyle list. Only the styles which are in directories where TeX finds them are listed!");
 	tooltips().init(dialog_->button_rescan, str);
-	
+
 }
 
 
@@ -116,9 +116,9 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 		}
 	} else if (ob == dialog_->button_style_choose) {
 		unsigned int selection = fl_get_browser(dialog_->browser_styles);
-		string const out_name = 
+		string const out_name =
 			fl_get_browser_line(dialog_->browser_styles, selection);
-		fl_set_input(dialog_->input_style, 
+		fl_set_input(dialog_->input_style,
 			ChangeExtension(out_name, string()).c_str());
 	} else if (ob == dialog_->button_rescan)
 		controller().rescanBibStyles();

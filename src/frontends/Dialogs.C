@@ -28,13 +28,13 @@
 
 // Signal enabling all visible dialogs to be redrawn if so desired.
 // E.g., when the GUI colours have been remapped.
-boost::signal0<void> Dialogs::redrawGUI;
+//boost::signal0<void> Dialogs::redrawGUI;
 
 extern LyXView * dialogs_lyxview;
 
 
 // toggle tooltips on/off in all dialogs.
-boost::signal0<void> Dialogs::toggleTooltips;
+//boost::signal0<void> Dialogs::toggleTooltips;
 
 void Dialogs::showAboutlyx()
 {

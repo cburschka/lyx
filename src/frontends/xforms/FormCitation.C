@@ -58,14 +58,14 @@ void fillChoice(FD_citation * dialog, vector<string> vec)
 	string str = " ";
 	if (!vec.empty())
 		str += getStringFromVector(vec, " | ") + " ";
-	
+
 	fl_clear_choice(dialog->choice_style);
 	fl_addto_choice(dialog->choice_style, str.c_str());
 
 	setEnabled(dialog->choice_style, !vec.empty());
 	if (vec.empty())
 		return;
-		
+
 	// The width of the choice varies with the contents.
 	// Ensure that it is centred in the frame.
 
@@ -115,8 +115,8 @@ void updateStyle(FD_citation * dialog, string command)
 typedef FormCB<ControlCitation, FormDB<FD_citation> > base_class;
 
 
-FormCitation::FormCitation(ControlCitation & c)
-	: base_class(c, _("Citation"), false)
+FormCitation::FormCitation(ControlCitation & c, Dialogs & d)
+	: base_class(c, d, _("Citation"), false)
 {}
 
 

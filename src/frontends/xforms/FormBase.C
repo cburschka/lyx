@@ -32,9 +32,10 @@ static int C_PrehandlerCB(FL_OBJECT *, int, FL_Coord, FL_Coord, int, void *);
 } // extern "C"
 
 
-FormBase::FormBase(ControlButtons & c, string const & t, bool allowResize)
+FormBase::FormBase(ControlButtons & c, Dialogs & d,
+		   string const & t, bool allowResize)
 	: ViewBC<xformsBC>(c), minw_(0), minh_(0), allow_resize_(allowResize),
-	  title_(t), tooltips_(new Tooltips)
+	  title_(t), tooltips_(new Tooltips(d))
 {}
 
 

@@ -20,6 +20,8 @@
 
 #include "frontends/LyXView.h"
 
+class Dialogs;
+
 /**
  * XFormsView - xforms implementation of LyXView
  *
@@ -32,14 +34,14 @@ public:
 
 	~XFormsView();
 
-        /**
-         * show - display the top-level window
-         * @param xpos requested x position (or 0)
-         * @param xpos requested y position (or 0)
-         * @param title window title
-         */
+	/**
+	 * show - display the top-level window
+	 * @param xpos requested x position (or 0)
+	 * @param xpos requested y position (or 0)
+	 * @param title window title
+	 */
 	void show(int xpos, int ypos, string const & t = string("LyX"));
- 
+
 	/// get the xforms main form
 	FL_FORM * getForm() const;
 	/// redraw the main form.
@@ -58,10 +60,10 @@ private:
 	 * @param t main window title
 	 * @param it iconified (short) title
 	 */
-	virtual void setWindowTitle(string const & t, string const & it); 
- 
+	virtual void setWindowTitle(string const & t, string const & it);
+
 	/// makes the main form.
-	void create_form_form_main(int width, int height);
+	void create_form_form_main(Dialogs & d, int width, int height);
 	/// the main form.
 	boost::scoped_ptr<FL_FORM> form_;
 };

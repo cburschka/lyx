@@ -43,7 +43,7 @@ FormBaseDeprecated::FormBaseDeprecated(LyXView * lv, Dialogs * d,
 				       string const & t, bool allowResize)
 	: lv_(lv), d_(d), title_(t),
 	  minw_(0), minh_(0), allow_resize_(allowResize),
-	  tooltips_(new Tooltips)
+	  tooltips_(new Tooltips(*d))
 {
 	lyx::Assert(lv && d);
 }
@@ -71,7 +71,7 @@ void FormBaseDeprecated::redraw()
 void FormBaseDeprecated::connect()
 {
 	fl_set_form_minsize(form(), minw_, minh_);
-	r_ = Dialogs::redrawGUI.connect(boost::bind(&FormBaseDeprecated::redraw, this));
+	r_ = d_->redrawGUI.connect(boost::bind(&FormBaseDeprecated::redraw, this));
 }
 
 

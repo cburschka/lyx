@@ -25,7 +25,7 @@ class ControlShowFile;
 class FormShowFile : public FormCB<ControlShowFile, FormBrowser> {
 public:
 	///
-	FormShowFile(ControlShowFile &);
+	FormShowFile(ControlShowFile &, Dialogs &);
 
 	// Functions accessible to the Controller.
 

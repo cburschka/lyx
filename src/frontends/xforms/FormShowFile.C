@@ -20,8 +20,8 @@
 #include FORMS_H_LOCATION
 
 
-FormShowFile::FormShowFile(ControlShowFile & c)
-	: FormCB<ControlShowFile, FormBrowser>(c, string())
+FormShowFile::FormShowFile(ControlShowFile & c, Dialogs & d)
+	: FormCB<ControlShowFile, FormBrowser>(c, d, string())
 {}
 
 

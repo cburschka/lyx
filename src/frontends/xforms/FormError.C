@@ -21,8 +21,8 @@
 
 typedef FormCB<ControlError, FormDB<FD_error> > base_class;
 
-FormError::FormError(ControlError & c)
-	: base_class(c, _("LaTeX Error"))
+FormError::FormError(ControlError & c, Dialogs & d)
+	: base_class(c, d, _("LaTeX Error"))
 {}
 
 

@@ -30,8 +30,8 @@ using std::vector;
 
 typedef FormCB<ControlRef, FormDB<FD_ref> > base_class;
 
-FormRef::FormRef(ControlRef & c)
-	: base_class(c, _("Reference")),
+FormRef::FormRef(ControlRef & c, Dialogs & d)
+	: base_class(c, d, _("Reference")),
 	  at_ref_(false)
 {}
 

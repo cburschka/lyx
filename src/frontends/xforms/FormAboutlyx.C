@@ -25,8 +25,8 @@ using std::getline;
 
 typedef FormCB<ControlAboutlyx, FormDB<FD_aboutlyx> > base_class;
 
-FormAboutlyx::FormAboutlyx(ControlAboutlyx & c)
-	: base_class(c, _("About LyX"), false)
+FormAboutlyx::FormAboutlyx(ControlAboutlyx & c, Dialogs & d)
+	: base_class(c, d, _("About LyX"), false)
 {}
 
 

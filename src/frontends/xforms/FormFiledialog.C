@@ -422,7 +422,7 @@ void FileDialog::Private::SetInfoLine(string const & Line)
 }
 
 
-FileDialog::Private::Private()
+FileDialog::Private::Private(Dialogs & dia)
 {
 	pszDirectory = MakeAbsPath(string("."));
 	pszMask = '*';
@@ -459,7 +459,7 @@ FileDialog::Private::Private()
 	fl_hide_object(pFileDlgForm->User1);
 	fl_hide_object(pFileDlgForm->User2);
 
-	r_ = Dialogs::redrawGUI.connect(boost::bind(&FileDialog::Private::redraw, this));
+	r_ = dia.redrawGUI.connect(boost::bind(&FileDialog::Private::redraw, this));
 }
 
 

@@ -26,8 +26,7 @@ struct FD_external;
 class FormExternal : public FormCB<ControlExternal, FormDB<FD_external> > {
 public:
 	///
-	FormExternal(ControlExternal &);
-
+	FormExternal(ControlExternal &, Dialogs &);
 private:
 	/// apply changes
 	void apply();

@@ -32,8 +32,8 @@ using std::make_pair;
 
 typedef FormCB<ControlPrint, FormDB<FD_print> > base_class;
 
-FormPrint::FormPrint(ControlPrint & c)
-	: base_class(c, _("Print")),
+FormPrint::FormPrint(ControlPrint & c, Dialogs & d)
+	: base_class(c, d, _("Print")),
 	  target_(2), order_(2), which_(3)
 {}
 

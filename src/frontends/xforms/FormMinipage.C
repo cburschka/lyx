@@ -24,8 +24,8 @@
 
 typedef FormCB<ControlMinipage, FormDB<FD_minipage> > base_class;
 
-FormMinipage::FormMinipage(ControlMinipage & c)
-	: base_class(c, _("Minipage Options"))
+FormMinipage::FormMinipage(ControlMinipage & c, Dialogs & d)
+	: base_class(c, d, _("Minipage Options"))
 {}
 
 

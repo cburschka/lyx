@@ -24,8 +24,7 @@ struct FD_url;
 class FormUrl : public FormCB<ControlUrl, FormDB<FD_url> > {
 public:
 	///
-	FormUrl(ControlUrl &);
-
+	FormUrl(ControlUrl &, Dialogs &);
 private:
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();

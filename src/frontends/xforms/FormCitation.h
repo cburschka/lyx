@@ -25,8 +25,7 @@ struct FD_citation;
 class FormCitation : public FormCB<ControlCitation, FormDB<FD_citation> > {
 public:
 	///
-	FormCitation(ControlCitation &);
-
+	FormCitation(ControlCitation &, Dialogs &);
 private:
 	///
 	enum State {

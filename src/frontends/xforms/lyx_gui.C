@@ -8,16 +8,16 @@
  */
 
 #include <config.h>
- 
+
 #include "lyx_gui.h"
- 
+
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/filetools.h"
- 
+
 #include "debug.h"
 #include "gettext.h"
- 
+
 #include "lyx_main.h"
 #include "lyxrc.h"
 
@@ -27,7 +27,7 @@
 #include "lyxserver.h"
 #include "BufferView.h"
 #include "XFormsView.h"
- 
+
 #include FORMS_H_LOCATION
 #include "ColorHandler.h"
 #include "xforms_helpers.h"
@@ -37,11 +37,11 @@
 #include "graphics/GraphicsImageXPM.h"
 #endif
 
- 
+
 #include <fcntl.h>
 
 #include <boost/bind.hpp>
- 
+
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
 #endif
@@ -49,15 +49,15 @@ using std::exit;
 using std::vector;
 using std::hex;
 using std::endl;
- 
+
 extern bool finished;
 extern BufferList bufferlist;
- 
+
 // FIXME: wrong place !
 LyXServer * lyxserver;
- 
+
 namespace {
- 
+
 /// set default GUI configuration
 void setDefaults()
 {
@@ -80,7 +80,7 @@ void setDefaults()
 			| FL_PDBorderWidth, &cntl);
 }
 
- 
+
 extern "C" {
 
 int LyX_XErrHandler(Display * display, XErrorEvent * xeev) {
@@ -103,19 +103,19 @@ int LyX_XErrHandler(Display * display, XErrorEvent * xeev) {
 	lyx::abort();
 	return 0;
 }
- 
+
 }
- 
+
 /// read in geometry specification
 char geometry[40];
- 
+
 } // namespace anon
 
- 
+
 void lyx_gui::parse_init(int & argc, char * argv[])
 {
 	setDefaults();
- 
+
 	FL_CMD_OPT cmdopt[] = {
 		{"-geometry", "*.geometry", XrmoptionSepArg, "690x510"}
 	};
@@ -125,36 +125,36 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 	};
 
 	const int num_res = sizeof(res)/sizeof(FL_resource);
- 
+
 	fl_initialize(&argc, argv, "LyX", cmdopt, num_res);
- 
+
 	// It appears that, in xforms >=0.89.5, fl_initialize()
 	// calls setlocale() and ruins our LC_NUMERIC setting.
 	locale_init();
- 
+
 	fl_get_app_resources(res, num_res);
- 
+
 	Display * display = fl_get_display();
- 
+
 	if (!display) {
 		lyxerr << "LyX: unable to access X display, exiting" << endl;
 		os::warn("Unable to access X display, exiting");
 		::exit(1);
 	}
- 
+
 	fcntl(ConnectionNumber(display), F_SETFD, FD_CLOEXEC);
- 
+
 	XSetErrorHandler(LyX_XErrHandler);
 
 	lyxColorHandler.reset(new LyXColorHandler());
 }
- 
+
 
 void lyx_gui::parse_lyxrc()
 {
-	// FIXME !!!! 
+	// FIXME !!!!
 	lyxrc.dpi = 95;
- 
+
 	XformsColor::read(AddName(user_lyxdir, "preferences.xform"));
 
 	if (lyxrc.popup_font_encoding.empty())
@@ -207,7 +207,7 @@ void lyx_gui::parse_lyxrc()
 #endif
 }
 
- 
+
 void lyx_gui::start(string const & batch, vector<string> files)
 {
 	// initial geometry
@@ -215,7 +215,7 @@ void lyx_gui::start(string const & batch, vector<string> files)
 	int ypos = -1;
 	unsigned int width = 690;
 	unsigned int height = 510;
- 
+
 	static const int geometryBitmask =
 		XParseGeometry(geometry,
 				&xpos, &ypos, &width, &height);
@@ -235,7 +235,7 @@ void lyx_gui::start(string const & batch, vector<string> files)
 	}
 
 	Screen * s = ScreenOfDisplay(fl_get_display(), fl_screen);
- 
+
 	// recalculate xpos if it's not set
 	if (xpos == -1)
 		xpos = (WidthOfScreen(s) - width) / 2;
@@ -246,17 +246,17 @@ void lyx_gui::start(string const & batch, vector<string> files)
 
 	lyxerr[Debug::GUI] << "Creating view: " << width << "x" << height
 		<< "+" << xpos << "+" << ypos << endl;
- 
+
 	XFormsView view(width, height);
 	view.show(xpos, ypos, "LyX");
 	view.init();
 
 	Buffer * last = 0;
- 
+
 	// FIXME: some code below needs moving
 
 	lyxserver = new LyXServer(view.getLyXFunc(), lyxrc.lyxpipes);
- 
+
 	vector<string>::const_iterator cit = files.begin();
 	vector<string>::const_iterator end = files.end();
 	for (; cit != end; ++cit) {
@@ -276,7 +276,7 @@ void lyx_gui::start(string const & batch, vector<string> files)
 		view.getLyXFunc()->verboseDispatch(batch, false);
 	}
 
-	// enter the event loop 
+	// enter the event loop
 	while (!finished) {
 		if (fl_check_forms() == FL_EVENT) {
 			XEvent ev;
@@ -287,11 +287,11 @@ void lyx_gui::start(string const & batch, vector<string> files)
 		}
 	}
 
-	// FIXME 
+	// FIXME
 	delete lyxserver;
 }
- 
- 
+
+
 // Called by the graphics cache to connect the appropriate frontend
 // image loading routines to the LyX kernel.
 void lyx_gui::init_graphics()

@@ -26,8 +26,8 @@
 
 
 typedef FormCB<ControlTexinfo, FormDB<FD_texinfo> > base_class;
-FormTexinfo::FormTexinfo(ControlTexinfo & c)
-	: base_class(c, _("LaTeX Information")),
+FormTexinfo::FormTexinfo(ControlTexinfo & c, Dialogs & d)
+	: base_class(c, d, _("LaTeX Information")),
 	  activeStyle(ControlTexinfo::cls)
 {}
 

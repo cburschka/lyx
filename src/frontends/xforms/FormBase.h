@@ -28,6 +28,7 @@
 
 class xformsBC;
 class Tooltips;
+class Dialogs;
 
 /** This class is an XForms GUI base class.
  */
@@ -35,7 +36,8 @@ class FormBase : public ViewBC<xformsBC>, public FeedbackController
 {
 public:
 	///
-	FormBase(ControlButtons &, string const &, bool allowResize);
+	FormBase(ControlButtons &, Dialogs &,
+		 string const &, bool allowResize);
 	///
 	virtual ~FormBase();
 
@@ -91,7 +93,8 @@ class FormDB: public FormBase
 {
 protected:
 	///
-	FormDB(ControlButtons &, string const &, bool allowResize=true);
+	FormDB(ControlButtons &, Dialogs &,
+	       string const &, bool allowResize=true);
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const;
 	/// Real GUI implementation.
@@ -100,8 +103,9 @@ protected:
 
 
 template <class Dialog>
-FormDB<Dialog>::FormDB(ControlButtons & c, string const & t, bool allowResize)
-	: FormBase(c, t, allowResize)
+FormDB<Dialog>::FormDB(ControlButtons & c, Dialogs & d,
+		       string const & t, bool allowResize)
+	: FormBase(c, d, t, allowResize)
 {}
 
 
@@ -118,16 +122,17 @@ class FormCB: public Base
 {
 protected:
 	///
-	FormCB(Controller &, string const &, bool allowResize=true);
+	FormCB(Controller &, Dialogs &,
+	       string const &, bool allowResize = true);
 	/// The parent controller
 	Controller & controller() const;
 };
 
 
 template <class Controller, class Base>
-FormCB<Controller, Base>::FormCB(Controller & c, string const & t,
-				 bool allowResize)
-	: Base(c, t, allowResize)
+FormCB<Controller, Base>::FormCB(Controller & c, Dialogs & d,
+				 string const & t, bool allowResize)
+	: Base(c, d, t, allowResize)
 {}
 
 

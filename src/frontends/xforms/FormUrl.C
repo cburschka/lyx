@@ -21,8 +21,8 @@
 
 typedef FormCB<ControlUrl, FormDB<FD_url> > base_class;
 
-FormUrl::FormUrl(ControlUrl & c)
-	: base_class(c, _("Url"))
+FormUrl::FormUrl(ControlUrl & c, Dialogs & d)
+	: base_class(c, d, _("Url"))
 {}
 
 

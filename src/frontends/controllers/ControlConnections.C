@@ -33,7 +33,7 @@ ControlConnectBase::ControlConnectBase(LyXView & lv, Dialogs & d)
 
 void ControlConnectBase::connect()
 {
-	r_ = Dialogs::redrawGUI.
+	r_ = d_.redrawGUI.
 		connect(boost::bind(&ControlConnectBase::redraw, this));
 }
 

@@ -25,7 +25,7 @@ struct FD_toc;
 class FormToc : public FormCB<ControlToc, FormDB<FD_toc> > {
 public:
 	///
-	FormToc(ControlToc &);
+	FormToc(ControlToc &, Dialogs &);
 private:
 	/// not needed
 	virtual void apply() {}

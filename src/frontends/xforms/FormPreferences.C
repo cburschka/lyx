@@ -427,7 +427,7 @@ void FormPreferences::Colors::apply()
 				setCursorColor(GUI_COLOR_CURSOR);
 			}
 		}
-		Dialogs::redrawGUI();
+		parent_.lv_->getDialogs()->redrawGUI();
 	}
 
 	// Now do the same for the LyX LColors...

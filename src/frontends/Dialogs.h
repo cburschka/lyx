@@ -66,10 +66,10 @@ public:
 
 	/** Redraw all visible dialogs because, for example, the GUI colours
 	    have been re-mapped. */
-	static boost::signal0<void> redrawGUI;
+	boost::signal0<void> redrawGUI;
 
 	/// Toggle tooltips on/off in all dialogs.
-	static boost::signal0<void> toggleTooltips;
+	boost::signal0<void> toggleTooltips;
 
 	/// Are the tooltips on or off?
 	static bool tooltipsEnabled();

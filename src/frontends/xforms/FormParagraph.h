@@ -25,7 +25,7 @@ class FormParagraph
 	: public FormCB<ControlParagraph, FormDB<FD_paragraph> > {
 public:
 	///
-	FormParagraph(ControlParagraph &);
+	FormParagraph(ControlParagraph &, Dialogs &);
 private:
 	/// Build the dialog
 	virtual void build();
@@ -33,7 +33,7 @@ private:
 	virtual void apply();
 	/// Update the dialog
 	virtual void update();
-	
+
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 };

@@ -26,8 +26,8 @@
 
 typedef FormCB<ControlInclude, FormDB<FD_include> > base_class;
 
-FormInclude::FormInclude(ControlInclude & c)
-	: base_class(c, _("Include file"))
+FormInclude::FormInclude(ControlInclude & c, Dialogs & d)
+	: base_class(c, d, _("Include file"))
 {}
 
 

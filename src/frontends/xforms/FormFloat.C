@@ -22,8 +22,8 @@
 
 typedef FormCB<ControlFloat, FormDB<FD_float> > base_class;
 
-FormFloat::FormFloat(ControlFloat & c)
-	: base_class(c, _("Float Options"))
+FormFloat::FormFloat(ControlFloat & c, Dialogs & d)
+	: base_class(c, d, _("Float Options"))
 {}
 
 

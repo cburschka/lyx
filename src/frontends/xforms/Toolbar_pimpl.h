@@ -26,6 +26,7 @@
 
 class XFormsView;
 class Tooltips;
+class Dialogs;
 
 /** The LyX xforms toolbar class
   */
@@ -34,7 +35,7 @@ public:
 	/// called when user selects a layout from combox
 	static void layoutSelectedCB(int, void *, Combox *);
 	///
-	Pimpl(LyXView * o, int x, int y);
+	Pimpl(LyXView * o, Dialogs &, int x, int y);
 	///
 	~Pimpl();
 

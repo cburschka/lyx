@@ -23,10 +23,11 @@ using std::endl;
 extern LyXAction lyxaction;
 
 
-Toolbar::Toolbar(LyXView * o, int x, int y, ToolbarDefaults const &tbd)
+Toolbar::Toolbar(LyXView * o, Dialogs & d,
+		 int x, int y, ToolbarDefaults const &tbd)
 	: last_textclass_(-1)
 {
-	pimpl_ = new Pimpl(o, x, y);
+	pimpl_ = new Pimpl(o, d, x, y);
 
 	pimpl_->reset();
 

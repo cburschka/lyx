@@ -21,8 +21,8 @@
 
 typedef FormCB<ControlIndex, FormDB<FD_index> > base_class;
 
-FormIndex::FormIndex(ControlIndex & c)
-	: base_class(c, _("Index"))
+FormIndex::FormIndex(ControlIndex & c, Dialogs & d)
+	: base_class(c, d, _("Index"))
 {}
 
 

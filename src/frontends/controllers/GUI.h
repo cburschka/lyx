@@ -20,7 +20,7 @@ template <class Controller, class GUIview, class Policy, class GUIbc>
 class GUI : public Controller {
 public:
 	///
-	GUI(LyXView & lv, Dialogs & d) : Controller(lv, d), view_(*this) {}
+	GUI(LyXView & lv, Dialogs & d) : Controller(lv, d), view_(*this, d) {}
 	///
 	virtual ButtonControllerBase & bc() { return bc_; }
 	///

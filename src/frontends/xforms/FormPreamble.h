@@ -24,7 +24,7 @@ struct FD_preamble;
 class FormPreamble : public FormCB<ControlPreamble, FormDB<FD_preamble> > {
 public:
 	///
-	FormPreamble(ControlPreamble &);
+	FormPreamble(ControlPreamble &, Dialogs &);
 private:
 	/// Apply from dialog
 	virtual void apply();

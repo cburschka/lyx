@@ -26,8 +26,8 @@ using std::vector;
 
 typedef FormCB<ControlSendto, FormDB<FD_sendto> > base_class;
 
-FormSendto::FormSendto(ControlSendto & c)
-	: base_class(c, _("Send document to command"))
+FormSendto::FormSendto(ControlSendto & c, Dialogs & d)
+	: base_class(c, d, _("Send document to command"))
 {}
 
 

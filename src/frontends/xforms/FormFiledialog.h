@@ -27,6 +27,8 @@
 
 #include <vector>
 
+class Dialogs;
+
 /// DirEntry internal structure definition
 class DirEntry {
 public:
@@ -51,7 +53,7 @@ class FD_filedialog;
 class FileDialog::Private : public boost::signals::trackable {
 public:
 	///
-	Private();
+	Private(Dialogs &);
 	///
 	~Private();
 

@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file lyx_gui.h
  * Copyright 2002 the LyX Team
@@ -8,22 +9,24 @@
 
 #ifndef LYX_GUI_H
 #define LYX_GUI_H
- 
+
 #include <config.h>
- 
+
 #include "LString.h"
- 
+
 #include <vector>
- 
+
+class Dialogs;
+
 /// GUI interaction
 namespace lyx_gui {
- 
+
 	/// parse command line and do basic initialisation
 	void parse_init(int & argc, char * argv[]);
-	 
+
 	/**
 	 * set up GUI parameters. At this point lyxrc may
-	 * be used. 
+	 * be used.
 	 */
 	void parse_lyxrc();
 

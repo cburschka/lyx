@@ -26,6 +26,8 @@
 
 #include <map>
 
+class Dialogs;
+
 
 #ifdef __GNUG__
 #pragma interface
@@ -33,7 +35,7 @@
 
 class Tooltips : boost::noncopyable, public boost::signals::trackable {
 public:
-	Tooltips();
+	Tooltips(Dialogs &);
 
 	/// Initialise a tooltip for this ob.
 	void init(FL_OBJECT * ob, string const & tip);

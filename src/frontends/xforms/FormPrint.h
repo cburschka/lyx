@@ -29,8 +29,7 @@ struct FD_print;
 class FormPrint : public FormCB<ControlPrint, FormDB<FD_print> > {
 public:
 	///
-	FormPrint(ControlPrint &);
-
+	FormPrint(ControlPrint &, Dialogs &);
 private:
 	/// Apply from dialog
 	virtual void apply();

@@ -53,8 +53,8 @@ LyXLength getLyXLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 
 typedef FormCB<ControlGraphics, FormDB<FD_graphics> > base_class;
 
-FormGraphics::FormGraphics(ControlGraphics & c)
-	: base_class(c, _("Graphics"), false)
+FormGraphics::FormGraphics(ControlGraphics & c, Dialogs & d)
+	: base_class(c, d, _("Graphics"), false)
 {}
 
 
@@ -102,7 +102,7 @@ void FormGraphics::build()
 
 	// Store the identifiers for later
 	origins_ = getSecond(origindata);
-	
+
 	string const choice =
 		" " + getStringFromVector(getFirst(origindata), " | ") +" ";
 	fl_addto_choice(file_->choice_origin, choice.c_str());
@@ -513,7 +513,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		}
 		if (controller().isFilenameValid(out_name) &&
 		    !controller().bbChanged)
-  			updateBB(out_name, string());
+			updateBB(out_name, string());
 
 	} else if (ob == file_->check_subcaption) {
 		setEnabled(file_->input_subcaption,
