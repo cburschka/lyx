@@ -678,132 +678,136 @@ int LyXText::labelEnd(BufferView & bview, Row const & row) const
 }
 
 
-// get the next breakpoint in a given paragraph
+namespace {
+
+// this needs special handling - only newlines count as a break point
+pos_type addressBreakPoint(pos_type i, Paragraph * par)
+{
+	for (; i < par->size(); ++i) {
+		if (par->isNewline(i)) {
+			return i;
+		} else if (par->isInset(i) && par->getInset(i)->display()) {
+			// FIXME: what are we doing modifying stuff here !
+			par->getInset(i)->display(false);
+		}
+		++i;
+	}
+
+	return par->size();
+}
+
+};
+
+
 pos_type
-LyXText::nextBreakPoint(BufferView & bview, Row const & row) const
+LyXText::rowBreakPoint(BufferView & bv, Row const & row) const
 {
 	Paragraph * par = row.par();
-	int width = workWidth(bview);
 
-	/* inset->textWidth() returns -1 via workWidth(),
-	 * but why ? */
+	// maximum pixel width of a row.
+	int width = workWidth(bv) - rightMargin(*bv.buffer(), row);
+
+	// inset->textWidth() returns -1 via workWidth(),
+	// but why ?
 	if (width < 0)
 		return par->size();
 
-	pos_type const pos = row.pos();
-
-	// position of the last possible breakpoint
-	// -1 isn't a suitable value, but a flag
-	pos_type last_separator = -1;
-	width -= rightMargin(*bview.buffer(), row);
-
-	pos_type const body_pos = par->beginningOfBody();
 	LyXLayout_ptr const & layout = par->layout();
 
+	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX)
+		return addressBreakPoint(row.pos(), par);
+
+	pos_type const pos = row.pos();
+	pos_type const body_pos = par->beginningOfBody();
+	pos_type const last = par->size();
+	pos_type point = last;
 	pos_type i = pos;
 
-	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
-		// special code for right address boxes, only newlines count
-		while (i < par->size()) {
-			if (par->isNewline(i)) {
-				last_separator = i;
-				i = par->size() - 1; // this means break
-				//x = width;
-			} else if (par->isInset(i) && par->getInset(i)
-				&& par->getInset(i)->display()) {
-				// FIXME: what are we doing modifying stuff here !
-				par->getInset(i)->display(false);
-			}
-			++i;
+	// Now we iterate through until we reach the right margin
+	// or the end of the par, then choose the possible break
+	// nearest that.
+
+	int x = leftMargin(&bv, &row);
+
+	for (i = pos; i < last; ++i) {
+
+		char const c = par->getChar(i);
+
+		if (IsNewlineChar(c)) {
+			point = i;
+			break;
 		}
-	} else {
-		// Last position is an invariant
-		pos_type const last = par->size();
-		// this is the usual handling
-		int x = leftMargin(&bview, &row);
-		bool doitonetime = true;
-		while (doitonetime || ((x < width) && (i < last))) {
-			doitonetime = false;
-			char const c = par->getChar(i);
-			Inset * in = 0;
-			if (c == Paragraph::META_INSET)
-				in = par->getInset(i);
-			if (IsNewlineChar(c)) {
-				last_separator = i;
-				x = width; // this means break
-			} else if (in && !in->isChar()) {
-				// check wether a Display() inset is
-				// valid here. if not, change it to
-				// non-display
-				if (in->display() &&
-				    (layout->isCommand() ||
-				     (layout->labeltype == LABEL_MANUAL
-				      && i < par->beginningOfBody())))
-				{
-					// display istn't allowd
-					in->display(false);
-					x += singleWidth(&bview, par, i, c);
-				} else if (in->display() || in->needFullRow()) {
-					// So break the line here
-					if (i == pos) {
-						if (pos < last-1) {
-							last_separator = i;
-							if (par->isLineSeparator(i+1))
-								++last_separator;
-						} else
-							last_separator = last; // to avoid extra rows
-					} else
-						last_separator = i - 1;
-					x = width;  // this means break
+
+		x += singleWidth(&bv, par, i, c);
+
+		// add the auto-hfill from label end to the body
+		if (i == body_pos) {
+			x += font_metrics::width(layout->labelsep,
+				    getLabelFont(bv.buffer(), par));
+			if (par->isLineSeparator(i - 1))
+				x-= singleWidth(&bv, par, i - 1);
+			int left_margin = labelEnd(bv, row);
+			if (x < left_margin)
+				x = left_margin;
+		}
+
+		// break before a character that will fall off
+		// the right of the row
+		if (x >= width) {
+			// if no break before, break here.
+			if (point == last) {
+				if (pos < i)
+					point = i - 1;
+				else
+					point = i;
+			}
+			break;
+		}
+
+		Inset * in = par->isInset(i) ? par->getInset(i) : 0;
+
+		if (!in || in->isChar()) {
+			// some insets are line separators too
+			if (par->isLineSeparator(i))
+				point = i;
+			continue;
+
+		}
+
+		// check wether a Display() inset is valid here.
+		// If not, change it to non-display. FIXME:
+		// we should not be modifying things at this
+		// point !
+		if (in->display() && (layout->isCommand() ||
+		    (layout->labeltype == LABEL_MANUAL && i < body_pos))) {
+			in->display(false);
+		} else if (in->display() || in->needFullRow()) {
+			// displayed insets start at a new row
+			if (i == pos) {
+				if (pos < last - 1) {
+					point = i;
+					if (par->isLineSeparator(i + 1))
+						++point;
 				} else {
-					x += singleWidth(&bview, par, i, c);
-					// we have to check this separately as we could have a
-					// lineseparator and then the algorithm below would prefer
-					// that which IS wrong! We should always break on an inset
-					// if it's too long and not on the last separator.
-					// Maybe the only exeption is insets used as chars but
-					// then we would have to have a special function inside
-					// the inset to tell us this. Till then we leave it as
-					// it is now. (Jug 20020106)
-					if (pos < i && x >= width && last_separator >= 0)
-						last_separator = i - 1;
+					// to avoid extra rows
+					point = last;
 				}
-			} else  {
-				if (par->isLineSeparator(i))
-					last_separator = i;
-				x += singleWidth(&bview, par, i, c);
+			} else {
+				point = i - 1;
 			}
-			++i;
-			if (i == body_pos) {
-				x += font_metrics::width(layout->labelsep,
-						    getLabelFont(bview.buffer(), par));
-				if (par->isLineSeparator(i - 1))
-					x-= singleWidth(&bview, par, i - 1);
-				int left_margin = labelEnd(bview, row);
-				if (x < left_margin)
-					x = left_margin;
-			}
+			break;
 		}
-		if ((pos+1 < i) && (last_separator < 0) && (x >= width))
-			last_separator = i - 2;
-		else if ((pos < i) && (last_separator < 0) && (x >= width))
-			last_separator = i - 1;
-		// end of paragraph is always a suitable separator
-		else if (i == last && x < width)
-			last_separator = i;
 	}
 
-	// well, if last_separator is still 0, the line isn't breakable.
-	// don't care and cut simply at the end
-	if (last_separator < 0) {
-		last_separator = i;
-	}
+	// didn't find one, break at the point we reached the edge
+	if (point == last && x >= width)
+		point = i;
 
-	// manual labels cannot be broken in LaTeX, do not care
-	if (body_pos && last_separator < body_pos)
-		last_separator = body_pos - 1;
+	// manual labels cannot be broken in LaTeX
+	if (body_pos && point < body_pos)
+		point = body_pos - 1;
 
-	return last_separator;
+	return point;
 }
 
 
@@ -1211,30 +1215,26 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row) const
 }
 
 
-// Appends the implicit specified paragraph behind the specified row,
+// Appends the implicit specified paragraph before the specified row,
 // start at the implicit given position
 void LyXText::appendParagraph(BufferView * bview, Row * row) const
 {
-	bool not_ready = true;
+	pos_type const last = row->par()->size();
+	bool done = false;
 
-	// The last character position of a paragraph is an invariant so we can
-	// safely get it here. (Asger)
-	pos_type const lastposition = row->par()->size();
 	do {
-		// Get the next breakpoint
-		pos_type z = nextBreakPoint(*bview, *row);
+		pos_type z = rowBreakPoint(*bview, *row);
 
 		Row * tmprow = row;
 
-		// Insert the new row
-		if (z < lastposition) {
+		if (z < last) {
 			++z;
 			insertRow(row, row->par(), z);
 			row = row->next();
-
 			row->height(0);
-		} else
-			not_ready = false;
+		} else {
+			done = true;
+		}
 
 		// Set the dimensions of the row
 		// fixed fill setting now by calling inset->update() in
@@ -1242,7 +1242,7 @@ void LyXText::appendParagraph(BufferView * bview, Row * row) const
 		tmprow->fill(fill(*bview, *tmprow, workWidth(*bview)));
 		setHeightOfRow(bview, tmprow);
 
-	} while (not_ready);
+	} while (!done);
 }
 
 
@@ -1274,8 +1274,7 @@ void LyXText::breakAgain(BufferView * bview, Row * row) const
 	bool not_ready = true;
 
 	do  {
-		// get the next breakpoint
-		pos_type z = nextBreakPoint(*bview, *row);
+		pos_type z = rowBreakPoint(*bview, *row);
 		Row * tmprow = row;
 
 		if (z < row->par()->size()) {
@@ -1318,8 +1317,7 @@ void LyXText::breakAgain(BufferView * bview, Row * row) const
 // this is just a little changed version of break again
 void LyXText::breakAgainOneRow(BufferView * bview, Row * row)
 {
-	// get the next breakpoint
-	pos_type z = nextBreakPoint(*bview, *row);
+	pos_type z = rowBreakPoint(*bview, *row);
 	Row * tmprow = row;
 
 	if (z < row->par()->size()) {
@@ -1625,7 +1623,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 		    cursor.par()->isInset(cursor.pos()+1))
 		|| cursor.row()->fill() == -1))
 	{
-		pos_type z = nextBreakPoint(*bview, *row->previous());
+		pos_type z = rowBreakPoint(*bview, *row->previous());
 
 		if (z >= row->pos()) {
 			row->pos(z + 1);
@@ -2603,7 +2601,7 @@ void LyXText::backspace(BufferView * bview)
 
 		// is there a break one row above
 		if (row->previous() && row->previous()->par() == row->par()) {
-			z = nextBreakPoint(*bview, *row->previous());
+			z = rowBreakPoint(*bview, *row->previous());
 			if (z >= row->pos()) {
 				row->pos(z + 1);
 
@@ -2646,7 +2644,7 @@ void LyXText::backspace(BufferView * bview)
 		// break the cursor row again
 		if (row->next() && row->next()->par() == row->par() &&
 		    (row->lastPos() == row->par()->size() - 1 ||
-		     nextBreakPoint(*bview, *row) != row->lastPos())) {
+		     rowBreakPoint(*bview, *row) != row->lastPos())) {
 
 			// it can happen that a paragraph loses one row
 			// without a real breakup. This is when a word

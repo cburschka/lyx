@@ -275,7 +275,7 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 }
 
 
-// inserts a new row behind the specified row, increments
+// inserts a new row before the specified row, increments
 // the touched counters
 void LyXText::insertRow(Row * row, Paragraph * par,
 			pos_type pos) const
@@ -364,7 +364,7 @@ void LyXText::insertParagraph(BufferView * bview, Paragraph * par,
 	// insert a new row, starting at position 0
 	insertRow(row, par, 0);
 
-	// and now append the whole paragraph behind the new row
+	// and now append the whole paragraph before the new row
 	if (!row) {
 		firstrow->height(0);
 		appendParagraph(bview, firstrow);
@@ -1643,7 +1643,7 @@ void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
 
 	// is there a break one row above
 	if (row->previous() && row->previous()->par() == row->par()) {
-		z = nextBreakPoint(*bview, *row->previous());
+		z = rowBreakPoint(*bview, *row->previous());
 		if (z >= row->pos()) {
 			// set the dimensions of the row above
 			y -= row->previous()->height();

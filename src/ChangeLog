@@ -1,3 +1,11 @@
+2003-03-09  John Levon  <levon@movementarian.org>
+
+	* lyxtext.h:
+	* text.C:
+	* text2.C: clean up nextBreakPoint (now rowBreakPoint). Fix
+	bug 365 (don't break before insets unless needed). Don't
+	return a value > last under any circumstances.
+
 2003-03-09  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C (trackChanges, dispatch): call
