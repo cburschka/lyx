@@ -1,3 +1,8 @@
+2002-10-15  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* configure.in,configure.ac: make the AM_CONDITIONAL check a bit
+	more robust.
+
 2002-10-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* xforms.m4 (lyx_use_xforms_image_loader): move the AM_CONDITIONAL

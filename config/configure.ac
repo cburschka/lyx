@@ -201,8 +201,9 @@ case "$lyx_use_frontend" in
     LYX_ERROR(Unknown frontend $lyx_use_frontend);;
 esac
 
+# Do this here instead of in the LYX_USE_XFORMS_IMAGE_LOADER macro
 AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
-	       test $lyx_use_xforms_image_loader = no)
+	       test x$lyx_use_xforms_image_loader = xno)
 
 ### Check for xforms and xpm (only if X has been found).
 if test "$have_x" = no ; then

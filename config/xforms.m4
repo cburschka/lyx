@@ -93,7 +93,7 @@ fi
 ### If the gui cannot load images itself, then we default to the
 ### very simple one in graphics/GraphicsImageXPM.[Ch]
 #AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
-#	       test $lyx_use_xforms_image_loader = no)
+#	       test x$lyx_use_xforms_image_loader = xno)
 
 AC_LANG_RESTORE
 LIBS=$save_LIBS])

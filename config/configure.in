@@ -204,7 +204,7 @@ case "$lyx_use_frontend" in
 esac
 
 AM_CONDITIONAL(USE_BASIC_IMAGE_LOADER,
-	       test $lyx_use_xforms_image_loader = no)
+	       test x$lyx_use_xforms_image_loader = xno)
 
 
 ### Check for xforms and xpm (only if X has been found).
