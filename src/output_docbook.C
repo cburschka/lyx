@@ -16,6 +16,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "counters.h"
+#include "debug.h"
 #include "lyxtext.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
@@ -100,7 +101,7 @@ void docbookParagraphs(Buffer const & buf,
 			if (!style->latexparam().empty()) {
 				counters.step("para");
 				int i = counters.value("para");
-				ls = "id=\"" + subst(style->latexparam(), "#", tostr(i)) + '"';
+				ls = subst(style->latexparam(), "#", tostr(i));
 			}
 			sgml::openTag(os, depth + command_depth,
 				    false, style->latexname(), ls);
@@ -140,7 +141,7 @@ void docbookParagraphs(Buffer const & buf,
 				command_stack.push_back(string());
 			command_stack[command_depth] = command_name;
 
-			if (!style->latexparam().empty()) {
+			if (style->latexparam().find('#') != string::npos) {
 				counters.step(style->counter);
 			}
 			// treat label as a special case for
@@ -156,11 +157,14 @@ void docbookParagraphs(Buffer const & buf,
 					command_name += '"';
 					labelid = true;
 				}
-			} else {
-				if (!style->latexparam().empty()) {
-					ls = expandLabel(buf.params().getLyXTextClass(), style, false);
-					ls = "id=\"" + subst(style->latexparam(), "#", ls) + '"';
-				}
+			}
+			if (!labelid && !style->latexparam().empty()) {
+				ls = style->latexparam();
+				if (ls.find('#') != string::npos) {
+					string el = expandLabel(buf.params().getLyXTextClass(), 
+						style, false);
+					ls = subst(ls, "#", el);
+				} 
 			}
 			
 			sgml::openTag(os, depth + command_depth, false, command_name, ls);

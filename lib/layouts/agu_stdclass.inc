@@ -27,7 +27,7 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block
 	LabelType             No_Label
-	LatexParam            "para#"
+	LatexParam            "id=&quot;para#&quot;"
 End
 
 
