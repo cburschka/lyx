@@ -1,3 +1,12 @@
+2002-12-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text2.C (setCounter): clean up a bit, use boost.format.
+	(updateCounters): initialize par upon declaration.
+
+	* CutAndPaste.C (SwitchLayoutsBetweenClasses): set the layout also
+	if the layout exists. We do not just store the layout any more.
+	(SwitchLayoutsBetweenClasses): use boost.format
+
 2002-11-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* converter.C (convert): if from and to files are the same, use a
@@ -5,7 +14,7 @@
 
 2002-11-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* commandtags.h: 
+	* commandtags.h:
 	* LyXAction.C (init): remove LFUN_VECTOR (bug 662)
 
 2002-11-27  Dekel Tsur  <dekelts@tau.ac.il>

@@ -178,7 +178,7 @@ string const InsetQuotes::dispString(Language const * loclang) const
 		if (side_ == LeftQ)
 			disp += ' ';
 		else
-			disp = ' ' + disp;
+			disp.insert(0, 1, ' ');
 	}
 
 	return disp;

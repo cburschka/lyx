@@ -29,6 +29,8 @@
 
 #include "insets/inseterror.h"
 
+#include <boost/format.hpp>
+
 using std::pair;
 using lyx::pos_type;
 using lyx::textclass_type;
@@ -422,17 +424,32 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 		string const name = par->layout()->name();
 		bool hasLayout = tclass2.hasLayout(name);
 
-		if (!hasLayout)
+		if (hasLayout)
+			par->layout(tclass2[name]);
+		else
 			par->layout(tclass2.defaultLayout());
 
 		if (!hasLayout && name != tclass1.defaultLayoutName()) {
 			++ret;
+#if USE_BOOST_FORMAT
+			boost::format fmt(_("Layout had to be changed from\n"
+					    "%1$s to %2$s\n"
+					    "because of class conversion from\n"
+					    "%3$s to %4$s"));
+			fmt     % name
+				% par->layout()->name()
+				% tclass1.name()
+				% tclass2.name();
+
+			string const s = fmt.str();
+#else
 			string const s = _("Layout had to be changed from\n")
 				+ name + _(" to ")
 				+ par->layout()->name()
 				+ _("\nbecause of class conversion from\n")
 				+ tclass1.name() + _(" to ")
 				+ tclass2.name();
+#endif
 			freezeUndo();
 			InsetError * new_inset = new InsetError(s);
 			LyXText * txt = current_view->getLyXText();

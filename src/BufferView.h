@@ -59,19 +59,19 @@ public:
 	BufferView(LyXView * owner, int x, int y, int w, int h);
 
 	~BufferView();
- 
+
 	/// set the buffer we are viewing
 	void buffer(Buffer * b);
 	/// return the buffer being viewed
 	Buffer * buffer() const;
- 
+
 	/// return the painter object for drawing onto the view
 	Painter & painter() const;
 	/// return the screen object for handling re-drawing
 	LyXScreen & screen() const;
 	/// return the owning main view
 	LyXView * owner() const;
- 
+
 	/// resize event has happened
 	void resize();
 	/**
@@ -80,7 +80,7 @@ public:
 	 * repaint of the whole screen.
 	 */
 	void repaint();
- 
+
 	/// fit the user cursor within the visible view
 	bool fitCursor();
 	/// perform pending painting updates
@@ -93,20 +93,20 @@ public:
 	void updateScrollbar();
 	/// FIXME
 	void redoCurrentBuffer();
- 
+
 	/// FIXME
 	bool available() const;
- 
+
 	/// FIXME
 	void beforeChange(LyXText *);
- 
+
 	/// Save the current position as bookmark i
 	void savePosition(unsigned int i);
 	/// Restore the position from bookmark i
 	void restorePosition(unsigned int i);
 	/// does the given bookmark have a saved position ?
 	bool isSavedPosition(unsigned int i);
- 
+
 	/**
 	 * This holds the mapping between buffer paragraphs and screen rows.
 	 * This should be private...but not yet. (Lgb)
@@ -114,7 +114,7 @@ public:
 	LyXText * text;
 	/// return the lyxtext we are using
 	LyXText * getLyXText() const;
- 
+
 	/// Return the current inset we are "locked" in
 	UpdatableInset * theLockingInset() const;
 	/// lock the given inset FIXME: return value ?
@@ -123,10 +123,10 @@ public:
 	int unlockInset(UpdatableInset * inset);
 	/// unlock the currently locked inset
 	void insetUnlock();
- 
+
 	/// return the parent language of the given inset
 	Language const * getParentLanguage(Inset * inset) const;
- 
+
 	/// Select the "current" word
 	void selectLastWord();
 	/// replace the currently selected word
@@ -135,36 +135,36 @@ public:
 	void endOfSpellCheck();
 	/// return the next word
 	WordLangTuple const nextWord(float & value);
- 
+
 	/// move cursor to the named label
 	bool gotoLabel(string const & label);
- 
+
 	/// copy the environment type from current paragraph
 	void copyEnvironment();
 	/// set the current paragraph's environment type
 	void pasteEnvironment();
- 
+
 	/// undo last action
 	void undo();
 	/// redo last action
 	void redo();
- 
+
 	/// removes all autodeletable insets
 	bool removeAutoInsets();
 	/// insert all errors found when running latex
 	void insertErrors(TeXErrors & terr);
 	/// set the cursor based on the given TeX source row
 	void setCursorFromRow(int row);
- 
+
 	/**
 	 * Insert an inset into the buffer.
 	 * Place it in a layout of lout,
 	 */
 	bool insertInset(Inset * inset, string const & lout = string());
- 
+
 	/// Inserts a lyx file at cursor position. return false if it fails
 	bool insertLyXFile(string const & file);
- 
+
 	/// show the user cursor
 	void showCursor();
 	/// hide the user cursor
@@ -181,7 +181,7 @@ public:
 	void toggleSelection(bool = true);
 	/// FIXME: my word !
 	void toggleToggle();
- 
+
 	/// center the document view around the cursor
 	void center();
 	/// scroll document by the given number of lines of default height
@@ -203,24 +203,24 @@ public:
 	bool ChangeRefsIfUnique(string const & from, string const & to);
 	/// FIXME
 	bool ChangeCitationsIfUnique(string const & from, string const & to);
- 
+
 	/// get the contents of the window system clipboard
 	string const getClipboard() const;
 	/// fill the window system clipboard
 	void stuffClipboard(string const &) const;
 	/// tell the window system we have a selection
 	void haveSelection(bool sel);
- 
+
 	/// execute the given function
 	bool dispatch(FuncRequest const & argument);
- 
+
 private:
 	/// Set the current locking inset
 	void theLockingInset(UpdatableInset * inset);
- 
+
 	/// return the lyxtext containing this inset
 	LyXText * getParentText(Inset * inset) const;
- 
+
 	/**
 	 * Change all insets with the given code's contents to a new
 	 * string. May only be used with InsetCommand-derived insets
@@ -228,7 +228,7 @@ private:
 	 */
 	bool ChangeInsets(Inset::Code code, string const & from,
 			  string const & to);
- 
+
 
 	struct Pimpl;
 	friend struct BufferView::Pimpl;

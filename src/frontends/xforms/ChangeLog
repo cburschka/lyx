@@ -1,16 +1,21 @@
+2002-12-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* checkedwidgets.C (setWidget): make sure that FL_LCOL and FL_COL1
+	will be seen as FL_COLORs.
+
 2002-12-01  John Levon  <levon@movementarian.org>
 
 	* FormMathsBitmap.C: fix _(_(blah))
- 
+
 2002-11-30  John Levon  <levon@movementarian.org>
 
 	* FormMathsBitmap.C: actually set dialog_->button_close
 	  to the added button
- 
+
 2002-11-30  John Levon  <levon@movementarian.org>
 
 	* forms/form_maths_panel.fd: small fix
- 
+
 2002-11-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyx_gui.C (start): make "unhandled X11 event" debug message

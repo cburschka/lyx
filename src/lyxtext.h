@@ -485,7 +485,7 @@ private:
 
 	///
 	void cursorLeftOneWord(LyXCursor &) const;
- 
+
 	///
 	float getCursorX(BufferView *, Row *, lyx::pos_type pos,
 					 lyx::pos_type last, bool boundary) const;
@@ -511,13 +511,13 @@ private:
 	/** inserts a new row behind the specified row, increments
 	    the touched counters */
 	void insertRow(Row * row, Paragraph * par, lyx::pos_type pos) const;
-	/// removes the row and reset the touched counters 
+	/// removes the row and reset the touched counters
 	void removeRow(Row * row) const;
 
 	/// remove all following rows of the paragraph of the specified row.
 	void removeParagraph(Row * row) const;
 
-	/// insert the specified paragraph behind the specified row 
+	/// insert the specified paragraph behind the specified row
 	void insertParagraph(BufferView *,
 			     Paragraph * par, Row * row) const;
 
@@ -579,7 +579,7 @@ private:
 
 	/// paint page break marker. Returns its height.
 	int paintPageBreak(string const & label, int y, DrawRowParams & p);
- 
+
 	/// paint env depth bar
 	void paintRowDepthBar(DrawRowParams & p);
 
@@ -613,7 +613,7 @@ public:
 	/** Updates all counters starting BEHIND the row. Changed paragraphs
 	 * with a dynamic left margin will be rebroken. */
 	void updateCounters(BufferView *) const;
-	/// 
+	///
 	void update(BufferView * bv, bool changed = true);
 	/**
 	 * Returns an inset if inset was hit, or 0 if not.
@@ -671,7 +671,7 @@ private:
 	///
 	lyx::pos_type beginningOfMainBody(Buffer const *, Paragraph const * par) const;
 
-	/** 
+	/**
 	 * Returns the left beginning of the text.
 	 * This information cannot be taken from the layout object, because
 	 * in LaTeX the beginning of the text fits in some cases

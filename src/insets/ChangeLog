@@ -1,3 +1,8 @@
+2002-12-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetquotes.C (dispString): use string::insert for prepending a
+	char.
+
 2002-11-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetparent.C (getScreenLabel): use boost::format

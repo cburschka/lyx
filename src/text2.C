@@ -45,6 +45,8 @@
 #include "support/textutils.h"
 #include "support/lstrings.h"
 
+#include <boost/format.hpp>
+
 using std::vector;
 using std::copy;
 using std::endl;
@@ -1218,30 +1220,24 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 
 	// is it a layout that has an automatic label?
 	if (layout->labeltype >= LABEL_COUNTER_CHAPTER) {
+		int const i = layout->labeltype - LABEL_COUNTER_CHAPTER;
 
-		int i = layout->labeltype - LABEL_COUNTER_CHAPTER;
-		string numbertype;
-		string langtype;
 		ostringstream s;
 
 		if (i >= 0 && i <= buf->params.secnumdepth) {
+			string numbertype;
+			string langtype;
 
 			textclass.counters().step(layout->latexname());
 
 			// Is there a label? Useful for Chapter layout
 			if (!par->params().appendix()) {
-				if (!layout->labelstring().empty())
-					par->params().labelString(layout->labelstring());
-				else
-					par->params().labelString(string());
+				s << layout->labelstring();
 			} else {
-				if (!layout->labelstring_appendix().empty())
-					par->params().labelString(layout->labelstring_appendix());
-				else
-					par->params().labelString(string());
+				s << layout->labelstring_appendix();
 			}
 
-			// Use if an integer is here less than elegant. For now.
+			// Use of an integer is here less than elegant. For now.
 			int head = textclass.maxcounter() - LABEL_COUNTER_CHAPTER;
 			if (!par->params().appendix()) {
 				numbertype = "sectioning";
@@ -1257,8 +1253,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 				.numberLabel(layout->latexname(),
 					     numbertype, langtype, head);
 
-			par->params().labelString(par->params().labelString()
-						  + STRCONV(s.str()));
+			par->params().labelString(STRCONV(s.str()));
 
 			// reset enum counters
 			textclass.counters().reset("enum");
@@ -1289,8 +1284,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 			textclass.counters().step(enumcounter);
 
 			s << textclass.counters()
-				.numberLabel(enumcounter,
-					     "enumeration", langtype);
+				.numberLabel(enumcounter, "enumeration");
 			par->params().labelString(STRCONV(s.str()));
 		}
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
@@ -1331,15 +1325,22 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 				textclass.counters().step(fl.type());
 
 				// Doesn't work... yet.
+#warning use boost.format
+#if USE_BOOST_FORMAT
+				s = boost::io::str(boost::format(_("%1$s #:")) % fl.name());
+				// s << boost::format(_("%1$s %1$d:")
+				//        % fl.name()
+				//	  % buf->counters().value(fl.name());
+#else
 				ostringstream o;
 				//o << fl.name() << ' ' << buf->counters().value(fl.name()) << ":";
 				o << fl.name() << " #:";
 				s = STRCONV(o.str());
+#endif
 			} else {
 				// par->SetLayout(0);
 				// s = layout->labelstring;
-				s = (par->getParLanguage(buf->params)->lang() == "hebrew")
-					? " :תועמשמ רסח" : "Senseless: ";
+				s = _("Senseless: ");
 			}
 		}
 		par->params().labelString(s);
@@ -1365,10 +1366,8 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 // Updates all counters. Paragraphs with changed label string will be rebroken
 void LyXText::updateCounters(BufferView * bview) const
 {
-	Paragraph * par;
-
 	Row * row = firstrow;
-	par = row->par();
+	Paragraph * par = row->par();
 
 	// CHECK if this is really needed. (Lgb)
 	bview->buffer()->params.getLyXTextClass().counters().reset();
@@ -1379,6 +1378,7 @@ void LyXText::updateCounters(BufferView * bview) const
 
 		string const oldLabel = par->params().labelString();
 
+		// setCounter can potentially change the labelString.
 		setCounter(bview->buffer(), par);
 
 		string const & newLabel = par->params().labelString();

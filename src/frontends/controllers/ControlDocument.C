@@ -35,6 +35,10 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
+#include <boost/format.hpp>
+
+using std::endl;
+
 
 ControlDocument::ControlDocument(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d), bp_(0)
@@ -69,7 +73,7 @@ void ControlDocument::apply()
 
 	view().apply();
 	buffer()->params = *bp_;
-	
+
 	lv_.view()->redoCurrentBuffer();
 
 	buffer()->markDirty();
@@ -113,6 +117,7 @@ void ControlDocument::classApply()
 	// successfully loaded
 	view().apply();
 	buffer()->params = *bp_;
+
 	lv_.message(_("Converting document to new document class..."));
 	int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
 		old_class, new_class,
@@ -123,8 +128,14 @@ void ControlDocument::classApply()
 		if (ret == 1) {
 			s = _("One paragraph couldn't be converted");
 		} else {
+#if USE_BOOST_FORMAT
+			boost::format fmt(_("%1$s paragraphs couldn't be converted"));
+			fmt % ret;
+			s = fmt.str();
+#else
 			s += tostr(ret);
 			s += _(" paragraphs couldn't be converted");
+#endif
 		}
 		Alert::alert(_("Conversion Errors!"),s,
 			     _("into chosen document class"));
@@ -152,7 +163,7 @@ void ControlDocument::saveAsDefault()
 				_("for the document layout as default?"),
 				_("(they will be valid for any new document)")))
 		return;
-		
+
 	lv_.buffer()->params.preamble = bp_->preamble;
 
 	string const fname = AddName(AddPath(user_lyxdir, "templates/"),

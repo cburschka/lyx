@@ -430,7 +430,7 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 			   skip_used && length_input);
 		setEnabled(class_->choice_doc_skip_units,
 			   skip_used && length_input);
-	
+
 		// Default unit choice is cm if metric, inches if US paper.
 		// If papersize is default, check the lyxrc-settings
 		int const paperchoice = fl_get_choice(paper_->choice_papersize);

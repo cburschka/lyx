@@ -1,3 +1,7 @@
+2002-12-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ControlDocument.C (classApply): use boost.format
+
 2002-11-29  Angus Leeming  <leeming@lyx.org>
 
 	* ControlButtons.h (isClosing): make it public, so that the view can
@@ -11,8 +15,8 @@
 	dialog isClosing(). (Ie, if the "save" button has been pressed.)
 
 2002-11-28  John Levon  <levon@movementarian.org>
- 
-        * ControlSpellchecker.C: fix Lars' broken cleanup
+
+	* ControlSpellchecker.C: fix Lars' broken cleanup
 
 2002-11-27  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
