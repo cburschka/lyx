@@ -623,6 +623,13 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		// without dots and again with ext
 		temp_file = ChangeExtension(
 			subst(temp_file, ".", "_"), ext_tmp);
+
+#if defined(__CYGWIN__) || defined(__CYGWIN32__) || defined(_WIN32)
+		// Mangle the drive letter in a Windows-style path.
+		if (temp_file.size() >= 2 && temp_file[1] == ':')
+			temp_file[1] = '_';
+#endif
+
 		// now we have any_dir_file.ext
 		temp_file = MakeAbsPath(temp_file, buf->tmppath);
 		lyxerr[Debug::GRAPHICS]
