@@ -152,6 +152,7 @@ string const LaTeXFeatures::getPackages() const
 		if (! tclass.provides(LyXTextClass::makeidx)
 		    && params.language->babel() != "french") // french provides
 						             // \index !
+			// French should not be hardcoded. (Lgb)
 			packages << "\\usepackage{makeidx}\n";
 		packages << "\\makeindex\n";
 	}
@@ -329,52 +330,6 @@ string const LaTeXFeatures::getMacros() const
 	// floats
 	getFloatDefinitions(macros);
 
-#if 0
-	// Here we will output the code to create the needed float styles.
-	// We will try to do this as minimal as possible.
-	// \floatstyle{ruled}
-	// \newfloat{algorithm}{htbp}{loa}
-	// \floatname{algorithm}{Algorithm}
-	UsedFloats::const_iterator cit = usedFloats.begin();
-	UsedFloats::const_iterator end = usedFloats.end();
-	ostringstream floats;
-	for (; cit != end; ++cit) {
-		Floating const & fl = floatList.getType((*cit));
-
-		// For builtin floats we do nothing.
-		if (fl.builtin()) continue;
-		
-		// We have to special case "table" and "figure"
-		if (fl.type() == "tabular" || fl.type() == "figure") {
-			// Output code to modify "table" or "figure"
-			// but only if builtin == false
-		} else {
-			// The other non builtin floats.
-
-			string type = fl.type();
-			string placement = fl.placement();
-			string ext = fl.ext();
-			string within = fl.within();
-			string style = fl.style();
-			string name = fl.name();
-			floats << "\\floatstyle{" << style << "}\n"
-			       << "\\newfloat{" << type << "}{" << placement
-			       << "}{" << ext << "}";
-			if (!within.empty())
-				floats << "[" << within << "]";
-			floats << "\n"
-			       << "\\floatname{" << type << "}{"
-			       << name << "}\n";
-
-			// What missing here is to code to minimalize the code
-			// outputted so that the same flotastyle will not be
-			// used several times. when the same style is still in
-			// effect. (Lgb)
-		}
-	}
-	macros += floats.str().c_str();
-#endif
-	
 	for (LanguageList::const_iterator cit = UsedLanguages.begin();
 	     cit != UsedLanguages.end(); ++cit)
 		if (!(*cit)->latex_options().empty())
@@ -415,13 +370,13 @@ string const LaTeXFeatures::getIncludedFiles(string const & fname) const
 	     fi != end; ++fi)
 		sgmlpreamble << "\n<!ENTITY " << fi->first
 			     << (IsSGMLFilename(fi->second) ? " SYSTEM \"" : " \"" )
-			     << MakeRelPath(fi->second,basename) << "\">";
+			     << MakeRelPath(fi->second, basename) << "\">";
 
 	return sgmlpreamble.str().c_str();
 }
 
 
-void LaTeXFeatures::showStruct() const{
+void LaTeXFeatures::showStruct() const {
 	lyxerr << "LyX needs the following commands when LaTeXing:"
 	       << "\n***** Packages:" << getPackages()
 	       << "\n***** Macros:" << getMacros()

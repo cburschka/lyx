@@ -38,9 +38,6 @@ public:
 	void setSpace(VSpace::vspace_kind, VSpace::vspace_kind, bool, bool);
 	void setAboveLength(float, float, float, LyXGlueLength::UNIT, LyXGlueLength::UNIT, LyXGlueLength::UNIT);
 	void setBelowLength(float, float, float, LyXGlueLength::UNIT, LyXGlueLength::UNIT, LyXGlueLength::UNIT);
-#ifndef NO_PEXTRA 
-	void setExtra(float, LyXGlueLength::UNIT, const string, int, bool, bool, LyXParagraph::PEXTRA_TYPE);
-#endif 
 
 	char const * getLabelWidth() const {
 		return generalpage->line_labelwidth->text();
@@ -95,38 +92,6 @@ public:
 	LyXGlueLength getAboveLength() const;
 
 	LyXGlueLength getBelowLength() const;
-#ifndef NO_PEXTRA
-	LyXLength getExtraWidth() const;
-
-	string getExtraWidthPercent() const;
-
-	LyXParagraph::PEXTRA_TYPE getExtraType() const {
-		switch (extrapage->combo_type->currentItem()) {
-			case 0: return LyXParagraph::PEXTRA_NONE;
-			case 1: return LyXParagraph::PEXTRA_INDENT;
-			case 2: return LyXParagraph::PEXTRA_MINIPAGE;
-			case 3: return LyXParagraph::PEXTRA_FLOATFLT;
-		}
-		return LyXParagraph::PEXTRA_NONE;
-	}
-
-	LyXParagraph::MINIPAGE_ALIGNMENT getExtraAlign() const {
-		if (extrapage->radio_top->isChecked())
-			return LyXParagraph::MINIPAGE_ALIGN_TOP;
-		if (extrapage->radio_middle->isChecked())
-			return LyXParagraph::MINIPAGE_ALIGN_MIDDLE;
-		return LyXParagraph::MINIPAGE_ALIGN_BOTTOM;
-	}
-
-	bool getHfillBetween() const {
-		return extrapage->check_hfillbetween->isChecked();
-	}
-
-	bool getStartNewMinipage() const {
-		return extrapage->check_startnewminipage->isChecked();
-	}
-#endif
- 
 protected:
 	void closeEvent(QCloseEvent * e);
 
@@ -135,10 +100,6 @@ private:
 
 	/// the general tab page
 	ParaGeneralDialog * generalpage;
-#ifndef NO_PEXTRA 
-	/// the extra options tab page
-	ParaExtraDialog * extrapage;
-#endif
  
 	VSpace::vspace_kind getSpaceKind(int val) const {
 		switch (val) {

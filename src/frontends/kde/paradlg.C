@@ -29,10 +29,6 @@ ParaDialog::ParaDialog(FormParagraph * form, QWidget * parent, char const * name
 
 	generalpage = new ParaGeneralDialog(this, "generalpage");
 	tabstack->addTabPage(generalpage, _("&General"));
-#ifndef NO_PEXTRA
-	extrapage = new ParaExtraDialog(this, "extrapage");
-	tabstack->addTabPage(extrapage, _("&Extra"));
-#endif
 
 	setUpdatesEnabled(true);
 	update();
@@ -200,82 +196,6 @@ void ParaDialog::setBelowLength(float val, float plus, float minus,
 }
 
 
-#ifndef NO_PEXTRA
-void ParaDialog::setExtra(float widthval, LyXLength::UNIT units, const string percent, int align,
-	bool hfill, bool startminipage, LyXParagraph::PEXTRA_TYPE type)
-{
-	if (type!=LyXParagraph::PEXTRA_NONE) {
-		lyxerr[Debug::GUI] << "percent : $" << percent << "$ widthval " << widthval << " unit " << long(units) << endl;
-		if (percent != "") {
-			extrapage->line_widthvalue->setText(percent.c_str());
-			extrapage->combo_widthvalueunits->setCurrentItem(11);
-		} else {
-			int unit = 0;
-			extrapage->line_widthvalue->setText(tostr(widthval).c_str());
-			switch (units) {
-				case LyXLength::CM: unit = 0; break;
-				case LyXLength::IN: unit = 1; break;
-				case LyXLength::PT: unit = 2; break;
-				case LyXLength::MM: unit = 3; break;
-				case LyXLength::PC: unit = 4; break;
-				case LyXLength::EX: unit = 5; break;
-				case LyXLength::EM: unit = 6; break;
-				case LyXLength::SP: unit = 7; break;
-				case LyXLength::BP: unit = 8; break;
-				case LyXLength::DD: unit = 9; break;
-				case LyXLength::CC: unit = 10; break;
-				case LyXLength::MU: unit = 0; break;
-				case LyXLength::UNIT_NONE: unit = 0; break;
-				default:
-					lyxerr[Debug::GUI] << "Unknown unit " << long(units) << endl;
-			}
-			extrapage->combo_widthvalueunits->setCurrentItem(unit);
-		}
-	} else
-		extrapage->line_widthvalue->setText("");
-
-	switch (align) {
-		case LyXParagraph::MINIPAGE_ALIGN_TOP:
-			extrapage->radio_top->setChecked(true);
-			break;
-		case LyXParagraph::MINIPAGE_ALIGN_MIDDLE:
-			extrapage->radio_middle->setChecked(true);
-			break;
-		case LyXParagraph::MINIPAGE_ALIGN_BOTTOM:
-			extrapage->radio_bottom->setChecked(true);
-			break;
-	}
-	
-	extrapage->check_hfillbetween->setChecked(hfill);
-	extrapage->check_startnewminipage->setChecked(startminipage);
-
-	extrapage->specialalignment->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
-	extrapage->radio_top->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
-	extrapage->radio_middle->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
-	extrapage->radio_bottom->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
-	extrapage->line_widthvalue->setEnabled(type!=LyXParagraph::PEXTRA_NONE);
-	extrapage->combo_widthvalueunits->setEnabled(type!=LyXParagraph::PEXTRA_NONE);
-	extrapage->check_hfillbetween->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
-	extrapage->check_startnewminipage->setEnabled(type==LyXParagraph::PEXTRA_MINIPAGE);
-
-	switch (type) {
-		case LyXParagraph::PEXTRA_NONE:
-			extrapage->combo_type->setCurrentItem(0);
-			break;
-		case LyXParagraph::PEXTRA_INDENT:
-			extrapage->combo_type->setCurrentItem(1);
-			break;
-		case LyXParagraph::PEXTRA_MINIPAGE:
-			extrapage->combo_type->setCurrentItem(2);
-			break;
-		case LyXParagraph::PEXTRA_FLOATFLT:
-			extrapage->combo_type->setCurrentItem(3);
-			break;
-	}
-}
-#endif // NO_PEXTRA 
-
-
 LyXGlueLength ParaDialog::getAboveLength() const
 {
 	LyXGlueLength len(
@@ -304,46 +224,3 @@ LyXGlueLength ParaDialog::getBelowLength() const
 	
 	return len;
 }
-
-
-#ifndef NO_PEXTRA
-LyXLength ParaDialog::getExtraWidth() const
-{
-
-	if (extrapage->combo_widthvalueunits->currentItem() != 11) {
-		LyXLength::UNIT unit = LyXLength::CM;
-		switch (extrapage->combo_widthvalueunits->currentItem()) {
-			case 0: unit = LyXLength::CM; break;
-			case 1: unit = LyXLength::IN; break;
-			case 2: unit = LyXLength::PT; break;
-			case 3: unit = LyXLength::MM; break;
-			case 4: unit = LyXLength::PC; break;
-			case 5: unit = LyXLength::EX; break;
-			case 6: unit = LyXLength::EM; break;
-			case 7: unit = LyXLength::SP; break;
-			case 8: unit = LyXLength::BP; break;
-			case 9: unit = LyXLength::DD; break;
-			case 10: unit = LyXLength::CC; break;
-			case 11: unit = LyXLength::CM; break;
-			default:
-				lyxerr[Debug::GUI] << "Unknown unit " << extrapage->combo_widthvalueunits->currentItem() << endl;
-		}
-		LyXLength len(strToDbl(extrapage->line_widthvalue->text()), unit);
-		return len;
-	} else {
-		LyXLength len(0.0, LyXLength::UNIT_NONE);
-		return len;
-	}
-}
-
-
-string ParaDialog::getExtraWidthPercent() const
-{
-	double val = strToDbl(extrapage->line_widthvalue->text());
-	if (val > 100.0)
-		val = 100.0;
-	if (val < 0.0)
-		val = 0.0;
-	return tostr(val);
-}
-#endif // NO_PEXTRA

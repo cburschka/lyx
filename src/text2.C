@@ -2692,7 +2692,7 @@ Undo * LyXText::CreateUndo(Buffer * buf, Undo::undo_kind kind,
 		LyXParagraph * tmppar = start;
 		LyXParagraph * tmppar2 = new LyXParagraph(*tmppar);
 		tmppar2->id(tmppar->id());
-
+		
 		// a memory optimization: Just store the layout information
 		// when only edit
 		if (kind == Undo::EDIT){

@@ -23,6 +23,7 @@ using SigC::slot;
 using Liason::setMinibuffer;
 using std::endl;
 
+
 FormParagraph::FormParagraph(LyXView *v, Dialogs *d)
 	: dialog_(0), lv_(v), d_(d), h_(0)
 {
@@ -32,10 +33,12 @@ FormParagraph::FormParagraph(LyXView *v, Dialogs *d)
 	d->showLayoutParagraph.connect(slot(this, &FormParagraph::show));
 }
 
+
 FormParagraph::~FormParagraph()
 {
 	delete dialog_;
 }
+
 
 void FormParagraph::update(bool switched)
 {
@@ -47,14 +50,14 @@ void FormParagraph::update(bool switched)
 	if (!lv_->view()->available())
 		return;
 
-	Buffer *buf = lv_->view()->buffer();
+	Buffer * buf = lv_->view()->buffer();
 
 	if (readonly!=buf->isReadonly()) {
 		readonly = buf->isReadonly();
 		dialog_->setReadOnly(readonly);
 	}
 
-	LyXText *text = 0;
+	LyXText * text = 0;
 
 	if (lv_->view()->theLockingInset())
 		text = lv_->view()->theLockingInset()->getLyXText(lv_->view());
@@ -62,18 +65,14 @@ void FormParagraph::update(bool switched)
 	if (!text)
 		text = lv_->view()->text;
 
-	LyXParagraph *par = text->cursor.par();
+	LyXParagraph * par = text->cursor.par();
 
 	int align = par->GetAlign();
 
 	if (align==LYX_ALIGN_LAYOUT)
 		align = textclasslist.Style(buf->params.textclass, par->GetLayout()).align;
 
-#ifndef NEW_INSETS
-	ParagraphParameters *params = &(par->FirstPhysicalPar()->params);
-#else
 	ParagraphParameters *params = &(par->params);
-#endif
 
 	if (params->spaceTop().kind() == VSpace::LENGTH) {
 		LyXGlueLength above = params->spaceTop().length();
@@ -119,6 +118,7 @@ void FormParagraph::update(bool switched)
 		static_cast<LyXParagraph::PEXTRA_TYPE>(params->pextraType()));
 }
 
+
 void FormParagraph::apply()
 {
 	if (readonly)
@@ -163,13 +163,6 @@ void FormParagraph::apply()
 	lyxerr[Debug::GUI] << "Setting extrawidth \"" << width << "\"" << endl;
 	lyxerr[Debug::GUI] << "Setting percent extrawidth \"" << widthp << "\"" << endl;
 
-#ifndef NO_PEXTRA
-	lv_->view()->text->SetParagraphExtraOpt(lv_->view(),
-		dialog_->getExtraType(), width, widthp,
-		dialog_->getExtraAlign(),
-		dialog_->getHfillBetween(),
-		dialog_->getStartNewMinipage());
-#endif
 	lv_->view()->update(lv_->view()->text,
 			    BufferView::SELECT |
 			    BufferView::FITCUR |
@@ -179,14 +172,17 @@ void FormParagraph::apply()
 	setMinibuffer(lv_, _("Paragraph layout set"));
 }
 
+
 void FormParagraph::show()
 {
 	if (!dialog_)
-		dialog_ = new ParagraphDlgImpl(this, 0, _("LyX: Paragraph Options"), false);
+		dialog_ = new ParagraphDlgImpl(this, 0,
+					       _("LyX: Paragraph Options"),
+					       false);
 
 	if (!dialog_->isVisible())
-		h_ = d_->hideBufferDependent.connect(slot(this, &FormParagraph::hide));
-
+		h_ = d_->hideBufferDependent
+			.connect(slot(this, &FormParagraph::hide));
 
 	dialog_->raise();
 	dialog_->setActiveWindow();
@@ -195,10 +191,12 @@ void FormParagraph::show()
 	dialog_->show();
 }
 
+
 void FormParagraph::close()
 {
 	h_.disconnect();
 }
+
 
 void FormParagraph::hide()
 {

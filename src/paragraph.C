@@ -1526,7 +1526,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 	LyXLayout const & style =
 		textclasslist.Style(bparams.textclass,
 				    GetLayout());
-	LyXFont basefont, last_font;
+	LyXFont basefont;
 
 	// Maybe we have to create a optional argument.
 	size_type main_body;
@@ -1636,7 +1636,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 		// Fully instantiated font
 		LyXFont font = getFont(bparams, i);
 
-		last_font = running_font;
+		LyXFont last_font = running_font;
 
 		// Spaces at end of font change are simulated to be
 		// outside font change, i.e. we write "\textXX{text} "
@@ -2322,23 +2322,21 @@ string const LyXParagraph::String(Buffer const * buffer,
 			    LyXParagraph::size_type beg,
 			    LyXParagraph::size_type end)
 {
-	string s;
+	std::ostringstream ost;
 
 	if (beg == 0 && !params.labelString().empty())
-		s += params.labelString() + ' ';
+		ost << params.labelString() << ' ';
 
 	for (LyXParagraph::size_type i = beg; i < end; ++i) {
-		value_type c = GetUChar(buffer->params, i);
+		value_type const c = GetUChar(buffer->params, i);
 		if (IsPrintable(c))
-			s += c;
+			ost << c;
 		else if (c == META_INSET) {
-			std::ostringstream ost;
 			GetInset(i)->Ascii(buffer, ost);
-			s += ost.str().c_str();
 		}
 	}
 
-	return s;
+	return ost.str().c_str();
 }
 
 

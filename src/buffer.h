@@ -197,7 +197,7 @@ public:
 	void markDepClean(string const & name);
 	
 	///
-	void setUnnamed(bool flag=true);
+	void setUnnamed(bool flag = true);
 
 	///
 	bool isUnnamed();
@@ -574,6 +574,7 @@ bool operator!=(Buffer::TocItem const & a, Buffer::TocItem const & b) {
 	// No need to compare depth.
 }
 
+
 ///
 inline
 bool operator==(Buffer::inset_iterator const & iter1,
@@ -582,6 +583,7 @@ bool operator==(Buffer::inset_iterator const & iter1,
 		&& (iter1.par == 0 || iter1.it == iter2.it);
 }
 
+
 ///
 inline
 bool operator!=(Buffer::inset_iterator const & iter1,
@@ -589,4 +591,3 @@ bool operator!=(Buffer::inset_iterator const & iter1,
 	return !(iter1 == iter2);
 }
 #endif
-

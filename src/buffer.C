@@ -1778,8 +1778,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		if (tokenPos(tclass.opt_fontsize(),
 			     '|', params.fontsize) >= 0) {
 			// only write if existing in list (and not default)
-			options << params.fontsize;
-			options << "pt,";
+			options << params.fontsize << "pt,";
 		}
 		
 		

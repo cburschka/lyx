@@ -1,3 +1,8 @@
+2001-05-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* FormParagraph.C: remove !NEW_INSETS and !NO_PEXTRA cruft
+	* paradlg.[Ch]: ditto
+
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* dlg/emptytable.h: C++ mode, inhrit privately from noncopyable

@@ -1,3 +1,7 @@
+2001-05-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* paragraph.C (String): use stringstream
+
 2001-05-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* paragraph.C (writeFile): remove footflag arg

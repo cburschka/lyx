@@ -67,11 +67,7 @@ void FormParagraph::update(bool switched)
 	if (align==LYX_ALIGN_LAYOUT)
 		align = textclasslist.Style(buf->params.textclass, par->GetLayout()).align;
 
-#ifndef NEW_INSETS
-	LyXParagraph const * physpar = par->FirstPhysicalPar();
-#else
 	LyXParagraph const * physpar = par;
-#endif
 
 	if (physpar->params.spaceTop().kind() == VSpace::LENGTH) {
 		LyXGlueLength above = physpar->params.spaceTop().length();
@@ -106,29 +102,6 @@ void FormParagraph::update(bool switched)
 			  physpar->params.spaceBottom().kind(),
 			  physpar->params.spaceTop().keep(),
 			  physpar->params.spaceBottom().keep());
-
-#ifndef NO_PEXTRA 
-	// now the extras page
-
-	LyXLength extrawidth;
-	float val = 0.0;
-	LyXLength::UNIT unit = LyXLength::CM;
-
-	if (isValidLength(par->params.pextraWidth(), &extrawidth)) {
-		lyxerr[Debug::GUI] << "Reading extra width \"" << extrawidth.asString() << "\"" << endl;
-		val = extrawidth.value();
-		unit = extrawidth.unit();
-	}
-
-	lyxerr[Debug::GUI] << "Reading widthp \"" << par->params.pextraWidthp() << "\"" << endl;
-
-	dialog_->setExtra(val, unit, par->params.pextraWidthp(),
-			  par->params.pextraAlignment(),
-			  par->params.pextraHfill(),
-			  par->params.pextraStartMinipage(),
-			  static_cast<LyXParagraph::PEXTRA_TYPE>
-			  (par->params.pextraType()));
-#endif // NO_PEXTRA
 }
 
 
@@ -164,28 +137,6 @@ void FormParagraph::apply()
 		spaceabove, spacebelow, dialog_->getAlign(),
 		dialog_->getLabelWidth(), dialog_->getNoIndent());
 
-#ifndef NO_PEXTRA
-	// extra stuff
-
-	string width("");
-	string widthp("");
-
-	LyXLength extrawidth(dialog_->getExtraWidth());
-	if (extrawidth.unit() == LyXLength::UNIT_NONE) {
-		widthp = dialog_->getExtraWidthPercent();
-	} else
-		width = extrawidth.asString();
-
-	lyxerr[Debug::GUI] << "Setting extrawidth \"" << width << "\"" << endl;
-	lyxerr[Debug::GUI] << "Setting percent extrawidth \"" << widthp << "\"" << endl;
-
-	lv_->view()->text->SetParagraphExtraOpt(lv_->view(),
-		dialog_->getExtraType(), width, widthp,
-		dialog_->getExtraAlign(),
-		dialog_->getHfillBetween(),
-		dialog_->getStartNewMinipage());
-#endif // NO_PEXTRA 
-
 	lv_->view()->update(lv_->view()->text, 
 			    BufferView::SELECT |
 			    BufferView::FITCUR |
@@ -198,10 +149,12 @@ void FormParagraph::apply()
 void FormParagraph::show()
 {
 	if (!dialog_)
-		dialog_ = new ParaDialog(this, 0, _("LyX: Paragraph Options"), false);
+		dialog_ = new ParaDialog(this, 0,
+					 _("LyX: Paragraph Options"), false);
 
 	if (!dialog_->isVisible())
-		h_ = d_->hideBufferDependent.connect(slot(this, &FormParagraph::hide));
+		h_ = d_->hideBufferDependent
+			.connect(slot(this, &FormParagraph::hide));
 
 	dialog_->raise();
 	dialog_->setActiveWindow();
