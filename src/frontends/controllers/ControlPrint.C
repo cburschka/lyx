@@ -36,7 +36,8 @@ using Liason::getPrinterParams;
 using std::make_pair;
 
 ControlPrint::ControlPrint(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBD>(lv, d)
+    : ControlDialog<ControlConnectBD>(lv, d),
+      params_(0)
 {
 	d_.showPrint.connect(SigC::slot(this, &ControlPrint::show));
 }
