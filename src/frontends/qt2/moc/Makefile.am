@@ -38,3 +38,6 @@ libqt2moc.la: $(libqt2moc_la_OBJECTS) $(libqt2moc_la_DEPENDENCIES)
 
 %_moc.C: ../%.h
 	$(MOC) -o $@ $<
+
+distclean-local:
+	rm -f *_moc.C

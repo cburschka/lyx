@@ -1,3 +1,8 @@
+2002-10-16  Angus Leeming  <leeming@lyx.org>
+
+	* ui/moc/Makefile.am:
+	* moc/Makefile.am: add a distclean-local target to remove *_moc.C.
+
 2002-10-16  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* ui/QSendtoDialog.ui:

@@ -19,3 +19,6 @@ libqt2uimoc.la: $(libqt2uimoc_la_OBJECTS) $(libqt2uimoc_la_DEPENDENCIES)
 
 %_moc.C: ../%.h
 	$(MOC) -o $@ $<
+
+distclean-local:
+	rm -f *_moc.C
