@@ -387,13 +387,13 @@ float const tilde[] = {
 };
 
 
-struct math_deco_struct {
+struct deco_struct {
 	int code;
 	float const * data;
 	int angle;
 };
 
-math_deco_struct math_deco_table[] = {   
+deco_struct deco_table[] = {   
 	// Decorations
 	{ LM_widehat,       &angle[0],      3 },
 	{ LM_widetilde,     &tilde[0],      0 },
@@ -449,40 +449,39 @@ math_deco_struct math_deco_table[] = {
 };
 
 
-struct math_deco_compare {
+struct deco_compare {
 	/// for use by sort and lower_bound
-	int operator()(math_deco_struct const & a, math_deco_struct const & b) const
+	int operator()(deco_struct const & a, deco_struct const & b) const
 	{
 		return a.code < b.code;
 	}
 };
 
 
-int const math_deco_table_size =
-	sizeof(math_deco_table) / sizeof(math_deco_struct);
+int const deco_table_size =
+	sizeof(deco_table) / sizeof(deco_struct);
 
 
 // sort the table on startup
 struct init_deco_table {
 	init_deco_table() {
-			std::sort(math_deco_table,
-			     math_deco_table + math_deco_table_size,
-			     math_deco_compare());
+			std::sort(deco_table,
+			     deco_table + deco_table_size,
+			     deco_compare());
 	}
 };
 
 static init_deco_table dummy;
 
 
-math_deco_struct const * search_deco(int code)
+deco_struct const * search_deco(int code)
 {
-	static const math_deco_struct search_elem = { code, 0, 0 };
+	const deco_struct search_elem = { code, 0, 0 };
 	
-	math_deco_struct const * res =
-		lower_bound(math_deco_table,
-			    math_deco_table + math_deco_table_size,
-			    search_elem, math_deco_compare());
-	if (res != math_deco_table + math_deco_table_size &&
+	deco_struct const * res =
+		lower_bound(deco_table, deco_table + deco_table_size, search_elem,
+			deco_compare());
+	if (res != deco_table + deco_table_size &&
 	    res->code == code)
 		return res;
 	return 0;
@@ -575,7 +574,7 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 	string name = l->name;
 	int code = (name.size() > 1) ? l->id : name[0];
 	
-	math_deco_struct const * mds = search_deco(code);
+	deco_struct const * mds = search_deco(code);
 	if (!mds) {
 		lyxerr << "Deco was not found. Programming error?\n";
 		lyxerr << "name: '" << l->name << "', code: " << code << "\n";

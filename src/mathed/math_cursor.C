@@ -31,13 +31,9 @@
 #include "formulabase.h"
 #include "math_cursor.h"
 #include "math_factory.h"
-#include "math_funcinset.h"
 #include "math_arrayinset.h"
 #include "math_charinset.h"
-#include "math_decorationinset.h"
 #include "math_deliminset.h"
-#include "math_macro.h"
-#include "math_macrotable.h"
 #include "math_matrixinset.h"
 #include "math_scopeinset.h"
 #include "math_scriptinset.h"
@@ -74,9 +70,9 @@ struct Selection
 		MathCursorPos i1;
 		MathCursorPos i2;
 		cursor.getSelection(i1, i2); 
-		if (i1.idx_ == i2.idx_) {
+		if (i1.idx_ == i2.idx_)
 			i1.cell().erase(i1.pos_, i2.pos_);
-		} else {
+		else {
 			std::vector<int> indices = i1.par_->idxBetween(i1.idx_, i2.idx_);
 			for (unsigned i = 0; i < indices.size(); ++i)
 				i1.cell(indices[i]).erase();
@@ -125,10 +121,6 @@ MathCursor::MathCursor(InsetFormulaBase * formula)
 {
 	first();
 }
-
-
-MathCursor::~MathCursor()
-{}
 
 
 void MathCursor::pushLeft(MathInset * par)
@@ -260,6 +252,7 @@ bool MathCursor::left(bool sel)
 	dump("Left 1");
 	if (inMacroMode()) {
 		macroModeClose();
+		lastcode_ = LM_TC_VAR;
 		return true;
 	}
 	selHandle(sel);
@@ -280,6 +273,7 @@ bool MathCursor::right(bool sel)
 	dump("Right 1");
 	if (inMacroMode()) {
 		macroModeClose();
+		lastcode_ = LM_TC_VAR;
 		return true;
 	}
 	selHandle(sel);
@@ -600,9 +594,9 @@ void MathCursor::macroModeClose()
 		pos() = pos() - s.size();
 		for (unsigned i = 0; i < s.size(); ++i)
 			plainErase();
+		lastcode_ = LM_TC_VAR;
 		interpret("\\" + s);
 	}
-	lastcode_ = LM_TC_VAR;
 }
 
 
@@ -742,14 +736,6 @@ void MathCursor::handleFont(MathTextCodes t)
 		}
 	} else 
 		lastcode_ = (lastcode_ == t) ? LM_TC_VAR : t;
-}
-
-
-void MathCursor::handleAccent(string const & name)
-{
-	latexkeys const * l = in_word_set(name);
-	if (l)
-		handleNest(new MathDecorationInset(l));
 }
 
 
@@ -1208,24 +1194,13 @@ void MathCursor::interpret(string const & s)
 		p->cell(0).swap(array());
 		pos() = 0;
 		niceInsert(p);
-		down();
-		return;
-	}
-
-	latexkeys const * l = in_word_set(s.substr(1));
-	if (l) {
-		lastcode_ = LM_TC_VAR;
-		niceInsert(createMathInset(l));
-		return;
-	}
-
-	if (MathMacroTable::hasTemplate(s.substr(1))) {
-		niceInsert(new MathMacro(MathMacroTable::provideTemplate(s.substr(1))));
+		popRight();
+		left();
 		return;
 	}
 
 	if (s.size() > 1) {
-		niceInsert(new MathFuncInset(s.substr(1)));
+		niceInsert(createMathInset(s.substr(1)));
 		return;
 	}
 
@@ -1287,13 +1262,17 @@ void MathCursor::interpret(string const & s)
 	if (lastcode_ == LM_TC_TEX) {
 		if (macroName().empty()) {
 			insert(c, LM_TC_TEX);
-			if (!isalpha(c))
+			if (!isalpha(c)) {
 				macroModeClose();
+				lastcode_ = LM_TC_VAR;
+			}
 		} else {
 			if (isalpha(c))
 				insert(c, LM_TC_TEX);
-			else
+			else {
 				macroModeClose();
+				lastcode_ = LM_TC_VAR;
+			}
 		}
 		return;
 	}
@@ -1321,8 +1300,8 @@ void MathCursor::interpret(string const & s)
 
 	if (c == ' ') {
 		if (inMacroMode()) {
-			lastcode_ = LM_TC_VAR;
 			macroModeClose();
+			lastcode_ = LM_TC_VAR;
 			return;
 		}
 

@@ -51,3 +51,16 @@ MathInset * createMathInset(latexkeys const * l)
 	}
 	return new MathFuncInset(l->name);
 }
+
+
+MathInset * createMathInset(string const & s)
+{
+	latexkeys const * l = in_word_set(s);
+	if (l) 
+		return createMathInset(l);
+
+	if (MathMacroTable::hasTemplate(s)) 
+		return new MathMacro(MathMacroTable::provideTemplate(s));
+
+	return new MathFuncInset(s);
+}

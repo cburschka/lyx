@@ -33,6 +33,7 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "debug.h"
+#include "support.h"
 #include "support/lstrings.h"
 #include "LyXView.h"
 #include "Painter.h"
@@ -41,8 +42,8 @@
 #include "math_spaceinset.h"
 #include "math_scopeinset.h"
 #include "math_macrotable.h"
+#include "math_factory.h"
 #include "support/lyxlib.h"
-#include "mathed/support.h"
 #include "undo_funcs.h"
 
 using std::endl;
@@ -79,7 +80,7 @@ void handleFont(BufferView * bv, MathTextCodes t)
 void handleAccent(BufferView * bv, string const & name)
 {
 	bv->lockedInsetStoreUndo(Undo::EDIT);
-	mathcursor->handleAccent(name);
+	mathcursor->insert(createMathInset(name));
 }
 
 

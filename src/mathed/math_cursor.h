@@ -65,8 +65,6 @@ public:
 	///
 	explicit MathCursor(InsetFormulaBase *);
 	///
-	~MathCursor();
-	///
 	void insert(MathInset *);
 	///
 	void insert(MathArray const &);
@@ -163,8 +161,6 @@ public:
 	void drawSelection(Painter & pain) const;
 	///
 	void handleFont(MathTextCodes t);
-	///
-	void handleAccent(string const & name);
 	///
 	void handleDelim(latexkeys const * l, latexkeys const * r);
 	///
