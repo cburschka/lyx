@@ -275,11 +275,11 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	owner_->message(_("Formatting document..."));
 
 	if (bv_->text) {
-		par = bv_->text->cursor.par();
+		par = &*bv_->text->cursor.par();
 		pos = bv_->text->cursor.pos();
-		selstartpar = bv_->text->selection.start.par();
+		selstartpar = &*bv_->text->selection.start.par();
 		selstartpos = bv_->text->selection.start.pos();
-		selendpar = bv_->text->selection.end.par();
+		selendpar = &*bv_->text->selection.end.par();
 		selendpos = bv_->text->selection.end.pos();
 		selection = bv_->text->selection.set();
 		mark_set = bv_->text->selection.mark();
@@ -1172,7 +1172,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		break;
 
 	case LFUN_LAYOUT_PARAGRAPH: {
-		Paragraph const * par = bv_->getLyXText()->cursor.par();
+		Paragraph const * par = &*bv_->getLyXText()->cursor.par();
 		if (!par)
 			break;
 
@@ -1185,7 +1185,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	}
 
 	case LFUN_PARAGRAPH_UPDATE: {
-		Paragraph const * par = bv_->getLyXText()->cursor.par();
+		Paragraph const * par = &*bv_->getLyXText()->cursor.par();
 		if (!par)
 			break;
 

@@ -358,7 +358,7 @@ bool BufferView::insertLyXFile(string const & filen)
 bool BufferView::removeAutoInsets()
 {
 	// keep track of which pos and par the cursor was on
-	Paragraph * cursor_par = text->cursor.par();
+	Paragraph * cursor_par = &*text->cursor.par();
 	Paragraph * cursor_par_prev = cursor_par ? cursor_par->previous() : 0;
 	Paragraph * cursor_par_next = cursor_par ? cursor_par->next() : 0;
 	pos_type cursor_pos = text->cursor.pos();
@@ -712,7 +712,7 @@ bool BufferView::lockInset(UpdatableInset * inset)
 	if (!theLockingInset()) {
 		// first check if it's the inset under the cursor we want lock
 		// should be most of the time
-		if (text->cursor.pos() < text->cursor.par()->size() 
+		if (text->cursor.pos() < text->cursor.par()->size()
 		    && text->cursor.par()->getChar(text->cursor.pos()) ==
 		    Paragraph::META_INSET) {
 			Inset * in = text->cursor.par()->getInset(text->cursor.pos());
@@ -830,7 +830,7 @@ void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
 	setUndo(this, kind,
-		text->cursor.par(),
+		&*text->cursor.par(),
 		text->cursor.par()->next());
 }
 

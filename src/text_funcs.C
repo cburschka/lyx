@@ -9,7 +9,7 @@
  * Full author contact details are available in file CREDITS
  *
  * This file contains some utility functions for actually mutating
- * the text contents of a document 
+ * the text contents of a document
  */
 
 #include <config.h>
@@ -23,7 +23,7 @@ using lyx::pos_type;
 
 void transposeChars(LyXText & text, LyXCursor const & cursor)
 {
-	Paragraph * tmppar = cursor.par();
+	Paragraph * tmppar = &*cursor.par();
 
 	setUndo(text.bv(), Undo::FINISH, tmppar, tmppar->next());
 

@@ -84,13 +84,13 @@ void InsetText::saveLyXTextState(LyXText * t) const
 	}
 
 	if (it != end && t->cursor.pos() <= it->size()) {
-		sstate.lpar = t->cursor.par();
+		sstate.lpar = &*t->cursor.par();
 		sstate.pos = t->cursor.pos();
 		sstate.boundary = t->cursor.boundary();
-		sstate.selstartpar = t->selection.start.par();
+		sstate.selstartpar = &*t->selection.start.par();
 		sstate.selstartpos = t->selection.start.pos();
 		sstate.selstartboundary = t->selection.start.boundary();
-		sstate.selendpar = t->selection.end.par();
+		sstate.selendpar = &*t->selection.end.par();
 		sstate.selendpos = t->selection.end.pos();
 		sstate.selendboundary = t->selection.end.boundary();
 		sstate.selection = t->selection.set();
@@ -1397,11 +1397,11 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		// inherit bufferparams/paragraphparams in a strange way. (Lgb)
 		// FIXME: how old is this comment ? ...
 	{
-		Paragraph * par = lt->cursor.par();
-		Spacing::Space cur_spacing = par->params().spacing().getSpace();
+		ParagraphList::iterator pit = lt->cursor.par();
+		Spacing::Space cur_spacing = pit->params().spacing().getSpace();
 		float cur_value = 1.0;
 		if (cur_spacing == Spacing::Other) {
-			cur_value = par->params().spacing().getValue();
+			cur_value = pit->params().spacing().getValue();
 		}
 
 		istringstream istr(ev.argument.c_str());
@@ -1432,7 +1432,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 				   << ev.argument << endl;
 		}
 		if (cur_spacing != new_spacing || cur_value != new_value) {
-			par->params().spacing(Spacing(new_spacing, new_value));
+			pit->params().spacing(Spacing(new_spacing, new_value));
 			updwhat = CURSOR_PAR;
 			updflag = true;
 		}
@@ -1938,7 +1938,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 		clear = true;
 	}
 	if (lt->selection.set()) {
-		setUndo(bv, Undo::EDIT, lt->cursor.par(), lt->cursor.par()->next());
+		setUndo(bv, Undo::EDIT, &*lt->cursor.par(), lt->cursor.par()->next());
 	}
 	if (selectall)
 		selectAll(bv);
@@ -2106,7 +2106,7 @@ int InsetText::cx(BufferView * bv) const
 	LyXText * llt = getLyXText(bv);
 	int x = llt->cursor.x() + top_x + TEXT_TO_INSET_OFFSET;
 	if (the_locking_inset) {
-		LyXFont font = llt->getFont(bv->buffer(), llt->cursor.par(),
+		LyXFont font = llt->getFont(bv->buffer(), &*llt->cursor.par(),
 					    llt->cursor.pos());
 		if (font.isVisibleRightToLeft())
 			x -= the_locking_inset->width(bv, font);
@@ -2121,7 +2121,7 @@ int InsetText::cix(BufferView * bv) const
 	LyXText * llt = getLyXText(bv);
 	int x = llt->cursor.ix() + top_x + TEXT_TO_INSET_OFFSET;
 	if (the_locking_inset) {
-		LyXFont font = llt->getFont(bv->buffer(), llt->cursor.par(),
+		LyXFont font = llt->getFont(bv->buffer(), &*llt->cursor.par(),
 					    llt->cursor.pos());
 		if (font.isVisibleRightToLeft())
 			x -= the_locking_inset->width(bv, font);
@@ -2152,7 +2152,7 @@ pos_type InsetText::cpos(BufferView * bv) const
 
 Paragraph * InsetText::cpar(BufferView * bv) const
 {
-	return getLyXText(bv)->cursor.par();
+	return &*getLyXText(bv)->cursor.par();
 }
 
 

@@ -17,13 +17,13 @@ LyXCursor::LyXCursor()
 {}
 
 
-void LyXCursor::par(Paragraph * p)
+void LyXCursor::par(ParagraphList::iterator pit)
 {
-	par_ = p;
+	par_ = pit;
 }
 
 
-Paragraph * LyXCursor::par() const
+ParagraphList::iterator LyXCursor::par() const
 {
 	return par_;
 }

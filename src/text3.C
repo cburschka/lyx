@@ -176,11 +176,11 @@ bool LyXText::gotoNextInset(vector<Inset::Code> const & codes,
 		if (res.pos() < res.par()->size() - 1) {
 			res.pos(res.pos() + 1);
 		} else  {
-			res.par(res.par()->next());
+			res.par(boost::next(res.par()));
 			res.pos(0);
 		}
 
-	} while (res.par() &&
+	} while (res.par() != ownerParagraphs().end()&&
 		 !(res.par()->isInset(res.pos())
 		   && (inset = res.par()->getInset(res.pos())) != 0
 		   && find(codes.begin(), codes.end(), inset->lyxCode())
@@ -190,7 +190,7 @@ bool LyXText::gotoNextInset(vector<Inset::Code> const & codes,
 							res.par()->getInset(res.pos()))->getContents()
 		       == contents)));
 
-	if (res.par()) {
+	if (res.par() != ownerParagraphs().end()) {
 		setCursor(res.par(), res.pos(), false);
 		return true;
 	}
@@ -407,8 +407,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	switch (cmd.action) {
 
 	case LFUN_APPENDIX: {
-		Paragraph * par = cursor.par();
-		bool start = !par->params().startOfAppendix();
+		ParagraphList::iterator pit = cursor.par();
+		bool start = !pit->params().startOfAppendix();
 
 		// ensure that we have only one start_of_appendix in this document
 		ParagraphList::iterator tmp = ownerParagraphs().begin();
@@ -424,8 +424,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			}
 		}
 
-		setUndo(bv, Undo::EDIT, par, par->next());
-		par->params().startOfAppendix(start);
+		setUndo(bv, Undo::EDIT, &*pit, &*boost::next(pit));
+		pit->params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now
 		updateCounters();
@@ -874,11 +874,11 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_PARAGRAPH_SPACING: {
-		Paragraph * par = cursor.par();
-		Spacing::Space cur_spacing = par->params().spacing().getSpace();
+		ParagraphList::iterator pit = cursor.par();
+		Spacing::Space cur_spacing = pit->params().spacing().getSpace();
 		float cur_value = 1.0;
 		if (cur_spacing == Spacing::Other)
-			cur_value = par->params().spacing().getValue();
+			cur_value = pit->params().spacing().getValue();
 
 		istringstream is(cmd.argument.c_str());
 		string tmp;
@@ -908,7 +908,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			       << cmd.argument << endl;
 		}
 		if (cur_spacing != new_spacing || cur_value != new_value) {
-			par->params().spacing(Spacing(new_spacing, new_value));
+			pit->params().spacing(Spacing(new_spacing, new_value));
 			redoParagraph();
 			update();
 		}
@@ -1123,14 +1123,14 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (!change_layout && selection.set() &&
 			selection.start.par() != selection.end.par())
 		{
-			Paragraph * spar = selection.start.par();
-			Paragraph * epar = selection.end.par()->next();
-			while (spar != epar) {
-				if (spar->layout()->name() != current_layout) {
+			ParagraphList::iterator spit = selection.start.par();
+			ParagraphList::iterator epit = boost::next(selection.end.par());
+			while (spit != epit) {
+				if (spit->layout()->name() != current_layout) {
 					change_layout = true;
 					break;
 				}
-				spar = spar->next();
+				++spit;
 			}
 		}
 		if (change_layout) {
@@ -1182,21 +1182,21 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_QUOTE: {
-		Paragraph const * par = cursor.par();
+		ParagraphList::iterator pit = cursor.par();
 		lyx::pos_type pos = cursor.pos();
 		char c;
 		if (!pos)
 			c = ' ';
-		else if (par->isInset(pos - 1) && par->getInset(pos - 1)->isSpace())
+		else if (pit->isInset(pos - 1) && pit->getInset(pos - 1)->isSpace())
 			c = ' ';
 		else
-			c = par->getChar(pos - 1);
+			c = pit->getChar(pos - 1);
 
 		bv->hideCursor();
-		LyXLayout_ptr const & style = par->layout();
+		LyXLayout_ptr const & style = pit->layout();
 
 		if (style->pass_thru ||
-				par->getFontSettings(bv->buffer()->params,
+				pit->getFontSettings(bv->buffer()->params,
 					 pos).language()->lang() == "hebrew" ||
 			(!bv->insertInset(new InsetQuotes(c, bv->buffer()->params))))
 			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
@@ -1279,7 +1279,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			Inset * tli = bv->theLockingInset();
 			LyXCursor cursor = bv->text->cursor;
 			LyXFont font = bv->text->getFont(bv->buffer(),
-								cursor.par(), cursor.pos());
+							 &*cursor.par(), cursor.pos());
 			int width = tli->width(bv, font);
 			int inset_x = font.isVisibleRightToLeft()
 				? cursor.ix() - width : cursor.ix();

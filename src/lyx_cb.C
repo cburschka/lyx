@@ -462,7 +462,7 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 
 string const getPossibleLabel(BufferView const & bv)
 {
-	Paragraph * par = bv.getLyXText()->cursor.par();
+	Paragraph * par = &*bv.getLyXText()->cursor.par();
 	LyXLayout_ptr layout = par->layout();
 	if (layout->latextype == LATEX_PARAGRAPH && par->previous()) {
 		Paragraph * par2 = par->previous();

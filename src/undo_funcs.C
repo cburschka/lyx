@@ -486,6 +486,6 @@ void setRedo(BufferView * bv, Undo::undo_kind kind,
 
 void setCursorParUndo(BufferView * bv)
 {
-	setUndo(bv, Undo::FINISH, bv->text->cursor.par(),
+	setUndo(bv, Undo::FINISH, &*bv->text->cursor.par(),
 		bv->text->cursor.par()->next());
 }

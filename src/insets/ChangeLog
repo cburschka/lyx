@@ -1,5 +1,18 @@
+2003-04-09  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insettext.C (saveLyXTextState): adjust
+	(localDispatch): adjust
+	(setFont): adjust
+	(cx): adjust
+	(cix): adjust
+	(cpar): adjust
+
+	* insettabular.C (localDispatch): adjust
+	(setFont): adjust
+	(tabularFeatures): adjust
+
 2003-04-05  Alfredo Braunstein  <abraunst@libero.it>
- 
+
 	* insettabular.C (searchForward,searchBackward): fix bug 782
 
 2003-04-07  John Levon  <levon@movementarian.org>

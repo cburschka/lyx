@@ -11,9 +11,8 @@
 #define LYXCURSOR_H
 
 #include "RowList.h"
+#include "ParagraphList.h"
 #include "support/types.h"
-
-class Paragraph;
 
 /**
  * The cursor class describes the position of a cursor within a document.
@@ -26,9 +25,9 @@ class LyXCursor {
 public:
 	LyXCursor();
 	/// set the paragraph that contains this cursor
-	void par(Paragraph * p);
+	void par(ParagraphList::iterator pit);
 	/// return the paragraph this cursor is in
-	Paragraph * par() const;
+	ParagraphList::iterator par() const;
 	/// set the position within the paragraph
 	void pos(lyx::pos_type p);
 	/// return the position within the paragraph
@@ -96,7 +95,7 @@ public:
 	RowList::iterator irow() const;
 private:
 	/// The paragraph the cursor is in.
-	Paragraph * par_;
+	ParagraphList::iterator par_;
 	/// The position inside the paragraph
 	lyx::pos_type pos_;
 	/**

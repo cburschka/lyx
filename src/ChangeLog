@@ -1,3 +1,59 @@
+2003-04-09  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* undo_funcs.C (setCursorParUndo): adjust
+
+	* text_funcs.C (transposeChars): adjust
+
+	* text3.C (gotoNextInset): adjust
+	(dispatch): adjust
+
+	* text2.C (setLayout): adjust
+	(changeDepth): adjust
+	(setFont): adjust
+	(redoParagraphs): adjust
+	(selectionAsString): adjust
+	(setParagraph): adjust
+	(insertInset): adjust
+	(cutSelection): adjust
+	(copySelection): adjust
+	(pasteSelection): adjust
+	(insertStringAsLines): adjust
+	(updateInset): adjust
+	(setCursor): change to take a ParagraphList::iterator parameter
+	(setCursorIntern): change to take a ParagraphList::iterator parameter
+	(setCurrentFont): adjust
+	(cursorLeft): adjust
+	(cursorRight): adjust
+	(deleteEmptyParagraphMechanism): adjust
+
+	* text.C (breakParagraph): adjust
+	(insertChar): adjust
+	(acceptChange): adjust
+	(rejectChange): adjust
+	(selectNextWordToSpellcheck): adjust
+	(changeCase): adjust
+	(Delete): adjust
+	(backspace): adjust
+
+	* lyxfind.C (SearchForward): adjust
+	(SearchBackward): adjust
+	(nextChange): adjust
+
+	* lyxcursor.C (par): adjust
+
+	* lyxcursor.h: store a ParagraphList::iterator instead of a
+	Paragraph*
+
+	* lyx_cb.C (getPossibleLabel): adjust
+
+	* bufferview_funcs.C (toggleAndShow): adjust
+
+	* BufferView_pimpl.C (resizeCurrentBuffer): adjust
+	(dispatch): adjust
+
+	* BufferView.C (removeAutoInsets): adjust
+	(lockedInsetStoreUndo): adjust
+
 2003-04-09  John Levon  <levon@movementarian.org>
 
 	* ToolbarBackend.C: try icon without argument
@@ -17,7 +73,7 @@
 
 	* text2.C (changeDepth): do not setUndo on test_only (make undo work
 	again)
- 
+
 2003-04-05  Alfredo Braunstein  <abraunst@libero.it>
 
 	* lyxfind.C (searchForward, searchBackwards): bug 782
@@ -91,10 +147,10 @@
 
 	* lyxrow.h: store a ParagraphList::iterator instead of a
 	Paragraph* and adjust other class functions to suit.
-	
+
 	* lyxrow_funcs.C, text.C, text2.C, text3.C: adjust because of the
 	above.
-	
+
 2003-04-01  Alfredo Braunstein  <abraunst@libero.it>
 
 	* text2.C (setCursor): do not anchor to cursor row for the time being

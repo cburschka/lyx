@@ -330,16 +330,16 @@ public:
 	///
 	void selectSelectedWord();
 	/// returns true if par was empty and was removed
-	bool setCursor(Paragraph * par,
+	bool setCursor(ParagraphList::iterator pit,
 		       lyx::pos_type pos,
 		       bool setfont = true,
 		       bool boundary = false);
 	///
-	void setCursor(LyXCursor &, Paragraph * par,
+	void setCursor(LyXCursor &, ParagraphList::iterator pit,
 		       lyx::pos_type pos,
 		       bool boundary = false);
 	///
-	void setCursorIntern(Paragraph * par,
+	void setCursorIntern(ParagraphList::iterator pit,
 			     lyx::pos_type pos,
 			     bool setfont = true,
 			     bool boundary = false);

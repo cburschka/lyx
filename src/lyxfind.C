@@ -232,14 +232,14 @@ bool IsStringInText(Paragraph * par, pos_type pos,
 SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 			   bool const & cs, bool const & mw)
 {
-	Paragraph * par = text->cursor.par();
+	Paragraph * par = &*text->cursor.par();
 	pos_type pos = text->cursor.pos();
 	UpdatableInset * inset;
 
 	while (par && !IsStringInText(par, pos, str, cs, mw)) {
-		if (pos < par->size() 
-		    && par->isInset(pos) 
-		    && (inset = (UpdatableInset *)par->getInset(pos)) 
+		if (pos < par->size()
+		    && par->isInset(pos)
+		    && (inset = (UpdatableInset *)par->getInset(pos))
 		    && inset->isTextInset()
 		    && inset->searchForward(bv, str, cs, mw))
 			return SR_FOUND_NOUPDATE;
@@ -265,7 +265,7 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 			    string const & str,
 			    bool const & cs, bool const & mw)
 {
-	Paragraph * par = text->cursor.par();
+	Paragraph * par = &*text->cursor.par();
 	pos_type pos = text->cursor.pos();
 
 	do {
@@ -280,8 +280,8 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 			} while (par && pos < 0);
 		}
 		UpdatableInset * inset;
-		if (par && par->isInset(pos) 
-		    && (inset = (UpdatableInset *)par->getInset(pos)) 
+		if (par && par->isInset(pos)
+		    && (inset = (UpdatableInset *)par->getInset(pos))
 		    && inset->isTextInset()
 		    && inset->searchBackward(bv, str, cs, mw))
 			return SR_FOUND_NOUPDATE;
@@ -297,7 +297,7 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 
 SearchResult nextChange(BufferView * bv, LyXText * text, pos_type & length)
 {
-	Paragraph * par = text->cursor.par();
+	Paragraph * par = &*text->cursor.par();
 	pos_type pos = text->cursor.pos();
 	Paragraph * prev_par = par;
 	UpdatableInset * inset;
