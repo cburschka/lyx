@@ -215,7 +215,7 @@ void FloatPlacement::tbhpClicked()
 
 void FloatPlacement::heredefinitelyClicked()
 {
-	if (heredefinitelyCB->isChecked());
+	if (heredefinitelyCB->isChecked())
 		ignoreCB->setEnabled(false);
 
 	topCB->setChecked(false);

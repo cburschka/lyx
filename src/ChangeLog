@@ -1,3 +1,9 @@
+2005-01-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* output_linuxdoc.C (linuxdocParagraphs): silence warning
+
+	* lyxfind.C (MatchString::operator()): remove bogus semicolon
+
 2005-01-20  Angus Leeming  <leeming@lyx.org>
 
 	* output_latex.C (TeXOnePar, TeXEnvironment): prevent crash when

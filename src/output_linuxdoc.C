@@ -74,9 +74,10 @@ void linuxdocParagraphs(Buffer const & buf,
 			break;
 
 		case LATEX_COMMAND:
+#if 0
 			if (depth != 0)
-				//error(ErrorItem(_("Error:"), _("Wrong depth for LatexType Command.\n"), pit->id(), 0, pit->size()));
-				;
+				error(ErrorItem(_("Error:"), _("Wrong depth for LatexType Command.\n"), pit->id(), 0, pit->size()));
+#endif
 
 			if (!environment_stack[depth].empty()) {
 				sgml::closeTag(os, environment_stack[depth]);

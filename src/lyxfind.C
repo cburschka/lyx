@@ -88,7 +88,7 @@ public:
 			if (pos > 0 && par.isLetter(pos - 1))
 				return false;
 			if (pos + lyx::pos_type(size) < parsize
-			    && par.isLetter(pos + size));
+			    && par.isLetter(pos + size))
 				return false;
 		}
 
