@@ -1,4 +1,15 @@
 // -*- C++ -*-
+/**
+ * \file tex2lyx.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author André Pönitz
+ * \author Jean-Marc Lasgouttes
+ *
+ * Full author contact details are available in file CREDITS
+ */
+
 #ifndef TEX2LYX_H
 #define TEX2LYX_H
 

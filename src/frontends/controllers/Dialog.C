@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /**
  * \file Dialog.C
  * This file is part of LyX, the document processor.

@@ -1,12 +1,17 @@
 // -*- C++ -*-
 /**
- *  \file lyxfont.h
+ * \file lyxfont.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- *  \author Angus Leeming
+ * \author Angus Leeming
  *
- *  Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS
+ *
+ * This class is just a dummy version of that in the main LyX source tree
+ * to enable tex2lyx to use LyX's textclass classes and not have to
+ * re-invent the wheel.
+ *
  */
 
 #ifndef LYXFONT_H
