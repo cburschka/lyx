@@ -469,6 +469,15 @@ InsetBase * readInset(LyXLex & lex, Buffer const & buf)
 		}
 
 		inset->read(buf, lex);
+	
+#warning hack..	
+		if (inset->lyxCode() == InsetBase::MATHMACRO_CODE) {
+			MathMacroTemplate const * tmpl =
+				static_cast<MathMacroTemplate*>(inset.get());
+			MacroTable::globalMacros().insert
+				(tmpl->name(), tmpl->asMacroData());
+			lyxerr << "creating local macro " << tmpl->name() << endl;
+		}
 	}
 
 	return inset.release();

@@ -84,6 +84,7 @@ void MathUnknownInset::maple(MapleStream & os) const
 	os << name_;
 }
 
+
 void MathUnknownInset::mathematica(MathematicaStream & os) const
 {
 	os << name_;

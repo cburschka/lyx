@@ -870,12 +870,7 @@ void LCursor::macroModeClose()
 	if (macro && macro->getInsetName() == name)
 		lyxerr << "can't enter recursive macro" << endl;
 
-	plainInsert(createMathInset(name));	
-	if (buffer().hasMacro(name)) {
-		MacroData const & tmpl = buffer().getMacro(name);
-		for (int i = 0; i < tmpl.numargs(); ++i)
-			cell().insert(pos(), MathAtom(new MathBraceInset));
-	}
+	niceInsert(createMathInset(name));	
 }
 
 

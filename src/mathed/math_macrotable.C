@@ -41,7 +41,7 @@ MacroData::MacroData(string const & def, int numargs, string const & disp)
 {}
 
 
-void MacroData::expand(MathArray const & args, MathArray & to) const
+void MacroData::expand(vector<MathArray> const & args, MathArray & to) const
 {
 	MathSqrtInset inset; // Hack. Any inset with a cell would do.
 	asArray(disp_.empty() ? def_ : disp_, inset.cell(0));
@@ -56,12 +56,8 @@ void MacroData::expand(MathArray const & args, MathArray & to) const
 		//it.cell().insert(it.pos(), it.nextInset()->asMathInset()
 		int n = static_cast<MathMacroArgument*>(it.nextInset())->number();
 		if (n <= args.size()) {
-			if (args[n - 1]->asBraceInset()) {
-				it.cell().erase(it.pos());
-				it.cell().insert(it.pos(), args[n - 1]->cell(0));
-			} else {
-				it.cell()[it.pos()] = args[n - 1];
-			}
+			it.cell().erase(it.pos());
+			it.cell().insert(it.pos(), args[n - 1]);
 		}
 	}
 	//lyxerr << "MathData::expand: res: " << inset.cell(0) << endl;
@@ -78,30 +74,38 @@ MacroTable & MacroTable::globalMacros()
 }
 
 
+// The local table.
+//MacroTable & MacroTable::localMacros()
+//{
+//	static MacroTable theLocalMacros;
+//	return theLocalMacros;
+//}
+
+
 bool MacroTable::has(string const & name) const
 {
-	return macros_.find(name) != macros_.end();
+	return find(name) != end();
 }
 
 
 MacroData const & MacroTable::get(string const & name) const
 {
-	table_type::const_iterator it = macros_.find(name);
-	BOOST_ASSERT(it != macros_.end());
+	const_iterator it = find(name);
+	BOOST_ASSERT(it != end());
 	return it->second;
 }
 
 
 void MacroTable::insert(string const & name, MacroData const & data)
 {
-	lyxerr << "MathMacroTable::insert: " << name << endl;
-	macros_[name] = data;
+	//lyxerr << "MacroTable::insert: " << name << endl;
+	operator[](name) = data;
 }
 
 
 void MacroTable::insert(string const & def)
 {
-	//lyxerr << "MathMacroTable::insert, def: " << def << endl;
+	//lyxerr << "MacroTable::insert, def: " << def << endl;
 	istringstream is(def);
 	MathMacroTemplate mac(is);
 	insert(mac.name(), mac.asMacroData());
@@ -111,8 +115,7 @@ void MacroTable::insert(string const & def)
 void MacroTable::dump()
 {
 	lyxerr << "\n------------------------------------------" << endl;
-	table_type::const_iterator it;
-	for (it = macros_.begin(); it != macros_.end(); ++it)
+	for (const_iterator it = begin(); it != end(); ++it)
 		lyxerr << it->first
 			<< " [" << it->second.def() << "] : "
 			<< " [" << it->second.disp() << "] : "

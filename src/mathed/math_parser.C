@@ -191,7 +191,6 @@ ostream & operator<<(ostream & os, Token const & t)
 
 
 class Parser {
-
 public:
 	///
 	typedef  MathInset::mode_type mode_type;

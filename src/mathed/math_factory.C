@@ -320,7 +320,14 @@ MathAtom createMathInset(string const & s)
 	if (s == "dfrac")
 		return MathAtom(new MathDfracInset);
 
-	return MathAtom(new MathMacro(s));
+	if (MacroTable::globalMacros().has(s))
+		return MathAtom(new MathMacro(s,
+			MacroTable::globalMacros().get(s).numargs()));
+	//if (MacroTable::localMacros().has(s))
+	//	return MathAtom(new MathMacro(s,
+	//		MacroTable::localMacros().get(s).numargs()));
+
+	return MathAtom(new MathUnknownInset(s));
 }
 
 

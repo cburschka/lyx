@@ -70,7 +70,7 @@ auto_ptr<InsetBase> MathMacroTemplate::clone() const
 }
 
 
-void MathMacroTemplate::edit(LCursor & cur, bool left)
+void MathMacroTemplate::edit(LCursor & cur, bool)
 {
 	lyxerr << "MathMacroTemplate: edit left/right" << endl;
 	cur.push(*this);

@@ -18,6 +18,7 @@
 
 class MathArray;
 
+
 ///
 class MacroData {
 public:
@@ -32,7 +33,7 @@ public:
 	///
 	int numargs() const { return numargs_; }
 	/// replace #1,#2,... by given MathAtom 0,1,..
-	void expand(MathArray const & from, MathArray & to) const;
+	void expand(std::vector<MathArray> const & from, MathArray & to) const;
 
 private:
 	///
@@ -48,7 +49,8 @@ private:
 // either because they implement a feature of standard LaTeX or some
 // hack to display certain contents nicely.
 
-class MacroTable {
+class MacroTable : public std::map<std::string, MacroData>
+{
 public:
 	/// Parse full "\def..." or "\newcommand..." or ...
 	void insert(std::string const & definition);
@@ -63,13 +65,8 @@ public:
 
 	/// the global list
 	static MacroTable & globalMacros();
-
-private:
-	///
-	typedef std::map<std::string, MacroData> table_type;
-
-	///
-	table_type macros_;
+	/// the local list hack
+	//static MacroTable & localMacros();
 };
 
 #endif

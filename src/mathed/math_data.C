@@ -249,10 +249,11 @@ void MathArray::metrics(MetricsInfo & mi) const
 
 	dim_.wid = 0;
 	Dimension d;
-	BufferView & bv  = *mi.base.bv;
-	Buffer const & buf = *bv.buffer();
+	//BufferView & bv  = *mi.base.bv;
+	//Buffer const & buf = *bv.buffer();
 	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
+#if 0
 		MathMacro const * mac = at->asMacro();
 		if (mac && buf.hasMacro(mac->name())) {
 			MacroData const & tmpl = buf.getMacro(mac->name());
@@ -272,6 +273,7 @@ void MathArray::metrics(MetricsInfo & mi) const
 				continue;
 			}
 		}
+#endif
 		at->metrics(mi, d);
 		dim_ += d;
 	}
@@ -300,10 +302,11 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 		|| x >= pi.pain.paperWidth())
 		return;
 
-	BufferView & bv  = *pi.base.bv;
-	Buffer const & buf = *bv.buffer();
+	//BufferView & bv  = *pi.base.bv;
 	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
+#if 0
+	Buffer const & buf = *bv.buffer();
 		// special macro handling
 		MathMacro const * mac = at->asMacro();
 		if (mac && buf.hasMacro(mac->name())) {
@@ -318,6 +321,7 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 				continue;
 			}
 		}
+#endif
 		at->drawSelection(pi, x, y);
 		at->draw(pi, x, y);
 		x += at->width();

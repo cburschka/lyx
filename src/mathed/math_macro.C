@@ -28,9 +28,8 @@ using std::auto_ptr;
 using std::endl;
 
 
-
-MathMacro::MathMacro(string const & name)
-	: name_(name)
+MathMacro::MathMacro(string const & name, int numargs)
+	: MathNestInset(numargs), name_(name)
 {}
 
 
@@ -46,50 +45,59 @@ string MathMacro::name() const
 }
 
 
-void MathMacro::setExpansion(MathArray const & exp, MathArray const & arg) const
-{
-	expanded_ = exp;
-	args_ = arg;
-}
-
-
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	LyXFont font = mi.base.font;
-	augmentFont(font, "lyxtex");
-	mathed_string_dim(font, "\\" + name(), dim);
-	dim_ = dim;
-}
-
-
-void MathMacro::metricsExpanded(MetricsInfo & mi, Dimension & dim) const
-{
-	args_.metrics(mi);
-	expanded_.metrics(mi, dim);
-	dim.wid -= args_.size() ? args_.width() : 0;
+	if (!MacroTable::globalMacros().has(name())) {
+		mathed_string_dim(mi.base.font, "Unknown: " + name(), dim);
+	} else if (editing(mi.base.bv)) {
+		asArray(MacroTable::globalMacros().get(name()).def(), tmpl_);
+		LyXFont font = mi.base.font;
+		augmentFont(font, "lyxtex");
+		tmpl_.metrics(mi, dim);
+		dim.wid += mathed_string_width(font, name()) + 10;
+		int ww = mathed_string_width(font, "#1: ");
+		for (idx_type i = 0; i < nargs(); ++i) {
+			MathArray const & c = cell(i);
+			c.metrics(mi);
+			dim.wid  = max(dim.wid, c.width() + ww);
+			dim.des += c.height() + 10;
+		}
+	} else {
+		MacroTable::globalMacros().get(name()).expand(cells_, expanded_);
+		expanded_.metrics(mi, dim);
+	}
+	metricsMarkers2(dim);
 	dim_ = dim;
 }
 
 
 void MathMacro::draw(PainterInfo & pi, int x, int y) const
 {
-	LyXFont font = pi.base.font;
-	augmentFont(font, "lyxtex");
-	drawStr(pi, font, x, y, "\\" + name());
-	setPosCache(pi, x, y);
-}
-
-
-void MathMacro::drawExpanded(PainterInfo & pi, int x, int y) const
-{
-	expanded_.draw(pi, x, y);
+	if (!MacroTable::globalMacros().has(name())) {
+		drawStrRed(pi, x, y, "Unknown: " + name());
+	} else if (editing(pi.base.bv)) {
+		LyXFont font = pi.base.font;
+		augmentFont(font, "lyxtex");
+		int h = y - dim_.ascent() + 2 + tmpl_.ascent();
+		drawStr(pi, font, x + 3, h, name());
+		int const w = mathed_string_width(font, name());
+		tmpl_.draw(pi, x + w + 12, h);
+		h += tmpl_.descent();
+		Dimension ldim;
+		mathed_string_dim(font, "#1: ", ldim);
+		for (idx_type i = 0; i < nargs(); ++i) {
+			MathArray const & c = cell(i);
+			h += max(c.ascent(), ldim.asc) + 5;
+			c.draw(pi, x + ldim.wid, h);
+			char str[] = "#1:";
+			str[1] += static_cast<char>(i);
+			drawStr(pi, font, x + 3, h, str);
+			h += max(c.descent(), ldim.des) + 5;
+		}
+	} else {
+		expanded_.draw(pi, x, y);
+	}
 	drawMarkers2(pi, x, y);
-}
-
-
-int MathMacro::widthExpanded() const
-{
-	return expanded_.width();
 }
 
 
@@ -123,8 +131,6 @@ void MathMacro::octave(OctaveStream & os) const
 
 void MathMacro::updateExpansion() const
 {
-#warning FIXME
-	//expand();
 	//expanded_.substitute(*this);
 }
 

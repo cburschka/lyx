@@ -15,29 +15,23 @@
 
 #include "math_nestinset.h"
 #include "math_data.h"
+#include "math_nestinset.h"
+#include "math_macrotable.h"
 
 
 /// This class contains the data for a macro.
-class MathMacro : public MathDimInset {
+class MathMacro : public MathNestInset {
 public:
 	/// A macro can be built from an existing template
-	explicit MathMacro(std::string const &);
+	MathMacro(std::string const & name, int numargs);
 	///
 	std::auto_ptr<InsetBase> clone() const;
-	///
-	MathMacro * asMacro() { return this; }
-	///
-	MathMacro const * asMacro() const { return this; }
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void drawExpanded(PainterInfo & pi, int x, int y) const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
-	///
-	void metricsExpanded(MetricsInfo & mi, Dimension & dim) const;
-	///
-	int widthExpanded() const;
 	///
 	std::string name() const;
 	///
@@ -60,13 +54,15 @@ public:
 private:
 	///
 	void updateExpansion() const;
-
 	///
+	void expand() const;
+	
+	/// name of macro
 	std::string name_;
-	///
+	/// the unexpanded macro defintition
+	mutable MathArray tmpl_;
+	/// the matcro substituted with our args
 	mutable MathArray expanded_;
-	///
-	mutable MathArray args_;
 };
 
 

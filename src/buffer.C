@@ -641,6 +641,9 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, par_type pit)
 	}
 
 	bool the_end = readBody(lex);
+	//lyxerr << "removing " << MacroTable::localMacros().size()
+	//	<< " temporary macro entries" << endl;
+	//MacroTable::localMacros().clear();
 	params().setPaperStuff();
 
 #ifdef WITH_WARNINGS
@@ -1499,6 +1502,7 @@ bool Buffer::hasMacro(string const & name) const
 
 void Buffer::insertMacro(string const & name, MacroData const & data)
 {
+	MacroTable::globalMacros().insert(name, data);
 	pimpl_->macros.insert(name, data);
 }
 
