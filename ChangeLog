@@ -1,3 +1,24 @@
+2000-10-10  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/lyx_gui.C (create_forms): Fix crash with locales.
+
+2000-10-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/bind/fi_menus.bind: update from pauli.virtanen@saunalahti.fi.
+
+2000-10-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/spellchecker.C: make sure we only include strings.h when
+	_AIX is defined.
+
+2000-10-05  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* buffer.C
+	* bufferview_funcs.[Ch]
+	* lyxfont.[Ch]
+	* text.C
+	* text2.C: Add support for numbers in RTL text.
+
 2000-10-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/math_parser.C (LexInitCodes): set lexcode of "@" to

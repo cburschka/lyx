@@ -697,6 +697,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			font.setLanguage(params.language_info);
 			lex.printError("Unknown language `$$Token'");
 		}
+	} else if (token == "\\numeric") {
+		lex.next();
+		font.setNumber(font.setLyXMisc(lex.GetString()));
 	} else if (token == "\\emph") {
 		lex.next();
 		font.setEmph(font.setLyXMisc(lex.GetString()));

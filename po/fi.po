@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.1.5fix1\n"
-"POT-Creation-Date: 2000-10-04 17:06+0300\n"
-"PO-Revision-Date: 2000-10-03 13:44+03:00\n"
+"POT-Creation-Date: 2000-10-04 21:18+0300\n"
+"PO-Revision-Date: 2000-10-06 18:51+03:00\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@saunalahti.fi>\n"
 "Language-Team: Finnish, out-of-team\n"
 "MIME-Version: 1.0\n"
@@ -22,160 +22,160 @@ msgstr ""
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:399
+#: src/buffer.C:403
 msgid "Textclass Loading Error!"
 msgstr "Virhe tekstiluokan lataamisessa!"
 
-#: src/buffer.C:400
+#: src/buffer.C:404
 msgid "Can't load textclass "
 msgstr "Tekstiluokkaa ei voi ladata "
 
-#: src/buffer.C:402
+#: src/buffer.C:406
 msgid "-- substituting default"
 msgstr "-- korvautuu oletuksella"
 
-#: src/buffer.C:1092
+#: src/buffer.C:1096
 #, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f\n"
 msgstr ""
 "Varoitus: tarvittava LyX-tiedostomuoto on %.2f, mutta tunnistettu on %.2f\n"
 
-#: src/buffer.C:1096
+#: src/buffer.C:1100
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f\n"
 msgstr ""
 "Virhe: tarvittava LyX-tiedostomuoto on %.2f, mutta tunnistettu on %.2f\n"
 
-#: src/buffer.C:1107
+#: src/buffer.C:1111
 msgid "Warning!"
 msgstr "Varoitus!"
 
-#: src/buffer.C:1108
+#: src/buffer.C:1112
 msgid "Reading of document is not complete"
 msgstr "Asiakirjaa ei ole viel‰ luettu kokonaan"
 
-#: src/buffer.C:1109
+#: src/buffer.C:1113
 msgid "Maybe the document is truncated"
 msgstr "Asiakirja saattaa olla typistetty"
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1115 src/buffer.C:1122 src/buffer.C:1125
+#: src/buffer.C:1119 src/buffer.C:1126 src/buffer.C:1129
 msgid "ERROR!"
 msgstr "VIRHE!"
 
-#: src/buffer.C:1116
+#: src/buffer.C:1120
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Vanha LyX-tiedostomuoto tunnistettu. Lue version 0.10.x avulla!"
 
-#: src/buffer.C:1122
+#: src/buffer.C:1126
 msgid "Not a LyX file!"
 msgstr "Ei ole LyX-tiedosto!"
 
-#: src/buffer.C:1125
+#: src/buffer.C:1129
 msgid "Unable to read file!"
 msgstr "Tiedostoa ei voi lukea!"
 
-#: src/buffer.C:1205
+#: src/buffer.C:1209
 msgid "Could not delete auto-save file!"
 msgstr "Automaattista tallennustiedostoa ei voi poistaa!"
 
-#: src/buffer.C:1231 src/buffer.C:1234
+#: src/buffer.C:1235 src/buffer.C:1238
 msgid "Error! Document is read-only: "
 msgstr "Virhe! Kirjoitussuojattu asiakirja:"
 
-#: src/buffer.C:1244 src/buffer.C:1247
+#: src/buffer.C:1248 src/buffer.C:1251
 msgid "Error! Cannot write file: "
 msgstr "Virhe! Tiedostoon ei voi kirjoittaa:"
 
-#: src/buffer.C:1255 src/buffer.C:1258
+#: src/buffer.C:1259 src/buffer.C:1262
 msgid "Error! Cannot open file: "
 msgstr "Virhe! Tiedostoa ei voi avata:"
 
-#: src/buffer.C:1304
+#: src/buffer.C:1320
 msgid "Error: Cannot write file:"
 msgstr "Virhe: Tiedostoon ei voi kirjoittaa:"
 
-#: src/buffer.C:1635
+#: src/buffer.C:1651
 msgid "Error: Cannot open file: "
 msgstr "Virhe: Tiedostoa ei voi avata:"
 
-#: src/buffer.C:2238 src/buffer.C:2843 src/buffer.C:3499
+#: src/buffer.C:2254 src/buffer.C:2859 src/buffer.C:3515
 msgid "LYX_ERROR:"
 msgstr "LYX_VIRHE:"
 
-#: src/buffer.C:2238 src/buffer.C:2843
+#: src/buffer.C:2254 src/buffer.C:2859
 msgid "Cannot write file"
 msgstr "Tiedostoon ei voi kirjoittaa"
 
-#: src/buffer.C:2314 src/buffer.C:2926
+#: src/buffer.C:2330 src/buffer.C:2942
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Virhe : V‰‰r‰ syvyys LatexType-komennoksi.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3248
+#: src/buffer.C:3264
 msgid "Running LaTeX..."
 msgstr "LaTeX on k‰ynniss‰..."
 
-#: src/buffer.C:3266
+#: src/buffer.C:3282
 msgid "LaTeX did not work!"
 msgstr "LaTeX ei toiminut!"
 
-#: src/buffer.C:3267 src/buffer.C:3334 src/buffer.C:3404
+#: src/buffer.C:3283 src/buffer.C:3350 src/buffer.C:3420
 msgid "Missing log file:"
 msgstr "Puuttuva lokitiedosto:"
 
 #. no errors or any other things to think about so:
-#: src/buffer.C:3269 src/buffer.C:3278 src/buffer.C:3336 src/buffer.C:3345
-#: src/buffer.C:3406 src/buffer.C:3414 src/combox.C:461
+#: src/buffer.C:3285 src/buffer.C:3294 src/buffer.C:3352 src/buffer.C:3361
+#: src/buffer.C:3422 src/buffer.C:3430 src/combox.C:461
 msgid "Done"
 msgstr "Valmis"
 
 #. path to Literate file
-#: src/buffer.C:3314
+#: src/buffer.C:3330
 msgid "Running Literate..."
 msgstr "Literate on k‰ynniss‰..."
 
-#: src/buffer.C:3333
+#: src/buffer.C:3349
 msgid "Literate command did not work!"
 msgstr "Literate-komento ei toiminut!"
 
 #. path to Literate file
-#: src/buffer.C:3381
+#: src/buffer.C:3397
 msgid "Building Program..."
 msgstr "Build-ohjelma k‰ynniss‰..."
 
-#: src/buffer.C:3403
+#: src/buffer.C:3419
 msgid "Build did not work!"
 msgstr "Build ei toiminut!"
 
 #. path to LaTeX file
-#: src/buffer.C:3451
+#: src/buffer.C:3467
 msgid "Running chktex..."
 msgstr "chktex on k‰ynniss‰..."
 
-#: src/buffer.C:3464
+#: src/buffer.C:3480
 msgid "chktex did not work!"
 msgstr "chktex ei toiminut!"
 
-#: src/buffer.C:3465
+#: src/buffer.C:3481
 msgid "Could not run with file:"
 msgstr "Ohjelma ei voinut k‰sitell‰ tiedostoa:"
 
-#: src/buffer.C:3500
+#: src/buffer.C:3516
 msgid "Cannot open temporary file:"
 msgstr "V‰liaikaistiedostoa ei voi avata:"
 
-#: src/buffer.C:3578
+#: src/buffer.C:3594
 msgid "Error! Can't open temporary file:"
 msgstr "Virhe! V‰liaikaistiedostoa ei voi avata:"
 
-#: src/BufferView2.C:61 src/BufferView2.C:71 src/buffer.C:3585
+#: src/BufferView2.C:61 src/BufferView2.C:71 src/buffer.C:3601
 #: src/bufferlist.C:411 src/lyx_cb.C:396 src/lyx_cb.C:758 src/lyx_cb.C:784
 #: src/lyx_sendfax_main.C:264 src/menus.C:2130
 msgid "Error!"
 msgstr "Virhe!"
 
-#: src/buffer.C:3586
+#: src/buffer.C:3602
 msgid "Error executing *roff command on table"
 msgstr "Virhe suoritettaessa *roff-komentoa taulukkoon"
 
@@ -3549,11 +3549,11 @@ msgstr "Sulje"
 
 #: src/lyx_gui_misc.C:412 src/lyx_gui_misc.C:421 src/lyx_gui_misc.C:425
 msgid "Yes|Yy#y"
-msgstr "Kyll‰|kK#k"
+msgstr "Kyll‰|Kk#k"
 
 #: src/lyx_gui_misc.C:413 src/lyx_gui_misc.C:422 src/lyx_gui_misc.C:426
 msgid "No|Nn#n"
-msgstr "Ei|eE#e"
+msgstr "Ei|Ee#e"
 
 #: src/lyx_gui_misc.C:436
 msgid "Clear|#e"
@@ -4038,7 +4038,7 @@ msgstr "Lis‰‰"
 
 #: src/menus.C:195 src/menus.C:331 src/menus.C:332 src/menus.C:333
 msgid "Math"
-msgstr "Matematiikka"
+msgstr "Matem."
 
 #: src/menus.C:201 src/menus.C:210 src/menus.C:373 src/menus.C:374
 #: src/menus.C:375 src/menus.C:434 src/menus.C:435 src/menus.C:436
@@ -4079,7 +4079,7 @@ msgstr "MB|#A"
 
 #: src/menus.C:363
 msgid "MB|#D"
-msgstr "MB|#k"
+msgstr "MB|#j"
 
 #: src/menus.C:377 src/menus.C:438
 msgid "MB|#H"
@@ -4600,7 +4600,7 @@ msgstr "EM|Xx#x#X"
 
 #: src/menus.C:1159
 msgid "EM|Tt#t#T"
-msgstr "EM|Tt#t#T"
+msgstr "EM|yY#y#Y"
 
 #. fl_setpup_shortcut(EditMenu, 14, scex(_("EM|Ff#f#F")));
 #. fl_setpup_shortcut(EditMenu, 15, scex(_("EM|bB#b#B")));
@@ -4790,15 +4790,15 @@ msgstr ""
 
 #: src/menus.C:1719
 msgid "IMF|gG#g#G"
-msgstr "IMF|Kk#k#K"
+msgstr "IMF|kK#k#K"
 
 #: src/menus.C:1720
 msgid "IMF|Tt#t#T"
-msgstr "IMF|Tt#t#T"
+msgstr "IMF|tT#t#T"
 
 #: src/menus.C:1721
 msgid "IMF|Ww#w#W"
-msgstr "IMF|Ll#l#L"
+msgstr "IMF|lL#l#L"
 
 #: src/menus.C:1722
 msgid "IMF|iI#i#I"
@@ -4806,7 +4806,7 @@ msgstr "IMF|eE#e#E"
 
 #: src/menus.C:1723
 msgid "IMF|Aa#a#A"
-msgstr "IMF|Aa#a#A"
+msgstr "IMF|aA#a#A"
 
 #: src/menus.C:1726
 msgid ""
@@ -4840,7 +4840,7 @@ msgstr "IMS|Ee#e#E"
 
 #: src/menus.C:1741
 msgid "IMS|Ee#e#E"
-msgstr "IMS|Vv#v#V"
+msgstr "IMS|pP#p#P"
 
 #: src/menus.C:1742
 msgid "IMS|Qq#q#Q"
@@ -4856,11 +4856,7 @@ msgid ""
 "File...%l|Footnote|Margin Note|Floats%m%l|Lists & TOC%m%l|Special "
 "Character%m%l|Note...|Label...|Cross-Reference...|Citation "
 "Reference...|Index entry...|Index entry of last word"
-msgstr ""
-"Kuva...|Taulukko...%l|Sis‰llyt‰ tiedosto...|Tuo ASCII-tiedosto%m|Lis‰‰ "
-"LyX-tiedosto...%l|Alaviite|Reunahuomautus|Irralliset "
-"osat%m%l|Luettelot%m%l|Erikoismerkki%m%l|Huomautus...|Nimike...|Viite...|L‰hd"
-"eviite...|Hakemistoviite...|Hakemistoviite edelt‰v‰st‰ sanasta"
+msgstr "Kuva...|Taulukko...%l|Sis‰llyt‰ tiedosto...|Tuo ASCII-tiedosto%m|Lis‰‰ LyX-tiedosto...%l|Alaviite|Reunahuomautus|Irralliset osat%m%l|Luettelot%m%l|Erikoismerkki%m%l|Muistiinpano...|Nimike...|Viite...|L‰hdeviite...|Hakemistoviite...|Hakemistoviite edelt‰v‰st‰ sanasta"
 
 #: src/menus.C:1767
 msgid "IM|gG#g#G"
@@ -4904,7 +4900,7 @@ msgstr "IM|oO#o#O"
 
 #: src/menus.C:1777
 msgid "IM|Nn#n#N"
-msgstr "IM|Hh#h#H"
+msgstr "IM|pP#p#P"
 
 #: src/menus.C:1778
 msgid "IM|Ll#l#L"

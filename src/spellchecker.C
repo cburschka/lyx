@@ -36,7 +36,10 @@
 #ifdef HAVE_SYS_SELECT_H
 # ifdef HAVE_STRINGS_H
    // <strings.h> is needed at least on AIX because FD_ZERO uses bzero().
-#  include <strings.h> 
+   // BUT we cannot include both string.h and strings.h on Irix 6.5 :(
+#  ifdef _AIX
+#   include <strings.h>
+#  endif
 # endif
 #include <sys/select.h>
 #endif

@@ -78,6 +78,12 @@ void Lang(BufferView * bv, string const & l)
 		WriteAlert(_("Error! unknown language"),l);
 }
 
+void Number(BufferView * bv)
+{
+	LyXFont font(LyXFont::ALL_IGNORE);
+	font.setNumber(LyXFont::TOGGLE);
+	ToggleAndShow(bv, font);
+}
 
 void Melt(BufferView * bv)
 {
@@ -295,7 +301,8 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font)
 		bv->update(1);
 
 		if (font.language() != ignore_language ||
-		    font.latex() != LyXFont::IGNORE) {
+		    font.latex() != LyXFont::IGNORE ||
+		    font.number() != LyXFont::IGNORE) {
 			LyXText * text = bv->text;
 			LyXCursor & cursor = text->cursor;
 			text->ComputeBidiTables(cursor.row);

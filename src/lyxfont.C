@@ -290,6 +290,7 @@ void LyXFont::update(LyXFont const & newfont,
 	setNoun(setMisc(newfont.noun(), noun()));
 	setLatex(setMisc(newfont.latex(), latex()));
 
+	setNumber(setMisc(newfont.number(), number()));
 	if (newfont.language() == language() && toggleall)
 		if (language() == document_language)
 			setLanguage(default_language);
@@ -413,6 +414,8 @@ string LyXFont::stateText(BufferParams * params) const
 		ost << _("Default") << ", ";
 	if (!params || language() != params->language_info)
 		ost << _("Language: ") << _(language()->display.c_str());
+	if (number() != OFF)
+		ost << _("  Number ") << _(GUIMiscNames[number()]);
 #ifdef HAVE_SSTREAM
 	string buf(ost.str().c_str());
 #else
@@ -621,6 +624,9 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, ostream & os) const
 	if (orgfont.emph() != emph()) {
 		os << "\\emph " << LyXMiscNames[emph()] << " \n";
 	}
+	if (orgfont.number() != number()) {
+		os << "\\numeric " << LyXMiscNames[number()] << " \n";
+	}
 	if (orgfont.underbar() != underbar()) {
 		// This is only for backwards compatibility
 		switch (underbar()) {
@@ -686,11 +692,9 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 			if (isRightToLeft()) {
 				os << "\\R{";
 				count += 3;
-				env = true; //We have opened a new environment
 			} else {
 				os << "\\L{";
 				count += 3;
-				env = true; //We have opened a new environment
 			}
 		} else {
 			string tmp = '{' + 
@@ -698,8 +702,13 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 				      "$$lang", language()->lang);
 			os << tmp;
 			count += tmp.length();
-			env = true; //We have opened a new environment
 		}
+	}
+
+	if (number() == ON && prev.number() != ON &&
+	    language()->lang == "hebrew") {
+		os << "{\\beginL ";
+		count += 9;
 	}
 
 	LyXFont f = *this;
@@ -773,17 +782,12 @@ int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
 	int count = 0;
 	bool env = false;
 
-	if (language() != base.language() && language() != next.language()) {
-		os << "}";
-		++count;
-		env = true; // Size change need not bother about closing env.
-	}
-
 	LyXFont f = *this; // why do you need this?
 	f.reduce(base); // why isn't this just "reduce(base);" (Lgb)
 	// Because this function is const. Everything breaks if this
 	// method changes the font it represents. There is no speed penalty
 	// by using the temporary. (Asger)
+
 
 	if (f.family() != INHERIT_FAMILY) {
 		os << '}';
@@ -826,6 +830,17 @@ int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
 			os << '}';
 			++count;
 		}
+	}
+
+	if (number() == ON && next.number() != ON &&
+	    language()->lang == "hebrew") {
+		os << "\\endL}";
+		count += 6;
+	}
+
+	if (language() != base.language() && language() != next.language()) {
+		os << "}";
+		++count;
 	}
 
 	return count;

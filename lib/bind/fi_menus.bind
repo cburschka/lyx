@@ -10,6 +10,8 @@
 # Adapted to the finnish internationalization December 22 1999
 # by pauli.virtanen@saunalahti.fi
 #
+# Last updated: 6 Oct 2000
+#
 
 # Key bindings for menus, both invisible and visible.
 
@@ -19,11 +21,13 @@
 
 \bind "F10 t"			"menu-open Tiedosto"
 \bind "F10 m"			"menu-open Muokkaa"
+\bind "F10 s"			"menu-open Sisällys"
+\bind "F10 v"			"menu-open Viitteet"
 \bind "F10 u"			"menu-open Muotoile"
 \bind "F10 l"			"menu-open Lisää"
-\bind "F10 e"			"menu-open Matematiikka"
+\bind "F10 e"			"menu-open Matem."
 \bind "F10 a"			"menu-open Asetukset"
-\bind "F10 k"			"menu-open Asiakirjat"
+\bind "F10 j"			"menu-open Asiakirjat"
 \bind "F10 o"			"menu-open Ohje"
 
 
@@ -55,7 +59,7 @@
 \bind "M-t e h"			"buffer-export html"
 \bind "M-t e o"                 "buffer-export custom"
 \bind "M-t p"			"lyx-quit"
-\bind "M-t space"		"menu-open File" 
+\bind "M-t space"		"menu-open Tiedosto" 
 
 #
 # Edit menu
@@ -73,11 +77,18 @@
 
 \bind "M-m o"			"spellchecker"
 \bind "M-m x"			"buffer-chktex"
-\bind "M-m s"			"toc-view"
+\bind "M-m y"			"toc-view"
 
 \bind "M-m n"			"latex-view-log"
 
-\bind "M-m space"		"menu-open Edit" 
+\bind "M-m space"		"menu-open Muokkaa" 
+
+
+#
+# Refs menu
+#
+\bind "M-v p"			"reference-back"
+\bind "M-v space"		"menu-open Viitteet"
 
 #
 # Layout menu
@@ -96,7 +107,8 @@
 \bind "M-u y"			"depth-next"
 \bind "M-u e"			"layout-preamble"
 \bind "M-u u"			"layout-save-default"
-\bind "M-u space"		"menu-open Layout"  
+\bind "M-u i"			"appendix"
+\bind "M-u space"		"menu-open Muotoile"
 
 
 #
@@ -105,43 +117,43 @@
 
 \bind "M-l k"			"figure-insert"
 \bind "M-l t"			"table-insert"
-\bind "M-l s"			"buffer-child-insert"
+\bind "M-l y"			"buffer-child-insert"
 \bind "M-l c r"			"file-insert-ascii line"         
 \bind "M-l c k"			"file-insert-ascii paragraph"
 \bind "M-l x"			"file-insert"
 \bind "M-l a"			"footnote-insert"
 \bind "M-l r"			"marginpar-insert"
 
-\bind "M-l o k"			"buffer-float-insert figure" 
-\bind "M-l o t"			"buffer-float-insert table"
-\bind "M-l o l"			"buffer-float-insert wide-fig"
-\bind "M-l o e"			"buffer-float-insert wide-tab"
-\bind "M-l o a"			"buffer-float-insert algorithm"
+\bind "M-l i k"			"buffer-float-insert figure" 
+\bind "M-l i t"			"buffer-float-insert table"
+\bind "M-l i l"			"buffer-float-insert wide-fig"
+\bind "M-l i e"			"buffer-float-insert wide-tab"
+\bind "M-l i a"			"buffer-float-insert algorithm"
 
-\bind "M-l t s"			"toc-insert"
-\bind "M-l t k"			"lof-insert"
-\bind "M-l t t"			"lot-insert"
-\bind "M-l t a"			"loa-insert"
-\bind "M-l t h"			"index-print"
-\bind "M-l t b"			"bibtex-insert"
+\bind "M-l l s"			"toc-insert"
+\bind "M-l l k"			"lof-insert"
+\bind "M-l l t"			"lot-insert"
+\bind "M-l l a"			"loa-insert"
+\bind "M-l l h"			"index-print"
+\bind "M-l l b"			"bibtex-insert"
 
-\bind "M-l s v"			"hfill-insert"
-\bind "M-l e t"	        	"hyphenation-point-insert"
-\bind "M-l e k"			"protected-space-insert"
-\bind "M-l e r"			"break-line"
-\bind "M-l e e"			"dots-insert"
-\bind "M-l e v"			"end-of-sentence-period-insert"
-\bind "M-l e l"			"quote-insert"
-\bind "M-l e m"			"menu-separator-insert"
+\bind "M-l o v"			"hfill-insert"
+\bind "M-l o t"	        	"hyphenation-point-insert"
+\bind "M-l o k"			"protected-space-insert"
+\bind "M-l o r"			"break-line"
+\bind "M-l o e"			"dots-insert"
+\bind "M-l o p"			"end-of-sentence-period-insert"
+\bind "M-l o l"			"quote-insert"
+\bind "M-l o m"			"menu-separator-insert"
 
-\bind "M-l h"			"note-insert"
+\bind "M-l p"			"note-insert"
 \bind "M-l n"			"label-insert"
 \bind "M-l v"			"reference-insert"
-\bind "M-l i"			"citation-insert"
-\bind "M-l k"			"index-insert"
-\bind "M-l e"			"index-insert-last"
+\bind "M-l d"			"citation-insert"
+\bind "M-l m"			"index-insert"
+\bind "M-l s"			"index-insert-last"
 \bind "M-l u"			"url-insert"
-\bind "M-l space"		"menu-open Insert"  
+\bind "M-l space"		"menu-open Lisää"
 
 
 
@@ -158,7 +170,7 @@
 \bind "M-e t"                   "math-mode"
 \bind "M-e k"                   "math-display"
 #bind "M-e p"                  "display-math-panel-or-something" # What function to use?
-\bind "M-e space"		"menu-open Math" 
+\bind "M-e space"		"menu-open Matem."
 
 #
 # Options menu
@@ -168,8 +180,8 @@
 #bind "M-a o"			"spellcheck-options"	# Not yet implemented!
 #bind "M-a n"			"keyboard-options"	# Not yet implemented!
 #bind "M-a l"			"latex-options"		# Not yet implemented!
-\bind "M-a u"                   "reconfigure"
-\bind "M-a space"		"menu-open Options"  
+\bind "M-a k"                   "reconfigure"
+\bind "M-a space"		"menu-open Asetukset"
 
 
 #
@@ -177,8 +189,8 @@
 #
 # These are now defined in cua or emacs bind files so their "standard"
 # bindings are available. (eg M-d "word-delete-forward" in emacs) ARRae
-#\bind "M-d p"			"buffer-previous"
-#\bind "M-d space"		"menu-open Documents"
+#\bind "M-k p"			"buffer-previous"
+\bind "M-j space"		"menu-open Asiakirjat"
 
 
 #
@@ -197,7 +209,10 @@
 #bind "M-o t"			"help-copyright"	# Not yet implemented!
 #bind "M-o k"			"help-credits"		# Not yet implemented!
 #bind "M-o v"			"help-version"		# Not yet implemented!
-\bind "M-o space"		"menu-open Help" 
+\bind "M-o space"		"menu-open Ohje" 
+
+
+## Below this the bindings aren't localized.
 
 
 #

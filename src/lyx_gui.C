@@ -404,7 +404,7 @@ void LyXGUI::create_forms()
 		combo_language->addto((*cit).second.lang.c_str());
 		combo_language2->addto((*cit).second.lang.c_str());
 	}
-	combo_language2->select_text("No change");
+	combo_language2->select_text(_("No change"));
 
 	// not really necessary, but we can do it anyway.
 	fl_addto_choice(fd_form_document->choice_fontsize, "default|10|11|12");

@@ -33,6 +33,7 @@
 #include "Painter.h"
 #include "tracer.h"
 #include "font.h"
+#include "bufferview_funcs.h"
 
 using std::max;
 using std::min;
@@ -305,7 +306,6 @@ LyXParagraph::size_type LyXText::RowLastPrintable(Row const * row) const
 		return last;
 }
 
-
 void LyXText::ComputeBidiTables(Row * row) const
 {
 	bidi_same_direction = true;
@@ -349,6 +349,13 @@ void LyXText::ComputeBidiTables(Row * row) const
 			 (!row->par->table || !row->par->IsNewline(lpos+1)) )
 			? lpos + 1 : lpos;
 		LyXFont font = row->par->GetFontSettings(pos);
+		if (pos != lpos && 0 < lpos && rtl0 && font.isRightToLeft() &&
+		    font.number() == LyXFont::ON &&
+		    row->par->GetFontSettings(lpos-1).number() == LyXFont::ON) {
+                        font = row->par->GetFontSettings(lpos);
+			is_space = false;
+		}
+
 		bool new_rtl = font.isVisibleRightToLeft();
 		bool new_rtl0 = font.isRightToLeft();
 		int new_level;
@@ -357,7 +364,7 @@ void LyXText::ComputeBidiTables(Row * row) const
 			new_level = 0;
 			new_rtl = new_rtl0 = false;
 		} else if (lpos == main_body - 1 && row->pos < main_body - 1 &&
-			   row->par->IsLineSeparator(lpos)) {
+			   is_space) {
 			new_level = (rtl_par) ? 1 : 0;
 			new_rtl = new_rtl0 = rtl_par;
 		} else if (new_rtl0)
@@ -2655,6 +2662,38 @@ void LyXText::InsertChar(char c)
 	bool freeSpacing = 
 		textclasslist.Style(buffer->params.textclass,
 			       cursor.row->par->GetLayout()).free_spacing;
+
+	if (lyxrc.auto_number) {
+		if (current_font.number() == LyXFont::ON) {
+			if (!isdigit(c) && !strchr("+-/*", c) &&
+			    !(strchr(".",c) &&
+			      cursor.pos >= 1 && cursor.pos < cursor.par->size() &&
+			      GetFont(cursor.par, cursor.pos).number() == LyXFont::ON &&
+			      GetFont(cursor.par, cursor.pos-1).number() == LyXFont::ON)
+			    )
+				Number(owner_); // Set current_font.number to OFF
+		} else if (isdigit(c) &&
+			   real_current_font.isVisibleRightToLeft()) {
+			Number(owner_); // Set current_font.number to ON
+
+			if (cursor.pos > 0) {
+				char c = cursor.par->GetChar(cursor.pos - 1);
+				if (strchr("+-",c) &&
+				    (cursor.pos == 1 ||
+				     cursor.par->IsSeparator(cursor.pos - 2) ||
+				     cursor.par->IsNewline(cursor.pos - 2) )
+				    ) {
+					SetCharFont(cursor.par, cursor.pos - 1,
+						    current_font);
+				} else if (strchr(".", c) &&
+					   cursor.pos >= 2 &&
+					   GetFont(cursor.par, cursor.pos-2).number() == LyXFont::ON) {
+					SetCharFont(cursor.par, cursor.pos - 1,
+						    current_font);
+				}
+			}
+		}
+	}
 
 	/* table stuff -- begin*/
   	if (cursor.par->table) {

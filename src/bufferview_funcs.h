@@ -24,6 +24,8 @@ extern void Table();
 ///
 extern void Lang(BufferView *, string const &);
 ///
+extern void Number(BufferView *);
+///
 extern void Melt(BufferView *);
 ///
 extern void Tex(BufferView *);
