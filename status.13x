@@ -38,6 +38,9 @@ What's new
 
 - Fix LaTeX output of percentage length values <10% [bug 1523].
 
+- Fix crash when reading equations containing more columns than allowed 
+  [bug 1542].
+
 - Fix output of mathbb and mathcal symbols via the math panel
   (xforms only) [bug 1214].
 
@@ -63,8 +66,8 @@ What's new
 
 - Enable XForms frontend to build with picky versions of 'make'.
 
-- Fix link error with some compiler/os combinations [bug 1702]
+- Fix link error with some compiler/os combinations [bug 1702].
 
-- Fix link error with Cygwin
+- Fix link error with Cygwin.
 
 - Fix warnings with recent versions of automake.
