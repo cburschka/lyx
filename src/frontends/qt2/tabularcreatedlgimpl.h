@@ -15,20 +15,20 @@ class FormTabularCreate;
 
 class TabularCreateDlgImpl : public InsertTabularDlg
 { 
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    TabularCreateDlgImpl(FormTabularCreate *form, QWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
-    ~TabularCreateDlgImpl();
+	TabularCreateDlgImpl(FormTabularCreate *form, QWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
+	~TabularCreateDlgImpl();
 
 protected slots:
-   void insert_tabular();
-   void cancel_adaptor();
-   virtual void colsChanged(int);
-   virtual void rowsChanged(int);
+	void insert_tabular();
+	void cancel_adaptor();
+	virtual void colsChanged(int);
+	virtual void rowsChanged(int);
    
 private:
-   FormTabularCreate * form_;
+	FormTabularCreate * form_;
 };
 
 #endif // TABULARCREATEDLGIMPL_H

@@ -113,16 +113,14 @@ public:
 		/// Math line color
 		mathline,
 
-		/// Footnote marker text
-		// FIXME: this is seemingly mis-used all over the place
-		footnote,
-		/// Footnote line color
-		footnoteframe,
+		/// caption frame color
+		captionframe,
+ 
+		/// collapsable insets text
+		collapsable,
+		/// collapsable insets frame
+		collapsableframe,
 
-		/// ERT marker text
-		// FIXME: is there any reason this is different from latex ?
-		ert,
-		
 		/// Inset marker background color
 		insetbg,
 		/// Inset marker frame color

@@ -2,9 +2,9 @@
 /* This file is part of
  * ======================================================
  *
- *           LyX, The Document Processor
+ *		   LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *		   Copyright 2000 The LyX Team.
  *
  * ======================================================
  *
@@ -16,6 +16,8 @@
 
 class QDialog;
 
+#include <config.h> 
+ 
 #include <qfont.h>
 #include <qobject.h>
 
@@ -36,7 +38,7 @@ class qt2BC;
  */
 class Qt2Base : public QObject, public ViewBC<qt2BC>
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
 	///
 	Qt2Base(ControlButtons &, const QString &);
@@ -52,26 +54,26 @@ protected:
 	void show();
 
 protected slots:
-    // dialog closed from WM
-    void slotWMHide();
+	// dialog closed from WM
+	void slotWMHide();
 
-    // Apply button clicked
-    void slotApply();
+	// Apply button clicked
+	void slotApply();
 
-    // OK button clicked
-    void slotOK();
+	// OK button clicked
+	void slotOK();
 
-    // Cancel button clicked
-    void slotCancel();
+	// Cancel button clicked
+	void slotCancel();
 
-    // Restore button clicked
-    void slotRestore();
+	// Restore button clicked
+	void slotRestore();
 
 private:
 	/// Pointer to the actual instantiation of xform's form
 	virtual QDialog* form() const = 0;
  	/** Filter the inputs on callback from xforms
- 	    Return true if inputs are valid. */
+ 		Return true if inputs are valid. */
  	virtual ButtonPolicy::SMInput input(QWidget*, long);
 
 private:
@@ -102,7 +104,7 @@ Qt2DB<Dialog>::Qt2DB(ControlButtons & c, const QString& t)
 template <class Dialog>
 QDialog* Qt2DB<Dialog>::form() const
 {
-    return dialog_.get();
+	return dialog_.get();
 }
 
 

@@ -30,132 +30,144 @@
 
 
 PrintDlgImpl::PrintDlgImpl( FormPrint *f, QWidget* parent,  const char* name, bool modal, WFlags fl )
-    : PrintDlg( parent, name, modal, fl ), form_(f)
+	: PrintDlg( parent, name, modal, fl ), form_(f)
 {
-   setCaption(name);
+	setCaption(name);
 }
 
+ 
 PrintDlgImpl::~PrintDlgImpl()
 {
-    // no need to delete child widgets, Qt does it all for us
+	 // no need to delete child widgets, Qt does it all for us
 }
+
 
 const char * PrintDlgImpl::getFrom() {
-   return fromPage->text();
+	return fromPage->text();
 }
 
+
 const char * PrintDlgImpl::getTo() {
-   return toPage->text();
+	return toPage->text();
 }
+
 	
 PrinterParams::Target PrintDlgImpl::getTarget() {
-   if (toPrinter->isChecked())
-     return PrinterParams::PRINTER;
-   else
-     return PrinterParams::FILE;
+	if (toPrinter->isChecked())
+		return PrinterParams::PRINTER;
+	else
+		return PrinterParams::FILE;
 }
 
 	
 const char * PrintDlgImpl::getPrinter() {
-   return printerName->text();
+	return printerName->text();
 }
 
 const char * PrintDlgImpl::getFile() {
-   return fileName->text();
+	return fileName->text();
 }
 
 PrinterParams::WhichPages PrintDlgImpl::getWhichPages() {
-   if (oddPages->isChecked())
-     return PrinterParams::ODD;
-   else if (evenPages->isChecked())
-     return PrinterParams::EVEN;
-   else
-     return PrinterParams::ALL;
+	if (oddPages->isChecked())
+		return PrinterParams::ODD;
+	else if (evenPages->isChecked())
+		return PrinterParams::EVEN;
+	else
+		return PrinterParams::ALL;
 }
 
 bool PrintDlgImpl::getReverse() {
-   return reverse->isChecked();
+	return reverse->isChecked();
 }
 
 bool PrintDlgImpl::getSort() {
-   return collate->isChecked();
+	return collate->isChecked();
 }
 
 const char * PrintDlgImpl::getCount() {
-   return copies->text();
+	return copies->text();
 }
 
 void PrintDlgImpl::setTarget(PrinterParams::Target t) {
-   toPrinter->setChecked(t==PrinterParams::PRINTER);
-   toFile->setChecked(t!=PrinterParams::PRINTER);
+	toPrinter->setChecked(t==PrinterParams::PRINTER);
+	toFile->setChecked(t!=PrinterParams::PRINTER);
 }
 
 void PrintDlgImpl::setPrinter(const char * name) {
-   printerName->setText(name);
+	printerName->setText(name);
 }
 
 void PrintDlgImpl::setFile(const char * name) {
-   fileName->setText(name);
+	fileName->setText(name);
 }	 
 
 void PrintDlgImpl::setWhichPages(PrinterParams::WhichPages wp) {
-   switch (wp) {
-      case PrinterParams::ALL:
-        allPages->setChecked(true);
-        break;
-      case PrinterParams::EVEN:
-        evenPages->setChecked(true);
-        break;
-      case PrinterParams::ODD:
-        oddPages->setChecked(true);
-        break;
-   }
+	switch (wp) {
+		case PrinterParams::ALL:
+			allPages->setChecked(true);
+			break;
+		case PrinterParams::EVEN:
+			evenPages->setChecked(true);
+			break;
+		case PrinterParams::ODD:
+			oddPages->setChecked(true);
+			break;
+	}
 }
+
 
 void PrintDlgImpl::setReverse(bool on) {
-   reverse->setChecked(on);
+	reverse->setChecked(on);
 }
+
 
 void PrintDlgImpl::setSort(bool on) {
-   collate->setChecked(on);
+	collate->setChecked(on);
 }
+
 
 void PrintDlgImpl::setCount(int num) {
-   copies->setValue(num);
-   collate->setEnabled(num > 1);
+	copies->setValue(num);
+	collate->setEnabled(num > 1);
 }
+
 
 void PrintDlgImpl::setFrom(const char * text) {
-   fromPage->setText(text);
+	fromPage->setText(text);
 }
+
 
 void PrintDlgImpl::setTo(const char * text) {
-   toPage->setText(text);
+	toPage->setText(text);
 }
 
+ 
 void PrintDlgImpl::browse_file()
 {
-   QString d( OnlyPath(tostr(fileName->text())).c_str() );
-   QString s( QFileDialog::getOpenFileName( d, "PostScript Files (*.ps)", this ) );
-   if (!s.isNull()) 
-     fileName->setText(s);
+	QString d( OnlyPath(tostr(fileName->text())).c_str() );
+	QString s( QFileDialog::getOpenFileName( d, "PostScript Files (*.ps)", this ) );
+	if (!s.isNull()) 
+		fileName->setText(s);
 }
 
+ 
 void PrintDlgImpl::print()
 {
-   form_->print();
-   form_->close();
-   hide();
+	form_->print();
+	form_->close();
+	hide();
 }
 
+ 
 void PrintDlgImpl::cancel_adaptor()
 {
-   form_->close();
-   hide();
+	form_->close();
+	hide();
 }
 
+ 
 void PrintDlgImpl::set_collate(int copies)
 {
 	collate->setEnabled(copies > 1);
 }
-

@@ -31,7 +31,7 @@ InsetERT::InsetERT() : InsetCollapsable()
 	labelfont = LyXFont(LyXFont::ALL_SANE);
 	labelfont.decSize();
 	labelfont.decSize();
-	labelfont.setColor(LColor::ert);
+	labelfont.setColor(LColor::latex);
 	setAutoCollapse(false);
 	setInsetName("ERT");
 }

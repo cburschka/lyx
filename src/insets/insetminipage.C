@@ -66,7 +66,7 @@ InsetMinipage::InsetMinipage()
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
-	font.setColor(LColor::footnote);
+	font.setColor(LColor::collapsable);
 	setLabelFont(font);
 	setAutoCollapse(false);
 	setInsetName("Minipage");

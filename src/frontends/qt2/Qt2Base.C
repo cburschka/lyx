@@ -2,9 +2,9 @@
 /* This file is part of
  * ======================================================
  *
- *           LyX, The Document Processor
+ *		   LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *		   Copyright 2000 The LyX Team.
  *
  * ======================================================
  *
@@ -33,28 +33,27 @@ Qt2Base::Qt2Base(ControlButtons & c, QString const & t)
 {}
 
 
-
 void Qt2Base::show()
 {
-    if (!form()) {
-	build();
-    }
+	if (!form()) {
+		build();
+	}
 
-    update();  // make sure its up-to-date
+	update();  // make sure its up-to-date
 
-    if (form()->isVisible()) {
-	form()->raise();
-    } else {
-	form()->setCaption( title_ );
-	form()->show();
-    }
+	if (form()->isVisible()) {
+		form()->raise();
+	} else {
+		form()->setCaption( title_ );
+		form()->show();
+	}
 }
 
 
 void Qt2Base::hide()
 {
-    if (form() && form()->isVisible() )
-	form()->hide();
+	if (form() && form()->isVisible() )
+		form()->hide();
 }
 
 
@@ -67,39 +66,39 @@ void Qt2Base::hide()
 
 ButtonPolicy::SMInput Qt2Base::input(QWidget*, long)
 {
-    return ButtonPolicy::SMI_VALID;
+	return ButtonPolicy::SMI_VALID;
 }
 
 
 
 void Qt2Base::slotWMHide()
 {
-    CancelButton();
+	CancelButton();
 }
 
 
 
 void Qt2Base::slotApply()
 {
-    ApplyButton();
+	ApplyButton();
 }
 
 
 void Qt2Base::slotOK()
 {
-    OKButton();
+	OKButton();
 }
 
 
 void Qt2Base::slotCancel()
 {
-    CancelButton();
+	CancelButton();
 }
 
 
 void Qt2Base::slotRestore()
 {
-    RestoreButton();
+	RestoreButton();
 }
 
 

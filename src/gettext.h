@@ -38,23 +38,21 @@
 char const * _(char const *);
 ///
 string const _(string const &);
-///
-void locale_init();
-///
-void gettext_init(string const & localedir);
 
-#else
+#else // ENABLE_NLS
+
 ///
 #  define _(str) (str)
 ///
 #  define S_(str) (str)
-///
-#  define locale_init()
-///
-#  define gettext_init(localedir)
 
 #endif
 
 #  define N_(str) (str)              // for detecting static strings
+
+///
+void locale_init();
+///
+void gettext_init(string const & localedir);
 
 #endif

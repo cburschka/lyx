@@ -104,7 +104,7 @@ InsetFloat::InsetFloat(string const & type)
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
-	font.setColor(LColor::footnote);
+	font.setColor(LColor::collapsable);
 	setLabelFont(font);
 	setAutoCollapse(false);
 	floatType_ = type;

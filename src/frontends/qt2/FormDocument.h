@@ -35,7 +35,7 @@ class Dialogs;
     @author Kalle Dalheimer
  */
 class FormDocument
-  : public Qt2CB<ControlDocument, Qt2DB<FormDocumentDialogImpl> >
+	: public Qt2CB<ControlDocument, Qt2DB<FormDocumentDialogImpl> >
 {
 public:
 	FormDocument(LyXView *, Dialogs *);

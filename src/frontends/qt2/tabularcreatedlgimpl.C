@@ -25,42 +25,41 @@
 #include "qtooltip.h"
 
 TabularCreateDlgImpl::TabularCreateDlgImpl(FormTabularCreate* form, QWidget* parent,  const char* name, bool modal, WFlags fl )
-    : InsertTabularDlg( parent, name, modal, fl ), form_(form)
+	 : InsertTabularDlg( parent, name, modal, fl ), form_(form)
 {
-   setCaption(name);
-   table->setMinimumSize(100,100);
-   rows->setValue(5);
-   columns->setValue(5);
-   QToolTip::add(table, _("Drag with left mouse button to resize"));
+	setCaption(name);
+	table->setMinimumSize(100,100);
+	rows->setValue(5);
+	columns->setValue(5);
+	QToolTip::add(table, _("Drag with left mouse button to resize"));
 }
 
 TabularCreateDlgImpl::~TabularCreateDlgImpl()
 {
-    // no need to delete child widgets, Qt does it all for us
+	 // no need to delete child widgets, Qt does it all for us
 }
 
 void TabularCreateDlgImpl::insert_tabular()
 {
-   form_->apply((rows->text()).toInt(), (columns->text()).toInt());
-   form_->close();
-   hide();
+	form_->apply((rows->text()).toInt(), (columns->text()).toInt());
+	form_->close();
+	hide();
 }
 
 void TabularCreateDlgImpl::cancel_adaptor()
 {
-   form_->close();
-   hide();
+	form_->close();
+	hide();
 }
 
 void TabularCreateDlgImpl::colsChanged(int nr_cols)
 {
-   if (nr_cols != (columns->text()).toInt())
-     columns->setValue(nr_cols);
+	if (nr_cols != (columns->text()).toInt())
+		columns->setValue(nr_cols);
 }
 
 void TabularCreateDlgImpl::rowsChanged(int nr_rows)
 {
-   if (nr_rows != (rows->text()).toInt()) 
-     rows->setValue(nr_rows);
+	if (nr_rows != (rows->text()).toInt()) 
+		rows->setValue(nr_rows);
 }
-

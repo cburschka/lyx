@@ -36,23 +36,23 @@ FormCredits::FormCredits(ControlCredits & c)
 
 void FormCredits::build()
 {
-    // PENDING(kalle) Parent?
-    dialog_.reset(new FormCreditsDialogImpl( this ));
+	// PENDING(kalle) Parent?
+	dialog_.reset(new FormCreditsDialogImpl( this ));
 
-    // Manage the cancel/close button
-    bc().setCancel(dialog_->okPB);
-    bc().refresh();
-    
-    std::stringstream ss;
-    QString xformscredits = controller().getCredits( ss ).str().c_str();
-    QStringList xformslist = QStringList::split( '\n', controller().getCredits( ss ).str().c_str(), true );
-    for( QStringList::Iterator it = xformslist.begin(); it != xformslist.end(); ++it ) {
-	QString line = *it;
-	if( line.left( 2 ) == "@b" )
-	    dialog_->creditsTV->append( "<b>" + line.mid( 2 ) + "</b>" );
-	else if( line.left(  2 ) == "@i" )
-	    dialog_->creditsTV->append( "<i>" + line.mid( 2 ) + "</i>" );
-	else
-	    dialog_->creditsTV->append( line );
-    }
+	// Manage the cancel/close button
+	bc().setCancel(dialog_->okPB);
+	bc().refresh();
+
+	std::stringstream ss;
+	QString xformscredits = controller().getCredits( ss ).str().c_str();
+	QStringList xformslist = QStringList::split( '\n', controller().getCredits( ss ).str().c_str(), true );
+	for( QStringList::Iterator it = xformslist.begin(); it != xformslist.end(); ++it ) {
+		QString line = *it;
+		if( line.left( 2 ) == "@b" )
+			dialog_->creditsTV->append( "<b>" + line.mid( 2 ) + "</b>" );
+		else if( line.left(  2 ) == "@i" )
+			dialog_->creditsTV->append( "<i>" + line.mid( 2 ) + "</i>" );
+		else
+			dialog_->creditsTV->append( line );
+	}
 }

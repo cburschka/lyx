@@ -30,7 +30,7 @@ class ControlCopyright;
   @author Kalle Dalheimer
   */
 class FormCopyright 
-  : public Qt2CB<ControlCopyright, Qt2DB<FormCopyrightDialogImpl> >
+	: public Qt2CB<ControlCopyright, Qt2DB<FormCopyrightDialogImpl> >
 {
 public: 
 	FormCopyright( ControlCopyright& );

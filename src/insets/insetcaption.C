@@ -31,7 +31,7 @@ InsetCaption::InsetCaption()
 {
 	SetAutoBreakRows(true);
 	SetDrawFrame(0, InsetText::LOCKED);
-	SetFrameColor(0, LColor::footnoteframe);
+	SetFrameColor(0, LColor::captionframe);
 }
 
 

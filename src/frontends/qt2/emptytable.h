@@ -1,17 +1,10 @@
-/*
- * emptytable.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
+/**
+ * \file emptytable.h
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon
  */
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 
 #ifndef EMPTYTABLE_H
 #define EMPTYTABLE_H
@@ -19,14 +12,12 @@
 #include <qpainter.h> 
 #include <qtableview.h> 
 
-#include "boost/utility.hpp"
-
 /**
  * A simple widget for a quick "preview" in TabularCreateDialog.
  * The user can drag on the widget to change the table dimensions.
  */
 class EmptyTable : public QTableView {
-   Q_OBJECT
+	Q_OBJECT
 public:
 	EmptyTable(QWidget * parent = 0, const char * name = 0);
 	

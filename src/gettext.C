@@ -67,4 +67,13 @@ void gettext_init(string const & localedir)
 }
 
 
+#else // ENABLE_NLS
+
+void locale_init()
+{
+}
+
+void gettext_init(string const &)
+{
+}
 #endif

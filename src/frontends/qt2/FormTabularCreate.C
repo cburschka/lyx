@@ -30,41 +30,41 @@ FormTabularCreate::FormTabularCreate(LyXView *v, Dialogs *d)
 
 FormTabularCreate::~FormTabularCreate()
 {
-   delete dialog_;
+	delete dialog_;
 }
 
 void FormTabularCreate::apply(int rows, int cols)
 {
-   if (!lv_->view()->available())
-     return;
+	if (!lv_->view()->available())
+		return;
 
-   string tmp = tostr(rows) + " " + tostr(cols);
-   lv_->getLyXFunc()->Dispatch(LFUN_INSET_TABULAR, tmp);
+	string tmp = tostr(rows) + " " + tostr(cols);
+	lv_->getLyXFunc()->Dispatch(LFUN_INSET_TABULAR, tmp);
 }
 
 void FormTabularCreate::show()
 {
-   if (!dialog_)
-     dialog_ = new TabularCreateDlgImpl(this, 0, _("LyX: Insert Table"));
+	if (!dialog_)
+	  dialog_ = new TabularCreateDlgImpl(this, 0, _("LyX: Insert Table"));
 
-   if (!dialog_->isVisible()) {
-      h_ = d_->hideBufferDependent.connect(slot(this, &FormTabularCreate::hide));
-      }
+	if (!dialog_->isVisible()) {
+		h_ = d_->hideBufferDependent.connect(slot(this, &FormTabularCreate::hide));
+	}
 
-   dialog_->raise();
-   dialog_->setActiveWindow();
+	dialog_->raise();
+	dialog_->setActiveWindow();
 
-   update();
-   dialog_->show();
+	update();
+	dialog_->show();
 }
 
 void FormTabularCreate::close()
 {
-   h_.disconnect();
+	h_.disconnect();
 }
 
 void FormTabularCreate::hide()
 {
-   dialog_->hide();
-   close();
+	dialog_->hide();
+	close();
 }

@@ -19,7 +19,7 @@ class FormSplashBase;
  */
 class FormSplash : public DialogBase {
 
- public:
+public:
 	FormSplash(LyXView *, Dialogs *);
 
 	~FormSplash();
@@ -27,7 +27,7 @@ class FormSplash : public DialogBase {
   	/// hide the dialog
 	void hide(); 
 
- private:
+private:
 	/// show the dialog
 	void show(); 
 

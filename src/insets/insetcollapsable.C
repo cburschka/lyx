@@ -41,7 +41,7 @@ InsetCollapsable::InsetCollapsable()
 	autocollapse = true;
 	inset.SetAutoBreakRows(true);
 	inset.SetDrawFrame(0, InsetText::ALWAYS);
-	inset.SetFrameColor(0, LColor::footnoteframe);
+	inset.SetFrameColor(0, LColor::collapsableframe);
 	button_length = button_top_y = button_bottom_y = 0;
 	setInsetName("Collapsable");
 	widthCollapsed = oldWidth = 0;
@@ -481,11 +481,13 @@ std::vector<string> const InsetCollapsable::getLabelList() const
 	return inset.getLabelList();
 }
 
+
 bool InsetCollapsable::nodraw() const
 {
 	return inset.nodraw();
 }
 
+ 
 int InsetCollapsable::scroll(bool recursive) const
 {
 	int sx = UpdatableInset::scroll(false);

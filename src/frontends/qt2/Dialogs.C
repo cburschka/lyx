@@ -60,40 +60,38 @@ SigC::Signal0<void> Dialogs::redrawGUI;
 
 Dialogs::Dialogs(LyXView * lv)
 {
-    splash_.reset( new FormSplash(lv, this) );
+	splash_.reset( new FormSplash(lv, this) );
 
-    // dialogs that have been converted to new scheme
-    add( new GUICitation<FormCitation, qt2BC>( *lv, *this ) );
-    add( new GUICopyright<FormCopyright, qt2BC>( *lv, *this ) );
-    add( new GUICredits<FormCredits, qt2BC>( *lv, *this ) );
+	// dialogs that have been converted to new scheme
+	add( new GUICitation<FormCitation, qt2BC>( *lv, *this ) );
+	add( new GUICopyright<FormCopyright, qt2BC>( *lv, *this ) );
+	add( new GUICredits<FormCredits, qt2BC>( *lv, *this ) );
 
-    // ------------------------------------------
+	// ------------------------------------------
 
-    // dialogs that are still old-style
-    add( new FormCharacter(lv, this));
+	// dialogs that are still old-style
+	add( new FormCharacter(lv, this));
 
-    //	add(new FormDocument(lv, this));
+	//	add(new FormDocument(lv, this));
 
 
-    // REMOVED THIS UNTIL CHANGED TO NEW SCHEME -- Kalle, 2001-03-23
-    // add(new FormError(lv, this));
+	// REMOVED THIS UNTIL CHANGED TO NEW SCHEME -- Kalle, 2001-03-23
+	// add(new FormError(lv, this));
 
-    // REMOVED THIS UNTIL CHANGED TO NEW SCHEME -- Kalle, 2001-03-28
-    //    add(new FormGraphics(lv, this));
-    //	add(new FormIndex(lv, this));
-    add(new FormParagraph(lv, this));
-    add(new FormPreferences(lv, this));
-    add(new FormPrint(lv, this));
-    //	add(new FormRef(lv, this));
-    add(new FormSearch(lv, this));
-    add(new FormTabular(lv, this));
-    add(new FormTabularCreate(lv, this));
-    //	add(new FormToc(lv, this));
-    //	add(new FormUrl(lv, this));
+	// REMOVED THIS UNTIL CHANGED TO NEW SCHEME -- Kalle, 2001-03-28
+	//    add(new FormGraphics(lv, this));
+	//	add(new FormIndex(lv, this));
+	add(new FormParagraph(lv, this));
+	add(new FormPreferences(lv, this));
+	add(new FormPrint(lv, this));
+	//	add(new FormRef(lv, this));
+	add(new FormSearch(lv, this));
+	add(new FormTabular(lv, this));
+	add(new FormTabularCreate(lv, this));
+	//	add(new FormToc(lv, this));
+	//	add(new FormUrl(lv, this));
 
-    // reduce the number of connections needed in
-    // dialogs by a simple connection here.
-    hideAll.connect(hideBufferDependent.slot());
+	// reduce the number of connections needed in
+	// dialogs by a simple connection here.
+	hideAll.connect(hideBufferDependent.slot());
 }
-
-

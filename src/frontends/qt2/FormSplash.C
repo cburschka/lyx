@@ -26,23 +26,23 @@ FormSplash::FormSplash(LyXView *, Dialogs * d)
 
 FormSplash::~FormSplash()
 {
-   c_.disconnect();
-   delete dialog_;
+	c_.disconnect();
+	delete dialog_;
 }
 
 void FormSplash::hide()
 {
-   dialog_->hide();
+	dialog_->hide();
 }
 
 void FormSplash::show()
 {
-   if (!lyxrc.show_banner)
-     return;
+	if (!lyxrc.show_banner)
+		return;
 
-   if (!dialog_)
-     dialog_ = new FormSplashBase( 0, "LyX");
+	if (!dialog_)
+		dialog_ = new FormSplashBase( 0, "LyX");
 
-   // show banner
-   dialog_->show();
+	// show banner
+	dialog_->show();
 }

@@ -296,7 +296,6 @@
 #elif defined __DECCXX
 #   define BOOST_NO_SLIST
 #   define BOOST_NO_HASH
-#   define BOOST_NO_INCLASS_MEMBER_INITIALIZATION
 
 //  Greenhills C++ -----------------------------------------------------------//
 

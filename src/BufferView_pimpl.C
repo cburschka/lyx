@@ -2767,7 +2767,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			new_inset->setOwner(bv_->theLockingInset());
 			new_inset->SetAutoBreakRows(true);
 			new_inset->SetDrawFrame(0, InsetText::LOCKED);
-			new_inset->SetFrameColor(0, LColor::footnoteframe);
+			new_inset->SetFrameColor(0, LColor::captionframe);
 			if (insertInset(new_inset))
 				new_inset->Edit(bv_, 0, 0, 0);
 			else

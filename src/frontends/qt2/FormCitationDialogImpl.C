@@ -1,7 +1,9 @@
 /**
- * $Id: FormCitationDialogImpl.C,v 1.6 2001/04/02 20:08:43 kalle Exp $
+ * $Id: FormCitationDialogImpl.C,v 1.7 2001/06/05 17:05:51 lasgouttes Exp $
  */
 
+#include <config.h>
+ 
 #include "FormCitationDialogImpl.h"
 #include "Dialogs.h"
 #include "FormCitation.h"

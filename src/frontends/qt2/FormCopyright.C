@@ -30,26 +30,23 @@
 typedef Qt2CB<ControlCopyright, Qt2DB<FormCopyrightDialogImpl> > base_class;
 
 FormCopyright::FormCopyright( ControlCopyright& c ) :
-    base_class( c, _( "Copyright and Warranty" ) )
+	base_class( c, _( "Copyright and Warranty" ) )
 {
 }
 
 
 void FormCopyright::build()
 {
-    // PENDING(kalle) Parent???
-    dialog_.reset( new FormCopyrightDialogImpl() );
-    connect( dialog_.get()->closePB, SIGNAL( clicked() ),
-	     this, SLOT( slotCancel() ) );
+	// PENDING(kalle) Parent???
+	dialog_.reset( new FormCopyrightDialogImpl() );
+	connect( dialog_.get()->closePB, SIGNAL( clicked() ),
+		this, SLOT( slotCancel() ) );
 
-    dialog_->copyrightLA->setText( controller().getCopyright().c_str() );
-    dialog_->licenseLA->setText( controller().getLicence().c_str() );
-    dialog_->disclaimerLA->setText( controller().getDisclaimer().c_str() );
+	dialog_->copyrightLA->setText( controller().getCopyright().c_str() );
+	dialog_->licenseLA->setText( controller().getLicence().c_str() );
+	dialog_->disclaimerLA->setText( controller().getDisclaimer().c_str() );
 
-    // Manage the cancel/close button
-    bc().setCancel(dialog_->closePB);
-    bc().refresh();
+	// Manage the cancel/close button
+	bc().setCancel(dialog_->closePB);
+	bc().refresh();
 }
-
-
-
