@@ -82,6 +82,9 @@ public:
 	/// sets the layout in the toolbar layout combox
 	void setLayout(int layout);
 
+	/// update the toolbar
+	void updateToolbar();
+
 	/// return a pointer to the lyxfunc
 	LyXFunc * getLyXFunc() const;
 

@@ -62,7 +62,7 @@ LYX_SCO
 AC_EXEEXT
 
 ### Check for a C++ compiler
-#AC_LANG_CPLUSPLUS
+AC_LANG_CPLUSPLUS
 LYX_PROG_CXX
 AC_PROG_CXXCPP
 AC_DISABLE_SHARED
@@ -85,6 +85,8 @@ dnl we disable rtti for now
 dnl LYX_CXX_RTTI
 AC_CHECK_HEADERS(ostream istream sstream)
 LYX_CXX_STL_MODERN_STREAMS
+dnl It seems this is needed by gtk/gnome stuff
+AC_LANG_C
 
 ### We need a regex implementation, so we provide our own if none is found.
 LYX_REGEX

@@ -68,7 +68,6 @@ extern BufferList bufferlist;
 
 extern void MenuLayoutSave();
 extern void ShowCredits();
-extern void show_symbols_form(LyXFunc *);
 
 // A bunch of wrappers
 
@@ -1997,7 +1996,7 @@ void Menus::ShowMathMenu(FL_OBJECT * ob, long)
 			tmpfunc->Dispatch(LFUN_MATH_DISPLAY);
 			break;
 		case 9: /* Panel */
-			show_symbols_form(tmpfunc);
+			tmpfunc->Dispatch(LFUN_MATH_PANEL);
 			break;
 		}
 		men->currentView()->update(BufferView::SELECT|BufferView::FITCUR);

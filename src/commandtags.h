@@ -140,6 +140,7 @@ enum kb_action {
 	LFUN_MATH_SIZE,   //  Alejandro 150896
 	LFUN_MATH_MACRO,  // 120 // ale970510
 	LFUN_MATH_MACROARG,  // ale970510
+	LFUN_MATH_PANEL,
 	LFUN_FIGURE,
 	LFUN_TABLE, // schedule for deletion
 	LFUN_MELT,

@@ -36,7 +36,7 @@ Menuset
 	Item "View Postscript|w" "buffer-view-ps"
 	Item "Update dvi|v" "buffer-typeset"
 	Item "Update Postscript|u" "buffer-typeset-ps"
-	Item "Build program|B" "build-program"
+	OptItem "Build program|B" "build-program"
 	Separator
 	Item "Print...|P" "buffer-print"
 	Item "Fax...|F" "buffer-fax"
@@ -68,11 +68,16 @@ Menuset
     End
 
     Menu "export"
-	Item "LaTeX|L" "buffer-export latex"
-	Item "DVI|D" "buffer-export dvi"
-	Item "Postscript|P" "buffer-export postscript"
-	Item "Ascii|A" "buffer-export ascii"
-	Item "Custom...|C" "buffer-export custom"
+	OptItem "as LaTeX|L" "buffer-export latex"
+	OptItem "as LinuxDoc|L" "buffer-export linuxdoc"
+	OptItem "as DocBook|B" "buffer-export docbook"
+	Item "as DVI|D" "buffer-export dvi"
+	Item "as Postscript|P" "buffer-export postscript"
+	Item "as Ascii|A" "buffer-export ascii"
+	OptItem "as HTML|H" "buffer-export html"
+	OptItem "as HTML|H" "buffer-export html-linuxdoc"
+	OptItem "as HTML|H" "buffer-export html-docbook"
+	OptItem "Custom...|C" "buffer-export custom"
     End
 
     Menu "edit"
@@ -86,8 +91,8 @@ Menuset
 	Item "Find & Replace...|F" "find-replace"
 	Item "Go to Error|E" "error-next"
 	Item "Go to Note|N" "note-next"
-	Submenu "Floats & Insets|I" "floats"
-	Submenu "Table" "table"
+	Submenu "Floats & Insets|I" "edit_floats"
+	Submenu "Table" "edit_table"
 	Item "Spellchecker...|S" "spellchecker"
 	Item "Check TeX|h" "buffer-chktex"
 	Item "Table of Contents|b" "toc-view"
@@ -96,23 +101,27 @@ Menuset
 	Separator
 	Item "View LaTeX log file|w" "latex-view-log"
 	Separator
-	Item "Paste primary selection as Lines|L" "primary-selection-paste"
-	Item "Paste primary selection as Paragraphs|g" "primary-selection-paste paragraph"
+	SubMenu "Paste primary selection" "edit_paste"
     End
 
-    Menu "floats"
+    Menu "edit_floats"
     End
 
-    Menu "table"
+    Menu "edit_table"
+    End
+
+    Menu "edit_paste"
+	Item "as Lines|L" "primary-selection-paste"
+	Item "as Paragraphs|g" "primary-selection-paste paragraph"
     End
 
     Menu "vc"
-	 Item "Register|R" "vc-register"
-	 Item "Check In Changes|I" "vc-check-in"
-	 Item "Check Out for Edit|O" "vc-check-out"
-	 Item "Revert to last version|l" "vc-revert"
-	 Item "Undo last check in|U" "vc-undo-last"
-	 Item "Show History|H" "vc-history"
+	 OptItem "Register|R" "vc-register"
+	 OptItem "Check In Changes|I" "vc-check-in"
+	 OptItem "Check Out for Edit|O" "vc-check-out"
+	 OptItem "Revert to last version|l" "vc-revert"
+	 OptItem "Undo last check in|U" "vc-undo-last"
+	 OptItem "Show History|H" "vc-history"
     End
 
     Menu "layout"
@@ -141,6 +150,7 @@ Menuset
 	Item "Include File...|I" "buffer-child-insert"
 	Submenu "Import ascii file|a" "insert_ascii"
 	Item "Insert LyX file|X" "file-insert"
+	Item "Insert external material...|e" "external-inset-insert"
 	Separator
 	Item "Footnote|F" "footnote-insert"
 	Item "Marginnote|M" "marginpar-insert"
@@ -190,6 +200,7 @@ Menuset
 	Item "Ellipsis|i" "dots-insert"
 	Item "End of sentence|E" "end-of-sentence-period-insert"
 	Item "Ordinary Quote|Q" "quote-insert"
+	Item "Menu Separator|M" "menu-separator-insert"
     End
 
     Menu "math"

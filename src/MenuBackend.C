@@ -14,6 +14,7 @@
 #endif
 
 #include <config.h>
+#include "support/LAssert.h"
 #include "MenuBackend.h"
 #include "lyxlex.h"
 #include "LyXAction.h"
@@ -27,8 +28,9 @@ using std::endl;
 MenuBackend menubackend;
 
 
-MenuItem::MenuItem(Kind kind, string const & label, string const & command) 
-	: kind_(kind), label_(label) 
+MenuItem::MenuItem(Kind kind, string const & label, 
+		   string const & command, bool optional) 
+	: kind_(kind), label_(label), optional_(optional)
 {
 	switch(kind) {
 	case Separator:
@@ -42,6 +44,9 @@ MenuItem::MenuItem(Kind kind, string const & label, string const & command)
 			lyxerr << "MenuItem(): LyX command `"
 			       << command << "' does not exist." << endl; 
 		}
+		if (optional_)
+			lyxerr[Debug::GUI] << "Optional item " 
+					   << command << endl; 
 		break;
 	case Submenu:
 		submenu_ = command;
@@ -64,6 +69,7 @@ void Menu::read(LyXLex & lex)
 		md_documents,
 		md_endmenu,
 		md_lastfiles,
+		md_optitem,
 		md_submenu,
 		md_separator,
 		md_last
@@ -74,6 +80,7 @@ void Menu::read(LyXLex & lex)
 		{ "end", md_endmenu },
 		{ "item", md_item },
 		{ "lastfiles", md_lastfiles },
+		{ "optitem", md_optitem }, 
 		{ "separator", md_separator },
 		{ "submenu", md_submenu }
 	};
@@ -83,15 +90,21 @@ void Menu::read(LyXLex & lex)
 		lex.printTable(lyxerr);
 
 	bool quit = false;
+	bool optional = false;
 
 	while (lex.IsOK() && !quit) {
 		switch(lex.lex()) {
+		case md_optitem:
+			optional = true;
+			// fallback to md_item
 		case md_item: {
 			lex.next();
 			string name = lex.GetString();
 			lex.next();
 			string command = lex.GetString();
-			add(MenuItem(MenuItem::Command, name, command));
+			add(MenuItem(MenuItem::Command, name, 
+				     command, optional));
+			optional = false;
 			break;
 		}
 		case md_separator:

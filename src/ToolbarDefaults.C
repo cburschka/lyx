@@ -121,9 +121,6 @@ void ToolbarDefaults::read(LyXLex & lex)
 		lex.printTable(lyxerr);
 	
 	while (lex.IsOK() && !quit) {
-		
-		lyxerr[Debug::GUI] << "Toolbar::read: current lex text: `"
-				       << lex.GetString() << '\'' << endl;
 
 		switch(lex.lex()) {
 		case TO_ADD:

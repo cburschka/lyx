@@ -735,7 +735,7 @@ string GetFileContents(string const & fname) {
 			ofs << ifs.rdbuf();
 			ifs.close();
 #ifdef HAVE_SSTREAM
-			return ofs.str();
+			return ofs.str().c_str();
 #else
 			ofs << '\0';
 			char const * tmp = ofs.str();

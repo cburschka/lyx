@@ -201,7 +201,8 @@ static string unique_id() {
 	ost << "file" << ++seed << '\0';
 #endif
 
-	return ost.str();
+	// Needed if we use lyxstring.
+	return ost.str().c_str();
 }
 
 

@@ -238,7 +238,8 @@ void ToolbarCB(FL_OBJECT * ob, long ac)
 	
 	string res = owner->getLyXFunc()->Dispatch(int(ac));
 	if(!res.empty())
-		lyxerr[Debug::GUI] << res << endl;
+		lyxerr[Debug::GUI] << "ToolbarCB: Function returned: " 
+				   << res << endl;
 }
 
 

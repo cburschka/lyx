@@ -128,10 +128,18 @@ Toolbar * LyXView::getToolbar() const
 	return toolbar;
 }
 
+
 void LyXView::setLayout(int layout)
 {
 	toolbar->setLayout(layout);
 }
+
+
+void LyXView::updateToolbar()
+{
+	toolbar->update();
+}
+
 
 LyXFunc * LyXView::getLyXFunc() const
 {

@@ -19,7 +19,7 @@
 #endif
 
 #include "LString.h"
-#include "support/LAssert.h"
+#include "support/lstrings.h"
 #include <vector>
 
 class LyXLex;
@@ -43,16 +43,22 @@ public:
 		Documents
 	};
 	/// Create a Command type MenuItem
-	MenuItem(Kind kind_, string const & label_ = string(), 
-		 string const & command_ = string());
+	MenuItem(Kind kind, 
+		 string const & label = string(), 
+		 string const & command = string(), 
+		 bool optional = false);
 	/// The label of a given menuitem
-	string const & label() const { return label_; }
+	string label() const { return token(label_, '|', 0); }
+	///
+	string shortcut() const { return token(label_, '|', 1); }
 	/// The kind of entry
 	Kind kind() const { return kind_; } 
 	/// the action (if relevant)
 	int action() const { return action_; }
 	/// the description of the  submenu (if relevant)
 	string const & submenu() const { return submenu_; }
+	/// returns true if the entry should be ommited when disabled
+	bool optional() const { return optional_; }
 private:
 	///
 	Kind kind_;
@@ -62,6 +68,8 @@ private:
 	int action_;
 	///
 	string submenu_;
+	///
+	bool optional_;
 };
 
 

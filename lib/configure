@@ -71,7 +71,7 @@ fi
 
 #### Create the build directories if necessary
 for dir in bind clipart doc examples images kbd layouts reLyX \
-    scripts templates ; do
+    scripts templates ui ; do
   test ! -d $dir && mkdir $dir
 done
 

@@ -918,7 +918,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	    }
 	    		
 #ifdef HAVE_SSTREAM
-	    std::istringstream istr(arg);
+	    std::istringstream istr(arg.c_str());
 #else
 	    istrstream istr(arg.c_str());
 #endif

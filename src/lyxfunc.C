@@ -123,6 +123,7 @@ extern void MenuSendto();
 extern void QuitLyX();
 extern void MenuFax(Buffer *);
 extern void MenuExport(Buffer *, string const &);
+extern void show_symbols_form(LyXFunc *);
 
 extern LyXAction lyxaction;
 // (alkis)
@@ -380,20 +381,31 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		disable = noLaTeX || lyxrc.fax_command == "none";
 		break;
 	case LFUN_IMPORT:
-		if (argument == "latex")
+		if (argument == "latex" || argument == "noweb")
 			disable = lyxrc.relyx_command == "none";
-		if (argument == "linuxdoc")
+		else if (argument == "linuxdoc")
 			disable = lyxrc.linuxdoc_to_lyx_command == "none";
 		break;
 	case LFUN_EXPORT:
-		if (argument == "dvi" || argument == "postscript")
+		if (argument == "latex")
+			disable = ! buf->isLatex();
+		else if (argument == "linuxdoc")
+			disable = ! buf->isLinuxDoc();
+		else if (argument == "docbook")
+			disable = ! buf->isDocBook();
+		else if (argument == "dvi" || argument == "postscript")
 			disable = noLaTeX;
-		if (argument == "html")
-			disable = lyxrc.html_command == "none";
-		if (argument == "html-linuxdoc")
-			disable = lyxrc.linuxdoc_to_html_command == "none";
-		if (argument == "html-docbook")
-			disable = lyxrc.docbook_to_html_command == "none";
+		else if (argument == "html")
+			disable = (! buf->isLatex() 
+				   || lyxrc.html_command == "none");
+		else if (argument == "html-linuxdoc")
+			disable = (! buf->isLinuxDoc() 
+				   || lyxrc.linuxdoc_to_html_command == "none");
+		else if (argument == "html-docbook")
+			disable = (! buf->isDocBook() 
+				   || lyxrc.docbook_to_html_command == "none");
+		else if (argument == "custom")
+			disable == ! buf->isLatex();
 		break;
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
@@ -407,6 +419,9 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 	case LFUN_RUNCHKTEX:
 		disable = lyxrc.chktex_command == "none";
 		break;
+	case LFUN_BUILDPROG:
+		disable = (lyxrc.literate_command == "none" 
+			   || ! buf->isLiterate());
 #ifndef NEW_TABULAR
 	case LFUN_LAYOUT_TABLE:
 		disable = ! owner->view()->text->cursor.par()->table;
@@ -2447,8 +2462,7 @@ string LyXFunc::Dispatch(int ac,
 	break;
 
 	case LFUN_MATH_MODE:   // Open or create a math inset
-	{
-		
+	{		
 		if (owner->view()->available())
 			owner->view()->open_new_inset(new InsetFormula);
 		setMessage(N_("Math editor mode"));
@@ -2459,6 +2473,13 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_MATH_LIMITS:
 	{
 		setErrorMessage(N_("This is only allowed in math mode!"));
+	
+	}
+	break;
+
+	case LFUN_MATH_PANEL:
+	{
+		show_symbols_form(this);
 	}
 	break;
 	

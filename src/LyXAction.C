@@ -322,6 +322,7 @@ void LyXAction::init()
 		{ LFUN_MATH_MODE, "math-mode", N_("Math mode"), Noop },
 		{ LFUN_MATH_NONUMBER, "math-nonumber", "", Noop },
 		{ LFUN_MATH_NUMBER, "math-number", "", Noop },
+		{ LFUN_MATH_PANEL, "math-panel", "", Noop },
 		{ LFUN_MATH_SIZE, "math-size", "", Noop },
 		{ LFUN_MELT, "melt", N_("Melt"), Noop },
 		{ LFUN_MENU_OPEN_BY_NAME, "menu-open", "", NoBuffer },
@@ -597,10 +598,21 @@ string LyXAction::getApproxFuncName(string const & func) const
 
 string LyXAction::getActionName(int action) const
 {
-	info_map::const_iterator iit =
-		lyx_info_map.find(static_cast<kb_action>(action));
+	kb_action ac;
+	string arg;
+	if (isPseudoAction(action)) {
+		ac = retrieveActionArg(action, arg);
+		arg = " " +arg;
+	} 
+	else
+		ac = static_cast<kb_action>(action);
 
-	return iit != lyx_info_map.end() ? (*iit).second.name : string();
+	info_map::const_iterator iit = lyx_info_map.find(ac);
+
+	if (iit != lyx_info_map.end())
+		return (*iit).second.name + arg;
+	else 
+		return string();
 }
 
 

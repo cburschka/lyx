@@ -26,7 +26,6 @@
 #include "bufferlist.h"
 #include "lastfiles.h"
 #include "LyXView.h"
-#include "lyx_gui_misc.h"
 #include "MenuBackend.h"
 #include "Menubar_pimpl.h"
 
@@ -50,11 +49,6 @@ char const * menu_tabstop = "aa";
 char const * default_tabstop = "aaaaaaaa";
 
 
-//Defined later.
-extern "C"
-void C_Menubar_Pimpl_MenuCallback(FL_OBJECT * ob, long button);
-
-
 Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb) 
 	: frame_(0), owner_(view), menubackend_(&mb)
 {
@@ -65,6 +59,18 @@ Menubar::Pimpl::~Pimpl()
 {
 	// Should we do something here?
 }
+
+// This is used a few times below.
+inline
+int string_width(string const & str) 
+{
+	return fl_get_string_widthTAB(FL_NORMAL_STYLE, MENU_LABEL_SIZE,
+				      str.c_str(),	str.length());
+}
+
+//Defined later, used in set().
+extern "C"
+void C_Menubar_Pimpl_MenuCallback(FL_OBJECT * ob, long button);
 
 void Menubar::Pimpl::set(string const & menu_name) 
 {
@@ -151,17 +157,14 @@ void Menubar::Pimpl::set(string const & menu_name)
 				" only submenus can appear in a menubar";
 			break;
 		}
-		char const * label = idex(i->label().c_str());
-		char const * shortcut = scex(i->label().c_str());
-		int width = fl_get_string_width(FL_NORMAL_STYLE,
-						MENU_LABEL_SIZE,
-						label,
-						strlen(label));
+		string label = i->label();
+		string shortcut = i->shortcut();
+		int width = string_width(label);
 		obj = fl_add_button(FL_TOUCH_BUTTON,
 				    air + moffset, yloc,
 				    width + mbadd,
 				    mbheight, 
-				    label);
+				    label.c_str());
 		fl_set_object_boxtype(obj, FL_FLAT_BOX);
 		fl_set_object_color(obj, FL_MCOL, FL_MCOL);
 		fl_set_object_lsize(obj, MENU_LABEL_SIZE);
@@ -170,7 +173,7 @@ void Menubar::Pimpl::set(string const & menu_name)
 		fl_set_object_gravity(obj, NorthWestGravity, 
 				      NorthWestGravity);
 		moffset += obj->w + air;
-		fl_set_object_shortcut(obj, shortcut, 1);
+		fl_set_object_shortcut(obj, shortcut.c_str(), 1);
 		fl_set_object_callback(obj, C_Menubar_Pimpl_MenuCallback, 1);
 		ItemInfo * iteminfo = new ItemInfo(this, 
 						   new MenuItem(*i), obj);
@@ -276,25 +279,22 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 
 	// Compute the size of the largest label (because xforms is
 	// not able to support shortcuts correctly...)
-	int max_width = 0, max_tabs = 0;
-	int tab_width = fl_get_string_width(FL_NORMAL_STYLE, MENU_LABEL_SIZE,
-					    menu_tabstop, strlen(menu_tabstop));
+	int max_width = 0;
+	string widest_label;
 	for (Menu::const_iterator i = md.begin(); i != md.end(); ++i) {
 		MenuItem item = (*i);
 		if (item.kind() == MenuItem::Command) {
-			string label = idex(item.label().c_str());
-			int width = fl_get_string_width(FL_NORMAL_STYLE,
-							MENU_LABEL_SIZE,
-							label.c_str(),
-							label.length());
-			if (width > max_width)
+			string label = item.label() + '\t';
+			int width = string_width(label);
+			if (width > max_width) {
 				max_width = width;
+				widest_label = label;
+			}
 		}
 	}
-	max_tabs = (max_width + 5)/tab_width + 1;
-	lyxerr[Debug::GUI] << "tab_width=" << tab_width 
-			   << ", max_width=" << max_width 
-			   << ", max_tabs=" << max_tabs << endl;
+	lyxerr[Debug::GUI] << "max_width=" << max_width 
+			   << ", widest_label=`" << widest_label 
+			   << "'" << endl;
 
 	for (Menu::const_iterator i = md.begin(); i != md.end(); ++i) {
 		MenuItem item = (*i);
@@ -308,30 +308,27 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 		case MenuItem::Command: {
 			LyXFunc::func_status flag = 
 				view->getLyXFunc()->getStatus(item.action()); 
+
+			// handle optional entries.
+			if (item.optional() && (flag & LyXFunc::Disabled)) {
+				lyxerr[Debug::GUI] 
+					<< "Skipping optional item " 
+					<< item.label() << endl; 
+				break;
+			}
+
 			// Get the keys bound to this action, but keep only the
 			// first one later
 			string accel = toplevel_keymap->findbinding(item.action());
-			lyxerr[Debug::GUI] << "Command: "  
-					   << lyxaction.getActionName(item.action())
-					   << " Binding " << accel << endl;
-
 			// Build the menu label from all the info
-			string label = idex(item.label().c_str());
+			string label = item.label();
 
 			if (!accel.empty()) {
-				// Try to be clever and add enough
+				// Try to be clever and add  just enough
 				// tabs to align shortcuts.
-				int width = 
-					fl_get_string_width(FL_NORMAL_STYLE,
-							    MENU_LABEL_SIZE,
-							    label.c_str(),
-							    label.length());
-				int nb = max_tabs - width/tab_width;
-				lyxerr[Debug::GUI] << "label=" << label 
-						   << ", tabs=" << nb 
-						   << endl;
-				if (nb > 0)
-					label += string(nb, '\t');
+				do 
+					label += '\t';
+				while (string_width(label) < max_width);
 				label += accel.substr(1,accel.find(']') - 1);
 			}
 			label += "%x" + tostr(item.action()) + extra_label;
@@ -347,10 +344,9 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			label += pupmode;
 
 			// Finally the menu shortcut
-			string shortcut = scex(item.label().c_str());
-
+			string shortcut = item.shortcut();
+			string xfshortcut;
 			if (!shortcut.empty()) {
-				string xfshortcut;
 				xfshortcut += uppercase(shortcut[0]);
 				xfshortcut += '#';
 				xfshortcut += uppercase(shortcut[0]);
@@ -364,6 +360,13 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 					    strpool.add(xfshortcut));
 			} else
 				fl_addtopup(menu, strpool.add(label));
+			
+			lyxerr[Debug::GUI] << "Command: \""  
+					   << lyxaction.getActionName(item.action())
+					   << "\", Binding " << accel 
+					   << ", shortcut " << xfshortcut 
+					   << endl;
+
 
 			break;
 		}
@@ -374,9 +377,9 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 						     smn, strpool);
 			if (submenu == -1)
 				return -1;
-			string label = idex(item.label().c_str());
+			string label = item.label();
 			label += extra_label + "%m";
-			string shortcut = scex(item.label().c_str());
+			string shortcut = item.shortcut();
 			int n = fl_addtopup(menu, strpool.add(label), submenu);
 			fl_setpup_shortcut(menu, n, strpool.add(shortcut));
 			break;

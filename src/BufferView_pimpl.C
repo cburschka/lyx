@@ -146,6 +146,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 #else
 		owner_->getMenus()->showMenus();
 #endif
+		owner_->updateToolbar();
 		redraw();
 		owner_->getDialogs()->updateBufferDependent();
 		bv_->insetWakeup();
@@ -156,6 +157,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 #else
 		owner_->getMenus()->hideMenus();
 #endif
+		owner_->updateToolbar();
 		updateScrollbar();
 		workarea_->redraw();
 

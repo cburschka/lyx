@@ -1,3 +1,47 @@
+2000-07-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* config/gnome/gtk.m4: added (and added to the list of files in 
+	autogen.sh).
+
+	* src/insets/insetinclude.C (unique_id): fix when we are using
+	lyxstring instead of basic_string<>. 
+	* src/insets/insettext.C (LocalDispatch): ditto.
+	* src/support/filetools.C: ditto.
+
+	* lib/configure.m4: create the ui/ directory if necessary.
+
+	* src/LyXView.[Ch] (updateToolbar): new method.
+
+	* src/BufferView_pimpl.C (buffer): update the toolbar when
+	opening/closing buffer.
+
+2000-07-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/LyXAction.C (getActionName): enhance to return also the name
+	and options of pseudo-actions.
+	(init): New lyxfunc LFUN_MATH_PANEL=="math-panel".
+
+	* lib/ui/default.ui: use OptItem in the vc submenu (intented just
+	as an example of what is possible). Used in File->Build too (more
+	useful) and in the import/export menus (to mimick the complicated
+	handling of linuxdoc and friends). Try to update all the entries.
+
+	* src/frontends/xforms/Menubar_pimpl.C (create_submenu): handle
+	optional entries.
+
+	* src/MenuBackend.C (read): Parse the new OptItem tag.
+
+	* src/MenuBackend.h: Add a new optional_ data member (used if the
+	entry should be omitted when the lyxfunc is disabled).
+
+	* src/frontends/xforms/Menubar_pimpl.C (string_width): new
+	function, used as a shortcut.
+	(create_submenu): align correctly the shortcuts on the widest
+	entry.
+	
+	* src/MenuBackend.h: MenuItem.label() only returns the label of
+	the menu without shortcut; new method shortcut().
+	
 2000-07-14  Marko Vendelin <markov@ioc.ee>
 
 	* src/frontends/gtk/Dialogs.C:
