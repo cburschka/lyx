@@ -19,7 +19,7 @@ MathMacroArgument::MathMacroArgument(int n)
 			<< n << std::endl;
 	}
 	str_[0] = '#';
-	str_[1] = '0' + static_cast<unsigned char>(n);
+	str_[1] = static_cast<unsigned char>('0' + n);
 	str_[2] = '\0';
 }
 

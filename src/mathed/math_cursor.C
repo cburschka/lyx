@@ -617,7 +617,7 @@ void MathCursor::macroModeClose()
 }
 
 
-int MathCursor::macroNamePos() const
+MathInset::difference_type MathCursor::macroNamePos() const
 {
 	for (MathInset::difference_type i = pos() - 1; i >= 0; --i) { 
 		MathAtom & p = array().at(i);
@@ -859,7 +859,7 @@ bool MathCursor::selection() const
 
 MathGridInset * MathCursor::enclosingGrid(MathCursor::idx_type & idx) const
 {
-	for (int i = Cursor_.size() - 1; i >= 0; --i) {
+	for (MathInset::difference_type i = Cursor_.size() - 1; i >= 0; --i) {
 		MathGridInset * p = Cursor_[i].par_->asGridInset();
 		if (p) {
 			idx = Cursor_[i].idx_;

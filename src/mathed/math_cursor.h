@@ -258,7 +258,7 @@ private:
 	///
 	string macroName() const;
 	///
-	int macroNamePos() const;
+	MathInset::difference_type macroNamePos() const;
 	///
 	void insert(char, MathTextCodes t);
 	/// can we enter the inset? 
