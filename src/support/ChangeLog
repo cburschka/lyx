@@ -1,3 +1,8 @@
+2002-04-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxstring.C (operator>>): use the better solution, this fixes a
+	"not able to read '\0'" bug.
+
 2002-04-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* translator.h: add missing typename
