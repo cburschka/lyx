@@ -8,6 +8,9 @@
 	* text.C:
 	* buffer.[Ch]: use improved inset_iterator
 
+	* buffer.C:
+	* paragraph.[Ch]: write one paragraph at a time
+
 2002-08-20  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* BufferView_pimpl.C (dispatch): Insert insetbibtex with "plain"

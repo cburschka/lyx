@@ -110,7 +110,7 @@ public:
 			      bool label);
 
 	///
-	void writeFile(Buffer const *, std::ostream &, BufferParams const &,
+	void write(Buffer const *, std::ostream &, BufferParams const &,
 		       depth_type) const;
 	///
 	void validate(LaTeXFeatures &) const;

@@ -1843,7 +1843,10 @@ bool Buffer::writeFile(string const & fname) const
 
 	// this will write out all the paragraphs
 	// using recursive descent.
-	paragraphs.begin()->writeFile(this, ofs, params, depth);
+	ParagraphList::iterator pit = paragraphs.begin();
+	ParagraphList::iterator pend = paragraphs.end();
+	for (; pit != pend; ++pit)
+		pit->write(this, ofs, params, depth);
 
 	// Write marker that shows file is complete
 	ofs << "\n\\the_end" << endl;

@@ -236,7 +236,11 @@ void InsetText::write(Buffer const * buf, ostream & os) const
 
 void InsetText::writeParagraphData(Buffer const * buf, ostream & os) const
 {
-	paragraphs.begin()->writeFile(buf, os, buf->params, 0);
+	ParagraphList::iterator it = paragraphs.begin();
+	ParagraphList::iterator end = paragraphs.end();
+	for (; it != end; ++it) {
+		it->write(buf, os, buf->params, 0);
+	}
 }
 
 

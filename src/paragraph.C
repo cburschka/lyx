@@ -163,7 +163,7 @@ Paragraph::~Paragraph()
 }
 
 
-void Paragraph::writeFile(Buffer const * buf, ostream & os,
+void Paragraph::write(Buffer const * buf, ostream & os,
 			  BufferParams const & bparams,
 			  depth_type dth) const
 {
@@ -317,10 +317,6 @@ void Paragraph::writeFile(Buffer const * buf, ostream & os,
 			break;
 		}
 	}
-
-	// now write the next paragraph
-	if (next_)
-		next_->writeFile(buf, os, bparams, dth);
 }
 
 
