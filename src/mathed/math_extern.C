@@ -889,6 +889,38 @@ namespace {
 		return ret.second;
 	}
 
+	string::size_type get_matching_brace(string const & str, string::size_type i)
+	{
+		int count = 1;
+		string::size_type n = str.size();
+		while (i < n) {
+			i = str.find_first_of("{}", i+1);
+			if (i == string::npos) return i;
+			if (str[i] == '{')
+				++count;
+			else
+				--count;
+			if (count == 0)
+				return i;
+		}
+		return string::npos;
+	}
+
+	string::size_type get_matching_brace_back(string const & str, string::size_type i)
+	{
+		int count = 1;
+		while (i > 0) {
+			i = str.find_last_of("{}", i-1);
+			if (i == string::npos) return i;
+			if (str[i] == '}')
+				++count;
+			else
+				--count;
+			if (count == 0)
+				return i;
+		}
+		return string::npos;
+	}
 
 	MathArray pipeThroughMaxima(string const &, MathArray const & ar)
 	{
@@ -943,8 +975,41 @@ namespace {
 			return MathArray();
 
 		out = subst(tmp[1],"\\>", "");
-
 		lyxerr << "out: '" << out << "'\n";
+
+		// Ugly code that tries to make the result prettier
+
+		string::size_type i = out.find("\\mathchoice");
+		while (i != string::npos) {
+			string::size_type j = get_matching_brace(out, i + 12);
+			string::size_type k = get_matching_brace(out, j + 1);
+			k = get_matching_brace(out, k + 1);
+			k = get_matching_brace(out, k + 1);
+			string mid = out.substr(i + 13,j - i - 13);
+			if (mid.find("\\over") != string::npos)
+				mid = '{' + mid + '}';
+			out = out.substr(0,i)
+				+ mid
+				+ out.substr(k + 1);
+			//lyxerr << "out: " << out << endl;
+			i = out.find("\\mathchoice", i);
+			break;
+		}
+
+		i = out.find("\\over");
+		while (i != string::npos) {
+			string::size_type j = get_matching_brace_back(out, i - 1);
+			if (j == string::npos || j == 0) break;
+			string::size_type k = get_matching_brace(out, i + 5);
+			if (k == string::npos || k + 1 == out.size()) break;
+			out = out.substr(0,j - 1)
+				+ "\\frac"
+				+ out.substr(j,i - j)
+				+ out.substr(i + 5,k - i - 4)
+				+ out.substr(k + 2);
+			//lyxerr << "out: " << out << endl;
+			i = out.find("\\over", i + 4);
+		}
 		MathArray res;
 		mathed_parse_cell(res, out);
 		return res;
