@@ -85,6 +85,7 @@ namespace support = lyx::support;
 using lyx::support::AbsolutePath;
 using lyx::support::bformat;
 using lyx::support::ChangeExtension;
+using lyx::support::compare_timestamps;
 using lyx::support::contains;
 using lyx::support::FileName;
 using lyx::support::float_equal;
@@ -343,26 +344,10 @@ enum CopyStatus {
 
 
 std::pair<CopyStatus, string> const
-copyToDirIfNeeded(string const & file_in, string const & dir)
+copyFileIfNeeded(string const & file_in, string const & file_out)
 {
-	using support::rtrim;
-
 	BOOST_ASSERT(AbsolutePath(file_in));
-
-	string const only_path = support::OnlyPath(file_in);
-	if (rtrim(support::OnlyPath(file_in) , "/") == rtrim(dir, "/"))
-		return std::make_pair(IDENTICAL_PATHS, file_in);
-
-	string mangled;
-	if (support::zippedFile(file_in)) {
-		string const ext = GetExtension(file_in);
-		string const unzipped = support::unzippedFileName(file_in);
-		mangled = FileName(unzipped).mangledFilename();
-		mangled += "." + ext;
-	} else
-		mangled = FileName(file_in).mangledFilename();
-
-	string const file_out = support::MakeAbsPath(mangled, dir);
+	BOOST_ASSERT(AbsolutePath(file_out));
 
 	unsigned long const checksum_in  = support::sum(file_in);
 	unsigned long const checksum_out = support::sum(file_out);
@@ -382,6 +367,35 @@ copyToDirIfNeeded(string const & file_in, string const & dir)
 
 	CopyStatus status = success ? SUCCESS : FAILURE;
 	return std::make_pair(status, file_out);
+}
+
+
+std::pair<CopyStatus, string> const
+copyToDirIfNeeded(string const & file_in, string const & dir, bool zipped)
+{
+	using support::rtrim;
+
+	BOOST_ASSERT(AbsolutePath(file_in));
+
+	string const only_path = support::OnlyPath(file_in);
+	if (rtrim(support::OnlyPath(file_in) , "/") == rtrim(dir, "/"))
+		return std::make_pair(IDENTICAL_PATHS, file_in);
+
+	string mangled = FileName(file_in).mangledFilename();
+	if (zipped) {
+		// We need to change _eps.gz to .eps.gz. The mangled name is
+		// still unique because of the counter in mangledFilename().
+		// We can't just call mangledFilename() with the zip
+		// extension removed, because base.eps and base.eps.gz may
+		// have different content but would get the same mangled
+		// name in this case.
+		string const base = RemoveExtension(unzippedFileName(file_in));
+		string::size_type const ext_len = file_in.length() - base.length();
+		mangled[mangled.length() - ext_len] = '.';
+	}
+	string const file_out = support::MakeAbsPath(mangled, dir);
+
+	return copyFileIfNeeded(file_in, file_out);
 }
 
 
@@ -417,14 +431,6 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// let LaTeX do the rest!
 	bool const zipped = params().filename.isZipped();
 
-	if (zipped && params().noUnzip) {
-		lyxerr[Debug::GRAPHICS]
-			<< "\tpass zipped file to LaTeX but with full path.\n";
-		// LaTeX needs an absolute path, otherwise the
-		// coresponding *.eps.bb file isn't found
-		return orig_file;
-	}
-
 	// temp_file will contain the file for LaTeX to act on if, for example,
 	// we move it to a temp dir or uncompress it.
 	string temp_file = orig_file;
@@ -434,23 +440,48 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// This is necessary for DVI export.
 	string const temp_path = buf.getMasterBuffer()->temppath();
 
+	bool conversion_needed = true;
+
+	CopyStatus status;
+	boost::tie(status, temp_file) =
+			copyToDirIfNeeded(orig_file, temp_path, zipped);
+
+	if (status == FAILURE)
+		return orig_file;
+	else if (status == IDENTICAL_CONTENTS)
+		conversion_needed = false;
+
 	if (zipped) {
-		CopyStatus status;
-		boost::tie(status, temp_file) =
-			copyToDirIfNeeded(orig_file, temp_path);
-
-		if (status == FAILURE)
-			return orig_file;
-
-		orig_file = unzippedFileName(temp_file);
-		if (!IsFileReadable(orig_file)) {
-			unzipFile(temp_file);
+		if (params().noUnzip) {
 			lyxerr[Debug::GRAPHICS]
-				<< "\tunzipped to " << orig_file << endl;
+				<< "\tpass zipped file to LaTeX.\n";
+			// LaTeX needs the bounding box file in the tmp dir
+			string bb_file;
+			boost::tie(status, bb_file) =
+				copyFileIfNeeded(ChangeExtension(orig_file, "bb"),
+				                 ChangeExtension(temp_file, "bb"));
+			if (status == FAILURE)
+				return orig_file;
+			return temp_file;
+		}
+
+		string const unzipped_temp_file = unzippedFileName(temp_file);
+		if (compare_timestamps(unzipped_temp_file, temp_file) > 0) {
+			// temp_file has been unzipped already and
+			// orig_file has not changed in the meantime.
+			temp_file = unzipped_temp_file;
+			lyxerr[Debug::GRAPHICS]
+				<< "\twas already unzipped to " << temp_file
+				<< endl;
+		} else {
+			// unzipped_temp_file does not exist or is too old
+			temp_file = unzipFile(temp_file);
+			lyxerr[Debug::GRAPHICS]
+				<< "\tunzipped to " << temp_file << endl;
 		}
 	}
 
-	string const from = getExtFromContents(orig_file);
+	string const from = getExtFromContents(temp_file);
 	string const to   = findTargetFormat(from, runparams);
 	lyxerr[Debug::GRAPHICS]
 		<< "\t we have: from " << from << " to " << to << '\n';
@@ -462,16 +493,6 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	lyxerr[Debug::GRAPHICS]
 		<< "\tthe orig file is: " << orig_file << endl;
 
-	bool conversion_needed = true;
-	CopyStatus status;
-	boost::tie(status, temp_file) =
-			copyToDirIfNeeded(orig_file, temp_path);
-
-	if (status == FAILURE)
-		return orig_file;
-	else if (status == IDENTICAL_CONTENTS)
-		conversion_needed = false;
-
 	if (from == to)
 		return stripExtensionIfPossible(temp_file, to);
 
@@ -481,7 +502,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// Do we need to perform the conversion?
 	// Yes if to_file does not exist or if temp_file is newer than to_file
 	if (!conversion_needed ||
-	    support::compare_timestamps(temp_file, to_file) < 0) {
+	    compare_timestamps(temp_file, to_file) < 0) {
 		lyxerr[Debug::GRAPHICS]
 			<< bformat(_("No conversion of %1$s is needed after all"),
 				   rel_file)

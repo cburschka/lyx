@@ -1,3 +1,12 @@
+2004-05-05  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetgraphics.C (prepareFile): copy zipped file and corresponding
+	.bb file to the tmp dir if we don't unzip it (needed for dvi export)
+	* insetgraphics.C (prepareFile): unzip zipped file also if it has
+	changed since the last run
+	* insetgraphics.C (copyToDirIfNeeded): split into copyToDirIfNeeded
+	and copyFileIfNeeded.
+
 2004-04-29  Angus Leeming  <leeming@lyx.org>
 
 	* ExternalTemplate.[Ch]: remove redundant #includes.
