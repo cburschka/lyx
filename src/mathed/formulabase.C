@@ -959,8 +959,11 @@ void mathDispatchInsertMath(BufferView * bv, string const & arg)
 			InsetFormula * f = new InsetFormula(arg);
 			if (!bv->insertInset(f))
 				delete f;
-		} else
+			else if (!mathcursor) // hotfix 
+				bv->getLyXText()->cursorRight(bv);
+		} else {
 			mathDispatchMathMode(bv, arg);
+		}
 	}
 }
 
