@@ -1,3 +1,14 @@
+2001-09-27  Adrien Rebollo  <adrien.rebollo@gmx.fr>
+
+	* paragraph_pimpl.C (simpleTeXSpecialChars): handle latin9 too.
+
+2001-09-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* text2.C (fixCursorAfterDelete): new method. Fixes the parameters
+	of a cursor (row, etc.) after a character has been deleted
+	(deleteEmptyParagraphMechanism): call the method above on _all_
+	cursors held by the LyXText when a double space has been
+	detected/deleted. 
 2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView_pimpl.C (buffer): call WorkArea::show to pop-up the

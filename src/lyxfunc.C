@@ -241,7 +241,7 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 		return;
 	}
 
-	// Can we be sure that this will work for all X-Windows
+	// Can we be sure that this will work for all X Window
 	// implementations? (Lgb)
 	// This code snippet makes lyx ignore some keys. Perhaps
 	// all of them should be explictly mentioned?

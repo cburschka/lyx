@@ -2195,7 +2195,7 @@ void LyXText::setCursorIntern(BufferView * bview, Paragraph * par,
 		if (it != inset_owner) {
 			lyxerr << "InsetText   is " << it << endl;
 			lyxerr << "inset_owner is " << inset_owner << endl;
-#warning I belive this code is wrong. (Lgb)
+#warning I believe this code is wrong. (Lgb)
 #warning Jürgen, have a look at this. (Lgb)
 #warning Hmmm, I guess you are right but we
 #warning should verify when this is needed
@@ -2349,6 +2349,26 @@ void LyXText::cursorDownParagraph(BufferView * bview) const
 	}
 }
 
+// fix the cursor `cur' after a characters has been deleted at `where'
+// position. Called by deleteEmptyParagraphMechanism
+void LyXText::fixCursorAfterDelete(BufferView * bview,
+				   LyXCursor & cur,
+				   LyXCursor const & where) const
+{
+	// if cursor is not in the paragraph where the delete occured,
+	// do nothing
+	if (cur.par() != where.par())
+		return;
+
+	// if cursor position is after the place where the delete occured,
+	// update it
+	if (cur.pos() > where.pos())
+		cur.pos(cur.pos()-1);
+
+	// recompute row et al. for this cursor
+	setCursor(bview, cur, cur.par(), cur.pos(), cur.boundary());
+}
+
 
 void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 					    LyXCursor const & old_cursor) const
@@ -2396,14 +2416,25 @@ void LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 		    && old_cursor.par()->isLineSeparator(old_cursor.pos() - 1)) {
 			old_cursor.par()->erase(old_cursor.pos() - 1);
 			redoParagraphs(bview, old_cursor, old_cursor.par()->next());
-			// correct cursor
-			if (old_cursor.par() == cursor.par() &&
-			    cursor.pos() > old_cursor.pos()) {
-				setCursorIntern(bview, cursor.par(),
-						cursor.pos() - 1);
-			} else
-				setCursorIntern(bview, cursor.par(),
-						cursor.pos());
+
+#ifdef WITH_WARNINGS
+#warning This will not work anymore when we have multiple views of the same buffer
+// In this case, we will have to correct also the cursors held by
+// other bufferviews. It will probably be easier to do that in a more
+// automated way in LyXCursor code. (JMarc 26/09/2001)
+#endif
+			// correct all cursors held by the LyXText
+			fixCursorAfterDelete(bview, cursor, old_cursor);
+			fixCursorAfterDelete(bview, selection.cursor,
+					     old_cursor);
+			fixCursorAfterDelete(bview, selection.start,
+					     old_cursor);
+			fixCursorAfterDelete(bview, selection.end, old_cursor);
+			fixCursorAfterDelete(bview, last_sel_cursor,
+					     old_cursor);
+			fixCursorAfterDelete(bview, toggle_cursor, old_cursor);
+			fixCursorAfterDelete(bview, toggle_end_cursor,
+					     old_cursor);
 			return;
 		}
 	}

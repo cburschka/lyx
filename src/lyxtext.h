@@ -241,7 +241,7 @@ public:
 	  */
 	mutable LyXCursor cursor; // actual cursor position
 
-	/** The structrue that keeps track of the selections set. */
+	/** The structure that keeps track of the selections set. */
 	struct Selection {
 		Selection() 
 			: set_(false), mark_(false)
@@ -269,12 +269,12 @@ public:
 	};
 	mutable Selection selection;
 
-	/// needed for the toggling
-	LyXCursor last_sel_cursor; // cursor position on last selection made
-	///
-	LyXCursor toggle_cursor;   // the following two are needed for toggling
-	///                           the selection in screen.C
-	LyXCursor toggle_end_cursor;
+	/// needed for the toggling (cursor position on last selection made)
+	mutable LyXCursor last_sel_cursor; 
+	/// needed for toggling the selection in screen.C
+	mutable LyXCursor toggle_cursor;
+	/// needed for toggling the selection in screen.C
+	mutable LyXCursor toggle_end_cursor;
    
 	/// need the selection cursor:
 	void setSelection(BufferView *);
@@ -544,6 +544,12 @@ private:
 			    float & fill_label_hfill,
 			    bool bidi = true) const;
 
+	// fix the cursor `cur' after a characters has been deleted at `where'
+	// position. Called by deleteEmptyParagraphMechanism
+	void fixCursorAfterDelete(BufferView * bview,
+				  LyXCursor & cur,
+				  LyXCursor const & where) const;
+	
 	///
 	void deleteEmptyParagraphMechanism(BufferView *,
 					   LyXCursor const & old_cursor) const;
