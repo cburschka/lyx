@@ -14,6 +14,8 @@ BUILTSOURCES = \
 	moc_FileDialog_private.C \
 	moc_FormCitationDialog.C	\
 	moc_FormCitationDialogImpl.C	\
+	moc_FormCopyrightDialog.C	\
+	moc_FormCopyrightDialogImpl.C	\
 	       moc_chardlg.C \
 	       moc_chardlgimpl.C \
 	       moc_paragraphdlg.C \
