@@ -1,5 +1,12 @@
 2001-07-29  Baruch Even  <baruch@lyx.org>
 
+	* ImageLoaderXPM.C (runImageLoader): When loading agree to use non-exact
+	colors with closeness of 10000.
+
+	* GraphicsCacheItem.C: Fixed a compilation bug introduced earlier.
+
+2001-07-29  Baruch Even  <baruch@lyx.org>
+
 	* GraphicsCacheItem.C (findTargetFormat): Removed error dialog box,
 	too annoying.
 

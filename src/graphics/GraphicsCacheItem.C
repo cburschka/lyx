@@ -76,7 +76,11 @@ GraphicsCacheItem::getImage() const { return image_.get(); }
 void
 GraphicsCacheItem::imageConverted(bool success)
 {
-	lyxerr << "imageConverted, status=" << success << endl;
+	// Debug output
+	string text = "succeeded";
+	if (!success)
+		text = "failed";
+	lyxerr << "imageConverted, conversion " << text	<< "." << endl;
 
 	if (! success) {
 		lyxerr << "(GraphicsCacheItem::imageConverter) "

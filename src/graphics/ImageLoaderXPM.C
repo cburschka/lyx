@@ -69,7 +69,9 @@ ImageLoaderXPM::runImageLoader(string const & filename)
 	Pixmap pixmap;
 	Pixmap mask;
 	XpmAttributes attrib;
-	attrib.valuemask = 0;
+	
+	attrib.valuemask = XpmCloseness | XpmAllocColor;
+	attrib.closeness = 10000;
 	
 	int status = XpmReadFileToPixmap(
 			display, 
@@ -79,7 +81,7 @@ ImageLoaderXPM::runImageLoader(string const & filename)
 
 	if (status != XpmSuccess) {
 		lyxerr << "Error reading XPM file '" 
-			<< XpmGetErrorString(status) 
+			<< XpmGetErrorString(status) << "'"
 			<< endl;
 		return ErrorWhileLoading;
 	}
