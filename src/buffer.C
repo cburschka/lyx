@@ -127,7 +127,7 @@ extern LyXAction lyxaction;
 
 namespace {
 
-const int LYX_FORMAT = 218;
+const int LYX_FORMAT = 220;
 
 } // namespace anon
 
