@@ -1,3 +1,9 @@
+2003-04-27  John Levon  <levon@movementarian.org>
+
+	* Alert.h:
+	* Alert.C:
+	* Alert_pimpl.h: ::prompt() takes cancel_button
+
 2003-04-16  Alfredo Braunstein  <abraunst@libero.it>
 
 	* screen.C (redraw): added a missing call to updateRowPositions

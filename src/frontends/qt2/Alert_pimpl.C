@@ -30,7 +30,7 @@ using std::pair;
 using std::make_pair;
 
 int prompt_pimpl(string const & tit, string const & question,
-           int default_button,
+           int default_button, int cancel_button,
 	   string const & b1, string const & b2, string const & b3)
 {
 #if USE_BOOST_FORMAT
@@ -41,9 +41,14 @@ int prompt_pimpl(string const & tit, string const & question,
 	string const title = _("LyX: ") + tit;
 #endif
 
-	return QMessageBox::information(0, toqstr(title), toqstr(formatted(question)),
+	int res = QMessageBox::information(0, toqstr(title), toqstr(formatted(question)),
 		toqstr(b1), toqstr(b2), b3.empty() ? QString::null : toqstr(b3),
-		default_button);
+		default_button, cancel_button);
+
+	// Qt bug: can return -1 on cancel or WM close, despite the docs.
+	if (res == -1)
+		res = cancel_button;
+	return res;
 }
 
 

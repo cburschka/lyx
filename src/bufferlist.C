@@ -78,7 +78,7 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 	text += file + _(" has unsaved changes.\n\nWhat do you want to do with it?");
 #endif
 	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, _("&Save"), _("&Discard"), _("&Cancel"));
+		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
 
 	if (ret == 0) {
 		// FIXME: WriteAs can be asynch !
@@ -187,7 +187,7 @@ bool BufferList::close(Buffer * buf, bool ask)
 	text += fname + _(" has unsaved changes.\n\nWhat do you want to do with it?");
 #endif
 	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, _("&Save"), _("&Discard"), _("&Cancel"));
+		text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
 
 	if (ret == 0) {
 		if (buf->isUnnamed()) {
@@ -368,7 +368,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 			text += file + _(" exists.\n\nRecover emergency save?");
 #endif
 			int const ret = Alert::prompt(_("Load emergency save?"),
-				text, 0, _("&Recover"), _("&Load Original"));
+				text, 0, 1, _("&Recover"), _("&Load Original"));
 
 			if (ret == 0) {
 				ts = e;
@@ -402,7 +402,7 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 				text += file + _(" is newer.\n\nLoad the backup instead?");
 #endif
 				int const ret = Alert::prompt(_("Load backup?"),
-					text, 0, _("&Load backup"), _("Load &original"));
+					text, 0, 1, _("&Load backup"), _("Load &original"));
 
 				if (ret == 0) {
 					ts = a;
@@ -525,7 +525,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 		text += file + _(" is already loaded.\n\nDo you want to revert to the saved version?");
 #endif
 		int const ret = Alert::prompt(_("Revert to saved document?"),
-			text, 1, _("&Revert"), _("&Switch to document"));
+			text, 0, 1,  _("&Revert"), _("&Switch to document"));
 
 		if (ret == 0) {
 			// FIXME: should be LFUN_REVERT
@@ -565,7 +565,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 			text += file + _(" from version control?");
 #endif
 			int const ret = Alert::prompt(_("Retrieve from version control?"),
-				text, 0, _("&Retrieve"), _("&Cancel"));
+				text, 0, 1, _("&Retrieve"), _("&Cancel"));
 
 			if (ret == 0) {
 				// How can we know _how_ to do the checkout?
@@ -585,7 +585,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 		text += file + _(" does not yet exist.\n\nDo you want to create a new document?");
 #endif
 		int const ret = Alert::prompt(_("Create new document?"),
-			text, 0, _("&Create"), _("Cancel"));
+			text, 0, 1, _("&Create"), _("Cancel"));
 
 		if (ret == 0)
 			b = newFile(s, string(), true);

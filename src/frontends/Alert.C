@@ -22,11 +22,12 @@ using std::pair;
 using std::make_pair;
 
 int Alert::prompt(string const & title, string const & question,
-           int default_button,
+           int default_button, int escape_button,
 	   string const & b1, string const & b2, string const & b3)
 {
 	if (lyx_gui::use_gui)
-		return prompt_pimpl(title, question, default_button, b1, b2, b3);
+		return prompt_pimpl(title, question,
+			default_button, escape_button, b1, b2, b3);
 
 	lyxerr << title << endl;
 	lyxerr << "----------------------------------------" << endl;

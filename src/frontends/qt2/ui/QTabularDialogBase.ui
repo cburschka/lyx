@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>480</width>
-            <height>383</height>
+            <width>463</width>
+            <height>408</height>
         </rect>
     </property>
     <property stdset="1">
@@ -71,7 +71,7 @@
                         <name>spacing</name>
                         <number>6</number>
                     </property>
-                    <widget row="0"  column="0" >
+                    <widget row="0"  column="0"  rowspan="1"  colspan="2" >
                         <class>QLabel</class>
                         <property stdset="1">
                             <name>name</name>
@@ -86,22 +86,7 @@
                             <cstring>hAlignCB</cstring>
                         </property>
                     </widget>
-                    <widget row="0"  column="3" >
-                        <class>QCheckBox</class>
-                        <property stdset="1">
-                            <name>name</name>
-                            <cstring>multicolumnCB</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>text</name>
-                            <string>&amp;Multicolumn</string>
-                        </property>
-                        <property>
-                            <name>toolTip</name>
-                            <string>Merge cells</string>
-                        </property>
-                    </widget>
-                    <widget row="0"  column="1" >
+                    <widget row="0"  column="2" >
                         <class>QComboBox</class>
                         <item>
                             <property>
@@ -136,7 +121,88 @@
                             <string>Horizontal alignment in column</string>
                         </property>
                     </widget>
-                    <spacer row="0"  column="2" >
+                    <widget row="3"  column="0"  rowspan="1"  colspan="4" >
+                        <class>QCheckBox</class>
+                        <property stdset="1">
+                            <name>name</name>
+                            <cstring>rotateTabularCB</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>enabled</name>
+                            <bool>true</bool>
+                        </property>
+                        <property stdset="1">
+                            <name>text</name>
+                            <string>&amp;Rotate table 90 degrees</string>
+                        </property>
+                        <property>
+                            <name>toolTip</name>
+                            <string>Rotate the table by 90 degrees</string>
+                        </property>
+                    </widget>
+                    <widget row="4"  column="0"  rowspan="1"  colspan="4" >
+                        <class>QCheckBox</class>
+                        <property stdset="1">
+                            <name>name</name>
+                            <cstring>rotateCellCB</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>text</name>
+                            <string>Rotate &amp;cell 90 degrees</string>
+                        </property>
+                        <property>
+                            <name>toolTip</name>
+                            <string>Rotate this cell by 90 degrees</string>
+                        </property>
+                    </widget>
+                    <widget row="5"  column="0"  rowspan="1"  colspan="2" >
+                        <class>QLabel</class>
+                        <property stdset="1">
+                            <name>name</name>
+                            <cstring>specialAlignmentLA</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>text</name>
+                            <string>LaTe&amp;X argument:</string>
+                        </property>
+                        <property>
+                            <name>buddy</name>
+                            <cstring>specialAlignmentED</cstring>
+                        </property>
+                    </widget>
+                    <widget row="5"  column="2"  rowspan="1"  colspan="2" >
+                        <class>QLineEdit</class>
+                        <property stdset="1">
+                            <name>name</name>
+                            <cstring>specialAlignmentED</cstring>
+                        </property>
+                        <property>
+                            <name>toolTip</name>
+                            <string>Custom column format (LaTeX)</string>
+                        </property>
+                    </widget>
+                    <spacer row="6"  column="2" >
+                        <property>
+                            <name>name</name>
+                            <cstring>Spacer5</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>orientation</name>
+                            <enum>Vertical</enum>
+                        </property>
+                        <property stdset="1">
+                            <name>sizeType</name>
+                            <enum>Expanding</enum>
+                        </property>
+                        <property>
+                            <name>sizeHint</name>
+                            <size>
+                                <width>20</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                    <spacer row="0"  column="3" >
                         <property>
                             <name>name</name>
                             <cstring>Spacer75</cstring>
@@ -157,125 +223,22 @@
                             </size>
                         </property>
                     </spacer>
-                    <widget row="3"  column="2"  rowspan="1"  colspan="2" >
-                        <class>QGroupBox</class>
+                    <widget row="2"  column="0" >
+                        <class>QCheckBox</class>
                         <property stdset="1">
                             <name>name</name>
-                            <cstring>GroupBox38</cstring>
+                            <cstring>multicolumnCB</cstring>
                         </property>
                         <property stdset="1">
-                            <name>title</name>
-                            <string>Column</string>
+                            <name>text</name>
+                            <string>&amp;Multicolumn</string>
                         </property>
-                        <grid>
-                            <property stdset="1">
-                                <name>margin</name>
-                                <number>11</number>
-                            </property>
-                            <property stdset="1">
-                                <name>spacing</name>
-                                <number>6</number>
-                            </property>
-                            <widget row="0"  column="0" >
-                                <class>QPushButton</class>
-                                <property stdset="1">
-                                    <name>name</name>
-                                    <cstring>columnAddPB</cstring>
-                                </property>
-                                <property stdset="1">
-                                    <name>text</name>
-                                    <string>A&amp;dd</string>
-                                </property>
-                                <property stdset="1">
-                                    <name>autoDefault</name>
-                                    <bool>false</bool>
-                                </property>
-                                <property>
-                                    <name>toolTip</name>
-                                    <string>Append column (right)</string>
-                                </property>
-                            </widget>
-                            <widget row="0"  column="1" >
-                                <class>QPushButton</class>
-                                <property stdset="1">
-                                    <name>name</name>
-                                    <cstring>columnDeletePB</cstring>
-                                </property>
-                                <property stdset="1">
-                                    <name>text</name>
-                                    <string>De&amp;lete</string>
-                                </property>
-                                <property stdset="1">
-                                    <name>autoDefault</name>
-                                    <bool>false</bool>
-                                </property>
-                                <property>
-                                    <name>toolTip</name>
-                                    <string>Delete current column</string>
-                                </property>
-                            </widget>
-                        </grid>
+                        <property>
+                            <name>toolTip</name>
+                            <string>Merge cells</string>
+                        </property>
                     </widget>
-                    <widget row="3"  column="0"  rowspan="1"  colspan="2" >
-                        <class>QGroupBox</class>
-                        <property stdset="1">
-                            <name>name</name>
-                            <cstring>GroupBox39</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>title</name>
-                            <string>Row</string>
-                        </property>
-                        <hbox>
-                            <property stdset="1">
-                                <name>margin</name>
-                                <number>11</number>
-                            </property>
-                            <property stdset="1">
-                                <name>spacing</name>
-                                <number>6</number>
-                            </property>
-                            <widget>
-                                <class>QPushButton</class>
-                                <property stdset="1">
-                                    <name>name</name>
-                                    <cstring>rowAddPB</cstring>
-                                </property>
-                                <property stdset="1">
-                                    <name>text</name>
-                                    <string>&amp;Add</string>
-                                </property>
-                                <property stdset="1">
-                                    <name>autoDefault</name>
-                                    <bool>false</bool>
-                                </property>
-                                <property>
-                                    <name>toolTip</name>
-                                    <string>Append row (below)</string>
-                                </property>
-                            </widget>
-                            <widget>
-                                <class>QPushButton</class>
-                                <property stdset="1">
-                                    <name>name</name>
-                                    <cstring>rowDeletePB</cstring>
-                                </property>
-                                <property stdset="1">
-                                    <name>text</name>
-                                    <string>Delete</string>
-                                </property>
-                                <property stdset="1">
-                                    <name>autoDefault</name>
-                                    <bool>false</bool>
-                                </property>
-                                <property>
-                                    <name>toolTip</name>
-                                    <string>Delete this row</string>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <widget row="2"  column="0"  rowspan="1"  colspan="3" >
+                    <widget row="1"  column="0"  rowspan="1"  colspan="4" >
                         <class>QGroupBox</class>
                         <property stdset="1">
                             <name>name</name>
@@ -399,87 +362,6 @@
                                 </property>
                             </widget>
                         </grid>
-                    </widget>
-                    <widget row="2"  column="3" >
-                        <class>QGroupBox</class>
-                        <property stdset="1">
-                            <name>name</name>
-                            <cstring>GroupBox21</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>title</name>
-                            <string>Rotate 90 degrees</string>
-                        </property>
-                        <vbox>
-                            <property stdset="1">
-                                <name>margin</name>
-                                <number>11</number>
-                            </property>
-                            <property stdset="1">
-                                <name>spacing</name>
-                                <number>6</number>
-                            </property>
-                            <widget>
-                                <class>QCheckBox</class>
-                                <property stdset="1">
-                                    <name>name</name>
-                                    <cstring>rotateTabularCB</cstring>
-                                </property>
-                                <property stdset="1">
-                                    <name>enabled</name>
-                                    <bool>true</bool>
-                                </property>
-                                <property stdset="1">
-                                    <name>text</name>
-                                    <string>&amp;Rotate Table</string>
-                                </property>
-                                <property>
-                                    <name>toolTip</name>
-                                    <string>Rotate the table by 90 degrees</string>
-                                </property>
-                            </widget>
-                            <widget>
-                                <class>QCheckBox</class>
-                                <property stdset="1">
-                                    <name>name</name>
-                                    <cstring>rotateCellCB</cstring>
-                                </property>
-                                <property stdset="1">
-                                    <name>text</name>
-                                    <string>Rotate &amp;Cell</string>
-                                </property>
-                                <property>
-                                    <name>toolTip</name>
-                                    <string>Rotate this cell by 90 degrees</string>
-                                </property>
-                            </widget>
-                        </vbox>
-                    </widget>
-                    <widget row="1"  column="1"  rowspan="1"  colspan="3" >
-                        <class>QLineEdit</class>
-                        <property stdset="1">
-                            <name>name</name>
-                            <cstring>specialAlignmentED</cstring>
-                        </property>
-                        <property>
-                            <name>toolTip</name>
-                            <string>Custom column format (LaTeX)</string>
-                        </property>
-                    </widget>
-                    <widget row="1"  column="0" >
-                        <class>QLabel</class>
-                        <property stdset="1">
-                            <name>name</name>
-                            <cstring>specialAlignmentLA</cstring>
-                        </property>
-                        <property stdset="1">
-                            <name>text</name>
-                            <string>LaTe&amp;X argument:</string>
-                        </property>
-                        <property>
-                            <name>buddy</name>
-                            <cstring>specialAlignmentED</cstring>
-                        </property>
                     </widget>
                 </grid>
             </widget>
@@ -1390,24 +1272,6 @@
 </images>
 <connections>
     <connection>
-        <sender>columnAddPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>columnAppend_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>rowAddPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>rowAppend_clicked()</slot>
-    </connection>
-    <connection>
-        <sender>columnDeletePB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>columnDelete_clicked()</slot>
-    </connection>
-    <connection>
         <sender>borderSetPB</sender>
         <signal>clicked()</signal>
         <receiver>QTabularDialogBase</receiver>
@@ -1430,12 +1294,6 @@
         <signal>toggled(bool)</signal>
         <receiver>newpageCB</receiver>
         <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-        <sender>rowDeletePB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTabularDialogBase</receiver>
-        <slot>rowDelete_clicked()</slot>
     </connection>
     <connection>
         <sender>hAlignCB</sender>
@@ -1613,14 +1471,11 @@
     </connection>
     <slot access="protected">borderSet_clicked()</slot>
     <slot access="protected">borderUnset_clicked()</slot>
-    <slot access="protected">border_toggled()</slot>
     <slot access="protected">bottomBorder_changed()</slot>
-    <slot access="protected">change_adaptor()</slot>
     <slot access="protected">close_clicked()</slot>
-    <slot access="protected">columnAppend_clicked()</slot>
-    <slot access="protected">columnDelete_clicked()</slot>
     <slot access="protected">hAlign_changed(int)</slot>
     <slot access="protected">leftBorder_changed()</slot>
+    <slot access="public">longTabular()</slot>
     <slot access="protected">ltFirstHeaderBorderAbove_clicked()</slot>
     <slot access="protected">ltFirstHeaderBorderBelow_clicked()</slot>
     <slot access="protected">ltFirstHeaderEmpty_clicked()</slot>
@@ -1637,12 +1492,9 @@
     <slot access="protected">ltLastFooterStatus_clicked()</slot>
     <slot access="protected">ltNewpage_clicked()</slot>
     <slot access="protected">multicolumn_clicked()</slot>
-    <slot access="public">longTabular()</slot>
     <slot access="protected">rightBorder_changed()</slot>
     <slot access="protected">rotateCell()</slot>
     <slot access="protected">rotateTabular()</slot>
-    <slot access="protected">rowAppend_clicked()</slot>
-    <slot access="protected">rowDelete_clicked()</slot>
     <slot access="public">setEnabled(bool)</slot>
     <slot access="protected">specialAlignment_changed()</slot>
     <slot access="protected">topBorder_changed()</slot>
@@ -1651,36 +1503,32 @@
 </connections>
 <tabstops>
     <tabstop>TabWidget</tabstop>
-    <tabstop>specialAlignmentED</tabstop>
-    <tabstop>columnAddPB</tabstop>
-    <tabstop>columnDeletePB</tabstop>
-    <tabstop>rowAddPB</tabstop>
-    <tabstop>rowDeletePB</tabstop>
     <tabstop>hAlignCB</tabstop>
-    <tabstop>multicolumnCB</tabstop>
     <tabstop>widthED</tabstop>
     <tabstop>widthUnit</tabstop>
     <tabstop>vAlignCB</tabstop>
+    <tabstop>multicolumnCB</tabstop>
     <tabstop>rotateTabularCB</tabstop>
     <tabstop>rotateCellCB</tabstop>
-    <tabstop>closePB</tabstop>
+    <tabstop>specialAlignmentED</tabstop>
     <tabstop>borderSetPB</tabstop>
     <tabstop>borderUnsetPB</tabstop>
     <tabstop>longTabularCB</tabstop>
     <tabstop>headerStatusCB</tabstop>
-    <tabstop>firstheaderStatusCB</tabstop>
-    <tabstop>footerStatusCB</tabstop>
-    <tabstop>lastfooterStatusCB</tabstop>
     <tabstop>headerBorderAboveCB</tabstop>
+    <tabstop>headerBorderBelowCB</tabstop>
+    <tabstop>firstheaderStatusCB</tabstop>
     <tabstop>firstheaderBorderAboveCB</tabstop>
+    <tabstop>firstheaderBorderBelowCB</tabstop>
+    <tabstop>firstheaderNoContentsCB</tabstop>
+    <tabstop>footerStatusCB</tabstop>
     <tabstop>footerBorderAboveCB</tabstop>
+    <tabstop>footerBorderBelowCB</tabstop>
+    <tabstop>lastfooterStatusCB</tabstop>
     <tabstop>lastfooterBorderAboveCB</tabstop>
     <tabstop>lastfooterBorderBelowCB</tabstop>
-    <tabstop>footerBorderBelowCB</tabstop>
-    <tabstop>firstheaderBorderBelowCB</tabstop>
-    <tabstop>headerBorderBelowCB</tabstop>
     <tabstop>lastfooterNoContentsCB</tabstop>
-    <tabstop>firstheaderNoContentsCB</tabstop>
     <tabstop>newpageCB</tabstop>
+    <tabstop>closePB</tabstop>
 </tabstops>
 </UI>

@@ -1085,7 +1085,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		text += file + _("?");
 #endif
 		int const ret = Alert::prompt(_("Revert to saved document?"),
-			text, 1, _("&Revert"), _("&Cancel"));
+			text, 0, 1, _("&Revert"), _("&Cancel"));
 
 		if (ret == 0)
 			view()->reload();
@@ -1935,7 +1935,7 @@ void LyXFunc::doImport(string const & argument)
 		text += file + _(" already exists.\n\nDo you want to over-write that document?");
 #endif
 		int const ret = Alert::prompt(_("Over-write document?"),
-			text, 1, _("&Over-write"), _("&Cancel"));
+			text, 0, 1, _("&Over-write"), _("&Cancel"));
 
 		if (ret == 1) {
 			owner->message(_("Canceled."));

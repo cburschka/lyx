@@ -53,10 +53,6 @@ void QTabular::build_dialog()
 	bcview().addReadOnly(dialog_->widthUnit);
 	bcview().addReadOnly(dialog_->hAlignCB);
 	bcview().addReadOnly(dialog_->vAlignCB);
-	bcview().addReadOnly(dialog_->columnAddPB);
-	bcview().addReadOnly(dialog_->columnDeletePB);
-	bcview().addReadOnly(dialog_->rowAddPB);
-	bcview().addReadOnly(dialog_->rowDeletePB);
 	bcview().addReadOnly(dialog_->borderSetPB);
 	bcview().addReadOnly(dialog_->borderUnsetPB);
 	bcview().addReadOnly(dialog_->borders);

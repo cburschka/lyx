@@ -20,16 +20,17 @@ namespace Alert {
 
 /**
  * Prompt for a question. Returns 0-2 for the chosen button.
- * Set default_button to a reasonable value. b1-b3 should have
- * accelerators marked with an '&'. title should be a short summary.
- * Strings should be gettextised. Please think about the poor user.
+ * Set default_button and cancel_button to reasonable values. b1-b3
+ * should have accelerators marked with an '&'. title should be
+ * a short summary. Strings should be gettextised.
+ * Please think about the poor user.
  *
  * Remember to use boost::format. If you make any of these buttons
  * "Yes" or "No", I will personally come around to your house and
  * slap you with fish, and not in an enjoyable way either.
  */
 int prompt(string const & title, string const & question,
-           int default_button,
+           int default_button, int cancel_button,
 	   string const & b1, string const & b2, string const & b3 = string());
 
 /**

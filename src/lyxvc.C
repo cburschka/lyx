@@ -89,7 +89,7 @@ bool LyXVC::ensureClean()
 	text += file + _(" has unsaved changes.\n\nDo you want to save the document?");
 #endif
 	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, _("&Save"), _("&Cancel"));
+		text, 0, 1, _("&Save"), _("&Cancel"));
 
 	if (ret == 0) {
 		vcs->owner()->getUser()->owner()->dispatch(FuncRequest(LFUN_MENUWRITE));
@@ -203,7 +203,7 @@ void LyXVC::revert()
 	text += file + _(" will lose all current changes.\n\nDo you want to revert to the saved version?");
 #endif
 	int const ret = Alert::prompt(_("Revert to stored version of document?"),
-		text, 1, _("&Revert"), _("&Cancel"));
+		text, 0, 1, _("&Revert"), _("&Cancel"));
 
 	if (ret == 0)
 		vcs->revert();

@@ -96,7 +96,7 @@ bool MenuWrite(BufferView * bv, Buffer * buffer)
 	text += file + _(" could not be saved.\n\nDo you want to rename the document and try again?");
 #endif
 	int const ret = Alert::prompt(_("Rename and save?"),
-		text, 0, _("&Rename"), _("&Cancel"));
+		text, 0, 1, _("&Rename"), _("&Cancel"));
 
 	if (ret == 0)
 		return WriteAs(bv, buffer);
@@ -155,7 +155,7 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 		text += file + _(" already exists.\n\nDo you want to over-write that document?");
 #endif
 		int const ret = Alert::prompt(_("Over-write document?"),
-			text, 1, _("&Over-write"), _("&Cancel"));
+			text, 0, 1, _("&Over-write"), _("&Cancel"));
 
 		if (ret == 1)
 			return false;

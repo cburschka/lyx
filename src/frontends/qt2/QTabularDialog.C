@@ -50,32 +50,10 @@ void QTabularDialog::closeEvent(QCloseEvent * e)
 	e->accept();
 }
 
+
 void QTabularDialog::close_clicked()
 {
 	form_->closeGUI();
-}
-
-void QTabularDialog::columnAppend_clicked()
-{
-	form_->controller().set(LyXTabular::APPEND_COLUMN);
-}
-
-
-void QTabularDialog::rowAppend_clicked()
-{
-	form_->controller().set(LyXTabular::APPEND_ROW);
-}
-
-
-void QTabularDialog::columnDelete_clicked()
-{
-	form_->controller().set(LyXTabular::DELETE_COLUMN);
-}
-
-
-void QTabularDialog::rowDelete_clicked()
-{
-	form_->controller().set(LyXTabular::DELETE_ROW);
 }
 
 
@@ -85,6 +63,7 @@ void QTabularDialog::borderSet_clicked()
 	form_->update_borders();
 	form_->changed();
 }
+
 
 void QTabularDialog::borderUnset_clicked()
 {
