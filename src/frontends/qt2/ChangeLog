@@ -2,7 +2,7 @@
 
 	* Menubar_pimpl.C (Pimpl): when creating a top-level menu, make
 	sure that it is initialized to some reasonable value, so that the
-	(ugly) Qt/Mac code can do its magic
+	(ugly) Qt/Mac code can do its magic (conditionally on Q_WS_MAC).
 
 2003-06-01  John Levon  <levon@movementarian.org>
   	 

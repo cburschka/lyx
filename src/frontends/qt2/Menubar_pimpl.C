@@ -51,7 +51,17 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
 		pair<int, QLPopupMenu *> menu =
 			createMenu(owner_->menuBar(), &(*m), this, true);
 		name_map_[m->submenuname()] = menu.second;
+#ifdef Q_WS_MAC
+		/* The qt/mac menu code has a very silly hack that
+		   moves some menu entries that it recognizes by name
+		   (ex: "Preferences...") to the "LyX" menu. This
+		   feature can only work if the menu entries are
+		   always available. Since we build menus on demand,
+		   we have to have a reasonable default value before
+		   the menus have been explicitely opened. (JMarc)
+		*/
 		menu.second->showing();
+#endif
 	}
 }
 
