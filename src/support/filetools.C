@@ -980,7 +980,10 @@ string const GetExtension(string const & name)
 // GZIP	\037\213\010\010...	http://www.ietf.org/rfc/rfc1952.txt
 // ZIP	PK...			http://www.halyava.ru/document/ind_arch.htm
 // Z	\037\177		UNIX compress
+
 /// return the "extension" which belongs to the contents
+/// for no knowing contents return the extension. Without
+/// an extension and unknown contents we return "user"
 string const getExtFromContents(string const & filename) {
 	if (filename.empty() || !IsFileReadable(filename)) 
 	    return string();	// paranoia check
@@ -996,7 +999,7 @@ string const getExtFromContents(string const & filename) {
 	bool zipChecked = false;
 	for (; count < max_count; ++count) {
 		if (ifs.eof()) {
-			lyxerr[Debug::INFO] << "filetools(getExtFromContents)"
+			lyxerr[Debug::GRAPHICS] << "filetools(getExtFromContents)"
 				" End of file reached and it wasn't found to be a known Type!" << endl;
 			break;
 		}
@@ -1027,7 +1030,6 @@ string const getExtFromContents(string const & filename) {
 		else if (contains(str,"PNG"))
 		    return "png";
 		else if (contains(str,"%!PS-Adobe")) { // eps or ps
-		    // test if it's ps or eps
 		    ifs >> str;
 		    if (contains(str,"EPSF"))
 			return "eps";
@@ -1038,9 +1040,12 @@ string const getExtFromContents(string const & filename) {
 		else if (contains(str,"XPM"))
 		    return "xpm";
 	}
-	lyxerr[Debug::INFO] << "filetools(getExtFromContents)\n"
+	lyxerr[Debug::GRAPHICS] << "filetools(getExtFromContents)\n"
 		"\tCouldn't find a known Type!" 
-		"\twill use a \"user\" defined format (based on file extension)" << endl;
+		"\twill use ext or a \"user\" defined format" << endl;
+	string const ext(GetExtension(filename));
+	if (!ext.empty())
+	    return ext;
 	return "user";
 }
 

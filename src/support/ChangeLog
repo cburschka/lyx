@@ -1,3 +1,8 @@
+2002-02-18  Herbert Voss  <voss@perce.de>
+
+	* filetools.C: (getExtFromContents) return the fileextension
+	if no format is detected.
+	
 2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* syscall.[Ch]: renamed as systemcall.[Ch]. class Systemcalls renamed

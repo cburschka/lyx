@@ -35,6 +35,10 @@
 	(docbook):
 	(validate): the file locatation is given by an entity reference.
 
+2002-02-18  Herbert Voss  <voss@lyx.org>
+
+	* insetgraphics.C: use [Debug::GRAPHICS] for lyxerr
+
 2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetexternal.C Changes due to the renaming of support/syscall.[Ch]

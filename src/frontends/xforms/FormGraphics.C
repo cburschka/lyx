@@ -106,8 +106,8 @@ void FormGraphics::build()
 	fl_set_input_return (lyxview_->input_lyxheight, FL_RETURN_CHANGED);
 	fl_set_input_return (lyxview_->input_lyxscale, FL_RETURN_CHANGED);
 
-	fl_addto_choice(lyxview_->choice_width_lyxwidth, choice_Length_WithUnit.c_str());
-	fl_addto_choice(lyxview_->choice_width_lyxheight, choice_Length_WithUnit.c_str());
+	fl_addto_choice(lyxview_->choice_width_lyxwidth, choice_Length_All.c_str());
+	fl_addto_choice(lyxview_->choice_width_lyxheight, choice_Length_All.c_str());
 
 	bc().addReadOnly(lyxview_->radio_pref);
 	bc().addReadOnly(lyxview_->radio_mono);
@@ -385,9 +385,10 @@ void FormGraphics::update() {
 	// path, because the controller knows nothing about the doc-dir
 	controller().bbChanged = false;
 	if (igp.bb.empty()) {
-	    string const fileWithAbsPath =
+	lyxerr[Debug::GRAPHICS] << "update:: no BoundingBox" << endl;
+	    string const fileWithAbsPath = 
 		MakeAbsPath(igp.filename, OnlyPath(igp.filename)); 	
-	    string const bb = controller().readBB(fileWithAbsPath);
+	    string const bb = controller().readBB(fileWithAbsPath);	    
 	    if (!bb.empty()) {		
 		// get the values from the file
 		// in this case we always have the point-unit
@@ -401,9 +402,9 @@ void FormGraphics::update() {
 		    fl_set_input(bbox_->input_bb_x1, bb.c_str());
 		    fl_set_input(bbox_->input_bb_y1, bb.c_str());
 	    }
-	    string const unit("pt");
-	    fl_set_choice_text(bbox_->choice_bb_units, unit.c_str());
+	    fl_set_choice(bbox_->choice_bb_units, 1);	// "pt"
 	} else { 				// get the values from the inset
+	    lyxerr[Debug::GRAPHICS] << "update:: igp has BoundingBox" << endl;
 	    controller().bbChanged = true;
 	    LyXLength anyLength;
 	    anyLength = LyXLength(token(igp.bb,' ',0));

@@ -40,8 +40,6 @@ public:
 	string const readBB(string const & file);
 	/// Control the bb
 	bool bbChanged;
-	/// Show Help file
-	void help() const;
 
 private:
 	/// Dispatch the changed parameters to the kernel.

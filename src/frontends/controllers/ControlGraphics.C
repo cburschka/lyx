@@ -131,8 +131,4 @@ string const ControlGraphics::readBB(string const & file)
 	return string();
 }
 
-void ControlGraphics::help() const
-{
-	lv_.getDialogs()->showFile(i18nLibFileSearch("help","Graphics.hlp"));
-}
 

@@ -350,7 +350,7 @@ void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
 	else if (token == "Figure") // Compatibility reading of FigInset figures.
 		readFigInset(buf, lex);
 	else
-		lyxerr[Debug::INFO] << "Not a Graphics or Figure inset!\n";
+		lyxerr[Debug::GRAPHICS] << "Not a Graphics or Figure inset!\n";
 
 	updateInset();
 }
@@ -363,7 +363,7 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 		lex.next();
 
 		string const token = lex.getString();
-		lyxerr[Debug::INFO] << "Token: '" << token << '\'' 
+		lyxerr[Debug::GRAPHICS] << "Token: '" << token << '\'' 
 				    << endl;
 
 		if (token.empty()) {
@@ -408,7 +408,7 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 		lex.next();
 
 		string const token = lex.getString();
-		lyxerr[Debug::INFO] << "Token: " << token << endl;
+		lyxerr[Debug::GRAPHICS] << "Token: " << token << endl;
 		
 		if (token.empty())
 			continue;
@@ -526,7 +526,7 @@ string decideOutputImageFormat(string const & suffix)
 	// lyxrc.pdf_mode means:
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we using latex or pdflatex).	
-	lyxerr[Debug::INFO] << "decideOutput::lyxrc.pdf_mode = " << lyxrc.pdf_mode << "\n";
+	lyxerr[Debug::GRAPHICS] << "decideOutput::lyxrc.pdf_mode = " << lyxrc.pdf_mode << "\n";
 	if (lyxrc.pdf_mode) {
 		if (contains(suffix,"ps") || suffix == "pdf")
 			return "pdf";
@@ -536,7 +536,7 @@ string decideOutputImageFormat(string const & suffix)
 			return "png";
 	}
 	// If it's postscript, we always do eps.
-	lyxerr[Debug::INFO] << "decideOutput: we have PostScript mode\n";
+	lyxerr[Debug::GRAPHICS] << "decideOutput: we have PostScript mode\n";
 	if (suffix != "ps")
 	    return "eps";
 	else
@@ -561,7 +561,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	//
 	// if it's a zipped one, than let LaTeX do the rest!!!
 	if ((zippedFile(params.filename) && params.noUnzip) || buf->niceFile) {
-	    lyxerr[Debug::INFO] << "don't unzip file or export latex" 
+	    lyxerr[Debug::GRAPHICS] << "don't unzip file or export latex" 
 		    << params.filename << endl;
 	    return params.filename;
 	}
@@ -586,10 +586,10 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	string outfile;
 	string const temp = AddName(buf->tmppath, filename_);
 	outfile = RemoveExtension(temp);
-	lyxerr[Debug::INFO] << "tempname = " << temp << "\n";
-	lyxerr[Debug::INFO] << "buf::tmppath = " << buf->tmppath << "\n";
-	lyxerr[Debug::INFO] << "filename_ = " << filename_ << "\n";
-	lyxerr[Debug::INFO] << "outfile = " << outfile << endl;
+	lyxerr[Debug::GRAPHICS] << "tempname = " << temp << "\n";
+	lyxerr[Debug::GRAPHICS] << "buf::tmppath = " << buf->tmppath << "\n";
+	lyxerr[Debug::GRAPHICS] << "filename_ = " << filename_ << "\n";
+	lyxerr[Debug::GRAPHICS] << "outfile = " << outfile << endl;
 	converters.convert(buf, filename_, outfile, extension, image_target);
 	return outfile;
 }
