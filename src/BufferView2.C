@@ -276,10 +276,12 @@ void BufferView::insertErrors(TeXErrors & terr)
 		if (texrowpar == 0)
 			continue;
 
+		freezeUndo();
 		InsetError * new_inset = new InsetError(msgtxt);
 		text->setCursorIntern(this, texrowpar, tmppos);
 		text->insertInset(this, new_inset);
 		text->fullRebreak(this);
+		unFreezeUndo();
 	}
 	// Restore the cursor position
 	text->setCursorIntern(this, cursor.par(), cursor.pos());

@@ -24,7 +24,7 @@
 #include "gettext.h"
 #include "iterators.h"
 #include "lyxtextclasslist.h"
-
+#include "undo_funcs.h"
 #include "insets/inseterror.h"
 
 using std::pair;
@@ -427,6 +427,7 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 				+ _("\nbecause of class conversion from\n")
 				+ tclass1.name() + _(" to ")
 				+ tclass2.name();
+			freezeUndo();
 			InsetError * new_inset = new InsetError(s);
 			LyXText * txt = current_view->getLyXText();
 			LyXCursor cur = txt->cursor;
@@ -434,6 +435,7 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 			txt->insertInset(current_view, new_inset);
 			txt->fullRebreak(current_view);
 			txt->setCursorIntern(current_view, cur.par(), cur.pos());
+			unFreezeUndo();
 		}
 	}
 	return ret;
