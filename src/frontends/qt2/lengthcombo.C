@@ -19,7 +19,7 @@
 LengthCombo::LengthCombo(QWidget * parent, char * name)
 	: QComboBox(parent, name)
 {
-	for (int i=0; i < num_units; i++)
+	for (int i = 0; i < num_units; i++)
 		insertItem(unit_name_gui[i]);
 
 	connect(this, SIGNAL(activated(int)),

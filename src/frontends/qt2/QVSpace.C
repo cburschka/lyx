@@ -19,6 +19,7 @@
 #include "QVSpaceDialog.h"
 #include "Qt2BC.h"
 
+#include "checkedwidgets.h"
 #include "lengthcombo.h"
 #include "qt_helpers.h"
 
@@ -150,6 +151,9 @@ void QVSpace::build_dialog()
 	bcview().addReadOnly(dialog_->unitCO);
 	bcview().addReadOnly(dialog_->keepCB);
 
+	// initialize the length validator
+	addCheckedLineEdit(bcview(), dialog_->valueLE, dialog_->valueL);
+	
 	// remove the %-items from the unit choice
 	dialog_->unitCO->noPercents();
 }

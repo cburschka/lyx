@@ -16,6 +16,7 @@
 #include "QVSpace.h"
 
 #include "lengthcombo.h"
+#include "lengthvalidator.h"
 #include "qt_helpers.h"
 
 #include <qcombobox.h>
@@ -27,6 +28,19 @@
 namespace lyx {
 namespace frontend {
 
+
+namespace {
+
+LengthValidator * unsignedLengthValidator(QLineEdit * ed)
+{
+	LengthValidator * v = new LengthValidator(ed);
+	v->setBottom(LyXGlueLength());
+	return v;
+}
+
+} // namespace anon
+
+
 QVSpaceDialog::QVSpaceDialog(QVSpace * form)
 	: QVSpaceDialogBase(0, 0, false, 0),
 	form_(form)
@@ -37,6 +51,8 @@ QVSpaceDialog::QVSpaceDialog(QVSpace * form)
 		form_, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form_, SLOT(slotClose()));
+		
+	valueLE->setValidator(unsignedLengthValidator(valueLE));
 }
 
 
@@ -55,7 +71,7 @@ void QVSpaceDialog::change_adaptor()
 
 void QVSpaceDialog::enableCustom(int)
 {
-	bool const enable = spacingCO->currentItem()==5;
+	bool const enable = spacingCO->currentItem() == 5;
 	valueLE->setEnabled(enable);
 	unitCO->setEnabled(enable);
 }

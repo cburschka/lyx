@@ -1,3 +1,11 @@
+2004-11-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* lengthvalidator.[Ch]: add GlueLength validator
+	* QVSpace.C:
+	* QVSpaceDialog.C: use GlueLength validator
+	
+	* lengthcombo.C: whitespace
+
 2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* QPrefsDialog.h: include LColor.h to satisfy concept checks.

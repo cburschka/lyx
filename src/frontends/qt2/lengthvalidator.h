@@ -13,6 +13,7 @@
 #define LENGTHVALIDATOR_H
 
 #include "lyxlength.h"
+#include "lyxgluelength.h"
 #include <qvalidator.h>
 
 class QWidget;
@@ -26,7 +27,8 @@ public:
 
 	QValidator::State validate(QString &, int &) const;
 
-	void setBottom(LyXLength);
+	void setBottom(LyXLength const &);
+	void setBottom(LyXGlueLength const &);
 	LyXLength bottom() const { return b_; }
 
 private:
@@ -36,7 +38,9 @@ private:
 #endif
 
 	LyXLength b_;
+	LyXGlueLength g_;
 	bool no_bottom_;
+	bool glue_length_;
 };
 
 # endif // NOT LENGTHVALIDATOR_H
