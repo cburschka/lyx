@@ -340,20 +340,6 @@ int mkstemp(char*);
 #endif
 #endif
 
-#if HAVE_MKDIR
-#  if MKDIR_TAKES_ONE_ARG
-     /* MinGW32 */
-#    define mkdir(a, b) mkdir(a)
-#  endif
-#else
-#  if HAVE__MKDIR
-     /* plain Windows 32 */
-#    define mkdir(a, b) _mkdir(a)
-#  else
-#    error "Don't know how to create a directory on this system."
-#  endif
-#endif
-
 #ifdef __EMX__
 #include "support/os2_defines.h"
 #endif

@@ -1,4 +1,9 @@
-2003-12-15  Angus Leeming  <leeming-0hXrFu2P2+c@public.gmane.org>
+2004-12-16  Angus Leeming  <leeming@lyx.org>
+
+	* configure.ac: remove the HAVE_MKDIR conditional code to
+	src/support/mkdir.C
+
+2003-12-15  Angus Leeming  <leeming@lyx.org>
 
 	* lyxinclude.m4: define AC_FUNC_MKDIR.
 
