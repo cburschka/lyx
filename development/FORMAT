@@ -1,6 +1,66 @@
 Changes to the LyX format since version 220 (LyX 1.2.0) was released.
 =====================================================================
 
+2002-08-22  Rob Lahaye <lahaye@snu.ac.kr>
+
+New graphics dialog. With the removal of buttons in the dialog, also
+keywords in the graphics inset went. The following keywords do not
+exist anymore:
+	lyxsize_kind
+	lyxsize_type
+	lyxwidth
+	lyxheight
+	size_kind
+	size_type
+	rotate
+
+Only non-default values are saved to the lyx files. The defaults of the remaining
+keywords are;
+	filename <empty>
+	lyxscale 100
+	display default
+	scale 100
+	width <empty>
+	height <empty>
+	draft <off>
+	noUnzip <off>
+	BoundingBox <from file>
+	clip <off>
+	rotateAngle 0
+	rotateOrigin centerBaseline
+	subcaption <off>
+	subcaptionText <empty>
+	special <empty>
+
+The remaining keywords have sufficient overlap with the old ones for a
+smooth reading of the 1.2.x inset keywords in most common cases.
+
+Compatibility is certainly broken for the old lyxwidth/lyxheight keywords.
+They don't exist anymore and we can't translate them into a scaling value, while
+we're reading the graphics inset. The old lyxwidth/lyxheight keyword and its
+argument is ignored and lost.
+
+Only few compatibility issues are left for lyx2lyx:
+
+------------------------------------------------------------------------------
+old-token                                   new-token         remove
+------------------------------------------------------------------------------
+size_kind original / size_type 0            scale 100         width <val>
+                                                              height <val>
+                                                              scale <val>
+
+size_kind width_height / size_type 1            -             scale <val>
+
+lyxsize_kind original / lyxsize_type 0      lyxscale 100      lyxscale <val>
+------------------------------------------------------------------------------
+[replace old-token by new-token, and remove any of subsequent tokens as listed]
+
+If "rotate" is absent, lyx2lyx should ignore "rotateAngle <val>":
+   if ( "rotateAngle <val>" is there WITHOUT being preceded by the keyword "rotate" )
+   then
+        replace "rotateAngle <val>" by "rotateAngle 0"
+
+
 2002-08-12  Andre' Poenitz <poenitz@gmx.de>
 
 Added \lyxlock for locked math inset when written to .lyx file.
