@@ -107,12 +107,13 @@ Menuset
 	Separator
 	Item "Find & Replace...|F" "find-replace"
 	Separator
-	Submenu "Floats & Insets|I" "edit_floats"
 	Submenu "Tabular|T" "edit_tabular"
+	Submenu "Floats & Insets|I" "edit_floats"
 	Item "Spellchecker...|S" "spellchecker"
 	Item "Check TeX|h" "buffer-chktex"
+	Item "Remove all Error boxes|E" "error-remove-all"
 	Separator
-	Item "Preferences...|e" "dialog-preferences"
+	Item "Preferences...|n" "dialog-preferences"
 	Item "Reconfigure|g" "reconfigure"
     End
 
@@ -124,12 +125,10 @@ Menuset
     Menu "edit_floats"
 	Item "Open/Close|O" "open-stuff"
 	Item "Melt|M" "melt"
-	Item "Open All Footnotes/Margin Notes|A" "floats-operate openfoot"
-	Item "Close All Footnotes/Margin Notes|C" "floats-operate closefoot"
 	Item "Open All Figures/Tables|F" "floats-operate openfig"
 	Item "Close All Figures/Tables|T" "floats-operate closefig"
-	Separator
-	Item "Remove all Error Boxes|R" "error-remove-all"
+	Item "Open All Footnotes/Margin Notes|A" "floats-operate openfoot"
+	Item "Close All Footnotes/Margin Notes|C" "floats-operate closefoot"
     End
 
     Menu "edit_tabular"
@@ -160,8 +159,8 @@ Menuset
 #
     Menu "insert"
 	Item "Math text|M" "math-mode"
-	Item "Math Display|D" "math-display"
-	Item "Math Panel...|P" "math-panel"
+	Item "Math display|d" "math-display"
+	Item "Math panel...|p" "math-panel"
 	Separator
 	Submenu "Special character|S" "insert_special"
 	Item "Citation reference...|C" "citation-insert"
@@ -182,8 +181,8 @@ Menuset
     End
 
     Menu "insert_special"
-	Item "Subscript|S" "math-insert _"
-	Item "Superscript|u" "math-insert ^"
+	Item "Superscript|S" "command-sequence math-insert ^;math-mode;"
+	Item "Subscript|u" "command-sequence math-insert _;math-mode;"
 	Item "HFill|H" "hfill-insert"
 	Item "Hyphenation point|p" "hyphenation-point-insert"
 	Item "Protected blank|b" "protected-space-insert"
@@ -264,6 +263,9 @@ Menuset
 	Documents
     End
 
+#
+# HELP MENU
+#
     Menu "help"
 	Item "Introduction|I" "help-open Intro"
 	Item "Tutorial|T" "help-open Tutorial"

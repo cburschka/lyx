@@ -35,6 +35,9 @@ public:
 	~FormTabular();
 
 private:
+	/** Redraw the form (on receipt of a Signal indicating, for example,
+	    that the xform colours have been re-mapped). */
+	virtual void redraw();
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect();
 

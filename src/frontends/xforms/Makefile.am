@@ -14,6 +14,8 @@ ETAGS_ARGS = --lang=c++
 libxforms_la_SOURCES = \
 	ButtonController.C \
 	ButtonController.h \
+	Color.C \
+	Color.h \
 	Dialogs.C \
 	GUIRunTime.C \
 	FormBase.C \

@@ -48,12 +48,20 @@ FormBase::FormBase(LyXView * lv, Dialogs * d, string const & t,
 	  minw_(0), minh_(0)
 {
 	Assert(lv && d && bp);
+	Dialogs::redrawGUI.connect(slot(this, &FormBase::redraw));
 }
 
 
 FormBase::~FormBase()
 {
 	delete bp_;
+}
+
+
+void FormBase::redraw()
+{
+	if( form() && form()->visible )
+		fl_redraw_form( form() );
 }
 
 
@@ -166,9 +174,7 @@ FormBaseBI::FormBaseBI(LyXView * lv, Dialogs * d, string const & t,
 		       ButtonPolicy * bp,
 		       char const * close, char const * cancel)
 	: FormBase( lv, d, t, bp, close, cancel )
-{
-	Assert(lv && d && bp);
-}
+{}
 
 
 void FormBaseBI::connect()
@@ -189,9 +195,7 @@ FormBaseBD::FormBaseBD(LyXView * lv, Dialogs * d, string const & t,
 		       char const * close, char const * cancel)
 	: FormBase( lv, d, t, bp, close, cancel ),
 	  u_(0)
-{
-	Assert(lv && d && bp);
-}
+{}
 
 
 void FormBaseBD::connect()

@@ -73,6 +73,19 @@ FormDocument::~FormDocument()
 }
 
 
+void FormDocument::redraw()
+{
+	if( form() && form()->visible )
+		fl_redraw_form( form() );
+	else
+		return;
+
+	FL_FORM * outer_form = fl_get_active_folder(dialog_->tabbed_folder);
+	if (outer_form && outer_form->visible)
+		fl_redraw_form( outer_form );
+}
+
+
 FL_FORM * FormDocument::form() const
 {
     if (dialog_) return dialog_->form;

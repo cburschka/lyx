@@ -1,3 +1,76 @@
+2000-11-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/Color.C: include <algorithm> and <cmath>
+	headers. 
+
+	* lib/Makefile.am (DOCINST): do not install everything in the
+	documentation directory.
+
+2000-11-10  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/bufferlist.C (newFile): set the filename to the constructed
+	newfileXX.lyx
+
+	* src/lyx_cb.C (MenuWriteAs): if a buffer is "unnamed", pass the
+	constructed "newfileXX.lyx" name to the dialog
+
+	* src/frontends/DialogBase.h: make update() non-abstract so
+	KDE doesn't need to implement two update methods for every form
+
+	* src/frontends/kde/Makefile.am: add missing xforms objects
+	to compile again
+
+	* src/frontends/kde/Dialogs.C: Add FormTabularCreate dialog
+
+2000-11-09  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/Color.[Ch]: new files, defining the color
+	structs RGB and HSV. May not be the best place for these files.
+	Perhaps move them into src ?
+
+	* src/frontends/xforms/Makefile.am: added new files.
+
+	* src/frontends/xforms/forms/form_preferences.fd:
+	* src/frontends/xforms/FormPreferences.[Ch]: bowed to reality and
+	replaced all instances of "colour" with "color"!
+
+	* src/frontends/xforms/forms/form_preferences.fd: modified Colors tab
+	slightly yet again.
+
+	* src/frontends/xforms/FormPreferences.[Ch]: functioning Colors
+	tab. Can now alter the colors of the xform's GUI on the fly. With
+	the aid of a single static Signal (see below), can "Apply" these
+	changes to all currently open dialogs. (Well, to all of the NEW
+	dialogs and to LyXView. The OLD dialogs are not yet redrawn.) ALL
+	subsequently opened dialogs will, of course, also have the new
+	color scheme. Cannot yet save (or load) the choices to file, so
+	they are lost when exiting LyX.
+	
+	* src/frontends/Dialogs.h:
+	* src/frontends/xforms/Dialogs.C (redrawGUI): new static Signal.
+	Used to trigger a redraw of any dialogs connected to it because,
+	for example, the GUI colours have been re-mapped.
+
+	* src/frontends/xforms/FormBase.[Ch]:
+	* src/frontends/xforms/FormDocument.[Ch]:
+	* src/frontends/xforms/FormParagraph.[Ch]:
+	* src/frontends/xforms/FormPreferences.[Ch]:
+	* src/frontends/xforms/FormTabular.[Ch]: (redraw): new virtual
+	method, to be connected to Dialogs::redrawGUI. Method must be
+	virtual, because dialogs with tabbed folders need to redraw the
+	forms of each tab folder.
+
+	* src/LyXView.C (d-tor):
+	* src/frontends/xforms/FormBase.C (d-tor): connected
+	Dialogs::redrawGUI signal to redraw().
+
+	* src/frontends/xforms/FormBase.C (~FormBaseBI, ~FormBaseBD):
+	removed Assert, because it is identical to that in FormBase.
+
+2000-11-10  Rob Lahaye <lahaye@postech.edu>
+
+	* lib/ui/default.ui: minor polishing.
+
 2000-11-10  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (resizeLyXText): check !cache[bv]
@@ -135,8 +208,6 @@
 	(form_formats): added a "Shortcut" input field. Note that we can't use
 	names such as "input_shortcut" as this buggers up the sed script stuff.
 
-	* src/frontends/xforms/FormPreferences.C
-                                     
 2000-11-07  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/LaTeXLog.C:

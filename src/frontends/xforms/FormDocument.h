@@ -79,6 +79,9 @@ private:
 		///
 		BULLETBMTABLE
 	};
+	/** Redraw the form (on receipt of a Signal indicating, for example,
+	    that the xform colours have been re-mapped). */
+	virtual void redraw();
 	/// Build the dialog
 	virtual void build();
 	/// Filter the inputs

@@ -74,6 +74,7 @@ LyXView::LyXView(int width, int height)
 		.connect(slot(&updateAllVisibleBufferRelatedDialogs));
 	dialogs_->hideBufferDependent
 		.connect(slot(&CloseAllBufferRelatedDialogs));
+	Dialogs::redrawGUI.connect(slot(this, &LyXView::redraw));
 }
 
 

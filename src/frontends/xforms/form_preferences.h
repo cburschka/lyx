@@ -123,14 +123,14 @@ struct FD_form_language {
 	FL_OBJECT *input_command_begin;
 	FL_OBJECT *input_command_end;
 };
-struct FD_form_colours {
-	~FD_form_colours();
+struct FD_form_colors {
+	~FD_form_colors();
 
 	FL_FORM *form;
 	FL_OBJECT *browser_x11;
 	FL_OBJECT *input_name;
 	FL_OBJECT *button_browse;
-	FL_OBJECT *button_colour;
+	FL_OBJECT *button_color;
 	FL_OBJECT *valslider_red;
 	FL_OBJECT *valslider_green;
 	FL_OBJECT *valslider_blue;

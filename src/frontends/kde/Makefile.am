@@ -51,6 +51,10 @@ libkde_la_OBJADD = \
         ../xforms/form_preferences.lo \
         ../xforms/FormTabular.lo \
         ../xforms/form_tabular.lo \
+	../xforms/FormTabularCreate.lo \
+	../xforms/form_tabular_create.lo \
+	../xforms/ButtonController.lo \
+	../xforms/xform_helpers.lo \
         ../xforms/input_validators.lo \
         ../xforms/RadioButtonGroup.lo \
         ../xforms/Toolbar_pimpl.lo \

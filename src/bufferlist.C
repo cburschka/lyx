@@ -456,10 +456,11 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 		b->paragraph = new LyXParagraph;
 	}
 
-	if (!lyxrc.new_ask_filename) {
-		if (!isNamed)
-			b->setUnnamed();
+	if (!lyxrc.new_ask_filename && !isNamed) {
+		b->setUnnamed();
+		b->setFileName(name);
 	}
+
 	b->setReadonly(false);
 	
 	return b;

@@ -218,29 +218,23 @@ bool MenuWriteAs(Buffer * buffer)
 	if (!IsLyXFilename(fname))
 		fname += ".lyx";
 
-	if (buffer->isUnnamed()) {
-		fname = fileDlg.Select(_("Enter Filename to Save Document as"), 
-				       "",
-				       "*.lyx", 
-				       "");
-	} else {
-		fname = fileDlg.Select(_("Enter Filename to Save Document as"), 
-				       OnlyPath(fname),
-				       "*.lyx", 
-				       OnlyFilename(fname));
-	}
+	fname = fileDlg.Select(_("Enter Filename to Save Document as"), 
+			       OnlyPath(fname),
+			       "*.lyx", 
+			       OnlyFilename(fname));
+
 	AllowInput(current_view);
 
-	if (fname.empty()) {
+	if (fname.empty())
 		return false;
-	}
+
 	// Make sure the absolute filename ends with appropriate suffix
 	string s = MakeAbsPath(fname);
 	if (!IsLyXFilename(s))
 		s += ".lyx";
 
 	// Same name as we have already?
-	if (s == oldname) {
+	if (!buffer->isUnnamed() && s == oldname) {
 		if (!AskQuestion(_("Same name as document already has:"),
 				 MakeDisplayPath(s, 50),
 				 _("Save anyway?")))
@@ -248,7 +242,7 @@ bool MenuWriteAs(Buffer * buffer)
 		// Falls through to name change and save
 	} 
 	// No, but do we have another file with this name open?
-	else if (bufferlist.exists(s)) {
+	else if (!buffer->isUnnamed() && bufferlist.exists(s)) {
 		if (AskQuestion(_("Another document with same name open!"),
 				MakeDisplayPath(s, 50),
 				_("Replace with current document?")))

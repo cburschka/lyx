@@ -1143,7 +1143,7 @@ callback: C_FormBaseInputCB
 argument: 0
 
 =============== FORM ===============
-Name: form_colours
+Name: form_colors
 Width: 450
 Height: 360
 Number of Objects: 10
@@ -1176,7 +1176,7 @@ alignment: FL_ALIGN_TOP
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: X11 colour names|#X
+label: X11 color names|#X
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -1234,7 +1234,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: button_colour
+name: button_color
 callback: 
 argument: 
 
@@ -1298,7 +1298,7 @@ argument: 0
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 290 25 150 200
+box: 290 25 150 251
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP
@@ -1316,7 +1316,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 350 230 90 30
+box: 320 285 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

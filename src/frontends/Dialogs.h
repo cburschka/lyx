@@ -60,6 +60,10 @@ public:
 	~Dialogs();
 	//@}
 	
+	/** Redraw all visible popups because, for example, the GUI colours
+	    have been re-mapped. */
+	static Signal0<void> redrawGUI;
+
 	/**@name Global Hide and Update Signals */
 	//@{
 	/// Hide all visible popups
@@ -145,11 +149,3 @@ private:
 };
 
 #endif
-
-
-
-
-
-
-
-

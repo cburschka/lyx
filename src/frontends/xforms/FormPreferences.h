@@ -17,7 +17,10 @@
 #ifndef FORMPREFERENCES_H
 #define FORMPREFERENCES_H
 
+#include <utility> // for pair
+
 #include "FormBase.h"
+#include "Color.h"
 
 #ifdef __GNUG_
 #pragma interface
@@ -28,7 +31,7 @@ class Command;
 class Dialogs;
 class Format;
 class LyXView;
-struct FD_form_colours;
+struct FD_form_colors;
 struct FD_form_converters;
 struct FD_form_formats;
 struct FD_form_inputs_misc;
@@ -59,21 +62,9 @@ public:
 			      FL_Coord, FL_Coord, int, void *);
 
 private:
-	/// helper struct for Colours
-	struct RGB {
-		int r;
-		int g;
-		int b;
-		RGB() : r(0), g(0), b(0) {}
-		RGB(int red, int green, int blue) : r(red), g(green), b(blue) {}
-	};
-	///
-	friend bool operator==(RGB const &, RGB const &);
-	///
-	friend bool operator!=(RGB const &, RGB const &);
-	///
-	typedef std::pair<string, RGB> X11Colour;
-
+	/** Redraw the form (on receipt of a Signal indicating, for example,
+	    that the xform colours have been re-mapped). */
+	virtual void redraw();
 	/// Update the dialog.
 	virtual void update();
 	///
@@ -97,7 +88,7 @@ private:
 	 */
 	
 	///
-	void applyColours() const;
+	void applyColors() const;
 	///
 	void applyConverters() const;
 	///
@@ -125,7 +116,7 @@ private:
 	 */
 	
 	///
-	void buildColours();
+	void buildColors();
 	///
 	void buildConverters();
 	///
@@ -153,7 +144,7 @@ private:
 	 */
 	
 	///
-	string const feedbackColours(FL_OBJECT const * const) const;
+	string const feedbackColors(FL_OBJECT const * const) const;
 	///
 	string const feedbackConverters(FL_OBJECT const * const) const;
 	///
@@ -181,7 +172,7 @@ private:
 	 */
 	
 	///
-	bool inputColours(FL_OBJECT const * const);
+	bool inputColors(FL_OBJECT const * const);
 	///
 	bool inputConverters( FL_OBJECT const * const );
 	///
@@ -199,7 +190,7 @@ private:
 	 */
 	
 	///
-	void updateColours();
+	void updateColors();
 	///
 	void updateConverters();
 	///
@@ -227,13 +218,23 @@ private:
 	 */
 	
 	///
-	bool ColoursLoadBrowser( string const & );
+	void ColorsAdjustVal( int, int, double ) const;
 	///
-	int  ColoursSearchEntry(RGB const & ) const;
+	bool ColorsBrowserLyX() const;
 	///
-	void ColoursUpdateBrowser( int );
+	bool ColorsBrowserX11() const;
 	///
-	void ColoursUpdateRGB();
+	bool ColorsDatabase() const;
+	///
+	void ColorsLoadBrowserLyX();
+	///
+	bool ColorsLoadBrowserX11(string const &) const;
+	///
+	bool ColorsModify() const;
+	///
+	bool ColorsRGB() const;
+	///
+	int ColorsSearchEntry(RGB const &) const;
 
 	///
 	bool ConvertersAdd();
@@ -279,7 +280,7 @@ private:
 	///
 	FD_form_outer_tab * build_outer_tab();
 	///
-	FD_form_colours * build_colours();
+	FD_form_colors * build_colors();
 	///
 	FD_form_converters * build_converters();
 	///
@@ -316,7 +317,7 @@ private:
 	/// Spellchecker, language stuff, etc
 	FD_form_outer_tab * usage_tab_;
 	///
-	FD_form_colours * colours_;
+	FD_form_colors * colors_;
 	///
 	FD_form_converters * converters_;
 	///
@@ -350,8 +351,10 @@ private:
 	std::vector<Format> formats_vec;
 	/// A vector of Commands, to be manipulated in the Converter browser.
 	std::vector<Command> commands_vec;
-	/// A vector of RGB colours and associated name.
-	static std::vector<X11Colour> colourDB;
+	/// A vector of RGB colors and associated name.
+	static std::vector<X11Color> colorDB;
+	/// A vector of xform RGB colors and associated name.
+	static std::vector<XFormColor> xformColorDB;
 	/** A collection of kmap files.
 	    First entry is the file name, full path.
 	    Second entry is the shorthand, as appears in the fl_choice.
@@ -361,20 +364,5 @@ private:
 	///
 	bool warningPosted;
 };
-
-inline
-bool operator==(FormPreferences::RGB const & c1,
-		FormPreferences::RGB const & c2)
-{
-	return (c1.r == c2.r && c1.g == c2.g && c1.b == c2.b);
-}
-
-
-inline
-bool operator!=(FormPreferences::RGB const & c1,
-		FormPreferences::RGB const & c2)
-{
-	return !(c1 == c2);
-}
 
 #endif

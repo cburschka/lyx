@@ -18,6 +18,7 @@
 #include FORMS_H_LOCATION
 #include "ButtonController.h"
 #include "gettext.h"
+#include <sigc++/signal_system.h> // temporary
 
 class Buffer;
 class Dialogs;
@@ -32,6 +33,7 @@ class LyXView;
     and FormBaseBD.
     @author Angus Leeming
  */
+
 class FormBase : public DialogBase, public noncopyable {
 public:
 	/// Callback functions
@@ -48,13 +50,18 @@ public:
 	static void RestoreCB(FL_OBJECT *, long);
 
 protected: // methods
-	/** Constructor.
-	    #FormBase(lv, d, _("DialogName"), BUFFER_DEPENDENT, new ButtonPolicy)#
-	 */
+	///
 	FormBase(LyXView *, Dialogs *, string const &,
 		 ButtonPolicy *, char const *, char const *);
 	///
 	virtual ~FormBase();
+
+	/** Redraw the form (on receipt of a Signal indicating, for example,
+	    that the xform colours have been re-mapped).
+	    Must be virtual because dialogs with tabbed folders will need to
+	    redraw the form for each tab.
+	*/
+	virtual void redraw();
 
 	/// Create the dialog if necessary, update it and display it.
 	void show();
