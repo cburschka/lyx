@@ -1322,6 +1322,29 @@ def revert_cite_engine(header, opt):
     header.insert(i, "\\use_natbib " + use_natbib)
 
 
+def convert_paperpackage(header, opt):
+    i = find_token(header, "\\paperpackage", 0)
+    if i == -1:
+        opt.warning("Malformed lyx file: Missing '\\paperpackage'")
+        return
+
+    packages = {'a4':'none', 'a4wide':'a4', 'widemarginsa4':'a4wide'}
+    paperpackage = split(header[i])[1]
+    header[i] = replace(header[i], paperpackage, packages[paperpackage])
+
+
+def revert_paperpackage(header, opt):
+    i = find_token(header, "\\paperpackage", 0)
+    if i == -1:
+        opt.warning("Malformed lyx file: Missing '\\paperpackage'")
+        return
+
+    packages = {'none':'a4', 'a4':'a4wide', 'a4wide':'widemarginsa4',
+                'widemarginsa4':''}
+    paperpackage = split(header[i])[1]
+    header[i] = replace(header[i], paperpackage, packages[paperpackage])
+
+
 ##
 # Convertion hub
 #
@@ -1396,8 +1419,18 @@ def convert(header, body, opt):
     if opt.format < 234:
         convert_cite_engine(header, opt)
 	opt.format = 234
+    if opt.end == opt.format: return
+
+    if opt.format < 235:
+        convert_paperpackage(header, opt)
+	opt.format = 235
 
 def revert(header, body, opt):
+    if opt.format > 234:
+        revert_paperpackage(header, opt)
+	opt.format = 234
+    if opt.end == opt.format: return
+
     if opt.format > 233:
         revert_cite_engine(header, opt)
 	opt.format = 233

@@ -1,3 +1,10 @@
+2004-07-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyx_1_4.py (convert_paperpackage): new, convert paperpackage setting
+	* lyx_1_4.py (revert_paperpackage): new, revert paperpackage setting
+	* lyx_1_4.py (revert, convert): handle format 235
+	* parser_tools.py: up the format to 235.
+
 2004-05-12  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_1_4.py (convert_cite_engine, revert_cite_engine): new functions

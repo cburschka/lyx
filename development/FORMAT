@@ -1,6 +1,16 @@
 LyX file-format changes
 -----------------------
 
+2004-07-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format incremented to 235.
+	* \paperpackage had an off-by-one error. Translation table:
+
+	  234: a4    a4wide  widemarginsa4 
+	  235: none  a4      a4wide         widemarginsa4
+
+	  The "widemarginsa4" setting of 235 has no equivalent in 234.
+
 2004-05-12  Angus Leeming  <leeming@lyx.org>
 
 	* format incremented to 234.
