@@ -3906,7 +3906,7 @@ void Buffer::markDepClean(string const & name)
 			item = new DEPCLEAN;
 			item->clean = true;
 			item->master = name;
-			item->next = 0;;
+			item->next = 0;
 		}
 	}
 }

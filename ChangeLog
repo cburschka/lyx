@@ -1,3 +1,11 @@
+2000-05-25 Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/lyx_cb.C (RefUpdateCB): disable appropriate buttons when
+	there are no labels, or when buffer is readonly.
+
+	* src/menus.C (ShowRefsMenu) disable appropriate menu items when
+	there are no labels, buffer is SGML, or when buffer is readonly.
+
 2000-05-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/LColor.C (LColor): change a couple of grey40 to grey60

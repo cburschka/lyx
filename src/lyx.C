@@ -159,15 +159,15 @@ FD_form_ref *create_form_form_ref(void)
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, RefHideCB, 0);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 310, 60, 160, 30, idex(_("Insert Reference|#I^M")));fl_set_button_shortcut(obj, scex(_("Insert Reference|#I^M")), 1);
+  fdui->ref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 60, 160, 30, idex(_("Insert Reference|#I^M")));fl_set_button_shortcut(obj, scex(_("Insert Reference|#I^M")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
     fl_set_object_callback(obj, RefSelectCB, 0);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 310, 100, 160, 30, idex(_("Insert Page Number|#P")));fl_set_button_shortcut(obj, scex(_("Insert Page Number|#P")), 1);
+  fdui->pageref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 100, 160, 30, idex(_("Insert Page Number|#P")));fl_set_button_shortcut(obj, scex(_("Insert Page Number|#P")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
     fl_set_object_callback(obj, RefSelectCB, 1);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 310, 280, 160, 30, idex(_("Go to Reference|#G")));fl_set_button_shortcut(obj, scex(_("Go to Reference|#G")), 1);
+  fdui->gotoref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 280, 160, 30, idex(_("Go to Reference|#G")));fl_set_button_shortcut(obj, scex(_("Go to Reference|#G")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
     fl_set_object_callback(obj, RefSelectCB, 5);

@@ -665,7 +665,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	for (LastFiles::const_iterator cit = lastfiles->begin();
 	     cit != lastfiles->end() && ii < 10; ++cit, ++ii) {
 		string tmp = tostr(ii);
-		string tmp2 = tmp + "#" + tmp;;
+		string tmp2 = tmp + "#" + tmp;
 		tmp += ". " + MakeDisplayPath((*cit), 30);
 		fl_addtopup(FileMenu, tmp.c_str());
 		fl_setpup_shortcut(FileMenu, 18 - 1 + ii, tmp2.c_str());
@@ -816,7 +816,7 @@ void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 	for (LastFiles::const_iterator cit = lastfiles->begin();
 	     cit != lastfiles->end() && ii < 10; ++cit, ++ii) {
 		string tmp = tostr(ii);
-		string tmp2 = tmp + "#" + tmp;;
+		string tmp2 = tmp + "#" + tmp;
 		tmp += ". " + MakeDisplayPath((*cit), 30);
 		fl_addtopup(FileMenu, tmp.c_str());
 		fl_setpup_shortcut(FileMenu, 18 - 1 + ii, tmp2.c_str());
@@ -1454,7 +1454,9 @@ void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
 	sort(label_list.begin(), label_list.end());
 
 	//xgettext:no-c-format
-	static char const * MenuNames[5] = { N_("Insert Page Number%m"),
+	static char const * MenuNames[6] = { N_("Insert Reference%m"),
+	//xgettext:no-c-format
+					     N_("Insert Page Number%m"),
 	//xgettext:no-c-format
 					     N_("Insert vref%m"),
 	//xgettext:no-c-format
@@ -1462,21 +1464,30 @@ void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
 	//xgettext:no-c-format
 					     N_("Insert Pretty Ref%m"),
 	//xgettext:no-c-format
-					     N_("Goto Reference%m%l") };
+					     N_("Goto Reference%m") };
 
-	for (int j = 1; j <= 5; ++j) {
+	for (int j = 0; j < 6; ++j) {
 		int menu2 = fl_newpup(FL_ObjWin(ob));
 		menus.push_back(menu2);
 		Add_to_refs_menu(label_list, 1+j*BIG_NUM, menu2, menus, ob);
-		fl_addtopup(RefsMenu, _(MenuNames[j-1]), menu2);
+		fl_addtopup(RefsMenu, _(MenuNames[j]), menu2);
 	}
 
-	fl_addtopup(RefsMenu, _("Insert Reference:%d%x0"));
-	Add_to_refs_menu(label_list, 1, RefsMenu, menus, ob);
+	bool empty = label_list.empty();
+	bool sgml = buffer->isSGML();
+	bool readonly = buffer->isReadonly();
 
-	if (label_list.empty())
-		for (int j = 1; j <= 5; ++j)
-			fl_setpup_mode(RefsMenu, j, FL_PUP_GREY);
+	if (empty)
+		fl_setpup_mode(RefsMenu, 6, FL_PUP_GREY);
+	if (empty || readonly) {
+		fl_setpup_mode(RefsMenu, 1, FL_PUP_GREY);
+		fl_setpup_mode(RefsMenu, 2, FL_PUP_GREY);
+	}
+	if (empty || readonly || sgml) {
+		fl_setpup_mode(RefsMenu, 3, FL_PUP_GREY);
+		fl_setpup_mode(RefsMenu, 4, FL_PUP_GREY);
+		fl_setpup_mode(RefsMenu, 5, FL_PUP_GREY);
+	}
 
 	fl_setpup_position(
 		men->_view->getForm()->x + ob->x,

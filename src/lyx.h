@@ -73,6 +73,9 @@ typedef struct {
 	char *cdata;
 	long  ldata;
 	FL_OBJECT *browser_ref;
+	FL_OBJECT *ref;
+	FL_OBJECT *pageref;
+	FL_OBJECT *gotoref;
 	FL_OBJECT *ref_name;
 	FL_OBJECT *sort;
 	FL_OBJECT *vref;

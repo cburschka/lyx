@@ -187,7 +187,7 @@ LyXTable & LyXTable::operator=(LyXTable const & lt)
 LyXTable * LyXTable::Clone()
 {
     LyXTable * result = new LyXTable(rows, columns);
-    int row, column;;
+    int row, column;
 
     for (row = 0; row < rows; ++row) {
         for (column = 0; column < columns; ++column) {

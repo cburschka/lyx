@@ -3256,40 +3256,59 @@ extern "C" void RefUpdateCB(FL_OBJECT *, long)
 	}
 	fl_set_browser_topline(brow, topline);
 
-	if (!fl_get_browser_maxline(brow)) {
+	bool empty = refs.empty();
+	bool sgml = current_view->buffer()->isSGML();
+	bool readonly = current_view->buffer()->isReadonly();
+
+	if (empty) {
 		fl_add_browser_line(brow, 
 				    _("*** No labels found in document ***"));
 		fl_deactivate_object(brow);
+		fl_deactivate_object(fd_form_ref->gotoref);
+		fl_set_object_lcol(fd_form_ref->gotoref, FL_INACTIVE);
 	} else {
 		fl_select_browser_line(brow, topline);
 		fl_activate_object(brow);
+		fl_activate_object(fd_form_ref->gotoref);
+		fl_set_object_lcol(fd_form_ref->gotoref, FL_BLACK);
 	}
-	if (current_view->buffer()->isReadonly()) {
-		// would be better to de/activate insert buttons
-		// but that's more work... besides this works. ARRae
-		fl_hide_form(fd_form_ref->form_ref);
-	}
-	if (!current_view->buffer()->isSGML()) {
-		fl_deactivate_object(fd_form_ref->ref_name);
-		fl_set_object_lcol(fd_form_ref->ref_name, FL_INACTIVE);
 
-		fl_activate_object(fd_form_ref->vref);
-		fl_set_object_lcol(fd_form_ref->vref, FL_BLACK);
-		fl_activate_object(fd_form_ref->vpageref);
-		fl_set_object_lcol(fd_form_ref->vpageref, FL_BLACK);
-		fl_activate_object(fd_form_ref->prettyref);
-		fl_set_object_lcol(fd_form_ref->prettyref, FL_BLACK);
+	if (empty || readonly) {
+		fl_deactivate_object(fd_form_ref->ref);
+		fl_set_object_lcol(fd_form_ref->ref, FL_INACTIVE);
+		fl_deactivate_object(fd_form_ref->pageref);
+		fl_set_object_lcol(fd_form_ref->pageref, FL_INACTIVE);
 	} else {
-		fl_activate_object(fd_form_ref->ref_name);
-		fl_set_object_lcol(fd_form_ref->ref_name, FL_BLACK);
-
+		fl_activate_object(fd_form_ref->ref);
+		fl_set_object_lcol(fd_form_ref->ref, FL_BLACK);
+		fl_activate_object(fd_form_ref->pageref);
+		fl_set_object_lcol(fd_form_ref->pageref, FL_BLACK);
+	}
+	
+	if (empty || readonly || sgml) {
 		fl_deactivate_object(fd_form_ref->vref);
 		fl_set_object_lcol(fd_form_ref->vref, FL_INACTIVE);
 		fl_deactivate_object(fd_form_ref->vpageref);
 		fl_set_object_lcol(fd_form_ref->vpageref, FL_INACTIVE);
 		fl_deactivate_object(fd_form_ref->prettyref);
 		fl_set_object_lcol(fd_form_ref->prettyref, FL_INACTIVE);
+	} else {
+		fl_activate_object(fd_form_ref->vref);
+		fl_set_object_lcol(fd_form_ref->vref, FL_BLACK);
+		fl_activate_object(fd_form_ref->vpageref);
+		fl_set_object_lcol(fd_form_ref->vpageref, FL_BLACK);
+		fl_activate_object(fd_form_ref->prettyref);
+		fl_set_object_lcol(fd_form_ref->prettyref, FL_BLACK);
 	}
+
+	if (sgml) {
+		fl_activate_object(fd_form_ref->ref_name);
+		fl_set_object_lcol(fd_form_ref->ref_name, FL_BLACK);
+	} else {
+		fl_deactivate_object(fd_form_ref->ref_name);
+		fl_set_object_lcol(fd_form_ref->ref_name, FL_INACTIVE);
+	}
+
 	fl_show_object(brow);
 }
 
