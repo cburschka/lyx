@@ -1,3 +1,9 @@
+2000-10-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/figinset.C (GhostscriptMsg): use DisplayString() to
+	open a new display.
+	(runqueue): ditto.
+
 2000-10-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/tabular.C (Ascii): minimize scope of cell.
