@@ -3,6 +3,7 @@
 	* src/insets/insettabular.C (update): fixed cursor setting when
 	the_locking_inset changed.
 	(draw): made this a bit cleaner.
+	(InsetButtonPress): fixed!
 
 	* various files: added LyXText Parameter to fitCursor call.
 	

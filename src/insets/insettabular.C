@@ -292,9 +292,9 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		tabular->GetAdditionalHeight(cell);
 	}
 	if (the_locking_inset == tabular->GetCellInset(cell)) {
-	    cx = nx + tabular->GetBeginningOfTextInCell(cell);
 	    LyXText::text_status st = bv->text->status;
 	    do {
+		cx = nx + tabular->GetBeginningOfTextInCell(cell);
 		bv->text->status = st;
 		if (need_update == CELL) {
                     // clear before the inset
@@ -398,9 +398,9 @@ void InsetTabular::update(BufferView * bv, LyXFont const & font, bool reinit)
     }
     if (the_locking_inset) {
 	the_locking_inset->update(bv, font, reinit);
-	resetPos(bv);
-	inset_x = cursor.x() - top_x + tabular->GetBeginningOfTextInCell(actcell);
-	inset_y = cursor.y();
+//	resetPos(bv);
+//	inset_x = cursor.x() - top_x + tabular->GetBeginningOfTextInCell(actcell);
+//	inset_y = cursor.y();
     }
     switch(need_update) {
     case INIT:
@@ -604,6 +604,8 @@ void InsetTabular::InsetButtonPress(BufferView * bv, int x, int y, int button)
     bool const inset_hit = InsetHit(bv, x, y);
 
     if ((ocell == actcell) && the_locking_inset && inset_hit) {
+	cursor.pos(0); // always before the inset!
+	resetPos(bv);
         the_locking_inset->InsetButtonPress(bv,
 					    x - inset_x, y - inset_y, button);
         return;
@@ -1548,7 +1550,7 @@ bool InsetTabular::ActivateCellInset(BufferView * bv, int x, int y, int button,
     // the cursor.pos has to be before the inset so if it isn't now just
     // reset the curor pos first!
     if (!cellstart(cursor.pos())) {
-	cursor.pos((cursor.pos() - 1) % 2);
+	cursor.pos(0);
 	resetPos(bv);
     }
     UpdatableInset * inset =
