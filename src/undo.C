@@ -27,7 +27,7 @@
 
 #include <algorithm>
 
-using lyx::par_type;
+using lyx::pit_type;
 
 using std::advance;
 using std::endl;
@@ -49,12 +49,12 @@ std::ostream & operator<<(std::ostream & os, Undo const & undo)
 
 void recordUndo(Undo::undo_kind kind,
 	DocIterator & cell, 
-	par_type first_par, par_type last_par,
+	pit_type first_pit, pit_type last_pit,
 	DocIterator & cur,
 	limited_stack<Undo> & stack)
 {
-	if (first_par > last_par)
-		std::swap(first_par, last_par);
+	if (first_pit > last_pit)
+		std::swap(first_pit, last_pit);
 
 	// create the position information of the Undo entry
 	Undo undo;
@@ -64,8 +64,8 @@ void recordUndo(Undo::undo_kind kind,
 	lyxerr << "recordUndo: cur: " << cur << endl;
 	lyxerr << "recordUndo: pos: " << cur.pos() << endl;
 	//lyxerr << "recordUndo: cell: " << cell << endl;
-	undo.from = first_par;
-	undo.end = cell.lastpar() - last_par;
+	undo.from = first_pit;
+	undo.end = cell.lastpit() - last_pit;
 
 	// Undo::ATOMIC are always recorded (no overlapping there).
 	// As nobody wants all removed character appear one by one when undoing,
@@ -91,9 +91,9 @@ void recordUndo(Undo::undo_kind kind,
 		BOOST_ASSERT(text);
 		ParagraphList & plist = text->paragraphs();
 		ParagraphList::iterator first = plist.begin();
-		advance(first, first_par);
+		advance(first, first_pit);
 		ParagraphList::iterator last = plist.begin();
-		advance(last, last_par + 1);
+		advance(last, last_pit + 1);
 		undo.pars = ParagraphList(first, last);
 	}
 
@@ -106,13 +106,13 @@ void recordUndo(Undo::undo_kind kind,
 }
 
 void recordUndo(Undo::undo_kind kind,
-	LCursor & cur, par_type first_par, par_type last_par,
+	LCursor & cur, pit_type first_pit, pit_type last_pit,
 	limited_stack<Undo> & stack)
 {
-	BOOST_ASSERT(first_par <= cur.lastpar());
-	BOOST_ASSERT(last_par <= cur.lastpar());
+	BOOST_ASSERT(first_pit <= cur.lastpit());
+	BOOST_ASSERT(last_pit <= cur.lastpit());
 
-	recordUndo(kind, cur, first_par, last_par, cur, stack);
+	recordUndo(kind, cur, first_pit, last_pit, cur, stack);
 }
 
 
@@ -194,13 +194,13 @@ bool textUndoOrRedo(BufferView & bv,
 
 	if (cur_dit.size() == cell_dit.size()) {
 		recordUndo(Undo::ATOMIC, cell_dit,
-			cell_dit.par(), cur_dit.par(),
+			cell_dit.pit(), cur_dit.pit(),
 			cur_dit, otherstack);
 	}
 	else {
 		recordUndo(Undo::ATOMIC, ancestor_dit,
-			ancestor_dit.par(),
-			ancestor_dit.par(),
+			ancestor_dit.pit(),
+			ancestor_dit.pit(),
 			cur_dit, otherstack);
 	}
 
@@ -237,7 +237,7 @@ bool textRedo(BufferView & bv)
 
 
 void recordUndo(Undo::undo_kind kind,
-	LCursor & cur, par_type first, par_type last)
+	LCursor & cur, pit_type first, pit_type last)
 {
 	Buffer * buf = cur.bv().buffer();
 	recordUndo(kind, cur, first, last, buf->undostack());
@@ -250,7 +250,7 @@ void recordUndo(Undo::undo_kind kind,
 
 void recordUndo(LCursor & cur, Undo::undo_kind kind)
 {
-	recordUndo(kind, cur, cur.par(), cur.par());
+	recordUndo(kind, cur, cur.pit(), cur.pit());
 }
 
 
@@ -264,18 +264,18 @@ void recordUndoInset(LCursor & cur, Undo::undo_kind kind)
 
 void recordUndoSelection(LCursor & cur, Undo::undo_kind kind)
 {
-	recordUndo(kind, cur, cur.selBegin().par(), cur.selEnd().par());
+	recordUndo(kind, cur, cur.selBegin().pit(), cur.selEnd().pit());
 }
 
 
-void recordUndo(LCursor & cur, Undo::undo_kind kind, par_type from)
+void recordUndo(LCursor & cur, Undo::undo_kind kind, pit_type from)
 {
-	recordUndo(kind, cur, cur.par(), from);
+	recordUndo(kind, cur, cur.pit(), from);
 }
 
 
 void recordUndo(LCursor & cur, Undo::undo_kind kind,
-	par_type from, par_type to)
+	pit_type from, pit_type to)
 {
 	recordUndo(kind, cur, from, to);
 }

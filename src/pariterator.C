@@ -18,7 +18,7 @@
 
 #include "insets/inset.h"
 
-using lyx::par_type;
+using lyx::pit_type;
 
 
 ///
@@ -78,25 +78,25 @@ ParIterator & ParIterator::operator--()
 
 Paragraph & ParIterator::operator*() const
 {
-	return text()->getPar(par());
+	return text()->getPar(pit());
 }
 
 
-par_type ParIterator::pit() const
+pit_type ParIterator::pit() const
 {
-	return par();
+	return pit();
 }
 
 
 Paragraph * ParIterator::operator->() const
 {
-	return &text()->getPar(par());
+	return &text()->getPar(pit());
 }
 
 
-par_type ParIterator::outerPar() const
+pit_type ParIterator::outerPar() const
 {
-	return bottom().par();
+	return bottom().pit();
 }
 
 
@@ -151,13 +151,13 @@ ParConstIterator & ParConstIterator::operator++()
 
 Paragraph const & ParConstIterator::operator*() const
 {
-	return text()->getPar(par());
+	return text()->getPar(pit());
 }
 
 
 Paragraph const * ParConstIterator::operator->() const
 {
-	return &text()->getPar(par());
+	return &text()->getPar(pit());
 }
 
 

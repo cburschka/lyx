@@ -108,7 +108,7 @@ namespace {
 					text->bidi.isBoundary(cur.buffer(), par,
 							cur.pos(),
 							text->real_current_font))
-				text->setCursor(cur, cur.par(), cur.pos(),
+				text->setCursor(cur, cur.pit(), cur.pos(),
 						false, !cur.boundary());
 		}
 	}
@@ -188,8 +188,8 @@ bool LyXText::gotoNextInset(LCursor & cur,
 	vector<InsetOld_code> const & codes, string const & contents)
 {
 	BOOST_ASSERT(this == cur.text());
-	par_type end = paragraphs().size();
-	par_type pit = cur.par();
+	pit_type end = paragraphs().size();
+	pit_type pit = cur.pit();
 	pos_type pos = cur.pos();
 
 	InsetBase * inset;
@@ -233,9 +233,9 @@ void LyXText::gotoInset(LCursor & cur,
 	}
 
 	if (!gotoNextInset(cur, codes, contents)) {
-		if (cur.pos() || cur.par() != 0) {
+		if (cur.pos() || cur.pit() != 0) {
 			CursorSlice tmp = cur.top();
-			cur.par() = 0;
+			cur.pit() = 0;
 			cur.pos() = 0;
 			if (!gotoNextInset(cur, codes, contents)) {
 				cur.top() = tmp;
@@ -258,13 +258,13 @@ void LyXText::gotoInset(LCursor & cur, InsetOld_code code, bool same_content)
 void LyXText::cursorPrevious(LCursor & cur)
 {
 	pos_type cpos = cur.pos();
-	lyx::par_type cpar = cur.par();
+	lyx::pit_type cpar = cur.pit();
 
 	int x = cur.x_target();
 	int y = cur.bv().top_y();
 	setCursorFromCoordinates(cur, x, y);
 
-	if (cpar == cur.par() && cpos == cur.pos()) {
+	if (cpar == cur.pit() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the previous row instead.
 		cursorUp(cur);
@@ -278,13 +278,13 @@ void LyXText::cursorPrevious(LCursor & cur)
 void LyXText::cursorNext(LCursor & cur)
 {
 	pos_type cpos = cur.pos();
-	lyx::par_type cpar = cur.par();
+	lyx::pit_type cpar = cur.pit();
 
 	int x = cur.x_target();
 	int y = cur.bv().top_y() + cur.bv().workHeight();
 	setCursorFromCoordinates(cur, x, y);
 
-	if (cpar == cur.par() && cpos == cur.pos()) {
+	if (cpar == cur.pit() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the next row instead.
 		cursorDown(cur);
@@ -362,7 +362,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		bool start = !par.params().startOfAppendix();
 
 		// ensure that we have only one start_of_appendix in this document
-		for (par_type tmp = 0, end = pars_.size(); tmp != end; ++tmp) {
+		for (pit_type tmp = 0, end = pars_.size(); tmp != end; ++tmp) {
 			if (pars_[tmp].params().startOfAppendix()) {
 				recUndo(tmp);
 				pars_[tmp].params().startOfAppendix(false);
@@ -585,7 +585,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (!cur.mark())
 			cur.clearSelection();
 		finishChange(cur, false);
-		if (cur.par() == 0 && cur.textRow().pos() == 0) {
+		if (cur.pit() == 0 && cur.textRow().pos() == 0) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_UP);
 		} else {
@@ -598,7 +598,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		if (!cur.mark())
 			cur.clearSelection();
 		finishChange(cur, false);
-		if (cur.par() == cur.lastpar()
+		if (cur.pit() == cur.lastpit()
 			  && cur.textRow().endpos() == cur.lastpos()) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_DOWN);
@@ -938,10 +938,10 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		bool change_layout = (current_layout != layout);
 
 		if (!change_layout && cur.selection() &&
-			cur.selBegin().par() != cur.selEnd().par())
+			cur.selBegin().pit() != cur.selEnd().pit())
 		{
-			par_type spit = cur.selBegin().par();
-			par_type epit = cur.selEnd().par() + 1;
+			pit_type spit = cur.selBegin().pit();
+			pit_type epit = cur.selEnd().pit() + 1;
 			while (spit != epit) {
 				if (pars_[spit].layout()->name() != current_layout) {
 					change_layout = true;

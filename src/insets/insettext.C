@@ -250,9 +250,9 @@ void InsetText::updateLocal(LCursor & cur)
 	lv->view_state_changed();
 	lv->updateMenubar();
 	lv->updateToolbars();
-	if (old_par != cur.par()) {
-		lv->setLayout(text_.getPar(cur.par()).layout()->name());
-		old_par = cur.par();
+	if (old_par != cur.pit()) {
+		lv->setLayout(text_.getPar(cur.pit()).layout()->name());
+		old_par = cur.pit();
 	}
 }
 

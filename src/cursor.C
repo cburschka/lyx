@@ -49,7 +49,7 @@
 
 #include <sstream>
 
-using lyx::par_type;
+using lyx::pit_type;
 
 using std::string;
 using std::vector;
@@ -116,7 +116,7 @@ namespace {
 		int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 	{
 		BOOST_ASSERT(!cursor.empty());
-		par_type beg, end;
+		pit_type beg, end;
 		CursorSlice bottom = cursor[0];
 		LyXText * text = bottom.text();
 		BOOST_ASSERT(text);
@@ -128,8 +128,8 @@ namespace {
 		//lyxerr << "xlow: " << xlow << " ylow: " << ylow << endl;
 		//lyxerr << "xhigh: " << xhigh << " yhigh: " << yhigh << endl;
 
-		it.par() = beg;
-		//et.par() = text->parOffset(end);
+		it.pit() = beg;
+		//et.pit() = text->parOffset(end);
 
 		double best_dist = 10e10;
 		DocIterator best_cursor = it;
@@ -202,7 +202,7 @@ void LCursor::dispatch(FuncRequest const & cmd0)
 		lyxerr[Debug::DEBUG] << "LCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 		BOOST_ASSERT(pos() <= lastpos());
 		BOOST_ASSERT(idx() <= lastidx());
-		BOOST_ASSERT(par() <= lastpar());
+		BOOST_ASSERT(pit() <= lastpit());
 
 		// The common case is 'LFUN handled, need update', so make the
 		// LFUN handler's life easier by assuming this as default value.
@@ -243,10 +243,10 @@ bool LCursor::getStatus(FuncRequest const & cmd, FuncStatus & status)
 				<< ". Trying to correct this."  << endl;
 			idx() = lastidx();
 		}
-		if (par() > lastpar()) {
-			lyxerr << "wrong par " << par() << ", max is " << lastpar()
+		if (pit() > lastpit()) {
+			lyxerr << "wrong par " << pit() << ", max is " << lastpit()
 				<< ". Trying to correct this."  << endl;
-			par() = lastpar();
+			pit() = lastpit();
 		}
 		if (pos() > lastpos()) {
 			lyxerr << "wrong pos " << pos() << ", max is " << lastpos()
@@ -452,7 +452,7 @@ void LCursor::setSelection()
 #ifdef WITH_WARNINGS
 #warning doesnt look ok
 #endif
-	if (par() == anchor().par() && pos() == anchor().pos())
+	if (pit() == anchor().pit() && pos() == anchor().pos())
 		selection() = false;
 }
 
@@ -1070,8 +1070,8 @@ string LCursor::selectionAsString(bool label) const
 		ParagraphList & pars = text()->paragraphs();
 
 		// should be const ...
-		par_type startpit = selBegin().par();
-		par_type endpit = selEnd().par();
+		pit_type startpit = selBegin().pit();
+		pit_type endpit = selEnd().pit();
 		size_t const startpos = selBegin().pos();
 		size_t const endpos = selEnd().pos();
 
@@ -1083,7 +1083,7 @@ string LCursor::selectionAsString(bool label) const
 			asString(buffer, startpos, pars[startpit].size(), label) + "\n\n";
 
 		// The paragraphs in between (if any)
-		for (par_type pit = startpit + 1; pit != endpit; ++pit) {
+		for (pit_type pit = startpit + 1; pit != endpit; ++pit) {
 			Paragraph & par = pars[pit];
 			result += par.asString(buffer, 0, par.size(), label) + "\n\n";
 		}
@@ -1136,8 +1136,8 @@ Encoding const * LCursor::getEncoding() const
 			break;
 	CursorSlice const & sl = operator[](s);
 	LyXText & text = *sl.text();
-	LyXFont font = text.getPar(sl.par()).getFont(
-		bv().buffer()->params(), sl.pos(), outerFont(sl.par(), text.paragraphs()));
+	LyXFont font = text.getPar(sl.pit()).getFont(
+		bv().buffer()->params(), sl.pos(), outerFont(sl.pit(), text.paragraphs()));
 	return font.language()->encoding();
 }
 

@@ -18,7 +18,7 @@
 #include "paragraph.h"
 
 
-FontIterator::FontIterator(LyXText const & text, lyx::par_type pit,
+FontIterator::FontIterator(LyXText const & text, lyx::pit_type pit,
 			   lyx::pos_type pos)
 	: text_(text), pit_(pit), pos_(pos),
 	  font_(text.getFont(text.getPar(pit), pos)),

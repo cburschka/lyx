@@ -389,7 +389,7 @@ bool BufferView::Pimpl::fitCursor()
 {
 	// to get the correct y cursor info
 	lyxerr[Debug::DEBUG] << "BufferView::fitCursor" << std::endl;
-	lyx::par_type const pit = bv_->cursor().bottom().par();
+	lyx::pit_type const pit = bv_->cursor().bottom().pit();
 	bv_->text()->redoParagraph(pit);
 	refreshPar(*bv_, *bv_->text(), pit);
 
@@ -602,7 +602,7 @@ void BufferView::Pimpl::update()
 		buffer_->buildMacros();
 
 		// update all 'visible' paragraphs
-		lyx::par_type beg, end;
+		lyx::pit_type beg, end;
 		getParsInRange(buffer_->paragraphs(),
 			       top_y(), top_y() + workarea().workHeight(),
 			       beg, end);
@@ -657,7 +657,7 @@ Change const BufferView::Pimpl::getCurrentChange()
 	if (!cur.selection())
 		return Change(Change::UNCHANGED);
 
-	return text->getPar(cur.selBegin().par()).
+	return text->getPar(cur.selBegin().pit()).
 			lookupChangeFull(cur.selBegin().pos());
 }
 
@@ -811,7 +811,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filenm)
 	BOOST_ASSERT(bv_->cursor().inTexted());
 
 	string const fname = MakeAbsPath(filename);
-	bool const res = bv_->buffer()->readFile(fname, bv_->cursor().par());
+	bool const res = bv_->buffer()->readFile(fname, bv_->cursor().pit());
 	bv_->resize();
 
 	string s = res ? _("Document %1$s inserted.")

@@ -293,7 +293,7 @@ void BufferView::gotoLabel(string const & label)
 		it->getLabelList(*buffer(), labels);
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
 			cursor().clearSelection();
-			text()->setCursor(cursor(), it.par(), it.pos());
+			text()->setCursor(cursor(), it.pit(), it.pos());
 			cursor().resetAnchor();
 			update();
 			return;
@@ -342,7 +342,7 @@ void BufferView::setCursor(ParIterator const & par, lyx::pos_type pos)
 
 	cursor().setCursor(makeDocIterator(par, pos));
 	cursor().selection() = false;
-	par.bottom().text()->redoParagraph(par.bottom().par());
+	par.bottom().text()->redoParagraph(par.bottom().pit());
 }
 
 

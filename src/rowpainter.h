@@ -24,7 +24,7 @@ int paintText(BufferView const & bv);
 
 /// refresh a par of the main text
 void refreshPar(BufferView const & bv, LyXText const & text,
-		lyx::par_type pit);
+		lyx::pit_type pit);
 
 /// paint the rows of a text inset
 void paintTextInset(LyXText const & text, PainterInfo & pi);

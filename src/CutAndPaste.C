@@ -45,7 +45,7 @@
 #include <boost/tuple/tuple.hpp>
 
 using lyx::pos_type;
-using lyx::par_type;
+using lyx::pit_type;
 using lyx::textclass_type;
 
 using lyx::support::bformat;
@@ -60,7 +60,7 @@ using std::string;
 
 namespace {
 
-typedef std::pair<lyx::par_type, int> PitPosPair;
+typedef std::pair<lyx::pit_type, int> PitPosPair;
 
 typedef limited_stack<pair<ParagraphList, textclass_type> > CutStack;
 
@@ -96,9 +96,9 @@ bool checkPastePossible(int index)
 }
 
 
-pair<PitPosPair, par_type>
+pair<PitPosPair, pit_type>
 pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
-	par_type pit, int pos,
+	pit_type pit, int pos,
 	textclass_type tc, size_t cut_index, ErrorList & errorlist)
 {
 	if (!checkPastePossible(cut_index))
@@ -183,7 +183,7 @@ pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
 
 	// Split the paragraph for inserting the buf if necessary.
 	bool did_split = false;
-	if (pars[pit].size() || pit + 1 == par_type(pars.size())) {
+	if (pars[pit].size() || pit + 1 == pit_type(pars.size())) {
 		breakParagraphConservative(buffer.params(), pars, pit, pos);
 		did_split = true;
 	}
@@ -192,14 +192,14 @@ pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
 	pars.insert(pars.begin() + pit + 1, insertion.begin(), insertion.end());
 	mergeParagraph(buffer.params(), pars, pit);
 
-	par_type last_paste = pit + insertion.size() - 1;
+	pit_type last_paste = pit + insertion.size() - 1;
 
 	// Store the new cursor position.
 	pit = last_paste;
 	pos = pars[last_paste].size();
 
 	// Maybe some pasting.
-	if (did_split && last_paste + 1 != par_type(pars.size())) {
+	if (did_split && last_paste + 1 != pit_type(pars.size())) {
 		if (pars[last_paste + 1].hasSameLayout(pars[last_paste])) {
 			mergeParagraph(buffer.params(), pars, last_paste);
 		} else if (pars[last_paste + 1].empty()) {
@@ -220,14 +220,14 @@ pasteSelectionHelper(Buffer const & buffer, ParagraphList & pars,
 
 PitPosPair eraseSelectionHelper(BufferParams const & params,
 	ParagraphList & pars,
-	par_type startpit, par_type endpit,
+	pit_type startpit, pit_type endpit,
 	int startpos, int endpos, bool doclear)
 {
-	if (startpit == par_type(pars.size()) ||
+	if (startpit == pit_type(pars.size()) ||
 	    (startpos > pars[startpit].size()))
 		return PitPosPair(endpit, endpos);
 
-	if (endpit == par_type(pars.size()) ||
+	if (endpit == pit_type(pars.size()) ||
 	    startpit == endpit) {
 		endpos -= pars[startpit].erase(startpos, endpos);
 		return PitPosPair(endpit, endpos);
@@ -245,7 +245,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 		all_erased = false;
 
 	// Loop through the deleted pars if any, erasing as needed
-	for (par_type pit = startpit + 1; pit != endpit;) {
+	for (pit_type pit = startpit + 1; pit != endpit;) {
 		// "erase" the contents of the par
 		pars[pit].erase(0, pars[pit].size());
 		if (!pars[pit].size()) {
@@ -267,7 +267,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 	}
 #endif
 
-	if (startpit + 1 == par_type(pars.size()))
+	if (startpit + 1 == pit_type(pars.size()))
 		return PitPosPair(endpit, endpos);
 
 	if (doclear) {
@@ -290,7 +290,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 
 
 void copySelectionHelper(ParagraphList & pars,
-	par_type startpit, par_type endpit,
+	pit_type startpit, pit_type endpit,
 	int start, int end, textclass_type tc)
 {
 	BOOST_ASSERT(0 <= start && start <= pars[startpit].size());
@@ -315,7 +315,7 @@ void copySelectionHelper(ParagraphList & pars,
 
 
 PitPosPair cutSelectionHelper(BufferParams const & params,
-	ParagraphList & pars, par_type startpit, par_type endpit,
+	ParagraphList & pars, pit_type startpit, pit_type endpit,
 	int startpos, int endpos, textclass_type tc, bool doclear)
 {
 	copySelectionHelper(pars, startpit, endpit, startpos, endpos, tc);
@@ -442,8 +442,8 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 
 		// make sure that the depth behind the selection are restored, too
 		recordUndoSelection(cur);
-		par_type begpit = cur.selBegin().par();
-		par_type endpit = cur.selEnd().par();
+		pit_type begpit = cur.selBegin().pit();
+		pit_type endpit = cur.selEnd().pit();
 
 		int endpos = cur.selEnd().pos();
 
@@ -471,7 +471,7 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 		// it anew. (Lgb)
 		// we prefer the end for when tracking changes
 		cur.pos() = endpos;
-		cur.par() = endpit;
+		cur.pit() = endpit;
 
 		// need a valid cursor. (Lgb)
 		cur.clearSelection();
@@ -506,13 +506,13 @@ void copySelection(LCursor & cur)
 		// copy behind a space if there is one
 		ParagraphList & pars = text->paragraphs();
 		pos_type pos = cur.selBegin().pos();
-		par_type par = cur.selBegin().par();
+		pit_type par = cur.selBegin().pit();
 		while (pos < pars[par].size()
 					 && pars[par].isLineSeparator(pos)
-					 && (par != cur.selEnd().par() || pos < cur.selEnd().pos()))
+					 && (par != cur.selEnd().pit() || pos < cur.selEnd().pos()))
 			++pos;
 
-		copySelectionHelper(pars, par, cur.selEnd().par(),
+		copySelectionHelper(pars, par, cur.selEnd().pit(),
 			pos, cur.selEnd().pos(), cur.buffer().params().textclass);
 	}
 
@@ -550,7 +550,7 @@ void pasteSelection(LCursor & cur, size_t sel_index)
 
 		recordUndo(cur);
 
-		par_type endpit;
+		pit_type endpit;
 		PitPosPair ppp;
 
 		ErrorList el;
@@ -558,13 +558,13 @@ void pasteSelection(LCursor & cur, size_t sel_index)
 		boost::tie(ppp, endpit) =
 			pasteSelectionHelper(cur.buffer(),
 								text->paragraphs(),
-								cur.par(), cur.pos(),
+								cur.pit(), cur.pos(),
 								cur.buffer().params().textclass,
 								sel_index, el);
 		bufferErrors(cur.buffer(), el);
 		cur.bv().showErrorList(_("Paste"));
 
-		text->redoParagraphs(cur.par(), endpit);
+		text->redoParagraphs(cur.pit(), endpit);
 
 		cur.clearSelection();
 		cur.resetAnchor();
@@ -601,7 +601,7 @@ void replaceSelectionWithString(LCursor & cur, string const & str)
 
 	// Get font setting before we cut
 	pos_type pos = cur.selEnd().pos();
-	Paragraph & par = text->getPar(cur.selEnd().par());
+	Paragraph & par = text->getPar(cur.selEnd().pit());
 	LyXFont const font =
 		par.getFontSettings(cur.buffer().params(), cur.selBegin().pos());
 

@@ -49,7 +49,7 @@ public:
 	///
 	typedef lyx::pos_type pos_type;
 	///
-	typedef lyx::par_type par_type;
+	typedef lyx::pit_type pit_type;
 
 	/// constructor
 	explicit LyXText(BufferView *);
@@ -61,20 +61,20 @@ public:
 	///
 	LyXFont getFont(Paragraph const & par, pos_type pos) const;
 	///
-	LyXFont getLayoutFont(par_type pit) const;
+	LyXFont getLayoutFont(pit_type pit) const;
 	///
 	LyXFont getLabelFont(Paragraph const & par) const;
 	///
-	void setCharFont(par_type pit, pos_type pos, LyXFont const & font);
+	void setCharFont(pit_type pit, pos_type pos, LyXFont const & font);
 	///
-	void setCharFont(par_type pit, pos_type pos, LyXFont const & font,
+	void setCharFont(pit_type pit, pos_type pos, LyXFont const & font,
 		bool toggleall);
 
 	/// what you expect when pressing <enter> at cursor position
 	void breakParagraph(LCursor & cur, char keep_layout = 0);
 
 	/// set layout over selection
-	par_type setLayout(par_type start, par_type end,
+	pit_type setLayout(pit_type start, pit_type end,
 		std::string const & layout);
 	///
 	void setLayout(LCursor & cur, std::string const & layout);
@@ -94,15 +94,15 @@ public:
 	void setFont(LCursor & cur, LyXFont const &, bool toggleall = false);
 
 	/// rebreaks all paragaphs between the given pars.
-	void redoParagraphs(par_type begin, par_type end);
+	void redoParagraphs(pit_type begin, pit_type end);
 	/// rebreaks the given par
-	void redoParagraph(par_type pit);
+	void redoParagraph(pit_type pit);
 	/// rebreaks the cursor par
 	void redoParagraph(LCursor & cur);
 
 	/// returns pos in given par at given x coord
-	pos_type x2pos(par_type pit, int row, int x) const;
-	int pos2x(par_type pit, pos_type pos) const;
+	pos_type x2pos(pit_type pit, int row, int x) const;
+	int pos2x(pit_type pit, pos_type pos) const;
 
 	///
 	void toggleFree(LCursor & cur, LyXFont const &, bool toggleall = false);
@@ -139,7 +139,7 @@ public:
 	BufferView * bv() const;
 
 	/// access to individual paragraphs
-	Paragraph & getPar(par_type par) const;
+	Paragraph & getPar(pit_type par) const;
 	// Returns the current font and depth as a message.
 	std::string LyXText::currentState(LCursor & cur);
 
@@ -147,12 +147,12 @@ public:
 	  * y-coordinate (relative to the whole text). y is set to the
 	  * real beginning of this row
 	  */
-	Row const & getRowNearY(int y, par_type & pit) const;
+	Row const & getRowNearY(int y, pit_type & pit) const;
 
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
 	 */
-	pos_type getColumnNearX(par_type pit,
+	pos_type getColumnNearX(pit_type pit,
 		Row const & row, int & x, bool & boundary) const;
 
 	/** Find the word under \c from in the relative location
@@ -170,21 +170,21 @@ public:
 	void rejectChange(LCursor & cur);
 
 	/// returns true if par was empty and was removed
-	bool setCursor(LCursor & cur, par_type par, pos_type pos,
+	bool setCursor(LCursor & cur, pit_type par, pos_type pos,
 		       bool setfont = true, bool boundary = false);
 	///
-	void setCursor(CursorSlice &, par_type par,
+	void setCursor(CursorSlice &, pit_type par,
 		       pos_type pos, bool boundary = false);
 	///
-	void setCursorIntern(LCursor & cur, par_type par,
+	void setCursorIntern(LCursor & cur, pit_type par,
 	         pos_type pos, bool setfont = true, bool boundary = false);
 	///
 	void setCurrentFont(LCursor & cur);
 
 	///
-	void recUndo(par_type first, par_type last) const;
+	void recUndo(pit_type first, pit_type last) const;
 	///
-	void recUndo(par_type first) const;
+	void recUndo(pit_type first) const;
 	///
 	void setCursorFromCoordinates(LCursor & cur, int x, int y);
 	///
@@ -289,14 +289,14 @@ public:
 	 * in LaTeX the beginning of the text fits in some cases
 	 * (for example sections) exactly the label-width.
 	 */
-	int leftMargin(par_type pit, pos_type pos) const;
-	int leftMargin(par_type pit) const;
+	int leftMargin(pit_type pit, pos_type pos) const;
+	int leftMargin(pit_type pit) const;
 	///
 	int rightMargin(Paragraph const & par) const;
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	RowMetrics computeRowMetrics(par_type pit, Row const & row) const;
+	RowMetrics computeRowMetrics(pit_type pit, Row const & row) const;
 
 	/// access to our paragraphs
 	ParagraphList & paragraphs() const;
@@ -307,9 +307,9 @@ public:
 	Row const & firstRow() const;
 
 	/// is this row the last in the text?
-	bool isLastRow(par_type pit, Row const & row) const;
+	bool isLastRow(pit_type pit, Row const & row) const;
 	/// is this row the first in the text?
-	bool isFirstRow(par_type pit, Row const & row) const;
+	bool isFirstRow(pit_type pit, Row const & row) const;
 
 	///
 	double spacing(Paragraph const & par) const;
@@ -371,15 +371,15 @@ public:
 private:
 	/// return past-the-last paragraph influenced by a layout
 	/// change on pit
-	par_type undoSpan(par_type pit);
+	pit_type undoSpan(pit_type pit);
 
 	/// rebreaks the given par
-	void redoParagraphInternal(par_type pit);
+	void redoParagraphInternal(pit_type pit);
 	/// used in setlayout
 	void makeFontEntriesLayoutSpecific(BufferParams const &, Paragraph & par);
 
 	/// Calculate and set the height of the row
-	void setHeightOfRow(par_type, Row & row);
+	void setHeightOfRow(pit_type, Row & row);
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
@@ -389,7 +389,7 @@ private:
 	bool deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old);
 
 	///
-	void setCounter(Buffer const &, par_type pit);
+	void setCounter(Buffer const &, pit_type pit);
 	///
 	void deleteWordForward(LCursor & cur);
 	///
@@ -399,13 +399,13 @@ private:
 
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
-	void rowBreakPoint(par_type pit, Row & row) const;
+	void rowBreakPoint(pit_type pit, Row & row) const;
 	/// sets row.width to the minimum space a row needs on the screen in pixel
-	void setRowWidth(par_type pit, Row & row) const;
+	void setRowWidth(pit_type pit, Row & row) const;
 	/// the minimum space a manual label needs on the screen in pixels
 	int labelFill(Paragraph const & par, Row const & row) const;
 	/// FIXME
-	int labelEnd(par_type pit) const;
+	int labelEnd(pit_type pit) const;
 
 	///
 	void charInserted();

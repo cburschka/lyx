@@ -30,12 +30,12 @@ using std::endl;
 
 
 CursorSlice::CursorSlice()
-	: inset_(0), idx_(0), par_(0), pos_(0), boundary_(false)
+	: inset_(0), idx_(0), pit_(0), pos_(0), boundary_(false)
 {}
 
 
 CursorSlice::CursorSlice(InsetBase & p)
-	: inset_(&p), idx_(0), par_(0), pos_(0), boundary_(false)
+	: inset_(&p), idx_(0), pit_(0), pos_(0), boundary_(false)
 {
 	BOOST_ASSERT(inset_);
 }
@@ -115,7 +115,7 @@ Paragraph & CursorSlice::paragraph()
 {
 	// access to the main lyx text must be handled in the cursor
 	BOOST_ASSERT(text());
-	return text()->getPar(par_);
+	return text()->getPar(pit_);
 }
 
 
@@ -123,7 +123,7 @@ Paragraph const & CursorSlice::paragraph() const
 {
 	// access to the main lyx text must be handled in the cursor
 	BOOST_ASSERT(text());
-	return text()->getPar(par_);
+	return text()->getPar(pit_);
 }
 
 
@@ -131,7 +131,7 @@ bool operator==(CursorSlice const & p, CursorSlice const & q)
 {
 	return &p.inset() == &q.inset()
 	       && p.idx() == q.idx()
-	       && p.par() == q.par()
+	       && p.pit() == q.pit()
 	       && p.pos() == q.pos();
 }
 
@@ -140,7 +140,7 @@ bool operator!=(CursorSlice const & p, CursorSlice const & q)
 {
 	return &p.inset() != &q.inset()
 	       || p.idx() != q.idx()
-	       || p.par() != q.par()
+	       || p.pit() != q.pit()
 	       || p.pos() != q.pos();
 }
 
@@ -154,8 +154,8 @@ bool operator<(CursorSlice const & p, CursorSlice const & q)
 	}
 	if (p.idx() != q.idx())
 		return p.idx() < q.idx();
-	if (p.par() != q.par())
-		return p.par() < q.par();
+	if (p.pit() != q.pit())
+		return p.pit() < q.pit();
 	return p.pos() < q.pos();
 }
 
@@ -178,7 +178,7 @@ std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
 	   << "inset: " << &item.inset()
 //	   << " text: " << item.text()
 	   << " idx: " << item.idx()
-	   << " par: " << item.par()
+	   << " par: " << item.pit()
 	   << " pos: " << item.pos()
 //	   << " x: " << item.inset().x()
 //	   << " y: " << item.inset().y()

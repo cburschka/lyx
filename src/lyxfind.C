@@ -38,7 +38,7 @@ using lyx::support::lowercase;
 using lyx::support::uppercase;
 using lyx::support::split;
 
-using lyx::par_type;
+using lyx::pit_type;
 using lyx::pos_type;
 
 using std::advance;

@@ -41,7 +41,7 @@
 #include "support/textutils.h"
 
 using lyx::pos_type;
-using lyx::par_type;
+using lyx::pit_type;
 
 using std::endl;
 using std::max;
@@ -57,7 +57,7 @@ class RowPainter {
 public:
 	/// initialise and run painter
 	RowPainter(BufferView const & bv, Painter & pain, LyXText const & text,
-		par_type pit, RowList::iterator rit, int y);
+		pit_type pit, RowList::iterator rit, int y);
 private:
 	// paint various parts
 	void paintBackground();
@@ -104,7 +104,7 @@ private:
 	Row & row_;
 
 	/// Row's paragraph
-	par_type const pit_;
+	pit_type const pit_;
 	Paragraph const & par_;
 
 	// Looks ugly - is
@@ -119,7 +119,7 @@ private:
 
 
 RowPainter::RowPainter(BufferView const & bv, Painter & pain,
-	LyXText const & text, par_type pit, RowList::iterator rit, int y)
+	LyXText const & text, pit_type pit, RowList::iterator rit, int y)
 	: bv_(bv), pain_(pain), text_(text), pars_(text.paragraphs()),
 	  rit_(rit), row_(*rit), pit_(pit), par_(text.paragraphs()[pit]),
 	  xo_(text_.xo_), yo_(y), width_(text_.width())
@@ -403,8 +403,8 @@ void RowPainter::paintSelection()
 	LCursor const & cur = bv_.cursor();
 	int const starty = text_.cursorY(cur.selBegin());
 	int const endy = text_.cursorY(cur.selEnd());
-	par_type startpit = cur.selBegin().par();
-	par_type endpit = cur.selEnd().par();
+	pit_type startpit = cur.selBegin().pit();
+	pit_type endpit = cur.selEnd().pit();
 	RowList::iterator startrow = pars_[startpit].getRow(cur.selBegin().pos());
 	RowList::iterator endrow = pars_[endpit].getRow(cur.selEnd().pos());
 	int const h = row_.height();
@@ -530,7 +530,7 @@ void RowPainter::paintDepthBar()
 
 	Paragraph::depth_type prev_depth = 0;
 	if (!text_.isFirstRow(pit_, row_)) {
-		par_type pit2 = pit_;
+		pit_type pit2 = pit_;
 		if (row_.pos() == 0)
 			--pit2;
 		prev_depth = pars_[pit2].getDepth();
@@ -538,7 +538,7 @@ void RowPainter::paintDepthBar()
 
 	Paragraph::depth_type next_depth = 0;
 	if (!text_.isLastRow(pit_, row_)) {
-		par_type pit2 = pit_;
+		pit_type pit2 = pit_;
 		if (row_.endpos() >= pars_[pit2].size())
 			++pit2;
 		next_depth = pars_[pit2].getDepth();
@@ -854,7 +854,7 @@ void RowPainter::paintText()
 
 
 int paintPars(BufferView const & bv, Painter & pain,
-	      LyXText const & text, par_type pit, par_type end)
+	      LyXText const & text, pit_type pit, pit_type end)
 {
 	//lyxerr << "  paintRows: pit: " << &*pit << endl;
 	ParagraphList & pars = text.paragraphs();
@@ -882,7 +882,7 @@ int paintPars(BufferView const & bv, Painter & pain,
 } // namespace anon
 
 
-void refreshPar(BufferView const & bv, LyXText const & text, par_type pit)
+void refreshPar(BufferView const & bv, LyXText const & text, pit_type pit)
 {
 	static NullPainter nop;
 	paintPars(bv, nop, text, pit, pit + 1);
@@ -891,7 +891,7 @@ void refreshPar(BufferView const & bv, LyXText const & text, par_type pit)
 
 int paintText(BufferView const & bv)
 {
-	par_type pit, end;
+	pit_type pit, end;
 	getParsInRange(bv.text()->paragraphs(), bv.top_y(),
 		       bv.top_y() + bv.workHeight(), pit, end);
 	//lyxerr << "top_y: " << bv.top_y() << " y: " << pit->y << endl;

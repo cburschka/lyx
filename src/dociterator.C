@@ -156,7 +156,7 @@ Row const & DocIterator::textRow() const
 }
 
 
-DocIterator::par_type DocIterator::lastpar() const
+DocIterator::pit_type DocIterator::lastpit() const
 {
 	return inMathed() ? 0 : text()->paragraphs().size() - 1;
 }
@@ -308,9 +308,9 @@ void DocIterator::forwardPos()
 	//lyxerr << "... no next pos" << endl;
 
 	// otherwise move on one paragraph if possible
-	if (top.par() < lastpar()) {
+	if (top.pit() < lastpit()) {
 		//lyxerr << "... next par" << endl;
-		++top.par();
+		++top.pit();
 		top.pos() = 0;
 		return;
 	}
@@ -320,7 +320,7 @@ void DocIterator::forwardPos()
 	if (top.idx() < lastidx()) {
 		//lyxerr << "... next idx" << endl;
 		++top.idx();
-		top.par() = 0;
+		top.pit() = 0;
 		top.pos() = 0;
 		return;
 	}
@@ -372,7 +372,7 @@ void DocIterator::backwardPos()
 	if (empty()) {
 		push_back(CursorSlice(*inset_));
 		back().idx() = lastidx();
-		back().par() = lastpar();
+		back().pit() = lastpit();
 		back().pos() = lastpos();
 		return;
 	}
@@ -381,13 +381,13 @@ void DocIterator::backwardPos()
 
 	if (top.pos() != 0) {
 		--top.pos();
-	} else if (top.par() != 0) {
-		--top.par();
+	} else if (top.pit() != 0) {
+		--top.pit();
 		top.pos() = lastpos();
 		return;
 	} else if (top.idx() != 0) {
 		--top.idx();
-		top.par() = lastpar();
+		top.pit() = lastpit();
 		top.pos() = lastpos();
 		return;
 	} else {
@@ -408,7 +408,7 @@ void DocIterator::backwardPos()
 	if (n && n->isActive()) {
 		push_back(CursorSlice(*n));
 		back().idx() = lastidx();
-		back().par() = lastpar();
+		back().pit() = lastpit();
 		back().pos() = lastpos();
 	}
 }

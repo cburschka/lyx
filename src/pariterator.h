@@ -43,7 +43,7 @@ public:
 
 
 	///
-	ParIterator(InsetBase &, lyx::par_type pit);
+	ParIterator(InsetBase &, lyx::pit_type pit);
 	///
 	ParIterator(ParIterator const &);
 	///
@@ -62,9 +62,9 @@ public:
 	///
 	Paragraph * operator->() const;
 	/// This gives us the top-most parent paragraph
-	lyx::par_type outerPar() const;
+	lyx::pit_type outerPar() const;
 	///
-	lyx::par_type pit() const;
+	lyx::pit_type pit() const;
 	///
 	ParagraphList & plist() const;
 };

@@ -43,7 +43,7 @@ public:
 	/// type for cell number in inset
 	typedef size_t idx_type;
 	/// type for paragraph numbers positions within a cell
-	typedef lyx::par_type par_type;
+	typedef lyx::pit_type pit_type;
 	/// type for cursor positions within a cell
 	typedef lyx::pos_type pos_type;
 	/// type for row indices
@@ -65,9 +65,9 @@ public:
 	/// return the last cell in this inset
 	idx_type lastidx() const { return nargs() - 1; }
 	/// return the paragraph this cursor is in
-	par_type par() const { return par_; }
+	pit_type pit() const { return pit_; }
 	/// set the paragraph this cursor is in
-	par_type & par() { return par_; }
+	pit_type & pit() { return pit_; }
 	/// increments the paragraph this cursor is in
 	void incrementPar();
 	/// increments the paragraph this cursor is in
@@ -122,7 +122,7 @@ private:
 	/// cell index of a position in this inset
 	idx_type idx_;
 	/// paragraph in this cell (used by texted)
-	par_type par_;
+	pit_type pit_;
 	/// true of 'pit' was properly initialized
 	bool pit_valid_;
 	/// position in this cell

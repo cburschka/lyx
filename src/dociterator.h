@@ -40,7 +40,7 @@ public:
 	/// type for cell number in inset
 	typedef CursorSlice::idx_type idx_type;
 	/// type for paragraph numbers positions within a cell
-	typedef CursorSlice::par_type par_type;
+	typedef CursorSlice::pit_type pit_type;
 	/// type for cursor positions within a cell
 	typedef CursorSlice::pos_type pos_type;
 	/// type for row indices
@@ -81,11 +81,11 @@ public:
 	/// return the last possible cell in this inset
 	idx_type lastidx() const;
 	/// return the paragraph this cursor is in
-	par_type par() const { return back().par(); }
+	pit_type pit() const { return back().pit(); }
 	/// return the paragraph this cursor is in
-	par_type & par() { return back().par(); }
+	pit_type & pit() { return back().pit(); }
 	/// return the last possible paragraph in this inset
-	par_type lastpar() const;
+	pit_type lastpit() const;
 	/// return the position within the paragraph
 	pos_type pos() const { return back().pos(); }
 	/// return the position within the paragraph

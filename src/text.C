@@ -69,7 +69,7 @@
 
 #include <sstream>
 
-using lyx::par_type;
+using lyx::pit_type;
 using lyx::pos_type;
 using lyx::word_location;
 
@@ -409,8 +409,8 @@ double LyXText::spacing(Paragraph const & par) const
 
 void LyXText::updateParPositions()
 {
-	par_type pit = 0;
-	par_type end = pars_.size();
+	pit_type pit = 0;
+	pit_type end = pars_.size();
 	for (height_ = 0; pit != end; ++pit) {
 		pars_[pit].y = height_;
 		height_ += pars_[pit].height;
@@ -467,13 +467,13 @@ int LyXText::singleWidth(Paragraph const & par,
 }
 
 
-int LyXText::leftMargin(par_type pit) const
+int LyXText::leftMargin(pit_type pit) const
 {
 	return leftMargin(pit, pars_[pit].size());
 }
 
 
-int LyXText::leftMargin(par_type const pit, pos_type const pos) const
+int LyXText::leftMargin(pit_type const pit, pos_type const pos) const
 {
 	Paragraph const & par = pars_[pit];
 	LyXTextClass const & tclass =
@@ -491,8 +491,8 @@ int LyXText::leftMargin(par_type const pit, pos_type const pos) const
 
 	if (par.getDepth() != 0) {
 	// find the next level paragraph
-	par_type newpar = outerHook(pit, pars_);
-		if (newpar != par_type(pars_.size())) {
+	pit_type newpar = outerHook(pit, pars_);
+		if (newpar != pit_type(pars_.size())) {
 			if (pars_[newpar].layout()->isEnvironment()) {
 				l_margin = leftMargin(newpar);
 			}
@@ -643,7 +643,7 @@ int LyXText::rightMargin(Paragraph const & par) const
 }
 
 
-int LyXText::labelEnd(par_type const pit) const
+int LyXText::labelEnd(pit_type const pit) const
 {
 	// labelEnd is only needed if the layout fills a flushleft label.
 	if (pars_[pit].layout()->margintype != MARGIN_MANUAL)
@@ -670,7 +670,7 @@ pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 };
 
 
-void LyXText::rowBreakPoint(par_type const pit, Row & row) const
+void LyXText::rowBreakPoint(pit_type const pit, Row & row) const
 {
 	Paragraph const & par = pars_[pit];
 	pos_type const end = par.size();
@@ -786,7 +786,7 @@ void LyXText::rowBreakPoint(par_type const pit, Row & row) const
 }
 
 
-void LyXText::setRowWidth(par_type const pit, Row & row) const
+void LyXText::setRowWidth(pit_type const pit, Row & row) const
 {
 	// get the pure distance
 	pos_type const end = row.endpos();
@@ -855,7 +855,7 @@ LColor_color LyXText::backgroundColor() const
 }
 
 
-void LyXText::setHeightOfRow(par_type const pit, Row & row)
+void LyXText::setHeightOfRow(pit_type const pit, Row & row)
 {
 	Paragraph const & par = pars_[pit];
 	// get the maximum ascent and the maximum descent
@@ -959,7 +959,7 @@ void LyXText::setHeightOfRow(par_type const pit, Row & row)
 		// a section, or between the items of a itemize or enumerate
 		// environment.
 
-		par_type prev = depthHook(pit, pars_, par.getDepth());
+		pit_type prev = depthHook(pit, pars_, par.getDepth());
 		if (prev != pit
 		    && pars_[prev].layout() == layout
 		    && pars_[prev].getDepth() == par.getDepth()
@@ -972,7 +972,7 @@ void LyXText::setHeightOfRow(par_type const pit, Row & row)
 		}
 
 		prev = outerHook(pit, pars_);
-		if (prev != par_type(pars_.size())) {
+		if (prev != pit_type(pars_.size())) {
 			maxasc += int(pars_[prev].layout()->parsep * dh);
 		} else if (pit != 0) {
 			if (pars_[pit - 1].getDepth() != 0 ||
@@ -987,9 +987,9 @@ void LyXText::setHeightOfRow(par_type const pit, Row & row)
 		// add the layout spaces, for example before and after
 		// a section, or between the items of a itemize or enumerate
 		// environment
-		par_type nextpit = pit + 1;
-		if (nextpit != par_type(pars_.size())) {
-			par_type cpit = pit;
+		pit_type nextpit = pit + 1;
+		if (nextpit != pit_type(pars_.size())) {
+			pit_type cpit = pit;
 			double usual = 0;
 			double unusual = 0;
 
@@ -1029,7 +1029,7 @@ void LyXText::breakParagraph(LCursor & cur, char keep_layout)
 	BOOST_ASSERT(this == cur.text());
 	// allow only if at start or end, or all previous is new text
 	Paragraph & cpar = cur.paragraph();
-	par_type cpit = cur.par();
+	pit_type cpit = cur.pit();
 
 	if (cur.pos() != 0 && cur.pos() != cur.lastpos()
 	    && cpar.isChangeEdited(0, cur.pos()))
@@ -1045,7 +1045,7 @@ void LyXText::breakParagraph(LCursor & cur, char keep_layout)
 		return;
 
 	// a layout change may affect also the following paragraph
-	recUndo(cur.par(), undoSpan(cur.par()) - 1);
+	recUndo(cur.pit(), undoSpan(cur.pit()) - 1);
 
 	// Always break behind a space
 	// It is better to erase the space (Dekel)
@@ -1066,8 +1066,8 @@ void LyXText::breakParagraph(LCursor & cur, char keep_layout)
 	::breakParagraph(cur.buffer().params(), paragraphs(), cpit,
 			 cur.pos(), keep_layout);
 
-	cpit = cur.par();
-	par_type next_par = cpit + 1;
+	cpit = cur.pit();
+	pit_type next_par = cpit + 1;
 
 	// well this is the caption hack since one caption is really enough
 	if (layout->labeltype == LABEL_SENSITIVE) {
@@ -1099,9 +1099,9 @@ void LyXText::breakParagraph(LCursor & cur, char keep_layout)
 	// This check is necessary. Otherwise the new empty paragraph will
 	// be deleted automatically. And it is more friendly for the user!
 	if (cur.pos() != 0 || isempty)
-		setCursor(cur, cur.par() + 1, 0);
+		setCursor(cur, cur.pit() + 1, 0);
 	else
-		setCursor(cur, cur.par(), 0);
+		setCursor(cur, cur.pit(), 0);
 }
 
 
@@ -1110,8 +1110,8 @@ void LyXText::redoParagraph(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	cur.clearSelection();
-	redoParagraph(cur.par());
-	setCursorIntern(cur, cur.par(), cur.pos());
+	redoParagraph(cur.pit());
+	setCursorIntern(cur, cur.pit(), cur.pos());
 }
 
 
@@ -1126,7 +1126,7 @@ void LyXText::insertChar(LCursor & cur, char c)
 
 	Paragraph & par = cur.paragraph();
 	// try to remove this
-	par_type const pit = cur.par();
+	pit_type const pit = cur.pit();
 
 	bool const freeSpacing = par.layout()->free_spacing ||
 		par.isFreeSpacing();
@@ -1212,7 +1212,7 @@ void LyXText::insertChar(LCursor & cur, char c)
 	current_font = rawtmpfont;
 	real_current_font = realtmpfont;
 	redoParagraph(cur);
-	setCursor(cur, cur.par(), cur.pos() + 1, false, cur.boundary());
+	setCursor(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 	charInserted();
 }
 
@@ -1231,7 +1231,7 @@ void LyXText::charInserted()
 }
 
 
-RowMetrics LyXText::computeRowMetrics(par_type const pit, Row const & row) const
+RowMetrics LyXText::computeRowMetrics(pit_type const pit, Row const & row) const
 {
 	RowMetrics result;
 	Paragraph const & par = pars_[pit];
@@ -1349,8 +1349,8 @@ RowMetrics LyXText::computeRowMetrics(par_type const pit, Row const & row) const
 void LyXText::cursorRightOneWord(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	if (cur.pos() == cur.lastpos() && cur.par() != cur.lastpar()) {
-		++cur.par();
+	if (cur.pos() == cur.lastpos() && cur.pit() != cur.lastpit()) {
+		++cur.pit();
 		cur.pos() = 0;
 	} else {
 		// Skip through initial nonword stuff.
@@ -1361,15 +1361,15 @@ void LyXText::cursorRightOneWord(LCursor & cur)
 		while (cur.pos() != cur.lastpos() && cur.paragraph().isLetter(cur.pos()))
 			++cur.pos();
 	}
-	setCursor(cur, cur.par(), cur.pos());
+	setCursor(cur, cur.pit(), cur.pos());
 }
 
 
 void LyXText::cursorLeftOneWord(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	if (cur.pos() == 0 && cur.par() != 0) {
-		--cur.par();
+	if (cur.pos() == 0 && cur.pit() != 0) {
+		--cur.pit();
 		cur.pos() = cur.lastpos();
 	} else {
 		// Skip through initial nonword stuff.
@@ -1380,7 +1380,7 @@ void LyXText::cursorLeftOneWord(LCursor & cur)
 		while (cur.pos() != 0 && cur.paragraph().isLetter(cur.pos() - 1))
 			--cur.pos();
 	}
-	setCursor(cur, cur.par(), cur.pos());
+	setCursor(cur, cur.pit(), cur.pos());
 }
 
 
@@ -1391,11 +1391,11 @@ void LyXText::selectWord(LCursor & cur, word_location loc)
 	CursorSlice to = cur.top();
 	getWord(from, to, loc);
 	if (cur.top() != from)
-		setCursor(cur, from.par(), from.pos());
+		setCursor(cur, from.pit(), from.pos());
 	if (to == from)
 		return;
 	cur.resetAnchor();
-	setCursor(cur, to.par(), to.pos());
+	setCursor(cur, to.pit(), to.pos());
 	cur.setSelection();
 }
 
@@ -1420,13 +1420,13 @@ void LyXText::acceptChange(LCursor & cur)
 
 	CursorSlice const & startc = cur.selBegin();
 	CursorSlice const & endc = cur.selEnd();
-	if (startc.par() == endc.par()) {
+	if (startc.pit() == endc.pit()) {
 		recordUndoSelection(cur, Undo::INSERT);
-		pars_[startc.par()].acceptChange(startc.pos(), endc.pos());
+		pars_[startc.pit()].acceptChange(startc.pos(), endc.pos());
 		finishUndo();
 		cur.clearSelection();
-		redoParagraph(startc.par());
-		setCursorIntern(cur, startc.par(), 0);
+		redoParagraph(startc.pit());
+		setCursorIntern(cur, startc.pit(), 0);
 	}
 #ifdef WITH_WARNINGS
 #warning handle multi par selection
@@ -1442,13 +1442,13 @@ void LyXText::rejectChange(LCursor & cur)
 
 	CursorSlice const & startc = cur.selBegin();
 	CursorSlice const & endc = cur.selEnd();
-	if (startc.par() == endc.par()) {
+	if (startc.pit() == endc.pit()) {
 		recordUndoSelection(cur, Undo::INSERT);
-		pars_[startc.par()].rejectChange(startc.pos(), endc.pos());
+		pars_[startc.pit()].rejectChange(startc.pos(), endc.pos());
 		finishUndo();
 		cur.clearSelection();
-		redoParagraph(startc.par());
-		setCursorIntern(cur, startc.par(), 0);
+		redoParagraph(startc.pit());
+		setCursorIntern(cur, startc.pit(), 0);
 	}
 #ifdef WITH_WARNINGS
 #warning handle multi par selection
@@ -1521,16 +1521,16 @@ void LyXText::changeCase(LCursor & cur, LyXText::TextCase action)
 	} else {
 		from = cur.top();
 		getWord(from, to, lyx::PARTIAL_WORD);
-		setCursor(cur, to.par(), to.pos() + 1);
+		setCursor(cur, to.pit(), to.pos() + 1);
 	}
 
 	recordUndoSelection(cur);
 
 	pos_type pos = from.pos();
-	int par = from.par();
+	int par = from.pit();
 
-	while (par != int(pars_.size()) && (pos != to.pos() || par != to.par())) {
-		par_type pit = par;
+	while (par != int(pars_.size()) && (pos != to.pos() || par != to.pit())) {
+		pit_type pit = par;
 		if (pos == pars_[pit].size()) {
 			++par;
 			pos = 0;
@@ -1564,8 +1564,8 @@ void LyXText::Delete(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
 	if (cur.pos() != cur.lastpos()) {
-		recordUndo(cur, Undo::DELETE, cur.par());
-		setCursorIntern(cur, cur.par(), cur.pos() + 1, false, cur.boundary());
+		recordUndo(cur, Undo::DELETE, cur.pit());
+		setCursorIntern(cur, cur.pit(), cur.pos() + 1, false, cur.boundary());
 		backspace(cur);
 	}
 	// should we do anything in an else branch?
@@ -1595,7 +1595,7 @@ void LyXText::backspace(LCursor & cur)
 			// left and let the DeleteEmptyParagraphMechanism
 			// handle the actual deletion of the paragraph.
 
-			if (cur.par() != 0) {
+			if (cur.pit() != 0) {
 				cursorLeft(cur);
 				// the layout things can change the height of a row !
 				redoParagraph(cur);
@@ -1603,18 +1603,18 @@ void LyXText::backspace(LCursor & cur)
 			}
 		}
 
-		if (cur.par() != 0)
-			recordUndo(cur, Undo::DELETE, cur.par() - 1);
+		if (cur.pit() != 0)
+			recordUndo(cur, Undo::DELETE, cur.pit() - 1);
 
-		par_type tmppit = cur.par();
+		pit_type tmppit = cur.pit();
 		// We used to do cursorLeftIntern() here, but it is
 		// not a good idea since it triggers the auto-delete
 		// mechanism. So we do a cursorLeftIntern()-lite,
 		// without the dreaded mechanism. (JMarc)
-		if (cur.par() != 0) {
+		if (cur.pit() != 0) {
 			// steps into the above paragraph.
-			setCursorIntern(cur, cur.par() - 1,
-					pars_[cur.par() - 1].size(),
+			setCursorIntern(cur, cur.pit() - 1,
+					pars_[cur.pit() - 1].size(),
 					false);
 		}
 
@@ -1625,7 +1625,7 @@ void LyXText::backspace(LCursor & cur)
 		Buffer & buf = cur.buffer();
 		BufferParams const & bufparams = buf.params();
 		LyXTextClass const & tclass = bufparams.getLyXTextClass();
-		par_type const cpit = cur.par();
+		pit_type const cpit = cur.pit();
 
 		if (cpit != tmppit
 		    && (pars_[cpit].layout() == pars_[tmppit].layout()
@@ -1638,7 +1638,7 @@ void LyXText::backspace(LCursor & cur)
 
 			// the counters may have changed
 			updateCounters();
-			setCursor(cur, cur.par(), cur.pos(), false);
+			setCursor(cur, cur.pit(), cur.pos(), false);
 		}
 	} else {
 		// this is the code for a normal backspace, not pasting
@@ -1648,7 +1648,7 @@ void LyXText::backspace(LCursor & cur)
 		// not a good idea since it triggers the auto-delete
 		// mechanism. So we do a cursorLeftIntern()-lite,
 		// without the dreaded mechanism. (JMarc)
-		setCursorIntern(cur, cur.par(), cur.pos() - 1,
+		setCursorIntern(cur, cur.pit(), cur.pos() - 1,
 				false, cur.boundary());
 		cur.paragraph().erase(cur.pos());
 	}
@@ -1657,11 +1657,11 @@ void LyXText::backspace(LCursor & cur)
 		setCurrentFont(cur);
 
 	redoParagraph(cur);
-	setCursor(cur, cur.par(), cur.pos(), false, cur.boundary());
+	setCursor(cur, cur.pit(), cur.pos(), false, cur.boundary());
 }
 
 
-Paragraph & LyXText::getPar(par_type par) const
+Paragraph & LyXText::getPar(pit_type par) const
 {
 	//lyxerr << "getPar: " << par << " from " << paragraphs().size() << endl;
 	BOOST_ASSERT(par >= 0);
@@ -1676,7 +1676,7 @@ Row const & LyXText::firstRow() const
 }
 
 
-void LyXText::redoParagraphInternal(par_type const pit)
+void LyXText::redoParagraphInternal(pit_type const pit)
 {
 	// remove rows of paragraph, keep track of height changes
 	Paragraph & par = pars_[pit];
@@ -1717,7 +1717,7 @@ void LyXText::redoParagraphInternal(par_type const pit)
 }
 
 
-void LyXText::redoParagraphs(par_type pit, par_type end)
+void LyXText::redoParagraphs(pit_type pit, pit_type end)
 {
 	for (; pit != end; ++pit)
 		redoParagraphInternal(pit);
@@ -1726,7 +1726,7 @@ void LyXText::redoParagraphs(par_type pit, par_type end)
 }
 
 
-void LyXText::redoParagraph(par_type pit)
+void LyXText::redoParagraph(pit_type pit)
 {
 	redoParagraphInternal(pit);
 	updateParPositions();
@@ -1777,14 +1777,14 @@ void LyXText::drawSelection(PainterInfo &, int, int) const
 }
 
 
-bool LyXText::isLastRow(par_type pit, Row const & row) const
+bool LyXText::isLastRow(pit_type pit, Row const & row) const
 {
 	return row.endpos() >= pars_[pit].size()
-		&& pit + 1 == par_type(paragraphs().size());
+		&& pit + 1 == pit_type(paragraphs().size());
 }
 
 
-bool LyXText::isFirstRow(par_type pit, Row const & row) const
+bool LyXText::isFirstRow(pit_type pit, Row const & row) const
 {
 	return row.pos() == 0 && pit == 0;
 }
@@ -1793,7 +1793,7 @@ bool LyXText::isFirstRow(par_type pit, Row const & row) const
 void LyXText::getWord(CursorSlice & from, CursorSlice & to,
 	word_location const loc)
 {
-	Paragraph const & from_par = pars_[from.par()];
+	Paragraph const & from_par = pars_[from.pit()];
 	switch (loc) {
 	case lyx::WHOLE_WORD_STRICT:
 		if (from.pos() == 0 || from.pos() == from_par.size()
@@ -1824,7 +1824,7 @@ void LyXText::getWord(CursorSlice & from, CursorSlice & to,
 		break;
 	}
 	to = from;
-	Paragraph & to_par = pars_[to.par()];
+	Paragraph & to_par = pars_[to.pit()];
 	while (to.pos() < to_par.size() && to_par.isLetter(to.pos()))
 		++to.pos();
 }
@@ -1914,7 +1914,7 @@ int LyXText::descent() const
 
 int LyXText::cursorX(CursorSlice const & cur) const
 {
-	par_type const pit = cur.par();
+	pit_type const pit = cur.pit();
 	Paragraph const & par = pars_[pit];
 	if (par.rows.empty())
 		return xo_;
@@ -1977,7 +1977,7 @@ int LyXText::cursorX(CursorSlice const & cur) const
 
 int LyXText::cursorY(CursorSlice const & cur) const
 {
-	Paragraph const & par = getPar(cur.par());
+	Paragraph const & par = getPar(cur.pit());
 	Row const & row = *par.getRow(cur.pos());
 	return yo_ + par.y + row.y_offset() + row.baseline();
 }
@@ -2048,7 +2048,7 @@ string LyXText::currentState(LCursor & cur)
 
 #ifdef DEVEL_VERSION
 	os << _(", Inset: ") << &cur.inset();
-	os << _(", Paragraph: ") << cur.par();
+	os << _(", Paragraph: ") << cur.pit();
 	os << _(", Id: ") << par.id();
 	os << _(", Position: ") << cur.pos();
 	Row & row = cur.textRow();
@@ -2060,7 +2060,7 @@ string LyXText::currentState(LCursor & cur)
 
 string LyXText::getPossibleLabel(LCursor & cur) const
 {
-	par_type pit = cur.par();
+	pit_type pit = cur.pit();
 
 	LyXLayout_ptr layout = pars_[pit].layout();
 

@@ -85,7 +85,7 @@ public:
 	/// load a new file
 	bool readFile(std::string const & filename);
 
-	bool readFile(std::string const & filename, lyx::par_type pit);
+	bool readFile(std::string const & filename, lyx::pit_type pit);
 
 	/// read the header, returns number of unknown tokens
 	int readHeader(LyXLex & lex);
@@ -98,7 +98,7 @@ public:
 
 	///
 	void insertStringAsLines(ParagraphList & plist,
-		lyx::par_type &, lyx::pos_type &,
+		lyx::pit_type &, lyx::pos_type &,
 		LyXFont const &, std::string const &);
 	///
 	ParIterator getParFromID(int id) const;
@@ -325,7 +325,7 @@ private:
 	    \return \c false if method fails.
 	*/
 	bool readFile(LyXLex &, std::string const & filename,
-		      lyx::par_type pit);
+		      lyx::pit_type pit);
 
 	bool do_writeFile(std::ostream & ofs) const;
 

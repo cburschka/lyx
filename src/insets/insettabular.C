@@ -384,14 +384,14 @@ void InsetTabular::edit(LCursor & cur, bool left)
 			cur.idx() = tabular.getLastCellInRow(0);
 		else
 			cur.idx() = 0;
-		cur.par() = 0;
+		cur.pit() = 0;
 		cur.pos() = 0;
 	} else {
 		if (isRightToLeft(cur))
 			cur.idx() = tabular.getFirstCellInRow(tabular.rows() - 1);
 		else
 			cur.idx() = tabular.getNumberOfCells() - 1;
-		cur.par() = 0;
+		cur.pit() = 0;
 		cur.pos() = cur.lastpos(); // FIXME crude guess
 	}
 	// this accesses the position cache before it is initialized
@@ -506,7 +506,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		if (sl == cur.top())
 			if (tabular.row_of_cell(cur.idx()) != tabular.rows() - 1) {
 				cur.idx() = tabular.getCellBelow(cur.idx());
-				cur.par() = 0;
+				cur.pit() = 0;
 				cur.pos() = 0;
 				resetPos(cur);
 			}
@@ -523,7 +523,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		if (sl == cur.top())
 			if (tabular.row_of_cell(cur.idx()) != 0) {
 				cur.idx() = tabular.getCellAbove(cur.idx());
-				cur.par() = cur.lastpar();
+				cur.pit() = cur.lastpit();
 				cur.pos() = cur.lastpos();
 				resetPos(cur);
 			}
@@ -544,7 +544,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		} else {
 			cur.idx() = tabular.getFirstCellInRow(tabular.rows() - 1) + col;
 		}
-		cur.par() = 0;
+		cur.pit() = 0;
 		cur.pos() = 0;
 		resetPos(cur);
 		break;
@@ -564,7 +564,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		} else {
 			cur.idx() = col;
 		}
-		cur.par() = cur.lastpar();
+		cur.pit() = cur.lastpit();
 		cur.pos() = cur.lastpos();
 		resetPos(cur);
 		break;
@@ -1043,7 +1043,7 @@ void InsetTabular::moveNextCell(LCursor & cur)
 			return;
 		++cur.idx();
 	}
-	cur.par() = 0;
+	cur.pit() = 0;
 	cur.pos() = 0;
 	lyxerr << "InsetTabular::moveNextCell 2 cur: " << cur.top() << endl;
 	resetPos(cur);
@@ -1069,7 +1069,7 @@ void InsetTabular::movePrevCell(LCursor & cur)
 			return;
 		--cur.idx();
 	}
-	cur.par() = 0;
+	cur.pit() = 0;
 	cur.pos() = 0;
 	resetPos(cur);
 }
@@ -1222,7 +1222,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		if (sel_row_start >= tabular.rows())
 			--sel_row_start;
 		cur.idx() = tabular.getCellNumber(sel_row_start, column);
-		cur.par() = 0;
+		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.selection() = false;
 		break;
@@ -1233,7 +1233,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		if (sel_col_start >= tabular.columns())
 			--sel_col_start;
 		cur.idx() = tabular.getCellNumber(row, sel_col_start);
-		cur.par() = 0;
+		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.selection() = false;
 		break;
@@ -1343,7 +1343,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		CursorSlice::idx_type const s_end = cur.selEnd().idx();
 		tabular.setMultiColumn(bv.buffer(), s_start, s_end - s_start + 1);
 		cur.idx() = s_start;
-		cur.par() = 0;
+		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.selection() = false;
 		break;

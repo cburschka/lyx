@@ -82,7 +82,7 @@
 
 
 using lyx::pos_type;
-using lyx::par_type;
+using lyx::pit_type;
 
 using lyx::support::AddName;
 using lyx::support::bformat;
@@ -473,7 +473,7 @@ bool Buffer::readDocument(LyXLex & lex)
 
 // needed to insert the selection
 void Buffer::insertStringAsLines(ParagraphList & pars,
-	par_type & par, pos_type & pos,
+	pit_type & par, pos_type & pos,
 	LyXFont const & fn, string const & str)
 {
 	LyXLayout_ptr const & layout = pars[par].layout();
@@ -549,7 +549,7 @@ bool Buffer::readFile(string const & filename)
 }
 
 
-bool Buffer::readFile(string const & filename, par_type pit)
+bool Buffer::readFile(string const & filename, pit_type pit)
 {
 	LyXLex lex(0, 0);
 	lex.setFile(filename);
@@ -569,7 +569,7 @@ void Buffer::fully_loaded(bool value)
 }
 
 
-bool Buffer::readFile(LyXLex & lex, string const & filename, par_type pit)
+bool Buffer::readFile(LyXLex & lex, string const & filename, pit_type pit)
 {
 	BOOST_ASSERT(!filename.empty());
 

@@ -31,7 +31,7 @@ class FontIterator : std::iterator<std::forward_iterator_tag, LyXFont>
 {
 public:
 	///
-	FontIterator(LyXText const & text, lyx::par_type pit, lyx::pos_type pos);
+	FontIterator(LyXText const & text, lyx::pit_type pit, lyx::pos_type pos);
 	///
 	LyXFont operator*() const;
 	///
@@ -43,7 +43,7 @@ private:
 	///
 	LyXText const & text_;
 	///
-	lyx::par_type pit_;
+	lyx::pit_type pit_;
 	///
 	lyx::pos_type pos_;
 	///

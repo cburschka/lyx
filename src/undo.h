@@ -73,9 +73,9 @@ struct Undo {
 	/// the position of the cell described 
 	StableDocIterator cell;
 	/// counted from begin of cell
-	lyx::par_type from;
+	lyx::pit_type from;
 	/// complement to end of this cell
-	lyx::par_type end;
+	lyx::pit_type end;
 	/// the contents of the saved Paragraphs (for texted)
 	ParagraphList pars;
 	/// the stringified contents of the saved MathArray (for mathed)
@@ -102,10 +102,10 @@ void finishUndo();
 
 /// The general case: prepare undo for an arbitrary range.
 void recordUndo(LCursor & cur, Undo::undo_kind kind,
-	lyx::par_type from, lyx::par_type to);
+	lyx::pit_type from, lyx::pit_type to);
 
 /// Convenience: prepare undo for the range between 'from' and cursor.
-void recordUndo(LCursor & cur, Undo::undo_kind kind, lyx::par_type from);
+void recordUndo(LCursor & cur, Undo::undo_kind kind, lyx::pit_type from);
 
 /// Convenience: prepare undo for the single paragraph or cell
 /// containing the cursor

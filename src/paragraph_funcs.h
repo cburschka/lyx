@@ -25,14 +25,14 @@ class ParagraphList;
 ///
 void breakParagraph(BufferParams const & bparams,
 		    ParagraphList & paragraphs,
-		    lyx::par_type par,
+		    lyx::pit_type par,
 		    lyx::pos_type pos,
 		    int flag);
 
 ///
 void breakParagraphConservative(BufferParams const & bparams,
 				ParagraphList & paragraphs,
-				lyx::par_type par,
+				lyx::pit_type par,
 				lyx::pos_type pos);
 
 /**
@@ -40,32 +40,32 @@ void breakParagraphConservative(BufferParams const & bparams,
  * Be careful, this doesent make any check at all.
  */
 void mergeParagraph(BufferParams const & bparams,
-	ParagraphList & paragraphs, lyx::par_type par);
+	ParagraphList & paragraphs, lyx::pit_type par);
 
 
 /// for the environments
-lyx::par_type depthHook(lyx::par_type par,
+lyx::pit_type depthHook(lyx::pit_type par,
 	ParagraphList const & plist, lyx::depth_type depth);
 
-lyx::par_type outerHook(lyx::par_type par, ParagraphList const & plist);
+lyx::pit_type outerHook(lyx::pit_type par, ParagraphList const & plist);
 
 /// Is it the first par with same depth and layout?
-bool isFirstInSequence(lyx::par_type par, ParagraphList const & plist);
+bool isFirstInSequence(lyx::pit_type par, ParagraphList const & plist);
 
 /** Check if the current paragraph is the last paragraph in a
     proof environment */
-int getEndLabel(lyx::par_type par, ParagraphList const & plist);
+int getEndLabel(lyx::pit_type par, ParagraphList const & plist);
 
-LyXFont const outerFont(lyx::par_type par, ParagraphList const & plist);
+LyXFont const outerFont(lyx::pit_type par, ParagraphList const & plist);
 
 /// find outermost paragraph containing an inset
-lyx::par_type outerPar(Buffer const & buf, InsetBase const * inset);
+lyx::pit_type outerPar(Buffer const & buf, InsetBase const * inset);
 
 /// return the range of pars [beg, end[ owning the range of y [ystart, yend]
 void getParsInRange(ParagraphList & plist,
 				int ystart, int yend,
-				lyx::par_type & beg,
-				lyx::par_type & end);
+				lyx::pit_type & beg,
+				lyx::pit_type & end);
 
 /// return the number of InsetOptArg in a paragraph
 int numberOfOptArgs(Paragraph const & par);

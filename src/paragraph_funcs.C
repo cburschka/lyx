@@ -35,7 +35,7 @@
 #include <vector>
 
 using lyx::pos_type;
-using lyx::par_type;
+using lyx::pit_type;
 
 using lyx::support::ascii_lowercase;
 using lyx::support::bformat;
@@ -88,7 +88,7 @@ bool moveItem(Paragraph & from, Paragraph & to,
 
 
 void breakParagraph(BufferParams const & bparams,
-	ParagraphList & pars, par_type par_offset, pos_type pos, int flag)
+	ParagraphList & pars, pit_type par_offset, pos_type pos, int flag)
 {
 	// create a new paragraph, and insert into the list
 	ParagraphList::iterator tmp =
@@ -182,7 +182,7 @@ void breakParagraph(BufferParams const & bparams,
 
 
 void breakParagraphConservative(BufferParams const & bparams,
-	ParagraphList & pars, par_type par_offset, pos_type pos)
+	ParagraphList & pars, pit_type par_offset, pos_type pos)
 {
 	// create a new paragraph
 	Paragraph & tmp = *pars.insert(pars.begin() + par_offset + 1, Paragraph());
@@ -208,7 +208,7 @@ void breakParagraphConservative(BufferParams const & bparams,
 
 
 void mergeParagraph(BufferParams const & bparams,
-	ParagraphList & pars, par_type par_offset)
+	ParagraphList & pars, pit_type par_offset)
 {
 	Paragraph & next = pars[par_offset + 1];
 	Paragraph & par = pars[par_offset];
@@ -225,10 +225,10 @@ void mergeParagraph(BufferParams const & bparams,
 }
 
 
-par_type depthHook(par_type pit,
+pit_type depthHook(pit_type pit,
 	ParagraphList const & pars, Paragraph::depth_type depth)
 {
-	par_type newpit = pit;
+	pit_type newpit = pit;
 
 	if (newpit != 0)
 		--newpit;
@@ -243,7 +243,7 @@ par_type depthHook(par_type pit,
 }
 
 
-par_type outerHook(par_type par_offset, ParagraphList const & pars)
+pit_type outerHook(pit_type par_offset, ParagraphList const & pars)
 {
 	Paragraph const & par = pars[par_offset];
 
@@ -253,11 +253,11 @@ par_type outerHook(par_type par_offset, ParagraphList const & pars)
 }
 
 
-bool isFirstInSequence(par_type par_offset, ParagraphList const & pars)
+bool isFirstInSequence(pit_type par_offset, ParagraphList const & pars)
 {
 	Paragraph const & par = pars[par_offset];
 
-	par_type dhook_offset = depthHook(par_offset, pars, par.getDepth());
+	pit_type dhook_offset = depthHook(par_offset, pars, par.getDepth());
 
 	Paragraph const & dhook = pars[dhook_offset];
 
@@ -267,16 +267,16 @@ bool isFirstInSequence(par_type par_offset, ParagraphList const & pars)
 }
 
 
-int getEndLabel(par_type p, ParagraphList const & pars)
+int getEndLabel(pit_type p, ParagraphList const & pars)
 {
-	par_type pit = p;
+	pit_type pit = p;
 	Paragraph::depth_type par_depth = pars[p].getDepth();
-	while (pit != par_type(pars.size())) {
+	while (pit != pit_type(pars.size())) {
 		LyXLayout_ptr const & layout = pars[pit].layout();
 		int const endlabeltype = layout->endlabeltype;
 
 		if (endlabeltype != END_LABEL_NO_LABEL) {
-			if (p + 1 == par_type(pars.size()))
+			if (p + 1 == pit_type(pars.size()))
 				return endlabeltype;
 
 			Paragraph::depth_type const next_depth =
@@ -289,24 +289,24 @@ int getEndLabel(par_type p, ParagraphList const & pars)
 		if (par_depth == 0)
 			break;
 		pit = outerHook(pit, pars);
-		if (pit != par_type(pars.size()))
+		if (pit != pit_type(pars.size()))
 			par_depth = pars[pit].getDepth();
 	}
 	return END_LABEL_NO_LABEL;
 }
 
 
-LyXFont const outerFont(par_type par_offset, ParagraphList const & pars)
+LyXFont const outerFont(pit_type par_offset, ParagraphList const & pars)
 {
 	Paragraph::depth_type par_depth = pars[par_offset].getDepth();
 	LyXFont tmpfont(LyXFont::ALL_INHERIT);
 
 	// Resolve against environment font information
-	while (par_offset != par_type(pars.size())
+	while (par_offset != pit_type(pars.size())
 	       && par_depth
 	       && !tmpfont.resolved()) {
 		par_offset = outerHook(par_offset, pars);
-		if (par_offset != par_type(pars.size())) {
+		if (par_offset != pit_type(pars.size())) {
 			tmpfont.realize(pars[par_offset].layout()->font);
 			par_depth = pars[par_offset].getDepth();
 		}
@@ -316,7 +316,7 @@ LyXFont const outerFont(par_type par_offset, ParagraphList const & pars)
 }
 
 
-par_type outerPar(Buffer const & buf, InsetBase const * inset)
+pit_type outerPar(Buffer const & buf, InsetBase const * inset)
 {
 	ParIterator pit = const_cast<Buffer &>(buf).par_iterator_begin();
 	ParIterator end = const_cast<Buffer &>(buf).par_iterator_end();
@@ -341,11 +341,11 @@ par_type outerPar(Buffer const & buf, InsetBase const * inset)
 
 /// return the range of pars [beg, end[ owning the range of y [ystart, yend]
 void getParsInRange(ParagraphList & pars, int ystart, int yend,
-	par_type & beg, par_type & end)
+	pit_type & beg, pit_type & end)
 {
 	BOOST_ASSERT(!pars.empty());
-	par_type const endpar = pars.size();
-	par_type const begpar = 0;
+	pit_type const endpar = pars.size();
+	pit_type const begpar = 0;
 
 	for (beg = endpar - 1; beg != begpar && pars[beg].y > ystart; --beg)
 		;
