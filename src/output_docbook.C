@@ -252,8 +252,8 @@ void docbookParagraphs(Buffer const & buf,
 	// Close open tags
 	for (int d = depth; d >= 0; --d) {
 		if (!environment_stack[depth].empty()) {
-				sgml::closeEnvTags(os, false, environment_inner[depth],
-					item_tag, command_depth + depth);
+			sgml::closeEnvTags(os, false, environment_inner[d], item_tag, command_depth + d);
+			sgml::closeTag(os, d + command_depth, false, environment_stack[d]);
 		}
 	}
 

@@ -1,3 +1,7 @@
+2004-10-13  José Matos  <jamatos@lyx.org>
+
+	* output_docbook.C (docbookParagraphs): fix closing tags in the end of the document.
+
 2004-10-09  José Matos  <jamatos@lyx.org>
 
 	* buffer.C: format up to 237.
