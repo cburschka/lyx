@@ -281,7 +281,16 @@ void xformsGImage::rotate(GParams const & params)
 
 	// The angle passed to flimage_rotate is the angle in one-tenth of a
 	// degree units.
-	flimage_rotate(image_, params.angle * 10, FLIMAGE_SUBPIXEL);
+
+	// Work around xforms bug when params.angle == 270
+	// the 'InternalError: bad special angle' error.
+	// This bug fix is not needed in xforms 1.0 and greater.
+	if (params.angle == 270) {
+		flimage_rotate(image_,  900, FLIMAGE_SUBPIXEL);
+		flimage_rotate(image_, 1800, FLIMAGE_SUBPIXEL);
+	} else {
+		flimage_rotate(image_, params.angle * 10, FLIMAGE_SUBPIXEL);
+	}
 }
 
 

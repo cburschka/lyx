@@ -1,3 +1,8 @@
+2002-05-03  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xformsGImage.C (rotate): work-around xforms bug when rotating by
+	270 degs.
+
 2002-05-02  Herbert Voss  <voss@perce.de>
 
 	* FormBibtex.C (apply): a change from a style to an empty one
