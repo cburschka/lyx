@@ -115,7 +115,7 @@ void ControlDocument::dispatchParams()
 	}
 
 	// Open insets of selected branches, close deselected ones
-	kernel().dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE, "toggle branch"));
+	kernel().dispatch(FuncRequest(LFUN_ALL_INSETS_TOGGLE, "assign branch"));
 }
 
 

@@ -323,7 +323,8 @@ void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 				leaveInset(cur, *this);
 			} else
 				setStatus(Open);
-		}
+		} else // if assign or anything else
+			cur.undispatched();
 		cur.dispatched();
 		break;
 

@@ -94,7 +94,8 @@ void InsetBranch::setButtonLabel()
 	font.decSize();
 	font.decSize();
 
-	setLabel("Branch: " + params_.branch);
+	string s = "Branch: " + params_.branch;
+	setLabel(isOpen() ? s : getNewLabel(s) );
 	font.setColor(LColor::foreground);
 	if (!params_.branch.empty())
 		setBackgroundColor(lcolor.getFromLyXName(params_.branch));
@@ -150,9 +151,15 @@ void InsetBranch::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		else if (cmd.argument == "close") {
 			setStatus(Collapsed);
 			leaveInset(cur, *this);
+        } else if (cmd.argument == "toggle") {
+			if (isOpen()) {
+				setStatus(Collapsed);
+				leaveInset(cur, *this);
+			} else
+			setStatus(Open);
 
-		// The branch inset specialises its behaviour on "toggle".
-		} else if (cmd.argument == "toggle"
+		// The branch inset uses "assign".
+		} else if (cmd.argument == "assign"
 			   || cmd.argument.empty()) {
 			BranchList const & branchlist =
 				cur.bv().buffer()->params().branchlist();

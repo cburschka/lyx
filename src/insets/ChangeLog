@@ -1,3 +1,9 @@
+2004-04-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* insetcollapsable.C:
+	* insetbranch.C: 'assign' to open/close branch inset according to
+	selection; also print content on closed branch button
+
 2004-04-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* ExternalSupport.C (doSubstitution): add new variables $$AbsPath,
