@@ -631,6 +631,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 
 		case LFUN_EXEC_COMMAND:
+			owner->getToolbar().display("minibuffer", true);
 			owner->focus_command_buffer();
 			break;
 

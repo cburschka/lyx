@@ -29,9 +29,9 @@ Include "stdtoolbars.ui"
 # right: the toolbar should be at the right of the window
 #
 Toolbars
-	"Standard" "on,top"
-	"Extra" "on,top"
-	"Table" "off,bottom"
-	"Math" "off,bottom"
-	"Command Buffer" "off,bottom"
+	"standard" "on,top"
+	"extra" "on,top"
+	"table" "off,bottom"
+	"math" "off,bottom"
+	"minibuffer" "off,bottom"
 End

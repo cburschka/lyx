@@ -54,8 +54,10 @@ public:
 
 	/// a toolbar
 	struct Toolbar {
-		/// toolbar UI name
+		/// toolbar name
 		std::string name;
+		/// toolbar GUI name
+		std::string gui_name;
 		/// toolbar contents
 		Items items;
 		/// flags

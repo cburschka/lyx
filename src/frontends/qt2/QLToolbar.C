@@ -212,7 +212,8 @@ QMainWindow::ToolBarDock getPosition(ToolbarBackend::Flags const & flags)
 
 void QLToolbar::add(ToolbarBackend::Toolbar const & tb)
 {
-	QToolBar * qtb = new QToolBar(qt_(tb.name), owner_, getPosition(tb.flags));
+	QToolBar * qtb = new QToolBar(qt_(tb.gui_name), owner_,
+		getPosition(tb.flags));
 	// give visual separation between adjacent toolbars
 	qtb->addSeparator();
 

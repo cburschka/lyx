@@ -11,7 +11,7 @@
 
 # A Toolbar starts like :
 #
-# Toolbar "Name"
+# Toolbar "name" "GUI Name"
 #
 # Only four commands are allowed inside the begin_toolbar and end_toolbar
 # directives:
@@ -36,7 +36,7 @@
 #
 # This is the default toolbar:
 
-Toolbar "Standard"
+Toolbar "standard" "Standard"
 	Layouts
 	Item "New document" "buffer-new"
 	Item "Open document" "file-open"
@@ -59,7 +59,7 @@ Toolbar "Standard"
 	Item "Insert table" "tabular-insert 4 4"
 End
 
-Toolbar "Extra"
+Toolbar "extra" "Extra"
 	Item "Numbered list" "layout Enumerate"
 	Item "Itemized list" "layout Itemize"
 	Item "List" "layout List"
@@ -88,7 +88,7 @@ Toolbar "Extra"
 	Item "Thesaurus" "thesaurus-entry"
 End
 
-Toolbar "Table"
+Toolbar "table" "Table"
 	Item "Add row" "tabular-feature append-row"
 	Item "Add column" "tabular-feature append-column"
 	Item "Delete row" "tabular-feature delete-row"
@@ -114,7 +114,7 @@ Toolbar "Table"
 	Item "Set multi-column" "tabular-feature multicolumn"
 End
 
-Toolbar "Math"
+Toolbar "math" "Math"
 	Item "Show math panel" "dialog-show mathpanel"
 	Item "Set display mode" "math-display"
 	Item "Subscript" "math-subscript"
@@ -138,6 +138,6 @@ Toolbar "Math"
 	Item "Delete column" "tabular-feature delete-column"
 End
 
-Toolbar "Command Buffer"
+Toolbar "minibuffer" "Command Buffer"
 	Minibuffer
 End

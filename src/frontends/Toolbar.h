@@ -35,6 +35,9 @@ public:
 	/// update the state of the toolbars
 	void update(bool in_math, bool in_table);
 
+	/// show/hide the named toolbar
+	void display(std::string const & name, bool show);
+
 	/// update the layout combox
 	virtual void setLayout(std::string const & layout) = 0;
 	/**

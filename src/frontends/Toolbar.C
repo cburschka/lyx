@@ -16,6 +16,8 @@
 #include "LyXAction.h"
 #include "ToolbarBackend.h"
 
+using std::string;
+using std::endl;
 
 Toolbar::Toolbar()
 	: last_textclass_(-1)
@@ -36,6 +38,23 @@ void Toolbar::init()
 
 	for (; cit != end; ++cit)
 		add(*cit);
+}
+
+
+void Toolbar::display(string const & name, bool show)
+{
+	ToolbarBackend::Toolbars::const_iterator cit = toolbarbackend.begin();
+	ToolbarBackend::Toolbars::const_iterator end = toolbarbackend.end();
+
+	for (; cit != end; ++cit) {
+		if (cit->name == name) {
+			displayToolbar(*cit, show);
+			return;
+		}
+	}
+
+	lyxerr[Debug::GUI] << "Toolbar::display: no toolbar named "
+		<< name << endl;
 }
 
 

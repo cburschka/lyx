@@ -1,3 +1,11 @@
+2004-04-21  John Levon  <levon@movementarian.org>
+
+	* ToolbarBackend.h:
+	* ToolbarBackend.C: make "name" be a programmatic name
+	and a gui_name field.
+
+	* lyxfunc.C: display the minibuffer on M-x
+
 2004-04-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* LaTeX.C (runMakeIndex, runBibTeX): quote correctly file name
