@@ -19,6 +19,7 @@
 #include <qcombobox.h>
 #include <qpushbutton.h>
 #include <qvalidator.h>
+#include "lengthcombo.h"
 
 #include "qt_helpers.h"
 

@@ -20,7 +20,7 @@
 #include "QVSpace.h"
 #include "QVSpaceDialog.h"
 #include "Qt2BC.h"
-#include "lyxrc.h" // to set the deafult length values
+#include "lyxrc.h" // to set the default length values
 #include "qt_helpers.h"
 #include "helper_funcs.h"
 
@@ -34,16 +34,9 @@
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qpushbutton.h>
+#include "lengthcombo.h"
 
-using lyx::support::contains_functor;
-using lyx::support::isStrDbl;
-using lyx::support::subst;
-using lyx::support::trim;
 
-using std::bind2nd;
-using std::remove_if;
-
-using std::vector;
 using std::string;
 
 
@@ -52,13 +45,9 @@ namespace {
 void setWidgetsFromVSpace(VSpace const & space,
 			  QComboBox * spacing,
 			  QLineEdit * value,
-			  QComboBox * unit,
-			  QCheckBox * keep, vector<string> units_)
+			  LengthCombo * unit,
+			  QCheckBox * keep)
 {
-	value->setText("");
-	value->setEnabled(false);
-	unit->setEnabled(false);
-
 	int item = 0;
 	switch (space.kind()) {
 	case VSpace::NONE:
@@ -81,48 +70,33 @@ void setWidgetsFromVSpace(VSpace const & space,
 		break;
 	case VSpace::LENGTH:
 		item = 6;
-		value->setEnabled(true);
-		unit->setEnabled(true);
-		string length = space.length().asString();
-		string const default_unit =
-			(lyxrc.default_papersize > 3) ? "cm" : "in";
-		string supplied_unit = default_unit;
-		LyXLength len(length);
-		if ((isValidLength(length)
-		     || isStrDbl(length)) && !len.zero()) {
-			length = tostr(len.value());
-			supplied_unit = subst(stringFromUnit(len.unit()),
-					      "%", "%%");
-		}
-
-		int unit_item = 0;
-		int i = 0;
-		for (vector<string>::const_iterator it = units_.begin();
-		     it != units_.end(); ++it) {
-			if (*it == default_unit) {
-				unit_item = i;
-			}
-			if (*it == supplied_unit) {
-				unit_item = i;
-				break;
-			}
-			i += 1;
-		}
-		value->setText(toqstr(length));
-		unit->setCurrentItem(unit_item);
 		break;
 	}
 	spacing->setCurrentItem(item);
 	keep->setChecked(space.keep());
+
+	LyXLength::UNIT default_unit =
+			(lyxrc.default_papersize > 3) ? LyXLength::CM : LyXLength::IN;
+	bool const custom_vspace = space.kind() == VSpace::LENGTH;
+	if (custom_vspace) {
+		value->setEnabled(true);
+		unit->setEnabled(true);
+		string length = space.length().asString();
+		lengthToWidgets(value, unit, length, default_unit);
+	} else {
+		lengthToWidgets(value, unit, "", default_unit);
+		value->setEnabled(false);
+		unit->setEnabled(false);
+	}
 }
 
 
 VSpace setVSpaceFromWidgets(int spacing,
-			    string value,
-			    string unit,
+			    QLineEdit * value,
+			    LengthCombo * unit,
 			    bool keep)
 {
-	VSpace space;
+	VSpace space = VSpace(VSpace::NONE);
 
 	switch (spacing) {
 	case 0:
@@ -144,21 +118,12 @@ VSpace setVSpaceFromWidgets(int spacing,
 		space = VSpace(VSpace::VFILL);
 		break;
 	case 6:
-		string s;
-		string const length = trim(value);
-		if (isValidGlueLength(length)) {
-			s = length;
-		} else if (!length.empty()){
-			string u = trim(unit);
-			u = subst(u, "%%", "%");
-			s = length + u;
-		}
-		space = VSpace(LyXGlueLength(s));
+		space = VSpace(LyXGlueLength(
+				      widgetsToLength(value, unit)));
 		break;
 	}
 
 	space.setKeep(keep);
-
 	return space;
 }
 
@@ -168,7 +133,7 @@ VSpace setVSpaceFromWidgets(int spacing,
 typedef QController<ControlVSpace, QView<QVSpaceDialog> > base_class;
 
 QVSpace::QVSpace(Dialog & parent)
-	: base_class(parent, _("LyX: VSpace Settings"))
+	: base_class(parent, _("LyX: Vertical Space Settings"))
 {}
 
 
@@ -176,19 +141,6 @@ void QVSpace::build_dialog()
 {
 	// the tabbed folder
 	dialog_.reset(new QVSpaceDialog(this));
-
-	// Create the contents of the unit choices
-	// Don't include the "%" terms...
-	units_ = getLatexUnits();
-	vector<string>::iterator del =
-		remove_if(units_.begin(), units_.end(),
-			  bind2nd(contains_functor(), "%"));
-	units_.erase(del, units_.end());
-
-	for (vector<string>::const_iterator it = units_.begin();
-		it != units_.end(); ++it) {
-		dialog_->unitCO->insertItem(toqstr(*it));
-	}
 
 	// Manage the ok, apply, restore and cancel/close buttons
 	bcview().setOK(dialog_->okPB);
@@ -201,6 +153,15 @@ void QVSpace::build_dialog()
 	bcview().addReadOnly(dialog_->valueLE);
 	bcview().addReadOnly(dialog_->unitCO);
 	bcview().addReadOnly(dialog_->keepCB);
+
+	// remove the %-items from the unit choice
+	int num = dialog_->unitCO->count();
+	for (int i=0; i < num; i++) {
+		if (dialog_->unitCO->text(i).contains("%") > 0) {
+			dialog_->unitCO->removeItem(i);
+			i -= 1;
+		}
+	}
 }
 
 
@@ -215,8 +176,8 @@ void QVSpace::apply()
 
 	VSpace const space =
 		setVSpaceFromWidgets(dialog_->spacingCO->currentItem(),
-				     fromqstr(dialog_->valueLE->text()),
-				     fromqstr(dialog_->unitCO->currentText()),
+				     dialog_->valueLE,
+				     dialog_->unitCO,
 				     dialog_->keepCB->isChecked());
 
 	controller().params() = space;
@@ -229,5 +190,5 @@ void QVSpace::update_contents()
 			     dialog_->spacingCO,
 			     dialog_->valueLE,
 			     dialog_->unitCO,
-			     dialog_->keepCB, units_);
+			     dialog_->keepCB);
 }

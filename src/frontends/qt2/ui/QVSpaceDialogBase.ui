@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>345</width>
+            <width>335</width>
             <height>140</height>
         </rect>
     </property>
@@ -98,21 +98,6 @@
                 <string>Do not reset the spacing on page break</string>
             </property>
         </widget>
-        <widget row="1"  column="2" >
-            <class>QComboBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>unitCO</cstring>
-            </property>
-            <property stdset="1">
-                <name>enabled</name>
-                <bool>false</bool>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>Custom value. Needs spacing type "Custom".</string>
-            </property>
-        </widget>
         <widget row="1"  column="1" >
             <class>QLineEdit</class>
             <property stdset="1">
@@ -181,7 +166,7 @@
                 <string>Supported spacing types</string>
             </property>
         </widget>
-        <spacer row="0"  column="2" >
+        <spacer row="0"  column="2"  rowspan="1"  colspan="2" >
             <property>
                 <name>name</name>
                 <cstring>Spacer8</cstring>
@@ -202,7 +187,7 @@
                 </size>
             </property>
         </spacer>
-        <spacer row="2"  column="2" >
+        <spacer row="2"  column="2"  rowspan="1"  colspan="2" >
             <property>
                 <name>name</name>
                 <cstring>Spacer9</cstring>
@@ -223,7 +208,7 @@
                 </size>
             </property>
         </spacer>
-        <widget row="4"  column="0"  rowspan="1"  colspan="3" >
+        <widget row="4"  column="0"  rowspan="1"  colspan="4" >
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
@@ -346,8 +331,59 @@
                 </size>
             </property>
         </spacer>
+        <widget row="1"  column="2" >
+            <class>LengthCombo</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>unitCO</cstring>
+            </property>
+        </widget>
+        <spacer row="1"  column="3" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer5</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
     </grid>
 </widget>
+<customwidgets>
+    <customwidget>
+        <class>LengthCombo</class>
+        <header location="local">lengthcombo.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+        <signal>selectionChanged(LyXLength::UNIT)</signal>
+    </customwidget>
+</customwidgets>
+<images>
+    <image>
+        <name>image0</name>
+        <data format="XPM.GZ" length="646">789c6dd2c10ac2300c00d07bbf2234b7229d1be245fc04c5a3201e4615f430059d0711ff5ddb2e6bb236ec90eed134cb5a19d8ef36602af5ecdbfeeac05dda0798d3abebde87e3faa374d3807fa0d633a52d38d8de6f679fe33fc776e196f53cd010188256a3600a292882096246517815ca99884606e18044a3a40d91824820924265a7923a2e8bcd05f33db1173e002913175f2a6be6d3294871a2d95fa00e8a94ee017b69d339d90df1e77c57ea072ede6758</data>
+    </image>
+</images>
 <connections>
     <connection>
         <sender>spacingCO</sender>
@@ -362,22 +398,22 @@
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>unitCO</sender>
-        <signal>highlighted(const QString&amp;)</signal>
-        <receiver>QVSpaceDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>keepCB</sender>
-        <signal>checked()</signal>
-        <receiver>QVSpaceDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
-	<connection>
         <sender>spacingCO</sender>
         <signal>activated(int)</signal>
         <receiver>QVSpaceDialogBase</receiver>
         <slot>enableCustom(int)</slot>
+    </connection>
+    <connection>
+        <sender>keepCB</sender>
+        <signal>clicked()</signal>
+        <receiver>QVSpaceDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>unitCO</sender>
+        <signal>selectionChanged(LyXLength::UNIT)</signal>
+        <receiver>QVSpaceDialogBase</receiver>
+        <slot>change_adaptor()</slot>
     </connection>
     <slot access="protected">change_adaptor()</slot>
     <slot access="protected">enableCustom(int)</slot>

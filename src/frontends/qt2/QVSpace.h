@@ -38,8 +38,6 @@ private:
 	virtual void apply();
 	/// Update the dialog
 	virtual void update_contents();
-
-	std::vector<std::string> units_;
 };
 
 #endif //QVSPACE_H

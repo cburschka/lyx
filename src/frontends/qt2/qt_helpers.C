@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Dekel Tsur
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -11,6 +12,7 @@
 #include <config.h>
 
 #include "support/tostr.h"
+#include "support/lstrings.h"
 #include "gettext.h"
 #include "qt_helpers.h"
 
@@ -20,6 +22,9 @@
 #include <qtextcodec.h>
 
 #include <algorithm>
+
+
+using lyx::support::isStrDbl;
 
 using std::make_pair;
 using std::string;
@@ -79,6 +84,10 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 		// no length (UNIT_NONE)
 		combo->setCurrentItem(defaultUnit);
 		input->setText("");
+	} else if (!isValidLength(len) && !isStrDbl(len)) {
+		// use input field only for gluelengths
+		combo->setCurrentItem(defaultUnit);
+		input->setText(toqstr(len));
 	} else {
 		combo->setCurrentItem(LyXLength(len).unit());
 		input->setText(toqstr(tostr(LyXLength(len).value())));

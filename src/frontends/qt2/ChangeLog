@@ -1,6 +1,14 @@
 2003-11-29  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
-	* QParagraph.C: whitespace
+	* qt_helpers.C (widgetsToLength): handle glue lengths
+	* QDocumentDialog.C: use clicked() instead of pressed()
+	for branches color button.
+	* QVSpace.[Ch]: fix a few bugs, simplify the code (by using
+	qt_helpers functions)
+	* QDocumentDialog.C:
+	* ui/QDocumentDialogBase.ui: use lengthcombo instead of
+	QComboBox (which simplifies the code).
+	* QParagraphDialog.C: whitespace
 	* ui/QParagraphDialogBase.ui: restore lost connections.
 
 2003-11-29  Juergen Spitzmueller  <j.spitzmueller@gmx.de>

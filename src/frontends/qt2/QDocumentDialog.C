@@ -167,7 +167,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(branchesModule->addBranchPB, SIGNAL(pressed()), this, SLOT(addBranchPressed()));
 	connect(branchesModule->removePB, SIGNAL(pressed()), this, SLOT(deleteBranchPressed()));
 	connect(branchesModule->activatePB, SIGNAL(pressed()), this, SLOT(toggleBranchPressed()));
-	connect(branchesModule->colorPB, SIGNAL(pressed()), this, SLOT(toggleBranchColor()));
+	connect(branchesModule->colorPB, SIGNAL(clicked()), this, SLOT(toggleBranchColor()));
 	branchesModule->branchesLV->setSorting(0);
 }
 
