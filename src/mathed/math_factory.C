@@ -94,11 +94,25 @@ void initSymbols()
 
 	std::ifstream fs(filename.c_str());
 	string line;
+	bool skip = false;
 	while (std::getline(fs, line)) {
 		int charid     = 0;
 		int fallbackid = 0;
-		latexkeys tmp;
 		if (line.size() > 0 && line[0] == '#')
+			continue;
+
+		// special case of \iffont / \fi
+		if (line.size() >= 7 && line.substr(0, 6) == "iffont") {
+			istringstream is(line);
+			string tmp;
+			is >> tmp;
+			is >> tmp;
+			skip = !math_font_available(tmp);
+			continue;
+		} else if (line.size() >= 3 && line.substr(0, 3) == "end") {
+			skip = false;
+			continue;
+		} else if (skip)
 			continue;
 
 		// special case of pre-defined macros
@@ -110,6 +124,7 @@ void initSymbols()
 		}
 
 		istringstream is(line);
+		latexkeys tmp;
 		is >> tmp.name >> tmp.inset;
 		if (isFontName(tmp.inset)) 
 			is >> charid >> fallbackid >> tmp.extra >> tmp.xmlname;
