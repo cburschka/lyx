@@ -373,11 +373,13 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 		if (label == "EPS" || label == "XPM" || label == "PNG")
 			continue;
 
-		if (kind == MenuItem::ImportFormats)
+		if (kind == MenuItem::ImportFormats) {
 			if ((*fit)->name() == "text")
 				label = _("ASCII text as lines");
 			else if ((*fit)->name() == "textparagraph")
 				label = _("ASCII text as paragraphs");
+			label += "...";
+		}
 		if (!(*fit)->shortcut().empty())
 			label += '|' + (*fit)->shortcut();
 		int const action2 = lyxaction.
