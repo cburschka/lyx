@@ -7,10 +7,8 @@
 using std::ostream;
 
 MathBigopInset::MathBigopInset(string const & name, int id)
-	: sym_(id)
-{
-	setName(name);
-}
+	: MathInset(0, name), sym_(id)
+{}
 
 
 MathInset * MathBigopInset::clone() const
