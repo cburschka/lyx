@@ -1,10 +1,17 @@
+2004-12-16  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.m4: remove code for checking languages in the LaTeX
+	format... 
+
+	* chkconfig.ltx: ... and replace it with a TeX solution
+
 2004-12-13  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* CREDITS: add John Spray
 
 2004-12-07  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	 * configure.m4: add printout of language list for which
+	* configure.m4: add printout of language list for which
         hyphenation is enabled
 
 2004-11-19  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>

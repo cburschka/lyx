@@ -152,6 +152,25 @@
 \message{^^J\prefix checking for LaTeX version... \fmtversion}
 \AddVariable{fmtversion}{\fmtversion}
 
+%%% And now, the list of available languages
+% The trick is to know that \the\everyjob contains something like
+%  \typeout{LaTeX2e <2001/06/01>}
+%  \typeout{Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, nohyphenation, loaded.}
+% All we have to do is to extract the list from there:
+% (1) concatenate all the messages that are displayed everytime the
+% format is loaded. The is done by redefining locally \typeout to
+% append its argument to the macro \mesg.
+\def\mesg{}
+{\def\typeout#1{\xdef\mesg{\mesg #1}}
+ \the\everyjob}
+% (2) strip the useless parts from \mesg. This uses the fact that TeX
+% allows to define macros with parameters delimited by arbitrary text.
+\def\strip#1patterns for #2, loaded.#3\endmark{\def\langs{#2}}
+\expandafter\strip\mesg\endmark
+% (3) handle the result
+\message{^^J\prefix checking for available hyphenation patterns... \langs}
+\AddVariable{languages}{\langs}
+
 %%% Check for ec fonts. Most of this code has been shamelessely stolen
 %%% from the file ltxcheck.tex in the LaTeX distribution. In particular,
 %%% don't ask me how the macro \ecrm works...

@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 237
+\lyxformat 238
 \begin_document
 \begin_header
 \textclass article
@@ -2108,14 +2108,10 @@ Table of contents
 \end_layout
 
 \begin_deeper
-\begin_layout Subsubsection*
-
-Languages for which hyphenation patterns are loaded:
-\end_layout
-
 \begin_layout Standard
 
-@chk_languages@
+Your LaTeX installation has hyphenation patterns for the following languages:
+ @chk_languages@
 \end_layout
 
 \begin_layout Standard
