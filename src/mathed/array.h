@@ -65,6 +65,8 @@ public:
 	
 	///
 	int empty() const;
+	///
+	void clear();
    
 	///
 	int last() const;
@@ -73,6 +75,8 @@ public:
 
 	///
 	void swap(MathedArray &);
+	///
+	void shrink(int pos1, int pos2);
 
 #if 0
 	///

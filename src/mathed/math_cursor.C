@@ -843,12 +843,10 @@ bool MathedCursor::pullArg()
 			return false;
 		
 		MathedArray * a = p->GetData();
-		p->setData(0);
+		p->clear();
 		Delete();
-		if (a) {
-			cursor->Merge(a);
-			cursor->Adjust();
-		}
+		cursor->Merge(a);
+		cursor->Adjust();
 
 		return true;
 	}
@@ -904,7 +902,8 @@ void MathedCursor::SelCopy()
 		int p1 = (cursor->getPos() < selpos) ? cursor->getPos() : selpos;
 		int p2 = (cursor->getPos() > selpos) ?
 			cursor->getPos() : selpos;
-		selarray = cursor->Copy(p1, p2);
+		selarray = new MathedArray(*(cursor->GetData()));
+		selarray->shrink(p1, p2);
 		cursor->Adjust();
 		SelClear();
 	}
@@ -919,7 +918,8 @@ void MathedCursor::SelCut()
 
 		int p1 = (cursor->getPos() < selpos) ? cursor->getPos() : selpos;
 		int p2 = (cursor->getPos() > selpos) ? cursor->getPos() : selpos;
-		selarray = cursor->Copy(p1, p2);
+		selarray = new MathedArray(*(cursor->GetData()));
+		selarray->shrink(p1, p2);
 		cursor->Clean(selpos);
 		cursor->Adjust();
 		SelClear();

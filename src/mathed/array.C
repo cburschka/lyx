@@ -75,6 +75,13 @@ MathedArray & MathedArray::operator=(MathedArray const & array)
 	return *this;
 }
 
+void MathedArray::clear()
+{
+	last_ = 0;
+	bf_.resize(1);
+	bf_[0] = 0;
+}
+
 void MathedArray::swap(MathedArray & array)
 {
 	if (this != &array) {
@@ -152,6 +159,54 @@ void MathedArray::move(int p, int shift)
 		last_ += shift;
 		bf_[last_] = 0;
 	}
+}
+
+
+
+void MathedArray::shrink(int pos1, int pos2)
+{
+	if (pos1 == 0 && pos2 >= last())	
+		return;
+
+	short fc = 0;
+	if (pos1 > 0 && bf_[pos1] > ' ') {
+		for (int p = pos1; p >= 0; --p) {
+			if (MathIsFont(bf_[p])) {
+				if (p != pos1 - 1)
+					fc = bf_[p];
+				else
+					--pos1;
+				break;
+			}
+		}
+	}
+
+	if (pos2 > 0 && bf_[pos2] >= ' ' && MathIsFont(bf_[pos2 - 1]))
+		--pos2;
+
+	int dx = pos2 - pos1;
+	MathedArray a;
+	a.resize(dx + 1);
+	strange_copy(&a, (fc) ? 1 : 0, pos1, dx);
+	if (fc) {
+		a[0] = fc;
+		++dx;
+	}
+	a.last(dx);
+	a[dx] = '\0';
+
+	MathedIter it(&a);
+	it.Reset();
+
+	while (it.OK()) {
+		if (it.IsInset()) {
+			MathedInset * inset = it.GetInset();
+			inset = inset->Clone();
+			a.raw_pointer_insert(inset, it.getPos() + 1, sizeof(inset));
+		}
+		it.Next();
+	}
+	swap(a);
 }
 
 

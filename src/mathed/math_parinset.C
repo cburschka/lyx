@@ -35,16 +35,6 @@ MathParInset::MathParInset(short st, string const & nm, short ot)
 }
 
 
-MathParInset::MathParInset(MathParInset * p)
-	: MathedInset(p)
-{
-	flag = p->flag;
-	p->setArgumentIdx(0);
-	MathedIter it(p->GetData());
-	setData(it.Copy());
-}
-
-
 MathParInset::~MathParInset()
 {
 }
@@ -52,12 +42,18 @@ MathParInset::~MathParInset()
 
 MathedInset * MathParInset::Clone()
 {
-	return new MathParInset(this);
+	return new MathParInset(*this);
 }
 
 
 void MathParInset::setData(MathedArray * a)
 {
+	if (!a) {
+		lyxerr << "can't set Data from NULL pointer" << endl;
+		array = MathedArray();
+		return;
+	}
+
 	array = *a;
 	
 	// A standard paragraph shouldn't have any tabs nor CRs.
@@ -386,6 +382,11 @@ void MathParInset::Write(ostream & os, bool fragile)
 		os << string(brace, '}');
 }
 
+
+void MathParInset::clear()
+{
+	array.clear();
+}
 
 bool MathParInset::Inside(int x, int y) 
 {

@@ -3,6 +3,8 @@
 	* math_parinset.[Ch]: make array a real MathArray, not just a
 	  pointer to one.
 
+	* move MathIter::Copy(int, int) to MathArray::shrink(pos, pos)
+
 	* several files: subsequent changes
 
 

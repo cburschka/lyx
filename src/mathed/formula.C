@@ -227,7 +227,7 @@ InsetFormula::InsetFormula(MathParInset * p)
 
 	par = is_multiline(p->GetType()) ?
 		new MathMatrixInset(static_cast<MathMatrixInset*>(p)):
-		new MathParInset(p);
+		new MathParInset(*p);
 	//   mathcursor = 0;
 
 	disp_flag = (par->GetType()>0);
@@ -537,9 +537,6 @@ void InsetFormula::display(bool dspf)
 			par->SetStyle(LM_ST_DISPLAY);
 		} else {
 			if (is_multiline(par->GetType())) {
-				MathParInset * p = new MathParInset(par);
-				delete par;
-				par = p;
 				if (mathcursor)
 					mathcursor->SetPar(par);
 			}

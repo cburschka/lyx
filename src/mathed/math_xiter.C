@@ -148,8 +148,7 @@ void MathedXIter::Merge(MathedArray * a0)
 		return;
 	}
 	// All insets must be clonned
-	MathedIter it(a0);
-	MathedArray * a = it.Copy();
+	MathedArray * a = new MathedArray(*a0);
 
 #if 0
 	array->insert(array->begin() + pos,

@@ -19,9 +19,6 @@ public:
 	MathParInset(short st = LM_ST_TEXT, string const & nm = string(),
 		     short ot = LM_OT_MIN);
 	///
-	explicit
-	MathParInset(MathParInset *);
-	///
 	virtual ~MathParInset();
 	///
 	virtual MathedInset * Clone();
@@ -79,6 +76,8 @@ public:
 	int yo() const {
 		return yo_;
 	}
+	///
+	void clear();
 protected:
 	/// Paragraph data is stored here
 	MathedArray array;
