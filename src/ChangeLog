@@ -1,3 +1,12 @@
+2004-10-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxfunc.C (getStatus,dispatch): handle LFUN_(PREVIOUS|NEXT)BUFFER
+
+	* bufferlist.C (previous, next): new methods
+
+	* commandtags.h: 
+	* LyXAction.C (init): add LFUN_NEXTBUFFER and LFUN_PREVIOUSBUFFER
+
 2004-10-22  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* lyxlength.C (asLaTeXString): rewrite macros (using snprintf), because

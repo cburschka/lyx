@@ -290,6 +290,8 @@ enum kb_action {
 	LFUN_MOUSE_TRIPLE,             // André 9 Aug 2002
 	LFUN_EDIT,                      // André 16 Aug 2002
 	LFUN_INSET_WRAP,                // Dekel 7 Apr 2002
+	LFUN_NEXTBUFFER,
+	LFUN_PREVIOUSBUFFER,
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

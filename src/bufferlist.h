@@ -150,6 +150,18 @@ public:
 	///
 	Buffer * first();
 
+	/** returns a pointer to the buffer that follows argument in
+	 * buffer list. The buffer following the last in list is the
+	 * first one.
+	 */
+	Buffer * next(Buffer const *);
+
+	/** returns a pointer to the buffer that precedes argument in
+	 * buffer list. The buffer preceding the first in list is the
+	 * last one.
+	 */
+	Buffer * previous(Buffer const *);
+
 	/// returns true if the buffer exists already
 	bool exists(string const &) const;
 

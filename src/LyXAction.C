@@ -413,6 +413,8 @@ void LyXAction::init()
 		{ LFUN_FORKS_KILL, "kill-forks",
 		  N_("Kill the forked process with this PID"), NoBuffer },
 		{ LFUN_TOOLTIPS_TOGGLE, "toggle-tooltips", "", NoBuffer },
+		{ LFUN_NEXTBUFFER, "buffer-next", "", ReadOnly },
+		{ LFUN_PREVIOUSBUFFER, "buffer-previous", "", ReadOnly },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

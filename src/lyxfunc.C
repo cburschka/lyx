@@ -1206,6 +1206,14 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		view()->buffer(bufferlist.getBuffer(argument));
 		break;
 
+	case LFUN_NEXTBUFFER:
+		view()->buffer(bufferlist.next(view()->buffer()));
+		break;
+		
+	case LFUN_PREVIOUSBUFFER:
+		view()->buffer(bufferlist.previous(view()->buffer()));
+		break;
+
 	case LFUN_FILE_NEW:
 	{
 		// servercmd: argument must be <file>:<template>

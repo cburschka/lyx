@@ -247,6 +247,35 @@ Buffer * BufferList::first()
 }
 
 
+Buffer * BufferList::next(Buffer const * buf)
+{
+	if (bstore.empty())
+		return 0;
+	BufferStorage::const_iterator it = find(bstore.begin(), 
+						bstore.end(), buf);
+	BOOST_ASSERT(it != bstore.end());
+	++it;
+	if (it == bstore.end())
+		return bstore[0];
+	else
+		return *it;
+}
+
+
+Buffer * BufferList::previous(Buffer const * buf)
+{
+	if (bstore.empty())
+		return 0;
+	BufferStorage::const_iterator it = find(bstore.begin(), 
+						bstore.end(), buf);
+	BOOST_ASSERT(it != bstore.end());
+	if (it == bstore.begin())
+		return bstore[bstore.size() - 1];
+	else
+		return *(it - 1);
+}
+
+
 Buffer * BufferList::getBuffer(unsigned int choice)
 {
 	if (choice >= bstore.size())

@@ -19,20 +19,27 @@ What's new
 
 ** Updates
 
+- Implement new functions buffer-next and buffer-previous that allow
+  to cycle through open buffers; they are respectively bound to
+  Ctrl-PageDown and Control-PageUp (except with mac-bindings, where
+  they have the usual definition).
+
 ** Bug fixes
 
 * Document input/output:
 
-- fix lyxpreview2ppm.py to work with python versions older than 2.1
+- Fix lyxpreview2ppm.py to work with python versions older than 2.1.
 
-- fix LaTeX output of percentage length values <10% [bug 1523]
+- Fix LaTeX output of percentage length values <10% [bug 1523].
 
 
 * User Interface:
 
-- fix math fonts display in LyX/Mac
+- Fix crash when using math-mutate with invalid argument.
 
-- fix bindings for depth-increment/decrement for LyX/Mac
+- Fix math fonts display in LyX/Mac.
+
+- Fix bindings for depth-increment/decrement for LyX/Mac.
 
 
 * Configuration/Installation:
