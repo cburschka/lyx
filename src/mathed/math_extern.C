@@ -639,12 +639,12 @@ void extractDiff(MathArray & ar)
 
 		// collect function, let jt point behind last used item
 		MathArray::iterator jt = it + 1; 
-		int n = 1; 
+		//int n = 1; 
 		MathArray & numer = f->cell(0);
 		if (numer.size() > 1 && numer.at(1)->asScriptInset()) {
 			// this is something like  d^n f(x) / d... or  d^n / d...
 			// FIXME
-			n = 1;	
+			//n = 1;	
 			if (numer.size() > 2) 
 				diff->cell(0) = MathArray(numer.begin() + 2, numer.end());
 			else
@@ -717,7 +717,7 @@ void write(MathArray const & dat, WriteStream & wi)
 		MathInset const * p = it->nucleus();
 		if (it + 1 != ar.end()) {
 			if (MathScriptInset const * q = asScript(it)) {
-				q->write(p, wi);
+				q->write2(p, wi);
 				++it;
 				continue;
 			} 
@@ -742,7 +742,7 @@ void octavize(MathArray const & dat, OctaveStream & os)
 		MathInset const * p = it->nucleus();
 		if (it + 1 != ar.end()) {
 			if (MathScriptInset const * q = asScript(it)) {
-				q->octavize(p, os);
+				q->octavize2(p, os);
 				++it;	
 				continue;
 			}
@@ -760,7 +760,7 @@ void maplize(MathArray const & dat, MapleStream & os)
 		MathInset const * p = it->nucleus();
 		if (it + 1 != ar.end()) {
 			if (MathScriptInset const * q = asScript(it)) {
-				q->maplize(p, os);
+				q->maplize2(p, os);
 				++it;	
 				continue;
 			}
@@ -784,7 +784,7 @@ void mathmlize(MathArray const & dat, MathMLStream & os)
 			MathInset const * p = it->nucleus();
 			if (it + 1 != ar.end()) {
 				if (MathScriptInset const * q = asScript(it)) {
-					q->mathmlize(p, os);
+					q->mathmlize2(p, os);
 					++it;	
 					continue;
 				}

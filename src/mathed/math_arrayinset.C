@@ -11,6 +11,7 @@
 
 using std::vector;
 using std::istringstream;
+using std::getline;
 
 
 MathArrayInset::MathArrayInset(int m, int n)

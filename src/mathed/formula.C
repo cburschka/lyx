@@ -31,7 +31,6 @@
 #include "gettext.h"
 #include "debug.h"
 #include "lyx_gui_misc.h"
-#include "lyxtext.h"
 #include "support/LOstream.h"
 #include "support/LAssert.h"
 #include "support/lyxlib.h"
@@ -51,6 +50,7 @@ using std::istream;
 using std::pair;
 using std::endl;
 using std::vector;
+using std::getline;
 
 
 namespace {

@@ -85,16 +85,17 @@ public:
 	///
 	void ensure(bool up);
 
+	// call these methods ...2 to make compaq cxx in anal mode happy...
 	/// suppresses empty braces if necessary
-	void write(MathInset const * nuc, WriteStream & os) const;
+	virtual void write2(MathInset const * nuc, WriteStream & os) const;
+	/// 
+	virtual void normalize2(MathInset const * nuc, NormalStream & os) const;
 	///
-	void normalize(MathInset const * nuc, NormalStream & os) const;
+	virtual void octavize2(MathInset const * nuc, OctaveStream & os) const;
 	///
-	void octavize(MathInset const * nuc, OctaveStream & os) const;
+	virtual void maplize2(MathInset const * nuc, MapleStream & os) const;
 	///
-	void maplize(MathInset const * nuc, MapleStream & os) const;
-	///
-	void mathmlize(MathInset const * nuc, MathMLStream & os) const;
+	virtual void mathmlize2(MathInset const * nuc, MathMLStream & os) const;
 
 public:
 	/// returns x offset for main part

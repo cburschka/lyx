@@ -20,7 +20,7 @@ MathInset * MathLimitOpInset::clone() const
 
 void MathLimitOpInset::write(WriteStream & os) const
 {
-	scripts_.write(int_.nucleus(), os);
+	scripts_.write2(int_.nucleus(), os);
 	os << core_ << "d" << diff_;
 }
 

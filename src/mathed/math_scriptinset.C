@@ -315,11 +315,11 @@ bool MathScriptInset::idxLastDown(idx_type & idx, pos_type & pos) const
 void MathScriptInset::write(WriteStream & os) const
 {  
 	//lyxerr << "unexpected call to MathScriptInset::write()\n";
-	write(0, os);
+	write2(0, os);
 }
 
 
-void MathScriptInset::write(MathInset const * nuc, WriteStream & os) const
+void MathScriptInset::write2(MathInset const * nuc, WriteStream & os) const
 {
 	if (nuc) {
 		os << nuc;
@@ -346,11 +346,11 @@ void MathScriptInset::write(MathInset const * nuc, WriteStream & os) const
 void MathScriptInset::normalize(NormalStream & os) const
 {  
 	//lyxerr << "unexpected call to MathScriptInset::normalize()\n";
-	normalize(0, os);
+	normalize2(0, os);
 }
 
 
-void MathScriptInset::normalize(MathInset const * nuc, NormalStream & os) const
+void MathScriptInset::normalize2(MathInset const * nuc, NormalStream & os) const
 {
 	bool d = hasDown() && down().data_.size();
 	bool u = hasUp() && up().data_.size();
@@ -372,7 +372,7 @@ void MathScriptInset::normalize(MathInset const * nuc, NormalStream & os) const
 }
 
 
-void MathScriptInset::maplize(MathInset const * nuc, MapleStream & os) const
+void MathScriptInset::maplize2(MathInset const * nuc, MapleStream & os) const
 {
 	if (nuc)
 		os << nuc;
@@ -383,7 +383,7 @@ void MathScriptInset::maplize(MathInset const * nuc, MapleStream & os) const
 }
 
 
-void MathScriptInset::mathmlize(MathInset const * nuc, MathMLStream & os) const
+void MathScriptInset::mathmlize2(MathInset const * nuc, MathMLStream & os) const
 {
 	bool d = hasDown() && down().data_.size();
 	bool u = hasUp() && up().data_.size();
@@ -409,7 +409,7 @@ void MathScriptInset::mathmlize(MathInset const * nuc, MathMLStream & os) const
 }
 
 
-void MathScriptInset::octavize(MathInset const * nuc, OctaveStream & os) const
+void MathScriptInset::octavize2(MathInset const * nuc, OctaveStream & os) const
 {
 	if (nuc)
 		os << nuc;
