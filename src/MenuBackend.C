@@ -325,7 +325,7 @@ Menu & Menu::read(LyXLex & lex)
 void Menu::checkShortcuts() const
 {
 	// This is a quadratic algorithm, but we do not care because
-	// it is used for debugging only.
+	// menus are short enough
 	for (const_iterator it1 = begin(); it1 != end(); ++it1) {
 		string shortcut = it1->shortcut();
 		if (shortcut.empty())
@@ -334,7 +334,7 @@ void Menu::checkShortcuts() const
 			lyxerr << "Menu warning: menu entry \""
 			       << it1->label()
 			       << "\" does not contain shortcut `"
-			       << shortcut << '\'' << endl;
+			       << shortcut << "'." << endl;
 		for (const_iterator it2 = begin(); it2 != it1 ; ++it2) {
 			if (!compare_ascii_no_case(it2->shortcut(), shortcut)) {
 				lyxerr << "Menu warning: menu entries "
@@ -693,8 +693,7 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 		tomenu.items_.pop_back();
 
 	// Check whether the shortcuts are unique
-	if (lyxerr.debugging(Debug::GUI))
-		tomenu.checkShortcuts();
+	tomenu.checkShortcuts();
 }
 
 

@@ -1,3 +1,7 @@
+2003-07-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* MenuBackend.C (expand): check menu shortcuts unconditionally
+
 2003-07-21  Angus Leeming  <leeming@lyx.org>
 
 	* factory.C (createInset): pass a
@@ -159,7 +163,7 @@
 
 	* aspell.C: add missing namespace lyx::support
 
-2003-07-07  Alfredo Brauntein  <abraunst@libero.it>
+2003-07-07  Alfredo Braunstein  <abraunst@libero.it>
 
 	* BufferView.[Ch] (newFile): Add
 	* BufferView_pimpl.[Ch] (newFile, connectBuffer, disconnectBuffer): Add
@@ -249,7 +253,7 @@
 
 	* textcursor.h: new struct for cursor-related data
 
-2003-06-26  Alfredo Brauntein  <abraunst@lyx.org>
+2003-06-26  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* lyx_main.C (LyX): get full path of document loaded on the
 	command line
@@ -261,12 +265,12 @@
 
 	*	text.C: remove only use of broken operator<= in an Assert().
 
-2003-06-24  Alfredo Brauntein  <abraunst@lyx.org>
+2003-06-24  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* BufferView.[Ch] (getErrorList): removed unneeded forward declare,
 	moved errorlist_.clear to showErrorList
 
-2003-06-24  Alfredo Brauntein  <abraunst@lyx.org>
+2003-06-24  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* converter.C (scanLog, runLaTeX):
 	* buffer.C (makeLinuxDocFile, makeDocBookFile, runChkTeX):
