@@ -524,8 +524,7 @@ struct deco_compare {
 };
 
 
-int const deco_table_size =
-	sizeof(deco_table) / sizeof(deco_struct);
+int const deco_table_size = sizeof(deco_table) / sizeof(deco_struct);
 
 
 // sort the table on startup

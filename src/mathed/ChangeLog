@@ -1,6 +1,8 @@
 2001-08-17  André Pönitz  <poenitz@gmx.net>
 
 	* math_hash.C: Use std::map instead of faking it
+	
+	* symbol_def.C: remove unneded symbol definitions
 
 2001-09-02  Dekel Tsur  <dekelts@tau.ac.il>
 
