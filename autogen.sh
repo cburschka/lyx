@@ -11,12 +11,12 @@ autoversion=`$AUTOCONF --version | head -n 1`
 
 echo "Using $autoversion"
 case $autoversion in
-    *2.5[23467])
+    *2.5[234678])
 	EXTRA_ACINCLUDE_FILES="lyxinclude25x.m4"
 	;;
     *)
 	echo "This autoconf version is not supported by LyX."
-	echo "LyX only supports autoconf 2.5[23467]."
+	echo "LyX only supports autoconf 2.5[234678]."
 	exit
 	;;
 esac

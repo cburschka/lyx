@@ -1,3 +1,16 @@
+
+2003-11-18  Angus Leeming  <leeming@lyx.org>
+
+	* autogen.sh: accept autoconf 2.58 as a supported version.
+	
+2003-10-24  André Pönitz  <poenitz@gmx.net>
+
+	* lyxfunc.C:
+	* rowpainter.C:
+	* text.C:
+	* text3.C:
+	* lyxtext.h: set fills in fill(...) instead of returning it
+
 2003-10-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* INSTALL: remove a comment about --with-included-string
