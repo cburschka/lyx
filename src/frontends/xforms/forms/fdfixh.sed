@@ -29,14 +29,15 @@ s/[ 	]*$//
 
 
 # Immediately after line "#define FD_xxx_h_" that starts off the header file,
-# #include "fdesign_base.h" and append the contents of file "extern.tmp".
+# #include "fdesign_base.h" and append the contents of file EXTERN_FUNCS.
 # This latter is a sorted, unique list of any function declarations.
+# The actual name of the file is inserted by the parent shell script.
 /#define FD/{
 a\
 \
 #include "fdesign_base.h"\
 
-r extern.tmp
+r EXTERN_FUNCS
 }
 
 
