@@ -8,7 +8,7 @@
 
 
 MathMetricsBase::MathMetricsBase()
-	: font(), style(LM_ST_TEXT), fontinset(false)
+	: font(), style(LM_ST_TEXT), fontname("mathnormal")
 {}
 
 
@@ -134,12 +134,12 @@ MathStyleChanger::~MathStyleChanger()
 
 
 
-MathFontSetChanger::MathFontSetChanger(MathMetricsBase & mb, char const * cmd)
+MathFontSetChanger::MathFontSetChanger(MathMetricsBase & mb, char const * name)
 	:	MathChanger<MathMetricsBase>(mb)
 {
 	save_ = mb;	
-	mb.fontinset = true;
-	augmentFont(mb.font, cmd);
+	mb.fontname = name;
+	augmentFont(mb.font, name);
 }
 
 MathFontSetChanger::~MathFontSetChanger()

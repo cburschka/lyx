@@ -3,6 +3,7 @@
 
 #include "lyxfont.h"
 #include "math_defs.h"
+#include "LString.h"
 
 class BufferView;
 class Painter;
@@ -31,7 +32,7 @@ struct MathMetricsBase {
 	///
 	MathStyles style;
 	///
-	bool fontinset;
+	string fontname;
 };
 
 

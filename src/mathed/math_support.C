@@ -570,7 +570,7 @@ fontinfo fontinfos[] = {
 	{"eufrak", LyXFont::EUFRAK_FAMILY, def_series, def_shape, LColor::math},
 	{"mathbf", def_family, LyXFont::BOLD_SERIES, def_shape, LColor::math},
 	{"mathcal",LyXFont::CMSY_FAMILY, def_series, def_shape, LColor::math},
-	{"mathnormal", def_family,def_series, LyXFont::ITALIC_SHAPE, LColor::math},
+	{"mathnormal", def_family,def_series, LyXFont::UP_SHAPE, LColor::math},
 	{"mathrm", LyXFont::ROMAN_FAMILY, def_series, def_shape, LColor::math},
 	{"mathsf", LyXFont::SANS_FAMILY, def_series, def_shape, LColor::math},
 	{"msa",    LyXFont::MSA_FAMILY, def_series, def_shape, LColor::math},

@@ -39,7 +39,7 @@ namespace {
 	bool slanted(char c)
 	{
 		//if (strchr("0123456789;:!|[]().,?+/-*<>=", c)
-		return isalpha(c);
+		return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
 	}
 
 }
@@ -60,7 +60,7 @@ MathInset * MathCharInset::clone() const
 void MathCharInset::metrics(MathMetricsInfo & mi) const
 {
 #if 1
-	if (slanted(char_) && !mi.base.fontinset) {
+	if (slanted(char_) && mi.base.fontname == "mathnormal") {
 		MathShapeChanger dummy(mi.base.font, LyXFont::ITALIC_SHAPE);
 		mathed_char_dim(mi.base.font, char_, ascent_, descent_, width_);
 	} else {
@@ -79,11 +79,11 @@ void MathCharInset::metrics(MathMetricsInfo & mi) const
 
 void MathCharInset::draw(MathPainterInfo & pi, int x, int y) const
 {
-	//lyxerr << "drawing '" << char_ << "' code: " << pi.code << endl;
+	//lyxerr << "drawing '" << char_ << "' font: " << pi.base.fontname << endl;
 	if (isBinaryOp(char_))
 		x += font_metrics::width(' ', pi.base.font);
 #if 1
-	if (slanted(char_) && !pi.base.fontinset) {
+	if (slanted(char_) && pi.base.fontname == "mathnormal") {
 		MathShapeChanger dummy(pi.base.font, LyXFont::ITALIC_SHAPE);
 		pi.draw(x, y, char_);
 	} else {

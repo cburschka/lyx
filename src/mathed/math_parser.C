@@ -775,13 +775,13 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 		// cat codes
 		//
 		if (t.cat() == catMath) {
-			dump();
 			if (flags & FLAG_TEXTMODE) {
 				// we are inside some text mode thingy, so opening new math is allowed
 				MathAtom at(new MathHullInset(LM_OT_SIMPLE));
 				parse_into2(at, FLAG_SIMPLE, false);
 				cell->push_back(at);
 			} else {
+				dump();
 				lyxerr << "something strange in the parser\n";
 				break;
 			}
@@ -834,7 +834,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 
 		else if (t.cat() == catAlign) {
 			++cellcol;
-			lyxerr << " column now " << cellcol << " max: " << grid.ncols() << "\n";
+			//lyxerr << " column now " << cellcol << " max: " << grid.ncols() << "\n";
 			if (cellcol == grid.ncols()) { 
 				lyxerr << "adding column " << cellcol << "\n";
 				grid.addCol(cellcol - 1);
@@ -1031,18 +1031,6 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 			//lyxerr << "read cell: " << cell << "\n";
 		}
 #endif
-
-#if 0
-		else if (t.cs() == "mbox" || t.cs() == "text") {
-			//array.push_back(createMathInset(t.cs()));
-			array.push_back(MathAtom(new MathBoxInset(t.cs())));
-			// slurp in the argument of mbox
-
-			MathBoxInset * p = cell->back()->asBoxInset();
-			//lyx::assert(p);
-		}
-#endif
-
 
 		else if (t.cs().size()) {
 			latexkeys const * l = in_word_set(t.cs());
