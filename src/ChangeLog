@@ -1,3 +1,10 @@
+2002-04-23  Juergen Vigna  <jug@sad.it>
+
+	* BufferView_pimpl.[Ch]: remove use of wrong and unneeded insetSleep/
+	Wakeup functions.
+
+	* BufferView.[Ch]: remove not needed insetSleep/Wakeup functions.
+
 2002-04-22  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxfunc.C (getStatus): LFUN_PROTECTED_SPACE is allowed in maths

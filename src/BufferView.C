@@ -178,7 +178,7 @@ void BufferView::setState()
 	pimpl_->setState();
 }
 
-
+#if 0
 void BufferView::insetSleep()
 {
 	pimpl_->insetSleep();
@@ -189,6 +189,7 @@ void BufferView::insetWakeup()
 {
 	pimpl_->insetWakeup();
 }
+#endif
 
 
 void BufferView::insetUnlock()

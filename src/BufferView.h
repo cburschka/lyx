@@ -117,10 +117,12 @@ public:
 	int sly;
 	///
 	void insetUnlock();
+#if 0
 	///
 	void insetSleep();
 	///
 	void insetWakeup();
+#endif
 	///
 	void replaceWord(string const & replacestring);
 	///

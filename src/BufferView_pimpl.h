@@ -102,10 +102,12 @@ struct BufferView::Pimpl : public SigC::Object {
 	bool isSavedPosition(unsigned int i);
 	///
 	void setState();
+#if 0
 	///
 	void insetSleep();
 	///
 	void insetWakeup();
+#endif
 	///
 	void insetUnlock();
 	///

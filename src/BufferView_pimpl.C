@@ -176,7 +176,9 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	lyxerr[Debug::INFO] << "Setting buffer in BufferView ("
 			    << b << ")" << endl;
 	if (buffer_) {
+#if 0
 		insetSleep();
+#endif
 		buffer_->delUser(bv_);
 
 		// Put the old text into the TextCache, but
@@ -222,7 +224,9 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		// require bv_->text.
 		owner_->getDialogs()->updateBufferDependent(true);
 		redraw();
+#if 0
 		insetWakeup();
+#endif
 	} else {
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
 		owner_->updateMenubar();
@@ -1380,6 +1384,7 @@ void BufferView::Pimpl::setState()
 }
 
 
+#if 0
 void BufferView::Pimpl::insetSleep()
 {
 	if (bv_->theLockingInset() && !inset_slept) {
@@ -1397,6 +1402,7 @@ void BufferView::Pimpl::insetWakeup()
 		inset_slept = false;
 	}
 }
+#endif
 
 
 void BufferView::Pimpl::insetUnlock()
