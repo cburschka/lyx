@@ -1,3 +1,15 @@
+2003-02-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* buffer.C (makeLaTeXFile): if the main latex file that is
+	processed is usually a subdocument of some master, then pretend
+	for a while that it is actually the master
+
+2003-02-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* buffer.C (getLabelList):
+	(getBibkeyList): use getMasterBuffer()
+	(getMasterBuffer): new method. Returns the main document in the
+	case where one is using included documents.
 
 2004-03-25  André Pönitz  <poenitz@gmx.net>
 

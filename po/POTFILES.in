@@ -2,6 +2,7 @@ src/BranchList.h
 src/BufferView.C
 src/BufferView_pimpl.C
 src/Chktex.C
+src/CutAndPaste.C
 src/LColor.C
 src/LaTeX.C
 src/MenuBackend.C
@@ -187,7 +188,6 @@ src/output_docbook.C
 src/output_linuxdoc.C
 src/output_plaintext.C
 src/paragraph.C
-src/paragraph_funcs.C
 src/rowpainter.C
 src/support/globbing.C
 src/text.C

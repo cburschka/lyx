@@ -96,7 +96,7 @@ string const doSubstitution(InsetExternalParams const & params,
 		string contents;
 
 		string const filepath = support::IsFileReadable(file) ?
-			buffer.filePath() : buffer.temppath();
+			buffer.filePath() : buffer.getMasterBuffer()->temppath();
 		support::Path p(filepath);
 
 		if (support::IsFileReadable(file))
@@ -163,11 +163,15 @@ void updateExternal(InsetExternalParams const & params,
 		return; // FAILURE
 	}
 
+	// The master buffer. This is useful when there are multiple levels
+	// of include files
+	Buffer const * m_buffer = buffer.getMasterBuffer();
+
 	if (external_in_tmpdir && !from_file.empty()) {
 		// We are running stuff through LaTeX
 		string const temp_file =
 			support::MakeAbsPath(params.filename.mangledFilename(),
-					     buffer.temppath());
+					     m_buffer->temppath());
 		unsigned long const from_checksum = support::sum(from_file);
 		unsigned long const temp_checksum = support::sum(temp_file);
 
@@ -184,7 +188,9 @@ void updateExternal(InsetExternalParams const & params,
 					      from_file);
 
 	string const abs_to_file =
-		support::MakeAbsPath(to_file, buffer.filePath());
+		support::MakeAbsPath(to_file, external_in_tmpdir
+			? m_buffer->temppath()
+			: buffer.filePath());
 
 	// Do we need to perform the conversion?
 	// Yes if to_file does not exist or if from_file is newer than to_file
@@ -235,7 +241,7 @@ int writeExternal(InsetExternalParams const & params,
 		// We are running stuff through LaTeX
 		from_file =
 			support::MakeAbsPath(params.filename.mangledFilename(),
-					     buffer.temppath());
+			                     buffer.getMasterBuffer()->temppath());
 	}
 
 	string str = doSubstitution(params, buffer, cit->second.product,

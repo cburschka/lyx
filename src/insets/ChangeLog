@@ -1,3 +1,24 @@
+2004-03-19  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ExternalSupport.C: use the master buffer's temp dir
+	* insetgraphics.C (latex): make relative filename relative to the
+	master file
+	* insetgraphics.C: use the master buffer's temp dir
+	* insetinclude.C (masterFilename): new function
+	* insetinclude.C (linuxdoc, docbook): simplify logic (IsLyXFilename()
+	is always true if loadIfNeeded() returns true)
+
+2003-02-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetinclude.C (loadIfNeeded): when the child buffer is loaded,
+	set its parent to the current buffer.
+	(latex): use the tmppath of the master buffer, not just the parent
+	buffer (makes a difference with more than one level of include
+	insets). If the file name is relative write in the .tex file a
+	name relative to the master buffer directory.
+
+	* insetinclude.C: rename masterFilename to parentFilename (this
+	points to the direct parent)
 
 2004-03-25  André Pönitz  <poenitz@gmx.net>
 

@@ -858,6 +858,9 @@ void Buffer::makeLaTeXFile(ostream & os,
 	// input@path is set when the actual parameter
 	// original_path is set. This is done for usual tex-file, but not
 	// for nice-latex-file. (Matthias 250696)
+	// Note that input@path is only needed for something the user does
+	// in the preamble, included .tex files or ERT, files included by
+	// LyX work without it.
 	if (output_preamble) {
 		if (!runparams.nice) {
 			// code for usual, NOT nice-latex-file
@@ -896,7 +899,21 @@ void Buffer::makeLaTeXFile(ostream & os,
 		texrow().newline();
 	}
 
+	// if we are doing a real file with body, even if this is the
+	// child of some other buffer, let's cut the link here.
+	// This happens for example if only a child document is printed.
+	string save_parentname;
+	if (output_preamble) {
+		save_parentname = params().parentname;
+		params().parentname.erase();
+	}
+
+	// the real stuff
 	latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
+
+	// Restore the parenthood if needed
+	if (output_preamble)
+		params().parentname = save_parentname;
 
 	// add this just in case after all the paragraphs
 	os << endl;
@@ -1165,13 +1182,10 @@ void Buffer::getLabelList(std::vector<string> & list) const
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
-	if (!params().parentname.empty()
-	    && bufferlist.exists(params().parentname)) {
-		Buffer const * tmp = bufferlist.getBuffer(params().parentname);
-		if (tmp) {
-			tmp->getLabelList(list);
-			return;
-		}
+	Buffer const * tmp = getMasterBuffer();
+	if (tmp != this) {
+		tmp->getLabelList(list);
+		return;
 	}
 
 	for (inset_iterator it = inset_const_iterator_begin();
@@ -1187,13 +1201,10 @@ void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys)
 {
 	/// if this is a child document and the parent is already loaded
 	/// use the parent's list instead  [ale990412]
-	if (!params().parentname.empty() &&
-	    bufferlist.exists(params().parentname)) {
-		Buffer const * tmp = bufferlist.getBuffer(params().parentname);
-		if (tmp) {
-			tmp->fillWithBibKeys(keys);
-			return;
-		}
+	Buffer const * tmp = getMasterBuffer();
+	if (tmp != this) {
+		tmp->fillWithBibKeys(keys);
+		return;
 	}
 
 	for (inset_iterator it = inset_const_iterator_begin();
@@ -1460,6 +1471,19 @@ bool Buffer::isReadonly() const
 void Buffer::setParentName(string const & name)
 {
 	params().parentname = name;
+}
+
+
+Buffer const * Buffer::getMasterBuffer() const
+{
+	if (!params().parentname.empty()
+	    && bufferlist.exists(params().parentname)) {
+		Buffer const * buf = bufferlist.getBuffer(params().parentname);
+		if (buf)
+			return buf->getMasterBuffer();
+	}
+
+	return this;
 }
 
 

@@ -434,10 +434,15 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	// we move it to a temp dir or uncompress it.
 	string temp_file = orig_file;
 
+	// We place all temporary files in the master buffer's temp dir.
+	// This is possible because we use mangled file names.
+	// This is necessary for DVI export.
+	string const temp_path = buf.getMasterBuffer()->temppath();
+
 	if (zipped) {
 		CopyStatus status;
 		boost::tie(status, temp_file) =
-			copyToDirIfNeeded(orig_file, buf.temppath());
+			copyToDirIfNeeded(orig_file, temp_path);
 
 		if (status == FAILURE)
 			return orig_file;
@@ -465,7 +470,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	bool conversion_needed = true;
 	CopyStatus status;
 	boost::tie(status, temp_file) =
-			copyToDirIfNeeded(orig_file, buf.temppath());
+			copyToDirIfNeeded(orig_file, temp_path);
 
 	if (status == FAILURE)
 		return orig_file;
@@ -523,6 +528,10 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 int InsetGraphics::latex(Buffer const & buf, ostream & os,
 			 OutputParams const & runparams) const
 {
+	// The master buffer. This is useful when there are multiple levels
+	// of include files
+	Buffer const * m_buffer = buf.getMasterBuffer();
+
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
 	lyxerr[Debug::GRAPHICS]
@@ -576,19 +585,23 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 		<< "\n\tafter = " << after << endl;
 
 
+	string latex_str = before + '{';
 	// "nice" means that the buffer is exported to LaTeX format but not
 	//        run through the LaTeX compiler.
 	if (runparams.nice) {
-		os << before <<'{' << relative_file << '}' << after;
-		return 1;
-	}
+		// a relative filename should be relative to the master
+		// buffer.
+		latex_str += params().filename.outputFilename(m_buffer->filePath());
+	} else if (file_exists) {
+		// Make the filename relative to the lyx file
+		// and remove the extension so the LaTeX will use whatever
+		// is appropriate (when there are several versions in
+		// different formats)
+		latex_str += os::external_path(prepareFile(buf, runparams));
+	} else
+		latex_str += relative_file + " not found!";
 
-	// Make the filename relative to the lyx file
-	// and remove the extension so the LaTeX will use whatever is
-	// appropriate (when there are several versions in different formats)
-	string const latex_str = message.empty() ?
-		(before + '{' + os::external_path(prepareFile(buf, runparams)) + '}' + after) :
-		(before + '{' + relative_file + " not found!}" + after);
+	latex_str += '}' + after;
 	os << latex_str;
 
 	lyxerr[Debug::GRAPHICS] << "InsetGraphics::latex outputting:\n"

@@ -40,6 +40,7 @@
 #include "support/filename.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains
+#include "support/lyxlib.h"
 #include "support/tostr.h"
 
 #include <boost/bind.hpp>
@@ -48,9 +49,11 @@
 #include "support/std_sstream.h"
 
 using lyx::support::AddName;
+using lyx::support::AbsolutePath;
 using lyx::support::bformat;
 using lyx::support::ChangeExtension;
 using lyx::support::contains;
+using lyx::support::copy;
 using lyx::support::FileInfo;
 using lyx::support::FileName;
 using lyx::support::GetFileContents;
@@ -58,9 +61,11 @@ using lyx::support::IsFileReadable;
 using lyx::support::IsLyXFilename;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
+using lyx::support::MakeRelPath;
 using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
 using lyx::support::subst;
+using lyx::support::sum;
 
 using std::endl;
 using std::string;
@@ -187,6 +192,12 @@ bool isVerbatim(InsetCommandParams const & params)
 
 string const masterFilename(Buffer const & buffer)
 {
+	return buffer.getMasterBuffer()->fileName();
+}
+
+
+string const parentFilename(Buffer const & buffer)
+{
 	return buffer.fileName();
 }
 
@@ -195,7 +206,7 @@ string const includedFilename(Buffer const & buffer,
 			      InsetCommandParams const & params)
 {
 	return MakeAbsPath(params.getContents(),
-			   OnlyPath(masterFilename(buffer)));
+			   OnlyPath(parentFilename(buffer)));
 }
 
 
@@ -282,15 +293,19 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 	if (!IsLyXFilename(included_file))
 		return false;
 
-	if (bufferlist.exists(included_file))
-		return true;
-
-	// the readonly flag can/will be wrong, not anymore I think.
-	FileInfo finfo(included_file);
-	if (!finfo.isOK())
-		return false;
-	return loadLyXFile(bufferlist.newBuffer(included_file),
-			   included_file);
+	Buffer * buf = bufferlist.getBuffer(included_file);
+	if (!buf) {
+		// the readonly flag can/will be wrong, not anymore I think.
+		FileInfo finfo(included_file);
+		if (!finfo.isOK())
+			return false;
+		buf = bufferlist.newBuffer(included_file);
+		if (!loadLyXFile(buf, included_file))
+			return false;
+	}
+	if (buf)
+		buf->setParentName(parentFilename(buffer));
+	return buf != 0;
 }
 
 
@@ -307,37 +322,67 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		return 0;
 
 	string const included_file = includedFilename(buffer, params_);
+	Buffer const * const m_buffer = buffer.getMasterBuffer();
+
+	// if incfile is relative, make it relative to the master
+	// buffer directory.
+	if (!AbsolutePath(incfile)) {
+		incfile = MakeRelPath(included_file,
+		                      m_buffer->filePath());
+	}
+
+	// write it to a file (so far the complete file)
+	string writefile = ChangeExtension(included_file, ".tex");
+
+	if (!runparams.nice) {
+		incfile = FileName(writefile).mangledFilename();
+		writefile = MakeAbsPath(incfile, m_buffer->temppath());
+	}
+	lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
+	lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
 	if (loadIfNeeded(buffer, params_)) {
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
-		if (tmp->params().textclass != buffer.params().textclass) {
+		if (tmp->params().textclass != m_buffer->params().textclass) {
 			string text = bformat(_("Included file `%1$s'\n"
 			                        "has textclass `%2$s'\n"
 			                        "while parent file has textclass `%3$s'."),
 			                      MakeDisplayPath(included_file),
 			                      tmp->params().getLyXTextClass().name(),
-			                      buffer.params().getLyXTextClass().name());
+			                      m_buffer->params().getLyXTextClass().name());
 			Alert::warning(_("Different textclasses"), text);
 			//return 0;
 		}
 
-		// write it to a file (so far the complete file)
-		string writefile = ChangeExtension(included_file, ".tex");
+		tmp->markDepClean(m_buffer->temppath());
 
-		if (!runparams.nice) {
-			incfile = FileName(writefile).mangledFilename();
-			writefile = MakeAbsPath(incfile, buffer.temppath());
-		}
-
-		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
-		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
-
-		tmp->markDepClean(buffer.temppath());
-
+#ifdef WITH_WARNINGS
+#warning Second argument is irrelevant!
+// since only_body is true, makeLaTeXFile will not look at second
+// argument. Should we set it to string(), or should makeLaTeXFile
+// make use of it somehow? (JMarc 20031002)
+#endif
 		tmp->makeLaTeXFile(writefile,
 				   OnlyPath(masterFilename(buffer)),
 				   runparams, false);
+	} else if (!runparams.nice) {
+		// Copy the file to the temp dir, so that .aux files etc.
+		// are not created in the original dir. Files included by
+		// this file will be found via input@path, see ../buffer.C.
+		unsigned long const checksum_in  = sum(included_file);
+		unsigned long const checksum_out = sum(writefile);
+
+		if (checksum_in != checksum_out) {
+			if (!copy(included_file, writefile)) {
+				lyxerr[Debug::LATEX]
+					<< bformat(_("Could not copy the file\n%1$s\n"
+					             "into the temporary directory."),
+					           included_file)
+					<< endl;
+				return 0;
+			}
+		}
 	}
 
 	if (isVerbatim(params_)) {
@@ -387,15 +432,12 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
 		// write it to a file (so far the complete file)
-		string writefile;
-		if (IsLyXFilename(included_file))
-			writefile = ChangeExtension(included_file, ".sgml");
-		else
-			writefile = included_file;
+		string writefile = ChangeExtension(included_file, ".sgml");
 
 		if (!runparams.nice) {
 			incfile = FileName(writefile).mangledFilename();
-			writefile = MakeAbsPath(incfile, buffer.temppath());
+			writefile = MakeAbsPath(incfile,
+			                        buffer.getMasterBuffer()->temppath());
 		}
 
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
@@ -431,15 +473,12 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 
 		// write it to a file (so far the complete file)
-		string writefile;
-		if (IsLyXFilename(included_file))
-			writefile = ChangeExtension(included_file, ".sgml");
-		else
-			writefile = included_file;
+		string writefile = ChangeExtension(included_file, ".sgml");
 
 		if (!runparams.nice) {
 			incfile = FileName(writefile).mangledFilename();
-			writefile = MakeAbsPath(incfile, buffer.temppath());
+			writefile = MakeAbsPath(incfile,
+			                        buffer.getMasterBuffer()->temppath());
 		}
 
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
@@ -476,7 +515,8 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 	if (!features.nice() && !isVerbatim(params_)) {
 		incfile = FileName(writefile).mangledFilename();
-		writefile = MakeAbsPath(incfile, buffer.temppath());
+		writefile = MakeAbsPath(incfile,
+			                buffer.getMasterBuffer()->temppath());
 	}
 
 	features.includeFile(include_label, writefile);
@@ -504,7 +544,7 @@ void InsetInclude::getLabelList(Buffer const & buffer,
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 		tmp->setParentName("");
 		tmp->getLabelList(list);
-		tmp->setParentName(masterFilename(buffer));
+		tmp->setParentName(parentFilename(buffer));
 	}
 }
 
@@ -517,7 +557,7 @@ void InsetInclude::fillWithBibKeys(Buffer const & buffer,
 		Buffer * tmp = bufferlist.getBuffer(included_file);
 		tmp->setParentName("");
 		tmp->fillWithBibKeys(keys);
-		tmp->setParentName(masterFilename(buffer));
+		tmp->setParentName(parentFilename(buffer));
 	}
 }
 

@@ -208,6 +208,11 @@ public:
 	/// Name of the document's parent
 	void setParentName(std::string const &);
 
+	/** Get the document's master (or \c this if this is not a
+	    child document)
+	 */
+	Buffer const * getMasterBuffer() const;
+
 	/// Is buffer read-only?
 	bool isReadonly() const;
 
