@@ -242,7 +242,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	owner_->updateWindowTitle();
 
 	if (grfx::Previews::activated() && buffer_)
-		grfx::Previews::get().generateBufferPreviews(buffer_);
+		grfx::Previews::get().generateBufferPreviews(*buffer_);
 }
 
 
