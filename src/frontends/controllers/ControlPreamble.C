@@ -25,7 +25,7 @@
 #include "support/LAssert.h"
 
 ControlPreamble::ControlPreamble(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBD>(lv, d),
+	: ControlDialogBD(lv, d),
 	  params_(0)
 {
 	d_.showPreamble.connect(SigC::slot(this, &ControlPreamble::show));

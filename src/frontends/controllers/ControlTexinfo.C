@@ -33,7 +33,7 @@
 extern string user_lyxdir; // home of *Files.lst
 
 ControlTexinfo::ControlTexinfo(LyXView & lv, Dialogs & d)
-			: ControlDialog<ControlConnectBI>(lv, d)
+	: ControlDialogBI(lv, d)
 {
 	d_.showTexinfo.connect(SigC::slot(this, &ControlTexinfo::show));
 }

@@ -16,12 +16,12 @@
 #pragma interface
 #endif
 
-#include "ControlDialogs.h"
+#include "ControlDialog_impl.h"
 #include "character.h"
 
 /** A controller for Character dialogs.
  */
-class ControlCharacter : public ControlDialog<ControlConnectBD>
+class ControlCharacter : public ControlDialogBD
 {
 public:
 	///

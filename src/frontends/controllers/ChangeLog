@@ -1,3 +1,55 @@
+2002-01-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ButtonController.h: split into two. The definition remains in
+	ButtonController.h, the declaration is now in ButtonController.tmpl.
+	These template methods should be #included when the derived class is
+	instantiated, in this case in xforms/xformsBC.C and xforms/Dialogs.C
+	and in the qt2 and gnome equivalents.
+
+	* ControlDialogs.h: removed. The definition of class ControlDialog is
+	now to be found in ControlDialog.h and the declaration of the methods
+	is in ControlDialog.tmpl. The two template instantiations are performed
+	in ControlDialog_impl.[Ch], new files also.
+
+	* ControlInset.h: split into two. The definition remains in
+	ControlInset.h, the declaration is now in ControlInset.tmpl.
+	These template methods should be #included derived class is
+	instantiated, in this case in 8 other .C files in this directory.
+
+	* ControlAboutlyx.[Ch]:
+	* ControlCharacter.[Ch]:
+	* ControlCommand.C:
+	* ControlERT.C:
+	* ControlError.C:
+	* ControlExternal.C:
+	* ControlFloat.C:
+	* ControlGraphics.C:
+	* ControlInclude.C:
+	* ControlLog.[Ch]:
+	* ControlMinipage.C:
+	* ControlPreamble.[Ch]:
+	* ControlPrint.[Ch]:
+	* ControlSearch.[Ch]:
+	* ControlShowFile.[Ch]:
+	* ControlSpellchecker.[Ch]:
+	* ControlTabularCreate.[Ch]:
+	* ControlTexinfo.[Ch]:
+	* ControlThesaurus.[Ch]:
+	* ControlVCLog.[Ch]: small changes associated with the above ones.
+
+	* GUI.h: #include the ButtonController and dialog controller files
+	here, rather than forward declare them. This is the correct place
+	for these #includes.
+
+	* Makefile.am: add ControlDialog_impl.[Ch] to libcontrollers_la_SOURCES.
+	Rename ControlDialogs.h as ControlDialog.h.
+	Add ButtonController.tmpl ControlDialog.tmpl ControlInset.tmpl to
+	EXTRA_DIST.
+	
+2002-01-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlInset.h (apply): fix bug unearthed by Michael Koziarski.
+
 2002-01-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* ControlExternal.C (Browse): use Buffer::filePath; simplify (more

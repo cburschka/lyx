@@ -17,11 +17,11 @@
 #pragma interface
 #endif
 
-#include "ControlDialogs.h"
+#include "ControlDialog_impl.h"
 
 /** A controller for the About LyX dialogs.
  */
-class ControlAboutlyx : public ControlDialog<ControlConnectBI> {
+class ControlAboutlyx : public ControlDialogBI {
 public:
 	///
 	ControlAboutlyx(LyXView &, Dialogs &);

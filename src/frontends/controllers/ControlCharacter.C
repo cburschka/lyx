@@ -32,7 +32,7 @@ using std::vector;
 
 
 ControlCharacter::ControlCharacter(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBD>(lv, d),
+	: ControlDialogBD(lv, d),
 	  font_(0), toggleall_(false)
 {
 	d_.showCharacter.connect(slot(this, &ControlCharacter::show));

@@ -20,11 +20,11 @@
 #pragma interface
 #endif
 
-#include "ControlDialogs.h"
+#include "ControlDialog_impl.h"
 
 /** A controller for the TabularCreate Dialog.
  */
-class ControlTabularCreate : public ControlDialog<ControlConnectBD> {
+class ControlTabularCreate : public ControlDialogBD {
 public:
 	/// 
 	ControlTabularCreate(LyXView &, Dialogs &);

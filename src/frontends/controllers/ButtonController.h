@@ -1,14 +1,9 @@
 // -*- C++ -*-
-/* This file is part of
- * ====================================================== 
- *
- *           LyX, The Document Processor
- *
- *           Copyright 2000-2001 The LyX Team.
- *
- * ======================================================
- *
+/*
  * \file ButtonController.h
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
  * \author Allan Rae, rae@lyx.org
  * \author Angus Leeming, a.leeming@ic.ac.uk
  * \author Baruch Even, baruch.even@writeme.com
@@ -17,12 +12,16 @@
 #ifndef BUTTONCONTROLLER_H
 #define BUTTONCONTROLLER_H
 
+
+#include "ButtonControllerBase.h"
+#include "gettext.h"
 #include <list>
 
-#include "gettext.h"
-#include "ButtonControllerBase.h"
-#include "debug.h" 
-
+/** A templatised instantiation of the ButtonController requiring the
+ *  gui-frontend widgets.
+ *  The template declarations are in ButtonController.tmpl, which should
+ *  be #included in the gui-frontend BC class, see e.g. xforms/xformsBC.C
+ */
 template <class Button, class Widget>
 class GuiBC : public ButtonControllerBase
 {
@@ -66,55 +65,6 @@ private:
 };
 
 
-template <class Button, class Widget>
-GuiBC<Button, Widget>::GuiBC(string const & cancel, string const & close)
-	: ButtonControllerBase(cancel, close),
-	  okay_(0), apply_(0), cancel_(0), restore_(0)
-{}
-
-
-template <class Button, class Widget>
-void GuiBC<Button, Widget>::refresh()
-{
-	lyxerr[Debug::GUI] << "Calling BC refresh()" << std::endl; 
- 
-	if (okay_) {
-		bool const enabled = bp().buttonStatus(ButtonPolicy::OKAY);
-		setButtonEnabled(okay_, enabled);
-	}
-	if (apply_) {
-		bool const enabled = bp().buttonStatus(ButtonPolicy::APPLY);
-		setButtonEnabled(apply_, enabled);
-	}
-	if (restore_) {
-		bool const enabled = bp().buttonStatus(ButtonPolicy::RESTORE);
-		setButtonEnabled(restore_, enabled);
-	}
-	if (cancel_) {
-		bool const enabled = bp().buttonStatus(ButtonPolicy::CANCEL);
-		if (enabled)
-			setButtonLabel(cancel_, cancel_label_);
-		else
-			setButtonLabel(cancel_, close_label_);
-	}
-}
-
-
-template <class Button, class Widget>
-void GuiBC<Button, Widget>::refreshReadOnly()
-{
-	if (read_only_.empty()) return;
-
-	bool const enable = !bp().isReadOnly();
-
-	typename Widgets::const_iterator end = read_only_.end();
-	typename Widgets::const_iterator iter = read_only_.begin();
-	for (; iter != end; ++iter) {
-		setWidgetEnabled(*iter, enable);
-	}
-}
-
-
 template <class BP, class GUIBC>
 class ButtonController: public GUIBC
 {
@@ -130,11 +80,5 @@ protected:
 	BP bp_;
 };
 
-
-template <class BP, class GUIBC>
-ButtonController<BP, GUIBC>::ButtonController(string const & cancel,
-					      string const & close)
-	: GUIBC(cancel, close)
-{}
 
 #endif // BUTTONCONTROLLER_H

@@ -34,7 +34,7 @@ using Liason::setMinibuffer;
 using SigC::slot;
 
 ControlSearch::ControlSearch(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBD>(lv, d)
+	: ControlDialogBD(lv, d)
 {
 	d_.showSearch.connect(SigC::slot(this, &ControlSearch::show));
 

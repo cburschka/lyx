@@ -19,11 +19,11 @@
 
 #include "LString.h"
 #include "Thesaurus.h"
-#include "ControlDialogs.h"
+#include "ControlDialog_impl.h"
 
 /** A controller for Thesaurus dialogs.
  */
-class ControlThesaurus : public ControlDialog<ControlConnectBD> {
+class ControlThesaurus : public ControlDialogBD {
 public:
 	///
 	ControlThesaurus(LyXView &, Dialogs &);

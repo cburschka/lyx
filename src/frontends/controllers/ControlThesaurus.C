@@ -28,7 +28,7 @@ using Liason::setMinibuffer;
 using SigC::slot;
 
 ControlThesaurus::ControlThesaurus(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBD>(lv, d)
+	: ControlDialogBD(lv, d)
 {
 	d_.showThesaurus.connect(SigC::slot(this, &ControlThesaurus::showEntry));
 }

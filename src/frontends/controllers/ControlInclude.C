@@ -18,6 +18,7 @@
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
 #include "ControlInclude.h"
+#include "ControlInset.tmpl"
 #include "buffer.h"
 #include "BufferView.h"
 #include "Dialogs.h"

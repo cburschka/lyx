@@ -22,13 +22,13 @@
 #pragma interface
 #endif
 
-#include "ControlDialogs.h"
+#include "ControlDialog_impl.h"
 #include "buffer.h" // Buffer::LogType
 
 /**
  * A controller for a read-only text browser.
  */
-class ControlLog : public ControlDialog<ControlConnectBD> {
+class ControlLog : public ControlDialogBD {
 public:
 	///
 	ControlLog(LyXView &, Dialogs &);

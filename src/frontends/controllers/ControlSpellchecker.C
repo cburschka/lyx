@@ -54,7 +54,7 @@
 using SigC::slot;
 
 ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBD>(lv, d),
+	: ControlDialogBD(lv, d),
 	  rtl_(false), newval_(0.0), oldval_(0), newvalue_(0), count_(0),
 	  stop_(false), result_(SpellBase::ISP_OK), speller_(0)
 {

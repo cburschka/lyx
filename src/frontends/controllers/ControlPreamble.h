@@ -14,11 +14,11 @@
 #pragma interface
 #endif
 
-#include "ControlDialogs.h"
+#include "ControlDialog_impl.h"
 
 /** A controller for Preamble dialogs.
  */
-class ControlPreamble : public ControlDialog<ControlConnectBD> {
+class ControlPreamble : public ControlDialogBD {
 public:
 	///
 	ControlPreamble(LyXView &, Dialogs &);

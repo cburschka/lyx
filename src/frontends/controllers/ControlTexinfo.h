@@ -19,11 +19,11 @@
 #pragma interface
 #endif
 
-#include "ControlDialogs.h"
+#include "ControlDialog_impl.h"
 
 /** A controller for Texinfo dialogs. */
 
-class ControlTexinfo : public ControlDialog<ControlConnectBI> {
+class ControlTexinfo : public ControlDialogBI {
 public:
 	/// the file extensions
 	enum texFileSuffix {cls, sty, bst};

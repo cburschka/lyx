@@ -20,13 +20,13 @@
 #pragma interface
 #endif
 
-#include "ControlDialogs.h"
+#include "ControlDialog_impl.h"
 #include "Lsstream.h"
 
 /**
  * A controller for the Version Control log viewer.
  */
-class ControlVCLog : public ControlDialog<ControlConnectBD> {
+class ControlVCLog : public ControlDialogBD {
 public:
 	///
 	ControlVCLog(LyXView &, Dialogs &);

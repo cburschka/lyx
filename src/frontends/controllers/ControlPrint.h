@@ -19,13 +19,13 @@
 #pragma interface
 #endif
 
-#include "ControlDialogs.h"
+#include "ControlDialog_impl.h"
 
 class PrinterParams;
 
 /** A controller for Print dialogs.
  */
-class ControlPrint : public ControlDialog<ControlConnectBD> {
+class ControlPrint : public ControlDialogBD {
 public:
 	/// 
 	ControlPrint(LyXView &, Dialogs &);

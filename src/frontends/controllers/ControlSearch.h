@@ -19,11 +19,11 @@
 #pragma interface
 #endif
 
-#include "ControlDialogs.h"
+#include "ControlDialog_impl.h"
 
 /** A controller for Search dialogs.
  */
-class ControlSearch : public ControlDialog<ControlConnectBD> {
+class ControlSearch : public ControlDialogBD {
 public:
 	///
 	ControlSearch(LyXView &, Dialogs &);

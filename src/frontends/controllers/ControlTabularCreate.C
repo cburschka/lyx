@@ -26,7 +26,7 @@
 #include "support/lstrings.h"
 
 ControlTabularCreate::ControlTabularCreate(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBD>(lv, d)
+	: ControlDialogBD(lv, d)
 {
 	d_.showTabularCreate.connect(SigC::slot(this,
 						&ControlTabularCreate::show));

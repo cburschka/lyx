@@ -10,6 +10,38 @@
 #ifndef GUI_H
 #define GUI_H
 
+#include "ButtonController.h"
+#include "ButtonController.tmpl"
+#include "ButtonPolicies.h"
+#include "ControlAboutlyx.h"
+#include "ControlBibitem.h"
+#include "ControlBibtex.h"
+#include "ControlCharacter.h"
+#include "ControlCitation.h"
+#include "ControlError.h"
+#include "ControlERT.h"
+#include "ControlExternal.h"
+#include "ControlFloat.h"
+#include "ControlGraphics.h"
+#include "insets/insetgraphicsParams.h"
+#include "ControlInclude.h"
+#include "ControlIndex.h"
+#include "ControlLog.h"
+#include "ControlMinipage.h"
+#include "ControlPreamble.h"
+#include "ControlPrint.h"
+#include "ControlRef.h"
+#include "ControlSearch.h"
+#include "ControlShowFile.h"
+#include "ControlSpellchecker.h"
+#include "ControlTabularCreate.h"
+#include "ControlTexinfo.h"
+#include "ControlThesaurus.h"
+#include "ControlToc.h"
+#include "ControlUrl.h"
+#include "ControlVCLog.h"
+
+
 /** This class instantiates and makes available the GUI-specific
     ButtonController and View.
  */
@@ -30,15 +62,8 @@ private:
 	GUIview view_;
 };
 
-/// Forward declaration of ButtonPolicies
-class OkCancelPolicy;
-class OkCancelReadOnlyPolicy;
-class NoRepeatedApplyReadOnlyPolicy;
-
 /** Specialization for About LyX dialog
  */
-class ControlAboutlyx;
-
 template <class GUIview, class GUIbc>
 class GUIAboutlyx :
 	public GUI<ControlAboutlyx, GUIview, OkCancelPolicy, GUIbc> {
@@ -50,8 +75,6 @@ public:
 
 /** Specialization for Bibitem dialog
  */
-class ControlBibitem;
-
 template <class GUIview, class GUIbc>
 class GUIBibitem :
 	public GUI<ControlBibitem, GUIview, OkCancelReadOnlyPolicy, GUIbc> {
@@ -64,8 +87,6 @@ public:
 
 /** Specialization for Bibtex dialog
  */
-class ControlBibtex;
-
 template <class GUIview, class GUIbc>
 class GUIBibtex :
 	public GUI<ControlBibtex, GUIview, OkCancelReadOnlyPolicy, GUIbc> {
@@ -78,8 +99,6 @@ public:
 
 /** Specialization for Character dialog
  */
-class ControlCharacter;
-
 template <class GUIview, class GUIbc>
 class GUICharacter : public GUI<ControlCharacter, GUIview,
 				OkApplyCancelReadOnlyPolicy, GUIbc>
@@ -94,8 +113,6 @@ public:
 
 /** Specialization for Citation dialog
  */
-class ControlCitation;
-
 template <class GUIview, class GUIbc>
 class GUICitation : public GUI<ControlCitation, GUIview,
 			       NoRepeatedApplyReadOnlyPolicy, GUIbc>
@@ -110,8 +127,6 @@ public:
 
 /** Specialization for Error dialog
  */
-class ControlError;
-
 template <class GUIview, class GUIbc>
 class GUIError :
 	public GUI<ControlError, GUIview, OkCancelPolicy, GUIbc> {
@@ -124,8 +139,6 @@ public:
 
 /** Specialization for ERT dialog
  */
-class ControlERT;
-
 template <class GUIview, class GUIbc>
 class GUIERT :
 	public GUI<ControlERT, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
@@ -138,8 +151,6 @@ public:
 
 /** Specialization for External dialog
  */
-class ControlExternal;
-
 template <class GUIview, class GUIbc>
 class GUIExternal :
 	public GUI<ControlExternal, GUIview, OkApplyCancelReadOnlyPolicy, GUIbc> {
@@ -152,8 +163,6 @@ public:
 
 /** Specialization for Graphics dialog
  */
-class ControlGraphics;
-
 template <class GUIview, class GUIbc>
 class GUIGraphics :
 	public GUI<ControlGraphics, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
@@ -166,8 +175,6 @@ public:
 
 /** Specialization for Include dialog
  */
-class ControlInclude;
-
 template <class GUIview, class GUIbc>
 class GUIInclude :
 	public GUI<ControlInclude, GUIview, OkCancelReadOnlyPolicy, GUIbc> {
@@ -180,8 +187,6 @@ public:
 
 /** Specialization for Index dialog
  */
-class ControlIndex;
-
 template <class GUIview, class GUIbc>
 class GUIIndex :
 	public GUI<ControlIndex, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
@@ -194,8 +199,6 @@ public:
 
 /** Specialization for Log dialog
  */
-class ControlLog;
-
 template <class GUIview, class GUIbc>
 class GUILog :
 	public GUI<ControlLog, GUIview, OkCancelPolicy, GUIbc> {
@@ -208,8 +211,6 @@ public:
 
 /** Specialization for Minipage dialog
  */
-class ControlMinipage;
-
 template <class GUIview, class GUIbc>
 class GUIMinipage :
 	public GUI<ControlMinipage, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
@@ -222,8 +223,6 @@ public:
 
 /** Specialization for Float dialog
  */
-class ControlFloat;
-
 template <class GUIview, class GUIbc>
 class GUIFloat :
 	public GUI<ControlFloat, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
@@ -236,8 +235,6 @@ public:
 
 /** Specialization for Preamble dialog
  */
-class ControlPreamble;
-
 template <class GUIview, class GUIbc>
 class GUIPreamble :
 	public GUI<ControlPreamble, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
@@ -250,8 +247,6 @@ public:
 
 /** Specialization for Print dialog
  */
-class ControlPrint;
-
 template <class GUIview, class GUIbc>
 class GUIPrint :
 	public GUI<ControlPrint, GUIview, OkApplyCancelPolicy, GUIbc> {
@@ -264,8 +259,6 @@ public:
 
 /** Specialization for Ref dialog
  */
-class ControlRef;
-
 template <class GUIview, class GUIbc>
 class GUIRef :
 	public GUI<ControlRef, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
@@ -278,8 +271,6 @@ public:
 
 /** Specialization for Search dialog
  */
-class ControlSearch;
-
 template <class GUIview, class GUIbc>
 class GUISearch :
 	public GUI<ControlSearch, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
@@ -291,8 +282,6 @@ public:
 
 /** Specialization for ShowFile dialog
  */
-class ControlShowFile;
-
 template <class GUIview, class GUIbc>
 class GUIShowFile :
 	public GUI<ControlShowFile, GUIview, OkCancelPolicy, GUIbc> {
@@ -304,8 +293,6 @@ public:
 
 /** Specialization for Spellchecker dialog
  */
-class ControlSpellchecker;
-
 template <class GUIview, class GUIbc>
 class GUISpellchecker :
 	public GUI<ControlSpellchecker, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
@@ -317,8 +304,6 @@ public:
 
 /** Specialization for Toc dialog
  */
-class ControlToc;
-
 template <class GUIview, class GUIbc>
 class GUIToc :
 	public GUI<ControlToc, GUIview, OkCancelPolicy, GUIbc> {
@@ -331,8 +316,6 @@ public:
 
 /** Specialization for TabularCreate dialog
  */
-class ControlTabularCreate;
-
 template <class GUIview, class GUIbc>
 class GUITabularCreate :
 	public GUI<ControlTabularCreate, GUIview,
@@ -347,8 +330,6 @@ public:
 
 /** Specialization for Texinfo dialog
  */
-class ControlTexinfo;
-
 template <class GUIview, class GUIbc>
 class GUITexinfo :
 	public GUI<ControlTexinfo, GUIview, OkCancelPolicy, GUIbc> {
@@ -360,8 +341,6 @@ public:
 
 /** Specialization for Thesaurus dialog
  */
-class ControlThesaurus;
-
 template <class GUIview, class GUIbc>
 class GUIThesaurus :
 	public GUI<ControlThesaurus, GUIview,
@@ -376,8 +355,6 @@ public:
  
 /** Specialization for Url dialog
  */
-class ControlUrl;
-
 template <class GUIview, class GUIbc>
 class GUIUrl :
 	public GUI<ControlUrl, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
@@ -390,8 +367,6 @@ public:
 
 /** Specialization for VCLog dialog
  */
-class ControlVCLog;
-
 template <class GUIview, class GUIbc>
 class GUIVCLog :
 	public GUI<ControlVCLog, GUIview, OkCancelPolicy, GUIbc> {

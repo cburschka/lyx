@@ -35,7 +35,7 @@ using SigC::slot;
 using std::endl;
 
 ControlVCLog::ControlVCLog(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBD>(lv, d)
+	: ControlDialogBD(lv, d)
 {
 	d_.showVCLogFile.connect(slot(this, &ControlVCLog::show));
 }

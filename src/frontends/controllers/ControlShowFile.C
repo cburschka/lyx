@@ -23,7 +23,7 @@
 #include "support/filetools.h" // FileSearch
 
 ControlShowFile::ControlShowFile(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBI>(lv, d)
+	: ControlDialogBI(lv, d)
 {
 	d_.showFile.connect(SigC::slot(this, &ControlShowFile::showFile));
 }

@@ -1,3 +1,11 @@
+2002-01-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Dialogs.C: no longer need to #include the Controller classes, as this
+	is how done in GUI.h.
+
+	* xformsBC.C: #include ButtonController.tmpl, containing the
+	instatiation of the button controller.
+	
 2002-01-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormThesaurus.C: fix a crash

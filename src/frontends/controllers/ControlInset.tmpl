@@ -1,0 +1,185 @@
+// -*- C++ -*-
+/*
+ * \file ControlInset.tmpl
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
+ *
+ * ControlInset is a base class and so these templatised methods will be
+ * instantiated if this file is #included in the derived classes' .C file.
+ */
+
+#include "ControlInset.h"
+#include "support/LAssert.h"
+#include "debug.h" 
+
+
+template <class Inset, class Params>
+ControlInset<Inset, Params>::ControlInset(LyXView & lv, Dialogs & d)
+	: ControlConnectBD(lv, d),
+	  inset_(0), ih_(0), params_(0), dialog_built_(false)
+{}
+
+
+template <class Inset, class Params>
+void ControlInset<Inset, Params>::showInset(Inset * inset)
+{
+	if (inset == 0) return;  // maybe we should Assert this?
+
+	connectInset(inset);
+	show(getParams(*inset));
+}
+
+
+template <class Inset, class Params>
+void ControlInset<Inset, Params>::createInset(string const & arg)
+{
+	connectInset();
+
+	if (!arg.empty())
+		bc().valid(); // so that the user can press Ok
+
+	show(getParams(arg));
+}
+
+
+template <class Inset, class Params>
+void ControlInset<Inset, Params>::show(Params const & params)
+{
+	// paranoia check
+	if (params_) delete params_;
+
+	params_ = new Params(params);
+	setDaughterParams();
+
+	if (emergency_exit_) {
+		hide();
+		return;
+	}
+
+	if (!dialog_built_) {
+		view().build();
+		dialog_built_ = true;
+	}
+
+	bc().readOnly(isReadonly());
+	view().show();
+}
+
+
+template <class Inset, class Params>
+void ControlInset<Inset, Params>::update()
+{
+	// paranoia check
+	if (params_) delete params_;
+
+	if (inset_)
+		params_ = new Params(getParams(*inset_));
+	else
+		params_ = new Params();
+
+	if (emergency_exit_) {
+		hide();
+		return;
+	}
+
+	bc().readOnly(isReadonly());
+	view().update();
+}
+
+
+template <class Inset, class Params>
+void ControlInset<Inset, Params>::hide()
+{
+	emergency_exit_ = false;
+	if (params_) {
+		delete params_;
+		params_ = 0;
+	}
+	inset_ = 0;
+
+	clearDaughterParams();
+
+	ih_.disconnect();
+	disconnect();
+	view().hide();
+}
+
+
+template <class Inset, class Params>
+void ControlInset<Inset, Params>::apply()
+{
+	if (lv_.buffer()->isReadonly())
+		return;
+
+	view().apply();
+
+	if (inset_) {
+		if (params() != getParams(*inset_)) {
+			applyParamsToInset();
+		}
+	} else {
+		applyParamsNoInset();
+	}
+
+	if (disconnectOnApply() && !isClosing()) {
+		*params_ = getParams(string());
+		inset_ = 0;
+		ih_.disconnect();
+
+		view().update();
+	}
+}
+
+
+template <class Inset, class Params>
+Params & ControlInset<Inset, Params>::params()
+{
+	lyx::Assert(params_);
+	return *params_;
+}
+
+
+template <class Inset, class Params>
+Params  const & ControlInset<Inset, Params>::params() const
+{
+	lyx::Assert(params_);
+	return *params_;
+}
+
+
+template <class Inset, class Params>
+Inset * ControlInset<Inset, Params>::inset() const
+{
+	lyx::Assert(inset_);
+	return inset_;
+}
+
+
+template <class Inset, class Params>
+void ControlInset<Inset, Params>::updateSlot(bool switched)
+{
+	if (switched)
+		hide();
+	else
+		update();
+}
+
+
+template <class Inset, class Params>
+void ControlInset<Inset, Params>::connectInset(Inset * inset)
+{
+	// If connected to another inset, disconnect from it.
+	if (inset_) {
+		ih_.disconnect();
+		inset_ = 0;
+	}
+
+	if (inset) {
+		inset_ = inset;
+		ih_ = inset->hideDialog.connect(
+			SigC::slot(this, &ControlInset::hide));
+	}
+	connect();
+}

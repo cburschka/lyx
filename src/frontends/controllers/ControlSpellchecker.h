@@ -19,12 +19,12 @@
 #pragma interface
 #endif
 
-#include "ControlDialogs.h"
+#include "ControlDialog_impl.h"
 #include "sp_base.h"
 
 /** A controller for Spellchecker dialogs.
  */
-class ControlSpellchecker : public ControlDialog<ControlConnectBD> {
+class ControlSpellchecker : public ControlDialogBD {
 public:
 	///
 	ControlSpellchecker(LyXView &, Dialogs &);

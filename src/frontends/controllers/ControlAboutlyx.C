@@ -30,7 +30,7 @@ extern string system_lyxdir;
 extern string user_lyxdir;
 
 ControlAboutlyx::ControlAboutlyx(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBI>(lv, d)
+	: ControlDialogBI(lv, d)
 {
 	d_.showAboutlyx.connect(SigC::slot(this, &ControlAboutlyx::show));
 }

@@ -8,6 +8,9 @@ INCLUDES = -I${top_srcdir}/src/ \
 	${SIGC_CFLAGS} $(BOOST_INCLUDES)
 LIBS =
 ETAGS_ARGS = --lang=c++
+
+EXTRA_DIST = ButtonController.tmpl ControlDialog.tmpl ControlInset.tmpl
+
 libcontrollers_la_SOURCES=\
 	biblio.C \
 	biblio.h \
@@ -34,7 +37,9 @@ libcontrollers_la_SOURCES=\
 	ControlCommand.h \
 	ControlConnections.C \
 	ControlConnections.h \
-	ControlDialogs.h \
+	ControlDialog.h \
+	ControlDialog_impl.C \
+	ControlDialog_impl.h \
 	ControlError.h \
 	ControlError.C \
 	ControlERT.h \

@@ -1,0 +1,71 @@
+/*
+ * \file ButtonController.tmpl
+ * Copyright 2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Allan Rae, rae@lyx.org
+ * \author Angus Leeming, a.leeming@ic.ac.uk
+ * \author Baruch Even, baruch.even@writeme.com
+ *
+ * GuiBC is a base class and so these templatised methods will be
+ * instantiated if this file is #included in the derived classes' .C file.
+ * see, e.g., xforms/xformsBC.C
+ */
+
+#include "ButtonController.h"
+#include "debug.h" 
+
+template <class Button, class Widget>
+GuiBC<Button, Widget>::GuiBC(string const & cancel, string const & close)
+	: ButtonControllerBase(cancel, close),
+	  okay_(0), apply_(0), cancel_(0), restore_(0)
+{}
+
+
+template <class Button, class Widget>
+void GuiBC<Button, Widget>::refresh()
+{
+	lyxerr[Debug::GUI] << "Calling BC refresh()" << std::endl; 
+ 
+	if (okay_) {
+		bool const enabled = bp().buttonStatus(ButtonPolicy::OKAY);
+		setButtonEnabled(okay_, enabled);
+	}
+	if (apply_) {
+		bool const enabled = bp().buttonStatus(ButtonPolicy::APPLY);
+		setButtonEnabled(apply_, enabled);
+	}
+	if (restore_) {
+		bool const enabled = bp().buttonStatus(ButtonPolicy::RESTORE);
+		setButtonEnabled(restore_, enabled);
+	}
+	if (cancel_) {
+		bool const enabled = bp().buttonStatus(ButtonPolicy::CANCEL);
+		if (enabled)
+			setButtonLabel(cancel_, cancel_label_);
+		else
+			setButtonLabel(cancel_, close_label_);
+	}
+}
+
+
+template <class Button, class Widget>
+void GuiBC<Button, Widget>::refreshReadOnly()
+{
+	if (read_only_.empty()) return;
+
+	bool const enable = !bp().isReadOnly();
+
+	typename Widgets::const_iterator end = read_only_.end();
+	typename Widgets::const_iterator iter = read_only_.begin();
+	for (; iter != end; ++iter) {
+		setWidgetEnabled(*iter, enable);
+	}
+}
+
+
+template <class BP, class GUIBC>
+ButtonController<BP, GUIBC>::ButtonController(string const & cancel,
+					      string const & close)
+	: GUIBC(cancel, close)
+{}

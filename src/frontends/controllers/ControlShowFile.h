@@ -13,11 +13,11 @@
 #pragma interface
 #endif
 
-#include "ControlDialogs.h"
+#include "ControlDialog_impl.h"
 
 /** A controller for the ShowFile dialog. */
 
-class ControlShowFile : public ControlDialog<ControlConnectBI> {
+class ControlShowFile : public ControlDialogBI {
 public:
 	///
 	ControlShowFile(LyXView &, Dialogs &);

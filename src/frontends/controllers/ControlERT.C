@@ -20,6 +20,7 @@
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
 #include "ControlERT.h"
+#include "ControlInset.tmpl"
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "buffer.h"

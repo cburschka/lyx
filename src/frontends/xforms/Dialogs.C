@@ -16,39 +16,9 @@
 #endif
 
 #include "Dialogs.h"
-#include "BufferView.h"
-
-#include "xformsBC.h"
-
-#include "ControlAboutlyx.h"
-#include "ControlBibitem.h"
-#include "ControlBibtex.h"
-#include "ControlCharacter.h"
-#include "ControlCitation.h"
-#include "ControlError.h"
-#include "ControlERT.h"
-#include "ControlExternal.h"
-#include "ControlFloat.h"
-#include "ControlGraphics.h"
-#include "insets/insetgraphicsParams.h"
-#include "ControlInclude.h"
-#include "ControlIndex.h"
-#include "ControlLog.h"
-#include "ControlMinipage.h"
-#include "ControlPreamble.h"
-#include "ControlPrint.h"
-#include "ControlRef.h"
-#include "ControlSearch.h"
-#include "ControlShowFile.h"
-#include "ControlSpellchecker.h"
-#include "ControlTabularCreate.h"
-#include "ControlTexinfo.h"
-#include "ControlThesaurus.h"
-#include "ControlToc.h"
-#include "ControlUrl.h"
-#include "ControlVCLog.h"
 
 #include "GUI.h"
+#include "xformsBC.h"
 
 #include "combox.h"       // needed for clean destruction of boost::scoped_ptr
 #include "form_aboutlyx.h"

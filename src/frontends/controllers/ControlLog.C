@@ -29,7 +29,7 @@
 using SigC::slot;
 
 ControlLog::ControlLog(LyXView & lv, Dialogs & d)
-	: ControlDialog<ControlConnectBD>(lv, d)
+	: ControlDialogBD(lv, d)
 {
 	d_.showLogFile.connect(slot(this, &ControlLog::show));
 }
