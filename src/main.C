@@ -34,7 +34,7 @@ int main(int argc, char * argv[])
 	// early as possible.
 	lyxerr.rdbuf(std::cerr.rdbuf());
 
-	os::init(&argc, &argv);
+	os::init(argc, argv);
 
 	// initialize for internationalized version *EK*
 	locale_init();

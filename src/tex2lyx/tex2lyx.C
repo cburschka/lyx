@@ -347,7 +347,7 @@ int main(int argc, char * argv[])
 		return 2;
 	}
 
-	lyx::support::os::init(&argc, &argv);
+	lyx::support::os::init(argc, argv);
 	lyx::support::setLyxPaths();
 
 	string const system_syntaxfile = lyx::support::LibFileSearch("reLyX", "syntax.default");

@@ -32,14 +32,14 @@ namespace lyx {
 namespace support {
 namespace os {
 
-void init(int * /*argc*/, char ** argv[])
+void init(int /*argc*/, char * argv[])
 {
 	static bool initialized = false;
 	if (initialized)
 		return;
 	initialized = true;
 
-	string tmp = *argv[0];
+	string tmp = argv[0];
 	binname_ = OnlyFilename(tmp);
 	tmp = ExpandPath(tmp); // This expands ./ and ~/
 	if (!is_absolute_path(tmp)) {
