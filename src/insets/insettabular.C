@@ -2752,6 +2752,9 @@ bool InsetTabular::searchForward(BufferView * bv, string const & str,
 			updateLocal(bv, CELL, false);
 			return true;
 		}
+		if (tabular->IsLastCell(actcell))
+			return false;
+		++actcell;
 	}
 	InsetText * inset = tabular->GetCellInset(actcell);
 	if (inset->searchForward(bv, str, cs, mw)) {

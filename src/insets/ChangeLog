@@ -1,3 +1,8 @@
+2002-07-26  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (searchForward): check for lastcell if we
+	had a locking inset.
+
 2002-07-25  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (insetMotionNotify): Don't update the screen

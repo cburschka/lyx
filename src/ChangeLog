@@ -1,3 +1,8 @@
+2002-07-26  Juergen Vigna  <jug@sad.it>
+
+	* lyxfind.C (LyXReplace): we have to check better if the returned
+	text is not of theLockingInset()->getLockingInset().
+
 2002-07-25  Juergen Vigna  <jug@sad.it>
 
 	* lyxfind.C (LyXReplace): don't replace if we don't get the

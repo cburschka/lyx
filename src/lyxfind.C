@@ -14,6 +14,7 @@
 #include "buffer.h"
 #include "debug.h"
 #include "gettext.h"
+#include "insets/insettext.h"
 
 using lyx::pos_type;
 
@@ -85,7 +86,12 @@ int LyXReplace(BufferView * bv,
 	int replace_count = 0;
 	do {
 		text = bv->getLyXText();
-		if (!bv->theLockingInset() || text != bv->text) {
+		// We have to do this check only because mathed insets don't
+		// return their own LyXText but the LyXText of it's parent!
+		if (!bv->theLockingInset() ||
+			((text != bv->text) &&
+			 (text->inset_owner == text->inset_owner->getLockingInset())))
+		{
 			bv->hideCursor();
 			bv->update(text, BufferView::SELECT|BufferView::FITCUR);
 			bv->toggleSelection(false);
