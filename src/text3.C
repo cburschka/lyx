@@ -389,9 +389,10 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 	}
 }
 
-}
+} // anon namespace
 
-InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
+
+dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 {
 	lyxerr[Debug::ACTION] << "LyXText::dispatch: action[" << cmd.action
 			      <<"] arg[" << cmd.argument << ']' << "xy[" <<

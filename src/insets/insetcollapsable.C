@@ -271,7 +271,7 @@ bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 }
 
 
-InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
+dispatch_result InsetCollapsable::localDispatch(FuncRequest const & cmd)
 {
 	//lyxerr << "InsetCollapsable::localDispatch: "
 	//	<< cmd.action << " '" << cmd.argument << "'\n";
@@ -343,7 +343,7 @@ InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 			return DISPATCHED;
 
 		default:
-			UpdatableInset::RESULT result = inset.localDispatch(cmd);
+			dispatch_result result = inset.localDispatch(cmd);
 			if (result >= FINISHED)
 				bv->unlockInset(this);
 			first_after_edit = false;

@@ -1,8 +1,29 @@
+2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* inset.h: get rid of RESULT typedef for dispatch_result
+
+	* insetcollapsable.[Ch] (localDispatch): RESULT -> dispatch_result
+	* insetert.[Ch] (localDispatch): ditto
+	* insettabular.[Ch] (localDispatch): ditto
+	(moveRight): ditto
+	(moveLeft): ditto
+	(moveUp): ditto
+	(moveDown): ditto
+	* insettext.[Ch] (localDispatch): ditto
+	(moveRight): ditto
+	(moveLeft): ditto
+	(moveRightIntern): ditto
+	(moveLeftIntern): ditto
+	(moveUp): ditto
+	(moveDown): ditto
+	* updatableinset.[Ch] (localDispatch): ditto
+
 2003-10-12  Angus Leeming  <leeming@lyx.org>
 
 	* renderbase.h (view, view_): removed.
 	* renderbase.C: removed.
-	* Makefile.am: remove render_base.C. The shortest lived file in history?
+	* Makefile.am: remove render_base.C. The shortest lived file in
+	history?
 
 	* renderbutton.C (draw):
 	* render_graphic.C (draw): don't cache the BufferView.
@@ -113,11 +134,11 @@
 
 	* Makefile.am: add new files.
 
- 	* insetexternal.[Ch]: InsetExternal::Params -> InsetExternalParams,
- 	allowing the class to be forward declared. (Also consistent with
- 	all other Params classes.)
- 	(write): moved out of the class. Move this function and those in
- 	namespace anon to ExternalSupport.[Ch].
+	* insetexternal.[Ch]: InsetExternal::Params -> InsetExternalParams,
+	allowing the class to be forward declared. (Also consistent with
+	all other Params classes.)
+	(write): moved out of the class. Move this function and those in
+	namespace anon to ExternalSupport.[Ch].
 
 2003-10-07  Angus Leeming  <leeming@lyx.org>
 

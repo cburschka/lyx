@@ -153,7 +153,7 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim);
 
 	///
-	InsetOld::RESULT dispatch(FuncRequest const & cmd);
+	dispatch_result dispatch(FuncRequest const & cmd);
 
 	BufferView * bv();
 

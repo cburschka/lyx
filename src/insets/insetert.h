@@ -76,7 +76,7 @@ public:
 	///
 	void validate(LaTeXFeatures &) const {}
 	///
-	RESULT localDispatch(FuncRequest const &);
+	dispatch_result localDispatch(FuncRequest const &);
 	///
 	bool checkInsertChar(LyXFont &);
 	///

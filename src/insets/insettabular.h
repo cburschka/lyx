@@ -105,7 +105,7 @@ public:
 	///
 	bool display() const { return tabular.isLongTabular(); }
 	///
-	RESULT localDispatch(FuncRequest const &);
+	dispatch_result localDispatch(FuncRequest const &);
 	///
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
@@ -229,13 +229,13 @@ private:
 	///
 	void setPos(BufferView *, int x, int y) const;
 	///
-	RESULT moveRight(BufferView *, bool lock = true);
+	dispatch_result moveRight(BufferView *, bool lock = true);
 	///
-	RESULT moveLeft(BufferView *, bool lock = true);
+	dispatch_result moveLeft(BufferView *, bool lock = true);
 	///
-	RESULT moveUp(BufferView *, bool lock = true);
+	dispatch_result moveUp(BufferView *, bool lock = true);
 	///
-	RESULT moveDown(BufferView *, bool lock = true);
+	dispatch_result moveDown(BufferView *, bool lock = true);
 	///
 	bool moveNextCell(BufferView *, bool lock = false);
 	///

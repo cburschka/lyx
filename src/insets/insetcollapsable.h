@@ -68,7 +68,7 @@ public:
 	///
 	int insetInInsetY() const;
 	///
-	RESULT localDispatch(FuncRequest const &);
+	dispatch_result localDispatch(FuncRequest const &);
 	///
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;

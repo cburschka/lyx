@@ -415,9 +415,9 @@ int InsetERT::docbook(Buffer const &, ostream & os, bool) const
 }
 
 
-InsetOld::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
+dispatch_result InsetERT::localDispatch(FuncRequest const & cmd)
 {
-	InsetOld::RESULT result = UNDISPATCHED;
+	dispatch_result result = UNDISPATCHED;
 	BufferView * bv = cmd.view();
 
 	if (inset.paragraphs.begin()->empty()) {

@@ -1,3 +1,7 @@
+2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* formulabase.C (localDispatch): DISPATCH -> dispatch_result
+
 2003-10-12  Angus Leeming  <leeming@lyx.org>
 
 	* formulabase.[Ch] (cache): added.
@@ -31,7 +35,7 @@
 
 	* formula.[Ch]: mods to PreviewImpl due to the changes to
 	PreviewedInset.
-	
+
 2003-10-09  Angus Leeming  <leeming@lyx.org>
 
 	* formula.C (metrics, draw): pass a buffer arg to PreviewedInset's
@@ -97,7 +101,7 @@
 	add #include "LColor.h".
 	* math_data.C, math_scriptinset.C: add #include <boost/assert.hpp>
 	* math_exintinset.C: add #include <boost/scoped_ptr.hpp>
- 
+
 2003-09-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* command_inset.C

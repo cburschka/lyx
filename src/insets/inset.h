@@ -153,9 +153,6 @@ public:
 	};
 
 	///
-	typedef dispatch_result RESULT;
-
-	///
 	InsetOld();
 	///
 	InsetOld(InsetOld const & in);

@@ -379,7 +379,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		return UNDISPATCHED;
 
 	string argument    = cmd.argument;
-	RESULT result      = DISPATCHED;
+	dispatch_result result      = DISPATCHED;
 	bool sel           = false;
 	bool was_macro     = mathcursor->inMacroMode();
 	bool was_selection = mathcursor->selection();

@@ -82,7 +82,7 @@ public:
 					bool /*lr*/ = false)
 		{ return false; }
 	///  An updatable inset could handle lyx editing commands
-	virtual RESULT localDispatch(FuncRequest const & cmd);
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	// We need this method to not clobber the real method in Inset
 	int scroll(bool recursive = true) const
 		{ return InsetOld::scroll(recursive); }

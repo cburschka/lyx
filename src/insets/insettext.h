@@ -80,7 +80,7 @@ public:
 	bool unlockInsetInInset(BufferView *,
 				UpdatableInset *, bool lr = false);
 	///
-	RESULT localDispatch(FuncRequest const &);
+	dispatch_result localDispatch(FuncRequest const &);
 	///
 	int latex(Buffer const &, std::ostream &,
 		  LatexRunParams const &) const;
@@ -218,22 +218,22 @@ private:
 	void lfunMouseMotion(FuncRequest const &);
 
 	///
-	RESULT moveRight(BufferView *);
+	dispatch_result moveRight(BufferView *);
 	///
-	RESULT moveLeft(BufferView *);
+	dispatch_result moveLeft(BufferView *);
 	///
-	RESULT moveRightIntern(BufferView *, bool front,
+	dispatch_result moveRightIntern(BufferView *, bool front,
 					       bool activate_inset = true,
 					       bool selecting = false);
 	///
-	RESULT moveLeftIntern(BufferView *, bool front,
+	dispatch_result moveLeftIntern(BufferView *, bool front,
 					      bool activate_inset = true,
 					      bool selecting = false);
 
 	///
-	RESULT moveUp(BufferView *);
+	dispatch_result moveUp(BufferView *);
 	///
-	RESULT moveDown(BufferView *);
+        dispatch_result moveDown(BufferView *);
 	///
 	void setCharFont(Buffer const &, int pos, LyXFont const & font);
 	///

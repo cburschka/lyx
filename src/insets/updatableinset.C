@@ -108,7 +108,7 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 
 
 ///  An updatable inset could handle lyx editing commands
-InsetOld::RESULT UpdatableInset::localDispatch(FuncRequest const & ev)
+dispatch_result UpdatableInset::localDispatch(FuncRequest const & ev)
 {
 	if (ev.action == LFUN_MOUSE_RELEASE)
 		return (editable() == IS_EDITABLE) ? DISPATCHED : UNDISPATCHED;

@@ -889,7 +889,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 
 
 	if (view()->available() && view()->theLockingInset()) {
-		InsetOld::RESULT result;
+		dispatch_result result;
 		if (action > 1 || (action == LFUN_UNKNOWN_ACTION &&
 				     !keyseq.deleted()))
 		{

@@ -1,5 +1,11 @@
 2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* lyxfunc.C (dispatch): RESULT -> dispatch_result
+	* lyxtext.h: ditto
+	* text3.C (dispatch): ditto
+
+2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* lyxserver.C (callback): adjust
 
 	* lyxfunc.C (getStatus): add a missing brace in commented code

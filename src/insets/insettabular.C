@@ -625,12 +625,12 @@ void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
-InsetOld::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
+dispatch_result InsetTabular::localDispatch(FuncRequest const & cmd)
 {
 	// We need to save the value of the_locking_inset as the call to
 	// the_locking_inset->localDispatch might unlock it.
 	old_locking_inset = the_locking_inset;
-	RESULT result = UpdatableInset::localDispatch(cmd);
+	dispatch_result result = UpdatableInset::localDispatch(cmd);
 	BufferView * bv = cmd.view();
 
 	if (cmd.action == LFUN_INSET_EDIT) {
@@ -1353,7 +1353,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 }
 
 
-InsetOld::RESULT InsetTabular::moveRight(BufferView * bv, bool lock)
+dispatch_result InsetTabular::moveRight(BufferView * bv, bool lock)
 {
 	if (lock && !old_locking_inset) {
 		if (activateCellInset(bv))
@@ -1371,7 +1371,7 @@ InsetOld::RESULT InsetTabular::moveRight(BufferView * bv, bool lock)
 }
 
 
-InsetOld::RESULT InsetTabular::moveLeft(BufferView * bv, bool lock)
+dispatch_result InsetTabular::moveLeft(BufferView * bv, bool lock)
 {
 	bool moved = isRightToLeft(bv) ? moveNextCell(bv) : movePrevCell(bv);
 	if (!moved)
@@ -1385,7 +1385,7 @@ InsetOld::RESULT InsetTabular::moveLeft(BufferView * bv, bool lock)
 }
 
 
-InsetOld::RESULT InsetTabular::moveUp(BufferView * bv, bool lock)
+dispatch_result InsetTabular::moveUp(BufferView * bv, bool lock)
 {
 	int const ocell = actcell;
 	actcell = tabular.getCellAbove(actcell);
@@ -1406,7 +1406,7 @@ InsetOld::RESULT InsetTabular::moveUp(BufferView * bv, bool lock)
 }
 
 
-InsetOld::RESULT InsetTabular::moveDown(BufferView * bv, bool lock)
+dispatch_result InsetTabular::moveDown(BufferView * bv, bool lock)
 {
 	int const ocell = actcell;
 	actcell = tabular.getCellBelow(actcell);

@@ -588,7 +588,7 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
-InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
+dispatch_result InsetText::localDispatch(FuncRequest const & cmd)
 {
 	BufferView * bv = cmd.view();
 	setViewCache(bv);
@@ -668,7 +668,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 	bool was_empty = paragraphs.begin()->empty() && paragraphs.size() == 1;
 	no_selection = false;
 
-	RESULT result = UpdatableInset::localDispatch(cmd);
+	dispatch_result result = UpdatableInset::localDispatch(cmd);
 	if (result != UNDISPATCHED)
 		return DISPATCHED;
 
@@ -1177,7 +1177,7 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 }
 
 
-InsetOld::RESULT InsetText::moveRight(BufferView * bv)
+dispatch_result InsetText::moveRight(BufferView * bv)
 {
 	if (text_.cursorPar()->isRightToLeftPar(bv->buffer()->params()))
 		return moveLeftIntern(bv, false, true, false);
@@ -1186,7 +1186,7 @@ InsetOld::RESULT InsetText::moveRight(BufferView * bv)
 }
 
 
-InsetOld::RESULT InsetText::moveLeft(BufferView * bv)
+dispatch_result InsetText::moveLeft(BufferView * bv)
 {
 	if (text_.cursorPar()->isRightToLeftPar(bv->buffer()->params()))
 		return moveRightIntern(bv, true, true, false);
@@ -1195,7 +1195,7 @@ InsetOld::RESULT InsetText::moveLeft(BufferView * bv)
 }
 
 
-InsetOld::RESULT
+dispatch_result
 InsetText::moveRightIntern(BufferView * bv, bool front,
 			   bool activate_inset, bool selecting)
 {
@@ -1212,7 +1212,7 @@ InsetText::moveRightIntern(BufferView * bv, bool front,
 }
 
 
-InsetOld::RESULT
+dispatch_result
 InsetText::moveLeftIntern(BufferView * bv, bool front,
 			  bool activate_inset, bool selecting)
 {
@@ -1227,7 +1227,7 @@ InsetText::moveLeftIntern(BufferView * bv, bool front,
 }
 
 
-InsetOld::RESULT InsetText::moveUp(BufferView * bv)
+dispatch_result InsetText::moveUp(BufferView * bv)
 {
 	if (crow() == text_.firstRow())
 		return FINISHED_UP;
@@ -1237,7 +1237,7 @@ InsetOld::RESULT InsetText::moveUp(BufferView * bv)
 }
 
 
-InsetOld::RESULT InsetText::moveDown(BufferView * bv)
+dispatch_result InsetText::moveDown(BufferView * bv)
 {
 	if (crow() == text_.lastRow())
 		return FINISHED_DOWN;
