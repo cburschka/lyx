@@ -1119,6 +1119,34 @@ The LyX layout file for this document class is still insufficiently tested.
 \end_deeper 
 \layout Subsection
 
+mwcls (mwart, mwbk, mwrep)
+\layout Description
+
+Found: @chk_mwart@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/contrib/supported/mwcls/
+\layout Description
+
+Notes: These document classes provide different versions of the base LaTeX
+ document classes 
+\family sans 
+article
+\family default 
+, 
+\family sans 
+report
+\family default 
+ and 
+\family sans 
+book
+\family default 
+.
+ They have been adapted to polish typesetting standards by Marcin Woliñski.
+\layout Subsection
+
 paper
 \layout Description
 
