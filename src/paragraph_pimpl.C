@@ -335,29 +335,6 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 }
 
 
-bool Paragraph::Pimpl::erasePos(pos_type pos)
-{
-	lyx::Assert(pos < size());
-
-	if (tracking()) {
-		Change::Type changetype(changes_->lookup(pos));
-		changes_->record(Change(Change::DELETED), pos);
-
-		// only allow the actual removal if it was /new/ text
-		if (changetype != Change::INSERTED) {
-			if (text[pos] == Paragraph::META_INSET) {
-				Inset * i(owner_->getInset(pos));
-				i->markErased();
-			}
-			return false;
-		}
-	}
-
-	eraseIntern(pos);
-	return true;
-}
-
-
 void Paragraph::Pimpl::eraseIntern(pos_type pos)
 {
 	// if it is an inset, delete the inset entry
@@ -402,9 +379,26 @@ void Paragraph::Pimpl::eraseIntern(pos_type pos)
 }
 
 
-void Paragraph::Pimpl::erase(pos_type pos)
+bool Paragraph::Pimpl::erase(pos_type pos)
 {
-	erasePos(pos);
+	lyx::Assert(pos < size());
+
+	if (tracking()) {
+		Change::Type changetype(changes_->lookup(pos));
+		changes_->record(Change(Change::DELETED), pos);
+
+		// only allow the actual removal if it was /new/ text
+		if (changetype != Change::INSERTED) {
+			if (text[pos] == Paragraph::META_INSET) {
+				Inset * i(owner_->getInset(pos));
+				i->markErased();
+			}
+			return false;
+		}
+	}
+
+	eraseIntern(pos);
+	return true;
 }
 
 
@@ -413,9 +407,9 @@ int Paragraph::Pimpl::erase(pos_type start, pos_type end)
 	pos_type i = start;
 	pos_type count = end - start;
 	while (count) {
-		if (!erasePos(i)) {
+		if (!erase(i)) {
 			++i;
-		} 
+		}
 		--count;
 	}
 	return end - i;

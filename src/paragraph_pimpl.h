@@ -79,8 +79,8 @@ struct Paragraph::Pimpl {
 	void insertInset(lyx::pos_type pos, Inset * inset, LyXFont const & font, Change change = Change(Change::INSERTED));
 	/// definite erase
 	void eraseIntern(lyx::pos_type pos);
-	/// erase the given position
-	void erase(lyx::pos_type pos);
+	/// erase the given position. Returns true if it was actually erased
+	bool erase(lyx::pos_type pos);
 	/// erase the given range
 	int erase(lyx::pos_type start, lyx::pos_type end);
 	///
@@ -175,9 +175,6 @@ struct Paragraph::Pimpl {
 	ParagraphParameters params;
 
 private:
-	/// erase at the given position. Returns true if it was actually erased
-	bool erasePos(lyx::pos_type pos);
-
 	/// match a string against a particular point in the paragraph
 	bool isTextAt(string const & str, lyx::pos_type pos) const;
 

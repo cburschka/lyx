@@ -218,7 +218,7 @@ public:
 	/// definite erase
 	void eraseIntern(lyx::pos_type pos);
 	/// erase the char at the given position
-	void erase(lyx::pos_type pos);
+	bool erase(lyx::pos_type pos);
 	/// erase the given range. Returns the number of chars actually erased
 	int erase(lyx::pos_type start, lyx::pos_type end);
 

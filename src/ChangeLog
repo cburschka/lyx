@@ -1,7 +1,15 @@
+2003-05-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* paragraph.C (erase): return a bool
+
+	* paragraph_pimpl.C (erasePos): remove function, move contents...
+	(erase): ... here. Return a bool.
+	(erase): call erase instead of erasePos.
+
 2003-04-30  Alfredo Braunstein  <abraunst@libero.it>
 
 	* ParagraphList.h: define PitPosPair
-	* CutAndPaste.C (copySelection, pasteSelection): big rework, use 
+	* CutAndPaste.C (copySelection, pasteSelection): big rework, use
 	ParagraphList, fix a bug on pasting multiple pars
 	* text2.C: change interface to C&P
 

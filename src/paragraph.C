@@ -324,9 +324,9 @@ void Paragraph::eraseIntern(lyx::pos_type pos)
 }
 
 
-void Paragraph::erase(pos_type pos)
+bool Paragraph::erase(pos_type pos)
 {
-	pimpl_->erase(pos);
+	return pimpl_->erase(pos);
 }
 
 
