@@ -791,6 +791,7 @@ void LyXText::setCounter(Buffer const & buf, pit_type pit)
 			bool isOK = false;
 			while (tmppit != end) {
 				in = pars_[tmppit].inInset();
+				// FIXME: in should be always valid.
 				if (in &&
 				    (in->lyxCode() == InsetBase::FLOAT_CODE ||
 				     in->lyxCode() == InsetBase::WRAP_CODE)) {
