@@ -44,10 +44,6 @@ floats = {
 font_tokens = ["\\family", "\\series", "\\shape", "\\size", "\\emph",
 	       "\\bar", "\\noun", "\\color", "\\lang", "\\latex"]
 
-#
-# Change \begin_float .. \end_float into \begin_inset Float .. \end_inset
-#
-
 pextra_type3_rexp = re.compile(r".*\\pextra_type\s+3")
 pextra_rexp = re.compile(r"\\pextra_type\s+(\S+)"+\
 			 r"(\s+\\pextra_alignment\s+(\S+))?"+\
@@ -63,6 +59,10 @@ def get_width(mo):
 	    return mo.group(10)
     else:
 	return "100col%"
+
+#
+# Change \begin_float .. \end_float into \begin_inset Float .. \end_inset
+#
 
 def remove_oldfloat(lines, language):
     i = 0
@@ -125,21 +125,29 @@ def remove_oldfloat(lines, language):
 	lines[i:j+1] = new
 	i = i+1
 
-pextra_type2_rexp = re.compile(r".*\\pextra_type\s+2")
+pextra_type2_rexp = re.compile(r".*\\pextra_type\s+[12]")
 pextra_type2_rexp2 = re.compile(r".*(\\layout|\\pextra_type\s+2)")
 
-def remove_oldminipage(lines):
+def remove_pextra(lines):
     i = 0
     flag = 0
     while 1:
 	i = find_re(lines, pextra_type2_rexp, i)
 	if i == -1:
 	    break
-	
+
 	mo = pextra_rexp.search(lines[i])
+        width = get_width(mo)
+
+        if mo.group(1) == "1":
+            # handle \pextra_type 1 (indented paragraph)
+            lines[i] = re.sub(pextra_rexp, "\\leftindent "+width+" ", lines[i])
+            i = i+1
+            continue
+
+        # handle \pextra_type 2 (minipage)
 	position = mo.group(3)
 	hfill = mo.group(5)
-	width = get_width(mo)
 	lines[i] = re.sub(pextra_rexp, "", lines[i])
 
 	start = ["\\begin_inset Minipage",
@@ -475,7 +483,7 @@ def convert(header, body):
     change_listof(body)
     fix_oldfloatinset(body)
     update_tabular(body)
-    remove_oldminipage(body)
+    remove_pextra(body)
     remove_oldfloat(body, language)
     remove_figinset(body)
     remove_oldertinset(body)
