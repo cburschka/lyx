@@ -26,27 +26,26 @@ class LyXView;
  * (Ie, it provides an interface to the Model part of the Model-Controller-
  *  View split.
  *  In an ideal world, it will shrink as more info is passed to the
- *  Dialog::show() and update() methods.
+ *  Dialog::show() and Dialog::update() methods.
  */
 class Kernel {
 public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	Kernel(LyXView & lv);
 
-	/** This method is the primary prupose of the class. It provides
-	    the "gateway" by which the dialog can send a request (of a
-	    change in the data, for more information) to the kernel,
-	    encoded as \param fr.
-	    \param verbose Set to true if the completed action should
-	    be displayed in the minibuffer.
+	/** This method is the primary puypose of the class. It provides
+	 *  the "gateway" by which the dialog can send a request (of a
+	 *  change in the data, for more information) to the kernel.
+	 *  \param fr is the encoding of the request.
+	 *  \param verbose is set to true if the completed action should
+	 *  be displayed in the minibuffer.
 	 */
 	void dispatch(FuncRequest const & fr, bool verbose = false) const;
 
 	/** The dialog has received a request from the user
-	    (who pressed the "Restore" buuton) to update  contents.
-	    It must, therefore, ask the kernel to provide this information.
-	    \param name is used as an identifier by the kernel
-	    when the information is posted.
+	 *  (who pressed the "Restore" buuton) to update contents.
+	 *  It must, therefore, ask the kernel to provide this information.
+	 *  \param name is used to identify the dialog to the kernel.
 	 */
 	void updateDialog(string const & name) const;
 
@@ -54,17 +53,19 @@ public:
 	 *  stored by the dialog are not applied to the inset currently
 	 *  connected to the dialog. Instead, they will be used to generate
 	 *  a new inset at the cursor position.
+	 *  \param name is used to identify the dialog to the kernel.
 	 */
 	void disconnect(string const & name) const;
 
+	/** \name Kernel Wrappers
+	 *  Simple wrapper functions to Buffer methods.
+	 */
 	//@{
-	/// Simple wrapper functions to Buffer methods.
 	bool isBufferAvailable() const;
 	bool isBufferReadonly() const;
 	//@}
 
-	//@{
-	/** \enum DocTypes is used to flag the different kinds of buffer
+	/** \enum DocTypes used to flag the different kinds of buffer
 	 *  without making the kernel header files available to the
 	 *  dialog's Controller or View.
 	 */
@@ -76,13 +77,13 @@ public:
 	};
 	/// The type of the current buffer.
 	DocTypes docType() const;
-	//@}
 
 
-	//@{
-	/** Unpleasantly public internals of the LyX kernel.
+	/** \name Kernel Nasties
+	 *  Unpleasantly public internals of the LyX kernel.
 	 *  We should aim to reduce/remove these from the interface.
 	 */
+	//@{
 	LyXView & lyxview() { return lyxview_; }
 	LyXView const & lyxview() const { return lyxview_; }
 

@@ -149,11 +149,21 @@ ButtonController & Dialog::bc() const
 }
 
 
+Dialog::Controller::Controller(Dialog & parent)
+	: parent_(parent)
+{}
+
+
 Dialog::Controller & Dialog::controller() const
 {
 	Assert(controller_ptr_.get());
 	return *controller_ptr_.get();
 }
+
+
+Dialog::View::View(Dialog & parent, string title) :
+	p_(parent), title_(title)
+{}
 
 
 Dialog::View & Dialog::view() const

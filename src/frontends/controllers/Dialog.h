@@ -28,37 +28,36 @@ class ButtonController;
  */
 class Dialog : boost::noncopyable {
 public:
-	/** \param name the identifier given to the dialog by its parent
-	 *  container.
-	 */
-	Dialog(LyXView &, string const & name);
+	/// \param lv is the access point for the dialog to the LyX kernel.
+	/// \param name is the identifier given to the dialog by its parent
+	/// container.
+	Dialog(LyXView & lv, string const & name);
 	~Dialog();
 
-	/** the Dialog's name is the means by which a dialog identifies
+	/** The Dialog's name is the means by which a dialog identifies
 	 *  itself to the kernel.
 	 */
 	string const & name() const { return name_; }
 
-	//@{
-	/** These methods are publicly accessible because they are invoked
+	/** \name Buttons
+	 *  These methods are publicly accessible because they are invoked
 	 *  by the View when the user presses... guess what ;-)
 	 */
+	//@{
 	void ApplyButton();
 	void OKButton();
 	void CancelButton();
 	void RestoreButton();
 	//@}
 
+	/** \name Container Access
+	 *  These methods are publicly accessible because they are invoked
+	 *  by the parent container acting on commands from the LyX kernel.
+	 */
 	//@{
-	/** These methods are publicly accessible because they are invoked
-	 *  by the parent container acting on commands from the kernel.
-	 */
-	/** \param data The dialog is passed a string encoding the data
-	 *  that it is to display. This string is passed to the Controller
-	 *  which translates it into a useable form.
-	 */
+	/// \param data is a string encoding of the data to be displayed.
+	/// It is passed to the Controller to be translated into a useable form.
 	void show(string const & data);
-	/// \param data \see show().
 	void update(string const & data);
 
 	void hide();
@@ -81,32 +80,35 @@ public:
 	 */
 	Kernel & kernel() { return kernel_; }
 
-	//@{
 	/** Different dialogs will have different Controllers and Views.
-	 * deriving from these base classes.
+	 *  deriving from these base classes.
 	 */
+	//@{
 	class Controller;
 	class View;
 	//@}
 
-	//@{
-	/** Methods to set the Controller and View and so specialise
+	/** \name Dialog Specialization
+	 *  Methods to set the Controller and View and so specialise
 	 *  to a particular dialog.
-	 *  \param ptr is stored here.
 	 */
+	//@{
+	/// \param ptr is stored and destroyed by \c Dialog.
 	void setController(Controller * ptr);
+	/// \param ptr is stored and destroyed by \c Dialog.
 	void setView(View * ptr);
 	//@}
 
+	/** \name Dialog Components
+	 *  Methods to access the various components making up a dialog.
+	 */
 	//@{
-	/// Get methods for the various components making up a dialog.
 	Controller & controller() const;
 	ButtonController & bc() const;
 	View & view() const;
 	//@}
 
 private:
-	/// Invoked by both OKButton() and ApplyButton().
 	void apply();
 
 	bool is_closing_;
@@ -123,30 +125,32 @@ private:
  */
 class Dialog::Controller : boost::noncopyable {
 public:
-	Controller(Dialog & parent) : parent_(parent) {}
+	/// \param parent Dialog owning this Controller.
+	Controller(Dialog & parent);
 	virtual ~Controller() {}
 
-	//@{
-	/** These few methods are all that a generic dialog needs of a
+	/** \name Generic Controller
+	 *  These few methods are all that a generic dialog needs of a
 	 *  controller.
 	 */
-	/** \param data The controller is passed a string encoding of the
-	 *  parameters that the dialog is to display.
+	//@{
+	/** Enable the controller to initialise its data structures.
+	 *  \param data is a string encoding of the parameters to be displayed.
 	 *  \return true if the translation was successful.
 	 */
 	virtual bool initialiseParams(string const & data) = 0;
-	/** Invoked by Dialog::hide, allowing the controller to
-	 *  clean up its data structures.
-	 */
+
+	/// Enable the controller to clean up its data structures.
 	virtual void clearParams() = 0;
-	/** Invoked by Dialog::apply, enabling the Controller to
-	 *  dispatch its data back to the LyX kernel.
-	 */
+
+	/// Enable the Controller to dispatch its data back to the LyX kernel.
 	virtual void dispatchParams() = 0;
+
 	/** \return true if the dialog should be shown only when
-	 *  a buffer is open
+	 *  a buffer is open.
 	 */
 	virtual bool isBufferDependent() const = 0;
+
 	/** \return true if the kernel should disconnect the dialog from
 	 *  a particular inset after the data has been applied to it.
 	 *  Clearly this makes sense only for dialogs modifying the contents
@@ -158,10 +162,10 @@ public:
 	//@}
 
 protected:
-	//@{
-	/** Enable the derived classes to access the other parts of the
-	 * whole.
+	/** \name Controller Access
+	 *  Enable the derived classes to access the other parts of the whole.
 	 */
+	//@{
 	Dialog & dialog() { return parent_; }
 	Dialog const & dialog() const { return parent_; }
 
@@ -179,35 +183,35 @@ private:
  */
 class Dialog::View : boost::noncopyable {
 public:
-	View(Dialog & parent, string title) : p_(parent), title_(title) {}
+	/** \param parent Dialog owning this Controller.
+	 *  \param title  is the dialog title displayed by the WM.
+	 */
+	View(Dialog & parent, string title);
 	virtual ~View() {}
 
-	//@{
-	/** These few methods are all that a generic dialog needs of a
+	/** \name Generic View
+	 *  These few methods are all that a generic dialog needs of a
 	 *  view.
 	 */
+	//@{
 	/** A request to modify the data structures stored by the
 	 *  accompanying Controller in preparation for their dispatch to
 	 *  the LyX kernel.
-	 *  Invoked by Dialog::apply.
 	 */
 	virtual void apply() = 0;
-	/** Hide the dialog from sight
-	 *  Invoked by Dialog::hide.
-	 */
+
+	/// Hide the dialog from sight
 	virtual void hide() = 0;
-	/** Redraw the dialog (e.g. if the colors have been remapped).
-	 *  Invoked by Dialog::redraw.
-	 */
+
+	/// Redraw the dialog (e.g. if the colors have been remapped).
 	virtual void redraw() {}
-	/** Create the dialog if necessary, update it and display it.
-	 *  Invoked by Dialog::show.
-	 */
+
+	/// Create the dialog if necessary, update it and display it.
 	virtual void show() = 0;
-	/** Update the display of the dialog whilst it is still visible.
-	 *  Invoked by Dialog::update.
-	 */
+
+	/// Update the display of the dialog whilst it is still visible.
 	virtual void update() = 0;
+
 	/// \return true if the dialog is visible.
 	virtual bool isVisible() const = 0;
 	//@}
@@ -215,20 +219,21 @@ public:
 	/** Defaults to nothing. Can be used by the Controller, however, to
 	 *  indicate to the View that something has changed and that the
 	 *  dialog therefore needs updating.
+	 *  \param id identifies what should be updated.
 	 */
-	virtual void partialUpdate(int) {}
-
-	//@{
-	/** Enable the derived classes to access the other parts of the
-	 * whole.
-	 */
-	Dialog & dialog() { return p_; }
-	Dialog const & dialog() const { return p_; }
+	virtual void partialUpdate(int id) {}
 
 	/// sets the title of the dialog (window caption)
 	void setTitle(string const &);
 	/// gets the title of the dialog (window caption)
 	string const & getTitle() const;
+
+	/** \name View Access
+	 *  Enable the derived classes to access the other parts of the whole.
+	 */
+	//@{
+	Dialog & dialog() { return p_; }
+	Dialog const & dialog() const { return p_; }
 
 protected:
 	Kernel & kernel() { return p_.kernel(); }
@@ -242,9 +247,7 @@ protected:
 	//@}
 
 private:
-	///
 	Dialog & p_;
-	///
 	string title_;
 };
 
