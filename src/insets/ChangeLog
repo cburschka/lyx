@@ -1,5 +1,10 @@
 2003-02-27  Angus Leeming  <leeming@lyx.org>
 
+	* indexlabel.C: use a real, LyX dialog rather than that nasty Alert
+	thingy.
+
+2003-02-27  Angus Leeming  <leeming@lyx.org>
+
 	* insetbibitem.C (localDispatch):
 	* insetbibtex.C (localDispatch):
 	* insetcommand.C:

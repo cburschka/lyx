@@ -1,4 +1,17 @@
-2003-02-27  Angus Leeming  <angus@localhost.localdomain>
+2003-02-27  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): add a label dialog.
+
+	* FormIndex.[Ch]: renamed as FormText.[Ch]
+	* forms/form_index.fd: renamed as form_text.fd.
+
+	* FormText.[Ch]
+	* forms/form_text.fd: slight refactoring to enable the class to be
+	used by two dialogs.
+
+	* Makefile.am: add the new files and remove the old.
+
+2003-02-27  Angus Leeming  <leeming@lyx.org>
 
 	* Alert_pimpl.C: make shortcuts consistent with the rest of LyX.
 
