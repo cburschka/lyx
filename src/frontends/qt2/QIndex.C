@@ -44,7 +44,10 @@ void QIndex::build_dialog()
 
 void QIndex::update_contents()
 {
-	dialog_->keywordED->setText(toqstr(controller().params().getContents()));
+	string const contents = controller().params().getContents();
+	dialog_->keywordED->setText(toqstr(contents));
+
+	bc().valid(!contents.empty());
 }
 
 
