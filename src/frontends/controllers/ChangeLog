@@ -1,3 +1,10 @@
+2001-03-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlPrint.[Ch]: new file; controller for the Print popups.
+
+	* GUI.h:
+	* Makefile.am: associated changes.
+
 2001-03-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlConnections.[Ch]: (docType): new method; returns the type

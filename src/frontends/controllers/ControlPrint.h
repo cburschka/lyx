@@ -1,0 +1,49 @@
+/* This file is part of
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *          Copyright 2001 The LyX Team.
+ *
+ *======================================================
+ *
+ * \file ControlPrint.h
+ * \author Angus Leeming, a.leeming@.ac.uk
+ */
+
+#ifndef CONTROLPRINT_H
+#define CONTROLPRINT_H
+
+#ifdef __GNUG__
+#pragma interface
+#endif
+
+#include "ControlDialogs.h"
+
+class PrinterParams;
+
+/** A controller for Print dialogs.
+ */
+class ControlPrint : public ControlDialog<ControlConnectBD> {
+public:
+	/// 
+	ControlPrint(LyXView &, Dialogs &);
+
+	/// The file dialog popup requires a LyXView * ???
+	LyXView * lv() const;
+	///
+	PrinterParams & params() const;
+
+private:
+	/// Get changed parameters and Dispatch them to the kernel.
+	virtual void apply();
+	/// set the params before show or update.
+	virtual void setParams();
+	/// clean-up on hide.
+	virtual void clearParams();
+    
+	///
+	PrinterParams * params_;
+};
+
+#endif // CONTROLPRINT_H

@@ -1,43 +1,49 @@
-/* FormPrint.C
- * FormPrint Interface Class Implementation
+/*
+ * \file FormPrint.C
+ * Copyright 2000-2001 The LyX Team.
+ * See the file COPYING.
+ *
+ * \author Allan Rae, rae@lyx.org
+ * \author Angus Leeming, a.leeming@.ac.uk
  */
 
 #include <config.h>
-
-#include FORMS_H_LOCATION
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
+#include "xformsBC.h"
+#include "ControlPrint.h"
 #include "FormPrint.h"
 #include "form_print.h"
 #include "input_validators.h"
+#include "support/lstrings.h"
+
+#include "lyxrc.h" // needed by PrinterParams
+#include "PrinterParams.h"
+
+#include "LyXView.h"
+#include "xforms_helpers.h"     // for browseFile
+
+/*
 #include "LyXView.h"
 #include "Dialogs.h"
-#include "support/lstrings.h"
-#include "lyxrc.h"
-#include "PrinterParams.h"
 #include "Liason.h"
 #include "debug.h"
 #include "BufferView.h"
-#include "lyx_gui_misc.h"      // WriteAlert
-#include "xforms_helpers.h"     // for browseFile
+*/
 
-using Liason::printBuffer;
-using Liason::getPrinterParams;
+//using Liason::printBuffer;
+//using Liason::getPrinterParams;
 using std::make_pair;
-using SigC::slot;
 
-FormPrint::FormPrint(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Print")),
+typedef FormCB<ControlPrint, FormDB<FD_form_print> > base_class;
+
+FormPrint::FormPrint(ControlPrint & c)
+	: base_class(c, _("Print")),
 	  target_(2), order_(2), which_(3)
-{
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showPrint.connect(slot(this, &FormPrint::show));
-}
+{}
 
 
 void FormPrint::build()
@@ -97,20 +103,8 @@ void FormPrint::build()
 }
 
 
-FL_FORM * FormPrint::form() const
-{
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
-}
-
-
 void FormPrint::apply()
 {
-	if (!lv_->view()->available()) {
-		return;
-	}
-
 	PrinterParams::WhichPages
 		wp(static_cast<PrinterParams::WhichPages>(which_.getButton()));
 
@@ -128,70 +122,61 @@ void FormPrint::apply()
 	PrinterParams::Target
 		t(static_cast<PrinterParams::Target>(target_.getButton()));
 
-	// we really should use the return value here I think.
-	if (!printBuffer(lv_->buffer(),
-			 PrinterParams(t,
-				       string(fl_get_input(dialog_->input_printer)),
-				       string(fl_get_input(dialog_->input_file)),
-				       wp, from, to,
-				       static_cast<bool>(order_.getButton()),
-				       !static_cast<bool>(fl_get_button(dialog_->
-									radio_collated)),
-				       strToInt(fl_get_input(dialog_->input_count))))) {
-		WriteAlert(_("Error:"),
-			   _("Unable to print"),
-			   _("Check that your parameters are correct"));
-	}
+	PrinterParams const pp(t,
+			       string(fl_get_input(dialog_->input_printer)),
+			       string(fl_get_input(dialog_->input_file)),
+			       wp, from, to,
+			       static_cast<bool>(order_.getButton()),
+			       !static_cast<bool>(fl_get_button(dialog_->radio_collated)),
+			       strToInt(fl_get_input(dialog_->input_count)));
+
+	controller().params() = pp;
 }
 
 
 void FormPrint::update()
 {
-	if (dialog_.get()
-	    && lv_->view()->available()) {
-		PrinterParams pp(getPrinterParams(lv_->buffer()));
+	PrinterParams & pp = controller().params();
 
-		fl_set_input(dialog_->input_printer, pp.printer_name.c_str());
-		fl_set_input(dialog_->input_file, pp.file_name.c_str());
+	fl_set_input(dialog_->input_printer, pp.printer_name.c_str());
+	fl_set_input(dialog_->input_file, pp.file_name.c_str());
 
-		target_.setButton(pp.target);
-		order_.setButton(pp.reverse_order);
-		which_.setButton(pp.which_pages);
+	target_.setButton(pp.target);
+	order_.setButton(pp.reverse_order);
+	which_.setButton(pp.which_pages);
 
-		// hmmm... maybe a bit weird but maybe not
-		// we might just be remembering the last
-		// time this was printed.
-		if (!pp.from_page.empty()) {
-			fl_set_input(dialog_->input_from_page,
-				     pp.from_page.c_str());
-			// we only set the "to" page of a range
-			// if there's a corresponding "from"
-			fl_activate_object(dialog_->input_to_page);
-			if (pp.to_page) {
-				fl_set_input(dialog_->input_to_page,
-					     tostr(pp.to_page).c_str());
-			} else {
-				fl_set_input(dialog_->input_to_page,"");
-			}
+	// hmmm... maybe a bit weird but maybe not
+	// we might just be remembering the last
+	// time this was printed.
+	if (!pp.from_page.empty()) {
+		fl_set_input(dialog_->input_from_page, pp.from_page.c_str());
+
+		// we only set the "to" page of a range
+		// if there's a corresponding "from"
+		fl_activate_object(dialog_->input_to_page);
+		if (pp.to_page) {
+			fl_set_input(dialog_->input_to_page,
+				     tostr(pp.to_page).c_str());
 		} else {
-			fl_deactivate_object(dialog_->input_to_page);
 			fl_set_input(dialog_->input_to_page,"");
-			fl_set_input(dialog_->input_from_page,"");
 		}
 
-		fl_set_input(dialog_->input_count,
-			     tostr(pp.count_copies).c_str());
-		bc().valid(true);
+	} else {
+		fl_deactivate_object(dialog_->input_to_page);
+		fl_set_input(dialog_->input_to_page,"");
+		fl_set_input(dialog_->input_from_page,"");
 	}
+
+	fl_set_input(dialog_->input_count, tostr(pp.count_copies).c_str());
 }
 
 
 // It would be nice if we checked for cases like:
 // Print only-odd-pages and from_page == an even number
 //
-bool FormPrint::input(FL_OBJECT * ob, long)
+ButtonPolicy::SMInput FormPrint::input(FL_OBJECT * ob, long)
 {
-	bool activate = true;
+	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_VALID;
 
 	// using a fl_input_filter that only permits numbers no '-' or '+'
 	// and the user cannot enter a negative number even if they try.
@@ -206,13 +191,13 @@ bool FormPrint::input(FL_OBJECT * ob, long)
 			// values but I'll disable the ok/apply until
 			// the user fixes it since they may be editting
 			// one of the fields.
-			activate = false;
+			activate = ButtonPolicy::SMI_INVALID;
 			// set both backgrounds to red?
 		}
 	} else if (strlen(fl_get_input(dialog_->input_to_page))) {
 		// from is empty but to exists so probably editting from
 		// therefore deactivate ok and apply until form is valid again
-		activate = false;
+		activate = ButtonPolicy::SMI_INVALID;
 	} else {
 		// both from and to are empty.  This is valid so activate
 		// ok and apply but deactivate to
@@ -221,7 +206,7 @@ bool FormPrint::input(FL_OBJECT * ob, long)
 
 	if (fl_get_button(dialog_->radio_file)
 	    && !strlen(fl_get_input(dialog_->input_file))) {
-		activate = false;
+		activate = ButtonPolicy::SMI_INVALID;
 	}
 
 	if (ob == dialog_->button_browse) {
@@ -232,7 +217,7 @@ bool FormPrint::input(FL_OBJECT * ob, long)
 	// have a default printer set.  Or should have.
 //  	if (fl_get_button(dialog_->radio_printer)
 //  	    && !strlen(fl_get_input(dialog_->input_printer))) {
-//  		activate = false;
+//  		activate = ButtonPolicy::SMI_INVALID;
 //  	}
 	return activate;
 }
@@ -248,7 +233,7 @@ void FormPrint::browse()
 
 	// Show the file browser dialog
 	string const new_filename =
-		browseFile(lv_, filename, title, pattern,
+		browseFile(controller().lv(), filename, title, pattern,
 			   make_pair(string(), string()),
 			   make_pair(string(), string()));
 

@@ -151,6 +151,20 @@ public:
 };
 
 
+/** Specialization for Print dialog
+ */
+class ControlPrint;
+
+template <class GUIview, class GUIbc>
+class GUIPrint :
+	public GUI<ControlPrint, GUIview, OkApplyCancelPolicy, GUIbc> {
+public:
+	///
+	GUIPrint(LyXView & lv, Dialogs & d)
+		: GUI<ControlPrint, GUIview, OkApplyCancelPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for Ref dialog
  */
 class ControlRef;
@@ -221,5 +235,6 @@ public:
 	GUIVCLog(LyXView & lv, Dialogs & d)
 	    : GUI<ControlVCLog, GUIview, OkCancelPolicy, GUIbc>(lv, d) {}
 };
+
 
 #endif // GUI_H

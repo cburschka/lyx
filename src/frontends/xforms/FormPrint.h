@@ -1,17 +1,18 @@
-// -*- C++ -*-
 /* This file is part of
  * ======================================================
  * 
  *           LyX, The Document Processor
  * 	 
  *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2000 The LyX Team.
+ *          Copyright 1995-2001 The LyX Team.
  *
  *	    This file copyright 1999-2000
  *	    Allan Rae
- *======================================================*/
-/* FormPrint.h
- * FormPrint Interface Class
+ *======================================================
+ *
+ * \file FormPrint.h
+ * \author Allan Rae, rae@lyx.org
+ * \author Angus Leeming, a.leeming@.ac.uk
  */
 
 #ifndef FORMPRINT_H
@@ -23,54 +24,42 @@
 #pragma interface
 #endif
 
-#include "FormBaseDeprecated.h"
+#include "FormBase.h"
 #include "RadioButtonGroup.h"
 
+class ControlPrint;
 struct FD_form_print;
 
 /** This class provides an XForms implementation of the FormPrint Dialog.
     The print dialog allows users to print their documents.
  */
-class FormPrint : public FormBaseBD {
+class FormPrint : public FormCB<ControlPrint, FormDB<FD_form_print> > {
 public:
-	/// #FormPrint x(LyXView ..., Dialogs ...);#
-	FormPrint(LyXView *, Dialogs *);
+	/// 
+	FormPrint(ControlPrint &);
 
 private:
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
-	/// Update the dialog.
-	virtual void update();
 	/// Apply from dialog
 	virtual void apply();
-	/// Filter the inputs
-	virtual bool input(FL_OBJECT *, long);
-	/// Pointer to the actual instantiation of the xforms form
-	virtual FL_FORM * form() const;
 	/// Build the dialog
 	virtual void build();
+	/// Update the dialog.
+	virtual void update();
+	/// Filter the inputs on callback from xforms
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
+
 	/// Open the file browse dialog.
 	void browse();
 
-	///
+	/// Fdesign generated method
 	FD_form_print * build_print();
-	
-	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_print> dialog_;
+
 	/// print target
 	RadioButtonGroup target_;
 	/// page order
 	RadioButtonGroup order_;
 	/// which pages
 	RadioButtonGroup which_;
-	/// The ButtonController
-	ButtonController<OkApplyCancelPolicy, xformsBC> bc_;
 };
 
-
-inline
-xformsBC & FormPrint::bc()
-{
-	return bc_;
-}
-#endif
+#endif // FORMPRINT_H
