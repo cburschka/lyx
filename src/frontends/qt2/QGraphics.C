@@ -21,7 +21,7 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "insets/insetgraphicsParams.h"
-#include "buffer.h"
+#include "bufferparams.h"
 #include "lyxrc.h"
 #include "lengthcombo.h"
 #include "qt_helpers.h"
@@ -161,7 +161,7 @@ void QGraphics::update_contents()
 	}
 
 	string const name =
-		igp.filename.outputFilename(kernel().buffer()->filePath());
+		igp.filename.outputFilename(kernel().bufferFilepath());
 	dialog_->filename->setText(toqstr(name));
 
 	// set the bounding box values
@@ -303,7 +303,7 @@ void QGraphics::apply()
 	InsetGraphicsParams & igp = controller().params();
 
 	igp.filename.set(fromqstr(dialog_->filename->text()),
-			 kernel().buffer()->filePath());
+			 kernel().bufferFilepath());
 
 	// the bb section
 	igp.bb.erase();

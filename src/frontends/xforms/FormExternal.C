@@ -43,7 +43,8 @@ void FormExternal::apply()
 {
 	InsetExternal::Params params = controller().params();
 
-	params.filename = fl_get_input(dialog_->input_filename);
+	string const buffer_path = kernel().bufferFilepath();
+	params.filename.set(getString(dialog_->input_filename), buffer_path);
 
 	int const choice = fl_get_choice(dialog_->choice_template) - 1;
 	params.templatename = controller().getTemplate(choice).lyxName;
@@ -122,7 +123,9 @@ void FormExternal::update()
 {
 	InsetExternal::Params const & params = controller().params();
 
-	fl_set_input(dialog_->input_filename, params.filename.c_str());
+	string const buffer_path = kernel().bufferFilepath();
+	string const name = params.filename.outputFilename(buffer_path);
+	fl_set_input(dialog_->input_filename, name.c_str());
 
 	int ID = controller().getTemplateNumber(params.templatename);
 	if (ID < 0) ID = 0;

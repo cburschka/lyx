@@ -1,3 +1,8 @@
+2003-07-23  Angus Leeming  <leeming@lyx.org>
+
+	* insetexternal.[Ch]: store the external file name in a FileName
+	member variable rather than a string + associated changes.
+
 2003-07-21  Angus Leeming  <leeming@lyx.org>
 
 	* insetgraphicsParams.[Ch]: store the graphics file name in

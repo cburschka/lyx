@@ -198,11 +198,12 @@ Inset * createInset(FuncRequest const & cmd)
 			return inset;
 
 		} else if (name == "external") {
+			Buffer const * buffer = cmd.view()->buffer();
 			InsetExternal::Params iep;
-			InsetExternalMailer::string2params(cmd.argument, iep);
+			InsetExternalMailer::string2params(cmd.argument,
+							   buffer, iep);
 			InsetExternal * inset = new InsetExternal;
-			string const fpath = cmd.view()->buffer()->filePath();
-			inset->setParams(iep, fpath);
+			inset->setParams(iep);
 			return inset;
 
 		} else if (name == "graphics") {

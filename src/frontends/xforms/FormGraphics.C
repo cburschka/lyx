@@ -22,7 +22,6 @@
 #include "Tooltips.h"
 #include "xforms_helpers.h"
 
-#include "buffer.h"
 #include "debug.h" // for lyxerr
 #include "lyxrc.h" // for lyxrc.display_graphics
 
@@ -294,7 +293,7 @@ void FormGraphics::apply()
 
 	// the file section
 	igp.filename.set(getString(file_->input_filename),
-			 kernel().buffer()->filePath());
+			 kernel().bufferFilepath());
 
 	igp.lyxscale = strToInt(getString(file_->input_lyxscale));
 	if (igp.lyxscale == 0) {
@@ -427,7 +426,7 @@ void FormGraphics::update() {
 
 	// the file section
 	string const name =
-		igp.filename.outputFilename(kernel().buffer()->filePath());
+		igp.filename.outputFilename(kernel().bufferFilepath());
 	fl_set_input(file_->input_filename, name.c_str());
 	fl_set_input(file_->input_lyxscale, tostr(igp.lyxscale).c_str());
 

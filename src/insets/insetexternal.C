@@ -121,12 +121,6 @@ void InsetExternal::statusChanged()
 }
 
 
-InsetExternal::Params const & InsetExternal::params() const
-{
-	return params_;
-}
-
-
 dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 {
 	switch (cmd.action) {
@@ -134,18 +128,20 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 	case LFUN_EXTERNAL_EDIT: {
 		Assert(cmd.view());
 
+		Buffer const * buffer = cmd.view()->buffer();
 		InsetExternal::Params p;
-		InsetExternalMailer::string2params(cmd.argument, p);
-		editExternal(p, cmd.view()->buffer());
+		InsetExternalMailer::string2params(cmd.argument, buffer, p);
+		editExternal(p, buffer);
 		return DISPATCHED_NOUPDATE;
 	}
 
 	case LFUN_INSET_MODIFY: {
 		Assert(cmd.view());
 
+		Buffer const * buffer = cmd.view()->buffer();
 		InsetExternal::Params p;
-		InsetExternalMailer::string2params(cmd.argument, p);
-		setParams(p, cmd.view()->buffer()->filePath());
+		InsetExternalMailer::string2params(cmd.argument, buffer, p);
+		setParams(p);
 		cmd.view()->updateInset(this);
 		return DISPATCHED;
 	}
@@ -180,16 +176,11 @@ void InsetExternal::draw(PainterInfo & pi, int x, int y) const
 
 namespace {
 
-lyx::graphics::Params get_grfx_params(InsetExternal::Params const & eparams,
-			     string const & filepath)
+lyx::graphics::Params get_grfx_params(InsetExternal::Params const & eparams)
 {
 	lyx::graphics::Params gparams;
 
-	if (!eparams.filename.empty()) {
-		Assert(AbsolutePath(filepath));
-		gparams.filename = MakeAbsPath(eparams.filename, filepath);
-	}
-
+	gparams.filename = eparams.filename.absFilename();
 	gparams.scale = eparams.lyxscale;
 	gparams.display = eparams.display;
 
@@ -226,7 +217,13 @@ string const getScreenLabel(InsetExternal::Params const & params)
 } // namespace anon
 
 
-void InsetExternal::setParams(Params const & p, string const & filepath)
+InsetExternal::Params const & InsetExternal::params() const
+{
+	return params_;
+}
+
+
+void InsetExternal::setParams(Params const & p)
 {
 	// The stored params; what we would like to happen in an ideal world.
 	params_.filename = p.filename;
@@ -237,7 +234,6 @@ void InsetExternal::setParams(Params const & p, string const & filepath)
 	// We display the inset as a button by default.
 	bool display_button = (!getTemplatePtr(params_) ||
 			       params_.filename.empty() ||
-			       filepath.empty() ||
 			       params_.display == lyx::graphics::NoDisplay);
 
 	if (display_button) {
@@ -260,8 +256,14 @@ void InsetExternal::setParams(Params const & p, string const & filepath)
 			renderer_.reset(graphic_ptr);
 		}
 
-		graphic_ptr->update(get_grfx_params(params_, filepath));
+		graphic_ptr->update(get_grfx_params(params_));
 	}
+}
+
+
+BufferView * InsetExternal::view() const
+{
+	return renderer_->view();
 }
 
 
@@ -271,13 +273,15 @@ string const InsetExternal::editMessage() const
 }
 
 
-void InsetExternal::write(Buffer const *, ostream & os) const
+void InsetExternal::write(Buffer const * buffer, ostream & os) const
 {
 	os << "External\n"
 	   << "\ttemplate " << params_.templatename << '\n';
 
 	if (!params_.filename.empty())
-		os << "\tfilename " << params_.filename << '\n';
+		os << "\tfilename "
+		   << params_.filename.outputFilename(buffer->filePath())
+		   << '\n';
 
 	if (params_.display != defaultDisplayType)
 		os << "\tdisplay " << lyx::graphics::displayTranslator.find(params_.display)
@@ -323,7 +327,7 @@ void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 		case EX_FILENAME: {
 			lex.next();
 			string const name = lex.getString();
-			params.filename = name;
+			params.filename.set(name, buffer->filePath());
 			break;
 		}
 
@@ -363,15 +367,14 @@ void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 	lex.popTable();
 
 	// Replace the inset's store
-	string const path = buffer ? buffer->filePath() : string();
-	setParams(params, path);
+	setParams(params);
 
 	lyxerr[Debug::INFO] << "InsetExternal::Read: "
-	       << "template: '" << params_.templatename
-	       << "' filename: '" << params_.filename
-	       << "' display: '" << params_.display
-	       << "' scale: '" << params_.lyxscale
-	       << '\'' << endl;
+			    << "template: '" << params_.templatename
+			    << "' filename: '" << params_.filename.absFilename()
+			    << "' display: '" << params_.display
+			    << "' scale: '" << params_.lyxscale
+			    << '\'' << endl;
 }
 
 
@@ -493,8 +496,7 @@ void InsetExternal::updateExternal(string const & format,
 	if (from_format.empty())
 		return;
 
-	string from_file = params_.filename.empty() ?
-		string() : MakeAbsPath(params_.filename, buf->filePath());
+	string from_file = params_.filename.absFilename();
 
 	if (from_format == "*") {
 		if (from_file.empty())
@@ -550,10 +552,11 @@ string const doSubstitution(InsetExternal::Params const & params,
 			    Buffer const * buffer, string const & s)
 {
 	string result;
-	string const basename = ChangeExtension(params.filename, string());
+	string const absfilename = params.filename.absFilename();
+	string const basename = ChangeExtension(absfilename, string());
 	string filepath;
 
-	result = subst(s, "$$FName", params.filename);
+	result = subst(s, "$$FName", absfilename);
 	result = subst(result, "$$Basename", basename);
 	result = subst(result, "$$FPath", filepath);
 	result = subst(result, "$$Tempname", params.tempname);
@@ -619,11 +622,15 @@ InsetExternalMailer::InsetExternalMailer(InsetExternal & inset)
 
 string const InsetExternalMailer::inset2string() const
 {
-	return params2string(inset_.params());
+	BufferView * bv = inset_.view();
+	if (!bv)
+		return string();
+	return params2string(inset_.params(), bv->buffer());
 }
 
 
 void InsetExternalMailer::string2params(string const & in,
+					Buffer const * buffer,
 					InsetExternal::Params & params)
 {
 	params = InsetExternal::Params();
@@ -653,20 +660,21 @@ void InsetExternalMailer::string2params(string const & in,
 
 	if (lex.isOK()) {
 		InsetExternal inset;
-		inset.read(0, lex);
+		inset.read(buffer, lex);
 		params = inset.params();
 	}
 }
 
 
 string const
-InsetExternalMailer::params2string(InsetExternal::Params const & params)
+InsetExternalMailer::params2string(InsetExternal::Params const & params,
+				   Buffer const * buffer)
 {
 	InsetExternal inset;
-	inset.setParams(params, string());
+	inset.setParams(params);
 	ostringstream data;
 	data << name_ << ' ';
-	inset.write(0, data);
+	inset.write(buffer, data);
 	data << "\\end_inset\n";
 	return STRCONV(data.str());
 }

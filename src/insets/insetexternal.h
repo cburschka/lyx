@@ -14,6 +14,7 @@
 
 #include "inset.h"
 #include "graphics/GraphicsTypes.h"
+#include "support/filename.h"
 #include "LString.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -30,7 +31,7 @@ public:
 		Params();
 		~Params();
 		/// the filename
-		string filename;
+		lyx::support::FileName filename;
 		/// the current template used
 		string templatename;
 		/// The name of the tempfile used for manipulations.
@@ -85,8 +86,13 @@ public:
 	///
 	virtual InsetBase * clone() const;
 
+	/// return a copy of our current params
+	Params const & params() const;
+
 	/// Set the inset parameters.
-	virtual void setParams(Params const &, string const & filepath);
+	virtual void setParams(Params const &);
+
+	virtual BufferView * view() const;
 
 	/** update the file represented by the template.
 	    If \param external_in_tmpdir == true, then the generated file is
@@ -94,9 +100,6 @@ public:
 	*/
 	void updateExternal(string const &, Buffer const *,
 			    bool external_in_tmpdir) const;
-
-	/// return a copy of our current params
-	Params const & params() const;
 
 private:
 	/** This method is connected to the graphics loader, so we are
@@ -133,9 +136,11 @@ public:
 	///
 	virtual string const inset2string() const;
 	///
-	static void string2params(string const &, InsetExternal::Params &);
+	static void string2params(string const &, Buffer const *,
+				  InsetExternal::Params &);
 	///
-	static string const params2string(InsetExternal::Params const &);
+	static string const params2string(InsetExternal::Params const &,
+					  Buffer const *);
 private:
 	///
 	static string const name_;
