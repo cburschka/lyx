@@ -14,6 +14,7 @@
 
 #include <vector>
 
+class BufferView;
 class FuncRequest;
 
 /** Dispatch result codes
@@ -64,6 +65,11 @@ public:
 
 	///
 	virtual ~InsetBase() {}
+
+	/// Methods to cache and retrieve a cached BufferView.
+	virtual void cache(BufferView *) const {}
+	///
+	virtual BufferView * view() const { return 0; }
 };
 
 #endif

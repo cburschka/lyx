@@ -131,7 +131,7 @@ public:
 	///
 	InsetExternalMailer(InsetExternal & inset);
 	///
-	virtual Inset & inset() const { return inset_; }
+	virtual InsetBase & inset() const { return inset_; }
 	///
 	virtual string const & name() const { return name_; }
 	///

@@ -24,7 +24,6 @@
 #include "support/types.h"
 
 class LyXFont;
-class BufferView;
 class Buffer;
 class Painter;
 class LyXText;
@@ -337,10 +336,6 @@ public:
 	 *  defaults to empty.
 	 */
 	virtual void generatePreview() const {}
-	///
-	virtual void cache(BufferView *) const {}
-	///
-	virtual BufferView * view() const { return 0; }
 
 protected:
 	///

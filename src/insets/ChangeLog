@@ -1,5 +1,20 @@
 2003-03-10  Angus Leeming  <leeming@lyx.org>
 
+	* inset.h, insetbase.h: move cache() and view() into InsetBase.
+
+	* insetcommand.h (inset):
+	* insetert.h (inset):
+	* insetexternal.h (inset):
+	* insetfloat.h (inset):
+	* insetgraphics.h (inset):
+	* insetinclude.h (inset):
+	* insetminipage.h (inset):
+	* insettabular.h (inset):
+	* insetwrap.h (inset):
+	* mailinset.h (inset): return an InsetBase &, not an Inset &.
+
+2003-03-10  Angus Leeming  <leeming@lyx.org>
+
 	* insetcommand.C (string2params):
 	* insetexternal.C (string2params):
 	* insetfloat.C (string2params):

@@ -16,7 +16,7 @@
 #include "LString.h"
 
 
-class Inset;
+class InsetBase;
 
 
 class MailInset {
@@ -34,7 +34,7 @@ public:
 
 protected:
 	///
-	virtual Inset & inset() const = 0;
+	virtual InsetBase & inset() const = 0;
 	///
 	virtual string const & name() const = 0;
 };
