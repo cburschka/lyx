@@ -26,7 +26,7 @@ Menuset
 # FILE MENU
 #
     Menu "file_nobuffer"
-	Item "New...|N" "buffer-new"
+	Item "New|N" "buffer-new"
 	Item "New from Template...|T" "buffer-new-template"
 	Item "Open...|O" "file-open"
 	Separator
@@ -38,14 +38,14 @@ Menuset
     End
 
     Menu "file"
-	Item "New...|N" "buffer-new"
+	Item "New|N" "buffer-new"
 	Item "New from Template...|T" "buffer-new-template"
 	Item "Open...|O" "file-open"
 	Separator
 	Item "Close|C" "buffer-close"
 	Item "Save|S" "buffer-write"
 	Item "Save As...|A" "buffer-write-as"
-	Item "Revert to Saved|R" "buffer-reload"
+	Item "Revert|R" "buffer-reload"
 	Submenu "Version Control|V" "file_vc"
 	Separator
 	Submenu "Import|I" "file_import"
@@ -60,7 +60,7 @@ Menuset
 
     Menu "file_vc"
 	OptItem "Register|R" "vc-register"
-	OptItem "Check In Changes|I" "vc-check-in"
+	OptItem "Check In Changes...|I" "vc-check-in"
 	OptItem "Check Out for Edit|O" "vc-check-out"
 	OptItem "Revert to Last Version|L" "vc-revert"
 	OptItem "Undo Last Check In|U" "vc-undo-last"
@@ -80,7 +80,7 @@ Menuset
 # EDIT MENU
 #
     Menu "edit_nobuffer"
-	Item "Preferences...|P" "dialog-preferences"
+	Item "Preferences|P" "dialog-preferences"
 	Item "Reconfigure|R" "reconfigure"
     End
 
@@ -98,13 +98,13 @@ Menuset
 	Submenu "Math|M" "edit_math"
 	Separator
 	#Item "Read Only" "buffer-toggle-read-only"
-	Item "Spellchecker...|S" "spellchecker"
-	Item "Thesaurus..." "thesaurus-entry"
+	Item "Spellchecker|S" "spellchecker"
+	Item "Thesaurus" "thesaurus-entry"
 	Item "Check TeX|h" "buffer-chktex"
 	Item "Remove All Error Boxes|E" "error-remove-all"
 	Item "Open/Close float|l" "inset-toggle"
 	Separator
-	Item "Preferences...|P" "dialog-preferences"
+	Item "Preferences|P" "dialog-preferences"
 	Item "Reconfigure|R" "reconfigure"
     End
 
@@ -223,7 +223,7 @@ Menuset
 	Item "Array environment|y" "math-insert matrix 2 2"
 	Item "Cases environment|C" "math-insert cases 2"
   Separator
-	Item "Math Panel...|l" "math-panel"
+	Item "Math Panel|l" "math-panel"
     End
 
     Menu "insert_floats"
@@ -247,10 +247,10 @@ Menuset
 # LAYOUT MENU
 #
     Menu "layout"
-	Item "Character...|C" "layout-character"
-	Item "Paragraph...|P" "layout-paragraph"
-	Item "Document...|D" "layout-document"
-	OptItem "Tabular...|T" "layout-tabular"
+	Item "Character|C" "layout-character"
+	Item "Paragraph|P" "layout-paragraph"
+	Item "Document|D" "layout-document"
+	OptItem "Tabular|T" "layout-tabular"
 	Separator
 	Item "Emphasize Style|E" "font-emph"
 	Item "Noun Style|N" "font-noun"
@@ -258,7 +258,7 @@ Menuset
 #	Item "TeX Style|X" "tex-mode"
 	Separator
 	Item "Change Environment Depth|v" "depth-increment"
-	Item "Preamble...|r" "layout-preamble"
+	Item "Preamble|r" "layout-preamble"
 	Item "Start Appendix here|A" "appendix"
     End
 
