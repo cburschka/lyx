@@ -1,0 +1,191 @@
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
+\textclass ijmpd
+\language english
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+markboth{<Authors' Names>} {<Paper's short title>}
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+catchline{}{}{}
+\end_inset 
+
+
+\layout Title
+
+<TITLE OF THE ARTICLE>
+\layout Author
+
+<FIRST-1>.
+ <MIDDLE-1>.
+ <SURNAME-1>
+\layout Address
+
+<University Department, University Name, Address>
+\newline 
+<City, State ZIP/Zone, Country>
+\layout Author
+
+<FIRST-2>.
+ <MIDDLE-2>.
+ <SURNAME-2>
+\layout Address
+
+<University Department, University Name, Address>
+\newline 
+<City, State ZIP/Zone, Country>
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+pub{Received <received date>}{Revised <revised date>}
+\end_inset 
+
+
+\layout Abstract
+
+<The abstract of the paper.
+ Note that the abstract does not have a label.>
+\layout Section
+
+Introduction
+\layout Standard
+
+<intro text>
+\layout Section
+
+The theory
+\layout Standard
+
+<theory text>
+\layout Theorem
+
+<theorem text>
+\layout Proof
+
+<proof text>
+\layout Section
+
+The numerical method
+\layout Standard
+
+<numerical method text; a citation reference is included.
+\begin_inset LatexCommand \cite{PaperI}
+
+\end_inset 
+
+>
+\layout Section
+
+Results and discussion
+\layout Standard
+
+<results and discussion text>
+\layout Subsection
+
+A subsection
+\layout Standard
+
+<subsection text>
+\layout Subsubsection
+
+A subsubsection
+\layout Standard
+
+<subsubsection text>
+\layout Section*
+
+Acknowledgments
+\layout Standard
+
+<acknowledgments text.
+ Note that this is only a starred section; there is no 
+\begin_inset Quotes eld
+\end_inset 
+
+acknowledgments
+\begin_inset Quotes erd
+\end_inset 
+
+ section.>
+\layout Bibliography
+\bibitem {PaperI}
+
+First-1.
+ Middle-1.
+ Surname-1, First-2.
+ Middle-2.
+ Surname-2, and First-3.
+ Middle-3.
+ Surname-3, 
+\emph on 
+Journal abbreviation
+\emph default 
+ 
+\series bold 
+volume
+\series default 
+, page (year).
+\layout Appendix
+
+\layout Section
+
+An Appendix section
+\layout Standard
+
+<appendix text; Note that appendices are placed 
+\shape italic 
+after
+\shape default 
+ the References.>
+\layout Section
+
+Another Appendix section
+\layout Standard
+
+<another appendix text>
+\the_end

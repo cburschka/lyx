@@ -1,0 +1,175 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[ws-ijmpd]{article (ijmpd)}
+#
+# Textclass definition file for ws-ijmpd.cls
+# For publications in the International Journal of Modern Physics D
+# (usually abbreviated as IJMPD).
+# 
+# Author: Panayotis "PAP" Papasotiriou <papasot@physics.upatras.gr>
+#
+# Version 1  2002-09-24  -  First version from scratch.
+
+# Input general definitions
+Input stdclass.inc
+Input stdsections.inc
+NoStyle Chapter
+NoStyle Chapter*
+NoStyle Part
+Input stdlists.inc
+Input stdlayouts.inc
+NoStyle Verse
+
+# General class settings
+MaxCounter		Counter_Section
+SecNumDepth		3
+TocDepth		0
+ProvidesAmsmath		0
+ProvidesNatbib		0
+ProvidesUrl		0
+ClassOptions
+  FontSize              ""
+  PageStyle             ""
+End
+
+# Title style redefinition
+Style Title
+  Align                 Center
+  AlignPossible         Center
+  Font 
+    Size                Large
+  EndFont
+End
+
+# Author style redefinition
+Style Author
+  Align                 Center
+  AlignPossible         Center
+  Font 
+    Series              Medium
+    Size                Normal
+  EndFont
+End
+
+# Address style definition
+Style Address
+  LatexType             Command
+  InTitle		1
+  LatexName             address
+  ParSkip		0.4
+  BottomSep		0.4
+  Align                 Center
+  AlignPossible         Center
+  LabelType             No_Label
+  Font 
+    Series              Medium
+    Shape               Italic
+    Size                Normal
+  EndFont
+End
+
+# Abstract style redefinition
+Style Abstract
+  LatexType             Environment
+  Align                 Block
+  AlignPossible         Block
+  LabelType             No_Label
+  Font 
+    Size                Small
+  EndFont
+End
+
+# Section style redefinition
+Style Section
+  Align                 Block
+  AlignPossible         Block
+  Font 
+    Size                Normal
+  EndFont
+End
+
+# Section* style redefinition
+Style Section*
+  Align                 Block
+  AlignPossible         Block
+  Font 
+    Size                Normal
+  EndFont
+End
+
+# Subsection style redefinition
+Style Subsection
+  Align                 Block
+  AlignPossible         Block
+  Font 
+    Shape               Italic
+    Size                Normal
+  EndFont
+End
+
+# Subsubection style redefinition
+Style Subsubsection
+  Align                 Block
+  AlignPossible         Block
+  Font 
+    Series              Medium
+    Shape               Italic
+    Size                Normal
+  EndFont
+End
+
+# Theorem style definition
+Style Theorem
+  LatexType             Environment
+  LatexName             theorem
+  Margin                First_Dynamic
+  Align                 Block
+  AlignPossible         Block
+  LabelType             Static
+  LabelString           Theorem:
+  LabelSep              M
+  LabelFont 
+    Series              Bold
+    Size                Normal
+  EndFont
+End
+
+# Proof style definition
+Style Proof
+  LatexType             Environment
+  LatexName             proof
+  Margin                First_Dynamic
+  Align                 Block
+  AlignPossible         Block
+  LabelType             Static
+  LabelString           Proof:
+  LabelSep              M
+  LabelFont 
+    Series              Bold
+    Size                Normal
+  EndFont
+End
+
+# Bibliography style redefinition
+Style Bibliography
+  Align                 Block
+  AlignPossible         Block
+  LabelFont 
+    Size                Normal
+  EndFont
+End
+
+# Appendix style definition
+Style Appendix
+  Margin                Static
+  LatexType             Command
+  LatexName             appendix
+  KeepEmpty             1
+  Align                 Block
+  AlignPossible         Block
+  LabelType             Centered_Top_Environment
+  LabelString		Appendix
+  Font 
+    Series              Bold
+    Size                Normal
+  EndFont
+End
