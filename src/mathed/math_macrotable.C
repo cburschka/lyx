@@ -94,6 +94,7 @@ void MathMacroTable::builtinMacros()
 	createTemplate("lor",          0, "\\vee");
 	createTemplate("notin",        0, "\\not\\in");
 	createTemplate("perp",         0, "\\bot");
+	createTemplate("owns",         0, "\\ni");
 	createTemplate("to",           0, "\\rightarrow");
 	//createTemplate("lint",       4, "\\int_#1^#2#3 d#4");
 	//createTemplate("silentmult", 0, "\\cdot");

@@ -197,7 +197,7 @@ latexkeys wordlist[] =
 	{"neg",  LM_TK_SYM, LM_neg, LMB_NONE},
 	{"neq",  LM_TK_SYM, LM_neq, LMB_RELATION},
 	{"newcommand",  LM_TK_NEWCOMMAND, 0 , LMB_NONE},
-	{"ni",  LM_TK_NOGLYPH, 0, LMB_RELATION},
+	{"ni",  LM_TK_SYM, LM_ni, LMB_RELATION},
 	{"nolimits",  LM_TK_LIMIT, static_cast<unsigned>(-1), LMB_NONE},
 	{"nonumber",  LM_TK_NONUM, 0, LMB_NONE},
 	{"not",  LM_TK_NOT, LM_not, LMB_NONE},

@@ -9,7 +9,7 @@ enum Math_Symbols_enum {
 // Accents
 	LM_backslash      = '\\',
 	LM_acute          = '\'',
-	LM_grave          =  '`',
+	LM_grave          = '`',
 	LM_hat            = '^',
 	LM_tilde          = '~',
 	LM_dot            = '.',
@@ -79,6 +79,7 @@ enum Math_Symbols_enum {
 	LM_cong           = 0x40,
 	LM_neq            = 0xb9,
 	LM_in             = 0xce,
+	LM_ni             = 0x27,
 	LM_propto         = 0xb5,
 	LM_pm             = 0xb1,
 	LM_cap            = 0xc7,
