@@ -114,7 +114,6 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 
 	//lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 	FuncRequest cmd = cmd0;
-	nopop_ = false;
 	LCursor safe = *this;
 
 	for ( ; size(); pop()) {
@@ -134,7 +133,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	}
 	// it completely to get a 'bomb early' behaviour in case this
 	// object will be used again.
-	if (nopop_ || !disp_.dispatched())
+	if (!disp_.dispatched())
 		operator=(safe);
 	return disp_;
 }

@@ -170,8 +170,6 @@ public:
 	void undispatched();
 	/// don't call update() when done
 	void noUpdate();
-	/// don't pop cursor to the level where the LFUN was handled
-	void noPop();
 
 	/// output
 	friend std::ostream & operator<<(std::ostream & os, LCursor const & cur);
@@ -206,9 +204,6 @@ private:
 	bool selection_;
 	/// are we on the way to get one?
 	bool mark_;
-	/// Reset cursor to the value it had at the beginning of the latest
-	// dispatch() once the event is fully handled.
-	bool nopop_;
 
 	//
 	// math specific stuff that could be promoted to "global" later
