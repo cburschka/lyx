@@ -684,8 +684,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_DIALOG_SHOW:
-		if (argument == "mathpanel")
-			result = UNDISPATCHED;
+		result = UNDISPATCHED;
 		break;
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
