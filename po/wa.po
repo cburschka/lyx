@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.0\n"
-"POT-Creation-Date: 2000-01-20 02:44+0100\n"
+"POT-Creation-Date: 2000-01-26 22:46+0100\n"
 "PO-Revision-Date: 2000-01-20 02:50+01:00\n"
 "Last-Translator: Lorint Hendschel <LorintHendschel@skynet.be>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. sgml2lyx failed
-#: src/buffer.C:221 src/buffer.C:231 src/buffer.C:3561 src/bufferlist.C:516
-#: src/bufferlist.C:546 src/lyx_cb.C:467 src/lyx_cb.C:812 src/lyx_cb.C:845
+#: src/buffer.C:221 src/buffer.C:231 src/buffer.C:3563 src/bufferlist.C:520
+#: src/bufferlist.C:550 src/lyx_cb.C:467 src/lyx_cb.C:812 src/lyx_cb.C:845
 #: src/lyx_sendfax_main.C:262 src/menus.C:1665
 msgid "Error!"
 msgstr "Aroke !"
@@ -112,113 +112,113 @@ msgstr "Aroke! Dji n' sai scrîre ci fitchî la: "
 msgid "Error: Cannot write file:"
 msgstr "Aroke! Dji n' sai scrîre li fitchî"
 
-#: src/buffer.C:1356
+#: src/buffer.C:1358
 msgid "Error: Cannot open temporary file:"
 msgstr "Aroke! Dji n' sai drovi li fitchî timporaire"
 
-#: src/buffer.C:1576
+#: src/buffer.C:1578
 #, fuzzy
 msgid "Error: Cannot open file: "
 msgstr "Aroke! Dji n' sai scrîre li fitchî"
 
-#: src/buffer.C:2133 src/buffer.C:2719 src/buffer.C:3480 src/buffer.C:3502
-#: src/paragraph.C:3588
+#: src/buffer.C:2135 src/buffer.C:2721 src/buffer.C:3482 src/buffer.C:3504
+#: src/paragraph.C:3584
 msgid "LYX_ERROR:"
 msgstr "LYX_ERROR:"
 
-#: src/buffer.C:2133 src/buffer.C:2719
+#: src/buffer.C:2135 src/buffer.C:2721
 msgid "Cannot write file"
 msgstr "Dji n' sai scrîre li fitchî"
 
-#: src/buffer.C:2205 src/buffer.C:2798
+#: src/buffer.C:2207 src/buffer.C:2800
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Aroke : Måle parfondeu po li cmande LatexType\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3158
+#: src/buffer.C:3160
 msgid "Running LaTeX..."
 msgstr "Dj' enonde LaTeX..."
 
-#: src/buffer.C:3177
+#: src/buffer.C:3179
 msgid "LaTeX did not work!"
 msgstr "LaTeX n' a nén stî!"
 
-#: src/buffer.C:3178 src/buffer.C:3249 src/buffer.C:3320
+#: src/buffer.C:3180 src/buffer.C:3251 src/buffer.C:3322
 msgid "Missing log file:"
 msgstr "Li fitchî des messaedje manke :"
 
 #. no errors or any other things to think about so:
-#: src/buffer.C:3180 src/buffer.C:3189 src/buffer.C:3251 src/buffer.C:3260
-#: src/buffer.C:3322 src/buffer.C:3330 src/combox.C:465
+#: src/buffer.C:3182 src/buffer.C:3191 src/buffer.C:3253 src/buffer.C:3262
+#: src/buffer.C:3324 src/buffer.C:3332 src/combox.C:465
 msgid "Done"
 msgstr "Fwait"
 
 #. path to Literate file
-#: src/buffer.C:3226
+#: src/buffer.C:3228
 #, fuzzy
 msgid "Running Literate..."
 msgstr "Dj' enonde LaTeX..."
 
-#: src/buffer.C:3248
+#: src/buffer.C:3250
 #, fuzzy
 msgid "Literate command did not work!"
 msgstr "LaTeX n' a nén stî!"
 
 #. path to Literate file
-#: src/buffer.C:3297
+#: src/buffer.C:3299
 msgid "Building Program..."
 msgstr ""
 
-#: src/buffer.C:3319
+#: src/buffer.C:3321
 #, fuzzy
 msgid "Build did not work!"
 msgstr "LaTeX n' a nén stî!"
 
 #. path to LaTeX file
-#: src/buffer.C:3366
+#: src/buffer.C:3368
 msgid "Running chktex..."
 msgstr "Dj' enonde chktex..."
 
-#: src/buffer.C:3382
+#: src/buffer.C:3384
 msgid "chktex did not work!"
 msgstr "chktex n' a nén stî"
 
-#: src/buffer.C:3383
+#: src/buffer.C:3385
 msgid "Could not run with file:"
 msgstr "Dji n' a nén parvinu a-z enonder ci fitchî ci:"
 
-#: src/buffer.C:3481 src/buffer.C:3503 src/paragraph.C:3589
+#: src/buffer.C:3483 src/buffer.C:3505 src/paragraph.C:3585
 msgid "Cannot open temporary file:"
 msgstr "Dji n' sai drovi li fitchî timporaire:"
 
-#: src/buffer.C:3554
+#: src/buffer.C:3556
 msgid "Error! Can't open temporary file:"
 msgstr "Aroke ! Dji n' sai drovi li fitchî timporaire:"
 
-#: src/buffer.C:3562
+#: src/buffer.C:3564
 msgid "Error executing *roff command on table"
 msgstr "Yåk n' a nén stî come dj' enondeve *roff sol tåvlea"
 
-#: src/buffer.C:3730 src/lyx_cb.C:3196 src/text.C:1890
+#: src/buffer.C:3732 src/lyx_cb.C:3196 src/text.C:1889
 msgid "Impossible Operation!"
 msgstr "Dji n' sai fé çoula!"
 
-#: src/buffer.C:3731
+#: src/buffer.C:3733
 msgid "Cannot insert table/list in table."
 msgstr "Dji n' sai stitchî li tåvlea ou li djîveye è tåvlea"
 
-#: src/buffer.C:3732 src/lyx_cb.C:3198 src/text.C:1892 src/text.C:3948
-#: src/text.C:3956 src/text.C:3971 src/text.C:3988 src/text2.C:2165
+#: src/buffer.C:3734 src/lyx_cb.C:3198 src/text.C:1891 src/text.C:3961
+#: src/text.C:3969 src/text.C:3984 src/text.C:4001 src/text2.C:2165
 #: src/text2.C:2175
 msgid "Sorry."
 msgstr "Dji rgrete."
 
-#: src/bufferlist.C:103 src/bufferlist.C:259 src/lyxvc.C:91 src/lyxvc.C:123
+#: src/bufferlist.C:103 src/bufferlist.C:263 src/lyxvc.C:91 src/lyxvc.C:123
 #: src/lyxvc.C:153
 msgid "Changes in document:"
 msgstr "Candjmints è documint:"
 
-#: src/bufferlist.C:106 src/bufferlist.C:261
+#: src/bufferlist.C:106 src/bufferlist.C:265
 msgid "Save document?"
 msgstr "Schaper li documint?"
 
@@ -234,99 +234,99 @@ msgstr "Fåt-i moussî foû po do bon?"
 msgid "Saving document"
 msgstr "Dji schape li documint"
 
-#: src/bufferlist.C:205
+#: src/bufferlist.C:209
 msgid "Document saved as"
 msgstr "Li documint est schapé eyèt lomé"
 
-#: src/bufferlist.C:216
+#: src/bufferlist.C:220
 msgid "Could not delete auto-save file!"
 msgstr "Dji n' sai disfacer li copeye schapeye!"
 
-#: src/bufferlist.C:226
+#: src/bufferlist.C:230
 msgid "Save failed!"
 msgstr "Dji n' a nén savu schaper!"
 
-#: src/bufferlist.C:360
+#: src/bufferlist.C:364
 msgid "lyx: Attempting to save document "
 msgstr "lyx: dji saye di schaper li documint"
 
-#: src/bufferlist.C:363
+#: src/bufferlist.C:367
 msgid " as..."
 msgstr " dizo..."
 
-#: src/bufferlist.C:389
+#: src/bufferlist.C:393
 msgid "  Save seems successful. Phew."
 msgstr "Dj' a l' ideye ki ça a stî, pai-st a Diè"
 
-#: src/bufferlist.C:393
+#: src/bufferlist.C:397
 msgid "  Save failed! Trying..."
 msgstr " Dji n' a savu schaper! Dji rsaye..."
 
-#: src/bufferlist.C:396
+#: src/bufferlist.C:400
 msgid "  Save failed! Bummer. Document is lost."
 msgstr " Dji n' a savu schaper! Berwete, vosse documint est pierdu!"
 
-#: src/bufferlist.C:425
+#: src/bufferlist.C:429
 msgid "An emergency save of this document exists!"
 msgstr "I gn a ene copeye di schapeye po ci documint ci."
 
-#: src/bufferlist.C:427
+#: src/bufferlist.C:431
 msgid "Try to load that instead?"
 msgstr "El fåt-i tcherdjî el plaece?"
 
-#: src/bufferlist.C:449
+#: src/bufferlist.C:453
 msgid "Autosave file is newer."
 msgstr "Li copeye schapeye a l' air pus noûve..."
 
-#: src/bufferlist.C:451
+#: src/bufferlist.C:455
 msgid "Load that one instead?"
 msgstr "El fåt-i tcherdjî el plaece?"
 
-#: src/bufferlist.C:516
+#: src/bufferlist.C:520
 msgid "Unable to open template"
 msgstr "Dji n' a nén parvinu a drovi li modele"
 
-#: src/bufferlist.C:547
+#: src/bufferlist.C:551
 msgid "Could not convert file"
 msgstr "Dji n' a nén parvinu a convierti li fitchî"
 
-#: src/bufferlist.C:560 src/lyxfunc.C:2477 src/lyxfunc.C:2616
-#: src/lyxfunc.C:2695
+#: src/bufferlist.C:564 src/lyxfunc.C:2479 src/lyxfunc.C:2618
+#: src/lyxfunc.C:2697
 msgid "Document is already open:"
 msgstr "Ci documint chal est ddja drovu :"
 
-#: src/bufferlist.C:562
+#: src/bufferlist.C:566
 msgid "Do you want to reload that document?"
 msgstr "Voloz-ve ritcherdjî ci documint la?"
 
-#: src/bufferlist.C:579
+#: src/bufferlist.C:583
 msgid "File `"
 msgstr "Li fitchî `"
 
-#: src/bufferlist.C:580
+#: src/bufferlist.C:584
 msgid "' is read-only."
 msgstr "' ni pout esse ki lejhu."
 
 #. Ask if the file should be checked out for
 #. viewing/editing, if so: load it.
-#: src/bufferlist.C:594
+#: src/bufferlist.C:598
 #, fuzzy
 msgid "Do you want to retrive file under version control?"
 msgstr "Voloz-ve drovi li documint?"
 
-#: src/bufferlist.C:602
+#: src/bufferlist.C:606
 msgid "Cannot open specified file:"
 msgstr "Dji n' parvén nén a drovi ci fitchî la:"
 
-#: src/bufferlist.C:604
+#: src/bufferlist.C:608
 msgid "Create new document with this name?"
 msgstr "Fåt-i fé on novea documint avou li minme no?"
 
-#: src/BufferView.C:409
+#: src/BufferView.C:411
 msgid "Formatting document..."
 msgstr "Metaedje è pådje do documint..."
 
-#: src/BufferView.C:493 src/BufferView.C:497
+#: src/BufferView.C:496 src/BufferView.C:500
 msgid "No more errors"
 msgstr "Pupont d' arokes"
 
@@ -771,56 +771,56 @@ msgstr "Trover tot djusse|#j#t"
 msgid "Replace All|#A#a"
 msgstr "Mete el plaece|#L#r"
 
-#: src/insets/figinset.C:1110
+#: src/insets/figinset.C:1093
 msgid "[render error]"
 msgstr "[aroke dins l' eterpretaedje]"
 
-#: src/insets/figinset.C:1111
+#: src/insets/figinset.C:1094
 msgid "[rendering ... ]"
 msgstr "[eterpretaedje ...]"
 
-#: src/insets/figinset.C:1113
+#: src/insets/figinset.C:1096
 msgid "[no file]"
 msgstr "[nou fitchî]"
 
-#: src/insets/figinset.C:1114
+#: src/insets/figinset.C:1097
 msgid "[not displayed]"
 msgstr "[nén håyné]"
 
-#: src/insets/figinset.C:1115
+#: src/insets/figinset.C:1098
 msgid "[no ghostscript]"
 msgstr "[nou ghostscript]"
 
-#: src/insets/figinset.C:1117
+#: src/insets/figinset.C:1100
 msgid "[unknown error]"
 msgstr "[aroke disconoxhuwe]"
 
-#: src/insets/figinset.C:1314
+#: src/insets/figinset.C:1297
 msgid "Figure"
 msgstr "Imådje"
 
-#: src/insets/figinset.C:1376 src/insets/figinset.C:1509
+#: src/insets/figinset.C:1359 src/insets/figinset.C:1492
 msgid "empty figure path"
 msgstr "li tchmin après l' imådje est vûde"
 
-#: src/insets/figinset.C:2157
+#: src/insets/figinset.C:2140
 msgid "Clipart"
 msgstr ""
 
-#: src/insets/figinset.C:2158 src/lyxfunc.C:2509 src/lyxfunc.C:2572
-#: src/lyxfunc.C:2795
+#: src/insets/figinset.C:2141 src/lyxfunc.C:2511 src/lyxfunc.C:2574
+#: src/lyxfunc.C:2797
 msgid "Document"
 msgstr "Documint"
 
-#: src/insets/figinset.C:2164 src/insets/figinset.C:2168
+#: src/insets/figinset.C:2147 src/insets/figinset.C:2151
 msgid "EPS Figure"
 msgstr "Imådje EPS"
 
-#: src/insets/figinset.C:2182
+#: src/insets/figinset.C:2165
 msgid "Filename can't contain any of these characters:"
 msgstr "I n' pout î avu nouk di ces caracteres ci dins on no di fitchî :"
 
-#: src/insets/figinset.C:2185
+#: src/insets/figinset.C:2168
 #, no-c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "espåçmint, '#', '~', '$' ou '%'."
@@ -955,8 +955,8 @@ msgid "Use include|#U"
 msgstr "Eployî include|#U"
 
 #. launches dialog
-#: src/insets/insetinclude.C:111 src/lyx_cb.C:314 src/lyxfunc.C:2457
-#: src/lyxfunc.C:2547 src/lyxfunc.C:2596 src/lyxfunc.C:2669 src/lyxfunc.C:2770
+#: src/insets/insetinclude.C:111 src/lyx_cb.C:314 src/lyxfunc.C:2459
+#: src/lyxfunc.C:2549 src/lyxfunc.C:2598 src/lyxfunc.C:2671 src/lyxfunc.C:2772
 #: src/menus.C:173 src/menus.C:305 src/menus.C:306 src/menus.C:307
 msgid "Documents"
 msgstr "Documints"
@@ -1038,7 +1038,7 @@ msgid "Ref: "
 msgstr "Rah: "
 
 #. /
-#: src/insets/insettoc.h:35 src/lyxfunc.C:770
+#: src/insets/insettoc.h:35 src/lyxfunc.C:772
 msgid "Table of Contents"
 msgstr "Ådvins"
 
@@ -1073,19 +1073,19 @@ msgstr "Ôte..."
 msgid "Key Mappings"
 msgstr "Mape des tapes"
 
-#: src/kbmap.C:245
+#: src/kbmap.C:247
 msgid "   options: "
 msgstr "   tchûzes: "
 
-#: src/LaTeX.C:148 src/LaTeX.C:165 src/LaTeX.C:225 src/LaTeX.C:271
+#: src/LaTeX.C:149 src/LaTeX.C:169 src/LaTeX.C:230 src/LaTeX.C:276
 msgid "LaTeX run number "
 msgstr "Enondaedje LaTeX lim."
 
-#: src/LaTeX.C:188 src/LaTeX.C:249
+#: src/LaTeX.C:192 src/LaTeX.C:254
 msgid "Running MakeIndex."
 msgstr "Enondaedje di MakeIndex"
 
-#: src/LaTeX.C:202
+#: src/LaTeX.C:206
 msgid "Running BibTeX."
 msgstr "Enondaedje di BibTeX"
 
@@ -1722,7 +1722,7 @@ msgstr "Schaper"
 msgid "Save As"
 msgstr "Schaper èt (r)lomer"
 
-#: src/LyXAction.C:148 src/lyxfunc.C:624
+#: src/LyXAction.C:148 src/lyxfunc.C:626
 msgid "Cancel"
 msgstr "Rinoncî"
 
@@ -2100,7 +2100,7 @@ msgstr ""
 msgid "(If not, document is not saved.)"
 msgstr "(Sins ça, vosse documint ni serè nén schapé.)"
 
-#: src/lyx_cb.C:315 src/lyxfunc.C:2458
+#: src/lyx_cb.C:315 src/lyxfunc.C:2460
 msgid "Templates"
 msgstr "Modeles"
 
@@ -2109,9 +2109,9 @@ msgid "Enter Filename to Save Document as"
 msgstr "Tapez on no po schaper eyèt lomer li fitchî"
 
 #. Cancel: Do nothing
-#: src/lyx_cb.C:329 src/lyxfunc.C:2464 src/lyxfunc.C:2491 src/lyxfunc.C:2556
-#: src/lyxfunc.C:2605 src/lyxfunc.C:2630 src/lyxfunc.C:2640 src/lyxfunc.C:2685
-#: src/lyxfunc.C:2710 src/lyxfunc.C:2720 src/lyxfunc.C:2779
+#: src/lyx_cb.C:329 src/lyxfunc.C:2466 src/lyxfunc.C:2493 src/lyxfunc.C:2558
+#: src/lyxfunc.C:2607 src/lyxfunc.C:2632 src/lyxfunc.C:2642 src/lyxfunc.C:2687
+#: src/lyxfunc.C:2712 src/lyxfunc.C:2722 src/lyxfunc.C:2781
 msgid "Canceled."
 msgstr "Vos avoz rnoncî"
 
@@ -2219,7 +2219,7 @@ msgid "Executing command:"
 msgstr "Dj' enonde li cmande :"
 
 #: src/lyx_cb.C:784 src/lyx_cb.C:822 src/lyx_cb.C:856 src/lyx_cb.C:884
-#: src/lyxfunc.C:2500
+#: src/lyxfunc.C:2502
 msgid "File already exists:"
 msgstr "Ci fitchî la egzisteye dedja :"
 
@@ -2817,119 +2817,119 @@ msgstr ""
 msgid "Found."
 msgstr "drovu."
 
-#: src/lyxfunc.C:260
+#: src/lyxfunc.C:262
 msgid "Unknown sequence:"
 msgstr "Shûte nén cnoxhuwe:"
 
-#: src/lyxfunc.C:303 src/lyxfunc.C:2407
+#: src/lyxfunc.C:305 src/lyxfunc.C:2409
 msgid "Unknown action"
 msgstr "Bouye nén cnoxhuwe"
 
 #. no
-#: src/lyxfunc.C:317
+#: src/lyxfunc.C:319
 msgid "Document is read-only"
 msgstr "Vos n' poloz ki lere li documint"
 
 #. no
-#: src/lyxfunc.C:322
+#: src/lyxfunc.C:324
 msgid "Command not allowed without any document open"
 msgstr "Vos n' poloz nén enonder cisse comande sins documint di drovu"
 
-#: src/lyxfunc.C:545
+#: src/lyxfunc.C:547
 msgid "Text mode"
 msgstr "Môde di scrîjhaedje"
 
-#: src/lyxfunc.C:751
+#: src/lyxfunc.C:753
 msgid "Unknown import type: "
 msgstr "Sôrt d' abagaedje nén cnoxhuwe"
 
-#: src/lyxfunc.C:1079
+#: src/lyxfunc.C:1081
 msgid "Layout "
 msgstr "Adjinçmint "
 
-#: src/lyxfunc.C:1080
+#: src/lyxfunc.C:1082
 msgid " not known"
 msgstr " nén cnoxhu"
 
-#: src/lyxfunc.C:1222
+#: src/lyxfunc.C:1224
 msgid "No cross-reference to toggle"
 msgstr " Nou croejhlé rahuca a (dis)mete"
 
-#: src/lyxfunc.C:1573
+#: src/lyxfunc.C:1575
 msgid "Mark removed"
 msgstr "Li rmårke est waesteye"
 
-#: src/lyxfunc.C:1578
+#: src/lyxfunc.C:1580
 msgid "Mark set"
 msgstr "Li rmårke e-st apontieye"
 
-#: src/lyxfunc.C:1681
+#: src/lyxfunc.C:1683
 msgid "Mark off"
 msgstr "Li rmårke est dismetuwe"
 
-#: src/lyxfunc.C:1691
+#: src/lyxfunc.C:1693
 msgid "Mark on"
 msgstr "Li rmårke est metuwe"
 
-#: src/lyxfunc.C:1992
+#: src/lyxfunc.C:1994
 msgid "Push-toolbar needs argument > 0"
 msgstr "Li scriftôr a mezåjhe di > 0 årgumints"
 
-#: src/lyxfunc.C:2010
+#: src/lyxfunc.C:2012
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Po s' è siervi:  toolbar-add-to <comande di LyX>"
 
-#: src/lyxfunc.C:2034 src/mathed/formula.C:864
+#: src/lyxfunc.C:2036 src/mathed/formula.C:864
 msgid "Math greek mode on"
 msgstr "Môde matematike grec"
 
-#: src/lyxfunc.C:2045 src/mathed/formula.C:875
+#: src/lyxfunc.C:2047 src/mathed/formula.C:875
 msgid "Math greek keyboard on"
 msgstr "Môde taprece greke"
 
-#: src/lyxfunc.C:2047 src/mathed/formula.C:877
+#: src/lyxfunc.C:2049 src/mathed/formula.C:877
 msgid "Math greek keyboard off"
 msgstr "Mode clavier normal"
 
-#: src/lyxfunc.C:2082
+#: src/lyxfunc.C:2084
 msgid "Missing argument"
 msgstr "I manke èn årgumint"
 
 #. / what appears in the minibuffer when opening
-#: src/lyxfunc.C:2098 src/mathed/formula.h:73
+#: src/lyxfunc.C:2100 src/mathed/formula.h:73
 msgid "Math editor mode"
 msgstr "Môde aspougneu matematike"
 
-#: src/lyxfunc.C:2105
+#: src/lyxfunc.C:2107
 msgid "This is only allowed in math mode!"
 msgstr "Vos n' poloz fé çouci k' è môde matematike!"
 
-#: src/lyxfunc.C:2259
+#: src/lyxfunc.C:2261
 msgid "Opening child document "
 msgstr "Dji drove li documint efant"
 
-#: src/lyxfunc.C:2291
+#: src/lyxfunc.C:2293
 msgid "Unknown kind of footnote"
 msgstr "Dji n' conoxhe nén cisse sôrt di pînote la"
 
-#: src/lyxfunc.C:2360
+#: src/lyxfunc.C:2362
 #, fuzzy
 msgid "No document open"
 msgstr "* Nou documint di drovu *"
 
-#: src/lyxfunc.C:2366
+#: src/lyxfunc.C:2368
 msgid "Document is read only"
 msgstr "Vos n' poloz ki lere ci documint ci"
 
-#: src/lyxfunc.C:2459
+#: src/lyxfunc.C:2461
 msgid "Enter Filename for new document"
 msgstr "Tapez on no di fitchî pol novea documint"
 
-#: src/lyxfunc.C:2460
+#: src/lyxfunc.C:2462
 msgid "newfile"
 msgstr "Novea fitchî"
 
-#: src/lyxfunc.C:2479 src/lyxfunc.C:2618 src/lyxfunc.C:2697
+#: src/lyxfunc.C:2481 src/lyxfunc.C:2620 src/lyxfunc.C:2699
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -2937,132 +2937,132 @@ msgstr ""
 "Voloz-ve cloyu ci documint ci asteure ?\n"
 "('Neni' vos ramin'rè el session drovuwe)"
 
-#: src/lyxfunc.C:2502
+#: src/lyxfunc.C:2504
 msgid "Do you want to open the document?"
 msgstr "Voloz-ve drovi li documint?"
 
 #. loads document
-#: src/lyxfunc.C:2504 src/lyxfunc.C:2567
+#: src/lyxfunc.C:2506 src/lyxfunc.C:2569
 msgid "Opening document"
 msgstr "Dji drove li documint"
 
-#: src/lyxfunc.C:2511 src/lyxfunc.C:2574
+#: src/lyxfunc.C:2513 src/lyxfunc.C:2576
 msgid "opened."
 msgstr "drovu."
 
-#: src/lyxfunc.C:2520
+#: src/lyxfunc.C:2522
 msgid "Choose template"
 msgstr "Tchwezixhoz on modele"
 
-#: src/lyxfunc.C:2548 src/lyxfunc.C:2597 src/lyxfunc.C:2670 src/lyxfunc.C:2771
+#: src/lyxfunc.C:2550 src/lyxfunc.C:2599 src/lyxfunc.C:2672 src/lyxfunc.C:2773
 msgid "Examples"
 msgstr "Egzimpes"
 
-#: src/lyxfunc.C:2550
+#: src/lyxfunc.C:2552
 msgid "Select Document to Open"
 msgstr "Tchwezixhoz on documint po drovi"
 
-#: src/lyxfunc.C:2576
+#: src/lyxfunc.C:2578
 msgid "Could not open document"
 msgstr "Dji n' sai drovi li documint"
 
-#: src/lyxfunc.C:2599
+#: src/lyxfunc.C:2601
 msgid "Select ASCII file to Import"
 msgstr "Tchwezixhoz on fitchî ascii a abaguer"
 
-#: src/lyxfunc.C:2637 src/lyxfunc.C:2717
+#: src/lyxfunc.C:2639 src/lyxfunc.C:2719
 msgid "A document by the name"
 msgstr "Èn ôte documint poite li minme no"
 
-#: src/lyxfunc.C:2639 src/lyxfunc.C:2719
+#: src/lyxfunc.C:2641 src/lyxfunc.C:2721
 msgid "already exists. Overwrite?"
 msgstr "El voloz-ve sipotchî?"
 
-#: src/lyxfunc.C:2645
+#: src/lyxfunc.C:2647
 msgid "Importing ASCII file"
 msgstr "Dj' abague li fitchî ascii..."
 
-#: src/lyxfunc.C:2649
+#: src/lyxfunc.C:2651
 msgid "ASCII file "
 msgstr "Li fitchî ascii "
 
-#: src/lyxfunc.C:2651 src/lyxfunc.C:2742
+#: src/lyxfunc.C:2653 src/lyxfunc.C:2744
 msgid "imported."
 msgstr "e-st abagué."
 
-#: src/lyxfunc.C:2674
+#: src/lyxfunc.C:2676
 #, fuzzy
 msgid "Select Noweb file to Import"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
 
-#: src/lyxfunc.C:2677
+#: src/lyxfunc.C:2679
 msgid "Select LaTeX file to Import"
 msgstr "Tchwezi on fitchî LaTeX po-z abaguer"
 
-#: src/lyxfunc.C:2727
+#: src/lyxfunc.C:2729
 msgid "Importing LaTeX file"
 msgstr " Dj' abague li fitchî LaTeX..."
 
-#: src/lyxfunc.C:2732
+#: src/lyxfunc.C:2734
 #, fuzzy
 msgid "Importing Noweb file"
 msgstr " Dj' abague li fitchî LaTeX..."
 
-#: src/lyxfunc.C:2740
+#: src/lyxfunc.C:2742
 #, fuzzy
 msgid "Noweb file "
 msgstr "Li fitchî LaTeX "
 
-#: src/lyxfunc.C:2740
+#: src/lyxfunc.C:2742
 msgid "LateX file "
 msgstr "Li fitchî LaTeX "
 
-#: src/lyxfunc.C:2745
+#: src/lyxfunc.C:2747
 #, fuzzy
 msgid "Could not import Noweb file"
 msgstr "Dji n' sai drovi li fitchî LaTeX"
 
-#: src/lyxfunc.C:2746
+#: src/lyxfunc.C:2748
 msgid "Could not import LaTeX file"
 msgstr "Dji n' sai drovi li fitchî LaTeX"
 
-#: src/lyxfunc.C:2773
+#: src/lyxfunc.C:2775
 msgid "Select Document to Insert"
 msgstr "Tchwezixhoz on documint po stitchî"
 
 #. Inserts document
-#: src/lyxfunc.C:2791
+#: src/lyxfunc.C:2793
 msgid "Inserting document"
 msgstr "Dji stitche li documint"
 
-#: src/lyxfunc.C:2797
+#: src/lyxfunc.C:2799
 msgid "inserted."
 msgstr "stitchî."
 
-#: src/lyxfunc.C:2799
+#: src/lyxfunc.C:2801
 msgid "Could not insert document"
 msgstr "Dji n' sai stitchî li documint"
 
-#: src/lyx_gui.C:381 src/lyx_gui.C:384
+#: src/lyx_gui.C:382 src/lyx_gui.C:385
 msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
 msgstr " Pont | Prémetu | Pitit  | Mîtrin | Grand | D' astampé | Longueu "
 
-#: src/lyx_gui.C:410
+#: src/lyx_gui.C:411
 msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
 msgstr ""
 " Nou candjmint %l| Romane | Sans Serif | Machine a Scrîre %l| Rimete a zerô "
 
-#: src/lyx_gui.C:412
+#: src/lyx_gui.C:413
 msgid " No change %l| Medium | Bold %l| Reset "
 msgstr " Nou candjmint %l| Mwinres | Cråsses %l| Rimete a zerô"
 
-#: src/lyx_gui.C:414
+#: src/lyx_gui.C:415
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
 msgstr ""
 " Nou candjmint %l| Droetes | Clintcheyes(1) | Clintcheyes(2) | Pititès "
 "grandès letes %l| Rimete a zerô "
 
-#: src/lyx_gui.C:417
+#: src/lyx_gui.C:418
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
@@ -3071,13 +3071,13 @@ msgstr ""
 "Grand(1) | Grand(2) | Grand(3) | Grand(4) | Grand(5) | <- Did pus -> | -> "
 "Diminuer <- | RAZ"
 
-#: src/lyx_gui.C:421
+#: src/lyx_gui.C:422
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
 msgstr ""
 " Nou candjmint %l| Clintcheyes | Sorligneyes | Pititès grandès letes | môde "
 "LaTeX %l | Rimete a zerô "
 
-#: src/lyx_gui.C:423
+#: src/lyx_gui.C:424
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
@@ -3085,15 +3085,15 @@ msgstr ""
 "Non candjmint %l| Sins coleur | Noer | Blanc | Rodje | Vert | Bleu | Cyan | "
 "Magenta | Djaene %l | Rimete a zerô"
 
-#: src/lyx_gui.C:434
+#: src/lyx_gui.C:435
 msgid " Single | OneHalf | Double | Other "
 msgstr " Simpe | Dimey | Dobe | Ôte "
 
-#: src/lyx_gui.C:473
+#: src/lyx_gui.C:474
 msgid " Smallskip | Medskip | Bigskip | Length "
 msgstr " Tene esp. | Mîtrin esp. | Lådje esp. | Longueu "
 
-#: src/lyx_gui.C:485
+#: src/lyx_gui.C:486
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
@@ -3101,7 +3101,7 @@ msgstr ""
 " Prémetu | A vosse môde | Lete US | Legal US | Executive US | A3 | A4 | A5 | "
 "B3 | B4 | B5 "
 
-#: src/lyx_gui.C:488
+#: src/lyx_gui.C:489
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
@@ -3109,12 +3109,12 @@ msgstr ""
 " Nole | A4 tenes boirds (seulmint d' astampé) | A4 lådjes boirds (seulmint "
 "d' astampé) | A4 mo lådjes boirds (seulmint d' astampé) "
 
-#: src/lyx_gui.C:534
+#: src/lyx_gui.C:535
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
 msgstr ""
 " ``sicrît'' | ''sicrît'' | ,,sicrît`` | ,,sicrît'' | «sicrît» | »sicrît« "
 
-#: src/lyx_gui.C:614
+#: src/lyx_gui.C:615
 msgid "LyX Banner"
 msgstr "Åbarone da LyX"
 
@@ -4610,7 +4610,7 @@ msgstr "Ké papî"
 msgid "Warning: Invalid Length (valid example: 10mm)"
 msgstr "Asteme : li longueu ni va nén (egzimpe comufåt: 10mm)"
 
-#: src/paragraph.C:1968
+#: src/paragraph.C:1963
 msgid "Senseless with this layout!"
 msgstr "Pont d' avance avou ene pådje adjinçneye come çouci"
 
@@ -4717,15 +4717,15 @@ msgstr "LyX|#L"
 msgid "Ascii|#s"
 msgstr "Ascii|#A"
 
-#: src/spellchecker.C:217
+#: src/spellchecker.C:218
 msgid "Spellchecker Options"
 msgstr "Tchûzes pol coridjeu di scrîjhaedhe"
 
-#: src/spellchecker.C:551
+#: src/spellchecker.C:552
 msgid "Spellchecker"
 msgstr "Coridjeu di scrîjhaedje"
 
-#: src/spellchecker.C:658
+#: src/spellchecker.C:659
 msgid ""
 "\n"
 "\n"
@@ -4743,19 +4743,19 @@ msgstr ""
 "Waitîz dins /usr/lib/ispell ou bén purdoz èn ôte\n"
 "motî è menu Tchûzes -> Motî."
 
-#: src/spellchecker.C:774
+#: src/spellchecker.C:775
 msgid " words checked."
 msgstr " mots waitîz."
 
-#: src/spellchecker.C:776
+#: src/spellchecker.C:777
 msgid " word checked."
 msgstr " mot waitî."
 
-#: src/spellchecker.C:778
+#: src/spellchecker.C:779
 msgid "Spellchecking completed!"
 msgstr "Dj' a tot fwait di coridjî !"
 
-#: src/spellchecker.C:782
+#: src/spellchecker.C:783
 msgid ""
 "The ispell-process has died for some reason.\n"
 "Maybe it has been killed."
@@ -4929,7 +4929,7 @@ msgid ""
 msgstr ""
 "Nou candjmint di fonte di defini. Alez dins Cogne->Caractere pol defini"
 
-#: src/text.C:3946 src/text.C:3954 src/text.C:3971 src/text.C:3986
+#: src/text.C:3959 src/text.C:3967 src/text.C:3984 src/text.C:3999
 #: src/text2.C:1796 src/text2.C:1808 src/text2.C:2053 src/text2.C:2066
 #: src/text2.C:2163 src/text2.C:2173
 msgid "Impossible operation"
@@ -4956,32 +4956,32 @@ msgstr "Nén moyén d' aclaper on flotant dins èn ôte flotant!"
 msgid "Table cell cannot include more than one paragraph!"
 msgstr "Les cwåreas d' on tåvleas ni polèt nén avu di pus d' on hagnon"
 
-#: src/text.C:1891
+#: src/text.C:1890
 msgid "Multicolumns can only be horizontally."
 msgstr "Les multicolones ni polèt esse metuwes ki di coûtchî"
 
-#: src/text.C:2292 src/text.C:2320
+#: src/text.C:2291 src/text.C:2319
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 
-#: src/text.C:2318
+#: src/text.C:2317
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 
-#: src/text.C:3947
+#: src/text.C:3960
 msgid "You can't insert a float in a float!"
 msgstr "Vos n' sårîz stitchî on flotant dins èn ôte flotant !"
 
-#: src/text.C:3955
+#: src/text.C:3968
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Vos n' sårîz stitchî on [marginpar] dins ene minipådje"
 
-#: src/text.C:3971
+#: src/text.C:3984
 msgid "Cannot cut table."
 msgstr "Dji n' sai côper li tåvlea."
 
-#: src/text.C:3987
+#: src/text.C:4000
 msgid "Float would include float!"
 msgstr "I gn åreut on flotant di stitchî dins èn ôte flotant !"

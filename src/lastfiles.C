@@ -16,12 +16,12 @@
 #endif
 
 #include <fstream>
+#include <algorithm>
 using std::ifstream;
 using std::ofstream;
 using std::copy;
 using std::ostream_iterator;
 
-#include <algorithm>
 using std::find;
 
 #include "support/FileInfo.h"

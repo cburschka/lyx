@@ -1,3 +1,10 @@
+2000-01-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxfunc.C (processKeyEvent): "fix" so that we never try to
+	write a (char*)0 to the lyxerr stream.
+
+	* src/lastfiles.C: move algorithm before the using statemets.
+
 2000-01-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lastfiles.C: move using directives in global scope (egcs 1.x

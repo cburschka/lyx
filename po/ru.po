@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.1\n"
-"POT-Creation-Date: 2000-01-20 02:44+0100\n"
+"POT-Creation-Date: 2000-01-26 22:46+0100\n"
 "PO-Revision-Date: 2000-01-20 02:51+01:00\n"
 "Last-Translator: Victor Lavrenko <lyx@lavrenko.pp.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. sgml2lyx failed
-#: src/buffer.C:221 src/buffer.C:231 src/buffer.C:3561 src/bufferlist.C:516
-#: src/bufferlist.C:546 src/lyx_cb.C:467 src/lyx_cb.C:812 src/lyx_cb.C:845
+#: src/buffer.C:221 src/buffer.C:231 src/buffer.C:3563 src/bufferlist.C:520
+#: src/bufferlist.C:550 src/lyx_cb.C:467 src/lyx_cb.C:812 src/lyx_cb.C:845
 #: src/lyx_sendfax_main.C:262 src/menus.C:1665
 msgid "Error!"
 msgstr "Ошибка!"
@@ -107,110 +107,110 @@ msgstr "Ошибка записи в файл "
 msgid "Error: Cannot write file:"
 msgstr "Ошибка записи в файл "
 
-#: src/buffer.C:1356
+#: src/buffer.C:1358
 msgid "Error: Cannot open temporary file:"
 msgstr "Ошибка открытия временного файла "
 
-#: src/buffer.C:1576
+#: src/buffer.C:1578
 #, fuzzy
 msgid "Error: Cannot open file: "
 msgstr "Ошибка записи в файл "
 
-#: src/buffer.C:2133 src/buffer.C:2719 src/buffer.C:3480 src/buffer.C:3502
-#: src/paragraph.C:3588
+#: src/buffer.C:2135 src/buffer.C:2721 src/buffer.C:3482 src/buffer.C:3504
+#: src/paragraph.C:3584
 msgid "LYX_ERROR:"
 msgstr "Ошибка LyX:"
 
-#: src/buffer.C:2133 src/buffer.C:2719
+#: src/buffer.C:2135 src/buffer.C:2721
 msgid "Cannot write file"
 msgstr "Ошибка записи файла"
 
-#: src/buffer.C:2205 src/buffer.C:2798
+#: src/buffer.C:2207 src/buffer.C:2800
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Ошибка : Неверная глубина команды LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3158
+#: src/buffer.C:3160
 msgid "Running LaTeX..."
 msgstr "Обработка с помощью LaTeX..."
 
-#: src/buffer.C:3177
+#: src/buffer.C:3179
 msgid "LaTeX did not work!"
 msgstr "LaTeX не работает!"
 
-#: src/buffer.C:3178 src/buffer.C:3249 src/buffer.C:3320
+#: src/buffer.C:3180 src/buffer.C:3251 src/buffer.C:3322
 msgid "Missing log file:"
 msgstr "Отсутствует журнал:"
 
 #. no errors or any other things to think about so:
-#: src/buffer.C:3180 src/buffer.C:3189 src/buffer.C:3251 src/buffer.C:3260
-#: src/buffer.C:3322 src/buffer.C:3330 src/combox.C:465
+#: src/buffer.C:3182 src/buffer.C:3191 src/buffer.C:3253 src/buffer.C:3262
+#: src/buffer.C:3324 src/buffer.C:3332 src/combox.C:465
 msgid "Done"
 msgstr "Завершено"
 
 #. path to Literate file
-#: src/buffer.C:3226
+#: src/buffer.C:3228
 msgid "Running Literate..."
 msgstr "Выполняю Literate..."
 
-#: src/buffer.C:3248
+#: src/buffer.C:3250
 msgid "Literate command did not work!"
 msgstr "Команда 'Literate' не работает!"
 
 #. path to Literate file
-#: src/buffer.C:3297
+#: src/buffer.C:3299
 msgid "Building Program..."
 msgstr "Создаю программу..."
 
-#: src/buffer.C:3319
+#: src/buffer.C:3321
 msgid "Build did not work!"
 msgstr "Невозможно создать программу!"
 
 #. path to LaTeX file
-#: src/buffer.C:3366
+#: src/buffer.C:3368
 msgid "Running chktex..."
 msgstr "Исполняю программу chktex..."
 
-#: src/buffer.C:3382
+#: src/buffer.C:3384
 msgid "chktex did not work!"
 msgstr "chktex не работает!"
 
-#: src/buffer.C:3383
+#: src/buffer.C:3385
 msgid "Could not run with file:"
 msgstr "Ошибка запуска с файлом "
 
-#: src/buffer.C:3481 src/buffer.C:3503 src/paragraph.C:3589
+#: src/buffer.C:3483 src/buffer.C:3505 src/paragraph.C:3585
 msgid "Cannot open temporary file:"
 msgstr "Ошибка открытия временного файла "
 
-#: src/buffer.C:3554
+#: src/buffer.C:3556
 msgid "Error! Can't open temporary file:"
 msgstr "Ошибка открытия временного файла "
 
-#: src/buffer.C:3562
+#: src/buffer.C:3564
 msgid "Error executing *roff command on table"
 msgstr "Ошибка исполнения команды *roff на таблице"
 
-#: src/buffer.C:3730 src/lyx_cb.C:3196 src/text.C:1890
+#: src/buffer.C:3732 src/lyx_cb.C:3196 src/text.C:1889
 msgid "Impossible Operation!"
 msgstr "Недопустимая операция!"
 
-#: src/buffer.C:3731
+#: src/buffer.C:3733
 msgid "Cannot insert table/list in table."
 msgstr "Невозможно вставить таблицу/список в таблицу."
 
-#: src/buffer.C:3732 src/lyx_cb.C:3198 src/text.C:1892 src/text.C:3948
-#: src/text.C:3956 src/text.C:3971 src/text.C:3988 src/text2.C:2165
+#: src/buffer.C:3734 src/lyx_cb.C:3198 src/text.C:1891 src/text.C:3961
+#: src/text.C:3969 src/text.C:3984 src/text.C:4001 src/text2.C:2165
 #: src/text2.C:2175
 msgid "Sorry."
 msgstr "Извините."
 
-#: src/bufferlist.C:103 src/bufferlist.C:259 src/lyxvc.C:91 src/lyxvc.C:123
+#: src/bufferlist.C:103 src/bufferlist.C:263 src/lyxvc.C:91 src/lyxvc.C:123
 #: src/lyxvc.C:153
 msgid "Changes in document:"
 msgstr "Изменения в документе:"
 
-#: src/bufferlist.C:106 src/bufferlist.C:261
+#: src/bufferlist.C:106 src/bufferlist.C:265
 msgid "Save document?"
 msgstr "Сохранить документ?"
 
@@ -226,99 +226,99 @@ msgstr "Все равно выходить?"
 msgid "Saving document"
 msgstr "Сохраняю документ"
 
-#: src/bufferlist.C:205
+#: src/bufferlist.C:209
 msgid "Document saved as"
 msgstr "Документ сохранен как"
 
-#: src/bufferlist.C:216
+#: src/bufferlist.C:220
 msgid "Could not delete auto-save file!"
 msgstr "Ошибка удаления файла автосохранения!"
 
-#: src/bufferlist.C:226
+#: src/bufferlist.C:230
 msgid "Save failed!"
 msgstr "Сохранение не удалось!"
 
-#: src/bufferlist.C:360
+#: src/bufferlist.C:364
 msgid "lyx: Attempting to save document "
 msgstr "lyx: Попытка сохранить документ "
 
-#: src/bufferlist.C:363
+#: src/bufferlist.C:367
 msgid " as..."
 msgstr " как..."
 
-#: src/bufferlist.C:389
+#: src/bufferlist.C:393
 msgid "  Save seems successful. Phew."
 msgstr "  Кажется, его удалось сохранить. Фу."
 
-#: src/bufferlist.C:393
+#: src/bufferlist.C:397
 msgid "  Save failed! Trying..."
 msgstr "  Ошибка сохранения файла! Пытаюсь..."
 
-#: src/bufferlist.C:396
+#: src/bufferlist.C:400
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Сохранить невозможно! Конец. Документ потерян."
 
-#: src/bufferlist.C:425
+#: src/bufferlist.C:429
 msgid "An emergency save of this document exists!"
 msgstr "Обнаружена аварийная копия этого файла!"
 
-#: src/bufferlist.C:427
+#: src/bufferlist.C:431
 msgid "Try to load that instead?"
 msgstr "Вместо этого, попытаться загрузить ее?"
 
-#: src/bufferlist.C:449
+#: src/bufferlist.C:453
 msgid "Autosave file is newer."
 msgstr "Файл автосохранения новее."
 
-#: src/bufferlist.C:451
+#: src/bufferlist.C:455
 msgid "Load that one instead?"
 msgstr "Загрузить этот вместо того?"
 
-#: src/bufferlist.C:516
+#: src/bufferlist.C:520
 msgid "Unable to open template"
 msgstr "Невозможно открыть шаблон"
 
-#: src/bufferlist.C:547
+#: src/bufferlist.C:551
 msgid "Could not convert file"
 msgstr "Невозможно сконвертировать файл"
 
-#: src/bufferlist.C:560 src/lyxfunc.C:2477 src/lyxfunc.C:2616
-#: src/lyxfunc.C:2695
+#: src/bufferlist.C:564 src/lyxfunc.C:2479 src/lyxfunc.C:2618
+#: src/lyxfunc.C:2697
 msgid "Document is already open:"
 msgstr "Документ уже открыт:"
 
-#: src/bufferlist.C:562
+#: src/bufferlist.C:566
 msgid "Do you want to reload that document?"
 msgstr "Вы хотите переоткрыть этот документ?"
 
-#: src/bufferlist.C:579
+#: src/bufferlist.C:583
 msgid "File `"
 msgstr "Файл `"
 
-#: src/bufferlist.C:580
+#: src/bufferlist.C:584
 msgid "' is read-only."
 msgstr "' доступен только для чтения."
 
 #. Ask if the file should be checked out for
 #. viewing/editing, if so: load it.
-#: src/bufferlist.C:594
+#: src/bufferlist.C:598
 #, fuzzy
 msgid "Do you want to retrive file under version control?"
 msgstr "Вы хотите открыть документ?"
 
-#: src/bufferlist.C:602
+#: src/bufferlist.C:606
 msgid "Cannot open specified file:"
 msgstr "Невозможно открыть указанный файл:"
 
-#: src/bufferlist.C:604
+#: src/bufferlist.C:608
 msgid "Create new document with this name?"
 msgstr "Создать новый документ с таким именем?"
 
-#: src/BufferView.C:409
+#: src/BufferView.C:411
 msgid "Formatting document..."
 msgstr "Форматирование документа..."
 
-#: src/BufferView.C:493 src/BufferView.C:497
+#: src/BufferView.C:496 src/BufferView.C:500
 msgid "No more errors"
 msgstr "Больше ошибок не обнаружено"
 
@@ -764,56 +764,56 @@ msgstr "Слова"
 msgid "Replace All|#A#a"
 msgstr "Заменить все"
 
-#: src/insets/figinset.C:1110
+#: src/insets/figinset.C:1093
 msgid "[render error]"
 msgstr "[ошибка отрисовки]"
 
-#: src/insets/figinset.C:1111
+#: src/insets/figinset.C:1094
 msgid "[rendering ... ]"
 msgstr "[отрисовка ... ]"
 
-#: src/insets/figinset.C:1113
+#: src/insets/figinset.C:1096
 msgid "[no file]"
 msgstr "[нет файла]"
 
-#: src/insets/figinset.C:1114
+#: src/insets/figinset.C:1097
 msgid "[not displayed]"
 msgstr "[не показан]"
 
-#: src/insets/figinset.C:1115
+#: src/insets/figinset.C:1098
 msgid "[no ghostscript]"
 msgstr "[нет программы ghostscript]"
 
-#: src/insets/figinset.C:1117
+#: src/insets/figinset.C:1100
 msgid "[unknown error]"
 msgstr "неизвестная ошибка"
 
-#: src/insets/figinset.C:1314
+#: src/insets/figinset.C:1297
 msgid "Figure"
 msgstr "Рисунок"
 
-#: src/insets/figinset.C:1376 src/insets/figinset.C:1509
+#: src/insets/figinset.C:1359 src/insets/figinset.C:1492
 msgid "empty figure path"
 msgstr "Пустой путь к рисунку"
 
-#: src/insets/figinset.C:2157
+#: src/insets/figinset.C:2140
 msgid "Clipart"
 msgstr "Картинка"
 
-#: src/insets/figinset.C:2158 src/lyxfunc.C:2509 src/lyxfunc.C:2572
-#: src/lyxfunc.C:2795
+#: src/insets/figinset.C:2141 src/lyxfunc.C:2511 src/lyxfunc.C:2574
+#: src/lyxfunc.C:2797
 msgid "Document"
 msgstr "Документ"
 
-#: src/insets/figinset.C:2164 src/insets/figinset.C:2168
+#: src/insets/figinset.C:2147 src/insets/figinset.C:2151
 msgid "EPS Figure"
 msgstr "Рисунок в формате EPS"
 
-#: src/insets/figinset.C:2182
+#: src/insets/figinset.C:2165
 msgid "Filename can't contain any of these characters:"
 msgstr "Имя файла не может содержать следующих символов:"
 
-#: src/insets/figinset.C:2185
+#: src/insets/figinset.C:2168
 #, no-c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "пробел, '#', '~', '$' или '%'."
@@ -950,8 +950,8 @@ msgid "Use include|#U"
 msgstr "Через include"
 
 #. launches dialog
-#: src/insets/insetinclude.C:111 src/lyx_cb.C:314 src/lyxfunc.C:2457
-#: src/lyxfunc.C:2547 src/lyxfunc.C:2596 src/lyxfunc.C:2669 src/lyxfunc.C:2770
+#: src/insets/insetinclude.C:111 src/lyx_cb.C:314 src/lyxfunc.C:2459
+#: src/lyxfunc.C:2549 src/lyxfunc.C:2598 src/lyxfunc.C:2671 src/lyxfunc.C:2772
 #: src/menus.C:173 src/menus.C:305 src/menus.C:306 src/menus.C:307
 msgid "Documents"
 msgstr "Документы"
@@ -1037,7 +1037,7 @@ msgid "Ref: "
 msgstr "Ссылка: "
 
 #. /
-#: src/insets/insettoc.h:35 src/lyxfunc.C:770
+#: src/insets/insettoc.h:35 src/lyxfunc.C:772
 msgid "Table of Contents"
 msgstr "Содержание"
 
@@ -1073,19 +1073,19 @@ msgstr "другие..."
 msgid "Key Mappings"
 msgstr "Назначения клавиш"
 
-#: src/kbmap.C:245
+#: src/kbmap.C:247
 msgid "   options: "
 msgstr "   параметры: "
 
-#: src/LaTeX.C:148 src/LaTeX.C:165 src/LaTeX.C:225 src/LaTeX.C:271
+#: src/LaTeX.C:149 src/LaTeX.C:169 src/LaTeX.C:230 src/LaTeX.C:276
 msgid "LaTeX run number "
 msgstr "Проход LaTeX номер "
 
-#: src/LaTeX.C:188 src/LaTeX.C:249
+#: src/LaTeX.C:192 src/LaTeX.C:254
 msgid "Running MakeIndex."
 msgstr "Выполняю MakeIndex."
 
-#: src/LaTeX.C:202
+#: src/LaTeX.C:206
 msgid "Running BibTeX."
 msgstr "Выполняю BibTeX."
 
@@ -1762,7 +1762,7 @@ msgstr "Сохранить"
 msgid "Save As"
 msgstr "Сохранить как"
 
-#: src/LyXAction.C:148 src/lyxfunc.C:624
+#: src/LyXAction.C:148 src/lyxfunc.C:626
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -2136,7 +2136,7 @@ msgstr "Сохранить не удалось. Переименовать и попытаться еще раз?"
 msgid "(If not, document is not saved.)"
 msgstr "(Если нет, документ не будет сохранен.)"
 
-#: src/lyx_cb.C:315 src/lyxfunc.C:2458
+#: src/lyx_cb.C:315 src/lyxfunc.C:2460
 msgid "Templates"
 msgstr "Шаблоны"
 
@@ -2145,9 +2145,9 @@ msgid "Enter Filename to Save Document as"
 msgstr "Введите имя файла для сохранения документа как"
 
 #. Cancel: Do nothing
-#: src/lyx_cb.C:329 src/lyxfunc.C:2464 src/lyxfunc.C:2491 src/lyxfunc.C:2556
-#: src/lyxfunc.C:2605 src/lyxfunc.C:2630 src/lyxfunc.C:2640 src/lyxfunc.C:2685
-#: src/lyxfunc.C:2710 src/lyxfunc.C:2720 src/lyxfunc.C:2779
+#: src/lyx_cb.C:329 src/lyxfunc.C:2466 src/lyxfunc.C:2493 src/lyxfunc.C:2558
+#: src/lyxfunc.C:2607 src/lyxfunc.C:2632 src/lyxfunc.C:2642 src/lyxfunc.C:2687
+#: src/lyxfunc.C:2712 src/lyxfunc.C:2722 src/lyxfunc.C:2781
 msgid "Canceled."
 msgstr "Отменено."
 
@@ -2253,7 +2253,7 @@ msgid "Executing command:"
 msgstr "Исполняю команду:"
 
 #: src/lyx_cb.C:784 src/lyx_cb.C:822 src/lyx_cb.C:856 src/lyx_cb.C:884
-#: src/lyxfunc.C:2500
+#: src/lyxfunc.C:2502
 msgid "File already exists:"
 msgstr "Файл уже присутствует:"
 
@@ -2850,119 +2850,119 @@ msgstr ""
 msgid "Found."
 msgstr "открыт."
 
-#: src/lyxfunc.C:260
+#: src/lyxfunc.C:262
 msgid "Unknown sequence:"
 msgstr "Неизвестная последовательность:"
 
-#: src/lyxfunc.C:303 src/lyxfunc.C:2407
+#: src/lyxfunc.C:305 src/lyxfunc.C:2409
 msgid "Unknown action"
 msgstr "Неизвестная команда"
 
 #. no
-#: src/lyxfunc.C:317
+#: src/lyxfunc.C:319
 msgid "Document is read-only"
 msgstr "Документ доступен только для чтения"
 
 #. no
-#: src/lyxfunc.C:322
+#: src/lyxfunc.C:324
 msgid "Command not allowed without any document open"
 msgstr "Команда недопустима без открытых документов"
 
-#: src/lyxfunc.C:545
+#: src/lyxfunc.C:547
 msgid "Text mode"
 msgstr "Текстовая мода"
 
-#: src/lyxfunc.C:751
+#: src/lyxfunc.C:753
 msgid "Unknown import type: "
 msgstr "Неизвестный тип импорта: "
 
-#: src/lyxfunc.C:1079
+#: src/lyxfunc.C:1081
 msgid "Layout "
 msgstr "Формат "
 
-#: src/lyxfunc.C:1080
+#: src/lyxfunc.C:1082
 msgid " not known"
 msgstr " не известно"
 
-#: src/lyxfunc.C:1222
+#: src/lyxfunc.C:1224
 msgid "No cross-reference to toggle"
 msgstr "Нет перекрестных ссылок на переключатель"
 
-#: src/lyxfunc.C:1573
+#: src/lyxfunc.C:1575
 msgid "Mark removed"
 msgstr "Метка удалена"
 
-#: src/lyxfunc.C:1578
+#: src/lyxfunc.C:1580
 msgid "Mark set"
 msgstr "Метка установлена"
 
-#: src/lyxfunc.C:1681
+#: src/lyxfunc.C:1683
 msgid "Mark off"
 msgstr "Метка выключена"
 
-#: src/lyxfunc.C:1691
+#: src/lyxfunc.C:1693
 msgid "Mark on"
 msgstr "Метка включена"
 
-#: src/lyxfunc.C:1992
+#: src/lyxfunc.C:1994
 msgid "Push-toolbar needs argument > 0"
 msgstr "Push-панель требует аргумент > 0"
 
-#: src/lyxfunc.C:2010
+#: src/lyxfunc.C:2012
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Синтаксис: toolbar-add-to <команда LyX>"
 
-#: src/lyxfunc.C:2034 src/mathed/formula.C:864
+#: src/lyxfunc.C:2036 src/mathed/formula.C:864
 msgid "Math greek mode on"
 msgstr "Включить математическую греческую моду"
 
-#: src/lyxfunc.C:2045 src/mathed/formula.C:875
+#: src/lyxfunc.C:2047 src/mathed/formula.C:875
 msgid "Math greek keyboard on"
 msgstr "Математическая греческая клавиатура включена"
 
-#: src/lyxfunc.C:2047 src/mathed/formula.C:877
+#: src/lyxfunc.C:2049 src/mathed/formula.C:877
 msgid "Math greek keyboard off"
 msgstr "Математическая греческая клавиатура выключена"
 
-#: src/lyxfunc.C:2082
+#: src/lyxfunc.C:2084
 msgid "Missing argument"
 msgstr "Отсутствует аргумент"
 
 #. / what appears in the minibuffer when opening
-#: src/lyxfunc.C:2098 src/mathed/formula.h:73
+#: src/lyxfunc.C:2100 src/mathed/formula.h:73
 msgid "Math editor mode"
 msgstr "Редактор математической моды"
 
-#: src/lyxfunc.C:2105
+#: src/lyxfunc.C:2107
 msgid "This is only allowed in math mode!"
 msgstr "Это допустимо только в математической моде!"
 
-#: src/lyxfunc.C:2259
+#: src/lyxfunc.C:2261
 msgid "Opening child document "
 msgstr "Открываю подчиненный документ "
 
-#: src/lyxfunc.C:2291
+#: src/lyxfunc.C:2293
 msgid "Unknown kind of footnote"
 msgstr "Неизвестный тип сносок"
 
-#: src/lyxfunc.C:2360
+#: src/lyxfunc.C:2362
 #, fuzzy
 msgid "No document open"
 msgstr "* Нет открытых документов *"
 
-#: src/lyxfunc.C:2366
+#: src/lyxfunc.C:2368
 msgid "Document is read only"
 msgstr "Документ доступен только для чтения"
 
-#: src/lyxfunc.C:2459
+#: src/lyxfunc.C:2461
 msgid "Enter Filename for new document"
 msgstr "Введите имя файла для нового документа"
 
-#: src/lyxfunc.C:2460
+#: src/lyxfunc.C:2462
 msgid "newfile"
 msgstr "newfile"
 
-#: src/lyxfunc.C:2479 src/lyxfunc.C:2618 src/lyxfunc.C:2697
+#: src/lyxfunc.C:2481 src/lyxfunc.C:2620 src/lyxfunc.C:2699
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -2970,126 +2970,126 @@ msgstr ""
 "Вы хотите закрыть этот документ сейчас?\n"
 "('Нет' просто переключит к открытой версии)"
 
-#: src/lyxfunc.C:2502
+#: src/lyxfunc.C:2504
 msgid "Do you want to open the document?"
 msgstr "Вы хотите открыть документ?"
 
 #. loads document
-#: src/lyxfunc.C:2504 src/lyxfunc.C:2567
+#: src/lyxfunc.C:2506 src/lyxfunc.C:2569
 msgid "Opening document"
 msgstr "Открываю документ"
 
-#: src/lyxfunc.C:2511 src/lyxfunc.C:2574
+#: src/lyxfunc.C:2513 src/lyxfunc.C:2576
 msgid "opened."
 msgstr "открыт."
 
-#: src/lyxfunc.C:2520
+#: src/lyxfunc.C:2522
 msgid "Choose template"
 msgstr "Выберите шаблон"
 
-#: src/lyxfunc.C:2548 src/lyxfunc.C:2597 src/lyxfunc.C:2670 src/lyxfunc.C:2771
+#: src/lyxfunc.C:2550 src/lyxfunc.C:2599 src/lyxfunc.C:2672 src/lyxfunc.C:2773
 msgid "Examples"
 msgstr "Примеры"
 
-#: src/lyxfunc.C:2550
+#: src/lyxfunc.C:2552
 msgid "Select Document to Open"
 msgstr "Выберите документ для открытия"
 
-#: src/lyxfunc.C:2576
+#: src/lyxfunc.C:2578
 msgid "Could not open document"
 msgstr "Ошибка открытия документа"
 
-#: src/lyxfunc.C:2599
+#: src/lyxfunc.C:2601
 msgid "Select ASCII file to Import"
 msgstr "Выберите ASCII-файл для импорта"
 
-#: src/lyxfunc.C:2637 src/lyxfunc.C:2717
+#: src/lyxfunc.C:2639 src/lyxfunc.C:2719
 msgid "A document by the name"
 msgstr "Документ по имени"
 
-#: src/lyxfunc.C:2639 src/lyxfunc.C:2719
+#: src/lyxfunc.C:2641 src/lyxfunc.C:2721
 msgid "already exists. Overwrite?"
 msgstr "уже существует. Перезаписывать?"
 
-#: src/lyxfunc.C:2645
+#: src/lyxfunc.C:2647
 msgid "Importing ASCII file"
 msgstr "Импортирую ASCII-файл"
 
-#: src/lyxfunc.C:2649
+#: src/lyxfunc.C:2651
 msgid "ASCII file "
 msgstr "ASCII-файл "
 
-#: src/lyxfunc.C:2651 src/lyxfunc.C:2742
+#: src/lyxfunc.C:2653 src/lyxfunc.C:2744
 msgid "imported."
 msgstr "импортирован."
 
-#: src/lyxfunc.C:2674
+#: src/lyxfunc.C:2676
 msgid "Select Noweb file to Import"
 msgstr "Выберете Noweb-файл для импорта"
 
-#: src/lyxfunc.C:2677
+#: src/lyxfunc.C:2679
 msgid "Select LaTeX file to Import"
 msgstr "Выберете LaTeX-файл для импорта"
 
-#: src/lyxfunc.C:2727
+#: src/lyxfunc.C:2729
 msgid "Importing LaTeX file"
 msgstr "Импортирую LaTeX-файл"
 
-#: src/lyxfunc.C:2732
+#: src/lyxfunc.C:2734
 msgid "Importing Noweb file"
 msgstr "Импортирую Noweb-файл"
 
-#: src/lyxfunc.C:2740
+#: src/lyxfunc.C:2742
 msgid "Noweb file "
 msgstr "Noweb-файл "
 
-#: src/lyxfunc.C:2740
+#: src/lyxfunc.C:2742
 msgid "LateX file "
 msgstr "LaTeX-файл "
 
-#: src/lyxfunc.C:2745
+#: src/lyxfunc.C:2747
 msgid "Could not import Noweb file"
 msgstr "Невозможно импортировать Noweb-файл"
 
-#: src/lyxfunc.C:2746
+#: src/lyxfunc.C:2748
 msgid "Could not import LaTeX file"
 msgstr "Невозможно импортировать LaTeX-файл"
 
-#: src/lyxfunc.C:2773
+#: src/lyxfunc.C:2775
 msgid "Select Document to Insert"
 msgstr "Выберите документ для вставки"
 
 #. Inserts document
-#: src/lyxfunc.C:2791
+#: src/lyxfunc.C:2793
 msgid "Inserting document"
 msgstr "Вставляю документ"
 
-#: src/lyxfunc.C:2797
+#: src/lyxfunc.C:2799
 msgid "inserted."
 msgstr "вставлен."
 
-#: src/lyxfunc.C:2799
+#: src/lyxfunc.C:2801
 msgid "Could not insert document"
 msgstr "Ошибка вставки документа"
 
-#: src/lyx_gui.C:381 src/lyx_gui.C:384
+#: src/lyx_gui.C:382 src/lyx_gui.C:385
 msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
 msgstr " Нет | По умолчанию | Маленький | Средний | Большой | VFill | Длина"
 
-#: src/lyx_gui.C:410
+#: src/lyx_gui.C:411
 msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
 msgstr " Без изменений %l| Roman | Sans Serif | Машинописный %l| Сброс"
 
-#: src/lyx_gui.C:412
+#: src/lyx_gui.C:413
 msgid " No change %l| Medium | Bold %l| Reset "
 msgstr " Без изменений %l| Нормальный | Полужирный %l| Сброс"
 
-#: src/lyx_gui.C:414
+#: src/lyx_gui.C:415
 msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
 msgstr ""
 " Без изменений %l| Прямой | Курсив | Наклонный | Малые прописные %l| Сброс "
 
-#: src/lyx_gui.C:417
+#: src/lyx_gui.C:418
 msgid ""
 " No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
 "Largest | Huge | Huger %l| Increase | Decrease | Reset "
@@ -3098,12 +3098,12 @@ msgstr ""
 "| Большой | Больше | Наибольший | Огромный | Огромнее %l| Увеличить | "
 "Уменьшить | Сброс "
 
-#: src/lyx_gui.C:421
+#: src/lyx_gui.C:422
 msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
 msgstr ""
 " Без изменений %l| Акцент | Подстрочник | Выделение | Режим LaTeX %l| Сброс "
 
-#: src/lyx_gui.C:423
+#: src/lyx_gui.C:424
 msgid ""
 " No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
 "Magenta | Yellow %l| Reset "
@@ -3111,15 +3111,15 @@ msgstr ""
 " Без изменений %l| Бесцветный | Черный | Белый | Красный | Зеленый | Голубой "
 "| Синий | Пурпурный | Желтый %l| Сброс "
 
-#: src/lyx_gui.C:434
+#: src/lyx_gui.C:435
 msgid " Single | OneHalf | Double | Other "
 msgstr " Одинарный | Полуторный | Двойной | Другой "
 
-#: src/lyx_gui.C:473
+#: src/lyx_gui.C:474
 msgid " Smallskip | Medskip | Bigskip | Length "
 msgstr " Небольшой | Средний | Большой | Длина "
 
-#: src/lyx_gui.C:485
+#: src/lyx_gui.C:486
 msgid ""
 " Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
 "B4 | B5 "
@@ -3127,7 +3127,7 @@ msgstr ""
 " по умолчанию | пользовательский | US-письмо | US-документ | US-записка | A3 "
 "| A4 | A5 | B3 | B4 | B5 "
 
-#: src/lyx_gui.C:488
+#: src/lyx_gui.C:489
 msgid ""
 " None | A4 small Margins (only portrait) | A4 very small Margins (only "
 "portrait) | A4 very wide margins (only portrait) "
@@ -3135,11 +3135,11 @@ msgstr ""
 " нет | A4 небольшие поля (только портрет) | А4 очень маленькие поля (только "
 "портрет) | A4 очень широкие поля (только портрет) "
 
-#: src/lyx_gui.C:534
+#: src/lyx_gui.C:535
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | ╚text╩ | ╩text╚ "
 msgstr " ``текст'' | ''текст'' | ,,текст`` | ,,текст'' | ╚текст╩ | ╩текст╚ "
 
-#: src/lyx_gui.C:614
+#: src/lyx_gui.C:615
 msgid "LyX Banner"
 msgstr "LyX-баннер"
 
@@ -4630,7 +4630,7 @@ msgstr "Установки формата бумаги"
 msgid "Warning: Invalid Length (valid example: 10mm)"
 msgstr "Предупреждение: неверная длина (правильный пример: 10mm)"
 
-#: src/paragraph.C:1968
+#: src/paragraph.C:1963
 msgid "Senseless with this layout!"
 msgstr "Бессмысленно в этом формате!"
 
@@ -4734,15 +4734,15 @@ msgstr "LyX|#L"
 msgid "Ascii|#s"
 msgstr "Ascii|#s"
 
-#: src/spellchecker.C:217
+#: src/spellchecker.C:218
 msgid "Spellchecker Options"
 msgstr "Параметры орфографии"
 
-#: src/spellchecker.C:551
+#: src/spellchecker.C:552
 msgid "Spellchecker"
 msgstr "Проверка орфографии"
 
-#: src/spellchecker.C:658
+#: src/spellchecker.C:659
 msgid ""
 "\n"
 "\n"
@@ -4760,19 +4760,19 @@ msgstr ""
 "Проверьте /usr/lib/ispell или установите другой\n"
 "словарь в параметрах орфографии."
 
-#: src/spellchecker.C:774
+#: src/spellchecker.C:775
 msgid " words checked."
 msgstr " слов проверено."
 
-#: src/spellchecker.C:776
+#: src/spellchecker.C:777
 msgid " word checked."
 msgstr " слово проверено."
 
-#: src/spellchecker.C:778
+#: src/spellchecker.C:779
 msgid "Spellchecking completed!"
 msgstr "Проверка орфографии окончена!"
 
-#: src/spellchecker.C:782
+#: src/spellchecker.C:783
 msgid ""
 "The ispell-process has died for some reason.\n"
 "Maybe it has been killed."
@@ -4945,7 +4945,7 @@ msgstr ""
 "Не определен шрифт изменений. Используйте 'Формат->Символы'\n"
 "для определения шрифта изменений"
 
-#: src/text.C:3946 src/text.C:3954 src/text.C:3971 src/text.C:3986
+#: src/text.C:3959 src/text.C:3967 src/text.C:3984 src/text.C:3999
 #: src/text2.C:1796 src/text2.C:1808 src/text2.C:2053 src/text2.C:2066
 #: src/text2.C:2163 src/text2.C:2173
 msgid "Impossible operation"
@@ -4971,33 +4971,33 @@ msgstr "Запрещается копировать кадр в кадр!"
 msgid "Table cell cannot include more than one paragraph!"
 msgstr "Ячейка таблицы не может включать более одного абзаца!"
 
-#: src/text.C:1891
+#: src/text.C:1890
 msgid "Multicolumns can only be horizontally."
 msgstr "Многоколоночность может быть только горизонтальной."
 
-#: src/text.C:2292 src/text.C:2320
+#: src/text.C:2291 src/text.C:2319
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Вы не можете вводить пробелы таким образом (см. Помощь|Путеводитель)."
 
-#: src/text.C:2318
+#: src/text.C:2317
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 "Вы не можете вставлять пробел в начале абзаца (см. Помощь|Путеводитель)."
 
-#: src/text.C:3947
+#: src/text.C:3960
 msgid "You can't insert a float in a float!"
 msgstr "Вы не можете вставить кадр в кадр!"
 
-#: src/text.C:3955
+#: src/text.C:3968
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Вы не можете вставить параграф-отступ в мини-страницу!"
 
-#: src/text.C:3971
+#: src/text.C:3984
 msgid "Cannot cut table."
 msgstr "Невозможно вырезать таблицу."
 
-#: src/text.C:3987
+#: src/text.C:4000
 msgid "Float would include float!"
 msgstr "Кадр должен включать кадр!"

@@ -176,8 +176,10 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 	int num_bytes = LyXLookupString(ev, s_r, 10, &keysym_return);
 
 	if (lyxerr.debugging(Debug::KEY)) {
+		char * tmp = XKeysymToString(keysym_return);
+		string stm = (tmp ? tmp : "");
 		lyxerr << "KeySym is "
-		       << XKeysymToString(keysym_return)
+		       << stm
 		       << "["
 		       << keysym_return << "]"
 		       << " and num_bytes is "
