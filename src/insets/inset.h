@@ -337,7 +337,10 @@ public:
 	 *  defaults to empty.
 	 */
 	virtual void generatePreview() const {}
-
+	///
+	virtual void cache(BufferView *) const {}
+	///
+	virtual BufferView * view() const { return 0; }
 
 protected:
 	///

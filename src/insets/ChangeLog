@@ -1,4 +1,7 @@
 2003-02-21  Angus Leeming  <leeming@lyx.org>
+	
+	* updatableinset.h (setView, view): remove.
+	* inset.h (view, cache): to be replaced by these.
 
 	* insetbib.[Ch]: removed, to be replaced by insetbibitem.[Ch] and
 	insetbibtex.[Ch]:

@@ -142,12 +142,6 @@ public:
 	virtual bool searchBackward(BufferView *, string const &,
 				    bool = true, bool = false);
 
-
-	///
-	BufferView * view() const;
-	///
-	void setView(BufferView * bv) const;
-
 protected:
 	///
 	void toggleCursorVisible() const {
