@@ -1,4 +1,3 @@
-
 /** The .tex to .lyx converter
     \author André Pönitz (2003)
  */
@@ -88,6 +87,24 @@ stack<string> active_environments;
 
 
 
+string const trim(string const & a, char const * p = " ")
+{
+	// lyx::Assert(p);
+
+	if (a.empty() || !*p)
+		return a;
+
+	string::size_type r = a.find_last_not_of(p);
+	string::size_type l = a.find_first_not_of(p);
+
+	// Is this the minimal test? (lgb)
+	if (r == string::npos && l == string::npos)
+		return string();
+
+	return a.substr(l, r - l + 1);
+}
+
+
 void split(string const & s, vector<string> & result, char delim)
 {
 	istringstream is(s);	
@@ -111,6 +128,9 @@ string join(vector<string> const & input, char delim)
 
 void handle_opt(vector<string> & opts, char const ** what, string & target)
 {
+	if (opts.empty())
+		return;
+
 	for ( ; what; ++what) {
 		vector<string>::iterator it = find(opts.begin(), opts.end(), *what);
 		if (it != opts.end()) {
@@ -128,6 +148,38 @@ void handle_ert(ostream & os, string const & s)
 	os << "\n\\begin_inset ERT\nstatus Collapsed\n\n\\layout Standard\n\n";
 	os << s;
 	os << "\n\\end_inset\n";
+}
+
+
+void handle_package(string const & name, string const & options)
+{
+	if (name == "a4wide") {
+		h_papersize = "a4";
+		h_paperpackage = "widemarginsa4";
+	} else if (name == "ae") 
+		h_fontscheme = "ae";
+	else if (name == "aecompl") 
+		h_fontscheme = "ae";
+	else if (name == "amsmath") 
+		h_use_amsmath = "1";
+	else if (name == "amssymb") 
+		h_use_amsmath = "1";
+	else if (name == "babel") 
+		; // ignore this
+	else if (name == "fontenc") 
+		; // ignore this
+	else if (name == "inputenc") 
+		h_inputencoding = options;
+	else if (name == "makeidx") 
+		; // ignore this
+	else if (name == "verbatim") 
+		; // ignore this
+	else {
+		if (options.size())
+			h_preamble += "\\usepackage[" + options + "]{" + name + "}\n";
+		else
+			h_preamble += "\\usepackage{" + name + "}\n";
+	}
 }
 
 
@@ -811,32 +863,16 @@ string Parser::parse(unsigned flags, mode_type mode)
 		else if (t.cs() == "usepackage") {
 			string const options = getArg('[', ']');
 			string const name = getArg('{', '}');
-			if (name == "a4wide") {
-				h_papersize = "a4";
-				h_paperpackage = "widemarginsa4";
-			} else if (name == "ae") 
-				h_fontscheme = "ae";
-			else if (name == "aecompl") 
-				h_fontscheme = "ae";
-			else if (name == "amsmath") 
-				h_use_amsmath = "1";
-			else if (name == "amssymb") 
-				h_use_amsmath = "1";
-			else if (name == "babel") 
-				; // ignore this
-			else if (name == "fontenc") 
-				; // ignore this
-			else if (name == "inputenc") 
-				h_inputencoding = options;
-			else if (name == "makeidx") 
-				; // ignore this
-			else if (name == "verbatim") 
-				; // ignore this
-			else {
-				if (options.size())
-					h_preamble += "\\usepackage[" + options + "]{" + name + "}\n";
-				else
-					h_preamble += "\\usepackage{" + name + "}\n";
+			if (options.empty() && name.find(',')) {
+				vector<string> vecnames;
+				split(name, vecnames, ',');
+				vector<string>::const_iterator it  = vecnames.begin();
+				vector<string>::const_iterator end = vecnames.end();
+				for (; it != end; ++it) {
+					handle_package(trim(*it), string());
+				}
+			} else {
+				handle_package(name, options);
 			}
 		}
 

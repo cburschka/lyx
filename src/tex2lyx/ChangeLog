@@ -1,5 +1,16 @@
 2003-02-11  Angus Leeming  <leeming@lyx.org>
 
+	* tex2lyx.C (handle_opt): prevent infinite loop if opts is empty.
+	(handle_package): new function, factoring code out of Parser::parse.
+	(trim): copied across from support/lstrings.C
+	(Parser::parse): handle '\usepackage{foo, bar}'.
+
+2003-02-11  André Pönitz  <poenitz@gmx.net>
+
+	* tex2lyx.C: first shot at real code
+
+2003-02-11  Angus Leeming  <leeming@lyx.org>
+
 	* .cvsignore: new file.
 
 2003-02-10  Angus Leeming  <leeming@lyx.org>
