@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.3.0\n"
-"POT-Creation-Date: 2003-01-13 23:52+0100\n"
+"POT-Creation-Date: 2003-01-14 02:14+0100\n"
 "PO-Revision-Date: 2003-01-09 21:19+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -863,8 +863,8 @@ msgstr "Vandret justering|#V"
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334
-#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:129
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:129
+#: src/frontends/controllers/ButtonController.h:73
 msgid "Close"
 msgstr "Luk"
 
@@ -1684,8 +1684,9 @@ msgid "Unknown:"
 msgstr "Ukendt:"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:98
-msgid "Replacement:|#R"
-msgstr "Erstatning:|#r"
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:195
+msgid "Replacement:"
+msgstr "Erstatning:"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:116
 msgid "Suggestions:|#g"
@@ -2251,9 +2252,8 @@ msgstr "&Anvend"
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120
-#: src/frontends/controllers/ButtonController.h:72 src/LyXAction.C:152
-#: src/lyxfunc.C:942
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:942
 msgid "Cancel"
 msgstr "Annullér"
 
@@ -4181,9 +4181,8 @@ msgstr "R&edigér ..."
 msgid "Edit the pre-amble in an external editor"
 msgstr "Redigér hovedet i eksternt program"
 
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22 src/LyXAction.C:140
 #: src/frontends/qt2/QPrint.C:39 src/frontends/xforms/FormPrint.C:36
-#: src/LyXAction.C:140
 msgid "Print"
 msgstr "Udskriv"
 
@@ -4403,10 +4402,6 @@ msgstr "Hvor langt stavekontrollen er kommet"
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
 msgid "Suggestions"
 msgstr "Forslag"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:195
-msgid "Replacement:"
-msgstr "Erstatning:"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:210
 msgid "Current word"
@@ -4871,7 +4866,7 @@ msgstr "Sag"
 #: ../lib/layouts/revtex4.layout:45 ../lib/layouts/scrclass.inc:68
 #: ../lib/layouts/siamltex.layout:38 ../lib/layouts/spie.layout:23
 #: ../lib/layouts/stdsections.inc:63 ../lib/layouts/svjour.inc:41
-#: ../lib/layouts/aguplus.inc:24
+#: ../lib/layouts/aguplus.inc:23
 msgid "Section"
 msgstr "Sektion"
 
@@ -4887,7 +4882,7 @@ msgstr "Sektion"
 #: ../lib/layouts/revtex.layout:55 ../lib/layouts/revtex4.layout:58
 #: ../lib/layouts/scrclass.inc:75 ../lib/layouts/siamltex.layout:56
 #: ../lib/layouts/stdsections.inc:88 ../lib/layouts/svjour.inc:51
-#: ../lib/layouts/aguplus.inc:36
+#: ../lib/layouts/aguplus.inc:35
 msgid "Subsection"
 msgstr "Undersektion"
 
@@ -4907,13 +4902,13 @@ msgstr "Underundersektion"
 
 #: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/egs.layout:686
 #: ../lib/layouts/siamltex.layout:78 ../lib/layouts/spie.layout:33
-#: ../lib/layouts/stdstarsections.inc:29 ../lib/layouts/aguplus.inc:30
+#: ../lib/layouts/stdstarsections.inc:29 ../lib/layouts/aguplus.inc:29
 msgid "Section*"
 msgstr "Sektion*"
 
 #: ../lib/layouts/IEEEtran.layout:338 ../lib/layouts/egs.layout:709
 #: ../lib/layouts/siamltex.layout:84 ../lib/layouts/stdstarsections.inc:38
-#: ../lib/layouts/aguplus.inc:42
+#: ../lib/layouts/aguplus.inc:41
 msgid "Subsection*"
 msgstr "Undersektion*"
 
@@ -4949,7 +4944,7 @@ msgstr "Nøgleord"
 #: ../lib/layouts/scrbook.layout:13 ../lib/layouts/scrclass.inc:229
 #: ../lib/layouts/scrreprt.layout:10 ../lib/layouts/siamltex.layout:171
 #: ../lib/layouts/stdstruct.inc:43 ../lib/layouts/svjour.inc:353
-#: ../lib/layouts/aguplus.inc:158 src/frontends/qt2/QDocumentDialog.C:73
+#: ../lib/layouts/aguplus.inc:157 src/frontends/qt2/QDocumentDialog.C:73
 msgid "Bibliography"
 msgstr "Litteraturliste"
 
@@ -5129,7 +5124,7 @@ msgstr "LaTeX"
 #: ../lib/layouts/revtex.layout:73 ../lib/layouts/revtex4.layout:76
 #: ../lib/layouts/scrclass.inc:89 ../lib/layouts/siamltex.layout:68
 #: ../lib/layouts/stdsections.inc:138 ../lib/layouts/svjour.inc:70
-#: ../lib/layouts/aguplus.inc:49
+#: ../lib/layouts/aguplus.inc:48
 msgid "Paragraph"
 msgstr "Afsnit"
 
@@ -5466,12 +5461,12 @@ msgid "Topic"
 msgstr "Emne"
 
 #: ../lib/layouts/cv.layout:104 ../lib/layouts/foils.layout:200
-#: ../lib/layouts/aguplus.inc:68
+#: ../lib/layouts/aguplus.inc:67
 msgid "Left_Header"
 msgstr "Venstre_Hoved"
 
 #: ../lib/layouts/cv.layout:123 ../lib/layouts/foils.layout:208
-#: ../lib/layouts/aguplus.inc:94
+#: ../lib/layouts/aguplus.inc:93
 msgid "Right_Header"
 msgstr "Højre_Hoved"
 
@@ -5619,11 +5614,11 @@ msgstr "msnumber"
 msgid "FirstAuthor"
 msgstr "Første Forfatter"
 
-#: ../lib/layouts/egs.layout:468 ../lib/layouts/aguplus.inc:101
+#: ../lib/layouts/egs.layout:468 ../lib/layouts/aguplus.inc:100
 msgid "Received"
 msgstr "Modtaget"
 
-#: ../lib/layouts/egs.layout:494 ../lib/layouts/aguplus.inc:115
+#: ../lib/layouts/egs.layout:494 ../lib/layouts/aguplus.inc:114
 msgid "Accepted"
 msgstr "Accepteret"
 
@@ -6101,7 +6096,7 @@ msgid "ProgressContents"
 msgstr "ProgressIndhold"
 
 #: ../lib/layouts/siamltex.layout:96 ../lib/layouts/stdstarsections.inc:56
-#: ../lib/layouts/aguplus.inc:54
+#: ../lib/layouts/aguplus.inc:53
 msgid "Paragraph*"
 msgstr "Afsnit*"
 
@@ -6157,42 +6152,42 @@ msgstr "Aftryk"
 msgid " Keywords"
 msgstr " Nøgleord"
 
-#: ../lib/layouts/aguplus.inc:108
+#: ../lib/layouts/aguplus.inc:107
 #, fuzzy
 msgid "Revised"
 msgstr "Nulstil"
 
-#: ../lib/layouts/aguplus.inc:122
+#: ../lib/layouts/aguplus.inc:121
 #, fuzzy
 msgid "CCC"
 msgstr "CC"
 
-#: ../lib/layouts/aguplus.inc:135
+#: ../lib/layouts/aguplus.inc:134
 #, fuzzy
 msgid "PaperId"
 msgstr "Papir"
 
-#: ../lib/layouts/aguplus.inc:142
+#: ../lib/layouts/aguplus.inc:141
 #, fuzzy
 msgid "AuthorAddr"
 msgstr "Forfatter"
 
-#: ../lib/layouts/aguplus.inc:149
+#: ../lib/layouts/aguplus.inc:148
 #, fuzzy
 msgid "SlugComment"
 msgstr "Kommentar"
 
-#: ../lib/layouts/aguplus.inc:172
+#: ../lib/layouts/aguplus.inc:171
 #, fuzzy
 msgid "Plate"
 msgstr "Sted"
 
-#: ../lib/layouts/aguplus.inc:182
+#: ../lib/layouts/aguplus.inc:181
 #, fuzzy
 msgid "Planotable"
 msgstr "PlacérTabel"
 
-#: ../lib/layouts/aguplus.inc:193
+#: ../lib/layouts/aguplus.inc:192
 #, fuzzy
 msgid "Table_Caption"
 msgstr "Billedtekst"
@@ -7242,250 +7237,10 @@ msgstr "Konfigurering af LaTeX|L"
 msgid "About LyX|X"
 msgstr "Om LyX|X"
 
-#: src/buffer.C:356
-msgid "Couldn't set the layout for "
-msgstr "Kunne ikke angive layout for "
-
-#: src/buffer.C:358
-msgid "one paragraph"
-msgstr "et afsnit"
-
-#: src/buffer.C:361
-msgid " paragraphs"
-msgstr " afsnit"
-
-#: src/buffer.C:364 src/buffer.C:367 src/buffer.C:381 src/buffer.C:384
-#: src/buffer.C:641 src/buffer.C:646
-msgid "Textclass Loading Error!"
-msgstr "Fejl under indlæsning af tekstklasse!"
-
-#: src/buffer.C:365 src/buffer.C:382
-#, c-format
-msgid "When reading %1$s"
-msgstr "Under læsning af %1$s"
-
-#: src/buffer.C:368 src/buffer.C:385
-msgid "When reading "
-msgstr "Under læsning af "
-
-#: src/buffer.C:373
-msgid "Encountered "
-msgstr "Fandt "
-
-#: src/buffer.C:375
-msgid "one unknown token"
-msgstr "et ukendt symbol"
-
-#: src/buffer.C:378
-msgid " unknown tokens"
-msgstr " ukendte symboler"
-
-#: src/buffer.C:622 src/buffer.C:627
-msgid "Textclass error"
-msgstr "Fejl i tekstklasse"
-
-#: src/buffer.C:623
-#, c-format
-msgid "The document uses an unknown textclass \"%1$s\"."
-msgstr "Dokumentet benytter den ukendte tekstklasse \"%1$s\"."
-
-#: src/buffer.C:624 src/buffer.C:630
-msgid "LyX will not be able to produce output correctly."
-msgstr "LyX vil ikke kunne producere et korrekt resultat."
-
-#: src/buffer.C:628
-msgid "The document uses an unknown textclass "
-msgstr "Dokumentet benytter den ukendte tekstklasse "
-
-#: src/buffer.C:642
-#, c-format
-msgid "Can't load textclass %1$s"
-msgstr "Kan ikke indlæse tekstklassen %1$s"
-
-#: src/buffer.C:644 src/buffer.C:649
-msgid "-- substituting default"
-msgstr "- erstatter standardværdi"
-
-#: src/buffer.C:647
-msgid "Can't load textclass "
-msgstr "Kan ikke indlæse tekstklassen "
-
-#: src/buffer.C:955
-#, c-format
-msgid "Unknown token: %1$s %2$s\n"
-msgstr "Ukendt symbol: %1$s %2$s\n"
-
-#: src/buffer.C:959
-msgid "Unknown token: "
-msgstr "Ukendt symbol: "
-
-#. future format
-#: src/buffer.C:1184 src/buffer.C:1238
-msgid "Warning!"
-msgstr "Advarsel!"
-
-#: src/buffer.C:1185
-msgid ""
-"The file was created with a newer version ofLyX. This is likely to cause "
-"problems."
-msgstr ""
-"Filen er oprettet med en nyere udgave af LyX. Det kan give dig problemer."
-
-#. "\\lyxformat" not found
-#: src/buffer.C:1191 src/buffer.C:1199 src/buffer.C:1211 src/buffer.C:1244
-#: src/buffer.C:1247
-msgid "ERROR!"
-msgstr "FEJL!"
-
-#: src/buffer.C:1192
-msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
-msgstr "Gammelt LyX-filformat fundet. Brug LyX 0.10.x for at læse dette!"
-
-#: src/buffer.C:1200
-msgid "Can't find conversion script."
-msgstr "Kan ikke finde konverteringsskript."
-
-#: src/buffer.C:1212
-msgid "An error occured while running the conversion script."
-msgstr "Der skete en fejl under kørslen af konverteringsskriptet."
-
-#: src/buffer.C:1239
-msgid "Reading of document is not complete"
-msgstr "Indlæsning af dokumentet er ikke fuldstændig"
-
-#: src/buffer.C:1240
-msgid "Maybe the document is truncated"
-msgstr "Dokumentet er måske afkortet"
-
-#: src/buffer.C:1244
-msgid "Not a LyX file!"
-msgstr "Ikke en LyX-fil!"
-
-#: src/buffer.C:1247
-msgid "Unable to read file!"
-msgstr "Kan ikke læse filen!"
-
-#: src/buffer.C:1507
-msgid "Abstract: "
-msgstr "Sammendrag: "
-
-#: src/buffer.C:1518
-msgid "References: "
-msgstr "Referencer: "
-
-#: src/buffer.C:1632
-msgid "Error: Cannot write file:"
-msgstr "Fejl: Kan ikke skrive fil:"
-
-#: src/buffer.C:1662
-msgid "Error: Cannot open file: "
-msgstr "Fejl: Kan ikke åbne fil:"
-
-#: src/buffer.C:2243 src/buffer.C:2698
-msgid "LYX_ERROR:"
-msgstr "LYX_FEJL:"
-
-#: src/buffer.C:2243 src/buffer.C:2698
-msgid "Cannot write file"
-msgstr "Kan ikke skrive fil"
-
-#: src/buffer.C:2331 src/buffer.C:2804
-msgid "Error: Wrong depth for LatexType Command.\n"
-msgstr "Fejl: Forkert dybde for LatexType-kommando.\n"
-
-#. path to LaTeX file
-#: src/buffer.C:3079
-msgid "Running chktex..."
-msgstr "Kører chktex..."
-
-#: src/buffer.C:3092
-msgid "chktex did not work!"
-msgstr "chktex virkede ikke!"
-
-#: src/buffer.C:3093
-msgid "Could not run with file:"
-msgstr "Kunne ikke køre med filen:"
-
-#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:112 src/lyxvc.C:144
-#: src/lyxvc.C:173
-msgid "Changes in document:"
-msgstr "Dokumentet er ændret:"
-
-#: src/bufferlist.C:114 src/bufferlist.C:199
-msgid "Save document?"
-msgstr "Gem dokument?"
-
-#: src/bufferlist.C:314
-#, c-format
-msgid "LyX: Attempting to save document %1$s"
-msgstr "LyX: Forsøger at gemme dokumentet %1$s"
-
-#: src/bufferlist.C:318
-msgid "LyX: Attempting to save document "
-msgstr "LyX: Forsøger at gemme dokumentet %s "
-
-#: src/bufferlist.C:329 src/bufferlist.C:342 src/bufferlist.C:356
-msgid "  Save seems successful. Phew."
-msgstr "  Lagring så ud til at lykkedes. Pyha."
-
-#: src/bufferlist.C:332 src/bufferlist.C:346
-msgid "  Save failed! Trying..."
-msgstr "  Lagring virkede ikke! Forsøger..."
-
-#: src/bufferlist.C:359
-msgid "  Save failed! Bummer. Document is lost."
-msgstr "  Lagring virkede ikke! Beklager, dokumentet er tabt."
-
-#: src/bufferlist.C:373 src/bufferlist.C:485 src/BufferView.C:293
-#: src/BufferView.C:303 src/lyx_cb.C:215
+#: src/BufferView.C:293 src/BufferView.C:303 src/bufferlist.C:373
+#: src/bufferlist.C:485 src/lyx_cb.C:215
 msgid "Error!"
 msgstr "Fejl!"
-
-#: src/bufferlist.C:373
-msgid "Cannot open file"
-msgstr "Kan ikke åbne fil"
-
-#: src/bufferlist.C:389
-msgid "An emergency save of this document exists!"
-msgstr "En nødlagring af dette dokumentet findes!"
-
-#: src/bufferlist.C:391
-msgid "Try to load that instead?"
-msgstr "Skal jeg forsøge at åbne denne i stedet?"
-
-#: src/bufferlist.C:413
-msgid "Autosave file is newer."
-msgstr "Automatisk gemt fil er nyere."
-
-#: src/bufferlist.C:415
-msgid "Load that one instead?"
-msgstr "Skal jeg åbne denne i stedet?"
-
-#: src/bufferlist.C:485
-msgid "Unable to open template"
-msgstr "Kan ikke åbne skabelon"
-
-#: src/bufferlist.C:518 src/lyxfunc.C:1819
-msgid "Document is already open:"
-msgstr "Dokumentet er allerede åbent:"
-
-#: src/bufferlist.C:520
-msgid "Do you want to reload that document?"
-msgstr "Ønsker du at genåbne dokumentet?"
-
-#. Ask if the file should be checked out for
-#. viewing/editing, if so: load it.
-#: src/bufferlist.C:549
-msgid "Do you want to retrieve file under version control?"
-msgstr "Ønsker du at hente fil fra versionsstyring?"
-
-#: src/bufferlist.C:557
-msgid "Cannot open specified file:"
-msgstr "Kan ikke åbne den valgte fil:"
-
-#: src/bufferlist.C:559
-msgid "Create new document with this name?"
-msgstr "Skal der oprettes et nyt dokument med dette navn?"
 
 #: src/BufferView.C:294
 msgid "Specified file is unreadable: "
@@ -7518,44 +7273,6 @@ msgstr "Typografi kopieret"
 #: src/BufferView.C:606
 msgid "Paragraph environment type set"
 msgstr "Typografi indsat"
-
-#: src/bufferview_funcs.C:74
-msgid "Error! unknown language"
-msgstr "Fejl! Ukendt sprog"
-
-#: src/bufferview_funcs.C:163
-#, c-format
-msgid "Font: %1$s"
-msgstr "Skrift: %1$s"
-
-#: src/bufferview_funcs.C:165
-msgid "Font: "
-msgstr "Skrift: "
-
-#: src/bufferview_funcs.C:172
-#, c-format
-msgid ", Depth: %1$d"
-msgstr ", dybde: %1$d"
-
-#: src/bufferview_funcs.C:174
-msgid ", Depth: "
-msgstr ", dybde: "
-
-#: src/bufferview_funcs.C:184
-msgid ", Spacing: "
-msgstr ", mellemrum: "
-
-#: src/bufferview_funcs.C:191
-msgid "Onehalf"
-msgstr "Halvanden"
-
-#: src/bufferview_funcs.C:197
-msgid "Other ("
-msgstr "Andet ("
-
-#: src/bufferview_funcs.C:207
-msgid ", Paragraph: "
-msgstr ", afsnit: "
 
 # Inset = indstik
 # Float = flyder
@@ -7681,6 +7398,1037 @@ msgstr "ChkTeX-advarsels-id nr. %1$d"
 msgid "ChkTeX warning id # "
 msgstr "ChkTeX-advarsels-id nr. "
 
+#: src/CutAndPaste.C:435
+#, c-format
+msgid ""
+"Layout had to be changed from\n"
+"%1$s to %2$s\n"
+"because of class conversion from\n"
+"%3$s to %4$s"
+msgstr ""
+"Layoutet er ændret fra\n"
+"%1$s til %2$s\n"
+"p.g.a. klassekonvertering fra \n"
+"%3$s til %4$s"
+
+#: src/CutAndPaste.C:446
+msgid "Layout had to be changed from\n"
+msgstr "Layout måtte ændres fra\n"
+
+#: src/CutAndPaste.C:447 src/CutAndPaste.C:450
+msgid " to "
+msgstr " til "
+
+#: src/CutAndPaste.C:449
+msgid ""
+"\n"
+"because of class conversion from\n"
+msgstr ""
+"\n"
+"grundet klasseændring fra\n"
+
+#: src/LColor.C:49
+msgid "none"
+msgstr "ingen"
+
+#: src/LColor.C:50
+msgid "black"
+msgstr "sort"
+
+#: src/LColor.C:51
+msgid "white"
+msgstr "hvid"
+
+#: src/LColor.C:52
+msgid "red"
+msgstr "rød"
+
+#: src/LColor.C:53
+msgid "green"
+msgstr "grøn"
+
+#: src/LColor.C:54
+msgid "blue"
+msgstr "blå"
+
+#: src/LColor.C:55
+msgid "cyan"
+msgstr "lyseblå"
+
+#: src/LColor.C:56
+msgid "magenta"
+msgstr "lilla"
+
+#: src/LColor.C:57
+msgid "yellow"
+msgstr "gul"
+
+#: src/LColor.C:58
+msgid "cursor"
+msgstr "markør"
+
+#: src/LColor.C:59
+msgid "background"
+msgstr "baggrund"
+
+#: src/LColor.C:60
+msgid "text"
+msgstr "tekst"
+
+#: src/LColor.C:61
+msgid "selection"
+msgstr "markeret"
+
+#: src/LColor.C:62
+msgid "LaTeX text"
+msgstr "LaTeX-tekst"
+
+#: src/LColor.C:63
+msgid "previewed snippet"
+msgstr "smugkigs-udsnit"
+
+#: src/LColor.C:64 src/insets/insetnote.C:40
+msgid "note"
+msgstr "notat"
+
+#: src/LColor.C:65
+msgid "note background"
+msgstr "notat-baggrund"
+
+#: src/LColor.C:66
+msgid "depth bar"
+msgstr "dybde-bjælke"
+
+#: src/LColor.C:67
+msgid "language"
+msgstr "sprog"
+
+#: src/LColor.C:68
+msgid "command inset"
+msgstr "kommando-indstik"
+
+#: src/LColor.C:69
+msgid "command inset background"
+msgstr "kommandoindstiksbaggrund"
+
+#: src/LColor.C:70
+msgid "command inset frame"
+msgstr "kommandoindstiksramme"
+
+#: src/LColor.C:71
+msgid "special character"
+msgstr "specialtegn"
+
+#: src/LColor.C:72
+msgid "math"
+msgstr "matematik"
+
+#: src/LColor.C:73
+msgid "math background"
+msgstr "matematikbaggrund"
+
+#: src/LColor.C:74
+msgid "graphics background"
+msgstr "grafikbaggrund"
+
+#: src/LColor.C:75
+msgid "Math macro background"
+msgstr "Matematik-makrobaggrund"
+
+#: src/LColor.C:76
+msgid "math frame"
+msgstr "matematikramme"
+
+#: src/LColor.C:77
+msgid "math cursor"
+msgstr "matematikmarkør"
+
+#: src/LColor.C:78
+msgid "math line"
+msgstr "matematiklinje"
+
+#: src/LColor.C:79
+msgid "caption frame"
+msgstr "billedtekstramme"
+
+#: src/LColor.C:80
+msgid "collapsable inset text"
+msgstr "sammenklappelig indstikstekst"
+
+#: src/LColor.C:81
+msgid "collapsable inset frame"
+msgstr "sammenklappelig indstiksramme"
+
+#: src/LColor.C:82
+msgid "inset background"
+msgstr "indstiksbaggrund"
+
+#: src/LColor.C:83
+msgid "inset frame"
+msgstr "indstiksramme"
+
+#: src/LColor.C:84
+msgid "LaTeX error"
+msgstr "LaTeX-fejl"
+
+#: src/LColor.C:85
+msgid "end-of-line marker"
+msgstr "linjeslut-markering"
+
+#: src/LColor.C:86
+msgid "appendix line"
+msgstr "appendiks-linje"
+
+#: src/LColor.C:87
+msgid "added space markers"
+msgstr "tilføjede afstandsmarkører"
+
+#: src/LColor.C:88
+msgid "top/bottom line"
+msgstr "top/bund-linje"
+
+#: src/LColor.C:89
+msgid "tabular line"
+msgstr "tabellinje"
+
+#: src/LColor.C:91
+msgid "tabular on/off line"
+msgstr "tabel-fra/til linje"
+
+#: src/LColor.C:93
+msgid "bottom area"
+msgstr "bundareal"
+
+#: src/LColor.C:94
+msgid "page break"
+msgstr "sideskift"
+
+#: src/LColor.C:95
+msgid "top of button"
+msgstr "knap-top"
+
+#: src/LColor.C:96
+msgid "bottom of button"
+msgstr "knap-bund"
+
+#: src/LColor.C:97
+msgid "left of button"
+msgstr "knap-venstre"
+
+#: src/LColor.C:98
+msgid "right of button"
+msgstr "knap-højre"
+
+#: src/LColor.C:99
+msgid "button background"
+msgstr "knap-baggrund"
+
+#: src/LColor.C:100
+msgid "inherit"
+msgstr "arv"
+
+#: src/LColor.C:101
+msgid "ignore"
+msgstr "ignorér"
+
+#: src/LaTeX.C:207 src/LaTeX.C:296 src/LaTeX.C:357
+#, c-format
+msgid "LaTeX run number %1$d"
+msgstr "LaTeX-kørsel nummer %1$d"
+
+#: src/LaTeX.C:209 src/LaTeX.C:298 src/LaTeX.C:359
+msgid "LaTeX run number "
+msgstr "LaTeX-kørsel nummer "
+
+#: src/LaTeX.C:247 src/LaTeX.C:331
+msgid "Running MakeIndex."
+msgstr "Kører MakeIndex."
+
+#: src/LaTeX.C:262
+msgid "Running BibTeX."
+msgstr "Kører BibTeX."
+
+#: src/LyXAction.C:102
+msgid "Insert appendix"
+msgstr "Indsæt appendiks"
+
+#: src/LyXAction.C:103
+msgid "Describe command"
+msgstr "Beskriv kommando"
+
+#: src/LyXAction.C:106
+msgid "Select previous char"
+msgstr "Markér forrige bogstav"
+
+#: src/LyXAction.C:109
+msgid "Insert BibTeX"
+msgstr "Indsæt BibTeX"
+
+#: src/LyXAction.C:120
+msgid "Build program"
+msgstr "Dan program"
+
+#: src/LyXAction.C:121
+msgid "Autosave"
+msgstr "Autogemmer"
+
+#: src/LyXAction.C:123
+msgid "Go to beginning of document"
+msgstr "Gå til begyndelsen af dokumentet"
+
+#: src/LyXAction.C:125
+msgid "Select to beginning of document"
+msgstr "Markér til begyndelsen af dokumentet"
+
+#: src/LyXAction.C:128
+msgid "Check TeX"
+msgstr "Check TeX"
+
+#: src/LyXAction.C:131
+msgid "Go to end of document"
+msgstr "Gå til slutningen af dokumentet"
+
+#: src/LyXAction.C:133
+msgid "Select to end of document"
+msgstr "Markér til slutningen af dokumentet"
+
+# , c-format
+#: src/LyXAction.C:134
+msgid "Export to"
+msgstr "Eksportér til"
+
+#: src/LyXAction.C:136
+msgid "Import document"
+msgstr "Importér dokument"
+
+#: src/LyXAction.C:137
+msgid "New document"
+msgstr "Nyt dokument"
+
+#: src/LyXAction.C:139
+msgid "New document from template"
+msgstr "Nyt dokument fra skabelon"
+
+#: src/LyXAction.C:142
+msgid "Revert to saved"
+msgstr "Gendan sidst gemte"
+
+#: src/LyXAction.C:144
+msgid "Switch to an open document"
+msgstr "Skift til et åbent dokument"
+
+#: src/LyXAction.C:146
+msgid "Toggle read-only"
+msgstr "Skrivebeskyttelse til/fra"
+
+#: src/LyXAction.C:147
+msgid "Update"
+msgstr "Opdatér"
+
+#: src/LyXAction.C:148
+msgid "View"
+msgstr "Vis"
+
+#: src/LyXAction.C:150
+msgid "Save As"
+msgstr "Gem som"
+
+#: src/LyXAction.C:154
+msgid "Go one char back"
+msgstr "Gå et bogstav tilbage"
+
+#: src/LyXAction.C:156
+msgid "Go one char forward"
+msgstr "Gå et bogstav fremad"
+
+#: src/LyXAction.C:159
+msgid "Insert citation"
+msgstr "Indsæt litteraturhenvisning"
+
+#: src/LyXAction.C:163
+msgid "Execute command"
+msgstr "Udfør kommando"
+
+#: src/LyXAction.C:165 src/MenuBackend.C:673 src/text3.C:1027
+msgid "Copy"
+msgstr "Kopiér"
+
+#: src/LyXAction.C:166 src/MenuBackend.C:672 src/text3.C:1022
+msgid "Cut"
+msgstr "Klip"
+
+#: src/LyXAction.C:173
+msgid "Decrement environment depth"
+msgstr "Formindsk omgivelsesdybde"
+
+#: src/LyXAction.C:175
+msgid "Increment environment depth"
+msgstr "Forøg omgivelsesdybde"
+
+#: src/LyXAction.C:176
+msgid "Insert ... dots"
+msgstr "Indsæt ellipse (...)"
+
+#: src/LyXAction.C:177
+msgid "Go down"
+msgstr "Gå ned"
+
+#: src/LyXAction.C:179
+msgid "Select next line"
+msgstr "Markér næste linje"
+
+#: src/LyXAction.C:181
+msgid "Choose Paragraph Environment"
+msgstr "Vælg typografi"
+
+#: src/LyXAction.C:183
+msgid "Insert end of sentence period"
+msgstr "Indsæt sætningsafsluttende punktum"
+
+#: src/LyXAction.C:185
+msgid "Go to next error"
+msgstr "Gå til næste fejl"
+
+#: src/LyXAction.C:187
+msgid "Remove all error boxes"
+msgstr "Fjern alle fejlbokse"
+
+#: src/LyXAction.C:189
+msgid "Insert a new ERT Inset"
+msgstr "Indsæt et nyt ERT-indstik"
+
+#: src/LyXAction.C:191
+msgid "Insert a new external inset"
+msgstr "Indsæt et ny eksternt indstik"
+
+#: src/LyXAction.C:193
+msgid "Insert Graphics"
+msgstr "Indsæt grafik"
+
+#: src/LyXAction.C:195
+msgid "Insert ASCII files as lines"
+msgstr "Indsæt tekstfiler som linjer"
+
+#: src/LyXAction.C:196
+msgid "Insert ASCII file as a paragraph"
+msgstr "Indsæt tekstfiler som afsnit"
+
+#: src/LyXAction.C:198
+msgid "Open a file"
+msgstr "Åbn fil"
+
+#: src/LyXAction.C:199
+msgid "Find & Replace"
+msgstr "Søg og erstat"
+
+#: src/LyXAction.C:201
+msgid "Insert a Float"
+msgstr "Indsæt en flyder"
+
+#: src/LyXAction.C:203
+msgid "Insert a wide Float"
+msgstr "Indsæt bred flyder"
+
+#: src/LyXAction.C:204
+msgid "Insert a Wrap"
+msgstr "Indsæt ombrydningsfigur"
+
+#: src/LyXAction.C:205
+msgid "Toggle bold"
+msgstr "Fed til/fra"
+
+#: src/LyXAction.C:206
+msgid "Toggle code style"
+msgstr "Programstil til/fra"
+
+#: src/LyXAction.C:207
+msgid "Default font style"
+msgstr "Standardskrift"
+
+#: src/LyXAction.C:209
+msgid "Toggle emphasize"
+msgstr "Fremhævet til/fra"
+
+#: src/LyXAction.C:210
+msgid "Toggle user defined style"
+msgstr "Brugerdefineret stil til/fra"
+
+#: src/LyXAction.C:212
+msgid "Toggle noun style"
+msgstr "Kapitæler til/fra"
+
+#: src/LyXAction.C:213
+msgid "Toggle roman font style"
+msgstr "Ordinær skrift til/fra"
+
+#: src/LyXAction.C:215
+msgid "Toggle sans font style"
+msgstr "Grotesk skrift til/fra"
+
+#: src/LyXAction.C:216
+msgid "Toggle fraktur font style"
+msgstr "Fraktur-skriftstil til/fra"
+
+#: src/LyXAction.C:217
+msgid "Toggle italic font style"
+msgstr "Kursiv-skriftstil til/fra"
+
+#: src/LyXAction.C:218
+msgid "Set font size"
+msgstr "Sæt skriftstørrelse"
+
+#: src/LyXAction.C:219
+msgid "Show font state"
+msgstr "Vis skriftstatus"
+
+#: src/LyXAction.C:222
+msgid "Toggle font underline"
+msgstr "Understregning til/fra"
+
+#: src/LyXAction.C:224
+msgid "Insert Footnote"
+msgstr "Indsæt fodnote"
+
+#: src/LyXAction.C:225
+msgid "Select next char"
+msgstr "Markér næste bogstav"
+
+#: src/LyXAction.C:228
+msgid "Insert horizontal fill"
+msgstr "Indsæt vandret fyld"
+
+#: src/LyXAction.C:229
+msgid "Open a Help file"
+msgstr "Åbn en hjælpefil"
+
+#: src/LyXAction.C:233
+msgid "Insert hyphenation point"
+msgstr "Indsæt orddelingspunkt"
+
+#: src/LyXAction.C:235
+msgid "Insert ligature break"
+msgstr "Indsæt ligaturstop"
+
+#: src/LyXAction.C:237
+msgid "Insert index item"
+msgstr "Indsæt indexindgang"
+
+#: src/LyXAction.C:238
+msgid "Insert index list"
+msgstr "Indsæt indeks"
+
+#: src/LyXAction.C:240
+msgid "Turn off keymap"
+msgstr "Slå tastaturomdefinition fra"
+
+#: src/LyXAction.C:243
+msgid "Use primary keymap"
+msgstr "Brug primær tastaturomdefinition"
+
+#: src/LyXAction.C:245
+msgid "Use secondary keymap"
+msgstr "Brug sekundær tastaturomdefinition"
+
+#: src/LyXAction.C:246
+msgid "Toggle keymap"
+msgstr "Tastaturomdefinition til/fra"
+
+#: src/LyXAction.C:248
+msgid "Insert Label"
+msgstr "Indsæt referencemærke"
+
+#: src/LyXAction.C:250
+msgid "Insert Optional Argument"
+msgstr "Indsæt valgfrit parameter"
+
+#: src/LyXAction.C:252
+msgid "Change language"
+msgstr "Skift sprog"
+
+#: src/LyXAction.C:253
+msgid "View LaTeX log"
+msgstr "Vis LaTeX-log"
+
+#: src/LyXAction.C:258
+msgid "Copy paragraph environment type"
+msgstr "Kopiér typografi"
+
+#: src/LyXAction.C:262
+msgid "Paste paragraph environment type"
+msgstr "Indsæt typografi"
+
+#: src/LyXAction.C:265
+msgid "Open the tabular layout"
+msgstr "Åbn tabellayout"
+
+#: src/LyXAction.C:267
+msgid "Go to beginning of line"
+msgstr "Gå til begyndelsen af linjen"
+
+#: src/LyXAction.C:269
+msgid "Select to beginning of line"
+msgstr "Markér til begyndelsen af linjen"
+
+#: src/LyXAction.C:271
+msgid "Go to end of line"
+msgstr "Gå til slutningen af linjen"
+
+#: src/LyXAction.C:273
+msgid "Select to end of line"
+msgstr "Markér til slutningen af linjen"
+
+#: src/LyXAction.C:277
+msgid "Exit"
+msgstr "Afslut"
+
+#: src/LyXAction.C:279
+msgid "Insert margin note"
+msgstr "Indsæt marginnote"
+
+#: src/LyXAction.C:285
+msgid "Math Greek"
+msgstr "Græske bogstaver"
+
+#: src/LyXAction.C:288
+msgid "Insert math symbol"
+msgstr "Indsæt matematisk symbol"
+
+#: src/LyXAction.C:289
+msgid "Add subscript"
+msgstr "Tilføjj sænket"
+
+#: src/LyXAction.C:290
+msgid "Add superscript"
+msgstr "Tilføj hævet"
+
+#: src/LyXAction.C:297
+msgid "Math mode"
+msgstr "Matematik-tilstand"
+
+#: src/LyXAction.C:310
+msgid "toggle inset"
+msgstr "skift indstik"
+
+#: src/LyXAction.C:312
+msgid "Go one paragraph down"
+msgstr "Gå et afsnit ned"
+
+#: src/LyXAction.C:314
+msgid "Select next paragraph"
+msgstr "Markér næste afsnit"
+
+#: src/LyXAction.C:316
+msgid "Go to paragraph"
+msgstr "Gå til afsnit"
+
+#: src/LyXAction.C:319
+msgid "Go one paragraph up"
+msgstr "Gå et afsnit op"
+
+#: src/LyXAction.C:321
+msgid "Select previous paragraph"
+msgstr "Markér forrige afsnit"
+
+#: src/LyXAction.C:323 src/MenuBackend.C:674 src/text3.C:1004
+msgid "Paste"
+msgstr "Indsæt"
+
+#: src/LyXAction.C:325
+msgid "Edit Preferences"
+msgstr "Ret indstillinger"
+
+#: src/LyXAction.C:327
+msgid "Save Preferences"
+msgstr "Gem indstillinger"
+
+#: src/LyXAction.C:330
+msgid "Insert protected space"
+msgstr "Indsæt hårdt mellemrum"
+
+#: src/LyXAction.C:331
+msgid "Insert quote"
+msgstr "Indsæt litteraturhenvisning"
+
+#: src/LyXAction.C:333
+msgid "Reconfigure"
+msgstr "Genkonfigurér"
+
+#: src/LyXAction.C:337
+msgid "Insert cross reference"
+msgstr "Indsæt krydsreference"
+
+#: src/LyXAction.C:346
+msgid "Scroll inset"
+msgstr "Rul indstik"
+
+#: src/LyXAction.C:363
+msgid "Insert Table"
+msgstr "Indsæt tabel"
+
+#: src/LyXAction.C:365
+msgid "Tabular Features"
+msgstr "Tabelindstillinger"
+
+#: src/LyXAction.C:369
+msgid "Open thesaurus"
+msgstr "Åbn begrebsordbog"
+
+#: src/LyXAction.C:371
+msgid "Insert table of contents"
+msgstr "Indsæt indholdsfortegnelse"
+
+#: src/LyXAction.C:373
+msgid "View table of contents"
+msgstr "Vis indholdsfortegnelse"
+
+#: src/LyXAction.C:375
+msgid "Toggle cursor does/doesn't follow the scrollbar"
+msgstr "Skift mellem om markør følger rulleskakt eller ej"
+
+#: src/LyXAction.C:386
+msgid "Register document under version control"
+msgstr "Registrér dokument under versionsstyring"
+
+#: src/LyXAction.C:403
+msgid "Show message in minibuffer"
+msgstr "Vis besked i statuslinje"
+
+#: src/LyXAction.C:408
+msgid "Display information about LyX"
+msgstr "Vis oplysninger om LyX"
+
+#: src/LyXAction.C:410
+msgid "Display information about the TeX installation"
+msgstr "Vis oplysninger om TeX-installationen"
+
+#: src/LyXAction.C:412
+msgid "Show the processes forked by LyX"
+msgstr "Vis processer, som LyX har startet"
+
+#: src/LyXAction.C:414
+msgid "Kill the forked process with this PID"
+msgstr "Dræb underprocesserne ud fra deres PID"
+
+#: src/LyXAction.C:569
+msgid "No description available!"
+msgstr "Mangler beskrivelse!"
+
+#: src/MenuBackend.C:314 src/MenuBackend.C:337 src/MenuBackend.C:394
+#: src/MenuBackend.C:415 src/MenuBackend.C:485
+msgid "No Documents Open!"
+msgstr "Ingen åbne dokumenter!"
+
+#: src/MenuBackend.C:378
+msgid "ASCII text as lines"
+msgstr "Tekst som linjer"
+
+#: src/MenuBackend.C:380
+msgid "ASCII text as paragraphs"
+msgstr "Tekst som afsnit"
+
+#: src/MenuBackend.C:517
+msgid "No Table of contents"
+msgstr "Ingen indholdsfortegnelse"
+
+#: src/MenuBackend.C:654
+msgid "New...|N"
+msgstr "Ny...|N"
+
+#: src/MenuBackend.C:657
+msgid "Quit|Q"
+msgstr "Afslut|A"
+
+#: src/MenuBackend.C:665
+msgid "LaTeX...|L"
+msgstr "LaTeX...|L"
+
+#: src/MenuBackend.C:667
+msgid "LinuxDoc...|L"
+msgstr "LinuxDoc...|L"
+
+#: src/MenuBackend.C:675
+msgid "Emphasize"
+msgstr "Fremhævet"
+
+#: src/buffer.C:356
+msgid "Couldn't set the layout for "
+msgstr "Kunne ikke angive layout for "
+
+#: src/buffer.C:358
+msgid "one paragraph"
+msgstr "et afsnit"
+
+#: src/buffer.C:361
+msgid " paragraphs"
+msgstr " afsnit"
+
+#: src/buffer.C:364 src/buffer.C:367 src/buffer.C:381 src/buffer.C:384
+#: src/buffer.C:641 src/buffer.C:646
+msgid "Textclass Loading Error!"
+msgstr "Fejl under indlæsning af tekstklasse!"
+
+#: src/buffer.C:365 src/buffer.C:382
+#, c-format
+msgid "When reading %1$s"
+msgstr "Under læsning af %1$s"
+
+#: src/buffer.C:368 src/buffer.C:385
+msgid "When reading "
+msgstr "Under læsning af "
+
+#: src/buffer.C:373
+msgid "Encountered "
+msgstr "Fandt "
+
+#: src/buffer.C:375
+msgid "one unknown token"
+msgstr "et ukendt symbol"
+
+#: src/buffer.C:378
+msgid " unknown tokens"
+msgstr " ukendte symboler"
+
+#: src/buffer.C:622 src/buffer.C:627
+msgid "Textclass error"
+msgstr "Fejl i tekstklasse"
+
+#: src/buffer.C:623
+#, c-format
+msgid "The document uses an unknown textclass \"%1$s\"."
+msgstr "Dokumentet benytter den ukendte tekstklasse \"%1$s\"."
+
+#: src/buffer.C:624 src/buffer.C:630
+msgid "LyX will not be able to produce output correctly."
+msgstr "LyX vil ikke kunne producere et korrekt resultat."
+
+#: src/buffer.C:628
+msgid "The document uses an unknown textclass "
+msgstr "Dokumentet benytter den ukendte tekstklasse "
+
+#: src/buffer.C:642
+#, c-format
+msgid "Can't load textclass %1$s"
+msgstr "Kan ikke indlæse tekstklassen %1$s"
+
+#: src/buffer.C:644 src/buffer.C:649
+msgid "-- substituting default"
+msgstr "- erstatter standardværdi"
+
+#: src/buffer.C:647
+msgid "Can't load textclass "
+msgstr "Kan ikke indlæse tekstklassen "
+
+#: src/buffer.C:955
+#, c-format
+msgid "Unknown token: %1$s %2$s\n"
+msgstr "Ukendt symbol: %1$s %2$s\n"
+
+#: src/buffer.C:959
+msgid "Unknown token: "
+msgstr "Ukendt symbol: "
+
+#. future format
+#: src/buffer.C:1184 src/buffer.C:1238
+msgid "Warning!"
+msgstr "Advarsel!"
+
+#: src/buffer.C:1185
+#, fuzzy
+msgid ""
+"The file was created with a newer version of LyX. This is likely to cause "
+"problems."
+msgstr ""
+"Filen er oprettet med en nyere udgave af LyX. Det kan give dig problemer."
+
+#. "\\lyxformat" not found
+#: src/buffer.C:1191 src/buffer.C:1199 src/buffer.C:1211 src/buffer.C:1244
+#: src/buffer.C:1247
+msgid "ERROR!"
+msgstr "FEJL!"
+
+#: src/buffer.C:1192
+msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
+msgstr "Gammelt LyX-filformat fundet. Brug LyX 0.10.x for at læse dette!"
+
+#: src/buffer.C:1200
+msgid "Can't find conversion script."
+msgstr "Kan ikke finde konverteringsskript."
+
+#: src/buffer.C:1212
+msgid "An error occured while running the conversion script."
+msgstr "Der skete en fejl under kørslen af konverteringsskriptet."
+
+#: src/buffer.C:1239
+msgid "Reading of document is not complete"
+msgstr "Indlæsning af dokumentet er ikke fuldstændig"
+
+#: src/buffer.C:1240
+msgid "Maybe the document is truncated"
+msgstr "Dokumentet er måske afkortet"
+
+#: src/buffer.C:1244
+msgid "Not a LyX file!"
+msgstr "Ikke en LyX-fil!"
+
+#: src/buffer.C:1247
+msgid "Unable to read file!"
+msgstr "Kan ikke læse filen!"
+
+#: src/buffer.C:1507
+msgid "Abstract: "
+msgstr "Sammendrag: "
+
+#: src/buffer.C:1518
+msgid "References: "
+msgstr "Referencer: "
+
+#: src/buffer.C:1632
+msgid "Error: Cannot write file:"
+msgstr "Fejl: Kan ikke skrive fil:"
+
+#: src/buffer.C:1662
+msgid "Error: Cannot open file: "
+msgstr "Fejl: Kan ikke åbne fil:"
+
+#: src/buffer.C:2243 src/buffer.C:2698
+msgid "LYX_ERROR:"
+msgstr "LYX_FEJL:"
+
+#: src/buffer.C:2243 src/buffer.C:2698
+msgid "Cannot write file"
+msgstr "Kan ikke skrive fil"
+
+#: src/buffer.C:2331 src/buffer.C:2804
+msgid "Error: Wrong depth for LatexType Command.\n"
+msgstr "Fejl: Forkert dybde for LatexType-kommando.\n"
+
+#. path to LaTeX file
+#: src/buffer.C:3079
+msgid "Running chktex..."
+msgstr "Kører chktex..."
+
+#: src/buffer.C:3092
+msgid "chktex did not work!"
+msgstr "chktex virkede ikke!"
+
+#: src/buffer.C:3093
+msgid "Could not run with file:"
+msgstr "Kunne ikke køre med filen:"
+
+#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:112 src/lyxvc.C:144
+#: src/lyxvc.C:173
+msgid "Changes in document:"
+msgstr "Dokumentet er ændret:"
+
+#: src/bufferlist.C:114 src/bufferlist.C:199
+msgid "Save document?"
+msgstr "Gem dokument?"
+
+#: src/bufferlist.C:314
+#, c-format
+msgid "LyX: Attempting to save document %1$s"
+msgstr "LyX: Forsøger at gemme dokumentet %1$s"
+
+#: src/bufferlist.C:318
+msgid "LyX: Attempting to save document "
+msgstr "LyX: Forsøger at gemme dokumentet %s "
+
+#: src/bufferlist.C:329 src/bufferlist.C:342 src/bufferlist.C:356
+msgid "  Save seems successful. Phew."
+msgstr "  Lagring så ud til at lykkedes. Pyha."
+
+#: src/bufferlist.C:332 src/bufferlist.C:346
+msgid "  Save failed! Trying..."
+msgstr "  Lagring virkede ikke! Forsøger..."
+
+#: src/bufferlist.C:359
+msgid "  Save failed! Bummer. Document is lost."
+msgstr "  Lagring virkede ikke! Beklager, dokumentet er tabt."
+
+#: src/bufferlist.C:373
+msgid "Cannot open file"
+msgstr "Kan ikke åbne fil"
+
+#: src/bufferlist.C:389
+msgid "An emergency save of this document exists!"
+msgstr "En nødlagring af dette dokumentet findes!"
+
+#: src/bufferlist.C:391
+msgid "Try to load that instead?"
+msgstr "Skal jeg forsøge at åbne denne i stedet?"
+
+#: src/bufferlist.C:413
+msgid "Autosave file is newer."
+msgstr "Automatisk gemt fil er nyere."
+
+#: src/bufferlist.C:415
+msgid "Load that one instead?"
+msgstr "Skal jeg åbne denne i stedet?"
+
+#: src/bufferlist.C:485
+msgid "Unable to open template"
+msgstr "Kan ikke åbne skabelon"
+
+#: src/bufferlist.C:518 src/lyxfunc.C:1819
+msgid "Document is already open:"
+msgstr "Dokumentet er allerede åbent:"
+
+#: src/bufferlist.C:520
+msgid "Do you want to reload that document?"
+msgstr "Ønsker du at genåbne dokumentet?"
+
+#. Ask if the file should be checked out for
+#. viewing/editing, if so: load it.
+#: src/bufferlist.C:549
+msgid "Do you want to retrieve file under version control?"
+msgstr "Ønsker du at hente fil fra versionsstyring?"
+
+#: src/bufferlist.C:557
+msgid "Cannot open specified file:"
+msgstr "Kan ikke åbne den valgte fil:"
+
+#: src/bufferlist.C:559
+msgid "Create new document with this name?"
+msgstr "Skal der oprettes et nyt dokument med dette navn?"
+
+#: src/bufferview_funcs.C:74
+msgid "Error! unknown language"
+msgstr "Fejl! Ukendt sprog"
+
+#: src/bufferview_funcs.C:163
+#, c-format
+msgid "Font: %1$s"
+msgstr "Skrift: %1$s"
+
+#: src/bufferview_funcs.C:165
+msgid "Font: "
+msgstr "Skrift: "
+
+#: src/bufferview_funcs.C:172
+#, c-format
+msgid ", Depth: %1$d"
+msgstr ", dybde: %1$d"
+
+#: src/bufferview_funcs.C:174
+msgid ", Depth: "
+msgstr ", dybde: "
+
+#: src/bufferview_funcs.C:184
+msgid ", Spacing: "
+msgstr ", mellemrum: "
+
+#: src/bufferview_funcs.C:191
+msgid "Onehalf"
+msgstr "Halvanden"
+
+#: src/bufferview_funcs.C:197
+msgid "Other ("
+msgstr "Andet ("
+
+#: src/bufferview_funcs.C:207
+msgid ", Paragraph: "
+msgstr ", afsnit: "
+
 #: src/converter.C:181 src/converter.C:185 src/converter.C:221
 msgid "Cannot view file"
 msgstr "Kan ikke vise filen"
@@ -7779,35 +8527,6 @@ msgstr "Mangler logfil:"
 #: src/converter.C:931
 msgid "There were errors during the LaTeX run."
 msgstr "Der blev rapporteret fejl under kørslen af LaTeX."
-
-#: src/CutAndPaste.C:435
-#, c-format
-msgid ""
-"Layout had to be changed from\n"
-"%1$s to %2$s\n"
-"because of class conversion from\n"
-"%3$s to %4$s"
-msgstr ""
-"Layoutet er ændret fra\n"
-"%1$s til %2$s\n"
-"p.g.a. klassekonvertering fra \n"
-"%3$s til %4$s"
-
-#: src/CutAndPaste.C:446
-msgid "Layout had to be changed from\n"
-msgstr "Layout måtte ændres fra\n"
-
-#: src/CutAndPaste.C:447 src/CutAndPaste.C:450
-msgid " to "
-msgstr " til "
-
-#: src/CutAndPaste.C:449
-msgid ""
-"\n"
-"because of class conversion from\n"
-msgstr ""
-"\n"
-"grundet klasseændring fra\n"
 
 #: src/debug.C:38
 msgid "No debugging message"
@@ -7938,162 +8657,13 @@ msgstr "Dokument eksporteret som "
 msgid " to file `"
 msgstr "til fil `"
 
-#: src/frontends/controllers/biblio.C:101
-#, c-format
-msgid "%1$s and %2$s"
-msgstr "%1$s og %2$s"
+#: src/frontends/LyXView.C:164
+msgid " (changed)"
+msgstr " (ændret)"
 
-#: src/frontends/controllers/biblio.C:104
-#, c-format
-msgid "%1$s et al."
-msgstr "%1$s et al."
-
-#: src/frontends/controllers/biblio.C:111
-msgid " and "
-msgstr " og "
-
-#: src/frontends/controllers/biblio.C:113
-msgid "et al."
-msgstr "et al."
-
-#: src/frontends/controllers/biblio.C:152
-msgid "No year"
-msgstr "Intet årstal"
-
-#: src/frontends/controllers/character.C:31
-#: src/frontends/controllers/character.C:61
-#: src/frontends/controllers/character.C:87
-#: src/frontends/controllers/character.C:121
-#: src/frontends/controllers/character.C:187
-#: src/frontends/controllers/character.C:217
-#: src/frontends/controllers/frnt_lang.C:46
-msgid "No change"
-msgstr "Uændret"
-
-#. default & error
-#: src/frontends/controllers/character.C:35 src/lyxfont.C:45
-msgid "Roman"
-msgstr "Ordinær"
-
-#: src/frontends/controllers/character.C:39
-msgid "Sans Serif"
-msgstr "Grotesk"
-
-#: src/frontends/controllers/character.C:43 src/lyxfont.C:45
-msgid "Typewriter"
-msgstr "Skrivemaskine"
-
-#: src/frontends/controllers/character.C:65 src/lyxfont.C:50
-msgid "Medium"
-msgstr "Medium"
-
-#: src/frontends/controllers/character.C:69 src/lyxfont.C:50
-msgid "Bold"
-msgstr "Fed"
-
-#: src/frontends/controllers/character.C:91 src/lyxfont.C:53
-msgid "Upright"
-msgstr "Stående"
-
-#: src/frontends/controllers/character.C:95 src/lyxfont.C:53
-msgid "Italic"
-msgstr "Kursiv"
-
-#: src/frontends/controllers/character.C:99 src/lyxfont.C:53
-msgid "Slanted"
-msgstr "Skråtstillet"
-
-#: src/frontends/controllers/character.C:103
-msgid "Small Caps"
-msgstr "Kapitæler"
-
-#: src/frontends/controllers/character.C:125 src/lyxfont.C:57
-msgid "Tiny"
-msgstr "Lillebitte"
-
-#: src/frontends/controllers/character.C:129 src/lyxfont.C:57
-msgid "Smallest"
-msgstr "Mindst"
-
-#: src/frontends/controllers/character.C:133 src/lyxfont.C:57
-msgid "Smaller"
-msgstr "Mindre"
-
-#: src/frontends/controllers/character.C:137 src/lyxfont.C:57
-msgid "Small"
-msgstr "Lille"
-
-#: src/frontends/controllers/character.C:141 src/lyxfont.C:57
-msgid "Normal"
-msgstr "Normal"
-
-#: src/frontends/controllers/character.C:149 src/lyxfont.C:58
-msgid "Larger"
-msgstr "Større"
-
-#: src/frontends/controllers/character.C:153 src/lyxfont.C:58
-msgid "Largest"
-msgstr "Størst"
-
-#: src/frontends/controllers/character.C:161 src/lyxfont.C:58
-msgid "Huger"
-msgstr "Kæmpestor"
-
-#: src/frontends/controllers/character.C:165 src/lyxfont.C:58
-msgid "Increase"
-msgstr "Forøg"
-
-#: src/frontends/controllers/character.C:169 src/lyxfont.C:58
-msgid "Decrease"
-msgstr "Formindsk"
-
-#: src/frontends/controllers/character.C:191
-msgid "Emph"
-msgstr "Fremhævet"
-
-#: src/frontends/controllers/character.C:195
-msgid "Underbar"
-msgstr "Underlinje"
-
-#: src/frontends/controllers/character.C:199
-msgid "Noun"
-msgstr "Navneord"
-
-#: src/frontends/controllers/character.C:221
-msgid "No color"
-msgstr "Ingen farve"
-
-#: src/frontends/controllers/character.C:225
-msgid "Black"
-msgstr "Sort"
-
-#: src/frontends/controllers/character.C:229
-msgid "White"
-msgstr "Hvid"
-
-#: src/frontends/controllers/character.C:233
-msgid "Red"
-msgstr "Gendan"
-
-#: src/frontends/controllers/character.C:237
-msgid "Green"
-msgstr "Grøn"
-
-#: src/frontends/controllers/character.C:241
-msgid "Blue"
-msgstr "Blå"
-
-#: src/frontends/controllers/character.C:245
-msgid "Cyan"
-msgstr "Turkis"
-
-#: src/frontends/controllers/character.C:249
-msgid "Magenta"
-msgstr "Magenta"
-
-#: src/frontends/controllers/character.C:253
-msgid "Yellow"
-msgstr "Gul"
+#: src/frontends/LyXView.C:168
+msgid " (read only)"
+msgstr " (skrivebeskyttet)"
 
 #: src/frontends/controllers/ControlAboutlyx.C:54
 msgid "ERROR: LyX wasn't able to read CREDITS file\n"
@@ -8380,6 +8950,163 @@ msgstr ""
 msgid "No version control log file found."
 msgstr "Fandt ingen versionskontrollogfil."
 
+#: src/frontends/controllers/biblio.C:101
+#, c-format
+msgid "%1$s and %2$s"
+msgstr "%1$s og %2$s"
+
+#: src/frontends/controllers/biblio.C:104
+#, c-format
+msgid "%1$s et al."
+msgstr "%1$s et al."
+
+#: src/frontends/controllers/biblio.C:111
+msgid " and "
+msgstr " og "
+
+#: src/frontends/controllers/biblio.C:113
+msgid "et al."
+msgstr "et al."
+
+#: src/frontends/controllers/biblio.C:152
+msgid "No year"
+msgstr "Intet årstal"
+
+#: src/frontends/controllers/character.C:31
+#: src/frontends/controllers/character.C:61
+#: src/frontends/controllers/character.C:87
+#: src/frontends/controllers/character.C:121
+#: src/frontends/controllers/character.C:187
+#: src/frontends/controllers/character.C:217
+#: src/frontends/controllers/frnt_lang.C:46
+msgid "No change"
+msgstr "Uændret"
+
+#. default & error
+#: src/frontends/controllers/character.C:35 src/lyxfont.C:45
+msgid "Roman"
+msgstr "Ordinær"
+
+#: src/frontends/controllers/character.C:39
+msgid "Sans Serif"
+msgstr "Grotesk"
+
+#: src/frontends/controllers/character.C:43 src/lyxfont.C:45
+msgid "Typewriter"
+msgstr "Skrivemaskine"
+
+#: src/frontends/controllers/character.C:65 src/lyxfont.C:50
+msgid "Medium"
+msgstr "Medium"
+
+#: src/frontends/controllers/character.C:69 src/lyxfont.C:50
+msgid "Bold"
+msgstr "Fed"
+
+#: src/frontends/controllers/character.C:91 src/lyxfont.C:53
+msgid "Upright"
+msgstr "Stående"
+
+#: src/frontends/controllers/character.C:95 src/lyxfont.C:53
+msgid "Italic"
+msgstr "Kursiv"
+
+#: src/frontends/controllers/character.C:99 src/lyxfont.C:53
+msgid "Slanted"
+msgstr "Skråtstillet"
+
+#: src/frontends/controllers/character.C:103
+msgid "Small Caps"
+msgstr "Kapitæler"
+
+#: src/frontends/controllers/character.C:125 src/lyxfont.C:57
+msgid "Tiny"
+msgstr "Lillebitte"
+
+#: src/frontends/controllers/character.C:129 src/lyxfont.C:57
+msgid "Smallest"
+msgstr "Mindst"
+
+#: src/frontends/controllers/character.C:133 src/lyxfont.C:57
+msgid "Smaller"
+msgstr "Mindre"
+
+#: src/frontends/controllers/character.C:137 src/lyxfont.C:57
+msgid "Small"
+msgstr "Lille"
+
+#: src/frontends/controllers/character.C:141 src/lyxfont.C:57
+msgid "Normal"
+msgstr "Normal"
+
+#: src/frontends/controllers/character.C:149 src/lyxfont.C:58
+msgid "Larger"
+msgstr "Større"
+
+#: src/frontends/controllers/character.C:153 src/lyxfont.C:58
+msgid "Largest"
+msgstr "Størst"
+
+#: src/frontends/controllers/character.C:161 src/lyxfont.C:58
+msgid "Huger"
+msgstr "Kæmpestor"
+
+#: src/frontends/controllers/character.C:165 src/lyxfont.C:58
+msgid "Increase"
+msgstr "Forøg"
+
+#: src/frontends/controllers/character.C:169 src/lyxfont.C:58
+msgid "Decrease"
+msgstr "Formindsk"
+
+#: src/frontends/controllers/character.C:191
+msgid "Emph"
+msgstr "Fremhævet"
+
+#: src/frontends/controllers/character.C:195
+msgid "Underbar"
+msgstr "Underlinje"
+
+#: src/frontends/controllers/character.C:199
+msgid "Noun"
+msgstr "Navneord"
+
+#: src/frontends/controllers/character.C:221
+msgid "No color"
+msgstr "Ingen farve"
+
+#: src/frontends/controllers/character.C:225
+msgid "Black"
+msgstr "Sort"
+
+#: src/frontends/controllers/character.C:229
+msgid "White"
+msgstr "Hvid"
+
+#: src/frontends/controllers/character.C:233
+msgid "Red"
+msgstr "Gendan"
+
+#: src/frontends/controllers/character.C:237
+msgid "Green"
+msgstr "Grøn"
+
+#: src/frontends/controllers/character.C:241
+msgid "Blue"
+msgstr "Blå"
+
+#: src/frontends/controllers/character.C:245
+msgid "Cyan"
+msgstr "Turkis"
+
+#: src/frontends/controllers/character.C:249
+msgid "Magenta"
+msgstr "Magenta"
+
+#: src/frontends/controllers/character.C:253
+msgid "Yellow"
+msgstr "Gul"
+
 #: src/frontends/controllers/helper_funcs.C:63
 msgid "Filename can't contain any of these characters:"
 msgstr "Filnavn må ikke indeholde nogen af disse tegn:"
@@ -8405,14 +9132,6 @@ msgstr "Ingen byggelog-fil fundet"
 msgid "No LaTeX log file found"
 msgstr "Ingen LaTeX-logfil fundet"
 
-#: src/frontends/LyXView.C:164
-msgid " (changed)"
-msgstr " (ændret)"
-
-#: src/frontends/LyXView.C:168
-msgid " (read only)"
-msgstr " (skrivebeskyttet)"
-
 #: src/frontends/qt2/Alert_pimpl.C:46 src/frontends/qt2/Alert_pimpl.C:53
 msgid "&Yes"
 msgstr "&Ja"
@@ -8437,10 +9156,6 @@ msgstr "Alle filer (*)"
 #: src/frontends/qt2/FileDialog.C:91
 msgid "*|All files"
 msgstr "*|Alle filer"
-
-#: src/frontends/qt2/lengthcombo.C:34
-msgid "Choose one of the units or relative lengths"
-msgstr "Vælg enten enheder eller relative længder"
 
 #: src/frontends/qt2/QBibitem.C:34
 msgid "Bibliography Item"
@@ -8923,10 +9638,6 @@ msgstr "LaTeX-oplysninger"
 msgid "Table of contents"
 msgstr "Indholdsfortegnelse"
 
-#: src/frontends/qt2/QtView.C:147
-msgid "LyX"
-msgstr "LyX"
-
 #: src/frontends/qt2/QVCLog.C:35
 msgid "VCLog"
 msgstr "VKLog"
@@ -8939,6 +9650,14 @@ msgstr "Versionskontrollog for %1$s"
 #: src/frontends/qt2/QVCLog.C:53
 msgid "Version control log for "
 msgstr "Versionsstyringslog for "
+
+#: src/frontends/qt2/QtView.C:147
+msgid "LyX"
+msgstr "LyX"
+
+#: src/frontends/qt2/lengthcombo.C:34
+msgid "Choose one of the units or relative lengths"
+msgstr "Vælg enten enheder eller relative længder"
 
 #: src/frontends/xforms/Alert_pimpl.C:30
 msgid "Dismiss"
@@ -9053,10 +9772,6 @@ msgstr ""
 #: src/frontends/xforms/ColorHandler.C:198
 msgid "] is used."
 msgstr "] er brugt."
-
-#: src/frontends/xforms/combox.C:517
-msgid "Done"
-msgstr "Færdig"
 
 #: src/frontends/xforms/FileDialog.C:62
 msgid "*"
@@ -10196,6 +10911,26 @@ msgstr "Tvinger flyderen til venstre i afsnittet."
 msgid "Forces float to the right in the paragraph."
 msgstr "Tvinger flyderen til højre i afsnittet."
 
+#: src/frontends/xforms/XMiniBuffer.C:99
+msgid "[End of history]"
+msgstr "[Historieslutning]"
+
+#: src/frontends/xforms/XMiniBuffer.C:113
+msgid "[Beginning of history]"
+msgstr "[Historiestart]"
+
+#: src/frontends/xforms/XMiniBuffer.C:127
+msgid "[no match]"
+msgstr "[ingen hit]"
+
+#: src/frontends/xforms/XMiniBuffer.C:133
+msgid "[only completion]"
+msgstr "[kun afslutning]"
+
+#: src/frontends/xforms/combox.C:517
+msgid "Done"
+msgstr "Færdig"
+
 #: src/frontends/xforms/input_validators.C:126
 msgid "ERROR! Unable to print!"
 msgstr "FEJL!  Kan ikke udskrive!"
@@ -10253,22 +10988,6 @@ msgstr "Filen eksisterer ikke."
 msgid "Cannot read from this file."
 msgstr "Kan ikke læse fra denne fil."
 
-#: src/frontends/xforms/XMiniBuffer.C:99
-msgid "[End of history]"
-msgstr "[Historieslutning]"
-
-#: src/frontends/xforms/XMiniBuffer.C:113
-msgid "[Beginning of history]"
-msgstr "[Historiestart]"
-
-#: src/frontends/xforms/XMiniBuffer.C:127
-msgid "[no match]"
-msgstr "[ingen hit]"
-
-#: src/frontends/xforms/XMiniBuffer.C:133
-msgid "[only completion]"
-msgstr "[kun afslutning]"
-
 # , c-format
 #: src/importer.C:45
 #, c-format
@@ -10302,13 +11021,13 @@ msgstr "Ingen oplysninger om import fra "
 msgid "imported."
 msgstr "importeret."
 
-#: src/insets/insetbib.C:146
-msgid "BibTeX Generated References"
-msgstr "BibTeX-genereret litteraturliste"
-
 #: src/insets/inset.C:118
 msgid "Opened inset"
 msgstr "Indstik åbnet"
+
+#: src/insets/insetbib.C:146
+msgid "BibTeX Generated References"
+msgstr "BibTeX-genereret litteraturliste"
 
 #: src/insets/insetcaption.C:67
 msgid "Opened Caption Inset"
@@ -10420,33 +11139,33 @@ msgstr "Fejl under generering af pikselbillede"
 msgid "No image"
 msgstr "Intet billede"
 
-#: src/insets/insetgraphics.C:641
+#: src/insets/insetgraphics.C:640
 msgid "Cannot copy file"
 msgstr "Kan ikke kopiere fil"
 
-#: src/insets/insetgraphics.C:642
+#: src/insets/insetgraphics.C:641
 msgid "into tempdir"
 msgstr "til midlertidigt katalog"
 
-#: src/insets/insetgraphics.C:679 src/insets/insetgraphics.C:683
+#: src/insets/insetgraphics.C:678 src/insets/insetgraphics.C:682
 msgid "Cannot convert Image (not existing file?)"
 msgstr "Kan ikke konvertere billede (ikke-eksisterende fil?)"
 
-#: src/insets/insetgraphics.C:680
+#: src/insets/insetgraphics.C:679
 #, c-format
 msgid "No information for converting from %1$s to %2$s"
 msgstr "Ingen oplysninger om konvertering fra  %1$s til %2$s"
 
-#: src/insets/insetgraphics.C:684
+#: src/insets/insetgraphics.C:683
 msgid "No information for converting from "
 msgstr "Ingen oplysninger om konvertering fra "
 
-#: src/insets/insetgraphics.C:776
+#: src/insets/insetgraphics.C:775
 #, c-format
 msgid "Graphic file: %1$s"
 msgstr "Grafikfil: %1$s"
 
-#: src/insets/insetgraphics.C:780
+#: src/insets/insetgraphics.C:779
 msgid "Graphic file: "
 msgstr "Grafikfil: "
 
@@ -10489,10 +11208,6 @@ msgstr "miniside"
 #: src/insets/insetminipage.C:229
 msgid "Opened Minipage Inset"
 msgstr "Miniside-indstik åbnet"
-
-#: src/insets/insetnote.C:40 src/LColor.C:64
-msgid "note"
-msgstr "notat"
 
 #: src/insets/insetnote.C:87
 msgid "Opened Note Inset"
@@ -10619,223 +11334,6 @@ msgstr "Åbnede ombrydningsindstik"
 msgid "   options: "
 msgstr "   indstillinger: "
 
-#: src/LaTeX.C:207 src/LaTeX.C:296 src/LaTeX.C:357
-#, c-format
-msgid "LaTeX run number %1$d"
-msgstr "LaTeX-kørsel nummer %1$d"
-
-#: src/LaTeX.C:209 src/LaTeX.C:298 src/LaTeX.C:359
-msgid "LaTeX run number "
-msgstr "LaTeX-kørsel nummer "
-
-#: src/LaTeX.C:247 src/LaTeX.C:331
-msgid "Running MakeIndex."
-msgstr "Kører MakeIndex."
-
-#: src/LaTeX.C:262
-msgid "Running BibTeX."
-msgstr "Kører BibTeX."
-
-#: src/LColor.C:49
-msgid "none"
-msgstr "ingen"
-
-#: src/LColor.C:50
-msgid "black"
-msgstr "sort"
-
-#: src/LColor.C:51
-msgid "white"
-msgstr "hvid"
-
-#: src/LColor.C:52
-msgid "red"
-msgstr "rød"
-
-#: src/LColor.C:53
-msgid "green"
-msgstr "grøn"
-
-#: src/LColor.C:54
-msgid "blue"
-msgstr "blå"
-
-#: src/LColor.C:55
-msgid "cyan"
-msgstr "lyseblå"
-
-#: src/LColor.C:56
-msgid "magenta"
-msgstr "lilla"
-
-#: src/LColor.C:57
-msgid "yellow"
-msgstr "gul"
-
-#: src/LColor.C:58
-msgid "cursor"
-msgstr "markør"
-
-#: src/LColor.C:59
-msgid "background"
-msgstr "baggrund"
-
-#: src/LColor.C:60
-msgid "text"
-msgstr "tekst"
-
-#: src/LColor.C:61
-msgid "selection"
-msgstr "markeret"
-
-#: src/LColor.C:62
-msgid "LaTeX text"
-msgstr "LaTeX-tekst"
-
-#: src/LColor.C:63
-msgid "previewed snippet"
-msgstr "smugkigs-udsnit"
-
-#: src/LColor.C:65
-msgid "note background"
-msgstr "notat-baggrund"
-
-#: src/LColor.C:66
-msgid "depth bar"
-msgstr "dybde-bjælke"
-
-#: src/LColor.C:67
-msgid "language"
-msgstr "sprog"
-
-#: src/LColor.C:68
-msgid "command inset"
-msgstr "kommando-indstik"
-
-#: src/LColor.C:69
-msgid "command inset background"
-msgstr "kommandoindstiksbaggrund"
-
-#: src/LColor.C:70
-msgid "command inset frame"
-msgstr "kommandoindstiksramme"
-
-#: src/LColor.C:71
-msgid "special character"
-msgstr "specialtegn"
-
-#: src/LColor.C:72
-msgid "math"
-msgstr "matematik"
-
-#: src/LColor.C:73
-msgid "math background"
-msgstr "matematikbaggrund"
-
-#: src/LColor.C:74
-msgid "graphics background"
-msgstr "grafikbaggrund"
-
-#: src/LColor.C:75
-msgid "Math macro background"
-msgstr "Matematik-makrobaggrund"
-
-#: src/LColor.C:76
-msgid "math frame"
-msgstr "matematikramme"
-
-#: src/LColor.C:77
-msgid "math cursor"
-msgstr "matematikmarkør"
-
-#: src/LColor.C:78
-msgid "math line"
-msgstr "matematiklinje"
-
-#: src/LColor.C:79
-msgid "caption frame"
-msgstr "billedtekstramme"
-
-#: src/LColor.C:80
-msgid "collapsable inset text"
-msgstr "sammenklappelig indstikstekst"
-
-#: src/LColor.C:81
-msgid "collapsable inset frame"
-msgstr "sammenklappelig indstiksramme"
-
-#: src/LColor.C:82
-msgid "inset background"
-msgstr "indstiksbaggrund"
-
-#: src/LColor.C:83
-msgid "inset frame"
-msgstr "indstiksramme"
-
-#: src/LColor.C:84
-msgid "LaTeX error"
-msgstr "LaTeX-fejl"
-
-#: src/LColor.C:85
-msgid "end-of-line marker"
-msgstr "linjeslut-markering"
-
-#: src/LColor.C:86
-msgid "appendix line"
-msgstr "appendiks-linje"
-
-#: src/LColor.C:87
-msgid "added space markers"
-msgstr "tilføjede afstandsmarkører"
-
-#: src/LColor.C:88
-msgid "top/bottom line"
-msgstr "top/bund-linje"
-
-#: src/LColor.C:89
-msgid "tabular line"
-msgstr "tabellinje"
-
-#: src/LColor.C:91
-msgid "tabular on/off line"
-msgstr "tabel-fra/til linje"
-
-#: src/LColor.C:93
-msgid "bottom area"
-msgstr "bundareal"
-
-#: src/LColor.C:94
-msgid "page break"
-msgstr "sideskift"
-
-#: src/LColor.C:95
-msgid "top of button"
-msgstr "knap-top"
-
-#: src/LColor.C:96
-msgid "bottom of button"
-msgstr "knap-bund"
-
-#: src/LColor.C:97
-msgid "left of button"
-msgstr "knap-venstre"
-
-#: src/LColor.C:98
-msgid "right of button"
-msgstr "knap-højre"
-
-#: src/LColor.C:99
-msgid "button background"
-msgstr "knap-baggrund"
-
-#: src/LColor.C:100
-msgid "inherit"
-msgstr "arv"
-
-#: src/LColor.C:101
-msgid "ignore"
-msgstr "ignorér"
-
 #: src/lengthcommon.C:34
 msgid "sp"
 msgstr "sp"
@@ -10903,471 +11401,6 @@ msgstr "thøjde%"
 #: src/lengthcommon.C:37
 msgid "pheight%"
 msgstr "shøjde%"
-
-#: src/LyXAction.C:102
-msgid "Insert appendix"
-msgstr "Indsæt appendiks"
-
-#: src/LyXAction.C:103
-msgid "Describe command"
-msgstr "Beskriv kommando"
-
-#: src/LyXAction.C:106
-msgid "Select previous char"
-msgstr "Markér forrige bogstav"
-
-#: src/LyXAction.C:109
-msgid "Insert BibTeX"
-msgstr "Indsæt BibTeX"
-
-#: src/LyXAction.C:120
-msgid "Build program"
-msgstr "Dan program"
-
-#: src/LyXAction.C:121
-msgid "Autosave"
-msgstr "Autogemmer"
-
-#: src/LyXAction.C:123
-msgid "Go to beginning of document"
-msgstr "Gå til begyndelsen af dokumentet"
-
-#: src/LyXAction.C:125
-msgid "Select to beginning of document"
-msgstr "Markér til begyndelsen af dokumentet"
-
-#: src/LyXAction.C:128
-msgid "Check TeX"
-msgstr "Check TeX"
-
-#: src/LyXAction.C:131
-msgid "Go to end of document"
-msgstr "Gå til slutningen af dokumentet"
-
-#: src/LyXAction.C:133
-msgid "Select to end of document"
-msgstr "Markér til slutningen af dokumentet"
-
-# , c-format
-#: src/LyXAction.C:134
-msgid "Export to"
-msgstr "Eksportér til"
-
-#: src/LyXAction.C:136
-msgid "Import document"
-msgstr "Importér dokument"
-
-#: src/LyXAction.C:137
-msgid "New document"
-msgstr "Nyt dokument"
-
-#: src/LyXAction.C:139
-msgid "New document from template"
-msgstr "Nyt dokument fra skabelon"
-
-#: src/LyXAction.C:142
-msgid "Revert to saved"
-msgstr "Gendan sidst gemte"
-
-#: src/LyXAction.C:144
-msgid "Switch to an open document"
-msgstr "Skift til et åbent dokument"
-
-#: src/LyXAction.C:146
-msgid "Toggle read-only"
-msgstr "Skrivebeskyttelse til/fra"
-
-#: src/LyXAction.C:147
-msgid "Update"
-msgstr "Opdatér"
-
-#: src/LyXAction.C:148
-msgid "View"
-msgstr "Vis"
-
-#: src/LyXAction.C:150
-msgid "Save As"
-msgstr "Gem som"
-
-#: src/LyXAction.C:154
-msgid "Go one char back"
-msgstr "Gå et bogstav tilbage"
-
-#: src/LyXAction.C:156
-msgid "Go one char forward"
-msgstr "Gå et bogstav fremad"
-
-#: src/LyXAction.C:159
-msgid "Insert citation"
-msgstr "Indsæt litteraturhenvisning"
-
-#: src/LyXAction.C:163
-msgid "Execute command"
-msgstr "Udfør kommando"
-
-#: src/LyXAction.C:165 src/MenuBackend.C:673 src/text3.C:1027
-msgid "Copy"
-msgstr "Kopiér"
-
-#: src/LyXAction.C:166 src/MenuBackend.C:672 src/text3.C:1022
-msgid "Cut"
-msgstr "Klip"
-
-#: src/LyXAction.C:173
-msgid "Decrement environment depth"
-msgstr "Formindsk omgivelsesdybde"
-
-#: src/LyXAction.C:175
-msgid "Increment environment depth"
-msgstr "Forøg omgivelsesdybde"
-
-#: src/LyXAction.C:176
-msgid "Insert ... dots"
-msgstr "Indsæt ellipse (...)"
-
-#: src/LyXAction.C:177
-msgid "Go down"
-msgstr "Gå ned"
-
-#: src/LyXAction.C:179
-msgid "Select next line"
-msgstr "Markér næste linje"
-
-#: src/LyXAction.C:181
-msgid "Choose Paragraph Environment"
-msgstr "Vælg typografi"
-
-#: src/LyXAction.C:183
-msgid "Insert end of sentence period"
-msgstr "Indsæt sætningsafsluttende punktum"
-
-#: src/LyXAction.C:185
-msgid "Go to next error"
-msgstr "Gå til næste fejl"
-
-#: src/LyXAction.C:187
-msgid "Remove all error boxes"
-msgstr "Fjern alle fejlbokse"
-
-#: src/LyXAction.C:189
-msgid "Insert a new ERT Inset"
-msgstr "Indsæt et nyt ERT-indstik"
-
-#: src/LyXAction.C:191
-msgid "Insert a new external inset"
-msgstr "Indsæt et ny eksternt indstik"
-
-#: src/LyXAction.C:193
-msgid "Insert Graphics"
-msgstr "Indsæt grafik"
-
-#: src/LyXAction.C:195
-msgid "Insert ASCII files as lines"
-msgstr "Indsæt tekstfiler som linjer"
-
-#: src/LyXAction.C:196
-msgid "Insert ASCII file as a paragraph"
-msgstr "Indsæt tekstfiler som afsnit"
-
-#: src/LyXAction.C:198
-msgid "Open a file"
-msgstr "Åbn fil"
-
-#: src/LyXAction.C:199
-msgid "Find & Replace"
-msgstr "Søg og erstat"
-
-#: src/LyXAction.C:201
-msgid "Insert a Float"
-msgstr "Indsæt en flyder"
-
-#: src/LyXAction.C:203
-msgid "Insert a wide Float"
-msgstr "Indsæt bred flyder"
-
-#: src/LyXAction.C:204
-msgid "Insert a Wrap"
-msgstr "Indsæt ombrydningsfigur"
-
-#: src/LyXAction.C:205
-msgid "Toggle bold"
-msgstr "Fed til/fra"
-
-#: src/LyXAction.C:206
-msgid "Toggle code style"
-msgstr "Programstil til/fra"
-
-#: src/LyXAction.C:207
-msgid "Default font style"
-msgstr "Standardskrift"
-
-#: src/LyXAction.C:209
-msgid "Toggle emphasize"
-msgstr "Fremhævet til/fra"
-
-#: src/LyXAction.C:210
-msgid "Toggle user defined style"
-msgstr "Brugerdefineret stil til/fra"
-
-#: src/LyXAction.C:212
-msgid "Toggle noun style"
-msgstr "Kapitæler til/fra"
-
-#: src/LyXAction.C:213
-msgid "Toggle roman font style"
-msgstr "Ordinær skrift til/fra"
-
-#: src/LyXAction.C:215
-msgid "Toggle sans font style"
-msgstr "Grotesk skrift til/fra"
-
-#: src/LyXAction.C:216
-msgid "Toggle fraktur font style"
-msgstr "Fraktur-skriftstil til/fra"
-
-#: src/LyXAction.C:217
-msgid "Toggle italic font style"
-msgstr "Kursiv-skriftstil til/fra"
-
-#: src/LyXAction.C:218
-msgid "Set font size"
-msgstr "Sæt skriftstørrelse"
-
-#: src/LyXAction.C:219
-msgid "Show font state"
-msgstr "Vis skriftstatus"
-
-#: src/LyXAction.C:222
-msgid "Toggle font underline"
-msgstr "Understregning til/fra"
-
-#: src/LyXAction.C:224
-msgid "Insert Footnote"
-msgstr "Indsæt fodnote"
-
-#: src/LyXAction.C:225
-msgid "Select next char"
-msgstr "Markér næste bogstav"
-
-#: src/LyXAction.C:228
-msgid "Insert horizontal fill"
-msgstr "Indsæt vandret fyld"
-
-#: src/LyXAction.C:229
-msgid "Open a Help file"
-msgstr "Åbn en hjælpefil"
-
-#: src/LyXAction.C:233
-msgid "Insert hyphenation point"
-msgstr "Indsæt orddelingspunkt"
-
-#: src/LyXAction.C:235
-msgid "Insert ligature break"
-msgstr "Indsæt ligaturstop"
-
-#: src/LyXAction.C:237
-msgid "Insert index item"
-msgstr "Indsæt indexindgang"
-
-#: src/LyXAction.C:238
-msgid "Insert index list"
-msgstr "Indsæt indeks"
-
-#: src/LyXAction.C:240
-msgid "Turn off keymap"
-msgstr "Slå tastaturomdefinition fra"
-
-#: src/LyXAction.C:243
-msgid "Use primary keymap"
-msgstr "Brug primær tastaturomdefinition"
-
-#: src/LyXAction.C:245
-msgid "Use secondary keymap"
-msgstr "Brug sekundær tastaturomdefinition"
-
-#: src/LyXAction.C:246
-msgid "Toggle keymap"
-msgstr "Tastaturomdefinition til/fra"
-
-#: src/LyXAction.C:248
-msgid "Insert Label"
-msgstr "Indsæt referencemærke"
-
-#: src/LyXAction.C:250
-msgid "Insert Optional Argument"
-msgstr "Indsæt valgfrit parameter"
-
-#: src/LyXAction.C:252
-msgid "Change language"
-msgstr "Skift sprog"
-
-#: src/LyXAction.C:253
-msgid "View LaTeX log"
-msgstr "Vis LaTeX-log"
-
-#: src/LyXAction.C:258
-msgid "Copy paragraph environment type"
-msgstr "Kopiér typografi"
-
-#: src/LyXAction.C:262
-msgid "Paste paragraph environment type"
-msgstr "Indsæt typografi"
-
-#: src/LyXAction.C:265
-msgid "Open the tabular layout"
-msgstr "Åbn tabellayout"
-
-#: src/LyXAction.C:267
-msgid "Go to beginning of line"
-msgstr "Gå til begyndelsen af linjen"
-
-#: src/LyXAction.C:269
-msgid "Select to beginning of line"
-msgstr "Markér til begyndelsen af linjen"
-
-#: src/LyXAction.C:271
-msgid "Go to end of line"
-msgstr "Gå til slutningen af linjen"
-
-#: src/LyXAction.C:273
-msgid "Select to end of line"
-msgstr "Markér til slutningen af linjen"
-
-#: src/LyXAction.C:277
-msgid "Exit"
-msgstr "Afslut"
-
-#: src/LyXAction.C:279
-msgid "Insert margin note"
-msgstr "Indsæt marginnote"
-
-#: src/LyXAction.C:285
-msgid "Math Greek"
-msgstr "Græske bogstaver"
-
-#: src/LyXAction.C:288
-msgid "Insert math symbol"
-msgstr "Indsæt matematisk symbol"
-
-#: src/LyXAction.C:289
-msgid "Add subscript"
-msgstr "Tilføjj sænket"
-
-#: src/LyXAction.C:290
-msgid "Add superscript"
-msgstr "Tilføj hævet"
-
-#: src/LyXAction.C:297
-msgid "Math mode"
-msgstr "Matematik-tilstand"
-
-#: src/LyXAction.C:310
-msgid "toggle inset"
-msgstr "skift indstik"
-
-#: src/LyXAction.C:312
-msgid "Go one paragraph down"
-msgstr "Gå et afsnit ned"
-
-#: src/LyXAction.C:314
-msgid "Select next paragraph"
-msgstr "Markér næste afsnit"
-
-#: src/LyXAction.C:316
-msgid "Go to paragraph"
-msgstr "Gå til afsnit"
-
-#: src/LyXAction.C:319
-msgid "Go one paragraph up"
-msgstr "Gå et afsnit op"
-
-#: src/LyXAction.C:321
-msgid "Select previous paragraph"
-msgstr "Markér forrige afsnit"
-
-#: src/LyXAction.C:323 src/MenuBackend.C:674 src/text3.C:1004
-msgid "Paste"
-msgstr "Indsæt"
-
-#: src/LyXAction.C:325
-msgid "Edit Preferences"
-msgstr "Ret indstillinger"
-
-#: src/LyXAction.C:327
-msgid "Save Preferences"
-msgstr "Gem indstillinger"
-
-#: src/LyXAction.C:330
-msgid "Insert protected space"
-msgstr "Indsæt hårdt mellemrum"
-
-#: src/LyXAction.C:331
-msgid "Insert quote"
-msgstr "Indsæt litteraturhenvisning"
-
-#: src/LyXAction.C:333
-msgid "Reconfigure"
-msgstr "Genkonfigurér"
-
-#: src/LyXAction.C:337
-msgid "Insert cross reference"
-msgstr "Indsæt krydsreference"
-
-#: src/LyXAction.C:346
-msgid "Scroll inset"
-msgstr "Rul indstik"
-
-#: src/LyXAction.C:363
-msgid "Insert Table"
-msgstr "Indsæt tabel"
-
-#: src/LyXAction.C:365
-msgid "Tabular Features"
-msgstr "Tabelindstillinger"
-
-#: src/LyXAction.C:369
-msgid "Open thesaurus"
-msgstr "Åbn begrebsordbog"
-
-#: src/LyXAction.C:371
-msgid "Insert table of contents"
-msgstr "Indsæt indholdsfortegnelse"
-
-#: src/LyXAction.C:373
-msgid "View table of contents"
-msgstr "Vis indholdsfortegnelse"
-
-#: src/LyXAction.C:375
-msgid "Toggle cursor does/doesn't follow the scrollbar"
-msgstr "Skift mellem om markør følger rulleskakt eller ej"
-
-#: src/LyXAction.C:386
-msgid "Register document under version control"
-msgstr "Registrér dokument under versionsstyring"
-
-#: src/LyXAction.C:403
-msgid "Show message in minibuffer"
-msgstr "Vis besked i statuslinje"
-
-#: src/LyXAction.C:408
-msgid "Display information about LyX"
-msgstr "Vis oplysninger om LyX"
-
-#: src/LyXAction.C:410
-msgid "Display information about the TeX installation"
-msgstr "Vis oplysninger om TeX-installationen"
-
-#: src/LyXAction.C:412
-msgid "Show the processes forked by LyX"
-msgstr "Vis processer, som LyX har startet"
-
-#: src/LyXAction.C:414
-msgid "Kill the forked process with this PID"
-msgstr "Dræb underprocesserne ud fra deres PID"
-
-#: src/LyXAction.C:569
-msgid "No description available!"
-msgstr "Mangler beskrivelse!"
 
 #: src/lyx_cb.C:85
 msgid "Save failed. Rename and try again?"
@@ -11513,6 +11546,210 @@ msgstr "Du skal genstarte LyX for at kunne bruge de"
 #: src/lyx_cb.C:541
 msgid "updated document class specifications."
 msgstr "opdaterede tekstklassespecifikationer."
+
+#: src/lyx_main.C:105
+#, c-format
+msgid "Wrong command line option `%1$s'. Exiting."
+msgstr "Forkert tilvalg '%1$s'. Afslutter."
+
+#: src/lyx_main.C:109
+msgid "Wrong command line option `"
+msgstr "Forkert tilvalg '"
+
+#: src/lyx_main.C:110
+msgid "'. Exiting."
+msgstr "'. Afslutter."
+
+#: src/lyx_main.C:233
+msgid "Warning: could not determine path of binary."
+msgstr "Advarsel: Kunne ikke bestemme stien til programmet."
+
+#: src/lyx_main.C:235
+msgid "If you have problems, try starting LyX with an absolute path."
+msgstr "Hvis du har problemer, så prøv at starte LyX med en absolut sti."
+
+#: src/lyx_main.C:342
+msgid "LYX_DIR_13x environment variable no good."
+msgstr "LYX_DIR_13x skal-variabel er ugyldig."
+
+#: src/lyx_main.C:344
+msgid "System directory set to: "
+msgstr "Systemkatalog sat til: "
+
+#: src/lyx_main.C:352
+msgid "LyX Warning! Couldn't determine system directory. "
+msgstr "LyX-advarsel! Kunne ikke bestemme systemkataloget. "
+
+#: src/lyx_main.C:353
+msgid "Try the '-sysdir' command line parameter or "
+msgstr "Prøv '-sysdir' kommandolinjeparametren eller "
+
+#: src/lyx_main.C:354
+msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
+msgstr "sæt skal-variablen LYX_DIR_13x til LyX-systemkataloget "
+
+#: src/lyx_main.C:356
+msgid "containing the file `chkconfig.ltx'."
+msgstr "som indeholder filen `chkconfgi.ltx'."
+
+#: src/lyx_main.C:365
+#, c-format
+msgid "Using built-in default %1$s but expect problems."
+msgstr "Bruger indbyggede standard %1$s, men forvent problemer."
+
+#: src/lyx_main.C:370
+msgid "Using built-in default "
+msgstr "Bruger indbyggede standard "
+
+#: src/lyx_main.C:371
+msgid " but expect problems."
+msgstr " men forvent problemer."
+
+#: src/lyx_main.C:375
+msgid "Expect problems."
+msgstr "Forvent problemer."
+
+#: src/lyx_main.C:593
+msgid "LyX: reconfiguring user directory"
+msgstr "LyX: genkonfigurerer brugerkatalog"
+
+#: src/lyx_main.C:597 src/lyx_main.C:645
+msgid "Done!"
+msgstr "Færdig!"
+
+#: src/lyx_main.C:607
+msgid "You have specified an invalid LyX directory."
+msgstr "Du har angivet et ugyldigt LyX-katalog"
+
+#: src/lyx_main.C:608
+msgid "It is needed to keep your own configuration."
+msgstr "Det behøves for at tage vare på din personlige opsætning."
+
+#: src/lyx_main.C:609
+msgid "Should I try to set it up for you (recommended)?"
+msgstr "Skal jeg prøve at sætte det op for dig (anbefales)?"
+
+#: src/lyx_main.C:610
+msgid "Running without personal LyX directory."
+msgstr "Kører uden personligt LyX-katalog."
+
+#: src/lyx_main.C:617
+#, c-format
+msgid "LyX: Creating directory %1$s and running configure..."
+msgstr "LyX: Opretter kataloget %1$s og kører \"configure\"..."
+
+#: src/lyx_main.C:622
+msgid "LyX: Creating directory "
+msgstr "LyX: Opretter kataloget "
+
+#: src/lyx_main.C:623
+msgid " and running configure..."
+msgstr " og kører \"configure\"..."
+
+#: src/lyx_main.C:631
+#, c-format
+msgid "Failed. Will use %1$s instead."
+msgstr "Mislykkedes. Vil bruge %1$s i stedet."
+
+#: src/lyx_main.C:635
+msgid "Failed. Will use "
+msgstr "Mislykkedes. Vil bruge "
+
+#: src/lyx_main.C:636
+msgid " instead."
+msgstr " i stedet."
+
+#: src/lyx_main.C:659 src/lyx_main.C:663
+msgid "LyX Warning!"
+msgstr "LyX-advarsel!"
+
+#: src/lyx_main.C:660
+#, c-format
+msgid "Error while reading %1$s."
+msgstr "Fejl under læsning af %1$s."
+
+#: src/lyx_main.C:661 src/lyx_main.C:665
+msgid "Using built-in defaults."
+msgstr "Bruger indbyggede standarder."
+
+#: src/lyx_main.C:664
+msgid "Error while reading "
+msgstr "Fejl under læsning af "
+
+#: src/lyx_main.C:774
+msgid "List of supported debug flags:"
+msgstr "Liste over understøttede aflusningsflag:"
+
+#: src/lyx_main.C:779
+#, c-format
+msgid "Setting debug level to %1$s"
+msgstr "Sætter fejlretnings-niveau til %1$s"
+
+#: src/lyx_main.C:783
+msgid "Setting debug level to "
+msgstr "Sætter fejlretnings-niveau til "
+
+#: src/lyx_main.C:794
+msgid ""
+"Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
+"Command line switches (case sensitive):\n"
+"\t-help              summarize LyX usage\n"
+"\t-userdir dir       try to set user directory to dir\n"
+"\t-sysdir dir        try to set system directory to dir\n"
+"\t-geometry WxH+X+Y  set geometry of the main window\n"
+"\t-dbg feature[,feature]...\n"
+"                  select the features to debug.\n"
+"                  Type `lyx -dbg' to see the list of features\n"
+"\t-x [--execute] command\n"
+"                  where command is a lyx command.\n"
+"\t-e [--export] fmt\n"
+"                  where fmt is the export format of choice.\n"
+"\t-i [--import] fmt file.xxx\n"
+"                  where fmt is the import format of choice\n"
+"                  and file.xxx is the file to be imported.\n"
+"\t-version        summarize version and build info\n"
+"Check the LyX man page for more details."
+msgstr ""
+"Brug: lyx [ tilvalg ] [ navn.lyx ... ]\n"
+"Tilvalg (versalfølsomme):\n"
+"\t-help              sammenfatning af brugen af LyX\n"
+"\t-userdir katalog   forsøg at sætte brugerkatalog til katalog\n"
+"\t-sysdir katalog    forsøg at sætte systemkatalog til katalog\n"
+"\t-geometry WxH+X+Y  angiv hovedvinduets geometri\n"
+"                  vælg dele, der skal afluses.\n"
+"                  Skriv 'lyx -dbg' for at se listen over dele\n"
+"\t-x [--execute] kommando\n"
+"                  hvor kommando er en LyX-kommando.\n"
+"\t-e [--export] fmt\n"
+"                  hvor fmt er det ønskede eksportformat.\n"
+"\t-i [--import] fmt fil.xxx\n"
+"                  hvor fmt er det ønskede importformat.\n"
+"\t-version        opsummér versions- og oversættelsesoplysninger\n"
+"Se LyX's manualside for flere detaljer."
+
+#: src/lyx_main.C:830
+msgid "Missing directory for -sysdir switch"
+msgstr "Manglende katalog for tilvalget '-sysdir'"
+
+#: src/lyx_main.C:840
+msgid "Missing directory for -userdir switch"
+msgstr "Manglende katalog for tilvalget '-userdir'"
+
+#: src/lyx_main.C:850
+msgid "Missing command string after --execute switch"
+msgstr "Manglende kommandostreng efter tilvalget '-execute'"
+
+#: src/lyx_main.C:863
+msgid "Missing file type [eg latex, ps...] after --export switch"
+msgstr "Manglende filtype [f.eks. latex, ps...] efter tilvalget '-export'"
+
+#: src/lyx_main.C:875
+msgid "Missing file type [eg latex, ps...] after --import switch"
+msgstr "Manglende filtype [f.eks. latex, ps...] efter tilvalget '-import'"
+
+#: src/lyx_main.C:880
+msgid "Missing filename for --import"
+msgstr "Manglende filnavn for '-import'"
 
 #: src/lyxfind.C:49
 msgid "Sorry!"
@@ -11761,210 +11998,6 @@ msgstr "findes allerede. Overskriv det?"
 #: src/lyxfunc.C:1914
 msgid "Welcome to LyX!"
 msgstr "Velkommen til LyX!"
-
-#: src/lyx_main.C:105
-#, c-format
-msgid "Wrong command line option `%1$s'. Exiting."
-msgstr "Forkert tilvalg '%1$s'. Afslutter."
-
-#: src/lyx_main.C:109
-msgid "Wrong command line option `"
-msgstr "Forkert tilvalg '"
-
-#: src/lyx_main.C:110
-msgid "'. Exiting."
-msgstr "'. Afslutter."
-
-#: src/lyx_main.C:233
-msgid "Warning: could not determine path of binary."
-msgstr "Advarsel: Kunne ikke bestemme stien til programmet."
-
-#: src/lyx_main.C:235
-msgid "If you have problems, try starting LyX with an absolute path."
-msgstr "Hvis du har problemer, så prøv at starte LyX med en absolut sti."
-
-#: src/lyx_main.C:342
-msgid "LYX_DIR_13x environment variable no good."
-msgstr "LYX_DIR_13x skal-variabel er ugyldig."
-
-#: src/lyx_main.C:344
-msgid "System directory set to: "
-msgstr "Systemkatalog sat til: "
-
-#: src/lyx_main.C:352
-msgid "LyX Warning! Couldn't determine system directory. "
-msgstr "LyX-advarsel! Kunne ikke bestemme systemkataloget. "
-
-#: src/lyx_main.C:353
-msgid "Try the '-sysdir' command line parameter or "
-msgstr "Prøv '-sysdir' kommandolinjeparametren eller "
-
-#: src/lyx_main.C:354
-msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
-msgstr "sæt skal-variablen LYX_DIR_13x til LyX-systemkataloget "
-
-#: src/lyx_main.C:356
-msgid "containing the file `chkconfig.ltx'."
-msgstr "som indeholder filen `chkconfgi.ltx'."
-
-#: src/lyx_main.C:365
-#, c-format
-msgid "Using built-in default %1$s but expect problems."
-msgstr "Bruger indbyggede standard %1$s, men forvent problemer."
-
-#: src/lyx_main.C:370
-msgid "Using built-in default "
-msgstr "Bruger indbyggede standard "
-
-#: src/lyx_main.C:371
-msgid " but expect problems."
-msgstr " men forvent problemer."
-
-#: src/lyx_main.C:375
-msgid "Expect problems."
-msgstr "Forvent problemer."
-
-#: src/lyx_main.C:593
-msgid "LyX: reconfiguring user directory"
-msgstr "LyX: genkonfigurerer brugerkatalog"
-
-#: src/lyx_main.C:597 src/lyx_main.C:645
-msgid "Done!"
-msgstr "Færdig!"
-
-#: src/lyx_main.C:607
-msgid "You have specified an invalid LyX directory."
-msgstr "Du har angivet et ugyldigt LyX-katalog"
-
-#: src/lyx_main.C:608
-msgid "It is needed to keep your own configuration."
-msgstr "Det behøves for at tage vare på din personlige opsætning."
-
-#: src/lyx_main.C:609
-msgid "Should I try to set it up for you (recommended)?"
-msgstr "Skal jeg prøve at sætte det op for dig (anbefales)?"
-
-#: src/lyx_main.C:610
-msgid "Running without personal LyX directory."
-msgstr "Kører uden personligt LyX-katalog."
-
-#: src/lyx_main.C:617
-#, c-format
-msgid "LyX: Creating directory %1$s and running configure..."
-msgstr "LyX: Opretter kataloget %1$s og kører \"configure\"..."
-
-#: src/lyx_main.C:622
-msgid "LyX: Creating directory "
-msgstr "LyX: Opretter kataloget "
-
-#: src/lyx_main.C:623
-msgid " and running configure..."
-msgstr " og kører \"configure\"..."
-
-#: src/lyx_main.C:631
-#, c-format
-msgid "Failed. Will use %1$s instead."
-msgstr "Mislykkedes. Vil bruge %1$s i stedet."
-
-#: src/lyx_main.C:635
-msgid "Failed. Will use "
-msgstr "Mislykkedes. Vil bruge "
-
-#: src/lyx_main.C:636
-msgid " instead."
-msgstr " i stedet."
-
-#: src/lyx_main.C:659 src/lyx_main.C:663
-msgid "LyX Warning!"
-msgstr "LyX-advarsel!"
-
-#: src/lyx_main.C:660
-#, c-format
-msgid "Error while reading %1$s."
-msgstr "Fejl under læsning af %1$s."
-
-#: src/lyx_main.C:661 src/lyx_main.C:665
-msgid "Using built-in defaults."
-msgstr "Bruger indbyggede standarder."
-
-#: src/lyx_main.C:664
-msgid "Error while reading "
-msgstr "Fejl under læsning af "
-
-#: src/lyx_main.C:774
-msgid "List of supported debug flags:"
-msgstr "Liste over understøttede aflusningsflag:"
-
-#: src/lyx_main.C:779
-#, c-format
-msgid "Setting debug level to %1$s"
-msgstr "Sætter fejlretnings-niveau til %1$s"
-
-#: src/lyx_main.C:783
-msgid "Setting debug level to "
-msgstr "Sætter fejlretnings-niveau til "
-
-#: src/lyx_main.C:794
-msgid ""
-"Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
-"Command line switches (case sensitive):\n"
-"\t-help              summarize LyX usage\n"
-"\t-userdir dir       try to set user directory to dir\n"
-"\t-sysdir dir        try to set system directory to dir\n"
-"\t-geometry WxH+X+Y  set geometry of the main window\n"
-"\t-dbg feature[,feature]...\n"
-"                  select the features to debug.\n"
-"                  Type `lyx -dbg' to see the list of features\n"
-"\t-x [--execute] command\n"
-"                  where command is a lyx command.\n"
-"\t-e [--export] fmt\n"
-"                  where fmt is the export format of choice.\n"
-"\t-i [--import] fmt file.xxx\n"
-"                  where fmt is the import format of choice\n"
-"                  and file.xxx is the file to be imported.\n"
-"\t-version        summarize version and build info\n"
-"Check the LyX man page for more details."
-msgstr ""
-"Brug: lyx [ tilvalg ] [ navn.lyx ... ]\n"
-"Tilvalg (versalfølsomme):\n"
-"\t-help              sammenfatning af brugen af LyX\n"
-"\t-userdir katalog   forsøg at sætte brugerkatalog til katalog\n"
-"\t-sysdir katalog    forsøg at sætte systemkatalog til katalog\n"
-"\t-geometry WxH+X+Y  angiv hovedvinduets geometri\n"
-"                  vælg dele, der skal afluses.\n"
-"                  Skriv 'lyx -dbg' for at se listen over dele\n"
-"\t-x [--execute] kommando\n"
-"                  hvor kommando er en LyX-kommando.\n"
-"\t-e [--export] fmt\n"
-"                  hvor fmt er det ønskede eksportformat.\n"
-"\t-i [--import] fmt fil.xxx\n"
-"                  hvor fmt er det ønskede importformat.\n"
-"\t-version        opsummér versions- og oversættelsesoplysninger\n"
-"Se LyX's manualside for flere detaljer."
-
-#: src/lyx_main.C:830
-msgid "Missing directory for -sysdir switch"
-msgstr "Manglende katalog for tilvalget '-sysdir'"
-
-#: src/lyx_main.C:840
-msgid "Missing directory for -userdir switch"
-msgstr "Manglende katalog for tilvalget '-userdir'"
-
-#: src/lyx_main.C:850
-msgid "Missing command string after --execute switch"
-msgstr "Manglende kommandostreng efter tilvalget '-execute'"
-
-#: src/lyx_main.C:863
-msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr "Manglende filtype [f.eks. latex, ps...] efter tilvalget '-export'"
-
-#: src/lyx_main.C:875
-msgid "Missing file type [eg latex, ps...] after --import switch"
-msgstr "Manglende filtype [f.eks. latex, ps...] efter tilvalget '-import'"
-
-#: src/lyx_main.C:880
-msgid "Missing filename for --import"
-msgstr "Manglende filnavn for '-import'"
 
 #: src/lyxrc.C:1832
 msgid ""
@@ -12522,43 +12555,6 @@ msgstr " Makro: %s: "
 msgid " Macro: "
 msgstr " Makro: "
 
-#: src/MenuBackend.C:314 src/MenuBackend.C:337 src/MenuBackend.C:394
-#: src/MenuBackend.C:415 src/MenuBackend.C:485
-msgid "No Documents Open!"
-msgstr "Ingen åbne dokumenter!"
-
-#: src/MenuBackend.C:378
-msgid "ASCII text as lines"
-msgstr "Tekst som linjer"
-
-#: src/MenuBackend.C:380
-msgid "ASCII text as paragraphs"
-msgstr "Tekst som afsnit"
-
-#: src/MenuBackend.C:517
-msgid "No Table of contents"
-msgstr "Ingen indholdsfortegnelse"
-
-#: src/MenuBackend.C:654
-msgid "New...|N"
-msgstr "Ny...|N"
-
-#: src/MenuBackend.C:657
-msgid "Quit|Q"
-msgstr "Afslut|A"
-
-#: src/MenuBackend.C:665
-msgid "LaTeX...|L"
-msgstr "LaTeX...|L"
-
-#: src/MenuBackend.C:667
-msgid "LinuxDoc...|L"
-msgstr "LinuxDoc...|L"
-
-#: src/MenuBackend.C:675
-msgid "Emphasize"
-msgstr "Fremhævet"
-
 #: src/support/filetools.C:448
 msgid "Error! Cannot open directory:"
 msgstr "Fejl! Kan ikke åbne katalog:"
@@ -12602,6 +12598,40 @@ msgstr "Tabelformat <5 understøttes ikke længere\n"
 #: src/tabular.C:1351
 msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr "Anskaf en ældre version af LyX (< 1.1.x) for at konvertere!"
+
+#: src/text.C:1924
+msgid ""
+"You cannot insert a space at the beginning of a paragraph. Please read the "
+"Tutorial."
+msgstr ""
+"Du kan ikke indsætte et mellemrum i begyndelsen af et afsnit. Læs venligst "
+"Selvstudium."
+
+#: src/text.C:1926
+msgid "You cannot type two spaces this way. Please read the Tutorial."
+msgstr ""
+"Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
+
+#: src/text.C:3284
+msgid " (vertical fill)"
+msgstr " (lodret fyld)"
+
+#: src/text.C:3367
+msgid "Page Break (top)"
+msgstr "Sideskift (top)"
+
+#. draw the additional space if needed:
+#: src/text.C:3372
+msgid "Space above"
+msgstr "Mellemrum over"
+
+#: src/text.C:3531
+msgid "Page Break (bottom)"
+msgstr "Sideskift (bund)"
+
+#: src/text.C:3538
+msgid "Space below"
+msgstr "Mellemrum under"
 
 #. Could only happen with user style
 #: src/text2.C:1012
@@ -12655,39 +12685,8 @@ msgstr "Mærke sat"
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX-funktionen 'layout' skal bruge et parameter."
 
-#: src/text.C:1924
-msgid ""
-"You cannot insert a space at the beginning of a paragraph. Please read the "
-"Tutorial."
-msgstr ""
-"Du kan ikke indsætte et mellemrum i begyndelsen af et afsnit. Læs venligst "
-"Selvstudium."
-
-#: src/text.C:1926
-msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
-
-#: src/text.C:3284
-msgid " (vertical fill)"
-msgstr " (lodret fyld)"
-
-#: src/text.C:3367
-msgid "Page Break (top)"
-msgstr "Sideskift (top)"
-
-#. draw the additional space if needed:
-#: src/text.C:3372
-msgid "Space above"
-msgstr "Mellemrum over"
-
-#: src/text.C:3531
-msgid "Page Break (bottom)"
-msgstr "Sideskift (bund)"
-
-#: src/text.C:3538
-msgid "Space below"
-msgstr "Mellemrum under"
+#~ msgid "Replacement:|#R"
+#~ msgstr "Erstatning:|#r"
 
 #~ msgid "Enter editor program"
 #~ msgstr "Angiv redigeringsprogram"
