@@ -13,6 +13,7 @@
 #include "FormVCLog.h"
 #include "form_browser.h"
 #include "gettext.h"
+#include "Lsstream.h"
 
 FormVCLog::FormVCLog(ControlVCLog & c)
 	: FormCB<ControlVCLog, FormBrowser>(c, _("Version Control Log"))
@@ -23,8 +24,8 @@ void FormVCLog::update()
 {
 	fl_clear_browser(dialog_->browser);
 
-	if (controller().logfile().empty() ||
-	    !fl_load_browser(dialog_->browser, controller().logfile().c_str()))
-		fl_add_browser_line(dialog_->browser,
-				    _("No version control log file available"));
+	std::stringstream ss;
+ 
+	fl_add_browser_line(dialog_->browser,
+			    controller().getVCLogFile(ss).str().c_str());
 }

@@ -16,8 +16,6 @@
 #ifndef CONTROLVCLOG_H
 #define CONTROLVCLOG_H
 
-#include <utility>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -27,22 +25,20 @@
 /**
  * A controller for the Version Control log viewer.
  */
+class stringstream;
+
 class ControlVCLog : public ControlDialog<ControlConnectBD> {
 public:
 	///
 	ControlVCLog(LyXView &, Dialogs &);
-	///
-	string const & logfile() { return logfile_; }
+	/// get a stringstream containing the log file
+	std::stringstream & getVCLogFile(std::stringstream & ss) const;
+	/// get the filename of the buffer
+	string const getBufferFileName() const;
 
 private:
 	///
 	virtual void apply() {}
-	/// set the params before show or update
-	virtual void setParams();
-	/// clean-up on hide.
-	virtual void clearParams();
-
-	string logfile_;
 };
 
 #endif // CONTROLVCLOG_H

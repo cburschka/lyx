@@ -1,5 +1,11 @@
 2001-04-06  John Levon  <moz@compsoc.man.ac.uk>
 
+	* ControlVCLog.h:
+	* ControlVCLog.C: fill a stringstream with the log contents
+	and then delete it
+
+2001-04-06  John Levon  <moz@compsoc.man.ac.uk>
+
 	* ControlExternal.C: from Angus, clone the new InsetExternal
 	  before acting on it
 
