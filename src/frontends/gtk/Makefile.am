@@ -28,6 +28,8 @@ libgtk_la_SOURCES = \
 	GCharacter.h \
 	GErrorList.C \
 	GErrorList.h \
+	GLog.C \
+	GLog.h \
 	GLyXKeySym.C \
 	GLyXKeySym.h \
 	GMathDelim.C \
@@ -115,7 +117,6 @@ xforms_objects = \
 	../xforms/FormFloat.lo \
 	../xforms/FormGraphics.lo \
 	../xforms/FormInclude.lo \
-	../xforms/FormLog.lo \
 	../xforms/FormMathsBitmap.lo \
 	../xforms/FormMathsDelim.lo \
 	../xforms/FormMathsSpace.lo \

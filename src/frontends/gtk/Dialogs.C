@@ -66,7 +66,7 @@
 #include "FormFloat.h"
 #include "FormGraphics.h"
 #include "FormInclude.h"
-#include "FormLog.h"
+#include "GLog.h"
 #include "GMathPanel.h"
 #include "FormMathsBitmap.h"
 #include "GMathsMatrix.h"
@@ -258,8 +258,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 					  _("Label"), _("Label:|#L")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "log") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlLog(*dialog));
-		dialog->setView(new FormLog(*dialog));
+		dialog->setView(new GLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 
 	} else if (name == "mathpanel") {
