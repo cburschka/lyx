@@ -80,23 +80,20 @@ void FormGraphics::build()
 
 	fl_set_input_return (file_->input_filename, FL_RETURN_CHANGED);
 	fl_set_input_return (file_->input_subcaption, FL_RETURN_CHANGED);
-	fl_set_input_return (file_->input_bbx0, FL_RETURN_CHANGED);
-	fl_set_input_return (file_->input_bby0, FL_RETURN_CHANGED);
-	fl_set_input_return (file_->input_bbx1, FL_RETURN_CHANGED);
-	fl_set_input_return (file_->input_bby1, FL_RETURN_CHANGED);
+	fl_set_input_return (file_->input_lyxwidth, FL_RETURN_CHANGED);
+	fl_set_input_return (file_->input_lyxheight, FL_RETURN_CHANGED);
 	fl_set_input_maxchars(file_->input_filename,  FILENAME_MAXCHARS);
 
-	string const bb_units = "pt|cm|in";
-	fl_addto_choice(file_->choice_bb_x0, bb_units.c_str());
-	fl_addto_choice(file_->choice_bb_y0, bb_units.c_str());
-	fl_addto_choice(file_->choice_bb_x1, bb_units.c_str());
-	fl_addto_choice(file_->choice_bb_y1, bb_units.c_str());
+	fl_addto_choice(file_->choice_width_lyxwidth, choice_Length_All.c_str());
+	fl_addto_choice(file_->choice_width_lyxheight, choice_Length_All.c_str());
+	fl_addto_choice(file_->choice_display,
+		_(" Default | Monochrome | Grayscale | Color | Do not display "));
+	//FIXME: This does not work (always set to monochrome by default. Why? JSpitzm)
+	fl_set_choice(file_->choice_display, 1);
 
 	bc().addReadOnly(file_->button_browse);
 	bc().addReadOnly(file_->check_subcaption);
-	bc().addReadOnly(file_->button_getBB);
-	bc().addReadOnly(file_->button_clip);
-	bc().addReadOnly(file_->button_draft);
+	bc().addReadOnly(file_->choice_display);
 
 	// the size section
 	size_.reset(build_size());
@@ -104,30 +101,38 @@ void FormGraphics::build()
 	fl_set_input_return (size_->input_scale, FL_RETURN_CHANGED);
 	fl_set_input_return (size_->input_width, FL_RETURN_CHANGED);
 	fl_set_input_return (size_->input_height, FL_RETURN_CHANGED);
-	fl_set_input_return (size_->input_lyxwidth, FL_RETURN_CHANGED);
-	fl_set_input_return (size_->input_lyxheight, FL_RETURN_CHANGED);
 
 	fl_set_input_maxchars(size_->input_scale, SCALE_MAXDIGITS);
 	fl_set_input_maxchars(size_->input_width, WIDTH_MAXDIGITS);
 	fl_set_input_maxchars(size_->input_height, HEIGHT_MAXDIGITS);
 
 	fl_set_input_filter(size_->input_scale,  fl_unsigned_float_filter);
-	fl_set_input_filter(size_->input_width,  fl_unsigned_float_filter);
-	fl_set_input_filter(size_->input_height, fl_unsigned_float_filter);
 
 	fl_addto_choice(size_->choice_width_units, choice_Length_All.c_str());
 	fl_addto_choice(size_->choice_height_units, choice_Length_All.c_str());
-	fl_addto_choice(size_->choice_width_lyxwidth, choice_Length_All.c_str());
-	fl_addto_choice(size_->choice_width_lyxheight, choice_Length_All.c_str());
 
 	bc().addReadOnly(size_->button_default);
 	bc().addReadOnly(size_->button_wh);
 	bc().addReadOnly(size_->button_scale);
 	bc().addReadOnly(size_->check_aspectratio);
-	bc().addReadOnly(size_->radio_check_display);
-	bc().addReadOnly(size_->radio_display_mono);
-	bc().addReadOnly(size_->radio_display_gray);
-	bc().addReadOnly(size_->radio_display_color);
+
+	// the bounding box selection
+	bbox_.reset(build_bbox());
+	fl_set_input_return (bbox_->input_bbx0, FL_RETURN_CHANGED);
+	fl_set_input_return (bbox_->input_bby0, FL_RETURN_CHANGED);
+	fl_set_input_return (bbox_->input_bbx1, FL_RETURN_CHANGED);
+	fl_set_input_return (bbox_->input_bby1, FL_RETURN_CHANGED);
+
+	bc().addReadOnly(bbox_->button_getBB);
+	bc().addReadOnly(bbox_->button_clip);
+	bc().addReadOnly(bbox_->button_draft);
+
+	string const bb_units = "pt|cm|in";
+	fl_addto_choice(bbox_->choice_bb_x0, bb_units.c_str());
+	fl_addto_choice(bbox_->choice_bb_y0, bb_units.c_str());
+	fl_addto_choice(bbox_->choice_bb_x1, bb_units.c_str());
+	fl_addto_choice(bbox_->choice_bb_y1, bb_units.c_str());
+
 
 	// the rotate section
 	special_.reset(build_special());
@@ -148,9 +153,10 @@ void FormGraphics::build()
 	fl_set_input_filter(special_->input_rotate_angle, fl_float_filter);
 
 	// add the different tabfolders
-	fl_addto_tabfolder(dialog_->tabFolder, _("Filename"), file_->form);
-	fl_addto_tabfolder(dialog_->tabFolder, _("Image size"), size_->form);
-	fl_addto_tabfolder(dialog_->tabFolder, _("Special"), special_->form);
+	fl_addto_tabfolder(dialog_->tabFolder, _("File"), file_->form);
+	fl_addto_tabfolder(dialog_->tabFolder, _("Size"), size_->form);
+	fl_addto_tabfolder(dialog_->tabFolder, _("Bounding Box"), bbox_->form);
+	fl_addto_tabfolder(dialog_->tabFolder, _("Extras"), special_->form);
 }
 
 
@@ -163,36 +169,50 @@ void FormGraphics::apply()
 	    igp.bb = string();			// don't write anything	    
 	else {
 	    string bb;
-	    if (getStringFromInput(file_->input_bbx0).empty())
+	    if (getStringFromInput(bbox_->input_bbx0).empty())
 		bb = "0 ";
 	    else
-		bb = getLengthFromWidgets(file_->input_bbx0,file_->choice_bb_x0)+" ";
-	    if (getStringFromInput(file_->input_bby0).empty())
+		bb = getLengthFromWidgets(bbox_->input_bbx0,
+			bbox_->choice_bb_x0)+" ";
+	    if (getStringFromInput(bbox_->input_bby0).empty())
 		bb += "0 ";
 	    else
-		bb += (getLengthFromWidgets(file_->input_bby0,file_->choice_bb_y0)+" ");
-	    if (getStringFromInput(file_->input_bbx1).empty())
+		bb += (getLengthFromWidgets(bbox_->input_bby0,
+			bbox_->choice_bb_y0)+" ");
+	    if (getStringFromInput(bbox_->input_bbx1).empty())
 		bb += "0 ";
 	    else
-		bb += (getLengthFromWidgets(file_->input_bbx1,file_->choice_bb_x1)+" ");
-	    if (getStringFromInput(file_->input_bby1).empty())
+		bb += (getLengthFromWidgets(bbox_->input_bbx1,
+			bbox_->choice_bb_x1)+" ");
+	    if (getStringFromInput(bbox_->input_bby1).empty())
 		bb += "0 ";
 	    else
-		bb += (getLengthFromWidgets(file_->input_bby1,file_->choice_bb_y1)+" ");
+		bb += (getLengthFromWidgets(bbox_->input_bby1,
+			bbox_->choice_bb_y1)+" ");
 	    igp.bb = bb;
 	}
-	igp.draft = fl_get_button(file_->button_draft);
-	igp.clip = fl_get_button(file_->button_clip);
+	igp.draft = fl_get_button(bbox_->button_draft);
+	igp.clip = fl_get_button(bbox_->button_clip);
 	igp.subcaption = fl_get_button(file_->check_subcaption);
 	igp.subcaptionText = getStringFromInput(file_->input_subcaption);
-	if (fl_get_button(size_->radio_check_display)) {
-		igp.display = InsetGraphicsParams::NONE;
-	} else if (fl_get_button(size_->radio_display_mono)) {
+	// use preferences settings if choice is set to default
+	if (fl_get_choice(file_->choice_display) == 1) {
+		if (lyxrc.display_graphics == "mono")
+			igp.display = InsetGraphicsParams::MONOCHROME;
+		else if (lyxrc.display_graphics == "gray")
+			igp.display = InsetGraphicsParams::GRAYSCALE;
+		else if (lyxrc.display_graphics == "color")
+			igp.display = InsetGraphicsParams::COLOR;
+		else if (lyxrc.display_graphics == "no")
+			igp.display = InsetGraphicsParams::NONE;
+	} else if (fl_get_choice(file_->choice_display) == 2) {
 		igp.display = InsetGraphicsParams::MONOCHROME;
-	} else if (fl_get_button(size_->radio_display_gray)) {
+	} else if (fl_get_choice(file_->choice_display) == 3) {
 		igp.display = InsetGraphicsParams::GRAYSCALE;
-	} else if (fl_get_button(size_->radio_display_color)) {
+	} else if (fl_get_choice(file_->choice_display) == 4) {
 		igp.display = InsetGraphicsParams::COLOR;
+	} else if (fl_get_choice(file_->choice_display) == 5) {
+		igp.display = InsetGraphicsParams::NONE;
 	}
 	if (fl_get_button(size_->button_default))
 	    igp.size_type = InsetGraphicsParams::DEFAULT_SIZE;
@@ -200,12 +220,16 @@ void FormGraphics::apply()
 	    igp.size_type = InsetGraphicsParams::WH;
 	else
 	    igp.size_type = InsetGraphicsParams::SCALE;
-	igp.width = LyXLength(getLengthFromWidgets(size_->input_width,size_->choice_width_units));
-	igp.height = LyXLength(getLengthFromWidgets(size_->input_height,size_->choice_height_units));
+	igp.width = LyXLength(getLengthFromWidgets(size_->input_width,
+		size_->choice_width_units));
+	igp.height = LyXLength(getLengthFromWidgets(size_->input_height,
+		size_->choice_height_units));
 	igp.scale = strToInt(getStringFromInput(size_->input_scale));
 	igp.keepAspectRatio = fl_get_button(size_->check_aspectratio);
-	igp.lyxwidth = LyXLength(getLengthFromWidgets(size_->input_lyxwidth,size_->choice_width_lyxwidth));
-	igp.lyxheight = LyXLength(getLengthFromWidgets(size_->input_lyxheight,size_->choice_width_lyxheight));
+	igp.lyxwidth = LyXLength(getLengthFromWidgets(file_->input_lyxwidth,
+		file_->choice_width_lyxwidth));
+	igp.lyxheight = LyXLength(getLengthFromWidgets(file_->input_lyxheight,
+		file_->choice_width_lyxheight));
 
 	igp.rotateAngle =
 		strToDbl(getStringFromInput(special_->input_rotate_angle));
@@ -244,51 +268,58 @@ void FormGraphics::update()
 	    if (!bb.empty()) {		
 		// get the values from the file
 		// in this case we always have the point-unit
-		fl_set_input(file_->input_bbx0, token(bb,' ',0).c_str());
-		fl_set_input(file_->input_bby0, token(bb,' ',1).c_str());
-		fl_set_input(file_->input_bbx1, token(bb,' ',2).c_str());
-		fl_set_input(file_->input_bby1, token(bb,' ',3).c_str());
+		fl_set_input(bbox_->input_bbx0, token(bb,' ',0).c_str());
+		fl_set_input(bbox_->input_bby0, token(bb,' ',1).c_str());
+		fl_set_input(bbox_->input_bbx1, token(bb,' ',2).c_str());
+		fl_set_input(bbox_->input_bby1, token(bb,' ',3).c_str());
 	    }
 	} else { 				// get the values from the inset
 	    controller().bbChanged = true;
 	    LyXLength anyLength;
 	    anyLength = LyXLength(token(igp.bb,' ',0));
-	    updateWidgetsFromLength(file_->input_bbx0,file_->choice_bb_x0,anyLength,"pt");
+	    updateWidgetsFromLength(bbox_->input_bbx0,
+	    		bbox_->choice_bb_x0,anyLength,"pt");
 	    anyLength = LyXLength(token(igp.bb,' ',1));
-	    updateWidgetsFromLength(file_->input_bby0,file_->choice_bb_y0,anyLength,"pt");
+	    updateWidgetsFromLength(bbox_->input_bby0,
+	    		bbox_->choice_bb_y0,anyLength,"pt");
 	    anyLength = LyXLength(token(igp.bb,' ',2));
-	    updateWidgetsFromLength(file_->input_bbx1,file_->choice_bb_x1,anyLength,"pt");
+	    updateWidgetsFromLength(bbox_->input_bbx1,
+	    		bbox_->choice_bb_x1,anyLength,"pt");
 	    anyLength = LyXLength(token(igp.bb,' ',3));
-	    updateWidgetsFromLength(file_->input_bby1,file_->choice_bb_y1,anyLength,"pt");
+	    updateWidgetsFromLength(bbox_->input_bby1,
+	    		bbox_->choice_bb_y1,anyLength,"pt");
 	}
 	// Update the draft and clip mode
-	fl_set_button(file_->button_draft, igp.draft);
-	fl_set_button(file_->button_clip, igp.clip);
+	fl_set_button(bbox_->button_draft, igp.draft);
+	fl_set_button(bbox_->button_clip, igp.clip);
 	// Update the subcaption check button and input field
 	fl_set_button(file_->check_subcaption, igp.subcaption);
 	fl_set_input(file_->input_subcaption, igp.subcaptionText.c_str());
 	setEnabled(file_->input_subcaption,
 		   fl_get_button(file_->check_subcaption));
+
 	switch (igp.display) {
 	    case InsetGraphicsParams::NONE: {	// dont't display
-		fl_set_button(size_->radio_check_display, 1);
+		fl_set_choice(file_->choice_display, 5);
 		break;
 	    }
 	    case InsetGraphicsParams::MONOCHROME: {
-		fl_set_button(size_->radio_display_mono, 1);
+		fl_set_choice(file_->choice_display, 2);
 		break;
 	    }
 	    case InsetGraphicsParams::GRAYSCALE: {
-		fl_set_button(size_->radio_display_gray, 1);
+		fl_set_choice(file_->choice_display, 3);
 		break;
 	    }
 	    case InsetGraphicsParams::COLOR: {
-		fl_set_button(size_->radio_display_color, 1);
+		fl_set_choice(file_->choice_display, 4);
 		break;
 	    }
 	}
-	updateWidgetsFromLength(size_->input_width,size_->choice_width_units,igp.width,defaultUnit);
-	updateWidgetsFromLength(size_->input_height,size_->choice_height_units,igp.height,defaultUnit);
+	updateWidgetsFromLength(size_->input_width,
+		size_->choice_width_units,igp.width,defaultUnit);
+	updateWidgetsFromLength(size_->input_height,
+		size_->choice_height_units,igp.height,defaultUnit);
 	fl_set_input(size_->input_scale, tostr(igp.scale).c_str());
 	switch (igp.size_type) {
 	    case InsetGraphicsParams::DEFAULT_SIZE: {
@@ -319,10 +350,12 @@ void FormGraphics::update()
 		break;
 	    }
 	}
-	fl_set_button(size_->check_aspectratio,igp.keepAspectRatio);
+	fl_set_button(size_->check_aspectratio, igp.keepAspectRatio);
 	// now the lyx-internally viewsize
-	updateWidgetsFromLength(size_->input_lyxwidth,size_->choice_width_lyxwidth,igp.lyxwidth,defaultUnit);
-	updateWidgetsFromLength(size_->input_lyxheight,size_->choice_width_lyxheight,igp.lyxheight,defaultUnit);
+	updateWidgetsFromLength(file_->input_lyxwidth,
+		file_->choice_width_lyxwidth, igp.lyxwidth,defaultUnit);
+	updateWidgetsFromLength(file_->input_lyxheight,
+		file_->choice_width_lyxheight, igp.lyxheight,defaultUnit);
 	// Update the rotate angle and special commands
 	fl_set_input(special_->input_rotate_angle,
 	             tostr(igp.rotateAngle).c_str());
@@ -344,10 +377,10 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 			fl_set_input(file_->input_filename, out_name.c_str());
 		}
 	} else if (!controller().bbChanged && 
-		    ((ob == file_->input_bbx0) || (ob == file_->input_bby0) || 
-		    (ob == file_->input_bbx1) || (ob == file_->input_bby1) || 
-		    (ob == file_->choice_bb_x0) || (ob == file_->choice_bb_y0) || 
-		    (ob == file_->choice_bb_x1) || (ob == file_->choice_bb_y1))) {
+		    ((ob == bbox_->input_bbx0) || (ob == bbox_->input_bby0) ||
+		    (ob == bbox_->input_bbx1) || (ob == bbox_->input_bby1) ||
+		    (ob == bbox_->choice_bb_x0) || (ob == bbox_->choice_bb_y0) ||
+		    (ob == bbox_->choice_bb_x1) || (ob == bbox_->choice_bb_y1))) {
 	    controller().bbChanged = true; 
 	} else if (ob == size_->button_default) {
 	    	setEnabled(size_->input_width, 0);
@@ -370,22 +403,69 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	} else if (ob == file_->check_subcaption) {
 	    	setEnabled(file_->input_subcaption,
 			   fl_get_button(file_->check_subcaption));
-	} else if (ob == file_->button_getBB) {
+	} else if (ob == bbox_->button_getBB) {
 	    string const filename = getStringFromInput(file_->input_filename);
 	    if (!filename.empty()) {
 		string const fileWithAbsPath = MakeAbsPath(filename, OnlyPath(filename)); 	
 		string bb = controller().readBB(fileWithAbsPath);
 		lyxerr << "getBB::BoundingBox = " << bb << "\n";
 		if (!bb.empty()) {		
-		    fl_set_input(file_->input_bbx0, token(bb,' ',0).c_str());
-		    fl_set_input(file_->input_bby0, token(bb,' ',1).c_str());
-		    fl_set_input(file_->input_bbx1, token(bb,' ',2).c_str());
-		    fl_set_input(file_->input_bby1, token(bb,' ',3).c_str());
+		    fl_set_input(bbox_->input_bbx0, token(bb,' ',0).c_str());
+		    fl_set_input(bbox_->input_bby0, token(bb,' ',1).c_str());
+		    fl_set_input(bbox_->input_bbx1, token(bb,' ',2).c_str());
+		    fl_set_input(bbox_->input_bby1, token(bb,' ',3).c_str());
 		}
 		controller().bbChanged = false;
 	    }
 	} else if (ob == dialog_->button_help) {
     	    controller().help();
+	}
+		// Put verifications that the dialog shows some sane values,
+	// if not disallow clicking on ok/apply.
+	// Possibly use a label in the bottom of the dialog to give the reason.
+	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_VALID;
+
+	string input;
+	bool invalid = false;
+
+	// check if the input is valid
+	input = fl_get_input(bbox_->input_bbx0);
+	invalid = !input.empty() && !isValidLength(input) && !isStrDbl(input);
+	input = fl_get_input(bbox_->input_bbx1);
+	invalid = invalid || (!input.empty() && !isValidLength(input) && !isStrDbl(input));
+	input = fl_get_input(bbox_->input_bby0);
+	invalid = invalid || (!input.empty() && !isValidLength(input) && !isStrDbl(input));
+	input = fl_get_input(bbox_->input_bby1);
+	invalid = invalid || (!input.empty() && !isValidLength(input) && !isStrDbl(input));
+	input = fl_get_input(size_->input_width);
+	invalid = invalid || !input.empty() && (!isValidLength(input) && !isStrDbl(input));
+	input = fl_get_input(size_->input_height);
+	invalid = invalid || !input.empty() && (!isValidLength(input) && !isStrDbl(input));
+	input = fl_get_input(file_->input_lyxwidth);
+	invalid = invalid || (!input.empty() && !isValidLength(input) && !isStrDbl(input));
+	input = fl_get_input(file_->input_lyxheight);
+	invalid = invalid || (!input.empty() && !isValidLength(input) && !isStrDbl(input));
+
+	// deactivate OK/ Apply buttons and
+	// spit out warnings if invalid
+	if (ob == bbox_->input_bbx0
+			|| ob == bbox_->input_bbx1
+			|| ob == bbox_->input_bby0
+			|| ob == bbox_->input_bby1
+			|| ob == size_->input_width
+			|| ob == size_->input_height
+			|| ob == file_->input_lyxwidth
+			|| ob == file_->input_lyxheight) {
+		if (invalid) {
+			fl_set_object_label(dialog_->text_warning,
+				_("Warning: Invalid Length!"));
+			fl_show_object(dialog_->text_warning);
+			activate = ButtonPolicy::SMI_INVALID;
+		} else {
+			fl_hide_object(dialog_->text_warning);
+			activate = ButtonPolicy::SMI_VALID;
+		}
+		return activate;
 	}
 	return checkInput();
 }

@@ -29,6 +29,7 @@ class ControlGraphics;
 struct FD_form_graphics;
 struct FD_form_file;
 struct FD_form_size;
+struct FD_form_bbox;
 struct FD_form_special;
 
 /** This class provides an XForms implementation of the Graphics Dialog.
@@ -64,12 +65,16 @@ private:
 	///
 	FD_form_size * build_size();
 	///
+	FD_form_bbox * build_bbox();
+	///
 	FD_form_special * build_special();
 
 	/// Real GUI implementation.
 	boost::scoped_ptr<FD_form_file> file_;
 	///
 	boost::scoped_ptr<FD_form_size> size_;
+	///
+	boost::scoped_ptr<FD_form_bbox> bbox_;
 	///
 	boost::scoped_ptr<FD_form_special> special_;
 };

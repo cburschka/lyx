@@ -1,3 +1,13 @@
+2002-01-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* forms/form_graphics.fd: Change the dialog to look similar as
+	the nice QT2-Version (added tabfolder "Bounding Box", rearrangements);
+	added text_warning field..
+
+	* FormGraphics.[Ch]: Handle the Rearrangements.
+	Add input filters and warnings concerning invalid inputs.
+	Recognize the lyxrc-settings of display_graphics.
+
 2002-01-29  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormMathsSpace.h (space_):
