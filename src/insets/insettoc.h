@@ -14,7 +14,9 @@
 
 
 #include "insetcommand.h"
-#include "metricsinfo.h"
+
+class MetricsInfo;
+
 
 /** Used to insert table of contents
  */

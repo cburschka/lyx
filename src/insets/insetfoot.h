@@ -13,8 +13,6 @@
 #ifndef INSETFOOT_H
 #define INSETFOOT_H
 
-
-#include "LaTeXFeatures.h"
 #include "insetfootlike.h"
 
 /** The footnote inset

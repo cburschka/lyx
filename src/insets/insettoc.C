@@ -9,15 +9,17 @@
  */
 #include <config.h>
 
-
-#include "gettext.h"
 #include "insettoc.h"
-#include "funcrequest.h"
+
 #include "BufferView.h"
+#include "debug.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "metricsinfo.h"
+#include "toc.h"
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
-#include "debug.h"
-#include "toc.h"
+
 
 using std::vector;
 using std::ostream;

@@ -48,9 +48,9 @@
 #include "inset.h"
 #include "tabular.h"
 #include "LString.h"
-#include "FuncStatus.h"
 #include "frontends/mouse_state.h"
 
+class FuncStatus;
 class LyXLex;
 class Painter;
 class BufferView;

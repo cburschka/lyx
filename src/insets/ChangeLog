@@ -1,5 +1,9 @@
 2003-09-04  Angus Leeming  <leeming@lyx.org>
 
+	* insetfoot.h: move #include "LaTeXFeatures.h" out of the header file.
+	* insettabular.h: move #include "FuncStatus.h" out of the header file.
+	* insettoc.[Ch]: move #include "metricsinfo.h" out of the header file.
+
 	* insetcollapsable.h: 
 	* insetbranch.C: 
 	* insetnote.C: move #include "funcrequest.h" out of the header file.
