@@ -28,7 +28,7 @@ void MathArrayInset::write(std::ostream & os, bool fragile) const
 
 	os << '{';
 	for (int col = 0; col < ncols(); ++col)
-		os << colinfo_[col].h_align_;
+		os << colinfo_[col].align_;
 	os << "}\n";
 
 	MathGridInset::write(os, fragile);

@@ -118,9 +118,9 @@ enum MathInsetTypes  {
 	///
 	LM_OT_ALIGNAT,
 	///
-	LM_OT_XALIGN,
+	LM_OT_XALIGNAT,
 	///
-	LM_OT_XXALIGN,
+	LM_OT_XXALIGNAT,
 	///
 	LM_OT_MULTLINE,
 	/// An array

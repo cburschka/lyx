@@ -65,14 +65,21 @@ public:
 	/// change type
 	void mutate(string const &);
 	///
-	void mutate(short);
+	void mutate(MathInsetTypes);
+
+	///
+	int defaultColSpace(int col);
+	///
+	char defaultColAlign(int col);
 
 	///
 	MathInsetTypes getType() const;
 
 private:
 	///
-	virtual void setType(MathInsetTypes t);
+	void setDefaults();
+	///
+	void setType(MathInsetTypes t);
 	///
 	void validate1(LaTeXFeatures & features);
 	///

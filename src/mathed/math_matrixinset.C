@@ -14,56 +14,22 @@
 
 namespace {
 
-string getAlign(MathInsetTypes type, int cols)
+
+int getCols(MathInsetTypes type)
 {
-	string align;
-	switch (type) {
-		case LM_OT_ALIGN:
-			for (int i = 0; i < cols; ++i)
-				align += "Rl";
-			break;
-
-		case LM_OT_ALIGNAT:
-			for (int i = 0; i < cols; ++i)
-				align += "rl";
-			break;
-
-		case LM_OT_MULTLINE:
-			align = "C";
-			break;
-
-		default:
-			align = "rcl";
-			break;
-	}
-	return align;
-}
-
-
-string const star(bool n)
-{
-	return n ? "" : "*";
-}
-
-
-int getCols(short int type)
-{
-	int col;
 	switch (type) {
 		case LM_OT_EQNARRAY:
-			col = 3;
-			break;
-
+			return 3;
 		case LM_OT_ALIGN:
 		case LM_OT_ALIGNAT:
-			col = 2;
-			break;
-
-		default:
-			col = 1;
+		case LM_OT_XALIGNAT:
+		case LM_OT_XXALIGNAT:
+			return 2;
+		default:;
 	}
-	return col;
+	return 1;
 }
+
 
 // returns position of first relation operator in the array
 // used for "intelligent splitting"
@@ -75,31 +41,79 @@ int firstRelOp(MathArray const & array)
 	return array.size();
 }
 
+
+char const * star(bool numbered)
+{
+	return numbered ? "" : "*";
+}
+
 }
 
 
 MathMatrixInset::MathMatrixInset()
 	: MathGridInset(1, 1), objtype_(LM_OT_SIMPLE), nonum_(1), label_(1)
-{}
+{
+	setDefaults();
+}
 
 
 MathMatrixInset::MathMatrixInset(MathInsetTypes t)
 	: MathGridInset(getCols(t), 1), objtype_(t), nonum_(1), label_(1)
 {
-	halign(getAlign(t, ncols()));
+	setDefaults();
 }
 
 
 MathMatrixInset::MathMatrixInset(MathInsetTypes t, int cols)
 	: MathGridInset(cols, 1), objtype_(t), nonum_(1), label_(1)
 {
-	halign(getAlign(t, ncols()));
+	setDefaults();
 }
 
 
 MathInset * MathMatrixInset::clone() const
 {
 	return new MathMatrixInset(*this);
+}
+
+
+char MathMatrixInset::defaultColAlign(int col)
+{
+	switch (getType()) {
+		case LM_OT_ALIGN:
+		case LM_OT_ALIGNAT:
+		case LM_OT_XALIGNAT:
+		case LM_OT_XXALIGNAT:
+			return "rl"[col & 1];
+		case LM_OT_EQNARRAY:
+			return "rcl"[col];
+		default:;
+	}
+	return 'c';
+}
+
+int MathMatrixInset::defaultColSpace(int col)
+{
+	switch (getType()) {
+		case LM_OT_ALIGN:
+		case LM_OT_ALIGNAT:
+			return 0;
+		case LM_OT_XALIGNAT:
+			return (col & 1) ? 20 : 0;
+		case LM_OT_XXALIGNAT:
+			return (col & 1) ? 40 : 0;
+		default:;
+	}
+	return 10;
+}
+
+
+void MathMatrixInset::setDefaults()
+{
+	for (int col = 0; col < ncols(); ++col) {
+		colinfo_[col].align_ = defaultColAlign(col);
+		colinfo_[col].skip_  = defaultColSpace(col);
+	}
 }
 
 
@@ -274,9 +288,17 @@ void MathMatrixInset::header_write(std::ostream & os) const
 			break;
 
 		case LM_OT_ALIGNAT:
-			os << "\\begin{alignat" << star(n) << "}"
-			   << "{" << ncols()/2 << "}\n";
+			os << "\\begin{alignat" << star(n) << "}" << "{" << ncols()/2 << "}\n";
 			break;
+
+		case LM_OT_XALIGNAT:
+			os << "\\begin{xalignat" << star(n) << "}" << "{" << ncols()/2 << "}\n";
+			break;
+
+		case LM_OT_XXALIGNAT:
+			os << "\\begin{xxalignat}" << "{" << ncols()/2 << "}\n";
+			break;
+
 		default:
 			os << "\\begin{unknown" << star(n) << "}";
 	}
@@ -311,6 +333,14 @@ void MathMatrixInset::footer_write(std::ostream & os) const
 			os << "\\end{alignat" << star(n) << "}\n";
 			break;
 
+		case LM_OT_XALIGNAT:
+			os << "\\end{xalignat" << star(n) << "}\n";
+			break;
+
+		case LM_OT_XXALIGNAT:
+			os << "\\end{xxalignat}\n";
+			break;
+
 		default:
 			os << "\\end{unknown" << star(n) << "}";
 	}
@@ -323,6 +353,7 @@ void MathMatrixInset::addRow(int row)
 	label_.insert(label_.begin() + row + 1, string());
 	MathGridInset::addRow(row);
 }
+
 
 void MathMatrixInset::appendRow()
 {
@@ -339,6 +370,7 @@ void MathMatrixInset::delRow(int row)
 	label_.erase(label_.begin() + row);
 }
 
+
 void MathMatrixInset::addCol(int col)
 {
 	switch (getType()) {
@@ -352,11 +384,15 @@ void MathMatrixInset::addCol(int col)
 			break;
 
 		case LM_OT_ALIGN:
+			mutate(LM_OT_ALIGNAT);
+			addCol(col);
+			break;
+
 		case LM_OT_ALIGNAT:
+		case LM_OT_XALIGNAT:
+		case LM_OT_XXALIGNAT:
 			MathGridInset::addCol(col);
-			halign(col, 'l');
-			MathGridInset::addCol(col);
-			halign(col, 'r');
+			MathGridInset::addCol(col + 1);
 			break;
 
 		default:
@@ -364,13 +400,16 @@ void MathMatrixInset::addCol(int col)
 	}
 }
 
+
 void MathMatrixInset::delCol(int col)
 {
 	switch (getType()) {
-		case LM_OT_ALIGN:
+		case LM_OT_ALIGNAT:
+		case LM_OT_XALIGNAT:
+		case LM_OT_XXALIGNAT:
+			MathGridInset::delCol(col + 1);
 			MathGridInset::delCol(col);
 			break;
-
 		default:
 			break;
 	}
@@ -388,7 +427,7 @@ string MathMatrixInset::nicelabel(int row) const
 
 
 namespace {
-	short typecode(string const & s)
+	MathInsetTypes typecode(string const & s)
 	{
 		if (s == "equation")
 			return LM_OT_EQUATION;
@@ -398,10 +437,12 @@ namespace {
 			return LM_OT_EQNARRAY;
 		if (s == "align")
 			return LM_OT_ALIGN;
-		if (s == "xalign")
-			return LM_OT_XALIGN;
-		if (s == "xxalign")
-			return LM_OT_XXALIGN;
+		if (s == "alignat")
+			return LM_OT_ALIGN;
+		if (s == "xalignat")
+			return LM_OT_XALIGNAT;
+		if (s == "xxalignat")
+			return LM_OT_XXALIGNAT;
 		if (s == "multline")
 			return LM_OT_MULTLINE;
 		return LM_OT_SIMPLE;
@@ -437,11 +478,12 @@ MathInsetTypes MathMatrixInset::getType() const
 void MathMatrixInset::setType(MathInsetTypes t)
 {
 	objtype_ = t;
+	setDefaults();
 }
 
 
 
-void MathMatrixInset::mutate(short newtype)
+void MathMatrixInset::mutate(MathInsetTypes newtype)
 {
 	//lyxerr << "mutating from '" << getType() << "' to '" << newtype << "'\n";
 
@@ -461,7 +503,11 @@ void MathMatrixInset::mutate(short newtype)
 					setType(LM_OT_SIMPLE);
 					break;
 
-				case LM_OT_ALIGN: {
+				case LM_OT_ALIGN: 
+				case LM_OT_ALIGNAT:
+				case LM_OT_XALIGNAT:
+				case LM_OT_XXALIGNAT: {
+
 					MathGridInset::addCol(1);
 
 					// split it "nicely"
@@ -469,9 +515,8 @@ void MathMatrixInset::mutate(short newtype)
 					cell(1) = cell(0);
 					cell(0).erase(pos, cell(0).size());
 					cell(1).erase(0, pos);
-
-					halign("rl");
 					setType(LM_OT_ALIGN);
+					mutate(newtype);
 					break;
 				}
 
@@ -492,7 +537,6 @@ void MathMatrixInset::mutate(short newtype)
 						cell(2).erase(0);
 					}
 
-					halign("rcl");
 					setType(LM_OT_EQNARRAY);
 					mutate(newtype);
 					break;
@@ -528,6 +572,9 @@ void MathMatrixInset::mutate(short newtype)
 				}
 
 				case LM_OT_ALIGN:
+				case LM_OT_ALIGNAT:
+				case LM_OT_XALIGNAT:
+				case LM_OT_XXALIGNAT:
 				default: {
 					for (int row = 0; row < nrows(); ++row) {
 						int c = 3 * row + 1;
@@ -535,7 +582,6 @@ void MathMatrixInset::mutate(short newtype)
 					}
 					MathGridInset::delCol(2);
 					setType(LM_OT_ALIGN);
-					halign("rl");
 					mutate(newtype);
 					break;
 				}
@@ -549,10 +595,15 @@ void MathMatrixInset::mutate(short newtype)
 				case LM_OT_EQNARRAY:
 					MathGridInset::addCol(1);
 					setType(LM_OT_EQNARRAY);
-					halign("rcl");
 					mutate(newtype);
 					break;
 				
+				case LM_OT_ALIGNAT:
+				case LM_OT_XALIGNAT:
+				case LM_OT_XXALIGNAT:
+					setType(newtype);
+					break;
+
 				default:
 					lyxerr << "mutation from '" << getType()
 						<< "' to '" << newtype << "' not implemented\n";

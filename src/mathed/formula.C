@@ -290,6 +290,15 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			break;
 		}
 
+		case LFUN_MATH_COLUMN_INSERT:
+		{
+			if (par_->getType() == LM_OT_ALIGN)
+				par_->mutate(LM_OT_ALIGNAT);
+			par_->addCol(par_->ncols());
+			mathcursor->normalize();
+			updateLocal(bv, true);
+		}
+
 		default:
 			result = InsetFormulaBase::localDispatch(bv, action, arg);
 	}
@@ -344,6 +353,7 @@ void InsetFormula::validate(LaTeXFeatures & features) const
 	par_->validate(features);
 }
 
+
 bool InsetFormula::insetAllowed(Inset::Code code) const
 {
 	return code == Inset::LABEL_CODE; 
@@ -371,5 +381,5 @@ int InsetFormula::width(BufferView *, LyXFont const &) const
 
 MathInsetTypes InsetFormula::getType() const
 {
-	return par_->getType();;
+	return par_->getType();
 }

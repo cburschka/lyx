@@ -42,18 +42,20 @@ class MathGridInset : public MathNestInset {
 	struct ColInfo {
 		///	
 		ColInfo();
-		///
-		char h_align_;
+		/// currently possible: 'l', 'c', 'r'
+		char align_;
 		/// cache for drawing
 		int h_offset;
 		/// cached width
 		mutable int width_;
 		/// cached offset
 		mutable int offset_;
-		/// 
+		/// do we need a line to the left? 
 		bool leftline_;
-		///
+		/// do we need a line to the right?
 		bool rightline_;
+		/// additional amount to be skipped when drawing
+		int skip_;
 	};
 
 public: 
@@ -132,6 +134,10 @@ public:
 	int index(int row, int col) const;
 	///
 	std::vector<int> idxBetween(int from, int to) const;
+	///
+	virtual int defaultColSpace(int) { return 10; }
+	///
+	virtual char defaultColAlign(int) { return 'c'; }
 
 protected:
 	/// returns proper 'end of line' code for LaTeX

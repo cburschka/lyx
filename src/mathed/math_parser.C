@@ -602,6 +602,20 @@ MathMatrixInset * Parser::parse_normal()
 		return p;
 	}
 
+	if (name == "xalignat" || name == "xalignat*") {
+		MathMatrixInset * p =
+			new MathMatrixInset(LM_OT_XALIGNAT, 2 * atoi(getArg('{', '}').c_str()));
+		parse_lines(p, !stared(name), true);
+		return p;
+	}
+
+	if (name == "xxalignat") {
+		MathMatrixInset * p =
+			new MathMatrixInset(LM_OT_XXALIGNAT, 2 * atoi(getArg('{', '}').c_str()));
+		parse_lines(p, !stared(name), true);
+		return p;
+	}
+
 	lyxerr[Debug::MATHED] << "1: unknown math environment: " << name << "\n";
 	return 0;
 }

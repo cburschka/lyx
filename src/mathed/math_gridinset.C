@@ -35,7 +35,7 @@ int MathGridInset::RowInfo::skipPixels() const
 
 
 MathGridInset::ColInfo::ColInfo()
-	: h_align_('c'), leftline_(false), rightline_(false)
+	: align_('c'), leftline_(false), rightline_(false), skip_(MATH_COLSEP)
 {}
 
 
@@ -46,6 +46,10 @@ MathGridInset::MathGridInset(int m, int n)
 		lyxerr << "positve number of columns expected\n";
 	if (n <= 0)
 		lyxerr << "positve number of rows expected\n";
+	for (int col = 0; col < m; ++col) {
+		colinfo_[col].skip_  = defaultColSpace(col);
+		colinfo_[col].align_ = defaultColAlign(col);
+	}
 }
 
 
@@ -62,19 +66,19 @@ void MathGridInset::halign(string const & hh)
 	if (n > ncols())
 		n = ncols();
 	for (int i = 0; i < n; ++i)
-		colinfo_[i].h_align_ = hh[i];
+		colinfo_[i].align_ = hh[i];
 }
 
 
 void MathGridInset::halign(char h, int col)
 {
-	colinfo_[col].h_align_ = h;
+	colinfo_[col].align_ = h;
 }
 
 
 char MathGridInset::halign(int col) const
 {
-	return colinfo_[col].h_align_;
+	return colinfo_[col].align_;
 }
 
 
@@ -161,7 +165,9 @@ void MathGridInset::metrics(MathStyles st) const
 
 		if (col) 
 			colinfo_[col].offset_ =
-				colinfo_[col - 1].offset_ + colinfo_[col - 1].width_ + MATH_COLSEP;
+				colinfo_[col - 1].offset_ +
+				colinfo_[col - 1].width_ + 
+				colinfo_[col - 1].skip_;
 		else
 			colinfo_[col].offset_ = 0;
 
@@ -175,10 +181,10 @@ void MathGridInset::metrics(MathStyles st) const
 /*	
 	// Increase ws_[i] for 'R' columns (except the first one)
 	for (int i = 1; i < nc_; ++i)
-		if (h_align_[i] == 'R')
+		if (align_[i] == 'R')
 			ws_[i] += 10 * df_width;
 	// Increase ws_[i] for 'C' column
-	if (h_align_[0] == 'C')
+	if (align_[0] == 'C')
 		if (ws_[0] < 7 * workwidth / 8)
 			ws_[0] = 7 * workwidth / 8;
 	
@@ -193,7 +199,7 @@ void MathGridInset::metrics(MathStyles st) const
 				cxrow->setTab(i, df_width);
 				isvoid = true;
 			}
-			switch (h_align_[i]) {
+			switch (align_[i]) {
 			case 'l':
 				lf = 0;
 				break;
@@ -310,7 +316,10 @@ void MathGridInset::addCol(int newcol)
 				= cells_[row * nc + col];
 	std::swap(cells_, new_cells);
 
-	colinfo_.insert(colinfo_.begin() + newcol, ColInfo());
+	ColInfo inf;
+	inf.skip_  = defaultColSpace(newcol);
+	inf.align_ = defaultColAlign(newcol);
+	colinfo_.insert(colinfo_.begin() + newcol, inf);
 }
 
 
@@ -333,7 +342,7 @@ int MathGridInset::cellXOffset(int idx) const
 {
 	int c = col(idx);
 	int x = colinfo_[c].offset_;
-	char align = colinfo_[c].h_align_;
+	char align = colinfo_[c].align_;
 	if (align == 'r' || align == 'R')
 		x += colinfo_[c].width_ - xcell(idx).width(); 
 	if (align == 'c' || align == 'C')
