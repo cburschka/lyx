@@ -25,7 +25,10 @@
 #include "support/forkedcall.h"
 #include "support/lstrings.h"
 
+// HP-UX 11.x doesn't have this header
+#ifdef HAVE_SYS_SELECT_H
 #include <sys/select.h>
+#endif
 #include <sys/time.h>
 
 #ifndef CXX_GLOBAL_CSTD
