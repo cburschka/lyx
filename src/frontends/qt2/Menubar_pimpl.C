@@ -30,13 +30,14 @@
 #include "QLPopupMenu.h"
  
 #include <qmenubar.h>
- 
+#include <qcursor.h>
  
 using std::endl;
 using std::vector;
 using std::max;
 using std::min;
 using std::for_each;
+using std::pair;
 
 Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe) 
 	: owner_(static_cast<QtView*>(view)), menubackend_(mbe)
@@ -44,12 +45,21 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
 	Menu::const_iterator m = mbe.getMenubar().begin();
 	Menu::const_iterator end = mbe.getMenubar().end();
 	for (; m != end; ++m) {
-		createMenu(owner_->menuBar(), &(*m), this, true);
+		pair<int, QLPopupMenu *> menu =
+			createMenu(owner_->menuBar(), &(*m), this, true);
+		name_map_[m->submenuname()] = menu.second;
+		QObject::connect(menu.second, SIGNAL(activated(int)),
+			owner_, SLOT(activated(int)));
 	}
 }
 
 
-void Menubar::Pimpl::openByName(string const &)
+void Menubar::Pimpl::openByName(string const & name)
 {
-	// FIXME 
+	NameMap::const_iterator const cit = name_map_.find(name); 
+	if (cit == name_map_.end()) 
+		return;
+
+	// this will have to do I'm afraid.
+	cit->second->exec(QCursor::pos());
 }

@@ -12,7 +12,6 @@
 #ifndef MENUBAR_PIMPL_H
 #define MENUBAR_PIMPL_H
 
-#include <vector>
 #include <map>
 
 #include <config.h>
@@ -27,6 +26,7 @@
 class LyXView;
 class QtView;
 class MenuBackend;
+class QLPopupMenu;
 
 struct Menubar::Pimpl {
 public:
@@ -49,6 +49,11 @@ private:
 
 	/// menu controller
 	MenuBackend const & menubackend_;
+
+	typedef std::map<string, QLPopupMenu *> NameMap;
+
+	/// name to menu for openByName 
+	NameMap name_map_;
 };
  
 #endif // MENUBAR_PIMPL_H

@@ -61,10 +61,6 @@ QtView::QtView(unsigned int width, unsigned int height)
 	::current_view = bufferview_.get();
 
 	menubar_.reset(new Menubar(this, menubackend));
-
-	connect(menuBar(), SIGNAL(activated(int)),
-		this, SLOT(activated(int)));
- 
 	toolbar_.reset(new Toolbar(this, 0, 0, toolbardefaults));
 
 	statusBar()->setSizeGripEnabled(false);
