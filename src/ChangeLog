@@ -1,5 +1,9 @@
 2004-11-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
+	* text2.C (setCounter): prevent endless loop
+
+2004-11-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
 	* exporter.C (copyFile): use the mover instead of support::copy()
 	* exporter.C (Export): pass format and latex name to copyFile()
 	* exporter.h (addExternalFile): document

@@ -831,7 +831,7 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 #if 0
 /* I think this code is supposed to be useful when one has a caption
  * in a minipage in a figure inset. We need to go up to be able to see
- * that the caption sould use "Figure" as label
+ * that the caption should use "Figure" as label
  */
 				else {
 					Paragraph const * owner = &ownerPar(buf, in);
@@ -840,6 +840,8 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 						if (&pars_[tmppit] == owner)
 							break;
 				}
+#else
+				++tmppit;
 #endif
 			}
 
