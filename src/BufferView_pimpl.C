@@ -286,6 +286,7 @@ void BufferView::Pimpl::redoCurrentBuffer()
 	if (buffer_ && bv_->text) {
 		resizeCurrentBuffer();
 		owner_->updateLayoutChoice();
+		repaint();
 	}
 }
 
