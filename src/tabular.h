@@ -376,6 +376,9 @@ public:
 	InsetText * GetCellInset(int cell) const;
 	///
 	InsetText * GetCellInset(int row, int column) const;
+	/// Search for \param inset in the tabular, with the
+	/// additional hint that it could be at \param maybe_cell
+	int GetCellFromInset(Inset const * inset, int maybe_cell = -1) const;
 	///
 	int rows() const { return rows_; }
 	///

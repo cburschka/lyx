@@ -379,6 +379,8 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		}
 	}
 
+	UpdatableInset * tli = owner->view()->theLockingInset();
+	
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
         bool disable = false;
@@ -413,27 +415,29 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
-		disable = true;
-		if (owner->view()->theLockingInset()) {
-			disable = (owner->view()->theLockingInset()->lyxCode() != Inset::TABULAR_CODE) &&
-				!owner->view()->theLockingInset()->getFirstLockingInsetOfType(Inset::TABULAR_CODE);
-		}
+		disable = !tli
+			|| (tli->lyxCode() != Inset::TABULAR_CODE
+			    && !tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE));
 		break;
+
+	case LFUN_LAYOUT_PARAGRAPH: {
+		Inset * inset = TEXT(false)->cursor.par()->inInset();
+		disable = inset && inset->forceDefaultParagraphs(inset);
+		break;
+	}
 
 	case LFUN_TABULAR_FEATURE:
 		disable = true;
-		if (owner->view()->theLockingInset()) {
+		if (tli) {
 			FuncStatus ret;
 			//ret.disabled(true);
-			if (owner->view()->theLockingInset()->lyxCode() == Inset::TABULAR_CODE) {
+			if (tli->lyxCode() == Inset::TABULAR_CODE) {
+				ret = static_cast<InsetTabular *>(tli)
+					->getStatus(argument);
+			} else if (tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE)) {
 				ret = static_cast<InsetTabular *>
-					(owner->view()->theLockingInset())->
-					getStatus(argument);
-			} else if (owner->view()->theLockingInset()->getFirstLockingInsetOfType(Inset::TABULAR_CODE)) {
-				ret = static_cast<InsetTabular *>
-					(owner->view()->theLockingInset()->
-					 getFirstLockingInsetOfType(Inset::TABULAR_CODE))->
-					getStatus(argument);
+					(tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE))
+					->getStatus(argument);
 			}
 			flag |= ret;
 			disable = false;
@@ -443,7 +447,8 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 
 			disable = true;
 			ret = inset.getStatus(argument);
-			if (ret.onoff(true) || ret.onoff(false)) flag.setOnOff(false);
+			if (ret.onoff(true) || ret.onoff(false))
+				flag.setOnOff(false);
 		}
 		break;
 
@@ -471,13 +476,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		disable = (TEXT(false)->getInset() == 0);
 		break;
 
-	case LFUN_MATH_VALIGN: {
-    // I think this test can be simplified (Andre')
-		// mathcursor is != 0  iff we are in math mode
-		//Inset * tli = owner->view()->theLockingInset();
-		//if (tli && (tli->lyxCode() == Inset::MATH_CODE 
-		//	    || tli->lyxCode() == Inset::MATHMACRO_CODE)) {
-		//
+	case LFUN_MATH_VALIGN: 
 		if (mathcursor) {
 			char align = mathcursor->valign();
 			if (align == '\0') {
@@ -496,11 +495,8 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		} else
 			disable = true;
 		break;
-	}
-	case LFUN_MATH_HALIGN: {
-		//Inset * tli = owner->view()->theLockingInset();
-		//if (tli && (tli->lyxCode() == Inset::MATH_CODE 
-		//	    || tli->lyxCode() == Inset::MATHMACRO_CODE)) {
+
+	case LFUN_MATH_HALIGN: 
 		if (mathcursor) {
 			char align = mathcursor->halign();
 			if (align == '\0') {
@@ -519,9 +515,8 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		} else
 			disable = true;
 		break;
-	}
-	case LFUN_MATH_MUTATE: {
-		Inset * tli = owner->view()->theLockingInset();
+
+	case LFUN_MATH_MUTATE: 
 		if (tli && (tli->lyxCode() == Inset::MATH_CODE)) {
 			MathInsetTypes type = mathcursor->formula()->getType();
 			if (argument == "inline") {
@@ -538,7 +533,6 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		} else
 			disable = true;
 		break;
-	}
 
 	// we just need to be in math mode to enable that
 	case LFUN_MATH_SIZE: 
@@ -663,9 +657,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	default:
 		break;
 	}
-	if (code != Inset::NO_CODE 
-	    && owner->view()->theLockingInset()
-	    && !owner->view()->theLockingInset()->insetAllowed(code)) {
+	if (code != Inset::NO_CODE && tli && !tli->insetAllowed(code)) {
 		disable = true;
 	}
 

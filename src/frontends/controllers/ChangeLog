@@ -1,4 +1,11 @@
+2002-01-20  Herbert Voss  <voss@perce.de>
+
+	* ControlGraphic.C (Browse): add extension "ps" when browsing for
+	a filename
+
 2002-01-19  Herbert Voss  <voss@perce.de>
+
+	* biblio.C (getInfo): fix bug when no author is given
 
 	* biblio.C (parseBibTeX): change the parsing, so that 
 	'#'-characters in a bibtex entry are no more a problem.

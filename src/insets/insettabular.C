@@ -2122,27 +2122,11 @@ int InsetTabular::getMaxWidthOfCell(BufferView * bv, int cell) const
 int InsetTabular::getMaxWidth(BufferView * bv,
                               UpdatableInset const * inset) const
 {
-	int cell = tabular->cur_cell;
-	if (tabular->GetCellInset(cell) != inset) {
-		cell = actcell;
-		if (tabular->GetCellInset(cell) != inset) {
-			
-			lyxerr[Debug::INSETTEXT] << "Actcell not equal to actual cell!\n";
-			cell = -1;
-		}
-	}
-	
-	int const n = tabular->GetNumberOfCells();
+	int cell = tabular->GetCellFromInset(inset, actcell);
 
 	if (cell == -1) {
-		for (cell = 0; cell < n; ++cell) {
-			if (tabular->GetCellInset(cell) == inset)
-				break;
-		}
-	}
-	
-	if (cell >= n) {
-		lyxerr << "Own inset not found, shouldn't really happen!\n";
+		lyxerr << "Own inset not found, shouldn't really happen!"
+		       << endl;
 		return -1;
 	}
 	
@@ -2725,30 +2709,11 @@ bool InsetTabular::insetAllowed(Inset::Code code) const
 
 bool InsetTabular::forceDefaultParagraphs(Inset const * in) const
 {
-	int const n = tabular->GetNumberOfCells();
-	static int last = 0;
+	const int cell = tabular->GetCellFromInset(in, actcell);
 
-	// maybe some speedup
-	if ((last < n) && tabular->GetCellInset(last) == in) {
-		if (tabular->GetPWidth(last).zero())
-			return true;
-		return false;
-	}
-	if ((++last < n) && tabular->GetCellInset(last) == in) {
-		if (tabular->GetPWidth(last).zero())
-			return true;
-		return false;
-	}
+	if (cell != -1)
+		return tabular->GetPWidth(cell).zero();
 
-	for(int i=0; i < n; ++i) {
-		if (tabular->GetCellInset(i) == in) {
-			last = i;
-			if (tabular->GetPWidth(i).zero())
-				return true;
-			return false;
-		}
-	}
-	last = 0;
 	// well we didn't obviously find it so maybe our owner knows more
 	if (owner())
 		return owner()->forceDefaultParagraphs(in);

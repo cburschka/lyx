@@ -1,3 +1,8 @@
+2002-01-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insettabular.C (getMaxWidth): 
+	(forceDefaultParagraphs): use Tabular::GetCellFromInset
+
 2002-01-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* insettabular.C (getMaxWidthOfCell): adapt to the new definition

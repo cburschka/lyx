@@ -1,3 +1,13 @@
+2002-01-20  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* tabular.C (GetCellFromInset): new method. Finds an inset in a
+	tabular. It is possible to provide a possible cell, which will
+	typically be the actcell from the corresponding insettabular
+
+	* lyxfunc.C (getStatus): small cleanup; disable
+	LFUN_LAYOUT_PARAGRAPHS in insets where forceDefaultParagraphs is
+	true
+
 2002-01-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* tabular.C (Validate): remove broken optimization (fixes bug #201)

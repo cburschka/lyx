@@ -2647,6 +2647,46 @@ InsetText * LyXTabular::GetCellInset(int row, int column) const
 }
 
 
+int LyXTabular::GetCellFromInset(Inset const * inset, int maybe_cell) const
+{
+	// is this inset part of the tabular?
+	if (!inset || inset->owner() != owner_) {
+		lyxerr[Debug::INSETTEXT]
+			<< "this is not a cell of the tabular!" << endl;
+		return -1;
+	}
+	
+	const int save_cur_cell = cur_cell;
+	int cell = cur_cell;
+	if (GetCellInset(cell) != inset) {
+		cell = maybe_cell;
+		if (cell == -1 || GetCellInset(cell) != inset) {
+			cell = -1;
+		}
+	}
+	
+	if (cell == -1) {
+		for (cell = GetNumberOfCells(); cell >= 0; --cell) {
+			if (GetCellInset(cell) == inset)
+				break;
+		}
+		lyxerr[Debug::INSETTEXT]
+			 << "LyXTabular::GetCellFromInset: "
+				    << "cell=" << cell
+				    << ", cur_cell=" << save_cur_cell 
+				    << ", maybe_cell=" << maybe_cell
+				    << endl;
+		// We should have found a cell at this point
+		if (cell == -1) {
+			lyxerr << "LyXTabular::GetCellFromInset: "
+			       << "Cell not found!" << endl;
+		}
+	}
+	
+	return cell;
+}
+
+
 void LyXTabular::Validate(LaTeXFeatures & features) const
 {
 	if (IsLongTabular())

@@ -266,9 +266,10 @@ string const getInfo(InfoMap const & map, string const & key)
 		media = parseBibTeX(it->second, "institution");
 
 	ostringstream result;
-	result << author;
+	if (!author.empty())
+		result << author << ", ";
 	if (!title.empty())
-		result << ", " << title;
+		result << title;
 	if (!booktitle.empty())
 		result << ", in " << booktitle;
 	if (!chapter.empty())
