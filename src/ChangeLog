@@ -1,3 +1,10 @@
+2004-09-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* client: new dir
+
+	* Makefile.am (SUBDIRS): change order of subdirs and add client dir
+	(BOOST_LIBS): use top_buildir when looking for the file
+
 2004-08-30  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* pch.h: do not use include boost/format.hpp, multiple symbols

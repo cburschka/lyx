@@ -4,7 +4,7 @@ DISTCLEANFILES += config.h libintl.h version.C stamp-version version.C-tmp
 
 MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
-SUBDIRS = mathed insets graphics support frontends tex2lyx
+SUBDIRS = mathed insets graphics support frontends . client tex2lyx
 
 EXTRA_DIST = config.h.in stamp-h.in version.C.in \
 	Sectioning.h \
@@ -21,8 +21,8 @@ LYX_POST_LIBS = frontends/controllers/libcontrollers.la \
 	support/libsupport.la
 
 if USE_INCLUDED_BOOST
-BOOST_LIBS = ../boost/libs/regex/src/libboostregex.la \
-	../boost/libs/signals/src/libboostsignals.la
+BOOST_LIBS = $(top_builddir)/boost/libs/regex/src/libboostregex.la \
+	$(top_builddir)/boost/libs/signals/src/libboostsignals.la
 else
 BOOST_LIBS = -lboost_regex -lboost_signals
 endif

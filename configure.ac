@@ -413,6 +413,7 @@ AC_CONFIG_FILES([Makefile  m4/Makefile \
        po/Makefile.in \
        sourcedoc/Doxyfile \
        sourcedoc/Makefile \
+       src/client/Makefile \
        src/Makefile \
        src/version.C-tmp:src/version.C.in \
        src/tex2lyx/Makefile \

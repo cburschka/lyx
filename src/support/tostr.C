@@ -4,16 +4,19 @@
  * Licence details can be found in the file COPYING.
  *
  * \author André Pönitz
+ * \author Lars Gullik Bjønnes
  *
  * Full author contact details are available in file CREDITS.
  */
 
 #include <config.h>
 
-#include <sstream>
+#include <boost/lexical_cast.hpp>
+
+
+using boost::lexical_cast;
 
 using std::string;
-using std::ostringstream;
 
 
 string const tostr(bool b)
@@ -24,33 +27,25 @@ string const tostr(bool b)
 
 string const tostr(unsigned int i)
 {
-	ostringstream os;
-	os << i;
-	return os.str();
+	return lexical_cast<string>(i);
 }
 
 
 string const tostr(long int i)
 {
-	ostringstream os;
-	os << i;
-	return os.str();
+	return lexical_cast<string>(i);
 }
 
 
 string const tostr(double d)
 {
-	ostringstream os;
-	os << d;
-	return os.str();
+	return lexical_cast<string>(d);
 }
 
 
 string const tostr(int i)
 {
-	ostringstream os;
-	os << i;
-	return os.str();
+	return lexical_cast<string>(i);
 }
 
 
@@ -62,7 +57,5 @@ string const tostr(string const & s)
 
 string const tostr(long unsigned int i)
 {
-        ostringstream os;
-        os << i;
-        return os.str();
+	return lexical_cast<string>(i);
 }

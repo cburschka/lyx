@@ -1,3 +1,7 @@
+2004-09-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* tostr.C: reimplement using lexical_cast
+
 2004-08-30  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* pch.h: do not use include boost/format.hpp, multiple symbols
