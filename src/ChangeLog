@@ -1,3 +1,7 @@
+2002-06-13  Angus Leeming  <leeming@lyx.org>
+
+	* LaTeX.C: wrap using std::sscanf inside a CXX_GLOBAL_CSTD block.
+
 2002-06-12  "Andrew Zabolotny"  <zap@cobra.ru>
 
 	* kbmap.C (getiso): add support for cyrillic and greek
