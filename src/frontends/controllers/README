@@ -15,3 +15,79 @@ data that it has been created to input/modify.
 
 This concept has been instatiated for the Citation dialog only at the moment.
 See xforms-new/FormCitation.[Ch] for an xforms-specific View of the dialog.
+
+How the code works.
+===================
+
+I'll describe Inset-type dialogs (eg, the Citation dialog). Non-inset-type
+(eg the Document dialog) have similar  flow, but the important controller 
+functions are to be found in ControlDialogs.h, not ControlInset.h.
+
+Let's use the citation dialog as an example.
+
+The dialog is launched by :
+	a) clicking on an existing inset, emitting the showCitation()
+(Dialogs.h) signal, connected to the showInset() slot
+(controllers/ControlInset.h) in theControlCitation c-tor.
+	b) request a new inset (eg from the menubar), emitting a
+createCitation() signal (Dialogs.h) connected to the createInset()
+slot (controllers/ControlInset.h) in theControlCitation c-tor. 
+
+The user presses the Ok, Apply, Cancel or Restore buttons. In xforms
+these are connected to the button controller (xforms/FormCitation.C:
+build) so: 
+	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
+	bc().setCancel(dialog_->button_cancel);
+	bc().setUndoAll(dialog_->button_restore);
+The button controller alters the state of the buttons (active/inactive). 
+xforms works by callbacks, so clicking on say the button_ok button
+causes a callback event to (see FormBase.C) 
+
+extern "C" void C_FormBaseOKCB(FL_OBJECT * ob, long)
+{
+	GetForm(ob)->OKButton();
+}
+
+GetForm() extracts the actual instance of FormCitation that caused the
+event and calls OKButton() (see controllers/ViewBase.h) which in turn
+calls the controller's OKButton method. (The ViewBase method exists
+only because : 
+	/** These shortcuts allow (e.g. xform's) global callback functions
+	    access to the buttons without making the whole controller_
+	    public. */
+
+So, ultimately, pressing button_ok on the Citation dialog calls
+ControlBase::OKButton(). 
+
+void ControlBase::OKButton()
+{
+	apply();
+	hide();
+	bc().ok();
+}
+
+
+apply() and hide() are pure virtual methods, instantiated in
+ControlInset.h because the Citation dialog is an inset dialog and all
+insets are functionally identical. 
+
+template <class Inset, class Params>
+void ControlInset<Inset, Params>::apply()
+{
+	if (lv_.buffer()->isReadonly())
+		return;
+
+	view().apply();
+
+	if (inset_ && params() != getParams(*inset_))
+		applyParamsToInset();
+	else
+		applyParamsNoInset();
+}
+
+applyParamsToInset() and applyParamsNoInset(); are to be found in
+FormCommand.[Ch] because the citation inset is derived from
+InsetCommand and this subset of insets have identical internal
+structure and so the params can be applied in the same way. 
+

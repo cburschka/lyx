@@ -41,19 +41,19 @@ protected:
 	Inset * inset() const;
 
 private:
-	/** These 5 methods are all that the individual daughter classes
+	/** These methods are all that the individual daughter classes
 	    should need to instantiate. */
 
 	/// if the inset exists then do this...
 	virtual void applyParamsToInset() = 0;
 	/// else this...
 	virtual void applyParamsNoInset() = 0;
-	/// clean-up any daughter class-particular data on hide.
-	virtual void clearDaughterParams() = 0;
 	/// get the parameters from the string passed to createInset.
 	virtual Params const getParams(string const &) = 0;
 	/// get the parameters from the inset passed to showInset.
 	virtual Params const getParams(Inset const &) = 0;
+	/// clean-up any daughter class-particular data on hide().
+	virtual void clearDaughterParams() = 0;
 
 	/// Instantiation of ControlBase virtual methods.
 
@@ -164,14 +164,14 @@ void ControlInset<Inset, Params>::update()
 template <class Inset, class Params>
 void ControlInset<Inset, Params>::apply()
 {
-	if (lv_.buffer()->isReadonly() || !inset_)
+	if (lv_.buffer()->isReadonly())
 		return;
 
 	view().apply();
 
-	if (inset_) {
-		if (params() != getParams(*inset_)) applyParamsToInset();
-	} else
+	if (inset_ && params() != getParams(*inset_))
+		applyParamsToInset();
+	else
 		applyParamsNoInset();
 }
 

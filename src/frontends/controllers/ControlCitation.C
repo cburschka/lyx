@@ -80,9 +80,9 @@ vector<string> const ControlCitation::getBibkeys()
 
 string const ControlCitation::getBibkeyInfo(string const & key)
 {
-	string result;
+	Assert(!bibkeysInfo_.empty());
 
-	if (bibkeysInfo_.empty()) getBibkeys();
+	string result;
 
        	InfoMap::const_iterator it = bibkeysInfo_.find(key);
 	if (it != bibkeysInfo_.end()) {
