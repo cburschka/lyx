@@ -1,0 +1,792 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass foils
+\begin_preamble
+\raggedright
+\MyLogo{-\LyX{} et \FoilTeX{} : Quelle équipe !-}
+\end_preamble
+\options dvips
+\language frenchb
+\inputencoding latin9
+\fontscheme default
+\graphics dvips
+\paperfontsize default
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\paperwidth 0cm
+\paperheight 0cm
+\leftmargin 0cm
+\topmargin 0cm
+\rightmargin 0cm
+\bottommargin 0cm
+\headheight 0cm
+\headsep 0cm
+\footskip 0cm
+\secnumdepth 0
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language french
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 0
+	5
+	2
+	-1
+\end_bullet
+\bullet 1
+	5
+	4
+	-1
+\end_bullet
+\bullet 2
+	4
+	8
+	-1
+\end_bullet
+\bullet 3
+	1
+	3
+	-1
+\end_bullet
+
+\layout Title
+\added_space_bottom 7pt 
+Classe Foils
+\layout Standard
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+hrule height 7pt
+\end_inset 
+
+
+\layout Author
+
+
+\noun on 
+Allan Rae 
+\noun default 
+et l'Équipe LyX
+\layout Date
+
+19 novembre 1997
+\layout Abstract
+
+On peut combiner LyX et FoilTeX en un puissant outil de préparation de 
+\begin_inset Quotes fld
+\end_inset 
+
+transparents
+\begin_inset Quotes frd
+\end_inset 
+
+ ou diapos (foils).
+\layout Foilhead
+
+Voici un En-tête_Diapo
+\layout Standard
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+hrule height 3pt
+\end_inset 
+
+ 
+\layout Standard
+
+Un En-tête_Diapo démarre une nouvelle diapo.
+ Il y a aussi une version Courte qui réduit l'espace entre l'en-tête et
+ le corps de la diapo.
+ Presque tous les environnements existant dans les autres classes sont encore
+ présents ici.
+\layout Itemize
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+zerolistvertdimens{}
+\end_inset 
+
+La fenêtre de sélection de la forme des puces Format\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
+Puces
+\begin_deeper 
+\layout Itemize
+
+est idéale avec la classe foils
+\begin_deeper 
+\layout Itemize
+
+vous permettant de choisir la puce
+\begin_deeper 
+\layout Itemize
+
+pour chacun des quatre niveaux de l'environnement ListePuces
+\end_deeper 
+\end_deeper 
+\end_deeper 
+\layout Itemize
+
+NOTE : Pour exploiter toutes les possibilités de sélection de la forme des
+ puces, lisez le manuel d'
+\emph on 
+Options\SpecialChar ~
+Avancées
+\emph default 
+ et l'exemple 
+\family typewriter 
+fr_ListesPuces.lyx
+\family default 
+.
+\layout Itemize
+
+NOTE 2 : Pour avoir un espacement de liste petit comme ici mettez la commande
+ FoilTeX 
+\family typewriter 
+
+\backslash 
+zerolistvertdimens{}
+\family default 
+ dans un insert TeX au début du premier élément.
+\layout ShortFoilhead
+
+Voici un En-tête_Diapo_Court
+\layout Standard
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+hrule height 3pt
+\end_inset 
+
+
+\layout Standard
+
+La classe foils a été étendue pour avoir deux nouveaux types de listes à
+ puces.
+ Ce sont :
+\layout TickList
+
+ListeCochés (TickList)
+\layout Standard
+
+et
+\layout CrossList
+
+ListeCroix (CrossList)
+\layout Standard
+
+Ces deux listes ont été ajoutées pour les listes de type conseils / interdiction
+s, ou 
+\begin_inset Quotes fld
+\end_inset 
+
+d'accord
+\begin_inset Quotes frd
+\end_inset 
+
+ / 
+\begin_inset Quotes fld
+\end_inset 
+
+pas d'accord
+\begin_inset Quotes frd
+\end_inset 
+
+, assez fréquentes dans des transparents.
+ Nous avons donc introduit deux environnements de paragraphe spécialisés
+ pour vous rendre la vie plus facile.
+ 
+\layout Rotatefoilhead
+
+En-tête_Diapo_Tourné
+\layout Standard
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+hrule height 3pt
+\end_inset 
+
+
+\layout Itemize
+
+Vous pouvez créer des diapos paysage avec En-tête_Diapo_Tourné.
+\layout Itemize
+
+Notez qui si vous visionnez ça avec xdvi la page semblera déborder de la
+ feuille car xdvi ne tourne pas le texte.
+\layout Itemize
+
+Si vous visionnez ce document avec ghostview ou quelque chose d'approchant
+ la page apparaîtra tournée.
+ Sinon c'est que vous n'avez sans doute pas le bon pilote dvips.
+\layout Definition*
+
+Il y a aussi plusieurs environnements spécialement destinés à présenter
+ des Théorèmes, Lemmes, Corollaires, Propositions, Preuves et Définitions.
+ Il en existe des versions numérotées et non numérotées.
+\layout ShortRotatefoilhead
+
+En-tête_Diapo_Court_Tourné
+\layout Standard
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+hrule height 3pt
+\end_inset 
+
+
+\layout Itemize
+
+Là encore la version courte réduit l'espace sous l'en-tête.
+\layout Itemize
+
+Une autre façon de contrôler la séparation est d'en ajuster la taille dans
+ le préambule, ce qui affectera à la fois la version normale et la version
+ courte des en-têtes de diapo (droits et tournés).
+ Par exemple, 
+\newline 
+
+\family typewriter 
+ 
+\backslash 
+setlength{
+\backslash 
+foilheadskip}{-0.5in} 
+\family default 
+
+\newline 
+réduira l'espacement de 0,5\SpecialChar ~
+pouce.
+ Les autres unités comprennent mm (millimètres) et pt (points).
+\layout Itemize
+
+Les versions 
+\emph on 
+courtes
+\emph default 
+ des en-têtes de diapo réduisent la séparation de 0,5\SpecialChar ~
+pouce (environ 12,5\SpecialChar ~
+mm).
+\layout ShortFoilhead
+
+Preuves non triviales
+\layout Standard
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+hrule height 3pt
+\end_inset 
+
+
+\layout Lemma*
+
+Plusieurs paragraphes consécutifs de type 
+\emph on 
+Theorem
+\emph default 
+, 
+\emph on 
+Lemme
+\emph default 
+, 
+\emph on 
+Corollaire
+\emph default 
+, 
+\emph on 
+Proposition
+\emph default 
+, 
+\emph on 
+Définition
+\emph default 
+, 
+\emph on 
+Preuve
+\emph default 
+ ou de leurs versions étoilées sont considérés comme faisant partie du même
+ environnement.
+\layout Lemma*
+
+Comme vous voyez, nous sommes toujours dans le même lemme.
+\layout Lemma*
+
+Several consecutive paragraphs of type
+\emph on 
+ Theorem
+\emph default 
+, 
+\emph on 
+Lemma
+\emph default 
+, 
+\emph on 
+Corollary
+\emph default 
+, 
+\emph on 
+Proposition
+\emph default 
+, 
+\emph on 
+Definition
+\emph default 
+, 
+\emph on 
+Proof
+\emph default 
+ or the starred versions of these are part of the same environment.
+\layout Lemma*
+
+As you can see, we are still in the same lemma.
+\layout Standard
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+%
+\end_inset 
+
+
+\layout Lemma*
+
+Pour mettre un deuxième Lemme juste après le premier, il faut les séparer
+ par du texte standard ou, comme ici, par un insert TeX qui contient juste
+ un 
+\family typewriter 
+\emph on 
+
+\begin_inset Quotes fld
+\end_inset 
+
+%
+\begin_inset Quotes frd
+\end_inset 
+
+
+\family default 
+\emph default 
+.
+ C'est simplement le caractère de commentaire en LaTeX mais l'apparition
+ d'un paragraphe contenant du LaTeX suffit pour forcer LyX à présenter correctem
+ent les deux environnements.
+\layout Lemma*
+
+NOTE : Vous ne rencontrerez ce problème qu'avec des paragraphes du même
+ type et 
+\emph on 
+pas
+\emph default 
+ de types différents comme un Théorème suivi de sa Preuve.
+\layout ShortFoilhead
+
+Tableaux et Figures
+\layout Standard
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+hrule height 3pt
+\end_inset 
+
+
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Colonne 1
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Colonne 2
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Colonne 3
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Simple
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\emph on 
+exemple
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+de
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\bar under 
+tableau
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+avec
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\series bold 
+foils
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\layout Standard
+
+Les tableaux et les figures sont tous deux supportés dans Foils.
+ Cependant les flottants ne flottent pas, mais apparaissent exactement là
+ où ils se trouvent dans le texte.
+ Les paramètres de placement de flottants seront tous ignorés.
+\layout Standard
+
+Both tables and figures are supported in Foils however floats don't float
+ instead they appear exactly where they appear in the text.
+ Any placement parameters you set will be ignored.
+\begin_inset Float table
+placement htbp
+wide false
+collapsed false
+
+\layout Standard
+\align center 
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Ligne 1
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\emph on 
+Autre
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+exemple
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Ligne 2
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\bar under 
+de
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+tableau
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Ligne 3
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+
+\series bold 
+avec
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+foils
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\layout Caption
+
+Voici un tableau flottant qui ne flotte pas
+\end_inset 
+
+
+\layout ShortFoilhead
+
+En-têtes et Pieds de Page
+\layout Standard
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+hrule height 3pt
+\end_inset 
+
+
+\layout Standard
+
+FoilTeX offre de nombreuses possibilités pour gérer les en-têtes et les
+ pieds de page
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Vous pouvez aussi utiliser les notes en bas de page standard comme ici.
+\end_inset 
+
+.
+ Il vaut mieux les définir dans le préambule bien qu'il soit possible de
+ le faire n'importe où dans le document.
+ Si vous voulez changer ces réglages en cours de document il vaut mieux
+ le faire tout en haut d'une diapo, juste après l'en-tête de diapo.
+\layout Standard
+
+Le pied de page gauche est contrôlé par les deux commandes 
+\family typewriter 
+
+\backslash 
+MyLogo{}
+\family default 
+ et 
+\family typewriter 
+
+\backslash 
+Restriction{}
+\family default 
+.
+ La première sert à inclure un logo graphique dans vos diapos, qui est par
+ défaut 
+\begin_inset Quotes fld
+\end_inset 
+
+-Typeset by FoilTeX-
+\begin_inset Quotes frd
+\end_inset 
+
+.
+ La seconde sert à en restreindre la diffusion, par exemple Confidentiel.
+\layout Standard
+
+Les autres coins sont contrôlés par :
+\layout Standard
+
+
+\family typewriter 
+
+\backslash 
+rightfooter{}
+\family default 
+ -- par défaut le numéro de page
+\layout Standard
+
+
+\family typewriter 
+
+\backslash 
+rightheader{}
+\layout Standard
+
+
+\family typewriter 
+
+\backslash 
+leftheader{}
+\layout Foilhead
+
+Pour en Savoir Plus
+\layout Standard
+
+
+\begin_inset ERT
+status Inlined
+
+\layout Standard
+
+\backslash 
+hrule height 3pt
+\end_inset 
+
+
+\layout Standard
+
+Il devrait y avoir de la documentation sur FoilTeX dans votre distribution
+ LaTeX.
+ Il y a bien d'autres fonctions de FoilTeX qui n'ont pas été décrites ici.
+ Par exemple, FoilTeX peut automatiquement tracer un trait horizontal entre
+ les en-têtes de page et ceux de diapo, et entre le corps et les pieds de
+ page.
+\layout Bibliography
+\bibitem {2}
+
+Jim Hafner, 
+\begin_inset Quotes fld
+\end_inset 
+
+The FoilTeX Class Package
+\begin_inset Quotes frd
+\end_inset 
+
+, 
+\family typewriter 
+.../texmf/texmf/doc/latex/foiltex/foiltex.dvi
+\layout Bibliography
+\bibitem {2}
+
+Équipe de Documentation LyX, manuel d'
+\emph on 
+Options\SpecialChar ~
+Avancées
+\emph default 
+.
+\the_end
