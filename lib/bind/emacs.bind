@@ -133,12 +133,14 @@
 # Motion group
 #
 
-\bind "C-Right"                "word-forward"
-\bind "C-Left"                 "word-backward"
-\bind "C-Up"                   "paragraph-up"
-\bind "C-Down"                 "paragraph-down"
-\bind "Home"                   "buffer-begin"
-\bind "End"                    "buffer-end"
+\bind "C-Right"			"word-forward"
+\bind "C-Left"			"word-backward"
+\bind "C-Up"			"paragraph-up"
+\bind "C-Down"			"paragraph-down"
+\bind "Home"			"buffer-begin"
+\bind "End"			"buffer-end"
+\bind "M-~S-less"		"buffer-begin"
+\bind "M-~S-greater"		"buffer-end"
 
 \bind "C-~S-greater"		"reference-goto"
 \bind "C-~S-less" 		"bookmark-goto 0"
