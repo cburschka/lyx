@@ -97,7 +97,7 @@ public:
 	std::vector<Format const *> const
 	getReachable(std::string const & from, bool only_viewable,
 		     bool clear_visited);
-	///
+	/// Does a conversion path from format \p from to format \p to exist?
 	bool isReachable(std::string const & from, std::string const & to);
 	///
 	Graph::EdgePath const getPath(std::string const & from, std::string const & to);
@@ -141,7 +141,8 @@ private:
 	ConverterList converterlist_;
 	///
 	std::string latex_command_;
-	///
+	/// If \p from = /path/file.ext and \p to = /path2/file2.ext2 then
+	/// this method moves each /path/file*.ext file to /path2/file2*.ext2
 	bool move(std::string const & fmt,
 		  std::string const & from, std::string const & to,
 		  bool copy);

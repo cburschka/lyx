@@ -438,8 +438,6 @@ bool Converters::convert(Buffer const * buffer,
 }
 
 
-// If from = /path/file.ext and to = /path2/file2.ext2 then this method
-// moves each /path/file*.ext file to /path2/file2*.ext2'
 bool Converters::move(string const & fmt,
 		      string const & from, string const & to, bool copy)
 {
@@ -468,7 +466,9 @@ bool Converters::move(string const & fmt,
 				: mover.rename(from2, to2);
 			if (!moved && no_errors) {
 				Alert::error(_("Cannot convert file"),
-					bformat(_("Could not move a temporary file from %1$s to %2$s."),
+					bformat(copy ?
+					        _("Could not copy a temporary file from %1$s to %2$s.") :
+					        _("Could not move a temporary file from %1$s to %2$s."),
 						from2, to2));
 				no_errors = false;
 			}

@@ -1,3 +1,8 @@
+2004-11-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* converter.C (move): don't lie in the error message
+	* converter.h (isReachable, move): document
+
 2004-11-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* buffer.C: remove unused using lyx::support::atoi
