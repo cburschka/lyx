@@ -22,7 +22,7 @@
 #include <csignal>
 
 #include "LString.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 class LyXGUI;
 class LyXRC;

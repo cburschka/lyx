@@ -18,7 +18,7 @@
 #define FORMTABULAR_H
 
 #include "DialogBase.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Connection;

@@ -22,7 +22,7 @@
 #include "insets/lyxinset.h"
 #include "vspace.h"
 #include "layout.h"
-#include "support/block.h"
+#include <boost/array.hpp>
 #include "language.h"
 
 class BufferParams;
@@ -286,7 +286,7 @@ public:
 	
 private:
 	///
-	block<int, 10> counter_;
+	array<int, 10> counter_;
 public:
 	///
 	void setCounter(int i, int v) { counter_[i] = v; }

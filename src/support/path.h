@@ -5,7 +5,7 @@
 #include "LString.h"
 #include "filetools.h"
 #include "lyxlib.h"
-#include "utility.hpp"
+#include <boost/utility.hpp>
 
 #ifdef __GNUG__
 #pragma interface

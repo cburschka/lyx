@@ -6,7 +6,8 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 # here.
 SUBDIRS = xforms @FRONTEND@
 ETAGS_ARGS = --lang=c++
-INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/xforms ${SIGC_CFLAGS}
+BOOST_INCLUDES = -I$(top_srcdir)/boost
+INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/xforms ${SIGC_CFLAGS} $(BOOST_INCLUDES)
 LIBS =
 noinst_LTLIBRARIES = libfrontends.la
 libfrontends_la_SOURCES=\

@@ -21,7 +21,7 @@
 #include "lyxlex.h"
 #include "lyxfont.h"
 #include "Spacing.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 /// Reads the style files
 extern void LyXSetStyle();

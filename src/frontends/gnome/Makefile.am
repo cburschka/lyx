@@ -2,9 +2,10 @@ AUTOMAKE_OPTIONS = foreign 1.4
 DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libgnome.la
+BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ -I${top_srcdir}/src/frontends/xforms \
-	${SIGC_CFLAGS}
+	${SIGC_CFLAGS} $(BOOST_INCLUDES)
 libgnome_la_OBJADD = \
         ../xforms/FormBase.lo \
 	../xforms/FormCitation.lo \

@@ -20,7 +20,7 @@
 
 #include "LString.h"
 #include "X11/Xlib.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 /** Renderer is a base class that is used to take an image format, and
     render it into a Pixmap in order to be able to display it later on

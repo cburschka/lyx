@@ -23,7 +23,7 @@
 #include "Bullet.h"
 #include "insets/insetquotes.h"
 #include "layout.h"
-#include "support/block.h"
+#include <boost/array.hpp>
 
 
 struct Language;
@@ -192,9 +192,9 @@ public:
 	///
 	string pagestyle;
 	///
-	block<Bullet, 4> temp_bullets;
+	array<Bullet, 4> temp_bullets;
 	///
-	block<Bullet, 4> user_defined_bullets;
+	array<Bullet, 4> user_defined_bullets;
 	///
 	void readPreamble(LyXLex &);
 	///

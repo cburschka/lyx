@@ -20,7 +20,7 @@
 
 #include "LString.h"
 #include "GraphicsCacheItem.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 /** GraphicsCache is the manager of the image cache.
     It is responsible of create the GraphicsCacheItem's and maintain them.

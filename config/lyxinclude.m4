@@ -186,7 +186,8 @@ dnl Check the version of g++
     case $gxx_version in
       2.95.1)  CXXFLAGS="-g $lyx_opt -fpermissive -fno-rtti -fno-exceptions";;
       2.95.*)  CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
-      2.96*)   CXXFLAGS="-g $lyx_opt -fhonor-std -fvtable-thunks -ffunction-sections -fdata-sections";;
+      2.96*)  CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
+      2.97*)   CXXFLAGS="-g $lyx_opt -fhonor-std -fvtable-thunks -ffunction-sections -fdata-sections";;
       *2.91.*) CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
       *)       CXXFLAGS="-g $lyx_opt -fno-rtti -fno-exceptions";;
     esac
@@ -197,6 +198,7 @@ dnl Check the version of g++
     case $gxx_version in
 	2.95.*) CXXFLAGS="$CXXFLAGS -W -Wall -Wconversion -Winline";;
 	2.96*)  CXXFLAGS="$CXXFLAGS -W -Wall -Wconversion -Winline";;
+	2.97*)  CXXFLAGS="$CXXFLAGS -W -Wall -Wconversion -Winline";;
 	*)      CXXFLAGS="$CXXFLAGS -W -Wall -Wno-return-type";;
     esac
     if test $lyx_devel_version = yes ; then

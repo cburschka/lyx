@@ -1,8 +1,9 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libkde.la
+BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
-	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} \
+	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
 	-I${top_srcdir}/src/frontends/xforms
 
 # just to make sure, automake makes them 

@@ -18,7 +18,7 @@
 
 #include FORMS_H_LOCATION
 #include "undo.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 class LyXView;
 class LyXText;

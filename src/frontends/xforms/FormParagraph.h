@@ -14,7 +14,7 @@
 #define FORM_PARAGRAPH_H
 
 #include "DialogBase.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 #include <vector>
 
 #ifdef __GNUG_

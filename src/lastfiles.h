@@ -19,7 +19,7 @@
 #include <deque>
 
 #include "LString.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 /** The latest documents loaded.
     This class takes care of the last .lyx files used by the LyX user. It

@@ -3,7 +3,7 @@ DISTCLEANFILES= *.orig *.rej *~ *.bak lyx.1 core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in $(srcdir)/aclocal.m4 \
 	$(srcdir)/configure $(srcdir)/development/lyx.spec \
 	$(srcdir)/acinclude.m4
-SUBDIRS = intl po sigc++ src lib
+SUBDIRS = intl po sigc++ boost src lib
 
 EXTRA_DIST = ANNOUNCE OLD-CHANGES INSTALL.OS2 INSTALL.autoconf README.OS2 \
 	UPGRADING lyx.man acconfig.h \

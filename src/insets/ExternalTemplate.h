@@ -19,7 +19,7 @@
 #include <iosfwd>
 #include <map>
 #include "LString.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 class LyXLex;
 

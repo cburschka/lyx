@@ -14,7 +14,7 @@
 
 #include "DialogBase.h"
 #include "LString.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 #include FORMS_H_LOCATION
 #include "ButtonController.h"
 #include "gettext.h"

@@ -14,7 +14,7 @@
 #include <iosfwd>
 
 #include "LString.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 ///
 struct keyword_item {

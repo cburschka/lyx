@@ -4,7 +4,8 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libgraphics.la
 LIBS =
 ETAGS_ARGS = --lang=c++
-INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS)
+BOOST_INCLUDES = -I$(top_srcdir)/boost
+INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 libgraphics_la_SOURCES = \
 	Renderer.h \

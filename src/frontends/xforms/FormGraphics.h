@@ -21,7 +21,7 @@
 #include "LString.h"
 #include "frontends/DialogBase.h"
 #include "RadioButtonGroup.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 #ifdef __GNUG__
 #pragma interface

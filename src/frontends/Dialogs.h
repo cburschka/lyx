@@ -22,7 +22,7 @@
 #include <sigc++/signal_system.h>
 
 #include "LString.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 class DialogBase;
 

@@ -12,7 +12,7 @@
 #ifndef LYX_GUI_H
 #define LYX_GUI_H
 
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 #ifdef __GNUG__
 #pragma interface

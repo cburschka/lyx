@@ -16,7 +16,8 @@ lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS) $(SIGC_LIBS) \
 #lyx_LDFLAGS=-Wl,-O1
 EXTRA_DIST = config.h.in stamp-h.in cheaders
 ETAGS_ARGS = --lang=c++
-INCLUDES = $(SIGC_CFLAGS) $(PSPELL_INCLUDES) @FRONTEND_INCLUDES@
+BOOST_INCLUDES = -I$(top_srcdir)/boost
+INCLUDES = $(SIGC_CFLAGS) $(BOOST_INCLUDES) $(PSPELL_INCLUDES) @FRONTEND_INCLUDES@
 localedir = $(datadir)/locale
 lyx_SOURCES = \
 	BackStack.h \

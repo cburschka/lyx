@@ -10,7 +10,7 @@
 
 #include "commandtags.h"
 #include "LString.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 /** This class encapsulates LyX action and user command operations.
  */

@@ -2,9 +2,10 @@ AUTOMAKE_OPTIONS = foreign 1.4
 DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libxforms.la
+BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
-	${SIGC_CFLAGS}
+	${SIGC_CFLAGS} $(BOOST_INCLUDES)
 LIBS=
 LDFLAGS=
 LYXDATADIRS = forms

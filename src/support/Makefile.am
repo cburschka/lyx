@@ -4,7 +4,8 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libsupport.la
 LIBS =
 ETAGS_ARGS = --lang=c++
-INCLUDES = -I${srcdir}/../
+BOOST_INCLUDES = -I$(top_srcdir)/boost
+INCLUDES = -I${srcdir}/../ $(BOOST_INCLUDES)
 
 EXTRA_DIST = lyxstring.C lyxstring.h regex.c lyxregex.h
 
@@ -32,7 +33,6 @@ libsupport_la_SOURCES = \
 	StrPool.h \
 	abort.C \
 	atoi.C \
-	block.h \
 	chdir.C \
 	copy.C \
 	date.C \
@@ -62,5 +62,4 @@ libsupport_la_SOURCES = \
 	syssingleton.C \
 	translator.h \
 	textutils.h \
-	unlink.C \
-	utility.hpp
+	unlink.C

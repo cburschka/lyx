@@ -23,7 +23,7 @@
 #include "DepTable.h"
 #include <vector>
 
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 class MiniBuffer;
 

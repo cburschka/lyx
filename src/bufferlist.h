@@ -20,7 +20,7 @@
 
 #include "buffer.h"
 #include "debug.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 /** A class to hold all the buffers in a structure
   The point of this class is to hide from bufferlist what kind

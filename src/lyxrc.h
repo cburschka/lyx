@@ -17,7 +17,7 @@
 #endif
 
 #include "bufferparams.h"
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 /// This contains the runtime configuration of LyX
 class LyXRC : public noncopyable {

@@ -283,7 +283,7 @@ bool suffixIs(string const & a, string const & suf)
 		string tmp(a, alen - suflen);
 		return ::strncmp(tmp.c_str(), suf.c_str(), suflen) == 0;
 #else
-		return a.compare(alen - suflen, suflen, suf);
+		return a.compare(alen - suflen, suflen, suf) == 0;
 #endif
 	}
 }

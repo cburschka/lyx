@@ -1,3 +1,73 @@
+2000-10-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/utility.hpp: removed file
+	* src/support/block.h: removed file
+
+	* src/support/Makefile.am (libsupport_la_SOURCES): remove block.h
+	and utility.hpp
+
+	* src/mathed/formula.C: add support/lyxlib.h
+	* src/mathed/formulamacro.C: ditto
+
+	* src/bufferparams.h: use boost/array.hpp instead of support/block.h
+	* src/lyxparagraph.h: ditto
+
+	* src/Makefile.am (BOOST_INCLUDES): the boost include dir
+	* src/frontends/Makefile.am (INCLUDES): ditto
+	* src/frontends/gnome/Makefile.am (BOOST_INCLUDES): ditto
+	* src/frontends/kde/Makefile.am (BOOST_INCLUDES): ditto
+	* src/frontends/xforms/Makefile.am (BOOST_INCLUDES): ditto
+	* src/graphics/Makefile.am (BOOST_INCLUDES): ditto
+	* src/insets/Makefile.am (BOOST_INCLUDES): ditto
+	* src/mathed/Makefile.am (BOOST_INCLUDES): ditto
+
+	* src/BufferView.h: use boost/utility.hpp
+	* src/LColor.h: ditto
+	* src/LaTeX.h: ditto
+	* src/LyXAction.h: ditto
+	* src/LyXView.h: ditto
+	* src/bufferlist.h: ditto
+	* src/lastfiles.h: ditto
+	* src/layout.h: ditto
+	* src/lyx_gui.h: ditto
+	* src/lyx_main.h: ditto
+	* src/lyxlex.h: ditto
+	* src/lyxrc.h: ditto
+	* src/frontends/ButtonPolicies.h: ditto
+	* src/frontends/Dialogs.h: ditto
+	* src/frontends/xforms/FormBase.h: ditto
+	* src/frontends/xforms/FormGraphics.h: ditto
+	* src/frontends/xforms/FormParagraph.h: ditto
+	* src/frontends/xforms/FormTabular.h: ditto
+	* src/graphics/GraphicsCache.h: ditto
+	* src/graphics/Renderer.h: ditto
+	* src/insets/ExternalTemplate.h: ditto
+	* src/insets/insetcommand.h: ditto
+	* src/support/path.h: ditto
+
+	* config/lyxinclude.m4 (LYX_PROG_CXX): change clause for 2.96
+	and introduce clause for 2.97.
+
+	* boost/libs/README: new file
+
+	* boost/boost/utility.hpp: new file
+
+	* boost/boost/config.hpp: new file
+
+	* boost/boost/array.hpp: new file
+
+	* boost/Makefile.am: new file
+
+	* boost/.cvsignore: new file
+
+	* configure.in (AC_OUTPUT): add boost/Makefile
+
+	* Makefile.am (SUBDIRS): add boost
+
+2000-10-01  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/support/lstrings.C (suffixIs): Fixed.
+
 2000-10-01  Allan Rae  <rae@lyx.org>
 
 	* src/PrinterParams.h: moved things around to avoid the "can't

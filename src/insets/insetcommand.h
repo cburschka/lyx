@@ -18,7 +18,7 @@
 
 #include "insetbutton.h"
 #include <sigc++/signal_system.h>
-#include "support/utility.hpp"
+#include <boost/utility.hpp>
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Signal0;
