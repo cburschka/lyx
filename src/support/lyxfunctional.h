@@ -14,7 +14,6 @@
 
 namespace lyx {
 
-
 template<class R, class C, class A>
 class class_fun_t {
 public:

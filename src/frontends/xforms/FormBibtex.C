@@ -27,6 +27,7 @@
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
+#include "support/lyxalgo.h"
 
 
 using std::vector;
@@ -57,6 +58,8 @@ void FormBibtex::build()
 	bc().addReadOnly(dialog_->button_database_browse);
 	bc().addReadOnly(dialog_->input_database);
 	bc().addReadOnly(dialog_->button_style_browse);
+	bc().addReadOnly(dialog_->button_style_choose);
+	bc().addReadOnly(dialog_->button_rescan);
 	bc().addReadOnly(dialog_->input_style);
 	bc().addReadOnly(dialog_->check_bibtotoc);
 
@@ -64,14 +67,21 @@ void FormBibtex::build()
 	string str = _("The database you want to cite from. Insert it without the default extension \".bib\". If you insert it with the browser, LyX strips the extension. Several databases must be separated by a comma: \"natbib, books\".");
 	tooltips().init(dialog_->button_database_browse, str);
 
-	str = _("Browse your directory for BibTeX stylefiles.");
+	str = _("Browse your directory for BibTeX stylefiles");
 	tooltips().init(dialog_->button_style_browse, str);
 
-	str = _("The BibTeX style to use (only one allowed). Insert it without the default extension \".bst\" and without path. Most of the bibstyles are stored in $TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"View->TeX Information\" you can list all installed styles.");
+	str = _("The BibTeX style to use (only one allowed). Insert it without the default extension \".bst\" and without path or choose one from the browsers list. Most of the bibstyles are stored in $TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree.");
 	tooltips().init(dialog_->input_style, str);
 
-	str = _("Activate this option if you want the bibliography to appear in the Table of Contents (which doesn't happen by default).");
+	str = _("Activate this option if you want the bibliography to appear in the Table of Contents (which doesn't happen by default)");
 	tooltips().init(dialog_->check_bibtotoc, str);
+	
+	str = _("Choose a BibTeX style from the browsers list");
+	tooltips().init(dialog_->button_style_choose, str);
+	
+	str = _("Updates your TeX system for a new bibstyle list. Only the styles which are in directories where TeX finds them are listed!");
+	tooltips().init(dialog_->button_rescan, str);
+	
 }
 
 
@@ -82,8 +92,8 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 		string const in_name = fl_get_input(dialog_->input_database);
 		string out_name =
 			controller().Browse("",
-					    _("Select Database"),
-					    _("*.bib| BibTeX Databases (*.bib)"));
+				_("Select Database"),
+				_("*.bib| BibTeX Databases (*.bib)"));
 		if (!out_name.empty()) {
 			// add the database to any existing ones
 			if (!in_name.empty())
@@ -93,22 +103,28 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 			fl_set_input(dialog_->input_database, out_name.c_str());
 			fl_unfreeze_form(form());
 		}
-	}
-
-	if (ob == dialog_->button_style_browse) {
+	} else if (ob == dialog_->button_style_browse) {
 		string const in_name = fl_get_input(dialog_->input_style);
 		string out_name =
 			controller().Browse(in_name,
-					    _("Select BibTeX-Style"),
-					    _("*.bst| BibTeX Styles (*.bst)"));
+				_("Select BibTeX-Style"),
+				_("*.bst| BibTeX Styles (*.bst)"));
 		if (!out_name.empty()) {
 			fl_freeze_form(form());
 			fl_set_input(dialog_->input_style, out_name.c_str());
 			fl_unfreeze_form(form());
 		}
-	}
+	} else if (ob == dialog_->button_style_choose) {
+		unsigned int selection = fl_get_browser(dialog_->browser_styles);
+		string const out_name = 
+			fl_get_browser_line(dialog_->browser_styles, selection);
+		fl_set_input(dialog_->input_style, 
+			ChangeExtension(out_name, string()).c_str());
+	} else if (ob == dialog_->button_rescan)
+		controller().rescanBibStyles();
 
-	if (!compare(fl_get_input(dialog_->input_database),"")) {
+	// with an empty database nothing makes sense ...
+	if (!compare(fl_get_input(dialog_->input_database), "")) {
 		return ButtonPolicy::SMI_NOOP;
 	}
 
@@ -122,43 +138,35 @@ void FormBibtex::update()
 		     controller().params().getContents().c_str());
 	string bibtotoc = "bibtotoc";
 	string bibstyle (controller().params().getOptions().c_str());
-	if (prefixIs(bibstyle,bibtotoc)) { // bibtotoc exists?
+	if (prefixIs(bibstyle, bibtotoc)) { // bibtotoc exists?
 		fl_set_button(dialog_->check_bibtotoc,1);
-		if (contains(bibstyle,',')) { // bibstyle exists?
-			bibstyle = split(bibstyle,bibtotoc,',');
+		if (contains(bibstyle, ',')) { // bibstyle exists?
+			bibstyle = split(bibstyle, bibtotoc, ',');
 		} else {
-			bibstyle = "";
+			bibstyle = string();
 		}
 
-		fl_set_input(dialog_->input_style,bibstyle.c_str());
+		fl_set_input(dialog_->input_style, bibstyle.c_str());
 
 	} else {
 		fl_set_button(dialog_->check_bibtotoc,0);
-		fl_set_input(dialog_->input_style,bibstyle.c_str());
+		fl_set_input(dialog_->input_style, bibstyle.c_str());
 	}
+	string const str =
+		controller().getBibStyles();
+	fl_add_browser_line(dialog_->browser_styles, str.c_str());
 }
 
 namespace {
-
-// Remove all duplicate entries in c.
-// Taken stright out of Stroustrup
-template<class C>
-void eliminate_duplicates(C & c)
-{
-	sort(c.begin(), c.end());
-	typename C::iterator p = std::unique(c.begin(), c.end());
-	c.erase(p, c.end());
-}
-
 
 string const unique_and_no_extensions(string const & str_in)
 {
 	vector<string> dbase = getVectorFromString(str_in);
 	for (vector<string>::iterator it = dbase.begin();
 	     it != dbase.end(); ++it) {
-		*it = ChangeExtension(*it, "");
+		*it = ChangeExtension(*it, string());
 	}
-	eliminate_duplicates(dbase);
+	lyx::eliminate_duplicates(dbase);
 	return getStringFromVector(dbase);
 }
 
@@ -188,7 +196,7 @@ void FormBibtex::apply()
 
 	if (bibtotoc && (!bibstyle.empty())) {
 		// both bibtotoc and style
-		controller().params().setOptions("bibtotoc,"+bibstyle);
+		controller().params().setOptions("bibtotoc," + bibstyle);
 
 	} else if (bibtotoc) {
 		// bibtotoc and no style

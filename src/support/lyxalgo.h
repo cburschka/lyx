@@ -9,8 +9,6 @@
  * \author unknown
  */
 
- 
-
 #ifndef LYX_ALGO_H
 #define LYX_ALGO_H
 
@@ -85,6 +83,15 @@ count (Iterator first, Iterator last, T const & value)
 		if (*first++ == value) ++n;
 	return n;
 #endif
+}
+
+/// Remove all duplicate entries in c.
+template<class C>
+void eliminate_duplicates(C & c)
+{
+	std::sort(c.begin(), c.end());
+	typename C::iterator p = std::unique(c.begin(), c.end());
+	c.erase(p, c.end());
 }
 
 } // namespace lyx

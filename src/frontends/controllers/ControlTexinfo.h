@@ -30,13 +30,15 @@ public:
 	enum texFileSuffix {cls, sty, bst};
 	///
 	ControlTexinfo(LyXView &, Dialogs &);
-	///
+	/// show contents af a file
 	void viewFile(string const filename) const;
-	///
+	/// show all classoptions
+	string const getClassOptions(string const & filename) const;
+	/// build new cls bst sty - lists
 	void rescanStyles() const;
-	///
+	/// build new bst sty cls lists
 	void runTexhash() const;
-	///
+	/// read filecontents
 	string const getContents(texFileSuffix type, bool withPath) const;
 
 

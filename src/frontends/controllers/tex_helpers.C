@@ -1,0 +1,125 @@
+/**
+ * \file tex_helpers.C
+ * Copyright 1995-2002 the LyX Team
+ * Read the file COPYING
+ *
+ * \author Herbert Voss <voss@lyx.org>
+ */
+
+#include <config.h>
+#include <vector.h>
+#include <fstream>
+#include <algorithm>
+
+#include "gettext.h"
+
+#include "tex_helpers.h"
+#include "support/filetools.h"
+#include "debug.h"
+#include "support/lstrings.h"
+#include "support/systemcall.h"
+#include "support/path.h"
+#include "support/lyxalgo.h"
+
+using std::vector;
+using std::sort;
+using std::unique;
+
+extern string user_lyxdir; // home of *Files.lst
+
+namespace {
+
+vector<string> listWithoutPath(vector<string> & dbase)
+{
+	vector<string>::iterator it = dbase.begin();
+	vector<string>::iterator end = dbase.end();
+	for (; it != end; ++it) 
+		*it = OnlyFilename(*it);
+	return dbase;
+}
+
+}
+
+// build filelists of all availabe bst/cls/sty-files. done through
+// kpsewhich and an external script, saved in *Files.lst
+void rescanTexStyles()
+{
+	// Run rescan in user lyx directory
+	Path p(user_lyxdir);
+	Systemcall one;
+	one.startscript(Systemcall::Wait,
+			LibFileSearch("scripts", "TeXFiles.sh"));
+	p.pop();
+}
+
+
+void texhash()
+{
+	// Run texhash in user lyx directory
+	Path p(user_lyxdir);
+
+	//path to texhash through system
+	Systemcall one;
+	one.startscript(Systemcall::Wait,"texhash"); 
+	p.pop();
+}
+
+string const getTexFileList(string const & filename, bool withFullPath)
+{
+	vector<string> dbase = getVectorFromString(
+		GetFileContents(LibFileSearch(string(),filename)), "\n");
+	lyx::eliminate_duplicates(dbase); 
+	string const str_out = withFullPath ?
+		getStringFromVector(dbase, "\n") :
+		getStringFromVector(listWithoutPath(dbase), "\n");
+	// everything ok?
+	if (str_out.empty())
+		return _("Missing filelist. try Rescan");
+	return str_out;
+}
+
+
+string const getListOfOptions(string const & classname,
+			    string const & type)
+{
+	string const filename = getTexFileFromList(classname,type);
+	string optionList = string();
+	std::ifstream is(filename.c_str());
+	while (is) {
+	    string s;
+	    is >> s;
+	    if (contains(s,"DeclareOption")) {
+		s = s.substr(s.find("DeclareOption"));
+		s = split(s,'{');		// cut front
+		s = token(s,'}',0);		// cut end
+// FIXME: why is this commented out ?
+//		s = s.substr(0, s.find('}')+1); // format entry
+		optionList += (s + '\n');
+	    }
+	}
+	return optionList;
+}
+
+
+string const getTexFileFromList(string const & file, 
+			    string const & type)
+{
+	string const file_ = (type == "cls") ? file + ".cls" : file + ".sty";
+ 
+	lyxerr << "Search for classfile " << file_ << endl;
+ 
+	string const lstfile = (type == "cls") ? "clsFiles.lst" : "styFiles.lst";
+	string const allClasses = GetFileContents(LibFileSearch(string(), lstfile));
+	int entries = 0;
+	string classfile = token(allClasses, '\n', entries);
+	int count = 0;
+	while ((!contains(classfile, file) || 
+		(OnlyFilename(classfile) != file)) &&
+		(++count < 1000)) {
+		classfile = token(allClasses, '\n', ++entries);
+	}
+ 
+	// now we have filename with full path
+	lyxerr << "with full path: " << classfile << endl;
+	return classfile;
+}

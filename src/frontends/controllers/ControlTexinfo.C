@@ -22,11 +22,11 @@
 #include "BufferView.h"
 #include "gettext.h"
 #include "helper_funcs.h"
+#include "tex_helpers.h"
 
 #include "frontends/LyXView.h"
 
 #include "support/filetools.h" // FileSearch
-#include "support/systemcall.h"
 #include "support/path.h"
 #include "support/lstrings.h"
 
@@ -42,86 +42,41 @@ ControlTexinfo::ControlTexinfo(LyXView & lv, Dialogs & d)
 // kpsewhich and an external script, saved in *Files.lst
 void ControlTexinfo::rescanStyles() const
 {
-	// Run rescan in user lyx directory
-	Path p(user_lyxdir);
-	Systemcall one;
-	one.startscript(Systemcall::Wait,
-			LibFileSearch("scripts", "TeXFiles.sh"));
-	p.pop();
+    rescanTexStyles();
 }
 
 
 void ControlTexinfo::runTexhash() const
 {
-	// Run texhash in user lyx directory
-	Path p(user_lyxdir);
-
-	//path to texhash through system
-	Systemcall one;
-	one.startscript(Systemcall::Wait, "texhash");
-
-	p.pop();
-//	Alert::alert(_("texhash run!"),
-//		   _("rebuilding of the TeX-tree could only be successfull"),
-//		   _("if you have had user-write-permissions to the tex-dir."));
+    texhash();
 }
-
-
-namespace {
-
-string const sortEntries(string & str_in)
-{
-	std::vector<string> dbase = getVectorFromString(str_in,"\n");
-	std::sort(dbase.begin(), dbase.end());		// sort entries
-	std::vector<string>::iterator p =
-	    std::unique(dbase.begin(), dbase.end());	// compact
-	dbase.erase(p, dbase.end());			// shrink
-	return getStringFromVector(dbase,"\n");
-}
-
-} //namespace anon
 
 
 string const
 ControlTexinfo::getContents(texFileSuffix type, bool withFullPath) const
 {
-	static string const bstFilename("bstFiles.lst");
-	static string const clsFilename("clsFiles.lst");
-	static string const styFilename("styFiles.lst");
-
-	string filename;
 	switch (type) {
-	case bst:
-		filename = bstFilename;
+	    case bst: 
+		return getTexFileList("bstFiles.lst", withFullPath);
 		break;
-	case cls:
-		filename = clsFilename;
+	    case cls:
+		return getTexFileList("clsFiles.lst", withFullPath);
 		break;
-	case sty:
-		filename = styFilename;
+	    case sty:
+		return getTexFileList("styFiles.lst", withFullPath);
 		break;
 	}
-
-	string fileContents = GetFileContents(LibFileSearch(string(),filename));
-	// everything ok?
-	if (!fileContents.empty()) {
-		if (withFullPath)
-			return(sortEntries(fileContents));
-		else {
-			int Entries = 1;
-			string dummy = OnlyFilename(token(fileContents,'\n',1));
-			string contents = dummy;
-			do {
-				dummy = OnlyFilename(token(fileContents,'\n',++Entries));
-				contents += ("\n"+dummy);
-			} while (!dummy.empty());
-			return(sortEntries(contents));
-		}
-	} else
-		return _("Missing filelist. try Rescan");
+	return string();
 }
+
 
 void ControlTexinfo::viewFile(string const filename) const
 {
 	lv_.getDialogs()->showFile(filename);
+}
+
+
+string const ControlTexinfo::getClassOptions(string const & filename) const
+{
+	return getListOfOptions(filename, "cls");
 }

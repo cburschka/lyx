@@ -1,5 +1,17 @@
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
+	* FormBibtex.C: use new lyx::eliminate_duplicates
+
+2002-06-20 Herbert Voss  <voss@perce.de>
+ 
+  	* FormBibtex.C:
+  	* forms/form_bibtex.fd: give better support for choosing the
+  	bibstyle (new browserfield with the available bibstyles). 
+  	move some code of ControlTexinfo into a helper
+  	file support/tex-helpers to use some of the functions
+ 
+2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
+
 	* XWorkArea.h:
 	* XWorkArea.C: remove unused code, name change
  

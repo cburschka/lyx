@@ -23,6 +23,7 @@
 #include "BufferView.h"
 #include "lyxrc.h"
 #include "helper_funcs.h"
+#include "tex_helpers.h"
 #include "gettext.h"
 
 #include "frontends/LyXView.h"
@@ -33,6 +34,7 @@ using std::pair;
 ControlBibtex::ControlBibtex(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d)
 {}
+
 
 
 void ControlBibtex::applyParamsToInset()
@@ -62,4 +64,16 @@ string const ControlBibtex::Browse(string const & in_name,
 	pair<string, string> dir1(_("Documents|#o#O"), string(lyxrc.document_path));
 	return browseRelFile(&lv_, in_name, lv_.buffer()->filePath(),
 			     title, pattern, dir1);
+}
+
+
+string const ControlBibtex::getBibStyles() const
+{
+	return getTexFileList("bstFiles.lst", false);
+}
+
+
+void ControlBibtex::rescanBibStyles() const
+{
+	rescanTexStyles();
 }
