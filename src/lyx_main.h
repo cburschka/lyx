@@ -53,10 +53,10 @@ public:
 
 	/// in the case of failure
 	static void emergencyCleanup();
- 
-	///
-	LyXGUI * lyxGUI;  // should be only one of this
+
 private:
+	/// Should be a maximum of 1 LyXGUI.
+	LyXGUI * lyxGUI;
 	/// does this user start lyx for the first time?
 	bool first_start;
 	///

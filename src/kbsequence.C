@@ -29,7 +29,7 @@ using std::endl;
 enum { ModsMask = ShiftMask | ControlMask | Mod1Mask };
 
 
-kb_action kb_sequence::addkey(unsigned int key, unsigned int mod)
+kb_action kb_sequence::addkey(unsigned int key, unsigned int mod, unsigned int nmod)
 {
 	// adding a key to a deleted sequence
 	// starts a new sequence
@@ -40,7 +40,7 @@ kb_action kb_sequence::addkey(unsigned int key, unsigned int mod)
 		modifiers.clear();
 	}
 
-	modifiers.push_back(mod);
+	modifiers.push_back(mod + (nmod << 16));
 	sequence.push_back(key);
 	++length_;
 
@@ -58,6 +58,7 @@ string::size_type kb_sequence::parse(string const & s)
 
 	string::size_type i = 0;
 	unsigned int mod = 0;
+	unsigned int nmod = 0;
 	while (i < s.length()) {
 		if (s[i] == ' ')
 			++i;
@@ -85,12 +86,15 @@ string::size_type kb_sequence::parse(string const & s)
 			   && s[i + 2] == '-') {
 			switch (s[i + 1]) {
 			case 's': case 'S':
+				nmod |= ShiftMask;
 				i += 3;
 				continue;
 			case 'c': case 'C':
+				nmod |= ControlMask;
 				i += 3;
 				continue;
 			case 'm': case 'M':
+				nmod |= Mod1Mask;
 				i += 3;
 				continue;
 			default:
@@ -111,7 +115,7 @@ string::size_type kb_sequence::parse(string const & s)
 			}
 			i = j;
 			
-			addkey(key, mod);
+			addkey(key, mod, nmod);
 			mod = 0;
 		}
 	}
@@ -149,7 +153,7 @@ string const kb_sequence::printOptions() const
 	string buf;
 
 	buf += print();
-	
+
 	if (!curmap)
 		return buf;
 

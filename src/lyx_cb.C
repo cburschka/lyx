@@ -476,7 +476,7 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 	string label(arg);
 	bv->owner()->prohibitInput();
 	if (label.empty()) {
-		Paragraph * par = bv->text->cursor.par();
+		Paragraph * par = bv->getLyXText()->cursor.par();
 		LyXLayout const * layout =
 			&textclasslist.Style(bv->buffer()->params.textclass,
 					     par->getLayout());

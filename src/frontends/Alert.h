@@ -28,4 +28,4 @@ namespace Alert {
 	/// Asks for a text
 	std::pair<bool, string> const askForText(string const & msg, 
 		string const & dflt = string());
-};
+}

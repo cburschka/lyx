@@ -34,9 +34,10 @@ public:
 	 * Add a key to the key sequence and look it up in the curmap
 	 * if the latter is defined.
 	 * @param mod modifier mask
+	 * @param nmod which modifiers to mask out for equality test
 	 * @return the action matching this key sequence or LFUN_UNKNOWN_ACTION
 	 */
-	kb_action addkey(unsigned int key, unsigned int mod);
+	kb_action addkey(unsigned int key, unsigned int mod, unsigned int nmod = 0);
 
 	/**
 	 * Add a sequence of keys from a string to the sequence
