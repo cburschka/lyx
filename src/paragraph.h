@@ -64,7 +64,9 @@ public:
 	Paragraph();
 
 	///
-	Paragraph(Paragraph const &, bool same_ids);
+	Paragraph(Paragraph const &);
+	///
+	//void operator=(Paragraph const &);
 	/// the destructor removes the new paragraph from the list
 	~Paragraph();
 
@@ -308,8 +310,6 @@ public:
 private:
 	///
 	LyXLayout_ptr layout_;
-	/// if anything uses this we don't want it to.
-	Paragraph(Paragraph const &);
 #ifdef NO_STD_LIST
 	Paragraph * next_par_;
 	Paragraph * prev_par_;
@@ -323,8 +323,6 @@ private:
 	///
 	Pimpl * pimpl_;
 
-	/// unimplemented
-	void operator=(Paragraph const &);
 };
 
 

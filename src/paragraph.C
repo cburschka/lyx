@@ -80,8 +80,8 @@ Paragraph::Paragraph()
 }
 
 
-Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
-	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this, same_ids))
+Paragraph::Paragraph(Paragraph const & lp)
+	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this))
 {
 	enumdepth = 0;
 	itemdepth = 0;
@@ -93,13 +93,13 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 	// follow footnotes
 	layout_ = lp.layout();
 	buffer_ = lp.buffer_;
-	
+
 	// copy everything behind the break-position to the new paragraph
 	insetlist = lp.insetlist;
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
-		it.setInset(it.getInset()->clone(**buffer_, same_ids));
+		it.setInset(it.getInset()->clone(**buffer_, false));
 		// tell the new inset who is the boss now
 		it.getInset()->parOwner(this);
 	}

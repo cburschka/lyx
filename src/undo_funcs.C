@@ -293,11 +293,20 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	}
 
 	// Create a new Undo.
+#warning FIXME Why is this a vector and not a ParagraphList?
 	std::vector<Paragraph *> undo_pars;
 
-	for (ParagraphList::iterator it = *first; it != *last; ++it)
-		undo_pars.push_back(new Paragraph(*it, true));
-	undo_pars.push_back(new Paragraph(**last, true));
+	for (ParagraphList::iterator it = *first; it != *last; ++it) {
+		int id = it->id();
+		Paragraph * tmp = new Paragraph(*it);
+		tmp->id(id);
+		undo_pars.push_back(tmp);
+	}
+
+	int const id = last->id();
+	Paragraph * tmp = new Paragraph(**last);
+	tmp->id(id);
+	undo_pars.push_back(tmp);
 
 	// A memory optimization: Just store the layout
 	// information when only edit.

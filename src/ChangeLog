@@ -1,3 +1,14 @@
+2003-05-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* undo_funcs.C (createUndo): use the id functions directly, adjust.
+
+	* paragraph_pimpl.C (Pimpl): get rid of same_ids parameter
+
+	* paragraph.C (Paragraph): get rid of same_ids parameter
+
+	* ParagraphList.C (insert): adjust
+	(push_back): adjust
+
 2003-05-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* paragraph_funcs.C (breakParagraph): adjust

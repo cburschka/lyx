@@ -24,7 +24,7 @@ struct Paragraph::Pimpl {
 	///
 	Pimpl(Paragraph * owner);
 	/// Copy constructor
-	Pimpl(Pimpl const &, Paragraph * owner, bool same_ids = false);
+	Pimpl(Pimpl const &, Paragraph * owner);
 	///
 	lyx::pos_type size() const {
 		return text.size();

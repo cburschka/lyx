@@ -63,16 +63,13 @@ Paragraph::Pimpl::Pimpl(Paragraph * owner)
 }
 
 
-Paragraph::Pimpl::Pimpl(Pimpl const & p, Paragraph * owner, bool same_ids)
+Paragraph::Pimpl::Pimpl(Pimpl const & p, Paragraph * owner)
 	: params(p.params), owner_(owner)
 {
 	inset_owner = p.inset_owner;
 	text = p.text;
 	fontlist = p.fontlist;
-	if (same_ids)
-		id_ = p.id_;
-	else
-		id_ = paragraph_id++;
+	id_ = paragraph_id++;
 
 	if (p.tracking())
 		changes_.reset(new Changes(*p.changes_.get()));
