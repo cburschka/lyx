@@ -53,7 +53,6 @@ extern FD_form_preamble * fd_form_preamble;
 extern FD_form_table * fd_form_table;
 extern FD_form_sendto * fd_form_sendto;
 extern FD_form_figure * fd_form_figure;
-extern FD_form_ref * fd_form_ref;
 extern FD_form_paragraph_extra * fd_form_paragraph_extra;
 extern FD_LaTeXLog * fd_latex_log;
 extern FD_form_spell_check * fd_form_spell_check;
@@ -115,9 +114,6 @@ void CloseAllBufferRelatedDialogs()
 	}
 	if (fd_form_figure->form_figure->visible) {
 		fl_hide_form(fd_form_figure->form_figure);
-	}
-	if (fd_form_ref->form_ref->visible) {
-		fl_hide_form(fd_form_ref->form_ref);
 	}
 	if (fd_form_paper->form_paper->visible) {
 		fl_hide_form(fd_form_paper->form_paper);
@@ -212,19 +208,6 @@ void updateAllVisibleBufferRelatedDialogs()
 	if (fd_latex_log->LaTeXLog->visible) {
 		LatexLogUpdate(0,0);
 	}
-#ifdef ALWAYS_UPDATE_REF
-	// Ideally, the RefUpdateCB should be modified so that if the
-	// current document is a subdocument the reference list should come
-	// from master document (or even be a merger of references from all
-	// its sibling documents).  For now this has effectively been
-	// commented out to ensure that users of multipart documents can
-	// access the reference list of a different document.  This is
-	// of course a compromise and an annoyance for users switching
-	// between separate documents.  ARRae 241198
-	if (fd_form_ref->form_ref->visible) {
-		RefUpdateCB(0, 0);
-	}
-#endif
 	if (current_view->buffer()->isReadonly()) {
 		// a little crude perhaps but it works. ARRae
 		if (fd_form_character->form_character->visible) {
@@ -233,14 +216,6 @@ void updateAllVisibleBufferRelatedDialogs()
 		if (fd_form_table->form_table->visible) {
 			fl_hide_form(fd_form_table->form_table);
 		}
-
-#ifndef ALWAYS_UPDATE_REF
-		// We must update the popup in order to make the
-		// insert ref buttons insactive
-		if (fd_form_ref->form_ref->visible) {
-			RefUpdateCB(0, 0);
-		}
-#endif
 
 #ifndef ALWAYS_CLOSE_MATH_PANELS
 		// The math popups should be closed only if we switch

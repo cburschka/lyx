@@ -17,35 +17,16 @@
 
 #include "insetcommand.h"
 
-class Buffer;
 struct LaTeXFeatures;
 
 /** The reference inset  
  */
 class InsetRef : public InsetCommand {
 public:
-        ///
-        enum Ref_Flags {
-		///
-		REF = 0,
-		///
-		PAGE_REF,
-		///
-		VREF,
-		///
-		VPAGE_REF,
-		///
-		PRETTY_REF,
-		///
-		REF_LAST = PRETTY_REF,
-		///
-		REF_FIRST = REF
-	};
-	
 	///
-	InsetRef(InsetCommandParams const &, Buffer *);
+	InsetRef(InsetCommandParams const &);
 	///
-	Inset * Clone() const { return new InsetRef(params(), master); }
+	Inset * Clone() const { return new InsetRef(params()); }
 	///
 	string getScreenLabel() const;
 	///
@@ -56,10 +37,6 @@ public:
 	void Edit(BufferView *, int, int, unsigned int);
         ///
 	bool display() const { return false; }
-	///
-	void Toggle();
-        ///
-        void gotoLabel();
 	///
 	int Latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
@@ -72,13 +49,7 @@ public:
 	///
 	void Validate(LaTeXFeatures & features) const;
 private:
-	///
-	void GenerateFlag();
 	/// This function escapes 8-bit characters
 	string escape(string const &) const;
-	///
-        Ref_Flags flag;
-        ///
-	Buffer * master;
 };
 #endif

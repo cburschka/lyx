@@ -38,6 +38,10 @@ libxforms_la_SOURCES = \
 	FormPrint.h \
 	form_print.C \
 	form_print.h \
+	FormRef.C \
+	FormRef.h \
+	form_ref.C \
+	form_ref.h \
 	FormTabular.C \
 	FormTabular.h \
 	form_tabular.C \

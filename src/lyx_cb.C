@@ -71,7 +71,6 @@ extern FD_form_preamble * fd_form_preamble;
 extern FD_form_table * fd_form_table;
 extern FD_form_figure * fd_form_figure;
 extern FD_form_screen * fd_form_screen;
-extern FD_form_ref * fd_form_ref;
 extern FD_form_bullet * fd_form_bullet;
 
 extern BufferView * current_view; // called too many times in this file...
@@ -1150,26 +1149,6 @@ void MenuInsertLabel(char const * arg)
 		current_view->insertInset( inset );
 	}
 	AllowInput(current_view);
-}
-
-
-void MenuInsertRef()
-{
-	static int ow = -1, oh;
-
-	RefUpdateCB(0, 0);
-	if (fd_form_ref->form_ref->visible) {
-		fl_raise_form(fd_form_ref->form_ref);
-	} else {
-		fl_show_form(fd_form_ref->form_ref,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
-			     _("Insert Reference"));
-		if (ow < 0) {
-			ow = fd_form_ref->form_ref->w;
-			oh = fd_form_ref->form_ref->h;
-		}
-		fl_set_form_minsize(fd_form_ref->form_ref, ow, oh);
-	}
 }
 
 
@@ -2895,152 +2874,4 @@ void Reconfigure(BufferView * bv)
 	WriteAlert(_("The system has been reconfigured."), 
 		   _("You need to restart LyX to make use of any"),
 		   _("updated document class specifications."));
-}
-
-
-/* callbacks for form form_ref */
-extern "C" void RefSelectCB(FL_OBJECT *, long data)
-{
-	if (!current_view->available())
-		return;
-
-	string s = 
-		fl_get_browser_line(fd_form_ref->browser_ref,
-				    fl_get_browser(fd_form_ref->browser_ref));
-	string u = frontStrip(strip(fl_get_input(fd_form_ref->ref_name)));
-
-	if (s.empty())
-		return;
-
-        if (data == 5) {
-                current_view->owner()->getLyXFunc()->Dispatch(LFUN_REFGOTO, s.c_str());
-		if (!current_view->NoSavedPositions()) {
-			fl_activate_object(fd_form_ref->back);
-			fl_set_object_lcol(fd_form_ref->back, FL_BLACK);
-		}
-	        return;
-	} else if (data >= 6) {
-		current_view->owner()->getLyXFunc()->Dispatch(LFUN_REFBACK);
-		if (current_view->NoSavedPositions()) {
-			fl_deactivate_object(fd_form_ref->back);
-			fl_set_object_lcol(fd_form_ref->back, FL_INACTIVE);
-		}
-	        return;
-	}	
-
-	static string const cmdname[5]
-		= { "ref", "pageref", "vref", "vpageref", "prettyref"};
-	InsetCommandParams p( cmdname[data] );
-	p.setContents( s );
-	
-	if (current_view->buffer()->isSGML())
-		p.setOptions( u );
-
-	Inset * inset = new InsetRef( p, current_view->buffer() );
-	current_view->insertInset( inset );
-}
-
-
-extern "C" void RefUpdateCB(FL_OBJECT *, long)
-{
-	if (!current_view->available()) {
-		fl_clear_browser(fd_form_ref->browser_ref);
-		return;
-	}
-
-	FL_OBJECT * brow = fd_form_ref->browser_ref;
-
-	// Get the current line, in order to restore it later
-	char const * const btmp = fl_get_browser_line(brow,
-						      fl_get_browser(brow));
-	string currentstr = btmp ? btmp : "";
-
-	fl_clear_browser(brow);
-	fl_hide_object(brow);
-
-	vector<string> refs = current_view->buffer()->getLabelList();
-	if (fl_get_button(fd_form_ref->sort))
-		sort(refs.begin(),refs.end());
-	for (vector<string>::const_iterator it = refs.begin();
-	     it != refs.end(); ++it)
-		fl_add_browser_line(brow, (*it).c_str());
-
-	int topline = 1;
-	int total_lines = fl_get_browser_maxline(brow);
-	for (int i = 1; i <= total_lines ; ++i) {
-		if (fl_get_browser_line(brow, i) == currentstr) {
-			topline = i;
-			break;
-		}
-	}
-	fl_set_browser_topline(brow, topline);
-
-	bool empty = refs.empty();
-	bool sgml = current_view->buffer()->isSGML();
-	bool readonly = current_view->buffer()->isReadonly();
-
-	if (current_view->NoSavedPositions()) {
-		fl_deactivate_object(fd_form_ref->back);
-		fl_set_object_lcol(fd_form_ref->back, FL_INACTIVE);
-	} else {
-		fl_activate_object(fd_form_ref->back);
-		fl_set_object_lcol(fd_form_ref->back, FL_BLACK);
-	}
-
-	if (empty) {
-		fl_add_browser_line(brow, 
-				    _("*** No labels found in document ***"));
-		fl_deactivate_object(brow);
-		fl_deactivate_object(fd_form_ref->gotoref);
-		fl_set_object_lcol(fd_form_ref->gotoref, FL_INACTIVE);
-	} else {
-		fl_select_browser_line(brow, topline);
-		fl_activate_object(brow);
-		fl_activate_object(fd_form_ref->gotoref);
-		fl_set_object_lcol(fd_form_ref->gotoref, FL_BLACK);
-	}
-
-	if (empty || readonly) {
-		fl_deactivate_object(fd_form_ref->ref);
-		fl_set_object_lcol(fd_form_ref->ref, FL_INACTIVE);
-		fl_deactivate_object(fd_form_ref->pageref);
-		fl_set_object_lcol(fd_form_ref->pageref, FL_INACTIVE);
-	} else {
-		fl_activate_object(fd_form_ref->ref);
-		fl_set_object_lcol(fd_form_ref->ref, FL_BLACK);
-		fl_activate_object(fd_form_ref->pageref);
-		fl_set_object_lcol(fd_form_ref->pageref, FL_BLACK);
-	}
-	
-	if (empty || readonly || sgml) {
-		fl_deactivate_object(fd_form_ref->vref);
-		fl_set_object_lcol(fd_form_ref->vref, FL_INACTIVE);
-		fl_deactivate_object(fd_form_ref->vpageref);
-		fl_set_object_lcol(fd_form_ref->vpageref, FL_INACTIVE);
-		fl_deactivate_object(fd_form_ref->prettyref);
-		fl_set_object_lcol(fd_form_ref->prettyref, FL_INACTIVE);
-	} else {
-		fl_activate_object(fd_form_ref->vref);
-		fl_set_object_lcol(fd_form_ref->vref, FL_BLACK);
-		fl_activate_object(fd_form_ref->vpageref);
-		fl_set_object_lcol(fd_form_ref->vpageref, FL_BLACK);
-		fl_activate_object(fd_form_ref->prettyref);
-		fl_set_object_lcol(fd_form_ref->prettyref, FL_BLACK);
-	}
-
-	if (sgml) {
-		fl_activate_object(fd_form_ref->ref_name);
-		fl_set_object_lcol(fd_form_ref->ref_name, FL_BLACK);
-	} else {
-		fl_deactivate_object(fd_form_ref->ref_name);
-		fl_set_object_lcol(fd_form_ref->ref_name, FL_INACTIVE);
-	}
-
-	fl_show_object(brow);
-}
-
-
-extern "C" void RefHideCB(FL_OBJECT *, long)
-{
-	fl_hide_form(fd_form_ref->form_ref);
 }

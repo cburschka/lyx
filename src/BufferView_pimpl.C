@@ -1241,15 +1241,19 @@ void BufferView::Pimpl::restorePosition()
 	
 	int  x, y;
 	string fname = backstack.pop(&x, &y);
-	
+
 	beforeChange();
-	Buffer * b = bufferlist.exists(fname) ?
-		bufferlist.getBuffer(fname) :
-		bufferlist.loadLyXFile(fname); // don't ask, just load it
-	buffer(b);
+
+	if( fname != buffer_->fileName() ) {
+		Buffer * b = bufferlist.exists(fname) ?
+	 		bufferlist.getBuffer(fname) :
+			bufferlist.loadLyXFile(fname); // don't ask, just load it
+		if( b != 0 ) buffer(b);
+	}
+
 	bv_->text->SetCursorFromCoordinates(bv_, x, y);
 	update(BufferView::SELECT|BufferView::FITCUR);
-} 
+}
 
 
 bool BufferView::Pimpl::NoSavedPositions()

@@ -1535,6 +1535,8 @@ void LyXRC::output(ostream & os) const
 		os << "\\auto_number " << tostr(auto_number) << "\n";
 	case RC_USE_GUI:
 		os << "\\use_gui " << tostr(use_gui) << "\n";
+	case RC_NEW_ASK_FILENAME:
+		os << "\\new_ask_filename " << tostr(new_ask_filename) << "\n";
 	}
 	os.flush();
 }

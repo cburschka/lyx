@@ -1,79 +1,55 @@
 #include <config.h>
 
-#include <cstdlib>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include FORMS_H_LOCATION 
 #include "insetref.h"
 #include "buffer.h"
-#include "debug.h"
-#include "lyx_gui_misc.h" // CancelCloseBoxCB
-#include "LyXView.h"
-#include "lyxfunc.h"
 #include "commandtags.h"
+#include "debug.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "lyxfunc.h"
+#include "LyXView.h"
+#include "frontends/Dialogs.h"
 
 using std::ostream;
-using std::endl;
 
 extern BufferView * current_view;
 
 
-InsetRef::InsetRef(InsetCommandParams const & p, Buffer * bf)
-	: InsetCommand(p), master(bf)
+InsetRef::InsetRef(InsetCommandParams const & p)
+	: InsetCommand(p)
+{}
+
+void InsetRef::Edit(BufferView * bv, int, int, unsigned int button)
 {
-	GenerateFlag();
-}
-
-void InsetRef::GenerateFlag()
-{
-	if (getCmdName() == "ref")
-		flag = REF;
-	else if (getCmdName() == "pageref")
-		flag = PAGE_REF;
-	else if (getCmdName() == "vref")
-		flag = VREF;
-	else if (getCmdName() == "vpageref")
-		flag = VPAGE_REF;
-	else if (getCmdName() == "prettyref")
-		flag = PRETTY_REF;
-	else {
-		lyxerr << "ERROR (InsetRef::GenerateFlag): Unknown command name "
-		       << getCmdName() << endl;
-		flag = REF;
-	}
-}
-
-
-void InsetRef::Toggle() {
-	static string const cmd_names[REF_LAST+1] 
-		= {"ref", "pageref", "vref", "vpageref", "prettyref"};
-	
-	if (flag == REF_LAST)
-		flag = REF_FIRST;
-	else
-		flag = static_cast<Ref_Flags>(flag + 1);
-	setCmdName(cmd_names[flag]);
-}
-
-
-void InsetRef::Edit(BufferView * bv, int, int, unsigned int)
-{
-        bv->owner()->getLyXFunc()->
-		Dispatch(LFUN_REFGOTO, getContents().c_str());
+	// Eventually trigger dialog with button 3 not 1
+	if( button == 3 )
+	  	bv->owner()->getLyXFunc()->
+			Dispatch(LFUN_REF_GOTO, getContents().c_str());
+	else if( button == 1 )
+		bv->owner()->getDialogs()->showRef( this );
 }
 
 
 string InsetRef::getScreenLabel() const
 {
-	static char const * labels[REF_LAST+1]
-		= { N_("Ref: "), N_("Page: "), N_("TextRef: "), N_("TextPage: "),
-		    N_("PrettyRef: ")};
-	string temp = _(labels[flag]) + getContents();
+	string temp;
+	if (getCmdName() == "ref")
+		temp = _( "Ref: " );
+	else if (getCmdName() == "pageref")
+		temp = _( "Page: " );
+	else if (getCmdName() == "vref")
+		temp = _( "TextRef: " );
+	else if (getCmdName() == "vpageref")
+		temp = _( "TextPage: " );
+	else
+		temp = _( "PrettyRef: " );
+
+	temp += getContents();
+
 	if(!current_view->buffer()->isLatex()
 	   && !getOptions().empty()) {
 		temp += "||";
@@ -141,24 +117,8 @@ string InsetRef::escape(string const & lab) const
 
 void InsetRef::Validate(LaTeXFeatures & features) const
 {
-	switch (flag) {
-	case VREF:
-	case VPAGE_REF:	
+	if (getCmdName() == "vref" || getCmdName() == "vpageref")
 		features.varioref = true;
-		break;
-	case PRETTY_REF:
+	else if(getCmdName() == "prettyref")
 		features.prettyref = true;
-		break;
-	case REF:
-	case PAGE_REF:
-		break;
-	}
-}
-
-
-void InsetRef::gotoLabel()
-{
-    if (master) {
-	master->getUser()->gotoLabel(getContents());
-    }
 }

@@ -112,67 +112,6 @@ FD_form_screen *create_form_form_screen(void)
 }
 /*---------------------------------------*/
 
-FD_form_ref *create_form_form_ref(void)
-{
-  FL_OBJECT *obj;
-  FD_form_ref *fdui = (FD_form_ref *) fl_calloc(1, sizeof(FD_form_ref));
-
-  fdui->form_ref = fl_bgn_form(FL_NO_BOX, 590, 400);
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 590, 400, "");
-  fdui->browser_ref = obj = fl_add_browser(FL_HOLD_BROWSER, 10, 10, 280, 380, "");
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 480, 60, 100, 30, idex(_("Update|#U")));fl_set_button_shortcut(obj, scex(_("Update|#U")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, RefUpdateCB, 0);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 480, 100, 100, 30, idex(_("Close|#C^[")));fl_set_button_shortcut(obj, scex(_("Close|#C^[")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, RefHideCB, 0);
-  fdui->ref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 60, 160, 30, idex(_("Insert reference|#I^M")));fl_set_button_shortcut(obj, scex(_("Insert reference|#I^M")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, RefSelectCB, 0);
-  fdui->pageref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 100, 160, 30, idex(_("Insert page number|#P")));fl_set_button_shortcut(obj, scex(_("Insert page number|#P")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, RefSelectCB, 1);
-  fdui->gotoref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 280, 160, 30, idex(_("Go to reference|#G")));fl_set_button_shortcut(obj, scex(_("Go to reference|#G")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, RefSelectCB, 5);
-  fdui->ref_name = obj = fl_add_input(FL_NORMAL_INPUT, 380, 20, 200, 30, idex(_("Name|#N")));fl_set_button_shortcut(obj, scex(_("Name|#N")), 1);
-    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-  fdui->sort = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 310, 360, 110, 30, idex(_("Sort keys|#S")));fl_set_button_shortcut(obj, scex(_("Sort keys|#S")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, RefUpdateCB, 0);
-    fl_set_button(obj, 1);
-  fdui->vref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 140, 160, 30, idex(_("Insert text reference|#V")));fl_set_button_shortcut(obj, scex(_("Insert text reference|#V")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, RefSelectCB, 2);
-  fdui->vpageref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 180, 160, 30, idex(_("Insert text page number|#N")));fl_set_button_shortcut(obj, scex(_("Insert text page number|#N")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, RefSelectCB, 3);
-  fdui->prettyref = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 220, 160, 30, idex(_("Insert pretty reference|#T")));fl_set_button_shortcut(obj, scex(_("Insert pretty reference|#T")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, RefSelectCB, 4);
-  fdui->back = obj = fl_add_button(FL_NORMAL_BUTTON, 310, 320, 160, 30, idex(_("Go back|#B")));fl_set_button_shortcut(obj, scex(_("Go back|#B")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, RefSelectCB, 6);
-  fl_end_form();
-
-  //fdui->form_ref->fdui = fdui;
-
-  return fdui;
-}
-/*---------------------------------------*/
-
 FD_form_external *create_form_form_external(void)
 {
   FL_OBJECT *obj;

@@ -44,7 +44,12 @@ string InsetCommandParams::getAsString() const
 void InsetCommandParams::setFromString( string const & b )
 {
 	string::size_type idx = b.find("|++|");
-	if( idx == string::npos ) return;
+	if( idx == string::npos ) {
+		cmdname = "";
+		options  = "";
+		contents = "";
+		return;
+	}
 
 	cmdname = b.substr(0, idx);
 	string tmp = b.substr(idx+4);

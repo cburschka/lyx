@@ -118,6 +118,10 @@ public:
 	///
 	Signal1<void, string const &> createCitation;
 	///
+	Signal1<void, InsetCommand *> showRef;
+	///
+	Signal1<void, string const &> createRef;
+	///
 	Signal1<void, InsetCommand *> showTOC;
 	///
 	Signal1<void, string const &> createTOC;

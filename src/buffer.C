@@ -1068,7 +1068,7 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 			   || inscmd.getCmdName() == "prettyref") {
 			if (!inscmd.getOptions().empty()
 			    || !inscmd.getContents().empty()) {
-				inset = new InsetRef(inscmd, this);
+				inset = new InsetRef(inscmd);
 			}
 		} else if (inscmd.getCmdName() == "tableofcontents"
 			   || inscmd.getCmdName() == "listofalgorithms"

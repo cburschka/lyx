@@ -28,6 +28,7 @@
 #include FORMS_H_LOCATION
 
 using std::endl;
+using std::map;
 
 GraphicsCacheItem::GraphicsCacheItem()
 	: height_(-1), width_(-1), imageStatus_(Loading),

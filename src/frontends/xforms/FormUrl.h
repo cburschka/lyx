@@ -44,8 +44,9 @@ private:
 	virtual FL_FORM * const form() const;
 	///
 	FD_form_url * build_url();
-	//@}
 
+	/// 
+	int minh, minw;
 	/// Real GUI implementation.
 	FD_form_url * dialog_;
 };

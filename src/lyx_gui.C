@@ -64,7 +64,6 @@ FD_form_table * fd_form_table;
 FD_form_sendto * fd_form_sendto;
 FD_form_figure * fd_form_figure;
 FD_form_screen * fd_form_screen;
-FD_form_ref * fd_form_ref;
 FD_LaTeXLog * fd_latex_log; // from log_form.h
 Combox * combo_language;
 Combox * combo_language2;
@@ -530,12 +529,6 @@ void LyXGUI::create_forms()
 	fd_form_screen = create_form_form_screen();
 	fl_set_form_atclose(fd_form_screen->form_screen,
 			    CancelCloseBoxCB, 0);
-
-	// the ref form
-	fd_form_ref = create_form_form_ref();
-	fl_set_form_atclose(fd_form_ref->form_ref, CancelCloseBoxCB, 0);
-	fl_set_form_minsize(fd_form_ref->form_ref, fd_form_ref->form_ref->w,
-			    fd_form_ref->form_ref->h);
 
 	// the latex log form
 	fd_latex_log = create_form_LaTeXLog();

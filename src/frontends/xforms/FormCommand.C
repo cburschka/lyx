@@ -148,5 +148,3 @@ void FormCommand::OKCB(FL_OBJECT * ob, long)
 	pre->apply();
 	pre->hide();
 }
-
-

@@ -35,13 +35,14 @@ public:
 	///
 	static  int WMHideCB(FL_FORM *, void *);
 	///
-	static void OKCB(FL_OBJECT *, long);
-	///
 	static void ApplyCB(FL_OBJECT *, long);
 	///
 	static void CancelCB(FL_OBJECT *, long);
 	///
 	static void InputCB(FL_OBJECT *, long);
+	///
+	static void OKCB(FL_OBJECT *, long);
+
 protected:
 	/// Slot launching dialog to (possibly) create a new inset
 	void createInset( string const & );

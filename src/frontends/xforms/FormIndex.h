@@ -44,8 +44,10 @@ private:
 	virtual FL_FORM * const form() const;
 	///
 	FD_form_index * build_index();
-	//@}
 
+
+	/// 
+	int minh, minw;
 	/// Real GUI implementation.
 	FD_form_index * dialog_;
 };

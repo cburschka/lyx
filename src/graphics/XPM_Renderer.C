@@ -24,6 +24,9 @@
 #include "support/LAssert.h"
 #include "debug.h"
 
+using std::endl;
+using std::ios;
+
 XPM_Renderer::XPM_Renderer()
 	: Renderer()
 {}
@@ -69,7 +72,7 @@ bool XPM_Renderer::renderImage()
 
 bool XPM_Renderer::isImageFormatOK(string const & filename) const
 {
-	std::ifstream is(filename.c_str(), ios::in | ios::nocreate);
+	std::ifstream is(filename.c_str(), ios::in);
 
 	// The signature of the file without the spaces.
 	static const char str[] = "/*XPM*/";

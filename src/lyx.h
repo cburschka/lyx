@@ -14,10 +14,6 @@ extern "C" void ScreenOKCB(FL_OBJECT *, long);
 extern "C" void ScreenApplyCB(FL_OBJECT *, long);
 extern "C" void ScreenCancelCB(FL_OBJECT *, long);
 
-extern "C" void RefUpdateCB(FL_OBJECT *, long);
-extern "C" void RefHideCB(FL_OBJECT *, long);
-extern "C" void RefSelectCB(FL_OBJECT *, long);
-
 extern "C" void ExternalTemplateCB(FL_OBJECT *, long);
 extern "C" void ExternalBrowseCB(FL_OBJECT *, long);
 extern "C" void ExternalEditCB(FL_OBJECT *, long);
@@ -61,24 +57,6 @@ typedef struct {
 } FD_form_screen;
 
 extern FD_form_screen * create_form_form_screen(void);
-typedef struct {
-	FL_FORM *form_ref;
-	void *vdata;
-	char *cdata;
-	long  ldata;
-	FL_OBJECT *browser_ref;
-	FL_OBJECT *ref;
-	FL_OBJECT *pageref;
-	FL_OBJECT *gotoref;
-	FL_OBJECT *ref_name;
-	FL_OBJECT *sort;
-	FL_OBJECT *vref;
-	FL_OBJECT *vpageref;
-	FL_OBJECT *prettyref;
-	FL_OBJECT *back;
-} FD_form_ref;
-
-extern FD_form_ref * create_form_form_ref(void);
 typedef struct {
 	FL_FORM *form_external;
 	void *vdata;

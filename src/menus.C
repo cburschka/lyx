@@ -1555,19 +1555,19 @@ void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
 	fl_redraw_object(ob);
 
 	if (choice == 7)
-		men->_view->getLyXFunc()->Dispatch(LFUN_REFBACK);
+		men->_view->getLyXFunc()->Dispatch(LFUN_REF_BACK);
 	else if (choice >= BIG_NUM) {
 		int type = (choice / BIG_NUM) - 1;
 		int num = choice % BIG_NUM;
 		if (type >= 5)
-			men->_view->getLyXFunc()->Dispatch(LFUN_REFGOTO,
+			men->_view->getLyXFunc()->Dispatch(LFUN_REF_GOTO,
 							   label_list[num].c_str());
 		else {
 			static string const cmdname[5]
 				= { "ref", "pageref", "vref", "vpageref", "prettyref"};
 			InsetCommandParams p( cmdname[type] );
 			p.setContents( label_list[num] );
-			men->currentView()->insertInset(new InsetRef(p, buffer));
+			men->currentView()->insertInset(new InsetRef(p));
 		}
 	}
 
@@ -1898,7 +1898,7 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 
 		case 12: tmpfunc->Dispatch(LFUN_INSERT_NOTE); break;
 		case 13: tmpfunc->Dispatch(LFUN_INSERT_LABEL); break;
-		case 14: tmpfunc->Dispatch(LFUN_INSERT_REF); break;
+		case 14: tmpfunc->Dispatch(LFUN_REF_CREATE); break;
 		case 15: tmpfunc->Dispatch(LFUN_CITATION_CREATE); break;
 		case 16: tmpfunc->Dispatch(LFUN_INDEX_CREATE); break;
 		case 17: tmpfunc->Dispatch(LFUN_INDEX_INSERT_LAST); break;

@@ -129,7 +129,6 @@ extern void AutoSave(BufferView *);
 extern bool PreviewDVI(Buffer *);
 extern bool PreviewPostscript(Buffer *);
 extern void MenuInsertLabel(char const *);
-extern void MenuInsertRef();
 extern void MenuLayoutCharacter();
 extern void MenuLayoutParagraph();
 extern void MenuLayoutDocument();
@@ -1421,30 +1420,33 @@ string LyXFunc::Dispatch(int ac,
 		MenuInsertLabel(argument.c_str());
 		break;
 		
-	case LFUN_INSERT_REF:
-		MenuInsertRef();
-		break;
-		
-	case LFUN_REFTOGGLE:
+	case LFUN_REF_CREATE:
 	{
-		InsetRef * inset = 
-			static_cast<InsetRef*>(getInsetByCode(Inset::REF_CODE));
-		if (inset) {
-			inset->Toggle();
-			owner->view()->updateInset(inset, true);
-		} else {
-			setErrorMessage(N_("No cross-reference to toggle"));
-		}
+		InsetCommandParams p( "ref" );
+		owner->getDialogs()->createRef( p.getAsString() );
 	}
 	break;
-	
-	case LFUN_REFBACK:
+		
+	case LFUN_REF_INSERT:
+	{
+		InsetCommandParams p;
+		p.setFromString( argument );
+
+		InsetRef * inset = new InsetRef( p );
+		if (!owner->view()->insertInset(inset))
+			delete inset;
+		else
+			owner->view()->updateInset( inset, true );
+	}
+	break;
+		    
+	case LFUN_REF_BACK:
 	{
 		owner->view()->restorePosition();
 	}
 	break;
 
-	case LFUN_REFGOTO:
+	case LFUN_REF_GOTO:
 	{
 		string label(argument);
 		if (label.empty()) {
@@ -2963,7 +2965,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	}
 
 	static int newfile_number = 0;
-	string s = "newfile"+tostr(++newfile_number);
+	string s;
 
 	if (lyxrc.new_ask_filename) {
 		ProhibitInput(owner->view());
@@ -2981,7 +2983,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	
 		// get absolute path of file and make sure the filename ends
 		// with .lyx
-		string s = MakeAbsPath(fname);
+		s = MakeAbsPath(fname);
 		if (!IsLyXFilename(s))
 			s += ".lyx";
 
@@ -3025,10 +3027,12 @@ void LyXFunc::MenuNew(bool fromTemplate)
 			}
 		}
 	} else {
+		s = lyxrc.document_path + "newfile" + tostr(++newfile_number);
 		FileInfo fi(s);
 		while (bufferlist.exists(s) || fi.readable()) {
 			++newfile_number;
-			s = "newfile"+tostr(newfile_number);
+			s = lyxrc.document_path + "newfile" +
+				tostr(newfile_number);
 			fi.newFile(s);
 		}
 	}

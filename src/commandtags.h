@@ -170,7 +170,7 @@ enum kb_action {
 	LFUN_LOWCASE_WORD,
 	LFUN_CAPITALIZE_WORD,
 	LFUN_INSERT_LABEL,  // 150
-	LFUN_INSERT_REF,
+	LFUN_REF_INSERT,
 	LFUN_PUSH_TOOLBAR,
 	LFUN_ADD_TO_TOOLBAR,
 	LFUN_DEPTH_MIN,                // RVDK_PATCH_5
@@ -223,11 +223,10 @@ enum kb_action {
 	LFUN_VC_REVERT,                 // Lgb 97-07-01
 	LFUN_VC_UNDO,                   // Lgb 97-07-01
 	LFUN_VC_HISTORY,                // Lgb 97-07-01
-	LFUN_REFTOGGLE,                 // Ale 970723
 	LFUN_EXPORT,                    // Lgb 97-07-29
 	LFUN_INSERTFOOTNOTE,            // Bernhard 97-08-07
-	LFUN_REFGOTO,                   // Ale 970806
-	LFUN_REFBACK,                   // Ale 970806
+	LFUN_REF_GOTO,                  // Ale 970806
+	LFUN_REF_BACK,                  // Ale 970806
 	LFUN_PARENTINSERT,		// Ale 970813
 	LFUN_REMOVEERRORS, // 210       // Asger 970906
 	LFUN_LDOTS,                     // Asger 970929
@@ -275,6 +274,7 @@ enum kb_action {
 	LFUN_LAYOUT_TABULAR,            // Jug 20000731
 	LFUN_SCROLL_INSET,              // Jug 20000801
 	LFUN_INDEX_INSERT,              // Angus 20000803
+	LFUN_REF_CREATE,                // Angus 20000807
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

@@ -56,6 +56,6 @@ private:
 	// We need this so that an Item can tell the cache that it should be
 	// deleted. (to call removeFile).
 	// It also helps removing a warning gcc emits.
-	friend GraphicsCacheItem;
+	friend class GraphicsCacheItem;
 };
 #endif
