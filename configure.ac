@@ -371,6 +371,8 @@ int mkstemp(char*);
 #define USE_BOOST_FORMAT 0
 #endif
 
+#define BOOST_USER_CONFIG <config.h>
+
 #if defined(ENABLE_ASSERTIONS)
 #define BOOST_ENABLE_ASSERT_HANDLER 1
 #else
