@@ -1,9 +1,14 @@
+2003-01-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxfunc.C (getStatus): "buffer-export custom" should never be
+	disabled. 
+
 2003-01-20  Michael Schmitt <michael.schmitt@teststep.org>
 
-        * bufferview.C:
-        * lyxcb.C:
-        * lyxfunc.C: Output messages with identical spelling, punctuation,
-        and spaces
+	* bufferview.C:
+	* lyxcb.C:
+	* lyxfunc.C: Output messages with identical spelling, punctuation,
+	and spaces
 
 2003-01-22  Michael Schmitt  <Michael.Schmitt@teststep.org>
 

@@ -327,7 +327,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			|| lyxrc.print_command == "none";
 		break;
 	case LFUN_EXPORT:
-		disable = !Exporter::IsExportable(buf, ev.argument);
+		disable = ev.argument != "custom"
+			&& !Exporter::IsExportable(buf, ev.argument);
 		break;
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
