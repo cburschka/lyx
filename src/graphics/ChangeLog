@@ -1,5 +1,9 @@
 2002-09-03  Angus Leeming  <leeming@lyx.org>
 
+	* PreviewLoader.C: activate #ifdef USING_NEW_PREVIEW_STY code.
+
+2002-09-03  Angus Leeming  <leeming@lyx.org>
+
 	* GraphicsConverter.C (Impl c-tor): remove lyxpreview2xpm cruft.
 
 2002-09-03  Martin Vermeer  <martin.vermeer@hut.fi>

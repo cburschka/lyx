@@ -12,17 +12,10 @@
 #pragma implementation
 #endif
 
-// Set to 1 if using preview.sty >= 0.73 and a version of lyxpreview2ppm.sh
-// that extracts the metrics info from the latex log file.
-#define USING_NEW_PREVIEW_STY 0
-
 #include "PreviewLoader.h"
 #include "PreviewImage.h"
 
 #include "buffer.h"
-#if !USING_NEW_PREVIEW_STY
-#include "bufferparams.h"
-#endif
 #include "converter.h"
 #include "debug.h"
 #include "lyxrc.h"
@@ -74,11 +67,6 @@ typedef list<string> PendingSnippets;
 
 // Each item in the vector is a pair<snippet, image file name>.
 typedef vector<StrPair> BitmapFile;
-
-
-#if !USING_NEW_PREVIEW_STY
-double setFontScalingFactor(Buffer &);
-#endif
 
 string const unique_filename(string const bufferpath);
 
@@ -321,12 +309,8 @@ namespace grfx {
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	: parent_(p), buffer_(b), font_scaling_factor_(0.0)
 {
-#if USING_NEW_PREVIEW_STY
 	font_scaling_factor_ = 0.01 * lyxrc.dpi * lyxrc.zoom *
 		lyxrc.preview_scale_factor;
-#else
-	font_scaling_factor_ = setFontScalingFactor(const_cast<Buffer &>(b));
-#endif
 
 	lyxerr[Debug::GRAPHICS] << "The font scaling factor is "
 				<< font_scaling_factor_ << endl;
@@ -672,68 +656,6 @@ Converter const * setConverter()
 }
 
 
-#if !USING_NEW_PREVIEW_STY
-double setFontScalingFactor(Buffer & buffer)
-{
-	double scale_factor = 0.01 * lyxrc.dpi * lyxrc.zoom *
-		lyxrc.preview_scale_factor;
-
-	// Has the font size been set explicitly?
-	string const & fontsize = buffer.params.fontsize;
-	lyxerr[Debug::GRAPHICS] << "PreviewLoader::scaleToFitLyXView()\n"
-				<< "font size is " << fontsize << endl;
-
-	if (isStrUnsignedInt(fontsize))
-		return 10.0 * scale_factor / strToDbl(fontsize);
-
-	// No. We must extract it from the LaTeX class file.
-	LyXTextClass const & tclass = buffer.params.getLyXTextClass();
-	string const textclass(tclass.latexname() + ".cls");
-	string const classfile(findtexfile(textclass, "cls"));
-
-	lyxerr[Debug::GRAPHICS] << "text class is " << textclass << '\n'
-				<< "class file is " << classfile << endl;
-
-	ifstream ifs(classfile.c_str());
-	if (!ifs.good()) {
-		lyxerr[Debug::GRAPHICS] << "Unable to open class file!" << endl;
-		return scale_factor;
-	}
-
-	string str;
-	double scaling = scale_factor;
-
-	while (ifs.good()) {
-		getline(ifs, str);
-		// To get the default font size, look for a line like
-		// "\ExecuteOptions{letterpaper,10pt,oneside,onecolumn,final}"
-		if (!prefixIs(ltrim(str), "\\ExecuteOptions"))
-			continue;
-
-		// str contains just the options of \ExecuteOptions
-		string const tmp = split(str, '{');
-		split(tmp, str, '}');
-
-		int count = 0;
-		string tok = token(str, ',', count++);
-		while (!isValidLength(tok) && !tok.empty())
-			tok = token(str, ',', count++);
-
-		if (!tok.empty()) {
-			lyxerr[Debug::GRAPHICS]
-				<< "Extracted default font size from "
-				"LaTeX class file successfully!" << endl;
-			LyXLength fsize(tok);
-			scaling *= 10.0 / fsize.value();
-			break;
-		}
-	}
-
-	return scaling;
-}
-#endif
-
-
 void setAscentFractions(vector<double> & ascent_fractions,
 			string const & metrics_file)
 {
@@ -753,7 +675,6 @@ void setAscentFractions(vector<double> & ascent_fractions,
 
 	bool error = false;
 
-#if USING_NEW_PREVIEW_STY
 	// Tightpage dimensions affect all subsequent dimensions
 	int tp_ascent;
 	int tp_descent;
@@ -805,43 +726,6 @@ void setAscentFractions(vector<double> & ascent_fractions,
 				break;
 		}
 	}
-
-#else
-	int snippet_counter = 0;
-	for (; it != end; ++it) {
-		// Extracting lines of the form
-		// %%Page id: tp_bl_x tp_bl_y tp_tr_x tp_tr_y asc desc width
-		string page;
-		string page_id;
-		int dummy;
-		int tp_ascent;
-		int tp_descent;
-		int ascent;
-		int descent;
-		in >> page >> page_id
-		   >> dummy >> tp_descent >> dummy >> tp_ascent
-		   >> ascent >> descent >> dummy;
-
-		page_id = rtrim(page_id, ":");
-
-		error = !in.good()
-			|| !isStrUnsignedInt(page_id);
-		if (error)
-			break;
-
-		int const snippet_id = strToInt(page_id);
-		error = page != "%%Page"
-			|| ++snippet_counter != snippet_id;
-		if (error)
-			break;
-
-		double const a = ascent + tp_ascent;
-		double const d = descent - tp_descent;
-
-		if (!lyx::float_equal(a + d, 0, 0.1))
-			*it = a / (a + d);
-	}
-#endif
 
 	if (error) {
 		lyxerr[Debug::GRAPHICS]
