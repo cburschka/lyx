@@ -10,7 +10,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.0.0pre2\n"
+"Project-Id-Version: LyX 1.1.4pre2\n"
 "POT-Creation-Date: 2000-01-20 02:44+0100\n"
 "PO-Revision-Date: 2000-01-20 02:57+01:00\n"
 "Last-Translator:  Francesc Burrull i Mestres <fburrull@mat.upc.es>\n"
@@ -28,12 +28,12 @@ msgstr "Error!"
 
 #: src/buffer.C:222
 msgid "Specified file is unreadable: "
-msgstr ""
+msgstr "El fitxer especificat és ilegible"
 
 #: src/buffer.C:232
 #, fuzzy
 msgid "Cannot open specified file: "
-msgstr "Impossible obrir el fitxer especificat"
+msgstr "Impossible obrir el fitxer especificat: "
 
 #. if the textclass wasn't loaded properly
 #. we need to either substitute another
@@ -54,7 +54,7 @@ msgstr "-- valor per defecte substituit "
 
 #: src/buffer.C:1040
 msgid "Warning: Ignoring Old Inset"
-msgstr ""
+msgstr "Avís: Ignorant Inset vell"
 
 #: src/buffer.C:1121
 #, c-format
@@ -107,7 +107,7 @@ msgstr "Error! Impossible escriure el fitxer: "
 #: src/buffer.C:1201 src/buffer.C:1204
 #, fuzzy
 msgid "Error! Cannot open file: "
-msgstr "Error! Impossible escriure el fitxer: "
+msgstr "Error! Impossible obrir el fitxer: "
 
 #: src/buffer.C:1250
 msgid "Error: Cannot write file:"
@@ -120,7 +120,7 @@ msgstr "Error! Impossible obrir el fitxer temporal"
 #: src/buffer.C:1576
 #, fuzzy
 msgid "Error: Cannot open file: "
-msgstr "Error! Impossible escriure el fitxer"
+msgstr "Error! Impossible obrir el fitxer: "
 
 #: src/buffer.C:2133 src/buffer.C:2719 src/buffer.C:3480 src/buffer.C:3502
 #: src/paragraph.C:3588
@@ -310,15 +310,15 @@ msgstr "' és de només lectura."
 #: src/bufferlist.C:594
 #, fuzzy
 msgid "Do you want to retrive file under version control?"
-msgstr "Voleu obrir el document?"
+msgstr "Voleu obrir el fitxer amb control de versió?"
 
 #: src/bufferlist.C:602
 msgid "Cannot open specified file:"
-msgstr "Impossible obrir el fitxer especificat"
+msgstr "Impossible obrir el fitxer especificat: "
 
 #: src/bufferlist.C:604
 msgid "Create new document with this name?"
-msgstr "Crear un document nom amb aquest nom?"
+msgstr "Crear un document nou amb aquest nom?"
 
 #: src/BufferView.C:409
 msgid "Formatting document..."
@@ -823,7 +823,7 @@ msgstr "espai, '#', '~', '$' o '%'."
 #: src/insets/figinset.h:51
 #, fuzzy
 msgid "Opened figure"
-msgstr "inset ouvert"
+msgstr "Figura oberta"
 
 #: src/insets/form_url.C:19
 msgid "Url"
@@ -836,7 +836,7 @@ msgstr ""
 #: src/insets/form_url.C:23
 #, fuzzy
 msgid "Name"
-msgstr "Nom Destinatari:|#N"
+msgstr "Nom"
 
 #: src/insets/form_url.C:24 src/lyx.C:171
 msgid "Name|#N"
@@ -981,7 +981,7 @@ msgstr "Índex"
 #: src/insets/insetindex.C:111
 #, fuzzy
 msgid "Idx"
-msgstr "Índex"
+msgstr ""
 
 #: src/insets/insetindex.C:139
 msgid "PrintIndex"
@@ -1000,7 +1000,7 @@ msgstr "Tancar|#C^["
 #: src/insets/insetinfo.h:60
 #, fuzzy
 msgid "Opened note"
-msgstr "inset ouvert"
+msgstr "Nota oberta"
 
 #. /
 #: src/insets/insetloa.h:37
@@ -1050,7 +1050,7 @@ msgstr ""
 #: src/insets/inseturl.h:61
 #, fuzzy
 msgid "Opened Url"
-msgstr "Error obert (no solucionat)"
+msgstr "URL oberta"
 
 #. / what appears in the minibuffer when opening
 #: src/insets/lyxinset.h:95
@@ -1084,7 +1084,7 @@ msgstr "Executant BibTeX."
 #: src/LaTeXLog.C:44
 #, fuzzy
 msgid "Unable to show log file!"
-msgstr "Impossible llegir el fitxer"
+msgstr "Impossible mostrar el fitxer de registre (log)!"
 
 #: src/LaTeXLog.C:47
 msgid "NO LATEX LOG FILE!"
@@ -1584,7 +1584,7 @@ msgstr ""
 
 #: src/layout_forms.C:774
 msgid "Special Multicolumn Alignment"
-msgstr "Aliniació Especial en Multi-Columnes"
+msgstr "Aliniació Especial de Multi-Columnes"
 
 #: src/layout_forms.C:794
 msgid "Special Column Alignment"
@@ -1593,7 +1593,7 @@ msgstr "Aliniació Especial de Columnes"
 #: src/Literate.C:57
 #, fuzzy
 msgid "Weaving document"
-msgstr "Salvant el document"
+msgstr ""
 
 #: src/Literate.C:87
 #, fuzzy
@@ -1603,7 +1603,7 @@ msgstr "Construint programa..."
 #: src/LyXAction.C:91
 #, fuzzy
 msgid "Insert appendix"
-msgstr "Inserir etiqueta"
+msgstr "Inserir apèndix"
 
 #: src/LyXAction.C:92
 msgid "Describe command"
@@ -1648,7 +1648,7 @@ msgstr "Seleccionar fins al final del document"
 #: src/LyXAction.C:120
 #, fuzzy
 msgid "Export to"
-msgstr "|Exportar%m%l"
+msgstr "Exportar a"
 
 #: src/LyXAction.C:121
 msgid "Fax"
@@ -1685,7 +1685,7 @@ msgstr "Revertir a document salvat"
 #: src/LyXAction.C:137
 #, fuzzy
 msgid "Toggle read-only"
-msgstr "Negreta si/no"
+msgstr "Només lectura si/no"
 
 #: src/LyXAction.C:138
 msgid "Update DVI"
@@ -1851,17 +1851,17 @@ msgstr "Inserir punt de separació"
 #: src/LyXAction.C:215
 #, fuzzy
 msgid "Insert index item"
-msgstr "Inserir nota al marge"
+msgstr "Inserir element d'índex"
 
 #: src/LyXAction.C:217
 #, fuzzy
 msgid "Insert last index item"
-msgstr "Inserir nota al marge"
+msgstr "Inserir últim element d'índex"
 
 #: src/LyXAction.C:218
 #, fuzzy
 msgid "Insert index list"
-msgstr "Insertar BibTeX"
+msgstr "Inserir llista d'index"
 
 #: src/LyXAction.C:220
 msgid "Turn off keymap"
@@ -1886,7 +1886,7 @@ msgstr "Inserir etiqueta"
 #: src/LyXAction.C:230
 #, fuzzy
 msgid "View LaTeX log"
-msgstr "Fitxer log de LaTeX"
+msgstr "Visualitzar registre (log) de LaTeX"
 
 #: src/LyXAction.C:235
 msgid "Copy paragraph environment type"
@@ -1915,17 +1915,17 @@ msgstr "Seleccionar fins al final de la línia"
 #: src/LyXAction.C:256
 #, fuzzy
 msgid "Insert list of algorithms"
-msgstr "Llista d'algorismes"
+msgstr "Inserir llista d'algorismes"
 
 #: src/LyXAction.C:258
 #, fuzzy
 msgid "Insert list of figures"
-msgstr "Llista de figures"
+msgstr "Inserir llista de figures"
 
 #: src/LyXAction.C:260
 #, fuzzy
 msgid "Insert list of tables"
-msgstr "Llista de taules"
+msgstr "Inserir llista de taules"
 
 #: src/LyXAction.C:261
 msgid "Exit"
@@ -1942,7 +1942,7 @@ msgstr "Lletres -matemàtiques- Gregues"
 #: src/LyXAction.C:272
 #, fuzzy
 msgid "Insert math symbol"
-msgstr "Inserir etiqueta"
+msgstr "Inserir símbol matemàtic"
 
 #: src/LyXAction.C:277
 msgid "Math mode"
@@ -2003,12 +2003,12 @@ msgstr "Passar a mode TeX"
 #: src/LyXAction.C:335
 #, fuzzy
 msgid "Insert table of contents"
-msgstr "Taula de continguts"
+msgstr "Inserir taula de continguts"
 
 #: src/LyXAction.C:337
 #, fuzzy
 msgid "View table of contents"
-msgstr "Taula de continguts"
+msgstr "Visualitzar taula de continguts"
 
 #: src/LyXAction.C:339
 msgid "Toggle cursor does/doesn't follow the scrollbar"
@@ -2168,7 +2168,7 @@ msgstr "LaTeX ha generat errors"
 #: src/lyx_cb.C:447
 #, fuzzy
 msgid "Chktex does not work with SGML derived documents."
-msgstr "Chktex no funciona amb LinuxDoc"
+msgstr "Chktex no funciona amb documents derivats de SGML"
 
 #: src/lyx_cb.C:456
 msgid "No warnings found."
@@ -2238,17 +2238,17 @@ msgstr "Fitxer LinuxDoc SGML salvat com"
 #: src/lyx_cb.C:846
 #, fuzzy
 msgid "Document class must be docbook."
-msgstr "La classe del document ha de ser linuxdoc"
+msgstr "La classe del document ha de ser docbook."
 
 #: src/lyx_cb.C:863
 #, fuzzy
 msgid "Building DocBook SGML file `"
-msgstr "Creant el fitxer SGML LinuxDoc `"
+msgstr "Construint el fitxer DocBook SGML `"
 
 #: src/lyx_cb.C:868
 #, fuzzy
 msgid "DocBook SGML file save as"
-msgstr "Fitxer LinuxDoc SGML salvat com"
+msgstr "Fitxer DocBook SGML salvat com"
 
 #: src/lyx_cb.C:893
 msgid "Ascii file saved as"
@@ -2261,7 +2261,7 @@ msgstr ""
 #: src/lyx_cb.C:940
 #, fuzzy
 msgid "Unable to convert to HTML the file `"
-msgstr "Impossible llegir el fitxer"
+msgstr "Impossible la conversió a HTML del fitxer `"
 
 #: src/lyx_cb.C:997
 msgid "Unknown export type: "
@@ -2286,7 +2286,7 @@ msgstr ""
 #: src/lyx_cb.C:1155
 #, fuzzy
 msgid "Error! Cannot open specified file: "
-msgstr "Error! Impossible obrir el fitxer especificat:"
+msgstr "Error! Impossible obrir el fitxer especificat: "
 
 #: src/lyx_cb.C:1193
 msgid "Table Of Contents"
@@ -2322,7 +2322,7 @@ msgstr "Convertint el fitxer LinuxDoc SGML a fitxer DVI..."
 #: src/lyx_cb.C:1400
 #, fuzzy
 msgid "Converting DocBook SGML to dvi file..."
-msgstr "Convertint el fitxer LinuxDoc SGML a fitxer DVI..."
+msgstr "Convertint el fitxer DocBook SGML a fitxer DVI..."
 
 #: src/lyx_cb.C:1515
 msgid "Character Style"
@@ -2775,7 +2775,7 @@ msgstr "Per defecte"
 #: src/lyxfr1.C:149 src/lyxfr1.C:186
 #, fuzzy
 msgid "Sorry!"
-msgstr "Ho sento."
+msgstr "Ho sento!"
 
 #: src/lyxfr1.C:149 src/lyxfr1.C:186
 msgid "You cannot replace a single space, nor an empty character."
@@ -2784,12 +2784,12 @@ msgstr ""
 #: src/lyxfr1.C:217 src/lyxfr1.C:265
 #, fuzzy
 msgid "String not found!"
-msgstr "No s'ha trobat el joc de caràcters!"
+msgstr "No s'ha trobat la cadena de caràcters!"
 
 #: src/lyxfr1.C:221
 #, fuzzy
 msgid "1 string has been replaced."
-msgstr "El sistema s'ha reconfigurat"
+msgstr "1 cadena de caràcters ha estat substituida."
 
 #: src/lyxfr1.C:224
 msgid " strings have been replaced."
@@ -2798,7 +2798,7 @@ msgstr ""
 #: src/lyxfr1.C:261
 #, fuzzy
 msgid "Found."
-msgstr "ouvert."
+msgstr "Trobat."
 
 #: src/lyxfunc.C:260
 msgid "Unknown sequence:"
@@ -2898,7 +2898,7 @@ msgstr "Type de note de bas de page desconegut"
 #: src/lyxfunc.C:2360
 #, fuzzy
 msgid "No document open"
-msgstr "* Cap document obert *"
+msgstr "Cap document obert"
 
 #: src/lyxfunc.C:2366
 msgid "Document is read only"
@@ -3128,7 +3128,7 @@ msgstr "En cas de problemes, executeu LyX amb el camí complet."
 #: src/lyx_main.C:275
 #, fuzzy
 msgid "LYX_DIR_11x environment variable no good."
-msgstr "La variable d'entorn LYX_DIR_10x no és vàlida"
+msgstr "La variable d'entorn LYX_DIR_11x no és vàlida"
 
 #: src/lyx_main.C:277
 msgid "System directory set to: "
@@ -3145,7 +3145,7 @@ msgstr "A la línia  de comandes, proveu d'utilitzar el paràmetre '-sysdir' o"
 #: src/lyx_main.C:287
 #, fuzzy
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory"
-msgstr "fixeu la variable d'entorn LYX_DIR_10x al directori"
+msgstr "fixeu la variable d'entorn LYX_DIR_11x al directori del sistema LyX"
 
 #: src/lyx_main.C:289
 msgid "containing the file `chkconfig.ltx'."
@@ -3248,20 +3248,20 @@ msgstr "Falta el paràmetre de la opció -sysdir!"
 #: src/lyx_main.C:537
 #, fuzzy
 msgid "Missing command string after  -x switch!"
-msgstr "Falta el paràmetre de la opció -dbg!"
+msgstr "Falta el paràmetre de la opció -x!"
 
 #: src/lyx_main.C:563
 #, fuzzy
 msgid "Unknown file type '"
-msgstr "No sé exportar a aquest tipus: "
+msgstr "Desconec el tipus de fitxer '""
 
 #: src/lyx_main.C:564
 msgid "' after "
-msgstr ""
+msgstr "' després de la opció "
 
 #: src/lyx_main.C:565 src/lyx_main.C:570
 msgid " switch!"
-msgstr ""
+msgstr " !"
 
 #: src/lyx_main.C:568
 msgid "Missing file type [eg latex, ps...] after "
@@ -3394,12 +3394,12 @@ msgstr "Encara ho vols fer ?"
 #: src/lyxvc.C:275
 #, fuzzy
 msgid "No VC History!"
-msgstr "No hi ha historial RCS"
+msgstr "No hi ha historial VC"
 
 #: src/lyxvc.C:282
 #, fuzzy
 msgid "VC History"
-msgstr "Historial RCS"
+msgstr "Historial VC"
 
 #: src/LyXView.C:410 src/minibuffer.C:218
 msgid " (Changed)"
@@ -3437,7 +3437,7 @@ msgstr ""
 #: src/mathed/formulamacro.h:62
 #, fuzzy
 msgid "Math macro editor mode"
-msgstr "Mode editor matemàtic"
+msgstr "Mode editor matemàtic de macros"
 
 #: src/mathed/math_forms.C:19
 msgid "Close "
@@ -3627,8 +3627,8 @@ msgid ""
 "Export%t|as LaTeX...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
 "Text...%x43|as HTML...%x44|Custom...%x45"
 msgstr ""
-"Exportar%t|en LaTeX...%x40|en DVI...%x41|en PostScript...%x42|en Text Ascii "
-"...%x43|Personalitzada...%x44"
+"Exportar%t|a LaTeX...%x40|a DVI...%x41|a PostScript...%x42|a Text Ascii "
+"...%x43|a HTML...%x44|Personalitzar...%x44"
 
 #: src/menus.C:494
 msgid ""
@@ -3644,7 +3644,7 @@ msgid ""
 "Export%t|as DocBook...%x40|as DVI...%x41|as PostScript...%x42|as Ascii "
 "Text...%x43"
 msgstr ""
-"Exportar%t|en LinuxDoc...%x40|en DVI...%x41|en PostScript...%x42|en Text "
+"Exportar%t|a DocBook...%x40|a DVI...%x41|a PostScript...%x42|a Text "
 "Ascii...%x43"
 
 #: src/menus.C:507
@@ -4533,7 +4533,7 @@ msgstr "Directori d'Usuari :"
 #: src/menus.C:1666
 #, fuzzy
 msgid "Could not find requested Documentation file"
-msgstr "Impossible inserir el document"
+msgstr "No he pogut trobar el fitxer de Documentació sol.licitat"
 
 #: src/menus.C:1670
 msgid "Opening help file"
@@ -4576,7 +4576,7 @@ msgstr "No té sentit amb aquest format !"
 #: src/ParagraphExtra.C:142
 #, fuzzy
 msgid "Document is read-only. No changes to layout permitted."
-msgstr "Document de només lectura. Els canvis de format no són permesos"
+msgstr "Document de només lectura. Els canvis de format no són permesos."
 
 #: src/ParagraphExtra.C:161
 msgid "ParagraphExtra Layout"
@@ -4843,7 +4843,7 @@ msgstr "Error: Impossible canviar de directori"
 #: src/support/path.h:37
 #, fuzzy
 msgid "Error: Dir already popped: "
-msgstr "El document ja és obert :"
+msgstr "Error: Ja s'havia extret Dir: "
 
 #: src/TableLayout.C:233
 msgid "Table Extra Form"
