@@ -106,9 +106,9 @@ public:
 		UNDO_ALL = 8
 	};
 	///
-	static const Button AllButtons =
-	Button(OKAY | APPLY | CANCEL | UNDO_ALL);
-	
+	static const Button ALL_BUTTONS =
+		Button(OKAY | APPLY | CANCEL | UNDO_ALL);
+  
 	/** State machine inputs.
 	    All the policies so far have both CANCEL and HIDE always going to
 	    INITIAL. This won't necessarily be true for all [future] policies

@@ -29,13 +29,12 @@
     Actually supports 4 buttons in all and it's up to the user to decide on
     the activation policy and which buttons correspond to which output of the
     state machine.
+    @author Allan Rae <rae@lyx.org>
 */
 template <class Policy>
 class ButtonController : public noncopyable
 {
 public:
-	/**@name Constructors and Deconstructors */
-	//@{
 	/** Constructor.
 	    The cancel/close label entries are _not_ managed within the class
 	    thereby allowing you to reassign at will and to use static labels.
@@ -49,153 +48,161 @@ public:
 		  read_only_(), cancel_label(cancel), close_label(close) {}
 	/// Somebody else owns the FL_OBJECTs we just manipulate them.
 	~ButtonController() {}
-	//@}
 
-	/**@name Initialise Button Functions */
-	//@{
+	/* Initialise Button Functions */
 	/// Call refresh() when finished setting the buttons.
-	void setOK(FL_OBJECT * obj)
-		{ okay_ = obj; }
+	void setOK(FL_OBJECT * obj) {
+		okay_ = obj;
+	}
 	///
-	void setApply(FL_OBJECT * obj)
-		{ apply_ = obj; }
+	void setApply(FL_OBJECT * obj) {
+		apply_ = obj;
+	}
 	///
-	void setCancel(FL_OBJECT * obj)
-		{ cancel_ = obj; }
+	void setCancel(FL_OBJECT * obj) {
+		cancel_ = obj;
+	}
 	///
-	void setUndoAll(FL_OBJECT * obj)
-		{ undo_all_ = obj; }
+	void setUndoAll(FL_OBJECT * obj) {
+		undo_all_ = obj;
+	}
 	///
-	void setCancelTrueLabel(char const * c)
-		{ cancel_label = c; }
+	void setCancelTrueLabel(char const * c) {
+		cancel_label = c;
+	}
 	///
-	void setCancelFalseLabel(char const * c)
-		{ close_label = c; }
+	void setCancelFalseLabel(char const * c) {
+		close_label = c;
+	}
 	///
-	void addReadOnly(FL_OBJECT * obj)
-		{ read_only_.push_front(obj); }
+	void addReadOnly(FL_OBJECT * obj) {
+		read_only_.push_front(obj);
+	}
 	///
-	void eraseReadOnly()
-		{ read_only_.erase(read_only_.begin(), read_only_.end()); }
-	//@}
+	void eraseReadOnly() {
+		read_only_.erase(read_only_.begin(), read_only_.end());
+	}
 
-	/**@name Action Functions */
-	//@{
+	/* Action Functions */
 	///
-	void input(ButtonPolicy::SMInput in)
-		{
-			bp_.input(in);
-			refresh();
-		}
+	void input(ButtonPolicy::SMInput in) {
+		bp_.input(in);
+		refresh();
+	}
 	///
-	void ok()
-		{ input(ButtonPolicy::SMI_OKAY); }
+	void ok() {
+		input(ButtonPolicy::SMI_OKAY);
+	}
 	///
-	void apply()
-		{ input(ButtonPolicy::SMI_APPLY); }
+	void apply() {
+		input(ButtonPolicy::SMI_APPLY);
+	}
 	///
-	void cancel()
-		{ input(ButtonPolicy::SMI_CANCEL); }
+	void cancel() {
+		input(ButtonPolicy::SMI_CANCEL);
+	}
 	///
-	void undoAll()
-		{ input(ButtonPolicy::SMI_UNDO_ALL); }
+	void undoAll() {
+		input(ButtonPolicy::SMI_UNDO_ALL);
+	}
 	///
-	void hide()
-		{ input(ButtonPolicy::SMI_HIDE); }
+	void hide() {
+		input(ButtonPolicy::SMI_HIDE);
+	}
 	/// Passthrough function -- returns its input value
-	bool readOnly(bool ro = true)
-		{
-			if (ro) {
-				input(ButtonPolicy::SMI_READ_ONLY);
-			} else {
-				input(ButtonPolicy::SMI_READ_WRITE);
-			}
-			return ro;
+	bool readOnly(bool ro = true) {
+		if (ro) {
+			input(ButtonPolicy::SMI_READ_ONLY);
+		} else {
+			input(ButtonPolicy::SMI_READ_WRITE);
 		}
+		return ro;
+	}
 	///
-	void readWrite()
-		{ read_only(false); }
+	void readWrite() {
+		read_only(false);
+	}
 	/// Passthrough function -- returns its input value
-	bool valid(bool v = true)
-		{ 
-			if (v) {
-				input(ButtonPolicy::SMI_VALID);
-			} else {
-				input(ButtonPolicy::SMI_INVALID);
-			}
-			return v;
+	bool valid(bool v = true) { 
+		if (v) {
+			input(ButtonPolicy::SMI_VALID);
+		} else {
+			input(ButtonPolicy::SMI_INVALID);
 		}
+		return v;
+	}
 	///
-	void invalid()
-		{ valid(false); }
+	void invalid() {
+		valid(false);
+	}
 	/// force a refresh of the buttons
-	void refresh()
-		{
-			if (okay_) {
-				if (bp_.buttonStatus(ButtonPolicy::OKAY)) {
-					fl_activate_object(okay_);
-					fl_set_object_lcol(okay_, FL_BLACK);
-				} else {
-					fl_deactivate_object(okay_);
-					fl_set_object_lcol(okay_, FL_INACTIVE);
-				}
+	void refresh() {
+		if (okay_) {
+			if (bp_.buttonStatus(ButtonPolicy::OKAY)) {
+				fl_activate_object(okay_);
+				fl_set_object_lcol(okay_, FL_BLACK);
+			} else {
+				fl_deactivate_object(okay_);
+				fl_set_object_lcol(okay_, FL_INACTIVE);
 			}
-			if (apply_) {
-				if (bp_.buttonStatus(ButtonPolicy::APPLY)) {
-					fl_activate_object(apply_);
-					fl_set_object_lcol(apply_, FL_BLACK);
-				} else {
-					fl_deactivate_object(apply_);
-					fl_set_object_lcol(apply_, FL_INACTIVE);
-				}
+		}
+		if (apply_) {
+			if (bp_.buttonStatus(ButtonPolicy::APPLY)) {
+				fl_activate_object(apply_);
+				fl_set_object_lcol(apply_, FL_BLACK);
+			} else {
+				fl_deactivate_object(apply_);
+				fl_set_object_lcol(apply_, FL_INACTIVE);
 			}
-			if (undo_all_) {
-				if (bp_.buttonStatus(ButtonPolicy::UNDO_ALL)) {
-					fl_activate_object(undo_all_);
-					fl_set_object_lcol(undo_all_, FL_BLACK);
-				} else {
-					fl_deactivate_object(undo_all_);
-					fl_set_object_lcol(undo_all_,
+		}
+		if (undo_all_) {
+			if (bp_.buttonStatus(ButtonPolicy::UNDO_ALL)) {
+				fl_activate_object(undo_all_);
+				fl_set_object_lcol(undo_all_, FL_BLACK);
+			} else {
+				fl_deactivate_object(undo_all_);
+				fl_set_object_lcol(undo_all_,
+						   FL_INACTIVE);
+			}
+		}
+		if (cancel_) {
+			if (bp_.buttonStatus(ButtonPolicy::CANCEL)) {
+				fl_set_object_label(cancel_,
+						    cancel_label);
+			} else {
+				fl_set_object_label(cancel_,
+						    close_label);
+			}
+		}
+		if (!read_only_.empty()) {
+			if (bp_.isReadOnly()) {
+				std::list<FL_OBJECT *>::iterator
+					end = read_only_.end();
+				for (std::list<FL_OBJECT *>::iterator
+				     iter = read_only_.begin();
+				     iter != end;
+				     ++iter) {
+					fl_deactivate_object(*iter);
+					fl_set_object_lcol(*iter,
 							   FL_INACTIVE);
 				}
-			}
-			if (cancel_) {
-				if (bp_.buttonStatus(ButtonPolicy::CANCEL)) {
-					fl_set_object_label(cancel_,
-							    cancel_label);
-				} else {
-					fl_set_object_label(cancel_,
-							    close_label);
-				}
-			}
-			if (!read_only_.empty()) {
-				if (bp_.isReadOnly()) {
-					for (std::list<FL_OBJECT *>::iterator
-						     iter = read_only_.begin();
-					     iter != read_only_.end();
-					     ++iter) {
-						fl_deactivate_object(*iter);
-						fl_set_object_lcol(*iter,
-								   FL_INACTIVE);
-					}
-				} else {
-					for (std::list<FL_OBJECT *>::iterator
-						     iter = read_only_.begin();
-					     iter != read_only_.end();
-					     ++iter) {
-						fl_activate_object(*iter);
-						fl_set_object_lcol(*iter,
-								   FL_BLACK);
-					}
+			} else {
+				std::list<FL_OBJECT *>::iterator
+					end = read_only_.end();
+				for (std::list<FL_OBJECT *>::iterator
+				     iter = read_only_.begin();
+				     iter != end;
+				     ++iter) {
+					fl_activate_object(*iter);
+					fl_set_object_lcol(*iter,
+							   FL_BLACK);
 				}
 			}
 		}
-	//@}
+	}
 private:
 	///
 	Policy bp_;
-	/**@name Button Widgets */
-	//@{
 	///
 	FL_OBJECT * okay_;
 	///
@@ -206,14 +213,10 @@ private:
 	FL_OBJECT * undo_all_;
 	/// List of items to be deactivated when in one of the read-only states
 	std::list<FL_OBJECT *> read_only_;
-	//@}
-	/**@name Cancel/Close Button Labels */
-	//@{
 	///
 	char const * cancel_label;
 	///
 	char const * close_label;	
-	//@}
 };
 
 #endif

@@ -1,3 +1,13 @@
+2000-09-01  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/ButtonPolicies.C: renamed all the references to
+	PreferencesPolicy::{AllButtons,BOGUS} to be ButtonPolicy.
+
+	* src/frontends/ButtonPolicies.h: rename AllButtons to ALL_BUTTONS
+	since it's a const not a type.
+
+	* src/frontends/xforms/ButtonController.h: cleanup before Lars does.
+
 2000-08-31  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/figinset.C: Various changes to look if the filename has
