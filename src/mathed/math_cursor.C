@@ -124,16 +124,22 @@ struct Selection
 	}
 
 	void paste(MathCursor & cursor) const
-	{	
-		idx_type idx;
-		MathGridInset * p = cursor.enclosingGrid(idx);
-		col_type const numcols = min(data_.ncols(), p->ncols() - p->col(idx));
-		row_type const numrows = min(data_.nrows(), p->nrows() - p->row(idx));
-		for (row_type row = 0; row < numrows; ++row) 
-			for (col_type col = 0; col < numcols; ++col) {
-				idx_type i = p->index(row + p->row(idx), col + p->col(idx));
-				p->cell(i).push_back(data_.cell(data_.index(row, col)));
-			}
+	{
+		if (data_.nargs() == 1) {
+			// single cell/part of cell
+			cursor.insert(data_.cell(0));
+		} else {
+			// mulitple cells
+			idx_type idx;
+			MathGridInset * p = cursor.enclosingGrid(idx);
+			col_type const numcols = min(data_.ncols(), p->ncols() - p->col(idx));
+			row_type const numrows = min(data_.nrows(), p->nrows() - p->row(idx));
+			for (row_type row = 0; row < numrows; ++row) 
+				for (col_type col = 0; col < numcols; ++col) {
+					idx_type i = p->index(row + p->row(idx), col + p->col(idx));
+					p->cell(i).push_back(data_.cell(data_.index(row, col)));
+				}
+		}
 	}
 
 	// glues selection to one cell
