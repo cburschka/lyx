@@ -65,7 +65,7 @@ string theCutBuffer;
 
 
 MathCursor::MathCursor(InsetFormulaBase * formula, bool front)
-	:	formula_(formula), autocorrect_(false), selection_(false)
+	:	formula_(formula), autocorrect_(false), selection_(false), targetx_(-1)
 {
 	front ? first() : last();
 	Anchor_ = Cursor_;
@@ -1467,9 +1467,11 @@ void MathCursor::handleFont(string const & font)
 
 void releaseMathCursor(BufferView * bv)
 {
-	if (!mathcursor)
-		return;
-	mathcursor->formula()->hideInsetCursor(bv);
-	delete mathcursor;
-	mathcursor = 0;
+	if (mathcursor) {
+		InsetFormulaBase * f =  mathcursor->formula();
+		f->hideInsetCursor(bv);
+		delete mathcursor;
+		mathcursor = 0;
+		f->insetUnlock(bv);
+	}
 }
