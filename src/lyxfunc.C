@@ -1404,14 +1404,9 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 					    << " found." << endl;
 		}
 
-		if (view()->theLockingInset())
-			view()->unlockInset(view()->theLockingInset());
 
-		LyXText * lt = view()->getLyXText();
-		if (par->inInset()) {
-			par.inset()->edit(view(), true);
-			lt = par->inInset()->getLyXText(view());
-		}
+		par.lockPath(view());
+		LyXText * lt = par.text() ? par.text() : view()->text;
 
 		// Set the cursor
 		lt->setCursor(par.pit(), 0);
