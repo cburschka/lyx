@@ -297,6 +297,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 			//	bv_->text->owner(bv_);
 			if (lyxerr.debugging())
 				textcache.show(lyxerr, "resizeCurrentBuffer");
+ 
+			buffer_->resizeInsets(bv_);
 		} else {
 			bv_->text = new LyXText(bv_);
 			bv_->text->init(bv_);

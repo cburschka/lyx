@@ -1,3 +1,8 @@
+2002-11-07  John Levon  <levon@movementarian.org>
+
+	* BufferView_pimpl.C: fix redrawing of insets
+	  on buffer switch
+ 
 2002-11-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text2.C (updateCounters): fix bug 668
