@@ -1,55 +1,11 @@
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
+	* FORMAT: document format 226.
 
 2003-12-01  André Pönitz  <poenitz@gmx.net>
 
 	* Code_rules/Recommendations:
-	* Code_rules/Rules:
-   + try to implement your class in a way that the automatically generated
-   + copy constructor and copy assignment work out-of-the box.
- 
-Index: Rules
-===================================================================
-RCS file: /usr/local/lyx/cvsroot/lyx-devel/development/Code_rules/Rules,v
-retrieving revision 1.14
-diff -u -p -r1.14 Rules
---- Rules	25 Sep 2002 14:26:09 -0000	1.14
-+++ Rules	1 Dec 2003 13:48:53 -0000
-@@ -247,20 +247,6 @@ Formatting
- 	-NOT-
- 	void mangle ()  // wrong
- 
--* Use of braces
--
--  We use braces a lot, even if this lowers the density of the code in
--  some cases. In particular we use braces for one-liners in relation
--  to if, while, etc.
--
--	if (true) {
--		do_that();
--	}
--	-NOT-
--	if (true)
--		do_that();
--
--
- * Enumerators
- 	enum {
- 		one = 1,
-@@ -293,12 +279,9 @@ Formatting
- 
- * Formatting
- 
--  - Please adapt the formatting of your code to the setting in LyX in that
--    particular file. Lars and Asger are slowly, but surely moving the source 
--    towards Linux kernel style formatting, aka K&R style. We suggest that you 
--    also do this, but this is NOT something that has been decided generally.
--    (a pity - jbl)
--
-+  - Adapt the formatting of your code to the one used in the
-+    other parts of LyX. In case there is different formatting for
-+    the same construct, use the one used more often.
- 
- * Use existing structures
- 
+	* Code_rules/Rules: updated
 
 2003-11-05  João Luis M. Assirati  <assirati@fma.if.usp.br>
 

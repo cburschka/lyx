@@ -28,7 +28,7 @@ using std::string;
 typedef FormController<ControlNote, FormView<FD_note> > base_class;
 
 FormNote::FormNote(Dialog & parent)
-	: base_class(parent, _("Note"))
+	: base_class(parent, _("LyX: Note Settings"))
 {}
 
 
@@ -36,35 +36,49 @@ void FormNote::build()
 {
 	dialog_.reset(build_note(this));
 
-	note_gui_tokens(ids_, gui_names_);
 
-	for (string::size_type i = 0; i < gui_names_.size(); ++i) {
-		fl_addto_choice(dialog_->choice_type, gui_names_[i].c_str());
-	}
-
-	string str = _("Lyx Note: LyX internal only\n"
-		       "Comment: Export to LaTeX but don't print\n"
-		       "Greyed Out: Print as grey text");
-	tooltips().init(dialog_->choice_type, str);
+	tooltips().init(dialog_->radio_note,
+			_("LyX internal only"));
+	tooltips().init(dialog_->radio_comment,
+			_("Export to LaTeX/Docbook but don't print"));
+	tooltips().init(dialog_->radio_greyedout,
+			_("Print as grey text"));
 
 	bcview().setOK(dialog_->button_ok);
-	bcview().setApply(dialog_->button_apply);
 	bcview().setCancel(dialog_->button_cancel);
 }
 
 
 void FormNote::update()
 {
-	string type(controller().params().type);
-	for (string::size_type i = 0; i < gui_names_.size(); ++i) {
-		if (type == ids_[i])
-			fl_set_choice_text(dialog_->choice_type, gui_names_[i].c_str());
-		}
+	FL_OBJECT * rb = 0;
+
+	switch (controller().params().type) {
+	case InsetNoteParams::Note:
+		rb = dialog_->radio_note;
+		break;
+	case InsetNoteParams::Comment:
+		rb = dialog_->radio_comment;
+		break;
+	case InsetNoteParams::Greyedout:
+		rb = dialog_->radio_greyedout;
+		break;
+	}
+
+	fl_set_button(rb, 1);
 }
 
 
 void FormNote::apply()
 {
-	int i = fl_get_choice(dialog_->choice_type);
-	controller().params().type = ids_[i - 1];
+	InsetNoteParams::Type type;
+
+	if (fl_get_button(dialog_->radio_greyedout))
+		type = InsetNoteParams::Greyedout;
+	else if (fl_get_button(dialog_->radio_comment))
+		type = InsetNoteParams::Comment;
+	else
+		type = InsetNoteParams::Note;
+
+	controller().params().type = type;
 }

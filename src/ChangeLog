@@ -1,3 +1,9 @@
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
+	* buffer.C: up the format to 226.
+
+	* factory.C: the note inset is now identified simply by 'Note'.
+
 2003-12-08  Alfredo Braunstein  <abraunst@libero.it>
 
 	* lyxtext.h, text2.C (setLayout): don't use cursor to iterate,

@@ -16,12 +16,19 @@
 
 
 struct InsetNoteParams {
+	enum Type {
+		Note,
+		Comment,
+		Greyedout
+	};
+	/// \c type defaults to Note
+	InsetNoteParams();
 	///
 	void write(std::ostream & os) const;
 	///
 	void read(LyXLex & lex);
 	///
-	std::string type;
+	Type type;
 };
 
 

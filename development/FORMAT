@@ -1,5 +1,13 @@
 LyX file-format changes
 -----------------------
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
+	* Change the output of InsetNote:
+	\begin_inset Note -> \begin_inset Note Note
+	\begin_inset Comment -> \begin_inset Note Comment
+	\begin_inset Greyedout -> \begin_inset Note Greyedout
+
 2003-11-28  André Pönitz
 
 	* Remove space_above/space_below from Paragraph. 

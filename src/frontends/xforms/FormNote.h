@@ -32,10 +32,6 @@ private:
 	virtual void build();
 	/// Update dialog before showing it
 	virtual void update();
-	///
-	std::vector<std::string> ids_;
-	///
-	std::vector<std::string> gui_names_;
 };
 
 #endif // FORMNOTE_H

@@ -1,3 +1,12 @@
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
+	* FormNote.C: changes due to the change of type of InsetNoteParams::type
+	from string to an enum.
+
+	* FormNote.[Ch]:
+	* forms/form_note.fd: re-work so that it has a similar appearance to
+	that of the Qt frontend.
+
 2003-12-05  Angus Leeming  <leeming@lyx.org>
 
 	* FormVCLog.[Ch]: removed.

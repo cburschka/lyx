@@ -44,14 +44,18 @@ void QNote::build_dialog()
 void QNote::update_contents()
 {
 	QRadioButton * rb = 0;
-	string type(controller().params().type);
 
-	if (type == "Note")
+	switch (controller().params().type) {
+	case InsetNoteParams::Note:
 		rb = dialog_->noteRB;
-	else if (type == "Comment")
+		break;
+	case InsetNoteParams::Comment:
 		rb = dialog_->commentRB;
-	else if (type == "Greyedout")
+		break;
+	case InsetNoteParams::Greyedout:
 		rb = dialog_->greyedoutRB;
+		break;
+	}
 
 	rb->setChecked(true);
 }
@@ -59,14 +63,14 @@ void QNote::update_contents()
 
 void QNote::apply()
 {
-	string type;
+	InsetNoteParams::Type type;
 
 	if (dialog_->greyedoutRB->isChecked())
-		type = "Greyedout";
+		type = InsetNoteParams::Greyedout;
 	else if (dialog_->commentRB->isChecked())
-		type = "Comment";
+		type = InsetNoteParams::Comment;
 	else
-		type = "Note";
+		type = InsetNoteParams::Note;
 
 	controller().params().type = type;
 }

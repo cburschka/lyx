@@ -15,6 +15,7 @@
 #include "insetnote.h"
 
 #include "BufferView.h"
+#include "debug.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -24,7 +25,9 @@
 #include "metricsinfo.h"
 #include "paragraph.h"
 
+#include "support/lyxalgo.h"
 #include "support/std_sstream.h"
+#include "support/translator.h"
 
 
 using std::string;
@@ -32,6 +35,64 @@ using std::auto_ptr;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
+
+
+namespace {
+
+typedef Translator<std::string, InsetNoteParams::Type> NoteTranslator;
+
+NoteTranslator const init_notetranslator() {
+	NoteTranslator translator("Note", InsetNoteParams::Note);
+	translator.addPair("Comment", InsetNoteParams::Comment);
+	translator.addPair("Greyedout", InsetNoteParams::Greyedout);
+	return translator;
+}
+
+
+NoteTranslator const init_notetranslator_loc() {
+	NoteTranslator translator(_("Note"), InsetNoteParams::Note);
+	translator.addPair(_("Comment"), InsetNoteParams::Comment);
+	translator.addPair(_("Greyed out"), InsetNoteParams::Greyedout);
+	return translator;
+}
+
+
+NoteTranslator const & notetranslator() {
+	static NoteTranslator translator = init_notetranslator();
+	return translator;
+}
+
+
+NoteTranslator const & notetranslator_loc() {
+	static NoteTranslator translator = init_notetranslator_loc();
+	return translator;
+}
+
+} // anon
+
+
+
+
+InsetNoteParams::InsetNoteParams()
+	: type(Note)
+{}
+
+
+void InsetNoteParams::write(ostream & os) const
+{
+	string const label = notetranslator().find(type);
+	os << "Note " << label << "\n";
+	os << label << "\n";
+}
+
+
+void InsetNoteParams::read(LyXLex & lex)
+{
+	string label;
+	lex >> label;
+	if (lex)
+		type = notetranslator().find(label);
+}
 
 
 void InsetNote::init()
@@ -44,7 +105,7 @@ void InsetNote::init()
 InsetNote::InsetNote(BufferParams const & bp, string const & label)
 	: InsetCollapsable(bp)
 {
-	params_.type = label;
+	params_.type = notetranslator().find(label);
 	init();
 }
 
@@ -83,6 +144,7 @@ void InsetNote::write(Buffer const & buf, ostream & os) const
 
 void InsetNote::read(Buffer const & buf, LyXLex & lex)
 {
+	params_.read(lex);
 	InsetCollapsable::read(buf, lex);
 	setButtonLabel();
 }
@@ -90,22 +152,26 @@ void InsetNote::read(Buffer const & buf, LyXLex & lex)
 
 void InsetNote::setButtonLabel()
 {
+	string const label = notetranslator_loc().find(params_.type);
+	setLabel(label);
+
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	font.decSize();
 
-	if (params_.type == "Note") {
-		setLabel(_("LyX Note"));
+	switch (params_.type) {
+	case InsetNoteParams::Note:
 		font.setColor(LColor::note);
 		setBackgroundColor(LColor::notebg);
-	} else if (params_.type == "Comment") {
-		setLabel(_("Comment"));
+		break;
+	case InsetNoteParams::Comment:
 		font.setColor(LColor::comment);
 		setBackgroundColor(LColor::commentbg);
-	} else {
-		setLabel(_("Greyed Out"));
+		break;
+	case InsetNoteParams::Greyedout:
 		font.setColor(LColor::greyedout);
 		setBackgroundColor(LColor::greyedoutbg);
+		break;
 	}
 	setLabelFont(font);
 }
@@ -153,89 +219,94 @@ InsetNote::priv_dispatch(FuncRequest const & cmd,
 int InsetNote::latex(Buffer const & buf, ostream & os,
 		     OutputParams const & runparams) const
 {
-	string const pt = params_.type;
+	if (params_.type == InsetNoteParams::Note)
+		return 0;
 
-	int i = 0;
-	if (pt == "Comment")
-		 // verbatim
-		os << "%\n\\begin{comment}\n";
-	else if (pt == "Greyedout")
-		 // we roll our own macro
-		os << "%\n\\begin{lyxgreyedout}\n";
+	string type;
+	if (params_.type == InsetNoteParams::Comment)
+		type = "comment";
+	else if (params_.type == InsetNoteParams::Greyedout)
+		type = "lyxgreyedout";
 
-	if (pt != "Note")
-		i = inset.latex(buf, os, runparams);
+	ostringstream ss;
+	ss << "%\n\\begin{" << type << "}\n";
+	inset.latex(buf, ss, runparams);
+	ss << "%\n\\end{" << type << "}\n";
 
-	if (pt == "Comment") {
-		os << "%\n\\end{comment}\n";
-		i += 4;
-	} else if (pt == "Greyedout") {
-		os << "%\n\\end{lyxgreyedout}\n";
-		i += 4;
-	}
-	return i;
+	string const str = ss.str();
+	os << str;
+	// Return how many newlines we issued.
+	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
 }
 
 
 int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os,
 			OutputParams const & runparams) const
 {
-	string const pt = params_.type;
+	if (params_.type == InsetNoteParams::Note)
+		return 0;
 
-	int i = 0;
-	if (pt == "Comment")
-		os << "<comment>\n";
+	ostringstream ss;
+	if (params_.type == InsetNoteParams::Comment)
+		ss << "<comment>\n";
 
-	if (pt != "Note")
-		i = inset.linuxdoc(buf, os, runparams);
+	inset.linuxdoc(buf, ss, runparams);
 
-	if (pt == "Comment") {
-		os << "\n</comment>\n";
-		i += 3;
-	}
-	return i;
+	if (params_.type == InsetNoteParams::Comment)
+		ss << "\n</comment>\n";
+
+	string const str = ss.str();
+	os << str;
+	// Return how many newlines we issued.
+	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
 }
 
 
 int InsetNote::docbook(Buffer const & buf, std::ostream & os,
 		       OutputParams const & runparams) const
 {
-	string const pt = params_.type;
+	if (params_.type == InsetNoteParams::Note)
+		return 0;
 
-	int i = 0;
-	if (pt == "Comment")
-		os << "<remark>\n";
+	ostringstream ss;
+	if (params_.type == InsetNoteParams::Comment)
+		ss << "<remark>\n";
 
-	if (pt != "Note")
-		i = inset.docbook(buf, os, runparams);
+	inset.docbook(buf, ss, runparams);
 
-	if (pt == "Comment") {
-		os << "\n</remark>\n";
-		i += 3;
-	}
-	return i;
+	if (params_.type == InsetNoteParams::Comment)
+		ss << "\n</remark>\n";
+
+	string const str = ss.str();
+	os << str;
+	// Return how many newlines we issued.
+	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
 }
 
 
 int InsetNote::plaintext(Buffer const & buf, std::ostream & os,
 		     OutputParams const & runparams) const
 {
-	int i = 0;
-	string const pt = params_.type;
-	if (pt != "Note") {
-		os << "[";
-		i = inset.plaintext(buf, os, runparams);
-		os << "]";
-	}
-	return i;
+	if (params_.type == InsetNoteParams::Note)
+		return 0;
+
+	ostringstream ss;
+	ss << "[";
+	inset.plaintext(buf, ss, runparams);
+	ss << "]";
+
+	string const str = ss.str();
+	os << str;
+	// Return how many newlines we issued.
+	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
 }
 
 
 void InsetNote::validate(LaTeXFeatures & features) const
 {
-	if (params_.type == "Comment")
+	if (params_.type == InsetNoteParams::Comment)
 		features.require("verbatim");
-	if (params_.type == "Greyedout") {
+	if (params_.type == InsetNoteParams::Greyedout) {
 		features.require("color");
 		features.require("lyxgreyedout");
 	}
@@ -277,25 +348,21 @@ void InsetNoteMailer::string2params(string const & in,
 	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
+
+	string name;
+	lex >> name;
+	if (!lex || name != name_) {
+		lyxerr << "InsetNoteMailer::string2params(" << in << ")\n"
+		       << "Missing identifier \"" << name_ << '"' << std::endl;
+		return;
+	}
+
+	// This is part of the inset proper that is usually swallowed
+	// by LyXText::readInset
+	string inset_id;
+	lex >> inset_id;
+	if (!lex || inset_id != "Note")
+		return;
+
 	params.read(lex);
-}
-
-
-void InsetNoteParams::write(ostream & os) const
-{
-	os << type << "\n";
-}
-
-
-void InsetNoteParams::read(LyXLex & lex)
-{
-	if (lex.isOK()) {
-		lex.next();
-		string token = lex.getString();
-	}
-
-	if (lex.isOK()) {
-		lex.next();
-		type = lex.getString();
-	}
 }

@@ -40,7 +40,4 @@ private:
 	boost::scoped_ptr<InsetNoteParams> params_;
 };
 
-///
-void note_gui_tokens(std::vector<std::string> &, std::vector<std::string> &);
-
 #endif // CONTROLNOTE_H

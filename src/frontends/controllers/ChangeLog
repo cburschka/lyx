@@ -1,5 +1,9 @@
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
+	* ControlNote.[Ch] (note_gui_tokens): removed; no longer needed.
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
 	* ControlBranch.C (dispatchParams): change to invocation of
 	InsetBranchMailer::params2string.
 

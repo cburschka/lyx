@@ -402,8 +402,7 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 			inset.reset(new InsetFormula);
 		} else if (tmptok == "Graphics") {
 			inset.reset(new InsetGraphics);
-		} else if (tmptok == "Note"	|| tmptok == "Comment"
-				|| tmptok == "Greyedout") {
+		} else if (tmptok == "Note") {
 			inset.reset(new InsetNote(buf.params(), tmptok));
 		} else if (tmptok == "Boxed" || tmptok == "ovalbox"
 		        || tmptok == "Shadowbox" || tmptok == "Doublebox"
