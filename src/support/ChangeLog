@@ -1,3 +1,14 @@
+2004-03-24  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcontr.[Ch]: get rid of the timer that we use to poll the list
+	of child proccesses and ascertain whether any have died. Instead use
+	the SIGCHLD signal emitted by the system to reap these zombies in the
+	maximally efficient manner. The subsequent emitting of the signal
+	associated with each child process *is* performed within the main
+	lyx event loop, thus ensuring that the code remains safe.
+
+	A detailed description of the design is to be found in forkedcontr.C.
+
 2004-03-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* filetools.C (i18nLibFileSearch): simplify the logic a bit

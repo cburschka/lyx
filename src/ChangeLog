@@ -1,5 +1,11 @@
 2004-03-24  Angus Leeming  <leeming@lyx.org>
 
+	* BufferView_pimpl.C (cursorToggle): use the cursor toggle to
+	deal with any child processes that have finished but are waiting to
+	communicate this fact to the rest of LyX.
+
+2004-03-24  Angus Leeming  <leeming@lyx.org>
+
 	64-bit compile fixes.
 
 	* errorlist.[Ch] (pos_start, pos_end): store as lyx::pos_type.
@@ -23,7 +29,7 @@
 	* lyxfunc.C (getStatus): handle read-only buffers correctly;
 	handle LFUN_FILE_INSERT_*
 
-	* lyxrc.C (setDefaults, getDescription, output, read): 
+	* lyxrc.C (setDefaults, getDescription, output, read):
 	* lyxrc.h: remove ps_command
 
 2004-03-22  Angus Leeming  <leeming@lyx.org>

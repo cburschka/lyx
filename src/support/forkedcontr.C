@@ -17,11 +17,9 @@
 #include "forkedcontr.h"
 #include "forkedcall.h"
 #include "lyxfunctional.h"
+
 #include "debug.h"
 
-#include "frontends/Timeout.h"
-
-#include <boost/bind.hpp>
 #include <boost/iterator/indirect_iterator.hpp>
 
 #include <cerrno>
@@ -29,20 +27,150 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-
-using boost::bind;
-
 using std::endl;
 using std::find_if;
+
 using std::string;
+using std::vector;
 
 #ifndef CXX_GLOBAL_CSTD
+using std::signal;
 using std::strerror;
 #endif
 
 
 namespace lyx {
 namespace support {
+
+/* The forkedcall controller code handles finished child processes in a
+   two-stage process.
+
+   1. It uses the SIGCHLD signal emitted by the system when the child process
+      finishes to reap the resulting zombie. The handler routine also
+      updates an internal list of completed children.
+   2. The signals associated with these completed children are then emitted
+      as part of the main LyX event loop.
+
+   The guiding philosophy is that zombies are a global resource that should
+   be reaped as soon as possible whereas an internal list of dead children
+   is not. Indeed, to emit the signals within the asynchronous handler
+   routine would result in unsafe code.
+
+   The signal handler is guaranteed to be safe even though it may not be
+   atomic:
+
+   int completed_child_status;
+   sig_atomic_t completed_child_pid;
+
+   extern "C"
+   void child_handler(int)
+   {
+     // Clean up the child process.
+     completed_child_pid = wait(&completed_child_status);
+   }
+
+   (See the signals tutorial at http://tinyurl.com/3h82w.)
+
+   It's safe because:
+   1. wait(2) is guaranteed to be async-safe.
+   2. child_handler handles only SIGCHLD signals so all subsequent
+      SIGCHLD signals are blocked from entering the handler until the
+      existing signal is processed.
+
+   This handler performs 'half' of the necessary clean up after a
+   completed child process. It prevents us leaving a stream of zombies
+   behind but does not go on to tell the main LyX program to finish the
+   clean-up by emitting the stored signal. That would most definitely
+   not be safe.
+
+   The only problem with the above is that the global stores
+   completed_child_status, completed_child_pid may be overwritten before
+   the clean-up is completed in the main loop.
+
+   However, the code in child_handler can be extended to fill an array of
+   completed processes. Everything remains safe so long as no 'unsafe'
+   functions are called. (See the list of async-safe functions at
+   http://tinyurl.com/3h82w.)
+
+   struct child_data {
+     pid_t pid;
+     int status;
+   };
+
+   // This variable may need to be resized in the main program
+   // as and when a new process is forked. This resizing must be
+   // protected with sigprocmask
+   std::vector<child_data> reaped_children;
+   sig_atomic_t current_child = -1;
+
+   extern "C"
+   void child_handler(int)
+   {
+     child_data & store = reaped_children[++current_child];
+     // Clean up the child process.
+     store.pid = wait(&store.status);
+   }
+
+   That is, we build up a list of completed children in anticipation of
+   the main loop then looping over this list and invoking any associated
+   callbacks etc. The nice thing is that the main loop needs only to
+   check the value of 'current_child':
+
+   if (current_child != -1)
+     handleCompletedProcesses();
+
+   handleCompletedProcesses now loops over only those child processes
+   that have completed (ie, those stored in reaped_children). It blocks
+   any subsequent SIGCHLD signal whilst it does so:
+
+   // Used to block SIGCHLD signals.
+   sigset_t newMask, oldMask;
+
+   ForkedcallsController::ForkedcallsController()
+   {
+     reaped_children.resize(50);
+     signal(SIGCHLD, child_handler);
+
+     sigemptyset(&oldMask);
+     sigemptyset(&newMask);
+     sigaddset(&newMask, SIGCHLD);
+   }
+
+   void ForkedcallsController::handleCompletedProcesses()
+   {
+     if (current_child == -1)
+       return;
+
+     // Block the SIGCHLD signal.
+     sigprocmask(SIG_BLOCK, &newMask, &oldMask);
+
+     for (int i = 0; i != 1+current_child; ++i) {
+       child_data & store = reaped_children[i];
+       // Go on to handle the child process
+       ...
+     }
+
+     // Unblock the SIGCHLD signal and restore the old mask.
+     sigprocmask(SIG_SETMASK, &oldMask, 0);
+   }
+
+   Voilà! An efficient, elegant and *safe* mechanism to handle child processes.
+*/
+
+namespace {
+
+extern "C"
+void child_handler(int)
+{
+	ForkedcallsController & fcc = ForkedcallsController::get();
+	ForkedcallsController::Data & store =
+		fcc.reaped_children[++fcc.current_child];
+	// Clean up the child process.
+	store.pid = wait(&store.status);
+}
+
+} // namespace anon
+
 
 // Ensure, that only one controller exists inside process
 ForkedcallsController & ForkedcallsController::get()
@@ -53,11 +181,13 @@ ForkedcallsController & ForkedcallsController::get()
 
 
 ForkedcallsController::ForkedcallsController()
+	: reaped_children(50), current_child(-1)
 {
-	timeout_ = new Timeout(100, Timeout::ONETIME);
+	signal(SIGCHLD, child_handler);
 
-	timeout_->timeout
-		.connect(bind(&ForkedcallsController::timer, this));
+	sigemptyset(&oldMask);
+	sigemptyset(&newMask);
+	sigaddset(&newMask, SIGCHLD);
 }
 
 
@@ -66,91 +196,27 @@ ForkedcallsController::ForkedcallsController()
 // I want to print or something.
 ForkedcallsController::~ForkedcallsController()
 {
-	delete timeout_;
+	signal(SIGCHLD, SIG_DFL);
 }
 
 
 void ForkedcallsController::addCall(ForkedProcess const & newcall)
 {
-	if (!timeout_->running())
-		timeout_->start();
-
 	forkedCalls.push_back(newcall.clone());
-}
 
+	if (forkedCalls.size() > reaped_children.size()) {
+		// Block the SIGCHLD signal.
+		sigprocmask(SIG_BLOCK, &newMask, &oldMask);
 
-// Timer-call
-// Check the list and, if there is a stopped child, emit the signal.
-void ForkedcallsController::timer()
-{
-	ListType::iterator it  = forkedCalls.begin();
-	ListType::iterator end = forkedCalls.end();
-	while (it != end) {
-		ForkedProcess * actCall = it->get();
+		reaped_children.resize(2*reaped_children.size());
 
-		pid_t pid = actCall->pid();
-		int stat_loc;
-		pid_t const waitrpid = waitpid(pid, &stat_loc, WNOHANG);
-		bool remove_it = false;
-
-		if (waitrpid == -1) {
-			lyxerr << "LyX: Error waiting for child: "
-			       << strerror(errno) << endl;
-
-			// Child died, so pretend it returned 1
-			actCall->setRetValue(1);
-			remove_it = true;
-
-		} else if (waitrpid == 0) {
-			// Still running. Move on to the next child.
-
-		} else if (WIFEXITED(stat_loc)) {
-			// Ok, the return value goes into retval.
-			actCall->setRetValue(WEXITSTATUS(stat_loc));
-			remove_it = true;
-
-		} else if (WIFSIGNALED(stat_loc)) {
-			// Child died, so pretend it returned 1
-			actCall->setRetValue(1);
-			remove_it = true;
-
-		} else if (WIFSTOPPED(stat_loc)) {
-			lyxerr << "LyX: Child (pid: " << pid
-			       << ") stopped on signal "
-			       << WSTOPSIG(stat_loc)
-			       << ". Waiting for child to finish." << endl;
-
-		} else {
-			lyxerr << "LyX: Something rotten happened while "
-				"waiting for child " << pid << endl;
-
-			// Child died, so pretend it returned 1
-			actCall->setRetValue(1);
-			remove_it = true;
-		}
-
-		if (remove_it) {
-			actCall->emitSignal();
-			forkedCalls.erase(it);
-
-			/* start all over: emiting the signal can result
-			 * in changing the list (Ab)
-			 */
-			it = forkedCalls.begin();
-		} else {
-			++it;
-		}
-	}
-
-	if (!forkedCalls.empty() && !timeout_->running()) {
-		timeout_->start();
+		// Unblock the SIGCHLD signal and restore the old mask.
+		sigprocmask(SIG_SETMASK, &oldMask, 0);
 	}
 }
 
 
-// Kill the process prematurely and remove it from the list
-// within tolerance secs
-void ForkedcallsController::kill(pid_t pid, int tolerance)
+ForkedcallsController::iterator ForkedcallsController::find_pid(pid_t pid)
 {
 	typedef boost::indirect_iterator<ListType::iterator> iterator;
 
@@ -159,14 +225,83 @@ void ForkedcallsController::kill(pid_t pid, int tolerance)
 	iterator it = find_if(begin, end,
 			      lyx::compare_memfun(&Forkedcall::pid, pid));
 
-	if (it == end)
+	return it.base();
+}
+
+
+// Kill the process prematurely and remove it from the list
+// within tolerance secs
+void ForkedcallsController::kill(pid_t pid, int tolerance)
+{
+	ListType::iterator it = find_pid(pid);
+	if (it == forkedCalls.end())
 		return;
 
-	it->kill(tolerance);
-	forkedCalls.erase(it.base());
+	(*it)->kill(tolerance);
+	forkedCalls.erase(it);
+}
 
-	if (forkedCalls.empty())
-		timeout_->stop();
+
+// Check the list of dead children and emit any associated signals.
+void ForkedcallsController::handleCompletedProcesses()
+{
+	if (current_child == -1)
+		return;
+
+	// Block the SIGCHLD signal.
+	sigprocmask(SIG_BLOCK, &newMask, &oldMask);
+
+	for (int i = 0; i != 1+current_child; ++i) {
+		Data & store = reaped_children[i];
+
+		if (store.pid == -1) {
+			lyxerr << "LyX: Error waiting for child: "
+			       << strerror(errno) << endl;
+			continue;
+		}
+
+		ListType::iterator it = find_pid(store.pid);
+		BOOST_ASSERT(it != forkedCalls.end());
+
+		ForkedProcess & child = *it->get();
+		bool remove_it = false;
+
+		if (WIFEXITED(store.status)) {
+			// Ok, the return value goes into retval.
+			child.setRetValue(WEXITSTATUS(store.status));
+			remove_it = true;
+
+		} else if (WIFSIGNALED(store.status)) {
+			// Child died, so pretend it returned 1
+			child.setRetValue(1);
+			remove_it = true;
+
+		} else if (WIFSTOPPED(store.status)) {
+			lyxerr << "LyX: Child (pid: " << store.pid
+			       << ") stopped on signal "
+			       << WSTOPSIG(store.status)
+			       << ". Waiting for child to finish." << endl;
+
+		} else {
+			lyxerr << "LyX: Something rotten happened while "
+				"waiting for child " << store.pid << endl;
+
+			// Child died, so pretend it returned 1
+			child.setRetValue(1);
+			remove_it = true;
+		}
+
+		if (remove_it) {
+			child.emitSignal();
+			forkedCalls.erase(it);
+		}
+	}
+
+	// Reset the counter
+	current_child = -1;
+
+	// Unblock the SIGCHLD signal and restore the old mask.
+	sigprocmask(SIG_SETMASK, &oldMask, 0);
 }
 
 } // namespace support

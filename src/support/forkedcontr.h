@@ -17,10 +17,10 @@
 #define FORKEDCONTR_H
 
 #include <boost/shared_ptr.hpp>
-#include <sys/types.h> // needed for pid_t
+#include <csignal>
+//#include <sys/types.h> // needed for pid_t
 #include <list>
-
-class Timeout;
+#include <vector>
 
 namespace lyx {
 namespace support {
@@ -32,6 +32,15 @@ public:
 	/// Get hold of the only controller that can exist inside the process.
 	static ForkedcallsController & get();
 
+	/// Are there any completed child processes to be cleaned-up after?
+	bool processesCompleted() const { return current_child != -1; }
+
+	/** Those child processes that are found to have finished are removed
+	 *  from the list and their callback function is passed the final
+	 *  return state.
+ 	 */
+	void handleCompletedProcesses();
+
 	/// Add a new child process to the list of controlled processes.
 	void addCall(ForkedProcess const &);
 
@@ -41,28 +50,36 @@ public:
 	 */
 	void kill(pid_t, int tolerance = 5);
 
+	struct Data {
+		Data() : pid(0), status(0) {}
+		pid_t pid;
+		int status;
+	};
+
+	/** These data are used by the SIGCHLD handler to populate a list
+	 *  of child processes that have completed and been reaped.
+	 *  The associated signals are then emitted within the main LyX
+	 *  event loop.
+	 */
+	std::vector<Data> reaped_children;
+	sig_atomic_t current_child;
+
 private:
 	ForkedcallsController();
 	ForkedcallsController(ForkedcallsController const &);
 	~ForkedcallsController();
 
-	/** This method is connected to the timer. Every XX ms it is called
-	 *  so that we can check on the status of the children. Those that
-	 *  are found to have finished are removed from the list and their
-	 *  callback function is passed the final return state.
-	 */
-	void timer();
-
-	/// The child processes
 	typedef boost::shared_ptr<ForkedProcess> ForkedProcessPtr;
 	typedef std::list<ForkedProcessPtr> ListType;
-	///
+	typedef ListType::iterator iterator;
+
+	iterator find_pid(pid_t);
+
+	/// The child processes
 	ListType forkedCalls;
 
-	/** The timer. Enables us to check the status of the children
-	 *  every XX ms and to invoke a callback on completion.
-	 */
-	Timeout * timeout_;
+	/// Used to block SIGCHLD signals.
+	sigset_t newMask, oldMask;
 };
 
 } // namespace support

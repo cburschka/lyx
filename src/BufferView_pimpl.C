@@ -60,6 +60,7 @@
 #include "graphics/Previews.h"
 
 #include "support/filetools.h"
+#include "support/forkedcontr.h"
 #include "support/globbing.h"
 #include "support/path_defines.h"
 #include "support/tostr.h"
@@ -72,6 +73,7 @@ using lyx::support::AddPath;
 using lyx::support::bformat;
 using lyx::support::FileFilterList;
 using lyx::support::FileSearch;
+using lyx::support::ForkedcallsController;
 using lyx::support::IsDirWriteable;
 using lyx::support::MakeDisplayPath;
 using lyx::support::strToUnsignedInt;
@@ -520,7 +522,7 @@ void BufferView::Pimpl::selectionRequested()
 		sel = cur.selectionAsString(false);
 		if (!sel.empty())
 			workarea().putClipboard(sel);
-	} 
+	}
 }
 
 
@@ -584,8 +586,17 @@ void BufferView::Pimpl::update()
 // Callback for cursor timer
 void BufferView::Pimpl::cursorToggle()
 {
-	if (buffer_)
+	if (buffer_) {
 		screen().toggleCursor(*bv_);
+
+		// Use this opportunity to deal with any child processes that
+		// have finished but are waiting to communicate this fact
+		// to the rest of LyX.
+		ForkedcallsController & fcc = ForkedcallsController::get();
+		if (fcc.processesCompleted())
+			fcc.handleCompletedProcesses();
+	}
+
 	cursor_timeout.restart();
 }
 
@@ -862,7 +873,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		return true;
 	}
 #else
-	case LFUN_MOUSE_MOTION: 
+	case LFUN_MOUSE_MOTION:
 #endif
 
 	case LFUN_MOUSE_PRESS:
