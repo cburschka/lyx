@@ -72,12 +72,8 @@ public:
 	//@{
 	///
 	void showDocument();
-	/// show the contents of a file.
-	void showFile(string const &);
 	/// show all forked child processes
 	void showForks();
-	/// show the LaTeX log or build file
-	void showLogFile();
 	/// display the top-level maths panel
 	void showMathPanel();
 	///
@@ -96,8 +92,6 @@ public:
 	void showTexinfo();
 	/// show the thesaurus dialog
 	void showThesaurus(string const &);
-	/// show the version control log
-	void showVCLogFile();
 	//@}
 
 	/** \param name == "about" etc; an identifier used to

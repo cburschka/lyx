@@ -12,7 +12,6 @@
 #ifndef FORMSHOWFILE_H
 #define FORMSHOWFILE_H
 
-
 #include "FormBrowser.h"
 
 class ControlShowFile;
@@ -21,10 +20,10 @@ class ControlShowFile;
  * This class provides an XForms implementation of a dialog to browse through a
  * Help file.
  */
-class FormShowFile : public FormCB<ControlShowFile, FormBrowser> {
+class FormShowFile : public FormController<ControlShowFile, FormBrowser> {
 public:
 	///
-	FormShowFile();
+	FormShowFile(Dialog &);
 
 	// Functions accessible to the Controller.
 

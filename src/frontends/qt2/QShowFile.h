@@ -13,19 +13,20 @@
 #define QSHOWFILE_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlShowFile;
 class QShowFileDialog;
 
 
 class QShowFile
-	: public Qt2CB<ControlShowFile, Qt2DB<QShowFileDialog> >
+	: public QController<ControlShowFile, QView<QShowFileDialog> >
 {
 public:
 	friend class QShowFileDialog;
 
-	QShowFile();
+	QShowFile(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply() {}

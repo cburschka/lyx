@@ -1202,7 +1202,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_VC_HISTORY:
 	{
-		owner->getDialogs().showVCLogFile();
+		owner->getDialogs().show("vclog");
 		break;
 	}
 
@@ -1226,7 +1226,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_LATEX_LOG:
-		owner->getDialogs().showLogFile();
+		owner->getDialogs().show("log");
 		break;
 
 	case LFUN_LAYOUT_DOCUMENT:

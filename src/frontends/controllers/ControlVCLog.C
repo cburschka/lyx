@@ -11,35 +11,30 @@
 
 #include <config.h>
 
-
 #include "ControlVCLog.h"
-#include "ButtonController.h"
 #include "buffer.h"
-#include "lyxrc.h"
 #include "gettext.h"
-
 #include "support/lyxlib.h"
-
 #include <fstream>
 
 using std::endl;
 using std::ostream;
 
 
-ControlVCLog::ControlVCLog(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d)
+ControlVCLog::ControlVCLog(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
 string const ControlVCLog::getBufferFileName() const
 {
-	return buffer()->fileName();
+	return kernel().buffer()->fileName();
 }
 
 
 void ControlVCLog::getVCLogFile(ostream & ss) const
 {
-	string const name = buffer()->lyxvc.getLogFile();
+	string const name = kernel().buffer()->lyxvc.getLogFile();
 
 	std::ifstream in(name.c_str());
 

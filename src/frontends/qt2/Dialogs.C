@@ -27,19 +27,15 @@ Dialogs::~Dialogs()
 
 
 Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
-	: document(lv, d),
-	  file(lv, d),
-	  logfile(lv, d),
+	:
+#ifdef HAVE_LIBAIKSAURUS
+	  thesaurus(lv, d),
+#endif
+	  document(lv, d),
 	  prefs(lv, d),
 	  print(lv, d),
 	  search(lv, d),
 	  sendto(lv, d),
 	  spellchecker(lv, d),
-	  texinfo(lv, d),
-
-#ifdef HAVE_LIBAIKSAURUS
-	  thesaurus(lv, d),
-#endif
-
-	  vclogfile(lv, d)
+	  texinfo(lv, d)
 {}

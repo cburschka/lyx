@@ -1,5 +1,19 @@
 2003-03-25  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove the log, showfile and vclog dialogs.
+
+	* Dialogs3.C: add these dialogs.
+
+	* FormBrowser.[Ch]:
+	* forms/form_browser.fd:
+	* FormLog.[Ch]:
+	* FormShowFile.[Ch]:
+	* FormVCLog.[Ch]: changes to use the new Dialog-based scheme.
+
+2003-03-25  Angus Leeming  <leeming@lyx.org>
+
 	* xformsImage.C (clip): cure compiler warnings.
 
 2003-03-24  Angus Leeming  <leeming@lyx.org>

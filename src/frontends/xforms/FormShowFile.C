@@ -19,8 +19,8 @@
 #include FORMS_H_LOCATION
 
 
-FormShowFile::FormShowFile()
-	: FormCB<ControlShowFile, FormBrowser>(_("Show File"))
+FormShowFile::FormShowFile(Dialog & parent)
+	: FormController<ControlShowFile, FormBrowser>(parent, _("Show File"))
 {}
 
 

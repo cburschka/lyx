@@ -18,9 +18,6 @@
 #include "xformsBC.h"
 #include "combox.h"
 
-#include "FormBrowser.h"
-#include "forms/form_browser.h"
-
 #include "ControlDocument.h"
 #include "FormDocument.h"
 #include "forms/form_document.h"
@@ -28,12 +25,6 @@
 #include "ControlForks.h"
 #include "FormForks.h"
 #include "forms/form_forks.h"
-
-#include "ControlLog.h"
-#include "FormLog.h"
-
-#include "ControlShowFile.h"
-#include "FormShowFile.h"
 
 #include "ControlMath.h"
 #include "FormMathsPanel.h"
@@ -73,20 +64,11 @@
 #include "forms/form_thesaurus.h"
 #endif
 
-#include "ControlVCLog.h"
-#include "FormVCLog.h"
-
 typedef GUI<ControlDocument, FormDocument, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 DocumentDialog;
 
-typedef GUI<ControlShowFile, FormShowFile, OkCancelPolicy, xformsBC>
-FileDialog;
-
 typedef GUI<ControlForks, FormForks, OkApplyCancelPolicy, xformsBC>
 ForksDialog;
-
-typedef GUI<ControlLog, FormLog, OkCancelPolicy, xformsBC>
-LogFileDialog;
 
 typedef GUI<ControlMath, FormMathsPanel, OkCancelReadOnlyPolicy, xformsBC>
 MathPanelDialog;
@@ -117,16 +99,11 @@ typedef GUI<ControlThesaurus, FormThesaurus, OkApplyCancelReadOnlyPolicy, xforms
 ThesaurusDialog;
 #endif
 
-typedef GUI<ControlVCLog, FormVCLog, OkCancelPolicy, xformsBC>
-VCLogFileDialog;
-
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
 	DocumentDialog      document;
-	FileDialog          file;
 	ForksDialog         forks;
-	LogFileDialog       logfile;
 	MathPanelDialog     mathpanel;
 	PreambleDialog      preamble;
 	PreferencesDialog   preferences;
@@ -139,8 +116,6 @@ struct Dialogs::Impl {
 #ifdef HAVE_LIBAIKSAURUS
 	ThesaurusDialog     thesaurus;
 #endif
-
-	VCLogFileDialog     vclogfile;
 };
 
 #endif // DIALOGS_IMPL_H

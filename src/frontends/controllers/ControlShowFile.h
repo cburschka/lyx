@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \file ControlShowFile.h
+ *
  * \author Herbert Voss
  *
  * Full author contact details are available in file CREDITS
@@ -11,26 +12,28 @@
 #ifndef CONTROLSHOWFILE_H
 #define CONTROLSHOWFILE_H
 
-
-#include "ControlDialog_impl.h"
-#include "LString.h"
+#include "Dialog.h"
 
 /** A controller for the ShowFile dialog. */
 
-class ControlShowFile : public ControlDialogBI {
+class ControlShowFile : public Dialog::Controller {
 public:
 	///
-	ControlShowFile(LyXView &, Dialogs &);
+	ControlShowFile(Dialog &);
 	///
-	virtual void showFile(string const &);
+	virtual bool initialiseParams(string const &);
+	///
+	virtual void clearParams();
+	///
+	virtual void dispatchParams() {}
+	///
+	virtual bool isBufferDependent() const { return false; }
 	///
 	string getFileContents();
 	///
 	string getFileName();
 
 private:
-	/// not needed.
-	virtual void apply() {}
 	///
 	string filename_;
 };

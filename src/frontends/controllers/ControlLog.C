@@ -11,20 +11,18 @@
 
 #include <config.h>
 
-
 #include "ControlLog.h"
-#include "buffer.h"
 
 
-
-ControlLog::ControlLog(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d)
+ControlLog::ControlLog(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-void ControlLog::setParams()
+bool ControlLog::initialiseParams(string const &)
 {
-	logfile_ = buffer()->getLogName();
+	logfile_ = kernel().buffer()->getLogName();
+	return true;
 }
 
 

@@ -13,20 +13,21 @@
 #define QVCLOG_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlVCLog;
 class QVCLogDialog;
 
 ///
 class QVCLog
-	: public Qt2CB<ControlVCLog, Qt2DB<QVCLogDialog> >
+	: public QController<ControlVCLog, QView<QVCLogDialog> >
 {
 public:
 	///
 	friend class QVCLogDialog;
 	///
-	QVCLog();
+	QVCLog(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply() {}

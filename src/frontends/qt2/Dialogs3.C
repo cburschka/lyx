@@ -24,12 +24,15 @@
 #include "ControlFloat.h"
 #include "ControlGraphics.h"
 #include "ControlInclude.h"
+#include "ControlLog.h"
 #include "ControlMinipage.h"
 #include "ControlParagraph.h"
 #include "ControlRef.h"
+#include "ControlShowFile.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
 #include "ControlToc.h"
+#include "ControlVCLog.h"
 #include "ControlWrap.h"
 
 #include "QAbout.h"
@@ -62,12 +65,16 @@
 #include "QIncludeDialog.h"
 #include "QIndex.h"
 #include "QIndexDialog.h"
+#include "QLog.h"
+#include "QLogDialog.h"
 #include "QMinipage.h"
 #include "QMinipageDialog.h"
 #include "QParagraph.h"
 #include "QParagraphDialog.h"
 #include "QRef.h"
 #include "QRefDialog.h"
+#include "QShowFile.h"
+#include "QShowFileDialog.h"
 #include "QTabular.h"
 #include "QTabularDialog.h"
 #include "QTabularCreate.h"
@@ -76,6 +83,9 @@
 #include "QTocDialog.h"
 #include "QURL.h"
 #include "QURLDialog.h"
+#include "QVCLog.h"
+#include "QVCLogDialog.h"
+
 #include "QWrap.h"
 #include "QWrapDialog.h"
 
@@ -87,9 +97,9 @@
 namespace {
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
-"character", "citation", "error", "ert", "external", "float", "graphics",
-"include", "index", "label", "minipage", "paragraph", "ref", "tabular",
-"tabularcreate", "toc", "url", "wrap" };
+"character", "citation", "error", "ert", "external", "file", "float",
+"graphics", "include", "index", "label", "log", "minipage", "paragraph",
+"ref", "tabular", "tabularcreate", "toc", "url", "vclog", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -158,6 +168,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlExternal(*dialog));
 		dialog->setView(new QExternal(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+	} else if (name == "file") {
+		dialog->setController(new ControlShowFile(*dialog));
+		dialog->setView(new QShowFile(*dialog));
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "float") {
 		dialog->setController(new ControlFloat(*dialog));
 		dialog->setView(new QFloat(*dialog));
@@ -182,6 +196,10 @@ Dialog * Dialogs::build(string const & name)
 					   qt_("LyX: Insert Label"),
 					   qt_("&Label")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "log") {
+		dialog->setController(new ControlLog(*dialog));
+		dialog->setView(new QLog(*dialog));
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "minipage") {
 		dialog->setController(new ControlMinipage(*dialog));
 		dialog->setView(new QMinipage(*dialog));
@@ -210,6 +228,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QURL(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "vclog") {
+		dialog->setController(new ControlVCLog(*dialog));
+		dialog->setView(new QVCLog(*dialog));
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "wrap") {
 		dialog->setController(new ControlWrap(*dialog));
 		dialog->setView(new QWrap(*dialog));

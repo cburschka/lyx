@@ -1,3 +1,9 @@
+2003-03-25  Angus Leeming  <leeming@lyx.org>
+
+	* ControlLog.[Ch]:
+	* ControlShowFile.[Ch]:
+	* ControlVCLog.[Ch]: rewrite to use the Dialog-based scheme.
+
 2003-03-24  John Levon  <levon@movementarian.org>
 
 	* ControlMath.C: include Pr function

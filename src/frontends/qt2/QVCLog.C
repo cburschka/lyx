@@ -25,11 +25,11 @@
 
 #include "BoostFormat.h"
 
-typedef Qt2CB<ControlVCLog, Qt2DB<QVCLogDialog> > base_class;
+typedef QController<ControlVCLog, QView<QVCLogDialog> > base_class;
 
 
-QVCLog::QVCLog()
-	: base_class(qt_("LyX: Version Control Log"))
+QVCLog::QVCLog(Dialog & parent)
+	: base_class(parent, qt_("LyX: Version Control Log"))
 {
 }
 

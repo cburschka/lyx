@@ -21,11 +21,11 @@
 #include <qtextview.h>
 #include <qpushbutton.h>
 
-typedef Qt2CB<ControlShowFile, Qt2DB<QShowFileDialog> > base_class;
+typedef QController<ControlShowFile, QView<QShowFileDialog> > base_class;
 
 
-QShowFile::QShowFile()
-	: base_class(qt_("LyX: Show File"))
+QShowFile::QShowFile(Dialog & parent)
+	: base_class(parent, qt_("LyX: Show File"))
 {
 }
 

@@ -13,30 +13,30 @@
 #ifndef CONTROLLOG_H
 #define CONTROLLOG_H
 
-#include <utility>
-
-
-#include "ControlDialog_impl.h"
+#include "Dialog.h"
 #include "buffer.h" // Buffer::LogType
+#include <utility>
 
 /**
  * A controller for a read-only text browser.
  */
-class ControlLog : public ControlDialogBD {
+class ControlLog : public Dialog::Controller {
 public:
 	///
-	ControlLog(LyXView &, Dialogs &);
+	ControlLog(Dialog &);
 	///
-	std::pair<Buffer::LogType, string> const & logfile() {
+	virtual bool initialiseParams(string const &);
+	///
+	virtual void clearParams();
+	///
+	virtual void dispatchParams() {}
+	///
+	virtual bool isBufferDependent() const { return true; }
+	///
+	std::pair<Buffer::LogType, string> const & logfile() const {
 		return logfile_;
 	}
 private:
-	///
-	virtual void apply() {}
-	/// set the params before show or update
-	virtual void setParams();
-	/// clean-up on hide.
-	virtual void clearParams();
 
 	std::pair<Buffer::LogType, string> logfile_;
 };

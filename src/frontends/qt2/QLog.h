@@ -13,20 +13,21 @@
 #define QLOG_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class ControlLog;
 class QLogDialog;
 
 ///
 class QLog
-	: public Qt2CB<ControlLog, Qt2DB<QLogDialog> >
+	: public QController<ControlLog, QView<QLogDialog> >
 {
 public:
 	///
 	friend class QLogDialog;
 	///
-	QLog();
+	QLog(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply() {}

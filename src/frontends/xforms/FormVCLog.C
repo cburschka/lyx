@@ -20,8 +20,8 @@
 #include FORMS_H_LOCATION
 
 
-FormVCLog::FormVCLog()
-	: FormCB<ControlVCLog, FormBrowser>(_("Version Control Log"))
+FormVCLog::FormVCLog(Dialog & parent)
+	: FormController<ControlVCLog, FormBrowser>(parent, _("Version Control Log"))
 {}
 
 

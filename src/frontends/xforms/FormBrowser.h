@@ -14,7 +14,7 @@
 #define FORMBROWSER_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 /**
  * This class provides an XForms implementation of a read only
@@ -22,10 +22,10 @@
  */
 struct FD_browser;
 
-class FormBrowser : public FormDB<FD_browser> {
+class FormBrowser : public FormView<FD_browser> {
 public:
 	///
-	FormBrowser(string const &, bool allowResize = true);
+	FormBrowser(Dialog &, string const &, bool allowResize = true);
 private:
 	/// Build the dialog.
 	virtual void build();

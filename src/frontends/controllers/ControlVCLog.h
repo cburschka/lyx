@@ -13,25 +13,24 @@
 #ifndef CONTROLVCLOG_H
 #define CONTROLVCLOG_H
 
+#include "Dialog.h"
 
-#include "ControlDialog_impl.h"
-
-#include "LString.h"
-
-/**
- * A controller for the Version Control log viewer.
- */
-class ControlVCLog : public ControlDialogBD {
+class ControlVCLog : public Dialog::Controller {
 public:
 	///
-	ControlVCLog(LyXView &, Dialogs &);
+	ControlVCLog(Dialog &);
+	///
+	virtual bool initialiseParams(string const &) { return true; }
+	///
+	virtual void clearParams() {}
+	///
+	virtual void dispatchParams() {}
+	///
+	virtual bool isBufferDependent() const { return true; }
 	/// put the log file into the ostream
 	void getVCLogFile(std::ostream & ss) const;
 	/// get the filename of the buffer
 	string const getBufferFileName() const;
-private:
-	///
-	virtual void apply() {}
 };
 
 #endif // CONTROLVCLOG_H

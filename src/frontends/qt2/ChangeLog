@@ -1,3 +1,15 @@
+2003-03-25  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialogs_impl.h: remove the log, showfile and vclog dialogs.
+
+	* Dialogs3.C: add these dialogs.
+
+	* QLog.[Ch]:
+	* QShowFile.[Ch]:
+	* QVCLog.[Ch]: changes to use the new Dialog-based scheme.
+
 2003-03-23  John Levon  <levon@movementarian.org>
 
 	* lyx_gui.C: remove unused variables
@@ -33,7 +45,7 @@
 	* Dialogs2.C:
 	* Dialogs_impl.h: remove paragraph dialog.
 
-	* Dialogs3.C: addparagraph  dialog.
+	* Dialogs3.C: add paragraph dialog.
 
 	* QParagraph.[Ch]: changes to use the new Dialog-based scheme.
 

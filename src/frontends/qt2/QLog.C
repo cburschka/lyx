@@ -28,10 +28,10 @@
 using std::ifstream;
 using std::getline;
 
-typedef Qt2CB<ControlLog, Qt2DB<QLogDialog> > base_class;
+typedef QController<ControlLog, QView<QLogDialog> > base_class;
 
-QLog::QLog()
-	: base_class(qt_("LyX: LaTeX Log"))
+QLog::QLog(Dialog & parent)
+	: base_class(parent, qt_("LyX: LaTeX Log"))
 {
 }
 

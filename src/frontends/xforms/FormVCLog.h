@@ -21,10 +21,10 @@ class ControlVCLog;
  * This class provides an XForms implementation of the Version Control
  * log viewer
  */
-class FormVCLog : public FormCB<ControlVCLog, FormBrowser> {
+class FormVCLog : public FormController<ControlVCLog, FormBrowser> {
 public:
 	///
-	FormVCLog();
+	FormVCLog(Dialog &);
 
 	// Functions accessible to the Controller.
 

@@ -21,21 +21,9 @@ void Dialogs::showDocument()
 }
 
 
-void Dialogs::showFile(string const & f)
-{
-	pimpl_->file.controller().showFile(f);
-}
-
-
 void Dialogs::showForks()
 {
 	pimpl_->forks.controller().show();
-}
-
-
-void Dialogs::showLogFile()
-{
-	pimpl_->logfile.controller().show();
 }
 
 
@@ -100,9 +88,3 @@ void Dialogs::showThesaurus(string const &)
 {}
 
 #endif
-
-
-void Dialogs::showVCLogFile()
-{
-	pimpl_->vclogfile.controller().show();
-}

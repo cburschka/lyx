@@ -16,15 +16,12 @@
 
 #include "ControlDocument.h"
 #include "ControlForks.h"
-#include "ControlLog.h"
 #include "ControlPrefs.h"
 #include "ControlPrint.h"
 #include "ControlSearch.h"
 #include "ControlSendto.h"
-#include "ControlShowFile.h"
 #include "ControlSpellchecker.h"
 #include "ControlTexinfo.h"
-#include "ControlVCLog.h"
 
 #include "QCharacter.h"
 #include "QCharacterDialog.h"
@@ -35,8 +32,6 @@
 // of the Qt headers, those most fucked up of disgusting ratholes.
 // But I won't.
 #undef signals
-#include "QLog.h"
-#include "QLogDialog.h"
 #include "QPrefs.h"
 #include "QPrefsDialog.h"
 #include "QPrint.h"
@@ -45,8 +40,6 @@
 #include "QSearchDialog.h"
 #include "QSendto.h"
 #include "QSendtoDialog.h"
-#include "QShowFile.h"
-#include "QShowFileDialog.h"
 #include "QSpellchecker.h"
 #include "QSpellcheckerDialog.h"
 #include "QTexinfo.h"
@@ -58,21 +51,12 @@
 #include "QThesaurusDialog.h"
 #endif
 
-#include "QVCLog.h"
-#include "QVCLogDialog.h"
-
 #include "Qt2BC.h"
 
 
 
 typedef GUI<ControlDocument, QDocument, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 DocumentDialog;
-
-typedef GUI<ControlShowFile, QShowFile, OkCancelPolicy, Qt2BC>
-FileDialog;
-
-typedef GUI<ControlLog, QLog, OkCancelPolicy, Qt2BC>
-LogFileDialog;
 
 typedef GUI<ControlPrefs, QPrefs, OkApplyCancelPolicy, Qt2BC>
 PrefsDialog;
@@ -97,16 +81,10 @@ typedef GUI<ControlThesaurus, QThesaurus, OkApplyCancelReadOnlyPolicy, Qt2BC>
 ThesaurusDialog;
 #endif
 
-typedef GUI<ControlVCLog, QVCLog, OkCancelPolicy, Qt2BC>
-VCLogFileDialog;
-
-
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
 	DocumentDialog      document;
-	FileDialog          file;
-	LogFileDialog       logfile;
 	PrefsDialog         prefs;
 	PrintDialog         print;
 	SearchDialog        search;
@@ -117,8 +95,6 @@ struct Dialogs::Impl {
 #ifdef HAVE_LIBAIKSAURUS
 	ThesaurusDialog     thesaurus;
 #endif
-
-	VCLogFileDialog     vclogfile;
 };
 
 #endif // DIALOGS_IMPL_H

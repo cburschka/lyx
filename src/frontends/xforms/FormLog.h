@@ -12,7 +12,6 @@
 #ifndef FORMLOG_H
 #define FORMLOG_H
 
-
 #include "FormBrowser.h"
 
 class ControlLog;
@@ -21,10 +20,10 @@ class ControlLog;
  * This class provides an XForms implementation of the LaTeX log dialog
  * for viewing the last LaTeX log file.
  */
-class FormLog : public FormCB<ControlLog, FormBrowser> {
+class FormLog : public FormController<ControlLog, FormBrowser> {
 public:
 	///
-	FormLog();
+	FormLog(Dialog &);
 
 	// Functions accessible to the Controller.
 

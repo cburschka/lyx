@@ -27,56 +27,41 @@
 #include "ControlFloat.h"
 #include "ControlGraphics.h"
 #include "ControlInclude.h"
+#include "ControlLog.h"
 #include "ControlMinipage.h"
 #include "ControlParagraph.h"
 #include "ControlRef.h"
+#include "ControlShowFile.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
 #include "ControlToc.h"
+#include "ControlVCLog.h"
 #include "ControlWrap.h"
 
 #include "FormAboutlyx.h"
-#include "forms/form_aboutlyx.h"
 #include "FormBibitem.h"
-#include "forms/form_bibitem.h"
 #include "FormBibtex.h"
-#include "forms/form_bibtex.h"
 #include "FormChanges.h"
-#include "forms/form_changes.h"
 #include "FormCharacter.h"
-#include "forms/form_character.h"
 #include "FormCitation.h"
-#include "forms/form_citation.h"
 #include "FormError.h"
-#include "forms/form_error.h"
 #include "FormERT.h"
-#include "forms/form_ert.h"
 #include "FormExternal.h"
-#include "forms/form_external.h"
 #include "FormFloat.h"
-#include "forms/form_float.h"
 #include "FormGraphics.h"
-#include "forms/form_graphics.h"
 #include "FormInclude.h"
-#include "forms/form_include.h"
+#include "FormLog.h"
 #include "FormMinipage.h"
-#include "forms/form_minipage.h"
 #include "FormParagraph.h"
-#include "forms/form_paragraph.h"
 #include "FormRef.h"
-#include "forms/form_ref.h"
 #include "FormTabular.h"
-#include "forms/form_tabular.h"
+#include "FormShowFile.h"
 #include "FormTabularCreate.h"
-#include "forms/form_tabular_create.h"
 #include "FormText.h"
-#include "forms/form_text.h"
 #include "FormToc.h"
-#include "forms/form_toc.h"
 #include "FormUrl.h"
-#include "forms/form_url.h"
+#include "FormVCLog.h"
 #include "FormWrap.h"
-#include "forms/form_wrap.h"
 
 #include "xformsBC.h"
 #include "ButtonController.h"
@@ -85,9 +70,9 @@
 namespace {
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
-"character", "citation", "error", "ert", "external", "float", "graphics",
-"include", "index", "label", "minipage", "paragraph", "ref", "tabular",
-"tabularcreate", "toc", "url", "wrap" };
+"character", "citation", "error", "ert", "external", "file", "float",
+"graphics", "include", "index", "label", "log", "minipage", "paragraph",
+"ref", "tabular", "tabularcreate", "toc", "url", "vclog", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -156,6 +141,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlExternal(*dialog));
 		dialog->setView(new FormExternal(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
+	} else if (name == "file") {
+		dialog->setController(new ControlShowFile(*dialog));
+		dialog->setView(new FormShowFile(*dialog));
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "float") {
 		dialog->setController(new ControlFloat(*dialog));
 		dialog->setView(new FormFloat(*dialog));
@@ -178,6 +167,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setView(new FormText(*dialog,
 					     _("Label"), _("Label:|#L")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "log") {
+		dialog->setController(new ControlLog(*dialog));
+		dialog->setView(new FormLog(*dialog));
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "minipage") {
 		dialog->setController(new ControlMinipage(*dialog));
 		dialog->setView(new FormMinipage(*dialog));
@@ -206,6 +199,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new FormUrl(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "vclog") {
+		dialog->setController(new ControlVCLog(*dialog));
+		dialog->setView(new FormVCLog(*dialog));
+		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "wrap") {
 		dialog->setController(new ControlWrap(*dialog));
 		dialog->setView(new FormWrap(*dialog));

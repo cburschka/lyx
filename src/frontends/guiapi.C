@@ -27,21 +27,9 @@ void gui_ShowDocument(Dialogs & d)
 }
 
 
-void gui_ShowFile(string const & f, Dialogs & d)
-{
-	d.showFile(f);
-}
-
-
 void gui_ShowForks(Dialogs & d)
 {
 	d.showForks();
-}
-
-
-void gui_ShowLogFile(Dialogs & d)
-{
-	d.showLogFile();
 }
 
 
@@ -98,10 +86,5 @@ void gui_ShowThesaurus(string const & s, Dialogs & d)
 	d.showThesaurus(s);
 }
 
-
-void gui_ShowVCLogFile(Dialogs & d)
-{
-	d.showVCLogFile();
-}
 
 } // extern "C"

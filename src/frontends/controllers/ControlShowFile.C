@@ -10,21 +10,25 @@
 
 #include <config.h>
 
-
 #include "ControlShowFile.h"
+#include "support/filetools.h"
 
-#include "support/filetools.h" // FileSearch
 
-
-ControlShowFile::ControlShowFile(LyXView & lv, Dialogs & d)
-	: ControlDialogBI(lv, d)
+ControlShowFile::ControlShowFile(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-void ControlShowFile::showFile(string const & file)
+bool ControlShowFile::initialiseParams(string const & data)
 {
-	filename_ = file;
-	show();
+	filename_ = data;
+	return true;
+}
+
+
+void ControlShowFile::clearParams()
+{
+	filename_.erase();
 }
 
 

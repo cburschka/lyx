@@ -18,8 +18,8 @@
 #include "gettext.h"
 #include FORMS_H_LOCATION
 
-FormLog::FormLog()
-	: FormCB<ControlLog, FormBrowser>( _("LaTeX Log"))
+FormLog::FormLog(Dialog & parent)
+	: FormController<ControlLog, FormBrowser>(parent, _("LaTeX Log"))
 {}
 
 
