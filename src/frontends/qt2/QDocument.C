@@ -241,8 +241,10 @@ void QDocument::apply()
 	if (dialog_->packagesModule->amsautoCB->isChecked()) {
 		params.use_amsmath = BufferParams::AMS_AUTO;
 	} else {
-		params.use_amsmath =
-			dialog_->packagesModule->amsCB->isChecked();
+		if (dialog_->packagesModule->amsCB->isChecked())
+			params.use_amsmath = BufferParams::AMS_ON;
+		else
+			params.use_amsmath = BufferParams::AMS_OFF;
 	}
 
 	// layout
@@ -481,7 +483,7 @@ void QDocument::update_contents()
 
 
 	dialog_->packagesModule->amsCB->setChecked(
-		params.use_amsmath == BufferParams::AMS_YES);
+		params.use_amsmath == BufferParams::AMS_ON);
 	dialog_->packagesModule->amsautoCB->setChecked(
 		params.use_amsmath == BufferParams::AMS_AUTO);
 
