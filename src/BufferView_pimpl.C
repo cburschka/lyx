@@ -61,6 +61,7 @@
 #include "insets/insetminipage.h"
 #include "insets/insetfloat.h"
 #include "insets/insettabular.h"
+#include "insets/insetoptarg.h"
 #if 0
 #include "insets/insettheorem.h"
 #include "insets/insetlist.h"
@@ -1660,6 +1661,10 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 
 	case LFUN_INSERT_NOTE:
 		insertAndEditInset(new InsetNote(buffer_->params));
+		break;
+
+	case LFUN_INSET_OPTARG:
+		insertAndEditInset(new InsetOptArg(buffer_->params));
 		break;
 
 	case LFUN_INSET_FLOAT:

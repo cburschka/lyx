@@ -49,6 +49,7 @@ Style Chapter
   LabelType             Counter_Chapter
   LabelString		"Chapter "
   LabelStringAppendix   "Appendix "
+  OptionalArgs				1
 
   # standard font definition
   Font 
@@ -73,6 +74,7 @@ Style Section
   Align			Block
   AlignPossible		Block, Left
   LabelType		Counter_Section
+  OptionalArgs				1
 
   # standard font definition
   Font 
@@ -97,6 +99,7 @@ Style Subsection
   Align			Block
   AlignPossible		Block, Left
   LabelType		Counter_Subsection
+  OptionalArgs				1
 
   # standard font definition
   Font 
@@ -121,6 +124,7 @@ Style Subsubsection
   Align			Block
   AlignPossible		Block, Left
   LabelType		Counter_SubSubSection
+  OptionalArgs				1
 
   # standard font definition
   Font 
@@ -145,6 +149,7 @@ Style Paragraph
   Align			Block
   AlignPossible		Block, Left
   LabelType		Counter_Paragraph
+  OptionalArgs				1
 
   # standard font definition
   Font 
@@ -170,6 +175,7 @@ Style Subparagraph
   Align			Block
   AlignPossible		Block, Left
   LabelType		Counter_SubParagraph
+  OptionalArgs				1
 
   # standard font definition
   Font 

@@ -282,6 +282,7 @@ enum kb_action {
 	LFUN_FORKS_SHOW,                // Angus 16 Feb 2002
 	LFUN_FORKS_KILL,                // Angus 16 Feb 2002
 	LFUN_TOOLTIPS_TOGGLE,           // Angus 8 Mar 2002
+	LFUN_INSET_OPTARG,				// Martin 12 Aug 2002
 	LFUN_MOUSE_PRESS,               // André 9 Aug 2002
 	LFUN_MOUSE_MOTION,              // André 9 Aug 2002
 	LFUN_MOUSE_RELEASE,             // André 9 Aug 2002

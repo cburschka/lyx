@@ -188,6 +188,9 @@ public:
 	LYX_LATEX_TYPES latextype;
 	/// Does this object belong in the title part of the document?
 	bool intitle;
+	/// Does this layout allow for an optional parameter?
+	int optionalargs;
+	
 private:
 	/// Name of the layout/paragraph environment
 	string name_;

@@ -247,6 +247,8 @@ void LyXAction::init()
 		  ReadOnly },
 		{ LFUN_INSERT_LABEL, "label-insert", N_("Insert Label"),
 		  Noop },
+		{ LFUN_INSET_OPTARG, "optional-insert", N_("Insert Optional Argument"),
+		  Noop },
 		{ LFUN_LANGUAGE, "language", N_("Change language"), Noop },
 		{ LFUN_LATEX_LOG, "latex-view-log", N_("View LaTeX log"),
 		  ReadOnly },

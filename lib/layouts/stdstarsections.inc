@@ -22,6 +22,7 @@ Style Chapter*
   Margin		Static
   LatexName		chapter*
   LabelType		No_Label
+  OptionalArgs		0
 End
 
 # Section* style definition
@@ -30,6 +31,7 @@ Style Section*
   Margin		Static
   LatexName		section*
   LabelType		No_Label
+  OptionalArgs		0
 End
 
 # Subsection* style definition
@@ -38,6 +40,7 @@ Style Subsection*
   Margin		Static
   LatexName		subsection*
   LabelType		No_Label
+  OptionalArgs		0
 End
 
 # Subsubsection* style definition
@@ -46,6 +49,7 @@ Style Subsubsection*
   Margin		Static
   LatexName		subsubsection*
   LabelType		No_Label
+  OptionalArgs		0
 End
 
 # Paragraph* style definition
@@ -54,6 +58,7 @@ Style Paragraph*
   Margin		Static
   LatexName		paragraph*
   LabelType		No_Label
+  OptionalArgs		0
 End
 
 # Subparagraph* style definition
@@ -62,5 +67,6 @@ Style Subparagraph*
   Margin		Static
   LatexName		subparagraph*
   LabelType		No_Label
+  OptionalArgs		0
 End
 

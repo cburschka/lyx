@@ -8,6 +8,7 @@ src/converter.C
 src/CutAndPaste.C
 src/debug.C
 src/exporter.C
+src/ext_l10n.h
 src/FloatList.C
 src/frontends/controllers/biblio.C
 src/frontends/controllers/ButtonController.h
@@ -133,6 +134,7 @@ src/insets/insetlist.C
 src/insets/insetmarginal.C
 src/insets/insetminipage.C
 src/insets/insetnote.C
+src/insets/insetoptarg.C
 src/insets/insetparent.C
 src/insets/insetref.C
 src/insets/insettabular.C

@@ -361,6 +361,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	}
 
+	case LFUN_INSET_OPTARG:
+		disable = (TEXT(false)->cursor.par()->layout()->optionalargs == 0);
+		break;
+
 	case LFUN_TABULAR_FEATURE:
 		if (mathcursor) {
 #if 0
@@ -527,6 +531,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_INSERT_LABEL:
 		code = Inset::LABEL_CODE;
 		break;
+	case LFUN_INSET_OPTARG:
+		code = Inset::OPTARG_CODE;
+		break;
 	case LFUN_REF_INSERT:
 		code = Inset::REF_CODE;
 		break;
@@ -577,9 +584,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	default:
 		break;
 	}
-	if (code != Inset::NO_CODE && tli && !tli->insetAllowed(code)) {
+	if (code != Inset::NO_CODE && tli && !tli->insetAllowed(code))
 		disable = true;
-	}
 
 	if (disable)
 		flag.disabled(true);

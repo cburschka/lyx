@@ -92,10 +92,13 @@ Style Caption
   Align			Center
   AlignPossible		Center
   LabelType		Sensitive
-  LabelString		Caption
+  LabelString	Caption
+  OptionalArgs		1
 
   # label font definition
   LabelFont 
     Series		Bold
   EndFont
 End
+
+

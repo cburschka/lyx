@@ -59,6 +59,7 @@ enum LayoutTags {
 	LT_ENDLABELTYPE,
 	LT_LATEXNAME,
 	LT_LATEXPARAM,
+	LT_OPTARGS,
 	LT_LATEXTYPE,
 	LT_LEFTMARGIN,
 	LT_NEED_PROTECT,
@@ -83,6 +84,7 @@ LyXLayout::LyXLayout ()
 	margintype = MARGIN_STATIC;
 	latextype = LATEX_PARAGRAPH;
 	intitle = false;
+	optionalargs = 0;
 	needprotect = false;
 	keepempty = false;
 	font = LyXFont(LyXFont::ALL_INHERIT);
@@ -146,6 +148,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "newline",		LT_NEWLINE },
 		{ "nextnoindent",	LT_NEXTNOINDENT },
 		{ "obsoletedby",	LT_OBSOLETEDBY },
+		{ "optionalargs",	LT_OPTARGS },
 		{ "parindent",		LT_PARINDENT },
 		{ "parsep",		LT_PARSEP },
 		{ "parskip",		LT_PARSKIP },
@@ -243,6 +246,10 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_INTITLE:
 			intitle = lexrc.next() && lexrc.getInteger();
+			break;
+
+		case LT_OPTARGS:
+			optionalargs = lexrc.next() && lexrc.getInteger();
 			break;
 
 		case LT_NEED_PROTECT:

@@ -32,6 +32,7 @@
 #include "insets/insetinclude.h"
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
+#include "insets/insetoptarg.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -955,6 +956,23 @@ int Paragraph::getPositionOfInset(Inset const * inset) const
 	return -1;
 }
 
+namespace {
+
+InsetOptArg * optArgInset(Paragraph const & par)
+{
+	// Find the entry.
+	InsetList::iterator it = par.insetlist.begin();
+	InsetList::iterator end = par.insetlist.end();
+	for (; it != end; ++it) {
+		Inset * ins = it.getInset();
+		if (ins->lyxCode() == Inset::OPTARG_CODE) {
+			return static_cast<InsetOptArg *>(ins);
+		}
+	}
+	return 0;
+}
+
+} // end namespace
 
 Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 				 BufferParams const & bparams,
@@ -1053,8 +1071,16 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	switch (style->latextype) {
 	case LATEX_COMMAND:
 		os << '\\'
-		   << style->latexname()
-		   << style->latexparam();
+		   << style->latexname();
+
+		// Separate handling of optional argument inset.
+		if (style->optionalargs == 1) {
+			InsetOptArg * it = optArgInset(*this);
+			if (it != 0)
+				it->latexOptional(buf, os, false, false);
+		}
+		else
+			os << style->latexparam();
 		break;
 	case LATEX_ITEM_ENVIRONMENT:
 		if (bibkey) {

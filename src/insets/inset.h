@@ -115,7 +115,9 @@ public:
 		///
 		FLOAT_LIST_CODE,
 		///
-		INDEX_PRINT_CODE
+		INDEX_PRINT_CODE,
+		///
+		OPTARG_CODE
 	};
 
 	///

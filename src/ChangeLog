@@ -1,3 +1,23 @@
+2002-08-22  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (getStatus): handle LFUN_INSET_OPTARG
+
+2002-08-20  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* BufferView_pimpl.C:
+	* LyXAction.C:
+	* buffer.C:
+	* commandtags.h:
+	* lyxfunc.C:
+	* paragraph.[Ch]:
+	* text2.C:
+	* insets/insetoptarg.[Ch]: Added "optional argument" collapsible
+	inset and code to make it  work with the paragraph code. The inset
+	can be anywhere in the paragraph, but will only do the expected
+	thing in LaTeX if the layout file contains the parameter line
+			OptionalArgs	1
+	(or more generally, a nonzero value) for that layout.
+
 2002-08-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* paragraph.h: remove the declaration of undefined counters class

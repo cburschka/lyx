@@ -63,6 +63,8 @@ libinsets_la_SOURCES = \
 	insetminipage.h \
 	insetnote.C \
 	insetnote.h \
+	insetoptarg.C \
+	insetoptarg.h \
 	insetparent.C \
 	insetparent.h \
 	insetquotes.C \

@@ -73,6 +73,7 @@
 #include "insets/insetgraphics.h"
 #include "insets/insetfoot.h"
 #include "insets/insetmarginal.h"
+#include "insets/insetoptarg.h"
 #include "insets/insetminipage.h"
 #include "insets/insetfloat.h"
 #include "insets/insettabular.h"
@@ -1115,6 +1116,8 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetFoot(params);
 		} else if (tmptok == "Marginal") {
 			inset = new InsetMarginal(params);
+		} else if (tmptok == "OptArg") {
+			inset = new InsetOptArg(params);
 		} else if (tmptok == "Minipage") {
 			inset = new InsetMinipage(params);
 		} else if (tmptok == "Float") {
