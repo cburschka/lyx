@@ -1,3 +1,7 @@
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.h: remove forward declarations of InsetBibKey, InsetBibtex.
+
 2003-02-14  John Levon  <levon@movementarian.org>
 
 	* LyXView.h: prohibit/allowInput() -> busy(bool)

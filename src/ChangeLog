@@ -1,3 +1,22 @@
+2003-02-21  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView_pimpl.C: replace insetbib.h with insetbibtex.h.
+	* LyXAction.C: change, BIBKEY to BIBITEM.
+	* buffer.C: replace insetbib.h with insetbibitem.h and insetbibtex.h.
+	Change InsetBibKey to InsetBibitem.
+	Change BIBKEY_CODE to BIBITEM_CODE.
+	* commandtags.h: change LFUN_INSERT_BIBKEY to LFUN_INSERT_BIBITEM.
+	* factory.C: replace insetbib.h with insetbibitem.h.
+	Change LFUN_INSERT_BIBKEY to LFUN_INSERT_BIBITEM.
+	* paragraph.C: replace insetbib.h with insetbibitem.h.
+	* paragraph.[Ch]: change InsetBibKey to InsetBibitem.
+	Change bibkey() to bibitem().
+	* text.C: remove insetbib.h.
+	* text2.C: replace insetbib.h with insetbibitem.h.
+	change bibkey() to bibitem().
+	* text3.C: remove insetbib.h.
+	change LFUN_INSERT_BIBKEY to LFUN_INSERT_BIBITEM.
+
 2003-02-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxrc.C (output): enclose user email in quotes (in case there are

@@ -23,7 +23,7 @@
 class BufferParams;
 class BufferView;
 class Counters;
-class InsetBibKey;
+class InsetBibitem;
 class Language;
 class LaTeXFeatures;
 class ParagraphParameters;
@@ -151,7 +151,7 @@ public:
 	char itemdepth;
 
 	///
-	InsetBibKey * bibkey();  // ale970302
+	InsetBibitem * bibitem();  // ale970302
 
 #ifndef NO_NEXT
 	///

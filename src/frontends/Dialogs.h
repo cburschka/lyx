@@ -20,8 +20,6 @@
 #include <boost/signals/signal1.hpp>
 
 class LyXView;
-class InsetBibKey;
-class InsetBibtex;
 class InsetCommand;
 class InsetError;
 class InsetERT;

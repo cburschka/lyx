@@ -31,7 +31,6 @@
 #include "frontends/Dialogs.h"
 #include "insets/insetspecialchar.h"
 #include "insets/insettext.h"
-#include "insets/insetbib.h"
 #include "insets/insetquotes.h"
 #include "insets/insetcommand.h"
 #include "undo_funcs.h"
@@ -1610,7 +1609,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INSET_CAPTION:
 #endif
 	case LFUN_INSERT_NOTE:
-	case LFUN_INSERT_BIBKEY:
+	case LFUN_INSERT_BIBITEM:
 	case LFUN_INSET_ERT:
 	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_FOOTNOTE:

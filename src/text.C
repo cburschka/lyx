@@ -33,7 +33,6 @@
 #include "WordLangTuple.h"
 #include "paragraph_funcs.h"
 
-#include "insets/insetbib.h"
 #include "insets/insettext.h"
 
 #include "support/textutils.h"

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file insetbib.h
+ * \file insetbibtex.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,65 +9,14 @@
  * Full author contact details are available in file CREDITS
  */
 
-#ifndef INSET_BIB_H
-#define INSET_BIB_H
+#ifndef INSET_BIBTEX_H
+#define INSET_BIBTEX_H
 
 
 #include <vector>
 #include "insetcommand.h"
 
 class Buffer;
-
-/** Used to insert bibitem's information (key and label)
-
-  Must be automatically inserted as the first object in a
-  bibliography paragraph.
-  */
-class InsetBibKey : public InsetCommand {
-public:
-	///
-	InsetBibKey(InsetCommandParams const &);
-	///
-	Inset * clone(Buffer const &, bool same_id = false) const;
-	/** Currently \bibitem is used as a LyX2.x command,
-	    so we need this method.
-	*/
-	void write(Buffer const *, std::ostream &) const;
-	///
-	void read(Buffer const *, LyXLex & lex);
-	///
-	virtual string const getScreenLabel(Buffer const *) const;
-	///
-	void edit(BufferView *, int x, int y, mouse_button::state button);
-	///
-	void edit(BufferView * bv, bool front = true);
-	///
-	EDITABLE editable() const { return IS_EDITABLE; }
-	///
-	Inset::Code lyxCode() const { return Inset::BIBKEY_CODE; }
-	/// keep .lyx format compatible
-	bool directWrite() const { return true; }
-	///
-	void setCounter(int);
-	///
-	int  getCounter() const { return counter; }
-	///
-	string const getBibLabel() const;
-	///
-	struct Holder {
-		InsetBibKey * inset;
-		BufferView * view;
-	};
-
-private:
-	///
-	int counter;
-	///
-	Holder holder;
-	///
-	static int key_counter;
-};
-
 
 /** Used to insert BibTeX's information
   */
@@ -114,4 +63,4 @@ private:
 	Holder holder;
 };
 
-#endif
+#endif // INSET_BIBTEX_H

@@ -1,5 +1,5 @@
 /**
- * \file insetbib.C
+ * \file insetbibtex.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,17 +10,13 @@
 #include <config.h>
 
 
-#include "insetbib.h"
+#include "insetbibtex.h"
 #include "buffer.h"
-#include "debug.h"
 #include "BufferView.h"
+#include "debug.h"
 #include "gettext.h"
-#include "lyxtext.h"
-#include "lyxrc.h"
-#include "lyxlex.h"
-#include "frontends/font_metrics.h"
-#include "frontends/LyXView.h"
 
+#include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 
 #include "support/filetools.h"
@@ -38,87 +34,6 @@ using std::getline;
 using std::endl;
 using std::vector;
 using std::pair;
-using std::max;
-
-int InsetBibKey::key_counter = 0;
-const string key_prefix = "key-";
-
-InsetBibKey::InsetBibKey(InsetCommandParams const & p)
-	: InsetCommand(p), counter(1)
-{
-	if (getContents().empty())
-		setContents(key_prefix + tostr(++key_counter));
-}
-
-
-Inset * InsetBibKey::clone(Buffer const &, bool) const
-{
-	InsetBibKey * b = new InsetBibKey(params());
-	b->setCounter(counter);
-	return b;
-}
-
-
-void InsetBibKey::setCounter(int c)
-{
-	counter = c;
-}
-
-
-// I'm sorry but this is still necessary because \bibitem is used also
-// as a LyX 2.x command, and lyxlex is not enough smart to understand
-// real LaTeX commands. Yes, that could be fixed, but would be a waste
-// of time cause LyX3 won't use lyxlex anyway.  (ale)
-void InsetBibKey::write(Buffer const *, ostream & os) const
-{
-	os << "\n\\bibitem ";
-	if (!getOptions().empty())
-		os << '[' << getOptions() << ']';
-	os << '{' << getContents() << "}\n";
-}
-
-
-// This is necessary here because this is written without begin_inset
-// This should be changed!!! (Jug)
-void InsetBibKey::read(Buffer const *, LyXLex & lex)
-{
-	if (lex.eatLine()) {
-		scanCommand(lex.getString());
-	} else {
-		lex.printError("InsetCommand: Parse error: `$$Token'");
-	}
-
-	if (prefixIs(getContents(), key_prefix)) {
-		int key = strToInt(getContents().substr(key_prefix.length()));
-		key_counter = max(key_counter, key);
-	}
-}
-
-
-string const InsetBibKey::getBibLabel() const
-{
-	return getOptions().empty() ? tostr(counter) : getOptions();
-}
-
-
-string const InsetBibKey::getScreenLabel(Buffer const *) const
-{
-	return getContents() + " [" + getBibLabel() + ']';
-}
-
-
-void InsetBibKey::edit(BufferView * bv, int, int, mouse_button::state)
-{
-	bv->owner()->getDialogs().showBibitem(this);
-}
-
-
-void InsetBibKey::edit(BufferView * bv, bool)
-{
-	edit(bv, 0, 0, mouse_button::none);
-}
-
-
 
 
 InsetBibtex::InsetBibtex(InsetCommandParams const & p, bool)
@@ -311,53 +226,4 @@ bool InsetBibtex::delDatabase(string const & db)
 			return false;
 	}
 	return true;
-}
-
-
-// ale070405 This function maybe shouldn't be here. We'll fix this at 0.13.
-int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
-{
-	int w = 0;
-	// Ha, now we are mainly at 1.2.0 and it is still here (Jug)
-	// Does look like a hack? It is! (but will change at 0.13)
-	ParagraphList::iterator it = bv->buffer()->paragraphs.begin();
-	ParagraphList::iterator end = bv->buffer()->paragraphs.end();
-	for (; it != end; ++it) {
-		if (it->bibkey()) {
-			int const wx = it->bibkey()->width(bv, font);
-			if (wx > w)
-				w = wx;
-		}
-	}
-	return w;
-}
-
-
-// ale070405
-string const bibitemWidest(Buffer const * buffer)
-{
-	int w = 0;
-	// Does look like a hack? It is! (but will change at 0.13)
-
-	InsetBibKey * bkey = 0;
-	LyXFont font;
-
-	ParagraphList::iterator it = buffer->paragraphs.begin();
-	ParagraphList::iterator end = buffer->paragraphs.end();
-	for (; it != end; ++it) {
-		if (it->bibkey()) {
-			int const wx =
-				font_metrics::width(it->bibkey()->getBibLabel(),
-						    font);
-			if (wx > w) {
-				w = wx;
-				bkey = it->bibkey();
-			}
-		}
-	}
-
-	if (bkey && !bkey->getBibLabel().empty())
-		return bkey->getBibLabel();
-
-	return "99";
 }

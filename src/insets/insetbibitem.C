@@ -1,0 +1,152 @@
+/**
+ * \file insetbibitem.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Alejandro Aguilar Sierra
+ *
+ * Full author contact details are available in file CREDITS
+ */
+#include <config.h>
+
+#include "insetbibitem.h"
+#include "buffer.h"
+#include "BufferView.h"
+#include "lyxlex.h"
+
+#include "frontends/font_metrics.h"
+#include "frontends/LyXView.h"
+#include "frontends/Dialogs.h"
+
+#include "support/lstrings.h"
+
+
+using std::max;
+
+
+int InsetBibitem::key_counter = 0;
+const string key_prefix = "key-";
+
+InsetBibitem::InsetBibitem(InsetCommandParams const & p)
+	: InsetCommand(p), counter(1)
+{
+	if (getContents().empty())
+		setContents(key_prefix + tostr(++key_counter));
+}
+
+
+Inset * InsetBibitem::clone(Buffer const &, bool) const
+{
+	InsetBibitem * b = new InsetBibitem(params());
+	b->setCounter(counter);
+	return b;
+}
+
+
+void InsetBibitem::setCounter(int c)
+{
+	counter = c;
+}
+
+
+// I'm sorry but this is still necessary because \bibitem is used also
+// as a LyX 2.x command, and lyxlex is not enough smart to understand
+// real LaTeX commands. Yes, that could be fixed, but would be a waste
+// of time cause LyX3 won't use lyxlex anyway.  (ale)
+void InsetBibitem::write(Buffer const *, std::ostream & os) const
+{
+	os << "\n\\bibitem ";
+	if (!getOptions().empty())
+		os << '[' << getOptions() << ']';
+	os << '{' << getContents() << "}\n";
+}
+
+
+// This is necessary here because this is written without begin_inset
+// This should be changed!!! (Jug)
+void InsetBibitem::read(Buffer const *, LyXLex & lex)
+{
+	if (lex.eatLine()) {
+		scanCommand(lex.getString());
+	} else {
+		lex.printError("InsetCommand: Parse error: `$$Token'");
+	}
+
+	if (prefixIs(getContents(), key_prefix)) {
+		int key = strToInt(getContents().substr(key_prefix.length()));
+		key_counter = max(key_counter, key);
+	}
+}
+
+
+string const InsetBibitem::getBibLabel() const
+{
+	return getOptions().empty() ? tostr(counter) : getOptions();
+}
+
+
+string const InsetBibitem::getScreenLabel(Buffer const *) const
+{
+	return getContents() + " [" + getBibLabel() + ']';
+}
+
+
+void InsetBibitem::edit(BufferView * bv, int, int, mouse_button::state)
+{
+	bv->owner()->getDialogs().showBibitem(this);
+}
+
+
+void InsetBibitem::edit(BufferView * bv, bool)
+{
+	edit(bv, 0, 0, mouse_button::none);
+}
+
+
+// ale070405 This function maybe shouldn't be here. We'll fix this at 0.13.
+int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
+{
+	int w = 0;
+	// Ha, now we are mainly at 1.2.0 and it is still here (Jug)
+	// Does look like a hack? It is! (but will change at 0.13)
+	ParagraphList::iterator it = bv->buffer()->paragraphs.begin();
+	ParagraphList::iterator end = bv->buffer()->paragraphs.end();
+	for (; it != end; ++it) {
+		if (it->bibitem()) {
+			int const wx = it->bibitem()->width(bv, font);
+			if (wx > w)
+				w = wx;
+		}
+	}
+	return w;
+}
+
+
+// ale070405
+string const bibitemWidest(Buffer const * buffer)
+{
+	int w = 0;
+	// Does look like a hack? It is! (but will change at 0.13)
+
+	InsetBibitem * bitem = 0;
+	LyXFont font;
+
+	ParagraphList::iterator it = buffer->paragraphs.begin();
+	ParagraphList::iterator end = buffer->paragraphs.end();
+	for (; it != end; ++it) {
+		if (it->bibitem()) {
+			int const wx =
+				font_metrics::width(it->bibitem()->getBibLabel(),
+						    font);
+			if (wx > w) {
+				w = wx;
+				bitem = it->bibitem();
+			}
+		}
+	}
+
+	if (bitem && !bitem->getBibLabel().empty())
+		return bitem->getBibLabel();
+
+	return "99";
+}

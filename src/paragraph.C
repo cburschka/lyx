@@ -26,7 +26,7 @@
 #include "gettext.h"
 #include "changes.h"
 
-#include "insets/insetbib.h"
+#include "insets/insetbibitem.h"
 #include "insets/insetoptarg.h"
 
 #include "support/filetools.h"
@@ -942,11 +942,11 @@ int Paragraph::getPositionOfInset(Inset const * inset) const
 }
 
 
-InsetBibKey * Paragraph::bibkey()
+InsetBibitem * Paragraph::bibitem()
 {
 	InsetList::iterator it = insetlist.begin();
 	if (it != insetlist.end() && it.getInset()->lyxCode() == Inset::BIBTEX_CODE)
-		return static_cast<InsetBibKey *>(it.getInset()); 
+		return static_cast<InsetBibitem *>(it.getInset()); 
 	return 0;
 }
 

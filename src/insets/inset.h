@@ -84,6 +84,8 @@ public:
 		///
 		PARENT_CODE,
 		///
+		BIBITEM_CODE,
+		///
 		BIBTEX_CODE,
 		///
 		TEXT_CODE,
@@ -122,9 +124,7 @@ public:
 		///
 		INDEX_PRINT_CODE,
 		///
-		OPTARG_CODE,
-		///
-		BIBKEY_CODE
+		OPTARG_CODE
 	};
 
 	///

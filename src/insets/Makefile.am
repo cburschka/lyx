@@ -19,8 +19,10 @@ libinsets_la_SOURCES = \
 	inset.h \
 	insetbase.h \
 	insetbase.C \
-	insetbib.C \
-	insetbib.h \
+	insetbibitem.C \
+	insetbibitem.h \
+	insetbibtex.C \
+	insetbibtex.h \
 	insetbutton.C \
 	insetbutton.h \
 	insetcaption.C \

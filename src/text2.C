@@ -31,7 +31,7 @@
 #include "counters.h"
 
 #include "insets/inseterror.h"
-#include "insets/insetbib.h"
+#include "insets/insetbibitem.h"
 #include "insets/insetspecialchar.h"
 #include "insets/insettext.h"
 #include "insets/insetfloat.h"
@@ -1263,12 +1263,8 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		textclass.counters().step("bibitem");
 		int number = textclass.counters().value("bibitem");
-		//if (!par->bibkey()) {
-		//	Inset * inset = new InsetBibKey(InsetCommandParams("bibitem"));
-		//	//par->insertInset(0, inset);
-		//}
-		if (par->bibkey()) {
-			par->bibkey()->setCounter(number);
+		if (par->bibitem()) {
+			par->bibitem()->setCounter(number);
 			par->params().labelString(layout->labelstring());
 		}
 		// In biblio should't be following counters but...

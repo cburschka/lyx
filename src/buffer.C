@@ -55,7 +55,8 @@
 #include "insets/insetnote.h"
 #include "insets/insetquotes.h"
 #include "insets/insetlatexaccent.h"
-#include "insets/insetbib.h"
+#include "insets/insetbibitem.h"
+#include "insets/insetbibtex.h"
 #include "insets/insetcite.h"
 #include "insets/insetexternal.h"
 #include "insets/insetindex.h"
@@ -958,7 +959,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		++pos;
 	} else if (token == "\\bibitem") {  // ale970302
 		InsetCommandParams p("bibitem", "dummy");
-		InsetBibKey * inset = new InsetBibKey(p);
+		InsetBibitem * inset = new InsetBibitem(p);
 		inset->read(this, lex);
 		par->insertInset(pos, inset, font, current_change);
 		++pos;
@@ -1099,7 +1100,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetCitation(inscmd);
 		} else if (cmdName == "bibitem") {
 			lex.printError("Wrong place for bibitem");
-			inset = new InsetBibKey(inscmd);
+			inset = new InsetBibitem(inscmd);
 		} else if (cmdName == "BibTeX") {
 			inset = new InsetBibtex(inscmd);
 		} else if (cmdName == "index") {
@@ -2890,8 +2891,8 @@ void Buffer::fillWithBibKeys(vector<pair<string, string> > & keys) const
 			static_cast<InsetBibtex &>(*it).fillWithBibKeys(this, keys);
 		else if (it->lyxCode() == Inset::INCLUDE_CODE)
 			static_cast<InsetInclude &>(*it).fillWithBibKeys(keys);
-		else if (it->lyxCode() == Inset::BIBKEY_CODE) {
-			InsetBibKey & bib = static_cast<InsetBibKey &>(*it);
+		else if (it->lyxCode() == Inset::BIBITEM_CODE) {
+			InsetBibitem & bib = static_cast<InsetBibitem &>(*it);
 			string const key = bib.getContents();
 			string const opt = bib.getOptions();
 			string const ref; // = pit->asString(this, false);
