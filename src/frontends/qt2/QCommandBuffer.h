@@ -17,6 +17,7 @@
  
 class QtView;
 class QCommandEdit;
+class QListBoxItem;
 class ControlCommandBuffer;
  
 class QCommandBuffer : public QToolBar {

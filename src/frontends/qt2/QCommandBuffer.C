@@ -11,12 +11,14 @@
 #include "support/filetools.h"
 #include "controllers/ControlCommandBuffer.h"
 #include "gettext.h"
+#include "debug.h"
  
 #include "QtView.h"
 #include "QCommandBuffer.h"
 #include "QCommandEdit.h"
  
 #include <qcombobox.h>
+#include <qlistbox.h>
 #include <qtoolbutton.h>
 #include <qpixmap.h>
 
@@ -24,13 +26,22 @@ using std::vector;
 
 namespace {
  
-class QTempComboBox : public QComboBox {
+class QTempListBox : public QListBox {
 public:
-	QTempComboBox(QWidget * parent) : QComboBox(parent) {
-		setWFlags(WDestructiveClose);
+	QTempListBox()
+		: QListBox(0, 0,
+		WType_Popup | WDestructiveClose) {
+		setHScrollBarMode(AlwaysOff);
 	}
-
-	void popup() { QComboBox::popup(); }
+ 
+protected:
+	void keyPressEvent(QKeyEvent * e) {
+		if (e->key() == Key_Escape) {
+			hide();
+			return;
+		}
+		QListBox::keyPressEvent(e);
+	}
 };
 
 }
@@ -104,33 +115,45 @@ void QCommandBuffer::complete()
 				 
 	edit_->setText(new_input.c_str());
 
-	QTempComboBox * combo = new QTempComboBox(view_);
-	combo->move(edit_->x() + x(), edit_->y() + y());
-
+	QTempListBox * list = new QTempListBox();
 	vector<string>::const_iterator cit = comp.begin();
 	vector<string>::const_iterator end = comp.end();
 	for (; cit != end; ++cit) {
-		combo->insertItem(cit->c_str());
+		list->insertItem(cit->c_str());
 	}
 
-        combo->setMinimumWidth(combo->sizeHint().width());
-	combo->resize(combo->width(), edit_->height());
+	// For some reason we get lots of empty entries and the 
+	// scrollbar is wrong as a result. No fix. Qt Sucks.
  
-	connect(combo, SIGNAL(activated(const QString &)),
+	// width() is not big enough by a few pixels. Qt Sucks.
+	list->setMinimumWidth(list->sizeHint().width() + 10);
+ 
+	list->resize(list->sizeHint());
+	QPoint pos(edit_->mapToGlobal(QPoint(0, 0))); 
+	int y = pos.y() - list->height();
+	if (y < 0)
+		y = 0;
+	list->move(pos.x(), y);
+ 
+	connect(list, SIGNAL(selected(const QString &)),
 		this, SLOT(complete_selected(const QString &))); 
  
-	combo->show();
-	combo->setFocus();
-	combo->popup();
+	// Note we *cannot* make a single click popup, because
+	// events get generated for outside the popup on Qt 2.3.1
+	// and even gives valid QListBoxItem *'s. We have no way
+	// to work past this. Qt Sucks. 
+	//connect(list, SIGNAL(clicked(QListBoxItem *)),
+	//	this, SLOT(complete_selected2(QListBoxItem *)));
+
+	list->show();
+	list->setFocus();
 }
 
 
 void QCommandBuffer::complete_selected(const QString & str)
 {
 	edit_->setText(str + " ");
-	// FIXME
 	QWidget const * widget = static_cast<QWidget const *>(sender());
-	edit_->setFocus();
 	const_cast<QWidget *>(widget)->hide();
 }
 

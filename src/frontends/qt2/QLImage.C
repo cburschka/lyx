@@ -193,7 +193,6 @@ bool QLImage::setPixmap(Params const & params)
 
 void QLImage::clip(Params const & params)
 {
-	lyxerr << "clip isNull " << pixmap_.isNull() << ", " <<xformed_pixmap_.isNull() << endl; 
 	if (xformed_pixmap_.isNull())
 		return;
 
@@ -228,7 +227,6 @@ void QLImage::clip(Params const & params)
 
 void QLImage::rotate(Params const & params)
 {
-	lyxerr << "rotate isNull " << pixmap_.isNull() << ", " <<xformed_pixmap_.isNull() << endl; 
 	if (xformed_pixmap_.isNull())
 		return;
 
@@ -248,7 +246,6 @@ void QLImage::rotate(Params const & params)
 
 void QLImage::scale(Params const & params)
 {
-	lyxerr << "scale isNull " << pixmap_.isNull() << ", " <<xformed_pixmap_.isNull() << endl; 
 	if (xformed_pixmap_.isNull())
 		return;
 
