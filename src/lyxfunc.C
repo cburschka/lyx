@@ -676,6 +676,12 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	case LFUN_APPENDIX:
 		flag.setOnOff(TEXT(false)->cursor.par()->params().startOfAppendix());
 		break;
+	case LFUN_SWITCHBUFFER:
+		// toggle on the current buffer, but do not toggle off
+		// the other ones (is that a good idea?) 
+		if (argument == buf->fileName())
+			flag.setOnOff(true);
+		break;
 	default:
 		break;
 	}

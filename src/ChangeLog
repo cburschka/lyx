@@ -1,3 +1,8 @@
+2002-02-11  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (getStatus): handle LFUN_SWITCHBUFFER so that the
+	document menu has a nice checkbox
+
 2002-02-07  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxlength.C (asLatexString): change PW to output as percent of
