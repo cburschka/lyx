@@ -346,6 +346,10 @@ public:
 	///
 	void cursorEnd(BufferView *) const;
 	///
+	void cursorPrevious(BufferView * bv);
+	///
+	void cursorNext(BufferView * bv);
+	///
 	void cursorTab(BufferView *) const;
 	///
 	void cursorTop(BufferView *) const;
@@ -487,10 +491,6 @@ private:
 
 	///
 	void cursorLeftOneWord(LyXCursor &) const;
-	///
-	void cursorPrevious(BufferView * bv);
-	///
-	void cursorNext(BufferView * bv);
  
 	///
 	float getCursorX(BufferView *, Row *, lyx::pos_type pos,

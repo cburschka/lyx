@@ -1340,6 +1340,24 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 		lt->cursorEnd(bv);
 		updwhat = CURSOR;
 		break;
+	case LFUN_PRIOR:
+		if (!crow(bv)->previous())
+			result = FINISHED_UP;
+		else {
+			lt->cursorPrevious(bv);
+			result = DISPATCHED_NOUPDATE;
+		}
+		updwhat = CURSOR;
+		break;
+	case LFUN_NEXT:
+		if (!crow(bv)->next())
+			result = FINISHED_DOWN;
+		else {
+			lt->cursorNext(bv);
+			result = DISPATCHED_NOUPDATE;
+		}
+		updwhat = CURSOR;
+		break;
 	case LFUN_BACKSPACE: {
 		setUndo(bv, Undo::DELETE,
 			lt->cursor.par(), lt->cursor.par()->next());
@@ -1896,8 +1914,7 @@ InsetText::moveLeftIntern(BufferView * bv, bool front,
 }
 
 
-Inset::RESULT
-InsetText::moveUp(BufferView * bv)
+Inset::RESULT InsetText::moveUp(BufferView * bv)
 {
 	if (!crow(bv)->previous())
 		return FINISHED_UP;
@@ -1906,8 +1923,7 @@ InsetText::moveUp(BufferView * bv)
 }
 
 
-Inset::RESULT
-InsetText::moveDown(BufferView * bv)
+Inset::RESULT InsetText::moveDown(BufferView * bv)
 {
 	if (!crow(bv)->next())
 		return FINISHED_DOWN;

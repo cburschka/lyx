@@ -26,7 +26,9 @@ string verboseHLine(int n)
 	string res;
 	for (int i = 0; i < n; ++i)
 		res += "\\hline";
-	return res + ' ';
+	if (n)
+		res += " ";
+	return res;
 }
 
 }

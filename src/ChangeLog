@@ -1,3 +1,8 @@
+2002-10-11 André Pönitz <poenitz@gmx.net>
+
+	* lytext.h: make some functions public to allow access
+	from inset/lyxtext for handling LFUN_PRIOR/NEXT
+
 2002-10-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* text3.C (dispatch): when changing layout, avoid an infinite loop
