@@ -817,6 +817,11 @@ pos_type LyXText::rowBreakPoint(Row const & row) const
 	bool fullrow = false;
 
 	pos_type i = pos;
+
+	// We re-use the font resolution for the entire font span when possible
+	LyXFont font = getFont(bv()->buffer(), pit, i);
+	lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
+
 	for (; i < last; ++i) {
 		if (pit->isNewline(i)) {
 			point = i;
@@ -838,7 +843,27 @@ pos_type LyXText::rowBreakPoint(Row const & row) const
 				thiswidth = left_margin - x;
 			thiswidth += singleWidth(pit, i, c);
 		} else {
-			thiswidth = singleWidth(pit, i, c);
+			// Manual inlined optimised version of common case of "thiswidth = singleWidth(pit, i, c);"
+			if (IsPrintable(c)) {
+				if (pos > endPosOfFontSpan) {
+					// We need to get the next font
+					font = getFont(bv()->buffer(), pit, i);
+					endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
+				}
+				if (! font.language()->RightToLeft()) {
+					thiswidth = font_metrics::width(c, font);
+				} else {
+					// Fall-back to normal case
+					thiswidth = singleWidth(pit, i, c);
+					// And flush font cache
+					endPosOfFontSpan = 0;
+				}
+			} else {
+				// Fall-back to normal case
+				thiswidth = singleWidth(pit, i, c);
+				// And flush font cache
+				endPosOfFontSpan = 0;
+			}
 		}
 
 		x += thiswidth;
@@ -1098,32 +1123,59 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 	int maxwidth = 0;
 
 	if (!pit->empty()) {
+		// We re-use the font resolution for the entire font span when possible
+		LyXFont font = getFont(bv()->buffer(), pit, rit->pos());
+		lyx::pos_type endPosOfFontSpan = pit->getEndPosOfFontSpan(rit->pos());
+
+		// Optimisation
+		Paragraph const & par = *pit;
+
 		// Check if any insets are larger
 		for (pos_type pos = rit->pos(); pos <= pos_end; ++pos) {
-			if (pit->isInset(pos)) {
-				LyXFont const & tmpfont = getFont(bv()->buffer(), pit, pos);
-				InsetOld * tmpinset = pit->getInset(pos);
-				if (tmpinset) {
-#if 1 // this is needed for deep update on initialitation
-#warning inset->update FIXME
-					//tmpinset->update(bv());
-					Dimension dim;
-					MetricsInfo mi(bv(), tmpfont, workWidth());
-					tmpinset->metrics(mi, dim);
-					maxwidth += dim.wid;
-					maxasc = max(maxasc, dim.asc);
-					maxdesc = max(maxdesc, dim.des);
-#else
-					maxwidth += tmpinset->width();
-					maxasc = max(maxasc, tmpinset->ascent());
-					maxdesc = max(maxdesc, tmpinset->descent());
-#endif
+			// Manual inlined optimised version of common case of "maxwidth += singleWidth(pit, pos);"
+			char const c = par.getChar(pos);
+
+			if (IsPrintable(c)) {
+				if (pos > endPosOfFontSpan) {
+					// We need to get the next font
+					font = getFont(bv()->buffer(), pit, pos);
+					endPosOfFontSpan = par.getEndPosOfFontSpan(pos);
+				}
+				if (! font.language()->RightToLeft()) {
+					maxwidth += font_metrics::width(c, font);
+				} else {
+					// Fall-back to normal case
+					maxwidth += singleWidth(pit, pos, c);
+					// And flush font cache
+					endPosOfFontSpan = 0;
 				}
 			} else {
-				// Manual inlined optimised version of common case of "maxwidth += singleWidth(pit, pos);"
-				char const c = pit->getChar(pos);
-				maxwidth += singleWidth(pit, pos, c);
-				
+				// Special handling of insets - are any larger?
+				if (par.isInset(pos)) {
+					LyXFont const tmpfont = getFont(bv()->buffer(), pit, pos);
+					InsetOld const * tmpinset = par.getInset(pos);
+					if (tmpinset) {
+#if 1 // this is needed for deep update on initialitation
+#warning inset->update FIXME
+						//tmpinset->update(bv());
+						Dimension dim;
+						MetricsInfo mi(bv(), tmpfont, workWidth());
+						tmpinset->metrics(mi, dim);
+						maxwidth += dim.wid;
+						maxasc = max(maxasc, dim.asc);
+						maxdesc = max(maxdesc, dim.des);
+#else
+						maxwidth += tmpinset->width();
+						maxasc = max(maxasc, tmpinset->ascent());
+						maxdesc = max(maxdesc, tmpinset->descent());
+#endif
+					} 
+				} else {
+					// Fall-back to normal case
+					maxwidth += singleWidth(pit, pos, c);
+					// And flush font cache
+					endPosOfFontSpan = 0;
+				}
 			}
 		}
 	}

@@ -6,6 +6,8 @@
 
 	* text.C (fill): Optimise algorithm to exploit that we can reuse
 	the LyXFont for many characters.
+	(setHeightOfRow): Same thing.
+	(rowBreakPoint): Same thing.
 
 2003-07-26  Asger Alstrup  <alstrup@local>
 
