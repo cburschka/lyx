@@ -23,6 +23,7 @@
 #include "support/lstrings.h"
 #include "FloatList.h"
 #include "LaTeXFeatures.h"
+#include "lyxtextclasslist.h"
 #include "debug.h"
 #include "Floating.h"
 #include "buffer.h"
@@ -101,6 +102,10 @@ using std::endl;
 
 namespace {
 
+// this should not be hardcoded, but be part of the definition
+// of the float (JMarc)
+string const caplayout("Caption");
+
 string floatname(string const & type)
 {
 	FloatList::const_iterator it = floatList[type];
@@ -126,6 +131,9 @@ InsetFloat::InsetFloat(BufferParams const & bp, string const & type)
 	setLabelFont(font);
 	floatType_ = type;
 	setInsetName(type);
+	LyXTextClass const & tclass = textclasslist[bp.textclass];
+	if (tclass.hasLayout(caplayout))
+		inset.paragraph()->layout(caplayout);
 }
 
 

@@ -33,6 +33,10 @@ in there, and upgrading is highly recommended.
 
 - new option `keep aspect ratio' in graphics dialog
 
+- revert to the old behaviour when creating new floats (figure,
+  table...): the empty paragraph in the float now is a caption. It
+  seems that 1.2.0 behaviour was confusing to many people
+
 - when the cursor is inside a collapsable inset, `Edit>Open/close
   float' will leave it after the inset after closing it (this should
   help entering of ERT insets)
