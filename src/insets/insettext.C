@@ -906,7 +906,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 			the_locking_inset->insetUnlock(bv);
 			inset_x = cx(bv) - top_x + drawTextXOffset;
 			inset_y = cy(bv) + drawTextYOffset;
-			the_locking_inset = static_cast<UpdatableInset*>(inset);
+			the_locking_inset = 0;
 			inset->insetButtonPress(bv, x - inset_x,
 						y - inset_y, button);
 			inset->edit(bv, x - inset_x, y - inset_y, button);
