@@ -2914,7 +2914,7 @@ void LyXParagraph::SimpleTeXBlanks(string &file, TexRow &texrow,
 		texrow.start(this, i+1);
 		column = 0;
 	} else if (font.latex() == LyXFont::OFF) {
-		if (font.family() == LyXFont::TYPEWRITER_FAMILY) {
+		if (style->free_spacing) {
 			file += '~';
 		} else {
 			file += ' ';
