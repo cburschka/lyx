@@ -79,17 +79,17 @@ using namespace bv_funcs;
 using lyx::pos_type;
 using lyx::textclass_type;
 
-// These functions should probably go into bufferview_funcs somehow (Jug)
+
+// we should get rid of these (Andre')
 
 void InsetText::saveLyXTextState() const
 {
 	// check if my paragraphs are still valid
 	ParagraphList::iterator it = const_cast<ParagraphList&>(paragraphs).begin();
 	ParagraphList::iterator end = const_cast<ParagraphList&>(paragraphs).end();
-	for (; it != end; ++it) {
+	for (; it != end; ++it)
 		if (it == text_.cursor.par())
 			break;
-	}
 
 	if (it != end && text_.cursor.pos() <= it->size())
 		sstate = text_; // slicing intended
@@ -159,7 +159,7 @@ void InsetText::init(InsetText const * ins)
 		drawFrame_ = ins->drawFrame_;
 		frame_color = ins->frame_color;
 	} else {
-		textwidth_ = 0; // unbounded
+		textwidth_ = 0; // broken
 		drawFrame_ = NEVER;
 		frame_color = LColor::insetframe;
 		autoBreakRows = false;
@@ -1922,14 +1922,8 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 
 void InsetText::resizeLyXText(BufferView * bv, bool /*force*/) const
 {
-	if (paragraphs.size() == 1 && paragraphs.begin()->empty()) {
-		// no data, resize not neccessary!
-		// we have to do this as a fixed width may have changed!
-		saveLyXTextState();
-		text_.init(bv);
-		restoreLyXTextState();
+	if (paragraphs.size() == 1 && paragraphs.begin()->empty())
 		return;
-	}
 
 	if (!bv)
 		return;
@@ -1937,12 +1931,11 @@ void InsetText::resizeLyXText(BufferView * bv, bool /*force*/) const
 	Assert(bv);
 	setViewCache(bv);
 
-	saveLyXTextState();
-
 	for_each(const_cast<ParagraphList&>(paragraphs).begin(),
 		 const_cast<ParagraphList&>(paragraphs).end(),
 		 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
 
+	saveLyXTextState();
 	text_.init(bv);
 	restoreLyXTextState();
 
