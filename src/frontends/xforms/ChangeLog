@@ -1,3 +1,8 @@
+2004-06-04  Angus Leeming  <leeming@lyx.org>
+
+	* combox.c (combox_handle): prevent crash when trying to draw
+	non-existent 'button_state' button on an 'FL_NORMAL_COMBOX' combox.
+
 2004-06-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* forms/Makefile.am (.fd.C): Use '-r' to test for file existence,

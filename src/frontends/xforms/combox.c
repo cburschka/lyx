@@ -377,17 +377,23 @@ combox_handle(FL_OBJECT * ob, int event, FL_Coord mx, FL_Coord my, int key,
     case FL_DRAWLABEL: {
 	COMBOX_SPEC * sp = ob->spec;
 
-	FL_Coord const xbs =
-	    ob->x + (sp->button_state->x - sp->button_chosen->x);
+	int change =
+	    ob->x != sp->button_chosen->x ||
+	    ob->y != sp->button_chosen->y;
 
-	if (ob->x != sp->button_chosen->x ||
-	    ob->y != sp->button_chosen->y ||
-	    xbs   != sp->button_state->x ||
-	    ob->y != sp->button_state->y) {
+	FL_Coord xbs = 0;
+	if (sp->button_state) {
+	    xbs = ob->x + (sp->button_state->x - sp->button_chosen->x);
+	    change = change ||
+		xbs   != sp->button_state->x ||
+		ob->y != sp->button_state->y;
+	}
 
+	if (change) {
 	    fl_freeze_form(ob->form);
 	    fl_set_object_position(sp->button_chosen, ob->x, ob->y);
-	    fl_set_object_position(sp->button_state, xbs, ob->y);
+	    if (sp->button_state)
+		fl_set_object_position(sp->button_state, xbs, ob->y);
 	    fl_unfreeze_form(ob->form);
 	}
 
