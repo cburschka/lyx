@@ -208,6 +208,7 @@ void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
 				       int & column, LyXFont const & font,
 				       LyXLayout const & style)
 {
+	if (style.pass_thru) return;
 	if (column > tex_code_break_column
 	    && i 
 	    && getChar(i - 1) != ' '
@@ -266,6 +267,10 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     int & column,
 					     Paragraph::value_type const c)
 {
+	if (style.pass_thru) {
+		if (c != '\0') os << c;
+		return;
+	}
 	// Two major modes:  LaTeX or plain
 	// Handle here those cases common to both modes
 	// and then split to handle the two modes separately.

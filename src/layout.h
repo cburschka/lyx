@@ -321,6 +321,10 @@ public:
 
 	///
 	bool free_spacing;
+
+	///
+	bool pass_thru;
+
 	/** true when the fragile commands in the paragraph need to be
 	    \protect'ed. */
 	bool needprotect;

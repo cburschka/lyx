@@ -59,6 +59,21 @@
 	* sp_form.[Ch]: removed
 	* spellchecker.[Ch]: removed
 
+2001-07-12  Kayvan A. Sylvan  <kayvan@camel.internal.sylvan.com>
+
+	* paragraph_pimpl.C (simpleTeXBlanks): Simply return if pass_thru
+	is set.
+	(simpleTeXSpecialChars): Simply print the input character without
+	any special translation if pass_thru is set.
+
+	* layout.h: Added bool pass_thru to layout class for being able to
+	implement pass through of a paragraph for Literate Programming.
+	
+	* layout.C: add LT_PASS_THRU to LayoutTags enum.
+	* layout.C (LyXLayout): set pass_thru to flase in constructor.
+	* layout.C (Read): add "passthru" to list of layout tags and add
+	code to set the pass_thru boolean when it is read.
+
 2001-07-12  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* trans_decl.h: remove allowed from KmodInfo

@@ -22,13 +22,14 @@ Style Scrap
   Align                 Left
   AlignPossible         Block,Left
   FreeSpacing           1
+  PassThru              1
   LabelType             Static
 
   LabelFont
     Color               magenta
   EndFont
   TextFont
-    Latex               Latex
+    Color               latex
     Family              Typewriter
   EndFont
 

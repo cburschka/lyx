@@ -70,6 +70,7 @@ enum LayoutTags {
 	//LT_FIRST_COUNTER,
 	LT_FONT, 
 	LT_FREE_SPACING, 
+	LT_PASS_THRU,
 	//LT_HEADINGS,
 	LT_ITEMSEP, 
 	LT_KEEPEMPTY, 
@@ -133,6 +134,7 @@ LyXLayout::LyXLayout ()
 	fill_bottom = false;
 	newline_allowed = true;
 	free_spacing = false;
+	pass_thru = false;
 }
 
 
@@ -174,6 +176,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "parindent",			LT_PARINDENT },
 		{ "parsep",			LT_PARSEP },
 		{ "parskip",			LT_PARSKIP },
+		{ "passthru",		   	LT_PASS_THRU },
 		{ "preamble",                   LT_PREAMBLE },
 		{ "rightmargin",		LT_RIGHTMARGIN },
 		{ "spacing",                    LT_SPACING },
@@ -390,6 +393,11 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		case LT_FREE_SPACING:	// Allow for free spacing.
 			if (lexrc.next())
 				free_spacing = lexrc.GetInteger();
+			break;
+
+		case LT_PASS_THRU:	// Allow for pass thru.
+			if (lexrc.next())
+				pass_thru = lexrc.GetInteger();
 			break;
 
 		case LT_SPACING: // setspace.sty

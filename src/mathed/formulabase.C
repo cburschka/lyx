@@ -858,7 +858,10 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	default:
 		if ((action == -1 || action == LFUN_SELFINSERT) && !arg.empty()) {
 			unsigned char c = arg[0];
-			//lyxerr << "char: '" << c << "'  int: " << int(c) << endl;
+
+			lyxerr << "Action: " << action << endl;
+			
+			lyxerr << "char: '" << c << "'  int: " << int(c) << endl;
 			//owner_->getIntl()->getTrans().TranslateAndInsert(c, lt);	
 			//lyxerr << "trans: '" << c << "'  int: " << int(c) << endl;
 			bv->lockedInsetStoreUndo(Undo::INSERT);
