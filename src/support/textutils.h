@@ -19,7 +19,7 @@
 inline
 bool IsSeparatorChar(char c)
 {
-	return (c == ' ');
+	return c == ' ';
 }
 
 
@@ -27,7 +27,7 @@ bool IsSeparatorChar(char c)
 inline
 bool IsLineSeparatorChar(char c)
 {
-	return (c == ' ');
+	return c == ' ';
 }
 
 
@@ -35,7 +35,7 @@ bool IsLineSeparatorChar(char c)
 inline
 bool IsKommaChar(char c)
 {
-	return (c == ','
+	return c == ','
 		|| c == '('
 		|| c == ')'
 		|| c == '['
@@ -57,8 +57,7 @@ bool IsKommaChar(char c)
 		|| c == '%'
 		|| c == '^'
 		|| c == '/'
-		|| c == '\\'
-		);
+		|| c == '\\';
 }
 
 
@@ -66,9 +65,9 @@ bool IsKommaChar(char c)
 inline
 bool IsLetterChar(unsigned char c)
 {
-	return ((c >= 'A' && c <= 'Z')
+	return (c >= 'A' && c <= 'Z')
 		|| (c >= 'a' && c <= 'z')
-		|| (c >= 192)); // in iso-8859-x these are accented chars
+		|| (c >= 192); // in iso-8859-x these are accented chars
 }
 
 
@@ -76,7 +75,7 @@ bool IsLetterChar(unsigned char c)
 inline
 bool IsPrintable(unsigned char c)
 {
-	return ((c & 127) >= ' ');
+	return (c & 127) >= ' ';
 }
 
 
@@ -84,7 +83,7 @@ bool IsPrintable(unsigned char c)
 inline
 bool IsPrintableNonspace(unsigned char c)
 {
-	return IsPrintable(c) && (c != ' ');
+	return IsPrintable(c) && c != ' ';
 }
 
 

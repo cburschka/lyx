@@ -161,7 +161,7 @@ WidthChanger::WidthChanger(MetricsBase & mb, int w)
 	:	Changer<MetricsBase>(mb)
 {
 	save_ = mb;
-	mb.textwidth     = w;
+	mb.textwidth = w;
 }
 
 

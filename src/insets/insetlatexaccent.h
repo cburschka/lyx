@@ -116,6 +116,8 @@ private:
 	/// Check if we know the modifier and can display it ok on screen.
 	void checkContents();
 	///
+	void drawAccent(PainterInfo const & pi, int x, int y, char accent) const;
+	///
 	std::string contents;
 	/// can display as proper char
 	bool  candisp;

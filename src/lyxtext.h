@@ -66,17 +66,13 @@ public:
 	LyXFont real_current_font;
 	/// our buffer's default layout font
 	LyXFont defaultfont_;
-private:
-	/// offset of drawn area to document start.
-	int anchor_y_;
-public:
-	/// update all cached row positions
-	void updateRowPositions();
 	///
 	InsetText * inset_owner;
 	///
 	UpdatableInset * the_locking_inset;
 
+	/// update all cached row positions
+	void updateRowPositions();
 	///
 	int getRealCursorX() const;
 	///
@@ -382,7 +378,7 @@ public:
 	 */
 	int leftMargin(ParagraphList::iterator pit, Row const & row) const;
 	///
-	int rightMargin(Paragraph const & par, Buffer const &, Row const & row) const;
+	int rightMargin(Paragraph const & par, Buffer const &) const;
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
@@ -452,6 +448,8 @@ public:
 
 	///
 	std::string selectionAsString(Buffer const & buffer, bool label) const;
+	///
+	double spacing(Paragraph const &) const;
 private:
 	/** Cursor related data.
 	  Later this variable has to be removed. There should be now internal

@@ -70,7 +70,7 @@ using std::string;
 
 LyXText::LyXText(BufferView * bv, InsetText * inset, bool ininset,
 	  ParagraphList & paragraphs)
-	: height(0), width(0), anchor_y_(0),
+	: height(0), width(0),
 	  inset_owner(inset), the_locking_inset(0), bv_owner(bv),
 	  in_inset_(ininset), paragraphs_(&paragraphs),
 		cache_pos_(-1)
@@ -89,8 +89,6 @@ void LyXText::init(BufferView * bview)
 
 	width = 0;
 	height = 0;
-
-	anchor_y_ = 0;
 	cache_pos_ = -1;
 
 	current_font = getFont(beg, 0);
@@ -604,9 +602,10 @@ void LyXText::toggleFree(LyXFont const & font, bool toggleall)
 	// If there is a change in the language the implicit word selection
 	// is disabled.
 	LyXCursor resetCursor = cursor;
-	bool implicitSelection = (font.language() == ignore_language
-				  && font.number() == LyXFont::IGNORE)
-		? selectWordWhenUnderCursor(lyx::WHOLE_WORD_STRICT) : false;
+	bool implicitSelection = 
+		font.language() == ignore_language
+		&& font.number() == LyXFont::IGNORE
+		&& selectWordWhenUnderCursor(lyx::WHOLE_WORD_STRICT);
 
 	// Set font
 	setFont(font, toggleall);
@@ -1798,8 +1797,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	// we can't possibly have deleted a paragraph before this point
 	bool deleted = false;
 
-	if (old_pit->empty() ||
-	    (old_pit->size() == 1 && old_pit->isLineSeparator(0))) {
+	if (old_pit->empty()
+	    || (old_pit->size() == 1 && old_pit->isLineSeparator(0))) {
 		// ok, we will delete something
 		LyXCursor tmpcursor;
 
@@ -1831,15 +1830,17 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			selection.cursor = cursor;
 		}
 	}
-	if (!deleted) {
-		if (old_pit->stripLeadingSpaces()) {
-			redoParagraph(old_pit);
-			// correct cursor y
-			setCursorIntern(cursor.par(), cursor.pos());
-			selection.cursor = cursor;
-		}
+
+	if (deleted)
+		return true;
+
+	if (old_pit->stripLeadingSpaces()) {
+		redoParagraph(old_pit);
+		// correct cursor y
+		setCursorIntern(cursor.par(), cursor.pos());
+		selection.cursor = cursor;
 	}
-	return deleted;
+	return false;
 }
 
 
@@ -1871,6 +1872,5 @@ bool LyXText::isInInset() const
 int defaultRowHeight()
 {
 	LyXFont const font(LyXFont::ALL_SANE);
-	return int(font_metrics::maxAscent(font)
-		 + font_metrics::maxDescent(font) * 1.5);
+	return int(font_metrics::maxHeight(font) *  1.2);
 }

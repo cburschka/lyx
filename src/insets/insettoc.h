@@ -23,13 +23,11 @@ class MetricsInfo;
 class InsetTOC : public InsetCommand {
 public:
 	///
-	InsetTOC(InsetCommandParams const &);
+	explicit InsetTOC(InsetCommandParams const &);
 	///
 	~InsetTOC();
 	///
-	virtual std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetTOC(params()));
-	}
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

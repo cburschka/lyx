@@ -7,6 +7,7 @@
  *
  * Full author contact details are available in file CREDITS.
  */
+
 #include <config.h>
 
 #include "insettoc.h"
@@ -22,6 +23,7 @@ using std::string;
 using std::ostream;
 
 
+
 InsetTOC::InsetTOC(InsetCommandParams const & p)
 	: InsetCommand(p)
 {}
@@ -29,16 +31,19 @@ InsetTOC::InsetTOC(InsetCommandParams const & p)
 
 InsetTOC::~InsetTOC()
 {
-	InsetCommandMailer mailer("toc", *this);
-	mailer.hideDialog();
+	InsetCommandMailer("toc", *this).hideDialog();
+}
+
+
+std::auto_ptr<InsetBase> InsetTOC::clone() const
+{
+	return std::auto_ptr<InsetBase>(new InsetTOC(*this));
 }
 
 
 string const InsetTOC::getScreenLabel(Buffer const &) const
 {
-	string const cmdname(getCmdName());
-
-	if (cmdname == "tableofcontents")
+	if (getCmdName() == "tableofcontents")
 		return _("Table of Contents");
 	return _("Unknown toc list");
 }
@@ -46,8 +51,7 @@ string const InsetTOC::getScreenLabel(Buffer const &) const
 
 InsetOld::Code InsetTOC::lyxCode() const
 {
-	string const cmdname(getCmdName());
-	if (cmdname == "tableofcontents")
+	if (getCmdName() == "tableofcontents")
 		return InsetOld::TOC_CODE;
 	return InsetOld::NO_CODE;
 }
@@ -56,10 +60,8 @@ InsetOld::Code InsetTOC::lyxCode() const
 void InsetTOC::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetCommand::metrics(mi, dim);
-	int center_indent = (mi.base.textwidth - dim.wid) / 2;
-	Box b(center_indent, center_indent + dim.wid, -dim.asc, dim.des);
-	button().setBox(b);
-
+	int const x1 = (mi.base.textwidth - dim.wid) / 2;
+	button().setBox(Box(x1, x1 + dim.wid, -dim.asc, dim.des));
 	dim.wid = mi.base.textwidth;
 	dim_ = dim;
 }
@@ -67,13 +69,12 @@ void InsetTOC::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetTOC::draw(PainterInfo & pi, int x, int y) const
 {
-	InsetCommand::draw(pi, x + button().box().x1, y);
+	InsetCommand::draw(pi, button().box().x1, y);
 }
 
 
 dispatch_result
-InsetTOC::priv_dispatch(FuncRequest const & cmd,
-			idx_type & idx, pos_type & pos)
+InsetTOC::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
 	case LFUN_MOUSE_RELEASE:

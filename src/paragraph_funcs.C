@@ -494,7 +494,9 @@ TeXOnePar(Buffer const & buf,
 		}
 
 		if (!pit->params().spacing().isDefault()
-			&& (pit == const_cast<ParagraphList&>(paragraphs).begin() || !boost::prior(pit)->hasSameLayout(*pit))) {
+			&& (pit == const_cast<ParagraphList&>(paragraphs).begin()
+			    || !boost::prior(pit)->hasSameLayout(*pit)))
+		{
 			os << pit->params().spacing().writeEnvirBegin() << '\n';
 			texrow.newline();
 		}
@@ -660,7 +662,9 @@ TeXOnePar(Buffer const & buf,
 		}
 
 		if (!pit->params().spacing().isDefault()
-			&& (boost::next(pit) == const_cast<ParagraphList&>(paragraphs).end()|| !boost::next(pit)->hasSameLayout(*pit))) {
+			&& (boost::next(pit) == const_cast<ParagraphList&>(paragraphs).end()
+			    || !boost::next(pit)->hasSameLayout(*pit)))
+		{
 			os << pit->params().spacing().writeEnvirEnd() << '\n';
 			texrow.newline();
 		}

@@ -20,11 +20,11 @@ public:
 	///
 	InsetHFill();
 	///
-	virtual std::auto_ptr<InsetBase> clone() const {
-		return std::auto_ptr<InsetBase>(new InsetHFill);
-	}
+	void metrics(MetricsInfo &, Dimension &) const;
 	///
-	std::string const getScreenLabel(Buffer const &) const { return getContents(); }
+	std::auto_ptr<InsetBase> clone() const;
+	///
+	std::string const getScreenLabel(Buffer const &) const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::HFILL_CODE; }
 	///
@@ -40,6 +40,7 @@ public:
 	void write(Buffer const & buf, std::ostream & os) const;
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
+
 };
 
 #endif

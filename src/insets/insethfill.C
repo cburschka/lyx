@@ -22,6 +22,27 @@ InsetHFill::InsetHFill()
 {}
 
 
+std::auto_ptr<InsetBase> InsetHFill::clone() const
+{
+	return std::auto_ptr<InsetBase>(new InsetHFill);
+}
+
+
+void InsetHFill::metrics(MetricsInfo &, Dimension & dim) const
+{
+	dim.wid = 3;
+	dim.asc = 3;
+	dim.des = 3;
+	dim_ = dim;	
+}
+
+
+std::string const InsetHFill::getScreenLabel(Buffer const &) const
+{
+	return getContents();
+}
+
+
 int InsetHFill::latex(Buffer const &, ostream & os,
 		      LatexRunParams const &) const
 {
@@ -49,6 +70,7 @@ int InsetHFill::docbook(Buffer const &, std::ostream & os, bool) const
 	os << '\n';
 	return 0;
 }
+
 
 void InsetHFill::write(Buffer const &, ostream & os) const
 {

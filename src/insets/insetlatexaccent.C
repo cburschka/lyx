@@ -49,6 +49,12 @@ InsetLatexAccent::InsetLatexAccent(string const & str)
 }
 
 
+auto_ptr<InsetBase> InsetLatexAccent::clone() const
+{
+	return auto_ptr<InsetBase>(new InsetLatexAccent(contents));
+}
+
+
 void InsetLatexAccent::checkContents()
 	// check, if we know the modifier and can display it ok on screen
 {
@@ -319,37 +325,58 @@ bool InsetLatexAccent::displayISO8859_9(PainterInfo & pi, int x, int y) const
 	unsigned char tmpic = ic;
 
 	switch (modtype) {
-	case CEDILLA:
-	{
+
+	case CEDILLA: {
 		if (ic == 'c') tmpic = 0xe7;
 		if (ic == 'C') tmpic = 0xc7;
 		if (ic == 's') tmpic = 0xfe;
 		if (ic == 'S') tmpic = 0xde;
 		break;
 	}
-	case BREVE:
-	{	if (ic == 'g') tmpic = 0xf0;
-	if (ic == 'G') tmpic = 0xd0;
-	break;
+
+	case BREVE: {
+		if (ic == 'g') tmpic = 0xf0;
+		if (ic == 'G') tmpic = 0xd0;
+		break;
 	}
-	case UMLAUT:
-	{
+
+	case UMLAUT: {
 		if (ic == 'o') tmpic = 0xf6;
 		if (ic == 'O') tmpic = 0xd6;
 		if (ic == 'u') tmpic = 0xfc;
 		if (ic == 'U') tmpic = 0xdc;
 		break;
 	}
-	case DOT:	 if (ic == 'I') tmpic = 0xdd; break;
-	case DOT_LESS_I: tmpic = 0xfd; break;
-	default:	 return false;
-	}
-	if (tmpic != ic) {
-		pi.pain.text(x, y, char(tmpic), pi.base.font);
-		return true;
-	}
-	else
+
+	case DOT:
+		if (ic == 'I') tmpic = 0xdd;
+		break;
+
+	case DOT_LESS_I:
+		tmpic = 0xfd;
+		break;
+
+	default:
 		return false;
+	}
+
+	if (tmpic == ic)
+		return false;
+
+	pi.pain.text(x, y, char(tmpic), pi.base.font);
+	return true;
+}
+
+
+void InsetLatexAccent::drawAccent(PainterInfo const & pi, int x, int y,
+	char accent) const
+{
+	LyXFont const & font = pi.base.font;
+	x -= font_metrics::center(accent, font);
+	y -= font_metrics::ascent(ic, font);
+	y -= font_metrics::descent(accent, font);
+	y -= font_metrics::height(accent, font) / 2;
+	pi.pain.text(x, y, accent, font);
 }
 
 
@@ -359,7 +386,6 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		if (displayISO8859_9(pi, x, baseline))
 			return;
 
-	/* draw it! */
 	// All the manually drawn accents in this function could use an
 	// overhaul. Different ways of drawing (what metrics to use)
 	// should also be considered.
@@ -369,23 +395,22 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 		font.setLanguage(english_language);
 
 	if (candisp) {
-		float x2 = x + (rbearing(font) - lbearing(font)) / 2.0;
-		float hg;
+		int x2 = int(x + (rbearing(font) - lbearing(font)) / 2);
+		int hg;
 		int y;
 		if (plusasc) {
 			// mark at the top
 			hg = font_metrics::maxDescent(font);
 			y = baseline - dim_.asc;
-
 			if (font.shape() == LyXFont::ITALIC_SHAPE)
-				x2 += (4.0 * hg) / 5.0; // italic
+				x2 += int(0.8 * hg); // italic
 		} else {
 			// at the bottom
 			hg = dim_.des;
 			y = baseline;
 		}
 
-		float hg35 = float(hg * 3.0) / 5.0;
+		double hg35 = hg * 0.6;
 
 		// display with proper accent mark
 		// first the letter
@@ -413,107 +438,72 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			ic = tmpic;      // set the orig ic back
 			y = baseline - asc; // update to new y coord.
 		}
-		// now the rest - draw within (x, y, x+wid, y+hg)
+
+		// now the rest - draw within (x, y, x + wid, y + hg)
 		switch (modtype) {
-		case ACUTE:     // acute 0xB4
-		{
-			pi.pain.text(int(x2 - (font_metrics::rbearing(0xB4, font)
-			              - font_metrics::lbearing(0xB4, font)) / 2),
-				  baseline - font_metrics::ascent(ic, font)
-					         - font_metrics::descent(0xB4, font)
-					         - (font_metrics::ascent(0xB4, font)
-					          + font_metrics::descent(0xB4, font)) / 2,
-				  char(0xB4), font);
+		case ACUTE:
+			drawAccent(pi, x2, baseline, char(0xB4));
 			break;
-		}
-		case GRAVE:     // grave 0x60
-		{
-			pi.pain.text(int(x2 - (font_metrics::rbearing(0x60, font) - font_metrics::lbearing(0x60, font)) / 2),
-				  int(baseline - font_metrics::ascent(ic, font) - font_metrics::descent(0x60, font) - (font_metrics::ascent(0x60, font) + font_metrics::descent(0x60, font)) / 2.0),
-				  char(0x60), font);
+		
+		case GRAVE: 
+			drawAccent(pi, x2, baseline, char(0x60));
 			break;
-		}
-		case MACRON:     // macron
-		{
-			pi.pain.text(int(x2 - (font_metrics::rbearing(0xAF, font) - font_metrics::lbearing(0xAF, font)) / 2),
-				  baseline - font_metrics::ascent(ic, font) - font_metrics::descent(0xAF, font) - (font_metrics::ascent(0xAF, font) + font_metrics::descent(0xAF, font)),
-				  char(0xAF), font);
+
+		case MACRON:
+			drawAccent(pi, x2, baseline, char(0xAF));
 			break;
-		}
-		case TILDE:     // tilde
-		{
-			pi.pain.text(int(x2 - (font_metrics::rbearing('~', font) - font_metrics::lbearing('~', font)) / 2),
-				  baseline - font_metrics::ascent(ic, font) - font_metrics::descent('~', font) - (font_metrics::ascent('~', font) + font_metrics::descent('~', font)) / 2,
-				  '~', font);
+
+		case TILDE:
+			drawAccent(pi, x2, baseline, '~');
 			break;
-		}
+
 		case UNDERBAR:     // underbar 0x5F
-		{
-			pi.pain.text(int(x2 - (font_metrics::rbearing(0x5F, font) - font_metrics::lbearing(0x5F, font)) / 2), baseline,
+			pi.pain.text(x2 - font_metrics::center(0x5F, font), baseline,
 				  char(0x5F), font);
 			break;
-		}
-		case CEDILLA:     // cedilla
-		{
-			pi.pain.text(int(x2 - (font_metrics::rbearing(0xB8, font) - font_metrics::lbearing(0xB8, font)) / 2), baseline,
+
+		case CEDILLA:
+			pi.pain.text(x2  - font_metrics::center(0xB8, font), baseline,
 				  char(0xB8), font);
-
 			break;
-		}
-		case UNDERDOT:     // underdot
-		{
-			pi.pain.text(int(x2 - (font_metrics::rbearing('.', font) - font_metrics::lbearing('.', font)) / 2.0),
-				  int(baseline + 3.0 / 2.0 * (font_metrics::ascent('.', font) + font_metrics::descent('.', font))),
+
+		case UNDERDOT:
+			pi.pain.text(x2  - font_metrics::center('.', font),
+				  int(baseline + 1.5 * font_metrics::height('.', font)),
 				  '.', font);
 			break;
-		}
 
-		case DOT:    // dot
-		{
-			pi.pain.text(int(x2 - (font_metrics::rbearing('.', font) - font_metrics::lbearing('.', font)) / 2.0),
-				  baseline - font_metrics::ascent(ic, font) - font_metrics::descent('.', font) - (font_metrics::ascent('.', font) + font_metrics::descent('.', font)) / 2,
-				  '.', font);
+		case DOT:
+			drawAccent(pi, x2, baseline, '.');
 			break;
-		}
 
-		case CIRCLE:     // circle
-		{
-			LyXFont tmpf = font;
-			tmpf.decSize().decSize();
-			pi.pain.text(int(x2 - (font_metrics::rbearing(0xB0, tmpf) - font_metrics::lbearing(0xB0, tmpf)) / 2.0),
-				  int(baseline - font_metrics::ascent(ic, font) - font_metrics::descent(0xB0, tmpf) - (font_metrics::ascent(0xB0, tmpf) + font_metrics::descent(0xB0, tmpf)) / 3.0),
-				  char(0xB0), tmpf);
+		case CIRCLE: 
+			drawAccent(pi, x2, baseline, char(0xB0));
 			break;
-		}
-		case TIE:     // tie
-		{
-			pi.pain.arc(int(x2 + hg35), int(y + hg / 2.0),
-				    int(2 * hg), int(hg), 0, 360 * 32,
+
+		case TIE:
+			pi.pain.arc(int(x2 + hg35), y + hg / 2, 2 * hg, hg, 0, 360 * 32,
 				    LColor::foreground);
 			break;
-		}
-		case BREVE:     // breve
-		{
-			pi.pain.arc(int(x2 - (hg / 2.0)), y,
-				    int(hg), int(hg), 0, -360*32,
+
+		case BREVE:
+			pi.pain.arc(int(x2 - hg / 2), y, hg, hg, 0, -360*32,
 				    LColor::foreground);
 			break;
-		}
-		case CARON:    // caron
-		{
+
+		case CARON: {
 			int xp[3], yp[3];
-
-			xp[0] = int(x2 - hg35); yp[0] = int(y + hg35);
-			xp[1] = int(x2);        yp[1] = int(y + hg);
-			xp[2] = int(x2 + hg35); yp[2] = int(y + hg35);
+			xp[0] = int(x2 - hg35);    yp[0] = int(y + hg35);
+			xp[1] = int(x2);           yp[1] = int(y + hg);
+			xp[2] = int(x2 + hg35);    yp[2] = int(y + hg35);
 			pi.pain.lines(xp, yp, 3, LColor::foreground);
 			break;
 		}
-		case SPECIAL_CARON:    // special caron
-		{
+
+		case SPECIAL_CARON: {
 			switch (ic) {
-			case 'L': dim_.wid = int(4.0 * dim_.wid / 5.0); break;
-			case 't': y -= int(hg35 / 2.0); break;
+				case 'L': dim_.wid = int(4.0 * dim_.wid / 5.0); break;
+				case 't': y -= int(hg35 / 2.0); break;
 			}
 			int xp[3], yp[3];
 			xp[0] = int(x + dim_.wid);
@@ -528,74 +518,61 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			pi.pain.lines(xp, yp, 3, LColor::foreground);
 			break;
 		}
-		case HUNGARIAN_UMLAUT:    // hung. umlaut
-		{
-			pi.pain.text(int(x2 - (font_metrics::rbearing('´', font) - font_metrics::lbearing('´', font))),
-				  baseline - font_metrics::ascent(ic, font) - font_metrics::descent('´', font) - (font_metrics::ascent('´', font) + font_metrics::descent('´', font)) / 2,
-				  '´', font);
-			pi.pain.text(int(x2),
-				  baseline - font_metrics::ascent(ic, font) - font_metrics::descent('´', font) - (font_metrics::ascent('´', font) + font_metrics::descent('´', font)) / 2,
-				  '´', font);
+
+		case HUNGARIAN_UMLAUT:
+			drawAccent(pi, x2 - font_metrics::center('´', font), baseline, '´');
+			drawAccent(pi, x2 + font_metrics::center('´', font), baseline, '´');
 			break;
-		}
-		case UMLAUT:    // umlaut
-		{
-			pi.pain.text(int(x2 - (font_metrics::rbearing('¨', font) - font_metrics::lbearing('¨', font)) / 2),
-				  baseline - font_metrics::ascent(ic, font) - font_metrics::descent('¨', font) - (font_metrics::ascent('¨', font) + font_metrics::descent('¨', font)) / 2,
-				  '¨', font);
+
+		case UMLAUT:
+			drawAccent(pi, x2, baseline, '"');
 			break;
-		}
-		case CIRCUMFLEX:    // circumflex
-		{
-			LyXFont tmpf(font);
-			tmpf.decSize().decSize().decSize();
-			pi.pain.text(int(x2 - (font_metrics::rbearing(0x5E, tmpf) - font_metrics::lbearing(0x5E, tmpf)) / 2),
-				  int(baseline - font_metrics::ascent(ic, font) - font_metrics::descent(0x5E, tmpf) - (font_metrics::ascent(0x5E, tmpf) + font_metrics::descent(0x5E, tmpf)) / 3.0),
-				  char(0x5E), tmpf);
+
+		case CIRCUMFLEX:
+			drawAccent(pi, x2, baseline, 0x5E);
 			break;
-		}
-		case OGONEK:    // ogonek
-		{
+
+		case OGONEK: {
 			// this does probably not look like an ogonek, so
 			// it should certainly be refined
 			int xp[4], yp[4];
 
-			xp[0] = int(x2);
+			xp[0] = x2;
 			yp[0] = y;
 
-			xp[1] = int(x2);
+			xp[1] = x2;
 			yp[1] = y + int(hg35);
 
 			xp[2] = int(x2 - hg35);
-			yp[2] = y + int(hg / 2.0);
+			yp[2] = y + hg / 2;
 
-			xp[3] = int(x2 + hg / 4.0);
+			xp[3] = x2 + hg / 4;
 			yp[3] = y + int(hg);
 
 			pi.pain.lines(xp, yp, 4, LColor::foreground);
 			break;
 		}
+
 		case lSLASH:
-		case LSLASH:
-		{
+		case LSLASH: {
 			int xp[2], yp[2];
 
-			xp[0] = int(x);
-			yp[0] = y + int(3.0 * hg);
+			xp[0] = x;
+			yp[0] = y + int(3 * hg);
 
-			xp[1] = int(x + float(dim_.wid) * 0.75);
+			xp[1] = int(x + dim_.wid * 0.75);
 			yp[1] = y + int(hg);
 
 			pi.pain.lines(xp, yp, 2, LColor::foreground);
 			break;
 		}
+
 		case DOT_LESS_I: // dotless-i
 		case DOT_LESS_J: // dotless-j
-		{
 			// nothing to do for these
 			break;
 		}
-		}
+
 	} else {
 		pi.pain.fillRectangle(x + 1,
 				      baseline - dim_.asc + 1, dim_.wid - 2,
@@ -655,12 +632,6 @@ int InsetLatexAccent::docbook(Buffer const &, ostream & os, bool) const
 bool InsetLatexAccent::directWrite() const
 {
 	return true;
-}
-
-
-auto_ptr<InsetBase> InsetLatexAccent::clone() const
-{
-	return auto_ptr<InsetBase>(new InsetLatexAccent(contents));
 }
 
 

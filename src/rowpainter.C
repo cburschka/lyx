@@ -761,7 +761,7 @@ void RowPainter::paintFirst()
 			double x = x_;
 			if (layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 				x = ((is_rtl ? leftMargin() : x_)
-					 + ww - text_.rightMargin(*pit_, *bv_.buffer(), row_)) / 2;
+					 + ww - text_.rightMargin(*pit_, *bv_.buffer())) / 2;
 				x -= font_metrics::width(str, font) / 2;
 			} else if (is_rtl) {
 				x = ww - leftMargin() -
@@ -797,11 +797,10 @@ void RowPainter::paintLast()
 	// draw an endlabel
 	switch (endlabel) {
 	case END_LABEL_BOX:
-	case END_LABEL_FILLED_BOX:
-	{
+	case END_LABEL_FILLED_BOX: {
 		LyXFont const font = getLabelFont();
 		int const size = int(0.75 * font_metrics::maxAscent(font));
-		int const y = (yo_ + row_.baseline()) - size;
+		int const y = yo_ + row_.baseline() - size;
 		int x = is_rtl ? LEFT_MARGIN : ww - PAPER_MARGIN - size;
 
 		if (row_.fill() <= size)
@@ -813,16 +812,17 @@ void RowPainter::paintLast()
 			pain_.fillRectangle(x, y, size, size, LColor::eolmarker);
 		break;
 	}
-	case END_LABEL_STATIC:
-	{
+
+	case END_LABEL_STATIC: {
 		LyXFont font = getLabelFont();
 		string const & str = pit_->layout()->endlabelstring();
 		double const x = is_rtl ?
 			x_ - font_metrics::width(str, font)
-			: ww - text_.rightMargin(*pit_, *bv_.buffer(), row_) - row_.fill();
+			: ww - text_.rightMargin(*pit_, *bv_.buffer()) - row_.fill();
 		pain_.text(int(x), yo_ + row_.baseline(), str, font);
 		break;
 	}
+
 	case END_LABEL_NO_LABEL:
 		break;
 	}
@@ -1043,9 +1043,7 @@ int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
 
 	LyXFont font;
 	font.decSize();
-	int const min_size = max(3 * arrow_size,
-		font_metrics::maxAscent(font)
-		+ font_metrics::maxDescent(font));
+	int const min_size = max(3 * arrow_size, font_metrics::maxHeight(font));
 
 	if (vsp.length().len().value() < 0.0)
 		return min_size;

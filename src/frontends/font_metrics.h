@@ -46,14 +46,26 @@ namespace font_metrics {
 	int maxAscent(LyXFont const & f);
 	/// return the maximum descent of the font
 	int maxDescent(LyXFont const & f);
+	/// return the maximum descent of the font
+	inline int maxHeight(LyXFont const & f) {
+		return maxAscent(f) + maxDescent(f);
+	}
 	/// return the ascent of the char in the font
 	int ascent(char c, LyXFont const & f);
 	/// return the descent of the char in the font
 	int descent(char c, LyXFont const & f);
+	/// return the descent of the char in the font
+	inline int height(char c, LyXFont const & f) {
+		return ascent(c, f) + descent(c, f);
+	}
 	/// return the left bearing of the char in the font
 	int lbearing(char c, LyXFont const & f);
 	/// return the right bearing of the char in the font
 	int rbearing(char c, LyXFont const & f);
+	/// return the inner width of the char in the font
+	inline int center(char c, LyXFont const & f) {
+		return (rbearing(c, f) - lbearing(c, f)) / 2;
+	}
 	/// return the width of the string in the font
 	int width(char const * s, size_t n, LyXFont const & f);
 	/// return the width of the char in the font
@@ -62,8 +74,7 @@ namespace font_metrics {
 	}
 	/// return the width of the string in the font
 	inline int width(std::string const & s, LyXFont const & f) {
-		if (s.empty()) return 0;
-		return width(s.data(), s.length(), f);
+		return s.empty() ? 0 : width(s.data(), s.length(), f);
 	}
 	/// FIXME ??
 	int signedWidth(std::string const & s, LyXFont const & f);
