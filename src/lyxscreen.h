@@ -44,41 +44,41 @@ public:
 	};
 
 	///
-	LyXScreen(WorkArea &, LyXText * text_ptr);
+	LyXScreen(WorkArea &); //, LyXText * text_ptr);
 
 	/** Draws the screen form textposition y. Uses as much of
 	    the already printed pixmap as possible */
-	void Draw(unsigned long y );
+	void Draw(LyXText *, unsigned long y);
 
 	/// Redraws the screen, without using existing pixmap
-	void Redraw();
+	void Redraw(LyXText *);
    
 	/// Returns a new top so that the cursor is visible
-	unsigned long TopCursorVisible();
+	unsigned long TopCursorVisible(LyXText const *);
 	/// Redraws the screen such that the cursor is visible
-	bool FitCursor();
+	bool FitCursor(LyXText *);
 	///
-	void ShowCursor();
+	void ShowCursor(LyXText const *);
 	///
 	void HideCursor();
 	///
-	void CursorToggle();
+	void CursorToggle(LyXText const *);
 	///
 	void ShowManualCursor(long x, long y, int asc, int desc,
 			      Cursor_Shape shape);
 	/// returns 1 if first has changed, otherwise 0
-	bool FitManualCursor(long, long, int, int);
+	bool FitManualCursor(LyXText *, long, long, int, int);
 	///
-	void ToggleSelection(bool = true);
+	void ToggleSelection(LyXText *, bool = true);
 	///
-	void ToggleToggle();
+	void ToggleToggle(LyXText *);
 	
 	/** Updates part of the screen. If text->status is
 	    LyXText::NEED_MORE_REFRESH, we update from the
 	    point of change and to the end of the screen.
 	    If text->status is LyXText::NEED_VERY_LITTLE_REFRESH,
 	    we only update the current row. */
-	void Update();
+	void Update(LyXText *);
 
 	/// first visible pixel-row
 	unsigned long first;
@@ -90,16 +90,16 @@ private:
 	void expose(int x, int y, int exp_width, int exp_height); 
 
 	/// y1 and y2 are coordinates of the screen
-	void DrawFromTo(int y1, int y2);
+	void DrawFromTo(LyXText *, int y1, int y2);
 
 	/// y is a coordinate of the text
-	void DrawOneRow(Row * row, long y_text);
+	void DrawOneRow(LyXText *, Row * row, long y_text);
 
 	///
 	WorkArea & owner;
 	
 	///
-	LyXText * text;
+	//LyXText * text;
 
 	///
 	Pixmap cursor_pixmap;

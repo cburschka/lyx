@@ -1,3 +1,12 @@
+2000-06-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/BufferView_pimpl.C: changes because of the one below
+
+	* src/screen.[Ch]: Made the lyxscreen take LyXText as argument
+	instead of storing a pointer to a LyXText. 
+
+	* src/buffer.[Ch]: apply Baruch's remove isdviclean patch. 
+
 2000-06-10  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/lyxparagraph.h

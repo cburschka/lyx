@@ -763,7 +763,7 @@ void BufferView::fitLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (the_locking_inset && available()){
 		y += text->cursor.y() + the_locking_inset->InsetInInsetY();
-		if (pimpl_->screen_->FitManualCursor(x, y, asc, desc))
+		if (pimpl_->screen_->FitManualCursor(text, x, y, asc, desc))
 			updateScrollbar();
 	}
 }

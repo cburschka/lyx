@@ -135,7 +135,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			updateScreen();
 			updateScrollbar();
 		}
-		screen_->first = screen_->TopCursorVisible();
+		screen_->first = screen_->TopCursorVisible(bv_->text);
 		redraw();
 		owner_->getDialogs()->updateBufferDependent();
 		bv_->insetWakeup();
@@ -186,7 +186,7 @@ bool BufferView::Pimpl::fitCursor()
 {
 	Assert(screen_); // it is a programming error to call fitCursor
 	// without a valid screen.
-	bool ret = screen_->FitCursor();
+	bool ret = screen_->FitCursor(bv_->text);
 	if (ret) updateScrollbar();
 	return ret;
 }
@@ -266,10 +266,11 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 			bv_->text->selection = false;
 		}
 	}
-	screen_->first = screen_->TopCursorVisible(); /* this will scroll the
-						     * screen such that the
-						     * cursor becomes
-						     * visible */ 
+	screen_->first = screen_->TopCursorVisible(bv_->text);
+	/* this will scroll the
+	 * screen such that the
+	 * cursor becomes
+	 * visible */ 
 	updateScrollbar();
 	redraw();
 	owner_->getMiniBuffer()->Init();
@@ -319,7 +320,7 @@ void BufferView::Pimpl::updateScreen()
 {
 	// Regenerate the screen.
 	delete screen_;
-	screen_ = new LyXScreen(*workarea_, bv_->text);
+	screen_ = new LyXScreen(*workarea_); //, bv_->text);
 }
 
 
@@ -398,7 +399,7 @@ void BufferView::Pimpl::scrollCB(double value)
 	if (!screen_)
 		return;
 
-	screen_->Draw(current_scrollbar_value);
+	screen_->Draw(bv_->text, current_scrollbar_value);
 
 	if (cursor_follows_scrollbar) {
 		LyXText * vbt = bv_->text;
@@ -508,9 +509,9 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 			update(BufferView::UPDATE); // Maybe an empty line was deleted
       
 		bv_->text->SetSelection();
-		screen_->ToggleToggle();
+		screen_->ToggleToggle(bv_->text);
 		fitCursor();
-		screen_->ShowCursor();
+		screen_->ShowCursor(bv_->text);
 	}
 	return;
 }
@@ -577,10 +578,10 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		// Hit above or below the table?
 		if (doit) {
 			if (!bv_->text->selection) {
-				screen_->ToggleSelection();
+				screen_->ToggleSelection(bv_->text);
 				bv_->text->ClearSelection();
 				bv_->text->FullRebreak(bv_);
-				screen_->Update();
+				screen_->Update(bv_->text);
 				updateScrollbar();
 			}
 			// Popup table popup when on a table.
@@ -609,10 +610,10 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	}
 	
 	// Clear the selection
-	screen_->ToggleSelection();
+	screen_->ToggleSelection(bv_->text);
 	bv_->text->ClearSelection();
 	bv_->text->FullRebreak(bv_);
-	screen_->Update();
+	screen_->Update(bv_->text);
 	updateScrollbar();
 	
 	// Single left click in math inset?
@@ -666,9 +667,9 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 	if (buffer_ && !bv_->the_locking_inset) {
 		if (screen_ && button == 1) {
 			screen_->HideCursor();
-			screen_->ToggleSelection();
+			screen_->ToggleSelection(bv_->text);
 			bv_->text->SelectWord(bv_);
-			screen_->ToggleSelection(false);
+			screen_->ToggleSelection(bv_->text, false);
 			/* This will fit the cursor on the screen
 			 * if necessary */
 			update(BufferView::SELECT|BufferView::FITCUR);
@@ -682,12 +683,12 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 	// select a line
 	if (buffer_ && screen_ && button == 1) {
 		screen_->HideCursor();
-		screen_->ToggleSelection();
+		screen_->ToggleSelection(bv_->text);
 		bv_->text->CursorHome(bv_);
 		bv_->text->sel_cursor = bv_->text->cursor;
 		bv_->text->CursorEnd(bv_);
 		bv_->text->SetSelection();
-		screen_->ToggleSelection(false);
+		screen_->ToggleSelection(bv_->text, false);
 		/* This will fit the cursor on the screen
 		 * if necessary */
 		update(BufferView::SELECT|BufferView::FITCUR);
@@ -999,7 +1000,7 @@ void BufferView::Pimpl::workAreaExpose()
 			// ...including the minibuffer
 			owner_->getMiniBuffer()->Init();
 
-		} else if (screen_) screen_->Redraw();
+		} else if (screen_) screen_->Redraw(bv_->text);
 	} else {
 		// Grey box when we don't have a buffer
 		workarea_->greyOut();
@@ -1014,7 +1015,7 @@ void BufferView::Pimpl::workAreaExpose()
 
 void BufferView::Pimpl::update()
 {
-	if (screen_) screen_->Update();
+	if (screen_) screen_->Update(bv_->text);
 }
 
 // Values used when calling update:
@@ -1137,7 +1138,7 @@ void BufferView::Pimpl::cursorToggle()
 
 	if (lyx_focus && work_area_focus) {
 		if (!bv_->the_locking_inset) {
-			screen_->CursorToggle();
+			screen_->CursorToggle(bv_->text);
 		} else {
 			bv_->the_locking_inset->
 				ToggleInsetCursor(bv_);
@@ -1146,7 +1147,7 @@ void BufferView::Pimpl::cursorToggle()
 	} else {
 		// Make sure that the cursor is visible.
 		if (!bv_->the_locking_inset) {
-			screen_->ShowCursor();
+			screen_->ShowCursor(bv_->text);
 		} else {
 			if (!bv_->the_locking_inset->isCursorVisible())
 				bv_->the_locking_inset->
@@ -1199,10 +1200,11 @@ void BufferView::Pimpl::cursorPrevious()
 		bv_->text->CursorUp(bv_);
 	
   	if (bv_->text->cursor.row()->height() < workarea_->height())
-		screen_->Draw(bv_->text->cursor.y()
-			     - bv_->text->cursor.row()->baseline()
-			     + bv_->text->cursor.row()->height()
-				  - workarea_->height() + 1 );
+		screen_->Draw(bv_->text,
+			      bv_->text->cursor.y()
+			      - bv_->text->cursor.row()->baseline()
+			      + bv_->text->cursor.row()->height()
+			      - workarea_->height() + 1 );
 	updateScrollbar();
 }
 
@@ -1222,7 +1224,7 @@ void BufferView::Pimpl::cursorNext()
 		bv_->text->CursorDown(bv_);
 	
  	if (bv_->text->cursor.row()->height() < workarea_->height())
-		screen_->Draw(bv_->text->cursor.y()
+		screen_->Draw(bv_->text, bv_->text->cursor.y()
 			     - bv_->text->cursor.row()->baseline());
 	updateScrollbar();
 }
@@ -1348,7 +1350,7 @@ bool BufferView::Pimpl::belowMouse() const
 void BufferView::Pimpl::showCursor()
 {
 	if (screen_)
-		screen_->ShowCursor();
+		screen_->ShowCursor(bv_->text);
 }
 
 
@@ -1362,14 +1364,14 @@ void BufferView::Pimpl::hideCursor()
 void BufferView::Pimpl::toggleSelection(bool b)
 {
 	if (screen_)
-		screen_->ToggleSelection(b);
+		screen_->ToggleSelection(bv_->text, b);
 }
 
 
 void BufferView::Pimpl::toggleToggle()
 {
 	if (screen_)
-		screen_->ToggleToggle();
+		screen_->ToggleToggle(bv_->text);
 }
 
 
@@ -1377,9 +1379,9 @@ void BufferView::Pimpl::center()
 {
 	beforeChange();
 	if (bv_->text->cursor.y() > workarea_->height() / 2) {
-		screen_->Draw(bv_->text->cursor.y() - workarea_->height() / 2);
+		screen_->Draw(bv_->text, bv_->text->cursor.y() - workarea_->height() / 2);
 	} else {
-		screen_->Draw(0);
+		screen_->Draw(bv_->text, 0);
 	}
 	update(BufferView::SELECT|BufferView::FITCUR);
 	redraw();
