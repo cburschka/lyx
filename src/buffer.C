@@ -3636,11 +3636,9 @@ Buffer::Lists const Buffer::getLists() const
 				}
 				if (!type.empty()) {
 					SingleList & item = l[type];
-					TocItem tmp;
-					tmp.par = par;
-					tmp.depth = 0;
-					tmp.str = tostr(item.size()+1) + ". " + par->String(this, false);
-					item.push_back(tmp);
+					string const str =
+						tostr(item.size()+1) + ". " + par->String(this, false);
+					item.push_back(TocItem(par, 0, str));
 				}
 			}
 		} else if (!par->IsDummy()) {
@@ -3653,13 +3651,10 @@ Buffer::Lists const Buffer::getLists() const
 			    && labeltype <= LABEL_COUNTER_CHAPTER + params.tocdepth) {
 				// insert this into the table of contents
 				SingleList & item = l["TOC"];
-				TocItem tmp;
-				tmp.par = par;
-				tmp.depth = max(0,
+				int depth = max(0,
 						labeltype - 
 						textclasslist.TextClass(params.textclass).maxcounter());
-				tmp.str = par->String(this, true);
-				item.push_back(tmp);
+				item.push_back(TocItem(par, depth, par->String(this, true)));
 			}
 #ifdef NEW_INSETS
 			// For each paragrph, traverse its insets and look for
@@ -3685,11 +3680,9 @@ Buffer::Lists const Buffer::getLists() const
 						while (tmp) {
 							if (tmp->layout == cap) {
 								SingleList & item = l[type];
-								TocItem ti;
-								ti.par = tmp;
-								ti.depth = 0;
-								ti.str = tostr(item.size()+1) + ". " + tmp->String(this, false);
-								item.push_back(ti);
+								string const str =
+									tostr(item.size()+1) + ". " + tmp->String(this, false);
+								item.push_back(TocItem(tmp, 0 , str));
 							}
 							tmp = tmp->next();
 						}

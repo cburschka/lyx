@@ -265,6 +265,8 @@ public:
 	std::vector<std::pair<string, string> > const getBibkeyList();
 	///
 	struct TocItem {
+		TocItem(LyXParagraph * p, int d, string const & s)
+			: par(p), depth(d), str(s) {}
 		///
 		LyXParagraph * par;
 		///
