@@ -96,7 +96,7 @@ MathAtom createMathInset(string const & s)
 			&& s[2] >= '1' && s[2] <= '9')
 		return MathAtom(new MathMacroArgument(s[2] - '0'));
 
-	if (s == "lyxkern")
+	if (s == "kern")
 		return MathAtom(new MathKernInset);
 
 	if (s == "xymatrix")

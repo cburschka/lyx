@@ -1112,7 +1112,6 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 				lyxerr << "unknow math inset begin '" << name << "'\n";
 		}
 
-/*
 		else if (t.cs() == "kern") {
 #ifdef WITH_WARNINGS
 #warning A hack...
@@ -1129,13 +1128,15 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 					break;
 			}
 			array.push_back(MathAtom(new MathKernInset(s)));
-*/
+		}
 
+/*
 		else if (t.cs() == "lyxkern") {
 			MathAtom p = createMathInset(t.cs());
 			parse_into(p->cell(0), flags, code);
 			array.push_back(p);
 		}
+*/
 
 		else if (t.cs() == "label") {
 			curr_label_ = getArg('{', '}');
