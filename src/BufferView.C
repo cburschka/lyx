@@ -113,10 +113,9 @@ void BufferView::scrollCB(double value)
 }
 
 
-Inset * BufferView::checkInsetHit(LyXText * text, int & x, int & y,
-				  unsigned int button)
+Inset * BufferView::checkInsetHit(LyXText * text, int & x, int & y)
 {
-	return pimpl_->checkInsetHit(text, x, y, button);
+	return pimpl_->checkInsetHit(text, x, y);
 }
 
 

@@ -579,7 +579,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 {
 	if (!buffer_ || !screen_.get()) return;
 
-	Inset * inset_hit = checkInsetHit(bv_->text, xpos, ypos, button);
+	Inset * inset_hit = checkInsetHit(bv_->text, xpos, ypos);
 
 	// ok ok, this is a hack.
 	if (button == 4 || button == 5) {
@@ -755,7 +755,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	// If we hit an inset, we have the inset coordinates in these
 	// and inset_hit points to the inset.  If we do not hit an
 	// inset, inset_hit is 0, and inset_x == x, inset_y == y.
-	Inset * inset_hit = checkInsetHit(bv_->text, x, y, button);
+	Inset * inset_hit = checkInsetHit(bv_->text, x, y);
 
 	if (bv_->theLockingInset()) {
 		// We are in inset locking mode.
@@ -862,63 +862,91 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 }
 
 
-/* 
- * Returns an inset if inset was hit. 0 otherwise.
- * If hit, the coordinates are changed relative to the inset. 
- * Otherwise coordinates are not changed, and false is returned.
- */
-Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
-					 unsigned int /* button */)
+Box BufferView::Pimpl::insetDimensions(LyXText const & text, LyXCursor const & cursor) const
+{
+	Paragraph /*const*/ & par = *cursor.par();
+	pos_type const pos = cursor.pos();
+
+	lyx::Assert(par.getInset(pos));
+ 
+	Inset const & inset(*par.getInset(pos));
+
+	LyXFont const & font = text.getFont(buffer_, &par, pos);
+ 
+	int const width = inset.width(bv_, font);
+	int const inset_x = font.isVisibleRightToLeft()
+		? (cursor.x() - width) : cursor.x();
+ 
+	return Box(
+		inset_x + inset.scroll(),
+		inset_x + width,
+		cursor.y() - inset.ascent(bv_, font),
+		cursor.y() + inset.descent(bv_, font));
+}
+ 
+ 
+Inset * BufferView::Pimpl::checkInset(LyXText const & text, LyXCursor const & cursor, int & x, int & y) const
+{
+	pos_type const pos(cursor.pos());
+	Paragraph /*const*/ & par(*cursor.par());
+
+	if (pos >= par.size() || !par.isInset(pos)) {
+		return 0;
+	}
+
+	Inset /*const*/ * inset = par.getInset(pos);
+ 
+	if (!isEditableInset(inset)) {
+		return 0;
+	}
+
+	Box b(insetDimensions(text, cursor));
+
+	if (!b.contained(x, y)) {
+		return 0;
+	}
+ 
+	text.setCursor(bv_, &par, pos, true);
+ 
+	x -= b.x1;
+	// The origin of an inset is on the baseline
+	y -= (text.cursor.y());
+  
+	return inset;
+}
+
+ 
+Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y)
 {
 	if (!screen_.get())
 		return 0;
   
 	int y_tmp = y + text->first;
-  
+ 
 	LyXCursor cursor;
 	text->setCursorFromCoordinates(bv_, cursor, x, y_tmp);
-	text->setCursor(bv_, cursor, cursor.par(),cursor.pos(),true);
-
-	lyx::pos_type pos;
  
-	if (cursor.pos() < cursor.par()->size()
-	    && cursor.par()->isInset(cursor.pos())
-	    && isEditableInset(cursor.par()->getInset(cursor.pos())))
-	{
-		pos = cursor.pos();
-	} else if ((cursor.pos() - 1 >= 0)
-		&& cursor.par()->isInset(cursor.pos() - 1)
-		&& isEditableInset(cursor.par()->getInset(cursor.pos() - 1)))
-	{
-		pos = cursor.pos() - 1;
-		// if the inset takes a full row, then the cursor.y()
-		// at the end of the inset will be wrong. So step the cursor
-		// back one
-		text->setCursor(bv_, cursor, cursor.par(), cursor.pos() - 1, true);
-	} else {
+	Inset * inset(checkInset(*text, cursor, x, y_tmp));
+
+	if (inset) {
+		y = y_tmp;
+		return inset;
+	}
+ 
+	// look at previous position
+ 
+	if (cursor.pos() == 0) {
 		return 0;
 	}
 
-	// Check whether the inset really was hit
-	Inset * inset = cursor.par()->getInset(pos);
-	LyXFont const & font = text->getFont(buffer_, cursor.par(), pos);
-	int const width = inset->width(bv_, font);
-	int const inset_x = font.isVisibleRightToLeft()
-		? cursor.x() - width : cursor.x();
-	int const start_x = inset_x + inset->scroll();
-	int const end_x = inset_x + width;
-	int const start_y = cursor.y() - inset->ascent(bv_, font);
-	int const end_y = cursor.y() + inset->descent(bv_, font);
- 
-	if (x > start_x && x < end_x && y_tmp > start_y && y < end_y) {
-		text->setCursor(bv_, cursor.par(), pos, true);
-		x = x - start_x;
-		// The origin of an inset is on the baseline
-		y = y_tmp - (text->cursor.y()); 
-		return inset;
-	}
+	// move back one
+	text->setCursor(bv_, cursor, cursor.par(), cursor.pos() - 1, true);
 
-	return 0;
+	inset = checkInset(*text, cursor, x, y_tmp);
+	if (inset) {
+		y = y_tmp;
+	}
+	return inset;
 }
 
 

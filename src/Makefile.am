@@ -89,6 +89,7 @@ lyx_SOURCES = \
 	WorkArea.h \
 	XFormsView.C \
 	XFormsView.h \
+	box.h \
 	broken_headers.h \
 	buffer.C \
 	buffer.h \

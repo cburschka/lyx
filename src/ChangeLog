@@ -1,5 +1,15 @@
 2001-12-15  John Levon  <moz@compsoc.man.ac.uk>
 
+	* BufferView.h: 
+	* BufferView.C:
+	* BufferView_pimpl.h:
+	* BufferView_pimpl.C: cleanup and fix of checkInsetHit().
+
+	* Makefile.am:
+	* box.h: new start of class for above
+
+2001-12-15  John Levon  <moz@compsoc.man.ac.uk>
+
 	* lyxfunc.C: ignore space-only minibuffer dispatches.
 	  Show the command name when it doesn't exist
 

@@ -73,8 +73,7 @@ public:
 	///
 	void updateScrollbar();
 	///
-	Inset * checkInsetHit(LyXText *, int & x, int & y,
-			      unsigned int button);
+	Inset * checkInsetHit(LyXText *, int & x, int & y);
 	/// 
 	void redoCurrentBuffer();
 	///

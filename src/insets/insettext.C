@@ -914,7 +914,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 
 	int tmp_x = x - drawTextXOffset;
 	int tmp_y = y + insetAscent - getLyXText(bv)->first;
-	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y, button);
+	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y);
 
 	hideInsetCursor(bv);
 	if (the_locking_inset) {
@@ -1958,7 +1958,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 	x -= drawTextXOffset;
 	int dummyx = x;
 	int dummyy = y + insetAscent;
-	Inset * inset = bv->checkInsetHit(getLyXText(bv), dummyx, dummyy, button);
+	Inset * inset = bv->checkInsetHit(getLyXText(bv), dummyx, dummyy);
 
 	if (inset) {
 		if (x < 0)

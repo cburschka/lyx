@@ -10,6 +10,7 @@
 #include "commandtags.h"
 #include "frontends/Timeout.h"
 #include "WorkArea.h"
+#include "box.h"
 #include "insets/insetspecialchar.h"
 #include "support/types.h"
 
@@ -54,9 +55,12 @@ struct BufferView::Pimpl : public SigC::Object {
 	void updateScrollbar();
 	///
 	void scrollCB(double value);
-	///
-	Inset * checkInsetHit(LyXText *, int & x, int & y,
-			      unsigned int button);
+	/**
+	 * Returns an inset if inset was hit, or 0 if not.
+	 *
+	 * If hit, the coordinates are changed relative to the inset.
+	 */
+	Inset * checkInsetHit(LyXText *, int & x, int & y);
 	/// 
 	int scrollUp(long time);
 	///
@@ -126,6 +130,17 @@ struct BufferView::Pimpl : public SigC::Object {
 	///
 	bool Dispatch(kb_action action, string const & argument);
 private:
+	/**
+	 * Return the on-screen dimensions of the inset at the cursor.
+	 * Pre-condition: the cursor must be at an inset.
+	 */
+	Box insetDimensions(LyXText const & text, LyXCursor const & cursor) const;
+	/**
+	 * check if the given co-ordinates are inside an inset at the given cursor,
+	 * if one exists. If so, the inset is returned, and the co-ordinates are
+	 * made relative. Otherwise, 0 is returned.
+	 */
+	Inset * checkInset(LyXText const & text, LyXCursor const & cursor, int & x, int & y) const; 
 	///
 	friend class BufferView;
 	/// open and lock an updatable inset
