@@ -296,14 +296,17 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				break;
 			}
 
+			int ii = 1;
 			Strings::const_iterator docit = names.begin();
 			Strings::const_iterator end = names.end();
-			for (; docit != end ; ++docit) {
+			for (; docit != end; ++docit, ++ii) {
 				int const action = lyxaction
 					.getPseudoAction(LFUN_SWITCHBUFFER,
 							 *docit);
-				string const label =
-					MakeDisplayPath(*docit, 30);
+				string label = MakeDisplayPath(*docit, 30);
+				if (ii < 10)
+					label = tostr(ii) + ". "
+						+ label + '|' + tostr(ii);
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, action));
 			}

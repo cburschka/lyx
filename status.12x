@@ -27,13 +27,19 @@ What's new
 
 - update finnish, danish, french and russian localizations
 
-- update Tutorial to be more up to date
+- update Tutorial to 1.2.x features
 
 - better support for entering cyrillic and greek alphabets
 
+- cleanup shortcuts for section layouts. Starred versions are now
+  obtained by prepending a * to the section number (M-p asterisk 0, ...,
+  M-p asterisk 6)
+
+- add keyboard shortcuts to the Documents menu
+
 - support the numpad direction keys as equivalent to normal cursor keys
 
-- update template for IEEEtran; update hebrew article class
+- update template for IEEEtran; small update to hebrew article class
 
 ** Bugfixes
 
