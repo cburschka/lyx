@@ -4,16 +4,6 @@ Template XFig
 	GuiName "[XFig: $$Basename]"
 	HelpText
 		An XFig figure.
-		In the parameters box, you can provide
-		optional parameters for fig2dev in the
-		case of LaTeX export. E.g., -m .69 to
-		reduce the size.
-		For Ascii export, you can provide a
-		number that specifies the width of an
-		Ascii approximation of the figure.
-		For DocBook export, you can provide
-		optional parameters for the ImageMagick
-		convert script.
 		This template uses XFig for editing.
 	HelpTextEnd
 	InputFormat fig
@@ -93,15 +83,6 @@ Template Date
 	GuiName "[Date]"
 	HelpText
 		Todays date.
-		In the parameters box, you can provide
-		optional parameters for the date
-		command.
-		No parameters gives "Mon Jun 12 05:20:41 CEST 2000"
-		Use -u to get "Mon Jun 12 03:20:41 UTC 2000"
-		Use -I to get "2000-06-12".
-		Use -R to get "Mon, 12 Jun 2000 05:20:41 +0200"
-		Use +%d-%m-%Y to get "20-06-2000"
-		Use +%T to get the time as "23:23:00"
 		Read 'info date' for more information.
 	HelpTextEnd
 	InputFormat date
