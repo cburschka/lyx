@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
-* 
-*           LyX, The Document Processor
-*        
-*           Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1998 The LyX Team.
+ *
+ * ======================================================*/
 
 /**
   Docu   : To use the lyxserver define the name of the pipe in your
@@ -37,13 +37,13 @@
 
 #include <config.h>
 
-#include <string.h>
-#include <stdio.h>
+#include <cstring>
+#include <cstdio>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <errno.h>
+#include <cerrno>
 #include FORMS_H_LOCATION
 
 #ifdef __GNUG__
@@ -54,9 +54,10 @@
 #include "lyxfunc.h"
 #include "lyx_main.h"
 #include "error.h"
+#include "support/lstrings.h"
 
 #ifdef __EMX__
-#include <stdlib.h>
+#include <cstdlib>
 #include <io.h>
 #define OS2EMX_PLAIN_CHAR
 #define INCL_DOSNMPIPES
@@ -74,12 +75,6 @@ int	mkfifo( char *__path, mode_t __mode ) {
 #endif
 
 
-// 	$Id: lyxserver.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: lyxserver.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
-	
 /* === variables ========================================================= */
 
 extern LyXAction lyxaction;
@@ -102,7 +97,7 @@ void LyXComm::openConnection() {
 
 	// --- prepare input pipe ---------------------------------------
  
-	LString tmp = pipename + ".in";
+	string tmp = pipename + ".in";
        
 #ifdef __EMX__
 	HPIPE fd;
@@ -119,7 +114,7 @@ void LyXComm::openConnection() {
 		lyxerr.print("LyXComm: Pipe " + tmp + " already exists.");
 		lyxerr.print("If no other LyX program is active, please delete"
 			     " the pipe by hand and try again.");
-		pipename = LString();
+		pipename = string();
 		return;
 	}
 #ifndef __EMX__
@@ -170,7 +165,7 @@ void LyXComm::openConnection() {
 		lyxerr.print("LyXComm: Pipe " + tmp + " already exists.");
 		lyxerr.print("If no other LyX program is active, please delete"
 			     " the pipe by hand and try again.");
-		pipename = LString();
+		pipename = string();
 		return;
 	}
 #ifndef __EMX__
@@ -239,7 +234,7 @@ void LyXComm::closeConnection() {
 	if(infd > -1) {
 		fl_remove_io_callback(infd, FL_READ, callback);
  
-		LString tmp = pipename + ".in";
+		string tmp = pipename + ".in";
 #ifdef __EMX__		// Notify the operating system.
 		rc = DosDisConnectNPipe(infd);
 		if (rc != NO_ERROR) {
@@ -261,7 +256,7 @@ void LyXComm::closeConnection() {
 #endif
 	}
 	if(outfd > -1) {
-		LString tmp = pipename + ".out";
+		string tmp = pipename + ".out";
 #ifdef __EMX__
 		rc = DosDisConnectNPipe(outfd);
 		if (rc != NO_ERROR) {
@@ -291,14 +286,14 @@ void LyXComm::callback(int fd, void *v)
 	LyXComm * c = (LyXComm *) v;
  
 	if (lyxerr.debugging(Error::LYXSERVER)) {
-		lyxerr.print(LString("LyXComm: Receiving from fd ") + int(fd));
+		lyxerr.print(string("LyXComm: Receiving from fd ") + tostr(fd));
 	}
  
         const int CMDBUFLEN = 100;
 	char charbuf[CMDBUFLEN];
-  	LString cmd;
+  	string cmd;
 // nb! make lsbuf a class-member for multiple sessions
-	static LString lsbuf;
+	static string lsbuf;
 
 	errno = 0;
 	int status;
@@ -308,18 +303,17 @@ void LyXComm::callback(int fd, void *v)
 		if(status > 0) // got something
 		{
 			charbuf[status]='\0'; // turn it into a c string
-			lsbuf += charbuf;
-			lsbuf.strip('\r');
+			lsbuf += strip(charbuf, '\r');
 			// commit any commands read
-			while(lsbuf.charPos('\n') >= 0) // while still
+			while(lsbuf.find('\n') != string::npos) // while still
 							// commands
 							// left 
 			{
 				// split() grabs the entire string if
 				// the delim /wasn't/ found. ?:-P 
-				lsbuf.split(cmd,'\n');
-				lyxerr.debug(LString("LyXComm: status:") 
-					     + status + ", lsbuf:" + lsbuf 
+				lsbuf=split(lsbuf, cmd,'\n');
+				lyxerr.debug(string("LyXComm: status:") 
+					     + tostr(status) + ", lsbuf:" + lsbuf 
 					     + ", cmd:" + cmd, 
 					     Error::LYXSERVER);
 				if(!cmd.empty())
@@ -336,12 +330,12 @@ void LyXComm::callback(int fd, void *v)
 		}
 		if(errno != 0 )
 		{
-			lyxerr.print(LString("LyXComm: ") + strerror(errno));
+			lyxerr.print(string("LyXComm: ") + strerror(errno));
 			if(!lsbuf.empty())
 			{
 				lyxerr.print("LyxComm: truncated command: " 
 					     + lsbuf);
-				lsbuf.clean();
+				lsbuf.erase();
 			}
 			break; // reset connection
 		}
@@ -351,7 +345,7 @@ void LyXComm::callback(int fd, void *v)
 	errno=0;
 }
  
-void LyXComm::send(LString const & msg) {
+void LyXComm::send(string const & msg) {
 	if (msg.empty()) {
 		lyxerr.print("LyXComm: Request to send empty string. Ignoring.");
 		return;
@@ -392,7 +386,7 @@ LyXServer::~LyXServer()
 	// say goodbye to clients so they stop sending messages
 	// modified june 1999 by stefano@zool.su.se to send as many bye
 	// messages as there are clients, each with client's name.
-	LString message;
+	string message;
 	for (int i=0; i<numclients; i++) {
 		message = "LYXSRV:" + clients[i] + ":bye\n";
 		pipes.send(message);
@@ -406,7 +400,7 @@ LyXServer::~LyXServer()
     Purpose   : handle data gotten from communication
 \* ---F------------------------------------------------------------------- */
 
-void LyXServer::callback(LyXServer * serv, LString const & msg)
+void LyXServer::callback(LyXServer * serv, string const & msg)
 {
 	lyxerr.debug("LyXServer: Received: '" + msg + '\'', Error::LYXSERVER);
  
@@ -428,19 +422,19 @@ void LyXServer::callback(LyXServer * serv, LString const & msg)
 		p += 7;
 		
 		// --- 2. for the moment ignore the client name ---
-		LString client;
+		string client;
 		while(*p && *p != ':')
 			client += char(*p++);
 		if(*p == ':') p++;
 		if(!*p) return;
 		
 		// --- 3. get function name ---
-		LString cmd;
+		string cmd;
 		while(*p && *p != ':')
 			cmd += char(*p++);
 		
 		// --- 4. parse the argument ---
-		LString arg;
+		string arg;
 		if(!server_only && *p == ':' && *(++p)) {
 			while(*p && *p != '\n')
 				arg += char(*p++);
@@ -452,7 +446,7 @@ void LyXServer::callback(LyXServer * serv, LString const & msg)
 		// --- lookup and exec the command ------------------
  
 		if (server_only) {
-			LString buf;
+			string buf;
 			// return the greeting to inform the client that 
 			// we are listening.
 			if (cmd == "hello") {
@@ -479,7 +473,7 @@ void LyXServer::callback(LyXServer * serv, LString const & msg)
 				}
 				if (i<serv->numclients) {
 					serv->numclients--;
-					serv->clients[i].clean();
+					serv->clients[i].erase();
 					lyxerr.debug("LyXServer: Client " + client + " said goodbye",
 						Error::LYXSERVER);
 				} else {
@@ -502,7 +496,7 @@ void LyXServer::callback(LyXServer * serv, LString const & msg)
 
 			int action = lyxaction.LookupFunc(cmd.c_str());
 			//int action = -1;
-			LString rval, buf;
+			string rval, buf;
 		    
 			if (action>=0) {
 				rval = serv->func->Dispatch(action, arg.c_str());
@@ -518,7 +512,7 @@ void LyXServer::callback(LyXServer * serv, LString const & msg)
 				buf = "ERROR:";
 			else
 				buf = "INFO:";
-			buf += LString(client) + ":" + cmd 	+ ":" + rval + "\n";
+			buf += string(client) + ":" + cmd 	+ ":" + rval + "\n";
 			serv->pipes.send(buf);
 
 			// !!! we don't do any error checking -
@@ -541,9 +535,9 @@ void LyXServer::callback(LyXServer * serv, LString const & msg)
    Returns   : nothing
    \* ---F------------------------------------------------------------------- */
 
-void LyXServer::notifyClient(LString const & s)
+void LyXServer::notifyClient(string const & s)
 {
-	LString buf = LString("NOTIFY:") + s + "\n";
+	string buf = string("NOTIFY:") + s + "\n";
 	pipes.send(buf);
 }
 

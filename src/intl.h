@@ -3,19 +3,20 @@
 
 
  */
-#ifndef _INTL_H
-#define _INTL_H
+#ifndef INTL_H
+#define INTL_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
+#include "LString.h"
 #include "form1.h"
 
 class LyXText;
 class Combox;
 class TransManager;
-class LString;
+
 
 /// default character set
 #define DEFCHSET "iso8859-1"
@@ -46,10 +47,10 @@ public:
 	void ToggleKeyMap();
 
 	///
-	int SetPrimary(LString const &);
+	int SetPrimary(string const &);
 
 	///
-	int SetSecondary(LString const &);
+	int SetSecondary(string const &);
 
 	// insert correct stuff into paragraph
 	//void TranslateAndInsert(char c, LyXText *text);
@@ -90,9 +91,9 @@ private:
 	///
 	Combox *Language2;
 	///
-	LString& prim_lang;
+	string & prim_lang;
 	///
-	LString& sec_lang;
+	string & sec_lang;
 	///
 	TransManager *trans;
 };

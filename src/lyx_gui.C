@@ -1,15 +1,15 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
-#include <stdlib.h>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -38,12 +38,6 @@
 #include "lyx_cb.h"
 #include "lyxlookup.h"
 #include "bufferlist.h"
-
-// 	$Id: lyx_gui.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: lyx_gui.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
 
 #ifdef TWO_COLOR_ICONS
 #include "banner_bw.xbm"
@@ -120,7 +114,7 @@ char	   latex_color[32];
 char	   note_color[32];
 char       note_frame_color[32];
 char	   lighted_color[32];
-LString    background_color;
+string    background_color;
 char	   b_c[32];
 char	   selection_color[32];
 
@@ -247,11 +241,11 @@ void LyXGUI::init()
 	create_forms();
 	
 	// Set the font name for popups and menus
-        LString menufontname = lyxrc->menu_font_name 
+        string menufontname = lyxrc->menu_font_name 
 		               + "-*-*-*-?-*-*-*-*-"  
 		               + lyxrc->font_norm; 
 		// "?" means "scale that font"
-        LString popupfontname = lyxrc->popup_font_name 
+        string popupfontname = lyxrc->popup_font_name 
 		               + "-*-*-*-?-*-*-*-*-"  
 		               + lyxrc->font_norm; 
 #if FL_REVISION > 85
@@ -342,7 +336,7 @@ void LyXGUI::create_forms()
 	// the title form
 	fd_form_title = create_form_form_title();
 	fl_set_form_dblbuffer(fd_form_title->form_title, 1); // use dbl buffer
-	fl_set_form_atclose(fd_form_title->form_title, CancelCloseBoxCB, NULL);
+	fl_set_form_atclose(fd_form_title->form_title, CancelCloseBoxCB, 0);
 	fl_addto_form(fd_form_title->form_title);
 #ifdef TWO_COLOR_ICONS
 	FL_OBJECT *obj = fl_add_bitmapbutton(FL_NORMAL_BUTTON,0,0,425,290,"");
@@ -380,7 +374,7 @@ void LyXGUI::create_forms()
 	// the paragraph form
 	fd_form_paragraph = create_form_form_paragraph();
 	fl_set_form_atclose(fd_form_paragraph->form_paragraph,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 	fl_addto_choice(fd_form_paragraph->choice_space_above,
 			_(" None | Defskip | Smallskip "
 			"| Medskip | Bigskip | VFill | Length "));
@@ -395,7 +389,7 @@ void LyXGUI::create_forms()
         // the paragraph extra form
 	fd_form_paragraph_extra = create_form_form_paragraph_extra();
 	fl_set_form_atclose(fd_form_paragraph_extra->form_paragraph_extra,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 	fl_set_input_return(fd_form_paragraph_extra->input_pextra_width,
 			    FL_RETURN_ALWAYS);
 	fl_set_input_return(fd_form_paragraph_extra->input_pextra_widthp,
@@ -404,12 +398,12 @@ void LyXGUI::create_forms()
 	// the search form
 	fd_form_search = create_form_form_search();
 	fl_set_form_atclose(fd_form_search->form_search,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 
 	// the character form
 	fd_form_character = create_form_form_character();
 	fl_set_form_atclose(fd_form_character->form_character,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 	fl_addto_choice(fd_form_character->choice_family, 
 			_(" No change %l| Roman | Sans Serif | Typewriter %l| Reset "));
 	fl_addto_choice(fd_form_character->choice_series, 
@@ -430,7 +424,7 @@ void LyXGUI::create_forms()
 	// the document form
 	fd_form_document = create_form_form_document();
 	fl_set_form_atclose(fd_form_document->form_document,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 	fl_addto_choice(fd_form_document->choice_spacing,
 			_(" Single | OneHalf | Double | Other "));
 
@@ -478,7 +472,7 @@ void LyXGUI::create_forms()
         // the paper form
 	fd_form_paper = create_form_form_paper();
 	fl_set_form_atclose(fd_form_paper->form_paper,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 	fl_addto_choice(fd_form_paper->choice_papersize2,
 			_(" Default | Custom | USletter | USlegal "
                         "| USexecutive | A3 | A4 | A5 | B3 | B4 | B5 "));
@@ -509,14 +503,14 @@ void LyXGUI::create_forms()
         // the table_options form
 	fd_form_table_options = create_form_form_table_options();
 	fl_set_form_atclose(fd_form_table_options->form_table_options,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 	fl_set_input_return(fd_form_table_options->input_column_width,
 			    FL_RETURN_ALWAYS);
 
         // the table_extra form
 	fd_form_table_extra = create_form_form_table_extra();
 	fl_set_form_atclose(fd_form_table_extra->form_table_extra,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 	fl_set_input_return(fd_form_table_extra->input_special_alignment,
 			    FL_RETURN_ALWAYS);
 	fl_set_input_return(fd_form_table_extra->input_special_multialign,
@@ -525,7 +519,7 @@ void LyXGUI::create_forms()
 	// the quotes form
 	fd_form_quotes = create_form_form_quotes();
 	fl_set_form_atclose(fd_form_quotes->form_quotes,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 	// Is it wrong of me to use « » instead of << >> ? (Lgb)
 	// Maybe if people use a font other than latin1... (JMarc)
 	fl_addto_choice(fd_form_quotes->choice_quotes_language,
@@ -534,11 +528,11 @@ void LyXGUI::create_forms()
 	// the preamble form
 	fd_form_preamble = create_form_form_preamble();
 	fl_set_form_atclose(fd_form_preamble->form_preamble,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 
 	// the table form
 	fd_form_table = create_form_form_table();
-	fl_set_form_atclose(fd_form_table->form_table, CancelCloseBoxCB, NULL);
+	fl_set_form_atclose(fd_form_table->form_table, CancelCloseBoxCB, 0);
 	fl_set_slider_bounds(fd_form_table->slider_rows,1,50);
 	fl_set_slider_bounds(fd_form_table->slider_columns,1,50);
 	fl_set_slider_value(fd_form_table->slider_rows, 5);
@@ -548,7 +542,7 @@ void LyXGUI::create_forms()
 
 	// the print form
 	fd_form_print = create_form_form_print();
-	fl_set_form_atclose(fd_form_print->form_print, CancelCloseBoxCB, NULL);
+	fl_set_form_atclose(fd_form_print->form_print, CancelCloseBoxCB, 0);
        	fl_set_button(fd_form_print->radio_printer, 1);
 	fl_set_button(fd_form_print->radio_file, 0);
 	fl_set_button(fd_form_print->radio_order_normal, 1);
@@ -559,36 +553,36 @@ void LyXGUI::create_forms()
 
 	// the sendto form
 	fd_form_sendto = create_form_form_sendto();
-	fl_set_form_atclose(fd_form_sendto->form_sendto,CancelCloseBoxCB,NULL);
+	fl_set_form_atclose(fd_form_sendto->form_sendto,CancelCloseBoxCB,0);
 
 	// the figure form
 	fd_form_figure = create_form_form_figure();
 	fl_set_form_atclose(fd_form_figure->form_figure,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 	fl_set_button(fd_form_figure->radio_postscript, 1);
 
 	// the screen form
 	fd_form_screen = create_form_form_screen();
 	fl_set_form_atclose(fd_form_screen->form_screen,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 
 	// the toc form
 	fd_form_toc = create_form_form_toc();
-	fl_set_form_atclose(fd_form_toc->form_toc, CancelCloseBoxCB, NULL);
+	fl_set_form_atclose(fd_form_toc->form_toc, CancelCloseBoxCB, 0);
 
 	// the ref form
 	fd_form_ref = create_form_form_ref();
-	fl_set_form_atclose(fd_form_ref->form_ref, CancelCloseBoxCB, NULL);
+	fl_set_form_atclose(fd_form_ref->form_ref, CancelCloseBoxCB, 0);
 
 	// the latex options form
 	fd_latex_options = create_form_LaTeXOptions();
 	fl_set_form_atclose(fd_latex_options->LaTeXOptions,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 
 	// the latex log form
 	fd_latex_log = create_form_LaTeXLog();
 	fl_set_form_atclose(fd_latex_log->LaTeXLog,
-			    CancelCloseBoxCB, NULL);
+			    CancelCloseBoxCB, 0);
 
 	// Show the main & title form
 	int main_placement = FL_PLACE_CENTER | FL_FREE_SIZE;

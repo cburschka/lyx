@@ -36,16 +36,9 @@
 #endif
 
 #include "combox.h"
-#include <string.h>
+#include <cstring>
 
 #include "error.h"
-
-// 	$Id: combox.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: combox.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
-
 
 Combox::Combox(combox_type t): type(t)
 {
@@ -80,20 +73,20 @@ void Combox::clear()
 
 void Combox::remove()
 {
-	//lyxerr.print(LString("Button: ") + int(button));
+	//lyxerr.print(string("Button: ") + int(button));
 	if (button) {
 		fl_delete_object(button);
 		fl_free_object(button); 
 	}
 	
-	//lyxerr.print(LString("Label: ") + int(label));
+	//lyxerr.print(string("Label: ") + int(label));
 	if (label && label!=button) {
 		fl_delete_object(label);
 		fl_free_object(label); 
 	}
 	
-	//lyxerr.print(LString("Form: ") + int(form));
-	//lyxerr.print(LString("Browser: ") + int(browser));
+	//lyxerr.print(string("Form: ") + int(form));
+	//lyxerr.print(string("Browser: ") + int(browser));
 	if (form && browser) {
 	   fl_delete_object(browser);
 	   fl_free_object(browser);
@@ -379,7 +372,7 @@ int Combox::peek_event(FL_FORM * form, void *xev)
 	static int num_bytes;
 	KeySym keysym_return;
 	num_bytes = XLookupString(&((XEvent*)xev)->xkey, s_r, 10, 
-				  &keysym_return, NULL);
+				  &keysym_return, 0);
 	XFlush(fl_display);
 	switch (keysym_return) {
 	case XK_Down:

@@ -30,7 +30,7 @@ public:
 	FontInfo() { init(); }
 
 	///
-	FontInfo(LString const & pat)
+	FontInfo(string const & pat)
 	: pattern(pat) { init(); }
 
 	/// Destructor
@@ -49,23 +49,23 @@ public:
 	}
 
 	/// Get existing pattern
-	LString getPattern() const { return pattern; }
+	string getPattern() const { return pattern; }
 
 	/// Set new pattern
-	void setPattern(LString const & pat);
+	void setPattern(string const & pat);
 
 	/** Return full name of font close to this size.
 	  If impossible, result is the empty string */
-	LString getFontname(int size);
+	string getFontname(int size);
 private:
 	/// Font pattern (with wildcard for size)
-	LString pattern;
+	string pattern;
 
 	/// Available size list
 	int * sizes;
 
 	/// Corresponding name list
-	LString * strings;
+	string * strings;
 
 	/// Number of matches
 	int matches;
@@ -97,6 +97,6 @@ private:
 	void query();
 
 	/// Build newly sized font string 
-	LString resize(LString const &, int size) const;
+	string resize(string const &, int size) const;
 };
 #endif

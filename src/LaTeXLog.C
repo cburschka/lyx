@@ -1,31 +1,24 @@
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 #include FORMS_H_LOCATION
 #include "buffer.h"
 #include "latexoptions.h"
 #include "lyx_main.h"
 #include "LString.h"
-#include "FileInfo.h"
-#include "filetools.h"
+#include "support/FileInfo.h"
+#include "support/filetools.h"
 #include "pathstack.h"
 #include "lyxrc.h"
 #include "BufferView.h"
 #include "gettext.h"
 
-// 	$Id: LaTeXLog.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: LaTeXLog.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $";
-#endif /* lint */
-
-/* Prototypes */
 extern FD_LaTeXLog *fd_latex_log;
 extern BufferView *current_view;
 
 void ShowLatexLog()
 {
-    LString filename, fname, bname, path;
+    string filename, fname, bname, path;
     bool use_build = false;
 
     filename = current_view->currentBuffer()->getFileName();

@@ -24,6 +24,7 @@
 #include "math_iter.h"
 #include "math_inset.h"
 #include "symbol_def.h"
+#include "support/lstrings.h"
 #include "error.h"
 
 const int SizeInset = sizeof(char*) + 2;
@@ -728,9 +729,9 @@ bool MathedXIter::Down()
 void MathedXIter::addRow()
 {
     if (!crow) {
-	lyxerr.debug(LString("MathErr: Attempt to insert new"
+	lyxerr.debug(string("MathErr: Attempt to insert new"
 			     " line in a subparagraph. ")
-		     + long(this), Error::MATHED);
+		     + tostr(this), Error::MATHED);
 	return;
     }    
     // Create new item for the structure    
@@ -910,8 +911,8 @@ void MathedXIter::IMetrics(int pos2, int& width, int& ascent, int& descent)
 	    limits = false;                   
 	}      
 	else {
-	    lyxerr.debug(LString("Mathed Sel-Error: Unrecognized code[")
-			 + int(cx) + ']', Error::MATHED);
+	    lyxerr.debug(string("Mathed Sel-Error: Unrecognized code[")
+			 + tostr(cx) + ']', Error::MATHED);
 	    break;
 	}       
 	if (pos<pos2)  Next();

@@ -32,7 +32,7 @@ public:
 	///
 	InsetLatexAccent(); 
 	///
-	InsetLatexAccent(LString const & string);
+	InsetLatexAccent(string const & string);
 	///
 	InsetLatexAccent(InsetLatexAccent const&);
 	///
@@ -55,11 +55,11 @@ public:
 	///
 	int Latex(FILE *file, signed char fragile);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string &file, signed char fragile);
 	///
-	int Linuxdoc(LString &file);
+	int Linuxdoc(string &file);
 	///
-	int DocBook(LString &file);
+	int DocBook(string &file);
 	///
 	bool Deletable() const;
 	///
@@ -122,7 +122,7 @@ private:
 	/// Check if we know the modifier and can display it ok on screen.
 	void checkContents();
 	///
-	LString contents;
+	string contents;
 	/// can display as proper char
 	bool  candisp;
 	/// modifier type

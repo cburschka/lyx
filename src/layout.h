@@ -158,13 +158,13 @@ public:
 	bool Read (LyXLex&, LyXLayoutList *);
 
 	/// Name of the layout/paragraph environment
-	LString name;
+	string name;
 
 	/// Name of an layout that has replaced this layout. 
 	/** This is used to rename a layout, while keeping backward
 	    compatibility 
 	*/
-	LString obsoleted_by;
+	string obsoleted_by;
 
 	/// Default font for this layout/environment
 	/** The main font for this kind of environment. If an attribute has
@@ -191,34 +191,34 @@ public:
 	LyXFont reslabelfont;
 
 	/// Text that dictates how wide the left margin is on the screen
-	LString leftmargin;
+	string leftmargin;
 
 	/// Text that dictates how wide the right margin is on the screen
-	LString rightmargin;
+	string rightmargin;
 
 	/// Text that dictates how much space to leave after a potential label
-	LString labelsep;
+	string labelsep;
 
 	/// Text that dictates how much space to leave before a potential label
-	LString labelindent;
+	string labelindent;
 
 	/// Text that dictates the width of the indentation of indented paragraphs
-	LString parindent;
+	string parindent;
 
 	/// Label string. "Abstract", "Reference", "Caption"...
-	LString labelstring;
+	string labelstring;
 
 	/// Label string inside appendix. "Appendix", ...
-	LString labelstring_appendix;
+	string labelstring_appendix;
 
 	/// LaTeX name for environment
-	LString latexname;
+	string latexname;
 
 	/// LaTeX parameter for environment
-        LString latexparam;   //arrae970411
+        string latexparam;   //arrae970411
 
         /// Macro definitions needed for this layout
-	LString preamble;
+	string preamble;
 
 	///
 	float parskip;
@@ -303,9 +303,9 @@ public:
 	///
 	void Add (LyXLayout *l);
 	///
-	bool Delete (LString const &name);
+	bool Delete (string const &name);
         ///
-	LyXLayout *GetLayout (LString const &name);
+	LyXLayout *GetLayout (string const &name);
 	///
 	LyXLayout *ToAr();
 	///
@@ -333,9 +333,9 @@ private:
 class LyXTextClass  {
 public:
 	///
-	LyXTextClass (LString const & = LString(), 
-		      LString const & = LString(), 
-		      LString const & = LString());
+	LyXTextClass (string const & = string(), 
+		      string const & = string(), 
+		      string const & = string());
 	///
 	~LyXTextClass();
 
@@ -343,26 +343,26 @@ public:
 	void Copy (LyXTextClass const &l);
 
 	/// Reads a textclass structure from file
-	int Read (LString const & filename, LyXLayoutList *list = NULL);
+	int Read (string const & filename, LyXLayoutList *list = 0);
 
 	/// Sees to that the textclass structure has been loaded
 	void load();
 
 	///
-	LString name;
+	string name;
 	///
-	LString latexname;
+	string latexname;
 	///
-	LString description;
+	string description;
         ///
         OutputType output_type;
 
 	/// Specific class options
-        LString opt_fontsize;
+        string opt_fontsize;
 	///
-        LString opt_pagestyle;
+        string opt_pagestyle;
 	///
-	LString options;
+	string options;
 
 	/// Packages that are already loaded by the class
 	bool provides_amsmath;
@@ -390,15 +390,15 @@ public:
 	///
 	signed char tocdepth;
 	///
-	LString pagestyle;
+	string pagestyle;
 	///
-	LString preamble;
+	string preamble;
 	///
 	/// Text that dictates how wide the left margin is on the screen
-	LString leftmargin;
+	string leftmargin;
         ///
 	/// Text that dictates how wide the right margin is on the screen
-	LString rightmargin;
+	string rightmargin;
         ///
 	char maxcounter; // add approp. signedness
 private:
@@ -420,23 +420,23 @@ public:
 	LyXLayout *Style(char textclass, char layout);
 
 	/// Gets layout number from textclass number and layout name
-	char NumberOfLayout(char textclass, LString const & name); // add approp. signedness
+	char NumberOfLayout(char textclass, string const & name); // add approp. signedness
 
 	/// Gets a layout name from layout number and textclass number
-	LString NameOfLayout(char textclass, char layout); // add approp. signedness
+	string NameOfLayout(char textclass, char layout); // add approp. signedness
 
 	/// Gets textclass number from name
 	/** Returns -1 if textclass name does not exist */
-	signed char NumberOfClass(LString const & textclass);
+	signed char NumberOfClass(string const & textclass);
 
 	///
-	LString NameOfClass(char number); // add approp. signedness
+	string NameOfClass(char number); // add approp. signedness
 
 	///
-	LString LatexnameOfClass(char number); // add approp. signedness
+	string LatexnameOfClass(char number); // add approp. signedness
 
 	///
-	LString DescOfClass(char number); // add approp. signedness
+	string DescOfClass(char number); // add approp. signedness
 
 	///
 	LyXTextClass * TextClass(char textclass); // add approp. signedness

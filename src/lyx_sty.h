@@ -29,20 +29,20 @@
 // another object. I'll let some others have a look now... (Lgb)
 
 // include this always
-extern LString const lyx_def;
-extern LString const lyxline_def;
-extern LString const noun_def;
-extern LString const lyxarrow_def;
-extern LString const quotedblbase_def;
-extern LString const quotesinglbase_def;
-extern LString const guillemotleft_def;
-extern LString const guillemotright_def;
-extern LString const guilsinglleft_def;
-extern LString const guilsinglright_def;
-extern LString const paragraphindent_def;
-extern LString const floatingfootnote_def;
-extern LString const minipageindent_def;
-extern LString const boldsymbol_def;
-extern LString const binom_def;
+extern string const lyx_def;
+extern string const lyxline_def;
+extern string const noun_def;
+extern string const lyxarrow_def;
+extern string const quotedblbase_def;
+extern string const quotesinglbase_def;
+extern string const guillemotleft_def;
+extern string const guillemotright_def;
+extern string const guilsinglleft_def;
+extern string const guilsinglright_def;
+extern string const paragraphindent_def;
+extern string const floatingfootnote_def;
+extern string const minipageindent_def;
+extern string const boldsymbol_def;
+extern string const binom_def;
 
 #endif

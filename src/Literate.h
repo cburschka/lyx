@@ -24,10 +24,10 @@
 ///
 class Literate: public LaTeX {
 public:
-	Literate(LString const & cmd, LString const & file, LString const & path,
-		 LString const & litfile,
-		 LString const & literate_cmd, LString const & literate_filter, 
-		 LString const & build_cmd, LString const & build_filter);
+	Literate(string const & cmd, string const & file, string const & path,
+		 string const & litfile,
+		 string const & literate_cmd, string const & literate_filter, 
+		 string const & build_cmd, string const & build_filter);
 	
         /// runs literate and latex
         int weave(TeXErrors &, MiniBuffer *);
@@ -43,19 +43,19 @@ public:
 
 private:
         ///
-        LString litfile;
+        string litfile;
         
         ///
-        LString literate_cmd;
+        string literate_cmd;
  
         ///
-        LString literate_filter;
+        string literate_filter;
  
         ///
-        LString build_cmd;
+        string build_cmd;
  
         ///
-        LString build_filter;
+        string build_filter;
 };
 
 #endif

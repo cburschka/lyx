@@ -42,7 +42,7 @@ InsetFormulaMacro::InsetFormulaMacro():
 }
 
 
-InsetFormulaMacro::InsetFormulaMacro(LString nm, int na, bool /*e*/):
+InsetFormulaMacro::InsetFormulaMacro(string nm, int na, bool /*e*/):
         InsetFormula(true), name(nm)
 {
     tmacro = MathMacroTable::mathMTable.getTemplate(name.c_str());
@@ -82,7 +82,7 @@ int InsetFormulaMacro::Latex(FILE *file, signed char /*fragile*/)
 }
 
 
-int InsetFormulaMacro::Latex(LString &file, signed char /*fragile*/)
+int InsetFormulaMacro::Latex(string &file, signed char /*fragile*/)
 {
     int ret = 1;
     tmacro->WriteDef(file);
@@ -90,13 +90,13 @@ int InsetFormulaMacro::Latex(LString &file, signed char /*fragile*/)
 }
 
 
-int InsetFormulaMacro::Linuxdoc(LString &/*file*/)
+int InsetFormulaMacro::Linuxdoc(string &/*file*/)
 {
     return 0;
 }
 
 
-int InsetFormulaMacro::DocBook(LString &/*file*/)
+int InsetFormulaMacro::DocBook(string &/*file*/)
 {
     return 0;
 }
@@ -143,7 +143,7 @@ int InsetFormulaMacro::Width(LyXFont const &f) const
 	tmacro->update();
 	return InsetFormula::Width(f);
     }
-    LString ilabel(_("Macro: "));
+    string ilabel(_("Macro: "));
     ilabel += name;
     return 6 + f.stringWidth(ilabel);
 }
@@ -167,7 +167,7 @@ void InsetFormulaMacro::Draw(LyXFont font, LyXScreen &scr,
 	scr.fillRectangle(gc_lighted, int(x), y,  w,  h);
 	scr.drawFrame(FL_UP_FRAME, int(x), y, w, h, FL_BLACK, -1); 
 	
-        LString s(_("Macro: "));
+        string s(_("Macro: "));
         s += name;
         scr.drawString(font, s, baseline, int(x +2));
 	x +=  Width(font) - 1;

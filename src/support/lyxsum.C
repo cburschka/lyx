@@ -89,7 +89,7 @@ lyxsum (char const*file)
 	register FILE *fp;
  
 	fp = fopen (file, "r");
-	if (fp == NULL) {
+	if (fp == 0) {
 		return 0;
 	}
  

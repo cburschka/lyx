@@ -1,7 +1,107 @@
+1999-10-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/layout.C (Add): Changed to use compare_no_case instead of
+	strcasecmp.
+
+	* src/FontInfo.C: changed loop variable type too string::size_type.
+
+1999-10-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/Makefile.am: added -I${srcdir}/../ to INCLUDES and
+	set ETAGS_ARGS to --c++ 
+
+1999-09-30  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/table.C (DocBookEndOfCell): commented out two unused variables
+
+	* src/paragraph.C: commented out four unused variables. 
+
+	* src/lyx_cb.C (TocUpdateCB): moved variable i and added a new i
+	insed a if clause with type string::size_type.
+
+	* src/lyxfr1.C (IsSearchStringInText): changed iSrch from int to
+	string::size_type.
+
+	* src/lyxfunc.C (Dispatch): use string::size_type as loop variable.
+
+	* src/lyx_cb.C (ReplaceWord): use string::size_type as loop
+	variable, also changed loop to go from 0 to lenght + 1, instead of
+	-1 to length. This should be correct.
+
+	* src/LaTeX.C (scanError): use string::size_type as loop variable
+	type.
+
+	* src/BufferView.C (WorkAreaButtonPress): moved #if 0 up two lines
+	(l.896) since y_tmp and row was not used anyway.
+
+	* src/insets/insetref.C (escape): use string::size_type as loop
+	variable type.
+
+	* src/insets/insetquotes.C (Width): use string::size_type as loop
+	variable type.
+	(Draw): use string::size_type as loop variable type.
+
+	* src/insets/insetlatexaccent.C (checkContents): use
+	string::size_type as loop variable type.
+
+	* src/insets/insetlabel.C (escape): use string::size_type as loop
+	variable type.
+
+	* src/insets/insetinfo.C: added an extern for current_view.
+
+	* src/insets/insetcommand.C (scanCommand): use string::size_type
+	as loop variable type.
+
+	* most files: removed the RCS tags. With them we had to recompile
+	a lot of files after a simple cvs commit. Also we have never used
+	them for anything meaningful. 
+
+	* most files: tags-query-replace NULL 0. As adviced several plases
+	we now use "0" instead of "NULL" in our code. 
+
+	* src/support/filetools.C (SpaceLess): use string::size_type as
+	loop variable type.
+
+1999-09-29  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/paragraph.C: fixed up some more string stuff.
+
 1999-09-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/filetools.h: make modestr a std::string.
+
+	* src/filetools.C (GetEnv): made ch really const.
+
+	* src/lyxlib.h: removed the Maximum and Minimum inline functions,
+	made code that used these use max/min from <algorithm> instead.
+
+	* changed several c library include files to their equivalent c++
+	library include files. All is not changed yet.
+
+	* created a support subdir in src, put lyxstring and lstrings
+	there + the extra files atexit, fileblock, strerror. Created
+	Makefile.am. edited configure.in and src/Makefile.am to use this
+	new subdir. More files moved to support.
+
+	* imported som of the functions from repository lyx, filetools
+	
+	* ran tags-query-replace on LString -> string, corrected the bogus
+	cases. Tried to make use of lstrings.[hC], debugged a lot. There
+	is still some errors in there. This is errors where too much or
+	too litle get deleted from strings (string::erase, string::substr,
+	string::replace), there can also be some off by one errors, or
+	just plain wrong use of functions from lstrings. Viewing of quotes
+	is wrong. 
+
+	* LyX is now running fairly well with string, but there are
+	certainly some bugs yet (see above) also string is quite different
+	from LString among others in that it does not allow null pointers
+	passed in and will abort if it gets any.
+	
         * Added the revtex4 files I forgot when setting up the repository.
 
 1999-09-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
 	* All over: Tried to clean everything up so that only the files
 	  that we really need are included in the cvs repository.
 	* Switched to use automake.

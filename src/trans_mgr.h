@@ -20,11 +20,11 @@ public:
 	///
 	virtual ~TransState();
 	///
-	virtual LString normalkey(char,char*)=0;
+	virtual string normalkey(char,char*)=0;
 	///
 	virtual bool backspace()=0;
 	///
-	virtual LString deadkey(char,KmodInfo)=0;
+	virtual string deadkey(char,KmodInfo)=0;
 	///
 	static const char TOKEN_SEP;
 };
@@ -69,11 +69,11 @@ public:
 		///
 		TransInitState();
 		///
-		virtual LString normalkey(char,char*);
+		virtual string normalkey(char,char*);
 		///
 		virtual bool backspace() { return true; }
 		///
-		virtual LString deadkey(char,KmodInfo);
+		virtual string deadkey(char,KmodInfo);
 };
 
 
@@ -85,7 +85,7 @@ public:
 		///
 		TransDeadkeyState();
 		///
-		virtual LString normalkey(char,char*);
+		virtual string normalkey(char,char*);
 		///
 		virtual bool backspace()
 	{
@@ -93,7 +93,7 @@ public:
 		return false;
 	}
 		///
-		virtual LString deadkey(char,KmodInfo);
+		virtual string deadkey(char,KmodInfo);
 };
 
 
@@ -105,7 +105,7 @@ public:
 		///
 		TransCombinedState();
 		///
-		virtual LString normalkey(char,char*);
+		virtual string normalkey(char,char*);
 		///
 		virtual bool backspace()
 	{
@@ -117,7 +117,7 @@ public:
 		return false;
 	}
 		///
-		virtual LString deadkey(char,KmodInfo);
+		virtual string deadkey(char,KmodInfo);
 };
 
 
@@ -150,18 +150,18 @@ private:
 	///
 	CharacterSet* chset_;
 	///
-	void insert(LString,LyXText*);
+	void insert(string,LyXText*);
 	///
-	void insertVerbatim(const LString&,LyXText*);
+	void insertVerbatim(const string&,LyXText*);
 public:
 	///
 	TransManager();
 	///
 	virtual ~TransManager();
 	///
-	int SetPrimary(LString const &);
+	int SetPrimary(string const &);
 	///
-	int SetSecondary(LString const &);
+	int SetSecondary(string const &);
 	///
 	void EnablePrimary();
 	///
@@ -178,22 +178,22 @@ public:
 	///
 	void TranslateAndInsert(char,LyXText*);
 	///
-	inline LString deadkey(char,KmodInfo);
+	inline string deadkey(char,KmodInfo);
 	///
-	inline LString normalkey(char,char*);
+	inline string normalkey(char,char*);
 	///
 	void deadkey(char,tex_accent,LyXText*);
     
 };
 
 
-LString TransManager::normalkey(char c,char *t)
+string TransManager::normalkey(char c,char *t)
 {
 	return trans_fsm_.currentState->normalkey(c,t);
 }
 
 
-LString TransManager::deadkey(char c,KmodInfo t)
+string TransManager::deadkey(char c,KmodInfo t)
 {
 	return trans_fsm_.currentState->deadkey(c,t);
 }

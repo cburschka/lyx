@@ -178,7 +178,7 @@ void Combox::shortcut(char const* s, int i)
 }
 
 inline
-void Combox::setcallback(FL_COMBO_CB cb, void *a = NULL)
+void Combox::setcallback(FL_COMBO_CB cb, void *a = 0)
 {
    callback = cb;
    cb_arg = a;
@@ -208,7 +208,7 @@ char const*Combox::getline()
     if (type==FL_COMBOX_INPUT) 
       return fl_get_input(label);
     else
-      return ((browser) ? fl_get_browser_line(browser, sel): (char const*)NULL);
+      return ((browser) ? fl_get_browser_line(browser, sel): (char const*)0);
 }
 
 #endif

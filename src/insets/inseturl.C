@@ -17,7 +17,7 @@
 extern BufferView *current_view;
 extern void UpdateInset(Inset* inset, bool mark_dirty = true);
 
-InsetUrl::InsetUrl(LString const & cmd)
+InsetUrl::InsetUrl(string const & cmd)
 	: form(0)
 {
 	scanCommand(cmd);
@@ -41,8 +41,8 @@ InsetUrl::InsetUrl(InsetCommand const &inscmd)
 }
 
 
-InsetUrl::InsetUrl(LString const &ins_name,LString const &ins_cont,
-		   LString const &ins_opt)
+InsetUrl::InsetUrl(string const &ins_name,string const &ins_cont,
+		   string const &ins_opt)
 	: form(0)
 {
 	setCmdName(ins_name);
@@ -68,9 +68,9 @@ InsetUrl::~InsetUrl()
 void InsetUrl::CloseUrlCB(FL_OBJECT *ob, long)
 {
 	InsetUrl *inset = (InsetUrl*) ob->u_vdata;
-	LString url = fl_get_input(inset->url_name);
-	LString name = fl_get_input(inset->name_name);
-	LString cmdname;
+	string url = fl_get_input(inset->url_name);
+	string name = fl_get_input(inset->name_name);
+	string cmdname;
 	if (fl_get_button(inset->radio_html))
 		cmdname = "htmlurl";
 	else
@@ -95,7 +95,7 @@ void InsetUrl::CloseUrlCB(FL_OBJECT *ob, long)
 	
 	if (inset->form) {
 		fl_hide_form(inset->form);
-		inset->form = NULL;
+		inset->form = 0;
 	}
 }
 
@@ -121,7 +121,7 @@ void InsetUrl::Edit(int, int)
 		fl_set_button_shortcut(obj,scex(_("HTML type|#H")),1);
 		fl_set_object_lsize(obj,FL_NORMAL_SIZE);
 		fl_end_form();
-		fl_set_form_atclose(form, CancelCloseBoxCB, NULL);
+		fl_set_form_atclose(form, CancelCloseBoxCB, 0);
 	}
 	fl_set_input(url_name, getContents().c_str());
 	fl_set_input(name_name, getOptions().c_str());
@@ -143,9 +143,9 @@ void InsetUrl::Edit(int, int)
 }
 
 
-LString InsetUrl::getScreenLabel() const
+string InsetUrl::getScreenLabel() const
 {
-	LString temp;
+	string temp;
 	if (flag == InsetUrl::HTML_URL)
 		temp += _("HtmlUrl: ");
 	else 
@@ -161,7 +161,7 @@ LString InsetUrl::getScreenLabel() const
 
 int InsetUrl::Latex(FILE *file, signed char fragile)
 {
-	LString latex_output;
+	string latex_output;
 	int res = Latex(latex_output, fragile);
 	fprintf(file, "%s", latex_output.c_str());
 
@@ -169,7 +169,7 @@ int InsetUrl::Latex(FILE *file, signed char fragile)
 }
 
 
-int InsetUrl::Latex(LString &file, signed char fragile)
+int InsetUrl::Latex(string &file, signed char fragile)
 {
 	if (!getOptions().empty())
 		file += getOptions() + ' ';
@@ -182,7 +182,7 @@ int InsetUrl::Latex(LString &file, signed char fragile)
 }
 
 
-int InsetUrl::Linuxdoc(LString &file)
+int InsetUrl::Linuxdoc(string &file)
 {
 	file +=  "<"+ getCmdName() +
 		 " url=\""  + getContents()+"\"" +
@@ -192,7 +192,7 @@ int InsetUrl::Linuxdoc(LString &file)
 }
 
 
-int InsetUrl::DocBook(LString &file)
+int InsetUrl::DocBook(string &file)
 {
 	file +=  "<ulink url=\""  + getContents() + "\">" +
 		 getOptions() +"</ulink>";

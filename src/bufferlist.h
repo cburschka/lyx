@@ -37,7 +37,7 @@ public:
 	///
 	void release(Buffer* buf);
 	///
-	Buffer* newBuffer(LString const &s, LyXRC *, bool =false);
+	Buffer* newBuffer(string const &s, LyXRC *, bool =false);
 private:
 	enum {
 		/** The max number of buffers there are possible to have
@@ -103,7 +103,7 @@ public:
             true), the file name will not be added to the last opened
 	    files list
 	    */  
-	Buffer* loadLyXFile(LString const & filename, 
+	Buffer* loadLyXFile(string const & filename, 
 			    bool tolastfiles = true);
 	
 	///
@@ -122,10 +122,10 @@ public:
 	void resize();
 
 	/// Read a file into a buffer readonly or not.
-	Buffer* readFile(LString const &, bool ro);
+	Buffer* readFile(string const &, bool ro);
 
 	/// Make a new file (buffer) using a template
-	Buffer* newFile(LString const &, LString);
+	Buffer* newFile(string const &, string);
 
 	/** This one must be moved to some other place.
 	 */
@@ -142,7 +142,7 @@ public:
 	int unlockInset(UpdatableInset*);
 
 	///
-	void updateIncludedTeXfiles(LString const &);
+	void updateIncludedTeXfiles(string const &);
 
 	///
 	void emergencyWriteAll();
@@ -156,10 +156,10 @@ public:
 	Buffer* first();
 	
 	/// returns true if the buffer exists already
-	bool exists(LString const &);
+	bool exists(string const &);
 
 	/// returns a pointer to the buffer with the given name.
-	Buffer* getBuffer(LString const &);
+	Buffer* getBuffer(string const &);
 	/// returns a pointer to the buffer with the given number.
 	Buffer* getBuffer(int);
 

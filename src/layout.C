@@ -3,10 +3,10 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team.
+ *          Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
 /* Change log:
  * 
@@ -30,19 +30,13 @@
 #endif
 
 #include "definitions.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include "layout.h"
 #include "lyxlex.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "lyx_gui_misc.h"
 #include "error.h"
 #include "gettext.h"
-
-// 	$Id: layout.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: layout.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
 
 /* Global variable: textclass table */
 LyXTextClassList lyxstyle;
@@ -303,7 +297,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXLayoutList * list)
 		        if (lexrc.next()) {
 		        	LyXLayout * layout = list->GetLayout(lexrc.GetString());
 				if (layout) {
-					LString tmpname = name;
+					string tmpname = name;
 					Copy(*layout);
 					name = tmpname;
 				} else {
@@ -317,7 +311,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXLayoutList * list)
 		        if (lexrc.next()) {
 		        	LyXLayout * layout = list->GetLayout(lexrc.GetString());
 				if (layout) {
-					LString tmpname = name;
+					string tmpname = name;
 					Copy(*layout);
 					name = tmpname;
 					if (obsoleted_by.empty())
@@ -530,7 +524,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXLayoutList * list)
 		case LT_LABELSEP:	/* label separator */
 			if (lexrc.next()) {
 				labelsep = lexrc.GetString();
-				labelsep.subst('x', ' ');
+				subst(labelsep, 'x', ' ');
 			}
 			break;
 
@@ -657,8 +651,8 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXLayoutList * list)
 
 LyXLayoutList::LyXLayoutList()
 {
-	l = NULL;
-	eol = NULL;
+	l = 0;
+	eol = 0;
 	num_layouts = 0;
 }
 
@@ -680,7 +674,7 @@ void LyXLayoutList::Add (LyXLayout *lay)
 {
 	LyXLayoutL * tmp = new LyXLayoutL;
 	tmp->layout = lay;
-	tmp->next = NULL;
+	tmp->next = 0;
 	if (!eol) l = tmp; 
 	else eol->next = tmp;
 	eol = tmp;
@@ -688,13 +682,13 @@ void LyXLayoutList::Add (LyXLayout *lay)
 }
 
 
-bool LyXLayoutList::Delete (LString const &name)
+bool LyXLayoutList::Delete (string const &name)
 {
 	LyXLayoutL * layoutl = l;
 	while(layoutl) {
 	  	if (layoutl->layout && layoutl->layout->name == name) {
 			delete layoutl->layout;
-			layoutl->layout = NULL; // not sure it is necessary
+			layoutl->layout = 0; // not sure it is necessary
 			num_layouts--;
 			return true;
 		}
@@ -704,7 +698,7 @@ bool LyXLayoutList::Delete (LString const &name)
 }
 
 
-LyXLayout * LyXLayoutList::GetLayout (LString const &name)
+LyXLayout * LyXLayoutList::GetLayout (string const &name)
 {
 	LyXLayoutL * layoutl = l;
 	while(layoutl) {
@@ -712,7 +706,7 @@ LyXLayout * LyXLayoutList::GetLayout (LString const &name)
 			return layoutl->layout;
 		layoutl = layoutl->next;
 	}
-	return NULL;
+	return 0;
 }
 
 
@@ -751,14 +745,14 @@ void LyXLayoutList::Clean ()
 
 /* ******************************************************************* */
 
-LyXTextClass::LyXTextClass(LString const &fn, LString const &cln,
-			   LString const &desc)
+LyXTextClass::LyXTextClass(string const &fn, string const &cln,
+			   string const &desc)
 {
 	name = fn;
 	latexname = cln;
 	description = desc;
 	output_type = LATEX;
-	style = NULL;
+	style = 0;
 	columns = 1;
 	sides = 1;
 	secnumdepth = 3;
@@ -817,7 +811,7 @@ LyXTextClass::~LyXTextClass()
 
 
 /* Reads a textclass structure from file */
-int LyXTextClass::Read (LString const &filename, LyXLayoutList *list)
+int LyXTextClass::Read (string const &filename, LyXLayoutList *list)
 {
 	if (!list)
 		lyxerr.debug("Reading textclass "
@@ -873,7 +867,7 @@ int LyXTextClass::Read (LString const &filename, LyXLayoutList *list)
 			
 		case LT_INPUT: // Include file
 		        if (lexrc.next()) {
-		        	LString tmp = LibFileSearch("layouts",
+		        	string tmp = LibFileSearch("layouts",
 							    lexrc.GetString(), 
 							    "layout");
 				
@@ -887,10 +881,10 @@ int LyXTextClass::Read (LString const &filename, LyXLayoutList *list)
 
 		case LT_STYLE:
 			if (lexrc.next()) {
-				LString name = lexrc.GetString();
+				string name = lexrc.GetString();
 				bool is_new = false;
 
-				name.subst('_',' ');
+				subst(name, '_',' ');
 				tmpl = l->GetLayout(name);
 				if (!tmpl) {
 					is_new = true;
@@ -930,8 +924,8 @@ int LyXTextClass::Read (LString const &filename, LyXLayoutList *list)
 
 		case LT_NOSTYLE:
 			if (lexrc.next()) {
-				LString style = lexrc.GetString();
-				if (!l->Delete(style.subst('_', ' ')))
+				string style = lexrc.GetString();
+				if (!l->Delete(subst(style, '_', ' ')))
 					lexrc.printError("Cannot delete style `$$Token'");
 			}
 			break;
@@ -948,8 +942,7 @@ int LyXTextClass::Read (LString const &filename, LyXLayoutList *list)
 			
 		case LT_PAGESTYLE:
 		        lexrc.next();
-			pagestyle = lexrc.GetString();
-			pagestyle.strip();
+			pagestyle = strip(lexrc.GetString());
 			break;
 			
 		case LT_DEFAULTFONT:
@@ -1014,13 +1007,11 @@ int LyXTextClass::Read (LString const &filename, LyXLayoutList *list)
 				switch (lexrc.lex()) {
 				case LT_FONTSIZE:
 					lexrc.next();
-					opt_fontsize = lexrc.GetString();
-					opt_fontsize.strip();
+					opt_fontsize = strip(lexrc.GetString());
 					break;
 				case LT_PAGESTYLE:
 					lexrc.next();
-					opt_pagestyle = lexrc.GetString(); 
-					opt_pagestyle.strip();
+					opt_pagestyle = strip(lexrc.GetString()); 
 					break;
 				case LT_OTHER:
 					lexrc.next();
@@ -1099,7 +1090,7 @@ void LyXTextClass::load()
 		return;
 
 	// Read style-file
-	LString real_file = LibFileSearch("layouts", name, "layout");
+	string real_file = LibFileSearch("layouts", name, "layout");
 
 	if (Read(real_file)) {
 		lyxerr.print("Error reading `"
@@ -1131,7 +1122,7 @@ LyXTextClassList::~LyXTextClassList()
 
 
 // Gets textclass number from name
-signed char LyXTextClassList::NumberOfClass(LString const &textclass) 
+signed char LyXTextClassList::NumberOfClass(string const &textclass) 
 {
 	int i = 0;
    
@@ -1159,7 +1150,7 @@ LyXLayout *LyXTextClassList::Style(char textclass, char layout)
 
 
 // Gets layout number from name and textclass number
-char LyXTextClassList::NumberOfLayout(char textclass, LString const &name) 
+char LyXTextClassList::NumberOfLayout(char textclass, string const &name) 
 {
 	ar[textclass].load();
 
@@ -1180,7 +1171,7 @@ char LyXTextClassList::NumberOfLayout(char textclass, LString const &name)
 
 
 // Gets a layout (style) name from layout number and textclass number
-LString LyXTextClassList::NameOfLayout(char textclass, char layout) 
+string LyXTextClassList::NameOfLayout(char textclass, char layout) 
 {
 	ar[textclass].load();
 
@@ -1194,7 +1185,7 @@ LString LyXTextClassList::NameOfLayout(char textclass, char layout)
 
 
 // Gets a textclass name from number
-LString LyXTextClassList::NameOfClass(char number) 
+string LyXTextClassList::NameOfClass(char number) 
 {
 	if (num_textclass == 0) { 
 		if (number == 0) return "dummy";
@@ -1207,7 +1198,7 @@ LString LyXTextClassList::NameOfClass(char number)
 }
 
 // Gets a textclass latexname from number
-LString LyXTextClassList::LatexnameOfClass(char number) 
+string LyXTextClassList::LatexnameOfClass(char number) 
 {
 	ar[number].load();
 
@@ -1222,7 +1213,7 @@ LString LyXTextClassList::LatexnameOfClass(char number)
 }
 
 // Gets a textclass description from number
-LString LyXTextClassList::DescOfClass(char number) 
+string LyXTextClassList::DescOfClass(char number) 
 {
 	if (num_textclass == 0) { 
 		if (number == 0) return "dummy";
@@ -1249,8 +1240,8 @@ LyXTextClass * LyXTextClassList::TextClass(char textclass)
 void LyXTextClassList::Add (LyXTextClass *t)
 {
 	LyXTextClassL ** h = &l;
-	char const *desc = t->description.c_str();
-	while (*h && strcasecmp((*h)->textclass->description.c_str(),desc)<0)
+	string const desc = t->description;
+	while (*h && compare_no_case((*h)->textclass->description, desc) < 0)
 		h = &((*h)->next);
 	LyXTextClassL * tmp = new LyXTextClassL;
 	tmp->textclass = t;
@@ -1281,8 +1272,8 @@ void LyXTextClassList::ToAr ()
 // Reads LyX textclass definitions according to textclass config file
 bool LyXTextClassList::Read ()
 {
-	LyXLex lex(NULL, 0);
-	LString real_file = LibFileSearch("", "textclass.lst");
+	LyXLex lex(0, 0);
+	string real_file = LibFileSearch("", "textclass.lst");
 	lyxerr.debug("Reading textclasses from "+real_file,Error::TCLASS);
 
 	if (real_file.empty()) {
@@ -1309,7 +1300,7 @@ bool LyXTextClassList::Read ()
  		return false;
 	}
 	bool finished = false;
-	LString fname, clname, desc;
+	string fname, clname, desc;
 	LyXTextClass * tmpl;
 
 	// Parse config-file

@@ -35,11 +35,11 @@ public:
 	///
 	Toolbar()
 	{
-		owner = NULL;
+		owner = 0;
 		sxpos = 0;
 		sypos = 0;
-		bubble_timer = NULL;
-		combox = NULL;
+		bubble_timer = 0;
+		combox = 0;
 		reset();
 		init(); // set default toolbar.
 	}
@@ -50,7 +50,7 @@ public:
 	}
 	
 	///
-	int get_toolbar_func(LString const & func);
+	int get_toolbar_func(string const & func);
 	
         /// The special toolbar actions
 	enum  TOOLBARITEMS {
@@ -78,7 +78,7 @@ public:
 	/// add a new button to the toolbar.
     	void add(int ,bool doclean=true);
 	/// name of func instead of kb_action
-	void add(LString const & , bool doclean=true);
+	void add(string const & , bool doclean=true);
 	/// invokes the n'th icon in the toolbar
 	void push(int);
 	/// activates the toolbar
@@ -95,7 +95,7 @@ private:
 		///
 		int action;
 		///
-		LString help;
+		string help;
 		///
 		FL_OBJECT *icon;
 		///
@@ -104,10 +104,10 @@ private:
 		char **pixmap;
 		///
 		toolbarItem(){
-			next = NULL;
+			next = 0;
 			action = LFUN_NOACTION;
-			icon = NULL;
-			pixmap = NULL;
+			icon = 0;
+			pixmap = 0;
 			IsBitmap = false;
 		}
 		///
@@ -144,7 +144,7 @@ private:
 	bool cleaned;
 
 	///
-	char **getPixmap(kb_action, LString const & arg=LString());
+	char **getPixmap(kb_action, string const & arg=string());
 	/// removes all toolbar buttons from the toolbar.
 	void clean();
 	///
@@ -158,7 +158,7 @@ private:
 	/** more...
 	 */
 	void reset(){
-		toollist = NULL;
+		toollist = 0;
 		cleaned = false;
 		
 		lightReset();

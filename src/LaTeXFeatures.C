@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-*        
-*           Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 the LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 the LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
@@ -23,7 +23,7 @@
 #include "bufferparams.h"
 #include "layout.h"
 
-extern LyXRC* lyxrc;
+extern LyXRC * lyxrc;
 
 LaTeXFeatures::LaTeXFeatures(int n) 
 {
@@ -74,9 +74,9 @@ LaTeXFeatures::LaTeXFeatures(int n)
 }
 
 
-LString LaTeXFeatures::getPackages(BufferParams const &params)
+string LaTeXFeatures::getPackages(BufferParams const &params)
 {
-	LString packages;
+	string packages;
 	LyXTextClass *tclass = lyxstyle.TextClass(params.textclass);
 
 	// color.sty
@@ -133,7 +133,7 @@ LString LaTeXFeatures::getPackages(BufferParams const &params)
 	case Spacing::Other:
 		char value[30];
 		sprintf(value, "%.2f", params.spacing.getValue());
-		packages += LString("\\setstretch{") 
+		packages += string("\\setstretch{") 
 			  + value + "}\n";
 		break;
 	}
@@ -175,9 +175,9 @@ LString LaTeXFeatures::getPackages(BufferParams const &params)
 }
 
 
-LString LaTeXFeatures::getMacros(BufferParams const & /* params */)
+string LaTeXFeatures::getMacros(BufferParams const & /* params */)
 {
-	LString macros;
+	string macros;
 
 	// always include this
 	if (true || lyx) 
@@ -226,11 +226,11 @@ LString LaTeXFeatures::getMacros(BufferParams const & /* params */)
 }
 
 
-LString LaTeXFeatures::getTClassPreamble(BufferParams const &params)
+string LaTeXFeatures::getTClassPreamble(BufferParams const &params)
 {
 	// the text class specific preamble 
 	LyXTextClass *tclass = lyxstyle.TextClass(params.textclass);
-	LString tcpreamble = tclass->preamble;
+	string tcpreamble = tclass->preamble;
 
 	int l;
 	for (l = 0 ; l < tclass->number_of_defined_layouts ; l++) {

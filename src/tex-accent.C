@@ -1,9 +1,10 @@
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 #include "tex-accent.h"
 #include "commandtags.h"
 #include "LString.h"
+#include "support/lstrings.h"
 
 /* the names used by TeX and XWindows for deadkeys/accents are not the same
    so here follows a table to clearify the differences. Please correct this
@@ -66,14 +67,14 @@ tex_accent_struct get_accent(kb_action action)
 			return lyx_accent_table[i];
 		i++;
 	}
-	struct tex_accent_struct temp = { (tex_accent)0, NULL, NULL,
-					  NULL,(kb_action)0};
+	struct tex_accent_struct temp = { (tex_accent)0, 0, 0,
+					  0,(kb_action)0};
 	return temp;
 }
 
-LString DoAccent(const LString& s,tex_accent accent)
+string DoAccent(const string& s,tex_accent accent)
 {
-	LString res;
+	string res;
 	
 	res+=lyx_accent_table[accent].cmd;
 	res+='{';
@@ -85,8 +86,8 @@ LString DoAccent(const LString& s,tex_accent accent)
 	return res;
 }
 
-LString DoAccent(char c,tex_accent accent)
+string DoAccent(char c,tex_accent accent)
 {
-	return DoAccent(LString(c),accent);
+	return DoAccent(tostr(c),accent);
 }
 

@@ -52,11 +52,11 @@ public:
 	///
 	int Latex(FILE *file, signed char fragile);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string &file, signed char fragile);
 	///
-	int Linuxdoc(LString &file);
+	int Linuxdoc(string &file);
 	///
-	int DocBook(LString &file);
+	int DocBook(string &file);
 	///
 	void Validate(LaTeXFeatures &) const;
 	///
@@ -109,7 +109,7 @@ public:
 	///
 	int GetNumberOfLabels() const;
 	///
-	LString getLabel(int) const;
+	string getLabel(int) const;
    
 protected:
 	void UpdateLocal();
@@ -119,7 +119,7 @@ protected:
 private:
 	bool disp_flag;
 	//char *label;
-	LString label;
+	string label;
 };
 
 

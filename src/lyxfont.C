@@ -1,21 +1,21 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *	    Copyright (C) 1995 Matthias Ettrich
+ *          Copyright (C) 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
-#include <locale.h>
+#include <clocale>
 
 #ifdef __GNUG__
 #pragma implementation "lyxfont.h"
 #endif
 
-#include <ctype.h>
+#include <cctype>
 #include "gettext.h"
 #include "definitions.h"
 #include "lyxfont.h"
@@ -24,12 +24,7 @@
 #include "lyxlex.h"
 #include "lyxdraw.h"
 #include "FontLoader.h"
-
-// 	$Id: lyxfont.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: lyxfont.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
+#include "support/lstrings.h"
 
 extern LyXRC * lyxrc;
 
@@ -40,31 +35,31 @@ FontLoader fontloader;
 // Names for the GUI
 //
 
-LString const GUIFamilyNames[6] =
+string const GUIFamilyNames[6] =
 { N_("Roman"), N_("Sans serif"), N_("Typewriter"), N_("Symbol"), N_("Inherit"),
     N_("Ignore") };
   
-LString const GUISeriesNames[4] =
+string const GUISeriesNames[4] =
 { N_("Medium"), N_("Bold"), N_("Inherit"), N_("Ignore") };
 
-LString const GUIShapeNames[6] =
+string const GUIShapeNames[6] =
 { N_("Upright"), N_("Italic"), N_("Slanted"), N_("Smallcaps"), N_("Inherit"),
     N_("Ignore") };
 
-LString const GUISizeNames[14] =
+string const GUISizeNames[14] =
 { N_("Tiny"), N_("Smallest"), N_("Smaller"), N_("Small"), N_("Normal"), N_("Large"),
   N_("Larger"), N_("Largest"), N_("Huge"), N_("Huger"), N_("Increase"), N_("Decrease"), 
   N_("Inherit"), N_("Ignore") };
  
-LString const lGUISizeNames[15] =
+string const lGUISizeNames[15] =
 { N_("tiny"), N_("smallest"), N_("smaller"), N_("small"), N_("normal"), N_("large"),
   N_("larger"), N_("largest"), N_("huge"), N_("huger"), N_("increase"), N_("decrease"),
-  N_("inherit"), N_("ignore"), LString() };
+  N_("inherit"), N_("ignore"), string() };
  
-LString const GUIMiscNames[5] = 
+string const GUIMiscNames[5] = 
 { N_("Off"), N_("On"), N_("Toggle"), N_("Inherit"), N_("Ignore") };
 
-LString const GUIColorNames[13] = 
+string const GUIColorNames[13] = 
 { N_("None"), N_("Black"), N_("White"), N_("Red"), N_("Green"), N_("Blue"),
     N_("Cyan"), N_("Magenta"), 
   N_("Yellow"), N_("Math"), N_("Inset"), N_("Inherit"), N_("Ignore") };
@@ -72,24 +67,24 @@ LString const GUIColorNames[13] =
 //
 // Strings used to read and write .lyx format files
 //
-LString const LyXFamilyNames[6] =
+string const LyXFamilyNames[6] =
 { "roman", "sans", "typewriter", "symbol", "default", "error" };
  
-LString const LyXSeriesNames[4] =
+string const LyXSeriesNames[4] =
 { "medium", "bold", "default", "error" };
  
-LString const LyXShapeNames[6] = 
+string const LyXShapeNames[6] = 
 { "up", "italic", "slanted", "smallcaps", "default", "error" };
  
-LString const LyXSizeNames[14] =
+string const LyXSizeNames[14] =
 { "tiny", "scriptsize", "footnotesize", "small", "normal", "large",
   "larger", "largest", "huge", "giant", 
   "increase-error", "decrease-error", "default", "error" };
 
-LString const LyXMiscNames[12] =
+string const LyXMiscNames[12] =
 { "off", "on", "toggle", "default", "error" };
 
-LString const LyXColorNames[13] =
+string const LyXColorNames[13] =
 { "none", "black", "white", "red", "green", "blue", "cyan", "magenta", 
   "yellow", "matherror", "inseterror", "default", "error" };
 
@@ -97,20 +92,20 @@ LString const LyXColorNames[13] =
 // Strings used to write LaTeX files
 //
 
-LString const LaTeXFamilyNames[6] =
+string const LaTeXFamilyNames[6] =
 { "textrm", "textsf", "texttt", "error1", "error2", "error3" };
  
-LString const LaTeXSeriesNames[4] =
+string const LaTeXSeriesNames[4] =
 { "textmd", "textbf", "error4", "error5" };
  
-LString const LaTeXShapeNames[6] =
+string const LaTeXShapeNames[6] =
 { "textup", "textit", "textsl", "textsc", "error6", "error7" };
  
-LString const LaTeXSizeNames[14] =
+string const LaTeXSizeNames[14] =
 { "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large",
   "Large", "LARGE", "huge", "Huge", "error8", "error9", "error10", "error11" };
  
-LString const LaTeXColorNames[13] =
+string const LaTeXColorNames[13] =
 { "none", "black", "white", "red", "green", "blue", "cyan", "magenta", 
   "yellow", "error12", "error13", "error14", "error15" };
 
@@ -345,41 +340,41 @@ bool LyXFont::resolved() const
 }
 
 /// Build GUI description of font state
-LString LyXFont::stateText() const
+string LyXFont::stateText() const
 {
-	LString buf;
+	string buf;
 	if (family() != INHERIT_FAMILY)
-		buf += LString(_(GUIFamilyNames[family()].c_str())) + ", ";
+		buf += string(_(GUIFamilyNames[family()].c_str())) + ", ";
 	if (series() != INHERIT_SERIES)
-		buf += LString(_(GUISeriesNames[series()].c_str())) + ", ";
+		buf += string(_(GUISeriesNames[series()].c_str())) + ", ";
 	if (shape() != INHERIT_SHAPE)
-		buf += LString(_(GUIShapeNames[shape()].c_str())) + ", ";
+		buf += string(_(GUIShapeNames[shape()].c_str())) + ", ";
 	if (size() != INHERIT_SIZE)
-		buf += LString(_(GUISizeNames[size()].c_str())) + ", ";
+		buf += string(_(GUISizeNames[size()].c_str())) + ", ";
 	if (color() != INHERIT_COLOR)
-		buf += LString(_(GUIColorNames[color()].c_str())) + ", ";
+		buf += string(_(GUIColorNames[color()].c_str())) + ", ";
  
 	if (emph() != INHERIT)
-		buf += LString(_("Emphasis ")) + _(GUIMiscNames[emph()].c_str()) + ", ";
+		buf += string(_("Emphasis ")) + _(GUIMiscNames[emph()].c_str()) + ", ";
 	if (underbar() != INHERIT)
-		buf += LString(_("Underline ")) + _(GUIMiscNames[underbar()].c_str()) + ", ";
+		buf += string(_("Underline ")) + _(GUIMiscNames[underbar()].c_str()) + ", ";
 	if (noun() != INHERIT)
-		buf += LString(_("Noun ")) + _(GUIMiscNames[noun()].c_str()) + ", ";
+		buf += string(_("Noun ")) + _(GUIMiscNames[noun()].c_str()) + ", ";
 	if (latex() != INHERIT)
-		buf += LString(_("Latex ")) + _(GUIMiscNames[latex()].c_str()) + ", ";
+		buf += string(_("Latex ")) + _(GUIMiscNames[latex()].c_str()) + ", ";
 	if (buf.empty())
 		buf = _("Default");
-	buf.strip(' ');
-	buf.strip(',');
+	buf = strip(buf, ' ');
+	buf = strip(buf, ',');
 	return buf;
 }
 
 
 // Set family according to lyx format string
-LyXFont& LyXFont::setLyXFamily(LString const & fam)
+LyXFont& LyXFont::setLyXFamily(string const & fam)
 {
-	LString s = fam;
-	s.lowercase();
+	string s = lowercase(fam);
+
 	int i=0;
 	while (s != LyXFamilyNames[i] && LyXFamilyNames[i] != "error") i++;
 	if (s == LyXFamilyNames[i]) {
@@ -391,10 +386,10 @@ LyXFont& LyXFont::setLyXFamily(LString const & fam)
 
 
 // Set series according to lyx format string
-LyXFont& LyXFont::setLyXSeries(LString const & ser)
+LyXFont& LyXFont::setLyXSeries(string const & ser)
 {
-	LString s = ser;
-	s.lowercase();
+	string s = lowercase(ser);
+
 	int i=0;
 	while (s != LyXSeriesNames[i] && LyXSeriesNames[i] != "error") i++;
 	if (s == LyXSeriesNames[i]) {
@@ -406,10 +401,10 @@ LyXFont& LyXFont::setLyXSeries(LString const & ser)
 
 
 // Set shape according to lyx format string
-LyXFont& LyXFont::setLyXShape(LString const & sha)
+LyXFont& LyXFont::setLyXShape(string const & sha)
 {
-	LString s = sha;
-	s.lowercase();
+	string s = lowercase(sha);
+
 	int i=0;
 	while (s != LyXShapeNames[i] && LyXShapeNames[i] != "error") i++;
 	if (s == LyXShapeNames[i]) {
@@ -421,10 +416,9 @@ LyXFont& LyXFont::setLyXShape(LString const & sha)
 
 
 // Set size according to lyx format string
-LyXFont& LyXFont::setLyXSize(LString const & siz)
+LyXFont& LyXFont::setLyXSize(string const & siz)
 {
-	LString s = siz;
-	s.lowercase();
+	string s = lowercase(siz);
 	int i=0;
 	while (s != LyXSizeNames[i] && LyXSizeNames[i] != "error") i++;
 	if (s == LyXSizeNames[i]) {
@@ -435,10 +429,9 @@ LyXFont& LyXFont::setLyXSize(LString const & siz)
 }
 
 // Set size according to lyx format string
-LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(LString const & siz)
+LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(string const & siz)
 {
-	LString s = siz;
-	s.lowercase();
+	string s = lowercase(siz);
 	int i=0;
 	while (s != LyXMiscNames[i] && LyXMiscNames[i] != "error") i++;
 	if (s == LyXMiscNames[i])
@@ -448,10 +441,9 @@ LyXFont::FONT_MISC_STATE LyXFont::setLyXMisc(LString const & siz)
 }
 
 /// Sets color after LyX text format
-LyXFont& LyXFont::setLyXColor(LString const & col)
+LyXFont& LyXFont::setLyXColor(string const & col)
 {
-	LString s = col;
-	s.lowercase();
+	string s = lowercase(col);
 	int i=0;
 	while (s != LyXColorNames[i] && LyXColorNames[i] != "error") i++;
 	if (s == LyXColorNames[i]) {
@@ -463,10 +455,9 @@ LyXFont& LyXFont::setLyXColor(LString const & col)
 
 
 /// Sets size after GUI name
-LyXFont& LyXFont::setGUISize(LString const & siz)
+LyXFont& LyXFont::setGUISize(string const & siz)
 {
-	LString s = siz;
-	s.lowercase();
+	string s = lowercase(siz);
 	int i=0;
 	while (!lGUISizeNames[i].empty() &&
 	       s != _(lGUISizeNames[i].c_str()))
@@ -480,7 +471,7 @@ LyXFont& LyXFont::setGUISize(LString const & siz)
 
 
 // Returns size in latex format
-LString LyXFont::latexSize() const
+string LyXFont::latexSize() const
 {
 	return LaTeXSizeNames[size()];
 }
@@ -494,8 +485,7 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 	bool finished = false;
 	while (!finished && lex.IsOK() && !error) {
 		lex.next();
-		LString tok = lex.GetString();
-		tok.lowercase();
+		string tok = lowercase(lex.GetString());
 
 		if (tok.empty()) {
 			continue;
@@ -503,24 +493,23 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 			finished = true;
 		} else if (tok == "family") {
 			lex.next();
-			LString tok = lex.GetString();
+			string tok = lex.GetString();
 			setLyXFamily(tok);
 		} else if (tok == "series") {
 			lex.next();
-			LString tok = lex.GetString();
+			string tok = lex.GetString();
 			setLyXSeries(tok);
 		} else if (tok == "shape") {
 			lex.next();
-			LString tok = lex.GetString();
+			string tok = lex.GetString();
 			setLyXShape(tok);
 		} else if (tok == "size") {
 			lex.next();
-			LString tok = lex.GetString();
+			string tok = lex.GetString();
 			setLyXSize(tok);
 		} else if (tok == "latex") {
 			lex.next();
-			LString tok = lex.GetString();
-			tok.lowercase();
+			string tok = lowercase(lex.GetString());
 
 			if (tok == "no_latex") {
 				setLatex(OFF);
@@ -531,8 +520,7 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 			}
 		} else if (tok == "misc") {
 			lex.next();
-			LString tok = lex.GetString();
-			tok.lowercase();
+			string tok = lowercase(lex.GetString());
 
 			if (tok == "no_bar") {
 				setUnderbar(OFF);
@@ -551,7 +539,7 @@ LyXFont & LyXFont::lyxRead(LyXLex & lex)
 			}
 		} else if (tok == "color") {
 			lex.next();
-			LString tok = lex.GetString();
+			string tok = lex.GetString();
 			setLyXColor(tok);
 		} else {
 			lex.printError("Unknown tag `$$Token'");
@@ -624,7 +612,7 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, FILE * file) const
 // Returns number of chars written.
 int LyXFont::latexWriteStartChanges(FILE * file, LyXFont const & base) const
 {
-	LString font;
+	string font;
 	int count = latexWriteStartChanges(font, base);
 	fprintf(file, "%s", font.c_str());
 	return count;
@@ -633,7 +621,7 @@ int LyXFont::latexWriteStartChanges(FILE * file, LyXFont const & base) const
 
 /// Writes the head of the LaTeX needed to impose this font
 // Returns number of chars written.
-int LyXFont::latexWriteStartChanges(LString & file, LyXFont const & base) const
+int LyXFont::latexWriteStartChanges(string & file, LyXFont const & base) const
 {
 	LyXFont f = *this;
 	f.reduce(base);
@@ -708,7 +696,7 @@ int LyXFont::latexWriteStartChanges(LString & file, LyXFont const & base) const
 // This one corresponds to latexWriteStartChanges(). (Asger)
 int LyXFont::latexWriteEndChanges(FILE * file, LyXFont const & base) const
 {
-	LString ending;
+	string ending;
 	int count = latexWriteEndChanges(ending, base);
 	fprintf(file, "%s", ending.c_str());
 	return count;
@@ -718,7 +706,7 @@ int LyXFont::latexWriteEndChanges(FILE * file, LyXFont const & base) const
 /// Writes ending block of LaTeX needed to close use of this font
 // Returns number of chars written
 // This one corresponds to latexWriteStartChanges(). (Asger)
-int LyXFont::latexWriteEndChanges(LString & file, LyXFont const & base) const
+int LyXFont::latexWriteEndChanges(string & file, LyXFont const & base) const
 {
 	LyXFont f = *this; // why do you need this?
 	f.reduce(base); // why isn't this just "reduce(base);" (Lgb)
@@ -897,13 +885,13 @@ int LyXFont::textWidth(char const *s, int n) const
 }
 
 
-int LyXFont::stringWidth(LString const & s) const
+int LyXFont::stringWidth(string const & s) const
 {
 	if (s.empty()) return 0;
 	return textWidth(s.c_str(), s.length());
 }
 
-int LyXFont::signedStringWidth(LString const & s) const
+int LyXFont::signedStringWidth(string const & s) const
 {
 	if (s.empty()) return 0;
 	if (s.c_str()[0] == '-')
@@ -960,7 +948,7 @@ int LyXFont::drawText(char const* s, int n, Pixmap pm,
 }
 
 
-int LyXFont::drawString(LString const &s, Pixmap pm, int baseline, int x) const
+int LyXFont::drawString(string const &s, Pixmap pm, int baseline, int x) const
 {
 	return drawText(s.c_str(), s.length(), pm, baseline, x);
 }

@@ -90,7 +90,7 @@ private:
 public:
 	///
 	UndoStack(){
-		current = NULL;
+		current = 0;
 		// size must be initialised (thornley)
 		size = 0;
 		limit = 100; // the maximum number of undo steps stored. 0 means NO LIMIT. 
@@ -98,7 +98,7 @@ public:
 	}
 	///
 	Undo *Pop(){
-		Undo* result = NULL;
+		Undo* result = 0;
 		if (current){
 			result = current->undo;
 			tmp = current;
@@ -116,7 +116,7 @@ public:
 		if (current)
 			return current->undo;
 		else
-			return NULL;
+			return 0;
 	}
 	///
 	~UndoStack(){

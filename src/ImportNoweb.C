@@ -2,13 +2,13 @@
  * ======================================================
  * 
  *           LyX, The Document Processor 	 
- *	     Copyright (C) 1995 Matthias Ettrich
- *           Copyright (C) 1995-1999 The LyX Team.
+ *	     Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
  *
- *           This file is Copyright (C) 1999
+ *           This file is Copyright 1999
  *           Kayvan A. Sylvan
  *
- *======================================================
+ * ======================================================
  */
 
 #include <config.h>
@@ -19,18 +19,12 @@
 
 #include "ImportNoweb.h"
 #include "lyxrc.h"
-#include "syscall.h"
-#include "filetools.h"
+#include "support/syscall.h"
+#include "support/filetools.h"
 #include "bufferlist.h"
 
 extern LyXRC * lyxrc;
 extern BufferList bufferlist;
-
-// 	$Id: ImportNoweb.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: ImportNoweb.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $";
-#endif /* lint */
 
 /*
  * Implementation the ImportNoweb methods.
@@ -39,13 +33,13 @@ static char vcid[] = "$Id: ImportNoweb.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $"
 Buffer * ImportNoweb::run()
 {
 	// run reLyX -n
-	LString tmp = lyxrc->relyx_command + " -n -c " +
+	string tmp = lyxrc->relyx_command + " -n -c " +
 					documentclass() + " -f " + file;
         Systemcalls one;
 	Buffer * buf = 0;
 	int result= one.Startscript(Systemcalls::System, tmp);
 	if (result==0) {
-		LString filename = file + ".lyx";
+		string filename = file + ".lyx";
 		// File was generated without problems. Load it.
 		buf = bufferlist.loadLyXFile(filename);
 	}
@@ -54,9 +48,9 @@ Buffer * ImportNoweb::run()
 
 // Provide the literate documentclass by parsing the file.
 //
-LString ImportNoweb::documentclass()
+string ImportNoweb::documentclass()
 {
-	LString result = "literate-article"; // Default
+	string result = "literate-article"; // Default
 
 	FilePtr inputfile(file, FilePtr::read);	
 	if (!inputfile()) return "nofile"; // Should not happen!

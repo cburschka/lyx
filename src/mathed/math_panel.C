@@ -37,12 +37,6 @@
 #include "matrix.xpm"
 #include "equation.xpm"
 
-// 	$Id: math_panel.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: math_panel.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $";
-#endif /* lint */
-
 static LyXFunc *lyxfunc=0;
 
 //static FD_panel* symb_form=0;
@@ -101,19 +95,19 @@ void button_cb(FL_OBJECT *ob, long data)
       break;
     case MM_DELIM:
       fl_show_form(fd_delim->delim,FL_PLACE_MOUSE,FL_FULLBORDER, _("Delimiter"));
-       fl_set_form_atclose(fd_delim->delim, CancelCloseBoxCB, NULL);
+       fl_set_form_atclose(fd_delim->delim, CancelCloseBoxCB, 0);
       break;
     case MM_DECO:
       fl_show_form(fd_deco->deco,FL_PLACE_MOUSE,FL_FULLBORDER,_("Decoration"));
-       fl_set_form_atclose(fd_deco->deco, CancelCloseBoxCB, NULL);
+       fl_set_form_atclose(fd_deco->deco, CancelCloseBoxCB, 0);
       break;
     case MM_SPACE:
       fl_show_form(fd_space->space,FL_PLACE_MOUSE,FL_FULLBORDER,_("Spacing"));
-       fl_set_form_atclose(fd_space->space, CancelCloseBoxCB, NULL);
+       fl_set_form_atclose(fd_space->space, CancelCloseBoxCB, 0);
       break;
     case MM_MATRIX:
       fl_show_form(fd_matrix->matrix,FL_PLACE_MOUSE,FL_FULLBORDER,_("Matrix"));
-       fl_set_form_atclose(fd_matrix->matrix, CancelCloseBoxCB, NULL);
+       fl_set_form_atclose(fd_matrix->matrix, CancelCloseBoxCB, 0);
       break;
     case MM_EQU:
        lyxfunc->Dispatch(LFUN_MATH_DISPLAY);
@@ -266,7 +260,7 @@ char** mathed_get_pixmap_from_icon(int d)
     case MM_EQU: return equation; 
     case MM_DECO: return deco; 
     case MM_SPACE: return space_xpm; 
-    default: return NULL;
+    default: return 0;
    }
 }
 
@@ -322,7 +316,7 @@ void free_symbols_form()
       fl_free_form(fd_panel->panel);
       delete sym_menu;
       delete fd_panel;
-      fd_panel = NULL;  
+      fd_panel = 0;  
    }
 }
 
@@ -341,7 +335,7 @@ void show_symbols_form(LyXFunc *lf)
 	fl_register_raw_callback(fd_panel->panel, 
 				 ButtonPressMask|KeyPressMask, peek_event);
 	create_symbol_menues(fd_panel);	
-	fl_set_form_atclose(fd_panel->panel, AtClose_symbols_form, NULL);
+	fl_set_form_atclose(fd_panel->panel, AtClose_symbols_form, 0);
     }
     if (fd_panel->panel->visible) {
 	fl_raise_form(fd_panel->panel);

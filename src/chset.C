@@ -5,14 +5,14 @@
 #endif
 
 #include "chset.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "lyxlex.h"
 #include "error.h"
 
 
 CharacterSet::CharacterSet()
 {
-	map_=NULL;
+	map_=0;
 }
 
 
@@ -31,11 +31,11 @@ void CharacterSet::freeMap()
 		delete t;
 	}
 
-	name_.clean();
+	name_.erase();
 }
 
 
-bool CharacterSet::loadFile(const LString& fname)
+bool CharacterSet::loadFile(const string& fname)
 {
 	freeMap();
     
@@ -44,7 +44,7 @@ bool CharacterSet::loadFile(const LString& fname)
 
 	// open definition file
 	lyxerr.debug("Opening keymap file "+ fname+ ".cdef",Error::KBMAP);
-	LString filename = LibFileSearch("kbd", fname.c_str(), "cdef");
+	string filename = LibFileSearch("kbd", fname.c_str(), "cdef");
 	FilePtr f(filename, FilePtr::read);
 	if (filename.empty() || !f()) {
 		lyxerr.print("Unable to open keymap file");
@@ -54,11 +54,11 @@ bool CharacterSet::loadFile(const LString& fname)
 	name_=fname;
 
 	// now read the file
-	LyXLex lex(NULL,0);
+	LyXLex lex(0,0);
 	lex.setFile(f());
 
 	bool error=false;
-	LString str;
+	string str;
 	int n;
 	
 	while(lex.IsOK() && !error) {
@@ -97,22 +97,22 @@ bool CharacterSet::loadFile(const LString& fname)
 }
 
 
-bool CharacterSet::encodeString(LString& str)
+bool CharacterSet::encodeString(string& str)
 {
 	Cdef *t=map_;
     
 	while(t) {
 		if (t->str==str) {
-			str=LString(t->ic);
+			str = tostr(t->ic);
 			break;
 		}
 		t=t->next;
 	}
-	return (t!=NULL);
+	return (t!=0);
 }
 
 
-LString CharacterSet::getName()
+string CharacterSet::getName()
 {
 	return name_;
 }

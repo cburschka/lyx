@@ -63,7 +63,7 @@ public:
 	///
   	InsetQuotes::quote_times quotes_times;
 	///
-  	LString fontsize; 
+  	string fontsize; 
 	///
  	signed char textclass;
 
@@ -79,29 +79,29 @@ public:
 	///
         bool use_geometry;
         ///
-        LString paperwidth;
+        string paperwidth;
         ///
-        LString paperheight;
+        string paperheight;
         ///
-        LString leftmargin;
+        string leftmargin;
         ///
-        LString topmargin;
+        string topmargin;
         ///
-        LString rightmargin;
+        string rightmargin;
         ///
-        LString bottommargin;
+        string bottommargin;
         ///
-        LString headheight;
+        string headheight;
         ///
-        LString headsep;
+        string headsep;
         ///
-        LString footskip;
+        string footskip;
         
         /* some LaTeX options */
 	/// The graphics driver
-	LString graphicsDriver;
+	string graphicsDriver;
 	///
-	LString fonts;
+	string fonts;
 	///
 	Spacing spacing;
 	///
@@ -109,21 +109,21 @@ public:
 	///
 	signed char tocdepth;
 	///
-	LString language;
+	string language;
 	///
-	LString inputenc;
+	string inputenc;
 	///
-	LString preamble;
+	string preamble;
 	///
-	LString options;
+	string options;
 	///
-	LString float_placement;
+	string float_placement;
 	///
 	char columns; // add approp. signedness
 	///
 	char sides; // add approp. signedness
 	///
-	LString pagestyle;
+	string pagestyle;
 	///
 	Bullet temp_bullets[4];
 	///
@@ -141,7 +141,7 @@ public:
 	///
         bool use_amsmath;
 	/// Time ago we agreed that this was a buffer property [ale990407]
-        LString parentname;
+        string parentname;
 protected:
 private:
 	///

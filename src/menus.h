@@ -9,8 +9,8 @@
 *
 *======================================================*/
 
-#ifndef _MENUS_H
-#define _MENUS_H
+#ifndef MENUS_H
+#define MENUS_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -18,10 +18,11 @@
 
 #include FORMS_H_LOCATION
 #include "lyx.h"
+#include "LString.h"
 
 class BufferView;
 class LyXView;
-class LString;
+
 
 ///
 class Menus {
@@ -33,7 +34,7 @@ public:
 	///
 	void hideMenus();
 	///
-	void openByName(LString const &menuName);
+	void openByName(string const &menuName);
 private:
 	///
 	void create_menus(int air);
@@ -44,7 +45,7 @@ private:
 	///
 	void showLicense();
 	///
-	void MenuDocu(LString const & docname);
+	void MenuDocu(string const & docname);
 	///
 	void handleBufferMenu(int choice);
 	

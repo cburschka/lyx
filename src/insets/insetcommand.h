@@ -30,8 +30,8 @@ public:
 	///
 	InsetCommand();
 	///
-	InsetCommand(LString const & name, LString const & arg = LString(), 
-		     LString const & opt = LString());
+	InsetCommand(string const & name, string const & arg = string(), 
+		     string const & opt = string());
 	///
 	~InsetCommand();
 	///
@@ -45,17 +45,17 @@ public:
 	///
 	void Write(FILE *file);
 	/// Parse the command.
-	void scanCommand(LString const &cmd);
+	void scanCommand(string const &cmd);
 	/// Will not be used when lyxf3
 	void Read(LyXLex &lex);
 	/// 
 	virtual int Latex(FILE *file, signed char fragile);
 	///
-	virtual int Latex(LString &file, signed char fragile);
+	virtual int Latex(string &file, signed char fragile);
 	///
-	virtual int Linuxdoc(LString &file);
+	virtual int Linuxdoc(string &file);
 	///
-	virtual int DocBook(LString &file);
+	virtual int DocBook(string &file);
 	///
 	Inset* Clone();
 	///  
@@ -70,44 +70,44 @@ public:
          confusion with lyxinset::getLabel(int), but I've seen that
          it wasn't. I hope you never confuse again both methods.  (ale)
 	 */
-	virtual LString getScreenLabel() const
+	virtual string getScreenLabel() const
 	{
 		return getCommand();
 	}
 	
 	/// Build the complete LaTeX command
-	LString getCommand() const;
+	string getCommand() const;
 	///
-	LString const &getCmdName() const {
+	string const &getCmdName() const {
 		return command;
 	}
 	///
-	LString const &getOptions() const {
+	string const &getOptions() const {
 		return options;
 	}
 	///
-	LString const &getContents() const {
+	string const &getContents() const {
 		return contents;
 	}
 	///
-	void setCmdName(LString const & n) {
+	void setCmdName(string const & n) {
 		command = n;
 	}
 	///
-	void setOptions(LString const & o) {
+	void setOptions(string const & o) {
 		options = o;
 	}
 	///
-	virtual void setContents(LString const & c) {
+	virtual void setContents(string const & c) {
 		contents = c;
 	}
 protected:
 	///    
-	LString command;
+	string command;
 	///    
-	LString options;
+	string options;
 	///    
-	LString contents;
+	string contents;
 };
 
 #endif

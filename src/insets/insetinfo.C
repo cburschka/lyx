@@ -3,13 +3,14 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team.
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
 #include <config.h>
-#include <ctype.h>
+
+#include <cctype>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -22,27 +23,22 @@
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "buffer.h"
-
-// 	$Id: insetinfo.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: insetinfo.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $";
-#endif /* lint */
-
-extern BufferView *current_view;
+#include "support/lstrings.h"
 
 /* Info, used for the Info boxes */
 
+extern BufferView * current_view;
+
 InsetInfo::InsetInfo()
 {
-	form = NULL;
+	form = 0;
 }
 
 
-InsetInfo::InsetInfo(LString const & string)
+InsetInfo::InsetInfo(string const & string)
 	: contents(string)
 {
-	form = NULL;
+	form = 0;
 }
 
 
@@ -51,7 +47,7 @@ InsetInfo::~InsetInfo()
 	if (form){
 		fl_hide_form(form);
 		fl_free_form(form);
-		form = NULL;
+		form = 0;
 	}
 }
 
@@ -102,7 +98,7 @@ void InsetInfo::Write(FILE *file)
 
 void InsetInfo::Read(LyXLex &lex)
 {
-	LString tmp = lex.GetString(); // should be "Info"
+	string tmp = lex.GetString(); // should be "Info"
 	if (tmp != "Info")
 		lyxerr.print("ERROR (InsetInfo::Read): "
 			      "consistency check 1 failed.");
@@ -113,7 +109,7 @@ void InsetInfo::Read(LyXLex &lex)
 			// should we skip blank lines?
 			continue;
 
-		LString const token = lex.GetString().strip();
+		string const token = strip(lex.GetString());
 		lyxerr.debug("Note: " + token, Error::LEX_PARSER);
 		
 		if (token != "\\end_inset") {
@@ -123,7 +119,7 @@ void InsetInfo::Read(LyXLex &lex)
 			break;
 	}
 	// now remove the last '\n's
-	contents.strip('\n');
+	contents = strip(contents, '\n');
 }
       
 
@@ -133,19 +129,19 @@ int InsetInfo::Latex(FILE *, signed char /*fragile*/)
 }
 
 
-int InsetInfo::Latex(LString &, signed char /*fragile*/)
+int InsetInfo::Latex(string &, signed char /*fragile*/)
 {
 	return 0;
 }
 
 
-int InsetInfo::Linuxdoc(LString &)
+int InsetInfo::Linuxdoc(string &)
 {
 	return 0;
 }
 
 
-int InsetInfo::DocBook(LString &)
+int InsetInfo::DocBook(string &)
 {
 	return 0;
 }
@@ -161,7 +157,7 @@ void InsetInfo::CloseInfoCB(FL_OBJECT *, long data)
 {
 	InsetInfo *inset = (InsetInfo*) data;
 //	inset->contents = fl_get_input(inset->strobj);
-	LString tmp = fl_get_input(inset->strobj);
+	string tmp = fl_get_input(inset->strobj);
 	Buffer *buffer = current_view->currentBuffer();
 	if(tmp != inset->contents && !(buffer->isReadonly()) ) {
 		buffer->markDirty();
@@ -170,7 +166,7 @@ void InsetInfo::CloseInfoCB(FL_OBJECT *, long data)
 	if (inset->form) {
 		fl_hide_form(inset->form);
 		fl_free_form(inset->form);
-		inset->form = NULL;
+		inset->form = 0;
 	}
 }
 
@@ -193,7 +189,7 @@ void InsetInfo::Edit(int, int)
 		fl_set_object_callback(obj, CloseInfoCB, (long)this);
 		fl_set_object_shortcut(obj, scex(_("Close|#C^[")), (long)this);
 		fl_end_form();
-		fl_set_form_atclose(form, CancelCloseBoxCB, NULL);
+		fl_set_form_atclose(form, CancelCloseBoxCB, 0);
 	}
 	fl_set_input(strobj, contents.c_str());
 	if (form->visible) {

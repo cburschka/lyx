@@ -29,6 +29,7 @@
 #include "combox.h"
 #include "lyx_cb.h"
 #include "LyXView.h"
+#include "support/lstrings.h"
 
 #ifdef TWO_COLOR_ICONS
 #include "cut_bw.xpm"
@@ -91,14 +92,6 @@
 #include "layout_std.xpm"
 #include "build.xpm"
 
-
-
-// 	$Id: toolbar.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: toolbar.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
-
 extern void LayoutsCB(int, void*);
 extern char** get_pixmap_from_symbol(char const *arg, int, int);
 extern LyXAction lyxaction;
@@ -132,9 +125,9 @@ Toolbar::Toolbar(Toolbar const &rct, LyXView *o, int x, int y)
 
 	// extracts the toolbar struct form rct.
 	toolbarItem *tmplist = rct.toollist;
-	while (tmplist != NULL) {
+	while (tmplist != 0) {
 		add(tmplist->action);
-		lyxerr.debug(LString("tool action: ") + int(tmplist->action),
+		lyxerr.debug(string("tool action: ") + tostr(tmplist->action),
 			      Error::TOOLBAR);
 		tmplist=tmplist->next;
 	}
@@ -154,7 +147,7 @@ void Toolbar::BubbleTimerCB(FL_OBJECT *, long data){
 int Toolbar::BubblePost(FL_OBJECT *ob, int event,
 	     FL_Coord /*mx*/, FL_Coord /*my*/, int /*key*/, void */*xev*/)
 {
-	LString help = (char *)ob->u_vdata;
+	string help = (char *)ob->u_vdata;
 	Toolbar *t = (Toolbar*)ob->u_ldata;
 	
 	if(event == FL_ENTER && !help.empty()){
@@ -172,7 +165,7 @@ int Toolbar::BubblePost(FL_OBJECT *ob, int event,
 
 void Toolbar::activate()
 {
-	toolbarItem *item, *tmp=NULL;
+	toolbarItem *item, *tmp=0;
 	item = toollist;
 	while(item){
 		tmp = item->next;
@@ -186,7 +179,7 @@ void Toolbar::activate()
 
 void Toolbar::deactivate()
 {
-	toolbarItem *item, *tmp=NULL;
+	toolbarItem *item, *tmp=0;
 	item = toollist;
 	while(item){
 		tmp = item->next;
@@ -202,13 +195,13 @@ void Toolbar::ToolbarCB(FL_OBJECT *ob, long ac)
 {
 	Toolbar *t = (Toolbar*)ob->u_ldata;
 	
-	LString res = t->owner->getLyXFunc()->Dispatch(int(ac));
+	string res = t->owner->getLyXFunc()->Dispatch(int(ac));
 	if(!res.empty())
 		lyxerr.debug(res, Error::TOOLBAR); 
 }
 
 
-int Toolbar::get_toolbar_func(LString const & func)
+int Toolbar::get_toolbar_func(string const & func)
 {
 	int action = lyxaction.LookupFunc(func.c_str());
 	if (action == -1) {
@@ -277,11 +270,11 @@ void Toolbar::set(bool doingmain)
 #endif
 
 	// add the time if it don't exist
-	if (bubble_timer == NULL)
+	if (bubble_timer == 0)
 		bubble_timer = fl_add_timer(FL_HIDDEN_TIMER,
 					    xpos,ypos,0,0,"Timer");
 	
-	while(item != NULL) {
+	while(item != 0) {
 		switch(item->action){
 		  case TOOL_SEPARATOR:
 			  xpos += sepspace;
@@ -353,9 +346,9 @@ void Toolbar::set(bool doingmain)
 }
 
 
-char **Toolbar::getPixmap(kb_action action, LString const & arg)
+char **Toolbar::getPixmap(kb_action action, string const & arg)
 {
-	char **pixmap = unknown_xpm; //NULL
+	char **pixmap = unknown_xpm; //0
 	switch(action){
 	case LFUN_MENUOPEN:    pixmap = open_xpm; break;
 	case LFUN_CLOSEBUFFER: pixmap = close_xpm; break;
@@ -432,7 +425,7 @@ void Toolbar::add(int action, bool doclean)
 		// first «hide» the toolbar buttons. This is not a real hide
 		// actually it deletes and frees the button altogether.
 		lyxerr.print("Toolbar::add: «hide» the toolbar buttons.");
-		toolbarItem *item, *tmp=NULL;
+		toolbarItem *item, *tmp=0;
 		item = toollist;
 
 		lightReset();
@@ -456,8 +449,8 @@ void Toolbar::add(int action, bool doclean)
 	
 	// there exist some special actions not part of
 	// kb_action: SEPARATOR, LAYOUTS
-	char **pixmap = NULL;
-	LString help;
+	char **pixmap = 0;
+	string help;
 
 	toolbarItem *newItem,*tmp;
 
@@ -468,14 +461,14 @@ void Toolbar::add(int action, bool doclean)
 		help = lyxaction.helpText(act);
 		help += " ";
 		help += arg;
-		lyxerr.debug(LString("Pseudo action ") + int(action));
+		lyxerr.debug(string("Pseudo action ") + tostr(action));
 	} else {
 		pixmap = getPixmap((kb_action)action);
 		help = lyxaction.helpText((kb_action)action);
 	}
 	
 	// adds an item to the list
-	if (pixmap != NULL
+	if (pixmap != 0
 	    || action == TOOL_SEPARATOR
 	    || action == TOOL_LAYOUTS)
 	{
@@ -485,10 +478,10 @@ void Toolbar::add(int action, bool doclean)
 		newItem->help = help;
 		// the new item is placed at the end of the list
 		tmp = toollist;
-		if (tmp != NULL){
-			while(tmp->next != NULL)
+		if (tmp != 0){
+			while(tmp->next != 0)
 				tmp = tmp->next;
-			// here is tmp->next == NULL
+			// here is tmp->next == 0
 			tmp->next = newItem;
 		} else
 			toollist = newItem;
@@ -499,7 +492,7 @@ void Toolbar::add(int action, bool doclean)
 }
 
 
-void Toolbar::add(LString const & func, bool doclean)
+void Toolbar::add(string const & func, bool doclean)
 {
 	int tf = lyxaction.LookupFunc(func.c_str());
 
@@ -514,7 +507,7 @@ void Toolbar::add(LString const & func, bool doclean)
 
 void Toolbar::clean()
 {
-	toolbarItem *item, *tmp= NULL;
+	toolbarItem *item, *tmp= 0;
 	item = toollist;
 
 	reset();
@@ -527,7 +520,7 @@ void Toolbar::clean()
 		delete item;
 		item = tmp;
 	}
-	//lyxerr.print(LString("Combox: ") + int(combox));
+	//lyxerr.print(string("Combox: ") + int(combox));
 	if (combox) {
 		delete combox;
 		combox = 0;
@@ -541,7 +534,7 @@ void Toolbar::clean()
 
 void Toolbar::push(int nth)
 {
-	lyxerr.debug(LString("Toolbar::push: trying to trigger no `")+nth+'\'',
+	lyxerr.debug(string("Toolbar::push: trying to trigger no `")+ tostr(nth)+'\'',
 		      Error::TOOLBAR);
 	
 	if (nth == 0) return;
@@ -569,7 +562,7 @@ void Toolbar::read(LyXLex &lex)
 				+lex.GetString()+'\''); 
 
 	clean();
-	LString func;
+	string func;
 	bool quit = false;
 	
 	lex.pushTable(toolTags, TO_LAST - 1);

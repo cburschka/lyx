@@ -48,7 +48,7 @@ public:
 	///
    void Write(FILE *file);
 	///
-   void Write(LString &file);
+   void Write(string &file);
 	///
    void Metrics();
 	///
@@ -79,7 +79,7 @@ class MathAccentInset: public MathedInset {
 	///
    void Write(FILE *file);
 	///
-   void Write(LString &file);
+   void Write(string &file);
 	///
    void Metrics();
 	///
@@ -113,7 +113,7 @@ class MathDotsInset: public MathedInset {
 	///
    void Write(FILE *file);
 	///
-   void Write(LString &file);
+   void Write(string &file);
 	///
    void Metrics();
  protected:
@@ -136,7 +136,7 @@ class MathSpaceInset: public MathedInset  {
 	///
    void Write(FILE *file);
 	///
-   void Write(LString &file);
+   void Write(string &file);
 	///
    inline void Metrics();
 	///
@@ -163,7 +163,7 @@ class MathBigopInset: public MathedInset {
 	///
    void Write(FILE *file);
 	///
-   void Write(LString &file);
+   void Write(string &file);
 	///
    void Metrics();
 	///
@@ -194,7 +194,7 @@ class MathSqrtInset: public MathParInset {
     ///
     void Write(FILE *file);
     ///
-    void Write(LString &file);
+    void Write(string &file);
     ///
     void Metrics();
     ///
@@ -220,7 +220,7 @@ class MathFracInset: public MathParInset {
 	///
     void Write(FILE *file);
 	///
-    void Write(LString &file);
+    void Write(string &file);
 	///
     void Metrics();
  
@@ -270,7 +270,7 @@ class MathDelimInset: public MathParInset {
 	///
    void Write(FILE *file);
 	///
-   void Write(LString &file);
+   void Write(string &file);
 	///
    void Metrics();
  protected:
@@ -295,7 +295,7 @@ class MathDecorationInset: public MathParInset {
 	///
    void Write(FILE *file);
 	///
-   void Write(LString &file);
+   void Write(string &file);
 	///
    void Metrics();
 	///
@@ -332,7 +332,7 @@ void MathFuncInset::Write(FILE *file)
 }
 
 inline
-void MathFuncInset::Write(LString &file)
+void MathFuncInset::Write(string &file)
 {
    file += '\\';
    file += name;

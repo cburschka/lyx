@@ -28,7 +28,6 @@ src/combox.C
 src/credits.C
 src/credits_form.C
 src/filedlg.C
-src/filetools.C
 src/form1.C
 src/gettext.h
 src/insets/figinset.C
@@ -62,7 +61,6 @@ src/lyxfont.C
 src/lyxfr0.C
 src/lyxfr1.C
 src/lyxfunc.C
-src/lyxlib.h
 src/lyxvc.C
 src/mathed/formula.C
 src/mathed/formula.h
@@ -77,6 +75,8 @@ src/pathstack.C
 src/print_form.C
 src/sp_form.C
 src/spellchecker.C
+src/support/filetools.C
+src/support/lyxlib.h
 src/text.C
 src/text2.C
 

@@ -9,8 +9,8 @@
  *
  *======================================================*/
 
-#ifndef _LYXRC_H
-#define _LYXRC_H
+#ifndef LYXRC_H
+#define LYXRC_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -26,86 +26,86 @@ public:
 	///
 	~LyXRC();
 	///
-	int Read (LString const & filename);
+	int Read (string const & filename);
 	///
         void Print();
 	/// Is a bind file already (or currently) read?
 	bool hasBindFile;
 	///
-	int ReadBindFile(LString name = "cua");
+	int ReadBindFile(string name = "cua");
 	///
 	Toolbar toolbar;
 	///
-	LString printer;
+	string printer;
 	///
-	LString print_command;
+	string print_command;
 	///
-	LString print_evenpage_flag;
+	string print_evenpage_flag;
 	///
-	LString print_oddpage_flag;
+	string print_oddpage_flag;
 	///
-	LString print_pagerange_flag;
+	string print_pagerange_flag;
 	///
-	LString print_copies_flag;
+	string print_copies_flag;
 	///
-	LString print_collcopies_flag;
+	string print_collcopies_flag;
 	///
-	LString print_reverse_flag;
+	string print_reverse_flag;
 	///
-	LString print_landscape_flag;
+	string print_landscape_flag;
 	///
-	LString print_to_printer;
+	string print_to_printer;
 	///
 	bool print_adapt_output;
 	///
-	LString print_to_file;
+	string print_to_file;
 	///
-	LString print_file_extension;
+	string print_file_extension;
 	///
-	LString print_extra_options;
+	string print_extra_options;
 	///
-	LString print_spool_command;
+	string print_spool_command;
         ///
-	LString print_spool_printerprefix;
+	string print_spool_printerprefix;
 	///
-	LString print_paper_flag;
+	string print_paper_flag;
 	///
-	LString print_paper_dimension_flag;
+	string print_paper_dimension_flag;
 	///
-        LString custom_export_command;
+        string custom_export_command;
 	///
-	LString custom_export_format;
+	string custom_export_format;
 	/// program for running latex
-	LString latex_command;
+	string latex_command;
         /// program for performing literate programming
-        LString literate_command;
-        LString literate_extension;
-        LString literate_error_filter;
+        string literate_command;
+        string literate_extension;
+        string literate_error_filter;
         /// program for compiling
-        LString build_command;
-        LString build_error_filter;
+        string build_command;
+        string build_error_filter;
 	/// program for running relyx
-	LString relyx_command;
+	string relyx_command;
 	/// postscript interpreter (in general "gs", if it is installed)
-	LString ps_command;
+	string ps_command;
 	/// program for viewing postscript output (default "ghostview -swap")
-	LString view_ps_command;
+	string view_ps_command;
 	/// program for viewing postscript pictures (default "ghostview")
-	LString view_pspic_command;
+	string view_pspic_command;
 	/// program for viewing dvi output (default "xdvi")
-	LString view_dvi_command;
+	string view_dvi_command;
         /// default paper size for local xdvi/dvips/ghostview/whatever
         LYX_PAPER_SIZE default_papersize;
 	/// command to run chktex incl. options
-	LString chktex_command;
+	string chktex_command;
 	///
-	LString sgml_extra_options;
+	string sgml_extra_options;
 	///
-	LString document_path;
+	string document_path;
 	///
-	LString template_path;
+	string template_path;
 	///
-	LString tempdir_path;
+	string tempdir_path;
 	///
 	bool use_tempdir;
 	///
@@ -113,7 +113,7 @@ public:
 	/// flag telling whether lastfiles should be checked for existance
 	bool check_lastfiles;
 	/// filename for lastfiles file
-	LString lastfiles;
+	string lastfiles;
 	/// maximal number of lastfiles
 	unsigned int num_lastfiles;
 	/// Zoom factor for screen fonts
@@ -125,33 +125,33 @@ public:
 	/// DPI of monitor
 	float dpi;
 	///
-	LString fontenc;
+	string fontenc;
 	///
-	LString roman_font_name;
+	string roman_font_name;
 	///
-	LString sans_font_name;
+	string sans_font_name;
 	///
-	LString typewriter_font_name;
+	string typewriter_font_name;
 	///
-	LString menu_font_name;
+	string menu_font_name;
 	///
-	LString popup_font_name;
+	string popup_font_name;
 	///
-	LString font_norm;
+	string font_norm;
 	///
 	unsigned int autosave;
 	///
-	LString fax_command;
+	string fax_command;
 	///
-	LString phone_book;
+	string phone_book;
 	///
-	LString fax_program;
+	string fax_program;
 	///
-	LString ascii_roff_command;
+	string ascii_roff_command;
 	///
 	unsigned int ascii_linelen;
 	/// Ispell command
-	LString isp_command;
+	string isp_command;
 	/// Accept compound words in spellchecker?
 	bool isp_accept_compound;
 	/// Pass input encoding switch to ispell?
@@ -163,11 +163,11 @@ public:
 	/// Use escape chars?
 	bool isp_use_esc_chars;
 	/// Alternate language for ispell
-	LString isp_alt_lang;
+	string isp_alt_lang;
 	/// Alternate personal dictionary file for ispell
-	LString isp_pers_dict;
+	string isp_pers_dict;
 	/// Escape characters
-	LString isp_esc_chars;
+	string isp_esc_chars;
 	///
 	bool use_kbmap;
 	/// Ask for confirmation of exit when there are unsaved documents?
@@ -175,11 +175,11 @@ public:
 	/// Should we display short-cut information in the minibuffer?
 	bool display_shortcuts;
 	///
-	LString primary_kbmap;
+	string primary_kbmap;
 	///
-	LString secondary_kbmap;
+	string secondary_kbmap;
 	///
-	LString lyxpipes;
+	string lyxpipes;
 
 private:
 	///

@@ -12,8 +12,8 @@
  *======================================================
  */
 
-#ifndef _IMPORTNOWEB_H
-#define _IMPORTNOWEB_H
+#ifndef IMPORTNOWEB_H
+#define IMPORTNOWEB_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -29,7 +29,7 @@ public:
 	/**
 	  file = name and path of the noweb file to import
 	  */
-	ImportNoweb(LString const & file) : file(file) {};
+	ImportNoweb(string const & file) : file(file) {};
 	
 	/** Imports the document.
 	  Return 0 if fail.
@@ -37,9 +37,9 @@ public:
 	Buffer * run();
 private:
 	///
-	LString file;
+	string file;
 	///
-	LString documentclass();
+	string documentclass();
 	///
 	enum{ 
 		BUFSIZE = 512 

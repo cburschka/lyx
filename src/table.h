@@ -115,15 +115,15 @@ public:
 	/// Returns true if a complete update is necessary, otherwise false
 	bool SetAlignment(int cell, char align);
         ///
-	bool SetPWidth(int cell, LString width);
+	bool SetPWidth(int cell, string width);
         ///
-	bool SetAlignSpecial(int cell, LString special,int what);
+	bool SetAlignSpecial(int cell, string special,int what);
 	///
 	char GetAlignment(int cell); // add approp. signedness
         ///
-        LString GetPWidth(int cell);
+        string GetPWidth(int cell);
         ///
-        LString GetAlignSpecial(int cell, int what);
+        string GetAlignSpecial(int cell, int what);
 
 	///
 	int GetWidthOfCell(int cell);
@@ -167,13 +167,13 @@ public:
 	// cell <0 will tex the preamble
 	// returns the number of printed newlines
 	///
-	int TexEndOfCell(LString& file, int cell);
+	int TexEndOfCell(string& file, int cell);
 	///
 	int RoffEndOfCell(FILE* file, int cell);
 	///
 	const char *getDocBookAlign(int cell, bool isColumn=false);
 	///
-	int DocBookEndOfCell(LString &file, int cell, int &depth);
+	int DocBookEndOfCell(string &file, int cell, int &depth);
 
 	///
 	bool IsMultiColumn(int cell);
@@ -268,9 +268,9 @@ private:
             ///
             int rotate;
             ///
-            LString align_special;
+            string align_special;
             ///
-            LString p_width; // this is only set for multicolumn!!!
+            string p_width; // this is only set for multicolumn!!!
 	};
         ///
         struct rowstruct {
@@ -286,8 +286,8 @@ private:
                 bool left_line;
                 bool right_line;
                 int  width_of_column;
-                LString p_width;
-                LString align_special;
+                string p_width;
+                string align_special;
         };
 	///
 	int numberofcells;

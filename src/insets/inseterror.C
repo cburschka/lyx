@@ -3,10 +3,10 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team.
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
 #include <config.h>
 
@@ -14,30 +14,23 @@
 #pragma implementation
 #endif
 
-
 #include "definitions.h"
 #include "inseterror.h"
 #include "lyxdraw.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 
-// 	$Id: inseterror.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: inseterror.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $";
-#endif /* lint */
-
 /* Error, used for the LaTeX-Error Messages */
 
 InsetError::InsetError()
 {
-	form = NULL;
+	form = 0;
 }
 
-InsetError::InsetError(LString const & string)
+InsetError::InsetError(string const & string)
 	: contents(string)
 {
-	form = NULL;
+	form = 0;
 }
 
 
@@ -46,7 +39,7 @@ InsetError::~InsetError()
 	if (form) {
 		fl_hide_form(form);
 		fl_free_form(form);
-		form = NULL;
+		form = 0;
 	}
 }
 
@@ -117,19 +110,19 @@ int InsetError::Latex(FILE *, signed char /*fragile*/)
 }
 
 
-int InsetError::Latex(LString &, signed char /*fragile*/)
+int InsetError::Latex(string &, signed char /*fragile*/)
 {
 	return 0;
 }
 
 
-int InsetError::Linuxdoc(LString &)
+int InsetError::Linuxdoc(string &)
 {
 	return 0;
 }
 
 
-int InsetError::DocBook(LString &)
+int InsetError::DocBook(string &)
 {
 	return 0;
 }
@@ -153,7 +146,7 @@ void InsetError::CloseErrorCB(FL_OBJECT *, long data)
 	if (inset->form) {
 		fl_hide_form(inset->form);
 		fl_free_form(inset->form);
-		inset->form = NULL;
+		inset->form = 0;
 	}
 }
 
@@ -170,7 +163,7 @@ void InsetError::Edit(int, int)
 		fl_set_object_gravity(obj, FL_South, FL_South);
 		fl_set_object_resize(obj, FL_RESIZE_NONE);
 		fl_end_form();
-		fl_set_form_atclose(form, CancelCloseBoxCB, NULL);
+		fl_set_form_atclose(form, CancelCloseBoxCB, 0);
 	}
 	fl_set_object_label(strobj, contents.c_str());
 	if (form->visible) {

@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 #include "definitions.h"
 #include FORMS_H_LOCATION
 #include "layout_forms.h"
@@ -13,13 +13,6 @@
 #include "gettext.h"
 #include "lyxtext.h"
 
-// 	$Id: ParagraphExtra.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: ParagraphExtra.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $";
-#endif /* lint */
-
-/* Prototypes */
 extern FD_form_paragraph_extra *fd_form_paragraph_extra;
 extern MiniBuffer *minibuffer;
 extern BufferView *current_view;
@@ -226,7 +219,7 @@ void CheckPExtraOptCB(FL_OBJECT *ob, long)
 {
     int
         n;
-    LString
+    string
         s1, s2;
     
     ActivateParagraphExtraButtons();
@@ -288,7 +281,7 @@ void CheckPExtraOptCB(FL_OBJECT *ob, long)
 
 static bool CheckInputWidth()
 {
-    LString
+    string
         s1,s2;
 
     s1 = fl_get_input(fd_form_paragraph_extra->input_pextra_width);

@@ -45,7 +45,7 @@ struct DEPCLEAN {
 	///
 	bool clean;
 	///
-	LString master;
+	string master;
 	///
 	DEPCLEAN *next;
 };
@@ -60,7 +60,7 @@ public:
 	/**@name Constructors and destructor */
 	//@{
 	///
-	Buffer(LString const & file, LyXRC * lyxrc = NULL, bool b= false);
+	Buffer(string const & file, LyXRC * lyxrc = 0, bool b= false);
 	
 	///
 	~Buffer();
@@ -131,17 +131,17 @@ public:
 	bool readLyXformat2(LyXLex &,LyXParagraph *par = 0);
 
 	/// Inserts a lyx file at cursor position. Returns false if it fails.
-	bool insertLyXFile(LString const & filename);
+	bool insertLyXFile(string const & filename);
 
 	/// Write file. Returns false if unsuccesful.
-	bool writeFile(LString const &, bool);
+	bool writeFile(string const &, bool);
 	
 	///
-	void writeFileAscii(LString const & , int);
+	void writeFileAscii(string const & , int);
 	
 	///
-	void makeLaTeXFile(LString const & filename,
-			   LString const & original_path,
+	void makeLaTeXFile(string const & filename,
+			   string const & original_path,
 			   bool nice, bool only_body = false);
 
 	///
@@ -157,12 +157,12 @@ public:
 	int runChktex();
 
 	///
-	void makeLinuxDocFile(LString const & filename, int column);
+	void makeLinuxDocFile(string const & filename, int column);
 	///
-	void makeDocBookFile(LString const & filename, int column);
+	void makeDocBookFile(string const & filename, int column);
 
 	/// returns the main language for the buffer (document)
-	LString GetLanguage() const {
+	string GetLanguage() const {
 		return params.language;
 	}
 	
@@ -179,7 +179,7 @@ public:
 	bool isBakClean() const { return bak_clean; }
 	
 	///
-	bool isDepClean(LString const & name) const;
+	bool isDepClean(string const & name) const;
 	
 	///
 	void markLyxClean() { 
@@ -202,7 +202,7 @@ public:
 	void markBakClean() { bak_clean = true; }
 	
 	///
-	void markDepClean(LString const & name);
+	void markDepClean(string const & name);
 	
 	///
 	void markDviDirty();
@@ -228,13 +228,13 @@ public:
 	}
 
 	///
-	LString getFileName() const { return filename; }
+	string getFileName() const { return filename; }
 
 	/// Change name of buffer. Updates "read-only" flag.
-	void setFileName(LString const & newfile);
+	void setFileName(string const & newfile);
 
 	/// Name of the document's parent
-	void setParentName(LString const &);
+	void setParentName(string const &);
 
 	/// Is buffer read-only?
 	bool isReadonly() { return read_only; }
@@ -283,20 +283,20 @@ public:
 	/** Insert an inset into the buffer
 	  Insert inset into buffer, placing it in a layout of lout,
 	  if no_table make sure that it doesn't end up in a table. */
-	void insertInset(Inset *, LString const &lout=LString(), 
+	void insertInset(Inset *, string const &lout=string(), 
 			 bool no_table = false);
 
         ///
         void setCursorFromRow (int);
 
 	///
-	LString getIncludeonlyList(char delim=',');
+	string getIncludeonlyList(char delim=',');
 	///
-	LString getReferenceList(char delim='|');
+	string getReferenceList(char delim='|');
 	///
-	LString getBibkeyList(char delim='|');
+	string getBibkeyList(char delim='|');
 	///
-	bool gotoLabel(const LString&);
+	bool gotoLabel(const string&);
 
 	/// removes all autodeletable insets
 	bool removeAutoInsets();
@@ -332,10 +332,10 @@ public:
 	LyXVC lyxvc;
 
 	/// where the temporaries go if we want them
-	LString tmppath;
+	string tmppath;
 
 	///
-	LString filepath;
+	string filepath;
 
 	/** While writing as LaTeX, tells whether we are
 	    doing a 'nice' LaTeX file */
@@ -364,21 +364,21 @@ private:
         ///
         void linuxDocHandleFootnote(FILE *file,LyXParagraph* &par, int const depth);
         ///
-	void DocBookHandleCaption(FILE *file, LString &inner_tag,
+	void DocBookHandleCaption(FILE *file, string &inner_tag,
 				  int const depth, int desc_on,
 				  LyXParagraph* &par);
         ///
 	void DocBookHandleFootnote(FILE *file,LyXParagraph* &par, int const depth);
 	///
-        void sgmlOpenTag(FILE * file,int depth,LString & latexname);
+        void sgmlOpenTag(FILE * file,int depth,string & latexname);
         ///
-        void sgmlCloseTag(FILE * file,int depth,LString & latexname);
+        void sgmlCloseTag(FILE * file,int depth,string & latexname);
 	///
 	void LinuxDocError(LyXParagraph *par, int pos, char const *message);
         ///
 	void SimpleLinuxDocOnePar(FILE *file, LyXParagraph *par, int desc_on, int const depth);
         ///
-	void SimpleDocBookOnePar(LString &file, LString &extra, LyXParagraph *par, int & desc_on, int const depth);
+	void SimpleDocBookOnePar(string &file, string &extra, LyXParagraph *par, int & desc_on, int const depth);
 
 	/// LinuxDoc.
 	void push_tag(FILE *file, char const *tag, int& pos, char stack[5][3]);
@@ -413,7 +413,7 @@ private:
 	bool read_only;
 
 	/// name of the file the buffer is associated with.
-	LString filename;
+	string filename;
 
 	/// Format number of buffer
 	float format;
@@ -459,7 +459,7 @@ void Buffer::InsetWakeup()
 
 
 inline  
-void Buffer::setParentName(LString const &name)
+void Buffer::setParentName(string const &name)
 {
     params.parentname = name;    
 }

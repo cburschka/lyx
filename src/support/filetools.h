@@ -4,19 +4,20 @@
    copyright (C) 1995-1997, Matthias Ettrich and the LyX Team
 */
 
-#ifndef __LYX_FILETOOL_H__
-#define __LYX_FILETOOL_H__
+#ifndef LYX_FILETOOL_H
+#define LYX_FILETOOL_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 #include <fcntl.h>
-#include <errno.h>
+#include <cerrno>
 #include "error.h"
 #include "LString.h"
+#include "support/lstrings.h"
 
 /** A file class.
   Use this instead of FILE *, it gives a much better structure.
@@ -34,19 +35,18 @@ public:
 		truncate
 	};
 	///
-	FilePtr(LString const &name, file_mode mode)
-	{
+	FilePtr(string const & name, file_mode mode) {
 		init();
 		do_open(name, mode);
 	}
 	///
-	FilePtr(FILE *pp) { init(); p = pp; }
+	FilePtr(FILE * pp) { init(); p = pp; }
 	///
 	~FilePtr() { close(); }
 
 	/** Use this if you want to rebind the FilePtr to another file.
 	 */
-	FilePtr& reopen(LString const &name, file_mode mode) {
+	FilePtr & reopen(string const & name, file_mode mode) {
 		// close the file it it is already open
 		close();
 		// Now open the file.
@@ -55,10 +55,10 @@ public:
 		return *this;
 	}
 	/** Close the file.
-	  Use this with some carefullness. After it has been used
-	  the FilePtr is unusable. Only use it if it is important
-	  that the file is closed before the FilePtr goes out
-	  of scope. */
+	    Use this with some carefullness. After it has been used
+	    the FilePtr is unusable. Only use it if it is important
+	    that the file is closed before the FilePtr goes out
+	    of scope. */
 	int close() { 
 		if (p) {
 			int result = fclose(p); 
@@ -70,29 +70,29 @@ public:
 	/// automatic converson to FILE* if that is needed.
 	operator FILE*() { return p; }
 	///
-	FilePtr& operator=(FILE *f) { p=f; return *this;}
+	FilePtr & operator=(FILE * f) { p=f; return *this;}
 	///
-	FILE *operator()() { return p; }
+	FILE * operator()() { return p; }
 private:
 	///
-	void do_open(LString const &name, file_mode mode) {
-		char modestr[3];
+	void do_open(string const & name, file_mode mode) {
+		string modestr;
 		
 		switch(mode) {
 			// do appropiate #ifdef here so support EMX
 #ifndef __EMX__
-		case read: strcpy(modestr, "r"); break;
-		case write: strcpy(modestr, "w"); break;
+		case read: modestr = "r"; break;
+		case write: modestr = "w"; break;
 #else
-		case read: strcpy(modestr,"rt"); break; // Can read both DOS & UNIX text files.
-		case write: strcpy(modestr,"w"); break; // Write UNIX text files.
+		case read: modestr = "rt"; break; // Can read both DOS & UNIX text files.
+		case write: modestr = "w"; break; // Write UNIX text files.
 #endif
 			
-		case update: strcpy(modestr, "r+"); break;
-		case truncate: strcpy(modestr, "w+"); break;
+		case update: modestr = "r+"; break;
+		case truncate: modestr = "w+"; break;
 		}
 		// Should probably be rewritten to use open(2)
-		if((p = fopen(name.c_str(), modestr))) {
+		if((p = fopen(name.c_str(), modestr.c_str()))) {
 			// file succesfully opened.
 			if (fcntl(fileno(p),F_SETFD,FD_CLOEXEC) == -1) {
 				p = 0;
@@ -113,24 +113,24 @@ private:
 	///
 	void init() { p = 0; }
 	///
-	FILE *p;
+	FILE * p;
 };
 
 
 ///
-LString CreateBufferTmpDir (LString const & pathfor = LString());
+string CreateBufferTmpDir (string const & pathfor = string());
 
 /// Creates directory. Returns true on succes.
-bool createDirectory(LString const & name, int permissions);
+bool createDirectory(string const & name, int permissions);
 
 ///
-LString CreateLyXTmpDir (LString const & deflt);
+string CreateLyXTmpDir (string const & deflt);
 
 ///
-int DestroyBufferTmpDir (LString const & tmpdir);
+int DestroyBufferTmpDir (string const & tmpdir);
 
 ///
-int DestroyLyXTmpDir (LString const & tmpdir);
+int DestroyLyXTmpDir (string const & tmpdir);
 
 /** Find file by searching several directories.
   Uses a string of paths separated by ";"s to find a file to open.
@@ -139,16 +139,16 @@ int DestroyLyXTmpDir (LString const & tmpdir);
     If path entry begins with $$User/, use user_lyxdir.
     Example: "$$User/doc;$$LyX/doc".
 */
-LString FileOpenSearch (LString const & path, LString const & name, 
-			LString const & ext = LString());
+string FileOpenSearch (string const & path, string const & name, 
+		       string const & ext = string());
 
 /** Returns the real name of file name in directory path, with optional
   extension ext.
   The file is searched in the given path (unless it is an absolute
   file name), first directly, and then with extension .ext (if given).
   */
-LString FileSearch(LString const & path, LString const & name, 
-		   LString const & ext = LString());
+string FileSearch(string const & path, string const & name, 
+		  string const & ext = string());
 
 /** Is directory read only?
   returns 
@@ -156,12 +156,12 @@ LString FileSearch(LString const & path, LString const & name,
     0: not writeable
    -1: error- couldn't find out, or unsure
   */
-int IsDirWriteable (LString const & path);
+int IsDirWriteable (string const & path);
 
 /** Is a file readable ?
   Returns true if the file `path' is readable.
  */
-bool IsFileReadable (LString const & path);
+bool IsFileReadable (string const & path);
 
 /** Is file read only?
   returns
@@ -169,13 +169,13 @@ bool IsFileReadable (LString const & path);
     0: read_only
    -1: error (doesn't exist, no access, anything else)
   */
-int IsFileWriteable (LString const & path);
+int IsFileWriteable (string const & path);
 
 ///
-bool IsLyXFilename(LString const & filename);
+bool IsLyXFilename(string const & filename);
 
 ///
-bool IsSGMLFilename(LString const & filename);
+bool IsSGMLFilename(string const & filename);
 
 /** Returns the path of a library data file.
   Search the file name.ext in the subdirectory dir of
@@ -186,73 +186,73 @@ bool IsSGMLFilename(LString const & filename);
   \end{enumerate}
     The third parameter `ext' is optional.
 */
-LString LibFileSearch(LString const & dir, LString const & name, 
-		      LString const & ext = LString());
+string LibFileSearch(string const & dir, string const & name, 
+		     string const & ext = string());
 
 /** Same as LibFileSearch(), but tries first to find an
   internationalized version of the file by prepending $LANG_ to the
   name 
   */
-LString i18nLibFileSearch(LString const & dir, LString const & name, 
-			  LString const & ext = LString());
+string i18nLibFileSearch(string const & dir, string const & name, 
+			 string const & ext = string());
+
+///
+string GetEnv(string const & envname);
+
+/// A helper function.
+string GetEnvPath(string const & name);
+
+///
+bool PutEnv(string const & envstr);
+
+///
+bool PutEnvPath(string const & envstr);
 
 /// Substitutes spaces with underscores in filename (and path)
-LString SpaceLess(LString const & file);
+string SpaceLess(string const & file);
 
 /** Returns an unique name to be used as a temporary file. If given,
   'mask' should the prefix to the temporary file, the rest of the
   temporary filename will be made from the pid and three letters.
   */
-LString TmpFileName(LString const & dir = LString(), 
-		    LString const & mask = "lyx_tmp");
+string TmpFileName(string const & dir = string(), 
+		   string const & mask = "lyx_tmp");
 
 /// Is a filename/path absolute?
-bool AbsolutePath(LString const &path);
+bool AbsolutePath(string const & path);
 
 /// Add a filename to a path. Any path from filename is stripped first.
-LString AddName(LString const &Path, LString const &Filename);
+string AddName(string const & path, string const & fname);
 
 /// Append sub-directory(ies) to path in an intelligent way
-LString AddPath(LString const & path, LString const & path2);
+string AddPath(string const & path, string const & path2);
 
 /** Change extension of oldname to extension.
  If no_path is true, the path is stripped from the filename.
  If oldname does not have an extension, it is appended.
  If the extension is empty, any extension is removed from the name.
  */
-LString ChangeExtension(LString const & oldname, LString const & extension, 
-			bool no_path);
+string ChangeExtension(string const & oldname, string const & extension, 
+		       bool no_path);
 
 /// Create absolute path. If impossible, don't do anything
-LString ExpandPath(LString const &path);
+string ExpandPath(string const & path);
 
 /// gets current working directory
-LString GetCWD();
+string GetCWD();
 
-/// A helper function.
-inline LString getEnvPath(char const *name)
-{
-	LString pathlist;
-	pathlist = getenv(name);
-#ifndef __EMX__
-	pathlist.subst(':', ';');
-#else
-	pathlist.subst('\\', '/');
-#endif
-	return pathlist.strip(';');
-}
 
 /** Convert relative path into absolute path based on a basepath.
   If relpath is absolute, just use that.
   If basepath doesn't exist use CWD.
   */
-LString MakeAbsPath(LString const &RelPath = LString(), 
-		    LString const &BasePath = LString());
+string MakeAbsPath(string const & RelPath = string(), 
+		   string const & BasePath = string());
 
 /** Creates a nice compact path for displaying. The parameter
   threshold, if given, specifies the maximal length of the path.
   */
-LString MakeDisplayPath(LString const & path, int threshold=1000);
+string MakeDisplayPath(string const & path, unsigned int threshold=1000);
 
 /** Makes relative path out of absolute path.
   If it is deeper than basepath,
@@ -261,29 +261,29 @@ LString MakeDisplayPath(LString const & path, int threshold=1000);
   different, then the absolute path will be used as relative path
   WARNING: the absolute path and base path must really be absolute paths!!!
   */
-LString MakeRelPath(LString const & abspath, LString const & basepath);
+string MakeRelPath(string const & abspath, string const & basepath);
 
 /// Strip filename from path name
-LString OnlyPath(LString const &Filename);
+string OnlyPath(string const & fname);
 
 /// Normalize a path. Constracts path/../path
-LString NormalizePath(LString const &path);
+string NormalizePath(string const & path);
 
 /// Strips path from filename
-LString OnlyFilename(LString const &Filename);
+string OnlyFilename(string const & fname);
 
 /// Cleanup a path if necessary. Currently only useful with OS/2
-LString CleanupPath(LString const &path) ;
+string CleanupPath(string const & path) ;
 
 /** Check and Replace Environmentvariables ${NAME} in Path.
     Replaces all occurences of these, if they are found in the
     environment.
     Variables are defined by Var := '${' [a-zA-Z_][a-zA-Z_0-9]* '}'
 */
-LString ReplaceEnvironmentPath(LString const &path);
+string ReplaceEnvironmentPath(string const & path);
 
 /* Set Link to the path File Points to as a symbolic link.
    Return True if succesfull, False other wise */
-bool LyXReadLink(LString const & file, LString & Link);
+bool LyXReadLink(string const & file, string & Link);
 
 #endif

@@ -22,11 +22,11 @@ public:
 	///
 	struct BackStackItem {
 		///
-		void set(LString f, int xx, int yy) {
+		void set(string f, int xx, int yy) {
 			fname = f;  x = xx;  y = yy;
 		}
 		/// Filename
-		LString fname;
+		string fname;
 		/// Cursor x-position
 		int x;
 		/// Cursor y-position
@@ -42,12 +42,12 @@ public:
 		delete[] item;
 	}
 	///
-	void push(LString f, int x, int y) {
+	void push(string f, int x, int y) {
 		if (i<imax) 
 			item[i++].set(f, x, y);
 	}
 	///
-	LString &pop(int *x, int *y) {
+	string &pop(int *x, int *y) {
 		if (i>0) i--;
 		*x = item[i].x;
 		*y = item[i].y;

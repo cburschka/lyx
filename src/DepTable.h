@@ -11,11 +11,11 @@
  * ======================================================
  */
 
-#ifndef _DEP_TABLE_H
-#define _DEP_TABLE_H
+#ifndef DEP_TABLE_H
+#define DEP_TABLE_H
 
 #include "LString.h"
-#include <stdio.h>
+#include <cstdio>
 
 ///
 class DepTable {
@@ -26,7 +26,7 @@ public:
 	/** This one is a little bit harder since we need the absolute
 	  filename. Should we insert files with .sty .cls etc as
 	  extension? */
-	void insert(LString const &f,
+	void insert(string const &f,
 		    bool upd = false,
 		    unsigned long one = 0,
 		    unsigned long two = 0);
@@ -34,21 +34,21 @@ public:
 	void update();
 
 	///
-	void write(LString const &f);
+	void write(string const &f);
 	///
-	void read(LString const &f);
+	void read(string const &f);
 	/// returns true if any of the files has changed
 	bool sumchange();
 	///
-	bool haschanged(LString const &fil);
+	bool haschanged(string const &fil);
 private:
 	///
-	DepTable(LString const &f,
+	DepTable(string const &f,
 		 bool upd,
 		 unsigned long one,
 		 unsigned long two);
 	///
-	LString file;
+	string file;
 	/// The files new checksum
 	unsigned long new_sum;
 	/// The files old checksum

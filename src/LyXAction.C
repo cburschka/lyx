@@ -10,10 +10,10 @@
 
 #include <config.h>
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cctype>
+#include <cstring>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -22,6 +22,7 @@
 #include "LyXAction.h"
 #include "error.h"
 #include "gettext.h"
+#include "support/lstrings.h"
 
  /*  
      NAMING RULES FOR USER-COMMANDS
@@ -451,9 +452,9 @@ int  LyXAction::searchActionArg(kb_action action, char const *arg)
 	for (int i=0; i<psd_idx; i++) {
 		if (action==tb->action && !strcmp(tb->name, arg)) {	 
 
-			lyxerr.debug(LString("Pseudoaction already exist[") 
-				     + int(action) + '|' 
-				     + PTR_AS_INT(arg) + ']',
+			lyxerr.debug(string("Pseudoaction already exist[") 
+				     + tostr(action) + '|' 
+				     + tostr(arg) + ']',
 				     Error::KEY);
 
 			return LFUN_LASTACTION+i;
@@ -525,9 +526,9 @@ int LyXAction::LookupFunc(char const *func)
 	}
 	if (arg && action >= 0) {
 		action = getPseudoAction((kb_action)action, arg);
-		lyxerr.debug(LString("Pseudo action_arg[")
-			     + int(action) + '|' 
-			     + PTR_AS_INT(arg) + ']',Error::KEY);
+		lyxerr.debug(string("Pseudo action_arg[")
+			     + tostr(action) + '|' 
+			     + tostr(arg) + ']',Error::KEY);
 	}
 	return action;
 }
@@ -709,7 +710,7 @@ char const *LyXAction::helpText(kb_action action) const
         if (helpTexts[action].action == action) {
 	    return helpTexts[action].name;
 	} 
-	//	  + LString(' ') + int(is_ro) + LString(']'));
+	//	  + string(' ') + int(is_ro) + string(']'));
   no_desc:
 	// In an ideal world, this never happens:
 	return _("No description available!");
@@ -748,8 +749,8 @@ bool LyXAction::isFuncRO(kb_action action) const
 	} else
 	  if (k<0) l = m+1; else r = m;
     }
-    lyxerr.debug(LString("RO[") + int(action)
-		  + LString(" ") + int(is_ro) + LString("]"));
+    lyxerr.debug(string("RO[") + tostr(action)
+		  + string(" ") + tostr(is_ro) + string("]"));
     return is_ro;
 }
 

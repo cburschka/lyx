@@ -18,12 +18,6 @@
 #include "lyxparagraph.h"
 #include "error.h"
 
-// 	$Id: texrow.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: texrow.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
-
 // Delete linked list
 void TexRow::reset()
 {

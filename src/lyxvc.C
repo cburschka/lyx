@@ -9,10 +9,10 @@
 #include "error.h"
 #include "lyx_gui_misc.h"
 #include "bufferlist.h"
-#include "syscall.h"
+#include "support/syscall.h"
 #include "pathstack.h"
-#include "filetools.h"
-#include "FileInfo.h"
+#include "support/filetools.h"
+#include "support/FileInfo.h"
 #include "gettext.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
@@ -43,13 +43,13 @@ LyXVC::~LyXVC()
 }
 
 
-bool LyXVC::file_found_hook(LString const & fn)
+bool LyXVC::file_found_hook(string const & fn)
 {
-	LString tmp(fn);
+	string tmp(fn);
 	FileInfo f;
 	// Check if *,v exists.
 	tmp += ",v";
-	lyxerr.debug(LString("Checking if file is under vc: ") + tmp, Error::LYXVC);
+	lyxerr.debug(string("Checking if file is under vc: ") + tmp, Error::LYXVC);
 	if (f.newFile(tmp).readable()) {
 		lyxerr.debug("Yes it is under vc.", Error::LYXVC);
 		master = tmp;
@@ -76,7 +76,7 @@ bool LyXVC::file_found_hook(LString const & fn)
 }
 
 
-bool LyXVC::file_not_found_hook(LString const &)
+bool LyXVC::file_not_found_hook(string const &)
 {
 	// file is not under any VCS.
 	return false;
@@ -87,10 +87,10 @@ void LyXVC::scanMaster()
 {
 	lyxerr.debug("LyXVC: This file is a VC file.", Error::LYXVC);
 
-	LyXLex lex(NULL, 0);
+	LyXLex lex(0, 0);
 	lex.setFile(master);
 
-	LString token;
+	string token;
 	bool read_enough = false;
 	while (lex.IsOK() && !read_enough) {
 		lex.next();
@@ -104,35 +104,32 @@ void LyXVC::scanMaster()
 		else if (token == "head") {
 			// get version here
 			lex.next();
-			LString tmv = lex.GetString();
-			tmv.strip(';');
+			string tmv = strip(lex.GetString(), ';');
 			version = tmv;
-		} else if (token.contains("access")
-			   || token.contains("symbols")
-			   || token.contains("strict")) {
+		} else if (contains(token, "access")
+			   || contains(token, "symbols")
+			   || contains(token, "strict")) {
 			// nothing
-		} else if (token.contains("locks")) {
+		} else if (contains(token, "locks")) {
 			// get locker here
-			if (token.contains(";")) {
+			if (contains(token, ";")) {
 				locker = "Unlocked";
 				vcstat = UNLOCKED;
 				continue;
 			}
-			LString tmpt, s1, s2;
+			string tmpt, s1, s2;
 			do {
 				lex.next();
-				tmpt = lex.GetString();
-				s1 = tmpt;
-				s1.strip(';');
+				s1 = strip(tmpt = lex.GetString(), ';');
 				// tmp is now in the format <user>:<version>
-				s1.split(s2, ':');
+				s1 = split(s1, s2, ':');
 				// s2 is user, and s1 is version
 				if (s1 == version) {
 					locker = s2;
 					vcstat = LOCKED;
 					break;
 				}
-			} while (!tmpt.contains(";"));
+			} while (!contains(tmpt, ";"));
 			
 		} else if (token == "comment") {
 			// we don't need to read any further than this.
@@ -180,14 +177,14 @@ void LyXVC::registrer()
 	}
 
 	lyxerr.debug("LyXVC: registrer", Error::LYXVC);
-	LString tmp = askForText(_("LyX VC: Initial description"),
+	string tmp = askForText(_("LyX VC: Initial description"),
 				 _("(no initial description)"));
 	if (tmp.empty()) {
 		lyxerr.debug("LyXVC: user cancelled", Error::LYXVC);
 		WriteAlert(_("Info"), _("This document has NOT been registered."));
 		return;
 	}
-	LString cmd = "ci -q -u -i -t-\"";
+	string cmd = "ci -q -u -i -t-\"";
 	cmd += tmp;
 	cmd += "\" \"";
 	cmd += OnlyFilename(_owner->getFileName());
@@ -215,7 +212,7 @@ void LyXVC::checkIn()
 
 	lyxerr.debug("LyXVC: checkIn", Error::LYXVC);
 	_owner->getUser()->getOwner()->getLyXFunc()->Dispatch(LFUN_MENUWRITE);
-	LString tmp = askForText(_("LyX VC: Log Message"));
+	string tmp = askForText(_("LyX VC: Log Message"));
 	if (tmp.empty()) tmp = "(no log msg)";
 	doVCCommand("ci -q -u -m\"" + tmp + "\" \""
 		    + OnlyFilename(_owner->getFileName()) + "\"");
@@ -289,13 +286,13 @@ bool LyXVC::inUse()
 }
 
 
-LString const LyXVC::getVersion() const
+string const LyXVC::getVersion() const
 {
 	return version;
 }
 
 
-LString const LyXVC::getLocker() const
+string const LyXVC::getLocker() const
 {
 	return locker;
 }
@@ -315,7 +312,7 @@ void LyXVC::logUpdate(FL_OBJECT *obj, long)
 }
 
 
-void LyXVC::viewLog(LString const & fil)
+void LyXVC::viewLog(string const & fil)
 {
 	if (!browser) {
 		FL_OBJECT *obj;
@@ -334,7 +331,7 @@ void LyXVC::viewLog(LString const & fil)
 		fl_set_object_lsize(obj,FL_NORMAL_SIZE);
 		fl_set_object_callback(obj,logUpdate,0);
 		fl_end_form();
-		fl_set_form_atclose(browser->LaTeXLog, CancelCloseBoxCB, NULL);
+		fl_set_form_atclose(browser->LaTeXLog, CancelCloseBoxCB, 0);
 	}
 
 	if (!fl_load_browser(browser->browser_latexlog, fil.c_str()))
@@ -372,7 +369,7 @@ void LyXVC::showLog()
 		return;
 	}
 #endif
-	LString tmpf = tmpnam(NULL);
+	string tmpf = tmpnam(0);
 	doVCCommand("rlog \""
 		    + OnlyFilename(_owner->getFileName()) + "\" > " + tmpf);
 	viewLog(tmpf);
@@ -380,7 +377,7 @@ void LyXVC::showLog()
 }
 
 
-int LyXVC::doVCCommand(LString const & cmd)
+int LyXVC::doVCCommand(string const & cmd)
 {
 	lyxerr.debug("doVCCommand: " + cmd, Error::LYXVC);
         Systemcalls one;

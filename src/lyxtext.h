@@ -326,7 +326,7 @@ public:
 			  bool pagebreak_top, bool pagebreak_bottom,
 			  VSpace space_top, VSpace space_bottom,
 			  char align, 
-			  LString labelwidthstring,
+			  string labelwidthstring,
 			  bool noindent);
         void SetParagraphExtraOpt(int type,
                                   const char *width,
@@ -385,7 +385,7 @@ public:
 	/** all table features of the text-class are put together in
 	  this function. Possible values of feature are defined in table.h
 	  */
-	void TableFeatures(int feature,LString val);
+	void TableFeatures(int feature,string val);
         ///
 	void TableFeatures(int feature);
 	///

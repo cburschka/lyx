@@ -7,7 +7,7 @@
 
 struct Keyexc {
 	char c;		/* character to make exception */
-	LString data;	/* exception data */
+	string data;	/* exception data */
 	Keyexc *next;
 	bool combined;	// Combination with another deadkey
 	tex_accent accent;	// The accent combined with
@@ -21,9 +21,9 @@ typedef Keyexc *KmodException;
 //
 
 struct KmodInfo {
-	LString data;
+	string data;
 	tex_accent accent;
-	LString allowed;
+	string allowed;
 	KmodException exception_list;    
 	
 	KmodInfo(const KmodInfo&);

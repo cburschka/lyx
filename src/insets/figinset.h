@@ -38,11 +38,11 @@ public:
 	///
 	int Latex(FILE *file, signed char fragile);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string &file, signed char fragile);
 	///
-	int Linuxdoc(LString &file);
+	int Linuxdoc(string &file);
 	///
-	int DocBook(LString &file);
+	int DocBook(string &file);
 	/// Updates needed features for this inset.
 	void Validate(LaTeXFeatures &features) const;
 
@@ -79,7 +79,7 @@ public:
 	int psx, psy;
 
 	/// .eps file name
-	LString fname;
+	string fname;
 	/// changed filename -> for recompute
 	bool changedfname;
 
@@ -115,10 +115,10 @@ public:
 	float angle;
 	
 	/// graphics command, latex version
-	LString cmd;
+	string cmd;
 	
 	/// Caption for subfigure package
-	LString subcaption;
+	string subcaption;
 
 	/// various flags
 	int flags;
@@ -160,7 +160,7 @@ struct figdata {
 	/// width and height on screen
 	int wid, hgh;
 	/// pointer to file name
-	LString fname;
+	string fname;
 	/// type; 0-none, 1-B/W, 2-Grayscale, 3-Color
 	char flags;
 	/// reading request is pending on this figure

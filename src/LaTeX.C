@@ -2,42 +2,36 @@
  * ======================================================
  * 
  *           LyX, The Document Processor 	 
- *	     Copyright (C) 1995 Matthias Ettrich
- *           Copyright (C) 1995-1999 The LyX Team.
+ *	     Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
  *
- *           This file is Copyright (C) 1996-1999
+ *           This file is Copyright 1996-1999
  *           Lars Gullik Bjønnes
  *
- *======================================================
+ * ======================================================
  */
 
 #include <config.h>
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include "filetools.h"
+#include "support/filetools.h"
 #include "LaTeX.h"
 #include "lyxlex.h"
-#include "FileInfo.h"
+#include "support/FileInfo.h"
 #include "error.h"
-#include "lyxlib.h"
-#include "syscall.h"
-#include "syscontr.h"
+#include "support/lyxlib.h"
+#include "support/syscall.h"
+#include "support/syscontr.h"
 #include "pathstack.h"
 #include "bufferlist.h"
 #include "minibuffer.h"
 #include "gettext.h"
-
-// 	$Id: LaTeX.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: LaTeX.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $";
-#endif /* lint */
 
 extern BufferList bufferlist;
 
@@ -65,10 +59,10 @@ const texfile_struct all_files[] = {
 
 // This should perhaps be placed in LyXLex
 static
-LString readLine(FILE *file)
+string readLine(FILE *file)
 {
 	if (feof(file))
-		return LString();
+		return string();
 
 	int i = 0;
 	char s[512];
@@ -78,7 +72,7 @@ LString readLine(FILE *file)
 		i++;
 	} while (!feof(file) && s[i-1] != '\n' && i<510);
 	s[i] = '\0';
-	LString tmp;
+	string tmp;
 	if (i == 1 && feof(file))
 		;
 	else
@@ -108,27 +102,27 @@ TeXErrors::~TeXErrors()
 
 void TeXErrors::scanError(LyXLex &lex)
 {
-	LString token = lex.GetString();
+	string token = lex.GetString();
 	// Sometimes the error string goes over more than one
 	// line, and we need to get them all.
-	LString errstr;
-	LString tmp = readLine(lex.getFile()).frontStrip();
+	string errstr;
+	string tmp = frontStrip(readLine(lex.getFile()));
 	if (tmp == "\n" || tmp.empty()) {
-		tmp = readLine(lex.getFile()).frontStrip();
-		if (tmp.contains("See the LaTeX manual")) {
+		tmp = frontStrip(readLine(lex.getFile()));
+		if (contains(tmp, "See the LaTeX manual")) {
 			do {
 				tmp = readLine(lex.getFile());
-			} while (!tmp.empty() && !tmp.contains("..."));
+			} while (!tmp.empty() && !contains(tmp, "..."));
 		}
-		tmp = readLine(lex.getFile()).frontStrip();
+		tmp = frontStrip(readLine(lex.getFile()));
 	}
 
-	while ((tmp != "\n" || !errstr.contains("l."))
-		&& !tmp.prefixIs("! ")
-		&& !tmp.contains("(job aborted")
+	while ((tmp != "\n" || !contains(errstr, "l."))
+		&& !prefixIs(tmp, "! ")
+		&& !contains(tmp, "(job aborted")
 		&& !tmp.empty()) {
 		errstr += tmp;
-		tmp = readLine(lex.getFile()).frontStrip();
+		tmp = frontStrip(readLine(lex.getFile()));
 	}
 	lyxerr.debug("tmp: " + errstr);
 	int line = 0;
@@ -136,10 +130,10 @@ void TeXErrors::scanError(LyXLex &lex)
 	// by "l.###" in the beginning of the error string
 	// therefore we must search for "l.###" in the error
 	// msg.
-	if (errstr.contains("l.")) {
+	if (contains(errstr, "l.")) {
 		// We make a const copy to make [] fast. (Asger)
-		LString const es = errstr;
-		for (int i = 2; i < es.length(); i++) {
+		string const es = errstr;
+		for (string::size_type i = 2; i < es.length(); ++i) {
 			if (es[i-2] == 'l' && es[i-1] == '.' &&
 			    (es[i] >= '0' && es[i]<= '9')) {
 				line = atoi(es.c_str() + i);
@@ -149,13 +143,13 @@ void TeXErrors::scanError(LyXLex &lex)
 	}
 	insertError(line, token, errstr);
 
-	if (tmp.prefixIs("! ")) {
+	if (prefixIs(tmp, "! ")) {
 		scanError(lex);
 	}
 }
 
 
-bool TeXErrors::getFirstError(int *line, LString *text)
+bool TeXErrors::getFirstError(int *line, string *text)
 {
         next_error = errors;
         if (next_error) {
@@ -168,7 +162,7 @@ bool TeXErrors::getFirstError(int *line, LString *text)
 }
 
 
-bool TeXErrors::getNextError(int *line, LString *text)
+bool TeXErrors::getNextError(int *line, string *text)
 {
         if (next_error) {
                 *line = next_error->error_in_line;
@@ -180,8 +174,8 @@ bool TeXErrors::getNextError(int *line, LString *text)
 }
 
 
-void TeXErrors::insertError(int line, LString const &error_desc,
-			    LString const &error_text)
+void TeXErrors::insertError(int line, string const &error_desc,
+			    string const &error_text)
 {
         Error *newerr = new Error(line, error_desc, error_text);
         if (errors) {
@@ -200,8 +194,8 @@ void TeXErrors::printErrors()
         if (errors) {
                 Error *tmperr = errors;
                 do {
-                        lyxerr.print(LString("Error in line ")
-				     + tmperr->error_in_line
+                        lyxerr.print(string("Error in line ")
+				     + tostr(tmperr->error_in_line)
 				     + ": " + tmperr->error_desc
 				     + '\n' + tmperr->error_text);
 			//%d: %s\n%s\n", tmperr->error_in_line,
@@ -221,8 +215,8 @@ void TeXErrors::printWarnings()
 void TeXErrors::printStatus()
 {
         lyxerr.print("Error struct:");
-        lyxerr.print(LString("   status: ") + int(status));
-        lyxerr.print(LString("   no err: ") + int(number_of_errors));
+        lyxerr.print(string("   status: ") + tostr(status));
+        lyxerr.print(string("   no err: ") + tostr(number_of_errors));
         if (status == LaTeX::NO_ERRORS)  lyxerr.print("NO_ERRORS");
         if (status & LaTeX::NO_LOGFILE)  lyxerr.print("NO_LOGFILE");
         if (status & LaTeX::NO_OUTPUT)   lyxerr.print("NO_OUTPUT");
@@ -238,7 +232,7 @@ void TeXErrors::printStatus()
  * CLASS LaTeX
  */
 
-LaTeX::LaTeX(LString const & latex, LString const & f, LString const & p)
+LaTeX::LaTeX(string const & latex, string const & f, string const & p)
 		: cmd(latex), file(f), path(p)
 {
 	tex_files = NO_FILES;
@@ -293,9 +287,9 @@ int LaTeX::run(TeXErrors &terr, MiniBuffer *minib)
 		if (head.sumchange()) {
 			lyxerr.debug("Dependency file has changed", 
 				     Error::LATEX);
-			lyxerr.debug(LString(_("Run #")) + int(++count), 
+			lyxerr.debug(string(_("Run #")) + tostr(++count), 
 				     Error::LATEX);
-			minib->Set(LString(_("LaTeX run number ")) + int(count));
+			minib->Set(string(_("LaTeX run number ")) + tostr(count));
 			minib->Store();
 			this->operator()();
 			scanres = scanLogFile(terr);
@@ -307,10 +301,10 @@ int LaTeX::run(TeXErrors &terr, MiniBuffer *minib)
 	} else {
 		lyxerr.debug("Dependency file does not exist",
 			     Error::LATEX);
-		lyxerr.debug(LString(_("Run #")) + int(++count),
+		lyxerr.debug(string(_("Run #")) + tostr(++count),
 			     Error::LATEX); 
 		head.insert(file, true);
-		minib->Set(LString(_("LaTeX run number ")) + int(count));
+		minib->Set(string(_("LaTeX run number ")) + tostr(count));
 		minib->Store();
 		this->operator()();
 		scanres = scanLogFile(terr);
@@ -364,9 +358,9 @@ int LaTeX::run(TeXErrors &terr, MiniBuffer *minib)
 		rerun = false;
 		lyxerr.debug("Dep. file has changed or rerun requested", 
 			     Error::LATEX);
-		lyxerr.debug(LString("Run #") + int(++count),
+		lyxerr.debug(string("Run #") + tostr(++count),
 			     Error::LATEX);
-		minib->Set(LString(_("LaTeX run number ")) + int(count));
+		minib->Set(string(_("LaTeX run number ")) + tostr(count));
 		minib->Store();
 		this->operator()();
 		scanres = scanLogFile(terr);
@@ -409,8 +403,8 @@ int LaTeX::run(TeXErrors &terr, MiniBuffer *minib)
 		// Yes rerun until message goes away, or until
 		// MAX_RUNS are reached.
 		rerun = false;
-		lyxerr.debug(LString(_("Run #")) + int(++count), Error::LATEX);
-		minib->Set(LString(_("LaTeX run number ")) + int(count));
+		lyxerr.debug(string(_("Run #")) + tostr(++count), Error::LATEX);
+		minib->Set(string(_("LaTeX run number ")) + tostr(count));
 		minib->Store();
 		this->operator()();
 		scanres = scanLogFile(terr);
@@ -429,16 +423,16 @@ int LaTeX::run(TeXErrors &terr, MiniBuffer *minib)
 int LaTeX::operator()()
 {
 #ifndef __EMX__
-	LString tmp = cmd + ' ' + file + " > /dev/null";
+	string tmp = cmd + ' ' + file + " > /dev/null";
 #else // cmd.exe (OS/2) causes SYS0003 error at "/dev/null"
-	LString tmp = cmd + ' ' + file + " > nul";
+	string tmp = cmd + ' ' + file + " > nul";
 #endif
         Systemcalls one;
 	return one.Startscript(Systemcalls::System, tmp);
 }
 
 
-bool LaTeX::runMakeIndex(LString const &file)
+bool LaTeX::runMakeIndex(string const &file)
 {
 	lyxerr.debug("idx file has been made,"
 		      " running makeindex on file "
@@ -448,7 +442,7 @@ bool LaTeX::runMakeIndex(LString const &file)
 	// sorting style and such. It would also be very convenient
 	// to be able to make style files from within LyX. This has
 	// to come for a later time. (0.13 perhaps?)
-	LString tmp = "makeindex -c -q ";
+	string tmp = "makeindex -c -q ";
 	tmp += file;
 	Systemcalls one;
 	one.Startscript(Systemcalls::System, tmp);
@@ -456,10 +450,10 @@ bool LaTeX::runMakeIndex(LString const &file)
 }
 
 
-bool LaTeX::runBibTeX(LString const &file)
+bool LaTeX::runBibTeX(string const &file)
 {
-	LyXLex lex(NULL, 0);
-	LString token;
+	LyXLex lex(0, 0);
+	string token;
 	if (!lex.setFile(file)) {
 		// unable to open .aux file
 		// return at once
@@ -472,10 +466,10 @@ bool LaTeX::runBibTeX(LString const &file)
 		else // blank line in the file being read
 			continue;
 
-		if (token.contains("\\bibdata{")) {
+		if (contains(token, "\\bibdata{")) {
 			// run bibtex and
-			LString tmp="bibtex ";
-			tmp += ChangeExtension(file, LString(), true);
+			string tmp="bibtex ";
+			tmp += ChangeExtension(file, string(), true);
 			Systemcalls one;
 			one.Startscript(Systemcalls::System, tmp);
 			return true;
@@ -489,12 +483,12 @@ bool LaTeX::runBibTeX(LString const &file)
 
 int LaTeX::scanLogFile(TeXErrors &terr)
 {
-	LString token;
+	string token;
 	int retval = NO_ERRORS;
 	
-	LyXLex lex(NULL, 0);
+	LyXLex lex(0, 0);
 
-	LString tmp = ChangeExtension(file, ".log", true);
+	string tmp = ChangeExtension(file, ".log", true);
 	
 	if (!lex.setFile(tmp)) {
 		// unable to open file
@@ -511,34 +505,34 @@ int LaTeX::scanLogFile(TeXErrors &terr)
 
 		lyxerr.debug(token, Error::LATEX);
 		
-		if (token.prefixIs("LaTeX Warning:")) {
+		if (prefixIs(token, "LaTeX Warning:")) {
 			// Here shall we handle different
 			// types of warnings
 			retval |= LATEX_WARNING;
 			lyxerr.debug("LaTeX Warning.", Error::LATEX);
-			if (token.contains("Rerun to get cross-references")) {
+			if (contains(token, "Rerun to get cross-references")) {
 				retval |= RERUN;
 				lyxerr.debug("We should rerun.", Error::LATEX);
-			} else if (token.contains("Citation")
-				   && token.contains("on page")
-				   && token.contains("undefined")) {
+			} else if (contains(token, "Citation")
+				   && contains(token, "on page")
+				   && contains(token, "undefined")) {
 				retval |= UNDEF_CIT;
 			}
-		} else if (token.prefixIs("Package")) {
+		} else if (prefixIs(token, "Package")) {
 			// Package warnings
 			retval |= PACKAGE_WARNING;
-			if (token.contains("natbib Warning:")) {
+			if (contains(token, "natbib Warning:")) {
 				// Natbib warnings
-				if (token.contains("Citation")
-				    && token.contains("on page")
-				    && token.contains("undefined")) {
+				if (contains(token, "Citation")
+				    && contains(token, "on page")
+				    && contains(token, "undefined")) {
 					retval |= UNDEF_CIT;
 				}
-			} else if (token.contains("Rerun LaTeX.")) {
+			} else if (contains(token, "Rerun LaTeX.")) {
 				// at least longtable.sty might use this.
 				retval |= RERUN;
 			}
-		} else if (token.prefixIs("! LaTeX Error:")) {
+		} else if (prefixIs(token, "! LaTeX Error:")) {
 			// Here shall we handle different
 			// types of errors
 			retval |= LATEX_ERROR;
@@ -546,15 +540,15 @@ int LaTeX::scanLogFile(TeXErrors &terr)
 			// this is not correct yet
 			terr.scanError(lex);
 			num_errors++;
-		} else if (token.prefixIs("! ")) {
+		} else if (prefixIs(token, "! ")) {
 			// Ok, we have something that looks like a TeX Error
 			// but what do we really have.
 
 			// Just get the error description:
-			LString desc(token);
-			desc.substring(2, desc.length() - 1);
+			string desc(token);
+			desc.erase(0, 2);
 
-			if (desc.contains("Undefined control sequence")) {
+			if (contains(desc, "Undefined control sequence")) {
 				retval |= TEX_ERROR;
 				lyxerr.debug("TeX Error.", Error::LATEX);
 				terr.scanError(lex);
@@ -562,8 +556,8 @@ int LaTeX::scanLogFile(TeXErrors &terr)
 			} else {
 				// get the next line
 				lex.next();
-				LString tmp = lex.GetString();
-				if (tmp.prefixIs("l.")) {
+				string tmp = lex.GetString();
+				if (prefixIs(tmp, "l.")) {
 				// we have a latex error
 					retval |=  TEX_ERROR;
 					lyxerr.debug("TeX Error.", Error::LATEX);
@@ -571,12 +565,12 @@ int LaTeX::scanLogFile(TeXErrors &terr)
 					int line = 0;
 					sscanf(tmp.c_str(), "l.%d", &line);
 				// get the rest of the message:
-					LString errstr;
+					string errstr;
 					lex.EatLine();
 					tmp = lex.GetString();
-					while ((tmp != "\n" || !errstr.contains("l."))
-					       && !tmp.prefixIs("! ")
-					       && !tmp.contains("(job aborted")
+					while ((tmp != "\n" || !contains(errstr, "l."))
+					       && !prefixIs(tmp, "! ")
+					       && !contains(tmp, "(job aborted")
 					       && !tmp.empty()) {
 						errstr += tmp;
 						errstr += "\n";
@@ -590,17 +584,17 @@ int LaTeX::scanLogFile(TeXErrors &terr)
 		} else {
 			// information messages, TeX warnings and other
 			// warnings we have not caught earlier.
-			if (token.prefixIs("Overfull ")) {
+			if (prefixIs(token, "Overfull ")) {
 				retval |= TEX_WARNING;
-			} else if (token.prefixIs("Underfull ")) {
+			} else if (prefixIs(token, "Underfull ")) {
 				retval |= TEX_WARNING;
-			} else if (token.contains("Rerun to get citations")) {
+			} else if (contains(token, "Rerun to get citations")) {
 				// Natbib seems to use this.
 				retval |= RERUN;
-			} else if (token.contains("No pages of output")) {
+			} else if (contains(token, "No pages of output")) {
 				// A dvi file was not created
 				retval |= NO_OUTPUT;
-			} else if (token.contains("That makes 100 errors")) {
+			} else if (contains(token, "That makes 100 errors")) {
 				// More than 100 errors were reprted
 				retval |= TOO_MANY_ERRORS;
 			}
@@ -616,7 +610,7 @@ void LaTeX::deplog(DepTable & head)
 	// files used by the LaTeX run. The files are then entered into the
 	// dependency file.
 
-	LString logfile = ChangeExtension(file, ".log", true);
+	string logfile = ChangeExtension(file, ".log", true);
 	FilePtr in(logfile, FilePtr::read);
 	bool not_eof = true;
 	if (in()) while (not_eof) { // We were able to open the file
@@ -634,7 +628,7 @@ void LaTeX::deplog(DepTable & head)
 		// We now have c == '(', we now read the the sequence of
 		// chars until reaching EOL, or ' ' and put that into a string.
 
-		LString foundfile;
+		string foundfile;
 		c = fgetc(in());
 		while (c != '\n' && c != ' ' && c != ')') {
 			foundfile += char(c);
@@ -667,12 +661,12 @@ void LaTeX::deplog(DepTable & head)
 		// (2) foundfile is in the tmpdir
 		//     insert it into head
 		if (FileInfo(OnlyFilename(foundfile)).exist()) {
-			if (foundfile.suffixIs(".aux")) {
+			if (suffixIs(foundfile, ".aux")) {
 				lyxerr.debug("We don't want "
 					     + OnlyFilename(foundfile)
 					     + " in the dep file",
 					     Error::LATEX);
-			} else if (foundfile.suffixIs(".tex")) {
+			} else if (suffixIs(foundfile, ".tex")) {
 				// This is a tex file generated by LyX
 				// and latex is not likely to change this
 				// during its runs.
@@ -718,7 +712,7 @@ void LaTeX::deplog(DepTable & head)
 void LaTeX::deptex(DepTable &head)
 {
 	int except = AUX|LOG|DVI|BBL|IND|GLO; 
-	LString tmp;
+	string tmp;
 	FileInfo fi;
 	for (int i = 0; i < file_count; i++) {
 		if (!(all_files[i].file & except)) {

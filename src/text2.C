@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include <ctype.h>
+#include <cctype>
 #include FORMS_H_LOCATION
 
 #ifdef __GNUG__
@@ -23,7 +23,7 @@
 #include "insets/inseterror.h"
 #include "layout.h"
 #include "LyXView.h"
-#include "textutils.h"
+#include "support/textutils.h"
 #include "lyx_cb.h"
 #include "undo.h"
 #include "minibuffer.h"
@@ -33,20 +33,14 @@
 #include "lyxtext.h"
 #include "gettext.h"
 
-// 	$Id: text2.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: text2.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
-
 extern MiniBuffer *minibuffer;
 
 // Constructor
 LyXText::LyXText(int pw, Buffer *p)
 {
-	firstrow = NULL;
-	lastrow = NULL;
-	currentrow = NULL;
+	firstrow = 0;
+	lastrow = 0;
+	currentrow = 0;
 	currentrow_y = 0;
 	paperwidth = pw;
 	parameters = &p->params;
@@ -74,7 +68,7 @@ LyXText::LyXText(int pw, Buffer *p)
 	mark_set = false;
    
 	/* no rebreak necessary */ 
-	need_break_row = NULL;
+	need_break_row = 0;
    
 	undo_finished = true;
 	undo_frozen = false;
@@ -233,7 +227,7 @@ void LyXText::InsertRow(Row *row, LyXParagraph *par, int pos)
 {
 	Row *tmprow = new Row;
 	if (!row) {
-		tmprow->previous = NULL;
+		tmprow->previous = 0;
 		tmprow->next = firstrow;
 		firstrow = tmprow;
 	}
@@ -424,7 +418,7 @@ void LyXText::CloseFootnote()
 		if (row->next)
 			tmppar = row->next->par;
 		else
-			tmppar = NULL;
+			tmppar = 0;
 	}
    
 	AppendParagraph(cursor.row);
@@ -860,18 +854,18 @@ void LyXText::RedoParagraphs(LyXCursor cursor, LyXParagraph *endpar)
 	if (tmprow->next)
 		tmppar = tmprow->next->par;
 	else
-		tmppar = NULL;
+		tmppar = 0;
 	while (tmppar != endpar) {
 		RemoveRow(tmprow->next);
 		if (tmprow->next)
 			tmppar = tmprow->next->par;
 		else
-			tmppar = NULL;
+			tmppar = 0;
 	}  
    
 	/* remove the first one */
 	tmprow2 = tmprow;		       /* this is because tmprow->previous
-						* can be NULL */
+						* can be 0 */
 	tmprow = tmprow->previous;
 	RemoveRow(tmprow2);
    
@@ -916,7 +910,7 @@ int LyXText::FullRebreak()
 {
 	if (need_break_row) {
 		BreakAgain(need_break_row);
-		need_break_row = NULL;
+		need_break_row = 0;
 		return 1;
 	}
 	return 0;
@@ -1208,7 +1202,7 @@ void LyXText::SetParagraph(bool line_top, bool line_bottom,
 			   bool pagebreak_top, bool pagebreak_bottom,
 			   VSpace space_top, VSpace space_bottom,
 			   char align, 
-			   LString labelwidthstring,
+			   string labelwidthstring,
 			   bool noindent) 
 {
 	LyXCursor tmpcursor;
@@ -1469,7 +1463,7 @@ void LyXText::SetCounter(LyXParagraph *par)
 	}
    
 	if (!par->labelstring.empty()) {
-		par->labelstring.clean();
+		par->labelstring.erase();
 	}
    
 	if (layout->margintype == MARGIN_MANUAL) {
@@ -1478,7 +1472,7 @@ void LyXText::SetCounter(LyXParagraph *par)
 		}
 	}
 	else {
-		par->SetLabelWidthString(LString());
+		par->SetLabelWidthString(string());
 	}
    
 	/* is it a layout that has an automatic label ? */ 
@@ -1495,13 +1489,13 @@ void LyXText::SetCounter(LyXParagraph *par)
 				if (!layout->labelstring.empty())
 					par->labelstring = layout->labelstring;
 				else
-					par->labelstring.clean();
+					par->labelstring.erase();
                         }
 			else {
 				if (!layout->labelstring_appendix.empty())
 					par->labelstring = layout->labelstring_appendix;
 				else
-					par->labelstring.clean();
+					par->labelstring.erase();
 			}
  
 			if (!par->appendix){
@@ -1664,7 +1658,7 @@ void LyXText::SetCounter(LyXParagraph *par)
 	    // In biblio should't be following counters but...
 	}						
 	else  {
-		LString s = layout->labelstring;
+		string s = layout->labelstring;
       
 		/* the caption hack: */
       
@@ -1766,7 +1760,7 @@ void LyXText::InsertInset(Inset *inset)
 
 
 /* this is for the simple cut and paste mechanism */ 
-static LyXParagraph *simple_cut_buffer = NULL;
+static LyXParagraph *simple_cut_buffer = 0;
 static char simple_cut_buffer_textclass = 0;
 
 void DeleteSimpleCutBuffer()
@@ -1780,7 +1774,7 @@ void DeleteSimpleCutBuffer()
 		simple_cut_buffer = simple_cut_buffer->next;
 		delete tmppar;
 	}
-	simple_cut_buffer = NULL;
+	simple_cut_buffer = 0;
 }
 
 
@@ -1957,8 +1951,8 @@ This is not implemented yet.
    
 		/*store the selection */ 
 		simple_cut_buffer = sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->next;
-		simple_cut_buffer->previous = NULL;
-		sel_end_cursor.par->previous->next = NULL;
+		simple_cut_buffer->previous = 0;
+		sel_end_cursor.par->previous->next = 0;
 
 		/* cut the selection */ 
 		sel_start_cursor.par->ParFromPos(sel_start_cursor.pos)->next 
@@ -2083,7 +2077,7 @@ void LyXText::CopySelection()
 			tmppar2->next->previous = tmppar2;
 			tmppar2=tmppar2->next;
 		}
-		tmppar2->next = NULL;
+		tmppar2->next = 0;
 
 		/* care about footnotes */
 		if (simple_cut_buffer->footnoteflag) {
@@ -2649,13 +2643,13 @@ bool LyXText::GotoNextNote()
 int LyXText::SwitchLayoutsBetweenClasses(char class1, char class2,
 					 LyXParagraph *par)
 {
-	InsetError * new_inset = NULL;
+	InsetError * new_inset = 0;
 	int ret = 0;
 	if (!par || class1 == class2)
 		return ret;
 	par = par->FirstPhysicalPar();
 	while (par) {
-		LString name = lyxstyle.NameOfLayout(class1, par->layout);
+		string name = lyxstyle.NameOfLayout(class1, par->layout);
 		int lay = lyxstyle.NumberOfLayout(class2, name);
 		if (lay == -1) // layout not found
 			// use default layout "Stadard" (0)
@@ -2664,7 +2658,7 @@ int LyXText::SwitchLayoutsBetweenClasses(char class1, char class2,
       
 		if (name != lyxstyle.NameOfLayout(class2, par->layout)) {
 			ret++;
-			LString s= "Layout had to be changed from\n"
+			string s= "Layout had to be changed from\n"
 				+ name + " to " + lyxstyle.NameOfLayout(class2, par->layout)
 				+ "\nbecause of class conversion from\n"
 				+ lyxstyle.NameOfClass(class1) + " to "
@@ -3283,7 +3277,7 @@ bool LyXText::TextHandleUndo(Undo* undo){ // returns false if no undo possible
 		// replace the paragraphs with the undo informations
 
 		tmppar3 = undo->par;
-		undo->par = NULL; // otherwise the undo destructor would delete the paragraph
+		undo->par = 0; // otherwise the undo destructor would delete the paragraph
 		tmppar4 = tmppar3;
 		if (tmppar4){
 			while (tmppar4->next)
@@ -3304,7 +3298,7 @@ bool LyXText::TextHandleUndo(Undo* undo){ // returns false if no undo possible
 				// is stored in the undo. So restore the text informations.
 				if (undo->kind == Undo::EDIT){
 					tmppar2->text = tmppar->text;
-					tmppar->text = NULL;
+					tmppar->text = 0;
 					tmppar2 = tmppar2->next;
 				}
 				if ( currentrow && currentrow->par == tmppar )
@@ -3439,7 +3433,7 @@ Undo* LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph *before,
 		    params->undostack.Top()->number_of_before_par ==  before_number &&
 		    params->undostack.Top()->number_of_behind_par ==  behind_number ){
 			// no undo needed
-			return NULL;
+			return 0;
 		}
 	}
 	// create a new Undo
@@ -3447,8 +3441,8 @@ Undo* LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph *before,
 	LyXParagraph* tmppar;
 	LyXParagraph *tmppar2;
 
-	LyXParagraph* start = NULL;
-	LyXParagraph* end = NULL;
+	LyXParagraph* start = 0;
+	LyXParagraph* end = 0;
   
 	if (before)
 		start = before->next;
@@ -3471,7 +3465,7 @@ Undo* LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph *before,
 		if (kind == Undo::EDIT){
 			if (tmppar2->text)
 				delete[] tmppar2->text;
-			tmppar2->text = NULL;
+			tmppar2->text = 0;
 		}
 
 		undopar = tmppar2;
@@ -3484,15 +3478,15 @@ Undo* LyXText::CreateUndo(Undo::undo_kind kind, LyXParagraph *before,
 			if (kind == Undo::EDIT){
 				if (tmppar2->next->text)
 					delete[] tmppar2->next->text;
-				tmppar2->next->text = NULL;
+				tmppar2->next->text = 0;
 			}
 			tmppar2->next->previous = tmppar2;
 			tmppar2=tmppar2->next;
 		}
-		tmppar2->next = NULL;
+		tmppar2->next = 0;
 	}
 	else
-		undopar = NULL; // nothing to replace (undo of delete maybe)
+		undopar = 0; // nothing to replace (undo of delete maybe)
   
 	int cursor_par = cursor.par->ParFromPos(cursor.pos)->GetID();
 	int cursor_pos =  cursor.par->PositionInParFromPos(cursor.pos);

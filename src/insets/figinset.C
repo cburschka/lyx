@@ -32,13 +32,13 @@ extern long int background_pixels;
 #include <config.h>
 
 #include <unistd.h>
-#include <signal.h>
+#include <csignal>
 #include <sys/wait.h>
 
 #include FORMS_H_LOCATION
-#include <stdlib.h>
-#include <ctype.h>
-#include <math.h>
+#include <cstdlib>
+#include <cctype>
+#include <cmath>
 
 #include "form1.h"
 #include "figinset.h"
@@ -46,7 +46,7 @@ extern long int background_pixels;
 #include "lyx_main.h"
 #include "buffer.h"
 #include "filedlg.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "LyXView.h" // just because of form_main
 #include "error.h"
 #include "lyxdraw.h"
@@ -54,13 +54,7 @@ extern long int background_pixels;
 #include "lyxrc.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
-#include "FileInfo.h"
-
-// 	$Id: figinset.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: figinset.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
+#include "support/FileInfo.h"
 
 extern BufferView *current_view;
 static volatile bool alarmed;
@@ -103,7 +97,7 @@ struct pidwait {
 
 static Figref **figures;	/* all the figures */
 static figdata **bitmaps;	/* all the bitmaps */
-static queue *gsqueue = NULL;	/* queue for ghostscripting */
+static queue *gsqueue = 0;	/* queue for ghostscripting */
 static int gsrunning = 0;	/* currently so many gs's are running */
 static bool bitmap_waiting = false; /* bitmaps are waiting finished */
 static char bittable[256];	/* bit reversion table */
@@ -117,7 +111,7 @@ static int gs_spc;			// shades per color
 static bool gs_gray;			// is grayscale?
 static int gs_allcolors;		// number of all colors
 
-static pidwait *pw = NULL;		// pid wait list
+static pidwait *pw = 0;		// pid wait list
 
 
 extern FD_form_main *fd_form_main;
@@ -133,10 +127,10 @@ void addpidwait(int pid)
 	pw = p;
 
 	if (lyxerr.debugging()) {
-		lyxerr.print(LString("Pids to wait for: ") + int(p->pid));
+		lyxerr.print(string("Pids to wait for: ") + tostr(p->pid));
 		while (p->next) {
 			p = p->next;
-			lyxerr.print(LString() + int(p->pid));
+			lyxerr.print(string() + tostr(p->pid));
 		}
 	}
 }
@@ -195,13 +189,13 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 					// register child
 					if (lyxerr.debugging()) {
 						lyxerr.print(
-							LString("Spawned child ")
-							+ int(forkstat));
+							string("Spawned child ")
+							+ tostr(forkstat));
 					}
 					addpidwait(forkstat);
 					break; // in parent process
 				} else {
-					tmpdisp = XOpenDisplay(XDisplayName(NULL));
+					tmpdisp = XOpenDisplay(XDisplayName(0));
 					XFlush(tmpdisp);
 				}
 				im = XGetImage(tmpdisp, p->bitmap, 0, 0,
@@ -247,8 +241,8 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 				}
 			  noim:
 				if (lyxerr.debugging()) {
-					lyxerr.print(LString("Killing gs ") 
-						     + int(p->gspid));
+					lyxerr.print(string("Killing gs ") 
+						     + tostr(p->gspid));
 				}
 				kill(p->gspid, SIGHUP);
 
@@ -262,8 +256,8 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 				}
 			} else {
 				if (lyxerr.debugging()) {
-					lyxerr.print(LString("Killing gs ") 
-						     +int(p->gspid));
+					lyxerr.print(string("Killing gs ") 
+						     +tostr(p->gspid));
 				}
 				kill(p->gspid, SIGHUP);
 
@@ -303,8 +297,8 @@ static void AllocColors(int num)
 			if (i) XFreeColors(fl_display, color_map,
 					   gs_pixels, i, 0);
 			if(lyxerr.debugging()) {
-				lyxerr.print(LString("Cannot allocate color cube " )
-					     + int(num));
+				lyxerr.print(string("Cannot allocate color cube " )
+					     + tostr(num));
 			}
 			AllocColors(num-1);
 			return;
@@ -325,8 +319,8 @@ static void AllocGrays(int num)
 	int i;
 
 	if (lyxerr.debugging()) {
-		lyxerr.print(LString("Allocating grayscale ramp ") 
-			     + int(num));
+		lyxerr.print(string("Allocating grayscale ramp ") 
+			     + tostr(num));
 	}
 
 	if (num < 4) {
@@ -342,8 +336,8 @@ static void AllocGrays(int num)
 			if (i) XFreeColors(fl_display, color_map,
 					   gs_pixels, i, 0);
 			if (lyxerr.debugging()) {
-				lyxerr.print(LString("Cannot allocate grayscale ") 
-					     + int(num));
+				lyxerr.print(string("Cannot allocate grayscale ") 
+					     + tostr(num));
 			}
 			AllocGrays(num/2);
 			return;
@@ -441,7 +435,7 @@ int FindBmpIndex(figdata *tmpdata)
 
 static void chpixmap(Pixmap, int, int)
 {
-	Display* tempdisp = XOpenDisplay(XDisplayName(NULL));
+	Display* tempdisp = XOpenDisplay(XDisplayName(0));
 
 	// here read the pixmap and change all colors to those we
 	// have allocated
@@ -525,7 +519,7 @@ static void runqueue()
 		if (pid == 0) { // child
 			char **env, rbuf[80], gbuf[40];
 			int ne = 0;
-			Display* tempdisp = XOpenDisplay(XDisplayName(NULL));
+			Display* tempdisp = XOpenDisplay(XDisplayName(0));
 
 			// create translation file
 			sprintf(tbuf, "%s/~lyxgs%d.ps", system_tempdir.c_str(),
@@ -561,7 +555,7 @@ static void runqueue()
 //#warning BUG seems that the only bug here might be the hardcoded dpi.. Bummer!
 			
 			if (lyxerr.debugging()) {
-				lyxerr.print(LString("Will set GHOSTVIEW"
+				lyxerr.print(string("Will set GHOSTVIEW"
 						     " property to [") +
 					     tbuf + "]");
 			}
@@ -596,8 +590,8 @@ static void runqueue()
 				// deletes it
 				if (lyxerr.debugging()) {
 					lyxerr.print("Releasing the server");
-					lyxerr.print(LString('[') +
-						      int(getpid()) +
+					lyxerr.print(string("[") +
+						      tostr(getpid()) +
 						      "] GHOSTVIEW property"
 						      " found. Waiting.");
 				}
@@ -685,20 +679,20 @@ static void runqueue()
 					 "-dSAFER", 
 					 rbuf, gbuf, tbuf, 
 					 p->data->fname.c_str(), 
-					 "showpage.ps", "quit.ps", "-", NULL);
+					 "showpage.ps", "quit.ps", "-", 0);
 			// if we are still there, an error occurred.
-			lyxerr.print(LString("Error executing ghostscript. ")
-				     +"Code: "+err);
+			lyxerr.print(string("Error executing ghostscript. ")
+				     + "Code: " + tostr(err));
 			lyxerr.debug("Cmd: " 
 				     + lyxrc->ps_command
 				     +" -sDEVICE=x11 "
-				     + tbuf + LString(' ')
+				     + tbuf + tostr(' ')
 				     + p->data->fname);
 			_exit(0);	// no gs?
 		}
 		// normal process (parent)
 		if (lyxerr.debugging()) {
-			lyxerr.print(LString("GS [") + int(pid) + "] started");
+			lyxerr.print(string("GS [") + tostr(pid) + "] started");
 		}
 		gsqueue = gsqueue->next;
 		gsrunning++;
@@ -719,7 +713,7 @@ static void addwait(int psx, int psy, int pswid, int pshgh, figdata *data)
 	p->ry = ((float)data->raw_hgh*72)/pshgh;
 
 	p->data = data;
-	p->next = NULL;
+	p->next = 0;
 
 	// now put into queue
 	p2 = gsqueue;
@@ -734,7 +728,7 @@ static void addwait(int psx, int psy, int pswid, int pshgh, figdata *data)
 }
 
 
-static figdata *getfigdata(int wid, int hgh, LString const & fname, 
+static figdata *getfigdata(int wid, int hgh, string const & fname, 
 			   int psx, int psy, int pswid, int pshgh, 
 			   int raw_wid, int raw_hgh, float angle, char flags)
 {
@@ -743,7 +737,7 @@ static figdata *getfigdata(int wid, int hgh, LString const & fname,
 	figdata *p;
 	XWindowAttributes wa;
 
-	if (fname.empty()) return NULL;
+	if (fname.empty()) return 0;
 
 	while (i < bmpinsref) {
 		if (bitmaps[i]->wid == wid && bitmaps[i]->hgh == hgh &&
@@ -754,7 +748,7 @@ static figdata *getfigdata(int wid, int hgh, LString const & fname,
 		}
 		++i;
 	}
-	/* not found -> create new record or return NULL if no record */
+	/* not found -> create new record or return 0 if no record */
 	++bmpinsref;
 	if (bmpinsref > bmparrsize) {
 		// allocate more space
@@ -831,7 +825,7 @@ void sigchldchecker(pid_t pid, int *status)
 
 	bool pid_handled = false;
 	
-	lyxerr.debug(LString("Got pid = ") + long (pid));
+	lyxerr.debug(string("Got pid = ") + tostr(pid));
 	pid_handled = false;
 	for (i = bmpinsref - 1; i >= 0; --i) {
 		if (bitmaps[i]->reading && pid == bitmaps[i]->gspid) {
@@ -841,7 +835,7 @@ void sigchldchecker(pid_t pid, int *status)
 			p->reading = false;
 			if (bitmaps[i]->gsdone) *status = 0;
 			if (*status == 0) {
-				lyxerr.debug(LString("GS [") + int(pid) +
+				lyxerr.debug(string("GS [") + tostr(pid) +
 					     "] exit OK.");
 			} else {
 				fprintf(stderr, "GS [%ld] error %d E:%d %d S:%d %d\n", long(pid),
@@ -869,11 +863,11 @@ void sigchldchecker(pid_t pid, int *status)
 	}
 	if (!pid_handled) {
 		lyxerr.debug("Checking pid in pidwait");
-		pidwait *p = pw, *prev = NULL;
+		pidwait *p = pw, *prev = 0;
 		while (p) {
 			if (pid == p->pid) {
 				lyxerr.debug("Found pid in pidwait");
-				lyxerr.debug(LString("Caught child pid of recompute routine ") + int(pid));
+				lyxerr.debug(string("Caught child pid of recompute routine ") + tostr(pid));
 				if (prev)
 					prev->next = p->next;
 				else
@@ -932,7 +926,7 @@ static void RegisterFigure(InsetFig *fi)
 	Figref *tmpfig;
 
 	if (figinsref == 0) InitFigures();
-	fi->form = NULL;
+	fi->form = 0;
 	++figinsref;
 	if (figinsref > figarrsize) {
 		// allocate more space
@@ -943,14 +937,14 @@ static void RegisterFigure(InsetFig *fi)
 		figures = tmp;
 	}
 	tmpfig = new Figref;
-	tmpfig->data = NULL;
+	tmpfig->data = 0;
 	tmpfig->inset = fi;
 	figures[figinsref-1] = tmpfig;
 	fi->figure = tmpfig;
 
 	if (lyxerr.debugging()) {
-		lyxerr.print(LString("Register Figure: buffer:[") +
-			     long(current_view->currentBuffer()) + "]");
+		lyxerr.print(string("Register Figure: buffer:[") +
+			     tostr(current_view->currentBuffer()) + "]");
 	}
 }
 
@@ -977,7 +971,7 @@ static void UnregisterFigure(InsetFig *fi)
 			fl_hide_form(tmpfig->inset->form->Figure);
 		fl_free_form(tmpfig->inset->form->Figure);
 		free(tmpfig->inset->form);
-		tmpfig->inset->form = NULL;
+		tmpfig->inset->form = 0;
 	}
 	i = FindFigIndex(tmpfig);
 	--figinsref;
@@ -993,7 +987,7 @@ static void UnregisterFigure(InsetFig *fi)
 
 static char* NextToken(FILE *myfile)
 {
-	char* token = NULL;
+	char* token = 0;
 	char c;
 	int i = 0;
    
@@ -1091,7 +1085,7 @@ void InsetFig::Draw(LyXFont font, LyXScreen &scr, int baseline, float &x)
 		
 		font.setFamily (LyXFont::SANS_FAMILY);
 		font.setSize (LyXFont::SIZE_FOOTNOTE);
-		LString justname = OnlyFilename (fname);
+		string justname = OnlyFilename (fname);
 		font.drawString(justname,pm,
 			       baseline - font.maxAscent() - 4,
 			       (int) x + 8);
@@ -1110,8 +1104,8 @@ void InsetFig::Write(FILE *file)
 	Regenerate();
 	fprintf(file, "Figure size %d %d\n", wid, hgh);
 	if (!fname.empty()) {
-	  LString buf1 = OnlyPath(owner->getFileName());
-	  LString fname2 = MakeRelPath(fname, buf1);
+	  string buf1 = OnlyPath(owner->getFileName());
+	  string fname2 = MakeRelPath(fname, buf1);
 	  fprintf(file, "file %s\n", fname2.c_str());
 	}
 	if (!subcaption.empty())
@@ -1126,13 +1120,13 @@ void InsetFig::Write(FILE *file)
 
 void InsetFig::Read(LyXLex &lex)
 {
-	LString buf;
+	string buf;
 	bool finished = false;
 	
 	while (lex.IsOK() && !finished) {
 		lex.next();
 
-		LString const token = lex.GetString();
+		string const token = lex.GetString();
 		lyxerr.debug("Token: " + token);
 		
 		if (token.empty())
@@ -1142,7 +1136,7 @@ void InsetFig::Read(LyXLex &lex)
 		} else if (token == "file") {
 			if (lex.next()) {
 				buf = lex.GetString();
-				LString buf1 = OnlyPath(owner->getFileName());
+				string buf1 = OnlyPath(owner->getFileName());
 				fname = MakeAbsPath(buf, buf1);
 				changedfname = true;
 			}
@@ -1216,7 +1210,7 @@ int InsetFig::Latex(FILE *file, signed char /* fragile*/ )
 }
 
 
-int InsetFig::Latex(LString &file, signed char /* fragile*/ )
+int InsetFig::Latex(string &file, signed char /* fragile*/ )
 {
 	Regenerate();
 	file += cmd + ' ';
@@ -1224,18 +1218,18 @@ int InsetFig::Latex(LString &file, signed char /* fragile*/ )
 }
 
 
-int InsetFig::Linuxdoc(LString &/*file*/)
+int InsetFig::Linuxdoc(string &/*file*/)
 {
 	return 0;
 }
 
 
-int InsetFig::DocBook(LString &file)
+int InsetFig::DocBook(string &file)
 {
-	LString figurename=fname;
+	string figurename=fname;
 
-	if(figurename.suffixIs(".eps"))
-		figurename=figurename.substring(0,fname.length()-5);
+	if(suffixIs(figurename, ".eps"))
+		figurename.erase(fname.length() - 5);
 
 	file += "@<graphic fileref=\"" + figurename + "\"></graphic>";
 	return 0;
@@ -1274,7 +1268,7 @@ void InsetFig::Edit(int, int)
 
 	if (!form) {
 		form = create_form_Figure();
-		fl_set_form_atclose(form->Figure, CancelCloseBoxCB, NULL);
+		fl_set_form_atclose(form->Figure, CancelCloseBoxCB, 0);
 		fl_set_object_return(form->Angle,FL_RETURN_ALWAYS);
 		fl_set_object_return(form->Width,FL_RETURN_ALWAYS);
 		fl_set_object_return(form->Height,FL_RETURN_ALWAYS);
@@ -1321,7 +1315,7 @@ Inset *InsetFig::Clone()
 		tmp->figure->data = getfigdata(wid, hgh, fname, psx, psy,
 					       pswid, pshgh, raw_wid, raw_hgh,
 					       angle, flags & (3|8));
-	} else tmp->figure->data = NULL;
+	} else tmp->figure->data = 0;
 	tmp->subcaption = subcaption;
 	tmp->changedfname = false;
 	tmp->owner = owner;
@@ -1338,10 +1332,10 @@ Inset::Code InsetFig::LyxCode() const
 
 void InsetFig::Regenerate()
 {
-	LString cmdbuf;
-	LString gcmd;
-	LString resizeW, resizeH;
-	LString rotate, recmd;
+	string cmdbuf;
+	string gcmd;
+	string resizeW, resizeH;
+	string rotate, recmd;
 
 	if (fname.empty()) {
 		cmd = "\\fbox{\\rule[-0.5in]{0pt}{1in}";
@@ -1351,8 +1345,8 @@ void InsetFig::Regenerate()
 		return;
 	}
 
-	LString buf1 = OnlyPath(owner->getFileName());
-	LString fname2 = MakeRelPath(fname, buf1);
+	string buf1 = OnlyPath(owner->getFileName());
+	string fname2 = MakeRelPath(fname, buf1);
 
 	gcmd = "\\includegraphics{" + fname2 + '}';
 	
@@ -1464,11 +1458,11 @@ void InsetFig::Regenerate()
 
 void InsetFig::TempRegenerate()
 {
-	LString gcmd;
-	LString cmdbuf;
-	LString resizeW, resizeH;
-	LString rotate, recmd;
-	LString tsubcap;
+	string gcmd;
+	string cmdbuf;
+	string resizeW, resizeH;
+	string rotate, recmd;
+	string tsubcap;
 	
 	char const *tfname; // *textra;
 	float tangle, txwid, txhgh;
@@ -1488,8 +1482,8 @@ void InsetFig::TempRegenerate()
 		return;
 	}
 
-	LString buf1 = OnlyPath(owner->getFileName());
-	LString fname2 = MakeRelPath(tfname, buf1);
+	string buf1 = OnlyPath(owner->getFileName());
+	string fname2 = MakeRelPath(tfname, buf1);
 	// \includegraphics*[<llx,lly>][<urx,ury>]{file}
 	gcmd = "\\includegraphics{" + fname2 + '}';
 	
@@ -1586,8 +1580,8 @@ void InsetFig::TempRegenerate()
 	if (!rotate.empty()) cmdbuf += '}';
 	if (!recmd.empty()) cmdbuf += '}';
 	if (psubfigure && !tsubcap.empty()) {
-		cmdbuf = LString("\\subfigure{") + tsubcap
-		  + LString("}{") + cmdbuf + "}";
+		cmdbuf = string("\\subfigure{") + tsubcap
+		  + string("}{") + cmdbuf + "}";
 	}
 
 	
@@ -1697,7 +1691,7 @@ void InsetFig::Recompute()
 						  psx, psy, pswid, pshgh,
 						  raw_wid, raw_hgh,
 						  angle, flags & (3|8));
-		} else figure->data = NULL;
+		} else figure->data = 0;
 
 		// free the old data
 		if (pf) freefigdata(pf);
@@ -1711,7 +1705,7 @@ void InsetFig::GetPSSizes()
 {
 	/* get %%BoundingBox: from postscript file */
 	int lastchar, c;
-	char *p = NULL;
+	char *p = 0;
 	
 	/* defaults to associated size
 	 * ..just in case the PS-file is not readable (Henner,24-Aug-97) 
@@ -1764,7 +1758,7 @@ void InsetFig::GetPSSizes()
 			}
 			c = 0;
 			delete[] p;
-			p = NULL;
+			p = 0;
 		}
 		lastchar = c;
 	}
@@ -1896,13 +1890,13 @@ void InsetFig::CallbackFig(long arg)
 			angle = atof(fl_get_input(form->Angle));
 			p = fl_get_input(form->EpsFile);
 			if (p && *p) {
-				LString buf1 = OnlyPath(owner->getFileName());
+				string buf1 = OnlyPath(owner->getFileName());
 				fname = MakeAbsPath(p, buf1);
 				changedfname = true;
 			} else {
 				if (!fname.empty()) {
 					changedfname = true;
-					fname.clean();
+					fname.erase();
 				}
 			}
 			subcaption = fl_get_input(form->Subcaption);
@@ -1918,7 +1912,7 @@ void InsetFig::CallbackFig(long arg)
 				fl_hide_form(form->Figure);
 				fl_free_form(form->Figure);
 				free(form);
-				form = NULL;
+				form = 0;
 			}
 			break;
 		} //if not readonly
@@ -1930,7 +1924,7 @@ void InsetFig::CallbackFig(long arg)
 		fl_hide_form(form->Figure);
 		fl_free_form(form->Figure);
 		free(form);
-		form = NULL;
+		form = 0;
 		break;
 	}
 
@@ -2056,8 +2050,8 @@ void InsetFig::RestoreForm()
 	sprintf(buf, "%g", angle);
 	fl_set_input(form->Angle, buf);
 	if (!fname.empty()){
-		LString buf1 = OnlyPath(owner->getFileName());
-		LString fname2 = MakeRelPath(fname, buf1);
+		string buf1 = OnlyPath(owner->getFileName());
+		string fname2 = MakeRelPath(fname, buf1);
 		fl_set_input(form->EpsFile, fname2.c_str());
 	}
 	else fl_set_input(form->EpsFile, "");
@@ -2084,29 +2078,29 @@ void InsetFig::Preview(char const *p)
   		return;		// parent process
   	}
 
-	LString buf1 = OnlyPath(owner->getFileName());
-	LString buf2 = MakeAbsPath(p, buf1);
+	string buf1 = OnlyPath(owner->getFileName());
+	string buf2 = MakeAbsPath(p, buf1);
 	
-	lyxerr.print(LString("Error during rendering ") +
-		      int(execlp(lyxrc->view_pspic_command.c_str(),
+	lyxerr.print(string("Error during rendering ") +
+		      tostr(execlp(lyxrc->view_pspic_command.c_str(),
 				 lyxrc->view_pspic_command.c_str(),
 				 buf2.c_str(), 
-				 NULL)));
+				 0)));
 	_exit(0);
 }
 
 
 void InsetFig::BrowseFile()
 {
-	LString buf, buf2, bufclip;
-	static LString current_figure_path;
+	string buf, buf2, bufclip;
+	static string current_figure_path;
 	static int once = 0;
 	LyXFileDlg fileDlg;
 
 	if (lyxerr.debugging()) {
 		fprintf(stderr, "Filename: %s\n", owner->getFileName().c_str());
 	}
-	LString p = fl_get_input(form->EpsFile);
+	string p = fl_get_input(form->EpsFile);
 
 	buf = MakeAbsPath(owner->getFileName());
 	buf2 = OnlyPath(buf);
@@ -2133,10 +2127,10 @@ void InsetFig::BrowseFile()
 		ProhibitInput();
 		if (once) {
 			p =fileDlg.Select(_("EPS Figure"), current_figure_path,
-					   "*ps", LString());
+					   "*ps", string());
 		} else {
 			p = fileDlg.Select(_("EPS Figure"), buf,
-					   "*ps", LString());
+					   "*ps", string());
 		}
 		AllowInput();
 
@@ -2146,8 +2140,8 @@ void InsetFig::BrowseFile()
 		current_figure_path = OnlyPath(p);
 		once = 1;
 		
-		if (p.contains("#") || p.contains("~") || p.contains("$")
-		    || p.contains("%") || p.contains(" ")) 
+		if (contains(p, "#") || contains(p, "~") || contains(p, "$")
+		    || contains(p, "%") || contains(p, " ")) 
 		{
 			WriteAlert(_("Filename can't contain any of these characters:"), // xgettext:no-c-format
 				   _("space, '#', '~', '$' or '%'.")); 
@@ -2164,7 +2158,7 @@ void GraphicsCB(FL_OBJECT *obj, long arg)
 	/* obj->form contains the form */
 
 	if (lyxerr.debugging()) {
-		lyxerr.print(LString("GraphicsCB callback: ") + long(arg));
+		lyxerr.print(string("GraphicsCB callback: ") + tostr(arg));
 	}
 
 	/* find inset we were reacting to */
@@ -2173,8 +2167,8 @@ void GraphicsCB(FL_OBJECT *obj, long arg)
 		    == obj->form) {
 	    
 			if (lyxerr.debugging()) {
-				lyxerr.print(LString("Calling back figure ")
-					     +int(i));
+				lyxerr.print(string("Calling back figure ")
+					     + tostr(i));
 			}
 			figures[i]->inset->CallbackFig(arg);
 			return;
@@ -2188,8 +2182,8 @@ void HideFiguresPopups()
 		if (figures[i]->inset->form 
 		    && figures[i]->inset->form->Figure->visible) {
 			if (lyxerr.debugging()) {
-				lyxerr.print(LString("Hiding figure ")
-					     +int(i));
+				lyxerr.print(string("Hiding figure ")
+					     + tostr(i));
 			}
 			// hide and free the form
 			figures[i]->inset->CallbackFig(9);

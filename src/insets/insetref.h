@@ -35,7 +35,7 @@ public:
 	///
 	InsetRef(): InsetCommand("ref") { flag = InsetRef::REF; }
 	///
-	InsetRef(LString const &, Buffer*);
+	InsetRef(string const &, Buffer*);
 	///
 	InsetRef(InsetCommand const&, Buffer*);
 	///
@@ -53,7 +53,7 @@ public:
         ///
 	bool Display() const { return false; }
 	///
-	LString getScreenLabel() const;
+	string getScreenLabel() const;
 	///
 	InsetRef::Ref_Flags getFlag() { return flag; }
 	///
@@ -63,14 +63,14 @@ public:
 	///
 	int Latex(FILE *file, signed char fragile);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string &file, signed char fragile);
 	///
-	int Linuxdoc(LString &file);
+	int Linuxdoc(string &file);
 	///
-	int DocBook(LString &file);
+	int DocBook(string &file);
 private:
 	/// This function escapes 8-bit characters
-	LString escape(LString const &) const;
+	string escape(string const &) const;
 	///
         Ref_Flags flag;
         ///

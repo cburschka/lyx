@@ -1,12 +1,12 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ *======================================================*/
 
 /*
  *	International support for LyX
@@ -27,15 +27,8 @@
 #include "error.h"
 #include "lyxrc.h"
 #include "trans_mgr.h"
+#include "support/lstrings.h"
 
-
-// 	$Id: intl.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: intl.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
-
-// lyx rc 
 extern LyXRC* lyxrc;
 
 
@@ -45,7 +38,7 @@ Intl::Intl()
 	  trans(new TransManager)
 {
 	keymapon = lyxrc->use_kbmap;
-	chsetcode = NULL;
+	chsetcode = 0;
 	primarykeymap = false;
 	curkeymap = 0;
 	otherkeymap = 0;
@@ -57,7 +50,7 @@ Intl::~Intl()
 }
 
 
-int Intl::SetPrimary(LString const & lang)
+int Intl::SetPrimary(string const & lang)
 {
 	if (lyxerr.debugging(Error::KBMAP))
 		lyxerr.print("Primary: `" + lang + "'");
@@ -65,7 +58,7 @@ int Intl::SetPrimary(LString const & lang)
 }
 
 
-int Intl::SetSecondary(LString const & lang)
+int Intl::SetSecondary(string const & lang)
 {
 	if (lyxerr.debugging(Error::KBMAP))
 		lyxerr.print("Secondary: `" + lang + "'");
@@ -134,7 +127,7 @@ void Intl::ToggleKeyMap()
 void Intl::KeyMapPrim()
 {
 	int i;
-	LString p;
+	string p;
 
 	fl_set_button(fd_form_keymap->KeyOffBtn, 0);
 	fl_set_button(fd_form_keymap->KeyOnBtn, 1);
@@ -144,7 +137,7 @@ void Intl::KeyMapPrim()
 	i = Language->get();
 	
 	if (lyxerr.debugging(Error::KBMAP))
-		lyxerr.print(LString("Table: ") + tex_babel[i-1]);
+		lyxerr.print(string("Table: ") + tex_babel[i-1]);
 
 	if (i == otherkeymap)
 		p = fl_get_input(fd_form_keymap->OtherKeymap);
@@ -170,7 +163,7 @@ void Intl::KeyMapPrim()
 void Intl::KeyMapSec()
 {
 	int i;
-	LString p;
+	string p;
 
 	fl_set_button(fd_form_keymap->KeyOffBtn, 0);
 	fl_set_button(fd_form_keymap->KeyOnBtn, 0);
@@ -180,7 +173,7 @@ void Intl::KeyMapSec()
 	i = Language2->get();
 	
 	if (lyxerr.debugging(Error::KBMAP))
-		lyxerr.print(LString("Table: ") + tex_babel[i-1]);
+		lyxerr.print(string("Table: ") + tex_babel[i-1]);
 
 	if (i == otherkeymap)
 		p = fl_get_input(fd_form_keymap->OtherKeymap2);
@@ -229,7 +222,7 @@ void Intl::DispatchCallback(FL_OBJECT *ob,long code)
 	
 	Intl *itl=(Intl *)ob->u_vdata;
 
-	if (itl!=NULL) itl->Keymap(code);
+	if (itl!=0) itl->Keymap(code);
 }
 
 
@@ -269,7 +262,7 @@ void Intl::InitKeyMapper(bool on)
 	fl_set_object_callback(fd_form_keymap->KeyOnBtn2,DispatchCallback,43);
 	
 	// Make sure pressing the close box does not kill LyX. (RvdK)
-	fl_set_form_atclose(fd_form_keymap->KeyMap, CancelCloseBoxCB, NULL);
+	fl_set_form_atclose(fd_form_keymap->KeyMap, CancelCloseBoxCB, 0);
 
 	fl_hide_object(fd_form_keymap->KeymapErr);
 	fl_hide_object(fd_form_keymap->ChsetErr);
@@ -322,7 +315,7 @@ void Intl::Keymap(long code)
 	char const *p;
 
 	if (lyxerr.debugging(Error::KBMAP))
-		lyxerr.print(LString("KeyMap callback: ") + code);
+		lyxerr.print(string("KeyMap callback: ") + tostr(code));
 
 	switch (code) {
 	case 0:

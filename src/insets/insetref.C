@@ -130,7 +130,7 @@ void label_change_cb(FL_OBJECT *, long)
 
 #endif
 
-InsetRef::InsetRef(LString const & cmd, Buffer *bf)
+InsetRef::InsetRef(string const & cmd, Buffer *bf)
 	: master(bf)
 {
 	scanCommand(cmd);
@@ -167,7 +167,7 @@ void InsetRef::Edit(int, int)
 /*    
         if (!form) { 
                 form = create_form_ref();
-		fl_set_form_atclose(form->ref, IgnoreCloseBoxCB, NULL);
+		fl_set_form_atclose(form->ref, IgnoreCloseBoxCB, 0);
 	}
         form->vdata = this; 
     
@@ -184,9 +184,9 @@ void InsetRef::Edit(int, int)
 }
 
 
-LString InsetRef::getScreenLabel() const
+string InsetRef::getScreenLabel() const
 {
-	LString temp;
+	string temp;
 	if (flag == InsetRef::PAGE_REF)
 		temp += _("Page: ");
 	else 
@@ -205,7 +205,7 @@ int InsetRef::Latex(FILE *file, signed char /*fragile*/)
 	if(getOptions().empty())
 		fprintf(file, "%s", escape(getCommand()).c_str());
 	else {
-		LString ns;
+		string ns;
 		InsetCommand clone= InsetCommand(getCmdName(),getContents(),ns);
 		fprintf(file, "%s", escape(clone.getCommand()).c_str());
 	}
@@ -213,12 +213,12 @@ int InsetRef::Latex(FILE *file, signed char /*fragile*/)
 }
 
 
-int InsetRef::Latex(LString &file, signed char /*fragile*/)
+int InsetRef::Latex(string &file, signed char /*fragile*/)
 {
 	if(getOptions().empty())
 		file += escape(getCommand());
 	else {
-		LString ns;
+		string ns;
 		InsetCommand clone= InsetCommand(getCmdName(),getContents(),ns);
 		file += escape(clone.getCommand());
 	}
@@ -226,7 +226,7 @@ int InsetRef::Latex(LString &file, signed char /*fragile*/)
 }
 
 
-int InsetRef::Linuxdoc(LString &file)
+int InsetRef::Linuxdoc(string &file)
 {
 	file += "<ref id=\"" + getContents() + "\" name=\""+ getOptions() +"\" >" ;
 
@@ -234,7 +234,7 @@ int InsetRef::Linuxdoc(LString &file)
 }
 
 
-int InsetRef::DocBook(LString &file)
+int InsetRef::DocBook(string &file)
 {
 	file += "<link linkend=\"" + getContents() + "\">"+ getOptions() +"</link>" ;
 
@@ -244,11 +244,11 @@ int InsetRef::DocBook(LString &file)
 
 // This function escapes 8-bit characters and other problematic characters
 // It's exactly the same code as in insetlabel.C.
-LString InsetRef::escape(LString const & lab) const {
+string InsetRef::escape(string const & lab) const {
 	char hexdigit[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
 			      '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
-	LString enc;
-	for (int i=0; i<lab.length(); i++) {
+	string enc;
+	for (string::size_type i = 0; i < lab.length(); ++i) {
 		unsigned char c=lab[i];
 		if (c >= 128 || c=='=' || c=='%') {
 			enc += '=';

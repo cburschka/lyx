@@ -1,24 +1,22 @@
 /*
 	filetools.C (former paths.C) - part of LyX project
 	General path-mangling functions 
-	Copyright (C) 1996 Ivan Schreter
-	Parts Copyright (C) 1996 Dirk Niggemann
-        Parts Copyright (C) 1985, 1990, 1993 Free Software Foundation, Inc.
-	Parts Copyright (C) 1996 Asger Alstrup
+	Copyright 1996 Ivan Schreter
+	Parts Copyright 1996 Dirk Niggemann
+        Parts Copyright 1985, 1990, 1993 Free Software Foundation, Inc.
+	Parts Copyright 1996 Asger Alstrup
 	
 	See also filetools.H.
 
 	lyx-filetool.C : tools functions for file/path handling
 	this file is part of LyX, the High Level Word Processor
-	copyright (C) 1995-1996, Matthias Ettrich and the LyX Team
+	Copyright 1995-1996, Matthias Ettrich and the LyX Team
 
 */
 
 #include <config.h>
 
-#include <stdlib.h>
-#include <ctype.h>
-#include <errno.h>        // I know it's OS/2 specific (SMiyata)
+#include <cctype>
 
 #ifdef __GNUG__
 #pragma implementation "filetools.h"
@@ -48,43 +46,36 @@
 # endif
 #endif
 
-// 	$Id: filetools.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: filetools.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
-
-
-extern LString system_lyxdir;
-extern LString build_lyxdir;
-extern LString user_lyxdir;
-extern LString system_tempdir;
+extern string system_lyxdir;
+extern string build_lyxdir;
+extern string user_lyxdir;
+extern string system_tempdir;
 
 
-bool IsLyXFilename(LString const & filename)
+bool IsLyXFilename(string const & filename)
 {
-	return filename.contains(".lyx");
+	return contains(filename, ".lyx");
 }
 
 
-bool IsSGMLFilename(LString const & filename)
+bool IsSGMLFilename(string const & filename)
 {
-	return filename.contains(".sgml");
+	return contains(filename, ".sgml");
 }
 
 
 // Substitutes spaces with underscores in filename (and path)
-LString SpaceLess(LString const & file)
+string SpaceLess(string const & file)
 {
-	LString name = OnlyFilename(file);
-	LString path = OnlyPath(file);
+	string name = OnlyFilename(file);
+	string path = OnlyPath(file);
 	
-	for (int i=0; i<name.length(); i++) {
+	for (string::size_type i = 0; i < name.length(); ++i) {
 		name[i] &= 0x7f;
 		if (!isalnum(name[i]) && name[i] != '.')
 			name[i] = '_';
 	}
-	LString temp = AddName(path, name);
+	string temp = AddName(path, name);
 	// Replace spaces with underscores, also in directory
 	// No!!! I checked it that it is not necessary.
 	// temp.subst(' ','_');
@@ -94,24 +85,24 @@ LString SpaceLess(LString const & file)
 
 
 /// Returns an unique name to be used as a temporary file. 
-LString TmpFileName(LString const & dir, LString const & mask)
+string TmpFileName(string const & dir, string const & mask)
 {// With all these temporary variables, it should be safe enough :-) (JMarc)
-	LString tmpdir;	
+	string tmpdir;	
 	if (dir.empty())
 		tmpdir = system_tempdir;
 	else
 		tmpdir = dir;
-	LString tmpfl = AddName(tmpdir, mask);
+	string tmpfl = AddName(tmpdir, mask);
 
 	// find a uniq postfix for the filename...
 	// using the pid, and...
-	tmpfl += int(getpid());
+	tmpfl += tostr(getpid());
 	// a short string...
-	LString ret;
+	string ret;
 	FileInfo fnfo;
-	for (int a='a'; a<= 'z'; a++)
-		for (int b='a'; b<= 'z'; b++)
-			for (int c='a'; c<= 'z'; c++) {
+	for (int a='a'; a<= 'z'; ++a)
+		for (int b='a'; b<= 'z'; ++b)
+			for (int c='a'; c<= 'z'; ++c) {
 				// if this is not enough I have no idea what
 				// to do.
 				ret = tmpfl + char(a) + char(b) + char(c);
@@ -120,12 +111,12 @@ LString TmpFileName(LString const & dir, LString const & mask)
 					return ret;
 			}
 	lyxerr.print("Not able to find a uniq tmpfile name.");
-	return LString();
+	return string();
 }
 
 
 // Is a file readable ?
-bool IsFileReadable (LString const & path)
+bool IsFileReadable (string const & path)
 {
 	FileInfo file(path);
 	if (file.isOK() && file.isRegular() && file.readable())
@@ -139,7 +130,7 @@ bool IsFileReadable (LString const & path)
 // return 1 read-write
 //	  0 read_only
 //	 -1 error (doesn't exist, no access, anything else) 
-int IsFileWriteable (LString const & path)
+int IsFileWriteable (string const & path)
 {
 	FilePtr fp(path, FilePtr::update);
 	if (!fp()) {
@@ -159,9 +150,9 @@ int IsFileWriteable (LString const & path)
 //returns 1: dir writeable
 //	  0: not writeable
 //	 -1: error- couldn't find out
-int IsDirWriteable (LString const & path)
+int IsDirWriteable (string const & path)
 {
-        LString tmpfl = TmpFileName(path);
+        string tmpfl = TmpFileName(path);
 
 	if (tmpfl.empty()) {
 		WriteFSAlert(_("LyX Internal Error!"), 
@@ -193,26 +184,24 @@ int IsDirWriteable (LString const & path)
 // If path entry begins with $$LyX/, use system_lyxdir
 // If path entry begins with $$User/, use user_lyxdir
 // Example: "$$User/doc;$$LyX/doc"
-LString FileOpenSearch (LString const & path, LString const & name, 
-			LString const & ext)
+string FileOpenSearch (string const & path, string const & name, 
+			string const & ext)
 {
-	LString real_file, path_element;
-	LString tmppath = path;
+	string real_file, path_element;
 	bool notfound = true;
-
-	tmppath.split(path_element, ';');
+	string tmppath=split(path, path_element, ';');
 	
 	while (notfound && !path_element.empty()) {
 		path_element = CleanupPath(path_element);
-		if (!path_element.suffixIs('/'))
+		if (!suffixIs(path_element, '/'))
 			path_element+='/';
-		path_element.subst("$$LyX",system_lyxdir);
-		path_element.subst("$$User",user_lyxdir);
+		path_element = subst(path_element, "$$LyX", system_lyxdir);
+		path_element = subst(path_element, "$$User", user_lyxdir);
 		
 		real_file = FileSearch(path_element, name, ext);
 
 		if (real_file.empty()) {
-		  tmppath.split(path_element, ';');
+		  tmppath = split(tmppath, path_element, ';');
 		} else {
 		  notfound = false;
 		}
@@ -229,29 +218,26 @@ LString FileOpenSearch (LString const & path, LString const & name,
 
 // Returns the real name of file name in directory path, with optional
 // extension ext.  
-LString FileSearch(LString const & path, LString const & name, 
-		   LString const & ext)
+string FileSearch(string const & path, string const & name, 
+		  string const & ext)
 {
-        LString fullname;
-	LString tmp;
-
 	// if `name' is an absolute path, we ignore the setting of `path'
 	// Expand Environmentvariables in 'name'
-	LString tmpname = ReplaceEnvironmentPath(name);
-	fullname = MakeAbsPath(tmpname,path);
-
+	string tmpname = ReplaceEnvironmentPath(name);
+	string fullname = MakeAbsPath(tmpname, path);
+	
 	// search first without extension, then with it.
 	if (IsFileReadable(fullname))
 		return fullname;
-	else if(ext.empty()) 
-		return LString();
+	else if (ext.empty()) 
+		return string();
 	else { // Is it not more reasonable to use ChangeExtension()? (SMiyata)
 		fullname += '.';
 		fullname += ext;
 		if (IsFileReadable(fullname))
 			return fullname;
 		else 
-			return LString();
+			return string();
 	}
 }
 
@@ -260,32 +246,33 @@ LString FileSearch(LString const & path, LString const & name,
 //   1) user_lyxdir
 //   2) build_lyxdir (if not empty)
 //   3) system_lyxdir
-LString LibFileSearch(LString const & dir, LString const & name, 
-		      LString const & ext)
+string LibFileSearch(string const & dir, string const & name, 
+		      string const & ext)
 {
-        LString fullname = FileSearch(AddPath(user_lyxdir,dir), name,
+        string fullname = FileSearch(AddPath(user_lyxdir,dir), name,
 				      ext); 
 	if (!fullname.empty())
 		return fullname;
 
 	if (!build_lyxdir.empty()) 
-	  fullname = FileSearch(AddPath(build_lyxdir,dir), 
-				name, ext);
+		fullname = FileSearch(AddPath(build_lyxdir, dir), 
+				      name, ext);
 	if (!fullname.empty())
 		return fullname;
 
 	return FileSearch(AddPath(system_lyxdir,dir), name, ext);
 }
 
-LString i18nLibFileSearch(LString const & dir, LString const & name, 
-			  LString const & ext)
-{
-	LString lang = LString(getenv("LANG")).token('_',0);
 
-	if (lang.empty())
+string i18nLibFileSearch(string const & dir, string const & name, 
+			  string const & ext)
+{
+	string lang = token(string(GetEnv("LANG")), '_', 0);
+
+	if (lang.empty() || lang == "C")
 		return LibFileSearch(dir, name, ext);
 	else {
-		LString tmp = LibFileSearch(dir, lang + '_' + name,
+		string tmp = LibFileSearch(dir, lang + '_' + name,
 					    ext);
 		if (!tmp.empty())
 			return tmp;
@@ -295,21 +282,74 @@ LString i18nLibFileSearch(LString const & dir, LString const & name,
 }
 
 
+string GetEnv(string const & envname)
+{
+        // f.ex. what about error checking?
+        char const * const ch = getenv(envname.c_str());
+        string envstr = !ch ? "" : ch;
+        return envstr;
+}
+
+
+string GetEnvPath(string const & name)
+{
+#ifndef __EMX__
+        string pathlist = subst(GetEnv(name), ':', ';');
+#else
+        string pathlist = subst(GetEnv(name), '\\', '/');
+#endif
+        return strip(pathlist, ';');
+}
+
+
+bool PutEnv(string const & envstr)
+{
+#warning Look at and fix this.
+        // f.ex. what about error checking?
+        int retval = 0;
+#if HAVE_PUTENV
+        // this leaks, but what can we do about it?
+        //   Is doing a getenv() and a free() of the older value 
+        //   a good idea? (JMarc)
+        retval = putenv((new string(envstr))->c_str());
+#else
+#ifdef HAVE_SETENV 
+        string varname;
+        string str = envstr.split(varname,'=');
+        retval = setenv(varname.c_str(), str.c_str(), true);
+#endif
+#endif
+        return retval == 0;
+}
+
+
+bool PutEnvPath(string const & envstr)
+{
+        string pathlist = envstr;
+#warning Verify that this is correct.
+#ifdef __EMX__
+        pathlist.subst(':', ';');
+        pathlist.subst('/', '\\');
+#endif
+        return PutEnv(pathlist);
+}
+
+
 static
-int DeleteAllFilesInDir (LString const & path)
+int DeleteAllFilesInDir (string const & path)
 {
 	DIR * dir;
-	struct dirent *de;
+	struct dirent * de;
 	dir = opendir(path.c_str());
 	if (!dir) {
 		WriteFSAlert (_("Error! Cannot open directory:"), path);
 		return -1;
 	}
 	while ((de = readdir(dir))) {
-		LString temp = de->d_name;
+		string temp = de->d_name;
 		if (temp=="." || temp=="..") 
 			continue;
-		LString unlinkpath = AddName (path, temp);
+		string unlinkpath = AddName (path, temp);
 
 		lyxerr.debug("Deleting file: " + unlinkpath);
 
@@ -323,21 +363,21 @@ int DeleteAllFilesInDir (LString const & path)
 
 
 static
-LString CreateTmpDir (LString const & tempdir, LString const & mask)
+string CreateTmpDir (string const & tempdir, string const & mask)
 {
-	LString tmpfl = TmpFileName(tempdir, mask);
+	string tmpfl = TmpFileName(tempdir, mask);
 	
 	if ((tmpfl.empty()) || mkdir (tmpfl.c_str(), 0777)) {
 		WriteFSAlert(_("Error! Couldn't create temporary directory:"),
 			     tempdir);
-		return LString();
+		return string();
 	}
 	return MakeAbsPath(tmpfl);
 }
 
 
 static
-int DestroyTmpDir (LString const & tmpdir, bool Allfiles)
+int DestroyTmpDir (string const & tmpdir, bool Allfiles)
 {
 	if ((Allfiles) && (DeleteAllFilesInDir (tmpdir))) return -1;
 	if (rmdir(tmpdir.c_str())) { 
@@ -355,23 +395,23 @@ int DestroyTmpDir (LString const & tmpdir, bool Allfiles)
 } 
 
 
-LString CreateBufferTmpDir (LString const & pathfor)
+string CreateBufferTmpDir (string const & pathfor)
 {
 	return CreateTmpDir (pathfor, "lyx_bufrtmp");
 }
 
 
-int DestroyBufferTmpDir (LString const & tmpdir)
+int DestroyBufferTmpDir (string const & tmpdir)
 {
-       return DestroyTmpDir (tmpdir, true);
+	return DestroyTmpDir (tmpdir, true);
 }
 
 
-LString CreateLyXTmpDir (LString const & deflt)
+string CreateLyXTmpDir (string const & deflt)
 {
-        LString t;
-        
-	if ((!deflt.empty()) && (deflt!="/tmp")) {
+	string t;        
+
+	if ((!deflt.empty()) && (deflt  != "/tmp")) {
 		if (mkdir (deflt.c_str(), 0777)) {
 #ifdef __EMX__
                         PathPush(user_lyxdir);
@@ -396,19 +436,16 @@ LString CreateLyXTmpDir (LString const & deflt)
 }
 
 
-int DestroyLyXTmpDir (LString const & tmpdir)
+int DestroyLyXTmpDir (string const & tmpdir)
 {
        return DestroyTmpDir (tmpdir, false); // Why false?
 }
 
 
 // Creates directory. Returns true if succesfull
-bool createDirectory(LString const & path, int permission)
+bool createDirectory(string const & path, int permission)
 {
-	LString temp = CleanupPath(path);
-	
-	// Cut off trailing /s
-	temp.strip('/');
+	string temp = strip(CleanupPath(path), '/');
 
 	if (temp.empty()) {
 		WriteAlert(_("Internal error!"),
@@ -425,15 +462,15 @@ bool createDirectory(LString const & path, int permission)
 
 
 // Returns current working directory
-LString GetCWD ()
+string GetCWD ()
 {
   	int n = 256;	// Assume path is less than 256 chars
 	char * err;
   	char * tbuf = new char [n];
-	LString result;
+	string result;
   	
   	// Safe. Hopefully all getcwds behave this way!
-  	while (((err = getcwd (tbuf, n)) == NULL) && (errno == ERANGE)) {
+  	while (((err = getcwd (tbuf, n)) == 0) && (errno == ERANGE)) {
 		// Buffer too small, double the buffersize and try again
     		delete[] tbuf;
     		n = 2*n;
@@ -447,29 +484,23 @@ LString GetCWD ()
 
 
 // Strip filename from path name
-LString OnlyPath(LString const &Filename)
+string OnlyPath(string const & Filename)
 {
 	// If empty filename, return empty
 	if (Filename.empty()) return Filename;
 
 	// Find last / or start of filename
-	int j = Filename.length() - 1;
-	LString temp = CleanupPath(Filename);
-	for (; j > 0 && temp[j] != '/'; j--);
-
-	if (temp[j] != '/')
+	string::size_type j = Filename.rfind('/');
+	if (j==string::npos)
 		return "./";
-	else {
-		// Strip to pathname
-		return temp.substring(0, j);
-	}
+	return Filename.substr(0, j+1);
 }
 
 
 // Convert relative path into absolute path based on a basepath.
 // If relpath is absolute, just use that.
 // If basepath is empty, use CWD as base.
-LString MakeAbsPath(LString const &RelPath, LString const &BasePath)
+string MakeAbsPath(string const & RelPath, string const & BasePath)
 {
 	// checks for already absolute path
 	if (AbsolutePath(RelPath))
@@ -479,37 +510,37 @@ LString MakeAbsPath(LString const &RelPath, LString const &BasePath)
 		return RelPath;
 
 	// Copies given paths
-	LString TempRel = CleanupPath(RelPath);
+	string TempRel = CleanupPath(RelPath);
 
-	LString TempBase;
+	string TempBase;
 
 	if (!BasePath.empty()) {
 #ifndef __EMX__
 		TempBase = BasePath;
 #else
-		char* with_drive = new char[_MAX_PATH];
+		char * with_drive = new char[_MAX_PATH];
 		_abspath(with_drive, BasePath.c_str(), _MAX_PATH);
 		TempBase = with_drive;
 		delete[] with_drive;
 #endif
 	} else
-		TempBase = GetCWD(); //safer_getcwd();
+		TempBase = GetCWD();
 #ifdef __EMX__
 	if (AbsolutePath(TempRel))
-		return TempBase.substring(0,1) + TempRel;
+		return TempBase[0] + TempRel;
 #endif
 
 	// Handle /./ at the end of the path
-	while(TempBase.suffixIs("/./"))
-		TempBase.substring(0,TempBase.length()-3);
+	while(suffixIs(TempBase, "/./"))
+		TempBase.erase(TempBase.length() - 2);
 
 	// processes relative path
-	LString RTemp = TempRel;
-	LString Temp;
+	string RTemp = TempRel;
+	string Temp;
 
 	while (!RTemp.empty()) {
 		// Split by next /
-		RTemp.split(Temp, '/');
+		RTemp = split(RTemp, Temp, '/');
 		
 		if (Temp==".") continue;
 		if (Temp=="..") {
@@ -517,19 +548,19 @@ LString MakeAbsPath(LString const &RelPath, LString const &BasePath)
 			int i = TempBase.length()-2;
 #ifndef __EMX__
 			if (i<0) i=0;
-			while (i>0 && TempBase[i] != '/') i--;
+			while (i>0 && TempBase[i] != '/') --i;
 			if (i>0)
 #else
 				if (i<2) i=2;
-			while (i>2 && TempBase[i] != '/') i--;
+			while (i>2 && TempBase[i] != '/') --i;
 			if (i>2)
 #endif
-				TempBase.substring(0, i);
+				TempBase.erase(i, string::npos);
 			else
 				TempBase += '/';
 		} else {
 			// Add this piece to TempBase
-			if (!TempBase.suffixIs('/'))
+			if (!suffixIs(TempBase, '/'))
 				TempBase += '/';
 			TempBase += Temp;
 		}
@@ -543,72 +574,68 @@ LString MakeAbsPath(LString const &RelPath, LString const &BasePath)
 // Correctly append filename to the pathname.
 // If pathname is '.', then don't use pathname.
 // Chops any path of filename.
-LString AddName(LString const &Path, LString const &FileName)
+string AddName(string const & path, string const & fname)
 {
 	// Get basename
-	LString Basename = OnlyFilename(FileName);
+	string basename = OnlyFilename(fname);
 
-	LString buf;
+	string buf;
 
-	if (Path != "." && Path != "./" && !Path.empty()) {
-		buf = CleanupPath(Path);
-		if (!Path.suffixIs('/'))
+	if (path != "." && path != "./" && !path.empty()) {
+		buf = CleanupPath(path);
+		if (!suffixIs(path, '/'))
 			buf += '/';
 	}
 
-	return buf + Basename;
+	return buf + basename;
 }
 
 
 // Strips path from filename
-LString OnlyFilename(LString const &Filename)
+string OnlyFilename(string const & fname)
 {
-	// If empty filename, return empty
-	if (Filename.empty()) return Filename;
+	Assert(!fname.empty()); // We don't allow empty filename. (Lgb)
 
-	int j;
-	// Find last / or start of filename
-	LString temp = CleanupPath(Filename);
-	for (j=Filename.length()-1; temp[j] != '/' && j>0; j--);
-
-	// Skip potential /
-	if (j!=0) j++;
+	string::size_type j = fname.rfind('/');
+	if (j == string::npos) // no '/' in fname
+		return fname;
 
 	// Strip to basename
-	return temp.substring(j, temp.length()-1);
+	return fname.substr(j + 1);
 }
 
 
 // Is a filename/path absolute?
-bool AbsolutePath(LString const &path)
+bool AbsolutePath(string const & path)
 {
 #ifndef __EMX__
-	return (!path.empty() && path[0]=='/');
+	return (!path.empty() && path[0] == '/');
 #else
-	return (!path.empty() && (path[0]=='/' || (isalpha((unsigned char) path[0]) && path[1]==':')));
+	return (!path.empty() && path[0]=='/' || (isalpha((unsigned char) path[0]) && path[1]==':'));
 #endif
 }
 
 
 // Create absolute path. If impossible, don't do anything
 // Supports ./ and ~/. Later we can add support for ~logname/. (Asger)
-LString ExpandPath(LString const &path)
+string ExpandPath(string const & path)
 {
+	Assert(!path.empty()); // We don't allow empty path. (Lgb)
 	// checks for already absolute path
-	LString RTemp = ReplaceEnvironmentPath(path);
+	string RTemp = ReplaceEnvironmentPath(path);
 	if (AbsolutePath(RTemp))
 		return RTemp;
 
-	LString Temp;
-	LString copy(RTemp);
+	string Temp;
+	string copy(RTemp);
 
 	// Split by next /
-	RTemp.split(Temp, '/');
+	RTemp=split(RTemp, Temp, '/');
 
 	if (Temp==".") {
 		return GetCWD() + '/' + RTemp;
 	} else if (Temp=="~") {
-		return getEnvPath("HOME") + '/' + RTemp;
+		return GetEnvPath("HOME") + '/' + RTemp;
 	} else if (Temp=="..") {
 		return MakeAbsPath(copy);
 	} else
@@ -620,11 +647,13 @@ LString ExpandPath(LString const &path)
 // Normalize a path
 // Constracts path/../path
 // Can't handle "../../" or "/../" (Asger)
-LString NormalizePath(LString const &path)
+string NormalizePath(string const & path)
 {
-	LString TempBase;
-	LString RTemp;
-	LString Temp;
+	Assert(!path.empty()); // We don't allow empty path. (Lgb)
+	
+	string TempBase;
+	string RTemp;
+	string Temp;
 
 	if (AbsolutePath(path))
 		RTemp = path;
@@ -634,7 +663,7 @@ LString NormalizePath(LString const &path)
 
 	while (!RTemp.empty()) {
 		// Split by next /
-		RTemp.split(Temp, '/');
+		RTemp = split(RTemp, Temp, '/');
 		
 		if (Temp==".") {
 			TempBase = "./";
@@ -642,9 +671,9 @@ LString NormalizePath(LString const &path)
 			// Remove one level of TempBase
 			int i = TempBase.length()-2;
 			while (i>0 && TempBase[i] != '/')
-				i--;
+				--i;
 			if (i>=0 && TempBase[i] == '/')
-				TempBase.substring(0, i);
+				TempBase.erase(i+1, string::npos);
 			else
 				TempBase = "../";
 		} else {
@@ -656,14 +685,13 @@ LString NormalizePath(LString const &path)
 	return TempBase;	
 }
 
-LString CleanupPath(LString const &path) 
+string CleanupPath(string const & path) 
 {
 #ifdef __EMX__	  /* SMiyata: This should fix searchpath bug. */
-	LString temppath(path);
-	temppath.subst('\\', '/');
-	temppath.subst("//", "/");
-	temppath.lowercase();
-	return temppath;
+	string temppath(path);
+	subst(tmppath, '\\', '/');
+	subst(tmppath, "//", "/");
+	return lowercase(temppath);
 #else // On unix, nothing to do
 	return path;
 #endif
@@ -677,8 +705,9 @@ LString CleanupPath(LString const &path)
 //  variable :=  '$' '{' [A-Za-z_]{[A-Za-z_0-9]*} '}'
 //
 
-LString ReplaceEnvironmentPath(LString const &path)
+string ReplaceEnvironmentPath(string const & path)
 {
+	Assert(!path.empty()); // We don't allow empty path. (Lgb)
 // 
 // CompareChar: Environmentvariables starts with this character
 // PathChar:    Next path component start with this character
@@ -691,31 +720,29 @@ LString ReplaceEnvironmentPath(LString const &path)
 	const char FirstChar = '{'; 
 	const char EndChar = '}'; 
 	const char UnderscoreChar = '_'; 
-	const LString EndString(EndChar);
-	const LString FirstString(FirstChar);
-	const LString CompareString(CompareChar);
-	const LString RegExp("*}*"); // Exist EndChar inside a String?
-
-	if (path.empty()) return path; // nothing to do.
+	string EndString; EndString += EndChar;
+	string FirstString; FirstString += FirstChar;
+	string CompareString; CompareString += CompareChar;
+	const string RegExp("*}*"); // Exist EndChar inside a String?
 
 // first: Search for a '$' - Sign.
-	LString copy(path);
-    LString result1(copy);    // for split-calls
-	LString result0 = copy.split(result1, CompareChar);
+	//string copy(path);
+	string result1; //(copy);    // for split-calls
+	string result0 = split(path, result1, CompareChar);
 	while (!result0.empty()) {
-		LString copy1(result0); // contains String after $
+		string copy1(result0); // contains String after $
 		
 		// Check, if there is an EndChar inside original String.
 		
-		if (!copy1.regexMatch(RegExp)) {
+		if (!regexMatch(copy1, RegExp)) {
 			// No EndChar inside. So we are finished
 			result1 += CompareString + result0;
-			result0 = LString();
+			result0.erase();
 			continue;
 		}
 
-		LString res1;
-		LString res0 = copy1.split(res1, EndChar);
+		string res1;
+		string res0 = split(copy1, res1, EndChar);
 		// Now res1 holds the environmentvariable
 		// First, check, if Contents is ok.
 		if (res1.empty()) { // No environmentvariable. Continue Loop.
@@ -724,7 +751,7 @@ LString ReplaceEnvironmentPath(LString const &path)
 			continue;
 		}
 		// check contents of res1
-		const char *res1_contents = res1.c_str();
+		const char * res1_contents = res1.c_str();
 		if (*res1_contents != FirstChar) {
 			// Again No Environmentvariable
 			result1 += CompareString;
@@ -733,7 +760,7 @@ LString ReplaceEnvironmentPath(LString const &path)
 
 		// Check for variable names
 		// Situation ${} is detected as "No Environmentvariable"
-		const char *cp1 = res1_contents+1;
+		const char * cp1 = res1_contents+1;
 		bool result = isalpha((unsigned char) *cp1) || (*cp1 == UnderscoreChar);
 		++cp1;
 		while (*cp1 && result) {
@@ -745,20 +772,20 @@ LString ReplaceEnvironmentPath(LString const &path)
 		if (!result) {
 			// no correct variable name
 			result1 += CompareString + res1 + EndString;
-			result0  = res0.split(res1, CompareChar);
+			result0  = split(res0, res1, CompareChar);
 			result1 += res1;
 			continue;
 		}
             
-		char *env = getenv(res1_contents+1);
-		if (env) {
+		string env = GetEnv(res1_contents+1);
+		if (!env.empty()) {
 			// Congratulations. Environmentvariable found
 			result1 += env;
 		} else {
 			result1 += CompareString + res1 + EndString;
 		}
 		// Next $-Sign?
-		result0  = res0.split(res1, CompareChar);
+		result0  = split(res0, res1, CompareChar);
 		result1 += res1;
 	} 
 	return result1;
@@ -766,15 +793,15 @@ LString ReplaceEnvironmentPath(LString const &path)
 
 
 // Make relative path out of two absolute paths
-LString MakeRelPath(LString const & abspath0, LString const & basepath0)
+string MakeRelPath(string const & abspath0, string const & basepath0)
 // Makes relative path out of absolute path. If it is deeper than basepath,
 // it's easy. If basepath and abspath share something (they are all deeper
 // than some directory), it'll be rendered using ..'s. If they are completely
 // different, then the absolute path will be used as relative path.
 {
 	// This is a hack. It should probaly be done in another way. Lgb.
-	LString abspath = CleanupPath(abspath0);
-	LString basepath = CleanupPath(basepath0);
+	string abspath = CleanupPath(abspath0);
+	string basepath = CleanupPath(basepath0);
 	if (abspath.empty())
 		return "<unknown_path>";
 
@@ -801,7 +828,7 @@ LString MakeRelPath(LString const & abspath0, LString const & basepath0)
 
 	// Count how many dirs there are in basepath above match
 	// and append as many '..''s into relpath
-	LString buf;
+	string buf;
 	int j = i;
 	while (j < baselen) {
 		if (basepath[j] == '/') {
@@ -816,8 +843,8 @@ LString MakeRelPath(LString const & abspath0, LString const & basepath0)
 	for (; i<abslen; ++i)
 		buf += abspath[i];
 	// Remove trailing /
-	if (buf.suffixIs('/'))
-		buf.substring(0,buf.length()-2);
+	if (suffixIs(buf, '/'))
+		buf.erase(buf.length() - 1);
 	// Substitute empty with .
 	if (buf.empty())
 		buf = '.';
@@ -826,26 +853,26 @@ LString MakeRelPath(LString const & abspath0, LString const & basepath0)
 
 
 // Append sub-directory(ies) to a path in an intelligent way
-LString AddPath(LString const & path, LString const & path_2)
+string AddPath(string const & path, string const & path_2)
 {
-	LString buf;
-	LString path2 = CleanupPath(path_2);
+	string buf;
+	string path2 = CleanupPath(path_2);
 
 	if (!path.empty() && path != "." && path != "./") {
 		buf = CleanupPath(path);
-		if (!path.suffixIs('/'))
+		if (path[path.length() - 1] != '/')
+							   
 			buf += '/';
 	}
 
 	if (!path2.empty()){
-	        int p2start = 0;
-		while (path2[p2start] == '/') p2start++;
+	        int p2start = path2.find_first_not_of('/');
+		//while (path2[p2start] == '/') ++p2start;
 
-		int p2end = path2.length()-1;
-		while (path2[p2end] == '/') p2end--;
+		int p2end = path2.find_last_not_of('/');
+		//while (path2[p2end] == '/') --p2end;
 
-		LString tmp = path2;
-		tmp.substring(p2start,p2end);
+		string tmp = path2.substr(p2start, p2end - p2start + 1);
 		buf += tmp + '/';
 	}
 	return buf;
@@ -857,63 +884,50 @@ LString AddPath(LString const & path, LString const & path_2)
  Strips path off if no_path == true.
  If no extension on oldname, just appends.
  */
-LString ChangeExtension(LString const & origname, LString const & extension, 
+string ChangeExtension(string const & oldname, string const & extension, 
 			bool no_path) 
-{ 
-	LString oldname = CleanupPath(origname);
-	int n = oldname.length()-1;
-	int dot;
+{
+	string::size_type last_slash = oldname.rfind('/');
+	string::size_type last_dot;
+	if (last_slash != string::npos)
+		last_dot = oldname.find('.', last_slash);
+	else
+		last_dot = oldname.rfind('.');
 
-	// Make sure the extension includes the dot, if not empty
-	LString ext;
+	string ext;
+	// Make sure the extension starts with a dot
 	if (!extension.empty() && extension[0] != '.')
-		ext = "." + extension;
+		ext='.' + extension;
 	else
 		ext = extension;
-
-	// Go back to the first dot not crossing any /
-	for (dot=n; dot>=0 && oldname[dot]!='.' && oldname[dot]!='/'; dot--);
-   
-	if (dot==-1 || oldname[dot]!='.')
-		// If no extension was found, we use the end of the string
-		dot = n;
-	else
-		// Remove the dot, because the new extension includes it
-		dot--;
-
-	// "path" points to last / or 0 if path is wanted
-	int path = 0;
-	if (no_path) {
-		for (path=dot; path && oldname[path]!='/';path--);
-		if (oldname[path]=='/')
-			path++;
-	} else 
-		path = 0;
-
-	LString result = oldname;
-	result.substring(path,dot);
-	if (!ext.empty())
-		result += ext;
-	return result;
+	string ret_str;
+	if (no_path && last_slash != string::npos) {
+		++last_slash; // step it
+		ret_str = oldname.substr(last_slash,
+					 last_dot - last_slash) + ext;
+	} else
+		ret_str = oldname.substr(0, last_dot) + ext;
+	return CleanupPath(ret_str);
 }
 
 
+
 // Creates a nice compact path for displaying
-LString MakeDisplayPath (LString const & path, int threshold)
+string MakeDisplayPath (string const & path, unsigned int threshold)
 {
 	const int l1 = path.length();
 
 	// First, we try a relative path compared to home
-	LString home = getEnvPath("HOME");
-	LString relhome = MakeRelPath(path, home);
+	string home = GetEnvPath("HOME");
+	string relhome = MakeRelPath(path, home);
 
-	int l2 = relhome.length();
+	unsigned int l2 = relhome.length();
 
-	LString prefix;
+	string prefix;
 
 	// If we backup from home or don't have a relative path,
 	// this try is no good
-	if (relhome.prefixIs("../") || AbsolutePath(relhome)) {
+	if (prefixIs(relhome, "../") || AbsolutePath(relhome)) {
 		// relative path was no good, just use the original path
 		relhome = path;
 		l2 = l1;
@@ -926,30 +940,28 @@ LString MakeDisplayPath (LString const & path, int threshold)
 		// Yes, shortend it
 		prefix += ".../";
 		
-		LString temp;
+		string temp;
 		
-		while (relhome.length()>threshold)
-			relhome.split(temp, '/');
+		while (relhome.length() > threshold)
+			relhome = split(relhome, temp, '/');
 
 		// Did we shortend everything away?
 		if (relhome.empty()) {
 			// Yes, filename in itself is too long.
 			// Pick the start and the end of the filename.
 			relhome = OnlyFilename(path);
-			LString head = relhome;
-			head.substring(0, threshold/2 - 3);
+			string head = relhome.substr(0, threshold/2 - 3);
 
-			LString tail = relhome;
-			l2 = tail.length();
-			tail.substring(l2 - threshold/2 -2, l2 - 1);
-
+			l2 = relhome.length();
+			string tail =
+				relhome.substr(l2 - threshold/2 - 2, l2 - 1);
 			relhome = head + "..." + tail;
 		}
 	}
 	return prefix + relhome;
 }
 
-bool LyXReadLink(LString const & File, LString & Link)
+bool LyXReadLink(string const & File, string & Link)
 {
 	char LinkBuffer[512];
                 // Should be PATH_MAX but that needs autconf support

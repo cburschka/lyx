@@ -1,26 +1,20 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-*        
-*           Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1998 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <errno.h>
+#include <cerrno>
 #include "FileInfo.h"
-
-// 	$Id: FileInfo.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: FileInfo.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $";
-#endif /* lint */
 
 #if !S_IRUSR
 # if S_IREAD
@@ -116,7 +110,7 @@ FileInfo::FileInfo()
 }
 
 
-FileInfo::FileInfo(LString const &path, bool link)
+FileInfo::FileInfo(string const & path, bool link)
 	: fname(path)
 {
 	init();
@@ -157,7 +151,7 @@ void FileInfo::dostat(bool link)
 }
 
 
-FileInfo& FileInfo::newFile(LString const &path, bool link)
+FileInfo& FileInfo::newFile(string const &path, bool link)
 {
 	fname = path;
 	
@@ -180,7 +174,7 @@ FileInfo& FileInfo::newFile(int fildes)
 }
 
 
-char const *FileInfo::typeIndicator() const
+char const * FileInfo::typeIndicator() const
 {
 	if (S_ISDIR(buf->st_mode)) return ("/");
 #ifdef S_ISLNK
@@ -213,7 +207,7 @@ long FileInfo::getBlockSize() const
 #endif
 }
 
-void FileInfo::modeString(char *szString) const
+void FileInfo::modeString(char * szString) const
 {
 	szString[0] = typeLetter();
 	flagRWX((buf->st_mode & 0700) << 0, &szString[1]);
@@ -251,7 +245,7 @@ char FileInfo::typeLetter() const
 }
 
 
-void FileInfo::flagRWX(unsigned short i, char *szString) const
+void FileInfo::flagRWX(unsigned short i, char * szString) const
 {
 	szString[0] = (i & S_IRUSR) ? 'r' : '-';
 	szString[1] = (i & S_IWUSR) ? 'w' : '-';
@@ -259,7 +253,7 @@ void FileInfo::flagRWX(unsigned short i, char *szString) const
 }
 
 
-void FileInfo::setSticky(char *szString) const
+void FileInfo::setSticky(char * szString) const
 {
 #ifdef S_ISUID
 	if (buf->st_mode & S_ISUID) {

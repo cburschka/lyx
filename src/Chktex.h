@@ -4,17 +4,17 @@
  * 
  *           LyX, The Document Processor
  *
- *	     Copyright (C) 1995 Matthias Ettrich
- *           Copyright (C) 1995-1998 The LyX Team.
+ *	     Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
  *
- *           This file is Copyright (C) 1997
+ *           This file is Copyright 1997
  *           Asger Alstrup
  *
- *======================================================
+ * ======================================================
  */
 
-#ifndef _CHKTEX_H
-#define _CHKTEX_H
+#ifndef CHKTEX_H
+#define CHKTEX_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -32,8 +32,8 @@ public:
 	  cmd = the chktex command, file = name of the (temporary) latex file,
 	  path = name of the files original path.
 	  */
-	Chktex(LString const & cmd, LString const & file,
-	       LString const & path);
+	Chktex(string const & cmd, string const & file,
+	       string const & path);
 	
 	/** Runs chktex.
 	  Returns -1 if fail, number of messages otherwise.
@@ -44,13 +44,13 @@ private:
 	int scanLogFile(TeXErrors &);
 
 	///
-	LString cmd;
+	string cmd;
 
 	///
-	LString file;
+	string file;
 	
 	///
-	LString path;
+	string path;
 };
 
 #endif

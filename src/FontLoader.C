@@ -98,11 +98,11 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 	}
 
 	// Normal font. Let's search for an existing name that matches.
-	LString ffamily;
-	LString fseries;
-	LString fshape;
-	LString norm = lyxrc->font_norm;
-	LString fontname;
+	string ffamily;
+	string fseries;
+	string fshape;
+	string norm = lyxrc->font_norm;
+	string fontname;
 
 	FontInfo * fi = new FontInfo();
 	fontinfo[family][series][shape] = fi;
@@ -205,7 +205,7 @@ XFontStruct* FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 	int fsize = (int) ( (lyxrc->font_sizes[size] * lyxrc->dpi * 
 				(lyxrc->zoom/100.0) ) / 72.27 + 0.5 );
 
-	LString font = fontinfo[family][series][shape]->getFontname(fsize);
+	string font = fontinfo[family][series][shape]->getFontname(fsize);
 
 	if (font.empty()) {
 		lyxerr.print("No font matches request. Using 'fixed'.");
@@ -239,7 +239,7 @@ XFontStruct* FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 			f.setNoun(LyXFont::INHERIT);
 			f.setLatex(LyXFont::INHERIT);
 			f.setColor(LyXFont::INHERIT_COLOR);
-			lyxerr.print(LString("Font '") + f.stateText() 
+			lyxerr.print(string("Font '") + f.stateText() 
 				      + "' matched by\n" + font + '\n');
 		}
 	}

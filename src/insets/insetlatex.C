@@ -3,8 +3,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team.
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
  *
  *======================================================*/
 
@@ -18,12 +18,6 @@
 #include "insetlatex.h"
 #include "lyxdraw.h"
 
-// 	$Id: insetlatex.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: insetlatex.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $";
-#endif /* lint */
-
 /* Latex. Used to insert Latex-Code automatically */
 
 
@@ -32,7 +26,7 @@ InsetLatex::InsetLatex()
 }
 
 
-InsetLatex::InsetLatex(LString const & string)
+InsetLatex::InsetLatex(string const & string)
 	: contents(string)
 {
 }
@@ -115,21 +109,21 @@ int InsetLatex::Latex(FILE *file, signed char /*fragile*/)
 }
 
 
-int InsetLatex::Latex(LString &file, signed char /*fragile*/)
+int InsetLatex::Latex(string &file, signed char /*fragile*/)
 {
 	file += contents;
 	return 0;
 }
 
 
-int InsetLatex::Linuxdoc(LString &file)
+int InsetLatex::Linuxdoc(string &file)
 {
 	file += contents;
 	return 0;
 }
 
 
-int InsetLatex::DocBook(LString &file)
+int InsetLatex::DocBook(string &file)
 {
 	file += contents;
 	return 0;

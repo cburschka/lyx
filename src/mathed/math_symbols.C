@@ -22,25 +22,21 @@
 #pragma implementation "math_panel.h"
 #endif
 
+#include <algorithm>
+
 #include "lyx_main.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "minibuffer.h"
 #include "lyxrc.h"
-#include "lyxlib.h"
 #include "LyXView.h"
+#include "support/lstrings.h"
 #include "error.h"
 
 #include "formula.h"
 
 #include "math_panel.h"                 
 #include "math_parser.h"
-
-// 	$Id: math_symbols.C,v 1.1 1999/09/27 18:44:40 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: math_symbols.C,v 1.1 1999/09/27 18:44:40 larsbj Exp $";
-#endif /* lint */
 
 extern void SmallUpdate(signed char);
 extern void BeforeChange();
@@ -141,7 +137,7 @@ static char** pixmapFromBitmapData(char const *, int, int);
 void math_insert_symbol(char const* s);
 Bool math_insert_greek(char const c);
 
-BitmapMenu *BitmapMenu::active = NULL;
+BitmapMenu *BitmapMenu::active = 0;
 
 BitmapMenu::BitmapMenu(int n,  FL_OBJECT* bt, BitmapMenu* prevx): nb(n)  {
    w = h = 0;
@@ -154,7 +150,7 @@ BitmapMenu::BitmapMenu(int n,  FL_OBJECT* bt, BitmapMenu* prevx): nb(n)  {
    button = bt;
    button->u_vdata = this;
    prev = prevx;
-   next = NULL;
+   next = 0;
    if (prev)
      prev->next = this;
 }
@@ -169,7 +165,7 @@ BitmapMenu::~BitmapMenu() {
 void BitmapMenu::Hide()  {
    fl_hide_form(form);
    fl_set_button(button, 0);
-   active = NULL;
+   active = 0;
 }
 
 void BitmapMenu::Show()  {
@@ -186,7 +182,7 @@ FL_OBJECT*
 BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh, char* data, Bool vert)
 {
    if (i>=nb)
-     return NULL;
+     return 0;
    int wx=bw+ww/2, wy=bh+ww/2;
    wx += (wx % nx);
    wy += (wy % ny); 
@@ -197,12 +193,12 @@ BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh, char* data, Bool v
    fl_set_bmtable_data(obj, nx, ny, bw, bh, data);
    if (vert) { 
       y += wy + 8;
-      h = Maximum(y, h);
-      w = Maximum(x + wx + ww, w);
+      h = max(y, h);
+      w = max(x + wx + ww, w);
    } else  {
       x += wx + 8;
-      w = Maximum(x, w);
-      h = Maximum(y + wy + ww, h);
+      w = max(x, w);
+      h = max(y + wy + ww, h);
    }
    bitmap[i++] = obj;
    return obj;
@@ -238,7 +234,7 @@ int BitmapMenu::GetIndex(FL_OBJECT* ob)
 
 int peek_event(FL_FORM * /*form*/, void *xev)
 {
-   if (BitmapMenu::active==NULL)
+   if (BitmapMenu::active==0)
      return 0;
   
    if(((XEvent *)xev)->type == ButtonPress)
@@ -250,7 +246,7 @@ int peek_event(FL_FORM * /*form*/, void *xev)
    {
       char c[5];
       KeySym keysym;
-      XLookupString(&((XEvent *)xev)->xkey, &c[0], 5, &keysym, NULL);
+      XLookupString(&((XEvent *)xev)->xkey, &c[0], 5, &keysym, 0);
       if (keysym==XK_Left) 
 	BitmapMenu::active->Prev(); else
       if (keysym==XK_Right) 
@@ -307,10 +303,10 @@ static void math_cb(FL_OBJECT* ob, long data)
 
 char** get_pixmap_from_symbol(char const *arg, int wx, int hx)
 {
-   char** data=NULL;   		    
+   char** data=0;   		    
    latexkeys *l = in_word_set (arg, strlen(arg));
    if (!l) 
-    return NULL;
+    return 0;
     
    switch (l->token) {
     case LM_TK_FRAC:
@@ -334,7 +330,7 @@ char** get_pixmap_from_symbol(char const *arg, int wx, int hx)
 Bool math_insert_greek(char const c)
 {
    int i;
-   char const *s=NULL;
+   char const *s=0;
    
    if ('A'<=c && c<='Z') {
       if ((i=Latin2Greek[c - 'A'])>=0)
@@ -456,7 +452,8 @@ char** pixmapFromBitmapData(char const *s, int wx, int hx)
 	char *bdata = 0;
 	int w = 0, h = 0, dw = 0, dh = 0;
 
-	lyxerr.debug(LString("Imando ") + int(i) + ", " + int(id), Error::MATHED);
+	lyxerr.debug(string("Imando ") + tostr(i) + ", " + tostr(id),
+		     Error::MATHED);
 	switch (i) {
 	 case 0: 
 	    if (id<=10) {
@@ -519,7 +516,7 @@ char** pixmapFromBitmapData(char const *s, int wx, int hx)
 	}
 	int ww = w/dw, hh = h/dh, x, y;
    
-	XImage *xima = XCreateImage(fl_display, NULL, 1, XYBitmap, 0, 
+	XImage *xima = XCreateImage(fl_display, 0, 1, XYBitmap, 0, 
 				    bdata, w, h, 8, 0);
 	xima->byte_order = LSBFirst;
 	xima->bitmap_bit_order = LSBFirst;

@@ -9,14 +9,14 @@
  *
  *======================================================*/
 
-#ifndef _VSPACE_H_
-#define _VSPACE_H_
+#ifndef VSPACE_H
+#define VSPACE_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include <stdio.h>
+#include <cstdio>
 
 ///  LyXLength Class
 class LyXLength {
@@ -54,11 +54,11 @@ public:
 	//@Man: constructors
 	//@{
 	///
-	LyXLength() : val(0), uni(LyXLength::PT) {};
-	LyXLength(float v, LyXLength::UNIT u) : val(v), uni(u) {};
+	LyXLength() : val(0), uni(LyXLength::PT) {}
+	LyXLength(float v, LyXLength::UNIT u) : val(v), uni(u) {}
 
 	/** "data" must be a decimal number, followed by a unit. */
-        LyXLength(LString const & data);
+        LyXLength(string const & data);
 	//@}
 	
 	//@Man: selectors
@@ -70,25 +70,28 @@ public:
 	//@}
 
 	///
-        bool operator==(LyXLength other);
+        bool operator==(LyXLength const &) const;
 
 	/// conversion
-	virtual LString asString() const;
-	virtual LString asLatexString() const { return this->asString(); };
+	virtual string asString() const;
+	///
+	virtual string asLatexString() const { return this->asString(); };
 
 
 	/** If "data" is valid, the length represented by it is
-	  stored into "result", if that is not NULL. */
-	friend bool isValidLength(LString const & data, 
-				  LyXLength* result=NULL);
+	  stored into "result", if that is not 0. */
+	friend bool isValidLength(string const & data, 
+				  LyXLength * result=0);
 
 protected:
+	///
 	float           val;
+	///
 	LyXLength::UNIT uni;
 };
 
-extern LyXLength::UNIT unitFromString (LString const & data);
-extern bool isValidLength(LString const &data, LyXLength* result);
+extern LyXLength::UNIT unitFromString (string const & data);
+extern bool isValidLength(string const & data, LyXLength * result);
 
 /// LyXGlueLength class
 class LyXGlueLength : public LyXLength {
@@ -101,7 +104,7 @@ public:
 		      float mv=0.0, LyXLength::UNIT mu=LyXLength::UNIT_NONE) 
 		: LyXLength (v, u), 
 		  plus_val(pv), minus_val(mv), 
-		  plus_uni(pu), minus_uni(mu) {};
+		  plus_uni(pu), minus_uni(mu) {}
 
 	/** "data" must be a decimal number, followed by a unit, and 
 	  optional "glue" indicated by "+" and "-".  You may abbreviate
@@ -109,7 +112,7 @@ public:
 	  1.2 cm  //  4mm +2pt  //  2cm -4mm +2mm  //  4+0.1-0.2cm
 	  The traditional Latex format is also accepted, like  
 	  4cm plus 10pt minus 10pt */
-        LyXGlueLength(LString const & data);
+        LyXGlueLength(string const & data);
 	//@}
 	
 	//@Man: selectors
@@ -125,24 +128,27 @@ public:
 	//@}
 
 	///
-        bool operator==(LyXGlueLength other);
+        bool operator==(LyXGlueLength const &) const;
 
 	/// conversion
-	virtual LString asString() const;
-	virtual LString asLatexString() const;
+	virtual string asString() const;
+	///
+	virtual string asLatexString() const;
 
 
 	/** If "data" is valid, the length represented by it is
-	  stored into "result", if that is not NULL. */
-	friend bool isValidGlueLength(LString const & data, 
-				      LyXGlueLength* result=NULL);
+	  stored into "result", if that is not 0. */
+	friend bool isValidGlueLength(string const & data, 
+				      LyXGlueLength* result=0);
 
 protected:
+	///
 	float           plus_val, minus_val;
+	///
 	LyXLength::UNIT plus_uni, minus_uni;
 };
 
-extern bool isValidGlueLength(LString const &data, LyXGlueLength* result);
+extern bool isValidGlueLength(string const & data, LyXGlueLength * result);
 
 ///  VSpace class
 class VSpace {
@@ -155,43 +161,51 @@ public:
 	VSpace() : 
 		kin (NONE), 
 		len(0.0, LyXLength::PT),
-                kp (false) {};
+                kp (false) {}
 
 	VSpace(vspace_kind k) : 
 		kin (k), 
 		len (0.0, LyXLength::PT),
-	        kp (false) {};
+	        kp (false) {}
 
 	VSpace(LyXGlueLength l) :
 		kin (LENGTH),
 		len (l),
-	        kp (false) {};
+	        kp (false) {}
 
 	VSpace(float v, LyXLength::UNIT u) : 
 		kin (LENGTH), 
 		len (v, u),
-	        kp (false) {};
+	        kp (false) {}
 
 	/// this constructor is for reading from a .lyx file
-	VSpace(LString const & data);
+	VSpace(string const & data);
 	
 	// access functions
 	vspace_kind kind() const  { return  kin; }
+	///
 	LyXLength   length() const { return len; }
 
 	// a flag that switches between \vspace and \vspace*
         bool keep() const      { return kp; }
+	///
 	void setKeep(bool val) { kp = val; } 
-
-        bool operator== (VSpace other);
+	///
+        bool operator==(VSpace const &) const;
 
 	// conversion
-	LString asLyXCommand() const;  // how it goes into the LyX file
-	LString asLatexCommand() const;
+	///
+	string asLyXCommand() const;  // how it goes into the LyX file
+	///
+	string asLatexCommand() const;
+	///
 	int inPixels() const;
 private:
-	vspace_kind  kin;  
+	///
+	vspace_kind  kin;
+	///
 	LyXGlueLength    len;
+	///
 	bool kp;
 };
 

@@ -8,8 +8,9 @@
  *          Copyright (C) 1995-1998 The LyX Team
  *
  *======================================================*/
-#ifndef _LYXSCREEN_H
-#define _LYXSCREEN_H
+
+#ifndef LYXSCREEN_H
+#define LYXSCREEN_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -125,7 +126,7 @@ public:
 	int drawText(LyXFont const &font, char const*,
 		      int n, int baseline, int x);
 	///
-	int drawString(LyXFont const &font, LString const &str,
+	int drawString(LyXFont const &font, string const &str,
 			int baseline, int x);
 		
 	/// first visible pixel-row
@@ -280,7 +281,7 @@ inline int LyXScreen::drawText(LyXFont const &font, char const*fs,
 }
 
 
-inline int LyXScreen::drawString(LyXFont const &font, LString const &str,
+inline int LyXScreen::drawString(LyXFont const &font, string const &str,
 			   int baseline, int x)
 {
 	return font.drawString(str, foreground, baseline, x);

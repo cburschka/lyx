@@ -20,7 +20,7 @@
 #include "math_inset.h"
 #include "math_iter.h"
 #include "math_parser.h"
-
+#include "support/lstrings.h"
 
 extern char const *latex_mathenv[];
 extern char *latex_mathspace[];
@@ -43,14 +43,14 @@ void
 MathSpaceInset::Write(FILE *outf)
 { 
    if (space>=0 && space<6) {
-       LString output;
+       string output;
        MathSpaceInset::Write(output);
        fprintf(outf, "%s", output.c_str());
    }
 }
 
 void
-MathSpaceInset::Write(LString &outf)
+MathSpaceInset::Write(string &outf)
 { 
    if (space>=0 && space<6) {
        outf += '\\';
@@ -63,13 +63,13 @@ MathSpaceInset::Write(LString &outf)
 void
 MathDotsInset::Write(FILE *outf)
 {
-   LString output;
+   string output;
    MathDotsInset::Write(output);
    fprintf(outf, "%s", output.c_str());
 }   
 
 void
-MathDotsInset::Write(LString &outf)
+MathDotsInset::Write(string &outf)
 {
    outf += '\\';
    outf += name;
@@ -79,12 +79,12 @@ MathDotsInset::Write(LString &outf)
 
 void MathSqrtInset::Write(FILE *outf)
 { 
-   LString output;
+   string output;
    MathSqrtInset::Write(output);  
    fprintf(outf, "%s", output.c_str());
 }
 
-void MathSqrtInset::Write(LString &outf)
+void MathSqrtInset::Write(string &outf)
 { 
    outf += '\\';
    outf += name;
@@ -96,12 +96,12 @@ void MathSqrtInset::Write(LString &outf)
 
 void MathDelimInset::Write(FILE *outf)
 { 
-    LString output;
+    string output;
     MathDelimInset::Write(output);
     fprintf(outf, "%s", output.c_str());
 }
 
-void MathDelimInset::Write(LString &outf)
+void MathDelimInset::Write(string &outf)
 { 
     latexkeys* l = (left != '|') ? lm_get_key_by_id(left, LM_TK_SYM): 0;
     latexkeys* r = (right != '|') ? lm_get_key_by_id(right, LM_TK_SYM): 0;
@@ -141,12 +141,12 @@ void MathDelimInset::Write(LString &outf)
 
 void MathDecorationInset::Write(FILE *outf)
 {
-   LString output;
+   string output;
    MathDecorationInset::Write(output);
    fprintf(outf, "%s", output.c_str());
 }
 
-void MathDecorationInset::Write(LString &outf)
+void MathDecorationInset::Write(string &outf)
 { 
    latexkeys* l = lm_get_key_by_id(deco, LM_TK_WIDE);
    outf += '\\';
@@ -159,12 +159,12 @@ void MathDecorationInset::Write(LString &outf)
 
 void MathAccentInset::Write(FILE *outf)
 { 
-    LString output;
+    string output;
     MathAccentInset::Write(output);
     fprintf(outf, "%s", output.c_str());
 }
 
-void MathAccentInset::Write(LString &outf)
+void MathAccentInset::Write(string &outf)
 { 
     latexkeys* l = lm_get_key_by_id(code, LM_TK_ACCENT);
     outf += '\\';
@@ -203,12 +203,12 @@ void MathAccentInset::Write(LString &outf)
 
 void MathBigopInset::Write(FILE *outf)
 { 
-   LString output;
+   string output;
    MathBigopInset::Write(output);
    fprintf(outf, "%s", output.c_str());
 }
 
-void MathBigopInset::Write(LString &outf)
+void MathBigopInset::Write(string &outf)
 { 
     bool limp = GetLimits();
     
@@ -227,12 +227,12 @@ void MathBigopInset::Write(LString &outf)
 
 void MathFracInset::Write(FILE *outf)
 { 
-   LString output;
+   string output;
    MathFracInset::Write(output);  
    fprintf(outf, "%s", output.c_str());
 }
 
-void MathFracInset::Write(LString &outf)
+void MathFracInset::Write(string &outf)
 { 
    outf += '\\';
    outf += name;
@@ -247,13 +247,13 @@ void MathFracInset::Write(LString &outf)
 void MathParInset::Write(FILE *outf)
 {
    if (!array) return;
-   LString output;
+   string output;
    MathParInset::Write(output);
    fprintf(outf, "%s", output.c_str());
 }
 
 
-void MathParInset::Write(LString &outf)
+void MathParInset::Write(string &outf)
 {
    if (!array) return;
    int brace = 0;
@@ -372,12 +372,12 @@ void MathParInset::Write(LString &outf)
 
 void MathMatrixInset::Write(FILE *outf)
 {
-    LString output;
+    string output;
     MathMatrixInset::Write(output);
     fprintf(outf, "%s", output.c_str());
 }
 
-void MathMatrixInset::Write(LString &outf)
+void MathMatrixInset::Write(string &outf)
 {
     if (GetType() == LM_OT_MATRIX){
 	outf += "\\begin{";
@@ -405,14 +405,14 @@ void MathMatrixInset::Write(LString &outf)
 
 void mathed_write(MathParInset* p,  FILE* outf, int* newlines,  char fragile, char const* label)
 {
-   LString output;
+   string output;
    mathed_write(p, output, newlines, fragile, label);
    fprintf(outf, "%s", output.c_str());
 }
 
 extern int tex_code_break_column;
 
-void mathed_write(MathParInset* p, LString& outf, int* newlines,
+void mathed_write(MathParInset* p, string& outf, int* newlines,
                   char fragile, char const* label)
 {  
    number_of_newlines = 0;
@@ -423,7 +423,7 @@ void mathed_write(MathParInset* p, LString& outf, int* newlines,
      outf += "\\( "; // changed from " \\( " (Albrecht Dress)
    } 
    else {
-     if (! outf.suffixIs('\n')) {
+     if (!suffixIs(outf, '\n')) {
        // in batchmode we need to make sure
        // a space before an equation doesn't
        // make the LaTeX output different 

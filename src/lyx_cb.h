@@ -1,10 +1,11 @@
 // -*- C++ -*-
-#ifndef _LYX_CB_H
-#define _LYX_CB_H
+#ifndef LYX_CB_H
+#define LYX_CB_H
 
 #include FORMS_H_LOCATION
 
-class LString;
+#include "LString.h"
+
 class Inset;
 
 ///
@@ -61,9 +62,9 @@ extern void StyleResetCB();
 ///
 extern void UnderlineCB();
 ///
-extern void FontSizeCB(LString const &);
+extern void FontSizeCB(string const &);
 ///
-extern LString CurrentState();
+extern string CurrentState();
 ///
 extern void AllowInput();
 

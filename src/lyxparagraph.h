@@ -5,11 +5,12 @@
  *           LyX, The Document Processor
  * 	 
  *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team.
+ *          Copyright (C) 1995-1999 The LyX Team.
  *
  *======================================================*/
-#ifndef _LYXPARAGRAPH_H
-#define _LYXPARAGRAPH_H
+
+#ifndef LYXPARAGRAPH_H
+#define LYXPARAGRAPH_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -18,7 +19,7 @@
 #include "definitions.h"
 #include "insets/lyxinset.h"
 #include "table.h"
-#include "textutils.h"
+#include "support/textutils.h"
 #include "vspace.h"
 #include "insets/insetbib.h"
 
@@ -103,13 +104,13 @@ public:
 	void readSimpleWholeFile(FILE *);
 
 	///
-	LyXParagraph* TeXOnePar(LString &file, TexRow &texrow,
-				LString &foot, TexRow &foot_texrow,
+	LyXParagraph* TeXOnePar(string &file, TexRow &texrow,
+				string &foot, TexRow &foot_texrow,
 				int &foot_count);
 
 	///
-	LyXParagraph* TeXEnvironment(LString &file, TexRow &texrow,
-				     LString &foot, TexRow &foot_texrow,
+	LyXParagraph* TeXEnvironment(string &file, TexRow &texrow,
+				     string &foot, TexRow &foot_texrow,
 				     int &foot_count);
 	
 	///
@@ -203,9 +204,9 @@ public:
         ///
         int pextra_type;
         ///
-        LString pextra_width;
+        string pextra_width;
         ///
-        LString pextra_widthp;
+        string pextra_widthp;
         ///
         int pextra_alignment;
         ///
@@ -214,10 +215,10 @@ public:
         bool pextra_start_minipage;
         
         ///
-	LString labelstring;
+	string labelstring;
 	
 	///
-	LString labelwidthstring;
+	string labelwidthstring;
 	//@}
 	
 	///
@@ -262,12 +263,12 @@ public:
 	///
 	int BeginningOfMainBody();
 	///
-	LString GetLabelString();
+	string GetLabestring();
 	
 	/// the next two functions are for the manual labels
-	LString GetLabelWidthString();
+	string GetLabelWidthString();
 	///
-	void SetLabelWidthString(const LString &s);
+	void SetLabelWidthString(const string &s);
 	///
 	int GetLayout();
 	///
@@ -319,7 +320,7 @@ public:
 	///
 	char GetChar(int pos);
 	///
-        LString GetWord(int &);
+        string GetWord(int &);
 	///
 	void SetFont(int pos, LyXFont const & font);
 	/// Returns the height of the highest font in range
@@ -439,12 +440,12 @@ public:
 	///
 	bool RoffContTableRows(FILE *file, int i, int actcell);
 	///
-	bool linuxDocConvertChar(char c, LString &sgml_string);
+	bool linuxDocConvertChar(char c, string &sgml_string);
 	///
-	void SimpleDocBookOneTablePar(LString &file, LString &extra,
+	void SimpleDocBookOneTablePar(string &file, string &extra,
 				      int &desc_on, int depth);
 	///
-	void DocBookContTableRows(LString &file, LString &extra, int &desc_on,
+	void DocBookContTableRows(string &file, string &extra, int &desc_on,
 				  int i, int current_cell_number, int &column);
 private:
 	/** A font entry covers a range of positions. Notice that the
@@ -486,26 +487,26 @@ private:
 	///
 	InsetTable *insettable;
 	///
-	LyXParagraph * TeXDeeper(LString &file, TexRow &texrow,
-				   LString &foot, TexRow &foot_texrow,
+	LyXParagraph * TeXDeeper(string &file, TexRow &texrow,
+				   string &foot, TexRow &foot_texrow,
 				   int &foot_count);
 	///
-	LyXParagraph * TeXFootnote(LString &file, TexRow &texrow,
-				   LString &foot, TexRow &foot_texrow,
+	LyXParagraph * TeXFootnote(string &file, TexRow &texrow,
+				   string &foot, TexRow &foot_texrow,
 				   int &foot_count);
 	///
-	bool SimpleTeXOnePar(LString &file, TexRow &texrow);
+	bool SimpleTeXOnePar(string &file, TexRow &texrow);
 	///
-	bool SimpleTeXOneTablePar(LString &file, TexRow &texrow);
+	bool SimpleTeXOneTablePar(string &file, TexRow &texrow);
 	///
-	bool TeXContTableRows(LString &file, int i, int current_cell_number,
+	bool TeXContTableRows(string &file, int i, int current_cell_number,
                               int &column, TexRow &texrow);
 	///
-	void SimpleTeXBlanks(LString &file, TexRow &texrow,
+	void SimpleTeXBlanks(string &file, TexRow &texrow,
 			     int const i, int &column, LyXFont const &font,
 			     LyXLayout const * const style);
 	///
-	void SimpleTeXSpecialChars(LString &file, TexRow &texrow,
+	void SimpleTeXSpecialChars(string &file, TexRow &texrow,
 				   LyXFont &font, LyXFont &running_font,
 				   LyXFont &basefont, bool &open_font,
 				   LyXLayout const * const style,

@@ -1,18 +1,18 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich,
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *	    Copyright 1995 Matthias Ettrich,
+ *          Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
-#include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
+#include <cctype>
+#include <cstring>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -109,9 +109,9 @@ void LyXFindReplace0::ReInitFromForm()
 
 
 // Returns the value of the replace string in the form
-LString const LyXFindReplace0::ReplaceString()
+string const LyXFindReplace0::ReplaceString()
 {
-	return LString(fl_get_input(fd_form_search->input_replace));
+	return string(fl_get_input(fd_form_search->input_replace));
 }
 
 
@@ -143,7 +143,7 @@ void LyXFindReplace0::SetReplaceEnabled(bool fEnable)
 }
 
 
-void LyXFindReplace0::SetSearchString(LString const &ls)
+void LyXFindReplace0::SetSearchString(string const &ls)
 {
 	lsSearch = ls;
 	fl_set_input(fd_form_search->input_search, ls.c_str());	

@@ -6,8 +6,8 @@
    Purpose: class definitions for XKeyEvent keymap handling
    \* ======================================================================= */
 
-#ifndef _KBMAP_H_
-#define _KBMAP_H_
+#ifndef KBMAP_H
+#define KBMAP_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -15,13 +15,14 @@
 
 #include <X11/Xlib.h>
 
+#include "LString.h"
+
 #define KB_PREALLOC  16
 #define KB_HASHSIZE 128   // yes, yes - I know. 128 is not exactly prime :-)
 // ... but we are dealing with ASCII chars mostly.
 
 class kb_keymap;
 class kb_sequence;
-class LString;
 
 ///
 struct kb_key {
@@ -62,7 +63,7 @@ public:
 	int lookup(KeySym key, unsigned mod, kb_sequence *seq);
 
 	/// Given an action, find all keybindings.
-	LString findbinding(int action) const;
+	string findbinding(int action) const;
 private:
 	/// Define a new key sequence
 	int defkey(kb_sequence *seq, int action, int idx = 0);

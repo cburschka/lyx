@@ -1,7 +1,7 @@
 
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -17,13 +17,13 @@
 #include "gettext.h"
 #include "bibforms.h"
 #include "lyxtext.h"
-#include "filetools.h"
+#include "support/filetools.h"
 
 extern BufferView *current_view;
 
 FD_citation_form *citation_form=0;
 FD_bibitem_form *bibitem_form=0;
-static Combox *bibcombox = NULL;
+static Combox *bibcombox = 0;
 
 extern void UpdateInset(Inset* inset, bool mark_dirty = true);
 void BibitemUpdate(Combox *);
@@ -151,7 +151,7 @@ FD_bibitem_form *create_form_bibitem_form(void)
 /*---------------------------------------*/
 
 
-InsetCitation::InsetCitation(LString const & key, LString const & note):
+InsetCitation::InsetCitation(string const & key, string const & note):
 	InsetCommand("cite", key, note)
 {
 
@@ -173,7 +173,7 @@ void InsetCitation::Edit(int, int)
 	if (!citation_form) {
 		citation_form = create_form_citation_form();
 		fl_set_form_atclose(citation_form->citation_form, 
-				    CancelCloseBoxCB, NULL);
+				    CancelCloseBoxCB, 0);
 	}
 	citation_form->vdata = this;
 
@@ -191,21 +191,21 @@ void InsetCitation::Edit(int, int)
 }
 
 
-LString InsetCitation::getScreenLabel() const
+string InsetCitation::getScreenLabel() const
 {
-	LString temp('[');
+	string temp("[");
 
-	temp+=contents;
+	temp += contents;
 
 	if (!options.empty()) {
-		temp+=","+options;
+		temp += "," + options;
 	}
 
-	return temp+']';
+	return temp + ']';
 }
 
 
-InsetBibKey::InsetBibKey(LString const & key, LString const & label):
+InsetBibKey::InsetBibKey(string const & key, string const & label):
 	InsetCommand("bibitem", key, label)
 {
 	counter = 1;
@@ -242,7 +242,7 @@ void InsetBibKey::setCounter(int c)
 // of time cause LyX3 won't use lyxlex anyway.  (ale)
 void InsetBibKey::Write(FILE *file)
 {
-	LString s;
+	string s;
 	if (!options.empty()) {
 		s += '[';
 		s += options + ']';
@@ -253,13 +253,12 @@ void InsetBibKey::Write(FILE *file)
 }
 
 
-LString InsetBibKey::getScreenLabel() const
+string InsetBibKey::getScreenLabel() const
 {
 	if (!options.empty())
 		return options;
     
-	LString s;
-	return s + counter;
+	return tostr(counter);
 }
 
 
@@ -276,7 +275,7 @@ void InsetBibKey::Edit(int, int)
 	if (!bibitem_form) {
 		bibitem_form = create_form_bibitem_form();
 		fl_set_form_atclose(bibitem_form->bibitem_form, 
-				    CancelCloseBoxCB, NULL);
+				    CancelCloseBoxCB, 0);
 	}
 	bibitem_form->vdata = this;
 	// InsetBibtex uses the same form, with different labels
@@ -297,7 +296,7 @@ void InsetBibKey::Edit(int, int)
 
 
 
-InsetBibtex::InsetBibtex(LString const & dbase, LString const & style,
+InsetBibtex::InsetBibtex(string const & dbase, string const & style,
 			 Buffer *o)
 	:InsetCommand("BibTeX", dbase, style), owner(o)
 {
@@ -309,7 +308,7 @@ InsetBibtex::~InsetBibtex()
 }
 
 
-LString InsetBibtex::getScreenLabel() const
+string InsetBibtex::getScreenLabel() const
 {
 	return _("BibTeX Generated References");
 }
@@ -317,7 +316,7 @@ LString InsetBibtex::getScreenLabel() const
 
 int InsetBibtex::Latex(FILE *file, signed char /*fragile*/)
 {
-	LString bib;
+	string bib;
 	signed char dummy = 0;
 	int result = Latex(bib, dummy);
 	fprintf(file, "%s", bib.c_str());
@@ -325,7 +324,7 @@ int InsetBibtex::Latex(FILE *file, signed char /*fragile*/)
 }
 
 
-int InsetBibtex::Latex(LString &file, signed char /*fragile*/)
+int InsetBibtex::Latex(string &file, signed char /*fragile*/)
 {
 	// this looks like an horrible hack and it is :) The problem
 	// is that owner is not initialized correctly when the bib
@@ -337,21 +336,20 @@ int InsetBibtex::Latex(LString &file, signed char /*fragile*/)
 	// If we generate in a temp dir, we might need to give an
 	// absolute path there. This is a bit complicated since we can
 	// have a comma-separated list of bibliographies
-	LString db_in, adb, db_out;
+	string db_in, adb, db_out;
 	db_in = getContents();
-	db_in.split(adb, ',');
+	db_in=split(db_in, adb, ',');
 	while(!adb.empty()) {
 		if (!owner->niceFile &&
 		    IsFileReadable(MakeAbsPath(adb,owner->filepath)+".bib")) 
 			adb = MakeAbsPath(adb,owner->filepath);
 		db_out += adb;
 		db_out += ',';
-		db_in.split(adb,',');
+		db_in=split(db_in, adb,',');
 	}
-	db_out.strip(',');
-
+	db_out = strip(db_out, ',');
 	// Idem, but simpler
-	LString style;
+	string style;
 	if (!owner->niceFile 
 	    && IsFileReadable(MakeAbsPath(getOptions(), owner->filepath)
 			      + ".bst")) 
@@ -369,7 +367,7 @@ int InsetBibtex::Latex(LString &file, signed char /*fragile*/)
 }
 
 // This method returns a comma separated list of Bibtex entries
-LString InsetBibtex::getKeys()
+string InsetBibtex::getKeys()
 {
 	// This hack is copied from InsetBibtex::Latex.
 	// Is it still needed? Probably yes.
@@ -381,16 +379,16 @@ LString InsetBibtex::getKeys()
 	// First look for bib-file in same directory as document,
 	// then in all directories listed in environment variable 
 	// BIBINPUTS
-	LString bibfiles, linebuf, tmp, keys;
+	string bibfiles, linebuf, tmp, keys;
 	bibfiles = getContents();
-	bibfiles.split(tmp, ',');
+	bibfiles=split(bibfiles, tmp, ',');
 	while(!tmp.empty()) {
 		if (IsFileReadable(MakeAbsPath(tmp,owner->filepath)+".bib"))
 			tmp = MakeAbsPath(tmp,owner->filepath)+".bib";
 		else {
-			tmp = FileOpenSearch(getEnvPath("BIBINPUTS"),tmp,"bib");
+			tmp = FileOpenSearch(GetEnvPath("BIBINPUTS"),tmp,"bib");
 			if (tmp.empty())
-				tmp = FileOpenSearch(getEnvPath("BIBINPUT"),
+				tmp = FileOpenSearch(GetEnvPath("BIBINPUT"),
 						     tmp, "bib");
 		}
 		// If we didn't find a matching file name just fail silently
@@ -410,24 +408,24 @@ LString InsetBibtex::getKeys()
 
 				// At end of each line check if line begins with '@'
 				if ( c == '\n') {
-					if ( linebuf.prefixIs("@") ) {
-						linebuf.subst('{','(');
-						linebuf.split(tmp,'(');
-						tmp.lowercase();
-	    					if ( ! tmp.prefixIs("@string") && !tmp.prefixIs("@preamble") ) {
-							linebuf.split(tmp,',');
+					if (prefixIs(linebuf, "@") ) {
+						subst(linebuf, '{','(');
+						linebuf=split(linebuf, tmp,'(');
+						tmp = lowercase(tmp);
+	    					if (!prefixIs(tmp, "@string") && !prefixIs(tmp, "@preamble") ) {
+							linebuf = split(linebuf, tmp,',');
 							if (!tmp.empty())
-								keys +=tmp.strip()+",";
+								keys += strip(tmp) + ",";
 						}
 					}
-					linebuf.clean();
+					linebuf.erase();
 				} else {
 					linebuf += c;
 				}
 			}
 		}
 		// Get next file name
-    		bibfiles.split(tmp, ',');
+    		bibfiles=split(bibfiles, tmp, ',');
 	}
   	return keys;
 }
@@ -438,7 +436,7 @@ void InsetBibtex::Edit(int, int)
 	if (!bibitem_form) {
 		bibitem_form = create_form_bibitem_form();
 		fl_set_form_atclose(bibitem_form->bibitem_form, 
-				    CancelCloseBoxCB, NULL);
+				    CancelCloseBoxCB, 0);
 	}
 
 	bibitem_form->vdata = this;
@@ -455,9 +453,9 @@ void InsetBibtex::Edit(int, int)
 }
 
 
-bool InsetBibtex::addDatabase(LString const &db)
+bool InsetBibtex::addDatabase(string const &db)
 {
-	if (!contents.contains(db.c_str())) {
+	if (!contains(contents, db.c_str())) {
 		if (!contents.empty()) 
 			contents += ',';
 		contents += db;
@@ -467,17 +465,17 @@ bool InsetBibtex::addDatabase(LString const &db)
 }
 
 
-bool InsetBibtex::delDatabase(LString const &db)
+bool InsetBibtex::delDatabase(string const &db)
 {
-	if (contents.contains(db.c_str())) {
-		LString bd = db;
-		int n = contents.tokenPos(',', bd);
+	if (contains(contents, db.c_str())) {
+		string bd = db;
+		int n = tokenPos(contents, ',', bd);
 		if (n > 0) {
-			LString tmp(',');
+			string tmp(",");
 			tmp += bd;
-			contents.subst(tmp.c_str(), ",");
+			subst(contents, tmp.c_str(), ",");
 		} else if (n==0)
-			contents.split(bd, ',');
+			contents = split(contents, bd, ',');
 		else 
 			return false;
 	}
@@ -493,11 +491,11 @@ void BibitemUpdate(Combox* combox)
 	if (!current_view->available())
 		return;
 
-	LString tmp, bibkeys = current_view->currentBuffer()->getBibkeyList(',');
-	bibkeys.split(tmp,',');
+	string tmp, bibkeys = current_view->currentBuffer()->getBibkeyList(',');
+	bibkeys=split(bibkeys, tmp,',');
 	while (!tmp.empty()) {
 	  combox->addto(tmp.c_str());
-	  bibkeys.split(tmp,',');
+	  bibkeys=split(bibkeys, tmp,',');
 	}
 }
 
@@ -522,7 +520,7 @@ int bibitemMaxWidth(const class LyXFont &font)
 
 
 // ale070405 
-LString bibitemWidthest()
+string bibitemWidthest()
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)

@@ -3,8 +3,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *           Copyright (C) 1995-1998 The LyX Team.
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
  *
  * ====================================================== */
 
@@ -23,20 +23,14 @@
 #include "intl.h"
 #include "tex-strings.h"
 #include "pathstack.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "lyxtext.h"
-
-// 	$Id: lyxrc.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: lyxrc.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
 
 // this is crappy... why are those colors command line arguments and
 // not in lyxrc?? (Matthias) 
 // Because nobody put them there. (Asger)
 extern int fast_selection;
-extern LString background_color;
+extern string background_color;
 extern char selection_color[];
 extern bool cursor_follows_scrollbar;
 extern kb_keymap *toplevel_keymap;
@@ -229,7 +223,7 @@ LyXRC::LyXRC()
 {
 	// Get printer from the environment. If fail, use default "",
 	// assuming that everything is set up correctly.
-	printer = getenv("PRINTER");
+	printer = GetEnv("PRINTER");
 	print_command = "dvips";
 	print_evenpage_flag = "-B";
 	print_oddpage_flag = "-A";
@@ -243,7 +237,7 @@ LyXRC::LyXRC()
 	print_file_extension = ".ps";
         print_paper_flag = "-t";
 	print_paper_dimension_flag = "-T";
-	document_path = getEnvPath("HOME");
+	document_path = GetEnvPath("HOME");
 	tempdir_path = "/tmp";
 	use_tempdir = true;
 	latex_command = "latex";
@@ -306,10 +300,10 @@ LyXRC::~LyXRC()
 {
 }
 
-int LyXRC::ReadBindFile(LString name)
+int LyXRC::ReadBindFile(string name)
 {
 	hasBindFile = true;
-	LString tmp = i18nLibFileSearch("bind",name,"bind");
+	string tmp = i18nLibFileSearch("bind",name,"bind");
 	lyxerr.debug("Reading bindfile:" + tmp, Error::LYXRC); 
 	int result = Read(tmp);
 	if (result) {
@@ -318,10 +312,10 @@ int LyXRC::ReadBindFile(LString name)
 	return result;
 }
 
-int LyXRC::Read(LString const &filename)
+int LyXRC::Read(string const &filename)
 {
 	// Default bindfile.
-	LString bindFile = "cua";
+	string bindFile = "cua";
 
 	LyXLex lexrc(lyxrcTags, lyxrcCount);
 	if (lyxerr.debugging(Error::LEX_PARSER))
@@ -339,7 +333,7 @@ int LyXRC::Read(LString const &filename)
 			break;
 		case RC_INPUT: // Include file
 		        if (lexrc.next()) {
-				LString tmp = LibFileSearch(LString(),
+				string tmp = LibFileSearch(string(),
 							   lexrc.GetString()); 
 				if (Read(tmp)) {
 					lexrc.printError("Error reading "
@@ -525,8 +519,7 @@ int LyXRC::Read(LString const &filename)
 
 		case RC_DEFAULT_PAPERSIZE:
                         if (lexrc.next()) {
-			        LString size = lexrc.GetString();
-				size.lowercase();
+			        string size = lowercase(lexrc.GetString());
 				if (size == "usletter")
 				        default_papersize = PAPER_USLETTER;
 				else if (size == "legal")
@@ -708,7 +701,7 @@ int LyXRC::Read(LString const &filename)
 
 			// !!!chb, dynamic key binding...
 			int action, res=0;
-			LString seq, cmd;
+			string seq, cmd;
 
 			if (lexrc.lex()==LyXLex::LEX_DATA)  {
 				seq = lexrc.GetString();
@@ -729,7 +722,7 @@ int LyXRC::Read(LString const &filename)
 					lyxerr.print("RC_BIND: Sequence `"
 						      + seq + "' Command `"
 						      + cmd + "' Action `"
-						      + (int) action + '\'');
+						      + tostr(action) + '\'');
 				}
 				res = bindKey(seq.c_str(), action);
 				if (res != 0) {
@@ -775,7 +768,7 @@ int LyXRC::Read(LString const &filename)
 			break;
 		case RC_PHONEBOOK:
 			if (lexrc.next()) {
-				LString s = lexrc.GetString();
+				string s = lexrc.GetString();
 				if (AbsolutePath(s))
 					phone_book = s;
 				else

@@ -7,8 +7,9 @@
  *	    Copyright (C) 1995 Matthias Ettrich
  *
  *======================================================*/
-#ifndef _LYXFONT_H
-#define _LYXFONT_H
+
+#ifndef LYXFONT_H
+#define LYXFONT_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -245,28 +246,28 @@ public:
 	LyXFont & setColor(LyXFont::FONT_COLOR c);
  
 	/// Set family after LyX text format
-	LyXFont & setLyXFamily(LString const &);
+	LyXFont & setLyXFamily(string const &);
  
 	/// Set series after LyX text format
-	LyXFont & setLyXSeries(LString const &);
+	LyXFont & setLyXSeries(string const &);
  
 	/// Set shape after LyX text format
-	LyXFont & setLyXShape(LString const &);
+	LyXFont & setLyXShape(string const &);
  
 	/// Set size after LyX text format
-	LyXFont & setLyXSize(LString const &);
+	LyXFont & setLyXSize(string const &);
  
 	/// Returns misc flag after LyX text format
-	LyXFont::FONT_MISC_STATE setLyXMisc(LString const &);
+	LyXFont::FONT_MISC_STATE setLyXMisc(string const &);
 
 	/// Sets color after LyX text format
-	LyXFont & setLyXColor(LString const &);
+	LyXFont & setLyXColor(string const &);
  
 	/// Sets size after GUI name
-	LyXFont & setGUISize(LString const &);
+	LyXFont & setGUISize(string const &);
  
 	/// Returns size of font in LaTeX text notation
-	LString latexSize() const;
+	string latexSize() const;
  
 	/** Updates font settings according to request. If an
 	  attribute is IGNORE, the attribute is left as it is. */
@@ -302,11 +303,11 @@ public:
 	*/
 	int latexWriteStartChanges(FILE *, LyXFont const & base) const;
 
-	/** Writes to LString, the head of the LaTeX needed to change
+	/** Writes to string, the head of the LaTeX needed to change
 	  to this font. Returns number of chars written. Base is the
 	  font state active now.
 	*/
-	int latexWriteStartChanges(LString &, LyXFont const & base) const;
+	int latexWriteStartChanges(string &, LyXFont const & base) const;
 
 	/** Writes the tail of the LaTeX needd to change to this font.
 	  Returns number of chars written. Base is the font state we want
@@ -318,10 +319,10 @@ public:
 	  Returns number of chars written. Base is the font state we want
 	    to achieve.
 	*/
-	int latexWriteEndChanges(LString &, LyXFont const & base) const;
+	int latexWriteEndChanges(string &, LyXFont const & base) const;
  
 	/// Build GUI description of font state
-	LString stateText() const;
+	string stateText() const;
 
 	///
 	int maxAscent() const; 
@@ -342,16 +343,16 @@ public:
 	int textWidth(char const *s, int n) const;
 
 	///
-	int stringWidth(LString const & s) const;
+	int stringWidth(string const & s) const;
 
 	///
-	int signedStringWidth(LString const & s) const;
+	int signedStringWidth(string const & s) const;
 
 	/// Draws text and returns width of text
 	int drawText(char const*, int n, Pixmap, int baseline, int x) const;
 
 	///
-	int drawString(LString const &, Pixmap pm, int baseline, int x) const;
+	int drawString(string const &, Pixmap pm, int baseline, int x) const;
 
 	///
 	GC getGC() const;

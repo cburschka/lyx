@@ -50,7 +50,7 @@ class MathMacro: public MathParInset
 	///
     void Write(FILE *);
 	///
-    void Write(LString &);
+    void Write(string &);
 	///
     bool setArgumentIdx(int);
 	///
@@ -118,7 +118,7 @@ class MathMacroArgument: public MathParInset
 	///
     void Write(FILE*);
 	///
-    void Write(LString &);
+    void Write(string &);
     ///
     void setNumber(int n) { number = n; }
     /// Is expanded or not
@@ -149,7 +149,7 @@ class MathMacroTemplate: public MathParInset
 	///
     void WriteDef(FILE *); 
 	///
-    void WriteDef(LString &); 
+    void WriteDef(string &); 
     /// useful for special insets
     void  setTCode(MathedTextCodes t) { tcode = t; }
     ///

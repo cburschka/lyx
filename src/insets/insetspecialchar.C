@@ -3,9 +3,9 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1997 Asger Alstrup
+ *	    Copyright 1997 Asger Alstrup
  *
- *======================================================*/
+ * ======================================================*/
 
 #include <config.h>
 
@@ -17,12 +17,6 @@
 #include "lyxdraw.h"
 #include "error.h"
 #include "LaTeXFeatures.h"
-
-// 	$Id: insetspecialchar.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: insetspecialchar.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $";
-#endif /* lint */
 
 InsetSpecialChar::InsetSpecialChar()
 {
@@ -125,7 +119,7 @@ void InsetSpecialChar::Draw(LyXFont font, LyXScreen &scr,
 // In lyxf3 this will be just LaTeX
 void InsetSpecialChar::Write(FILE *file)
 {
-	LString command;
+	string command;
 	switch (kind) {
 	case HYPHENATION:	command = "\\-";	break;
 	case END_OF_SENTENCE:	command = "\\@.";	break;
@@ -140,7 +134,7 @@ void InsetSpecialChar::Write(FILE *file)
 void InsetSpecialChar::Read(LyXLex &lex)
 {    
 	lex.nextToken();
-	LString command = lex.GetString();
+	string command = lex.GetString();
 
 	if (command=="\\-")
 		kind = HYPHENATION;
@@ -157,7 +151,7 @@ void InsetSpecialChar::Read(LyXLex &lex)
 
 int InsetSpecialChar::Latex(FILE *file, signed char /*fragile*/)
 {
-	LString command;
+	string command;
 	signed char dummy = 0;
 	Latex(command, dummy);
 	fprintf(file, "%s", command.c_str());
@@ -165,7 +159,7 @@ int InsetSpecialChar::Latex(FILE *file, signed char /*fragile*/)
 }
 
 
-int InsetSpecialChar::Latex(LString &file, signed char /*fragile*/)
+int InsetSpecialChar::Latex(string &file, signed char /*fragile*/)
 {
 	switch (kind) {
 	case HYPHENATION:	file += "\\-";	break;
@@ -177,7 +171,7 @@ int InsetSpecialChar::Latex(LString &file, signed char /*fragile*/)
 }
 
 
-int InsetSpecialChar::Linuxdoc(LString &file)
+int InsetSpecialChar::Linuxdoc(string &file)
 {
 	switch (kind) {
 	case HYPHENATION:	file += "";	break;
@@ -189,7 +183,7 @@ int InsetSpecialChar::Linuxdoc(LString &file)
 }
 
 
-int InsetSpecialChar::DocBook(LString &file)
+int InsetSpecialChar::DocBook(string &file)
 {
 	switch (kind) {
 	case HYPHENATION:	file += "";	break;

@@ -20,7 +20,7 @@ void EndOfSpellCheck();
 ///
 void SelectLastWord();
 ///
-void ReplaceWord(LString const & replacestringstring);
+void ReplaceWord(string const & replacestringstring);
 
 
 /** This function has to be implemented by the spell checker.

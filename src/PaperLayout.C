@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #include "definitions.h"
 #include FORMS_H_LOCATION
@@ -8,7 +8,7 @@
 #include "lyx_main.h"
 #include "lyxrc.h"
 #include "LString.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "buffer.h"
 #include "minibuffer.h"
 #include "vspace.h"
@@ -16,13 +16,6 @@
 #include "BufferView.h"
 #include "gettext.h"
 
-// 	$Id: PaperLayout.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: PaperLayout.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $";
-#endif /* lint */
-
-/* Prototypes */
 extern FD_form_paper *fd_form_paper;
 extern MiniBuffer *minibuffer;
 extern BufferView *current_view;
@@ -241,7 +234,7 @@ void PaperMarginsCB(FL_OBJECT *ob, long)
 {
 	const FD_form_paper
 		*fd = fd_form_paper;
-	LString
+	string
 		str;
 	char
 		val;

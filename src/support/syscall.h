@@ -23,7 +23,7 @@ public:
 	};
 	
 	/// Callback function gets commandline and returnvalue from child
-	typedef void (*Callbackfct)(LString cmd, int retval);
+	typedef void (*Callbackfct)(string cmd, int retval);
 	
 	///
 	Systemcalls();
@@ -38,7 +38,7 @@ public:
 	  finishes, the timercheck will automatically call the callback
 	  function.
 	  */
-	Systemcalls(Starttype how, LString what, Callbackfct call = 0);
+	Systemcalls(Starttype how, string what, Callbackfct call = 0);
 	
 	
 	///
@@ -46,7 +46,7 @@ public:
 	
 	/** Start childprocess. what contains a command on systemlevel. 
 	 */
-	int Startscript(Starttype how, LString what, Callbackfct call = 0); // for reuse
+	int Startscript(Starttype how, string what, Callbackfct call = 0); // for reuse
 	
 	/** gets PID of childprocess. Used by timer */
 	inline pid_t Getpid() { return pid; }
@@ -62,7 +62,7 @@ private:
 	/// Callback function
 	Callbackfct  cbk;
 	/// Commmand line
-	LString      command;
+	string      command;
 	/// Process ID of child
 	pid_t        pid;
 	/// Return value from child

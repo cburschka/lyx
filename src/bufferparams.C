@@ -1,15 +1,15 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *	     Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
-#include <stdlib.h>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation "bufferparams.h"
@@ -20,14 +20,8 @@
 #include "layout.h"
 #include "vspace.h"
 #include "error.h"
-#include "lyxlib.h"
-
-// 	$Id: bufferparams.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: bufferparams.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
-
+#include "support/lyxlib.h"
+#include "support/lstrings.h"
 
 BufferParams::BufferParams()
 {
@@ -125,7 +119,7 @@ void BufferParams::writeFile(FILE *file)
 		fprintf(file, "\\begin_preamble\n");
 		{
 			// remove '\n' from the end of preamble
-			preamble.strip('\n');
+			preamble = strip(preamble, '\n');
 			
 			// write out the whole preamble  in one go
 			fwrite(preamble.c_str(),
@@ -251,8 +245,8 @@ void BufferParams::readPreamble(LyXLex &lex)
 
 void BufferParams::readLanguage(LyXLex &lex)
 {
-	LString tmptok;
-	LString test;
+	string tmptok;
+	string test;
 	int n = 0;
 	
 	if (!lex.next()) return;
@@ -279,8 +273,8 @@ void BufferParams::readLanguage(LyXLex &lex)
 
 void BufferParams::readGraphicsDriver(LyXLex &lex)
 {
-	LString tmptok;
-	LString test;
+	string tmptok;
+	string test;
 	int n=0;
 	
 	

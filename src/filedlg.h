@@ -28,18 +28,18 @@ class UserCache
 {
 public:
 	///
-	UserCache(LString const & pszName = LString(), uid_t ID = 0, 
-		  UserCache *pRoot = NULL);
+	UserCache(string const & pszName = string(), uid_t ID = 0, 
+		  UserCache *pRoot = 0);
 	///
 	~UserCache();
 	// interface
 	/// seeks user name from user ID
-	LString Find(uid_t ID);
+	string Find(uid_t ID);
 private:
 	///
 	uid_t ID;
 	///
-	LString pszName;
+	string pszName;
 	///
 	UserCache *pNext, *pRoot;
 	// internal methods
@@ -54,19 +54,19 @@ class GroupCache
 {
 public:
 	///
-	GroupCache(LString const & pszName = LString(), gid_t ID = 0,
-		   GroupCache *pRoot = NULL);
+	GroupCache(string const & pszName = string(), gid_t ID = 0,
+		   GroupCache *pRoot = 0);
 	///
 	~GroupCache();
 	// interface
 	/// seeks group name from group ID
-	LString Find(gid_t ID);
+	string Find(gid_t ID);
 
 private:
 	///
 	gid_t ID;
 	///
-	LString pszName;
+	string pszName;
 	///
 	GroupCache *pNext, *pRoot;
 	// internal methods
@@ -81,9 +81,9 @@ class LyXDirEntry
 {
 private:
 	friend class LyXFileDlg;    
-	LString pszName;
-	LString pszDisplayed;
-	LString pszLsEntry;
+	string pszName;
+	string pszDisplayed;
+	string pszLsEntry;
 	/// compares two LyXDirEntry objects content (used by qsort)
 	static int ldeCompProc(const LyXDirEntry *r1, const LyXDirEntry *r2);
 	LyXDirEntry() {};
@@ -99,15 +99,15 @@ public:
 	///
 	~LyXFileDlg();
 	/// sets file selector user button action
-	void SetButton(int iIndex, LString const & pszName = LString(), 
-		       LString const & pszPath = LString());
+	void SetButton(int iIndex, string const & pszName = string(), 
+		       string const & pszPath = string());
 	/// gets last dialog directory
-	LString GetDirectory();
+	string GetDirectory();
 	/// launches dialog and returns selected file
-	LString Select(LString const & pszTitle = LString(),
-		       LString const & pszPath = LString(),
-		       LString const & pszMask = LString(), 
-		       LString const & pszSuggested = LString());
+	string Select(string const & pszTitle = string(),
+		       string const & pszPath = string(),
+		       string const & pszMask = string(), 
+		       string const & pszSuggested = string());
 	/// XForms objects callback (static)
 	static void FileDlgCB(FL_OBJECT *, long);
 	/// Callback for double click in list
@@ -116,15 +116,15 @@ private:
 	// data
 	static FD_FileDlg *pFileDlgForm;
 	static LyXFileDlg *pCurrentDlg;
-	LString pszUserPath1;
-	LString pszUserPath2;
-	LString pszDirectory;
-	LString pszMask;
-	LString pszFileName;
+	string pszUserPath1;
+	string pszUserPath2;
+	string pszDirectory;
+	string pszMask;
+	string pszFileName;
 	int iDepth;
 	int iLastSel;
 	long lLastTime;
-	LString pszInfoLine;
+	string pszInfoLine;
 	LyXDirEntry *pCurrentNames;
 	int iNumNames;
 
@@ -135,11 +135,11 @@ private:
 	/// updates dialog list to match class directory
 	void Reread();
 	/// sets dialog current directory
-	void SetDirectory(LString const & pszPath);
+	void SetDirectory(string const & pszPath);
 	/// sets dialog file mask
-	void SetMask(LString const & pszNewMask);
+	void SetMask(string const & pszNewMask);
 	/// sets dialog information line
-	void SetInfoLine(LString const & pszLine);
+	void SetInfoLine(string const & pszLine);
 	/// handle dialog during file selection
 	bool RunDialog();
 	/// Handle callback from list

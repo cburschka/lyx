@@ -107,11 +107,11 @@ public:
 	 fragile commands by adding a \protect before.
 	 */
 	virtual int Latex(FILE *file, signed char fragile)=0;
-	virtual int Latex(LString &file, signed char fragile)=0;
+	virtual int Latex(string &file, signed char fragile)=0;
 	///
-	virtual int Linuxdoc(LString &/*file*/) = 0;
+	virtual int Linuxdoc(string &/*file*/) = 0;
 	///
-	virtual int DocBook(LString &/*file*/) = 0;
+	virtual int DocBook(string &/*file*/) = 0;
 	/// Updates needed features for this inset.
 	virtual void Validate(LaTeXFeatures &features) const;
 	///
@@ -121,8 +121,8 @@ public:
 	virtual Inset::Code LyxCode() const = 0;
   
 	/// Get the label that appears at screen
-	virtual LString getLabel(int) const {
-		return LString();
+	virtual string getLabel(int) const {
+		return string();
 	}
 
 	/// used for autocorrection

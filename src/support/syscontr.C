@@ -20,7 +20,7 @@
 
 SystemcallsSingletoncontroller::SystemcallsSingletoncontroller() 
 {
-       SysCalls = NULL;
+       SysCalls = 0;
 }
 
 //
@@ -52,7 +52,7 @@ SystemcallsSingletoncontroller::AddCall(Systemcalls const &newcall)
 {
 // not yet implemented
        ControlledCalls *newCall = new ControlledCalls;
-       if (newCall == NULL) // sorry, no idea
+       if (newCall == 0) // sorry, no idea
                return;
        newCall->next = SysCalls;
        newCall->call = new Systemcalls(newcall);
@@ -69,7 +69,7 @@ void
 SystemcallsSingletoncontroller::Timer()
 {
 	// check each entry of our list, if it's finished
-        ControlledCalls *prev = NULL;
+        ControlledCalls *prev = 0;
 	for (ControlledCalls *actCall=SysCalls; actCall; actCall=actCall->next) 
 		{
 			pid_t pid=actCall->call->Getpid();

@@ -20,16 +20,16 @@ public:
 		Next = 0;
 	}
 	///
-	PathStack(LString const & Path);
+	PathStack(string const & Path);
 	///
 	~PathStack();
 	///
-	int PathPush(LString const & Path);
+	int PathPush(string const & Path);
 	///
 	int PathPop();
 private:
 	///
-	LString Path;
+	string Path;
 	///
 	PathStack *Next;
 };
@@ -38,7 +38,7 @@ private:
 extern PathStack lyxPathStack;
 
 /// some global wrapper functions
-inline int PathPush(LString const & szPath) {
+inline int PathPush(string const & szPath) {
 	return lyxPathStack.PathPush(szPath);
 }
 

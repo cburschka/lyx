@@ -1,20 +1,23 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-*        
-*           Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
+#include <csignal>
+
 #include <unistd.h>
-#include <signal.h>
 #include <sys/wait.h>
+
+#include "support/lstrings.h"
 
 #ifdef __GNUG__
 #pragma implementation
@@ -37,12 +40,6 @@
 #include "lyxtext.h"
 #include "lyx_cb.h"
 #include "gettext.h"
-
-// 	$Id: BufferView.C,v 1.2 1999/10/02 14:01:03 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: BufferView.C,v 1.2 1999/10/02 14:01:03 larsbj Exp $";
-#endif /* lint */
 
 extern BufferList bufferlist;
 void sigchldhandler(pid_t pid, int *status);
@@ -115,7 +112,7 @@ void BufferView::setBuffer(Buffer *b)
 	}
 
 	if (_buffer) {
-		lyxerr.debug(LString("  Buffer addr: ") + PTR_AS_INT(_buffer));
+		lyxerr.debug(string("  Buffer addr: ") + tostr(_buffer));
 		_buffer->addUser(this);
 		_owner->getMenus()->showMenus();
 		// If we don't have a text object for this, we make one
@@ -896,9 +893,11 @@ int BufferView::WorkAreaButtonPress(FL_OBJECT *ob, Window,
 		
 		// Hit above or below the table?
 		if (doit) {
-			long y_tmp = y + screen->first;
-			Row*  row =  _buffer->text->GetRowNearY(y_tmp);
 #if 0
+			long y_tmp = y + screen->first;
+
+			Row*  row =  _buffer->text->GetRowNearY(y_tmp);
+
 			// Isn't this empty code anyway? (Lgb)
 			if (row->par != _buffer->text->cursor.par)
 				doit = true;
@@ -1353,13 +1352,13 @@ void BufferView::CursorToggleCB(FL_OBJECT *ob, long)
 		Window tmpwin;
 		int tmp;
 		XGetInputFocus(fl_display, &tmpwin, &tmp);
-		lyxerr.debug(LString("tmpwin: ") + int(tmpwin));
-		lyxerr.debug(LString("window: ")
-			     + int(view->_owner->getForm()->window));
-		lyxerr.debug(LString("work_area_focus: ")
-			     + int(view->work_area_focus));
-		lyxerr.debug(LString("lyx_focus      : ")
-			     + int(view->lyx_focus));
+		lyxerr.debug(string("tmpwin: ") + tostr(tmpwin));
+		lyxerr.debug(string("window: ")
+			     + tostr(view->_owner->getForm()->window));
+		lyxerr.debug(string("work_area_focus: ")
+			     + tostr(view->work_area_focus));
+		lyxerr.debug(string("lyx_focus      : ")
+			     + tostr(view->lyx_focus));
 		if (tmpwin != view->_owner->getForm()->window) {
 			view->lyx_focus = false;
 			goto skip_timer;
@@ -1517,7 +1516,7 @@ void BufferView::savePosition()
 void BufferView::restorePosition()
 {
 	int  x, y;
-	LString fname = backstack->pop(&x, &y);
+	string fname = backstack->pop(&x, &y);
 	
 	BeforeChange();
 	Buffer *b = (bufferlist.exists(fname)) ? bufferlist.getBuffer(fname):

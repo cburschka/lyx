@@ -1,6 +1,7 @@
 // -*- C++ -*-
-#ifndef _LYX_DRAW_H
-#define _LYX_DRAW_H
+
+#ifndef LYX_DRAW_H
+#define LYX_DRAW_H
 
 #include FORMS_H_LOCATION
 #include "lyxfont.h"

@@ -4,8 +4,8 @@
  *
  *       LyX, The Document Processor
  *
- *       Copyright (C) 1995 Matthias Ettrich
- *       Copyright (C) 1995-1998 The LyX Team.
+ *       Copyright 1995 Matthias Ettrich
+ *       Copyright 1995-1999 The LyX Team.
  *
  * ==================================================
  */
@@ -33,7 +33,7 @@
 #include "lyx_main.h"
 #include "lyxfunc.h"
 #include "spellchecker.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "LyXView.h"
 #include "lastfiles.h"
 #include "bufferlist.h"
@@ -45,12 +45,6 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "gettext.h"
-
-// 	$Id: menus.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: menus.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
 
 extern FD_form_screen *fd_form_screen;
 extern BufferList bufferlist;
@@ -110,7 +104,7 @@ void Menus::hideMenus()
 }
 
 
-void Menus::openByName(LString const &menuName)
+void Menus::openByName(string const &menuName)
 	/* Opens the visible menu of given name, or simply does nothing
 	   when the name is not known. NOTE THE EXTREMELY STUPID
 	   IMPLEMENTATION! :-) There are probably hundred ways to do
@@ -419,7 +413,7 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 
 	// remember to make this handle linuxdoc too.
 	// and now docbook also.
-	int SubFileExport;
+	int SubFileExport = 0;
 	if (!LinuxDoc && !DocBook)
             SubFileExport=fl_defpup(FL_ObjWin(ob),
 				      _("Export%t"
@@ -529,16 +523,16 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 
 	// make the lastfiles menu
 	LastFiles_Iter liter(*lastfiles); // :-)
-	LString filname;
+	string filname;
 	int ii = 1;
 	while( ii < 10 && !(filname = liter()).empty() ) {
-		LString tmp;
-		LString tmp2;
-		LString relbuf = MakeDisplayPath(filname,30);
+		string tmp;
+		string tmp2;
+		string relbuf = MakeDisplayPath(filname,30);
 		tmp += ii;
 		tmp2 = tmp;
 		tmp += ". " + relbuf;
-		tmp2 += LString('#') + ii;
+		tmp2 += string("#") + tostr(ii);
 		fl_addtopup(FileMenu, tmp.c_str());
 		fl_setpup_shortcut(FileMenu, 18 - 1 + ii, tmp2.c_str());
 		ii++;
@@ -667,16 +661,16 @@ void Menus::ShowFileMenu2(FL_OBJECT *ob, long)
 	
 	// make the lastfiles menu
 	LastFiles_Iter liter(*lastfiles); // :-)
-	LString filname;
+	string filname;
 	int ii = 1;
 	while( ii < 10 && !(filname = liter()).empty() ) {
-		LString tmp;
-		LString tmp2;
-		LString relbuf = MakeDisplayPath(filname,30);
+		string tmp;
+		string tmp2;
+		string relbuf = MakeDisplayPath(filname,30);
 		tmp += ii;
 		tmp2 = tmp;
 		tmp += ". " + relbuf;
-		tmp2 += LString('#') + ii;
+		tmp2 += string("#") + tostr(ii);
 		fl_addtopup(FileMenu, tmp.c_str());
 		fl_setpup_shortcut(FileMenu, 6 - 1 + ii, tmp2.c_str());
 		ii++;
@@ -946,9 +940,9 @@ void Menus::ShowEditMenu(FL_OBJECT *ob, long)
 	fl_setpup_shortcut(EditMenu, 17, scex(_("EM|gG#g#G")));
       
 	// disable unavailable entries.
-	if(tmpbuffer->undostack.Top() == NULL)
+	if(tmpbuffer->undostack.Top() == 0)
 		fl_setpup_mode(EditMenu, 1, FL_PUP_GREY);
-	if(tmpbuffer->redostack.Top() == NULL)
+	if(tmpbuffer->redostack.Top() == 0)
 		fl_setpup_mode(EditMenu, 2, FL_PUP_GREY);
 	if(lyxrc->isp_command == "none") 
 		fl_setpup_mode(EditMenu, 11, FL_PUP_GREY);
@@ -1593,7 +1587,7 @@ void Menus::ShowHelpMenu(FL_OBJECT *ob, long)
 	case 10: ShowCredits(); break;
 	case 11:
 		ProhibitInput();
-		fl_show_message((LString(_("LyX Version ")) + LYX_VERSION 
+		fl_show_message((string(_("LyX Version ")) + LYX_VERSION 
 				 + _(" of ") + LYX_RELEASE).c_str(),
 				(_("Library directory: ")
 				 + MakeDisplayPath(system_lyxdir)).c_str(),
@@ -1606,9 +1600,9 @@ void Menus::ShowHelpMenu(FL_OBJECT *ob, long)
 }
 
 
-void Menus::MenuDocu(LString const &docname) 
+void Menus::MenuDocu(string const &docname) 
 {
-	LString fname = i18nLibFileSearch("doc", docname, "lyx");
+	string fname = i18nLibFileSearch("doc", docname, "lyx");
 	_view->getMiniBuffer()->Set(_("Opening help file"),
 				    MakeDisplayPath(fname),"...");
 	currentView()->setBuffer(bufferlist.loadLyXFile(fname,false));

@@ -14,7 +14,7 @@ extern char new_line_color[];
 extern char fill_color[];
 extern int fast_selection;
 extern char on_off_line_color[];
-extern LString background_color;
+extern string background_color;
 extern char lighted_color[];
 extern char selection_color[];
 extern char note_color[];
@@ -29,27 +29,27 @@ char const * const X11Color[11] =
   "yellow", "black", "black" };
  
 // Different graphic contexts
-static GC clear_gc = NULL;
-static GC latex_gc = NULL;
-static GC foot_gc = NULL;
-static GC new_line_gc = NULL;
-static GC math_gc = NULL;
-static GC math_frame_gc = NULL;
-static GC fill_gc = NULL;
-static GC note_gc = NULL;
-static GC note_frame_gc = NULL;
-static GC copy_gc = NULL;
-static GC select_gc = NULL;
-static GC on_off_line_gc = NULL;
-static GC thin_on_off_line_gc = NULL;
-static GC thick_line_gc = NULL;
-static GC lighted_gc = NULL;
-static GC selection_gc = NULL;
-static GC accent_gc[10] = { NULL, NULL, NULL, NULL, NULL,
-			    NULL, NULL, NULL, NULL, NULL };
-static GC color_gc[11] = { NULL, NULL, NULL, NULL, NULL, NULL,
-			   NULL, NULL, NULL, NULL, NULL };
-static GC minipage_gc = NULL;
+static GC clear_gc = 0;
+static GC latex_gc = 0;
+static GC foot_gc = 0;
+static GC new_line_gc = 0;
+static GC math_gc = 0;
+static GC math_frame_gc = 0;
+static GC fill_gc = 0;
+static GC note_gc = 0;
+static GC note_frame_gc = 0;
+static GC copy_gc = 0;
+static GC select_gc = 0;
+static GC on_off_line_gc = 0;
+static GC thin_on_off_line_gc = 0;
+static GC thick_line_gc = 0;
+static GC lighted_gc = 0;
+static GC selection_gc = 0;
+static GC accent_gc[10] = { 0, 0, 0, 0, 0,
+			    0, 0, 0, 0, 0 };
+static GC color_gc[11] = { 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 };
+static GC minipage_gc = 0;
 
 
 // Allocates color and sets it as foreground
@@ -66,7 +66,7 @@ bool setForegroundColor(char const * const color, XGCValues & val)
 		{
 			val.foreground = xcol.pixel;
 		} else {
-			lyxerr.print(LString("LyX: Couldn't get color ") + color);
+			lyxerr.print(string("LyX: Couldn't get color ") + color);
 			return false;
 		}
 	}
@@ -482,7 +482,7 @@ GC GetMinipageGC()
 
 GC getGC(gc_type typ)
 {
-	GC gc = NULL;
+	GC gc = 0;
 	switch(typ) {
 	case gc_clear:
 		gc = GetClearGC();

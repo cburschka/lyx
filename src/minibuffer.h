@@ -31,12 +31,12 @@ public:
 		fl_set_timer(timer, a);
 	}
 	///
-	void Set(LString const& = LString(),
-		 LString const& = LString(),
-		 LString const& = LString(),
+	void Set(string const& = string(),
+		 string const& = string(),
+		 string const& = string(),
 		 int delay_secs=6);
 	/// 
-	LString GetText() const { return text; }
+	string GetText() const { return text; }
 	///
 	void Init();
 	///
@@ -55,9 +55,9 @@ private:
 	///
 	LyXView *owner;
 	///
-	LString text;
+	string text;
 	///
-	LString text_stored;
+	string text_stored;
 	///
 	FL_OBJECT *add(int, FL_Coord, FL_Coord, FL_Coord, FL_Coord);
 	///
@@ -72,15 +72,15 @@ private:
 	///
 	FL_OBJECT *the_buffer;
 	///
-	LString cur_cmd;
+	string cur_cmd;
         ///
         enum{ MAX_HISTORY = 10 };
         ///
-        LString history[MAX_HISTORY];
+        string history[MAX_HISTORY];
         ///
         int history_idx, history_cnt;
         ///
-        void addHistory(LString const &cmd) { 
+        void addHistory(string const &cmd) { 
 	        if (history_cnt==0 || (history_cnt>0 && cmd!=history[(history_cnt-1) % MAX_HISTORY])) {
 		    history[history_cnt % MAX_HISTORY] = cmd;
 		    history_cnt++;
@@ -88,6 +88,6 @@ private:
 	        history_idx = history_cnt;
 	}
         ///
-        LString getHistory() { return history[history_idx % MAX_HISTORY]; }
+        string getHistory() { return history[history_idx % MAX_HISTORY]; }
 };
 #endif

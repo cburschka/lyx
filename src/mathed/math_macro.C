@@ -27,6 +27,7 @@
 #include "math_macro.h"
 #include "math_iter.h"
 #include "math_inset.h"
+#include "support/lstrings.h"
 #include "error.h"
 
 
@@ -148,17 +149,17 @@ void MathMacro::SetFocus(int x, int y)
 
 void MathMacro::Write(FILE *file)
 {
-   LString output;
+   string output;
    MathMacro::Write(output);
    fprintf(file, "%s", output.c_str());
 }
 
 
-void MathMacro::Write(LString &file)
+void MathMacro::Write(string &file)
 {
     if (tmplate->flags & MMF_Exp) {
-	lyxerr.debug(LString("Expand ")+ int(tmplate->flags)
-		     + ' ' + int(MMF_Exp), 
+	lyxerr.debug(string("Expand ")+ tostr(tmplate->flags)
+		     + ' ' + tostr(MMF_Exp), 
 		     Error::MATHED);
 	tmplate->update(this);
 	tmplate->Write(file);
@@ -236,12 +237,12 @@ void MathMacroArgument::Metrics()
 
 void MathMacroArgument::Write(FILE *file)
 {
-   LString output;
+   string output;
    MathMacroArgument::Write(output);
    fprintf(file, "%s", output.c_str());
 }
 
-void MathMacroArgument::Write(LString &file)
+void MathMacroArgument::Write(string &file)
 {
     if (expnd_mode) {
 	MathParInset::Write(file);
@@ -371,7 +372,7 @@ void MathMacroTemplate::WriteDef(FILE *file)
     fprintf(file, "}\n");
 }
 
-void MathMacroTemplate::WriteDef(LString &file)
+void MathMacroTemplate::WriteDef(string &file)
 {
     file += "\n\\newcommand{\\";
     file += name;

@@ -4,8 +4,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1998 The LyX Team
  *
  *======================================================
  */
@@ -14,23 +14,23 @@
 
 #include <unistd.h>
 #include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <signal.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <csignal>
 #include <sys/wait.h>
 #include <sys/types.h>
-#include <ctype.h>
+#include <cctype>
 #include FORMS_H_LOCATION
 
 #if TIME_WITH_SYS_TIME
 # include <sys/time.h>
-# include <time.h>
+# include <ctime>
 #else
 # if HAVE_SYS_TIME_H
 #  include <sys/time.h>
 # else
-#  include <time.h>
+#  include <ctime>
 # endif
 #endif
 
@@ -51,12 +51,6 @@
 extern LyXRC *lyxrc;
 extern BufferView *current_view;
 
-// 	$Id: spellchecker.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: spellchecker.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
-
 // Spellchecker status
 enum {
 	ISP_OK = 1,
@@ -67,7 +61,7 @@ enum {
 	ISP_IGNORE
 };
 
-static bool RunSpellChecker(LString const &);
+static bool RunSpellChecker(string const &);
 
 static FILE *in, *out;  /* streams to communicate with ispell */
 pid_t isp_pid = -1; // pid for the `ispell' process. Also used (RO) in
@@ -79,8 +73,8 @@ static ActualSpellChecker actual_spell_checker;
 
 static int isp_fd;
 
-static FD_form_spell_options *fd_form_spell_options = NULL;
-FD_form_spell_check *fd_form_spell_check = NULL;
+static FD_form_spell_options *fd_form_spell_options = 0;
+FD_form_spell_check *fd_form_spell_check = 0;
 
 //void sigchldhandler(int sig);
 void sigchldhandler(pid_t pid, int *status);
@@ -91,12 +85,12 @@ extern void sigchldchecker(pid_t pid, int *status);
 struct isp_result {
 	int flag;
 	int count;
-	LString string;
+	string str;
 	char **misses;
 	isp_result() {
 		flag = ISP_UNKNOWN;
 		count = 0;
-		misses = (char**)NULL;
+		misses = (char**)0;
 	}
 	~isp_result() {
 		if (misses) delete[] misses;
@@ -107,7 +101,7 @@ struct isp_result {
 /***** Spellchecker options *****/
 
 // Rewritten to use ordinary LyX xforms loop and OK, Apply and Cancel set,
-// now also LString. Amazing, eh? (Asger)
+// now also string. Amazing, eh? (Asger)
 
 // Set (sane) values in form to current spellchecker options
 void SpellOptionsUpdate() 
@@ -199,11 +193,11 @@ void SpellOptionsOKCB(FL_OBJECT * ob, long data)
 void SpellCheckerOptions()
 {
 	// Create form if nescessary
-	if (fd_form_spell_options ==  NULL) {
+	if (fd_form_spell_options ==  0) {
 		fd_form_spell_options = create_form_form_spell_options();
 		// Make sure pressing the close box does not kill LyX. (RvdK)
 		fl_set_form_atclose(fd_form_spell_options->form_spell_options, 
-				    CancelCloseBoxCB, NULL);
+				    CancelCloseBoxCB, 0);
 	}
 
 	// Update form to current options
@@ -229,7 +223,7 @@ void SpellCheckerOptions()
 // Could also use a clean up. (Asger Alstrup)
 
 static
-void create_ispell_pipe(LString const & lang)
+void create_ispell_pipe(string const & lang)
 {
 	static char o_buf[BUFSIZ];  // jc: it could be smaller
 	int pipein[2], pipeout[2];
@@ -243,12 +237,12 @@ void create_ispell_pipe(LString const & lang)
 		return;
 	}
 
-	if ((out = fdopen(pipein[1], "w"))==NULL) {
+	if ((out = fdopen(pipein[1], "w"))==0) {
 		fprintf(stderr,"LyX: Can't create stream for pipe for spellchecker!");
 		return;
 	}
 
-	if ((in = fdopen(pipeout[0], "r"))==NULL) {
+	if ((in = fdopen(pipeout[0], "r"))==0) {
 		fprintf(stderr,"LyX: Can't create stream for pipe for spellchecker!");
 		return;
 	}
@@ -274,46 +268,74 @@ void create_ispell_pipe(LString const & lang)
 		close(pipeout[1]);
 
 		argc = 0;
-		argv[argc++] = lyxrc->isp_command.copy();
-		argv[argc++] = LString("-a").copy(); // "Pipe" mode
+		char * tmp = new char[lyxrc->isp_command.length() + 1];
+		lyxrc->isp_command.copy(tmp, lyxrc->isp_command.length());
+		tmp[lyxrc->isp_command.length()] = '\0';
+		argv[argc++] = tmp;
+		tmp = new char[3];
+		string("-a").copy(tmp, 2); tmp[2] = '\0'; // pipe mode
+		argv[argc++] = tmp;
 
 		if (lang != "default") {
-			argv[argc++] = LString("-d").copy(); // Dictionary file
-			argv[argc++] = lang.copy();
+			tmp = new char[3];
+			string("-d").copy(tmp, 2); tmp[2] = '\0'; // Dictionary file
+			argv[argc++] = tmp;
+			tmp = new char[lang.length() + 1];
+			lang.copy(tmp, lang.length()); tmp[lang.length()] = '\0';
+			argv[argc++] = tmp;
 		}
 
-		if (lyxrc->isp_accept_compound)
+		if (lyxrc->isp_accept_compound) {
 			// Consider run-together words as legal compounds
-			argv[argc++] = LString("-C").copy(); 
-		else
+			tmp = new char[3];
+			string("-C").copy(tmp, 2); tmp[2] = '\0';
+			argv[argc++] = tmp;
+		} else {
 			// Report run-together words with
 			// missing blanks as errors
-			argv[argc++] = LString("-B").copy(); 
-
+			tmp = new char[3]; 
+			string("-B").copy(tmp, 2); tmp[2] = '\0';
+			argv[argc++] = tmp; 
+		}
 		if (lyxrc->isp_use_esc_chars) {
 			// Specify additional characters that
 			// can be part of a word
-			argv[argc++] = LString("-w").copy(); 
+			tmp = new char[3];
+			string("-w").copy(tmp, 2); tmp[2] = '\0';
+			argv[argc++] = tmp; 
 			// Put the escape chars in ""s
-			argv[argc++] = (LString("\"") + lyxrc->isp_esc_chars +
-					LString("\"")).copy();
+			string tms = "\"" + lyxrc->isp_esc_chars + "\"";
+			tmp = new char[tms.length() + 1];
+			tms.copy(tmp, tms.length()); tmp[tms.length()] = '\0';
+			argv[argc++] = tmp;
 		}
 		if (lyxrc->isp_use_pers_dict) {
 			// Specify an alternate personal dictionary
-			argv[argc++] = LString("-p").copy(); 
-			argv[argc++] = lyxrc->isp_pers_dict.copy();
+			tmp = new char[3];
+			string("-p").copy(tmp, 2);
+			tmp[2]='\0';
+			argv[argc++] = tmp;
+			tmp = new char[lyxrc->isp_pers_dict.length() + 1];
+			lyxrc->isp_pers_dict.copy(tmp, lyxrc->isp_pers_dict.length());
+			tmp[lyxrc->isp_pers_dict.length()] = '\0';
+			argv[argc++] = tmp;
 		}
 		if (lyxrc->isp_use_input_encoding &&
         	    current_view->currentBuffer()->params.inputenc != "default") {
-			argv[argc++] = LString("-T").copy(); // Input encoding
-			argv[argc++] = current_view->currentBuffer()->params.inputenc.copy();
+			tmp = new char[3];
+			string("-T").copy(tmp, 2); tmp[2] = '\0';
+			argv[argc++] = tmp; // Input encoding
+			tmp = new char[current_view->currentBuffer()->params.inputenc.length() + 1];
+			current_view->currentBuffer()->params.inputenc.copy(tmp, current_view->currentBuffer()->params.inputenc.length());
+			tmp[current_view->currentBuffer()->params.inputenc.length()] = '\0';
+			argv[argc++] = tmp;
 		}
 
-		argv[argc++] = NULL;
+		argv[argc++] = 0;
 
 		execvp("ispell", (char * const *) argv);
 
-		// free the memory used by LString::copy in the
+		// free the memory used by string::copy in the
 		// setup of argv
 		for (int i=0; i < argc -1; i++)
 			delete[] argv[i];
@@ -379,7 +401,7 @@ void create_ispell_pipe(LString const & lang)
 static
 isp_result *ispell_check_word(char *word)
 {
-	//Please rewrite to use LString.
+	//Please rewrite to use string.
 	isp_result *result;
 	char buf[1024], *p;
 	int count, i;
@@ -391,7 +413,7 @@ isp_result *ispell_check_word(char *word)
   
 	/* I think we have to check if ispell is still alive here because
 	   the signal-handler could have disabled blocking on the fd */
-	if (isp_pid == -1) return (isp_result *) NULL;
+	if (isp_pid == -1) return (isp_result *) 0;
 
 	result = new isp_result;
   
@@ -415,8 +437,10 @@ isp_result *ispell_check_word(char *word)
 	case '&': // Not found, but we have near misses
 	{
 		result->flag = ISP_MISSED;
-		result->string = buf;
-		char * nb = result->string.copy(); // This leaks.
+		result->str = buf;
+		char * nb = new char[result->str.length() + 1];
+		result->str.copy(nb, result->str.length());
+		nb[result->str.length()]='\0';
 		p = strpbrk(nb+2, " ");
 		sscanf(p, "%d", &count); // Get near misses count
 		result->count = count;
@@ -483,7 +507,7 @@ inline void ispell_accept_word(char const *word)
 }
 
 static
-inline void ispell_store_replacement(const char *mis, LString const & cor) {
+inline void ispell_store_replacement(const char *mis, string const & cor) {
         if(actual_spell_checker == ASC_ASPELL) {
                 fputs("$$ra ", out);
                 fputs(mis, out);
@@ -503,10 +527,10 @@ void ShowSpellChecker()
 	if (!current_view->getScreen())
 		return;
 
-	if (fd_form_spell_check == NULL) {
+	if (fd_form_spell_check == 0) {
 		fd_form_spell_check = create_form_form_spell_check();
 		// Make sure pressing the close box does not kill LyX. (RvdK)
-		fl_set_form_atclose(fd_form_spell_check->form_spell_check, IgnoreCloseBoxCB, NULL);
+		fl_set_form_atclose(fd_form_spell_check->form_spell_check, IgnoreCloseBoxCB, 0);
 	}
 
 	// Clear form
@@ -610,7 +634,7 @@ void ShowSpellChecker()
 
 // Perform an ispell session
 static
-bool RunSpellChecker(LString const & lang)
+bool RunSpellChecker(string const & lang)
 {
 	isp_result *result;
 	char *word;
@@ -619,7 +643,7 @@ bool RunSpellChecker(LString const & lang)
 	FL_OBJECT *obj;
 	unsigned int word_count = 0;
 
-	LString tmp = (lyxrc->isp_use_alt_lang) ? lyxrc->isp_alt_lang:lang;
+	string tmp = (lyxrc->isp_use_alt_lang) ? lyxrc->isp_alt_lang:lang;
 
 	oldval = 0;  /* used for updating slider only when needed */
 	newval = 0.0;
@@ -644,7 +668,7 @@ bool RunSpellChecker(LString const & lang)
 
 	while (true) {
 		word = NextWord(newval);
-		if (word==NULL) break;
+		if (word==0) break;
 		word_count++;
 		
 		// Update slider if and only if value has changed
@@ -742,7 +766,7 @@ bool RunSpellChecker(LString const & lang)
    
 	if(isp_pid!=-1) {
 		ispell_terminate();
-		LString word_msg;
+		string word_msg;
 		word_msg += int(word_count);
 		if (word_count != 1) {
 			word_msg += _(" words checked.");

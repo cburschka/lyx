@@ -25,12 +25,12 @@
 
 static XIM xim;
 static XIC xic;
-XComposeStatus compose_status={NULL,0};
+XComposeStatus compose_status={0,0};
 
 // This is called after the main LyX window has been created
 void InitLyXLookup(Display* display, Window window) 
 {
-	xic = NULL;
+	xic = 0;
 
 	// This part could be done before opening display
 	setlocale(LC_CTYPE,"");
@@ -45,19 +45,19 @@ void InitLyXLookup(Display* display, Window window)
 	}
 
 	// This part will have to be done for each frame
-	xim = XOpenIM (display, NULL, NULL, NULL);
+	xim = XOpenIM (display, 0, 0, 0);
 	if (xim) {
 		xic = XCreateIC (xim,  
 			    XNInputStyle, XIMPreeditNothing | XIMStatusNothing,
 			    XNClientWindow, window,
 			    XNFocusWindow, window, 
-			    NULL);
+			    0);
 		
 		if (!xic) {
 			lyxerr.debug("InitLyXLookup: could not create "
 				     "an input context");
 			XCloseIM (xim);
-			xim = NULL;
+			xim = 0;
 		} 
 	}
 	else 
@@ -74,7 +74,7 @@ bool isDeadEvent(XEvent *event,
 {
 	XLookupString(&event->xkey, buffer_return,
 		      bytes_buffer, keysym_return,
-		      NULL);
+		      0);
 	// Can this be done safely in any other way?
 	// This is all the dead keys I know of in X11R6.1
 	if (false
@@ -153,7 +153,7 @@ int LyXLookupString(XEvent *event,
 		}
 		if (event->type != KeyPress)
 			lyxerr.print("LyXLookupString: wrong event type" 
-				      +LString(event->type));
+				      +string(event->type));
 		Status status_return;
 		
 		result =  XmbLookupString(xic, &event->xkey, buffer_return,
@@ -201,7 +201,7 @@ void CloseLyXLookup()
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
-XComposeStatus compose_status={NULL,0};
+XComposeStatus compose_status={0,0};
 
 // This is called after the main LyX window has been created
 void InitLyXLookup(Display* , Window ) 

@@ -26,6 +26,7 @@
 #include "math_cursor.h"
 #include "math_macro.h"
 #include "math_root.h"
+#include "support/lstrings.h"
 #include "error.h"
 
 extern void mathed_set_font(short type, int style);
@@ -48,7 +49,7 @@ inline bool IsMacro(short token, int id)
 	   !(token==LM_TK_SYM && id<255));
 }
 
-// Yes, mathed isn't using LString yet.
+// Yes, mathed isn't using string yet.
 inline char *strnew(char const* s)
 {
     char *s1 = new char[strlen(s)+1];
@@ -86,7 +87,7 @@ struct MathStackXIter {
     }
       
     MathedXIter* Item(int idx) {
-       return (idx+1 <= i) ? &item[i-idx-1]: (MathedXIter*)NULL;
+       return (idx+1 <= i) ? &item[i-idx-1]: (MathedXIter*)0;
     }
 
     void Reset() {
@@ -126,7 +127,7 @@ MathedCursor::MathedCursor(MathParInset *p) // : par(p)
     anchor = 0;
     lastcode = LM_TC_MIN;
     SetPar(p);
-//    selarray = NULL;     
+//    selarray = 0;     
     if (!MathMacroTable::built)
 	MathMacroTable::mathMTable.builtinMacros();
 }
@@ -633,8 +634,8 @@ void MathedCursor::Interpret(char const *s)
     if (!l) {       
 	p = MathMacroTable::mathMTable.getMacro(s);
 	if (!p) {
-	    lyxerr.debug(LString("Macro2 ") + s + ' ' 
-			 + (long)tcode, Error::MATHED);
+	    lyxerr.debug(string("Macro2 ") + s + ' ' 
+			 + tostr(tcode), Error::MATHED);
 	    if (strcmp("root", s)==0) {
 		p = new MathRootInset();
 		tcode = LM_TC_ACTIVE_INSET;
@@ -704,8 +705,8 @@ void MathedCursor::Interpret(char const *s)
 	 case LM_TK_MACRO:
 	    p = MathMacroTable::mathMTable.getMacro(s);
 	    tcode = ((MathMacro*)p)->getTCode();
-	    lyxerr.debug(LString("Macro ") + s + ' ' 
-			 + (long)tcode, Error::MATHED);
+	    lyxerr.debug(string("Macro ") + s + ' ' 
+			 + tostr(tcode), Error::MATHED);
 	    break;
 	 default:
 	 {
@@ -769,7 +770,7 @@ void MathedCursor::MacroModeClose()
 	    imacro->SetName(l->name);
       } else {
          Left();
-	 imacro->SetName(NULL);
+	 imacro->SetName(0);
 	 if (cursor->GetInset()->GetType()==LM_OT_ACCENT) {
 	     setAccent(((MathAccentInset*)cursor->GetInset())->getAccentCode());
 	 }
@@ -778,7 +779,7 @@ void MathedCursor::MacroModeClose()
 	    Interpret(macrobf);
 	 }
       }
-      imacro = NULL;
+      imacro = 0;
    }  
 }
 

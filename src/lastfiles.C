@@ -1,12 +1,12 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
@@ -15,24 +15,17 @@
 #pragma implementation
 #endif
 
-//#include "definitions.h"
 #include "lyxlex.h"
-#include "FileInfo.h"
+#include "support/FileInfo.h"
 #include "lastfiles.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "error.h"
 
-// 	$Id: lastfiles.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: lastfiles.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
-
-LastFiles::LastFiles(LString const & filename, bool st, char num)
+LastFiles::LastFiles(string const & filename, bool st, char num)
 	: dostat(st)
 {
 	setNumberOfFiles(num);
-	files = new LString[num_files];
+	files = new string[num_files];
 	readFile(filename);
 }
 
@@ -48,18 +41,18 @@ void LastFiles::setNumberOfFiles(char no)
 	if (1 <= no && no <= ABSOLUTEMAXLASTFILES)
 		num_files = no;
 	else {
-		lyxerr.print(LString("LyX: lastfiles: too many files\n"
-			"\tdefault (=") + int(DEFAULTFILES) + ") used.");
+		lyxerr.print(string("LyX: lastfiles: too many files\n"
+			"\tdefault (=") + tostr(DEFAULTFILES) + ") used.");
 		num_files = DEFAULTFILES;
 	}
 }
 
 
-void LastFiles::readFile(LString const & filename)
+void LastFiles::readFile(string const & filename)
 {
 	// we will not complain if we can't find filename nor will
 	// we issue a warning. Lgb.
-	LyXLex lex(NULL, 0); /* LyXLex should be changed
+	LyXLex lex(0, 0); /* LyXLex should be changed
 			      * to allow constructor with
 			      * no parameters. */
 	bool error = false;
@@ -68,7 +61,7 @@ void LastFiles::readFile(LString const & filename)
 
 	if (!lex.IsOK()) return;
 
-	LString tmp;
+	string tmp;
 	FileInfo fileInfo;
 	int i = 0;
 
@@ -93,7 +86,7 @@ void LastFiles::readFile(LString const & filename)
 }
 
 
-void LastFiles::writeFile(LString const & filename) const
+void LastFiles::writeFile(string const & filename) const
 {
 	FilePtr fd(filename, FilePtr::write);
 	if (fd()) {
@@ -107,7 +100,7 @@ void LastFiles::writeFile(LString const & filename) const
 }
 
 
-void LastFiles::newFile(LString const & file)
+void LastFiles::newFile(string const & file)
 {
 	int n;
 	// Find this file in list. If not in list, point to last entry

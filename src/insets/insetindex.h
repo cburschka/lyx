@@ -31,7 +31,7 @@ public:
 	///
 	InsetIndex(): InsetCommand("index") {;}
 	///
-	InsetIndex(LString const & key);
+	InsetIndex(string const & key);
 	///
 	~InsetIndex();
 	///
@@ -44,7 +44,7 @@ public:
 		return 1;
 	}
 	///
-	LString getScreenLabel() const;
+	string getScreenLabel() const;
 };
 
 
@@ -69,7 +69,7 @@ public:
 	///
 	Inset::Code LyxCode() const;
 	///
-	LString getScreenLabel() const;
+	string getScreenLabel() const;
 private:
 	///
 	Buffer *owner;

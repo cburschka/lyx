@@ -3,8 +3,8 @@
 * 
 *           LyX, The Document Processor
 * 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team
+*	    Copyright 1995 Matthias Ettrich
+*           Copyright 1995-1998 The LyX Team
 *
 *======================================================*/
 
@@ -17,12 +17,6 @@
 #include "lyxscreen.h"
 #include "lyxdraw.h"
 #include "lyxtext.h"
-
-// 	$Id: screen.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: screen.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
 
 extern int mono_video;
 extern int fast_selection;
@@ -104,7 +98,7 @@ void LyXScreen::DrawFromTo(int y1, int y2)
 	y = y_text - first;
 	/* y1 is now the real beginning of row on the screen */
 	
-	while (row != NULL && y < y2) {
+	while (row != 0 && y < y2) {
 
 		text->GetVisibleRow(*this, y, row, y + first);
 		y += row->height;

@@ -33,7 +33,7 @@ public:
 	  Parameters are: name of file to read. Whether you want LastFiles 
 	  to check for file existance, and the number of files to remember.
 	  */
-	LastFiles(LString const &, bool dostat = true, char num = 4);
+	LastFiles(string const &, bool dostat = true, char num = 4);
 	///
 	~LastFiles();
 	//@}
@@ -46,12 +46,12 @@ public:
 	  exist it is placed on the top of the list. If the list already is
 	  full the last visited file in the list is puched out and deleted.
 	 */
-	void newFile(LString const &);
+	void newFile(string const &);
 	/**  Writes the lastfiles table to disk. A " is placed around the
 	  filenames to preserve special chars. (not all are preserved
 	  anyway, but at least space is.)
 	  */
-	void writeFile(LString const &) const;
+	void writeFile(string const &) const;
 	//@}
 private:
 	/**@name const variables */
@@ -75,7 +75,7 @@ private:
 	/**@name Variables */
 	//@{
 	/// an array of lastfiles
-	LString *files;
+	string *files;
 	/// number of files in the lastfiles list.
 	char num_files;
 	/// check for file existance or not.
@@ -89,7 +89,7 @@ private:
 	  will normally discard files that don't exist anymore, unless
 	  LastFiles has been initialized with dostat = false. 
 	 */
-	void readFile(LString const &);
+	void readFile(string const &);
 	/// used by the constructor to set the number of stored last files.
         void setNumberOfFiles(char num);
 	//@}
@@ -109,13 +109,13 @@ public:
 	LastFiles_Iter(const LastFiles& la)
 	{cs = &la; index = 0;}
 	///
-	LString operator() ()
+	string operator() ()
 	{
 		return (index < cs->num_files)? cs->files[index++] 
-					        : LString();
+					        : string();
 	}
 	///
-	LString operator[] (int a)
+	string operator[] (int a)
 	{ return cs->files[a];}
 private:
 	///

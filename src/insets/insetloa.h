@@ -34,7 +34,7 @@ public:
         ///
         Inset* Clone() { return new InsetLOA(owner); }
     	///
-	LString getScreenLabel() const { return _("List of Algorithms"); }
+	string getScreenLabel() const { return _("List of Algorithms"); }
 
 	
 	//void Edit(int, int);

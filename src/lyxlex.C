@@ -5,10 +5,8 @@
 //   (C) 1996 Lyx Team.
 
 #include <config.h>
-//#include "definitions.h"
 
-#include <stdlib.h>
-#include <string.h>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation "lyxlex.h"
@@ -16,28 +14,21 @@
 
 #include "lyxlex.h"
 #include "error.h"
-#include "filetools.h"
+#include "support/filetools.h"
 
-// 	$Id: lyxlex.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: lyxlex.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
-
-
-LyXLex::LyXLex(keyword_item* tab, int num)
+LyXLex::LyXLex(keyword_item * tab, int num)
 	: table(tab), no_items(num)
 {
-	file = NULL;
+	file = 0;
 	owns_file = false;
 	status = 0;
-	pushed = NULL;
+	pushed = 0;
 }
 
 
-void LyXLex::pushTable(keyword_item* tab, int num)
+void LyXLex::pushTable(keyword_item * tab, int num)
 {
-	pushed_table *tmppu = new pushed_table;
+	pushed_table * tmppu = new pushed_table;
 	tmppu->next = pushed;
 	tmppu->table_elem = table;
 	tmppu->table_siz = no_items;
@@ -49,14 +40,14 @@ void LyXLex::pushTable(keyword_item* tab, int num)
 
 void LyXLex::popTable()
 {
-	if (pushed == NULL)
+	if (pushed == 0)
 		lyxerr.print("LyXLex error: nothing to pop!");
 
-	pushed_table *tmp;
+	pushed_table * tmp;
 	tmp = pushed;
 	table = tmp->table_elem;
 	no_items = tmp->table_siz;
-	tmp->table_elem = NULL;
+	tmp->table_elem = 0;
 	pushed = tmp->next;
 	delete tmp;
 }
@@ -64,25 +55,24 @@ void LyXLex::popTable()
 
 void LyXLex::printTable()
 {
-	lyxerr.print(LString("\nNumber of tags: ")+no_items);
+	lyxerr.print(string("\nNumber of tags: ") + tostr(no_items));
 	for(int i=0; i<no_items; i++)
-		lyxerr.print(LString("table[")+i+
-                              "]:  tag: `"+table[i].tag+
-                              "'  code:"+(long)table[i].code);
-	lyxerr.print(LString());
+		lyxerr.print(string("table[")+ tostr(i) +
+                              "]:  tag: `" + table[i].tag +
+                              "'  code:" + tostr(table[i].code));
+	lyxerr.print(string());
 }
 
 
-void LyXLex::printError(LString const & message)
+void LyXLex::printError(string const & message)
 {
-	LString tmpmsg = message;
-	tmpmsg.subst("$$Token",GetString());
-	lyxerr.print("LyX: "+tmpmsg+" [around line "+lineno+" of file "
-		      +MakeDisplayPath(name)+']');
+	string tmpmsg = subst(message, "$$Token", GetString());
+	lyxerr.print("LyX: " + tmpmsg + " [around line " + tostr(lineno) + " of file "
+		      + MakeDisplayPath(name) + ']');
 }
 
 
-bool LyXLex::setFile(LString const & filename)
+bool LyXLex::setFile(string const & filename)
 {
         if (file) 
 		lyxerr.print("Error in LyXLex::setFile: file already set.");
@@ -94,7 +84,7 @@ bool LyXLex::setFile(LString const & filename)
 }
 
 
-void LyXLex::setFile(FILE *f)
+void LyXLex::setFile(FILE * f)
 {
         if (file) 
 		lyxerr.print("Error in LyXLex::setFile: file already set.");
@@ -128,7 +118,7 @@ int LyXLex::GetInteger()
 float LyXLex::GetFloat()
 {
    if (buff[0]>' ')   
-       return (float)strtod(buff, (char**)NULL);
+       return (float)strtod(buff, (char**)0);
    else {
 	printError("Bad float `$$Token'");
 	return -1;
@@ -136,18 +126,18 @@ float LyXLex::GetFloat()
 }
 
 
-LString LyXLex::GetString() const
+string LyXLex::GetString() const
 {
-	return LString(buff);
+	return string(buff);
 }
 
 
 // I would prefer to give a tag number instead of an explicit token
 // here, but it is not possible because Buffer::readLyXformat2 uses
 // explicit tokens (JMarc) 
-LString LyXLex::getLongString(LString const &endtoken)
+string LyXLex::getLongString(string const & endtoken)
 {
-	LString str, prefix;
+	string str, prefix;
 	bool firstline = true;
 
 	while (IsOK()) {
@@ -155,19 +145,19 @@ LString LyXLex::getLongString(LString const &endtoken)
 			// blank line in the file being read
 			continue;
 		
-		LString const token = GetString().strip().frontStrip();
+		string const token = frontStrip(strip(GetString()), " \t");
 		
 		lyxerr.debug("LongString: `"+GetString()+'\'', Error::LEX_PARSER);
 
 		// We do a case independent comparison, like search_kw
 		// does.
-                if (strcasecmp(token.c_str(), endtoken.c_str()) != 0) {
-			LString tmpstr = GetString();
+                if (compare_no_case(token, endtoken) != 0) {
+			string tmpstr = GetString();
 			if (firstline) {
-				int i = 0;
+				unsigned int i = 0;
 				while(i < tmpstr.length()
 				      && tmpstr[i] == ' ') {
-					i++;
+					++i;
 					prefix += ' ';
 				}
 				firstline = false;
@@ -176,9 +166,8 @@ LString LyXLex::getLongString(LString const &endtoken)
 			} 
 
 			if (!prefix.empty() 
-			    && tmpstr.prefixIs(prefix.c_str())) {
-				tmpstr.substring(prefix.length(), 
-						 tmpstr.length()-1);
+			    && prefixIs(tmpstr, prefix.c_str())) {
+				tmpstr.erase(0, prefix.length() - 1);
 			}
 			str += tmpstr + '\n';
                 }
@@ -194,9 +183,9 @@ LString LyXLex::getLongString(LString const &endtoken)
 
 bool LyXLex::GetBool()
 {
-   if (strcmp(buff, "true") == 0)
+   if (compare(buff, "true") == 0)
 	return true;
-   else if (strcmp(buff, "false") != 0)
+   else if (compare(buff, "false") != 0)
 	printError("Bad boolean `$$Token'. Use \"false\" or \"true\"");
    return false;
 }
@@ -215,11 +204,11 @@ bool LyXLex::EatLine()
 	if (i==(LEX_MAX_BUFF-1) && c !='\n') {
    		printError("Line too long");
 		c = '\n'; // Pretend we had an end of line
-		lineno--; // but don't increase line counter (netto effect)
-		i++; // and preserve last character read.
+		--lineno; // but don't increase line counter (netto effect)
+		++i; // and preserve last character read.
 	}
 	if (c=='\n') {
-		lineno++;
+		++lineno;
 		buff[--i] = '\0'; // i can never be 0 here, so no danger
 		status = LEX_DATA;
 		return true;
@@ -238,7 +227,7 @@ int LyXLex::search_kw(char const * const tag) const
 		m = (l+r)/2;
 
 		if (lyxerr.debugging(Error::LEX_PARSER)) {
-			LString my_l;
+			string my_l;
 			my_l+="LyXLex::search_kw: elem " ;
 			my_l+= m; 
 			my_l+=" tag "; 
@@ -249,7 +238,7 @@ int LyXLex::search_kw(char const * const tag) const
 		}
 
 		if (table[m].tag)
-			k = strcasecmp(table[m].tag, tag);
+			k = compare_no_case(table[m].tag, tag);
 		if (k==0)
 			return table[m].code;
 		else
@@ -273,7 +262,7 @@ bool LyXLex::next(bool esc)
 			if (c=='#') {
 				// Read rest of line (fast :-)
 				fgets(buff, sizeof(buff), file);
-				lineno++;
+				++lineno;
 				continue;
 			}
 			
@@ -289,13 +278,13 @@ bool LyXLex::next(bool esc)
 				if (i==(LEX_MAX_BUFF-2)) {
 					printError("Line too long");
 					c = '\"'; // Pretend we got a "
-					i++;
+					++i;
 				}
 				
 				if (c!='\"') {
 					printError("Missing quote");
 					if (c=='\n')
-						lineno++;
+						++lineno;
 				}
 				
 				buff[i] = '\0';
@@ -320,7 +309,7 @@ bool LyXLex::next(bool esc)
 				status = LEX_TOKEN;
 			}
 			
-			if (c=='\r' && !feof(file)) {
+			if (c== '\r' && !feof(file)) {
 				// The Windows support has lead to the
 				// possibility of "\r\n" at the end of
 				// a line.  This will stop LyX choking
@@ -329,7 +318,7 @@ bool LyXLex::next(bool esc)
 			}
 
 			if (c=='\n')
-				lineno++;
+				++lineno;
 			
 		}
 		if (status) return true;
@@ -372,7 +361,7 @@ bool LyXLex::next(bool esc)
 			if (c=='#') {
 				// Read rest of line (fast :-)
 				fgets(buff, sizeof(buff), file);
-				lineno++;
+				++lineno;
 				continue;
 			}
 
@@ -398,13 +387,13 @@ bool LyXLex::next(bool esc)
 				if (i==(LEX_MAX_BUFF-2)) {
 					printError("Line too long");
 					c = '\"'; // Pretend we got a "
-					i++;
+					++i;
 				}
 				
 				if (c!='\"') {
 					printError("Missing quote");
 					if (c=='\n')
-						lineno++;
+						++lineno;
 				}
 				
 				buff[i] = '\0';
@@ -433,7 +422,7 @@ bool LyXLex::next(bool esc)
 
 			// new line
 			if (c=='\n')
-				lineno++;
+				++lineno;
 		}
 		
 		if (status) return true;
@@ -480,7 +469,7 @@ bool LyXLex::nextToken()
 		}
 		  
 		if (c=='\n')
-			lineno++;
+			++lineno;
 	
 	}
         if (status)  return true;
@@ -491,14 +480,14 @@ bool LyXLex::nextToken()
 }
 
 
-int LyXLex::FindToken(char const* string[])
+int LyXLex::FindToken(char const * str[])
 {  
    int i = -1;
    
    if (next()) {
-      if (strcmp(buff, "default")) {
-	 for (i=0; string[i][0] && strcmp(string[i], buff); i++);
-	 if (!string[i][0]) {
+      if (compare(buff, "default")) {
+	 for (i = 0; str[i][0] && compare(str[i], buff); ++i);
+	 if (!str[i][0]) {
 	    printError("Unknown argument `$$Token'");
 	    i = -1;
 	 }
@@ -509,13 +498,13 @@ int LyXLex::FindToken(char const* string[])
 }
 
 
-int LyXLex::CheckToken(char const* string[], int print_error)
+int LyXLex::CheckToken(char const * str[], int print_error)
 {  
    int i = -1;
    
-   if (strcmp(buff, "default")) {
-       for (i=0; string[i][0] && strcmp(string[i], buff); i++);
-       if (!string[i][0]) {
+   if (compare(buff, "default")) {
+       for (i = 0; str[i][0] && compare(str[i], buff); i++);
+       if (!str[i][0]) {
            if (print_error)
                printError("Unknown argument `$$Token'");
            i = -1;

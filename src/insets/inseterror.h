@@ -28,7 +28,7 @@
 class InsetError: public Inset {
 public:
 	///
-	InsetError(LString const & string);
+	InsetError(string const & string);
 	///
 	InsetError();
 	///
@@ -48,11 +48,11 @@ public:
 	///
 	int Latex(FILE *file, signed char fragile);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string &file, signed char fragile);
 	///
-	int Linuxdoc(LString &file);
+	int Linuxdoc(string &file);
 	///
-	int DocBook(LString &file);
+	int DocBook(string &file);
 	///
 	bool AutoDelete() const;
 	/// what appears in the minibuffer when opening
@@ -69,7 +69,7 @@ public:
 	bool DirectWrite() const { return true; };
 private:
 	///
-	LString contents;
+	string contents;
 	///
 	FL_FORM *form;
 	///

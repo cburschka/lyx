@@ -27,7 +27,7 @@ class LyXServer;
  messages, and callback-function that will be called with the messages.
  When you want to send, use "send()".
  This class encapsulates all the dirty communication and thus provides
- a clean LString interface.
+ a clean string interface.
  */
 class LyXComm
 {
@@ -36,10 +36,10 @@ public:
 	  This is one of the small things that would have been a lot
 	  cleaner with a Signal/Slot thing.
 	 */
-	typedef void (*ClientCallbackfct)(LyXServer *, LString const &);
+	typedef void (*ClientCallbackfct)(LyXServer *, string const &);
 
 	/// Construct with pipe-basename and callback to receive messages
-	LyXComm(LString const &pip, LyXServer * cli, ClientCallbackfct ccb = 0)
+	LyXComm(string const &pip, LyXServer * cli, ClientCallbackfct ccb = 0)
 		:pipename(pip), client(cli), clientcb(ccb)
 	{
 		ready = false;
@@ -52,7 +52,7 @@ public:
 	}
 
 	/// Send message
-	void send(LString const &);
+	void send(string const &);
 private:
 	/// Open pipes
 	void openConnection();
@@ -73,7 +73,7 @@ private:
 	bool ready;
 
 	/// Base of pipename including path
-	LString pipename;
+	string pipename;
 
 	/// The client
 	LyXServer * client;
@@ -97,19 +97,19 @@ public:
         // bufferview. We just have to find a way to handle situations like if
         // lyxserver is using a buffer that is being edited with a bufferview.
         // With a common buffer list this is not a problem, maybe. (Alejandro)
-	LyXServer(LyXFunc *f, LString const &pip)
+	LyXServer(LyXFunc *f, string const &pip)
 		: numclients(0), func(f), pipes(pip, (this), callback)
 	{ }
         /// 
 	~LyXServer();
 	///
-	void notifyClient(LString const &);
+	void notifyClient(string const &);
 private:
 	///
-	static void callback(LyXServer *, LString const & msg);
+	static void callback(LyXServer *, string const & msg);
 	/// Names and number of current clients
 	enum { MAX_CLIENTS = 10 };
-	LString clients[MAX_CLIENTS];
+	string clients[MAX_CLIENTS];
 	int numclients;
 	///
 	LyXFunc *func;

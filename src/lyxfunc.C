@@ -1,18 +1,18 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
-#include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
+#include <cstdlib>
+#include <cctype>
+#include <cstring>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -48,8 +48,8 @@
 #include "insets/insetinclude.h"
 #include "filedlg.h"
 #include "lyx_gui_misc.h"
-#include "filetools.h"
-#include "FileInfo.h"
+#include "support/filetools.h"
+#include "support/FileInfo.h"
 #include "lyxscreen.h"
 #include "error.h"
 #include "lyxrc.h"
@@ -59,15 +59,9 @@
 #include "ImportLaTeX.h"
 #include "ImportNoweb.h"
 
-// 	$Id: lyxfunc.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: lyxfunc.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
-
 extern bool cursor_follows_scrollbar;
 
-extern void InsertAsciiFile(LString const &, bool);
+extern void InsertAsciiFile(string const &, bool);
 extern void math_insert_symbol(char const*);
 extern Bool math_insert_greek(char const); // why "Bool"?
 extern BufferList bufferlist;
@@ -130,8 +124,8 @@ extern void MenuLayoutPreamble();
 extern void MenuLayoutSave();
 extern void bulletForm();
 
-extern Buffer * NewLyxFile(LString const &);
-extern void LoadLyXFile(LString const &);
+extern Buffer * NewLyxFile(string const &);
+extern void LoadLyXFile(string const &);
 extern void Reconfigure();
 
 extern int current_layout;
@@ -163,9 +157,9 @@ LyXFunc::~LyXFunc()
 }
 
 
-LString LyXFunc::argAsString(char const *const argument)
+string LyXFunc::argAsString(char const *const argument)
 {
-	LString tmp(argument);
+	string tmp(argument);
 
 	if (tmp.empty()) {
 		// get the arg from somewhere else, a popup, or ask for
@@ -213,14 +207,14 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 	num_bytes = LyXLookupString(ev, s_r, 10, &keysym_return);
 
 	if (lyxerr.debugging(Error::KEY)) {
-		lyxerr.print(LString("KeySym is ")
+		lyxerr.print(string("KeySym is ")
 			     + XKeysymToString(keysym_return)
 			     + "["
-			     + int(keysym_return) + "]"
+			     + tostr(keysym_return) + "]"
 			     + " and num_bytes is "
-			     + num_bytes
+			     + tostr(num_bytes)
 			     + " the string returned is \""
-			     + LString(s_r) + '\"');
+			     + string(s_r) + '\"');
 	}
 	// Do nothing if we have nothing (JMarc)
 	if (num_bytes == 0 && keysym_return == NoSymbol) {
@@ -273,10 +267,10 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 	if (lyxerr.debugging(Error::KEY)) {
 		char buf[100];
 		keyseq.print(buf,100);
-		lyxerr.print(LString("Key [")
-			     + int(action) + "]["
+		lyxerr.print(string("Key [")
+			     + tostr(action) + "]["
 			     + buf + "]["
-			     + num_bytes +"]");
+			     + tostr(num_bytes) +"]");
 	}
 
 	// already here we know if it any point in going further
@@ -333,14 +327,14 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 } 
 
 
-LString LyXFunc::Dispatch(LString const &cmd, LString const &arg)
+string LyXFunc::Dispatch(string const &cmd, string const &arg)
 {
 	return Dispatch(lyxaction.LookupFunc(cmd.c_str()),
 			arg.c_str());
 }
 
 
-LString LyXFunc::Dispatch(int ac,
+string LyXFunc::Dispatch(int ac,
 			  char const *do_not_use_this_arg)
 {
 	char const * argument = 0;
@@ -351,7 +345,7 @@ LString LyXFunc::Dispatch(int ac,
     
         // we have not done anything wrong yet.
         errorstat = false;
-	dispatch_buffer = LString();
+	dispatch_buffer = string();
 	
 	// if action is a pseudo-action, we need the real action
 	if (lyxaction.isPseudoAction(ac)) {
@@ -403,19 +397,20 @@ LString LyXFunc::Dispatch(int ac,
 		}
 	}
 	
-	commandshortcut = LString();
+	commandshortcut = string();
 	
 	if (lyxrc->display_shortcuts && show_sc) {
 		if (action != LFUN_SELFINSERT) {
 			// Put name of command and list of shortcuts
 			// for it in minibuffer
-			LString comname = lyxaction.getActionName(action);
+			string comname = lyxaction.getActionName(action);
 
 			int pseudoaction = action;
 			bool argsadded = false;
 
-			LString argu = argument;
-			if (!argu.empty()) {
+			string argu;
+			if (argument) {
+				argu = argument;
 				// If we have the command with argument, 
 				// this is better
 				pseudoaction = 
@@ -430,7 +425,7 @@ LString LyXFunc::Dispatch(int ac,
 				}
 			}
 
-			LString shortcuts = toplevel_keymap->findbinding(pseudoaction);
+			string shortcuts = toplevel_keymap->findbinding(pseudoaction);
 
 			if (!shortcuts.empty()) {
 				comname += ": " + shortcuts;
@@ -439,7 +434,7 @@ LString LyXFunc::Dispatch(int ac,
 			}
 
 			if (!comname.empty()) {
-				comname.strip();
+				comname = strip(comname);
 				commandshortcut = "(" + comname + ')';
 				owner->getMiniBuffer()->Set(commandshortcut);
 				// Here we could even add a small pause,
@@ -483,7 +478,7 @@ LString LyXFunc::Dispatch(int ac,
 				inset = (UpdatableInset*)owner->currentBuffer()->text->cursor.par->GetInset(owner->currentBuffer()->text->cursor.pos);
 				if (inset) 
 					inset->Edit(slx, sly);
-				return LString();
+				return string();
 			} else 
 				if (action==LFUN_REDO) {
 					int slx, sly;
@@ -494,16 +489,16 @@ LString LyXFunc::Dispatch(int ac,
 					inset = (UpdatableInset*)owner->currentBuffer()->text->cursor.par->GetInset(owner->currentBuffer()->text->cursor.pos);
 					if (inset)
 						inset->Edit(slx, sly);
-					return LString();
+					return string();
 				} else
 					if (owner->currentBuffer()->the_locking_inset->LocalDispatch(action, argument))
-						return LString();
+						return string();
 					else {
 						setMessage(N_("Text mode"));
 						if (action==LFUN_RIGHT || action==-1)
 							owner->currentBuffer()->text->CursorRight();
 						if (action==LFUN_LEFT || action==LFUN_RIGHT)
-							return LString();
+							return string();
 					}
 		}
 	}
@@ -513,10 +508,10 @@ LString LyXFunc::Dispatch(int ac,
 	case LFUN_WORDFINDFORWARD  : 
 	case LFUN_WORDFINDBACKWARD : { 
 		LyXText *ltCur;
-		static LString last_search;
-		LString searched_string;
+		static string last_search;
+		string searched_string;
 	    
-		LString arg = argAsString(argument);
+		string arg = argAsString(argument);
 			
 		if (!arg.empty()) {
 			last_search = arg;
@@ -567,7 +562,7 @@ LString LyXFunc::Dispatch(int ac,
 		}
 		char buf[100];
 		keyseq.print(buf,100, true);
-		owner->getMiniBuffer()->Set(buf, LString(), LString(), 1);
+		owner->getMiniBuffer()->Set(buf, string(), string(), 1);
 	}
 	break;
 
@@ -581,7 +576,7 @@ LString LyXFunc::Dispatch(int ac,
 		meta_fake_bit = 0;
 		if(owner->currentView()->available())
 			// cancel any selection
-			Dispatch(int(LFUN_MARK_OFF), NULL);
+			Dispatch(int(LFUN_MARK_OFF), 0);
 		setMessage(N_("Cancel"));
 		break;
 
@@ -590,7 +585,7 @@ LString LyXFunc::Dispatch(int ac,
 		meta_fake_bit = Mod1Mask;
 		char buf[100];
 		keyseq.print(buf, 98, true);
-		LString res = LString("M-") + buf;
+		string res = string("M-") + buf;
 		setMessage(buf); // RVDK_PATCH_5
 	}
 	break;  
@@ -690,7 +685,7 @@ LString LyXFunc::Dispatch(int ac,
 	case LFUN_EXPORT:
 	{
 		//needs argument as string
-		LString extyp=argAsString(argument);
+		string extyp=argAsString(argument);
 		
 		// latex
 		if (extyp == "latex") {
@@ -736,7 +731,7 @@ LString LyXFunc::Dispatch(int ac,
 			break;
 		}
 		else {
-			setErrorMessage(LString(N_("Unknown export type: "))
+			setErrorMessage(string(N_("Unknown export type: "))
 					+ extyp);
 		}
 	}
@@ -745,7 +740,7 @@ LString LyXFunc::Dispatch(int ac,
 	case LFUN_IMPORT:
 	{
 		//needs argument as string
-		LString imtyp=argAsString(argument);
+		string imtyp=argAsString(argument);
 		
 		// latex
 		if (imtyp == "latex") {
@@ -760,7 +755,7 @@ LString LyXFunc::Dispatch(int ac,
 		} else if (imtyp == "noweb") {
 			doImportLaTeX(true);
 		} else {
-			setErrorMessage(LString(N_("Unknown import type: "))
+			setErrorMessage(string(N_("Unknown import type: "))
 					+ imtyp);
 		}
 		break;
@@ -849,7 +844,7 @@ LString LyXFunc::Dispatch(int ac,
 	case LFUN_PASTESELECTION:
 	{
 	        bool asPara = false;
-		if (LString(argument) == "paragraph") asPara = true;
+		if (string(argument) == "paragraph") asPara = true;
 		MenuPasteSelection(asPara);
 		break;
 	}
@@ -1026,7 +1021,7 @@ LString LyXFunc::Dispatch(int ac,
 	case LFUN_FILE_INSERT:
 	{
 		// needs argument as string
-		LString fil = argAsString(argument);
+		string fil = argAsString(argument);
 		MenuInsertLyXFile(fil);
 	}
 	break;
@@ -1034,8 +1029,8 @@ LString LyXFunc::Dispatch(int ac,
 	case LFUN_FILE_INSERT_ASCII:
 	{
 	        bool asPara = false;
-		asPara = (LString(argument) == "paragraph");
-		InsertAsciiFile(LString(), asPara);
+		asPara = (string(argument) == "paragraph");
+		InsertAsciiFile(string(), asPara);
 	}
 	break;
 	
@@ -1060,13 +1055,13 @@ LString LyXFunc::Dispatch(int ac,
 		
 	case LFUN_LAYOUTNO:
 	{
-		lyxerr.debug("LFUN_LAYOUTNO: (arg) " + LString(argument));
+		lyxerr.debug("LFUN_LAYOUTNO: (arg) " + string(argument));
 		int sel = atoi(argument);
-		lyxerr.debug(LString("LFUN_LAYOUTNO: (sel) ") + int(sel));
+		lyxerr.debug(string("LFUN_LAYOUTNO: (sel) ") + tostr(sel));
 		
 		// Should this give a setMessage instead?
 		if (sel == 0) 
-			return LString(); // illegal argument
+			return string(); // illegal argument
 
 		sel--; // sel 1..., but layout 0...
 
@@ -1076,13 +1071,13 @@ LString LyXFunc::Dispatch(int ac,
 					       text->parameters->
 					       textclass,
 					       sel).c_str());
-		return LString();
+		return string();
 	}
 		
 	case LFUN_LAYOUT:
 	{
 		lyxerr.debug("LFUN_LAYOUT: (arg) "
-			     + LString(argument));
+			     + string(argument));
 		
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number). */    
@@ -1096,7 +1091,7 @@ LString LyXFunc::Dispatch(int ac,
 
 		// see if we found the layout number:
 		if (layoutno == -1) {
-			setErrorMessage(LString(N_("Layout ")) + argument + 
+			setErrorMessage(string(N_("Layout ")) + argument + 
 					N_(" not known"));
 			break;
 		}
@@ -1131,7 +1126,7 @@ LString LyXFunc::Dispatch(int ac,
 	case LFUN_LAYOUT_TABLE:
 	{
 	        int flag = 0;
-	        if (LString(argument) == "true") flag = 1;
+	        if (string(argument) == "true") flag = 1;
 		MenuLayoutTable(flag);
 	}
 	break;
@@ -1252,7 +1247,7 @@ LString LyXFunc::Dispatch(int ac,
 
 	case LFUN_REFGOTO:
 	{
-		LString label(argument);
+		string label(argument);
 		if (label.empty()) {
 			InsetRef *inset =
 				(InsetRef*)getInsetByCode(Inset::REF_CODE);
@@ -1853,9 +1848,9 @@ LString LyXFunc::Dispatch(int ac,
 	break;
 	
 	case LFUN_GETXY:
-		dispatch_buffer = LString()
-			+ owner->currentBuffer()->text->cursor.x + ' '
-			+ owner->currentBuffer()->text->cursor.y;
+		dispatch_buffer = 
+			 tostr(owner->currentBuffer()->text->cursor.x) + ' '
+			+ tostr(owner->currentBuffer()->text->cursor.y);
 		break;
 		
 	case LFUN_SETXY:
@@ -1868,8 +1863,8 @@ LString LyXFunc::Dispatch(int ac,
 	break;
 	
 	case LFUN_GETLAYOUT:
-		dispatch_buffer = LString() + 
-			int(owner->currentBuffer()->text->cursor.par->layout);
+		dispatch_buffer =  
+			tostr(owner->currentBuffer()->text->cursor.par->layout);
 		break;
 			
 	case LFUN_GETFONT:
@@ -1897,7 +1892,7 @@ LString LyXFunc::Dispatch(int ac,
 
 	case LFUN_GETNAME:
 		setMessage(owner->currentBuffer()->getFileName());
-		lyxerr.debug(LString("FNAME[") +
+		lyxerr.debug(string("FNAME[") +
 			     owner->currentBuffer()->getFileName() +
 			     "] ");
 		break;
@@ -1918,7 +1913,7 @@ LString LyXFunc::Dispatch(int ac,
 		sscanf(argument, " %s %d", file_name, &row);
 
 		// Must replace extension of the file to be .lyx and get full path
-		LString s = ChangeExtension(LString(file_name), ".lyx", false);
+		string s = ChangeExtension(string(file_name), ".lyx", false);
 
 		// Either change buffer or load the file
 		if (bufferlist.exists(s))
@@ -2002,10 +1997,10 @@ LString LyXFunc::Dispatch(int ac,
 	{
 		int nth = atoi(argument);
 		if (lyxerr.debugging(Error::TOOLBAR)) {
-			lyxerr.print(LString("LFUN_PUSH_TOOLBAR: argument = `")
+			lyxerr.print(string("LFUN_PUSH_TOOLBAR: argument = `")
 				     + argument + "'");
-			lyxerr.print(LString("LFUN_PUSH_TOOLBAR: nth = `")
-				     + nth + "'");
+			lyxerr.print(string("LFUN_PUSH_TOOLBAR: nth = `")
+				     + tostr(nth) + "'");
 		}
 		
 		if (nth <= 0) {
@@ -2020,12 +2015,12 @@ LString LyXFunc::Dispatch(int ac,
 	case LFUN_ADD_TO_TOOLBAR:
 	{
 		if (lyxerr.debugging(Error::TOOLBAR)) {
-			lyxerr.print(LString("LFUN_ADD_TO_TOOLBAR:"
+			lyxerr.print(string("LFUN_ADD_TO_TOOLBAR:"
 					     "argument = `")+ argument + '\'');
 		}
-		LString tmp(argument);
-		//lyxerr.print(LString("Argument: ") + argument);
-		//lyxerr.print(LString("Tmp     : ") + tmp);
+		string tmp(argument);
+		//lyxerr.print(string("Argument: ") + argument);
+		//lyxerr.print(string("Tmp     : ") + tmp);
 		if (tmp.empty()) {
 			LyXBell();
 			setErrorMessage(N_("Usage: toolbar-add-to <LyX command>"));
@@ -2098,14 +2093,14 @@ LString LyXFunc::Dispatch(int ac,
 	case LFUN_MATH_MACRO:
 	{
 		if (owner->currentView()->available()) {
-			LString s(argument);
+			string s(argument);
 		        if (s.empty())
 		            setErrorMessage(N_("Missing argument"));
 		        else {
-			    LString s1 = s.token(' ', 1);
+			    string s1 = token(s, ' ', 1);
 			    int na = s1.empty() ? 0: atoi(s1.c_str());
 			    owner->currentBuffer()->
-			      open_new_inset(new InsetFormulaMacro(s.token(' ', 0), na));
+			      open_new_inset(new InsetFormulaMacro(token(s, ' ', 0), na));
 			}
 		}
 	}
@@ -2134,10 +2129,10 @@ LString LyXFunc::Dispatch(int ac,
 		// The note, if any, must be after the key, delimited
 		// by a | so both key and remark can have spaces.
 		if (argument) {
-			LString lsarg(argument);
-			if (lsarg.contains("|")) {
-				new_inset->setContents(lsarg.token('|', 0));
-				new_inset->setOptions(lsarg.token('|', 1));
+			string lsarg(argument);
+			if (contains(lsarg, "|")) {
+				new_inset->setContents(token(lsarg, '|', 0));
+				new_inset->setOptions(token(lsarg, '|', 1));
 			} else
 				new_inset->setContents(lsarg);
 			owner->currentBuffer()->insertInset(new_inset);
@@ -2153,12 +2148,12 @@ LString LyXFunc::Dispatch(int ac,
 		// ale970405+lasgoutt970425
 		// The argument can be up to two tokens separated 
 		// by a space. The first one is the bibstyle.
-		LString lsarg(argument);
-		LString bibstyle = lsarg.token(' ', 1);
+		string lsarg(argument);
+		string bibstyle = token(lsarg, ' ', 1);
 		if (bibstyle.empty())
 			bibstyle = "plain";
 		InsetBibtex *new_inset 
-			= new InsetBibtex(lsarg.token(' ', 0),
+			= new InsetBibtex(token(lsarg, ' ', 0),
 					  bibstyle,
 					  owner->currentBuffer());
 		
@@ -2205,7 +2200,7 @@ LString LyXFunc::Dispatch(int ac,
 	{
 		InsetIndex *new_inset = new InsetIndex();
 		if (argument) {
-  			LString lsarg(argument);
+  			string lsarg(argument);
 			new_inset->setContents(lsarg);
 			owner->currentBuffer()->insertInset(new_inset);
 		} else {
@@ -2224,7 +2219,7 @@ LString LyXFunc::Dispatch(int ac,
 		  // note that this must be done before 
 		  // inserting the inset, or the inset will break
 		  // the word
-		  LString curstring(owner->currentBuffer()->text->cursor.par->GetWord(lastpos));
+		  string curstring(owner->currentBuffer()->text->cursor.par->GetWord(lastpos));
 
 		  //make the new inset and write the current word into it
 		  InsetIndex *new_inset = new InsetIndex();
@@ -2260,7 +2255,7 @@ LString LyXFunc::Dispatch(int ac,
 
 	case LFUN_PARENTINSERT:
 	{
-		lyxerr.print(LString("arg ") + argument);
+		lyxerr.print(string("arg ") + argument);
 		Inset *new_inset = new InsetParent(argument, owner->currentBuffer());
 		owner->currentBuffer()->insertInset(new_inset, "Standard", true);
 	}
@@ -2276,7 +2271,7 @@ LString LyXFunc::Dispatch(int ac,
 
 	case LFUN_CHILDOPEN:
 	{
-		LString filename = MakeAbsPath(argument, 
+		string filename = MakeAbsPath(argument, 
 					       OnlyPath(owner->currentBuffer()->getFileName()));
 		setMessage(N_("Opening child document ") +
 			   MakeDisplayPath(filename) + "...");
@@ -2295,7 +2290,7 @@ LString LyXFunc::Dispatch(int ac,
 	case LFUN_INSERTFOOTNOTE: 
 	{
 		LyXParagraph::footnote_kind kind;
-		LString arg = argument;
+		string arg = argument;
 		if (arg == "footnote")
 			{ kind = LyXParagraph::FOOTNOTE; }
 		else if (arg == "margin")
@@ -2345,8 +2340,8 @@ LString LyXFunc::Dispatch(int ac,
 
 	case LFUN_SELFINSERT:
 	{
-		LString const text = argument;
-		for (int i=0; i<text.length(); i++) {
+		string const text = argument;
+		for (string::size_type i = 0; i < text.length(); ++i) {
 			owner->currentBuffer()->text->InsertChar(text[i]);
 			// This needs to be in the loop, or else we
 			// won't break lines correctly. (Asger)
@@ -2397,7 +2392,7 @@ LString LyXFunc::Dispatch(int ac,
 			owner->currentBuffer()->text->sel_cursor =
 				owner->currentBuffer()->text->cursor;
 			moveCursorUpdate(false);
-			return LString();
+			return string();
 		} else {
 			// why is an "Unknown action" with empty
 			// argument even dispatched in the first
@@ -2413,11 +2408,11 @@ LString LyXFunc::Dispatch(int ac,
 	} // end of switch
   exit_with_message:
 
-	LString res=getMessage();
+	string res=getMessage();
 
 	if (res.empty()) {
 		if (!commandshortcut.empty()) {
-			LString newbuf = owner->getMiniBuffer()->GetText();
+			string newbuf = owner->getMiniBuffer()->GetText();
 			if (newbuf != commandshortcut) {
 				owner->getMiniBuffer()->Set(newbuf
 							    + " " +
@@ -2425,7 +2420,7 @@ LString LyXFunc::Dispatch(int ac,
 			}
 		}
 	} else {
-		owner->getMiniBuffer()->Set(LString(_(res.c_str()))
+		owner->getMiniBuffer()->Set(string(_(res.c_str()))
 					    + " " + commandshortcut);
 	}
 
@@ -2442,11 +2437,11 @@ void LyXFunc::setupLocalKeymap()
 
 void LyXFunc::MenuNew(bool fromTemplate)
 {
-	LString fname, initpath = lyxrc->document_path;
+	string fname, initpath = lyxrc->document_path;
 	LyXFileDlg fileDlg;
 
 	if (owner->currentView()->available()) {
-		LString trypath = owner->currentBuffer()->filepath;
+		string trypath = owner->currentBuffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
 			initpath = trypath;
@@ -2467,7 +2462,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
         
 	// get absolute path of file and make sure the filename ends
 	// with .lyx
-	LString s = MakeAbsPath(fname);
+	string s = MakeAbsPath(fname);
 	if (!IsLyXFilename(s))
 		s += ".lyx";
 
@@ -2513,7 +2508,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	}
 
 	// The template stuff
-	LString templname;
+	string templname;
 	if (fromTemplate) {
 		ProhibitInput();
 		fname = fileDlg.Select(_("Choose template"),
@@ -2531,11 +2526,11 @@ void LyXFunc::MenuNew(bool fromTemplate)
 
 void LyXFunc::MenuOpen()
 {
-	LString initpath = lyxrc->document_path;
+	string initpath = lyxrc->document_path;
 	LyXFileDlg fileDlg;
   
 	if (owner->currentView()->available()) {
-		LString trypath = owner->currentBuffer()->filepath;
+		string trypath = owner->currentBuffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
 			initpath = trypath;
@@ -2546,7 +2541,7 @@ void LyXFunc::MenuOpen()
 	fileDlg.SetButton(0, _("Documents"), lyxrc->document_path);
 	fileDlg.SetButton(1, _("Examples"), 
 			  AddPath(system_lyxdir, "examples"));
-	LString filename = fileDlg.Select(_("Select Document to Open"),
+	string filename = fileDlg.Select(_("Select Document to Open"),
 					  initpath, "*.lyx");
 	AllowInput();
  
@@ -2580,11 +2575,11 @@ void LyXFunc::MenuOpen()
 
 void LyXFunc::doImportASCII(bool linorpar)
 {
-	LString initpath = lyxrc->document_path;
+	string initpath = lyxrc->document_path;
 	LyXFileDlg fileDlg;
   
 	if (owner->currentView()->available()) {
-		LString trypath = owner->currentBuffer()->filepath;
+		string trypath = owner->currentBuffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
 			initpath = trypath;
@@ -2595,7 +2590,7 @@ void LyXFunc::doImportASCII(bool linorpar)
 	fileDlg.SetButton(0, _("Documents"), lyxrc->document_path);
 	fileDlg.SetButton(1, _("Examples"), 
 			  AddPath(system_lyxdir, "examples"));
-	LString filename = fileDlg.Select(_("Select ASCII file to Import"),
+	string filename = fileDlg.Select(_("Select ASCII file to Import"),
 					  initpath, "*.txt");
 	AllowInput();
  
@@ -2608,7 +2603,7 @@ void LyXFunc::doImportASCII(bool linorpar)
 	// get absolute path of file
 	filename = MakeAbsPath(filename);
 
-	LString s = ChangeExtension(filename, ".lyx", false);
+	string s = ChangeExtension(filename, ".lyx", false);
 
 	// Check if the document already is open
 	if (bufferlist.exists(s)){
@@ -2640,7 +2635,7 @@ void LyXFunc::doImportASCII(bool linorpar)
 		return;
 	}
 
-	owner->currentView()->setBuffer(bufferlist.newFile(s,LString()));
+	owner->currentView()->setBuffer(bufferlist.newFile(s,string()));
 	owner->getMiniBuffer()->Set(_("Importing ASCII file"),
 				    MakeDisplayPath(filename), "...");
 	// Insert ASCII file
@@ -2653,11 +2648,11 @@ void LyXFunc::doImportASCII(bool linorpar)
 
 void LyXFunc::doImportLaTeX(bool isnoweb)
 {
-	LString initpath = lyxrc->document_path;
+	string initpath = lyxrc->document_path;
 	LyXFileDlg fileDlg;
   
 	if (owner->currentView()->available()) {
-		LString trypath = owner->currentBuffer()->filepath;
+		string trypath = owner->currentBuffer()->filepath;
 		// If directory is writeable, use this as default.
 		if (IsDirWriteable(trypath) == 1)
 			initpath = trypath;
@@ -2668,7 +2663,7 @@ void LyXFunc::doImportLaTeX(bool isnoweb)
 	fileDlg.SetButton(0, _("Documents"), lyxrc->document_path);
 	fileDlg.SetButton(1, _("Examples"), 
 			  AddPath(system_lyxdir, "examples"));
-	LString filename;
+	string filename;
 	if (isnoweb) {
 		filename = fileDlg.Select(_("Select Noweb file to Import"),
 					  initpath, "*.nw");
@@ -2689,7 +2684,7 @@ void LyXFunc::doImportLaTeX(bool isnoweb)
 	filename = MakeAbsPath(filename);
 
 	// Check if the document already is open
-	LString LyXfilename = ChangeExtension(filename, ".lyx", false);
+	string LyXfilename = ChangeExtension(filename, ".lyx", false);
 	if (bufferlist.exists(LyXfilename)){
 		switch(AskConfirmation(_("Document is already open:"), 
 				       MakeDisplayPath(LyXfilename,50),
@@ -2748,17 +2743,17 @@ void LyXFunc::doImportLaTeX(bool isnoweb)
 }
 
 
-void LyXFunc::MenuInsertLyXFile(LString const & filen)
+void LyXFunc::MenuInsertLyXFile(string const & filen)
 {
-	LString filename = filen;
+	string filename = filen;
 
 	if (filename.empty()) {
 		// Launch a file browser
-		LString initpath = lyxrc->document_path;
+		string initpath = lyxrc->document_path;
 		LyXFileDlg fileDlg;
 
 		if (owner->currentView()->available()) {
-			LString trypath = owner->currentBuffer()->filepath;
+			string trypath = owner->currentBuffer()->filepath;
 			// If directory is writeable, use this as default.
 			if (IsDirWriteable(trypath) == 1)
 				initpath = trypath;
@@ -2803,7 +2798,7 @@ void LyXFunc::MenuInsertLyXFile(LString const & filen)
 
 void LyXFunc::reloadBuffer()
 {
-	LString fn = owner->currentBuffer()->getFileName();
+	string fn = owner->currentBuffer()->getFileName();
 	if (bufferlist.close(owner->currentBuffer()))
 		owner->currentView()->setBuffer(bufferlist.loadLyXFile(fn));
 }
@@ -2853,14 +2848,14 @@ Inset* LyXFunc::getInsetByCode(Inset::Code code)
 // This func is bit problematic when it comes to NLS, to make the
 // lyx servers client be language indepenent we must not translate
 // strings sent to this func.
-void LyXFunc::setErrorMessage(LString const &m) 
+void LyXFunc::setErrorMessage(string const &m) 
 {
 	dispatch_buffer = m;
 	errorstat = true;
 }
 
 
-void LyXFunc::setMessage(LString const & m)
+void LyXFunc::setMessage(string const & m)
 {
 	dispatch_buffer = m;
 }

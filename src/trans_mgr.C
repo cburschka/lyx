@@ -1,3 +1,4 @@
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation "trans_mgr.h"
@@ -14,11 +15,12 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "lyxrc.h"
+#include "support/lstrings.h"
 
 extern LyXRC* lyxrc;
-extern LString DoAccent(const LString&,tex_accent);
+extern string DoAccent(const string&,tex_accent);
 extern void InsertCorrectQuote();
-extern LString DoAccent(char,tex_accent);
+extern string DoAccent(char,tex_accent);
 extern BufferView* current_view;
 
 
@@ -27,7 +29,7 @@ TransFSMData::TransFSMData()
 {
     deadkey_=deadkey2_=0;
     deadkey_info_.accent=deadkey2_info_.accent=TEX_NOACCENT;
-    comb_info_=NULL;
+    comb_info_=0;
 }
 
 
@@ -46,10 +48,10 @@ TransInitState::TransInitState()
 }
 
 
-LString TransInitState::normalkey(char c,char *t)
+string TransInitState::normalkey(char c,char *t)
 {
-    LString res;
-    if (t!=NULL)
+    string res;
+    if (t!=0)
 	res=t;
     else
 	res=c;
@@ -64,12 +66,12 @@ LString TransInitState::normalkey(char c,char *t)
 //}
 
 
-LString TransInitState::deadkey(char c,KmodInfo d)
+string TransInitState::deadkey(char c,KmodInfo d)
 {
     deadkey_=c;
     deadkey_info_=d;
     currentState=deadkey_state_;
-    return LString();
+    return string();
 }
 
 
@@ -80,23 +82,23 @@ TransDeadkeyState::TransDeadkeyState()
 }
 
 
-LString TransDeadkeyState::normalkey(char c,char *trans)
+string TransDeadkeyState::normalkey(char c,char *trans)
 {
-    LString res;
+    string res;
     
     // Check if it is an exception
     KmodException l=deadkey_info_.exception_list;
-    while(l!=NULL) {
+    while(l!=0) {
 	if (l->c==c) {
 	    res=l->data;
 	    break;
 	}
 	l=l->next;
     }
-    if (l==NULL) {
+    if (l==0) {
 	// Not an exception. Check if it allowed
 	if (current_view->currentBuffer()->params.allowAccents==true ||
-	    deadkey_info_.allowed.countChar(c)>0) {
+	    countChar(deadkey_info_.allowed, c) > 0) {
 	    res=DoAccent(c,deadkey_info_.accent);
 	} else {
 	    // Not allowed
@@ -118,9 +120,9 @@ LString TransDeadkeyState::normalkey(char c,char *trans)
 //}
 
 
-LString TransDeadkeyState::deadkey(char c,KmodInfo d)
+string TransDeadkeyState::deadkey(char c,KmodInfo d)
 {
-    LString res;
+    string res;
     
     // Check if the same deadkey was typed twice
     if (deadkey_==c) {
@@ -141,7 +143,7 @@ LString TransDeadkeyState::deadkey(char c,KmodInfo d)
 	    deadkey2_info_=d;
 	    comb_info_=l;
 	    currentState=combined_state_;
-	    return LString();
+	    return string();
 	}
 	if (l->c==c) {
 	    res=l->data;
@@ -172,13 +174,13 @@ TransCombinedState::TransCombinedState()
 }
 
 
-LString TransCombinedState::normalkey(char c,char *trans)
+string TransCombinedState::normalkey(char c,char *trans)
 {
-    LString res;
+    string res;
     
     // Check if the key is allowed on the combination
-    if (comb_info_->data.countChar(c)>0) {
-	LString temp;
+    if (countChar(comb_info_->data, c) > 0) {
+	string temp;
 	temp=DoAccent(c,deadkey2_info_.accent);
 	res=DoAccent(temp,deadkey_info_.accent);
 	currentState=init_state_;
@@ -207,11 +209,11 @@ LString TransCombinedState::normalkey(char c,char *trans)
 // }
 
 
-LString TransCombinedState::deadkey(char c,KmodInfo d)
+string TransCombinedState::deadkey(char c,KmodInfo d)
 {
     // Third key in a row. Output the first one and
     // reenter with shifted deadkeys
-    LString res;
+    string res;
     if (deadkey_!=0)
 	res=deadkey_;
     res+=TOKEN_SEP;
@@ -236,7 +238,7 @@ TransFSM::TransFSM():
 // TransManager
     
 TransManager::TransManager()
-    : active_(NULL),t1_(new Trans),t2_(new Trans),chset_(new CharacterSet)
+    : active_(0),t1_(new Trans),t2_(new Trans),chset_(new CharacterSet)
 {}
 
 
@@ -251,7 +253,7 @@ TransManager::~TransManager()
 }
 
 
-int TransManager::SetPrimary(LString const & language)
+int TransManager::SetPrimary(string const & language)
 {
     if (t1_->GetName()==language) 
 	return 0;
@@ -260,7 +262,7 @@ int TransManager::SetPrimary(LString const & language)
 }
 
 
-int TransManager::SetSecondary(LString const & language)
+int TransManager::SetSecondary(string const & language)
 {
     if (t2_->GetName()==language)
 	return 0;
@@ -301,21 +303,21 @@ void TransManager::DisableKeymap()
 
 void  TransManager::TranslateAndInsert(char c,LyXText *text)
 {
-    LString res;
+    string res;
 	
     res=active_->process(c,*this);
     
     // Process with tokens
-    LString temp;
+    string temp;
 	
     while(res.length()>0) {
-	res.split(temp,TransState::TOKEN_SEP);
+	res=split(res, temp,TransState::TOKEN_SEP);
 	insert(temp,text);
     }
 }
 
 
-void TransManager::insertVerbatim(const LString& str,LyXText *text)
+void TransManager::insertVerbatim(const string& str,LyXText *text)
 {	
     int l=str.length();
 	
@@ -330,9 +332,9 @@ void TransManager::insertVerbatim(const LString& str,LyXText *text)
 }
 
 
-void TransManager::insert(LString str,LyXText *text)
+void TransManager::insert(string str,LyXText *text)
 {
-    LString t=str;
+    string t=str;
     
     // Go through the character encoding only if the current 
     // encoding (chset_->name()) matches the current font_norm
@@ -361,7 +363,7 @@ void TransManager::insert(LString str,LyXText *text)
 void TransManager::deadkey(char c,tex_accent accent,LyXText *t)
 {
     KmodInfo i;
-    LString res;
+    string res;
     
     if (c==0 && active_!=default_) {
 	// A deadkey was pressed that cannot be printed
@@ -379,10 +381,10 @@ void TransManager::deadkey(char c,tex_accent accent,LyXText *t)
     if (active_==default_ || c==0) {
 	i.accent=accent;
 	i.allowed=lyx_accent_table[accent].native;
-	i.data.clean();
-	i.exception_list=NULL;
+	i.data.erase();
+	i.exception_list=0;
 	
-	LString res=trans_fsm_.currentState->deadkey(c,i);
+	string res=trans_fsm_.currentState->deadkey(c,i);
 	insert(res,t);
     } else {
 	// Go through the translation

@@ -1,13 +1,13 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-*        
-*           Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
@@ -27,15 +27,9 @@
 #include "intl.h"
 #include "lyxrc.h"
 #include "lyxscreen.h"
-#include "filetools.h"        // OnlyFilename()
+#include "support/filetools.h"        // OnlyFilename()
 #include "layout.h"
 #include "lyxtext.h"
-
-// 	$Id: LyXView.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: LyXView.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $";
-#endif /* lint */
 
 extern FD_form_document *fd_form_document;
 FD_form_main *fd_form_main; /* a pointer to the one in LyXView
@@ -56,7 +50,7 @@ BufferView *current_view;
 LyXView::LyXView(int width, int height)
 {
 	fd_form_main = create_form_form_main(width,height);
-	fl_set_form_atclose(_form, atCloseMainFormCB, NULL);
+	fl_set_form_atclose(_form, atCloseMainFormCB, 0);
 	lyxerr.debug("Initializing LyXFunc");
 	lyxfunc = new LyXFunc(this);
 	intl = new Intl;
@@ -342,11 +336,11 @@ int LyXView::KeyPressMask_raw_callback(FL_FORM *fl, void *xev)
 
 // Updates the title of the window with the filename of the current document
 void LyXView::updateWindowTitle() {
-	static LString last_title="LyX";
-	LString title = "LyX";
+	static string last_title="LyX";
+	string title = "LyX";
 
 	if (currentView()->available()) {
-		LString cur_title = currentBuffer()->getFileName();
+		string cur_title = currentBuffer()->getFileName();
 		if (!cur_title.empty()){
 			title += ": " + OnlyFilename(cur_title);
 			if (!currentBuffer()->isLyxClean())

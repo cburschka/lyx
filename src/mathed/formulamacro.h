@@ -35,7 +35,7 @@ public:
 	///
 	InsetFormulaMacro();
 	///
-	InsetFormulaMacro(LString name, int na=0, bool env=false);
+	InsetFormulaMacro(string name, int na=0, bool env=false);
 	///
 	~InsetFormulaMacro();
 	///
@@ -55,11 +55,11 @@ public:
 	///
 	int Latex(FILE *file, signed char fragile);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string &file, signed char fragile);
 	///
-	int Linuxdoc(LString &file);
+	int Linuxdoc(string &file);
 	///
-	int DocBook(LString &file);
+	int DocBook(string &file);
 	///
 	Inset* Clone();
 
@@ -76,7 +76,7 @@ protected:
 	void UpdateLocal();
 private:
         bool opened;
-        LString name; 
+        string name; 
         class MathMacroTemplate* tmacro;
 
 };

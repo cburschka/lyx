@@ -18,7 +18,7 @@
 #endif
 
 #include "insetparent.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "BufferView.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
@@ -28,7 +28,7 @@
 extern BufferView *current_view;
 
 
-InsetParent::InsetParent(LString fn, Buffer* owner): InsetCommand("lyxparent")
+InsetParent::InsetParent(string fn, Buffer* owner): InsetCommand("lyxparent")
 {
     if (owner)
 	setContents(MakeAbsPath(fn, OnlyPath(owner->getFileName())));
@@ -51,7 +51,7 @@ int InsetParent::Latex(FILE *file, signed char fragile)
 }
 
 // LaTeX must just ignore this command
-int InsetParent::Latex(LString &file, signed char fragile)
+int InsetParent::Latex(string &file, signed char fragile)
 {
     file += "%%#{lyx}";
     InsetCommand::Latex(file, fragile);

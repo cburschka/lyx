@@ -1,48 +1,42 @@
 
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 #include FORMS_H_LOCATION
 #include "error.h"
 #include "lyx_sendfax.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
-#include "syscall.h"
+#include "support/syscall.h"
 #include "gettext.h"
-
-// 	$Id: lyx_sendfax_main.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: lyx_sendfax_main.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
 
 /* Prototypes */
 
-bool sendfax(LString const &fname, LString const &sendcmd);
-bool button_send(LString const &fname, LString const &sendcmd = LString());
-void show_logfile(LString logfile, bool show_if_empty);
+bool sendfax(string const &fname, string const &sendcmd);
+bool button_send(string const &fname, string const &sendcmd = string());
+void show_logfile(string logfile, bool show_if_empty);
 
 const int LEN_PHONE = 20;
 const int LEN_NAME = 25;
 
 /* Global Variables */
 
-LString phone_book;
-LString global_sendcmd;
-LString filename;
+string phone_book;
+string global_sendcmd;
+string filename;
 
 FD_xsendfax *fd_xsendfax;
 FD_phonebook  *fd_phonebook;
 FD_logfile  *fd_logfile;
 
-bool send_fax(LString const &fname, LString const &sendcmd)
+bool send_fax(string const &fname, string const &sendcmd)
 {
     // I put FAXCMD here to see if I can get rid of some strange errors. (Lgb)
-    LString FAXCMD = "sendfax -n -h '$$Host' -c '$$Comment' -x '$$Enterprise' -d '$$Name'@'$$Phone' '$$FName'";
-    LString title = _("Fax File: ");
-    LString path;
+    string FAXCMD = "sendfax -n -h '$$Host' -c '$$Comment' -x '$$Enterprise' -d '$$Name'@'$$Phone' '$$FName'";
+    string title = _("Fax File: ");
+    string path;
     
     if (fname.empty())
         return false;
@@ -62,12 +56,12 @@ bool send_fax(LString const &fname, LString const &sendcmd)
     fd_logfile = create_form_logfile();
 
     // Make sure the close box doesn't kill LyX when being pressed. (RvdK)
-    fl_set_form_atclose(fd_xsendfax->xsendfax, CancelCloseBoxCB, NULL);
-    fl_set_form_atclose(fd_phonebook->phonebook, CancelCloseBoxCB, NULL);
-    fl_set_form_atclose(fd_logfile->logfile, CancelCloseBoxCB, NULL);
+    fl_set_form_atclose(fd_xsendfax->xsendfax, CancelCloseBoxCB, 0);
+    fl_set_form_atclose(fd_phonebook->phonebook, CancelCloseBoxCB, 0);
+    fl_set_form_atclose(fd_logfile->logfile, CancelCloseBoxCB, 0);
 
     /* init Phone-Book */
-    LString phone_book_name;
+    string phone_book_name;
     if (lyxrc->phone_book.empty()) {
         phone_book_name = "phonebook";
     } else
@@ -95,7 +89,7 @@ bool send_fax(LString const &fname, LString const &sendcmd)
         } else if (obj==fd_xsendfax->Button_Apply) {
             button_send(fname,global_sendcmd);
         } else if (obj==fd_xsendfax->Button_SPhone) {
-            cb_select_phoneno(NULL,0);
+            cb_select_phoneno(0,0);
         }
     }
     fl_hide_form(fd_xsendfax->xsendfax);
@@ -104,14 +98,14 @@ bool send_fax(LString const &fname, LString const &sendcmd)
 }
 
 
-bool button_send(LString const &fname, LString const &sendcmd)
+bool button_send(string const &fname, string const &sendcmd)
 {
-    LString
+    string
         name = fl_get_input(fd_xsendfax->Input_Name),
         phone = fl_get_input(fd_xsendfax->Input_Phone),
         enterprise = fl_get_input(fd_xsendfax->Input_Enterprise),
         comment = fl_get_input(fd_xsendfax->Input_Comment),
-        host = getenv("FAX_SERVER"),
+        host = GetEnv("FAX_SERVER"),
         logfile,
         cmd;
 
@@ -121,12 +115,12 @@ bool button_send(LString const &fname, LString const &sendcmd)
     cmd = sendcmd + " >";
     cmd += logfile + " 2>";
     cmd += logfile;
-    cmd.subst("$$Host",host);
-    cmd.subst("$$Comment",comment);
-    cmd.subst("$$Enterprise",enterprise);
-    cmd.subst("$$Name",name);
-    cmd.subst("$$Phone",phone);
-    cmd.subst("$$FName",fname);
+    subst(cmd, "$$Host",host);
+    subst(cmd, "$$Comment",comment);
+    subst(cmd, "$$Enterprise",enterprise);
+    subst(cmd, "$$Name",name);
+    subst(cmd, "$$Phone",phone);
+    subst(cmd, "$$FName",fname);
     lyxerr.print("CMD: "+cmd);
     Systemcalls one(Systemcalls::System, cmd);
     show_logfile(logfile,false);
@@ -285,7 +279,7 @@ void cb_save_phoneno(FL_OBJECT *, long )
     fl_redraw_form(fd_xsendfax->xsendfax);
 }
 
-void show_logfile(LString logfile, bool show_if_empty)
+void show_logfile(string logfile, bool show_if_empty)
 {
     if (logfile.empty())
         return;
@@ -322,7 +316,7 @@ void FaxApplyCB(FL_OBJECT *, long)
 void FaxSendCB(FL_OBJECT *, long)
 {
     if (button_send(filename,global_sendcmd))
-        FaxCancelCB(NULL,0);
+        FaxCancelCB(0,0);
 }
 
 void FaxOpenPhonebookCB(FL_OBJECT *, long)

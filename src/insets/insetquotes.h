@@ -4,12 +4,13 @@
  *
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team
  *
- *======================================================*/
+ * ======================================================*/
 
-#ifndef _INSET_QUOTES_H
-#define _INSET_QUOTES_H
+#ifndef INSET_QUOTES_H
+#define INSET_QUOTES_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -19,7 +20,6 @@
 
 class BufferParams;
 
-class LString;
 struct LaTeXFeatures;
 
 
@@ -66,34 +66,34 @@ public:
 	    \item etc.
 	  \end{itemize}
 	  */ 
-	InsetQuotes(LString const &string = "eld");
+	InsetQuotes(string const & str = "eld");
 	/// Create the right quote inset after character c
-	InsetQuotes(char c, BufferParams const &params);
+	InsetQuotes(char c, BufferParams const & params);
 	///
 	~InsetQuotes() {}; //nothing to do
 
 	///
-	int Ascent(LyXFont const &font) const;
+	int Ascent(LyXFont const & font) const;
 	///
-	int Descent(LyXFont const &font) const;
+	int Descent(LyXFont const & font) const;
 	///
-	int Width(LyXFont const &font) const;
+	int Width(LyXFont const & font) const;
 	///
-	void Draw(LyXFont font, LyXScreen &scr, int baseline, float &x);
+	void Draw(LyXFont font, LyXScreen & scr, int baseline, float & x);
 	///
 	LyXFont ConvertFont(LyXFont font);
 	///
-	void Write(FILE *file);
+	void Write(FILE * file);
 	///
-	void Read(LyXLex &lex);
+	void Read(LyXLex & lex);
 	///
-	int Latex(FILE *file, signed char fragile);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	///
-	int Linuxdoc(LString &file);
+	int Linuxdoc(string & file);
 	///
-	int DocBook(LString &file);
+	int DocBook(string & file);
 	///
 	void Validate(LaTeXFeatures &) const;
 	///
@@ -113,9 +113,9 @@ private:
 	 */
 	InsetQuotes(quote_language l, quote_side s, quote_times t);
 	///
-	void ParseString(LString string);
+	void ParseString(string str);
 	///
-	LString DispString() const;
+	string DispString() const;
 };
 
 #endif

@@ -3,21 +3,16 @@
  * 
  *          LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team.
+ *          Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
 #include <config.h>
-#include <string.h>
-#include <stdio.h>
+#include <cstring>
+#include <cstdio>
+#include "support/lstrings.h"
 #include "gettext.h"
-
-// 	$Id: kbmap.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: kbmap.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
 
 #ifdef __GNUG__
 #pragma implementation
@@ -225,7 +220,7 @@ int kb_sequence::parse(char const*s)
 			key = XStringToKeysym(tbuf);
 			if(key == NoSymbol) {
 				lyxerr.debug("kbmap.C: No such keysym: "
-					     + LString(tbuf),Error::KBMAP);
+					     + string(tbuf),Error::KBMAP);
 				return j;
 			}
 			i = j;
@@ -301,7 +296,7 @@ int kb_sequence::printOptions(char *buf, int maxlen) const
 	
 	if ( maxlen < 20 || !curmap ) return -1;
 #ifdef WITH_WARNINGS
-#warning reimplement kb_sequence using LString
+#warning reimplement kb_sequence using string
 #endif
 	char s[20];
 	strcpy(s,_("   options: "));
@@ -392,7 +387,7 @@ int kb_keymap::bind(char const *seq, int action)
 	if (!res) {
 		defkey(&k, action);
 	} else
-		lyxerr.debug(LString("Parse error at position ") + res +
+		lyxerr.debug(string("Parse error at position ") + tostr(res) +
 			     " in key sequence '" + seq + "'.", Error::KBMAP);
 	return res;
 }
@@ -554,7 +549,7 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*=0*/)
 			if(idx+1 == seq->length) {
 				char buf[20]; buf[0] = 0;
 				seq->print(buf, 20, true);
-				lyxerr.debug(LString("Warning: New binding for '") + buf + 
+				lyxerr.debug(string("Warning: New binding for '") + buf + 
 					     "' is overriding old binding...", Error::KEY);
 
 				if(t->table) {
@@ -566,7 +561,7 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*=0*/)
 			} else if (!t->table) {
 				char buf[20]; buf[0] = 0;
 				seq->print(buf, 20, true);
-				lyxerr.print(LString("Error: New binding for '") + buf + 
+				lyxerr.print(string("Error: New binding for '") + buf + 
 					     "' is overriding old binding...");
 				return -1;
 			} else
@@ -578,8 +573,8 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*=0*/)
 
 	if(tsize % KB_PREALLOC == 0) {
 		kb_key *nt = new kb_key[tsize+KB_PREALLOC];
-		// Set to NULL as table is used uninitialised later (thornley)
-		nt[tsize].table = NULL;
+		// Set to 0 as table is used uninitialised later (thornley)
+		nt[tsize].table = 0;
 		memcpy(nt, tab, tsize*sizeof(kb_key));
 		*ptab = nt;
 		delete[] tab;
@@ -682,15 +677,15 @@ kb_keymap::~kb_keymap()
 	}
 }
 
-LString keyname(kb_key k) {
+string keyname(kb_key k) {
 	char buf[100];
 	printKeysym(k.code, k.mod, buf, 100);
 	return buf;
 }
 
 // Finds a key for a keyaction, if possible
-LString kb_keymap::findbinding(int act) const {
-	LString res;
+string kb_keymap::findbinding(int act) const {
+	string res;
 	if (!table)
 		return res;
 
@@ -699,10 +694,10 @@ LString kb_keymap::findbinding(int act) const {
 			if(htable[i]) {
 				for(kb_key *t = htable[i]; t->code != NoSymbol; t++) {
 					if(t->table) {
-						LString suffix = t->table->findbinding(act);
-						suffix.strip(' ');
-						suffix.strip(']');
-						suffix.frontStrip('[');
+						string suffix = t->table->findbinding(act);
+						suffix = strip(suffix, ' ');
+						suffix = strip(suffix, ']');
+						suffix = frontStrip(suffix, '[');
 						if (!suffix.empty()) {
 							res += "[" + keyname(*t) + " " + suffix + "] ";
 						}
@@ -715,10 +710,10 @@ LString kb_keymap::findbinding(int act) const {
 	} else {
 		for(kb_key *t = table; t->code != NoSymbol; t++) {
 			if(t->table) {
-				LString suffix = t->table->findbinding(act);
-				suffix.strip(' ');
-				suffix.strip(']');
-				suffix.frontStrip('[');
+				string suffix = t->table->findbinding(act);
+				suffix = strip(suffix, ' ');
+				suffix = strip(suffix, ']');
+				suffix = frontStrip(suffix, '[');
 				if (!suffix.empty()) {
 					res += "[" + keyname(*t) + " " + suffix + "] ";
 				}

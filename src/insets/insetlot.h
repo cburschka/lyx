@@ -32,7 +32,7 @@ public:
         ///
         Inset* Clone() { return new InsetLOT(owner); }
     	///
-	LString getScreenLabel() const { return _("List of Tables"); }
+	string getScreenLabel() const { return _("List of Tables"); }
         
 	//void Edit(int, int);
         ///

@@ -22,7 +22,7 @@ class TransManager;
 class TransInterface {
 public:
 	///
-	virtual LString process(char,TransManager&)=0;
+	virtual string process(char,TransManager&)=0;
 	///
 	virtual bool isAccentDefined(tex_accent,KmodInfo&)=0;
 };
@@ -39,7 +39,7 @@ public:
 	///
 	DefaultTrans();
 	///
-	virtual LString process(char,TransManager&);
+	virtual string process(char,TransManager&);
 };
 
 
@@ -54,13 +54,13 @@ public:
 	virtual ~Trans();
 
 	///
-	int Load(LString const &language);
+	int Load(string const &language);
 	///
 	bool IsDefined();
 	///
-	const LString& GetName();
+	const string& GetName();
 	///
-	LString process(char,TransManager&);
+	string process(char,TransManager&);
 	///
 	bool isAccentDefined(tex_accent,KmodInfo&);
     
@@ -71,7 +71,7 @@ private:
 	typedef KmodException keyexc;
     
 	///
-	void AddDeadkey(tex_accent, const LString&, const LString&);
+	void AddDeadkey(tex_accent, const string&, const string&);
 	///
 	void FreeKeymap();
 	///
@@ -80,13 +80,13 @@ private:
 	inline char* Match(char c);
 	///
 	void InsertException(keyexc &exclist, char c,
-			     const LString& data, bool = false,
+			     const string& data, bool = false,
 			     tex_accent = TEX_NOACCENT);
 	///
 	void FreeException(keyexc& exclist);
 
 	///
-	LString name_;
+	string name_;
 	///
 	char *keymap_[256];
 	///

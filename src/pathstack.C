@@ -10,7 +10,7 @@
 #endif
 
 #include "pathstack.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "error.h"
 #include "LString.h"
 #include "gettext.h"
@@ -18,20 +18,14 @@
 // temporary hack
 #include "lyx_gui_misc.h"
 
-// 	$Id: pathstack.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: pathstack.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
-
 // global path stack
 PathStack lyxPathStack;
 
 // Standard constructor
-PathStack::PathStack(LString const & string)
+PathStack::PathStack(string const & string)
 	: Path(string)
 {
-	Next = NULL;
+	Next = 0;
 }
 
 // Destructor
@@ -42,7 +36,7 @@ PathStack::~PathStack()
 }
 
 // Changes to directory
-int PathStack::PathPush(LString const & Path)
+int PathStack::PathPush(string const & Path)
 {
 	// checks path string validity
 	if (Path.empty()) return 1;
@@ -50,7 +44,7 @@ int PathStack::PathPush(LString const & Path)
 	PathStack *NewNode;
 
 	// gets current directory and switch to new one
-	LString CurrentPath = GetCWD();
+	string CurrentPath = GetCWD();
 	if ((CurrentPath.empty()) || chdir(Path.c_str())) {
 		WriteFSAlert(_("Error: Could not change to directory: "), 
 			     Path);
@@ -75,7 +69,7 @@ int PathStack::PathPop()
 		return 1;
 	}
 	Next = OldNode->Next;
-	OldNode->Next = NULL;
+	OldNode->Next = 0;
 
 	// switches to old directory
 	int Result = 0;

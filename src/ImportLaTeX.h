@@ -29,7 +29,7 @@ public:
 	/**
 	  file = name and path of the latex file
 	  */
-	ImportLaTeX(LString const & file);
+	ImportLaTeX(string const & file);
 	
 	/** Imports the document.
 	  Return 0 if fail.
@@ -37,7 +37,7 @@ public:
 	Buffer * run();
 private:
 	///
-	LString file;
+	string file;
 };
 
 #endif

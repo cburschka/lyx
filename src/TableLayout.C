@@ -1,13 +1,13 @@
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 #include "definitions.h"
 #include FORMS_H_LOCATION
 #include "layout_forms.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
 #include "LString.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "buffer.h"
 #include "vspace.h"
 #include "lyx_gui_misc.h"
@@ -15,12 +15,6 @@
 #include "lyxscreen.h"
 #include "gettext.h"
 #include "lyxtext.h"
-
-// 	$Id: TableLayout.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: TableLayout.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
 
 extern void BeforeChange();
 
@@ -55,7 +49,7 @@ bool UpdateLayoutTable(int flag)
             column,row;
         char
             buf[12];
-        LString
+        string
             pwidth, special;
     
         LyXTable *table = current_view->currentBuffer()->text->cursor.par->table;
@@ -259,7 +253,7 @@ void TableOptionsCB(FL_OBJECT *ob, long)
         cell,
         s,
         num = 0;
-    LString
+    string
         special,
         str;
 
@@ -458,7 +452,7 @@ void SetPWidthCB(FL_OBJECT *ob, long)
     fl_set_object_label(fd_form_table_options->text_warning,"");
     Confirmed = false;
     if (ob == fd_form_table_options->input_column_width) {
-        LString
+        string
             str;
         str = fl_get_input(ob);
         if (!str.empty() && !isValidLength(str)) {

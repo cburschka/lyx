@@ -29,7 +29,7 @@ public:
 	///
 	InsetLatex();
 	///
-	InsetLatex(LString const & string);
+	InsetLatex(string const & string);
 	///
 	~InsetLatex();
 	///
@@ -47,11 +47,11 @@ public:
 	///
 	int Latex(FILE *file, signed char fragile);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string &file, signed char fragile);
 	///
-	int Linuxdoc(LString &file);
+	int Linuxdoc(string &file);
 	///
-	int DocBook(LString &file);
+	int DocBook(string &file);
 	///
 	bool Deletable() const;
 	///
@@ -60,7 +60,7 @@ public:
 	Inset::Code LyxCode() const;
 private:
 	///
-	LString contents;
+	string contents;
 };
 
 #endif

@@ -5,21 +5,14 @@
 #include "lyx_main.h"
 #include "lyxrc.h"
 #include "LString.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "pathstack.h"
 #include "buffer.h"
 #include "lyx_gui_misc.h"
-#include "syscall.h"
+#include "support/syscall.h"
 #include "gettext.h"
 #include "lyx_cb.h"
 
-// 	$Id: LyXSendto.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: LyXSendto.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $";
-#endif /* lint */
-
-/* Prototypes */
 extern FD_form_sendto *fd_form_sendto;
 extern BufferView *current_view;
 extern int MakeDVIOutput(Buffer *buffer);
@@ -49,7 +42,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
     if (!current_view->available())
         return;
 
-    LString command = fl_get_input(fd_form_sendto->input_cmd);
+    string command = fl_get_input(fd_form_sendto->input_cmd);
     if (command.empty())
         return;
     Buffer *buffer = current_view->currentBuffer();
@@ -63,7 +56,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
         }
         AllowInput();
     }
-    LString ftypeext;
+    string ftypeext;
     if (fl_get_button(fd_form_sendto->radio_ftype_lyx))
         ftypeext = ".lyx";
     else if (fl_get_button(fd_form_sendto->radio_ftype_latex))
@@ -78,14 +71,14 @@ void SendtoApplyCB(FL_OBJECT *, long)
 	    return;
 	}
     }
-    LString fname = SpaceLess(ChangeExtension(buffer->getFileName(), 
+    string fname = SpaceLess(ChangeExtension(buffer->getFileName(), 
 					      ftypeext, true));
-    if (!command.contains("$$FName"))
+    if (!contains(command, "$$FName"))
         command = "( " + command + " ) <$$FName";
-    command.subst("$$FName",fname);
+    subst(command, "$$FName",fname);
     command += " &"; // execute in background
     // push directorypath, if necessary 
-    LString path = OnlyPath(buffer->getFileName());
+    string path = OnlyPath(buffer->getFileName());
     if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
         path = buffer->tmppath;
     }

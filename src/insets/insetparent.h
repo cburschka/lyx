@@ -29,17 +29,17 @@ public:
 	/// Non-standard LyX macro
 	InsetParent(): InsetCommand("lyxparent") { }
 	///
-        InsetParent(LString fn, Buffer* owner=0);
+        InsetParent(string fn, Buffer* owner=0);
 	///
         ~InsetParent() {}
 	/// 
 	int Latex(FILE *file, signed char fragile);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string &file, signed char fragile);
         ///
         Inset* Clone() { return new InsetParent(getContents()); }
     	///
-	LString getScreenLabel() const { return LString(_("Parent:"))+getContents(); }
+	string getScreenLabel() const { return string(_("Parent:"))+getContents(); }
         ///
 	void Edit(int, int);
         ///
@@ -49,7 +49,7 @@ public:
         ///
         Inset::Code LyxCode() const { return Inset::PARENT_CODE; }
         ///
-        void setParent(LString fn) { setContents(fn); }
+        void setParent(string fn) { setContents(fn); }
 };
 
 #endif

@@ -1,13 +1,13 @@
 /* Bullet form callbacks */
 #include <config.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include FORMS_H_LOCATION
 #include XPM_H_LOCATION
 #include "bullet_forms.h"
 #include "bmtable.h"
 #include "buffer.h"
 #include "bufferparams.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB + WriteAlert
 
@@ -37,7 +37,7 @@ void bulletForm()
 		                " normal | large | Large | LARGE | huge | Huge"));
 		fl_set_choice(fd_form_bullet->choice_bullet_size, 1);
 		fl_set_form_atclose(fd_form_bullet->form_bullet,
-		                    CancelCloseBoxCB, NULL);
+		                    CancelCloseBoxCB, 0);
 	}
 
 	if (updateBulletForm()) {
@@ -192,7 +192,7 @@ void BulletPanelCB(FL_OBJECT * /*ob*/, long data)
 
 		/* free the current pixmap */
 		fl_free_bmtable_pixmap(fd_form_bullet->bmtable_bullet_panel);
-		LString new_panel;
+		string new_panel;
 		switch (data) {
 			/* display the new one */
 		case 0 :

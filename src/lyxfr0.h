@@ -54,7 +54,7 @@ protected:
 	/// replace buttons enabled?
 	bool		fReplaceEnabled;
 	/// search string
-	LString		lsSearch;
+	string		lsSearch;
 
 	///
 	void SetReplaceEnabled(bool fEnabled);
@@ -70,11 +70,11 @@ protected:
 	///
 	bool MatchWord() { return fMatchWord; }
 	///
-	LString const SearchString() { return lsSearch; }
+	string const SearchString() { return lsSearch; }
 	///
-	void SetSearchString(LString const &ls);
+	void SetSearchString(string const &ls);
 	///
-	LString const ReplaceString();
+	string const ReplaceString();
 
 	///
 	bool ValidSearchData() { return !lsSearch.empty(); }	 	

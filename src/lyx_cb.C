@@ -1,20 +1,20 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich,
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *	    Copyright 1995 Matthias Ettrich,
+ *          Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
-#include <ctype.h>
+#include <cctype>
 #include <unistd.h>
-#include <signal.h>
-#include <string.h>
-#include <stdlib.h>
+#include <csignal>
+#include <cstring>
+#include <cstdlib>
 
 #include "LString.h"
 #include "lyx_main.h"
@@ -41,28 +41,22 @@
 #include "minibuffer.h"
 #include "combox.h"
 #include "bufferlist.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "pathstack.h"
 #include "filedlg.h"
 #include "lyx_gui_misc.h"
 #include "LyXView.h" // only because of form_main
 #include "lastfiles.h"
-#include "FileInfo.h"
+#include "support/FileInfo.h"
 #include "lyxscreen.h"
 #include "error.h"
-#include "syscall.h"
-#include "lyxlib.h"
+#include "support/syscall.h"
+#include "support/lyxlib.h"
 #include "lyxserver.h"
 #include "FontLoader.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "gettext.h"
-
-// 	$Id: lyx_cb.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: lyx_cb.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
 
 extern MiniBuffer *minibuffer;
 extern Combox *combo_language;
@@ -88,7 +82,7 @@ extern BufferView *current_view; // called too many times in this file...
 
 extern void DeleteSimpleCutBuffer(); /* for the cleanup when exiting */
 
-extern bool send_fax(LString const &fname, LString const &sendcmd);
+extern bool send_fax(string const &fname, string const &sendcmd);
 
 extern LyXServer *lyxserver;
 extern FontLoader fontloader;
@@ -168,7 +162,7 @@ void LockedInsetStoreUndo(Undo::undo_kind kind);
 void UpdateInsetUpdateList();
 void PutInsetIntoInsetUpdateList(Inset* inset);
 
-InsetUpdateStruct *InsetUpdateList = NULL;
+InsetUpdateStruct *InsetUpdateList = 0;
 
 
 /*
@@ -188,8 +182,8 @@ void HFill();
 void Newline();
 void ProtectedBlank();
 void CopyCB();
-int RunLinuxDoc(int, LString const &);
-int RunDocBook(int, LString const &);
+int RunLinuxDoc(int, string const &);
+int RunDocBook(int, string const &);
 void MenuWrite(Buffer* buf);
 void MenuWriteAs(Buffer *buffer);
 void MenuReload(Buffer *buf);
@@ -342,8 +336,8 @@ void MenuWrite(Buffer* buf)
 {
 	XFlush(fl_display);
 	if (!bufferlist.write(buf)) {
-		LString fname = buf->getFileName();
-		LString s = MakeAbsPath(fname);
+		string fname = buf->getFileName();
+		string s = MakeAbsPath(fname);
 		if (AskQuestion(_("Save failed. Rename and try again?"),
 				 MakeDisplayPath(s,50),
 				 _("(If not, document is not saved.)"))) {
@@ -360,8 +354,8 @@ void MenuWriteAs(Buffer *buffer)
 {
 	if (!buffer->text) return;
 
-	LString fname = buffer->getFileName();
-	LString oldname = fname;
+	string fname = buffer->getFileName();
+	string oldname = fname;
 	LyXFileDlg fileDlg;
 
 	ProhibitInput();
@@ -383,7 +377,7 @@ void MenuWriteAs(Buffer *buffer)
 	}
 
 	// Make sure the absolute filename ends with appropriate suffix
-	LString s= MakeAbsPath(fname);
+	string s= MakeAbsPath(fname);
 	if (!IsLyXFilename(s))
 		s += ".lyx";
 
@@ -464,8 +458,8 @@ int MenuRunLaTeX(Buffer *buffer)
 		ret = buffer->runLaTeX();
    
 	if (ret > 0) {
-		LString s;
-		LString t;
+		string s;
+		string t;
 		if (ret == 1) {
 			s = _("One error detected");
 			t = _("You should try to fix it.");
@@ -487,8 +481,8 @@ int MenuBuildProg(Buffer *buffer)
        if (buffer->isLiterate())
 	       ret = buffer->buildProgram();
        else {
-	       LString s;
-	       LString t;
+	       string s;
+	       string t;
 	       s = _("Wrong type of document");
 	       t = _("The Build operation is not allowed in this document");
                WriteAlert(_("There were errors during the Build process."), s, t);
@@ -496,8 +490,8 @@ int MenuBuildProg(Buffer *buffer)
        }
    
        if (ret > 0) {
-               LString s;
-               LString t;
+               string s;
+               string t;
                if (ret == 1) {
                        s = _("One error detected");
                        t = _("You should try to fix it.");
@@ -523,8 +517,8 @@ int MenuRunChktex(Buffer *buffer)
 		ret = buffer->runChktex();
    
 	if (ret >= 0) {
-		LString s;
-		LString t;
+		string s;
+		string t;
 		if (ret == 0) {
 			s = _("No warnings found.");
 		} else if (ret == 1) {
@@ -550,7 +544,7 @@ int MakeDVIOutput(Buffer *buffer)
 
 	int ret = 0;
 
-	LString path = OnlyPath(buffer->getFileName());
+	string path = OnlyPath(buffer->getFileName());
 	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
 	}
@@ -568,12 +562,12 @@ int MakeDVIOutput(Buffer *buffer)
 // The bool should be placed last on the argument line. (Lgb)
 // Returns false if we fail.
 bool RunScript(Buffer *buffer, bool wait,
-	       LString const & command, LString const & orgname = LString(),
+	       string const & command, string const & orgname = string(),
 	       bool need_shell=true)
 {
-	LString path;
-	LString cmd;
-	LString name= orgname;
+	string path;
+	string cmd;
+	string name= orgname;
 	int result = 0;
 	
 	if (MakeDVIOutput(buffer) > 0)
@@ -600,14 +594,14 @@ bool RunScript(Buffer *buffer, bool wait,
 		// OS/2 cmd.exe has another use for '&'
 		if (!wait) {
                         // This is not NLS safe, but it's OK, I think.
-                        LString sh = OnlyFilename(getEnvPath("EMXSHELL"));
+                        string sh = OnlyFilename(GetEnvPath("EMXSHELL"));
                         if (sh.empty()) {
                                 // COMSPEC is set, unless user unsets 
-                                sh = OnlyFilename(getEnvPath("COMSPEC"));
+                                sh = OnlyFilename(GetEnvPath("COMSPEC"));
 				if (sh.empty())
 					sh = "cmd.exe";
 			}
-                        sh.lowercase();
+                        sh = lowercase(sh);
                         if (sh.contains("cmd.exe") || sh.contains("4os2.exe"))
                                 cmd = "start /min/n " + cmd;
                         else
@@ -647,10 +641,10 @@ bool MenuRunDvips(Buffer *buffer, bool wait=false)
 		return false;
         }
 	// Generate postscript file
-	LString ps = ChangeExtension (buffer->getFileName(),
+	string ps = ChangeExtension (buffer->getFileName(),
 				      ".ps_tmp", true);
 
-	LString paper;
+	string paper;
 	
 	char real_papersize = buffer->params.papersize;
 	if (real_papersize == PAPER_DEFAULT)
@@ -683,7 +677,7 @@ bool MenuRunDvips(Buffer *buffer, bool wait=false)
 	}
 
 	// Make postscript file.
-	LString command = "dvips " + lyxrc->print_to_file + ' ';
+	string command = "dvips " + lyxrc->print_to_file + ' ';
 	command += SpaceLess(ps);
 	if (buffer->params.use_geometry
 	    && buffer->params.papersize2 == VM_PAPER_CUSTOM
@@ -708,7 +702,7 @@ bool MenuRunDvips(Buffer *buffer, bool wait=false)
 		command += lyxrc->print_landscape_flag;
 	}
 	// push directorypath, if necessary 
-        LString path = OnlyPath(buffer->getFileName());
+        string path = OnlyPath(buffer->getFileName());
         if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
 		path = buffer->tmppath;
         }
@@ -733,10 +727,10 @@ bool MenuPreviewPS(Buffer *buffer)
 
 	// Start postscript viewer
 	ProhibitInput();
-	LString ps = ChangeExtension (buffer->getFileName(),
+	string ps = ChangeExtension (buffer->getFileName(),
 				      ".ps_tmp", true);
 	// push directorypath, if necessary 
-        LString path = OnlyPath(buffer->getFileName());
+        string path = OnlyPath(buffer->getFileName());
         if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
 		path = buffer->tmppath;
         }
@@ -759,15 +753,15 @@ void MenuFax(Buffer *buffer)
 	}
 
 	// Send fax
-	LString ps = ChangeExtension (buffer->getFileName(), ".ps_tmp", true);
-	LString path = OnlyPath (buffer->getFileName());
+	string ps = ChangeExtension (buffer->getFileName(), ".ps_tmp", true);
+	string path = OnlyPath (buffer->getFileName());
 	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
 	}
 	PathPush(path);
 	if (!lyxrc->fax_program.empty()) {
-		LString help2 = lyxrc->fax_program;
-                help2.subst("$$FName",ps);
+		string help2 = lyxrc->fax_program;
+                subst(help2, "$$FName",ps);
                 help2 += " &";
                 Systemcalls one(Systemcalls::System, help2);
 	} else
@@ -782,7 +776,7 @@ bool MenuPreview(Buffer *buffer)
 	if (!buffer->text)
 		return false;
    
-	LString paper;
+	string paper;
 	
 	char real_papersize = buffer->params.papersize;
 	if (real_papersize == PAPER_DEFAULT)
@@ -826,13 +820,13 @@ bool MenuPreview(Buffer *buffer)
 	}
 
 	// push directorypath, if necessary 
-        LString path = OnlyPath(buffer->getFileName());
+        string path = OnlyPath(buffer->getFileName());
         if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
 		path = buffer->tmppath;
         }
         PathPush(path);
 	// Run dvi-viewer
-	LString command = lyxrc->view_dvi_command + paper ;
+	string command = lyxrc->view_dvi_command + paper ;
 	bool ret = RunScript(buffer, false, command);
         PathPop();
 	return ret;
@@ -843,7 +837,7 @@ void MenuMakeLaTeX(Buffer *buffer)
 {
 	if (buffer->text) {
 		// Get LaTeX-Filename
-		LString s = SpaceLess(ChangeExtension(
+		string s = SpaceLess(ChangeExtension(
 						buffer->getFileName(),
 						".tex", false));
 
@@ -862,7 +856,7 @@ void MenuMakeLaTeX(Buffer *buffer)
 			if (buffer->isLinuxDoc())
 				RunLinuxDoc(0, buffer->getFileName());
 			else
-				buffer->makeLaTeXFile(s, LString(), true);
+				buffer->makeLaTeXFile(s, string(), true);
 			minibuffer->Set(_("Nice LaTeX file saved as"),
 					MakeDisplayPath(s));
 			buffer->markDviDirty();
@@ -881,7 +875,7 @@ void MenuMakeLinuxDoc(Buffer *buffer)
 		}
 
 		// Get LinuxDoc-Filename
-		LString s = ChangeExtension (buffer->getFileName(), 
+		string s = ChangeExtension (buffer->getFileName(), 
 					     ".sgml", false);
 
 		FilePtr myfile(s, FilePtr::read);
@@ -914,7 +908,7 @@ void MenuMakeDocBook(Buffer *buffer)
 		}
 
 		// Get DocBook-Filename
-		LString s = ChangeExtension (buffer->getFileName(), 
+		string s = ChangeExtension (buffer->getFileName(), 
 					     ".sgml", false);
 
 		FilePtr myfile(s, FilePtr::read);
@@ -941,7 +935,7 @@ void MenuMakeAscii(Buffer *buffer)
 {
 	if (buffer->text) {
 		/* get LaTeX-Filename */
-		LString s = ChangeExtension (buffer->getFileName(),
+		string s = ChangeExtension (buffer->getFileName(),
 					     ".txt", false);
 
 		FilePtr myfile(s, FilePtr::read);
@@ -962,7 +956,7 @@ void MenuMakeAscii(Buffer *buffer)
 
 void MenuPrint(Buffer *buffer)
 {
-	LString input_file;
+	string input_file;
 
 	if (!buffer->text) 
 		return;
@@ -1026,14 +1020,14 @@ void AutoSave()
 	minibuffer->Set(_("Autosaving current document..."));
 	
 	// create autosave filename
-	LString fname =	OnlyPath(current_view->currentBuffer()->getFileName());
+	string fname =	OnlyPath(current_view->currentBuffer()->getFileName());
 	fname += "#";
 	fname += OnlyFilename(current_view->currentBuffer()->getFileName());
 	fname += "#";
 	
 	// tmp_ret will be located (usually) in /tmp
 	// will that be a problem?
-	LString tmp_ret = tmpnam(NULL);
+	string tmp_ret = tmpnam(0);
 	
 	pid_t pid = fork(); // If you want to debug the autosave
 	// you should set pid to -1, and comment out the
@@ -1084,18 +1078,17 @@ void AutoSave()
 // create new file with template
 // SERVERCMD !
 //
-Buffer * NewLyxFile(LString const & filename)
+Buffer * NewLyxFile(string const & filename)
 {
 	// Split argument by :
-	LString tmpname = filename;
-	LString name;
-	tmpname.split(name, ':');
+	string name;
+	string tmpname=split(filename, name, ':');
 #ifdef __EMX__ // Fix me! lyx_cb.C may not be low level enough to allow this.
 	if (name.length() == 1 && isalpha((unsigned char) name[0]) &&
 	    (tmpname.prefixIs("/") || tmpname.prefixIs("\\"))) {
 		name += ':';
 		name += tmpname.token(':');
-		tmpname.split(':');
+		tmpname = split(tmpname, ':');
 	}
 #endif
 	lyxerr.debug("Arg is " + filename);
@@ -1111,9 +1104,9 @@ Buffer * NewLyxFile(LString const & filename)
 
 
 // Insert ascii file (if filename is empty, prompt for one)
-void InsertAsciiFile(LString const & f, bool asParagraph)
+void InsertAsciiFile(string const & f, bool asParagraph)
 {
-	LString fname = f;
+	string fname = f;
 	LyXParagraph *tmppar;
 	LyXFileDlg fileDlg;
  
@@ -1159,7 +1152,7 @@ void InsertAsciiFile(LString const & f, bool asParagraph)
 
 void MenuShowTableOfContents()
 {
-	TocUpdateCB(NULL, 0);
+	TocUpdateCB(0, 0);
 	if (fd_form_toc->form_toc->visible) {
 		fl_raise_form(fd_form_toc->form_toc);
 	} else {
@@ -1172,13 +1165,11 @@ void MenuShowTableOfContents()
 
 void MenuInsertLabel(const char *arg)
 {
-	LString label = arg;
+	string label = arg;
 	ProhibitInput();
-	//LString label = fl_show_input(_("Enter new label to insert:"),"");
+	//string label = fl_show_input(_("Enter new label to insert:"),"");
 	if (label.empty())
-		label = askForText(_("Enter new label to insert:"));
-	label.strip();
-	label.frontStrip();
+		label = frontStrip(strip(askForText(_("Enter new label to insert:"))));
 	if (!label.empty()) {
 		InsetLabel *new_inset = new InsetLabel;
 		new_inset->setContents(label);
@@ -1190,7 +1181,7 @@ void MenuInsertLabel(const char *arg)
 
 void MenuInsertRef()
 {
-	RefUpdateCB(NULL, 0);
+	RefUpdateCB(0, 0);
 	if (fd_form_ref->form_ref->visible) {
 		fl_raise_form(fd_form_ref->form_ref);
 	} else {
@@ -1235,7 +1226,7 @@ void FootCB(FL_OBJECT*, long)
 
 void LayoutsCB(int sel, void *)
 {
-	LString tmp;
+	string tmp;
 	tmp += sel;
 	current_view->getOwner()->getLyXFunc()->Dispatch(LFUN_LAYOUTNO,
 							 tmp.c_str());
@@ -1248,12 +1239,12 @@ void LayoutsCB(int sel, void *)
  * (flag == 0) make TeX output
  * (flag == 1) make dvi output
  */
-int RunLinuxDoc(int flag, LString const & filename)
+int RunLinuxDoc(int flag, string const & filename)
 {
-	LString name;
-	LString s2;
-	LString path;
-	LString add_flags;
+	string name;
+	string s2;
+	string path;
+	string add_flags;
 
 	int errorcode = 0;
 
@@ -1321,11 +1312,11 @@ int RunLinuxDoc(int flag, LString const & filename)
  * SGML DocBook support:
  * (flag == 1) make dvi output
  */
-int RunDocBook(int flag, LString const & filename)
+int RunDocBook(int flag, string const & filename)
 {
-	LString name;
-	LString s2;
-	LString path;
+	string name;
+	string s2;
+	string path;
 
 	int errorcode = 0;
 
@@ -1342,7 +1333,7 @@ int RunDocBook(int flag, LString const & filename)
 	
 	current_view->currentBuffer()->makeDocBookFile(name,0);
 #if 0
-	LString add_flags;
+	string add_flags;
 	LYX_PAPER_SIZE ps = (LYX_PAPER_SIZE) current_view->currentBuffer()->params.papersize;
 	switch (ps) {
 	case PAPER_A4PAPER:  add_flags = "-p a4";     break;
@@ -1779,7 +1770,7 @@ bool UpdateLayoutDocument(BufferParams *params)
 		return false;
 	}		
 
-	if (params == NULL)
+	if (params == 0)
 		params = &current_view->currentBuffer()->params;
 	LyXTextClass *tclass = lyxstyle.TextClass(params->textclass);
 	
@@ -1800,7 +1791,7 @@ bool UpdateLayoutDocument(BufferParams *params)
 	fl_addto_choice(fd_form_document->choice_fontsize, 
 			tclass->opt_fontsize.c_str());
 	fl_set_choice(fd_form_document->choice_fontsize, 
-		      tclass->opt_fontsize.tokenPos('|', params->fontsize) + 2);
+		      tokenPos(tclass->opt_fontsize, '|', params->fontsize) + 2);
 
 	// ale970405+lasgoutt970513
 	fl_clear_choice(fd_form_document->choice_pagestyle);
@@ -1809,7 +1800,7 @@ bool UpdateLayoutDocument(BufferParams *params)
 			tclass->opt_pagestyle.c_str());
     
 	fl_set_choice(fd_form_document->choice_pagestyle,
-		      tclass->opt_pagestyle.tokenPos('|', params->pagestyle) + 2);
+		      tokenPos(tclass->opt_pagestyle, '|', params->pagestyle) + 2);
 
 	fl_set_button(fd_form_document->radio_indent, 0);
 	fl_set_button(fd_form_document->radio_skip, 0);
@@ -2199,7 +2190,7 @@ static
 void ToggleAndShow(LyXFont const &);
 
 
-void FontSizeCB(LString const & size)
+void FontSizeCB(string const & size)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setGUISize(size);
@@ -2282,9 +2273,9 @@ void StyleResetCB()
  * future perhaps we could try to implement a callback to the button-bar.
  * That is, `light' the bold button when the font is currently bold, etc.
  */
-LString CurrentState()
+string CurrentState()
 {
-	LString state;
+	string state;
 	if (current_view->available()) { 
 		// I think we should only show changes from the default
 		// font. (Asger)
@@ -2297,7 +2288,7 @@ LString CurrentState()
 
 		int depth = buffer->text->GetDepth();
 		if (depth>0) 
-			state += LString(_(", Depth: ")) + depth;
+			state += string(_(", Depth: ")) + tostr(depth);
 	}
 	return state;
 }
@@ -2571,12 +2562,12 @@ void FreeCB()
 void TimerCB(FL_OBJECT *, long)
 {
 	// only if the form still exists
-	if (fd_form_title->form_title != NULL) {
+	if (fd_form_title->form_title != 0) {
 		if (fd_form_title->form_title->visible) {
 			fl_hide_form(fd_form_title->form_title);
 		}
 		fl_free_form(fd_form_title->form_title);
-		fd_form_title->form_title = NULL;
+		fd_form_title->form_title = 0;
 	}
 }
 
@@ -2601,7 +2592,7 @@ void ParagraphVSpaceCB(FL_OBJECT* obj, long )
 			ActivateParagraphButtons();
 		}
 	} else if (obj == fp->input_space_above) {
-		LString input = fl_get_input (fp->input_space_above);
+		string input = fl_get_input (fp->input_space_above);
 
 		if (input.empty()) {
 			fl_set_choice (fp->choice_space_above, 1);
@@ -2616,7 +2607,7 @@ void ParagraphVSpaceCB(FL_OBJECT* obj, long )
 			DeactivateParagraphButtons();
 		}
 	} else if (obj == fp->input_space_below) {
-		LString input = fl_get_input (fp->input_space_below);
+		string input = fl_get_input (fp->input_space_below);
 
 		if (input.empty()) {
 			fl_set_choice (fp->choice_space_below, 1);
@@ -2643,7 +2634,7 @@ void ParagraphApplyCB(FL_OBJECT *, long)
 	bool pagebreak_top, pagebreak_bottom;
 	VSpace space_top, space_bottom;
 	char align;
-	LString labelwidthstring;
+	string labelwidthstring;
 	bool noindent;
 
 	// If a vspace kind is "Length" but there's no text in
@@ -2899,7 +2890,7 @@ void DocumentApplyCB(FL_OBJECT *, long)
 							    paragraph);
 
 			if (ret){
-				LString s;
+				string s;
 				if (ret==1)
 					s= _("One paragraph couldn't be converted");
 				else {
@@ -3208,7 +3199,7 @@ void TableApplyCB(FL_OBJECT *, long)
 						   params.spacing.getValue(),
 						   LyXLength::CM),
 					   LYX_ALIGN_CENTER,
-					   LString(),
+					   string(),
 					   0);
 	}
 	else
@@ -3217,7 +3208,7 @@ void TableApplyCB(FL_OBJECT *, long)
 								  VSpace(VSpace::NONE),
 								  VSpace(VSpace::NONE),
 					   LYX_ALIGN_CENTER, 
-					   LString(),
+					   string(),
 					   0);
 
 	current_view->currentBuffer()->text->cursor.par->table = new LyXTable(xsize, ysize);
@@ -3253,7 +3244,7 @@ void PrintCancelCB(FL_OBJECT *, long)
 	fl_hide_form(fd_form_print->form_print);
 }
 
-static bool LStringOnlyContains (LString const & LStr, const char * cset)
+static bool stringOnlyContains (string const & LStr, const char * cset)
 {
 	const char * cstr = LStr.c_str() ;
 
@@ -3265,9 +3256,9 @@ void PrintApplyCB(FL_OBJECT *, long)
 	if (!current_view->available())
 		return;
         Buffer *buffer = current_view->currentBuffer();
-        LString path = OnlyPath(buffer->getFileName());
+        string path = OnlyPath(buffer->getFileName());
 
-	LString pageflag;
+	string pageflag;
 	if (fl_get_button(fd_form_print->radio_even_pages))
 		pageflag = lyxrc->print_evenpage_flag + ' ';
 	else if (fl_get_button(fd_form_print->radio_odd_pages))
@@ -3276,38 +3267,35 @@ void PrintApplyCB(FL_OBJECT *, long)
 // Changes by Stephan Witt (stephan.witt@beusen.de), 19-Jan-99
 // User may give a page (range) list
 // User may print multiple (unsorted) copies
-	LString pages = fl_get_input(fd_form_print->input_pages);
-	pages.subst(';',',');
-	pages.subst('+',',');
-	pages.strip () ;
-	pages.frontStrip () ;
+	string pages = fl_get_input(fd_form_print->input_pages);
+	subst(pages, ';',',');
+	subst(pages, '+',',');
+	pages = strip (pages) ;
+	pages = frontStrip (pages) ;
 	while (!pages.empty()) { // a page range was given
-		LString piece ;
-		//int dashpos ; // unused
-		pages = pages.split (piece, ',') ;
-		piece.strip () ;
-		piece.frontStrip () ;
-		if ( !LStringOnlyContains (piece, "0123456789-") ) {
+		string piece ;
+		pages = split (pages, piece, ',') ;
+		piece = strip(piece) ;
+		piece = frontStrip(piece) ;
+		if ( !stringOnlyContains (piece, "0123456789-") ) {
 			WriteAlert(_("ERROR!  Unable to print!"),
 				_("Check 'range of pages'!"));
 			return;
 		}
-		if ( -1 == piece.charPos ('-') ) { // not found
+		if (piece.find('-') == string::npos) { // not found
 			pageflag += lyxrc->print_pagerange_flag + piece + '-' + piece + ' ' ;
-		} else if ( piece.suffixIs("-") ) { // missing last page
-			pageflag += lyxrc->print_pagerange_flag + piece + 1000 + ' ' ;
-		} else if ( piece.prefixIs("-") ) { // missing first page
-			pageflag += lyxrc->print_pagerange_flag + 1 + piece + ' ' ;
+		} else if (suffixIs(piece, "-") ) { // missing last page
+			pageflag += lyxrc->print_pagerange_flag + piece + "1000 ";
+		} else if (prefixIs(piece, "-") ) { // missing first page
+			pageflag += lyxrc->print_pagerange_flag + '1' + piece + ' ' ;
 		} else {
 			pageflag += lyxrc->print_pagerange_flag + piece + ' ' ;
 		}
 	}
    
-	LString copies = fl_get_input(fd_form_print->input_copies);
-	copies.strip () ;
-	copies.frontStrip () ;
+	string copies = frontStrip(strip(fl_get_input(fd_form_print->input_copies)));
 	if (!copies.empty()) { // a number of copies was given
-		if ( !LStringOnlyContains (copies, "0123456789") ) {
+		if ( !stringOnlyContains (copies, "0123456789") ) {
 			WriteAlert(_("ERROR!  Unable to print!"),
 				_("Check 'number of copies'!"));
 			return;
@@ -3319,35 +3307,34 @@ void PrintApplyCB(FL_OBJECT *, long)
 		pageflag += " " + copies + ' ' ;
 	}
 
-	LString reverseflag;
+	string reverseflag;
 	if (fl_get_button(fd_form_print->radio_order_reverse))
 		reverseflag = lyxrc->print_reverse_flag + ' ';
    
-	LString orientationflag;
+	string orientationflag;
 	if (buffer->params.orientation == ORIENTATION_LANDSCAPE)
 		orientationflag = lyxrc->print_landscape_flag + ' ';
    
-	LString ps_file = SpaceLess(fl_get_input(fd_form_print->input_file));
-	LString printer = fl_get_input(fd_form_print->input_printer);
-	printer.strip();
+	string ps_file = SpaceLess(fl_get_input(fd_form_print->input_file));
+	string printer = strip(fl_get_input(fd_form_print->input_printer));
 
-	LString printerflag;
+	string printerflag;
 	if (lyxrc->print_adapt_output // printer name should be passed to dvips
 	    && ! printer.empty()) // a printer name has been given
 		printerflag = lyxrc->print_to_printer + printer + ' ';
      
-	LString extraflags;
+	string extraflags;
 	if (!lyxrc->print_extra_options.empty())
 		extraflags = lyxrc->print_extra_options + ' ';
 
-	LString command = lyxrc->print_command + ' ' 
+	string command = lyxrc->print_command + ' ' 
 		+ printerflag + pageflag + reverseflag 
 		+ orientationflag + extraflags;
  
 	char real_papersize = buffer->params.papersize;
 	if (real_papersize == PAPER_DEFAULT)
 		real_papersize = lyxrc->default_papersize;
-        LString
+        string
             paper;
 
 	switch (real_papersize) {
@@ -3409,7 +3396,7 @@ void PrintApplyCB(FL_OBJECT *, long)
 	bool result;
 	if (!lyxrc->print_spool_command.empty() && 
 	    !fl_get_button(fd_form_print->radio_file)) {
-	    	LString command2 = lyxrc->print_spool_command + ' ';
+	    	string command2 = lyxrc->print_spool_command + ' ';
 		if (!printer.empty())
 			command2 += lyxrc->print_spool_printerprefix 
 				    + printer;
@@ -3485,19 +3472,19 @@ void FigureApplyCB(FL_OBJECT *, long)
 					   VSpace (0.3 *
 						   buffer->params.spacing.getValue(),
 						   LyXLength::CM),
-					   LYX_ALIGN_CENTER, LString(), 0);
+					   LYX_ALIGN_CENTER, string(), 0);
 	} else
 		buffer->text->SetParagraph(0, 0,
 					   0, 0,
 					   VSpace(VSpace::NONE),
 					   VSpace(VSpace::NONE),
 					   LYX_ALIGN_CENTER, 
-					   LString(),
+					   string(),
 					   0);
 	
 	buffer->update(-1);
       
-	Inset *new_inset = NULL;
+	Inset *new_inset = 0;
 	
 	new_inset = new InsetFig(100, 100, buffer);
 	buffer->insertInset(new_inset);
@@ -3579,7 +3566,7 @@ void Reconfigure()
                           AddName(system_lyxdir,"configure"));
 	PathPop();
 	minibuffer->Set(_("Reloading configuration..."));
-	lyxrc->Read(LibFileSearch(LString(), "lyxrc.defaults"));
+	lyxrc->Read(LibFileSearch(string(), "lyxrc.defaults"));
 	WriteAlert(_("The system has been reconfigured."), 
 		   _("You need to restart LyX to make use of any"),
 		   _("updated document class specifications."));
@@ -3591,7 +3578,7 @@ char* NextWord(float &value)
 {
 	if (!current_view->available()){
 		value = 1;
-		return NULL;
+		return 0;
 	}
    
 	char* string =  current_view->currentBuffer()->text->SelectNextWord(value);
@@ -3626,7 +3613,7 @@ void EndOfSpellCheck()
 }
 
 
-void ReplaceWord(LString const & replacestring)
+void ReplaceWord(string const & replacestring)
 {
 	if (!current_view->getScreen())
 		return;
@@ -3642,7 +3629,7 @@ void ReplaceWord(LString const & replacestring)
 	current_view->currentBuffer()->text->SetSelectionOverString(replacestring.c_str());
 
 	// Go back so that replacement string is also spellchecked
-	for (int i=-1; i< replacestring.length(); i++) {
+	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) {
 		current_view->currentBuffer()->text->CursorLeftIntern();
 	}
 	current_view->currentBuffer()->update(1);
@@ -3662,7 +3649,7 @@ struct TocList {
 };
 
 
-static TocList* toclist = NULL;
+static TocList* toclist = 0;
 
 
 void TocSelectCB(FL_OBJECT *ob, long)
@@ -3717,8 +3704,8 @@ void TocCancelCB(FL_OBJECT *, long)
 
 void TocUpdateCB(FL_OBJECT *, long)
 {
-	static LyXParagraph* stapar = NULL;
-	TocList *tmptoclist = NULL;
+	static LyXParagraph* stapar = 0;
+	TocList *tmptoclist = 0;
    
 	/* deleted the toclist */ 
 	if (toclist){
@@ -3728,7 +3715,7 @@ void TocUpdateCB(FL_OBJECT *, long)
 			toclist = tmptoclist;
 		}
 	}
-	toclist = NULL;
+	toclist = 0;
 	tmptoclist = toclist;
 
 
@@ -3742,7 +3729,7 @@ void TocUpdateCB(FL_OBJECT *, long)
 	LyXParagraph *par = current_view->currentBuffer()->paragraph;
 	char labeltype;
 	char* line = new char[200];
-	int i = 0;
+	//int i = 0;
 	int pos = 0;
 	unsigned char c;
 	int topline = 0;
@@ -3768,9 +3755,10 @@ void TocUpdateCB(FL_OBJECT *, long)
 			     pos++)
 				line[pos] = ' ';
 			
-			/* then the labelstring */ 
-			i = 0;
+			// Then the labestring
+			//i = 0;
 			if (!par->labelstring.empty()) {
+				string::size_type i = 0;
 				while (pos < 199 && i < par->labelstring.length()) {
 					line[pos] = par->labelstring[i];
 					i++;
@@ -3782,7 +3770,7 @@ void TocUpdateCB(FL_OBJECT *, long)
 			pos++;
 			
 			/* now the contents */ 
-			i = 0;
+			int i = 0;
 			while (pos < 199 && i < par->last) {
 				c = par->GetChar(i);
 				if (isprint((unsigned char) c) || c >= 128) {
@@ -3803,7 +3791,7 @@ void TocUpdateCB(FL_OBJECT *, long)
 				tmptoclist = tmptoclist->next;
 			}
 			
-			tmptoclist->next = NULL;
+			tmptoclist->next = 0;
 			int a = 0;
 			for (a=0; a<6; a++){
 				tmptoclist->counter[a] = par->GetFirstCounter(a);
@@ -3825,12 +3813,11 @@ void RefSelectCB(FL_OBJECT *, long data)
 	if (!current_view->available())
 		return;
 
-	LString s =
+	string s =
 		fl_get_browser_line(fd_form_ref->browser_ref,
 				    fl_get_browser(fd_form_ref->browser_ref));
-	LString u = fl_get_input(fd_form_ref->ref_name);
-	u.strip();
-	u.frontStrip();
+	string u = frontStrip(strip(fl_get_input(fd_form_ref->ref_name)));
+
 	if (s.empty())
 		return;
 
@@ -3839,7 +3826,7 @@ void RefSelectCB(FL_OBJECT *, long data)
 	        return;
 	}
 	    
-	LString t;
+	string t;
 	if (data==0)
 		t += "\\ref";
 	else
@@ -3866,12 +3853,15 @@ void RefUpdateCB(FL_OBJECT *, long)
 	FL_OBJECT * brow = fd_form_ref->browser_ref;
 
 	// Get the current line, in order to restore it later
-	LString currentstr = fl_get_browser_line(brow,
-						 fl_get_browser(brow));
+	char const * const btmp=fl_get_browser_line(brow,
+						     fl_get_browser(brow));
+	string currentstr=btmp ? btmp : "";
+	//string currentstr = fl_get_browser_line(brow,
+	//					fl_get_browser(brow));
 
 	fl_clear_browser(brow);
 
-	LString refs = current_view->currentBuffer()->getReferenceList('\n');
+	string refs = current_view->currentBuffer()->getReferenceList('\n');
 	int topline = 1;
 
 #if FL_REVISION > 85
@@ -3886,7 +3876,7 @@ void RefUpdateCB(FL_OBJECT *, long)
 	fl_set_browser_topline(brow, topline);
 #else
 	// Keep the old ugly code for xforms 0.81 compatibility
-	LString curr_ref;
+	string curr_ref;
 	int ref_num = 0;
                                        
 	while(true) {
@@ -4016,7 +4006,7 @@ int UnlockInset(UpdatableInset* inset)
 	if (inset &&
 	    current_view->currentBuffer()->the_locking_inset == inset){
 		inset->InsetUnlock();
-		current_view->currentBuffer()->the_locking_inset = NULL;
+		current_view->currentBuffer()->the_locking_inset = 0;
 		current_view->currentBuffer()->text->FinishUndo();
 		return 0;
 	}
@@ -4063,15 +4053,15 @@ void UpdateInsetUpdateList()
 		InsetUpdateList = InsetUpdateList->next;
 		delete tmp;
 	}
-	InsetUpdateList = NULL;
+	InsetUpdateList = 0;
 }
 
 #warning UGLY!!
 // I know we shouldn't put anything in here but this seems the fastest
 // way to do this (and the cleanest for now). This function just inserts
-// a newline in the LString and the inserts 'depth'-spaces so that the
+// a newline in the string and the inserts 'depth'-spaces so that the
 // code is indented in the right way!!!
-void addNewlineAndDepth(LString &file, int const depth)
+void addNewlineAndDepth(string &file, int const depth)
 {
        file += '\n';
        for (int j=0;j< depth;j++)

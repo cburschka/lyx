@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -12,14 +12,14 @@
 #include "buffer.h"
 #include "bufferlist.h"
 #include "error.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "lyxrc.h"
 #include "LyXView.h"
 #include "LaTeXFeatures.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "gettext.h"
 #include "include_form.h"
-#include "FileInfo.h"
+#include "support/FileInfo.h"
 
 extern BufferView *current_view;
 
@@ -97,8 +97,8 @@ void include_cb(FL_OBJECT *, long arg)
 	{
 		// Should browsing too be disabled in RO-mode?
 		LyXFileDlg fileDlg;
-		LString mpath = OnlyPath(inset->getMasterFilename());
-                LString ext;
+		string mpath = OnlyPath(inset->getMasterFilename());
+                string ext;
     
 		if (fl_get_button(form->flag2)) // Use Input Button
 			ext = "*.tex";
@@ -110,16 +110,16 @@ void include_cb(FL_OBJECT *, long arg)
 		fileDlg.SetButton(0, _("Documents"), lyxrc->document_path);
     
 		// Use by default the master's path
-		LString filename = fileDlg.Select(_("Select Child Document"),
+		string filename = fileDlg.Select(_("Select Child Document"),
 						  mpath, ext, 
 						  inset->getContents());
 		XFlush(fl_get_display());
  
 		// check selected filename
 		if (!filename.empty()) {
-			LString filename2 = MakeRelPath(filename,
+			string filename2 = MakeRelPath(filename,
 							mpath);
-			if (filename2.prefixIs(".."))
+			if (prefixIs(filename2, ".."))
 				fl_set_input(form->input,
 					     filename.c_str());
 			else
@@ -183,7 +183,7 @@ void include_cb(FL_OBJECT *, long arg)
 }
 
 
-InsetInclude::InsetInclude(LString const & fname, Buffer *bf)
+InsetInclude::InsetInclude(string const & fname, Buffer *bf)
 	: InsetCommand("include") 
 {
 	master = bf;
@@ -231,7 +231,7 @@ void InsetInclude::Edit(int, int)
 
 	if (!form) {
                 form = create_form_include();
-		fl_set_form_atclose(form->include, IgnoreCloseBoxCB, NULL);
+		fl_set_form_atclose(form->include, IgnoreCloseBoxCB, 0);
 	}
         form->vdata = this;
     
@@ -271,7 +271,7 @@ void InsetInclude::Read(LyXLex &lex)
 		setInclude();
 	else if (getCmdName() == "input")
 		setInput();
-	else if (getCmdName().contains("verbatim")) {
+	else if (contains(getCmdName(), "verbatim")) {
 		setVerb();
 		if (getCmdName() == "verbatiminput*")
 			setVisibleSpace(true);
@@ -279,9 +279,9 @@ void InsetInclude::Read(LyXLex &lex)
 }
 
 
-LString InsetInclude::getScreenLabel() const
+string InsetInclude::getScreenLabel() const
 {
-	LString temp;
+	string temp;
 	if (isInput())
 		temp += _("Input");
 	else if (isVerb()) {
@@ -309,13 +309,13 @@ bool InsetInclude::loadIfNeeded() const
 	// the readonly flag can/will be wrong, not anymore I think.
 	FileInfo finfo(getFileName());
 	bool ro = !finfo.writable();
-	return ( bufferlist.readFile(getFileName(), ro) != NULL );
+	return ( bufferlist.readFile(getFileName(), ro) != 0 );
 }
 
 
 int InsetInclude::Latex(FILE *file, signed char /*fragile*/)
 {
-	LString include_file;
+	string include_file;
 	signed char dummy = 0;
 	Latex(include_file, dummy);
 	fprintf(file, "%s", include_file.c_str());
@@ -323,9 +323,9 @@ int InsetInclude::Latex(FILE *file, signed char /*fragile*/)
 }
 
 
-int InsetInclude::Latex(LString &file, signed char /*fragile*/)
+int InsetInclude::Latex(string &file, signed char /*fragile*/)
 {
-	LString writefile, incfile;
+	string writefile, incfile;
 
 	// Do nothing if no file name has been specified
 	if (contents.empty())
@@ -352,9 +352,9 @@ int InsetInclude::Latex(LString &file, signed char /*fragile*/)
 		writefile = ChangeExtension(getFileName(), ".tex", false);
 		if (!master->tmppath.empty()
 		    && !master->niceFile) {
-			incfile.subst('/','@');
+			subst(incfile, '/','@');
 			#ifdef __EMX__
-			incfile.subst(':', '$');
+			subst(incfile, ':', '$');
 			#endif
 			writefile = AddName(master->tmppath, incfile);
 		} else
@@ -392,7 +392,7 @@ int InsetInclude::Latex(LString &file, signed char /*fragile*/)
 		// file really have .tex
 		file += '\\';
 		file += command + '{';
-		file +=	ChangeExtension(incfile, LString(), false)
+		file +=	ChangeExtension(incfile, string(), false)
 			+ '}';
 	}
 
@@ -416,10 +416,10 @@ void InsetInclude::Validate(LaTeXFeatures& features) const
 }
 
 
-LString InsetInclude::getLabel(int) const
+string InsetInclude::getLabel(int) const
 {
-    LString label;
-    LString parentname;
+    string label;
+    string parentname;
 	
 	
     if (loadIfNeeded()) {
@@ -434,7 +434,7 @@ LString InsetInclude::getLabel(int) const
 
 
 int InsetInclude::GetNumberOfLabels() const {
-    LString label;
+    string label;
     int nl;
 
     if (loadIfNeeded()) {
@@ -449,9 +449,9 @@ int InsetInclude::GetNumberOfLabels() const {
 }
 
 
-LString InsetInclude::getKeys() const
+string InsetInclude::getKeys() const
 {
-	LString list;
+	string list;
 	
 	if (loadIfNeeded()) {
 		Buffer *tmp = bufferlist.getBuffer(getFileName());

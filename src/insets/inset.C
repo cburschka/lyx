@@ -3,10 +3,10 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team.
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
 #include <config.h>
 
@@ -16,12 +16,7 @@
 
 #include "lyxinset.h"
 #include "error.h"
-
-// 	$Id: inset.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: inset.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
+#include "support/lstrings.h"
 
 /* Insets default methods */
 
@@ -76,15 +71,15 @@ LyXFont Inset::ConvertFont(LyXFont font)
 
 void UpdatableInset::InsetButtonPress(int x, int y, int button)
 {
-	lyxerr.debug(LString("Inset Button Press x=")+ x +
-		      ", y=" + y + ", button=" + button);
+	lyxerr.debug(string("Inset Button Press x=")+ tostr(x) +
+		      ", y=" + tostr(y) + ", button=" + tostr(button));
 }
 
 
 void UpdatableInset::InsetButtonRelease(int x, int y, int button)
 {
-	lyxerr.debug(LString("Inset Button Release x=")+ x +
-		      ", y=" + y + ", button=" + button);
+	lyxerr.debug(string("Inset Button Release x=")+ tostr(x) +
+		      ", y=" + tostr(y) + ", button=" + tostr(button));
 }
 
 
@@ -96,8 +91,8 @@ void UpdatableInset::InsetKeyPress(XKeyEvent *)
 
 void UpdatableInset::InsetMotionNotify(int x, int y, int state)
 {
-	lyxerr.debug(LString("Inset Motion Notify x=")+ x +
-		      ", y=" + y + ", state=" + state);
+	lyxerr.debug(string("Inset Motion Notify x=")+ tostr(x) +
+		      ", y=" + tostr(y) + ", state=" + tostr(state));
 }
 
 

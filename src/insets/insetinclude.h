@@ -8,8 +8,8 @@
  * 
  *======================================================*/
 
-#ifndef _INSET_INCLUDE_H
-#define _INSET_INCLUDE_H
+#ifndef INSET_INCLUDE_H
+#define INSET_INCLUDE_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -17,7 +17,7 @@
 
 #include "insetcommand.h"
 #include "buffer.h"
-#include "filetools.h"
+#include "support/filetools.h"
 
 struct LaTeXFeatures;
 
@@ -33,7 +33,7 @@ public:
 		flag = InsetInclude::INCLUDE;
 	}
 	///
-	InsetInclude(LString const &,  Buffer*);
+	InsetInclude(string const &,  Buffer*);
 	///
 	~InsetInclude();
         ///
@@ -43,9 +43,9 @@ public:
 	/// This is 1 if the childs have labels, 0 otherwise
 	int GetNumberOfLabels() const;
 	/// This returns the list of labels on the child buffer
-	LString getLabel(int) const;
+	string getLabel(int) const;
 	/// This returns the list of bibkeys on the child buffer
-	LString getKeys() const;
+	string getKeys() const;
 	///
 	void Edit(int, int);
 	///
@@ -60,7 +60,7 @@ public:
 	/// 
 	int Latex(FILE *file, signed char fragile);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string &file, signed char fragile);
 	
 	///
 	void Validate(LaTeXFeatures &) const;
@@ -68,19 +68,19 @@ public:
         /// Input inserts anything inside a paragraph, Display can give some visual feedback 
 	bool Display() const { return !(isInput()); }
 	///
-	LString getScreenLabel() const;
+	string getScreenLabel() const;
 	///
-	void setContents(LString const & c) {
+	void setContents(string const & c) {
 		InsetCommand::setContents(c);
 		filename = MakeAbsPath(contents, 
 				       OnlyPath(getMasterFilename())); 
 	}
         ///
-        void setFilename(LString const & n) { setContents(n); }
+        void setFilename(string const & n) { setContents(n); }
         ///
-        LString getMasterFilename() const { return master->getFileName(); }
+        string getMasterFilename() const { return master->getFileName(); }
         ///
-        LString getFileName() const { 
+        string getFileName() const { 
 		return filename;
 	}
         ///  In "input" mode uses \input instead of \include.
@@ -128,7 +128,7 @@ private:
         ///
 	Buffer *master;
 	///
-	LString filename;
+	string filename;
 };
 
 

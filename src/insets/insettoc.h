@@ -32,7 +32,7 @@ public:
         ///
         Inset* Clone() { return new InsetTOC(owner); }
     	///
-	LString getScreenLabel() const { return _("Table of Contents"); }
+	string getScreenLabel() const { return _("Table of Contents"); }
 	/// On edit, we open the TOC pop-up
 	void Edit(int, int);
         ///
@@ -44,9 +44,9 @@ public:
 	///
 	Inset::Code LyxCode() const { return Inset::TOC_CODE; }
 	///
-	int Linuxdoc(LString &file);
+	int Linuxdoc(string &file);
 	///
-	int DocBook(LString &file);
+	int DocBook(string &file);
 private:
 	///
 	Buffer *owner;

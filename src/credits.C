@@ -1,44 +1,37 @@
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-* 	 
-*	    Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ * 	 
+ *	     Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
 #include FORMS_H_LOCATION
-#include <stdlib.h>
+#include <cstdlib>
 
 #include "credits.h"
 #include "credits_form.h"
 
 #include "LString.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "gettext.h"
 
-// 	$Id: credits.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: credits.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
-
-/* extern */
-extern LString system_lyxdir;
+extern string system_lyxdir;
 
 /**** Forms and Objects ****/
 
-static FD_form_credits *fd_form_credits = NULL;
-static FD_copyright *fd_form_copyright = NULL;
+static FD_form_credits *fd_form_credits = 0;
+static FD_copyright *fd_form_copyright = 0;
 
 void CreditsOKCB(FL_OBJECT *, long) {
       fl_hide_form(fd_form_credits->form_credits);
       fl_free_form(fd_form_credits->form_credits);
-      fd_form_credits->form_credits = NULL;
+      fd_form_credits->form_credits = 0;
 }
 
 /*---------------------------------------*/
@@ -51,10 +44,10 @@ void ShowCredits()
 		/* read the credits into the browser */ 
 		
 		/* try file LYX_DIR/CREDITS */ 
-		LString real_file = AddName (system_lyxdir, "CREDITS");
+		string real_file = AddName (system_lyxdir, "CREDITS");
 		fd_form_credits = create_form_form_credits();
 		fl_set_form_atclose(fd_form_credits->form_credits,
-				    CancelCloseBoxCB, NULL);
+				    CancelCloseBoxCB, 0);
 
 		if (!fl_load_browser(fd_form_credits->browser_credits, 
 				     real_file.c_str())) {
@@ -84,7 +77,7 @@ void ShowCredits()
 void CopyrightOKCB(FL_OBJECT *, long) {
 	fl_hide_form(fd_form_copyright->copyright);
 	fl_free_form(fd_form_copyright->copyright);
-	fd_form_copyright->copyright = NULL;
+	fd_form_copyright->copyright = 0;
 }
 
 // Show copyright and warranty form
@@ -93,7 +86,7 @@ void ShowCopyright()
 	if (!fd_form_copyright || !fd_form_copyright->copyright) {
 		fd_form_copyright = create_form_copyright();
 		fl_set_form_atclose(fd_form_copyright->copyright, 
-				    CancelCloseBoxCB, NULL);
+				    CancelCloseBoxCB, 0);
 	}
 
 	// Funny emotional remark by Asger deleted. (Lgb)

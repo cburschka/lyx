@@ -60,7 +60,7 @@ class BitmapMenu {
    FL_OBJECT *button;
  public:
    ///
-   BitmapMenu(int n, FL_OBJECT* bt, BitmapMenu* prevx=NULL);
+   BitmapMenu(int n, FL_OBJECT* bt, BitmapMenu* prevx=0);
    ///
    ~BitmapMenu();
    ///

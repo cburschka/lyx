@@ -18,7 +18,7 @@
 #include <config.h>
 
 #include FORMS_H_LOCATION
-#include <stdlib.h>
+#include <cstdlib>
 #include "symbol_def.h"
 #include "math_inset.h"
 

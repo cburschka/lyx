@@ -9,22 +9,18 @@
  *======================================================
  */
 
-#include <stdlib.h>
+#include <config.h>
+
+#include <cstdlib>
 #include "table.h"
 #include "vspace.h"
 #include "layout.h"
-
-// 	$Id: table.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: table.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-extern void addNewlineAndDepth(LString &file, int const depth); // Jug 990923
+extern void addNewlineAndDepth(string &file, int const depth); // Jug 990923
 
 #define WIDTH_OF_LINE 5
 
@@ -130,8 +126,8 @@ void LyXTable::Init(int rows_arg, int columns_arg)
    
     calculate_width_of_table();
 
-    rowofcell = NULL;
-    columnofcell = NULL;
+    rowofcell = 0;
+    columnofcell = 0;
     set_row_column_number_info();
     is_long_table = false;
     rotate = 0;
@@ -594,7 +590,7 @@ bool LyXTable::SetAlignment(int cell, char align)
     return true;
 }
 
-bool LyXTable::SetPWidth(int cell, LString width)
+bool LyXTable::SetPWidth(int cell, string width)
 {
     int fvcell = FirstVirtualCell(cell);
 
@@ -609,7 +605,7 @@ bool LyXTable::SetPWidth(int cell, LString width)
     return true;
 }
 
-bool LyXTable::SetAlignSpecial(int cell, LString special, int what)
+bool LyXTable::SetAlignSpecial(int cell, string special, int what)
 {
     if (what == SET_SPECIAL_MULTI)
         cellinfo_of_cell(cell)->align_special = special;
@@ -677,7 +673,7 @@ char LyXTable::GetAlignment(int cell)
 		return column_info[column_of_cell(cell)].alignment;
 }
 
-LString LyXTable::GetPWidth(int cell)
+string LyXTable::GetPWidth(int cell)
 {
 	int fvcell = FirstVirtualCell(cell);
 	
@@ -686,7 +682,7 @@ LString LyXTable::GetPWidth(int cell)
 	return column_info[column_of_cell(fvcell)].p_width;
 }
 
-LString LyXTable::GetAlignSpecial(int cell, int what)
+string LyXTable::GetAlignSpecial(int cell, int what)
 {
     if (what == SET_SPECIAL_MULTI)
         return cellinfo_of_cell(cell)->align_special;
@@ -858,7 +854,7 @@ void LyXTable::Read(FILE* file)
     int columns_arg = 0;
     int is_long_table_arg = false;
     int rotate_arg = false;
-    LString s;
+    string s;
     int a = 0;
     int b = 0;
     int c = 0;
@@ -981,7 +977,7 @@ void LyXTable::Read(FILE* file)
 
 // cell <0 will tex the preamble
 // returns the number of printed newlines
-int LyXTable::TexEndOfCell(LString& file, int cell)
+int LyXTable::TexEndOfCell(string& file, int cell)
 {
     int i;
     int ret = 0;
@@ -1117,7 +1113,7 @@ int LyXTable::TexEndOfCell(LString& file, int cell)
             }
             if (IsLastCell(cell)) {
                 int row = row_of_cell(cell);
-                LString hline1,hline2;
+                string hline1,hline2;
                 bool print_hline = true;
                 bool pr_top_hline,flag1,flag2;
                 flag1 = IsLongTable() &&
@@ -1464,12 +1460,12 @@ const char *LyXTable::getDocBookAlign(int cell, bool isColumn=false)
 
 // cell <0 will tex the preamble
 // returns the number of printed newlines
-int LyXTable::DocBookEndOfCell(LString& file, int cell, int &depth)
+int LyXTable::DocBookEndOfCell(string& file, int cell, int &depth)
 {
     int i;
     int ret = 0;
-    int tmp; // tmp2;
-    int fcell,nvcell;
+    //int tmp; // tmp2; // unused
+    int nvcell; // fcell; // unused
     if (ShouldBeVeryLastCell(cell)) {
 #if 0
         // the very end at the very beginning
@@ -1653,7 +1649,7 @@ int LyXTable::DocBookEndOfCell(LString& file, int cell, int &depth)
                 ret += 4;
 #if 0
                 int row = row_of_cell(cell);
-                LString hline1,hline2;
+                string hline1,hline2;
                 bool print_hline = true;
                 bool pr_top_hline,flag1,flag2;
                 flag1 = IsLongTable() &&

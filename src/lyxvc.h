@@ -39,7 +39,7 @@ public:
 	  the appropiate actions is taken. Returns true if the file is under
 	  control by a VCS.
 	  */
-	bool file_found_hook(LString const & fn);
+	bool file_found_hook(string const & fn);
 	
 	/** This function should be run when a file is requested for loading,
 	  but it does not exist. This function will then check for a VC master
@@ -48,7 +48,7 @@ public:
 	  viewing/editing. Returns true if the file is under control by a VCS
 	  and the user wants to view/edit it.
 	  */
-	static bool file_not_found_hook(LString const & fn);
+	static bool file_not_found_hook(string const & fn);
 
 	///
 	void scanMaster();
@@ -71,7 +71,7 @@ public:
 	void undoLast();
 
 	///
-	void viewLog(LString const &);
+	void viewLog(string const &);
 
 	///
 	void showLog();
@@ -83,27 +83,27 @@ public:
 	bool inUse();
 
 	/// Returns the version number.
-	LString const getVersion() const;
+	string const getVersion() const;
 
 	/// Returns the userid of the person who has locked the doc.
-	LString const getLocker() const;
+	string const getLocker() const;
 protected:
 private:
 	///
-	int doVCCommand(LString const&);
+	int doVCCommand(string const&);
 	
 	/** The master VC file. For RCS this is *,v or RCS/ *,v. master should
 	  have full path.
 	  */
-	LString master;
+	string master;
 
 	/** The version of the VC file. I am not sure if this can be a
 	string of if it must be a
 	  float/int. */
-	LString version;
+	string version;
 
 	/// The user currently keeping the lock on the VC file.
-	LString locker;
+	string locker;
 
 	///
 	enum VCStatus {

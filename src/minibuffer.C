@@ -4,8 +4,8 @@
  *                 read minibuffer.h for more
  *                 information.
  * 
- *           Copyright (C) 1995 Matthias Ettrich
- *           Copyright (C) 1995-1998 The LyX Team.  
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.  
  * 
  * ###########################################################################
  */
@@ -16,7 +16,7 @@
 #pragma implementation "minibuffer.h"
 #endif
 
-#include "filetools.h"
+#include "support/filetools.h"
 #include "lyx_main.h" 
 #include "lyxfunc.h"
 #include FORMS_H_LOCATION
@@ -25,15 +25,9 @@
 #include "error.h"
 #include "gettext.h"
 
-// 	$Id: minibuffer.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: minibuffer.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
-
 extern bool keyseqUncomplete();
-extern LString keyseqOptions(int l=190);
-extern LString keyseqStr(int l=190);
+extern string keyseqOptions(int l=190);
+extern string keyseqStr(int l=190);
 extern LyXAction lyxaction;
 
 void MiniBuffer::TimerCB(FL_OBJECT *, long tmp)
@@ -59,31 +53,31 @@ void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 	// Split command into function and argument
 	// This is done wrong Asger. Instead of <function argument>
 	// it ends up as <argument function> Queer solution:
-	LString arg = obj->cur_cmd;
-	LString function;
-	if (arg.contains(" ")) {
-		arg.split(function, ' ');
-		function.strip();
+	string arg = obj->cur_cmd;
+	string function;
+	if (contains(arg, " ")) {
+		arg = split(arg, function, ' ');
+		function = strip(function);
 	} else {
 		function = arg;
-		arg.clean();
+		arg.erase();
 	}
 	lyxerr.debug("Function: " + function);
 	lyxerr.debug("Arg     : " + arg);
 	// Check if the name is valid (ale)
 	// No, let the dispatch functions handle that.
 	//int action = lyxaction.LookupFunc(function.c_str());
-	//lyxerr.debug(LString("minibuffer action: ") + action);
+	//lyxerr.debug(string("minibuffer action: ") + action);
 	//if (action>=0) {
 	    // Dispatch only returns requested data for a few commands (ale)
-	LString res=obj->owner->getLyXFunc()->Dispatch(function.c_str(),
+	string res=obj->owner->getLyXFunc()->Dispatch(function.c_str(),
 						       arg.c_str());
-	lyxerr.debug(LString("Minibuffer Res: ") + res);
+	lyxerr.debug(string("Minibuffer Res: ") + res);
 /*	if (!res.empty())
 		if(obj->owner->getLyXFunc()->errorStat())
-			obj->Set(_("Error:"), _(res.c_str()), LString(), 4);
+			obj->Set(_("Error:"), _(res.c_str()), string(), 4);
 		else
-			obj->Set(_("Result:"), _(res.c_str()), LString(), 4);
+			obj->Set(_("Result:"), _(res.c_str()), string(), 4);
 	else
 		obj->Init();
 */
@@ -101,7 +95,7 @@ void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 
 void MiniBuffer::ExecCommand()
 {
-	text.clean();
+	text.erase();
 	fl_set_input(the_buffer, "");
 	fl_set_focus_object(owner->getForm(),the_buffer);
 }
@@ -136,13 +130,12 @@ FL_OBJECT *MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
 
 // Added optional arg `delay_secs', defaults to 4.
 //When 0, no timeout is done. RVDK_PATCH_5 
-void MiniBuffer::Set(LString const& s1, LString const& s2,
-		     LString const& s3, int delay_secs)
+void MiniBuffer::Set(string const& s1, string const& s2,
+		     string const& s3, int delay_secs)
 {
 	setTimer(delay_secs);
 
-	LString ntext = s1 + ' ' + s2 + ' ' + s3;
-	ntext.strip(' ');
+	string ntext = strip(s1 + ' ' + s2 + ' ' + s3);
 
 	if (!the_buffer->focus) {
 		fl_set_input(the_buffer, ntext.c_str());
@@ -171,7 +164,7 @@ void MiniBuffer::Init()
    
 	// Else, show the buffer state.
 	else if (owner->currentView()->available()) {
-			LString nicename =
+			string nicename =
 				MakeDisplayPath(owner->currentBuffer()->
 						getFileName());
 			// Should we do this instead? (kindo like emacs)
@@ -214,7 +207,7 @@ void MiniBuffer::Reset()
 {
 	if (!text_stored.empty()){
 		Set(text_stored);
-		text_stored.clean();
+		text_stored.erase();
 	}
 }
 
@@ -269,7 +262,7 @@ int MiniBuffer::peek_event(FL_OBJECT *ob, int event, FL_Coord, FL_Coord,
 		case 13:
 		case XK_Return:
 			// Execute a command. 
-			mini->cur_cmd = LString(fl_get_input(ob));
+			mini->cur_cmd = string(fl_get_input(ob));
 			ExecutingCB(ob, 0);
 			return 1;
 		default:

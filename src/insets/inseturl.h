@@ -35,11 +35,11 @@ public:
 	///
 	InsetUrl(): InsetCommand("url"), form(0) { flag = InsetUrl::URL; }
 	///
-	InsetUrl(LString const &);
+	InsetUrl(string const &);
 	///
 	InsetUrl(InsetCommand const&);
 	///
-	InsetUrl(LString const &,LString const &,LString const &);
+	InsetUrl(string const &,string const &,string const &);
 	///
 	~InsetUrl();
         ///
@@ -59,7 +59,7 @@ public:
         ///
 	bool Display() const { return false; }
 	///
-	LString getScreenLabel() const;
+	string getScreenLabel() const;
 	///
 	InsetUrl::Url_Flags getFlag() { return flag; }
 	///
@@ -69,11 +69,11 @@ public:
 	///
 	int Latex(FILE *file, signed char fragile);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string &file, signed char fragile);
 	///
-	int Linuxdoc(LString &file);
+	int Linuxdoc(string &file);
 	///
-	int DocBook(LString &file);
+	int DocBook(string &file);
 private:
 	///
         Url_Flags flag;

@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include <stdio.h>
+#include <cstdio>
 
 #ifdef __GNUG__
 #pragma implementation "trans.h"
@@ -8,7 +8,7 @@
 
 #include "LyXView.h"
 #include "trans.h"
-#include "filetools.h"
+#include "support/filetools.h"
 #include "tex-strings.h"
 #include "lyxlex.h"
 #include "error.h"
@@ -18,7 +18,7 @@
 // KmodInfo
 KmodInfo::KmodInfo()
 {
-	exception_list=NULL;
+	exception_list=0;
 }
 
 
@@ -54,7 +54,7 @@ DefaultTrans::DefaultTrans()
 }
 
 
-LString DefaultTrans::process(char c,TransManager& k)
+string DefaultTrans::process(char c,TransManager& k)
 {
 	char dummy[2]="?";
 	dummy[0]=c;
@@ -70,7 +70,7 @@ Trans::Trans()
 	int i;
 
 	for(i=0; i<256; i++)
-		keymap_[i]=NULL;
+		keymap_[i]=0;
 
 	for(i=0; i<TEX_MAX_ACCENT+1; i++)
 		kmod_list_[i]=0;
@@ -84,7 +84,7 @@ Trans::~Trans()
 
 
 void Trans::InsertException(Trans::keyexc& exclist, char c,
-			    const LString& data,bool flag,tex_accent accent)
+			    const string& data,bool flag,tex_accent accent)
 {
 	keyexc p;
 
@@ -120,7 +120,7 @@ void Trans::FreeKeymap()
 	for(i=0; i<256; i++)
 		if (keymap_[i]) {
 			delete keymap_[i];
-			keymap_[i]=NULL;
+			keymap_[i]=0;
 		}
 	for(i=0; i<TEX_MAX_ACCENT+1; i++)
 		if (kmod_list_[i]) {
@@ -137,7 +137,7 @@ bool Trans::IsDefined()
 }
 
 
-const LString& Trans::GetName()
+const string& Trans::GetName()
 {
 	return name_;
 }
@@ -160,11 +160,11 @@ struct keyword_item kmapTags[K_LAST-1] = {
 };
 
 
-tex_accent getkeymod(const LString&);
+tex_accent getkeymod(const string&);
 
 
-void Trans::AddDeadkey(tex_accent accent,const LString& keys,
-		       const LString& allowed)
+void Trans::AddDeadkey(tex_accent accent,const string& keys,
+		       const string& allowed)
 {
 	if (kmod_list_[accent]) {
 		FreeException(kmod_list_[accent]->exception_list);
@@ -181,12 +181,12 @@ void Trans::AddDeadkey(tex_accent accent,const LString& keys,
 		kmod_list_[accent]->allowed = allowed;
 	}
 	
-	for(int i=0;i<keys.length();i++) {
-		char *temp;
-		temp=keymap_[(unsigned char)keys[i]]=new char[2];
-		temp[0]=0; temp[1]=accent;
+	for(string::size_type i = 0; i < keys.length(); ++i) {
+		char * temp;
+		temp = keymap_[(unsigned char)keys[i]] = new char[2];
+		temp[0] = 0; temp[1] = accent;
 	}
-	kmod_list_[accent]->exception_list=NULL;
+	kmod_list_[accent]->exception_list=0;
 }
 
 
@@ -206,7 +206,7 @@ int Trans::Load(LyXLex &lex)
 			} else
 				return -1;
 			
-			LString keys = lex.GetString();
+			string keys = lex.GetString();
 
 			if (lex.next(true)) {
 				if ( lyxerr.debugging(Error::KBMAP))
@@ -227,7 +227,7 @@ int Trans::Load(LyXLex &lex)
 			} else
 				return -1;
 
-			LString allowed = lex.GetString();
+			string allowed = lex.GetString();
 
 			AddDeadkey(accent, keys, allowed);
 			break;
@@ -254,7 +254,7 @@ int Trans::Load(LyXLex &lex)
 			tex_accent accent_2=getkeymod(str);
 			if (accent_2==TEX_NOACCENT) return -1;
 
-			if (kmod_list_[accent_1]==NULL || kmod_list_[accent_2]==NULL)
+			if (kmod_list_[accent_1]==0 || kmod_list_[accent_2]==0)
 				return -1;
 
 			// Find what key accent_2 is on - should check about accent_1 also
@@ -264,7 +264,7 @@ int Trans::Load(LyXLex &lex)
 				if (keymap_[key] && keymap_[key][0]==0 && keymap_[key][1]==accent_2)
 					break;
 			
-			LString allowed;
+			string allowed;
 
 			if (lex.next()) {
 				allowed=lex.GetString();
@@ -345,7 +345,7 @@ int Trans::Load(LyXLex &lex)
 
 bool Trans::isAccentDefined(tex_accent accent,KmodInfo& i)
 {
-	if (kmod_list_[accent]!=NULL) {
+	if (kmod_list_[accent]!=0) {
 		i=*kmod_list_[accent];
 		return true;
 	}
@@ -353,14 +353,14 @@ bool Trans::isAccentDefined(tex_accent accent,KmodInfo& i)
 }
 
 
-LString Trans::process(char c,TransManager& k)
+string Trans::process(char c,TransManager& k)
 {
 	char dummy[2]="?";
 	char *dt=dummy;
 	char *t=Match(c);
 	
     
-	if ((t==NULL && (*dt=c)) || (t[0]!=0 && (dt=t)) ){
+	if ((t==0 && (*dt=c)) || (t[0]!=0 && (dt=t)) ){
 		return k.normalkey(c,dt);
 	} else {
 		return k.deadkey(c,*kmod_list_[(tex_accent)t[1]]);
@@ -368,9 +368,9 @@ LString Trans::process(char c,TransManager& k)
 }
 
 
-int Trans::Load(LString const &language)
+int Trans::Load(string const &language)
 {
-	LString filename = LibFileSearch("kbd", language, "kmap");
+	string filename = LibFileSearch("kbd", language, "kmap");
 	if (filename.empty())
 		return -1;
 
@@ -383,13 +383,13 @@ int Trans::Load(LString const &language)
 	if (res==0) {
 		name_=language;
 	} else
-		name_.clean();
+		name_.erase();
 
 	return res;
 }
 
 
-tex_accent getkeymod(LString const &p)
+tex_accent getkeymod(string const &p)
 	/* return modifier - decoded from p and update p */
 {
 	for (int i = 1; i <= TEX_MAX_ACCENT; i++) {
@@ -398,7 +398,7 @@ tex_accent getkeymod(LString const &p)
 				"p = %s, lyx_accent_table[%d].name = `%s'\n",
 				p.c_str(), i, lyx_accent_table[i].name);
 		
-		if ( lyx_accent_table[i].name && p.contains(lyx_accent_table[i].name)) {
+		if ( lyx_accent_table[i].name && contains(p, lyx_accent_table[i].name)) {
 			lyxerr.debug("Found it!",Error::KBMAP);
 			return (tex_accent)i;
 		}

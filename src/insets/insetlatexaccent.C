@@ -3,8 +3,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team.
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
  *
  *======================================================*/
 
@@ -18,14 +18,9 @@
 #include "error.h"
 #include "lyxrc.h"
 #include "lyxdraw.h"
+#include "support/lstrings.h"
 
 extern LyXRC * lyxrc;
-
-// 	$Id: insetlatexaccent.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: insetlatexaccent.C,v 1.1 1999/09/27 18:44:39 larsbj Exp $";
-#endif /* lint */
 
 /* LatexAccent. Proper handling of accented characters */
 /* This part is done by Ivan Schreter, schreter@ccsun.tuke.sk */
@@ -48,7 +43,7 @@ InsetLatexAccent::InsetLatexAccent(InsetLatexAccent const & other)
 {}
 
 
-InsetLatexAccent::InsetLatexAccent(LString const & string)
+InsetLatexAccent::InsetLatexAccent(string const & string)
 	: contents(string)
 {
 	checkContents();
@@ -69,17 +64,16 @@ void InsetLatexAccent::checkContents()
 
 	// REMOVE IN 0.13
 	// Dirty Hack for backward compability. remove in 0.13 (Lgb)
-	contents.strip();
-	contents.frontStrip();
-	if (!contents.contains("{") && !contents.contains("}")) {
+	contents = frontStrip(strip(contents));
+	if (!contains(contents, "{") && !contains(contents, "}")) {
 		if (contents.length() == 2) {
-			LString tmp;
+			string tmp;
 			tmp += contents[0];
 			tmp += contents[1];
 			tmp += "{}";
 			contents = tmp;
 		} else if (contents.length() == 3) {
-			LString tmp;
+			string tmp;
 			tmp += contents[0];
 			tmp += contents[1];
 			tmp += '{';
@@ -87,7 +81,7 @@ void InsetLatexAccent::checkContents()
 			tmp += '}';
 			contents = tmp;
 		} else if (contents.length()==4 && contents[2] == ' ') {
-			LString tmp;
+			string tmp;
 			tmp += contents[0];
 			tmp += contents[1];
 			tmp += '{';
@@ -96,7 +90,7 @@ void InsetLatexAccent::checkContents()
 			contents = tmp;
 		} else if  (contents.length()==4 && contents[2] == '\\'
 			    && (contents[3]== 'i' || contents[3]== 'j')) {
-			LString tmp;
+			string tmp;
 			tmp += contents[0];
 			tmp += contents[1];
 			tmp += '{';
@@ -224,10 +218,10 @@ void InsetLatexAccent::checkContents()
 		}
 		//ic = (modtype == DOT_LESS_J ? 'j' : 'i');
 		lyxerr.debug("Contents: [" + contents + "], ic: " + ic 
-			     + ", top: " + long(plusasc) 
-			     + ", bot: " + long(plusdesc) 
-			     + ", dot: " + long(remdot) 
-			     + ", mod: " + long(modtype));
+			     + ", top: " + tostr(plusasc) 
+			     + ", bot: " + tostr(plusdesc) 
+			     + ", dot: " + tostr(remdot) 
+			     + ", mod: " + tostr(modtype));
 	// Special case for space
 	} else if (contents[3] == '}') {
 		ic = ' ';
@@ -246,11 +240,11 @@ void InsetLatexAccent::checkContents()
 				return;
 		} else if ( (ic=='i'|| ic=='j') && contents[4]=='}') {
 		    // Do a rewrite: \<foo>{i} --> \<foo>{\i}
-		    LString temp=contents;
-		    temp.substring(0,2);
+		    string temp=contents;
+		    temp.erase(3, string::npos);
 		    temp+='\\';
 			temp+=char(ic);
-		    for(int j=4;j<contents.length();j++)
+		    for(string::size_type j = 4; j < contents.length(); ++j)
 				temp+=contents[j];
 		    contents=temp;
 		    i++;
@@ -262,10 +256,10 @@ void InsetLatexAccent::checkContents()
 					   
 		// fine, the char is properly decoded now (hopefully)
 		lyxerr.debug("Contents: [" + contents + "], ic: " + ic
-			     + ", top: " + long(plusasc) 
-			     + ", bot: " + long(plusdesc) 
-			     + ", dot: " + long(remdot) 
-			     + ", mod: " + long(modtype));
+			     + ", top: " + tostr(plusasc) 
+			     + ", bot: " + tostr(plusdesc) 
+			     + ", dot: " + tostr(remdot) 
+			     + ", mod: " + tostr(modtype));
 	}
         candisp = true;
 }
@@ -615,21 +609,21 @@ int InsetLatexAccent::Latex(FILE *file, signed char /*fragile*/)
 }
 
 
-int InsetLatexAccent::Latex(LString &file, signed char /*fragile*/)
+int InsetLatexAccent::Latex(string &file, signed char /*fragile*/)
 {
 	file += contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::Linuxdoc(LString &file)
+int InsetLatexAccent::Linuxdoc(string &file)
 {
 	file += contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::DocBook(LString &file)
+int InsetLatexAccent::DocBook(string &file)
 {
 	file += contents;
 	return 0;

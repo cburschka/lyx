@@ -46,7 +46,7 @@ class MathedIter {
     {
 	pos = 0;
 	fcode = 0;
-	array = NULL;
+	array = 0;
 	flags = 0;
 	ncols = row = col = 0;
     }

@@ -46,11 +46,11 @@ bool IsLetterCharOrDigit(char ch);
 // If nothing selected, select the word at the cursor.
 // Returns the current selection
 // Note: this function should be in LyXText!
-LString const GetSelectionOrWordAtCursor(LyXText *lt);
+string const GetSelectionOrWordAtCursor(LyXText *lt);
 
 // Returns the current selection. If nothing is selected or if the selection
 // spans 2 paragraphs, an empty string is returned.
-LString const GetCurrentSelectionAsString(LyXText *lt);
+string const GetCurrentSelectionAsString(LyXText *lt);
 
 // This is a copy of SetSelectionOverString from text.C
 // It does the same, but uses only the length as a parameter
@@ -66,7 +66,7 @@ bool IsLetterCharOrDigit(char ch)
 
 // Returns the current selection. If nothing is selected or if the selection
 // spans 2 paragraphs, an empty string is returned.
-LString const GetCurrentSelectionAsString(LyXText *lt) 
+string const GetCurrentSelectionAsString(LyXText *lt) 
 {
 	LyXParagraph 	*par;
 	int 		pos;
@@ -106,13 +106,13 @@ LString const GetCurrentSelectionAsString(LyXText *lt)
 		} 
 		sz[i] = 0;
 	}
-	return LString(sz);
+	return string(sz);
 }
 
 
 // If nothing selected, select the word at the cursor.
 // Returns the current selection
-LString const GetSelectionOrWordAtCursor(LyXText *lt) 
+string const GetSelectionOrWordAtCursor(LyXText *lt) 
 {
 	lt->SelectWordWhenUnderCursor();
 	return GetCurrentSelectionAsString(lt);
@@ -163,7 +163,7 @@ void LyXFindReplace1::SearchReplaceCB()
 		return;
 	}
 	
-	LString const replacestring = ReplaceString();
+	string const replacestring = ReplaceString();
 
 	current_view->getScreen()->HideCursor();
 	current_view->currentBuffer()->update(-2);
@@ -204,7 +204,7 @@ void LyXFindReplace1::SearchReplaceAllCB()
                return;
        }
 
-	LString const replacestring = ReplaceString();
+	string const replacestring = ReplaceString();
 
 	current_view->getScreen()->HideCursor();
 
@@ -234,7 +234,7 @@ void LyXFindReplace1::SearchReplaceAllCB()
 		if( replace_count == 1 ) {
 			minibuffer->Set(_("1 string has been replaced."));
 		} else {
-			LString str;
+			string str;
 			str += replace_count;
 			str += _(" strings have been replaced.");
 			minibuffer->Set(str);
@@ -368,7 +368,7 @@ bool LyXFindReplace1::IsSearchStringInText(LyXParagraph *par, int pos)
 	char		chText;
 	bool		fPrevIsSpace;
 	int		iText;
-	int 		iSrch;
+	string::size_type iSrch;
 
 	if (!par) 
 		return false;

@@ -5,21 +5,23 @@
 *           LyX, The Document Processor
 *        
 *           Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 the LyX Team.
+*           Copyright (C) 1995-1999 the LyX Team.
 *
 *======================================================*/
 
-#ifndef _LATEXFEATURES_H
-#define _LATEXFEATURES_H
+#ifndef LATEXFEATURES_H
+#define LATEXFEATURES_H
 
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-class LString;
+#include "LString.h"
+
 class BufferParams; 
 class LyXTextClass;
+
 
 /** The packages and commands that a buffer needs. This struct
   contains an entry for each of the latex packages and
@@ -34,11 +36,11 @@ struct LaTeXFeatures {
 		delete[] layout;
 	}
 	/// The packaes needed by the document
-	LString getPackages(BufferParams const &params);
+	string getPackages(BufferParams const &params);
 	/// The macros definitions needed by the document
-	LString getMacros(BufferParams const &params);
+	string getMacros(BufferParams const &params);
 	/// The definitions needed by the document's textclass
-	LString getTClassPreamble(BufferParams const &params);
+	string getTClassPreamble(BufferParams const &params);
 
 	///
 	void showStruct(BufferParams &params);

@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef _LYXFUNC_H_
-#define _LYXFUNC_H_
+#ifndef LYXFUNC_H_
+#define LYXFUNC_H_
 
 #ifdef __GNUG__
 #pragma interface
@@ -29,10 +29,10 @@ public:
 	~LyXFunc();
     
 	/// LyX distpatcher, executes lyx actions.
-	LString Dispatch(int action, char const* arg = 0);
+	string Dispatch(int action, char const* arg = 0);
 			 
 	/// The same but uses the name of a lyx command.
-	LString Dispatch(LString const &cmd, LString const &arg = LString());
+	string Dispatch(string const &cmd, string const &arg = string());
 
 	
 	/// A keyboard event is processed to execute a lyx action. 
@@ -43,13 +43,13 @@ public:
 
 	// These can't be global because are part of the internat state (ale970227)
 	/// Get the current keyseq string
-	LString keyseqStr(int l=190);
+	string keyseqStr(int l=190);
 
 	/// Is the key sequence uncomplete?
 	bool keyseqUncomplete();
 
 	/// get options for the current keyseq
-	LString keyseqOptions(int l=190);
+	string keyseqOptions(int l=190);
 
 	/// Returns the name of a funcion given a keyseq
 	char const* getFunc(char*) 
@@ -62,11 +62,11 @@ public:
         /// True if lyxfunc reports an error
         bool errorStat() const { return errorstat; }
         /// Buffer to store result messages
-        void setMessage(LString const &m);
+        void setMessage(string const &m);
         /// Buffer to store result messages
-        void setErrorMessage(LString const &); 
+        void setErrorMessage(string const &); 
         /// Buffer to store result messages
-        LString getMessage() const { return dispatch_buffer; }
+        string getMessage() const { return dispatch_buffer; }
         /// Get next inset of this class from current cursor position  
         Inset* getInsetByCode(Inset::Code);
 	
@@ -75,7 +75,7 @@ public:
 
 private:
 	///
-	LString argAsString(char const *const argument);
+	string argAsString(char const *const argument);
 	///
 	LyXView *owner;
 	///
@@ -104,9 +104,9 @@ private:
         /** Buffer to store messages and result data. Is there a
 	  good reason to have this one as static in Dispatch? (Ale)
          */
-        LString dispatch_buffer;
+        string dispatch_buffer;
 	/// Command name and shortcut information
-	LString commandshortcut;
+	string commandshortcut;
 
 	// I think the following should be moved to BufferView. (Asger)
 
@@ -123,7 +123,7 @@ private:
 	void doImportASCII(bool);
 
 	///
-	void MenuInsertLyXFile(LString const &);
+	void MenuInsertLyXFile(string const &);
 
 	///
 	void CloseBuffer();
@@ -144,21 +144,21 @@ bool LyXFunc::wasMetaKey()
      
 
 inline
-LString LyXFunc::keyseqStr(int l)
+string LyXFunc::keyseqStr(int l)
 {
 	char text[200];
 	keyseq.print(text, l, true);
-	LString tmp(text);
+	string tmp(text);
 	return tmp;
 } 
 
 
 inline
-LString LyXFunc::keyseqOptions(int l)
+string LyXFunc::keyseqOptions(int l)
 {
 	char text[200];
 	keyseq.printOptions(text, l);
-	LString tmp(text);
+	string tmp(text);
 	return tmp;
 } 
 

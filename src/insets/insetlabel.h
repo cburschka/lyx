@@ -23,7 +23,7 @@
 class InsetLabel: public InsetCommand {
 public:
 	///
-	InsetLabel(LString const & cmd);
+	InsetLabel(string const & cmd);
 	///
 	InsetLabel() : InsetCommand("label") {;}
 	///
@@ -35,22 +35,22 @@ public:
 	///
 	int GetNumberOfLabels() const;
 	///
-	LString getLabel(int) const;
+	string getLabel(int) const;
 	///
-	LString getScreenLabel() const { return getContents(); }
+	string getScreenLabel() const { return getContents(); }
 	///
 	unsigned char Editable() const { return 0; }
 	///
 	int Latex(FILE *file, signed char fragile);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string &file, signed char fragile);
 	///
-	int Linuxdoc(LString &file);
+	int Linuxdoc(string &file);
 	///
-	int DocBook(LString &file);
+	int DocBook(string &file);
 private:
 	/// This function escapes 8-bit characters
-	LString escape(LString const &) const;
+	string escape(string const &) const;
 };
 
 #endif

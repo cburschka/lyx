@@ -47,7 +47,7 @@ YYSTYPE yylval;
 
 static short mathed_env = LM_EN_INTEXT;
 
-char *mathed_label = NULL;
+char *mathed_label = 0;
 
 char const *latex_mathenv[] = { 
    "math", 
@@ -320,7 +320,7 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
    int brace = 0;
    int acc_brace = 0;
    int acc_braces[8];
-   MathParInset *mt = (mtx) ? *mtx: 0;//(MathParInset*)NULL;
+   MathParInset *mt = (mtx) ? *mtx: 0;//(MathParInset*)0;
     MathedRowSt *crow = (mt) ? mt->getRowSt(): 0;
 
    plevel++;
@@ -461,7 +461,7 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
     case '^':
       {  
 	 MathParInset *p = new MathParInset(size, "", LM_OT_SCRIPT);
-	 LyxArrayBase * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, NULL);
+	 LyxArrayBase * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
 	 p->SetData(ar);
 //	 fprintf(stderr, "UP[%d]", p->GetStyle());
 	 data.Insert (p, LM_TC_UP);
@@ -470,7 +470,7 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
     case '_':
       {
 	 MathParInset *p = new MathParInset(size, "", LM_OT_SCRIPT);
-	 LyxArrayBase * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, NULL);
+	 LyxArrayBase * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
 	 p->SetData(ar);
 	 data.Insert (p, LM_TC_DOWN);
 	 break;
@@ -480,7 +480,7 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
       {
 	 if (binset) {
 	    binset->SetLimits((bool)(yylval.l->id));
-	    binset = NULL;
+	    binset = 0;
 	 }
 	 break;
       }
@@ -696,7 +696,7 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
 	 plevel--;
 	 if (mt) { // && (flags & FLAG_END)) {
 	    mt->SetData(array);
-	    array = NULL;
+	    array = 0;
 	 }
 	 return array;
       }
@@ -723,7 +723,7 @@ LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *array, MathParInset **m
 		 break;
 	     }
 	     if (!mt) {
-		 mathPrintError("NULL paragraph.");
+		 mathPrintError("0 paragraph.");
 		 panic = true;
 	     }
 	     

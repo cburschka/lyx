@@ -19,12 +19,6 @@
 #include "buffer.h"
 #include "BufferView.h"
 
-// 	$Id: texoptions.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: texoptions.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
-
 extern FD_LaTeXOptions *fd_latex_options;
 extern BufferView *current_view;
 

@@ -15,8 +15,8 @@
 
 #include <config.h>
 
-#include <ctype.h>
-#include <stdlib.h>
+#include <cctype>
+#include <cstdlib>
 
 #ifdef __GNUG__
 #pragma implementation "formula.h"
@@ -38,12 +38,6 @@
 #include "LaTeXFeatures.h"
 #include "error.h"
 #include "lyx_gui_misc.h"
-
-// 	$Id: formula.C,v 1.1 1999/09/27 18:44:40 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: formula.C,v 1.1 1999/09/27 18:44:40 larsbj Exp $";
-#endif /* lint */
 
 extern void UpdateInset(Inset* inset, bool mark_dirty = true);
 extern void LockedInsetStoreUndo(Undo::undo_kind);
@@ -67,14 +61,14 @@ extern char const *latex_special_chars;
 
 short greek_kb_flag = 0;
 
-LyXFont *Math_Fonts = NULL; // this is only used by Whichfont and mathed_init_fonts (Lgb)
+LyXFont *Math_Fonts = 0; // this is only used by Whichfont and mathed_init_fonts (Lgb)
 
 static LyXFont::FONT_SIZE lfont_size = LyXFont::SIZE_NORMAL;
 
 // local global 
 static int sel_x, sel_y;
 static bool sel_flag;
-MathedCursor* InsetFormula::mathcursor = NULL; 
+MathedCursor* InsetFormula::mathcursor = 0; 
 
 
 int MathedInset::df_asc;
@@ -295,9 +289,9 @@ void MathedInset::drawStr(short type, int size, int x, int y, byte* s, int ls)
 InsetFormula::InsetFormula(bool display)
 {
   par = new MathParInset; // this leaks
-  //   mathcursor = NULL;
+  //   mathcursor = 0;
   disp_flag = display;
-  //label = NULL;
+  //label = 0;
   if (disp_flag) {
     par->SetType(LM_OT_PAR);
     par->SetStyle(LM_ST_DISPLAY);
@@ -309,10 +303,10 @@ InsetFormula::InsetFormula(MathParInset *p)
    par = (p->GetType()>=LM_OT_MPAR) ? 
          new MathMatrixInset((MathMatrixInset*)p): 
          new MathParInset(p);
-//   mathcursor = NULL;
+//   mathcursor = 0;
    
    disp_flag = (par->GetType()>0);
-   //label = NULL;
+   //label = 0;
 }
 
 InsetFormula::~InsetFormula()
@@ -339,13 +333,13 @@ int InsetFormula::Latex(FILE *file, signed char fragile)
     int ret = 0;      
 //#warning Alejandro, the number of lines is not returned in this case
 // This problem will disapear at 0.13.
-    LString output;
+    string output;
     InsetFormula::Latex(output, fragile);
     fprintf(file, "%s", output.c_str());
     return ret;
 }
 
-int InsetFormula::Latex(LString &file, signed char fragile)
+int InsetFormula::Latex(string &file, signed char fragile)
 {
     int ret = 0;        
 //#warning Alejandro, the number of lines is not returned in this case
@@ -358,13 +352,13 @@ int InsetFormula::Latex(LString &file, signed char fragile)
 }
 
 
-int InsetFormula::Linuxdoc(LString &/*file*/)
+int InsetFormula::Linuxdoc(string &/*file*/)
 {
     return 0;
 }
 
 
-int InsetFormula::DocBook(LString &/*file*/)
+int InsetFormula::DocBook(string &/*file*/)
 {
     return 0;
 }
@@ -386,8 +380,8 @@ void InsetFormula::Read(LyXLex &lex)
     mathed_parser_file(file, lex.GetLineNo());   
    
    // Silly hack to read labels. 
-   mathed_label = NULL;
-   mathed_parse(0, NULL, &par);
+   mathed_label = 0;
+   mathed_parse(0, 0, &par);
    par->Metrics();
    disp_flag = (par->GetType()>0);
    
@@ -396,7 +390,7 @@ void InsetFormula::Read(LyXLex &lex)
     
    if (mathed_label) {
       label = mathed_label;
-      mathed_label = NULL;
+      mathed_label = 0;
    }
    
 #ifdef DEBUG
@@ -501,7 +495,7 @@ void InsetFormula::InsetUnlock()
        }                                         
      delete mathcursor;
    }
-   mathcursor = NULL;
+   mathcursor = 0;
    UpdateInset(this, false);
 }
 
@@ -595,7 +589,7 @@ void InsetFormula::SetDisplay(bool dspf)
 	 par->SetType(LM_OT_MIN);
 	 par->SetStyle(LM_ST_TEXT);
 	 if (!label.empty() && par->GetType()!=LM_OT_MPARN) {
-		 label.clean();
+		 label.erase();
 	 }
       }
       disp_flag = dspf;
@@ -624,12 +618,12 @@ int InsetFormula::GetNumberOfLabels() const
 }
 
 
-LString InsetFormula::getLabel(int il) const
+string InsetFormula::getLabel(int il) const
 {
 //#warning This is dirty, I know. Ill clean it at 0.11
     // Correction, the only way to clean this is with a new kernel: 0.13.
 	if (par->GetType()==LM_OT_MPARN) {
-       LString label;
+       string label;
        MathMatrixInset *mt = (MathMatrixInset*)par;
        int nl=0;
        MathedRowSt const* crow = mt->getRowSt();
@@ -732,7 +726,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
    bool space_on = false;
    bool was_selection = mathcursor->Selection();
    bool result = true;
-   static MathSpaceInset* sp=NULL;
+   static MathSpaceInset* sp=0;
 
    HideInsetCursor();
    if (mathcursor->Selection() && (fast_selection || mono_video)) ToggleInsetSelection();
@@ -896,7 +890,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 	  if (oldf) {
 	     type--;
 	     if (!label.empty()) {
-		     label.clean();
+		     label.erase();
 	     }
 	     minibuffer->Set(_("No number"));  
 	  } else {
@@ -977,7 +971,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
        char lf[40], rg[40], arg2[40];
        int ilf = '(', irg = '.';
        latexkeys *l;
-       LString vdelim("(){}[]./|");
+       string vdelim("(){}[]./|");
 	
        if (!arg) break;
        strncpy(arg2,arg,40); arg2[39]=(char)0;
@@ -993,7 +987,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 		 // Long words will cause l==0; so check.
 		 if(l) ilf = l->id;
 	     } else
-	     if (vdelim.charPos(lf[0])>=0)
+	     if (vdelim.find(lf[0]) != string::npos)
 	       ilf = lf[0];
 	   
 	   if (n>1) {
@@ -1004,7 +998,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 		     l = in_word_set(rg, strlen(rg));
 		     if(l) irg = l->id;
 		 } else
-		 if (vdelim.charPos(rg[0])>=0)
+		 if (vdelim.find(rg[0]) != string::npos)
 		   irg = rg[0];
 	   }
        }
@@ -1029,9 +1023,9 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
     {
       LockedInsetStoreUndo(Undo::INSERT);
        if (par->GetType()<LM_OT_PAR) break;
-       LString lb = arg;
+       string lb = arg;
        if (lb.empty())
-	      lb = LString(askForText(_("Enter new label to insert:")));
+	      lb = string(askForText(_("Enter new label to insert:")));
        if (!lb.empty() && lb[0]> ' ') {
 	  SetNumber(true);
 	  if (par->GetType()==LM_OT_MPARN) {
@@ -1044,8 +1038,8 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 	  }
 	  UpdateLocal();
        } else
-	       label.clean();
-	       //label = NULL;
+	       label.erase();
+	       //label = 0;
        break;
     }
     
@@ -1182,7 +1176,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
    }
    if (was_macro!=mathcursor->InMacroMode()&&action>=0&&action!=LFUN_BACKSPACE)
      UpdateLocal();
-   if (sp && !space_on) sp = NULL;
+   if (sp && !space_on) sp = 0;
    if (mathcursor->Selection() || (was_selection && !(fast_selection || mono_video)))
        ToggleInsetSelection();
     

@@ -1,17 +1,17 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-*        
-*           Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1998 The LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
 #include <config.h>
 
-#include <errno.h>
+#include <cerrno>
 #include "lyx_gui_misc.h"
 #include "BufferView.h"
 #include "bibforms.h"
@@ -33,12 +33,6 @@
 
 extern MiniBuffer *minibuffer;
 extern BufferView *current_view;
-// 	$Id: lyx_gui_misc.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: lyx_gui_misc.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
-
 
 extern FD_form_paragraph * fd_form_paragraph;
 extern FD_form_paragraph_extra * fd_form_paragraph_extra;
@@ -353,7 +347,7 @@ const char* flyx_ident_extract(const char *sc)
 }
 
 //
-void WriteAlert(LString const & s1, LString const & s2, LString const & s3)
+void WriteAlert(string const & s1, string const & s2, string const & s3)
 {
 	if (minibuffer) {
 		ProhibitInput();
@@ -369,13 +363,13 @@ void WriteAlert(LString const & s1, LString const & s2, LString const & s3)
 
 
 // Alarms user of something related to files
-void WriteFSAlert(LString const & s1, LString const & s2)
+void WriteFSAlert(string const & s1, string const & s2)
 {
 	WriteAlert (s1, s2, strerror(errno));
 }
 
 
-bool AskQuestion(LString const & s1, LString const & s2, LString const & s3)
+bool AskQuestion(string const & s1, string const & s2, string const & s3)
 {
 	fl_set_resource("flQuestion.yes.label", idex(_("Yes|Yy#y")));
 	fl_set_resource("flQuestion.no.label", idex(_("No|Nn#n")));
@@ -387,7 +381,7 @@ bool AskQuestion(LString const & s1, LString const & s2, LString const & s3)
 }
 
 // Returns 1 for yes, 2 for no, 3 for cancel.
-int AskConfirmation(LString const & s1, LString const & s2, LString const & s3)
+int AskConfirmation(string const & s1, string const & s2, string const & s3)
 {
 	fl_set_choices_shortcut(scex(_("Yes|Yy#y")),
 				scex(_("No|Nn#n")),
@@ -408,9 +402,9 @@ int AskConfirmation(LString const & s1, LString const & s2, LString const & s3)
 
 
 // Asks for a text
-LString askForText(LString const & msg, LString const & dflt)
+string askForText(string const & msg, string const & dflt)
 {
-	LString tmp;
+	string tmp;
 	fl_set_resource("flInput.cancel.label", idex(_("Cancel|^[")));
 	fl_set_resource("flInput.ok.label", idex(_("OK|#O")));
 	fl_set_resource("flInput.clear.label", idex(_("Clear|#e")));

@@ -30,8 +30,8 @@ class TeXErrors {
 public:
 	///
 	TeXErrors() {
-		errors = NULL;
-		next_error = NULL;
+		errors = 0;
+		next_error = 0;
 		status = 0;
 		number_of_errors = 0;
 	}
@@ -40,12 +40,12 @@ public:
 	///
 	void scanError(LyXLex &);
 	///
-	bool getFirstError(int *line, LString *text);
+	bool getFirstError(int *line, string *text);
 	///
-	bool getNextError(int *line, LString *text);
+	bool getNextError(int *line, string *text);
 	///
-	void insertError(int line, LString const &error_desc,
-			 LString const &error_text);
+	void insertError(int line, string const &error_desc,
+			 string const &error_text);
 	///
 	void printErrors();
 	///
@@ -65,12 +65,12 @@ private:
 	struct Error {
 		///
 		Error () {
-			next_error = NULL;
+			next_error = 0;
 			error_in_line = 0;
 		}
 		///
-		Error(int line, LString const &desc, LString const &text) {
-			next_error = NULL;
+		Error(int line, string const &desc, string const &text) {
+			next_error = 0;
 			error_in_line = line;
 			error_desc = desc;
 			error_text = text;
@@ -83,9 +83,9 @@ private:
 		/// what line in the TeX file the error occured in
 		int error_in_line;
 		/// The kind of error
-		LString error_desc;
+		string error_desc;
 		/// The line/cmd that caused the error.
-		LString error_text;
+		string error_text;
 	};
 	///
 	Error *errors;
@@ -178,7 +178,7 @@ public:
 	  cmd = the latex command, file = name of the (temporary) latex file,
 	  path = name of the files original path.
 	  */
-	LaTeX(LString const & cmd, LString const & file, LString const & path);
+	LaTeX(string const & cmd, string const & file, string const & path);
 	
 	/// runs LaTeX several times
 	int run(TeXErrors &, MiniBuffer *);
@@ -195,7 +195,7 @@ protected:
 	  the depency file is on the format:
 	  <file> <new checksum> <old checksum>
 	*/
-	LString depfile;
+	string depfile;
 
 	///
 	LaTeX() {}
@@ -213,19 +213,19 @@ protected:
 	int scanLogFile(TeXErrors &);
 
 	///
-	bool runMakeIndex(LString const &);
+	bool runMakeIndex(string const &);
 
 	///
-	bool runBibTeX(LString const &);
+	bool runBibTeX(string const &);
 	
 	///
-	LString cmd;
+	string cmd;
 
 	///
-	LString file;
+	string file;
 	
 	///
-	LString path;
+	string path;
 	///
 	TEX_FILES tex_files;
 	

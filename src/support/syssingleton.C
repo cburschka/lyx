@@ -13,7 +13,7 @@
 // global controller variable
 SystemcallsSingletoncontroller *
 SystemcallsSingletoncontroller::Startcontroller::
-contr = NULL;
+contr = 0;
 
 // reference count
 int SystemcallsSingletoncontroller::Startcontroller::

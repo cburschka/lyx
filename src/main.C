@@ -3,8 +3,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1999 The LyX Team.
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
  *
  *======================================================*/
 
@@ -13,13 +13,7 @@
 #include "lyx_main.h"
 #include "gettext.h"
 #include "LString.h"
-#include "filetools.h"
-
-// 	$Id: main.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: main.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
+#include "support/filetools.h"
 
 // I keep these here so that it will be processed as early in
 // the compilation process as possible.
@@ -34,7 +28,7 @@ static char vcid[] = "$Id: main.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
 int main(int argc, char *argv[]) {
 	// lyx_localedir is used by gettext_init() is we have
 	//   i18n support built-in
-	LString lyx_localedir = getEnvPath("LYX_LOCALEDIR");
+	string lyx_localedir = GetEnvPath("LYX_LOCALEDIR");
 	if (lyx_localedir.empty())
 		lyx_localedir = LOCALEDIR;
 	

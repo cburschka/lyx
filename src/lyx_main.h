@@ -12,20 +12,22 @@
 /* This is the declaration of the LyX class, there should only
  * exist _one_ instance of this in the application. */
 
-#ifndef _LYX_MAIN_H_
-#define _LYX_MAIN_H_
+#ifndef LYX_MAIN_H
+#define LYX_MAIN_H
 
-#include <signal.h>
+#include <csignal>
+
+#include "LString.h"
 
 class LyXGUI;
 class LyXRC;
 class LastFiles;
 class Buffer;
-class LString;
 
-extern LString system_lyxdir;
-extern LString user_lyxdir;
-extern LString system_tempdir;
+
+extern string system_lyxdir;
+extern string user_lyxdir;
+extern string system_tempdir;
 
 extern LastFiles *lastfiles; /* we should hopefully be able to move this
 			      * inside the LyX class */
@@ -77,7 +79,7 @@ private:
 	///
 	void queryUserLyXDir();
 	///
-        void ReadRcFile(LString const & name);
+        void ReadRcFile(string const & name);
         ///
 	bool easyParse(int *argc, char *argv[]);
 	//@}

@@ -18,14 +18,14 @@ void InsetTOC::Edit(int, int)
 	current_view->getOwner()->getLyXFunc()->Dispatch(LFUN_TOCVIEW);
 }
 
-int InsetTOC::Linuxdoc(LString &file)
+int InsetTOC::Linuxdoc(string &file)
 {
 	file += "<toc>";
 	return 0;
 }
 
 
-int InsetTOC::DocBook(LString &file)
+int InsetTOC::DocBook(string &file)
 {
 	file += "<toc></toc>";
 	return 0;

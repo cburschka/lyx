@@ -36,7 +36,7 @@ void index_cb(FL_OBJECT *, long data)
 // -       }
 	case 1: // OK
 		if(!current_view->currentBuffer()->isReadonly()) {
-			LString tmp = fl_get_input(index_form->key);
+			string tmp = fl_get_input(index_form->key);
 			if(tmp != inset->getContents())	{
 				inset->setContents(tmp);
 				fl_hide_form(index_form->index_form);
@@ -80,7 +80,7 @@ FD_index_form *create_form_index_form()
 /*---------------------------------------*/
 
 
-InsetIndex::InsetIndex(LString const & key)
+InsetIndex::InsetIndex(string const & key)
 	: InsetCommand("index", key) 
 {
 }
@@ -115,7 +115,7 @@ void InsetIndex::Edit(int, int)
 }
 
 
-LString InsetIndex::getScreenLabel() const
+string InsetIndex::getScreenLabel() const
 {
 	return _("Idx");
 }
@@ -128,7 +128,7 @@ LString InsetIndex::getScreenLabel() const
 InsetPrintIndex::InsetPrintIndex()
 	: InsetCommand("printindex")
 {
-	owner = NULL;
+	owner = 0;
 }
 
 
@@ -143,7 +143,7 @@ InsetPrintIndex::~InsetPrintIndex()
 }
 
 
-LString InsetPrintIndex::getScreenLabel() const
+string InsetPrintIndex::getScreenLabel() const
 {
 	return _("PrintIndex");
 }

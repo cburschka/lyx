@@ -28,13 +28,13 @@ public:
 	///
 	InsetCitation(): InsetCommand("cite") { }
 	///
-	InsetCitation(LString const & key, LString const & note=LString());
+	InsetCitation(string const & key, string const & note=string());
         ///
 	~InsetCitation();
         ///
         Inset* Clone() { return new InsetCitation(contents, options); }
     	///
-	LString getScreenLabel()const;
+	string getScreenLabel()const;
         ///
 	void Edit(int, int);
         ///
@@ -54,7 +54,7 @@ public:
 	///
 	InsetBibKey(): InsetCommand("bibitem") { counter = 1; }
 	///
-	InsetBibKey(LString const & key, LString const & label=LString());
+	InsetBibKey(string const & key, string const & label=string());
 	///
 	InsetBibKey(InsetBibKey const*);
 	///
@@ -64,7 +64,7 @@ public:
 	/// Currently \bibitem is used as a LyX2.x command, so we need this method.
         void Write(FILE *);
 	///
-	virtual LString getScreenLabel() const;
+	virtual string getScreenLabel() const;
         ///
 	void Edit(int, int);
 	///
@@ -91,37 +91,37 @@ public:
 class InsetBibtex: public InsetCommand {
 public:
 	/// 
-	InsetBibtex(): InsetCommand("BibTeX") { owner = NULL; }
+	InsetBibtex(): InsetCommand("BibTeX") { owner = 0; }
 	///
-	InsetBibtex(LString const & dbase, LString const & style,
+	InsetBibtex(string const & dbase, string const & style,
 		    Buffer *);
         ///
         ~InsetBibtex();
         ///
-	Inset* Clone() { return new InsetBibtex(contents, options, NULL); }
+	Inset* Clone() { return new InsetBibtex(contents, options, 0); }
 	///  
 	Inset::Code LyxCode() const
 	{
 		return Inset::BIBTEX_CODE;
 	}
 	///
-	LString getScreenLabel() const;
+	string getScreenLabel() const;
 	///
 	void Edit(int, int);
 	/// 
 	int Latex(FILE *, signed char);
 	///
-	int Latex(LString &file, signed char fragile);
+	int Latex(string &file, signed char fragile);
 	///
-	LString getKeys();
+	string getKeys();
 	///
 	unsigned char Editable() const {
 		return 1;
 	}
         ///
-        bool addDatabase(LString const&);
+        bool addDatabase(string const&);
         ///
-        bool delDatabase(LString const&);
+        bool delDatabase(string const&);
 	///
 	bool Display() const { return true; }    
 private:

@@ -1,19 +1,19 @@
 // -*- C++ -*-
 /* This is the bullet class definition file.
  * This file is part of
- *======================================================
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
- *           Copyright (C) 1997-1998 Allan Rae
- *           and the LyX Team
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ *           This file Copyright 1997-1999
+ *           Allan Rae
+ * ======================================================*/
 
-//    $Id: Bullet.h,v 1.1 1999/09/27 18:44:36 larsbj Exp $
-
-#ifndef BULLET_H_
-#define BULLET_H_
+#ifndef BULLET_H
+#define BULLET_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -22,7 +22,7 @@
 #include "LString.h"
 
 #ifdef DEBUG_AS_DEFAULT
-#include <assert.h>
+#include <cassert>
 #endif
 
 ///
@@ -32,7 +32,7 @@ public:
 	Bullet(const int f = -1, const int c = -1, const int s = -1);
 
 	///
-	Bullet(const LString &);
+	Bullet(const string &);
 
 	///
 	~Bullet();
@@ -44,7 +44,7 @@ public:
 	///
 	void setSize(const int);
 	///
-	void setText(const LString &);
+	void setText(const string &);
 	///
 	int getCharacter() const;
 	///
@@ -52,9 +52,9 @@ public:
 	///
 	int getSize() const;
 	///
-	LString getText() const;
+	string getText() const;
 	///
-	LString getText();
+	string getText();
 	///
 	char const * c_str();
 	///
@@ -118,9 +118,9 @@ private:
 	///
 	void generateText();
 	///
-	static const LString & bulletSize(const short &);
+	static const string & bulletSize(const short &);
 	///
-	static const LString & bulletEntry(const short &, const short &);
+	static const string & bulletEntry(const short &, const short &);
 
 	///
 	short font;
@@ -133,7 +133,7 @@ private:
 	// the predefined arrays of LaTeX equivalent strings.
 
 	/** flag indicates if user has control of text (1)
-	  or if I can use it to generate LStrings (0)
+	  or if I can use it to generate strings (0)
 	  or have already (-1)
 	  */
 	short user_text; 
@@ -145,13 +145,13 @@ private:
 	  or one generated internally from the font, character
 	  and size settings.
 	  */
-	LString text;
+	string text;
 };
 
 
 /*----------------Inline Bullet Member Functions------------------*/
 
-inline Bullet::Bullet(const LString & t) 
+inline Bullet::Bullet(const string & t) 
   :  font(MIN), character(MIN), size(MIN), user_text(1), text(t)
 {
 #ifdef DEBUG_AS_DEFAULT
@@ -209,7 +209,7 @@ inline void Bullet::setSize(const int s)
 }
 
 
-inline void Bullet::setText(const LString & t)
+inline void Bullet::setText(const string & t)
 {
 	font = character = size = MIN;
 	user_text = 1;
@@ -238,7 +238,7 @@ inline int Bullet::getSize() const
 }
 
 
-inline LString Bullet::getText() const
+inline string Bullet::getText() const
 {
 	return text;
 }

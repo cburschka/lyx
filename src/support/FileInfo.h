@@ -1,21 +1,23 @@
 // -*- C++ -*-
 /* This file is part of
-* ======================================================
-* 
-*           LyX, The Document Processor
-*        
-*           Copyright (C) 1995 1996 Matthias Ettrich
-*           and the LyX Team.
-*
-*======================================================*/
+ * ======================================================
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
+ *
+ * ======================================================*/
 
-#ifndef _FILE_INFO_H
-#define _FILE_INFO_H
+#ifndef FILE_INFO_H
+#define FILE_INFO_H
+
+#include <ctime>
 
 #include <unistd.h>
-#include <time.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+
 #include "LString.h"
 
 /** Use objects of this class to get information about files. */
@@ -27,7 +29,7 @@ public:
 	/** Get information about file.
 	If link is true, the information is about the link itself, not
 	the file that is obtained by tracing the links. */
-	FileInfo(LString const &path, bool link = false);
+	FileInfo(string const & path, bool link = false);
 
 	///
 	FileInfo(int fildes);
@@ -36,13 +38,13 @@ public:
 	~FileInfo();
 
 	///
-	FileInfo& newFile(LString const &path, bool link = false);
+	FileInfo& newFile(string const & path, bool link = false);
 
 	///
         FileInfo& newFile(int fildes);
 	
 	/// returns a character describing file type (ls -F)
-	char const *typeIndicator() const;
+	char const * typeIndicator() const;
 
 	///
 	mode_t getMode() const;
@@ -51,16 +53,16 @@ public:
 	long getBlockSize() const;
 	
 	/// constructs standard mode string (ls style)
-	void modeString(char *szString) const;
+	void modeString(char * szString) const;
 	
 	/// returns a letter describing a file type (ls style)
 	char typeLetter() const;
 	
 	/// builds 'rwx' string describing file access rights
-	void flagRWX(unsigned short i, char *szString) const;
+	void flagRWX(unsigned short i, char * szString) const;
 	
 	/// updates mode string to match suid/sgid/sticky bits
-	void setSticky(char *szString) const;
+	void setSticky(char * szString) const;
 
 	///
 	time_t getModificationTime() const;
@@ -127,13 +129,13 @@ private:
 	///
 	void dostat(bool);
 	///
-	struct stat *buf;
+	struct stat * buf;
 	///
 	int status;
 	///
 	int err;
 	///
-	LString fname;
+	string fname;
 };
 
 #endif

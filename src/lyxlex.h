@@ -50,7 +50,7 @@ public:
 	/// file is open and end of file is not reached
 	bool IsOK();
 	/// return true if able to open file, else false
-	bool setFile(LString const & filename);
+	bool setFile(string const & filename);
 	/// if file is already read from, line numbers will be wrong.
 	// should be removed
 	void setFile(FILE *f);
@@ -81,10 +81,10 @@ public:
 	///
 	float GetFloat();
 	///
-	LString GetString() const;
+	string GetString() const;
 	
 	/// get a long string, ended by the tag `endtag'
-	LString getLongString(LString const &endtoken);
+	string getLongString(string const &endtoken);
 	
 	///
 	bool EatLine();
@@ -109,7 +109,7 @@ public:
 	  and file name. If message contains the substring `$$Token',
 	  it is replaced with the value of GetString()
 	  */
-	void printError(LString const & message);
+	void printError(string const & message);
 
 	/**
 	  Prints the current token table on stderr.
@@ -126,8 +126,8 @@ protected:
 	struct pushed_table {
 		///
 		pushed_table(){
-			next=NULL;
-			table_elem=NULL;
+			next=0;
+			table_elem=0;
 		}
 		///
 		pushed_table *next;
@@ -142,7 +142,7 @@ protected:
         ///
         bool owns_file;
 	/// 
-	LString name;
+	string name;
 	///
 	int lineno;
 	///

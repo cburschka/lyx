@@ -9,8 +9,8 @@
 *======================================================*/
 
 #include <config.h>
-#include <stdlib.h>
-#include <ctype.h>
+#include <cstdlib>
+#include <cctype>
 
 #ifdef __GNUG__
 #pragma implementation "table.h"
@@ -19,7 +19,7 @@
 #include "layout.h"
 #include "lyxparagraph.h"
 #include "lyxtext.h"
-#include "textutils.h"
+#include "support/textutils.h"
 #include "lyx_gui_misc.h"
 #include "lyxdraw.h"
 #include "gettext.h"
@@ -27,13 +27,6 @@
 #include "buffer.h"
 #include "lyxscreen.h"
 #include "minibuffer.h"
-
-// 	$Id: text.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: text.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
-
 
 static const int LYX_PAPER_MARGIN = 20;
 
@@ -76,7 +69,7 @@ int LyXText::SingleWidth(LyXParagraph *par, int pos, char c)
 		   c == LYX_META_WIDE_TAB ||
 		   c == LYX_META_ALGORITHM) 
 	{
-		LString fs;
+		string fs;
 		switch (c) {
 		case LYX_META_MARGIN:
 			fs = "margin";
@@ -124,7 +117,7 @@ int LyXText::SingleWidth(LyXParagraph *par, int pos, char c)
  * specified row */
 int LyXText::RowLast(Row *row)
 {
-	if (row->next == NULL)
+	if (row->next == 0)
 		return row->par->Last()-1;
 	else if (row->next->par != row->par) 
 		return row->par->Last()-1;
@@ -168,7 +161,7 @@ void LyXText::Draw(Row *row, int &pos, LyXScreen &scr, int offset, float &x)
 	    c == LYX_META_WIDE_FIG ||
 	    c == LYX_META_WIDE_TAB ||
 	    c == LYX_META_ALGORITHM) {
-		LString fs;
+		string fs;
 		switch (c) {
 		case LYX_META_MARGIN:
 			fs = "margin";
@@ -286,11 +279,11 @@ int LyXText::LeftMargin(Row* row)
    Row dummyrow;
    layout = lyxstyle.Style(parameters->textclass, row->par->GetLayout());
    
-   LString parindent = layout->parindent; 
+   string parindent = layout->parindent; 
 
    /* table stuff -- begin*/ 
    if (row->par->table)
-      parindent.clean();
+      parindent.erase();
    /* table stuff -- end*/       
 
    x = LYX_PAPER_MARGIN;
@@ -313,7 +306,7 @@ int LyXText::LeftMargin(Row* row)
 	 if (row->par->FirstPhysicalPar()->Previous()) {
 	    newpar = row->par->DepthHook(row->par->GetDepth());
 	    if (newpar && lyxstyle.Style(parameters->textclass, newpar->GetLayout())->nextnoindent)
-	       parindent.clean();
+	       parindent.erase();
 	 }
       }
    }
@@ -343,7 +336,7 @@ int LyXText::LeftMargin(Row* row)
       
       if (newpar && !row->par->GetLayout()) {
 	 if (newpar->FirstPhysicalPar()->noindent)
-	    parindent.clean();
+	    parindent.erase();
 	 else
 	    parindent = lyxstyle.Style(parameters->textclass, 
 				       newpar->GetLayout())->parindent;
@@ -357,9 +350,9 @@ int LyXText::LeftMargin(Row* row)
       if (!layout->leftmargin.empty()) {
 	x += lyxstyle.TextClass(parameters->textclass)->defaultfont.signedStringWidth(layout->leftmargin);
       }
-      if (!row->par->GetLabelString().empty()) {
+      if (!row->par->GetLabestring().empty()) {
 	    x += labelfont.signedStringWidth(layout->labelindent);
-	    x += labelfont.stringWidth(row->par->GetLabelString());
+	    x += labelfont.stringWidth(row->par->GetLabestring());
 	    x += labelfont.stringWidth(layout->labelsep);
       }
       break;
@@ -395,7 +388,7 @@ int LyXText::LeftMargin(Row* row)
 		  && layout->labeltype != LABEL_CENTERED_TOP_ENVIRONMENT) {
 		 x += labelfont.signedStringWidth(layout->labelindent);
 		 x += labelfont.stringWidth(layout->labelsep);
-		 x += labelfont.stringWidth(row->par->GetLabelString());
+		 x += labelfont.stringWidth(row->par->GetLabestring());
 	 } 
       }
       break;
@@ -1073,7 +1066,7 @@ void LyXText::SetHeightOfRow(Row *row_ptr)
 	   || layout->labeltype == LABEL_BIBLIO
 	   || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
 	  && row_ptr->par->IsFirstInSequence()
-	  && !row_ptr->par->GetLabelString().empty()) {
+	  && !row_ptr->par->GetLabestring().empty()) {
 	 labeladdon = int(
 		 (labelfont.maxAscent() *
 		  layout->spacing.getValue() *
@@ -1399,7 +1392,7 @@ void LyXText::BreakParagraph(char keep_layout)
      // the table should stay with the contents
      if (!cursor.pos){
        cursor.par->Next()->table = cursor.par->table;
-       cursor.par->table = NULL;
+       cursor.par->table = 0;
      }
    }
    /* table stuff -- end*/
@@ -1459,7 +1452,7 @@ void LyXText::BreakParagraph(char keep_layout)
    if (cursor.row->next)
      BreakAgain(cursor.row->next);
 
-   need_break_row = NULL;
+   need_break_row = 0;
 }
 
 
@@ -1515,7 +1508,7 @@ void LyXText::OpenFootnote()
 
 /* table stuff -- begin*/
 
-void LyXText::TableFeatures(int feature, LString val)
+void LyXText::TableFeatures(int feature, string val)
 {
     int
         actCell;
@@ -1812,7 +1805,7 @@ void LyXText::TableFeatures(int feature)
       case LyXTable::DELETE_TABLE:
           SetCursorIntern(cursor.par, 0);
           delete cursor.par->table;
-          cursor.par->table = NULL;
+          cursor.par->table = 0;
           // temporary: Should put table in simple_cut_buffer (with before and after
           // dummy-paragraph !! 
           // not necessar anymore with UNDO :)
@@ -2377,7 +2370,7 @@ void  LyXText::InsertChar(char c)
 			if (row->next && row->next->par == row->par)
 				need_break_row = row->next;
 			else
-				need_break_row = NULL;
+				need_break_row = 0;
 
 			current_font = rawtmpfont;
 			real_current_font = realtmpfont;
@@ -2415,7 +2408,7 @@ void  LyXText::InsertChar(char c)
 		if (row->next && row->next->par == row->par)
 			need_break_row = row->next;
 		else
-			need_break_row = NULL;
+			need_break_row = 0;
 		
 		current_font = rawtmpfont;
 		real_current_font = realtmpfont;
@@ -2745,7 +2738,7 @@ char* LyXText::SelectNextWord(float &value)
 	/* Start the selection from here */
 	sel_cursor = cursor;
 
-	LString latex;
+	string latex;
    
 	/* and find the end of the word 
 	   (optional hyphens are part of a word) */
@@ -2758,7 +2751,7 @@ char* LyXText::SelectNextWord(float &value)
 		cursor.pos++;
 
 	// Finally, we copy the word to a string and return it
-	char* string = NULL;
+	char* string = 0;
 
 	if (sel_cursor.pos < cursor.pos) {
 		string = new char [cursor.pos - sel_cursor.pos + 2];
@@ -2783,7 +2776,7 @@ void LyXText::SelectSelectedWord()
 	/* set the sel cursor */
 	sel_cursor = cursor;
 
-	LString latex;
+	string latex;
 	
 	/* now find the end of the word */
 	while (cursor.pos < cursor.par->Last()
@@ -3157,14 +3150,14 @@ void  LyXText::Backspace()
 				if (row->pos >= row->par->Last()) {
 					/* remove it */ 
 					RemoveRow(row);
-					need_break_row = NULL;
+					need_break_row = 0;
 				}
 				else  {
 					BreakAgainOneRow(row);
 					if (row->next && row->next->par == row->par)
 						need_break_row = row->next;
 					else
-						need_break_row = NULL;
+						need_break_row = 0;
 				}
 				
 				/* set the dimensions of the row above  */ 
@@ -3213,7 +3206,7 @@ void  LyXText::Backspace()
 			if (row->next && row->next->par == row->par)
 				need_break_row = row->next;
 			else
-				need_break_row = NULL;
+				need_break_row = 0;
 		} else  {
 			/* set the dimensions of the row */ 
 			row->fill = Fill(row, paperwidth);
@@ -3326,7 +3319,7 @@ void LyXText::GetVisibleRow(LyXScreen &scr, int offset,
 		box_x += font.textWidth(" wide-tab ", 10);
 		if (row_ptr->previous && 
 		    row_ptr->previous->par->footnoteflag != LyXParagraph::OPEN_FOOTNOTE){
-			LString fs;
+			string fs;
 			switch (row_ptr->par->footnotekind) {
 			case LyXParagraph::MARGIN:
 				fs = " margin";
@@ -3486,9 +3479,9 @@ void LyXText::GetVisibleRow(LyXScreen &scr, int offset,
 			|| layout->latextype != LATEX_ENVIRONMENT
 			|| row_ptr->par->IsFirstInSequence())) {
 			font = GetFont(row_ptr->par, -2);
-			if (!row_ptr->par->GetLabelString().empty()) {
+			if (!row_ptr->par->GetLabestring().empty()) {
 				tmpx = x;
-				LString tmpstring = row_ptr->par->GetLabelString();
+				string tmpstring = row_ptr->par->GetLabestring();
 				
 				if (layout->labeltype == LABEL_COUNTER_CHAPTER) {
 					if (parameters->secnumdepth >=0){
@@ -3516,8 +3509,8 @@ void LyXText::GetVisibleRow(LyXScreen &scr, int offset,
 			   layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 			if (row_ptr->par->IsFirstInSequence()) {
 				font = GetFont(row_ptr->par, -2);
-				if (!row_ptr->par->GetLabelString().empty()) {
-					LString tmpstring = row_ptr->par->GetLabelString();
+				if (!row_ptr->par->GetLabestring().empty()) {
+					string tmpstring = row_ptr->par->GetLabestring();
 					
 					maxdesc = int(font.maxDescent() * layout->spacing.getValue() * parameters->spacing.getValue()
 							 + (layout->labelbottomsep * DefaultHeight()));

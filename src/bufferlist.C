@@ -3,10 +3,10 @@
  * 
  *           LyX, The Document Word Processor
  *
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team. 
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team. 
  *
- *           This file is Copyleft (C) 1996-1998
+ *           This file is Copyright 1996-1999
  *           Lars Gullik Bjønnes
  *
  *======================================================
@@ -22,8 +22,8 @@
 #include "bufferlist.h"
 #include "lyx_main.h"
 #include "minibuffer.h"
-#include "FileInfo.h"
-#include "filetools.h"
+#include "support/FileInfo.h"
+#include "support/filetools.h"
 #include "lyx_gui_misc.h"
 #include "lastfiles.h"
 #include "error.h"
@@ -33,17 +33,11 @@
 #include "lyx_cb.h"
 #include "gettext.h"
 
-// 	$Id: bufferlist.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: bufferlist.C,v 1.1 1999/09/27 18:44:37 larsbj Exp $";
-#endif /* lint */
-
 extern BufferView *current_view;
 extern MiniBuffer *minibuffer;
 extern void SmallUpdate(signed char);
 extern void BeforeChange();
-extern int RunLinuxDoc(int, LString const &);
+extern int RunLinuxDoc(int, string const &);
 
 //
 // Class BufferStorage
@@ -78,7 +72,7 @@ void BufferStorage::release(Buffer* buf)
 }
 
 
-Buffer* BufferStorage::newBuffer(LString const &s,
+Buffer* BufferStorage::newBuffer(string const &s,
 				 LyXRC *lyxrc,
 				 bool ronly)
 {
@@ -87,7 +81,7 @@ Buffer* BufferStorage::newBuffer(LString const &s,
 	       && buffer[i]) i++;
 	buffer[i] = new Buffer(s, lyxrc, ronly);
 	buffer[i]->params.useClassDefaults();
-	lyxerr.debug(LString("Assigning to buffer ") + i, Error::ANY);
+	lyxerr.debug(string("Assigning to buffer ") + tostr(i), Error::ANY);
 	return buffer[i];
 }
 
@@ -149,7 +143,7 @@ extern void MenuWrite(Buffer*);
 bool BufferList::QwriteAll()
 {
         bool askMoreConfirmation = false;
-        LString unsaved;
+        string unsaved;
 	BufferStorage_Iter biter(bstore);
 	Buffer *b=0;
 	while ((b=biter())) {
@@ -192,7 +186,7 @@ bool BufferList::write(Buffer *buf, bool makeBackup)
 
 	// make a backup
 	if (makeBackup) {
-		LString s = buf->filename + '~';
+		string s = buf->filename + '~';
 		// Rename is the wrong way of making a backup,
 		// this is the correct way.
 		/* truss cp fil fil2:
@@ -226,7 +220,7 @@ bool BufferList::write(Buffer *buf, bool makeBackup)
 			times->actime = finfo.getAccessTime();
 			times->modtime = finfo.getModificationTime();
 			long blksize = finfo.getBlockSize();
-			lyxerr.debug(LString("BlockSize: ") + int(blksize));
+			lyxerr.debug(string("BlockSize: ") + tostr(blksize));
 			FilePtr fin(buf->filename,FilePtr::read);
 			FilePtr fout(s,FilePtr::truncate);
 			if (fin() && fout()) {
@@ -261,7 +255,7 @@ bool BufferList::write(Buffer *buf, bool makeBackup)
 				MakeDisplayPath(buf->filename));
 
 		// now delete the autosavefile
-		LString a = OnlyPath(buf->filename);
+		string a = OnlyPath(buf->filename);
 		a += '#';
 		a += OnlyFilename(buf->filename);
 		a += '#';
@@ -275,7 +269,7 @@ bool BufferList::write(Buffer *buf, bool makeBackup)
 	} else {
 		// Saving failed, so backup is not backup
 		if (makeBackup) {
-			LString s = buf->filename + '~';
+			string s = buf->filename + '~';
 			rename(s.c_str(), buf->filename.c_str());
 		}
 		minibuffer->Set(_("Save failed!"));
@@ -347,7 +341,7 @@ void BufferList::makePup(int pup)
 	BufferStorage_Iter biter(bstore);
 	Buffer *b=0;
 	while ((b=biter())) {
-		LString relbuf = MakeDisplayPath(b->filename,30);
+		string relbuf = MakeDisplayPath(b->filename,30);
 		fl_addtopup(pup, relbuf.c_str());
 		ant++;
 	}
@@ -403,13 +397,13 @@ int BufferList::unlockInset(UpdatableInset *inset)
 }
 
 
-void BufferList::updateIncludedTeXfiles(LString const & mastertmpdir)
+void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 {
 	BufferStorage_Iter biter(bstore);
 	Buffer *b=0;
 	while ((b=biter())) {
 		if (!b->isDepClean(mastertmpdir)) {
-			LString writefile = mastertmpdir;
+			string writefile = mastertmpdir;
 			writefile += '/';
 			writefile += ChangeExtension(b->getFileName(), ".tex", true);
 			b->makeLaTeXFile(writefile,mastertmpdir,false,true);
@@ -433,7 +427,7 @@ void BufferList::emergencyWriteAll()
 				      + _(" as..."));
 			
 			for (int i=0; i<3 && !madeit; i++) {
-				LString s;
+				string s;
 				
 				// We try to save three places:
 				// 1) Same place as document.
@@ -442,7 +436,7 @@ void BufferList::emergencyWriteAll()
 				if (i==0) {
 					s = b->filename;
 				} else if (i==1) {
-					s = AddName(getEnvPath("HOME"),
+					s = AddName(GetEnvPath("HOME"),
 						    b->filename);
 				} else { // MakeAbsPath to prepend the current drive letter on OS/2
 					s = AddName(MakeAbsPath("/tmp/"),
@@ -450,7 +444,7 @@ void BufferList::emergencyWriteAll()
 				}
 				s += ".emergency";
 				
-				lyxerr.print(LString("  ") + (i+1) + ") " + s);
+				lyxerr.print(string("  ") + tostr(i+1) + ") " + s);
 				
 				if (b->writeFile(s,true)) {
 					b->markLyxClean();
@@ -467,13 +461,13 @@ void BufferList::emergencyWriteAll()
 }
 
 
-Buffer* BufferList::readFile(LString const & s, bool ronly)
+Buffer* BufferList::readFile(string const & s, bool ronly)
 {
 	Buffer *b = bstore.newBuffer(s, lyxrc, ronly);
 
-	LString ts = s;
-	LString e = OnlyPath(s);
-	LString a = e;
+	string ts = s;
+	string e = OnlyPath(s);
+	string a = e;
 	// File information about normal file
 	FileInfo fileInfo2(s);
 
@@ -525,7 +519,7 @@ Buffer* BufferList::readFile(LString const & s, bool ronly)
 		}
 	}
 	// not sure if this is the correct place to begin LyXLex
-	LyXLex lex(NULL, 0);
+	LyXLex lex(0, 0);
 	lex.setFile(ts);
 	if (b->readFile(lex))
 		return b;
@@ -536,7 +530,7 @@ Buffer* BufferList::readFile(LString const & s, bool ronly)
 }
 
 
-bool BufferList::exists(LString const & s)
+bool BufferList::exists(string const & s)
 {
 	BufferStorage_Iter biter(bstore);
 	Buffer *b=0;
@@ -548,7 +542,7 @@ bool BufferList::exists(LString const & s)
 }
 
 
-Buffer* BufferList::getBuffer(LString const &s)
+Buffer* BufferList::getBuffer(string const &s)
 {
 	BufferStorage_Iter biter(bstore);
 	Buffer *b=0;
@@ -560,7 +554,7 @@ Buffer* BufferList::getBuffer(LString const &s)
 }
 
 
-Buffer* BufferList::newFile(LString const & name, LString tname)
+Buffer* BufferList::newFile(string const & name, string tname)
 {
 	/* get a free buffer */ 
 	Buffer *b = bstore.newBuffer(name, lyxrc);
@@ -571,7 +565,7 @@ Buffer* BufferList::newFile(LString const & name, LString tname)
 	}
 	if (!tname.empty() && IsLyXFilename(tname)){
 		bool templateok = false;
-		LyXLex lex(NULL,0);
+		LyXLex lex(0,0);
 		lex.setFile(tname);
 		if (lex.IsOK()) {
 			if (b->readFile(lex)) {
@@ -596,10 +590,10 @@ Buffer* BufferList::newFile(LString const & name, LString tname)
 }
 
 
-Buffer* BufferList::loadLyXFile(LString const & filename, bool tolastfiles)
+Buffer* BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 {
 	// make sure our path is absolute
-	LString s = MakeAbsPath(filename);
+	string s = MakeAbsPath(filename);
 
 	// Is this done too early?
 	// Is it LinuxDoc?
@@ -663,7 +657,7 @@ Buffer* BufferList::loadLyXFile(LString const & filename, bool tolastfiles)
 				_("Create new document with this name?")))
 	    	{
 			// Find a free buffer
-			b = newFile(s,LString());
+			b = newFile(s,string());
 	    	}
 		break;
 	}

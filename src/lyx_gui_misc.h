@@ -39,22 +39,22 @@ const char* flyx_ident_extract(const char *sc);
 #define idex flyx_ident_extract
 
 /// Show message
-void WriteAlert(LString const & s1, LString const & s2=LString(), 
-		LString const & s3=LString());
+void WriteAlert(string const & s1, string const & s2=string(), 
+		string const & s3=string());
 
 /// Alarms user of something related to files
-void WriteFSAlert(LString const & s1, LString const & s2=LString());
+void WriteFSAlert(string const & s1, string const & s2=string());
 
 /// Asks "Yes" or "No". Returns true for yes, false for no
-bool AskQuestion(LString const & s1, LString const & s2=LString(),
-		 LString const & s3=LString());
+bool AskQuestion(string const & s1, string const & s2=string(),
+		 string const & s3=string());
 
 /// Asks "Yes", "No" or "Cancel". Returns 1 for yes, 2 for no, 3 for cancel
-int AskConfirmation(LString const & s1, LString const & s2=LString(), 
-		    LString const & s3=LString());
+int AskConfirmation(string const & s1, string const & s2=string(), 
+		    string const & s3=string());
 
 /// returns a text
-LString askForText(LString const & msg, LString const & dflt=LString());
+string askForText(string const & msg, string const & dflt=string());
 
 /// Informs the user that changes in the coming form will be ignored
 void WarnReadonly();

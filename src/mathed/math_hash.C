@@ -395,7 +395,7 @@ latexkeys *lm_get_key_by_id(int t, short tk)
      if (t==l->id && tk==l->token)
        return l;
    }
-   return NULL;
+   return 0;
 }
 
 latexkeys *lm_get_key_by_index(int i)
@@ -403,5 +403,5 @@ latexkeys *lm_get_key_by_index(int i)
    if (i>0 && i<TOTAL_KEYWORDS+2)
      return &wordlist[i];
    else
-     return NULL;
+     return 0;
 }

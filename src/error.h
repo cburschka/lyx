@@ -55,16 +55,16 @@ public:
 	/// Not implemented yet.
 	void setLogLevel(int level);
 	/// Not implemented yet.
-	void setLogFile(LString const & filename);
+	void setLogFile(string const & filename);
 	///
-	void debug(LString const & msg, int level = INFO); // or ANY?
+	void debug(string const & msg, int level = INFO); // or ANY?
 	///
 	bool debugging(int level = INFO) // or ANY?
 	{
 		return (bool)(debuglevel & level);
 	}
 	///
-	void print(LString const & msg);
+	void print(string const & msg);
 protected:
 private:
 	///

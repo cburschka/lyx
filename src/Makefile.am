@@ -1,10 +1,11 @@
 AUTOMAKE_OPTIONS = foreign
-SUBDIRS = mathed insets
+SUBDIRS = mathed insets support
 DISTCLEANFILES = libintl.h config.h
 MAINTAINERCLEANFILES = Makefile.in config.h.in
 bin_PROGRAMS = lyx
-lyx_LDADD = mathed/mathed.o insets/insets.o @INTLLIBS@ @LYX_LIBS@
-lyx_DEPENDENCIES = mathed insets
+lyx_LDADD = mathed/mathed.o insets/insets.o support/libsupport.a \
+	@INTLLIBS@ @LYX_LIBS@
+lyx_DEPENDENCIES = mathed insets support/libsupport.a
 EXTRA_DIST = config.h.in stamp-h.in
 ETAGS_ARGS = --c++
 INCLUDES = -I${top_srcdir}/images
@@ -18,8 +19,6 @@ lyx_SOURCES = \
 	Chktex.h \
 	DepTable.C \
 	DepTable.h \
-	FileInfo.C \
-	FileInfo.h \
 	FontInfo.C \
 	FontInfo.h \
 	FontLoader.C \
@@ -28,7 +27,6 @@ lyx_SOURCES = \
 	ImportLaTeX.h \
 	ImportNoweb.C \
 	ImportNoweb.h \
-	LString.C \
 	LString.h \
 	LaTeX.C \
 	LaTeX.h \
@@ -45,7 +43,6 @@ lyx_SOURCES = \
 	Makefile.in \
 	PaperLayout.C \
 	ParagraphExtra.C \
-	Redraw \
 	Spacing.C \
 	Spacing.h \
 	TableLayout.C \
@@ -79,8 +76,6 @@ lyx_SOURCES = \
 	figure.h \
 	filedlg.C \
 	filedlg.h \
-	filetools.C \
-	filetools.h \
 	form1.C \
 	form1.h \
 	gettext.h \
@@ -125,7 +120,6 @@ lyx_SOURCES = \
 	lyxfunc.h \
 	lyxlex.C \
 	lyxlex.h \
-	lyxlib.h \
 	lyxlookup.C \
 	lyxlookup.h \
 	lyxparagraph.h \
@@ -135,7 +129,6 @@ lyx_SOURCES = \
 	lyxscreen.h \
 	lyxserver.C \
 	lyxserver.h \
-	lyxsum.C \
 	lyxtext.h \
 	lyxvc.C \
 	lyxvc.h \
@@ -157,11 +150,6 @@ lyx_SOURCES = \
 	sp_form.h \
 	spellchecker.C \
 	spellchecker.h \
-	syscall.C \
-	syscall.h \
-	syscontr.C \
-	syscontr.h \
-	syssingleton.C \
 	table.C \
 	table.h \
 	tex-accent.C \
@@ -174,7 +162,6 @@ lyx_SOURCES = \
 	texrow.h \
 	text.C \
 	text2.C \
-	textutils.h \
 	toolbar.C \
 	toolbar.h \
 	trans.C \
@@ -192,6 +179,6 @@ lyx_main.o: lyx_main.C lyx_main.h config.h version.h error.h gettext.h
 	$(CXXCOMPILE) -DLYX_DIR=\"$(LYX_DIR)\" -DTOP_SRCDIR=\"$(top_srcdir)\" \
 	-DLYX_NAME=\"$(PACKAGE)\" -c $(top_srcdir)/src/lyx_main.C
 
-main.o: main.C config.h lyx_main.h gettext.h LString.h filetools.h
+main.o: main.C config.h lyx_main.h gettext.h LString.h support/filetools.h
 	$(CXXCOMPILE) -DPACKAGE=\"$(PACKAGE)\" -DLOCALEDIR=\"$(localedir)\" \
 	-c ${top_srcdir}/src/main.C

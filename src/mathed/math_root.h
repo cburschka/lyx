@@ -42,7 +42,7 @@ class MathRootInset: public MathSqrtInset {
     ///
     void Write(FILE *file);
     ///
-    void Write(LString &file);
+    void Write(string &file);
     ///
     void Metrics();
     ///

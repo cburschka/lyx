@@ -2,10 +2,10 @@
  * ======================================================
  * 
  *           LyX, The Document Processor 	 
- *	     Copyright (C) 1995 Matthias Ettrich
- *           Copyright (C) 1995-1998 The LyX Team.
+ *	     Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-1999 The LyX Team.
  *
- *           This file is Copyright (C) 1997-1998
+ *           This file is Copyright 1997-1998
  *           Asger Alstrup
  *
  *======================================================
@@ -13,7 +13,7 @@
 
 #include <config.h>
 
-#include <stdlib.h> // atoi
+#include <cstdlib> // atoi
 
 #ifdef __GNUG__
 #pragma implementation
@@ -21,27 +21,20 @@
 
 #include "Chktex.h"
 #include "LaTeX.h" // TeXErrors
-#include "filetools.h"
+#include "support/filetools.h"
 #include "lyxlex.h"
-#include "FileInfo.h"
+#include "support/FileInfo.h"
 #include "error.h"
-#include "syscall.h"
-#include "syscontr.h"
+#include "support/syscall.h"
+#include "support/syscontr.h"
 #include "pathstack.h"
 #include "gettext.h"
-
-// 	$Id: Chktex.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: Chktex.C,v 1.1 1999/09/27 18:44:36 larsbj Exp $";
-#endif /* lint */
-
 
 /*
  * CLASS Chktex
  */
 
-Chktex::Chktex(LString const & chktex, LString const & f, LString const & p)
+Chktex::Chktex(string const & chktex, string const & f, string const & p)
 		: cmd(chktex), file(f), path(p)
 {
 }
@@ -50,8 +43,8 @@ Chktex::Chktex(LString const & chktex, LString const & f, LString const & p)
 int Chktex::run(TeXErrors &terr)
 {
 	// run bibtex
-	LString log = ChangeExtension(file, ".log", true);
-	LString tmp = cmd + " -q -v0 -b0 -x " + file + " -o " + log;
+	string log = ChangeExtension(file, ".log", true);
+	string tmp = cmd + " -q -v0 -b0 -x " + file + " -o " + log;
         Systemcalls one;
 	int result= one.Startscript(Systemcalls::System, tmp);
 	if (result == 0) {
@@ -65,12 +58,12 @@ int Chktex::run(TeXErrors &terr)
 
 int Chktex::scanLogFile(TeXErrors &terr)
 {
-	LString token;
+	string token;
 	int retval = 0;
 
-	LyXLex lex(NULL, 0);
+	LyXLex lex(0, 0);
 
-	LString tmp = ChangeExtension(file, ".log", true);
+	string tmp = ChangeExtension(file, ".log", true);
 
 	if (!lex.setFile(tmp)) {
 		// Unable to open file. Return at once
@@ -83,12 +76,12 @@ int Chktex::scanLogFile(TeXErrors &terr)
 		else // blank line in the file being read
 			continue;
 
-		LString srcfile, line, pos, warno, warning;
-		token.split(srcfile, ':');
-		token.split(line, ':');
-		token.split(pos, ':');
-		token.split(warno, ':');
-		token.split(warning, ':');
+		string srcfile, line, pos, warno, warning;
+		token=split(token, srcfile, ':');
+		token=split(token, line, ':');
+		token=split(token, pos, ':');
+		token=split(token, warno, ':');
+		token=split(token, warning, ':');
 
 		int lineno = atoi(line.c_str());
 		warno = _("ChkTeX warning id #") + warno;

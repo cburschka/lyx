@@ -217,6 +217,7 @@ AC_OUTPUT([Makefile \
        src/Makefile \
        src/mathed/Makefile \
        src/insets/Makefile \
+       src/support/Makefile \
 ],  [sed -e "/POTFILES =/r po/POTFILES" po/Makefile.in > po/Makefile])
 
 

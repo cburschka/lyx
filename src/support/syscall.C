@@ -6,11 +6,12 @@
 
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
 #include <unistd.h>
 #include "syscall.h"
 #include "syscontr.h"
+#include "support/lstrings.h"
 
 //----------------------------------------------------------------------
 // Class, which controlls a system-call
@@ -25,7 +26,7 @@ Systemcalls::Systemcalls()
 // constructor
 // 
 // starts child
-Systemcalls::Systemcalls(Starttype how, LString what, Callbackfct cback)
+Systemcalls::Systemcalls(Starttype how, string what, Callbackfct cback)
 {
 	start   = how;
 	command = what;
@@ -119,24 +120,29 @@ pid_t Systemcalls::Fork()
 {
 	pid_t cpid=fork();
 	if (cpid == 0) { // child
-		LString childcommand(command); // copy
-		LString rest = command.split(childcommand, ' ');
+		string childcommand(command); // copy
+		string rest = split(command, childcommand, ' ');
 		const int MAX_ARGV = 255;
-		char *syscmd = NULL; 
+		char *syscmd = 0; 
 		char *argv[MAX_ARGV];
 		int  index = 0;
 		bool Abbruch;
 		do {
-			if (syscmd == NULL) {
-				syscmd = childcommand.copy();
+			if (syscmd == 0) {
+				syscmd = new char[childcommand.length() + 1];
+				childcommand.copy(syscmd, childcommand.length());
+				syscmd[childcommand.length()] = '\0';
 			}
-			argv[index++] = childcommand.copy();
+			char * tmp = new char[childcommand.length() + 1];
+			childcommand.copy(tmp, childcommand.length());
+			tmp[childcommand.length()] = '\0';
+			argv[index++] = tmp;
 			// reinit
 			Abbruch = !rest.empty();
 			if (Abbruch) 
-				rest = rest.split(childcommand, ' ');
+				rest = split(rest, childcommand, ' ');
 		} while (Abbruch);
-		argv[index] = NULL;
+		argv[index] = 0;
 		// replace by command. Expand using PATH-environment-var.
 		execvp(syscmd, argv);
 		// If something goes wrong, we end up here:
@@ -152,7 +158,7 @@ pid_t Systemcalls::Fork()
 
 // Reuse of instance
 
-int Systemcalls::Startscript(Starttype how, LString what, Callbackfct cback)
+int Systemcalls::Startscript(Starttype how, string what, Callbackfct cback)
 {
 	start   = how;
 	command = what;
@@ -172,7 +178,7 @@ int Systemcalls::Startscript(Starttype how, LString what, Callbackfct cback)
 
 
 int SimulateTimer;
-void back(LString cmd, int retval)
+void back(string cmd, int retval)
 {
 	printf("Done: %s gave %d\n", cmd.c_str(), retval);
 	SimulateTimer = 0;

@@ -136,13 +136,13 @@ void MathRootInset::SetFocus(int x, int)
 
 void MathRootInset::Write(FILE *outf)
 { 
-   LString output;
+   string output;
    MathRootInset::Write(output);  
    fprintf(outf, "%s", output.c_str());
 }
 
 
-void MathRootInset::Write(LString &outf)
+void MathRootInset::Write(string &outf)
 { 
    outf += '\\';
    outf += name;

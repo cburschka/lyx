@@ -14,18 +14,18 @@
 #include <config.h>
 
 #include "DepTable.h"
-#include "lyxlib.h"
-#include "filetools.h"
+#include "support/lyxlib.h"
+#include "support/filetools.h"
 
 DepTable::DepTable()
 {
 	new_sum = 0;
 	old_sum = 0;
-	next = NULL;
+	next = 0;
 }
 
 
-DepTable::DepTable(LString const & f,
+DepTable::DepTable(string const & f,
 		   bool upd,
 		   unsigned long one,
 		   unsigned long two)
@@ -50,17 +50,17 @@ DepTable::DepTable(LString const & f,
 			     file + " " +
 			     tmp1 + " " + tmp2);
 	}
-	next = NULL;
+	next = 0;
 }
 
 
-void DepTable::insert(LString const & fi,
+void DepTable::insert(string const & fi,
 		      bool upd,
 		      unsigned long one,
 		      unsigned long two)
 {
 	// not quite sure if this is the correct place for MakeAbsPath
-	LString f = MakeAbsPath(fi);
+	string f = MakeAbsPath(fi);
 	if (f == file) return; // exist already in the log
 	if (next)
 		next->insert(f, upd, one, two);
@@ -100,10 +100,10 @@ bool DepTable::sumchange()
 }
 
 
-bool DepTable::haschanged(LString const & f)
+bool DepTable::haschanged(string const & f)
 {
 	// not quite sure if this is the correct place for MakeAbsPath
-	LString fil = MakeAbsPath(f);
+	string fil = MakeAbsPath(f);
 	bool ret = false;
 
 	if (!fil.empty() && !file.empty() && fil == file) {
@@ -115,14 +115,14 @@ bool DepTable::haschanged(LString const & f)
 }
 
 
-void DepTable::write(LString const&f)
+void DepTable::write(string const&f)
 {
 	FilePtr fp(f, FilePtr::write);
 	if (fp() && next) next->write(fp());
 }
 
 
-void DepTable::read(LString const &f)
+void DepTable::read(string const &f)
 {
 	FilePtr fp(f, FilePtr::read);
 	if (fp()) { // file opened
@@ -141,11 +141,11 @@ void DepTable::read(LString const &f)
 				char tmp2[255];
 				sprintf(tmp1, "%lu", one);
 				sprintf(tmp2, "%lu", two);
-				lyxerr.debug(LString("read dep: ") +
+				lyxerr.debug(string("read dep: ") +
 					     nome + " " + tmp1 +
 					     " " + tmp2);
 			}
-			insert(LString(nome), false, one, two);
+			insert(string(nome), false, one, two);
 		}
 	}
 }

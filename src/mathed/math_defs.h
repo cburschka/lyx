@@ -17,14 +17,16 @@
  * 
  */
 
-#ifndef __MATH_DEFS__
-#define __MATH_DEFS__
+#ifndef MATH_DEFS
+#define MATH_DEFS
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include <stdio.h>
+#include <cstdio>
+#include "LString.h"
+
 #include "array.h"
 
 ///
@@ -224,7 +226,7 @@ class MathedInset  {
     /// Write LaTeX and Lyx code
     virtual void Write(FILE *file)=0;
     /// Write LaTeX and Lyx code
-    virtual void Write(LString &file)=0;
+    virtual void Write(string & file)=0;
    
     /// Reproduces itself
     virtual MathedInset *Clone()=0;
@@ -314,7 +316,7 @@ enum MathedParFlag {
 class MathParInset: public MathedInset  {
  public: 
     ///
-    MathParInset(short st=LM_ST_TEXT, char const *nm=NULL, short ot=LM_OT_MIN);
+    MathParInset(short st=LM_ST_TEXT, char const *nm=0, short ot=LM_OT_MIN);
     ///
     MathParInset(MathParInset*);
     ///
@@ -328,7 +330,7 @@ class MathParInset: public MathedInset  {
     /// Write LaTeX code
     virtual void Write(FILE *file);
     /// Write LaTeX code
-    virtual void Write(LString &file);
+    virtual void Write(string &file);
     ///
     virtual void Metrics();
     ///
@@ -403,7 +405,7 @@ class MathParInset: public MathedInset  {
 	///
     friend class MathedCursor;
 	///
-    friend LyxArrayBase *mathed_parse(unsigned flags = 0, LyxArrayBase*a=NULL, MathParInset**p=NULL);
+    friend LyxArrayBase *mathed_parse(unsigned flags = 0, LyxArrayBase*a=0, MathParInset**p=0);
 };
 
 
@@ -480,7 +482,7 @@ class MathMatrixInset: public MathParInset {
     ///
     void Write(FILE *file);
     ///
-    void Write(LString &file);
+    void Write(string &file);
     ///
     void Metrics();
     ///
@@ -526,9 +528,9 @@ class MathMatrixInset: public MathParInset {
 /// 
 LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *data, MathParInset **mt);
 ///
-void mathed_write(MathParInset*, FILE *, int*, char fragile, char const* label=NULL);
+void mathed_write(MathParInset*, FILE *, int*, char fragile, char const* label=0);
 ///
-void mathed_write(MathParInset*, LString&, int*, char fragile, char const* label=NULL);
+void mathed_write(MathParInset*, string&, int*, char fragile, char const* label=0);
 ///
 void mathed_parser_file(FILE*, int);
 ///

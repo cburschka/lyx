@@ -3,10 +3,10 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1998 The LyX Team.
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
  *
- *======================================================*/
+ * ======================================================*/
 
 #include <config.h>
 
@@ -18,20 +18,13 @@
 #include "lyxdraw.h"
 #include "error.h"
 
-// 	$Id: insetcommand.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $	
-
-#if !defined(lint) && !defined(WITH_WARNINGS)
-static char vcid[] = "$Id: insetcommand.C,v 1.1 1999/09/27 18:44:38 larsbj Exp $";
-#endif /* lint */
-
-
 InsetCommand::InsetCommand()
 {
 }
 
 
-InsetCommand::InsetCommand(LString const & cmd, LString const & arg, 
-			   LString const & opt)
+InsetCommand::InsetCommand(string const & cmd, string const & arg, 
+			   string const & opt)
 	: command(cmd), options(opt), contents(arg)
 {
 }
@@ -62,7 +55,7 @@ int InsetCommand::Width(LyXFont const&font) const
 {
 	LyXFont f = font;
 	f.decSize();
-	LString s = getScreenLabel();
+	string s = getScreenLabel();
 	return 10 + f.stringWidth(s);
 }
 
@@ -95,7 +88,7 @@ void InsetCommand::Draw(LyXFont font, LyXScreen &scr,
 				  Width(font)-6,
 				  Ascent(font)+Descent(font)-2); 
 	}
-        LString s = getScreenLabel();
+        string s = getScreenLabel();
        	LyXFont f = font;
 	f.decSize();
 	f.setColor(LyXFont::NONE);
@@ -113,9 +106,9 @@ void InsetCommand::Write(FILE *file)
 }
 
 
-void InsetCommand::scanCommand(LString const &cmd)
+void InsetCommand::scanCommand(string const &cmd)
 {
-	LString tcommand, toptions, tcontents;
+	string tcommand, toptions, tcontents;
 
 	if (cmd.empty()) return;
 
@@ -124,7 +117,7 @@ void InsetCommand::scanCommand(LString const &cmd)
 	// Used to handle things like \command[foo[bar]]{foo{bar}}
 	int nestdepth = 0;
 
-	for (int i=0; i<cmd.length(); i++) {
+	for (string::size_type i = 0; i < cmd.length(); ++i) {
 		char c = cmd[i];
 		if ((state==Command && c == ' ') ||
 		    (state==Command && c == '[') ||
@@ -180,7 +173,7 @@ void InsetCommand::scanCommand(LString const &cmd)
 void InsetCommand::Read(LyXLex &lex)
 {    
 	if (lex.EatLine()) {
-		LString t = lex.GetString();
+		string t = lex.GetString();
 		scanCommand(t);
 	} else
 		lex.printError("InsetCommand: Parse error: `$$Token'");
@@ -194,20 +187,20 @@ int InsetCommand::Latex(FILE *file, signed char /*fragile*/)
 }
 
 
-int InsetCommand::Latex(LString &file, signed char /*fragile*/)
+int InsetCommand::Latex(string &file, signed char /*fragile*/)
 {
 	file += getCommand();
 	return 0;
 }
 
 
-int InsetCommand::Linuxdoc(LString &/*file*/)
+int InsetCommand::Linuxdoc(string &/*file*/)
 {
 	return 0;
 }
 
 
-int InsetCommand::DocBook(LString &/*file*/)
+int InsetCommand::DocBook(string &/*file*/)
 {
 	return 0;
 }
@@ -220,9 +213,9 @@ Inset* InsetCommand::Clone()
 }
 
 
-LString InsetCommand::getCommand() const
+string InsetCommand::getCommand() const
 {	
-	LString s;
+	string s;
 	if (!command.empty()) s += "\\"+command;
 	if (!options.empty()) s += "["+options+']';
 	s += "{"+contents+'}';

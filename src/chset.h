@@ -17,21 +17,21 @@ public:
 	~CharacterSet();
 	
 	///
-	bool loadFile(const LString&);
+	bool loadFile(const string&);
 	///
-	LString getName();
+	string getName();
 	///
-	bool encodeString(LString&);
+	bool encodeString(string&);
 private:
 	///
-	LString name_;
+	string name_;
 	
 	///
 	struct Cdef {
 		///
 		unsigned char ic;
 		///
-		LString str;
+		string str;
 		///
 		Cdef *next;
 	};

@@ -50,7 +50,7 @@ extern void TableSpeCloseCB(FL_OBJECT *, long);
 
 #include "bufferparams.h"
 
-extern bool UpdateLayoutDocument(BufferParams *params = NULL);
+extern bool UpdateLayoutDocument(BufferParams *params = 0);
 extern bool UpdateLayoutPreamble();
 extern bool UpdateLayoutPaper();
 extern bool UpdateLayoutQuotes();
