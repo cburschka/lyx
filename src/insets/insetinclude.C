@@ -404,8 +404,115 @@ int InsetInclude::Latex(Buffer const *, ostream & os,
 }
 
 
+int InsetInclude::Linuxdoc(Buffer const *, ostream & os) const
+{
+	// Do nothing if no file name has been specified
+	if (getContents().empty())
+		return 0;
+    
+	string incfile(getContents());
+
+	if (loadIfNeeded()) {
+		Buffer * tmp = bufferlist.getBuffer(getFileName());
+
+		// write it to a file (so far the complete file)
+		string writefile = ChangeExtension(getFileName(), ".sgml");
+		if (!master->tmppath.empty() && !master->niceFile) {
+			incfile = subst(incfile, '/','@');
+			writefile = AddName(master->tmppath, incfile);
+		} else
+			writefile = getFileName();
+
+		if(IsLyXFilename(getFileName()))
+			writefile = ChangeExtension(writefile, ".sgml");
+
+		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
+		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
+		
+		tmp->makeLinuxDocFile(writefile, master->niceFile, true);
+	} 
+
+	if (isVerb()) {
+		os << "<!-- includefile verbatim=\"" << incfile << "\" -->";
+	} else 
+		os << '&' << include_label << ';';
+	
+	return 0;
+}
+
+
+int InsetInclude::DocBook(Buffer const *, ostream & os) const
+{
+	// Do nothing if no file name has been specified
+	if (getContents().empty())
+		return 0;
+    
+	string incfile(getContents());
+
+	if (loadIfNeeded()) {
+		Buffer * tmp = bufferlist.getBuffer(getFileName());
+
+		// write it to a file (so far the complete file)
+		string writefile = ChangeExtension(getFileName(), ".sgml");
+		if (!master->tmppath.empty() && !master->niceFile) {
+			incfile = subst(incfile, '/','@');
+			writefile = AddName(master->tmppath, incfile);
+		} else
+			writefile = getFileName();
+		if(IsLyXFilename(getFileName()))
+			writefile = ChangeExtension(writefile, ".sgml");
+
+		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
+		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
+		
+		tmp->makeDocBookFile(writefile, master->niceFile, true);
+	} 
+
+	if (isVerb()) {
+		os << "<!-- includefile verbatim=\"" << incfile << "\" -->";
+	} else 
+		os << '&' << include_label << ';';
+	
+	return 0;
+}
+
+
+static unsigned int unique_id() {
+	static unsigned int seed=1000;
+
+	return ++seed;
+}
+
+
 void InsetInclude::Validate(LaTeXFeatures & features) const
 {
+
+#ifdef HAVE_SSTREAM
+	std::ostringstream ost;
+	ost << "file" << unique_id();
+	include_label = ost.str();
+#else
+	char ctmp[16];
+	ostrstream ost(ctmp,16);
+	ost << "file" << unique_id() << '\0';
+	include_label = ost.str();
+#endif
+
+	string incfile(getContents());
+	string writefile = ChangeExtension(getFileName(), ".sgml");
+	if (!master->tmppath.empty() && !master->niceFile) {
+		incfile = subst(incfile, '/','@');
+		writefile = AddName(master->tmppath, incfile);
+	} else
+		// writefile = getFileName();
+		// Use the relative path.
+		writefile = incfile;
+
+	if(IsLyXFilename(getFileName()))
+		writefile = ChangeExtension(writefile, ".sgml");
+
+	features.IncludedFiles[include_label] = writefile;
+
 	if (isVerb())
 		features.verbatim = true;
 

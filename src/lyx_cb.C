@@ -743,7 +743,7 @@ void MenuMakeLinuxDoc(Buffer * buffer)
 	ShowMessage(buffer, _("Building LinuxDoc SGML file `"),
 					  MakeDisplayPath(s),"'...");
 	
-	buffer->makeLinuxDocFile(s, 65);
+	buffer->makeLinuxDocFile(s, true);
 	buffer->redraw();
 	ShowMessage(buffer, _("LinuxDoc SGML file save as"),
 					  MakeDisplayPath(s)); 
@@ -770,7 +770,7 @@ void MenuMakeDocBook(Buffer * buffer)
 	ShowMessage(buffer, _("Building DocBook SGML file `"),
 					  MakeDisplayPath(s), "'..."); 
 	
-	buffer->makeDocBookFile(s, 65);
+	buffer->makeDocBookFile(s, true);
 	buffer->redraw();
 	ShowMessage(buffer, _("DocBook SGML file save as"),
 					  MakeDisplayPath(s)); 
@@ -1212,7 +1212,7 @@ int RunLinuxDoc(BufferView * bv, int flag, string const & filename)
 	
 	if (!bv->available())
 		return 0;
-	bv->buffer()->makeLinuxDocFile(name, 0);
+	bv->buffer()->makeLinuxDocFile(name, false);
 
 	// CHECK remove this once we have a proper geometry class
 
@@ -1273,7 +1273,7 @@ int RunDocBook(int flag, string const & filename)
 	if (!current_view->available())
 		return 0;
 	
-	current_view->buffer()->makeDocBookFile(name, 0);
+	current_view->buffer()->makeDocBookFile(name, false);
 
 	// Shall this code go or should it stay? (Lgb)
 	// This code is a placeholder for future implementation. (Jose')

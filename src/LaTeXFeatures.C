@@ -332,6 +332,17 @@ string LaTeXFeatures::getTClassPreamble()
 }	
 
 
+string LaTeXFeatures::getIncludedFiles()
+{
+	string sgmlpreamble;
+
+	for(FileMap::const_iterator fi=IncludedFiles.begin(); fi != IncludedFiles.end(); ++fi)
+		sgmlpreamble += "\n<!entity " + fi->first + " system \"" + fi->second + "\">";
+
+	return sgmlpreamble;
+}
+
+
 void LaTeXFeatures::showStruct() {
 	lyxerr << "LyX needs the following commands when LaTeXing:"
 	       << "\n***** Packages:" << getPackages()

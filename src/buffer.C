@@ -2149,9 +2149,11 @@ void Buffer::sgmlCloseTag(ostream & os, int depth,
 }
 
 
-void Buffer::makeLinuxDocFile(string const & fname, int column)
+void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 {
 	LyXParagraph * par = paragraph;
+
+	niceFile = nice; // this will be used by Insetincludes.
 
 	string top_element = textclasslist.LatexnameOfClass(params.textclass);
 	string environment_stack[10];
@@ -2165,35 +2167,49 @@ void Buffer::makeLinuxDocFile(string const & fname, int column)
 		WriteAlert(_("LYX_ERROR:"), _("Cannot write file"), fname);
 		return;
 	}
-   
-	tex_code_break_column = column; 
+
+        LyXTextClass const & tclass =
+		textclasslist.TextClass(params.textclass);
+
+	LaTeXFeatures features(params, tclass.numLayouts());
+	validate(features);
+
+	if(nice)
+		tex_code_break_column = lyxrc.ascii_linelen;
+	else
+		tex_code_break_column = 0;
+
 	texrow.reset();
-   
-	if (params.preamble.empty()) {
-		ofs << "<!doctype linuxdoc system>\n\n";
-	}
-	else {
-		ofs << "<!doctype linuxdoc system \n [ "
-		    << params.preamble << " \n]>\n\n";
+
+	if (!body_only) {
+		string sgml_includedfiles=features.getIncludedFiles();
+
+		if (params.preamble.empty() && sgml_includedfiles.empty()) {
+			ofs << "<!doctype linuxdoc system>\n\n";
+		}
+		else {
+			ofs << "<!doctype linuxdoc system [ "
+			    << params.preamble << sgml_includedfiles << " \n]>\n\n";
+		}
+
+		if(params.options.empty())
+			sgmlOpenTag(ofs, 0, top_element);
+		else {
+			string top = top_element;
+			top += " ";
+			top += params.options;
+			sgmlOpenTag(ofs, 0, top);
+		}
 	}
 
 	ofs << "<!-- "  << LYX_DOCVERSION 
 	    << " created this file. For more info see http://www.lyx.org/"
 	    << " -->\n";
 
-	if(params.options.empty())
-		sgmlOpenTag(ofs, 0, top_element);
-	else {
-		string top = top_element;
-		top += " ";
-		top += params.options;
-		sgmlOpenTag(ofs, 0, top);
-	}
-
 	while (par) {
 		int desc_on = 0; // description mode
 		LyXLayout const & style =
-			textclasslist.Style(users->buffer()->params.textclass,
+			textclasslist.Style(params.textclass,
 					    par->layout);
 
 		// treat <toc> as a special case for compatibility with old code
@@ -2314,8 +2330,10 @@ void Buffer::makeLinuxDocFile(string const & fname, int column)
 	if(!environment_stack[depth].empty())
 	        sgmlCloseTag(ofs, depth, environment_stack[depth]);
 
-	ofs << "\n\n";
-	sgmlCloseTag(ofs, 0, top_element);
+	if (!body_only) {
+		ofs << "\n\n";
+		sgmlCloseTag(ofs, 0, top_element);
+	}
 
 	ofs.close();
 	// How to check for successful close
@@ -2659,15 +2677,17 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 		}
 
 		c = par->GetChar(i);
-      
+
+		if (c == LyXParagraph::META_INSET) {
+			inset = par->GetInset(i);
+			inset->Linuxdoc(this, os);
+		}
+
 		if (font2.latex() == LyXFont::ON) {
 			// "TeX"-Mode on == > SGML-Mode on.
 			if (c != '\0')
 				os << c; // see LaTeX-Generation...
 			++char_line_count;
-		} else if (c == LyXParagraph::META_INSET) {
-			inset = par->GetInset(i);
-			inset->Linuxdoc(this, os);
 		} else {
 			string sgml_string;
 			if (par->linuxDocConvertChar(c, sgml_string)
@@ -2738,9 +2758,11 @@ void Buffer::LinuxDocError(LyXParagraph * par, int pos,
 
 enum { MAX_NEST_LEVEL = 25};
 
-void Buffer::makeDocBookFile(string const & fname, int column)
+void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 {
 	LyXParagraph * par = paragraph;
+
+	niceFile = nice; // this will be used by Insetincludes.
 
 	string top_element= textclasslist.LatexnameOfClass(params.textclass);
 	// Please use a real stack.
@@ -2755,8 +2777,16 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 	string c_depth, c_params, tmps;
 
 	int depth = 0; // paragraph depth
+        LyXTextClass const & tclass =
+		textclasslist.TextClass(params.textclass);
 
-	tex_code_break_column = column; 
+	LaTeXFeatures features(params, tclass.numLayouts());
+	validate(features);
+
+	if(nice)
+		tex_code_break_column = lyxrc.ascii_linelen;
+	else
+		tex_code_break_column = 0;
 
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
@@ -2766,30 +2796,35 @@ void Buffer::makeDocBookFile(string const & fname, int column)
    
 	texrow.reset();
 
-	ofs << "<!doctype " << top_element
-	    << " public \"-//OASIS//DTD DocBook V3.1//EN\"";
+	if(!only_body) {
+		string sgml_includedfiles=features.getIncludedFiles();
 
-	if (params.preamble.empty())
-		ofs << ">\n\n";
-	else
-		ofs << "\n [ " << params.preamble << " \n]>\n\n";
+		ofs << "<!doctype " << top_element
+		    << " public \"-//OASIS//DTD DocBook V3.1//EN\"";
+
+		if (params.preamble.empty() && sgml_includedfiles.empty())
+			ofs << ">\n\n";
+		else
+			ofs << "\n [ " << params.preamble 
+			    << sgml_includedfiles << " \n]>\n\n";
+
+		if(params.options.empty())
+			sgmlOpenTag(ofs, 0, top_element);
+		else {
+			string top = top_element;
+			top += " ";
+			top += params.options;
+			sgmlOpenTag(ofs, 0, top);
+		}
+	}
 
 	ofs << "<!-- DocBook file was created by " << LYX_DOCVERSION 
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
 
-	if(params.options.empty())
-		sgmlOpenTag(ofs, 0, top_element);
-	else {
-		string top = top_element;
-		top += " ";
-		top += params.options;
-		sgmlOpenTag(ofs, 0, top);
-	}
-
 	while (par) {
 		int desc_on = 0; // description mode
 		LyXLayout const & style =
-			textclasslist.Style(users->buffer()->params.textclass,
+			textclasslist.Style(params.textclass,
 					    par->layout);
 
 		// environment tag closing
@@ -3011,8 +3046,10 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 		if(!command_stack[j].empty())
 			sgmlCloseTag(ofs, j, command_stack[j]);
 
-	ofs << "\n\n";
-	sgmlCloseTag(ofs, 0, top_element);
+	if (!only_body) {
+		ofs << "\n\n";
+		sgmlCloseTag(ofs, 0, top_element);
+	}
 
 	ofs.close();
 	// How to check for successful close

@@ -682,6 +682,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 					type = "ascii";
 
 				if (type == "latex" || type == "postscript"
+				    || type == "linuxdoc" || type == "docbook"
 				    || type == "ascii" || type == "html") 
 					batch_command = "buffer-export " + type;
 				else

@@ -40,6 +40,8 @@ struct LaTeXFeatures {
 	string getMacros();
 	/// The definitions needed by the document's textclass
 	string getTClassPreamble();
+	///
+	string getIncludedFiles();
 
 	///
 	void showStruct();
@@ -152,6 +154,10 @@ struct LaTeXFeatures {
 	typedef std::set<string> FloatList;
 	///
 	FloatList usedFloats;
+	///
+	typedef map<string , string> FileMap;
+	///
+	FileMap IncludedFiles;                                                                     
 	//@}
 	BufferParams const & bufferParams() const;
 private:

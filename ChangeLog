@@ -1,3 +1,30 @@
+2000-07-01 José Abílio Matos <jamatos@fep.up.pt>
+	* src/LaTeXFeatures.h: new member IncludedFiles, for
+	a map of key, included file name.
+
+	* src/LaTeXFeatures.C (getIncludedFiles): returns a string
+	with the included files for inclusion in SGML preamble,
+	i. e., linuxdoc and docbook.
+
+	* src/buffer.h:
+	* src/buffer.C (makeLinuxDocFile): takes two new arguments,
+	nice (is the generated linuxdoc code to be exported?), that
+	allows to remove column, and only_body that will be true for
+	slave documents. Insets are allowed inside SGML font type.
+	New handling of the SGML preamble for included files.
+	(makeDocBookFile): the same for docbook.
+
+	* src/insets/insetinclude.h:
+	* src/insets/insetinclude.C (Validate): keeps a list of included files.
+	(Linuxdoc): 
+	(DocBook): new export methods.
+
+	* src/lyx_cb.C: adjust to the new calling sequence for makeLinuxDocFile
+	and makeDocBookFile.
+
+	* src/lyx_main.C (easyParse): accept linuxdoc and docbook as
+	formats to export with command line argument -x.
+
 2000-06-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/BufferView_pimpl.h: remove member variables lyx_focus and

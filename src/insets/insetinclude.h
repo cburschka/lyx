@@ -58,6 +58,10 @@ public:
 	/// 
 	int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
 	///
+	int Linuxdoc(Buffer const *, std::ostream &) const;
+	///
+	int DocBook(Buffer const *, std::ostream &) const;
+	///
 	void Validate(LaTeXFeatures &) const;
 	
         /// Input inserts anything inside a paragraph, Display can give some visual feedback 
@@ -120,6 +124,8 @@ private:
 	Buffer * master;
 	///
 	string filename;
+	///
+	string include_label;
 };
 
 

@@ -171,9 +171,11 @@ public:
 	int runChktex();
 
 	///
-	void makeLinuxDocFile(string const & filename, int column);
+	void makeLinuxDocFile(string const & filename,
+			      bool nice, bool only_body = false);
 	///
-	void makeDocBookFile(string const & filename, int column);
+	void makeDocBookFile(string const & filename,
+			     bool nice, bool only_body = false);
 
 	/// returns the main language for the buffer (document)
 	string GetLanguage() const {
