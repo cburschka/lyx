@@ -40,6 +40,13 @@ using std::strstr;
 #include "misc.xbm"
 #include "varsz.xbm"
 #include "dots.xbm"
+
+#include "ams_misc.xbm"
+#include "ams_arrows.xbm"
+#include "ams_rel.xbm"
+#include "ams_nrel.xbm"
+#include "ams_ops.xbm"
+
 #include "mathed/math_parser.h"
 #include "frac.xpm"
 #include "sub.xpm"
@@ -148,6 +155,103 @@ char const * latex_varsz[] = {
 
 int const nr_latex_varsz = sizeof(latex_varsz) / sizeof(char const *);
 
+char const * latex_ams_misc[] = {
+	"digamma", "varkappa", "beth", "daleth", "gimel",
+	"ulcorner", "urcorner", "llcorner", "lrcorner",
+	"hbar", "hslash", "vartriangle",
+	"triangledown", "square", "lozenge",
+	"circledS", "angle", "measuredangle",
+	"nexists", "mho", "Finv",
+	"Game", "Bbbk", "backprime",
+	"varnothing", "blacktriangle", "blacktriangledown",
+	"blacksquare", "blacklozenge", "bigstar",
+	"sphericalangle", "complement", "eth",
+	"diagup", "diagdown", ""
+};
+
+int const nr_latex_ams_misc = sizeof(latex_ams_misc) / sizeof(char const *);
+
+char const * latex_ams_arrows[] = {
+	"dashrightarrow", "dashleftarrow", "leftleftarrows",
+	"leftrightarrows", "Lleftarrow", "twoheadleftarrow",
+	"leftarrowtail", "looparrowleft", "leftrightharpoons",
+	"curvearrowleft", "circlearrowleft", "Lsh",
+	"upuparrows", "upharpoonleft", "downharpoonleft",
+	"multimap", "leftrightsquigarrow", "rightrightarrows",
+	"rightleftarrows", "rightrightarrows", "rightleftarrows",
+	"twoheadrightarrow", "rightarrowtail", "looparrowright",
+	"rightleftharpoons", "curvearrowright", "circlearrowright",
+	"Rsh", "downdownarrows", "upharpoonright", 
+	"downharpoonright", "rightsquigarrow",
+	"nleftarrow", "nrightarrow", "nLeftarrow",
+	"nRightarrow", "nleftrightarrow", "nLeftrightarrow"
+};
+
+int const nr_latex_ams_arrows = sizeof(latex_ams_arrows) / sizeof(char const *);
+
+char const * latex_ams_rel[] = {
+	"leqq", "leqslant", "eqslantless",
+	"lesssim", "lessapprox", "approxeq",
+	"lessdot", "lll", "lessgtr",
+	"lesseqgtr", "lesseqqgtr", "doteqdot",
+	"risingdotseq", "fallingdotseq", "backsim",
+	"backsimeq", "subseteqq", "Subset",
+	"sqsubset", "preccurlyeq", "curlyeqprec",
+	"precsim", "precapprox", "vartriangleleft",
+	"trianglelefteq", "vDash", "Vvdash",
+	"smallsmile", "smallfrown", "bumpeq",
+	"Bumpeq", "geqq", "geqslant",
+	"eqslantgtr", "gtrsim", "gtrapprox",
+	"gtrdot", "ggg", "gtrless", 
+	"gtreqless", "gtreqqless", "eqcirc",
+	"circeq", "triangleq", "thicksim",
+	"thickapprox", "supseteqq", "Supset",
+	"sqsupset", "succcurlyeq", "curlyeqsucc",
+	"succsim", "succapprox", "vartriangleright",
+	"trianglerighteq", "Vdash", "shortmid",
+	"shortparallel", "between", "pitchfork", 
+	"varpropto", "blacktriangleleft", "therefore",
+	"backepsilon", "blacktriangleright", "because"
+};
+
+int const nr_latex_ams_rel = sizeof(latex_ams_rel) / sizeof(char const *);
+
+char const * latex_ams_nrel[] = {
+	"nless", "nleq", "nleqslant",
+	"nleqq", "lneq", "lneqq",
+	"lvertneqq", "lnsim", "lnapprox", 
+	"nprec", "npreceq", "precnsim",
+	"precnapprox", "nsim", "nshortmid",
+	"nmid", "nvdash", "nvDash",
+	"ntriangleleft", "ntrianglelefteq", "nsubseteq",
+	"subsetneq", "varsubsetneq", "subsetneqq",
+	"varsubsetneqq", "ngtr", "ngeq",
+	"ngeqslant", "ngeqq", "gneq",
+	"gneqq", "gverteqq", "gnsim",
+	"gnapprox", "nsucc", "nsucceq",
+	"succnsim", "succnapprox", "ncong",
+	"nshortparallel", "nparallel", "nvDash",
+	"nVDash", "ntriangleright", "ntrianglerighteq",
+	"nsupseteq", "nsupseteqq", "supsetneq",
+	"varsupsetneq", "supsetneqq", "varsupsetneqq"
+};
+
+int const nr_latex_ams_nrel = sizeof(latex_ams_nrel) / sizeof(char const *);
+
+
+char const * latex_ams_ops[] = {
+	"dotplus", "smallsetminus", "Cap",
+	"Cup", "barwedge", "veebar",
+	"doublebarwedge", "boxminus", "boxtimes",
+	"boxdot", "boxplus", "divideontimes",
+	"ltimes", "rtimes", "leftthreetimes",
+	"rightthreetimes", "curlywedge", "curlyvee",
+	"circleddash", "circledast", "circledcirc",
+	"centerdot", "intercal", ""
+};
+
+int const nr_latex_ams_ops = sizeof(latex_ams_ops) / sizeof(char const *);
+
 static char const ** mathed_get_pixmap_from_icon(int d)
 {
 	switch (d) {
@@ -172,7 +276,7 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 	int id = -1;
 
 	int i = 0;
-	for (; i < 6; ++i) {
+	for (; i < 11; ++i) {
 		char const ** latex_str = 0;
 		switch (i) {
 		case 0: latex_str = latex_greek; break;
@@ -181,6 +285,12 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 		case 3: latex_str = latex_arrow; break;
 		case 4: latex_str = latex_varsz; break;
 		case 5: latex_str = latex_misc; break;
+		case 6: latex_str = latex_ams_misc; break;
+		case 7: latex_str = latex_ams_arrows; break;
+		case 8: latex_str = latex_ams_rel; break;
+		case 9: latex_str = latex_ams_nrel; break;
+		case 10: latex_str = latex_ams_ops; break;
+		// Add AMS stuff here -- MV
 		}
 
 		for (int k = 0; latex_str[k][0] > ' '; ++k) {
@@ -191,14 +301,14 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 		}
 		if (id >= 0) break;
 	}
-	if (i < 6 && id >= 0) {
+	if (i < 11 && id >= 0) {
 		unsigned char const * bdata = 0;
 		int w = 0;
 		int h = 0;
 		int dw = 0;
 		int dh = 0;
 
-		lyxerr[Debug::MATHED] << "Imando " << i << ", " << id << endl;
+		lyxerr [Debug::MATHED] << "Imando " << i << ", " << id << endl;
 		switch (i) {
 		case 0:
 			if (id <= 10) {
@@ -282,6 +392,12 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 				dh = 2;
 				id -= 29;
 			}
+			break;
+		case 7:
+		case 8:
+		case 9:
+		case 10:
+			// to be added -- MV
 			break;
 		}
 		int ww = w / dw;

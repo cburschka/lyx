@@ -33,6 +33,11 @@ struct FD_form_maths_panel {
 	FL_OBJECT *button_sub;
 	FL_OBJECT *button_super;
 	FL_OBJECT *button_style;
+	FL_OBJECT *button_ams_arrows;
+	FL_OBJECT *button_ams_brel;
+	FL_OBJECT *button_ams_nrel;
+	FL_OBJECT *button_ams_ops;
+	FL_OBJECT *button_ams_misc;
 };
 
 #endif /* FD_form_maths_panel_h_ */

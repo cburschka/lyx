@@ -33,6 +33,18 @@ extern char const * latex_misc[];
 extern int const nr_latex_misc;
 extern char const * latex_varsz[];
 extern int const nr_latex_varsz;
+extern char const * latex_ams_misc[];
+extern int const nr_latex_ams_misc;
+extern char const * latex_ams_arrows[];
+extern int const nr_latex_ams_arrows;
+extern char const * latex_ams_rel[];
+extern int const nr_latex_ams_rel;
+extern char const * latex_ams_nrel[];
+extern int const nr_latex_ams_nrel;
+extern char const * latex_ams_ops[];
+extern int const nr_latex_ams_ops;
+
+
 
 char const ** get_pixmap_from_symbol(char const *, int, int);
  

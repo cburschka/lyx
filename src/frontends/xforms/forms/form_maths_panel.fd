@@ -9,13 +9,13 @@ Unit of measure: FL_COORD_PIXEL
 =============== FORM ===============
 Name: form_maths_panel
 Width: 260
-Height: 180
-Number of Objects: 20
+Height: 211
+Number of Objects: 25
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 260 180
+box: 0 0 260 211
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -33,7 +33,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 170 140 80 30
+box: 170 170 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -51,7 +51,7 @@ argument: 0
 --------------------
 class: FL_BROWSER
 type: SELECT_BROWSER
-box: 170 30 80 100
+box: 170 30 80 130
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP
@@ -70,7 +70,7 @@ argument: MM_FUNC
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 60 80 50 30
+box: 10 140 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -88,12 +88,12 @@ argument: MM_GREEK
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 110 110 50 30
+box: 110 80 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: 15
-size: FL_NORMAL_SIZE
+size: 0
 lcol: FL_BLACK
 label: ­ Û
 shortcut: 
@@ -106,7 +106,7 @@ argument: MM_ARROW
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 110 50 30
+box: 10 80 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -124,7 +124,7 @@ argument: MM_BOP
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 60 110 50 30
+box: 60 80 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -142,7 +142,7 @@ argument: MM_BRELATS
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 110 140 50 30
+box: 110 110 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -286,7 +286,7 @@ argument: MM_SPACE
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 60 140 50 30
+box: 60 110 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -304,7 +304,7 @@ argument: MM_DOTS
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 140 50 30
+box: 10 110 50 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -372,6 +372,96 @@ gravity: FL_NoGravity FL_NoGravity
 name: button_style
 callback: C_FormBaseDeprecatedInputCB
 argument: MM_STYLE
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 60 140 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: 15
+size: 0
+lcol: FL_BLUE
+label: ­ Û
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_ams_arrows
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_AMS_ARROWS
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 110 140 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: 15
+size: 0
+lcol: FL_BLUE
+label: £ @
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_ams_brel
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_AMS_BREL
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 170 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: 15
+size: 0
+lcol: FL_BLUE
+label: !(£ @)
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_ams_nrel
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_AMS_NREL
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 60 170 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: 15
+size: 0
+lcol: FL_BLUE
+label: ± ´
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_ams_ops
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_AMS_OPS
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 110 170 50 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_TIMESITALIC_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLUE
+label: Misc
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_ams_misc
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_AMS_MISC
 
 ==============================
 create_the_forms

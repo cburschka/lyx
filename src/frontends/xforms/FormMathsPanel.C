@@ -57,6 +57,12 @@
 #include "misc.xbm"
 #include "varsz.xbm"
 
+#include "ams_misc.xbm"
+#include "ams_arrows.xbm"
+#include "ams_rel.xbm"
+#include "ams_nrel.xbm"
+#include "ams_ops.xbm"
+
 using std::vector;
 using SigC::slot;
 
@@ -114,6 +120,36 @@ FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 		latex[i] = latex_varsz[i];
 	}
 	varsize_.reset(new FormMathsBitmap(lv, d, *this, latex));
+
+	latex.resize(nr_latex_ams_misc);
+	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
+		latex[i] = latex_ams_misc[i];
+	}
+	ams_misc_.reset(new FormMathsBitmap(lv, d, *this, latex));
+
+	latex.resize(nr_latex_ams_arrows);
+	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
+		latex[i] = latex_ams_arrows[i];
+	}
+	ams_arrows_.reset(new FormMathsBitmap(lv, d, *this, latex));
+
+	latex.resize(nr_latex_ams_rel);
+	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
+		latex[i] = latex_ams_rel[i];
+	}
+	ams_rel_.reset(new FormMathsBitmap(lv, d, *this, latex));
+
+	latex.resize(nr_latex_ams_nrel);
+	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
+		latex[i] = latex_ams_nrel[i];
+	}
+	ams_nrel_.reset(new FormMathsBitmap(lv, d, *this, latex));
+
+	latex.resize(nr_latex_ams_ops);
+	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
+		latex[i] = latex_ams_ops[i];
+	}
+	ams_ops_.reset(new FormMathsBitmap(lv, d, *this, latex));
 
 	d->showMathPanel.connect(slot(this, &FormMathsPanel::show));
 }
@@ -182,6 +218,18 @@ void FormMathsPanel::build()
 
 	varsize_->addBitmap(14, 3, 5, varsz_width, varsz_height, varsz_bits);
 
+	ams_misc_->addBitmap(9, 5, 2, ams1_width, ams1_height, ams1_bits);
+	ams_misc_->addBitmap(26, 3, 9, ams7_width, ams7_height, ams7_bits);
+	
+	ams_arrows_->addBitmap(32, 3, 11, ams2_width, ams2_height, ams2_bits);
+	ams_arrows_->addBitmap(6, 3, 2, ams3_width, ams3_height, ams3_bits);
+
+	ams_rel_->addBitmap(66, 3, 22, ams_rel_width, ams_rel_height, ams_rel_bits);
+
+	ams_nrel_->addBitmap(51, 3, 17, ams_nrel_width, ams_nrel_height, ams_nrel_bits);
+	
+	ams_ops_->addBitmap(23, 3, 8, ams_ops_width, ams_ops_height, ams_ops_bits);
+
 	bc().setCancel(dialog_->button_close);
 }
 
@@ -230,6 +278,36 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 		if (active_ && active_ != varsize_.get())
 			active_->hide();
 		varsize_->show();
+		break;
+
+	case MM_AMS_MISC:
+		if (active_ && active_ != ams_misc_.get())
+			active_->hide();
+		ams_misc_->show();
+		break;
+	
+	case MM_AMS_ARROWS:
+		if (active_ && active_ != ams_arrows_.get())
+			active_->hide();
+		ams_arrows_->show();
+		break;
+
+	case MM_AMS_BREL:
+		if (active_ && active_ != ams_rel_.get())
+			active_->hide();
+		ams_rel_->show();
+		break;
+
+	case MM_AMS_NREL:
+		if (active_ && active_ != ams_nrel_.get())
+			active_->hide();
+		ams_nrel_->show();
+		break;
+
+	case MM_AMS_OPS:
+		if (active_ && active_ != ams_ops_.get())
+			active_->hide();
+		ams_ops_->show();
 		break;
 
 	case MM_FRAC:

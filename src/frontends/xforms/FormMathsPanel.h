@@ -50,6 +50,11 @@ enum MathsCallbackValues {
 	MM_SPACE,
 	MM_STYLE,
 	MM_DOTS,
+	MM_AMS_MISC,
+	MM_AMS_ARROWS,
+	MM_AMS_BREL,
+	MM_AMS_NREL,
+	MM_AMS_OPS,
 	MM_FUNC
 };
  
@@ -100,6 +105,11 @@ private:
 	boost::scoped_ptr<FormMathsBitmap> misc_;
 	boost::scoped_ptr<FormMathsBitmap> dots_;
 	boost::scoped_ptr<FormMathsBitmap> varsize_;
+	boost::scoped_ptr<FormMathsBitmap> ams_misc_;
+	boost::scoped_ptr<FormMathsBitmap> ams_arrows_;
+	boost::scoped_ptr<FormMathsBitmap> ams_rel_;
+	boost::scoped_ptr<FormMathsBitmap> ams_nrel_;
+	boost::scoped_ptr<FormMathsBitmap> ams_ops_;
 
 	/// A pointer to the currently active subdialog
 	mutable FormMathsSub * active_;
