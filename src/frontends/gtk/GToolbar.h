@@ -15,6 +15,7 @@
 #include <gtkmm.h>
 #include "frontends/Toolbar.h"
 #include "ToolbarBackend.h"
+#include <map>
 
 
 class GToolbar : public Toolbar, public SigC::Object
@@ -51,8 +52,8 @@ public:
 private:
 	void onButtonClicked(FuncRequest);
 	void onLayoutSelected();
-	Gtk::VBox vbox_;
-	std::vector<Gtk::Toolbar*> toolbars_;
+	typedef std::map<std::string, Gtk::Toolbar*> ToolbarMap;
+	ToolbarMap toolbars_;
 	Gtk::Combo combo_;
 	LyXView * view_;
 	bool internal_;

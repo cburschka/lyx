@@ -68,7 +68,6 @@ GMenubar::GMenubar(LyXView *lyxView, MenuBackend const & /*menuBackend*/) :
 	view_(lyxView)
 {
 	GView * gview = static_cast<GView*>(lyxView);
-	Gtk::VBox& vbox = gview->getVBox();
 	Menu const & menu = menubackend.getMenubar();
 	Menu::const_iterator i = menu.begin();
 	Menu::const_iterator end = menu.end();
@@ -90,8 +89,8 @@ GMenubar::GMenubar(LyXView *lyxView, MenuBackend const & /*menuBackend*/) :
 		mainMenuNames_.push_back(i->submenuname());
 	}
 	menubar_.show();
-	vbox.children().push_back(Gtk::Box_Helpers::Element(menubar_,
-							    Gtk::PACK_SHRINK));
+	gview->getBox(GView::Top).children().push_back(
+		Gtk::Box_Helpers::Element(menubar_, Gtk::PACK_SHRINK));
 }
 
 

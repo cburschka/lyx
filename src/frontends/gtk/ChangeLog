@@ -1,5 +1,19 @@
 2004-04-27  Angus Leeming  <leeming@lyx.org>
 
+	* GView.[Ch]: split the window into 'top', 'left', 'center',
+	'right' and 'bottom' boxes.
+	(getBox): accessor for a particular box.
+
+	* GMenubar.C (c-tor):
+	* GMiniBuffer.C (c-tor):
+	* GWorkArea.C (c-tor):
+	* GToolbar.C (add): access the correct Box in GView.
+
+	* GToolbar.[Ch] (add, displayToolbar): show only those toolbars that
+	are flagged as 'ON'.
+
+2004-04-27  Angus Leeming  <leeming@lyx.org>
+
 	* ghelpers.[Ch]: new files.
 	(findGladeFile): search the top_srcdir() as welll as LibFileSearch
 	when looking for glade files.

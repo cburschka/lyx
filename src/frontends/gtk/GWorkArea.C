@@ -177,8 +177,10 @@ GWorkArea::GWorkArea(int width, int height)
 	hbox_.children().push_back(
 		Gtk::Box_Helpers::Element(vscrollbar_,Gtk::PACK_SHRINK));
 	hbox_.show();
-	GView::instance()->getVBox().children().push_back(
+
+	GView::instance()->getBox(GView::Center).children().push_back(
 		Gtk::Box_Helpers::Element(hbox_));
+
 	workArea_.set_flags(workArea_.get_flags() | Gtk::CAN_DEFAULT |
 			    Gtk::CAN_FOCUS);
 	workArea_.grab_default();

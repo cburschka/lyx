@@ -31,6 +31,25 @@ using std::string;
 namespace
 {
 
+GView::Position getPosition(ToolbarBackend::Flags const & flags)
+ {
+	if (flags & ToolbarBackend::TOP)
+		return GView::Top;
+	if (flags & ToolbarBackend::BOTTOM)
+		return GView::Bottom;
+	if (flags & ToolbarBackend::LEFT)
+		return GView::Left;
+	if (flags & ToolbarBackend::RIGHT)
+		return GView::Right;
+	return GView::Top;
+}
+
+
+LyXTextClass const & getTextClass(LyXView const & lv)
+{
+	return lv.buffer()->params().getLyXTextClass();
+}
+
 
 char const * gToolData = "tool_data";
 
@@ -64,32 +83,35 @@ GToolbar::GToolbar(LyXView * lyxView, int /*x*/, int /*y*/)
 	combo_.get_entry()->signal_changed().connect(
 		SigC::slot(*this,
 			   &GToolbar::onLayoutSelected));
-	GView * gview = static_cast<GView*>(lyxView);
-	vbox_.show();
-	Gtk::VBox & vbox = gview->getVBox();
-	vbox.children().push_back(Gtk::Box_Helpers::Element(vbox_,
-							    Gtk::PACK_SHRINK));
 }
 
 
 GToolbar::~GToolbar()
-{
-}
+{}
 
 
-void GToolbar::add(ToolbarBackend::Toolbar const & tb)
+void GToolbar::add(ToolbarBackend::Toolbar const & tbb)
 {
 	Gtk::Toolbar * toolbar = manage(new Gtk::Toolbar);
-	ToolbarBackend::item_iterator it = tb.items.begin();
-	ToolbarBackend::item_iterator end = tb.items.end();
+	ToolbarBackend::item_iterator it = tbb.items.begin();
+	ToolbarBackend::item_iterator end = tbb.items.end();
 	for (; it != end; ++it)
 		add(toolbar, *it);
 	toolbar->set_toolbar_style(Gtk::TOOLBAR_ICONS);
-	toolbar->show();
-	vbox_.children().push_back(
-		Gtk::Box_Helpers::Element(*toolbar,
-					  Gtk::PACK_SHRINK));
-	toolbars_.push_back(toolbar);
+
+	GView::Position const position = getPosition(tbb.flags);
+
+	if (position == GView::Left || position == GView::Right)
+		toolbar->set_orientation(Gtk::ORIENTATION_VERTICAL);
+
+	GView * gview = static_cast<GView*>(view_);
+	gview->getBox(position).children().push_back(
+		Gtk::Box_Helpers::Element(*toolbar, Gtk::PACK_SHRINK));
+
+	if (tbb.flags & ToolbarBackend::ON)
+		toolbar->show();
+
+	toolbars_[tbb.name] = toolbar;
 }
 
 
@@ -162,8 +184,7 @@ void GToolbar::onLayoutSelected()
 	// we get two signal, one of it is empty and useless
 	if (layoutGuiName.empty())
 		return;
-	LyXTextClass const & tc =
-		view_->buffer()->params().getLyXTextClass();
+	LyXTextClass const & tc = getTextClass(*view_);
 
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
@@ -181,17 +202,24 @@ void GToolbar::onLayoutSelected()
 }
 
 
-void GToolbar::displayToolbar(ToolbarBackend::Toolbar const & /*tb*/, bool /*show*/)
+void GToolbar::displayToolbar(ToolbarBackend::Toolbar const & tbb, bool show_it)
 {
+	ToolbarMap::iterator it = toolbars_.find(tbb.name);
+	BOOST_ASSERT(it != toolbars_.end());
+
+	if (show_it)
+		it->second->show();
+	else
+		it->second->hide();
 }
 
 
 void GToolbar::update()
 {
-	std::vector<Gtk::Toolbar*>::iterator itToolbar;
+	ToolbarMap::iterator itToolbar;
 	for (itToolbar = toolbars_.begin();
 	     itToolbar != toolbars_.end(); ++itToolbar) {
-		Gtk::Toolbar * toolbar = *itToolbar;
+		Gtk::Toolbar * toolbar = itToolbar->second;
 		Gtk::Toolbar_Helpers::ToolList::iterator it;
 		for (it = toolbar->tools().begin();
 		     it != toolbar->tools().end(); ++it) {
@@ -234,8 +262,7 @@ void GToolbar::update()
 
 void GToolbar::setLayout(string const & layout)
 {
-	LyXTextClass const & tc =
-		view_->buffer()->params().getLyXTextClass();
+	LyXTextClass const & tc = getTextClass(*view_);
 	internal_ = true;
 	combo_.get_entry()->set_text(tc[layout]->name());
 	internal_ = false;
@@ -244,8 +271,7 @@ void GToolbar::setLayout(string const & layout)
 
 void GToolbar::updateLayoutList()
 {
-	LyXTextClass const & tc =
-		view_->buffer()->params().getLyXTextClass();
+	LyXTextClass const & tc = getTextClass(*view_);
 	LyXTextClass::const_iterator end = tc.end();
 	std::vector<Glib::ustring> strings;
 	for (LyXTextClass::const_iterator cit = tc.begin();

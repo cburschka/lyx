@@ -40,14 +40,16 @@ GMiniBuffer::GMiniBuffer(GView * view, ControlCommandBuffer & control) :
 	listSel_ = listView_.get_selection();
 	listSel_->signal_changed().connect(
 		SigC::slot(*this, &GMiniBuffer::onSelected));
+
 	listView_.show();
 	scrolledWindow_.set_policy(Gtk::POLICY_AUTOMATIC,
 				   Gtk::POLICY_AUTOMATIC);
 	scrolledWindow_.set_size_request(300, 150);
 	scrolledWindow_.add(listView_);
-	view_->getVBox().children().push_back(
-		Gtk::Box_Helpers::Element(scrolledWindow_,
-					  Gtk::PACK_SHRINK));
+
+	view_->getBox(GView::Bottom).children().push_back(
+		Gtk::Box_Helpers::Element(scrolledWindow_,Gtk::PACK_SHRINK));
+
 	entry_.signal_key_press_event().connect(
 		SigC::slot(*this, &GMiniBuffer::onKeyPress));
 	entry_.signal_focus_in_event().connect(
@@ -57,9 +59,10 @@ GMiniBuffer::GMiniBuffer(GView * view, ControlCommandBuffer & control) :
 	entry_.signal_activate().connect(
 		SigC::slot(*this, &GMiniBuffer::onCommit));
 	entry_.show();
-	view_->getVBox().children().push_back(
-		Gtk::Box_Helpers::Element(entry_,
-					  Gtk::PACK_SHRINK));
+
+	view_->getBox(GView::Bottom).children().push_back(
+		Gtk::Box_Helpers::Element(entry_, Gtk::PACK_SHRINK));
+
 	infoTimer_.reset(new Timeout(1500));
 	idleTimer_.reset(new Timeout(6000));
 	focusTimer_.reset(new Timeout(50));
