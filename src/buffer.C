@@ -304,7 +304,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 
 bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 					LyXParagraph *& return_par,
-					const string & token, int & pos,
+					string const & token, int & pos,
 					char & depth, LyXFont & font,
 					LyXParagraph::footnote_flag & footnoteflag,
 					LyXParagraph::footnote_kind & footnotekind)
@@ -373,7 +373,7 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		pos = 0;
 		lex.EatLine();
 		par->layout = LYX_DUMMY_LAYOUT;
-		font = LyXFont(LyXFont::ALL_INHERIT,params.language_info);
+		font = LyXFont(LyXFont::ALL_INHERIT, params.language_info);
 		if (format < 2.16 && params.language == "hebrew")
 			font.setLanguage(default_language);
 	} else if (token == "\\begin_float") {
@@ -645,6 +645,22 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			lex.next();
 			params.spacing.set(Spacing::Other,
 					   lex.GetFloat());
+		} else {
+			lex.printError("Unknown spacing token: '$$Token'");
+		}
+	} else if (token == "\\paragraph_spacing") {
+		lex.next();
+		string tmp = strip(lex.GetString());
+		if (tmp == "single") {
+			par->spacing.set(Spacing::Single);
+		} else if (tmp == "onehalf") {
+			par->spacing.set(Spacing::Onehalf);
+		} else if (tmp == "double") {
+			par->spacing.set(Spacing::Double);
+		} else if (tmp == "other") {
+			lex.next();
+			par->spacing.set(Spacing::Other,
+					 lex.GetFloat());
 		} else {
 			lex.printError("Unknown spacing token: '$$Token'");
 		}
@@ -3233,7 +3249,7 @@ int Buffer::runLaTeX()
 {
 	if (!users->text) return 0;
 
-	ProhibitInput();
+	ProhibitInput(users);
 
 	// get LaTeX-Filename
 	string name = getLatexName();
@@ -3288,7 +3304,7 @@ int Buffer::runLaTeX()
                 users->fitCursor();
                 users->updateScrollbar();
         }
-        AllowInput();
+        AllowInput(users);
  
         return latex.getNumErrors();
 }
@@ -3298,7 +3314,7 @@ int Buffer::runLiterate()
 {
 	if (!users->text) return 0;
 
-	ProhibitInput();
+	ProhibitInput(users);
 
 	// get LaTeX-Filename
 	string name = getLatexName();
@@ -3359,7 +3375,7 @@ int Buffer::runLiterate()
                 users->fitCursor();
                 users->updateScrollbar();
         }
-        AllowInput();
+        AllowInput(users);
  
         return literate.getNumErrors();
 }
@@ -3369,7 +3385,7 @@ int Buffer::buildProgram()
 {
         if (!users->text) return 0;
  
-        ProhibitInput();
+        ProhibitInput(users);
  
         // get LaTeX-Filename
         string name = getLatexName();
@@ -3429,7 +3445,7 @@ int Buffer::buildProgram()
 		users->fitCursor();
 		users->updateScrollbar();
 	}
-	AllowInput();
+	AllowInput(users);
 
 	return literate.getNumErrors();
 }
@@ -3442,7 +3458,7 @@ int Buffer::runChktex()
 {
 	if (!users->text) return 0;
 
-	ProhibitInput();
+	ProhibitInput(users);
 
 	// get LaTeX-Filename
 	string name = getLatexName();
@@ -3484,7 +3500,7 @@ int Buffer::runChktex()
 		users->fitCursor();
 		users->updateScrollbar();
 	}
-	AllowInput();
+	AllowInput(users);
 
 	return res;
 }

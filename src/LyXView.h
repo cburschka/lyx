@@ -128,7 +128,7 @@ public:
 	  window manager. */
 	static int atCloseMainFormCB(FL_FORM *, void *);
 	/// A callback
-	static void AutosaveTimerCB(FL_OBJECT *, long);
+	void AutoSave();
 	/// A callback
 	static void UpdateTimerCB(FL_OBJECT *, long);
 private:

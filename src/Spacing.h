@@ -26,12 +26,15 @@ public:
 		///
 		Double,
 		///
-		Other
+		Other,
+		///
+		Default
 	};
 	///
-	Spacing() {
-		space = Single;
-		value = getValue();
+	Spacing() : space(Single), value(1.0) {}
+	///
+	bool isDefault() const {
+		return space == Default;
 	}
 	///
 	float getValue() const;
@@ -42,7 +45,13 @@ public:
 	///
 	void set(Spacing::Space sp, char const * val) ;
 	///
-	void writeFile(std::ostream &) const;
+	void writeFile(std::ostream &, bool para = false) const;
+	///
+	friend bool operator==(Spacing const & a, Spacing const & b) {
+		if (a.space == b.space && a.getValue() == b.getValue())
+			return true;
+		return false;
+	}
 	///
 	friend bool operator!=(Spacing const & a, Spacing const & b) {
 		if (a.space == b.space && a.getValue() == b.getValue())

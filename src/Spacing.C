@@ -9,6 +9,7 @@ using std::istringstream;
 #endif
 
 #include "Spacing.h"
+#include "LString.h"
 
 using std::ios;
 using std::ostream;
@@ -21,6 +22,7 @@ char const * spacing_string[] = {"single", "onehalf", "double", "other"};
 float Spacing::getValue() const 
 {
 	switch(space) {
+	case Default: // nothing special should happen with this...
 	case Single: return 1.0;
 	case Onehalf: return 1.25;
 	case Double: return 1.667;
@@ -57,14 +59,18 @@ void Spacing::set(Spacing::Space sp, char const * val)
 }
 
 
-void Spacing::writeFile(ostream & os) const
+void Spacing::writeFile(ostream & os, bool para) const
 {
+	if (space == Default) return;
+	
+	string cmd = para ? "\\paragraph_spacing " : "\\spacing ";
+	
 	if (getSpace() == Spacing::Other) {
 		os.setf(ios::showpoint|ios::fixed);
 		os.precision(2);
-		os << "\\spacing " << spacing_string[getSpace()]
+		os << cmd << spacing_string[getSpace()]
 		   << " " << getValue() << " \n";
 	} else {
-		os << "\\spacing " << spacing_string[getSpace()] << " \n";
+		os << cmd << spacing_string[getSpace()] << " \n";
 	}	
 }

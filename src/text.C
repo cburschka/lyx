@@ -1260,19 +1260,27 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
    LyXLayout const & layout = textclasslist.Style(bparams->textclass,
 						  firstpar->GetLayout());
    
-   LyXFont font = GetFont(par, par->Last()-1);
+   LyXFont font = GetFont(par, par->Last() - 1);
    LyXFont::FONT_SIZE size = font.size();
    font = GetFont(par, -1);
    font.setSize(size);
 
    LyXFont labelfont = GetFont(par, -2);
 
+   float spacing_val = 1.0;
+   if (!row_ptr->par->spacing.isDefault()) {
+	   spacing_val = row_ptr->par->spacing.getValue();
+   } else {
+	   spacing_val = bparams->spacing.getValue();
+   }
+   lyxerr << "spacing_val = " << spacing_val << endl;
+   
    int maxasc = int(lyxfont::maxAscent(font) *
 		   layout.spacing.getValue() *
-		   bparams->spacing.getValue());
+		   spacing_val);
    int maxdesc = int(lyxfont::maxDescent(font) *
 		    layout.spacing.getValue() *
-		    bparams->spacing.getValue());
+		    spacing_val);
 
    int pos_end = RowLast(row_ptr);
    
@@ -1363,12 +1371,19 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
        * layout is printed in an extra row */ 
       if (layout.labeltype == LABEL_COUNTER_CHAPTER
 	  && bparams->secnumdepth>= 0) {
+	      float spacing_val = 1.0;
+	      if (!row_ptr->par->spacing.isDefault()) {
+		      spacing_val = row_ptr->par->spacing.getValue();
+	      } else {
+		      spacing_val = bparams->spacing.getValue();
+	      }
+	      
 	      labeladdon = int(lyxfont::maxDescent(labelfont) *
-				  layout.spacing.getValue() *
-				  bparams->spacing.getValue())
-		      + int(lyxfont::maxAscent(labelfont) *
 			       layout.spacing.getValue() *
-			       bparams->spacing.getValue());
+			       spacing_val)
+		      + int(lyxfont::maxAscent(labelfont) *
+			    layout.spacing.getValue() *
+			    spacing_val);
       }
       
       /* special code for the top label */ 
@@ -1377,15 +1392,22 @@ void LyXText::SetHeightOfRow(Row * row_ptr) const
 	   || layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
 	  && row_ptr->par->IsFirstInSequence()
 	  && !row_ptr->par->GetLabelstring().empty()) {
-	 labeladdon = int(
-		 (lyxfont::maxAscent(labelfont) *
-		  layout.spacing.getValue() *
-		  bparams->spacing.getValue())
-		 +(lyxfont::maxDescent(labelfont) *
-		   layout.spacing.getValue() *
-		   bparams->spacing.getValue())
-		 + layout.topsep * DefaultHeight()
-		 + layout.labelbottomsep *  DefaultHeight());
+	      float spacing_val = 1.0;
+	      if (!row_ptr->par->spacing.isDefault()) {
+		      spacing_val = row_ptr->par->spacing.getValue();
+	      } else {
+		      spacing_val = bparams->spacing.getValue();
+	      }
+	      
+	      labeladdon = int(
+		      (lyxfont::maxAscent(labelfont) *
+		       layout.spacing.getValue() *
+		       spacing_val)
+		      +(lyxfont::maxDescent(labelfont) *
+			layout.spacing.getValue() *
+			spacing_val)
+		      + layout.topsep * DefaultHeight()
+		      + layout.labelbottomsep *  DefaultHeight());
       }
    
       /* and now the layout spaces, for example before and after a section, 
@@ -4030,7 +4052,14 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 					if (bparams->secnumdepth >= 0){
 						/* this is special code for the chapter layout. This is printed in
 						 * an extra row and has a pagebreak at the top. */
-						maxdesc = int(lyxfont::maxDescent(font) * layout.spacing.getValue() * bparams->spacing.getValue())
+						float spacing_val = 1.0;
+						if (!row_ptr->par->spacing.isDefault()) {
+							spacing_val = row_ptr->par->spacing.getValue();
+						} else {
+							spacing_val = bparams->spacing.getValue();
+						}
+   
+						maxdesc = int(lyxfont::maxDescent(font) * layout.spacing.getValue() * spacing_val)
 							+ int(layout.parsep) * DefaultHeight();
 						if (is_rtl)
 							tmpx = paperwidth - LeftMargin(row_ptr) - 
@@ -4066,8 +4095,14 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 				font = GetFont(row_ptr->par, -2);
 				if (!row_ptr->par->GetLabelstring().empty()) {
 					string tmpstring = row_ptr->par->GetLabelstring();
-					
-					maxdesc = int(lyxfont::maxDescent(font) * layout.spacing.getValue() * bparams->spacing.getValue()
+					float spacing_val = 1.0;
+					if (!row_ptr->par->spacing.isDefault()) {
+						spacing_val = row_ptr->par->spacing.getValue();
+					} else {
+						spacing_val = bparams->spacing.getValue();
+					}
+   
+					maxdesc = int(lyxfont::maxDescent(font) * layout.spacing.getValue() * spacing_val
 						      + (layout.labelbottomsep * DefaultHeight()));
 					
 					tmpx = x;

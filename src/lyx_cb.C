@@ -203,10 +203,10 @@ void ShowMessage(Buffer * buf,
 // BufferViews. Or is it perhaps just the (input in) BufferViews in the
 // current LyxView that should be prohibited (Lgb) (This applies to
 // "AllowInput" as well.)
-void ProhibitInput()
+void ProhibitInput(BufferView * bv)
 {
 	input_prohibited = true;
-	current_view->hideCursor();
+	bv->hideCursor();
 
 	static Cursor cursor;
 	static bool cursor_undefined = true;
@@ -218,7 +218,7 @@ void ProhibitInput()
 	}
    
 	/* set the cursor to the watch for all forms and the canvas */ 
-	XDefineCursor(fl_display, current_view->owner()->getForm()->window, 
+	XDefineCursor(fl_display, bv->owner()->getForm()->window, 
 		      cursor);
 	if (fd_form_paragraph->form_paragraph->visible)
 		XDefineCursor(fl_display,
@@ -249,13 +249,13 @@ void SetXtermCursor(Window win)
 }
 
 
-void AllowInput()
+void AllowInput(BufferView * bv)
 {
 	input_prohibited = false;
 
 	/* reset the cursor from the watch for all forms and the canvas */
    
-	XUndefineCursor(fl_display, current_view->owner()->getForm()->window);
+	XUndefineCursor(fl_display, bv->owner()->getForm()->window);
 	if (fd_form_paragraph->form_paragraph->visible)
 		XUndefineCursor(fl_display,
 				fd_form_paragraph->form_paragraph->window);
@@ -264,8 +264,8 @@ void AllowInput()
 				fd_form_character->form_character->window);
 
 	// What to do about this? (Lgb)
-	if (current_view->belowMouse())
-		SetXtermCursor(current_view->owner()->getForm()->window);
+	if (bv->belowMouse())
+		SetXtermCursor(bv->owner()->getForm()->window);
 
 	XFlush(fl_display);
 	fl_activate_all_forms();
@@ -325,7 +325,7 @@ void MenuWriteAs(Buffer * buffer)
 	string oldname = fname;
 	LyXFileDlg fileDlg;
 
-	ProhibitInput();
+	ProhibitInput(current_view);
 	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
 	fileDlg.SetButton(1, _("Templates"), lyxrc.template_path);
 
@@ -336,7 +336,7 @@ void MenuWriteAs(Buffer * buffer)
 			       OnlyPath(fname),
 			       "*.lyx", 
 			       OnlyFilename(fname));
-	AllowInput();
+	AllowInput(current_view);
 
 	if (fname.empty()) {
 		return;
@@ -587,11 +587,11 @@ bool CreatePostscript(Buffer * buffer, bool wait = false)
 	//if (!bv->text)
 	//	return false;
 
-	ProhibitInput();
+	ProhibitInput(current_view);
 
 	// Generate dvi file
         if (MakeLaTeXOutput(buffer) > 0) {
-            	AllowInput();
+            	AllowInput(current_view);
 		return false;
         }
 	// Generate postscript file
@@ -663,7 +663,7 @@ bool CreatePostscript(Buffer * buffer, bool wait = false)
         }
         Path p(path);
 	bool ret = RunScript(buffer, wait, command);
-	AllowInput();
+	AllowInput(current_view);
 	return ret;
 }
 
@@ -682,7 +682,7 @@ bool PreviewPostscript(Buffer * buffer)
 	}
 
 	// Start postscript viewer
-	ProhibitInput();
+	ProhibitInput(current_view);
 	string ps = ChangeExtension (buffer->fileName(),
 				     ".ps_tmp", true);
 	// push directorypath, if necessary 
@@ -692,7 +692,7 @@ bool PreviewPostscript(Buffer * buffer)
         }
         Path p(path);
 	bool ret = RunScript(buffer, false, lyxrc.view_ps_command, ps);
-	AllowInput();
+	AllowInput(current_view);
 	return ret;
 }
 
@@ -1096,26 +1096,26 @@ void QuitLyX()
 
 
 
-void AutoSave()
+void AutoSave(BufferView * bv)
 	// should probably be moved into BufferList (Lgb)
 	// Perfect target for a thread...
 {
-	if (!current_view->available())
+	if (!bv->available())
 		return;
 
-	if (current_view->buffer()->isBakClean()
-	    || current_view->buffer()->isReadonly()) {
+	if (bv->buffer()->isBakClean()
+	    || bv->buffer()->isReadonly()) {
 		// We don't save now, but we'll try again later
-		current_view->owner()->resetAutosaveTimer();
+		bv->owner()->resetAutosaveTimer();
 		return;
 	}
 
-	current_view->owner()->getMiniBuffer()->Set(_("Autosaving current document..."));
+	bv->owner()->getMiniBuffer()->Set(_("Autosaving current document..."));
 	
 	// create autosave filename
-	string fname = 	OnlyPath(current_view->buffer()->fileName());
+	string fname = 	OnlyPath(bv->buffer()->fileName());
 	fname += "#";
-	fname += OnlyFilename(current_view->buffer()->fileName());
+	fname += OnlyFilename(bv->buffer()->fileName());
 	fname += "#";
 	
 	// tmp_ret will be located (usually) in /tmp
@@ -1131,7 +1131,7 @@ void AutoSave()
 		// anyway.
 		bool failed = false;
 		if (!tmp_ret.empty()) {
-			current_view->buffer()->writeFile(tmp_ret, 1);
+			bv->buffer()->writeFile(tmp_ret, 1);
 			// assume successful write of tmp_ret
 			if (rename(tmp_ret.c_str(), fname.c_str()) == -1) {
 				failed = true;
@@ -1146,11 +1146,11 @@ void AutoSave()
 		
 		if (failed) {
 			// failed to write/rename tmp_ret so try writing direct
-			if (!current_view->buffer()->writeFile(fname, 1)) {
+			if (!bv->buffer()->writeFile(fname, 1)) {
 				// It is dangerous to do this in the child,
 				// but safe in the parent, so...
 				if (pid == -1)
-					current_view->owner()->getMiniBuffer()->Set(_("Autosave Failed!"));
+					bv->owner()->getMiniBuffer()->Set(_("Autosave Failed!"));
 			}
 		}
 		if (pid == 0) { // we are the child so...
@@ -1158,8 +1158,8 @@ void AutoSave()
 		}
 	}
 	
-	current_view->buffer()->markBakClean();
-	current_view->owner()->resetAutosaveTimer();
+	bv->buffer()->markBakClean();
+	bv->owner()->resetAutosaveTimer();
 }
 
 
@@ -1205,11 +1205,11 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	if (!bv->available()) return;
      
 	if (fname.empty()) {
-		ProhibitInput();
+		ProhibitInput(bv);
 		fname = fileDlg.Select(_("File to Insert"), 
 				       bv->owner()->buffer()->filepath,
 				       "*");
-  		AllowInput();
+  		AllowInput(bv);
 		if (fname.empty()) return;
 	}
 
@@ -1271,7 +1271,7 @@ void MenuShowTableOfContents()
 void MenuInsertLabel(char const * arg)
 {
 	string label = arg;
-	ProhibitInput();
+	ProhibitInput(current_view);
 	if (label.empty()) {
 		pair<bool, string>
 			result = askForText(_("Enter new label to insert:"));
@@ -1284,7 +1284,7 @@ void MenuInsertLabel(char const * arg)
 		new_inset->setContents(label);
 		current_view->insertInset(new_inset);
 	}
-	AllowInput();
+	AllowInput(current_view);
 }
 
 
@@ -1390,7 +1390,7 @@ int RunLinuxDoc(BufferView * bv, int flag, string const & filename)
 	default: /* nothing to be done yet ;-) */     break; 
 	}
 	
-	ProhibitInput();
+	ProhibitInput(bv);
 	
 	Systemcalls one;
 	switch (flag) {
@@ -1412,7 +1412,7 @@ int RunLinuxDoc(BufferView * bv, int flag, string const & filename)
 		break;
 	}
 	
-	AllowInput();
+	AllowInput(bv);
 
         bv->buffer()->redraw();
 	return errorcode;
@@ -1447,7 +1447,7 @@ int RunDocBook(int flag, string const & filename)
 //  	case BufferParams::PAPER_USLETTER: add_flags = "-p letter"; break;
 //  	default: /* nothing to be done yet ;-) */     break; 
 //  	}
-	ProhibitInput();
+	ProhibitInput(current_view);
 	
 	int errorcode = 0;
 	Systemcalls one;
@@ -1466,7 +1466,7 @@ int RunDocBook(int flag, string const & filename)
 		break;
 	}
 	
-	AllowInput();
+	AllowInput(current_view);
 
         current_view->buffer()->redraw();
 	return errorcode;
@@ -1877,6 +1877,7 @@ bool UpdateLayoutDocument(BufferParams * params)
    
 	fl_set_input(fd_form_document->input_spacing, "");
 	switch (params->spacing.getSpace()) {
+	case Spacing::Default: // nothing bad should happen with this
 	case Spacing::Single:
 	{
 		// \singlespacing
@@ -2078,93 +2079,93 @@ static
 void ToggleAndShow(BufferView *, LyXFont const &);
 
 
-void FontSize(string const & size)
+void FontSize(BufferView * bv, string const & size)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setGUISize(size);
-	ToggleAndShow(current_view, font);
+	ToggleAndShow(bv, font);
 }
 
 
-void Emph()
+void Emph(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setEmph(LyXFont::TOGGLE);
-	ToggleAndShow(current_view, font);
+	ToggleAndShow(bv, font);
 }
 
 
-void Noun()
+void Noun(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setNoun(LyXFont::TOGGLE);
-	ToggleAndShow(current_view, font);
+	ToggleAndShow(bv, font);
 }
 
 
-void Bold()
+void Bold(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setSeries(LyXFont::BOLD_SERIES);
-	ToggleAndShow(current_view, font);
+	ToggleAndShow(bv, font);
 }
 
 
-void Underline()
+void Underline(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setUnderbar(LyXFont::TOGGLE);
-	ToggleAndShow(current_view, font);
+	ToggleAndShow(bv, font);
 }
 
 
-void Code()
+void Code(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY); // no good
-	ToggleAndShow(current_view, font);
+	ToggleAndShow(bv, font);
 }
 
 
-void Sans()
+void Sans(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setFamily(LyXFont::SANS_FAMILY);
-	ToggleAndShow(current_view, font);
+	ToggleAndShow(bv, font);
 }
 
 
-void Roman()
+void Roman(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setFamily(LyXFont::ROMAN_FAMILY);
-	ToggleAndShow(current_view, font);
+	ToggleAndShow(bv, font);
 }
 
 
-void Tex()
+void Tex(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setLatex (LyXFont::TOGGLE);
-	ToggleAndShow(current_view, font);
+	ToggleAndShow(bv, font);
 }
 
-void LangCB(string const & l)
+void Lang(BufferView * bv, string const & l)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	Languages::iterator lit = languages.find(l);
 	if (lit != languages.end()) {
 		font.setLanguage(&(*lit).second);
-		ToggleAndShow(current_view, font);
+		ToggleAndShow(bv, font);
 	} else
 		WriteAlert(_("Error! unknown language"),l);
 }
 
 
-void StyleReset()
+void StyleReset(BufferView * bv)
 {
 	LyXFont font(LyXFont::ALL_INHERIT, ignore_language);
-	ToggleAndShow(current_view, font);
+	ToggleAndShow(bv, font);
 }
 
 
@@ -2172,25 +2173,52 @@ void StyleReset()
  * future perhaps we could try to implement a callback to the button-bar.
  * That is, `light' the bold button when the font is currently bold, etc.
  */
-string CurrentState()
+string CurrentState(BufferView * bv)
 {
 	string state;
-	if (current_view->available()) { 
+	if (bv->available()) { 
 		// I think we should only show changes from the default
 		// font. (Asger)
-		Buffer * buffer = current_view->buffer();
-		LyXFont font = current_view->text->real_current_font;
+		Buffer * buffer = bv->buffer();
+		LyXFont font = bv->text->real_current_font;
 		LyXFont defaultfont = textclasslist.TextClass(buffer->
 							      params.textclass).defaultfont();
 		font.reduce(defaultfont);
 		state = _("Font: ") + font.stateText();
-
-		int depth = current_view->text->GetDepth();
+		// The paragraph depth
+		int depth = bv->text->GetDepth();
 		if (depth > 0) 
 			state += string(_(", Depth: ")) + tostr(depth);
+		// The paragraph spacing, but only if different from
+		// buffer spacing.
+		if (!bv->text->cursor.par->spacing.isDefault()) {
+			Spacing::Space cur_space =
+				bv->text->cursor.par->spacing.getSpace();
+			state += _(", Spacing: ");
+			switch (cur_space) {
+			case Spacing::Single:
+				state += _("Single");
+				break;
+			case Spacing::Onehalf:
+				state += _("Onehalf");
+				break;
+			case Spacing::Double:
+				state += _("Double");
+				break;
+			case Spacing::Other:
+				state += _("Other (");
+				state += tostr(bv->text->cursor.par->spacing.getValue());
+				state += ")";
+				break;
+			case Spacing::Default:
+				// should never happen, do nothing
+				break;
+			}
+		}
 	}
 	return state;
 }
+
 
 
 // candidate for move to BufferView
@@ -2372,9 +2400,9 @@ LyXFont UserFreeFont()
 }
 
 
-void Free()
+void Free(BufferView * bv)
 {
-	ToggleAndShow(current_view, UserFreeFont());
+	ToggleAndShow(bv, UserFreeFont());
 }
 
 
@@ -2587,7 +2615,7 @@ void UpdateDocumentButtons(BufferParams const & params)
 
 extern "C" void ChoiceClassCB(FL_OBJECT * ob, long)
 {
-	ProhibitInput();
+	ProhibitInput(current_view);
 	if (textclasslist.Load(fl_get_choice(ob)-1)) {
 		if (AskQuestion(_("Should I set some parameters to"),
 				fl_get_choice_text(ob),
@@ -2606,7 +2634,7 @@ extern "C" void ChoiceClassCB(FL_OBJECT * ob, long)
 		fl_set_choice(fd_form_document->choice_class, 
 			      current_view->buffer()->params.textclass + 1);
 	}
-	AllowInput();
+	AllowInput(current_view);
 }
 
 

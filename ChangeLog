@@ -1,3 +1,41 @@
+2000-04-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyx_cb.[Ch]: made several functions take a BufferView* arg
+	instead of using current_view directly. 
+
+	* src/lyxfunc.C (Dispatch): the paragraph-spacing implementation
+
+	* src/LyXAction.C (init): add the paragraph-spacing command.
+
+	* src/commandtags.h: add enum for LFUN_PARAGRAPH_SPACING
+
+	* src/buffer.C (parseSingleLyXformat2Token): read the paragraph spacing
+
+	* src/lyx_cb.C (CurrentState): output a string when the spacing is
+	different from the documents.
+
+	* src/text.C (SetHeightOfRow): take paragraph spacing into
+	account, paragraph spacing takes precedence over buffer spacing
+	(GetVisibleRow): ditto
+
+	* src/paragraph.C (writeFile): output the spacing parameter too.
+	(validate): set the correct features if spacing is used in the
+	paragraph. 
+	(Clear): set spacing to default
+	(MakeSameLayout): spacing too
+	(HasSameLayout): spacing too
+	(SetLayout): spacing too
+	(TeXOnePar): output the spacing commands
+
+	* src/lyxparagraph.h: added a spacing variable for use with
+	per-paragraph spacing.
+
+	* src/Spacing.h: add a Default spacing and a method to check if
+	the current spacing is default. also added an operator==
+
+	* src/text2.C (DeleteEmptyParagraphMechanism): added a
+	RedoParagraphs.
+
 2000-04-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxserver.C (callback): fix dispatch of functions

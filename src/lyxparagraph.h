@@ -210,6 +210,9 @@ public:
 	
 	/// 
 	VSpace added_space_bottom;
+
+	///
+	Spacing spacing;
 	
 	///
 	LyXTextClass::LayoutList::size_type layout;

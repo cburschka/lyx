@@ -44,6 +44,7 @@
 #include "lyxtext.h"
 #include "gettext.h"
 #include "layout.h"
+#include "lyx_cb.h"
 
 using std::vector;
 using std::endl;
@@ -58,8 +59,6 @@ extern void MenuLayoutSave();
 extern void ShowCredits();
 extern void ShowCopyright();
 extern void show_symbols_form(LyXFunc *);
-extern void ProhibitInput();
-extern void AllowInput();
 extern void LaTeXOptions(BufferView *);
 
 // A bunch of wrappers
@@ -697,7 +696,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	fl_freepup(SubFileExport);
 	fl_freepup(FileMenu);
 
-	AllowInput();
+	AllowInput(men->currentView());
 }
 
 
@@ -819,7 +818,7 @@ void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 
 	fl_freepup(SubFileImport);
 	fl_freepup(FileMenu);
-	AllowInput();
+	AllowInput(men->currentView());
 	return;
 }
 
@@ -1669,21 +1668,21 @@ void Menus::ShowHelpMenu(FL_OBJECT * ob, long)
 	switch (choice) {
 	case 1: case 2: case 3: case 4: case 5: 
 	case 6: case 7: case 8: case 9: case 10:
-		ProhibitInput();
+		ProhibitInput(men->currentView());
 		men->MenuDocu(doc_files[choice - 1]);
-		AllowInput();
+		AllowInput(men->currentView());
 		break;
 	case 11: ShowCopyright(); break;
 	case 12: ShowCredits(); break;
 	case 13:
-		ProhibitInput();
+		ProhibitInput(men->currentView());
 		fl_show_message((string(_("LyX Version ")) + LYX_VERSION 
 				 + _(" of ") + LYX_RELEASE).c_str(),
 				(_("Library directory: ")
 				 + MakeDisplayPath(system_lyxdir)).c_str(),
 				(_("User directory: ") 
 				 + MakeDisplayPath(user_lyxdir)).c_str());
-		AllowInput();
+		AllowInput(men->currentView());
 		break;
 	}
 	fl_freepup(HelpMenu);

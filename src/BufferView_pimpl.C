@@ -192,7 +192,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	int selection = 0;
 	int mark_set = 0;
 
-	ProhibitInput();
+	ProhibitInput(bv_);
 
 	owner_->getMiniBuffer()->Set(_("Formatting document..."));   
 
@@ -251,7 +251,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	redraw();
 	owner_->getMiniBuffer()->Init();
 	bv_->setState();
-	AllowInput();
+	AllowInput(bv_);
 
 	// Now if the title form still exist kill it
 	TimerCB(0, 0);
@@ -780,7 +780,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y, unsigned int button)
 	if (button >= 2) return;
 
 	bv_->setState();
-	owner_->getMiniBuffer()->Set(CurrentState());
+	owner_->getMiniBuffer()->Set(CurrentState(bv_));
 
 	// Did we hit an editable inset?
 	if (inset_hit != 0) {

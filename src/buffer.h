@@ -262,7 +262,8 @@ public:
 	bool isLinuxDoc() const;
 	/// returns true if the buffer contains a DocBook document
 	bool isDocBook() const;
-	/// returns true if the buffer contains either a LinuxDoc or DocBook document
+	/** returns true if the buffer contains either a LinuxDoc
+	    or DocBook document */
 	bool isSGML() const;
         /// returns true if the buffer contains a Wed document
         bool isLiterate() const;
@@ -272,11 +273,12 @@ public:
 
 	/** Validate a buffer for LaTeX.
 	    This validates the buffer, and returns a struct for use by
-	    makeLaTeX and others. Its main use is to figure out what commands
-	    and packages need to be included in the LaTeX file. It (should)
-	    also check that the needed constructs are there (i.e. that the \refs
-	    points to coresponding \labels). It should perhaps inset "error"
-	    insets to help the user correct obvious mistakes.
+	    makeLaTeX and others. Its main use is to figure out what
+	    commands and packages need to be included in the LaTeX file.
+	    It (should) also check that the needed constructs are there
+	    (i.e. that the \refs points to coresponding \labels). It
+	    should perhaps inset "error" insets to help the user correct
+	    obvious mistakes.
 	*/
 	void validate(LaTeXFeatures &) const;
 

@@ -56,13 +56,13 @@ void SendtoApplyCB(FL_OBJECT *, long)
     Buffer * buffer = current_view->buffer();
     if (fl_get_button(fd_form_sendto->radio_ftype_dvi) ||
         fl_get_button(fd_form_sendto->radio_ftype_ps)) {
-        ProhibitInput();
+        ProhibitInput(current_view);
         // Generate dvi file and check if there are errors in the .lyx file
         if (MakeLaTeXOutput(buffer) > 0) {
-            AllowInput();
+            AllowInput(current_view);
             return;
         }
-        AllowInput();
+        AllowInput(current_view);
     }
     string ftypeext;
     if (fl_get_button(fd_form_sendto->radio_ftype_lyx))

@@ -19,49 +19,45 @@ extern bool BindFileSet;
 ///
 extern void Foot(BufferView *);
 ///
-extern void Emph();
+extern void Emph(BufferView *);
 ///
-extern void Bold();
+extern void Bold(BufferView *);
 ///
-extern void Noun();
+extern void Noun(BufferView *);
 ///
 extern void Margin(BufferView *);
 ///
 extern void Figure();
 ///
-extern void LangCB(string const &);
+extern void Lang(BufferView *, string const &);
 ///
 extern void Table();
 ///
 extern void Melt(BufferView *);
 ///
-extern void Tex();
+extern void Tex(BufferView *);
 ///
 extern void changeDepth(BufferView *, int);
 ///
-extern void Free();
+extern void Free(BufferView *);
 ///
-extern void HtmlUrl();
+extern void ProhibitInput(BufferView *);
 ///
-extern void Url();
+extern void AllowInput(BufferView *);
 ///
-extern void ProhibitInput();
+extern void Code(BufferView *);
 ///
-extern void Code();
+extern void Sans(BufferView *);
 ///
-extern void Sans();
+extern void Roman(BufferView *);
 ///
-extern void Roman();
+extern void StyleReset(BufferView *);
 ///
-extern void StyleReset();
+extern void Underline(BufferView *);
 ///
-extern void Underline();
+extern void FontSize(BufferView *, string const &);
 ///
-extern void FontSize(string const &);
-///
-extern string CurrentState();
-///
-extern void AllowInput();
+extern string CurrentState(BufferView *);
 
 #endif
 

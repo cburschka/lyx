@@ -153,7 +153,7 @@ bool BufferList::close(Buffer * buf)
         if (buf->getUser()) buf->getUser()->insetUnlock();
 	
 	if (buf->paragraph && !buf->isLyxClean() && !quitting) {
-		ProhibitInput();
+		ProhibitInput(buf->getUser());
                 switch(AskConfirmation(_("Changes in document:"),
 				       MakeDisplayPath(buf->fileName(), 50),
 				       _("Save document?"))){
@@ -161,15 +161,15 @@ bool BufferList::close(Buffer * buf)
 			if (buf->save()) {
 				lastfiles->newFile(buf->fileName());
 			} else {
-				AllowInput();
+				AllowInput(buf->getUser());
 				return false;
 			}
                         break;
 		case 3: // Cancel
-                        AllowInput();
+                        AllowInput(buf->getUser());
                         return false;
                 }
-		AllowInput();
+		AllowInput(buf->getUser());
 	}
 
 	bstore.release(buf);

@@ -39,7 +39,7 @@ using std::endl;
 
 extern FD_form_document * fd_form_document;
 
-extern void AutoSave();
+extern void AutoSave(BufferView *);
 extern char updatetimer;
 extern void QuitLyX();
 LyXTextClass::size_type current_layout = 0;
@@ -159,17 +159,19 @@ extern "C" void C_LyXView_UpdateTimerCB(FL_OBJECT * ob, long data)
 
 
 // Callback for autosave timer
-void LyXView::AutosaveTimerCB(FL_OBJECT *, long)
+void LyXView::AutoSave()
 {
 	lyxerr[Debug::INFO] << "Running AutoSave()" << endl;
-	AutoSave();
+	if (view()->available())
+		::AutoSave(view());
 }
 
 
 // Wrapper for the above
-extern "C" void C_LyXView_AutosaveTimerCB(FL_OBJECT * ob, long data)
+extern "C" void C_LyXView_AutosaveTimerCB(FL_OBJECT * ob, long)
 {
-	LyXView::AutosaveTimerCB(ob, data);
+	LyXView * view = static_cast<LyXView*>(ob->u_vdata);
+	view->AutoSave();
 }
 
 
@@ -274,6 +276,7 @@ void LyXView::create_form_form_main(int width, int height)
 	// timer_autosave
 	fdui->timer_autosave = obj = fl_add_timer(FL_HIDDEN_TIMER,
 						  0, 0, 0, 0, "Timer");
+	obj->u_vdata = this;
 	fl_set_object_callback(obj, C_LyXView_AutosaveTimerCB, 0);
 	
 	// timer_update

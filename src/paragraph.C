@@ -167,7 +167,10 @@ void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
 		if (added_space_bottom.kind() != VSpace::NONE)
 			os << "\\added_space_bottom "
 			   << added_space_bottom.asLyXCommand() << " ";
-			
+
+		// Maybe the paragraph has special spacing
+		spacing.writeFile(os, true);
+		
 		// The labelwidth string used in lists.
 		if (!labelwidthstring.empty())
 			os << "\\labelwidthstring "
@@ -337,6 +340,8 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 	// check the params.
 	if (line_top || line_bottom)
 		features.lyxline = true;
+	if (!spacing.isDefault())
+		features.setspace = true;
 	
 	// then the layouts
 	features.layout[GetLayout()] = true;
@@ -473,7 +478,8 @@ void LyXParagraph::Clear()
 
 	added_space_top = VSpace(VSpace::NONE);
 	added_space_bottom = VSpace(VSpace::NONE);
-
+	spacing.set(Spacing::Default);
+	
 	align = LYX_ALIGN_LAYOUT;
 	depth = 0;
 	noindent = false;
@@ -1445,6 +1451,8 @@ void LyXParagraph::MakeSameLayout(LyXParagraph const * par)
 	pagebreak_top = par->pagebreak_top;
 	added_space_top = par->added_space_top;
 
+	spacing = par->spacing;
+	
         pextra_type = par->pextra_type;
         pextra_width = par->pextra_width;
         pextra_widthp = par->pextra_widthp;
@@ -1530,6 +1538,8 @@ bool LyXParagraph::HasSameLayout(LyXParagraph const * par) const
 		par->pagebreak_top == pagebreak_top &&
 		par->added_space_top == added_space_top &&
 
+		par->spacing == spacing &&
+		
                 par->pextra_type == pextra_type &&
                 par->pextra_width == pextra_width && 
                 par->pextra_widthp == pextra_widthp && 
@@ -1768,6 +1778,8 @@ void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
 	par->align = LYX_ALIGN_LAYOUT;
 	par->added_space_top = VSpace(VSpace::NONE);
 	par->added_space_bottom = VSpace(VSpace::NONE);
+	par->spacing.set(Spacing::Default);
+	
 	/* table stuff -- begin*/ 
 	if (table) 
 		par->layout = 0;
@@ -1972,6 +1984,13 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		texrow.newline();
 	}
 
+	if (!spacing.isDefault()
+	    && (!Previous() || !Previous()->HasSameLayout(this))) {
+		os << "\\begin{spacing}{"
+		   << spacing.getValue() << "}\n";
+		texrow.newline();
+	}
+	
 	if (tex_code_break_column && style.isCommand()){
 		os << '\n';
 		texrow.newline();
@@ -2148,6 +2167,12 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		texrow.newline();
 	}
 
+	if (!spacing.isDefault()
+	    && (!par || !par->HasSameLayout(this))) {
+		os << "\\end{spacing}\n";
+		texrow.newline();
+	}
+	
 	if (!(footnoteflag != LyXParagraph::NO_FOOTNOTE && par &&
               par->footnoteflag == LyXParagraph::NO_FOOTNOTE)) {
 		os << '\n';

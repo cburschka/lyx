@@ -133,7 +133,7 @@ public:
 	///
   	string fontsize; 
 	///
- 	LyXTextClassList::ClassList::size_type textclass;
+ 	LyXTextClassList::size_type textclass;
 
 	/* this are for the PaperLayout */
 	///

@@ -112,11 +112,13 @@ string LaTeXFeatures::getPackages()
 	}
 
 	// setspace.sty
-	if ((params.spacing.getSpace() != Spacing::Single)
+	if ((params.spacing.getSpace() != Spacing::Single
+	     && !params.spacing.isDefault())
 	    || setspace) {
 		packages += "\\usepackage{setspace}\n";
 	}
 	switch (params.spacing.getSpace()) {
+	case Spacing::Default:
 	case Spacing::Single:
 		// we dont use setspace.sty so dont print anything
 		//packages += "\\singlespacing\n";

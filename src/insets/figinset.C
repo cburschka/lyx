@@ -58,6 +58,7 @@
 #include "support/lyxlib.h"
 #include "Painter.h"
 #include "font.h"
+#include "lyx_cb.h"
 
 using std::ostream;
 using std::istream;
@@ -74,9 +75,6 @@ extern BufferView * current_view;
 extern FL_OBJECT * figinset_canvas;
 
 extern char ** environ; // is this only redundtant on linux systems? Lgb.
-
-extern void ProhibitInput();
-extern void AllowInput();
 
 static float const DEG2PI = 57.295779513;
 
@@ -2066,7 +2064,7 @@ void InsetFig::BrowseFile()
 
 	bool error = false;
 	do {
-		ProhibitInput();
+		ProhibitInput(current_view);
 		if (once) {
 			p = fileDlg.Select(_("EPS Figure"),
 					   current_figure_path,
@@ -2075,7 +2073,7 @@ void InsetFig::BrowseFile()
 			p = fileDlg.Select(_("EPS Figure"), buf,
 					   "*ps", string());
 		}
-		AllowInput();
+		AllowInput(current_view);
 
 		if (p.empty()) return;
 

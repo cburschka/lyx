@@ -22,33 +22,24 @@ using std::pair;
 
 static LyXParagraph * buf = 0;
 
-CutAndPaste::CutAndPaste()
-{
-}
-
-
-CutAndPaste::~CutAndPaste()
-{
-}
-
 // for now here this should be in another Cut&Paste Class!
 //
 void CutAndPaste::DeleteBuffer()
 {
-    if (!buf)
-	return;
-
-    LyXParagraph * tmppar;
-    
-    while (buf) {
-	tmppar =  buf;
-	buf = buf->next;
-	delete tmppar;
-    }
-    buf = 0;
+	if (!buf) return;
+	
+	LyXParagraph * tmppar;
+	
+	while (buf) {
+		tmppar =  buf;
+		buf = buf->next;
+		delete tmppar;
+	}
+	buf = 0;
 }
 
-bool CutAndPaste::cutSelection(LyXParagraph *startpar, LyXParagraph **endpar,
+
+bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 			       int start, int & end, char tc, bool doclear)
 {
     if (!startpar || (start > startpar->Last()))
@@ -116,7 +107,8 @@ bool CutAndPaste::cutSelection(LyXParagraph *startpar, LyXParagraph **endpar,
     return true;
 }
 
-bool CutAndPaste::copySelection(LyXParagraph *startpar, LyXParagraph *endpar,
+
+bool CutAndPaste::copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
 				int start, int end, char tc)
 {
     if (!startpar || (start > startpar->Last()))
@@ -156,7 +148,7 @@ bool CutAndPaste::copySelection(LyXParagraph *startpar, LyXParagraph *endpar,
 	// care about footnotes
 	if (buf->footnoteflag) {
 	    tmppar = buf;
-	    while (tmppar){
+	    while (tmppar) {
 		tmppar->footnoteflag = LyXParagraph::NO_FOOTNOTE;
 		tmppar = tmppar->next;
 	    }
@@ -177,8 +169,9 @@ bool CutAndPaste::copySelection(LyXParagraph *startpar, LyXParagraph *endpar,
     return true;
 }
 
-bool CutAndPaste::pasteSelection(LyXParagraph **par, LyXParagraph **endpar,
-				 int &pos, char tc)
+
+bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
+				 int & pos, char tc)
 {
     if (!checkPastePossible(*par, pos))
 	return false;
@@ -201,10 +194,10 @@ bool CutAndPaste::pasteSelection(LyXParagraph **par, LyXParagraph **endpar,
 		if (buf->IsNewline(0)){
 		    while((tmppos < tmppar->Last()) &&
 			  !tmppar->IsNewline(tmppos))
-			tmppos++;
+			++tmppos;
 		    buf->Erase(0);
 		    if (tmppos < tmppar->Last())
-			tmppos++;
+			++tmppos;
 		    else
 			table_too_small = true;
 		} else {
@@ -332,19 +325,20 @@ bool CutAndPaste::pasteSelection(LyXParagraph **par, LyXParagraph **endpar,
     return true;
 }
 
+
 int CutAndPaste::nrOfParagraphs() const
 {
-    if (!buf)
-	return 0;
+	if (!buf) return 0;
 
-    int n = 1;
-    LyXParagraph *tmppar = buf;
-    while(tmppar->next) {
-	++n;
-	tmppar = tmppar->next;
-    }
-    return n;
+	int n = 1;
+	LyXParagraph *tmppar = buf;
+	while(tmppar->next) {
+		++n;
+		tmppar = tmppar->next;
+	}
+	return n;
 }
+
 
 int CutAndPaste::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type c1,
 					     LyXTextClassList::size_type c2,
@@ -385,17 +379,18 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type c1,
     return ret;
 }
 
-char CutAndPaste::getBufferTextClass()
+
+LyXTextClassList::size_type CutAndPaste::getBufferTextClass() const
 {
     return textclass;
 }
 
-bool CutAndPaste::checkPastePossible(LyXParagraph *par, int)
-{
-    if (!buf)
-	return false;
 
-    LyXParagraph *tmppar;
+bool CutAndPaste::checkPastePossible(LyXParagraph * par, int) const
+{
+    if (!buf) return false;
+
+    LyXParagraph * tmppar;
 
     // be carefull with footnotes in footnotes
     if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE) {

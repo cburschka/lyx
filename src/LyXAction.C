@@ -376,6 +376,7 @@ void LyXAction::init()
 		{ LFUN_LOWCASE_WORD, "word-lowcase", "", Noop },
 		{ LFUN_UPCASE_WORD, "word-upcase", "", Noop },
 		{ LFUN_DATE_INSERT, "date-insert", "", Noop },
+		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", "", Noop },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 
