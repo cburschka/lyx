@@ -60,7 +60,7 @@ Image::FormatList QLImage::loadableFormats()
 	QStrListIterator it(qt_formats);
 
 	for (; it.current(); ++it) {
-	   lyxerr[Debug::GRAPHICS] << it.current() << std::endl;
+	   lyxerr[Debug::GRAPHICS] << it.current() << endl;
 
 		string ext = lowercase(it.current());
 	 
@@ -84,7 +84,7 @@ Image::FormatList QLImage::loadableFormats()
 			lyxerr[Debug::GRAPHICS] << ", ";
 		lyxerr[Debug::GRAPHICS] << *fit;
 	}
-	lyxerr[Debug::GRAPHICS] << '\n' << std::endl;
+	lyxerr[Debug::GRAPHICS] << '\n' << endl;
 
 	return fmts;
 }
@@ -129,14 +129,14 @@ void QLImage::load(string const & filename)
 {
 	if (!pixmap_.isNull()) {
 		lyxerr[Debug::GRAPHICS]
-			<< "Image is loaded already!" << std::endl;
+			<< "Image is loaded already!" << endl;
 		finishedLoading(false);
 		return;
 	}
 
 	if (!pixmap_.load(filename.c_str())) {
 		lyxerr[Debug::GRAPHICS]
-			<< "Unable to open image" << std::endl;
+			<< "Unable to open image" << endl;
 		finishedLoading(false);
 		return;
 	}
