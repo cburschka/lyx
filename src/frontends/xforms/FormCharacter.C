@@ -42,7 +42,9 @@ FormCharacter::FormCharacter(ControlCharacter & c)
 void FormCharacter::ComboInputCB(int, void * v, Combox * combox)
 {
 	FormCharacter * pre = static_cast<FormCharacter*>(v);
-	pre->InputCB(reinterpret_cast<FL_OBJECT *>(combox), 0);
+	// must use input() directly, to avoid treating the Combox
+	// as an FL_OBJECT, leading to a crash (bug 406)
+	pre->bc().input(pre->input(0, 0));
 }
 
 void FormCharacter::build()
