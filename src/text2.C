@@ -1674,6 +1674,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 		if (layout.labeltype == LABEL_SENSITIVE) {
 			bool isOK (par->InInset() && par->InInset()->owner() &&
 				   (par->InInset()->owner()->LyxCode() == Inset::FLOAT_CODE));
+			
 			if (isOK) {
 				InsetFloat * tmp = static_cast<InsetFloat*>(par->InInset()->owner());
 				Floating const & fl

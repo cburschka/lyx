@@ -964,6 +964,8 @@ void LyXParagraph::BreakParagraph(BufferParams const & bparams,
 {
 	// create a new paragraph
 	LyXParagraph * tmp = new LyXParagraph(this);
+	// remember to set the inset_owner
+	tmp->SetInsetOwner(InInset());
 	
 	// this is an idea for a more userfriendly layout handling, I will
 	// see what the users say

@@ -1,3 +1,8 @@
+2001-06-01  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* paragraph.C (BreakParagraph): set the inset_owner in the new par
+	to the same as the par we break from
+
 2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* commandtags.h: add LFUN_INSET_WIDE_FLOAT
