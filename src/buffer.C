@@ -1388,7 +1388,8 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			inset = new InsetFormula;
 		} else if (tmptok == "Figure") {
 			inset = new InsetFig(100, 100, *this);
-		} else if (tmptok == "Info") {
+		} else if (tmptok == "Info" // backwards compatibility
+			   || tmptok == "Note") {
 			inset = new InsetNote;
 		} else if (tmptok == "Include") {
 			InsetCommandParams p( "Include" );

@@ -15,7 +15,6 @@
 #pragma implementation "FontLoader.h"
 #endif
 
-#include FORMS_H_LOCATION
 #include "FontLoader.h"
 #include "FontInfo.h"
 #include "gettext.h"

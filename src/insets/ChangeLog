@@ -1,5 +1,12 @@
 2001-07-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* insetnote.[Ch]: (insertInset, insetAllowed): removed. Note now uses
+	the default InsetCollapsable methods. I.e., it can insert anything.
+	(write) output the name of the inset, not some silly hack for
+	compatability with the old InsetInfo.
+	
+2001-07-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* insetinfo.[Ch]: removed.
 	* insetnote.[Ch]: new files. InsetNote replaces InsetInfo. The inset is
 	now collapsable, but functionality is otherwise identical to InsetInfo.

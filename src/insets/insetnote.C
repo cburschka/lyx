@@ -30,7 +30,6 @@ InsetNote::InsetNote()
 {
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
-	font.decSize();
 	font.setColor(LColor::note);
 	setLabelFont(font);
 	setAutoCollapse(true);
@@ -60,8 +59,6 @@ string const InsetNote::editMessage() const
 
 void InsetNote::write(Buffer const *buf, ostream & os) const
 {
-	//os << getInsetName() << "\n";
-	os << "Info\n";
+	os << getInsetName() << "\n";
 	InsetCollapsable::write(buf, os);
 }
-

@@ -32,10 +32,6 @@ public:
 	///
 	virtual Inset::Code lyxCode() const { return Inset::IGNORE_CODE; }
 	///
-	virtual bool insertInset(BufferView *, Inset *) { return false; }
-	///
-	virtual bool insetAllowed(Inset::Code) const { return false; }
-	///
 	virtual void write(Buffer const *, std::ostream &) const;
 	///
 	virtual int latex(Buffer const *, std::ostream &, bool, bool) const

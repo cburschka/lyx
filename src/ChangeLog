@@ -1,5 +1,12 @@
 2001-07-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* buffer.C (readInset): enable reading of new InsetNotes as well as old
+	InsetInfos.
+
+	* FontLoader.C: remove FORMS_H_LOCATION cruft.
+
+2001-07-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* sp_form.[Ch]: remove.
 
 2001-07-20  Angus Leeming  <a.leeming@ic.ac.uk>
