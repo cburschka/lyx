@@ -12,14 +12,14 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#ifndef __MATH_ROOT__
-#define __MATH_ROOT__
+#ifndef MATH_ROOT
+#define MATH_ROOT
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include <stdio.h>
+#include <cstdio>
 #include "math_defs.h"
 #include "math_inset.h"
 #include "symbol_def.h"
@@ -30,27 +30,27 @@
 class MathRootInset: public MathSqrtInset {
  public:
     ///
-    MathRootInset(short st=LM_ST_TEXT);
+    MathRootInset(short st = LM_ST_TEXT);
     ///
     //    MathRootInset(MathSqrtInset &);
     ///
     ~MathRootInset();
     ///
-    MathedInset *Clone();
+    MathedInset * Clone();
     ///
     void Draw(int x, int baseline);
     ///
-    void Write(FILE *file);
+    void Write(FILE * file);
     ///
-    void Write(string &file);
+    void Write(string & file);
     ///
     void Metrics();
     ///
     bool Inside(int, int);
     ///
-    void SetFocus(int,int);
+    void SetFocus(int, int);
     ///
-    void SetData(LyxArrayBase*);
+    void SetData(LyxArrayBase *);
     ///
     void GetXY(int& x, int& y) const;
     ///
@@ -68,10 +68,8 @@ class MathRootInset: public MathSqrtInset {
     ///
     int idx;
     ///
-    MathParInset *uroot;
+    MathParInset * uroot;
     ///
     int wroot, dh;
 };
-
-
 #endif

@@ -37,9 +37,9 @@ ostream & operator<<(ostream & o, MathedTextCodes mtc)
 }
 
 enum MathedMacroFlag {
-    MMF_Env=1,
-    MMF_Exp=2,
-    MMF_Edit=4
+    MMF_Env= 1,
+    MMF_Exp= 2,
+    MMF_Edit= 4
 };
 
 ostream & operator<<(ostream & o, MathedMacroFlag mmf)
@@ -58,7 +58,7 @@ MathMacro::MathMacro(MathMacroTemplate* t):
     nargs = tmplate->getNoArgs();
     tcode = tmplate->getTCode();
     args = new MacroArgumentBase[nargs];
-    for (int i=0; i<nargs; i++) {
+    for (int i= 0; i<nargs; i++) {
 //	if (tmplate->getMacroPar(i)->Permit(LMPF_ALLOW_CR))
 //	  args[i].row = new MathedRowSt(tmplate->getMacroPar(i)->GetColumns());
 //	else 
@@ -66,7 +66,7 @@ MathMacro::MathMacro(MathMacroTemplate* t):
 /*	int k = tmplate->getMacroPar(i)->GetColumns();
 	if (k>0) {
 	    args[i].array = new LyxArrayBase;
-	    for (int j=0; j<k-1; j++) args[i].array->Insert(j, LM_TC_TAB);
+	    for (int j= 0; j<k-1; j++) args[i].array->Insert(j, LM_TC_TAB);
 	}*/
     }
     idx = 0;
@@ -82,7 +82,7 @@ MathMacro::MathMacro(MathMacro* m):
     args = new MacroArgumentBase[nargs];
     idx = 0;
     SetName(tmplate->GetName());
-    for (int i=0; i<tmplate->nargs; i++) {
+    for (int i= 0; i<tmplate->nargs; i++) {
 	m->setArgumentIdx(i);
 	MathedIter it(m->GetData());
 	args[i].row = m->args[i].row;
@@ -92,7 +92,7 @@ MathMacro::MathMacro(MathMacro* m):
 
 MathMacro::~MathMacro()
 {
-    for (idx=0; idx<nargs; idx++) {
+    for (idx= 0; idx<nargs; idx++) {
 	MathedIter it(args[idx].array);
 	it. Clear();
 	delete args[idx].row;
@@ -127,7 +127,7 @@ void MathMacro::Draw(int x, int y)
     tmplate->SetStyle(size);
     mathGC = latexGC;
     tmplate->Draw(x, y);
-    for (int i=0; i<nargs; i++)
+    for (int i= 0; i<nargs; i++)
       tmplate->GetMacroXY(i, args[i].x, args[i].y);
 }
 
@@ -189,7 +189,7 @@ void MathMacro::Write(string &file)
 	if (!(tmplate->flags & MMF_Env) && nargs>0) 
 	  file += '{';
 	
-	for (int i=0; i<nargs; i++) {
+	for (int i= 0; i<nargs; i++) {
 	    array = args[i].array;
 	    MathParInset::Write(file);
 	    if (i<nargs-1)  
@@ -271,7 +271,7 @@ MathMacroTemplate::MathMacroTemplate(char const *nm, int na, int flg):
     if (nargs>0) {
 	tcode = LM_TC_ACTIVE_INSET;
 	args = new MathMacroArgument[nargs];
-	for (int i=0; i<nargs; i++) {
+	for (int i= 0; i<nargs; i++) {
 	    args[i].setNumber(i+1);
 	}
     } else 
@@ -282,7 +282,7 @@ MathMacroTemplate::MathMacroTemplate(char const *nm, int na, int flg):
 MathMacroTemplate::~MathMacroTemplate()
 {
     // prevent to delete already deleted objects
-    for (int i=0; i<nargs; i++) {
+    for (int i= 0; i<nargs; i++) {
 	args[i].SetData(0);
     }
     delete[] args;
@@ -293,12 +293,12 @@ void MathMacroTemplate::setEditMode(bool ed)
 {
     if (ed) {
 	flags |= MMF_Edit;
-	for (int i=0; i<nargs; i++) {
+	for (int i= 0; i<nargs; i++) {
 	    args[i].setExpand(false);
 	}
     } else {
 	flags &= ~MMF_Edit;
-	for (int i=0; i<nargs; i++) {
+	for (int i= 0; i<nargs; i++) {
 	    args[i].setExpand(true);
 	}
     }
@@ -310,12 +310,12 @@ void MathMacroTemplate::Draw(int x, int y)
     int x2, y2;
     bool expnd = (nargs>0) ? args[0].getExpand(): false;
     if (flags & MMF_Edit) {
-	for (int i=0; i<nargs; i++) {
+	for (int i= 0; i<nargs; i++) {
 	    args[i].setExpand(false);
 	}
       x2 = x; y2 = y;
     } else {
-	for (int i=0; i<nargs; i++) {
+	for (int i= 0; i<nargs; i++) {
 	    args[i].setExpand(true);
 	}
       x2 = xo; y2 = yo;
@@ -323,7 +323,7 @@ void MathMacroTemplate::Draw(int x, int y)
     MathParInset::Draw(x, y);
     xo = x2; yo = y2;
     
-    for (int i=0; i<nargs; i++) {
+    for (int i= 0; i<nargs; i++) {
 	args[i].setExpand(expnd);
     }
 }
@@ -333,17 +333,17 @@ void MathMacroTemplate::Metrics()
     bool expnd = (nargs>0) ? args[0].getExpand(): false;
     
     if (flags & MMF_Edit) {
-	for (int i=0; i<nargs; i++) {
+	for (int i= 0; i<nargs; i++) {
 	    args[i].setExpand(false);
 	}
     } else {
-	for (int i=0; i<nargs; i++) {
+	for (int i= 0; i<nargs; i++) {
 	    args[i].setExpand(true);
 	}
     }
     MathParInset::Metrics();
     
-    for (int i=0; i<nargs; i++) {
+    for (int i= 0; i<nargs; i++) {
 	args[i].setExpand(expnd);
     }
 }
@@ -351,7 +351,7 @@ void MathMacroTemplate::Metrics()
 void MathMacroTemplate::update(MathMacro* macro)
 {
     int idx = (macro) ? macro->getArgumentIdx(): 0;
-    for (int i=0; i<nargs; i++) {
+    for (int i= 0; i<nargs; i++) {
 	if (macro) {
 	    macro->setArgumentIdx(i);
 	    args[i].SetData(macro->GetData());
@@ -373,7 +373,7 @@ void MathMacroTemplate::WriteDef(FILE *file)
     
     fprintf(file, "{");
     
-    for (int i=0; i<nargs; i++) {
+    for (int i= 0; i<nargs; i++) {
 	args[i].setExpand(false);
     }	 
     Write(file); 
@@ -394,7 +394,7 @@ void MathMacroTemplate::WriteDef(string &file)
     
     file += '{';
     
-    for (int i=0; i<nargs; i++) {
+    for (int i= 0; i<nargs; i++) {
 	args[i].setExpand(false);
     }	 
     Write(file); 
@@ -414,13 +414,13 @@ void MathMacroTemplate::GetMacroXY(int i, int& x, int& y) const
 
 MathParInset *MathMacroTemplate::getMacroPar(int i) const
 {
-    return ((i>=0 && i<nargs) ? (MathParInset*)&args[i]: 0);
+    return ((i>= 0 && i<nargs) ? (MathParInset*)&args[i]: 0);
 }
 
 
 void MathMacroTemplate::SetMacroFocus(int &idx, int x, int y)
 {
-    for (int i=0; i<nargs; i++) {
+    for (int i= 0; i<nargs; i++) {
 	if (args[i].Inside(x, y)) {
 	    idx = i;
 	    break;
@@ -447,8 +447,8 @@ MathMacroTable::~MathMacroTable()
 // The search is currently linear but will be binary or hash, later.
 MathMacroTemplate *MathMacroTable::getTemplate(char const* name) const
 {
-    for (int i=0; i<num_macros; i++) {
-      if (strcmp(name, macro_table[i]->GetName())==0) 
+    for (int i= 0; i<num_macros; i++) {
+      if (strcmp(name, macro_table[i]->GetName()) == 0) 
 	return macro_table[i];
     }
     
@@ -531,10 +531,10 @@ void MathMacroTable::builtinMacros()
     addTemplate(m);
     array = new LyxArrayBase; // this leaks
     iter.SetData(array);
-    arg = new MathMatrixInset(2,1); // this leaks
+    arg = new MathMatrixInset(2, 1); // this leaks
 
     m->setArgument(arg);
-    arg->SetAlign('c',"ll");
+    arg->SetAlign('c', "ll");
     iter.Insert(arg, LM_TC_ACTIVE_INSET);
     inset = new MathDelimInset('{', '.'); // this leaks
     inset->SetData(array);
@@ -547,7 +547,7 @@ void MathMacroTable::builtinMacros()
     // the environment substack has 1 argument
     m = new MathMacroTemplate("substack", 1, MMF_Env); // this leaks
     addTemplate(m);     
-    arg = new MathMatrixInset(1,1); // this leaks
+    arg = new MathMatrixInset(1, 1); // this leaks
     m->setArgument(arg);
     arg->SetType(LM_OT_MACRO);
     array = new LyxArrayBase; // this leaks

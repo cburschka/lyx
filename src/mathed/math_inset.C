@@ -56,8 +56,8 @@ MathFuncInset::MathFuncInset(char const *nm, short ot, short st):
     MathedInset("", ot, st)
 {
    ln = 0;
-   lims = (GetType()==LM_OT_FUNCLIM);
-    if (GetType()==LM_OT_UNDEF) {
+   lims = (GetType() == LM_OT_FUNCLIM);
+    if (GetType() == LM_OT_UNDEF) {
 	fname = strnew(nm);
 	SetName(fname);
     } else {
@@ -91,7 +91,7 @@ MathParInset::MathParInset(short st, char const *nm, short ot):
     width = 4;
     descent = 0;
     flag = 1;
-    if (objtype==LM_OT_SCRIPT)
+    if (objtype == LM_OT_SCRIPT)
       flag |= LMPF_SCRIPT;
 }
 
@@ -130,7 +130,7 @@ void MathParInset::SetData(LyxArrayBase *a)
 	MathedIter it(array);
 	while (it.OK()) {
 	    char c = it.GetChar();
-	    if (c==LM_TC_TAB || c==LM_TC_CR) 
+	    if (c == LM_TC_TAB || c == LM_TC_CR) 
 	      it.Delete();
 	    else
 	      it.Next();
@@ -155,7 +155,7 @@ MathedInset *MathSqrtInset::Clone()
 
 bool MathSqrtInset::Inside(int x, int y) 
 {
-    return (x>=xo-hmax && x<=xo+width-hmax && y<=yo+descent && y>=yo-ascent);
+    return (x>= xo-hmax && x<= xo+width-hmax && y<= yo+descent && y>= yo-ascent);
 }
 
 
@@ -176,7 +176,7 @@ MathedInset *MathDelimInset::Clone()
 MathDecorationInset::MathDecorationInset(int d, short st): 
   MathParInset(st, "", LM_OT_DECO), deco(d)
 {
-   upper = (deco!=LM_underline && deco!=LM_underbrace);
+   upper = (deco!= LM_underline && deco!= LM_underbrace);
 }
 
 MathedInset *MathDecorationInset::Clone()
@@ -193,7 +193,7 @@ MathFracInset::MathFracInset(short ot): MathParInset(LM_ST_TEXT, "frac", ot)
     den = new MathParInset(LM_ST_TEXT); // this leaks
     dh = 0;
     idx = 0;
-    if (objtype==LM_OT_STACKREL) {
+    if (objtype == LM_OT_STACKREL) {
 	flag |= LMPF_SCRIPT;
 	SetName("stackrel");
     }
@@ -217,7 +217,7 @@ MathedInset *MathFracInset::Clone()
 
 bool MathFracInset::setArgumentIdx(int i)
 {
-   if (i==0 || i==1) {
+   if (i == 0 || i == 1) {
        idx = i;
        return true;
    } else 
@@ -229,7 +229,7 @@ void MathFracInset::SetStyle(short st)
 {
     MathParInset::SetStyle(st);
     dh = 0;
-    den->SetStyle((size==LM_ST_DISPLAY) ? (short)LM_ST_TEXT: size);
+    den->SetStyle((size == LM_ST_DISPLAY) ? (short)LM_ST_TEXT: size);
 }
 
 void MathFracInset::SetData(LyxArrayBase *n, LyxArrayBase *d)
@@ -240,7 +240,7 @@ void MathFracInset::SetData(LyxArrayBase *n, LyxArrayBase *d)
 
 void MathFracInset::SetData(LyxArrayBase *d)
 {
-   if (idx==0)
+   if (idx == 0)
      MathParInset::SetData(d);
    else {
       den->SetData(d);
@@ -249,7 +249,7 @@ void MathFracInset::SetData(LyxArrayBase *d)
 
 void MathFracInset::GetXY(int& x, int& y) const
 {  
-   if (idx==0)
+   if (idx == 0)
      MathParInset::GetXY(x, y);
    else
      den->GetXY(x, y);
@@ -257,7 +257,7 @@ void MathFracInset::GetXY(int& x, int& y) const
    
 LyxArrayBase *MathFracInset::GetData()
 {
-   if (idx==0)
+   if (idx == 0)
      return array;
    else
      return den->GetData();
@@ -268,7 +268,7 @@ bool MathFracInset::Inside(int x, int y)
 {
     int xx = xo - (width-w0)/2;
     
-    return (x>=xx && x<=xx+width && y<=yo+descent && y>=yo-ascent);
+    return (x>= xx && x<= xx+width && y<= yo+descent && y>= yo-ascent);
 }
 
 void MathFracInset::SetFocus(int /*x*/, int y)
@@ -284,7 +284,7 @@ MathMatrixInset::MathMatrixInset(int m, int n, short st):
     ws = new int[nc]; 
     v_align = 0;
     h_align = new char[nc+1];
-    for (int i =0; i < nc; i++) h_align[i] = 'c'; 
+    for (int i = 0; i < nc; i++) h_align[i] = 'c'; 
     h_align[nc] = '\0';
     nr = 0;
     row = 0;
@@ -294,7 +294,7 @@ MathMatrixInset::MathMatrixInset(int m, int n, short st):
 	MathedXIter it(this);
 	for (int j = 1; j < n; j++) it.addRow();
 	nr = n;
-	if (nr==1 && nc>1) {
+	if (nr == 1 && nc>1) {
 	    for (int j = 0; j < nc - 1; j++) 
 	      it.Insert('T', LM_TC_TAB);
 	}
@@ -317,7 +317,7 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset *mt):
     it.SetData(mt->GetData());
     array = it.Copy();
     if (mt->row != 0) {
-	MathedRowSt *r, *ro=0, *mrow = mt->row;
+	MathedRowSt *r, *ro= 0, *mrow = mt->row;
 	mrow = mt->row;
 	while (mrow) {
 	    r = new MathedRowSt(nc+1);
@@ -406,8 +406,8 @@ void MathMatrixInset::Draw(int x, int baseline)
 
 void MathMatrixInset::Metrics()
 {
-    int i, /*cy,*/ hl, h=0;
-    MathedRowSt *cprow=0, *cxrow;
+    int i, /*cy,*/ hl, h= 0;
+    MathedRowSt *cprow= 0, *cxrow;
 
     if (!row) {
 //	lyxerr << " MIDA ";
@@ -418,14 +418,14 @@ void MathMatrixInset::Metrics()
     // Clean the arrays      
     cxrow = row;
     while (cxrow) {   
-	for (i=0; i<=nc; i++) cxrow->w[i] = 0;
+	for (i= 0; i<= nc; i++) cxrow->w[i] = 0;
 	cxrow = cxrow->next;
     }
     
     // Basic metrics
     MathParInset::Metrics();
 	    
-    if (nc<=1 && !row->next) {
+    if (nc<= 1 && !row->next) {
 	row->asc = ascent;
 	row->desc = descent;
     }
@@ -433,12 +433,12 @@ void MathMatrixInset::Metrics()
     // Vertical positions of each row
     cxrow = row;     
     while (cxrow) {
-	for (i=0; i<nc; i++) {
-	    if (cxrow==row || ws[i]<cxrow->w[i]) ws[i]=cxrow->w[i];
-	    if (cxrow->next==0 && ws[i]==0) ws[i] = df_width;
+	for (i= 0; i<nc; i++) {
+	    if (cxrow == row || ws[i]<cxrow->w[i]) ws[i]= cxrow->w[i];
+	    if (cxrow->next == 0 && ws[i] == 0) ws[i] = df_width;
 	}
 	
-	cxrow->y = (cxrow==row) ? cxrow->asc:
+	cxrow->y = (cxrow == row) ? cxrow->asc:
 	           cxrow->asc + cprow->desc + MATH_ROWSEP + cprow->y;
 	h += cxrow->asc + cxrow->desc + MATH_ROWSEP; 	
 	cprow = cxrow;
@@ -461,10 +461,10 @@ void MathMatrixInset::Metrics()
     cxrow = row;
     width = MATH_COLSEP;
     while (cxrow) {   
-	int rg=MATH_COLSEP, ww, lf=0, *w = cxrow->w;
-	for (i=0; i<nc; i++) {
+	int rg= MATH_COLSEP, ww, lf= 0, *w = cxrow->w;
+	for (i= 0; i<nc; i++) {
 	    bool isvoid = false;
-	    if (w[i]<=0) {
+	    if (w[i]<= 0) {
 		w[i] = df_width;
 		isvoid = true;
 	    }
@@ -477,7 +477,7 @@ void MathMatrixInset::Metrics()
 	    ww = (isvoid) ? lf: lf + w[i];
 	    w[i] = lf + rg;
 	    rg = ws[i] - ww + MATH_COLSEP;
-	    if (cxrow==row) width += ws[i] + MATH_COLSEP;
+	    if (cxrow == row) width += ws[i] + MATH_COLSEP;
 	}
 	cxrow->y -= ascent;
 	cxrow = cxrow->next;

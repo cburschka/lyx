@@ -49,7 +49,7 @@ MathedInset *MathRootInset::Clone()
 
 void MathRootInset::SetData(LyxArrayBase *d)
 {
-   if (idx==1)
+   if (idx == 1)
      MathParInset::SetData(d);
    else {
       uroot->SetData(d);
@@ -59,7 +59,7 @@ void MathRootInset::SetData(LyxArrayBase *d)
 
 bool MathRootInset::setArgumentIdx(int i)
 {
-   if (i==0 || i==1) {
+   if (i == 0 || i == 1) {
        idx = i;
        return true;
    } else
@@ -69,7 +69,7 @@ bool MathRootInset::setArgumentIdx(int i)
 
 void MathRootInset::GetXY(int& x, int& y) const
 {
-   if (idx==1)
+   if (idx == 1)
      MathParInset::GetXY(x, y);
    else
      uroot->GetXY(x, y);
@@ -77,7 +77,7 @@ void MathRootInset::GetXY(int& x, int& y) const
 
 LyxArrayBase *MathRootInset::GetData()
 {
-   if (idx==1)
+   if (idx == 1)
      return array;
    else
      return uroot->GetData();

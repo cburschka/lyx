@@ -33,17 +33,17 @@ enum  {
 };
 
 ///
-typedef FL_OBJECT* FL_OBJECTP;
+typedef FL_OBJECT * FL_OBJECTP;
 
 /// Class to manage bitmap menu bars
 class BitmapMenu {
   ///
-   static BitmapMenu *active;
+   static BitmapMenu * active;
    ///
    friend int peek_event(FL_FORM *, void *);
 protected:
    ///
-   BitmapMenu *next, *prev;
+   BitmapMenu * next, * prev;
    ///
    int nb;             // Number of bitmaps
 			    ///
@@ -53,20 +53,20 @@ protected:
 			    ///
    int x, y, w, h;
    ///
-   FL_FORM *form;
+   FL_FORM * form;
    ///
-   FL_OBJECTP *bitmap;
+   FL_OBJECTP * bitmap;
    ///
-   FL_OBJECT *button;
+   FL_OBJECT * button;
  public:
    ///
-   BitmapMenu(int n, FL_OBJECT* bt, BitmapMenu* prevx=0);
+   BitmapMenu(int n, FL_OBJECT * bt, BitmapMenu * prevx= 0);
    ///
    ~BitmapMenu();
    ///
-   FL_OBJECT* AddBitmap(int id,
+   FL_OBJECT * AddBitmap(int id,
 			int nx, int ny, int bw, int bh,
-			unsigned char* data, Bool vert=True); // Why Bool?
+			unsigned char * data, Bool vert= True); // Why Bool?
    ///
    void Create();
    ///
@@ -78,11 +78,11 @@ protected:
    ///
    void Next();
    ///
-   int  GetIndex(FL_OBJECT* ob);
+   int  GetIndex(FL_OBJECT * ob);
 };
 
 // This is just a wrapper around peek_event()
-extern "C" int C_peek_event(FL_FORM *form, void *ptr);
+extern "C" int C_peek_event(FL_FORM * form, void * ptr);
 
 
 inline

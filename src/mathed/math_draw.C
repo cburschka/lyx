@@ -27,7 +27,7 @@ extern int mathed_string_width(short type, int style, byte const* s, int ls);
 extern int mathed_string_height(short, int, byte const*, int, int&, int&);
 extern int mathed_char_height(short, int, byte, int&, int&);
    
-GC canvasGC=0, mathGC=0, mathLineGC=0, latexGC=0, cursorGC=0, mathFrameGC=0;
+GC canvasGC= 0, mathGC= 0, mathLineGC= 0, latexGC= 0, cursorGC= 0, mathFrameGC= 0;
 
 
 long unsigned int MathedInset::pm;
@@ -46,16 +46,16 @@ MathSpaceInset::Draw(int x, int y)
    p[2].x = x+width-2;	p[2].y = y;
    p[3].x = x+width-2;	p[3].y = y-3;
 
-   XDrawLines(fl_display,pm,(space) ? latexGC: mathGC,p,4,CoordModeOrigin);
+   XDrawLines(fl_display, pm,(space) ? latexGC: mathGC, p, 4, CoordModeOrigin);
    XFlush(fl_display);
 }
 
 void 
 MathParInset::Draw(int x, int y)
 {
-   byte cx, cxp=0;
-   int xp=0, ls;
-   int asc=df_asc, des=0;
+   byte cx, cxp= 0;
+   int xp= 0, ls;
+   int asc= df_asc, des= 0;
    bool limits = false;
     
    xo = x;  yo = y; 
@@ -65,7 +65,7 @@ MathParInset::Draw(int x, int y)
 	   MathedXIter data(this);
 	   data.GetPos(x, y);
        }
-      XDrawRectangle(fl_display,pm,mathLineGC,x,y-df_asc, df_width, df_asc);
+      XDrawRectangle(fl_display, pm, mathLineGC, x, y-df_asc, df_width, df_asc);
       XFlush(fl_display);
       return;
    }  
@@ -80,18 +80,18 @@ MathParInset::Draw(int x, int y)
 	  mathed_char_height(data.FCode(), size, s[ls-1], asc, des);
 	  limits = false;
       } else {
-	  if (cx==0) break;
+	  if (cx == 0) break;
 	 if (MathIsInset(cx)) {
 	    int yy = y;
 	    MathedInset *p = data.GetInset();
-	    if (cx==LM_TC_UP) {
+	    if (cx == LM_TC_UP) {
 	       if (limits) {
 		  x -= (xp>p->Width()) ? p->Width()+(xp-p->Width())/2: xp;  
 		  yy -= (asc + p->Descent()+4);
 	       } else
 		  yy -= (p->Descent()>asc) ? p->Descent()+4: asc;
 	    } else
-	    if (cx==LM_TC_DOWN) {
+	    if (cx == LM_TC_DOWN) {
 	       if (limits) {
 		  x -= (xp>p->Width()) ? p->Width()+(xp-p->Width())/2: xp;
 		  yy += des + p->Ascent() + 2;
@@ -102,25 +102,25 @@ MathParInset::Draw(int x, int y)
 	       des = p->Descent();
 	    }
 	    p->Draw(x, yy);
-	    if (cx!=LM_TC_UP && cx!=LM_TC_DOWN) {
+	    if (cx!= LM_TC_UP && cx!= LM_TC_DOWN) {
 	       limits = p->GetLimits();
 	       if (limits) xp = p->Width();
 	    }
 	    data.Next();
 	 } else 
-	   if (cx==LM_TC_TAB) {
-	       if ((cxp==cx || cxp==LM_TC_CR || data.IsFirst())) { // && objtype==L
-		   XDrawRectangle(fl_display,pm,mathLineGC,
-				  x,y-df_asc, df_width, df_asc);
+	   if (cx == LM_TC_TAB) {
+	       if ((cxp == cx || cxp == LM_TC_CR || data.IsFirst())) { // && objtype == L
+		   XDrawRectangle(fl_display, pm, mathLineGC,
+				  x, y-df_asc, df_width, df_asc);
 	       }
 	   
 	      XFlush(fl_display);
 	      data.Next();
 	      limits = false;
 	   } else
-	    if (cx==LM_TC_CR) {
-		if (cxp==LM_TC_TAB || cxp==LM_TC_CR || data.IsFirst()) { //  && objtype==LM_OT_MATRIX) {
-		  XDrawRectangle(fl_display,pm,mathLineGC,x,y-df_asc, df_width, df_asc);
+	    if (cx == LM_TC_CR) {
+		if (cxp == LM_TC_TAB || cxp == LM_TC_CR || data.IsFirst()) { //  && objtype == LM_OT_MATRIX) {
+		  XDrawRectangle(fl_display, pm, mathLineGC, x, y-df_asc, df_width, df_asc);
 		}
 		data.Next();
 		limits = false;
@@ -133,9 +133,9 @@ MathParInset::Draw(int x, int y)
       }
       cxp = cx;
    }
-   if (cxp==LM_TC_TAB || cxp==LM_TC_CR) { // && objtype==LM_OT_MATRIX) {
+   if (cxp == LM_TC_TAB || cxp == LM_TC_CR) { // && objtype == LM_OT_MATRIX) {
       data.GetPos(x, y);
-      XDrawRectangle(fl_display,pm,mathLineGC,x,y-df_asc, df_width, df_asc);
+      XDrawRectangle(fl_display, pm, mathLineGC, x, y-df_asc, df_width, df_asc);
       XFlush(fl_display);
    }
 }
@@ -144,10 +144,10 @@ MathParInset::Draw(int x, int y)
 void 
 MathParInset::Metrics()
 {
-    byte cx, cxp=0, *s;
+    byte cx, cxp= 0, *s;
     int ls;
-    int asc=df_asc, des=0;
-    int tb = 0, tab=0;
+    int asc= df_asc, des= 0;
+    int tb = 0, tab= 0;
 
     bool limits = false;
     
@@ -173,11 +173,11 @@ MathParInset::Metrics()
 	      MathedInset *p = data.GetInset();
 	      p->SetStyle(size);   
 	      p->Metrics();
-	      if (cx==LM_TC_UP) {
+	      if (cx == LM_TC_UP) {
 		  asc += (limits) ? p->Height()+4: p->Ascent() + 
 		    ((p->Descent()>asc) ? p->Descent()-asc+4: 0);
 	      } else
-		if (cx==LM_TC_DOWN) {
+		if (cx == LM_TC_DOWN) {
 		    des += ((limits) ? p->Height()+4: p->Height()-p->Ascent()/2);
 		} else {
 		    asc = p->Ascent();
@@ -185,14 +185,14 @@ MathParInset::Metrics()
 		}
 	      if (asc > ascent) ascent = asc;
 	      if (des > descent) descent = des;
-	      if (cx!=LM_TC_UP && cx!=LM_TC_DOWN)
+	      if (cx!= LM_TC_UP && cx!= LM_TC_DOWN)
 		limits = p->GetLimits();
 	      data.Next();
 	  } else 
-	  if (cx==LM_TC_TAB) {
+	  if (cx == LM_TC_TAB) {
 	      int x, y;
 	      data.GetIncPos(x, y);
-	      if (data.IsFirst() || cxp==LM_TC_TAB || cxp==LM_TC_CR) {
+	      if (data.IsFirst() || cxp == LM_TC_TAB || cxp == LM_TC_CR) {
 		  if (ascent<df_asc) ascent = df_asc;
 		  tb = x;
 	      }
@@ -202,23 +202,23 @@ MathParInset::Metrics()
 	      limits = false;                   
 	      data.Next();
 	  } else
-	  if (cx==LM_TC_CR) {
+	  if (cx == LM_TC_CR) {
 	      if (tb>0) {
 		  int x, y;
 		  data.GetIncPos(x, y);
-		  if (data.IsFirst() || cxp==LM_TC_TAB || cxp==LM_TC_CR) {
+		  if (data.IsFirst() || cxp == LM_TC_TAB || cxp == LM_TC_CR) {
 		      if (ascent<df_asc) ascent = df_asc;
 		      tb = x;
 		  } 
 		  data.setTab(x-tb, tab);
-	      } else //if (GetColumns()==1) 
+	      } else //if (GetColumns() == 1) 
 		    {
 		  int x, y;
 		  data.GetIncPos(x, y);
 		  data.setTab(x, tab);
 		  if (ascent<df_asc) ascent = df_asc;
 	      } 
-	      tb=tab=0;
+	      tb= tab= 0;
 	      data.subMetrics(ascent, descent);
 	      ascent = df_asc;   
 	      descent = 0;
@@ -235,7 +235,7 @@ MathParInset::Metrics()
     
     // No matter how simple is a matrix, it is NOT a subparagraph
     if (isMatrix()) {
-	if (cxp==LM_TC_TAB) {
+	if (cxp == LM_TC_TAB) {
 	    if (ascent<df_asc) ascent = df_asc;
 	    data.setTab(0, tab);
 	} else {
@@ -251,13 +251,13 @@ void
 MathSqrtInset::Draw(int x, int y)
 { 
    MathParInset::Draw(x+hmax+2, y); 
-   int h=ascent, d=descent, h2=Height()/2, w2 = (Height()>4*hmax)?hmax:hmax/2; 
+   int h= ascent, d= descent, h2= Height()/2, w2 = (Height()>4*hmax)?hmax:hmax/2; 
    XPoint p[4];
    p[0].x = x + hmax + wbody, p[0].y = y-h;
    p[1].x = x+hmax,    p[1].y = y-h;
    p[2].x = x+w2,      p[2].y = y+d;
    p[3].x = x,         p[3].y = y+d-h2;
-   XDrawLines(fl_display, pm, mathLineGC,p, 4, CoordModeOrigin);
+   XDrawLines(fl_display, pm, mathLineGC, p, 4, CoordModeOrigin);
    XFlush(fl_display);
 }
 
@@ -268,7 +268,7 @@ MathSqrtInset::Metrics()
    ascent += 4;
    descent += 2;
    int a, b;
-   hmax = mathed_char_height(LM_TC_VAR, size, 'I',a, b);
+   hmax = mathed_char_height(LM_TC_VAR, size, 'I', a, b);
    if (hmax<10) hmax = 10;
    wbody = width + 4;
    width += hmax + 4;
@@ -281,11 +281,11 @@ MathFracInset::Draw(int x, int y)
     short sizex = size;
     
     idx = 0;
-    if (size==LM_ST_DISPLAY) size++;
+    if (size == LM_ST_DISPLAY) size++;
     MathParInset::Draw(x+(width-w0)/2, y - des0);
     den->Draw(x+(width-w1)/2, y + den->Ascent() + 2 - dh);
     size = sizex;
-    if (objtype==LM_OT_FRAC)
+    if (objtype == LM_OT_FRAC)
       XDrawLine(fl_display, pm, mathLineGC, x+2, y-dh, x+width-4, y - dh);
     XFlush(fl_display);
     idx = idxp;
@@ -301,7 +301,7 @@ MathFracInset::Metrics()
     short idxp = idx;
     short sizex = size; 
     idx = 0;
-    if (size==LM_ST_DISPLAY) size++; 
+    if (size == LM_ST_DISPLAY) size++; 
     MathParInset::Metrics();
     size = sizex;
     w0 = width;
@@ -324,9 +324,9 @@ MathBigopInset::Draw(int x, int y)
    char const *s;
    short t;
    
-   if (sym<256 || sym==LM_oint) {
+   if (sym<256 || sym == LM_oint) {
       ls = 1;
-      c = (sym==LM_oint) ? LM_int: sym;
+      c = (sym == LM_oint) ? LM_int: sym;
       s = &c;
       t = LM_TC_BSYM;
    } else {
@@ -335,8 +335,8 @@ MathBigopInset::Draw(int x, int y)
       t = LM_TC_TEXTRM;
    }
    mathed_set_font(t, size);
-   if (sym==LM_oint) {
-      XDrawArc(fl_display, pm, mathLineGC, x,y-5*width/4,width,width,0,23040);
+   if (sym == LM_oint) {
+      XDrawArc(fl_display, pm, mathLineGC, x, y-5*width/4, width, width, 0, 23040);
       XFlush(fl_display);
       x++;
    }
@@ -352,9 +352,9 @@ MathBigopInset::Metrics()
    char const *s;
    short t;
 
-   if (sym<256 || sym==LM_oint) {
+   if (sym<256 || sym == LM_oint) {
       ls = 1;
-      c = (sym==LM_oint) ? LM_int: sym;
+      c = (sym == LM_oint) ? LM_int: sym;
       s = &c;
       t = LM_TC_BSYM;
    } else {
@@ -365,6 +365,6 @@ MathBigopInset::Metrics()
    mathed_set_font(t, size);
    mathed_string_height(t, size, reinterpret_cast<const unsigned char*>(s), ls, ascent, descent);
    width = mathed_string_width(t, size, reinterpret_cast<const unsigned char*>(s), ls);
-   if (sym==LM_oint) width += 2;
+   if (sym == LM_oint) width += 2;
 }
 

@@ -1,9 +1,9 @@
 /* C code produced by gperf version 2.5 (GNU C++ version) */
 /* Command-line: gperf -a -p -o -t -G -D keywords  */
 #include <config.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 
 #include "math_defs.h"
 #include "math_parser.h"
@@ -17,9 +17,9 @@
 /* maximum key range = 483, duplicates = 40 */
 
 static unsigned int
-hash (register const char *str, register int len)
+hash (register char const *str, register int len)
 {
-  static unsigned short asso_values[] =
+  static unsigned short asso_values[] = 
     {
      491, 491, 491, 491, 491, 491, 491, 491, 491, 491,
      491, 491, 491, 491, 491, 491, 491, 491, 491, 491,
@@ -38,7 +38,7 @@ hash (register const char *str, register int len)
   return len + asso_values[str[len - 1]] + asso_values[str[0]];
 }
 
-static struct latexkeys wordlist[] =
+static struct latexkeys wordlist[] = 
 {
       {"",}, {"",}, {"",}, {"",}, {"",}, {"",}, {"",}, {"",}, 
       {"setminus",  LM_TK_SYM, LM_setminus},
@@ -312,7 +312,7 @@ static struct latexkeys wordlist[] =
       {"vdash",  LM_TK_SYM, LM_vdash},
 };
 
-static short lookup[] =
+static short lookup[] = 
 {
         -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,   8,  -1,  -1,  -1,  -1,  -1,
         -1,   9,  10,  -1,  11,  -1,  -1,  -1,  12,  -1,  -1, 491, -13,  -2,
@@ -353,7 +353,7 @@ static short lookup[] =
 };
 
 struct latexkeys *
-in_word_set (register const char *str, register int len)
+in_word_set (register char const *str, register int len)
 {
   if (len <= MAX_WORD_LENGTH && len >= MIN_WORD_LENGTH)
     {
@@ -392,7 +392,7 @@ latexkeys *lm_get_key_by_id(int t, short tk)
    latexkeys* l = &wordlist[MIN_HASH_VALUE+TOTAL_KEYWORDS];
    latexkeys* base = &wordlist[MIN_HASH_VALUE];
    while (--l >= base) {
-     if (t==l->id && tk==l->token)
+     if (t == l->id && tk == l->token)
        return l;
    }
    return 0;

@@ -33,11 +33,11 @@ extern void mathed_set_font(short type, int style);
 
 extern GC canvasGC, mathGC, latexGC, cursorGC, mathFrameGC;
 
-static LyxArrayBase *selarray=0;
+static LyxArrayBase *selarray= 0;
 
 inline bool IsAlpha(char c)
 {
-   return ('A' <= c  && c<='Z' || 'a' <= c  && c<='z');
+   return ('A' <= c  && c<= 'Z' || 'a' <= c  && c<= 'z');
 }
 
 // This was very smaller, I'll change it later 
@@ -68,7 +68,7 @@ struct MathStackXIter {
     int i, imax;
     MathedXIter *item;
     
-    MathStackXIter(int n=MAX_STACK_ITEMS): imax(n) {
+    MathStackXIter(int n= MAX_STACK_ITEMS): imax(n) {
 	item = new MathedXIter[imax];
 	i = 0;
     }
@@ -97,23 +97,23 @@ struct MathStackXIter {
     }
    
     int Full() {
-	return (i>=MAX_STACK_ITEMS);
+	return (i>= MAX_STACK_ITEMS);
     }
    
     int Empty() {
-	return (i<=1);
+	return (i<= 1);
     }
 
     int Level() { return i; } 
     
-} mathstk, *selstk=0;
+} mathstk, *selstk= 0;
 
 
 MathStackXIter::MathStackXIter(MathStackXIter &stk) {
     imax = stk.imax;
     item = new MathedXIter[imax];
     i = stk.i;
-    for (int k=0; k<i; k++) {
+    for (int k= 0; k<i; k++) {
         item[k].SetData(stk.item[k].getPar());
         item[k].GoBegin();
         item[k].goPosAbs(stk.item[k].getPos());
@@ -156,8 +156,8 @@ void MathedCursor::Draw(long unsigned pm, int x, int y)
     if (par->GetType()>LM_OT_PAR) { a += 4;  h += 8; }
     
    if (!canvasGC) mathed_set_font(LM_TC_VAR, 1);
-    //   XFillRectangle(fl_display,pm, canvasGC, x, y-a, w, h);
-    XDrawRectangle(fl_display,pm, mathFrameGC, x-1, y-a, w, h);
+    //   XFillRectangle(fl_display, pm, canvasGC, x, y-a, w, h);
+    XDrawRectangle(fl_display, pm, mathFrameGC, x-1, y-a, w, h);
     XFlush(fl_display);
     MathParInset::pm = pm;
     par->Draw(x, y);
@@ -173,7 +173,7 @@ void MathedCursor::Redraw()
    int x, y;
    par->GetXY(x, y);
    mathed_set_font(LM_TC_VAR, 1);
-   XFillRectangle(fl_display, win,canvasGC,x, y-par->Ascent(), w, h);
+   XFillRectangle(fl_display, win, canvasGC, x, y-par->Ascent(), w, h);
    XFlush(fl_display);
     MathParInset::pm = win;
    par->Draw(x, y);
@@ -273,7 +273,7 @@ bool MathedCursor::Right(bool sel)
       } else
 	 result = cursor->Next();
    } else {
-       if (cursor->GetChar()!=LM_TC_CR)
+       if (cursor->GetChar()!= LM_TC_CR)
 	 result = cursor->Next();
      if (!result && !mathstk.Empty()) {
 	cursor = mathstk.pop();
@@ -340,19 +340,19 @@ void MathedCursor::Insert(byte c, MathedTextCodes t)
 {  
    if (selection) SelDel();
    
-   if (t==LM_TC_MIN)
+   if (t == LM_TC_MIN)
       t = lastcode;
     
-   if (macro_mode && !(MathIsAlphaFont(t) || t==LM_TC_MIN))
+   if (macro_mode && !(MathIsAlphaFont(t) || t == LM_TC_MIN))
       MacroModeClose();
 	
-   if (t==LM_TC_CR) {
+   if (t == LM_TC_CR) {
       MathParInset *p= cursor->p;
-      if (p==par && p->GetType()<LM_OT_MPAR && p->GetType()>LM_OT_MIN) {
+      if (p == par && p->GetType()<LM_OT_MPAR && p->GetType()>LM_OT_MIN) {
 	 MathMatrixInset* mt = new MathMatrixInset(3, 0);
 	 mt->SetAlign(' ', "rcl");
 	 mt->SetStyle(LM_ST_DISPLAY);
-	 mt->SetType((p->GetType()==LM_OT_PARN) ? LM_OT_MPARN: LM_OT_MPAR);
+	 mt->SetType((p->GetType() == LM_OT_PARN) ? LM_OT_MPARN: LM_OT_MPAR);
 	 mt->SetData(p->GetData());
 	 p->SetData(0);//BUG duda
 	 delete p;
@@ -367,7 +367,7 @@ void MathedCursor::Insert(byte c, MathedTextCodes t)
 	  cursor->addRow();
       }
    } else
-   if (t==LM_TC_TAB) {
+   if (t == LM_TC_TAB) {
       MathParInset *p = cursor->p;
       if (p &&  p->Permit(LMPF_ALLOW_TAB)) {
 	  if (c) {
@@ -376,7 +376,7 @@ void MathedCursor::Insert(byte c, MathedTextCodes t)
 	  } else
 	    cursor->goNextColumn();
       } else // Navigate between arguments
-	 if (p && p->GetType()==LM_OT_MACRO) {
+	 if (p && p->GetType() == LM_OT_MACRO) {
 	     if (p->getArgumentIdx() < p->getMaxArgumentIdx()) {
 		 p->setArgumentIdx(p->getArgumentIdx()+1);
 		 cursor->SetData(p);
@@ -385,7 +385,7 @@ void MathedCursor::Insert(byte c, MathedTextCodes t)
 	 }       
    } else {
        if (macro_mode) {
-	   if (MathIsAlphaFont(t) || t==LM_TC_MIN) {
+	   if (MathIsAlphaFont(t) || t == LM_TC_MIN) {
 	       MacroModeInsert(c);
 	       return;
 	   }
@@ -439,7 +439,7 @@ void MathedCursor::Delete()
    if (cursor->Empty() && !mathstk.Empty()) {
       cursor = mathstk.pop();
    } 
-//   if (cursor->GetChar()!=LM_TC_TAB)
+//   if (cursor->GetChar()!= LM_TC_TAB)
     cursor->Delete();
     cursor->checkTabs();
 }
@@ -452,7 +452,7 @@ void MathedCursor::DelLine()
 	return;
     }
     MathParInset *p= cursor->p;
-    if (p &&  (p->GetType()<=LM_OT_MATRIX && p->GetType()>=LM_OT_MPAR)) {
+    if (p &&  (p->GetType()<= LM_OT_MATRIX && p->GetType()>= LM_OT_MPAR)) {
 	cursor->delRow();
     }
 }
@@ -490,9 +490,9 @@ bool MathedCursor::Up(bool sel)
     if (!result && cursor->p) {
 	p = cursor->p;   
    
-	if (p->GetType()==LM_OT_SCRIPT) {
+	if (p->GetType() == LM_OT_SCRIPT) {
 	    MathedXIter *cx = mathstk.Item(1);
-	    bool is_down = (cx->GetChar()==LM_TC_DOWN);
+	    bool is_down = (cx->GetChar() == LM_TC_DOWN);
 	    cursor = mathstk.pop();
 	    cursor->Next();
 	    result =  (is_down) ? true: Up();
@@ -544,9 +544,9 @@ bool MathedCursor::Down(bool sel)
     result = cursor->Down();
     if (!result && cursor->p) {
    	p= cursor->p;   
-	if (p->GetType()==LM_OT_SCRIPT) {
+	if (p->GetType() == LM_OT_SCRIPT) {
 	    MathedXIter *cx = mathstk.Item(1);
-	    bool is_up = (cx->GetChar()==LM_TC_UP);
+	    bool is_up = (cx->GetChar() == LM_TC_UP);
 	    cursor = mathstk.pop();
 	    cursor->Next();
 	    result = (is_up) ? true: Down();
@@ -571,7 +571,7 @@ bool MathedCursor::Limits()
       MathedInset *p = cursor->GetInset();
       bool ol = p->GetLimits();
       p->SetLimits(!ol);
-      return (ol!=p->GetLimits());
+      return (ol!= p->GetLimits());
    }
    return false;
 }
@@ -605,9 +605,9 @@ void MathedCursor::Interpret(char const *s)
     latexkeys *l = 0;   
     MathedTextCodes tcode = LM_TC_INSET;
     
-    if (s[0]=='^' || s[0]=='_') {
+    if (s[0] == '^' || s[0] == '_') {
 	char c = cursor->GetChar();
-	if (MathIsUp(c) && s[0]=='^' || MathIsDown(c) && s[0]=='_') {
+	if (MathIsUp(c) && s[0] == '^' || MathIsDown(c) && s[0] == '_') {
 	    Push();
 	    return;
 	} else // A script may be followed by a script
@@ -615,18 +615,18 @@ void MathedCursor::Interpret(char const *s)
 	    cursor->ipush();
 	    cursor->Next();
 	    c = cursor->GetChar();
-	    if (MathIsUp(c) && s[0]=='^' || MathIsDown(c) && s[0]=='_') {
+	    if (MathIsUp(c) && s[0] == '^' || MathIsDown(c) && s[0] == '_') {
 		Push();
 		return;
 	    } else
 	      cursor->ipop();
 	}
 	p = new MathParInset(LM_ST_SCRIPT, "", LM_OT_SCRIPT);
-	Insert (p, (s[0]=='_') ? LM_TC_DOWN: LM_TC_UP); 
+	Insert (p, (s[0] == '_') ? LM_TC_DOWN: LM_TC_UP); 
 	return;
     } else   
-      if (s[0]=='!' || s[0]==','  || s[0]==':' || s[0]==';') {
-	  int sp = ((s[0]==',') ? 1:((s[0]==':') ? 2:((s[0]==';') ? 3: 0))); 
+      if (s[0] == '!' || s[0] == ','  || s[0] == ':' || s[0] == ';') {
+	  int sp = ((s[0] == ',') ? 1:((s[0] == ':') ? 2:((s[0] == ';') ? 3: 0))); 
 	  p = new MathSpaceInset(sp);
 	  Insert(p);
 	  return;
@@ -637,7 +637,7 @@ void MathedCursor::Interpret(char const *s)
 	p = MathMacroTable::mathMTable.getMacro(s);
 	if (!p) {
 	    lyxerr[Debug::MATHED] << "Macro2 " << s << ' ' << tcode << endl;
-	    if (strcmp("root", s)==0) {
+	    if (strcmp("root", s) == 0) {
 		p = new MathRootInset();
 		tcode = LM_TC_ACTIVE_INSET;
 	    } else
@@ -771,7 +771,7 @@ void MathedCursor::MacroModeClose()
       } else {
          Left();
 	 imacro->SetName(0);
-	 if (cursor->GetInset()->GetType()==LM_OT_ACCENT) {
+	 if (cursor->GetInset()->GetType() == LM_OT_ACCENT) {
 	     setAccent(((MathAccentInset*)cursor->GetInset())->getAccentCode());
 	 }
 	 cursor->Delete();
@@ -820,7 +820,7 @@ void MathedCursor::SelCopy()
 void MathedCursor::SelCut()
 {   
     if (selection) {
-	if (cursor->pos==selpos) return;
+	if (cursor->pos == selpos) return;
 	
 	int p1, p2;
 	p1 = (cursor->pos < selpos) ? cursor->pos: selpos;
@@ -836,7 +836,7 @@ void MathedCursor::SelDel()
 {
 //    lyxerr << "Deleting sel "
     if (selection) {    
-	if (cursor->pos==selpos) return;
+	if (cursor->pos == selpos) return;
      	cursor->Clean(selpos);
 	cursor->Adjust();
 	SelClear();
@@ -930,7 +930,7 @@ XPoint *MathedCursor::SelGetArea(int& np)
     point[i].x = x;
     point[i++].y = y-a;
     
-    if (y!=y1) {
+    if (y!= y1) {
 	point[i].x = xo + w;
 	point[i++].y = y-a;
 	if (x1<xo+w) {
@@ -944,7 +944,7 @@ XPoint *MathedCursor::SelGetArea(int& np)
     point[i].x = x1;
     point[i++].y = y1+d;
     
-    if (y!=y1) {
+    if (y!= y1) {
 	point[i].x = xo;
 	point[i++].y = y1+d;
 	if (x>xo) {
@@ -957,7 +957,7 @@ XPoint *MathedCursor::SelGetArea(int& np)
     np = i;
 //    lyxerr << "AN[" << x << " " << y << " " << x1 << " " << y1 << "] ";
 //    lyxerr << "MT[" << a << " " << d << " " << a1 << " " << d1 << "] ";
-//    for (i=0; i<np; i++)
+//    for (i= 0; i<np; i++)
 //      lyxerr << "XY[" << point[i].x << " " << point[i].y << "] ";
     
     return &point[0];
@@ -984,8 +984,8 @@ void MathedCursor::doAccent(byte c, MathedTextCodes t)
 {
 	MathedInset *ac = 0;
 	
-	for (int i=accent-1; i>=0; i--) {
-		if (i==accent-1)
+	for (int i= accent-1; i>= 0; i--) {
+		if (i == accent-1)
 		  ac = new MathAccentInset(c, t, nestaccent[i]);
 		else 
 		  ac = new MathAccentInset(ac, nestaccent[i]);
@@ -1001,8 +1001,8 @@ void MathedCursor::doAccent(MathedInset *p)
 {
 	MathedInset *ac = 0;
 	
-	for (int i=accent-1; i>=0; i--) {
-		if (i==accent-1)
+	for (int i= accent-1; i>= 0; i--) {
+		if (i == accent-1)
 		  ac = new MathAccentInset(p, nestaccent[i]);
 		else 
 		  ac = new MathAccentInset(ac, nestaccent[i]);

@@ -15,8 +15,8 @@
 #include <config.h>
 
 #include FORMS_H_LOCATION
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 
 #include "lyx_gui_misc.h" 
 #include "math_panel.h"
@@ -37,15 +37,15 @@
 #include "matrix.xpm"
 #include "equation.xpm"
 
-static LyXFunc *lyxfunc=0;
+static LyXFunc * lyxfunc= 0;
 
-//static FD_panel* symb_form=0;
+//static FD_panel* symb_form= 0;
 
-FD_panel  *fd_panel;
-FD_delim  *fd_delim;
-FD_deco   *fd_deco;
-FD_space  *fd_space;
-FD_matrix *fd_matrix;
+FD_panel  * fd_panel;
+FD_delim  * fd_delim;
+FD_deco   * fd_deco;
+FD_space  * fd_space;
+FD_matrix * fd_matrix;
 
 int delim_code[] = {   
    '(', ')', LM_lceil,  LM_rceil,  LM_uparrow,  LM_Uparrow,
@@ -54,13 +54,14 @@ int delim_code[] = {
    LM_langle,  LM_rangle, '|', LM_Vert, '.', 0
 };
 
-static char const *deco_code[] = {
+
+static char const * deco_code[] = {
    "widehat", "widetilde", "overbrace", "overleftarrow", "overrightarrow", 
-   "overline","underbrace", "underline"
+   "overline", "underbrace", "underline"
 };
 
 
-static char const *func_code[] = {
+static char const * func_code[] = {
     "arccos", "arcsin", "arctan", "arg", "bmod",
     "cos", "cosh", "cot", "coth", "csc", "deg",
     "det", "dim", "exp", "gcd", "hom", "inf", "ker",
@@ -72,7 +73,7 @@ static char const *func_code[] = {
 static char h_align_str[80] = "c";
 
 /* callbacks for form panel */
-void button_cb(FL_OBJECT *ob, long data)
+void button_cb(FL_OBJECT * ob, long data)
 {   
    extern void free_symbols_form();
    switch (data)  {
@@ -83,7 +84,7 @@ void button_cb(FL_OBJECT *ob, long data)
     case MM_BOP:
     case MM_MISC: 
       {	   
-	 BitmapMenu *menu = (BitmapMenu *)ob->u_vdata;
+	 BitmapMenu * menu = static_cast<BitmapMenu *>(ob->u_vdata);
 	 menu->Show();  
 	 break;
       }
@@ -94,19 +95,19 @@ void button_cb(FL_OBJECT *ob, long data)
        lyxfunc->Dispatch(LFUN_INSERT_MATH, "sqrt");
       break;
     case MM_DELIM:
-      fl_show_form(fd_delim->delim,FL_PLACE_MOUSE,FL_FULLBORDER, _("Delimiter"));
+      fl_show_form(fd_delim->delim, FL_PLACE_MOUSE, FL_FULLBORDER, _("Delimiter"));
        fl_set_form_atclose(fd_delim->delim, CancelCloseBoxCB, 0);
       break;
     case MM_DECO:
-      fl_show_form(fd_deco->deco,FL_PLACE_MOUSE,FL_FULLBORDER,_("Decoration"));
+      fl_show_form(fd_deco->deco, FL_PLACE_MOUSE, FL_FULLBORDER, _("Decoration"));
        fl_set_form_atclose(fd_deco->deco, CancelCloseBoxCB, 0);
       break;
     case MM_SPACE:
-      fl_show_form(fd_space->space,FL_PLACE_MOUSE,FL_FULLBORDER,_("Spacing"));
+      fl_show_form(fd_space->space, FL_PLACE_MOUSE, FL_FULLBORDER, _("Spacing"));
        fl_set_form_atclose(fd_space->space, CancelCloseBoxCB, 0);
       break;
     case MM_MATRIX:
-      fl_show_form(fd_matrix->matrix,FL_PLACE_MOUSE,FL_FULLBORDER,_("Matrix"));
+      fl_show_form(fd_matrix->matrix, FL_PLACE_MOUSE, FL_FULLBORDER, _("Matrix"));
        fl_set_form_atclose(fd_matrix->matrix, CancelCloseBoxCB, 0);
       break;
     case MM_EQU:
@@ -128,8 +129,8 @@ void button_cb(FL_OBJECT *ob, long data)
 /* callbacks for form delim */
 void delim_cb(FL_OBJECT *, long data)
 {
-   int left=fd_delim->left->u_ldata, right=fd_delim->right->u_ldata;
-   int side=(fl_get_button(fd_delim->right)!=0);
+   int left= fd_delim->left->u_ldata, right= fd_delim->right->u_ldata;
+   int side= (fl_get_button(fd_delim->right)!= 0);
    Pixmap p1, p2;
    
    switch (data) {
@@ -139,15 +140,15 @@ void delim_cb(FL_OBJECT *, long data)
 	 char s[80];
 	 sprintf(s, "%d %d", delim_code[left], delim_code[right]); 
 	 lyxfunc->Dispatch(LFUN_MATH_DELIM, s);
-	 if (data==MM_APPLY) break;
+	 if (data == MM_APPLY) break;
       }
     case MM_CLOSE: fl_hide_form(fd_delim->delim); break;
     case 2: 
       {
 	  int i = fl_get_bmtable(fd_delim->menu);
-	  if (i>=0) {
+	  if (i>= 0) {
 #if FL_REVISION > 85
-	      if (side || (fl_get_bmtable_numb(fd_delim->menu)!=FL_LEFT_MOUSE)) 
+	      if (side || (fl_get_bmtable_numb(fd_delim->menu)!= FL_LEFT_MOUSE)) 
 #else
 	      if (side || (fl_get_bmtable_numb(fd_delim->menu)!= 1))
 	
@@ -157,8 +158,8 @@ void delim_cb(FL_OBJECT *, long data)
 		left = i;
 	  }
 	  p1 = fl_get_pixmap_pixmap(fd_delim->pix, &p1, &p2);
-	  fl_draw_bmtable_item(fd_delim->menu,left,p1,0,0);
-	  fl_draw_bmtable_item(fd_delim->menu,right,p1,16,0);
+	  fl_draw_bmtable_item(fd_delim->menu, left, p1, 0, 0);
+	  fl_draw_bmtable_item(fd_delim->menu, right, p1, 16, 0);
 	  fl_redraw_object(fd_delim->pix);
 	  
 	  fd_delim->left->u_ldata = left;
@@ -183,19 +184,19 @@ void matrix_cb(FL_OBJECT *, long data)
       {
 	 char s[80];
 	 char c = v_align_c[fl_get_choice(fd_matrix->valign)-1];
-	 char const *sh = fl_get_input(fd_matrix->halign);
-	 nx = (int)(fl_get_slider_value(fd_matrix->columns)+0.5);
-	 ny = (int)(fl_get_slider_value(fd_matrix->rows)+0.5);
+	 char const * sh = fl_get_input(fd_matrix->halign);
+	 nx = int(fl_get_slider_value(fd_matrix->columns)+0.5);
+	 ny = int(fl_get_slider_value(fd_matrix->rows)+0.5);
 	 sprintf(s, "%d %d %c%s", nx, ny, c, sh);      
-	 if (data==MM_OK) fl_hide_form(fd_matrix->matrix);
+	 if (data == MM_OK) fl_hide_form(fd_matrix->matrix);
 	 lyxfunc->Dispatch(LFUN_INSERT_MATRIX, s);
 	 break;
       }
     case MM_CLOSE: fl_hide_form(fd_matrix->matrix); break;
     case 2: 
       {
-	 nx = (int)(fl_get_slider_value(fd_matrix->columns)+0.5);
-	 for (int i=0; i<nx; i++) h_align_str[i] = 'c';
+	 nx = int(fl_get_slider_value(fd_matrix->columns)+0.5);
+	 for (int i= 0; i<nx; i++) h_align_str[i] = 'c';
 	 //memset(h_align_str, 'c', nx);
 	 h_align_str[nx] = '\0';
 //	 fl_freeze_form(fd_form_main->form_main);
@@ -217,40 +218,43 @@ void deco_cb(FL_OBJECT *, long data)
       { 
 	 int i = fl_get_bmtable(fd_deco->menu);
 	 lyxfunc->Dispatch(LFUN_INSERT_MATH, deco_code[i]);
-	 if (data==MM_APPLY) break;
+	 if (data == MM_APPLY) break;
       }
     case MM_CLOSE: fl_hide_form(fd_deco->deco); break;
    }
 }
 
+
 /* callbacks for form space */
 void space_cb(FL_OBJECT *, long data)
 {
-   static short sp=-1;
-   extern char *latex_mathspace[];
+   static short sp = -1;
+   extern char * latex_mathspace[];
    
-   if (data>=0 && data<6) 
-      sp = (short)data;
+   if (data >= 0 && data < 6) 
+      sp = short(data);
    else
    switch (data) {
     case MM_APPLY:
     case MM_OK:
       { 
-	  if (sp>=0) 
+	  if (sp>= 0) 
 	    lyxfunc->Dispatch(LFUN_INSERT_MATH, latex_mathspace[sp]);
-	 if (data==MM_APPLY) break;
+	 if (data == MM_APPLY) break;
       }
     case MM_CLOSE: fl_hide_form(fd_space->space); break;
    }
 }
 
-extern "C" int align_filter(FL_OBJECT *, char const *, char const *cur, int c)
+
+extern "C" int align_filter(FL_OBJECT *, char const *, char const * cur, int c)
 {
-   int n = (int)(fl_get_slider_value(fd_matrix->columns)+0.5) - strlen(cur);
-   return ((c=='c'||c=='l'||c=='r') && n>=0) ? FL_VALID: FL_INVALID;
+   int n = int(fl_get_slider_value(fd_matrix->columns)+0.5) - strlen(cur);
+   return ((c == 'c'||c == 'l'||c == 'r') && n>= 0) ? FL_VALID: FL_INVALID;
 }
 
-char** mathed_get_pixmap_from_icon(int d)
+
+char ** mathed_get_pixmap_from_icon(int d)
 {
    switch (d) {
     case MM_FRAC: return frac;
@@ -264,7 +268,8 @@ char** mathed_get_pixmap_from_icon(int d)
    }
 }
 
-FD_panel *create_math_panel( )
+
+FD_panel * create_math_panel( )
 {
    fd_panel = create_form_panel();
    fd_delim = create_form_delim();
@@ -275,7 +280,7 @@ FD_panel *create_math_panel( )
    /* fill-in form initialization code */
    fl_set_button(fd_delim->left, 1);
    fl_set_pixmap_data(fd_delim->pix, delim0);
-   fl_set_bmtable_data(fd_delim->menu,6,4,delim_width,delim_height,
+   fl_set_bmtable_data(fd_delim->menu, 6, 4, delim_width, delim_height,
 		       delim_bits);
    fl_set_bmtable_maxitems(fd_delim->menu, 23);
    
@@ -287,7 +292,7 @@ FD_panel *create_math_panel( )
    fl_set_pixmap_data(fd_panel->matrix, matrix);
    fl_set_pixmap_data(fd_panel->equation, equation);
 
-   for (int i=0; i<32; i++) {
+   for (int i= 0; i<32; i++) {
        fl_add_browser_line(fd_panel->func_browse, func_code[i]);
    }
     
@@ -296,7 +301,7 @@ FD_panel *create_math_panel( )
    fl_set_input(fd_matrix->halign, h_align_str);
    fl_set_input_filter(fd_matrix->halign, align_filter);
    
-   fl_set_bmtable_data(fd_deco->menu,3,3,deco_width,deco_height,
+   fl_set_bmtable_data(fd_deco->menu, 3, 3, deco_width, deco_height,
 		       deco_bits);
    fl_set_bmtable_maxitems(fd_deco->menu, 8);
 
@@ -309,6 +314,7 @@ FD_panel *create_math_panel( )
 extern BitmapMenu* sym_menu;
 extern void  create_symbol_menues(FD_panel *);
 
+
 void free_symbols_form()
 {
    if (fd_panel) {
@@ -320,13 +326,15 @@ void free_symbols_form()
    }
 }
 
+
 extern "C" int AtClose_symbols_form(FL_FORM *, void *)
 {
   free_symbols_form();
   return FL_IGNORE;
 }
 
-void show_symbols_form(LyXFunc *lf)
+
+void show_symbols_form(LyXFunc * lf)
 {
     lyxfunc = lf;
     if (!fd_panel) {

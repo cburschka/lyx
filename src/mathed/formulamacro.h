@@ -14,8 +14,8 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#ifndef _INSET_FORMULA_MACRO_H 
-#define _INSET_FORMULA_MACRO_H
+#ifndef INSET_FORMULA_MACRO_H 
+#define INSET_FORMULA_MACRO_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -35,7 +35,7 @@ public:
 	///
 	InsetFormulaMacro();
 	///
-	InsetFormulaMacro(string name, int na=0, bool env=false);
+	InsetFormulaMacro(string name, int na= 0, bool env= false);
 	///
 	~InsetFormulaMacro();
 	///

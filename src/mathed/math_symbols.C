@@ -82,7 +82,7 @@ static char const *latex_brel[] = {
 static char const* latex_arrow[] = {
   "downarrow", "leftarrow", "Downarrow", "Leftarrow", 
   "hookleftarrow", "rightarrow", "uparrow", "Rightarrow", "Uparrow",
-  "hookrightarrow","updownarrow", "Leftrightarrow", "leftharpoonup", 
+  "hookrightarrow", "updownarrow", "Leftrightarrow", "leftharpoonup", 
   "rightharpoonup", "rightleftharpoons", "leftrightarrow", "Updownarrow", 
   "leftharpoondown", "rightharpoondown", "mapsto",
   "Longleftarrow", "Longrightarrow", "Longleftrightarrow", 
@@ -182,9 +182,9 @@ void BitmapMenu::Show()  {
 FL_OBJECT*
 BitmapMenu::AddBitmap(int id, int nx, int ny, int bw, int bh, unsigned char* data, Bool vert)
 {
-   if (i>=nb)
+   if (i>= nb)
      return 0;
-   int wx=bw+ww/2, wy=bh+ww/2;
+   int wx= bw+ww/2, wy= bh+ww/2;
    wx += (wx % nx);
    wy += (wy % ny); 
    FL_OBJECT *obj = fl_create_bmtable(1, x, y, wx, wy, "");   
@@ -212,7 +212,7 @@ void BitmapMenu::Create()
       return;
    }
    form = fl_bgn_form(FL_UP_BOX, w, h);   
-   for (i=0; i<nb; i++) {
+   for (i= 0; i<nb; i++) {
       fl_add_object(form, bitmap[i]);
       bitmap[i]->u_vdata = this;
    }
@@ -222,10 +222,10 @@ void BitmapMenu::Create()
 
 int BitmapMenu::GetIndex(FL_OBJECT* ob)
 {
-   if (active==this) {
+   if (active == this) {
       int k = 0;
-      for (i=0; i<nb; i++) {
-	 if (bitmap[i]==ob) 
+      for (i= 0; i<nb; i++) {
+	 if (bitmap[i] == ob) 
 	   return k+fl_get_bmtable(ob);
 	 k += fl_get_bmtable_maxitems(bitmap[i]);
       }
@@ -235,7 +235,7 @@ int BitmapMenu::GetIndex(FL_OBJECT* ob)
 
 int peek_event(FL_FORM * /*form*/, void *xev)
 {
-   if (BitmapMenu::active==0)
+   if (BitmapMenu::active == 0)
      return 0;
   
    if(((XEvent *)xev)->type == ButtonPress)
@@ -248,9 +248,9 @@ int peek_event(FL_FORM * /*form*/, void *xev)
       char c[5];
       KeySym keysym;
       XLookupString(&((XEvent *)xev)->xkey, &c[0], 5, &keysym, 0);
-      if (keysym==XK_Left) 
+      if (keysym == XK_Left) 
 	BitmapMenu::active->Prev(); else
-      if (keysym==XK_Right) 
+      if (keysym == XK_Right) 
 	BitmapMenu::active->Next(); 
       else 
 	BitmapMenu::active->Hide();
@@ -261,7 +261,7 @@ int peek_event(FL_FORM * /*form*/, void *xev)
 
 // This is just a wrapper.
 extern "C" int C_peek_event(FL_FORM *form, void *ptr) {
-  return peek_event(form,ptr);
+  return peek_event(form, ptr);
 }
 
 
@@ -310,7 +310,7 @@ extern "C" void math_cb(FL_OBJECT* ob, long data)
 
 char** get_pixmap_from_symbol(char const *arg, int wx, int hx)
 {
-   char** data=0;   		    
+   char** data= 0;   		    
    latexkeys *l = in_word_set (arg, strlen(arg));
    if (!l) 
     return 0;
@@ -337,14 +337,14 @@ char** get_pixmap_from_symbol(char const *arg, int wx, int hx)
 Bool math_insert_greek(char const c)
 {
    int i;
-   char const *s=0;
+   char const *s= 0;
    
-   if ('A'<=c && c<='Z') {
-      if ((i=Latin2Greek[c - 'A'])>=0)
+   if ('A'<= c && c<= 'Z') {
+      if ((i= Latin2Greek[c - 'A'])>= 0)
 	s = latex_greek[i];
    }   
-   if ('a'<=c && c<='z') {
-      if ((i=latin2greek[c - 'a'])>=0)
+   if ('a'<= c && c<= 'z') {
+      if ((i= latin2greek[c - 'a'])>= 0)
 	s = latex_greek[i+11];
    }
    if (s) {
@@ -366,10 +366,10 @@ void math_insert_symbol(char const* s)
 	 BeforeChange();
 	 current_view->buffer()->insertInset(new_inset);
 //	 Update(1);//BUG
-	 new_inset->Edit(0,0);
+	 new_inset->Edit(0, 0);
 	 new_inset->InsertSymbol(s);
       } else
-	if (current_view->buffer()->the_locking_inset->LyxCode()==Inset::MATH_CODE)
+	if (current_view->buffer()->the_locking_inset->LyxCode() == Inset::MATH_CODE)
 		static_cast<InsetFormula*>(current_view->buffer()->the_locking_inset)->InsertSymbol(s);
         else 
 		lyxerr << "Math error: attempt to write on a wrong "
@@ -377,7 +377,7 @@ void math_insert_symbol(char const* s)
    }
 }
 
-BitmapMenu * sym_menu=0;
+BitmapMenu * sym_menu= 0;
 
 void  create_symbol_menues(FD_panel * symb_form)
 {
@@ -433,11 +433,11 @@ static
 char** pixmapFromBitmapData(char const *s, int wx, int hx)
 {
     int i, id;
-    char** data=0;
+    char** data= 0;
     
-    id=-1;
+    id= -1;
     
-    for (i=0; i<6; i++) {
+    for (i= 0; i<6; i++) {
 	char const **latex_str = 0;
 	switch (i) {
 	 case 0: latex_str = latex_greek; break;
@@ -449,21 +449,21 @@ char** pixmapFromBitmapData(char const *s, int wx, int hx)
 	}
 	
 	for (int k = 0; latex_str[k][0]>' '; k++) {
-	    if (strcmp(latex_str[k], s)==0) {
+	    if (strcmp(latex_str[k], s) == 0) {
 		id = k;
 		break;
 	    }
 	}
-	if (id>=0) break;
+	if (id>= 0) break;
     }
-    if (i<6 && id>=0) {
+    if (i<6 && id>= 0) {
 	unsigned char *bdata = 0;
 	int w = 0, h = 0, dw = 0, dh = 0;
 
 	lyxerr[Debug::MATHED] << "Imando " << i << ", " << id << endl;
 	switch (i) {
 	 case 0: 
-	    if (id<=10) {
+	    if (id<= 10) {
 		w = Greek_width;
 		h = Greek_height;
 		bdata = Greek_bits;
@@ -537,7 +537,7 @@ char** pixmapFromBitmapData(char const *s, int wx, int hx)
 	// Dirty hack to get blue symbols quickly
 	char *sx = strstr(data[2], "FFFFFFFF");
 	if (sx) {
-	    for (int k=0; k<8; k++) sx[k] = '0';
+	    for (int k= 0; k<8; k++) sx[k] = '0';
 	}
 
 //	XDestroyImage(xima);

@@ -16,8 +16,8 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#ifndef __MATH_CURSOR__
-#define __MATH_CURSOR__
+#ifndef MATH_CURSOR
+#define MATH_CURSOR
 
 #ifdef __GNUG__
 #pragma interface
@@ -31,25 +31,25 @@
 class MathedCursor {
  public:
     ///
-    MathedCursor(MathParInset *p);
+    MathedCursor(MathParInset * p);
     ///
     ~MathedCursor() { };
     ///
-    void Insert(byte, MathedTextCodes t=LM_TC_MIN);
+    void Insert(byte, MathedTextCodes t = LM_TC_MIN);
     ///
-    void Insert(MathedInset*, int t=LM_TC_INSET);
+    void Insert(MathedInset*, int t = LM_TC_INSET);
     ///
     void Home();
     ///
     void End();
     ///
-    bool Right(bool sel=false);
+    bool Right(bool sel = false);
     ///
-    bool Left(bool sel=false);
+    bool Left(bool sel = false);
     ///
-    bool Up(bool sel=false);
+    bool Up(bool sel = false);
     ///
-    bool Down(bool sel=false);
+    bool Down(bool sel = false);
     ///
     bool Pop();
     ///
@@ -67,26 +67,26 @@ class MathedCursor {
     ///
     void SetPos(int, int);
     ///
-    void GetPos(int& x, int& y) { cursor->GetPos(x, y); }
+    void GetPos(int & x, int & y) { cursor->GetPos(x, y); }
     ///
     short GetFCode() { return cursor->FCode(); }
     ///
-    MathParInset *GetPar() { return par; }
+    MathParInset * GetPar() { return par; }
     ///
-    MathParInset *getCurrentPar() const { return cursor->p; }
+    MathParInset * getCurrentPar() const { return cursor->p; }
     ///
-    void SetPar(MathParInset*);
+    void SetPar(MathParInset *);
     ///
-    void Interpret(char const*);
+    void Interpret(char const *);
     ///
     void SetSize(short);
     ///
     void setNumbered();
-    void setLabel(char const*);
+    void setLabel(char const *);
     ///
     bool Limits();
-    /// Set accent: if argument=0 it's considered consumed 
-    void setAccent(int ac=0);
+    /// Set accent: if argument = 0 it's considered consumed 
+    void setAccent(int ac = 0);
     /// Returns last accent
     int getAccent() const;
     ///
@@ -117,7 +117,7 @@ class MathedCursor {
     ///
     void SelBalance();  
     ///
-    XPoint *SelGetArea(int&);
+    XPoint * SelGetArea(int &);
     ///
     void clearLastCode() { lastcode = LM_TC_MIN; }
     ///
@@ -139,7 +139,7 @@ class MathedCursor {
     ///
     int  selpos;
     ///
-    MathedXIter cursel, *anchor;
+    MathedXIter cursel, * anchor;
     ///
 //    LyxArrayBase *selarray; 
     ///
@@ -147,15 +147,15 @@ class MathedCursor {
     ///
     long unsigned win;
     ///
-    MathParInset *par;
+    MathParInset * par;
     ///
-    MathedXIter *cursor;
+    MathedXIter * cursor;
     ///
     int xc, yc;
     ///
     void doAccent(byte c, MathedTextCodes t);
     ///
-    void doAccent(MathedInset *p);
+    void doAccent(MathedInset * p);
     ///
     int accent;
 	///
@@ -169,7 +169,7 @@ class MathedCursor {
 	///
     int macroln;
 	///
-    MathFuncInset* imacro;
+    MathFuncInset * imacro;
 };
 
 
@@ -177,4 +177,3 @@ class MathedCursor {
 
 
 #endif
-

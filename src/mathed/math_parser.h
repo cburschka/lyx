@@ -16,8 +16,8 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#ifndef __MATH_PARSER__
-#define __MATH_PARSER__
+#ifndef MATH_PARSER
+#define MATH_PARSER
 
 #ifdef __GNUG__
 #pragma interface
@@ -67,28 +67,28 @@ enum MathTokenEnum
 };
 
 ///
-struct latexkeys { char const* name; short token; int id; };
+struct latexkeys { char const * name; short token; int id; };
 
 ///
 struct latexkeys *
-in_word_set (register char const *str, register int len);
+in_word_set (register char const * str, register int len);
 
 ///
-struct latexkeys *lm_get_key(int index);
+struct latexkeys * lm_get_key(int index);
 
 ///
-struct latexkeys *lm_get_key_by_id(int id, short tc=LM_TK_SYM);
+struct latexkeys * lm_get_key_by_id(int id, short tc = LM_TK_SYM);
 
 ///
 typedef union{
   ///
 unsigned char c;
   ///
-char *s;
+char * s;
   ///
 int i;
   ///
-latexkeys *l;
+latexkeys * l;
 } YYSTYPE;
 
 extern YYSTYPE yylval;

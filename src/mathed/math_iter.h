@@ -17,8 +17,8 @@
  * 
  */
 
-#ifndef __MATH_ITER__
-#define __MATH_ITER__
+#ifndef MATH_ITER
+#define MATH_ITER
 
 #ifdef __GNUG__
 #pragma interface
@@ -61,11 +61,11 @@ class MathedIter {
     ///
     void goPosAbs(int);
     ///
-    int Empty() { return array->last<=1; }
+    int Empty() { return array->last<= 1; }
     ///
     int OK() { return array && (pos < array->last); }
     ///
-    int IsFirst() { return (pos==0); }
+    int IsFirst() { return (pos == 0); }
     ///
     byte GetChar();
     ///
@@ -89,9 +89,9 @@ class MathedIter {
     ///
     virtual void Reset();
     ///
-    virtual void Insert(byte, MathedTextCodes c=LM_TC_CONST);
+    virtual void Insert(byte, MathedTextCodes c= LM_TC_CONST);
     ///
-    virtual void Insert(MathedInset*, int t=LM_TC_INSET);
+    virtual void Insert(MathedInset*, int t= LM_TC_INSET);
     ///
     virtual bool Delete();
     ///
@@ -116,7 +116,7 @@ class MathedIter {
     LyxArrayBase *GetData() { return array; }
     
     /// Copy every object from position p1 to p2
-    LyxArrayBase *Copy(int p1=0, int p2=10000);
+    LyxArrayBase *Copy(int p1= 0, int p2= 10000);
    
     /// Delete every object from position p1 to p2
     void Clear();
@@ -243,7 +243,7 @@ class MathedXIter: public MathedIter {
     // Limits auxiliary variables
     /// Position and max width of a script
     int sx, sw;
-    /// true=center, false=left align (default)
+    /// true= center, false= left align (default)
     bool limits;
     /// Type of previous script
     short s_type;  
@@ -293,14 +293,14 @@ bool MathedIter::IsScript()
 inline
 bool MathedIter::IsTab()
 {
-    return (array->bf[pos]==LM_TC_TAB);
+    return (array->bf[pos] == LM_TC_TAB);
 }  
 
 
 inline
 bool MathedIter::IsCR()
 {
-    return (array->bf[pos]==LM_TC_CR);
+    return (array->bf[pos] == LM_TC_CR);
 }  
 
 

@@ -47,7 +47,7 @@
 /// Standard Math Sizes (Math mode styles)
 enum MathedStyles {
 	///
-   LM_ST_DISPLAY=0,
+   LM_ST_DISPLAY= 0,
    ///
    LM_ST_TEXT,
    ///
@@ -60,7 +60,7 @@ enum MathedStyles {
 /// Standard LaTeX Math Environments
 enum MathedEnvironment {
 	///
-   LM_EN_INTEXT=0,
+   LM_EN_INTEXT= 0,
    ///
    LM_EN_DISPLAY,
    ///
@@ -224,18 +224,18 @@ class MathedInset  {
     virtual ~MathedInset() { };
     
     /// Draw the object 
-    virtual void Draw(int x, int baseline)=0;
+    virtual void Draw(int x, int baseline)= 0;
     
     /// Write LaTeX and Lyx code
-    virtual void Write(FILE *file)=0;
+    virtual void Write(FILE *file)= 0;
     /// Write LaTeX and Lyx code
-    virtual void Write(string & file)=0;
+    virtual void Write(string & file)= 0;
    
     /// Reproduces itself
-    virtual MathedInset *Clone()=0;
+    virtual MathedInset *Clone()= 0;
    
     /// Compute the size of the object
-    virtual void Metrics()=0; 
+    virtual void Metrics()= 0; 
     /// 
     virtual int Ascent() const { return ascent; }
     ///
@@ -319,7 +319,7 @@ enum MathedParFlag {
 class MathParInset: public MathedInset  {
  public: 
     ///
-    MathParInset(short st=LM_ST_TEXT, char const *nm=0, short ot=LM_OT_MIN);
+    MathParInset(short st= LM_ST_TEXT, char const *nm= 0, short ot= LM_OT_MIN);
     ///
     MathParInset(MathParInset*);
     ///
@@ -347,9 +347,9 @@ class MathParInset: public MathedInset  {
     /// Paragraph position
     virtual void GetXY(int&, int&) const;
     ///
-    virtual void setXY(int x, int y) { xo =x;  yo = y; }
+    virtual void setXY(int x, int y) { xo = x;  yo = y; }
     ///
-    virtual void SetFocus(int,int) { };
+    virtual void SetFocus(int, int) { };
     ///
     virtual bool Inside(int, int);   
    
@@ -372,7 +372,7 @@ class MathParInset: public MathedInset  {
 
     // Vertical switching
     ///
-    virtual bool setArgumentIdx(int i) { return (i==0); }
+    virtual bool setArgumentIdx(int i) { return (i == 0); }
     ///
     virtual bool setNextArgIdx() { return false; }
     ///
@@ -408,7 +408,7 @@ class MathParInset: public MathedInset  {
 	///
     friend class MathedCursor;
 	///
-    friend LyxArrayBase *mathed_parse(unsigned flags = 0, LyxArrayBase*a=0, MathParInset**p=0);
+    friend LyxArrayBase *mathed_parse(unsigned flags = 0, LyxArrayBase*a= 0, MathParInset**p= 0);
 };
 
 
@@ -473,7 +473,7 @@ struct MathedRowSt {
 class MathMatrixInset: public MathParInset {
  public: 
     ///
-    MathMatrixInset(int m=1, int n=1, short st=LM_ST_TEXT);
+    MathMatrixInset(int m= 1, int n= 1, short st= LM_ST_TEXT);
     ///
     MathMatrixInset(MathMatrixInset*);
     ///
@@ -531,9 +531,9 @@ class MathMatrixInset: public MathParInset {
 /// 
 LyxArrayBase *mathed_parse(unsigned flags, LyxArrayBase *data, MathParInset **mt);
 ///
-void mathed_write(MathParInset*, FILE *, int*, char fragile, char const* label=0);
+void mathed_write(MathParInset*, FILE *, int*, char fragile, char const* label= 0);
 ///
-void mathed_write(MathParInset*, string&, int*, char fragile, char const* label=0);
+void mathed_write(MathParInset*, string &, int*, char fragile, char const* label= 0);
 ///
 void mathed_parser_file(FILE*, int);
 ///
@@ -544,19 +544,19 @@ int MathedLookupBOP(short);
 /************************ Inline functions ********************************/
 
 ///
-#define MathIsInset(x)  (LM_TC_INSET<=(x) && (x)<=LM_TC_ACTIVE_INSET)
+#define MathIsInset(x)  (LM_TC_INSET<= (x) && (x)<= LM_TC_ACTIVE_INSET)
 ///
-#define MathIsFont(x)  (LM_TC_CONST<=(x) && (x)<=LM_TC_BSYM)
+#define MathIsFont(x)  (LM_TC_CONST<= (x) && (x)<= LM_TC_BSYM)
 ///
-#define MathIsAlphaFont(x)  (LM_TC_VAR<=(x) && (x)<=LM_TC_TEXTRM)
+#define MathIsAlphaFont(x)  (LM_TC_VAR<= (x) && (x)<= LM_TC_TEXTRM)
 ///
-#define MathIsActive(x)  (LM_TC_INSET<(x) && (x)<=LM_TC_ACTIVE_INSET) 
+#define MathIsActive(x)  (LM_TC_INSET<(x) && (x)<= LM_TC_ACTIVE_INSET) 
 ///
-#define MathIsUp(x)    ((x)==LM_TC_UP) 
+#define MathIsUp(x)    ((x) == LM_TC_UP) 
 ///
-#define MathIsDown(x)  ((x)==LM_TC_DOWN)
+#define MathIsDown(x)  ((x) == LM_TC_DOWN)
 ///
-#define MathIsScript(x)  ((x)==LM_TC_DOWN || (x)==LM_TC_UP)  
+#define MathIsScript(x)  ((x) == LM_TC_DOWN || (x) == LM_TC_UP)  
 ///
 #define MathIsBOPS(x)    (MathedLookupBOP(x)>LMB_NONE)
 
@@ -564,12 +564,12 @@ int MathedLookupBOP(short);
 ///
 inline bool MathIsBinary(short x)
 {
-    return (x==LM_TC_BOP || x==LM_TC_BOPS);
+    return (x == LM_TC_BOP || x == LM_TC_BOPS);
 }
 
 ///
 inline bool MathIsSymbol(short x) {
-    return (LM_TC_SYMB<=x && x<=LM_TC_BSYM);
+    return (LM_TC_SYMB<= x && x<= LM_TC_BSYM);
 }
      
 
@@ -583,7 +583,7 @@ MathedInset::MathedInset(char const *nm, short ot, short st):
 inline
 bool MathParInset::Inside(int x, int y) 
 {
-  return (x>=xo && x<=xo+width && y<=yo+descent && y>=yo-ascent);
+  return (x>= xo && x<= xo+width && y<= yo+descent && y>= yo-ascent);
 }
 
 
@@ -597,7 +597,7 @@ void MathParInset::GetXY(int& x, int& y) const
 inline
 void MathParInset::UserSetSize(short sz)
 {
-   if (sz>=0) {
+   if (sz>= 0) {
        size = sz;      
        flag = flag & ~LMPF_FIXED_SIZE;
    }

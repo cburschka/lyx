@@ -227,17 +227,17 @@ inline int odd(int x) { return ((x) & 1); }
 
 typedef float matriz_data[2][2];
 
-const matriz_data MATIDEN={ {1,0}, {0,1}};
+const matriz_data MATIDEN= { {1, 0}, {0, 1}};
 
 extern void mathed_set_font(short type, int style);
 extern int mathed_char_width(short type, int style, byte c);
 extern int mathed_char_height(short, int, byte, int&, int&);
 
-#define mateq(m1,m2)  memcpy(m1,m2,sizeof(matriz_data))
+#define mateq(m1, m2)  memcpy(m1, m2, sizeof(matriz_data))
 
 class Matriz {
  public: 
-   Matriz() { mateq(m,MATIDEN); }
+   Matriz() { mateq(m, MATIDEN); }
    void rota(int);
    void escala(float, float);
    void transf(float, float, float&, float&);
@@ -253,7 +253,7 @@ void Matriz::rota(int code)
    float cs, sn;
    
    matriz_data r;
-   mateq(r,MATIDEN);
+   mateq(r, MATIDEN);
    cs = (odd(code)) ? 0: 1 - code;
    sn = (odd(code)) ? 2 - code: 0;
    r[0][0] = cs;         r[0][1] = sn;
@@ -264,7 +264,7 @@ void Matriz::rota(int code)
 void Matriz::escala(float x, float y)
 {
    matriz_data s;
-   mateq(s,MATIDEN);
+   mateq(s, MATIDEN);
    s[0][0] = x;  s[1][1] = y;
    matmat(s);
 }
@@ -274,7 +274,7 @@ void Matriz::matmat(matriz_data& a)
 {
    int i;
    matriz_data c;   
-   for (i=0;i<2; i++) {
+   for (i= 0;i<2; i++) {
       c[0][i] = a[0][0]*m[0][i] + a[0][1]*m[1][i];
       c[1][i] = a[1][0]*m[0][i] + a[1][1]*m[1][i];
    }
@@ -291,9 +291,9 @@ extern GC latexGC, mathGC, mathLineGC, cursorGC;
 
 static int search_deco(int code)
 {
-   int i=0;
+   int i= 0;
    
-   while (math_deco_table[i].code &&  math_deco_table[i].code!=code) i++;
+   while (math_deco_table[i].code &&  math_deco_table[i].code!= code) i++;
    if (!math_deco_table[i].code) i = -1;
    return i;
 }
@@ -303,7 +303,7 @@ void mathed_draw_deco(Window win, int x, int y, int w, int h, int code)
    Matriz mt, sqmt;
    XPoint p[32];
    float *d, xx, yy, x2, y2;
-   int i=0,j, n, r;
+   int i= 0, j, n, r;
    
    j = search_deco(code);   
    if (j<0) return;
@@ -321,7 +321,7 @@ void mathed_draw_deco(Window win, int x, int y, int w, int h, int code)
    sqmt.rota(r);
    sqmt.escala(n, n);
    if (r> 0 && r< 3) y += h;   
-   if (r>=2) x += w;   
+   if (r>= 2) x += w;   
    do {
       code = (int)d[i++];
       switch (code) {
@@ -331,7 +331,7 @@ void mathed_draw_deco(Window win, int x, int y, int w, int h, int code)
        {
 	  xx = d[i++]; yy = d[i++];
 	  x2 = d[i++]; y2 = d[i++];
-	  if (code==3) 
+	  if (code == 3) 
 	    sqmt.transf(xx, yy, xx, yy);
 	  else
 	    mt.transf(xx, yy, xx, yy);
@@ -345,10 +345,10 @@ void mathed_draw_deco(Window win, int x, int y, int w, int h, int code)
        case 4:
        {
 	  n = (int)d[i++];
-	  for (j=0; j<n; j++) {
+	  for (j= 0; j<n; j++) {
 	     xx = d[i++]; yy = d[i++];
 //	     lyxerr << " " << xx << " " << yy << " ";
-	     if (code==4) 
+	     if (code == 4) 
 	       sqmt.transf(xx, yy, xx, yy);
 	     else
 	       mt.transf(xx, yy, xx, yy);
@@ -368,16 +368,16 @@ MathDelimInset::Draw(int x, int y)
 { 
    xo = x;  yo = y; 
    MathParInset::Draw(x+dw+2, y-dh); 
-   //int h=Height(), hg=descent-1;  
+   //int h= Height(), hg= descent-1;  
 
-   if (left=='.') {
+   if (left == '.') {
      XDrawLine(fl_display, pm, cursorGC, x+4, yo-ascent, x+4, yo+descent);
      XFlush(fl_display);
    }
    else
      mathed_draw_deco(pm, x, y-ascent, dw, Height(), left);
    x += Width()-dw-2;
-   if (right=='.') {
+   if (right == '.') {
      XDrawLine(fl_display, pm, cursorGC, x+4, yo-ascent, x+4, yo+descent);
      XFlush(fl_display);
    }
@@ -451,7 +451,7 @@ MathAccentInset::Draw(int x, int y)
 	drawStr(fn, size, x, y, &c, 1);
 	XFlush(fl_display);
     }
-    x += (code==LM_not) ? (width-dw)/2: 2;
+    x += (code == LM_not) ? (width-dw)/2: 2;
     mathed_draw_deco(pm, x, y-dy, dw, dh, code);
 }
 
@@ -470,7 +470,7 @@ MathAccentInset::Metrics()
 	width = mathed_char_width(fn, size, c);
 	dh = (width-2)/2; 
     }
-    if (code==LM_not) {
+    if (code == LM_not) {
 	ascent += dh;
 	descent += dh;
 	dh = Height();
@@ -487,8 +487,8 @@ void
 MathDotsInset::Draw(int x, int y)
 {
    mathed_draw_deco(pm, x+2, y-dh, width-2, ascent, code);
-   if (code==LM_vdots||code==LM_ddots) x++; 
-   if (code!=LM_vdots) y--;
+   if (code == LM_vdots||code == LM_ddots) x++; 
+   if (code!= LM_vdots) y--;
    mathed_draw_deco(pm, x+2, y-dh, width-2, ascent, code);
 }     
 
@@ -500,7 +500,7 @@ MathDotsInset::Metrics()
    switch (code) {
     case LM_ldots: dh = 0; break;
     case LM_cdots: dh = ascent/2; break;
-    case LM_vdots: width /=2;
+    case LM_vdots: width /= 2;
     case LM_ddots: dh = ascent; break;
    }
 } 

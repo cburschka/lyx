@@ -78,18 +78,18 @@ int MathedInset::df_width;
 // wrong name on this one should be called "IsAscii"
 inline bool IsAlpha(char c)
 {
-   return ('A' <= c  && c<='Z' || 'a' <= c  && c<='z');
+   return ('A' <= c  && c<= 'Z' || 'a' <= c  && c<= 'z');
 }
 
 inline bool IsDigit(char c)
 {
-   return ('0' <= c && c <='9');
+   return ('0' <= c && c <= '9');
 }
 
 inline bool IsMacro(short token, int id)
 {
-   return (token!=LM_TK_FRAC && token!=LM_TK_SQRT &&
-	  !((token==LM_TK_SYM || token==LM_TC_BSYM) && id<255));
+   return (token!= LM_TK_FRAC && token!= LM_TK_SQRT &&
+	  !((token == LM_TK_SYM || token == LM_TC_BSYM) && id<255));
 }
 
 void mathedValidate(LaTeXFeatures &features, MathParInset *par);
@@ -138,7 +138,7 @@ LyXFont WhichFont(short type, int size)
     
     switch (size) {
      case LM_ST_DISPLAY:     
-	if (type==LM_TC_BSYM) {
+	if (type == LM_TC_BSYM) {
 	    f.incSize();
 	    f.incSize();
 	}
@@ -157,7 +157,7 @@ LyXFont WhichFont(short type, int size)
 	break;
     }
     
-    if (type!=LM_TC_TEXTRM) 
+    if (type!= LM_TC_TEXTRM) 
       f.setColor(LyXFont::MATH);
     return f;
 }
@@ -169,7 +169,7 @@ void mathed_init_fonts() //removed 'static' because DEC cxx does not
 
     Math_Fonts = new LyXFont[8]; //DEC cxx cannot initialize all fonts
 				 //at once (JMarc) rc
-    for (int i=0 ; i<8 ; i++){ 
+    for (int i= 0 ; i<8 ; i++){ 
     	Math_Fonts[i] = LyXFont::ALL_SANE;
     }
     Math_Fonts[0].setShape(LyXFont::ITALIC_SHAPE);
@@ -207,7 +207,7 @@ void mathed_set_font(short type, int size)
 	    mathFrameGC = getGC(gc_math_frame);
     }
     LyXFont f = WhichFont(type, size); 
-    if (type==LM_TC_TEX) {
+    if (type == LM_TC_TEX) {
 	f.setLatex(LyXFont::ON);
 	latexGC = f.getGC();
     } else
@@ -222,7 +222,7 @@ int mathed_string_width(short type, int size, byte const* s, int ls)
     byte sx[80];
     if (MathIsBinary(type)) {
 	byte *ps = &sx[0];
-	for (int i=0; i<ls && i<75; i++) {
+	for (int i= 0; i<ls && i<75; i++) {
 	    *(ps++) = ' ';
 	    *(ps++) = s[i];
 	    *(ps++) = ' ';
@@ -245,7 +245,7 @@ int mathed_string_height(short type, int size, byte const * s, int ls, int& asc,
 {
    LyXFont font = WhichFont(type, size);
    asc = des = 0;
-   for (int i=0; i<ls; i++) {
+   for (int i= 0; i<ls; i++) {
       if (font.descent(s[i]) > des)
 	des = font.descent(s[i]);
       if (font.ascent(s[i]) > asc)
@@ -271,7 +271,7 @@ void MathedInset::drawStr(short type, int siz, int x, int y, byte* s, int ls)
     byte sx[80];
     if (MathIsBinary(type)) {
 	byte *ps = &sx[0];
-	for (int i=0; i<ls && i < 75; i++) {
+	for (int i= 0; i<ls && i < 75; i++) {
 	    *(ps++) = ' ';
 	    *(ps++) = s[i];
 	    *(ps++) = ' ';
@@ -280,7 +280,7 @@ void MathedInset::drawStr(short type, int siz, int x, int y, byte* s, int ls)
 	ls = 3*ls;
 	s = &sx[0];
     }
-    GC gc = (type==LM_TC_TEX) ? latexGC: mathGC;
+    GC gc = (type == LM_TC_TEX) ? latexGC: mathGC;
     XDrawString(fl_display, pm, gc, x, y, reinterpret_cast<char*>(s), ls);
     XFlush(fl_display);
 }
@@ -300,7 +300,7 @@ InsetFormula::InsetFormula(bool display)
 
 InsetFormula::InsetFormula(MathParInset *p)
 {
-   par = (p->GetType()>=LM_OT_MPAR) ? 
+   par = (p->GetType()>= LM_OT_MPAR) ? 
          new MathMatrixInset((MathMatrixInset*)p): 
          new MathParInset(p);
 //   mathcursor = 0;
@@ -424,7 +424,7 @@ void InsetFormula::Draw(LyXFont f, LyXScreen &scr, int baseline, float &x)
    lfont_size = f.size();
    mathed_set_font(LM_TC_TEXTRM, LM_ST_TEXT); // otherwise a segfault could occur
 								// in some XDrawRectangles (i.e. matrix) (Matthias)   
-   if (mathcursor && mathcursor->GetPar()==par) { 
+   if (mathcursor && mathcursor->GetPar() == par) { 
        if (mathcursor->Selection()) {
 	   int n;
 	   XPoint * p = mathcursor->SelGetArea(n);
@@ -439,21 +439,21 @@ void InsetFormula::Draw(LyXFont f, LyXScreen &scr, int baseline, float &x)
    }
    x += (float)Width(f);
  
-   if (par->GetType()==LM_OT_PARN || par->GetType()==LM_OT_MPARN) {
+   if (par->GetType() == LM_OT_PARN || par->GetType() == LM_OT_MPARN) {
        char s[80];
        LyXFont  font = WhichFont(LM_TC_BF, par->size);
        font.setLatex(LyXFont::OFF);
       
-       if (par->GetType()==LM_OT_PARN) {
+       if (par->GetType() == LM_OT_PARN) {
 	   if (!label.empty())
 	     sprintf(s, "(%s)", label.c_str());
 	   else
 	     sprintf(s, "(#)");
 	   font.drawString(s, pm, baseline, int(x+20));
        } else 
-       if (par->GetType()==LM_OT_MPARN) {
+       if (par->GetType() == LM_OT_MPARN) {
 	   MathMatrixInset *mt = (MathMatrixInset*)par;
-	   //int i=0;
+	   //int i= 0;
 	   int y;
 	   MathedRowSt const* crow = mt->getRowSt();
 	   while (crow) {
@@ -574,12 +574,12 @@ void InsetFormula::ToggleInsetSelection()
 
 void InsetFormula::SetDisplay(bool dspf)
 {
-   if (dspf!=disp_flag) {
+   if (dspf!= disp_flag) {
       if (dspf) {
 	 par->SetType(LM_OT_PAR);
 	 par->SetStyle(LM_ST_DISPLAY);
       } else {
-	 if (par->GetType()>=LM_OT_MPAR) { 
+	 if (par->GetType()>= LM_OT_MPAR) { 
 	    MathParInset *p = new MathParInset(par);
 	    delete par;
 	    par = p;
@@ -588,7 +588,7 @@ void InsetFormula::SetDisplay(bool dspf)
 	 }
 	 par->SetType(LM_OT_MIN);
 	 par->SetStyle(LM_ST_TEXT);
-	 if (!label.empty() && par->GetType()!=LM_OT_MPARN) {
+	 if (!label.empty() && par->GetType()!= LM_OT_MPARN) {
 		 label.clear();
 	 }
       }
@@ -601,9 +601,9 @@ void InsetFormula::SetDisplay(bool dspf)
 int InsetFormula::GetNumberOfLabels() const
 {
    // This is dirty, I know. I'll clean it at 0.13
-   if (par->GetType()==LM_OT_MPARN) {
+   if (par->GetType() == LM_OT_MPARN) {
        MathMatrixInset *mt = (MathMatrixInset*)par;
-       int nl=0;
+       int nl= 0;
        MathedRowSt const* crow = mt->getRowSt();
        while (crow) {
 	   if (crow->getLabel()) nl++;
@@ -622,14 +622,14 @@ string InsetFormula::getLabel(int il) const
 {
 //#warning This is dirty, I know. Ill clean it at 0.11
 	// Correction, the only way to clean this is with a new kernel: 0.13.
-	if (par->GetType()==LM_OT_MPARN) {
+	if (par->GetType() == LM_OT_MPARN) {
 		string lab;
 		MathMatrixInset * mt = (MathMatrixInset*)par;
-		int nl=0;
+		int nl= 0;
 		MathedRowSt const * crow = mt->getRowSt();
 		while (crow) {
 			if (crow->getLabel()) {
-				if (nl==il) {
+				if (nl == il) {
 					lab = crow->getLabel();
 					break;
 				}
@@ -661,7 +661,7 @@ void InsetFormula::InsetButtonRelease(int x, int y, int /*button*/)
     if (sel_flag) {
 	sel_flag = false; 
 	sel_x = sel_y = 0;
-	UpdateInset(this,false); 
+	UpdateInset(this, false); 
     }
 }
 
@@ -692,7 +692,7 @@ void InsetFormula::InsetMotionNotify(int x, int y, int /*button*/)
 	  mathcursor->SetPos(x, y);
 	  ShowInsetCursor();
 	  mathcursor->GetPos(x, y);
-	  if (sel_x!=x || sel_y!=y)
+	  if (sel_x!= x || sel_y!= y)
 	    UpdateInset(this, false); 
 	  sel_x = x;  sel_y = y;
       }
@@ -708,7 +708,7 @@ bool InsetFormula::SetNumber(bool numbf)
 {
    if (disp_flag) {
       short type = par->GetType();
-      bool oldf = (type==LM_OT_PARN || type==LM_OT_MPARN);
+      bool oldf = (type == LM_OT_PARN || type == LM_OT_MPARN);
       if (numbf && !oldf) type++;
       if (!numbf && oldf) type--;
       par->SetType(type);
@@ -722,16 +722,16 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 //   extern char *dispatch_result;
     MathedTextCodes varcode = LM_TC_MIN;       
    bool was_macro = mathcursor->InMacroMode();
-   bool sel=false;
+   bool sel= false;
    bool space_on = false;
    bool was_selection = mathcursor->Selection();
    bool result = true;
-   static MathSpaceInset* sp=0;
+   static MathSpaceInset* sp= 0;
 
    HideInsetCursor();
    if (mathcursor->Selection() && (fast_selection || mono_video)) ToggleInsetSelection();
 
-    if (mathcursor->getLastCode()==LM_TC_TEX) { 
+    if (mathcursor->getLastCode() == LM_TC_TEX) { 
 	varcode = LM_TC_TEX;
     }
    switch (action) {
@@ -886,7 +886,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
       LockedInsetStoreUndo(Undo::INSERT);
        if (disp_flag) {
 	  short type = par->GetType();
-	  bool oldf = (type==LM_OT_PARN || type==LM_OT_MPARN);
+	  bool oldf = (type == LM_OT_PARN || type == LM_OT_MPARN);
 	  if (oldf) {
 	     type--;
 	     if (!label.empty()) {
@@ -905,7 +905,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
     
     case LFUN_MATH_NONUMBER:
     { 
-	if (par->GetType()==LM_OT_MPARN) {
+	if (par->GetType() == LM_OT_MPARN) {
 //	   MathMatrixInset *mt = (MathMatrixInset*)par;
 	   //BUG 
 //	   mt->SetNumbered(!mt->IsNumbered());
@@ -945,13 +945,13 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
        int k, m, n;
        char s[80], arg2[80];
        // This is just so that too long args won't ooze out of s.
-       strncpy(arg2,arg,80); arg2[79]=(char)0;
+       strncpy(arg2, arg, 80); arg2[79]= (char)0;
        k = sscanf(arg2, "%d %d %s", &m, &n, s);
        s[79] = (char)0;
 	
        if (k<1) {
 	   m = n = 1;
-       } else if (k==1) {
+       } else if (k == 1) {
 	   n = 1;
        }
 	
@@ -974,7 +974,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
        string vdelim("(){}[]./|");
 	
        if (!arg) break;
-       strncpy(arg2,arg,40); arg2[39]=(char)0;
+       strncpy(arg2, arg, 40); arg2[39]= (char)0;
        int n = sscanf(arg2, "%s %s", lf, rg);
        lf[39] = (char)0; rg[39] = (char)0;
 
@@ -984,7 +984,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 	   else 
 	     if (lf[1]) {
 		 l = in_word_set(lf, strlen(lf));
-		 // Long words will cause l==0; so check.
+		 // Long words will cause l == 0; so check.
 		 if(l) ilf = l->id;
 	     } else
 	     if (vdelim.find(lf[0]) != string::npos)
@@ -1028,7 +1028,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 	      lb = string(askForText(_("Enter new label to insert:")));
        if (!lb.empty() && lb[0]> ' ') {
 	  SetNumber(true);
-	  if (par->GetType()==LM_OT_MPARN) {
+	  if (par->GetType() == LM_OT_MPARN) {
 	      mathcursor->setLabel(lb.c_str());
 //	      MathMatrixInset *mt = (MathMatrixInset*)par;
 //	      mt->SetLabel(lb);
@@ -1053,7 +1053,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
     // Invalid actions under math mode
     case LFUN_MATH_MODE:  
     {
-	if (mathcursor->getLastCode()!=LM_TC_TEXTRM) {
+	if (mathcursor->getLastCode()!= LM_TC_TEXTRM) {
 	    minibuffer->Set(_("math text mode"));
 	    varcode = LM_TC_TEXTRM;
 	} else {
@@ -1072,20 +1072,20 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
        break;
        
     default:
-      if ((action==-1  || action==LFUN_SELFINSERT) && arg)  {
+      if ((action == -1  || action == LFUN_SELFINSERT) && arg)  {
 	 unsigned char c = arg[0];
 	 LockedInsetStoreUndo(Undo::INSERT);
 	 
-	 if (c==' ' && mathcursor->getAccent()==LM_hat) {
+	 if (c == ' ' && mathcursor->getAccent() == LM_hat) {
 	     c = '^';
 	     mathcursor->setAccent(0);
 	 }
-	 if (c==0) {      // Dead key, do nothing 
+	 if (c == 0) {      // Dead key, do nothing 
 	     //lyxerr << "deadkey" << endl;
 	     break;
 	 } 
 	 if (isalpha(c)) {
-	     if (mathcursor->getLastCode()==LM_TC_TEX) { 
+	     if (mathcursor->getLastCode() == LM_TC_TEX) { 
 	       mathcursor->MacroModeOpen();
 	       mathcursor->clearLastCode();
 	       varcode = LM_TC_MIN;
@@ -1102,49 +1102,49 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 	    varcode = LM_TC_MIN;
 	    if (greek_kb_flag<2) greek_kb_flag = 0;
 	 } else 
-	   if (strchr("!,:;{}", c) && (varcode==LM_TC_TEX||was_macro)) {
+	   if (strchr("!,:;{}", c) && (varcode == LM_TC_TEX||was_macro)) {
 	       mathcursor->Insert(c, LM_TC_TEX);
-	       if (c=='{') {
+	       if (c == '{') {
 		   mathcursor->Insert('}', LM_TC_TEX);
 		   mathcursor->Left();
 	       }
 	       mathcursor->clearLastCode();
 //	       varcode = LM_TC_MIN;
 	   } else
-	   if (c=='_' && varcode==LM_TC_TEX) {
+	   if (c == '_' && varcode == LM_TC_TEX) {
 	       mathcursor->Insert(c, LM_TC_SPECIAL);
 	       mathcursor->clearLastCode();
 //	       varcode = LM_TC_MIN;
 	   } else
-	    if (('0'<=c && c<='9') && (varcode==LM_TC_TEX||was_macro)) {
+	    if (('0'<= c && c<= '9') && (varcode == LM_TC_TEX||was_macro)) {
 		mathcursor->MacroModeOpen();
 		mathcursor->clearLastCode();
 		mathcursor->Insert(c, LM_TC_MIN);
 	    }
 	 else
-	   if (('0'<=c && c<='9') || strchr(";:!|[]().,?", c)) 
+	   if (('0'<= c && c<= '9') || strchr(";:!|[]().,?", c)) 
 	      mathcursor->Insert(c, LM_TC_CONST);
 	 else
-	   if (strchr("+/-*<>=", c))
+	   if (strchr("+/-*<>= ", c))
 	      mathcursor->Insert(c, LM_TC_BOP);
 	 else
-	   if (strchr(latex_special_chars, c) && c!='_')
+	   if (strchr(latex_special_chars, c) && c!= '_')
 	      mathcursor->Insert(c, LM_TC_SPECIAL);
 	 else
-	   if (c=='_' || c=='^') {
+	   if (c == '_' || c == '^') {
 	       char s[2];
 	       s[0] = c;
 	       s[1] = 0;
 	      mathcursor->Interpret (s);
 	   } else
-	   if (c==' ') {	    
+	   if (c == ' ') {	    
 	       if (!varcode) {	
 		   short f = (mathcursor->getLastCode()) ? 
 		              mathcursor->getLastCode():
 		              (MathedTextCodes)mathcursor->GetFCode();
 		   varcode = MathIsAlphaFont(f) ? (MathedTextCodes)f:LM_TC_VAR;
 	       }
-	      if (varcode==LM_TC_TEXTRM) {
+	      if (varcode == LM_TC_TEXTRM) {
 		  mathcursor->Insert(c, LM_TC_TEXTRM);
 	      } else
 	      if (was_macro)
@@ -1159,10 +1159,10 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 		    result = false;
 	      }
 	   } else
-	   if (c=='\'') {
+	   if (c == '\'') {
 	      mathcursor->Insert (c, LM_TC_VAR);
 	   } else
-	   if (c=='\\') {
+	   if (c == '\\') {
 	      if (was_macro)
 		mathcursor->MacroModeClose();
 	      minibuffer->Set(_("TeX mode")); 
@@ -1174,7 +1174,7 @@ bool InsetFormula::LocalDispatch(int action, char const *arg)
 	result =  false;
       }
    }
-   if (was_macro!=mathcursor->InMacroMode()&&action>=0&&action!=LFUN_BACKSPACE)
+   if (was_macro!= mathcursor->InMacroMode()&&action>= 0&&action!= LFUN_BACKSPACE)
      UpdateLocal();
    if (sp && !space_on) sp = 0;
    if (mathcursor->Selection() || (was_selection && !(fast_selection || mono_video)))
@@ -1197,7 +1197,7 @@ MathFuncInset::Draw(int x, int y)
 		font.setLatex(LyXFont::ON);
 	        x += (font.textWidth("I", 1)+3)/4;
 		if (mono_video) {
-			int a=font.maxAscent(), d=font.maxDescent();
+			int a= font.maxAscent(), d= font.maxDescent();
 			XFillRectangle (fl_display, pm, getGC(gc_copy),
 					x, y-a,
 					font.textWidth(name, strlen(name)), a+d);
@@ -1227,11 +1227,11 @@ void mathedValidate(LaTeXFeatures &features, MathParInset *par)
 	if (it.IsInset()) {
 	    if(it.IsActive()) {
 		MathParInset *p = it.GetActiveInset();
-		if (!features.binom && p->GetType()==LM_OT_MACRO && 
-		    strcmp(p->GetName(), "binom")==0) {
+		if (!features.binom && p->GetType() == LM_OT_MACRO && 
+		    strcmp(p->GetName(), "binom") == 0) {
 		    features.binom = true;
 		} else {
-		    for (int i=0; i<=p->getMaxArgumentIdx(); i++) {
+		    for (int i= 0; i<= p->getMaxArgumentIdx(); i++) {
 			p->setArgumentIdx(i);
 			mathedValidate(features, p);
 		    }
@@ -1239,7 +1239,7 @@ void mathedValidate(LaTeXFeatures &features, MathParInset *par)
 	    } else {
 		MathedInset* p = it.GetInset();
 		if (!features.boldsymbol && p->GetName() &&
-		    strcmp(p->GetName(), "boldsymbol")==0) {
+		    strcmp(p->GetName(), "boldsymbol") == 0) {
 		    features.boldsymbol = true;
 		}
 	    }	    

@@ -39,7 +39,7 @@ public:
 	};
 
 	///
-	LyxArrayBase(int size=ARRAY_STEP);
+	LyxArrayBase(int size= ARRAY_STEP);
 	///
 	LyxArrayBase(const LyxArrayBase&);
 	///
@@ -47,7 +47,7 @@ public:
    
 	
 	///
-	int Empty() { return (last==0); }
+	int Empty() { return (last == 0); }
    
 	///
 	int Last() { return last; }
@@ -83,7 +83,7 @@ public:
 	byte operator[](const int);
 
 	/// Constructs a new array with dx elements starting at pos 
-	LyxArrayBase& operator=(const LyxArrayBase&); 
+	LyxArrayBase& operator= (const LyxArrayBase&); 
 
 protected:
 	///
@@ -152,7 +152,7 @@ LyxArrayBase::LyxArrayBase(const LyxArrayBase& a)
 }
 
 inline
-LyxArrayBase& LyxArrayBase::operator=(const LyxArrayBase& a)
+LyxArrayBase& LyxArrayBase::operator= (const LyxArrayBase& a)
 {
 	if (this != &a) {
 		Resize(a.maxsize);
@@ -165,8 +165,8 @@ inline
 bool LyxArrayBase::Move(int p, int shift) 
 {
 	bool result = false;
-	if (p<=last) {
-		if (last+shift>=maxsize) { 
+	if (p<= last) {
+		if (last+shift>= maxsize) { 
 		    Resize(last + shift);
 		}
 		memmove(&bf[p+shift], &bf[p], last-p);
@@ -227,9 +227,9 @@ inline
 void LyxArrayBase::Insert(int pos, byte c)
 {
 	if (pos<0) pos = last;
-	if (pos>=maxsize) 
+	if (pos>= maxsize) 
 		Resize(maxsize+ARRAY_STEP);
 	bf[pos] = c;
-	if (pos>=last)
+	if (pos>= last)
 		last = pos+1;
 }

@@ -160,8 +160,8 @@ void InsetFormulaMacro::Draw(LyXFont font, LyXScreen &scr,
     } else {
 	font.setColor(LyXFont::MATH);
 	
-	int y=baseline - Ascent(font)+1;
-	int w=Width(font) - 2, h=(Ascent(font)+Descent(font)-2);
+	int y= baseline - Ascent(font)+1;
+	int w= Width(font) - 2, h= (Ascent(font)+Descent(font)-2);
 
 	
 	scr.fillRectangle(gc_lighted, int(x), y,  w,  h);
@@ -197,9 +197,9 @@ void InsetFormulaMacro::InsetUnlock()
 
 bool InsetFormulaMacro::LocalDispatch(int action, char const *arg)
 {
-    if (action==LFUN_MATH_MACROARG) {
+    if (action == LFUN_MATH_MACROARG) {
 	int i = atoi(arg) - 1;
-	if (i>=0 && i<tmacro->getNoArgs()) {
+	if (i>= 0 && i<tmacro->getNoArgs()) {
 	    mathcursor->Insert(tmacro->getMacroPar(i), LM_TC_INSET);
 	    InsetFormula::UpdateLocal();
 	}

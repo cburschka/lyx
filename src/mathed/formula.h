@@ -14,14 +14,13 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#ifndef _INSET_FORMULA_H 
-#define _INSET_FORMULA_H
+#ifndef INSET_FORMULA_H 
+#define INSET_FORMULA_H
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "definitions.h"
 #include "insets/lyxinset.h"
 
 
@@ -32,35 +31,35 @@ class MathedCursor;
 class InsetFormula: public UpdatableInset {
 public:
 	///
-	InsetFormula(bool display=false);
+	InsetFormula(bool display = false);
 	///
-	InsetFormula(MathParInset*);
+	InsetFormula(MathParInset *);
 	///
 	~InsetFormula();
 	///
-	int Ascent(LyXFont const &font) const;
+	int Ascent(LyXFont const & font) const;
 	///
-	int Descent(LyXFont const &font) const;
+	int Descent(LyXFont const & font) const;
 	///
-	int Width(LyXFont const &font) const;
+	int Width(LyXFont const & font) const;
 	///
-	void Draw(LyXFont font, LyXScreen &scr, int baseline, float &x);
+	void Draw(LyXFont font, LyXScreen & scr, int baseline, float & x);
 	///
-	void Write(FILE *file);
+	void Write(FILE * file);
 	///
-	void Read(LyXLex &lex);
+	void Read(LyXLex & lex);
 	///
-	int Latex(FILE *file, signed char fragile);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(string &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	///
-	int Linuxdoc(string &file);
+	int Linuxdoc(string & file);
 	///
-	int DocBook(string &file);
+	int DocBook(string & file);
 	///
 	void Validate(LaTeXFeatures &) const;
 	///
-	Inset* Clone();
+	Inset * Clone();
 	///
 	Inset::Code LyxCode() const { return Inset::MATH_CODE; }
 	///
@@ -71,7 +70,7 @@ public:
 	}
 
 	/// what appears in the minibuffer when opening
-	char const* EditMessage() {return _("Math editor mode");}
+	char const * EditMessage() {return _("Math editor mode");}
 	///
 	void Edit(int x, int y);
 	///
@@ -85,7 +84,7 @@ public:
 	///
 	void HideInsetCursor();
 	///
-	void GetCursorPos(int&, int&);
+	void GetCursorPos(int &, int &);
 	///
 	void ToggleInsetSelection();
 	///
@@ -93,17 +92,17 @@ public:
 	///
 	void InsetButtonRelease(int x, int y, int button);
 	///
-	void InsetKeyPress(XKeyEvent *ev);
+	void InsetKeyPress(XKeyEvent * ev);
 	///
 	void InsetMotionNotify(int x, int y, int state);
 	///
 	void InsetUnlock();
    
 	///  To allow transparent use of math editing functions
-	virtual bool LocalDispatch(int, char const*);
+	virtual bool LocalDispatch(int, char const *);
     
 	///
-	void InsertSymbol(char const*);
+	void InsertSymbol(char const *);
 	///
 	bool SetNumber(bool);
 	///
@@ -113,12 +112,11 @@ public:
    
 protected:
 	void UpdateLocal();
-    	MathParInset* par;
+    	MathParInset * par;
 	static MathedCursor* mathcursor;
     
 private:
 	bool disp_flag;
-	//char *label;
 	string label;
 };
 
@@ -128,4 +126,3 @@ private:
 bool OpenMathInset(Buffer *);
 
 #endif
-

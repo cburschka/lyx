@@ -140,7 +140,7 @@ class MathMacroTemplate: public MathParInset
 {
  public:
     /// A template constructor needs all the data
-    MathMacroTemplate(char const*, int na=0, int f=0);
+    MathMacroTemplate(char const*, int na= 0, int f= 0);
 	///
     ~MathMacroTemplate();
 	///
@@ -156,7 +156,7 @@ class MathMacroTemplate: public MathParInset
     ///
     MathedTextCodes getTCode() { return tcode; }
     /// 
-    void setArgument(LyxArrayBase *, int i=0);
+    void setArgument(LyxArrayBase *, int i= 0);
     /// Number of arguments
     int getNoArgs() { return nargs; }
     ///
@@ -169,7 +169,7 @@ class MathMacroTemplate: public MathParInset
     void setEditMode(bool);
 
     /// Replace the appropriate arguments with a specific macro's data
-    void update(MathMacro* m=0);
+    void update(MathMacro* m= 0);
       
  private:
     ///
@@ -227,7 +227,7 @@ class MathMacroTable
 inline
 bool MathMacro::setArgumentIdx(int i)
 {
-    if (i>=0 && i<nargs) {
+    if (i>= 0 && i<nargs) {
 	idx = i;
 	return true;
     } else

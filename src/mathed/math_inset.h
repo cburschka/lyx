@@ -19,8 +19,8 @@
 //  Note: These math insets are internal to Mathed and are not derived
 //        from lyx inset.
 
-#ifndef __MATH_INSET__
-#define __MATH_INSET__
+#ifndef MATH_INSET
+#define MATH_INSET
 
 #ifdef __GNUG__
 #pragma interface
@@ -38,7 +38,7 @@
 class MathFuncInset: public MathedInset  {
 public:
 	///
-   MathFuncInset(char const *nm, short ot=LM_OT_FUNC, short st=LM_ST_TEXT);
+   MathFuncInset(char const *nm, short ot= LM_OT_FUNC, short st= LM_ST_TEXT);
 	///
    ~MathFuncInset();
 	///
@@ -67,9 +67,9 @@ protected:
 class MathAccentInset: public MathedInset {
  public:
 	///
-   MathAccentInset(byte, MathedTextCodes, int, short st=LM_ST_TEXT);
+   MathAccentInset(byte, MathedTextCodes, int, short st= LM_ST_TEXT);
 	///
-   MathAccentInset(MathedInset *, int, short st=LM_ST_TEXT);
+   MathAccentInset(MathedInset *, int, short st= LM_ST_TEXT);
 	///
    ~MathAccentInset();
 	///
@@ -103,7 +103,7 @@ class MathAccentInset: public MathedInset {
 class MathDotsInset: public MathedInset {
  public:
 	///
-   MathDotsInset(char const*,int,short st=LM_ST_TEXT);
+   MathDotsInset(char const*, int, short st= LM_ST_TEXT);
 	///
    ~MathDotsInset() { };
 	///
@@ -126,7 +126,7 @@ class MathDotsInset: public MathedInset {
 class MathSpaceInset: public MathedInset  {
  public:
 	///
-   MathSpaceInset(int sp, short ot=LM_OT_SPACE, short st=LM_ST_TEXT);
+   MathSpaceInset(int sp, short ot= LM_OT_SPACE, short st= LM_ST_TEXT);
 	///
    ~MathSpaceInset() { };
 	///
@@ -153,7 +153,7 @@ class MathSpaceInset: public MathedInset  {
 class MathBigopInset: public MathedInset {
  public:
 	///
-   MathBigopInset(char const*, int, short st=LM_ST_TEXT);
+   MathBigopInset(char const*, int, short st= LM_ST_TEXT);
 	///
    ~MathBigopInset() { };
 	///
@@ -184,7 +184,7 @@ class MathBigopInset: public MathedInset {
 class MathSqrtInset: public MathParInset {
  public:
     ///
-    MathSqrtInset(short st=LM_ST_TEXT);
+    MathSqrtInset(short st= LM_ST_TEXT);
     ///
     ~MathSqrtInset() { };
     ///
@@ -210,7 +210,7 @@ class MathSqrtInset: public MathParInset {
 class MathFracInset: public MathParInset {
  public:
 	///
-    MathFracInset(short ot=LM_OT_FRAC);
+    MathFracInset(short ot= LM_OT_FRAC);
 	///
     ~MathFracInset();
 	///
@@ -233,7 +233,7 @@ class MathFracInset: public MathParInset {
 	///
     void GetXY(int& x, int& y) const;
 	///
-    void SetFocus(int,int);
+    void SetFocus(int, int);
     ///
     bool Inside(int, int);
     ///
@@ -260,7 +260,7 @@ class MathFracInset: public MathParInset {
 class MathDelimInset: public MathParInset {
  public:
 	///
-   MathDelimInset(int, int, short st=LM_ST_TEXT);
+   MathDelimInset(int, int, short st= LM_ST_TEXT);
 	///
    ~MathDelimInset() { };
 	///
@@ -285,7 +285,7 @@ class MathDelimInset: public MathParInset {
 class MathDecorationInset: public MathParInset {
  public:
 	///
-   MathDecorationInset(int, short st=LM_ST_TEXT);
+   MathDecorationInset(int, short st= LM_ST_TEXT);
 	///
    ~MathDecorationInset() { };
 	///
@@ -316,13 +316,13 @@ class MathDecorationInset: public MathParInset {
 inline
 MathFuncInset::~MathFuncInset()
 {
-    if (fname && GetType()==LM_OT_UNDEF) delete[] fname;
+    if (fname && GetType() == LM_OT_UNDEF) delete[] fname;
 }
 
 inline
 bool MathFuncInset::GetLimits() const 
 {  
-   return (bool)(lims && (GetStyle()==LM_ST_DISPLAY)); 
+   return (bool)(lims && (GetStyle() == LM_ST_DISPLAY)); 
 } 
 
 inline
@@ -344,7 +344,7 @@ void MathSpaceInset::Metrics()
 {
    width = (space) ? space*2: 2;
    if (space>3) width *= 2;
-   if (space==5) width *= 2;
+   if (space == 5) width *= 2;
    width += 4;
    ascent = 4; descent = 0;
 }
@@ -361,7 +361,7 @@ bool MathBigopInset::GetLimits() const
 {  
     // Default case
     if (lims<0) {
-	return (bool)(sym!=LM_int && sym!=LM_oint && (GetStyle()==LM_ST_DISPLAY));
+	return (bool)(sym!= LM_int && sym!= LM_oint && (GetStyle() == LM_ST_DISPLAY));
     } 
     
     // Custom 
@@ -377,7 +377,7 @@ void MathBigopInset::SetLimits(bool ls)
 inline
 bool MathDecorationInset::GetLimits() const
 { 
-   return (bool)(deco==LM_underbrace||deco==LM_overbrace);
+   return (bool)(deco == LM_underbrace||deco == LM_overbrace);
 }    
 
 

@@ -70,12 +70,12 @@ int MathedLookupBOP(short id)
 	issorted = true;
     }
     
-   int result=0, m, k, l= 0, r = bopCount;
+   int result= 0, m, k, l= 0, r = bopCount;
   
    while (l < r) {
       m = (l+r)/2;
       k = binary_op_table[m].id - id;
-      if (k==0) {
+      if (k == 0) {
 	 result = binary_op_table[m].isrel;
 	 break;
       } else

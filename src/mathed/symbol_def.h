@@ -1,7 +1,7 @@
 // This file was created automatically. Don't change it!  [asierra18jan96]
 
-#ifndef __SYMBOL_DEF__
-#define __SYMBOL_DEF__ 
+#ifndef SYMBOL_DEF
+#define SYMBOL_DEF 
 
 // Symbols that do exist in X11 symbol font
 #define LM_Gamma 0x47
@@ -130,7 +130,7 @@ enum Math_Symbols_enum {
   LM_bigcap,  LM_bigcup,  LM_biguplus,  LM_bigvee,  LM_bigwedge,
   LM_ell,  LM_imath,  LM_jmath,  LM_hbar,  LM_angle,  LM_top,  LM_Vert,  LM_flat,
   LM_natural,  LM_triangle,
-  LM_widehat,LM_widetilde, LM_underline, LM_overline, LM_underbrace, 
+  LM_widehat, LM_widetilde, LM_underline, LM_overline, LM_underbrace, 
   LM_overbrace, LM_overleftarrow, LM_overightarrow, 
   LM_ldots, LM_cdots, LM_vdots, LM_ddots,            
   LM_backslash, LM_emptyset,

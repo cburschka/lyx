@@ -23,13 +23,13 @@
 #include "support/lstrings.h"
 #include "debug.h"
 
-extern char const *latex_mathenv[];
-extern char *latex_mathspace[];
+extern char const * latex_mathenv[];
+extern char * latex_mathspace[];
 
 // quite a hack i know. Should be done with return values...
 static int number_of_newlines;
 
-char const *math_font_name[] = {
+char const * math_font_name[] = {
    "mathrm",
    "mathcal",
    "mathbf",
@@ -41,9 +41,9 @@ char const *math_font_name[] = {
 
 
 void
-MathSpaceInset::Write(FILE *outf)
+MathSpaceInset::Write(FILE * outf)
 { 
-   if (space>=0 && space<6) {
+   if (space >= 0 && space < 6) {
        string output;
        MathSpaceInset::Write(output);
        fprintf(outf, "%s", output.c_str());
@@ -51,9 +51,9 @@ MathSpaceInset::Write(FILE *outf)
 }
 
 void
-MathSpaceInset::Write(string &outf)
+MathSpaceInset::Write(string & outf)
 { 
-   if (space>=0 && space<6) {
+   if (space >= 0 && space < 6) {
        outf += '\\';
        outf += latex_mathspace[space];
        outf += ' ';
@@ -62,7 +62,7 @@ MathSpaceInset::Write(string &outf)
 
 
 void
-MathDotsInset::Write(FILE *outf)
+MathDotsInset::Write(FILE * outf)
 {
    string output;
    MathDotsInset::Write(output);
@@ -70,7 +70,7 @@ MathDotsInset::Write(FILE *outf)
 }   
 
 void
-MathDotsInset::Write(string &outf)
+MathDotsInset::Write(string & outf)
 {
    outf += '\\';
    outf += name;
@@ -78,14 +78,14 @@ MathDotsInset::Write(string &outf)
 }   
 
 
-void MathSqrtInset::Write(FILE *outf)
+void MathSqrtInset::Write(FILE * outf)
 { 
    string output;
    MathSqrtInset::Write(output);  
    fprintf(outf, "%s", output.c_str());
 }
 
-void MathSqrtInset::Write(string &outf)
+void MathSqrtInset::Write(string & outf)
 { 
    outf += '\\';
    outf += name;
@@ -95,24 +95,24 @@ void MathSqrtInset::Write(string &outf)
 }
 
 
-void MathDelimInset::Write(FILE *outf)
+void MathDelimInset::Write(FILE * outf)
 { 
     string output;
     MathDelimInset::Write(output);
     fprintf(outf, "%s", output.c_str());
 }
 
-void MathDelimInset::Write(string &outf)
+void MathDelimInset::Write(string & outf)
 { 
-    latexkeys* l = (left != '|') ? lm_get_key_by_id(left, LM_TK_SYM): 0;
-    latexkeys* r = (right != '|') ? lm_get_key_by_id(right, LM_TK_SYM): 0;
+    latexkeys * l = (left != '|') ? lm_get_key_by_id(left, LM_TK_SYM): 0;
+    latexkeys * r = (right != '|') ? lm_get_key_by_id(right, LM_TK_SYM): 0;
     outf += "\\left";
     if (l) {
         outf += '\\';
 	outf += l->name;
 	outf += ' ';
     } else {
-        if (left=='{' || left=='}') {
+        if (left == '{' || left == '}') {
 	    outf += '\\';
 	    outf += (char) left;
 	    outf += ' ';
@@ -128,7 +128,7 @@ void MathDelimInset::Write(string &outf)
        outf += r->name;
        outf += ' ';
    } else {
-       if (right=='{' || right=='}') {
+       if (right == '{' || right == '}') {
 	   outf += '\\';
 	   outf += (char) right;
 	   outf += ' ';
@@ -140,16 +140,16 @@ void MathDelimInset::Write(string &outf)
 }
 
 
-void MathDecorationInset::Write(FILE *outf)
+void MathDecorationInset::Write(FILE * outf)
 {
    string output;
    MathDecorationInset::Write(output);
    fprintf(outf, "%s", output.c_str());
 }
 
-void MathDecorationInset::Write(string &outf)
+void MathDecorationInset::Write(string & outf)
 { 
-   latexkeys* l = lm_get_key_by_id(deco, LM_TK_WIDE);
+   latexkeys * l = lm_get_key_by_id(deco, LM_TK_WIDE);
    outf += '\\';
    outf += l->name;
    outf += '{';
@@ -158,19 +158,19 @@ void MathDecorationInset::Write(string &outf)
 }
 
 
-void MathAccentInset::Write(FILE *outf)
+void MathAccentInset::Write(FILE * outf)
 { 
     string output;
     MathAccentInset::Write(output);
     fprintf(outf, "%s", output.c_str());
 }
 
-void MathAccentInset::Write(string &outf)
+void MathAccentInset::Write(string & outf)
 { 
-    latexkeys* l = lm_get_key_by_id(code, LM_TK_ACCENT);
+    latexkeys * l = lm_get_key_by_id(code, LM_TK_ACCENT);
     outf += '\\';
     outf += l->name;
-    if (code!=LM_not)
+    if (code!= LM_not)
       outf += '{';
     else
       outf += ' ';
@@ -178,7 +178,7 @@ void MathAccentInset::Write(string &outf)
     if (inset) {
       inset->Write(outf);
     } else {
-      if (fn>=LM_TC_RM && fn<=LM_TC_TEXTRM) {
+      if (fn>= LM_TC_RM && fn<= LM_TC_TEXTRM) {
         outf += '\\';
         outf += math_font_name[fn-LM_TC_RM];
         outf += '{';
@@ -193,47 +193,47 @@ void MathAccentInset::Write(string &outf)
       } else
         outf += (char) c;
 
-      if (fn>=LM_TC_RM && fn<=LM_TC_TEXTRM)
+      if (fn>= LM_TC_RM && fn<= LM_TC_TEXTRM)
         outf += '}';
     }
 
-    if (code!=LM_not)
+    if (code!= LM_not)
       outf += '}';
 }
 
 
-void MathBigopInset::Write(FILE *outf)
+void MathBigopInset::Write(FILE * outf)
 { 
    string output;
    MathBigopInset::Write(output);
    fprintf(outf, "%s", output.c_str());
 }
 
-void MathBigopInset::Write(string &outf)
+void MathBigopInset::Write(string & outf)
 { 
     bool limp = GetLimits();
     
     outf += '\\';
     outf += name;
     
-    if (limp && !(sym!=LM_int && sym!=LM_oint && (GetStyle()==LM_ST_DISPLAY)))
+    if (limp && !(sym!= LM_int && sym!= LM_oint && (GetStyle() == LM_ST_DISPLAY)))
       outf += "\\limits ";
     else 
-    if (!limp && (sym!=LM_int && sym!=LM_oint && (GetStyle()==LM_ST_DISPLAY)))
+    if (!limp && (sym!= LM_int && sym!= LM_oint && (GetStyle() == LM_ST_DISPLAY)))
 	outf += "\\nolimits ";
     else 
       outf += ' ';
 }
 
 
-void MathFracInset::Write(FILE *outf)
+void MathFracInset::Write(FILE * outf)
 { 
    string output;
    MathFracInset::Write(output);  
    fprintf(outf, "%s", output.c_str());
 }
 
-void MathFracInset::Write(string &outf)
+void MathFracInset::Write(string & outf)
 { 
    outf += '\\';
    outf += name;
@@ -245,7 +245,7 @@ void MathFracInset::Write(string &outf)
 }
 
 
-void MathParInset::Write(FILE *outf)
+void MathParInset::Write(FILE * outf)
 {
    if (!array) return;
    string output;
@@ -254,14 +254,14 @@ void MathParInset::Write(FILE *outf)
 }
 
 
-void MathParInset::Write(string &outf)
+void MathParInset::Write(string & outf)
 {
    if (!array) return;
    int brace = 0;
-   latexkeys *l;
+   latexkeys * l;
    MathedIter data(array);
    // hack
-   MathedRowSt const* crow = getRowSt();   
+   MathedRowSt const * crow = getRowSt();   
    data.Reset();
     
    if (!Permit(LMPF_FIXED_SIZE)) { 
@@ -274,18 +274,18 @@ void MathParInset::Write(string &outf)
    }
    while (data.OK()) {
       byte cx = data.GetChar();
-      if (cx>=' ') {
+      if (cx>= ' ') {
 	 int ls;
-	 byte *s = data.GetString(ls);
+	 byte * s = data.GetString(ls);
        
-	 if (data.FCode()>=LM_TC_RM && data.FCode()<=LM_TC_TEXTRM) {
+	 if (data.FCode()>= LM_TC_RM && data.FCode()<= LM_TC_TEXTRM) {
 	     outf += '\\';
 	     outf += math_font_name[data.FCode()-LM_TC_RM];
 	     outf += '{';
 	 }
 	 while (ls>0) {
 	    if (MathIsSymbol(data.FCode())) {
-		l = lm_get_key_by_id(*s,(data.FCode()==LM_TC_BSYM)?LM_TK_BIGSYM:LM_TK_SYM);
+		l = lm_get_key_by_id(*s,(data.FCode() == LM_TC_BSYM)?LM_TK_BIGSYM:LM_TK_SYM);
 	       if (l) {
 		 outf += '\\';
 		 outf += l->name;
@@ -296,14 +296,14 @@ void MathParInset::Write(string &outf)
 	       }
 	    } else {
 	       // Is there a standard logical XOR?
-	       if ((data.FCode()==LM_TC_TEX && *s!='{' && *s!='}') ||
-		   (data.FCode()==LM_TC_SPECIAL))
+	       if ((data.FCode() == LM_TC_TEX && *s!= '{' && *s!= '}') ||
+		   (data.FCode() == LM_TC_SPECIAL))
 		 outf += '\\';
 	       else {
-		  if (*s=='{') brace++;
-		  if (*s=='}') brace--;
+		  if (*s == '{') brace++;
+		  if (*s == '}') brace--;
 	       }
-	       if (*s=='}' && data.FCode()==LM_TC_TEX && brace<0) 
+	       if (*s == '}' && data.FCode() == LM_TC_TEX && brace<0) 
 		       lyxerr <<"Math warning: Unexpected closing brace."
 			      << endl;
 	       else	       
@@ -311,17 +311,17 @@ void MathParInset::Write(string &outf)
 	    }
 	    s++; ls--;
 	 }
-	 if (data.FCode()>=LM_TC_RM && data.FCode()<=LM_TC_TEXTRM)
+	 if (data.FCode()>= LM_TC_RM && data.FCode()<= LM_TC_TEXTRM)
 	   outf += '}';
       } else     
       if (MathIsInset(cx)) {
 	 MathedInset *p = data.GetInset();
-	 if (cx==LM_TC_UP)
+	 if (cx == LM_TC_UP)
 	   outf += "^{";
-	 if (cx==LM_TC_DOWN)
+	 if (cx == LM_TC_DOWN)
 	   outf += "_{";
 	 p->Write(outf);
-	 if (cx==LM_TC_UP || cx==LM_TC_DOWN)
+	 if (cx == LM_TC_UP || cx == LM_TC_DOWN)
 	   outf += '}';
 	 data.Next();
       } else
@@ -336,7 +336,7 @@ void MathParInset::Write(string &outf)
 	    {
 		if (crow) {
 		    if (!crow->isNumbered()) {  
-		        outf +="\\nonumber ";
+		        outf += "\\nonumber ";
 		    }
 		    if (crow->getLabel()) {
 		        outf += "\\label{";
@@ -358,7 +358,7 @@ void MathParInset::Write(string &outf)
     
     if (crow) {
 	if (!crow->isNumbered()) {
-	    outf +="\\nonumber ";
+	    outf += "\\nonumber ";
 	}
 	if (crow->getLabel()) {
 	    outf += "\\label{";
@@ -386,7 +386,7 @@ void MathMatrixInset::Write(string &outf)
 	outf += "\\begin{";
 	outf += name;
 	outf += '}';
-	if (v_align=='t' || v_align=='b') {
+	if (v_align == 't' || v_align == 'b') {
 	    outf += '[';
 	    outf += (char) v_align;
 	    outf += ']';
@@ -415,13 +415,13 @@ void mathed_write(MathParInset* p,  FILE* outf, int* newlines,  char fragile, ch
 
 extern int tex_code_break_column;
 
-void mathed_write(MathParInset* p, string& outf, int* newlines,
+void mathed_write(MathParInset* p, string & outf, int* newlines,
                   char fragile, char const* label)
 {  
    number_of_newlines = 0;
    short mathed_env = p->GetType();
 
-   if (mathed_env==LM_EN_INTEXT) {
+   if (mathed_env == LM_EN_INTEXT) {
      if (fragile) outf += "\\protect";
      outf += "\\( "; // changed from " \\( " (Albrecht Dress)
    } 
@@ -436,7 +436,7 @@ void mathed_write(MathParInset* p, string& outf, int* newlines,
        outf += "\n";
        number_of_newlines++;
      }
-     if (mathed_env==LM_EN_DISPLAY){
+     if (mathed_env == LM_EN_DISPLAY){
        outf += "\\[\n";
      }
      else {
@@ -447,7 +447,7 @@ void mathed_write(MathParInset* p, string& outf, int* newlines,
      number_of_newlines++;
    }
    
-   if (label && label[0]>' ' && mathed_env==LM_EN_EQUATION){
+   if (label && label[0]>' ' && mathed_env == LM_EN_EQUATION){
      outf += "\\label{";
      outf += label;
      outf += "}\n";
@@ -456,11 +456,11 @@ void mathed_write(MathParInset* p, string& outf, int* newlines,
 
    p->Write(outf);
    
-   if (mathed_env==LM_EN_INTEXT){
+   if (mathed_env == LM_EN_INTEXT){
      if (fragile) outf += "\\protect";
      outf += " \\)";
    }
-   else if (mathed_env==LM_EN_DISPLAY){
+   else if (mathed_env == LM_EN_DISPLAY){
      outf += "\\]\n";
      number_of_newlines++;
    }
@@ -468,7 +468,7 @@ void mathed_write(MathParInset* p, string& outf, int* newlines,
      outf += "\n\\end{";
      outf += latex_mathenv[mathed_env];
      outf += "}\n";
-     number_of_newlines+=2;
+     number_of_newlines+= 2;
    }
    *newlines = number_of_newlines;
 }
