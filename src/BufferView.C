@@ -24,6 +24,7 @@
 #include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
+#include "insetiterator.h"
 #include "iterators.h"
 #include "language.h"
 #include "lyxlayout.h"
@@ -310,13 +311,12 @@ void BufferView::setCursorFromRow(int row)
 
 void BufferView::gotoLabel(string const & label)
 {
-	for (Buffer::inset_iterator it = buffer()->inset_iterator_begin();
-	     it != buffer()->inset_iterator_end(); ++it) {
+	for (InsetIterator it(buffer()->inset()); it; ++it) {
 		vector<string> labels;
 		it->getLabelList(*buffer(), labels);
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
 			cursor().clearSelection();
-			text()->setCursor(cursor(), it.getPar(), it.getPos());
+			text()->setCursor(cursor(), it.par(), it.pos());
 			cursor().resetAnchor();
 			update();
 			return;

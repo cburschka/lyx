@@ -167,6 +167,8 @@ lyx_SOURCES = \
 	intl.h \
 	iterators.C \
 	iterators.h \
+	insetiterator.C \
+	insetiterator.h \
 	kbmap.C \
 	kbmap.h \
 	kbsequence.C \

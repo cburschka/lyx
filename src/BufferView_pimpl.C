@@ -32,6 +32,7 @@
 #include "gettext.h"
 #include "intl.h"
 #include "iterators.h"
+#include "insetiterator.h"
 #include "lyx_cb.h" // added for Dispatch functions
 #include "lyx_main.h"
 #include "lyxfind.h"
@@ -722,8 +723,7 @@ InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code /*code*/)
 #warning FIXME
 #if 0
 	Buffer * buf = bv_->buffer();
-	Buffer::inset_iterator beg = buf->inset_iterator_begin();
-	Buffer::inset_iterator end = buf->inset_iterator_end();
+	InsetIterator beg(buf->inset());
 
 	bool cursor_par_seen = false;
 
@@ -731,19 +731,19 @@ InsetBase * BufferView::Pimpl::getInsetByCode(InsetBase::Code /*code*/)
 	LyXText * = bv_->getLyXText();
 	ParagraphList::iterator pit = text->getPar(cur.par());
 
-	for (; beg != end; ++beg) {
-		if (beg.getPar() == pit)
+	for (; beg; ++beg) {
+		if (beg.par() == pit)
 			cursor_par_seen = true;
 		if (cursor_par_seen) {
-			if (beg.getPar() == pit && beg.getPos() >= cur.pos())
+			if (beg.par() == pit && beg.pos() >= cur.pos())
 				break;
 			if (beg.getPar() != pit)
 				break;
 		}
 	}
-	if (beg != end) {
+	if (beg) {
 		// Now find the first inset that matches code.
-		for (; beg != end; ++beg) {
+		for (; beg; ++beg) {
 			if (beg->lyxCode() == code)
 				return &(*beg);
 		}
