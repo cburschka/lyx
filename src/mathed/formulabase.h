@@ -30,7 +30,7 @@ class Buffer;
 class BufferView;
 class MathAtom;
 
-///
+/// An abstract base class for all math related LyX insets
 class InsetFormulaBase : public UpdatableInset {
 public:
 	///

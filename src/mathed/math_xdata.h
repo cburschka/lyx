@@ -61,6 +61,10 @@ public:
 	void boundingBox(int & xlow, int & xhigh, int & ylow, int & yhigh);
 	/// find best position to do things
 	//void findPos(PosFinder &) const;
+	/// gives center coordinates
+	void center(int & x, int & y) const;
+	/// adjust (x,y) to point on boundary on a straight line from the center
+	void towards(int & x, int & y) const;
 
 	/// begin iterator of the underlying MathArray
 	const_iterator begin() const { return data_.begin(); }

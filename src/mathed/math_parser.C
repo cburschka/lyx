@@ -52,6 +52,7 @@ point to write some macros:
 #include "math_parser.h"
 #include "math_inset.h"
 #include "math_arrayinset.h"
+#include "math_amsarrayinset.h"
 #include "math_braceinset.h"
 #include "math_casesinset.h"
 #include "math_charinset.h"
@@ -268,7 +269,7 @@ private:
 	///
 	bool parse_lines(MathAtom & t, bool numbered, bool outmost);
 	/// parses {... & ... \\ ... & ... }
-	bool parse_lines2(MathAtom & t);
+	bool parse_lines2(MathAtom & t, bool braced);
 	/// dump contents to screen
 	void dump() const;
 
@@ -655,15 +656,13 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 }
 
 
-bool Parser::parse_lines2(MathAtom & t)
+bool Parser::parse_lines2(MathAtom & t, bool braced)
 {	
 	MathGridInset * p = t->asGridInset();
 	if (!p) {
 		lyxerr << "error in Parser::parse_lines() 1\n";
 		return false;
 	}
-
-	skipBegin();
 
 	for (int row = 0; true; ++row) {
 		// reading a row
@@ -694,12 +693,20 @@ bool Parser::parse_lines2(MathAtom & t)
 			getToken();
 		}
 
-		// we are finished if the next token is an '}'
-		if (nextToken().cat() == catEnd) {
-			// skip the end-token
-			getToken();
-			// leave the 'read a line'-loop
-			break;
+		// we are finished if the next token is the one we expected
+		// skip the end-token
+		// leave the 'read a line'-loop
+		if (braced) {
+			if (nextToken().cat() == catEnd) {
+				getToken();
+				break;
+			}
+		} else {
+			if (nextToken().cs() == "end") {
+				getToken();
+				getArg('{','}');
+				break;
+			}
 		}
 
 		// otherwise, we have to start a new row
@@ -1081,6 +1088,9 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 			} else if (name == "cases") {
 				array.push_back(MathAtom(new MathCasesInset));
 				parse_lines(array.back(), false, false);
+			} else if (name == "pmatrix" || name == "bmatrix") {
+				array.push_back(MathAtom(new MathAMSArrayInset(name)));
+				parse_lines2(array.back(), false);
 			} else 
 				lyxerr << "unknow math inset begin '" << name << "'\n";	
 		}
@@ -1117,7 +1127,8 @@ void Parser::parse_into1(MathArray & array, unsigned flags, MathTextCodes code)
 
 		else if (t.cs() == "xymatrix") {
 			array.push_back(createMathInset(t.cs()));
-			parse_lines2(array.back());
+			skipBegin();
+			parse_lines2(array.back(), true);
 		}
 
 #if 0

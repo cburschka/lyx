@@ -177,3 +177,23 @@ void MathXArray::findPos(MathPosFinder & f) const
 	}
 }
 */
+
+void MathXArray::center(int & x, int & y) const
+{
+	x = xo_ + width_ / 2;
+	y = yo_ + (descent_ - ascent_) / 2;
+}
+
+
+void MathXArray::towards(int & x, int & y) const
+{
+	int cx = 0;
+	int cy = 0;
+	center(cx, cy);
+
+	double r = 1.0;
+	int dist = (x - cx) * (x - cx) + (y - cy) * (y - cy);
+
+	x = cx + int(r * (x - cx));
+	y = cy + int(r * (y - cy));
+}
