@@ -160,7 +160,7 @@ void MathMacro::dump() const
 }
 
 
-bool MathMacro::idxUpDown(idx_type & idx, bool up) const
+bool MathMacro::idxUpDown(idx_type & idx, pos_type &, bool up) const
 {
 	pos_type pos;
 	return

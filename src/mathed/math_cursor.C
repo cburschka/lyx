@@ -1145,19 +1145,24 @@ bool MathCursor::goUpDown(bool up)
 	while (1) {
 		///lyxerr << "updown: We are in " << *par() << " idx: " << idx() << '\n';
 		// ask inset first
-		if (par()->idxUpDown(idx(), up)) {
+		if (par()->idxUpDown(idx(), pos(), up)) {
+#ifdef WITH_WARNINGS
+#warning this code should be moved to individual insets that handle this
+#endif
+			// position might have changed, so re-compute it
+			getPos(xo, yo);
 			// we found a cell that thinks it has something "below" us.
-			///lyxerr << "updown: found inset that handles UpDown\n";
+			//lyxerr << "updown: found inset that handles UpDown\n";
 			xarray().boundingBox(xlow, xhigh, ylow, yhigh);
 			// project (xo,yo) onto proper box
-			///lyxerr << "\n   xo: " << xo << " yo: " << yo
-			///       << "\n   xlow: " << xlow << " ylow: " << ylow
-			///       << "\n   xhigh: " << xhigh << " yhigh: " << yhigh;
+			//lyxerr << "\n   xo: " << xo << " yo: " << yo
+			//       << "\n   xlow: " << xlow << " ylow: " << ylow
+			//       << "\n   xhigh: " << xhigh << " yhigh: " << yhigh;
 			xo = min(max(xo, xlow), xhigh);
 			yo = min(max(yo, ylow), yhigh);
-			///lyxerr << "\n   xo2: " << xo << " yo2: " << yo << "\n";
+			//lyxerr << "\n   xo2: " << xo << " yo2: " << yo << "\n";
 			bruteFind(xo, yo, xlow, xhigh, ylow, yhigh);
-			///lyxerr << "updown: handled by final brute find\n";
+			//lyxerr << "updown: handled by final brute find\n";
 			return true;
 		}
 
@@ -1194,9 +1199,8 @@ bool MathCursor::bruteFind
 	while (1) {
 		// avoid invalid nesting when selecting
 		if (!selection_ || positionable(it.cursor(), Anchor_)) {
-			MathCursorPos const & top = it.position();
-			int xo = top.xpos();
-			int yo = top.ypos();
+			int xo, yo;
+			it.position().getPos(xo, yo);
 			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
 				double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 				// '<=' in order to take the last possible position

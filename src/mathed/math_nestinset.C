@@ -50,10 +50,11 @@ MathArray const & MathNestInset::cell(idx_type i) const
 
 void MathNestInset::getPos(idx_type idx, pos_type pos, int & x, int & y) const
 {
-	x = cells_[idx].xo() + cells_[idx].pos2x(pos);
-	y = cells_[idx].yo();
+	MathXArray const & ar = xcell(idx);
+	x = ar.xo() + ar.pos2x(pos);
+	y = ar.yo();
 	// move cursor visually into empty cells ("blue rectangles");
-	if (!cells_[idx].data().size())
+	if (cell(idx).empty())
 		x += 2;
 }
 

@@ -51,11 +51,11 @@ public:
 	void dump() const;
 
 	///
-	bool idxUpDown(idx_type &, bool up) const;
+	bool idxUpDown(idx_type & idx, pos_type & pos, bool up) const;
 	///
-	bool idxLeft(idx_type &, pos_type &) const;
+	bool idxLeft(idx_type & idx, pos_type & pos) const;
 	///
-	bool idxRight(idx_type &, pos_type &) const;
+	bool idxRight(idx_type & idx, pos_type & pos) const;
 
 	///
 	void validate(LaTeXFeatures &) const;

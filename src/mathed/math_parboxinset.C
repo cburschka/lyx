@@ -35,10 +35,16 @@ void MathParboxInset::setWidth(string const & w)
 }
 
 
+int MathParboxInset::screenrows() const
+{
+	return rows_.size();
+}
+
+
 int MathParboxInset::pos2row(pos_type pos) const
 {
 	for (int r = 0, n = rows_.size(); r < n; ++r) 
-		if (pos >= rows_[r].begin && pos < rows_[r].end)
+		if (pos >= rows_[r].begin && pos <= rows_[r].end)
 			return r;
 	lyxerr << "illegal row for pos " << pos << "\n";
 	return 0;
@@ -48,12 +54,33 @@ int MathParboxInset::pos2row(pos_type pos) const
 void MathParboxInset::getPos(idx_type idx, pos_type pos, int & x, int & y) const
 {
 	int const r = pos2row(pos);
-	//lyxerr << "found cursor at pos " << pos << " in row " << r << "\n";
-	x = cells_[0].xo() + cells_[0].pos2x(rows_[r].begin, pos, rows_[r].glue);
-	y = cells_[0].yo() + rows_[r].yo;
+	MathXArray const & ar = cells_[idx];
+	x = ar.xo() + ar.pos2x(rows_[r].begin, pos, rows_[r].glue);
+	y = ar.yo() + rows_[r].yo;
 	// move cursor visually into empty cells ("blue rectangles");
 	if (cell(0).empty())
 		x += 2;
+	//lyxerr << "getPos cursor at pos " << pos << " in row " << r
+	//	<< "  x: " << x << " y: " << y << "\n";
+}
+
+
+bool MathParboxInset::idxUpDown(idx_type & idx, pos_type & pos, bool up) const
+{
+	// try to move only one screen row up or down if possible
+	int row = pos2row(pos);
+	int const x = cells_[idx].pos2x(rows_[row].begin, pos, rows_[row].glue);
+	if (up) {
+		if (row == 0)
+			return false;
+		--row;
+	} else {
+		++row;
+		if (row == screenrows())
+			return false;
+	}
+	pos = xcell(0).x2pos(rows_[row].begin, x, rows_[row].glue);
+	return true;
 }
 
 
@@ -120,13 +147,16 @@ void MathParboxInset::metrics(MathMetricsInfo & mi) const
 		if (spaces) {
 			// but we had a space break before this position.
 			// so retreat to this position
+			int glue  = lyx_width_ - safe.w + dims[safepos].w;
 			row.dim   = safe;
-			row.glue  = (lyx_width_ - safe.w) / spaces;
+			row.glue  = glue / spaces;
 			row.begin = begin;
 			row.end   = safepos;  // this is position of the safe space
 			i         = safepos;  // i gets incremented at end of loop
 			begin     = i + 1;    // next chunk starts after the space
 			//lyxerr << "... but had safe pos. glue: " << row.glue << "\n";
+			//lyxerr << " safe.w: " << safe.w
+			//	<< "  dim.w: " << dims[safepos].w << " spaces: " << spaces << "\n";
 			spaces   = 0;
 		} else {
 			lyxerr << "... without safe pos\n";
@@ -160,6 +190,7 @@ void MathParboxInset::metrics(MathMetricsInfo & mi) const
 	dim_.a = rows_.front().dim.a;
 	dim_.d = rows_.back().dim.d + yo;
 	metricsMarkers();
+	xcell(0).setDim(dim_);
 #endif
 }
 

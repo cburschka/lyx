@@ -42,7 +42,7 @@ Dimension const & MathXArray::metrics(MathMetricsInfo & mi) const
 
 	if (data_.empty()) {
 		mathed_char_dim(mi.base.font, 'I', dim_);
-		return dim_;;
+		return dim_;
 	}
 
 	dim_.clear();
@@ -98,7 +98,6 @@ void MathXArray::metricsExternal(MathMetricsInfo & mi,
 			v.push_back(d);
 		}
 	}
-
 	//for (int i = 0; i < data_.size(); ++i)
 	//	lyxerr << "i: " << i << "  dim: " << v[i] << endl;
 	//lyxerr << "MathXArray::metrics(): '" << dim_ << "\n";
@@ -241,6 +240,7 @@ int MathXArray::pos2x(size_type pos) const
 	return pos2x(0, pos, 0);
 }
 
+
 int MathXArray::pos2x(size_type pos1, size_type pos2, int glue) const
 {
 	int x = 0;
@@ -266,26 +266,34 @@ int MathXArray::pos2x(size_type pos1, size_type pos2, int glue) const
 
 MathArray::size_type MathXArray::x2pos(int targetx) const
 {
-	const_iterator it = begin();
+	return x2pos(0, targetx, 0);
+}
+
+
+MathArray::size_type MathXArray::x2pos(size_type startpos, int targetx,
+	int glue) const
+{
+	const_iterator it = begin() + startpos;
 	int lastx = 0;
 	int currx = 0;
 	for (; currx < targetx && it < end(); ++it) {
+		size_type pos = it - begin();
 		lastx = currx;
 
-		int wid = 0;
 		MathInset const * p = it->nucleus();
+		if (p->getChar() == ' ')
+			currx += glue;
 		MathScriptInset const * q = 0;
 		if (it + 1 != end())
 			q = asScript(it);
 		if (q) {
-			wid = q->width2(p);
+			currx += q->width2(p);
 			++it;
-		} else
-			wid = p->width();
-
-		currx += wid;
+		} else {
+			currx += p->width();
+		}
 	}
-	if (abs(lastx - targetx) < abs(currx - targetx) && it != begin())
+	if (abs(lastx - targetx) < abs(currx - targetx) && it != begin() + startpos)
 		--it;
 	return it - begin();
 }

@@ -27,7 +27,11 @@ public:
 	void setWidth(string const & width);
 	///
 	void setPosition(string const & pos);
+	/// moves cursor up or down
+	bool idxUpDown(idx_type &, pos_type & pos, bool up) const;
 private:
+	/// number of rows on screen
+	int screenrows() const;
 	/// row corresponding to given position 
 	int pos2row(pos_type pos) const;
 	/// width on screen

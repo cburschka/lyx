@@ -630,7 +630,7 @@ int MathGridInset::cellYOffset(idx_type idx) const
 }
 
 
-bool MathGridInset::idxUpDown(idx_type & idx, bool up) const
+bool MathGridInset::idxUpDown(idx_type & idx, pos_type &, bool up) const
 {
 	if (up) {
 		if (idx < ncols())

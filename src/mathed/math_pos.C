@@ -51,15 +51,9 @@ MathXArray & MathCursorPos::xcell() const
 }
 
 
-int MathCursorPos::xpos() const
+void MathCursorPos::getPos(int & x, int & y) const
 {
-	return xcell().xo() + xcell().pos2x(pos_);
-}
-
-
-int MathCursorPos::ypos() const
-{
-	return xcell().yo();
+	par_->getPos(idx_, pos_, x, y);
 }
 
 

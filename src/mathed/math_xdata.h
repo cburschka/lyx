@@ -77,6 +77,8 @@ public:
 	int pos2x(size_type pos1, size_type pos2, int glue) const;
 	/// returns position of given x coordinate
 	size_type x2pos(int pos) const;
+	/// returns position of given x coordinate fstarting from a certain pos
+	size_type x2pos(size_type startpos, int targetx, int glue) const;
 	/// returns distance of this cell to the point given by x and y
 	// assumes valid position and size cache
 	int dist(int x, int y) const;
@@ -91,6 +93,8 @@ public:
 	int width() const { return dim_.w; }
 	/// dimensions of cell
 	Dimension const & dim() const	{ return dim_; }
+	/// dimensions of cell
+	void setDim(Dimension const & d) const { dim_ = d; }
 	/// bounding box of this cell
 	void boundingBox(int & xlow, int & xhigh, int & ylow, int & yhigh);
 	/// find best position to do things

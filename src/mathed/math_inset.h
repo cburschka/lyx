@@ -128,11 +128,9 @@ public:
 	virtual void dimensions(Dimension & dim) const;
 	/// total height (== ascent + descent)
 	virtual int height() const;
-	/// get cursor position
-	virtual void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
 
 	/// Where should we go when we press the up or down cursor key?
-	virtual bool idxUpDown(idx_type & idx, bool up) const;
+	virtual bool idxUpDown(idx_type & idx, pos_type & pos, bool up) const;
 	/// The left key
 	virtual bool idxLeft(idx_type & idx, pos_type & pos) const;
 	/// The right key
@@ -189,6 +187,8 @@ public:
 	virtual int cellYOffset(idx_type) const { return 0; }
 	/// can we enter this cell?
 	virtual bool validCell(idx_type) const { return true; }
+	/// get coordinates
+	virtual void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
 
 	/// identifies certain types of insets
 	virtual MathAMSArrayInset      * asAMSArrayInset()      { return 0; }

@@ -43,13 +43,13 @@ void MathRootInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathRootInset::draw(MathPainterInfo & pain, int x, int y) const
+void MathRootInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	int const w = xcell(0).width();
 	// the "exponent"
-	xcell(0).draw(pain, x, y - 5 - xcell(0).descent());
+	xcell(0).draw(pi, x, y - 5 - xcell(0).descent());
 	// the "base"
-	xcell(1).draw(pain, x + w + 8, y);
+	xcell(1).draw(pi, x + w + 8, y);
 	int const a = ascent();
 	int const d = descent();
 	int xp[5];
@@ -59,7 +59,7 @@ void MathRootInset::draw(MathPainterInfo & pain, int x, int y) const
 	xp[2] = x + w;        yp[2] = y + d;
 	xp[3] = x + w - 2;    yp[3] = y + (d - a)/2 + 2;
 	xp[4] = x;            yp[4] = y + (d - a)/2 + 2;
-	pain.pain.lines(xp, yp, 5, LColor::math);
+	pi.pain.lines(xp, yp, 5, LColor::math);
 }
 
 
@@ -75,7 +75,7 @@ void MathRootInset::normalize(NormalStream & os) const
 }
 
 
-bool MathRootInset::idxUpDown(idx_type & idx, bool up) const
+bool MathRootInset::idxUpDown(idx_type & idx, pos_type &, bool up) const
 {
 	bool target = !up; // up ? 0 : 1;
 	if (idx == target)

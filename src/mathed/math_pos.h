@@ -21,10 +21,8 @@ public:
 	MathXArray & xcell() const;
 	/// returns xcell corresponding to this position
 	MathXArray & xcell(MathArray::idx_type idx) const;
-	///
-	int xpos() const;
-	///
-	int ypos() const;
+	/// gets screen position of the thing
+	void getPos(int & x, int & y) const;
 
 public:
 	/// pointer to an inset

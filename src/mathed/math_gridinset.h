@@ -132,36 +132,36 @@ public:
 	int cellYOffset(idx_type idx) const;
 
 	///
-	bool idxUpDown(idx_type &, bool) const;
+	bool idxUpDown(idx_type & idx, pos_type & pos, bool) const;
 	///
-	bool idxLeft(idx_type &, pos_type &) const;
+	bool idxLeft(idx_type & idx, pos_type & pos) const;
 	///
-	bool idxRight(idx_type &, pos_type &) const;
+	bool idxRight(idx_type & idx, pos_type & pos) const;
 	///
-	bool idxFirst(idx_type &, pos_type &) const;
+	bool idxFirst(idx_type & idx, pos_type & pos) const;
 	///
-	bool idxLast(idx_type &, pos_type &) const;
+	bool idxLast(idx_type & idx, pos_type & pos) const;
 	///
-	bool idxHome(idx_type &, pos_type &) const;
+	bool idxHome(idx_type & idx, pos_type & pos) const;
 	///
-	bool idxEnd(idx_type &, pos_type &) const;
+	bool idxEnd(idx_type & idx, pos_type & pos) const;
 	///
-	bool idxDelete(idx_type &);
+	bool idxDelete(idx_type & idx);
 	/// pulls cell after pressing erase
 	void idxGlue(idx_type idx);
 
 	///
-	virtual void addRow(row_type);
+	virtual void addRow(row_type r);
 	///
-	virtual void delRow(row_type);
+	virtual void delRow(row_type r);
 	///
 	virtual void addFancyRow(row_type r) { addRow(r); }
 	///
 	virtual void delFancyRow(row_type r) { addRow(r); }
 	///
-	virtual void addCol(col_type);
+	virtual void addCol(col_type c);
 	///
-	virtual void delCol(col_type);
+	virtual void delCol(col_type c);
 	///
 	virtual void addFancyCol(col_type c) { addCol(c); }
 	///
@@ -169,7 +169,7 @@ public:
 	///
 	virtual void appendRow();
 	///
-	idx_type index(row_type row, col_type col) const;
+	idx_type index(row_type r, col_type c) const;
 	///
 	std::vector<idx_type> idxBetween(idx_type from, idx_type to) const;
 	///
