@@ -3333,8 +3333,8 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 		y_top += asc;
  
 		int const w = (inset_owner ?  inset_owner->width(p.bv, font) : ww);
-		int const xp = static_cast<int>(inset_owner ? p.x : 0);
-		p.pain->line(xp, p.yo + y_top, w, p.yo + y_top,
+		int const xp = static_cast<int>(inset_owner ? p.xo : 0);
+		p.pain->line(xp, p.yo + y_top, xp + w, p.yo + y_top,
 			LColor::topline, Painter::line_solid,
 			Painter::line_thick);
 		
@@ -3493,9 +3493,9 @@ void LyXText::paintLastRow(DrawRowParams & p)
 		y_bottom -= asc;
  
 		int const w = (inset_owner ?  inset_owner->width(p.bv, font) : ww);
-		int const xp = static_cast<int>(inset_owner ? p.x : 0);
+		int const xp = static_cast<int>(inset_owner ? p.xo : 0);
 		int const y = p.yo + y_bottom; 
-		p.pain->line(xp, y, w, y, LColor::topline, Painter::line_solid,
+		p.pain->line(xp, y, xp + w, y, LColor::topline, Painter::line_solid,
 			  Painter::line_thick);
  
 		y_bottom -= asc;

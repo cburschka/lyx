@@ -739,8 +739,10 @@ func_status::value_type LyXFunc::getStatus(int ac,
 // temporary dispatch method
 void LyXFunc::miniDispatch(string const & s) 
 {
-	if (!s.empty()) {
-		dispatch(s);
+	string s2(frontStrip(strip(s))); 
+ 
+	if (!s2.empty()) {
+		dispatch(s2);
 	}
 }
 
@@ -752,7 +754,16 @@ string const LyXFunc::dispatch(string const & s)
 	string line = frontStrip(s);
 	string const arg = strip(frontStrip(split(line, cmd, ' ')));
 
-	return dispatch(lyxaction.LookupFunc(cmd), arg);
+	int action = lyxaction.LookupFunc(cmd);
+ 
+	if (action == LFUN_UNKNOWN_ACTION) {
+		string const msg = string(_("Unknown function ("))
+			+ cmd + ")";
+		owner->message(msg);
+		return string();
+	} else {
+		return dispatch(action, arg);
+	} 
 }
 
 
@@ -782,6 +793,7 @@ string const LyXFunc::dispatch(int ac,
 			argument = do_not_use_this_arg; // except here
 	}
 
+ 
 #ifdef NEW_DISPATCHER
 	// We try do call the most specific dispatcher first:
 	//  1. the lockinginset's dispatch
@@ -1583,7 +1595,7 @@ exit_with_message:
 
 			if (!shortcuts.empty()) {
 				comname += ": " + shortcuts;
-			} else if (!argsadded) {
+			} else if (!argsadded && !argument.empty()) {
 				comname += " " + argument;
 			}
 

@@ -218,7 +218,9 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				// Return the inputted string
 				deactivate();
 				owner_->view()->focus(true);
-				history_->push_back(input);
+				if (!input.empty()) {
+					history_->push_back(input);
+				}
 				stringReady.emit(input);
 # if 0
 			}
@@ -384,8 +386,11 @@ void MiniBuffer::redraw()
 
 void MiniBuffer::set_complete_input(string const & str)
 {
-	if (!str.empty())
-		set_input(str);
+	if (!str.empty()) {
+		// add a space so the user can type
+		// an argument immediately
+		set_input(str + " ");
+	}
 }
 
  

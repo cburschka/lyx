@@ -1,4 +1,4 @@
-# This is the default LyX user interface definition file.         -*- text -*- 
+# This is the default LyX user interface definition file.         -*- text -*-
 # The syntax should be straightforward enough. The menubar
 # "main_nobuffer" (if it exists) is used when there is no buffer open;
 # otherwise, the menubar "main" is used. 
@@ -100,7 +100,7 @@ Menuset
 	Separator
 	#Item "Read Only" "buffer-toggle-read-only"
 	Item "Spellchecker...|S" "spellchecker"
-	Item "Thesaurus" "thesaurus-entry"
+	Item "Thesaurus..." "thesaurus-entry"
 	Item "Check TeX|h" "buffer-chktex"
 	Item "Remove All Error Boxes|E" "error-remove-all"
 	Separator
@@ -203,8 +203,8 @@ Menuset
 	Item "Tabular Material...|b" "dialog-tabular-insert"
 	Submenu "Floats|a" "insert_floats"
 	Separator
-	Item "Include File|e" "buffer-child-insert"
-	Submenu "Insert File|t" "insert_file"
+	Item "Include File|d" "buffer-child-insert"
+	Submenu "Insert File|e" "insert_file"
 	Item "External Material...|x" "external-insert"
     End
 
