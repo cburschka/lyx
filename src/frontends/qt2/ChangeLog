@@ -1,5 +1,11 @@
 2004-04-29  Angus Leeming  <leeming@lyx.org>
 
+	* QLImage.C (toGray): new helper function, copied from
+	KImageEffect::toGray.
+	(setPixmap_impl): use it.
+
+2004-04-29  Angus Leeming  <leeming@lyx.org>
+
 	* QGraphics.C (apply): Remove a #warning statement by
 	fixing the code.
 

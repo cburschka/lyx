@@ -103,7 +103,7 @@ QLImage::QLImage()
 
 QLImage::QLImage(QLImage const & other)
 	: Image(other), pixmap_(other.pixmap_),
-	  xformed_pixmap_(other.xformed_pixmap_)
+	  xformed_pixmap_(other.pixmap_)
 {
 }
 
@@ -151,16 +151,44 @@ void QLImage::load_impl(string const & filename)
 }
 
 
+namespace {
+
+// This code is taken from KImageEffect::toGray
+QImage & toGray(QImage & img)
+{
+	if (img.width() == 0 || img.height() == 0)
+		return img;
+ 
+	int const pixels = img.depth() > 8 ?
+		img.width() * img.height() : img.numColors();
+
+	unsigned int * const data = img.depth() > 8 ?
+		(unsigned int *)img.bits() :
+		(unsigned int *)img.colorTable();
+
+	for(int i = 0; i < pixels; ++i){
+		int const val = qGray(data[i]);
+		data[i] = qRgba(val, val, val, qAlpha(data[i]));
+	}
+	return img;
+}
+
+} // namespace anon
+
+
 bool QLImage::setPixmap_impl(Params const & params)
 {
 	if (pixmap_.isNull() || params.display == NoDisplay)
 		return false;
 
-	// FIXME: it's a fake kind of grayscale !
-
 	switch (params.display) {
-		case GrayscaleDisplay:
-		case MonochromeDisplay: {
+	case GrayscaleDisplay: {
+		QImage i(xformed_pixmap_.convertToImage());
+		xformed_pixmap_.convertFromImage(toGray(i));
+		break;
+	}
+
+	case MonochromeDisplay: {
 			QImage i(xformed_pixmap_.convertToImage());
 			xformed_pixmap_.convertFromImage(i, QPixmap::Mono);
 			break;
