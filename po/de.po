@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0\n"
-"POT-Creation-Date: 2002-12-19 18:57+0100\n"
-"PO-Revision-Date: 2002-12-19 19:00+0100\n"
+"POT-Creation-Date: 2002-12-20 18:57+0100\n"
+"PO-Revision-Date: 2002-12-20 19:00+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -181,9 +181,8 @@ msgid "Close|^[^M"
 msgstr "Schließen|^[^M"
 
 #: ../src/frontends/xforms/forms/form_browser.fd:80
-#, fuzzy
 msgid "Update|#Uu"
-msgstr "Aktualisieren|A"
+msgstr "Aktualisieren|#A"
 
 #: ../src/frontends/xforms/forms/form_character.fd:62
 msgid "Family:|#F"
@@ -232,11 +231,11 @@ msgstr "Immer Umschalten"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:44
 msgid "Inset keys|#I"
-msgstr "Einfügung Schlüssel|#E"
+msgstr "Schlüssel in der Einfügung|#E"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:62
 msgid "Bibliography keys|#k"
-msgstr "Literaturliste Schlüssel|#L"
+msgstr "Schlüssel in der Literaturliste|#L"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:80
 #: ../src/frontends/qt2/ui/QCitationDialog.ui:418 src/lyxvc.C:131
@@ -302,29 +301,25 @@ msgid "Text after:|#T"
 msgstr "Text danach:|#d"
 
 #: ../src/frontends/xforms/forms/form_document.fd:152
-#, fuzzy
 msgid "Save as Document Defaults|#v"
-msgstr "Als Standard speichern|#S"
+msgstr "Als Dokument-Standards speichern|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:170
-#, fuzzy
 msgid "Use Class Defaults|#C"
-msgstr "Klassenstandard verwenden|#v"
+msgstr "Klassenstandards verwenden|#K"
 
 #: ../src/frontends/xforms/forms/form_document.fd:212
 msgid "Dimensions"
-msgstr ""
+msgstr "Abmessungen"
 
 #: ../src/frontends/xforms/forms/form_document.fd:230
-#, fuzzy
 msgid "Size:|#S"
-msgstr "&Größe:"
+msgstr "Größe:|#G"
 
 #: ../src/frontends/xforms/forms/form_document.fd:248
 #: ../src/frontends/xforms/forms/form_wrap.fd:62
-#, fuzzy
 msgid "Width:|#W"
-msgstr "Breite"
+msgstr "Breite:|#B"
 
 #: ../src/frontends/xforms/forms/form_document.fd:284
 msgid "Height:|#H"
@@ -336,14 +331,12 @@ msgid "Orientation"
 msgstr "Orientierung"
 
 #: ../src/frontends/xforms/forms/form_document.fd:356
-#, fuzzy
 msgid "Portrait|#r"
-msgstr "Ho&chformat"
+msgstr "Hochformat|#H"
 
 #: ../src/frontends/xforms/forms/form_document.fd:374
-#, fuzzy
 msgid "Landscape|#L"
-msgstr "&Querformat"
+msgstr "Querformat|#Q"
 
 #: ../src/frontends/xforms/forms/form_document.fd:410
 #: src/frontends/qt2/QDocumentDialog.C:69
@@ -360,28 +353,24 @@ msgid "Special (A4 portrait only):|#S"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:464
-#, fuzzy
 msgid "Top:|#T"
-msgstr "&Oben:"
+msgstr "Oben:|#O"
 
 #: ../src/frontends/xforms/forms/form_document.fd:500
-#, fuzzy
 msgid "Bottom:|#B"
-msgstr "&Unten:"
+msgstr "Unten:|#U"
 
 #: ../src/frontends/xforms/forms/form_document.fd:536
 msgid "Inner:|#I"
 msgstr "Innen:|#I"
 
 #: ../src/frontends/xforms/forms/form_document.fd:572
-#, fuzzy
 msgid "Outer:|#u"
-msgstr "Außen|#A"
+msgstr "Außen:|#A"
 
 #: ../src/frontends/xforms/forms/form_document.fd:608
-#, fuzzy
 msgid "Headheight:|#H"
-msgstr "&Kopfzeilenhöhe:"
+msgstr "Kopfzeilenhöhe:|#K"
 
 #: ../src/frontends/xforms/forms/form_document.fd:644
 #, fuzzy
@@ -394,9 +383,8 @@ msgid "Footskip:|#F"
 msgstr "Abst. &zu Fuß:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:740
-#, fuzzy
 msgid "Sides"
-msgstr "&Serie:"
+msgstr "Seiten"
 
 #: ../src/frontends/xforms/forms/form_document.fd:758
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:183
@@ -423,9 +411,8 @@ msgid "Class:|#l"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:848
-#, fuzzy
 msgid "Page style:|#P"
-msgstr "&Seitenstil:"
+msgstr "Seiten-Stil:|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:866
 #, fuzzy
@@ -499,9 +486,8 @@ msgid "Language:|#L"
 msgstr "&Sprache:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1383
-#, fuzzy
 msgid "Float Placement:|#L"
-msgstr "Plazierung von &Floats:"
+msgstr "Platzierung von Floats:|#P"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1401
 #, fuzzy
@@ -528,9 +514,8 @@ msgid "Use Natbib|#N"
 msgstr "Natbib verwenden|#N"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1499
-#, fuzzy
 msgid "Citation style|#i"
-msgstr "Stil der Zitate"
+msgstr "Zitat-Stil|#Z"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1541
 #, fuzzy
@@ -549,29 +534,27 @@ msgstr "LaTeX...|L"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1631
 msgid "1|#1"
-msgstr ""
+msgstr "1|#1"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1650
 msgid "2|#2"
-msgstr ""
+msgstr "2|#2"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1668
 msgid "3|#3"
-msgstr ""
+msgstr "3|#3"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1686
 msgid "4|#4"
-msgstr ""
+msgstr "4|#4"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1740
-#, fuzzy
 msgid "Standard|#S"
-msgstr "Sortieren"
+msgstr "Standard|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1759
-#, fuzzy
 msgid "Maths|#M"
-msgstr "Mathematisches|M"
+msgstr "Mathematisches|#M"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1777
 msgid "Ding 1|#D"
@@ -669,17 +652,16 @@ msgstr "Hilfe|H"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:170
 msgid "User1|#1"
-msgstr ""
+msgstr "Benutzer1|#1"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:188
 msgid "User2|#2"
-msgstr ""
+msgstr "Benutzer2|#2"
 
 #: ../src/frontends/xforms/forms/form_float.fd:44
 #: ../src/frontends/xforms/forms/form_wrap.fd:44
-#, fuzzy
 msgid "Placement"
-msgstr "&Plazierung:"
+msgstr "Platzierung"
 
 #: ../src/frontends/xforms/forms/form_float.fd:62
 #, fuzzy
@@ -734,19 +716,18 @@ msgstr "Prozesse beenden|#b"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:79
 msgid "All ->"
-msgstr ""
+msgstr "Alle ->"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:97
 msgid "@->"
-msgstr ""
+msgstr "@->"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:80
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:158
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:286
-#, fuzzy
 msgid "Output"
 msgstr "Ausgabe"
 
@@ -771,57 +752,49 @@ msgid "Scale|#S"
 msgstr "Größe%%|"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:284
-#, fuzzy
 msgid "Width|#W"
-msgstr "Breite"
+msgstr "Breite|#B"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:338
-#, fuzzy
 msgid "Maintain aspect ratio|#M"
-msgstr "Seitenverhältnis beibehalten"
+msgstr "Seitenverhältnis beibehalten|#S"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:356
-#, fuzzy
 msgid "Height|#H"
-msgstr "Höhe"
+msgstr "Höhe|#H"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:374
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:251
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:392
-#, fuzzy
 msgid "Display|#D"
-msgstr "Nicht anzeigen|#N"
+msgstr "Darstellung|#N"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:434
-#, fuzzy
 msgid "Right top|#R"
-msgstr "Rechts oben"
+msgstr "Rechts oben|#R"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:470
-#, fuzzy
 msgid "Left bottom|#L"
-msgstr "Links unten"
+msgstr "Links unten|#L"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:506
 msgid "X"
-msgstr ""
+msgstr "X"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:524
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:542
-#, fuzzy
 msgid "Units|#U"
-msgstr "Einheiten"
+msgstr "Einheiten|#E"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:560
-#, fuzzy
 msgid "Clip to bounding box|#C"
-msgstr "Auf Begrenzungsbox zuschneiden"
+msgstr "Auf Begrenzungsbox zuschneiden|#z"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:578
 #, fuzzy
@@ -834,48 +807,40 @@ msgid "Rotation"
 msgstr "Drehung"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:638
-#, fuzzy
 msgid "LaTeX options|#L"
-msgstr "LaTeX-&Optionen:"
+msgstr "LaTeX-Optionen|#L"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:656
 msgid "deg"
-msgstr ""
+msgstr "Grad"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:674
-#, fuzzy
 msgid "Origin|#O"
-msgstr "Drehpunkt"
+msgstr "Drehpunkt|#D"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:692
-#, fuzzy
 msgid "Subfigure|#S"
-msgstr "Te&ilabb."
+msgstr "Teilabbildung|#T"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:710
-#, fuzzy
 msgid "Angle|#A"
-msgstr "Winkel:"
+msgstr "Winkel|#W"
 
 #: ../src/frontends/xforms/forms/form_include.fd:115
-#, fuzzy
 msgid "Load|#L"
-msgstr "&Öffnen"
+msgstr "Öffnen|#f"
 
 #: ../src/frontends/xforms/forms/form_include.fd:133
-#, fuzzy
 msgid "File name:|#F"
-msgstr "Dateiname"
+msgstr "Dateiname:|#D"
 
 #: ../src/frontends/xforms/forms/form_include.fd:151
-#, fuzzy
 msgid "Visible space|#s"
-msgstr "Sichtbares &Leerzeichen"
+msgstr "Sichtbares Leerzeichen|#L"
 
 #: ../src/frontends/xforms/forms/form_include.fd:187
-#, fuzzy
 msgid "Verbatim|#V"
-msgstr "Unformatiert"
+msgstr "Unformatiert|#U"
 
 #: ../src/frontends/xforms/forms/form_include.fd:205
 #, fuzzy
@@ -900,46 +865,45 @@ msgid ""
 "()\n"
 "Both|#B"
 msgstr ""
+"()\n"
+"Beide|#B"
 
 #: ../src/frontends/xforms/forms/form_maths_delim.fd:170
-#, fuzzy
 msgid ""
 ")\n"
 "Right|#R"
-msgstr "Rechts"
+msgstr ""
+")\n"
+"Rechts|#R"
 
 #: ../src/frontends/xforms/forms/form_maths_delim.fd:188
-#, fuzzy
 msgid ""
 "(\n"
 "Left|#L"
-msgstr "Links"
+msgstr ""
+"(\n"
+"Links|#L"
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:44
 #: ../src/frontends/xforms/forms/form_tabular_create.fd:116
-#, fuzzy
 msgid "Rows"
 msgstr "Zeilen"
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:65
-#, fuzzy
 msgid "Columns "
-msgstr "Spalten"
+msgstr "Spalten "
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:86
-#, fuzzy
 msgid "Vertical align|#V"
-msgstr "Vert. Ausrichtung"
+msgstr "Vert. Ausrichtung|#V"
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:104
-#, fuzzy
 msgid "Horizontal align|#H"
-msgstr "Hor. Ausrichtung|#H"
+msgstr "Horiz. Ausrichtung|#H"
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:122
-#, fuzzy
 msgid "OK  "
-msgstr "OK"
+msgstr "OK  "
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:44
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
@@ -954,7 +918,6 @@ msgid "Close"
 msgstr "Schließen"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:62
-#, fuzzy
 msgid "Functions"
 msgstr "Funktionen"
 
@@ -967,17 +930,17 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:99
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:387
 msgid "­ Û"
-msgstr ""
+msgstr "­ Û"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:117
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:441
 msgid "± ´"
-msgstr ""
+msgstr "± ´"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:135
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:405
 msgid "£ @"
-msgstr ""
+msgstr "£ @"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:153
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:459
@@ -996,11 +959,11 @@ msgstr "Punkte"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:315
 msgid "S  ò"
-msgstr ""
+msgstr "S  ò"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:423
 msgid "!(£ @)"
-msgstr ""
+msgstr "!(£ @)"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:62
 msgid "Negative|#N"
@@ -1155,7 +1118,7 @@ msgstr "Speichern"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:236
 msgid "Scale & Resolution"
-msgstr ""
+msgstr "Skalierung und Auflösung"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:254
 #, fuzzy
@@ -1163,18 +1126,16 @@ msgid "Fonts used"
 msgstr "Zeichengröße"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:272
-#, fuzzy
 msgid "Roman|#R"
-msgstr "Normal"
+msgstr "Roman|#R"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:290
 msgid "Sans Serif|#S"
 msgstr "Serifenfrei|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:308
-#, fuzzy
 msgid "Typewriter|#T"
-msgstr "Schreibmaschine"
+msgstr "Schreibmaschine|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:326
 #, fuzzy
@@ -1183,7 +1144,7 @@ msgstr "Kodierung:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:344
 msgid "Rescale bitmap fonts|#b"
-msgstr ""
+msgstr "Bitmap-Fonts skalieren|#B"
 
 # , c-format
 #: ../src/frontends/xforms/forms/form_preferences.fd:363
@@ -1292,40 +1253,39 @@ msgstr "Durchsuchen..."
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:815
 msgid "LyX objects|#L"
-msgstr ""
+msgstr "LyX-Objekte|#L"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:833
 msgid "H|#H"
-msgstr ""
+msgstr "H|#H"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:851
-#, fuzzy
 msgid "S|#S"
-msgstr "bis "
+msgstr "S|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:870
 msgid "V|#V"
-msgstr ""
+msgstr "V|#V"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:889
 msgid "R|#R"
-msgstr ""
+msgstr "R|#R"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:908
 msgid "G|#G"
-msgstr ""
+msgstr "G|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:927
 msgid "B|#B"
-msgstr ""
+msgstr "B|#B"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:964
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:982
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1055
 #: src/frontends/xforms/FormPreferences.C:1082
@@ -1344,7 +1304,6 @@ msgid "Auto region delete|#A"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1116
-#, fuzzy
 msgid "Cursor follows scrollbar|#C"
 msgstr "Cursor folgt Rollbalken|#C"
 
@@ -1367,9 +1326,8 @@ msgid "Instant Preview|#P"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1217
-#, fuzzy
 msgid "Graphics display|#G"
-msgstr "Grafik...|G"
+msgstr "Grafik-Darstellung|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1259
 msgid "Spell command|#S"
@@ -1432,11 +1390,11 @@ msgstr "Tastatur"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1589
 msgid "1st|#1"
-msgstr ""
+msgstr "1.|#1"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1607
 msgid "2nd|#2"
-msgstr ""
+msgstr "2.|#2"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1625
 #, fuzzy
@@ -1744,9 +1702,8 @@ msgid "Pages"
 msgstr "Seiten"
 
 #: ../src/frontends/xforms/forms/form_print.fd:62
-#, fuzzy
 msgid "Destination"
-msgstr "Medium"
+msgstr "Ziel"
 
 #: ../src/frontends/xforms/forms/form_print.fd:80
 #: ../src/frontends/qt2/ui/QPrintDialog.ui:231
@@ -1914,27 +1871,23 @@ msgstr "Schließen|^["
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:242
 msgid "0 %"
-msgstr ""
+msgstr "0 %"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:158
-#, fuzzy
 msgid "Append Column|#A"
-msgstr "Spalte anfügen|S"
+msgstr "Spalte anfügen|#a"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:176
-#, fuzzy
 msgid "Delete Column|#O"
-msgstr "Spalte löschen|c"
+msgstr "Spalte löschen|#c"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:194
-#, fuzzy
 msgid "Append Row|#p"
-msgstr "Zeile anfügen|f"
+msgstr "Zeile anfügen|#f"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:212
-#, fuzzy
 msgid "Delete Row|#w"
-msgstr "Zeile löschen|h"
+msgstr "Zeile löschen|#h"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:230
 #, fuzzy
@@ -1987,7 +1940,7 @@ msgstr "Sonderformat Spalte"
 #: ../src/frontends/xforms/forms/form_tabular.fd:416
 #: ../src/frontends/xforms/forms/form_tabular.fd:1128
 msgid " |#W"
-msgstr ""
+msgstr " |#W"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:434
 #: ../src/frontends/xforms/forms/form_tabular.fd:874
@@ -2058,13 +2011,12 @@ msgstr "LaTeX-Argument|#A"
 #: ../src/frontends/xforms/forms/form_tabular.fd:706
 #: ../src/frontends/xforms/forms/form_tabular.fd:1218
 msgid " |#L"
-msgstr ""
+msgstr " |#L"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:724
 #: ../src/frontends/xforms/forms/form_tabular.fd:1236
-#, fuzzy
 msgid "V. Alignment"
-msgstr "Ausrichtung"
+msgstr "Vert. Ausrichtung"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:742
 #, fuzzy
@@ -2127,20 +2079,17 @@ msgid "First Header"
 msgstr "Erste Kopfzeile"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1530
-#, fuzzy
 msgid "Footer"
 msgstr "Fußzeile"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1548
-#, fuzzy
 msgid "Last Footer"
 msgstr "Letzte Fußzeile"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1674
 #: ../src/frontends/xforms/forms/form_tabular.fd:1692
-#, fuzzy
 msgid "Is Empty"
-msgstr "ist leet"
+msgstr "Ist leer"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1710
 #, fuzzy
@@ -2232,9 +2181,8 @@ msgid "Form1"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:48
-#, fuzzy
 msgid "Style"
-msgstr "&Format"
+msgstr "Stil"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:67
 #, fuzzy
@@ -2242,9 +2190,8 @@ msgid "Use &NatBib"
 msgstr "Natbib verwenden|#N"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:82
-#, fuzzy
 msgid "Cite &Style:"
-msgstr "Anführungszeichen"
+msgstr "&Zitat-Stil:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
 #: src/frontends/qt2/QDocumentDialog.C:71
@@ -2310,9 +2257,8 @@ msgid "Op&tions :"
 msgstr "Optionen"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:106
-#, fuzzy
 msgid "Page &style :"
-msgstr "&Seitenstil:"
+msgstr "&Seiten-Stil :"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:142
 #, fuzzy
@@ -2320,9 +2266,8 @@ msgid "&Font && size :"
 msgstr "Zeichengröße"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:161
-#, fuzzy
 msgid "Float &placement:"
-msgstr "Plazierung von &Floats:"
+msgstr "&Platzierung von Floats:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:231
 msgid "&Indent"
@@ -2373,9 +2318,8 @@ msgid "O&uter:"
 msgstr "Außen|#A"
 
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:117
-#, fuzzy
 msgid "&Margins:"
-msgstr "Ränder"
+msgstr "&Ränder:"
 
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:173
 #, fuzzy
@@ -2496,7 +2440,7 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QAboutDialog.ui:105
 #: src/frontends/xforms/FormAboutlyx.C:72
 msgid "Credits"
-msgstr "Ruhm & Ehre"
+msgstr "Ruhm und Ehre"
 
 #: ../src/frontends/qt2/ui/QAboutDialog.ui:141 ../lib/layouts/apa.layout:192
 msgid "Copyright"
@@ -2596,11 +2540,11 @@ msgstr "Datenbanken"
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:57
 msgid "BibTeX database to use"
-msgstr "Verwendete BibTeX Datenbank"
+msgstr "Zu verwendende BibTeX-Datenbank"
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:75
 msgid "Available BibTeX databases"
-msgstr "Verfügbare BibTeX Datenbanken"
+msgstr "Verfügbare BibTeX-Datenbanken"
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:86
 #: ../src/frontends/qt2/ui/QSpellcheckerDialog.ui:75
@@ -2610,12 +2554,11 @@ msgstr "&Hinzufügen"
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:90
 msgid "Add a BibTeX database file"
-msgstr "Eine BibTeX Datenbank hinzufügen"
+msgstr "Füge eine BibTeX-Datenbank-Datei hinzu"
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:101
-#, fuzzy
 msgid "Add a BibTeX file manually"
-msgstr "Eine BibTeX Datenbank hinzufügen"
+msgstr "Eine BibTeX-Datei von Hand hinzufügen"
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:112
 #: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
@@ -2625,9 +2568,8 @@ msgid "Bro&wse..."
 msgstr "Durchsuchen..."
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:120
-#, fuzzy
 msgid "Browse for a BibTeX database file"
-msgstr "Eine BibTeX Datenbank hinzufügen"
+msgstr "Verzeichnis nach BibTeX-Datenbank-Dateien durchsuchen"
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:131
 msgid "&Delete"
@@ -2644,7 +2586,7 @@ msgstr "&Format"
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:194
 msgid "The BibTeX style"
-msgstr "Der BibTeX Style"
+msgstr "Der BibTeX-Stil"
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:205
 #: ../src/frontends/qt2/ui/QExternalDialog.ui:290
@@ -2655,7 +2597,7 @@ msgstr "&Durchsuchen..."
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:213
 msgid "Choose a style file"
-msgstr "Wählen Sie eine Stildatei"
+msgstr "Wählen Sie eine Stil-Datei"
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:224
 #: ../src/frontends/qt2/ui/QLogDialog.ui:88
@@ -2667,7 +2609,7 @@ msgstr "&Aktualisieren"
 
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:232
 msgid "Update style list"
-msgstr "Stilliste aktualisieren"
+msgstr "Stil-Liste aktualisieren"
 
 #. /
 #: ../src/frontends/qt2/ui/QBibtexDialog.ui:294
@@ -2928,31 +2870,27 @@ msgstr "Text vor"
 
 #: ../src/frontends/qt2/ui/QCitationDialog.ui:597
 msgid "Natbib citation style to use"
-msgstr "Zu verwendender Natbib-Stil"
+msgstr "Zu verwendender Natbib-Zitat-Stil"
 
 #: ../src/frontends/qt2/ui/QCitationDialog.ui:608
-#, fuzzy
 msgid "Citation style:"
-msgstr "Stil der Zitate"
+msgstr "Zitat-Stil:"
 
 #: ../src/frontends/qt2/ui/QDelimiterDialog.ui:165
-#, fuzzy
 msgid "Left delimiter"
-msgstr "Klammern & Co"
+msgstr "Linkes Trennzeichen"
 
 #: ../src/frontends/qt2/ui/QDelimiterDialog.ui:266
-#, fuzzy
 msgid "Right delimiter"
-msgstr "Klammern & Co"
+msgstr "Rechtes Trennzeichen"
 
 #: ../src/frontends/qt2/ui/QDelimiterDialog.ui:321
 msgid "&Keep matched"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QDelimiterDialog.ui:329
-#, fuzzy
 msgid "Match delimiter types"
-msgstr "Klammern & Co"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QDelimiterDialog.ui:378
 #, fuzzy
@@ -2960,9 +2898,8 @@ msgid "&Insert"
 msgstr "Einfügen|E"
 
 #: ../src/frontends/qt2/ui/QDelimiterDialog.ui:382
-#, fuzzy
 msgid "Insert the delimiters"
-msgstr "Letztes Index-Element einfügen"
+msgstr "Füge die Trennzeichen ein"
 
 #: ../src/frontends/qt2/ui/QDocumentDialog.ui:71
 #, fuzzy
@@ -2990,7 +2927,7 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QERTDialog.ui:22
 #: ../src/frontends/qt2/ui/QERTDialog.ui:45
 msgid "ERT inset display"
-msgstr "ERT Einfüngung anzeigen"
+msgstr "ERT-Einfügung anzeigen"
 
 #: ../src/frontends/qt2/ui/QERTDialog.ui:64
 msgid "&Inline"
@@ -2998,7 +2935,7 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QERTDialog.ui:68
 msgid "Show ERT inline"
-msgstr "ERT inline anzeigen"
+msgstr "ERT eingebettet anzeigen"
 
 #: ../src/frontends/qt2/ui/QERTDialog.ui:79
 msgid "&Collapsed"
@@ -3179,7 +3116,7 @@ msgstr "Name der einzubindenden Datei"
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:119
 #: ../src/frontends/qt2/ui/QPrintDialog.ui:461
 msgid "&Browse ..."
-msgstr "&Durchsuchen..."
+msgstr "&Durchsuchen ..."
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:123
 msgid "Select an image file"
@@ -3338,7 +3275,7 @@ msgstr "Weitere Optionen"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:887
 msgid "Su&bfigure"
-msgstr "Te&ilabb."
+msgstr "Te&ilabbildung"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:891
 msgid "Is this just one part of a figure float ?"
@@ -3373,13 +3310,11 @@ msgid "Draft mode"
 msgstr "Entwurfsmodus"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1025
-#, fuzzy
 msgid "Ca&ption :"
-msgstr "Zitat"
+msgstr "Ü&berschrift :"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1033
 #: ../src/frontends/qt2/ui/QGraphicsDialog.ui:1048
-#, fuzzy
 msgid "The caption for the sub-figure"
 msgstr "Die Überschrift der Teilabbildung"
 
@@ -3510,7 +3445,7 @@ msgstr "Superscript|S"
 
 #: ../src/frontends/qt2/ui/QMathDialog.ui:315
 msgid "Show delimiter and bracket dialog"
-msgstr ""
+msgstr "Zeige Trennzeichen- und Klammer-Dialog"
 
 #: ../src/frontends/qt2/ui/QMathDialog.ui:381
 #, fuzzy
@@ -3593,7 +3528,7 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QMinipageDialog.ui:23
 msgid "Minipage settings"
-msgstr "Minipage Einstellungen"
+msgstr "Minipage-Einstellungen"
 
 #: ../src/frontends/qt2/ui/QMinipageDialog.ui:87
 #: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:311
@@ -3674,7 +3609,7 @@ msgstr "Einfach"
 
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:125
 msgid "1.5"
-msgstr ""
+msgstr "1.5"
 
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:137
 #: ../src/frontends/qt2/ui/QParagraphDialog.ui:326
@@ -3892,7 +3827,7 @@ msgstr "&Drucken"
 
 #: ../src/frontends/qt2/ui/QPrintDialog.ui:375
 msgid "Print Destination"
-msgstr "Medium"
+msgstr "Druck-Ziel"
 
 #: ../src/frontends/qt2/ui/QPrintDialog.ui:397
 msgid "P&rinter"
@@ -3941,22 +3876,20 @@ msgid "Sort references in alphabetical order"
 msgstr "Querverweise alphabetisch sortieren"
 
 #: ../src/frontends/qt2/ui/QRefDialog.ui:125
-#, fuzzy
 msgid "<reference>"
-msgstr "Einstellungen"
+msgstr "<Referenz>"
 
 #: ../src/frontends/qt2/ui/QRefDialog.ui:131
-#, fuzzy
 msgid "<page>"
-msgstr "Seite%"
+msgstr "<Seite>"
 
 #: ../src/frontends/qt2/ui/QRefDialog.ui:137
 msgid "on page <page>"
-msgstr ""
+msgstr "auf Seite <Seite>"
 
 #: ../src/frontends/qt2/ui/QRefDialog.ui:143
 msgid "<reference> on page <page>"
-msgstr ""
+msgstr "<Referenz> auf Seite <Seite>"
 
 #: ../src/frontends/qt2/ui/QRefDialog.ui:149
 #, fuzzy
@@ -4168,7 +4101,7 @@ msgstr "LaTeX-Stile"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialog.ui:69
 msgid "BibTeX styles"
-msgstr "BibTeX Styles"
+msgstr "BibTeX-Stile"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialog.ui:78
 msgid "Selected classes or styles"
@@ -4214,7 +4147,7 @@ msgstr "Diesen Dialog schließen"
 #: ../lib/ui/default.ui:79 src/frontends/qt2/QThesaurus.C:31
 #: src/frontends/xforms/FormThesaurus.C:39
 msgid "Thesaurus"
-msgstr ""
+msgstr "Thesaurus"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialog.ui:79
 msgid "Entry"
@@ -4291,7 +4224,7 @@ msgstr "VK Protokoll"
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:23 src/frontends/qt2/QWrap.C:36
 #: src/frontends/xforms/FormWrap.C:33
 msgid "Wrap Options"
-msgstr "'wrap'-Optionen"
+msgstr "Wrap-Optionen"
 
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:87
 #, fuzzy
@@ -4305,7 +4238,7 @@ msgstr "Andere"
 
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:125
 msgid "&Placement:"
-msgstr "&Plazierung:"
+msgstr "&Platzierung:"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:351
 #, fuzzy
@@ -4314,7 +4247,7 @@ msgstr "Vertikale Abstände"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:380
 msgid "Horizontal alignment per column (t,c,b)"
-msgstr ""
+msgstr "Horizontale Ausrichtung pro Spalte (t,c,b)"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialog.ui:399
 #, fuzzy
@@ -4423,9 +4356,8 @@ msgid "Vertical alignment for fixed width columns"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialog.ui:411
-#, fuzzy
 msgid "Rotate 90Â°"
-msgstr "90° drehen|#9"
+msgstr "90Â° drehen"
 
 #: ../src/frontends/qt2/ui/QTabularDialog.ui:434
 msgid "&Rotate Table"
@@ -4683,7 +4615,7 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:22
 msgid "Display insets"
-msgstr ""
+msgstr "Einfügungen anzeigen"
 
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:71
 msgid "Do not display"
@@ -5045,14 +4977,12 @@ msgid "Sa&ns Serif :"
 msgstr "Serifenfrei"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:157
-#, fuzzy
 msgid "T&ypewriter :"
-msgstr "Schreibmaschine"
+msgstr "&Schreibmaschine :"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:172
-#, fuzzy
 msgid "&Roman :"
-msgstr "Normal"
+msgstr "&Roman :"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:246
 #, fuzzy
@@ -5206,14 +5136,12 @@ msgid "B&ackup documents "
 msgstr "Dokument speichern?"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:280
-#, fuzzy
 msgid " every"
-msgstr "umgekehrt"
+msgstr " alle"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:310
-#, fuzzy
 msgid "minutes"
-msgstr "Linien"
+msgstr "Minuten"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:338
 msgid "&Maximum last files :"
@@ -5726,12 +5654,12 @@ msgstr "Algorithmus"
 #: ../lib/layouts/amsmaths-plain.inc:231 ../lib/layouts/amsmaths-seq.inc:176
 #: ../lib/layouts/amsmaths.inc:450
 msgid "Summary"
-msgstr ""
+msgstr "Zusammenfassung"
 
 #: ../lib/layouts/amsmaths-plain.inc:267 ../lib/layouts/amsmaths-seq.inc:200
 #: ../lib/layouts/amsmaths.inc:497
 msgid "Conclusion"
-msgstr ""
+msgstr "Schlussfolgerung"
 
 #: ../lib/layouts/amsmaths.inc:50
 #, fuzzy
@@ -6659,17 +6587,16 @@ msgid "Table"
 msgstr "Lange Tabelle"
 
 #: ../lib/layouts/stdfloats.inc:20
-#, fuzzy
 msgid "Figure"
-msgstr "ignorieren"
+msgstr "Abbildung"
 
 #: ../lib/layouts/stdstarsections.inc:20
 msgid "Chapter*"
-msgstr ""
+msgstr "Kapitel*"
 
 #: ../lib/layouts/stdstarsections.inc:65
 msgid "Subparagraph*"
-msgstr ""
+msgstr "Unterparagraph*"
 
 #: ../lib/layouts/svjour.inc:103
 msgid "Headnote"
@@ -6681,11 +6608,11 @@ msgstr ""
 
 #: ../lib/layouts/svjour.inc:295
 msgid " Keywords"
-msgstr "Schlüsselworte"
+msgstr " Schlüsselwörter"
 
 #: ../lib/languages:2
 msgid "Afrikaans"
-msgstr ""
+msgstr "Afrikaans"
 
 #: ../lib/languages:3
 msgid "American"
@@ -6701,7 +6628,7 @@ msgstr "Österreichisch"
 
 #: ../lib/languages:6
 msgid "Bahasa"
-msgstr ""
+msgstr "Bahasa"
 
 #: ../lib/languages:7
 #, fuzzy
@@ -6713,7 +6640,6 @@ msgid "Basque"
 msgstr "Baskisch"
 
 #: ../lib/languages:9
-#, fuzzy
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
@@ -6819,7 +6745,7 @@ msgstr "Portugiesisch"
 
 #: ../lib/languages:44
 msgid "Romanian"
-msgstr "Romanisch"
+msgstr "Rumänisch"
 
 #: ../lib/languages:45
 msgid "Russian"
@@ -7011,7 +6937,7 @@ msgstr "Auswahl einfügen|u"
 
 #: ../lib/ui/default.ui:73
 msgid "Find & Replace...|F"
-msgstr "Suchen & Ersetzen...|S"
+msgstr "Suchen und Ersetzen...|S"
 
 #: ../lib/ui/default.ui:74 ../lib/ui/default.ui:302
 msgid "Tabular|T"
@@ -7091,15 +7017,15 @@ msgstr "Rechtsbündig|g"
 
 #: ../lib/ui/default.ui:105
 msgid "V.Align Top|o"
-msgstr "V.Ausr. oben|V"
+msgstr "Vert. Ausr. oben|V"
 
 #: ../lib/ui/default.ui:106
 msgid "V.Align Center|n"
-msgstr "V.Ausr. zentr.|t"
+msgstr "Vert. Ausr. Mitte|t"
 
 #: ../lib/ui/default.ui:107
 msgid "V.Align Bottom|V"
-msgstr "V.Ausr. unten|n"
+msgstr "Vert. Ausr. unten|n"
 
 #: ../lib/ui/default.ui:109
 msgid "Add Row|A"
@@ -7114,9 +7040,8 @@ msgid "Copy Row"
 msgstr "Zeile kopieren"
 
 #: ../lib/ui/default.ui:112 ../lib/ui/default.ui:143
-#, fuzzy
 msgid "Swap Rows"
-msgstr "Zeilen"
+msgstr "Zeilen vertauschen"
 
 #: ../lib/ui/default.ui:114
 msgid "Add Column|u"
@@ -7127,22 +7052,20 @@ msgid "Delete Column|D"
 msgstr "Spalte löschen|c"
 
 #: ../lib/ui/default.ui:116 ../lib/ui/default.ui:147
-#, fuzzy
 msgid "Copy Column"
-msgstr "Spalte anfügen"
+msgstr "Spalte kopieren"
 
 #: ../lib/ui/default.ui:117 ../lib/ui/default.ui:148
-#, fuzzy
 msgid "Swap Columns"
-msgstr "Spalten"
+msgstr "Spalten vertauschen"
 
 #: ../lib/ui/default.ui:121
 msgid "Make eqnarray|e"
-msgstr "Eqnarray anlegen"
+msgstr "Eqnarray anlegen|E"
 
 #: ../lib/ui/default.ui:122
 msgid "Make multline|m"
-msgstr "Multiline anlegen"
+msgstr "Multline anlegen"
 
 #: ../lib/ui/default.ui:123
 msgid "Make align 1 column|1"
@@ -7189,143 +7112,124 @@ msgid "Use Computer Algebra System|S"
 msgstr ""
 
 #: ../lib/ui/default.ui:138
-#, fuzzy
 msgid "Alignment|A"
-msgstr "Ausrichtung"
+msgstr "Ausrichtung|A"
 
 #: ../lib/ui/default.ui:140
-#, fuzzy
 msgid "Add Row|R"
 msgstr "Zeile anfügen|f"
 
 #: ../lib/ui/default.ui:141
-#, fuzzy
 msgid "Delete Row|D"
 msgstr "Zeile löschen|h"
 
 #: ../lib/ui/default.ui:145
-#, fuzzy
 msgid "Add Column|C"
 msgstr "Spalte anfügen|S"
 
 #: ../lib/ui/default.ui:146
-#, fuzzy
 msgid "Delete Column|e"
 msgstr "Spalte löschen|c"
 
 #: ../lib/ui/default.ui:152
-#, fuzzy
 msgid "Default|t"
-msgstr "Standard"
+msgstr "Standard|S"
 
 #: ../lib/ui/default.ui:153
-#, fuzzy
 msgid "Display|D"
-msgstr "Nicht anzeigen|#N"
+msgstr ""
 
 #: ../lib/ui/default.ui:154
-#, fuzzy
 msgid "Inline|I"
-msgstr "Innen:|#I"
+msgstr "Eingebettet|E"
 
 #: ../lib/ui/default.ui:158
 msgid "Octave"
-msgstr ""
+msgstr "Octave"
 
 #: ../lib/ui/default.ui:159
 msgid "Maxima"
-msgstr ""
+msgstr "Maxima"
 
 #: ../lib/ui/default.ui:160
-#, fuzzy
 msgid "Mathematica"
-msgstr "Matrizen"
+msgstr "Mathematica"
 
 #: ../lib/ui/default.ui:162
 msgid "Maple, simplify"
-msgstr ""
+msgstr "Maple, simplify"
 
 #: ../lib/ui/default.ui:163
 msgid "Maple, factor"
-msgstr ""
+msgstr "Maple, factor"
 
 #: ../lib/ui/default.ui:164
 msgid "Maple, evalm"
-msgstr ""
+msgstr "Maple, evalm"
 
 #: ../lib/ui/default.ui:165
 msgid "Maple, evalf"
-msgstr ""
+msgstr "Maple, evalf"
 
 #: ../lib/ui/default.ui:169 ../lib/ui/default.ui:234
 msgid "Inline Formula|I"
-msgstr "Inline Formel|I"
+msgstr "Eingebettete Formel|E"
 
 #: ../lib/ui/default.ui:170
-#, fuzzy
 msgid "Displayed Formula|D"
-msgstr "Abgesetzte Formel"
+msgstr "Abgesetzte Formel|A"
 
 #: ../lib/ui/default.ui:171
-#, fuzzy
 msgid "Eqnarray Environment|q"
-msgstr "Eqnarray Umgebung"
+msgstr "Eqnarray-Umgebung|q"
 
 #: ../lib/ui/default.ui:172
-#, fuzzy
 msgid "Align Environment|A"
-msgstr "Ausgerichtete Umgebung"
+msgstr "Align-Umgebung|A"
 
 #: ../lib/ui/default.ui:173
-#, fuzzy
 msgid "AlignAt Environment"
-msgstr "Ausgerichtete Umgebung"
+msgstr "AlignAt-Umgebung"
 
 #: ../lib/ui/default.ui:174
-#, fuzzy
 msgid "Flalign Environment|f"
-msgstr "Ausgerichtete Umgebung"
+msgstr "Flalign-Umgebung|F"
 
 #: ../lib/ui/default.ui:175
-#, fuzzy
 msgid "XAlignAt Environment"
-msgstr "Ausgerichtete Umgebung"
+msgstr "XAlignAt-Umgebung"
 
 #: ../lib/ui/default.ui:176
-#, fuzzy
 msgid "XXAlignAt Environment"
-msgstr "Ausgerichtete Umgebung"
+msgstr "XXAlignAt-Umgebung"
 
 #: ../lib/ui/default.ui:177
-#, fuzzy
 msgid "Gather Environment"
-msgstr "Listen Umgebung"
+msgstr "Gather-Umgebung"
 
 #: ../lib/ui/default.ui:178
-#, fuzzy
 msgid "Multline Environment"
-msgstr "Ausgerichtete Umgebung"
+msgstr "Multline-Umgebung"
 
 #: ../lib/ui/default.ui:182
-#, fuzzy
 msgid "Align Left|L"
-msgstr "Linksbündig|b"
+msgstr "Linksbündig|L"
 
 #: ../lib/ui/default.ui:184
 msgid "Align Right|R"
-msgstr "Rechtsbündig"
+msgstr "Rechtsbündig|R"
 
 #: ../lib/ui/default.ui:186
 msgid "V.Align Top|T"
-msgstr "V.Ausr. oben"
+msgstr "Vert. Ausr. oben"
 
 #: ../lib/ui/default.ui:187
 msgid "V.Align Center|e"
-msgstr "V.Ausr. zentr."
+msgstr "Vert. Ausr. Mitte"
 
 #: ../lib/ui/default.ui:188
 msgid "V.Align Bottom|B"
-msgstr "V.Ausr. unten"
+msgstr "Vert. Ausr. unten"
 
 #: ../lib/ui/default.ui:194
 msgid "Math|h"
@@ -7375,7 +7279,7 @@ msgstr "Notiz|N"
 
 #: ../lib/ui/default.ui:206
 msgid "Lists & TOC|O"
-msgstr "Listen & Inhalt|I"
+msgstr "Listen und Inhalt|I"
 
 #: ../lib/ui/default.ui:208
 msgid "TeX|T"
@@ -7459,134 +7363,116 @@ msgid "Display Formula|D"
 msgstr "Abgesetzte Formel|A"
 
 #: ../lib/ui/default.ui:236
-#, fuzzy
 msgid "Eqnarray Environment|E"
-msgstr "Eqnarray Umgebung|E"
+msgstr "Eqnarray-Umgebung|E"
 
 #: ../lib/ui/default.ui:237
-#, fuzzy
 msgid "AMS align Environment|A"
-msgstr "AMS align Umgebung|A"
+msgstr "AMS align-Umgebung|A"
 
 #: ../lib/ui/default.ui:238
-#, fuzzy
 msgid "AMS alignat Environment|t"
-msgstr "AMS alignat Umgebung|t"
+msgstr "AMS alignat-Umgebung|t"
 
 #: ../lib/ui/default.ui:239
-#, fuzzy
 msgid "AMS flalign Environment|f"
-msgstr "AMS align Umgebung|A"
+msgstr "AMS flalign-Umgebung|f"
 
 #: ../lib/ui/default.ui:240
-#, fuzzy
 msgid "AMS xalignat Environment|x"
-msgstr "AMS xalignat Umgebung|x"
+msgstr "AMS xalignat-Umgebung|x"
 
 #: ../lib/ui/default.ui:241
-#, fuzzy
 msgid "AMS xxalignat Environment"
-msgstr "AMS xxalignat Umgebung"
+msgstr "AMS xxalignat-Umgebung"
 
 #: ../lib/ui/default.ui:242
-#, fuzzy
 msgid "AMS gather Environment"
-msgstr "AMS alignat Umgebung|t"
+msgstr "AMS gather-Umgebung"
 
 #: ../lib/ui/default.ui:243
-#, fuzzy
 msgid "AMS multline Environment"
-msgstr "AMS align Umgebung|A"
+msgstr "AMS multline-Umgebung"
 
 #: ../lib/ui/default.ui:245
-#, fuzzy
 msgid "Array Environment|y"
-msgstr "Array Umgebung"
+msgstr "Array-Umgebung|y"
 
 #: ../lib/ui/default.ui:246
-#, fuzzy
 msgid "Cases Environment|C"
-msgstr "Cases Umgebung|C"
+msgstr "Cases-Umgebung|C"
 
 #: ../lib/ui/default.ui:248
-#, fuzzy
 msgid "Font Change|f"
-msgstr "Zeichensätze"
+msgstr "Zeichensatz-Änderung|#Z"
 
 #: ../lib/ui/default.ui:249
-#, fuzzy
 msgid "Math Panel|l"
 msgstr "Mathematische Symbole|M"
 
 #: ../lib/ui/default.ui:253
 msgid "Math normal font"
-msgstr ""
+msgstr "Mathe normaler Font"
 
 #: ../lib/ui/default.ui:255
 msgid "Math calligraphic family"
-msgstr ""
+msgstr "Mathe Familie Calligraphisch"
 
 #: ../lib/ui/default.ui:256
 msgid "Math fraktur family"
-msgstr ""
+msgstr "Mathe Familie Fraktur"
 
 #: ../lib/ui/default.ui:257
-#, fuzzy
 msgid "Math roman family"
-msgstr "Font Familie"
+msgstr "Mathe Familie Roman"
 
 #: ../lib/ui/default.ui:258
 msgid "Math sans serif family"
-msgstr ""
+msgstr "Mathe Familie Serifenfrei"
 
 #: ../lib/ui/default.ui:260
-#, fuzzy
 msgid "Math bold series"
-msgstr "Formeleditor"
+msgstr "Mathe Serie Fett"
 
 #: ../lib/ui/default.ui:262
-#, fuzzy
 msgid "Text normal font"
-msgstr "Text nach"
+msgstr "Text normaler Font"
 
 #: ../lib/ui/default.ui:264
-#, fuzzy
 msgid "Text roman family"
-msgstr "Font Familie"
+msgstr "Text Familie Roman"
 
 #: ../lib/ui/default.ui:265
 msgid "Text sans serif family"
-msgstr ""
+msgstr "Text Familie Serifenfrei"
 
 #: ../lib/ui/default.ui:266
-#, fuzzy
 msgid "Text typewriter family"
-msgstr "Schreibmaschine"
+msgstr "Text Familie Schreibmaschine"
 
 #: ../lib/ui/default.ui:268
-#, fuzzy
 msgid "Text bold series"
-msgstr "Text vor"
+msgstr "Text Serie Fett"
 
 #: ../lib/ui/default.ui:269
 msgid "Text medium series"
-msgstr ""
+msgstr "Text Serie Mittel"
 
 #: ../lib/ui/default.ui:271
 msgid "Text italic shape"
-msgstr ""
+msgstr "Text Form Kursiv"
 
 #: ../lib/ui/default.ui:272
 msgid "Text small caps shape"
-msgstr ""
+msgstr "Text Form Kapitälchen"
 
 #: ../lib/ui/default.ui:273
 msgid "Text slanted shape"
-msgstr ""
+msgstr "Text Form Geneigt"
 
 #: ../lib/ui/default.ui:274
 msgid "Text upright shape"
-msgstr ""
+msgstr "Text Form Aufrecht"
 
 #: ../lib/ui/default.ui:279
 msgid "Floatflt Figure"
@@ -7642,7 +7528,7 @@ msgstr "Fettdruck|F"
 
 #: ../lib/ui/default.ui:307
 msgid "TeX Style|X"
-msgstr "TeX Stil|X"
+msgstr "TeX-Stil|X"
 
 #: ../lib/ui/default.ui:309
 msgid "Decrease Environment Depth|v"
@@ -7759,7 +7645,7 @@ msgstr "Inhaltsverzeichnis|I"
 
 #: ../lib/ui/default.ui:378
 msgid "LaTeX Configuration|L"
-msgstr "LaTeX-Konfiguration|K"
+msgstr "LaTeX-Konfiguration|L"
 
 #: ../lib/ui/default.ui:380
 msgid "About LyX|X"
@@ -7767,7 +7653,7 @@ msgstr "Über LyX|L"
 
 #: src/buffer.C:356
 msgid "Couldn't set the layout for "
-msgstr "Konnte das Layout für"
+msgstr "Konnte das Layout für "
 
 #: src/buffer.C:358
 msgid "one paragraph"
@@ -7775,7 +7661,7 @@ msgstr "einen Absatz nicht einstellen"
 
 #: src/buffer.C:361
 msgid " paragraphs"
-msgstr "Absätze nicht einstellen"
+msgstr " Absätze nicht einstellen"
 
 #: src/buffer.C:364 src/buffer.C:367 src/buffer.C:381 src/buffer.C:384
 #: src/buffer.C:641 src/buffer.C:646
@@ -8326,7 +8212,7 @@ msgstr ""
 
 #: src/debug.C:38
 msgid "No debugging message"
-msgstr "Keine Debug Meldungen"
+msgstr "Keine Debug-Meldung"
 
 #: src/debug.C:39
 msgid "General information"
@@ -8398,7 +8284,7 @@ msgstr "Informationen zu Abhängigkeiten"
 
 #: src/debug.C:56
 msgid "LyX Insets"
-msgstr "LyX Einfügungen"
+msgstr "LyX-Einfügungen"
 
 #: src/debug.C:57
 msgid "Files used by LyX"
@@ -8410,7 +8296,7 @@ msgstr ""
 
 #: src/debug.C:59
 msgid "Insettext/tabular messages"
-msgstr "Meldungen von Tabellen/Insettext"
+msgstr "Meldungen von Insettext/tabular"
 
 #: src/debug.C:60
 msgid "Graphics conversion and loading"
@@ -8418,7 +8304,7 @@ msgstr "Laden und Umwandeln einer Grafik"
 
 #: src/debug.C:61
 msgid "All debugging messages"
-msgstr "Alle Debug Meldungen"
+msgstr "Alle Debug-Meldungen"
 
 #: src/debug.C:114
 #, c-format
@@ -8488,7 +8374,7 @@ msgstr "Keine Änderung"
 #. default & error
 #: src/frontends/controllers/character.C:35 src/lyxfont.C:45
 msgid "Roman"
-msgstr "Normal"
+msgstr "Roman"
 
 #: src/frontends/controllers/character.C:39
 msgid "Sans Serif"
@@ -8970,7 +8856,7 @@ msgstr "BibTeX"
 
 #: src/frontends/qt2/QBibtexDialog.C:59
 msgid "BibTeX style files (*.bst)"
-msgstr "BibTeX Style Dateien (*.bst)"
+msgstr "BibTeX-Stil-Dateien (*.bst)"
 
 #: src/frontends/qt2/QBibtexDialog.C:62
 msgid "Select a BibTeX style"
@@ -8978,7 +8864,7 @@ msgstr "Wählen Sie einen BibTeX-Stil"
 
 #: src/frontends/qt2/QBibtexDialog.C:73
 msgid "BibTeX database files (*.bib)"
-msgstr "BibTeX Datenbank Dateien (*bib)"
+msgstr "BibTeX-Datenbank-Dateien (*.bib)"
 
 #: src/frontends/qt2/QBibtexDialog.C:73
 msgid "Select a BibTeX database to add"
@@ -8995,9 +8881,8 @@ msgid "Next command"
 msgstr "Befehl ausführen"
 
 #: src/frontends/qt2/QDelimiterDialog.C:81
-#, fuzzy
 msgid "LyX: Delimiters"
-msgstr "LyX: Klammern & Co"
+msgstr "LyX: Trennzeichen"
 
 #: src/frontends/qt2/QDocument.C:57
 msgid "Document Settings"
@@ -9153,19 +9038,16 @@ msgid "LaTeX Preamble"
 msgstr "LaTeX-Vorspann"
 
 #: src/frontends/qt2/QDocumentDialog.C:344
-#, fuzzy
 msgid "Small margins"
-msgstr "Ränder"
+msgstr "Schmale Ränder"
 
 #: src/frontends/qt2/QDocumentDialog.C:345
-#, fuzzy
 msgid "Very small margins"
-msgstr "A4 sehr schmale Ränder (nur Portrait)"
+msgstr "Sehr schmale Ränder"
 
 #: src/frontends/qt2/QDocumentDialog.C:346
-#, fuzzy
 msgid "Very wide margins"
-msgstr "Sehr breite Rände"
+msgstr "Sehr breite Ränder"
 
 #: src/frontends/qt2/QERT.C:31
 msgid "LaTeX ERT"
@@ -9284,25 +9166,23 @@ msgstr ""
 
 #: src/frontends/qt2/QMathDialog.C:152
 msgid "Roman\t\\mathrm"
-msgstr ""
+msgstr "Roman\t\\mathrm"
 
 #: src/frontends/qt2/QMathDialog.C:153
 msgid "Bold\t\\mathbf"
 msgstr ""
 
 #: src/frontends/qt2/QMathDialog.C:154
-#, fuzzy
 msgid "San serif\t\\mathsf"
-msgstr "Sans Serif"
+msgstr "Serifenfrei\t\\mathsf"
 
 #: src/frontends/qt2/QMathDialog.C:155
 msgid "Italic\t\\mathit"
 msgstr ""
 
 #: src/frontends/qt2/QMathDialog.C:156
-#, fuzzy
 msgid "Typewriter\t\\mathtt"
-msgstr "Schreibmaschine"
+msgstr "Schreibmaschine\t\\mathtt"
 
 #: src/frontends/qt2/QMathDialog.C:157
 msgid "Blackboard\t\\mathbb"
@@ -9598,7 +9478,7 @@ msgstr "Fertig"
 
 #: src/frontends/xforms/FileDialog.C:62
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: src/frontends/xforms/FormAboutlyx.C:74
 msgid "License"
@@ -9628,7 +9508,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormBibtex.C:41
 msgid "BibTeX Database"
-msgstr "BibTeX Datenbank"
+msgstr "BibTeX-Datenbank"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormBibtex.C:71
@@ -9808,7 +9688,7 @@ msgstr " ``Text'' | ''Text'' | ,,Text`` | ,,Text'' | «Text» | »Text« "
 
 #: src/frontends/xforms/FormDocument.C:303
 msgid " Author-year | Numerical "
-msgstr " Autor-Jahr | Numerisch "
+msgstr " Autor-Jahr | Nummerisch "
 
 #: src/frontends/xforms/FormDocument.C:329
 msgid ""
@@ -10036,11 +9916,11 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:255
 msgid "Enables use of subfigure with its own caption."
-msgstr ""
+msgstr "Definiert eine Teilabbildung mit eigener Überschrift."
 
 #: src/frontends/xforms/FormGraphics.C:257
 msgid "Insert the optional subfigure caption."
-msgstr ""
+msgstr "Fügen Sie die optionale Überschrift der Teilabbildung ein."
 
 #: src/frontends/xforms/FormGraphics.C:259
 msgid ""
@@ -10084,7 +9964,7 @@ msgstr "Kein Build Protokoll vorhanden"
 
 #: src/frontends/xforms/FormMathsDelim.C:57
 msgid "Maths Delimiters"
-msgstr "Klammern & Co"
+msgstr "Mathe-Trennzeichen"
 
 #: src/frontends/xforms/FormMathsMatrix.C:62
 msgid "Maths Matrix"
@@ -10140,7 +10020,7 @@ msgstr "Abstände"
 
 #: src/frontends/xforms/FormMathsStyle.C:46
 msgid "Maths Styles & Fonts"
-msgstr "Stil & Schriften"
+msgstr "Stile und Schriften"
 
 #: src/frontends/xforms/FormMinipage.C:30
 msgid "Minipage Options"
@@ -10501,11 +10381,11 @@ msgstr "Referenzliste aktualisieren"
 
 #: src/frontends/xforms/FormRef.C:78
 msgid "Select format style of the reference."
-msgstr "Wählen Sie den Formatstil für die Querverweise."
+msgstr "Wählen Sie den Formatstil des Querverweises."
 
 #: src/frontends/xforms/FormRef.C:182
 msgid "*** No labels found in document ***"
-msgstr "*** Keine Marken im Dokument ***"
+msgstr "*** Keine Marken im Dokument gefunden ***"
 
 #: src/frontends/xforms/FormRef.C:278
 msgid "Go back to original place."
@@ -10655,7 +10535,7 @@ msgstr "Tabelle einfügen"
 
 #: src/frontends/xforms/FormTexinfo.C:45
 msgid "LaTeX classes|LaTeX styles|BibTeX styles"
-msgstr ""
+msgstr "LaTeX-Klassen|LaTeX-Stile|BibTeX-Stile"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormTexinfo.C:51
@@ -10800,9 +10680,8 @@ msgid "[Beginning of history]"
 msgstr "[Beginn der Aufzeichnung]"
 
 #: src/frontends/xforms/XMiniBuffer.C:127
-#, fuzzy
 msgid "[no match]"
-msgstr "[nichts gefunden]"
+msgstr "[keine Übereinstimmung]"
 
 #: src/frontends/xforms/XMiniBuffer.C:133
 msgid "[only completion]"
@@ -10819,7 +10698,7 @@ msgstr "Importiere "
 
 #: src/importer.C:47 src/lyxfunc.C:979 src/lyxfunc.C:1142 src/lyxfunc.C:1723
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: src/importer.C:68 src/importer.C:72
 msgid "Cannot import file"
@@ -10862,7 +10741,7 @@ msgstr "Zeige Fehlermeldung"
 
 #: src/insets/insetert.C:233
 msgid "Opened ERT Inset"
-msgstr "ERT Einfügung geöffnet"
+msgstr "ERT-Einfügung geöffnet"
 
 #: src/insets/insetert.C:248 src/insets/insettabular.C:2090
 msgid "Impossible Operation!"
@@ -10871,7 +10750,7 @@ msgstr "Dieser Vorgang ist nicht möglich!"
 #: src/insets/insetert.C:249
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr ""
-"Innerhalb einer ERT-Einfügungen dürfen Font Typen nicht verändert werden!"
+"Innerhalb einer ERT-Einfügung dürfen Fonttypen nicht verändert werden!"
 
 #: src/insets/insetert.C:250 src/insets/insettabular.C:2092
 #: src/insets/insettext.C:1423
@@ -10883,17 +10762,16 @@ msgid "ERT"
 msgstr "ERT"
 
 #: src/insets/insetfloat.C:127
-#, fuzzy
 msgid "float: "
-msgstr "Floats"
+msgstr "Float: "
 
 #: src/insets/insetfloat.C:224
 msgid "Opened Float Inset"
-msgstr "Float Einfügungen geöffnet"
+msgstr "Float-Einfügung geöffnet"
 
 #: src/insets/insetfloat.C:325
 msgid "float:"
-msgstr "Floats"
+msgstr "Float:"
 
 #: src/insets/insetfloatlist.C:54
 msgid "ERROR: Nonexistent float type!"
@@ -10914,7 +10792,7 @@ msgstr "Fußnote"
 
 #: src/insets/insetfoot.C:60
 msgid "Opened Footnote Inset"
-msgstr "Einfügung Fußnote geöffnet"
+msgstr "Fußnoten-Einfügung geöffnet"
 
 #: src/insets/insetgraphics.C:225
 msgid "Waiting for draw request to start loading..."
@@ -10922,7 +10800,7 @@ msgstr "Darstellungsanfrage gestarted; Warte..."
 
 #: src/insets/insetgraphics.C:228
 msgid "Loading..."
-msgstr "Laden..."
+msgstr "Lade..."
 
 #: src/insets/insetgraphics.C:231
 msgid "Converting to loadable format..."
@@ -10933,14 +10811,12 @@ msgid "Loaded into memory. Must now generate pixmap."
 msgstr ""
 
 #: src/insets/insetgraphics.C:237
-#, fuzzy
 msgid "Scaling etc..."
-msgstr "Geladen.  Skaliere usw..."
+msgstr "Skaliere etc..."
 
 #: src/insets/insetgraphics.C:240
-#, fuzzy
 msgid "Ready to display"
-msgstr "ERT Einfüngung anzeigen"
+msgstr "Bereit zur Anzeige"
 
 #: src/insets/insetgraphics.C:243
 msgid "No file found!"
@@ -10955,9 +10831,8 @@ msgid "Error loading file into memory"
 msgstr "Fehler beim Laden der Datei in den Speicher"
 
 #: src/insets/insetgraphics.C:252
-#, fuzzy
 msgid "Error generating the pixmap"
-msgstr "Fehler bei der Konvertierung in ein darstellbares Format"
+msgstr "Fehler beim Generieren der Pixmap"
 
 #: src/insets/insetgraphics.C:255
 msgid "No image"
@@ -10972,9 +10847,8 @@ msgid "into tempdir"
 msgstr "kann nicht in das Temporäre Verzeichnis kopiert werden."
 
 #: src/insets/insetgraphics.C:679 src/insets/insetgraphics.C:683
-#, fuzzy
 msgid "Cannot convert Image (not existing file?)"
-msgstr "Die Datei kann nicht umgewandelt werden"
+msgstr "Das Bild kann nicht umgewandelt werden (Datei nicht vorhanden?)"
 
 #: src/insets/insetgraphics.C:680
 #, c-format
@@ -11017,7 +10891,7 @@ msgstr "Liste"
 
 #: src/insets/insetlist.C:64
 msgid "Opened List Inset"
-msgstr "List Einfügung geöffnet"
+msgstr "Listen-Einfügung geöffnet"
 
 #: src/insets/insetmarginal.C:34 src/insets/insetmarginal.C:42
 msgid "margin"
@@ -11025,7 +10899,7 @@ msgstr "Rand"
 
 #: src/insets/insetmarginal.C:55
 msgid "Opened Marginal Note Inset"
-msgstr "Randnotiz Einfügung geöffnet"
+msgstr "Randnotiz-Einfügung geöffnet"
 
 #: src/insets/insetminipage.C:68
 msgid "minipage"
@@ -11033,7 +10907,7 @@ msgstr "Minipage"
 
 #: src/insets/insetminipage.C:229
 msgid "Opened Minipage Inset"
-msgstr "Minipage Einfügung geöffnet"
+msgstr "Minipage-Einfügung geöffnet"
 
 #: src/insets/insetnote.C:40 src/LColor.C:64
 msgid "note"
@@ -11041,7 +10915,7 @@ msgstr "Notiz"
 
 #: src/insets/insetnote.C:87
 msgid "Opened Note Inset"
-msgstr "Notiz Einfügung geöffnet"
+msgstr "Notiz-Einfügung geöffnet"
 
 #: src/insets/insetoptarg.C:39 src/insets/insetoptarg.C:49
 #, fuzzy
@@ -11099,7 +10973,7 @@ msgstr ""
 
 #: src/insets/insettabular.C:553
 msgid "Opened Tabular Inset"
-msgstr "Tabellen Einfügung geöffnet"
+msgstr "Tabellen-Einfügung geöffnet"
 
 #: src/insets/insettabular.C:2091
 msgid "Multicolumns can only be horizontally."
@@ -11107,7 +10981,7 @@ msgstr "Mehrfachspalten sind nur horizontal möglich."
 
 #: src/insets/insettext.C:666
 msgid "Opened Text Inset"
-msgstr "Text Einfügung geöffnet"
+msgstr "Text-Einfügung geöffnet"
 
 #: src/insets/insettext.C:1421
 msgid "Impossible operation"
@@ -11139,7 +11013,7 @@ msgstr "Theorem"
 
 #: src/insets/insettheorem.C:73
 msgid "Opened Theorem Inset"
-msgstr "Theorem Einfügung geöffnet"
+msgstr "Theorem-Einfügung geöffnet"
 
 #: src/insets/insettoc.C:34
 msgid "Unknown toc list"
@@ -11155,12 +11029,11 @@ msgstr "HtmlUrl: "
 
 #: src/insets/insetwrap.C:57
 msgid "wrap: "
-msgstr ""
+msgstr "Wrap: "
 
 #: src/insets/insetwrap.C:144
-#, fuzzy
 msgid "Opened Wrap Inset"
-msgstr "Einfügung geöffnet"
+msgstr "Wrap-Einfügung geöffnet"
 
 #: src/kbsequence.C:157
 msgid "   options: "
@@ -11177,11 +11050,11 @@ msgstr "LaTeX-Durchlauf Nr. "
 
 #: src/LaTeX.C:247 src/LaTeX.C:331
 msgid "Running MakeIndex."
-msgstr "Starte MakeIndex."
+msgstr "MakeIndex wird ausgeführt."
 
 #: src/LaTeX.C:262
 msgid "Running BibTeX."
-msgstr "Starte BibTeX."
+msgstr "BibTeX wird ausgeführt."
 
 #: src/LColor.C:49
 msgid "none"
@@ -11305,11 +11178,11 @@ msgstr "Überschrift (Rahmen)"
 
 #: src/LColor.C:80
 msgid "collapsable inset text"
-msgstr "Einklappbarer Einfügungen (Text)"
+msgstr "Einklappbare Einfügung (Text)"
 
 #: src/LColor.C:81
 msgid "collapsable inset frame"
-msgstr "Einklappbarer Einfügungen (Rahmen)"
+msgstr "Einklappbare Einfügung (Rahmen)"
 
 #: src/LColor.C:82
 msgid "inset background"
@@ -11317,7 +11190,7 @@ msgstr "Einfügung (Hintergrund)"
 
 #: src/LColor.C:83
 msgid "inset frame"
-msgstr "Einfügungen (Rahmen)"
+msgstr "Einfügung (Rahmen)"
 
 #: src/LColor.C:84
 msgid "LaTeX error"
@@ -11597,11 +11470,11 @@ msgstr "Alle Fehlermarken entfernen"
 
 #: src/LyXAction.C:189
 msgid "Insert a new ERT Inset"
-msgstr "ERT einfügen"
+msgstr "Neue ERT-Einfügung machen"
 
 #: src/LyXAction.C:191
 msgid "Insert a new external inset"
-msgstr "Neue Externe Einfügung anlegen"
+msgstr "Neue Einfügung für externes Material machen"
 
 #: src/LyXAction.C:193
 msgid "Insert Graphics"
@@ -11621,7 +11494,7 @@ msgstr "Öffnen"
 
 #: src/LyXAction.C:199
 msgid "Find & Replace"
-msgstr "Suchen & Ersetzen"
+msgstr "Suchen und Ersetzen"
 
 #: src/LyXAction.C:201
 #, fuzzy
@@ -11634,9 +11507,8 @@ msgid "Insert a wide Float"
 msgstr "Indexliste einfügen"
 
 #: src/LyXAction.C:204
-#, fuzzy
 msgid "Insert a Wrap"
-msgstr "'wrap'-Abbildung einfügen"
+msgstr "Wrap einfügen"
 
 #: src/LyXAction.C:205
 msgid "Toggle bold"
@@ -11668,7 +11540,7 @@ msgstr "Schriftart Roman an/aus"
 
 #: src/LyXAction.C:215
 msgid "Toggle sans font style"
-msgstr "Schriftart Sans Serif an/aus"
+msgstr "Schriftart Serifenfrei an/aus"
 
 #: src/LyXAction.C:216
 msgid "Toggle fraktur font style"
@@ -11787,7 +11659,6 @@ msgid "Exit"
 msgstr "Beenden"
 
 #: src/LyXAction.C:279
-#, fuzzy
 msgid "Insert margin note"
 msgstr "Randnotiz einfügen"
 
@@ -12057,7 +11928,7 @@ msgstr "Konfiguration wird neu geladen..."
 
 #: src/lyx_cb.C:539
 msgid "The system has been reconfigured."
-msgstr "Neukonfiguration wurde durchgeführt."
+msgstr "Das System wurde neu konfiguriert."
 
 #: src/lyx_cb.C:540
 msgid "You need to restart LyX to make use of any"
@@ -12078,7 +11949,7 @@ msgstr ""
 
 #: src/lyxfont.C:45
 msgid "Sans serif"
-msgstr "Sans Serif"
+msgstr "Serifenfrei"
 
 #: src/lyxfont.C:45
 msgid "Symbol"
@@ -12296,11 +12167,11 @@ msgstr "Wählen Sie die einzufügende %1$s-Datei"
 
 #: src/lyxfunc.C:1773
 msgid "Select "
-msgstr "Wählen Sie "
+msgstr "Wählen Sie die einzufügende "
 
 #: src/lyxfunc.C:1774
 msgid " file to import"
-msgstr "die einzufügende Datei"
+msgstr "-Datei"
 
 #: src/lyxfunc.C:1813
 msgid ""
@@ -12362,8 +12233,7 @@ msgstr "Verwenden Sie die Kommandozeilenoption '-sysdir' oder "
 
 #: src/lyx_main.C:354
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
-msgstr ""
-"setzen Sie die Umgebungsvariable LYX_DIR_13x auf das LyX-Systemverzeichnis,"
+msgstr "setzen Sie die Umgebungsvariable LYX_DIR_13x auf das LyX-Systemverzeichnis,"
 
 #: src/lyx_main.C:356
 msgid "containing the file `chkconfig.ltx'."
@@ -12400,7 +12270,7 @@ msgstr "Sie haben ein ungültiges LyX Verzeichnis angegeben."
 
 #: src/lyx_main.C:608
 msgid "It is needed to keep your own configuration."
-msgstr "Es wird zum Speichern Ihrer Konfiguration benötigt."
+msgstr "Es wird zum Speichern Ihrer persönlichen Konfiguration benötigt."
 
 #: src/lyx_main.C:609
 msgid "Should I try to set it up for you (recommended)?"
@@ -12413,7 +12283,7 @@ msgstr "Starte ohne persönliches LyX-Verzeichnis."
 #: src/lyx_main.C:617
 #, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
-msgstr "LyX: Erzeuge Verzeichnis %1$s und führe configure aus..."
+msgstr "LyX: Erzeuge Verzeichnis %1$s und führe Neukonfiguration durch..."
 
 #: src/lyx_main.C:622
 msgid "LyX: Creating directory "
@@ -12421,7 +12291,7 @@ msgstr "LyX: Erzeuge Verzeichnis "
 
 #: src/lyx_main.C:623
 msgid " and running configure..."
-msgstr "und führe configure aus..."
+msgstr " und führe Neukonfiguration durch..."
 
 #: src/lyx_main.C:631
 #, c-format
@@ -13099,7 +12969,7 @@ msgstr "LyX VK: Protokollmeldung"
 
 #: src/lyxvc.C:160
 msgid "(no log message)"
-msgstr "(keine Protokolldatei)"
+msgstr "(keine Protokollmeldung)"
 
 #: src/lyxvc.C:175
 msgid "Ignore changes and proceed with check out?"
@@ -13135,7 +13005,7 @@ msgstr "Makro: %s: "
 
 #: src/mathed/formulamacro.C:134
 msgid " Macro: "
-msgstr "Makro: "
+msgstr " Makro: "
 
 #: src/MenuBackend.C:314 src/MenuBackend.C:337 src/MenuBackend.C:394
 #: src/MenuBackend.C:415 src/MenuBackend.C:485
@@ -13269,7 +13139,7 @@ msgstr "Marke gesetzt"
 
 #: src/text3.C:1080
 msgid "LyX function 'layout' needs an argument."
-msgstr ""
+msgstr "Die LyX-Funktion 'layout' benötigt ein Argument."
 
 #: src/text.C:1924
 msgid ""
