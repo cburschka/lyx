@@ -51,24 +51,8 @@ sets system directory. Normally not needed.
 sets user directory. Needed if you want to use LyX with different lyxrc 
 settings.
 .TP
-.BI \-width " x"
-the width of the main window in \fBLyX\fR.
-.TP
-.BI \-height " y"
-the height of the main window in \fBLyX\fR.
-.TP
-.BI \-xpos " x"
-the x position of the main window in \fBLyX\fR.
-.TP
-.BI \-ypos " y"
-the y position of the main window in \fBLyX\fR.
-Notice, you have to specify both 
-.BI \-xpos 
-and 
-.BI \-ypos 
-to obtain the
-desired effect. Negative positions are ignored. If no valid position
-is given, the main window is centered.
+.BI \-geometry " WxH+X+Y"
+the preferred size and position of the main window in \fBLyX\fR.
 .TP
 .BI \-dbg " feature[,feature...]"
 where feature is a name or number.
