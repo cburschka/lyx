@@ -32,7 +32,7 @@ QAbout::QAbout(ControlAboutlyx & c)
 }
 
 
-void QAbout::build()
+void QAbout::build_dialog()
 {
 	dialog_.reset(new QAboutDialog());
 	connect(dialog_.get()->closePB, SIGNAL(clicked()),

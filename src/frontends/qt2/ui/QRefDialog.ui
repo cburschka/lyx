@@ -11,7 +11,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>417</width>
+            <width>401</width>
             <height>277</height>
         </rect>
     </property>
@@ -48,6 +48,10 @@
                     <property stdset="1">
                         <name>name</name>
                         <cstring>refsLB</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Available references</string>
                     </property>
                 </widget>
                 <widget>
@@ -96,6 +100,10 @@
                                 <name>text</name>
                                 <string>&amp;Update</string>
                             </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Update the reference list</string>
+                            </property>
                         </widget>
                         <spacer>
                             <property>
@@ -130,7 +138,7 @@
                             </property>
                             <property>
                                 <name>toolTip</name>
-                                <string>Sort references in alphabetical order ?</string>
+                                <string>Sort references in alphabetical order</string>
                             </property>
                         </widget>
                         <spacer>
@@ -383,6 +391,10 @@
                         <name>text</name>
                         <string>&amp;Goto reference</string>
                     </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Move the document cursor</string>
+                    </property>
                 </widget>
                 <spacer>
                     <property>
@@ -439,11 +451,11 @@
                             <class>QPushButton</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>cancelPB</cstring>
+                                <cstring>closePB</cstring>
                             </property>
                             <property stdset="1">
                                 <name>text</name>
-                                <string>&amp;Cancel</string>
+                                <string>&amp;Close</string>
                             </property>
                         </widget>
                     </hbox>
@@ -454,53 +466,64 @@
 </widget>
 <connections>
     <connection>
+        <sender>typeCO</sender>
+        <signal>activated(int)</signal>
+        <receiver>QRefDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>referenceED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QRefDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>nameED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QRefDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
+    </connection>
+    <connection>
         <sender>refsLB</sender>
         <signal>highlighted(const QString&amp;)</signal>
         <receiver>QRefDialogBase</receiver>
-        <slot>highlight_adaptor(const QString&amp;)</slot>
+        <slot>refHighlighted(const QString&amp;)</slot>
     </connection>
     <connection>
         <sender>refsLB</sender>
         <signal>selected(const QString&amp;)</signal>
         <receiver>QRefDialogBase</receiver>
-        <slot>select_adaptor(const QString&amp;)</slot>
+        <slot>refSelected(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>refsLB</sender>
+        <signal>highlighted(const QString&amp;)</signal>
+        <receiver>QRefDialogBase</receiver>
+        <slot>changed_adaptor()</slot>
     </connection>
     <connection>
         <sender>sortCB</sender>
         <signal>toggled(bool)</signal>
         <receiver>QRefDialogBase</receiver>
-        <slot>sort_adaptor(bool)</slot>
-    </connection>
-    <connection>
-        <sender>updatePB</sender>
-        <signal>clicked()</signal>
-        <receiver>QRefDialogBase</receiver>
-        <slot>update_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>okPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QRefDialogBase</receiver>
-        <slot>apply_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>cancelPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QRefDialogBase</receiver>
-        <slot>close_adaptor()</slot>
+        <slot>sortToggled(bool)</slot>
     </connection>
     <connection>
         <sender>gotoPB</sender>
         <signal>clicked()</signal>
         <receiver>QRefDialogBase</receiver>
-        <slot>goto_adaptor()</slot>
+        <slot>gotoClicked()</slot>
     </connection>
-    <slot access="public">apply_adaptor()</slot>
-    <slot access="public">goto_adaptor()</slot>
-    <slot access="public">highlight_adaptor(const QString&amp;)</slot>
-    <slot access="public">close_adaptor()</slot>
-    <slot access="public">select_adaptor(const QString&amp;)</slot>
-    <slot access="public">sort_adaptor(bool)</slot>
-    <slot access="public">update_adaptor()</slot>
+    <connection>
+        <sender>updatePB</sender>
+        <signal>clicked()</signal>
+        <receiver>QRefDialogBase</receiver>
+        <slot>updateClicked()</slot>
+    </connection>
+    <slot access="public">changed_adaptor()</slot>
+    <slot access="public">gotoClicked()</slot>
+    <slot access="public">refHighlighted(const QString&amp;)</slot>
+    <slot access="public">refSelected(const QString&amp;)</slot>
+    <slot access="public">sortToggled(bool)</slot>
+    <slot access="public">updateClicked()</slot>
 </connections>
 </UI>

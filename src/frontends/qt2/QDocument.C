@@ -49,7 +49,7 @@ QDocument::QDocument(ControlDocument & c)
 #endif 
 
 
-void QDocument::build()
+void QDocument::build_dialog()
 {
 	int n;
 

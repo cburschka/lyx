@@ -30,7 +30,7 @@ private:
 	/// not needed
 	virtual void update_contents() {}
 	// build the dialog
-	virtual void build();
+	virtual void build_dialog();
 };
 
 #endif // FORMABOUT_H

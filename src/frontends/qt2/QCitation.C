@@ -65,13 +65,13 @@ void QCitation::hide()
 }
 
 
-void QCitation::build()
+void QCitation::build_dialog()
 {
 	dialog_.reset(new QCitationDialog(this));
 
 	dialog_->searchTypeCB->setChecked(false);
 	dialog_->searchCaseCB->setChecked(false);
-	
+
 	// Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->okPB);
 	bc().setApply(dialog_->applyPB);

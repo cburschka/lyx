@@ -1,3 +1,20 @@
+2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: 
+	* QRef.[Ch]:
+	* ui/QRefDialog.ui: add Ref dialog back
+
+	* QAbout.[Ch]:
+	* QCitation.[Ch]: 
+	* QDocument.[Ch]: 
+	* QIndex.[Ch]: 
+	* QURL.[Ch]:
+	* Qt2Base.h: protect build() with updating_ too 
+
+	* QCitationDialog.C: use Qt2Base::readOnly
+
+	* README: update
+	 
 2001-08-25  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C: add URL

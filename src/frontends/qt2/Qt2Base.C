@@ -65,8 +65,6 @@ bool Qt2Base::isValid()
  
 void Qt2Base::changed()
 {
-	lyxerr << "got changed() during updating:" << updating_ << std::endl;
- 
 	if (updating_)
 		return;
  

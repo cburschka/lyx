@@ -33,7 +33,7 @@ private:
 	/// update
 	virtual void update_contents();
 	/// build the dialog
-	virtual void build();
+	virtual void build_dialog();
 };
 
 #endif // QINDEX_H

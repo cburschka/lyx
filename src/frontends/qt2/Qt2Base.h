@@ -27,6 +27,7 @@
 
 #include "ViewBase.h"
 #include "LString.h"
+#include "debug.h"
 #include "ButtonPolicies.h"
 #include "ControlButtons.h"
 
@@ -46,8 +47,8 @@ public:
 	virtual ~Qt2Base() {}
 
 protected:
-	/// Build the dialog
-	virtual void build() = 0;
+	/// build the actual dialog
+	virtual void build_dialog() = 0;
 	/// Hide the dialog.
 	virtual void hide();
 	/// Create the dialog if necessary, update it and display it.
@@ -99,8 +100,12 @@ protected:
 	/// update the dialog 
 	virtual void update();
  
+	/// Build the dialog
+	virtual void build();
+ 
 	/// Pointer to the actual instantiation of the Qt dialog
 	virtual QDialog * form() const;
+ 
 	/// Real GUI implementation.
 	boost::scoped_ptr<Dialog> dialog_;
 
@@ -125,11 +130,8 @@ void Qt2DB<Dialog>::update()
 {
 	form()->setUpdatesEnabled(false);
  
-	// this is tricky. First we process pending events
-	// as a result of the bc() state change (if any).
-	// then we lock out any bc() changes as a result of
-	// "innocent" updates during update_contents()
-	// then we enable normal behaviour again.
+	// protect the BC from unwarranted state transitions
+ 
 	qApp->processEvents();
 	updating_ = true;
 	update_contents();
@@ -141,9 +143,27 @@ void Qt2DB<Dialog>::update()
 }
 
  
+template <class Dialog>
+void Qt2DB<Dialog>::build()
+{
+	// protect the BC from unwarranted state transitions
+ 
+	qApp->processEvents();
+	updating_ = true;
+	build_dialog();
+	qApp->processEvents();
+	updating_ = false;
+}
+
+ 
 template <class Controller, class Base>
 class Qt2CB: public Base
 {
+public:
+	bool readOnly() const {
+		return controller().isReadonly();
+	}
+
 protected:
 	///
 	Qt2CB(ControlButtons &, const QString&);

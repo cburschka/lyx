@@ -62,7 +62,7 @@ void QCitationDialog::slotBibSelected(int sel)
 {
 	slotBibHighlighted(sel);
  
-	if (form_->controller().isReadonly()) 
+	if (form_->readOnly()) 
 		return;
  
 	slotAddClicked();
@@ -98,7 +98,7 @@ void QCitationDialog::slotBibHighlighted(int sel)
 		citeLB->setTopItem(n);
 	}
 
-	if (!form_->controller().isReadonly()) {
+	if (!form_->readOnly()) {
 		if (cit != form_->citekeys.end()) {
 			form_->setBibButtons(QCitation::OFF);
 			form_->setCiteButtons(QCitation::ON);
@@ -119,7 +119,7 @@ void QCitationDialog::slotCiteHighlighted(int sel)
 		return;
 	}
 
-	if (!form_->controller().isReadonly()) {
+	if (!form_->readOnly()) {
 		form_->setBibButtons(QCitation::OFF);
 		form_->setCiteButtons(QCitation::ON);
 	}

@@ -19,7 +19,9 @@ of the current dialog's contents.
 OK/Apply/Restore/Close should be connected in the derived class's constructor
 to call form_->slotOK() etc. Refer to close/cancel as close in the source.
  
-Override update_contents() to update the dialog, not update()
+Override update_contents() to update the dialog, not update(), and build_dialog(),
+not build(). Only these functions may change dialog widgets that may emit changed()
+during initialisation, to prevent the button controller from changing its state.
 
 Never call buttoncontroller functions directly from dialogs. In general, you
 should use Qt2Base::changed() in all circumstances. However, if you must call
@@ -58,10 +60,10 @@ Document	Kalle		Waiting for MVC
 Index		Kalle		Done
 Paragraph	Edwin		Waiting for MVC
 Print		Edwin
-Ref		Kalle
+Ref		Kalle		Done
 Search		Edwin
 Splash		Edwin
 Tabular				Waiting for MVC
 TabularCreate	Edwin
 Toc		Kalle
-Url		Kalle
+Url		Kalle		Done

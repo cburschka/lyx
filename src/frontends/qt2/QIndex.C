@@ -10,15 +10,9 @@
 
 #include "QIndexDialog.h"
 #include "ControlIndex.h"
-#include "QtLyXView.h" 
-#include "BufferView.h"
-
-#include "Dialogs.h"
-#include "Qt2BC.h"
 #include "QIndex.h"
+#include "Qt2BC.h"
 #include "gettext.h"
-#include "buffer.h"
-#include "lyxfunc.h" 
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
@@ -31,7 +25,7 @@ QIndex::QIndex(ControlIndex & c)
 }
 
 
-void QIndex::build()
+void QIndex::build_dialog()
 {
 	dialog_.reset(new QIndexDialog(this));
 

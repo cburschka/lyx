@@ -28,7 +28,7 @@ private:
 	/// apply dialog
 	virtual void apply();
 	/// build dialog
-	virtual void build();
+	virtual void build_dialog();
 	/// update dialog
 	virtual void update_contents();
 };

@@ -4,72 +4,83 @@
  * Read the file COPYING
  *
  * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se>
+ * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
+#include <config.h>
+
+#include <qpushbutton.h>
+#include <qlineedit.h> 
+#include <qcombobox.h>
+#include <qlistbox.h> 
+ 
 #include "QRefDialog.h"
+#include "ControlRef.h" 
 #include "Dialogs.h"
 #include "QRef.h"
+#include "debug.h"
 
-QRefDialog::QRefDialog(QRef * form, QWidget * parent, const char * name, bool modal, WFlags fl)
-	: QRefDialogBase(parent, name, modal, fl),
+QRefDialog::QRefDialog(QRef * form)
+	: QRefDialogBase(0, 0, false, 0),
 	form_(form)
 {
+	connect(okPB, SIGNAL(clicked()),
+		form_, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()),
+		form_, SLOT(slotClose()));
 }
 
 
-QRefDialog::~QRefDialog()
+void QRefDialog::changed_adaptor()
 {
+	form_->changed();
+}
+
+
+void QRefDialog::gotoClicked()
+{
+	form_->gotoRef();
+}
+
+
+void QRefDialog::refHighlighted(const QString & sel)
+{
+	if (form_->readOnly())
+		return;
+
+	referenceED->setText(sel); 
+	if (form_->at_ref_)	
+		form_->gotoRef();
+	gotoPB->setEnabled(true);
+	if (form_->typeAllowed())
+		typeCO->setEnabled(true);
+	if (form_->nameAllowed())
+		nameED->setEnabled(true);
 }
 
  
-void QRefDialog::apply_adaptor()
+void QRefDialog::refSelected(const QString & sel)
 {
-	form_->apply();
-	form_->close();
-	hide();
+	form_->gotoRef();
 }
 
 
-void QRefDialog::goto_adaptor()
+void QRefDialog::sortToggled(bool on)
 {
-	form_->goto_ref();
+	form_->sort_ = on;
+	refsLB->clear();
+	form_->redoRefs();
 }
 
 
-void QRefDialog::highlight_adaptor(const QString & sel)
+void QRefDialog::updateClicked()
 {
-	form_->highlight(sel); 
+	form_->updateRefs();
 }
-
-
-void QRefDialog::close_adaptor()
-{
-	form_->close();
-	hide();
-}
-
-
-void QRefDialog::select_adaptor(const QString & sel)
-{
-	form_->select(sel);
-}
-
-
-void QRefDialog::sort_adaptor(bool sort)
-{
-	form_->set_sort(sort);
-}
-
-
-void QRefDialog::update_adaptor()
-{
-	form_->do_ref_update();
-}
-
 
 
 void QRefDialog::closeEvent(QCloseEvent * e)
 {
-	form_->close();
+	form_->slotWMHide();
 	e->accept();
 }

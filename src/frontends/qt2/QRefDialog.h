@@ -4,6 +4,7 @@
  * Read the file COPYING
  *
  * \author Kalle Dalheimer <kalle@klaralvdalens-datakonsult.se>
+ * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
 #ifndef QREFDIALOG_H
@@ -19,17 +20,15 @@ class QRefDialog : public QRefDialogBase
 { Q_OBJECT
 
 public:
-	QRefDialog(QRef * form, QWidget * parent = 0, const char * name = 0, bool modal = FALSE, WFlags fl = 0);
-	~QRefDialog();
+	QRefDialog(QRef * form);
 
 public slots:
-	void apply_adaptor();
-	void goto_adaptor();
-	void highlight_adaptor(const QString &);
-	void close_adaptor();
-	void select_adaptor(const QString &);
-	void sort_adaptor(bool);
-	void update_adaptor();
+	void changed_adaptor();
+	void gotoClicked();
+	void refHighlighted(const QString &);
+	void refSelected(const QString &);
+	void sortToggled(bool);
+	void updateClicked();
 
 protected:
 	void closeEvent(QCloseEvent * e);

@@ -15,15 +15,16 @@
 #include "QAboutDialog.h"
 #include "QCitationDialog.h"
 #include "QIndexDialog.h"
+#include "QRefDialog.h"
 #include "QURLDialog.h"
  
-// the controller interface
 #include "QAbout.h"
 #include "QCharacter.h"
 #include "QCitation.h"
 #include "QIndex.h"
 #include "QParagraph.h"
 #include "QPrint.h"
+#include "QRef.h"
 #include "QSearch.h"
 #include "QSplash.h"
 #include "QTabularCreate.h"
@@ -45,6 +46,7 @@
 #include "controllers/ControlAboutlyx.h"
 #include "controllers/ControlCitation.h"
 #include "controllers/ControlIndex.h"
+#include "controllers/ControlRef.h"
 #include "controllers/ControlSplash.h"
 #include "controllers/ControlUrl.h" 
 #if 0
@@ -90,6 +92,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUICitation<QCitation, Qt2BC>(*lv, *this));
 	add(new GUIAboutlyx<QAbout, Qt2BC>(*lv, *this));
 	add(new GUIIndex<QIndex, Qt2BC>(*lv, *this));
+	add(new GUIRef<QRef, Qt2BC>(*lv, *this));
 	add(new GUIUrl<QURL, Qt2BC>(*lv, *this));
 
 	// reduce the number of connections needed in

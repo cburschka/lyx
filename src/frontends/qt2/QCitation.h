@@ -42,7 +42,7 @@ private:
 	/// Set the Params variable for the Controller.
 	virtual void apply();
 	/// Build the dialog.
-	virtual void build();
+	virtual void build_dialog();
 	/// Hide the dialog.
 	virtual void hide();
 	/// Update dialog before/whilst showing it.

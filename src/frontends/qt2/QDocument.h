@@ -71,7 +71,7 @@ private:
 	/// Pointer to the actual instantiation of the ButtonController.
 	virtual Qt2BC & bc();
 	/// Build the dialog
-	virtual void build();
+	virtual void build_dialog();
 // 	/// Filter the inputs
 // 	virtual bool input( FL_OBJECT *, long );
 	/// Update the dialog.

@@ -27,7 +27,7 @@ QURL::QURL(ControlUrl & c)
 }
 
 
-void QURL::build()
+void QURL::build_dialog()
 {
 	dialog_.reset(new QURLDialog(this));
 
