@@ -7,8 +7,6 @@ INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 EXTRA_DIST = \
 	insetlist.C \
 	insetlist.h \
-	insetsection.h \
-	insetsection.C \
 	insettheorem.C \
 	insettheorem.h
 
