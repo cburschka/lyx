@@ -1679,16 +1679,6 @@ void LyXText::insertChar(char c)
 		}
 	}
 
-	// the display inset stuff
-	if (cursorRow()->pos() < cursorRow()->par()->size()
-	    && cursorRow()->par()->isInset(cursorRow()->pos())) {
-		InsetOld * inset = cursorRow()->par()->getInset(cursorRow()->pos());
-		if (inset && (inset->display() || inset->needFullRow())) {
-			// force a new break
-			cursorRow()->fill(-1); // to force a new break
-		}
-	}
-
 	// get the cursor row fist
 	RowList::iterator row = cursorRow();
 	if (c != Paragraph::META_INSET) {
@@ -1697,102 +1687,10 @@ void LyXText::insertChar(char c)
 	}
 	setCharFont(cursor.par(), cursor.pos(), rawtmpfont);
 
-	if (!jumped_over_space) {
-		// refresh the positions
-		RowList::iterator tmprow = row;
-		while (boost::next(tmprow) != rows().end() &&
-		       boost::next(tmprow)->par() == row->par()) {
-			++tmprow;
-			tmprow->pos(tmprow->pos() + 1);
-		}
-	}
-
-	// Is there a break one row above
-	if (row != rows().begin() &&
-	    boost::prior(row)->par() == row->par()
-	    && (cursor.par()->isLineSeparator(cursor.pos())
-		|| cursor.par()->isNewline(cursor.pos())
-		|| ((cursor.pos() + 1 < cursor.par()->size()) &&
-		    cursor.par()->isInset(cursor.pos() + 1))
-		|| cursorRow()->fill() == -1))
-	{
-		pos_type z = rowBreakPoint(*boost::prior(row));
-
-		if (z >= row->pos()) {
-			row->pos(z + 1);
-
-			// set the dimensions of the row above
-			boost::prior(row)->fill(fill(
-						   boost::prior(row),
-						   workWidth()));
-
-			setHeightOfRow(boost::prior(row));
-
-			breakAgainOneRow(row);
-
-			current_font = rawtmpfont;
-			real_current_font = realtmpfont;
-			setCursor(cursor.par(), cursor.pos() + 1,
-				  false, cursor.boundary());
-
-			// cursor MUST be in row now.
-			// check, wether the last characters font has changed.
-			if (cursor.pos() && cursor.pos() == cursor.par()->size()
-			    && rawparfont != rawtmpfont)
-				redoHeightOfParagraph();
-
-			charInserted();
-			return;
-		}
-	}
-
-	// recalculate the fill of the row
-	if (row->fill() >= 0) {
-		// needed because a newline will set fill to -1. Otherwise
-		// we would not get a rebreak!
-		row->fill(fill(row, workWidth()));
-	}
-
-	if (c == Paragraph::META_INSET || row->fill() < 0) {
-		breakAgainOneRow(row);
-
-		RowList::iterator next_row = boost::next(row);
-
-		// will the cursor be in another row now?
-		if (lastPos(*this, row) <= cursor.pos() + 1 &&
-		    next_row != rows().end()) {
-			if (next_row != rows().end() &&
-			    next_row->par() == row->par()) {
-				// this should always be true
-				++row;
-			}
-
-			breakAgainOneRow(row);
-		}
-		current_font = rawtmpfont;
-		real_current_font = realtmpfont;
-
-		setCursor(cursor.par(), cursor.pos() + 1, false,
-			  cursor.boundary());
-		if (isBoundary(bv()->buffer(), *cursor.par(), cursor.pos())
-		    != cursor.boundary())
-			setCursor(cursor.par(), cursor.pos(), false,
-			  !cursor.boundary());
-	} else {
-		// FIXME: similar code is duplicated all over - make resetHeightOfRow
-		setHeightOfRow(row);
-
-		current_font = rawtmpfont;
-		real_current_font = realtmpfont;
-		setCursor(cursor.par(), cursor.pos() + 1, false,
-			  cursor.boundary());
-	}
-
-	// check, wether the last characters font has changed.
-	if (cursor.pos() && cursor.pos() == cursor.par()->size()
-	    && rawparfont != rawtmpfont) {
-		redoHeightOfParagraph();
-	}
+	current_font = rawtmpfont;
+	real_current_font = realtmpfont;
+	redoParagraph(cursor.par());
+	setCursor(cursor.par(), cursor.pos() + 1, false, cursor.boundary());
 
 	charInserted();
 }
@@ -2576,6 +2474,9 @@ void LyXText::backspace()
 	    cursor.par()->getFontSettings(bv()->buffer()->params, lastpos - 1)) {
 		redoHeightOfParagraph();
 	}
+
+	redoParagraph();
+	setCursor(cursor.par(), cursor.pos(), false, !cursor.boundary());
 }
 
 
