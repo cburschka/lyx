@@ -81,7 +81,8 @@ AC_DEFUN(QT_FIND_MOC,
 dnl check a particular libname
 AC_DEFUN(QT_TRY_LINK,
 [
-	CXXFLAGS="$BASE_CXXFLAGS $1"
+	SAVE_LIBS="$LIBS"
+	LIBS="$LIBS $1"
 	AC_TRY_LINK([
 	#include <qglobal.h>
 	#include <qstring.h>
@@ -94,7 +95,7 @@ AC_DEFUN(QT_TRY_LINK,
 	],
 	qt_cv_libname=$1,
 	)
-	CXXFLAGS="$BASE_CXXFLAGS"
+	LIBS="$SAVE_LIBS"
 ])
  
 dnl check we can do a compile
@@ -106,7 +107,7 @@ AC_DEFUN(QT_CHECK_COMPILE,
 	[
 		AC_LANG_CPLUSPLUS
 		SAVE_CXXFLAGS=$CXXFLAGS
-		BASE_CXXFLAGS="$CXXFLAGS $QT_INCLUDES $QT_LDFLAGS" 
+		CXXFLAGS="$CXXFLAGS $QT_INCLUDES $QT_LDFLAGS" 
 
 		for libname in -lqt3 -lqt2 -lqt -lqt-mt;
 		do
@@ -210,5 +211,7 @@ AC_DEFUN(QT_DO_IT_ALL,
 	QT_LIB=$qt_cv_libname;
 	AC_SUBST(QT_LIB)
 
-	QT_GET_VERSION
+	if test -n "$qt_cv_libname"; then
+		QT_GET_VERSION
+	fi
 ])
