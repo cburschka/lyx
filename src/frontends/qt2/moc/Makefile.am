@@ -5,8 +5,8 @@ DISTCLEANFILES += *.C
 
 AM_CPPFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_TRANSLATION \
 	$(PCH_FLAGS) \
-	-I$(top_srcdir)/src/ \
-	-I$(top_srcdir)/src/frontends/ \
+	-I$(top_srcdir)/src \
+	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \
 	-I$(top_builddir)/src/frontends/qt2 \
 	$(QT_INCLUDES) \

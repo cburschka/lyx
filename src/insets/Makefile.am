@@ -6,7 +6,7 @@ EXTRA_DIST = \
 	insettheorem.C \
 	insettheorem.h
 
-AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/../ $(BOOST_INCLUDES)
+AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 libinsets_la_SOURCES = \
 	mailinset.C \

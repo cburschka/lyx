@@ -13,7 +13,7 @@ DISTCLEANFILES += $(BUILT_SOURCES)
 
 bin_PROGRAMS = tex2lyx
 
-AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/../ $(BOOST_INCLUDES)
+AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 BUILT_SOURCES = \
 	FloatList.C \

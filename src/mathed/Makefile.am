@@ -4,7 +4,7 @@ EXTRA_DIST = formulamacro.C
 
 noinst_LTLIBRARIES = libmathed.la
 
-AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/../ $(BOOST_INCLUDES)
+AM_CPPFLAGS = $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
 
 libmathed_la_SOURCES = \
 	textpainter.C \
