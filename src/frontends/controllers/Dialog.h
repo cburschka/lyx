@@ -221,7 +221,7 @@ public:
 	 *  dialog therefore needs updating.
 	 *  \param id identifies what should be updated.
 	 */
-	virtual void partialUpdate(int id) {}
+	virtual void partialUpdate(int /* id */) {}
 
 	/// sets the title of the dialog (window caption)
 	void setTitle(string const &);
