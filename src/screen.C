@@ -393,21 +393,25 @@ unsigned int LyXScreen::topCursorVisible(LyXText const * text)
 	    + text->cursor.row()->height()
 	    - text->first >= owner.height()) {
 		if (text->cursor.row()->height() < owner.height()
-		    && text->cursor.row()->height() > owner.height() / 4)
+		    && text->cursor.row()->height() > owner.height() / 4) {
 			newtop = text->cursor.y()
 				+ text->cursor.row()->height()
 				- text->cursor.row()->baseline() - owner.height();
-		else
+		} else {
+			// scroll down
 			newtop = text->cursor.y()
-				- 3 * owner.height() / 4;   /* the scroll region must be so big!! */
+				- owner.height() / 2;   /* the scroll region must be so big!! */
+		}
+		
 	} else if (static_cast<int>((text->cursor.y()) - text->cursor.row()->baseline()) <
 		   text->first && text->first > 0)
 	{
 		if (text->cursor.row()->height() < owner.height()
-		    && text->cursor.row()->height() > owner.height() / 4)
+		    && text->cursor.row()->height() > owner.height() / 4) {
 			newtop = text->cursor.y() - text->cursor.row()->baseline();
-		else {
-			newtop = text->cursor.y() - owner.height() / 4;
+		} else {
+			// scroll up
+			newtop = text->cursor.y() - owner.height() / 2;
 			newtop = min(newtop, int(text->first));
 		}
 	}
