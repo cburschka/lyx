@@ -1,3 +1,8 @@
+2002-12-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* configure.ac (AC_CONFIG_FILES)): add development/Makefile
+	* configure.in (AC_OUTPUT): ditto
+
 2002-12-17  Angus Leeming  <leeming@lyx.org>
 
 	* configure.ac:
@@ -29,15 +34,15 @@
 	* lyxincludes213.m4: new file, containing macros specific to
 	autoconf 2.13 (LYX_CHECK_DECL and LYX_CHECK_DECL_HDRS for now)
 	(LYX_FUNC_SELECT_ARGTYPES): move here
-	
-	* lyxinclude.m4 (LYX_FUNC_SELECT_ARGTYPES): remove 
+
+	* lyxinclude.m4 (LYX_FUNC_SELECT_ARGTYPES): remove
 
 	* configure.ac: use AC_FUNC_SELECT_ARGTYPES (because it works in
-	2.5x) 
+	2.5x)
 
 2002-11-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* configure.ac: USE_BOOST_FORMAT 
+	* configure.ac: USE_BOOST_FORMAT
 	* acconfig.h: ditto
 
 2002-11-06  Lars Gullik Bjønnes  <larsbj@gullik.net>

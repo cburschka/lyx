@@ -361,6 +361,7 @@ AC_CONFIG_FILES([Makefile \
        boost/libs/signals/Makefile \
        boost/libs/signals/src/Makefile \
        config/Makefile \
+       development/Makefile \
        development/lyx.spec \
        lib/Makefile \
        intl/Makefile \
