@@ -1,10 +1,10 @@
 /* This file is part of
  * =================================================
- *
+ * 
  *          LyX, The Document Processor
  *          Copyright 1995-2000 The LyX Team.
  *
- * =================================================
+ * ================================================= 
  *
  * \author Michael Koziarski <michael@koziarski.org>
  */
@@ -16,7 +16,7 @@
 #include <config.h>
 
 #include "gnomeBC.h"
-#include "FormERT.h"
+#include "GERT.h"
 
 #include <gtk--/radiobutton.h>
 #include <gtk--/button.h>
@@ -44,7 +44,7 @@ void FormERT::build()
 
 	// Make sure everything is in the correct state.
 	bc().refresh();
-
+	
 	// Manage the read-only aware widgets.
 	bc().addReadOnly(open());
 	bc().addReadOnly(inlined());
@@ -76,7 +76,7 @@ void FormERT::apply()
 		controller().params().status = InsetERT::Open;
 	else if (collapsed()->get_active())
 		controller().params().status = InsetERT::Collapsed;
-	else
+	else 
 		controller().params().status = InsetERT::Inlined;
 
 }
@@ -106,27 +106,27 @@ bool FormERT::validate() const
 }
 
 
-Gtk::Button * FormERT::ok_btn() const
+Gtk::Button * FormERT::ok_btn() const 
 {
-	return getWidget<Gtk::Button>("r_ok_btn");
+        return getWidget<Gtk::Button>("r_ok_btn");
 }
-Gtk::Button * FormERT::apply_btn() const
+Gtk::Button * FormERT::apply_btn() const 
 {
-	return getWidget<Gtk::Button>("r_apply_btn");
+        return getWidget<Gtk::Button>("r_apply_btn");
 }
-Gtk::Button * FormERT::cancel_btn() const
+Gtk::Button * FormERT::cancel_btn() const 
 {
-	return getWidget<Gtk::Button>("r_cancel_btn");
+        return getWidget<Gtk::Button>("r_cancel_btn");
 }
-Gtk::RadioButton * FormERT::open() const
+Gtk::RadioButton * FormERT::open() const 
 {
-	return getWidget<Gtk::RadioButton>("r_open");
+        return getWidget<Gtk::RadioButton>("r_open");
 }
-Gtk::RadioButton * FormERT::collapsed() const
+Gtk::RadioButton * FormERT::collapsed() const 
 {
-	return getWidget<Gtk::RadioButton>("r_collapsed");
+        return getWidget<Gtk::RadioButton>("r_collapsed");
 }
-Gtk::RadioButton * FormERT::inlined() const
+Gtk::RadioButton * FormERT::inlined() const 
 {
-	return getWidget<Gtk::RadioButton>("r_inlined");
+        return getWidget<Gtk::RadioButton>("r_inlined");
 }

@@ -1,3 +1,33 @@
+2002-03-26  Michael A. Koziarski  <michael@koziarski.com>
+
+	* Makefile.am: Moved all 4 active Form* dialogs to new Filenames.
+	* Dialogs.C: Fixes for the Renaming and #include cleanup
+	* GERT.C
+	* GERT.h
+	* GTabularCreate.C
+	* GTabularCreate.h
+	* GUrl.C
+	* GUrl.h
+	* GError.C
+	* GError.h: #include Fixes for the renaming.  cruft tidyup
+	* README: Reflect new naming convention
+	* GnomeBase.C: cleaned up use of dialog_.  Fix for bug #169,
+	Thanks Angus!
+	* FormCitation.C
+	* FormCitation.h
+	* FormCopyright.C
+	* FormCopyright.h
+	* FormCredits.C
+	* FormCredits.h
+	* FormIndex.C
+	* FormIndex.h
+	* FormPrint.C
+	* FormPrint.h
+	* FormRef.C
+	* FormRef.h
+	* FormToc.C
+	* FormToc.h: Removed, they're old, unused files. 
+
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* most files: ws cleanup

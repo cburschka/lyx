@@ -1,10 +1,10 @@
 /* This file is part of
  * =================================================
- *
+ * 
  *          LyX, The Document Processor
  *          Copyright 1995-2000 The LyX Team.
  *
- * =================================================
+ * ================================================= 
  *
  * \author Baruch Even
  */
@@ -16,7 +16,7 @@
 #include <config.h>
 
 #include "gnomeBC.h"
-#include "FormUrl.h"
+#include "GUrl.h"
 
 #include <gtk--/entry.h>
 #include <gtk--/checkbutton.h>
@@ -49,13 +49,13 @@ void FormUrl::build()
 	bc().setApply(apply_btn());
 	bc().setRestore(restore_btn());
 
-	// Make sure everything is in the correct state.
-	bc().refresh();
-
 	// Manage the read-only aware widgets.
 	bc().addReadOnly(html_cb());
 	bc().addReadOnly(name());
 	bc().addReadOnly(url());
+
+	// Make sure everything is in the correct state.
+	bc().refresh();
 }
 
 
@@ -97,7 +97,7 @@ void FormUrl::update()
 	// This avoids the problem of having the buttons enabled when the dialog
 	// starts.
 	disconnect_signals();
-
+	
 	url()->set_text(controller().params().getContents());
 	name()->set_text(controller().params().getOptions());
 
@@ -113,31 +113,33 @@ bool FormUrl::validate() const
 	return !url()->get_text().empty() && !name()->get_text().empty();
 }
 
-Gtk::Button * FormUrl::restore_btn() const
+Gtk::Button * FormUrl::restore_btn() const 
 {
-	return getWidget<Gtk::Button>("r_restore_btn");
+        return getWidget<Gtk::Button>("r_restore_btn");
 }
-Gtk::Button * FormUrl::ok_btn() const
+Gtk::Button * FormUrl::ok_btn() const 
 {
-	return getWidget<Gtk::Button>("r_ok_btn");
+        return getWidget<Gtk::Button>("r_ok_btn");
 }
-Gtk::Button * FormUrl::apply_btn() const
+Gtk::Button * FormUrl::apply_btn() const 
 {
-	return getWidget<Gtk::Button>("r_apply_btn");
+        return getWidget<Gtk::Button>("r_apply_btn");
 }
-Gtk::Button * FormUrl::cancel_btn() const
+Gtk::Button * FormUrl::cancel_btn() const 
 {
-	return getWidget<Gtk::Button>("r_cancel_btn");
+        return getWidget<Gtk::Button>("r_cancel_btn");
 }
-Gtk::Entry * FormUrl::url() const
+Gtk::Entry * FormUrl::url() const 
 {
-	return getWidget<Gtk::Entry>("r_url");
+        return getWidget<Gtk::Entry>("r_url");
 }
-Gtk::Entry * FormUrl::name() const
+Gtk::Entry * FormUrl::name() const 
 {
-	return getWidget<Gtk::Entry>("r_name");
+        return getWidget<Gtk::Entry>("r_name");
 }
-Gtk::CheckButton * FormUrl::html_cb() const
+Gtk::CheckButton * FormUrl::html_cb() const 
 {
-	return getWidget<Gtk::CheckButton>("r_html_cb");
+        return getWidget<Gtk::CheckButton>("r_html_cb");
 }
+
+

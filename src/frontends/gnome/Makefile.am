@@ -58,14 +58,14 @@ LYXDATADIRS =
 libgnome_la_SOURCES = \
 	Dialogs.C \
 	FileDialog.C \
-	FormError.C \
-	FormError.h \
-	FormTabularCreate.C \
-	FormTabularCreate.h \
-	FormUrl.C \
-	FormUrl.h \
-	FormERT.C \
-	FormERT.h \
+	GError.C \
+	GError.h \
+	GTabularCreate.C \
+	GTabularCreate.h \
+	GUrl.C \
+	GUrl.h \
+	GERT.C \
+	GERT.h \
 	gnome_helpers.C \
 	gnome_helpers.h \
 	GnomeBase.C \

@@ -39,7 +39,7 @@ void GnomeBase::loadXML() const
 #ifdef WITH_WARNINGS
 #warning Change this before declaring it production code! (be 20010325)
 #endif
-	string const path("src/frontends/gnome/dialogs/;frontends/gnome/dialogs/;/home/baruch/prog/lyx/graphics/src/frontends/gnome/dialogs/");
+	string const path("src/frontends/gnome/dialogs/;frontends/gnome/dialogs/;");
 	string const file = FileOpenSearch(path, file_, "glade");
 
 	if (file.empty()) {
@@ -55,20 +55,14 @@ void GnomeBase::loadXML() const
 
 void GnomeBase::show()
 {
-	if (!dialog_) {
-		dialog_ = dialog();
-		build();
-	}
-
 	update();
-	dialog_->show();
+	dialog()->show();
 }
 
 
 void GnomeBase::hide()
 {
-	if (dialog_)
-		dialog_->hide();
+	dialog()->hide();
 }
 
 bool GnomeBase::validate()
@@ -78,23 +72,26 @@ bool GnomeBase::validate()
 
 void GnomeBase::OKClicked()
 {
-	lyxerr[Debug::GUI] << "OKClicked()\n";
+	lyxerr[Debug::GUI] << "GnomeBase::OKClicked()\n";
 	OKButton();
 }
 
-void GnomeBase::CancelClicked()
-{
-	CancelButton();
+void GnomeBase::CancelClicked() 
+{ 
+	lyxerr[Debug::GUI] << "GnomeBase::CancelClicked()\n";
+	CancelButton(); 
 }
 
-void GnomeBase::ApplyClicked()
-{
-	ApplyButton();
+void GnomeBase::ApplyClicked() 
+{ 
+	lyxerr[Debug::GUI] << "GnomeBase::ApplyClicked()\n";
+	ApplyButton(); 
 }
 
-void GnomeBase::RestoreClicked()
-{
-	RestoreButton();
+void GnomeBase::RestoreClicked() 
+{ 
+	lyxerr[Debug::GUI] << "GnomeBase::RestoreClicked()\n";
+	RestoreButton(); 
 }
 
 void GnomeBase::InputChanged()

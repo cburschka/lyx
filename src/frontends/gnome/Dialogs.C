@@ -17,52 +17,16 @@
 #include "gettext.h"
 
 #include "Dialogs.h"
-#include "BufferView.h"
+#include "LyXView.h"
 #include "gnomeBC.h"
 #include "Tooltips.h"
-#include "ControlBibitem.h"
-#include "ControlBibtex.h"
-#include "ControlCharacter.h"
-#include "ControlCitation.h"
-#include "ControlError.h"
-#include "ControlInclude.h"
-#include "ControlLog.h"
-#include "ControlUrl.h"
-#include "ControlVCLog.h"
-#include "ControlTabularCreate.h"
-#include "ControlERT.h"
 #include "GUI.h"
 
-#include "FormUrl.h"
-#include "FormError.h"
-#include "FormTabularCreate.h"
-#include "FormERT.h"
-/*
-#include "FormBibitem.h"
-#include "FormBibtex.h"
-#include "FormCharacter.h"
-#include "FormCitation.h"
-#include "FormLog.h"
-#include "FormVCLog.h"
+#include "GUrl.h"
+#include "GError.h"
+#include "GTabularCreate.h"
+#include "GERT.h"
 
-#include "FormDocument.h"
-#include "FormExternal.h"
-#include "FormGraphics.h"
-#include "FormInclude.h"
-#include "FormIndex.h"
-#include "FormMathsPanel.h"
-#include "FormParagraph.h"
-#include "FormPreamble.h"
-#include "FormPreferences.h"
-#include "FormPrint.h"
-#include "FormRef.h"
-#include "FormSearch.h"
-#include "FormTabular.h"
-#include "FormTabul./arCreate.h"
-#include "FormToc.h"
-#include "FormUrl.h"
-#include "FormMinipage.h"
-*/
 bool Dialogs::tooltipsEnabled()
 {
 	return Tooltips::enabled();
@@ -73,36 +37,6 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIError<FormError, gnomeBC>(*lv, *this));
 	add(new GUITabularCreate<FormTabularCreate, gnomeBC>(*lv, *this));
 	add(new GUIERT<FormERT, gnomeBC>(*lv, *this));
-
-/*
-	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
-	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
-	add(new GUICharacter<FormCharacter, xformsBC>(*lv, *this));
-	//add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
-	add(new GUILog<FormLog, xformsBC>(*lv, *this));
-	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));
-
-	// For now we use the gnome non MVC dialogs
-	add(new FormCitation(lv, this));
-
-	add(new FormDocument(lv, this));
-	add(new FormExternal(lv, this));
-	add(new FormGraphics(lv, this));
-	add(new FormInclude(lv, this));
-	add(new FormIndex(lv, this));
-	add(new FormMathsPanel(lv, this));
-	add(new FormParagraph(lv, this));
-	add(new FormPreamble(lv, this));
-	add(new FormPreferences(lv, this));
-	add(new FormPrint(lv, this));
-	add(new FormRef(lv, this));
-	add(new FormSearch(lv, this));
-	add(new FormTabular(lv, this));
-	add(new FormTabularCreate(lv, this));
-	add(new FormToc(lv, this));
-	add(new FormUrl(lv, this));
-	add(new FormMinipage(lv, this));
-*/
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

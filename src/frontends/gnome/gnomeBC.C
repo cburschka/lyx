@@ -29,10 +29,4 @@ void gnomeBC::setButtonEnabled(Gtk::Button * btn, bool enabled)
 
 
 void gnomeBC::setButtonLabel(Gtk::Button * obj, string const & label)
-{
-#ifdef WITH_WARNINGS
-#warning Implement me! (be 20010329)
-#endif
-	// There is no methods set_text!
-	//obj->set_text(label);
-}
+{}
