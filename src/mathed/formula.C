@@ -339,10 +339,8 @@ string const InsetFormula::PreviewImpl::latexString() const
 	// Note that we have to get rid of any trailing '\n's for the fix
 	// to work.
 	if (prefixIs(str, "\\[")) {
-		std::cerr << "before\n" << str << std::endl;
 		str = rtrim(rtrim(ltrim(str, "\\["), "\n"), "\\]");
 		str = "$ \\displaystyle " + str + " $";
-		std::cerr << "after\n" << str << std::endl;
 	}
 
 	return str;
