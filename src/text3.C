@@ -184,8 +184,8 @@ string const freefont2string()
 }
 
 
-//takes absolute x,y coordinates
-InsetBase * LyXText::checkInsetHit(int x, int y) const
+// takes absolute x,y coordinates
+InsetBase * LyXText::checkInsetHit(int x, int y) const 
 {
 	par_type pit;
 	par_type end;
@@ -202,7 +202,7 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 		InsetList::const_iterator iend = pars_[pit].insetlist.end();
 		for (; iit != iend; ++iit) {
 			InsetBase * inset = iit->inset;
-#if 0
+#if 1
 			lyxerr << "examining inset " << inset
 				<< " xo: " << inset->xo() << "..." << inset->xo() + inset->width()
 				<< " yo: " << inset->yo() - inset->ascent() << "..."
@@ -214,7 +214,7 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 			}
 		}
 	}
-	//lyxerr << "No inset hit. " << endl;
+	lyxerr << "No inset hit. " << endl;
 	return 0;
 }
 

@@ -38,12 +38,12 @@ using std::vector;
 
 
 MathArray::MathArray()
-	: xo_(0), yo_(0), clean_(false), drawn_(false)
+	: xo_(0), yo_(0) 
 {}
 
 
 MathArray::MathArray(const_iterator from, const_iterator to)
-	: base_type(from, to), xo_(0), yo_(0), clean_(false), drawn_(false)
+	: base_type(from, to), xo_(0), yo_(0)
 {}
 
 
@@ -206,8 +206,6 @@ bool MathArray::contains(MathArray const & ar) const
 
 void MathArray::touch() const
 {
-	clean_  = false;
-	drawn_  = false;
 }
 
 
@@ -237,11 +235,6 @@ bool isInside(DocIterator const & it, MathArray const & ar,
 
 void MathArray::metrics(MetricsInfo & mi) const
 {
-	//if (clean_)
-	//	return;
-	clean_  = true;
-	drawn_  = false;
-
 	mathed_char_dim(mi.base.font, 'I', dim_);
 
 	if (empty())
@@ -282,13 +275,10 @@ void MathArray::metrics(MetricsInfo & mi) const
 
 void MathArray::draw(PainterInfo & pi, int x, int y) const
 {
-	//if (drawn_ && x == xo_ && y == yo_)
-	//	return;
 	//lyxerr << "MathArray::draw: x: " << x << " y: " << y << endl;
 
 	xo_    = x;
 	yo_    = y;
-	drawn_ = true;
 
 	if (empty()) {
 		pi.pain.rectangle(x, y - ascent(), width(), height(), LColor::mathline);
@@ -331,8 +321,6 @@ void MathArray::draw(PainterInfo & pi, int x, int y) const
 
 void MathArray::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
-	//if (clean_)
-	//	return;
 	dim.clear();
 	Dimension d;
 	for (const_iterator it = begin(); it != end(); ++it) {
@@ -420,34 +408,6 @@ int MathArray::dist(int x, int y) const
 		yy = y - yo_ - descent();
 
 	return xx + yy;
-}
-
-
-bool MathArray::contains(int x, int y) const
-{
-	return xo_ <= x && x <= xo_ + width()
-	       && yo_ - ascent() <= y && y <= yo_ + descent();
-}
-
-
-void MathArray::center(int & x, int & y) const
-{
-	x = xo_ + width() / 2;
-	y = yo_ + (descent() - ascent()) / 2;
-}
-
-
-void MathArray::towards(int & x, int & y) const
-{
-	int cx = 0;
-	int cy = 0;
-	center(cx, cy);
-
-	double r = 1.0;
-	//int dist = (x - cx) * (x - cx) + (y - cy) * (y - cy);
-
-	x = cx + int(r * (x - cx));
-	y = cy + int(r * (y - cy));
 }
 
 

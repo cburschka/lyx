@@ -36,7 +36,6 @@
 #include "math_macrotemplate.h"
 #include "math_makeboxinset.h"
 #include "math_oversetinset.h"
-#include "math_parboxinset.h"
 #include "math_parser.h"
 #include "math_rootinset.h"
 #include "math_sizeinset.h"
@@ -255,8 +254,6 @@ MathAtom createMathInset(string const & s)
 			return MathAtom(new MathDotsInset(l));
 //		if (inset == "mbox")
 //			return MathAtom(new MathBoxInset(l->name));
-	//	if (inset == "parbox")
-	//		return MathAtom(new MathParboxInset);
 //		if (inset == "fbox")
 //			return MathAtom(new MathFboxInset(l));
 		if (inset == "style")

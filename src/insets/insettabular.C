@@ -414,16 +414,22 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_MOUSE_PRESS:
+		lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
+
+		if (cmd.button() == mouse_button::button1) {
+			cur.selection() = false;
+			setPos(cur, cmd.x, cmd.y);
+			cur.resetAnchor();
+			bvcur = cur;
+			break;
+		}
+
+		//if (cmd.button() == mouse_button::button2)
+		//	dispatch(cur, FuncRequest(LFUN_PASTESELECTION, "paragraph"));
+
 		// we'll pop up the table dialog on release
 		if (cmd.button() == mouse_button::button3)
 			break;
-		cur.selection() = false;
-		setPos(cur, cmd.x, cmd.y);
-		cur.resetAnchor();
-		bvcur = cur;
-		//if (cmd.button() == mouse_button::button2)
-		//	dispatch(cur, FuncRequest(LFUN_PASTESELECTION, "paragraph"));
-		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
 		break;
 
 	case LFUN_MOUSE_MOTION:
@@ -434,11 +440,11 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			break;
 		setPos(cur, cmd.x, cmd.y);
 		bvcur.setCursor(cur, true);
-		//lyxerr << "# InsetTabular::MouseMotion\n" << bvcur << endl;
+		lyxerr << "# InsetTabular::MouseMotion\n" << bvcur << endl;
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		//lyxerr << "# InsetTabular::MouseRelease\n" << bvcur << endl;
+		lyxerr << "# InsetTabular::MouseRelease\n" << bvcur << endl;
 		if (cmd.button() == mouse_button::button3)
 			InsetTabularMailer(*this).showDialog(&cur.bv());
 		break;

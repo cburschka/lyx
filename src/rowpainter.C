@@ -874,7 +874,6 @@ int paintPars(BufferView const & bv, Painter & pain,
 	return y;
 }
 
-
 } // namespace anon
 
 

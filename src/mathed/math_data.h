@@ -119,8 +119,6 @@ public:
 	int xm() const { return xo_ + dim_.wid / 2; }
 	/// access to cached y coordinate of mid point of last drawing
 	int ym() const { return yo_ + (dim_.des - dim_.asc) / 2; }
-	///
-	bool contains(int x, int y) const;
 	/// write access to coordinate;
 	void setXY(int x, int y) const;
 	/// returns x coordinate of given position in the array
@@ -147,12 +145,6 @@ public:
 	Dimension const & dim() const { return dim_; }
 	/// dimensions of cell
 	void setDim(Dimension const & d) const { dim_ = d; }
-	/// bounding box of this cell
-	void boundingBox(int & xlow, int & xhigh, int & ylow, int & yhigh);
-	/// gives center coordinates
-	void center(int & x, int & y) const;
-	/// adjust (x,y) to point on boundary on a straight line from the center
-	void towards(int & x, int & y) const;
 
 private:
 	/// is this an exact match at this position?
@@ -164,10 +156,6 @@ private:
 	mutable int xo_;
 	/// cached y coordinate of last drawing
 	mutable int yo_;
-	/// cached cleaness of cell
-	mutable bool clean_;
-	/// cached draw status of cell
-	mutable bool drawn_;
 };
 
 ///

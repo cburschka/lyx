@@ -50,7 +50,6 @@ following hack as starting point to write some macros:
 #include "math_macro.h"
 #include "math_macroarg.h"
 #include "math_macrotemplate.h"
-#include "math_parboxinset.h"
 #include "math_parinset.h"
 #include "math_rootinset.h"
 #include "math_scriptinset.h"
@@ -1168,18 +1167,6 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 					parse(cell->back().nucleus()->cell(0), flags, mode);
 					return;
 				}
-
-#if 0
-				else if (l->inset == "parbox") {
-					// read optional positioning and width
-					string pos   = parse_verbatim_option();
-					string width = parse_verbatim_item();
-					cell->push_back(createMathInset(t.cs()));
-					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, MathInset::TEXT_MODE);
-					cell->back().nucleus()->asParboxInset()->setPosition(pos);
-					cell->back().nucleus()->asParboxInset()->setWidth(width);
-				}
-#endif
 
 				else {
 					MathAtom at = createMathInset(t.cs());

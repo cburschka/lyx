@@ -108,8 +108,6 @@ libmathed_la_SOURCES = \
 	math_numberinset.h \
 	math_oversetinset.C \
 	math_oversetinset.h \
-	math_parboxinset.C \
-	math_parboxinset.h \
 	math_parinset.C \
 	math_parinset.h \
 	math_parser.C \

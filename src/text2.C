@@ -1152,7 +1152,7 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y) const
 
 	// try to descend into nested insets
 	InsetBase * inset = checkInsetHit(x, y);
-	lyxerr[Debug::DEBUG] << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
+	lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
 	if (!inset)
 		return 0;
 
