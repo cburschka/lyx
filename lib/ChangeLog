@@ -1,3 +1,12 @@
+2001-03-06  Zvezdan Petkovic  <zvezdan@cs.wm.edu>
+
+	* encodings: add support for iso8859-5 and cp1251.
+
+	* languages: add serbian and serbocroatian.
+
+	* kbd/serbian.kmap:
+	* kbd/serbocroatian.kmap: new files.
+
 2001-03-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* reLyX/configure.in: become --with-version-suffix
