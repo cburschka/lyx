@@ -15,7 +15,6 @@
 #include "GMenubar.h"
 #include "GMiniBuffer.h"
 #include "GToolbar.h"
-#include "GWorkArea.h"
 
 #include "BufferView.h"
 #include "lyx_cb.h"
