@@ -243,9 +243,11 @@ namespace {
 // These characters are literals when preceded by a "\", which is done here
 string const escape_special_chars(string const & expr)
 {
-	// Search for all chars .|*?+(){}[]^$\
-	// Note that they must be escaped in the RE.
-        boost::RegEx reg("[\\.\\|\\*\\?\\+\\(\\)\\{\\}\\[\\]\\^\\$\\\\]");
+	// Search for all chars .|*?+(){}[^$]\
+	// Note that '[', ']' and '\' must be escaped.
+	// This is a limitation of boost::regex, but all other chars in BREs
+	// are assumed literal.
+        boost::RegEx reg("[.|*?+(){}^$\\[\\]\\\\]");
 
 	// $& is a perl-like expression that expands to all of the current match
 	// The '$' must be prefixed with the escape character '\' for

@@ -1,6 +1,7 @@
 2002-11-12  Angus Leeming  <leeming@lyx.org>
 
 	* ControlSpellchecker.C (check): fix crash
+	* biblio.C (escape_special_chars): simplify BRE.
 
 2002-11-07  Edwin Leuven  <leuven@fee.uva.nl>
 
