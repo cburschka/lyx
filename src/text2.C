@@ -2351,7 +2351,7 @@ void LyXText::cursorDown(BufferView * bview, bool selecting) const
 	int y = cursor.y() - cursor.row()->baseline() +
 		cursor.row()->height() + 1;
 	setCursorFromCoordinates(bview, x, y);
-	if (!selecting) {
+	if (!selecting && cursor.row() == cursor.irow()) {
 		int y1 = cursor.iy() - first_y;
 		int y2 = y1;
 		y -= first_y;

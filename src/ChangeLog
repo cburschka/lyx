@@ -1,5 +1,8 @@
 2002-04-19  Juergen Vigna  <jug@sad.it>
 
+	* text2.C (cursorDown): don't enter the inset if we came from a row
+	above and are one row over the inset.
+
 	* lyxfunc.C (dispatch): update paragraph layout after LFUN_ESCAPE when
 	really leaving an inset.
 
