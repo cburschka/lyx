@@ -115,17 +115,13 @@ int InsetCaption::latex(Buffer const * buf, ostream & os,
 int InsetCaption::ascii(Buffer const * /*buf*/,
 			ostream & /*os*/, int /*linelen*/) const
 {
-#ifdef WITH_WARNINGS
-#warning Implement me!
-#endif
+	// FIX: Implement me!
 	return 0;
 }
 
 
 int InsetCaption::docBook(Buffer const * /*buf*/, ostream & /*os*/) const
 {
-#ifdef WITH_WARNINGS
-#warning Implement me!
-#endif
+	// Fix: Implement me!
 	return 0;
 }

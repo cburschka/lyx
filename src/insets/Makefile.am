@@ -8,8 +8,6 @@ BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 EXTRA_DIST = \
-	insetinfo.C \
-	insetinfo.h \
 	insetlist.C \
 	insetlist.h \
 	insetsection.h \

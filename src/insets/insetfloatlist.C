@@ -59,9 +59,7 @@ void InsetFloatList::read(Buffer const *, LyXLex & lex)
 
 void InsetFloatList::edit(BufferView *, int, int, unsigned int)
 {
-#ifdef WITH_WARNINGS
-#warning Implement me please.
-#endif
+	// FIX: Implement me please.
 #if 0
 	bv->owner()->getDialogs()->showFloatList(this);
 #endif

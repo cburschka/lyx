@@ -256,9 +256,8 @@ extern bool use_babel;
 int InsetQuotes::latex(Buffer const * buf, ostream & os,
 		       bool /*fragile*/, bool) const
 {
-#ifdef WITH_WARNINGS
-#warning How do we get the local language here??
-#endif
+	// How do we get the local language here??
+
 	string const doclang = buf->getLanguage()->babel();
 	const int quoteind = quote_index[side_][language_];
 	string qstr;

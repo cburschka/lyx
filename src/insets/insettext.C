@@ -65,7 +65,7 @@ extern bool math_insert_greek(BufferView *, char);
 extern int greek_kb_flag;
 
 
-#warning this functions should probably go into bufferview_funcs somehow (Jug)
+// These functions should probably go into bufferview_funcs somehow (Jug)
 
 void InsetText::saveLyXTextState(LyXText * t) const
 {
@@ -1746,12 +1746,12 @@ void InsetText::setParagraphData(Paragraph * p)
 		par = tmp;
 	}
 
-	par = new Paragraph(*p);
+	par = new Paragraph(*p, false);
 	par->setInsetOwner(this);
 	Paragraph * np = par;
 	while (p->next()) {
 		p = p->next();
-		np->next(new Paragraph(*p));
+		np->next(new Paragraph(*p, false));
 		np->next()->previous(np);
 		np = np->next();
 		np->setInsetOwner(this);
@@ -2193,6 +2193,7 @@ string const InsetText::selectNextWord(BufferView * bv, float & value) const
 			return str;
 		}
 #warning Dekel please have a look on this one RTL? (Jug)
+#warning DEKEL!
 		// we have to go on checking so move cusor to the right
 		lt->cursor.pos(lt->cursor.pos() + 1);
 	}
