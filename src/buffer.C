@@ -3687,36 +3687,37 @@ Buffer::Lists const Buffer::getLists() const
 
 
 // This is also a buffer property (ale)
-vector<pair<string, string> > const Buffer::getBibkeyList()
+vector<pair<string, string> > const Buffer::getBibkeyList() const
 {
+	typedef pair<string, string> StringPair;
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990412]
 	if (!params.parentname.empty() && bufferlist.exists(params.parentname)) {
-		Buffer * tmp = bufferlist.getBuffer(params.parentname);
+		Buffer const * tmp = bufferlist.getBuffer(params.parentname);
 		if (tmp)
 			return tmp->getBibkeyList();
 	}
 
-	vector<pair<string, string> > keys;
+	vector<StringPair> keys;
 	Paragraph * par = paragraph;
 	while (par) {
 		if (par->bibkey)
-			keys.push_back(pair<string, string>(par->bibkey->getContents(),
-							   par->asString(this, false)));
+			keys.push_back(StringPair(par->bibkey->getContents(),
+						  par->asString(this, false)));
 		par = par->next();
 	}
 
 	// Might be either using bibtex or a child has bibliography
 	if (keys.empty()) {
-		for (inset_iterator it = inset_iterator_begin();
-			it != inset_iterator_end(); ++it) {
+		for (inset_iterator it = inset_const_iterator_begin();
+			it != inset_const_iterator_end(); ++it) {
 			// Search for Bibtex or Include inset
 			if ((*it)->lyxCode() == Inset::BIBTEX_CODE) {
-				vector<pair<string,string> > tmp =
+				vector<StringPair> tmp =
 					static_cast<InsetBibtex*>(*it)->getKeys(this);
 				keys.insert(keys.end(), tmp.begin(), tmp.end());
 			} else if ((*it)->lyxCode() == Inset::INCLUDE_CODE) {
-				vector<pair<string,string> > const tmp =
+				vector<StringPair> const tmp =
 					static_cast<InsetInclude*>(*it)->getKeys();
 				keys.insert(keys.end(), tmp.begin(), tmp.end());
 			}

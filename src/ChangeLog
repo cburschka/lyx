@@ -1,3 +1,7 @@
+2002-04-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* buffer.[Ch] (getBibkeyList): make it const.
+
 2002-04-12  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (workAreaMotionNotify): use new ix() cursor pos.

@@ -265,7 +265,7 @@ public:
 	///
 	string const getIncludeonlyList(char delim = ',');
 	///
-	std::vector<std::pair<string, string> > const getBibkeyList();
+	std::vector<std::pair<string, string> > const getBibkeyList() const;
 	///
 	struct TocItem {
 		TocItem(Paragraph * p, int d, string const & s)
