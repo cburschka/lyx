@@ -1,3 +1,35 @@
+2000-08-11  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insetgraphics.C (InsetGraphics): changing init
+	order because of warnings.
+
+	* src/frontends/xforms/forms/makefile: adding patching .C with
+	.C.patch files.
+
+	* src/frontends/xforms/forms/fdfix.sh: changing patching file .c
+	from .C.patch to .c.patch
+
+	* src/frontends/xforms/FormCommand.C (FormCommand): changing init
+	order because of warning.
+
+	* src/frontends/xforms/Dialogs.C (Dialogs): added FormDialog
+
+	* src/frontends/Liason.C (setMinibuffer): new helper function
+
+	* src/frontends/Dialogs.h (class Dialogs): inserting showLayoutDocument
+
+	* src/lyxfunc.C (Dispatch): calling new Document-Layout
+
+	* lib/ui/default.ui: commented out PaperLayout entry
+
+	* src/frontends/xforms/form_document.[Ch]: new added files 
+	
+	* src/frontends/xforms/FormDocument.[Ch]: ditto
+
+	* src/frontends/xforms/forms/form_document.fd: ditto
+
+	* src/frontends/xforms/forms/form_document.C.patch: ditto
+
 2000-08-10  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insetgraphics.C (draw): fixed access to 0 cacheHandle.

@@ -22,6 +22,10 @@ libxforms_la_SOURCES = \
 	FormCopyright.h \
 	form_copyright.C \
 	form_copyright.h \
+	FormDocument.C \
+	FormDocument.h \
+	form_document.C \
+	form_document.h \
 	FormGraphics.C \
 	FormGraphics.h \
 	form_graphics.C \

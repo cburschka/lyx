@@ -21,6 +21,7 @@ FDESIGN = fdesign
 
 SRCS := form_citation.fd \
 	form_copyright.fd \
+	form_document.fd \
 	form_graphics.fd \
 	form_index.fd \
 	form_preferences.fd \
@@ -47,6 +48,7 @@ d: c $(COBJS)
 
 # Modify the header files using the instructions in fdfixh.sed
 e: c
+	@echo "Modifying header files using the instructions in fdfixh.sed";\
 	for hfil in *.h ; do \
 		if [ -f "$$hfil.patch" ] ; then \
 			(echo "Patching $$hfil with $$hfil.patch" ; \
@@ -64,6 +66,10 @@ updatesrc: d e
 .c.C:
 	${SHELL} ./fdfix.sh $< $@
 	rm $<
+	@if [ -f "$@.patch" ] ; then \
+		(echo "Patching $@ with $@.patch" ; \
+		patch -s $@ < $@.patch) \
+	fi;
 
 clean:
 	rm -f *.[hcC] *.bak

@@ -91,8 +91,6 @@ public:
 	Signal0<void> updateCharacter;  // allow update as cursor moves
 	///
 	Signal0<void> showParagraph;
-	///
-	Signal0<void> showDocument;
 	/// Do we really have to push this?
 	Signal1<void, vector<string> const &> SetDocumentClassChoice;
 	///
@@ -103,6 +101,8 @@ public:
 	Signal0<void> showCredits;
 	///
 	Signal0<void> showPreferences;
+	///
+	Signal0<void> showLayoutDocument;
 	///
 	Signal1<void, InsetGraphics *> showGraphics;
 	///

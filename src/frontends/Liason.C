@@ -15,6 +15,7 @@
 #endif
 
 #include "Liason.h"
+#include "LyXView.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "lyxrc.h"
@@ -23,6 +24,7 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 #include "support/path.h"
+#include "minibuffer.h"
 
 extern LyXRC lyxrc;
 extern bool RunScript(Buffer * buffer, bool wait, string const & command,
@@ -206,6 +208,11 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 		break;
 	}
 	return result;
+}
+
+void setMinibuffer(LyXView * lv, char const * msg)
+{
+	lv->getMiniBuffer()->Set(msg);
 }
 
 #ifdef CXX_WORKING_NAMESPACES

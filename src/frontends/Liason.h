@@ -32,6 +32,8 @@
 
 class PrinterParams;
 class Buffer;
+class LyXView;
+class BufferParams;
 
 /** Temporary namespace to hold the various frontend functions
     until XTL and the compilers of the world are ready for something more
@@ -52,6 +54,8 @@ namespace Liason
 PrinterParams getPrinterParams(Buffer *);
 /// print the current buffer
 bool printBuffer(Buffer *, PrinterParams const &);
+/// set the minibuffer
+void setMinibuffer(LyXView *, char const  * msg);
 //@}
 
 #ifdef CXX_WORKING_NAMESPACES

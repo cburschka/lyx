@@ -106,10 +106,10 @@ private:
     /// The graphics cache handle.
     GraphicsCacheItem * cacheHandle;
 
-	/// The pixmap
-	mutable Pixmap pixmap;
-	/// is the pixmap initialized?
-	mutable bool pixmapInitialized;
+    /// The pixmap
+    mutable Pixmap pixmap;
+    /// is the pixmap initialized?
+    mutable bool pixmapInitialized;
 	
     InsetGraphicsParams params;
 

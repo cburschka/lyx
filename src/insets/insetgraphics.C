@@ -189,7 +189,7 @@ InsetGraphics::InsetGraphics()
     ,keepaspectratio(false), scale(0.0), clip(false), draft(false)
     ,cacheHandle(0)
 #endif     
-    : pixmapInitialized(false),cacheHandle(0)
+    : cacheHandle(0), pixmapInitialized(false)
 {}
 
 InsetGraphics::~InsetGraphics()

@@ -29,8 +29,8 @@ C_GENERICCB(FormCommand, InputCB)
 C_GENERICCB(FormCommand, OKCB)
 
 FormCommand::FormCommand(LyXView * lv, Dialogs * d, string const & t)
-	: lv_(lv), d_(d), u_(0), h_(0), ih_(0),
-	  inset_(0), dialogIsOpen(false), title(t)
+	: lv_(lv), d_(d), inset_(0), u_(0), h_(0), ih_(0),
+	  dialogIsOpen(false), title(t)
 {}
 
 

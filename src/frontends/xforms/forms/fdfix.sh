@@ -21,10 +21,10 @@ if [ ! -f $1 ]; then
     exit 1
 fi
 
-# If there is a patch for the outputfile patch the input file with it.
-if [ -f "$2.patch" ]; then
-    echo "Patching $1 with $2.patch"
-    patch -s $1 < "$2.patch"
+# If there is a patch for the inputfile patch the input file with it.
+if [ -f "$1.patch" ]; then
+    echo "Patching $1 with $1.patch"
+    patch -s $1 < "$1.patch"
 fi
 
 echo "// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext" > $2

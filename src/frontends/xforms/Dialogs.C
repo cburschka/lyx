@@ -4,6 +4,7 @@
 #include "Dialogs.h"
 #include "FormCitation.h"
 #include "FormCopyright.h"
+#include "FormDocument.h"
 #include "FormGraphics.h"
 #include "FormIndex.h"
 #include "FormPreferences.h"
@@ -22,6 +23,7 @@ Dialogs::Dialogs(LyXView * lv)
 {
 	dialogs_.push_back(new FormCitation(lv, this));
 	dialogs_.push_back(new FormCopyright(lv, this));
+	dialogs_.push_back(new FormDocument(lv, this));
 	dialogs_.push_back(new FormGraphics(lv, this));
 	dialogs_.push_back(new FormIndex(lv, this));
 	dialogs_.push_back(new FormPreferences(lv, this));
