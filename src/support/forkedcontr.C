@@ -25,7 +25,9 @@
 
 #include <cerrno>
 #include <cstdlib>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <sys/wait.h>
 
 using std::vector;

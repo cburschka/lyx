@@ -1,7 +1,9 @@
 #include <config.h>
 
 #include <cstdlib>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 
 #include "LString.h"
 #include "support/lyxlib.h"

@@ -107,7 +107,9 @@
 
 #include <cstdlib>
 #include <cmath>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 #include <sys/types.h>
 #include <utime.h>
 

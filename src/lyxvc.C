@@ -14,7 +14,9 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 
 using std::endl;
 using std::pair;

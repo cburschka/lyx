@@ -62,7 +62,9 @@
 #include <boost/signals/connection.hpp>
 #include "BoostFormat.h"
 
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 
 
 using std::vector;

@@ -3,6 +3,11 @@
 	* lyx_main.C (error_handler, init): protect SIGHUP with
 	#ifndef _WIN32 guards.
 
+	* BufferView_pimpl.C:
+	* DepTable.C:
+	* buffer.C:
+	* lyxvc.C: use the HAVE_UNISTD_H guard.
+
 2005-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* LaTeXFeatures.C: rename feature "wasy" to "wasysym".
