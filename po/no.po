@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.3.0\n"
 "POT-Creation-Date: 2003-01-23 22:14+0100\n"
-"PO-Revision-Date: 2003-01-12 15:09+0100\n"
+"PO-Revision-Date: 2003-01-24 10:21+0100\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -113,12 +113,12 @@ msgstr "Oppdater|#O"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:62
 msgid "Database:|#D"
-msgstr ""
+msgstr "Database:|#D"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:116
 #: ../src/frontends/xforms/forms/form_citation.fd:296
 msgid "Style:|#S"
-msgstr ""
+msgstr "Stil:|#S"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:134
 #: ../src/frontends/xforms/forms/form_external.fd:97
@@ -135,7 +135,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:170
 msgid "Styles:|#y"
-msgstr ""
+msgstr "Stiler:|#i"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:188
 #: ../src/frontends/xforms/forms/form_preferences.fd:737
@@ -215,7 +215,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_character.fd:188
 msgid "Color:|#C"
-msgstr ""
+msgstr "Farge:"
 
 #: ../src/frontends/xforms/forms/form_character.fd:206
 msgid "Toggle on all these|#T"
@@ -288,7 +288,7 @@ msgstr "Neste|#N"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:314
 msgid "Full author list|#F"
-msgstr ""
+msgstr "Full forfatterliste"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:332
 msgid "Force upper case|#u"
@@ -296,11 +296,11 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_citation.fd:350
 msgid "Text before:|#b"
-msgstr ""
+msgstr "Tekst før:"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:368
 msgid "Text after:|#T"
-msgstr ""
+msgstr "Tekst etter:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:152
 msgid "Save as Document Defaults|#v"
@@ -312,22 +312,22 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:212
 msgid "Dimensions"
-msgstr ""
+msgstr "Dimensjoner"
 
 #: ../src/frontends/xforms/forms/form_document.fd:230
 msgid "Size:|#S"
-msgstr ""
+msgstr "Størrelse:|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:248
 #: ../src/frontends/xforms/forms/form_graphics.fd:284
 #: ../src/frontends/xforms/forms/form_wrap.fd:62
 msgid "Width:|#W"
-msgstr ""
+msgstr "Bredde:|#B"
 
 #: ../src/frontends/xforms/forms/form_document.fd:284
 #: ../src/frontends/xforms/forms/form_graphics.fd:356
 msgid "Height:|#H"
-msgstr ""
+msgstr "Høyde:|#H"
 
 #: ../src/frontends/xforms/forms/form_document.fd:320
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:234
@@ -336,11 +336,11 @@ msgstr "Orientering"
 
 #: ../src/frontends/xforms/forms/form_document.fd:356
 msgid "Portrait|#r"
-msgstr ""
+msgstr "Stående"
 
 #: ../src/frontends/xforms/forms/form_document.fd:374
 msgid "Landscape|#L"
-msgstr ""
+msgstr "Liggende"
 
 #: ../src/frontends/xforms/forms/form_document.fd:410
 #: src/frontends/qt2/QDocumentDialog.C:68
@@ -358,19 +358,19 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:464
 msgid "Top:|#T"
-msgstr ""
+msgstr "Topp:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:500
 msgid "Bottom:|#B"
-msgstr ""
+msgstr "Bunn:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:536
 msgid "Inner:|#I"
-msgstr ""
+msgstr "Indre:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:572
 msgid "Outer:|#u"
-msgstr ""
+msgstr "Ytre:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:608
 msgid "Headheight:|#H"
@@ -386,7 +386,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:740
 msgid "Sides"
-msgstr ""
+msgstr "Sider"
 
 #: ../src/frontends/xforms/forms/form_document.fd:758
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:128
@@ -395,11 +395,11 @@ msgstr "Separasjon"
 
 #: ../src/frontends/xforms/forms/form_document.fd:776
 msgid "Columns"
-msgstr ""
+msgstr "Kolonner"
 
 #: ../src/frontends/xforms/forms/form_document.fd:794
 msgid "Fonts:|#F"
-msgstr ""
+msgstr "Fonter:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:812
 msgid "Font Size:|#O"
@@ -411,7 +411,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:848
 msgid "Page style:|#P"
-msgstr ""
+msgstr "Sidestil:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:866
 msgid "Spacing:|#g"
@@ -419,7 +419,7 @@ msgstr "Linjeavstand:|#L"
 
 #: ../src/frontends/xforms/forms/form_document.fd:884
 msgid "Extra Options:|#X"
-msgstr ""
+msgstr "Ekstra innstillinger:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:920
 msgid "Default Skip:|#u"
@@ -427,23 +427,23 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:956
 msgid "One|#n"
-msgstr ""
+msgstr "En"
 
 #: ../src/frontends/xforms/forms/form_document.fd:974
 msgid "Two|#T"
-msgstr ""
+msgstr "To"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1028
 msgid "One|#e"
-msgstr ""
+msgstr "En"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1046
 msgid "Two|#w"
-msgstr ""
+msgstr "To"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1100
 msgid "Indent|#I"
-msgstr ""
+msgstr "Indentering"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1118
 msgid "Skip|#K"
@@ -466,15 +466,15 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:1287
 msgid "Single|#S"
-msgstr ""
+msgstr "Enkel"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1305
 msgid "Double|#D"
-msgstr ""
+msgstr "Dobbel"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1341
 msgid "Language:|#L"
-msgstr ""
+msgstr "Språk:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1383
 msgid "Float Placement:|#L"
@@ -509,9 +509,8 @@ msgid "Bullet depth"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:1595
-#, fuzzy
 msgid "LaTeX:|#L"
-msgstr "LaTeX...|L"
+msgstr "LaTeX:|#L"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1631
 msgid "1|#1"
@@ -531,11 +530,11 @@ msgstr "4|#4"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1740
 msgid "Standard|#S"
-msgstr ""
+msgstr "Standard"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1759
 msgid "Maths|#M"
-msgstr ""
+msgstr "Matte|#M"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1777
 msgid "Ding 1|#D"
@@ -557,11 +556,11 @@ msgstr "Ding 4|#g"
 #: ../src/frontends/xforms/forms/form_tabular.fd:1764
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:956
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: ../src/frontends/xforms/forms/form_ert.fd:79
 msgid "Open|#O"
-msgstr ""
+msgstr "Åpne"
 
 #: ../src/frontends/xforms/forms/form_ert.fd:97
 msgid "Collapsed|#C"
@@ -572,33 +571,30 @@ msgid "Inlined View|#I"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_external.fd:43
-#, fuzzy
 msgid "Template:|#t"
-msgstr "Erstatt|#E"
+msgstr "Mal:|#M"
 
 #: ../src/frontends/xforms/forms/form_external.fd:79
 #: ../src/frontends/xforms/forms/form_graphics.fd:176
 #: ../src/frontends/xforms/forms/form_print.fd:373
-#, fuzzy
 msgid "File:|#F"
-msgstr "Fil|F"
+msgstr "Fil:|#F"
 
 #: ../src/frontends/xforms/forms/form_external.fd:115
-#, fuzzy
 msgid "Parameters:|#P"
-msgstr "Parametre"
+msgstr "Parametre:#P"
 
 #: ../src/frontends/xforms/forms/form_external.fd:133
 msgid "Edit file|#E"
-msgstr ""
+msgstr "Editer fil"
 
 #: ../src/frontends/xforms/forms/form_external.fd:151
 msgid "View result|#V"
-msgstr ""
+msgstr "Vis resultat|#V"
 
 #: ../src/frontends/xforms/forms/form_external.fd:169
 msgid "Update result|#U"
-msgstr ""
+msgstr "Oppdater resultat|#O"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:62
 msgid "Directory:|#D"
@@ -610,7 +606,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:116
 msgid "Filename:|#F"
-msgstr ""
+msgstr "Filnavn:|#F"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:134
 #: ../src/frontends/xforms/forms/form_texinfo.fd:62
@@ -632,7 +628,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_float.fd:44
 #: ../src/frontends/xforms/forms/form_wrap.fd:44
 msgid "Placement"
-msgstr ""
+msgstr "Plassering"
 
 #: ../src/frontends/xforms/forms/form_float.fd:62
 msgid "Page of floats|#P"
@@ -640,15 +636,15 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_float.fd:80
 msgid "Bottom of the page|#B"
-msgstr ""
+msgstr "Bunnen av siden"
 
 #: ../src/frontends/xforms/forms/form_float.fd:98
 msgid "Top of the page|#T"
-msgstr ""
+msgstr "Øverst på siden"
 
 #: ../src/frontends/xforms/forms/form_float.fd:116
 msgid "Here, if possible|#r"
-msgstr ""
+msgstr "Her, om mulig"
 
 #: ../src/frontends/xforms/forms/form_float.fd:206
 msgid "Span columns|#S"
@@ -660,25 +656,23 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_float.fd:260
 msgid "Alternatives|#l"
-msgstr ""
+msgstr "Alternativer|#l"
 
 #: ../src/frontends/xforms/forms/form_float.fd:278
 msgid "Here, definitely!|#H"
-msgstr ""
+msgstr "Her, absolutt!"
 
 #: ../src/frontends/xforms/forms/form_float.fd:296
 msgid "Document default|#D"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_forks.fd:43
-#, fuzzy
 msgid "Forked child processes:|#F"
-msgstr "Barneprosesser|B"
+msgstr "Sub-prosesser:|#b"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:61
-#, fuzzy
 msgid "Kill processes:|#K"
-msgstr "Barneprosesser|B"
+msgstr "Drep prosesser:|#D"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:79
 msgid "All ->"
@@ -706,9 +700,8 @@ msgid "Do not unzip|#u"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:266
-#, fuzzy
 msgid "Scale:|#S"
-msgstr "Skalér :"
+msgstr "Skalér:|#S"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:338
 msgid "Maintain aspect ratio|#M"
@@ -720,19 +713,16 @@ msgid "%"
 msgstr "%"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:392
-#, fuzzy
 msgid "Display:|#D"
-msgstr "Fremhevet formel|h"
+msgstr "Fremhevet formel:|#h"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:434
-#, fuzzy
 msgid "Right top:|#R"
-msgstr "Høyre|#H"
+msgstr "Høyre topp:|#H"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:470
-#, fuzzy
 msgid "Left bottom:|#L"
-msgstr "Bunn linje|B"
+msgstr "Venstre bunn|#b"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:506
 msgid "X"
@@ -760,9 +750,8 @@ msgid "Rotation"
 msgstr "Rotasjon"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:638
-#, fuzzy
 msgid "LaTeX options:|#L"
-msgstr "LaTeX Konfigurasjon|L"
+msgstr "LaTeX innstillinger|#L"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:656
 msgid "deg"
@@ -777,9 +766,8 @@ msgid "Subfigure:|#S"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:710
-#, fuzzy
 msgid "Angle:|#A"
-msgstr "Vi&nkel:"
+msgstr "Vinkel:#n"
 
 #: ../src/frontends/xforms/forms/form_include.fd:115
 msgid "Load|#L"
@@ -787,7 +775,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_include.fd:133
 msgid "File name:|#F"
-msgstr ""
+msgstr "Filnavn:"
 
 #: ../src/frontends/xforms/forms/form_include.fd:151
 msgid "Visible space|#s"
@@ -810,9 +798,8 @@ msgid "Preview|#p"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_index.fd:43
-#, fuzzy
 msgid "Keyword:|#K"
-msgstr "Nøkkelord"
+msgstr "Nøkkelord:|#N"
 
 #: ../src/frontends/xforms/forms/form_maths_delim.fd:152
 msgid ""
@@ -834,15 +821,13 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:44
 #: ../src/frontends/xforms/forms/form_tabular_create.fd:116
-#, fuzzy
 msgid "Rows:"
-msgstr "&Rader:"
+msgstr "Rader:"
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:65
 #: ../src/frontends/xforms/forms/form_tabular_create.fd:98
-#, fuzzy
 msgid "Columns:"
-msgstr "&Kolonner:"
+msgstr "Kolonner:"
 
 #: ../src/frontends/xforms/forms/form_maths_matrix.fd:86
 msgid "Vertical align:|#V"
@@ -853,9 +838,8 @@ msgid "Horizontal align:|#H"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:62
-#, fuzzy
 msgid "Functions:"
-msgstr "Forslag:"
+msgstr "Funksjoner:"
 
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:81
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:511 ../lib/languages:32
@@ -946,7 +930,7 @@ msgstr "Tilbakestill"
 
 #: ../src/frontends/xforms/forms/form_maths_style.fd:152
 msgid "textrm"
-msgstr ""
+msgstr "textrm"
 
 #: ../src/frontends/xforms/forms/form_minipage.fd:43
 msgid "Width"
@@ -1060,33 +1044,28 @@ msgid "Fonts used"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:272
-#, fuzzy
 msgid "Roman:|#R"
-msgstr "Roman"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:290
-#, fuzzy
 msgid "Sans Serif:|#S"
-msgstr "Sans Serif"
+msgstr "Sans Serif:|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:308
-#, fuzzy
 msgid "Typewriter:|#T"
-msgstr "Skrivemaskin"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:344
 msgid "Rescale bitmap fonts|#b"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:363
-#, fuzzy
 msgid "Zoom %:|#Z"
-msgstr "&Zoom %:"
+msgstr "Zoom %:|#Z"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:385
-#, fuzzy
 msgid "Screen DPI:|#D"
-msgstr "Skjerm DPI|#D"
+msgstr "Skjerm DPI:|#D"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:407
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:532
@@ -1134,14 +1113,13 @@ msgid "Huge:"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:569
-#, fuzzy
 msgid "Huger:"
-msgstr "Gigantisk"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:587
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:52
 msgid "Size"
-msgstr ""
+msgstr "Størrelse"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:629
 msgid "Popup Fonts & Encoding"
@@ -1152,9 +1130,8 @@ msgid "Normal Font:|#N"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:665
-#, fuzzy
 msgid "Bold Font:|#B"
-msgstr "Fet stil|F"
+msgstr "Fet stil:|#F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:683
 msgid "Popup Encoding:|#P"
@@ -1242,41 +1219,36 @@ msgid "Wheel mouse jump:"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1176
-#, fuzzy
 msgid "Autosave interval:"
-msgstr "Autolagring feilet!"
+msgstr "Autolagringsinterval:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1198
 msgid "Instant Preview|#P"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1217
-#, fuzzy
 msgid "Graphics display:|#G"
-msgstr "Grafikkfil: "
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1259
-#, fuzzy
 msgid "Spell command:|#S"
-msgstr "Neste kommando"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1277
-#, fuzzy
 msgid "Alternative language:|#a"
-msgstr "Stan&dardspråk:"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1313
 msgid "Escape characters:|#e"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1349
-#, fuzzy
 msgid "Personal dictionary:|#d"
-msgstr "Personlig or&dliste:"
+msgstr "Personlig or&dliste:|#o"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1403
 msgid "Accept compound words|#w"
-msgstr ""
+msgstr "Aksepter sammensatte ord"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1421
 msgid "Use input encoding|#i"
@@ -1284,7 +1256,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1439
 msgid "Advanced Options"
-msgstr ""
+msgstr "Avanserte innstillinger"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1457
 #: src/frontends/xforms/FormPreferences.C:207
@@ -1293,16 +1265,15 @@ msgstr "Grensesnitt"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1475
 msgid "Language Options"
-msgstr ""
+msgstr "Språk innstillinger"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1535
 msgid "Package:|#P"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1553
-#, fuzzy
 msgid "Default language:|#l"
-msgstr "Stan&dardspråk:"
+msgstr "Stan&dardspråk:|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1571
 msgid ""
@@ -1311,18 +1282,16 @@ msgid ""
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1589
-#, fuzzy
 msgid "1st:|#1"
-msgstr "1|#1"
+msgstr "1.:|#1"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1607
-#, fuzzy
 msgid "2nd:|#2"
-msgstr "2|#2"
+msgstr "2.:|#2"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1625
 msgid "Browse...|#o"
-msgstr ""
+msgstr "Se igjennom..."
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1661
 msgid "RtL support|#R"
@@ -1357,15 +1326,13 @@ msgid "Command end:|#e"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1883
-#, fuzzy
 msgid "All formats:|#l"
-msgstr "Filformater"
+msgstr "Alle formater:|#l"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1901
 #: ../src/frontends/xforms/forms/form_ref.fd:225
-#, fuzzy
 msgid "Format:|#F"
-msgstr "Fra|#F"
+msgstr "Format:|#F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1919
 msgid "GUI name:|#G"
@@ -1376,14 +1343,12 @@ msgid "Shortcut:|#S"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1955
-#, fuzzy
 msgid "Extension:|#E"
-msgstr "Fileks&tensjon:"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1973
-#, fuzzy
 msgid "Viewer:|#V"
-msgstr "Vis|V"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1991
 #: ../src/frontends/xforms/forms/form_preferences.fd:2141
@@ -1400,34 +1365,29 @@ msgid "Delete|#D"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2051
-#, fuzzy
 msgid "All converters:|#l"
-msgstr "Konvertere"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2069
-#, fuzzy
 msgid "From:|#F"
-msgstr "Fra|#F"
+msgstr "Fra:|#F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2087
 #: ../src/frontends/xforms/forms/form_print.fd:188
-#, fuzzy
 msgid "To:|#T"
-msgstr "Til|#T"
+msgstr "Til:|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2105
-#, fuzzy
 msgid "Converter:|#C"
-msgstr "Konvertere"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2123
 msgid "Extra flags:|#E"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2201
-#, fuzzy
 msgid "Default path:|#p"
-msgstr "Standard|t"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2219
 #: ../src/frontends/xforms/forms/form_preferences.fd:2255
@@ -1444,23 +1404,20 @@ msgid "Browse..."
 msgstr "Se igjennom..."
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2237
-#, fuzzy
 msgid "Template path:|#T"
-msgstr "Erstatt med:|#m"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2273
 msgid "Temp dir:|#d"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2328
-#, fuzzy
 msgid "Check last files:|#C"
-msgstr "Velg en stilfil"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2383
-#, fuzzy
 msgid "Last file count:|#L"
-msgstr "Siste filer"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2405
 msgid "Backup path:|#B"
@@ -1471,14 +1428,12 @@ msgid "LyXServer pipe:|#S"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2520
-#, fuzzy
 msgid "Date format:|#f"
-msgstr "Datoformat"
+msgstr "Datoformat:|#f"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2562
-#, fuzzy
 msgid "Name:"
-msgstr "&Navn:"
+msgstr "Navn:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2580
 msgid "Adapt output"
@@ -1489,81 +1444,68 @@ msgid "Printer Command and Flags"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2616
-#, fuzzy
 msgid "Command:"
-msgstr "Kommentar"
+msgstr "Kommando:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2634
-#, fuzzy
 msgid "Page range:"
-msgstr "Bytt språk"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2652
-#, fuzzy
 msgid "Copies:"
 msgstr "Kopier:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2670
-#, fuzzy
 msgid "Reverse:"
-msgstr "Revidert"
+msgstr "Reverser:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2688
-#, fuzzy
 msgid "To printer:"
-msgstr "Top senter"
+msgstr "Til skriver:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2706
-#, fuzzy
 msgid "File extension:"
-msgstr "Fileks&tensjon:"
+msgstr "Filendelse:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2724
-#, fuzzy
 msgid "Spool command:"
-msgstr "Neste kommando"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2742
-#, fuzzy
 msgid "Paper type:"
-msgstr "Ark"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2760
 msgid "Even pages:"
-msgstr ""
+msgstr "Partallssider:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2778
 msgid "Odd pages:"
-msgstr ""
+msgstr "Oddetallssider:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2796
-#, fuzzy
 msgid "Collated:"
-msgstr "Skråstilt"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2814
-#, fuzzy
 msgid "Landscape:"
-msgstr "Liggen&de:"
+msgstr "Liggende:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2832
-#, fuzzy
 msgid "To file:"
-msgstr "Til &fil:"
+msgstr "Til fil:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2850
-#, fuzzy
 msgid "Extra options:"
-msgstr "E&kstra opsjoner"
+msgstr "Ekstra innstillinger:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2868
 msgid "Spool printer prefix:"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2886
-#, fuzzy
 msgid "Paper size:"
-msgstr "Ark"
+msgstr "Arkstørrelse:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2964
 msgid "ASCII line length:|#A"
@@ -1575,7 +1517,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3004
 msgid "Default paper size:|#p"
-msgstr ""
+msgstr "Standard arkstørrelse:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3022
 msgid "Outside Code Interaction"
@@ -1586,9 +1528,8 @@ msgid "ASCII roff:|#r"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3058
-#, fuzzy
 msgid "Checktex:|#c"
-msgstr "Sjekk TeX|j"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3076
 msgid "DVI paper option:|#D"
@@ -1614,11 +1555,11 @@ msgstr "Kopier"
 
 #: ../src/frontends/xforms/forms/form_print.fd:170
 msgid "Sorted|#S"
-msgstr ""
+msgstr "Sortert"
 
 #: ../src/frontends/xforms/forms/form_print.fd:224
 msgid "Reverse order|#R"
-msgstr ""
+msgstr "Omvendt rekkefølge"
 
 #: ../src/frontends/xforms/forms/form_print.fd:242
 msgid "Number:|#N"
@@ -1626,39 +1567,36 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_print.fd:301
 msgid "Odd numbered pages|#O"
-msgstr ""
+msgstr "Oddetallsnumererte sider"
 
 #: ../src/frontends/xforms/forms/form_print.fd:319
 msgid "Even numbered pages|#E"
-msgstr ""
+msgstr "Liketallsnumererte sider"
 
 #: ../src/frontends/xforms/forms/form_print.fd:355
-#, fuzzy
 msgid "Printer:|#P"
-msgstr "Skriver"
+msgstr "Skriver:|#P"
 
 #: ../src/frontends/xforms/forms/form_print.fd:427
 msgid "All|#l"
-msgstr ""
+msgstr "Alle"
 
 #: ../src/frontends/xforms/forms/form_print.fd:445
-#, fuzzy
 msgid "From:|#m"
-msgstr "Fra|#F"
+msgstr "Fra:|#a"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:80
 msgid "Sort|#S"
-msgstr ""
+msgstr "Sorter"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:170
-#, fuzzy
 msgid "Document:|#D"
-msgstr "Dokument|#D"
+msgstr "Dokument:|#D"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:189
 #: ../src/frontends/xforms/forms/form_url.fd:62
 msgid "Name:|#N"
-msgstr ""
+msgstr "Navn:"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:207
 msgid "Reference:|#e"
@@ -1698,13 +1636,12 @@ msgid "Search backwards|#S"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_sendto.fd:43
-#, fuzzy
 msgid "Export format:|#E"
-msgstr "Eksporter|E"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_sendto.fd:61
 msgid "Command:|#C"
-msgstr ""
+msgstr "Kommando:"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:44
 msgid "Word count:"
@@ -1938,7 +1875,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_tabular.fd:1746
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1011
 msgid "Contents"
-msgstr ""
+msgstr "Innhold"
 
 #: ../src/frontends/xforms/forms/form_texinfo.fd:80
 msgid "Show Path|#P"
@@ -1957,18 +1894,16 @@ msgid "Entry:"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:98
-#, fuzzy
 msgid "Selection:"
-msgstr "merket"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:116
 msgid "Meanings|#M"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_url.fd:44
-#, fuzzy
 msgid "URL:|#U"
-msgstr "URL...|U"
+msgstr "URL:|#U"
 
 #: ../src/frontends/xforms/forms/form_url.fd:80
 msgid "HTML type|#H"
@@ -2082,19 +2017,16 @@ msgid "Form2"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:41
-#, fuzzy
 msgid "Document &class:"
-msgstr "Dokumenter"
+msgstr "Dokument&klasse:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:77
-#, fuzzy
 msgid "Op&tions:"
-msgstr "Opsjoner"
+msgstr "Innstillinger"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:106
-#, fuzzy
 msgid "Page &style:"
-msgstr "&Sitatstil:"
+msgstr "Sidestil:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:176
 msgid "&Indent"
@@ -2109,12 +2041,10 @@ msgid "Float &placement:"
 msgstr "F&loat plassering:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:255
-#, fuzzy
 msgid "&Font && size:"
-msgstr "Font serier"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:270
-#, fuzzy
 msgid "&Line spacing:"
 msgstr "L&injeavstand:"
 
@@ -2176,14 +2106,12 @@ msgid "Numbering Depth"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:64
-#, fuzzy
 msgid "&Section:"
-msgstr "Seksjon"
+msgstr "Seksjon:"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:79
-#, fuzzy
 msgid "&Table of contents:"
-msgstr "Innholdsfortegnelse"
+msgstr "Innholdsfortegnelse:"
 
 #: ../src/frontends/qt2/ui/PackagesModuleBase.ui:41
 #: src/frontends/qt2/QDocumentDialog.C:73
@@ -2211,9 +2139,8 @@ msgid "&Two-sided document"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:84
-#, fuzzy
 msgid "Paper Size"
-msgstr "Ark"
+msgstr "Arkstørrelse"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:111
 msgid "&Height:"
@@ -2232,11 +2159,11 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:253
 msgid "&Portrait"
-msgstr ""
+msgstr "Stående"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:268
 msgid "&Landscape"
-msgstr "Breddeformat"
+msgstr "Liggende"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:22
 msgid "LyX: Enter text"
@@ -2409,9 +2336,8 @@ msgid "toggle font on all of the above"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
-#, fuzzy
 msgid "Never Toggled"
-msgstr "Bytt"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
 msgid "Si&ze:"
@@ -2861,9 +2787,8 @@ msgid "Color"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
-#, fuzzy
 msgid "Scale:"
-msgstr "Skalér :"
+msgstr "Skalér:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
@@ -2992,9 +2917,8 @@ msgid "Draft mode"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
-#, fuzzy
 msgid "Ca&ption:"
-msgstr "Sitering"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
@@ -3458,9 +3382,8 @@ msgid "&Replace"
 msgstr "&Erstatt"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
-#, fuzzy
 msgid "Replace &All"
-msgstr "Erstatt &Alle "
+msgstr "Erstatt &Alle"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
 msgid "Search &backwards"
@@ -3487,9 +3410,8 @@ msgid "Available export converters"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
-#, fuzzy
 msgid "File:"
-msgstr "Fil: "
+msgstr "Fil:"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
 #: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
@@ -4012,9 +3934,8 @@ msgid "&Colors"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefColorsModule.ui:93
-#, fuzzy
 msgid "&Alter..."
-msgstr "&Start..."
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:22
 msgid "File Conversion"
@@ -4231,14 +4152,12 @@ msgid "Set class options to default on class change"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:203
-#, fuzzy
 msgid "External Applications"
-msgstr "E&kstra opsjoner"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:222
-#, fuzzy
 msgid "Chec&kTeX command:"
-msgstr "Utfør kommando"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:237
 msgid "DVI viewer paper size options:"
@@ -4253,14 +4172,12 @@ msgid "CheckTeX start options and flags"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:107
-#, fuzzy
 msgid "&Backup directory:"
-msgstr "Library directory: "
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:122
-#, fuzzy
 msgid "&Document templates:"
-msgstr "Nytt dokument med mal"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:137
 msgid "Ly&XServer pipe:"
@@ -4271,18 +4188,16 @@ msgid "&Use temporary directory"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:200
-#, fuzzy
 msgid "&Working directory:"
-msgstr "Bruker folder: "
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
 msgid "Printer settings"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:71
-#, fuzzy
 msgid "Printer &name:"
-msgstr "Skriver"
+msgstr "Skrivernavn:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:93
 msgid "Printer co&mmand:"
@@ -4301,9 +4216,8 @@ msgid "Use printer name explicitely"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:159
-#, fuzzy
 msgid "Command Options"
-msgstr "Opsjoner"
+msgstr "Kommando innstillinger"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:178
 msgid "Re&verse:"
@@ -4375,19 +4289,16 @@ msgid "Screen Fonts"
 msgstr "Skjermfonter"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:110
-#, fuzzy
 msgid "Sa&ns Serif:"
-msgstr "Sans Serif"
+msgstr "Sans Serif:"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:157
-#, fuzzy
 msgid "T&ypewriter:"
-msgstr "Skrivemaskin"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:172
-#, fuzzy
 msgid "&Roman:"
-msgstr "Roman"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:246
 msgid "Screen &DPI:"
@@ -4398,9 +4309,8 @@ msgid "&Zoom %:"
 msgstr "&Zoom %:"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:323
-#, fuzzy
 msgid "Font Sizes"
-msgstr "Font serier"
+msgstr "Fontstørrelser"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:457
 msgid "Hugest:"
@@ -4718,9 +4628,8 @@ msgid "B&elow"
 msgstr "Under"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:607
-#, fuzzy
 msgid "&Page Breaks"
-msgstr "sidebrekk"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:626
 msgid "Abo&ve"
@@ -6484,9 +6393,8 @@ msgid "Exit|x"
 msgstr "Avslutt|A"
 
 #: ../lib/ui/default.ui:43
-#, fuzzy
 msgid "Register...|R"
-msgstr "Registrer|R"
+msgstr "Registrer...|R"
 
 #: ../lib/ui/default.ui:44
 msgid "Check In Changes...|I"
@@ -6553,9 +6461,8 @@ msgid "Read Only"
 msgstr "Skrivebeskyttet"
 
 #: ../lib/ui/default.ui:78
-#, fuzzy
 msgid "Spellchecker...|S"
-msgstr "Stavekontroll|S"
+msgstr "Stavekontroll...|S"
 
 #: ../lib/ui/default.ui:79
 msgid "Thesaurus..."
@@ -6574,9 +6481,8 @@ msgid "Open/Close float|l"
 msgstr "Åpne/Lukk float...|L"
 
 #: ../lib/ui/default.ui:84
-#, fuzzy
 msgid "Preferences...|P"
-msgstr "Preferanser|P"
+msgstr "Preferanser...|P"
 
 #: ../lib/ui/default.ui:85
 msgid "Reconfigure|R"
@@ -6871,9 +6777,8 @@ msgid "Short Title"
 msgstr ""
 
 #: ../lib/ui/default.ui:203
-#, fuzzy
 msgid "Index Entry...|I"
-msgstr "Indeks element|I"
+msgstr "Indeks element...|I"
 
 #: ../lib/ui/default.ui:204
 msgid "URL...|U"
@@ -7108,24 +7013,20 @@ msgid "ASCII as Paragraphs...|P"
 msgstr "ASCII tekst som avsnitt...|a"
 
 #: ../lib/ui/default.ui:299
-#, fuzzy
 msgid "Character...|C"
-msgstr "Tegnsett"
+msgstr ""
 
 #: ../lib/ui/default.ui:300
-#, fuzzy
 msgid "Paragraph...|P"
-msgstr "Avsnitt|A"
+msgstr "Avsnitt...|A"
 
 #: ../lib/ui/default.ui:301
-#, fuzzy
 msgid "Document...|D"
-msgstr "Dokument|D"
+msgstr "Dokument...|D"
 
 #: ../lib/ui/default.ui:302
-#, fuzzy
 msgid "Tabular...|T"
-msgstr "Tabell|T"
+msgstr "Tabell...|T"
 
 #: ../lib/ui/default.ui:304
 msgid "Emphasize Style|E"
@@ -7152,9 +7053,8 @@ msgid "Increase Environment Depth|i"
 msgstr "Øk omgivelsedybde|k"
 
 #: ../lib/ui/default.ui:311
-#, fuzzy
 msgid "Preamble...|r"
-msgstr "Referansemerke...|R"
+msgstr ""
 
 #: ../lib/ui/default.ui:312
 msgid "Start Appendix Here|S"
@@ -7274,9 +7174,8 @@ msgid "Specified file is unreadable: "
 msgstr "Den spesifiserte file er ulesbar: "
 
 #: src/BufferView.C:309 src/lyx_cb.C:447
-#, fuzzy
 msgid "Error! Cannot open specified file:"
-msgstr "Feil! Kan ikke åpne spesifisert fil: "
+msgstr "Feil! Kan ikke åpne spesifisert fil:"
 
 #: src/BufferView.C:569 src/LyXAction.C:377
 msgid "Undo"
@@ -7351,9 +7250,9 @@ msgid "Canceled."
 msgstr "Avbrutt."
 
 #: src/BufferView_pimpl.C:909
-#, fuzzy, c-format
+#, c-format
 msgid "Inserting document %1$s..."
-msgstr "Setter inn dokumentet %1$s ..."
+msgstr "Setter inn dokumentet %1$s..."
 
 #: src/BufferView_pimpl.C:911
 msgid "Inserting document "
@@ -8211,9 +8110,8 @@ msgid "The document uses an unknown textclass \"%1$s\"."
 msgstr "Dokumentet har en ukjent tekstklasse \"%1$s\"."
 
 #: src/buffer.C:624 src/buffer.C:630 src/buffer.C:644 src/buffer.C:649
-#, fuzzy
 msgid "-- substituting default."
-msgstr "-- erstatter standardverdi"
+msgstr "-- erstatter standardverdi."
 
 #: src/buffer.C:628
 msgid "The document uses an unknown textclass "
@@ -8243,7 +8141,6 @@ msgid "Warning!"
 msgstr "Advarsel!"
 
 #: src/buffer.C:1185
-#, fuzzy
 msgid ""
 "The file was created with a newer version of LyX. This is likely to cause "
 "problems."
@@ -9115,7 +9012,6 @@ msgid "space, '#', '~', '$' or '%'."
 msgstr "mellomrom, '#', '~', '$' or '%'."
 
 #: src/frontends/controllers/helper_funcs.C:117
-#, fuzzy
 msgid "directory name can't contain any of these characters:"
 msgstr "Filnavn kan ikke inneholde noen av disse tegnene:"
 
@@ -9158,9 +9054,8 @@ msgid "All files (*)"
 msgstr "Alle filer (*)"
 
 #: src/frontends/qt2/FileDialog.C:116
-#, fuzzy
 msgid "Directories"
-msgstr "Minsk"
+msgstr ""
 
 #: src/frontends/qt2/QBibitem.C:34
 msgid "Bibliography Item"
@@ -10945,9 +10840,8 @@ msgstr "Åpnet ERT inset"
 
 #: src/insets/insetert.C:248 src/insets/insettabular.C:2090
 #: src/insets/insettext.C:1411
-#, fuzzy
 msgid "Impossible operation!"
-msgstr "Umulig operasjon"
+msgstr "Umulig operasjon!"
 
 #: src/insets/insetert.C:249
 msgid "Not permitted to change font-types inside ERT-insets!"
@@ -11061,12 +10955,11 @@ msgid "No information for converting from "
 msgstr "Ingen informasjon om konvertering fra "
 
 #: src/insets/insetgraphics.C:775
-#, fuzzy, c-format
+#, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikkfil: %1$s"
 
 #: src/insets/insetgraphics.C:779
-#, fuzzy
 msgid "Graphics file: "
 msgstr "Grafikkfil: "
 
@@ -12435,7 +12328,7 @@ msgstr ""
 
 #: src/text2.C:1051
 msgid "Nothing to index!"
-msgstr ""
+msgstr "Ingenting å indeksere!"
 
 #: src/text2.C:1055
 msgid "Cannot index more than one paragraph!"
@@ -12475,51 +12368,3 @@ msgstr "Merke satt"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
-
-#~ msgid "Cancel|#N^["
-#~ msgstr "Avbryt|#A^["
-
-#~ msgid "name"
-#~ msgstr "navn"
-
-#~ msgid "file extension"
-#~ msgstr "fileks&tensjon"
-
-#~ msgid "landscape"
-#~ msgstr "breddeformat"
-
-#~ msgid "to file"
-#~ msgstr "til fil"
-
-#~ msgid "extra options"
-#~ msgstr "ekstra opsjoner"
-
-#~ msgid "Quote style"
-#~ msgstr "Sitatstil"
-
-#~ msgid "&Browse ..."
-#~ msgstr "Se igjennom..."
-
-#~ msgid "Cannot open specified file: "
-#~ msgstr "Kan ikke åpne valgt fil: "
-
-#~ msgid " ..."
-#~ msgstr " ..."
-
-#~ msgid "LyX will not be able to produce output correctly."
-#~ msgstr "LyX vil ikke kunne produsere et korrekt resultat."
-
-#~ msgid "Onehalf"
-#~ msgstr "Halvannen"
-
-#~ msgid "Select a graphic file"
-#~ msgstr "Velg en grafikk fil"
-
-#~ msgid "Impossible Operation!"
-#~ msgstr "Umulig operasjon!"
-
-#~ msgid "*.lyx|LyX Documents (*.lyx)"
-#~ msgstr "*.lyx|LyX dokumenter (*.lyx)"
-
-#~ msgid "Sans serif"
-#~ msgstr "Sans serif"

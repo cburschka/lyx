@@ -1,3 +1,7 @@
+2003-01-30  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* no.po: small update
+
 2003-01-29  Angus Leeming  <leeming@lyx.org>
 
 	* postats.sh: further tidy. More robust.
@@ -7,7 +11,7 @@
 	* es.po: msgfmt complained about a missing '\n'.
 
 	* postats.sh: rewritten. Michael's original version resulted in
-	php warnings about uninitialised variables if any of the 
+	php warnings about uninitialised variables if any of the
 	translated, fuzzy or untranslated strings are missing (eg, because
 	there /are/ no untranslated strings).
 	Took the opportunity to make sure it does not need a Makefile to run.
@@ -37,16 +41,16 @@
 
 2003-01-27  Alfredo Braunstein <abraunst@libero.it>
 
-        * es.po: update
+	* es.po: update
 
 2003-01-27  Michael Schmitt  <Michael.Schmitt@teststep.org>
 
-        * de.po: update
+	* de.po: update
 
 2003-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* Makefile.in.in: Ignore items and submenus 
-        for pot file generation if they are commented out
+	* Makefile.in.in: Ignore items and submenus
+	for pot file generation if they are commented out
 
 2003-01-26  Alfredo Braunstein  <abraunst@libero.it>
 
