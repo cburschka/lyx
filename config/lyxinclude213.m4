@@ -76,7 +76,7 @@ done])
 m4_define([AC_HELP_STRING],
 [m4_pushdef([AC_Prefix], m4_default([$3], [                          ]))dnl
 m4_pushdef([AC_Prefix_Format],
-           [  %-]m4_eval(m4_len(AC_Prefix) - 3)[s ])dnl [  %-23s ]
+	   [  %-]m4_eval(m4_len(AC_Prefix) - 3)[s ])dnl [  %-23s ]
 m4_text_wrap([$2], AC_Prefix, m4_format(AC_Prefix_Format, [$1]))dnl
 m4_popdef([AC_Prefix_Format])dnl
 m4_popdef([AC_Prefix])dnl
