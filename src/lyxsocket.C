@@ -21,6 +21,7 @@
 
 #include "frontends/lyx_gui.h"
 
+#include "support/environment.h"
 #include "support/lyxlib.h"
 #include "support/socktools.h"
 
@@ -50,9 +51,9 @@ LyXServerSocket::LyXServerSocket(LyXFunc * f, string const & addr)
 
 	// These env vars are used by DVI inverse search
 	// Needed by xdvi
-	lyx::support::putenv("XEDITOR", "lyxclient -g %f %l");
+	lyx::support::setEnv("XEDITOR", "lyxclient -g %f %l");
 	// Needed by lyxclient
-	lyx::support::putenv("LYXSOCKET", address_);
+	lyx::support::setEnv("LYXSOCKET", address_);
 
 	lyx_gui::register_socket_callback(
 		fd_,

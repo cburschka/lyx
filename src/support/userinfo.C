@@ -11,7 +11,7 @@
 #include <config.h>
 
 #include "support/userinfo.h"
-#include "support/filetools.h"
+#include "support/environment.h"
 
 #include <boost/assert.hpp>
 
@@ -40,9 +40,9 @@ string const user_name()
 
 string const user_email()
 {
-	string email = GetEnv("EMAIL_ADDRESS");
+	string email = getEnv("EMAIL_ADDRESS");
 	if (email.empty())
-		email = GetEnv("EMAIL");
+		email = getEnv("EMAIL");
 	return email;
 }
 

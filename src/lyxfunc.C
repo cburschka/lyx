@@ -78,6 +78,7 @@
 #include "frontends/Menubar.h"
 #include "frontends/Toolbars.h"
 
+#include "support/environment.h"
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
 #include "support/forkedcontr.h"

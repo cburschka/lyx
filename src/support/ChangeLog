@@ -1,3 +1,26 @@
+2005-02-15  Angus Leeming  <leeming@lyx.org>
+
+	* environment.[Ch]: new files. Move the environment setter/getter
+	functions here from filetools.[Ch]. In the process:
+	rename GetEnv as getEnv.
+	rename putEnv as setEnv. Change the signature of the function
+	to take a pair of arguments (a name and a value) rather than the
+	existing coded "name=value" single argument. Merge the putenv.C
+	code into setEnv.
+
+	* lyxlib.h (putenv): remove declaration.
+	* putenv.C: removed.
+
+	* Makefile.am: add environment.[Ch]. Remove putenv.C.
+
+	* filetools.[Ch]: remove environment setter/getter functions.
+
+	* os_os2.C (init): s/GetEnvPath/getEnvPath/. Left over from an
+	earlier change.
+
+	* package.C.in (get_home_dir, extract_env_var_dir):
+	* userinfo.C (user_email): s/GetEnv/getEnv/.
+
 2005-02-03  Angus Leeming  <leeming@lyx.org>
 
 	* forkedcall.C (running): call the lyx::kill wrapper function
@@ -21,7 +44,7 @@
 
 2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
-	* fs_extras.C: add changes from Asgers Win32 patch.
+	* fs_extras.C: add changes from Asger's Win32 patch.
 
 2005-01-31  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
 

@@ -44,10 +44,10 @@ void init(int argc, char * argv[])
 		exit(rc);
 
 	// OS/2 cmd.exe has another use for '&'
-	string sh = OnlyFilename(GetEnvPath("EMXSHELL"));
+	string sh = OnlyFilename(getEnvPath("EMXSHELL"));
 	if (sh.empty()) {
 		// COMSPEC is set, unless user unsets
-		sh = OnlyFilename(GetEnvPath("COMSPEC"));
+		sh = OnlyFilename(getEnvPath("COMSPEC"));
 		if (sh.empty())
 			sh = "cmd.exe";
 	}

@@ -27,6 +27,8 @@ libsupport_la_SOURCES = \
 	copied_ptr.h \
 	cow_ptr.h \
 	debugstream.h \
+	environment.h \
+	environment.C \
 	filefilterlist.C \
 	filefilterlist.h \
 	filename.C \
@@ -63,7 +65,6 @@ libsupport_la_SOURCES = \
 	path.h \
 	package.C \
 	package.h \
-	putenv.C \
 	rename.C \
 	socktools.C \
 	socktools.h \

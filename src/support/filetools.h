@@ -104,35 +104,6 @@ i18nLibFileSearch(std::string const & dir, std::string const & name,
  */
 std::string const LibScriptSearch(std::string const & command);
 
-///
-std::string const GetEnv(std::string const & envname);
-
-/** Return the contents of the environment variable \c name,
- *  split using the OS-dependent token separating elements.
- *  Each element is then passed through os::internal_path to
- *  guarantee that it is in the form of a unix-stype path.
- *  If the environment variable is not set, then returns an empty vector.
- */
-std::vector<std::string> const getEnvPath(std::string const & name);
-
-/** Set the contents of the environment variable \c name
- *  using the paths stored in the \c env vector.
- *  Each element is passed through os::external_path.
- */
-void setEnvPath(std::string const & name, std::vector<std::string> const & env);
-
-/** Prepend a list of paths to that returned by the environment variable.
- *  Identical paths occurring later in the list are removed.
- *  @param name the name of the environment variable.
- *  @prefix the list of paths in OS-native syntax.
- *  Eg "/foo/bar:/usr/bin:/usr/local/bin" on *nix,
- *     "C:\foo\bar;C:\windows" on Windows.
- */
-void prependEnvPath(std::string const & name, std::string const & prefix);
-
-/// Set an environment variable using a string of the form "name=FOO".
-bool putEnv(std::string const & envstr);
-
 /// Substitutes active latex characters with underscores in filename
 std::string const MakeLatexName(std::string const & file);
 

@@ -45,6 +45,7 @@
 #include "frontends/lyx_gui.h"
 #include "frontends/LyXView.h"
 
+#include "support/environment.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
@@ -63,7 +64,7 @@ using lyx::support::bformat;
 using lyx::support::createDirectory;
 using lyx::support::createLyXTmpDir;
 using lyx::support::FileSearch;
-using lyx::support::GetEnv;
+using lyx::support::getEnv;
 using lyx::support::i18nLibFileSearch;
 using lyx::support::LibFileSearch;
 using lyx::support::package;
@@ -369,9 +370,9 @@ static void error_handler(int err_sig)
 
 #ifdef SIGHUP
 	if (err_sig == SIGSEGV ||
-	    (err_sig != SIGHUP && !GetEnv("LYXDEBUG").empty()))
+	    (err_sig != SIGHUP && !getEnv("LYXDEBUG").empty()))
 #else
-	if (err_sig == SIGSEGV || !GetEnv("LYXDEBUG").empty())
+	if (err_sig == SIGSEGV || !getEnv("LYXDEBUG").empty())
 #endif
 		lyx::support::abort();
 	exit(0);

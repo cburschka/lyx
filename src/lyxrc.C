@@ -34,6 +34,7 @@
 #include "graphics/GraphicsTypes.h"
 
 #include "support/convert.h"
+#include "support/environment.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/userinfo.h"
@@ -41,7 +42,7 @@
 using lyx::support::ascii_lowercase;
 using lyx::support::bformat;
 using lyx::support::ExpandPath;
-using lyx::support::GetEnv;
+using lyx::support::getEnv;
 using lyx::support::LibFileSearch;
 using lyx::support::token;
 
@@ -188,7 +189,7 @@ void LyXRC::setDefaults() {
 	ui_file = "default";
 	// Get printer from the environment. If fail, use default "",
 	// assuming that everything is set up correctly.
-	printer = GetEnv("PRINTER");
+	printer = getEnv("PRINTER");
 	print_adapt_output = false;
 	print_command = "dvips";
 	print_evenpage_flag = "-B";

@@ -22,15 +22,16 @@
 #include <config.h>
 
 #include "support/convert.h"
-#include "support/systemcall.h"
+#include "support/environment.h"
 #include "support/filetools.h"
-#include "support/lstrings.h"
 #include "support/forkedcontr.h"
 #include "support/fs_extras.h"
-#include "support/package.h"
-#include "support/path.h"
+#include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
+#include "support/package.h"
+#include "support/path.h"
+#include "support/systemcall.h"
 
 // FIXME Interface violation
 #include "gettext.h"
@@ -39,7 +40,6 @@
 #include <boost/assert.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/regex.hpp>
-#include <boost/tokenizer.hpp>
 
 #include <fcntl.h>
 
@@ -268,17 +268,17 @@ i18nLibFileSearch(string const & dir, string const & name,
 	/* [Otherwise] We have to proceed with the POSIX methods of
 	   looking to `LC_ALL', `LC_xxx', and `LANG'. */
 
-	string lang = GetEnv("LC_ALL");
+	string lang = getEnv("LC_ALL");
 	if (lang.empty()) {
-		lang = GetEnv("LC_MESSAGES");
+		lang = getEnv("LC_MESSAGES");
 		if (lang.empty()) {
-			lang = GetEnv("LANG");
+			lang = getEnv("LANG");
 			if (lang.empty())
 				lang = "C";
 		}
 	}
 
-	string const language = GetEnv("LANGUAGE");
+	string const language = getEnv("LANGUAGE");
 	if (lang != "C" && lang != "POSIX" && !language.empty())
 		lang = language;
 
@@ -327,116 +327,6 @@ string const LibScriptSearch(string const & command_in)
 	}
 
 	return command;
-}
-
-
-string const GetEnv(string const & envname)
-{
-	// f.ex. what about error checking?
-	char const * const ch = getenv(envname.c_str());
-	string const envstr = !ch ? "" : ch;
-	return envstr;
-}
-
-
-vector<string> const getEnvPath(string const & name)
-{
-	typedef boost::char_separator<char> Separator;
-	typedef boost::tokenizer<Separator> Tokenizer;
-
-	string const env_var = GetEnv(name);
-	Separator const separator(string(1, os::path_separator()).c_str());
-	Tokenizer const tokens(env_var, separator);
-	Tokenizer::const_iterator it = tokens.begin();
-	Tokenizer::const_iterator const end = tokens.end();
-
-	std::vector<string> vars;
-	for (; it != end; ++it)
-		vars.push_back(os::internal_path(*it));
-
-	return vars;
-}
-
-
-void setEnvPath(string const & name, vector<string> const & env)
-{
-	char const separator(os::path_separator());
-	std::ostringstream ss;
-	vector<string>::const_iterator it = env.begin();
-	vector<string>::const_iterator const end = env.end();
-	for (; it != end; ++it) {
-		if (ss.tellp() > 0)
-			ss << separator;
-		ss << os::external_path(*it);
-	}
-	putEnv(name + "=" + ss.str());
-}
-
-
-void prependEnvPath(string const & name, string const & prefix)
-{
-	vector<string> env_var = getEnvPath(name);
-
-	typedef boost::char_separator<char> Separator;
-	typedef boost::tokenizer<Separator> Tokenizer;
-
-	Separator const separator(string(1, os::path_separator()).c_str());
-
-	// Prepend each new element to the list, removing identical elements
-	// that occur later in the list.
-	Tokenizer const tokens(prefix, separator);
-	vector<string> reversed_tokens(tokens.begin(), tokens.end());
-
-	typedef vector<string>::const_reverse_iterator token_iterator;
-	token_iterator it = reversed_tokens.rbegin();
-	token_iterator const end = reversed_tokens.rend();
-	for (; it != end; ++it) {
-		vector<string>::iterator remove_it =
-			std::remove(env_var.begin(), env_var.end(), *it);
-		env_var.erase(remove_it, env_var.end());
-		env_var.insert(env_var.begin(), *it);
-	}
-
-	setEnvPath(name, env_var);
-}
-
-
-bool putEnv(string const & envstr)
-{
-	// CHECK Look at and fix this.
-	// f.ex. what about error checking?
-
-#if defined (HAVE_SETENV)
-	string name;
-	string const value = split(envstr, name, '=');
-	int const retval = ::setenv(name.c_str(), value.c_str(), true);
-#elif defined (HAVE_PUTENV)
-	// this leaks, but what can we do about it?
-	//   Is doing a getenv() and a free() of the older value
-	//   a good idea? (JMarc)
-	// Actually we don't have to leak...calling putenv like this
-	// should be enough: ... and this is obviously not enough if putenv
-	// does not make a copy of the string. It is also not very wise to
-	// put a string on the free store. If we have to leak we should do it
-	// like this:
-	char * leaker = new char[envstr.length() + 1];
-	envstr.copy(leaker, envstr.length());
-	leaker[envstr.length()] = '\0';
-	int const retval = ::putenv(leaker);
-
-	// If putenv does not make a copy of the char const * this
-	// is very dangerous. OTOH if it does take a copy this is the
-	// best solution.
-	// The  only implementation of putenv that I have seen does not
-	// allocate memory. _And_ after testing the putenv in glibc it
-	// seems that we need to make a copy of the string contents.
-	// I will enable the above.
-	//int retval = lyx::putenv(envstr.c_str());
-#else
-	// No environment setting function. Can this happen?
-	int const retval = 1; //return an error condition.
-#endif
-	return retval == 0;
 }
 
 
@@ -771,7 +661,7 @@ string const ReplaceEnvironmentPath(string const & path)
 			if (!what[0].matched)
 				break;
 		}
-		result = what.str(1) + GetEnv(what.str(2)) + what.str(3);
+		result = what.str(1) + getEnv(what.str(2)) + what.str(3);
 	}
 	return result;
 }
