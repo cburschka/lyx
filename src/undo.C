@@ -225,8 +225,8 @@ bool textUndoOrRedo(BufferView * bv,
 			advance(last, plist.size() - undo.last_par_offset + 1);
 			otherstack.top().pars.insert(otherstack.top().pars.begin(), first, last);
 		}
-		otherstack.top().cursor_pos = text
-		lyxerr << " undo other: " << otherstack.top() << endl;
+		//otherstack.top().cursor_pos = text;
+		//lyxerr << " undo other: " << otherstack.top() << endl;
 	}
 
 	// Now we can unlock the inset for safety because the inset
