@@ -437,7 +437,7 @@ void PreviewLoader::Impl::remove(string const & latex_snippet)
 
 	std::for_each(ipit, ipend, EraseSnippet(latex_snippet));
 
-	for (; ipit != ipend; ++ipit) {
+	while (ipit != ipend) {
 		InProgressProcesses::iterator curr = ipit++;
 		if (curr->second.snippets.empty())
 			in_progress_.erase(curr);

@@ -1,3 +1,8 @@
+2003-09-14  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewLoader.C (remove): consider all InProgressProcesses when
+	ascertaining which ones to remove from the list, not every other one.
+
 2003-02-26  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C (startLoading): Prevent a crash if the user is
