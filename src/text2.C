@@ -51,16 +51,18 @@ using std::pair;
 LyXText::LyXText(BufferView * bv)
 	: number_of_rows(0), height(0), width(0), first(0),
 	  bv_owner(bv), inset_owner(0), the_locking_inset(0),
-	  need_break_row(0), refresh_y(0), status_(LyXText::UNCHANGED),
-	  firstrow(0), lastrow(0), copylayouttype(0)
+	  need_break_row(0), refresh_y(0), refresh_row(0),
+	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0),
+	  copylayouttype(0)
 {}
 
 
 LyXText::LyXText(InsetText * inset)
 	:  number_of_rows(0),  height(0), width(0), first(0),
 	   bv_owner(0), inset_owner(inset), the_locking_inset(0),
-	   need_break_row(0), refresh_y(0), status_(LyXText::UNCHANGED),
-	   firstrow(0), lastrow(0), copylayouttype(0)
+	   need_break_row(0), refresh_y(0), refresh_row(0),
+	   status_(LyXText::UNCHANGED), firstrow(0), lastrow(0),
+	   copylayouttype(0)
 {}
 
 void LyXText::init(BufferView * bview)
@@ -681,29 +683,12 @@ void LyXText::redoHeightOfParagraph(BufferView * bview, LyXCursor const & cur)
 
 	setHeightOfRow(bview, tmprow);
 	
-#if 0
-	Paragraph * first_phys_par = tmprow->par();
-
-	// find the first row of the paragraph
-	if (first_phys_par != tmprow->par())
-		while (tmprow->previous()
-		       && tmprow->previous()->par() != first_phys_par) {
-			tmprow = tmprow->previous();
-			y -= tmprow->height();
-			setHeightOfRow(bview, tmprow);
-		}
-	while (tmprow->previous() && tmprow->previous()->par() == first_phys_par) {
+	while (tmprow->previous()
+	       && tmprow->previous()->par() == tmprow->par()) {
 		tmprow = tmprow->previous();
 		y -= tmprow->height();
 		setHeightOfRow(bview, tmprow);
 	}
-#else
-	while (tmprow->previous() && tmprow->previous()->par() == tmprow->par()) {
-		tmprow = tmprow->previous();
-		y -= tmprow->height();
-		setHeightOfRow(bview, tmprow);
-	}
-#endif
 	
 	// we can set the refreshing parameters now
 	status(bview, LyXText::NEED_MORE_REFRESH);
@@ -720,25 +705,12 @@ void LyXText::redoDrawingOfParagraph(BufferView * bview, LyXCursor const & cur)
 	int y = cur.y() - tmprow->baseline();
 	setHeightOfRow(bview, tmprow);
 
-#if 0
-	Paragraph * first_phys_par = tmprow->par();
+	while (tmprow->previous()
+	       && tmprow->previous()->par() == tmprow->par())  {
+		tmprow = tmprow->previous();
+		y -= tmprow->height();
+	}
 
-	// find the first row of the paragraph
-	if (first_phys_par != tmprow->par())
-		while (tmprow->previous() && tmprow->previous()->par() != first_phys_par)  {
-			tmprow = tmprow->previous();
-			y -= tmprow->height();
-		}
-	while (tmprow->previous() && tmprow->previous()->par() == first_phys_par)  {
-		tmprow = tmprow->previous();
-		y -= tmprow->height();
-	}
-#else
-	while (tmprow->previous() && tmprow->previous()->par() == tmprow->par())  {
-		tmprow = tmprow->previous();
-		y -= tmprow->height();
-	}
-#endif
 	// we can set the refreshing parameters now
 	if (status_ == LyXText::UNCHANGED || y < refresh_y) {
 		refresh_y = y;
@@ -763,25 +735,6 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
    
 	int y = cur.y() - tmprow->baseline();
 
-#if 0
-	if (!tmprow->previous()) {
-		first_phys_par = firstParagraph();   // a trick/hack for UNDO
-	} else {
-		first_phys_par = tmprow->par();
-		// find the first row of the paragraph
-		if (first_phys_par != tmprow->par())
-			while (tmprow->previous() &&
-			       (tmprow->previous()->par() != first_phys_par)) {
-				tmprow = tmprow->previous();
-				y -= tmprow->height();
-			}
-		while (tmprow->previous()
-		       && tmprow->previous()->par() == first_phys_par) {
-			tmprow = tmprow->previous();
-			y -= tmprow->height();
-		}
-	}
-#else
 	if (!tmprow->previous()) {
 		// a trick/hack for UNDO
 		// Can somebody please tell me _why_ this solves
@@ -795,7 +748,6 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 			y -= tmprow->height();
 		}
 	}
-#endif
 	
 	// we can set the refreshing parameters now
 	status(bview, LyXText::NEED_MORE_REFRESH);
