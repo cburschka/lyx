@@ -42,17 +42,23 @@ void mergeParagraph(BufferParams const & bparams,
 		    ParagraphList & paragraphs,
 		    ParagraphList::iterator par);
 
-/// for the environments
-Paragraph * depthHook(Paragraph * par, Paragraph::depth_type depth);
 
-Paragraph * outerHook(Paragraph * par);
+/// for the environments
+ParagraphList::iterator depthHook(ParagraphList::iterator pit,
+				  ParagraphList const & plist,
+				  Paragraph::depth_type depth);
+
+ParagraphList::iterator outerHook(ParagraphList::iterator pit,
+				  ParagraphList const & plist);
 
 /// Is it the first par with same depth and layout?
-bool isFirstInSequence(Paragraph * par);
+bool isFirstInSequence(ParagraphList::iterator par,
+		       ParagraphList const & plist);
 
 /** Check if the current paragraph is the last paragraph in a
     proof environment */
-int getEndLabel(Paragraph * para);
+int getEndLabel(ParagraphList::iterator pit,
+		ParagraphList const & plist);
 
 
 void latexParagraphs(Buffer const * buf,

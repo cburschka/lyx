@@ -117,7 +117,7 @@ public:
 	              Paragraph::depth_type & depth);
 
 	///
-	void insertStringAsLines(Paragraph *&, lyx::pos_type &,
+	void insertStringAsLines(ParagraphList::iterator &, lyx::pos_type &,
 				 LyXFont const &, string const &);
 	///
 	Paragraph * getParFromID(int id) const;
@@ -153,7 +153,7 @@ public:
 			   bool only_preamble = false);
 	///
 	void simpleDocBookOnePar(std::ostream &,
-				 Paragraph * par, int & desc_on,
+				 ParagraphList::iterator par, int & desc_on,
 				 Paragraph::depth_type depth) const ;
 	///
 	void simpleLinuxDocOnePar(std::ostream & os, Paragraph * par,
@@ -165,7 +165,7 @@ public:
 	void makeDocBookFile(string const & filename,
 			     bool nice, bool only_body = false);
 	///
-	void sgmlError(Paragraph * par, int pos, string const & message) const;
+	void sgmlError(ParagraphList::iterator par, int pos, string const & message) const;
 
 	/// returns the main language for the buffer (document)
 	Language const * getLanguage() const;

@@ -230,11 +230,12 @@ void LyXText::setCharFont(Buffer const * buf, ParagraphList::iterator pit,
 
 	// Realize against environment font information
 	if (pit->getDepth()) {
-#warning FIXME I think I hate this outerHood stuff.
-		Paragraph * tp = &*pit;
-		while (!layoutfont.resolved() && tp && tp->getDepth()) {
-			tp = outerHook(tp);
-			if (tp)
+		ParagraphList::iterator tp = pit;
+		while (!layoutfont.resolved() &&
+		       tp != ownerParagraphs().end() &&
+		       tp->getDepth()) {
+			tp = outerHook(tp, ownerParagraphs());
+			if (tp != ownerParagraphs().end())
 				layoutfont.realize(tp->layout()->font);
 		}
 	}
@@ -1073,7 +1074,8 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 	if (pit != ownerParagraphs().begin()
 	    && boost::prior(pit)->getDepth() > pit->getDepth()
 	    && layout->labeltype != LABEL_BIBLIO) {
-		pit->enumdepth = depthHook(&*pit, pit->getDepth())->enumdepth;
+		pit->enumdepth = depthHook(pit, ownerParagraphs(),
+					   pit->getDepth())->enumdepth;
 	}
 
 	if (!pit->params().labelString().empty()) {
@@ -1492,8 +1494,7 @@ void LyXText::insertStringAsLines(string const & str)
 	// only to be sure, should not be neccessary
 	clearSelection();
 
-	Paragraph * par = &*pit;
-	bv()->buffer()->insertStringAsLines(par, pos, current_font, str);
+	bv()->buffer()->insertStringAsLines(pit, pos, current_font, str);
 
 	redoParagraphs(cursor, endpit);
 	setCursor(cursor.par(), cursor.pos());

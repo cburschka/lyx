@@ -1,5 +1,32 @@
 2003-04-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* text2.C (setCharFont): adjust
+	(setCounter): adjust
+	(insertStringAsLines): adjust
+
+	* text.C (leftMargin): adjust
+	(setHeightOfRow): adjust
+
+	* rowpainter.C (paintFirst): adjust
+	(paintLast): adjust
+
+	* paragraph_funcs.C (depthHook): ParagraphList::iterators
+	(outerHook): ditto
+	(isFirstInSequence): ditto
+	(getEndLabel): ditto
+	(outerFont): adjust
+
+	* paragraph.C (getParLanguage): comment out some hard stuff.
+
+	* buffer.C (insertStringAsLines): take a ParagraphList as arg
+	(sgmlError): ditto
+	(simpleDocBookOnePar): ditto
+	(makeDocBookFile): use ParagraphList::iterator
+
+	* CutAndPaste.C (pasteSelection): adjust
+
+2003-04-16  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* text2.C (getFont): adjust
 	(getLayoutFont): adjust
 	(getLabelFont): adjust

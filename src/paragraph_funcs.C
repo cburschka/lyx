@@ -196,66 +196,72 @@ void mergeParagraph(BufferParams const & bparams,
 }
 
 
-Paragraph * depthHook(Paragraph * par, Paragraph::depth_type depth)
+ParagraphList::iterator depthHook(ParagraphList::iterator pit,
+				  ParagraphList const & plist,
+				  Paragraph::depth_type depth)
 {
-	Paragraph * newpar = par;
+	ParagraphList::iterator newpit = pit;
+	ParagraphList::iterator beg = plist.begin();
 
-	do {
-		newpar = newpar->previous();
-	} while (newpar && newpar->getDepth() > depth);
+	if (newpit != beg)
+		--newpit;
 
-	if (!newpar) {
-		if (par->previous() || par->getDepth())
-			lyxerr << "ERROR (Paragraph::DepthHook): "
-				"no hook." << endl;
-		newpar = par;
+	while (newpit !=  beg && newpit->getDepth() > depth) {
+		--newpit;
 	}
 
-	return newpar;
+	if (newpit->getDepth() > depth)
+		return pit;
+
+	return newpit;
 }
 
 
-Paragraph * outerHook(Paragraph * par)
+ParagraphList::iterator outerHook(ParagraphList::iterator pit,
+				  ParagraphList const & plist)
 {
-	if (!par->getDepth())
-		return 0;
-	return depthHook(par, Paragraph::depth_type(par->getDepth() - 1));
+	if (!pit->getDepth())
+		return plist.end();
+	return depthHook(pit, plist,
+			 Paragraph::depth_type(pit->getDepth() - 1));
 }
 
 
-bool isFirstInSequence(Paragraph * par)
+bool isFirstInSequence(ParagraphList::iterator pit,
+		       ParagraphList const & plist)
 {
-	Paragraph const * dhook = depthHook(par, par->getDepth());
-	return (dhook == par
-		|| dhook->layout() != par->layout()
-		|| dhook->getDepth() != par->getDepth());
+	ParagraphList::iterator dhook = depthHook(pit, plist, pit->getDepth());
+	return (dhook == pit
+		|| dhook->layout() != pit->layout()
+		|| dhook->getDepth() != pit->getDepth());
 }
 
 
-int getEndLabel(Paragraph * p)
+int getEndLabel(ParagraphList::iterator p,
+		ParagraphList const & plist)
 {
-	Paragraph * par = p;
+	ParagraphList::iterator pit = p;
 	Paragraph::depth_type par_depth = p->getDepth();
-	while (par) {
-		LyXLayout_ptr const & layout = par->layout();
+	while (pit != plist.end()) {
+		LyXLayout_ptr const & layout = pit->layout();
 		int const endlabeltype = layout->endlabeltype;
 
 		if (endlabeltype != END_LABEL_NO_LABEL) {
-			if (!p->next())
+			if (boost::next(p) == plist.end())
 				return endlabeltype;
 
-			Paragraph::depth_type const next_depth = p->next()->getDepth();
+			Paragraph::depth_type const next_depth = boost::next(p)->getDepth();
 			if (par_depth > next_depth ||
-			    (par_depth == next_depth
-			     && layout != p->next()->layout()))
+			    (par_depth == next_depth &&
+			     layout != boost::next(p)->layout()))
 				return endlabeltype;
 			break;
 		}
 		if (par_depth == 0)
 			break;
-		par = outerHook(par);
-		if (par)
-			par_depth = par->getDepth();
+		pit = outerHook(pit, plist);
+		if (pit != plist.end())
+			par_depth = pit->getDepth();
 	}
 	return END_LABEL_NO_LABEL;
 }
@@ -1031,18 +1037,18 @@ int readParagraph(Buffer & buf, Paragraph & par, LyXLex & lex)
 
 
 LyXFont const outerFont(ParagraphList::iterator pit,
-			ParagraphList const & /*plist*/)
+			ParagraphList const & plist)
 {
 	Paragraph::depth_type par_depth = pit->getDepth();
 	LyXFont tmpfont(LyXFont::ALL_INHERIT);
 
 	// Resolve against environment font information
-	Paragraph * par = &*pit;
-	while (par && par_depth && !tmpfont.resolved()) {
-		par = outerHook(par);
-		if (par) {
-			tmpfont.realize(par->layout()->font);
-			par_depth = par->getDepth();
+	while (pit != plist.end() &&
+	       par_depth && !tmpfont.resolved()) {
+		pit = outerHook(pit, plist);
+		if (pit != plist.end()) {
+			tmpfont.realize(pit->layout()->font);
+			par_depth = pit->getDepth();
 		}
 	}
 

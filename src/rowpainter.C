@@ -674,7 +674,7 @@ void RowPainter::paintFirst()
 	if (layout->labeltype >= LABEL_STATIC
 	    && (layout->labeltype != LABEL_STATIC
 		|| layout->latextype != LATEX_ENVIRONMENT
-		|| isFirstInSequence(&*pit_))) {
+		|| isFirstInSequence(pit_, text_.ownerParagraphs()))) {
 
 		LyXFont font = getLabelFont();
 		if (!pit_->getLabelstring().empty()) {
@@ -722,7 +722,7 @@ void RowPainter::paintFirst()
 
 	// the labels at the top of an environment.
 	// More or less for bibliography
-	} else if (isFirstInSequence(&*pit_) &&
+	} else if (isFirstInSequence(pit_, text_.ownerParagraphs()) &&
 		(layout->labeltype == LABEL_TOP_ENVIRONMENT ||
 		layout->labeltype == LABEL_BIBLIO ||
 		layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)) {
@@ -797,7 +797,7 @@ void RowPainter::paintLast()
 	}
 
 	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params);
-	int const endlabel = getEndLabel(&*pit_);
+	int const endlabel = getEndLabel(pit_, text_.ownerParagraphs());
 
 	// draw an endlabel
 	switch (endlabel) {

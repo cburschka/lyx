@@ -434,7 +434,7 @@ Buffer::readParagraph(LyXLex & lex, string const & token,
 
 
 // needed to insert the selection
-void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
+void Buffer::insertStringAsLines(ParagraphList::iterator & par, pos_type & pos,
 				 LyXFont const & fn,string const & str)
 {
 	LyXLayout_ptr const & layout = par->layout();
@@ -452,7 +452,7 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 			if (autobreakrows && (!par->empty() || layout->keepempty)) {
 				breakParagraph(params, paragraphs, par, pos,
 					       layout->isEnvironment());
-				par = par->next();
+				++par;
 				pos = 0;
 				space_inserted = true;
 			} else {
@@ -1596,7 +1596,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 
 
 // Print an error message.
-void Buffer::sgmlError(Paragraph * /*par*/, int /*pos*/,
+void Buffer::sgmlError(ParagraphList::iterator /*par*/, int /*pos*/,
 	string const & /*message*/) const
 {
 #ifdef WITH_WARNINGS
@@ -1633,8 +1633,6 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		return;
 		return;
 	}
-
-	Paragraph * par = &*(paragraphs.begin());
 
 	niceFile = nice; // this will be used by Insetincludes.
 
@@ -1689,7 +1687,10 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	string item_name;
 	string command_name;
 
-	while (par) {
+	ParagraphList::iterator par = paragraphs.begin();
+	ParagraphList::iterator pend = paragraphs.end();
+
+	for (; par != pend; ++par) {
 		string sgmlparam;
 		string c_depth;
 		string c_params;
@@ -1843,7 +1844,6 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 		simpleDocBookOnePar(ofs, par, desc_on,
 				    depth + 1 + command_depth);
-		par = par->next();
 
 		string end_tag;
 		// write closing SGML tags
@@ -1907,7 +1907,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 
 void Buffer::simpleDocBookOnePar(ostream & os,
-				 Paragraph * par, int & desc_on,
+				 ParagraphList::iterator par, int & desc_on,
 				 Paragraph::depth_type depth) const
 {
 	bool emph_flag = false;

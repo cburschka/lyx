@@ -538,29 +538,33 @@ int LyXText::leftMargin(Row const & row) const
 		if (row.par()->layout() == tclass.defaultLayout()) {
 			// find the previous same level paragraph
 			if (row.par() != ownerParagraphs().begin()) {
-				Paragraph * newpar =
-					depthHook(&*row.par(), row.par()->getDepth());
-				if (newpar &&
-				    newpar->layout()->nextnoindent)
+				ParagraphList::iterator newpit =
+					depthHook(row.par(), ownerParagraphs(),
+						  row.par()->getDepth());
+				if (newpit == row.par() &&
+				    newpit->layout()->nextnoindent)
 					parindent.erase();
 			}
 		}
 	} else {
 		// find the next level paragraph
 
-		Paragraph * newpar = outerHook(&*row.par());
+		ParagraphList::iterator newpar = outerHook(row.par(),
+							   ownerParagraphs());
 
 		// make a corresponding row. Needed to call leftMargin()
 
 		// check wether it is a sufficent paragraph
-		if (newpar && newpar->layout()->isEnvironment()) {
+		if (newpar != ownerParagraphs().end() &&
+		    newpar->layout()->isEnvironment()) {
 			Row dummyrow;
 			dummyrow.par(newpar);
 			dummyrow.pos(newpar->size());
 			x = leftMargin(dummyrow);
 		}
 
-		if (newpar && row.par()->layout() == tclass.defaultLayout()) {
+		if (newpar != ownerParagraphs().end() &&
+		    row.par()->layout() == tclass.defaultLayout()) {
 			if (newpar->params().noindent())
 				parindent.erase();
 			else {
@@ -614,7 +618,7 @@ int LyXText::leftMargin(Row const & row) const
 			   // theorems (JMarc)
 			   || (layout->labeltype == LABEL_STATIC
 			       && layout->latextype == LATEX_ENVIRONMENT
-			       && !isFirstInSequence(&*row.par()))) {
+			       && !isFirstInSequence(row.par(), ownerParagraphs()))) {
 			x += font_metrics::signedWidth(layout->leftmargin,
 						  labelfont);
 		} else if (layout->labeltype != LABEL_TOP_ENVIRONMENT
@@ -679,7 +683,7 @@ int LyXText::leftMargin(Row const & row) const
 		     || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT
 		     || (layout->labeltype == LABEL_STATIC
 			 && layout->latextype == LATEX_ENVIRONMENT
-			 && !isFirstInSequence(&*row.par())))
+			 && !isFirstInSequence(row.par(), ownerParagraphs())))
 		    && align == LYX_ALIGN_BLOCK
 		    && !row.par()->params().noindent()
 			// in tabulars and ert paragraphs are never indented!
@@ -1153,7 +1157,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 		if ((layout->labeltype == LABEL_TOP_ENVIRONMENT
 		     || layout->labeltype == LABEL_BIBLIO
 		     || layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT)
-		    && isFirstInSequence(&*pit)
+		    && isFirstInSequence(pit, ownerParagraphs())
 		    && !pit->getLabelstring().empty())
 		{
 			float spacing_val = 1.0;
@@ -1174,14 +1178,15 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 				+ layout->labelbottomsep * defaultRowHeight());
 		}
 
-		// and now the layout spaces, for example before and after a section,
-		// or between the items of a itemize or enumerate environment
+		// And now the layout spaces, for example before and after
+		// a section, or between the items of a itemize or enumerate
+		// environment.
 
 		if (!pit->params().pagebreakTop()) {
-			Paragraph * prev = pit->previous();
-			if (prev)
-				prev = depthHook(&*pit, pit->getDepth());
-			if (prev && prev->layout() == layout &&
+			ParagraphList::iterator prev =
+				depthHook(pit, ownerParagraphs(),
+					  pit->getDepth());
+			if (prev != pit && prev->layout() == layout &&
 				prev->getDepth() == pit->getDepth() &&
 				prev->getLabelWidthString() == pit->getLabelWidthString())
 			{
@@ -1201,8 +1206,8 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 					layoutasc = (tmptop * defaultRowHeight());
 			}
 
-			prev = outerHook(&*pit);
-			if (prev)  {
+			prev = outerHook(pit, ownerParagraphs());
+			if (prev != ownerParagraphs().end())  {
 				maxasc += int(prev->layout()->parsep * defaultRowHeight());
 			} else if (pit != ownerParagraphs().begin()) {
 				ParagraphList::iterator prior_pit = boost::prior(pit);
@@ -1250,7 +1255,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 
 			if (comparepit->getDepth() > nextpit->getDepth()) {
 				usual = (comparepit->layout()->bottomsep * defaultRowHeight());
-				comparepit = depthHook(&*comparepit, nextpit->getDepth());
+				comparepit = depthHook(comparepit, ownerParagraphs(), nextpit->getDepth());
 				if (comparepit->layout()!= nextpit->layout()
 					|| nextpit->getLabelWidthString() !=
 					comparepit->getLabelWidthString())
