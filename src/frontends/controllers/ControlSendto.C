@@ -71,7 +71,7 @@ vector<Format const *> const ControlSendto::allFormats() const
 		Formats::const_iterator fo_end = formats.end();
 		for (; fo_it != fo_end; ++fo_it) {
 			if (converters.isReachable(*ex_it, fo_it->name())) {
-				to.push_back(fo_it);
+				to.push_back(&(*fo_it));
 			}
 		}
 	}

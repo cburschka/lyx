@@ -1788,16 +1788,27 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 }
 
 
+namespace {
+
+pair<int, string> const addDepth(int depth, int ldepth)
+{
+	int d = depth * 2;
+	if (ldepth > depth)
+		d += (ldepth - depth) * 2;
+	return make_pair(d, string(d, ' '));
+}
+
+}
+
+
 string const Buffer::asciiParagraph(Paragraph const * par,
                                     unsigned int linelen,
                                     bool noparbreak) const
 {
 	ostringstream buffer;
-	ostringstream word;
 	Paragraph::depth_type depth = 0;
 	int ltype = 0;
 	Paragraph::depth_type ltype_depth = 0;
-	string::size_type currlinelen = 0;
 	bool ref_printed = false;
 //	if (!par->previous()) {
 #if 0
@@ -1861,12 +1872,16 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 //	}
 
 	// linelen <= 0 is special and means we don't have pargraph breaks
+
+	string::size_type currlinelen = 0;
+
 	if (!noparbreak) {
 		if (linelen > 0)
 			buffer << "\n\n";
-		for (Paragraph::depth_type j = 0; j < depth; ++j)
-			buffer << "  ";
-		currlinelen = depth * 2;
+
+		buffer << string(depth * 2, ' ');
+		currlinelen += depth * 2;
+
 		//--
 		// we should probably change to the paragraph language in the
 		// gettext here (if possible) so that strings are outputted in
@@ -1878,46 +1893,52 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 		case 5: // Description
 			break;
 		case 6: // Abstract
-			if (linelen > 0)
+			if (linelen > 0) {
 				buffer << _("Abstract") << "\n\n";
-			else
-				buffer << _("Abstract: ");
+				currlinelen = 0;
+			} else {
+				string const abst = _("Abstract: ");
+ 				buffer << abst;
+				currlinelen += abst.length();
+			}
 			break;
 		case 7: // Bibliography
 			if (!ref_printed) {
-				if (linelen > 0)
+				if (linelen > 0) {
 					buffer << _("References") << "\n\n";
-				else
-					buffer << _("References: ");
+					currlinelen = 0;
+				} else {
+					string const refs = _("References: ");
+					buffer << refs;
+					currlinelen += refs.length();
+				}
+				
 				ref_printed = true;
 			}
 			break;
 		default:
-			buffer << par->params().labelString() << " ";
-			break;
+		{
+			string const parlab = par->params().labelString();
+			buffer << parlab << " ";
+			currlinelen += parlab.length() + 1;
+		}
+		break;
+		
 		}
 	}
-	string s = buffer.str();
-	if (s.rfind('\n') != string::npos) {
-		string dummy;
-		s = rsplit(buffer.str().c_str(), dummy, '\n');
-	}
-	currlinelen = s.length();
+
 	if (!currlinelen) {
-		for (Paragraph::depth_type j = 0; j < depth; ++j)
-			buffer << "  ";
-		currlinelen = depth * 2;
-		if (ltype_depth > depth) {
-			for (Paragraph::depth_type j = ltype_depth;
-				 j > depth; --j)
-			{
-				buffer << "  ";
-			}
-			currlinelen += (ltype_depth-depth)*2;
-		}
+		pair<int, string> p = addDepth(depth, ltype_depth);
+		buffer << p.second;
+		currlinelen += p.first;
 	}
-	// this is to change the linebreak to do it by word a bit more intelligent
-	// hopefully! (only in the case where we have a max linelenght!) (Jug)
+	
+	// this is to change the linebreak to do it by word a bit more
+	// intelligent hopefully! (only in the case where we have a
+	// max linelenght!) (Jug)
+
+	string word;
+	
 	for (pos_type i = 0; i < par->size(); ++i) {
 		char c = par->getUChar(params, i);
 		switch (c) {
@@ -1926,82 +1947,73 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 			Inset const * inset = par->getInset(i);
 			if (inset) {
 				if (linelen > 0) {
-					buffer << word.str();
-					word.str("");
+					buffer << word;
+					currlinelen += word.length();
+					word.erase();
 				}
 				if (inset->ascii(this, buffer, linelen)) {
 					// to be sure it breaks paragraph
 					currlinelen += linelen;
 				}
-#if 0
-				else {
-					string dummy;
-					string const s =
-						rsplit(buffer.str().c_str(),
-						       dummy, '\n');
-					currlinelen = s.length();
-				}
-#endif
 			}
 		}
 		break;
 		
 		case Paragraph::META_NEWLINE:
 			if (linelen > 0) {
-				buffer << word.str() << "\n";
-				word.str("");
-				for (Paragraph::depth_type j = 0; 
-				     j < depth; ++j)
-					buffer << "  ";
-				currlinelen = depth * 2;
-				if (ltype_depth > depth) {
-					for (Paragraph::depth_type j = ltype_depth;
-						 j > depth; --j)
-						buffer << "  ";
-					currlinelen += (ltype_depth - depth) * 2;
-				}
+				buffer << word << "\n";
+				word.erase();
+
+				pair<int, string> p = addDepth(depth,
+							       ltype_depth);
+				buffer << p.second;
+				currlinelen = p.first;
 			}
 			break;
 			
 		case Paragraph::META_HFILL:
-			buffer << word.str() << "\t";
-			currlinelen += word.str().length() + 1;
-			word.str("");
+			buffer << word << "\t";
+			currlinelen += word.length() + 1;
+			word.erase();
 			break;
 
 		default:
 			if (c == ' ') {
-				buffer << word.str() << ' ';
-				currlinelen += word.str().length() + 1;
-				word.str("");
+				if (linelen > 0 &&
+				    currlinelen + word.length() > linelen - 10) {
+					buffer << "\n";
+					pair<int, string> p =
+						addDepth(depth, ltype_depth);
+					buffer << p.second;
+					currlinelen = p.first;
+				}
+
+				buffer << word << ' ';
+				currlinelen += word.length() + 1;
+				word.erase();
+
 			} else {
 				if (c != '\0') {
-					word << c;
+					word.push_back(c);
 				} else {
 					lyxerr[Debug::INFO] <<
 						"writeAsciiFile: NULL char in structure." << endl;
 				}
 				if ((linelen > 0) &&
-					(currlinelen+word.str().length()) > linelen)
+					(currlinelen + word.length()) > linelen)
 				{
 					buffer << "\n";
-					for (Paragraph::depth_type j = 0; j < depth; ++j)
-						buffer << "  ";
-					currlinelen = depth * 2;
-					if (ltype_depth > depth) {
-						for (Paragraph::depth_type j = ltype_depth;
-							 j > depth; --j)
-						{
-							buffer << "  ";
-						}
-						currlinelen += (ltype_depth-depth)*2;
-					}
+
+					pair<int, string> p =
+						addDepth(depth, ltype_depth);
+					buffer << p.second;
+					currlinelen = p.first;
 				}
 			}
 			break;
 		}
 	}
-	buffer << word.str();
+	buffer << word;
 	return buffer.str().c_str();
 }
 
@@ -3601,8 +3613,8 @@ Buffer::Lists const Buffer::getLists() const
 	Paragraph * par = paragraph;
 
 	LyXTextClass const & textclass = textclasslist[params.textclass];
-	bool found = textclass.hasLayout("caption");
-	string const layout("caption");
+	bool found = textclass.hasLayout("Caption");
+	string const layout("Caption");
 
 	while (par) {
 		char const labeltype = textclass[par->layout()].labeltype;
@@ -3648,7 +3660,7 @@ Buffer::Lists const Buffer::getLists() const
 				}
 			}
 		} else {
-			lyxerr << "caption not found" << endl;
+			lyxerr << "Caption not found" << endl;
 		}
 		
 		par = par->next();
