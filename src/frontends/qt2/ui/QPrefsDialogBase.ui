@@ -255,4 +255,11 @@
     <slot access="protected">saveClicked()</slot>
     <slot access="public">setTitle(int)</slot>
 </connections>
+<tabstops>
+    <tabstop>prefsLV</tabstop>
+    <tabstop>restorePB</tabstop>
+    <tabstop>savePB</tabstop>
+    <tabstop>applyPB</tabstop>
+    <tabstop>closePB</tabstop>
+</tabstops>
 </UI>

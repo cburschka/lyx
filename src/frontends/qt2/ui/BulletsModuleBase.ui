@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>199</width>
-            <height>166</height>
+            <width>300</width>
+            <height>329</height>
         </rect>
     </property>
     <property stdset="1">
@@ -336,4 +336,8 @@
     <slot access="protected">setActive(QListViewItem*)</slot>
     <slot access="protected">setSize(int)</slot>
 </connections>
+<tabstops>
+    <tabstop>bulletsLV</tabstop>
+    <tabstop>bulletsizeCO</tabstop>
+</tabstops>
 </UI>
