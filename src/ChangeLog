@@ -1,3 +1,9 @@
+2004-07-15  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* buffer.C (parseSingleLyXformat2Token): fix the off-by-one-error
+	in the paperpackage selection without modifying the file format
+	with help from Jean-Marc Lasgouttes
+
 2004-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* tex-strings.C: revert paperpackage fix from 2004-06-27 as it

@@ -751,12 +751,27 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		else
 			params.papersize2 = tmpret;
 	} else if (token == "\\paperpackage") {
-		int tmpret = lex.findToken(string_paperpackages);
-		if (tmpret == -1) {
-			++tmpret;
-			params.paperpackage = BufferParams::PACKAGE_NONE;
-		} else
-			params.paperpackage = tmpret;
+		// string_paperpackages is missing the first entry "none".
+		// Therefore, the strings in the .lyx file are off by one,
+		// and the last setting PACKAGE_WIDEMARGINSA4 is written as
+		// an empty string.
+		// Since we cannot fix string_paperpackages because this
+		// would be a file format change, we have to recognize the
+		// empty argument of "\\paperpackage" as PACKAGE_WIDEMARGINSA4
+		// here.
+		lex.eatLine();
+		string const nextToken = lex.getString();
+		if (nextToken.empty()) {
+			params.paperpackage = BufferParams::PACKAGE_WIDEMARGINSA4;
+		} else {
+			lex.pushToken(nextToken);
+			int tmpret = lex.findToken(string_paperpackages);
+			if (tmpret == -1) {
+				++tmpret;
+				params.paperpackage = BufferParams::PACKAGE_NONE;
+			} else
+				params.paperpackage = tmpret;
+		}
 	} else if (token == "\\use_geometry") {
 		lex.nextToken();
 		params.use_geometry = lex.getInteger();
