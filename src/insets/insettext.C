@@ -236,14 +236,14 @@ void InsetText::updateLocal(BufferView * bv)
 		collapseParagraphs(bv);
 
 	if (!text_.selection.set())
-		text_.selection.cursor = text_.cursor;
+		text_.anchor() = text_.cursor();
 
 	bv->owner()->view_state_changed();
 	bv->owner()->updateMenubar();
 	bv->owner()->updateToolbar();
-	if (old_par != text_.cursor.par()) {
+	if (old_par != text_.cursor().par()) {
 		bv->owner()->setLayout(text_.cursorPar()->layout()->name());
-		old_par = text_.cursor.par();
+		old_par = text_.cursor().par();
 	}
 }
 

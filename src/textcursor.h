@@ -50,7 +50,6 @@ struct Selection {
 	void mark(bool m) {
 		mark_ = m;
 	}
-	LyXCursor cursor; // the other end of the selection
 private:
 	bool set_; // former selection
 	bool mark_; // former mark_set
@@ -64,7 +63,9 @@ struct TextCursor {
 	void clearSelection();
 
 	// actual cursor position
-	LyXCursor cursor;
+	LyXCursor cursor_;
+	// the other end of the selection
+	LyXCursor anchor_;
 
 	Selection selection;
 

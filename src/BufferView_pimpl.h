@@ -196,7 +196,7 @@ private:
 	/// this is used to handle XSelection events in the right manner
 	struct {
 		LyXCursor cursor;
-		LyXCursor selection_cursor;
+		LyXCursor anchor;
 		bool set;
 	} xsel_cache_;
 	///

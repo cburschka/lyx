@@ -1,3 +1,21 @@
+
+2004-01-13  André Pönitz  <poenitz@gmx.net>
+
+	* textcursor.[Ch]:
+	* lyxtext.h: hide cursor and selection anchor behind accessor function
+
+	* BufferView.C:
+	* BufferView_pimpl.[Ch]:
+	* PosIterator.C:
+	* bufferview_funcs.C:
+	* cursor.h:
+	* lyxfind.C:
+	* lyxfunc.C:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* undo.C: adjust
+
 2004-01-08  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* text2.C (undoSpan): add and use

@@ -158,7 +158,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 	keyseq.clear();
 	// copied verbatim from do_accent_char
 	view()->update();
-	view()->getLyXText()->selection.cursor = view()->getLyXText()->cursor;
+	view()->getLyXText()->anchor() = view()->getLyXText()->cursor();
 }
 
 

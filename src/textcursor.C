@@ -9,7 +9,6 @@
  */
 
 #include <config.h>
-#include <algorithm>
 
 #include "textcursor.h"
 
@@ -17,30 +16,33 @@
 LyXCursor const & TextCursor::selStart() const
 {
 	if (!selection.set())
-		return cursor;
-	return std::min(selection.cursor, cursor);
+		return cursor_;
+	// can't use std::min as this creates a new object
+	return anchor_ < cursor_ ? anchor_ : cursor_;
 }
 
 
 LyXCursor const & TextCursor::selEnd() const
 {
 	if (!selection.set())
-		return cursor;
-	return std::max(selection.cursor, cursor);
+		return cursor_;
+	return anchor_ > cursor_ ? anchor_ : cursor_;
 }
 
 
 LyXCursor & TextCursor::selStart()
 {
-	TextCursor const & t = *this;
-	return const_cast<LyXCursor &>(t.selStart());
+	if (!selection.set())
+		return cursor_;
+	return anchor_ < cursor_ ? anchor_ : cursor_;
 }
 
 
 LyXCursor & TextCursor::selEnd()
 {
-	TextCursor const & t = *this;
-	return const_cast<LyXCursor &>(t.selEnd());
+	if (!selection.set())
+		return cursor_;
+	return anchor_ > cursor_ ? anchor_ : cursor_;
 }
 
 
@@ -48,11 +50,8 @@ void TextCursor::setSelection()
 {
 	selection.set(true);
 	// a selection with no contents is not a selection
-	if (cursor.par() == selection.cursor.par() &&
-	    cursor.pos() == selection.cursor.pos())
-	{
+	if (cursor_.par() == anchor_.par() && cursor_.pos() == anchor_.pos())
 		selection.set(false);
-	}
 }
 
 
@@ -60,6 +59,6 @@ void TextCursor::clearSelection()
 {
 	selection.set(false);
 	selection.mark(false);
-	selection.cursor = cursor;
+	anchor_ = cursor_;
 }
 

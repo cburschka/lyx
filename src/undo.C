@@ -121,7 +121,7 @@ void recordUndo(Undo::undo_kind kind,
 	int textnum;
 	ParIterator pit = text2pit(buf, text, textnum);
 	stack.push(Undo(kind, textnum, pit.index(),
-		first_par, end_par, text->cursor.par(), text->cursor.pos()));
+		first_par, end_par, text->cursor().par(), text->cursor().pos()));
 	lyxerr << "undo record: " << stack.top() << std::endl;
 
 	// record the relevant paragraphs
@@ -178,12 +178,12 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 	       << std::endl;
 
 	// set cursor again to force the position to be the right one
-	text->cursor.par(undo.cursor_par);
-	text->cursor.pos(undo.cursor_pos);
+	text->cursor().par(undo.cursor_par);
+	text->cursor().pos(undo.cursor_pos);
 
 	// clear any selection
 	text->clearSelection();
-	text->selection.cursor = text->cursor;
+	text->anchor() = text->cursor();
 	text->updateCounters();
 
 	// rebreak the entire lyxtext
@@ -225,8 +225,8 @@ bool textUndoOrRedo(BufferView * bv,
 			otherstack.top().pars.insert(otherstack.top().pars.begin(), first, last);
 		}
 		LyXText * text = pit.text(buf);
-		otherstack.top().cursor_pos = text->cursor.pos();
-		otherstack.top().cursor_par = text->cursor.par();
+		otherstack.top().cursor_pos = text->cursor().pos();
+		otherstack.top().cursor_par = text->cursor().par();
 		lyxerr << " undo other: " << otherstack.top() << std::endl;
 	}
 
@@ -293,5 +293,5 @@ void recordUndo(Undo::undo_kind kind, LyXText const * text, paroffset_type par)
 
 void recordUndo(BufferView * bv, Undo::undo_kind kind)
 {
-	recordUndo(kind, bv->text(), bv->text()->cursor.par());
+	recordUndo(kind, bv->text(), bv->text()->cursor().par());
 }

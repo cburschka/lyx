@@ -95,7 +95,7 @@ void LyXText::init(BufferView * bview)
 
 	redoParagraphs(beg, end);
 	setCursorIntern(0, 0);
-	selection.cursor = cursor;
+	anchor() = cursor();
 
 	updateCounters();
 }
@@ -217,7 +217,7 @@ void LyXText::setCharFont(
 InsetOld * LyXText::getInset() const
 {
 	ParagraphList::iterator pit = cursorPar();
-	pos_type const pos = cursor.pos();
+	pos_type const pos = cursor().pos();
 
 	if (pos < pit->size() && pit->isInset(pos)) {
 		return pit->getInset(pos);
@@ -236,7 +236,7 @@ bool LyXText::toggleInset()
 
 	// do we want to keep this?? (JMarc)
 	if (!isHighlyEditableInset(inset))
-		recUndo(cursor.par());
+		recUndo(cursor().par());
 
 	if (inset->isOpen())
 		inset->close();
@@ -428,7 +428,7 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 	if (!selection.set()) {
 		// Determine basis font
 		LyXFont layoutfont;
-		if (cursor.pos() < cursorPar()->beginOfBody())
+		if (cursor().pos() < cursorPar()->beginOfBody())
 			layoutfont = getLabelFont(cursorPar());
 		else
 			layoutfont = getLayoutFont(cursorPar());
@@ -497,14 +497,14 @@ void LyXText::clearSelection()
 void LyXText::cursorHome()
 {
 	ParagraphList::iterator cpit = cursorPar();
-	setCursor(cpit, cpit->getRow(cursor.pos())->pos());
+	setCursor(cpit, cpit->getRow(cursor().pos())->pos());
 }
 
 
 void LyXText::cursorEnd()
 {
 	ParagraphList::iterator cpit = cursorPar();
-	pos_type end = cpit->getRow(cursor.pos())->endpos();
+	pos_type end = cpit->getRow(cursor().pos())->endpos();
 	// if not on the last row of the par, put the cursor before
 	// the final space
 	setCursor(cpit, end == cpit->size() ? end : end - 1);
@@ -538,7 +538,7 @@ void LyXText::toggleFree(LyXFont const & font, bool toggleall)
 	// Try implicit word selection
 	// If there is a change in the language the implicit word selection
 	// is disabled.
-	LyXCursor resetCursor = cursor;
+	LyXCursor resetCursor = cursor();
 	bool implicitSelection =
 		font.language() == ignore_language
 		&& font.number() == LyXFont::IGNORE
@@ -551,8 +551,8 @@ void LyXText::toggleFree(LyXFont const & font, bool toggleall)
 	//and cursor is set to the original position.
 	if (implicitSelection) {
 		clearSelection();
-		cursor = resetCursor;
-		selection.cursor = cursor;
+		cursor() = resetCursor;
+		anchor() = cursor();
 	}
 }
 
@@ -562,7 +562,7 @@ string LyXText::getStringToIndex()
 	// Try implicit word selection
 	// If there is a change in the language the implicit word selection
 	// is disabled.
-	LyXCursor const reset_cursor = cursor;
+	LyXCursor const reset_cursor = cursor();
 	bool const implicitSelection =
 		selectWordWhenUnderCursor(lyx::PREVIOUS_WORD);
 
@@ -575,8 +575,8 @@ string LyXText::getStringToIndex()
 		idxstring = selectionAsString(*bv()->buffer(), false);
 
 	// Reset cursors to their original position.
-	cursor = reset_cursor;
-	selection.cursor = cursor;
+	cursor() = reset_cursor;
+	anchor() = cursor();
 
 	// Clear the implicit selection.
 	if (implicitSelection)
@@ -919,9 +919,9 @@ void LyXText::insertInset(InsetOld * inset)
 	if (!cursorPar()->insetAllowed(inset->lyxCode()))
 		return;
 
-	recUndo(cursor.par());
+	recUndo(cursor().par());
 	freezeUndo();
-	cursorPar()->insertInset(cursor.pos(), inset);
+	cursorPar()->insertInset(cursor().pos(), inset);
 	// Just to rebreak and refresh correctly.
 	// The character will not be inserted a second time
 	insertChar(Paragraph::META_INSET);
@@ -984,8 +984,8 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	// cutSelection can invalidate the cursor so we need to set
 	// it anew. (Lgb)
 	// we prefer the end for when tracking changes
-	cursor.pos(endpos);
-	cursor.par(parOffset(endpit));
+	cursor().pos(endpos);
+	cursor().par(parOffset(endpit));
 
 	// need a valid cursor. (Lgb)
 	clearSelection();
@@ -1026,7 +1026,7 @@ void LyXText::pasteSelection(size_t sel_index)
 	if (!CutAndPaste::checkPastePossible())
 		return;
 
-	recUndo(cursor.par());
+	recUndo(cursor().par());
 
 	ParagraphList::iterator endpit;
 	PitPosPair ppp;
@@ -1036,7 +1036,7 @@ void LyXText::pasteSelection(size_t sel_index)
 	boost::tie(ppp, endpit) =
 		CutAndPaste::pasteSelection(*bv()->buffer(),
 					    paragraphs(),
-					    cursorPar(), cursor.pos(),
+					    cursorPar(), cursor().pos(),
 					    bv()->buffer()->params().textclass,
 					    sel_index, el);
 	bufferErrors(*bv()->buffer(), el);
@@ -1046,7 +1046,7 @@ void LyXText::pasteSelection(size_t sel_index)
 
 	clearSelection();
 
-	selection.cursor = cursor;
+	anchor() = cursor();
 	setCursor(ppp.first, ppp.second);
 	setSelection();
 	updateCounters();
@@ -1058,7 +1058,7 @@ void LyXText::setSelectionRange(lyx::pos_type length)
 	if (!length)
 		return;
 
-	selection.cursor = cursor;
+	anchor() = cursor();
 	while (length--)
 		cursorRight(true);
 	setSelection();
@@ -1068,7 +1068,7 @@ void LyXText::setSelectionRange(lyx::pos_type length)
 // simple replacing. The font of the first selected character is used
 void LyXText::replaceSelectionWithString(string const & str)
 {
-	recUndo(cursor.par());
+	recUndo(cursor().par());
 	freezeUndo();
 
 	// Get font setting before we cut
@@ -1096,10 +1096,10 @@ void LyXText::replaceSelectionWithString(string const & str)
 void LyXText::insertStringAsLines(string const & str)
 {
 	ParagraphList::iterator pit = cursorPar();
-	pos_type pos = cursor.pos();
+	pos_type pos = cursor().pos();
 	ParagraphList::iterator endpit = boost::next(cursorPar());
 
-	recUndo(cursor.par());
+	recUndo(cursor().par());
 
 	// only to be sure, should not be neccessary
 	clearSelection();
@@ -1107,7 +1107,7 @@ void LyXText::insertStringAsLines(string const & str)
 	bv()->buffer()->insertStringAsLines(pit, pos, current_font, str);
 
 	redoParagraphs(cursorPar(), endpit);
-	selection.cursor = cursor;
+	anchor() = cursor();
 	setCursor(pit, pos);
 	setSelection();
 }
@@ -1150,7 +1150,7 @@ void LyXText::setCursor(ParagraphList::iterator pit, pos_type pos)
 bool LyXText::setCursor(paroffset_type par, pos_type pos, bool setfont,
 	bool boundary)
 {
-	LyXCursor old_cursor = cursor;
+	LyXCursor old_cursor = cursor();
 	setCursorIntern(par, pos, setfont, boundary);
 	return deleteEmptyParagraphMechanism(old_cursor);
 }
@@ -1210,7 +1210,7 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 void LyXText::setCursorIntern(paroffset_type par,
 			      pos_type pos, bool setfont, bool boundary)
 {
-	setCursor(cursor, par, pos, boundary);
+	setCursor(cursor(), par, pos, boundary);
 	bv()->x_target(cursorX() + xo_);
 	if (setfont)
 		setCurrentFont();
@@ -1219,10 +1219,10 @@ void LyXText::setCursorIntern(paroffset_type par,
 
 void LyXText::setCurrentFont()
 {
-	pos_type pos = cursor.pos();
+	pos_type pos = cursor().pos();
 	ParagraphList::iterator pit = cursorPar();
 
-	if (cursor.boundary() && pos > 0)
+	if (cursor().boundary() && pos > 0)
 		--pos;
 
 	if (pos > 0) {
@@ -1243,9 +1243,9 @@ void LyXText::setCurrentFont()
 	current_font = pit->getFontSettings(bufparams, pos);
 	real_current_font = getFont(pit, pos);
 
-	if (cursor.pos() == pit->size() &&
-	    bidi.isBoundary(*bv()->buffer(), *pit, cursor.pos()) &&
-	    !cursor.boundary()) {
+	if (cursor().pos() == pit->size() &&
+	    bidi.isBoundary(*bv()->buffer(), *pit, cursor().pos()) &&
+	    !cursor().boundary()) {
 		Language const * lang =
 			pit->getParLanguage(bufparams);
 		current_font.setLanguage(lang);
@@ -1362,8 +1362,8 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 
 void LyXText::setCursorFromCoordinates(int x, int y)
 {
-	LyXCursor old_cursor = cursor;
-	setCursorFromCoordinates(cursor, x, y);
+	LyXCursor old_cursor = cursor();
+	setCursorFromCoordinates(cursor(), x, y);
 	setCurrentFont();
 	deleteEmptyParagraphMechanism(old_cursor);
 }
@@ -1384,9 +1384,9 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 
 bool LyXText::checkAndActivateInset(bool front)
 {
-	if (cursor.pos() == cursorPar()->size())
+	if (cursor().pos() == cursorPar()->size())
 		return false;
-	InsetOld * inset = cursorPar()->getInset(cursor.pos());
+	InsetOld * inset = cursorPar()->getInset(cursor().pos());
 	if (!isHighlyEditableInset(inset))
 		return false;
 	inset->edit(bv(), front);
@@ -1416,7 +1416,7 @@ DispatchResult LyXText::moveRightIntern(bool front, bool activate_inset, bool se
 {
 	ParagraphList::iterator c_par = cursorPar();
 	if (boost::next(c_par) == paragraphs().end()
-		&& cursor.pos() >= c_par->size())
+		&& cursor().pos() >= c_par->size())
 		return DispatchResult(false, FINISHED_RIGHT);
 	if (activate_inset && checkAndActivateInset(front))
 		return DispatchResult(true, true);
@@ -1430,7 +1430,7 @@ DispatchResult LyXText::moveRightIntern(bool front, bool activate_inset, bool se
 DispatchResult LyXText::moveLeftIntern(bool front,
 			  bool activate_inset, bool selecting)
 {
-	if (cursor.par() == 0 && cursor.pos() <= 0)
+	if (cursor().par() == 0 && cursor().pos() <= 0)
 		return DispatchResult(false, FINISHED);
 	cursorLeft(true);
 	if (!selecting)
@@ -1463,18 +1463,18 @@ DispatchResult LyXText::moveDown()
 
 bool LyXText::cursorLeft(bool internal)
 {
-	if (cursor.pos() > 0) {
-		bool boundary = cursor.boundary();
-		setCursor(cursor.par(), cursor.pos() - 1, true, false);
+	if (cursor().pos() > 0) {
+		bool boundary = cursor().boundary();
+		setCursor(cursor().par(), cursor().pos() - 1, true, false);
 		if (!internal && !boundary &&
-		    bidi.isBoundary(*bv()->buffer(), *cursorPar(), cursor.pos() + 1))
-			setCursor(cursor.par(), cursor.pos() + 1, true, true);
+		    bidi.isBoundary(*bv()->buffer(), *cursorPar(), cursor().pos() + 1))
+			setCursor(cursor().par(), cursor().pos() + 1, true, true);
 		return true;
 	}
 
-	if (cursor.par() != 0) {
+	if (cursor().par() != 0) {
 		// steps into the paragraph above
-		setCursor(cursor.par() - 1, boost::prior(cursorPar())->size());
+		setCursor(cursor().par() - 1, boost::prior(cursorPar())->size());
 		return true;
 	}
 
@@ -1484,21 +1484,21 @@ bool LyXText::cursorLeft(bool internal)
 
 bool LyXText::cursorRight(bool internal)
 {
-	if (!internal && cursor.boundary()) {
-		setCursor(cursor.par(), cursor.pos(), true, false);
+	if (!internal && cursor().boundary()) {
+		setCursor(cursor().par(), cursor().pos(), true, false);
 		return true;
 	}
 
-	if (cursor.pos() != cursorPar()->size()) {
-		setCursor(cursor.par(), cursor.pos() + 1, true, false);
+	if (cursor().pos() != cursorPar()->size()) {
+		setCursor(cursor().par(), cursor().pos() + 1, true, false);
 		if (!internal && bidi.isBoundary(*bv()->buffer(), *cursorPar(),
-						 cursor.pos()))
-			setCursor(cursor.par(), cursor.pos(), true, true);
+						 cursor().pos()))
+			setCursor(cursor().par(), cursor().pos(), true, true);
 		return true;
 	}
 
-	if (cursor.par() + 1 != int(paragraphs().size())) {
-		setCursor(cursor.par() + 1, 0);
+	if (cursor().par() + 1 != int(paragraphs().size())) {
+		setCursor(cursor().par() + 1, 0);
 		return true;
 	}
 
@@ -1541,7 +1541,7 @@ void LyXText::cursorDown(bool selecting)
 void LyXText::cursorUpParagraph()
 {
 	ParagraphList::iterator cpit = cursorPar();
-	if (cursor.pos() > 0)
+	if (cursor().pos() > 0)
 		setCursor(cpit, 0);
 	else if (cpit != paragraphs().begin())
 		setCursor(boost::prior(cpit), 0);
@@ -1620,8 +1620,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	// MISSING
 
 	// If the pos around the old_cursor were spaces, delete one of them.
-	if (old_cursor.par() != cursor.par()
-	    || old_cursor.pos() != cursor.pos()) {
+	if (old_cursor.par() != cursor().par()
+	    || old_cursor.pos() != cursor().pos()) {
 
 		// Only if the cursor has really moved
 		if (old_cursor.pos() > 0
@@ -1640,8 +1640,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 // automated way in LyXCursor code. (JMarc 26/09/2001)
 #endif
 			// correct all cursors held by the LyXText
-			fixCursorAfterDelete(cursor, old_cursor);
-			fixCursorAfterDelete(selection.cursor, old_cursor);
+			fixCursorAfterDelete(cursor(), old_cursor);
+			fixCursorAfterDelete(anchor(), old_cursor);
 			return false;
 		}
 	}
@@ -1655,7 +1655,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		return false;
 
 	// only do our magic if we changed paragraph
-	if (old_cursor.par() == cursor.par())
+	if (old_cursor.par() == cursor().par())
 		return false;
 
 	// record if we have deleted a paragraph
@@ -1670,30 +1670,30 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		deleted = true;
 
 		bool selection_position_was_oldcursor_position =
-			selection.cursor.par() == old_cursor.par()
-			&& selection.cursor.pos() == old_cursor.pos();
+			anchor().par() == old_cursor.par()
+			&& anchor().pos() == old_cursor.pos();
 
-		tmpcursor = cursor;
-		cursor = old_cursor; // that undo can restore the right cursor position
+		tmpcursor = cursor();
+		cursor() = old_cursor; // that undo can restore the right cursor position
 
 		ParagraphList::iterator endpit = boost::next(old_pit);
 		while (endpit != paragraphs().end() && endpit->getDepth())
 			++endpit;
 
 		recUndo(parOffset(old_pit), parOffset(endpit) - 1);
-		cursor = tmpcursor;
+		cursor() = tmpcursor;
 
 		// cache cursor pit
 		ParagraphList::iterator tmppit = cursorPar();
 		// delete old par
 		paragraphs().erase(old_pit);
 		// update cursor par offset
-		cursor.par(parOffset(tmppit));
+		cursor().par(parOffset(tmppit));
 		redoParagraph();
 
 		if (selection_position_was_oldcursor_position) {
 			// correct selection
-			selection.cursor = cursor;
+			anchor() = cursor();
 		}
 	}
 
@@ -1702,7 +1702,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 
 	if (old_pit->stripLeadingSpaces()) {
 		redoParagraph(old_pit);
-		selection.cursor = cursor;
+		anchor() = cursor();
 	}
 	return false;
 }

@@ -406,6 +406,16 @@ public:
 	///
 	int cursorY(LyXCursor const & cursor) const;
 
+	/// the topmost cursor slice
+	LyXCursor & cursor();
+	/// the topmost cursor slice
+	LyXCursor const & cursor() const;
+	/// access to the selection anchor
+	LyXCursor & anchor();
+	/// access to the selection anchor
+	LyXCursor const & anchor() const;
+
+
 public:
 	///
 	int height;

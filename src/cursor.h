@@ -45,6 +45,11 @@ public:
 	void pop(int depth);
 	/// pop one level off the cursor
 	void pop();
+	/// access to cursor 'tip'
+	CursorSlice & top() { return data_.back(); }
+	/// access to cursor 'tip'
+	CursorSlice const & top() const { return data_.back(); }
+
 	/// set the cell the cursor is in
 	void cell(int);
 	/// return the cell this cursor is in

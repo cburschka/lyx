@@ -388,37 +388,38 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 
 	owner_->message(_("Formatting document..."));
 
-	lyxerr << "### resizeCurrentBuffer: text " << bv_->text() << endl;
-	if (!bv_->text())
+	LyXText * text = bv_->text();
+	lyxerr << "### resizeCurrentBuffer: text " << text << endl;
+	if (!text)
 		return;
 
-	par = bv_->text()->cursor.par();
-	pos = bv_->text()->cursor.pos();
-	selstartpar = bv_->text()->selStart().par();
-	selstartpos = bv_->text()->selStart().pos();
-	selendpar = bv_->text()->selEnd().par();
-	selendpos = bv_->text()->selEnd().pos();
-	selection = bv_->text()->selection.set();
-	mark_set = bv_->text()->selection.mark();
-	bv_->text()->textwidth_ = bv_->workWidth();
-	bv_->text()->fullRebreak();
+	par = text->cursor().par();
+	pos = text->cursor().pos();
+	selstartpar = text->selStart().par();
+	selstartpos = text->selStart().pos();
+	selendpar = text->selEnd().par();
+	selendpos = text->selEnd().pos();
+	selection = text->selection.set();
+	mark_set = text->selection.mark();
+	text->textwidth_ = bv_->workWidth();
+	text->fullRebreak();
 	update();
 
 	if (par != -1) {
-		bv_->text()->selection.set(true);
+		text->selection.set(true);
 		// At this point just to avoid the Delete-Empty-Paragraph-
 		// Mechanism when setting the cursor.
-		bv_->text()->selection.mark(mark_set);
+		text->selection.mark(mark_set);
 		if (selection) {
-			bv_->text()->setCursor(selstartpar, selstartpos);
-			bv_->text()->selection.cursor = bv_->text()->cursor;
-			bv_->text()->setCursor(selendpar, selendpos);
-			bv_->text()->setSelection();
-			bv_->text()->setCursor(par, pos);
+			text->setCursor(selstartpar, selstartpos);
+			text->anchor() = text->cursor();
+			text->setCursor(selendpar, selendpos);
+			text->setSelection();
+			text->setCursor(par, pos);
 		} else {
-			bv_->text()->setCursor(par, pos);
-			bv_->text()->selection.cursor = bv_->text()->cursor;
-			bv_->text()->selection.set(false);
+			text->setCursor(par, pos);
+			text->anchor() = text->cursor();
+			text->selection.set(false);
 		}
 	}
 
@@ -536,11 +537,11 @@ void BufferView::Pimpl::selectionRequested()
 	}
 
 	if (!xsel_cache_.set ||
-	    text->cursor != xsel_cache_.cursor ||
-	    text->selection.cursor != xsel_cache_.selection_cursor)
+	    text->cursor() != xsel_cache_.cursor ||
+	    text->anchor() != xsel_cache_.anchor)
 	{
-		xsel_cache_.cursor = text->cursor;
-		xsel_cache_.selection_cursor = text->selection.cursor;
+		xsel_cache_.cursor = text->cursor();
+		xsel_cache_.anchor = text->anchor();
 		xsel_cache_.set = text->selection.set();
 		sel = text->selectionAsString(*bv_->buffer(), false);
 		if (!sel.empty())
@@ -647,7 +648,7 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 		return;
 	saved_positions[i] = Position(buffer_->fileName(),
 				      bv_->text()->cursorPar()->id(),
-				      bv_->text()->cursor.pos());
+				      bv_->text()->cursor().pos());
 	if (i > 0)
 		owner_->message(bformat(_("Saved bookmark %1$s"), tostr(i)));
 }
@@ -741,7 +742,7 @@ InsetOld * BufferView::Pimpl::getInsetByCode(InsetOld::Code code)
 	LyXCursor cursor = bv_->getLyXText()->cursor;
 	Buffer::inset_iterator it =
 		find_if(Buffer::inset_iterator(
-			cursorPar(), cursor.pos()),
+			cursorPar(), cursor().pos()),
 			buffer_->inset_iterator_end(),
 			lyx::compare_memfun(&Inset::lyxCode, code));
 	return it != buffer_->inset_iterator_end() ? (*it) : 0;
@@ -763,7 +764,7 @@ InsetOld * BufferView::Pimpl::getInsetByCode(InsetOld::Code code)
 		}
 		if (cursor_par_seen) {
 			if (beg.getPar() == text->cursorPar()
-			    && beg.getPos() >= text->cursor.pos()) {
+			    && beg.getPos() >= text->cursor().pos()) {
 				break;
 			} else if (beg.getPar() != text->cursorPar()) {
 				break;
@@ -1256,7 +1257,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 {
 	// not quite sure if we want this...
-	bv_->text()->recUndo(bv_->text()->cursor.par());
+	bv_->text()->recUndo(bv_->text()->cursor().par());
 	freezeUndo();
 
 	bv_->text()->clearSelection();
@@ -1285,10 +1286,7 @@ bool BufferView::Pimpl::ChangeInsets(InsetOld::Code code,
 				     string const & from, string const & to)
 {
 	bool need_update = false;
-	LyXCursor cursor = bv_->text()->cursor;
-	LyXCursor tmpcursor = cursor;
-	cursor.par(tmpcursor.par());
-	cursor.pos(tmpcursor.pos());
+	LyXCursor cur = bv_->text()->cursor();
 
 	ParIterator end = bv_->buffer()->par_iterator_end();
 	for (ParIterator it = bv_->buffer()->par_iterator_begin();
@@ -1309,15 +1307,15 @@ bool BufferView::Pimpl::ChangeInsets(InsetOld::Code code,
 
 			// FIXME
 
-			// The test it.size()==1 was needed to prevent crashes.
-			// How to set the cursor correctly when it.size()>1 ??
+			// The test it.size() == 1 was needed to prevent crashes.
+			// How to set the cursor correctly when it.size() > 1 ??
 			if (it.size() == 1) {
 				bv_->text()->setCursorIntern(bv_->text()->parOffset(it.pit()), 0);
 				bv_->text()->redoParagraph(bv_->text()->cursorPar());
 			}
 		}
 	}
-	bv_->text()->setCursorIntern(cursor.par(), cursor.pos());
+	bv_->text()->setCursorIntern(cur.par(), cur.pos());
 	return need_update;
 }
 

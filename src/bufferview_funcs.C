@@ -179,10 +179,10 @@ string const currentState(BufferView * bv)
 
 	LyXText * text = bv->getLyXText();
 	Buffer * buffer = bv->buffer();
-	LyXCursor const & c = text->cursor;
+	LyXCursor const & c = text->cursor();
 
 	bool const show_change = buffer->params().tracking_changes
-		&& text->cursor.pos() != text->cursorPar()->size()
+		&& text->cursor().pos() != text->cursorPar()->size()
 		&& text->cursorPar()->lookupChange(c.pos()) != Change::UNCHANGED;
 
 	if (show_change) {
@@ -242,8 +242,8 @@ string const currentState(BufferView * bv)
 #ifdef DEVEL_VERSION
 	ParagraphList::iterator pit = text->cursorPar();
 	state << _(", Paragraph: ") << pit->id();
-	state << _(", Position: ") << text->cursor.pos();
-	RowList::iterator rit = pit->getRow(text->cursor.pos());
+	state << _(", Position: ") << text->cursor().pos();
+	RowList::iterator rit = pit->getRow(text->cursor().pos());
 	state << bformat(_(", Row b:%1$d e:%2$d"), rit->pos(), rit->endpos());
 	state << _(", Inset: ");
 	InsetOld * inset = pit->inInset();
@@ -290,7 +290,7 @@ void put_selection_at(BufferView * bv, PosIterator const & cur,
 
 	LyXText * text = par.text(*bv->buffer());
 	par.lockPath(bv);
-	//hack for the chicken and egg problem
+	// hack for the chicken and egg problem
 	if (par.inset())
 		bv->top_y(par.outerPar()->y);
 	bv->update();
@@ -301,7 +301,7 @@ void put_selection_at(BufferView * bv, PosIterator const & cur,
 		text->setSelectionRange(length);
 		text->setSelection();
 		if (backwards)
-			std::swap(text->cursor, text->selection.cursor);
+			std::swap(text->cursor(), text->anchor());
 	}
 
 	bv->fitCursor();

@@ -128,7 +128,7 @@ PosIterator::PosIterator(ParagraphList * pl, ParagraphList::iterator pit,
 PosIterator::PosIterator(BufferView & bv)
 {
 	LyXText * text = bv.getLyXText();
-	lyx::pos_type pos = text->cursor.pos();
+	lyx::pos_type pos = text->cursor().pos();
 	ParagraphList::iterator pit = text->cursorPar();
 	
 	ParIterator par = bv.buffer()->par_iterator_begin();
