@@ -6,8 +6,6 @@
  *
  *           Copyright 2000 The LyX Team.
  *
- *           @author Jürgen Vigna
- *
  * ====================================================== */
 
 #ifndef GUIRUNTIME_H
@@ -20,24 +18,16 @@
 class LyXView;
 
 /** The LyX GUI independent guiruntime class
-  The GUI interface is implemented in the corresponding GUIRunTime_pimpl class.
-  */
+    The GUI interface is implemented in the corresponding
+    frontends GUIRunTime.C file.
+*/
 class GUIRunTime {
 public:
-    ///
-    GUIRunTime();
-    ///
-    ~GUIRunTime();
-    ///
-    void processEvents();
-    ///
-    void runTime();
-	
-    struct Pimpl;
-    friend struct Pimpl;
-    
-private:
-    ///
-    Pimpl * pimpl_;
+	///
+	static
+	void processEvents();
+	///
+	static
+	void runTime();
 };
 #endif

@@ -42,8 +42,7 @@ LYXDATADIRS = dlg
 ETAGS_ARGS = --lang=c++
 libkde_la_SOURCES = \
 	Dialogs.C \
-	GUIRunTime_pimpl.C \
-	GUIRunTime_pimpl.h \
+	GUIRunTime.C \
 	FormCopyright.C \
 	FormCopyright.h \
 	formcopyrightdialog.C \
@@ -79,7 +78,7 @@ dist-hook:
 # add a dependency for every moc file to be full portable
 # I've added a key binding to emacs for this. 
 
-formcopyrightdialog.C:formcopyrightdialog_moc.C
+formcopyrightdialog.C: formcopyrightdialog_moc.C
 formcopyrightdialog_moc.C: formcopyrightdialog.h
 	$(MOC) formcopyrightdialog.h -o formcopyrightdialog_moc.C
 

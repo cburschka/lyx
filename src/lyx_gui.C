@@ -564,8 +564,7 @@ void LyXGUI::runTime()
 {
 	if (!gui) return;
 
-	GUIRunTime grt;
-	grt.runTime();
+	GUIRunTime::runTime();
 }
 
 

@@ -29,7 +29,7 @@ FL_OBJECT * figinset_canvas;
 
 // needed to make the c++ compiler find the correct version of abs.
 // This is at least true for g++.
-using std::abs;
+//using std::abs;
 
 static inline
 void waitForX()

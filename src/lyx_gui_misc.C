@@ -201,9 +201,11 @@ void updateAllVisibleBufferRelatedDialogs()
 	if (fd_form_paragraph_extra->form_paragraph_extra->visible) {
 		UpdateParagraphExtra();
 	}
+#ifndef NEW_TABULAR
 	if (fd_form_table_options->form_table_options->visible) {
 		UpdateLayoutTable(1); // just like a right mouse click
 	}
+#endif
 	if (fd_form_bullet) {
 		if (fd_form_bullet->form_bullet->visible) {
 			updateBulletForm();

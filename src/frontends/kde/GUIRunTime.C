@@ -3,11 +3,9 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *           Copyright (C) 2000 The LyX Team.
+ *           Copyright 2000 The LyX Team.
  *
- *           @author Jürgen Vigna
- *
- *======================================================*/
+ * ====================================================== */
 
 #include <config.h>
 
@@ -15,29 +13,30 @@
 #pragma implementation
 #endif
 
-#include FORMS_H_LOCATION
-
-#include "GUIRunTime_pimpl.h"
+#include "GUIRunTime.h"
 #include "debug.h"
 
-#include <gnome--/main.h>
+#include <kapp.h>
+
+#include FORMS_H_LOCATION
 
 using std::endl;
 
 extern bool finished;
 
-void GUIRunTime::Pimpl::processEvents() 
+
+void GUIRunTime::processEvents() 
 {
-    while(Gnome::Main::instance()->events_pending())
-	Gnome::Main::instance()->iteration(FALSE);
+	kapp->processEvents();
 }
 
 
-void GUIRunTime::Pimpl::runTime()
+void GUIRunTime::runTime()
 {
+	// We still use xforms event handler as the main one...
 	XEvent ev;
 	while (!finished) {
-		Pimpl::processEvents();
+		processEvents();
 		if (fl_check_forms() == FL_EVENT) {
 			lyxerr << "LyX: This shouldn't happen..." << endl;
 			fl_XNextEvent(&ev);

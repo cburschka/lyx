@@ -262,10 +262,6 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 		lyxerr << "Key ["
 		       << action << "]["
 		       << buf << "]"
-#if 0
-		       << "["
-		       << num_bytes << "]"
-#endif
 		       << endl;
 	}
 
@@ -301,12 +297,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 			return 0;
 		}
 	}
-#if 0
-	else
-		if (action == LFUN_SELFINSERT) {
-			argument = s_r[0];
-		}
-#endif
+
         bool tmp_sc = show_sc;
 	show_sc = false;
 	Dispatch(action, argument.c_str());

@@ -1376,7 +1376,11 @@ void LyXText::MeltFootnoteEnvironment(BufferView * bview)
 		tmppar->next->MakeSameLayout(cursor.par());
 
 	// first the end
-	if ((!tmppar->GetLayout() && !tmppar->table)
+	if ((!tmppar->GetLayout()
+#ifndef NEW_TABULAR
+	     && !tmppar->table
+#endif
+		)
 	    || (tmppar->Next()
 		&& (!tmppar->Next()->Last()
 		    || tmppar->Next()->HasSameLayout(tmppar)))) {
@@ -1393,7 +1397,11 @@ void LyXText::MeltFootnoteEnvironment(BufferView * bview)
 	/* if there is no space between the text and the footnote, so we insert
 	 * a blank 
 	 * (only if the previous par and the footnotepar are not empty!) */
-	if ((!firsttmppar->next->GetLayout() && !firsttmppar->next->table)
+	if ((!firsttmppar->next->GetLayout()
+#ifndef NEW_TABULAR
+	     && !firsttmppar->next->table
+#endif
+		)
 	    || firsttmppar->HasSameLayout(firsttmppar->next)) {
 		if (firsttmppar->size()
 		    && !firsttmppar->IsSeparator(firsttmppar->size() - 1)

@@ -39,7 +39,7 @@ class BufferView;
 
 // I dare you to try this one too. It is ortogonal with NEW_INSETS so you
 // can try both or just one of them.
-//#define NEW_TABULAR 1
+#define NEW_TABULAR 1
 
 /// A LyXParagraph holds all text, attributes and insets in a text paragraph
 class LyXParagraph  {
