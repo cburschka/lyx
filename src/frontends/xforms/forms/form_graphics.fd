@@ -11,7 +11,7 @@ SnapGrid: 5
 Name: form_graphics
 Width: 510
 Height: 360
-Number of Objects: 7
+Number of Objects: 8
 
 --------------------
 class: FL_BOX
@@ -52,7 +52,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 15 320 90 30
+box: 435 320 65 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -70,7 +70,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 165 320 90 30
+box: 205 320 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -88,7 +88,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 315 320 90 30
+box: 10 320 75 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -106,7 +106,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 410 320 90 30
+box: 325 320 75 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -122,14 +122,32 @@ callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------
+class: FL_BUTTON
+type: RETURN_BUTTON
+box: 95 320 75 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Apply|#A
+shortcut: ^M
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_apply
+callback: C_FormBaseApplyCB
+argument: 0
+
+--------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 10 280 485 35
+box: 15 275 485 35
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
-style: FL_BOLD_STYLE
-size: FL_NORMAL_SIZE
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
@@ -292,7 +310,7 @@ argument: 0
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 175 130 66 30
+box: 180 130 66 30
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
@@ -1119,7 +1137,7 @@ label: Default|#D
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
+name: button_lyxdefault
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1137,7 +1155,7 @@ label: Custom|#C
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: 
+name: button_lyxwh
 callback: C_FormBaseInputCB
 argument: 0
 

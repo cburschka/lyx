@@ -71,9 +71,10 @@ void FormGraphics::build()
 
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
 	bc().setRestore(dialog_->button_restore);
-	bc().setRestore(dialog_->button_help);
+	bc().addReadOnly(dialog_->button_help);
 
 	// the file section
 	file_.reset(build_file());
@@ -182,8 +183,8 @@ void FormGraphics::apply()
 	    igp.rotateOrigin = fl_get_choice_text(file_->choice_origin);
 	else
 	    igp.rotateOrigin = string();
-	igp.scale = strToInt(getStringFromInput(size_->input_scale));
-	igp.keepAspectRatio = fl_get_button(size_->check_aspectratio);
+	igp.draft = fl_get_button(file_->button_draft);
+	igp.clip = fl_get_button(file_->button_clip);
 
 	// the lyxview section
 	switch (fl_get_choice(lyxview_->choice_display)) {
@@ -203,14 +204,19 @@ void FormGraphics::apply()
 		igp.display = InsetGraphicsParams::NONE;		
 		break;
  	}
+	if (fl_get_button(lyxview_->button_lyxdefault))
+	    igp.lyxsize_type = InsetGraphicsParams::DEFAULT_SIZE;
+	else if (fl_get_button(lyxview_->button_lyxwh))
+	    igp.lyxsize_type = InsetGraphicsParams::WH;
+	else
+	    igp.lyxsize_type = InsetGraphicsParams::SCALE;
 	igp.lyxwidth = LyXLength(getLengthFromWidgets(lyxview_->input_lyxwidth,
 		lyxview_->choice_width_lyxwidth));
 	igp.lyxheight = LyXLength(getLengthFromWidgets(lyxview_->input_lyxheight,
 		lyxview_->choice_width_lyxheight));
+	igp.lyxscale = strToInt(getStringFromInput(lyxview_->input_lyxscale));
 
 	// the size section
-	igp.draft = fl_get_button(file_->button_draft);
-	igp.clip = fl_get_button(file_->button_clip);
 	if (fl_get_button(size_->button_default))
 	    igp.size_type = InsetGraphicsParams::DEFAULT_SIZE;
 	else if (fl_get_button(size_->button_wh))
@@ -221,6 +227,8 @@ void FormGraphics::apply()
 		size_->choice_width_units));
 	igp.height = LyXLength(getLengthFromWidgets(size_->input_height,
 		size_->choice_height_units));
+	igp.scale = strToInt(getStringFromInput(size_->input_scale));
+	igp.keepAspectRatio = fl_get_button(size_->check_aspectratio);
 
 	// the bb section
 	if (!controller().bbChanged)		// different to the original one?
@@ -300,6 +308,36 @@ void FormGraphics::update() {
 		lyxview_->choice_width_lyxwidth, igp.lyxwidth,defaultUnit);
 	updateWidgetsFromLength(lyxview_->input_lyxheight,
 		lyxview_->choice_width_lyxheight, igp.lyxheight,defaultUnit);
+	fl_set_input(lyxview_->input_lyxscale, tostr(igp.lyxscale).c_str());
+	switch (igp.lyxsize_type) {
+	    case InsetGraphicsParams::DEFAULT_SIZE: {
+		fl_set_button(lyxview_->button_lyxdefault,1);
+		setEnabled(lyxview_->input_lyxwidth, 0);
+		setEnabled(lyxview_->choice_width_lyxwidth, 0);
+		setEnabled(lyxview_->input_lyxheight, 0);
+		setEnabled(lyxview_->choice_width_lyxheight, 0);
+		setEnabled(lyxview_->input_lyxscale, 0);
+		break;
+	    }
+	    case InsetGraphicsParams::WH: {
+		fl_set_button(lyxview_->button_lyxwh, 1);
+		setEnabled(lyxview_->input_lyxwidth, 1);
+		setEnabled(lyxview_->choice_width_lyxwidth, 1);
+		setEnabled(lyxview_->input_lyxheight, 1);
+		setEnabled(lyxview_->choice_width_lyxheight, 1);
+		setEnabled(lyxview_->input_lyxscale, 0);
+		break;
+	    }
+	    case InsetGraphicsParams::SCALE: {
+		fl_set_button(lyxview_->button_lyxscale, 1);
+		setEnabled(lyxview_->input_lyxwidth, 0);
+		setEnabled(lyxview_->choice_width_lyxwidth, 0);
+		setEnabled(lyxview_->input_lyxheight, 0);
+		setEnabled(lyxview_->choice_width_lyxheight, 0);
+		setEnabled(lyxview_->input_lyxscale, 1);
+		break;
+	    }
+	}
 
 	// the size section
 	// Update the draft and clip mode
@@ -315,6 +353,7 @@ void FormGraphics::update() {
 		setEnabled(size_->choice_width_units, 0);
 		setEnabled(size_->input_height, 0);
 		setEnabled(size_->choice_height_units, 0);
+		setEnabled(size_->check_aspectratio, 0);
 		setEnabled(size_->input_scale, 0);
 		break;
 	    }
@@ -324,6 +363,7 @@ void FormGraphics::update() {
 		setEnabled(size_->choice_width_units, 1);
 		setEnabled(size_->input_height, 1);
 		setEnabled(size_->choice_height_units, 1);
+		setEnabled(size_->check_aspectratio, 1);
 		setEnabled(size_->input_scale, 0);
 		break;
 	    }
@@ -333,6 +373,7 @@ void FormGraphics::update() {
 		setEnabled(size_->choice_width_units, 0);
 		setEnabled(size_->input_height, 0);
 		setEnabled(size_->choice_height_units, 0);
+		setEnabled(size_->check_aspectratio, 0);
 		setEnabled(size_->input_scale, 1);
 		break;
 	    }
@@ -392,6 +433,7 @@ bool isValid(FL_OBJECT * ob)
 	
 ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 {
+	// the file section
 	if (ob == file_->button_browse) {
 		// Get the filename from the dialog
 		string const in_name = getStringFromInput(file_->input_filename);
@@ -399,33 +441,37 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		if (out_name != in_name && !out_name.empty()) {
 			fl_set_input(file_->input_filename, out_name.c_str());
 		}
+	} else if (ob == file_->check_subcaption) {
+	    	setEnabled(file_->input_subcaption,
+			   fl_get_button(file_->check_subcaption));
+
+	// the lyxview section
+	} else if (ob == lyxview_->button_lyxdefault) {
+	    	setEnabled(lyxview_->input_lyxwidth, 0);
+	    	setEnabled(lyxview_->choice_width_lyxwidth, 0);
+	    	setEnabled(lyxview_->input_lyxheight, 0);
+	    	setEnabled(lyxview_->choice_width_lyxheight, 0);
+	    	setEnabled(lyxview_->input_lyxscale, 0);
+	} else if (ob == lyxview_->button_lyxwh) {
+	    	setEnabled(lyxview_->input_lyxwidth, 1);
+	    	setEnabled(lyxview_->choice_width_lyxwidth, 1);
+	    	setEnabled(lyxview_->input_lyxheight, 1);
+	    	setEnabled(lyxview_->choice_width_lyxheight, 1);
+	    	setEnabled(lyxview_->input_lyxscale, 0);
+	} else if (ob == lyxview_->button_lyxscale) {
+	    	setEnabled(lyxview_->input_lyxwidth, 0);
+	    	setEnabled(lyxview_->choice_width_lyxwidth, 0);
+	    	setEnabled(lyxview_->input_lyxheight, 0);
+	    	setEnabled(lyxview_->choice_width_lyxheight, 0);
+	    	setEnabled(lyxview_->input_lyxscale, 1);
+
+	// the bb section
 	} else if (!controller().bbChanged && 
 		    ((ob == bbox_->input_bb_x0) || (ob == bbox_->input_bb_y0) ||
 		    (ob == bbox_->input_bb_x1) || (ob == bbox_->input_bb_y1) ||
 		    (ob == bbox_->choice_bb_x0) || (ob == bbox_->choice_bb_y0) ||
 		    (ob == bbox_->choice_bb_x1) || (ob == bbox_->choice_bb_y1))) {
 	    controller().bbChanged = true; 
-	} else if (ob == size_->button_default) {
-	    	setEnabled(size_->input_width, 0);
-	    	setEnabled(size_->choice_width_units, 0);
-	    	setEnabled(size_->input_height, 0);
-	    	setEnabled(size_->choice_height_units, 0);
-	    	setEnabled(size_->input_scale, 0);
-	} else if (ob == size_->button_wh) {
-	    	setEnabled(size_->input_width, 1);
-	    	setEnabled(size_->choice_width_units, 1);
-	    	setEnabled(size_->input_height, 1);
-	    	setEnabled(size_->choice_height_units, 1);
-	    	setEnabled(size_->input_scale, 0);
-	} else if (ob == size_->button_scale) {
-	    	setEnabled(size_->input_width, 0);
-	    	setEnabled(size_->choice_width_units, 0);
-	    	setEnabled(size_->input_height, 0);
-	    	setEnabled(size_->choice_height_units, 0);
-	    	setEnabled(size_->input_scale, 1);
-	} else if (ob == file_->check_subcaption) {
-	    	setEnabled(file_->input_subcaption,
-			   fl_get_button(file_->check_subcaption));
 	} else if (ob == bbox_->button_getBB) {
 	    string const filename = getStringFromInput(file_->input_filename);
 	    if (!filename.empty()) {
@@ -440,6 +486,29 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		}
 		controller().bbChanged = false;
 	    }
+
+	// the size section
+	} else if (ob == size_->button_default) {
+	    	setEnabled(size_->input_width, 0);
+	    	setEnabled(size_->choice_width_units, 0);
+	    	setEnabled(size_->input_height, 0);
+	    	setEnabled(size_->choice_height_units, 0);
+		setEnabled(size_->check_aspectratio, 0);
+	    	setEnabled(size_->input_scale, 0);
+	} else if (ob == size_->button_wh) {
+	    	setEnabled(size_->input_width, 1);
+	    	setEnabled(size_->choice_width_units, 1);
+	    	setEnabled(size_->input_height, 1);
+	    	setEnabled(size_->choice_height_units, 1);
+		setEnabled(size_->check_aspectratio, 1);
+	    	setEnabled(size_->input_scale, 0);
+	} else if (ob == size_->button_scale) {
+	    	setEnabled(size_->input_width, 0);
+	    	setEnabled(size_->choice_width_units, 0);
+	    	setEnabled(size_->input_height, 0);
+	    	setEnabled(size_->choice_height_units, 0);
+		setEnabled(size_->check_aspectratio, 0);
+	    	setEnabled(size_->input_scale, 1);
 	} else if (ob == dialog_->button_help) {
     	    controller().help();
 	}

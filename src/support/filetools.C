@@ -971,8 +971,12 @@ string const GetExtension(string const & name)
 // PDF	%PDF-...
 // PNG	.PNG...
 // PS	%!PS-Adobe-2.0
-// XBM	static char ...
+// XBM	... static char ...
 // XPM	/* XPM */
+//
+// GZIP	\213\037\008\008...	http://www.ietf.org/rfc/rfc1952.txt
+// ZIP	PK...			http://www.halyava.ru/document/ind_arch.htm
+// Z	\177\037		UNIX compress
 /// return the "extension" which belongs to the contents
 string const getExtFromContents(string const & filename) {
 	if (filename.empty() || !IsFileReadable(filename)) 
@@ -980,9 +984,13 @@ string const getExtFromContents(string const & filename) {
 	ifstream ifs(filename.c_str());
 	if (!ifs) 
 	    return string();	// Couldn't open file...
+	string const gzipStamp = "\213\037\008\008";	// gnuzip
+	string const zipStamp = "PK";			// PKZIP
+	string const compressStamp = "\177\037";	// compress
 	int const max_count = 50; // Maximum strings to read to attempt recognition
 	int count = 0; // Counter of attempts.
 	string str;
+	bool zipChecked = false;
 	for (; count < max_count; ++count) {
 		if (ifs.eof()) {
 			lyxerr[Debug::INFO] << "InsetGraphics (classifyFiletype)"
@@ -990,6 +998,17 @@ string const getExtFromContents(string const & filename) {
 			break;
 		}
 		ifs >> str;
+		if (!zipChecked) {
+		    // at first we check for a zipped file, because this information
+		    // is saved in the first bytes of the file!
+		    if (str.substr(0,4) == gzipStamp)
+			return "gzip";
+		    else if (str.substr(0,2) == zipStamp)
+			return "zip";
+		    else if (str.substr(0,2) == compressStamp)
+			return "compress";
+		    zipChecked = true;
+		}
 		if (contains(str,"EPSF"))
 		    return "eps";
 		else if (contains(str,"GIF"))
@@ -1012,6 +1031,14 @@ string const getExtFromContents(string const & filename) {
 	return string();
 }
 
+
+/// check for zipped file
+bool zippedFile(string const & name) {
+	string const type = getExtFromContents(name);
+	if (contains("gzip zip",type) && !type.empty())
+	    return true;
+	return false;
+}
 
 // Creates a nice compact path for displaying
 string const
@@ -1166,4 +1193,5 @@ void removeAutosaveFile(string const & filename)
 		}
 	}
 }
+
 

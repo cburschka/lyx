@@ -9,6 +9,7 @@ extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
@@ -31,6 +32,7 @@ struct FD_form_graphics {
 	FL_OBJECT *button_restore;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_apply;
 	FL_OBJECT *text_warning;
 };
 struct FD_form_file {
@@ -91,6 +93,8 @@ struct FD_form_lyxview {
 	FL_OBJECT *input_lyxheight;
 	FL_OBJECT *choice_width_lyxheight;
 	FL_OBJECT *input_lyxscale;
+	FL_OBJECT *button_lyxdefault;
+	FL_OBJECT *button_lyxwh;
 	FL_OBJECT *button_lyxscale;
 };
 

@@ -71,6 +71,10 @@ struct InsetGraphicsParams
 	LyXLength lyxwidth;
 	///
 	LyXLength lyxheight;
+	/// Typ of rescaling the Screen
+	int lyxscale;
+	/// Typ of the LyXView, same as for latex
+	sizeType lyxsize_type;
 	/// Origin point of rotation
 	string rotateOrigin;
 	/// Rotation angle.

@@ -104,7 +104,9 @@ void InsetGraphicsParams::init()
 	lyxwidth = LyXLength();		// for the view in lyx
 	lyxheight = LyXLength();
 	scale = 0;
+	lyxscale = 0;
 	size_type = DEFAULT_SIZE;	// do nothing
+	lyxsize_type = DEFAULT_SIZE;	// do nothing
 	keepAspectRatio = false;	//
 	rotateOrigin = "center";	// 
 	rotateAngle = 0.0;		// in degrees
@@ -125,8 +127,10 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 	height = igp.height;
 	scale = igp.scale;
 	size_type = igp.size_type;
+	lyxsize_type = igp.lyxsize_type;
 	lyxwidth = igp.lyxwidth;
 	lyxheight = igp.lyxheight;
+	lyxscale = igp.lyxscale;
 	rotateOrigin = igp.rotateOrigin;
 	rotateAngle = igp.rotateAngle;
 	special = igp.special;
@@ -147,8 +151,10 @@ bool operator==(InsetGraphicsParams const & left,
 	        left.height == right.height &&
 	        left.scale == right.scale &&
 	        left.size_type == right.size_type &&
+	        left.lyxsize_type == right.lyxsize_type &&
 	        left.lyxwidth == right.lyxwidth &&
 	        left.lyxheight == right.lyxheight &&
+	        left.lyxscale == right.lyxscale &&
 	        left.rotateOrigin == right.rotateOrigin &&
 	        lyx::float_equal(left.rotateAngle, right.rotateAngle, 0.001 &&
 		left.special == right.special) 
@@ -205,10 +211,13 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 		os << "\trotateOrigin " << rotateOrigin << '\n';
 	if (!special.empty())
 		os << "\tspecial " << special << '\n';
+	os << "\tlyxsize_type " <<  lyxsize_type << '\n';
 	if (!lyxwidth.zero())		// the lyx-viewsize
 	    os << "\tlyxwidth " << lyxwidth.asString() << '\n';
 	if (!lyxheight.zero())
 	    os << "\tlyxheight " << lyxheight.asString();
+	if (lyxscale != 0)
+	    os << "\tlyxscale " << lyxscale << '\n';
 }
 
 
@@ -284,12 +293,24 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 	} else if (token == "rotateOrigin") {
 		lex.next();
 		rotateOrigin=lex.getString();
+	} else if (token == "lyxsize_type") {
+		lex.next();
+		switch (lex.getInteger()) {
+		    case 0 : lyxsize_type = DEFAULT_SIZE;
+			break;
+		    case 1 : lyxsize_type = WH;
+			break;
+		    case 2 : lyxsize_type = SCALE;
+		}
 	} else if (token == "lyxwidth") {
 		lex.next();
 		lyxwidth = LyXLength(lex.getString());
 	} else if (token == "lyxheight") {
 		lex.next();
 		lyxheight = LyXLength(lex.getString());
+	} else if (token == "lyxscale") {
+		lex.next();
+		lyxscale = lex.getInteger();
 	} else {
 		// If it's none of the above, its not ours.
 		return false;

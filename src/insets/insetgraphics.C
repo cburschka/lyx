@@ -126,7 +126,7 @@ using std::ostream;
 using std::endl;
 
 ///////////////////////////////////////////////////////////////////////////
-int VersionNumber = 1;
+int const VersionNumber = 1;
 ///////////////////////////////////////////////////////////////////////////
 
 // This function is a utility function
@@ -542,8 +542,8 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	// we handle it like a virtual one, so we can have
 	// different extensions with the same type.
 	// if it's a zipped one, than let LaTeX do the rest!!!
-	//if (zippedFile(params.filename))	
-	//    return params.filename;
+	if (zippedFile(params.filename))	
+	    return params.filename;
 	// now we have unzipped files
 	string const extension = getExtFromContents(params.filename);
 	// Are we creating a PDF or a PS file?

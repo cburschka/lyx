@@ -1,3 +1,10 @@
+2002-02-04  Herbert Voss  <voss@lyx.org>
+
+	* forms/form_graphics.fd: small changes to the layout
+	* FormGraphic.C: Apply-button, keepaspectratio enabling
+	depends to case of LaTeXView. Other small changes and
+	fixes. Add LyXView scale.
+
 2002-02-01  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormGraphics.C (c-tor): prevent resizing of the dialog.

@@ -133,8 +133,10 @@ ChangeExtension(string const & oldname, string const & extension);
 string const GetExtension(string const & name);
 
 /// Return the type of the file as an extension from contents
-///
 string const getExtFromContents(string const & name);
+
+/// check for zipped file
+bool zippedFile(string const & name);
 
 /// Returns true is path is absolute
 bool AbsolutePath(string const & path);
