@@ -80,8 +80,8 @@ s/\(	fdui->form\)\(.*bgn_form.*\)/\1\2\
 
 
 #  For all lines containing "_shortcut" and a string containing |, 
-#  replace the string with scex(_(string))
-/_shortcut/ s/".*[|].*"/scex(_(&))/
+#  replace the string with scex(_(string)).c_str()
+/_shortcut/ s/".*[|].*"/scex(_(&)).c_str()/
 
 
 # For all lines containing "fl_add" and a string containing |
@@ -89,12 +89,12 @@ s/\(	fdui->form\)\(.*bgn_form.*\)/\1\2\
 #        fdui->counter_zoom = obj = fl_add_counter(...,"Zoom %|#Z");
 # becomes
 #        c_str = _("Zoom %|#Z");
-#        fdui->counter_zoom = obj = fl_add_counter(...,idex(c_str));
-#        fl_set_button_shortcut(obj,scex(c_str),1);
+#        fdui->counter_zoom = obj = fl_add_counter(...,idex(c_str).c_str());
+#        fl_set_button_shortcut(obj,scex(c_str).c_str(),1);
 
 /fl_add.*".*[|].*"/s/fdui\(.*\)"\(.*\)".*/c_str = _("\2");\
-	fdui\1idex(c_str));\
-	fl_set_button_shortcut(obj,scex(c_str),1);/
+	fdui\1idex(c_str).c_str());\
+	fl_set_button_shortcut(obj,scex(c_str).c_str(),1);/
 
 
 # gettext will get confused if the string contains a "%" unless the line is
@@ -105,10 +105,8 @@ s/\(	fdui->form\)\(.*bgn_form.*\)/\1\2\
 
 # Someone got busy and put spaces in after commas but didn't allow for the
 # autogeneration of the files so their pretty formatting got lost. Not anymore.
-#
 s/,\([^ ]\)/, \1/g
 
 # Clean up one special case where a comma appears at the end of a string
 # while ensuring "...", "..." isn't affected.
-#
 s/\("[^"]+,\) \("\)/\1\2/g

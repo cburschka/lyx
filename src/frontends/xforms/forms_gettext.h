@@ -16,10 +16,12 @@
 #pragma interface
 #endif
 
-/// Extract shortcut from "<ident>|<shortcut>" string
-char const * scex(char const *);
+#include "LString.h"
 
-/// Extract identifier from "<ident>|<shortcut>" string
-char const * idex(char const *);
+/// Extract shortcut from "<identifer>|<shortcut>" string
+string const scex(string const &);
+
+/// Extract identifier from "<identifer>|<shortcut>" string
+string const idex(string const &);
 
 #endif // FORMS_GETTEXT_H

@@ -14,39 +14,19 @@
 #endif
 
 #include "forms_gettext.h"
+#include "support/lstrings.h"
 
-#include FORMS_H_LOCATION
-
-// Extract shortcut from "<ident>|<shortcut>" string
-char const * scex(char const * sc)
+// Extract shortcut from "<identifier>|<shortcut>" string
+string const scex(string const & str)
 {
-	// Find '|' in the sc and return the string after that.
-	register char const * sd = sc;
-	while (sd[0]!= 0 && sd[0] != '|') ++sd;
-
-	if (sd[0] == '|') {
-		++sd;
-		return sd;
-	}
-	return "";
+	return split(str, '|');
 }
 
 
-// Extract identifier from "<ident>|<shortcut>" string
-char const * idex(char const * sc)
+// Extract identifier from "<identifier>|<shortcut>" string
+string const idex(string const & str)
 {
-	register char const * se = sc;
-	while (se[0]!= 0 && se[0] != '|') ++se;
-
-	if (se[0] == 0) return sc;
-
-	char * sb = new char[se - sc + 1];
-	int index = 0;
-	register char const * sd = sc;
-	while (sd != se) {
-		sb[index] = sd[0];
-		++index; ++sd;
-	}
-	sb[index] = 0;
-	return sb;
+	string identifier;
+	split(str, identifier, '|');
+	return identifier;
 }

@@ -1092,8 +1092,9 @@ bool FormPreferences::Converters::Browser()
 	fl_set_input(dialog_->input_converter, c.command.c_str());
 	fl_set_input(dialog_->input_flags, c.flags.c_str());
 
-	fl_set_object_label(dialog_->button_add, idex(_("Modify|#M")));
-	fl_set_button_shortcut(dialog_->button_add, scex(_("Modify|#M")), 1);
+	fl_set_object_label(dialog_->button_add, idex(_("Modify|#M")).c_str());
+	fl_set_button_shortcut(dialog_->button_add,
+			       scex(_("Modify|#M")).c_str(), 1);
 
 	setEnabled(dialog_->button_add,    false);
 	setEnabled(dialog_->button_delete, true);
@@ -1123,17 +1124,19 @@ bool FormPreferences::Converters::Input()
 	fl_freeze_form(dialog_->form);
 
 	if (sel < 0) {
-		fl_set_object_label(dialog_->button_add, idex(_("Add|#A")));
+		fl_set_object_label(dialog_->button_add,
+				    idex(_("Add|#A")).c_str());
 		fl_set_button_shortcut(dialog_->button_add,
-				       scex(_("Add|#A")), 1);
+				       scex(_("Add|#A")).c_str(), 1);
 
 		fl_deselect_browser(dialog_->browser_all);
 		setEnabled(dialog_->button_delete, false);
 
 	} else {
-		fl_set_object_label(dialog_->button_add, idex(_("Modify|#M")));
+		fl_set_object_label(dialog_->button_add,
+				    idex(_("Modify|#M")).c_str());
 		fl_set_button_shortcut(dialog_->button_add,
-				       scex(_("Modify|#M")), 1);
+				       scex(_("Modify|#M")).c_str(), 1);
 
 		int top = max(sel-5, 0);
 		fl_set_browser_topline(dialog_->browser_all, top);
@@ -1366,8 +1369,10 @@ bool FormPreferences::Formats::Browser()
 	fl_set_input(dialog_->input_extension, f.extension().c_str());
 	fl_set_input(dialog_->input_viewer, f.viewer().c_str());
 
-	fl_set_object_label(dialog_->button_add, idex(_("Modify|#M")));
-	fl_set_button_shortcut(dialog_->button_add, scex(_("Modify|#M")), 1);
+	fl_set_object_label(dialog_->button_add,
+			    idex(_("Modify|#M")).c_str());
+	fl_set_button_shortcut(dialog_->button_add,
+			       scex(_("Modify|#M")).c_str(), 1);
 
 	setEnabled(dialog_->button_add,    false);
 	setEnabled(dialog_->button_delete, true);
@@ -1402,18 +1407,18 @@ bool FormPreferences::Formats::Input()
 
 	if (sel < 0) {
 		fl_set_object_label(dialog_->button_add,
-				    idex(_("Add|#A")));
+				    idex(_("Add|#A")).c_str());
 		fl_set_button_shortcut(dialog_->button_add,
-				       scex(_("Add|#A")), 1);
+				       scex(_("Add|#A")).c_str(), 1);
 
 		fl_deselect_browser(dialog_->browser_all);
 		setEnabled(dialog_->button_delete, false);
 
 	} else {
 		fl_set_object_label(dialog_->button_add,
-				    idex(_("Modify|#M")));
+				    idex(_("Modify|#M")).c_str());
 		fl_set_button_shortcut(dialog_->button_add,
-				       scex(_("Modify|#M")), 1);
+				       scex(_("Modify|#M")).c_str(), 1);
 
 		int const top = max(sel-5, 0);
 		fl_set_browser_topline(dialog_->browser_all, top);

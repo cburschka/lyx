@@ -453,8 +453,8 @@ void FileDialog::Private::SetButton(int index, string const & name,
 	}
 
 	if (!name.empty()) {
-		fl_set_object_label(ob, idex(name.c_str()));
-		fl_set_button_shortcut(ob, scex(name.c_str()), 1);
+		fl_set_object_label(ob, idex(name).c_str());
+		fl_set_button_shortcut(ob, scex(name).c_str(), 1);
 		fl_show_object(ob);
 		*tmp = path;
 	} else {
