@@ -296,7 +296,7 @@ void InsetText::edit(LCursor & cur, bool left)
 	finishUndo();
 	sanitizeEmptyText(cur.bv());
 	updateLocal(cur);
-	cur.bv().updateParagraphDialog();
+	dispatch(cur, FuncRequest(LFUN_PARAGRAPH_UPDATE));
 }
 
 

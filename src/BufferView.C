@@ -428,12 +428,6 @@ int BufferView::workHeight() const
 }
 
 
-void BufferView::updateParagraphDialog()
-{
-	pimpl_->updateParagraphDialog();
-}
-
-
 LyXText * BufferView::text() const
 {
 	return pimpl_->buffer_ ? &pimpl_->buffer_->text() : 0;

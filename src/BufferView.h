@@ -111,9 +111,6 @@ public:
 	/// return the lyxtext we are using
 	LyXText * getLyXText() const;
 
-	/// update paragraph dialogs
-	void updateParagraphDialog();
-
 	/// return the current encoding at the cursor
 	Encoding const * getEncoding() const;
 

@@ -1046,36 +1046,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	}
 	break;
 
-	// --- accented characters ---------------------------
-
-	case LFUN_UMLAUT:
-	case LFUN_CIRCUMFLEX:
-	case LFUN_GRAVE:
-	case LFUN_ACUTE:
-	case LFUN_TILDE:
-	case LFUN_CEDILLA:
-	case LFUN_MACRON:
-	case LFUN_DOT:
-	case LFUN_UNDERDOT:
-	case LFUN_UNDERBAR:
-	case LFUN_CARON:
-	case LFUN_SPECIAL_CARON:
-	case LFUN_BREVE:
-	case LFUN_TIE:
-	case LFUN_HUNG_UMLAUT:
-	case LFUN_CIRCLE:
-	case LFUN_OGONEK:
-		if (cmd.argument.empty()) {
-			// As always...
-			owner_->getLyXFunc().handleKeyFunc(cmd.action);
-		} else {
-			owner_->getLyXFunc().handleKeyFunc(cmd.action);
-			owner_->getIntl().getTransManager()
-				.TranslateAndInsert(cmd.argument[0], bv_->getLyXText());
-			update();
-		}
-		break;
-
 	case LFUN_FLOAT_LIST:
 		if (tclass.floats().typeExist(cmd.argument)) {
 			InsetBase * inset = new InsetFloatList(cmd.argument);
@@ -1100,18 +1070,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 			lyxerr << "Non-existent float type: "
 			       << cmd.argument << endl;
 		}
-		break;
-
-	case LFUN_LAYOUT_PARAGRAPH: {
-		string data;
-		params2string(*bv_->getLyXText()->cursorPar(), data);
-		data = "show\n" + data;
-		bv_->owner()->getDialogs().show("paragraph", data);
-		break;
-	}
-
-	case LFUN_PARAGRAPH_UPDATE:
-		updateParagraphDialog();
 		break;
 
 	case LFUN_PARAGRAPH_APPLY:
@@ -1258,24 +1216,4 @@ bool BufferView::Pimpl::ChangeInsets(InsetBase::Code code,
 	}
 	bv_->text()->setCursorIntern(cur.par(), cur.pos());
 	return need_update;
-}
-
-
-void BufferView::Pimpl::updateParagraphDialog()
-{
-	if (!bv_->owner()->getDialogs().visible("paragraph"))
-		return;
-	CursorSlice const & cur = bv_->cursor().innerTextSlice();
-	LyXText * text = bv_->cursor().innerText();
-	Paragraph const & par = *text->getPar(cur.par());
-	string data;
-	params2string(par, data);
-
-	// Will the paragraph accept changes from the dialog?
-	InsetBase * const inset = cur.inset();
-	bool const accept =
-		!(inset && inset->forceDefaultParagraphs(inset));
-
-	data = "update " + tostr(accept) + '\n' + data;
-	bv_->owner()->getDialogs().update("paragraph", data);
 }

@@ -109,8 +109,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	int top_y() const;
 	///
 	void top_y(int y);
-	/// update paragraph dialogs
-	void updateParagraphDialog();
 private:
 	/// the y coordinate of the top of the screen
 	int top_y_;
