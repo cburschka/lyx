@@ -46,6 +46,7 @@ public:
 	struct Pimpl;
 	friend struct Pimpl;
 private:
+	///
 	Pimpl * pimpl_;
 };
 #endif

@@ -22,7 +22,8 @@
 
 using std::endl;
 
-Menubar::Menubar(LyXView * o, MenuBackend const &md)
+
+Menubar::Menubar(LyXView * o, MenuBackend const & md)
 {
 	pimpl_ = new Pimpl(o, md);
 }
@@ -44,6 +45,7 @@ void Menubar::openByName(string const & name)
 {
 	pimpl_->openByName(name);
 }
+
 
 void Menubar::update()
 {

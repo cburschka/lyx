@@ -67,23 +67,27 @@ void Toolbar::deactivate()
 	pimpl_->deactivate();
 }
 
+
 void Toolbar::update()
 {
 	pimpl_->update();
 }
 
 
-void Toolbar::setLayout(int layout) {
+void Toolbar::setLayout(int layout)
+{
 	pimpl_->setLayout(layout);
 }
 
 
-void Toolbar::updateLayoutList(bool force) {
+void Toolbar::updateLayoutList(bool force)
+{
 	pimpl_->updateLayoutList(force);
 }
 
 		
-void Toolbar::openLayoutList() {
+void Toolbar::openLayoutList()
+{
 	pimpl_->openLayoutList();
 }
 
@@ -96,7 +100,8 @@ void Toolbar::clearLayoutList()
 
 void Toolbar::push(int nth)
 {
-	pimpl_->push(nth);}
+	pimpl_->push(nth);
+}
 
 
 void Toolbar::add(string const & func, bool doclean)

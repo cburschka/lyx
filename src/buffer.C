@@ -110,7 +110,7 @@ extern void MenuExport(Buffer *, string const &);
 extern LyXAction lyxaction;
 
 
-static const float LYX_FORMAT = 2.16;
+static const float LYX_FORMAT = 2.17;
 
 extern int tex_code_break_column;
 
@@ -1099,6 +1099,7 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 			format = lex.GetFloat();
 			if (format > 1) {
 				if (LYX_FORMAT - format > 0.05) {
+					
 					printf(_("Warning: need lyxformat %.2f but found %.2f\n"),
 					       LYX_FORMAT, format);
 				}

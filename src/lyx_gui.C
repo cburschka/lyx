@@ -102,7 +102,7 @@ int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 
 
 LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
-  : _owner(owner), lyxViews(0)
+	: _owner(owner), lyxViews(0)
 {
 	gui = GUI;
 	if (!gui)
@@ -114,12 +114,12 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	fl_initialize(argc, argv, "LyX", cmdopt, num_res);
 	fl_get_app_resources(res, num_res);
 
-	static const int geometryBitmask = XParseGeometry( geometry,
-                                                           &xpos,
-                                                           &ypos,
-                                                           (unsigned int *) &width,
-                                                           (unsigned int *) &height
-                                                         );
+	static const int geometryBitmask =
+		XParseGeometry( geometry,
+				&xpos,
+				&ypos,
+				reinterpret_cast<unsigned int *>(&width),
+				reinterpret_cast<unsigned int *>(&height));
 
 	Display * display = fl_get_display();
 	if (!display) {
