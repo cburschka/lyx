@@ -255,16 +255,6 @@ public:
 	/// needed to insert the selection
 	void insertStringAsParagraphs(LCursor & cur, std::string const & str);
 
-	/// Find next inset of some specified type.
-	bool gotoNextInset(LCursor & cur,
-		std::vector<InsetBase_code> const & codes,
-		std::string const & contents = std::string());
-	///
-	void gotoInset(LCursor & cur,
-		std::vector<InsetBase_code> const & codes, bool same_content);
-	///
-	void gotoInset(LCursor & cur, InsetBase_code code, bool same_content);
-
 	/// current text width
 	int width() const;
 

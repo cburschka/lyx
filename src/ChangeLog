@@ -1,3 +1,23 @@
+2005-02-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView.C (setCursor): change to use a DocIterator.
+	(gotoLabel): use BufferView::setCursor (other part of bug 781).
+	(putSelectionAt): adapt to BufferView::setCursor change.
+
+	* bufferview_funcs.C (gotoNextInset, gotoInset): new functions,
+	moved here from LyXText and rewritten to use proper cursor
+	methods. Fixes bug 1787, 616 and 835.
+
+	* BufferView_pimpl.C (restorePosition): set the cursor correctly
+	when inside an inset (part of bug 781).
+	(dispatch): adapt to change of BufferView::setCursor.
+	(getStatus, dispatch): handle LFUN_GOTOERROR,
+	LFUN_GOTONOTE and LFUN_REFERENCE_GOTO.
+
+	* text3.C (getStatus, dispatch): do not handle LFUN_GOTOERROR,
+	LFUN_GOTONOTE and LFUN_REFERENCE_GOTO.
+	* text3.C (gotoNextInset, gotoInset): removed.
+
 2005-02-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyx_main.C (queryUserLyXDir): fix test for rerunning configure

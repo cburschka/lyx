@@ -76,6 +76,7 @@
 #include <boost/bind.hpp>
 
 #include <functional>
+#include <vector>
 
 using lyx::pos_type;
 
@@ -96,6 +97,7 @@ using std::min;
 using std::max;
 using std::string;
 using std::mem_fun_ref;
+using std::vector;
 
 
 extern BufferList bufferlist;
@@ -131,7 +133,6 @@ T * getInsetByCode(LCursor & cur, InsetBase::Code code)
 	}
 	return inset;
 }
-
 
 } // anon namespace
 
@@ -722,8 +723,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	if (par == buffer_->par_iterator_end())
 		return;
 
-	bv_->text()->setCursor(cursor_, par.pit(),
-		min(par->size(), saved_positions[i].par_pos));
+	bv_->setCursor(makeDocIterator(par, min(par->size(), saved_positions[i].par_pos)));
 
 	if (i > 0)
 		owner_->message(bformat(_("Moved to bookmark %1$d"), i));
@@ -966,6 +966,9 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 	case LFUN_BOOKMARK_SAVE:
 	case LFUN_REF_GOTO:
 	case LFUN_GOTO_PARAGRAPH:
+	case LFUN_GOTOERROR:
+	case LFUN_GOTONOTE:
+	case LFUN_REFERENCE_GOTO:
 	case LFUN_WORD_FIND:
 	case LFUN_WORD_REPLACE:
 	case LFUN_MARK_OFF:
@@ -1102,10 +1105,26 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 		}
 
 		// Set the cursor
-		bv_->setCursor(par, 0);
+		bv_->setCursor(makeDocIterator(par, 0));
 
 		update();
 		switchKeyMap();
+		break;
+	}
+
+	case LFUN_GOTOERROR:
+		bv_funcs::gotoInset(bv_, InsetBase::ERROR_CODE, false);
+		break;
+
+	case LFUN_GOTONOTE:
+		bv_funcs::gotoInset(bv_, InsetBase::NOTE_CODE, false);
+		break;
+
+	case LFUN_REFERENCE_GOTO: {
+		vector<InsetBase_code> tmp;
+		tmp.push_back(InsetBase::LABEL_CODE);
+		tmp.push_back(InsetBase::REF_CODE);
+		bv_funcs::gotoInset(bv_, tmp, true);
 		break;
 	}
 

@@ -74,10 +74,8 @@ using lyx::support::isStrUnsignedInt;
 using lyx::support::token;
 
 using std::endl;
-using std::find;
 using std::string;
 using std::istringstream;
-using std::vector;
 
 
 extern string current_layout;
@@ -180,77 +178,6 @@ string const freefont2string()
 }
 
 }
-
-bool LyXText::gotoNextInset(LCursor & cur,
-	vector<InsetBase_code> const & codes, string const & contents)
-{
-	BOOST_ASSERT(this == cur.text());
-	pit_type end = paragraphs().size();
-	pit_type pit = cur.pit();
-	pos_type pos = cur.pos();
-
-	InsetBase * inset;
-	do {
-		if (pos + 1 < pars_[pit].size()) {
-			++pos;
-		} else  {
-			++pit;
-			pos = 0;
-		}
-
-	} while (pit != end &&
-		 !(pars_[pit].isInset(pos) &&
-		   (inset = pars_[pit].getInset(pos)) != 0 &&
-		   find(codes.begin(), codes.end(), inset->lyxCode()) != codes.end() &&
-		   (contents.empty() ||
-		    static_cast<InsetCommand *>(pars_[pit].getInset(pos))->getContents()
-		    == contents)));
-
-	if (pit == end)
-		return false;
-
-	setCursor(cur, pit, pos, false);
-	return true;
-}
-
-
-void LyXText::gotoInset(LCursor & cur,
-	vector<InsetBase_code> const & codes, bool same_content)
-{
-	cur.clearSelection();
-
-	string contents;
-	if (same_content
-	    && cur.pos() < cur.lastpos()
-	    && cur.paragraph().isInset(cur.pos())) {
-		InsetBase const * inset = cur.paragraph().getInset(cur.pos());
-		if (find(codes.begin(), codes.end(), inset->lyxCode())
-		    != codes.end())
-			contents = static_cast<InsetCommand const *>(inset)->getContents();
-	}
-
-	if (!gotoNextInset(cur, codes, contents)) {
-		if (cur.pos() || cur.pit() != 0) {
-			CursorSlice tmp = cur.top();
-			cur.pit() = 0;
-			cur.pos() = 0;
-			if (!gotoNextInset(cur, codes, contents)) {
-				cur.top() = tmp;
-				cur.message(_("No more insets"));
-			}
-		} else {
-			cur.message(_("No more insets"));
-		}
-	}
-	cur.resetAnchor();
-}
-
-
-void LyXText::gotoInset(LCursor & cur, InsetBase_code code, bool same_content)
-{
-	gotoInset(cur, vector<InsetBase_code>(1, code), same_content);
-}
-
 
 bool LyXText::cursorPrevious(LCursor & cur)
 {
@@ -994,22 +921,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			else
 				insertStringAsLines(cur, clip);
 		}
-		break;
-	}
-
-	case LFUN_GOTOERROR:
-		gotoInset(cur, InsetBase::ERROR_CODE, false);
-		break;
-
-	case LFUN_GOTONOTE:
-		gotoInset(cur, InsetBase::NOTE_CODE, false);
-		break;
-
-	case LFUN_REFERENCE_GOTO: {
-		vector<InsetBase_code> tmp;
-		tmp.push_back(InsetBase::LABEL_CODE);
-		tmp.push_back(InsetBase::REF_CODE);
-		gotoInset(cur, tmp, true);
 		break;
 	}
 
@@ -1887,9 +1798,6 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_GETLAYOUT:
 	case LFUN_LAYOUT:
 	case LFUN_PASTESELECTION:
-	case LFUN_GOTOERROR:
-	case LFUN_GOTONOTE:
-	case LFUN_REFERENCE_GOTO:
 	case LFUN_DATE_INSERT:
 	case LFUN_SELFINSERT:
 	case LFUN_INSERT_LABEL:

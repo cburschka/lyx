@@ -15,11 +15,13 @@
 #define BUFFERVIEW_FUNCS_H
 
 #include <string>
+#include <vector>
 
 class LyXFont;
 class Point;
 class DocIterator;
 class BufferView;
+class InsetBase_code;
 
 
 namespace bv_funcs {
@@ -48,6 +50,13 @@ CurStatus status(BufferView const * bv, DocIterator const & dit);
 
 
 Point coordOffset(DocIterator const & dit);
+
+// Moves cursor to the next inset with one of the given codes.
+void gotoInset(BufferView * bv, std::vector<InsetBase_code> const & codes, 
+	       bool same_content);
+
+// Moves cursor to the next inset with given code.
+void gotoInset(BufferView * bv, InsetBase_code code, bool same_content);
 
 
 } // namespace bv_funcs
