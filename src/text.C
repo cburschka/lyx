@@ -1114,9 +1114,9 @@ void LyXText::selectWord(word_location loc)
 // selection is currently set
 bool LyXText::selectWordWhenUnderCursor(word_location loc)
 {
-	if (!selection.set()) {
+	if (!bv()->selection().set()) {
 		selectWord(loc);
-		return selection.set();
+		return bv()->selection().set();
 	}
 	return false;
 }
@@ -1124,7 +1124,7 @@ bool LyXText::selectWordWhenUnderCursor(word_location loc)
 
 void LyXText::acceptChange()
 {
-	if (!selection.set() && cursorPar()->size())
+	if (!bv()->selection().set() && cursorPar()->size())
 		return;
 
 	if (selStart().par() == selEnd().par()) {
@@ -1143,7 +1143,7 @@ void LyXText::acceptChange()
 
 void LyXText::rejectChange()
 {
-	if (!selection.set() && cursorPar()->size())
+	if (!bv()->selection().set() && cursorPar()->size())
 		return;
 
 	if (selStart().par() == selEnd().par()) {
@@ -1167,7 +1167,7 @@ void LyXText::deleteWordForward()
 		cursorRight(bv());
 	else {
 		CursorSlice tmpcursor = cursor();
-		selection.set(true); // to avoid deletion
+		bv()->selection().set(true); // to avoid deletion
 		cursorRightOneWord();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
 		bv()->resetAnchor();
@@ -1185,7 +1185,7 @@ void LyXText::deleteWordBackward()
 		cursorLeft(bv());
 	else {
 		CursorSlice tmpcursor = cursor();
-		selection.set(true); // to avoid deletion
+		bv()->selection().set(true); // to avoid deletion
 		cursorLeftOneWord();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
 		bv()->resetAnchor();
@@ -1204,14 +1204,14 @@ void LyXText::deleteLineForward()
 		cursorRight(bv());
 	} else {
 		CursorSlice tmpcursor = cursor();
-		selection.set(true); // to avoid deletion
+		bv()->selection().set(true); // to avoid deletion
 		cursorEnd();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
 		bv()->resetAnchor();
 		cursor() = tmpcursor;
 		setSelection();
 		// What is this test for ??? (JMarc)
-		if (!selection.set())
+		if (!bv()->selection().set())
 			deleteWordForward();
 		else
 			cutSelection(true, false);
@@ -1224,7 +1224,7 @@ void LyXText::changeCase(LyXText::TextCase action)
 	CursorSlice from;
 	CursorSlice to;
 
-	if (selection.set()) {
+	if (bv()->selection().set()) {
 		from = selStart();
 		to = selEnd();
 	} else {
@@ -1507,7 +1507,7 @@ void LyXText::previousRow(ParagraphList::iterator & pit,
 
 string LyXText::selectionAsString(Buffer const & buffer, bool label) const
 {
-	if (!selection.set())
+	if (!bv()->selection().set())
 		return string();
 
 	// should be const ...
@@ -1961,7 +1961,7 @@ CursorSlice const & LyXText::anchor() const
 
 CursorSlice const & LyXText::selStart() const
 {
-	if (!selection.set())
+	if (!bv()->selection().set())
 		return cursor();
 	// can't use std::min as this creates a new object
 	return anchor() < cursor() ? anchor() : cursor();
@@ -1970,7 +1970,7 @@ CursorSlice const & LyXText::selStart() const
 
 CursorSlice const & LyXText::selEnd() const
 {
-	if (!selection.set())
+	if (!bv()->selection().set())
 		return cursor();
 	return anchor() > cursor() ? anchor() : cursor();
 }
@@ -1978,7 +1978,7 @@ CursorSlice const & LyXText::selEnd() const
 
 CursorSlice & LyXText::selStart()
 {
-	if (!selection.set())
+	if (!bv()->selection().set())
 		return cursor();
 	return anchor() < cursor() ? anchor() : cursor();
 }
@@ -1986,7 +1986,7 @@ CursorSlice & LyXText::selStart()
 
 CursorSlice & LyXText::selEnd()
 {
-	if (!selection.set())
+	if (!bv()->selection().set())
 		return cursor();
 	return anchor() > cursor() ? anchor() : cursor();
 }
@@ -1994,17 +1994,17 @@ CursorSlice & LyXText::selEnd()
 
 void LyXText::setSelection()
 {
-	selection.set(true);
+	bv()->selection().set(true);
 	// a selection with no contents is not a selection
 	if (cursor().par() == anchor().par() && cursor().pos() == anchor().pos())
-		selection.set(false);
+		bv()->selection().set(false);
 }
 
 
 void LyXText::clearSelection()
 {
-	selection.set(false);
-	selection.mark(false);
+	bv()->selection().set(false);
+	bv()->selection().mark(false);
 	bv()->resetAnchor();
 	// reset this in the bv()!
 	if (bv() && bv()->text())

@@ -478,6 +478,18 @@ CursorSlice const & BufferView::anchor() const
 }
 
 
+Selection & BufferView::selection()
+{
+	return selection_;
+}
+
+
+Selection const & BufferView::selection() const
+{
+	return selection_;
+}
+
+
 void BufferView::x_target(int x)
 {
 	x_target_ = x;

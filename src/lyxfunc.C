@@ -344,7 +344,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		if (tab && tab->hasSelection())
 			disable = false;
 		else
-			disable = !mathcursor && !view()->getLyXText()->selection.set();
+			disable = !mathcursor && !view()->selection().set();
 		break;
 
 	case LFUN_RUNCHKTEX:

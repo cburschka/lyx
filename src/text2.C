@@ -349,7 +349,7 @@ void getSelectionSpan(LyXText & text,
 	ParagraphList::iterator & beg,
 	ParagraphList::iterator & end)
 {
-	if (!text.selection.set()) {
+	if (!text.bv()->selection().set()) {
 		beg = text.cursorPar();
 		end = boost::next(beg);
 	} else {
@@ -425,7 +425,7 @@ void LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type)
 void LyXText::setFont(LyXFont const & font, bool toggleall)
 {
 	// if there is no selection just set the current_font
-	if (!selection.set()) {
+	if (!bv()->selection().set()) {
 		// Determine basis font
 		LyXFont layoutfont;
 		if (cursor().pos() < cursorPar()->beginOfBody())
@@ -547,7 +547,7 @@ string LyXText::getStringToIndex()
 		selectWordWhenUnderCursor(lyx::PREVIOUS_WORD);
 
 	string idxstring;
-	if (!selection.set())
+	if (!bv()->selection().set())
 		bv()->owner()->message(_("Nothing to index!"));
 	else if (selStart().par() != selEnd().par())
 		bv()->owner()->message(_("Cannot index more than one paragraph!"));
@@ -929,7 +929,7 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	bv()->stuffClipboard(selectionAsString(*bv()->buffer(), true));
 
 	// This doesn't make sense, if there is no selection
-	if (!selection.set())
+	if (!bv()->selection().set())
 		return;
 
 	// OK, we have a selection. This is always between selStart()
@@ -979,7 +979,7 @@ void LyXText::copySelection()
 	bv()->stuffClipboard(selectionAsString(*bv()->buffer(), true));
 
 	// this doesnt make sense, if there is no selection
-	if (!selection.set())
+	if (!bv()->selection().set())
 		return;
 
 	// ok we have a selection. This is always between selStart()
@@ -1563,7 +1563,7 @@ void LyXText::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 bool LyXText::deleteEmptyParagraphMechanism(CursorSlice const & old_cursor)
 {
 	// Would be wrong to delete anything if we have a selection.
-	if (selection.set())
+	if (bv()->selection().set())
 		return false;
 
 	// Don't do anything if the cursor is invalid

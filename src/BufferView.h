@@ -32,9 +32,32 @@ class LyXText;
 class LyXScreen;
 class LyXView;
 class Painter;
+class Selection;
 class TeXErrors;
 class UpdatableInset;
 
+
+// The structure that keeps track of the selections set.
+struct Selection {
+	Selection()
+		: set_(false), mark_(false)
+		{}
+	bool set() const {
+		return set_;
+	}
+	void set(bool s) {
+		set_ = s;
+	}
+	bool mark() const {
+		return mark_;
+	}
+	void mark(bool m) {
+		mark_ = m;
+	}
+private:
+	bool set_; // former selection
+	bool mark_; // former mark_set
+};
 
 /**
  * A buffer view encapsulates a view onto a particular
@@ -206,6 +229,13 @@ public:
 	LyXText * text() const;
 	/// 
 	void resetAnchor();
+	///
+	Selection & selection();
+	///
+	Selection const & selection() const;
+
+	///
+	Selection selection_;
 
 private:
 	///

@@ -381,7 +381,7 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 	pos_type pos = 0;
 	pos_type selstartpos = 0;
 	pos_type selendpos = 0;
-	bool selection = false;
+	bool sel = false;
 	bool mark_set  = false;
 
 	owner_->busy(true);
@@ -399,18 +399,18 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 	selstartpos = text->selStart().pos();
 	selendpar = text->selEnd().par();
 	selendpos = text->selEnd().pos();
-	selection = text->selection.set();
-	mark_set = text->selection.mark();
+	sel = bv_->selection().set();
+	mark_set = bv_->selection().mark();
 	text->textwidth_ = bv_->workWidth();
 	text->fullRebreak();
 	update();
 
 	if (par != -1) {
-		text->selection.set(true);
+		bv_->selection().set(true);
 		// At this point just to avoid the Delete-Empty-Paragraph-
 		// Mechanism when setting the cursor.
-		text->selection.mark(mark_set);
-		if (selection) {
+		bv_->selection().mark(mark_set);
+		if (sel) {
 			text->setCursor(selstartpar, selstartpos);
 			bv_->resetAnchor();
 			text->setCursor(selendpar, selendpos);
@@ -419,7 +419,7 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 		} else {
 			text->setCursor(par, pos);
 			bv_->resetAnchor();
-			text->selection.set(false);
+			bv_->selection().set(false);
 		}
 	}
 
@@ -531,7 +531,7 @@ void BufferView::Pimpl::selectionRequested()
 
 	LyXText * text = bv_->getLyXText();
 
-	if (!text->selection.set()) {
+	if (!bv_->selection().set()) {
 		xsel_cache_.set = false;
 		return;
 	}
@@ -542,7 +542,7 @@ void BufferView::Pimpl::selectionRequested()
 	{
 		xsel_cache_.cursor = bv_->cursor();
 		xsel_cache_.anchor = bv_->anchor();
-		xsel_cache_.set = text->selection.set();
+		xsel_cache_.set = bv_->selection().set();
 		sel = text->selectionAsString(*bv_->buffer(), false);
 		if (!sel.empty())
 			workarea().putClipboard(sel);
@@ -634,7 +634,7 @@ Change const BufferView::Pimpl::getCurrentChange()
 
 	LyXText * text = bv_->getLyXText();
 
-	if (!text->selection.set())
+	if (!bv_->selection().set())
 		return Change(Change::UNCHANGED);
 
 	return text->getPar(text->selStart())

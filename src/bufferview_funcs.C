@@ -256,11 +256,10 @@ string const currentState(BufferView * bv)
 }
 
 
-
 // deletes a selection during an insertion
 void replaceSelection(LyXText * text)
 {
-	if (text->selection.set()) {
+	if (text->bv()->selection().set()) {
 		text->cutSelection(true, false);
 		text->bv()->update();
 	}
