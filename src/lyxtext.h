@@ -277,8 +277,6 @@ public:
 	void setSelection();
 	///
 	void clearSelection();
-	///
-	string const selectionAsString(Buffer const *, bool label) const;
 
 	/// select the word we need depending on word_location
 	void getWord(LyXCursor & from, LyXCursor & to,

@@ -530,7 +530,6 @@ bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 	LyXCursor tmpcursor;
 	setCursor(tmpcursor, start, 0);
 
-	//redoParagraphs(tmpcursor, &(*pastend));
 	redoParagraphs(tmpcursor, pastend);
 
 	// We need to actually move the text->cursor. I don't
@@ -757,98 +756,18 @@ void LyXText::partialRebreak()
 // need the selection cursor:
 void LyXText::setSelection()
 {
-	bool const lsel = selection.set();
-
-	if (!selection.set()) {
-		last_sel_cursor = selection.cursor;
-		selection.start = selection.cursor;
-		selection.end = selection.cursor;
-	}
-
-	selection.set(true);
-
-	// first the toggling area
-	if (cursor.y() < last_sel_cursor.y()
-	    || (cursor.y() == last_sel_cursor.y()
-		&& cursor.x() < last_sel_cursor.x())) {
-		toggle_end_cursor = last_sel_cursor;
-		toggle_cursor = cursor;
-	} else {
-		toggle_end_cursor = cursor;
-		toggle_cursor = last_sel_cursor;
-	}
-
-	last_sel_cursor = cursor;
-
-	// and now the whole selection
-
-	if (selection.cursor.par() == cursor.par())
-		if (selection.cursor.pos() < cursor.pos()) {
-			selection.end = cursor;
-			selection.start = selection.cursor;
-		} else {
-			selection.end = selection.cursor;
-			selection.start = cursor;
-		}
-	else if (selection.cursor.y() < cursor.y() ||
-		 (selection.cursor.y() == cursor.y()
-		  && selection.cursor.x() < cursor.x())) {
-		selection.end = cursor;
-		selection.start = selection.cursor;
-	}
-	else {
-		selection.end = selection.cursor;
-		selection.start = cursor;
-	}
-
-	// a selection with no contents is not a selection
-	if (selection.start.par() == selection.end.par() &&
-	    selection.start.pos() == selection.end.pos())
-		selection.set(false);
+	bool const lsel = TextCursor::setSelection();
 
 	if (inset_owner && (selection.set() || lsel))
 		inset_owner->setUpdateStatus(bv(), InsetText::SELECTION);
 }
 
 
-string const LyXText::selectionAsString(Buffer const * buffer,
-					bool label) const
-{
-	if (!selection.set()) return string();
-
-	// should be const ...
-	ParagraphList::iterator startpit = selection.start.par();
-	ParagraphList::iterator endpit = selection.end.par();
-	pos_type const startpos(selection.start.pos());
-	pos_type const endpos(selection.end.pos());
-
-	if (startpit == endpit) {
-		return startpit->asString(buffer, startpos, endpos, label);
-	}
-
-	string result;
-
-	// First paragraph in selection
-	result += startpit->asString(buffer, startpos, startpit->size(), label) + "\n\n";
-
-	// The paragraphs in between (if any)
-	ParagraphList::iterator pit = boost::next(startpit);
-	for (; pit != endpit; ++pit) {
-		result += pit->asString(buffer, 0, pit->size(), label) + "\n\n";
-	}
-
-	// Last paragraph in selection
-	result += endpit->asString(buffer, 0, endpos, label);
-
-	return result;
-}
-
 
 void LyXText::clearSelection()
 {
-	selection.set(false);
-	selection.mark(false);
-	last_sel_cursor = selection.end = selection.start = selection.cursor = cursor;
+	TextCursor::clearSelection();
+
 	// reset this in the bv_owner!
 	if (bv_owner && bv_owner->text)
 		bv_owner->text->xsel_cache.set(false);

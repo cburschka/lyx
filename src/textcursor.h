@@ -56,6 +56,13 @@ private:
 };
 
 struct TextCursor {
+	/// returns true if selection was set previously
+	bool setSelection();
+	///
+	void clearSelection();
+	///
+	string const selectionAsString(Buffer const * buffer, bool label) const;
+
 	// actual cursor position
 	LyXCursor cursor;
 
