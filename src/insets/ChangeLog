@@ -1,3 +1,8 @@
+2002-08-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insettext.C (read): assign tmp to paragraphs after return from
+	call to parseSingleLyXformat2Token
+
 2002-08-13  Angus Leeming  <leeming@lyx.org>
 
 	* insetbib.C:
@@ -34,7 +39,7 @@
 	* insetert.C:
 	* insettabular.C:
 	* insettext.C: #include "WordLangTuple.h" and rearrange included files.
-	
+
 2002-08-12  Angus Leeming  <leeming@lyx.org>
 
 	* insetgraphicsParams.C: fix reading of lyxsize_type in 1.2.0 documents.
