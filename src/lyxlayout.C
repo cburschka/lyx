@@ -57,6 +57,8 @@ enum LayoutTags {
 	LT_LATEXPARAM,
 	LT_OPTARGS,
 	LT_LATEXTYPE,
+	LT_LATEXHEADER,
+	LT_LATEXFOOTER,
 	LT_LEFTMARGIN,
 	LT_NEED_PROTECT,
 	LT_NEWLINE,
@@ -135,6 +137,8 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "labelstring",	LT_LABELSTRING },
 		{ "labelstringappendix", LT_LABELSTRING_APPENDIX },
 		{ "labeltype",		LT_LABELTYPE },
+		{ "latexfooter",		LT_LATEXFOOTER },
+		{ "latexheader",		LT_LATEXHEADER },
 		{ "latexname",		LT_LATEXNAME },
 		{ "latexparam",		LT_LATEXPARAM },
 		{ "latextype",		LT_LATEXTYPE },
@@ -238,6 +242,16 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_LATEXTYPE:	// Latex style definition.
 			readLatexType(lexrc);
+			break;
+
+		case LT_LATEXHEADER:	// Latex style definition.
+			lexrc.next();
+			latexheader = lexrc.getString();
+			break;
+
+		case LT_LATEXFOOTER:	// Latex style definition.
+			lexrc.next();
+			latexfooter = lexrc.getString();
 			break;
 
 		case LT_INTITLE:
