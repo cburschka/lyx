@@ -452,13 +452,6 @@ bool Buffer::readBody(LyXLex & lex, Paragraph * par)
 }
 
 
-namespace {
-	// This stuff is, in the traditional LyX terminology, Super UGLY
-	// but this code is too b0rken to admit of a better solution yet
-	Change current_change;
-};
-
-
 int
 Buffer::readToken(LyXLex & lex, Paragraph *& par,
 				   Paragraph *& first_par,
@@ -467,6 +460,7 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 				   LyXFont & font
 	)
 {
+	static Change current_change;
 	int unknown = 0;
 
 	// The order of the tags tested may seem unnatural, but this
@@ -584,7 +578,7 @@ Buffer::readToken(LyXLex & lex, Paragraph *& par,
 		// But insets should read it, it is a part of
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
-		readInset(lex, par, pos, font);
+		readInset(lex, par, pos, font, current_change);
 	} else if (token == "\\family") {
 		lex.next();
 		font.setLyXFamily(lex.getString());
@@ -861,7 +855,7 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 
 
 void Buffer::readInset(LyXLex & lex, Paragraph *& par,
-		       int & pos, LyXFont & font)
+		       int & pos, LyXFont & font, Change current_change)
 {
 	// consistency check
 	if (lex.getString() != "\\begin_inset") {
