@@ -839,6 +839,8 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 {
 	if (!autoBreakRows && par->next())
 		collapseParagraphs(bv->buffer()->params);
+	if (inset == this)
+		return true;
 	bool clear = false;
 	if (!lt) {
 		lt = getLyXText(bv);
@@ -2585,6 +2587,8 @@ bool InsetText::checkInsertChar(LyXFont & font)
 void InsetText::collapseParagraphs(BufferParams const & bparams) const
 {
 	while(par->next()) {
+		if (!par->isSeparator(par->size()-1))
+			par->insertChar(par->size()-1, ' ');
 		par->pasteParagraph(bparams);
 	}
 	reinitLyXText();

@@ -1,9 +1,20 @@
 2001-12-18  Juergen Vigna  <jug@sad.it>
 
+	* insettext.C (updateInsetInInset): look if we have to autocollapse
+	paragraps and return if the update is requested for ourself.
+
+	* insetert.C (status): update the insettext not myself as that is what
+	we need.
+
+	* insetcollapsable.C (updateInsetInInset): always call the InsetText's
+	function only return if the update was requested with myself.
+
 	* insettext.C (insetButtonPress): fixed stupid bug.
 	(various functions): pay attention that lt is cleared BEFORE calling
 	updateLocal() and try to use it in the right manner (don't use it
 	if it's not really neccessary!)
+	(collapseParagraphs): insert a blank between collapsing paragraphs
+	if neccessary (not already there!).
 
 2001-12-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 

@@ -267,8 +267,8 @@ void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 	} else {
 		InsetCollapsable::edit(bv, x, y, button);
 	}
-	updateStatus(0);
 	set_latex_font(bv);
+	updateStatus(bv);
 }
 
 
@@ -633,7 +633,7 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 			break;
 		}
 		if (bv)
-			bv->updateInset(const_cast<InsetERT *>(this), false);
+			bv->updateInset(const_cast<InsetText *>(&inset), false);
 	}
 }
 

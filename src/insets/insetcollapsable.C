@@ -453,7 +453,7 @@ bool InsetCollapsable::unlockInsetInInset(BufferView * bv, UpdatableInset * in,
 
 bool InsetCollapsable::updateInsetInInset(BufferView * bv, Inset *in)
 {
-	if (&inset == in)
+	if (in == this)
 		return true;
 	return inset.updateInsetInInset(bv, in);
 }
