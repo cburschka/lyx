@@ -86,6 +86,8 @@ libgtk_la_SOURCES = \
 	GView.h \
 	GViewBase.C \
 	GViewBase.h \
+	GVSpace.C \
+	GVSpace.h \
 	GWorkArea.C \
 	GWorkArea.h \
 	GXpmBtnTbl.C \
@@ -136,7 +138,6 @@ xforms_objects = \
 	../xforms/FormTabular.lo \
 	../xforms/FormText.lo \
 	../xforms/FormThesaurus.lo \
-	../xforms/FormVSpace.lo \
 	../xforms/FormWrap.lo \
 	../xforms/freebrowser.lo \
 	../xforms/input_validators.lo \

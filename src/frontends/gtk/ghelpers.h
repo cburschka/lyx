@@ -37,6 +37,8 @@ void unitsComboFromLength(Gtk::ComboBox * combo,
 
 std::vector<std::string> const buildLengthUnitList();
 
+std::vector<std::string> const buildLengthNoRelUnitList();
+
 /** name is the name of the glade file, without path or extension.
  *  Eg, "aboutlyx", "tableCreate".
  */

@@ -1,11 +1,14 @@
 2004-11-15  John Spray  <spray_john@users.sourceforge.net>
 
+	* The VSpace Dialog:
+	  Dialogs.C, Makefile.am, GVSpace.C, GVSpace.h
 	* The Note Dialog:
 	  Dialogs.C, Makefile.am, GNote.C, GNote.h
 	* The Float Dialog:
 	  Dialogs.C, Makefile.am, GFloat.C, GFloat.h
 	* ghelpers.[Ch]: getGTKStockIcon added to choose gtk
-		stock icons for FuncRequests
+		stock icons for FuncRequests, buildLengthNoRelUnitList()
+		to get vector of units not containing "%"
 	* GToolbar.C: use getGTKStockIcon for toolbutton icons
 	* GMenubar.C: add icons to menu items
 

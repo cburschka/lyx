@@ -132,7 +132,7 @@ void GSpellchecker::partialUpdate(int s)
 
 void GSpellchecker::onSuggestionActivate(
 	Gtk::TreeModel::Path const & path,
-	Gtk::TreeViewColumn * col)
+	Gtk::TreeViewColumn * /*col*/)
 {
 	Glib::ustring const suggestion =
 		(*suggestionsstore_->get_iter(path))[listCol_];

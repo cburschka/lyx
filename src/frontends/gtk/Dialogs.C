@@ -87,7 +87,7 @@
 #include "GTableCreate.h"
 #include "GToc.h"
 #include "GUrl.h"
-#include "FormVSpace.h"
+#include "GVSpace.h"
 #include "FormWrap.h"
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -523,8 +523,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new GUrl(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "vspace") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlVSpace(*dialog));
-		dialog->setView(new FormVSpace(*dialog));
+		dialog->setView(new GVSpace(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "wrap") {
 		dialog->setController(new ControlWrap(*dialog));

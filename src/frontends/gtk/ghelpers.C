@@ -112,6 +112,19 @@ vector<string> const buildLengthUnitList()
 }
 
 
+vector<string> const buildLengthNoRelUnitList()
+{
+	vector<string> data;
+	for (int i = 0; i < num_units; ++i) {
+		string str(unit_name_gui[i]);
+		if (str.find("%") == -1)
+			data.push_back(unit_name_gui[i]);
+	}
+
+	return data;
+}
+
+
 string const findGladeFile(string const & name)
 {
 	// First, search in the installation directories.
