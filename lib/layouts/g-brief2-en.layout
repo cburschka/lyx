@@ -1,0 +1,980 @@
+#% Do not delete he line below; configure depends on this
+#  \DeclareLaTeXClass[g-brief2]{letter (g-brief2)}
+# Letter textclass definition file.
+
+# Author : Felix Kurth <lyx@fkurth.de> based on work from 
+#          Thomas Hartkens <thomas@hartkens.de>
+
+# Input general definitions
+# Input stdletter.inc
+
+
+
+
+# General textclass parameters
+Columns			1
+Sides			1
+PageStyle		Empty
+DefaultStyle	Letter
+
+# This is just to show how to declare the default font.
+# The defaults are exactly those shown here.
+DefaultFont
+  Family		Roman
+  Series		Medium
+  Shape			Up
+  Size			Normal
+  Color			None
+EndFont
+
+
+
+# Brieftext style definition
+Style Letter
+  Margin  		Static
+  LatexType 		Environment
+  LatexName 		g-brief
+  ParSkip 		0.4
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		Top_Environment
+  LabelString		Letter:
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+
+
+
+
+# Name und Titel des Absenders
+Style Name
+  Margin		Static
+  LatexType		Command
+  LatexName		Name
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Name:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Blue
+  EndFont
+End
+
+# Name und Spruch in der Fusszeile
+Style NameRowA
+  Margin		Static
+  LatexType		Command
+  LatexName		NameZeileA
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  TopSep        1.5
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		NameRowA:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style NameRowB
+  Margin		Static
+  LatexType		Command
+  LatexName		NameZeileB
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		NameRowB:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style NameRowC
+  Margin		Static
+  LatexType		Command
+  LatexName		NameZeileC
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		NameRowC:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style NameRowD
+  Margin		Static
+  LatexType		Command
+  LatexName		NameZeileD
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		NameRowD:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style NameRowE
+  Margin		Static
+  LatexType		Command
+  LatexName		NameZeileE
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		NameRowE:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style NameRowF
+  Margin		Static
+  LatexType		Command
+  LatexName		NameZeileF
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		NameRowF:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style NameRowG
+  Margin		Static
+  LatexType		Command
+  LatexName		NameZeileG
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		NameRowG:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+
+# Unterschrift des Absenders
+Style Signature
+  Margin		Static
+  LatexType		Command
+  LatexName		Unterschrift
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Signature:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+Style AdressRowA
+  Margin		Static
+  LatexType		Command
+  LatexName		AdressZeileA
+  LeftMargin		xxxxxxxxxx::xx
+  TopSep        1.5
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		AdressRowA:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style AdressRowB
+  Margin		Static
+  LatexType		Command
+  LatexName		AdressZeileB
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		AdressRowB:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style AdressRowC
+  Margin		Static
+  LatexType		Command
+  LatexName		AdressZeileC
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		AdressRowC:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style AdressRowD
+  Margin		Static
+  LatexType		Command
+  LatexName		AdressZeileD
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		AdressRowD:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style AdressRowE
+  Margin		Static
+  LatexType		Command
+  LatexName		AdressZeileE
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		AdressRowE:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style AdressRowF
+  Margin		Static
+  LatexType		Command
+  LatexName		AdressZeileF
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		AdressRowF:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style TelefonRowA
+  Margin		Static
+  LatexType		Command
+  LatexName		TelefonZeileA
+  LeftMargin		xxxxxxxxxx::xx
+  TopSep        1.5
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		TelefonRowA:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style TelefonRowB
+  Margin		Static
+  LatexType		Command
+  LatexName		TelefonZeileB
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		TelefonRowB:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style TelefonRowC
+  Margin		Static
+  LatexType		Command
+  LatexName		TelefonZeileC
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		TelefonRowC:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style TelefonRowD
+  Margin		Static
+  LatexType		Command
+  LatexName		TelefonZeileD
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		TelefonRowD:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style TelefonRowE
+  Margin		Static
+  LatexType		Command
+  LatexName		TelefonZeileE
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		TelefonRowE:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style TelefonRowF
+  Margin		Static
+  LatexType		Command
+  LatexName		TelefonZeileF
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		TelefonRowF:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style InternetRowA
+  Margin		Static
+  LatexType		Command
+  LatexName		InternetZeileA
+  LeftMargin		xxxxxxxxxx::xx
+  TopSep        1.5
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		InternetRowA:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style InternetRowB
+  Margin		Static
+  LatexType		Command
+  LatexName		InternetZeileB
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		InternetRowB:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+Style InternetRowC
+  Margin		Static
+  LatexType		Command
+  LatexName		InternetZeileC
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		InternetRowC:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+Style InternetRowD
+  Margin		Static
+  LatexType		Command
+  LatexName		InternetZeileD
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		InternetRowD:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+Style InternetRowE
+  Margin		Static
+  LatexType		Command
+  LatexName		InternetZeileE
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		InternetRowE:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+Style InternetRowF
+  Margin		Static
+  LatexType		Command
+  LatexName		InternetZeileF
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		InternetRowF:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style BankRowA
+  Margin		Static
+  LatexType		Command
+  LatexName		BankZeileA
+  LeftMargin		xxxxxxxxxx::xx
+  TopSep        1.5
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		BankRowA:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style BankRowB
+  Margin		Static
+  LatexType		Command
+  LatexName		BankZeileB
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		BankRowB:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style BankRowC
+  Margin		Static
+  LatexType		Command
+  LatexName		BankZeileC
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		BankRowC:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style BankRowD
+  Margin		Static
+  LatexType		Command
+  LatexName		BankZeileD
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		BankRowD:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style BankRowE
+  Margin		Static
+  LatexType		Command
+  LatexName		BankZeileE
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		BankRowE:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+Style BankRowF
+  Margin		Static
+  LatexType		Command
+  LatexName		BankZeileF
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		BankRowF:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color       Green
+  EndFont
+End
+
+
+
+# RetourAdresse
+Style ReturnAddress
+  Margin		Static
+  LatexType		Command
+  LatexName		RetourAdresse
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		ReturnAddress:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+
+# MeinZeichen
+Style MyRef
+  Margin		Static
+  LatexType		Command
+  LatexName		MeinZeichen
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		MyRef:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+# IhrZeichen
+Style YourRef
+  Margin		Static
+  LatexType		Command
+  LatexName		IhrZeichen
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		YourRef:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+
+# IhrSchreiben
+Style YourMail
+  Margin		Static
+  LatexType		Command
+  LatexName		IhrSchreiben
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		YourMail:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+
+# Postvermerk
+Style PostalComment
+  Margin		Static
+  LatexType		Command
+  LatexName		Postvermerk
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		PostalComment:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+ #the layout above used to be misspelled like that. Keep the old
+ # name for compatibility
+Style PostalCommend
+   ObsoletedBy           PostalComment
+End
+   
+# Adresse
+Style Address
+  Margin		Static
+  LatexType		Command
+  LatexName		Adresse
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  TopSep		1.5
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Address:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+
+# Data style definition
+Style Date
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		Datum
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  KeepEmpty		1
+  Align 		Left
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Date:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+# Oggetto style definition
+Style Reference
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		Betreff
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  TopSep		1.5
+  ParSep		0.4
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Reference:
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+
+# Opening style definition
+Style Opening
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		Anrede
+  KeepEmpty		1
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  TopSep		1.5
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Opening:
+
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+
+
+# Anlagen style definition
+Style Encl.
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		Anlagen
+  KeepEmpty		1
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Encl.:
+
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+
+# Verteiler style definition
+Style cc
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		Verteiler
+  KeepEmpty		1
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  ParSep		0.4
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		cc:
+
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+End
+
+
+
+
+# Gruss style definition
+Style Closing
+  Margin  		Static
+  LatexType 		Command
+  LatexName 		LyxGruss
+  LeftMargin		xxxxxxxxxx::xx
+  LabelSep		xx
+  BottomSep		1.5
+  ParSep		0.4
+  KeepEmpty		1
+  Align 		Block
+  AlignPossible 	Block, Left
+  LabelType		Static
+  LabelString		Closing:
+
+  # label font definition
+  LabelFont
+    Series		Bold
+    Shape		Italic
+    Color               Blue
+  EndFont
+
+  #define the environment lyxGruss
+  Preamble
+  \newcommand{\LyxGruss}[1]
+    { \Gruss{#1}{0.5cm} }
+  EndPreamble
+
+
+End
+
+
+
+Input stdfloats.inc
+Input stdcounters.inc
+
+
+
+
+
+# Input lyxmacros.inc
+
+# Remove some unwanted styles.
+# NoStyle		Right_Address
+# NoStyle		Address
