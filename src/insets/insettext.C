@@ -835,29 +835,45 @@ bool InsetText::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 
 bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 {
-	if (!the_locking_inset)
-		return false;
-	if (the_locking_inset != inset) {
-		getLyXText(bv)->updateInset(bv, the_locking_inset);
-		setUpdateStatus(bv, CURSOR_PAR);
-		return the_locking_inset->updateInsetInInset(bv, inset);
-	}
 	bool clear = false;
 	if (!lt) {
 		lt = getLyXText(bv);
 		clear = true;
 	}
-	if (lt->updateInset(bv, inset)) {
+	if (!the_locking_inset) {
+		bool found = lt->updateInset(bv, inset);
 		if (clear)
 			lt = 0;
-		updateLocal(bv, CURSOR_PAR, false);
-	} else if (clear)
-		lt = 0;
-	if (cpar(bv) == inset_par && cpos(bv) == inset_pos) {
-		inset_x = cx(bv) - top_x + drawTextXOffset;
-		inset_y = cy(bv) + drawTextYOffset;
+		if (found)
+			setUpdateStatus(bv, NONE);
+		return found;
 	}
-	return true;
+	if (the_locking_inset != inset) {
+#if 0
+		lt->updateInset(bv, the_locking_inset);
+		setUpdateStatus(bv, CURSOR_PAR);
+#endif
+		bool found = the_locking_inset->updateInsetInInset(bv, inset);
+		if (clear)
+			lt = 0;
+		if (found)
+			setUpdateStatus(bv, CURSOR_PAR);
+		return found;
+	}
+	bool found = lt->updateInset(bv, inset);
+	if (clear)
+		lt = 0;
+	if (found) {
+		setUpdateStatus(bv, CURSOR_PAR);
+#if 0
+		updateLocal(bv, CURSOR_PAR, false);
+#endif
+		if (cpar(bv) == inset_par && cpos(bv) == inset_pos) {
+			inset_x = cx(bv) - top_x + drawTextXOffset;
+			inset_y = cy(bv) + drawTextYOffset;
+		}
+	}
+	return found;
 }
 
 

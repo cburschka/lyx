@@ -2,6 +2,7 @@
 
 	* insettext.C (updateInsetInInset): use lt variable to forbid
 	changes of LyXText in an update call.
+	(updateInsetInInset): fixed updating of non locked insets!
 
 2001-12-01  John Levon  <moz@compsoc.man.ac.uk>
 
