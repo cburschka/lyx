@@ -1,5 +1,10 @@
 2001-12-24  Juergen Vigna  <jug@sad.it>
 
+	* buffer.C (parseSingleLyXformat2Token): fixed 2 compatibility read
+	problems. First check a minipage also if we have some ert-contents
+	(not only on par->size(), second set the right depth of the paragraph
+	on the relink to the root-paragraph-list!
+
 	* undo_funcs.C (textHandleUndo): fixed a stupid earlier wrong fix
 	which then did not anymore update the main paragraphs on undo/redo!
 

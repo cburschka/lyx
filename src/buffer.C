@@ -1194,7 +1194,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #ifndef NO_PEXTRA_REALLY
 	// I wonder if we could use this blanket fix for all the
 	// checkminipage cases...
-	if (par && par->size()) {
+	// don't forget about ert paragraphs and compatibility read for'em
+	if (par && (par->size() || !ert_comp.contents.empty())) {
 		// It is possible that this will check to often,
 		// but that should not be an correctness issue.
 		// Only a speed issue.
@@ -1208,6 +1209,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	//
 	// BEGIN pextra_minipage compability
 	// This should be removed in 1.3.x (Lgb)
+	// I don't think we should remove this so fast (Jug)
 	
 	// This compability code is not perfect. In a couple
 	// of rand cases it fails. When the minipage par is
@@ -1259,7 +1261,16 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			    lyxerr << "WP:" << mini->width() << endl;
 			    mini->width(tostr(par->params().pextraWidthp())+"%");
 			}
+			Paragraph * op = mini->firstParagraph();
 			mini->inset.paragraph(par);
+			//
+			// and free the old ones!
+			//
+			while(op) {
+				Paragraph * pp = op->next();
+				delete op;
+				op = pp;
+			}
 			// Insert the minipage last in the
 			// previous paragraph.
 			if (par->params().pextraHfill()) {
@@ -1296,6 +1307,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			tmp = tmp->next();
 		}
 		depth = parBeforeMinipage->params().depth();
+		// and set this depth on the par as it has not been set already
+		par->params().depth(depth);
 		minipar = parBeforeMinipage = 0;
 	} else if (!minipar &&
 		   (par->params().pextraType() == Paragraph::PEXTRA_MINIPAGE))
