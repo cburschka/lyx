@@ -270,9 +270,8 @@ test $dvi_to_ps_command = "dvips" && dvi_to_ps_command="dvips -o \$\$o \$\$i"
 SEARCH_PROG([for a DVI to PDF converter],dvi_to_pdf_command,dvipdfm)
 test $dvi_to_pdf_command = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
 
-# Search for a program to convert previewlyx to eps
-SEARCH_PROG([for a LyX preview converter],lyxpreview_to_xpm_command,lyxpreview2xpm.sh)
-test $lyxpreview_to_xpm_command = "lyxpreview2xpm.sh" && lyxpreview_to_xpm_command="lyxpreview2xpm.sh \$\$i \$\$o"
+# We have a script to convert previewlyx to ppm
+lyxpreview_to_ppm_command="lyxpreview2ppm.sh"
 
 # Search a *roff program (used to translate tables in ASCII export)
 LYXRC_PROG([for a *roff formatter], \ascii_roff_command, dnl
@@ -449,13 +448,14 @@ cat >$outfile <<EOF
 \\Format pdf2	  pdf  "PDF (pdflatex)"	F
 \\Format pdf3	  pdf  "PDF (dvipdfm)"	m
 \\Format png	  png	PNG		""
+\\Format ppm	  ppm	PPM		""
 \\Format ps	  ps	Postscript	t
 \\Format program  ""	Program		""
 \\Format tgif     obj	TGIF		""
 \\Format tiff     tif	TIFF		""
 \\Format word	  doc	Word		W
 \\Format xpm	  xpm	XPM		""
-\\Format lyxpreview	  lyxpreview	LYXPREVIEW		""
+\\Format lyxpreview	lyxpreview	"LyX Preview"		""
 
 \\converter latex dvi "$latex_to_dvi" "latex"
 \\converter latex pdf2 "$latex_to_pdf" "latex"
@@ -471,7 +471,7 @@ cat >$outfile <<EOF
 \\converter linuxdoc html "$linuxdoc_to_html_command" ""
 \\converter docbook dvi "$docbook_to_dvi_command" ""
 \\converter docbook html "$docbook_to_html_command" ""
-\\converter lyxpreview xpm "$lyxpreview_to_xpm_command" ""
+\\converter lyxpreview ppm "$lyxpreview_to_ppm_command" ""
 
 \\converter latex lyx "$tex_to_lyx_command" ""
 \\converter literate lyx "$literate_to_lyx_command" ""

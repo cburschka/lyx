@@ -1,6 +1,13 @@
+2002-07-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* configure.m4: fix definition of the lyxpreview2ppm converter;
+	add ppm format. All should work out of the box now, even though
+	all may not be pretty
+
 2002-07-18  Angus Leeming  <leeming@lyx.org>
 
-	* lyxpreview2ppm.sh: clean-up. Get it to work with scary_eqns.lyx.
+	* scripts/lyxpreview2ppm.sh: clean-up. Get it to work with
+	scary_eqns.lyx. 
 
 2002-07-17  André Pönitz <poenitz@gmx.net>
 	

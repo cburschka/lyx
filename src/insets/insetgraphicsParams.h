@@ -83,6 +83,8 @@ struct InsetGraphicsParams
 	LyXLength lyxwidth;
 	///
 	LyXLength lyxheight;
+	/// Keep the ratio between lyxheight and lyxwidth when resizing.
+	bool keepLyXAspectRatio;
 	/// Typ of rescaling the Screen inside lyx
 	int lyxscale;
 	///

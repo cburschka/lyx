@@ -467,7 +467,7 @@ void PreviewLoader::Impl::startLoading()
 	cs << pconverter_->command << " " << latexfile << " "
 	   << font_scaling_factor_;
 
-	string const command = cs.str().c_str();
+	string const command = LibScriptSearch(cs.str().c_str());
 
 	// Initiate the conversion from LaTeX to bitmap images files.
 	Forkedcall::SignalTypePtr convert_ptr;

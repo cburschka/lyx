@@ -1,3 +1,14 @@
+2002-07-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetgraphicsParams.C (as_grfxParams): use the new
+	keepLyXAspectRatio parameter. Note that this is an adaptation of a
+	1.2.0 patch, and I do not really know how to adapt it to the new
+	grfx::Cache world. Angus, please could you have a look? 
+
+2002-05-01  Herbert Voss  <voss@lyx.org>
+
+	* insetgraphicsParams.[Ch]: define a new keepLyXAspectRatio parameter.
+
 2002-07-18  Angus Leeming  <leeming@lyx.org>
 
 	* insetgraphics.C: clean-up comments (from Herbert).

@@ -19,6 +19,7 @@
 #include "insetgraphicsParams.h"
 
 #include "graphics/GraphicsParams.h"
+#include "graphics/GraphicsCache.h"
 
 #include "support/translator.h"
 #include "support/filetools.h"
@@ -98,6 +99,7 @@ void InsetGraphicsParams::init()
 	lyxscale = 0;			// same for lyxview
 	size_type = DEFAULT_SIZE;	// do nothing
 	lyxsize_type = DEFAULT_SIZE;	// do nothing
+	keepLyXAspectRatio = false;	// only for LyXview
 	keepAspectRatio = false;	// only for latex
 	rotate = false;			// Rotating
 	rotateOrigin = "center";	// Origin
@@ -123,6 +125,7 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 	lyxsize_type = igp.lyxsize_type;
 	lyxwidth = igp.lyxwidth;
 	lyxheight = igp.lyxheight;
+	keepLyXAspectRatio = igp.keepLyXAspectRatio;
 	lyxscale = igp.lyxscale;
 	rotate = igp.rotate;
 	rotateOrigin = igp.rotateOrigin;
@@ -149,6 +152,7 @@ bool operator==(InsetGraphicsParams const & left,
 	    left.lyxsize_type == right.lyxsize_type &&
 	    left.lyxwidth == right.lyxwidth &&
 	    left.lyxheight == right.lyxheight &&
+	    left.keepLyXAspectRatio == right.keepLyXAspectRatio &&
 	    left.lyxscale == right.lyxscale &&
 	    left.rotate == right.rotate &&
 	    left.rotateOrigin == right.rotateOrigin &&
@@ -215,6 +219,8 @@ void InsetGraphicsParams::Write(ostream & os) const
 		os << "\tlyxwidth " << lyxwidth.asString() << '\n';
 	if (!lyxheight.zero())
 		os << "\tlyxheight " << lyxheight.asString();
+	if (keepLyXAspectRatio)
+		os << "\tkeepLyXAspectRatio\n";
 	if (lyxscale != 0)
 		os << "\tlyxscale " << lyxscale << '\n';
 }
@@ -296,6 +302,8 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 	} else if (token == "lyxheight") {
 		lex.next();
 		lyxheight = LyXLength(lex.getString());
+	} else if (token == "keepLyXAspectRatio") {
+		keepLyXAspectRatio = true;
 	} else if (token == "lyxscale") {
 		lex.next();
 		lyxscale = lex.getInteger();
@@ -401,6 +409,30 @@ grfx::Params InsetGraphicsParams::as_grfxParams(string const & filepath) const
 		double const scaling_factor = 100.0 / double(lyxrc.zoom);
 		pars.width  = uint(scaling_factor * pars.width);
 		pars.height = uint(scaling_factor * pars.height);
+
+#if 0
+#warning Angus, could you please adapt this code? (JMarc)
+		if (keepLyXAspectRatio) {
+			// get the imagesize from the cache
+			grfx::Cache & gc = grfx::Cache::get();
+			float const rw = gc.raw_width(filename);
+			float const rh = gc.raw_height(filename);
+			float const ratio = (rw > 0.001) ? rh/rw : 1.0;
+			lyxerr[Debug::GRAPHICS]
+				<< "Value of LyXAspectRatio: "
+				<< ratio << std::endl;
+			if (!lyxwidth.zero() && !lyxheight.zero()) {
+				if (width < height)
+					height = int(ratio * width);
+				else
+					width = int(ratio * height);
+			} else if (lyxwidth.zero())
+				width = int(ratio * height);
+			else if (lyxheight.zero())
+				height = int(ratio * width);
+		}
+#endif
 	}
+	
 	return pars;
 }

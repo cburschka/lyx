@@ -442,7 +442,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -453,7 +453,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name:
+name: 
 callback: 
 argument: 
 
@@ -923,7 +923,7 @@ argument: 0
 Name: form_graphics_lyxview
 Width: 500
 Height: 245
-Number of Objects: 23
+Number of Objects: 24
 
 --------------------
 class: FL_BOX
@@ -1000,7 +1000,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 350 95 70 30
+box: 350 75 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1018,7 +1018,7 @@ argument: 0
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1036,10 +1036,10 @@ argument:
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 255 25 30 30
+box: 170 25 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_LEFT
+alignment: FL_ALIGN_RIGHT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -1054,10 +1054,10 @@ argument: 0
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 255 90 30 30
+box: 170 75 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_LEFT
+alignment: FL_ALIGN_RIGHT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -1072,10 +1072,10 @@ argument: 0
 --------------------
 class: FL_ROUND3DBUTTON
 type: RADIO_BUTTON
-box: 255 155 30 30
+box: 170 140 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_LEFT
+alignment: FL_ALIGN_RIGHT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -1108,7 +1108,7 @@ argument:
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 420 95 25 30
+box: 420 75 25 30
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
@@ -1126,7 +1126,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1137,7 +1137,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name:
+name: 
 callback: 
 argument: 
 
@@ -1252,7 +1252,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 350 155 70 30
+box: 350 135 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1270,7 +1270,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 425 155 50 30
+box: 425 135 50 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -1288,7 +1288,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 350 190 70 30
+box: 350 170 70 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1306,7 +1306,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 425 190 50 30
+box: 425 170 50 30
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -1336,6 +1336,24 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: button_latex_values
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 210 200 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_RIGHT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: keep Aspect ratio|#A
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_lyxaspectratio
 callback: C_FormBaseInputCB
 argument: 0
 

@@ -132,6 +132,7 @@ void FormGraphics::build()
 	bc().addReadOnly(lyxview_->radio_gray);
 	bc().addReadOnly(lyxview_->radio_color);
 	bc().addReadOnly(lyxview_->radio_nodisplay);
+	bc().addReadOnly(lyxview_->check_lyxaspectratio);
 
 	// the size section
 	size_.reset(build_graphics_size(this));
@@ -252,6 +253,7 @@ void FormGraphics::apply()
 						lyxview_->choice_lyxheight);
 
 	igp.lyxscale = strToInt(getStringFromInput(lyxview_->input_lyxscale));
+	igp.keepLyXAspectRatio = fl_get_button(lyxview_->check_lyxaspectratio);
 
 	// the size section
 	if (fl_get_button(size_->radio_asis))
@@ -361,6 +363,7 @@ void FormGraphics::update() {
 		setEnabled(lyxview_->choice_lyxwidth, 0);
 		setEnabled(lyxview_->input_lyxheight, 0);
 		setEnabled(lyxview_->choice_lyxheight, 0);
+		setEnabled(lyxview_->check_lyxaspectratio, 0);
 		setEnabled(lyxview_->input_lyxscale, 0);
 		break;
 	}
@@ -370,6 +373,7 @@ void FormGraphics::update() {
 		setEnabled(lyxview_->choice_lyxwidth, 1);
 		setEnabled(lyxview_->input_lyxheight, 1);
 		setEnabled(lyxview_->choice_lyxheight, 1);
+		setEnabled(lyxview_->check_lyxaspectratio, 1);
 		setEnabled(lyxview_->input_lyxscale, 0);
 		break;
 	}
@@ -379,10 +383,13 @@ void FormGraphics::update() {
 		setEnabled(lyxview_->choice_lyxwidth, 0);
 		setEnabled(lyxview_->input_lyxheight, 0);
 		setEnabled(lyxview_->choice_lyxheight, 0);
+		setEnabled(lyxview_->check_lyxaspectratio, 0);
 		setEnabled(lyxview_->input_lyxscale, 1);
 		break;
 	}
 	}
+
+	fl_set_button(lyxview_->check_lyxaspectratio, igp.keepLyXAspectRatio);
 
 	// the size section
 	// Update the draft and clip mode
@@ -530,18 +537,21 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		setEnabled(lyxview_->choice_lyxwidth, 0);
 		setEnabled(lyxview_->input_lyxheight, 0);
 		setEnabled(lyxview_->choice_lyxheight, 0);
+		setEnabled(lyxview_->check_lyxaspectratio, 0);
 		setEnabled(lyxview_->input_lyxscale, 0);
 	} else if (ob == lyxview_->radio_lyxwh) {
 		setEnabled(lyxview_->input_lyxwidth, 1);
 		setEnabled(lyxview_->choice_lyxwidth, 1);
 		setEnabled(lyxview_->input_lyxheight, 1);
 		setEnabled(lyxview_->choice_lyxheight, 1);
+		setEnabled(lyxview_->check_lyxaspectratio, 1);
 		setEnabled(lyxview_->input_lyxscale, 0);
 	} else if (ob == lyxview_->radio_lyxscale) {
 		setEnabled(lyxview_->input_lyxwidth, 0);
 		setEnabled(lyxview_->choice_lyxwidth, 0);
 		setEnabled(lyxview_->input_lyxheight, 0);
 		setEnabled(lyxview_->choice_lyxheight, 0);
+		setEnabled(lyxview_->check_lyxaspectratio, 0);
 		setEnabled(lyxview_->input_lyxscale, 1);
 	} else if (ob == lyxview_->button_latex_values) {
 		if (contains(fl_get_choice_text(size_->choice_width),'%') || 
@@ -570,6 +580,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 				setEnabled(lyxview_->choice_lyxwidth, 0);
 				setEnabled(lyxview_->input_lyxheight, 0);
 				setEnabled(lyxview_->choice_lyxheight, 0);
+				setEnabled(lyxview_->check_lyxaspectratio, 0);
 				setEnabled(lyxview_->input_lyxscale, 0);
 			} else if (fl_get_button (size_->radio_wh) == 1) {
 				fl_set_button (lyxview_->radio_lyxwh, 1);
@@ -577,6 +588,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 				setEnabled(lyxview_->choice_lyxwidth, 1);
 				setEnabled(lyxview_->input_lyxheight, 1);
 				setEnabled(lyxview_->choice_lyxheight, 1);
+				setEnabled(lyxview_->check_lyxaspectratio, 1);
 				setEnabled(lyxview_->input_lyxscale, 0);
 			} else if (fl_get_button (size_->radio_scale) ==1) {
 				fl_set_button (lyxview_->radio_lyxscale, 1);
@@ -584,9 +596,12 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 				setEnabled(lyxview_->choice_lyxwidth, 0);
 				setEnabled(lyxview_->input_lyxheight, 0);
 				setEnabled(lyxview_->choice_lyxheight, 0);
+				setEnabled(lyxview_->check_lyxaspectratio, 0);
 				setEnabled(lyxview_->input_lyxscale, 1);
 			}
 		}
+		fl_set_button(lyxview_->check_lyxaspectratio,
+			fl_get_button(size_->check_aspectratio));
 
 		// the bb section
 	} else if (!controller().bbChanged &&
@@ -675,6 +690,8 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 			setEnabled(size_->check_aspectratio, 0);
 			setEnabled(size_->input_scale, 1);
 		}
+		fl_set_button(size_->check_aspectratio,
+			      fl_get_button(lyxview_->check_lyxaspectratio));
 	}
 
 	// check if the input is valid
