@@ -385,12 +385,6 @@ void LyXText::insertRow(Row * row, Paragraph * par,
 // removes the row and reset the touched counters
 void LyXText::removeRow(Row * row) const
 {
-	/* this must not happen before the currentrow for clear reasons.
-	   so the trick is just to set the current row onto the previous
-	   row of this row */
-	int unused_y;
-	getRow(row->par(), row->pos(), unused_y);
-   
 	if (row->next())
 		row->next()->previous(row->previous());
 	if (!row->previous()) {
