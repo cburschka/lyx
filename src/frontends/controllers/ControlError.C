@@ -26,6 +26,8 @@ void ControlError::initialiseParams(string const & data)
 
 void ControlError::clearParams()
 {
-	params_.clear();
+	// g++ 2.95.3 doesn't like this although it should be ok
+	//params_.clear();
+	params_ = string();
 }
 
