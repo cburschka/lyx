@@ -1,3 +1,8 @@
+2004-05-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.am (DISTCLEANFILES): add version.C, stamp-version and
+	version.C-tmp
+
 2004-05-19  Angus Leeming  <leeming@lyx.org>
 
 	* LaTeXFeatures.C:
@@ -69,7 +74,7 @@
 
 2004-05-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* lyxfunc.C (dispatch): 
+	* lyxfunc.C (dispatch):
 	(getStatus): fix handling of LFUN_SEQUENCE
 
 2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>

@@ -4,38 +4,910 @@ DISTCLEANFILES = *.orig *.rej *~ *.bak core textclass.lst packages.lst \
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 SUBDIRS = reLyX
 
-CHMOD=chmod
+EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
+	external_templates bind clipart doc/LaTeXConfig.lyx.in doc/LyXConfig.lyx.in examples images \
+	kbd layouts lyx2lyx scripts templates tex ui encodings \
+	languages symbols configure configure.m4
 
-BIND = bind/*.bind
-CLIPART = clipart/*.eps
-DOCDIST = doc/LyXConfig.lyx*
-DOCINST = doc/*.lyx doc/*.eps doc/*.lyx.in
-EXAMPLES = examples/*.lyx examples/*.fen
-IMAGES = images/*.xpm images/*.ppm images/math/*.xpm
-KBD = kbd/*.kmap kbd/*.cdef
-LAYOUT = layouts/*.layout layouts/*.inc
-LYXSCRIPTS = configure configure.cmd scripts/* lyx2lyx/*
-TEMPL = templates/*.lyx
-TEXSUPPORT = tex/*.cls tex/*.sty
-UI = ui/*.ui
-
-LIBINSTFILES = $(BIND) $(CLIPART) $(DOCINST) $(EXAMPLES) $(IMAGES) \
-	$(KBD) $(LAYOUT) $(TEMPL) $(TEXSUPPORT) $(UI)
-
-LIBDISTFILES = $(BIND) $(CLIPART) $(DOCDIST) $(EXAMPLES) $(IMAGES) \
-	$(KBD) $(LAYOUT) $(TEMPL) $(UI) $(TEXSUPPORT) $(LYXSCRIPTS)
+CHMOD = chmod
 
 pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
 	       textclass.lst packages.lst external_templates \
 	       encodings languages symbols
 
-LYXLIBDIRS = bind clipart doc examples images images/math kbd layouts lyx2lyx scripts \
-	     templates tex ui
+pkgdata_SCRIPTS = configure configure.cmd
 
-EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
-	external_templates bind clipart doc examples images \
-	kbd layouts lyx2lyx scripts templates tex ui encodings \
-	languages symbols configure configure.m4
+binddir = $(pkgdatadir)/bind
+bind_DATA = \
+	bind/broadway.bind \
+	bind/cua.bind \
+	bind/cyrkeys.bind \
+	bind/de_menus.bind \
+	bind/emacs.bind \
+	bind/fi_menus.bind \
+	bind/greekkeys.bind \
+	bind/hollywood.bind \
+	bind/latinkeys.bind \
+	bind/math.bind \
+	bind/menus.bind \
+	bind/pt_menus.bind \
+	bind/sciword.bind \
+	bind/sv_menus.bind \
+	bind/xemacs.bind \
+	bind/aqua.bind
+
+clipartdir = $(pkgdatadir)/clipart
+clipart_DATA = clipart/platypus.eps
+
+docdir = $(pkgdatadir)/doc
+doc_DATA = \
+	doc/LaTeXConfig.lyx
+
+examplesdir = $(pkgdatadir)/examples
+examples_DATA = \
+	examples/Foils.lyx \
+	examples/ItemizeBullets.lyx \
+	examples/Literate.lyx \
+	examples/Minipage.lyx \
+	examples/TableExamples.lyx \
+	examples/aa_sample.lyx \
+	examples/aas_sample.lyx \
+	examples/amsart-test.lyx \
+	examples/amsbook-test.lyx \
+	examples/ca_splash.lyx \
+	examples/chess-article.lyx \
+	examples/chessgame.lyx \
+	examples/currency.lyx \
+	examples/cv.lyx \
+	examples/da_splash.lyx \
+	examples/de_beispiel_gelyxt.lyx \
+	examples/de_beispiel_roh.lyx \
+	examples/de_splash.lyx \
+	examples/decimal.lyx \
+	examples/docbook_article.lyx \
+	examples/es_ejemplo_con_lyx.lyx \
+	examples/es_ejemplo_sin_lyx.lyx \
+	examples/es_splash.lyx \
+	examples/eu_adibide_gordina.lyx \
+	examples/eu_adibide_lyx-atua.lyx \
+	examples/eu_splash.lyx \
+	examples/example_lyxified.lyx \
+	examples/example_raw.lyx \
+	examples/fr_AlignementDecimal.lyx \
+	examples/fr_CV.lyx \
+	examples/fr_ExemplesTableaux.lyx \
+	examples/fr_Foils.lyx \
+	examples/fr_ListesPuces.lyx \
+	examples/fr_Minipage.lyx \
+	examples/fr_exemple_brut.lyx \
+	examples/fr_exemple_lyxifie.lyx \
+	examples/fr_mathed.lyx \
+	examples/fr_multicol.lyx \
+	examples/fr_splash.lyx \
+	examples/he_example_raw.lyx \
+	examples/he_he_example_lyxified.lyx \
+	examples/he_he_example_raw.lyx \
+	examples/hu_splash.lyx \
+	examples/iecc05.fen \
+	examples/iecc07.fen \
+	examples/iecc12.fen \
+	examples/it_ItemizeBullets.lyx \
+	examples/it_splash.lyx \
+	examples/landslide.lyx \
+	examples/linuxdoc_manpage.lyx \
+	examples/listerrors.lyx \
+	examples/mathed.lyx \
+	examples/multicol.lyx \
+	examples/nl_multicol.lyx \
+	examples/nl_opsommingstekens.lyx \
+	examples/nl_splash.lyx \
+	examples/nl_voorbeeld_ruw.lyx \
+	examples/nl_voorbeeld_verlyxt.lyx \
+	examples/noweb2lyx.lyx \
+	examples/pl_splash.lyx \
+	examples/pt_splash.lyx \
+	examples/ru_splash.lyx \
+	examples/script_form.lyx \
+	examples/sl_primer_lyxan.lyx \
+	examples/sl_primer_surov.lyx \
+	examples/sl_splash.lyx \
+	examples/splash.lyx \
+	examples/g-brief2.lyx \
+	examples/ro_splash.lyx
+
+imagesdir = $(pkgdatadir)/images
+images_DATA = \
+	images/amssymb.xpm \
+	images/banner.ppm \
+	images/bookmark-goto.xpm \
+	images/bookmark-save.xpm \
+	images/break-line.xpm \
+	images/buffer-close.xpm \
+	images/buffer-export_dvi.xpm \
+	images/buffer-export_latex.xpm \
+	images/buffer-export_ps.xpm \
+	images/buffer-export_text.xpm \
+	images/buffer-new.xpm \
+	images/buffer-reload.xpm \
+	images/buffer-update_dvi.xpm \
+	images/buffer-update_ps.xpm \
+	images/buffer-view_dvi.xpm \
+	images/buffer-view_ps.xpm \
+	images/buffer-write-as.xpm \
+	images/buffer-write.xpm \
+	images/build-program.xpm \
+	images/copy.xpm \
+	images/cut.xpm \
+	images/depth-decrement.xpm \
+	images/depth-increment.xpm \
+	images/dialog-preferences.xpm \
+	images/dialog-show-new-inset_citation.xpm \
+	images/dialog-show-new-inset_graphics.xpm \
+	images/dialog-show-new-inset_include.xpm \
+	images/dialog-show-new-inset_ref.xpm \
+	images/dialog-show_character.xpm \
+	images/dialog-show_findreplace.xpm \
+	images/dialog-show_mathpanel.xpm \
+	images/dialog-show_print.xpm \
+	images/dialog-show_spellchecker.xpm \
+	images/down.xpm \
+	images/ert-insert.xpm \
+	images/file-open.xpm \
+	images/float-insert_figure.xpm \
+	images/float-insert_table.xpm \
+	images/font-bold.xpm \
+	images/font-emph.xpm \
+	images/font-free-apply.xpm \
+	images/font-noun.xpm \
+	images/font-sans.xpm \
+	images/footnote-insert.xpm \
+	images/index-insert.xpm \
+	images/label-insert.xpm \
+	images/layout-document.xpm \
+	images/layout-paragraph.xpm \
+	images/layout_Description.xpm \
+	images/layout_Enumerate.xpm  \
+	images/layout_Itemize.xpm \
+	images/layout_List.xpm \
+	images/layout_LyX-Code.xpm \
+	images/layout_Scrap.xpm \
+	images/layout_Section.xpm \
+	images/lyx-quit.xpm \
+	images/lyx.xpm \
+	images/marginalnote-insert.xpm \
+	images/math-display.xpm \
+	images/math-matrix.xpm \
+	images/math-mode.xpm \
+	images/math-subscript.xpm \
+	images/math-superscript.xpm \
+	images/note-insert.xpm \
+	images/paste.xpm \
+	images/psnfss1.xpm \
+	images/psnfss2.xpm \
+	images/psnfss3.xpm \
+	images/psnfss4.xpm \
+	images/redo.xpm \
+	images/standard.xpm \
+	images/tabular-feature_align-center.xpm \
+	images/tabular-feature_align-left.xpm \
+	images/tabular-feature_align-right.xpm \
+	images/tabular-feature_append-column.xpm \
+	images/tabular-feature_append-row.xpm \
+	images/tabular-feature_delete-column.xpm \
+	images/tabular-feature_delete-row.xpm \
+	images/tabular-feature_multicolumn.xpm \
+	images/tabular-feature_set-all-lines.xpm \
+	images/tabular-feature_set-longtabular.xpm \
+	images/tabular-feature_set-rotate-cell.xpm \
+	images/tabular-feature_set-rotate-tabular.xpm \
+	images/tabular-feature_toggle-line-bottom.xpm \
+	images/tabular-feature_toggle-line-left.xpm \
+	images/tabular-feature_toggle-line-right.xpm \
+	images/tabular-feature_toggle-line-top.xpm \
+	images/tabular-feature_unset-all-lines.xpm \
+	images/tabular-feature_valign-bottom.xpm \
+	images/tabular-feature_valign-middle.xpm \
+	images/tabular-feature_valign-top.xpm \
+	images/tabular-insert.xpm \
+	images/thesaurus-entry.xpm \
+	images/toc-view.xpm \
+	images/undo.xpm \
+	images/unknown.xpm \
+	images/up.xpm \
+	images/url-insert.xpm
+
+imagesmathdir = $(imagesdir)/math
+imagesmath_DATA = \
+	images/math/Bbbk.xpm \
+	images/math/Finv.xpm \
+	images/math/Game.xpm \
+	images/math/Im.xpm \
+	images/math/Lleftarrow.xpm \
+	images/math/Lsh.xpm \
+	images/math/Re.xpm \
+	images/math/Rsh.xpm \
+	images/math/Vert.xpm \
+	images/math/Vvdash.xpm \
+	images/math/acute.xpm \
+	images/math/aleph.xpm \
+	images/math/alpha.xpm \
+	images/math/amalg.xpm \
+	images/math/angle.xpm \
+	images/math/approx.xpm \
+	images/math/approxeq.xpm \
+	images/math/asymp.xpm \
+	images/math/backepsilon.xpm \
+	images/math/backprime.xpm \
+	images/math/backsim.xpm \
+	images/math/backsimeq.xpm \
+	images/math/backslash.xpm \
+	images/math/bar.xpm \
+	images/math/bars.xpm \
+	images/math/barwedge.xpm \
+	images/math/because.xpm \
+	images/math/beta.xpm \
+	images/math/beth.xpm \
+	images/math/between.xpm \
+	images/math/bigcap.xpm \
+	images/math/bigcirc.xpm \
+	images/math/bigcup.xpm \
+	images/math/bigodot.xpm \
+	images/math/bigoplus.xpm \
+	images/math/bigotimes.xpm \
+	images/math/bigsqcup.xpm \
+	images/math/bigstar.xpm \
+	images/math/bigtriangledown.xpm \
+	images/math/bigtriangleup.xpm \
+	images/math/biguplus.xpm \
+	images/math/bigvee.xpm \
+	images/math/bigwedge.xpm \
+	images/math/blacklozenge.xpm \
+	images/math/blacksquare.xpm \
+	images/math/blacktriangle.xpm \
+	images/math/blacktriangledown.xpm \
+	images/math/blacktriangleleft.xpm \
+	images/math/blacktriangleright.xpm \
+	images/math/bot.xpm \
+	images/math/bowtie.xpm \
+	images/math/boxdot.xpm \
+	images/math/boxminus.xpm \
+	images/math/boxplus.xpm \
+	images/math/boxtimes.xpm \
+	images/math/breve.xpm \
+	images/math/bullet.xpm \
+	images/math/bumpeq.xpm \
+	images/math/bumpeq2.xpm \
+	images/math/cap.xpm \
+	images/math/cap2.xpm \
+	images/math/cases.xpm \
+	images/math/cdot.xpm \
+	images/math/cdots.xpm \
+	images/math/centerdot.xpm \
+	images/math/check.xpm \
+	images/math/chi.xpm \
+	images/math/circ.xpm \
+	images/math/circeq.xpm \
+	images/math/circlearrowleft.xpm \
+	images/math/circlearrowright.xpm \
+	images/math/circledS.xpm \
+	images/math/circledast.xpm \
+	images/math/circledcirc.xpm \
+	images/math/circleddash.xpm \
+	images/math/clubsuit.xpm \
+	images/math/complement.xpm \
+	images/math/cong.xpm \
+	images/math/coprod.xpm \
+	images/math/cup.xpm \
+	images/math/cup2.xpm \
+	images/math/curlyeqprec.xpm \
+	images/math/curlyeqsucc.xpm \
+	images/math/curlyvee.xpm \
+	images/math/curlywedge.xpm \
+	images/math/curvearrowleft.xpm \
+	images/math/curvearrowright.xpm \
+	images/math/dagger.xpm \
+	images/math/daleth.xpm \
+	images/math/dashleftarrow.xpm \
+	images/math/dashrightarrow.xpm \
+	images/math/dashv.xpm \
+	images/math/ddagger.xpm \
+	images/math/ddot.xpm \
+	images/math/ddots.xpm \
+	images/math/delta.xpm \
+	images/math/delta2.xpm \
+	images/math/diagdown.xpm \
+	images/math/diagup.xpm \
+	images/math/diamond.xpm \
+	images/math/diamondsuit.xpm \
+	images/math/digamma.xpm \
+	images/math/div.xpm \
+	images/math/divideontimes.xpm \
+	images/math/dot.xpm \
+	images/math/doteq.xpm \
+	images/math/doteqdot.xpm \
+	images/math/dotplus.xpm \
+	images/math/doublebarwedge.xpm \
+	images/math/downarrow.xpm \
+	images/math/downarrow2.xpm \
+	images/math/downdownarrows.xpm \
+	images/math/downharpoonleft.xpm \
+	images/math/downharpoonright.xpm \
+	images/math/ell.xpm \
+	images/math/empty.xpm \
+	images/math/emptyset.xpm \
+	images/math/epsilon.xpm \
+	images/math/eqcirc.xpm \
+	images/math/eqslantgtr.xpm \
+	images/math/eqslantless.xpm \
+	images/math/equiv.xpm \
+	images/math/eta.xpm \
+	images/math/eth.xpm \
+	images/math/exists.xpm \
+	images/math/fallingdotseq.xpm \
+	images/math/flat.xpm \
+	images/math/forall.xpm \
+	images/math/frac.xpm \
+	images/math/frown.xpm \
+	images/math/gamma.xpm \
+	images/math/gamma2.xpm \
+	images/math/geq.xpm \
+	images/math/geqq.xpm \
+	images/math/geqslant.xpm \
+	images/math/gg.xpm \
+	images/math/ggg.xpm \
+	images/math/gimel.xpm \
+	images/math/gnapprox.xpm \
+	images/math/gneq.xpm \
+	images/math/gneqq.xpm \
+	images/math/gnsim.xpm \
+	images/math/grave.xpm \
+	images/math/gtrapprox.xpm \
+	images/math/gtrdot.xpm \
+	images/math/gtreqless.xpm \
+	images/math/gtreqqless.xpm \
+	images/math/gtrless.xpm \
+	images/math/gtrsim.xpm \
+	images/math/gvertneqq.xpm \
+	images/math/hat.xpm \
+	images/math/hbar.xpm \
+	images/math/heartsuit.xpm \
+	images/math/hookleftarrow.xpm \
+	images/math/hookrightarrow.xpm \
+	images/math/hslash.xpm \
+	images/math/imath.xpm \
+	images/math/in.xpm \
+	images/math/infty.xpm \
+	images/math/int.xpm \
+	images/math/intercal.xpm \
+	images/math/iota.xpm \
+	images/math/jmath.xpm \
+	images/math/kappa.xpm \
+	images/math/lambda.xpm \
+	images/math/lambda2.xpm \
+	images/math/langle.xpm \
+	images/math/lbrace.xpm \
+	images/math/lbrace_rbrace.xpm \
+	images/math/lbracket.xpm \
+	images/math/lbracket_rbracket.xpm \
+	images/math/lceil.xpm \
+	images/math/lceil_rceil.xpm \
+	images/math/ldots.xpm \
+	images/math/leftarrow.xpm \
+	images/math/leftarrow2.xpm \
+	images/math/leftarrowtail.xpm \
+	images/math/leftharpoondown.xpm \
+	images/math/leftharpoonup.xpm \
+	images/math/leftleftarrows.xpm \
+	images/math/leftrightarrow.xpm \
+	images/math/leftrightarrow2.xpm \
+	images/math/leftrightarrows.xpm \
+	images/math/leftrightharpoons.xpm \
+	images/math/leftrightsquigarrow.xpm \
+	images/math/leftthreetimes.xpm \
+	images/math/leq.xpm \
+	images/math/leqq.xpm \
+	images/math/leqslant.xpm \
+	images/math/lessapprox.xpm \
+	images/math/lessdot.xpm \
+	images/math/lesseqgtr.xpm \
+	images/math/lesseqqgtr.xpm \
+	images/math/lessgtr.xpm \
+	images/math/lesssim.xpm \
+	images/math/lfloor.xpm \
+	images/math/lfloor_rfloor.xpm \
+	images/math/ll.xpm \
+	images/math/llcorner.xpm \
+	images/math/lll.xpm \
+	images/math/lnapprox.xpm \
+	images/math/lneq.xpm \
+	images/math/lneqq.xpm \
+	images/math/lnsim.xpm \
+	images/math/longleftarrow.xpm \
+	images/math/longleftarrow2.xpm \
+	images/math/longleftrightarrow.xpm \
+	images/math/longleftrightarrow2.xpm \
+	images/math/longmapsto.xpm \
+	images/math/longrightarrow.xpm \
+	images/math/longrightarrow2.xpm \
+	images/math/looparrowleft.xpm \
+	images/math/looparrowright.xpm \
+	images/math/lozenge.xpm \
+	images/math/lparen.xpm \
+	images/math/lparen_rparen.xpm \
+	images/math/lrcorner.xpm \
+	images/math/ltimes.xpm \
+	images/math/lvertneqq.xpm \
+	images/math/mapsto.xpm \
+	images/math/mathbb_C.xpm \
+	images/math/mathbb_H.xpm \
+	images/math/mathbb_N.xpm \
+	images/math/mathbb_Q.xpm \
+	images/math/mathbb_R.xpm \
+	images/math/mathbb_Z.xpm \
+	images/math/mathcal_F.xpm \
+	images/math/mathcal_H.xpm \
+	images/math/mathcal_L.xpm \
+	images/math/mathcal_O.xpm \
+	images/math/mathcircumflex.xpm \
+	images/math/mathrm_T.xpm \
+	images/math/measuredangle.xpm \
+	images/math/mho.xpm \
+	images/math/mid.xpm \
+	images/math/models.xpm \
+	images/math/mp.xpm \
+	images/math/mu.xpm \
+	images/math/multimap.xpm \
+	images/math/nabla.xpm \
+	images/math/natural.xpm \
+	images/math/ncong.xpm \
+	images/math/nearrow.xpm \
+	images/math/neg.xpm \
+	images/math/neq.xpm \
+	images/math/nexists.xpm \
+	images/math/ngeq.xpm \
+	images/math/ngeqq.xpm \
+	images/math/ngeqslant.xpm \
+	images/math/ngtr.xpm \
+	images/math/ni.xpm \
+	images/math/nleftarrow.xpm \
+	images/math/nleftarrow2.xpm \
+	images/math/nleftrightarrow.xpm \
+	images/math/nleftrightarrow2.xpm \
+	images/math/nleq.xpm \
+	images/math/nleqq.xpm \
+	images/math/nleqslant.xpm \
+	images/math/nless.xpm \
+	images/math/nmid.xpm \
+	images/math/notin.xpm \
+	images/math/nparallel.xpm \
+	images/math/nprec.xpm \
+	images/math/npreceq.xpm \
+	images/math/nrightarrow.xpm \
+	images/math/nrightarrow2.xpm \
+	images/math/nshortmid.xpm \
+	images/math/nshortparallel.xpm \
+	images/math/nsim.xpm \
+	images/math/nsubseteq.xpm \
+	images/math/nsucc.xpm \
+	images/math/nsucceq.xpm \
+	images/math/nsupseteq.xpm \
+	images/math/nsupseteqq.xpm \
+	images/math/ntriangleleft.xpm \
+	images/math/ntrianglelefteq.xpm \
+	images/math/ntriangleright.xpm \
+	images/math/ntrianglerighteq.xpm \
+	images/math/nu.xpm \
+	images/math/nvdash.xpm \
+	images/math/nvdash2.xpm \
+	images/math/nvdash3.xpm \
+	images/math/nwarrow.xpm \
+	images/math/odot.xpm \
+	images/math/oint.xpm \
+	images/math/omega.xpm \
+	images/math/omega2.xpm \
+	images/math/ominus.xpm \
+	images/math/oplus.xpm \
+	images/math/oslash.xpm \
+	images/math/otimes.xpm \
+	images/math/overbrace.xpm \
+	images/math/overleftarrow.xpm \
+	images/math/overleftrightarrow.xpm \
+	images/math/overline.xpm \
+	images/math/overrightarrow.xpm \
+	images/math/parallel.xpm \
+	images/math/partial.xpm \
+	images/math/perp.xpm \
+	images/math/phi.xpm \
+	images/math/phi2.xpm \
+	images/math/pi.xpm \
+	images/math/pi2.xpm \
+	images/math/pitchfork.xpm \
+	images/math/pm.xpm \
+	images/math/prec.xpm \
+	images/math/precapprox.xpm \
+	images/math/preccurlyeq.xpm \
+	images/math/preceq.xpm \
+	images/math/precnapprox.xpm \
+	images/math/precnsim.xpm \
+	images/math/precsim.xpm \
+	images/math/prime.xpm \
+	images/math/prod.xpm \
+	images/math/propto.xpm \
+	images/math/psi.xpm \
+	images/math/psi2.xpm \
+	images/math/rangle.xpm \
+	images/math/rbrace.xpm \
+	images/math/rbracket.xpm \
+	images/math/rceil.xpm \
+	images/math/rfloor.xpm \
+	images/math/rho.xpm \
+	images/math/rightarrow.xpm \
+	images/math/rightarrow2.xpm \
+	images/math/rightarrowtail.xpm \
+	images/math/rightharpoondown.xpm \
+	images/math/rightharpoonup.xpm \
+	images/math/rightleftarrows.xpm \
+	images/math/rightleftharpoons.xpm \
+	images/math/rightrightarrows.xpm \
+	images/math/rightsquigarrow.xpm \
+	images/math/rightthreetimes.xpm \
+	images/math/risingdotseq.xpm \
+	images/math/root.xpm \
+	images/math/rparen.xpm \
+	images/math/rtimes.xpm \
+	images/math/searrow.xpm \
+	images/math/setminus.xpm \
+	images/math/sharp.xpm \
+	images/math/shortmid.xpm \
+	images/math/shortparallel.xpm \
+	images/math/sigma.xpm \
+	images/math/sigma2.xpm \
+	images/math/sim.xpm \
+	images/math/simeq.xpm \
+	images/math/slash.xpm \
+	images/math/smallfrown.xpm \
+	images/math/smallsetminus.xpm \
+	images/math/smallsmile.xpm \
+	images/math/smile.xpm \
+	images/math/spadesuit.xpm \
+	images/math/sphericalangle.xpm \
+	images/math/sqcap.xpm \
+	images/math/sqcup.xpm \
+	images/math/sqrt.xpm \
+	images/math/sqsubset.xpm \
+	images/math/sqsubseteq.xpm \
+	images/math/sqsupset.xpm \
+	images/math/sqsupseteq.xpm \
+	images/math/square.xpm \
+	images/math/star.xpm \
+	images/math/subset.xpm \
+	images/math/subset2.xpm \
+	images/math/subseteq.xpm \
+	images/math/subseteqq.xpm \
+	images/math/subsetneq.xpm \
+	images/math/subsetneqq.xpm \
+	images/math/succ.xpm \
+	images/math/succapprox.xpm \
+	images/math/succcurlyeq.xpm \
+	images/math/succeq.xpm \
+	images/math/succnapprox.xpm \
+	images/math/succnsim.xpm \
+	images/math/succsim.xpm \
+	images/math/sum.xpm \
+	images/math/supset.xpm \
+	images/math/supset2.xpm \
+	images/math/supseteq.xpm \
+	images/math/supseteqq.xpm \
+	images/math/supsetneq.xpm \
+	images/math/supsetneqq.xpm \
+	images/math/surd.xpm \
+	images/math/swarrow.xpm \
+	images/math/tau.xpm \
+	images/math/textrm_0.xpm \
+	images/math/textrm_A.xpm \
+	images/math/therefore.xpm \
+	images/math/theta.xpm \
+	images/math/theta2.xpm \
+	images/math/thickapprox.xpm \
+	images/math/thicksim.xpm \
+	images/math/tilde.xpm \
+	images/math/times.xpm \
+	images/math/top.xpm \
+	images/math/triangle.xpm \
+	images/math/triangledown.xpm \
+	images/math/triangleleft.xpm \
+	images/math/trianglelefteq.xpm \
+	images/math/triangleq.xpm \
+	images/math/triangleright.xpm \
+	images/math/trianglerighteq.xpm \
+	images/math/twoheadleftarrow.xpm \
+	images/math/twoheadrightarrow.xpm \
+	images/math/ulcorner.xpm \
+	images/math/underbrace.xpm \
+	images/math/underleftarrow.xpm \
+	images/math/underleftrightarrow.xpm \
+	images/math/underline.xpm \
+	images/math/underrightarrow.xpm \
+	images/math/underscore.xpm \
+	images/math/uparrow.xpm \
+	images/math/uparrow2.xpm \
+	images/math/updownarrow.xpm \
+	images/math/updownarrow2.xpm \
+	images/math/upharpoonleft.xpm \
+	images/math/upharpoonright.xpm \
+	images/math/uplus.xpm \
+	images/math/upsilon.xpm \
+	images/math/upsilon2.xpm \
+	images/math/upuparrows.xpm \
+	images/math/urcorner.xpm \
+	images/math/varepsilon.xpm \
+	images/math/varkappa.xpm \
+	images/math/varnothing.xpm \
+	images/math/varphi.xpm \
+	images/math/varpi.xpm \
+	images/math/varpropto.xpm \
+	images/math/varsigma.xpm \
+	images/math/varsubsetneq.xpm \
+	images/math/varsubsetneqq.xpm \
+	images/math/varsupsetneq.xpm \
+	images/math/varsupsetneqq.xpm \
+	images/math/vartheta.xpm \
+	images/math/vartriangle.xpm \
+	images/math/vartriangleleft.xpm \
+	images/math/vartriangleright.xpm \
+	images/math/vdash.xpm \
+	images/math/vdash2.xpm \
+	images/math/vdash3.xpm \
+	images/math/vdots.xpm \
+	images/math/vec.xpm \
+	images/math/vee.xpm \
+	images/math/veebar.xpm \
+	images/math/wedge.xpm \
+	images/math/widehat.xpm \
+	images/math/widetilde.xpm \
+	images/math/wp.xpm \
+	images/math/wr.xpm \
+	images/math/xi.xpm \
+	images/math/xi2.xpm \
+	images/math/zeta.xpm
+
+kbddir = $(pkgdatadir)/kbd
+kbd_DATA = \
+	kbd/american-2.kmap \
+	kbd/american.kmap \
+	kbd/arabic.kmap \
+	kbd/bg-bds-1251.kmap \
+	kbd/brazil.kmap \
+	kbd/brazil2.kmap \
+	kbd/cp1251.cdef \
+	kbd/czech-prg.kmap \
+	kbd/czech.kmap \
+	kbd/european.kmap \
+	kbd/francais.kmap \
+	kbd/french.kmap \
+	kbd/german-2.kmap \
+	kbd/german-3.kmap \
+	kbd/german.kmap \
+	kbd/greek.kmap \
+	kbd/hebrew.kmap \
+	kbd/ibm866.cdef \
+	kbd/iso8859-1.cdef \
+	kbd/iso8859-15.cdef \
+	kbd/iso8859-2.cdef \
+	kbd/iso8859-3.cdef \
+	kbd/iso8859-4.cdef \
+	kbd/iso8859-7.cdef \
+	kbd/iso8859-8.cdef \
+	kbd/iso8859-9.cdef \
+	kbd/koi8-r.cdef \
+	kbd/koi8-r.kmap \
+	kbd/koi8-t.cdef \
+	kbd/koi8-u.cdef \
+	kbd/koi8-u.kmap \
+	kbd/latvian.kmap \
+	kbd/magyar-2.kmap \
+	kbd/magyar-3.kmap \
+	kbd/magyar.kmap \
+	kbd/null.kmap \
+	kbd/polish.kmap \
+	kbd/polski.kmap \
+	kbd/portuges.kmap \
+	kbd/romanian.kmap \
+	kbd/serbian.kmap \
+	kbd/serbocroatian.kmap \
+	kbd/sf.kmap \
+	kbd/sg.kmap \
+	kbd/slovak.kmap \
+	kbd/slovene.kmap \
+	kbd/thai-kedmanee.kmap \
+	kbd/tis620-0.cdef \
+	kbd/transilvanian.kmap \
+	kbd/turkish-f.kmap \
+	kbd/turkish.kmap \
+	kbd/espanol.kmap
+
+layoutsdir = $(pkgdatadir)/layouts
+layouts_DATA =\
+	layouts/IEEEtran.layout \
+	layouts/aa.layout \
+	layouts/aapaper.inc \
+	layouts/aapaper.layout \
+	layouts/aastex.layout \
+	layouts/aguplus.inc \
+	layouts/amsart-plain.layout \
+	layouts/amsart-seq.layout \
+	layouts/amsart.layout \
+	layouts/amsbook.layout \
+	layouts/amsdefs.inc \
+	layouts/amsmaths-plain.inc \
+	layouts/amsmaths-seq.inc \
+	layouts/amsmaths.inc \
+	layouts/apa.layout \
+	layouts/article.layout \
+	layouts/book.layout \
+	layouts/broadway.layout \
+	layouts/chess.layout \
+	layouts/cl2emult.layout \
+	layouts/cv.layout \
+	layouts/db_lyxmacros.inc \
+	layouts/db_stdclass.inc \
+	layouts/db_stdlayouts.inc \
+	layouts/db_stdlists.inc \
+	layouts/db_stdsections.inc \
+	layouts/db_stdstarsections.inc \
+	layouts/db_stdstruct.inc \
+	layouts/db_stdtitle.inc \
+	layouts/dinbrief.layout \
+	layouts/docbook-book.layout \
+	layouts/docbook-chapter.layout \
+	layouts/docbook-section.layout \
+	layouts/docbook.layout \
+	layouts/dtk.layout \
+	layouts/egs.layout \
+	layouts/elsart.layout \
+	layouts/entcs.layout \
+	layouts/extarticle.layout \
+	layouts/extbook.layout \
+	layouts/extletter.layout \
+	layouts/extreport.layout \
+	layouts/foils.layout \
+	layouts/g-brief-de.layout \
+	layouts/g-brief-en.layout \
+	layouts/heb-article.layout \
+	layouts/heb-letter.layout \
+	layouts/hollywood.layout \
+	layouts/ijmpd.layout \
+	layouts/jgrga.layout \
+	layouts/kluwer.layout \
+	layouts/latex8.layout \
+	layouts/letter.layout \
+	layouts/linuxdoc.layout \
+	layouts/literate-article.layout \
+	layouts/literate-book.layout \
+	layouts/literate-report.layout \
+	layouts/literate-scrap.inc \
+	layouts/llncs.layout \
+	layouts/ltugboat.layout \
+	layouts/lyxmacros.inc \
+	layouts/manpage.layout \
+	layouts/mwart.layout \
+	layouts/mwbk.layout \
+	layouts/mwrep.layout \
+	layouts/obsolete.inc \
+	layouts/paper.layout \
+	layouts/report.layout \
+	layouts/revtex.layout \
+	layouts/revtex4.layout \
+	layouts/scrartcl.layout \
+	layouts/scrbook.layout \
+	layouts/scrclass.inc \
+	layouts/scrlettr.layout \
+	layouts/scrlttr2.layout \
+	layouts/scrmacros.inc \
+	layouts/scrreprt.layout \
+	layouts/seminar.layout \
+	layouts/siamltex.layout \
+	layouts/slides.layout \
+	layouts/spie.layout \
+	layouts/stdclass.inc \
+	layouts/stdcounters.inc \
+	layouts/stdfloats.inc \
+	layouts/stdlayouts.inc \
+	layouts/stdletter.inc \
+	layouts/stdlists.inc \
+	layouts/stdsections.inc \
+	layouts/stdstarsections.inc \
+	layouts/stdstruct.inc \
+	layouts/stdtitle.inc \
+	layouts/svjog.layout \
+	layouts/svjour.inc \
+	layouts/svprobth.layout \
+	layouts/agums.layout \
+	layouts/memoir.layout \
+	layouts/numarticle.inc \
+	layouts/numreport.inc \
+	layouts/numrevtex.inc \
+	layouts/db_stdcounters.inc \
+	layouts/agu-dtd.layout \
+	layouts/agu_stdclass.inc \
+	layouts/agu_stdcounters.inc \
+	layouts/agu_stdlists.inc \
+	layouts/agu_stdsections.inc \
+	layouts/agu_stdtitle.inc \
+	layouts/g-brief2.layout \
+	layouts/svglobal.layout
+
+lyx2lyxdir = $(pkgdatadir)/lyx2lyx
+lyx2lyx_SCRIPTS = lyx2lyx/lyx2lyx
+lyx2lyx_DATA = \
+	lyx2lyx/error.pyc \
+	lyx2lyx/lyx2lyx \
+	lyx2lyx/parser_tools.pyc \
+	lyx2lyx/lyx_1_4.pyc \
+	lyx2lyx/parser_tools.py \
+	lyx2lyx/lyxconvert_221.pyc \
+	lyx2lyx/lyxconvert_223.pyc \
+	lyx2lyx/lyxconvert_224.pyc \
+	lyx2lyx/lyx_0_12.py \
+	lyx2lyx/lyx_1_0_0.py \
+	lyx2lyx/lyx_1_0_1.py \
+	lyx2lyx/lyx_1_1_4.py \
+	lyx2lyx/lyx_1_1_5.py \
+	lyx2lyx/lyx_1_1_6.py \
+	lyx2lyx/lyx_1_1_6fix3.py \
+	lyx2lyx/lyx_1_2.py \
+	lyx2lyx/lyx_1_3.py \
+	lyx2lyx/lyx_1_4.py
+
+scriptsdir = $(pkgdatadir)/scripts
+scripts_SCRIPTS = \
+	scripts/TeXFiles.sh \
+	scripts/convertDefault.sh \
+	scripts/fen2ascii.py \
+	scripts/fig2pdftex.sh \
+	scripts/fig2pstex.sh \
+	scripts/listerrors \
+	scripts/legacy_lyxpreview2ppm.py \
+	scripts/lyxpreview2bitmap.py
+
+templatesdir = $(pkgdatadir)/templates
+templates_DATA = \
+	templates/IEEEtran.lyx \
+	templates/README.new_templates \
+	templates/aa.lyx \
+	templates/aastex.lyx \
+	templates/dinbrief.lyx \
+	templates/docbook_article.lyx \
+	templates/elsart.lyx \
+	templates/g-brief-de.lyx \
+	templates/g-brief-en.lyx \
+	templates/hollywood.lyx \
+	templates/kluwer.lyx \
+	templates/koma-letter2.lyx \
+	templates/latex8.lyx \
+	templates/letter.lyx \
+	templates/linuxdoc_article.lyx \
+	templates/revtex.lyx \
+	templates/revtex4.lyx \
+	templates/slides.lyx \
+	templates/ijmpd.lyx \
+	templates/agu_article.lyx
+
+texdir = $(pkgdatadir)/tex
+tex_DATA = \
+	tex/broadway.cls \
+	tex/cv.cls \
+	tex/hollywood.cls \
+	tex/lyxchess.sty \
+	tex/lyxskak.sty \
+	tex/revtex.cls
+
+uidir = $(pkgdatadir)/ui
+ui_DATA = \
+	ui/classic.ui \
+	ui/default.ui \
+	ui/stdmenus.ui \
+	ui/stdtoolbars.ui
 
 $(srcdir)/configure: $(srcdir)/configure.m4
 	$(M4) $< > $@
@@ -43,11 +915,6 @@ $(srcdir)/configure: $(srcdir)/configure.m4
 
 lyxrc.defaults: $(srcdir)/configure
 	$(SHELL) $<
-
-libinstalldirs:
-	for dir in $(LYXLIBDIRS) ; do \
-		$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/$$dir ; \
-	done
 
 install-xfonts:
 	test -f xfonts/fonts.dir || exit 0 ; \
@@ -68,31 +935,13 @@ uninstall-xfonts:
 distclean-local:
 	rm -rf xfonts
 
-install-data-local: libinstalldirs install-xfonts
-	files=`cd $(srcdir) ; echo $(LIBINSTFILES)` ; \
-	for i in $${files} ; do \
-	   $(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \
-	done
+install-data-local: install-xfonts
 
-install-exec-local: libinstalldirs
-	files=`cd $(srcdir) ; echo $(LYXSCRIPTS)` ; \
-	for i in $${files} ; do \
-	   $(INSTALL_SCRIPT) $(srcdir)/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \
-	done
 
 uninstall-local: uninstall-xfonts
-	@$(NORMAL_UNINSTALL)
-	files=`cd $(srcdir) ; echo $(LIBINSTFILES) $(LYXSCRIPTS)` ; \
-	for i in $${files} ; do \
-	   rm -f $(DESTDIR)$(pkgdatadir)/$$i ; \
-	done ; \
-	dirs=`cd $(srcdir) ; echo $(LYXLIBDIRS)` ; \
-	for i in $${dirs} ; do \
-	   rm -rf $(DESTDIR)$(pkgdatadir)/$$i ; \
-	done
 
-dist-hook:
-	cd $(distdir) ; rm -rf `find . -name \*CVS\*` ; \
-	rm -rf doc/.cvsignore; \
-	[ -f doc/UserGuide.lyx ] || { cvs -Q export -r HEAD -d doc lyxdoc || \
-	  echo "WARNING: Unable to get LyX Documentation from CVS!" ; true ; }
+# dist-hook:
+#	cd $(distdir) ; rm -rf `find . -name \*CVS\*` ; \
+#	rm -rf doc/.cvsignore; \
+#	[ -f doc/UserGuide.lyx ] || { cvs -Q export -r HEAD -d doc lyxdoc || \
+#	  echo "WARNING: Unable to get LyX Documentation from CVS!" ; true ; }

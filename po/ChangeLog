@@ -1,3 +1,19 @@
+2004-05-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.in.in ($(DOMAIN).pot-update): don't depend on
+	l10n_pots, run always when updating instead.
+	(l10n_pots): files in builddir, remove files after domain.po is
+	created.
+	(xforms_l10n.pot): create in builddir, correct filename
+	(qt_l10n.pot): ditto
+	(layouts_l10n.pot): ditto
+	(languages_l10n.pot): ditto
+	(ui_l10n.pot): ditto
+	(${srcdir}/POTFILES.in): make src/support/path_defines.C never be
+	in this file
+
+	* .cvsignore: add remove-potcdate.sed
+
 2004-05-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Makevars (XGETTEXT_OPTIONS): set the language explictly.

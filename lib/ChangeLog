@@ -1,6 +1,14 @@
+2004-05-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* reLyX/Makefile.am: rewrite to not fiddle with autoconf/automake
+	internals.
+
+	* Makefile.am: rewrite to fiddle as little as possible with
+	autoconf/automake internals.
+
 2004-05-25  Lars Gullik Bjonnes  <larsbj@lyx.org>
 
-	* * update m4 files from automake 1.8 autoconf 2.59 and update
+	* update m4 files from automake 1.8 autoconf 2.59 and update
 	other m4 files to avoid auto warnings.
 
 2004-05-19  Uwe Stöhr  <uwestoehr@web.de>

@@ -101,7 +101,8 @@ stamp-po: $(srcdir)/$(DOMAIN).pot
 
 # This target rebuilds $(DOMAIN).pot; it is an expensive operation.
 # Note that $(DOMAIN).pot is not touched if it doesn't need to be changed.
-$(DOMAIN).pot-update: $(POTFILES) $(srcdir)/POTFILES.in l10n_pots remove-potcdate.sed
+$(DOMAIN).pot-update: $(POTFILES) $(srcdir)/POTFILES.in remove-potcdate.sed
+	$(MAKE) l10n_pots
 	$(XGETTEXT) --default-domain=$(DOMAIN) --directory=$(top_srcdir) \
 	  --add-comments=TRANSLATORS: $(XGETTEXT_OPTIONS) \
 	  --files-from=$(srcdir)/POTFILES.in \
@@ -366,16 +367,15 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 	rm -f $@-t \
 	&& ( cd $(top_srcdir); \
 	     grep -l "_(\".*\")" `find src -regex ".*\\.\\(C\\|c\\|h\\|C\\.in\\)" -print` |\
-	     sed -e '/xforms.forms/d' |\
+	     sed -e '/xforms.forms/d' | grep -v -e "src/support/path_defines.C\$" |\
 	     sort | uniq ) > $@-t \
 	&& mv $@-t $@
 
-l10n_pots: $(srcdir)/xforms_l10n.pot $(srcdir)/qt_l10n.pot $(srcdir)/layouts_l10n.pot $(srcdir)/languages_l10n.pot $(srcdir)/ui_l10n.pot
-	cat $(srcdir)/xforms_l10n.pot $(srcdir)/qt_l10n.pot $(srcdir)/layouts_l10n.pot $(srcdir)/languages_l10n.pot $(srcdir)/ui_l10n.pot | \
-	msguniq -o $(PACKAGE).po
+l10n_pots: xforms_l10n.pot qt_l10n.pot layouts_l10n.pot languages_l10n.pot ui_l10n.pot
+	cat $^ | \
+	msguniq -o $(DOMAIN).po && rm -f  $^
 
-$(srcdir)/xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
-	cd ${srcdir} ; \
+xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 	LC_ALL=C ; export LC_ALL ; \
 	awk ' \
 		BEGIN { \
@@ -394,14 +394,15 @@ $(srcdir)/xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 			if (NF > 1 && skip == 0) { \
 				line=$$0;\
 				sub(/label: /,"",line);\
-				printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", FILENAME, FNR, line);\
+				fna=FILENAME;\
+				sub("(\.\./)+", "", fna);\
+				printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", fna, FNR, line);\
 			}\
 			skip=0; \
 		}' \
-	../src/frontends/xforms/forms/*.fd > xforms_l10n.pot
+	${top_srcdir}/src/frontends/xforms/forms/*.fd > $@
 
-$(srcdir)/qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
-	cd ${srcdir} ; \
+qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 	LC_ALL=C ; export LC_ALL ; \
 	awk ' \
 		/<string>/ { \
@@ -412,32 +413,37 @@ $(srcdir)/qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 			gsub(/&lt;/, "<", line); \
 			gsub(/&gt;/, ">", line); \
 			gsub(/\"/, "\\\"", line); \
-			if (length(line) > 0) \
+			if (length(line) > 0) {\
+				fna=FILENAME;\
+				sub("(\.\./)+", "", fna);\
 				printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n",\
-					FILENAME, FNR, line); \
+					fna, FNR, line); \
+			} \
 		}' \
-	../src/frontends/qt2/ui/*.ui > qt_l10n.pot
+	${top_srcdir}/src/frontends/qt2/ui/*.ui > $@
 
-$(srcdir)/layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc
-	cd ${srcdir} ; \
+layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc
 	LC_ALL=C ; export LC_ALL ; \
 	awk ' \
 		/^Style / { \
 			line=$$0; \
 			sub(/Style /, "", line); \
+			fna=FILENAME;\
+			sub("(\.\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-				FILENAME, FNR, line); \
+				fna, FNR, line); \
 		} \
 		/GuiName/ { \
 			line=$$0; \
 			sub(/[[:space:]]*GuiName[[:space:]]*/, "", line); \
+			fna=FILENAME;\
+			sub("(\.\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-				FILENAME, FNR, line); \
+				fna, FNR, line); \
 		}' \
-	../lib/layouts/*.layout ../lib/layouts/*.inc > layouts_l10n.pot
+	${top_srcdir}/lib/layouts/*.layout ${top_srcdir}/lib/layouts/*.inc > $@
 
-$(srcdir)/languages_l10n.pot: $(top_srcdir)/lib/languages
-	cd ${srcdir} ; \
+languages_l10n.pot: $(top_srcdir)/lib/languages
 	awk ' \
 		/^#/ { \
 			next; \
@@ -446,37 +452,44 @@ $(srcdir)/languages_l10n.pot: $(top_srcdir)/lib/languages
 			match($$0,"\"[^\"]*\""); \
 			lang=substr($$0,RSTART,RLENGTH); \
 			gsub(/\"/, "", lang); \
+			fna=FILENAME;\
+			sub("(\.\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-			FILENAME, FNR, lang); \
+			fna, FNR, lang); \
 		}' \
-	../lib/languages > languages_l10n.pot
+	${top_srcdir}/lib/languages > $@
 
-$(srcdir)/ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
-	cd ${srcdir} ; \
+ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 	LC_ALL=C ; export LC_ALL ; \
 	awk ' \
 		/^[^#]*Submenu/ { \
 			line=$$0; \
 			sub(/[^"]*"/, "", line); \
 			sub(/".*/, "", line); \
+			fna=FILENAME;\
+			sub("(\.\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-				FILENAME, FNR, line); \
+				fna, FNR, line); \
 		} \
 		/^[^#]*Toolbar/ { \
 			line=$$0; \
 			sub(/[^"]*"/, "", line); \
 			sub(/".*/, "", line); \
+			fna=FILENAME;\
+			sub("(\.\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-				FILENAME, FNR, line); \
+				fna, FNR, line); \
 		} \
 		/^[^#]*Item/ { \
 			line=$$0; \
 			sub(/[^"]*"/, "", line); \
 			sub(/".*/, "", line); \
+			fna=FILENAME;\
+			sub("(\.\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-				FILENAME, FNR, line); \
+				fna, FNR, line); \
 		}' \
-	../lib/ui/*.ui > ui_l10n.pot
+	${top_srcdir}/lib/ui/*.ui > $@
 
 force:
 

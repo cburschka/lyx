@@ -440,12 +440,12 @@ changequote([,])dnl
              [eval] "found_$cleanclass=yes"
 changequote(,)dnl
 	     # The sed commands below are a bit scary. Here is what they do:
-	     # 1-3: remove the \DeclareFOO macro and add the correct boolean 
-	     #      at the end of the line telling whether the class is 
+	     # 1-3: remove the \DeclareFOO macro and add the correct boolean
+	     #      at the end of the line telling whether the class is
              #      available
-	     # 4: if the macro had an optional argument with several 
+	     # 4: if the macro had an optional argument with several
 	     #    parameters, only keep the first one
-	     # 5: if the macro did not have an optional argument, provide one 
+	     # 5: if the macro did not have an optional argument, provide one
 	     #    (equal to the class name)
 	     # 6: remove brackets and replace with correctly quoted entries
 	     grep '\\Declare\(LaTeX\|DocBook\|LinuxDoc\)Class' "$file" \
@@ -459,7 +459,7 @@ changequote(,)dnl
            fi
 	 fi ;;
     esac
-  done 
+  done
   MSG_RESULT(done)
 else
   MSG_RESULT(auto)

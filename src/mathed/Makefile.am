@@ -1,5 +1,7 @@
 include $(top_srcdir)/config/common.am
 
+EXTRA_DIST = formulamacro.C
+
 noinst_LTLIBRARIES = libmathed.la
 
 INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)

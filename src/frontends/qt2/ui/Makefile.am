@@ -5,7 +5,7 @@ DISTCLEANFILES += *.C *.h
 
 SUBDIRS = . moc
 
-EXTRA_DIST = $(UIFILES)
+EXTRA_DIST = QPreambleDialogBase.ui $(UIFILES)
 
 INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/qt2 \

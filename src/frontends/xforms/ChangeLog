@@ -1,3 +1,12 @@
+2004-05-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* forms/Makefile.am (MAINTAINERCLEANFILES): rename as DISTCLEANFILES
+	(.fd.C): symlink the .fd files if it srcdir != builddir, call the
+	scropt with basename *.fd
+
+	* Makefile.am (CLEANFILES): stamp-forms not stamp-xforms
+	(DISTCLEANFILES): add lyx_forms.h and lyx_xpm.h
+
 2004-05-24  John Levon  <levon@movementarian.org>
 
 	* XFormsToolbar.C: fix compile error

@@ -1,40 +1,37 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES= *.orig *.rej *~ *.bak reLyX reLyX.1 config.log config.status
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in $(srcdir)/configure
-bin_SCRIPTS = reLyX noweb2lyx
-LYXDATADIRS = reLyX reLyX/Text
-LYXDISTDIRS = Text
+
 man_MANS = reLyX.1
+
 EXTRA_DIST = BUGS BasicLyX.pm CHANGES CleanTeX.pm LastLyX.pm MANIFEST \
 	MakePreamble.pm ReadCommands.pm RelyxTable.pm reLyX.pod \
 	reLyXmain.pl syntax.default test.ltx test.lyx reLyX.man \
-	RelyxFigure.pm Verbatim.pm \
-	$(LYXDISTDIRS)
-DESTDIR =
+	RelyxFigure.pm Verbatim.pm Text
 
-LIBINSTFILES = *.pm *.pl README BUGS CHANGES reLyX.pod syntax.default Text/*.pm
+bin_SCRIPTS = reLyX noweb2lyx
+
+relyxdatadir = $(pkgdatadir)/reLyX
+relyxdata_DATA = \
+	BasicLyX.pm \
+	CleanTeX.pm \
+	LastLyX.pm \
+	MakePreamble.pm \
+	ReadCommands.pm \
+	RelyxFigure.pm \
+	RelyxTable.pm \
+	Verbatim.pm \
+	reLyXmain.pl \
+	README \
+	BUGS \
+	CHANGES \
+	reLyX.pod \
+	syntax.default
+
+relyxtextdir = $(pkgdatadir)/reLyX/Text
+relyxtext_DATA = \
+	Text/manpage.3pm \
+	Text/TeX.pm
 
 reLyX.1:
 	cp -p $(srcdir)/reLyX.man reLyX.1
-
-libinstalldirs:
-	for dir in $(LYXDATADIRS) ; do \
-	  $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/$$dir ; \
-	done
-
-install-data-local:  libinstalldirs
-	files=`cd $(srcdir) ; echo $(LIBINSTFILES)` ; \
-	for i in $$files ; do \
-	   $(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(pkgdatadir)/reLyX/$$i ; \
-	done
-
-uninstall-local:
-	@$(NORMAL_UNINSTALL)
-	files=`cd $(srcdir) ; echo $(LIBINSTFILES)` ; \
-	for i in $$files ; do \
-	  rm -f $(pkgdatadir)/reLyX/$$i ; \
-	done ; \
-	dirs=`cd $(srcdir) ; echo $(LYXDATADIRS)` ; \
-	for i in $$dirs ; do \
-	  rm -rf $(pkgdatadir)/$$i ; \
-	done

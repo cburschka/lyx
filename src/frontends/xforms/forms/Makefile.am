@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-MAINTAINERCLEANFILES += *.C *.h *.c
+DISTCLEANFILES += *.C *.h *.c
 
 EXTRA_DIST = fdfixc.sed fdfixh.sed fdfix.sh tmp_str.sed README $(SRCS)
 
@@ -63,4 +63,5 @@ SCRIPT = $(srcdir)/fdfix.sh
 SUFFIX = .fd
 
 .fd.C: $(srcdir)/fdfix.sh $(srcdir)/fdfix[ch].sed $(srcdir)/tmp_str.sed
-	$(SHELL) $(SCRIPT) $<
+	{ [ $(srcdir) != . ] && [ ! -a $(<F) ] && $(LN_S) $< . ; } || true
+	$(SHELL) $(SCRIPT) `basename $<`

@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += config.h libintl.h
+DISTCLEANFILES += config.h libintl.h version.C stamp-version version.C-tmp
 
 MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
