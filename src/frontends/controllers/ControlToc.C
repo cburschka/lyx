@@ -64,15 +64,11 @@ vector<string> const ControlToc::getTypes() const
 
 Buffer::SingleList const ControlToc::getContents(string const & type) const
 {
-	Buffer::SingleList contents;
-	
-	Buffer::TocItem noContent(0, 0, string());
+	Buffer::SingleList empty_list;
 
 	// This shouldn't be possible...
 	if (!lv_.view()->available()) {
-		noContent.str = _("*** No Document ***");
-		contents.push_back(noContent);
-		return contents;
+		return empty_list;
 	}
 
 	Buffer::Lists tmp = lv_.view()->buffer()->getLists();
@@ -80,9 +76,7 @@ Buffer::SingleList const ControlToc::getContents(string const & type) const
 	Buffer::Lists::iterator it = tmp.find(type);
 
 	if (it == tmp.end()) {
-		noContent.str = _("*** No Lists ***");
-		contents.push_back(noContent);
-		return contents;
+		return empty_list;
 	}
 
 	return it->second;

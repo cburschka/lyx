@@ -1,3 +1,8 @@
+2001-06-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* ControlToc.C (getContents): don't add anything to the list if it
+	is supposed to be empty.
+
 2001-06-01  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* helper_funcs.C (getVectorFromString): bug fix.

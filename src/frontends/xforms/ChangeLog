@@ -1,3 +1,8 @@
+2001-06-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* FormToc.C (input): change test slightly.
+	(updateContents): clear list if empty and add no list msg.
+
 2001-05-30  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormParagraph.C (update, general_update): enabling the align buttons

@@ -15,6 +15,10 @@ libfrontends_la_LIBADD= @FRONTEND_GUILIB@ \
 	support/libfrontendsupport.la \
 	controllers/libcontrollers.la
 
+libfrontends_la_DEPENDENCIES = @FRONTEND_GUILIB@ \
+	support/libfrontendsupport.la \
+	controllers/libcontrollers.la
+
 libfrontends_la_SOURCES=\
 	Dialogs.C \
 	Dialogs.h \

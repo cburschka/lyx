@@ -24,6 +24,8 @@
 #include "form_toc.h"
 #include "helper_funcs.h" // getStringFromVector
 #include "support/lstrings.h" // frontStrip, strip
+#include "debug.h"
+#include "gettext.h"
 
 
 typedef FormCB<ControlToc, FormDB<FD_form_toc> > base_class;
@@ -58,8 +60,9 @@ ButtonPolicy::SMInput FormToc::input(FL_OBJECT *, long)
 	updateContents();
 
 	unsigned int const choice = fl_get_browser( dialog_->browser_toc );
-	if (0 < choice && choice - 1 < toclist_.size()) {
-		controller().Goto(toclist_[choice-1].par->id());
+
+	if (choice - 1 < toclist_.size() && choice >= 1) {
+		controller().Goto(toclist_[choice - 1].par->id());
 	}
 
 	return ButtonPolicy::SMI_VALID;
@@ -91,6 +94,12 @@ void FormToc::updateContents()
 
 	Buffer::SingleList const contents = controller().getContents(type);
 
+	if (contents.empty()) {
+		fl_clear_browser(dialog_->browser_toc);
+		fl_add_browser_line(dialog_->browser_toc,
+				    _("*** No Lists ***"));
+	}
+	
 	// Check if all elements are the same.
 	if (toclist_ == contents) {
 		return;
