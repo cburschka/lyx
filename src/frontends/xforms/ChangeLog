@@ -1,3 +1,8 @@
+2003-12-04  Angus Leeming  <leeming@lyx.org>
+
+	* checkwidgets.[Ch]: add 'xforms/' to the file header so that
+	doxygen remains happy in the future.
+
 2003-12-03  Angus Leeming  <leeming@lyx.org>
 
 	* forms/Makefile.am: use 'standard' make syntax rather than gnu-isms.
