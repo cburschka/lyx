@@ -29,7 +29,6 @@ class UpdatableInset;
 class WordLangTuple;
 class Encoding;
 class ErrorList;
-class ErrorItem;
 
 /**
  * A buffer view encapsulates a view onto a particular

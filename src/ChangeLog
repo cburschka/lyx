@@ -1,5 +1,10 @@
 2003-06-24  Alfredo Brauntein  <abraunst@lyx.org>
 
+	* BufferView.[Ch] (getErrorList): removed unneeded forward declare, 
+	moved errorlist_.clear to showErrorList
+	
+2003-06-24  Alfredo Brauntein  <abraunst@lyx.org>
+
 	* converter.C (scanLog, runLaTeX):
 	* buffer.C (makeLinuxDocFile, makeDocBookFile, runChkTeX):
 	move the bv->showErrorList call to the callers
