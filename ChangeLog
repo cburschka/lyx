@@ -1,3 +1,14 @@
+2000-09-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* config/kde.m4: make Qt fail immediately if Qt2 is picked up
+
+2000-09-28  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/intl.C (InitKeyMapper): Correct the value of n due to the
+	removal of the "default" language.
+
+	* src/combox.h (getline): Check that sel > 0
+
 2000-09-29  José Abílio Matos <jamatos@fep.up.pt>
 
 	* lib/examples/docbook_example.lyx

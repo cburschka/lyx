@@ -629,6 +629,24 @@ if test ! "$kde_qt_libs_given" = "yes"; then
 KDE_CHECK_QT_DIRECT(qt_libraries= ,[])
 fi
 
+dnl should check it's not Qt2, so it will fail now, rather than in KDE check
+
+SAVE_CXXFLAGS="$CXXFLAGS"
+CXXFLAGS="$CXXFLAGS -I$qt_includes -L$qt_libraries"
+AC_TRY_COMPILE([
+#include <qglobal.h>
+],
+[
+#if (QT_VERSION >= 200)
+break_me_(\\\);
+#endif
+],
+ac_qt_ok=yes,
+ac_qt_ok=no
+) 
+test "$ac_qt_ok" = no && AC_MSG_ERROR([Found Qt 2 - you must specify the path to the Qt 1 headers and libraries])
+CXXFLAGS="$SAVE_CXXFLAGS"
+
 AC_SUBST(qt_libraries)
 AC_SUBST(qt_includes)
 

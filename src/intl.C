@@ -273,11 +273,12 @@ void Intl::InitKeyMapper(bool on)
 	Language2->add(120, 110, 160, 30, 300);	// Secondary
 	fl_end_form();
 
-	int n = 1;
+	int n = 0;
 	// Default is not in the language map
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	Language->addto("default");
 	Language2->addto("default");
+	++n;
 #endif
 	for (Languages::const_iterator cit = languages.begin();
 	     cit != languages.end(); ++cit) {

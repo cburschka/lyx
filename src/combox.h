@@ -221,7 +221,7 @@ string const Combox::getline()
     if (type == FL_COMBOX_INPUT) 
       return fl_get_input(label);
     else
-      return browser ? fl_get_browser_line(browser, sel) : 0;
+      return (browser && sel > 0) ? fl_get_browser_line(browser, sel) : string();
 }
 
 #endif
