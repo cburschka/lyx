@@ -223,6 +223,10 @@ Moreover, the following generic configure flags may be useful:
   o --mandir=DIRECTORY gives the directory where the man pages will go.
     [defaults to ${prefix}/man]
 
+  o --enable-mainainer-mode enables some code that automatically
+    rebuilds the configure script, makefiles templates and other useful
+    files when needed. This is off by default, to avoid surprises.
+
 Note that the --with-extra-* commands are not really robust when it
 comes to use of relative paths.  If you really want to use a relative path
 here, you can prepend it with "`pwd`/".
