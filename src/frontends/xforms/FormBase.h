@@ -27,6 +27,7 @@
 
 class xformsBC;
 
+
 /** This class is an XForms GUI base class.
  */
 class FormBase : public ViewBC<xformsBC>
@@ -37,11 +38,16 @@ public:
 	///
 	virtual ~FormBase() {}
 
-	/// input callback function
+	/** input callback function.
+	    Invoked only by C_FormBaseInputCB and by C_FormBasePrehandler */
 	void InputCB(FL_OBJECT *, long);
-
-	/// feedback callback function
+	/// feedback callback function, invoked only by C_FormBasePrehandler
 	void FeedbackCB(FL_OBJECT *, int event);
+
+#if FL_REVISION < 89
+	/// invoked only by TooltipTimerCB
+	string const getTooltipCB(FL_OBJECT *);
+#endif
 
 protected:
 	/// Build the dialog
@@ -50,19 +56,21 @@ protected:
 	void hide();
 	/// Create the dialog if necessary, update it and display it.
 	void show();
-	/** Set a prehandler for ob to:
-	    1. display feedback as the mouse moves over it
+
+	/// Prepare the way to produce a tooltip when the mouse is over ob.
+	void setTooltipHandler(FL_OBJECT * ob);
+
+	/** Prepare the way to:
+	    1. display feedback as the mouse moves over ob. This feedback will
+	    typically be rather more verbose than just a tooltip.
 	    2. activate the button controller after a paste with the middle
 	    mouse button */
 	void setPrehandler(FL_OBJECT * ob);
 
-	/// post feedback for ob. Defaults to nothing
-	virtual void feedback(FL_OBJECT * /* ob */) {}
-	/// clear the feedback message
-	virtual void clear_feedback() {}
-
 	/** Flag that the message is a warning and should not be removed
-	    when the mouse is no longer over the object */
+	    when the mouse is no longer over the object.
+	    Used in conjunction with setPrehandler(ob) and with feedback(ob),
+	    clear_feedback(). */
 	void setWarningPosted(bool);
 
 private:
@@ -75,6 +83,14 @@ private:
 	    that the xform colors have been re-mapped). */
 	virtual void redraw();
 
+	///
+	virtual string const getTooltip(FL_OBJECT *) { return string(); }
+
+	/// post feedback for ob. Defaults to nothing
+	virtual void feedback(FL_OBJECT * /* ob */) {}
+	/// clear the feedback message
+	virtual void clear_feedback() {}
+
 	/// The dialog's minimum allowable dimensions.
 	int minw_;
 	///
@@ -86,6 +102,10 @@ private:
 	/** Variable used to decide whether to remove the existing feedback
 	    message or not (if it is infact a warning) */
 	bool warning_posted_;
+	/// Enables tooltips for crappy GUI libraries...
+#if FL_REVISION < 89
+	FL_OBJECT * tooltip_timer_;
+#endif
 };
 
 

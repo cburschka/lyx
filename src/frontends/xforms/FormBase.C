@@ -21,6 +21,34 @@
 #include "xformsBC.h"
 #include "support/LAssert.h"
 
+#if FL_REVISION < 89
+
+namespace {
+
+int TooltipHandler(FL_OBJECT *ob, int event);
+
+void TooltipTimerCB(FL_OBJECT * timer, long data);
+ 
+}
+
+extern "C" {
+
+static int C_FormBaseTooltipHandler(FL_OBJECT * ob, int event,
+				    FL_Coord, FL_Coord, int, void *)
+{
+	return TooltipHandler(ob, event);
+}
+
+static void C_FormBaseTooltipTimerCB(FL_OBJECT * ob, long data)
+{
+	TooltipTimerCB(ob, data);
+}
+
+}
+ 
+#endif // FL_REVISION < 89
+
+
 extern "C" {
 
 // Callback function invoked by xforms when the dialog is closed by the
@@ -39,7 +67,11 @@ FormBase::FormBase(ControlButtons & c, string const & t, bool allowResize)
 	: ViewBC<xformsBC>(c), minw_(0), minh_(0), allow_resize_(allowResize),
 	  title_(t), warning_posted_(false)
 
-{}
+{
+#if FL_REVISION < 89
+	tooltip_timer_ = 0;
+#endif
+}
 
 
 void FormBase::redraw()
@@ -144,6 +176,28 @@ void FormBase::FeedbackCB(FL_OBJECT * ob, int event)
 }
 
 
+void FormBase::setTooltipHandler(FL_OBJECT * ob)
+{
+	lyx::Assert(ob);
+
+#if FL_REVISION < 89
+	if (!tooltip_timer_) {
+		fl_addto_form(form());
+		tooltip_timer_ = fl_add_timer(FL_HIDDEN_TIMER, 0, 0, 0, 0, "");
+		fl_end_form();
+	}
+
+	fl_set_object_posthandler(ob, C_FormBaseTooltipHandler);
+	ob->u_cdata = reinterpret_cast<char *>(tooltip_timer_);
+
+#else
+	string const help(getTooltip(ob));
+	if (!help.empty())
+		fl_set_object_helper(ob, help.c_str());	
+#endif // FL_REVISION < 89
+}
+
+
 void FormBase::setPrehandler(FL_OBJECT * ob)
 {
 	lyx::Assert(ob);
@@ -155,6 +209,16 @@ void FormBase::setWarningPosted(bool warning)
 {
 	warning_posted_ = warning;
 }
+
+
+#if FL_REVISION < 89
+
+string const FormBase::getTooltipCB(FL_OBJECT * ob)
+{
+	return getTooltip(ob);
+}
+
+#endif // FL_REVISION < 89
 
 
 namespace {
@@ -170,16 +234,6 @@ FormBase * GetForm(FL_OBJECT * ob)
 
 
 extern "C" {
-
-static int C_FormBaseWMHideCB(FL_FORM * form, void *)
-{
-	// Close the dialog cleanly, even if the WM is used to do so.
-	lyx::Assert(form && form->u_vdata);
-	FormBase * pre = static_cast<FormBase *>(form->u_vdata);
-	pre->CancelButton();
-	return FL_CANCEL;
-}
-
 
 void C_FormBaseApplyCB(FL_OBJECT * ob, long)
 {
@@ -212,6 +266,16 @@ void C_FormBaseInputCB(FL_OBJECT * ob, long d)
 }
 
 
+static int C_FormBaseWMHideCB(FL_FORM * form, void *)
+{
+	// Close the dialog cleanly, even if the WM is used to do so.
+	lyx::Assert(form && form->u_vdata);
+	FormBase * pre = static_cast<FormBase *>(form->u_vdata);
+	pre->CancelButton();
+	return FL_CANCEL;
+}
+
+
 static int C_FormBasePrehandler(FL_OBJECT * ob, int event,
 				FL_Coord, FL_Coord, int key, void *)
 {
@@ -240,5 +304,50 @@ static int C_FormBasePrehandler(FL_OBJECT * ob, int event,
 
 	return 0;
 }
-	
+ 
 } // extern "C"
+
+
+#if FL_REVISION < 89
+
+namespace {
+
+void TooltipTimerCB(FL_OBJECT * timer, long data)
+{
+	FL_OBJECT * ob = reinterpret_cast<FL_OBJECT*>(data);
+	lyx::Assert(ob && ob->form);
+
+	string const help = GetForm(timer)->getTooltipCB(ob);
+	if (help.empty())
+		return;
+
+	fl_show_oneliner(help.c_str(),
+			 ob->form->x + ob->x,
+			 ob->form->y + ob->y + ob->h);
+}
+
+
+// post_handler for bubble-help (Matthias)
+int TooltipHandler(FL_OBJECT *ob, int event)
+{
+	lyx::Assert(ob);
+	FL_OBJECT * timer = reinterpret_cast<FL_OBJECT *>(ob->u_cdata);
+	lyx::Assert(timer);
+
+	// We do not test for empty help here, since this can never happen
+	if (event == FL_ENTER){
+		fl_set_object_callback(timer,
+				       C_FormBaseTooltipTimerCB,
+				       reinterpret_cast<long>(ob));
+		fl_set_timer(timer, 1);
+	}
+	else if (event != FL_MOTION){
+		fl_set_timer(timer, 0);
+		fl_hide_oneliner();
+	}
+	return 0;
+}
+
+} // namespace anon
+
+#endif // FL_REVISION < 89

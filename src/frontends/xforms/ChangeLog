@@ -1,5 +1,12 @@
 2002-02-05  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FormBase.[Ch]: You want tooltips too? You got 'em. Verified as
+	working with both xforms 0.88 and 0.89. Use by invoking
+	setTooltipHandler(ob) and by providing a method getTooltip(ob) in this
+	derived class to provide the required string.
+
+2002-02-05  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* FormBase.[Ch]: make it really easy to set up and use a prehandler
 	for feedback messages and to invoke an input event on paste from
 	the middle mouse button. The derived class needs invoke only
