@@ -35,30 +35,33 @@ auto_ptr<InsetBase> MathColorInset::clone() const
 
 void MathColorInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	FontSetChanger dummy(mi.base, "textnormal");
-	w_ = mathed_char_width(mi.base.font, '[');
-	MathNestInset::metrics(mi);
-	dim_   = cell(0).dim();
-	dim_.asc += 4;
-	dim_.des += 4;
-	dim_  += cell(1).dim();
-	dim_.wid += 2 * w_ + 4;
-	metricsMarkers();
-	dim = dim_;
+	cell(1).metrics(mi, dim);
+	if (editing()) {
+		FontSetChanger dummy(mi.base, "textnormal");
+		cell(0).metrics(mi);
+		dim  += cell(0).dim();
+		w_ = mathed_char_width(mi.base.font, '[');
+		dim.asc += 4;
+		dim.des += 4;
+		dim.wid += 2 * w_ + 4;
+		metricsMarkers();
+	}
+	dim_ = dim;
 }
 
 
 void MathColorInset::draw(PainterInfo & pi, int x, int y) const
 {
-	FontSetChanger dummy(pi.base, "textnormal");
-	drawMarkers(pi, x, y);
-
-	drawStrBlack(pi, x, y, "[");
-	x += w_;
-	cell(0).draw(pi, x, y);
-	x += cell(0).width();
-	drawStrBlack(pi, x, y, "]");
-	x += w_ + 2;
+	if (editing()) {
+		FontSetChanger dummy(pi.base, "textnormal");
+		drawMarkers(pi, x, y);
+		drawStrBlack(pi, x, y, "[");
+		x += w_;
+		cell(0).draw(pi, x, y);
+		x += cell(0).width();
+		drawStrBlack(pi, x, y, "]");
+		x += w_ + 2;
+	}
 
 	ColorChanger dummy1(pi.base.font, asString(cell(0)));
 	cell(1).draw(pi, x, y);
