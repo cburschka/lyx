@@ -59,6 +59,8 @@ public:
 	InsetBase::Code lyxCode() const { return MATHMACRO_CODE; }
 private:
 	///
+	MathAtom & tmpl() const;
+	///
 	void read(std::istream & is);
 	/// prefix in inset
 	std::string prefix() const;
