@@ -306,7 +306,7 @@ void LyXView::updateLayoutChoice()
 	// we need to do this.
 	toolbar->combox->Redraw();
 
-	char layout = bufferview->text->cursor.par->GetLayout();
+	LyXTextClass::size_type layout = bufferview->text->cursor.par->GetLayout();
 
 	if (layout != current_layout){
 		toolbar->combox->select(layout + 1);

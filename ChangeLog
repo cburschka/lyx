@@ -1,3 +1,19 @@
+2000-02-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxtext.h: change SetLayout() to take a
+	LyXTextClass::size_type instead of a char (when there is more than
+	127 layouts in a class); also change type of copylayouttype.
+	* src/text2.C (SetLayout): ditto.
+	* src/LyXView.C (updateLayoutChoice): ditto.
+
+	* src/LaTeX.C (scanLogFile): errors where the line number was not
+	given just after the '!'-line were ignored (from Dekel Tsur).
+
+	* lib/lyxrc.example: fix description of \date_insert_format
+
+	* lib/layouts/llncs.layout: new layout, contributed by Martin
+	Vermeer. 
+
 2000-02-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/insets/insettext.C (LocalDispatch): remove extra break

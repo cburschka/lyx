@@ -82,7 +82,7 @@ public:
 	/** set layout over selection and make a total rebreak of
 	  those paragraphs
 	  */
-	void SetLayout(char layout);
+	void SetLayout(LyXTextClass::size_type layout);
 	
 	/// used in setlayout
 	void MakeFontEntriesLayoutSpecific(LyXParagraph * par);
@@ -492,7 +492,7 @@ private:
 	  Asger has learned that this should be a buffer-property instead
 	  Lgb has learned that 'char' is a lousy type for non-characters
 	  */
-	char copylayouttype;
+	LyXTextClass::size_type copylayouttype;
 
 	/// the currentrow is needed to access rows faster*/ 
 	mutable Row * currentrow; // pointer to the current row

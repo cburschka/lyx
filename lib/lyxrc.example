@@ -419,6 +419,10 @@
 # sent in standard input (stdin). There is no default command
 # specified.  Example: 
 #\custom_export_command "kghostview $$FName"
+#
+# A more elaborate example to create pdf files with ps2pdf would be: 
+#\custom_export_command "ps2pdf '$$FName' `basename '$$FName' .ps_tmp`.pdf"  
+
 
 # This is the default for the type of contents to be sent to the export
 # command: possible values are lyx, dvi, tex, ps and ascii.
@@ -574,9 +578,9 @@
 # does not work with all dictionaries, so this is disabled by default.
 #\use_input_encoding true
 
-# DEFAULT FORMAT STRING FOR THE date-insert COMMAND
+# Default format string for the date-insert command
 #
-# This accepts the normal strftime formats have a look at man strftime
-# for nowing exactly what the formats are for and how to use them.
+# This accepts the normal strftime formats; see man strftime for full
+# details of the format.
 #
 #\date_insert_format "%A, %e. %B %Y"

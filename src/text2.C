@@ -459,7 +459,7 @@ void LyXText::MakeFontEntriesLayoutSpecific(LyXParagraph * par)
 
 
 // set layout over selection and make a total rebreak of those paragraphs
-void  LyXText::SetLayout(char layout)
+void  LyXText::SetLayout(LyXTextClass::size_type layout)
 {
 	LyXCursor tmpcursor;
 

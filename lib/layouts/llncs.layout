@@ -1,0 +1,603 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{Springer - Lecture Notes in Comp. Sci.}
+# llncs (article) textclass definition file. 
+# --------
+#
+# Taken from initial LyX source code
+# Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
+# Transposed by Pascal André <andre@via.ecp.fr>
+# Heavily modified and enhanced by serveral developers.
+#
+# --------
+# Based on ejour2.layout.
+# ejour2 made originally by Martin Vermeer based on article.layout.
+# Modified for LyX 12 by Jean-Marc Lasgouttes and MV.
+#
+# General textclass parameters
+Columns			1
+Sides			1
+PageStyle		Plain
+MaxCounter		Counter_Section
+
+# Standard style definition
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		dummy
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+End
+
+# The standard sections
+Input stdsections.inc
+
+# Chapter style definition
+Style Chapter
+  Align		Center
+  AlignPossible	Block,Left,Center
+End
+
+# Section style definition
+Style Section
+  # standard font definition
+  LabelFont
+    Series 		Bold
+    Size		Large
+  EndFont
+  Font
+    Series 		Bold
+    Size		Large
+  EndFont
+End
+
+# Subsection style definition
+Style Subsection
+  LabelType		Counter_Subsection
+  LabelFont
+    Series		Bold
+    Size		Normal
+  EndFont
+End
+
+# Subsubsection style definition
+Style Subsubsection
+  # standard font definition
+  LabelFont 
+    Series		Bold
+    Size		Normal
+  EndFont
+End
+
+# Paragraph style definition
+Style Paragraph
+# standard font definition
+  Font 
+    Series		Medium
+    Shape 		Italic
+    Size		Normal
+  EndFont
+End
+
+# Subparagraph style definition
+Style Subparagraph
+  # standard font definition
+  Font
+    Series		Medium
+    Shape		Up
+    Size		Normal
+  EndFont
+End
+
+# Now define the starred versions from the normal ones.
+Input stdstarsections.inc
+
+# Remove the ones that we do not want
+NoStyle		Part
+NoStyle		Part*
+
+# Some standard things
+Input stdlayouts.inc
+Input stdlists.inc
+
+# Standard style definition
+Style Petit
+  Margin  		Static
+  LatexType 		Environment
+  LatexName 		petit
+  ParIndent		MM
+  ParSkip 		0.4
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+
+  # Font definition
+  Font 
+    Size		Small
+  EndFont
+End
+
+# Journal name style definition (not needed if JG option given)
+Style Journal
+  Margin		Static
+  LatexType		Command
+  InTitle		1
+  LatexName		journalname
+  NextNoIndent		1
+  LeftMargin		Journal:xxx
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		Journal:
+
+  # standard font definition
+  LabelFont 
+    Series 		Bold
+    Shape		Italic
+    Color		Red
+  EndFont
+
+End
+
+# Headnote style definition
+Style Headnote
+  CopyStyle		Journal
+  LatexName		dedication
+  LeftMargin		"HeadNote (optional):xxx"
+  LabelString		"Headnote (optional): "
+End
+
+# Title style definition
+Style Title
+  Margin		Static
+  LatexType		Command
+  InTitle		1
+  LatexName		title
+  NextNoIndent		1
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Center		
+  AlignPossible		Block, Center, Left, Right
+  LabelType		No_Label
+  Fill_Top		1
+  Fill_Bottom		1
+
+  # standard font definition
+  Font 
+    Family  		Sans
+    Series 		Bold
+    Size		Largest
+  EndFont
+
+End
+
+# Title style definition
+Style Subtitle
+  Margin		Static
+  LatexType		Command
+  InTitle		1
+  LatexName		subtitle
+  NextNoIndent		1
+  ParSkip		0.4
+  ItemSep		0
+  TopSep		0
+  BottomSep		0
+  ParSep		0
+  Align			Left
+  AlignPossible		Left
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Family  		Sans
+    Series 		Bold
+    Size		Large
+  EndFont
+
+End
+
+# Translated Title style definition
+Style Translated_Title
+  Margin		Static
+  LatexType		Command
+  InTitle		1
+  LatexName		transtitle
+  NextNoIndent		1
+  LeftMargin		"English title:xxx"
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7	
+  Align			Left
+  AlignPossible		Left
+  LabelType		Static
+  LabelString		"English title: "
+
+  # Standard font definition
+  Font 
+    Series 		Bold
+  EndFont
+
+  # Label font definition
+  LabelFont 
+    Series 		Bold
+    Shape		Italic
+    Color		Red
+  EndFont
+
+End
+
+# Title_Running style definition
+Style Running_LaTeX_Title
+  CopyStyle		Journal
+  LatexName		titlerunning
+  LeftMargin		"Running title:xxx"
+  LabelString		"Running title: "
+End
+
+# TOC_Title style definition
+Style TOC_Title
+  CopyStyle		Journal
+  LatexName		toctitle
+  LeftMargin		"TOC title:xxx"
+  LabelString		"TOC title: "
+End
+
+# Author style definition
+Style Author
+  Margin		Static
+  LatexType		Command
+  InTitle		1
+  LatexName		author
+  NextNoIndent		1
+  ParSkip		0.4
+  TopSep		0.7
+  BottomSep		0.7
+  ItemSep		0
+  ParSep		0
+  Align			Left
+  AlignPossible		Left
+  LabelType		No_Label
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Shape		Italic
+  EndFont
+
+End
+
+# AuthorRunning style definition
+Style Author_Running
+  CopyStyle		Journal
+  LatexName		authorrunning
+  LeftMargin		"Author Running:xxx"
+  LabelString		"Author Running: "
+End
+
+# TOC_Author style definition
+Style TOC_Author
+  CopyStyle		Journal
+  LatexName		tocauthor
+  LeftMargin		"TOC Author :xxx"
+  LabelString		"TOC Author: "
+End
+
+# Institute style definition
+Style Institute
+  Margin		Static
+  LatexType		Command
+  InTitle		1
+  LatexName		institute
+  NextNoIndent		1
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Left
+  AlignPossible		Left
+  LabelType		No_Label
+
+  # Std. font definition
+  Font 
+    Size		Small
+  EndFont
+
+End
+
+# Dedication style definition (optional) 
+Style Dedication
+  CopyStyle		Journal
+  LatexName		headnote
+  LeftMargin		Dedication:xxx
+  LabelString		Dedication:
+End
+
+# Recieved/Accepted style definition
+Style Date
+  CopyStyle		Journal
+  LatexName		date
+  LeftMargin		Received/Accepted:xx
+  LabelString		Received/Accepted:
+End
+
+#
+#
+# Correspondence address style definition
+Style Mail
+  CopyStyle		Journal
+  LatexName		mail	
+  LeftMargin		"Corr Author:xx."
+  LabelString		"Corr Author: "
+End
+
+# Abstract style definition
+Style Abstract 
+  Margin		First_Dynamic
+  LatexType		Environment
+  LatexName		abstract
+  NextNoIndent		0
+  ParIndent		MM
+  LabelSep		xx
+  ItemSep		0
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Top_Environment
+  LabelString		Abstract. 
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End 
+
+# Keywords style definition
+Style  Keywords
+  Margin		First_Dynamic
+  LatexType		Command
+  LatexName		keywords
+  NextNoIndent		0
+  ParIndent		MM
+  LabelSep		xx
+  ItemSep		0
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		"Key Words: " 
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+End 
+
+# Translated abstract style definition
+Style TranslatedAbstract
+  CopyStyle		Abstract
+  LatexName		transsummary
+  LabelString		"Eng. Abstract. " 
+End 
+
+# Trans_Keywords style definition
+Style  Trans_Keywords
+  CopyStyle		Keywords
+  LatexName		trankey
+  LabelString		"Eng Key Words: " 
+End 
+
+# Acknowledgement(s) style definitions
+Style Acknowledgements
+  Margin		First_Dynamic
+  LatexType		Environment
+  LatexName		acknowledgements
+  NextNoIndent		0
+  ParIndent		MM
+  LabelSep		xx
+  ItemSep		0
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		Acknowledgements. 
+
+  # font & label font definition
+  Font 
+    Size		Small
+  EndFont
+
+  LabelFont 
+    Shape		Italic
+    Size		Small
+  EndFont
+End 
+
+Style Acknowledgement
+  CopyStyle		Acknowledgements
+  LatexName		acknowledgement
+  LabelString		Acknowledgement. 
+End 
+
+#
+# Bibliography style definition
+Style Bibliography
+  Margin		First_Dynamic
+  LatexType		Item_Environment
+  LatexName		lyxbibliography
+  NextNoIndent		1
+  LeftMargin		MM
+  ParSkip		0.4
+  ItemSep		0
+  TopSep		0.7
+  BottomSep		0.7
+  ParSep		0.5
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Bibliography
+  LabelString		References 
+  LabelBottomSep    0.7
+
+  # label font definition
+  LabelFont 
+    Series		Bold
+  EndFont
+
+  Preamble
+    \newcommand{\lyxbibliography}{\thebibliography{References}%
+      \renewcommand{\bibitem}[3][!]{\@bibitem{##1}{##2}{##3}}}
+  EndPreamble
+
+End
+
+# Mathematics-like definitions:
+
+Style Case
+  Margin		First_Dynamic
+  LatexType		Environment
+  LatexName	 	case
+  NextNoIndent		0
+  ParIndent		MM
+  LabelSep		xx
+  ItemSep		0
+  TopSep		0.5
+  BottomSep		0.5
+  ParSep		0
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Static
+  LabelString		Case #. 
+
+  # font & label font definition
+
+  LabelFont 
+    Shape		Italic
+  EndFont
+
+End
+
+Style Claim
+  CopyStyle		Case
+  LatexName	 	claim
+  LabelString		"Claim. " 
+End
+
+Style Conjecture
+  CopyStyle		Case
+  LatexName	 	conjecture
+  LabelString		"Conjecture #. " 
+End
+
+Style Corollary
+  CopyStyle		Case
+  LatexName	 	corollary
+  LabelString		"Corollary #. " 
+
+  # font & label font definition
+  Font 
+    Shape		Italic
+  EndFont
+
+  LabelFont 
+    Shape		Up
+    Series		Bold
+  EndFont
+
+End
+
+Style Definition
+  CopyStyle		Corollary
+  LatexName	 	definition
+  LabelString		"Definition #. "
+End
+
+Style Example
+  CopyStyle		Case
+  LatexName	 	example
+  LabelString		"Example #. "
+End
+
+Style Exercise
+  CopyStyle		Case
+  LatexName	 	exercise
+  LabelString		"Exercise #. "
+End
+
+Style Lemma
+  CopyStyle		Corollary
+  LatexName	 	lemma
+  LabelString		"Lemma #. "
+End
+
+Style Note
+  CopyStyle		Case
+  LatexName	 	note
+  LabelString		"Note #. "
+End
+
+Style Problem
+  CopyStyle		Exercise
+  LatexName	 	problem
+  LabelString		"Problem #. "
+End
+
+Style Proof
+  CopyStyle		Claim
+  LatexName		proof
+  LabelString		"Proof. "
+End
+
+Style Property
+  CopyStyle		Case
+  LatexName	 	property
+  LabelString		"Property #. "
+End
+
+Style Proposition
+  CopyStyle		Corollary
+  LatexName	 	proposition
+  LabelString		"Proposition #. "
+End
+
+Style Question
+  CopyStyle		Case
+  LatexName	 	question	
+  LabelString		"Question #. "
+End
+
+Style Remark
+  CopyStyle		Case
+  LatexName		remark
+  LabelString		"Remark #. "
+End
+
+Style Solution
+  CopyStyle		Case
+  LatexName		solution
+  LabelString		"Solution #. "
+End
+
+Style Theorem
+  CopyStyle		Corollary
+  LatexName		theorem
+  LabelString		"Theorem #. "
+End
+
+#Finally a few older definitions for compatibility
+Input obsolete.inc

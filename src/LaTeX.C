@@ -449,6 +449,8 @@ bool LaTeX::runBibTeX(string const & f, DepTable & dep)
 
 int LaTeX::scanLogFile(TeXErrors & terr)
 {
+	int last_line = -1;
+	int line_count = 1;
 	int retval = NO_ERRORS;
 	string tmp = ChangeExtension(file, ".log", true);
 	lyxerr[Debug::LATEX] << "Log file: " << tmp << endl;
@@ -499,7 +501,13 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				retval |= LATEX_ERROR;
 			// get the next line
 			string tmp;
-			getline(ifs, tmp);
+			int count = 0;
+			do {
+				if (!getline(ifs, tmp))
+					break;
+				if (++count > 10)
+					break;
+			} while (!prefixIs(tmp, "l."));
 			if (prefixIs(tmp, "l.")) {
 				// we have a latex error
 				retval |=  TEX_ERROR;
@@ -522,8 +530,16 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					<< "line: " << line << '\n'
 					<< "Desc: " << desc << '\n'
 					<< "Text: " << errstr << endl;
-				terr.insertError(line, desc, errstr);
-				++num_errors;
+				if (line == last_line)
+					++line_count;
+				else {
+					line_count = 1;
+					last_line = line;
+				}
+				if (line_count <= 5) {
+					terr.insertError(line, desc, errstr);
+					++num_errors;
+				}
 			}
 		} else {
 			// information messages, TeX warnings and other
