@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "math_fracbase.h"
+#include "math_data.h"
 
 
 MathFracbaseInset::MathFracbaseInset()

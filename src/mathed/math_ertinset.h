@@ -12,8 +12,9 @@
 #ifndef MATH_ERTINSET_H
 #define MATH_ERTINSET_H
 
-
+#include "math_data.h"
 #include "math_textinset.h"
+
 
 // implements support for \parbox
 

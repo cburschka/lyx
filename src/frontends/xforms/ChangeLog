@@ -1,3 +1,17 @@
+2003-09-07  Angus Leeming  <leeming@lyx.org>
+
+	* FormAboutlyx.h: remove #include <boost/scoped_ptr.hpp>.
+	* FormBase.h: remove #include "support/std_string.h".
+	* FormCharacter.h: remove #include "lyxfont.h", "LColor.h", "character.h".
+	* FormDialogView.h: remove #include "support/std_string.h",
+	<boost/scoped_ptr.hpp>.
+	* FormMathsBitmap.h: remove <boost/shared_ptr.hpp>.
+	* FormPreferences.h: remove #include "Color.h", <utility>.
+	* Tooltips.h: remove #include <boost/utility.hpp>.
+	* XFormsMenubar.h: remove #include <map>.
+	* xfont_loader.h: remove #include "support/std_string.h".
+	* xfont_metrics.h: remove #include "support/std_string.h", "font_metrics.h"
+
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
 	* FormParagraph.C: add Spacing.h and vspace.h includes.

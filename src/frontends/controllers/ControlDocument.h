@@ -12,13 +12,10 @@
 #ifndef CONTROLDOCUMENT_H
 #define CONTROLDOCUMENT_H
 
-
-#include <boost/scoped_ptr.hpp>
 #include "ControlDialog_impl.h"
-#include "support/std_string.h"
 #include "bufferparams.h"
 
-#include <vector>
+#include <boost/scoped_ptr.hpp>
 
 class Language;
 

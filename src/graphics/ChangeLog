@@ -1,3 +1,8 @@
+2003-09-07  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsTypes.h:
+	* Previews.h: remove #include "support/std_string.h".
+
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewedInset.C: add #include "insets/inset.h"

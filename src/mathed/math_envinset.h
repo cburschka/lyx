@@ -13,7 +13,6 @@
 #define MATH_ENVINSET_H
 
 #include "math_nestinset.h"
-#include "metricsinfo.h"
 
 
 /// Environtments á la \begin{something}...\end{something}

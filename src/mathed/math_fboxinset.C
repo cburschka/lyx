@@ -11,9 +11,10 @@
 #include <config.h>
 
 #include "math_fboxinset.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
-#include "math_streamstr.h"
 #include "math_parser.h"
+#include "math_streamstr.h"
 #include "frontends/Painter.h"
 
 using std::auto_ptr;

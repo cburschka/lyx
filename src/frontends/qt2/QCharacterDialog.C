@@ -13,6 +13,8 @@
 
 #include "QCharacterDialog.h"
 
+#include <qcheckbox.h>
+#include <qcombobox.h>
 #include <qpushbutton.h>
 
 

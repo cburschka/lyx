@@ -1,5 +1,17 @@
 2003-09-07  Angus Leeming  <leeming@lyx.org>
 
+	* LaTeXFeatures.h: remove #include "support/types.h".
+	* ToolbarBackend.h: remove #include <algorithm>.
+	* changes.h: remove #include <ctime>.
+	* debug.h: remove #include <iosfwd>.
+	* graph.h: remove #include "support/std_string.h".
+	* lyx_main.h: remove #include <csignal>.
+	* lyxlex_pimpl.h: remove #include <fstream>.
+	* sgml.h: remove #include <algorithm>, <utility>.
+	* toc.h: remove #include "support/std_ostream.h". Add #include <iosfwd>.
+
+2003-09-07  Angus Leeming  <leeming@lyx.org>
+
 	* vspace.[Ch] (length): returns a const & to a LyXGlueLength.
 
 	* converter.h: forward declare LatexRunParams.

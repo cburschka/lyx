@@ -15,4 +15,3 @@
 
 #undef emit
 #undef signals
-#include "frontends/LyXView.h"

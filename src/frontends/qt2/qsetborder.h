@@ -14,11 +14,11 @@
 
 #include <qwidget.h>
 #include <qpixmap.h>
-#include <qcolor.h>
 
+class QColor;
 class QMouseEvent;
-class QResizeEvent;
 class QPaintEvent;
+class QResizeEvent;
 
 class QSetBorder : public QWidget
 {

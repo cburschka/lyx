@@ -13,10 +13,9 @@
 #ifndef MATH_MACRO_H
 #define MATH_MACRO_H
 
-
+#include "math_data.h"
 #include "math_nestinset.h"
 #include "metricsinfo.h"
-#include "math_macroarg.h"
 #include "support/std_string.h"
 
 class MathMacroTemplate;

@@ -15,7 +15,6 @@
 
 #include <X11/Xlib.h>
 #include "lyxfont.h"
-#include "support/std_string.h"
 
 class FontInfo;
 

@@ -11,11 +11,12 @@
 #include <config.h>
 
 #include "math_gridinset.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
+#include "debug.h"
 #include "funcrequest.h"
 #include "frontends/Painter.h"
-#include "debug.h"
 #include "support/std_sstream.h"
 
 

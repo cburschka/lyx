@@ -1,3 +1,21 @@
+2003-09-07  Angus Leeming  <leeming@lyx.org>
+
+	* formulabase.h: remove #includes "dimension.h", <boost/weak_ptr.hpp>,
+	<iosfwd>.
+
+	* math_decorationinset.h: remove #include "support/std_string.h".
+
+	* math_envinset.h:
+	* math_fboxinset.h: remove #include "metricsinfo.h".
+
+	* math_kerninset.h: remove #include "math_nestinset.h".
+
+	* math_macro.h: remove #include "math_macroarg.h".
+
+	* math_nestinset.h: remove #include "math_data.h".
+
+	Ensuing changes to .C files.
+
 2003-09-05  Angus Leeming  <leeming@lyx.org>
 
 	* math_binaryopinset.[Ch]:

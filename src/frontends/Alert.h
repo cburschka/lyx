@@ -14,7 +14,6 @@
 
 #include "support/lstrings.h"
 
-#include <algorithm>
 
 namespace Alert {
 

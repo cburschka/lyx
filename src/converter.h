@@ -14,6 +14,7 @@
 
 #include "graph.h"
 
+#include "support/std_string.h"
 #include <vector>
 
 class Buffer;

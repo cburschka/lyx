@@ -15,7 +15,6 @@
 
 #include "Dialog.h"
 #include "Thesaurus.h"
-#include <vector>
 
 /** A controller for Thesaurus dialogs.
  */

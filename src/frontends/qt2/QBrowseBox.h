@@ -14,8 +14,6 @@
 
 #include "qgridview.h"
 
-#include <qwidget.h>
-
 
 class QString;
 class QPainter;

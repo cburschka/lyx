@@ -16,8 +16,8 @@
 #include "support/types.h"
 
 #include "support/std_string.h"
-#include <algorithm>
 #include <iosfwd>
+#include <utility>
 
 namespace sgml {
 

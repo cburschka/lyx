@@ -13,7 +13,6 @@
 #ifndef LATEXFEATURES_H
 #define LATEXFEATURES_H
 
-#include "support/types.h"
 
 #include "support/std_string.h"
 

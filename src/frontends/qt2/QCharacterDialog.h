@@ -17,9 +17,6 @@
 #include "QCharacter.h"
 #include "ui/QCharacterDialogBase.h"
 
-#include <qevent.h>
-#include <qcheckbox.h>
-#include <qcombobox.h>
 
 class LyXFont;
 

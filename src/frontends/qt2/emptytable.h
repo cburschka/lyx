@@ -12,8 +12,6 @@
 #ifndef EMPTYTABLE_H
 #define EMPTYTABLE_H
 
-
-#include <qpainter.h>
 #include "qttableview.h"
 
 /**

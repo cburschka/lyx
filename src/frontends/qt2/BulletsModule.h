@@ -14,8 +14,6 @@
 
 
 #include "ui/BulletsModuleBase.h"
-#include "support/std_string.h"
-#include <vector>
 #include "Bullet.h"
 #include <boost/array.hpp>
 

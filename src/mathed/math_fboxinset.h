@@ -13,7 +13,6 @@
 #define MATH_FBOXINSET_H
 
 #include "math_nestinset.h"
-#include "metricsinfo.h"
 
 
 class latexkeys;

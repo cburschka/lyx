@@ -14,7 +14,6 @@
 
 
 #include "Dialog.h"
-#include "debug.h"
 #include <vector>
 
 class InsetNoteParams;

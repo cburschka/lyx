@@ -50,6 +50,7 @@
 #include <boost/bind.hpp>
 
 #include <iostream>
+#include <csignal>
 
 using namespace lyx::support;
 

@@ -11,9 +11,10 @@
 #include <config.h>
 
 #include "math_fontoldinset.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
-#include "math_streamstr.h"
 #include "math_parser.h"
+#include "math_streamstr.h"
 #include "support/std_ostream.h"
 
 using std::auto_ptr;

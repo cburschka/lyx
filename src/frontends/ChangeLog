@@ -1,3 +1,10 @@
+2003-09-07  Angus Leeming  <leeming@lyx.org>
+
+	* Alert.h: remove #include <algorithm>.
+	* Dialogs.h: remove #include <boost/scoped_ptr.hpp>.
+	* WorkArea.h: remove #include <boost/signals/signal3.hpp>, <utility>.
+	* guiapi.h: remove #include "support/std_string.h".
+
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
 	* LyXKeySym.h: remove LyXKeySymPtr typedef.

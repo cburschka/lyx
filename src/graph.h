@@ -12,10 +12,9 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include "support/std_string.h"
-
 #include <queue>
 #include <vector>
+
 
 class Graph {
 public:

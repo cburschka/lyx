@@ -18,7 +18,6 @@
 
 #include <boost/utility.hpp>
 
-#include <fstream>
 #include <stack>
 #include <vector>
 

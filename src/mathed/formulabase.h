@@ -15,10 +15,7 @@
 #define INSET_FORMULABASE_H
 
 #include "insets/updatableinset.h"
-#include "dimension.h"
 
-#include <boost/weak_ptr.hpp>
-#include <iosfwd>
 
 class Buffer;
 class BufferView;

@@ -12,7 +12,6 @@
 #ifndef XFORMSMENUBAR_H
 #define XFORMSMENUBAR_H
 
-#include "support/std_string.h"
 #include "frontends/Menubar.h"
 
 #include <boost/shared_ptr.hpp>
@@ -20,8 +19,8 @@
 #include "forms_fwd.h"
 #include <X11/X.h> // Window
 
+#include "support/std_string.h"
 #include <vector>
-#include <map>
 
 class LyXView;
 class XFormsView;

@@ -28,6 +28,7 @@
 #include "math_kerninset.h"
 #include "math_lefteqninset.h"
 #include "math_macro.h"
+#include "math_macroarg.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "math_makeboxinset.h"

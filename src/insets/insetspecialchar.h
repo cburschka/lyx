@@ -16,7 +16,6 @@
 
 
 #include "inset.h"
-#include "support/std_string.h"
 
 struct LaTeXFeatures;
 

@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "math_textinset.h"
+#include "math_data.h"
 #include "metricsinfo.h"
 #include "debug.h"
 

@@ -11,8 +11,9 @@
 #include <config.h>
 
 #include "math_sizeinset.h"
-#include "math_parser.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
+#include "math_parser.h"
 #include "math_streamstr.h"
 #include "support/std_ostream.h"
 

@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "math_exintinset.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "math_symbolinset.h"

@@ -15,7 +15,6 @@
 #ifndef PREVIEWS_H
 #define PREVIEWS_H
 
-#include "support/std_string.h"
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 

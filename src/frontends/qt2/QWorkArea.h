@@ -13,14 +13,14 @@
 #ifndef QWORKAREA_H
 #define QWORKAREA_H
 
-
 #include "WorkArea.h"
 #include "QLPainter.h"
 #include "QContentPane.h"
 
-#include <qwidget.h>
 #include <qscrollbar.h>
-#include <qpixmap.h>
+
+class QPixmap;
+class QWidget;
 
 
 /**

@@ -19,10 +19,8 @@
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
 #include <boost/signals/signal2.hpp>
-#include <boost/signals/signal3.hpp>
 
 #include "support/std_string.h"
-#include <utility>
 
 class Painter;
 class FuncRequest;

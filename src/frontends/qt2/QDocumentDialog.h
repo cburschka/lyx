@@ -14,9 +14,7 @@
 
 
 #include "ui/QDocumentDialogBase.h"
-#include "support/std_string.h"
 
-#include "ui/BulletsModuleBase.h"
 #include "BulletsModule.h"
 
 #include "ui/TextLayoutModuleBase.h"
@@ -28,6 +26,8 @@
 #include "ui/NumberingModuleBase.h"
 #include "ui/MarginsModuleBase.h"
 #include "ui/PreambleModuleBase.h"
+
+#include "support/std_string.h"
 
 class QDocument;
 class FloatPlacement;

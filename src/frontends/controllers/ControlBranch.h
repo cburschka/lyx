@@ -15,7 +15,6 @@
 
 
 #include "Dialog.h"
-#include "debug.h"
 
 class InsetBranchParams;
 

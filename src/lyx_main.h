@@ -14,12 +14,10 @@
 #ifndef LYX_MAIN_H
 #define LYX_MAIN_H
 
-#include "support/std_string.h"
-
 #include <boost/scoped_ptr.hpp>
 #include <boost/utility.hpp>
 
-#include <csignal>
+#include "support/std_string.h"
 
 
 class ErrorItem;

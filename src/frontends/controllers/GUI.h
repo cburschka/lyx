@@ -12,8 +12,6 @@
 #ifndef GUI_H
 #define GUI_H
 
-#include "BCView.h"
-
 #include <boost/utility.hpp>
 
 class LyXView;

@@ -18,6 +18,8 @@
 #include "xformsImage.h"
 #include "XWorkArea.h"
 
+#include "font_metrics.h"
+
 #include "encoding.h"
 #include "language.h"
 #include "lyxfont.h"

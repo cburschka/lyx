@@ -12,6 +12,7 @@
 
 
 #include "emptytable.h"
+#include <qpainter.h>
 
 /**
  * A simple widget for a quick "preview" in TabularCreateDialog

@@ -16,7 +16,6 @@
 
 #include "FormDialogView.h"
 
-#include <boost/scoped_ptr.hpp>
 
 class ControlAboutlyx;
 struct FD_aboutlyx;

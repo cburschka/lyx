@@ -13,6 +13,7 @@
 #ifndef MATH_MACROTEMPLATE_H
 #define MATH_MACROTEMPLATE_H
 
+#include "math_data.h"
 #include "math_nestinset.h"
 #include "support/std_string.h"
 

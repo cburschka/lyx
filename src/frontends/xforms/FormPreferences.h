@@ -13,21 +13,19 @@
 #ifndef FORMPREFERENCES_H
 #define FORMPREFERENCES_H
 
-
 #include "FormBase.h"
-#include "Color.h" // NamedColor
 #include "xforms_helpers.h" // XformColor
 
-#include <boost/scoped_ptr.hpp>
-
 #include "lyx_forms.h"
-#include <utility> // pair
+
+#include <boost/scoped_ptr.hpp>
 
 class ControlPrefs;
 
 class Dialogs;
 class LyXRC;
 class LyXView;
+class NamedColor;
 class RGBColor;
 class FormColorpicker;
 

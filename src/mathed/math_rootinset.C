@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "math_rootinset.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
 #include "frontends/Painter.h"
 

@@ -12,11 +12,9 @@
 #ifndef HELPERFUNCS_H
 #define HELPERFUNCS_H
 
-
 #include "support/std_string.h"
-
-#include <utility> // pair
-#include <vector> // pair
+#include <utility>
+#include <vector>
 
 /** Launch a file dialog and return the chosen file.
     filename: a suggested filename.

@@ -14,7 +14,6 @@
 #define TOOLBAR_BACKEND_H
 
 #include <vector>
-#include <algorithm>
 
 #include "support/std_string.h"
 

@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "math_parboxinset.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "debug.h"

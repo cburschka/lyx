@@ -11,8 +11,9 @@
 #include <config.h>
 
 #include "math_braceinset.h"
-#include "math_support.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
+#include "math_support.h"
 #include "support/std_ostream.h"
 
 using std::max;

@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "xfont_metrics.h"
+#include "font_metrics.h"
 #include "xfont_loader.h"
 
 #include "encoding.h"

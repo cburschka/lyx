@@ -17,7 +17,6 @@
 
 #include "support/std_string.h"
 
-#include <map>
 
 class MenuBackend;
 class MenuItem;

@@ -11,12 +11,13 @@
 #include <config.h>
 
 #include "math_scriptinset.h"
+#include "math_data.h"
+#include "math_mathmlstream.h"
 #include "math_support.h"
 #include "math_symbolinset.h"
-#include "math_mathmlstream.h"
+#include "debug.h"
 #include "funcrequest.h"
 #include "support/LAssert.h"
-#include "debug.h"
 
 using namespace lyx::support;
 

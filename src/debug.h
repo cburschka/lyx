@@ -13,7 +13,6 @@
 #ifndef LYXDEBUG_H
 #define LYXDEBUG_H
 
-#include <iosfwd>
 
 #include "support/std_string.h"
 

@@ -13,7 +13,6 @@
 #define MATH_BINARYOPINSET_H
 
 #include "math_nestinset.h"
-#include "math_nestinset.h"
 #include "metricsinfo.h"
 
 

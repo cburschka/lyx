@@ -14,9 +14,7 @@
 #define XFONT_METRICS_H
 
 
-#include "support/std_string.h"
 
-#include "font_metrics.h"
 
 #include <X11/Xlib.h>
 

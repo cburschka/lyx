@@ -12,9 +12,7 @@
 #ifndef QCONTENTPANE_H
 #define QCONTENTPANE_H
 
-
 #include <qwidget.h>
-#include <qevent.h>
 #include <qpixmap.h>
 
 #include <boost/scoped_ptr.hpp>

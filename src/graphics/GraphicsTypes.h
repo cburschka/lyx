@@ -15,7 +15,6 @@
 #ifndef GRAPHICSTYPES_H
 #define GRAPHICSTYPES_H
 
-#include "support/std_string.h"
 
 namespace lyx {
 namespace graphics {

@@ -19,6 +19,8 @@
 #include "qt_helpers.h"
 
 #include <qpushbutton.h>
+#include <qcheckbox.h>
+#include <qcombobox.h>
 
 
 using namespace frnt;

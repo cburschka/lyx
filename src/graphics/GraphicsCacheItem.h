@@ -29,11 +29,12 @@
 #define GRAPHICSCACHEITEM_H
 
 #include "GraphicsTypes.h"
-#include "support/std_string.h"
 
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/signal0.hpp>
+
+#include "support/std_string.h"
 
 class InsetGraphics;
 

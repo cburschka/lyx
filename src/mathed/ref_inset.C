@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "ref_inset.h"
+#include "math_data.h"
 #include "math_factory.h"
 
 #include "BufferView.h"

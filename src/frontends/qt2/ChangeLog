@@ -1,3 +1,21 @@
+2003-09-07  Angus Leeming  <leeming@lyx.org>
+
+	* BulletsModule.h: remove #include "support/std_string.h", <vector>.
+	* QBrowseBox.h: remove #include <qwidget.h>.
+	* QCharacter.h: remove #include "support/std_string.h".
+	* QCharacterDialog.h: remove #include <qevent.h>, <qcheckbox.h>,
+	<qcombobox.h>.
+	* QContentPane.h: remove #include <qevent.h>.
+	* QDialogView.h: remove #include <qfont.h>.
+	* QDocumentDialog.h: remove #include "ui/BulletsModuleBase.h".
+	* QLPopupMenu.h: remove #include <map>.
+	* QLToolbar.h: remove #include <vector>.
+	* QWorkArea.h: remove #include <qwidget.h>, <qpixmap.h>.
+	* Qt2Base.h: remove #include <qfont.h>.
+	* QtLyXView.h: remove #include "frontends/LyXView.h".
+	* emptytable.h: remove #include <qpainter.h>.
+	* qsetborder.h: remove #include <qcolor.h>.
+
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
 	* QParagraph.C: add Spacing.h and vspace.h includes.

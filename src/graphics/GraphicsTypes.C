@@ -13,6 +13,8 @@
 #include "graphics/GraphicsTypes.h"
 #include "support/translator.h"
 
+#include "support/std_string.h"
+
 namespace lyx {
 namespace graphics {
 

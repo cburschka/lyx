@@ -12,14 +12,12 @@
 #ifndef QDIALOGVIEW_H
 #define QDIALOGVIEW_H
 
-
 #include "Dialog.h"
 #include <boost/scoped_ptr.hpp>
 
-#include <qfont.h>
+#include <qapplication.h>
 #include <qdialog.h>
 #include <qobject.h>
-#include <qapplication.h>
 
 class Qt2BC;
 

@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "command_inset.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
 #include "funcrequest.h"
 #include "support/std_sstream.h"

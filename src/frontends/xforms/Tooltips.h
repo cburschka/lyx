@@ -18,16 +18,15 @@
 #ifndef TOOLTIPS_H
 #define TOOLTIPS_H
 
-
 #include "support/std_string.h"
 
-#include <boost/utility.hpp>
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/trackable.hpp>
 
 #include "forms_fwd.h" // Can't forward-declare FL_OBJECT
 
 #include <map>
+
 
 class Tooltips : boost::noncopyable, public boost::signals::trackable {
 public:

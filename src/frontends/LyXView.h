@@ -13,14 +13,13 @@
 #ifndef LYXVIEW_H
 #define LYXVIEW_H
 
-
-#include "support/std_string.h"
-
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 #include <boost/signals/signal0.hpp>
+
+#include "support/std_string.h"
 
 class Buffer;
 class Toolbar;

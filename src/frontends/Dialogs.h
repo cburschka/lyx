@@ -11,13 +11,11 @@
 #ifndef DIALOGS_H
 #define DIALOGS_H
 
-
-#include "support/std_string.h"
-
 #include <boost/utility.hpp>
-#include <boost/scoped_ptr.hpp>
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
+
+#include "support/std_string.h"
 
 
 class Dialog;
@@ -33,7 +31,7 @@ class Dialogs : boost::noncopyable
 public:
 	///
 	Dialogs(LyXView &);
-	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
+	///
 	~Dialogs();
 
 	/** Redraw all visible dialogs because, for example, the GUI colours

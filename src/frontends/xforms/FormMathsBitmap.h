@@ -14,11 +14,8 @@
 #ifndef FORM_MATHSBITMAP_H
 #define FORM_MATHSBITMAP_H
 
-
 #include "FormDialogView.h"
-#include <boost/shared_ptr.hpp>
 #include <vector>
-
 
 struct BitmapStore
 {

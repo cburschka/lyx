@@ -11,9 +11,10 @@
 #include <config.h>
 
 #include "math_sqrtinset.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
-#include "frontends/Painter.h"
 #include "textpainter.h"
+#include "frontends/Painter.h"
 
 using std::auto_ptr;
 

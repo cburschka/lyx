@@ -18,6 +18,7 @@
 #include "math_arrayinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
+#include "math_data.h"
 #include "math_diffinset.h"
 #include "math_exfuncinset.h"
 #include "math_exintinset.h"

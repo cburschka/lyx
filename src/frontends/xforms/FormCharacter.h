@@ -13,12 +13,8 @@
 #ifndef FORM_CHARACTER_H
 #define FORM_CHARACTER_H
 
-
 #include "FormDialogView.h"
-#include "lyxfont.h"          // for LyXFont enums
 #include "ControlCharacter.h" // for ControlCharacter enum
-#include "LColor.h"           // for LColor enum
-#include "character.h"        // for FONT_STATE enum
 
 struct FD_character;
 

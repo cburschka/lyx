@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "math_parinset.h"
+#include "math_data.h"
 #include "math_mathmlstream.h"
 #include "support/std_ostream.h"
 

@@ -48,6 +48,7 @@ following hack as starting point to write some macros:
 #include "math_factory.h"
 #include "math_kerninset.h"
 #include "math_macro.h"
+#include "math_macroarg.h"
 #include "math_macrotemplate.h"
 #include "math_parboxinset.h"
 #include "math_parinset.h"

@@ -1,3 +1,22 @@
+2003-09-07  Angus Leeming  <leeming@lyx.org>
+
+	* ButtonController.h:
+	* helper_funcs.h: remove #include "support/std_string.h".
+
+	* ControlBranch.h:
+	* ControlNote.h: remove #include "debug.h".
+
+	* ControlDocument.h: remove #include <vector>, "support/std_string.h".
+
+	* ControlErrorList.h:
+	* ControlThesaurus.h: remove #include <vector>.
+
+	* ControlPrefs.h: remove #include "funcrequest.h", <utility>.
+
+	* GUI.h: remove #include "BCView.h".
+
+	* tex_helpers.h: remove #include <utility>.
+
 2003-09-05  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* biblio.C:

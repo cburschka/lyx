@@ -15,7 +15,6 @@
 #include "math_inset.h"
 #include "vspace.h"
 #include "support/std_string.h"
-#include "math_nestinset.h"
 
 
 /// The \kern primitive

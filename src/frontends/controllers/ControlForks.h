@@ -12,14 +12,14 @@
 #ifndef CONTROLFORKS_H
 #define CONTROLFORKS_H
 
-
 #include "ControlDialog_impl.h"
-#include "support/std_string.h"
 
 #include <boost/signals/connection.hpp>
 
-#include <sys/types.h>
+#include "support/std_string.h"
 #include <vector>
+#include <sys/types.h>
+
 
 /** A controller for dialogs that display the child processes forked by LyX.
     Also provides an interface enabling them to be killed prematurely.

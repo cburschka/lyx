@@ -19,6 +19,8 @@
 #include "converter.h"
 #include "format.h"
 #include "gettext.h"
+#include "funcrequest.h"
+#include "lfuns.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
