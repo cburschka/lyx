@@ -17,6 +17,7 @@
 
 #include "support/types.h"
 #include "changes.h"
+#include "RowList.h"
 
 #include "LString.h"
 
@@ -292,6 +293,9 @@ public:
 	ParagraphParameters const & params() const;
 	///
 	InsetList insetlist;
+
+	///
+	mutable RowList rows;
 
 private:
 	///

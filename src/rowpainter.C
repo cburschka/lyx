@@ -38,6 +38,7 @@
 using namespace lyx::support;
 
 using std::max;
+using std::endl;
 using lyx::pos_type;
 
 extern int PAPER_MARGIN;
@@ -255,7 +256,7 @@ void RowPainter::paintArabicComposeChar(pos_type & vpos)
 void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 {
 	pos_type pos = text_.vis2log(vpos);
-	pos_type const last = lastPrintablePos(text_, pit_, row_);
+	pos_type const last = lastPrintablePos(*pit_, row_);
 	LyXFont orig_font = getFont(pos);
 
 	// first character
@@ -432,7 +433,7 @@ void RowPainter::paintSelection()
 			int(x_), row_->height(), LColor::selection);
 
 	pos_type const body_pos = pit_->beginningOfBody();
-	pos_type const last = lastPrintablePos(text_, pit_, row_);
+	pos_type const last = lastPrintablePos(*pit_, row_);
 	double tmpx = x_;
 
 	for (pos_type vpos = row_->pos(); vpos <= last; ++vpos)  {
@@ -448,7 +449,7 @@ void RowPainter::paintSelection()
 				tmpx -= singleWidth(body_pos - 1);
 		}
 
-		if (hfillExpansion(text_, pit_, row_, pos)) {
+		if (hfillExpansion(*pit_, row_, pos)) {
 			tmpx += singleWidth(pos);
 			if (pos >= body_pos)
 				tmpx += hfill_;
@@ -484,7 +485,7 @@ void RowPainter::paintSelection()
 void RowPainter::paintChangeBar()
 {
 	pos_type const start = row_->pos();
-	pos_type const end = lastPrintablePos(text_, pit_, row_);
+	pos_type const end = lastPrintablePos(*pit_, row_);
 
 	if (!pit_->isChanged(start, end))
 		return;
@@ -525,7 +526,7 @@ void RowPainter::paintDepthBar()
 	Paragraph::depth_type prev_depth = 0;
 	if (row_ != text_.firstRow()) {
 		ParagraphList::iterator pit2 = pit_;
-		if (row_ == text_.beginRow(pit2))
+		if (row_ == pit2->rows.begin())
 			--pit2;
 		prev_depth = pit2->getDepth();
 	}
@@ -533,7 +534,7 @@ void RowPainter::paintDepthBar()
 	Paragraph::depth_type next_depth = 0;
 	if (row_ != text_.lastRow()) {
 		ParagraphList::iterator pit2 = pit_;
-		if (boost::next(row_) == text_.endRow(pit2))
+		if (boost::next(row_) == pit2->rows.end())
 			++pit2;
 		next_depth = pit2->getDepth();
 	}
@@ -894,7 +895,7 @@ void RowPainter::paintLast()
 
 void RowPainter::paintText()
 {
-	pos_type const last = lastPrintablePos(text_, pit_, row_);
+	pos_type const last = lastPrintablePos(*pit_, row_);
 	pos_type body_pos = pit_->beginningOfBody();
 	if (body_pos > 0 &&
 		(body_pos - 1 > last || !pit_->isLineSeparator(body_pos - 1))) {
@@ -959,7 +960,7 @@ void RowPainter::paintText()
 
 			pain_.line(int(x_), y1, int(x_), y0, LColor::added_space);
 
-			if (hfillExpansion(text_, pit_, row_, pos)) {
+			if (hfillExpansion(*pit_, row_, pos)) {
 				int const y2 = (y0 + y1) / 2;
 
 				if (pos >= body_pos) {
@@ -1032,7 +1033,7 @@ void RowPainter::paint()
 	if (row_->isParStart())
 		paintFirst();
 
-	if (isParEnd(text_, pit_, row_))
+	if (isParEnd(*pit_, row_))
 		paintLast();
 
 	// paint text
@@ -1103,18 +1104,32 @@ int paintRows(BufferView const & bv, LyXText const & text,
 		const_cast<LyXText&>(text).metrics(mi, dim);
 #endif
 	}
+	const_cast<LyXText&>(text).updateRowPositions();
 
-	//lyxerr << "text: " << &text << " y: " << y << " yf: " << yf
-	//	<< " y2: " << y2 << " yo: " << yo << "\n";
 	int yy = yf - y;
-	RowList::iterator end = text.endRow();
-	while (rit != end && yy + y < y2) {
-		//const_cast<LyXText &>(text).setHeightOfRow(rit);
-		ParagraphList::iterator pit = text.getPar(rit);
-		paintRow(bv, text, pit, rit, y + yo, xo, y + text.top_y());
-		y += rit->height();
-		rit = text.nextRow(rit);
+	
+	ParagraphList::iterator pit = text.ownerParagraphs().begin();
+	ParagraphList::iterator end = text.ownerParagraphs().end();
+	bool active = false;
+
+	for ( ; pit != end; ++pit) {
+		RowList::iterator row = pit->rows.begin();
+		RowList::iterator rend = pit->rows.end();
+
+		for ( ; row != rend; ++row) {
+			if (row == rit)
+				active = true;
+			if (active) {
+				paintRow(bv, text, pit, row, y + yo, xo, y + text.top_y());
+				y += row->height();
+				if (yy + y >= y2)
+					return y;
+			} else {
+				//lyxerr << "   paintRows: row: " << &*row << " ignored" << endl;
+			}
+		}
 	}
+
 	return y;
 }
 

@@ -275,9 +275,7 @@ void LyXText::cursorPrevious()
 
 	LyXCursor cur;
 	ParagraphList::iterator pit = cursor.par();
-	if (rit == beginRow(pit))
-		--pit;
-	rit = previousRow(rit);
+	previousRow(pit, rit);
 	setCursor(cur, pit, rit->pos(), false);
 	if (cur.y() > top_y())
 		cursorUp(true);
@@ -304,7 +302,8 @@ void LyXText::cursorNext()
 			  + bv()->theLockingInset()->insetInInsetY());
 	}
 
-	getRowNearY(y);
+	ParagraphList::iterator dummypit;
+	getRowNearY(y, dummypit);
 
 	setCursorFromCoordinates(cursor.x_fix(), y);
 	// + bv->workHeight());
@@ -332,9 +331,7 @@ void LyXText::cursorNext()
 	}
 
 	ParagraphList::iterator pit = cursor.par();
-	if (boost::next(rit) == endRow(pit))
-		++pit;
-	rit = nextRow(rit);	
+	nextRow(pit, rit);	
 	LyXCursor cur;
 	setCursor(cur, pit, rit->pos(), false);
 	if (cur.y() < top_y() + bv()->workHeight())

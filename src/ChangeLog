@@ -1,3 +1,17 @@
+
+2003-08-15  André Pönitz  <poenitz@gmx.net>
+
+	* lyxrow_funcs.[Ch]:
+	* lyxtext.h:
+	* paragraph.h:
+	* paragraph_funcs.C:
+	* rowpainter.C:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* text_funcs.C: split LyXText::rowlist_ into individual
+	Paragraph::rows_ chunks
+
 2003-08-12  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* bufferlist.C: beautify two alerts (shorter text of buttons)

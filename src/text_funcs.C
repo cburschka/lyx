@@ -68,8 +68,8 @@ void cursorLeftOneWord(LyXCursor & cursor, ParagraphList const & pars)
 
 	while (pos &&
 	       (pit->isSeparator(pos - 1) ||
-		pit->isKomma(pos - 1) ||
-		pit->isNewline(pos - 1)) &&
+	        pit->isKomma(pos - 1) ||
+	        pit->isNewline(pos - 1)) &&
 	       !(pit->isHfill(pos - 1) ||
 		 pit->isInset(pos - 1)))
 		--pos;

@@ -189,7 +189,8 @@ public:
 	  (relative to the whole text). y is set to the real beginning
 	  of this row
 	  */
-	RowList::iterator getRowNearY(int & y) const;
+	RowList::iterator getRowNearY(int & y,
+		ParagraphList::iterator & pit) const;
 
 	/** returns the column near the specified x-coordinate of the row
 	 x is set to the real beginning of this column
@@ -202,11 +203,6 @@ public:
 	 */
 	RowList::iterator
 	getRow(ParagraphList::iterator pit, lyx::pos_type pos, int & y) const;
-
-	RowList & rows() const {
-		return rowlist_;
-	}
-
 
 	/// need the selection cursor:
 	void setSelection();
@@ -379,37 +375,18 @@ public:
 	bool bidi_InRange(lyx::pos_type pos) const;
 private:
 	///
-	mutable RowList rowlist_;
-
-	///
 	float getCursorX(ParagraphList::iterator pit,
 	     RowList::iterator rit, lyx::pos_type pos,
 			 lyx::pos_type last, bool boundary) const;
 	/// used in setlayout
 	void makeFontEntriesLayoutSpecific(BufferParams const &, Paragraph & par);
 
-	/** forces the redrawing of a paragraph. Needed when manipulating a
-	    right address box
-	    */
-	void redoDrawingOfParagraph(LyXCursor const & cursor);
-
-	/// removes the row and reset the touched counters
-	void removeRow(RowList::iterator rit);
-
-	/// remove all following rows of the paragraph of the specified row.
-	void removeParagraph(ParagraphList::iterator pit, RowList::iterator rit);
-
-	/// insert the specified paragraph behind the specified row
-	void insertParagraph(ParagraphList::iterator pit,
-			     RowList::iterator rowit);
-
 	/// Calculate and set the height of the row
 	void setHeightOfRow(ParagraphList::iterator, RowList::iterator rit);
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
-	void fixCursorAfterDelete(LyXCursor & cur,
-				  LyXCursor const & where);
+	void fixCursorAfterDelete(LyXCursor & cur, LyXCursor const & where);
 
 	/// delete double space (false) or empty paragraphs (true) around old_cursor
 	bool deleteEmptyParagraphMechanism(LyXCursor const & old_cursor);
@@ -516,12 +493,6 @@ public:
 	/// return true if this is owned by an inset.
 	bool isInInset() const;
 
-	/// recreate paragraphlist iterator from rowlist iterator
-	ParagraphList::iterator getPar(RowList::iterator rit) const;
-	/// return first row of par
-	RowList::iterator beginRow(ParagraphList::iterator pit) const;
-	/// return row "behind" last of par
-	RowList::iterator endRow(ParagraphList::iterator pit) const;
 	/// return first row of text
 	RowList::iterator firstRow() const;
 	/// return last row of text
@@ -529,9 +500,14 @@ public:
 	/// return row "behind" last row of text
 	RowList::iterator endRow() const;
 	/// return next row crossing paragraph boundaries
-	RowList::iterator nextRow(RowList::iterator rit) const;
+	void nextRow(ParagraphList::iterator & pit,
+		RowList::iterator & rit) const;
 	/// return previous row crossing paragraph boundaries
-	RowList::iterator previousRow(RowList::iterator rit) const;
+	void previousRow(ParagraphList::iterator & pit,
+		RowList::iterator & rit) const;
+
+	///
+	bool noRows() const;
 
 private:
 	/** Cursor related data.

@@ -289,6 +289,7 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	RowList::iterator rit = text_.firstRow();
 	RowList::iterator end = text_.endRow();
+	ParagraphList::iterator pit = paragraphs.begin();
 
 	int y_offset = baseline - rit->ascent_of_text();
 	int y2 = pain.paperHeight();
@@ -297,7 +298,7 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 	while (rit != end && y + rit->height() <= 0) {
 		y += rit->height();
 		first += rit->height();
-		rit = text_.nextRow(rit);
+		text_.nextRow(pit, rit);
 	}
 	if (y_offset < 0) {
 		text_.top_y(-y_offset);

@@ -202,7 +202,7 @@ public:
 		return true;
 	}
 	///
-	ParagraphList paragraphs;
+	mutable ParagraphList paragraphs;
 protected:
 	///
 	void updateLocal(BufferView *, bool mark_dirty);

@@ -79,17 +79,21 @@ void LyXText::init(BufferView * bview)
 {
 	bv_owner = bview;
 
-	rowlist_.clear();
+	ParagraphList::iterator const beg = ownerParagraphs().begin();
+	ParagraphList::iterator const end = ownerParagraphs().end();
+	for (ParagraphList::iterator pit = beg; pit != end; ++pit)
+		pit->rows.clear();
+
 	width = 0;
 	height = 0;
 
 	anchor_row_ = endRow();
 	anchor_row_offset_ = 0;
 
-	current_font = getFont(ownerParagraphs().begin(), 0);
+	current_font = getFont(beg, 0);
 
-	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
-	setCursorIntern(ownerParagraphs().begin(), 0);
+	redoParagraphs(beg, end);
+	setCursorIntern(beg, 0);
 	selection.cursor = cursor;
 
 	updateCounters();
@@ -237,72 +241,6 @@ void LyXText::setCharFont(
 	font.reduce(layoutfont);
 
 	pit->setFont(pos, font);
-}
-
-
-// removes the row and reset the touched counters
-void LyXText::removeRow(RowList::iterator rit)
-{
-	if (anchor_row_ == rit) {
-		if (rit == firstRow()) {
-			anchor_row_ = boost::next(rit);
-			anchor_row_offset_ -= rit->height();
-		} else {
-			anchor_row_ = boost::prior(rit);
-			anchor_row_offset_ += anchor_row_->height();
-		}
-	}
-
-	// the text becomes smaller
-	height -= rit->height();
-
-	rowlist_.erase(rit);
-}
-
-
-// remove all following rows of the paragraph of the specified row.
-void LyXText::removeParagraph(ParagraphList::iterator pit,
-	RowList::iterator rit)
-{
-	RowList::iterator end = endRow(pit);
-	for (++rit; rit != end; ) {
-		RowList::iterator rit2 = boost::next(rit);
-		removeRow(rit);
-		rit = rit2;
-	}
-}
-
-
-void LyXText::insertParagraph(ParagraphList::iterator pit,
-			      RowList::iterator rit)
-{
-	// insert a new row, starting at position 0
-	rit = rowlist_.insert(rit, Row(0));
-
-	// and now append the whole paragraph before the new row
-
-	pos_type const last = pit->size();
-	bool done = false;
-
-	do {
-		pos_type z = rowBreakPoint(pit, *rit);
-
-		RowList::iterator tmprow = rit;
-
-		if (z < last) {
-			++z;
-			rit = rowlist_.insert(boost::next(rit), Row(z));
-		} else {
-			done = true;
-		}
-
-		// Set the dimensions of the row
-		// fixed fill setting now by calling inset->update() in
-		// singleWidth when needed!
-		tmprow->fill(fill(pit, tmprow, workWidth()));
-		setHeightOfRow(pit, tmprow);
-
-	} while (!done);
 }
 
 
@@ -617,18 +555,40 @@ void LyXText::redoParagraphs(ParagraphList::iterator start,
 
 void LyXText::redoParagraph(ParagraphList::iterator pit)
 {
-	RowList::iterator first = beginRow(pit);
-	RowList::iterator last = endRow(pit);
+	RowList::iterator rit = pit->rows.begin();
+	RowList::iterator end = pit->rows.end();
 
-	// remove paragraph from rowlist
-	while (first != last) {
-		RowList::iterator rit2 = first;
-		++first;
-		removeRow(rit2);
+	// remove rows of paragraph
+	for ( ; rit != end; ++rit) {
+		if (rit == anchor_row_)
+			anchor_row_ = endRow();
+		height -= rit->height();
+	}
+	pit->rows.clear();
+
+	// rebreak the paragraph
+	// insert a new row, starting at position 0
+
+	pos_type z = 0;
+	pit->rows.push_back(Row(z));
+	bool done = false;
+	while (!done) {
+		z = rowBreakPoint(pit, pit->rows.back());
+
+		RowList::iterator tmprow = boost::prior(pit->rows.end());
+
+		if (z >= pit->size())
+			done = true;
+		else {
+			++z;
+			pit->rows.push_back(Row(z));
+		}
+
+		tmprow->fill(fill(pit, tmprow, workWidth()));
+		setHeightOfRow(pit, tmprow);
 	}
 
-	// reinsert the paragraph
-	insertParagraph(pit, last);
+	//lyxerr << "redoParagraph: " << pit->rows.size() << " rows\n";
 }
 
 
@@ -646,7 +606,6 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	//Assert(mi.base.textwidth);
 
 	// rebuild row cache
-	rowlist_.clear();
 	width = 0;
 	height = 0;
 
@@ -657,6 +616,8 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	ParagraphList::iterator end = ownerParagraphs().end();
 
 	for (; pit != end; ++pit) {
+		pit->rows.clear();
+
 		InsetList::iterator ii = pit->insetlist.begin();
 		InsetList::iterator iend = pit->insetlist.end();
 		for (; ii != iend; ++ii) {
@@ -717,7 +678,7 @@ void LyXText::cursorEnd()
 	RowList::iterator next_rit = boost::next(rit);
 	RowList::iterator end = boost::next(rit);
 	ParagraphList::iterator pit = cursor.par();
-	pos_type last_pos = lastPos(*this, pit, rit);
+	pos_type last_pos = lastPos(*pit, rit);
 
 	if (next_rit == end) {
 		++last_pos;
@@ -1391,7 +1352,7 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	cur.par(pit);
 	cur.pos(pos);
 	cur.boundary(boundary);
-	if (rows().empty())
+	if (noRows())
 		return;
 
 	// get the cursor y position in text
@@ -1402,7 +1363,7 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	// same paragraph and there is a previous row then put the cursor on
 	// the end of the previous row
 	cur.iy(y + row->baseline());
-	if (row != beginRow(pit)
+	if (row != pit->rows.begin()
 	    && pos
 	    && pos < pit->size()
 	    && pit->getChar(pos) == Paragraph::META_INSET) {
@@ -1418,7 +1379,7 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	// y is now the cursor baseline
 	cur.y(y);
 
-	pos_type last = lastPrintablePos(*this, pit, old_row);
+	pos_type last = lastPrintablePos(*pit, old_row);
 
 	// None of these should happen, but we're scaredy-cats
 	if (pos > pit->size()) {
@@ -1502,7 +1463,7 @@ float LyXText::getCursorX(ParagraphList::iterator pit, RowList::iterator rit,
 				x -= singleWidth(pit, body_pos - 1);
 		}
 
-		if (hfillExpansion(*this, pit, rit, pos)) {
+		if (hfillExpansion(*pit, rit, pos)) {
 			x += singleWidth(pit, pos);
 			if (pos >= body_pos)
 				x += fill_hfill;
@@ -1579,7 +1540,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	prepareToPrint(pit, rit, tmpx, fill_separator, fill_hfill, fill_label_hfill);
 
 	pos_type vc = rit->pos();
-	pos_type last = lastPrintablePos(*this, pit, rit);
+	pos_type last = lastPrintablePos(*pit, rit);
 	pos_type c = 0;
 	LyXLayout_ptr const & layout = pit->layout();
 
@@ -1609,7 +1570,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 				tmpx -= singleWidth(pit, body_pos - 1);
 		}
 
-		if (hfillExpansion(*this, pit, rit, c)) {
+		if (hfillExpansion(*pit, rit, c)) {
 			tmpx += singleWidth(pit, c);
 			if (c >= body_pos)
 				tmpx += fill_hfill;
@@ -1637,7 +1598,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	// This (rtl_support test) is not needed, but gives
 	// some speedup if rtl_support == false
 	bool const lastrow = lyxrc.rtl_support
-			&& boost::next(rit) == endRow(pit);
+			&& boost::next(rit) == pit->rows.end();
 
 	// If lastrow is false, we don't need to compute
 	// the value of rtl.
@@ -1695,16 +1656,12 @@ namespace {
 	bool beforeFullRowInset(LyXText & lt, LyXCursor const & cur)
 	{
 		RowList::iterator row = lt.getRow(cur);
-		if (boost::next(row) == lt.endRow())
-			return false;
-
 		RowList::iterator next = boost::next(row);
 
-		if (next == lt.endRow(cur.par()) || next->pos() != cur.pos())
+		if (next == cur.par()->rows.end() || next->pos() != cur.pos())
 			return false;
 
-		if (cur.pos() == cur.par()->size()
-		    || !cur.par()->isInset(cur.pos()))
+		if (cur.pos() == cur.par()->size() || !cur.par()->isInset(cur.pos()))
 			return false;
 
 		InsetOld const * inset = cur.par()->getInset(cur.pos());
@@ -1719,9 +1676,8 @@ namespace {
 void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 {
 	// Get the row first.
-
-	RowList::iterator row = getRowNearY(y);
-	ParagraphList::iterator pit = getPar(row);
+	ParagraphList::iterator pit;
+	RowList::iterator row = getRowNearY(y, pit);
 	bool bound = false;
 	pos_type const column = getColumnNearX(pit, row, x, bound);
 	cur.par(pit);
@@ -1729,15 +1685,15 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 	cur.x(x);
 	cur.y(y + row->baseline());
 
-	if (beforeFullRowInset(*this, cur)) {
-		pos_type const last = lastPrintablePos(*this, pit, row);
-		RowList::iterator next_row = boost::next(row);
-		cur.ix(int(getCursorX(pit, next_row, cur.pos(), last, bound)));
-		cur.iy(y + row->height() + next_row->baseline());
-	} else {
+//	if (beforeFullRowInset(*this, cur)) {
+//		pos_type const last = lastPrintablePos(*this, pit, row);
+//		RowList::iterator next_row = nextRow(row);
+//		cur.ix(int(getCursorX(pit, next_row, cur.pos(), last, bound)));
+//		cur.iy(y + row->height() + next_row->baseline());
+//	} else {
 		cur.iy(cur.y());
 		cur.ix(cur.x());
-	}
+//	}
 	cur.boundary(bound);
 }
 
@@ -1794,8 +1750,10 @@ void LyXText::cursorUp(bool selecting)
 		}
 	}
 #else
+	lyxerr << "cursorUp: y " << cursor.y() << " bl: " <<
+		cursorRow()->baseline() << endl;
 	setCursorFromCoordinates(cursor.x_fix(),
-		 cursor.y() - cursorRow()->baseline() - 1);
+		cursor.y() - cursorRow()->baseline() - 1);
 #endif
 }
 
@@ -1959,45 +1917,19 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			selection.cursor.par()  == old_cursor.par()
 			&& selection.cursor.pos() == old_cursor.pos());
 
-		if (getRow(old_cursor) != firstRow()) {
-			RowList::iterator prevrow = boost::prior(getRow(old_cursor));
-			tmpcursor = cursor;
-			cursor = old_cursor; // that undo can restore the right cursor position
-			#warning FIXME. --end() iterator is usable here
-			ParagraphList::iterator endpit = boost::next(old_cursor.par());
-			while (endpit != ownerParagraphs().end() &&
-			       endpit->getDepth()) {
-				++endpit;
-			}
+		tmpcursor = cursor;
+		cursor = old_cursor; // that undo can restore the right cursor position
 
-			recordUndo(bv(), Undo::DELETE, old_cursor.par(),
-				boost::prior(endpit));
-			cursor = tmpcursor;
+		ParagraphList::iterator endpit = boost::next(old_cursor.par());
+		while (endpit != ownerParagraphs().end() && endpit->getDepth())
+			++endpit;
+	
+		recordUndo(bv(), Undo::DELETE, old_cursor.par(), boost::prior(endpit));
+		cursor = tmpcursor;
 
-			// delete old row
-			removeRow(getRow(old_cursor));
-			// delete old par
-			ownerParagraphs().erase(old_cursor.par());
-		} else {
-			RowList::iterator nextrow = boost::next(getRow(old_cursor));
-
-			tmpcursor = cursor;
-			cursor = old_cursor; // that undo can restore the right cursor position
-#warning FIXME. --end() iterator is usable here
-			ParagraphList::iterator endpit = boost::next(old_cursor.par());
-			while (endpit != ownerParagraphs().end() &&
-			       endpit->getDepth()) {
-				++endpit;
-			}
-
-			recordUndo(bv(), Undo::DELETE, old_cursor.par(), boost::prior(endpit));
-			cursor = tmpcursor;
-
-			// delete old row
-			removeRow(getRow(old_cursor));
-			// delete old par
-			ownerParagraphs().erase(old_cursor.par());
-		}
+		// delete old par
+		ownerParagraphs().erase(old_cursor.par());
+		redoParagraph();
 
 		// correct cursor y
 		setCursorIntern(cursor.par(), cursor.pos());

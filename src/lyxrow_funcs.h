@@ -4,31 +4,23 @@
 #define LYXROW_FUNCS_H
 
 #include "RowList.h"
-#include "ParagraphList.h"
-
 #include "support/types.h"
 
-class LyXText;
+class Paragraph;
 
-bool isParEnd(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit);
+bool isParEnd(Paragraph const & par, RowList::iterator rit);
 
-lyx::pos_type lastPos(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit);
+lyx::pos_type lastPos(Paragraph const & par, RowList::iterator rit);
 
-lyx::pos_type lastPrintablePos(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit);
+lyx::pos_type lastPrintablePos(Paragraph const & par, RowList::iterator rit);
 
-int numberOfSeparators(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit);
+int numberOfSeparators(Paragraph const & par, RowList::iterator rit);
 
-int numberOfHfills(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit);
+int numberOfHfills(Paragraph const & par, RowList::iterator rit);
 
-int numberOfLabelHfills(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit);
+int numberOfLabelHfills(Paragraph const & par, RowList::iterator rit);
 
-bool hfillExpansion(LyXText const & lt,
-	ParagraphList::iterator pit, RowList::iterator rit, lyx::pos_type pos);
+bool hfillExpansion(Paragraph const & par, RowList::iterator rit,
+	lyx::pos_type pos);
 
 #endif

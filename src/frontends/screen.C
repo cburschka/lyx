@@ -393,7 +393,8 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 
 	int const topy = text->top_y();
 	int y_text = topy + y1;
-	RowList::iterator rit = text->getRowNearY(y_text);
+	ParagraphList::iterator dummypit;
+	RowList::iterator rit = text->getRowNearY(y_text, dummypit);
 	int y = y_text - topy;
 
 	y = paintRows(*bv, *text, rit, xo, y, y, y2, yo);

@@ -235,7 +235,7 @@ ParagraphList::iterator depthHook(ParagraphList::iterator pit,
 	if (newpit != beg)
 		--newpit;
 
-	while (newpit !=  beg && newpit->getDepth() > depth) {
+	while (newpit != beg && newpit->getDepth() > depth) {
 		--newpit;
 	}
 
@@ -657,7 +657,7 @@ TeXOnePar(Buffer const * buf,
 		}
 	}
 
-	if ((in == 0) || !in->forceDefaultParagraphs(in)) {
+	if (in == 0 || !in->forceDefaultParagraphs(in)) {
 		further_blank_line = false;
 		if (pit->params().lineBottom()) {
 			os << "\\lyxline{\\" << font.latexSize() << '}';
