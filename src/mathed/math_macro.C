@@ -38,6 +38,12 @@ MathMacro::MathMacro(MathMacroTemplate const & t)
 {}
 
 
+MathMacro::MathMacro(MathMacro const & t)
+	: MathInset(t), tmplate_(t.tmplate_) // don't copy 'expanded_'!
+{}
+
+
+
 MathInset * MathMacro::clone() const
 {
 	return new MathMacro(*this);
@@ -85,6 +91,8 @@ void MathMacro::draw(Painter & pain, int x, int y)
 	xo(x);
 	yo(y);
 
+	Metrics(size());
+
 	LColor::color col;
 
 	if (mathcursor && mathcursor->isInside(this)) {
@@ -116,7 +124,8 @@ void MathMacro::draw(Painter & pain, int x, int y)
 		col = LColor::black;
 	}
 
-	pain.rectangle(x + 1, y - ascent() + 1, width() - 2, height() - 2, col);
+	if (nargs() > 0)
+		pain.rectangle(x + 1, y - ascent() + 1, width() - 2, height() - 2, col);
 }
 
 

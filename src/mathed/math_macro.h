@@ -39,6 +39,8 @@ public:
 	/// A macro can be built from an existing template
 	explicit MathMacro(MathMacroTemplate const &);
 	///
+	MathMacro(MathMacro const &);
+	///
 	void draw(Painter &, int, int);
 	///
 	void Metrics(MathStyles st, int asc = 0, int des = 0);
@@ -65,6 +67,8 @@ private:
 	MathMacroTemplate const * const tmplate_;
 	///
 	MathXArray expanded_;
+	///
+	void operator=(MathMacro const &);
 };
 
 
