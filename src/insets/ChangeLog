@@ -1,3 +1,10 @@
+2003-11-01  Alfredo Braunstein  <abraunst@libero.it>
+
+	* inset.[Ch]: 
+	* insettext.[Ch]: 
+	* insettabular.[Ch]: 
+	* insetcollapsable.[Ch]: bool haveParagraphs() -> int numParagraphs()
+
 2003-10-31  José Matos  <jamatos@lyx.org>
 
 	* inset.h (ascii, linuxdoc, docbook):

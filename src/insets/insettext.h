@@ -197,9 +197,7 @@ public:
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 	///
-	bool haveParagraphs() const {
-		return true;
-	}
+	int numParagraphs() const { return 1; }
 	///
 	mutable ParagraphList paragraphs;
 protected:

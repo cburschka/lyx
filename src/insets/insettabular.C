@@ -2391,6 +2391,12 @@ ParagraphList * InsetTabular::getParagraphs(int i) const
 }
 
 
+int InsetTabular::numParagraphs() const
+{
+	return tabular.getNumberOfCells();
+}
+
+
 LyXText * InsetTabular::getText(int i) const
 {
 	return i < tabular.getNumberOfCells()

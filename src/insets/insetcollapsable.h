@@ -119,6 +119,8 @@ public:
 	///
 	ParagraphList * getParagraphs(int) const;
 	///
+	int numParagraphs() const;
+	///
 	LyXText * getText(int) const;
 	///
 	LyXCursor const & cursor(BufferView *) const;

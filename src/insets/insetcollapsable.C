@@ -472,6 +472,12 @@ ParagraphList * InsetCollapsable::getParagraphs(int i) const
 }
 
 
+int InsetCollapsable::numParagraphs() const
+{
+	return inset.numParagraphs();
+}
+
+
 LyXText * InsetCollapsable::getText(int i) const
 {
 	return inset.getText(i);

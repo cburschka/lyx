@@ -239,9 +239,7 @@ public:
 	///
 	virtual LyXText * getText(int /*num*/) const { return 0; }
 	///
-	virtual bool haveParagraphs() const {
-		return false;
-	}
+	virtual int numParagraphs() const { return 0; }
 
 	/// return the cursor if we own one otherwise giv'em just the
 	/// BufferView cursor to work with.
