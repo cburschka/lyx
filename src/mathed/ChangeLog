@@ -1,12 +1,16 @@
+2001-07-22  André Pönitz  <poenitz@gmx.net>
+
+	* math_cursor.C: fix "pullArg" behaviour
+
 2001-07-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* formula.C (insetAllowed): allow insertion of label
 
-2001-07-20 André Pönitz  <poenitz@htwm.de>
+2001-07-20 André Pönitz  <poenitz@gmx.net>
 
 	* math_macrotable.C: support for \land and \vee
 
-2001-07-16 André Pönitz  <poenitz@htwm.de>
+2001-07-16 André Pönitz  <poenitz@gmx.net>
 
 	* math_grid.[Ch] -> math_gridinset.[Ch]
 	  math_root.[Ch] -> math_rootinset.[Ch]: more consistent names
@@ -20,7 +24,7 @@
 	(operator<): ditto
 	(normalAnchor): reversed one test (but shouldn't it really be >= ?)
 
-2001-07-16 André Pönitz  <poenitz@htwm.de>
+2001-07-16 André Pönitz  <poenitz@gmx.net>
 
 	* math_cursor.[hC]: multicell selection (multicell pasete still defunct)
 
@@ -37,21 +41,19 @@
 
 	* math_decorationinset.h: add std:: qualifier
 
-2001-07-12 André Pönitz  <poenitz@htwm.de>
+2001-07-12 André Pönitz  <poenitz@gmx.net>
 
 	* math_updowninset.[hC]: new base class for script and bigop insets
 		*.[hC]: subsequent changes to all Metric() functions
 	
 	* math_parser.C: small changes (\sqrt0 is read properly now)
 	
-2001-07-10 André Pönitz  <poenitz@htwm.de>
+2001-07-10 André Pönitz  <poenitz@gmx.net>
 	
 	* math_accentinset.[hC]: rewrite
 
 	* math_parser.C:
 		math_cursor.C: subsequent changes
-
-2001-07-10 André Pönitz  <poenitz@htwm.de>
 
 	* math_grid.C: <Delete> in the first cell of a completely empty row
 	  deletes that row, <C-Return> places the cursor in the first of the
@@ -75,7 +77,7 @@
 	* formulabase.C (mathDispatchInsertMath): remove bogus return
 	statement. 
 
-2001-07-09 André Pönitz  <poenitz@htwm.de>
+2001-07-09 André Pönitz  <poenitz@gmx.net>
 
 	* math_*inset.C: Change order of arguments in MathInset constructor 
 
@@ -85,13 +87,13 @@
 
 	* formulabase.C (mathDispatchInsertMath): Create an inline formula.
 
-2001-07-04 André Pönitz  <poenitz@htwm.de>
+2001-07-04 André Pönitz  <poenitz@gmx.net>
 
 	* math_parser.C: fix reading of "unusual" alpha chars
 
 	* xarray.[hC]: fix debug output of xarray
 
-2001-07-03 André Pönitz  <poenitz@htwm.de>
+2001-07-03 André Pönitz  <poenitz@gmx.net>
 
 	* math_parser.C: fix bug where equations did not get their labels
 
@@ -235,13 +237,13 @@
 	* formula.C (HandleExtern): add .c_str() to .str() (useful when
 	using lyxtring)
 
-2001-04-27 André Pönitz  <poenitz@htwm.de>
+2001-04-27 André Pönitz  <poenitz@gmx.net>
 
 	* math_parser.C: fix \frac handling bug introduced on 04-24
 	* math_xiter.C: hotfix for merging "shared" insets
 	* formula.C: fixing display after using math-insert
 
-2001-04-25 André Pönitz  <poenitz@htwm.de>
+2001-04-25 André Pönitz  <poenitz@gmx.net>
 
 	* math_*.[Ch]: WriteNormal
 	* formula.C: Support for new "math extern" command
@@ -252,7 +254,7 @@
 
 	* math_macrotable.C: include <iostream>
 
-2001-04-24 André Pönitz  <poenitz@htwm.de>
+2001-04-24 André Pönitz  <poenitz@gmx.net>
 
 	* math_macro.[Ch]:
 	* math_macrotable.[Ch]:
@@ -301,7 +303,7 @@
 
 	* math_rowst.C: add missing #include <config.h>.
 
-2001-03-16  André Pönitz  <poenitz@htwm.de>
+2001-03-16  André Pönitz  <poenitz@gmx.net>
 
 	* math_matrixinset.h:
 	* math_parinset.[Ch]:
@@ -321,7 +323,7 @@
 
 	* math_cursor.C: use lyxerr instead of cerr.
 
-2001-03-15  André Pönitz  <poenitz@htwm.de>
+2001-03-15  André Pönitz  <poenitz@gmx.net>
 
 	* math_cursor.C: fix bug (cursor was leaving two insets at a time
 	   instead of one)
@@ -333,7 +335,7 @@
 
 	* math_rowst.h: make MathedRowContainer::iterator public.
 
-2001-03-15  André Pönitz  <poenitz@htwm.de>
+2001-03-15  André Pönitz  <poenitz@gmx.net>
 
 	* math_parser.C: read '\nonumber' again (was broken)
 
@@ -343,26 +345,26 @@
 
 	* math_cursor.C: added using directive.
 
-2001-03-15  André Pönitz  <poenitz@htwm.de>
+2001-03-15  André Pönitz  <poenitz@gmx.net>
 
 	* math_rowst.h: Finally remove MathedRowSt
 
 	* math_parser.C:
 	  math_xiter.C: changed accordingly
 
-2001-03-12  André Pönitz  <poenitz@htwm.de>
+2001-03-12  André Pönitz  <poenitz@gmx.net>
 
 	*	math_rowst.h: replace MathedRowSt with MathedRowStruct,
 	    more robust MathedRowSt::[gs]etTab (to get rid of the constructor arg)
 
-2001-03-10  André Pönitz  <poenitz@htwm.de>
+2001-03-10  André Pönitz  <poenitz@gmx.net>
 
 	* math_xiter.[Ch]:
 	  math_matrixinset.C: move adjustVerticalSt to the only place where
       it is used. Fix a small bug where the cached row structure and the
 	    actual data get out of sync after the deletion of whole rows
 
-2001-03-09  André Pönitz  <poenitz@htwm.de>
+2001-03-09  André Pönitz  <poenitz@gmx.net>
 
 	* math_cursor.C: use std::vector<> in MathStackXIter
 		change selstk from a pointer to the "real thing"
@@ -373,7 +375,7 @@
 
 	* math_parser.C: use MathedRowContainer::insert_after
 
-2001-03-08  André Pönitz  <poenitz@htwm.de>
+2001-03-08  André Pönitz  <poenitz@gmx.net>
 
 	* math_rowst.h: give MathedRowContainer an 'insert' method. 
 
@@ -386,7 +388,7 @@
 	* math_matrixinset.[hC]: remove copy constructr and destructor. Those
 	  automatically created by the compiler are ok now.
 	
-2001-03-06  André Pönitz  <poenitz@htwm.de>
+2001-03-06  André Pönitz  <poenitz@gmx.net>
 
 	* array.[Ch]: factor out deep_copy,
 	  remove third argument from raw_pointer_insert 
@@ -399,7 +401,7 @@
 	* math_rowst.h: introduction of MathRowContainer
 	  several files: corresponding changes
 
-2001-03-04  André Pönitz  <poenitz@htwm.de>
+2001-03-04  André Pönitz  <poenitz@gmx.net>
 
   * math_macrotemplate.[Ch]:
     math_macro.C: move update() functionality to the macro
@@ -623,7 +625,7 @@
 
 	* formulamacro.C (LocalDispatch): ditto.
 
-2001-02-14  André Pönitz  <poenitz@htwm.de>
+2001-02-14  André Pönitz  <poenitz@gmx.net>
 
 	* math_parinset.[Ch]: make array a real MathArray, not just a
 	  pointer to one.
@@ -641,7 +643,7 @@
 
 	* array.C (MathedArray): Fix compilation problem.
 
-2001-02-14  André Pönitz  <poenitz@htwm.de>
+2001-02-14  André Pönitz  <poenitz@gmx.net>
 
 	* array.[Ch]: "deep" copy constructor and assignment operator for
 	MathArray 
@@ -651,7 +653,7 @@
 	* math_iter.[Ch]: remove SetData
 	  several files: subsequent changes
 
-2001-02-14  André Pönitz  <poenitz@htwm.de>
+2001-02-14  André Pönitz  <poenitz@gmx.net>
 
 	* array.[Ch]: remove constructor and  enums ARRAY_MIN_SIZE and
 	ARRAY_STEP 
@@ -669,7 +671,7 @@
 
 	* changes to several files because of the above.
 	
-2001-02-14  André Pönitz  <poenitz@htwm.de>
+2001-02-14  André Pönitz  <poenitz@gmx.net>
 
 	* math_iter.[Ch]: hide fcode_
 	* math_xiter.C:
@@ -697,7 +699,7 @@
 
 	* several files: changes so that several friends can be removed
 
-2001-02-14  André Pönitz  <poenitz@htwm.de>
+2001-02-14  André Pönitz  <poenitz@gmx.net>
 
 	* formula.C: reformatting 
 
@@ -714,7 +716,7 @@
 	* array.C (begin): new method
 	(end): ditto
 
-2001-02-14  André Pönitz  <poenitz@htwm.de>
+2001-02-14  André Pönitz  <poenitz@gmx.net>
 	
 	* math_iter.[Ch]: remove 'insert', 'maxsize' and 'ARRAY_SIZE'
 
@@ -735,7 +737,7 @@
 	* math_accentinset.C: 
 	* math_sqrtinset.C: include LOstream.h and add using directive.
 
-2001-02-14  André Pönitz  <poenitz@htwm.de>
+2001-02-14  André Pönitz  <poenitz@gmx.net>
 
 	* math_iter.C: reformatting 
 
@@ -824,7 +826,7 @@
 	files they belong to. Only first attempt at cleanup more will
 	follow.
 	
-2001-02-12  André Pönitz  <poenitz@htwm.de>
+2001-02-12  André Pönitz  <poenitz@gmx.net>
 	
 	* math_macro.[hC]: replace MathMacroArgument[] with
 	  std::vector<MathMacroArgument>
@@ -848,7 +850,7 @@
 	* math_inset.C (Metrics): Correct drawing of the multline
 	environment.
 
-2001-02-12  André Pönitz  <poenitz@htwm.de>
+2001-02-12  André Pönitz  <poenitz@gmx.net>
 	
 	* array.[hC]: replace private variable maxsize_ with call to
 	bf_.size()
@@ -872,7 +874,7 @@
 
 	* Many files: add support for the align environment from amsmath.
 
-2001-02-09  André Pönitz  <poenitz@htwm.de>
+2001-02-09  André Pönitz  <poenitz@gmx.net>
 
 	* array.h: replace array buffer  'byte bf[]'  by 'std::vector<byte> bf'
 	* several files: subsequent changes         
@@ -885,7 +887,7 @@
 	compiling with lyxstring, but STL sstream).
 	(Metrics): ditto.
 
-2001-02-08  André Pönitz  <poenitz@htwm.de>
+2001-02-08  André Pönitz  <poenitz@gmx.net>
 
 	* several files: get rid of reinterpret_cast.
 

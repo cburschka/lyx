@@ -167,7 +167,7 @@ public:
 	///
 	void idxPrev();
 	///
-	void pullArg();
+	void pullArg(bool goright);
 	///
 	bool isInside(MathInset *) const;
 	///

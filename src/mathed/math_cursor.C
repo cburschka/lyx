@@ -1062,7 +1062,7 @@ MathInset * MathCursor::enclosing(MathInsetTypes t, int & idx) const
 }
 
 
-void MathCursor::pullArg()
+void MathCursor::pullArg(bool goright)
 {
 	// pullArg
 	dump("pullarg");
@@ -1070,6 +1070,8 @@ void MathCursor::pullArg()
 	if (pop()) {
 		array().erase(cursor().pos_);
 		array().insert(cursor().pos_, a);
+		if (goright) 
+			cursor().pos_ += a.size();
 	}
 }
 
