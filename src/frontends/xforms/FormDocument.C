@@ -1319,8 +1319,11 @@ void FormDocument::branch_update(BufferParams const & params)
 			fl_addto_browser(branch_->browser_all_branches, vec[i].c_str());
 		}
 		fl_select_browser_line(branch_->browser_all_branches, 1);
-		current_branch =
-			fl_get_browser_line(branch_->browser_all_branches, 1);
+		if (!vec.empty())
+			current_branch =
+				fl_get_browser_line(branch_->browser_all_branches, 1);
+		else
+			current_branch = "none";
 	}
 
 	// display proper selection...
@@ -1334,7 +1337,11 @@ void FormDocument::branch_update(BufferParams const & params)
 	}
 	// display proper colour...
 	RGBColor rgb;
-	string x11hexname = params.branchlist.getColor(current_branch);
+	string x11hexname;
+	if (current_branch == "none")
+		x11hexname = "none";
+	else
+		x11hexname = params.branchlist.getColor(current_branch);
 	if (x11hexname[0] == '#') {
 		rgb = RGBColor(x11hexname);
 	} else {
