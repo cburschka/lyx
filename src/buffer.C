@@ -933,7 +933,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		++pos;
 	} else if (token == "\\bibitem") {  // ale970302
 		if (!par->bibkey) {
-			InsetCommandParams p( "bibitem" );
+			InsetCommandParams p("bibitem", "dummy");
 			par->bibkey = new InsetBibKey(p);
 		}
 		par->bibkey->Read(this, lex);		        

@@ -1,3 +1,10 @@
+2001-01-31  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* insetbib.C (InsetBibKey): Better computation of default key.
+	(getScreenLabel) Show both the key and the label.
+	(getBibLabel): New method.
+	(callback): Force a redraw if the inset have been changed.
+
 2001-01-26  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetref.C (getType, getName): Move methods from 

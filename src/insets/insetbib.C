@@ -27,6 +27,7 @@ using std::getline;
 using std::endl;
 using std::vector;
 using std::pair;
+using std::max;
 
 FD_bibitem_form * bibitem_form = 0;
 
@@ -76,10 +77,15 @@ FD_bibitem_form * create_form_bibitem_form(void)
 }
 
 
+int InsetBibKey::key_counter = 0;
+const string key_prefix = "key-";
+
 InsetBibKey::InsetBibKey(InsetCommandParams const & p)
 	: InsetCommand(p)
 {
 	counter = 1;
+	if (getContents().empty())
+		setContents(key_prefix + tostr(++key_counter));
 }
 
 
@@ -113,6 +119,9 @@ void InsetBibKey::callback( FD_bibitem_form * form, long data )
 			// shouldn't mark the buffer dirty unless
 			// something was actually altered
 			current_view->updateInset( this, true );
+			// We need to do a redraw becuase the maximum 
+			// InsetBibKey width could have changed.
+			current_view->redraw();
 		} // fall through to Cancel
 	case 0:
 		fl_hide_form(form->bibitem_form);
@@ -124,9 +133,6 @@ void InsetBibKey::callback( FD_bibitem_form * form, long data )
 void InsetBibKey::setCounter(int c) 
 { 
 	counter = c; 
-    
-	if (getCmdName().empty())
-		setCmdName( tostr(counter) );
 }
 
 
@@ -157,15 +163,23 @@ void InsetBibKey::Read(Buffer const *, LyXLex & lex)
 		scanCommand(token);
 	} else
 		lex.printError("InsetCommand: Parse error: `$$Token'");
+
+	if (prefixIs(getContents(), key_prefix)) {
+		int key = strToInt(getContents().substr(key_prefix.length()));
+		key_counter = max(key_counter, key);
+	}
 }
 
-
-string const InsetBibKey::getScreenLabel() const
+string const InsetBibKey::getBibLabel() const
 {
 	if (! getOptions().empty())
 		return getOptions();
-    
 	return tostr(counter);
+}
+
+string const InsetBibKey::getScreenLabel() const
+{
+	return getContents() + " [" + getBibLabel() + "]";
 }
 
 
@@ -398,7 +412,7 @@ string const bibitemWidest(Buffer const * buffer)
 	while (par) {
 		if (par->bibkey) {
 			int const wx =
-				lyxfont::width(par->bibkey->getScreenLabel(),
+				lyxfont::width(par->bibkey->getBibLabel(),
 					       font);
 			if (wx > w) {
 				w = wx;
@@ -408,8 +422,8 @@ string const bibitemWidest(Buffer const * buffer)
 		par = par->next;
 	}
     
-	if (bkey && !bkey->getScreenLabel().empty())
-		return bkey->getScreenLabel();
+	if (bkey && !bkey->getBibLabel().empty())
+		return bkey->getBibLabel();
     
 	return "99";
 }
