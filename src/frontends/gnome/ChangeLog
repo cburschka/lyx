@@ -1,3 +1,7 @@
+2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* GUIRunTime.C: initApplication() should take a int & argc, add debug
+ 
 2001-07-19  Baruch Even  <baruch@lyx.org>
 
 	* Menubar_pimpl.C: Renamed LyXFunc::Dispatch to LyXFunc::dispatch.

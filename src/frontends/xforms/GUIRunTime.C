@@ -38,7 +38,7 @@ int const xforms_include_version = FL_INCLUDE_VERSION;
 } // namespace anon
 
 
-int GUIRunTime::initApplication(int , char **)
+int GUIRunTime::initApplication(int &, char **)
 {
 	// Check the XForms version in the forms.h header against
 	// the one in the libforms. If they don't match quit the

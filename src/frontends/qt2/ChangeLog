@@ -172,6 +172,10 @@
  
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
+	* GUIRunTime.C: fix argc handling
+ 
+2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
+
 	* ui/*.ui: 
 	* ui/Makefile.am: add some sed magic to replace tr() with _()
  

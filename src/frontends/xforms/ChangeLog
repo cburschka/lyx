@@ -1,3 +1,22 @@
+2001-08-31  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormParagraph.C: disable space inputs when != Length
+
+2001-08-31  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormPreferences.C:
+	* form_preferences.h:
+	* form_preferences.C:
+	* forms/form_preferences.fd: add view_dvi_paper_option
+ 
+2001-08-31  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormMathsPanel.h: sub dialogs must be Ignorant.
+ 
+2001-08-31  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormParagraph.C: fix to not allow 0 linespacing
+ 
 2001-08-29  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormCitation.C (c-tor): prevent re-sizing of the dialog.
@@ -22,7 +41,7 @@
 2001-08-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormCitation.C:
-	* forms/form_citation.fd: a littl;e tweaking to ensure that the
+	* forms/form_citation.fd: a little tweaking to ensure that the
 	style choice remains centred within the frame if its contents change.
 
 	* FormBase.h: added an allow_resize_ member variable. If false
@@ -37,6 +56,10 @@
 	make use of this functionality to ensure that the dialog cannot be
 	resized.
 
+2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* GUIRunTime.C: initApplication() should take a int & argc
+ 
 2001-08-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormCitation.h:

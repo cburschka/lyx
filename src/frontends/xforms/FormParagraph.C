@@ -369,6 +369,7 @@ void FormParagraph::update()
 
     fl_set_input (dialog_->input_space_above, "");
 
+    setEnabled(dialog_->input_space_above, false);
     switch (par_->params().spaceTop().kind()) {
     case VSpace::NONE:
 	fl_set_choice (dialog_->choice_space_above, 1);
@@ -389,6 +390,7 @@ void FormParagraph::update()
 	fl_set_choice (dialog_->choice_space_above, 6);
 	break;
     case VSpace::LENGTH:
+	setEnabled(dialog_->input_space_above, true);
 	fl_set_choice (dialog_->choice_space_above, 7);
 	fl_set_input(dialog_->input_space_above, par_->
 		     params().spaceTop().length().asString().c_str());
@@ -399,6 +401,7 @@ void FormParagraph::update()
 		   par_->params().spaceTop().keep());
     fl_set_input (dialog_->input_space_below, "");
 
+    setEnabled(dialog_->input_space_below, false);
     switch (par_->params().spaceBottom().kind()) {
     case VSpace::NONE:
 	fl_set_choice (dialog_->choice_space_below, 1);
@@ -419,6 +422,7 @@ void FormParagraph::update()
 	fl_set_choice (dialog_->choice_space_below, 6);
 	break;
     case VSpace::LENGTH:
+        setEnabled(dialog_->input_space_below, true);
 	fl_set_choice (dialog_->choice_space_below, 7);
         fl_set_input(dialog_->input_space_below, par_->
 		     params().spaceBottom().length().asString().c_str());
@@ -433,7 +437,7 @@ void FormParagraph::update()
 
 bool FormParagraph::input(FL_OBJECT * ob, long)
 {
-    bool ret = true;
+    bool valid = true; 
 
     fl_hide_object(dialog_->text_warning);
 
@@ -443,12 +447,23 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
     // "Synchronize" the choices and input fields, making it
     // impossible to commit senseless data.
 
-    if (fl_get_choice (dialog_->choice_space_above) != 7)
-        fl_set_input (dialog_->input_space_above, "");
-
-    if (fl_get_choice (dialog_->choice_space_below) != 7)
-        fl_set_input (dialog_->input_space_below, "");
-
+    if (ob == dialog_->choice_space_above) {
+        if (fl_get_choice (dialog_->choice_space_above) != 7) {
+            fl_set_input (dialog_->input_space_above, "");
+            setEnabled (dialog_->input_space_above, false);
+        } else {
+            setEnabled (dialog_->input_space_above, !lv_->buffer()->isReadonly());
+        }
+    }
+    if (ob == dialog_->choice_space_below) {
+        if (fl_get_choice (dialog_->choice_space_below) != 7) {
+            fl_set_input (dialog_->input_space_below, "");
+            setEnabled (dialog_->input_space_below, false);
+        } else {
+            setEnabled (dialog_->input_space_below, !lv_->buffer()->isReadonly());
+        }
+    }
+ 
     if (fl_get_choice (dialog_->choice_linespacing) == 5)
         setEnabled (dialog_->input_linespacing, true);
     else {
@@ -457,27 +472,42 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
     }
 
     string input = fl_get_input (dialog_->input_space_above);
-    bool invalid = false;
 	
-    if (fl_get_choice(dialog_->choice_space_above)==7)
-        invalid = !input.empty() && !isValidGlueLength(input);
+    if (fl_get_choice(dialog_->choice_space_above)==7 &&
+        input.empty() || !isValidGlueLength(input))
+        valid = false;
 
-    input = fl_get_input (dialog_->input_space_below);
-
-    if (fl_get_choice(dialog_->choice_space_below)==7)
-        invalid = invalid || (!input.empty() && !isValidGlueLength(input));
-    
-    if (ob == dialog_->input_space_above || ob == dialog_->input_space_below) {
-        if (invalid) {
+    if (ob == dialog_->input_space_above) {
+        if (!isValidGlueLength(input)) {
             fl_set_object_label(dialog_->text_warning,
                 _("Warning: Invalid Length (valid example: 10mm)"));
             fl_show_object(dialog_->text_warning);
-            return false;
-        } else {
+            valid = false;
+        } else
             fl_hide_object(dialog_->text_warning);
-            return true;
-        }
     }
 
-    return ret;
+    input = fl_get_input (dialog_->input_space_below);
+
+    if (fl_get_choice(dialog_->choice_space_below)==7 &&
+        input.empty() || !isValidGlueLength(input))
+        valid = false;
+
+    if (ob == dialog_->input_space_below) {
+        if (!isValidGlueLength(input)) {
+            fl_set_object_label(dialog_->text_warning,
+                _("Warning: Invalid Length (valid example: 10mm)"));
+            fl_show_object(dialog_->text_warning);
+            valid = false;
+        } else
+            fl_hide_object(dialog_->text_warning);
+    }
+
+    double spacing(strToDbl(fl_get_input(dialog_->input_linespacing)));
+
+    if (fl_get_choice (dialog_->choice_linespacing) == 5
+        && int(spacing) == 0)
+        valid = false;
+
+    return valid;
 }

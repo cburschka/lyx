@@ -5,7 +5,7 @@ Internal Form Definition File
 
 Number of forms: 14
 Unit of measure: FL_COORD_PIXEL
-SnapGrid: 1
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_preferences
@@ -2663,7 +2663,7 @@ argument: 0
 Name: form_outputs_misc
 Width: 455
 Height: 375
-Number of Objects: 7
+Number of Objects: 8
 
 --------------------
 class: FL_BOX
@@ -2686,7 +2686,7 @@ argument:
 --------------------
 class: FL_COUNTER
 type: NORMAL_COUNTER
-box: 315 50 100 30
+box: 320 25 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -2708,7 +2708,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 216 95 200 30
+box: 220 65 200 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -2726,7 +2726,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 219 142 199 29
+box: 220 110 199 29
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -2744,7 +2744,7 @@ argument: 0
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 12 186 406 120
+box: 15 150 405 135
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -2762,7 +2762,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 121 209 285 30
+box: 125 165 285 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -2780,7 +2780,7 @@ argument: 0
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 121 250 285 30
+box: 125 205 285 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -2792,6 +2792,24 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: input_checktex
+callback: C_FormBaseDeprecatedInputCB
+argument: 0
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 125 245 285 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: DVI paper option
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_paperoption
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 

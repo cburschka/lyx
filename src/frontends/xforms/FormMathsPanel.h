@@ -120,7 +120,7 @@ private:
 	///
 	virtual void disconnect();
 	/// The ButtonController
-	ButtonController<OkApplyCancelReadOnlyPolicy, xformsBC> bc_;
+	ButtonController<IgnorantPolicy, xformsBC> bc_;
 };
 
 

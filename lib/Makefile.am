@@ -5,6 +5,9 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in listerrors
 SUBDIRS = reLyX
 bin_SCRIPTS = listerrors
 
+M4=m4
+CHMOD=chmod
+
 BIND = bind/*.bind
 CLIPART = clipart/*.eps
 DOCDIST = doc/LyXConfig.lyx*
@@ -18,6 +21,10 @@ TEMPL = templates/*.lyx
 TEXSUPPORT = tex/*.cls
 UI = ui/*.ui
 
+configure: configure.m4
+	$(M4) $< > $@
+	$(CHMOD) 755 $@
+ 
 LIBINSTFILES = $(BIND) $(CLIPART) $(DOCINST) $(EXAMPLES) $(IMAGES) $(KBD) \
 	$(LAYOUT) $(TEMPL) $(TEXSUPPORT) $(UI)
 

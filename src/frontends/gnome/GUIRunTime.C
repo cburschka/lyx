@@ -42,7 +42,7 @@ int const xforms_include_version = FL_INCLUDE_VERSION;
 
 GLyxAppWin * mainAppWin;
 
-int GUIRunTime::initApplication(int, char * argv[])
+int GUIRunTime::initApplication(int &, char * argv[])
 {
 	// Check the XForms version in the forms.h header against
 	// the one in the libforms. If they don't match quit the
@@ -94,8 +94,10 @@ void GUIRunTime::runTime()
 	while (!finished) {
 		processEvents();
 		if (fl_check_forms() == FL_EVENT) {
-			lyxerr << "LyX: This shouldn't happen..." << endl;
 			fl_XNextEvent(&ev);
+			lyxerr << "Received unhandled X11 event" << endl;
+			lyxerr << "Type: 0x" << hex << ev.xany.type <<
+				"Target: 0x" << hex << ev.xany.window << endl;
 		}
 	}
 }

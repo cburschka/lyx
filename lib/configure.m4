@@ -353,6 +353,14 @@ case $TOPNG in
 	pnmtopng) gif_to_png="giftopnm \$\$i | pnmtopng >\$\$o" eps_to_png="pstopnm \$\$i| pnmtopng >\$\$o" jpg_to_png="jpegtopnm \$\$i | pnmtopng >\$\$o";;
 esac
 
+SEARCH_PROG([for a Image -> XPM converter], TOXPM, convert)
+if test "$TOXPM" = "convert"; then
+	gif_to_xpm="convert GIF:\$\$i XPM:\$\$o"
+	eps_to_xpm="convert EPS:\$\$i XPM:\$\$o" 
+	jpg_to_xpm="convert JPG:\$\$i XPM:\$\$o"
+	png_to_xpm="convert PNG:\$\$i XPM:\$\$o"
+fi
+
 SEARCH_PROG([For an EPS -> PDF converter], EPSTOPDF, epstopdf)
 case $EPSTOPDF in
 	epstopdf) eps_to_pdf="epstopdf --outfile=\$\$o \$\$i";;
@@ -449,6 +457,7 @@ cat >lyxrc.defaults <<EOF
 \\Format png	  png	PNG		""
 \\Format ps	  ps	Postscript	t
 \\Format program  ""	Program		""
+\\Format xpm      xpm   XPM             ""
 \\Format word	  doc	Word		W
 
 \\converter latex dvi "$latex_to_dvi" "latex"
@@ -480,6 +489,12 @@ cat >lyxrc.defaults <<EOF
 \\converter epsi png "$eps_to_png" ""
 \\converter jpg  png "$jpg_to_png" ""
 
+\\converter gif  xpm "$gif_to_xpm" ""
+\\converter eps  xpm "$eps_to_xpm" ""
+\\converter epsi xpm "$eps_to_xpm" ""
+\\converter jpg  xpm "$jpg_to_xpm" ""
+\\converter png  xpm "$png_to_xpm" ""
+ 
 \\converter eps  pdf "$eps_to_pdf" ""
 \\converter epsi pdf "$eps_to_pdf" ""
 

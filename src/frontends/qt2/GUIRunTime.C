@@ -36,7 +36,7 @@ using std::endl;
 
 extern bool finished;
 
-int GUIRunTime::initApplication(int argc, char * argv[])
+int GUIRunTime::initApplication(int & argc, char * argv[])
 {
 	int const xforms_include_version = FL_INCLUDE_VERSION;
  

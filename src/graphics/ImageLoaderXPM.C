@@ -70,7 +70,7 @@ ImageLoaderXPM::runImageLoader(string const & filename)
 	Pixmap mask;
 	XpmAttributes attrib;
 	
-	attrib.valuemask = XpmCloseness | XpmAllocColor;
+	attrib.valuemask = XpmCloseness;
 	attrib.closeness = 10000;
 	
 	int status = XpmReadFileToPixmap(

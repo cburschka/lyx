@@ -1939,6 +1939,7 @@ void FormPreferences::OutputsMisc::apply() const
 
 	lyxrc.ascii_roff_command = fl_get_input(dialog_->input_ascii_roff);
 	lyxrc.chktex_command = fl_get_input(dialog_->input_checktex);
+	lyxrc.view_dvi_paper_option = fl_get_input(dialog_->input_paperoption);
 }
 
 
@@ -1962,6 +1963,7 @@ void FormPreferences::OutputsMisc::build()
 	setPreHandler(dialog_->choice_default_papersize);
 	setPreHandler(dialog_->input_ascii_roff);
 	setPreHandler(dialog_->input_checktex);
+	setPreHandler(dialog_->input_paperoption);
 }
 
 
@@ -1980,6 +1982,8 @@ FormPreferences::OutputsMisc::feedback(FL_OBJECT const * const ob) const
 		str = lyxrc.getDescription(LyXRC::RC_CHKTEX_COMMAND);
 	else if (ob == dialog_->choice_default_papersize)
 		str = lyxrc.getDescription(LyXRC::RC_DEFAULT_PAPERSIZE);
+	else if (ob == dialog_->input_paperoption)
+		str = lyxrc.getDescription(LyXRC::RC_VIEWDVI_PAPEROPTION);
 
 	return str;
 }
@@ -1997,6 +2001,8 @@ void FormPreferences::OutputsMisc::update()
 		     lyxrc.ascii_roff_command.c_str());
 	fl_set_input(dialog_->input_checktex,
 		     lyxrc.chktex_command.c_str());
+	fl_set_input(dialog_->input_paperoption,
+                     lyxrc.view_dvi_paper_option.c_str());
 }
 
 

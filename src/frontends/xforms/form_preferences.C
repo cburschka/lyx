@@ -1026,7 +1026,7 @@ FD_form_outputs_misc * FormPreferences::build_outputs_misc()
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
   {
     char const * const dummy = N_("Ascii line length|#A");
-    fdui->counter_line_len = obj = fl_add_counter(FL_NORMAL_COUNTER, 315, 50, 100, 30, idex(_(dummy)));
+    fdui->counter_line_len = obj = fl_add_counter(FL_NORMAL_COUNTER, 320, 25, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -1038,34 +1038,37 @@ FD_form_outputs_misc * FormPreferences::build_outputs_misc()
     fl_set_counter_step(obj, 1, 1);
   {
     char const * const dummy = N_("TeX encoding|#T");
-    fdui->input_tex_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 216, 95, 200, 30, idex(_(dummy)));
+    fdui->input_tex_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 220, 65, 200, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("Default paper size|#p");
-    fdui->choice_default_papersize = obj = fl_add_choice(FL_NORMAL_CHOICE, 219, 142, 199, 29, idex(_(dummy)));
+    fdui->choice_default_papersize = obj = fl_add_choice(FL_NORMAL_CHOICE, 220, 110, 199, 29, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 12, 186, 406, 120, _("Outside code interaction"));
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 15, 150, 405, 135, _("Outside code interaction"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
     char const * const dummy = N_("ascii roff|#r");
-    fdui->input_ascii_roff = obj = fl_add_input(FL_NORMAL_INPUT, 121, 209, 285, 30, idex(_(dummy)));
+    fdui->input_ascii_roff = obj = fl_add_input(FL_NORMAL_INPUT, 125, 165, 285, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   {
     char const * const dummy = N_("checktex|#c");
-    fdui->input_checktex = obj = fl_add_input(FL_NORMAL_INPUT, 121, 250, 285, 30, idex(_(dummy)));
+    fdui->input_checktex = obj = fl_add_input(FL_NORMAL_INPUT, 125, 205, 285, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  fdui->input_paperoption = obj = fl_add_input(FL_NORMAL_INPUT, 125, 245, 285, 30, _("DVI paper option"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fl_end_form();

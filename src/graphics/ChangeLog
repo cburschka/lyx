@@ -1,3 +1,8 @@
+2001-09-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ImageLoadXPM.C: remove setting of alloc colour mask,
+	  led to crash as we don't define a callback
+
 2001-07-29  Baruch Even  <baruch@lyx.org>
 
 	* ImageLoaderXPM.C (runImageLoader): When loading agree to use non-exact

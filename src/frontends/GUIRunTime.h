@@ -26,7 +26,7 @@ class GUIRunTime {
 public:
 	/// initialise the toolkit 
 	static
-	int initApplication(int argc, char * argv[]);
+	int initApplication(int & argc, char * argv[]);
 	/// process pending events
 	static
 	void processEvents();
