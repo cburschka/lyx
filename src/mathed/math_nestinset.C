@@ -820,7 +820,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 }
 
 
-bool MathNestInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+bool MathNestInset::getStatus(LCursor & /*cur*/, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	// the font related toggles
