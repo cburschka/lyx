@@ -34,8 +34,6 @@ public:
 	///
 	virtual int workHeight() const { return work_area->h; }
 	///
-	virtual unsigned int width() const { return work_area->w + scrollbar->w; }
-	///
 	virtual int xpos() const { return work_area->x; }
 	///
 	virtual int ypos() const { return work_area->y; }
