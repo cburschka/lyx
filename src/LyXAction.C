@@ -434,6 +434,10 @@ void LyXAction::init()
 		  N_("Display information about LyX"), NoBuffer },
 		{ LFUN_HELP_TEXINFO, "help-Texinfo",
 		  N_("Display information about the TeX installation"), NoBuffer },
+		{ LFUN_FORKS_SHOW, "show-forks",
+		  N_("Show the processes forked by LyX"), NoBuffer },
+		{ LFUN_FORKS_KILL, "kill-forks",
+		  N_("Kill the forked process with this PID"), NoBuffer },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

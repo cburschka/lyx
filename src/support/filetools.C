@@ -33,7 +33,7 @@
 #include <cerrno>
 #include "debug.h"
 #include "support/lstrings.h"
-#include "support/syscall.h"
+#include "support/systemcall.h"
 
 #include "filetools.h"
 #include "LSubstring.h"
@@ -1061,8 +1061,8 @@ string const unzipFile(string const & zipped_file)
 	string  const tempfile = lyx::tempName(string(), file);
 	// Run gunzip
 	string const command = "gunzip -c " + zipped_file + " > " + tempfile;
-	Systemcalls one;
-	one.startscript(Systemcalls::Wait, command);
+	Systemcall one;
+	one.startscript(Systemcall::Wait, command);
 	// test that command was executed successfully (anon)
 	// yes, please do. (Lgb)
 	return tempfile;

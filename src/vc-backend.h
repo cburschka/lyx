@@ -8,7 +8,6 @@
 #endif
 
 #include "LString.h"
-#include "support/syscall.h"
 
 class Buffer;
 

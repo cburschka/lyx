@@ -17,12 +17,6 @@
 
 #include "Timeout_pimpl.h"
 
-Timeout::Timeout()
-	: type(ONETIME), timeout_ms(0)
-{
-	pimpl_ = new Pimpl(this);
-}
-
 
 Timeout::Timeout(unsigned int msec, Type t)
 	: type(t), timeout_ms(msec)
@@ -35,6 +29,12 @@ Timeout::~Timeout()
 {
 	pimpl_->stop();
 	delete pimpl_;
+}
+
+
+bool Timeout::running() const
+{
+	return pimpl_->running();
 }
 
 

@@ -88,7 +88,6 @@
 #include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
-#include "support/syscall.h"
 #include "support/lstrings.h"
 #include "support/path.h"
 #include "support/lyxfunctional.h"

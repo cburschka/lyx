@@ -63,8 +63,8 @@ libsupport_o_SOURCES = \
 	snprintf.h \
 	snprintf.c \
 	sstream.h \
-	$(REGEX) syscall.C \
-	syscall.h \
+	$(REGEX) systemcall.C \
+	systemcall.h \
 	tempname.C \
 	textutils.h \
 	translator.h \

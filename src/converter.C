@@ -18,20 +18,22 @@
 
 #include "converter.h"
 #include "lyxrc.h"
-#include "support/syscall.h"
-#include "support/path.h"
-#include "support/filetools.h"
 #include "buffer.h"
 #include "bufferview_funcs.h"
 #include "LaTeX.h"
 #include "LyXView.h"
 #include "lyx_gui_misc.h"
 #include "lyx_cb.h" // ShowMessage()
-#include "support/lyxfunctional.h"
-#include "frontends/Alert.h"
 #include "gettext.h"
 #include "BufferView.h"
 #include "debug.h"
+
+#include "frontends/Alert.h"
+
+#include "support/filetools.h"
+#include "support/lyxfunctional.h"
+#include "support/path.h"
+#include "support/systemcall.h"
 
 using std::vector;
 using std::queue;
@@ -195,8 +197,8 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 	ShowMessage(buffer, _("Executing command:"), command);
 
 	Path p(OnlyPath(filename));
-	Systemcalls one;
-	int const res = one.startscript(Systemcalls::DontWait, command);
+	Systemcall one;
+	int const res = one.startscript(Systemcall::DontWait, command);
 
 	if (res) {
 		Alert::alert(_("Cannot view file"),
@@ -644,9 +646,9 @@ bool Converters::convert(Buffer const * buffer,
 			if (buffer)
 				ShowMessage(buffer, _("Executing command:"), command);
 
-			Systemcalls::Starttype type = (dummy)
-				? Systemcalls::DontWait : Systemcalls::Wait;
-			Systemcalls one;
+			Systemcall::Starttype type = (dummy)
+				? Systemcall::DontWait : Systemcall::Wait;
+			Systemcall one;
 			int res;
 			if (conv.original_dir && buffer) {
 				Path p(buffer->filePath());
@@ -659,7 +661,7 @@ bool Converters::convert(Buffer const * buffer,
 				string const command2 = conv.parselog +
 					" < " + QuoteName(infile2 + ".out") +
 					" > " + QuoteName(logfile);
-				one.startscript(Systemcalls::Wait, command2);
+				one.startscript(Systemcall::Wait, command2);
 				if (!scanLog(buffer, command, logfile))
 					return false;
 			}

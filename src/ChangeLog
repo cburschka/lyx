@@ -1,3 +1,31 @@
+2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Chktex.C:
+	* LaTeX.C:
+	* LyXSendto.C:
+	* converter.C:
+	* lyx_cb.C:
+	* vc-backend.C: Changes due to the renaming of support/syscall.[Ch] as
+	support/systemcall.[Ch] and of class Systemcalls as class SystemCall.
+
+	* lyxfunc.C:
+	* vc-backend.h: remove #include "support/syscall.h"
+
+	* LaTeX.C:
+	* LyXSendto.C:
+	* converter.C: rearrange #includes in Lars' approved fashion.
+
+	* LyXView.[Ch]: make autosave_timeout a pointer to Timeout. Can thus
+	forward declare class Timeout in the header file.
+
+	* XFormsView.C: changes due to the above.
+
+	* minibuffer.[Ch]: make timer and stored_timer pointers to Timeout,
+	similar to LyXView.
+
+	* commandtags.h: add LFUN_FORKS_SHOW and LFUN_FORKS_KILL to the enum.
+	* LyXAction.C (init): add LFUN_FORKS_SHOW and LFUN_FORKS_KILL to items[]
+	
 2002-02-18  José Matos  <jamatos@fep.up.pt>
 
 	* buffer.C (simpleDocBookOnePar): if paragraph style is CDATA escapes
@@ -15,7 +43,7 @@
 
 	* Chktex.C:
 	* buffer.C:
-	remove #include "support/syscall.h" as it's redundant. Always has been.
+	remove #include "support/syscontr.h" as it's redundant. Always has been.
 	
 	* Chktex.C:
 	* LaTeX.C:

@@ -1,3 +1,8 @@
+2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetexternal.C Changes due to the renaming of support/syscall.[Ch]
+	as support/systemcall.[Ch] and of class Systemcalls as class SystemCall.
+
 2002-02-18  José Matos  <jamatos@fep.up.pt>
 
 	* insetinclude.C (validate): some code only applies to latex buffers,

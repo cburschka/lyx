@@ -33,7 +33,7 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/path.h"
-#include "support/syscall.h"
+#include "support/systemcall.h"
 #include "support/lstrings.h"
 
 #include <fstream>
@@ -537,8 +537,8 @@ void Reconfigure(BufferView * bv)
 
 	// Run configure in user lyx directory
 	Path p(user_lyxdir);
-	Systemcalls one;
-	one.startscript(Systemcalls::Wait, 
+	Systemcall one;
+	one.startscript(Systemcall::Wait, 
 			AddName(system_lyxdir, "configure"));
 	p.pop();
 	bv->owner()->message(_("Reloading configuration..."));

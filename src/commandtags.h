@@ -297,6 +297,8 @@ enum kb_action {
 	LFUN_HELP_ABOUTLYX,             // Edwin 20010712
 	LFUN_THESAURUS_ENTRY,           // Levon 20010720
 	LFUN_HELP_TEXINFO,              // Herbert 20011001
+	LFUN_FORKS_SHOW,                // Angus 16 Feb 2002
+	LFUN_FORKS_KILL,                // Angus 16 Feb 2002
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

@@ -34,7 +34,7 @@
 #include "support/LOstream.h"
 #include "support/LAssert.h"
 #include "support/lyxlib.h"
-#include "support/syscall.h"
+#include "support/systemcall.h"
 #include "support/lstrings.h"
 #include "support/filetools.h" // LibFileSearch
 #include "LyXView.h"
@@ -60,8 +60,8 @@ namespace {
 		string outfile = lyx::tempName(string(), "mathextern");
 		string full =  "echo '" + data + "' | (" + cmd + ") > " + outfile;
 		lyxerr << "calling: " << full << "\n";
-		Systemcalls dummy;
-		dummy.startscript(Systemcalls::Wait, full);
+		Systemcall dummy;
+		dummy.startscript(Systemcall::Wait, full);
 		string out = GetFileContents(outfile);
 		lyx::unlink(outfile);
 		lyxerr << "result: '" << out << "'\n";

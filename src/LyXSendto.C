@@ -5,16 +5,17 @@
 #include "lyx_main.h"
 #include "lyxrc.h"
 #include "LString.h"
-#include "support/filetools.h"
-#include "support/path.h"
 #include "buffer.h"
 #include "lyx_gui_misc.h"
-#include "support/syscall.h"
-#include "support/lstrings.h"
 #include "gettext.h"
 #include "bufferview_funcs.h"
 #include "exporter.h"
 #include "BufferView.h"
+
+#include "support/filetools.h"
+#include "support/lstrings.h"
+#include "support/path.h"
+#include "support/systemcall.h"
 
 extern FD_form_sendto * fd_form_sendto;
 extern BufferView * current_view;
@@ -95,8 +96,8 @@ void SendtoApplyCB(FL_OBJECT *, long)
     // create the .txt file in tmp_dir if this filetype is requested
     if (fl_get_button(fd_form_sendto->radio_ftype_ascii))
         buffer->writeFileAscii(fname, lyxrc.ascii_linelen);
-    Systemcalls one;
-    one.startscript(Systemcalls::Wait, command);    
+    Systemcall one;
+    one.startscript(Systemcall::Wait, command);    
 }
 
 

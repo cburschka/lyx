@@ -29,11 +29,11 @@ public:
 		CONTINUOUS
 	};
 	///
-	Timeout();
-	///
 	Timeout(unsigned int msec, Type = ONETIME);
 	///
 	~Timeout();
+	/// Is the timer running?
+	bool running() const;
 	/// start the timer
 	void start();
 	/// stop the timer

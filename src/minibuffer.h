@@ -7,7 +7,6 @@
 
 #include FORMS_H_LOCATION
 #include "LString.h"
-#include "frontends/Timeout.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -15,6 +14,7 @@
 
 class LyXView;
 class DropDown; 
+class Timeout; 
 
 ///
 class MiniBuffer : public SigC::Object {
@@ -95,9 +95,9 @@ private:
 	///
 	FL_OBJECT * add(int, FL_Coord, FL_Coord, FL_Coord, FL_Coord);
 	///
-	Timeout timer;
+	Timeout * timer;
 	///
-	Timeout stored_timer;
+	Timeout * stored_timer;
 	/// the dropdown menu
 	DropDown * dropdown_;
 	///

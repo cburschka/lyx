@@ -109,6 +109,8 @@ public:
 	SigC::Signal1<void, InsetExternal *> showExternal; 
 	/// show the contents of a file.
 	SigC::Signal1<void, string const &> showFile;
+	/// show all forked child processes
+	SigC::Signal0<void> showForks;
 	///
 	SigC::Signal1<void, InsetGraphics *> showGraphics;
 	/// show the details of a LyX file include inset

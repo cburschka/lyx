@@ -17,7 +17,7 @@
 #include "support/path.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/syscall.h"
+#include "support/systemcall.h"
 
 #include <fstream>
 
@@ -28,9 +28,9 @@ using std::getline;
 int VCS::doVCCommand(string const & cmd, string const & path)
 {
 	lyxerr[Debug::LYXVC] << "doVCCommand: " << cmd << endl;
-        Systemcalls one;
+        Systemcall one;
 	Path p(path);
-	int const ret = one.startscript(Systemcalls::Wait, cmd);
+	int const ret = one.startscript(Systemcall::Wait, cmd);
 	return ret;
 }
 

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- *  \file syscall.h
+ *  \file systemcall.h
  *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
@@ -9,7 +9,9 @@
  * Interface cleaned up by
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  *
- * Class Systemcalls uses "system" to launch the child process.
+ * An instance of Class Systemcall represents a single child process.
+ *
+ * Class Systemcall uses system() to launch the child process.
  * The user can choose to wait or not wait for the process to complete, but no
  * callback is invoked upon completion of the child.
  *
@@ -17,8 +19,8 @@
  * scope.
  */
 
-#ifndef SYSCALL_H
-#define SYSCALL_H
+#ifndef SYSTEMCALL_H
+#define SYSTEMCALL_H
 
 #include "LString.h"
 
@@ -26,7 +28,7 @@
 #pragma interface
 #endif
 
-class Systemcalls {
+class Systemcall {
 public:
 	///
 	enum Starttype {
@@ -36,21 +38,22 @@ public:
 		DontWait
 	};
 	
-	///
-	Systemcalls() {}
-
 #if 0
+	///
+	Systemcall() {}
+
 	/** Generate instance and start child process.
 	 *  The string "what" contains a commandline with arguments separated 
 	 *  by spaces.
 	 */
-	Systemcalls(Starttype how, string const & what);
+	Systemcall(Starttype how, string const & what);
 #endif
 	
 	/** Start child process.
-	 *  This is for reuse of the Systemcalls instance.
+	 *  The string "what" contains a commandline with arguments separated 
+	 *  by spaces.
 	 */
 	int startscript(Starttype how, string const & what);
 };
 
-#endif // SYSCALL_H
+#endif // SYSTEMCALL_H

@@ -26,6 +26,7 @@
 #include "support/filetools.h"        // OnlyFilename()
 #include "frontends/Toolbar.h"
 #include "frontends/Menubar.h"
+#include "frontends/Timeout.h"
 #include "MenuBackend.h"
 #include "ToolbarDefaults.h"
 #include "lyxfunc.h"
@@ -164,7 +165,7 @@ void XFormsView::create_form_form_main(int width, int height)
 	// TIMERS
 	//
 
-	autosave_timeout.timeout.connect(SigC::slot(this, &XFormsView::AutoSave));
+	autosave_timeout->timeout.connect(SigC::slot(this, &XFormsView::AutoSave));
 	
 	//
 	// Misc
@@ -204,8 +205,8 @@ void XFormsView::init()
 	
 	// Start autosave timer
 	if (lyxrc.autosave) {
-		autosave_timeout.setTimeout(lyxrc.autosave * 1000);
-		autosave_timeout.start();
+		autosave_timeout->setTimeout(lyxrc.autosave * 1000);
+		autosave_timeout->start();
 	}
 
 	intl->InitKeyMapper(lyxrc.use_kbmap);

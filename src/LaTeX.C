@@ -19,20 +19,20 @@
 #include <fstream>
 
 #include "LaTeX.h"
-#include "support/filetools.h"
-#include "support/os.h"
-#include "support/FileInfo.h"
-#include "debug.h"
-#include "support/lyxlib.h"
-#include "support/syscall.h"
-#include "support/path.h"
-#include "support/LRegex.h"
-#include "support/LSubstring.h"
-#include "support/lstrings.h"
 #include "bufferlist.h"
 #include "gettext.h"
 #include "lyx_gui_misc.h"
 #include "lyxfunc.h"
+#include "debug.h"
+#include "support/filetools.h"
+#include "support/FileInfo.h"
+#include "support/LRegex.h"
+#include "support/LSubstring.h"
+#include "support/lstrings.h"
+#include "support/lyxlib.h"
+#include "support/systemcall.h"
+#include "support/os.h"
+#include "support/path.h"
 
 using std::ifstream;
 using std::getline;
@@ -358,8 +358,8 @@ int LaTeX::operator()()
 #else // cmd.exe (OS/2) causes SYS0003 error at "/dev/null"
 	string tmp = cmd + ' ' + file + " > nul";
 #endif
-        Systemcalls one;
-	return one.startscript(Systemcalls::Wait, tmp);
+        Systemcall one;
+	return one.startscript(Systemcall::Wait, tmp);
 }
 
 
@@ -375,8 +375,8 @@ bool LaTeX::runMakeIndex(string const & f)
 	// to come for a later time. (0.13 perhaps?)
 	string tmp = "makeindex -c -q ";
 	tmp += f;
-	Systemcalls one;
-	one.startscript(Systemcalls::Wait, tmp);
+	Systemcall one;
+	one.startscript(Systemcall::Wait, tmp);
 	return true;
 }
 
@@ -506,8 +506,8 @@ bool LaTeX::runBibTeX(vector<Aux_Info> const & bibtex_info)
 
 		string tmp = "bibtex ";
 		tmp += OnlyFilename(ChangeExtension(it->aux_file, string()));
-		Systemcalls one;
-		one.startscript(Systemcalls::Wait, tmp);
+		Systemcall one;
+		one.startscript(Systemcall::Wait, tmp);
 	}
 	// Return whether bibtex was run
 	return result;

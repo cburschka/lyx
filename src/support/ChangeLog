@@ -1,3 +1,12 @@
+2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* syscall.[Ch]: renamed as systemcall.[Ch]. class Systemcalls renamed
+	as class SystemCall because one Systemcall instance represents a
+	single child process.
+
+	* filetools.C:
+	* Makefile.am: associated changes.
+
 2002-02-18  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* syscall.C (Systemcalls): include <cstdlib>

@@ -1,3 +1,14 @@
+2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Liason.C: Changes due to the renaming of support/syscall.[Ch] as
+	support/systemcall.[Ch] and of class Systemcalls as class SystemCall.
+	Rearrange #includes in Lars' approved fashion.
+
+	* Timeout.[Ch] (running): new method.
+	(default c-tor): removed.
+
+	* Dialogs.h: added a new signal, showForks.
+
 2002-02-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Liason.C:

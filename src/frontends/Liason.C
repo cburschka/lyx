@@ -15,19 +15,21 @@
 #endif
 
 #include "Liason.h"
+#include "lyxrc.h"
+#include "PrinterParams.h"
+
 #include "LyXView.h"
 #include "BufferView.h"
 #include "buffer.h"
-#include "lyxrc.h"
-#include "PrinterParams.h"
+#include "exporter.h"
+#include "converter.h"
 #include "lyx_gui_misc.h"
+
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
 #include "support/path.h"
-#include "exporter.h"
-#include "converter.h"
-#include "support/syscall.h"
+#include "support/systemcall.h"
 
 using std::endl;
 
@@ -116,7 +118,7 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 	// 1. we print to a file
 	// 2. we print direct to a printer
 	// 3. we print using a spool command (print to file first)
-	Systemcalls one;
+	Systemcall one;
 	int res = 0;
 	string dviname = ChangeExtension(buffer->getLatexName(true), "dvi");
 	switch (pp.target) {
@@ -134,13 +136,13 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 			command2 += QuoteName(psname);
 			// First run dvips.
 			// If successful, then spool command
-			res = one.startscript(Systemcalls::Wait, command);
+			res = one.startscript(Systemcall::Wait, command);
 			if (res == 0)
-				res = one.startscript(Systemcalls::DontWait,
+				res = one.startscript(Systemcall::DontWait,
 						      command2);
 		} else
 			// case 2
-			res = one.startscript(Systemcalls::DontWait,
+			res = one.startscript(Systemcall::DontWait,
 					      command + QuoteName(dviname));
 		break;
 
@@ -149,7 +151,7 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 		command += lyxrc.print_to_file
 			+ QuoteName(MakeAbsPath(pp.file_name, path));
 		command += ' ' + QuoteName(dviname);
-		res = one.startscript(Systemcalls::DontWait, command);
+		res = one.startscript(Systemcall::DontWait, command);
 		break;
 	}
 	return res == 0;

@@ -11,7 +11,6 @@
 #include <sigc++/signal_system.h>
 
 #include "LString.h"
-#include "frontends/Timeout.h"
 #include "support/types.h"
 
 class Buffer;
@@ -23,6 +22,7 @@ class Menubar;
 class BufferView;
 class Dialogs;
 class LyXFunc;
+class Timeout;
 
 ///
 class LyXView : public SigC::Object, boost::noncopyable {
@@ -112,7 +112,7 @@ protected:
 	///
 	Intl * intl;
 	///
-	Timeout autosave_timeout;
+	Timeout * autosave_timeout;
 	/// A callback
 	void AutoSave();
 	///

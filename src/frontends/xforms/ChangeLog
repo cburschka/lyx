@@ -1,5 +1,9 @@
 2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* Timeout_pimpl.[Ch] (running): new method.
+
+2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* FormParagraph.C:
 	* FormTabular.C: added a using std::remove_if directive.
 

@@ -31,6 +31,7 @@
 #include "gettext.h"
 #include "LyXAction.h"
 #include "BufferView.h"
+#include "frontends/Timeout.h"
 
 #include <cctype>
 
@@ -61,10 +62,12 @@ MiniBuffer::MiniBuffer(LyXView * o, FL_Coord x, FL_Coord y,
 	: stored_(false), owner_(o), state_(spaces)
 {
 	add(FL_NORMAL_INPUT, x, y, h, w);
-	timer.setTimeout(6000);
-	timer.timeout.connect(slot(this, &MiniBuffer::init));
-	stored_timer.setTimeout(1500);
-	stored_timer.timeout.connect(slot(this, &MiniBuffer::stored_slot));
+
+	timer = new Timeout(600);
+	timer->timeout.connect(slot(this, &MiniBuffer::init));
+
+	stored_timer = new Timeout(1500);
+	stored_timer->timeout.connect(slot(this, &MiniBuffer::stored_slot));
 	deactivate();
 }
 
@@ -80,6 +83,8 @@ void MiniBuffer::dd_init()
 
 MiniBuffer::~MiniBuffer()
 {
+	delete timer;
+	delete stored_timer;
 	delete dropdown_;
 }
 
@@ -97,7 +102,7 @@ void MiniBuffer::stored_set(string const & str)
 {
 	stored_input = str;
 	stored_ = true;
-	stored_timer.start();
+	stored_timer->start();
 }
 
 
@@ -112,7 +117,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 		char const * tmp = fl_get_input(ob);
 		string input = tmp ? tmp : "";
 		if (stored_) {
-			stored_timer.stop();
+			stored_timer->stop();
 			input = stored_input;
 			set_input(input);
 			stored_ = false;
@@ -315,7 +320,7 @@ FL_OBJECT * MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
 
 void MiniBuffer::message(string const & str) 
 {
-	timer.restart();
+	timer->restart();
 	string const ntext = strip(str);
 	if (!the_buffer->focus) {
 		set_input(ntext);
@@ -366,7 +371,7 @@ void MiniBuffer::init()
 		return;
 
 	timeout.emit();
-	timer.stop();
+	timer->stop();
 }
 
 

@@ -25,7 +25,7 @@
 #include "BufferView.h"
 #include "gettext.h"
 #include "support/filetools.h" // FileSearch
-#include "support/syscall.h"
+#include "support/systemcall.h"
 #include "support/path.h"
 #include "helper_funcs.h"
 #include "support/lstrings.h"
@@ -46,8 +46,8 @@ void ControlTexinfo::rescanStyles() const
 {
 	// Run rescan in user lyx directory
 	Path p(user_lyxdir);
-	Systemcalls one;
-	one.startscript(Systemcalls::Wait,
+	Systemcall one;
+	one.startscript(Systemcall::Wait,
 			LibFileSearch("scripts", "TeXFiles.sh"));
 	p.pop();
 }
@@ -59,8 +59,8 @@ void ControlTexinfo::runTexhash() const
 	Path p(user_lyxdir);
 
 	//path to texhash through system
-	Systemcalls one;
-	one.startscript(Systemcalls::Wait, "texhash");
+	Systemcall one;
+	one.startscript(Systemcall::Wait, "texhash");
 	
 	p.pop();
 //	Alert::alert(_("texhash run!"), 

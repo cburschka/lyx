@@ -25,7 +25,7 @@
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"
-#include "support/syscall.h"
+#include "support/systemcall.h"
 #include "support/path.h"
 #include "support/lstrings.h"
 
@@ -49,8 +49,8 @@ int Chktex::run(TeXErrors &terr)
 	// run bibtex
 	string log = OnlyFilename(ChangeExtension(file, ".log"));
 	string tmp = cmd + " -q -v0 -b0 -x " + file + " -o " + log;
-        Systemcalls one;
-	int result= one.startscript(Systemcalls::Wait, tmp);
+        Systemcall one;
+	int result= one.startscript(Systemcall::Wait, tmp);
 	if (result == 0) {
 		result = scanLogFile(terr);
 	} else {

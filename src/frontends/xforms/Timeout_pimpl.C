@@ -48,6 +48,12 @@ void Timeout::Pimpl::reset()
 }
 
 
+bool Timeout::Pimpl::running() const
+{
+	return timeout_id != -1;
+}
+
+
 void Timeout::Pimpl::start()
 {
 	if (timeout_id != -1)

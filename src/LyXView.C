@@ -31,6 +31,7 @@
 
 #include "frontends/Dialogs.h"
 #include "frontends/Toolbar.h"
+#include "frontends/Timeout.h"
 #include "frontends/Menubar.h"
 
 #include "support/filetools.h"        // OnlyFilename()
@@ -54,6 +55,9 @@ LyXView::LyXView()
 
 	intl = new Intl;
 
+	// Give the timeout some default sensible value.
+	autosave_timeout = new Timeout(5000);
+
 	dialogs_ = new Dialogs(this);
 	// temporary until all dialogs moved into Dialogs.
 	dialogs_->updateBufferDependent
@@ -73,6 +77,7 @@ LyXView::~LyXView()
 	delete minibuffer;
 	delete lyxfunc;
 	delete intl;
+	delete autosave_timeout;
 	delete dialogs_;
 }
 
@@ -180,7 +185,7 @@ void LyXView::AutoSave()
 void LyXView::resetAutosaveTimer()
 {
 	if (lyxrc.autosave)
-		autosave_timeout.restart();
+		autosave_timeout->restart();
 }
 
 

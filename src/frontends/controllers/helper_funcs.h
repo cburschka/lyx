@@ -68,6 +68,8 @@ std::vector<string> const getLatexUnits();
     vector<pair<A,B> >
 */
 
+namespace hide {
+
 template<class Pair>
 struct firster {
 	typedef typename Pair::first_type first_type;
@@ -79,6 +81,8 @@ struct seconder {
 	typedef typename Pair::second_type second_type;
 	second_type const & operator()(Pair const & p) { return p.second; }
 };
+ 
+}
 
 ///
 template<class Pair>
@@ -86,7 +90,8 @@ std::vector<typename Pair::first_type> const
 getFirst(std::vector<Pair> const & pr)
 {
 	std::vector<typename Pair::first_type> tmp(pr.size());
-	std::transform(pr.begin(), pr.end(), tmp.begin(), firster<Pair>());
+	std::transform(pr.begin(), pr.end(), tmp.begin(),
+		       hide::firster<Pair>());
 	return tmp;
 }
 
@@ -96,7 +101,8 @@ std::vector<typename Pair::second_type> const
 getSecond(std::vector<Pair> const & pr)
 {
 	std::vector<typename Pair::second_type> tmp(pr.size());
-	std::transform(pr.begin(), pr.end(), tmp.begin(), seconder<Pair>());
+	std::transform(pr.begin(), pr.end(), tmp.begin(),
+		       hide::seconder<Pair>());
 	return tmp;
 }
 

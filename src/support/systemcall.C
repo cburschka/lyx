@@ -1,5 +1,5 @@
 /**
- *  \file syscall.C
+ *  \file systemcall.C
  *  Copyright 2002 the LyX Team
  *  Read the file COPYING
  *
@@ -8,7 +8,7 @@
  * Interface cleaned up by
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  *
- * Class Systemcalls uses "system" to launch the child process.
+ * Class Systemcall uses "system" to launch the child process.
  * The user can choose to wait or not wait for the process to complete, but no
  * callback is invoked upon completion of the child.
  *
@@ -22,13 +22,14 @@
 #pragma implementation
 #endif
 
-#include <cstdlib> //for ::system
-
-#include "syscall.h"
+#include "systemcall.h"
 #include "os.h"
 
+#include <cstdlib> //for ::system
+
+
 #if 0
-Systemcalls::Systemcalls(Starttype how, string const & what)
+Systemcall::Systemcall(Starttype how, string const & what)
 {
 	startscript(how, what);
 }
@@ -36,7 +37,7 @@ Systemcalls::Systemcalls(Starttype how, string const & what)
 
 
 // Reuse of instance
-int Systemcalls::startscript(Starttype how, string const & what)
+int Systemcall::startscript(Starttype how, string const & what)
 {
 	string command = what;
 

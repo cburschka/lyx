@@ -26,6 +26,8 @@ struct Timeout::Pimpl {
 public:
 	///
 	Pimpl(Timeout * owner_);
+	/// Is the timer running?
+	bool running() const;
 	/// start the timer
 	void start();
 	/// stop the timer
