@@ -3,6 +3,10 @@
 	* GraphicsCacheItem.C (convertToDisplayFormat): don't launch that Alert
 	if the file can't be found.
 
+	* GraphicsParams.h (c-tor): remove string() as default argument.
+
+	* GraphicsCacheItem.C: a couple of changes as a result.
+
 2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsCache.[Ch] (update): now passed filepath to determine absolute

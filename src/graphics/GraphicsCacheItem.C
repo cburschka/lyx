@@ -616,7 +616,8 @@ struct Params_Changed {
 
 	bool operator()(InsetGraphics const * inset)
 	{
-		return GParams(inset->params()) != p_;
+		string const path = OnlyPath(p_.filename);
+		return GParams(inset->params(), path) != p_;
 	}
 
 private:
@@ -650,9 +651,11 @@ ModifiedItemPtr ModifiedItem::changeDisplay()
 	// Create a new ModifiedItem with these new params. Note that
 	// the only params that have changed are the display ones,
 	// so we don't need to crop, rotate, scale.
+	string const path = OnlyPath(p_->filename);
+
 	ModifiedItemPtr new_item(new ModifiedItem(*this));
 	new_item->insets = new_insets;
-	*(new_item->p_)  = GParams((*new_insets.begin())->params());
+	*(new_item->p_)  = GParams((*new_insets.begin())->params(), path);
 
 	new_item->setPixmap();
 	return new_item;

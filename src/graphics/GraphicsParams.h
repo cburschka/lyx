@@ -49,7 +49,7 @@ bool operator!=(BoundingBox const &, BoundingBox const &);
 
 struct GParams
 {
-	GParams(InsetGraphicsParams const &, string const & = string());
+	GParams(InsetGraphicsParams const &, string const &);
 
 	/// How is the image to be displayed on the LyX screen?
 	enum DisplayType {
