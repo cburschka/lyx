@@ -5,7 +5,8 @@
  * 	 
  *          Copyright 1998 The LyX Team.
  *
- *======================================================*/
+ * ======================================================
+ */
 
 #include <config.h>
 
@@ -24,7 +25,8 @@
 using std::ostream;
 using std::endl;
 
-InsetMarginal::InsetMarginal() : InsetCollapsable()
+InsetMarginal::InsetMarginal()
+	: InsetCollapsable()
 {
     setLabel(_("margin"));
     LyXFont font(LyXFont::ALL_SANE);

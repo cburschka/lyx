@@ -5,7 +5,8 @@
  * 	 
  *          Copyright 1998 The LyX Team.
  *
- *======================================================*/
+ * ======================================================
+ */
 
 #include <config.h>
 
@@ -60,7 +61,8 @@ char const * InsetFoot::EditMessage() const
 }
 
 
-int InsetFoot::Latex(Buffer const * buf, ostream & os, bool fragile, bool fp) const
+int InsetFoot::Latex(Buffer const * buf,
+		     ostream & os, bool fragile, bool fp) const
 {
     os << "\\footnote{%\n";
     
@@ -90,7 +92,8 @@ bool InsetFoot::InsertInsetAllowed(Inset * inset) const
 }
 
 
-LyXFont InsetFoot::GetDrawFont(BufferView * bv,LyXParagraph * p, int pos) const
+LyXFont InsetFoot::GetDrawFont(BufferView * bv,
+			       LyXParagraph * p, int pos) const
 {
     LyXFont fn = getLyXText(bv)->GetFont(bv->buffer(), p, pos);
     fn.decSize().decSize();

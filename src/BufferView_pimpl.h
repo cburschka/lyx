@@ -122,10 +122,6 @@ struct BufferView::Pimpl : public SigC::Object {
 	///
 	long current_scrollbar_value;
 	///
-	bool lyx_focus;
-	///
-	bool work_area_focus;
-	///
 	FL_OBJECT * figinset_canvas;
 	///
 	Timeout cursor_timeout;

@@ -5,7 +5,8 @@
  * 	 
  *          Copyright (C) 1998 The LyX Team.
  *
- *======================================================*/
+ * ======================================================
+ */
 
 #include <config.h>
 
@@ -23,7 +24,8 @@
 
 using std::ostream;
 
-InsetCollapsable::InsetCollapsable() : InsetText()
+InsetCollapsable::InsetCollapsable()
+	: InsetText()
 {
     collapsed = true;
     label = "Label";
