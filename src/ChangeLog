@@ -1,7 +1,10 @@
 
 2004-08-13  André Pönitz  <poenitz@gmx.net>
 
-	* cursor.C: macroModeClose: use plainInsert instead of niceInsert.
+	* cursor.C (macroModeClose): use plainInsert instead of niceInsert.
+
+	* CutAndPaste.C (eraseSelection): fix cursor position after erasing
+	  multiple cells
    
 2004-08-12  André Pönitz  <poenitz@gmx.net>
 

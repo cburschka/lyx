@@ -94,7 +94,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	LCursor safe = *this;
 
 	for ( ; size(); pop()) {
-		//lyxerr << "LCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
+		lyxerr << "LCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 		BOOST_ASSERT(pos() <= lastpos());
 		BOOST_ASSERT(idx() <= lastidx());
 		BOOST_ASSERT(par() <= lastpar());
@@ -397,6 +397,7 @@ void LCursor::selHandle(bool sel)
 
 std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 {
+	os << "\n cursor:                                | anchor:\n";
 	for (size_t i = 0, n = cur.size(); i != n; ++i) {
 		os << " " << cur.operator[](i) << " | ";
 		if (i < cur.anchor_.size())
@@ -539,11 +540,10 @@ void LCursor::insert(char c)
 
 void LCursor::insert(MathAtom const & t)
 {
-	//lyxerr << "LCursor::insert MathAtom: " << endl;
+	//lyxerr << "LCursor::insert MathAtom '" << t << "'" << endl;
 	macroModeClose();
 	lyx::cap::selClearOrDel(*this);
 	plainInsert(t);
-	lyxerr << "LCursor::insert MathAtom: cur:\n" << *this << endl;
 }
 
 
@@ -711,7 +711,6 @@ void LCursor::macroModeClose()
 		return;
 
 	string const name = s.substr(1);
-	lyxerr << "creating macro of name '" << name << "'" << endl;
 
 	// prevent entering of recursive macros
 	// FIXME: this is only a weak attempt... only prevents immediate
@@ -755,7 +754,7 @@ int LCursor::targetX() const
 
 bool LCursor::inMacroMode() const
 {
-	if (!pos() != 0)
+	if (pos() == 0)
 		return false;
 	MathUnknownInset const * p = prevAtom()->asUnknownInset();
 	return p && !p->final();

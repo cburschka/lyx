@@ -639,12 +639,9 @@ void replaceWord(LCursor & cur, string const & replacestring)
 
 void eraseSelection(LCursor & cur)
 {
-	//lyxerr << "LCursor::eraseSelection" << endl;
+	//lyxerr << "LCursor::eraseSelection begin: " << cur << endl;
 	CursorSlice const & i1 = cur.selBegin();
 	CursorSlice const & i2 = cur.selEnd();
-#ifdef WITH_WARNINGS
-#warning FIXME
-#endif
 	if (i1.inset().asMathInset()) {
 		if (i1.idx() == i2.idx()) {
 			i1.cell().erase(i1.pos(), i2.pos());
@@ -658,10 +655,12 @@ void eraseSelection(LCursor & cur)
 					p->cell(p->index(row, col)).clear();
 		}
 		cur.back() = i1;
+		cur.pos() = 0; // We've deleted the whole cell. Only pos 0 is valid.
+		cur.resetAnchor();
 	} else {
 		lyxerr << "can't erase this selection 1" << endl;
 	}
-	//lyxerr << "LCursor::eraseSelection end" << endl;
+	//lyxerr << "LCursor::eraseSelection end: " << cur << endl;
 }
 
 

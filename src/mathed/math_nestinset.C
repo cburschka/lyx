@@ -977,7 +977,6 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 	// handle macroMode
 	if (cur.inMacroMode()) {
 		string name = cur.macroName();
-		lyxerr << "interpret macro name: '" << name << "'" << endl;
 
 		/// are we currently typing '#1' or '#2' or...?
 		if (name == "\\#") {
@@ -1009,10 +1008,8 @@ bool MathNestInset::interpret(LCursor & cur, char c)
 				cur.backspace();
 				cur.niceInsert(MathAtom(new MathCommentInset));
 			} else if (c == '#') {
-				lyxerr << "setting name to " << name + c << endl;
 				BOOST_ASSERT(cur.activeMacro());
 				cur.activeMacro()->setName(name + c);
-				lyxerr << "set name to " << name + c << endl;
 			} else {
 				cur.backspace();
 				cur.niceInsert(createMathInset(string(1, c)));
@@ -1148,11 +1145,8 @@ bool MathNestInset::script(LCursor & cur, bool up)
 			lyxerr << "converting prev atom " << endl;
 			cur.prevAtom() = MathAtom(new MathScriptInset(cur.prevAtom(), up));
 		}
-		lyxerr << "new scriptinset 2: cur:\n" << cur << endl;
 		--cur.pos();
-		lyxerr << "new scriptinset 3: cur:\n" << cur << endl;
 		MathScriptInset * inset = cur.nextAtom().nucleus()->asScriptInset();
-		lyxerr << "new scriptinset 3: inset:\n" << inset << endl;
 		cur.push(*inset);
 		cur.idx() = 1;
 		cur.pos() = 0;
