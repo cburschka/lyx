@@ -73,7 +73,7 @@
 #include "FormMathsSpace.h"
 #include "FormMathsStyle.h"
 #include "FormNote.h"
-#include "FormParagraph.h"
+#include "GParagraph.h"
 #include "FormPreamble.h"
 #include "FormPreferences.h"
 #include "GPrint.h"
@@ -452,8 +452,9 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new FormBranch(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "paragraph") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlParagraph(*dialog));
-		dialog->setView(new FormParagraph(*dialog));
+		dialog->setView(new GParagraph(*dialog));
 		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "preamble") {
 		dialog->setController(new ControlPreamble(*dialog));

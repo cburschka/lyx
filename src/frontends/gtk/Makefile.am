@@ -38,6 +38,8 @@ libgtk_la_SOURCES = \
 	GMiniBuffer.h \
 	GPainter.C \
 	GPainter.h \
+	GParagraph.C \
+	GParagraph.h \
 	GPrint.C \
 	GPrint.h \
 	GScreen.C \
@@ -109,7 +111,6 @@ xforms_objects = \
 	../xforms/FormMathsSpace.lo \
 	../xforms/FormMathsStyle.lo \
 	../xforms/FormNote.lo \
-	../xforms/FormParagraph.lo \
 	../xforms/FormPreamble.lo \
 	../xforms/FormPreferences.lo \
 	../xforms/FormRef.lo \

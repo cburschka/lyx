@@ -53,6 +53,7 @@ void GViewBase::show()
 	if (!window()) {
 		build();
 	}
+	update();
 	window()->show();
 }
 
