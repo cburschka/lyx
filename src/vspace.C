@@ -25,6 +25,9 @@
 
 #include <cstdio>
 
+#ifndef CXX_GLOBAL_CSTD
+using std::sscanf;
+#endif
 
 namespace {
 
