@@ -1,3 +1,7 @@
+2003-08-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ui/moc/Makefile.am (INCLUDES): forgot to use QT_INCLUDES
+
 2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* ui/Makefile.am (INCLUDES): 

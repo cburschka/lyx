@@ -6,7 +6,7 @@ DISTCLEANFILES += $(UIFILES:.ui=_moc.C)
 INCLUDES = -I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \
-	$(FRONTEND_INCLUDES) \
+	$(QT_INCLUDES) \
 	$(BOOST_INCLUDES)
 
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR -DQT_NO_TRANSLATION
