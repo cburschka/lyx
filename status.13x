@@ -41,6 +41,9 @@ What's new
 
 - add support for g-brief2 textclass
 
+- allow optional arguments in Author, AuthorAdress and Thanks styles
+  for the elsart layout.
+
 - update the german translation of the User Guide
 
 - update basque, danish, finnish, french, german, italian, nynorsk,
@@ -50,9 +53,6 @@ What's new
   incomplete to be useful: bulgarian, catalan, czech, hebrew,
   hungarian, portuguese, swedish, turkish, walloon
 
-- allow optional arguments in Author, AuthorAdress and Thanks styles
-  for the elsart layout.
-
 ** Bug fixes
 
 - fix crash when saving file containing a table (only with some
@@ -60,6 +60,8 @@ What's new
 
 - fix a crash in the math editor when selecting up/down close to
   subscript insets
+
+- fix warnings for docbook counters
 
 - enable the file dialog to open files with non-latin filenames [Qt only]
 
@@ -84,6 +86,8 @@ What's new
 
 - add debug output if unable to open preferences.xform for read/write.
 
+- silence a bogus warning about encoding when importing old files
+
 - add a couple of forgotten MacOSX-related files
 
 - a better fix for badly placed math symbols with LyX/Mac
@@ -95,6 +99,3 @@ What's new
 
 - fix problems with non-GNU make program
 
-- fix warnings for docbook counters.
-
-- add missing whitespace in error report for a script of inset external.
