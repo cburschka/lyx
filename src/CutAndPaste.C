@@ -270,6 +270,8 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		// new environment and set also another font if that is required
 		tmpbuf = buf;
 		while(tmpbuf) {
+			// set the inset owner of this paragraph
+			tmpbuf->setInsetOwner((*par)->inInset());
 			for(pos_type i = 0; i < tmpbuf->size(); ++i) {
 				if (tmpbuf->getChar(i) == Paragraph::META_INSET) {
 					if (!(*par)->insetAllowed(tmpbuf->getInset(i)->lyxCode()))
@@ -286,8 +288,6 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 					}
 				}
 			}
-			// set the inset owner of this paragraph
-			tmpbuf->setInsetOwner((*par)->inInset());
 			tmpbuf = tmpbuf->next();
 		}
 		
