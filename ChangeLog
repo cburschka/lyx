@@ -1,5 +1,9 @@
 2000-11-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* configure.in: fix typo
+
+	* lib/languages: add ukraninian and change no to no_NO
+
 	* src/lyxfont.[Ch] (setGUISize): comment out setGUISize
 
 	* src/bufferview_funcs.C (FontSize): use setLyXSize
