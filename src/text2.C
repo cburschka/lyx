@@ -474,7 +474,7 @@ void LyXText::incDepth()
 
 	int prev_after_depth = 0;
 #warning parlist ... could be nicer ?
-	if (&(*start) != ownerParagraph())
+	if (start != ownerParagraphs().begin())
 		prev_after_depth = boost::prior(start)->getMaxDepthAfter();
 
 	while (true) {
