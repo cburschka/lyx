@@ -182,11 +182,9 @@ void InsetList::deleteInsetsLyXText(BufferView * bv)
 	List::iterator it = list.begin();
 	List::iterator end = list.end();
 	for (; it != end; ++it) {
-		if (it->inset) {
-			if (it->inset->isTextInset()) {
-				static_cast<UpdatableInset*>
-					(it->inset)->deleteLyXText(bv, true);
-			}
+		if (it->inset && it->inset->isTextInset()) {
+			static_cast<UpdatableInset*>
+				(it->inset)->deleteLyXText(bv, true);
 		}
 	}
 }

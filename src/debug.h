@@ -13,7 +13,6 @@
 #ifndef LYXDEBUG_H
 #define LYXDEBUG_H
 
-
 #include "support/debugstream.h"
 
 /** Ideally this should have been a namespace, but since we try to be

@@ -49,7 +49,7 @@
 #include "paragraph.h"
 #include "ParagraphParameters.h"
 #include "TextCache.h"
-#include "undo_funcs.h"
+#include "undo.h"
 
 #include "insets/insetcommand.h"
 #include "insets/insetexternal.h"

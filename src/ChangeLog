@@ -1,3 +1,16 @@
+
+
+2003-10-14  André Pönitz  <poenitz@gmx.net>
+
+	* iterators.[Ch]: new direct access to innermost LyXText and Inset
+
+	* undo.[Ch]: restoring part of 'undo in insets'
+
+	* Makefile.am:
+	* undo_funcs.[Ch]: merge with undo.[Ch]
+
+	* tabular.C: small cleansing stuff
+
 2003-10-14  Alfredo Braunstein  <abraunst@libero.it>
 
 	* paragraph_funcs.C (readParToken): report unknown insets as error

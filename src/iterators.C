@@ -13,6 +13,7 @@
 
 #include "iterators.h"
 #include "paragraph.h"
+#include "debug.h"
 
 #include "insets/inset.h"
 
@@ -143,6 +144,28 @@ ParIterator & ParIterator::operator++()
 		pimpl_->positions.pop_back();
 	}
 	return *this;
+}
+
+
+LyXText * ParIterator::text() const
+{
+	//lyxerr << "positions.size: " << pimpl_->positions.size() << std::endl;
+	if (pimpl_->positions.size() <= 1)
+		return 0;
+
+	ParPosition const & pos = pimpl_->positions[pimpl_->positions.size() - 2];
+	return (*pos.it)->inset->getText(*pos.index);
+}
+
+
+InsetOld * ParIterator::inset() const
+{
+	//lyxerr << "positions.size: " << pimpl_->positions.size() << std::endl;
+	if (pimpl_->positions.size() <= 1)
+		return 0;
+
+	ParPosition const & pos = pimpl_->positions[pimpl_->positions.size() - 2];
+	return (*pos.it)->inset;
 }
 
 

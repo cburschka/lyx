@@ -33,7 +33,7 @@
 #include "rowpainter.h"
 #include "sgml.h"
 #include "texrow.h"
-#include "undo_funcs.h"
+#include "undo.h"
 #include "WordLangTuple.h"
 
 #include "frontends/Alert.h"
@@ -1579,6 +1579,12 @@ void InsetText::clearInset(BufferView * bv, int start_x, int baseline) const
 ParagraphList * InsetText::getParagraphs(int i) const
 {
 	return (i == 0) ? const_cast<ParagraphList*>(&paragraphs) : 0;
+}
+
+
+LyXText * InsetText::getText(int i) const
+{
+	return (i == 0) ? const_cast<LyXText*>(&text_) : 0;
 }
 
 

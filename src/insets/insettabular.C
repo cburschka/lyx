@@ -27,7 +27,7 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "undo_funcs.h"
+#include "undo.h"
 #include "WordLangTuple.h"
 
 #include "frontends/Alert.h"
@@ -427,13 +427,17 @@ bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 			      << inset << "): ";
 	if (!inset)
 		return false;
+
 	oldcell = -1;
+
 	if (inset == &tabular.getCellInset(actcell)) {
 		lyxerr[Debug::INSETTEXT] << "OK" << endl;
 		the_locking_inset = &tabular.getCellInset(actcell);
 		resetPos(bv);
 		return true;
-	} else if (!the_locking_inset) {
+	}
+
+	if (!the_locking_inset) {
 		int const n = tabular.getNumberOfCells();
 		int const id = inset->id();
 		for (int i = 0; i < n; ++i) {
@@ -451,13 +455,20 @@ bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 				return the_locking_inset->lockInsetInInset(bv, inset);
 			}
 		}
-	} else if (the_locking_inset && (the_locking_inset == inset)) {
+		return false;
+	}
+
+	if (the_locking_inset && (the_locking_inset == inset)) {
 		lyxerr[Debug::INSETTEXT] << "OK" << endl;
 		resetPos(bv);
-	} else if (the_locking_inset) {
+		return false;
+	}
+
+	if (the_locking_inset) {
 		lyxerr[Debug::INSETTEXT] << "MAYBE" << endl;
 		return the_locking_inset->lockInsetInInset(bv, inset);
 	}
+
 	lyxerr[Debug::INSETTEXT] << "NOT OK" << endl;
 	return false;
 }
@@ -551,7 +562,7 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 
 	bool const inset_hit = insetHit(bv, cmd.x, cmd.y);
 
-	if ((ocell == actcell) && the_locking_inset && inset_hit) {
+	if (ocell == actcell && the_locking_inset && inset_hit) {
 		resetPos(bv);
 		FuncRequest cmd1 = cmd;
 		cmd1.x -= inset_x;
@@ -672,7 +683,9 @@ dispatch_result InsetTabular::localDispatch(FuncRequest const & cmd)
 			clearSelection();
 			finishUndo();
 			if (insetHit(bv, cmd.x, cmd.y) && cmd.button() != mouse_button::button3) {
-				activateCellInsetAbs(bv, cmd.x, cmd.y, cmd.button());
+				inset_x = cursorx_ - top_x + tabular.getBeginningOfTextInCell(actcell);
+				inset_y = cursory_;
+				activateCellInset(bv, cmd.x - inset_x, cmd.y - inset_y, cmd.button());
 			}
 		}
 		return DISPATCHED;
@@ -911,14 +924,12 @@ dispatch_result InsetTabular::localDispatch(FuncRequest const & cmd)
 	case LFUN_ENDBUF:
 	case LFUN_ENDBUFSEL:
 		break;
-	case LFUN_LAYOUT_TABULAR: {
+	case LFUN_LAYOUT_TABULAR:
 		InsetTabularMailer(*this).showDialog(bv);
 		break;
-	}
-	case LFUN_INSET_DIALOG_UPDATE: {
+	case LFUN_INSET_DIALOG_UPDATE:
 		InsetTabularMailer(*this).updateDialog(bv);
 		break;
-	}
 	case LFUN_TABULAR_FEATURE:
 		if (!tabularFeatures(bv, arg))
 			result = UNDISPATCHED;
@@ -954,8 +965,8 @@ dispatch_result InsetTabular::localDispatch(FuncRequest const & cmd)
 		break;
 	case LFUN_PASTESELECTION:
 	{
-		string const clip(bv->getClipboard());
-			if (clip.empty())
+		string const clip = bv->getClipboard();
+		if (clip.empty())
 			break;
 #if 0
 		if (clip.find('\t') != string::npos) {
@@ -1380,10 +1391,9 @@ dispatch_result InsetTabular::moveLeft(BufferView * bv, bool lock)
 	bool moved = isRightToLeft(bv) ? moveNextCell(bv) : movePrevCell(bv);
 	if (!moved)
 		return FINISHED;
-	if (lock) {       // behind the inset
-		if (activateCellInset(bv, 0, 0, mouse_button::none, true))
-			return DISPATCHED;
-	}
+	// behind the inset
+	if (lock && activateCellInset(bv, 0, 0, mouse_button::none, true))
+		return DISPATCHED;
 	resetPos(bv);
 	return DISPATCHED_NOUPDATE;
 }
@@ -1506,8 +1516,8 @@ void InsetTabular::setFont(BufferView * bv, LyXFont const & font, bool tall,
 		int sel_col_start;
 		int sel_col_end;
 		getSelection(sel_row_start, sel_row_end, sel_col_start, sel_col_end);
-		for(int i = sel_row_start; i <= sel_row_end; ++i)
-			for(int j = sel_col_start; j <= sel_col_end; ++j)
+		for (int i = sel_row_start; i <= sel_row_end; ++i)
+			for (int j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.getCellInset(i, j).setFont(bv, font, tall, true);
 
 		if (!frozen)
@@ -1569,8 +1579,7 @@ void checkLongtableSpecial(LyXTabular::ltType & ltt,
 
 
 void InsetTabular::tabularFeatures(BufferView * bv,
-				   LyXTabular::Feature feature,
-				   string const & value)
+	LyXTabular::Feature feature, string const & value)
 {
 	int sel_col_start;
 	int sel_col_end;
@@ -1635,8 +1644,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 
 	switch (feature) {
 
-	case LyXTabular::SET_PWIDTH:
-	{
+	case LyXTabular::SET_PWIDTH: {
 		LyXLength const len(value);
 		LyXLength const & oldlen = tabular.getColumnPWidth(actcell);
 
@@ -1672,11 +1680,13 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		}
 	}
 	break;
+
 	case LyXTabular::SET_SPECIAL_COLUMN:
 	case LyXTabular::SET_SPECIAL_MULTI:
 		tabular.setAlignSpecial(actcell,value,feature);
 		updateLocal(bv);
 		break;
+
 	case LyXTabular::APPEND_ROW:
 		// append the row into the tabular
 		unlockInsetInInset(bv, the_locking_inset);
@@ -1684,6 +1694,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		tabular.setOwner(this);
 		updateLocal(bv);
 		break;
+
 	case LyXTabular::APPEND_COLUMN:
 		// append the column into the tabular
 		unlockInsetInInset(bv, the_locking_inset);
@@ -1692,32 +1703,32 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		actcell = tabular.getCellNumber(row, column);
 		updateLocal(bv);
 		break;
+
 	case LyXTabular::DELETE_ROW:
 		unlockInsetInInset(bv, the_locking_inset);
-		for(int i = sel_row_start; i <= sel_row_end; ++i) {
+		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			tabular.deleteRow(sel_row_start);
-		}
 		if (sel_row_start >= tabular.rows())
 			--sel_row_start;
 		actcell = tabular.getCellNumber(sel_row_start, column);
 		clearSelection();
 		updateLocal(bv);
 		break;
+
 	case LyXTabular::DELETE_COLUMN:
 		unlockInsetInInset(bv, the_locking_inset);
-		for(int i = sel_col_start; i <= sel_col_end; ++i) {
+		for (int i = sel_col_start; i <= sel_col_end; ++i)
 			tabular.deleteColumn(sel_col_start);
-		}
 		if (sel_col_start >= tabular.columns())
 			--sel_col_start;
 		actcell = tabular.getCellNumber(row, sel_col_start);
 		clearSelection();
 		updateLocal(bv);
 		break;
+
 	case LyXTabular::M_TOGGLE_LINE_TOP:
 		flag = false;
-	case LyXTabular::TOGGLE_LINE_TOP:
-	{
+	case LyXTabular::TOGGLE_LINE_TOP: {
 		bool lineSet = !tabular.topLine(actcell, flag);
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			for (int j = sel_col_start; j <= sel_col_end; ++j)
@@ -1730,8 +1741,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 
 	case LyXTabular::M_TOGGLE_LINE_BOTTOM:
 		flag = false;
-	case LyXTabular::TOGGLE_LINE_BOTTOM:
-	{
+	case LyXTabular::TOGGLE_LINE_BOTTOM: {
 		bool lineSet = !tabular.bottomLine(actcell, flag);
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			for (int j = sel_col_start; j <= sel_col_end; ++j)
@@ -1745,8 +1755,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 
 	case LyXTabular::M_TOGGLE_LINE_LEFT:
 		flag = false;
-	case LyXTabular::TOGGLE_LINE_LEFT:
-	{
+	case LyXTabular::TOGGLE_LINE_LEFT: {
 		bool lineSet = !tabular.leftLine(actcell, flag);
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			for (int j = sel_col_start; j <= sel_col_end; ++j)
@@ -1760,8 +1769,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 
 	case LyXTabular::M_TOGGLE_LINE_RIGHT:
 		flag = false;
-	case LyXTabular::TOGGLE_LINE_RIGHT:
-	{
+	case LyXTabular::TOGGLE_LINE_RIGHT: {
 		bool lineSet = !tabular.rightLine(actcell, flag);
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			for (int j = sel_col_start; j <= sel_col_end; ++j)
@@ -1873,7 +1881,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 
 	case LyXTabular::SET_ROTATE_CELL:
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
-			for (int j = sel_col_start; j<=sel_col_end; ++j)
+			for (int j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setRotateCell(
 					tabular.getCellNumber(i, j), true);
 		break;
@@ -1927,11 +1935,9 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		tabular.setLTFoot(row, flag, ltt, true);
 		break;
 
-	case LyXTabular::SET_LTNEWPAGE: {
-		bool what = !tabular.getLTNewPage(row);
-		tabular.setLTNewPage(row, what);
+	case LyXTabular::SET_LTNEWPAGE:
+		tabular.setLTNewPage(row, !tabular.getLTNewPage(row));
 		break;
-	}
 
 	// dummy stuff just to avoid warnings
 	case LyXTabular::LAST_ACTION:
@@ -1958,15 +1964,6 @@ bool InsetTabular::activateCellInset(BufferView * bv, int x, int y,
 		return false;
 	updateLocal(bv);
 	return the_locking_inset;
-}
-
-
-bool InsetTabular::activateCellInsetAbs(BufferView * bv, int x, int y,
-					mouse_button::state button)
-{
-	inset_x = cursorx_ - top_x + tabular.getBeginningOfTextInCell(actcell);
-	inset_y = cursory_;
-	return activateCellInset(bv, x - inset_x, y - inset_y, button);
 }
 
 
@@ -2353,8 +2350,16 @@ void InsetTabular::getSelection(int & srow, int & erow,
 
 ParagraphList * InsetTabular::getParagraphs(int i) const
 {
-	return (i < tabular.getNumberOfCells())
+	return i < tabular.getNumberOfCells()
 		? tabular.getCellInset(i).getParagraphs(0)
+		: 0;
+}
+
+
+LyXText * InsetTabular::getText(int i) const
+{
+	return i < tabular.getNumberOfCells()
+		?  tabular.getCellInset(i).getText(0)
 		: 0;
 }
 
@@ -2387,7 +2392,8 @@ WordLangTuple const
 InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 {
 	if (the_locking_inset) {
-		WordLangTuple word(the_locking_inset->selectNextWordToSpellcheck(bv, value));
+		WordLangTuple word = 
+			the_locking_inset->selectNextWordToSpellcheck(bv, value);
 		if (!word.word().empty())
 			return word;
 		if (tabular.isLastCell(actcell)) {
@@ -2399,7 +2405,7 @@ InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	tabular.getCellInset(actcell)
 		.localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
-	WordLangTuple word(selectNextWordInt(bv, value));
+	WordLangTuple word = selectNextWordInt(bv, value);
 	if (!word.word().empty())
 		resetPos(bv);
 	return word;
@@ -2411,7 +2417,8 @@ WordLangTuple InsetTabular::selectNextWordInt(BufferView * bv, float & value) co
 	// when entering this function the inset should be ALWAYS locked!
 	BOOST_ASSERT(the_locking_inset);
 
-	WordLangTuple word(the_locking_inset->selectNextWordToSpellcheck(bv, value));
+	WordLangTuple word =
+		the_locking_inset->selectNextWordToSpellcheck(bv, value);
 	if (!word.word().empty())
 		return word;
 
@@ -2571,7 +2578,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 			++cols;
 			break;
 		case '\n':
-			if ((p+1) < len)
+			if (p + 1 < len)
 				++rows;
 			maxCols = max(cols, maxCols);
 			cols = 1;

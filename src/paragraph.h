@@ -70,6 +70,11 @@ public:
 	~Paragraph();
 
 	///
+	int id() const;
+	///
+	void id(int i);
+
+	///
 	Language const * getParLanguage(BufferParams const &) const;
 	///
 	bool isRightToLeftPar(BufferParams const &) const;
@@ -90,11 +95,6 @@ public:
 		   depth_type & depth) const;
 	///
 	void validate(LaTeXFeatures &) const;
-
-	/// return the unique ID of this paragraph
-	int id() const;
-	/// Set the Id of this paragraph.
-	void id(int);
 
 	///
 	int startTeXParParams(BufferParams const &, std::ostream &, bool) const;

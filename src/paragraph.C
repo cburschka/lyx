@@ -487,7 +487,7 @@ void Paragraph::setFont(pos_type pos, LyXFont const & font)
 	BOOST_ASSERT(pos <= size());
 
 	// First, reduce font against layout/label font
-	// Update: The SetCharFont() routine in text2.C already
+	// Update: The setCharFont() routine in text2.C already
 	// reduces font, so we don't need to do that here. (Asger)
 	// No need to simplify this because it will disappear
 	// in a new kernel. (Asger)

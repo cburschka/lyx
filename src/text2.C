@@ -42,7 +42,7 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "undo_funcs.h"
+#include "undo.h"
 #include "vspace.h"
 
 #include "frontends/font_metrics.h"
@@ -1938,13 +1938,13 @@ ParagraphList & LyXText::ownerParagraphs() const
 
 void LyXText::recUndo(paroffset_type first, paroffset_type last) const
 {
-	recordUndo(bv(), Undo::ATOMIC, ownerParagraphs(), first, last);
+	recordUndo(Undo::ATOMIC, this, first, last);
 }
 
 
 void LyXText::recUndo(lyx::paroffset_type par) const
 {
-	recordUndo(bv(), Undo::ATOMIC, ownerParagraphs(), par, par);
+	recordUndo(Undo::ATOMIC, this, par, par);
 }
 
 

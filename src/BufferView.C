@@ -28,7 +28,7 @@
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "texrow.h"
-#include "undo_funcs.h"
+#include "undo.h"
 #include "WordLangTuple.h"
 
 #include "frontends/Alert.h"

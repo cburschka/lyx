@@ -456,6 +456,12 @@ ParagraphList * InsetCollapsable::getParagraphs(int i) const
 }
 
 
+LyXText * InsetCollapsable::getText(int i) const
+{
+	return inset.getText(i);
+}
+
+
 LyXCursor const & InsetCollapsable::cursor(BufferView * bv) const
 {
 	return inset.cursor(bv);

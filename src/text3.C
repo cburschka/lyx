@@ -31,7 +31,7 @@
 #include "paragraph.h"
 #include "ParagraphParameters.h"
 #include "text_funcs.h"
-#include "undo_funcs.h"
+#include "undo.h"
 #include "vspace.h"
 
 #include "frontends/Dialogs.h"

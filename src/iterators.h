@@ -16,6 +16,9 @@
 
 #include <boost/scoped_ptr.hpp>
 
+class LyXText;
+class InsetOld;
+
 class ParIterator {
 public:
 	///
@@ -38,6 +41,11 @@ public:
 	ParagraphList::iterator pit() const;
 	///
 	ParagraphList & plist() const;
+	/// returns 'innermost' LyXText if in an inset or '0' instead of
+	//bv->text
+	LyXText * text() const;
+	///
+	InsetOld * inset() const;
 	///
 	size_t size() const;
 	///

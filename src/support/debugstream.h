@@ -12,8 +12,9 @@
 #ifndef DEBUG_STREAM_HPP
 #define DEBUG_STREAM_HPP
 
-#include <boost/test/detail/nullstream.hpp>
+#include <iostream>
 
+#include <boost/test/detail/nullstream.hpp>
 
 struct debug_trait {
 	enum type {

@@ -42,7 +42,7 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "TextCache.h"
-#include "undo_funcs.h"
+#include "undo.h"
 #include "vspace.h"
 
 #include "insets/insetfloatlist.h"

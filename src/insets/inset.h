@@ -233,6 +233,8 @@ public:
 	/// should return it's very first one!
 	virtual ParagraphList * getParagraphs(int /*num*/) const { return 0; }
 	///
+	virtual LyXText * getText(int /*num*/) const { return 0; }
+	///
 	virtual bool haveParagraphs() const {
 		return false;
 	}

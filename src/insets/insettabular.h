@@ -161,6 +161,8 @@ public:
 	///
 	ParagraphList * getParagraphs(int) const;
 	///
+	LyXText * getText(int) const;
+	///
 	LyXCursor const & cursor(BufferView *) const;
 	///
 	bool allowSpellcheck() const { return true; }
@@ -260,9 +262,6 @@ private:
 	bool activateCellInset(BufferView *, int x = 0, int y = 0,
 			       mouse_button::state button = mouse_button::none,
 			       bool behind = false);
-	///
-	bool activateCellInsetAbs(BufferView *, int x = 0, int y = 0,
-				  mouse_button::state button = mouse_button::none);
 	///
 	bool insetHit(BufferView * bv, int x, int y) const;
 	///

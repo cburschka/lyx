@@ -28,7 +28,7 @@
 #include "math_hullinset.h"
 #include "math_parser.h"
 #include "math_spaceinset.h"
-#include "undo_funcs.h"
+#include "undo.h"
 #include "ref_inset.h"
 #include "LColor.h"
 
