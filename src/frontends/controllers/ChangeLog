@@ -1,3 +1,11 @@
+2001-09-04  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlButtons.[Ch]: add an is_closing_ variable and isClosing method.
+	When Applying it's useful to know whether the dialog is about to close
+	or not (no point refreshing the display for example).
+
+	* ControlInset.C (apply): use isClosing.
+
 2001-08-25  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ControlInset.h:
