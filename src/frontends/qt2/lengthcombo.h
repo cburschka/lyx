@@ -30,9 +30,11 @@ public:
 
 	/// set the current item
 	virtual void setCurrentItem(LyXLength::UNIT unit);
-
 	/// get the current item
 	LyXLength::UNIT currentLengthItem() const;
+	/// enable the widget
+	virtual void setEnabled(bool b);
+
 protected slots:
 	virtual void has_activated(int index);
 signals:

@@ -340,10 +340,32 @@
                                                 </property>
                                             </widget>
                                             <widget>
-                                                <class>QComboBox</class>
+                                                <class>LengthCombo</class>
                                                 <property stdset="1">
                                                     <name>name</name>
                                                     <cstring>heightUnit</cstring>
+                                                </property>
+                                                <property stdset="1">
+                                                    <name>sizePolicy</name>
+                                                    <sizepolicy>
+                                                        <hsizetype>3</hsizetype>
+                                                        <vsizetype>0</vsizetype>
+                                                    </sizepolicy>
+                                                </property>
+                                                <property stdset="1">
+                                                    <name>minimumSize</name>
+                                                    <size>
+                                                        <width>80</width>
+                                                        <height>22</height>
+                                                    </size>
+                                                </property>
+                                                <property stdset="1">
+                                                    <name>focusPolicy</name>
+                                                    <enum>StrongFocus</enum>
+                                                </property>
+                                                <property>
+                                                    <name>toolTip</name>
+                                                    <string>Units of height value</string>
                                                 </property>
                                             </widget>
                                         </hbox>
@@ -601,7 +623,7 @@
                                 </property>
                                 <property>
                                     <name>toolTip</name>
-                                    <string>Clip to bounding box (FIXME: what ??)</string>
+                                    <string>Clip to bounding box values</string>
                                 </property>
                             </widget>
                             <spacer>
@@ -1176,6 +1198,29 @@
         </widget>
     </vbox>
 </widget>
+<customwidgets>
+    <customwidget>
+        <class>LengthCombo</class>
+        <header location="local">lengthcombo.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+        <signal>selectionChanged(LyXLength::UNIT)</signal>
+    </customwidget>
+</customwidgets>
+<images>
+    <image>
+        <name>image0</name>
+        <data format="XPM.GZ" length="646">789c6dd2c10ac2300c00d07bbf2234b7229d1be245fc04c5a3201e4615f430059d0711ff5ddb2e6bb236ec90eed134cb5a19d8ef36602af5ecdbfeeac05dda0798d3abebde87e3faa374d3807fa0d633a52d38d8de6f679fe33fc776e196f53cd010188256a3600a292882096246517815ca99884606e18044a3a40d91824820924265a7923a2e8bcd05f33db1173e002913175f2a6be6d3294871a2d95fa00e8a94ee017b69d339d90df1e77c57ea072ede6758</data>
+    </image>
+</images>
 <connections>
     <connection>
         <sender>subfigure</sender>
@@ -1222,48 +1267,6 @@
     <connection>
         <sender>lbX</sender>
         <signal>textChanged(const QString&amp;)</signal>
-        <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_bb()</slot>
-    </connection>
-    <connection>
-        <sender>lbY</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_bb()</slot>
-    </connection>
-    <connection>
-        <sender>rtX</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_bb()</slot>
-    </connection>
-    <connection>
-        <sender>rtY</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_bb()</slot>
-    </connection>
-    <connection>
-        <sender>lbXunit</sender>
-        <signal>activated(int)</signal>
-        <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_bb()</slot>
-    </connection>
-    <connection>
-        <sender>lbYunit</sender>
-        <signal>activated(int)</signal>
-        <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_bb()</slot>
-    </connection>
-    <connection>
-        <sender>rtXunit</sender>
-        <signal>activated(int)</signal>
-        <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_bb()</slot>
-    </connection>
-    <connection>
-        <sender>rtYunit</sender>
-        <signal>activated(int)</signal>
         <receiver>QGraphicsDialogBase</receiver>
         <slot>change_bb()</slot>
     </connection>
@@ -1334,12 +1337,6 @@
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
-        <sender>heightUnit</sender>
-        <signal>activated(int)</signal>
-        <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
-    <connection>
         <sender>angle</sender>
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>QGraphicsDialogBase</receiver>
@@ -1348,24 +1345,6 @@
     <connection>
         <sender>origin</sender>
         <signal>activated(int)</signal>
-        <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>rtX</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>rtY</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>QGraphicsDialogBase</receiver>
-        <slot>change_adaptor()</slot>
-    </connection>
-    <connection>
-        <sender>lbY</sender>
-        <signal>textChanged(const QString&amp;)</signal>
         <receiver>QGraphicsDialogBase</receiver>
         <slot>change_adaptor()</slot>
     </connection>
@@ -1380,6 +1359,48 @@
         <signal>clicked()</signal>
         <receiver>QGraphicsDialogBase</receiver>
         <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>lbY</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QGraphicsDialogBase</receiver>
+        <slot>change_bb()</slot>
+    </connection>
+    <connection>
+        <sender>rtX</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QGraphicsDialogBase</receiver>
+        <slot>change_bb()</slot>
+    </connection>
+    <connection>
+        <sender>rtY</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QGraphicsDialogBase</receiver>
+        <slot>change_bb()</slot>
+    </connection>
+    <connection>
+        <sender>lbXunit</sender>
+        <signal>activated(int)</signal>
+        <receiver>QGraphicsDialogBase</receiver>
+        <slot>change_bb()</slot>
+    </connection>
+    <connection>
+        <sender>lbYunit</sender>
+        <signal>activated(int)</signal>
+        <receiver>QGraphicsDialogBase</receiver>
+        <slot>change_bb()</slot>
+    </connection>
+    <connection>
+        <sender>rtXunit</sender>
+        <signal>activated(int)</signal>
+        <receiver>QGraphicsDialogBase</receiver>
+        <slot>change_bb()</slot>
+    </connection>
+    <connection>
+        <sender>rtYunit</sender>
+        <signal>activated(int)</signal>
+        <receiver>QGraphicsDialogBase</receiver>
+        <slot>change_bb()</slot>
     </connection>
     <slot access="protected">browse_clicked()</slot>
     <slot access="protected">getBB_clicked()</slot>

@@ -27,6 +27,8 @@
 #include <qfiledialog.h>
 #include <qcombobox.h>
 
+#include "lengthcombo.h"
+
 #include "QGraphicsDialog.h"
 #include "QGraphics.h"
 
@@ -64,6 +66,8 @@ void QGraphicsDialog::change_adaptor()
 void QGraphicsDialog::change_bb()
 {
 	form_->controller().bbChanged = true;
+	lyxerr[Debug::GRAPHICS] 
+		<< "[controller().bb_Changed set to true]\n";
 	form_->changed();
 }
 
@@ -73,6 +77,7 @@ void QGraphicsDialog::change_WUnit()
 	bool useHeight = (widthUnit->currentItem() > 0);
 	height->setEnabled(useHeight);
 	heightUnit->setEnabled(useHeight);
+	form_->changed();
 }
 
 

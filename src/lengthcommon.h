@@ -15,8 +15,11 @@ extern int const num_units;
  * FIXME: I am not sure if "mu" should be possible to select (Lgb)
  */
 extern char const * unit_name[];
+extern char const * unit_name_gui[];
+extern char const * unit_name_ltx[];
 
 /// return the unit given a string representation such as "cm"
 LyXLength::UNIT unitFromString(string const & data);
+
 
 #endif // LENGTH_COMMON_H

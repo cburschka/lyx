@@ -44,6 +44,7 @@
 #include "Qt2BC.h"
 
 using std::vector;
+using std::endl;
 
 typedef Qt2CB<ControlGraphics, Qt2DB<QGraphicsDialog> > base_class;
 
@@ -97,19 +98,34 @@ void QGraphics::build_dialog()
 	bc().addReadOnly(dialog_->origin);
 	bc().addReadOnly(dialog_->latexoptions);
 	bc().addReadOnly(dialog_->getPB);
+}
+
+
+namespace {
+
+// returns the number of the string s in the vector v
+int getItemNo(vector<string> v, string const & s) {
+	vector<string>::const_iterator cit =
+		    find(v.begin(), v.end(), s);
+	return (cit != v.end()) ? int(cit - v.begin()) : 0;
+}
  
-	using namespace frnt;
-	vector<RotationOriginPair> origindata = getRotationOriginData();
-	vector<string> const origin_lang = getFirst(origindata);
-	origin_ltx = getSecond(origindata);
-	// build the list
-	for (vector<string>::const_iterator it = origin_lang.begin();
-	    it != origin_lang.end(); ++it) {
-		dialog_->origin->insertItem((*it).c_str(), -1);
-	} 
+// returns the number of the unit in the array unit_name,
+// which is defined in lengthcommon.C
+int getUnitNo(char const * c[], string const & s) {
+	int i = 0;
+	while (i < num_units && s != c[i])
+		++i;
+	return (i < num_units) ? i : 0;
+}
  
+}
+
+
+void QGraphics::update_contents()
+{
 	// clear and fill in the comboboxes
-	vector<string> const bb_units = getBBUnits();
+	vector<string> const bb_units = frnt::getBBUnits();
 	dialog_->lbXunit->clear();
 	dialog_->lbYunit->clear();
 	dialog_->rtXunit->clear();
@@ -122,53 +138,24 @@ void QGraphics::build_dialog()
 		dialog_->rtYunit->insertItem((*it).c_str(), -1);
 	}
 	
-}
-
-
-namespace {
- 
-// returns the number of the string s in the vector v
-int getItemNo(vector<string> v, string const & s) {
-	vector<string>::const_iterator cit =
-		    find(v.begin(), v.end(), s);
-	if (cit != v.end())
-		return int(cit - v.begin());
- 
-	return 0;
-}
- 
-// returns the number of the unit in the array unit_name,
-// which is defined in lengthcommon.C
-int getUnitNo(string const & s) {
-	int i = 0;
-	while (i < num_units && s != unit_name[i])
-		++i;
-	return (i < num_units) ? i : 0;
-}
- 
-}
-
-
-void QGraphics::update_contents()
-{
 	InsetGraphicsParams & igp = controller().params();
 
 	// set the right default unit
-	string unitDefault("cm");
+	LyXLength::UNIT unitDefault = LyXLength::CM;
 	switch (lyxrc.default_papersize) {
 		case BufferParams::PAPER_DEFAULT: break;
 
 		case BufferParams::PAPER_USLETTER:
 		case BufferParams::PAPER_LEGALPAPER:
 		case BufferParams::PAPER_EXECUTIVEPAPER:
-			unitDefault = "in";
+			unitDefault = LyXLength::IN;
 			break;
 
 		case BufferParams::PAPER_A3PAPER:
 		case BufferParams::PAPER_A4PAPER:
 		case BufferParams::PAPER_A5PAPER:
 		case BufferParams::PAPER_B5PAPER:
-			unitDefault = "cm";
+			unitDefault = LyXLength::CM;
 			break;
 	}
 
@@ -176,17 +163,19 @@ void QGraphics::update_contents()
 
 	// set the bounding box values
 	if (igp.bb.empty()) {
-		controller().bbChanged = false;
 		string const bb = controller().readBB(igp.filename);
-		// the values from the file always have the point-unit
+		// the values from the file always have the bigpoint-unit bp
 		dialog_->lbX->setText(token(bb, ' ', 0).c_str());
 		dialog_->lbY->setText(token(bb, ' ', 1).c_str());
 		dialog_->rtX->setText(token(bb, ' ', 2).c_str());
 		dialog_->rtY->setText(token(bb, ' ', 3).c_str());
+		dialog_->lbXunit->setCurrentItem(0);
+		dialog_->lbYunit->setCurrentItem(0);
+		dialog_->rtXunit->setCurrentItem(0);
+		dialog_->rtYunit->setCurrentItem(0);
+		controller().bbChanged = false;
 	} else {
 		// get the values from the inset
-		controller().bbChanged = true;
-		vector<string> const bb_units = frnt::getBBUnits();
 		LyXLength anyLength;
 		string const xl(token(igp.bb,' ',0));
 		string const yl(token(igp.bb,' ',1));
@@ -220,6 +209,7 @@ void QGraphics::update_contents()
 		} else {
 			dialog_->rtY->setText(xl.c_str());
 		}
+		controller().bbChanged = true;
 	}
 
 	// Update the draft and clip mode
@@ -245,15 +235,16 @@ void QGraphics::update_contents()
 	dialog_->displayscale->setEnabled(igp.display != grfx::NoDisplay && !readOnly());
 	dialog_->displayscale->setText(tostr(igp.lyxscale).c_str());
 
-	// the output section
+	//// the output section (width/height)
 	// set the length combo boxes
 	// only the width has the possibility for scale%. The original
 	// units are defined in lengthcommon.C 
-	dialog_->widthUnit->insertItem("Scale%");
-	for (int i = 0; i < num_units; i++) {
-		dialog_->widthUnit->insertItem(unit_name[i], -1);
-		dialog_->heightUnit->insertItem(unit_name[i], -1);
-	}
+	// 1. the width (a listttype)
+	dialog_->widthUnit->clear();
+	dialog_->widthUnit->insertItem(_("Scale%"));
+	for (int i = 0; i < num_units; i++) 
+		dialog_->widthUnit->insertItem(unit_name_gui[i], -1);
+
 	if (!lyx::float_equal(igp.scale, 0.0, 0.05)) {
 		// there is a scale value > 0.05
 		dialog_->width->setText(tostr(igp.scale).c_str());
@@ -261,15 +252,17 @@ void QGraphics::update_contents()
 	} else {
 		// no scale means default width/height
 		dialog_->width->setText(tostr(igp.width.value()).c_str());
-		string const widthUnit = (igp.width.value() > 0.0) ?
-			unit_name[igp.width.unit()] : unitDefault;
-			// +1 instead of the "Scale%" option
-		dialog_->widthUnit->setCurrentItem(getUnitNo(widthUnit) + 1);
+		// the width cannot have a unitDefault, because
+		// it is a "Scale%" or another user defined unit!
+		// +1 instead of the "Scale%" option
+		int unit_ = igp.width.unit();
+		dialog_->widthUnit->setCurrentItem(unit_ + 1);
 	}
+	// 2. the height (a lengthgcombo type)
 	dialog_->height->setText(tostr(igp.height.value()).c_str());
-	string const heightUnit = (igp.height.value() > 0.0) ?
-			unit_name[igp.height.unit()] : unitDefault;
-	dialog_->heightUnit->setCurrentItem(getUnitNo(heightUnit));
+	LyXLength::UNIT unit_ = (igp.height.value() > 0.0) ?
+		igp.height.unit() : unitDefault;
+	dialog_->heightUnit->setCurrentItem(unit_);
 
 	// enable height input in case of non "Scale%" as width-unit
 	bool use_height = (dialog_->widthUnit->currentItem() > 0);
@@ -280,9 +273,22 @@ void QGraphics::update_contents()
 
 	dialog_->angle->setText(tostr(igp.rotateAngle).c_str());
 
+	dialog_->origin->clear();
+ 
+	using namespace frnt;
+	vector<RotationOriginPair> origindata = getRotationOriginData();
+	vector<string> const origin_lang = getFirst(origindata);
+	QGraphics::origin_ltx = getSecond(origindata);
+
+	for (vector<string>::const_iterator it = origin_lang.begin();
+	    it != origin_lang.end(); ++it)
+		dialog_->origin->insertItem((*it).c_str(), -1);
+ 
 	if (!igp.rotateOrigin.empty())
 		dialog_->origin->setCurrentItem(
 			::getItemNo(origin_ltx, igp.rotateOrigin));
+	else
+		dialog_->origin->setCurrentItem(0);
 
 	//// latex section 
 	dialog_->latexoptions->setText(igp.special.c_str());
@@ -296,33 +302,35 @@ void QGraphics::apply()
 	igp.filename = dialog_->filename->text();
 
 	// the bb section
-	if (!controller().bbChanged) {
-		// don't write anything		
-		igp.bb.erase();
-	} else if (dialog_->clip->isChecked()) {
+	igp.bb.erase();
+	if (controller().bbChanged) {
 		string bb;
 		string lbX(dialog_->lbX->text());
 		string lbY(dialog_->lbY->text());
 		string rtX(dialog_->rtX->text());
 		string rtY(dialog_->rtY->text());
-
-		if (lbX.empty())
-			bb = "0 ";
-		else
-			bb = lbX + dialog_->lbXunit->currentText().latin1() + ' ';
-		if (lbY.empty())
-			bb += "0 ";
-		else 
-			bb += (lbY + dialog_->lbYunit->currentText().latin1() + ' ');
-		if (rtX.empty())
-			bb += "0 ";
-		else 
-			bb += (rtX + dialog_->rtXunit->currentText().latin1() + ' ');
-		if (rtY.empty())
-			bb += "0";
-		else 
-			bb += (rtY + dialog_->rtYunit->currentText().latin1());
-		igp.bb = bb;
+		int bb_sum = 
+			strToInt(lbX) + strToInt(lbY) + 
+			strToInt(rtX) + strToInt(rtX);
+		if (bb_sum) {
+			if (lbX.empty())
+				bb = "0 ";
+			else
+				bb = lbX + dialog_->lbXunit->currentText().latin1() + ' ';
+			if (lbY.empty())
+				bb += "0 ";
+			else 
+				bb += (lbY + dialog_->lbYunit->currentText().latin1() + ' ');
+			if (rtX.empty())
+				bb += "0 ";
+			else 
+				bb += (rtX + dialog_->rtXunit->currentText().latin1() + ' ');
+			if (rtY.empty())
+				bb += "0";
+			else 
+				bb += (rtY + dialog_->rtYunit->currentText().latin1());
+			igp.bb = bb;
+		}
 	}
 
 	igp.draft = dialog_->draftCB->isChecked();
@@ -344,8 +352,9 @@ void QGraphics::apply()
 	string value(dialog_->width->text());
 	if (dialog_->widthUnit->currentItem() > 0) {
 		// width/height combination
-		string const unit(dialog_->widthUnit->currentText());	
-		igp.width = LyXLength(value + unit); 
+		int const unitNo = getUnitNo(unit_name_gui, 
+			string(dialog_->widthUnit->currentText()));
+		igp.width = LyXLength(value + unit_name_ltx[unitNo]);
 		igp.scale = 0.0; 
 	} else {
 		// scaling instead of a width
@@ -353,8 +362,9 @@ void QGraphics::apply()
 		igp.width = LyXLength(); 
 	}
 	value = string(dialog_->height->text());
-	string const unit = string(dialog_->heightUnit->currentText());
-	igp.height = LyXLength(value + unit);
+	int const unitNo = getUnitNo(unit_name_gui, 
+		string(dialog_->heightUnit->currentText()));
+	igp.height = LyXLength(value + unit_name_ltx[unitNo]);
 
 	igp.keepAspectRatio = dialog_->aspectratio->isChecked();
 
@@ -370,8 +380,9 @@ void QGraphics::apply()
 
 	// save the latex name for the origin. If it is the default
 	// then origin_ltx returns ""
-	igp.rotateOrigin = origin_ltx[dialog_->origin->currentItem()];
-	
+	igp.rotateOrigin = 
+		QGraphics::origin_ltx[dialog_->origin->currentItem()];
+
 	// more latex options
 	igp.special = dialog_->latexoptions->text();
 }
