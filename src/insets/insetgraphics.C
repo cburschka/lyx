@@ -261,16 +261,16 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	int lwidth = width(bv, font);
 
 	// Make sure x is updated upon exit from this routine
-	float old_x = x;
+	int old_x = x;
 	x += lwidth;
 
 	// This will draw the graphics. If the graphics has not been loaded yet,
 	// we draw just a rectangle.
 	if (imageLoaded) {
 
-		paint.image(int(old_x) + 2, baseline - lascent,
-		             lwidth - 4, lascent + ldescent,
-					 cacheHandle->getImage());
+		paint.image(old_x + 2, baseline - lascent,
+		            lwidth - 4, lascent + ldescent,
+		            cacheHandle->getImage());
 	} else {
 		
 		// Get the image status, default to unknown error.
@@ -287,25 +287,24 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 			return;
 		}
 
-		string const msg = statusMessage();
 		
-		paint.rectangle(int(old_x) + 2, baseline - lascent,
+		paint.rectangle(old_x + 2, baseline - lascent,
 		                lwidth - 4,
 		                lascent + ldescent);
 
+		string const msg = statusMessage();
 		if (!msg.empty()) {
 			// Print the message.
 			LyXFont msgFont(font);
 			msgFont.setFamily(LyXFont::SANS_FAMILY);
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
 			string const justname = OnlyFilename (params.filename);
-			paint.text(int(old_x) + 8, 
-					baseline - lyxfont::maxAscent(msgFont) - 4,
-				    justname, msgFont);
+			paint.text(old_x + 8, 
+			           baseline - lyxfont::maxAscent(msgFont) - 4,
+			           justname, msgFont);
 
 			msgFont.setSize(LyXFont::SIZE_TINY);
-			paint.text(int(old_x) + 8, baseline - 4, 
-					msg, msgFont);
+			paint.text(old_x + 8, baseline - 4, msg, msgFont);
 		}
 	}
 }
