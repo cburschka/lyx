@@ -522,7 +522,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	} else if (ob == lyxview_->button_latex_values) {
 		if (contains(fl_get_choice_text(size_->choice_width),'%'))
 			Alert::alert(_("Warning!"),
-				     _("The units t%, p%, c% and l% are not allowed here."),
+				     _("The units text%, page%, col% and line% are not allowed here."),
 				     _("Cannot use the values from LaTeX size!"));
 		else {
 			LyXLength dummy =

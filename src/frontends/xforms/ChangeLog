@@ -1,3 +1,9 @@
+2002-03-27  Herbert Voss  <voss@lyx.org>
+
+	* xforms_helpers.h:
+	* FormGraphics.C:  change c%, l%, p% t% to col%, line%, page%
+	and text% 
+
 2002-03-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* MathsSymbols.[Ch]: remove #include "bmtable.h" & "FormMathsPanel.h".

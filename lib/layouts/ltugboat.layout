@@ -1,0 +1,213 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[ltugboat]{article (tugboat)}
+# The tugboat journal (TUGboat) textclass definition file.
+# Journal of the TeX User Group http://www.tug.org
+# Author : Herbert Voss <voss@perce.de> 2001/08/13
+#
+# General textclass parameters
+Columns			2
+Sides			2
+#SecNumDepth				#no counting
+#TocDepth		-1
+MaxCounter		Counter_Section
+#
+ClassOptions
+  FontSize		default		#only 11pt
+  PageStyle		""		# controlled by class
+End
+#
+DefaultFont				# only for screen
+  Family		Roman
+  Series		Medium
+  Shape			Up
+  Size			Normal
+  Color			None
+EndFont
+#
+#
+# Standard style definition
+#
+Style Standard
+  Margin  		Static
+  LatexType 		Paragraph
+  LatexName 		dummy		# no special latex env
+  ParIndent		MM
+  ParSkip 		0.5		# default
+  ParSep		0.5		# default
+  Align 		Block
+  AlignPossible 	Block, Left, Right, Center
+  LabelType 		No_Label
+End
+#
+#
+Input stdlists.inc
+
+# Section style definition
+Style Section
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		section
+  NeedProtect		1
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_Section
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Normal
+  EndFont
+
+End
+
+# Subsection style definition
+Style Subsection
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		subsection
+  NeedProtect		1
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.9
+  BottomSep		0.5
+  ParSep		0.5
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_Subsection
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Normal
+  EndFont
+End
+
+
+# Subsubsection style definition
+Style Subsubsection
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		subsubsection
+  NeedProtect		1
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.7
+  BottomSep		0.4
+  ParSep		0.4
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_SubSubSection
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Normal
+  EndFont
+
+End
+
+# Paragraph style definition
+Style Paragraph
+  Margin		Dynamic
+  LatexType		Command
+  LatexName		paragraph
+  NeedProtect		1
+  NextNoIndent		1
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		0.4
+  BottomSep		0
+  ParSep		0.4
+  Align			Block
+  AlignPossible		Block, Left
+  LabelType		Counter_Paragraph
+
+  # standard font definition
+  Font 
+    Series 		Bold
+    Size		Normal
+  EndFont
+End
+
+
+#Input stdstarsections.inc
+#
+Input stdstruct.inc
+Input stdlayouts.inc
+#
+# Create and Overwrite some styles
+#
+# Title style definition
+Style Title
+  Margin		Static
+  LatexType		Command
+  InTitle		1
+  LatexName		title
+  ParSkip		0.4
+  ItemSep		0
+  TopSep		0
+  BottomSep		1
+  ParSep		1
+  Align			Left
+  AlignPossible		Left
+  LabelType		No_Label
+  # standard font definition
+  TextFont 
+    Series		Bold
+    Size		Normal
+  EndFont
+End
+
+# Author style definition
+Style Author
+  Margin		Static
+  LatexType		Command
+  InTitle		1
+  LatexName		author
+  LabelSep		xxx
+  ParSkip		0.4
+  TopSep		1.3
+  BottomSep		0.7
+  ParSep		0.7
+  LeftMargin		MM
+  Align			Left
+  AlignPossible		Left
+  LabelType		No_Label
+End
+#
+#
+# Abstract style definition
+Style Abstract 
+  Margin		Static
+  LatexType		Environment
+  LatexName		abstract
+  NextNoIndent		1
+  LeftMargin		""
+  RightMargin		""
+  ParIndent		""
+  ItemSep		0
+  TopSep		1.5
+  BottomSep		1.5
+  ParSep		0
+  Align			Block
+  AlignPossible		Block
+  LabelType		Top_Environment
+  LabelString		Abstract
+  LabelBottomSep    0.5
+  # standard font definition
+  TextFont 
+    Size		Normal
+  EndFont
+  # label font definition
+  LabelFont 
+    Size		Normal
+    Series		Bold
+  EndFont
+End 

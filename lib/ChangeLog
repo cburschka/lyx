@@ -1,3 +1,15 @@
+2002-03-27 Herbert Voss <voss@perce.de>
+
+	* layouts/ltugboat.layout:
+	* layouts/dtk.layout: new layouts.
+	
+	* doc/LaTeXConfig.lyx.in: add description for layouts
+	dtk and ltugboat
+
+2002-03-27  Marco Morandini  <morandini@aero.polimi.it>
+
+	* configure.m4: fix grace to eps converter
+
 2002-03-19  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* examples/listerrors.lyx: Fixed to run with python-1.5 as well

@@ -53,9 +53,9 @@ LyXLength convertResizeValue(string const token, LyXLex & lex) {
     else if (token == "inch")
 	return (LyXLength(value+"in"));
     else if (token == "percentOfColumn")
-	return (LyXLength(value+"c%"));
+	return (LyXLength(value+"col%"));
     else if (token == "percentOfPage")
-	return (LyXLength(value+"p%"));
+	return (LyXLength(value+"page%"));
     else return LyXLength("0pt");	// nothing with figinset
 }
 

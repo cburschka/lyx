@@ -1,3 +1,8 @@
+2002-03-27  Herbert Voss  <voss@lyx.org>
+
+	* lengthcommon.C: change c%, l%, p% t% to col%, line%, page%
+	and text% 
+
 2002-03-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* bufferview_funcs.C (currentState): only show paragraph number

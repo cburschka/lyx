@@ -504,7 +504,7 @@ cat >$outfile <<EOF
 \\converter html latex "$html_to_latex_command" ""
 \\converter word latex "$word_to_latex_command" ""
 
-\\converter agr  eps "xmgrace -hardcopy -hdevice EPS \$\$i" ""
+\\converter agr  eps "xmgrace -hardcopy -printfile \$\$o -hdevice EPS \$\$i" ""
 \\converter bmp  eps "$bmp_to_eps" ""
 \\converter fits  eps "$fits_to_eps" ""
 \\converter gif  eps "$gif_to_eps" ""

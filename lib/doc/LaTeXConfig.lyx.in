@@ -583,6 +583,41 @@ jadetex
  You need the sgmltools v2.0 package installed to use this.
 \layout Subsection
 
+dtk
+\layout Description
+
+Found: @chk_dtk@
+\layout Description
+
+CTAN: 
+\family typewriter 
+usergrps/dante/dtk/
+\layout Description
+
+Notes: The document class 
+\family sans 
+dtk
+\family default 
+ can be used to write articles for the Journal of the German TeX User Group
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+Die TeXnische Komödie
+\begin_inset Quotes erd
+\end_inset 
+
+.
+\layout Description
+
+WWW: 
+\begin_inset LatexCommand
+	\url{http://www.dante.de}
+\end_inset 
+
+
+\layout Subsection
+
 entcs
 \layout Description
 
@@ -1184,11 +1219,45 @@ Svprothe
  is a format suitable for publication in the journal Probability Theory
  and Related Fields.
  For more information, see section 
-\begin_inset LatexCommand \ref{svjog}
-
+\begin_inset LatexCommand
+	\ref{svjog}
 \end_inset 
 
 .
+\layout Subsection
+
+TUGboat
+\layout Description
+
+Found: @chk_ltugboat@
+\layout Description
+
+CTAN: 
+\family typewriter 
+plain/contrib/tugboat.tar
+\layout Description
+
+Notes: The document class 
+\family sans 
+ltugboat
+\family default 
+ can be used to write articles for the Journal of the TeX User Group 
+\begin_inset Quotes eld
+\end_inset 
+
+TUGboat
+\begin_inset Quotes erd
+\end_inset 
+
+.
+\layout Description
+
+WWW: 
+\begin_inset LatexCommand
+	\url{http://www.tug.org}
+\end_inset 
+
+
 \layout Section
 
 Required packages

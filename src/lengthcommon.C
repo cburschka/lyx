@@ -5,10 +5,10 @@
 int const num_units = LyXLength::UNIT_NONE;
 
 // I am not sure if "mu" should be possible to select (Lgb)
-char const * unit_name[num_units] = { "sp", "pt", "bp", "dd",
-				      "mm", "pc", "cc", "cm",
-				      "in", "ex", "em", "mu",
-				      "t%",  "c%", "p%", "l%" };
+char const * unit_name[num_units] = { 
+	"sp", "pt", "bp", "dd", "mm", "pc", "cc", "cm",
+	"in", "ex", "em", "mu", 
+	"text%",  "col%", "page%", "line%" };
 
 
 LyXLength::UNIT unitFromString(string const & data)
