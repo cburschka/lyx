@@ -1,3 +1,8 @@
+2000-04-18  Juergen Vigna  <jug@sad.it>
+
+	* src/CutAndPaste.C: made textclass a static member of the class
+	as otherwise it is not accesed right!!!
+
 2000-04-17  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* forms/layout_forms.fd

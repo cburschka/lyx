@@ -21,6 +21,7 @@
 using std::pair;
 
 static LyXParagraph * buf = 0;
+static LyXTextClassList::size_type textclass;
 
 // for now here this should be in another Cut&Paste Class!
 //

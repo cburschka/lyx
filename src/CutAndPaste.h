@@ -47,8 +47,6 @@ public:
 private:
 	///
 	void DeleteBuffer();
-	///
-	LyXTextClassList::size_type textclass;
 };
 
 #endif
