@@ -51,10 +51,18 @@
 #include "ParagraphParameters.h"
 #include "undo.h"
 
+#include "insets/insetbox.h"
+#include "insets/insetbranch.h"
 #include "insets/insetcommand.h"
+#include "insets/insetert.h"
 #include "insets/insetexternal.h"
+#include "insets/insetfloat.h"
+#include "insets/insetgraphics.h"
+#include "insets/insetminipage.h"
+#include "insets/insetnote.h"
 #include "insets/insettabular.h"
 #include "insets/insetvspace.h"
+#include "insets/insetwrap.h"
 
 #include "mathed/math_cursor.h"
 
@@ -559,6 +567,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			code = InsetOld::BIBITEM_CODE;
 		else if (ev.argument == "bibtex")
 			code = InsetOld::BIBTEX_CODE;
+		else if (ev.argument == "box")
+			code = InsetOld::BOX_CODE;
+		else if (ev.argument == "branch")
+			code = InsetOld::BRANCH_CODE;
 		else if (ev.argument == "citation")
 			code = InsetOld::CITE_CODE;
 		else if (ev.argument == "ert")
@@ -577,6 +589,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			code = InsetOld::LABEL_CODE;
 		else if (ev.argument == "minipage")
 			code = InsetOld::MINIPAGE_CODE;
+		else if (ev.argument == "note")
+			code = InsetOld::NOTE_CODE;
 		else if (ev.argument == "ref")
 			code = InsetOld::REF_CODE;
 		else if (ev.argument == "toc")
@@ -1237,23 +1251,53 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		}
 
 		case LFUN_DIALOG_SHOW_NEW_INSET: {
-			string const & name = argument;
-			string data;
+			string const name = func.getArg(0);
+			string data = trim(func.argument.substr(name.size()));
 			if (name == "bibitem" ||
-					name == "bibtex" ||
-					name == "include" ||
-					name == "index" ||
-					name == "ref" ||
-					name == "toc" ||
-					name == "url") {
+			    name == "bibtex" ||
+			    name == "include" ||
+			    name == "index" ||
+			    name == "label" ||
+			    name == "ref" ||
+			    name == "toc" ||
+			    name == "url") {
 				InsetCommandParams p(name);
 				data = InsetCommandMailer::params2string(name, p);
+			} else if (name == "box") {
+				// \c data == "Boxed" || "Frameless" etc
+				InsetBoxParams p(data);
+				data = InsetBoxMailer::params2string(p);
+			} else if (name == "branch") {
+				InsetBranchParams p;
+				data = InsetBranchMailer::params2string(p);
 			} else if (name == "citation") {
 				InsetCommandParams p("cite");
 				data = InsetCommandMailer::params2string(name, p);
+			} else if (name == "ert") {
+				data = InsetERTMailer::params2string(InsetCollapsable::Open);
+			} else if (name == "external") {
+				InsetExternalParams p;
+				Buffer const & buffer = *owner->buffer();
+				data = InsetExternalMailer::params2string(p, buffer);
+			} else if (name == "float") {
+				InsetFloatParams p;
+				data = InsetFloatMailer::params2string(p);
+			} else if (name == "graphics") {
+				InsetGraphicsParams p;
+				Buffer const & buffer = *owner->buffer();
+				data = InsetGraphicsMailer::params2string(p, buffer);
+			} else if (name == "minipage") {
+				InsetMinipage::Params p;
+				data = InsetMinipageMailer::params2string(p);
+			} else if (name == "note") {
+				InsetNoteParams p;
+				data = InsetNoteMailer::params2string(p);
 			} else if (name == "vspace") {
 				VSpace space;
 				data = InsetVSpaceMailer::params2string(space);
+			} else if (name == "wrap") {
+				InsetWrapParams p;
+				data = InsetWrapMailer::params2string(p);
 			}
 			owner->getDialogs().show(name, data, 0);
 			break;

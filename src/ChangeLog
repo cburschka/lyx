@@ -1,5 +1,10 @@
 2003-12-10  Angus Leeming  <leeming@lyx.org>
 
+	* lyxfunc.C (dispatch): enable all inset dialogs to be opened with
+	'dialog-show-new-inset <inset name>'
+
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
 	* buffer.C: up the format to 227.
 
 	* factory.C: the box inset is now identified simply by 'Box'.
