@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # this is the default converter if no one other was
 # defined by the user in edit->preferences->converter
 #
