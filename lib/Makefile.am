@@ -13,6 +13,7 @@ CLIPART = clipart/*.eps
 DOCDIST = doc/LyXConfig.lyx*
 DOCINST = doc/*.lyx doc/*.eps doc/*.lyx.in
 EXAMPLES = examples/*.lyx
+HELP = help/*.hlp
 IMAGES = images/*.xpm
 KBD = kbd/*.kmap kbd/*.cdef
 LAYOUT = layouts/*.layout layouts/*.inc 
@@ -25,17 +26,17 @@ configure: configure.m4
 	$(M4) $< > $@
 	$(CHMOD) 755 $@
  
-LIBINSTFILES = $(BIND) $(CLIPART) $(DOCINST) $(EXAMPLES) $(IMAGES) $(KBD) \
-	$(LAYOUT) $(TEMPL) $(TEXSUPPORT) $(UI)
+LIBINSTFILES = $(BIND) $(CLIPART) $(DOCINST) $(EXAMPLES) $(HELP) $(IMAGES) \
+	$(KBD) $(LAYOUT) $(TEMPL) $(TEXSUPPORT) $(UI)
 
-LIBDISTFILES = $(BIND) $(CLIPART) $(DOCDIST) $(EXAMPLES) $(IMAGES) $(KBD) \
-	$(LAYOUT) $(TEMPL) $(UI) $(TEXSUPPORT) $(LYXSCRIPTS)
+LIBDISTFILES = $(BIND) $(CLIPART) $(DOCDIST) $(EXAMPLES) $(HELP) $(IMAGES) \
+	$(KBD) $(LAYOUT) $(TEMPL) $(UI) $(TEXSUPPORT) $(LYXSCRIPTS)
 
 pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
                textclass.lst packages.lst external_templates \
                encodings languages symbols
 
-LYXLIBDIRS = bind clipart doc examples images kbd layouts scripts \
+LYXLIBDIRS = bind clipart doc examples help images kbd layouts scripts \
              templates tex ui
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \

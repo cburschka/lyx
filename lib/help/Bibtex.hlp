@@ -1,14 +1,12 @@
-** This file is part of LyX, The Document Processor
-** Copyright 2001 The LyX Team.          Bibtex.hlp
----------------------------------------------------
+        				Bibtex.hlp
 
-Database:
+@bDatabase:
     Insert the Bibtex-database without the default extension
     ".bib". If you insert it with the browser, LyX strips
     the extension. More than one databases must be separated
     by a comma: natbib, books
 
-Bibstyle:
+@bBibstyle:
     Insert the Bibstyle without the default extension ".bst".
     Most of the bibstyles are stored in $TEXMF/bibtex/bst.
     $TEXMF is the root dir of the local TeX-tree. 
@@ -19,7 +17,7 @@ Bibstyle:
     available styles on your local TeX-System. It's available
     at http://www.perce.de/lyx/bstFiles.sh 
     
-Option bibtotoc:
+@bOption bibtotoc:
     By default the Bibliography doesn't appears in the table
     of contents. Activate this option if you want an entry
     like

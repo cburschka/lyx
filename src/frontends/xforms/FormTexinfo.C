@@ -15,25 +15,14 @@
 #endif
 
 #include "xformsBC.h"
-#include "ControlTexinfo.h"
 #include "FormTexinfo.h"
 #include "form_texinfo.h"
 #include "gettext.h"
 #include "debug.h"
-#include "helper_funcs.h"
 #include "xforms_helpers.h"
-#include "support/lstrings.h"
-#include "support/filetools.h"
 #include "support/LAssert.h"
-
-extern string user_lyxdir; // home of *Files.lst
     
 namespace {
-
-string const bstFilename("bstFiles.lst");
-string const clsFilename("clsFiles.lst");
-string const styFilename("styFiles.lst");
-string const errorMessage =_("Missing filelist. try Rescan");
 
 // C function wrapper, required by xforms.
 extern "C"
@@ -67,7 +56,7 @@ void setPreHandler(FL_OBJECT * ob)
 typedef FormCB<ControlTexinfo, FormDB<FD_form_texinfo> > base_class;
 FormTexinfo::FormTexinfo(ControlTexinfo & c)
 	: base_class(c, _("TeX Infos")),
-	  warningPosted(false), activeStyle(FormTexinfo::cls)
+	  warningPosted(false), activeStyle(ControlTexinfo::cls)
 {}
 
 
@@ -77,7 +66,7 @@ void FormTexinfo::build() {
 	fl_set_browser_fontstyle(dialog_->browser,FL_FIXED_STYLE);
 	// with Path is default
 	fl_set_button(dialog_->button_fullPath, 1);
-	updateStyles(FormTexinfo::cls);
+	updateStyles(ControlTexinfo::cls);
 
 	setPreHandler(dialog_->button_rescan);
 	setPreHandler(dialog_->button_view);
@@ -97,13 +86,13 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long) {
 		controller().help();
 
 	} else if (ob == dialog_->radio_cls) {
-		updateStyles(FormTexinfo::cls); 
+		updateStyles(ControlTexinfo::cls); 
 
 	} else if (ob == dialog_->radio_sty) {
-		updateStyles(FormTexinfo::sty); 
+		updateStyles(ControlTexinfo::sty); 
 
 	} else if (ob == dialog_->radio_bst) {
-		updateStyles(FormTexinfo::bst); 
+		updateStyles(ControlTexinfo::bst); 
 
 	} else if (ob == dialog_->button_rescan) {
 		// build new *Files.lst
@@ -135,67 +124,15 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long) {
 	return ButtonPolicy::SMI_VALID;
 }
 
-
-namespace {
-
-string const sortEntries(string & str_in)
-{
-	std::vector<string> dbase = getVectorFromString(str_in,"\n");
-	std::sort(dbase.begin(), dbase.end()); 	// sort entries
-	return getStringFromVector(dbase,"\n");
-}
-
-string const getContents(string const filename, bool withFullPath)
-{
-	string fileContents = GetFileContents(AddName(user_lyxdir,filename));
-	// everything ok?
-	if (!fileContents.empty()) {
-		if (withFullPath)
-			return(sortEntries(fileContents));
-		else {
-			int Entries = 1;
-			string dummy = OnlyFilename(token(fileContents,'\n',1));
-			string contents = dummy;
-			do {
-				dummy = OnlyFilename(token(fileContents,'\n',++Entries));
-				contents += ("\n"+dummy);
-			} while (!dummy.empty());
-			return(sortEntries(contents));
-		}
-	} else
-		return errorMessage;
-}
-
-} // namespace anon
-
-
-void FormTexinfo::updateStyles(FormTexinfo::texFileSuffix whichStyle)
+void FormTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 {
 	fl_clear_browser(dialog_->browser); 
 
 	bool const withFullPath = fl_get_button(dialog_->button_fullPath);
 
-	switch (whichStyle) {
-	case FormTexinfo::bst: 
-	{
-		string const str = getContents(bstFilename, withFullPath);
-		fl_add_browser_line(dialog_->browser, str.c_str());
-		break;
-
-	}
-	case FormTexinfo::cls: 
-	{
-		string const str = getContents(clsFilename, withFullPath);
-		fl_add_browser_line(dialog_->browser, str.c_str());
-		break;
-	}
-	case FormTexinfo::sty:
-	{
-		string const str = getContents(styFilename, withFullPath);
-		fl_add_browser_line(dialog_->browser, str.c_str());
-		break;
-	}
-	}
+	string const str = 
+		controller().getContents(whichStyle, withFullPath);
+	fl_add_browser_line(dialog_->browser, str.c_str());
 
 	activeStyle = whichStyle;
 }
@@ -232,16 +169,16 @@ void FormTexinfo::feedback(FL_OBJECT * ob)
 	string str;
 
 	if (ob == dialog_->button_rescan) {
-		str = _("run rescan ...");
+		str = _("starts rescan ...");
 
 	} else if (ob == dialog_->button_fullPath) {
 		str = _("View full path or only file name");
 
 	} else if (ob == dialog_->button_texhash) {
-		str = _("run texhash and rescan...");
+		str = _("starts texhash and rescan...");
 
 	} else if (ob == dialog_->button_view) {
-		str = _("select a file to view");
+		str = _("views a selected file");
 
 	}
 	

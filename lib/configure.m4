@@ -156,7 +156,7 @@ if test "x$OSTYPE" = xcygwin; then
 fi
 
 #### Create the build directories if necessary
-for dir in bind clipart doc examples images kbd layouts reLyX \
+for dir in bind clipart doc examples help images kbd layouts reLyX \
     scripts templates ui ; do
   test ! -d $dir && mkdir $dir
 done

@@ -15,16 +15,14 @@
 #endif
 
 #include "FormBase.h"
+#include "ControlTexinfo.h"
 
-class ControlTexinfo;
 struct FD_form_texinfo;
 
 class FormTexinfo : public FormCB<ControlTexinfo, FormDB<FD_form_texinfo> > {
 public:
 	///
 	FormTexinfo(ControlTexinfo &);
-	/// the file extensions
-	enum texFileSuffix {cls, sty, bst};
 
 	/// preemptive handler for feedback messages
 	void feedbackCB(FL_OBJECT *, int);
@@ -41,13 +39,13 @@ private:
 	///
 	void feedback(FL_OBJECT *);
 	///
-	void updateStyles(texFileSuffix);
+	void updateStyles(ControlTexinfo::texFileSuffix);
 	/// Fdesign generated method
 	FD_form_texinfo * build_texinfo();
 	///
 	bool warningPosted;
 	///
-	texFileSuffix activeStyle;
+	ControlTexinfo::texFileSuffix activeStyle;
 };
 
 #endif // FORMTEXINFO_H

@@ -22,20 +22,15 @@
 #include "ControlTexinfo.h"
 #include "Dialogs.h"
 #include "LyXView.h"
-#include "Lsstream.h"
 #include "BufferView.h"
 #include "gettext.h"
 #include "support/filetools.h" // FileSearch
-#include "version.h"
 #include "support/syscall.h"
 #include "support/path.h"
-#include "lyx_gui_misc.h"
+#include "helper_funcs.h"
+#include "support/lstrings.h"
 
-extern string system_lyxdir;
-extern string user_lyxdir;
-extern string help_lyxdir;
-
-using SigC::slot;
+extern string user_lyxdir; // home of *Files.lst
 
 ControlTexinfo::ControlTexinfo(LyXView & lv, Dialogs & d)
 			: ControlDialog<ControlConnectBI>(lv, d)
@@ -45,16 +40,17 @@ ControlTexinfo::ControlTexinfo(LyXView & lv, Dialogs & d)
 
 // build filelists of all availabe bst/cls/sty-files. done through
 // kpsewhich and an external script, saved in *Files.lst
-void ControlTexinfo::rescanStyles()
+void ControlTexinfo::rescanStyles() const
 {
 	// Run rescan in user lyx directory
 	Path p(user_lyxdir);
 	Systemcalls one(Systemcalls::System,
-			AddName(system_lyxdir,"TeXFiles.sh"));
+			LibFileSearch("scripts", "TeXFiles.sh"));
 	p.pop();
 }
 
-void ControlTexinfo::runTexhash()
+
+void ControlTexinfo::runTexhash() const
 {
 	// Run texhash in user lyx directory
 	Path p(user_lyxdir);
@@ -68,12 +64,64 @@ void ControlTexinfo::runTexhash()
 }
 
 
-void ControlTexinfo::viewFile(string const filename)
+namespace {
+
+string const sortEntries(string & str_in)
+{
+	std::vector<string> dbase = getVectorFromString(str_in,"\n");
+	std::sort(dbase.begin(), dbase.end()); 	// sort entries
+	return getStringFromVector(dbase,"\n");
+}
+
+} //namespace anon
+
+
+string const
+ControlTexinfo::getContents(texFileSuffix type, bool withFullPath) const
+{
+	static string const bstFilename("bstFiles.lst");
+	static string const clsFilename("clsFiles.lst");
+	static string const styFilename("styFiles.lst");
+
+	string filename;
+	switch (type) {
+	case bst: 
+		filename = bstFilename;
+		break;
+	case cls:
+		filename = clsFilename;
+		break;
+	case sty:
+		filename = clsFilename;
+		break;
+	}
+
+	string fileContents = GetFileContents(LibFileSearch(string(),filename));
+	// everything ok?
+	if (!fileContents.empty()) {
+		if (withFullPath)
+			return(sortEntries(fileContents));
+		else {
+			int Entries = 1;
+			string dummy = OnlyFilename(token(fileContents,'\n',1));
+			string contents = dummy;
+			do {
+				dummy = OnlyFilename(token(fileContents,'\n',++Entries));
+				contents += ("\n"+dummy);
+			} while (!dummy.empty());
+			return(sortEntries(contents));
+		}
+	} else
+		return _("Missing filelist. try Rescan");
+}
+
+void ControlTexinfo::viewFile(string const filename) const
 {
 	lv_.getDialogs()->showFile(filename);
 }
 
-void ControlTexinfo::help()
+
+void ControlTexinfo::help() const
 {
-	lv_.getDialogs()->showFile(help_lyxdir+"Texinfo.hlp");
+	lv_.getDialogs()->showFile(i18nLibFileSearch("help","Texinfo.hlp"));
 }

@@ -22,6 +22,7 @@ FormShowFile::FormShowFile(ControlShowFile & c)
 
 void FormShowFile::update()
 {
+	fl_hide_object(dialog_->button_update);
 	fl_clear_browser(dialog_->browser);
 	// courier medium
 	fl_set_browser_fontstyle(dialog_->browser,FL_FIXED_STYLE);

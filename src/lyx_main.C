@@ -57,7 +57,6 @@ string system_lyxdir;
 string build_lyxdir;
 string system_tempdir;
 string user_lyxdir;	// Default $HOME/.lyx
-string help_lyxdir;	// Default system_lyxdir/help
 
 // Should this be kept global? Asger says Yes.
 DebugStream lyxerr;
@@ -375,7 +374,6 @@ void LyX::init(bool gui)
 		system_lyxdir = LYX_DIR;
 		path_shown = true;
 	}
-	help_lyxdir = system_lyxdir+"help/";
 	// Report the system directory if debugging is on
 	if (!path_shown)
 		lyxerr[Debug::INIT] << "System directory: '"

@@ -25,16 +25,21 @@
 
 class ControlTexinfo : public ControlDialog<ControlConnectBI> {
 public:
+	/// the file extensions
+	enum texFileSuffix {cls, sty, bst};
 	///
 	ControlTexinfo(LyXView &, Dialogs &);
 	///
-	void viewFile(string const filename);
+	void viewFile(string const filename) const;
 	///
-	void help();
+	void help() const;
 	///
-	void rescanStyles();
+	void rescanStyles() const;
 	///
-	void runTexhash();
+	void runTexhash() const;
+	///
+	string const getContents(texFileSuffix type, bool withPath) const;
+
 
 private:
 	///
