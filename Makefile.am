@@ -1,13 +1,13 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += lyx.1 config.status config.cache config.log \
+DISTCLEANFILES += -r lyx.1 config.status config.cache config.log \
 	$(srcdir)/sourcedoc/*~ \
 	$(srcdir)/sourcedoc/html $(srcdir)/sourcedoc/latex \
 	$(srcdir)/sourcedoc/man $(srcdir)/sourcedoc/Doxyfile
 
 MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 \
 	$(srcdir)/configure $(srcdir)/development/lyx.spec \
-	$(srcdir)/acinclude.m4 $(srcdir)/sourcedoc/Doxyfile
+	$(srcdir)/acinclude.m4
 
 SUBDIRS = intl po sigc++ boost src lib
 

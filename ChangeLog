@@ -1,5 +1,7 @@
 2002-03-20  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* Makefile.am (DISTCLEANFILES): be recursive here
+
 	* configure.in: use LYX_CHECK_LDR 
 
 2002-03-14  Kayvan A. Sylvan  <kayvan@sylvan.com>
