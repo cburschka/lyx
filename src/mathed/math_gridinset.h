@@ -164,17 +164,17 @@ public:
 	///
 	virtual void delRow(row_type r);
 	///
-	virtual void addFancyRow(row_type r) { addRow(r); }
+	virtual void copyRow(row_type r);
 	///
-	virtual void delFancyRow(row_type r) { delRow(r); }
+	virtual void swapRow(row_type r);
 	///
 	virtual void addCol(col_type c);
 	///
 	virtual void delCol(col_type c);
 	///
-	virtual void addFancyCol(col_type c) { addCol(c); }
+	virtual void copyCol(col_type c);
 	///
-	virtual void delFancyCol(col_type c) { delCol(c); }
+	virtual void swapCol(col_type c);
 	///
 	virtual void appendRow();
 	///

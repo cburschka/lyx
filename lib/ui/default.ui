@@ -108,9 +108,13 @@ Menuset
 	Separator
 	Item "Add Row|A" "tabular-feature append-row"
 	Item "Delete Row|w" "tabular-feature delete-row"
+	Item "Copy Row" "tabular-feature copy-row"
+	Item "Swap Rows" "tabular-feature swap-row"
 	Separator
 	Item "Add Column|u" "tabular-feature append-column"
 	Item "Delete Column|D" "tabular-feature delete-column"
+	Item "Copy Column" "tabular-feature copy-column"
+	Item "Swap Columns" "tabular-feature swap-column"
     End
 
     Menu "edit_math"
@@ -129,20 +133,12 @@ Menuset
 	Submenu "Change formula type...|t" "edit_math_mutate"
 	Separator
 	Submenu "Use computer algebra system|t" "edit_math_extern"
-	Separator
-	Item "Align Left|f" "math-halign left"
-	Item "Align Center|C" "math-halign center"
-	Item "Align Right|R" "math-halign right"
-	Separator
-	Item "V.Align Top|T" "math-valign top"
-	Item "V.Align Center|e" "math-valign center"
-	Item "V.Align Bottom|B" "math-valign bottom"
-	Separator
-	Item "Add Row" "math-row-insert"
-	Item "Delete Row" "math-row-delete"
-	Separator
-	Item "Add Column" "math-column-insert"
-	Item "Delete Column" "math-column-delete"
+
+	#Item "Line Top|T" "tabular-feature toggle-line-top"
+	#Item "Line Bottom|B" "tabular-feature toggle-line-bottom"
+	#Item "Line Left|L" "tabular-feature toggle-line-left"
+	#Item "Line Right|R" "tabular-feature toggle-line-right"
+	#Separator
     End
 
     Menu "edit_math_extern"

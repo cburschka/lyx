@@ -415,12 +415,6 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_MATH_MUTATE:
 	case LFUN_MATH_DISPLAY:
-	case LFUN_MATH_HALIGN:
-	case LFUN_MATH_VALIGN:
-	case LFUN_MATH_ROW_INSERT:
-	case LFUN_MATH_ROW_DELETE:
-	case LFUN_MATH_COLUMN_INSERT:
-	case LFUN_MATH_COLUMN_DELETE:
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_NONUMBER:
 	case LFUN_TABINSERT:
@@ -428,6 +422,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_DELETE_LINE_FORWARD:
 	case LFUN_INSERT_LABEL:
 	case LFUN_MATH_EXTERN:
+	case LFUN_TABULAR_FEATURE:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->dispatch(cmd);
 		updateLocal(bv, true);

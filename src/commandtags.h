@@ -142,12 +142,6 @@ enum kb_action {
 	LFUN_MATH_MACRO,                // ale970510
 	LFUN_MATH_EXTERN,    // 120     // Andre' 20010424
 	LFUN_MATH_PANEL,                // Andre' 20010522
-	LFUN_MATH_VALIGN,               // Andre' 20010522
-	LFUN_MATH_HALIGN,               // Andre' 20010522
-	LFUN_MATH_ROW_INSERT,           // Andre' 20010522
-	LFUN_MATH_ROW_DELETE,           // Andre' 20010522
-	LFUN_MATH_COLUMN_INSERT,        // Andre' 20010522
-	LFUN_MATH_COLUMN_DELETE,        // Andre' 20010522
 	LFUN_MATH_MUTATE,               // Andre' 20010523
 	LFUN_MATH_IMPORT_SELECTION,     // Andre' 20010704
 	LFUN_MATH_SPACE,                // Andre' 20010725

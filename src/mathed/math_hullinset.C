@@ -400,6 +400,12 @@ void MathHullInset::footer_write(WriteStream & os) const
 }
 
 
+bool MathHullInset::colChangeOK() const
+{
+	return type_ == "align" || type_ == "alignat" || type_ == "xalignat";
+}
+
+
 void MathHullInset::addRow(row_type row)
 {
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
@@ -418,26 +424,21 @@ void MathHullInset::delRow(row_type row)
 }
 
 
-void MathHullInset::addFancyCol(col_type col)
+void MathHullInset::addCol(col_type col)
 {
-	if (type_ == "equation")
-		mutate("eqnarray");
-
-	else if (type_ == "eqnarray") {
-		mutate("align");
-		addFancyCol(col);
-	}
-
-	else if (type_ == "align" || type_ == "alignat"
-	      || type_ == "xalignat" || type_ == "xxalignat")
+	if (colChangeOK()) 
 		MathGridInset::addCol(col);
+	else
+		lyxerr << "Can't change number of columns in '" << type_ << "'\n";
 }
 
 
-void MathHullInset::delFancyCol(col_type col)
+void MathHullInset::delCol(col_type col)
 {
-	if (type_ == "alignat" || type_ == "xalignat" || type_ == "xxalignat")
+	if (colChangeOK()) 
 		MathGridInset::delCol(col);
+	else
+		lyxerr << "Can't change number of columns in '" << type_ << "'\n";
 }
 
 
@@ -584,12 +585,16 @@ void MathHullInset::mutate(string const & newtype)
 	}
 
 	else if (type_ == "multline") {
-		if (newtype == "gather") {
-			setType("gather");
+		if (newtype == "gather" || newtype == "align" ||	
+		           newtype == "xalign" || newtype == "xxalign")
+			setType(newtype);
+		else if (newtype == "eqnarray") {
+			MathGridInset::addCol(1);
+			MathGridInset::addCol(1);
+			setType("eqnarray");
 		} else {
 			lyxerr << "mutation from '" << type_
-				<< "' to '" << newtype << "' not implemented"
-						 << endl;
+				<< "' to '" << newtype << "' not implemented" << endl;
 		}
 	}
 
@@ -800,11 +805,6 @@ MathInset::result_type MathHullInset::dispatch
 			label(r, new_label);
 			return DISPATCHED;
 		}
-
-		case LFUN_MATH_HALIGN:
-		case LFUN_MATH_VALIGN:
-			// we explicitly don't want the default behaviour here
-			return UNDISPATCHED;
 
 		case LFUN_MATH_EXTERN:
 			doExtern(cmd, idx, pos);

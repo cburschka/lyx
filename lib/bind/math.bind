@@ -63,18 +63,22 @@
 \bind "M-m t e"   "math-mutate eqnarray"
 \bind "M-m t m"   "math-mutate multline"
 
-\bind "M-m c i"   "math-column-insert"
-\bind "M-m c d"   "math-column-delete"
+\bind "M-m c i"   "tabular-feature insert-column"
+\bind "M-m c d"   "tabular-feature delete-column"
+\bind "M-m c c"   "tabular-feature copy-column"
+\bind "M-m c s"   "tabular-feature swap-column"
 
-\bind "M-m w i"   "math-row-insert"
-\bind "M-m w d"   "math-row-delete"
+\bind "M-m w i"   "tabular-feature insert-row"
+\bind "M-m w d"   "tabular-feature delete-row"
+\bind "M-m w c"   "tabular-feature copy-row"
+\bind "M-m w s"   "tabular-feature swap-row"
 
-\bind "M-m a v t"   "math-valign top"
-\bind "M-m a v c"   "math-valign center"
-\bind "M-m a v b"   "math-valign bottom"
-\bind "M-m a h l"   "math-halign left"
-\bind "M-m a h c"   "math-halign center"
-\bind "M-m a h r"   "math-halign right"
+\bind "M-m w t"   "tabular-feature valign-top"
+\bind "M-m w m"   "tabular-feature valign-center"
+\bind "M-m w b"   "tabular-feature valign-bottom"
+\bind "M-m c l"   "tabular-feature align-left"
+\bind "M-m c m"   "tabular-feature align-center"
+\bind "M-m c r"   "tabular-feature align-right"
 
 # Decoration accents
 

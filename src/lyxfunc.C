@@ -362,7 +362,47 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	}
 
 	case LFUN_TABULAR_FEATURE:
-		disable = true;
+		if (mathcursor) {
+#if 0
+			// FIXME: check temporarily disabled
+			// valign code
+			char align = mathcursor->valign();
+			if (align == '\0') {
+				disable = true;
+				break;
+			}
+			if (ev.argument.empty()) {
+				flag.clear();
+				break;
+			}
+			if (!contains("tcb", ev.argument[0])) {
+				disable = true;
+				break;
+			}
+			flag.setOnOff(ev.argument[0] == align);
+		} else
+			disable = true;
+
+			char align = mathcursor->halign();
+			if (align == '\0') {
+				disable = true;
+				break;
+			}
+			if (ev.argument.empty()) {
+				flag.clear();
+				break;
+			}
+			if (!contains("lcr", ev.argument[0])) {
+				disable = true;
+				break;
+			}
+			flag.setOnOff(ev.argument[0] == align);
+#endif
+
+			disable = !mathcursor->halign();
+			break;
+		}
+
 		if (tli) {
 			FuncStatus ret;
 			//ret.disabled(true);
@@ -416,45 +456,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_LATEX_LOG:
 		disable = !IsFileReadable(buf->getLogName().second);
 		break;
-	case LFUN_MATH_VALIGN:
-		if (mathcursor) {
-			char align = mathcursor->valign();
-			if (align == '\0') {
-				disable = true;
-				break;
-			}
-			if (ev.argument.empty()) {
-				flag.clear();
-				break;
-			}
-			if (!contains("tcb", ev.argument[0])) {
-				disable = true;
-				break;
-			}
-			flag.setOnOff(ev.argument[0] == align);
-		} else
-			disable = true;
-		break;
-
-	case LFUN_MATH_HALIGN:
-		if (mathcursor) {
-			char align = mathcursor->halign();
-			if (align == '\0') {
-				disable = true;
-				break;
-			}
-			if (ev.argument.empty()) {
-				flag.clear();
-				break;
-			}
-			if (!contains("lcr", ev.argument[0])) {
-				disable = true;
-				break;
-			}
-			flag.setOnOff(ev.argument[0] == align);
-		} else
-			disable = true;
-		break;
 
 	case LFUN_MATH_MUTATE:
 		if (mathcursor)
@@ -472,15 +473,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_EXTERN:
 		disable = !mathcursor;
-		break;
-
-	// we need to be math mode and a math array for that
-	// Hack: halign produces non-zero result iff we are in a math array
-	case LFUN_MATH_ROW_INSERT:
-	case LFUN_MATH_ROW_DELETE:
-	case LFUN_MATH_COLUMN_INSERT:
-	case LFUN_MATH_COLUMN_DELETE:
-		disable = !mathcursor || !mathcursor->halign();
 		break;
 
 	default:

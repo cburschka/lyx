@@ -578,6 +578,25 @@ void MathGridInset::delRow(row_type row)
 }
 
 
+void MathGridInset::copyRow(row_type row)
+{
+	addRow(row);
+	for (col_type col = 0; col < ncols(); ++col)
+		cells_[(row + 1) * ncols() + col] = cells_[row * ncols() + col];
+}
+
+
+void MathGridInset::swapRow(row_type row)
+{
+	if (nrows() == 1)
+		return;
+	if (row + 1 == nrows())
+		--row;
+	for (col_type col = 0; col < ncols(); ++col)
+		swap(cells_[row * ncols() + col], cells_[(row + 1) * ncols() + col]);
+}
+
+
 void MathGridInset::addCol(col_type newcol)
 {
 	const col_type nc = ncols();
@@ -618,6 +637,25 @@ void MathGridInset::delCol(col_type col)
 	swap(cellinfo_, tmpcellinfo);
 
 	colinfo_.erase(colinfo_.begin() + col);
+}
+
+
+void MathGridInset::copyCol(col_type col)
+{
+	addCol(col);
+	for (row_type row = 0; row < nrows(); ++row)
+		cells_[row * ncols() + col + 1] = cells_[row * ncols() + col];
+}
+
+
+void MathGridInset::swapCol(col_type col)
+{
+	if (ncols() == 1)
+		return;
+	if (col + 1 == ncols())
+		--col;
+	for (row_type row = 0; row < nrows(); ++row)
+		swap(cells_[row * ncols() + col], cells_[row * ncols() + col + 1]);
 }
 
 
@@ -968,41 +1006,49 @@ MathInset::result_type MathGridInset::dispatch
 			return DISPATCHED_POP;
 		}
 
-		case LFUN_MATH_HALIGN:
-			halign((cmd.argument + "c")[0], col(idx));
+		case LFUN_TABULAR_FEATURE:
+			//lyxerr << "handling tabular-feature " << cmd.argument << "\n";
+			if (cmd.argument == "valign-top")
+				valign('t');
+			else if (cmd.argument == "valign-center")
+				valign('c');
+			else if (cmd.argument == "valign-bottom")
+				valign('b');
+			else if (cmd.argument == "align-left")
+				halign('l', col(idx));
+			else if (cmd.argument == "align-right")
+				halign('r', col(idx));
+			else if (cmd.argument == "align-center")
+				halign('c', col(idx));
+			else if (cmd.argument == "append-row")
+				addRow(row(idx));
+			else if (cmd.argument == "delete-row") {
+				delRow(row(idx));
+				if (idx > nargs())
+					idx -= ncols();
+			} else if (cmd.argument == "copy-row")
+				copyRow(row(idx));
+			else if (cmd.argument == "swap-row")
+				swapRow(row(idx));
+			else if (cmd.argument == "append-column") {
+				row_type r = row(idx);
+				col_type c = col(idx);
+				addCol(c);
+				idx = index(r, c);
+			} else if (cmd.argument == "delete-column") {
+				row_type r = row(idx);
+				col_type c = col(idx);
+				delCol(col(idx));
+				idx = index(r, c);
+				if (idx > nargs())
+					idx -= ncols();
+			} else if (cmd.argument == "copy-column")
+				copyCol(col(idx));
+			else if (cmd.argument == "swap-column")
+				swapCol(col(idx));
+			else 
+				return UNDISPATCHED;
 			return DISPATCHED_POP;
-
-		case LFUN_MATH_VALIGN:
-			valign((cmd.argument + "c")[0]);
-			return DISPATCHED_POP;
-
-		case LFUN_MATH_ROW_INSERT:
-			addRow(row(idx));
-			return DISPATCHED_POP;
-
-		case LFUN_MATH_ROW_DELETE:
-			delRow(row(idx));
-			if (idx > nargs())
-				idx -= ncols();
-			return DISPATCHED_POP;
-
-		case LFUN_MATH_COLUMN_INSERT: {
-			row_type r = row(idx);
-			col_type c = col(idx);
-			addFancyCol(c);
-			idx = index(r, c);
-			return DISPATCHED_POP;
-		}
-
-		case LFUN_MATH_COLUMN_DELETE: {
-			row_type r = row(idx);
-			col_type c = col(idx);
-			delFancyCol(col(idx));
-			idx = index(r, c);
-			if (idx > nargs())
-				idx -= ncols();
-			return DISPATCHED_POP;
-		}
 
 		case LFUN_PASTE: {
 			//lyxerr << "pasting '" << cmd.argument << "'\n";

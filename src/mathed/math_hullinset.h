@@ -57,14 +57,14 @@ public:
 	/// identifies HullInset
 	MathHullInset * asHullInset() { return this; }
 
-	///
-	void addRow(row_type);
-	///
-	void delRow(row_type);
-	///
-	void addFancyCol(col_type);
-	///
-	void delFancyCol(col_type);
+	/// add a row
+	void addRow(row_type row);
+	/// delete a row
+	void delRow(row_type row);
+	/// add a column
+	void addCol(col_type col);
+	/// delete a column
+	void delCol(col_type col);
 
 	/// get type
 	string const & getType() const;
@@ -112,6 +112,8 @@ private:
 	char const * standardFont() const;
 	/// consistency check
 	void check() const;
+	/// can this change its number of cols?
+	bool colChangeOK() const;
 
 	/// "none", "simple", "display", "eqnarray",...
 	string type_;
