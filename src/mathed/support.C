@@ -18,10 +18,6 @@ using std::endl;
 using std::max;
 
 ///
-/// rotating things
-///
-
-///
 class Matrix {
 public:
 	///
@@ -29,79 +25,70 @@ public:
 	///
 	Matrix();
 	///
-	void rota(int);
+	void rotate(int);
 	///
-	void escala(float, float);
+	void escalate(float, float);
 	///
-	void transf(float, float, float &, float &);
+	void transform(float, float, float &, float &);
 private:
 	///
 	matriz_data m_;
 	///
-	void matmat(matriz_data & a);
-	///
-	static matriz_data const MATIDEN;
+	void multiply(matriz_data & a);
 };
-
-
-#define mateq(m1, m2)  memcpy(m1, m2, sizeof(matriz_data))
-
-
-Matrix::matriz_data const Matrix::MATIDEN = { {1, 0}, {0, 1}};
-
 
 Matrix::Matrix()
 {
-	mateq(m_, MATIDEN);
+	m_[0][0] = 1;
+	m_[0][1] = 0;
+	m_[1][0] = 0;
+	m_[1][1] = 1;
 }
 
-
-void Matrix::rota(int code)
+void Matrix::rotate(int code)
 {
 	matriz_data r;
-	mateq(r, MATIDEN);
+	r[0][0] = 1;
+	r[0][1] = 0;
+	r[1][0] = 0;
+	r[1][1] = 1;
 	float const cs = (code & 1) ? 0 : (1 - code);
 	float const sn = (code & 1) ? (2 - code) : 0;
 	r[0][0] = cs;
 	r[0][1] = sn;
 	r[1][0] = -r[0][1];
 	r[1][1] = r[0][0];
-	matmat(r);
+	multiply(r);
 }
 
-
-void Matrix::escala(float x, float y)
+void Matrix::escalate(float x, float y)
 {
 	matriz_data s;
-	mateq(s, MATIDEN);
 	s[0][0] = x;
+	s[0][1] = 0;
+	s[1][0] = 0;
 	s[1][1] = y;
-	matmat(s);
+	multiply(s);
 }
 
-
-void Matrix::matmat(matriz_data & a)
+void Matrix::multiply(matriz_data & a)
 {
 	matriz_data c;
 	c[0][0] = a[0][0] * m_[0][0] + a[0][1] * m_[1][0];
 	c[1][0] = a[1][0] * m_[0][0] + a[1][1] * m_[1][0];
 	c[0][1] = a[0][0] * m_[0][1] + a[0][1] * m_[1][1];
 	c[1][1] = a[1][0] * m_[0][1] + a[1][1] * m_[1][1];
-	mateq(m_, c);
+	m_[0][0] = c[0][0];	
+	m_[0][1] = c[0][1];	
+	m_[1][0] = c[1][0];	
+	m_[1][1] = c[1][1];	
 }
 
-
-void Matrix::transf(float xp, float yp, float & x, float & y)
+void Matrix::transform(float xp, float yp, float & x, float & y)
 {
 	x = m_[0][0] * xp + m_[0][1] * yp;
 	y = m_[1][0] * xp + m_[1][1] * yp;
 }
-
-
-
-
-
-
 
 
 
@@ -300,57 +287,57 @@ struct math_deco_struct {
 
 math_deco_struct math_deco_table[] = {   
 	// Decorations
-	{ LM_widehat,       &angle[0],   3 },
-	{ LM_widetilde,     &tilde[0],   0 },
-	{ LM_underline,     &hline[0],   0 },
-	{ LM_overline,      &hline[0],   0 },
-	{ LM_underbrace,    &brace[0],   1 },
-	{ LM_overbrace,     &brace[0],   3 },
-	{ LM_overleftarrow, &arrow[0],   1 },
-	{ LM_overightarrow, &arrow[0],   3 },
-	
-	// Delimiters
-	{ '(',              &parenth[0], 0 },
-	{ ')',              &parenth[0], 2 },
-	{ '{',              &brace[0],   0 },
-	{ '}',              &brace[0],   2 },
-	{ '[',              &brack[0],   0 },
-	{ ']',              &brack[0],   2 },
-	{ '|',              &vert[0],    0 },
-	{ '/',              &slash[0],   0 },
-	{ LM_Vert,          &Vert[0],    0 },
-	{ LM_backslash,     &slash[0],   1 },
-	{ LM_langle,        &angle[0],   0 },
-	{ LM_lceil,         &corner[0],  0 }, 
-	{ LM_lfloor,        &corner[0],  1 },  
-	{ LM_rangle,        &angle[0],   2 }, 
-	{ LM_rceil,         &corner[0],  3 }, 
-	{ LM_rfloor,        &corner[0],  2 },
-	{ LM_downarrow,     &arrow[0],   2 },
-	{ LM_Downarrow,     &Arrow[0],   2 }, 
-	{ LM_uparrow,       &arrow[0],   0 },
-	{ LM_Uparrow,       &Arrow[0],   0 },
-	{ LM_updownarrow,   &udarrow[0], 0 },
-	{ LM_Updownarrow,   &Udarrow[0], 0 },	 
-	
-	// Accents   
-	{ LM_ddot,          &hline2[0],  0 },
-	{ LM_hat,           &angle[0],   3 },
-	{ LM_grave,         &slash[0],   1 },
-	{ LM_acute,         &slash[0],   0 },
-	{ LM_tilde,         &tilde[0],   0 },
-	{ LM_bar,           &hline[0],   0 },
+	{ LM_widehat,       &angle[0],      3 },
+	{ LM_widetilde,     &tilde[0],      0 },
+	{ LM_underline,     &hline[0],      0 },
+	{ LM_overline,      &hline[0],      0 },
+	{ LM_underbrace,    &brace[0],      1 },
+	{ LM_overbrace,     &brace[0],      3 },
+	{ LM_overleftarrow, &arrow[0],      1 },
+	{ LM_overightarrow, &arrow[0],      3 },
+	                                    
+	// Delimiters                       
+	{ '(',              &parenth[0],    0 },
+	{ ')',              &parenth[0],    2 },
+	{ '{',              &brace[0],      0 },
+	{ '}',              &brace[0],      2 },
+	{ '[',              &brack[0],      0 },
+	{ ']',              &brack[0],      2 },
+	{ '|',              &vert[0],       0 },
+	{ '/',              &slash[0],      0 },
+	{ LM_Vert,          &Vert[0],       0 },
+	{ LM_backslash,     &slash[0],      1 },
+	{ LM_langle,        &angle[0],      0 },
+	{ LM_lceil,         &corner[0],     0 }, 
+	{ LM_lfloor,        &corner[0],     1 },  
+	{ LM_rangle,        &angle[0],      2 }, 
+	{ LM_rceil,         &corner[0],     3 }, 
+	{ LM_rfloor,        &corner[0],     2 },
+	{ LM_downarrow,     &arrow[0],      2 },
+	{ LM_Downarrow,     &Arrow[0],      2 }, 
+	{ LM_uparrow,       &arrow[0],      0 },
+	{ LM_Uparrow,       &Arrow[0],      0 },
+	{ LM_updownarrow,   &udarrow[0],    0 },
+	{ LM_Updownarrow,   &Udarrow[0],    0 },	 
+	                                    
+	// Accents                          
+	{ LM_ddot,          &hline2[0],     0 },
+	{ LM_hat,           &angle[0],      3 },
+	{ LM_grave,         &slash[0],      1 },
+	{ LM_acute,         &slash[0],      0 },
+	{ LM_tilde,         &tilde[0],      0 },
+	{ LM_bar,           &hline[0],      0 },
 	{ LM_dot,           &hlinesmall[0], 0 },
-	{ LM_check,         &angle[0],   1 },
-	{ LM_breve,         &parenth[0], 1 },
-	{ LM_vec,           &arrow[0],   3 },
-	{ LM_not,           &slash[0],   0 },  
-	                    
-	// Dots             
-	{ LM_ldots,         &hline3[0],  0 }, 
-	{ LM_cdots,         &hline3[0],  0 },
-	{ LM_vdots,         &hline3[0],  1 },
-	{ LM_ddots,         &dline3[0],  0 }
+	{ LM_check,         &angle[0],      1 },
+	{ LM_breve,         &parenth[0],    1 },
+	{ LM_vec,           &arrow[0],      3 },
+	{ LM_not,           &slash[0],      0 },  
+	                                    
+	// Dots                             
+	{ LM_ldots,         &hline3[0],     0 }, 
+	{ LM_cdots,         &hline3[0],     0 },
+	{ LM_vdots,         &hline3[0],     1 },
+	{ LM_ddots,         &dline3[0],     0 }
 };
 
 
@@ -388,8 +375,7 @@ static init_deco_table idt;
 
 } // namespace anon
 
-void mathed_char_dim
-		(short type, int size, byte c, int & asc, int & des, int & wid)
+void mathed_char_dim (short type, int size, byte c, int & asc, int & des, int & wid)
 {
 	LyXFont const font = WhichFont(type, size);
 	des = lyxfont::descent(c, font);
@@ -508,12 +494,12 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 	if (h > 70 && (mds->code == int('(') || mds->code == int(')')))
 		d = parenthHigh;
 	
-	mt.rota(r);
-	mt.escala(w, h);
+	mt.rotate(r);
+	mt.escalate(w, h);
 	
 	int const n = (w < h) ? w : h;
-	sqmt.rota(r);
-	sqmt.escala(n, n);
+	sqmt.rotate(r);
+	sqmt.escalate(n, n);
 	if (r > 0 && r < 3) y += h;   
 	if (r >= 2) x += w;   
 	do {
@@ -526,10 +512,10 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 			xx = d[i++]; yy = d[i++];
 			x2 = d[i++]; y2 = d[i++];
 			if (code == 3) 
-				sqmt.transf(xx, yy, xx, yy);
+				sqmt.transform(xx, yy, xx, yy);
 			else
-				mt.transf(xx, yy, xx, yy);
-			mt.transf(x2, y2, x2, y2);
+				mt.transform(xx, yy, xx, yy);
+			mt.transform(x2, y2, x2, y2);
 			pain.line(x + int(xx), y + int(yy),
 				  x + int(x2), y + int(y2),
 				  LColor::mathline);
@@ -545,9 +531,9 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 				xx = d[i++]; yy = d[i++];
 //	     lyxerr << " " << xx << " " << yy << " ";
 				if (code == 4) 
-					sqmt.transf(xx, yy, xx, yy);
+					sqmt.transform(xx, yy, xx, yy);
 				else
-					mt.transf(xx, yy, xx, yy);
+					mt.transform(xx, yy, xx, yy);
 				xp[j] = x + int(xx);
 				yp[j] = y + int(yy);
 				//  lyxerr << "P[" << j " " << xx << " " << yy << " " << x << " " << y << "]";

@@ -21,7 +21,6 @@
 #pragma interface
 #endif
 
-#include "LString.h"
 #include "mathed/formulabase.h"
 #include "math_defs.h"
 

@@ -1,5 +1,3 @@
-#include <config.h>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -7,7 +5,6 @@
 #include "math_sqrtinset.h"
 #include "LColor.h"
 #include "Painter.h"
-#include "support.h"
 #include "support/LOstream.h"
 
 

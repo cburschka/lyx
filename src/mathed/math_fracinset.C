@@ -1,15 +1,10 @@
-#include <config.h>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <functional>
-
 #include "math_fracinset.h"
-#include "LColor.h"
-#include "Painter.h"
 #include "mathed/support.h"
+#include "Painter.h"
 #include "support/LOstream.h"
 
 

@@ -14,8 +14,6 @@
  *  This code is under the GNU General Public Licence version 2 or later.
  */
 
-#include <config.h>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif

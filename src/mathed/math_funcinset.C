@@ -1,11 +1,8 @@
-#include <config.h>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "math_funcinset.h"
-#include "lyxfont.h"
 #include "font.h"
 #include "Painter.h"
 #include "mathed/support.h"

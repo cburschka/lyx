@@ -15,15 +15,11 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#include <config.h>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "math_inset.h"
-#include "mathed/support.h"
-#include "Painter.h"
 #include "debug.h"
 
 

@@ -11,13 +11,9 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#include <config.h>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
-
-#include <functional>
 
 #include "math_root.h"
 #include "support/LOstream.h"

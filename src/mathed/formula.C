@@ -13,14 +13,12 @@
 *   the GNU General Public Licence version 2 or later.
 */
 
-#include <config.h>
-#include <fstream>
-
-#include "support/LOstream.h"
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
+
+#include <config.h>
+#include <fstream>
 
 #include "formula.h"
 #include "commandtags.h"
@@ -28,7 +26,6 @@
 #include "math_parser.h"
 #include "lyx_main.h"
 #include "BufferView.h"
-#include "lyxtext.h"
 #include "gettext.h"
 #include "debug.h"
 #include "lyx_gui_misc.h"
@@ -37,7 +34,6 @@
 #include "support/syscall.h"
 #include "LyXView.h"
 #include "Painter.h"
-#include "font.h"
 #include "lyxrc.h"
 #include "math_matrixinset.h"
 #include "mathed/support.h"

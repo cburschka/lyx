@@ -1,5 +1,3 @@
-#include <config.h>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -8,7 +6,6 @@
 #include "mathed/support.h"
 #include "math_parser.h"
 #include "support/LOstream.h"
-#include "support/lstrings.h"
 
 
 using std::ostream;

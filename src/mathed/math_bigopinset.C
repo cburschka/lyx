@@ -1,5 +1,3 @@
-#include <config.h>
-
 #include "math_bigopinset.h"
 #include "Painter.h"
 #include "mathed/support.h"

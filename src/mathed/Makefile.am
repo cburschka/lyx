@@ -18,8 +18,6 @@ libmathed_la_SOURCES = \
 	formula.h \
 	formulamacro.C \
 	formulamacro.h \
-	macro_support.C \
-	macro_support.h \
 	math_arrayinset.C \
 	math_arrayinset.h \
 	math_bigopinset.C \

@@ -9,8 +9,6 @@
  *  License: GNU GPL version 2 or later
  */
 
-#include <config.h>
-
 #include <algorithm>
 
 #include "math_defs.h"

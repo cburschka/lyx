@@ -20,8 +20,6 @@
 #endif
 
 #include <iosfwd>
-#include <boost/smart_ptr.hpp>
-
 #include "insets/inset.h"
 
 class Buffer;

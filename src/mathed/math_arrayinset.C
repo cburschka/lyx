@@ -1,13 +1,9 @@
-#include <config.h>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "math_arrayinset.h"
 #include "support/LOstream.h"
-#include "Painter.h"
-
 
 
 MathArrayInset::MathArrayInset(int m, int n)

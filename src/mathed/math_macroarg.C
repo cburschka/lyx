@@ -1,5 +1,3 @@
-#include <config.h>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -8,7 +6,6 @@
 #include "math_macro.h"
 #include "math_defs.h"
 #include "mathed/support.h"
-#include "support/LAssert.h"
 #include "debug.h"
 
 
@@ -19,7 +16,6 @@ MathMacroArgument::MathMacroArgument(int n)
 	if (n < 1 || n > 9) {
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
 			<< n << std::endl;
-		lyx::Assert(0);
 	}
 }
 

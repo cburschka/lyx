@@ -1,11 +1,8 @@
-#include <config.h>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include <vector>
-#include <functional>
 
 #include "math_matrixinset.h"
 #include "debug.h"

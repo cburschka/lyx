@@ -1,5 +1,4 @@
 #include <config.h>
-
 #include <map>
 
 #include "math_defs.h"
