@@ -25,7 +25,9 @@
 
 #include <algorithm>
 
-using namespace lyx::support;
+using lyx::support::LibFileSearch;
+using lyx::support::OnlyPath;
+using lyx::support::Systemcall;
 
 using std::endl;
 

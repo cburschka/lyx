@@ -18,10 +18,12 @@
 #include "debug.h"
 #include "trans_mgr.h"
 
-using namespace lyx::support;
+using lyx::support::contains;
+using lyx::support::LibFileSearch;
+
+using std::endl;
 
 using std::map;
-using std::endl;
 
 
 // KmodInfo

@@ -30,7 +30,13 @@
 
 #include <boost/bind.hpp>
 
-using namespace lyx::support;
+using lyx::support::AddName;
+using lyx::support::bformat;
+using lyx::support::GetEnvPath;
+using lyx::support::MakeAbsPath;
+using lyx::support::MakeDisplayPath;
+using lyx::support::OnlyFilename;
+using lyx::support::removeAutosaveFile;
 
 using std::endl;
 using std::find;

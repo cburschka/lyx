@@ -37,6 +37,13 @@
 
 #include <iomanip>
 
+using lyx::support::AddName;
+using lyx::support::ChangeExtension;
+using lyx::support::rtrim;
+using lyx::support::strToDbl;
+using lyx::support::trim;
+using lyx::support::user_lyxdir;
+
 using std::endl;
 using std::make_pair;
 using std::max;
@@ -44,8 +51,6 @@ using std::min;
 
 using std::pair;
 using std::vector;
-
-using namespace lyx::support;
 
 
 namespace {

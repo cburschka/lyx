@@ -17,13 +17,13 @@
 #include <config.h>
 
 #include "debug.h"
-#include "LColor.h"
 #include "gettext.h"
+#include "LColor.h"
 #include "support/lstrings.h"
 
 #include <map>
 
-using namespace lyx::support;
+using lyx::support::compare_ascii_no_case;
 
 using std::endl;
 

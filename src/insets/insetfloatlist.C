@@ -26,9 +26,10 @@
 
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::bformat;
 
 using std::endl;
+
 using std::ostream;
 
 

@@ -33,7 +33,9 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::contains_functor;
+using lyx::support::getStringFromVector;
+using lyx::support::rtrim;
 
 using std::bind2nd;
 using std::remove_if;

@@ -24,14 +24,17 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
-
-using namespace lyx::support;
+using lyx::support::LibFileSearch;
+using lyx::support::MakeDisplayPath;
+using lyx::support::rtrim;
+using lyx::support::subst;
 
 using std::endl;
 using std::find_if;
 using std::remove_if;
 
 using std::ostream;
+
 
 namespace { // anon
 

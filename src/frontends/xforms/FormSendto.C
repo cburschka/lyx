@@ -24,7 +24,7 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::trim;
 
 using std::vector;
 

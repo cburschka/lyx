@@ -46,10 +46,10 @@
 
 #include <algorithm>
 
-extern BufferList bufferlist;
-extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
-
-using namespace lyx::support;
+using lyx::support::compare_ascii_no_case;
+using lyx::support::contains;
+using lyx::support::MakeDisplayPath;
+using lyx::support::token;
 
 using std::endl;
 using std::find_if;
@@ -57,6 +57,10 @@ using std::max;
 using std::sort;
 
 using std::vector;
+
+
+extern BufferList bufferlist;
+extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
 // This is the global menu definition
 MenuBackend menubackend;

@@ -31,7 +31,22 @@
 
 #include <fstream>
 
-using namespace lyx::support;
+using lyx::support::AbsolutePath;
+using lyx::support::bformat;
+using lyx::support::ChangeExtension;
+using lyx::support::contains;
+using lyx::support::FileInfo;
+using lyx::support::findtexfile;
+using lyx::support::getcwd;
+using lyx::support::OnlyFilename;
+using lyx::support::os;
+using lyx::support::prefixIs;
+using lyx::support::QuoteName;
+using lyx::support::rtrim;
+using lyx::support::split;
+using lyx::support::suffixIs;
+using lyx::support::Systemcall;
+using lyx::support::unlink;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::sscanf;
@@ -39,6 +54,7 @@ using std::sscanf;
 
 using std::endl;
 using std::getline;
+
 using std::ifstream;
 using std::set;
 using std::vector;
@@ -50,6 +66,7 @@ using boost::smatch;
 #else
 using boost::cmatch;
 #endif
+
 
 // TODO: in no particular order
 // - get rid of the extern BufferList and the call to

@@ -25,10 +25,12 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::lowercase;
+using lyx::support::subst;
 
 using std::endl;
 using std::for_each;
+
 using std::vector;
 
 

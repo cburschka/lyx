@@ -31,7 +31,13 @@
 #include "support/tostr.h"
 #include "support/types.h"
 
-using namespace lyx::support;
+using lyx::support::AddName;
+using lyx::support::FileInfo;
+using lyx::support::IsFileReadable;
+using lyx::support::MakeAbsPath;
+using lyx::support::readBB_from_PSFile;
+using lyx::support::system_lyxdir;
+using lyx::support::user_lyxdir;
 
 using std::make_pair;
 

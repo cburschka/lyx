@@ -20,7 +20,7 @@
 
 #include <fstream>
 
-using namespace lyx::support;
+using lyx::support::LibFileSearch;
 
 using std::ifstream;
 using std::istream;

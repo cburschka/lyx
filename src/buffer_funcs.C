@@ -31,11 +31,17 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 
+using lyx::support::bformat;
+using lyx::support::FileInfo;
+using lyx::support::IsFileWriteable;
+using lyx::support::LibFileSearch;
+using lyx::support::MakeDisplayPath;
+using lyx::support::OnlyFilename;
+using lyx::support::OnlyPath;
+using lyx::support::unlink;
+
 
 extern BufferList bufferlist;
-
-using namespace lyx::support;
-
 
 namespace {
 

@@ -70,7 +70,42 @@
 #ifdef HAVE_LOCALE
 #endif
 
-using namespace lyx::support;
+using lyx::pos_type;
+
+using lyx::support::AddName;
+using lyx::support::ascii_lowercase;
+using lyx::support::atoi;
+using lyx::support::bformat;
+using lyx::support::ChangeExtension;
+using lyx::support::cmd_ret;
+using lyx::support::compare_ascii_no_case;
+using lyx::support::compare_no_case;
+using lyx::support::contains;
+using lyx::support::CreateBufferTmpDir;
+using lyx::support::destroyDir;
+using lyx::support::FileInfo;
+using lyx::support::FileInfo;
+using lyx::support::getExtFromContents;
+using lyx::support::IsDirWriteable;
+using lyx::support::IsFileWriteable;
+using lyx::support::LibFileSearch;
+using lyx::support::ltrim;
+using lyx::support::MakeAbsPath;
+using lyx::support::MakeDisplayPath;
+using lyx::support::MakeLatexName;
+using lyx::support::OnlyFilename;
+using lyx::support::OnlyPath;
+using lyx::support::os;
+using lyx::support::Path;
+using lyx::support::QuoteName;
+using lyx::support::removeAutosaveFile;
+using lyx::support::rename;
+using lyx::support::RunCommand;
+using lyx::support::split;
+using lyx::support::strToInt;
+using lyx::support::subst;
+using lyx::support::tempName;
+using lyx::support::trim;
 
 using std::endl;
 using std::for_each;
@@ -85,8 +120,6 @@ using std::ofstream;
 using std::pair;
 using std::stack;
 using std::vector;
-
-using lyx::pos_type;
 
 
 // all these externs should eventually be removed.

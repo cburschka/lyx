@@ -18,8 +18,9 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
-
-using namespace lyx::support;
+using lyx::support::compare;
+using lyx::support::LibFileSearch;
+using lyx::support::subst;
 
 
 ControlMath::ControlMath(Dialog & dialog)

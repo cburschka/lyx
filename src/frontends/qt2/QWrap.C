@@ -25,10 +25,10 @@
 #include <qpushbutton.h>
 #include <qlineedit.h>
 
-using namespace lyx::support;
+using lyx::support::strToDbl;
+
 
 typedef QController<ControlWrap, QView<QWrapDialog> > base_class;
-
 
 QWrap::QWrap(Dialog & parent)
 	: base_class(parent, _("LyX: Text Wrap Settings"))

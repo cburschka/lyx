@@ -20,11 +20,12 @@
 #include "QLPopupMenu.h"
 #include "qt_helpers.h"
 
+using lyx::support::subst;
 
-using namespace lyx::support;
+using std::make_pair;
 
 using std::pair;
-using std::make_pair;
+
 
 namespace {
 

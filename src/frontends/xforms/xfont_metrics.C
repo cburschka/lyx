@@ -25,7 +25,7 @@
 
 #include <boost/scoped_array.hpp>
 
-using namespace lyx::support;
+using lyx::support::uppercase;
 
 
 namespace {

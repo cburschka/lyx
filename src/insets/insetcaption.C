@@ -30,9 +30,10 @@
 
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
+using lyx::support::bformat;
 
 using std::endl;
+
 using std::ostream;
 using std::ostringstream;
 

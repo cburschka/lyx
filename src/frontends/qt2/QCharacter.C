@@ -22,9 +22,23 @@
 #include <qcheckbox.h>
 #include <qcombobox.h>
 
+using frnt::BarPair;
+using frnt::ColorPair;
+using frnt::FamilyPair;
+using frnt::getBarData;
+using frnt::getColorData;
+using frnt::getFamilyData;
+using frnt::getLanguageData;
+using frnt::getSeriesData;
+using frnt::getShapeData;
+using frnt::getSizeData;
+using frnt::LanguagePair;
+using frnt::SeriesPair;
+using frnt::ShapePair;
+using frnt::SizePair;
 
-using namespace frnt;
 using std::vector;
+
 
 typedef QController<ControlCharacter, QView<QCharacterDialog> > base_class;
 

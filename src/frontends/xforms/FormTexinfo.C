@@ -20,7 +20,7 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::OnlyFilename;
 
 
 typedef FormController<ControlTexinfo, FormView<FD_texinfo> > base_class;

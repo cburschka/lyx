@@ -22,8 +22,7 @@
 #include <qtextview.h>
 #include <qpushbutton.h>
 
-
-using namespace lyx::support;
+using lyx::support::bformat;
 
 using std::ostringstream;
 

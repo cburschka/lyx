@@ -26,7 +26,7 @@
 
 #include <boost/bind.hpp>
 
-using namespace lyx::support;
+using lyx::support::trim;
 
 
 bool Tooltips::enabled_ = true;

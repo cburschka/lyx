@@ -19,7 +19,8 @@
 #include "funcrequest.h"
 #include "language.h"
 
-using namespace bv_funcs;
+using bv_funcs::font2string;
+
 
 ControlCharacter::ControlCharacter(Dialog & parent)
 	: Dialog::Controller(parent),

@@ -13,6 +13,7 @@
 #include <config.h>
 
 #include "DepTable.h"
+
 #include "debug.h"
 
 #include "support/lyxlib.h"
@@ -28,7 +29,11 @@
 using std::time;
 #endif
 
-using namespace lyx::support;
+using lyx::support::ltrim;
+using lyx::support::MakeAbsPath;
+using lyx::support::OnlyFilename;
+using lyx::support::suffixIs;
+using lyx::support::sum;
 
 using std::endl;
 using std::flush;

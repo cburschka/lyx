@@ -25,7 +25,7 @@
 
 #include <boost/tuple/tuple.hpp>
 
-using namespace lyx::support;
+using lyx::support::lowercase;
 
 using std::endl;
 using std::find_if;

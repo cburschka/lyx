@@ -26,7 +26,8 @@
 
 #include <cmath>
 
-using namespace lyx::support;
+using lyx::support::atoi;
+using lyx::support::token;
 
 using std::abs;
 using std::endl;

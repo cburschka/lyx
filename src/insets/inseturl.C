@@ -19,7 +19,7 @@
 
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::subst;
 
 using std::ostream;
 

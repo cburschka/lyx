@@ -26,7 +26,12 @@
 
 #include <fstream>
 
-using namespace lyx::support;
+using lyx::support::AbsolutePath;
+using lyx::support::FileInfo;
+using lyx::support::isStrDbl;
+using lyx::support::OnlyPath;
+using lyx::support::subst;
+using lyx::support::trim;
 
 using std::make_pair;
 

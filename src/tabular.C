@@ -33,7 +33,11 @@
 
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
+using lyx::support::ltrim;
+using lyx::support::prefixIs;
+using lyx::support::rtrim;
+using lyx::support::strToInt;
+using lyx::support::suffixIs;
 
 using std::abs;
 using std::endl;
@@ -48,6 +52,7 @@ using std::vector;
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;
 #endif
+
 
 namespace {
 

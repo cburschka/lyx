@@ -26,7 +26,8 @@
 
 #include "support/filetools.h"
 
-using namespace lyx::support;
+using lyx::support::AbsolutePath;
+using lyx::support::OnlyFilename;
 
 
 RenderInset::RenderInset()

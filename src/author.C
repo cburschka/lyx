@@ -12,13 +12,15 @@
 
 #include "author.h"
 
-#include "support/std_istream.h"
 #include "support/lstrings.h"
 
 #include <boost/assert.hpp>
 
+#include "support/std_istream.h"
 
-using namespace lyx::support;
+using lyx::support::token;
+using lyx::support::trim;
+
 
 bool operator==(Author const & l, Author const & r)
 {

@@ -46,16 +46,18 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-
-using namespace lyx::support;
-
-using std::max;
-using std::endl;
+using bv_funcs::number;
 
 using lyx::pos_type;
 using lyx::word_location;
 
-using namespace bv_funcs;
+using lyx::support::contains;
+using lyx::support::lowercase;
+using lyx::support::uppercase;
+
+using std::max;
+using std::endl;
+
 
 /// top, right, bottom pixel margin
 extern int const PAPER_MARGIN = 20;

@@ -12,15 +12,18 @@
 #include <config.h>
 
 #include "chset.h"
+
+#include "debug.h"
+
 #include "support/filetools.h"
 #include "support/lyxlib.h"
-#include "debug.h"
 
 #include <boost/regex.hpp>
 
 #include <fstream>
 
-using namespace lyx::support;
+using lyx::support::atoi;
+using lyx::support::LibFileSearch;
 
 using std::endl;
 using std::getline;

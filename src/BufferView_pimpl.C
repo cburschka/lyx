@@ -66,14 +66,32 @@
 
 #include <boost/bind.hpp>
 
+using bv_funcs::bold;
+using bv_funcs::code;
+using bv_funcs::currentState;
+using bv_funcs::emph;
+using bv_funcs::fontSize;
+using bv_funcs::lang;
+using bv_funcs::noun;
+using bv_funcs::roman;
+using bv_funcs::sans;
+using bv_funcs::styleReset;
+using bv_funcs::underline;
+
+using lyx::pos_type;
+
+using lyx::support::AddPath;
+using lyx::support::bformat;
+using lyx::support::FileSearch;
+using lyx::support::IsDirWriteable;
+using lyx::support::MakeDisplayPath;
+using lyx::support::strToUnsignedInt;
+using lyx::support::system_lyxdir;
 
 using std::endl;
 using std::make_pair;
 using std::min;
 
-using lyx::pos_type;
-using namespace lyx::support;
-using namespace bv_funcs;
 
 extern BufferList bufferlist;
 

@@ -19,7 +19,12 @@
 
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::compare;
+using lyx::support::isStrDbl;
+using lyx::support::ltrim;
+using lyx::support::prefixIs;
+using lyx::support::rtrim;
+using lyx::support::strToDbl;
 
 
 namespace {

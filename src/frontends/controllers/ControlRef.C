@@ -18,7 +18,8 @@
 
 #include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
 
-using namespace lyx::support;
+using lyx::support::MakeAbsPath;
+using lyx::support::MakeDisplayPath;
 
 using std::vector;
 

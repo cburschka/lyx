@@ -24,7 +24,7 @@
 #include "Qt2BC.h"
 #include "QAbout.h"
 
-using namespace lyx::support;
+using lyx::support::prefixIs;
 
 using std::getline;
 

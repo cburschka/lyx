@@ -12,16 +12,17 @@
 #include <config.h>
 
 #include "counters.h"
+
 #include "debug.h"
 
-#include "support/std_sstream.h"
 #include "support/lstrings.h"
 
 #include <boost/assert.hpp>
 
-using namespace lyx::support;
+#include "support/std_sstream.h"
 
 using std::endl;
+
 using std::ostringstream;
 
 

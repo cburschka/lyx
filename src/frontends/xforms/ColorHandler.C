@@ -24,7 +24,7 @@
 
 #include <cmath>
 
-using namespace lyx::support;
+using lyx::support::bformat;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::pow;

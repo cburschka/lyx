@@ -44,6 +44,15 @@
 
 #include <boost/bind.hpp>
 
+using bv_funcs::replaceSelection;
+
+using lyx::pos_type;
+
+using lyx::graphics::PreviewLoader;
+
+using lyx::support::isStrUnsignedInt;
+using lyx::support::strToUnsignedInt;
+
 using std::endl;
 using std::for_each;
 using std::max;
@@ -51,12 +60,6 @@ using std::max;
 using std::auto_ptr;
 using std::ostream;
 using std::vector;
-
-using namespace lyx::support;
-using namespace lyx::graphics;
-using namespace bv_funcs;
-
-using lyx::pos_type;
 
 
 InsetText::InsetText(BufferParams const & bp)

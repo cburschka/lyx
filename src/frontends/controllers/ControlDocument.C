@@ -31,7 +31,10 @@
 #include "support/filetools.h"
 #include "support/path_defines.h"
 
-using namespace lyx::support;
+using lyx::support::AddName;
+using lyx::support::AddPath;
+using lyx::support::bformat;
+using lyx::support::user_lyxdir;
 
 
 ControlDocument::ControlDocument(LyXView & lv, Dialogs & d)

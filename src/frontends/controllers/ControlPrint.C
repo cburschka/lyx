@@ -31,9 +31,17 @@
 
 #include "debug.h"
 
-using namespace lyx::support;
+using lyx::support::bformat;
+using lyx::support::ChangeExtension;
+using lyx::support::IsDirWriteable;
+using lyx::support::MakeAbsPath;
+using lyx::support::MakeDisplayPath;
+using lyx::support::Path;
+using lyx::support::QuoteName;
+using lyx::support::Systemcall;
 
 using std::endl;
+
 
 ControlPrint::ControlPrint(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),

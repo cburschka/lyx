@@ -29,12 +29,16 @@
 #include "QBibtex.h"
 #include "Qt2BC.h"
 
-using namespace lyx::support;
+using lyx::support::ChangeExtension;
+using lyx::support::contains;
+using lyx::support::prefixIs;
+using lyx::support::split;
+using lyx::support::trim;
 
 using std::vector;
 
-typedef QController<ControlBibtex, QView<QBibtexDialog> > base_class;
 
+typedef QController<ControlBibtex, QView<QBibtexDialog> > base_class;
 
 QBibtex::QBibtex(Dialog & parent)
 	: base_class(parent, _("BibTeX"))

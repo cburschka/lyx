@@ -54,7 +54,7 @@
 #include "support/lstrings.h"
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
+using lyx::support::compare_ascii_no_case;
 
 using std::endl;
 

@@ -13,7 +13,8 @@
 #include "support/filetools.h"
 #include "support/path_defines.h"
 
-using namespace lyx::support;
+using lyx::support::GetEnvPath;
+using lyx::support::lyx_localedir;
 
 
 #ifdef ENABLE_NLS

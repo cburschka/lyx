@@ -40,7 +40,18 @@
 
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
+using lyx::support::AddName;
+using lyx::support::ChangeExtension;
+using lyx::support::contains;
+using lyx::support::FileInfo;
+using lyx::support::FileMonitor;
+using lyx::support::GetFileContents;
+using lyx::support::IsFileReadable;
+using lyx::support::IsLyXFilename;
+using lyx::support::MakeAbsPath;
+using lyx::support::MakeDisplayPath;
+using lyx::support::OnlyPath;
+using lyx::support::subst;
 
 using std::endl;
 

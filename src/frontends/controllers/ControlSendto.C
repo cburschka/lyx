@@ -23,7 +23,12 @@
 #include "support/lstrings.h"
 #include "support/systemcall.h"
 
-using namespace lyx::support;
+using lyx::support::AddName;
+using lyx::support::ChangeExtension;
+using lyx::support::contains;
+using lyx::support::subst;
+using lyx::support::Systemcall;
+using lyx::support::trim;
 
 using std::vector;
 

@@ -21,7 +21,7 @@
 
 #include <boost/bind.hpp>
 
-using namespace lyx::support;
+using lyx::support::ForkedcallsController;
 
 using std::vector;
 

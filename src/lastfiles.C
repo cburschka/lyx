@@ -19,7 +19,7 @@
 #include <fstream>
 #include <iterator>
 
-using namespace lyx::support;
+using lyx::support::FileInfo;
 
 using std::copy;
 using std::endl;

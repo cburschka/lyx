@@ -29,12 +29,10 @@
 #include "QExternal.h"
 #include "Qt2BC.h"
 
-
-using namespace lyx::support;
+using lyx::support::strToInt;
 
 
 typedef QController<ControlExternal, QView<QExternalDialog> > base_class;
-
 
 QExternal::QExternal(Dialog & parent)
 	: base_class(parent, _("LyX: External Material"))

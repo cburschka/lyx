@@ -27,7 +27,7 @@
 
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::uppercase;
 
 
 XPainter::XPainter(XWorkArea & xwa)

@@ -13,14 +13,19 @@
 
 #include "debug.h"
 #include "gettext.h"
+
 #include "support/lstrings.h"
 
 #include <iomanip>
 
-using namespace lyx::support;
+using lyx::support::ascii_lowercase;
+using lyx::support::bformat;
+using lyx::support::isStrInt;
+using lyx::support::strToInt;
+
+using std::setw;
 
 using std::ostream;
-using std::setw;
 
 namespace {
 

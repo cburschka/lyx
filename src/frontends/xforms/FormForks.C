@@ -26,7 +26,8 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::split;
+using lyx::support::strToInt;
 
 using std::find;
 using std::find_if;

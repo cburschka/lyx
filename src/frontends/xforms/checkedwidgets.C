@@ -19,7 +19,7 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::isStrDbl;
 
 
 void addCheckedLyXLength(BCView & bcview,

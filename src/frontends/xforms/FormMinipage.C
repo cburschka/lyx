@@ -24,7 +24,9 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::getStringFromVector;
+using lyx::support::isStrDbl;
+using lyx::support::subst;
 
 
 typedef FormController<ControlMinipage, FormView<FD_minipage> > base_class;

@@ -18,7 +18,7 @@
 
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::rsplit;
 
 using std::endl;
 

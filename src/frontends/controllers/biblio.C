@@ -22,7 +22,17 @@
 
 #include <algorithm>
 
-using namespace lyx::support;
+using lyx::support::ascii_lowercase;
+using lyx::support::bformat;
+using lyx::support::compare_ascii_no_case;
+using lyx::support::contains;
+using lyx::support::getVectorFromString;
+using lyx::support::ltrim;
+using lyx::support::rtrim;
+using lyx::support::split;
+using lyx::support::subst;
+using lyx::support::token;
+using lyx::support::trim;
 
 using std::ostringstream;
 using std::vector;
@@ -470,7 +480,6 @@ string const parseBibTeX(string data, string const & findkey)
 
 namespace {
 
-using namespace biblio;
 
 char const * const citeCommands[] = {
 	"cite", "citet", "citep", "citealt", "citealp", "citeauthor",

@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "qt_helpers.h"
 
 #include "ControlDocument.h"
@@ -35,7 +34,8 @@
 #include <qslider.h>
 #include "lengthcombo.h"
 
-using namespace lyx::support;
+using lyx::support::token;
+
 
 QDocumentDialog::QDocumentDialog(QDocument * form)
 	: QDocumentDialogBase(0, 0, false, 0), form_(form)

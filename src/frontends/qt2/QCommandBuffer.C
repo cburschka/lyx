@@ -23,10 +23,10 @@
 #include <qtooltip.h>
 #include <qpushbutton.h>
 
-
-using namespace lyx::support;
+using lyx::support::LibFileSearch;
 
 using std::vector;
+
 
 namespace {
 

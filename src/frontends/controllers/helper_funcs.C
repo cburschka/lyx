@@ -20,7 +20,11 @@
 
 #include "support/filetools.h" // OnlyPath, OnlyFilename
 
-using namespace lyx::support;
+using lyx::support::MakeAbsPath;
+using lyx::support::MakeRelPath;
+using lyx::support::OnlyFilename;
+using lyx::support::OnlyPath;
+using lyx::support::prefixIs;
 
 using std::pair;
 using std::vector;

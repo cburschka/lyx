@@ -47,7 +47,11 @@
 
 #include <iomanip>
 
-using namespace lyx::support;
+using lyx::support::bformat;
+using lyx::support::contains_functor;
+using lyx::support::getStringFromVector;
+using lyx::support::getVectorFromString;
+using lyx::support::LibFileSearch;
 
 using std::bind2nd;
 using std::endl;

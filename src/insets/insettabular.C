@@ -36,8 +36,10 @@
 
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
-using namespace lyx::graphics;
+using lyx::graphics::PreviewLoader;
+
+using lyx::support::ltrim;
+using lyx::support::strToInt;
 
 using std::endl;
 using std::max;

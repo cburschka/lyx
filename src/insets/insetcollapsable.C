@@ -27,9 +27,10 @@
 #include "frontends/Painter.h"
 #include "frontends/LyXView.h"
 
-using namespace lyx::graphics;
+using lyx::graphics::PreviewLoader;
 
 using std::endl;
+
 using std::max;
 using std::ostream;
 

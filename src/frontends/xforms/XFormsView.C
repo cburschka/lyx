@@ -27,7 +27,7 @@
 
 #include <boost/bind.hpp>
 
-using namespace lyx::support;
+using lyx::support::LibFileSearch;
 
 using std::abs;
 using std::endl;

@@ -82,9 +82,24 @@ TODO
 #include "support/std_sstream.h"
 
 namespace support = lyx::support;
-using namespace lyx::support;
+using lyx::support::AbsolutePath;
+using lyx::support::bformat;
+using lyx::support::ChangeExtension;
+using lyx::support::contains;
+using lyx::support::FileName;
+using lyx::support::float_equal;
+using lyx::support::GetExtension;
+using lyx::support::getExtFromContents;
+using lyx::support::IsFileReadable;
+using lyx::support::LibFileSearch;
+using lyx::support::os;
+using lyx::support::rtrim;
+using lyx::support::Systemcall;
+using lyx::support::unzipFile;
+using lyx::support::unzippedFileName;
 
 using std::endl;
+
 using std::auto_ptr;
 using std::istringstream;
 using std::ostream;

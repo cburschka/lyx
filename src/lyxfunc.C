@@ -73,14 +73,42 @@
 
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
+using bv_funcs::apply_freefont;
+using bv_funcs::changeDepth;
+using bv_funcs::currentState;
+using bv_funcs::DEC_DEPTH;
+using bv_funcs::freefont2string;
+using bv_funcs::INC_DEPTH;
+using bv_funcs::update_and_apply_freefont;
+
+using lyx::support::AddName;
+using lyx::support::AddPath;
+using lyx::support::bformat;
+using lyx::support::ChangeExtension;
+using lyx::support::FileInfo;
+using lyx::support::FileSearch;
+using lyx::support::ForkedcallsController;
+using lyx::support::i18nLibFileSearch;
+using lyx::support::IsDirWriteable;
+using lyx::support::IsFileReadable;
+using lyx::support::isStrInt;
+using lyx::support::MakeAbsPath;
+using lyx::support::MakeDisplayPath;
+using lyx::support::Path;
+using lyx::support::rtrim;
+using lyx::support::split;
+using lyx::support::strToInt;
+using lyx::support::strToUnsignedInt;
+using lyx::support::system_lyxdir;
+using lyx::support::token;
+using lyx::support::trim;
+using lyx::support::user_lyxdir;
 
 using std::endl;
 using std::make_pair;
 
 using std::istringstream;
 
-using namespace bv_funcs;
 
 extern BufferList bufferlist;
 extern LyXServer * lyxserver;

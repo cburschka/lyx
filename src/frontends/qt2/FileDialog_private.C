@@ -19,7 +19,8 @@
 #include <qapplication.h>
 #include <qtoolbutton.h>
 
-using namespace lyx::support;
+using lyx::support::split;
+
 
 namespace {
 

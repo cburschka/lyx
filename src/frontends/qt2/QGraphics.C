@@ -34,12 +34,15 @@
 #include "QGraphics.h"
 #include "Qt2BC.h"
 
-using namespace lyx::support;
+using lyx::support::float_equal;
+using lyx::support::strToDbl;
+using lyx::support::strToInt;
+using lyx::support::token;
 
 using std::vector;
 
-typedef QController<ControlGraphics, QView<QGraphicsDialog> > base_class;
 
+typedef QController<ControlGraphics, QView<QGraphicsDialog> > base_class;
 
 QGraphics::QGraphics(Dialog & parent)
 	: base_class(parent, _("LyX: Graphics"))

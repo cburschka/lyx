@@ -27,7 +27,14 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::ChangeExtension;
+using lyx::support::compare;
+using lyx::support::contains;
+using lyx::support::getStringFromVector;
+using lyx::support::getVectorFromString;
+using lyx::support::OnlyFilename;
+using lyx::support::prefixIs;
+using lyx::support::split;
 
 using std::vector;
 

@@ -23,7 +23,8 @@
 
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::strToDbl;
+using lyx::support::strToInt;
 
 
 // some stuff for inset locking

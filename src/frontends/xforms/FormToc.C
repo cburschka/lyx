@@ -21,7 +21,7 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::getStringFromVector;
 
 using std::vector;
 

@@ -24,7 +24,16 @@
 
 #include <fstream>
 
-using namespace lyx::support;
+using lyx::support::AddName;
+using lyx::support::AddPath;
+using lyx::support::contains;
+using lyx::support::FileInfo;
+using lyx::support::OnlyFilename;
+using lyx::support::OnlyPath;
+using lyx::support::Path;
+using lyx::support::rtrim;
+using lyx::support::split;
+using lyx::support::Systemcall;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::asctime;

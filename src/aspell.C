@@ -21,9 +21,6 @@
 #include "WordLangTuple.h"
 
 
-using namespace lyx::support;
-
-
 ASpell::ASpell(BufferParams const &, string const & lang)
 	: els(0), spell_error_object(0)
 {

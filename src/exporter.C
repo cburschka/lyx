@@ -31,7 +31,11 @@
 
 #include "support/filetools.h"
 
-using namespace lyx::support;
+using lyx::support::AddName;
+using lyx::support::bformat;
+using lyx::support::ChangeExtension;
+using lyx::support::contains;
+using lyx::support::MakeDisplayPath;
 
 using std::find;
 

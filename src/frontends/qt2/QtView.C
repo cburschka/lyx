@@ -28,7 +28,7 @@
 #include <qapplication.h>
 #include <qstatusbar.h>
 
-using namespace lyx::support;
+using lyx::support::LibFileSearch;
 
 
 namespace {

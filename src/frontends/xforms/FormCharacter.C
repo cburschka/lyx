@@ -25,12 +25,25 @@
 #include "lyx_forms.h"
 #include "combox.h"
 
-using namespace lyx::support;
+using frnt::BarPair;
+using frnt::ColorPair;
+using frnt::FamilyPair;
+using frnt::getBarData;
+using frnt::getColorData;
+using frnt::getFamilyData;
+using frnt::getLanguageData;
+using frnt::getSeriesData;
+using frnt::getShapeData;
+using frnt::getSizeData;
+using frnt::LanguagePair;
+using frnt::SeriesPair;
+using frnt::ShapePair;
+using frnt::SizePair;
+
+using lyx::support::getStringFromVector;
 
 using std::vector;
 
-
-using namespace frnt;
 
 typedef FormController<ControlCharacter, FormView<FD_character> > base_class;
 

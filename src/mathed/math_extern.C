@@ -38,7 +38,11 @@
 
 #include <algorithm>
 
-using namespace lyx::support;
+using lyx::support::cmd_ret;
+using lyx::support::getVectorFromString;
+using lyx::support::LibFileSearch;
+using lyx::support::RunCommand;
+using lyx::support::subst;
 
 using std::endl;
 using std::find_if;

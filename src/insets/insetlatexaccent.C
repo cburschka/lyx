@@ -23,9 +23,11 @@
 
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::contains;
+using lyx::support::trim;
 
 using std::endl;
+
 using std::auto_ptr;
 using std::ostream;
 

@@ -24,7 +24,7 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::rtrim;
 
 
 typedef FormController<ControlInclude, FormView<FD_include> > base_class;

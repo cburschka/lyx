@@ -27,11 +27,10 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::strToInt;
 
 
 typedef FormCB<ControlPrint, FormDB<FD_print> > base_class;
-
 
 FormPrint::FormPrint()
 	: base_class(_("Print Document"))

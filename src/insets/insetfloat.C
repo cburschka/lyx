@@ -31,9 +31,10 @@
 
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
+using lyx::support::contains;
 
 using std::endl;
+
 using std::auto_ptr;
 using std::istringstream;
 using std::ostream;

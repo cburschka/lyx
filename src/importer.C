@@ -24,9 +24,12 @@
 #include "gettext.h"
 #include "BufferView.h"
 
-using namespace lyx::support;
+using lyx::support::bformat;
+using lyx::support::ChangeExtension;
+using lyx::support::MakeDisplayPath;
 
 using std::find;
+
 using std::vector;
 
 

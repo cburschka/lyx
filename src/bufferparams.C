@@ -43,7 +43,9 @@
 #include "support/std_sstream.h"
 
 namespace support = lyx::support;
-using namespace lyx::support;
+using lyx::support::bformat;
+using lyx::support::rtrim;
+using lyx::support::tokenPos;
 
 using std::endl;
 

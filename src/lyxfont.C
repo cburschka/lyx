@@ -15,20 +15,27 @@
 #include <config.h>
 
 #include "lyxfont.h"
-#include "gettext.h"
-#include "debug.h"
-#include "lyxrc.h"
-#include "lyxlex.h"
-#include "language.h"
-#include "support/std_sstream.h"
-#include "support/lstrings.h"
-#include "bufferparams.h" // stateText
 
-using namespace lyx::support;
+#include "bufferparams.h" // stateText
+#include "debug.h"
+#include "gettext.h"
+#include "language.h"
+#include "lyxlex.h"
+#include "lyxrc.h"
+
+#include "support/lstrings.h"
+
+#include "support/std_sstream.h"
+
+using lyx::support::ascii_lowercase;
+using lyx::support::bformat;
+using lyx::support::rtrim;
+using lyx::support::subst;
+
+using std::endl;
 
 using std::ostream;
 using std::ostringstream;
-using std::endl;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;

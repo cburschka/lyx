@@ -17,12 +17,16 @@
 
 #include "debug.h"
 #include "funcrequest.h"
+
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::split;
+using lyx::support::trim;
+
+using std::endl;
 
 using std::ostream;
-using std::endl;
+
 
 /*
      NAMING RULES FOR USER-COMMANDS

@@ -21,7 +21,10 @@
 
 #include <fstream>
 
-using namespace lyx::support;
+using lyx::support::FileSearch;
+using lyx::support::MakeDisplayPath;
+using lyx::support::system_lyxdir;
+using lyx::support::user_lyxdir;
 
 using std::ostream;
 using std::ostringstream;

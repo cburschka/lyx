@@ -23,7 +23,7 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::trim;
 
 
 typedef FormController<ControlCommand, FormView<FD_text> > base_class;

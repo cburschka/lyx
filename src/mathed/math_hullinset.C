@@ -27,7 +27,7 @@
 #include "lyxrc.h"
 #include "gettext.h"
 
-using namespace lyx::support;
+using lyx::support::trim;
 
 using std::endl;
 using std::max;

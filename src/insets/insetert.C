@@ -29,9 +29,10 @@
 
 #include "support/tostr.h"
 
-using namespace lyx::support;
-
 using lyx::pos_type;
+
+using lyx::support::split;
+using lyx::support::strToInt;
 
 using std::endl;
 using std::min;

@@ -60,10 +60,13 @@
 #include "support/os2_errortable.h"
 #endif
 
-
-using namespace lyx::support;
+using lyx::support::compare;
+using lyx::support::rtrim;
+using lyx::support::split;
+using lyx::support::unlink;
 
 using std::endl;
+
 
 // provide an empty mkfifo() if we do not have one. This disables the
 // lyxserver.

@@ -21,7 +21,9 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::lowercase;
+using lyx::support::trim;
+using lyx::support::uppercase;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::islower;

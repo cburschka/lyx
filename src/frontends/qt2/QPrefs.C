@@ -49,7 +49,8 @@
 #include <qlabel.h>
 #include "qcoloritem.h"
 
-using namespace lyx::support;
+using lyx::support::compare_no_case;
+using lyx::support::strToDbl;
 
 using std::endl;
 using std::setfill;
@@ -61,7 +62,6 @@ using std::vector;
 
 
 typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;
-
 
 QPrefs::QPrefs()
 	: base_class(_("LyX: Preferences"))

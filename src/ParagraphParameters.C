@@ -32,7 +32,7 @@
 
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
+using lyx::support::rtrim;
 
 using std::istringstream;
 using std::ostream;

@@ -58,13 +58,13 @@
 
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
+using lyx::pos_type;
+
+using lyx::support::bformat;
 
 using std::endl;
 
 using std::ostringstream;
-
-using lyx::pos_type;
 
 
 LyXText::LyXText(BufferView * bv, InsetText * inset, bool ininset,

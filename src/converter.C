@@ -11,13 +11,14 @@
 #include <config.h>
 
 #include "converter.h"
-#include "bufferparams.h"
-#include "format.h"
+
 #include "buffer.h"
 #include "buffer_funcs.h"
-#include "LaTeX.h"
-#include "gettext.h"
+#include "bufferparams.h"
 #include "debug.h"
+#include "format.h"
+#include "gettext.h"
+#include "LaTeX.h"
 
 #include "frontends/Alert.h"
 
@@ -26,7 +27,24 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 
-using namespace lyx::support;
+using lyx::support::AddName;
+using lyx::support::bformat;
+using lyx::support::ChangeExtension;
+using lyx::support::compare_ascii_no_case;
+using lyx::support::contains;
+using lyx::support::DirList;
+using lyx::support::GetExtension;
+using lyx::support::LibScriptSearch;
+using lyx::support::MakeRelPath;
+using lyx::support::OnlyFilename;
+using lyx::support::OnlyPath;
+using lyx::support::Path;
+using lyx::support::prefixIs;
+using lyx::support::QuoteName;
+using lyx::support::rename;
+using lyx::support::split;
+using lyx::support::subst;
+using lyx::support::Systemcall;
 
 using std::endl;
 using std::find_if;

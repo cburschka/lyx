@@ -20,14 +20,14 @@
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using bv_funcs::currentState;
+
+using lyx::support::prefixIs;
 
 using std::back_inserter;
 using std::transform;
 
 using std::vector;
-
-using namespace bv_funcs;
 
 
 namespace {

@@ -24,7 +24,7 @@
 #include "lyxlex.h"
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
+using lyx::support::bformat;
 
 using std::auto_ptr;
 using std::ostream;

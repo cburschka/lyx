@@ -45,7 +45,27 @@
 #include <cerrno>
 #include <fstream>
 
-using namespace lyx::support;
+using lyx::support::AddName;
+using lyx::support::bformat;
+using lyx::support::destroyDir;
+using lyx::support::FileInfo;
+using lyx::support::ForkedProcess;
+using lyx::support::IsLyXFilename;
+using lyx::support::LibFileSearch;
+using lyx::support::MakeAbsPath;
+using lyx::support::MakeDisplayPath;
+using lyx::support::OnlyFilename;
+using lyx::support::OnlyPath;
+using lyx::support::os;
+using lyx::support::Path;
+using lyx::support::removeAutosaveFile;
+using lyx::support::rename;
+using lyx::support::split;
+using lyx::support::system_lyxdir;
+using lyx::support::Systemcall;
+using lyx::support::tempName;
+using lyx::support::unlink;
+using lyx::support::user_lyxdir;
 
 using std::back_inserter;
 using std::copy;
@@ -55,6 +75,7 @@ using std::make_pair;
 using std::ifstream;
 using std::ios;
 using std::istream_iterator;
+
 
 extern BufferList bufferlist;
 // this should be static, but I need it in buffer.C

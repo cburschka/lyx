@@ -34,7 +34,7 @@
 
 #include "frontends/Alert.h"
 
-using namespace lyx::support;
+using lyx::support::bformat;
 
 using std::endl;
 

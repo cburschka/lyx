@@ -24,7 +24,15 @@
 #include "support/systemcall.h"
 #include "support/lyxfunctional.h"
 
-using namespace lyx::support;
+using lyx::support::bformat;
+using lyx::support::compare_ascii_no_case;
+using lyx::support::contains;
+using lyx::support::OnlyFilename;
+using lyx::support::OnlyPath;
+using lyx::support::Path;
+using lyx::support::QuoteName;
+using lyx::support::subst;
+using lyx::support::Systemcall;
 
 
 namespace {

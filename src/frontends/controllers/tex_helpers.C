@@ -24,7 +24,17 @@
 #include <boost/cregex.hpp>
 #include <fstream>
 
-using namespace lyx::support;
+using lyx::support::contains;
+using lyx::support::GetFileContents;
+using lyx::support::getVectorFromString;
+using lyx::support::LibFileSearch;
+using lyx::support::OnlyFilename;
+using lyx::support::Path;
+using lyx::support::Path;
+using lyx::support::split;
+using lyx::support::Systemcall;
+using lyx::support::token;
+using lyx::support::user_lyxdir;
 
 using std::endl;
 

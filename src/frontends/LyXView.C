@@ -43,7 +43,9 @@
 #include <sys/time.h>
 #include <unistd.h>
 
-using namespace lyx::support;
+using lyx::support::MakeDisplayPath;
+using lyx::support::OnlyFilename;
+
 using std::endl;
 
 

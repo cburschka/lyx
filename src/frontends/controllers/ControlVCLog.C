@@ -18,7 +18,7 @@
 #include "support/lyxlib.h"
 #include <fstream>
 
-using namespace lyx::support;
+using lyx::support::unlink;
 
 using std::endl;
 using std::ostream;

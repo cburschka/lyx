@@ -21,7 +21,7 @@
 
 #include "support/filetools.h"
 
-using namespace lyx::support;
+using lyx::support::OnlyFilename;
 
 using std::pair;
 using std::vector;

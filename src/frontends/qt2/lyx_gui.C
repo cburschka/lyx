@@ -40,8 +40,7 @@
 #include <qapplication.h>
 #include <qpaintdevicemetrics.h>
 
-
-using namespace lyx::support;
+using lyx::support::ltrim;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;

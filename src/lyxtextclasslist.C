@@ -19,14 +19,14 @@
 #include "support/lyxfunctional.h"
 #include "support/filetools.h"
 
+using lyx::textclass_type;
 
-using namespace lyx::support;
+using lyx::support::LibFileSearch;
+using lyx::support::MakeDisplayPath;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
 #endif
-
-using lyx::textclass_type;
 
 using std::endl;
 using std::find_if;

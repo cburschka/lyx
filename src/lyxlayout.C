@@ -19,9 +19,11 @@
 
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::subst;
+using lyx::support::trim;
 
 using std::endl;
+
 
 //  The order of the LayoutTags enum is no more important. [asierra300396]
 // Tags indexes.

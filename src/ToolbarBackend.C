@@ -23,7 +23,10 @@
 
 #include "frontends/controllers/ControlMath.h"
 
-using namespace lyx::support;
+using lyx::support::compare_ascii_no_case;
+using lyx::support::getVectorFromString;
+using lyx::support::LibFileSearch;
+using lyx::support::subst;
 
 using std::endl;
 using std::make_pair;

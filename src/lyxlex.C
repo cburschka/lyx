@@ -14,15 +14,26 @@
 #include <config.h>
 
 #include "lyxlex.h"
-#include "lyxlex_pimpl.h"
+
 #include "debug.h"
+#include "lyxlex_pimpl.h"
+
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::compare_ascii_no_case;
+using lyx::support::isStrDbl;
+using lyx::support::isStrInt;
+using lyx::support::ltrim;
+using lyx::support::prefixIs;
+using lyx::support::strToDbl;
+using lyx::support::strToInt;
+using lyx::support::subst;
+using lyx::support::trim;
 
-using std::ostream;
-using std::istream;
 using std::endl;
+
+using std::istream;
+using std::ostream;
 
 
 LyXLex::LyXLex(keyword_item * tab, int num)

@@ -23,7 +23,12 @@
 
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::ascii_lowercase;
+using lyx::support::contains;
+using lyx::support::getVectorFromString;
+using lyx::support::ltrim;
+using lyx::support::rtrim;
+using lyx::support::split;
 
 using std::ostream;
 using std::vector;

@@ -35,9 +35,15 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::bformat;
+using lyx::support::float_equal;
+using lyx::support::getStringFromVector;
+using lyx::support::strToDbl;
+using lyx::support::strToInt;
+using lyx::support::token;
 
 using std::endl;
+
 using std::vector;
 
 

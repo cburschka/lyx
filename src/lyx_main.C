@@ -52,16 +52,34 @@
 #include <iostream>
 #include <csignal>
 
-using namespace lyx::support;
+using lyx::support::AddName;
+using lyx::support::AddPath;
+using lyx::support::bformat;
+using lyx::support::createDirectory;
+using lyx::support::CreateLyXTmpDir;
+using lyx::support::FileInfo;
+using lyx::support::FileSearch;
+using lyx::support::GetEnv;
+using lyx::support::GetEnvPath;
+using lyx::support::i18nLibFileSearch;
+using lyx::support::LibFileSearch;
+using lyx::support::os;
+using lyx::support::Path;
+using lyx::support::rtrim;
+using lyx::support::setLyxPaths;
+using lyx::support::system_lyxdir;
+using lyx::support::user_lyxdir;
+
+using std::endl;
 
 using std::vector;
-using std::endl;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
 using std::signal;
 using std::system;
 #endif
+
 
 extern void QuitLyX();
 

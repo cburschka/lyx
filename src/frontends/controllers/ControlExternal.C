@@ -20,8 +20,6 @@
 
 #include "insets/ExternalTemplate.h"
 
-
-using namespace lyx::support;
 using std::vector;
 
 

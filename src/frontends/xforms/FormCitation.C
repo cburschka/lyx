@@ -23,7 +23,9 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::getStringFromVector;
+using lyx::support::getVectorFromString;
+using lyx::support::trim;
 
 using std::find;
 using std::max;

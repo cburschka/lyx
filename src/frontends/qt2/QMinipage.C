@@ -23,10 +23,10 @@
 #include <qpushbutton.h>
 #include <qlineedit.h>
 
-using namespace lyx::support;
+using lyx::support::strToDbl;
+
 
 typedef QController<ControlMinipage, QView<QMinipageDialog> > base_class;
-
 
 QMinipage::QMinipage(Dialog & parent)
 	: base_class(parent, _("LyX: Minipage Settings"))

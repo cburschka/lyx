@@ -48,16 +48,18 @@
 #include "support/std_sstream.h"
 #include <clocale>
 
-using namespace lyx::support;
-using namespace bv_funcs;
+using bv_funcs::replaceSelection;
+
+using lyx::pos_type;
+
+using lyx::support::isStrUnsignedInt;
+using lyx::support::strToUnsignedInt;
 
 using std::endl;
 using std::find;
 
 using std::istringstream;
 using std::vector;
-
-using lyx::pos_type;
 
 
 extern string current_layout;

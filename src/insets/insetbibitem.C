@@ -22,9 +22,11 @@
 #include "support/lstrings.h"
 #include "support/tostr.h"
 
-using namespace lyx::support;
+using lyx::support::prefixIs;
+using lyx::support::strToInt;
 
 using std::max;
+
 using std::auto_ptr;
 
 

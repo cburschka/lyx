@@ -22,7 +22,7 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::compare;
 
 
 typedef FormController<ControlCommand, FormView<FD_bibitem> > base_class;

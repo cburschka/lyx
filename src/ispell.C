@@ -30,8 +30,6 @@
 #endif
 #include <sys/time.h>
 
-using namespace lyx::support;
-
 #ifndef CXX_GLOBAL_CSTD
 using std::strcpy;
 using std::strlen;

@@ -12,16 +12,21 @@
 
 #include <config.h>
 
-#include "lyxtext.h"
 #include "lyxfind.h"
-#include "frontends/Alert.h"
-#include "support/textutils.h"
-#include "BufferView.h"
+
 #include "buffer.h"
+#include "BufferView.h"
 #include "gettext.h"
+#include "lyxtext.h"
+
+#include "frontends/Alert.h"
+
 #include "insets/insettext.h"
 
-using namespace lyx::support;
+#include "support/textutils.h"
+
+using lyx::support::lowercase;
+using lyx::support::uppercase;
 
 
 namespace lyx {

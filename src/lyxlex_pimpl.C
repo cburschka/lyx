@@ -13,14 +13,18 @@
 #include <config.h>
 
 #include "lyxlex_pimpl.h"
+
 #include "debug.h"
 
-#include "support/lyxalgo.h"
 #include "support/filetools.h"
+#include "support/lyxalgo.h"
 #include "support/lstrings.h"
 
-
-using namespace lyx::support;
+using lyx::support::compare_ascii_no_case;
+using lyx::support::getExtFromContents;
+using lyx::support::MakeDisplayPath;
+using lyx::support::split;
+using lyx::support::subst;
 
 using std::endl;
 using std::getline;

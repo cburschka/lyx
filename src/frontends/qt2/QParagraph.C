@@ -32,8 +32,10 @@
 #include <qtabwidget.h>
 #include <qbuttongroup.h>
 
-
-using namespace lyx::support;
+using lyx::support::contains_functor;
+using lyx::support::isStrDbl;
+using lyx::support::subst;
+using lyx::support::trim;
 
 using std::bind2nd;
 using std::remove_if;

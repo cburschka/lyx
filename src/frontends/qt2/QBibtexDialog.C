@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "qt_helpers.h"
 
 #include "support/filetools.h"
@@ -25,8 +24,8 @@
 #include "QBibtexDialog.h"
 #include "QBibtex.h"
 
+using lyx::support::ChangeExtension;
 
-using namespace lyx::support;
 
 QBibtexDialog::QBibtexDialog(QBibtex * form)
 	: QBibtexDialogBase(0, 0, false, 0),

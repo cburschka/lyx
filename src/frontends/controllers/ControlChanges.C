@@ -21,7 +21,8 @@
 #include "lyxfind.h"
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::rtrim;
+
 
 ControlChanges::ControlChanges(Dialog & parent)
 	: Dialog::Controller(parent)

@@ -29,7 +29,9 @@
 
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
+using lyx::support::IsSGMLFilename;
+using lyx::support::MakeRelPath;
+using lyx::support::OnlyPath;
 
 using std::endl;
 using std::find;

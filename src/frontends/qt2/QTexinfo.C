@@ -22,11 +22,10 @@
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 
-using namespace lyx::support;
+using lyx::support::OnlyFilename;
 
 
 typedef QController<ControlTexinfo, QView<QTexinfoDialog> > base_class;
-
 
 QTexinfo::QTexinfo(Dialog & parent)
 	: base_class(parent, _("LyX: LaTeX Information")),

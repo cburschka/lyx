@@ -23,7 +23,9 @@
 
 #include <utility>
 
-using namespace lyx::support;
+using lyx::support::IsFileReadable;
+using lyx::support::MakeAbsPath;
+using lyx::support::OnlyPath;
 
 using std::pair;
 

@@ -29,15 +29,15 @@
 
 #include "support/lstrings.h"
 
+using lyx::pos_type;
+using lyx::textclass_type;
+
+using lyx::support::bformat;
 
 using std::for_each;
 using std::make_pair;
 using std::pair;
 using std::vector;
-
-using namespace lyx::support;
-using lyx::pos_type;
-using lyx::textclass_type;
 
 
 typedef limited_stack<pair<ParagraphList, textclass_type> > CutStack;

@@ -14,7 +14,7 @@
 #include "lyxlex.h"
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::ascii_lowercase;
 
 
 LyXFont & LyXFont::lyxRead(LyXLex & lex)

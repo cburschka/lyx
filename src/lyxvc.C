@@ -26,10 +26,13 @@
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 
-
-using namespace lyx::support;
+using lyx::support::bformat;
+using lyx::support::IsFileReadable;
+using lyx::support::MakeDisplayPath;
+using lyx::support::tempName;
 
 using std::endl;
+
 using std::pair;
 
 

@@ -59,7 +59,8 @@
 
 #include <fstream>
 
-using namespace lyx::support;
+using lyx::support::LibFileSearch;
+using lyx::support::split;
 
 using std::endl;
 using std::istringstream;

@@ -28,7 +28,8 @@
 
 #include "lyx_forms.h"
 
-using namespace lyx::support;
+using lyx::support::getStringFromVector;
+using lyx::support::strToInt;
 
 
 typedef FormController<ControlExternal, FormView<FD_external> > base_class;

@@ -42,7 +42,9 @@
 #include <iomanip>
 #include <fcntl.h>
 
-using namespace lyx::support;
+using lyx::support::AddName;
+using lyx::support::os;
+using lyx::support::user_lyxdir;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;

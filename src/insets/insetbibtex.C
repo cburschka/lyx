@@ -27,7 +27,21 @@
 
 #include <fstream>
 
-using namespace lyx::support;
+using lyx::support::ascii_lowercase;
+using lyx::support::ChangeExtension;
+using lyx::support::contains;
+using lyx::support::findtexfile;
+using lyx::support::IsFileReadable;
+using lyx::support::ltrim;
+using lyx::support::MakeAbsPath;
+using lyx::support::os;
+using lyx::support::Path;
+using lyx::support::prefixIs;
+using lyx::support::rtrim;
+using lyx::support::split;
+using lyx::support::subst;
+using lyx::support::tokenPos;
+using lyx::support::trim;
 
 using std::endl;
 using std::getline;

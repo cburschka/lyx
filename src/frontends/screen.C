@@ -42,7 +42,7 @@
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
 
-using namespace lyx::support;
+using lyx::support::LibFileSearch;
 
 using std::min;
 using std::max;

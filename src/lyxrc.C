@@ -28,19 +28,25 @@
 #include "lyxlex.h"
 #include "lyxfont.h"
 
-#include "support/tostr.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/userinfo.h"
 #include "support/translator.h"
+#include "support/tostr.h"
+#include "support/userinfo.h"
 
-using namespace lyx::support;
+using lyx::support::ascii_lowercase;
+using lyx::support::ExpandPath;
+using lyx::support::GetEnv;
+using lyx::support::LibFileSearch;
+using lyx::support::token;
 
-using std::ostream;
-using std::ofstream;
 using std::cout;
-using std::ios;
 using std::endl;
+
+using std::ios;
+using std::ofstream;
+using std::ostream;
+
 
 namespace lyx {
 namespace graphics {

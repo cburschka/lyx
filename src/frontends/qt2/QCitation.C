@@ -28,7 +28,9 @@
 #include "qt_helpers.h"
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::getStringFromVector;
+using lyx::support::getVectorFromString;
+using lyx::support::trim;
 
 using std::find;
 

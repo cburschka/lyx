@@ -26,7 +26,10 @@
 #include "support/lstrings.h"
 #include "support/translator.h"
 
-using namespace lyx::support;
+using lyx::support::float_equal;
+using lyx::support::readBB_from_PSFile;
+using lyx::support::strToInt;
+using lyx::support::token;
 
 using std::ostream;
 

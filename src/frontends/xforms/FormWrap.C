@@ -25,10 +25,11 @@
 #include "lyx_forms.h"
 #include "support/tostr.h"
 
-using namespace lyx::support;
+using lyx::support::getStringFromVector;
+using lyx::support::subst;
+
 
 typedef FormController<ControlWrap, FormView<FD_wrap> > base_class;
-
 
 FormWrap::FormWrap(Dialog & parent)
 	: base_class(parent, _("Text Wrap Settings"))

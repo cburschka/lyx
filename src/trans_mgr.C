@@ -19,10 +19,12 @@
 #include "lyxrc.h"
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::split;
 
 using std::endl;
+
 using std::pair;
+
 
 extern string const DoAccent(string const &, tex_accent);
 extern string const DoAccent(char, tex_accent);

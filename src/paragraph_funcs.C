@@ -40,13 +40,16 @@
 #include "support/lstrings.h"
 #include "support/std_sstream.h"
 
-using namespace lyx::support;
-
 using lyx::pos_type;
-//using lyx::layout_type;
+
+using lyx::support::bformat;
+using lyx::support::subst;
+
 using std::endl;
+
 using std::istringstream;
 using std::ostream;
+
 
 extern string bibitemWidest(Buffer const &);
 

@@ -21,7 +21,7 @@
 
 #include "support/lstrings.h"
 
-using namespace lyx::support;
+using lyx::support::escape;
 
 using std::ostream;
 

@@ -39,14 +39,15 @@
 #include "support/textutils.h"
 #include "support/std_sstream.h"
 
+using lyx::pos_type;
 
-using namespace lyx::support;
+using lyx::support::contains;
+using lyx::support::subst;
+
+using std::endl;
 
 using std::ostream;
 using std::ostringstream;
-using std::endl;
-
-using lyx::pos_type;
 
 
 Paragraph::Paragraph()

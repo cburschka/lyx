@@ -15,6 +15,7 @@
 #include <config.h>
 
 #include "BufferView.h"
+
 #include "buffer.h"
 #include "bufferlist.h"
 #include "BufferView_pimpl.h"
@@ -42,13 +43,15 @@
 #include "support/filetools.h"
 #include "support/lyxalgo.h" // lyx_count
 
-
-extern BufferList bufferlist;
-
-using namespace lyx::support;
+using lyx::support::bformat;
+using lyx::support::MakeAbsPath;
 
 using std::find;
+
 using std::vector;
+
+
+extern BufferList bufferlist;
 
 
 BufferView::BufferView(LyXView * owner, int xpos, int ypos,

@@ -11,21 +11,26 @@
 #include <config.h>
 
 #include "Chktex.h"
-#include "LaTeX.h" // TeXErrors
 #include "gettext.h"
 
+#include "LaTeX.h" // TeXErrors
+
+#include "support/BoostFormat.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/systemcall.h"
 
-#include "support/BoostFormat.h"
-
 #include <fstream>
 
-using namespace lyx::support;
+using lyx::support::atoi;
+using lyx::support::ChangeExtension;
+using lyx::support::OnlyFilename;
+using lyx::support::split;
+using lyx::support::Systemcall;
 
 using std::getline;
+
 using std::ifstream;
 
 

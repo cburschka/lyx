@@ -30,7 +30,10 @@
 #include <algorithm>
 #endif
 
-using namespace lyx::support;
+using lyx::support::contains;
+using lyx::support::LibFileSearch;
+using lyx::support::OnlyPath;
+using lyx::support::Systemcall;
 
 using std::endl;
 using std::make_pair;

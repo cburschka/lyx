@@ -53,12 +53,24 @@
 # endif
 #endif
 
+using lyx::support::AbsolutePath;
+using lyx::support::AddName;
+using lyx::support::ExpandPath;
+using lyx::support::FileInfo;
+using lyx::support::getcwd;
+using lyx::support::GetEnvPath;
+using lyx::support::LyXReadLink;
+using lyx::support::MakeAbsPath;
+using lyx::support::OnlyFilename;
+using lyx::support::regexMatch;
+using lyx::support::split;
+using lyx::support::suffixIs;
+using lyx::support::trim;
+
 using std::max;
 using std::sort;
 
 using std::map;
-
-using namespace lyx::support;
 
 
 namespace {
