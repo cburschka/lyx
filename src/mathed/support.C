@@ -18,7 +18,7 @@ using std::max;
 
 bool isBinaryOp(char c, MathTextCodes type)
 {
-	return type < LM_TC_SYMB && strchr("+-<>=/*", c); 
+	return type < LM_TC_SYMB && strchr("+-<>=/*", c);
 }
 
 
@@ -235,7 +235,7 @@ bool math_font_available(MathTextCodes type)
 {
 	if (!font_available_initialized[type]) {
 		font_available_initialized[type] = true;
-		font_available[type] = 
+		font_available[type] =
 			fontloader.available(whichFontBase(type));
 	}
 	return font_available[type];
@@ -244,36 +244,36 @@ bool math_font_available(MathTextCodes type)
 
 namespace {
 
-/* 
+/*
  * Internal struct of a drawing: code n x1 y1 ... xn yn, where code is:
  * 0 = end, 1 = line, 2 = polyline, 3 = square line, 4= square polyline
  */
 
 
 double const parenthHigh[] = {
-	2.0, 13.0,
+	2, 13,
 	0.9840, 0.0014, 0.7143, 0.0323, 0.4603, 0.0772,
 	0.2540, 0.1278, 0.1746, 0.1966, 0.0952, 0.3300,
 	0.0950, 0.5000, 0.0952, 0.6700, 0.1746, 0.8034,
 	0.2540, 0.8722, 0.4603, 0.9228, 0.7143, 0.9677,
 	0.9840, 0.9986,
-	0.0 
+	0
 };
 
 
 double const parenth[] = {
-	2.0, 13.0,
+	2, 13,
 	0.9930, 0.0071, 0.7324, 0.0578, 0.5141, 0.1126,
 	0.3380, 0.1714, 0.2183, 0.2333, 0.0634, 0.3621,
 	0.0141, 0.5000, 0.0563, 0.6369, 0.2113, 0.7647,
 	0.3310, 0.8276, 0.5070, 0.8864, 0.7254, 0.9412,
 	0.9930, 0.9919,
-	0.0   
+	0
 };
 
 
 double const brace[] = {
-	2.0, 21.0,
+	2, 21,
 	0.9492, 0.0020, 0.9379, 0.0020, 0.7458, 0.0243,
 	0.5819, 0.0527, 0.4859, 0.0892, 0.4463, 0.1278,
 	0.4463, 0.3732, 0.4011, 0.4199, 0.2712, 0.4615,
@@ -281,22 +281,20 @@ double const brace[] = {
 	0.2712, 0.5385, 0.4011, 0.5801, 0.4463, 0.6268,
 	0.4463, 0.8722, 0.4859, 0.9108, 0.5819, 0.9473,
 	0.7458, 0.9757, 0.9379, 0.9980, 0.9492, 0.9980,
-	0.0
+	0
 };
 
 
-// Is this correct? (Lgb)
 double const arrow[] = {
 	4, 7,
 	0.0150, 0.7500, 0.2000, 0.6000, 0.3500, 0.3500,
 	0.5000, 0.0500, 0.6500, 0.3500, 0.8000, 0.6000,
 	0.9500, 0.7500,
 	3, 0.5000, 0.1500, 0.5000, 0.9500,
-	0.0 
+	0
 };
 
 
-// Is this correct? (Lgb)
 double const Arrow[] = {
 	4, 7,
 	0.0150, 0.7500, 0.2000, 0.6000, 0.3500, 0.3500,
@@ -304,7 +302,7 @@ double const Arrow[] = {
 	0.9500, 0.7500,
 	3, 0.3500, 0.5000, 0.3500, 0.9500,
 	3, 0.6500, 0.5000, 0.6500, 0.9500,
-	0.0
+	0
 };
 
 
@@ -312,9 +310,9 @@ double const udarrow[] = {
 	2, 3,
 	0.015, 0.25,  0.5, 0.05, 0.95, 0.25,
 	2, 3,
-	0.015, 0.75,  0.5, 0.95, 0.95, 0.75,  
+	0.015, 0.75,  0.5, 0.95, 0.95, 0.75,
 	1, 0.5, 0.2,  0.5, 0.8,
-	0.0 
+	0
 };
 
 
@@ -322,92 +320,92 @@ double const Udarrow[] = {
 	2, 3,
 	0.015, 0.25,  0.5, 0.05, 0.95, 0.25,
 	2, 3,
-	0.015, 0.75,  0.5, 0.95, 0.95, 0.75,  
+	0.015, 0.75,  0.5, 0.95, 0.95, 0.75,
 	1, 0.35, 0.2, 0.35, 0.8,
 	1, 0.65, 0.2, 0.65, 0.8,
-	0.0 
+	0
 };
 
 
 double const brack[] = {
-	2.0, 4,
+	2, 4,
 	0.95, 0.05,  0.05, 0.05,  0.05, 0.95,  0.95, 0.95,
-	0.0
+	0
 };
 
 
 double const corner[] = {
-	2.0, 3,
+	2, 3,
 	0.95, 0.05,  0.05, 0.05,  0.05, 0.95,
-	0.0
+	0
 };
 
 
 double const angle[] = {
-	2.0, 3,
+	2, 3,
 	1, 0,  0.05, 0.5,  1, 1,
-	0.0
+	0
 };
 
 
 double const slash[] = {
-	1, 0.95, 0.05,  0.05, 0.95, 
-	0.0
+	1, 0.95, 0.05, 0.05, 0.95,
+	0
 };
 
 
 double const hline[] = {
-	1, 0.05, 0.5,  0.95, 0.5, 
-	0.0
+	1, 0.05, 0.5, 0.95, 0.5,
+	0
 };
 
 
 double const hline2[] = {
-   1, 0.1, 0.5,  0.3, 0.5,
-   1, 0.7, 0.5,  0.9, 0.5,
-   0.0
-}; 
+	1, 0.1, 0.5,  0.3, 0.5,
+	1, 0.7, 0.5,  0.9, 0.5,
+	0
+};
 
 
 double const hline3[] = {
-	1, 0.1, 0,  0.15, 0,
+	1, 0.1,   0,  0.15,  0,
 	1, 0.475, 0,  0.525, 0,
-	1, 0.85, 0,  0.9, 0,  
-	0.0
+	1, 0.85,  0,  0.9,   0,
+	0
 };
 
 
 double const dline3[] = {
-	1, 0.1, 0.1,  0.15, 0.15,
-	1, 0.475, 0.475,  0.525, 0.525,
-	1, 0.85, 0.85,  0.9, 0.9,
-	0.0
-};     
+	1, 0.1,   0.1,   0.15,  0.15,
+	1, 0.475, 0.475, 0.525, 0.525,
+	1, 0.85,  0.85,  0.9,   0.9,
+	0
+};
 
 
 double const hlinesmall[] = {
-	1, 0.4, 0.5,  0.6, 0.5, 
-	0.0
+	1, 0.4, 0.5, 0.6, 0.5,
+	0
 };
 
 
 double const vert[] = {
-	1, 0.5, 0.05,  0.5, 0.95, 
-	0.0
+	1, 0.5, 0.05,  0.5, 0.95,
+	0
 };
 
 
 double const  Vert[] = {
-	1, 0.3, 0.05,  0.3, 0.95, 
+	1, 0.3, 0.05,  0.3, 0.95,
 	1, 0.7, 0.05,  0.7, 0.95,
-	0.0
+	0
 };
 
 
 double const tilde[] = {
-	2.0, 4,
+	2, 4,
 	0.05, 0.8,  0.25, 0.2,  0.75, 0.8,  0.95, 0.2,
-	0.0
+	0
 };
 
 
@@ -422,7 +420,7 @@ struct named_deco_struct {
 	int angle;
 };
 
-named_deco_struct deco_table[] = {   
+named_deco_struct deco_table[] = {
 	// Decorations
 	{"widehat",        angle,      3 },
 	{"widetilde",      tilde,      0 },
@@ -432,8 +430,8 @@ named_deco_struct deco_table[] = {
 	{"overbrace",      brace,      3 },
 	{"overleftarrow",  arrow,      1 },
 	{"overrightarrow", arrow,      3 },
-	                                                  
-	// Delimiters 
+	
+	// Delimiters
 	{"(",              parenth,    0 },
 	{")",              parenth,    2 },
 	{"{",              brace,      0 },
@@ -446,19 +444,19 @@ named_deco_struct deco_table[] = {
 	{"'",              slash,      1 },
 	{"backslash",      slash,      1 },
 	{"langle",         angle,      0 },
-	{"lceil",          corner,     0 }, 
-	{"lfloor",         corner,     1 },  
-	{"rangle",         angle,      2 }, 
-	{"rceil",          corner,     3 }, 
+	{"lceil",          corner,     0 },
+	{"lfloor",         corner,     1 },
+	{"rangle",         angle,      2 },
+	{"rceil",          corner,     3 },
 	{"rfloor",         corner,     2 },
 	{"downarrow",      arrow,      2 },
-	{"Downarrow",      Arrow,      2 }, 
+	{"Downarrow",      Arrow,      2 },
 	{"uparrow",        arrow,      0 },
 	{"Uparrow",        Arrow,      0 },
 	{"updownarrow",    udarrow,    0 },
-	{"Updownarrow",    Udarrow,    0 },	 
-	                                                    
-	// Accents         
+	{"Updownarrow",    Udarrow,    0 },	
+	
+	// Accents
 	{"ddot",           hline2,     0 },
 	{"hat",            angle,      3 },
 	{"grave",          slash,      1 },
@@ -469,10 +467,10 @@ named_deco_struct deco_table[] = {
 	{"check",          angle,      1 },
 	{"breve",          parenth,    1 },
 	{"vec",            arrow,      3 },
-	{"not",            slash,      0 },  
-	                                                    
-	// Dots            
-	{"ldots",          hline3,     0 }, 
+	{"not",            slash,      0 },
+	
+	// Dots
+	{"ldots",          hline3,     0 },
 	{"cdots",          hline3,     0 },
 	{"vdots",          hline3,     1 },
 	{"ddots",          dline3,     0 }
@@ -500,7 +498,7 @@ static init_deco_table dummy;
 deco_struct const * search_deco(string const & name)
 {
 	map<string, deco_struct>::const_iterator p = deco_list.find(name);
-	return (p == deco_list.end()) ? 0 : &(p->second); 
+	return (p == deco_list.end()) ? 0 : &(p->second);
 }
 
 
@@ -618,7 +616,7 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 		y += h;
 
 	if (r >= 2)
-		x += w;   
+		x += w;
 
 	for (int i = 0; d[i]; ) {
 		int code = int(d[i++]);
@@ -627,7 +625,7 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 			double yy = d[i++];
 			double x2 = d[i++];
 			double y2 = d[i++];
-			if (code == 3) 
+			if (code == 3)
 				sqmt.transform(xx, yy);
 			else
 				mt.transform(xx, yy);
@@ -642,7 +640,7 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 				double xx = d[i++];
 				double yy = d[i++];
 //	     lyxerr << " " << xx << " " << yy << " ";
-				if (code == 4) 
+				if (code == 4)
 					sqmt.transform(xx, yy);
 				else
 					mt.transform(xx, yy);
