@@ -18,7 +18,9 @@
 #include "debug.h"
  
 #include <qevent.h>
- 
+
+using std::endl;
+
 QLyXKeySym::QLyXKeySym()
 	: LyXKeySym(), key_(0)
 {
