@@ -150,7 +150,7 @@ void MathCursor::pushLeft(MathInset * par)
 
 void MathCursor::pushRight(MathInset * par)
 {
-	plainLeft();
+	posLeft();
 	MathCursorPos p;
 	p.par_ = par;
 	par->idxLast(p.idx_, p.pos_);
@@ -171,7 +171,7 @@ bool MathCursor::popRight()
 	if (Cursor_.size() <= 1)
 		return false;
 	Cursor_.pop_back();
-	plainRight();
+	posRight();
 	return true;
 }
 
@@ -245,15 +245,21 @@ bool MathCursor::openable(MathInset * p, bool sel, bool useupdown) const
 }
 
 
-void MathCursor::plainLeft()
+bool MathCursor::posLeft()
 {
-	--cursor().pos_;
+	if (pos() == 0)
+		return false;
+	--pos();
+	return true;
 }
 
 
-void MathCursor::plainRight()
+bool MathCursor::posRight()
 {
-	++cursor().pos_;
+	if (pos() == size())
+		return false;
+	++pos();
+	return true;
 }
 
 
@@ -277,15 +283,8 @@ bool MathCursor::left(bool sel)
 		pushRight(p);
 		return true;
 	} 
-	if (pos()) {
-		plainLeft();
-		return true;
-	}
-	if (par()->idxLeft(idx(), pos()))
-		return true;
-	if (popLeft())
-		return true;
-	return false;
+	
+	return posLeft() || idxLeft() || popLeft();
 }
 
 
@@ -304,15 +303,8 @@ bool MathCursor::right(bool sel)
 		pushLeft(p);
 		return true;
 	}
-	if (pos() != array().size()) {
-		plainRight();
-		return true;
-	}
-	if (par()->idxRight(idx(), pos()))
-		return true;
-	if (popRight())
-		return true;
-	return false;
+
+	return posRight() || idxRight() || popRight();
 }
 
 
@@ -425,7 +417,7 @@ void MathCursor::insert(char c, MathTextCodes t)
 	}
 
 	array().insert(pos(), c, t);
-	plainRight();
+	posRight();
 }
 
 
@@ -441,7 +433,7 @@ void MathCursor::insert(MathInset * p)
 	}
 
 	array().insert(pos(), p);
-	plainRight();
+	posRight();
 }
 
 
@@ -463,13 +455,12 @@ void MathCursor::backspace()
 		return;
 	}
 
-	if (pos()) {
-		plainLeft();
+	if (posLeft()) {
 		plainErase();
 		return;
 	}
 
-	if (array().size()) {
+	if (size()) {
 		pullArg(false);
 		return;
 	}
@@ -499,7 +490,7 @@ void MathCursor::erase()
 		return;
 	}
 
-	if (pos() < array().size())
+	if (pos() < size())
 		plainErase();
 
 	dump("erase 2");
@@ -526,16 +517,8 @@ bool MathCursor::up(bool sel)
 	macroModeClose();
 	selHandle(sel);
 
-	if (selection_) {
-		int x = xarray().pos2x(pos());
-		if (cursor().idxDown()) {
-			pos() = xarray().x2pos(x);
-			return true;
-		}
-		if (popLeft()) 
-			return true;
-		return false;
-	}
+	if (selection_)
+		return idxUp() || popLeft();
 
 	// check whether we could move into an inset on the right or on the left
 	MathInset * p = nextInset();
@@ -562,14 +545,7 @@ bool MathCursor::up(bool sel)
 		}
 	}
 
-	int x = xarray().pos2x(pos());
-	if (cursor().idxUp()) {
-		pos() = xarray().x2pos(x);
-		return true;
-	}
-	if (popLeft())
-		return true;
-	return false;
+	return idxUp() || popLeft();
 }
 
 
@@ -579,16 +555,8 @@ bool MathCursor::down(bool sel)
 	macroModeClose();
 	selHandle(sel);
 
-	if (selection_) {
-		int x = xarray().pos2x(pos());
-		if (cursor().idxDown()) {
-			pos() = xarray().x2pos(x);
-			return true;
-		}
-		if (popLeft()) 
-			return true;
-		return false;
-	}
+	if (selection_) 
+		return idxDown() || popLeft();
 
 	// check whether we could move into an inset on the right or on the left
 	MathInset * p = nextInset();
@@ -617,14 +585,7 @@ bool MathCursor::down(bool sel)
 		}
 	}
 
-	int x = xarray().pos2x(pos());
-	if (cursor().idxDown()) {
-		pos() = xarray().x2pos(x);
-		return true;
-	}
-	if (popLeft())
-		return true;
-	return false;
+	return idxDown() || popLeft();
 }
 
 
@@ -662,7 +623,7 @@ void MathCursor::interpret(string const & s)
 			MathInset * b = prevInset();
 			if (b && b->isScriptable()) {
 				p = new MathScriptInset(up, !up, b->clone());
-				plainLeft();
+				posLeft();
 				plainErase();
 			} else {
 				p = new MathScriptInset(up, !up);
@@ -763,7 +724,7 @@ void MathCursor::interpret(string const & s)
 		selCut();
 		insert(p);
 		if (p->nargs()) {
-			plainLeft();
+			posLeft();
 			right();  // do not push for e.g. MathSymbolInset
 			selPaste();
 		}
@@ -788,7 +749,7 @@ void MathCursor::macroModeClose()
 {
 	if (imacro_) {
 		string name = imacro_->name();
-		plainLeft();
+		posLeft();
 		plainErase();
 		imacro_ = 0;
 		interpret(name);
@@ -922,22 +883,19 @@ void MathCursor::handleFont(MathTextCodes t)
 void MathCursor::handleAccent(string const & name)
 {
 	latexkeys const * l = in_word_set(name);
-	if (!l)
-		return;
-
-	MathDecorationInset * p = new MathDecorationInset(l);
-	if (selection_) {
-		selCut();
-		p->cell(0) = theSelection.glue();
-	}
-	insert(p);
-	pushRight(p);
+	if (l)
+		handleNest(new MathDecorationInset(l));
 }
 
 
 void MathCursor::handleDelim(int l, int r)
 {
-	MathDelimInset * p = new MathDelimInset(l, r);
+	handleNest(new MathDelimInset(l, r));
+}
+
+
+void MathCursor::handleNest(MathInset * p)
+{
 	if (selection_) {
 		selCut();
 		p->cell(0) = theSelection.glue();
@@ -1083,13 +1041,19 @@ void MathCursor::normalize() const
 
 	if (pos() < 0)
 		lyxerr << "this should not really happen - 3: " << pos() << "\n";
-	if (pos() > array().size()) {
+	if (pos() > size()) {
 		lyxerr << "this should not really happen - 4: "
-		       << pos() << " " << array().size() << "\n";
+		       << pos() << " " << size() << "\n";
 		dump("error 4");
 	}
 	it->pos() = max(pos(), 0);
-	it->pos() = min(pos(), array().size());
+	it->pos() = min(pos(), size());
+}
+
+
+int MathCursor::size() const
+{
+	return array().size();
 }
 
 
@@ -1210,7 +1174,7 @@ void MathCursor::splitCell()
 		return;
 	MathArray ar = array();
 	ar.erase(0, pos());
-	array().erase(pos(), array().size());
+	array().erase(pos(), size());
 	++idx();
 	pos() = 0;
 	array().insert(0, ar);
@@ -1358,27 +1322,35 @@ MathCursorPos MathCursor::normalAnchor() const
 }
 
 
-bool MathCursorPos::idxUp()
+bool MathCursor::idxUp()
 {
-	return par_->idxUp(idx_, pos_);
+	int x = xarray().pos2x(pos());
+	if (!par()->idxUp(idx(), pos()))
+		return false;
+	pos() = xarray().x2pos(x);
+	return true;
 }
 
 
-bool MathCursorPos::idxDown()
+bool MathCursor::idxDown()
 {
-	return par_->idxDown(idx_, pos_);
+	int x = xarray().pos2x(pos());
+	if (!par()->idxDown(idx(), pos()))
+		return false;
+	pos() = xarray().x2pos(x);
+	return true;
 }
 
 
-bool MathCursorPos::idxLeft()
+bool MathCursor::idxLeft()
 {
-	return par_->idxLeft(idx_, pos_);
+	return par()->idxLeft(idx(), pos());
 }
 
 
-bool MathCursorPos::idxRight()
+bool MathCursor::idxRight()
 {
-	return par_->idxRight(idx_, pos_);
+	return par()->idxRight(idx(), pos());
 }
 
 

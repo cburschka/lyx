@@ -50,14 +50,6 @@ struct MathCursorPos {
 	MathXArray & xcell() const;
 	/// returns xcell corresponding to this position
 	MathXArray & xcell(int idx) const;
-	/// moves position on cell to the left
-	bool idxLeft();
-	/// moves position on cell to the right
-	bool idxRight();
-	/// moves position on cell up
-	bool idxUp();
-	/// moves position on cell up
-	bool idxDown();
 };
 
 /// 
@@ -100,9 +92,21 @@ public:
 	/// Put the cursor in the last position
 	void last();
 	///
-	void plainLeft();
+	bool posLeft();
 	///
-	void plainRight();
+	bool posRight();
+	/// moves position one cell to the left
+	bool idxLeft();
+	/// moves position one cell to the right
+	bool idxRight();
+	/// moves position one cell up
+	bool idxUp();
+	/// moves position one cell down
+	bool idxDown();
+	///
+	void idxNext();
+	///
+	void idxPrev();
 	///
 	void plainErase();
 	///
@@ -123,6 +127,8 @@ public:
 	int pos() const;
 	///
 	int idx() const;
+	///
+	int size() const;
 	///
 	void interpret(string const &);
 	///
@@ -166,16 +172,14 @@ public:
 	void handleAccent(string const & name);
 	///
 	void handleDelim(int l, int r);
+	///
+	void handleNest(MathInset * p);
 	/// Splits cells and shifts right part to the next cell
 	void splitCell();
 	/// Splits line and insert new row of cell 
 	void breakLine();
 	///
 	MathTextCodes getLastCode() const;
-	///
-	void idxNext();
-	///
-	void idxPrev();
 	///
 	void pullArg(bool goright);
 	///
