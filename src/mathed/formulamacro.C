@@ -25,6 +25,8 @@
 #include "math_cursor.h"
 #include "math_parser.h"
 #include "math_macro.h"
+#include "math_macrotable.h"
+#include "math_macrotemplate.h"
 #include "lyx_main.h"
 #include "BufferView.h"
 #include "gettext.h"

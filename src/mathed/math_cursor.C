@@ -25,6 +25,7 @@
 #include "math_parser.h"
 #include "math_cursor.h"
 #include "math_macro.h"
+#include "math_macrotable.h"
 #include "math_root.h"
 #include "support/lstrings.h"
 #include "debug.h"

@@ -1,3 +1,23 @@
+2001-02-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* math_parser.C: include macrotable and macrotemplate
+
+	* math_macrotemplate.[Ch]: new files
+
+	* math_macrotable.[Ch]: new files
+
+	* math_macroarg.[Ch]: new files
+
+	* math_macro.C: move stuff to the new files.
+
+	* math_cursor.C: include math_macrotable.h
+
+	* macro_support.[Ch]: new files
+
+	* formulamacro.C: add more includes
+
+	* Makefile.am (libmathed_la_SOURCES): add new files.
+
 2001-02-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Makefile.am (libmathed_la_SOURCES): remove duplicate

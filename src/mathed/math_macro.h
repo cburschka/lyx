@@ -33,232 +33,73 @@ class MathMacroTemplate;
 class MathMacro : public MathParInset
 {
 public:
-    /// A macro can only be builded from an existing template
-    explicit
-    MathMacro(MathMacroTemplate *);
-    /// or from another macro.
-    explicit
-    MathMacro(MathMacro *);
-    ///
-    ~MathMacro();
-    ///
-    void draw(Painter &, int, int);
-    ///
-    void Metrics();
-    ///
-    MathedInset * Clone();
-    ///
-    void Write(std::ostream &, bool fragile);
-    ///
-    bool setArgumentIdx(int);
-    ///
-    int getArgumentIdx() const;
-    ///
-    int getMaxArgumentIdx() const;
-    ///
-    int GetColumns() const;
-    ///
-    void GetXY(int &, int &) const;
-    ///
-    void SetFocus(int, int);
-    ///
-    MathedArray * GetData();
-    ///
-    MathedRowSt * getRowSt() const { return args_[idx].row; }
-    ///
-    void SetData(MathedArray *);
-    ///
-    MathedTextCodes getTCode() const { return tcode; }
-    ///
-    bool Permit(short) const;
+	/// A macro can only be builded from an existing template
+	explicit
+	MathMacro(MathMacroTemplate *);
+	/// or from another macro.
+	explicit
+	MathMacro(MathMacro *);
+	///
+	~MathMacro();
+	///
+	void draw(Painter &, int, int);
+	///
+	void Metrics();
+	///
+	MathedInset * Clone();
+	///
+	void Write(std::ostream &, bool fragile);
+	///
+	bool setArgumentIdx(int);
+	///
+	int getArgumentIdx() const;
+	///
+	int getMaxArgumentIdx() const;
+	///
+	int GetColumns() const;
+	///
+	void GetXY(int &, int &) const;
+	///
+	void SetFocus(int, int);
+	///
+	MathedArray * GetData();
+	///
+	MathedRowSt * getRowSt() const;
+	///
+	void SetData(MathedArray *);
+	///
+	MathedTextCodes getTCode() const;
+	///
+	bool Permit(short) const;
     
 private:
-    ///
-    MathMacroTemplate * tmplate;
-    ///
-    struct MacroArgumentBase {
-	/// Position of the macro
-	int x, y;
 	///
-	MathedRowSt * row;
+	MathMacroTemplate * tmplate;
 	///
-	MathedArray * array;
-	///
-	MacroArgumentBase() { x = y = 0;  array = 0; row = 0; }
-    };
-    std::vector<MacroArgumentBase> args_;
-    ///
-    int idx;
-    ///
-    int nargs;
-    ///
-    MathedTextCodes tcode;
-    ///
-    friend class MathMacroTemplate;
-};
-
-
-/// An argument
-class MathMacroArgument: public MathParInset {
-public:
-    ///
-    MathMacroArgument() {
-	    expnd_mode = false;
-	    number = 1;
-	    SetType(LM_OT_MACRO_ARG);
-    }
-    ///
-    explicit
-    MathMacroArgument(int);
-    ///
-    ~MathMacroArgument() { lyxerr << "help, destroyme!" << std::endl; }
-    ///
-    MathedInset * Clone() { return this; }
-    ///
-    void Metrics();
-    ///
-    void draw(Painter &, int x, int baseline);
-    ///
-    void Write(std::ostream &, bool fragile);
-    ///
-    void setNumber(int n) { number = n; }
-    /// Is expanded or not
-    void setExpand(bool e) { expnd_mode = e; }
-    /// Is expanded or not
-    bool getExpand() const { return expnd_mode; }
-private:
-    ///
-    bool expnd_mode;
-    ///
-    int number;
-};
-
-
-/// This class contains the macro definition
-class MathMacroTemplate: public MathParInset {
-public:
-    /// A template constructor needs all the data
-    explicit
-    MathMacroTemplate(string const &, int na = 0, int f = 0);
-    ///
-    ~MathMacroTemplate();
-    ///
-    void draw(Painter &, int, int);
-    ///
-    void Metrics();
-    ///
-    void WriteDef(std::ostream &, bool fragile);
-    /// useful for special insets
-    void  setTCode(MathedTextCodes t) { tcode = t; }
-    ///
-    MathedTextCodes getTCode() const { return tcode; }
-    /// 
-    void setArgument(MathedArray *, int i= 0);
-    /// Number of arguments
-    int getNoArgs() const { return nargs; }
-    ///
-    void GetMacroXY(int, int &, int &) const;
-    ///
-    MathParInset * getMacroPar(int) const;
-    ///
-    void SetMacroFocus(int &, int, int);
-    ///
-    void setEditMode(bool);
-
-    /// Replace the appropriate arguments with a specific macro's data
-    void update(MathMacro * m = 0);
-      
-private:
-    ///
-    short flags;
-    ///
-    MathedTextCodes tcode;
-    ///
-    std::vector<MathMacroArgument> args_;
-    ///
-    int nargs;
-    ///
-    friend class MathMacro;
-};
-     
-
-///
-typedef MathMacro * MathMacroP;
-///
-typedef MathMacroTemplate * MathMacroTemplateP;
-
-///
-class MathMacroTable {
-public:
-    ///
-    void addTemplate(MathMacroTemplate *);
-    ///
-    MathMacro * getMacro(string const &) const;
-    ///
-    MathMacroTemplate * getTemplate(string const &) const;
-    ///
-    void builtinMacros();
-    ///
-    static MathMacroTable mathMTable;
-    ///
-    static bool built;
-    
-private:
-    ///
-    typedef std::vector<MathMacroTemplateP> table_type;
+	struct MacroArgumentBase {
+		/// Position of the macro
+		int x, y;
 		///
-    typedef table_type::size_type size_type;
-    ///
-    table_type macro_table;
+		MathedRowSt * row;
+		///
+		MathedArray * array;
+		///
+		MacroArgumentBase() { x = y = 0;  array = 0; row = 0; }
+	};
+	std::vector<MacroArgumentBase> args_;
+	///
+	int idx;
+	///
+	int nargs;
+	///
+	MathedTextCodes tcode;
+	///
+	friend class MathMacroTemplate;
 };
 
-
-
-/*-----------------------  inlines  -------------------------*/
-
-inline
-bool MathMacro::setArgumentIdx(int i)
-{
-    if (i >= 0 && i < nargs) {
-	idx = i;
-	return true;
-    } else
-      return false;
-}
-
-inline
-int MathMacro::getArgumentIdx() const 
-{ 
-    return idx; 
-}
-
-inline
-int MathMacro::getMaxArgumentIdx() const 
-{ 
-    return nargs - 1; 
-} 
-
-
-inline
-MathedArray * MathMacro::GetData() 
-{ 
-    return args_[idx].array; 
-} 
-
-
-inline
-void MathMacro::SetData(MathedArray * a)
-{
-   args_[idx].array = a;
-}
-
-
-inline 
-MathMacro * MathMacroTable::getMacro(string const & name) const
-{
-	MathMacroTemplate * mt = getTemplate(name);
-	return (mt) ? new MathMacro(mt): 0;
-}
-
+///
+//typedef MathMacro * MathMacroP;
+///
+//typedef MathMacroTemplate * MathMacroTemplateP;
 
 #endif

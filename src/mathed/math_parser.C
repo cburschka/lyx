@@ -29,6 +29,8 @@
 #include "math_iter.h"
 #include "math_inset.h"
 #include "math_macro.h"
+#include "math_macrotable.h"
+#include "math_macrotemplate.h"
 #include "math_root.h"
 #include "math_matrixinset.h"
 #include "math_accentinset.h"

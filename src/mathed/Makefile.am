@@ -14,6 +14,8 @@ libmathed_la_SOURCES = \
 	formula.h \
 	formulamacro.C \
 	formulamacro.h \
+	macro_support.C \
+	macro_support.h \
 	math_sqrtinset.C \
 	math_sqrtinset.h \
 	math_accentinset.C \
@@ -43,6 +45,12 @@ libmathed_la_SOURCES = \
 	math_iter.h \
 	math_macro.C \
 	math_macro.h \
+	math_macroarg.C \
+	math_macroarg.h \
+	math_macrotemplate.C \
+	math_macrotemplate.h \
+	math_macrotable.C \
+	math_macrotable.h \
 	math_matrixinset.C \
 	math_matrixinset.h \
 	math_panel.C \
