@@ -77,7 +77,7 @@ QPainter & QLPainter::setPen(LColor::color c,
  
 	switch (ls) {
 		case line_solid: pen.setStyle(QPen::SolidLine); break;
-		case line_onoffdash: pen.setStyle(QPen::DashLine); break;
+		case line_onoffdash: pen.setStyle(QPen::DotLine); break;
 	}
  
 	switch (lw) {
