@@ -1,3 +1,7 @@
+2003-03-25  Angus Leeming  <leeming@lyx.org>
+
+	* xformsImage.C (clip): cure compiler warnings.
+
 2003-03-24  Angus Leeming  <leeming@lyx.org>
 
 	* xforms_resize.C (get_scaling_factor): "cure" float -> int warnings.
