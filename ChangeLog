@@ -1,3 +1,12 @@
+1999-11-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/Makefile.am (lyx_DEPENDENCIES): give the explicit object
+	file name in insets and mathed directories (otherwise the
+	dependency is not taken in account under cygwin).
+
+	* src/text2.C (InsertString[AB]): make sure that we do not try to
+	read characters past the string length.
+
 1999-11-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/doc/LaTeXConfig.lyx.in, 

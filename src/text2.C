@@ -2433,8 +2433,9 @@ void LyXText::InsertStringA(LyXParagraph::TextContainer const & text)
 
 
 /* needed to insert the selection */
-void LyXText::InsertStringA(char const * str)
+void LyXText::InsertStringA(char const * s)
 {
+	string str(s);
 	LyXParagraph * par = cursor.par;
 	LyXParagraph::size_type pos = cursor.pos;
 	LyXParagraph::size_type a = 0;
@@ -2449,10 +2450,11 @@ void LyXText::InsertStringA(char const * str)
 	ClearSelection();
    
 	/* insert the string, don't insert doublespace */ 
-	int i = 0;
-	while (str[i]) {
-		if (str[i]!= '\n') {
-			if (str[i] == ' ' && (str[i+1]!= ' ')
+	string::size_type i = 0;
+	while (i < str.length()) {
+		if (str[i] != '\n') {
+			if (str[i] == ' ' 
+			    && i+1<str.length() && str[i+1]!= ' '
 			    && pos && par->GetChar(pos-1)!= ' ') {
 				par->InsertChar(pos,' ');
 				pos++;
@@ -2490,7 +2492,7 @@ void LyXText::InsertStringA(char const * str)
 			}
 		} else {
                         if (par->table) {
-                                if (!str[i+1]) {
+                                if (i+1>=str.length()) {
                                         pos++;
                                         break;
                                 }
@@ -2550,23 +2552,24 @@ void LyXText::InsertStringB(char const * s)
 {
 	string str(s);
 	LyXParagraph * par = cursor.par;
-	int i = 1;
-	while (str[i]) {
+	string::size_type i = 1;
+	while (i < str.length()) {
 		if (str[i] == '\t' && !par->table)
 			str[i] = ' ';
-		if (str[i] == ' ' && str[i + 1] == ' ')
+		if (str[i] == ' ' && i+1 < str.length() && str[i + 1] == ' ')
 			str[i] = 13;
-		if (str[i] == '\n' && str[i + 1] && !par->table){
+		if (str[i] == '\n' && i+1 < str.length() && !par->table){
 			if (str[i + 1] != '\n') {
 				if (str[i - 1] != ' ')
 					str[i] = ' ';
 				else
 					str[i] = 13;
 			}
-			while (str[i + 1] && (str[i + 1] == ' '
-					       || str[i + 1] == '\t'
-					       || str[i + 1] == '\n'
-					       || str[i + 1] == 13)) {
+			while (i+1 < str.length() 
+			       && (str[i + 1] == ' ' 
+				   || str[i + 1] == '\t'
+				   || str[i + 1] == '\n' 
+				   || str[i + 1] == 13)) {
 				str[i + 1] = 13;
 				++i;
 			}

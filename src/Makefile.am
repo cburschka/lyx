@@ -3,9 +3,8 @@ SUBDIRS = mathed insets support
 DISTCLEANFILES = libintl.h config.h
 MAINTAINERCLEANFILES = Makefile.in config.h.in
 bin_PROGRAMS = lyx
-lyx_LDADD = mathed/mathed.o insets/insets.o support/libsupport.a \
-	@INTLLIBS@ $(LYX_LIBS)
-lyx_DEPENDENCIES = mathed insets support/libsupport.a
+lyx_DEPENDENCIES = mathed/mathed.o insets/insets.o support/libsupport.a
+lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(LYX_LIBS)
 EXTRA_DIST = config.h.in stamp-h.in cheaders
 ETAGS_ARGS = --c++
 LYX_DIR = $(datadir)/$(PACKAGE)
