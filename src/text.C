@@ -497,7 +497,8 @@ int LyXText::leftMargin(BufferView * bview, Row const * row) const
 		break;
 	case MARGIN_MANUAL:
 		x += font_metrics::signedWidth(layout->labelindent, labelfont);
-		if (row->pos() >= row->par()->beginningOfMainBody()) {
+		// The width of an empty par, even with manual label, should be 0
+		if (!row->par()->empty() && row->pos() >= row->par()->beginningOfMainBody()) {
 			if (!row->par()->getLabelWidthString().empty()) {
 				x += font_metrics::width(row->par()->getLabelWidthString(),
 					       labelfont);
@@ -1770,8 +1771,17 @@ void LyXText::prepareToPrint(BufferView * bview,
 
 	if (layout->margintype == MARGIN_MANUAL
 	    && layout->labeltype == LABEL_MANUAL) {
-		// one more since labels are left aligned
-		nlh = row->numberOfLabelHfills() + 1;
+		/// We might have real hfills in the label part
+		nlh = row->numberOfLabelHfills();
+
+		// A manual label par (e.g. List) has an auto-hfill
+		// between the label text and the "main body" of the
+		// paragraph too.
+		// But we don't want to do this auto hfill if the par
+		// is empty.
+		if (row->par()->size())
+			++nlh;
+			
 		if (nlh && !row->par()->getLabelWidthString().empty()) {
 			fill_label_hfill = labelFill(*bview, *row) / nlh;
 		}
