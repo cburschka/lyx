@@ -1,0 +1,15 @@
+#
+# latvian.kmap
+#
+# this is for Latvian, with US Keyboard.
+# 2000 By Janne Pänkälä (epa@iki.fi)
+#
+# Characters that are (afaik ;/ ) needed are
+# g k n l with , underneath
+# c s z   with v above
+# a e i u with - above
+
+\kmod ^ caron cszCSZ
+\kmod - macron aeiuAEIU
+\kmod \, cedilla gknlGKNL
+
