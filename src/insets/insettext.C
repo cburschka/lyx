@@ -1223,20 +1223,10 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 				}
 				break;
 			case FINISHED_DOWN:
-			{
-				LyXText *lt = getLyXText(bv);
-				if (lt->cursor.irow()->next()) {
-					lt->setCursorFromCoordinates(
-						bv, lt->cursor.ix() + inset_x,
-						lt->cursor.iy() -
-						lt->cursor.irow()->baseline() +
-						lt->cursor.irow()->height() + 1);
-					lt->cursor.x_fix(lt->cursor.x());
+				if ((result = moveDown(bv)) >= FINISHED) {
 					updateLocal(bv, CURSOR, false);
-				} else {
 					bv->unlockInset(this);
 				}
-			}
 				break;
 			default:
 				result = DISPATCHED;
