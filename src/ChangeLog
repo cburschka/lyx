@@ -1,5 +1,10 @@
 2003-07-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* toc.[Ch]: put namespace toc inside namespace lyx
+
+	* MenuBackend.C (expandToc2): adjust for lyx::toc
+	(expandToc): ditto
+
 	* lyxfunc.C (dispatch): adjust for lyx::find
 
 	* lyxfind.[hC]: get rid of namespace lyxfind introduce namespace

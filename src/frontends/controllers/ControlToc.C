@@ -23,7 +23,7 @@ ControlToc::ControlToc(Dialog & d)
 {}
 
 
-void ControlToc::goTo(toc::TocItem const & item)
+void ControlToc::goTo(lyx::toc::TocItem const & item)
 {
 	item.goTo(kernel().lyxview());
 }
@@ -31,21 +31,21 @@ void ControlToc::goTo(toc::TocItem const & item)
 
 vector<string> const ControlToc::getTypes() const
 {
-	return toc::getTypes(kernel().buffer());
+	return lyx::toc::getTypes(kernel().buffer());
 }
 
 
-toc::Toc const ControlToc::getContents(string const & type) const
+lyx::toc::Toc const ControlToc::getContents(string const & type) const
 {
-	toc::Toc empty_list;
+	lyx::toc::Toc empty_list;
 
 	// This shouldn't be possible...
 	if (!kernel().isBufferAvailable()) {
 		return empty_list;
 	}
 
-	toc::TocList tmp = toc::getTocList(kernel().buffer());
-	toc::TocList::iterator it = tmp.find(type);
+	lyx::toc::TocList tmp = lyx::toc::getTocList(kernel().buffer());
+	lyx::toc::TocList::iterator it = tmp.find(type);
 	if (it == tmp.end()) {
 		return empty_list;
 	}

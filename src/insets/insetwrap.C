@@ -234,7 +234,7 @@ bool InsetWrap::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetWrap::addToToc(toc::TocList & toclist, Buffer const * buf) const
+void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const * buf) const
 {
 	// Now find the caption in the float...
 	ParagraphList::iterator tmp = inset.paragraphs.begin();
@@ -246,7 +246,7 @@ void InsetWrap::addToToc(toc::TocList & toclist, Buffer const * buf) const
 			string const str =
 				tostr(toclist[name].size() + 1)
 				+ ". " + tmp->asString(buf, false);
-			toc::TocItem const item(tmp->id(), 0 , str);
+			lyx::toc::TocItem const item(tmp->id(), 0 , str);
 			toclist[name].push_back(item);
 		}
 	}

@@ -400,7 +400,7 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 }
 
 
-void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
+void InsetFloat::addToToc(lyx::toc::TocList & toclist, Buffer const * buf) const
 {
 	ParIterator pit(inset.paragraphs.begin(), inset.paragraphs);
 	ParIterator end(inset.paragraphs.end(), inset.paragraphs);
@@ -412,7 +412,7 @@ void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
 			string const str =
 				tostr(toclist[name].size() + 1)
 				+ ". " + pit->asString(buf, false);
-			toc::TocItem const item(pit->id(), 0 , str);
+			lyx::toc::TocItem const item(pit->id(), 0 , str);
 			toclist[name].push_back(item);
 		}
 	}

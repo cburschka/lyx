@@ -30,8 +30,8 @@ class Paragraph;
 
 /** Nice functions and objects to handle TOCs
  */
-namespace toc
-{
+namespace lyx {
+namespace toc {
 
 ///
 struct TocItem {
@@ -85,5 +85,6 @@ bool operator!=(TocItem const & a, TocItem const & b)
 
 
 } // namespace toc
+} // namespace lyx
 
 #endif // CONTROLTOC_H

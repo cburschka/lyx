@@ -74,7 +74,7 @@ public:
 	///
 	void wide(bool w, BufferParams const &);
 	///
-	void addToToc(toc::TocList &, Buffer const *) const;
+	void addToToc(lyx::toc::TocList &, Buffer const *) const;
 	///
 	bool  showInsetDialog(BufferView *) const;
 	///

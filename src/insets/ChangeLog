@@ -1,3 +1,11 @@
+2003-07-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetwrap.C (addToToc): adjust for lyx::toc
+
+	* insetfloatlist.C (ascii): adjust for lyx::toc
+
+	* insetfloat.C (addToToc): adjust for lyx::toc
+
 2003-07-27  José Matos  <jamatos@fep.up.pt>
 
 	* insetnote.h (linuxdoc,docbook): update support.

@@ -34,8 +34,8 @@ using std::max;
 using std::endl;
 using std::ostream;
 
-namespace toc
-{
+namespace lyx {
+namespace toc {
 
 string const TocItem::asString() const
 {
@@ -104,6 +104,7 @@ TocList const getTocList(Buffer const * buf)
 			} else if (it->inset->lyxCode() == InsetOld::WRAP_CODE) {
 				InsetWrap * il =
 					static_cast<InsetWrap*>(it->inset);
+
 				il->addToToc(toclist, buf);
 			}
 		}
@@ -143,3 +144,4 @@ void asciiTocList(string const & type, Buffer const * buffer, ostream & os)
 
 
 } // namespace toc
+} // namespace lyx

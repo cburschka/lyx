@@ -143,7 +143,7 @@ int InsetFloatList::ascii(Buffer const * buffer, ostream & os, int) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
-	toc::asciiTocList(getCmdName(), buffer, os);
+	lyx::toc::asciiTocList(getCmdName(), buffer, os);
 
 	os << "\n";
 	return 0;

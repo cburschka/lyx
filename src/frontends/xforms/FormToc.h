@@ -41,7 +41,7 @@ private:
 	void updateContents();
 
 	///
-	toc::Toc toc_;
+	lyx::toc::Toc toc_;
 };
 
 #endif // FORMTOC_H

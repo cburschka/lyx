@@ -70,7 +70,7 @@ int InsetTOC::ascii(Buffer const * buffer, ostream & os, int) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
-	toc::asciiTocList(toc::getType(getCmdName()), buffer, os);
+	lyx::toc::asciiTocList(lyx::toc::getType(getCmdName()), buffer, os);
 
 	os << "\n";
 	return 0;

@@ -25,13 +25,13 @@ public:
 	ControlToc(Dialog &);
 
 	/// Goto this paragraph id
-	void goTo(toc::TocItem const &);
+	void goTo(lyx::toc::TocItem const &);
 
 	/// Return the list of types available
 	std::vector<string> const getTypes() const;
 
 	/// Given a type, returns the contents
-	toc::Toc const getContents(string const & type) const;
+	lyx::toc::Toc const getContents(string const & type) const;
 };
 
 #endif // CONTROLTOC_H

@@ -63,7 +63,7 @@ public:
 	///
 	bool insetAllowed(InsetOld::Code) const;
 	///
-	void addToToc(toc::TocList &, Buffer const *) const;
+	void addToToc(lyx::toc::TocList &, Buffer const *) const;
 	///
 	bool  showInsetDialog(BufferView *) const;
 	///

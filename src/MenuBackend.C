@@ -521,12 +521,14 @@ void expandFloatInsert(Menu & tomenu, LyXView const * view)
 
 Menu::size_type const max_number_of_items = 25;
 
-void expandToc2(Menu & tomenu, toc::Toc const & toc_list,
-		toc::Toc::size_type from, toc::Toc::size_type to, int depth)
+void expandToc2(Menu & tomenu,
+		lyx::toc::Toc const & toc_list,
+		lyx::toc::Toc::size_type from,
+		lyx::toc::Toc::size_type to, int depth)
 {
 	int shortcut_count = 0;
 	if (to - from <= max_number_of_items) {
-		for (toc::Toc::size_type i = from; i < to; ++i) {
+		for (lyx::toc::Toc::size_type i = from; i < to; ++i) {
 			int const action = toc_list[i].action();
 			string label(4 * max(0, toc_list[i].depth - depth),' ');
 			label += limit_string_length(toc_list[i].str);
@@ -537,9 +539,9 @@ void expandToc2(Menu & tomenu, toc::Toc const & toc_list,
 			tomenu.add(MenuItem(MenuItem::Command, label, action));
 		}
 	} else {
-		toc::Toc::size_type pos = from;
+		lyx::toc::Toc::size_type pos = from;
 		while (pos < to) {
-			toc::Toc::size_type new_pos = pos + 1;
+			lyx::toc::Toc::size_type new_pos = pos + 1;
 			while (new_pos < to &&
 			       toc_list[new_pos].depth > depth)
 				++new_pos;
@@ -581,9 +583,9 @@ void expandToc(Menu & tomenu, LyXView const * view)
 		return;
 	}
 
-	toc::TocList toc_list = toc::getTocList(view->buffer());
-	toc::TocList::const_iterator cit = toc_list.begin();
-	toc::TocList::const_iterator end = toc_list.end();
+	lyx::toc::TocList toc_list = lyx::toc::getTocList(view->buffer());
+	lyx::toc::TocList::const_iterator cit = toc_list.begin();
+	lyx::toc::TocList::const_iterator end = toc_list.end();
 	for (; cit != end; ++cit) {
 		// Handle this later
 		if (cit->first == "TOC")
@@ -591,8 +593,8 @@ void expandToc(Menu & tomenu, LyXView const * view)
 
 		// All the rest is for floats
 		Menu * menu = new Menu;
-		toc::Toc::const_iterator ccit = cit->second.begin();
-		toc::Toc::const_iterator eend = cit->second.end();
+		lyx::toc::Toc::const_iterator ccit = cit->second.begin();
+		lyx::toc::Toc::const_iterator eend = cit->second.end();
 		for (; ccit != eend; ++ccit) {
 			string const label = limit_string_length(ccit->str);
 			menu->add(MenuItem(MenuItem::Command,

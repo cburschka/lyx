@@ -1,14 +1,19 @@
+2003-07-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* FormToc.C (updateType): adjust for lyx::toc
+	(updateContents): ditto
+
 2003-07-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* XPainter.C: include lyxfont.h
 
-	* FormParagraph.C: 
+	* FormParagraph.C:
 	* FormGraphics.C:
 	* FormDocument.C: adapt PAPER_* enums
 
 2003-07-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* XFormsMenubar.h: 
+	* XFormsMenubar.h:
 	* XFormsMenubar.C: derives from Menubar (replaces Menubar::Pimpl)
 
 	* Menubar_pimpl.C:
@@ -18,7 +23,7 @@
 
 2003-07-25  Jean-Marc Lasgouttes <lasgouttes@lyx.org>
 
-	* XFormsToolbar.h: 
+	* XFormsToolbar.h:
 	* XFormsToolbar.C: derives from Toolbar (replaces Toolbar::Pimpl)
 
 	* Toolbar_pimpl.C:

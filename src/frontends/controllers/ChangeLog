@@ -1,5 +1,9 @@
 2003-07-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* ControlToc.C (goTo): adjust for lyx::toc
+	(getTypes): ditto
+	(getContents): ditto
+
 	* ControlThesaurus.C (replace): adjust for lyx::find
 
 	* ControlSearch.C (find): adjust for lyx::find
