@@ -16,10 +16,6 @@
 #endif
 
 #include "WorkArea.h"
-#ifndef USE_FL_SCROLLBAR
-#include "up.xpm"
-#include "down.xpm"
-#endif
 #include "debug.h"
 #include "support/lstrings.h"
 #include "BufferView.h"
@@ -40,17 +36,6 @@ void waitForX()
 
 extern "C" {
 // Just a bunch of C wrappers around static members of WorkArea
-#ifndef USE_FL_SCROLLBAR
-	void C_WorkArea_up_cb(FL_OBJECT * ob, long buf)
-        {
-		WorkArea::up_cb(ob, buf);
-        }
-
-	void C_WorkArea_down_cb(FL_OBJECT * ob, long buf)
-        {
-		WorkArea::down_cb(ob, buf);
-        }
-#endif
 	void C_WorkArea_scroll_cb(FL_OBJECT * ob, long buf)
         {
 		WorkArea::scroll_cb(ob, buf);
@@ -106,82 +91,14 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	// THE SCROLLBAR
 	//
 
-#ifdef USE_FL_SCROLLBAR
 	scrollbar = obj = fl_add_scrollbar(FL_VERT_SCROLLBAR,
 					   xpos + width - 15,
 					   ypos, 17, height, "");
 	fl_set_object_boxtype(obj, FL_UP_BOX);
-	//fl_set_object_color(obj, FL_MCOL, FL_BLUE);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthEastGravity, SouthEastGravity);
 	obj->u_vdata = this;
 	fl_set_object_callback(obj, C_WorkArea_scroll_cb, 0);
-#else
-	// up - scrollbar button
-	fl_set_border_width(-1);
-
-	if (lyxerr.debugging())
-		lyxerr << "\tup button: +"
-		       << xpos + width - 15 << '+' << ypos << ' '
-		       << 15 << 'x' << 15 << endl;
-	button_up = obj = fl_add_pixmapbutton(FL_TOUCH_BUTTON,
-					      xpos + width - 15,
-					      ypos,
-					      15, 15, "");
-	fl_set_object_boxtype(obj,FL_UP_BOX);
-	fl_set_object_color(obj,FL_MCOL,FL_BLUE);
-	fl_set_object_resize(obj, FL_RESIZE_ALL);
-	fl_set_object_gravity(obj,NorthEastGravity, NorthEastGravity);
-	obj->u_vdata = this;
-	fl_set_object_callback(obj,C_WorkArea_up_cb, 0);
-	fl_set_pixmapbutton_data(obj, const_cast<char**>(up_xpm));
-
-	// Remove the blue feedback rectangle
-	fl_set_pixmapbutton_focus_outline(obj,0);
-
-	// the scrollbar slider
-	fl_set_border_width(-bw);
-
-	if (lyxerr.debugging())
-		lyxerr << "\tscrollbar slider: +"
-		       << xpos + width - 15 << '+' << ypos + 15 << ' '
-		       << 15 << 'x' << height - 30 << endl;
-	scrollbar = obj = fl_add_slider(FL_VERT_SLIDER,
-					xpos + width - 15,
-					ypos + 15,
-					15, height - 30, "");
-	fl_set_object_color(obj,FL_COL1,FL_MCOL);
-	fl_set_object_boxtype(obj, FL_UP_BOX);
-	fl_set_object_resize(obj, FL_RESIZE_ALL);
-	fl_set_object_gravity(obj, NorthEastGravity, SouthEastGravity);
-	obj->u_vdata = this;
-	fl_set_object_callback(obj, C_WorkArea_scroll_cb, 0);
-	fl_set_slider_precision(obj, 0);
-	
-	// down - scrollbar button
-	fl_set_border_width(-1);
-
-	if (lyxerr.debugging())
-		lyxerr << "\tdown button: +"
-		       << xpos + width - 15 << '+'
-		       << ypos + height - 15 << ' '
-		       << 15 << 'x' << 15 << endl;
-	button_down = obj = fl_add_pixmapbutton(FL_TOUCH_BUTTON,
-						xpos + width - 15,
-						ypos + height - 15,
-						15, 15, "");
-	fl_set_object_boxtype(obj,FL_UP_BOX);
-	fl_set_object_color(obj,FL_MCOL,FL_BLUE);
-	fl_set_object_resize(obj, FL_RESIZE_ALL);
-	fl_set_object_gravity(obj, SouthEastGravity, SouthEastGravity);
-	obj->u_vdata = this;
-	fl_set_object_callback(obj, C_WorkArea_down_cb, 0);
-	fl_set_pixmapbutton_data(obj, const_cast<char**>(down_xpm));
-
-	fl_set_border_width(-bw);
-	// Remove the blue feedback rectangle
-	fl_set_pixmapbutton_focus_outline(obj,0);
-#endif
 
 	///
 	/// The free object
@@ -189,9 +106,6 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 	// Create the workarea pixmap
 	createPixmap(width - 15 - 2 * bw, height - 2 * bw);
 
-	// setup the painter
-	//painter_.setDisplay(fl_display);
-	
 	// We add this object as late as possible to avoit problems
 	// with drawing.
 	if (lyxerr.debugging())
@@ -256,23 +170,9 @@ void WorkArea::resize(int xpos, int ypos, int width, int height)
 	//
 	// THE SCROLLBAR
 	//
-#ifdef USE_FL_SCROLLBAR
 	fl_set_object_geometry(scrollbar, xpos + width - 15,
 			       ypos, 17, height);
-#else
-	// up - scrollbar button
-	fl_set_object_geometry(button_up, xpos + width - 15,
-			       ypos,
-			       15, 15);
-	// the scrollbar slider
-	fl_set_object_geometry(scrollbar, xpos + width - 15,
-			       ypos + 15,
-			       15, height - 30);
-	// down - scrollbar button
-	fl_set_object_geometry(button_down, xpos + width - 15,
-			       ypos + height - 15,
-			       15, 15);
-#endif
+
 	// Create the workarea pixmap
 	createPixmap(width - 15 - 2 * bw, height - 2 * bw);
 
@@ -330,72 +230,31 @@ void WorkArea::setFocus() const
 
 void WorkArea::setScrollbar(double pos, double length_fraction) const
 {
-#ifdef USE_FL_SCROLLBAR
 	fl_set_scrollbar_value(scrollbar, pos);
 	fl_set_scrollbar_size(scrollbar, scrollbar->h * length_fraction);
-#else
-	fl_set_slider_value(scrollbar, pos);
-	fl_set_slider_size(scrollbar, scrollbar->h * length_fraction);
-#endif
 }
 
 
 void WorkArea::setScrollbarBounds(double l1, double l2) const
 {
-#ifdef USE_FL_SCROLLBAR
 	fl_set_scrollbar_bounds(scrollbar, l1, l2);
-#else
-	fl_set_slider_bounds(scrollbar, l1, l2);
-#endif
 }
 
 
 void WorkArea::setScrollbarIncrements(double inc) const
 {
-#ifdef USE_FL_SCROLLBAR
 	fl_set_scrollbar_increment(scrollbar, work_area->h - inc, inc);
-#else
-	fl_set_slider_increment(scrollbar, work_area->h - inc, inc);
-#endif
 }
-
-#ifndef USE_FL_SCROLLBAR
-void WorkArea::up_cb(FL_OBJECT * ob, long)
-{
-	WorkArea * area = static_cast<WorkArea*>(ob->u_vdata);
-	XEvent const * ev2 = fl_last_event();
-	static long time = 0;
-	ev2 = fl_last_event();
-	if (ev2->type == ButtonPress || ev2->type == ButtonRelease) 
-		time = 0;
-	area->owner->upCB(time++, fl_get_button_numb(ob));
-}
-
-
-void WorkArea::down_cb(FL_OBJECT * ob, long)
-{
-	WorkArea * area = static_cast<WorkArea*>(ob->u_vdata);
-	XEvent const * ev2 = fl_last_event();
-	static long time = 0;
-	if (ev2->type == ButtonPress || ev2->type == ButtonRelease)
-		time = 0;
-	area->owner->downCB(time++, fl_get_button_numb(ob));
-}
-#endif
 
 
 // Callback for scrollbar slider
 void WorkArea::scroll_cb(FL_OBJECT * ob, long)
 {
 	WorkArea * area = static_cast<WorkArea*>(ob->u_vdata);
-#ifdef USE_FL_SCROLLBAR
 	// If we really want the accellerating scroll we can do that
 	// from here. IMHO that is a waste of effort since we already
 	// have other ways to move fast around in the document. (Lgb)
 	area->owner->scrollCB(fl_get_scrollbar_value(ob));
-#else
-	area->owner->scrollCB(fl_get_slider_value(ob));
-#endif
 	waitForX();
 }
 
@@ -445,11 +304,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		if (!ev || ! area->scrollbar) break;
 		if (ev->xmotion.x != x_old ||
 		    ev->xmotion.y != y_old ||
-#ifdef USE_FL_SCROLLBAR
 		    fl_get_scrollbar_value(area->scrollbar) != scrollbar_value_old
-#else
-		    fl_get_slider_value(area->scrollbar) != scrollbar_value_old
-#endif
 			) {
 			lyxerr.debug() << "Workarea event: MOUSE" << endl;
 			area->owner->workAreaMotionNotify(ev->xmotion.x - ob->x,

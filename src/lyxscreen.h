@@ -120,12 +120,6 @@ private:
 	int cursor_pixmap_w;
 	///
 	int cursor_pixmap_h;
-#if 0
-	///
-	long screen_refresh_y;
-	///
-	Row * screen_refresh_row;
-#endif
 	///
 	GC gc_copy;
 };

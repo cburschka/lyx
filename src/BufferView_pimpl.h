@@ -52,18 +52,6 @@ struct BufferView::Pimpl {
 	void updateScrollbar();
 	///
 	void scrollCB(double value);
-#if 0
-	///
-	void downCB(long time, int button);
-#endif
-#if 0
-	///
-	void scrollUpOnePage();
-#endif
-#if 0
-	///
-	void scrollDownOnePage();
-#endif
 	///
 	void create_view();
 	///

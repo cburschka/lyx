@@ -410,7 +410,7 @@ void LyXGUI::create_forms()
 	fl_addto_choice(fd_form_document->choice_spacing,
 			_(" Single | OneHalf | Double | Other "));
 
-	fl_set_counter_bounds(fd_form_document->slider_secnumdepth,-1, 5);
+	fl_set_counter_bounds(fd_form_document->slider_secnumdepth,-2, 5);
 	fl_set_counter_bounds(fd_form_document->slider_tocdepth,-1, 5);
 	fl_set_counter_step(fd_form_document->slider_secnumdepth, 1, 1);
 	fl_set_counter_step(fd_form_document->slider_tocdepth, 1, 1);

@@ -435,27 +435,6 @@ void BufferView::Pimpl::scrollCB(double value)
 }
 
 
-#if 0
-// Callback for scrollbar down button
-void BufferView::Pimpl::downCB(long time, int button)
-{
-	if (buffer_ == 0) return;
-	
-	switch (button) {
-	case 2:
-		scrollUpOnePage();
-		break;
-	case 3:
-		scrollDownOnePage();
-		break;
-	default:
-		scrollDown(time);
-		break;
-	}
-}
-#endif
-
-
 int BufferView::Pimpl::scrollUp(long time)
 {
 	if (buffer_ == 0) return 0;
@@ -512,46 +491,6 @@ int BufferView::Pimpl::scrollDown(long time)
 	bv_->scrollCB(value); 
 	return 0;
 }
-
-#if 0
-void BufferView::Pimpl::scrollUpOnePage()
-{
-	if (buffer_ == 0) return;
-	if (!screen) return;
-   
-	long y = screen->first;
-
-	if (!y) return;
-
-	Row * row = bv_->text->GetRowNearY(y);
-
-	y = y - workarea->height() + row->height;
-
-	workarea->setScrollbarValue(y);
-	
-	bv_->scrollCB(y); 
-}
-#endif
-
-#if 0
-void BufferView::Pimpl::scrollDownOnePage()
-{
-	if (buffer_ == 0) return;
-	if (!screen) return;
-   
-	long y = screen->first;
-
-	if (y > bv_->text->height - workarea->height())
-		return;
-   
-	y += workarea->height();
-	bv_->text->GetRowNearY(y);
-
-	workarea->setScrollbarValue(y);
-	
-	bv_->scrollCB(y); 
-}
-#endif
 
 
 void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)

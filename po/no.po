@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.1.5\n"
 "POT-Creation-Date: 2000-04-26 17:59+0200\n"
-"PO-Revision-Date: 2000-03-22 05:28+01:00\n"
+"PO-Revision-Date: 2000-04-26 22:15+02:00\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -250,7 +250,6 @@ msgstr "' er skrivebeskyttet."
 #. Ask if the file should be checked out for
 #. viewing/editing, if so: load it.
 #: src/bufferlist.C:469
-#, fuzzy
 msgid "Do you want to retrieve file under version control?"
 msgstr "Vil du hente in filen som er under versionskontroll?"
 
@@ -364,27 +363,24 @@ msgid ", Depth: "
 msgstr ", Dybde: "
 
 #: src/bufferview_funcs.C:257
-#, fuzzy
 msgid ", Spacing: "
-msgstr "Mellomrom"
+msgstr ", Linjeavstand: "
 
 #: src/bufferview_funcs.C:260
-#, fuzzy
 msgid "Single"
-msgstr "Enkel:|#E"
+msgstr "Enkel"
 
 #: src/bufferview_funcs.C:263
 msgid "Onehalf"
-msgstr ""
+msgstr "Halvannen"
 
 #: src/bufferview_funcs.C:266
-#, fuzzy
 msgid "Double"
-msgstr "Dobbel|#D"
+msgstr "Dobbel"
 
 #: src/bufferview_funcs.C:269
 msgid "Other ("
-msgstr ""
+msgstr "Annet ("
 
 #: src/BufferView_pimpl.C:219
 msgid "Formatting document..."
@@ -1175,9 +1171,8 @@ msgid "Ref: "
 msgstr "Ref: "
 
 #: src/insets/insettabular.C:163
-#, fuzzy
 msgid "Opened Tabular Inset"
-msgstr "Åpnet ERT inset"
+msgstr "Åpnet tabellinset"
 
 #: src/insets/insettabular.C:925 src/text.C:2199
 msgid "Multicolumns can only be horizontally."
@@ -1188,9 +1183,8 @@ msgid "Opened Text Inset"
 msgstr "Åpnet text inset"
 
 #: src/insets/insettext.C:1479
-#, fuzzy
 msgid "Cannot include more than one paragraph!"
-msgstr "En tabell celle kan ikke inkludere med enn ett avsnitt!"
+msgstr "Kan ikke inkludere mer enn ett avsnitt!"
 
 #: src/insets/insettoc.C:20 src/lyxfunc.C:838
 msgid "Table of Contents"
@@ -1980,7 +1974,7 @@ msgstr "notis ramme"
 
 #: src/LColor.C:59
 msgid "depth bar"
-msgstr ""
+msgstr "dybdemarkør"
 
 #: src/LColor.C:60
 msgid "command-inset"
@@ -2083,14 +2077,12 @@ msgid "table line"
 msgstr "tabell linje"
 
 #: src/LColor.C:86
-#, fuzzy
 msgid "tabular line"
-msgstr "tabell linje"
+msgstr "tabell-linje"
 
 #: src/LColor.C:88
-#, fuzzy
 msgid "tabularonoff line"
-msgstr "tabell linje"
+msgstr "stiplet tabell-linje"
 
 #: src/LColor.C:90
 msgid "bottom area"
@@ -2473,9 +2465,8 @@ msgid "Math mode"
 msgstr "Matte modus"
 
 #: src/LyXAction.C:296
-#, fuzzy
 msgid "Insert a new Number Inset"
-msgstr "Sett inn ny tekstinset"
+msgstr "Sett inn ny nummerinset"
 
 #: src/LyXAction.C:299
 msgid "Go one paragraph down"
@@ -2514,9 +2505,8 @@ msgid "Insert Table"
 msgstr "Sett inn tabell"
 
 #: src/LyXAction.C:344
-#, fuzzy
 msgid "Insert a new Tabular Inset"
-msgstr "Sett inn ERT"
+msgstr "Sett inn Tabell"
 
 #: src/LyXAction.C:345
 msgid "Toggle TeX style"
@@ -3215,9 +3205,8 @@ msgid "Mark on"
 msgstr "Merke på"
 
 #: src/lyxfunc.C:2020
-#, fuzzy
 msgid "Unknown spacing argument: "
-msgstr "Mangler argument"
+msgstr "Ukjent argument til linjeavstand: "
 
 #: src/lyxfunc.C:2258
 msgid "Push-toolbar needs argument > 0"
@@ -4855,15 +4844,11 @@ msgid "No Documents Open!%t"
 msgstr "Ingen dokumeter åpne!%t"
 
 #: src/menus.C:1631
-#, fuzzy
 msgid ""
 "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
 "Manual|FAQ|Table of Contents|Known Bugs|LaTeX Configuration%l|Copyright and "
 "Warranty...|Credits...|Version..."
-msgstr ""
-"Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference "
-"Manual|Known Bugs|LaTeX Configuration%l|Copyright and "
-"Warranty...|Credits...|Version..."
+msgstr "Introduction|Tutorial|User's Guide|Extended Features|Customization|Reference Manual|FAQ|Table of Contents|Known Bugs|LaTeX Configuration%l|Copyright and Warranty...|Credits...|Version..."
 
 #: src/menus.C:1645
 msgid "HM|Ii#I#i"
@@ -4890,14 +4875,12 @@ msgid "HM|Rr#R#r"
 msgstr "HM|Rr#R#r"
 
 #: src/menus.C:1651
-#, fuzzy
 msgid "HM|Ff#F#f"
-msgstr "FM|Ff#f#F"
+msgstr "HM|Ff#F#f"
 
 #: src/menus.C:1652
-#, fuzzy
 msgid "HM|aA#a#A"
-msgstr "EM|hH#h#H"
+msgstr "HM|aH#a#H"
 
 #: src/menus.C:1653
 msgid "HM|Kk#K#k"
@@ -5242,17 +5225,16 @@ msgid "unknown"
 msgstr "ukjent"
 
 #: src/table.C:995
-#, fuzzy
 msgid "Warning:"
-msgstr "Advarsel!"
+msgstr "Advarsel:"
 
 #: src/table.C:996
 msgid "Tabular format < 5 is not supported anymore\n"
-msgstr ""
+msgstr "Tabell format < 5 er ikke lenger støttet\n"
 
 #: src/table.C:997
 msgid "Get an older version of LyX (< 1.1.x) for conversion!"
-msgstr ""
+msgstr "Bruk en eldre versjon av LyX (< 1.1.x) til konvertering!"
 
 #: src/TableLayout.C:232
 msgid "Table Extra Form"
@@ -5338,48 +5320,3 @@ msgstr "Kan ikke klippe tabell."
 #: src/text.C:4517
 msgid "Float would include float!"
 msgstr "Float ville inkludert float!"
-
-#~ msgid "Error: Cannot open temporary file:"
-#~ msgstr "Kan ikke åpne temporær fil:"
-
-#~ msgid "tiny"
-#~ msgstr "bitteliten"
-
-#~ msgid "smallest"
-#~ msgstr "minst"
-
-#~ msgid "smaller"
-#~ msgstr "mindre"
-
-#~ msgid "small"
-#~ msgstr "liten"
-
-#~ msgid "normal"
-#~ msgstr "normal"
-
-#~ msgid "large"
-#~ msgstr "stor"
-
-#~ msgid "larger"
-#~ msgstr "større"
-
-#~ msgid "largest"
-#~ msgstr "størst"
-
-#~ msgid "huge"
-#~ msgstr "enorm"
-
-#~ msgid "huger"
-#~ msgstr "gigantisk"
-
-#~ msgid "increase"
-#~ msgstr "øk"
-
-#~ msgid "decrease"
-#~ msgstr "minsk"
-
-#~ msgid "Error: Could not change to directory: "
-#~ msgstr "Feil: Kunne ikke bytte til folde: "
-
-#~ msgid "Error: Dir already popped: "
-#~ msgstr "Feil: Området er allerede poppet: "

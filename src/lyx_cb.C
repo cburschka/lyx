@@ -45,6 +45,7 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "CutAndPaste.h"
+#include "TextCache.h"
 
 using std::ifstream;
 using std::copy;
@@ -3033,10 +3034,17 @@ extern "C" void ScreenApplyCB(FL_OBJECT *, long)
 	lyxrc.font_norm = fl_get_input(fd_form_screen->input_font_norm);
 	lyxrc.zoom = atoi(fl_get_input(fd_form_screen->intinput_size));
 	fontloader.update();
-   
+
+	// Of course we should only to the resize and the textcahce.clear
+	// if values really changed...but not very important right now. (Lgb)
+	
 	// All buffers will need resize
 	bufferlist.resize();
-
+	// We also need to empty the textcache so that
+	// the buffer will be formatted correctly after
+	// a zoom change.
+	textcache.clear();
+	
 	current_view->owner()->getMiniBuffer()->Set(_("Screen options set"));
 }
 

@@ -1,3 +1,11 @@
+2000-04-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyx_gui.C (create_forms): small oneliner from Garst to have
+	unnumbered parts.
+
+	* src/lyx_cb.C (ScreenApplyCB): clear the textcache so that the
+	documents will be reformatted upon reentry.
+
 2000-04-27  Juergen Vigna  <jug@sad.it>
 
 	* src/CutAndPaste.C (pasteSelection): last paragraph was not returned

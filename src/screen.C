@@ -52,9 +52,6 @@ LyXScreen::LyXScreen(WorkArea & o, LyXText * text_ptr)
    
 	/* the cursor isnt yet visible */ 
 	cursor_visible = false;
-#if 0
-	screen_refresh_y = -1;
-#endif
 	cursor_pixmap = 0;
 	cursor_pixmap_x = 0;
 	cursor_pixmap_y = 0;
@@ -69,9 +66,6 @@ LyXScreen::LyXScreen(WorkArea & o, LyXText * text_ptr)
 void LyXScreen::Redraw()
 {
 	DrawFromTo(0, owner.height());
-#if 0
-	screen_refresh_y = -1;
-#endif
 	expose(0, 0, owner.workWidth(), owner.height());
 	if (cursor_visible) {
 		cursor_visible = false;
