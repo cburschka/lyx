@@ -210,7 +210,7 @@ if test x$GXX = xyes; then
       2.95.2)  CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
       2.95.*)  CXXFLAGS="$lyx_opt -fno-exceptions";;
       2.96*)  CXXFLAGS="$lyx_opt -fno-exceptions";;
-      3.0*)    CXXFLAGS="$lyx_opt";;
+      3.0*)    CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
       *2.91.*) CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
       *)       CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
     esac

@@ -26,6 +26,10 @@
 #include "support/filetools.h"
 
 
+using std::vector;
+using std::sort;
+
+
 typedef FormCB<ControlBibtex, FormDB<FD_form_bibtex> > base_class;
 
 FormBibtex::FormBibtex(ControlBibtex & c)
@@ -133,17 +137,19 @@ namespace {
 
 // Remove all duplicate entries in c.
 // Taken stright out of Stroustrup
-template<class C> void eliminate_duplicates(C & c)
+template<class C>
+void eliminate_duplicates(C & c)
 {
-	std::sort(c.begin(), c.end()); // sort
-	typename C::iterator p = std::unique(c.begin(), c.end()); // compact
-	c.erase(p, c.end()); // shrink
+	sort(c.begin(), c.end());
+	typename C::iterator p = std::unique(c.begin(), c.end());
+	c.erase(p, c.end());
 }
+
 
 string const unique_and_no_extensions(string const & str_in)
 {
-	std::vector<string> dbase = getVectorFromString(str_in);
-	for (std::vector<string>::iterator it = dbase.begin();
+	vector<string> dbase = getVectorFromString(str_in);
+	for (vector<string>::iterator it = dbase.begin();
 	     it != dbase.end(); ++it) {
 		*it = ChangeExtension(*it, "");
 	}
@@ -183,7 +189,7 @@ void FormBibtex::apply()
 		// bibtotoc and no style
 		controller().params().setOptions("bibtotoc");
 
-	} else if (!bibstyle.empty()){
+	} else if (!bibstyle.empty()) {
 		// only style
 		controller().params().setOptions(bibstyle);
 	}

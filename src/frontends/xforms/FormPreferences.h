@@ -89,11 +89,11 @@ private:
 	/// The preemptive handler for feedback messages.
 	void Feedback(FL_OBJECT *, int);
 	/// Print a warning message and set warning flag.
-	void printWarning( string const & );
+	void printWarning(string const &);
 	/** Launch a file dialog and modify input if it returns a new file.
 	    For an explanation of the various parameters, see xforms_helpers.h.
 	 */
-	void browse( FL_OBJECT * input,
+	void browse(FL_OBJECT * input,
 		     string const & title, string const & pattern, 
 		     std::pair<string,string> const & dir1= std::make_pair(string(),string()), 
 		     std::pair<string,string> const & dir2 = std::make_pair(string(),string()));
@@ -156,7 +156,7 @@ private:
 			GUI_COLOR_CURSOR = FL_FREE_COL3
 		};
 		///
-		Colors( FormPreferences & p );
+		Colors(FormPreferences & p);
 		///
 		FD_form_colors const * dialog();
 		///
@@ -175,7 +175,7 @@ private:
 
 	private:
 		///
-		void AdjustVal( int, int, double ) const;
+		void AdjustVal(int, int, double) const;
 		///
 		void InputBrowserLyX() const;
 		///
@@ -208,7 +208,7 @@ private:
 	class Converters {
 	public:
 		///
-		Converters( FormPreferences & p );
+		Converters(FormPreferences & p);
 		///
 		FD_form_converters const * dialog();
 		///
@@ -218,7 +218,7 @@ private:
 		///
 		string const feedback(FL_OBJECT const * const) const;
 		///
-		bool input( FL_OBJECT const * const );
+		bool input(FL_OBJECT const * const);
 		///
 		void update();
 		///
@@ -252,7 +252,7 @@ private:
 	class Formats {
 	public:
 		///
-		Formats( FormPreferences &  p );
+		Formats(FormPreferences &  p);
 		///
 		FD_form_formats const * dialog();
 		///
@@ -262,7 +262,7 @@ private:
 		///
 		string const feedback(FL_OBJECT const * const) const;
 		///
-		bool input( FL_OBJECT const * const );
+		bool input(FL_OBJECT const * const);
 		///
 		void update();
 
@@ -290,7 +290,7 @@ private:
 	class InputsMisc {
 	public:
 		///
-		InputsMisc( FormPreferences &  p );
+		InputsMisc(FormPreferences &  p);
 		///
 		FD_form_inputs_misc const * dialog();
 		///
@@ -315,7 +315,7 @@ private:
 	class Interface {
 	public:
 		///
-		Interface( FormPreferences &  p );
+		Interface(FormPreferences &  p);
 		///
 		FD_form_interface const * dialog();
 		///
@@ -325,7 +325,7 @@ private:
 		///
 		string const feedback(FL_OBJECT const * const) const;
 		///
-		bool input( FL_OBJECT const * const );
+		bool input(FL_OBJECT const * const);
 		///
 		void update();
 
@@ -342,7 +342,7 @@ private:
 	class Language {
 	public:
 		///
-		Language( FormPreferences &  p );
+		Language(FormPreferences &  p);
 		///
 		FD_form_language const * dialog();
 		///
@@ -352,7 +352,7 @@ private:
 		///
 		string const feedback(FL_OBJECT const * const) const;
 		///
-		bool input( FL_OBJECT const * const );
+		bool input(FL_OBJECT const * const);
 		///
 		void update();
 		///
@@ -373,7 +373,7 @@ private:
 	class LnFmisc {
 	public:
 		///
-		LnFmisc( FormPreferences &  p );
+		LnFmisc(FormPreferences &  p);
 		///
 		FD_form_lnf_misc const * dialog();
 		///
@@ -398,7 +398,7 @@ private:
 	class OutputsMisc {
 	public:
 		///
-		OutputsMisc( FormPreferences &  p );
+		OutputsMisc(FormPreferences &  p);
 		///
 		FD_form_outputs_misc const * dialog();
 		///
@@ -423,7 +423,7 @@ private:
 	class Paths {
 	public:
 		///
-		Paths( FormPreferences &  p );
+		Paths(FormPreferences &  p);
 		///
 		FD_form_paths const * dialog();
 		///
@@ -450,7 +450,7 @@ private:
 	class Printer {
 	public:
 		///
-		Printer( FormPreferences &  p );
+		Printer(FormPreferences &  p);
 		///
 		FD_form_printer const * dialog();
 		///
@@ -475,7 +475,7 @@ private:
 	class ScreenFonts {
 	public:
 		///
-		ScreenFonts( FormPreferences &  p );
+		ScreenFonts(FormPreferences &  p);
 		///
 		FD_form_screen_fonts const * dialog();
 		///
@@ -502,7 +502,7 @@ private:
 	class SpellOptions {
 	public:
 		///
-		SpellOptions( FormPreferences &  p );
+		SpellOptions(FormPreferences &  p);
 		///
 		FD_form_spelloptions const * dialog();
 		///

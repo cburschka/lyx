@@ -24,10 +24,10 @@
 /** The four LaTeX itemize environment default bullets
  */
 extern
-Bullet const ITEMIZE_DEFAULTS[4] = { Bullet( 0, 8 ),//"\\(\\bullet\\)"
-				     Bullet( 0, 0 ),//"\\normalfont\\bfseries{--}"
-				     Bullet( 0, 6 ),//"\\(\\ast\\)"
-				     Bullet( 0, 10 ) };//"\\(\\cdot\\)"
+Bullet const ITEMIZE_DEFAULTS[4] = { Bullet(0, 8),//"\\(\\bullet\\)"
+				     Bullet(0, 0),//"\\normalfont\\bfseries{--}"
+				     Bullet(0, 6),//"\\(\\ast\\)"
+				     Bullet(0, 10) };//"\\(\\cdot\\)"
 
 // will need these later if still using full text as below
 // \usepackage{latexsym,pifont,amssymb}

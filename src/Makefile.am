@@ -4,13 +4,13 @@ DISTCLEANFILES= *.orig *.rej *~ *.bak core libintl.h config.h
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in $(srcdir)/config.h.in
 bin_PROGRAMS = lyx
 
-lyx_DEPENDENCIES = mathed/libmathed.la insets/libinsets.la \
-	graphics/libgraphics.la \
-	frontends/libfrontends.la \
-	support/libsupport.la \
+lyx_DEPENDENCIES = mathed/libmathed.o insets/libinsets.o \
+	graphics/libgraphics.o \
+	frontends/libfrontends.o \
+	support/libsupport.o \
 	@INCLUDED_SIGC@
 lyx_LDADD = $(lyx_DEPENDENCIES) @INTLLIBS@ $(SIGC_LIBS) \
-	$(PSPELL_LIBS) @AIKSAURUS_LIBS@
+	$(PSPELL_LIBS) @AIKSAURUS_LIBS@ @LYX_LIBS@
 
 #lyx_LDFLAGS=-Wl,-O1
 EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version.C.in \

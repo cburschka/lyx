@@ -36,6 +36,8 @@
 
 using SigC::slot;
 using std::vector;
+using std::back_inserter;
+using std::find;
 
 extern LyXAction lyxaction;
 
@@ -147,7 +149,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 			vector<string> comp;
 			lyx::copy_if(completion_.begin(),
 				     completion_.end(),
-				     std::back_inserter(comp), prefix(input));
+				     back_inserter(comp), prefix(input));
 
 			if (comp.empty()) {
 				// No matches
@@ -171,7 +173,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 					vector<string> vtmp;
 					lyx::copy_if(comp.begin(),
 						     comp.end(),
-						     std::back_inserter(vtmp),
+						     back_inserter(vtmp),
 						     prefix(test));
 					if (vtmp.size() != comp.size()) {
 						test.erase(test.length() - 1);
@@ -211,7 +213,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 			// of argumetns LFUN's should have first. (Lgb)
 			// First check for match
 			vector<string>::const_iterator cit =
-				std::find(completion_.begin(),
+				find(completion_.begin(),
 					  completion_.end(),
 					  input);
 			if (cit == completion_.end()) {

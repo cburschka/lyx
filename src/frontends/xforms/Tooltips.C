@@ -107,13 +107,13 @@ int TooltipHandler(FL_OBJECT *ob, int event)
 	lyx::Assert(timer);
 
 	// We do not test for empty help here, since this can never happen
-	if (event == FL_ENTER){
+	if (event == FL_ENTER) {
 		fl_set_object_callback(timer,
 				       C_TooltipTimerCB,
 				       reinterpret_cast<long>(ob));
 		fl_set_timer(timer, 1);
 	}
-	else if (event != FL_MOTION){
+	else if (event != FL_MOTION) {
 		fl_set_timer(timer, 0);
 		fl_hide_oneliner();
 	}

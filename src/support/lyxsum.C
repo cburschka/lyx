@@ -16,8 +16,6 @@
 #include "support/lyxlib.h"
 #include "debug.h"
 
-using std::endl;
-
 // Various implementations of lyx::sum(), depending on what methods
 // are available. Order is faster to slowest.
 #if defined(HAVE_MMAP) && defined(HAVE_MUNMAP)
@@ -32,13 +30,21 @@ using std::endl;
 #include <unistd.h>
 #include <sys/mman.h>
 
+using std::ifstream;
+using std::endl;
+using std::for_each;
+using std::istreambuf_iterator;
+using std::istream_iterator;
+using std::ios;
+
+
 unsigned long lyx::sum(string const & file)
 {
 	lyxerr[Debug::FILES] << "lyx::sum() using mmap (lightning fast)"
 			     << endl;
 	
 	int fd = open(file.c_str(), O_RDONLY);
-	if(!fd)
+	if (!fd)
 		return 0;
 	
 	struct stat info;
@@ -76,7 +82,7 @@ inline
 unsigned long do_crc(InputIterator first, InputIterator last)
 {
 	boost::crc_32_type crc;
-	crc = std::for_each(first, last, crc);
+	crc = for_each(first, last, crc);
 	return crc.checksum();
 }
 
@@ -88,11 +94,11 @@ unsigned long lyx::sum(string const & file)
 	lyxerr[Debug::FILES] << "lyx::sum() using istreambuf_iterator (fast)"
 			     << endl;
 
-	std::ifstream ifs(file.c_str());
+	ifstream ifs(file.c_str());
 	if (!ifs) return 0;
 	
-	std::istreambuf_iterator<char> beg(ifs);
-	std::istreambuf_iterator<char> end;
+	istreambuf_iterator<char> beg(ifs);
+	istreambuf_iterator<char> end;
 	
 	return do_crc(beg,end);
 }
@@ -103,12 +109,12 @@ unsigned long lyx::sum(string const & file)
 		<< "lyx::sum() using istream_iterator (slow as a snail)"
 		<< endl;
 	
-	std::ifstream ifs(file.c_str());
+	ifstream ifs(file.c_str());
 	if (!ifs) return 0;
 	
-	ifs.unsetf(std::ios::skipws);
-	std::istream_iterator<char> beg(ifs);
-	std::istream_iterator<char> end;
+	ifs.unsetf(ios::skipws);
+	istream_iterator<char> beg(ifs);
+	istream_iterator<char> end;
 	
 	return do_crc(beg,end);
 }

@@ -57,7 +57,7 @@ string const LyXLength::asString() const
 string const LyXLength::asLatexString() const
 {
 	ostringstream buffer;
-	switch(unit_) {
+	switch (unit_) {
 	case PW:
 	    buffer << abs(static_cast<int>(val_/100)) << "."
 		   << abs(static_cast<int>(val_)%100) << "\\textwidth";

@@ -10,6 +10,9 @@
 #include "debug.h"
 
 
+using std::max;
+
+
 MathScriptInset::MathScriptInset()
 	: MathNestInset(2), limits_(0)
 {
@@ -83,7 +86,7 @@ int MathScriptInset::dy0(MathInset const * nuc) const
 	if (hasLimits(nuc))
 		des += nd + 2;
 	else 
-		des = std::max(des, nd);
+		des = max(des, nd);
 	return des;
 }
 
@@ -97,8 +100,8 @@ int MathScriptInset::dy1(MathInset const * nuc) const
 	if (hasLimits(nuc))
 		asc += na + 2;
 	else 
-		asc = std::max(asc, na);
-	asc = std::max(asc, mathed_char_ascent(LM_TC_VAR, mi_, 'I'));
+		asc = max(asc, na);
+	asc = max(asc, mathed_char_ascent(LM_TC_VAR, mi_, 'I'));
 	return asc;
 }
 
@@ -142,14 +145,14 @@ int MathScriptInset::width2(MathInset const * nuc) const
 	if (hasLimits(nuc)) {
 		wid = nwid(nuc);
 		if (hasUp())
-			wid = std::max(wid, up().width());
+			wid = max(wid, up().width());
 		if (hasDown())
-			wid = std::max(wid, down().width());
+			wid = max(wid, down().width());
 	} else {
 		if (hasUp())
-			wid = std::max(wid, up().width());
+			wid = max(wid, up().width());
 		if (hasDown())
-			wid = std::max(wid, down().width());
+			wid = max(wid, down().width());
 		wid += nwid(nuc);
 	}
 	return wid;

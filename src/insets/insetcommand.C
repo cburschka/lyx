@@ -27,9 +27,9 @@ InsetCommandParams::InsetCommandParams()
 {}
 
 
-InsetCommandParams::InsetCommandParams( string const & n,
+InsetCommandParams::InsetCommandParams(string const & n,
 					string const & c,
-					string const & o )
+					string const & o)
 	: cmdname(n), contents(c), options(o)
 {}
 
@@ -40,7 +40,7 @@ string const InsetCommandParams::getAsString() const
 }
 
 
-void InsetCommandParams::setFromString( string const & b )
+void InsetCommandParams::setFromString(string const & b)
 {
 	string::size_type idx = b.find("|++|");
 	if (idx == string::npos) {
@@ -126,9 +126,9 @@ void InsetCommandParams::scanCommand(string const & cmd)
 	}
 
 	// Don't mess with this.
-	if (!tcmdname.empty())  setCmdName( tcmdname );
-	if (!toptions.empty())  setOptions( toptions );
-	if (!tcontents.empty()) setContents( tcontents ); 
+	if (!tcmdname.empty())  setCmdName(tcmdname);
+	if (!toptions.empty())  setOptions(toptions);
+	if (!tcontents.empty()) setContents(tcontents); 
 
 	if (lyxerr.debugging(Debug::PARSER))
 		lyxerr << "Command <" <<  cmd
@@ -181,15 +181,15 @@ string const InsetCommandParams::getCommand() const
 
 
 InsetCommand::InsetCommand(InsetCommandParams const & p, bool)
-	: p_( p.getCmdName(), p.getContents(), p.getOptions() )
+	: p_(p.getCmdName(), p.getContents(), p.getOptions())
 {}
 
 
-void InsetCommand::setParams(InsetCommandParams const & p )
+void InsetCommand::setParams(InsetCommandParams const & p)
 {
-	p_.setCmdName( p.getCmdName() );
-	p_.setContents( p.getContents() );
-	p_.setOptions( p.getOptions() );
+	p_.setCmdName(p.getCmdName());
+	p_.setContents(p.getContents());
+	p_.setOptions(p.getOptions());
 }
 
 

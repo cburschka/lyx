@@ -235,7 +235,8 @@ void Combox::add(int x, int y, int w, int hmin, int hmax,
 	FL_FORM * current_form = fl_current_form;
 	fl_end_form();
 
-	bw = w + 20; bh = hmax - hmin - 12;
+	bw = w + 20;
+	bh = hmax - hmin - 12;
 
 	form = fl_bgn_form(FL_NO_BOX, bw, bh);
 	browser = obj = fl_add_browser(FL_HOLD_BROWSER, 0, 0, bw, bh, "");
@@ -291,14 +292,14 @@ void Combox::show()
 		int folder_x, folder_y, folder_w, folder_h;
 		fl_get_folder_area( tabfolder1,
 				    &folder_x, &folder_y,
-				    &folder_w, &folder_h );
+				    &folder_w, &folder_h);
 		x += folder_x;
 		y += folder_y;
 
 		if (tabfolder2) {
 			fl_get_folder_area( tabfolder2,
 					    &folder_x, &folder_y,
-					    &folder_w, &folder_h );
+					    &folder_w, &folder_h);
 			x += tabfolder2->form->x + folder_x;
 			y += tabfolder2->form->y + folder_y;
 		} else {
@@ -313,7 +314,7 @@ void Combox::show()
 
 	fl_set_form_position(form, x, y);
 	fl_show_form(form, FL_PLACE_POSITION, FL_NOBORDER, "");
-        if (sel>0) {
+        if (sel > 0) {
 		fl_set_browser_topline(browser, sel);
 		fl_select_browser_line(browser, sel);
 	}
@@ -345,7 +346,7 @@ void Combox::hide(int who)
 		XFlush(fl_get_display());
         }
 	if (button) {
-	        if (type != FL_COMBOX_NORMAL){
+	        if (type != FL_COMBOX_NORMAL) {
 			fl_set_object_label(button, "@2->");
 			fl_redraw_object(button);
 		}

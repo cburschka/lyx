@@ -12,7 +12,10 @@
 #include "debug.h"
 #include "buffer.h"
 
+
 using std::vector;
+using std::ostream;
+
 
 string const InsetTOC::getScreenLabel(Buffer const *) const 
 {
@@ -45,7 +48,7 @@ void InsetTOC::edit(BufferView * bv, bool)
 }
 
 
-int InsetTOC::ascii(Buffer const * buffer, std::ostream & os, int) const
+int InsetTOC::ascii(Buffer const * buffer, ostream & os, int) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
@@ -69,7 +72,7 @@ int InsetTOC::ascii(Buffer const * buffer, std::ostream & os, int) const
 }
 
 
-int InsetTOC::linuxdoc(Buffer const *, std::ostream & os) const
+int InsetTOC::linuxdoc(Buffer const *, ostream & os) const
 {
 	if (getCmdName() == "tableofcontents")
 		os << "<toc>";
@@ -77,7 +80,7 @@ int InsetTOC::linuxdoc(Buffer const *, std::ostream & os) const
 }
 
 
-int InsetTOC::docbook(Buffer const *, std::ostream & os) const
+int InsetTOC::docbook(Buffer const *, ostream & os) const
 {
 	if (getCmdName() == "tableofcontents")
 		os << "<toc></toc>";

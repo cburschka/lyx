@@ -548,7 +548,7 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 		case UMLAUT:    // umlaut
 		{
 			pain.text(int(x2 - (lyxfont::rbearing('¨', font) - lyxfont::lbearing('¨', font)) / 2),
-				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('¨', font) - ( lyxfont::ascent('¨', font) + lyxfont::descent('¨', font)) / 2,
+				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent('¨', font) - (lyxfont::ascent('¨', font) + lyxfont::descent('¨', font)) / 2,
 				  '¨', font);
 			break;
 		}

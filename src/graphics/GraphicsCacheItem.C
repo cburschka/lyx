@@ -15,20 +15,23 @@
 #pragma implementation
 #endif
 
-#include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsCacheItem.h"
-#include "frontends/support/LyXImage.h"
+#include "graphics/GraphicsCache.h"
 #include "graphics/ImageLoaderXPM.h"
 #include "converter.h"
-#include "support/filetools.h"
-#include "support/lyxlib.h"
 #include "lyx_gui_misc.h"
 #include "debug.h"
 #include "support/LAssert.h"
 #include "gettext.h"
 #include "lyxfunc.h"
 
+#include "frontends/support/LyXImage.h"
+
+#include "support/filetools.h"
+#include "support/lyxlib.h"
+
 using std::endl;
+
 
 /*
  * The order of conversion:
@@ -47,12 +50,10 @@ using std::endl;
 */
 
 GraphicsCacheItem::GraphicsCacheItem(string const & filename)
-	: imageStatus_(GraphicsCacheItem::Loading)
+	: filename_(filename), imageStatus_(GraphicsCacheItem::Loading)
 {
-	filename_ = filename;
-	
 	bool success = convertImage(filename);
-	if (! success) // Conversion failed miserably (couldn't even start).
+	if (!success) // Conversion failed miserably (couldn't even start).
 		setStatus(ErrorConverting);
 }
 
@@ -62,7 +63,10 @@ GraphicsCacheItem::~GraphicsCacheItem()
 
 
 GraphicsCacheItem::ImageStatus 
-GraphicsCacheItem::getImageStatus() const { return imageStatus_; }
+GraphicsCacheItem::getImageStatus() const
+{
+	return imageStatus_;
+}
 
 
 void GraphicsCacheItem::setStatus(ImageStatus new_status)
@@ -72,7 +76,10 @@ void GraphicsCacheItem::setStatus(ImageStatus new_status)
 
 
 LyXImage * 
-GraphicsCacheItem::getImage() const { return image_.get(); }
+GraphicsCacheItem::getImage() const
+{
+	return image_.get();
+}
 
 
 void GraphicsCacheItem::imageConverted(bool success)
@@ -112,7 +119,7 @@ string const findTargetFormat(string const & from)
 	}
 	if (iter == end) {
 		// We do not know how to convert the image to something loadable.
-		lyxerr << "ERROR: Do not know how to convert image." << std::endl;
+		lyxerr << "ERROR: Do not know how to convert image." << endl;
 		return string();
 	}
 	return (*iter);
@@ -124,6 +131,8 @@ string const findTargetFormat(string const & from)
 bool GraphicsCacheItem::convertImage(string const & filename)
 {
 	setStatus(GraphicsCacheItem::Converting);
+#warning shadowing class variable (Lgb)
+	// Is this needed at all?
 	string filename_ = string(filename);
 	lyxerr << "try to convert image file: " << filename_ << endl;
 // maybe that other zip extensions also be useful, especially the
@@ -173,7 +182,7 @@ bool GraphicsCacheItem::convertImage(string const & filename)
 	lyx::unlink(tempfile);
 	if (zipped)
 	    lyx::unlink(filename_);
-	tempfile = string();
+	tempfile.erase();
 	return true;
 }
 

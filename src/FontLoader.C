@@ -279,8 +279,8 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 	}
 
 	getFontinfo(family, series, shape);
-	int fsize = int( (lyxrc.font_sizes[size] * lyxrc.dpi * 
-			  (lyxrc.zoom/100.0) ) / 72.27 + 0.5 );
+	int fsize = int((lyxrc.font_sizes[size] * lyxrc.dpi * 
+			  (lyxrc.zoom/100.0)) / 72.27 + 0.5);
 
 	string font = fontinfo[family][series][shape]->getFontname(fsize);
 

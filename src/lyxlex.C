@@ -63,7 +63,7 @@ string const LyXLex::text() const
 }
 
 
-std::istream & LyXLex::getStream()
+istream & LyXLex::getStream()
 {
 	return pimpl_->is;
 }

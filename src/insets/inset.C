@@ -142,7 +142,7 @@ void Inset::id(int id_arg)
 	id_ = id_arg;
 }
 
-void Inset::setFont(BufferView *, LyXFont const &, bool, bool )
+void Inset::setFont(BufferView *, LyXFont const &, bool, bool)
 {}
 
 
@@ -328,7 +328,7 @@ UpdatableInset::localDispatch(BufferView * bv,
 int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 {
 	int w;
-	if (owner()){
+	if (owner()) {
 		w = static_cast<UpdatableInset*>
 			(owner())->getMaxWidth(bv, this);
 	} else {

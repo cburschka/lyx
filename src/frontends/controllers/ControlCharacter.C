@@ -229,7 +229,7 @@ void ControlCharacter::setLanguage(string const & val)
 	if (val == _("No change"))
 		font_->setLanguage(ignore_language);
 
-	else if ( val == _("Reset"))
+	else if (val == _("Reset"))
 		font_->setLanguage(lv_.buffer()->params.language);
 
 	else

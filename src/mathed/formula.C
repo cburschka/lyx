@@ -324,7 +324,7 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 }
 
 
-//std::ostream & operator<<(std::ostream & os, LyXCursor const & c)
+//ostream & operator<<(ostream & os, LyXCursor const & c)
 //{
 //	os << '[' << c.x() << ' ' << c.y() << ' ' << c.pos() << ']';
 //	return os;

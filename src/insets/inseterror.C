@@ -88,7 +88,7 @@ string const InsetError::editMessage() const
 
 void InsetError::edit(BufferView * bv, int, int, unsigned int)
 {
-	bv->owner()->getDialogs()->showError( this );
+	bv->owner()->getDialogs()->showError(this);
 }
 
 

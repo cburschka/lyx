@@ -13,7 +13,11 @@
 
 #include <iostream>
 #include <cctype>
- 
+
+
+using std::vector;
+
+
 namespace {
 	
 extern "C" void C_CompletedCB(FL_OBJECT * ob, long)
@@ -54,15 +58,17 @@ DropDown::~DropDown()
 }
  
 
-void DropDown::select(std::vector<string> const & choices, int x, int y, int w)
+void DropDown::select(vector<string> const & choices, int x, int y, int w)
 {
 	if (choices.empty())
 		return;
 
 	fl_set_form_geometry(form_, x, y-100, w, 100);
 	fl_clear_browser(browser_);
-	for (std::vector<string>::const_iterator cit = choices.begin();
-		cit != choices.end(); ++cit) {
+
+	vector<string>::const_iterator cit = choices.begin();
+	vector<string>::const_iterator end = choices.end();
+	for (; cit != end; ++cit) {
 		fl_add_browser_line(browser_, cit->c_str());
 	}
 	fl_select_browser_line(browser_, 1);

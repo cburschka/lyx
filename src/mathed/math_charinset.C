@@ -17,6 +17,9 @@
 #include "LaTeXFeatures.h"
 
 
+using std::ostream;
+
+
 MathCharInset::MathCharInset(char c)
 	: char_(c), code_(nativeCode(c))
 {
@@ -60,21 +63,21 @@ void MathCharInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathCharInset::writeHeader(std::ostream & os) const
+void MathCharInset::writeHeader(ostream & os) const
 {
 	if (math_font_name(code_))
 		os << '\\' << math_font_name(code_) << '{';
 }
 
 
-void MathCharInset::writeTrailer(std::ostream & os) const
+void MathCharInset::writeTrailer(ostream & os) const
 {
 	if (math_font_name(code_))
 		os << '}';
 }
 
 
-void MathCharInset::writeRaw(std::ostream & os) const
+void MathCharInset::writeRaw(ostream & os) const
 {
 	os << char_;
 }
@@ -110,7 +113,7 @@ void MathCharInset::validate(LaTeXFeatures & features) const
 {
 	// Make sure amssymb is put in preamble if Blackboard Bold or
 	// Fraktur used:
-	if ( (code_ == LM_TC_BB) || (code_ == LM_TC_EUFRAK) )
+	if ((code_ == LM_TC_BB) || (code_ == LM_TC_EUFRAK))
 		features.require("amssymb");
 }
 

@@ -152,11 +152,11 @@ bool DepTable::extchanged(string const & ext) const
 }
 
 
-bool DepTable::ext_exist(const string& ext ) const
+bool DepTable::ext_exist(const string& ext) const
 {
 	DepList::const_iterator cit = deplist.begin();
 	DepList::const_iterator end = deplist.end();
-	for (; cit != end; ++cit ) {
+	for (; cit != end; ++cit) {
 		if (suffixIs(cit->first, ext)) {
 			return true;
 		}

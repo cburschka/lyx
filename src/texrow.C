@@ -57,7 +57,7 @@ void TexRow::newline()
 
 class same_rownumber {
 public:
-	same_rownumber(TexRow::RowList::value_type const & v):vt(v){}
+	same_rownumber(TexRow::RowList::value_type const & v):vt(v) {}
 	bool operator()(TexRow::RowList::value_type const & vt1) const {
 		return vt.rownumber() == vt1.rownumber();
 	}

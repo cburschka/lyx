@@ -290,7 +290,7 @@ void LyXScreen::showManualCursor(LyXText const * text, int x, int y,
 	// Secure against very strange situations
 	int const y2 = max(y_tmp, y1);
 	
-	if (cursor_pixmap){
+	if (cursor_pixmap) {
 		XFreePixmap(fl_get_display(), cursor_pixmap);
 		cursor_pixmap = 0;
 	}
@@ -360,7 +360,7 @@ void LyXScreen::hideCursor()
 {
 	if (!cursor_visible) return;
 
-	if (cursor_pixmap){
+	if (cursor_pixmap) {
 		XCopyArea (fl_get_display(), 
 			   cursor_pixmap,
 			   owner.getWin(),

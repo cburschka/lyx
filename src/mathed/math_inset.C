@@ -28,13 +28,17 @@
 #include "debug.h"
 
 
+using std::ostream;
+using std::vector;
+
+
 int MathInset::height() const
 {
 	return ascent() + descent();
 }
 
 
-std::ostream & operator<<(std::ostream & os, MathInset const & inset)
+ostream & operator<<(ostream & os, MathInset const & inset)
 {
 	WriteStream wi(os, false);
 	inset.write(wi);
@@ -180,10 +184,10 @@ void MathInset::validate(LaTeXFeatures &) const
 {}
 
 
-std::vector<MathInset::idx_type>
+vector<MathInset::idx_type>
 	MathInset::idxBetween(idx_type from, idx_type to) const
 {
-	std::vector<idx_type> res;
+	vector<idx_type> res;
 	for (idx_type i = from; i <= to; ++i)
 		res.push_back(i);
 	return res;

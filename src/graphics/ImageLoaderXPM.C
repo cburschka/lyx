@@ -7,31 +7,36 @@
  *
  * ================================================= */
 
+#include <config.h>
+
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
 #include "ImageLoaderXPM.h"
 #include "ColorHandler.h"
 #include "lyxrc.h"
+#include "debug.h"
+
 #include "frontends/support/LyXImage.h"
 #include "frontends/GUIRunTime.h"
+
 #include "support/filetools.h"
+#include "support/LAssert.h"
 
 #include XPM_H_LOCATION
 #include <iostream>
 #include <fstream>
 
-#include "support/LAssert.h"
-#include "debug.h"
 
+using std::ifstream;
 using std::endl;
 using std::ios;
 
+
 bool ImageLoaderXPM::isImageFormatOK(string const & filename) const
 {
-	std::ifstream is(filename.c_str(), ios::in);
+	ifstream is(filename.c_str(), ios::in);
 
 	// The signature of the file without the spaces.
 	static char const str[] = "/*XPM*/";
@@ -48,6 +53,7 @@ bool ImageLoaderXPM::isImageFormatOK(string const & filename) const
 	return true;
 }
 
+
 ImageLoaderXPM::FormatList const 
 ImageLoaderXPM::loadableFormats() const 
 {
@@ -56,7 +62,8 @@ ImageLoaderXPM::loadableFormats() const
 
 	return formats;
 }
-	
+
+
 ImageLoader::Result 
 ImageLoaderXPM::runImageLoader(string const & filename)
 {

@@ -65,14 +65,14 @@ FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 
 void FormDocument::redraw()
 {
-	if( form() && form()->visible )
-		fl_redraw_form( form() );
+	if (form() && form()->visible)
+		fl_redraw_form(form());
 	else
 		return;
 
 	FL_FORM * outer_form = fl_get_active_folder(dialog_->tabbed_folder);
 	if (outer_form && outer_form->visible)
-		fl_redraw_form( outer_form );
+		fl_redraw_form(outer_form);
 }
 
 
@@ -376,9 +376,9 @@ bool saveParamsAsDefault(BufferParams const &params)
 
 } //namespace
 
-bool FormDocument::input( FL_OBJECT * ob, long data )
+bool FormDocument::input(FL_OBJECT * ob, long data)
 {
-	State cb = static_cast<State>( data );
+	State cb = static_cast<State>(data);
 
 	switch (cb) {
 	case CHECKCHOICECLASS:
@@ -1272,7 +1272,7 @@ bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 }
 
 
-void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/ )
+void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/)
 {
 	BufferParams & param = lv_->buffer()->params;
 
@@ -1305,13 +1305,13 @@ void FormDocument::BulletDepth(FL_OBJECT * ob, State cb)
 	BufferParams & param = lv_->buffer()->params;
 
 	int data = 0;
-	if (cb == BULLETDEPTH1 )
+	if (cb == BULLETDEPTH1)
 		data = 0;
-	else if (cb == BULLETDEPTH2 )
+	else if (cb == BULLETDEPTH2)
 		data = 1;
-	else if (cb == BULLETDEPTH3 )
+	else if (cb == BULLETDEPTH3)
 		data = 2;
-	else if (cb == BULLETDEPTH4 )
+	else if (cb == BULLETDEPTH4)
 		data = 3;
 
 	switch (fl_get_button_numb(ob)) {
@@ -1334,17 +1334,17 @@ void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, State cb)
 	/* by the user. (eg. standard.xpm, psnfss1.xpm etc...)           */
     
 	int data = 0;
-	if (cb == BULLETPANEL1 )
+	if (cb == BULLETPANEL1)
 		data = 0;
-	else if (cb == BULLETPANEL2 )
+	else if (cb == BULLETPANEL2)
 		data = 1;
-	else if (cb == BULLETPANEL3 )
+	else if (cb == BULLETPANEL3)
 		data = 2;
-	else if (cb == BULLETPANEL4 )
+	else if (cb == BULLETPANEL4)
 		data = 3;
-	else if (cb == BULLETPANEL5 )
+	else if (cb == BULLETPANEL5)
 		data = 4;
-	else if (cb == BULLETPANEL6 )
+	else if (cb == BULLETPANEL6)
 		data = 5;
 
 	if (data != current_bullet_panel) {
@@ -1390,7 +1390,7 @@ void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, State cb)
 }
 
 
-void FormDocument::BulletBMTable(FL_OBJECT * ob, long /*data*/ )
+void FormDocument::BulletBMTable(FL_OBJECT * ob, long /*data*/)
 {
 	/* handle the user input by setting the current bullet depth's pixmap */
 	/* to that extracted from the current chosen position of the BMTable  */

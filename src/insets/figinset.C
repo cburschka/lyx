@@ -28,6 +28,32 @@
 
 #include <config.h>
 
+#include "figinset.h"
+
+#include "lyx_main.h"
+#include "buffer.h"
+#include "LyXView.h" // just because of form_main
+#include "debug.h"
+#include "LaTeXFeatures.h"
+#include "lyxrc.h"
+#include "gettext.h"
+#include "lyx_gui_misc.h" // CancelCloseBoxCB
+#include "Painter.h"
+#include "font.h"
+#include "bufferview_funcs.h"
+#include "ColorHandler.h"
+#include "converter.h"
+#include "BufferView.h"
+
+#include "frontends/FileDialog.h"
+#include "frontends/Alert.h" 
+#include "frontends/Dialogs.h" // redrawGUI
+
+#include "support/FileInfo.h"
+#include "support/lyxlib.h"
+#include "support/os.h"
+#include "support/filetools.h"
+
 #include <fstream>
 #include <queue>
 #include <list>
@@ -38,35 +64,10 @@
 #include <unistd.h>
 #include <csignal>
 #include <sys/wait.h>
-
-#include FORMS_H_LOCATION
 #include <cstdlib>
 #include <cctype>
 #include <cmath>
 #include <cerrno>
-
-#include "figinset.h"
-#include "lyx_main.h"
-#include "buffer.h"
-#include "frontends/FileDialog.h"
-#include "support/filetools.h"
-#include "LyXView.h" // just because of form_main
-#include "debug.h"
-#include "LaTeXFeatures.h"
-#include "lyxrc.h"
-#include "gettext.h"
-#include "lyx_gui_misc.h" // CancelCloseBoxCB
-#include "frontends/Alert.h" 
-#include "support/FileInfo.h"
-#include "support/lyxlib.h"
-#include "support/os.h"
-#include "Painter.h"
-#include "font.h"
-#include "bufferview_funcs.h"
-#include "ColorHandler.h"
-#include "converter.h"
-#include "frontends/Dialogs.h" // redrawGUI
-#include "BufferView.h"
 
 using std::ostream;
 using std::istream;
@@ -82,6 +83,7 @@ using std::copy;
 using std::pair;
 using std::make_pair;
 using std::ios;
+using std::ostream_iterator;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::memcpy;
@@ -158,7 +160,7 @@ void addpidwait(int pid)
 	if (lyxerr.debugging()) {
 		lyxerr << "Pids to wait for: \n";
 		copy(pidwaitlist.begin(), pidwaitlist.end(),
-		     std::ostream_iterator<int>(lyxerr, "\n"));
+		     ostream_iterator<int>(lyxerr, "\n"));
 		lyxerr << flush;
 	}
 }
@@ -419,10 +421,10 @@ void InitFigures()
 			       vi->visualid, vi->c_class, 
 			       vi->bits_per_rgb, vi->map_entries);
 		}
-		color_visual = ( (vi->c_class == StaticColor) ||
+		color_visual = ((vi->c_class == StaticColor) ||
 				 (vi->c_class == PseudoColor) ||
 				 (vi->c_class == TrueColor) ||
-				 (vi->c_class == DirectColor) );
+				 (vi->c_class == DirectColor));
 		if ((vi->c_class & 1) == 0) return;
 		// now allocate colors
 		if (vi->c_class == GrayScale) {
@@ -647,7 +649,7 @@ void runqueue()
 			env = new char_p[ne + 2];
 			string tmp = t2.str().c_str();
 			env[0] = new char[tmp.size() + 1];
-			std::copy(tmp.begin(), tmp.end(), env[0]);
+			copy(tmp.begin(), tmp.end(), env[0]);
 			env[0][tmp.size()] = '\0';
 			memcpy(&env[1], environ,
 			       sizeof(char*) * (ne + 1));
@@ -1924,7 +1926,7 @@ void InsetFig::restoreForm()
 	fl_set_input(form->Width, tostr(xwid).c_str());
 	fl_set_input(form->Height, tostr(xhgh).c_str());
 	fl_set_input(form->Angle, tostr(angle).c_str());
-	if (!fname.empty()){
+	if (!fname.empty()) {
 		string buf1 = OnlyPath(owner->fileName());
 		string fname2 = MakeRelPath(fname, buf1);
 		fl_set_input(form->EpsFile, fname2.c_str());

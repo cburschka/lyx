@@ -25,11 +25,11 @@ InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf, bool)
 void InsetRef::edit(BufferView * bv, int, int, unsigned int button)
 {
 	// Eventually trigger dialog with button 3 not 1
-	if (button == 3 )
+	if (button == 3)
 	  	bv->owner()->getLyXFunc()->
 			dispatch(LFUN_REF_GOTO, getContents());
-	else if (button == 1 )
-		bv->owner()->getDialogs()->showRef( this );
+	else if (button == 1)
+		bv->owner()->getDialogs()->showRef(this);
 }
 
 
@@ -63,7 +63,7 @@ int InsetRef::latex(Buffer const *, ostream & os,
 	if (getOptions().empty())
 		os << escape(getCommand());
 	else {
-		InsetCommandParams p( getCmdName(), getContents(), "" );
+		InsetCommandParams p(getCmdName(), getContents(), "");
 		os << escape(p.getCommand());
 	}
 	return 0;

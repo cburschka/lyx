@@ -318,7 +318,7 @@ string formatted(string const & sin, int w, int size, int style)
 	}
 
 	// Flush remaining contents of word
-	if (!word.empty() ) sentence.push_back(word);
+	if (!word.empty()) sentence.push_back(word);
 
 	string line;
 	string line_plus_word;
@@ -334,7 +334,7 @@ string formatted(string const & sin, int w, int size, int style)
 			line.erase();
 		}
 
-		if (!line_plus_word.empty() ) line_plus_word += ' ';
+		if (!line_plus_word.empty()) line_plus_word += ' ';
 		line_plus_word += word;
 
 		int const length = fl_get_string_width(style, size,

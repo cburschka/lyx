@@ -521,9 +521,9 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 		}
 	}
 	if (!label.empty()) {
-		InsetCommandParams p( "label", label );
-		InsetLabel * inset = new InsetLabel( p );
-		bv->insertInset( inset );
+		InsetCommandParams p("label", label);
+		InsetLabel * inset = new InsetLabel(p);
+		bv->insertInset(inset);
 	}
 	bv->owner()->allowInput();
 }

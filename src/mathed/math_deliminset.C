@@ -12,6 +12,9 @@
 #include "math_extern.h"
 
 
+using std::max;
+
+
 MathDelimInset::MathDelimInset(string const & l, string const & r)
 	: MathNestInset(1), left_(l), right_(r)
 {}
@@ -54,10 +57,10 @@ void MathDelimInset::metrics(MathMetricsInfo const & mi) const
 	int a, d, w;
 	mathed_char_dim(LM_TC_VAR, mi, 'I', a, d, w);
 	int h0   = (a + d) / 2;
-	int a0   = std::max(xcell(0).ascent(), a)   - h0;
-	int d0   = std::max(xcell(0).descent(), d)  + h0;
-	ascent_  = std::max(a0, d0) + h0;
-	descent_ = std::max(a0, d0) - h0;
+	int a0   = max(xcell(0).ascent(), a)   - h0;
+	int d0   = max(xcell(0).descent(), d)  + h0;
+	ascent_  = max(a0, d0) + h0;
+	descent_ = max(a0, d0) - h0;
 	width_   = xcell(0).width() + 2 * dw() + 8;
 }
 

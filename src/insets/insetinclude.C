@@ -295,7 +295,7 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 }
 
 
-int InsetInclude::ascii(Buffer const *, std::ostream & os, int) const
+int InsetInclude::ascii(Buffer const *, ostream & os, int) const
 {
 	if (isVerbatim())
 		os << GetFileContents(getFileName());

@@ -118,7 +118,7 @@ bool BufferView::removeAutoInsets()
 	// Iterate until we find a paragraph that won't be immediately deleted.
 	// In reality this should mean we only execute the body of the while
 	// loop once at most.  However for safety we iterate rather than just
-	// make this an if() conditional.
+	// make this an if () conditional.
 	while ((cur_par_prev || cur_par_next)
 	       && text->setCursor(this,
 				  cur_par_prev ? cur_par_prev : cur_par_next,
@@ -675,12 +675,14 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 }
 
 
-bool BufferView::ChangeCitationsIfUnique(string const & from, string const & to)
+bool BufferView::ChangeCitationsIfUnique(string const & from,
+					 string const & to)
 {
-
-	vector<pair<string,string> > keys = buffer()->getBibkeyList();	
+	typedef pair<string, string> StringPair;
+	
+	vector<StringPair> keys = buffer()->getBibkeyList();	
 	if (count_if(keys.begin(), keys.end(), 
-		     lyx::equal_1st_in_pair<string,string>(from)) 
+		     lyx::equal_1st_in_pair<StringPair>(from)) 
 	    > 1)
 		return false;
 

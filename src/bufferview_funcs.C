@@ -233,7 +233,7 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 			text->computeBidiTables(bv->buffer(), cursor.row());
 			if (cursor.boundary() != 
 			    text->isBoundary(bv->buffer(), cursor.par(), cursor.pos(),
-					     text->real_current_font) )
+					     text->real_current_font))
 				text->setCursor(bv, cursor.par(), cursor.pos(),
 						false, !cursor.boundary());
 		}

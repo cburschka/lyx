@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-noinst_LTLIBRARIES = libcontrollers.la
+noinst_LTLIBRARIES = libcontrollers.o
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
@@ -11,7 +11,7 @@ ETAGS_ARGS = --lang=c++
 
 EXTRA_DIST = ButtonController.tmpl ControlDialog.tmpl ControlInset.tmpl
 
-libcontrollers_la_SOURCES=\
+libcontrollers_o_SOURCES=\
 	biblio.C \
 	biblio.h \
 	character.C \
@@ -87,3 +87,9 @@ libcontrollers_la_SOURCES=\
 	ViewBase.h \
 	helper_funcs.C \
 	helper_funcs.h
+
+libcontrollers.o: $(libcontrollers_o_OBJECTS) $(libcontrollers_o_DEPENDENCIES)
+	rm -f ../libcontrollers.objects
+	for fil in $(libcontrollers_o_OBJECTS) ; do \
+		echo controllers/$$fil >> ../libcontrollers.objects ; \
+	done

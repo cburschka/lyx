@@ -702,7 +702,7 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 	if (r >= 2)
 		x += w;
 
-	for (int i = 0; d[i]; ) {
+	for (int i = 0; d[i];) {
 		int code = int(d[i++]);
 		if (code & 1) {  // code == 1 || code == 3
 			double xx = d[i++];

@@ -24,6 +24,10 @@
 
 #include <utility>
 
+
+using std::swap;
+
+
 MathAtom::MathAtom()
 	: nucleus_(0)
 {}
@@ -44,7 +48,7 @@ void MathAtom::operator=(MathAtom const & p)
 	if (&p == this)
 		return;
 	MathAtom tmp(p);
-	std::swap(tmp.nucleus_, nucleus_);
+	swap(tmp.nucleus_, nucleus_);
 }
 
 

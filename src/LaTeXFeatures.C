@@ -33,6 +33,10 @@ using lyx::textclass_type;
 
 using std::endl;
 using std::set;
+using std::vector;
+using std::find;
+using std::ostream;
+
 
 LaTeXFeatures::LaTeXFeatures(BufferParams const & p, layout_type n)
 	: layout(n, false), params(p)
@@ -53,7 +57,7 @@ void LaTeXFeatures::require(string const & name)
 }
 
 
-void LaTeXFeatures::useLayout(std::vector<bool>::size_type const & idx)
+void LaTeXFeatures::useLayout(vector<bool>::size_type const & idx)
 {
 	layout[idx] = true;
 }
@@ -61,9 +65,9 @@ void LaTeXFeatures::useLayout(std::vector<bool>::size_type const & idx)
 
 bool LaTeXFeatures::isRequired(string const & name) const
 {
-	FeaturesList::const_iterator i = std::find(features.begin(), 
-						   features.end(),
-						   name);
+	FeaturesList::const_iterator i = find(features.begin(), 
+					      features.end(),
+					      name);
 	return i != features.end();
 }
 
@@ -374,7 +378,7 @@ string const LaTeXFeatures::getIncludedFiles(string const & fname) const
 	for (FileMap::const_iterator fi = IncludedFiles.begin();
 	     fi != end; ++fi)
 		sgmlpreamble << "\n<!ENTITY " << fi->first
-			     << (IsSGMLFilename(fi->second) ? " SYSTEM \"" : " \"" )
+			     << (IsSGMLFilename(fi->second) ? " SYSTEM \"" : " \"")
 			     << MakeRelPath(fi->second, basename) << "\">";
 
 	return sgmlpreamble.str().c_str();
@@ -395,7 +399,7 @@ BufferParams const & LaTeXFeatures::bufferParams() const
 	return params;
 }
 
-void LaTeXFeatures::getFloatDefinitions(std::ostream & os) const
+void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 {
 	// Here we will output the code to create the needed float styles.
 	// We will try to do this as minimal as possible.

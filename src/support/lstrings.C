@@ -216,13 +216,13 @@ double strToDbl(string const & str)
 
 char lowercase(char c) 
 { 
-	return char( tolower(c) ); 
+	return char(tolower(c)); 
 }
 
 
 char uppercase(char c) 
 { 
-	return char( toupper(c) ); 
+	return char(toupper(c)); 
 }
 
 

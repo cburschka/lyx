@@ -54,7 +54,7 @@ public:
 		// For explanation see the next find() function.
 		Map::const_iterator it =
 			std::find_if(map.begin(), map.end(),
-				     lyx::equal_1st_in_pair<T1, T2>(first)
+				     lyx::equal_1st_in_pair<MapPair>(first)
 				);
 		
 		if (it != map.end()) {
@@ -78,10 +78,10 @@ public:
 		// to take only the second value of the pair to be compared.
 		//
 		// We can depict it as follows:
-		// equal_to( select2nd(pair) , second)
+		// equal_to(select2nd(pair) , second)
 		Map::const_iterator it =
 			std::find_if(map.begin(), map.end(),
-				     lyx::equal_2nd_in_pair<T1, T2>(second)
+				     lyx::equal_2nd_in_pair<MapPair>(second)
 				);
 		
 		if (it != map.end())

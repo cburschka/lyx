@@ -251,7 +251,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 
 		string const tmp = formatted(biblio::getInfo(theMap,
 							     bibkeys[sel-1]),
-					      dialog_->browser_info->w-10 );
+					      dialog_->browser_info->w-10);
 		fl_add_browser_line(dialog_->browser_info, tmp.c_str());
 
 		// Highlight the selected browser_bib key in browser_cite if

@@ -15,6 +15,7 @@
 using std::vector;
 using std::istringstream;
 using std::getline;
+using std::istream_iterator;
 
 
 MathArrayInset::MathArrayInset(string const & name, int m, int n)
@@ -43,7 +44,7 @@ MathArrayInset::MathArrayInset(string const & name, string const & str)
 		string line;
 		getline(is, line);
 		istringstream ls(line.c_str());
-		typedef std::istream_iterator<string> iter;
+		typedef istream_iterator<string> iter;
 		vector<string> v = vector<string>(iter(ls), iter());
 		if (v.size())
 			dat.push_back(v);

@@ -10,6 +10,10 @@
 #include "debug.h"
 
 
+using std::max;
+using std::min;
+
+
 extern MathScriptInset const * asScript(MathArray::const_iterator it);
 
 
@@ -36,14 +40,14 @@ void MathXArray::metrics(MathMetricsInfo const & mi) const
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
 		if (q) {
 			q->metrics(p, mi);
-			ascent_  = std::max(ascent_,  q->ascent2(p));
-			descent_ = std::max(descent_, q->descent2(p));
+			ascent_  = max(ascent_,  q->ascent2(p));
+			descent_ = max(descent_, q->descent2(p));
 			width_  += q->width2(p);	
 			++it;
 		} else {
 			p->metrics(mi);
-			ascent_  = std::max(ascent_,  p->ascent());
-			descent_ = std::max(descent_, p->descent());
+			ascent_  = max(ascent_,  p->ascent());
+			descent_ = max(descent_, p->descent());
 			width_  += p->width();	
 		}
 	}
@@ -80,7 +84,7 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 int MathXArray::pos2x(size_type targetpos) const
 {
 	int x = 0;
-	const_iterator target = std::min(begin() + targetpos, end());
+	const_iterator target = min(begin() + targetpos, end());
 	for (const_iterator it = begin(); it < target; ++it) {
 		MathInset const * p = it->nucleus();
 		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
@@ -102,7 +106,7 @@ MathArray::size_type MathXArray::x2pos(int targetx) const
 	const_iterator it = begin();
 	int lastx = 0;
 	int currx = 0;
-	for ( ; currx < targetx && it < end(); ++it) {
+	for (; currx < targetx && it < end(); ++it) {
 		lastx = currx;
 
 		int wid = 0;
@@ -192,7 +196,7 @@ void MathXArray::towards(int & x, int & y) const
 	center(cx, cy);
 
 	double r = 1.0;
-	int dist = (x - cx) * (x - cx) + (y - cy) * (y - cy);
+	//int dist = (x - cx) * (x - cx) + (y - cy) * (y - cy);
 
 	x = cx + int(r * (x - cx));
 	y = cy + int(r * (y - cy));

@@ -106,6 +106,9 @@ using std::pair;
 using std::make_pair; 
 using std::endl;
 using std::find_if;
+using std::vector;
+using std::transform;
+using std::back_inserter;
 
 extern BufferList bufferlist;
 extern LyXServer * lyxserver;
@@ -880,7 +883,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 				     (!keyseq.deleted())))
 		{
 			if ((action == LFUN_UNKNOWN_ACTION)
-			    && argument.empty()){
+			    && argument.empty()) {
 				argument = keyseq.getiso();
 			}
 			// Undo/Redo is a bit tricky for insets.
@@ -1024,10 +1027,10 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 	// --- Misc -------------------------------------------
 	case LFUN_EXEC_COMMAND:
 	{
-		std::vector<string> allCmds;
-		std::transform(lyxaction.func_begin(), lyxaction.func_end(),
-			       std::back_inserter(allCmds), lyx::firster());
-		static std::vector<string> hist;
+		vector<string> allCmds;
+		transform(lyxaction.func_begin(), lyxaction.func_end(),
+			  back_inserter(allCmds), lyx::firster());
+		static vector<string> hist;
 		owner->getMiniBuffer()->getString(MiniBuffer::spaces,
 						  allCmds, hist);
 	}
@@ -1143,7 +1146,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 #endif
 			p.setCmdName("tableofcontents");
 #if 0
-		else if (action == LFUN_LOAVIEW )
+		else if (action == LFUN_LOAVIEW)
 			p.setCmdName("listof{algorithm}{List of Algorithms}");
 		else if (action == LFUN_LOFVIEW)
 			p.setCmdName("listoffigures");
@@ -1412,7 +1415,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		Paragraph * par = owner->buffer()->getParFromID(id);
 		if (par == 0) {
 			lyxerr[Debug::INFO] << "No matching paragraph found! ["
-					    << id << "]" << std::endl;
+					    << id << "]" << endl;
 			break;
 		} else {
 			lyxerr << "Paragraph " << par->id()
@@ -1498,7 +1501,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 	
 	case LFUN_CITATION_CREATE:
 	{
-		InsetCommandParams p( "cite" );
+		InsetCommandParams p("cite");
 		
 		if (!argument.empty()) {
 			// This should be set at source, ie when typing
@@ -1506,14 +1509,14 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 			// Question: would pybibliographer also need to be
 			// changed. Suspect so. Leave as-is therefore.
 			if (contains(argument, "|")) {
-				p.setContents( token(argument, '|', 0) );
-				p.setOptions(  token(argument, '|', 1) );
+				p.setContents(token(argument, '|', 0));
+				p.setOptions( token(argument, '|', 1));
 			} else {
-				p.setContents( argument );
+				p.setContents(argument);
 			}
 			dispatch(LFUN_CITATION_INSERT, p.getAsString());
 		} else
-			owner->getDialogs()->createCitation( p.getAsString() );
+			owner->getDialogs()->createCitation(p.getAsString());
 	}
 	break;
 		    

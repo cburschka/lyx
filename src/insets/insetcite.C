@@ -18,8 +18,14 @@
 #include "BufferView.h"
 #include "LaTeXFeatures.h"
 #include "LyXView.h"
+
 #include "frontends/Dialogs.h"
+
 #include "support/lstrings.h"
+
+
+using std::ostream;
+
 
 InsetCitation::InsetCitation(InsetCommandParams const & p, bool)
 	: InsetCommand(p)
@@ -36,7 +42,7 @@ string const InsetCitation::getScreenLabel(Buffer const *) const
 		keys = frontStrip(split(keys, label, ',')) + ",";
 
 		string::size_type const maxSize = 40;
-		while (contains( keys, "," )) {
+		while (contains(keys, ",")) {
 			string key;
 			keys = frontStrip(split(keys, key, ','));
 
@@ -68,7 +74,7 @@ void InsetCitation::edit(BufferView * bv, bool)
 	edit(bv, 0, 0, 0);
 }
 
-int InsetCitation::ascii(Buffer const *, std::ostream & os, int) const
+int InsetCitation::ascii(Buffer const *, ostream & os, int) const
 {
         os << "[" << getContents() << "]";
         return 0;
@@ -78,7 +84,7 @@ int InsetCitation::ascii(Buffer const *, std::ostream & os, int) const
 // the \cite command is valid. Eg, the user has natbib enabled, inputs some
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
-int InsetCitation::latex(Buffer const * buffer, std::ostream & os,
+int InsetCitation::latex(Buffer const * buffer, ostream & os,
 			bool /*fragile*/, bool/*fs*/) const
 {
 	os << "\\";

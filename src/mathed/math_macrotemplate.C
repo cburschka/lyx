@@ -8,6 +8,9 @@
 #include "debug.h"
 
 
+using std::endl;
+
+
 MathMacroTemplate::MathMacroTemplate()
 	: MathNestInset(1), numargs_(0), name_()
 {}
@@ -18,7 +21,7 @@ MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs)
 {
 	if (numargs_ > 9)
 		lyxerr << "MathMacroTemplate::MathMacroTemplate: wrong # of arguments: "
-			<< numargs_ << std::endl;
+			<< numargs_ << endl;
 }
 
 

@@ -37,6 +37,7 @@ FL_APPEVENT_CB fl_set_preemptive_callback(Window, FL_APPEVENT_CB, void *);
  
 using std::endl;
 using std::abs;
+using std::hex;
 
 FL_OBJECT * figinset_canvas;
 
@@ -354,7 +355,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 	if (!area) return 1;
 	
-	switch (event){
+	switch (event) {
 	case FL_DRAW:
 		if (!area->work_area ||
 		    !area->work_area->form->visible)
@@ -614,8 +615,8 @@ string const WorkArea::getClipboard() const
 		if (fl_check_forms() == FL_EVENT) {
 			fl_XNextEvent(&ev);
 			lyxerr << "Received unhandled X11 event" << endl; 
-			lyxerr << "Type: 0x" << std::hex << ev.xany.type <<
-				"Target: 0x" << std::hex << ev.xany.window << endl;
+			lyxerr << "Type: 0x" << hex << ev.xany.type <<
+				"Target: 0x" << hex << ev.xany.window << endl;
 		}
 	}
 	return clipboard_selection;

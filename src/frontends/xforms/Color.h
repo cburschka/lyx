@@ -43,7 +43,7 @@ struct RGBColor {
 struct NamedColor : public RGBColor {
 	string name;
 	NamedColor() : RGBColor() {}
-	NamedColor(string const & n, RGBColor const & c )
+	NamedColor(string const & n, RGBColor const & c)
 		: RGBColor(c), name(n) {}
 	RGBColor const & color() const { return *this; }
 	string const & getname() const { return name; }

@@ -75,7 +75,7 @@ tex_accent_struct lyx_accent_table[18] = {
 tex_accent_struct get_accent(kb_action action)
 {
 	int i = 0;
-	while (i <= TEX_MAX_ACCENT){
+	while (i <= TEX_MAX_ACCENT) {
 		if (lyx_accent_table[i].action == action)
 			return lyx_accent_table[i];
 		++i;

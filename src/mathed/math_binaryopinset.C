@@ -11,6 +11,9 @@
 #include "math_mathmlstream.h"
 
 
+using std::max;
+
+
 MathBinaryOpInset::MathBinaryOpInset(char op)
 	: MathNestInset(2), op_(op)
 {}
@@ -34,8 +37,8 @@ void MathBinaryOpInset::metrics(MathMetricsInfo const & mi) const
 	xcell(0).metrics(mi);
 	xcell(1).metrics(mi);
 	width_   = xcell(0).width() + xcell(1).width() + opwidth();
-	ascent_  = std::max(xcell(0).ascent(),  xcell(1).ascent());
-	descent_ = std::max(xcell(0).descent(), xcell(1).descent());
+	ascent_  = max(xcell(0).ascent(),  xcell(1).ascent());
+	descent_ = max(xcell(0).descent(), xcell(1).descent());
 }
 
 

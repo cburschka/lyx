@@ -8,6 +8,8 @@
 #include "support/LAssert.h"
 
 
+using std::ostream;
+
 MathCursorPos::MathCursorPos()
 	: par_(0), idx_(0), pos_(0)
 {}
@@ -61,7 +63,7 @@ int MathCursorPos::ypos() const
 }
 
 
-std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
+ostream & operator<<(ostream & os, MathCursorPos const & p)
 {
 	os << "(par: " << p.par_ << " idx: " << p.idx_ << " pos: " << p.pos_ << ")";
 	return os;

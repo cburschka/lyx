@@ -66,7 +66,7 @@ ButtonPolicy::SMInput FormToc::input(FL_OBJECT * ob, long)
  
 	updateContents();
 
-	unsigned int const choice = fl_get_browser( dialog_->browser_toc );
+	unsigned int const choice = fl_get_browser(dialog_->browser_toc);
 
 	if (choice - 1 < toclist_.size() && choice >= 1) {
 		controller().Goto(toclist_[choice - 1].par->id());
@@ -134,7 +134,7 @@ void FormToc::updateContents()
 		fl_get_browser_topline(dialog_->browser_toc);
 	unsigned int const line = fl_get_browser(dialog_->browser_toc);
 
-	fl_clear_browser( dialog_->browser_toc );
+	fl_clear_browser(dialog_->browser_toc);
 
 	Buffer::SingleList::const_iterator cit = toclist_.begin();
 	Buffer::SingleList::const_iterator end = toclist_.end();

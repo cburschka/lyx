@@ -45,7 +45,7 @@ RGBColor::RGBColor(HSVColor const & hsv)
 		h /= 60.0;
 
 		int const j = max(0, static_cast<int>(::floor(h)));
-		//if( j < 0 ) j = 0;
+		//if (j < 0) j = 0;
 
 		double const f = h - j;
 		double const p = v * (1.0 - s);
@@ -91,9 +91,9 @@ RGBColor::RGBColor(HSVColor const & hsv)
 		}
 	}
 
-	r = static_cast<int>( ::floor((rd * 255.0) + 0.5) );
-	g = static_cast<int>( ::floor((gd * 255.0) + 0.5) );
-	b = static_cast<int>( ::floor((bd * 255.0) + 0.5) );
+	r = static_cast<int>(::floor((rd * 255.0) + 0.5));
+	g = static_cast<int>(::floor((gd * 255.0) + 0.5));
+	b = static_cast<int>(::floor((bd * 255.0) + 0.5));
 }
 
 
@@ -103,8 +103,8 @@ HSVColor::HSVColor(RGBColor const & rgb)
 	double const g = rgb.g / 255.0;
 	double const b = rgb.b / 255.0;
 
-	double const maxval = max( max( r, g ), b );
-	double const minval = min( min( r, g ), b );
+	double const maxval = max( max( r, g), b);
+	double const minval = min( min( r, g), b);
 
 	v = maxval;
 

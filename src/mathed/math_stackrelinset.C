@@ -7,6 +7,9 @@
 #include "math_support.h"
 
 
+using std::max;
+
+
 MathStackrelInset::MathStackrelInset()
 {}
 
@@ -23,7 +26,7 @@ void MathStackrelInset::metrics(MathMetricsInfo const & mi) const
 	smallerStyleFrac(m);
 	xcell(0).metrics(m);
 	xcell(1).metrics(mi);
-	width_   = std::max(xcell(0).width(), xcell(1).width()) + 4; 
+	width_   = max(xcell(0).width(), xcell(1).width()) + 4; 
 	ascent_  = xcell(1).ascent() + xcell(0).height() + 4;
 	descent_ = xcell(1).descent();
 }

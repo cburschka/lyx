@@ -233,7 +233,7 @@ void XFormsView::prohibitInput() const
 	static Cursor cursor;
 	static bool cursor_undefined = true;
    
-	if (cursor_undefined){
+	if (cursor_undefined) {
 		cursor = XCreateFontCursor(fl_get_display(), XC_watch);
 		XFlush(fl_get_display());
 		cursor_undefined = false;

@@ -302,7 +302,7 @@ searchKeys(InfoMap const & theMap,
 	   bool caseSensitive)
 {
 	// Preliminary checks
-	if(start < keys.begin() || start >= keys.end())
+	if (start < keys.begin() || start >= keys.end())
 		return keys.end();
 	
 	string search_expr = frontStrip(strip(expr));

@@ -23,7 +23,12 @@
 #include "commandtags.h"
 #include "debug.h"
 
+
+using std::vector;
 using std::endl;
+using std::hex;
+using std::dec;
+
 
 // The only modifiers that we handle. We want to throw away things
 // like NumLock.
@@ -137,7 +142,7 @@ string const kb_sequence::print() const
 	if (deleted_)
 		return buf;
 	
-	for (std::vector<unsigned int>::size_type i = 0; i < length_; ++i) {
+	for (vector<unsigned int>::size_type i = 0; i < length_; ++i) {
 		buf += kb_keymap::printKeysym(sequence[i], modifiers[i] & 0xffff);
 
 		// append a blank
@@ -182,9 +187,9 @@ char kb_sequence::getiso() const
 	unsigned int const c = getsym();
 
 	lyxerr[Debug::KBMAP] << "Raw keysym: "
-			     << std::hex << c << std::dec << endl;
+			     << hex << c << dec << endl;
 	lyxerr[Debug::KBMAP] << "byte 3: "
-			     << std::hex << (c & 0xff00) << std::dec
+			     << hex << (c & 0xff00) << dec
 			     << endl;
 	return kb_keymap::getiso(c);
 }

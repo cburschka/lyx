@@ -3,7 +3,7 @@
 #ifndef ITERATORS_H
 #define ITERATORS_H
 
-#include <vector>
+#include <stack>
 
 #include "paragraph.h"
 
@@ -36,23 +36,28 @@ bool operator!=(ParPosition const & pos1, ParPosition const & pos2) {
 class ParIterator {
 public:
 	///
+	typedef std::stack<ParPosition> PosHolder;
+	///
 	ParIterator() {}
-	//
-	ParIterator(Paragraph * par) 
-		: positions(1, ParPosition(par)) {}
+	///
+	ParIterator(Paragraph * par) {
+		positions.push(ParPosition(par));
+	}
 	///
 	ParIterator & operator++();
 	///
-	Paragraph * operator*() { return positions.back().par; }
+	Paragraph * operator*() {
+		return positions.top().par;
+	}
 	///
-	std::vector<ParPosition>::size_type size() const 
+	PosHolder::size_type size() const 
 		{ return positions.size(); }
 	///
 	friend
 	bool operator==(ParIterator const & iter1, ParIterator const & iter2);
 private:
 	///
-	std::vector<ParPosition> positions;
+	PosHolder positions;
 };
 
 

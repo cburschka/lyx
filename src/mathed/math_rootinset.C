@@ -20,6 +20,9 @@
 #include "Painter.h"
 
 
+using std::max;
+
+
 MathRootInset::MathRootInset()
 	: MathNestInset(2)
 {}
@@ -34,8 +37,8 @@ MathInset * MathRootInset::clone() const
 void MathRootInset::metrics(MathMetricsInfo const & mi) const
 {
 	MathNestInset::metrics(mi);
-	ascent_  = std::max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
-	descent_ = std::max(xcell(1).descent() + 5, xcell(0).descent()) + 2;
+	ascent_  = max(xcell(0).ascent()  + 5, xcell(1).ascent())  + 2;
+	descent_ = max(xcell(1).descent() + 5, xcell(0).descent()) + 2;
 	width_   = xcell(0).width() + xcell(1).width() + 10;
 }
 
@@ -43,8 +46,10 @@ void MathRootInset::metrics(MathMetricsInfo const & mi) const
 void MathRootInset::draw(Painter & pain, int x, int y) const
 {
 	int const w = xcell(0).width();
-	xcell(0).draw(pain, x, y - 5 - xcell(0).descent());       // the "exponent"
-	xcell(1).draw(pain, x + w + 8, y);   // the "base"
+	// the "exponent"
+	xcell(0).draw(pain, x, y - 5 - xcell(0).descent());
+	// the "base"
+	xcell(1).draw(pain, x + w + 8, y);
 	int const a = ascent();
 	int const d = descent();
 	int xp[5];

@@ -62,6 +62,7 @@ using std::min;
 using std::max;
 using std::make_pair;
 using std::vector;
+using std::pair;
 
 using lyx::pos_type;
 using lyx::layout_type;
@@ -1086,7 +1087,7 @@ InsetText::localDispatch(BufferView * bv,
 			updateLocal(bv, CURSOR_PAR, false);
 			return result;
 		} else if (result >= FINISHED) {
-			switch(result) {
+			switch (result) {
 			case FINISHED_RIGHT:
 				moveRightIntern(bv, false, false);
 				result = DISPATCHED;
@@ -1320,7 +1321,7 @@ InsetText::localDispatch(BufferView * bv,
 			// Derive layout number from given argument (string)
 			// and current buffer's textclass (number). */    
 			textclass_type tclass = bv->buffer()->params.textclass;
-			std::pair <bool, layout_type> layout = 
+			pair<bool, layout_type> layout = 
 				textclasslist.NumberOfLayout(tclass, arg);
 
 			// If the entry is obsolete, use the new one instead.
@@ -1524,7 +1525,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 			}
 
 			if (environment_stack[depth] != style.latexname()) {
-				if(environment_stack.size() == depth + 1) {
+				if (environment_stack.size() == depth + 1) {
 					environment_stack.push_back("!-- --");
 					environment_inner.push_back("!-- --");
 				}
@@ -1547,7 +1548,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 			
 			if (style.latextype == LATEX_ENVIRONMENT) {
 				if (!style.latexparam().empty()) {
-					if(style.latexparam() == "CDATA")
+					if (style.latexparam() == "CDATA")
 						os << "<![CDATA[";
 					else
 						buf->sgmlOpenTag(os, depth + command_depth,
@@ -1591,7 +1592,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 		switch (style.latextype) {
 		case LATEX_ENVIRONMENT:
 			if (!style.latexparam().empty()) {
-				if(style.latexparam() == "CDATA")
+				if (style.latexparam() == "CDATA")
 					os << "]]>";
 				else
 					buf->sgmlCloseTag(os, depth + command_depth,
@@ -1882,16 +1883,16 @@ bool InsetText::showInsetDialog(BufferView * bv) const
 }
 
 
-std::vector<string> const InsetText::getLabelList() const 
+vector<string> const InsetText::getLabelList() const 
 {
-	std::vector<string> label_list;
+	vector<string> label_list;
 
 	Paragraph * tpar = par;
 	while (tpar) {
 		Paragraph::inset_iterator beg = tpar->inset_iterator_begin();
 		Paragraph::inset_iterator end = tpar->inset_iterator_end();
 		for (; beg != end; ++beg) {
-			std::vector<string> const l = (*beg)->getLabelList();
+			vector<string> const l = (*beg)->getLabelList();
 			label_list.insert(label_list.end(), l.begin(), l.end());
 		}
 		tpar = tpar->next();

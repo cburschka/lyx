@@ -10,6 +10,9 @@
 #include "math_mathmlstream.h"
 
 
+using std::max;
+
+
 MathBraceInset::MathBraceInset()
 	: MathNestInset(1)
 {}
@@ -26,8 +29,8 @@ void MathBraceInset::metrics(MathMetricsInfo const & mi) const
 	xcell(0).metrics(mi);
 	int a, d;
 	mathed_char_dim(LM_TC_TEX, mi, '{', a, d, wid_);
-	ascent_  = std::max(xcell(0).ascent(), a);
-	descent_ = std::max(xcell(0).descent(), a);
+	ascent_  = max(xcell(0).ascent(), a);
+	descent_ = max(xcell(0).descent(), a);
 	width_   = xcell(0).width() + 2 * wid_;
 }
 

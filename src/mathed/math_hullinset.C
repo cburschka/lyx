@@ -15,6 +15,8 @@
 
 #include <vector>
 
+using std::vector;
+using std::max;
 using std::endl;
 
 namespace {
@@ -168,7 +170,7 @@ void MathHullInset::metrics(MathMetricsInfo const & mi) const
 	if (numberedType()) {
 		int l = 0;
 		for (row_type row = 0; row < nrows(); ++row)
-			l = std::max(l, mathed_string_width(LM_TC_BF, mi_, nicelabel(row)));
+			l = max(l, mathed_string_width(LM_TC_BF, mi_, nicelabel(row)));
 
 		if (l)
 			width_ += 30 + l;
@@ -178,8 +180,8 @@ void MathHullInset::metrics(MathMetricsInfo const & mi) const
 	int asc = 0;
 	int des = 0;
 	math_font_max_dim(LM_TC_TEXTRM, mi_, asc, des);
-	ascent_  = std::max(ascent_,  asc);
-	descent_ = std::max(descent_, des);
+	ascent_  = max(ascent_,  asc);
+	descent_ = max(descent_, des);
 }
 
 
@@ -244,9 +246,9 @@ bool MathHullInset::display() const
 }
 
 
-std::vector<string> const MathHullInset::getLabelList() const
+vector<string> const MathHullInset::getLabelList() const
 {
-	std::vector<string> res;
+	vector<string> res;
 	for (row_type row = 0; row < nrows(); ++row)
 		if (!label_[row].empty() && nonum_[row] != 1)
 			res.push_back(label_[row]);

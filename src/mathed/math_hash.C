@@ -8,11 +8,13 @@
 
 #include <map>
 
+using std::map;
 
 namespace {
 
-// global
-std::map<string, latexkeys> theWordList;
+// file scope
+typedef map<string, latexkeys> WordList;
+WordList theWordList;
 
 
 struct key_type {
@@ -197,6 +199,7 @@ void readSymbols(string const & filename)
 	}
 }
 
+
 void initSymbols()
 {
 	unsigned const n = sizeof(wordlist_array) / sizeof(wordlist_array[0]);
@@ -230,6 +233,6 @@ latexkeys const * in_word_set(string const & str)
 		initialized = true;
 	}
 
-	std::map<string, latexkeys>::iterator it = theWordList.find(str);
+	WordList::iterator it = theWordList.find(str);
 	return (it != theWordList.end()) ? &(it->second) : 0;
 }

@@ -31,6 +31,9 @@
 #include "LaTeXFeatures.h"
 
 
+using std::max;
+
+
 MathMacro::MathMacro(string const & name)
 	: MathNestInset(MathMacroTable::provide(name)->asMacroTemplate()->numargs()),
 		tmplate_(MathMacroTable::provide(name))
@@ -89,9 +92,9 @@ void MathMacro::metrics(MathMetricsInfo const & mi) const
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
 			c.metrics(mi_);
-			width_    = std::max(width_, c.width() + lwid);
-			descent_ += std::max(c.ascent(),  lasc) + 5;
-			descent_ += std::max(c.descent(), ldes) + 5;
+			width_    = max(width_, c.width() + lwid);
+			descent_ += max(c.ascent(),  lasc) + 5;
+			descent_ += max(c.descent(), ldes) + 5;
 		}
 		return;
 	} 
@@ -129,12 +132,12 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 
 		for (idx_type i = 0; i < nargs(); ++i) {
 			MathXArray const & c = xcell(i);
-			h += std::max(c.ascent(), lasc) + 5;
+			h += max(c.ascent(), lasc) + 5;
 			c.draw(pain, x + lwid, h);
 			char str[] = "#1:";
 			str[1] += static_cast<char>(i);
 			drawStr(pain, LM_TC_TEX, mi_, x + 3, h, str);
-			h += std::max(c.descent(), ldes) + 5;
+			h += max(c.descent(), ldes) + 5;
 		}
 		return;
 	}

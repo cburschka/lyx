@@ -13,7 +13,10 @@
 #include "gettext.h"
 #include "debug.h"
 
+
+using std::ostream;
 using std::endl;
+
 
 InsetFloatList::InsetFloatList()
 	: InsetCommand(InsetCommandParams())
@@ -45,7 +48,7 @@ Inset::Code InsetFloatList::lyxCode() const
 }
 
 
-void InsetFloatList::write(Buffer const *, std::ostream & os) const
+void InsetFloatList::write(Buffer const *, ostream & os) const
 {
 	os << "FloatList " << getCmdName() << "\n";
 }
@@ -85,7 +88,7 @@ void InsetFloatList::edit(BufferView * bv, bool)
 }
 
 
-int InsetFloatList::latex(Buffer const *, std::ostream & os, bool, bool) const
+int InsetFloatList::latex(Buffer const *, ostream & os, bool, bool) const
 {
 	FloatList::const_iterator cit = floatList[getCmdName()];
 
@@ -112,7 +115,7 @@ int InsetFloatList::latex(Buffer const *, std::ostream & os, bool, bool) const
 }
 
 
-int InsetFloatList::ascii(Buffer const * buffer, std::ostream & os, int) const
+int InsetFloatList::ascii(Buffer const * buffer, ostream & os, int) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 

@@ -187,7 +187,7 @@ case "$lyx_use_frontend" in
   xforms) 
   # for now don't set it for xforms as this is always entered
     FRONTEND=""
-    FRONTEND_GUILIB="xforms/libxforms.la";;
+    FRONTEND_GUILIB="xforms/libxforms.o";;
   gnome)    
     AM_PATH_GTKMM(1.2.1,,
         AC_MSG_ERROR(Cannot find GTK--: Please install Version 1.2.1+))

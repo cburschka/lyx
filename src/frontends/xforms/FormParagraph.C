@@ -35,8 +35,12 @@
 
 #include "support/lstrings.h"
 
+#include <functional>
+
 using Liason::setMinibuffer;
 using SigC::slot;
+using std::vector;
+using std::bind2nd;
 
 
 FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
@@ -91,8 +95,8 @@ void FormParagraph::changedParagraph()
 
 void FormParagraph::redraw()
 {
-	if( form() && form()->visible )
-		fl_redraw_form( form() );
+	if (form() && form()->visible)
+		fl_redraw_form(form());
 }
 
 
@@ -126,12 +130,22 @@ void FormParagraph::build()
 
     // Create the contents of the unit choices
     // Don't include the "%" terms...
-    std::vector<string> units_vec = getLatexUnits();
-    for (std::vector<string>::iterator it = units_vec.begin();
+#warning A bit dangerous... (Lgb)
+    vector<string> units_vec = getLatexUnits();
+#if 0
+    for (vector<string>::iterator it = units_vec.begin();
        it != units_vec.end(); ++it) {
        if (contains(*it, "%"))
                it = units_vec.erase(it, it+1) - 1;
     }
+#else
+    // Something similar to this is a better way to erase
+    vector<string>::iterator del =
+	    remove_if(units_vec.begin(), units_vec.end(),
+		      bind2nd(contains_functor(), "%"));
+    units_vec.erase(del, units_vec.end());
+#endif
+    
     string units = getStringFromVector(units_vec, "|");
 
     fl_addto_choice(dialog_->choice_value_space_above,  units.c_str());

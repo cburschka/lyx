@@ -419,7 +419,7 @@ LyXFont::FONT_MISC_STATE LyXFont::noun() const
 inline
 bool LyXFont::isSymbolFont() const
 {
-	switch(family()) {
+	switch (family()) {
 	case LyXFont::SYMBOL_FAMILY:
 	case LyXFont::CMSY_FAMILY:
 	case LyXFont::CMM_FAMILY:

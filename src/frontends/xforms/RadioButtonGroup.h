@@ -22,9 +22,6 @@
 #pragma interface
 #endif 
 
-using std::vector;
-using std::pair;
-
 
 /** This class simplifies the work with a group of radio buttons,
  * the idea is that you register a bunch of radio buttons with the accompanying
@@ -38,7 +35,7 @@ public:
 	RadioButtonGroup(unsigned n = 5) : map(n) {};
 
 	/// Register a radio button with it's corresponding value.
-	void registerRadioButton(FL_OBJECT *button, int value);
+	void registerRadioButton(FL_OBJECT * button, int value);
 	/// Reset registrations.
 	void reset();
 
@@ -50,9 +47,9 @@ public:
 
 private:
 	///
-	typedef pair<FL_OBJECT *, int> ButtonValuePair;
+	typedef std::pair<FL_OBJECT *, int> ButtonValuePair;
 	///
-	typedef vector<ButtonValuePair> ButtonValueMap;
+	typedef std::vector<ButtonValuePair> ButtonValueMap;
 	///
 	ButtonValueMap map;
 };

@@ -1246,7 +1246,7 @@ void LyXRC::output(ostream & os) const
 		   << "#\n\n";
 		
 	case RC_SET_COLOR:
-		for (int i = 0; i < LColor::ignore; ++i ) {
+		for (int i = 0; i < LColor::ignore; ++i) {
 			LColor::color lc = static_cast<LColor::color>(i);
 			
 			string const col(lcolor.getX11Name(lc));

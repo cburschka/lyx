@@ -21,6 +21,9 @@
 #include "support/LOstream.h"
 
 
+using std::ostream;
+
+
 InsetFootlike::InsetFootlike()
 	: InsetCollapsable()
 {
@@ -43,7 +46,7 @@ InsetFootlike::InsetFootlike(InsetFootlike const & in, bool same_id)
 }
 
 
-void InsetFootlike::write(Buffer const * buf, std::ostream & os) const 
+void InsetFootlike::write(Buffer const * buf, ostream & os) const 
 {
 	os << getInsetName() << "\n";
 	InsetCollapsable::write(buf, os);

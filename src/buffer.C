@@ -1530,7 +1530,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 		} else if (tmptok == "Note") {
 			inset = new InsetNote;
 		} else if (tmptok == "Include") {
-			InsetCommandParams p( "Include" );
+			InsetCommandParams p("Include");
 			inset = new InsetInclude(p, *this);
 		} else if (tmptok == "ERT") {
 			inset = new InsetERT;
@@ -2086,7 +2086,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	// original_path is set. This is done for usual tex-file, but not
 	// for nice-latex-file. (Matthias 250696)
 	if (!only_body) {
-		if (!nice){
+		if (!nice) {
 			// code for usual, NOT nice-latex-file
 			ofs << "\\batchmode\n"; // changed
 			// from \nonstopmode
@@ -2185,7 +2185,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		}
 
 		string strOptions(options.str().c_str());
-		if (!strOptions.empty()){
+		if (!strOptions.empty()) {
 			strOptions = strip(strOptions, ',');
 			ofs << '[' << strOptions << ']';
 		}
@@ -2692,7 +2692,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		if (par->isInset(0)) {
 		        Inset * inset = par->getInset(0);
 			Inset::Code lyx_code = inset->lyxCode();
-			if (lyx_code == Inset::TOC_CODE){
+			if (lyx_code == Inset::TOC_CODE) {
 				string const temp = "toc";
 				sgmlOpenTag(ofs, depth, temp);
 
@@ -2728,7 +2728,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 					  _("Error : Wrong depth for"
 					    " LatexType Command.\n"));
 
-			if (!environment_stack[depth].empty()){
+			if (!environment_stack[depth].empty()) {
 				sgmlCloseTag(ofs, depth,
 					     environment_stack[depth]);
 				ofs << "</p>";
@@ -2861,7 +2861,7 @@ void operator|=(PAR_TAG & p1, PAR_TAG const & p2)
 inline
 void reset(PAR_TAG & p1, PAR_TAG const & p2)
 {
-	p1 = static_cast<PAR_TAG>( p1 & ~p2);
+	p1 = static_cast<PAR_TAG>(p1 & ~p2);
 }
 
 } // namespace anon
@@ -2986,7 +2986,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 		}
 
 		list < PAR_TAG > temp;
-		while (!tag_state.empty() && tag_close ) {
+		while (!tag_state.empty() && tag_close) {
 			PAR_TAG k =  tag_state.top();
 			tag_state.pop();
 			os << "</" << tag_name(k) << ">";
@@ -3227,7 +3227,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			if (par->isInset(0)) {
 			        Inset * inset = par->getInset(0);
 				Inset::Code lyx_code = inset->lyxCode();
-				if (lyx_code == Inset::LABEL_CODE){
+				if (lyx_code == Inset::LABEL_CODE) {
 					command_name += " id=\"";
 					command_name += (static_cast<InsetCommand *>(inset))->getContents();
 					command_name += "\"";
@@ -3251,7 +3251,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			}
 
 			if (environment_stack[depth] != style.latexname()) {
-				if(environment_stack.size() == depth + 1) {
+				if (environment_stack.size() == depth + 1) {
 					environment_stack.push_back("!-- --");
 					environment_inner.push_back("!-- --");
 				}
@@ -3274,7 +3274,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			
 			if (style.latextype == LATEX_ENVIRONMENT) {
 				if (!style.latexparam().empty()) {
-					if(style.latexparam() == "CDATA")
+					if (style.latexparam() == "CDATA")
 						ofs << "<![CDATA[";
 					else
 						sgmlOpenTag(ofs, depth + command_depth,
@@ -3324,7 +3324,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			break;
 		case LATEX_ENVIRONMENT:
 			if (!style.latexparam().empty()) {
-				if(style.latexparam() == "CDATA")
+				if (style.latexparam() == "CDATA")
 					ofs << "]]>";
 				else
 					sgmlCloseTag(ofs, depth + command_depth,
@@ -3398,17 +3398,17 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 			if (font.emph() == LyXFont::ON) {
 				os << "<emphasis>";
 				emph_flag = true;
-			}else if(i) {
+			} else if (i) {
 				os << "</emphasis>";
 				emph_flag = false;
 			}
 		}
       
 
-		if ( par->isInset(i) ) {
+		if (par->isInset(i)) {
 			Inset * inset = par->getInset(i);
 			// don't print the inset in position 0 if desc_on == 3 (label)
-			if ( i || desc_on != 3)
+			if (i || desc_on != 3)
 				inset->docbook(this, os);
 		} else {
 			char c = par->getChar(i);
@@ -3417,7 +3417,7 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 
 			if (style.pass_thru) {
 				os << c;
-			} else if(style.free_spacing || par->isFreeSpacing() || c != ' ') {
+			} else if (style.free_spacing || par->isFreeSpacing() || c != ' ') {
 					os << sgml_string;
 			} else if (desc_on ==1) {
 				++char_line_count;
@@ -3439,7 +3439,7 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 		// <term> not closed...
 		os << "</term>";
 	}
-	if(style.free_spacing) os << '\n';
+	if (style.free_spacing) os << '\n';
 }
 
 
@@ -3484,7 +3484,7 @@ int Buffer::runChktex()
 
 	// if we removed error insets before we ran chktex or if we inserted
 	// error insets after we ran chktex, this must be run:
-	if (removedErrorInsets || res){
+	if (removedErrorInsets || res) {
 		users->redraw();
 		users->fitCursor();
 	}

@@ -432,31 +432,46 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 int VSpace::inPixels(BufferView * bv) const
 {
 	// Height of a normal line in pixels (zoom factor considered)
-	int default_height = bv->text->defaultHeight(); // [pixels]
-	int default_width  = bv->workWidth();
+	int const default_height = bv->text->defaultHeight(); // [pixels]
 
+	int retval = 0;
+	
 	switch (kind_) {
 	case NONE:
-		return 0;
+		// Value for this is already set
+		break;
 	case DEFSKIP:
-		return bv->buffer()->params.getDefSkip().inPixels(bv);
-
+		retval = bv->buffer()->params.getDefSkip().inPixels(bv);
+		break;
+			
 		// This is how the skips are normally defined by
 		// LateX.  But there should be some way to change
 		// this per document.
 	case SMALLSKIP:
-		return default_height / 4;
+		retval = default_height / 4;
+		break;
+			
 	case MEDSKIP:
-		return default_height / 2;
+		retval = default_height / 2;
+		break;
+			
 	case BIGSKIP:
-		return default_height;
+		retval = default_height;
+		break;
 
 	case VFILL:
 		// leave space for the vfill symbol
-		return 3 * default_height;
+		retval = 3 * default_height;
+		break;
+		
 	case LENGTH:
-		return len_.len().inPixels(default_width, default_height);
+	{
+		int const default_width  = bv->workWidth();
+		retval = len_.len().inPixels(default_width, default_height);
+		break;
 	}
-	// we cannot go there, but there is a compiler warning...
-	return 0;
+		
+	}
+
+	return retval;
 }

@@ -13,6 +13,7 @@
 #include "debug.h"
 #include "trans_mgr.h"
 
+using std::map;
 using std::endl;
 
 
@@ -181,9 +182,9 @@ int Trans::Load(LyXLex & lex)
 			tex_accent accent_2= getkeymod(str);
 			if (accent_2 == TEX_NOACCENT) return -1;
 
-			std::map<int, KmodInfo>::iterator it1 =
+			map<int, KmodInfo>::iterator it1 =
 				kmod_list_.find(accent_1);
-			std::map<int, KmodInfo>::iterator it2 =
+			map<int, KmodInfo>::iterator it2 =
 				kmod_list_.find(accent_2);
 			if (it1 == kmod_list_.end()
 			    || it2 == kmod_list_.end()) {
@@ -192,8 +193,8 @@ int Trans::Load(LyXLex & lex)
 
 			// Find what key accent_2 is on - should
 			// check about accent_1 also
-			std::map<int, string>::iterator it = keymap_.begin();
-			std::map<int, string>::iterator end = keymap_.end();
+			map<int, string>::iterator it = keymap_.begin();
+			map<int, string>::iterator end = keymap_.end();
 			for (; it != end; ++it) {
 				if (!it->second.empty()
 				    && it->second[0] == 0
@@ -288,7 +289,7 @@ int Trans::Load(LyXLex & lex)
 
 bool Trans::isAccentDefined(tex_accent accent, KmodInfo & i) const
 {
-	std::map<int, KmodInfo>::const_iterator cit = kmod_list_.find(accent);
+	map<int, KmodInfo>::const_iterator cit = kmod_list_.find(accent);
 	if (cit != kmod_list_.end()) {
 		i = cit->second;
 		return true;

@@ -24,8 +24,14 @@
 #include <algorithm>
 #include <iterator>
 
+
+using std::ifstream;
+using std::ofstream;
 using std::getline;
 using std::endl;
+using std::find;
+using std::copy;
+using std::ostream_iterator;
 
 
 LastFiles::LastFiles(string const & filename, bool st, unsigned int num)
@@ -53,7 +59,7 @@ void LastFiles::readFile(string const & filename)
 {
 	// we will not complain if we can't find filename nor will
 	// we issue a warning. (Lgb)
-	std::ifstream ifs(filename.c_str());
+	ifstream ifs(filename.c_str());
 	string tmp;
 	FileInfo fileInfo;
 
@@ -70,10 +76,10 @@ void LastFiles::readFile(string const & filename)
 
 void LastFiles::writeFile(string const & filename) const
 {
-	std::ofstream ofs(filename.c_str());
+	ofstream ofs(filename.c_str());
 	if (ofs) {
-		std::copy(files.begin(), files.end(),
-			  std::ostream_iterator<string>(ofs, "\n"));
+		copy(files.begin(), files.end(),
+		     ostream_iterator<string>(ofs, "\n"));
 	} else
 		lyxerr << "LyX: Warning: unable to save LastFiles: "
 		       << filename << endl;
@@ -83,7 +89,7 @@ void LastFiles::writeFile(string const & filename) const
 void LastFiles::newFile(string const & file)
 {
 	// If file already exist, delete it and reinsert at front.
-	Files::iterator it = std::find(files.begin(), files.end(), file);
+	Files::iterator it = find(files.begin(), files.end(), file);
 	if (it != files.end())
 		files.erase(it);
 	files.push_front(file);

@@ -1,3 +1,11 @@
+2002-02-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* a lot of small ws changes
+	* add a lot of using std::XXX
+	* use std construcs some places where approp.
+	* use some exisint stuff from lyxfunctional where approp.
+	* Make file changes to use partial linking (lets test this now...)
+	
 2002-02-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Chktex.C:

@@ -10,13 +10,15 @@
 #include "debug.h"
 
 
+using std::endl;
+
 
 MathMacroArgument::MathMacroArgument(int n, MathTextCodes code)
 	: MathNestInset(1), number_(n), expanded_(false), code_(code)
 {
 	if (n < 1 || n > 9) {
 		lyxerr << "MathMacroArgument::MathMacroArgument: wrong Argument id: "
-			<< n << std::endl;
+			<< n << endl;
 	}
 	str_[0] = '#';
 	str_[1] = static_cast<unsigned char>('0' + n);

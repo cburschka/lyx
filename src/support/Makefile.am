@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-noinst_LTLIBRARIES = libsupport.la
+noinst_LTLIBRARIES = libsupport.o
 LIBS =
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
@@ -17,7 +17,7 @@ if USE_REGEX
 REGEX = regex.c lyxregex.h
 endif
 
-libsupport_la_SOURCES = \
+libsupport_o_SOURCES = \
 	DebugStream.C \
 	DebugStream.h \
 	FileInfo.C \

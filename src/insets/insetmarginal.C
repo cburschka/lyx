@@ -24,6 +24,9 @@
 #include "debug.h"
 
 
+using std::ostream;
+
+
 InsetMarginal::InsetMarginal()
 	: InsetFootlike()
 {
@@ -53,7 +56,7 @@ string const InsetMarginal::editMessage() const
 
 
 int InsetMarginal::latex(Buffer const * buf,
-			 std::ostream & os, bool fragile, bool fp) const
+			 ostream & os, bool fragile, bool fp) const
 {
 	os << "%\n\\marginpar{";
 	

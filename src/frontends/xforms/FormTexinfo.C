@@ -85,7 +85,7 @@ ButtonPolicy::SMInput FormTexinfo::input(FL_OBJECT * ob, long) {
 		unsigned int selection = fl_get_browser(dialog_->browser);
 		// a valid entry?
 		if (selection > 0) {
-			controller().viewFile( 
+			controller().viewFile(
 				fl_get_browser_line(dialog_->browser,
 						    selection));
 		}

@@ -9,6 +9,9 @@
 #include "debug.h"
 
 
+using std::ostream;
+
+
 MathSymbolInset::MathSymbolInset(const latexkeys * l)
 	: sym_(l), h_(0)
 {}
@@ -33,7 +36,7 @@ MathInset * MathSymbolInset::clone() const
 
 MathTextCodes MathSymbolInset::code() const
 {
-	switch(sym_->token) {
+	switch (sym_->token) {
 	case LM_TK_CMR:
 		return LM_TC_CMR;
 	case LM_TK_CMSY:
@@ -183,7 +186,7 @@ void MathSymbolInset::write(WriteStream & os) const
 }
 
 
-void MathSymbolInset::infoize(std::ostream & os) const
+void MathSymbolInset::infoize(ostream & os) const
 {
 	os << '\\' << name();
 }

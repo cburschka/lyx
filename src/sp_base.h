@@ -1,3 +1,4 @@
+// -*- C++ -*-
 #ifndef SP_BASE_H
 #define SP_BASE_H
 
@@ -23,7 +24,7 @@ class SpellBase
    
    virtual ~SpellBase() {}
 
-   virtual void initialize(BufferParams const & , string const & ) = 0;
+   virtual void initialize(BufferParams const & , string const &) = 0;
 
    virtual bool alive() = 0;
    
@@ -33,11 +34,11 @@ class SpellBase
 
    virtual void close() = 0;
 
-   virtual void insert(string const & ) = 0;
+   virtual void insert(string const &) = 0;
 
-   virtual void accept(string const & ) = 0;
+   virtual void accept(string const &) = 0;
 
-   virtual void store(string const & , string const & ) = 0;
+   virtual void store(string const & , string const &) = 0;
 
    virtual char const * error() = 0;
 

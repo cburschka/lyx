@@ -33,6 +33,7 @@ using std::endl;
 using std::vector;
 using std::max;
 using std::min;
+using std::for_each;
 
 typedef vector<int>::size_type size_type;
 
@@ -384,7 +385,7 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 				   string const & menu_name, 
 				   vector<int> & smn) 
 {
-	if (!menubackend_->hasMenu(menu_name)){ 
+	if (!menubackend_->hasMenu(menu_name)) { 
 		lyxerr << "ERROR:create_submenu: Unknown menu `" 
 		       << menu_name << "'" << endl;
 		return -1;
@@ -591,7 +592,7 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 		lyxerr << "Error in MenuCallback" << endl;
 	}
 	
-	std::for_each(submenus.begin(), submenus.end(), fl_freepup);
+	for_each(submenus.begin(), submenus.end(), fl_freepup);
 	// restore tabstop length
 	fl_set_tabstop(default_tabstop);
 

@@ -562,7 +562,7 @@ int LyXTabular::GetAdditionalHeight(int row) const
 		}
 	}
 	for (int column = 0; column < columns_ && top; ++column) {
-		switch (cell_info[row][column].multicolumn){
+		switch (cell_info[row][column].multicolumn) {
 		case LyXTabular::CELL_BEGIN_OF_MULTICOLUMN:
 			top = cell_info[row][column].top_line;
 			break;
@@ -885,7 +885,7 @@ int LyXTabular::GetBeginningOfTextInCell(int cell) const
 {
 	int x = 0;
    
-	switch (GetAlignment(cell)){
+	switch (GetAlignment(cell)) {
 	case LYX_ALIGN_CENTER:
 		x += (GetWidthOfColumn(cell) - GetWidthOfCell(cell)) / 2;
 		break;
@@ -1884,7 +1884,7 @@ int LyXTabular::TeXTopHLine(ostream & os, int row) const
 		if (TopLine(i))
 			++tmp;
 	}
-	if (tmp == (n - fcell)){
+	if (tmp == (n - fcell)) {
 		os << "\\hline ";
 	} else if (tmp) {
 		for (int i = fcell; i < n; ++i) {
@@ -1917,7 +1917,7 @@ int LyXTabular::TeXBottomHLine(ostream & os, int row) const
 		if (BottomLine(i))
 			++tmp;
 	}
-	if (tmp == (n-fcell)){
+	if (tmp == (n - fcell)) {
 		os << "\\hline";
 	} else if (tmp) {
 		for (int i = fcell; i < n; ++i) {
@@ -2036,7 +2036,7 @@ int LyXTabular::TeXCellPostamble(ostream & os, int cell) const
 		os << "%\n\\end{minipage}";
 		ret += 2;
 	}
-	if (IsMultiColumn(cell)){
+	if (IsMultiColumn(cell)) {
 		os << '}';
 	}
 	if (GetRotateCell(cell)) {
@@ -2360,27 +2360,27 @@ int LyXTabular::docBook(Buffer const * buf, ostream & os) const
 #warning Jose please have a look here I changed the longtable header/footer
 #warning ---- options so I had to disable the docbook code (Jug 20011219)
 #if 0
-	if ( IsLongTabular() ) {
+	if (IsLongTabular()) {
 		// Header
-		if(endhead.row || endfirsthead.row ) {
+		if (endhead.row || endfirsthead.row) {
 			os << "<thead>\n";
-			if( endfirsthead.row ) {
-				docbookRow( buf, os, endfirsthead.row - 1);
+			if (endfirsthead.row) {
+				docbookRow(buf, os, endfirsthead.row - 1);
 			}
-			if( endhead.row && endhead.row != endfirsthead.row) {
+			if (endhead.row && endhead.row != endfirsthead.row) {
 				docbookRow(buf, os, endhead.row - 1);
 			}
 			os << "</thead>\n";
 		}
 
 		// Footer
-		if( endfoot.row || endlastfoot.row ) {
+		if (endfoot.row || endlastfoot.row) {
 			os << "<tfoot>\n";
-			if( endfoot.row ) {
-				docbookRow( buf, os, endfoot.row - 1);
+			if (endfoot.row) {
+				docbookRow(buf, os, endfoot.row - 1);
 			}
-			if( endlastfoot.row && endlastfoot.row != endfoot.row) {
-				docbookRow( buf, os, endlastfoot.row - 1);
+			if (endlastfoot.row && endlastfoot.row != endfoot.row) {
+				docbookRow(buf, os, endlastfoot.row - 1);
 			}
 			os << "</tfoot>\n";
 		}
@@ -2392,10 +2392,10 @@ int LyXTabular::docBook(Buffer const * buf, ostream & os) const
 
 	os << "<tbody>\n";
 	for (int i = 0; i < rows_; ++i) {
-		if(!IsLongTabular() || (
+		if (!IsLongTabular() || (
 		   !row_info[i].endhead && !row_info[i].endfirsthead &&
 		   !row_info[i].endfoot && !row_info[i].endlastfoot)) {
-			docbookRow( buf, os, i);
+			docbookRow(buf, os, i);
 		}
 	}
 	os << "</tbody>\n";
@@ -2701,12 +2701,12 @@ void LyXTabular::Validate(LaTeXFeatures & features) const
 }
 
 
-std::vector<string> const LyXTabular::getLabelList() const
+vector<string> const LyXTabular::getLabelList() const
 {
-	std::vector<string> label_list;
+	vector<string> label_list;
 	for (int i = 0; i < rows_; ++i)
 		for (int j = 0; j < columns_; ++j) {
-			std::vector<string> const l =
+			vector<string> const l =
 				GetCellInset(i, j)->getLabelList();
 			label_list.insert(label_list.end(),
 					  l.begin(), l.end());

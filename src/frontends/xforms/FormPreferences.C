@@ -37,15 +37,16 @@
 #include "lyxrc.h"
 #include "combox.h"
 #include "debug.h"
-#include "support/filetools.h"
-#include "support/LAssert.h"
 #include "lyxlex.h"
 #include "input_validators.h"
 #include "xforms_helpers.h"
 #include "helper_funcs.h"
 #include "converter.h"
+
 #include "support/lyxfunctional.h"
 #include "support/lyxmanip.h"
+#include "support/filetools.h"
+#include "support/LAssert.h"
 
 using std::endl;
 using std::pair;
@@ -53,6 +54,9 @@ using std::make_pair;
 using std::max;
 using std::min;
 using std::vector;
+using std::setw;
+using std::setfill;
+
 using SigC::slot;
 
 extern string system_lyxdir;
@@ -564,7 +568,7 @@ void FormPreferences::Colors::AdjustVal(int colAdjust, int colParent,
 
 	HSVColor hsv(rgb);
 	hsv.v += addVal;
-	hsv.v = min( 1.0, max(0.0, hsv.v) );
+	hsv.v = min(1.0, max(0.0, hsv.v));
 
 	rgb = RGBColor(hsv);
 	fl_mapcolor(colAdjust, rgb.r, rgb.g, rgb.b);
@@ -580,7 +584,7 @@ void FormPreferences::Colors::InputBrowserLyX() const
 	// Is the choice an Xforms color...
 	RGBColor col;
 
-	if( selLyX-1 < xformsColorDB.size() ) {
+	if (selLyX - 1 < xformsColorDB.size()) {
 		vector<XformsColor>::size_type const i = selLyX - 1;
 		col = xformsColorDB[i].color();
 	}
@@ -643,7 +647,7 @@ void FormPreferences::Colors::InputHSV()
 	bool modify = false;
 	
 	// Is the choice an Xforms color...
-	if( selLyX-1 < xformsColorDB.size() ) {
+	if (selLyX - 1 < xformsColorDB.size()) {
 		vector<XformsColor>::size_type const i = selLyX - 1;
 		modify = (xformsColorDB[i].color() != col);
 	}
@@ -684,7 +688,7 @@ void FormPreferences::Colors::InputRGB()
 	bool modify = false;
 	
 	// Is the choice an Xforms color...
-	if( selLyX-1 < xformsColorDB.size() ) {
+	if (selLyX - 1 < xformsColorDB.size()) {
 		vector<XformsColor>::size_type const i = selLyX - 1;
 		modify = (xformsColorDB[i].color() != col);
 	}
@@ -827,7 +831,7 @@ void FormPreferences::Colors::Modify()
 	fl_getmcolor(GUI_COLOR_CHOICE, &col.r, &col.g, &col.b);
 
 	// Is the choice an Xforms color...
-	if( selLyX-1 < xformsColorDB.size() ) {
+	if (selLyX - 1 < xformsColorDB.size()) {
 		vector<XformsColor>::size_type const i = selLyX - 1;
 		xformsColorDB[i].r  = col.r;
 		xformsColorDB[i].g  = col.g;
@@ -915,10 +919,10 @@ string const FormPreferences::Colors::X11hexname(RGBColor const & col) const
 {
 	ostringstream ostr;
 
-	ostr << "#" << std::setbase(16) << std::setfill('0')
-	     << std::setw(2) << col.r
-	     << std::setw(2) << col.g
-	     << std::setw(2) << col.b;
+	ostr << "#" << std::setbase(16) << setfill('0')
+	     << setw(2) << col.r
+	     << setw(2) << col.g
+	     << setw(2) << col.b;
 
 	return ostr.str().c_str();
 }
@@ -1183,7 +1187,7 @@ void FormPreferences::Converters::UpdateChoices() const
 }
 
 
-FormPreferences::Formats::Formats( FormPreferences &  p )
+FormPreferences::Formats::Formats(FormPreferences &  p)
 	: parent_(p)
 {}
 
@@ -1408,7 +1412,7 @@ bool FormPreferences::Formats::Input()
 }
 
 
-FormPreferences::InputsMisc::InputsMisc( FormPreferences &  p )
+FormPreferences::InputsMisc::InputsMisc(FormPreferences &  p)
 	: parent_(p)
 {}
 
@@ -1456,7 +1460,7 @@ void FormPreferences::InputsMisc::update()
 }
 
 
-FormPreferences::Interface::Interface( FormPreferences &  p )
+FormPreferences::Interface::Interface(FormPreferences &  p)
 	: parent_(p)
 {}
 
@@ -1573,7 +1577,7 @@ void FormPreferences::Interface::update()
 }
 
 
-FormPreferences::Language::Language( FormPreferences &  p )
+FormPreferences::Language::Language(FormPreferences &  p)
 	: parent_(p)
 {}
 
@@ -1803,7 +1807,7 @@ void FormPreferences::Language::ComboCB(int, void * v, Combox * combox)
 }
 
 
-FormPreferences::LnFmisc::LnFmisc( FormPreferences &  p )
+FormPreferences::LnFmisc::LnFmisc(FormPreferences &  p)
 	: parent_(p)
 {}
 
@@ -1931,7 +1935,7 @@ void FormPreferences::LnFmisc::update()
 }
 
 
-FormPreferences::OutputsMisc::OutputsMisc( FormPreferences &  p )
+FormPreferences::OutputsMisc::OutputsMisc(FormPreferences &  p)
 	: parent_(p)
 {}
 
@@ -2029,7 +2033,7 @@ void FormPreferences::OutputsMisc::update()
 }
 
 
-FormPreferences::Paths::Paths( FormPreferences &  p )
+FormPreferences::Paths::Paths(FormPreferences &  p)
 	: parent_(p)
 {}
 
@@ -2450,7 +2454,7 @@ void FormPreferences::Printer::update()
 }
 
 
-FormPreferences::ScreenFonts::ScreenFonts( FormPreferences &  p )
+FormPreferences::ScreenFonts::ScreenFonts(FormPreferences &  p)
 	: parent_(p)
 {}
 
@@ -2758,7 +2762,7 @@ void FormPreferences::ScreenFonts::update()
 
 
 
-FormPreferences::SpellOptions::SpellOptions( FormPreferences &  p )
+FormPreferences::SpellOptions::SpellOptions(FormPreferences &  p)
 	: parent_(p)
 {}
 

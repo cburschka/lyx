@@ -17,11 +17,16 @@
 #endif 
 
 #include "insetgraphicsParams.h"
+
 #include "support/translator.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 #include "support/LOstream.h"
 #include "support/LAssert.h"
+
+
+using std::ostream;
+
 
 namespace {
 
@@ -164,7 +169,7 @@ bool operator==(InsetGraphicsParams const & left,
 	        left.rotateOrigin == right.rotateOrigin &&
 	        lyx::float_equal(left.rotateAngle, right.rotateAngle, 0.001 &&
 		left.special == right.special) 
-	   )
+	  )
 		return true;
 
 	return false;

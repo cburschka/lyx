@@ -14,26 +14,31 @@
 #pragma implementation
 #endif
 
-#include <cstdio>
-#include <utility>
-
 #include "insetexternal.h"
 #include "ExternalTemplate.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "LyXView.h"
-#include "frontends/Dialogs.h"
 #include "lyx_main.h"
 #include "LaTeXFeatures.h"
+#include "gettext.h"
+#include "debug.h"
+
+#include "frontends/Dialogs.h"
+
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/path.h"
 #include "support/syscall.h"
-#include "gettext.h"
-#include "debug.h"
 #include "support/FileInfo.h"
 
+#include <cstdio>
+#include <utility>
+
+
+using std::ostream;
 using std::endl;
+
 
 InsetExternal::InsetExternal() 
 	: view_(0)
@@ -85,10 +90,10 @@ void InsetExternal::edit(BufferView * bv, bool)
 }
 
 
-void InsetExternal::write(Buffer const *, std::ostream & os) const
+void InsetExternal::write(Buffer const *, ostream & os) const
 {
-	os << "External " << params_.templ.lyxName << ",\"" << params_.filename 
-	   << "\",\"" << params_.parameters << "\"\n";
+	os << "External " << params_.templ.lyxName << ",\""
+	   << params_.filename << "\",\"" << params_.parameters << "\"\n";
 }
 
 
@@ -129,15 +134,15 @@ void InsetExternal::read(Buffer const *, LyXLex & lex)
 
 
 int InsetExternal::write(string const & format,
-			 Buffer const * buf, std::ostream & os) const
+			 Buffer const * buf, ostream & os) const
 {
 	ExternalTemplate const & et = params_.templ;
 	ExternalTemplate::Formats::const_iterator cit =
 		et.formats.find(format);
 	if (cit == et.formats.end()) {
 		lyxerr << "External template format '" << format
-		       << "' not specified in template " << params_.templ.lyxName
-		       << endl;
+		       << "' not specified in template "
+		       << params_.templ.lyxName << endl;
 		return 0;
 	}
 	
@@ -148,25 +153,25 @@ int InsetExternal::write(string const & format,
 
 
 int InsetExternal::latex(Buffer const * buf,
-			 std::ostream & os, bool, bool) const
+			 ostream & os, bool, bool) const
 {
 	return write("LaTeX", buf, os);
 }
 
 
-int InsetExternal::ascii(Buffer const * buf, std::ostream & os, int) const
+int InsetExternal::ascii(Buffer const * buf, ostream & os, int) const
 {
 	return write("Ascii", buf, os);
 }
 
 
-int InsetExternal::linuxdoc(Buffer const * buf, std::ostream & os) const
+int InsetExternal::linuxdoc(Buffer const * buf, ostream & os) const
 {
 	return write("LinuxDoc", buf, os);
 }
 
 
-int InsetExternal::docbook(Buffer const * buf, std::ostream & os) const
+int InsetExternal::docbook(Buffer const * buf, ostream & os) const
 {
 	return write("DocBook", buf, os);
 }
@@ -225,7 +230,7 @@ void InsetExternal::executeCommand(string const & s,
 
 
 string const InsetExternal::doSubstitution(Buffer const * buffer,
-				     string const & s) const
+					   string const & s) const
 {
 	string result;
 	string const basename = ChangeExtension(params_.filename, string());

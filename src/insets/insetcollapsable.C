@@ -19,19 +19,23 @@
 #include "lyxfont.h"
 #include "BufferView.h"
 #include "Painter.h"
-#include "insets/insettext.h"
-#include "support/LOstream.h"
-#include "support/lstrings.h"
 #include "debug.h"
 #include "lyxtext.h"
 #include "font.h"
 #include "lyxlex.h"
 
-class LyXText;
+#include "insets/insettext.h"
 
+#include "support/LOstream.h"
+#include "support/lstrings.h"
+
+using std::vector;
 using std::ostream;
 using std::endl;
 using std::max;
+
+
+class LyXText;
 
 
 InsetCollapsable::InsetCollapsable(bool collapsed)
@@ -382,19 +386,19 @@ int InsetCollapsable::latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetCollapsable::ascii(Buffer const *buf, std::ostream & os, int ll) const
+int InsetCollapsable::ascii(Buffer const * buf, ostream & os, int ll) const
 {
 	return inset.ascii(buf, os, ll);
 }
 
 
-int InsetCollapsable::linuxdoc(Buffer const *buf, std::ostream & os) const
+int InsetCollapsable::linuxdoc(Buffer const * buf, ostream & os) const
 {
 	return inset.linuxdoc(buf, os);
 }
 
 
-int InsetCollapsable::docbook(Buffer const *buf, std::ostream & os) const
+int InsetCollapsable::docbook(Buffer const * buf, ostream & os) const
 {
 	return inset.docbook(buf, os);
 }
@@ -564,7 +568,7 @@ void InsetCollapsable::resizeLyXText(BufferView * bv, bool force) const
 }
 
 
-std::vector<string> const InsetCollapsable::getLabelList() const
+vector<string> const InsetCollapsable::getLabelList() const
 {
 	return inset.getLabelList();
 }

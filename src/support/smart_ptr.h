@@ -103,7 +103,7 @@ template<typename T> class shared_c_ptr {
       return *this;
    }
 
-#if !defined( BOOST_NO_MEMBER_TEMPLATES )
+#if !defined(BOOST_NO_MEMBER_TEMPLATES)
    template<typename Y>
       shared_c_ptr(const shared_c_ptr<Y>& r) : px(r.px) {  // never throws 
          ++*(pn = r.pn); 
@@ -158,7 +158,7 @@ template<typename T> class shared_c_ptr {
 #endif
 
    void reset(T* p=0) {
-      if ( px == p ) return;  // fix: self-assignment safe
+      if (px == p) return;  // fix: self-assignment safe
       if (--*pn == 0) { checked_delete(px); }
       else { // allocate new reference counter
 #ifndef LYX_NO_EXCEPTIONS		  
@@ -190,7 +190,7 @@ template<typename T> class shared_c_ptr {
 // Tasteless as this may seem, making all members public allows member templates
 // to work in the absence of member template friends. (Matthew Langston)
 // Don't split this line into two; that causes problems for some GCC 2.95.2 builds
-#if defined(BOOST_NO_MEMBER_TEMPLATES) || !defined( BOOST_NO_MEMBER_TEMPLATE_FRIENDS )
+#if defined(BOOST_NO_MEMBER_TEMPLATES) || !defined(BOOST_NO_MEMBER_TEMPLATE_FRIENDS)
    private:
 #endif
 

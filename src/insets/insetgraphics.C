@@ -91,39 +91,44 @@ TODO Before initial production release:
 
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"
+
 #include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsCacheItem.h"
 
-#include "frontends/Dialogs.h"
-#include "frontends/Alert.h"
 #include "LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "converter.h"
-#include "frontends/support/LyXImage.h"
 #include "Painter.h"
 #include "lyx_gui_misc.h"
-#include "support/FileInfo.h"
-#include "support/filetools.h"
-#include "support/lyxalgo.h" // lyx::count
-#include "support/lyxlib.h"
-#include "frontends/controllers/helper_funcs.h"
 #include "lyxtext.h"
 #include "lyxrc.h"
-#include "font.h" // For the lyxfont class.
-#include "fstream" // for ifstream in isEPS
-#include <algorithm> // For the std::max
-#include "support/lyxmanip.h"
+#include "font.h"
 #include "debug.h"
 #include "gettext.h"
-//#include "LOStream.h"
+
+#include "frontends/Dialogs.h"
+#include "frontends/Alert.h"
+#include "frontends/controllers/helper_funcs.h"
+#include "frontends/support/LyXImage.h"
+
+#include "support/FileInfo.h"
+#include "support/filetools.h"
+#include "support/lyxlib.h"
+#include "support/lyxmanip.h"
 #include "support/lyxalgo.h"
+
+#include <fstream>
+#include <algorithm>
 
 extern string system_tempdir;
 
 using std::ifstream;
 using std::ostream;
 using std::endl;
+using std::max;
+using std::vector;
+
 
 ///////////////////////////////////////////////////////////////////////////
 int const VersionNumber = 1;
@@ -230,10 +235,10 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			int const msg_width = lyxfont::width(msg, msgFont);
-			font_width = std::max(font_width, msg_width);
+			font_width = max(font_width, msg_width);
 		}
 		
-		return std::max(50, font_width + 15);
+		return max(50, font_width + 15);
 	}
 }
 
@@ -342,7 +347,7 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 
 		string const token = lex.getString();
 		lyxerr[Debug::INFO] << "Token: '" << token << '\'' 
-				    << std::endl;
+				    << endl;
 
 		if (token.empty()) {
 			continue;
@@ -356,13 +361,13 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 				<< "This document was created with a newer Graphics widget"
 				", You should use a newer version of LyX to read this"
 				" file."
-				<< std::endl;
+				<< endl;
 			// TODO: Possibly open up a dialog?
 		}
 		else {
 			if (! params.Read(buf, lex, token))
 				lyxerr << "Unknown token, " << token << ", skipping." 
-					<< std::endl;
+					<< endl;
 		}
 	}
 }
@@ -370,7 +375,7 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 // FormatVersion < 1.0  (LyX < 1.2)
 void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 {
-	std::vector<string> const oldUnits =
+	vector<string> const oldUnits =
 		getVectorFromString("pt,cm,in,p%,c%");
 	bool finished = false;
 	// set the display default	

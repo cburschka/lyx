@@ -27,7 +27,10 @@
        If you want to try to compile anyway, delete this test in src/frontends/xforms/GUIRunTime.C.
 #endif
 
+
 using std::endl;
+using std::hex;
+
 
 extern bool finished;
 
@@ -74,8 +77,8 @@ void GUIRunTime::processEvents()
 		XEvent ev;
 		fl_XNextEvent(&ev);
 		lyxerr << "Received unhandled X11 event" << endl;
-		lyxerr << "Type: 0x" << std::hex << ev.xany.type <<
-			"Target: 0x" << std::hex << ev.xany.window << endl;
+		lyxerr << "Type: 0x" << hex << ev.xany.type <<
+			"Target: 0x" << hex << ev.xany.window << endl;
 	}
 }
 
@@ -87,8 +90,8 @@ void GUIRunTime::runTime()
 			XEvent ev;
 			fl_XNextEvent(&ev);
 			lyxerr << "Received unhandled X11 event" << endl;
-			lyxerr << "Type: 0x" << std::hex << ev.xany.type <<
-				"Target: 0x" << std::hex << ev.xany.window << endl;
+			lyxerr << "Type: 0x" << hex << ev.xany.type <<
+				"Target: 0x" << hex << ev.xany.window << endl;
 		}
 	}
 }

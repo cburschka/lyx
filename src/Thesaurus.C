@@ -10,12 +10,12 @@
 
 #include "Thesaurus.h"
 
+#ifdef HAVE_LIBAIKSAURUS
+
 #include <algorithm>
  
-Thesaurus thesaurus; 
+using std::sort;
 
-#ifdef HAVE_LIBAIKSAURUS
- 
 Thesaurus::Thesaurus()
 {
 	aik_ = new Aiksaurus;
@@ -60,7 +60,7 @@ Thesaurus::Meanings Thesaurus::lookup(string const & text)
 
 	for (Meanings::iterator it = meanings.begin();
 		it != meanings.end(); ++it) {
-			std::sort(it->second.begin(), it->second.end());
+			sort(it->second.begin(), it->second.end());
 	}
  
 	return meanings;
@@ -84,3 +84,6 @@ Thesaurus::Meanings Thesaurus::lookup(string const &)
 }
 
 #endif // HAVE_LIBAIKSAURUS
+
+// Global instance
+Thesaurus thesaurus; 

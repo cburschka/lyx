@@ -31,7 +31,7 @@ noinst_HEADERS = \
 Makefile: $(BUILT_SOURCES)
 
 %.h: $(M4_DIR)/%.h.m4 $(M4_DIR)/template.macros.m4        
-	$(M4) $(M4_INCLUDES) $(DEFINES) $<  > $(top_srcdir)/$@
+	$(M4) $(M4_INCLUDES) $(DEFINES) $<  > $(top_builddir)/$@
 
 all-local: $(noinst_LTLIBRARIES) 
 

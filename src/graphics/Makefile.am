@@ -1,13 +1,13 @@
 AUTOMAKE_OPTIONS = foreign
 DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-noinst_LTLIBRARIES = libgraphics.la
+noinst_LTLIBRARIES = libgraphics.o
 LIBS =
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
-libgraphics_la_SOURCES = \
+libgraphics_o_SOURCES = \
 	GraphicsCache.h \
 	GraphicsCache.C \
 	GraphicsCacheItem.h \

@@ -5,14 +5,14 @@
 ParIterator & ParIterator::operator++()
 {
 	while (!positions.empty()) {
-		ParPosition & p = positions.back();
+		ParPosition & p = positions.top();
 
 		// Does the current inset contain more "cells" ?
 		if (p.index >= 0) {
 			++p.index;
 			Paragraph * par = (*p.it)->getFirstParagraph(p.index);
 			if (par) {
-				positions.push_back(ParPosition(par));
+				positions.push(ParPosition(par));
 				return *this;
 			}
 			++p.it;
@@ -23,11 +23,12 @@ ParIterator & ParIterator::operator++()
 			p.it = p.par->inset_iterator_begin();
 
 		// Try to find the next inset that contains paragraphs
-		for ( ; p.it != p.par->inset_iterator_end(); ++p.it) {
+		Paragraph::inset_iterator end = p.par->inset_iterator_end();
+		for (; p.it != end; ++p.it) {
 			Paragraph * par = (*p.it)->getFirstParagraph(0);
 			if (par) {
 				p.index = 0;
-				positions.push_back(ParPosition(par));
+				positions.push(ParPosition(par));
 				return *this;
 			}
 		}
@@ -37,7 +38,7 @@ ParIterator & ParIterator::operator++()
 			return *this;
 		}
 
-		positions.pop_back();
+		positions.pop();
 	}
 	return *this;
 }

@@ -21,15 +21,23 @@
 #include "form_tabular.h"
 #include "LyXView.h"
 #include "Dialogs.h"
-#include "insets/insettabular.h"
 #include "buffer.h"
 #include "xforms_helpers.h"
 #include "lyxrc.h" // to set the default length values
 #include "helper_funcs.h"
 #include "input_validators.h"
+
+#include "insets/insettabular.h"
+
 #include "support/lstrings.h"
 
+#include <functional>
+
+
 using SigC::slot;
+using std::vector;
+using std::bind2nd;
+
 
 FormTabular::FormTabular(LyXView * lv, Dialogs * d)
 	: FormInset(lv, d, _("Tabular Layout")),
@@ -45,7 +53,7 @@ FormTabular::FormTabular(LyXView * lv, Dialogs * d)
 
 void FormTabular::redraw()
 {
-	if(form() && form()->visible)
+	if (form() && form()->visible)
 		fl_redraw_form(form());
 	else
 		return;
@@ -137,12 +145,21 @@ void FormTabular::build()
 
 	// Create the contents of the unit choices
 	// Don't include the "%" terms...
-	std::vector<string> units_vec = getLatexUnits();
-	for (std::vector<string>::iterator it = units_vec.begin();
+	vector<string> units_vec = getLatexUnits();
+#if 0
+	for (vector<string>::iterator it = units_vec.begin();
 	     it != units_vec.end(); ++it) {
 	        if (contains(*it, "%"))
 	                it = units_vec.erase(it, it + 1) - 1;
 	}
+#else
+	vector<string>::iterator ret =
+		remove_if(units_vec.begin(),
+			  units_vec.end(),
+			  bind2nd(contains_functor(), "%"));
+	units_vec.erase(ret, units_vec.end());
+#endif
+	
 	string units = getStringFromVector(units_vec, "|");
 
 	fl_addto_choice(column_options_->choice_value_column_width,

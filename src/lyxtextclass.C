@@ -29,6 +29,7 @@
 using std::endl;
 using std::find_if;
 using std::remove_if;
+using std::ostream;
 
 
 /* ******************************************************************* */
@@ -530,7 +531,7 @@ void LyXTextClass::load()
 }
 
 
-std::ostream & operator<<(std::ostream & os, LyXTextClass::PageSides p)
+ostream & operator<<(ostream & os, LyXTextClass::PageSides p)
 {
 	switch (p) {
 	case LyXTextClass::OneSide:

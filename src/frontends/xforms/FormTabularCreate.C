@@ -23,6 +23,10 @@
 #include "form_tabular_create.h"
 #include "support/lstrings.h"
 
+
+using std::make_pair;
+
+
 typedef FormCB<ControlTabularCreate, FormDB<FD_form_tabular_create> > base_class;
 
 FormTabularCreate::FormTabularCreate(ControlTabularCreate & c)
@@ -53,5 +57,5 @@ void FormTabularCreate::apply()
 	unsigned int ysize = (unsigned int)(fl_get_slider_value(dialog_->slider_columns) + 0.5);
 	unsigned int xsize = (unsigned int)(fl_get_slider_value(dialog_->slider_rows) + 0.5);
 
-	controller().params() = std::make_pair(xsize, ysize);
+	controller().params() = make_pair(xsize, ysize);
 }

@@ -217,38 +217,42 @@ compare_memfun(R(C::*p)() const, A const & a)
 // Functors used in the template.
 
 ///
-template<typename T1, typename T2>
+template<typename T>
 class equal_1st_in_pair {
 public:
 	///
-	equal_1st_in_pair(T1 const & value) : value_(value) {}
+	typedef typename T::first_type first_type;
 	///
-	typedef std::pair<T1, T2> pair_type;
+	typedef T pair_type;
+	///
+	equal_1st_in_pair(first_type const & value) : value_(value) {}
 	///
 	bool operator() (pair_type const & p) const {
 		return p.first == value_;
 	}
 private:
 	///
-	T1 const & value_;
+	first_type const & value_;
 };
 
 
 ///
-template<typename T1, typename T2>
+template<typename T>
 class equal_2nd_in_pair {
 public:
 	///
-	equal_2nd_in_pair(T2 const & value) : value_(value) {}
+	typedef typename T::second_type second_type;
 	///
-	typedef std::pair<T1, T2> pair_type;
+	typedef T pair_type;
+	///
+	equal_2nd_in_pair(second_type const & value) : value_(value) {}
 	///
 	bool operator() (pair_type const & p) const {
 		return p.second == value_;
 	}
 private:
 	///
-	T2 const & value_;
+	second_type const & value_;
 };
 
 }  // end of namespace lyx

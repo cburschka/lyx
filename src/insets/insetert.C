@@ -32,7 +32,11 @@
 
 #include "support/LOstream.h"
 
+
 using std::ostream;
+using std::min;
+using std::endl;
+
 using lyx::pos_type;
 
 
@@ -125,7 +129,7 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 			token_found = true;
 		} else {
 			lyxerr << "InsetERT::Read: Missing 'status'-tag!"
-				   << std::endl;
+				   << endl;
 			// take countermeasures
 			lex.pushToken(token);
 		}
@@ -179,7 +183,7 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 {
 	string st;
 
-	switch(status_) {
+	switch (status_) {
 	case Open: 
 		st = "Open";
 		break;
@@ -207,7 +211,7 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 			case Paragraph::META_INSET:
 			case Paragraph::META_HFILL:
 				lyxerr << "Element is not allowed in insertERT"
-				       << std::endl;
+				       << endl;
 			case Paragraph::META_NEWLINE:
 				os << "\n\\newline \n";
 				break;
@@ -343,7 +347,7 @@ void InsetERT::insetMotionNotify(BufferView * bv,
 }
 
 
-int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
+int InsetERT::latex(Buffer const *, ostream & os, bool /*fragile*/,
 		    bool /*free_spc*/) const
 {
 	Paragraph * par = inset.paragraph();
@@ -374,13 +378,13 @@ int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 
 
 int InsetERT::ascii(Buffer const *,
-		    std::ostream &, int /*linelen*/) const 
+		    ostream &, int /*linelen*/) const 
 {
 	return 0;
 }
 
 
-int InsetERT::linuxdoc(Buffer const *, std::ostream & os) const
+int InsetERT::linuxdoc(Buffer const *, ostream & os) const
 {
 	Paragraph * par = inset.paragraph();
 	int lines = 0;
@@ -409,7 +413,7 @@ int InsetERT::linuxdoc(Buffer const *, std::ostream & os) const
 }
 
 
-int InsetERT::docbook(Buffer const *, std::ostream & os) const
+int InsetERT::docbook(Buffer const *, ostream & os) const
 {
 	Paragraph * par = inset.paragraph();
 	int lines = 0;
@@ -447,14 +451,14 @@ InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
 		set_latex_font(bv);
 	}
 
-	switch(action) {
+	switch (action) {
 	case LFUN_LAYOUT:
 		bv->owner()->setLayout(inset.paragraph()->getLayout());
 		break;
 	default:
 		result = InsetCollapsable::localDispatch(bv, action, arg);
 	}
-	switch(action) {
+	switch (action) {
 	case LFUN_BREAKPARAGRAPH:
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 	case LFUN_BACKSPACE:
@@ -478,7 +482,7 @@ string const InsetERT::get_new_label() const
 	string la;
 	pos_type const max_length = 15;
 	pos_type const p_siz = inset.paragraph()->size();
-	pos_type const n = std::min(max_length, p_siz);
+	pos_type const n = min(max_length, p_siz);
 	int i = 0;
 	int j = 0;
 	for(; i < n && j < p_siz; ++j) {
@@ -617,7 +621,7 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 {
 	if (st != status_) {
 		status_ = st;
-		switch(st) {
+		switch (st) {
 		case Inlined:
 			inset.setAutoBreakRows(false);
 			break;

@@ -21,6 +21,10 @@
 #include "form_thesaurus.h"
 #include "debug.h"
 
+
+using std::vector;
+
+
 typedef FormCB<ControlThesaurus, FormDB<FD_form_thesaurus> > base_class;
 
 FormThesaurus::FormThesaurus(ControlThesaurus & c)
@@ -65,17 +69,23 @@ void FormThesaurus::updateMeanings(string const & str)
 	fl_freeze_form(form());
 
 	Thesaurus::Meanings meanings = controller().getMeanings(str);
- 
-	for (Thesaurus::Meanings::const_iterator cit = meanings.begin();
-		cit != meanings.end(); ++cit) {
-			fl_add_browser_line(dialog_->browser_meanings, cit->first.c_str());
-			for (std::vector<string>::const_iterator cit2 = cit->second.begin();
-				cit2 != cit->second.end(); ++cit2) {
-					string ent = "   ";
-					ent += *cit2;
-					fl_add_browser_line(dialog_->browser_meanings, ent.c_str());
-				}
+
+	Thesaurus::Meanings::const_iterator cit = meanings.begin();
+	Thesaurus::Meanings::const_iterator end = meanings.end();
+	for (; cit != end; ++cit) {
+		fl_add_browser_line(dialog_->browser_meanings,
+				    cit->first.c_str());
+		
+		vector<string> const & tmpvec = cit->second;
+		vector<string>::const_iterator cit2 = tmpvec.begin();
+		vector<string>::const_iterator end2 = tmpvec.end();
+		for (; cit2 != end2; ++cit2) {
+			string ent = "   ";
+			ent += *cit2;
+			fl_add_browser_line(dialog_->browser_meanings,
+					    ent.c_str());
 		}
+	}
  
 	fl_unfreeze_form(form());
 	fl_redraw_form(form());
@@ -92,10 +102,13 @@ void FormThesaurus::setReplace(string const & templ, string const & nstr)
 	bool all_lower = true;
 	bool all_upper = true;
 
-	for (string::const_iterator it = templ.begin(); it != templ.end(); ++it) {
-		if (isupper(*it))
+	string::const_iterator beg = templ.begin();
+	string::const_iterator end = templ.end();
+	string::const_iterator cit = beg;
+	for (; cit != end; ++cit) {
+		if (isupper(*cit))
 			all_lower = false;
-		if (islower(*it))
+		if (islower(*cit))
 			all_upper = false;
 	}
 
@@ -105,9 +118,10 @@ void FormThesaurus::setReplace(string const & templ, string const & nstr)
 		str = uppercase(nstr);
 	} else if (templ.size() > 0 && isupper(templ[0])) {
 		bool rest_lower = true;
-		for (string::const_iterator it = templ.begin() + 1;
-			it != templ.end(); ++it) {
-			if (isupper(*it))
+		string::const_iterator cit2 = beg + 1;
+		
+		for (; cit2 != end; ++cit2) {
+			if (isupper(*cit2))
 				rest_lower = false;
 		}
 		

@@ -1179,14 +1179,14 @@ Paragraph const * Paragraph::depthHook(depth_type depth) const
 
 Paragraph * Paragraph::outerHook()
 {
-	if(!getDepth())
+	if (!getDepth())
 		return 0;
 	return depthHook(depth_type(getDepth() - 1));
 }
 
 Paragraph const * Paragraph::outerHook() const
 {
-	if(!getDepth())
+	if (!getDepth())
 		return 0;
 	return depthHook(depth_type(getDepth() - 1));
 }
@@ -1248,7 +1248,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 			texrow.newline();
 		}
 	
-		if (tex_code_break_column && style.isCommand()){
+		if (tex_code_break_column && style.isCommand()) {
 			os << '\n';
 			texrow.newline();
 		}
@@ -1268,7 +1268,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 			further_blank_line = true;
 		}
 
-		if (further_blank_line){
+		if (further_blank_line) {
 			os << '\n';
 			texrow.newline();
 		}
@@ -1400,7 +1400,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 			further_blank_line = true;
 		}
 
-		if (further_blank_line){
+		if (further_blank_line) {
 			os << '\n';
 			texrow.newline();
 		}
@@ -1929,7 +1929,7 @@ bool Paragraph::isLetter(pos_type pos) const
 }
  
  
-bool Paragraph::isWord(pos_type pos ) const
+bool Paragraph::isWord(pos_type pos) const
 {
 	return IsWordChar(getChar(pos)) ;
 }

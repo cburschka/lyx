@@ -56,7 +56,7 @@ FormGraphics::FormGraphics(ControlGraphics & c)
 
 void FormGraphics::redraw()
 {
-	if(form() && form()->visible)
+	if (form() && form()->visible)
 		fl_redraw_form(form());
 	else
 		return;

@@ -265,7 +265,7 @@ void InsetFormulaBase::toggleInsetSelection(BufferView * bv)
 
 vector<string> const InsetFormulaBase::getLabelList() const
 {
-  return std::vector<string>();
+  return vector<string>();
 }
 
 
@@ -739,7 +739,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 }
 
 
-void InsetFormulaBase::revealCodes(BufferView * bv) const
+void InsetFormulaBase::revealCodes(BufferView * /*bv*/) const
 {
 	if (!mathcursor)
 		return;

@@ -1,13 +1,13 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-noinst_LTLIBRARIES = libmathed.la
+noinst_LTLIBRARIES = libmathed.o
 LIBS=
 ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
-libmathed_la_SOURCES = \
+libmathed_o_SOURCES = \
 	formulabase.C \
 	formulabase.h \
 	formula.C \

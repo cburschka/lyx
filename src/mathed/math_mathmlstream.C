@@ -7,7 +7,10 @@
 #include "support/lyxalgo.h"
 
 
-MathMLStream::MathMLStream(std::ostream & os)
+using std::ostream;
+
+
+MathMLStream::MathMLStream(ostream & os)
 	: os_(os), tab_(0), line_(0), lastchar_(0)
 {}
 
@@ -184,12 +187,12 @@ NormalStream & operator<<(NormalStream & ns, char c)
 //////////////////////////////////////////////////////////////////////
 
 
-WriteStream::WriteStream(std::ostream & os, bool fragile)
+WriteStream::WriteStream(ostream & os, bool fragile)
 	: os_(os), fragile_(fragile), firstitem_(false), line_(0)
 {}
 
 
-WriteStream::WriteStream(std::ostream & os)
+WriteStream::WriteStream(ostream & os)
 	: os_(os), fragile_(false), firstitem_(false), line_(0)
 {}
 

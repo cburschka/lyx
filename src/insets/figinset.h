@@ -7,6 +7,7 @@
 #ifndef FIGINSET_H
 #define FIGINSET_H
 
+#include FORMS_H_LOCATION
 #include "figure_form.h"
 #include "LString.h"
 #include "buffer.h"

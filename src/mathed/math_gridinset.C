@@ -10,6 +10,12 @@
 #include "debug.h"
 
 
+using std::swap;
+using std::max;
+using std::min;
+using std::vector;
+
+
 namespace {
 
 string verboseHLine(int n)
@@ -221,8 +227,8 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 		int desc = 0;
 		for (col_type col = 0; col < ncols(); ++col) {
 			MathXArray const & c = xcell(index(row, col));
-			asc  = std::max(asc,  c.ascent());
-			desc = std::max(desc, c.descent());
+			asc  = max(asc,  c.ascent());
+			desc = max(desc, c.descent());
 		}
 		rowinfo_[row].ascent_  = asc;
 		rowinfo_[row].descent_ = desc;
@@ -263,7 +269,7 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 	for (col_type col = 0; col < ncols(); ++col) {
 		int wid = 0;
 		for (row_type row = 0; row < nrows(); ++row) 
-			wid = std::max(wid, xcell(index(row, col)).width());
+			wid = max(wid, xcell(index(row, col)).width());
 		colinfo_[col].width_ = wid;
 	}
 	colinfo_[ncols()].width_  = 0;
@@ -439,7 +445,7 @@ void MathGridInset::addCol(col_type newcol)
 		for (col_type col = 0; col < nc; ++col)
 			new_cells[row * (nc + 1) + col + (col > newcol)]
 				= cells_[row * nc + col];
-	std::swap(cells_, new_cells);
+	swap(cells_, new_cells);
 
 	ColInfo inf;
 	inf.skip_  = defaultColSpace(newcol);
@@ -457,7 +463,7 @@ void MathGridInset::delCol(col_type col)
 	for (col_type i = 0; i < nargs(); ++i) 
 		if (i % ncols() != col)
 			tmpcells.push_back(cells_[i]);
-	std::swap(cells_, tmpcells);
+	swap(cells_, tmpcells);
 
 	colinfo_.erase(colinfo_.begin() + col);
 }
@@ -637,14 +643,14 @@ MathGridInset::RowInfo & MathGridInset::rowinfo(row_type row)
 }
 
 
-std::vector<MathInset::idx_type>
+vector<MathInset::idx_type>
 	MathGridInset::idxBetween(idx_type from, idx_type to) const
 {
-	row_type r1 = std::min(row(from), row(to));
-	row_type r2 = std::max(row(from), row(to));
-	col_type c1 = std::min(col(from), col(to));
-	col_type c2 = std::max(col(from), col(to));
-	std::vector<idx_type> res;
+	row_type r1 = min(row(from), row(to));
+	row_type r2 = max(row(from), row(to));
+	col_type c1 = min(col(from), col(to));
+	col_type c2 = max(col(from), col(to));
+	vector<idx_type> res;
 	for (row_type i = r1; i <= r2; ++i)
 		for (col_type j = c1; j <= c2; ++j)
 			res.push_back(index(i, j));

@@ -21,7 +21,12 @@
 #include "debug.h"
 
 
-std::ostream & operator<<(std::ostream & os, MathArray const & ar)
+using std::ostream;
+using std::istringstream;
+using std::find_if;
+
+
+ostream & operator<<(ostream & os, MathArray const & ar)
 {
 	NormalStream ns(os);	
 	ns << ar;
@@ -194,7 +199,7 @@ bool extractNumber(MathArray const & ar, int & i)
 	string s;
 	MathTextCodes c;
 	charSequence(ar.begin(), ar.end(), s, c);
-	std::istringstream is(s.c_str());
+	istringstream is(s.c_str());
 	is >> i;
 	return is;
 }
@@ -547,7 +552,7 @@ void extractSums(MathArray & ar)
 					// try to figure out the summation index from the subscript
 					MathArray & ar = sub->down().data_;
 					MathArray::iterator it =
-						std::find_if(ar.begin(), ar.end(), &testEqualSign);
+						find_if(ar.begin(), ar.end(), &testEqualSign);
 					if (it != ar.end()) {
 						// we found a '=', use everything in front of that as index,
 						// and everything behind as lower index
@@ -612,7 +617,7 @@ bool extractDiffExponent(MathArray::iterator it, int & i)
 	string s;
 	if (!extractString((*it).nucleus(), s))
 		return false;
-	std::istringstream is(s.c_str());
+	istringstream is(s.c_str());
 	is >> i;
 	return is;
 }
@@ -659,9 +664,9 @@ void extractDiff(MathArray & ar)
 
 		// collect denominator parts
 		MathArray & denom = f->cell(1);
-		for (MathArray::iterator dt = denom.begin(); dt != denom.end(); ) {
+		for (MathArray::iterator dt = denom.begin(); dt != denom.end();) {
 			// find the next 'd'
-			MathArray::iterator et = std::find_if(dt + 1, denom.end(), &testDiffItem);
+			MathArray::iterator et = find_if(dt + 1, denom.end(), &testDiffItem);
 
 			// point before this
 			MathArray::iterator st = et - 1;
@@ -670,7 +675,7 @@ void extractDiff(MathArray & ar)
 				// things like   d.../dx^n
 				int mult = 1;
 				if (extractNumber(script->up().data_, mult)) {
-					//lyxerr << "mult: " << mult << std::endl;
+					//lyxerr << "mult: " << mult << endl;
 					for (int i = 0; i < mult; ++i)
 						diff->addDer(MathArray(dt + 1, st));
 				}

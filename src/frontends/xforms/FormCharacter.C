@@ -24,6 +24,8 @@
 #include "helper_funcs.h"
 
 using std::vector;
+using std::find;
+
 using namespace character;
 
 typedef FormCB<ControlCharacter, FormDB<FD_form_character> > base_class;
@@ -140,8 +142,7 @@ namespace {
 template<class A>
 typename vector<A>::size_type findPos(vector<A> const & vec, A const & val)
 {
-	vector<A>::const_iterator it =
-		std::find(vec.begin(), vec.end(), val);
+	vector<A>::const_iterator it = find(vec.begin(), vec.end(), val);
 	if (it == vec.end())
 		return 0;
 	return it - vec.begin();

@@ -41,7 +41,7 @@ string const write_attribute(string const & name, LyXLength const & value)
 
 string const tostr(LyXAlignment const & num)
 {
-	switch(num) {
+	switch (num) {
 	case LYX_ALIGN_NONE:
 		return "none";
 	case LYX_ALIGN_BLOCK:
@@ -63,7 +63,7 @@ string const tostr(LyXAlignment const & num)
 
 string const tostr(LyXTabular::VAlignment const & num)
 {
-	switch(num) {
+	switch (num) {
 	case LyXTabular::LYX_VALIGN_TOP:
 		return "top";
 	case LyXTabular::LYX_VALIGN_CENTER:
@@ -77,7 +77,7 @@ string const tostr(LyXTabular::VAlignment const & num)
 
 string const tostr(LyXTabular::BoxType const & num)
 {
-	switch(num) {
+	switch (num) {
 	case LyXTabular::BOX_NONE:
 		return "none";
 	case LyXTabular::BOX_PARBOX:

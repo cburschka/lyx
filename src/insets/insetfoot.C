@@ -24,6 +24,9 @@
 #include "debug.h"
 
 
+using std::ostream;
+
+
 InsetFoot::InsetFoot()
 	: InsetFootlike()
 {
@@ -53,7 +56,7 @@ string const InsetFoot::editMessage() const
 
 
 int InsetFoot::latex(Buffer const * buf,
-		     std::ostream & os, bool fragile, bool fp) const
+		     ostream & os, bool fragile, bool fp) const
 {
 	os << "%\n\\footnote{";
 	

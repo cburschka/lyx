@@ -145,6 +145,19 @@ bool contains(string const & a, char b);
 ///
 bool contains(char const * a, char const * b);
 
+/// This should probably we rewritten to be more general.
+class contains_functor {
+public:
+	typedef string first_argument_type;
+	typedef string second_argument_type;
+	typedef bool result_type;
+	
+	bool operator()(string const & haystack, string const & needle) const {
+		return contains(haystack, needle);
+	}
+};
+
+
 ///
 bool containsOnly(string const &, char const *);
 

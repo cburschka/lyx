@@ -56,6 +56,8 @@ using std::min;
 using std::max;
 using std::swap;
 using std::isalnum;
+using std::vector;
+using std::ostringstream;
 
 namespace {
 
@@ -76,11 +78,11 @@ struct Selection
 		c1 = p->col(i1.idx_);
 		c2 = p->col(i2.idx_);
 		if (c1 > c2)
-			std::swap(c1, c2);
+			swap(c1, c2);
 		r1 = p->row(i1.idx_);
 		r2 = p->row(i2.idx_);
 		if (r1 > r2)
-			std::swap(r1, r2);
+			swap(r1, r2);
 	}
 
 	void grab(MathCursor const & cursor)
@@ -659,7 +661,7 @@ string MathCursor::macroName() const
 {
 	string s;
 	MathInset::difference_type i = macroNamePos();
-	for ( ; i >= 0 && i < int(pos()); ++i)
+	for (; i >= 0 && i < int(pos()); ++i)
 		s += array().at(i)->getChar();
 	return s;
 }
@@ -766,7 +768,7 @@ void MathCursor::drawSelection(Painter & pain) const
 		int y2 = c.yo() + c.descent();
 		pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 	} else {
-		std::vector<MathInset::idx_type> indices
+		vector<MathInset::idx_type> indices
 			= i1.par_->idxBetween(i1.idx_, i2.idx_);
 		for (unsigned i = 0; i < indices.size(); ++i) {
 			MathXArray & c = i1.xcell(indices[i]);
@@ -938,7 +940,7 @@ void MathCursor::normalize()
 	{
 		MathIterator it = ibegin(formula()->par().nucleus());
 		MathIterator et = iend(formula()->par().nucleus());
-		for ( ; it != et; ++it)
+		for (; it != et; ++it)
 			if (it.par()->asBoxInset())
 				it.par()->asBoxInset()->rebreak();
 	}
@@ -1264,7 +1266,7 @@ bool MathCursor::interpret(string const & s)
 		unsigned int n = 1;
 		istringstream is(s.substr(5).c_str());
 		is >> n;
-		n = std::max(1u, n);
+		n = max(1u, n);
 		niceInsert(MathAtom(new MathCasesInset(n)));
 		return true;
 	}
@@ -1276,8 +1278,8 @@ bool MathCursor::interpret(string const & s)
 		string h_align;
 		istringstream is(s.substr(6).c_str());
 		is >> m >> n >> v_align >> h_align;
-		m = std::max(1u, m);
-		n = std::max(1u, n);
+		m = max(1u, m);
+		n = max(1u, n);
 		v_align += 'c';
 		niceInsert(MathAtom(new MathArrayInset("array", m, n, v_align[0], h_align)));
 		return true;
@@ -1521,7 +1523,7 @@ void MathCursor::setSelection(cursor_type const & where, size_type n)
 
 string MathCursor::info() const
 {
-	std::ostringstream os;
+	ostringstream os;
 	if (pos() > 0)
 		prevAtom()->infoize(os);
 	return os.str();

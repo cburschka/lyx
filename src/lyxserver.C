@@ -251,7 +251,7 @@ void LyXComm::endPipe(int & fd, string const & filename)
  
 // OS/2 pipes are deleted automatically
 #ifndef __EMX__
-	if (lyx::unlink(filename) < 0){
+	if (lyx::unlink(filename) < 0) {
 		lyxerr << "LyXComm: Could not remove pipe " << filename
 		       << '\n' << strerror(errno) << endl;
 	};
@@ -318,7 +318,7 @@ void LyXComm::callback(int fd, void *v)
 			errno = 0;
 			return; // up to libforms select-loop (*crunch*)
 		}
-		if (errno != 0 )
+		if (errno != 0)
 		{
 			lyxerr << "LyXComm: " << strerror(errno) << endl;
 			if (!lsbuf.empty())
@@ -450,7 +450,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			// we are listening.
 			if (cmd == "hello") {
 				// One more client
-				if (serv->numclients == MAX_CLIENTS){ //paranoid check
+				if (serv->numclients == MAX_CLIENTS) { //paranoid check
 					lyxerr[Debug::LYXSERVER]
 						<< "LyXServer: too many clients..."
 						<< endl;

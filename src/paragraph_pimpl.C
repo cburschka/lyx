@@ -26,6 +26,10 @@
 #include "support/LAssert.h"
 
 using lyx::pos_type;
+using std::endl;
+using std::ostream;
+using std::upper_bound;
+using std::lower_bound;
 
 extern int tex_code_break_column;
 
@@ -112,7 +116,7 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 
 	// Update the font table.
 	FontTable search_font(pos, LyXFont());
-	for (FontList::iterator it = std::lower_bound(fontlist.begin(),
+	for (FontList::iterator it = lower_bound(fontlist.begin(),
 	                                              fontlist.end(),
 	                                              search_font, matchFT());
 	     it != fontlist.end(); ++it)
@@ -122,7 +126,7 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
    
 	// Update the inset table.
 	InsetTable search_inset(pos, 0);
-	for (InsetList::iterator it = std::lower_bound(owner_->insetlist.begin(),
+	for (InsetList::iterator it = lower_bound(owner_->insetlist.begin(),
 	                                               owner_->insetlist.end(),
 	                                               search_inset, matchIT());
 	     it != owner_->insetlist.end(); ++it)
@@ -144,12 +148,12 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 	
 	// Add a new entry in the inset table.
 	InsetTable search_inset(pos, 0);
-	InsetList::iterator it = std::lower_bound(owner_->insetlist.begin(),
+	InsetList::iterator it = lower_bound(owner_->insetlist.begin(),
 						  owner_->insetlist.end(),
 						  search_inset, matchIT());
 	if (it != owner_->insetlist.end() && it->pos == pos) {
 		lyxerr << "ERROR (Paragraph::InsertInset): "
-			"there is an inset in position: " << pos << std::endl;
+			"there is an inset in position: " << pos << endl;
 	} else {
 		owner_->insetlist.insert(it, InsetTable(pos, inset));
 		inset->parOwner(owner_);
@@ -168,7 +172,7 @@ void Paragraph::Pimpl::erase(pos_type pos)
 		// find the entry
 		InsetTable search_inset(pos, 0);
 		InsetList::iterator it =
-			std::lower_bound(owner_->insetlist.begin(),
+			lower_bound(owner_->insetlist.begin(),
 					 owner_->insetlist.end(),
 					 search_inset, matchIT());
 		if (it != owner_->insetlist.end() && it->pos == pos) {
@@ -183,7 +187,7 @@ void Paragraph::Pimpl::erase(pos_type pos)
 	FontTable search_font(pos, LyXFont());
 	
 	FontList::iterator it =
-		std::lower_bound(fontlist.begin(),
+		lower_bound(fontlist.begin(),
 			    fontlist.end(),
 			    search_font, matchFT());
 	if (it != fontlist.end() && it->pos() == pos &&
@@ -213,7 +217,7 @@ void Paragraph::Pimpl::erase(pos_type pos)
 	InsetTable search_inset(pos, 0);
 	InsetList::iterator lend = owner_->insetlist.end();
 	for (InsetList::iterator it =
-		     std::upper_bound(owner_->insetlist.begin(),
+		     upper_bound(owner_->insetlist.begin(),
 				      lend,
 				      search_inset, matchIT());
 	     it != lend; ++it)
@@ -221,7 +225,7 @@ void Paragraph::Pimpl::erase(pos_type pos)
 }
 
 
-void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
+void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
                                        pos_type const i,
                                        int & column, LyXFont const & font,
                                        LyXLayout const & style)
@@ -278,7 +282,7 @@ bool Paragraph::Pimpl::isTextAt(BufferParams const & bp,
  
 void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     BufferParams const & bparams,
-					     std::ostream & os,
+					     ostream & os,
 					     TexRow & texrow,
 					     bool moving_arg,
 					     LyXFont & font,
@@ -511,9 +515,9 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 
 Paragraph * Paragraph::Pimpl::TeXDeeper(Buffer const * buf,
 					BufferParams const & bparams,
-					std::ostream & os, TexRow & texrow)
+					ostream & os, TexRow & texrow)
 {
-	lyxerr[Debug::LATEX] << "TeXDeeper...     " << this << std::endl;
+	lyxerr[Debug::LATEX] << "TeXDeeper...     " << this << endl;
 	Paragraph * par = owner_;
 
 	while (par && par->params().depth() == owner_->params().depth()) {
@@ -526,7 +530,7 @@ Paragraph * Paragraph::Pimpl::TeXDeeper(Buffer const * buf,
 					     os, texrow, false);
 		}
 	}
-	lyxerr[Debug::LATEX] << "TeXDeeper...done " << par << std::endl;
+	lyxerr[Debug::LATEX] << "TeXDeeper...done " << par << endl;
 
 	return par;
 }

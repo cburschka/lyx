@@ -23,7 +23,7 @@ InsetUrl::InsetUrl(InsetCommandParams const & p, bool)
 
 void InsetUrl::edit(BufferView * bv, int, int, unsigned int)
 {
-	bv->owner()->getDialogs()->showUrl( this );
+	bv->owner()->getDialogs()->showUrl(this);
 }
 
 
@@ -36,7 +36,7 @@ void InsetUrl::edit(BufferView * bv, bool)
 string const InsetUrl::getScreenLabel(Buffer const *) const
 {
 	string temp;
-	if (getCmdName() == "url" )
+	if (getCmdName() == "url")
 		temp = _("Url: ");
 	else 
 		temp = _("HtmlUrl: ");

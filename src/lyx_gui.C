@@ -115,7 +115,7 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
      	fl_get_app_resources(res, num_res);
 
 	static const int geometryBitmask =
-		XParseGeometry( geometry,
+		XParseGeometry(geometry,
 				&xpos,
 				&ypos,
 				reinterpret_cast<unsigned int *>(&width),
@@ -302,7 +302,7 @@ void LyXGUI::create_forms()
 	// This is probably as good a time as any to map the xform colours,
 	// should a mapping exist.
 	string const filename = AddName(user_lyxdir, "preferences.xform");
-	XformsColor::read( filename );
+	XformsColor::read(filename);
 	
 	// Show the main & title form
 	int main_placement = FL_PLACE_CENTER | FL_FREE_SIZE;

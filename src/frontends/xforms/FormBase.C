@@ -192,7 +192,7 @@ void FormBase::fillTooltipChoice(FL_OBJECT * ob)
 	fl_clear_choice(ob);
 	fl_addto_choice(ob, _(" None | Normal | Verbose "));
 
-	switch(tooltip_level_){
+	switch (tooltip_level_) {
 	case NO_TOOLTIP:
 		fl_set_choice(ob, 1);
 		break;
@@ -211,7 +211,7 @@ void FormBase::setTooltipLevel(FL_OBJECT * ob)
 	lyx::Assert(ob && ob->objclass == FL_CHOICE &&
 		    fl_get_choice_maxitems(ob) == 3);
 
-	switch(fl_get_choice(ob)){
+	switch (fl_get_choice(ob)) {
 	case 1:
 		tooltip_level_ = NO_TOOLTIP;
 		break;
@@ -313,7 +313,7 @@ static int C_FormBasePrehandler(FL_OBJECT * ob, int event,
 		// using the middle mouse button.
 		pre->InputCB(ob, 0);
 
-	} else if (event == FL_ENTER || event == FL_LEAVE){
+	} else if (event == FL_ENTER || event == FL_LEAVE) {
 		// Post feedback as the mouse enters the object,
 		// remove it as the mouse leaves.
 		pre->FeedbackCB(ob, event);

@@ -48,6 +48,8 @@
 #include <map>
 //#include <signal.h>
 
+
+using std::vector;
 using std::ostream;
 using std::ifstream;
 using std::max;
@@ -1112,7 +1114,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 
 			while (p < len &&
 			      ((p = clip.find_first_of("\t\n", p)) != string::npos)) {
-				switch(clip[p]) {
+				switch (clip[p]) {
 				case '\t':
 					++cols;
 					break;
@@ -1136,7 +1138,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			      (p = clip.find_first_of("\t\n", p)) != string::npos) {
 				if (p >= len)
 					break;
-				switch(clip[p]) {
+				switch (clip[p]) {
 				case '\t':
 					paste_tabular->GetCellInset(cell)->setText(clip.substr(op, p-op));
 					++cols;
@@ -2352,7 +2354,7 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 }
 
 
-std::vector<string> const InsetTabular::getLabelList() const
+vector<string> const InsetTabular::getLabelList() const
 {
 	return tabular->getLabelList();
 }
@@ -2468,7 +2470,7 @@ bool InsetTabular::cutSelection()
 }
 
 
-bool InsetTabular::isRightToLeft(BufferView *bv )
+bool InsetTabular::isRightToLeft(BufferView * bv)
 {
 	return bv->getParentLanguage(this)->RightToLeft();
 }

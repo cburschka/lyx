@@ -22,8 +22,6 @@
 #include "buffer.h"
 #include "lyxlex.h"
 
-using std::ostream;
-
 /// This struct holds all the parameters needed by insetGraphics.
 struct InsetGraphicsParams
 {
@@ -90,7 +88,7 @@ struct InsetGraphicsParams
 	///
 	InsetGraphicsParams & operator=(InsetGraphicsParams const &);
 	/// Save the parameters in the LyX format stream.
-	void Write(Buffer const * buf, ostream & os) const;
+	void Write(Buffer const * buf, std::ostream & os) const;
 	/// If the token belongs to our parameters, read it.
 	bool Read(Buffer const * buf, LyXLex & lex, string const & token);
 

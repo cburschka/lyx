@@ -83,7 +83,7 @@ private:
 	/// Build the dialog
 	virtual void build();
 	/// Filter the inputs
-	virtual bool input( FL_OBJECT *, long );
+	virtual bool input( FL_OBJECT *, long);
 	/// Update the dialog.
 	virtual void update();
 	/// Apply from dialog

@@ -80,7 +80,7 @@ int LyXText::workWidth(BufferView * bview, Inset * inset) const
 			" fall back to the brute force method" << endl;
 		Buffer::inset_iterator it = bview->buffer()->inset_iterator_begin();
 		Buffer::inset_iterator end = bview->buffer()->inset_iterator_end();
-		for ( ; it != end; ++it) {
+		for (; it != end; ++it) {
 			if (*it == inset) {
 				par = it.getPar();
 				pos = it.getPos();
@@ -1824,7 +1824,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 			      getFont(bview->buffer(),
 				      cursor.par(),
 				      cursor.pos() - 1).number() == LyXFont::ON)
-			    )
+			   )
 				number(bview); // Set current_font.number to OFF
 		} else if (IsDigit(c) &&
 			   real_current_font.isVisibleRightToLeft()) {
@@ -1835,8 +1835,8 @@ void LyXText::insertChar(BufferView * bview, char c)
 				if (contains(number_unary_operators, c) &&
 				    (cursor.pos() == 1 ||
 				     cursor.par()->isSeparator(cursor.pos() - 2) ||
-				     cursor.par()->isNewline(cursor.pos() - 2) )
-				   ) {
+				     cursor.par()->isNewline(cursor.pos() - 2))
+				  ) {
 					setCharFont(bview->buffer(),
 						    cursor.par(),
 						    cursor.pos() - 1,
@@ -2211,7 +2211,7 @@ void LyXText::cursorRightOneWord(BufferView * bview) const
 		}
 		// Advance through word.
 		while (tmpcursor.pos() < tmpcursor.par()->size() &&
-		        tmpcursor.par()->isWord( tmpcursor.pos())) {
+		        tmpcursor.par()->isWord(tmpcursor.pos())) {
 		  //     printf("Current pos2 %d", tmpcursor.pos()) ;
 			tmpcursor.pos(tmpcursor.pos() + 1);
 			++steps;
@@ -2228,7 +2228,7 @@ void LyXText::cursorTab(BufferView * bview) const
            && !tmpcursor.par()->isNewline(tmpcursor.pos()))
         tmpcursor.pos(tmpcursor.pos() + 1);
 
-    if (tmpcursor.pos() == tmpcursor.par()->size()){
+    if (tmpcursor.pos() == tmpcursor.par()->size()) {
         if (tmpcursor.par()->next()) {
             tmpcursor.par(tmpcursor.par()->next());
             tmpcursor.pos(0);
@@ -2265,13 +2265,13 @@ void LyXText::cursorLeftOneWord(LyXCursor  & cur)  const
 		|| cur.par()->isHfill(cur.pos() - 1))) {
 		cur.pos(cur.pos() - 1);
 	} else if (!cur.pos()) {
-		if (cur.par()->previous()){
+		if (cur.par()->previous()) {
 			cur.par(cur.par()->previous());
 			cur.pos(cur.par()->size());
 		}
 	} else {		// Here, cur != 0 
 		while (cur.pos() > 0 &&
-		       cur.par()->isWord(cur.pos()-1) )
+		       cur.par()->isWord(cur.pos()-1))
 			cur.pos(cur.pos() - 1);
 	}
 }
@@ -2283,7 +2283,7 @@ void LyXText::getWord(LyXCursor & from, LyXCursor & to,
 {
 	// first put the cursor where we wana start to select the word
 	from = cursor;
-	switch(loc) {
+	switch (loc) {
 	case WHOLE_WORD_STRICT:
 		if (cursor.pos() == 0 || cursor.pos() == cursor.par()->size()
 		    || cursor.par()->isSeparator(cursor.pos())
@@ -2315,7 +2315,7 @@ void LyXText::getWord(LyXCursor & from, LyXCursor & to,
 	while (to.pos() < to.par()->size()
 	       && !to.par()->isSeparator(to.pos())
 	       && !to.par()->isKomma(to.pos())
-	       && !to.par()->isHfill(to.pos()) )
+	       && !to.par()->isHfill(to.pos()))
 	{
 		to.pos(to.pos() + 1);
 	}
@@ -2332,7 +2332,7 @@ void LyXText::selectWord(BufferView * bview, word_location const loc)
 	if (to == from)
 		return;
 	selection.cursor = cursor;
-	setCursor(bview, to.par(), to.pos() );
+	setCursor(bview, to.par(), to.pos());
 	setSelection(bview);
 }
 
@@ -2408,7 +2408,7 @@ string const LyXText::selectNextWordToSpellcheck(BufferView * bview,
 	}		
   
 	// Update the value if we changed paragraphs
-	if (cursor.par() != tmppar){
+	if (cursor.par() != tmppar) {
 		setCursor(bview, cursor.par(), cursor.pos());
 		value = float(cursor.y())/float(height);
 	}
@@ -3210,14 +3210,14 @@ int LyXText::getLengthMarkerHeight(BufferView * bv, VSpace const & vsp) const
  
 	LyXFont font;
 	font.decSize();
-	int const min_size = std::max(3 * arrow_size,
+	int const min_size = max(3 * arrow_size,
 				      lyxfont::maxAscent(font)
 				      + lyxfont::maxDescent(font));
 
 	if (vsp.length().len().value() < 0.0)
 		return min_size;
 	else 
-		return std::max(min_size, space_size);
+		return max(min_size, space_size);
 }
 
  
@@ -3447,7 +3447,7 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 			float x = p.x;
 			if (layout.labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 				x = ((is_rtl ? leftMargin(p.bv, p.row) : p.x)
-					 + ww - rightMargin(buffer, p.row) ) / 2; 
+					 + ww - rightMargin(buffer, p.row)) / 2; 
 				x -= lyxfont::width(str, font) / 2;
 			} else if (is_rtl) {
 				x = ww - leftMargin(p.bv, p.row) - 
@@ -3786,8 +3786,8 @@ LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 	if (row->pos() > last)  // Row is empty?
 		c = row->pos();
 	else if (lastrow &&
-		 ( ( rtl &&  left_side && vc == row->pos() && x < tmpx - 5) ||
-		   (!rtl && !left_side && vc == last + 1   && x > tmpx + 5) ))
+		 ((rtl &&  left_side && vc == row->pos() && x < tmpx - 5) ||
+		   (!rtl && !left_side && vc == last + 1   && x > tmpx + 5)))
 		c = last + 1;
 	else if (vc == row->pos()) {
 		c = vis2log(vc);

@@ -52,7 +52,7 @@ ExternalTemplateManager::ExternalTemplateManager()
 
 class dumpTemplate {
 public:
-	dumpTemplate(std::ostream & o) 
+	dumpTemplate(ostream & o) 
 		: ost(o) {}
 	void operator()(ExternalTemplateManager::Templates::value_type const & vt) {
 		ExternalTemplate const & et = vt.second;

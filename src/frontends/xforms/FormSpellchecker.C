@@ -120,7 +120,7 @@ void FormSpellchecker::partialUpdate(int id)
 		fl_set_input(dialog_->input, w.c_str());
 		fl_set_object_label(dialog_->text, w.c_str());
 		fl_clear_browser(dialog_->browser);
-		while ( !(w = controller().getSuggestion()).empty() ) {
+		while (!(w = controller().getSuggestion()).empty()) {
 			fl_add_browser_line(dialog_->browser, w.c_str());
 		}
 	}

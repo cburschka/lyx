@@ -198,7 +198,7 @@ bool BufferList::close(Buffer * buf)
 		while (reask) {
 			switch (Alert::askConfirmation(_("Changes in document:"),
 					       fname,
-					       _("Save document?"))){
+					       _("Save document?"))) {
 			case 1: // Yes
 				if (buf->isUnnamed())
 					reask = !WriteAs(current_view, buf);

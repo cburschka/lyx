@@ -8,6 +8,9 @@
 #include "math_mathmlstream.h"
 
 
+using std::max;
+
+
 MathFracInset::MathFracInset(bool atop)
 	: atop_(atop)
 {}
@@ -31,7 +34,7 @@ void MathFracInset::metrics(MathMetricsInfo const & mi) const
 	smallerStyleFrac(m);
 	xcell(0).metrics(m);
 	xcell(1).metrics(m);
-	width_   = std::max(xcell(0).width(), xcell(1).width()) + 4; 
+	width_   = max(xcell(0).width(), xcell(1).width()) + 4; 
 	ascent_  = xcell(0).height() + 2 + 5;
 	descent_ = xcell(1).height() + 2 - 5; 
 }

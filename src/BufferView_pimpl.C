@@ -115,7 +115,7 @@ void SetXtermCursor(Window win)
 {
 	static Cursor cursor;
 	static bool cursor_undefined = true;
-	if (cursor_undefined){
+	if (cursor_undefined) {
 		cursor = XCreateFontCursor(fl_get_display(), XC_xterm);
 		XFlush(fl_get_display());
 		cursor_undefined = false;
@@ -1169,7 +1169,7 @@ void BufferView::Pimpl::cursorPrevious(LyXText * text)
 			      text->cursor.y()
 			      - text->cursor.row()->baseline()
 			      + text->cursor.row()->height()
-			      - workarea_.height() + 1 );
+			      - workarea_.height() + 1);
 	updateScrollbar();
 }
 
@@ -1241,7 +1241,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 		Buffer * b = bufferlist.exists(fname) ?
 	 		bufferlist.getBuffer(fname) :
 			bufferlist.loadLyXFile(fname); // don't ask, just load it
-		if (b != 0 ) buffer(b);
+		if (b != 0) buffer(b);
 	}
 
 	Paragraph * par = buffer_->getParFromID(saved_positions[i].par_id);
@@ -2972,13 +2972,13 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_CITATION_INSERT:
 	{
 		InsetCommandParams p;
-		p.setFromString( argument );
+		p.setFromString(argument);
 
-		InsetCitation * inset = new InsetCitation( p );
+		InsetCitation * inset = new InsetCitation(p);
 		if (!insertInset(inset))
 			delete inset;
 		else
-			updateInset( inset, true );
+			updateInset(inset, true);
 	}
 	break;
 		    
@@ -2990,7 +2990,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		string const db       = token(argument, ' ', 0);
 		string const bibstyle = token(argument, ' ', 1);
 
-		InsetCommandParams p( "BibTeX", db, bibstyle );
+		InsetCommandParams p("BibTeX", db, bibstyle);
 		InsetBibtex * inset = new InsetBibtex(p);
 		
 		if (insertInset(inset)) {
@@ -3088,7 +3088,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_PARENTINSERT:
 	{
 		lyxerr << "arg " << argument << endl;
-		InsetCommandParams p( "lyxparent", argument );
+		InsetCommandParams p("lyxparent", argument);
 		Inset * inset = new InsetParent(p, *buffer_);
 		if (!insertInset(inset, "Standard"))
 			delete inset;
@@ -3428,7 +3428,7 @@ void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 		} else if (bv_->theLockingInset()->updateInsetInInset(bv_, inset)) {
 			if (bv_->text->updateInset(bv_,  bv_->theLockingInset())) {
 				update();
-				if (mark_dirty){
+				if (mark_dirty) {
 					buffer_->markDirty();
 				}
 				updateScrollbar();

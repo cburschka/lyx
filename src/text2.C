@@ -46,6 +46,7 @@
 #include "support/textutils.h"
 #include "support/lstrings.h"
 
+using std::vector;
 using std::copy;
 using std::find;
 using std::endl;
@@ -272,7 +273,7 @@ void LyXText::setCharFont(BufferView * bv, Paragraph * par,
 		layoutfont = layout.font;
 
 	// Realize against environment font information
-	if (par->getDepth()){
+	if (par->getDepth()) {
 		Paragraph * tp = par;
 		while (!layoutfont.resolved() && tp && tp->getDepth()) {
 			tp = tp->outerHook();
@@ -322,7 +323,7 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 		layoutfont = layout.font;
 
 	// Realize against environment font information
-	if (par->getDepth()){
+	if (par->getDepth()) {
 		Paragraph * tp = par;
 		while (!layoutfont.resolved() && tp && tp->getDepth()) {
 			tp = tp->outerHook();
@@ -1622,7 +1623,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 		par->incCounter(i);
 		int number = par->getCounter(i);
 		if (!par->bibkey) {
-			InsetCommandParams p( "bibitem" );
+			InsetCommandParams p("bibitem" );
 			par->bibkey = new InsetBibKey(p);
 		}
 		par->bibkey->setCounter(number);
@@ -1953,7 +1954,7 @@ void LyXText::insertStringAsParagraphs(BufferView * bview, string const & str)
 
 
 bool LyXText::gotoNextInset(BufferView * bview,
-			    std::vector<Inset::Code> const & codes,
+			    vector<Inset::Code> const & codes,
 			    string const & contents) const
 {
 	LyXCursor res = cursor;

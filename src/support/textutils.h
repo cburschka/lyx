@@ -103,10 +103,10 @@ bool IsPrintableNonspace(unsigned char c) {
 /// Word is not IsSeparator or IsKomma or IsHfill or IsFloat or IsInset. 
 inline
 bool IsWordChar(unsigned char c) {
-	return !( IsSeparatorChar( c )
-		  || IsKommaChar( c )
-		  || IsHfillChar( c )
-		  || IsInsetChar( c ));
+	return !(IsSeparatorChar(c)
+		  || IsKommaChar(c)
+		  || IsHfillChar(c)
+		  || IsInsetChar(c));
 }
 
 

@@ -87,6 +87,7 @@ using std::ios;
 using std::endl;
 using std::stack;
 using std::fill;
+using std::vector;
 
 //#define FILEDEBUG
 
@@ -306,7 +307,7 @@ private:
 	///
 	int lineno_;
 	///
-	std::vector<Token> tokens_;
+	vector<Token> tokens_;
 	///
 	unsigned pos_;
 	///

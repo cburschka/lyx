@@ -259,7 +259,7 @@ void CloseLyXLookup()
 XComposeStatus compose_status= {0, 0};
 
 // This is called after the main LyX window has been created
-void InitLyXLookup(Display *, Window ) 
+void InitLyXLookup(Display *, Window) 
 {
 	//Nothing to do.
 }

@@ -32,7 +32,7 @@ public:
 	InsetCommandParams();
 	///
 	explicit
-	InsetCommandParams( string const & n,
+	InsetCommandParams(string const & n,
 			    string const & c = string(),
 			    string const & o = string());
 	///
@@ -54,7 +54,7 @@ public:
 	///
 	string const & getContents() const { return contents; }
 	///
-	void setCmdName( string const & n) { cmdname = n; }
+	void setCmdName(string const & n) { cmdname = n; }
 	///
 	void setOptions(string const & o) { options = o; }
 	///
@@ -62,7 +62,7 @@ public:
 	///
 	string const getAsString() const;
 	///
-	void setFromString( string const & );
+	void setFromString(string const &);
 private:
 	///    
 	string cmdname;
@@ -83,12 +83,12 @@ public:
 	virtual ~InsetCommand() { hideDialog(); }
 	///
 	void write(Buffer const *, std::ostream & os) const
-		{ p_.write( os ); }
+		{ p_.write(os); }
 	///
 	virtual void read(Buffer const *, LyXLex & lex)
-		{ p_.read( lex ); }
+		{ p_.read(lex); }
 	/// Can remove one InsetBibKey is modified
-	void scanCommand(string const & c) { p_.scanCommand( c ); };
+	void scanCommand(string const & c) { p_.scanCommand(c); };
 	/// 
 	virtual int latex(Buffer const *, std::ostream &,
 			  bool fragile, bool free_spc) const;

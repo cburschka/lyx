@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
-noinst_LTLIBRARIES = libxforms.la
+noinst_LTLIBRARIES = libxforms.o
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/images -I${top_srcdir}/src/ \
 	-I${top_srcdir}/src/frontends/ \
@@ -12,7 +12,7 @@ LDFLAGS=
 LYXDATADIRS = forms
 ETAGS_ARGS = --lang=c++
 # Alphabetical order please.  It makes it easier to figure out what's missing. 
-libxforms_la_SOURCES = \
+libxforms_o_SOURCES = \
 	Alert_pimpl.C \
 	bmtable.c \
 	bmtable.h \
@@ -205,7 +205,13 @@ libxforms_la_SOURCES = \
 #	GUI_runtime.C \
 #	GUI_applymenu.C
 
-libxforms_la_LIBADD = @LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+libxforms_o_LIBADD = @LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+
+libxforms.o: $(libxforms_o_OBJECTS) $(libxforms_o_DEPENDENCIES)
+	rm -f ../libxforms.objects
+	for fil in $(libxforms_o_OBJECTS) ; do \
+		echo xforms/$$fil >> ../libxforms.objects ; \
+	done
 
 # for convenience only
 updatesrc:

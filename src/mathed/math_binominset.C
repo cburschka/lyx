@@ -10,6 +10,9 @@
 #include "math_mathmlstream.h"
 
 
+using std::max;
+
+
 MathBinomInset::MathBinomInset()
 {}
 
@@ -39,7 +42,7 @@ void MathBinomInset::metrics(MathMetricsInfo const & st) const
 	xcell(1).metrics(mi);
 	ascent_  = xcell(0).height() + 4 + 5;
 	descent_ = xcell(1).height() + 4 - 5; 
-	width_   = std::max(xcell(0).width(), xcell(1).width()) + 2 * dw() + 4; 
+	width_   = max(xcell(0).width(), xcell(1).width()) + 2 * dw() + 4; 
 }
 
 

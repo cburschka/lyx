@@ -13,6 +13,9 @@
 #include "debug.h"
 
 
+using std::max;
+
+
 MathXYArrowInset::MathXYArrowInset()
 	: MathNestInset(2)
 {}
@@ -68,7 +71,7 @@ void MathXYArrowInset::metrics(MathMetricsInfo const & mi) const
 
 	if (editing()) {
 		int w    = mathed_string_width(LM_TC_TEXTRM, mi_, "target: ");
-		width_   = w + std::max(xcell(0).width(), xcell(1).width());
+		width_   = w + max(xcell(0).width(), xcell(1).width());
 		ascent_  = xcell(0).ascent();
 		descent_ = xcell(0).descent() + xcell(1).height() + 10;
 	} else {
@@ -93,9 +96,9 @@ void MathXYArrowInset::draw(Painter & pain, int x, int y) const
 
 		xcell(0).draw(pain, x + lwid, y);
 		drawStr(pain, LM_TC_TEXTRM, mi_, x + 3, y, "target");
-		y += std::max(xcell(0).descent(), ldes) + 5;
+		y += max(xcell(0).descent(), ldes) + 5;
 
-		y += std::max(xcell(1).ascent(), lasc) + 5;
+		y += max(xcell(1).ascent(), lasc) + 5;
 		xcell(1).draw(pain, x + lwid, y);
 		drawStr(pain, LM_TC_TEXTRM, mi_, x + 3, y, "label");
 

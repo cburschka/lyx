@@ -28,6 +28,9 @@
 #include <vector>
 #endif
 
+using std::vector;
+
+
 /// the flag used by FinishUndo();
 bool undo_finished;
 /// a flag
@@ -149,7 +152,7 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
     
 		// now remove the old text if there is any
 #ifdef DELETE_UNUSED_PARAGRAPHS
-		std::vector<Paragraph *> vvpar;
+		vector<Paragraph *> vvpar;
 #endif
 		if (before != behind || (!behind && !before)) {
 			if (before)
@@ -178,7 +181,7 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 		}
     
 		// put the new stuff in the list if there is one
-		if (tmppar3){
+		if (tmppar3) {
 			if (before)
 				before->next(tmppar3);
 			else
@@ -232,7 +235,7 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			// which not always is true.
 			bv->text->redoParagraphs(bv, bv->text->cursor,
 			                         bv->text->cursor.par());
-			if (tmppar){
+			if (tmppar) {
 				it = static_cast<UpdatableInset*>(tmppar->inInset());
 				LyXText * t;
 				if (it) {
@@ -265,7 +268,7 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 		delete undo;
 #ifdef DELETE_UNUSED_PARAGRAPHS
 		// And here it's save enough to delete all removed paragraphs
-		std::vector<Paragraph *>::iterator pit = vvpar.begin();
+		vector<Paragraph *>::iterator pit = vvpar.begin();
 		if (pit != vvpar.end()) {
 			lyxerr << "DEL: ";
 			for(;pit != vvpar.end(); ++pit) {
@@ -348,7 +351,7 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
 	// appear one by one when undoing. 
 	// EDIT is special since only layout information, not the
 	// contents of a paragaph are stored.
-	if (!undo_finished && (kind != Undo::EDIT) && (kind != Undo::FINISH)){
+	if (!undo_finished && (kind != Undo::EDIT) && (kind != Undo::FINISH)) {
 		// check wether storing is needed
 		if (!bv->buffer()->undostack.empty() && 
 		    bv->buffer()->undostack.top()->kind == kind &&

@@ -9,17 +9,16 @@ ETAGS_ARGS = --lang=c++
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/xforms ${SIGC_CFLAGS} $(BOOST_INCLUDES)
 LIBS =
-noinst_LTLIBRARIES = libfrontends.la
+noinst_LTLIBRARIES = libfrontends.o
 
-libfrontends_la_LIBADD= @FRONTEND_GUILIB@ \
-	support/libfrontendsupport.la \
-	controllers/libcontrollers.la
+libfrontends_o_LIBADD= `cat libxforms.objects` \
+	`cat libcontrollers.objects` \
+	support/libfrontendsupport.o
 
-libfrontends_la_DEPENDENCIES = @FRONTEND_GUILIB@ \
-	support/libfrontendsupport.la \
-	controllers/libcontrollers.la
+libfrontends_o_DEPENDENCIES = \
+	support/libfrontendsupport.o
 
-libfrontends_la_SOURCES=\
+libfrontends_o_SOURCES=\
 	Alert.C \
 	Alert.h \
 	Alert_pimpl.h \

@@ -667,7 +667,7 @@ bool LyX::readRcFile(string const & name)
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 	
 	string const lyxrc_path = LibFileSearch(string(), name);
-	if (!lyxrc_path.empty()){
+	if (!lyxrc_path.empty()) {
 	        lyxerr[Debug::INIT] << "Found " << name
 				    << " in " << lyxrc_path << endl;
 		if (lyxrc.read(lyxrc_path) < 0) { 
@@ -732,7 +732,7 @@ void LyX::readUIFile(string const & name)
 			break;
 
 		default:
-			if(!strip(lex.getString()).empty())
+			if (!strip(lex.getString()).empty())
 				lex.printError("LyX::ReadUIFile: "
 					       "Unknown menu tag: `$$Token'");
 			break;

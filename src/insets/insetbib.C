@@ -252,7 +252,7 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 		string linebuf0;
 		while (getline(ifs, linebuf0)) {
 			string linebuf = frontStrip(strip(linebuf0));
-			if (linebuf.empty() ) continue;
+			if (linebuf.empty()) continue;
 			if (prefixIs(linebuf, "@")) {
 				linebuf = subst(linebuf, '{', '(');
 				string tmp;

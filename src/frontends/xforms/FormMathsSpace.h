@@ -28,7 +28,7 @@ struct FD_form_maths_space;
 class FormMathsSpace : public FormMathsSub {
 public:
 	///
-	FormMathsSpace(LyXView *, Dialogs * , FormMathsPanel const & );
+	FormMathsSpace(LyXView *, Dialogs * , FormMathsPanel const &);
 
 private:
 	/// Build the dialog
