@@ -619,7 +619,7 @@ bool LyXTabular::SetWidthOfCell(int cell, int new_width)
 }
 
 
-bool LyXTabular::SetAlignment(int cell, char align, bool onlycolumn)
+bool LyXTabular::SetAlignment(int cell, LyXAlignment align, bool onlycolumn)
 {
 #warning Please fix align type. (Lgb)
     if (!IsMultiColumn(cell) || onlycolumn)

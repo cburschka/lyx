@@ -145,7 +145,8 @@ public:
     ///
     Inset::Code LyxCode() const { return Inset::TABULAR_CODE; }
     ///
-    void GetCursorPos(BufferView *, int & x, int & y) const;
+    void GetCursorPos(BufferView *, unsigned long & x,
+		      unsigned long & y) const;
     ///
     void ToggleInsetCursor(BufferView *);
     ///
@@ -245,7 +246,7 @@ private:
     ///
     mutable int inset_x;
     ///
-    mutable int inset_y;
+    mutable unsigned long inset_y;
     ///
     mutable int sel_pos_start;
     ///

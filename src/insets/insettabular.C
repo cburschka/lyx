@@ -950,7 +950,8 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
 }
 
 
-void InsetTabular::GetCursorPos(BufferView *, int & x, int & y) const
+void InsetTabular::GetCursorPos(BufferView *,
+				unsigned long & x, unsigned long & y) const
 {
     x = cursor.x() - top_x;
     y = cursor.y();
@@ -1222,15 +1223,15 @@ bool InsetTabular::TabularFeatures(BufferView * bv, string const & what)
 void InsetTabular::TabularFeatures(BufferView * bv, int feature,
 				   string const & value)
 {
-    int
-	i, j,
-	sel_col_start,
-	sel_col_end,
-	sel_row_start,
-	sel_row_end,
-        setLines = 0,
-        setAlign = LYX_ALIGN_LEFT,
-        lineSet;
+    int i;
+    int j;
+    int sel_col_start;
+    int sel_col_end;
+    int sel_row_start;
+    int sel_row_end;
+    int setLines = 0;
+    LyXAlignment setAlign = LYX_ALIGN_LEFT;
+    int lineSet;
     bool what;
 
     switch (feature) {
@@ -1403,9 +1404,9 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature,
     case LyXTabular::ALIGN_LEFT:
     case LyXTabular::ALIGN_RIGHT:
     case LyXTabular::ALIGN_CENTER:
-	for(i=sel_row_start; i<=sel_row_end; ++i)
-	    for(j=sel_col_start; j<=sel_col_end; ++j)
-		tabular->SetAlignment(tabular->GetCellNumber(i,j),setAlign,
+	for(i = sel_row_start; i <= sel_row_end; ++i)
+	    for(j = sel_col_start; j <= sel_col_end; ++j)
+		tabular->SetAlignment(tabular->GetCellNumber(i, j), setAlign,
 				      flag);
 	if (hasSelection())
 	    UpdateLocal(bv, INIT, true);
@@ -1419,9 +1420,9 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature,
     case LyXTabular::VALIGN_TOP:
     case LyXTabular::VALIGN_BOTTOM:
     case LyXTabular::VALIGN_CENTER:
-	for(i=sel_row_start; i<=sel_row_end; ++i)
-	    for(j=sel_col_start; j<=sel_col_end; ++j)
-		tabular->SetVAlignment(tabular->GetCellNumber(i,j), setAlign,
+	for(i = sel_row_start; i <= sel_row_end; ++i)
+	    for(j = sel_col_start; j <= sel_col_end; ++j)
+		tabular->SetVAlignment(tabular->GetCellNumber(i, j), setAlign,
 				       flag);
 	if (hasSelection())
 	    UpdateLocal(bv, INIT, true);

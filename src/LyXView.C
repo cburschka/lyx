@@ -120,7 +120,7 @@ Toolbar * LyXView::getToolbar() const
 }
 
 
-void LyXView::setLayout(int layout)
+void LyXView::setLayout(LyXTextClass::size_type layout)
 {
 	toolbar->setLayout(layout);
 }

@@ -101,7 +101,7 @@ int lyxfont::rbearing(char c, LyXFont const & f)
 }
 
 
-int lyxfont::width(char const * s, int n, LyXFont const & f)
+int lyxfont::width(char const * s, size_t n, LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
 		return n;

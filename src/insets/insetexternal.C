@@ -314,10 +314,10 @@ void InsetExternal::Write(Buffer const *, std::ostream & os) const
 void InsetExternal::Read(Buffer const *, LyXLex & lex)
 {
 	lex.EatLine();
-	string format = lex.GetString();
-	int pos1 = format.find(",");
+	string const format = lex.GetString();
+	string::size_type const pos1 = format.find(",");
 	templatename = format.substr(0, pos1);
-	int pos2 = format.find("\",\"", pos1);
+	string::size_type const pos2 = format.find("\",\"", pos1);
 	filename = format.substr(pos1 + 2, pos2 - (pos1 + 2));
 	parameters = format.substr(pos2 + 3, format.length() - (pos2 + 4));
 
@@ -473,7 +473,7 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 				     string const & s) const
 {
 	string result;
-	string basename = ChangeExtension(filename, string());
+	string const basename = ChangeExtension(filename, string());
 	result = subst(s, "$$FName", filename);
 	result = subst(result, "$$Basename", basename);
 	result = subst(result, "$$Parameters", parameters);
@@ -484,8 +484,8 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 	// Handle the $$Contents(filename) syntax
 	if (contains(result, "$$Contents(\"")) {
 
-		int const pos = result.find("$$Contents(\"");
-		int const end = result.find("\")", pos);
+		string::size_type const pos = result.find("$$Contents(\"");
+		string::size_type const end = result.find("\")", pos);
 		string const file = result.substr(pos + 12, end - (pos + 12));
 		string contents;
 		if (buffer) {

@@ -76,7 +76,7 @@ public:
 	Toolbar * getToolbar() const;
 
 	/// sets the layout in the toolbar layout combox
-	void setLayout(int layout);
+	void setLayout(LyXTextClass::size_type layout);
 
 	/// update the toolbar
 	void updateToolbar();

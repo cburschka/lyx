@@ -221,9 +221,9 @@ private:
     void removeNewlines();
 
     ///
-    int cx(BufferView *) const;
+    long cx(BufferView *) const;
     ///
-    int cy(BufferView *) const;
+    long cy(BufferView *) const;
     ///
     int cpos(BufferView *) const;
     ///
@@ -242,7 +242,7 @@ private:
     ///
     mutable int insetAscent;
     ///
-    mutable int insetDescent;
+    mutable long insetDescent;
     ///
     mutable int insetWidth;
     ///

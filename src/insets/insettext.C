@@ -313,20 +313,20 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     y += baseline - row->ascent_of_text();
     if (cleared || !locked || (need_update == FULL)) {
 	while (row != 0) {
-	    TEXT(bv)->GetVisibleRow(bv, y, int(x), row, y, cleared);
+	    TEXT(bv)->GetVisibleRow(bv, int(y), int(x), row, y, cleared);
 	    y += row->height();
 	    row = row->next();
 	}
     } else if (need_update == SELECTION) {
-	bv->screen()->ToggleToggle(TEXT(bv), y, int(x));
+	bv->screen()->ToggleToggle(TEXT(bv), int(y), int(x));
     } else {
 	locked = false;
 	if (need_update == CURSOR) {
-	    bv->screen()->ToggleSelection(TEXT(bv), true, y, int(x));
+	    bv->screen()->ToggleSelection(TEXT(bv), true, int(y), int(x));
 	    TEXT(bv)->ClearSelection();
 	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	}
-	bv->screen()->Update(TEXT(bv), y, int(x));
+	bv->screen()->Update(TEXT(bv), int(y), int(x));
 	locked = true;
     }
     TEXT(bv)->refresh_y = 0;
@@ -1351,13 +1351,14 @@ LyXFont InsetText::GetDrawFont(BufferView * bv, LyXParagraph * p, int pos) const
 }
 #endif
 
-int InsetText::cx(BufferView * bv) const
+
+long InsetText::cx(BufferView * bv) const
 {
     return TEXT(bv)->cursor.x() + top_x + TEXT_TO_INSET_OFFSET;
 }
 
 
-int InsetText::cy(BufferView * bv) const
+long InsetText::cy(BufferView * bv) const
 {
     LyXFont font;
     return TEXT(bv)->cursor.y() - ascent(bv, font) + TEXT_TO_INSET_OFFSET;

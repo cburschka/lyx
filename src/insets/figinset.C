@@ -98,15 +98,12 @@ static queue<queue_element> gsqueue; // queue for ghostscripting
 
 static int gsrunning = 0;	/* currently so many gs's are running */
 static bool bitmap_waiting = false; /* bitmaps are waiting finished */
-static char bittable[256];	/* bit reversion table */
 
 static bool gs_color;			// do we allocate colors for gs?
 static bool color_visual;     		// is the visual color?
 static bool gs_xcolor = false;		// allocated extended colors
 static unsigned long gs_pixels[128];	// allocated pixels
-static int gs_num_pixels;		// number of pixels allocated
 static int gs_spc;			// shades per color
-static bool gs_gray;			// is grayscale?
 static int gs_allcolors;		// number of all colors
 
 static list<int> pidwaitlist; // pid wait list
@@ -195,7 +192,6 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 				register XImage * im;
 				int i;
 				int y;
-				int wid1;
 				int spc1 = gs_spc - 1;
 				int spc2 = gs_spc * gs_spc;
 				int wid = p->wid;
@@ -256,7 +252,6 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 						     .colormap, cmap,
 						     gs_allcolors);
 					XFlush(tmpdisp);
-					wid1 = p->wid - 1;
 				// now we process all the image
 					for (y = 0; y < p->hgh; ++y) {
 						for (int x = 0; x < wid; ++x) {
@@ -318,9 +313,9 @@ void AllocColors(int num)
 	if (num > 5) num = 5;
 	XColor xcol;
 	for (int i = 0; i < num * num * num; ++i) {
-		xcol.red = 65535 * (i / (num * num)) / (num - 1);
-		xcol.green = 65535 * ((i / num) % num) / (num - 1);
-		xcol.blue = 65535 * (i % num) / (num - 1);
+		xcol.red = short(65535 * (i / (num * num)) / (num - 1));
+		xcol.green = short(65535 * ((i / num) % num) / (num - 1));
+		xcol.blue = short(65535 * (i % num) / (num - 1));
 		xcol.flags = DoRed | DoGreen | DoBlue;
 		if (!XAllocColor(fl_display,
 				 fl_state[fl_get_vclass()].colormap, &xcol)) {
@@ -337,9 +332,7 @@ void AllocColors(int num)
 		gs_pixels[i] = xcol.pixel;
 	}
 	gs_color = true;
-	gs_gray = false;
 	gs_spc = num;
-	gs_num_pixels = num * num * num;
 }
 
 
@@ -377,8 +370,6 @@ void AllocGrays(int num)
 		gs_pixels[i] = xcol.pixel;
 	}
 	gs_color = true;
-	gs_gray = false;
-	gs_num_pixels = num;
 }
 
 
@@ -394,7 +385,6 @@ void InitFigures()
 		k = 0;
 		for (unsigned int j = 0; j < 8; ++j)
 			if (i & (1 << (7-j))) k |= 1 << j;
-		bittable[i] = char(~k);
 	}
 
 	// allocate color cube on pseudo-color display

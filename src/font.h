@@ -51,7 +51,7 @@ struct lyxfont {
 	}
 	///
 	static
-	int width(char const * s, int n, LyXFont const & f);
+	int width(char const * s, size_t n, LyXFont const & f);
 	///
 	static
 	int width(string const & s, LyXFont const & f) {

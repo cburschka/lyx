@@ -269,7 +269,7 @@ PainterBase & Painter::text(int x, int y, char c, LyXFont const & f)
 }
 
 
-PainterBase & Painter::text(int x, int y, char const * s, int ls,
+PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 			LyXFont const & f)
 {
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1) {

@@ -30,16 +30,16 @@ string const InsetCitation::getScreenLabel() const
 
 	// If keys is "too long" then only print out the first few tokens
 	string label;
-	if( contains( keys, "," ) ) {
+	if (contains(keys, ",")) {
 		// Final comma allows while loop to cover all keys
-		keys = frontStrip( split( keys, label, ',' ) ) + ",";
+		keys = frontStrip(split(keys, label, ',')) + ",";
 
-		const int maxSize( 40 );
-		while( contains( keys, "," ) ) {
+		size_t const maxSize = 40;
+		while (contains( keys, "," )) {
 			string key;
-			keys = frontStrip( split( keys, key, ',' ) );
+			keys = frontStrip(split(keys, key, ','));
 
-			int size = label.size() + 2 + key.size();
+			size_t size = label.size() + 2 + key.size();
 			if( size >= maxSize ) {
 				label += ", ...";
 				break;
@@ -50,7 +50,7 @@ string const InsetCitation::getScreenLabel() const
 		label = keys;
 	}
 
-	if( !getOptions().empty() )
+	if (!getOptions().empty())
 		label += ", " + getOptions();
 
 	return '[' + label + ']';
@@ -59,6 +59,6 @@ string const InsetCitation::getScreenLabel() const
 
 void InsetCitation::Edit(BufferView * bv, int, int, unsigned int)
 {
-	bv->owner()->getDialogs()->showCitation( this );
+	bv->owner()->getDialogs()->showCitation(this);
 }
 
