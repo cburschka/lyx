@@ -11,7 +11,7 @@ SnapGrid: 5
 Name: form_paragraph
 Width: 500
 Height: 395
-Number of Objects: 33
+Number of Objects: 34
 
 --------------------
 class: FL_BOX
@@ -446,16 +446,34 @@ callback: C_FormBaseDeprecatedInputCB
 argument: 0
 
 --------------------
+class: FL_LABELFRAME
+type: ENGRAVED_FRAME
+box: 10 245 350 45
+boxtype: FL_NO_BOX
+colors: FL_BLACK FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Label Width
+shortcut:
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name:
+callback:
+argument:
+
+--------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 125 250 235 30
+box: 125 255 230 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Label Width:|#d
+label: Longest Label:|#g
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_West FL_East
@@ -484,7 +502,7 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 375 250 115 30
+box: 375 255 115 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER

@@ -287,6 +287,9 @@ void FormParagraph::update()
 
     fl_set_input(dialog_->input_labelwidth,
 		 par_->getLabelWidthString().c_str());
+    setEnabled(dialog_->input_labelwidth,
+	       (par_->getLabelWidthString() != _("Senseless with this layout!")));
+
     fl_set_button(dialog_->radio_align_right, 0);
     fl_set_button(dialog_->radio_align_left, 0);
     fl_set_button(dialog_->radio_align_center, 0);

@@ -141,9 +141,12 @@ FD_form_paragraph * FormParagraph::build_paragraph()
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
   fdui->input_linespacing = obj = fl_add_input(FL_NORMAL_INPUT, 380, 185, 100, 30, "");
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 245, 350, 45, _("Label Width"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
-    char const * const dummy = N_("Label Width:|#d");
-    fdui->input_labelwidth = obj = fl_add_input(FL_NORMAL_INPUT, 125, 250, 235, 30, idex(_(dummy)));
+    char const * const dummy = N_("Longest Label:|#g");
+    fdui->input_labelwidth = obj = fl_add_input(FL_NORMAL_INPUT, 125, 255, 230, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -155,7 +158,7 @@ FD_form_paragraph * FormParagraph::build_paragraph()
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   {
     char const * const dummy = N_("No Indent|#I");
-    fdui->check_noindent = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 375, 250, 115, 30, idex(_(dummy)));
+    fdui->check_noindent = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 375, 255, 115, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
