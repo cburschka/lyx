@@ -94,7 +94,9 @@ private:
 	/// available in AMS only?
 	bool ams() const;
 	/// access to hull
-	MathHullInset * hull() const;
+	MathHullInset const * hull() const;
+	/// access to hull
+	MathHullInset * hull();
 	///
 	void handleExtern(string const & arg);
 

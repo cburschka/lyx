@@ -25,8 +25,10 @@ public:
 	void metricsT(TextMetricsInfo const & mi) const;
 	///
 	void drawT(TextPainter &, int x, int y) const;
-	///
+	/// identifies FracInsets
 	MathFracInset * asFracInset();
+	/// identifies FracInsets
+	MathFracInset const * asFracInset() const;
 	///
 	string name() const;
 

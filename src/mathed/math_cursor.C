@@ -587,7 +587,7 @@ bool MathCursor::toggleLimits()
 
 void MathCursor::macroModeClose()
 {
-	MathUnknownInset * p = inMacroMode();
+	MathUnknownInset const * p = inMacroMode();
 	if (!p)
 		return;
 	p->finalize();
@@ -688,7 +688,6 @@ void MathCursor::selGet(MathArray & ar)
 }
 
 
-
 void MathCursor::drawSelection(MathPainterInfo & pi) const
 {
 	if (!selection_)
@@ -702,7 +701,10 @@ void MathCursor::drawSelection(MathPainterInfo & pi) const
 
 void MathCursor::handleNest(MathAtom const & at)
 {
-	at->cell(0) = grabAndEraseSelection().glue();
+#ifdef WITH_WARNINGS
+#warning temporarily disabled
+	//at->cell(0) = grabAndEraseSelection().glue();
+#endif
 	insert(at);
 	pushRight(prevAtom());
 }
@@ -750,11 +752,11 @@ MathCursor::pos_type & MathCursor::pos()
 }
 
 
-MathUnknownInset * MathCursor::inMacroMode() const
+MathUnknownInset const * MathCursor::inMacroMode() const
 {
 	if (!hasPrevAtom())
 		return 0;
-	MathUnknownInset * p = prevAtom()->asUnknownInset();
+	MathUnknownInset const * p = prevAtom()->asUnknownInset();
 	return (p && !p->final()) ? p : 0;
 }
 

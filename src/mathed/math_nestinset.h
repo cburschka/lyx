@@ -38,6 +38,8 @@ public:
 	void substitute(MathMacro const & macro);
 	/// identifies NestInsets
 	MathNestInset * asNestInset() { return this; }
+	/// identifies NestInsets
+	MathNestInset const * asNestInset() const { return this; }
 	/// get cursor position
 	void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
 
@@ -81,11 +83,11 @@ public:
 	void validate(LaTeXFeatures & features) const;
 
 	/// match in all cells
-	bool match(MathInset *) const;
+	bool match(MathInset const *) const;
 	/// replace in all cells
 	void replace(ReplaceData &);
 	/// do we contain a given pattern?
-	bool contains(MathArray const &);
+	bool contains(MathArray const &) const;
 	/// glue everything to a single cell
 	MathArray glue() const;
 

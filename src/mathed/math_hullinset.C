@@ -516,9 +516,8 @@ void MathHullInset::mutate(string const & newtype)
 			setType("eqnarray");
 			mutate(newtype);
 		} else if (newtype == "multline" || newtype == "gather") {
-			setType("multline");
+			setType(newtype);
 			numbered(0, false);
-			mutate(newtype);
 		} else {			
 			MathGridInset::addCol(1);
 			// split it "nicely"

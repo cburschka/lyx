@@ -396,12 +396,18 @@ bool InsetFormula::display() const
 }
 
 
-MathHullInset * InsetFormula::hull() const
+MathHullInset const * InsetFormula::hull() const
 {
 	lyx::Assert(par_->asHullInset());
 	return par_->asHullInset();
 }
 
+
+MathHullInset * InsetFormula::hull()
+{
+	lyx::Assert(par_->asHullInset());
+	return par_->asHullInset();
+}
 
 Inset::Code InsetFormula::lyxCode() const
 {

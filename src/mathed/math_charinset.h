@@ -39,7 +39,7 @@ public:
 	///
 	bool isRelOp() const;
 	///
-	bool match(MathInset *) const;
+	bool match(MathInset const *) const;
 
 private:
 	/// the character

@@ -135,7 +135,7 @@ bool MathCharInset::isRelOp() const
 }
 
 
-bool MathCharInset::match(MathInset * p) const
+bool MathCharInset::match(MathInset const * p) const
 {
 	MathCharInset const * q = p->asCharInset();
 	return q && char_ == q->char_;

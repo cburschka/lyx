@@ -154,8 +154,11 @@ void MathArray::replace(ReplaceData & rep)
 		}
 	}
 
-	for (const_iterator it = begin(); it != end(); ++it)
-		it->nucleus()->replace(rep);
+#ifdef WITH_WARNINGS
+#warning temporarily disabled
+	// for (const_iterator it = begin(); it != end(); ++it)
+	//	it->nucleus()->replace(rep);
+#endif
 }
 
 

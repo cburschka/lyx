@@ -44,7 +44,7 @@ ostream & operator<<(ostream & os, MathArray const & ar)
 
 
 // define a function for tests
-typedef bool TestItemFunc(MathInset *);
+typedef bool TestItemFunc(MathInset const *);
 
 // define a function for replacing subexpressions
 typedef MathInset * ReplaceArgumentFunc(const MathArray & ar);
@@ -132,14 +132,14 @@ void extractStrings(MathArray & ar)
 		if (!ar[i]->asCharInset())
 			continue;
 		string s = charSequence(ar.begin() + i, ar.end());
-		ar[i].reset(new MathStringInset(s));
+		ar[i] = MathAtom(new MathStringInset(s));
 		ar.erase(i + 1, i + s.size());
 	}
 	//lyxerr << "\nStrings to: " << ar << "\n";
 }
 
 
-MathInset * singleItem(MathArray & ar)
+MathInset const * singleItem(MathArray const & ar)
 {
 	return ar.size() == 1 ? ar.begin()->nucleus() : 0;
 }
@@ -153,7 +153,7 @@ void extractMatrices(MathArray & ar)
 		MathDelimInset * del = (*it)->asDelimInset();
 		if (!del)
 			continue;
-		MathInset * arr = singleItem(del->cell(0));
+		MathInset const * arr = singleItem(del->cell(0));
 		if (!arr || !arr->asGridInset())
 			continue;
 		*it = MathAtom(new MathMatrixInset(*(arr->asGridInset())));
@@ -171,7 +171,7 @@ void extractMatrices(MathArray & ar)
 
 
 // convert this inset somehow to a string
-bool extractString(MathInset * p, string & str)
+bool extractString(MathInset const * p, string & str)
 {
 	if (!p)
 		return false;
@@ -204,7 +204,7 @@ bool extractNumber(MathArray const & ar, double & d)
 }
 
 
-bool testString(MathInset * p, const string & str)
+bool testString(MathInset const * p, const string & str)
 {
 	string s;
 	return extractString(p, s) && str == s;
@@ -257,7 +257,7 @@ void replaceNested(
 
 		// replace the original stuff by the new inset
 		ar.erase(it + 1, jt + 1);
-		(*it).reset(p);
+		*it = MathAtom(p);
 	}
 }
 
@@ -319,7 +319,7 @@ void extractExps(MathArray & ar)
 			continue;
 
 		// create a proper exp-inset as replacement 
-		*it = new MathExFuncInset("exp", sup->cell(1));
+		*it = MathAtom(new MathExFuncInset("exp", sup->cell(1)));
 		ar.erase(it + 1);
 	}
 	//lyxerr << "\nExps to: " << ar << "\n";
@@ -338,7 +338,7 @@ void extractDets(MathArray & ar)
 			continue;
 		if (!del->isAbs())
 			continue;
-		*it = new MathExFuncInset("det", del->cell(0));
+		*it = MathAtom(new MathExFuncInset("det", del->cell(0)));
 	}
 	//lyxerr << "\ndet to: " << ar << "\n";
 }
@@ -379,7 +379,7 @@ void extractNumbers(MathArray & ar)
 
 		string s = digitSequence(ar.begin() + i, ar.end());
 
-		ar[i].reset(new MathNumberInset(s));
+		ar[i] = MathAtom(new MathNumberInset(s));
 		ar.erase(i + 1, i + s.size());
 	}
 	//lyxerr << "\nNumbers to: " << ar << "\n";
@@ -391,13 +391,13 @@ void extractNumbers(MathArray & ar)
 // search deliminiters
 //
 
-bool testOpenParan(MathInset * p)
+bool testOpenParan(MathInset const * p)
 {
 	return testString(p, "(");
 }
 
 
-bool testCloseParan(MathInset * p)
+bool testCloseParan(MathInset const * p)
 {
 	return testString(p, ")");
 }
@@ -470,7 +470,7 @@ void extractFunctions(MathArray & ar)
 		MathArray::iterator st = extractArgument(p->cell(0), jt, ar.end());
 
 		// replace the function name by a real function inset
-		(*it).reset(p);
+		*it = MathAtom(p);
 
 		// remove the source of the argument from the array
 		ar.erase(it + 1, st);
@@ -486,19 +486,19 @@ void extractFunctions(MathArray & ar)
 // search integrals
 //
 
-bool testSymbol(MathInset * p, string const & name)
+bool testSymbol(MathInset const * p, string const & name)
 {
 	return p->asSymbolInset() && p->asSymbolInset()->name() == name;
 }
 
 
-bool testIntSymbol(MathInset * p)
+bool testIntSymbol(MathInset const * p)
 {
 	return testSymbol(p, "int");
 }
 
 
-bool testIntegral(MathInset * p)
+bool testIntegral(MathInset const * p)
 {
 	return
 	 testIntSymbol(p) ||
@@ -509,7 +509,7 @@ bool testIntegral(MathInset * p)
 
 
 
-bool testIntDiff(MathInset * p)
+bool testIntDiff(MathInset const * p)
 {
 	return testString(p, "d");
 }
@@ -554,7 +554,7 @@ void extractIntegrals(MathArray & ar)
 
 		// remove used parts
 		ar.erase(it + 1, tt);
-		(*it).reset(p);
+		*it = MathAtom(p);
 	}
 	//lyxerr << "\nIntegrals to: " << ar << "\n";
 }
@@ -571,13 +571,13 @@ bool testEqualSign(MathAtom const & at)
 }
 
 
-bool testSumSymbol(MathInset * p)
+bool testSumSymbol(MathInset const * p)
 {
 	return testSymbol(p, "sum");
 }
 
 
-bool testSum(MathInset * p)
+bool testSum(MathInset const * p)
 {
 	return
 	 testSumSymbol(p) ||
@@ -633,7 +633,7 @@ void extractSums(MathArray & ar)
 
 		// cleanup
 		ar.erase(it + 1, tt);
-		(*it).reset(p);
+		*it = MathAtom(p);
 	}
 	//lyxerr << "\nSums to: " << ar << "\n";
 }
@@ -656,9 +656,9 @@ bool testDiffArray(MathArray const & ar)
 }
 
 
-bool testDiffFrac(MathInset * p)
+bool testDiffFrac(MathInset const * p)
 {
-	MathFracInset * f = p->asFracInset();
+	MathFracInset const * f = p->asFracInset();
 	return f && testDiffArray(f->cell(0)) && testDiffArray(f->cell(1));
 }
 
@@ -743,7 +743,7 @@ void extractDiff(MathArray & ar)
 
 		// cleanup
 		ar.erase(it + 1, jt);
-		(*it).reset(diff);
+		*it = MathAtom(diff);
 	}
 	//lyxerr << "\nDiffs to: " << ar << "\n";
 }
@@ -798,12 +798,11 @@ void extractLims(MathArray & ar)
 		MathArray f;
 		MathArray::iterator tt = extractArgument(f, it + 2, ar.end());
 
-		// create a proper inset as replacement
-		MathLimInset * p = new MathLimInset(f, x, x0);
-
 		// cleanup
 		ar.erase(it + 1, tt);
-		(*it).reset(p);
+
+		// create a proper inset as replacement
+		*it = MathAtom(new MathLimInset(f, x, x0));
 	}
 	//lyxerr << "\nLimits to: " << ar << "\n";
 }

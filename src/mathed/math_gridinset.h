@@ -125,7 +125,9 @@ public:
 	/// 
 	CellInfo & cellinfo(idx_type idx) { return cellinfo_[idx]; }
 	/// identifies GridInset
-	virtual MathGridInset * asGridInset() { return this; }
+	MathGridInset * asGridInset() { return this; }
+	/// identifies GridInset
+	MathGridInset const * asGridInset() const { return this; }
 
 	///
 	col_type ncols() const;

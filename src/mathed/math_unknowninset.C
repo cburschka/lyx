@@ -27,13 +27,13 @@ string MathUnknownInset::name() const
 }
 
 
-void MathUnknownInset::setName(string const & name)
+void MathUnknownInset::setName(string const & name) const
 {
 	name_ = name;
 }
 
 
-bool MathUnknownInset::match(MathInset * p) const
+bool MathUnknownInset::match(MathInset const * p) const
 {
 	MathUnknownInset const * q = p->asUnknownInset();
 	return q && name_ == q->name_;
@@ -61,7 +61,7 @@ void MathUnknownInset::draw(MathPainterInfo & pi, int x, int y) const
 }
 
 
-void MathUnknownInset::finalize()
+void MathUnknownInset::finalize() const
 {
 	final_ = true;
 }

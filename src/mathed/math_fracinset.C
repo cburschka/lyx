@@ -29,6 +29,12 @@ MathFracInset * MathFracInset::asFracInset()
 }
 
 
+MathFracInset const * MathFracInset::asFracInset() const
+{
+	return atop_ ? 0 : this;
+}
+
+
 void MathFracInset::metrics(MathMetricsInfo & mi) const
 {
 	MathFracChanger dummy(mi.base);

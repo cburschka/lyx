@@ -228,7 +228,7 @@ void MathNestInset::validate(LaTeXFeatures & features) const
 }
 
 
-bool MathNestInset::match(MathInset * p) const
+bool MathNestInset::match(MathInset const * p) const
 {
 	if (nargs() != p->nargs())
 		return false;
@@ -246,7 +246,7 @@ void MathNestInset::replace(ReplaceData & rep)
 }
 
 
-bool MathNestInset::contains(MathArray const & ar)
+bool MathNestInset::contains(MathArray const & ar) const
 {
 	for (idx_type i = 0; i < nargs(); ++i)
 		if (cell(i).contains(ar))
