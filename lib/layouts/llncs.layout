@@ -97,6 +97,7 @@ Input stdstarsections.inc
 # Remove the ones that we do not want
 NoStyle		Part
 NoStyle		Part*
+NoStyle		Chapter
 
 # Some standard things
 Input stdlayouts.inc
@@ -224,7 +225,7 @@ End
 Style TOC_Author
   CopyStyle		"Running LaTeX Title"
   LatexName		tocauthor
-  LeftMargin		"TOC Author :xxx"
+  LeftMargin		"TOC Author:xxx"
   LabelString		"TOC Author: "
 End
 
@@ -253,11 +254,11 @@ End
 #
 #
 # Correspondence address style definition
-Style Mail
+Style Email
   CopyStyle		"Running LaTeX Title"
-  LatexName		mail	
-  LeftMargin		"Corr Author:xx."
-  LabelString		"Corr Author: "
+  LatexName		email	
+  LeftMargin		"Email:xxx"
+  LabelString		"Email: "
 End
 
 # Abstract style definition
