@@ -978,7 +978,11 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & ev_in)
 
 	screen().hideCursor();
 
-	bool const res = dispatch(ev_in);
+	// Make sure that the cached BufferView is correct.
+	FuncRequest ev = ev_in;
+	ev.setView(bv_);
+
+	bool const res = dispatch(ev);
 
 	// see workAreaKeyPress
 	cursor_timeout.restart();
