@@ -1,11 +1,11 @@
 
-		        Building LyX/Mac-1.3.4
+			   Building LyX/Mac-1.3.x
 
 		  Ronald Florence <ron@18james.com>
+		  Modified by Bennett Helm <bennett.helm@fandm.edu>
 
    LyX/Mac is built from the LyX source, the GPL-licensed Trolltech
-   Qt/Mac library, and a custom application skeleton.  Qt-3.1.2 as
-   patched here is fully functional with MacOS-10.2 and 10.3.
+   Qt/Mac library, and a custom application bundle. 
 
    You will need the MacOSX development tools.  The procedure
    described here builds LyX linked with a static Qt library.  If you
@@ -13,36 +13,32 @@
    to "setenv VAR value".
 
    1.  Download the GPL-licensed Qt/Mac library source code from
-       <ftp://ftp.lyx.org/pub/lyx/contrib/qt-mac-free-3.1.2.sit>,
+       <http://www.trolltech.com/download/qt/mac.html>,
        untar in a convenient directory, cd to the top of the Qt source
        hierarcy, and:
 
      export QTDIR=`pwd` 
-     patch -p0 < LYX-SOURCE-DIRECTORY/development/MacOSX/qt.patch
-     sudo gcc_select 2 
-     ./configure -static   [for Panther, use "./configure -static -lresolv"]
+     sudo gcc_select 2
+     ./configure -static -no-exceptions   [for Panther, use "./configure -static -no-exceptions -lresolv"]
      make 
+     rm lib/libqt.la
+
 
    2.  Download the LyX/Mac skeleton from
        <ftp://ftp.lyx.org/pub/lyx/stable/lyx-mac-1.3.4-skeleton.tar.gz>
-       and unpack it in /Applications
+       and unpack it in /Applications.  Change the references to
+       "1.3.4" in /Applications/LyX.app/Contents/Info.plist to
+       "1.3.5", or whatever the current version is).
  
    3.  Using the same terminal session you used to build the Qt
        library, cd to the top of the LyX source hierarchy, and:
 
      export LDFLAGS="-framework Carbon -framework OpenGL -framework AGL -framework QuickTime -lz"
-     ./configure --with-frontend=qt --without-x --datadir=/Applications/LyX.app/Contents/Resources --bindir=/Applications/LyX.app/Contents/MacOS --mandir=/Applications/LyX.app/Contents/Resources/man
+     ./configure am_cv_func_iconv=no ac_cv_func_tsearch=no ac_cv_working_alloca_h=no ac_cv_header_dlfcn_h=no ac_cv_func_feof_unlocked=no ac_cv_header_nl_types_h=no am_cv_langinfo_codeset=no ac_cv_func_stpcpy=no --with-frontend=qt --without-x --datadir=/Applications/LyX.app/Contents/Resources --bindir=/Applications/LyX.app/Contents/MacOS --mandir=/Applications/LyX.app/Contents/Resources/man
      make
-     make install
+     make install   [use "make install-strip" to remove debugging code]
      rm /Applications/LyX.app/Contents/Resources/LyX/images/lyx.xpm
-     sudo gcc_select 3 
 
-
-   For information on configuring LyX/Mac, please see the howto at
-   <http://www.18james.com/lyx_on_aqua.html>. The binary installation
-   of LyX/Mac-1.3.4 installs additional LaTeX fonts and packages, and
-   provides additional functionality including inverse DVI search with
-   some DVI-previewers.
 
    The information on this page is believed to be accurate, has been
    used successfully on many systems and sites, and has benefited from
