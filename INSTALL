@@ -305,6 +305,14 @@ notify us.
 	are needed for compilation). A 'make symlinks' in linux kernel
 	sources fixes that. 
 
+  o if you get an error message when compiling LyX that looks like this :
+
+    ../../src/minibuffer.h:17: using directive `Object' introduced
+    ambiguous type `_ObjectRec *'
+
+    then you need to upgrade the version of the xforms library you have
+    installed.
+
   o If you have GNU gettext installed on your system (e.g. on linux),
     you will get tons of warnings like:
 
