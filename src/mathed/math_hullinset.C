@@ -875,7 +875,7 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest & func)
 {
 	string lang;
 	string extra;
-	istringstream iss(func.argument.c_str());
+	istringstream iss(func.argument);
 	iss >> lang >> extra;
 	if (extra.empty())
 		extra = "noextra";
@@ -1337,7 +1337,7 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 	else
 		name = "informalequation";
 
-	string bname = name;	
+	string bname = name;
 	if (! label(0).empty()) bname += " id=\"" + label(0)+ "\"";
 	ms << MTag(bname.c_str());
 
@@ -1350,7 +1350,7 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 		res = latex(buf, ms.os(), runparams);
 		ms <<   ETag("alt");
 	}
-	
+
 	ms << ETag(name.c_str());
 	return ms.line() + res;
 }

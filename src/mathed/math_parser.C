@@ -389,7 +389,7 @@ void Parser::tokenize(istream & is)
 
 void Parser::tokenize(string const & buffer)
 {
-	istringstream is(buffer.c_str(), ios::in | ios::binary);
+	istringstream is(buffer, ios::in | ios::binary);
 
 	char c;
 	while (is.get(c)) {
@@ -1216,7 +1216,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 void mathed_parse_cell(MathArray & ar, string const & str)
 {
-	istringstream is(str.c_str());
+	istringstream is(str);
 	mathed_parse_cell(ar, is);
 }
 
@@ -1229,7 +1229,7 @@ void mathed_parse_cell(MathArray & ar, istream & is)
 
 bool mathed_parse_normal(MathAtom & t, string const & str)
 {
-	istringstream is(str.c_str());
+	istringstream is(str);
 	return Parser(is).parse(t);
 }
 
@@ -1248,7 +1248,7 @@ bool mathed_parse_normal(MathAtom & t, LyXLex & lex)
 
 void mathed_parse_normal(MathGridInset & grid, string const & str)
 {
-	istringstream is(str.c_str());
+	istringstream is(str);
 	Parser(is).parse1(grid, 0, MathInset::MATH_MODE, false);
 }
 

@@ -200,7 +200,7 @@ bool extractString(MathAtom const & at, string & str)
 // convert this inset somehow to a number
 bool extractNumber(MathArray const & ar, int & i)
 {
-	istringstream is(charSequence(ar.begin(), ar.end()).c_str());
+	istringstream is(charSequence(ar.begin(), ar.end()));
 	is >> i;
 	return is;
 }
@@ -208,7 +208,7 @@ bool extractNumber(MathArray const & ar, int & i)
 
 bool extractNumber(MathArray const & ar, double & d)
 {
-	istringstream is(charSequence(ar.begin(), ar.end()).c_str());
+	istringstream is(charSequence(ar.begin(), ar.end()));
 	is >> d;
 	return is;
 }
@@ -963,7 +963,7 @@ namespace {
 				break;
 
 			// search line with "Incorrect syntax"
-			istringstream is(out.c_str());
+			istringstream is(out);
 			string line;
 			while (is) {
 				getline(is, line);
@@ -1080,7 +1080,7 @@ namespace {
 			string out = captureOutput("mint -i 1 -S -s -q -q", expr + ';');
 			if (out.empty())
 				break; // expression syntax is ok
-			istringstream is(out.c_str());
+			istringstream is(out);
 			string line;
 			getline(is, line);
 			if (line.find("on line") != 0)
@@ -1134,7 +1134,7 @@ namespace {
 				break;
 
 			// search line with single caret
-			istringstream is(out.c_str());
+			istringstream is(out);
 			string line;
 			while (is) {
 				getline(is, line);

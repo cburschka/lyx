@@ -392,7 +392,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		cur.message(_("Paste"));
 		replaceSelection(cur);
 		size_t n = 0;
-		istringstream is(cmd.argument.c_str());
+		istringstream is(cmd.argument);
 		is >> n;
 		pasteSelection(cur, n);
 		cur.clearSelection(); // bug 393
@@ -612,7 +612,7 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		lyxerr << "LFUN_SETXY broken!" << endl;
 		int x = 0;
 		int y = 0;
-		istringstream is(cmd.argument.c_str());
+		istringstream is(cmd.argument);
 		is >> x >> y;
 		cur.setScreenPos(x, y);
 		break;
