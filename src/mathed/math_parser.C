@@ -564,13 +564,13 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		if (flags & FLAG_OPTION) {
 			if (t.cat() == catOther && t.character() == '[') {
-				// skip the bracket and collect everything to the closing bracket
-				flags |= FLAG_BRACK_LAST;
-				continue;
+				MathArray ar;
+				parse(ar, FLAG_BRACK_LAST, mathmode);
+				cell->append(ar);
+			} else {
+				// no option found, put back token and we are done
+				putback();
 			}
-
-			// no option found, put back token and we are done
-			putback();
 			return;
 		}
 
@@ -665,8 +665,10 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			limits = 0;
 		}
 
-		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST))
+		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST)) {
+			lyxerr << "finished reading option\n";
 			return;
+		}
 
 		else if (t.cat() == catOther)
 			cell->push_back(MathAtom(new MathCharInset(t.character())));
@@ -842,6 +844,8 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		else if (t.cs() == "sqrt") {
 			MathArray ar;
 			parse(ar, FLAG_OPTION, mathmode);
+			lyxerr << "read option: " << ar << endl;
+			dump();
 			if (ar.size()) {
 				cell->push_back(MathAtom(new MathRootInset));
 				cell->back()->cell(0) = ar;
