@@ -38,9 +38,10 @@ struct Loader::Impl : boost::signals::trackable {
 	void resetParams(Params const &);
 	///
 	void createPixmap();
-
 	///
 	void startLoading();
+	///
+	Params const & params() const { return params_; }
 
 	/// The loading status of the image.
 	ImageStatus status_;
@@ -82,6 +83,11 @@ Loader::Loader(string const & file, Params const & params)
 {
 	reset(file, params);
 }
+
+
+Loader::Loader(Loader const & other)
+	: pimpl_(new Impl(other.pimpl_->params()))
+{}
 
 
 Loader::~Loader()

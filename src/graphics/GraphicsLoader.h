@@ -46,6 +46,8 @@ public:
 	Loader(string const & file_with_path, DisplayType = ColorDisplay);
 	/// The image is transformed before display.
 	Loader(string const & file_with_path, Params const &);
+	///
+	Loader(Loader const &);
 
 	/// Define an empty d-tor out-of-line to keep boost::scoped_ptr happy.
 	~Loader();
