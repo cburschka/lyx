@@ -436,7 +436,7 @@ cat >$outfile <<EOF
 \\Format agr      agr	GRACE		""
 \\Format bmp      bmp	BMP		""
 \\Format date     ""    "date command"  ""
-\\Format dateout  ""    "date (output)" ""
+\\Format dateout  "tmp" "date (output)" ""
 \\Format docbook  sgml	DocBook		B
 \\Format dvi	  dvi	DVI		D
 \\Format eps	  eps	EPS		""
