@@ -440,7 +440,7 @@ End
 Style Bibliography
   Margin		First_Dynamic
   LatexType		Item_Environment
-  LatexName		lyxbibliography
+  LatexName		thebibliography
   NextNoIndent		1
   LeftMargin		MM
   ParSkip		0.4
@@ -458,11 +458,6 @@ Style Bibliography
   LabelFont 
     Series		Bold
   EndFont
-
-  Preamble
-    \newcommand{\lyxbibliography}{\thebibliography{References}%
-      \renewcommand{\bibitem}[3][!]{\@bibitem{##1}{##2}{##3}}}
-  EndPreamble
 
 End
 
