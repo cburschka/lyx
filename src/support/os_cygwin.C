@@ -123,7 +123,7 @@ char os::path_separator()
 }
 
 
-void cygwin_path_fix(bool use_cygwin_paths)
+void os::cygwin_path_fix(bool use_cygwin_paths)
 {
 	cygwin_path_fix_ = use_cygwin_paths;
 }

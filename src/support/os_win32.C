@@ -181,5 +181,5 @@ char os::path_separator()
 }
 
 
-void cygwin_path_fix(bool)
+void os::cygwin_path_fix(bool)
 {}
