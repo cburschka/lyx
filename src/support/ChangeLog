@@ -2,9 +2,9 @@
 
 	* lyxstring.C: close to typo fix.
 
-2002-05-02  Herbert Voss  <voss@perce.de>
+2002-05-02  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* filetools.C: getline -> std::getline.
+	* filetools.C: add a using std::getline directive.
 
 2002-05-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
