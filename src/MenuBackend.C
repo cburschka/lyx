@@ -22,6 +22,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "lastfiles.h"
+#include "lyx_main.h" // for lastfiles
 #include "bufferlist.h"
 #include "converter.h"
 #include "exporter.h"
@@ -33,7 +34,6 @@
 #include "support/lstrings.h"
 
 extern LyXAction lyxaction;
-extern LastFiles * lastfiles; 
 extern BufferList bufferlist;
 
 using std::endl;
