@@ -262,7 +262,9 @@ private: //////////////////////////////////////////////////////////////////
 	///
 	~cellstruct();
 	///
-        cellstruct & operator=(cellstruct const &);
+        cellstruct(cellstruct const &);
+	///
+	cellstruct & operator=(cellstruct const &);
 	///
 	int cellno;
 	///
@@ -291,9 +293,9 @@ private: //////////////////////////////////////////////////////////////////
 	///
         rowstruct();
 	///
-	~rowstruct();
+	    //~rowstruct();
 	///
-        rowstruct & operator=(rowstruct const &);
+	    // rowstruct & operator=(rowstruct const &);
 	///
 	bool top_line;
 	bool bottom_line;
@@ -307,9 +309,9 @@ private: //////////////////////////////////////////////////////////////////
 	///
         columnstruct();
 	///
-	~columnstruct();
+	    //~columnstruct();
 	///
-        columnstruct & operator=(columnstruct const &);
+	    //columnstruct & operator=(columnstruct const &);
 	///
 	int alignment; // add approp. signedness
 	bool left_line;
@@ -344,7 +346,7 @@ private: //////////////////////////////////////////////////////////////////
     int endfoot; // row of endfoot
     int endlastfoot; // row of endlastfoot
     ///
-    Buffer *buffer;
+    Buffer * buffer;
    
     ///
     void set_row_column_number_info();

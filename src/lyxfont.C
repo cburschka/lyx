@@ -412,7 +412,7 @@ string LyXFont::stateText() const
 	//	ost << _("Default");
 	unsigned int opos = ost.tellp();
 	//lyxerr << "Opos: " << opos << endl;
-	if (opos == 0)
+	if (opos == 0 || opos == -1)
 		ost << _("Default") << ", ";
 	ost << _("Language: ") << _(language()->display.c_str());
 #ifdef HAVE_SSTREAM
