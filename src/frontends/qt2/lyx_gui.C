@@ -25,6 +25,7 @@
 #include "lyxrc.h"
 #include "lyxserver.h"
 #include "BufferView.h"
+#include "LColor.h"
 
 // Dear Lord, deliver us from Evil,
 // aka the Qt headers

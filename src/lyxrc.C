@@ -25,6 +25,7 @@
 #include "converter.h"
 #include "format.h"
 #include "gettext.h"
+#include "LColor.h"
 #include "lyxlex.h"
 #include "lyxfont.h"
 

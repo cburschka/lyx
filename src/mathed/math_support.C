@@ -18,6 +18,7 @@
 #include "math_parser.h"
 
 #include "debug.h"
+#include "LColor.h"
 
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"

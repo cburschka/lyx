@@ -17,15 +17,18 @@
 #include "math_support.h"
 #include "math_extern.h"
 #include "math_charinset.h"
-#include "debug.h"
 #include "textpainter.h"
+#include "debug.h"
 #include "funcrequest.h"
-#include "support/std_sstream.h"
+#include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "LColor.h"
+#include "lyxrc.h"
 
 #include "frontends/Alert.h"
-#include "lyxrc.h"
-#include "gettext.h"
+
+#include "support/std_sstream.h"
+
 
 using lyx::support::trim;
 

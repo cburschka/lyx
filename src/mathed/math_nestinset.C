@@ -14,9 +14,10 @@
 #include "math_cursor.h"
 #include "math_mathmlstream.h"
 #include "math_parser.h"
-#include "funcrequest.h"
-#include "debug.h"
 #include "BufferView.h"
+#include "debug.h"
+#include "funcrequest.h"
+#include "LColor.h"
 #include "frontends/Painter.h"
 
 

@@ -22,6 +22,7 @@
 #include "BufferView.h"
 #include "debug.h"
 #include "gettext.h"
+#include "LColor.h"
 #include "lyx_main.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"

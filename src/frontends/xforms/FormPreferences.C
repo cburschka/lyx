@@ -20,11 +20,12 @@
 #include "xformsBC.h"
 
 #include "controllers/helper_funcs.h" // getSecond
+#include "controllers/frnt_lang.h"
 
 #include "buffer.h"
 #include "converter.h"
 #include "format.h"
-#include "frnt_lang.h"
+#include "LColor.h"
 #include "lyxfont.h"
 
 #include "support/lstrings.h"

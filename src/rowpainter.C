@@ -596,7 +596,9 @@ int RowPainter::paintLengthMarker(string const & prefix, VSpace const & vsp, int
 	int d = 0;
 
 	LyXFont font;
-	font.setColor(LColor::added_space).decSize().decSize();
+	font.setColor(LColor::added_space);
+	font.decSize();
+	font.decSize();
 	font_metrics::rectText(str, font, w, a, d);
 
 	pain_.rectText(leftx + 2 * arrow_size + 5,
@@ -622,7 +624,8 @@ int RowPainter::paintLengthMarker(string const & prefix, VSpace const & vsp, int
 int RowPainter::paintPageBreak(string const & label, int y)
 {
 	LyXFont pb_font;
-	pb_font.setColor(LColor::pagebreak).decSize();
+	pb_font.setColor(LColor::pagebreak);
+	pb_font.decSize();
 
 	int w = 0;
 	int a = 0;
@@ -646,7 +649,8 @@ int RowPainter::paintPageBreak(string const & label, int y)
 int RowPainter::paintAppendixStart(int y)
 {
 	LyXFont pb_font;
-	pb_font.setColor(LColor::appendix).decSize();
+	pb_font.setColor(LColor::appendix);
+	pb_font.decSize();
 
 	string const label = _("Appendix");
 	int w = 0;

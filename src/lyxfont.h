@@ -15,8 +15,6 @@
 #ifndef LYXFONT_H
 #define LYXFONT_H
 
-#include "LColor.h"
-
 #include "support/std_string.h"
 #include <iosfwd>
 
@@ -223,25 +221,16 @@ public:
 	bool isSymbolFont() const;
 
 	///
-	LyXFont & setFamily(LyXFont::FONT_FAMILY f);
-	///
-	LyXFont & setSeries(LyXFont::FONT_SERIES s);
-	///
-	LyXFont & setShape(LyXFont::FONT_SHAPE s);
-	///
-	LyXFont & setSize(LyXFont::FONT_SIZE s);
-	///
-	LyXFont & setEmph(LyXFont::FONT_MISC_STATE e);
-	///
-	LyXFont & setUnderbar(LyXFont::FONT_MISC_STATE u);
-	///
-	LyXFont & setNoun(LyXFont::FONT_MISC_STATE n);
-	///
-	LyXFont & setNumber(LyXFont::FONT_MISC_STATE n);
-	///
-	LyXFont & setColor(EnumLColor c);
-	///
-	LyXFont & setLanguage(Language const * l);
+	void setFamily(LyXFont::FONT_FAMILY f);
+	void setSeries(LyXFont::FONT_SERIES s);
+	void setShape(LyXFont::FONT_SHAPE s);
+	void setSize(LyXFont::FONT_SIZE s);
+	void setEmph(LyXFont::FONT_MISC_STATE e);
+	void setUnderbar(LyXFont::FONT_MISC_STATE u);
+	void setNoun(LyXFont::FONT_MISC_STATE n);
+	void setNumber(LyXFont::FONT_MISC_STATE n);
+	void setColor(EnumLColor c);
+	void setLanguage(Language const * l);
 
 	/// Set family after LyX text format
 	LyXFont & setLyXFamily(string const &);
@@ -332,8 +321,10 @@ public:
 		FONT_SHAPE shape;
 		///
 		FONT_SIZE size;
-		///
-		LColor::color color;
+		/** We store the LColor::color value as an int to get LColor.h out
+		 *  of the header file.
+		 */
+		int color;
 		///
 		FONT_MISC_STATE emph;
 		///

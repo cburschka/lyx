@@ -14,6 +14,7 @@
 #include "math_rootinset.h"
 #include "math_data.h"
 #include "math_mathmlstream.h"
+#include "LColor.h"
 #include "frontends/Painter.h"
 
 

@@ -14,6 +14,7 @@
 #include "math_data.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
+#include "LColor.h"
 #include "support/std_ostream.h"
 
 using std::max;

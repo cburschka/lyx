@@ -15,6 +15,7 @@
 #include "math_data.h"
 #include "math_mathmlstream.h"
 #include "textpainter.h"
+#include "LColor.h"
 #include "frontends/Painter.h"
 
 

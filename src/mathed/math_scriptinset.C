@@ -17,6 +17,7 @@
 #include "math_symbolinset.h"
 #include "debug.h"
 #include "funcrequest.h"
+#include <boost/assert.hpp>
 
 using std::max;
 using std::auto_ptr;

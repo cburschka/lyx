@@ -20,6 +20,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "language.h"
+#include "LColor.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 
@@ -204,7 +205,7 @@ LyXFont::FONT_MISC_STATE LyXFont::underbar() const
 
 EnumLColor LyXFont::color() const
 {
-	return bits.color;
+	return LColor::color(bits.color);
 }
 
 
@@ -233,73 +234,63 @@ bool LyXFont::isVisibleRightToLeft() const
 }
 
 
-LyXFont & LyXFont::setFamily(LyXFont::FONT_FAMILY f)
+void LyXFont::setFamily(LyXFont::FONT_FAMILY f)
 {
 	bits.family = f;
-	return *this;
 }
 
 
-LyXFont & LyXFont::setSeries(LyXFont::FONT_SERIES s)
+void LyXFont::setSeries(LyXFont::FONT_SERIES s)
 {
 	bits.series = s;
-	return *this;
 }
 
 
-LyXFont & LyXFont::setShape(LyXFont::FONT_SHAPE s)
+void LyXFont::setShape(LyXFont::FONT_SHAPE s)
 {
 	bits.shape = s;
-	return *this;
 }
 
 
-LyXFont & LyXFont::setSize(LyXFont::FONT_SIZE s)
+void LyXFont::setSize(LyXFont::FONT_SIZE s)
 {
 	bits.size = s;
-	return *this;
 }
 
 
-LyXFont & LyXFont::setEmph(LyXFont::FONT_MISC_STATE e)
+void LyXFont::setEmph(LyXFont::FONT_MISC_STATE e)
 {
 	bits.emph = e;
-	return *this;
 }
 
 
-LyXFont & LyXFont::setUnderbar(LyXFont::FONT_MISC_STATE u)
+void LyXFont::setUnderbar(LyXFont::FONT_MISC_STATE u)
 {
 	bits.underbar = u;
-	return *this;
 }
 
 
-LyXFont & LyXFont::setNoun(LyXFont::FONT_MISC_STATE n)
+void LyXFont::setNoun(LyXFont::FONT_MISC_STATE n)
 {
 	bits.noun = n;
-	return *this;
 }
 
 
-LyXFont & LyXFont::setColor(EnumLColor c)
+void LyXFont::setColor(EnumLColor c)
 {
-	bits.color = c;
-	return *this;
+	bits.color = int(c);
 }
 
 
-LyXFont & LyXFont::setLanguage(Language const * l)
+void LyXFont::setLanguage(Language const * l)
 {
 	lang = l;
-	return *this;
 }
 
 
-LyXFont & LyXFont::setNumber(LyXFont::FONT_MISC_STATE n)
+void LyXFont::setNumber(LyXFont::FONT_MISC_STATE n)
 {
 	bits.number = n;
-	return *this;
 }
 
 

@@ -98,7 +98,8 @@ void ButtonRenderer::draw(PainterInfo & pi, int x, int y) const
 
 	// Draw it as a box with the LaTeX text
 	LyXFont font(LyXFont::ALL_SANE);
-	font.setColor(LColor::command).decSize();
+	font.setColor(LColor::command);
+	font.decSize();
 
 	if (editable_) {
 		pi.pain.buttonText(x + 2, y, text_, font);

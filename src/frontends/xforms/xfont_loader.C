@@ -14,6 +14,7 @@
 #include "FontInfo.h"
 
 #include "debug.h"
+#include "LColor.h"
 #include "lyxrc.h"	// lyxrc.font_*
 
 #include "frontends/lyx_gui.h"

@@ -16,6 +16,7 @@
 #include "math_streamstr.h"
 #include "debug.h"
 #include "funcrequest.h"
+#include "LColor.h"
 #include "frontends/Painter.h"
 #include "support/std_sstream.h"
 

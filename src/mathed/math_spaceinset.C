@@ -15,6 +15,7 @@
 #include "frontends/Painter.h"
 #include "math_mathmlstream.h"
 #include "LaTeXFeatures.h"
+#include "LColor.h"
 
 using std::auto_ptr;
 

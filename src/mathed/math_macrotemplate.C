@@ -15,6 +15,7 @@
 #include "math_parser.h"
 #include "frontends/Painter.h"
 #include "debug.h"
+#include "LColor.h"
 
 using std::auto_ptr;
 using std::endl;

@@ -22,6 +22,8 @@
 #include <qcheckbox.h>
 #include <qcombobox.h>
 
+#include "LColor.h"
+
 using frnt::BarPair;
 using frnt::ColorPair;
 using frnt::FamilyPair;

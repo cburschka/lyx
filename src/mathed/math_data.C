@@ -18,7 +18,9 @@
 #include "math_support.h"
 #include "math_replace.h"
 #include "debug.h"
+#include "LColor.h"
 #include "frontends/Painter.h"
+#include <boost/assert.hpp>
 
 using std::abs;
 using std::endl;

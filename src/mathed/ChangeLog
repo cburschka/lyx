@@ -1,3 +1,12 @@
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
+	* math_braceinset.C, math_data.C, math_fboxinset.C, math_frameboxinset.C,
+	math_gridinset.C, math_hullinset.C, math_macrotemplate.C, math_nestinset.C,
+	math_rootinset.C, math_spaceinset.C, math_sqrtinset.C, math_support.C:
+	add #include "LColor.h".
+	* math_data.C, math_scriptinset.C: add #include <boost/assert.hpp>
+	* math_exintinset.C: add #include <boost/scoped_ptr.hpp>
+ 
 2003-09-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* command_inset.C

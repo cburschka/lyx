@@ -49,6 +49,8 @@
 #include <qlabel.h>
 #include "qcoloritem.h"
 
+#include "LColor.h"
+
 using lyx::support::compare_no_case;
 using lyx::support::strToDbl;
 

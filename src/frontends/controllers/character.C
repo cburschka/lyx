@@ -13,6 +13,7 @@
 
 #include "gettext.h"
 #include "character.h"
+#include "LColor.h"
 
 using std::vector;
 
