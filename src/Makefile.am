@@ -23,7 +23,7 @@ lyx_LDADD = $(LYX_CONV_LIBS) $(BOOST_LIBS) $(INTLLIBS) \
 
 #lyx_LDFLAGS=-Wl,-O1
 
-EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version.C.in \
+EXTRA_DIST = config.h.in stamp-h.in cheaders version.C.in \
 	Sectioning.h \
 	Sectioning.C \
 	Variables.C \

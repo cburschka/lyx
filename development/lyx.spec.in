@@ -10,7 +10,7 @@ Source: ftp://ftp.lyx.org/pub/lyx/stable/lyx-%{PACKAGE_VERSION}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-root
 Icon: lyx.xpm
 Prefix: /usr
-Requires: xforms >= 0.88, tetex-xdvi, tetex, tetex-latex
+Requires: xforms >= 0.89, tetex-xdvi, tetex, tetex-latex
 Obsoletes: tetex-lyx
 
 %description
