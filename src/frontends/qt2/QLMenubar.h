@@ -19,6 +19,7 @@
 
 class LyXView;
 class MenuBackend;
+class QMenuBar;
 
 namespace lyx {
 namespace frontend {
@@ -52,6 +53,13 @@ private:
 
 	/// name to menu for openByName
 	NameMap name_map_;
+
+	/// The QMenuBar used by LyX
+	QMenuBar * menuBar() const;
+
+#ifdef Q_WS_MACX
+	boost::scoped_ptr<QMenuBar> menubar_;
+#endif
 };
 
 } // namespace frontend

@@ -1,3 +1,8 @@
+2004-06-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* QLMenubar.C (QLMenubar): use QLMenubar::menuBar().
+	(menuBar): new method; returns the menu bar that LyX should use.
+
 2004-06-02  Angus Leeming  <leeming@lyx.org>
 
 	* Q[a-zA-Z]*DialogBase.C: reverse yesterday's patch, as discussed
