@@ -19,15 +19,12 @@
 #include "ButtonController.h"
 #include "gettext.h"
 
+class Buffer;
 class Dialogs;
 class LyXView;
 
 #ifdef __GNUG__
 #pragma interface
-#endif
-
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::Signal0;
 #endif
 
 /** This class is an XForms GUI base class
@@ -42,11 +39,19 @@ public:
 		///
 		BUFFER_INDEPENDENT
 	};
+	///
+	enum ChangedBufferAction {
+		///
+		UPDATE,
+		///
+		HIDE
+	};
 
 	/** Constructor.
-	    #FormBase(lv, d, BUFFER_DEPENDENT, _("DialogName"), new ButtonPolicy)#
+	    #FormBase(lv, d, _("DialogName"), BUFFER_DEPENDENT, new ButtonPolicy)#
 	 */
-	FormBase(LyXView *, Dialogs *, BufferDependency, string const &,
+	FormBase(LyXView *, Dialogs *, string const &,
+		 BufferDependency, ChangedBufferAction,
 		 ButtonPolicy * bp = new OkApplyCancelReadOnlyPolicy,
 		 char const * close = N_("Close"),
 		 char const * cancel = N_("Cancel"));
@@ -66,7 +71,7 @@ public:
 	///
 	static void RestoreCB(FL_OBJECT *, long);
 
-protected:
+protected: // methods
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 	/// Hide the dialog.
@@ -105,21 +110,30 @@ protected:
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const = 0;
 
-	/// block opening of form twice at the same time
+private: // methods
+	/// method connected to updateBufferDependent signal.
+	void updateOrHide();
+
+protected: // data
+	/// block opening of form twice at the same time.
 	bool dialogIsOpen;
 	/** Which LyXFunc do we use?
 	    We could modify Dialogs to have a visible LyXFunc* instead and
 	    save a couple of bytes per dialog.
 	*/
 	LyXView * lv_;
-	/// Useable even in derived-class's const functions
+	/// Useable even in derived-class's const functions.
 	mutable ButtonController bc_;
 
-private:
-	/// Hide signal
-	Signal0<void> * hSignal_;
-	/// Update signal
-	Signal0<void> * uSignal_;
+private: // data
+	/// Used so we can get at the signals we have to connect to.
+	Dialogs * d_;
+	/// flag whether dialog is buffer dependent or not.
+	BufferDependency const bd_;
+	/// flag whether to hide or update on updateBufferDependent signal.
+	ChangedBufferAction const cba_;
+	/// stores parent buffer when popup was launched.
+	Buffer * parent_;
 	/// Update connection.
 	Connection u_;
 	/// Hide connection.

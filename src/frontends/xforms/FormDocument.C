@@ -45,7 +45,7 @@ using Liason::setMinibuffer;
 #define USE_CLASS_COMBO 1
 
 FormDocument::FormDocument(LyXView * lv, Dialogs * d)
-	: FormBase(lv, d, BUFFER_DEPENDENT, _("Document Layout"),
+	: FormBase(lv, d, _("Document Layout"), BUFFER_DEPENDENT, UPDATE,
 		   new NoRepeatedApplyReadOnlyPolicy),
 	  dialog_(0), paper_(0), class_(0), language_(0), options_(0),
 	  bullets_(0), current_bullet_panel(0), current_bullet_depth(0),

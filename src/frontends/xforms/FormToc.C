@@ -28,7 +28,7 @@
 #include "support/lstrings.h"
 
 FormToc::FormToc(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Table of Contents")), dialog_(0)
+	: FormCommand(lv, d, _("Table of Contents"), UPDATE), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother

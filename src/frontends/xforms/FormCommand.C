@@ -22,8 +22,8 @@
 #include "FormCommand.h"
 
 FormCommand::FormCommand( LyXView * lv, Dialogs * d, string const & t,
-			  ButtonPolicy * bp )
-	: FormBase( lv, d, BUFFER_DEPENDENT, t, bp ),
+			  ChangedBufferAction cba, ButtonPolicy * bp )
+	: FormBase( lv, d, t, BUFFER_DEPENDENT, cba, bp ),
 	  inset_(0), ih_(0)
 {}
 

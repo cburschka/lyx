@@ -1,3 +1,40 @@
+2000-10-05  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/BufferView_pimpl.C (buffer): only need one the
+	updateBufferDependent signal to be emitted once! Moved to the end of
+	the method to allow bv_->text to be updated first.
+
+	* src/frontends/xforms/FormBase.[Ch]: replaced the two signals uSignal_
+	and hSignal_ with Dialogs * and BufferDependency variables.
+	New Buffer * parent_, initialised when the dialog is launched. Used to
+	check whether to update() or hide() dialog in the new, private
+	updateOrHide() method that is connected to the updateBufferDependent
+	signal. Daughter classes dictate what to do using the
+	ChangedBufferAction enum, passed to the c-tor.
+
+	* src/frontends/xforms/FormCitation.C:
+	* src/frontends/xforms/FormCommand.C:
+	* src/frontends/xforms/FormCopyright.C:
+	* src/frontends/xforms/FormDocument.C:
+	* src/frontends/xforms/FormError.C:
+	* src/frontends/xforms/FormIndex.C:
+	* src/frontends/xforms/FormPreferences.C:
+	* src/frontends/xforms/FormPrint.C:
+	* src/frontends/xforms/FormRef.C:
+	* src/frontends/xforms/FormToc.C:
+	* src/frontends/xforms/FormUrl.C (c-tor): modified call to FormBase
+	c-tor.
+
+	* src/frontends/xforms/FormCommand.[Ch] (c-tor) passed a
+	ChangedBufferAction enum.
+
+	* src/frontends/xforms/FormParagraph.[Ch]
+	* src/frontends/xforms/forms/form_paragraph.fd: now derived from
+	FormBase.
+	
+	* src/frontends/xforms/FormToc.h (updateOrHide): override default
+	behaviour. Calls update() only.
+
 2000-10-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/bind/cua.bind: fix a bit.

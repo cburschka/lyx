@@ -15,46 +15,24 @@
 #pragma implementation
 #endif
 
-#include "lyx_gui_misc.h"
-#include "gettext.h"
 #include FORMS_H_LOCATION
-#include XPM_H_LOCATION
 
 #include "FormParagraph.h"
 #include "form_paragraph.h"
-#include "xform_macros.h"
 #include "Dialogs.h"
-#include "ButtonController.h"
 #include "Liason.h"
 #include "LyXView.h"
-#include "BufferView.h"
 #include "buffer.h"
 #include "lyxtext.h"
-
-#ifdef SIGC_CXX_NAMESPACES
-using SigC::slot;
-#endif
 
 #ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
 #endif
 
-C_RETURNCB(FormParagraph,  WMHideCB)
-C_GENERICCB(FormParagraph, InputCB)
-C_GENERICCB(FormParagraph, OKCB)
-C_GENERICCB(FormParagraph, ApplyCB)
-C_GENERICCB(FormParagraph, CancelCB)
-C_GENERICCB(FormParagraph, RestoreCB)
-C_GENERICCB(FormParagraph, VSpaceCB)
-	
 FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
-	: dialog_(0), general_(0), extra_(0),
-	  lv_(lv), d_(d), u_(0), h_(0),
-	  status(POPUP_UNMODIFIED),
-// this will leak till converted to use FormBase
-	  bc_(new ButtonController(new NoRepeatedApplyReadOnlyPolicy,
-				   _("Cancel"),
-				   _("Close")))
+	: FormBase(lv, d, _("Paragraph Layout"), BUFFER_DEPENDENT, UPDATE,
+		   new NoRepeatedApplyReadOnlyPolicy),
+	dialog_(0), general_(0), extra_(0)
 {
     // let the popup be shown
     // This is a permanent connection so we won't bother
@@ -65,8 +43,16 @@ FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
 
 FormParagraph::~FormParagraph()
 {
-    free();
-    delete bc_;
+    delete general_;
+    delete extra_;
+    delete dialog_;
+}
+
+
+FL_FORM * FormParagraph::form() const
+{
+    if (dialog_) return dialog_->form;
+    return 0;
 }
 
 
@@ -76,11 +62,11 @@ void FormParagraph::build()
     dialog_ = build_tabbed_paragraph();
 
     // manage the restore, ok, apply and cancel/close buttons
-    bc_->setOK(dialog_->button_ok);
-    bc_->setApply(dialog_->button_apply);
-    bc_->setCancel(dialog_->button_cancel);
-    bc_->setUndoAll(dialog_->button_restore);
-    bc_->refresh();
+    bc_.setOK(dialog_->button_ok);
+    bc_.setApply(dialog_->button_apply);
+    bc_.setCancel(dialog_->button_cancel);
+    bc_.setUndoAll(dialog_->button_restore);
+    bc_.refresh();
 
     // the general paragraph data form
     general_ = build_paragraph_general();
@@ -96,20 +82,20 @@ void FormParagraph::build()
     fl_set_input_return(general_->input_space_below, FL_RETURN_CHANGED);
     fl_set_input_return(general_->input_labelwidth, FL_RETURN_CHANGED);
 
-    bc_->addReadOnly (general_->radio_align_right);
-    bc_->addReadOnly (general_->radio_align_left);
-    bc_->addReadOnly (general_->radio_align_block);
-    bc_->addReadOnly (general_->radio_align_center);
-    bc_->addReadOnly (general_->check_lines_top);
-    bc_->addReadOnly (general_->check_lines_bottom);
-    bc_->addReadOnly (general_->choice_space_above);
-    bc_->addReadOnly (general_->input_space_above);
-    bc_->addReadOnly (general_->check_space_above);
-    bc_->addReadOnly (general_->choice_space_below);
-    bc_->addReadOnly (general_->input_space_below);
-    bc_->addReadOnly (general_->check_space_below);
-    bc_->addReadOnly (general_->check_noindent);
-    bc_->addReadOnly (general_->input_labelwidth);
+    bc_.addReadOnly (general_->radio_align_right);
+    bc_.addReadOnly (general_->radio_align_left);
+    bc_.addReadOnly (general_->radio_align_block);
+    bc_.addReadOnly (general_->radio_align_center);
+    bc_.addReadOnly (general_->check_lines_top);
+    bc_.addReadOnly (general_->check_lines_bottom);
+    bc_.addReadOnly (general_->choice_space_above);
+    bc_.addReadOnly (general_->input_space_above);
+    bc_.addReadOnly (general_->check_space_above);
+    bc_.addReadOnly (general_->choice_space_below);
+    bc_.addReadOnly (general_->input_space_below);
+    bc_.addReadOnly (general_->check_space_below);
+    bc_.addReadOnly (general_->check_noindent);
+    bc_.addReadOnly (general_->input_labelwidth);
 
     // the document class form
     extra_ = build_paragraph_extra();
@@ -117,43 +103,13 @@ void FormParagraph::build()
     fl_set_input_return(extra_->input_pextra_width, FL_RETURN_CHANGED);
     fl_set_input_return(extra_->input_pextra_widthp, FL_RETURN_CHANGED);
 
-    bc_->addReadOnly (extra_->radio_pextra_indent);
-    bc_->addReadOnly (extra_->radio_pextra_minipage);
-    bc_->addReadOnly (extra_->radio_pextra_floatflt);
+    bc_.addReadOnly (extra_->radio_pextra_indent);
+    bc_.addReadOnly (extra_->radio_pextra_minipage);
+    bc_.addReadOnly (extra_->radio_pextra_floatflt);
 
     // now make them fit together
-    fl_set_form_atclose(dialog_->form, C_FormParagraphWMHideCB, 0);
     fl_addto_tabfolder(dialog_->tabbed_folder,_("General"), general_->form);
     fl_addto_tabfolder(dialog_->tabbed_folder,_("Extra"), extra_->form);
-}
-
-
-void FormParagraph::show()
-{
-    if (!dialog_)
-	build();
-
-    update();  // make sure its up-to-date
-    if (dialog_->form->visible) {
-        fl_raise_form(dialog_->form);
-    } else {
-        fl_show_form(dialog_->form, FL_PLACE_MOUSE | FL_FREE_SIZE,
-                     FL_TRANSIENT, _("Paragraph Layout"));
-	u_ = d_->updateBufferDependent.connect(
-	    slot(this, &FormParagraph::update));
-	h_ = d_->hideBufferDependent.connect(
-	    slot(this, &FormParagraph::hide));
-    }
-}
-
-
-void FormParagraph::hide()
-{
-    if (dialog_->form->visible) {
-        fl_hide_form(dialog_->form);
-        u_.disconnect();
-        h_.disconnect();
-    }
 }
 
 
@@ -169,6 +125,16 @@ void FormParagraph::apply()
 			BufferView::CHANGE);
     lv_->buffer()->markDirty();
     setMinibuffer(lv_, _("Paragraph layout set"));
+}
+
+
+void FormParagraph::update()
+{
+    if (!dialog_)
+        return;
+
+    general_update();
+    extra_update();
 }
 
 
@@ -300,21 +266,6 @@ void FormParagraph::extra_apply()
     }
     text->SetParagraphExtraOpt(lv_->view(), type, width, widthp, alignment,
 			       hfill, start_minipage);
-}
-
-
-void FormParagraph::cancel()
-{
-}
-
-
-void FormParagraph::update()
-{
-    if (!dialog_)
-        return;
-
-    general_update();
-    extra_update();
 }
 
 
@@ -532,7 +483,7 @@ void FormParagraph::extra_update()
 	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
 	fl_deactivate_object(extra_->radio_pextra_bottom);
 	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
-	CheckParagraphInput(extra_->radio_pextra_indent, 0);
+	input(extra_->radio_pextra_indent, 0);
     } else if (par->pextra_type == LyXParagraph::PEXTRA_MINIPAGE) {
 	fl_set_button(extra_->radio_pextra_indent, 0);
 	fl_set_button(extra_->radio_pextra_minipage, 1);
@@ -543,7 +494,7 @@ void FormParagraph::extra_update()
 	fl_set_object_lcol(extra_->radio_pextra_middle, FL_BLACK);
 	fl_activate_object(extra_->radio_pextra_bottom);
 	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_BLACK);
-	CheckParagraphInput(extra_->radio_pextra_minipage, 0);
+	input(extra_->radio_pextra_minipage, 0);
     } else if (par->pextra_type == LyXParagraph::PEXTRA_FLOATFLT) {
 	fl_set_button(extra_->radio_pextra_indent, 0);
 	fl_set_button(extra_->radio_pextra_minipage, 0);
@@ -554,7 +505,7 @@ void FormParagraph::extra_update()
 	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
 	fl_deactivate_object(extra_->radio_pextra_bottom);
 	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
-	CheckParagraphInput(extra_->radio_pextra_floatflt, 0);
+	input(extra_->radio_pextra_floatflt, 0);
     } else {
 	fl_set_button(extra_->radio_pextra_indent, 0);
 	fl_set_button(extra_->radio_pextra_minipage, 0);
@@ -569,93 +520,13 @@ void FormParagraph::extra_update()
 	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
 	fl_deactivate_object(extra_->radio_pextra_bottom);
 	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
-	CheckParagraphInput(0, 0);
+	input(0, 0);
     }
     fl_hide_object(dialog_->text_warning);
 }
 
 
-void FormParagraph::free()
-{
-    if (dialog_) {
-        hide();
-        if (general_) {
-//            fl_free_form(general_->form);
-            delete general_;
-            general_ = 0;
-        }
-        if (extra_) {
-//            fl_free_form(extra_->form);
-            delete extra_;
-            extra_ = 0;
-        }
-//        fl_free_form(dialog_->form);
-        delete dialog_;
-        dialog_ = 0;
-    }
-}
-
-
-int FormParagraph::WMHideCB(FL_FORM * form, void *)
-{
-    // Ensure that the signals (u and h) are disconnected even if the
-    // window manager is used to close the popup.
-    FormParagraph * pre = static_cast<FormParagraph*>(form->u_vdata);
-    pre->hide();
-    pre->bc_->hide();
-    return FL_CANCEL;
-}
-
-
-void FormParagraph::OKCB(FL_OBJECT * ob, long)
-{
-    FormParagraph * pre = static_cast<FormParagraph*>(ob->form->u_vdata);
-    pre->apply();
-    pre->hide();
-    pre->bc_->ok();
-}
-
-
-void FormParagraph::ApplyCB(FL_OBJECT * ob, long)
-{
-    FormParagraph * pre = static_cast<FormParagraph*>(ob->form->u_vdata);
-    pre->apply();
-    pre->bc_->apply();
-}
-
-
-void FormParagraph::CancelCB(FL_OBJECT * ob, long)
-{
-    FormParagraph * pre = static_cast<FormParagraph*>(ob->form->u_vdata);
-    pre->cancel();
-    pre->hide();
-    pre->bc_->cancel();
-}
-
-
-void FormParagraph::RestoreCB(FL_OBJECT * ob, long)
-{
-    FormParagraph * pre = static_cast<FormParagraph*>(ob->form->u_vdata);
-    pre->update();
-    pre->bc_->undoAll();
-}
-
-
-void FormParagraph::InputCB(FL_OBJECT * ob, long)
-{
-    FormParagraph * pre = static_cast<FormParagraph*>(ob->form->u_vdata);
-    pre->bc_->valid(pre->CheckParagraphInput(ob,0));
-}
-
-
-void FormParagraph::VSpaceCB(FL_OBJECT * ob, long)
-{
-    FormParagraph * pre = static_cast<FormParagraph*>(ob->form->u_vdata);
-    pre->bc_->valid(pre->CheckParagraphInput(ob,0));
-}
-
-
-bool FormParagraph::CheckParagraphInput(FL_OBJECT * ob, long)
+bool FormParagraph::input(FL_OBJECT * ob, long)
 {
     bool ret = true;
 
@@ -841,3 +712,4 @@ bool FormParagraph::CheckParagraphInput(FL_OBJECT * ob, long)
     }
     return ret;
 }
+

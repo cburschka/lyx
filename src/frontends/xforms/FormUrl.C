@@ -26,7 +26,7 @@
 #include "lyxfunc.h"
 
 FormUrl::FormUrl(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Url")), minh(0), minw(0), dialog_(0)
+	: FormCommand(lv, d, _("Url"), HIDE), minh(0), minw(0), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother

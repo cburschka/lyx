@@ -28,7 +28,8 @@ using SigC::slot;
 
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
-	: FormBase(lv, d, BUFFER_INDEPENDENT, _("Preferences"), new PreferencesPolicy),
+	: FormBase(lv, d, _("Preferences"),
+		   BUFFER_INDEPENDENT, HIDE, new PreferencesPolicy),
 	  dialog_(0), outputs_tab_(0), look_n_feel_tab_(0), inputs_tab_(0),
 	  lnf_general_(0), screen_fonts_(0), interface_fonts_(0),
 	  printer_(0), paths_(0), minw_(0), minh_(0)

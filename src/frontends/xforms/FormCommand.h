@@ -26,6 +26,7 @@ class FormCommand : public FormBase {
 public:
 	/// Constructor
 	FormCommand( LyXView *, Dialogs *, string const &,
+		     ChangedBufferAction, 
 		     ButtonPolicy * bp = new OkCancelReadOnlyPolicy );
 
 protected:

@@ -23,7 +23,7 @@
 static int minh, minw;
 
 FormError::FormError( LyXView * lv, Dialogs * d )
-	: FormBase( lv, d, BUFFER_DEPENDENT, _("LaTeX Error") ),
+	: FormBase( lv, d, _("LaTeX Error"), BUFFER_DEPENDENT, HIDE ),
 	  dialog_(0), ih_(0), message_("")
 {
 	// let the dialog be shown

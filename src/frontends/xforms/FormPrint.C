@@ -34,7 +34,8 @@ using Liason::getPrinterParams;
 
 
 FormPrint::FormPrint(LyXView * lv, Dialogs * d)
-	: FormBase(lv, d, BUFFER_DEPENDENT, _("Print"), new OkApplyCancelPolicy),
+	: FormBase(lv, d, _("Print"),
+		   BUFFER_DEPENDENT, HIDE, new OkApplyCancelPolicy),
 	  dialog_(0), target_(2), order_(2), which_(3)
 {
 	// let the dialog be shown

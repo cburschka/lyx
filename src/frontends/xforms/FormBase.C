@@ -19,6 +19,7 @@
 
 #include "Dialogs.h"
 #include "FormBase.h"
+#include "LyXView.h"
 #include "xform_macros.h"
 
 C_RETURNCB (FormBase, WMHideCB)
@@ -29,22 +30,12 @@ C_GENERICCB(FormBase, InputCB)
 C_GENERICCB(FormBase, RestoreCB)
 
 
-FormBase::FormBase(LyXView * lv, Dialogs * d, BufferDependency bd, string const & t,
+FormBase::FormBase(LyXView * lv, Dialogs * d, string const & t,
+		   BufferDependency bd, ChangedBufferAction cba, 
 		   ButtonPolicy * bp, char const * close, char const * cancel)
 	: dialogIsOpen(false), lv_(lv), bc_(bp, cancel, close),
-	  u_(0), h_(0), title(t), bp_(bp)
-{
-	switch( bd ) {
-	case BUFFER_DEPENDENT:
-		hSignal_ = &d->hideBufferDependent;
-		uSignal_ = &d->updateBufferDependent;
-		break;
-	case BUFFER_INDEPENDENT:
-		hSignal_ = &d->hideAll;
-		uSignal_ = 0;
-		break;
-	}
-}
+	  d_(d), bd_(bd), cba_(cba), parent_(0), u_(0), h_(0), title(t), bp_(bp)
+{}
 
 
 FormBase::~FormBase()
@@ -61,6 +52,8 @@ void FormBase::show()
 				    C_FormBaseWMHideCB, 0);
 	}
 
+	parent_ = lv_->buffer();
+	
 	fl_freeze_form( form() );
 	update();  // make sure its up-to-date
 	fl_unfreeze_form( form() );
@@ -87,16 +80,24 @@ void FormBase::hide()
 
 	// free up the dialog for another inset
 	dialogIsOpen = false;
+	parent_ = 0;
 	clearStore();
 }
 
 
 void FormBase::connect()
 {
-	if ( uSignal_ ) {
-		u_ = uSignal_->connect(slot(this, &FormBase::update));
+	switch( bd_ ) {
+	case BUFFER_DEPENDENT:
+		u_ = d_->updateBufferDependent.
+			connect(slot(this, &FormBase::updateOrHide));
+		h_ = d_->hideBufferDependent.
+			connect(slot(this, &FormBase::hide));
+		break;
+	case BUFFER_INDEPENDENT:
+		h_ = d_->hideAll.connect(slot(this, &FormBase::hide));
+		break;
 	}
-	h_ = hSignal_->connect(slot(this, &FormBase::hide));
 }
 
 
@@ -104,6 +105,17 @@ void FormBase::disconnect()
 {
 	u_.disconnect();
 	h_.disconnect();
+}
+
+
+void FormBase::updateOrHide()
+{
+	if( cba_ == UPDATE )
+		update();
+	else if( parent_ == lv_->buffer() )
+		update();
+	else
+		hide();
 }
 
 

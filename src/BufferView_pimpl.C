@@ -143,9 +143,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	delete screen_;
 	screen_ = 0;
 
-	// Similarly, buffer-dependent dialogs should be updated.
-	owner_->getDialogs()->updateBufferDependent();
-
 	// If we are closing the buffer, use the first buffer as current
 	if (!buffer_) {
 		buffer_ = bufferlist.first();
@@ -165,7 +162,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		owner_->updateMenubar();
 		owner_->updateToolbar();
 		redraw();
-		owner_->getDialogs()->updateBufferDependent();
 		bv_->insetWakeup();
 	} else {
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
@@ -185,6 +181,9 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	owner_->updateLayoutChoice();
 	owner_->getMiniBuffer()->Init();
 	owner_->updateWindowTitle();
+	// Similarly, buffer-dependent dialogs should be updated or hidden.
+	// This should go here because some dialogs (ToC) require bv_->text.
+	owner_->getDialogs()->updateBufferDependent();
 }
 
 

@@ -34,7 +34,7 @@ static int formw;
 static int formh;
 
 FormRef::FormRef(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Reference")), toggle(GOBACK), dialog_(0)
+	: FormCommand(lv, d, _("Reference"), HIDE), toggle(GOBACK), dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
