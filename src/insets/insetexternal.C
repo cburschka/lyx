@@ -36,10 +36,6 @@
 #include <utility>
 
 
-#ifndef CXX_GLOBAL_CSTD
-using std::difftime;
-#endif
-
 using std::ostream;
 using std::endl;
 
