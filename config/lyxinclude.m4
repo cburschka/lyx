@@ -224,13 +224,6 @@ if test x$GXX = xyes; then
 	3.1*)  CXXFLAGS="$CXXFLAGS -W -Wall";;
 	*)      CXXFLAGS="$CXXFLAGS -W -Wall";;
     esac
-    if test $lyx_devel_version = yes ; then
-      case $gxx_version in
-	  2.95.*) ;;
-	  2.96*) ;;
-	  *) CXXFLAGS="$CXXFLAGS -Winline";;
-      esac
-    fi
   fi
 fi])dnl
 

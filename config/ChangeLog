@@ -1,3 +1,7 @@
+2003-07-15  Angus Leeming  <leeming@lyx.org>
+
+	* lyxinclude.m4: Do not pass the -Winline option to gcc.
+
 2003-06-11  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* configure.ac: also check for <ios> header
