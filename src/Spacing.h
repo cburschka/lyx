@@ -13,6 +13,7 @@
 #define SPACING_H
 
 #include <iosfwd>
+#include <string>
 
 
 ///
