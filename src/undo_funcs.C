@@ -20,9 +20,6 @@
 #include "BufferView.h"
 #include "buffer.h"
 #include "insets/updatableinset.h"
-#include "insets/insettext.h"
-#include "debug.h"
-#include "support/LAssert.h"
 #include "iterators.h"
 
 

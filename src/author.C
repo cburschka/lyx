@@ -13,7 +13,6 @@
 #include "author.h"
 
 #include "support/LAssert.h"
-#include "support/LOstream.h"
 #include "support/LIstream.h"
 #include "support/lstrings.h"
 

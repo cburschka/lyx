@@ -17,21 +17,13 @@
 #include <config.h>
 
 #include "lyxtext.h"
-#include "paragraph.h"
 #include "gettext.h"
-#include "bufferparams.h"
 #include "buffer.h"
 #include "debug.h"
-#include "intl.h"
-#include "lyxrc.h"
 #include "encoding.h"
 #include "funcrequest.h"
 #include "frontends/LyXView.h"
-#include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
-#include "frontends/screen.h"
-#include "frontends/WorkArea.h"
-#include "bufferview_funcs.h"
 #include "BufferView.h"
 #include "language.h"
 #include "ParagraphParameters.h"
@@ -41,7 +33,6 @@
 #include "paragraph_funcs.h"
 #include "rowpainter.h"
 #include "lyxrow_funcs.h"
-#include "metricsinfo.h"
 
 #include "insets/insettext.h"
 
@@ -49,7 +40,6 @@
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 
-#include <algorithm>
 
 using namespace lyx::support;
 

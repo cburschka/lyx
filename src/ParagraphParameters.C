@@ -15,7 +15,6 @@
 #include <config.h>
 
 #include "ParagraphParameters.h"
-#include "ParameterStruct.h"
 #include "tex-strings.h"
 #include "lyxlex.h"
 
@@ -23,15 +22,12 @@
 #include "BufferView.h"
 #include "Lsstream.h"
 #include "gettext.h"
-#include "paragraph.h"
 #include "lyxtext.h"
-#include "Lsstream.h"
 
 #include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
 
-#include <iostream>
 
 using namespace lyx::support;
 

@@ -13,7 +13,6 @@
 #include "BranchList.h"
 #include "support/LAssert.h"
 
-#include <functional>
 
 using std::bind2nd;
 using std::remove_if;

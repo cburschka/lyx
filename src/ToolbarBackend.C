@@ -16,7 +16,6 @@
 #include "LyXAction.h"
 #include "lyxlex.h"
 #include "debug.h"
-#include "lyxlex.h"
 #include "gettext.h"
 
 #include "support/lstrings.h"
@@ -24,7 +23,6 @@
 
 #include "frontends/controllers/ControlMath.h"
 
-#include <vector>
 
 using namespace lyx::support;
 

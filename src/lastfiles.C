@@ -16,7 +16,6 @@
 #include "support/FileInfo.h"
 
 #include <fstream>
-#include <algorithm>
 #include <iterator>
 
 

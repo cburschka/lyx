@@ -19,11 +19,9 @@
 #include "lengthcommon.h"
 #include "lyxrc.h"
 
-#include "support/lstrings.h"
 
 #include "Lsstream.h"
 
-#include <cstdlib>
 
 using std::abs;
 

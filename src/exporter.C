@@ -26,7 +26,6 @@
 #include "frontends/Alert.h"
 #include "gettext.h"
 
-#include <algorithm>
 
 using namespace lyx::support;
 

@@ -8,13 +8,9 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#include "config.h"
 #include "graph.h"
 #include "format.h"
 
-#include <queue>
-#include <vector>
-#include <algorithm>
 
 using std::queue;
 using std::vector;

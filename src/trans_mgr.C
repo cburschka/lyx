@@ -14,12 +14,8 @@
 #include "trans_mgr.h"
 #include "trans.h"
 #include "lyxtext.h"
-#include "LString.h"
 #include "debug.h"
-#include "chset.h"
 #include "insets/insetlatexaccent.h"
-#include "BufferView.h"
-#include "buffer.h"
 #include "lyxrc.h"
 #include "support/lstrings.h"
 

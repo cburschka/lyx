@@ -14,11 +14,9 @@
 
 #include <config.h>
 
+#include "text_funcs.h"
 #include "debug.h"
 #include "lyxcursor.h"
-#include "ParagraphList.h"
-
-#include "support/types.h"
 
 #include <boost/next_prior.hpp>
 

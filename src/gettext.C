@@ -11,11 +11,9 @@
 
 #include <config.h>
 
+#include "gettext.h"
 #include "messages.h"
-#include "LString.h"
-#include "support/LAssert.h"
 
-#include <boost/scoped_ptr.hpp>
 
 #ifdef HAVE_LOCALE_H
 #  include <locale.h>

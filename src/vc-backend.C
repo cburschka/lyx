@@ -13,8 +13,6 @@
 #include "vc-backend.h"
 #include "debug.h"
 #include "buffer.h"
-#include "frontends/LyXView.h"
-#include "funcrequest.h"
 
 #include "support/FileInfo.h"
 #include "support/path.h"

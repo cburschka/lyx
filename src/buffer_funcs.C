@@ -15,12 +15,9 @@
 #include "buffer_funcs.h"
 #include "bufferlist.h"
 #include "buffer.h"
-#include "errorlist.h"
 #include "gettext.h"
 #include "vc-backend.h"
 #include "LaTeX.h"
-#include "ParagraphList.h"
-#include "paragraph.h"
 
 #include "frontends/Alert.h"
 

@@ -1,3 +1,8 @@
+2003-09-05  Angus Leeming  <leeming@lyx.org>
+
+	* sgml.h: ensure that the header file can be compiled stand-alone.
+	* *.C: strip out redundant #includes. (320 in total.)
+
 2003-09-04  Angus Leeming  <leeming@lyx.org>
 
 	* LaTeXFeatures.C (getMacros): move the output of the preamble_snippets

@@ -26,12 +26,10 @@
 #include "support/lyxlib.h"
 #include "support/systemcall.h"
 #include "support/os.h"
-#include "support/path.h"
 
 #include <boost/regex.hpp>
 
 #include <fstream>
-#include <cstdio>  // sscanf
 
 using namespace lyx::support;
 

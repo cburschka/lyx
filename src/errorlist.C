@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "errorlist.h"
-#include "buffer.h"
 
 
 ErrorItem::ErrorItem(string const & error, string const & description,

@@ -17,18 +17,14 @@
 #include "lyx_cb.h"
 #include "lyx_main.h"
 #include "buffer.h"
-#include "buffer_funcs.h"
 #include "bufferlist.h"
-#include "bufferview_funcs.h"
 #include "debug.h"
 #include "lastfiles.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "gettext.h"
 #include "BufferView.h"
-#include "Lsstream.h"
 
-#include "insets/insetlabel.h"
 
 #include "frontends/lyx_gui.h"
 #include "frontends/LyXView.h"
@@ -38,7 +34,6 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/forkedcall.h"
-#include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/path.h"
 #include "support/path_defines.h"
@@ -46,9 +41,6 @@
 #include "support/systemcall.h"
 
 #include <fstream>
-#include <algorithm>
-#include <utility>
-#include <cerrno>
 
 using namespace lyx::support;
 

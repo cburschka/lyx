@@ -14,17 +14,12 @@
 
 #include "lyxtext.h"
 #include "lyxfind.h"
-#include "paragraph.h"
-#include "frontends/LyXView.h"
 #include "frontends/Alert.h"
 #include "support/textutils.h"
-#include "support/lstrings.h"
 #include "BufferView.h"
 #include "buffer.h"
-#include "debug.h"
 #include "gettext.h"
 #include "insets/insettext.h"
-#include "changes.h"
 
 using namespace lyx::support;
 

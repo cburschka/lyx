@@ -19,13 +19,11 @@
 #include "funcrequest.h"
 
 #include "bufferlist.h"
-#include "buffer_funcs.h"
 #include "support/filetools.h"
 #include "frontends/Alert.h"
 #include "gettext.h"
 #include "BufferView.h"
 
-#include <algorithm>
 
 using namespace lyx::support;
 

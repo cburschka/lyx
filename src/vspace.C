@@ -13,14 +13,11 @@
 #include "vspace.h"
 #include "lengthcommon.h"
 #include "buffer.h"
-#include "lyxrc.h"
 #include "BufferView.h"
 #include "lyxtext.h"
-#include "support/LAssert.h"
 
 #include "support/lstrings.h"
 
-#include <cstdio>
 
 using namespace lyx::support;
 

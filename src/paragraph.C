@@ -21,37 +21,21 @@
 #include "paragraph_pimpl.h"
 
 #include "buffer.h"
-#include "bufferparams.h"
-#include "BufferView.h"
-#include "changes.h"
 #include "encoding.h"
 #include "debug.h"
 #include "gettext.h"
 #include "language.h"
 #include "latexrunparams.h"
-#include "layout.h"
-#include "lyxrc.h"
-#include "paragraph_funcs.h"
-#include "ParameterStruct.h"
-#include "texrow.h"
 
 #include "Lsstream.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetoptarg.h"
-#include "insets/insetenv.h"
 
-#include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/lyxmanip.h"
-#include "support/FileInfo.h"
 #include "support/LAssert.h"
 #include "support/textutils.h"
 
-#include <algorithm>
-#include <fstream>
-#include <csignal>
-#include <ctime>
 
 using namespace lyx::support;
 

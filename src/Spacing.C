@@ -13,7 +13,6 @@
 
 #include "Lsstream.h"
 #include "Spacing.h"
-#include "LString.h"
 
 using std::ios;
 using std::ostream;

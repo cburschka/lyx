@@ -16,41 +16,29 @@
 #include "LyXAction.h"
 #include "lyxrc.h"
 #include "lyxlex.h"
-#include "tex-strings.h"
-#include "layout.h"
-#include "bufferview_funcs.h"
-#include "lyxfont.h"
 #include "version.h"
 #include "LaTeX.h"
 #include "Chktex.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
-#include "lyxtext.h"
 #include "gettext.h"
 #include "language.h"
 #include "exporter.h"
-#include "errorlist.h"
 #include "Lsstream.h"
 #include "format.h"
 #include "ParagraphParameters.h"
 #include "iterators.h"
-#include "lyxtextclasslist.h"
 #include "sgml.h"
 #include "paragraph_funcs.h"
 #include "messages.h"
-#include "author.h"
 
-#include "frontends/LyXView.h"
 
-#include "mathed/formulamacro.h"
-#include "mathed/formula.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetbibtex.h"
 #include "insets/insetinclude.h"
 #include "insets/insettext.h"
 
-#include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
 
 #include "graphics/Previews.h"
@@ -63,28 +51,17 @@
 #include "support/tostr.h"
 #include "support/lyxlib.h"
 #include "support/FileInfo.h"
-#include "support/lyxmanip.h"
-#include "support/lyxtime.h"
 #include "support/gzstream.h"
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
 
-#include <fstream>
 #include <iomanip>
-#include <map>
 #include <stack>
-#include <list>
-#include <algorithm>
 
-#include <cstdlib>
-#include <cmath>
-#include <unistd.h>
-#include <sys/types.h>
 #include <utime.h>
 
 #ifdef HAVE_LOCALE
-#include <locale>
 #endif
 
 using namespace lyx::support;

@@ -14,12 +14,10 @@
 
 #include "gettext.h"
 
-#include "frontends/mouse_state.h"
 #include "frontends/LyXKeySymFactory.h"
 #include "kbsequence.h"
 #include "kbmap.h"
 #include "lfuns.h"
-#include "debug.h"
 
 using std::make_pair;
 

@@ -22,8 +22,6 @@
 #include "bufferlist.h"
 #include "buffer.h"
 #include "buffer_funcs.h"
-#include "bufferview_funcs.h"
-#include "lfuns.h"
 #include "debug.h"
 #include "factory.h"
 #include "FloatList.h"
@@ -31,7 +29,6 @@
 #include "gettext.h"
 #include "intl.h"
 #include "iterators.h"
-#include "Lsstream.h"
 #include "lyx_cb.h" // added for Dispatch functions
 #include "lyx_main.h"
 #include "lyxfind.h"
@@ -39,24 +36,19 @@
 #include "lyxtext.h"
 #include "lyxrc.h"
 #include "lastfiles.h"
-#include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "TextCache.h"
 #include "undo_funcs.h"
 
 #include "insets/insetfloatlist.h"
-#include "insets/insetgraphics.h"
-#include "insets/insetinclude.h"
 #include "insets/insetref.h"
-#include "insets/insettext.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
 #include "frontends/FileDialog.h"
 #include "frontends/LyXView.h"
 #include "frontends/LyXScreenFactory.h"
-#include "frontends/mouse_state.h"
 #include "frontends/screen.h"
 #include "frontends/WorkArea.h"
 #include "frontends/WorkAreaFactory.h"
@@ -65,16 +57,12 @@
 
 #include "graphics/Previews.h"
 
-#include "support/LAssert.h"
 #include "support/tostr.h"
 #include "support/filetools.h"
 #include "support/path_defines.h"
 
 #include <boost/bind.hpp>
-#include <boost/signals/connection.hpp>
 
-#include <unistd.h>
-#include <sys/wait.h>
 
 
 using std::vector;

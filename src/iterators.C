@@ -12,14 +12,12 @@
 #include <config.h>
 
 #include "iterators.h"
-#include "paragraph.h"
 
 #include <boost/next_prior.hpp>
 #include <boost/optional.hpp>
 
 // it's conceptionally a stack, but undo needs random access...
 //#include <stack>
-#include <vector>
 
 using boost::next;
 using boost::optional;

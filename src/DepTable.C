@@ -20,12 +20,9 @@
 #include "support/lstrings.h"
 #include "support/lyxtime.h"
 
-#include <sys/types.h>
 #include <sys/stat.h>
-#include <unistd.h>
 
 #include <fstream>
-#include <ctime>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::time;

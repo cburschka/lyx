@@ -15,32 +15,22 @@
 
 #include <config.h>
 
-#include "author.h"
 #include "bufferparams.h"
 #include "debug.h"
 #include "encoding.h"
 #include "gettext.h"
-#include "layout.h"
 #include "language.h"
 #include "LaTeXFeatures.h"
-#include "LColor.h"
 #include "Lsstream.h"
-#include "lyxrc.h"
 #include "lyxlex.h"
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"
 #include "texrow.h"
-#include "vspace.h"
 
 #include "frontends/Alert.h"
 
 #include "support/lyxalgo.h" // for lyx::count
-#include "support/lyxlib.h"
-#include "support/lstrings.h"
-#include "support/types.h"
 
-#include <cstdlib>
-#include <algorithm>
 
 using namespace lyx::support;
 

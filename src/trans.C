@@ -14,7 +14,6 @@
 #include "trans.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "tex-strings.h"
 #include "lyxlex.h"
 #include "debug.h"
 #include "trans_mgr.h"

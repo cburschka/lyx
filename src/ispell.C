@@ -12,8 +12,6 @@
 
 #include <config.h>
 
-#include "LString.h"
-#include "lyxrc.h"
 #include "language.h"
 #include "debug.h"
 #include "encoding.h"
@@ -23,13 +21,10 @@
 #include "bufferparams.h"
 
 #include "support/forkedcall.h"
-#include "support/lstrings.h"
 
 // HP-UX 11.x doesn't have this header
 #ifdef HAVE_SYS_SELECT_H
-#include <sys/select.h>
 #endif
-#include <sys/time.h>
 
 using namespace lyx::support;
 

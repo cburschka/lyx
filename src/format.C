@@ -12,15 +12,12 @@
 
 #include "format.h"
 #include "buffer.h"
-#include "buffer_funcs.h"
 #include "lyxrc.h"
 #include "debug.h"
 #include "gettext.h"
-#include "LString.h"
 
 #include "frontends/Alert.h" //to be removed?
 
-#include "support/lstrings.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/systemcall.h"

@@ -39,14 +39,9 @@
 
 #include <config.h>
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
 #include <fcntl.h>
-#include <cerrno>
 
 #include "lyxserver.h"
-#include "lyx_main.h"
 #include "debug.h"
 #include "lyxfunc.h"
 #include "support/lstrings.h"
@@ -54,13 +49,9 @@
 #include "frontends/lyx_gui.h"
 
 #ifdef __EMX__
-#include <cstdlib>
-#include <io.h>
 #define OS2EMX_PLAIN_CHAR
 #define INCL_DOSNMPIPES
 #define INCL_DOSERRORS
-#include <os2.h>
-#include "support/os2_errortable.h"
 #endif
 
 

@@ -17,22 +17,15 @@
 #include "BufferView.h"
 #include "BufferView_pimpl.h"
 
-#include "LaTeX.h"
-#include "ParagraphParameters.h"
 #include "WordLangTuple.h"
 #include "buffer.h"
 #include "bufferlist.h"
-#include "debug.h"
 #include "gettext.h"
-#include "errorlist.h"
 #include "funcrequest.h"
 #include "iterators.h"
 #include "language.h"
-#include "lyxcursor.h"
-#include "lyxlex.h"
 #include "lyxtext.h"
 #include "undo_funcs.h"
-#include "changes.h"
 #include "paragraph_funcs.h"
 
 #include "frontends/Alert.h"
@@ -44,13 +37,10 @@
 #include "insets/insetcommand.h" // ChangeRefs
 #include "insets/updatableinset.h"
 
-#include "support/FileInfo.h"
 #include "support/filetools.h"
-#include "support/types.h"
 #include "support/lyxalgo.h" // lyx_count
 #include "support/LAssert.h"
 
-#include <fstream>
 
 extern BufferList bufferlist;
 

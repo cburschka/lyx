@@ -12,28 +12,22 @@
 #include <config.h>
 
 #include "frontends/Painter.h"
-#include "frontends/screen.h"
 #include "frontends/font_metrics.h"
 #include "support/LAssert.h"
-#include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "support/textutils.h"
 
 #include "insets/insettext.h"
 #include "ParagraphParameters.h"
-#include "debug.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "gettext.h"
 #include "language.h"
 #include "encoding.h"
-#include "lyxtext.h"
 #include "rowpainter.h"
-#include "lyxrc.h"
 #include "lyxrow_funcs.h"
 #include "metricsinfo.h"
 
-#include <algorithm>
 
 using namespace lyx::support;
 

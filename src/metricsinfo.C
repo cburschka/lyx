@@ -13,7 +13,6 @@
 #include "metricsinfo.h"
 #include "mathed/math_support.h"
 #include "frontends/Painter.h"
-#include "debug.h"
 #include "BufferView.h"
 
 

@@ -14,10 +14,8 @@
 
 #include "changes.h"
 #include "debug.h"
-#include "author.h"
 
 #include "support/LAssert.h"
-#include "support/LOstream.h"
 
 using namespace lyx::support;
 

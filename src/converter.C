@@ -11,32 +11,21 @@
 #include <config.h>
 
 #include "converter.h"
-#include "graph.h"
 #include "format.h"
-#include "lyxrc.h"
 #include "buffer.h"
-#include "bufferparams.h"
 #include "buffer_funcs.h"
-#include "bufferview_funcs.h"
-#include "errorlist.h"
 #include "LaTeX.h"
 #include "gettext.h"
 #include "debug.h"
 
 #include "frontends/Alert.h"
-#include "frontends/LyXView.h"
 
 #include "support/filetools.h"
-#include "support/lyxfunctional.h"
 #include "support/lyxlib.h"
 #include "support/path.h"
-#include "support/tostr.h"
 #include "support/systemcall.h"
 
-#include <boost/signals/signal1.hpp>
-#include <boost/signals/trackable.hpp>
 
-#include <cctype>
 
 using namespace lyx::support;
 

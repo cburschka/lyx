@@ -16,7 +16,6 @@
 #include "lyxlex.h"
 #include "lyxlex_pimpl.h"
 #include "debug.h"
-#include "support/filetools.h"
 #include "support/lstrings.h"
 
 using namespace lyx::support;
@@ -154,8 +153,7 @@ string const LyXLex::getLongString(string const & endtoken)
 		lyxerr[Debug::PARSER] << "LongString: `"
 				      << getString() << '\'' << endl;
 
-		// We do a case independent comparison, like search_kw
-		// does.
+		// We do a case independent comparison, like search_kw does.
 		if (compare_ascii_no_case(token, endtoken) == 0)
 			break;
 
@@ -191,7 +189,8 @@ bool LyXLex::getBool() const
 	if (pimpl_->getString() == "true") {
 		return true;
 	} else if (pimpl_->getString() != "false") {
-		pimpl_->printError("Bad boolean `$$Token'. Use \"false\" or \"true\"");
+		pimpl_->printError("Bad boolean `$$Token'. "
+				   "Use \"false\" or \"true\"");
 	}
 	return false;
 }

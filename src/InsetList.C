@@ -16,10 +16,8 @@
 #include "buffer.h"
 #include "debug.h"
 
-#include "insets/updatableinset.h"
 #include "insets/insetbranch.h"
 
-#include <algorithm>
 
 using lyx::pos_type;
 

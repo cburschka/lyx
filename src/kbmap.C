@@ -14,7 +14,6 @@
 #include <config.h>
 
 #include "kbmap.h"
-#include "lfuns.h"
 #include "kbsequence.h"
 #include "LyXAction.h"
 #include "support/filetools.h"

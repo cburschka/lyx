@@ -13,9 +13,7 @@
 #include <config.h>
 
 #include "language.h"
-#include "gettext.h"
 #include "encoding.h"
-#include "lyxrc.h"
 #include "lyxlex.h"
 #include "debug.h"
 

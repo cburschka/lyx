@@ -17,17 +17,14 @@
 #include "LaTeXFeatures.h"
 #include "debug.h"
 #include "lyx_sty.h"
-#include "lyxrc.h"
 #include "bufferparams.h"
 #include "Floating.h"
 #include "FloatList.h"
 #include "language.h"
 #include "encoding.h"
-#include "LString.h"
 #include "Lsstream.h"
 
 #include "support/filetools.h"
-#include "support/lstrings.h"
 
 using namespace lyx::support;
 

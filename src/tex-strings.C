@@ -13,6 +13,7 @@
 
 #include "tex-strings.h"
 
+
 // this file should perhaps be split into even smaller parts
 
 char const * string_paragraph_separation[3] = {

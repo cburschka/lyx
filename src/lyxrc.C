@@ -17,24 +17,19 @@
 #include <config.h>
 
 #include <fstream>
-#include <iomanip>
 #include <iostream>
-#include <boost/scoped_ptr.hpp>
 
 #include "lyxrc.h"
 
 #include "debug.h"
-#include "intl.h"
 #include "converter.h"
 #include "format.h"
 #include "gettext.h"
 #include "lyxlex.h"
 #include "lyxfont.h"
 
-#include "support/path.h"
 #include "support/tostr.h"
 #include "support/filetools.h"
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/userinfo.h"
 #include "support/translator.h"

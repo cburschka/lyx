@@ -17,8 +17,6 @@
 #include "debug.h"
 #include "lyxrc.h"
 
-#include "support/lstrings.h"
-#include "language.h"
 
 using std::endl;
 

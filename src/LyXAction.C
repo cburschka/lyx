@@ -17,7 +17,6 @@
 
 #include "debug.h"
 #include "funcrequest.h"
-#include "gettext.h"
 #include "support/lstrings.h"
 
 using namespace lyx::support;

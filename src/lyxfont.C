@@ -13,11 +13,9 @@
  */
 
 #include <config.h>
-#include <clocale>
-#include <cctype>
 
-#include "gettext.h"
 #include "lyxfont.h"
+#include "gettext.h"
 #include "debug.h"
 #include "lyxrc.h"
 #include "lyxlex.h"

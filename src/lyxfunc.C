@@ -20,7 +20,6 @@
 #include <config.h>
 
 #include "lyxfunc.h"
-#include "version.h"
 #include "kbmap.h"
 #include "bufferlist.h"
 #include "buffer.h"
@@ -30,22 +29,14 @@
 #include "iterators.h"
 #include "lyxserver.h"
 #include "intl.h"
-#include "lyx_main.h"
 #include "lyx_cb.h"
 #include "LyXAction.h"
 #include "debug.h"
-#include "lyxrc.h"
-#include "lyxtext.h"
 #include "gettext.h"
 #include "Lsstream.h"
-#include "trans_mgr.h"
 #include "encoding.h"
-#include "layout.h"
-#include "bufferview_funcs.h"
 #include "frontends/LyXView.h"
 #include "frontends/lyx_gui.h"
-#include "vspace.h"
-#include "FloatList.h"
 #include "format.h"
 #include "exporter.h"
 #include "importer.h"
@@ -58,9 +49,7 @@
 #include "insets/insetexternal.h"
 #include "insets/insettabular.h"
 
-#include "mathed/formulamacro.h"
 #include "mathed/math_cursor.h"
-#include "mathed/math_inset.h"
 
 #include "frontends/FileDialog.h"
 #include "frontends/Dialogs.h"
@@ -68,26 +57,16 @@
 #include "frontends/Menubar.h"
 #include "frontends/Alert.h"
 
-#include "graphics/GraphicsCache.h"
 
-#include "support/lyxalgo.h"
 #include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
 #include "support/forkedcontr.h"
-#include "support/lstrings.h"
 #include "support/tostr.h"
 #include "support/path.h"
 #include "support/path_defines.h"
-#include "support/lyxfunctional.h"
 
-#include <ctime>
-#include <clocale>
-#include <cstdlib>
-#include <cctype>
 
-#include <utility>
-#include <algorithm>
 
 using namespace lyx::support;
 

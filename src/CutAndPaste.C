@@ -13,25 +13,17 @@
 #include <config.h>
 
 #include "CutAndPaste.h"
-#include "BufferView.h"
 #include "buffer.h"
-#include "errorlist.h"
-#include "paragraph.h"
 #include "ParagraphParameters.h"
-#include "lyxtext.h"
-#include "lyxcursor.h"
 #include "iterators.h"
 #include "lyxtextclasslist.h"
-#include "undo_funcs.h"
 #include "gettext.h"
 #include "paragraph_funcs.h"
-#include "debug.h"
 #include "insets/insetinclude.h"
 #include "insets/insettabular.h"
 
 #include "support/LAssert.h"
 #include "support/lstrings.h"
-#include "support/limited_stack.h"
 
 using std::endl;
 using std::pair;

@@ -11,9 +11,7 @@
 
 #include <config.h>
 
-#include <cstdlib>
 #include "tex-accent.h"
-#include "lfuns.h"
 #include "support/tostr.h"
 
 /* the names used by TeX and XWindows for deadkeys/accents are not the same

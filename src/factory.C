@@ -10,13 +10,12 @@
 
 #include <config.h>
 
+#include "factory.h"
 #include "funcrequest.h"
-#include "bufferparams.h"
 #include "buffer.h"
 #include "FloatList.h"
 #include "debug.h"
 #include "BufferView.h"
-#include "lyxtext.h"
 #include "lyxlex.h"
 
 #include "insets/insetbibitem.h"
@@ -42,7 +41,6 @@
 #include "insets/insetref.h"
 #include "insets/insetspace.h"
 #include "insets/insettabular.h"
-#include "insets/insettext.h"
 #include "insets/insettoc.h"
 #include "insets/inseturl.h"
 #include "insets/insetwrap.h"
@@ -53,7 +51,6 @@
 #include "frontends/LyXView.h"
 #include "support/lstrings.h"
 
-#include <cstdio>
 
 using namespace lyx::support;
 

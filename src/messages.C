@@ -10,7 +10,6 @@
 #include <config.h>
 
 #include "messages.h"
-#include "debug.h"
 #include "support/filetools.h"
 #include "support/path_defines.h"
 
@@ -37,7 +36,7 @@ string const & getLocaleDir()
 
 #if 0
 
-#include <locale>
+-#include <locale>
 
 // This version of the Pimpl utilizes the message capability of
 // libstdc++ that is distributed with GNU G++.

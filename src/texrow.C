@@ -15,7 +15,6 @@
 #include "texrow.h"
 #include "debug.h"
 
-#include <algorithm>
 
 using std::find_if;
 using std::endl;

@@ -38,7 +38,6 @@
 #include "frontends/Alert.h"
 #include "frontends/lyx_gui.h"
 
-#include "graphics/GraphicsTypes.h"
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"
@@ -47,12 +46,8 @@
 #include "support/path.h"
 #include "support/path_defines.h"
 
-#include <boost/function.hpp>
 #include <boost/bind.hpp>
-#include <boost/signals/signal1.hpp>
 
-#include <cstdlib>
-#include <csignal>
 #include <iostream>
 
 using namespace lyx::support;

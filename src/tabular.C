@@ -22,24 +22,15 @@
 #include "Lsstream.h"
 #include "buffer.h"
 #include "debug.h"
-#include "gettext.h"
 #include "lyxlex.h"
-#include "vspace.h"
 
 #include "insets/insettabular.h"
-#include "insets/insettext.h"
 
 #include "support/LAssert.h"
-#include "support/LIstream.h"
 #include "support/lstrings.h"
-#include "support/lyxmanip.h"
 #include "support/tostr.h"
 
-#include "frontends/Alert.h"
-#include "frontends/Painter.h"
 
-#include <algorithm>
-#include <cstdlib>
 
 using namespace lyx::support;
 

@@ -13,14 +13,12 @@
 
 #include "lyxrow_funcs.h"
 #include "lyxtext.h"
-#include "paragraph.h"
 #include "lyxlayout.h"
 #include "debug.h"
 
 #include "support/LAssert.h"
 
 #include <boost/next_prior.hpp>
-#include <algorithm>
 
 using lyx::pos_type;
 using lyx::support::Assert;

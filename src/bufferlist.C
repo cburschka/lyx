@@ -15,30 +15,18 @@
 #include "lastfiles.h"
 #include "buffer.h"
 #include "debug.h"
-#include "lyxrc.h"
-#include "lyxtext.h"
 #include "lyx_cb.h"
-#include "bufferview_funcs.h"
-#include "BufferView.h"
 #include "gettext.h"
-#include "frontends/LyXView.h"
-#include "vc-backend.h"
 #include "TextCache.h"
-#include "lyxlex.h"
 
 #include "frontends/Alert.h"
 
-#include "support/FileInfo.h"
 #include "support/filetools.h"
-#include "support/lyxmanip.h"
 #include "support/lyxfunctional.h"
 #include "support/LAssert.h"
 
 #include <boost/bind.hpp>
 
-#include <cassert>
-#include <algorithm>
-#include <functional>
 
 
 using namespace lyx::support;

@@ -21,6 +21,7 @@
 #include "aspell_local.h"
 #include "WordLangTuple.h"
 
+
 using namespace lyx::support;
 
 using std::endl;

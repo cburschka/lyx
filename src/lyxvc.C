@@ -20,15 +20,12 @@
 #include "debug.h"
 #include "buffer.h"
 #include "gettext.h"
-#include "funcrequest.h"
 
 #include "frontends/Alert.h"
-#include "frontends/LyXView.h"
 
 #include "support/filetools.h"
 #include "support/lyxlib.h"
 
-#include <unistd.h>
 
 using namespace lyx::support;
 

@@ -15,17 +15,11 @@
 
 #include "bufferview_funcs.h"
 #include "BufferView.h"
-#include "paragraph.h"
-#include "lyxfont.h"
 #include "lyxlex.h"
-#include "lyxtext.h"
 #include "buffer.h"
-#include "lyx_cb.h"
 #include "language.h"
 #include "gettext.h"
 #include "ParagraphParameters.h"
-#include "author.h"
-#include "changes.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Alert.h"
@@ -34,10 +28,7 @@
 #include "support/tostr.h"
 #include "Lsstream.h"
 
-#include "insets/updatableinset.h"
 #include "insets/insettext.h"
-#include <boost/bind.hpp>
-#include <algorithm>
 
 using namespace lyx::support;
 

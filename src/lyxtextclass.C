@@ -23,10 +23,8 @@
 
 #include "support/lstrings.h"
 #include "support/LAssert.h"
-#include "support/lyxfunctional.h"
 #include "support/filetools.h"
 
-#include <algorithm>
 
 using namespace lyx::support;
 

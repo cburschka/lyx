@@ -20,20 +20,15 @@
 #include <config.h>
 
 #include "lyxtext.h"
-#include "LString.h"
 #include "Lsstream.h"
-#include "paragraph.h"
 #include "funcrequest.h"
 #include "frontends/LyXView.h"
 #include "undo_funcs.h"
 #include "buffer.h"
 #include "buffer_funcs.h"
-#include "bufferparams.h"
-#include "errorlist.h"
 #include "gettext.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
-#include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 #include "debug.h"
 #include "lyxrc.h"
@@ -57,7 +52,6 @@
 
 #include <boost/tuple/tuple.hpp>
 
-#include <algorithm>
 
 using namespace lyx::support;
 

@@ -15,14 +15,10 @@
 #include "lyxtextclass.h"
 #include "debug.h"
 #include "lyxlex.h"
-#include "gettext.h"
-#include "frontends/Alert.h"
 
 #include "support/lyxfunctional.h"
-#include "support/LAssert.h"
 #include "support/filetools.h"
 
-#include <utility>
 
 using namespace lyx::support;
 
