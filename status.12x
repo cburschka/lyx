@@ -70,6 +70,9 @@ What's new
 
 - fix startup of LyX when turkish locale is in effect
 
+- fix latex output when there is a font change around a float or a
+  tabular (this fixes compatibility with some 1.1.6 files)
+
 - re-read correctly graphics insets when file name contains a comma
 
 - fix latex output when the name of a graphics file contains several "."

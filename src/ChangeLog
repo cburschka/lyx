@@ -1,3 +1,8 @@
+2002-07-23  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* paragraph_pimpl.C (simpleTeXSpecialChars): close fonts before
+	insets which have noFontChange == true. (bug #172)
+
 2002-07-20  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* BufferView_pimpl.C (workAreaButtonRelease): Fix opening of

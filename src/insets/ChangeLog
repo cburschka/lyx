@@ -1,3 +1,12 @@
+2002-07-23  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetminipage.h (noFontChange): 
+	* insettabular.h (noFontChange): 
+	* insetfootlike.h (noFontChange): 
+	* insetfloat.h (noFontChange): return true
+
+	* inset.h (noFontChange): new method, defaulting to false
+
 2002-07-13  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insettabular.C (edit): Move into correct cell when entering a

@@ -316,6 +316,10 @@ public:
 	// if this inset has paragraphs should they be output all as default
 	// paragraphs with "Standard" layout?
 	virtual bool forceDefaultParagraphs(Inset const *) const;
+	/** returns true if, when outputing LaTeX, font changes should
+            be closed before generating this inset. This is needed for
+            insets that may contain several paragraphs */
+	virtual bool noFontChange() const { return false; }
 	//
 	virtual void getDrawFont(LyXFont &) const {}
 	/* needed for widths which are % of something
