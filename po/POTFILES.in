@@ -2,7 +2,6 @@ src/BufferView.C
 src/BufferView_pimpl.C
 src/Chktex.C
 src/CutAndPaste.C
-src/FloatList.C
 src/LColor.C
 src/LaTeX.C
 src/LyXAction.C
@@ -19,6 +18,7 @@ src/frontends/controllers/ButtonController.h
 src/frontends/controllers/ControlAboutlyx.C
 src/frontends/controllers/ControlBibtex.C
 src/frontends/controllers/ControlCharacter.C
+src/frontends/controllers/ControlDocument.C
 src/frontends/controllers/ControlExternal.C
 src/frontends/controllers/ControlGraphics.C
 src/frontends/controllers/ControlInclude.C
@@ -44,7 +44,9 @@ src/frontends/qt2/QCharacter.C
 src/frontends/qt2/QCitation.C
 src/frontends/qt2/QCitationDialog.C
 src/frontends/qt2/QCommandBuffer.C
+src/frontends/qt2/QDelimiterDialog.C
 src/frontends/qt2/QDocument.C
+src/frontends/qt2/QDocumentDialog.C
 src/frontends/qt2/QERT.C
 src/frontends/qt2/QError.C
 src/frontends/qt2/QExternal.C
@@ -54,6 +56,7 @@ src/frontends/qt2/QGraphics.C
 src/frontends/qt2/QInclude.C
 src/frontends/qt2/QIndex.C
 src/frontends/qt2/QLog.C
+src/frontends/qt2/QMathDialog.C
 src/frontends/qt2/QMinipage.C
 src/frontends/qt2/QParagraph.C
 src/frontends/qt2/QPreamble.C
@@ -70,6 +73,7 @@ src/frontends/qt2/QThesaurus.C
 src/frontends/qt2/QToc.C
 src/frontends/qt2/QURL.C
 src/frontends/qt2/QVCLog.C
+src/frontends/qt2/QWrap.C
 src/frontends/qt2/lengthcombo.C
 src/frontends/xforms/Alert_pimpl.C
 src/frontends/xforms/ColorHandler.C

@@ -46,7 +46,7 @@ for prog in $M4 gm4 gnum4 m4 ; do
     *) ;;
   esac
 done
-if test x$ok = xno ; then
+if test x$ok != xyes ; then
     echo "not found."
 fi
 

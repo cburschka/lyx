@@ -137,7 +137,7 @@ void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 		fl_set_input(input, str.c_str());
 		// we assume that "default_unit" is in the choice as "we"
 		// have control over that!
-		// No need to check for it's precence in the choice, therefore.
+		// No need to check for its presence in the choice, therefore.
 		fl_set_choice_text(choice, default_unit.c_str());
 	} else {
 		updateWidgetsFromLength(input, choice,
@@ -189,7 +189,7 @@ string formatted(string const & sin, int w, int size, int style)
 	for(;;) {
 		string::size_type const nxtpos1 = sin.find(' ',  curpos);
 		string::size_type const nxtpos2 = sin.find('\n', curpos);
-		string::size_type const nxtpos = std::min(nxtpos1, nxtpos1);
+		string::size_type const nxtpos = std::min(nxtpos1, nxtpos2);
 
 		string const word = nxtpos == string::npos ?
 			sin.substr(curpos) : sin.substr(curpos, nxtpos-curpos);
