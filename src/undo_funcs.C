@@ -99,10 +99,10 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 
 	// Replace the paragraphs with the undo informations.
 
-	Paragraph * undopar = undo.par;
+	Paragraph * undopar = undo.pars.empty() ? 0 : undo.pars[0];
 	// Otherwise the undo destructor would
 	// delete the paragraph.
-	undo.par = 0;
+	undo.pars.resize(0);
 
 	// Get last undo par and set the right(new) inset-owner of the
 	// paragraph if there is any. This is not needed if we don't
@@ -325,7 +325,7 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 	}
 
 	// Create a new Undo.
-	Paragraph * undopar = 0;
+	std::vector<Paragraph *> undo_pars;
 
 	Paragraph * start = first;
 	Paragraph * end = 0;
@@ -342,29 +342,27 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 		 ((before_number < 0) && (behind_number < 0))))
 	{
 		Paragraph * tmppar = start;
-		Paragraph * tmppar2 = new Paragraph(*tmppar, true);
+		undo_pars.push_back(new Paragraph(*tmppar, true));
 
 		// A memory optimization: Just store the layout
 		// information when only edit.
 		if (kind == Undo::EDIT) {
-			tmppar2->clearContents();
+			undo_pars.back()->clearContents();
 		}
-
-		undopar = tmppar2;
 
 		while (tmppar != end && tmppar->next()) {
 			tmppar = tmppar->next();
-			tmppar2->next(new Paragraph(*tmppar, true));
+			undo_pars.push_back(new Paragraph(*tmppar, true));
+			size_t const n = undo_pars.size();
+			undo_pars[n - 2]->next(undo_pars[n - 1]);
+			undo_pars[n - 1]->previous(undo_pars[n - 2]);
 			// a memory optimization: Just store the layout
 			// information when only edit
 			if (kind == Undo::EDIT) {
-				tmppar2->clearContents();
+				undo_pars.back()->clearContents();
 			}
-			tmppar2->next()->previous(tmppar2);
-
-			tmppar2 = tmppar2->next();
 		}
-		tmppar2->next(0);
+		undo_pars.back()->next(0);
 	}
 
 	int cursor_par = undoCursor(bv).par()->id();
@@ -372,7 +370,7 @@ bool createUndo(BufferView * bv, Undo::undo_kind kind,
 
 	u.reset(new Undo(kind, inset_id,
 		before_number, behind_number,
-		cursor_par, cursor_pos, undopar));
+		cursor_par, cursor_pos, undo_pars));
 
 	undo_finished = false;
 	return true;

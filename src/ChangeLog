@@ -1,7 +1,11 @@
 
 2003-05-02 André Pönitz <poenitz@gmx.net>
 
-	* buffer.[Ch]: two instances of Paragraph * ->  ParagraphList::iterator
+	* buffer.[Ch]: two instances of Paragraph * -> ParagraphList::iterator
+
+	* undo_funcs.C:
+	* undo.[Ch]: rely on std::vector<Paragraph *> instead of manually
+	  linked lists
 
 2003-05-02  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

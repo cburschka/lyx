@@ -17,7 +17,8 @@
 Undo::Undo(undo_kind kind_arg, int id_inset_arg,
 	   int number_before_arg, int number_behind_arg,
 	   int cursor_par_arg, int cursor_pos_arg,
-	   Paragraph * par_arg)
+	   std::vector<Paragraph *> const & par_arg)
+	: pars(par_arg)
 {
 	kind = kind_arg;
 	number_of_inset_id = id_inset_arg;
@@ -25,16 +26,13 @@ Undo::Undo(undo_kind kind_arg, int id_inset_arg,
 	number_of_behind_par = number_behind_arg;
 	number_of_cursor_par = cursor_par_arg;
 	cursor_pos = cursor_pos_arg;
-	par = par_arg;
 }
 
 
 Undo::~Undo()
 {
-	Paragraph * tmppar;
-	while (par) {
-		tmppar = par;
-		par = par->next();
-		delete tmppar;
-	}
+	std::vector<Paragraph *>::iterator it = pars.begin();
+	std::vector<Paragraph *>::iterator end = pars.end();
+	for ( ; it != end; ++it)
+		delete *it;
 }
