@@ -3,7 +3,7 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team
  *
@@ -27,7 +27,7 @@ struct LaTeXFeatures;
 /** Quotes.
 
   Used for the various quotes. German, English, French, all either
-  double or single **/ 
+  double or single **/
 class InsetQuotes : public Inset {
 public:
 	///
@@ -50,20 +50,20 @@ public:
 		///
 		LeftQ,
 		///
-		RightQ 
+		RightQ
 	};
 	///
 	enum quote_times {
 		///
 		SingleQ,
 		///
-		DoubleQ 
+		DoubleQ
 	};
-	
+
 	/** The constructor works like this:
 	  \begin{itemize}
-	    \item fls <- french single quote left 
-	    \item grd <- german double quote right 
+	    \item fls <- french single quote left
+	    \item grd <- german double quote right
 	    \item etc.
 	  \end{itemize}
 	  */
@@ -105,7 +105,7 @@ public:
 	Inset::Code lyxCode() const;
 	// should this inset be handled like a normal charater
 	bool isChar() const { return true; }
-	
+
 private:
 	///
 	quote_language language_;
@@ -124,4 +124,3 @@ private:
 	string const dispString(Language const *) const;
 };
 #endif
-

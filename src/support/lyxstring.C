@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2000 The LyX Team.
  *
@@ -77,7 +77,7 @@ struct lyxstring::Srep {
 	size_t res;
 	/// Data. At least 1 char for trailing null.
 	lyxstring::value_type * s;
-	
+
 	///
 	Srep(lyxstring::size_type nsz, const lyxstring::value_type * p);
 	///
@@ -90,7 +90,7 @@ struct lyxstring::Srep {
 		--ref;
 		return new Srep(sz, s);
 	}
-	
+
 	///
 	void assign(lyxstring::size_type nsz, const lyxstring::value_type * p);
 	///
@@ -149,7 +149,7 @@ lyxstring::Srep::Srep(lyxstring::size_type nsz, value_type ch)
 		sz = 0;
 	}
 }
-	
+
 
 void lyxstring::Srep::assign(lyxstring::size_type nsz, const value_type * p)
 {
@@ -296,7 +296,7 @@ void lyxstring::Srep::replace(lyxstring::size_type i, lyxstring::size_type n,
 		memcpy(tmp + i + n2, &s[i + n], sz - i);
 		delete[] s;
 		s = tmp;
-		sz += n2; 
+		sz += n2;
 	}
 }
 
@@ -304,7 +304,7 @@ void lyxstring::Srep::replace(lyxstring::size_type i, lyxstring::size_type n,
 ///////////////////////////////////////
 // The lyxstring Invariant tester
 ///////////////////////////////////////
- 
+
 // There are no know bugs in lyxstring now, and it have been
 // tested for a long time. so we disable the invariant checker. (Lgb)
 #undef ENABLE_ASSERTIONS
@@ -313,7 +313,7 @@ void lyxstring::Srep::replace(lyxstring::size_type i, lyxstring::size_type n,
 /** Testing of the lyxstring invariant
  * By creating an object that tests the lyxstring invariant during its
  * construction *and* its deconstruction we greatly simplify our code.
- * Calling TestlyxstringInvariant() upon entry to an lyxstring method 
+ * Calling TestlyxstringInvariant() upon entry to an lyxstring method
  * will test the invariant upon entry to the code.  If the Asserts fail
  * then we know from the stack trace that the corruption occurred *before*
  * entry to this method.  We can also be sure it didn't happen in any of
@@ -523,7 +523,7 @@ const_reverse_iterator lyxstring::rend() const
 ///////////////////////
 
 lyxstring::size_type lyxstring::size() const
-{ 
+{
 	return rep->sz;
 }
 
@@ -601,7 +601,7 @@ lyxstring & lyxstring::assign(lyxstring const & x)
 	rep = x.rep; // share representation
 	return *this;
 }
-	
+
 
 lyxstring & lyxstring::assign(lyxstring const & x, size_type pos, size_type n)
 {
@@ -610,7 +610,7 @@ lyxstring & lyxstring::assign(lyxstring const & x, size_type pos, size_type n)
 
 	return assign(x.substr(pos, n));
 }
-	
+
 
 lyxstring & lyxstring::assign(value_type const * s, size_type n)
 {
@@ -625,7 +625,7 @@ lyxstring & lyxstring::assign(value_type const * s, size_type n)
 	}
 	return *this;
 }
-	
+
 
 lyxstring & lyxstring::assign(value_type const * s)
 {
@@ -881,21 +881,21 @@ void lyxstring::insert(iterator p, iterator first, iterator last)
 
 	insert(p - begin(), first, last - first);
 }
-	
+
 
 ////////////////
 // Find
 ////////////////
- 
-         // All the below find functions should be verified,
-         // it is very likely that I have mixed up or interpreted
-         // some of the parameters wrong, also some of the funcs can surely
-         // be written more effectively.
+
+	 // All the below find functions should be verified,
+	 // it is very likely that I have mixed up or interpreted
+	 // some of the parameters wrong, also some of the funcs can surely
+	 // be written more effectively.
 
 lyxstring::size_type lyxstring::find(lyxstring const & a, size_type i) const
 {
 	if (!rep->sz || i >= rep->sz) return npos;
-	
+
 	TestlyxstringInvariant(this);
 
 	size_type n = a.length();
@@ -923,7 +923,7 @@ lyxstring::size_type lyxstring::find(value_type const * ptr, size_type i,
 {
 	lyx::Assert(ptr); // OURS!
 	if (!rep->sz || !*ptr || i >= rep->sz) return npos;
-	
+
 	TestlyxstringInvariant(this);
 
 	// What is "n" here? is it the number of value_types to use in ptr
@@ -954,7 +954,7 @@ lyxstring::size_type lyxstring::find(value_type const * s, size_type i) const
 {
 	lyx::Assert(s); // OURS!
 	if (!rep->sz || i >= rep->sz) return npos;
-	
+
 	TestlyxstringInvariant(this);
 
 	if (!s || !*s) return npos;
@@ -968,10 +968,10 @@ lyxstring::size_type lyxstring::find(value_type c, size_type i) const
 
 	TestlyxstringInvariant(this);
 
-        for (size_type t = 0; t + i < rep->sz; ++t) {
-	        if (rep->s[t + i] == c) return t + i;
+	for (size_type t = 0; t + i < rep->sz; ++t) {
+		if (rep->s[t + i] == c) return t + i;
 	}
-        return npos;
+	return npos;
 }
 
 
@@ -1347,7 +1347,7 @@ lyxstring & lyxstring::replace(iterator i, iterator i2, const lyxstring & str)
 {
 	TestlyxstringInvariant(this);
 
-	return replace(i - begin(), i2 - i, str); 
+	return replace(i - begin(), i2 - i, str);
 }
 
 
@@ -1377,7 +1377,7 @@ lyxstring & lyxstring::replace(iterator i, iterator i2,
 
 	return replace(i - begin(), i2 - i, n, c);
 }
-	
+
 
 lyxstring & lyxstring::replace(iterator i, iterator i2,
 			       iterator j, iterator j2)
@@ -1478,11 +1478,11 @@ int lyxstring::internal_compare(size_type pos, size_type n,
 	if (!*s) return 1;
 	// since n > n2, min(n, n2) == 0, c == 0 (stops segfault also)
 
-        // remember that n can very well be a lot larger than rep->sz
-        // so we have to ensure that n is no larger than rep->sz
-        n = min(n, rep->sz);
+	// remember that n can very well be a lot larger than rep->sz
+	// so we have to ensure that n is no larger than rep->sz
+	n = min(n, rep->sz);
 	n2 = min(n2, slen);
-        if (n == n2)
+	if (n == n2)
 		return memcmp(&(rep->s[pos]), s, n);
 	int c = memcmp(&(rep->s[pos]), s, min(n, n2));
 	if (c)

@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1995-2001 The LyX Team.
@@ -166,7 +166,7 @@ public:
 	int getActCell() const { return actcell; }
 	///
 	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
-	             bool selectall = false);
+		     bool selectall = false);
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
@@ -218,14 +218,14 @@ public:
 	void toggleSelection(BufferView *, bool kill_selection);
 	///
 	bool searchForward(BufferView *, string const &,
-	                   bool = true, bool = false);
+			   bool = true, bool = false);
 	bool searchBackward(BufferView *, string const &,
-	                    bool = true, bool = false);
+			    bool = true, bool = false);
 
 	// this should return true if we have a "normal" cell, otherwise true.
 	// "normal" means without width set!
 	bool forceDefaultParagraphs(Inset const * in) const;
-	
+
 	//
 	// Public structures and variables
 	///
@@ -313,7 +313,7 @@ private:
 	string selectNextWordInt(BufferView *, float & value) const;
 	///
 	bool insertAsciiString(BufferView *, string const & buf, bool usePaste);
-	
+
 	//
 	// Private structures and variables
 	///

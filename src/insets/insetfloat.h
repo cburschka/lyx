@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1998 The LyX Team.
@@ -22,7 +22,7 @@
 class Painter;
 
 /** The float inset
-  
+
 */
 class InsetFloat : public InsetCollapsable {
 public:

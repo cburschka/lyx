@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 1998 The LyX Team.
  *
  * ====================================================== */
@@ -69,9 +69,9 @@ int InsetList::latex(Buffer const * buf,
 		     ostream & os, bool fragile, bool fp) const
 {
 	os << "\\footnote{%\n";
-	
+
 	int i = inset.latex(buf, os, fragile, fp);
 	os << "}%\n";
-	
+
 	return i + 2;
 }

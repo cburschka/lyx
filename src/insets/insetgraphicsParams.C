@@ -1,6 +1,6 @@
 /* This file is part of
  * =================================================
- * 
+ *
  *          LyX, The Document Processor
  *          Copyright 1995 Matthias Ettrich.
  *          Copyright 1995-2001 The LyX Team.
@@ -10,11 +10,11 @@
  *
  * ================================================= */
 
-#include <config.h> 
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
-#endif 
+#endif
 
 #include "insetgraphicsParams.h"
 
@@ -43,7 +43,7 @@ displayTranslator(InsetGraphicsParams::DEFAULT, "default");
 // it is obselete until 1.3
 LyXLength convertResizeValue(string const token, LyXLex & lex) {
     lex.next();
-    string value = lex.getString();	// "width" or "height"	
+    string value = lex.getString();	// "width" or "height"
     lex.next();				// anyway not interesting
     value = lex.getString();
     if (token == "default")
@@ -114,7 +114,7 @@ void InsetGraphicsParams::init()
 	size_type = DEFAULT_SIZE;	// do nothing
 	lyxsize_type = DEFAULT_SIZE;	// do nothing
 	keepAspectRatio = false;	// only for latex
-	rotate = false;			// Rotating 
+	rotate = false;			// Rotating
 	rotateOrigin = "center";	// Origin
 	rotateAngle = 0.0;		// in degrees
 	special = string();		// userdefined stuff
@@ -146,29 +146,29 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 }
 
 bool operator==(InsetGraphicsParams const & left,
-                InsetGraphicsParams const & right)
+		InsetGraphicsParams const & right)
 {
 	if (left.filename == right.filename &&
-	        left.bb == right.bb &&
-	        left.draft == right.draft &&
-	        left.clip == right.clip &&
-	        left.display == right.display &&
-	        left.subcaption == right.subcaption &&
+		left.bb == right.bb &&
+		left.draft == right.draft &&
+		left.clip == right.clip &&
+		left.display == right.display &&
+		left.subcaption == right.subcaption &&
 		left.noUnzip == right.noUnzip &&
-	        left.subcaptionText == right.subcaptionText &&
-	        left.keepAspectRatio == right.keepAspectRatio &&
-	        left.width == right.width &&
-	        left.height == right.height &&
-	        left.scale == right.scale &&
-	        left.size_type == right.size_type &&
-	        left.lyxsize_type == right.lyxsize_type &&
-	        left.lyxwidth == right.lyxwidth &&
-	        left.lyxheight == right.lyxheight &&
-	        left.lyxscale == right.lyxscale &&
-	        left.rotate == right.rotate &&
-	        left.rotateOrigin == right.rotateOrigin &&
-	        lyx::float_equal(left.rotateAngle, right.rotateAngle, 0.001 &&
-		left.special == right.special) 
+		left.subcaptionText == right.subcaptionText &&
+		left.keepAspectRatio == right.keepAspectRatio &&
+		left.width == right.width &&
+		left.height == right.height &&
+		left.scale == right.scale &&
+		left.size_type == right.size_type &&
+		left.lyxsize_type == right.lyxsize_type &&
+		left.lyxwidth == right.lyxwidth &&
+		left.lyxheight == right.lyxheight &&
+		left.lyxscale == right.lyxscale &&
+		left.rotate == right.rotate &&
+		left.rotateOrigin == right.rotateOrigin &&
+		lyx::float_equal(left.rotateAngle, right.rotateAngle, 0.001 &&
+		left.special == right.special)
 	  )
 		return true;
 
@@ -176,9 +176,9 @@ bool operator==(InsetGraphicsParams const & left,
 }
 
 bool operator!=(InsetGraphicsParams const & left,
-                InsetGraphicsParams const & right)
+		InsetGraphicsParams const & right)
 {
-	return 	!(left == right);
+	return	!(left == right);
 }
 
 
@@ -238,7 +238,7 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 
 
 bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
-                               string const& token)
+			       string const& token)
 {
 	if (token == "filename") {
 		lex.next();

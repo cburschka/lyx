@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2000 The LyX Team.
  *
@@ -19,7 +19,7 @@
 // right behavior.
 
 #ifndef LYXSTRING_H
-#define LYXSTRING_H 
+#define LYXSTRING_H
 
 #ifdef __GNUG__
 #pragma interface
@@ -34,7 +34,7 @@
 #include <cstring> // for size_t
 
 /** A string class for LyX
-  
+
   This is a permanent String class. It is modeled closely after the C++ STL
   string class. In comparison with STL string lyxstring lack support for
   reverse iterators and allocators, also char_traits is not used. In most
@@ -48,13 +48,13 @@
   do things like #lyxstring a= "";#, especially not in constructors.
 
   If you want to use a default empty lyxstring as a parameter, use
-  
-  	#void foo(lyxstring par = lyxstring());	// Correct#
-  
+
+	#void foo(lyxstring par = lyxstring());	// Correct#
+
   rather than
 
-  	#void foo(lyxstring par = "");	// WRONG!#
-  	#void foo(lyxstring par = 0);	// WRONG!#
+	#void foo(lyxstring par = "");	// WRONG!#
+	#void foo(lyxstring par = 0);	// WRONG!#
 
   (The last one is only wrong because some compilers can't handle it.)
 
@@ -64,34 +64,34 @@
   Correct: & #foo.substring(0, length()-1);# \\
   Wrong:   & #bar.substring(0, length());#
   \end{tabular}
-  
+
   It is important that you declare lyxstring as const if possible, because
   some methods are much more efficient in const versions.
-  
+
   If you want to check whether a string is empty, do
 
-  	#if (foo.empty()) something right#
+	#if (foo.empty()) something right#
 
   rather than something along the lines of
 
-  	#if (!foo) completely wrong#
+	#if (!foo) completely wrong#
 
 When you want to copy an lyxstring, just do
-  
+
 	#lyxstring a, b = "String";#
 	#a = b;	// That's it!#
 
   not something like
-  
-  	#lyxstring a, b = "String";#
-  	#a = b.copy(); // This leaks. // and does not work either. #
-  
+
+	#lyxstring a, b = "String";#
+	#a = b.copy(); // This leaks. // and does not work either. #
+
   The class automatically handles deep copying when required.
 */
 class lyxstring {
 public:
 	/* Typedefs */
-	
+
 	///
 	typedef char value_type;
 
@@ -146,22 +146,22 @@ public:
 	  constructors as STL, except the one using iterators, one other
 	  difference is that lyxstring, do not allow the optional allocator
 	  parameter. */
-	
+
 	/// "all characters" marker
 	static const size_type npos;
 
-	/// #lyxstring x;# 
+	/// #lyxstring x;#
 	lyxstring();
-	
-	/// #lyxstring x(lyxstring ...)# 
+
+	/// #lyxstring x(lyxstring ...)#
 	lyxstring(lyxstring const &, size_type pos = 0, size_type n = npos);
-	
+
 	/// #lyxstring x("abc", 2) -> "ab"#
 	lyxstring(value_type const *, size_type n);
-	
+
 	// #lyxstring x("abc")#
 	lyxstring(value_type const *);
-	
+
 	/// lyxstring(5, 'n') -> "nnnnn"
 	lyxstring(size_type n, value_type c);
 
@@ -204,28 +204,28 @@ public:
 
 	///
 	void reserve(size_type res_arg = 0);
-	
+
 	///
 	lyxstring & operator=(lyxstring const &);
-	
+
 	///
 	lyxstring & operator=(value_type const *);
-	
+
 	///
 	lyxstring & operator=(value_type);
 
 	///
 	lyxstring & assign(lyxstring const &);
-	
+
 	///
 	lyxstring & assign(lyxstring const &, size_type pos, size_type n);
-	
+
 	///
 	lyxstring & assign(value_type const * p, size_type n);
-	
+
 	///
 	lyxstring & assign(value_type const * p);
-	
+
 	///
 	lyxstring & assign(size_type n, value_type c);
 
@@ -246,24 +246,24 @@ public:
 
 	/// unchecked access
 	const_reference operator[](size_type) const;
-	
+
 	/// unchecked access
 	reference operator[](size_type);
-	
+
 	/// checked access
 	const_reference at(size_type) const;
-	
+
 	/// checked access
 	reference at(size_type);
 
 	// add characters after (*this)[length()-1]:
-	
+
 	///
 	lyxstring & operator+=(lyxstring const &);
-	
+
 	///
 	lyxstring & operator+=(value_type const *);
-	
+
 	///
 	lyxstring & operator+=(value_type);
 
@@ -303,11 +303,11 @@ public:
 
 	///
 	lyxstring & insert(size_type pos, lyxstring const &);
-	
+
 	///
 	lyxstring & insert(size_type pos, lyxstring const &,
 			size_type pos2, size_type n);
-	
+
 	///
 	lyxstring & insert(size_type pos, value_type const * p,
 			 size_type n);
@@ -340,84 +340,84 @@ public:
 		}
 	}
 #endif
-	
+
 	///
 	size_type find(lyxstring const &, size_type i = 0) const;
-	
+
 	///
 	size_type find(value_type const * p,
 			 size_type i, size_type n) const;
-	
+
 	///
 	size_type find(value_type const * p, size_type i = 0) const;
-	
+
 	///
 	size_type find(value_type c, size_type i = 0) const;
 
 	///
 	size_type rfind(lyxstring const &, size_type i = npos) const;
-	
+
 	///
 	size_type rfind(value_type const * p, size_type i, size_type n) const;
-	
+
 	///
 	size_type rfind(value_type const * p, size_type i = npos) const;
-	
+
 	///
 	size_type rfind(value_type c, size_type i = npos) const;
 
 	///
 	size_type find_first_of(lyxstring const &, size_type i = 0) const;
-	
+
 	///
 	size_type find_first_of(value_type const * p, size_type i,
 				size_type n) const;
-	
+
 	///
 	size_type find_first_of(value_type const * p, size_type i = 0) const;
-	
+
 	///
 	size_type find_first_of(value_type c, size_type i = 0) const;
 
 	///
 	size_type find_last_of(lyxstring const &, size_type i = npos) const;
-	
+
 	///
 	size_type find_last_of(value_type const * p, size_type i,
 			       size_type n) const;
-	
+
 	///
 	size_type find_last_of(value_type const * p, size_type i = npos) const;
-	
+
 	///
 	size_type find_last_of(value_type c, size_type i = npos) const;
 
 	///
 	size_type find_first_not_of(lyxstring const &, size_type i = 0) const;
-	
+
 	///
 	size_type find_first_not_of(value_type const * p, size_type i,
 				    size_type n) const;
-	
+
 	///
 	size_type find_first_not_of(value_type const * p,
 				    size_type i = 0) const;
-	
+
 	///
 	size_type find_first_not_of(value_type c, size_type i = 0) const;
 
 	///
 	size_type find_last_not_of(lyxstring const &,
 				   size_type i = npos) const;
-	
+
 	///
 	size_type find_last_not_of(value_type const * p, size_type i,
 				   size_type n) const;
-	
+
 	///
 	size_type find_last_not_of(value_type const * p,
 				   size_type i = npos) const;
-	
+
 	///
 	size_type find_last_not_of(value_type c, size_type i = npos) const;
 
@@ -464,7 +464,7 @@ public:
 
 	///
 	void swap(lyxstring & str);
-	
+
 	/// Erase n chars from position i.
 	lyxstring & erase(size_type i = 0, size_type n = npos);
 
@@ -479,7 +479,7 @@ public:
 	///
 	iterator erase(iterator first, iterator last);
 
-	/// 
+	///
 	value_type const * c_str() const;
 
 	/* Note that this is STL compilant, so you can not assume
@@ -492,9 +492,9 @@ public:
 	size_type copy(value_type * buf, size_type len,
 		       size_type pos = 0) const;
 
-	
+
 	///
-	int compare(lyxstring const & str) const; 
+	int compare(lyxstring const & str) const;
 
 	///
 	int compare(value_type const * p) const;
@@ -509,11 +509,11 @@ public:
 	///
 	int compare(size_type pos, size_type n, value_type const * p,
 		    size_type n2 = npos) const;
-	
-	
+
+
 	///
 	lyxstring substr(size_type i = 0, size_type n = npos) const;
-	
+
 private:
 	// These three operators can be used to discover erronous use of
 	// ints and strings. However a conforming C++ compiler will flag
@@ -531,7 +531,7 @@ private:
 	int internal_compare(size_type pos, size_type n,
 			     value_type const * s,
 			     size_type slen, size_type n2) const;
-		
+
 	/// Forward declaration of the string representation
 	struct Srep;
 	// DEC cxx requires this.

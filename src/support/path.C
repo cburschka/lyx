@@ -23,10 +23,9 @@ int Path::pop()
 		// The use of Alert::err_alert makes this impossible
 		// to inline.
 		//Alert::err_alert(
-		//	_("Error: Could not change to directory: "), 
+		//	_("Error: Could not change to directory: "),
 		//	pushedDir_);
 	}
 	popped_ = true;
 	return 0;
 }
-

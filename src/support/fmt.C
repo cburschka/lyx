@@ -26,7 +26,7 @@ using std::va_list;
    glibc returns the needed size.
    One problem can be that vsnprintf is not implemented on all archs,
    but AFAIK it is part of the new ANSI C standard.
-   
+
    Lgb
 */
 

@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 2000-2001 The LyX Team.
  *
  * ======================================================
@@ -46,7 +46,7 @@ InsetFootlike::InsetFootlike(InsetFootlike const & in, bool same_id)
 }
 
 
-void InsetFootlike::write(Buffer const * buf, ostream & os) const 
+void InsetFootlike::write(Buffer const * buf, ostream & os) const
 {
 	os << getInsetName() << "\n";
 	InsetCollapsable::write(buf, os);

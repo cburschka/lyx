@@ -1,11 +1,11 @@
 // -*- C++ -*-
 /* This file is part of*
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 2000-2001 The LyX Team.
- * 
+ *
  * ====================================================== */
 
 #ifndef INSET_CITE_H
@@ -17,7 +17,7 @@
 
 #include "insetcommand.h"
 
-/** Used to insert citations  
+/** Used to insert citations
  */
 class InsetCitation : public InsetCommand {
 public:
@@ -39,7 +39,7 @@ public:
 	void edit(BufferView * bv, bool front = true);
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
-        ///
+	///
 	int latex(Buffer const *, std::ostream &, bool, bool) const;
 	///
 	void validate(LaTeXFeatures &) const;

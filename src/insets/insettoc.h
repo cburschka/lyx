@@ -3,10 +3,10 @@
  * ======================================================
  *
  *           LyX, The Document Word Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1996-2001 The LyX Team.
- * 
+ *
  * ====================================================== */
 
 #ifndef INSET_TOC_H

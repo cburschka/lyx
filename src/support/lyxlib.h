@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -32,7 +32,7 @@ bool copy(string const & from, string const & to);
 /// generates a checksum
 unsigned long sum(string const & file);
 /// returns a date string (not used currently)
-char * date(); 
+char * date();
 /// returns the name of the user (not used currently)
 string const getUserName();
 ///
@@ -57,13 +57,13 @@ string const tempName(string const & dir = string(),
 /** Returns true if var is approximately equal to number with allowed error
  * of 'error'.
  *
- * Reason: A float can be very close to the number, yet still need not be 
+ * Reason: A float can be very close to the number, yet still need not be
  * exactly equal, you can have exp(-10) which is very close to zero but not
  * zero. If you only need an approximate equality (you usually do), use this
  * template.
  *
  * Usage: if (float_equal(var, number, 0.0001)) { }
- * 
+ *
  * This will check if 'var' is approx. equal to 'number' with error of 1/1000
  */
 inline bool float_equal(float var, float number, float error)

@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -43,9 +43,9 @@ InsetLatexAccent::InsetLatexAccent(string const & str)
 
 
 void InsetLatexAccent::checkContents()
-        // check, if we know the modifier and can display it ok on screen
+	// check, if we know the modifier and can display it ok on screen
 {
-        candisp = false;
+	candisp = false;
 
 	if (contents.empty() || contents.length() < 2) {
 		lyxerr[Debug::KEY] << "Cannot decode: " << contents << endl;
@@ -90,80 +90,80 @@ void InsetLatexAccent::checkContents()
 			contents = tmp;
 		}
 	}
-        if (contents[0] != '\\') { // demand that first char is a '\\'
+	if (contents[0] != '\\') { // demand that first char is a '\\'
 		lyxerr[Debug::KEY] << "Cannot decode: " << contents << endl;
 		return;
 	}
 
 	lyxerr[Debug::KEY] << "Decode: " << contents << endl;
 
-        remdot = false; plusasc = false; plusdesc = false;
+	remdot = false; plusasc = false; plusdesc = false;
 
-        switch (contents[1]) { // second char should be one of these
+	switch (contents[1]) { // second char should be one of these
 	case '\'':  // acute
-                modtype = ACUTE;    // acute
-                plusasc = true;    // at the top of character
-                break;
+		modtype = ACUTE;    // acute
+		plusasc = true;    // at the top of character
+		break;
 	case '`':   // grave
-                modtype = GRAVE;    // grave
-                plusasc = true;    // at the top
-                break;
+		modtype = GRAVE;    // grave
+		plusasc = true;    // at the top
+		break;
 	case '=':   // macron
-                modtype = MACRON;    // macron
-                plusasc = true;    // at the top
-                break;
+		modtype = MACRON;    // macron
+		plusasc = true;    // at the top
+		break;
 	case '~':   // tilde
-                modtype = TILDE;    // tilde
-                plusasc = true;    // at the top
-                break;
+		modtype = TILDE;    // tilde
+		plusasc = true;    // at the top
+		break;
 	case 'b':   // underbar
-                modtype = UNDERBAR;    // underbar
-                plusdesc = true;   // at the bottom
-                break;
+		modtype = UNDERBAR;    // underbar
+		plusdesc = true;   // at the bottom
+		break;
 	case 'c':   // cedilla
-                modtype = CEDILLA;    // cedilla
-                plusdesc = true;   // at the bottom
-                break;
+		modtype = CEDILLA;    // cedilla
+		plusdesc = true;   // at the bottom
+		break;
 	case 'd':   // underdot
-                modtype = UNDERDOT;    // underdot
-                plusdesc = true;   // at the bottom
-                break;
+		modtype = UNDERDOT;    // underdot
+		plusdesc = true;   // at the bottom
+		break;
 	case 'r':   // circle
-                modtype = CIRCLE;    // circle
-                plusasc = true;    // at the top
-                break;
+		modtype = CIRCLE;    // circle
+		plusasc = true;    // at the top
+		break;
 	case 't':   // tie
-                modtype = TIE;    // tie
-                plusasc = true;    // at the top
-                break;
+		modtype = TIE;    // tie
+		plusasc = true;    // at the top
+		break;
 	case 'u':   // breve
-                modtype = BREVE;    // breve
-                plusasc = true;    // at the top
-                break;
+		modtype = BREVE;    // breve
+		plusasc = true;    // at the top
+		break;
 	case 'v':   // caron
-                modtype = CARON;   // caron
-                plusasc = true;    // at the top
-                break;
+		modtype = CARON;   // caron
+		plusasc = true;    // at the top
+		break;
 	case 'q':   // special caron
-                modtype = SPECIAL_CARON;   // special caron
-                plusasc = true;    // at the top
-                break;
+		modtype = SPECIAL_CARON;   // special caron
+		plusasc = true;    // at the top
+		break;
 	case 'H':   // hungarian umlaut
-                modtype = HUNGARIAN_UMLAUT;   // hungarian umlaut
-                plusasc = true;    // at the top
-                break;
+		modtype = HUNGARIAN_UMLAUT;   // hungarian umlaut
+		plusasc = true;    // at the top
+		break;
 	case '"':   // umlaut
-                modtype = UMLAUT;   // umlaut
-                plusasc = true;    // at the top
-                break;
+		modtype = UMLAUT;   // umlaut
+		plusasc = true;    // at the top
+		break;
 	case '.':   // dot
-                modtype = DOT;   // dot
-                plusasc = true;    // at the top
-                break;
+		modtype = DOT;   // dot
+		plusasc = true;    // at the top
+		break;
 	case '^':   // circumflex
-                modtype = CIRCUMFLEX;   // circumflex
-                plusasc = true;    // at the top
-                break;
+		modtype = CIRCUMFLEX;   // circumflex
+		plusasc = true;    // at the top
+		break;
 	case 'k':   // ogonek
 		modtype = OGONEK;  // ogonek
 		plusdesc = true;
@@ -178,19 +178,19 @@ void InsetLatexAccent::checkContents()
 		plusasc = true; // at the top (not really needed)
 		remdot = true;
 		break;
- 	case 'l': // lslash
- 		modtype = lSLASH;
- 		plusasc = true; // at the top (not really needed)
- 		break;
- 	case 'L': // lslash
- 		modtype = LSLASH;
- 		plusasc = true; // at the top (not really needed)
- 		break;
+	case 'l': // lslash
+		modtype = lSLASH;
+		plusasc = true; // at the top (not really needed)
+		break;
+	case 'L': // lslash
+		modtype = LSLASH;
+		plusasc = true; // at the top (not really needed)
+		break;
 	default:
 		lyxerr[Debug::KEY] << "Default" << endl;
 		// unknow accent (or something else)
-                return;
-        }
+		return;
+	}
 
 	// we demand that third char is a '{' (Lgb)
 	if (contents[2] != '{') return;
@@ -211,17 +211,17 @@ void InsetLatexAccent::checkContents()
 		}
 		//ic = (modtype == DOT_LESS_J ? 'j' : 'i');
 		lyxerr[Debug::KEY] << "Contents: [" << contents << "]"
-				   << ", ic: " << ic 
-				   << ", top: " << plusasc 
-				   << ", bot: " << plusdesc 
-				   << ", dot: " << remdot 
+				   << ", ic: " << ic
+				   << ", top: " << plusasc
+				   << ", bot: " << plusdesc
+				   << ", dot: " << remdot
 				   << ", mod: " << modtype << endl;
 		// Special case for space
 	} else if (contents[3] == '}') {
 		ic = ' ';
 	} else {
 		int i = 3;
-		
+
 		// now get the char
 		ic = contents[3]; // i will always be 3 here
 
@@ -244,20 +244,20 @@ void InsetLatexAccent::checkContents()
 			contents= temp;
 			++i;
 			remdot = true;
-		}    
+		}
 
 		// demand a '}' at the end
 		if (contents[++i] != '}' && contents[++i]) return;
-					   
+
 		// fine, the char is properly decoded now (hopefully)
 		lyxerr[Debug::KEY] << "Contents: [" << contents << "]"
 				   << ", ic: " << ic
-				   << ", top: " << plusasc 
-				   << ", bot: " << plusdesc 
+				   << ", top: " << plusasc
+				   << ", bot: " << plusdesc
 				   << ", dot: " << remdot
 				   << ", mod: " << modtype << endl;
 	}
-        candisp = true;
+	candisp = true;
 }
 
 
@@ -273,7 +273,7 @@ int InsetLatexAccent::ascent(BufferView *, LyXFont const & font) const
 			max = lyxfont::ascent('a', font);
 		else
 			max = lyxfont::ascent(ic, font);
-		if (plusasc) 
+		if (plusasc)
 			max += (lyxfont::maxAscent(font) + 3) / 3;
 	} else
 		max = lyxfont::maxAscent(font) + 4;
@@ -285,12 +285,12 @@ int InsetLatexAccent::descent(BufferView *, LyXFont const & font) const
 {
 	int max;
 	if (candisp) {
-		if (ic == ' ') 
+		if (ic == ' ')
 			max = lyxfont::descent('a', font);
-                else
-                	max = lyxfont::descent(ic, font);
-                if (plusdesc)
-                	max += 3;
+		else
+		max = lyxfont::descent(ic, font);
+		if (plusdesc)
+		max += 3;
 	} else
 		max = lyxfont::maxDescent(font) + 4;
 	return max;
@@ -301,8 +301,8 @@ int InsetLatexAccent::width(BufferView *, LyXFont const & font) const
 {
 	if (candisp)
 		return lyxfont::width(ic, font);
-        else
-                return lyxfont::width(contents, font) + 4;
+	else
+		return lyxfont::width(contents, font) + 4;
 }
 
 
@@ -319,11 +319,11 @@ int InsetLatexAccent::rbearing(LyXFont const & font) const
 
 
 bool InsetLatexAccent::displayISO8859_9(BufferView * bv, LyXFont const & font,
-					int baseline, 
+					int baseline,
 					float & x) const
 {
 	unsigned char tmpic = ic;
-	
+
 	switch (modtype) {
 	case CEDILLA:
 	{
@@ -346,7 +346,7 @@ bool InsetLatexAccent::displayISO8859_9(BufferView * bv, LyXFont const & font,
 		if (ic == 'U') tmpic = 0xdc;
 		break;
 	}
-	case DOT: 	 if (ic == 'I') tmpic = 0xdd; break;
+	case DOT:	 if (ic == 'I') tmpic = 0xdd; break;
 	case DOT_LESS_I: tmpic = 0xfd; break;
 	default:	 return false;
 	}
@@ -367,10 +367,10 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 	Painter & pain = bv->painter();
 
 	if (lyxrc.font_norm_type == LyXRC::ISO_8859_9)
-		if (displayISO8859_9(bv, font0, baseline, x))	
+		if (displayISO8859_9(bv, font0, baseline, x))
 			return;
-	
-	/* draw it! */ 
+
+	/* draw it! */
 	// All the manually drawn accents in this function could use an
 	// overhaul. Different ways of drawing (what metrics to use)
 	// should also be considered.
@@ -378,7 +378,7 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 	LyXFont font(font0);
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1)
 		font.setLanguage(english_language);
-	
+
 	if (candisp) {
 		int asc = ascent(bv, font);
 		int desc = descent(bv, font);
@@ -429,7 +429,7 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 		// now the rest - draw within (x, y, x+wid, y+hg)
 		switch (modtype) {
 		case ACUTE:     // acute 0xB4
- 		{
+		{
 			pain.text(int(x2 - (lyxfont::rbearing(0xB4, font) - lyxfont::lbearing(0xB4, font)) / 2),
 				  baseline - lyxfont::ascent(ic, font) - lyxfont::descent(0xB4, font) - (lyxfont::ascent(0xB4, font) + lyxfont::descent(0xB4, font)) / 2,
 				  char(0xB4), font);
@@ -466,7 +466,7 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 		{
 			pain.text(int(x2 - (lyxfont::rbearing(0xB8, font) - lyxfont::lbearing(0xB8, font)) / 2), baseline,
 				  char(0xB8), font);
-			
+
 			break;
 		}
 		case UNDERDOT:     // underdot
@@ -509,7 +509,7 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 		case CARON:    // caron
 		{
 			int xp[3], yp[3];
-			
+
 			xp[0] = int(x2 - hg35); yp[0] = int(y + hg35);
 			xp[1] = int(x2);        yp[1] = int(y + hg);
 			xp[2] = int(x2 + hg35); yp[2] = int(y + hg35);
@@ -525,10 +525,10 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 			int xp[3], yp[3];
 			xp[0] = int(x + wid);
 			yp[0] = int(y + hg35 + hg);
-			
+
 			xp[1] = int(x + wid + (hg35 / 2.0));
 			yp[1] = int(y + hg + (hg35 / 2.0));
-			
+
 			xp[2] = int(x + wid + (hg35 / 2.0));
 			yp[2] = y + int(hg);
 
@@ -566,16 +566,16 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 			// this does probably not look like an ogonek, so
 			// it should certainly be refined
 			int xp[4], yp[4];
-			
+
 			xp[0] = int(x2);
 			yp[0] = y;
-			
+
 			xp[1] = int(x2);
 			yp[1] = y + int(hg35);
-			
+
 			xp[2] = int(x2 - hg35);
 			yp[2] = y + int(hg / 2.0);
-			
+
 			xp[3] = int(x2 + hg / 4.0);
 			yp[3] = y + int(hg);
 
@@ -586,15 +586,15 @@ void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font0,
 		case LSLASH:
 		{
 			int xp[2], yp[2];
-			
- 			xp[0] = int(x);
+
+			xp[0] = int(x);
 			yp[0] = y + int(3.0 * hg);
-			
- 			xp[1] = int(x + float(wid) * 0.75);
+
+			xp[1] = int(x + float(wid) * 0.75);
 			yp[1] = y + int(hg);
-			
- 			pain.lines(xp, yp, 2);
- 			break;
+
+			pain.lines(xp, yp, 2);
+			break;
 		}
 		case DOT_LESS_I: // dotless-i
 		case DOT_LESS_J: // dotless-j

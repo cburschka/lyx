@@ -43,10 +43,10 @@ public:
 		///
 		DontWait
 	};
-	
+
 	///
 	Forkedcall();
-	
+
 	/** Start the child process.
 	 *
 	 *  The command "what" is passed to fork() for execution.
@@ -94,7 +94,7 @@ public:
 	 *  Used by the timer.
 	 */
 	pid_t pid() const { return pid_; }
-	
+
 	/** Emit the signal.
 	 *  Used by the timer.
 	 */

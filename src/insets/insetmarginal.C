@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 1998 The LyX Team.
  *
  * ======================================================
@@ -59,9 +59,9 @@ int InsetMarginal::latex(Buffer const * buf,
 			 ostream & os, bool fragile, bool fp) const
 {
 	os << "%\n\\marginpar{";
-	
+
 	int const i = inset.latex(buf, os, fragile, fp);
 	os << "%\n}";
-	
+
 	return i + 2;
 }

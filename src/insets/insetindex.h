@@ -1,12 +1,12 @@
 // -*- C++ -*-
 /* This file is part of*
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1996-2001 the LyX Team.
- * 
+ *
  * ====================================================== */
 
 #ifndef INSET_INDEX_H
@@ -20,7 +20,7 @@
 
 struct LaTeXFeatures;
 
-/** Used to insert index labels  
+/** Used to insert index labels
   */
 class InsetIndex : public InsetCommand {
 public:

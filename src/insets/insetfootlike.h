@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1998 The LyX Team.
@@ -23,7 +23,7 @@
 // To have this class is probably a bit overkill... (Lgb)
 
 /** The footnote inset
-  
+
 */
 class InsetFootlike : public InsetCollapsable {
 public:
@@ -38,8 +38,3 @@ public:
 };
 
 #endif
-
-
-
-
-

@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1998 The LyX Team.
@@ -22,12 +22,12 @@
 #include <sigc++/signal_system.h>
 
 /** A collapsable text inset for LaTeX insertions.
-  
+
   To write full ert (including styles and other insets) in a given
   space.
 
   Note that collapsed_ encompasses both the inline and collapsed button
-  versions of this inset. 
+  versions of this inset.
 */
 
 class Language;
@@ -65,7 +65,7 @@ public:
 	bool insetAllowed(Inset::Code) const { return false; }
 	///
 	void setFont(BufferView *, LyXFont const &,
-	                     bool toggleall = false, bool selectall = false);
+			     bool toggleall = false, bool selectall = false);
 	///
 	void edit(BufferView *, int, int, unsigned int);
 	///
@@ -85,7 +85,7 @@ public:
 		  bool free_spc) const;
 	///
 	int ascii(Buffer const *,
-	                  std::ostream &, int linelen = 0) const;
+			  std::ostream &, int linelen = 0) const;
 	///
 	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
@@ -94,7 +94,7 @@ public:
 	void validate(LaTeXFeatures &) const {}
 	///
 	UpdatableInset::RESULT localDispatch(BufferView *, kb_action,
-	                                     string const &);
+					     string const &);
 	///
 	bool checkInsertChar(LyXFont &);
 	///

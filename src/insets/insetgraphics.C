@@ -1,35 +1,35 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995-2002 the LyX Team.
- *           
+ *
  * \author Baruch Even
  * \author Herbert Voss <voss@lyx.org>
  * ====================================================== */
 
 /*
 Known BUGS:
-    
+
     * If the image is from the clipart, and the document is moved to another
       directory, the user is screwed. Need a way to handle it.
       This amounts to a problem of when to use relative or absolute file paths
       We should probably use what the user asks to use... but when he chooses
-      by the file dialog we normally get an absolute path and this may not be 
+      by the file dialog we normally get an absolute path and this may not be
       what the user meant.
 
       Note that browseRelFile in helper_funcs.* provides a file name
       which is relative if it is at reference path (here puffer path)
       level or below, and an absolute path if the file name is not a
       `natural' relative file name. In any case,
-              MakeAbsPath(filename, buf->filePath())
+	      MakeAbsPath(filename, buf->filePath())
       is guaranteed to provide the correct absolute path. This is what is
       done know for include insets. Feel free to ask me -- JMarc
       14/01/2002
-	
+
 TODO Before initial production release:
-    
+
     * What advanced features the users want to do?
       Implement them in a non latex dependent way, but a logical way.
       LyX should translate it to latex or any other fitting format.
@@ -53,27 +53,27 @@ TODO Before initial production release:
  * and when reading one should change the version check and the error message.
  * The filename is kept in  the lyx file in a relative way, so as to allow
  * moving the document file and its images with no problem.
- * 
+ *
  *
  * Conversions:
  *   Postscript output means EPS figures.
  *
  *   PDF output is best done with PDF figures if it's a direct conversion
  *   or PNG figures otherwise.
- *   	Image format
- *   	from        to
- *   	EPS         epstopdf
- *   	PS          ps2pdf
- *   	JPG/PNG     direct
- *   	PDF         direct
- *   	others      PNG
+ *	Image format
+ *	from        to
+ *	EPS         epstopdf
+ *	PS          ps2pdf
+ *	JPG/PNG     direct
+ *	PDF         direct
+ *	others      PNG
  */
 
-#include <config.h> 
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
-#endif 
+#endif
 
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"
@@ -120,7 +120,7 @@ string const RemoveExtension(string const & filename)
 {
 	return ChangeExtension(filename, string());
 }
- 
+
 } // namespace anon
 
 
@@ -143,7 +143,7 @@ string const unique_id()
 InsetGraphics::InsetGraphics()
 	: graphic_label(unique_id()),
 	  cached_status_(grfx::ErrorUnknown), cache_filled_(false), old_asc(0)
-	  
+
 {}
 
 
@@ -230,7 +230,7 @@ bool InsetGraphics::drawImage() const
 	return pixmap != 0;
 }
 
-	
+
 int InsetGraphics::ascent(BufferView *, LyXFont const &) const
 {
 	old_asc = 50;
@@ -268,18 +268,18 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 			int const msg_width = lyxfont::width(msg, msgFont);
 			font_width = std::max(font_width, msg_width);
 		}
-		
+
 		return std::max(50, font_width + 15);
 	}
 }
 
 
 void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
-                         int baseline, float & x, bool) const
+			 int baseline, float & x, bool) const
 {
 	int oasc = old_asc;
 	grfx::ImageStatus old_status_ = cached_status_;
-	
+
 	int ldescent = descent(bv, font);
 	int lascent  = ascent(bv, font);
 	int lwidth   = width(bv, font);
@@ -307,18 +307,18 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	// This will draw the graphics. If the graphics has not been loaded yet,
 	// we draw just a rectangle.
 	Painter & paint = bv->painter();
-	
+
 	if (drawImage()) {
 //		lyxerr << "IG(" << this << "): " << old_x << endl;
 		paint.image(old_x + 2, baseline - lascent,
-		            lwidth - 4, lascent + ldescent,
+			    lwidth - 4, lascent + ldescent,
 			    *cached_image_.get());
 
 	} else {
 
 		paint.rectangle(old_x + 2, baseline - lascent,
-		                lwidth - 4,
-		                lascent + ldescent);
+				lwidth - 4,
+				lascent + ldescent);
 
 		// Print the file name.
 		LyXFont msgFont(font);
@@ -326,7 +326,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		string const justname = OnlyFilename (params().filename);
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			paint.text(old_x + 8, 
+			paint.text(old_x + 8,
 				   baseline - lyxfont::maxAscent(msgFont) - 4,
 				   justname, msgFont);
 		}
@@ -344,7 +344,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	if (old_status_ != grfx::ErrorUnknown && old_status_ != cached_status_) {
 		bv->getLyXText()->status(bv, LyXText::CHANGED_IN_DRAW);
 	}
- 
+
 	// Reset the cache, ready for the next draw request
 	cached_status_ = grfx::ErrorUnknown;
 	cached_image_.reset(0);
@@ -409,7 +409,7 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 		lex.next();
 
 		string const token = lex.getString();
-		lyxerr[Debug::GRAPHICS] << "Token: '" << token << '\'' 
+		lyxerr[Debug::GRAPHICS] << "Token: '" << token << '\''
 				    << std::endl;
 
 		if (token.empty()) {
@@ -429,7 +429,7 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 		}
 		else {
 			if (! params_.Read(buf, lex, token))
-				lyxerr << "Unknown token, " << token << ", skipping." 
+				lyxerr << "Unknown token, " << token << ", skipping."
 					<< std::endl;
 		}
 	}
@@ -441,12 +441,12 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 	std::vector<string> const oldUnits =
 		getVectorFromString("pt,cm,in,p%,c%");
 	bool finished = false;
-	// set the display default	
-	if (lyxrc.display_graphics == "mono") 
+	// set the display default
+	if (lyxrc.display_graphics == "mono")
 	    params_.display = InsetGraphicsParams::MONOCHROME;
-	else if (lyxrc.display_graphics == "gray") 
+	else if (lyxrc.display_graphics == "gray")
 	    params_.display = InsetGraphicsParams::GRAYSCALE;
-	else if (lyxrc.display_graphics == "color") 
+	else if (lyxrc.display_graphics == "color")
 	    params_.display = InsetGraphicsParams::COLOR;
 	else
 	    params_.display = InsetGraphicsParams::NONE;
@@ -455,7 +455,7 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 
 		string const token = lex.getString();
 		lyxerr[Debug::GRAPHICS] << "Token: " << token << endl;
-		
+
 		if (token.empty())
 			continue;
 		else if (token == "\\end_inset") {
@@ -488,11 +488,11 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 		} else if (token == "flags") {
 			if (lex.next())
 				switch (lex.getInteger()) {
-				case 1: params_.display = InsetGraphicsParams::MONOCHROME; 
+				case 1: params_.display = InsetGraphicsParams::MONOCHROME;
 				    break;
-				case 2: params_.display = InsetGraphicsParams::GRAYSCALE; 
+				case 2: params_.display = InsetGraphicsParams::GRAYSCALE;
 				    break;
-				case 3: params_.display = InsetGraphicsParams::COLOR; 
+				case 3: params_.display = InsetGraphicsParams::COLOR;
 				    break;
 				}
 		} else if (token == "subfigure") {
@@ -571,7 +571,7 @@ string findTargetFormat(string const & suffix)
 {
 	// lyxrc.pdf_mode means:
 	// Are we creating a PDF or a PS file?
-	// (Should actually mean, are we using latex or pdflatex).	
+	// (Should actually mean, are we using latex or pdflatex).
 	lyxerr[Debug::GRAPHICS] << "decideOutput: lyxrc.pdf_mode = "
 			    << lyxrc.pdf_mode << std::endl;
 	if (lyxrc.pdf_mode) {
@@ -612,7 +612,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	bool const zipped = zippedFile(filename_);
 
 	if ((zipped && params().noUnzip) || buf->niceFile) {
-		lyxerr[Debug::GRAPHICS] << "don't unzip file or export latex" 
+		lyxerr[Debug::GRAPHICS] << "don't unzip file or export latex"
 				    << filename_ << endl;
 		return filename_;
 	}
@@ -676,9 +676,9 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	// Return how many newlines we issued.
 	int const newlines =
 		int(lyx::count(latex_str.begin(), latex_str.end(),'\n') + 1);
-		
+
 	// lyxerr << "includegraphics: " << newlines << " lines of text"
-	//        << endl; 
+	//        << endl;
 	return newlines;
 }
 
@@ -707,8 +707,8 @@ int InsetGraphics::linuxdoc(Buffer const *, ostream &) const
 // See also the docbook guide at http://www.docbook.org/
 int InsetGraphics::docbook(Buffer const *, ostream & os) const
 {
-	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will 
-	// need to switch to MediaObject. However, for now this is sufficient and 
+	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will
+	// need to switch to MediaObject. However, for now this is sufficient and
 	// easier to use.
 	os << "<graphic fileref=\"&" << graphic_label << ";\">";
 	return 0;

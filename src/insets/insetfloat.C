@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 1998-2001 The LyX Team.
  *
  * ====================================================== */
@@ -61,7 +61,7 @@ using std::endl;
 //     within    - This (optional) argument determines whether floats of this
 //                 class will be numbered within some sectional unit of the
 //                 document. For example, if within is equal to chapter, the
-//                 floats will be numbered within chapters. 
+//                 floats will be numbered within chapters.
 //   \floatstyle{style}
 //     style -  plain, boxed, ruled
 //   \floatname{float}{floatname}
@@ -143,7 +143,7 @@ void InsetFloat::write(Buffer const * buf, ostream & os) const
 	} else {
 		os << "wide false\n";
 	}
-	
+
 	InsetCollapsable::write(buf, os);
 }
 
@@ -187,7 +187,7 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 	if (contains(placement(), "H")) {
 		features.require("float");
 	}
-	
+
 	features.useFloat(floatType_);
 	InsetCollapsable::validate(features);
 }
@@ -224,18 +224,18 @@ int InsetFloat::latex(Buffer const * buf,
 		   && buf_placement != def_placement) {
 		placement = buf_placement;
 	}
-	
+
 	os << "\\begin{" << tmptype << "}";
 	// We only output placement if different from the def_placement.
 	if (!placement.empty()) {
 		os << "[" << placement << "]";
 	}
-	
+
 	os << "%\n";
-    
+
 	int const i = inset.latex(buf, os, fragile, fp);
 	os << "\\end{" << tmptype << "}%\n";
-	
+
 	return i + 2;
 }
 
@@ -265,13 +265,13 @@ bool InsetFloat::insetAllowed(Inset::Code code) const
 bool InsetFloat::showInsetDialog(BufferView * bv) const
 {
 	if (!inset.showInsetDialog(bv)) {
-		bv->owner()->getDialogs()->showFloat(const_cast<InsetFloat *>(this)); 
+		bv->owner()->getDialogs()->showFloat(const_cast<InsetFloat *>(this));
 	}
 	return true;
 }
 
 
-string const & InsetFloat::type() const 
+string const & InsetFloat::type() const
 {
 	return floatType_;
 }

@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995-2001 the LyX Team.
  *
  * ====================================================== */
@@ -129,7 +129,7 @@ public:
 		///
 		HIGHLY_EDITABLE
 	};
-	
+
 	///
 	Inset();
 	///
@@ -190,7 +190,7 @@ public:
 			  bool free_spc) const = 0;
 	///
 	virtual int ascii(Buffer const *,
-	                  std::ostream &, int linelen = 0) const = 0;
+			  std::ostream &, int linelen = 0) const = 0;
 	///
 	virtual int linuxdoc(Buffer const *, std::ostream &) const = 0;
 	///
@@ -199,17 +199,17 @@ public:
 	virtual void validate(LaTeXFeatures & features) const;
 	///
 	virtual bool deletable() const;
-	
+
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual Inset::Code lyxCode() const { return NO_CODE; }
-	
+
 	virtual std::vector<string> const getLabelList() const {
 		return std::vector<string>();
 	}
 
 	///
 	virtual Inset * clone(Buffer const &, bool same_ids = false) const = 0;
-	
+
 	/// returns true to override begin and end inset in file
 	virtual bool directWrite() const;
 
@@ -298,7 +298,7 @@ public:
 	virtual bool checkInsertChar(LyXFont &);
 	/// we need this here because collapsed insets are only EDITABLE
 	virtual void setFont(BufferView *, LyXFont const &,
-                         bool toggleall = false, bool selectall = false);
+			 bool toggleall = false, bool selectall = false);
 	///
 	// needed for spellchecking text
 	///
@@ -352,8 +352,8 @@ private:
 
 inline
 bool Inset::insetAllowed(Inset * in) const
-{ 
-	return insetAllowed(in->lyxCode()); 
+{
+	return insetAllowed(in->lyxCode());
 }
 
 
@@ -366,26 +366,26 @@ bool Inset::checkInsertChar(LyXFont &)
 //  Updatable Insets. These insets can be locked and receive
 //  directly user interaction. Currently used only for mathed.
 //  Note that all pure methods from Inset class are pure here too.
-//  [Alejandro 080596] 
+//  [Alejandro 080596]
 
 /** Extracted from Matthias notes:
- * 
- * An inset can simple call LockInset in it's edit call and *ONLY* 
+ *
+ * An inset can simple call LockInset in it's edit call and *ONLY*
  * in it's edit call.
  *
- * Unlocking is either done by LyX or the inset itself with a 
+ * Unlocking is either done by LyX or the inset itself with a
  * UnlockInset-call
  *
  * During the lock, all button and keyboard events will be modified
  * and send to the inset through the following inset-features. Note that
  * Inset::insetUnlock will be called from inside UnlockInset. It is meant
  * to contain the code for restoring the menus and things like this.
- * 
+ *
  * If a inset wishes any redraw and/or update it just has to call
  * updateInset(this).
- * 
+ *
  * It's is completly irrelevant, where the inset is. UpdateInset will
- * find it in any paragraph in any buffer. 
+ * find it in any paragraph in any buffer.
  * Of course the_locking_inset and the insets in the current paragraph/buffer
  *  are checked first, so no performance problem should occur.
  */
@@ -394,22 +394,22 @@ public:
 	/** Dispatch result codes
 	    Now that nested updatable insets are allowed, the local dispatch
 	    becomes a bit complex, just two possible results (boolean)
-	    are not enough. 
-	 
+	    are not enough.
+
 	    DISPATCHED          = the inset catched the action
 	    DISPATCHED_NOUPDATE = the inset catched the action and no update
-	                          is needed here to redraw the inset
+				  is needed here to redraw the inset
 	    FINISHED            = the inset must be unlocked as a result
-	                          of the action
+				  of the action
 	    FINISHED_RIGHT      = FINISHED, but put the cursor to the RIGHT of
-	                          the inset.
+				  the inset.
 	    FINISHED_UP         = FINISHED, but put the cursor UP of
-	                          the inset.
+				  the inset.
 	    FINISHED_DOWN       = FINISHED, but put the cursor DOWN of
-	                          the inset.
+				  the inset.
 	    UNDISPATCHED        = the action was not catched, it should be
-	                          dispatched by lower level insets
-	*/ 
+				  dispatched by lower level insets
+	*/
 	enum RESULT {
 		UNDISPATCHED = 0,
 		DISPATCHED,
@@ -419,7 +419,7 @@ public:
 		FINISHED_UP,
 		FINISHED_DOWN
 	};
-    
+
 	/// To convert old binary dispatch results
 	RESULT DISPATCH_RESULT(bool b) {
 		return b ? DISPATCHED : FINISHED;
@@ -435,7 +435,7 @@ public:
 	virtual bool checkInsertChar(LyXFont &);
 	///
 	virtual EDITABLE editable() const;
-	
+
 	///
 	virtual void toggleInsetCursor(BufferView *);
 	///
@@ -454,7 +454,7 @@ public:
 	// if that one has one!
 	///
 	virtual bool insetButtonRelease(BufferView *,
-	                                int x, int y, int button);
+					int x, int y, int button);
 	///
 	virtual void insetKeyPress(XKeyEvent * ev);
 	///
@@ -487,7 +487,7 @@ public:
 		{ return false; }
 	///
 	virtual bool unlockInsetInInset(BufferView *, UpdatableInset *,
-	                                bool /*lr*/ = false)
+					bool /*lr*/ = false)
 		{ return false; }
 	///  An updatable inset could handle lyx editing commands
 	virtual RESULT localDispatch(BufferView *, kb_action, string const &);
@@ -526,11 +526,11 @@ public:
 	// needed for search/replace functionality
 	///
 	virtual bool searchForward(BufferView *, string const &,
-	                           bool = true, bool = false);
+				   bool = true, bool = false);
 	///
 	virtual bool searchBackward(BufferView *, string const &,
-	                            bool = true, bool = false);
-	
+				    bool = true, bool = false);
+
 protected:
 	///
 	void toggleCursorVisible() const {
@@ -564,9 +564,9 @@ bool UpdatableInset::checkInsertChar(LyXFont &)
  */
 inline bool isEditableInset(Inset * i)
 {
-	return i && i->editable(); 
+	return i && i->editable();
 }
- 
+
 /**
  * returns true if pointer argument is valid
  * and points to a highly editable inset

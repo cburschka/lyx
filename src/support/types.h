@@ -56,7 +56,7 @@ namespace lyx
 		private:
 		base_type data_;
 	};
-		
+
 
 #endif
 

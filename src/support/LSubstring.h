@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -13,7 +13,7 @@
 // Programming Language by Bjarne Stroustrup
 
 #ifndef LSUBSTRING_H
-#define LSUBSTRING_H 
+#define LSUBSTRING_H
 
 #ifdef __GNUG__
 #pragma interface

@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -114,11 +114,11 @@ int compare_no_case(string const & s, string const & s2, unsigned int len)
 bool isStrInt(string const & str)
 {
 	if (str.empty()) return false;
-       
+
 	// Remove leading and trailing white space chars.
 	string const tmpstr = frontStrip(strip(str, ' '), ' ');
 	if (tmpstr.empty()) return false;
-       
+
 	string::const_iterator cit = tmpstr.begin();
 	if ((*cit) == '-') ++cit;
 	string::const_iterator end = tmpstr.end();
@@ -132,11 +132,11 @@ bool isStrInt(string const & str)
 bool isStrUnsignedInt(string const & str)
 {
 	if (str.empty()) return false;
-       
+
 	// Remove leading and trailing white space chars.
 	string const tmpstr = frontStrip(strip(str, ' '), ' ');
 	if (tmpstr.empty()) return false;
-       
+
 	string::const_iterator cit = tmpstr.begin();
 	string::const_iterator end = tmpstr.end();
 	for (; cit != end; ++cit) {
@@ -175,7 +175,7 @@ unsigned int strToUnsignedInt(string const & str)
 bool isStrDbl(string const & str)
 {
 	if (str.empty()) return false;
-	
+
 	// Remove leading and trailing white space chars.
 	string const tmpstr = frontStrip(strip(str, ' '), ' ');
 	if (tmpstr.empty()) return false;
@@ -215,15 +215,15 @@ double strToDbl(string const & str)
 }
 
 
-char lowercase(char c) 
-{ 
-	return char(tolower(c)); 
+char lowercase(char c)
+{
+	return char(tolower(c));
 }
 
 
-char uppercase(char c) 
-{ 
-	return char(toupper(c)); 
+char uppercase(char c)
+{
+	return char(toupper(c));
 }
 
 
@@ -237,7 +237,7 @@ struct local_lowercase {
 		return tolower(c);
 	}
 };
-	
+
 struct local_uppercase {
 	char operator()(char c) const {
 		return toupper(c);
@@ -264,10 +264,10 @@ string const uppercase(string const & a)
 bool prefixIs(string const & a, char const * pre)
 {
 	lyx::Assert(pre);
-	
+
 	size_t const l = strlen(pre);
 	string::size_type const alen = a.length();
-	
+
 	if (l > alen || a.empty())
 		return false;
 	else {
@@ -289,7 +289,7 @@ bool prefixIs(string const & a, string const & pre)
 {
 	string::size_type const prelen = pre.length();
 	string::size_type const alen = a.length();
-	
+
 	if (prelen > alen || a.empty())
 		return false;
 	else {
@@ -312,10 +312,10 @@ bool suffixIs(string const & a, char c)
 bool suffixIs(string const & a, char const * suf)
 {
 	lyx::Assert(suf);
-	
+
 	size_t const suflen = strlen(suf);
 	string::size_type const alen = a.length();
-	
+
 	if (suflen > alen)
 		return false;
 	else {
@@ -338,7 +338,7 @@ bool suffixIs(string const & a, string const & suf)
 {
 	string::size_type const suflen = suf.length();
 	string::size_type const alen = a.length();
-	
+
 	if (suflen > alen) {
 		return false;
 	} else {
@@ -396,7 +396,7 @@ bool contains(char const * a, char const * b)
 bool containsOnly(string const & s, char const * cset)
 {
 	lyx::Assert(cset);
-	
+
 	return s.find_first_not_of(cset) == string::npos;
 }
 
@@ -410,7 +410,7 @@ bool containsOnly(string const & s, string const & cset)
 bool containsOnly(char const * s, char const * cset)
 {
 	lyx::Assert(s && cset);
-	
+
 	return string(s).find_first_not_of(cset) == string::npos;
 }
 
@@ -418,7 +418,7 @@ bool containsOnly(char const * s, char const * cset)
 bool containsOnly(char const * s, string const & cset)
 {
 	lyx::Assert(s);
-	
+
 	return string(s).find_first_not_of(cset) == string::npos;
 }
 
@@ -428,7 +428,7 @@ bool containsOnly(char const * s, string const & cset)
 string const token(string const & a, char delim, int n)
 {
 	if (a.empty()) return string();
-	
+
 	string::size_type k = 0;
 	string::size_type i = 0;
 
@@ -496,7 +496,7 @@ string const subst(string const & a,
 		   char const * oldstr, string const & newstr)
 {
 	lyx::Assert(oldstr);
-	
+
 	string lstr(a);
 	string::size_type i = 0;
 	string::size_type olen = strlen(oldstr);
@@ -530,7 +530,7 @@ string const strip(string const & a, char c)
 	string tmp(a);
 	string::size_type i = tmp.find_last_not_of(c);
 	if (i == a.length() - 1) return tmp; // no c's at end of a
-	if (i != string::npos) 
+	if (i != string::npos)
 		tmp.erase(i + 1, string::npos);
 #if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
 	/// Needed for broken string::find_last_not_of
@@ -548,7 +548,7 @@ string const strip(string const & a, char c)
 string const frontStrip(string const & a, char const * p)
 {
 	lyx::Assert(p);
-	
+
 	if (a.empty() || !*p) return a;
 	string tmp(a);
 	string::size_type i = tmp.find_first_not_of(p);

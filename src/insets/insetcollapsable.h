@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 2000-2001 The LyX Team.
@@ -28,7 +28,7 @@ class Paragraph;
 class LyXCursor;
 
 /** A collapsable text inset
-  
+
 */
 class InsetCollapsable : public UpdatableInset {
 public:
@@ -58,7 +58,7 @@ public:
 	///
 	void draw(BufferView *, const LyXFont &, int , float &, bool) const;
 	///
-	void update(BufferView *, LyXFont const &, bool =false); 
+	void update(BufferView *, LyXFont const &, bool =false);
 	///
 	void edit(BufferView *, int, int, unsigned int);
 	///
@@ -83,7 +83,7 @@ public:
 	bool lockInsetInInset(BufferView *, UpdatableInset *);
 	///
 	bool unlockInsetInInset(BufferView *, UpdatableInset *,
-	                        bool lr = false);
+				bool lr = false);
 	///
 	bool updateInsetInInset(BufferView *, Inset *);
 	///
@@ -98,7 +98,7 @@ public:
 	void insetKeyPress(XKeyEvent *);
 	///
 	UpdatableInset::RESULT localDispatch(BufferView *, kb_action,
-	                                     string const &);
+					     string const &);
 	///
 	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
@@ -127,7 +127,7 @@ public:
 	UpdatableInset * getFirstLockingInsetOfType(Inset::Code);
 	///
 	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
-                 bool selectall = false);
+		 bool selectall = false);
 	///
 	void setLabel(string const & l) const;
 	///
@@ -188,9 +188,9 @@ public:
 	}
 	///
 	bool searchForward(BufferView * bv, string const & str,
-	                   bool = true, bool = false);
+			   bool = true, bool = false);
 	bool searchBackward(BufferView * bv, string const & str,
-	                    bool = true, bool = false);
+			    bool = true, bool = false);
 
 protected:
 	///
@@ -203,7 +203,7 @@ protected:
 	void draw_collapsed(Painter & pain, int , float &) const;
 	///
 	int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
-	
+
 	///
 	mutable bool collapsed_;
 	///

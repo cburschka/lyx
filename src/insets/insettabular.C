@@ -1,6 +1,6 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 2001 The LyX Team.
@@ -261,13 +261,13 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		x += static_cast<float>(scroll());
 #endif
 	if (!cleared && ((need_update == INIT) || (need_update == FULL) ||
-	                 (top_x != int(x)) || (top_baseline != baseline)))
+			 (top_x != int(x)) || (top_baseline != baseline)))
 	{
 		int h = ascent(bv, font) + descent(bv, font);
 		int const tx = display() || !owner() ? 0 : top_x;
 		int w =  tx ? width(bv, font) : pain.paperWidth();
 		int ty = baseline - ascent(bv, font);
-	
+
 		if (ty < 0)
 			ty = 0;
 		if ((ty + h) > pain.paperHeight())
@@ -308,7 +308,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 				if (hasSelection()) {
 					drawCellSelection(pain, nx, baseline, i, j, cell);
 				}
-				
+
 				tabular->GetCellInset(cell)->draw(bv, font, baseline, cx, cleared);
 				drawCellLines(pain, nx, baseline, i, cell);
 				nx += tabular->GetWidthOfColumn(cell);
@@ -376,7 +376,7 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		//
 		//  +--------------------+
 		//  |         C          |   The rectangles are A, B and C
-		//  | A |------------| B |   below, origin top left (tx, ty), 
+		//  | A |------------| B |   below, origin top left (tx, ty),
 		//  |   |  inset box |   |   dimensions w(idth), h(eight).
 		//  +---+------------+---+   x grows rightward, y downward
 		//  |         D          |
@@ -388,10 +388,10 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 #endif
 			// clear before the inset
 			int tx, ty, w, h;
-			tx = nx + 1; 
+			tx = nx + 1;
 			ty = baseline - tabular->GetAscentOfRow(i) + 1;
 			w = int(cx - nx - 1);
-			h = tabular->GetAscentOfRow(i) + 
+			h = tabular->GetAscentOfRow(i) +
 				tabular->GetDescentOfRow(i) - 1;
 			pain.fillRectangle(tx, ty, w, h, backgroundColor());
 			// clear behind the inset
@@ -437,11 +437,11 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 
 
 void InsetTabular::drawCellLines(Painter & pain, int x, int baseline,
-                                 int row, int cell) const
+				 int row, int cell) const
 {
 	int x2 = x + tabular->GetWidthOfColumn(cell);
 	bool on_off;
-	
+
 	if (!tabular->TopAlreadyDrawed(cell)) {
 		on_off = !tabular->TopLine(cell);
 		pain.line(x, baseline - tabular->GetAscentOfRow(row),
@@ -483,12 +483,12 @@ void InsetTabular::drawCellSelection(Painter & pain, int x, int baseline,
 	} else {
 		ce = tabular->right_column_of_cell(sel_cell_end);
 	}
-	
+
 	int rs = tabular->row_of_cell(sel_cell_start);
 	int re = tabular->row_of_cell(sel_cell_end);
 	if (rs > re)
 		swap(rs, re);
-	
+
 	if ((column >= cs) && (column <= ce) && (row >= rs) && (row <= re)) {
 		int w = tabular->GetWidthOfColumn(cell);
 		int h = tabular->GetAscentOfRow(row) + tabular->GetDescentOfRow(row);
@@ -552,7 +552,7 @@ string const InsetTabular::editMessage() const
 void InsetTabular::edit(BufferView * bv, int x, int y, unsigned int button)
 {
 	UpdatableInset::edit(bv, x, y, button);
-	
+
 	if (!bv->lockInset(this)) {
 		lyxerr[Debug::INSETTEXT] << "InsetTabular::Cannot lock inset" << endl;
 		return;
@@ -573,7 +573,7 @@ void InsetTabular::edit(BufferView * bv, int x, int y, unsigned int button)
 void InsetTabular::edit(BufferView * bv, bool front)
 {
 	UpdatableInset::edit(bv, front);
-	
+
 	if (!bv->lockInset(this)) {
 		lyxerr[Debug::INSETTEXT] << "InsetTabular::Cannot lock inset" << endl;
 		return;
@@ -612,7 +612,7 @@ void InsetTabular::insetUnlock(BufferView * bv)
 
 
 void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what,
-                               bool mark_dirty) const
+			       bool mark_dirty) const
 {
 	if (what == INIT) {
 		LyXFont font;
@@ -821,7 +821,7 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 
 
 bool InsetTabular::insetButtonRelease(BufferView * bv,
-                                      int x, int y, int button)
+				      int x, int y, int button)
 {
 	bool ret = false;
 	if (the_locking_inset)
@@ -844,10 +844,10 @@ void InsetTabular::insetMotionNotify(BufferView * bv, int x, int y, int button)
 						     button);
 		return;
 	}
- 
+
 	hideInsetCursor(bv);
 //	int const old_cell = actcell;
-	
+
 	setPos(bv, x, y);
 	if (!hasSelection()) {
 		setSelection(actcell, actcell);
@@ -870,9 +870,9 @@ void InsetTabular::insetKeyPress(XKeyEvent * xke)
 
 UpdatableInset::RESULT
 InsetTabular::localDispatch(BufferView * bv, kb_action action,
-                            string const & arg)
+			    string const & arg)
 {
-	// We need to save the value of the_locking_inset as the call to 
+	// We need to save the value of the_locking_inset as the call to
 	// the_locking_inset->LocalDispatch might unlock it.
 	old_locking_inset = the_locking_inset;
 	UpdatableInset::RESULT result =
@@ -949,7 +949,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			setSelection(start, actcell);
 			break;
 		}
-		
+
 		int end = actcell;
 		// if we are starting a selection, only select
 		// the current cell at the beginning
@@ -973,11 +973,11 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			setSelection(start, actcell);
 			break;
 		}
- 
+
 		int end = actcell;
 		// if we are starting a selection, only select
 		// the current cell at the beginning
-		if (hasSelection()) { 
+		if (hasSelection()) {
 			moveLeft(bv, false);
 			end = actcell;
 		}
@@ -1090,7 +1090,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_NEXTSEL:
 	case LFUN_WORDLEFT:
 	case LFUN_WORDLEFTSEL:
-	case LFUN_WORDRIGHT: 
+	case LFUN_WORDRIGHT:
 	case LFUN_WORDRIGHTSEL:
 	case LFUN_DOWN_PARAGRAPH:
 	case LFUN_DOWN_PARAGRAPHSEL:
@@ -1103,7 +1103,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_END:
 	case LFUN_ENDSEL:
 	case LFUN_BEGINNINGBUF:
-	case LFUN_BEGINNINGBUFSEL: 
+	case LFUN_BEGINNINGBUFSEL:
 	case LFUN_ENDBUF:
 	case LFUN_ENDBUFSEL:
 		break;
@@ -1116,7 +1116,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		break;
 		// insert file functions
 	case LFUN_FILE_INSERT_ASCII_PARA:
-	case LFUN_FILE_INSERT_ASCII: 
+	case LFUN_FILE_INSERT_ASCII:
 	{
 		string tmpstr = getContentsOfAsciiFile(bv, arg, false);
 		if (tmpstr.empty())
@@ -1132,8 +1132,8 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		if (!copySelection(bv))
 			break;
 		setUndo(bv, Undo::DELETE,
-		        bv->text->cursor.par(),
-		        bv->text->cursor.par()->next());
+			bv->text->cursor.par(),
+			bv->text->cursor.par()->next());
 		cutSelection();
 		updateLocal(bv, INIT, true);
 		break;
@@ -1217,8 +1217,8 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_PASTE:
 		if (hasPasteBuffer()) {
 			setUndo(bv, Undo::INSERT,
-			        bv->text->cursor.par(),
-			        bv->text->cursor.par()->next());
+				bv->text->cursor.par(),
+				bv->text->cursor.par()->next());
 			pasteSelection(bv);
 			updateLocal(bv, INIT, true);
 			break;
@@ -1285,7 +1285,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 
 
 int InsetTabular::latex(Buffer const * buf, ostream & os,
-                        bool fragile, bool fp) const
+			bool fragile, bool fp) const
 {
 	return tabular->latex(buf, os, fragile, fp);
 }
@@ -1295,7 +1295,7 @@ int InsetTabular::ascii(Buffer const * buf, ostream & os, int ll) const
 {
 	if (ll > 0)
 		return tabular->ascii(buf, os, (int)parOwner()->params().depth(),
-		                      false,0);
+				      false,0);
 	return tabular->ascii(buf, os, 0, false,0);
 }
 
@@ -1342,15 +1342,15 @@ void InsetTabular::validate(LaTeXFeatures & features) const
 
 
 bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
-                                                 LyXFont const & font,
-                                                 bool reinit) const
+						 LyXFont const & font,
+						 bool reinit) const
 {
 	int cell = -1;
 	int maxAsc = 0;
 	int maxDesc = 0;
 	InsetText * inset;
 	bool changed = false;
-	
+
 	// if we have a locking_inset we should have to check only this cell for
 	// change so I'll try this to have a boost, but who knows ;)
 	if ((need_update != INIT) &&
@@ -1411,12 +1411,12 @@ void InsetTabular::toggleInsetCursor(BufferView * bv)
 		the_locking_inset->toggleInsetCursor(bv);
 		return;
 	}
-	
+
 	LyXFont font; // = the_locking_inset->GetFont(par, cursor.pos);
-	
+
 	int const asc = lyxfont::maxAscent(font);
 	int const desc = lyxfont::maxDescent(font);
-	
+
 	if (isCursorVisible())
 		bv->hideLockedInsetCursor();
 	else
@@ -1431,7 +1431,7 @@ void InsetTabular::showInsetCursor(BufferView * bv, bool show)
 		return;
 	if (!isCursorVisible()) {
 		LyXFont font; // = GetFont(par, cursor.pos);
-	
+
 		int const asc = lyxfont::maxAscent(font);
 		int const desc = lyxfont::maxDescent(font);
 		bv->fitLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc);
@@ -1458,7 +1458,7 @@ void InsetTabular::fitInsetCursor(BufferView * bv) const
 		return;
 	}
 	LyXFont font;
-	
+
 	int const asc = lyxfont::maxAscent(font);
 	int const desc = lyxfont::maxDescent(font);
 	bv->fitLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc);
@@ -1468,7 +1468,7 @@ void InsetTabular::fitInsetCursor(BufferView * bv) const
 void InsetTabular::setPos(BufferView * bv, int x, int y) const
 {
 	cursor_.y(0);
-	
+
 	actcell = actrow = actcol = 0;
 	int ly = tabular->GetDescentOfRow(actrow);
 
@@ -1497,7 +1497,7 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
 int InsetTabular::getCellXPos(int cell) const
 {
 	int c = cell;
-	
+
 	for (; !tabular->IsFirstCellInRow(c); --c)
 		;
 	int lx = tabular->GetWidthOfColumn(cell);
@@ -1729,15 +1729,15 @@ bool InsetTabular::deletable() const
 
 
 void InsetTabular::setFont(BufferView * bv, LyXFont const & font, bool tall,
-                           bool selectall)
+			   bool selectall)
 {
 	if (selectall) {
 		setSelection(0, tabular->GetNumberOfCells() - 1);
 	}
 	if (hasSelection()) {
 		setUndo(bv, Undo::EDIT,
-		        bv->text->cursor.par(),
-		        bv->text->cursor.par()->next());
+			bv->text->cursor.par(),
+			bv->text->cursor.par()->next());
 		bool frozen = undo_frozen;
 		if (!frozen)
 			freezeUndo();
@@ -1764,11 +1764,11 @@ void InsetTabular::setFont(BufferView * bv, LyXFont const & font, bool tall,
 bool InsetTabular::tabularFeatures(BufferView * bv, string const & what)
 {
 	LyXTabular::Feature action = LyXTabular::LAST_ACTION;
-	
+
 	int i = 0;
 	for (; tabularFeature[i].action != LyXTabular::LAST_ACTION; ++i) {
 		string const tmp = tabularFeature[i].feature;
-		
+
 		if (tmp == what.substr(0, tmp.length())) {
 			//if (!compare(tabularFeatures[i].feature.c_str(), what.c_str(),
 			//tabularFeatures[i].feature.length())) {
@@ -1786,7 +1786,7 @@ bool InsetTabular::tabularFeatures(BufferView * bv, string const & what)
 }
 
 static void checkLongtableSpecial(LyXTabular::ltType & ltt,
-                                  string const & special, bool & flag)
+				  string const & special, bool & flag)
 {
 	if (special == "dl_above") {
 		ltt.topDL = flag;
@@ -1805,8 +1805,8 @@ static void checkLongtableSpecial(LyXTabular::ltType & ltt,
 
 
 void InsetTabular::tabularFeatures(BufferView * bv,
-                                   LyXTabular::Feature feature,
-                                   string const & value)
+				   LyXTabular::Feature feature,
+				   string const & value)
 {
 	int sel_col_start;
 	int sel_col_end;
@@ -1851,20 +1851,20 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		sel_row_start = sel_row_end = tabular->row_of_cell(actcell);
 	}
 	setUndo(bv, Undo::FINISH,
-	        bv->text->cursor.par(),
-	        bv->text->cursor.par()->next());
+		bv->text->cursor.par(),
+		bv->text->cursor.par()->next());
 
 	int row =  tabular->row_of_cell(actcell);
 	int column = tabular->column_of_cell(actcell);
 	bool flag = true;
 	LyXTabular::ltType ltt;
-	
+
 	switch (feature) {
 	case LyXTabular::SET_PWIDTH:
 	{
 		LyXLength const vallen(value);
 		LyXLength const & tmplen = tabular->GetColumnPWidth(actcell);
-		
+
 		bool const update = (tmplen != vallen);
 		tabular->SetColumnPWidth(actcell, vallen);
 		if (update) {
@@ -1881,7 +1881,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	{
 		LyXLength const vallen(value);
 		LyXLength const & tmplen = tabular->GetPWidth(actcell);
-		
+
 		bool const update = (tmplen != vallen);
 		tabular->SetMColumnPWidth(actcell, vallen);
 		if (update) {
@@ -1946,12 +1946,12 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		updateLocal(bv, INIT, true);
 		break;
 	}
-	
+
 	case LyXTabular::M_TOGGLE_LINE_BOTTOM:
 		flag = false;
 	case LyXTabular::TOGGLE_LINE_BOTTOM:
 	{
-		bool lineSet = !tabular->BottomLine(actcell, flag); 
+		bool lineSet = !tabular->BottomLine(actcell, flag);
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			for (int j = sel_col_start; j <= sel_col_end; ++j)
 				tabular->SetBottomLine(
@@ -1961,7 +1961,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		updateLocal(bv, INIT, true);
 		break;
 	}
-	
+
 	case LyXTabular::M_TOGGLE_LINE_LEFT:
 		flag = false;
 	case LyXTabular::TOGGLE_LINE_LEFT:
@@ -1976,7 +1976,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		updateLocal(bv, INIT, true);
 		break;
 	}
-	
+
 	case LyXTabular::M_TOGGLE_LINE_RIGHT:
 		flag = false;
 	case LyXTabular::TOGGLE_LINE_RIGHT:
@@ -1991,7 +1991,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		updateLocal(bv, INIT, true);
 		break;
 	}
-	
+
 	case LyXTabular::M_ALIGN_LEFT:
 	case LyXTabular::M_ALIGN_RIGHT:
 	case LyXTabular::M_ALIGN_CENTER:
@@ -2024,8 +2024,8 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	case LyXTabular::MULTICOLUMN:
 	{
 		if (sel_row_start != sel_row_end) {
-			Alert::alert(_("Impossible Operation!"), 
-				   _("Multicolumns can only be horizontally."), 
+			Alert::alert(_("Impossible Operation!"),
+				   _("Multicolumns can only be horizontally."),
 				   _("Sorry."));
 			return;
 		}
@@ -2189,7 +2189,7 @@ bool InsetTabular::insetHit(BufferView *, int x, int) const
 int InsetTabular::getMaxWidthOfCell(BufferView * bv, int cell) const
 {
 	LyXLength const len = tabular->GetPWidth(cell);
-	
+
 	if (len.zero())
 		return -1;
 	return len.inPixels(latexTextWidth(bv), bv->text->defaultHeight());
@@ -2197,7 +2197,7 @@ int InsetTabular::getMaxWidthOfCell(BufferView * bv, int cell) const
 
 
 int InsetTabular::getMaxWidth(BufferView * bv,
-                              UpdatableInset const * inset) const
+			      UpdatableInset const * inset) const
 {
 	int cell = tabular->GetCellFromInset(inset, actcell);
 
@@ -2206,13 +2206,13 @@ int InsetTabular::getMaxWidth(BufferView * bv,
 		       << endl;
 		return -1;
 	}
-	
+
 	int w = getMaxWidthOfCell(bv, cell);
 	if (w > 0) {
 		// because the inset then subtracts it's top_x and owner->x()
 		w += (inset->x() - top_x);
 	}
-	
+
 	return w;
 }
 
@@ -2237,7 +2237,7 @@ void InsetTabular::resizeLyXText(BufferView * bv, bool force) const
 
 
 LyXText * InsetTabular::getLyXText(BufferView const * bv,
-                                   bool const recursive) const
+				   bool const recursive) const
 {
 	if (the_locking_inset)
 		return the_locking_inset->getLyXText(bv, recursive);
@@ -2286,11 +2286,11 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 {
 	int action = LyXTabular::LAST_ACTION;
 	FuncStatus status;
-	
+
 	int i = 0;
 	for (; tabularFeature[i].action != LyXTabular::LAST_ACTION; ++i) {
 		string const tmp = tabularFeature[i].feature;
-		if (tmp == what.substr(0, tmp.length())) {		    
+		if (tmp == what.substr(0, tmp.length())) {
 			//if (!compare(tabularFeatures[i].feature.c_str(), what.c_str(),
 			//   tabularFeatures[i].feature.length())) {
 			action = tabularFeature[i].action;
@@ -2301,7 +2301,7 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 		status.clear();
 		return status.unknown(true);
 	}
-	
+
 	string const argument = frontStrip(what.substr(tabularFeature[i].feature.length()));
 
 	int sel_row_start;
@@ -2477,7 +2477,7 @@ bool InsetTabular::copySelection(BufferView * bv)
 
 	ostringstream sstr;
 	paste_tabular->ascii(bv->buffer(), sstr,
-	                     (int)parOwner()->params().depth(), true, '\t');
+			     (int)parOwner()->params().depth(), true, '\t');
 	bv->stuffClipboard(sstr.str().c_str());
 	return true;
 }
@@ -2582,7 +2582,7 @@ void InsetTabular::getSelection(int & srow, int & erow,
 {
 	int const start = hasSelection() ? sel_cell_start : actcell;
 	int const end = hasSelection() ? sel_cell_end : actcell;
- 
+
 	srow = tabular->row_of_cell(start);
 	erow = tabular->row_of_cell(end);
 	if (srow > erow) {
@@ -2694,7 +2694,7 @@ string InsetTabular::selectNextWordInt(BufferView * bv, float & value) const
 		bv->unlockInset(const_cast<InsetTabular *>(this));
 		return string();
 	}
-	
+
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(++actcell));
@@ -2722,7 +2722,7 @@ void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
 
 
 bool InsetTabular::searchForward(BufferView * bv, string const & str,
-                                 bool cs, bool mw)
+				 bool cs, bool mw)
 {
 	nodraw(true);
 	if (the_locking_inset) {
@@ -2750,7 +2750,7 @@ bool InsetTabular::searchForward(BufferView * bv, string const & str,
 
 
 bool InsetTabular::searchBackward(BufferView * bv, string const & str,
-                               bool cs, bool mw)
+			       bool cs, bool mw)
 {
 	nodraw(true);
 	if (the_locking_inset) {
@@ -2800,11 +2800,11 @@ bool InsetTabular::forceDefaultParagraphs(Inset const * in) const
 }
 
 bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
-                                     bool usePaste)
+				     bool usePaste)
 {
 	if (buf.find('\t') == string::npos)
 		return false;
-	
+
 	int cols = 1;
 	int rows = 1;
 	int maxCols = 1;
@@ -2835,7 +2835,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 	if (usePaste) {
 		delete paste_tabular;
 		paste_tabular = new LyXTabular(bv->buffer()->params,
-		                               this, rows, maxCols);
+					       this, rows, maxCols);
 		loctab = paste_tabular;
 		cols = 0;
 	} else {
@@ -2880,6 +2880,6 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 	// check for the last cell if there is no trailing '\n'
 	if ((cell < cells) && (op < len))
 		loctab->GetCellInset(cell)->setText(buf.substr(op, len-op));
-	
+
 	return true;
 }

@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 1998 The LyX Team.
  *
  * ======================================================
@@ -62,7 +62,7 @@ Inset * InsetNote::clone(Buffer const &, bool same_id) const
 
 
 // This constructor is used for reading old InsetInfo
-InsetNote::InsetNote(Buffer const * buf, string const & contents, 
+InsetNote::InsetNote(Buffer const * buf, string const & contents,
 		     bool collapsed)
 	: InsetCollapsable(buf->params, collapsed)
 {
@@ -81,7 +81,7 @@ InsetNote::InsetNote(Buffer const * buf, string const & contents,
 }
 
 
-string const InsetNote::editMessage() const 
+string const InsetNote::editMessage() const
 {
 	return _("Opened Note Inset");
 }

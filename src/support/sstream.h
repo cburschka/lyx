@@ -53,7 +53,7 @@ namespace std
       streambuf(which), buf(), mode(static_cast<ios::open_mode>(which)),
       rpos(0), bufsize(1)
     { }
-	
+
     explicit stringbuf(const string &s, int which=ios::in|ios::out) :
       streambuf(which), buf(s), mode(static_cast<ios::open_mode>(which)),
       bufsize(1)
@@ -68,7 +68,7 @@ namespace std
 	}
       rpos = (mode & ios::ate ? s.size() : 0);
     }
-	
+
     string str() const
     {
       const_cast<stringbuf*>(this)->sync();  // Sigh, really ugly hack
@@ -114,7 +114,7 @@ namespace std
       clear();
       static_cast<stringbuf*>(_strbuf)->str(s);
     }
-	
+
     stringbuf* rdbuf()
     {
       return &__my_sb;
@@ -125,42 +125,42 @@ namespace std
     {
       init (&__my_sb);
     }
-	
+
     stringstreambase(const string& s, int which) :
       __my_sb(s, which)
     {
       init (&__my_sb);
     }
   };
-    
+
   class istringstream : public stringstreambase, public istream {
   public:
     istringstream(int which=ios::in) :
       stringstreambase(which)
     { }
-	
+
     istringstream(const string& s, int which=ios::in) :
       stringstreambase(s, which)
     { }
   };
-    
+
   class ostringstream : public stringstreambase, public ostream {
   public:
     ostringstream(int which=ios::out) :
       stringstreambase(which)
     { }
-	
+
     ostringstream(const string& s, int which=ios::out) :
       stringstreambase(s, which)
     { }
   };
-    
+
   class stringstream : public stringstreambase, public iostream {
   public:
     stringstream(int which=ios::in|ios::out) :
       stringstreambase(which)
     { }
-    
+
     stringstream(const string &s, int which=ios::in|ios::out) :
       stringstreambase(s, which)
     { }
@@ -200,7 +200,7 @@ inline int stringbuf::overflow(int ch)
   if(ch != EOF)
     {
       string::size_type oldSize = buf.size();
-      
+
       buf.replace(rpos, string::npos, 1, ch);
       if(buf.size() - oldSize != 1)
 	return EOF;
@@ -220,7 +220,7 @@ inline int stringbuf::underflow()
     {
       return EOF;
     }
-  
+
   string::size_type n = egptr() - eback();
   string::size_type s;
 

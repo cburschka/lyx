@@ -1,11 +1,11 @@
 // -*- C++ -*-
 /* This file is part of*
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team. 
+ *           Copyright 1995-2001 The LyX Team.
  *
  * ====================================================== */
 
@@ -21,9 +21,9 @@
 #include <sigc++/signal_system.h>
 
 /** Used for error messages from LaTeX runs.
-  
-  The edit-operation opens a 
-  dialog with the text of the error-message. The inset is displayed as 
+
+  The edit-operation opens a
+  dialog with the text of the error-message. The inset is displayed as
   "Error" in a box, and automatically deleted. */
 class InsetError : public Inset {
 public:

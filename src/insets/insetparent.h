@@ -1,11 +1,11 @@
 // -*- C++ -*-
 /* This file is part of*
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1997-2001 LyX Team
- * 
+ *
  * ====================================================== */
 
 #ifndef INSET_PARENT_H
@@ -22,7 +22,7 @@ class Buffer;
 /** Reference to the parent document.
 
   Useful to load a parent document from a child document and to
-  share parent's properties between preambleless children. 
+  share parent's properties between preambleless children.
  */
 class InsetParent : public InsetCommand {
 public:
@@ -42,9 +42,9 @@ public:
 	void edit(BufferView *, int, int, unsigned int);
 	///
 	void edit(BufferView * bv, bool front = true);
-	/// 
+	///
 	int latex(Buffer const *, std::ostream &,
-	          bool fragile, bool free_spc) const;
+		  bool fragile, bool free_spc) const;
 	///
 	void setParent(string fn) { setContents(fn); }
 };

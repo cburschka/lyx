@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of*
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -64,10 +64,10 @@ struct ExternalTemplate {
 	Formats formats;
 	///
 	void dumpFormats(std::ostream &) const;
-	
+
 	/// We have to have default commands for safety reasons!
 	ExternalTemplate();
-		
+
 };
 
 
@@ -82,7 +82,7 @@ public:
 	static ExternalTemplateManager & get();
 	Templates & getTemplates();
 	Templates const & getTemplates() const;
-	/// return the template by LyX name 
+	/// return the template by LyX name
 	ExternalTemplate const & getTemplateByName(const string & name);
 private:
 	ExternalTemplateManager();

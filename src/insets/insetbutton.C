@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 2000-2001 The LyX Team.
  *
@@ -29,16 +29,16 @@ using std::endl;
 int InsetButton::ascent(BufferView * bv, LyXFont const &) const
 {
 	lyx::Assert(bv);
-	
+
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
-	
+
 	int width;
 	int ascent;
 	int descent;
-        string const s = getScreenLabel(bv->buffer());
+	string const s = getScreenLabel(bv->buffer());
 
-        if (editable()) {
+	if (editable()) {
 		lyxfont::buttonText(s, font, width, ascent, descent);
 	} else {
 		lyxfont::rectText(s, font, width, ascent, descent);
@@ -51,16 +51,16 @@ int InsetButton::ascent(BufferView * bv, LyXFont const &) const
 int InsetButton::descent(BufferView * bv, LyXFont const &) const
 {
 	lyx::Assert(bv);
-	
+
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
-	
+
 	int width;
 	int ascent;
 	int descent;
-        string const s = getScreenLabel(bv->buffer());
+	string const s = getScreenLabel(bv->buffer());
 
-        if (editable()) {
+	if (editable()) {
 		lyxfont::buttonText(s, font, width, ascent, descent);
 	} else {
 		lyxfont::rectText(s, font, width, ascent, descent);
@@ -76,13 +76,13 @@ int InsetButton::width(BufferView * bv, LyXFont const &) const
 
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
-	
+
 	int width;
 	int ascent;
 	int descent;
-        string const s = getScreenLabel(bv->buffer());
+	string const s = getScreenLabel(bv->buffer());
 
-        if (editable()) {
+	if (editable()) {
 		lyxfont::buttonText(s, font, width, ascent, descent);
 	} else {
 		lyxfont::rectText(s, font, width, ascent, descent);
@@ -96,7 +96,7 @@ void InsetButton::draw(BufferView * bv, LyXFont const &,
 			int baseline, float & x, bool) const
 {
 	lyx::Assert(bv);
-	
+
 	Painter & pain = bv->painter();
 	// Draw it as a box with the LaTeX text
 	LyXFont font(LyXFont::ALL_SANE);

@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- *        
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -56,7 +56,7 @@
 #undef S_ISNWK
 #undef S_ISREG
 #undef S_ISSOCK
-#endif 
+#endif
 
 #if !defined(S_ISBLK) && defined(S_IFBLK)
 #define S_ISBLK(m) (((m) & S_IFMT) == S_IFBLK)
@@ -87,7 +87,7 @@
 #define S_ISNWK(m) (((m) & S_IFMT) == S_IFNWK)
 #endif
 
-// Since major is a function on SVR4, we can't use `ifndef major'. 
+// Since major is a function on SVR4, we can't use `ifndef major'.
 // might want to put MAJOR_IN_MKDEV for SYSV
 #ifdef MAJOR_IN_MKDEV
 #include <sys/mkdev.h>
@@ -97,7 +97,7 @@
 #include <sys/sysmacros.h>
 #define HAVE_MAJOR
 #endif
-#ifdef major		
+#ifdef major
 #define HAVE_MAJOR
 #endif
 
@@ -152,7 +152,7 @@ void FileInfo::dostat(bool link)
 FileInfo & FileInfo::newFile(string const & path, bool link)
 {
 	fname = path;
-	
+
 	status = 0;
 	err = NoErr;
 
@@ -176,7 +176,7 @@ FileInfo & FileInfo::newFile(int fildes)
 char const * FileInfo::typeIndicator() const
 {
 	lyx::Assert(isOK());
- 
+
 	if (S_ISDIR(buf.st_mode)) return ("/");
 #ifdef S_ISLNK
 	if (S_ISLNK(buf.st_mode)) return ("@");
@@ -196,7 +196,7 @@ char const * FileInfo::typeIndicator() const
 mode_t FileInfo::getMode() const
 {
 	lyx::Assert(isOK());
- 
+
 	return buf.st_mode;
 }
 
@@ -217,7 +217,7 @@ void FileInfo::modeString(char * szString) const
 char FileInfo::typeLetter() const
 {
 	lyx::Assert(isOK());
- 
+
 #ifdef S_ISBLK
 	if (S_ISBLK(buf.st_mode)) return 'b';
 #endif
@@ -256,7 +256,7 @@ void FileInfo::flagRWX(mode_t i, char * szString) const
 void FileInfo::setSticky(char * szString) const
 {
 	lyx::Assert(isOK());
- 
+
 #ifdef S_ISUID
 	if (buf.st_mode & S_ISUID) {
 		if (szString[3] != 'x') szString[3] = 'S';
@@ -400,7 +400,7 @@ bool FileInfo::access(int p) const
 {
 	// if we don't have a filename we fail
 	if (fname.empty()) return false;
-	
+
 	if (::access(fname.c_str(), p) == 0)
 		return true;
 	else {

@@ -1,8 +1,8 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -99,7 +99,7 @@ LyXFont const Inset::convertFont(LyXFont const & font) const
 #endif
 
 
-string const Inset::editMessage() const 
+string const Inset::editMessage() const
 {
 	return _("Opened inset");
 }
@@ -251,7 +251,7 @@ void UpdatableInset::draw(BufferView *, LyXFont const &,
 void UpdatableInset::scroll(BufferView * bv, float s) const
 {
 	LyXFont font;
-	
+
 	if (!s) {
 		scx = 0;
 		return;
@@ -259,8 +259,8 @@ void UpdatableInset::scroll(BufferView * bv, float s) const
 
 	int const workW = bv->workWidth();
 	int const tmp_top_x = top_x - scx;
-	
-	if (tmp_top_x > 0 && 
+
+	if (tmp_top_x > 0 &&
 	    (tmp_top_x + width(bv, font)) < workW)
 		return;
 	if (s > 0 && top_x > 0)
@@ -268,7 +268,7 @@ void UpdatableInset::scroll(BufferView * bv, float s) const
 
 	// int mx_scx=abs((width(bv,font) - bv->workWidth())/2);
 	//int const save_scx = scx;
-    
+
 	scx = int(s * workW / 2);
 	// if (!display())
 	// scx += 20;
@@ -295,7 +295,7 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 		if (!scx && (top_x + width(bv, font)) < (bv->workWidth() - 20))
 			return;
 		if ((top_x - scx + offset + width(bv, font)) < (bv->workWidth() - 20)) {
-			scx = bv->workWidth() - width(bv, font) - top_x + scx - 20; 
+			scx = bv->workWidth() - width(bv, font) - top_x + scx - 20;
 		} else {
 			scx += offset;
 		}
@@ -306,8 +306,8 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 
 ///  An updatable inset could handle lyx editing commands
 UpdatableInset::RESULT
-UpdatableInset::localDispatch(BufferView * bv, 
-			      kb_action action, string const & arg) 
+UpdatableInset::localDispatch(BufferView * bv,
+			      kb_action action, string const & arg)
 {
 	if (!arg.empty() && (action==LFUN_SCROLL_INSET)) {
 		if (arg.find('.') != arg.npos) {
@@ -318,10 +318,10 @@ UpdatableInset::localDispatch(BufferView * bv,
 			scroll(bv, xx);
 		}
 		bv->updateInset(this, false);
-		
+
 		return DISPATCHED;
 	}
-	return UNDISPATCHED; 
+	return UNDISPATCHED;
 }
 
 
@@ -375,7 +375,7 @@ string const UpdatableInset::selectNextWordToSpellcheck(BufferView *bv,
 
 
 bool UpdatableInset::searchForward(BufferView * bv, string const &,
-                                   bool, bool)
+				   bool, bool)
 {
 	// we have to unlock ourself in this function by default!
 	bv->unlockInset(const_cast<UpdatableInset *>(this));
@@ -384,7 +384,7 @@ bool UpdatableInset::searchForward(BufferView * bv, string const &,
 
 
 bool UpdatableInset::searchBackward(BufferView * bv, string const &,
-                                    bool, bool)
+				    bool, bool)
 {
 	// we have to unlock ourself in this function by default!
 	bv->unlockInset(const_cast<UpdatableInset *>(this));

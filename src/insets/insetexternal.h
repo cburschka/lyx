@@ -3,7 +3,7 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- * 	
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -26,8 +26,8 @@ class InsetExternal : public InsetButton {
 public:
 	/// hold parameters settable from the GUI
 	struct Params {
-		Params(string const & f = string(), 
-					string const & p = string(), 
+		Params(string const & f = string(),
+					string const & p = string(),
 					ExternalTemplate const & t = ExternalTemplate())
 			: filename(f), parameters(p), templ(t) {}
 		/// the filename
@@ -61,7 +61,7 @@ public:
 	 is in a free-spacing paragraph.
 	 */
 	virtual int latex(Buffer const *, std::ostream &, bool fragile,
-	                  bool free_spc) const;
+			  bool free_spc) const;
 	/// write ASCII output to the ostream
 	virtual int ascii(Buffer const *, std::ostream &, int linelen) const;
 	/// write LinuxDoc output to the ostream
@@ -74,7 +74,7 @@ public:
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual Inset::Code lyxCode() const { return EXTERNAL_CODE; }
- 
+
 	///
 	virtual Inset * clone(Buffer const &, bool same_id = false) const;
 

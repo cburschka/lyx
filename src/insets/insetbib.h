@@ -1,12 +1,12 @@
 // -*- C++ -*-
 /* This file is part of*
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
- * 
+ *
  * ====================================================== */
 
 #ifndef INSET_BIB_H
@@ -22,9 +22,9 @@
 class Buffer;
 
 /** Used to insert bibitem's information (key and label)
-  
+
   Must be automatically inserted as the first object in a
-  bibliography paragraph. 
+  bibliography paragraph.
   */
 class InsetBibKey : public InsetCommand {
 public:
@@ -47,7 +47,7 @@ public:
 	///
 	void edit(BufferView * bv, bool front = true);
 	///
-	EDITABLE editable() const { return IS_EDITABLE; } 
+	EDITABLE editable() const { return IS_EDITABLE; }
 	/// A user can't neither insert nor delete this inset
 	bool deletable() const {
 		return false;
@@ -63,7 +63,7 @@ public:
 		InsetBibKey * inset;
 		BufferView * view;
 	};
- 
+
 private:
 	///
 	int counter;
@@ -74,7 +74,7 @@ private:
 };
 
 
-/** Used to insert BibTeX's information 
+/** Used to insert BibTeX's information
   */
 class InsetBibtex : public InsetCommand {
 public:
@@ -96,9 +96,9 @@ public:
 	void edit(BufferView *, int x, int y, unsigned int button);
 	///
 	void edit(BufferView * bv, bool front = true);
-	/// 
+	///
 	int latex(Buffer const *, std::ostream &,
-	          bool fragile, bool freespace) const;
+		  bool fragile, bool freespace) const;
 	///
 	std::vector<std::pair<string,string> > const getKeys(Buffer const *) const;
 	///
@@ -108,9 +108,9 @@ public:
 	///
 	bool delDatabase(string const &);
 	///
-	bool display() const { return true; } 
+	bool display() const { return true; }
 	///
-   	struct Holder {
+	struct Holder {
 		InsetBibtex * inset;
 		BufferView * view;
 	};

@@ -49,7 +49,7 @@ protected:
 	///
 	virtual int sync() { return 0; }
 #endif
-	/// 
+	///
 	virtual streamsize xsputn(char_type const *, streamsize n) {
 		// fakes a purge of the buffer by returning n
 		return n;
@@ -174,7 +174,7 @@ DebugStream::DebugStream(Debug::type t)
 	: ostream(new debugbuf(cerr.rdbuf())),
 	  dt(t), nullstream(new nullbuf), internal(0) {}
 
-	
+
 /// Constructor, sets the log file to f, and the debug level to t.
 DebugStream::DebugStream(char const * f, Debug::type t)
 	: ostream(new debugbuf(cerr.rdbuf())),
@@ -218,37 +218,37 @@ int main(int, char **)
 {
 	/**
 	   I have been running some tests on this to see how much overhead
-	   this kind of permanent debug code has. My conclusion is: not 
-	   much. In all, but the most time critical code, this will have 
+	   this kind of permanent debug code has. My conclusion is: not
+	   much. In all, but the most time critical code, this will have
 	   close to no impact at all.
-	   
+
 	   In the tests that I have run the use of
 	   if (debugstream.debugging(DebugStream::INFO))
 	   debugstream << "some debug\n";
-	   has close to no overhead when the debug level is not 
+	   has close to no overhead when the debug level is not
 	   DebugStream::INFO.
-	   
+
 	   The overhead for
 	   debugstream.debug(DebugStream::INFO) << "some debug\n";
 	   is also very small when the debug level is not
 	   DebugStream::INFO. However the overhead for this will increase
 	   if complex debugging information is output.
-	   
+
 	   The overhead when the debug level is DebugStream::INFO can be
-	   significant, but since we then are running in debug mode it is 
+	   significant, but since we then are running in debug mode it is
 	   of no concern.
-	   
+
 	   Why should we use this instead of the class Error that we already
 	   have? First of all it uses C++ iostream and constructs, secondly
 	   it will be a lot easier to output the debug info that we need
-	   without a lot of manual conversions, thirdly we can now use 
+	   without a lot of manual conversions, thirdly we can now use
 	   iomanipulators and the complete iostream formatting functions.
-	   pluss it will work for all types that have a operator<< 
+	   pluss it will work for all types that have a operator<<
 	   defined, and can be used in functors that take a ostream & as
 	   parameter. And there should be less need for temporary objects.
 	   And one nice bonus is that we get a log file almost for
 	   free.
-	   
+
 	   Some of the names are of course open to modifications. I will try
 	   to use the names we already use in LyX.
 	*/
@@ -268,7 +268,7 @@ int main(int, char **)
 	debugstream.debug(Debug::WARN) << "more debug(WARN)\n";
 	debugstream.debug(Debug::INFO) << "even more debug(INFO)\n";
 	debugstream.debug(Debug::CRIT) << "even more debug(CRIT)\n";
-	debugstream.addLevel(Debug::type(Debug::CRIT | 
+	debugstream.addLevel(Debug::type(Debug::CRIT |
 					 Debug::WARN));
 	debugstream << "Adding Debug::CRIT and Debug::WARN\n";
 	debugstream[Debug::WARN] << "more debug(WARN)\n";
@@ -287,7 +287,7 @@ int main(int, char **)
 	// note: the (void*) is needed on g++ 2.7.x since it does not
 	// support partial specialization. In egcs this should not be
 	// needed.
-	debugstream << "automatic " << &i 
+	debugstream << "automatic " << &i
 		    << ", free store " << p << endl;
 	delete p;
 	/*

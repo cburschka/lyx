@@ -1,10 +1,10 @@
 /* This file is part of*
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1997-2001 The LyX Team.
- * 
+ *
  * ====================================================== */
 
 
@@ -38,14 +38,14 @@ InsetParent::InsetParent(InsetCommandParams const & p, Buffer const & bf, bool)
 }
 
 
-string const InsetParent::getScreenLabel(Buffer const *) const 
+string const InsetParent::getScreenLabel(Buffer const *) const
 {
 	return string(_("Parent:")) + getContents();
 }
 
 
 void InsetParent::edit(BufferView * bv, int, int, unsigned int)
-{    
+{
 	bv->owner()->getLyXFunc()->
 		dispatch(LFUN_CHILDOPEN, getContents());
 }

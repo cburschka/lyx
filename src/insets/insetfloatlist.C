@@ -23,7 +23,7 @@ InsetFloatList::InsetFloatList()
 {
 }
 
- 
+
 InsetFloatList::InsetFloatList(string const & type)
 	: InsetCommand(InsetCommandParams())
 {
@@ -31,7 +31,7 @@ InsetFloatList::InsetFloatList(string const & type)
 }
 
 
-string const InsetFloatList::getScreenLabel(Buffer const *) const 
+string const InsetFloatList::getScreenLabel(Buffer const *) const
 {
 	string const guiName = floatList[getCmdName()]->second.name();
 	if (!guiName.empty()) {
@@ -54,7 +54,7 @@ void InsetFloatList::write(Buffer const *, ostream & os) const
 }
 
 
-void InsetFloatList::read(Buffer const *, LyXLex & lex) 
+void InsetFloatList::read(Buffer const *, LyXLex & lex)
 {
 	string token;
 

@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 2001 The LyX Team.
@@ -21,7 +21,7 @@
 #include <sigc++/signal_system.h>
 
 /** The minipage inset
-  
+
 */
 class InsetMinipage : public InsetCollapsable {
 public:

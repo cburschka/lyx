@@ -22,7 +22,7 @@
 //  21 May 01  operator= fails if operand transitively owned by *this, as in a
 //             linked list (report by Ken Johnson, fix by Beman Dawes)
 //  21 Jan 01  Suppress some useless warnings with MSVC (David Abrahams)
-//  19 Oct 00  Make shared_ptr ctor from auto_ptr explicit. (Robert Vugts) 
+//  19 Oct 00  Make shared_ptr ctor from auto_ptr explicit. (Robert Vugts)
 //  24 Jul 00  Change throw() to // never throws.  See lib guidelines
 //             Exception-specification rationale. (Beman Dawes)
 //  22 Jun 00  Remove #if continuations to fix GCC 2.95.2 problem (Beman Dawes)
@@ -87,7 +87,7 @@ template<typename T> class shared_c_ptr {
    explicit shared_c_ptr(T* p =0) : px(p) {
 #ifndef LYX_NO_EXCEPTIONS
       try { pn = new long(1); }  // fix: prevent leak if new throws
-      catch (...) { checked_delete(p); throw; } 
+      catch (...) { checked_delete(p); throw; }
 #else
 	  pn = new long(1);
 	  assert(pn != 0);
@@ -105,54 +105,54 @@ template<typename T> class shared_c_ptr {
 
 #if !defined(BOOST_NO_MEMBER_TEMPLATES)
    template<typename Y>
-      shared_c_ptr(const shared_c_ptr<Y>& r) : px(r.px) {  // never throws 
-         ++*(pn = r.pn); 
+      shared_c_ptr(const shared_c_ptr<Y>& r) : px(r.px) {  // never throws
+	 ++*(pn = r.pn);
       }
 #ifndef BOOST_NO_AUTO_PTR
    template<typename Y>
-      explicit shared_c_ptr(std::auto_ptr<Y>& r) { 
-         pn = new long(1); // may throw
-         px = r.release(); // fix: moved here to stop leak if new throws
+      explicit shared_c_ptr(std::auto_ptr<Y>& r) {
+	 pn = new long(1); // may throw
+	 px = r.release(); // fix: moved here to stop leak if new throws
       }
-#endif 
+#endif
 
    template<typename Y>
-      shared_c_ptr& operator=(const shared_c_ptr<Y>& r) { 
-         share(r.px,r.pn);
-         return *this;
+      shared_c_ptr& operator=(const shared_c_ptr<Y>& r) {
+	 share(r.px,r.pn);
+	 return *this;
       }
 
 #ifndef BOOST_NO_AUTO_PTR
    template<typename Y>
       shared_c_ptr& operator=(std::auto_ptr<Y>& r) {
-         // code choice driven by guarantee of "no effect if new throws"
-         if (*pn == 1) { checked_delete(px); }
-         else { // allocate new reference counter
-           long * tmp = new long(1); // may throw
-           --*pn; // only decrement once danger of new throwing is past
-           pn = tmp;
-         } // allocate new reference counter
-         px = r.release(); // fix: moved here so doesn't leak if new throws 
-         return *this;
+	 // code choice driven by guarantee of "no effect if new throws"
+	 if (*pn == 1) { checked_delete(px); }
+	 else { // allocate new reference counter
+	   long * tmp = new long(1); // may throw
+	   --*pn; // only decrement once danger of new throwing is past
+	   pn = tmp;
+	 } // allocate new reference counter
+	 px = r.release(); // fix: moved here so doesn't leak if new throws
+	 return *this;
       }
 #endif
 #else
 #ifndef BOOST_NO_AUTO_PTR
-      explicit shared_c_ptr(std::auto_ptr<T>& r) { 
-         pn = new long(1); // may throw
-         px = r.release(); // fix: moved here to stop leak if new throws
-      } 
+      explicit shared_c_ptr(std::auto_ptr<T>& r) {
+	 pn = new long(1); // may throw
+	 px = r.release(); // fix: moved here to stop leak if new throws
+      }
 
       shared_c_ptr& operator=(std::auto_ptr<T>& r) {
-         // code choice driven by guarantee of "no effect if new throws"
-         if (*pn == 1) { checked_delete(px); }
-         else { // allocate new reference counter
-           long * tmp = new long(1); // may throw
-           --*pn; // only decrement once danger of new throwing is past
-           pn = tmp;
-         } // allocate new reference counter
-         px = r.release(); // fix: moved here so doesn't leak if new throws 
-         return *this;
+	 // code choice driven by guarantee of "no effect if new throws"
+	 if (*pn == 1) { checked_delete(px); }
+	 else { // allocate new reference counter
+	   long * tmp = new long(1); // may throw
+	   --*pn; // only decrement once danger of new throwing is past
+	   pn = tmp;
+	 } // allocate new reference counter
+	 px = r.release(); // fix: moved here so doesn't leak if new throws
+	 return *this;
       }
 #endif
 #endif
@@ -161,13 +161,13 @@ template<typename T> class shared_c_ptr {
       if (px == p) return;  // fix: self-assignment safe
       if (--*pn == 0) { checked_delete(px); }
       else { // allocate new reference counter
-#ifndef LYX_NO_EXCEPTIONS		  
-        try { pn = new long; }  // fix: prevent leak if new throws
-        catch (...) {
-          ++*pn;  // undo effect of --*pn above to meet effects guarantee 
-          checked_delete(p);
-          throw;
-        } // catch
+#ifndef LYX_NO_EXCEPTIONS
+	try { pn = new long; }  // fix: prevent leak if new throws
+	catch (...) {
+	  ++*pn;  // undo effect of --*pn above to meet effects guarantee
+	  checked_delete(p);
+	  throw;
+	} // catch
 #else
 		pn = new long;
 		assert(pn != 0);
@@ -206,11 +206,11 @@ template<typename T> class shared_c_ptr {
 
    void share(T* rpx, long* rpn) {
       if (pn != rpn) { // Q: why not px != rpx? A: fails when both == 0
-         ++*rpn; // done before dispose() in case rpn transitively
-                 // dependent on *this (bug reported by Ken Johnson)
-         dispose();
-         px = rpx;
-         pn = rpn;
+	 ++*rpn; // done before dispose() in case rpn transitively
+		 // dependent on *this (bug reported by Ken Johnson)
+	 dispose();
+	 px = rpx;
+	 pn = rpn;
       }
    } // share
 };  // shared_ptr
@@ -250,7 +250,7 @@ template<typename T>
     : binary_function<lyx::shared_c_ptr<T>, lyx::shared_c_ptr<T>, bool>
   {
     bool operator()(const lyx::shared_c_ptr<T>& a,
-        const lyx::shared_c_ptr<T>& b) const
+	const lyx::shared_c_ptr<T>& b) const
       { return less<T*>()(a.get(),b.get()); }
   };
 
@@ -259,5 +259,3 @@ template<typename T>
 #endif  // ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
 #endif  // LYX_SMART_PTR_H
-
-

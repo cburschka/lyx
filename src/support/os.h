@@ -18,26 +18,26 @@ public:
 		CMD_EXE
 	};
 
-	// 
+	//
 	static void init(int * argc, char ** argv[]);
 
-	// 
+	//
 	static string binpath() {return binpath_;}
 
-	// 
+	//
 	static string binname() {return binname_;}
 
 	// system_tempdir actually doesn't belong here.
 	// I put it here only to avoid a global variable.
 	static void setTmpDir(string p) {tmpdir_ = p;}
 
-	// 
+	//
 	static string getTmpDir() {return tmpdir_;}
 
-	// 
+	//
 	static string current_root();
 
-	// 
+	//
 	static os::shell_type shell() {return _shell;}
 
 	// DBCS aware!
@@ -63,7 +63,7 @@ private:
 	static string tmpdir_;
 	static os::shell_type _shell;
 	// Used only on OS/2 to determine file system encoding.
-	static unsigned long cp_;	
+	static unsigned long cp_;
 
 	// Never initialize static variables in the header!
 	// Anyway I bet this class will never be constructed.

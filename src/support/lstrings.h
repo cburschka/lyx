@@ -41,7 +41,7 @@ int compare(char const * a, char const * b)
 	return std::strcmp(a, b);
 #else
 	return strcmp(a, b);
-#endif	
+#endif
 }
 
 ///
@@ -52,7 +52,7 @@ int compare(char const * a, char const * b, unsigned int len)
 	return std::strncmp(a, b, len);
 #else
 	return strncmp(a, b, len);
-#endif	
+#endif
 }
 
 ///
@@ -73,10 +73,10 @@ bool isStrDbl(string const & str);
 ///
 double strToDbl(string const & str);
 
-/// 
+///
 char lowercase(char c);
 
-/// 
+///
 char uppercase(char c);
 
 ///
@@ -88,7 +88,7 @@ string const uppercase(string const &);
 /// convert \a T to string
 template<typename T>
 inline
-string const tostr(T const & t) 
+string const tostr(T const & t)
 {
 	ostringstream ostr;
 	ostr << t;
@@ -151,7 +151,7 @@ public:
 	typedef string first_argument_type;
 	typedef string second_argument_type;
 	typedef bool result_type;
-	
+
 	bool operator()(string const & haystack, string const & needle) const {
 		return contains(haystack, needle);
 	}
@@ -183,7 +183,7 @@ string const token(string const & a, char delim, int n);
 
 /** Search a token in this string using the delim.
     Doesn't modify the original string. Returns -1 in case of
-    failure. 
+    failure.
     Example:
     \code
     "a;bc;d".tokenPos(';', "bc") == 1;

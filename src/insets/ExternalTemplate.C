@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -52,11 +52,11 @@ ExternalTemplateManager::ExternalTemplateManager()
 
 class dumpTemplate {
 public:
-	dumpTemplate(ostream & o) 
+	dumpTemplate(ostream & o)
 		: ost(o) {}
 	void operator()(ExternalTemplateManager::Templates::value_type const & vt) {
 		ExternalTemplate const & et = vt.second;
-		
+
 		ost << "Template " << et.lyxName << "\n"
 		    << "\tGuiName " << et.guiName << "\n"
 		    << "\tHelpText\n"
@@ -68,7 +68,7 @@ public:
 		    << "\tAutomaticProduction " << et.automaticProduction << "\n";
 		et.dumpFormats(ost);
 		ost << "TemplateEnd" << endl;
-		
+
 	}
 
 private:
@@ -77,7 +77,7 @@ private:
 
 class dumpFormat {
 public:
-	dumpFormat(ostream & o) 
+	dumpFormat(ostream & o)
 		: ost(o) {}
 	void operator()(ExternalTemplate::Formats::value_type const & vt) const{
 		ExternalTemplate::FormatTemplate const & ft = vt.second;
@@ -96,13 +96,13 @@ private:
 };
 
 
-void ExternalTemplate::dumpFormats(ostream & os) const 
+void ExternalTemplate::dumpFormats(ostream & os) const
 {
 	for_each(formats.begin(), formats.end(), dumpFormat(os));
 }
 
 
-void ExternalTemplateManager::dumpTemplates() const 
+void ExternalTemplateManager::dumpTemplates() const
 {
 	for_each(templates.begin(), templates.end(), dumpTemplate(lyxerr));
 }
@@ -134,8 +134,8 @@ ExternalTemplate const & ExternalTemplateManager::getTemplateByName(string const
 	return templates[name];
 }
 
- 
-void ExternalTemplateManager::readTemplates(string const & path) 
+
+void ExternalTemplateManager::readTemplates(string const & path)
 {
 	Path p(path);
 
@@ -143,7 +143,7 @@ void ExternalTemplateManager::readTemplates(string const & path)
 		TM_TEMPLATE = 1,
 		TM_END
 	};
-	
+
 	keyword_item templatetags[] = {
 		{ "template", TM_TEMPLATE },
 		{ "templateend", TM_END }
@@ -162,7 +162,7 @@ void ExternalTemplateManager::readTemplates(string const & path)
 			"No template file" << endl;
 		return;
 	}
-	
+
 	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case TM_TEMPLATE: {
@@ -173,7 +173,7 @@ void ExternalTemplateManager::readTemplates(string const & path)
 			tmp.readTemplate(lex);
 		}
 		break;
-		
+
 		case TM_END:
 			lex.printError("Warning: End outside Template.");
 		break;
@@ -207,46 +207,46 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 	};
 
 	pushpophelper pph(lex, templateoptiontags, TO_END);
-	
+
 	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case TO_GUINAME:
 			lex.next(true);
 			guiName = lex.getString();
 			break;
-			
+
 		case TO_HELPTEXT:
 			helpText = lex.getLongString("HelpTextEnd");
 			break;
-			
+
 		case TO_FILTER:
 			lex.next(true);
 			fileRegExp = lex.getString();
 			break;
-			
+
 		case TO_VIEWCMD:
 			lex.next(true);
 			viewCommand = lex.getString();
 			break;
-			
+
 		case TO_EDITCMD:
 			lex.next(true);
 			editCommand = lex.getString();
 			break;
-			
+
 		case TO_AUTOMATIC:
 			lex.next();
 			automaticProduction = lex.getBool();
 			break;
-			
+
 		case TO_FORMAT:
 			lex.next(true);
 			formats[lex.getString()].readFormat(lex);
 			break;
-			
+
 		case TO_END:
 			return;
-			
+
 		default:
 			lex.printError("ExternalTemplate::readTemplate: "
 				       "Wrong tag: $$Token");
@@ -257,7 +257,7 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 }
 
 
-void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex) 
+void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 {
 	enum FormatTags {
 		FO_PRODUCT = 1,
@@ -267,7 +267,7 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 		FO_PREAMBLE,
 		FO_END
 	};
-	
+
 	keyword_item formattags[] = {
 		{ "formatend", FO_END },
 		{ "preamble", FO_PREAMBLE },
@@ -278,14 +278,14 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 	};
 
 	pushpophelper pph(lex, formattags, FO_END);
-	
+
 	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case FO_PRODUCT:
 			lex.next(true);
 			product = lex.getString();
 			break;
-			
+
 		case FO_UPDATECMD:
 			lex.next(true);
 			updateCommand = lex.getString();
@@ -295,16 +295,16 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 			lex.next(true);
 			updateResult = lex.getString();
 			break;
-			
+
 		case FO_REQUIREMENT:
 			lex.next(true);
 			requirement = lex.getString();
 			break;
-			
+
 		case FO_PREAMBLE:
 			preamble = lex.getLongString("preambleend");
 			break;
-			
+
 		case FO_END:
 			if (lyxerr.debugging())
 				lex.printError("FormatEnd");
@@ -312,4 +312,3 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 		}
 	}
 }
-

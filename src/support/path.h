@@ -19,14 +19,14 @@ public:
 	Path(string const & path)
 		: popped_(false)
 	{
-		if (!path.empty()) { 
+		if (!path.empty()) {
 			pushedDir_ = lyx::getcwd(); // GetCWD();
 			if (pushedDir_.empty() || lyx::chdir(path)) {
 				// should throw an exception
 				// throw DirChangeError();
 				// The use of Alert::err_alert makes this
 				// impossible to inline.
-				//Alert::err_alert(_("Error: Could not change to directory: "), 
+				//Alert::err_alert(_("Error: Could not change to directory: "),
 				//	     path);
 			}
 		} else {

@@ -37,20 +37,20 @@ public:
 		///
 		DontWait
 	};
-	
+
 #if 0
 	///
 	Systemcall() {}
 
 	/** Generate instance and start child process.
-	 *  The string "what" contains a commandline with arguments separated 
+	 *  The string "what" contains a commandline with arguments separated
 	 *  by spaces.
 	 */
 	Systemcall(Starttype how, string const & what);
 #endif
-	
+
 	/** Start child process.
-	 *  The string "what" contains a commandline with arguments separated 
+	 *  The string "what" contains a commandline with arguments separated
 	 *  by spaces.
 	 */
 	int startscript(Starttype how, string const & what);

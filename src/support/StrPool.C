@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	     Copyright 2000-2001 Jean-Marc Lasgouttes
  *
  * ======================================================*/
@@ -17,10 +17,10 @@
 
 StrPool::~StrPool()
 {
-        for (Pool::const_iterator cit = pool_.begin(); 
+	for (Pool::const_iterator cit = pool_.begin();
 	     cit != pool_.end() ; ++cit) {
-                delete[] (*cit);
-        }
+		delete[] (*cit);
+	}
 }
 
 /* One interesting thing here would be to store the strings in a map,
@@ -31,12 +31,11 @@ StrPool::~StrPool()
 char const * StrPool::add(string const & str)
 {
 	string::size_type s = str.length();
-        char * buf = new char [s + 1];
-        str.copy(buf, s);
-        buf[s] = '\0';
-        pool_.push_back(buf);
-        return buf;
+	char * buf = new char [s + 1];
+	str.copy(buf, s);
+	buf[s] = '\0';
+	pool_.push_back(buf);
+	return buf;
 }
 
 //StrPool strPool;
-

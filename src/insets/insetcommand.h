@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of*
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -24,7 +24,7 @@
 /** Used to insert a LaTeX command automatically
  *
  * Similar to InsetLaTeX but having control of the basic structure of a
- *   LaTeX command: \name[options]{contents}. 
+ *   LaTeX command: \name[options]{contents}.
  */
 class InsetCommandParams {
 public:
@@ -64,11 +64,11 @@ public:
 	///
 	void setFromString(string const &);
 private:
-	///    
+	///
 	string cmdname;
-	///    
+	///
 	string contents;
-	///    
+	///
 	string options;
 };
 
@@ -89,7 +89,7 @@ public:
 		{ p_.read(lex); }
 	/// Can remove one InsetBibKey is modified
 	void scanCommand(string const & c) { p_.scanCommand(c); };
-	/// 
+	///
 	virtual int latex(Buffer const *, std::ostream &,
 			  bool fragile, bool free_spc) const;
 	///
@@ -100,7 +100,7 @@ public:
 	virtual int docbook(Buffer const *, std::ostream &) const;
 	///
 	Inset::Code lyxCode() const { return Inset::NO_CODE; }
-	
+
 	///
 	string const getCommand() const { return p_.getCommand(); }
 	///

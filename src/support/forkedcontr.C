@@ -6,7 +6,7 @@
  * \author Asger Alstrup Nielsen
  * \author Angus Leeming
  *
- * A class for the control of child processes launched using 
+ * A class for the control of child processes launched using
  * fork() and execvp().
  */
 
@@ -46,7 +46,7 @@ ForkedcallsController & ForkedcallsController::get()
 ForkedcallsController::ForkedcallsController()
 {
 	timeout_ = new Timeout(100, Timeout::ONETIME);
-	
+
 	timeout_->timeout
 		.connect(SigC::slot(this, &ForkedcallsController::timer));
 }
@@ -94,7 +94,7 @@ void ForkedcallsController::timer()
 		bool remove_it = false;
 
 		if (waitrpid == -1) {
-			lyxerr << "LyX: Error waiting for child: " 
+			lyxerr << "LyX: Error waiting for child: "
 			       << strerror(errno) << endl;
 
 			// Child died, so pretend it returned 1
@@ -116,9 +116,9 @@ void ForkedcallsController::timer()
 			remove_it = true;
 
 		} else if (WIFSTOPPED(stat_loc)) {
-			lyxerr << "LyX: Child (pid: " << pid 
+			lyxerr << "LyX: Child (pid: " << pid
 			       << ") stopped on signal "
-			       << WSTOPSIG(stat_loc) 
+			       << WSTOPSIG(stat_loc)
 			       << ". Waiting for child to finish." << endl;
 
 		} else {

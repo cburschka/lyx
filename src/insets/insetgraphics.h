@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 the LyX Team.
  *
@@ -17,7 +17,7 @@
 
 #ifdef __GNUG__
 #pragma interface
-#endif 
+#endif
 
 #include "graphics/GraphicsTypes.h"
 #include "insets/inset.h"
@@ -61,7 +61,7 @@ public:
 	 fragile commands by adding a #\protect# before.
 	 */
 	int latex(Buffer const *, std::ostream &,
-	          bool fragile, bool free_spc) const;
+		  bool fragile, bool free_spc) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
@@ -103,7 +103,7 @@ private:
 	void readInsetGraphics(Buffer const * buf, LyXLex & lex);
 	/// Read the FigInset file format
 	void readFigInset(Buffer const * buf, LyXLex & lex);
-	
+
 	/// Update the inset after parameter change.
 	void updateInset() const;
 	/// Get the status message, depends on the image loading status.
@@ -129,4 +129,4 @@ private:
 	mutable int old_asc;
 };
 
-#endif 
+#endif

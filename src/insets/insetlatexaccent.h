@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of*
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *
  * ====================================================== */
@@ -20,7 +20,7 @@
 #include "lyxlex.h"
 
 /** Insertion of accents
-  
+
   Proper handling of accented characters.
   This is class is supposed to handle all LaTeX accents, it
   is also possible that the class will change a bit so that
@@ -74,7 +74,7 @@ public:
 	inline bool canDisplay();
 	// should this inset be handled like a normal charater
 	bool isChar() const { return true; }
-	
+
 	/// all the accent types
 	enum ACCENT_TYPES{
 		///
@@ -114,11 +114,11 @@ public:
 		///
 		DOT_LESS_I,
 		///
- 		DOT_LESS_J, // 18
+		DOT_LESS_J, // 18
 		///
- 		lSLASH,
+		lSLASH,
 		///
- 		LSLASH
+		LSLASH
 	};
 private:
 	friend std::ostream & operator<<(std::ostream &, ACCENT_TYPES);
@@ -130,7 +130,7 @@ private:
 	bool  candisp;
 	/// modifier type
 	ACCENT_TYPES  modtype;
-	
+
 	/// remove dot from 'i' and 'j' or transform l, L into lslash, LSLaSH
 	bool  remdot;
 	/// add something to ascent - accent at the top
@@ -138,7 +138,7 @@ private:
 	/// add something to descent - underlined char
 	bool  plusdesc;
 	/// international char
-	mutable char  ic;    
+	mutable char  ic;
 };
 
 

@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 1998 The LyX Team.
  *
  *======================================================*/
@@ -80,7 +80,7 @@ InsetMinipage::InsetMinipage(BufferParams const & bp)
 	// just for experimentation :)
 	setBackgroundColor(LColor::green);
 #endif
-	
+
 	inset.setFrameColor(0, LColor::blue);
 	setInsetName("Minipage");
 }
@@ -105,7 +105,7 @@ InsetMinipage::~InsetMinipage()
 }
 
 
-void InsetMinipage::write(Buffer const * buf, ostream & os) const 
+void InsetMinipage::write(Buffer const * buf, ostream & os) const
 {
 	os << getInsetName() << "\n"
 	   << "position " << pos_ << "\n"
@@ -245,7 +245,7 @@ int InsetMinipage::latex(Buffer const * buf,
 	}
 	os << "\\begin{minipage}[" << s_pos << "]{"
 	   << width_.asLatexString() << "}%\n";
-	
+
 	int i = inset.latex(buf, os, fragile, fp);
 
 	os << "\\end{minipage}%\n";
@@ -262,7 +262,7 @@ bool InsetMinipage::insetAllowed(Inset::Code code) const
 }
 
 
-InsetMinipage::Position InsetMinipage::pos() const 
+InsetMinipage::Position InsetMinipage::pos() const
 {
 	return pos_;
 }

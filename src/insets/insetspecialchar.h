@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of*
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1997 Asger Alstrup
  *
  * ====================================================== */
@@ -59,7 +59,7 @@ public:
 	void write(Buffer const *, std::ostream &) const;
 	/// Will not be used when lyxf3
 	void read(Buffer const *, LyXLex & lex);
-	/// 
+	///
 	int latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;
 	///
@@ -70,19 +70,19 @@ public:
 	int docbook(Buffer const *, std::ostream &) const;
 	///
 	virtual Inset * clone(Buffer const &, bool same_id = false) const;
-	///  
+	///
 	Inset::Code lyxCode() const
 	{
 		return Inset::SPECIALCHAR_CODE;
 	}
 	/// We don't need \begin_inset and \end_inset
-	bool directWrite() const 
+	bool directWrite() const
 	{
 		return true;
 	};
 	///
 	void validate(LaTeXFeatures &) const;
-	
+
 	// should this inset be handled like a normal charater
 	bool isChar() const;
 	/// is this equivalent to a letter?

@@ -1,9 +1,9 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team.
  *
@@ -49,7 +49,7 @@ bool IsLineSeparatorChar(char c) {
 ///
 inline
 bool IsKommaChar(char c) {
-	return (c == ',' 
+	return (c == ','
 		|| c == '('
 		|| c == ')'
 		|| c == '['
@@ -70,7 +70,7 @@ bool IsKommaChar(char c) {
 		|| c == '#'
 		|| c == '%'
 		|| c == '^'
-		|| c == '/' 
+		|| c == '/'
 		|| c == '\\'
 		|| c == Paragraph::META_NEWLINE
 		);
@@ -100,7 +100,7 @@ bool IsPrintableNonspace(unsigned char c) {
 }
 
 
-/// Word is not IsSeparator or IsKomma or IsHfill or IsFloat or IsInset. 
+/// Word is not IsSeparator or IsKomma or IsHfill or IsFloat or IsInset.
 inline
 bool IsWordChar(unsigned char c) {
 	return !(IsSeparatorChar(c)

@@ -37,7 +37,7 @@ public:
 	~ForkedcallsController();
 
 	/// Get hold of the only controller that can exist inside the process.
-        static ForkedcallsController & get();
+	static ForkedcallsController & get();
 
 	/// Add a new child process to the list of controlled processes.
 	void addCall(Forkedcall const & newcall);
@@ -63,7 +63,7 @@ public:
 
 	/// Signal emitted when the list of current child processes changes.
 	SigC::Signal0<void> childrenChanged;
-	
+
 private:
 	///
 	ForkedcallsController(ForkedcallsController const &);
@@ -76,7 +76,7 @@ private:
 	/** The timer. Enables us to check the status of the children
 	 *  every XX ms and to invoke a callback on completion.
 	 */
-        Timeout * timeout_;
+	Timeout * timeout_;
 };
 
 #endif // FORKEDCONTR_H

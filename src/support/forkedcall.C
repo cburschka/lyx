@@ -66,7 +66,7 @@ int Forkedcall::startscript(Starttype wait, string const & what)
 		} else {
 			retval_ = waitForChild();
 		}
-		
+
 		return retval_;
 	}
 
@@ -197,13 +197,13 @@ int Forkedcall::waitForChild() {
 			wait = false;
 		} else if (WIFSIGNALED(status)) {
 			lyxerr << "LyX: Child didn't catch signal "
-			       << WTERMSIG(status) 
+			       << WTERMSIG(status)
 			       << "and died. Too bad." << endl;
 			wait = false;
 		} else if (WIFSTOPPED(status)) {
 			lyxerr << "LyX: Child (pid: " << pid_
 			       << ") stopped on signal "
-			       << WSTOPSIG(status) 
+			       << WSTOPSIG(status)
 			       << ". Waiting for child to finish." << endl;
 		} else {
 			lyxerr << "LyX: Something rotten happened while "
@@ -219,7 +219,7 @@ int Forkedcall::waitForChild() {
 pid_t Forkedcall::generateChild()
 {
 	const int MAX_ARGV = 255;
-	char *syscmd = 0; 
+	char *syscmd = 0;
 	char *argv[MAX_ARGV];
 
 	string childcommand(command_); // copy
@@ -243,7 +243,7 @@ pid_t Forkedcall::generateChild()
 
 		// reinit
 		more = !rest.empty();
-		if (more) 
+		if (more)
 			rest = split(rest, childcommand, ' ');
 	}
 	argv[index] = 0;

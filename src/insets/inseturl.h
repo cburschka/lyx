@@ -1,11 +1,11 @@
 // -*- C++ -*-
 /* This file is part of*
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1997-2001 The LyX Team.
- * 
+ *
  * ====================================================== */
 
 #ifndef INSET_URL_H
@@ -19,7 +19,7 @@
 
 struct LaTeXFeatures;
 
-/** The url inset  
+/** The url inset
  */
 class InsetUrl : public InsetCommand {
 public:
@@ -46,7 +46,7 @@ public:
 	bool display() const { return false; }
 	///
 	int latex(Buffer const *, std::ostream &,
-	          bool fragile, bool free_spc) const;
+		  bool fragile, bool free_spc) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///

@@ -1,10 +1,10 @@
 /* This file is part of*
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 2000-2001 The LyX Team.
- * 
+ *
  * ====================================================== */
 
 #include <config.h>
@@ -76,8 +76,8 @@ void InsetCitation::edit(BufferView * bv, bool)
 
 int InsetCitation::ascii(Buffer const *, ostream & os, int) const
 {
-        os << "[" << getContents() << "]";
-        return 0;
+	os << "[" << getContents() << "]";
+	return 0;
 }
 
 // Have to overwrite the default InsetCommand method in order to check that
@@ -102,7 +102,7 @@ int InsetCitation::latex(Buffer const * buffer, ostream & os,
 	     it != getContents().end(); ++it) {
 		if (*it != ' ') content += *it;
 	}
-	
+
 	os << "{" << content << "}";
 
 	return 0;

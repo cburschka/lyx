@@ -5,7 +5,7 @@
 
 /** \file lyxfunctional.h
     \brief Convenient function objects for use with LyX
-    
+
     This is currently a small collection of small function objects for use
     together with std::algorithms.
 **/
@@ -18,7 +18,7 @@ namespace lyx {
 template<class R, class C, class A>
 class class_fun_t {
 public:
-	class_fun_t(C & ct, R(C::*p)(A)) 
+	class_fun_t(C & ct, R(C::*p)(A))
 		: c(ct), cmf(p) {}
 	R operator()(A & a) const {
 		return (c.*cmf)(a);
@@ -78,7 +78,7 @@ public:
 	typedef void difference_type;
 	typedef void pointer;
 	typedef void reference;
-       
+
 	back_insert_fun_iterator(Cont & x, MemRet(Type::*p)())
 		: container(&x), pmf(p) {}
 
@@ -118,12 +118,12 @@ public:
 	typedef void difference_type;
 	typedef void pointer;
 	typedef void reference;
-	
+
 	const_back_insert_fun_iterator(Cont & x, MemRet(Type::*p)() const)
 		: container(&x), pmf(p) {}
-	
+
 	~const_back_insert_fun_iterator() {}
-      
+
 	const_back_insert_fun_iterator &
 	operator=(Type const * val) {
 		container->push_back((val->*pmf)());
@@ -213,7 +213,7 @@ compare_memfun(R(C::*p)() const, A const & a)
 	return const_compare_memfun_t<R, C, A>(p, a);
 }
 
-	
+
 // Functors used in the template.
 
 ///

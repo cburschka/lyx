@@ -17,10 +17,10 @@ using std::vector;
 using std::ostream;
 
 
-string const InsetTOC::getScreenLabel(Buffer const *) const 
+string const InsetTOC::getScreenLabel(Buffer const *) const
 {
 	string const cmdname(getCmdName());
-	
+
 	if (cmdname == "tableofcontents")
 		return _("Table of Contents");
 	return _("Unknown toc list");

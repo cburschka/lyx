@@ -77,7 +77,7 @@ bool InsetInclude::Params::operator==(Params const & o) const
 	if (cparams == o.cparams && flag == o.flag &&
 	    noload == o.noload && masterFilename_ == o.masterFilename_)
 		return true;
-	
+
 	return false;
 }
 
@@ -94,22 +94,22 @@ void InsetInclude::set(Params const & p)
 
 	// Just to be safe...
 	string command;
- 
+
 	switch (params_.flag) {
-	        case INCLUDE:
-	                command="include";
-	                break;
-	        case VERB:
-	                command="verbatiminput";
-	                break;
-	        case INPUT:
-	                command="input";
-	                break;
-	        case VERBAST:
-	                command="verbatiminput*";
-	                break;
+		case INCLUDE:
+			command="include";
+			break;
+		case VERB:
+			command="verbatiminput";
+			break;
+		case INPUT:
+			command="input";
+			break;
+		case VERBAST:
+			command="verbatiminput*";
+			break;
 	}
- 
+
 	params_.cparams.setCmdName(command);
 }
 
@@ -144,7 +144,7 @@ void InsetInclude::write(Buffer const *, ostream & os) const
 void InsetInclude::read(Buffer const *, LyXLex & lex)
 {
 	params_.cparams.read(lex);
-   
+
 	if (params_.cparams.getCmdName() == "include")
 		params_.flag = INCLUDE;
 	else if (params_.cparams.getCmdName() == "input")
@@ -176,7 +176,7 @@ string const InsetInclude::getScreenLabel(Buffer const *) const
 	}
 
 	temp += ": ";
-	
+
 	if (params_.cparams.getContents().empty())
 		temp += "???";
 	else
@@ -191,7 +191,7 @@ string const InsetInclude::getRelFileBaseName() const
 	return OnlyFilename(ChangeExtension(params_.cparams.getContents(), string()));
 }
 
- 
+
 string const InsetInclude::getFileName() const
 {
 	return MakeAbsPath(params_.cparams.getContents(),
@@ -212,15 +212,15 @@ bool InsetInclude::loadIfNeeded() const
 
 	if (!IsLyXFilename(getFileName()))
 		return false;
-	
+
 	if (bufferlist.exists(getFileName()))
 		return true;
-	
+
 	// the readonly flag can/will be wrong, not anymore I think.
 	FileInfo finfo(getFileName());
 	if (!finfo.isOK())
 		return false;
-	
+
 	return bufferlist.readFile(getFileName(), !finfo.writable()) != 0;
 }
 
@@ -229,11 +229,11 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 			bool /*fragile*/, bool /*fs*/) const
 {
 	string incfile(params_.cparams.getContents());
-	
+
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
 		return 0;
-   
+
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
@@ -248,7 +248,7 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 			       << "'." << endl;
 			//return 0;
 		}
-		
+
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".tex");
 
@@ -264,9 +264,9 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 		writefile = ChangeExtension(writefile, ".tex");
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
-		
+
 		tmp->markDepClean(buffer->tmppath);
-		
+
 		tmp->makeLaTeXFile(writefile,
 				   OnlyPath(getMasterFilename()),
 				   buffer->niceFile, true);
@@ -306,11 +306,11 @@ int InsetInclude::ascii(Buffer const *, ostream & os, int) const
 int InsetInclude::linuxdoc(Buffer const * buffer, ostream & os) const
 {
 	string incfile(params_.cparams.getContents());
-	
+
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
 		return 0;
-   
+
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
@@ -327,7 +327,7 @@ int InsetInclude::linuxdoc(Buffer const * buffer, ostream & os) const
 
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
-		
+
 		tmp->makeLinuxDocFile(writefile, buffer->niceFile, true);
 	}
 
@@ -337,7 +337,7 @@ int InsetInclude::linuxdoc(Buffer const * buffer, ostream & os) const
 		   << "]]>";
 	} else
 		os << '&' << include_label << ';';
-	
+
 	return 0;
 }
 
@@ -349,7 +349,7 @@ int InsetInclude::docbook(Buffer const * buffer, ostream & os) const
 	// Do nothing if no file name has been specified
 	if (incfile.empty())
 		return 0;
-   
+
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
@@ -365,7 +365,7 @@ int InsetInclude::docbook(Buffer const * buffer, ostream & os) const
 
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
-		
+
 		tmp->makeDocBookFile(writefile, buffer->niceFile, true);
 	}
 
@@ -375,7 +375,7 @@ int InsetInclude::docbook(Buffer const * buffer, ostream & os) const
 		   << "\" format=\"linespecific\">";
 	} else
 		os << '&' << include_label << ';';
-	
+
 	return 0;
 }
 
@@ -435,13 +435,13 @@ vector<string> const InsetInclude::getLabelList() const
 vector<pair<string,string> > const InsetInclude::getKeys() const
 {
 	vector<pair<string,string> > keys;
-	
+
 	if (loadIfNeeded()) {
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 		tmp->setParentName("");
 		keys = tmp->getBibkeyList();
 		tmp->setParentName(getMasterFilename());
 	}
-	
+
 	return keys;
 }

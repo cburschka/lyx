@@ -20,40 +20,40 @@ using std::make_pair;
 struct LRegex::Impl {
 	///
 	regex_t * preg;
-	
+
 	///
 	int error_code;
-	
+
 	///
 	mutable LRegex::SubMatches matches;
-	
+
 	///
-	Impl(string const & regex) 
+	Impl(string const & regex)
 		: preg(new regex_t), error_code(0)
 	{
 		error_code = regcomp(preg, regex.c_str(), REG_EXTENDED);
 	}
-	
+
 	///
 	~Impl()
 	{
 		regfree(preg);
 		delete preg;
 	}
-	
+
 	///
 	bool exact_match(string const & str) const
 	{
 		regmatch_t tmp;
 		if (!regexec(preg, str.c_str(), 1, &tmp, 0)) {
-			if (tmp.rm_so == 0 && 
+			if (tmp.rm_so == 0 &&
 			    tmp.rm_eo == static_cast<signed int>(str.length()))
 				return true;
 		}
 		// no match
 		return false;
 	}
-	
+
 	///
 	LRegex::MatchPair const first_match(string const & str) const
 	{
@@ -65,7 +65,7 @@ struct LRegex::Impl {
 			tmp.rm_eo : string::npos;
 		return make_pair(first, second - first);
 	}
-	
+
 	///
 	string const getError() const
 	{
@@ -76,7 +76,7 @@ struct LRegex::Impl {
 		delete [] tmp;
 		return ret;
 	}
-	
+
 	///
 	LRegex::SubMatches const & exec(string const & str) const
 	{

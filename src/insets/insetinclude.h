@@ -3,7 +3,7 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- * 	
+ *
  *	    Copyright 1997 LyX Team (this file was created this year)
  *
  * ====================================================== */
@@ -26,8 +26,8 @@ struct LaTeXFeatures;
  */
 class InsetInclude: public InsetButton, boost::noncopyable {
 public:
-        /// the type of inclusion
-        enum Flags {
+	/// the type of inclusion
+	enum Flags {
 		///
 		INCLUDE = 0,
 		///
@@ -91,7 +91,7 @@ public:
 	void read(Buffer const *, LyXLex &);
 	///
 	int latex(Buffer const *, std::ostream &,
-	          bool fragile, bool free_spc) const;
+		  bool fragile, bool free_spc) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
@@ -100,36 +100,36 @@ public:
 	int docbook(Buffer const *, std::ostream &) const;
 	///
 	void validate(LaTeXFeatures &) const;
-	
-        /** Input inserts anything inside a paragraph.
+
+	/** Input inserts anything inside a paragraph.
 	    Display can give some visual feedback
 	*/
 	bool display() const;
 
-	/// return the filename stub of the included file 
+	/// return the filename stub of the included file
 	string const getRelFileBaseName() const;
- 
+
 	/// return true if the included file is not loaded
 	bool isIncludeOnly() const;
 
 	/// return true if the file is or got loaded.
 	bool loadIfNeeded() const;
- 
-	/// hide a dialog if about 
+
+	/// hide a dialog if about
 	SigC::Signal0<void> hideDialog;
 private:
 	/// get the text displayed on the button
 	string const getScreenLabel(Buffer const *) const;
 	/// is this a verbatim include ?
 	bool isVerbatim() const;
-        /// get the filename of the master buffer
-        string const getMasterFilename() const;
-        /// get the included file name
-        string const getFileName() const;
+	/// get the filename of the master buffer
+	string const getMasterFilename() const;
+	/// get the included file name
+	string const getFileName() const;
 
 	/// the parameters
 	Params params_;
-	/// holds the entity name that defines the file location (SGML) 
+	/// holds the entity name that defines the file location (SGML)
 	string const include_label;
 };
 

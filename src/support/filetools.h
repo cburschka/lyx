@@ -37,7 +37,7 @@ int DestroyLyXTmpDir (string const & tmpdir);
     If path entry begins with $$User/, use user_lyxdir.
     Example: "$$User/doc;$$LyX/doc".
 */
-string const FileOpenSearch (string const & path, string const & name, 
+string const FileOpenSearch (string const & path, string const & name,
 		       string const & ext = string());
 
 /** Returns the real name of file name in directory path, with optional
@@ -45,7 +45,7 @@ string const FileOpenSearch (string const & path, string const & name,
   The file is searched in the given path (unless it is an absolute
   file name), first directly, and then with extension .ext (if given).
   */
-string const FileSearch(string const & path, string const & name, 
+string const FileSearch(string const & path, string const & name,
 		  string const & ext = string());
 
 /// Returns a vector of all files in directory dir having extension ext.
@@ -53,7 +53,7 @@ std::vector<string> const DirList(string const & dir,
 				  string const & ext = string());
 
 /** Is directory read only?
-  returns 
+  returns
     true: dir writeable
     false: not writeable
 */
@@ -87,15 +87,15 @@ bool IsSGMLFilename(string const & filename);
   \end{enumerate}
     The third parameter `ext' is optional.
 */
-string const LibFileSearch(string const & dir, string const & name, 
+string const LibFileSearch(string const & dir, string const & name,
 		     string const & ext = string());
 
 /** Same as LibFileSearch(), but tries first to find an
   internationalized version of the file by prepending $LANG_ to the
-  name 
+  name
   */
 string const
-i18nLibFileSearch(string const & dir, string const & name, 
+i18nLibFileSearch(string const & dir, string const & name,
 		  string const & ext = string());
 
 ///
@@ -151,7 +151,7 @@ string const ExpandPath(string const & path);
   If relpath is absolute, just use that.
   If basepath doesn't exist use CWD.
   */
-string const MakeAbsPath(string const & RelPath = string(), 
+string const MakeAbsPath(string const & RelPath = string(),
 			 string const & BasePath = string());
 
 /** Creates a nice compact path for displaying. The parameter

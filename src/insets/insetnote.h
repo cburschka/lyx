@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 2001 The LyX Team.
@@ -19,11 +19,11 @@
 #include "insetcollapsable.h"
 
 /** The PostIt note inset
-  
+
 */
 class InsetNote : public InsetCollapsable {
 public:
-	/// 
+	///
 	InsetNote(BufferParams const &);
 	///
 	InsetNote(InsetNote const &, bool same_id = false);

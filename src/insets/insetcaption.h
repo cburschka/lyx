@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 2000-2001 The LyX Team.
@@ -68,14 +68,14 @@ bool InsetCaption::display() const
 
 
 inline
-bool InsetCaption::needFullRow() const 
+bool InsetCaption::needFullRow() const
 {
 	return true;
 }
 
 
 inline
-Inset::Code InsetCaption::lyxCode() const 
+Inset::Code InsetCaption::lyxCode() const
 {
 	return CAPTION_CODE;
 }

@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1998 The LyX Team.
@@ -22,7 +22,7 @@
 #include "insetfootlike.h"
 
 /** The footnote inset
-  
+
 */
 class InsetFoot : public InsetFootlike {
 public:
@@ -41,6 +41,3 @@ public:
 };
 
 #endif
-
-
-

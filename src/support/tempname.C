@@ -16,7 +16,7 @@ using std::endl;
 namespace {
 
 inline
-int make_tempfile(char * templ) 
+int make_tempfile(char * templ)
 {
 #ifdef HAVE_MKSTEMP
 	return ::mkstemp(templ);
@@ -47,7 +47,7 @@ string const lyx::tempName(string const & dir, string const & mask)
 	char * tmpl = new char[tmpfl.length() + 1]; // + 1 for '\0'
 	tmpfl.copy(tmpl, string::npos);
 	tmpl[tmpfl.length()] = '\0'; // terminator
-	
+
 	int const tmpf = make_tempfile(tmpl);
 	if (tmpf != -1) {
 		string const t(tmpl);

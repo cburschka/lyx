@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-  
+
 #if defined(HAVE_DECL_SNPRINTF) || defined(HAVE_DECL_VSNPRINTF)
 #include <stdio.h>
 #endif
@@ -33,5 +33,5 @@ int vasnprintf(char **ptr, size_t str_m, const char *fmt, va_list ap);
 #ifdef __cplusplus
 } /* end of extern "C" */
 #endif
-  
+
 #endif

@@ -3,7 +3,7 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2001 The LyX Team
  *
@@ -40,7 +40,7 @@ public:
 	std::vector<string> const getLabelList() const;
 	///
 	int latex(Buffer const *, std::ostream &,
-	          bool fragile, bool free_spc) const;
+		  bool fragile, bool free_spc) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///

@@ -1,11 +1,11 @@
 /*
 	filetools.C (former paths.C) - part of LyX project
-	General path-mangling functions 
+	General path-mangling functions
 	Copyright 1996 Ivan Schreter
 	Parts Copyright 1996 Dirk Niggemann
-        Parts Copyright 1985, 1990, 1993 Free Software Foundation, Inc.
+	Parts Copyright 1985, 1990, 1993 Free Software Foundation, Inc.
 	Parts Copyright 1996 Asger Alstrup
-	
+
 	See also filetools.h.
 
 	lyx-filetool.C : tools functions for file/path handling
@@ -28,7 +28,7 @@
 #endif
 
 #include <cstdlib>
-#include <cstdio> 
+#include <cstdio>
 #include <fcntl.h>
 #include <cerrno>
 #include "debug.h"
@@ -92,7 +92,7 @@ string const MakeLatexName(string const & file)
 {
 	string name = OnlyFilename(file);
 	string const path = OnlyPath(file);
-	
+
 	for (string::size_type i = 0; i < name.length(); ++i) {
 		name[i] &= 0x7f; // set 8th bit to 0
 	};
@@ -101,7 +101,7 @@ string const MakeLatexName(string const & file)
 	string const keep("abcdefghijklmnopqrstuvwxyz"
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		"@!\"'()*+,-./0123456789:;<=>?[]`|");
-	
+
 	string::size_type pos = 0;
 	while ((pos = name.find_first_not_of(keep, pos)) != string::npos) {
 		name[pos++] = '_';
@@ -133,11 +133,11 @@ bool IsFileReadable (string const & path)
 // Is a file read_only?
 // return 1 read-write
 //	  0 read_only
-//	 -1 error (doesn't exist, no access, anything else) 
+//	 -1 error (doesn't exist, no access, anything else)
 int IsFileWriteable (string const & path)
 {
 	FileInfo fi(path);
- 
+
 	if (fi.access(FileInfo::wperm|FileInfo::rperm)) // read-write
 		return 1;
 	if (fi.readable()) // read-only
@@ -151,12 +151,12 @@ int IsFileWriteable (string const & path)
 bool IsDirWriteable (string const & path)
 {
 	lyxerr[Debug::FILES] << "IsDirWriteable: " << path << endl;
- 
+
 	string const tmpfl(lyx::tempName(path, "lyxwritetest"));
 
 	if (tmpfl.empty())
 		return false;
- 
+
 	lyx::unlink(tmpfl);
 	return true;
 }
@@ -167,22 +167,22 @@ bool IsDirWriteable (string const & path)
 // If path entry begins with $$LyX/, use system_lyxdir
 // If path entry begins with $$User/, use user_lyxdir
 // Example: "$$User/doc;$$LyX/doc"
-string const FileOpenSearch (string const & path, string const & name, 
+string const FileOpenSearch (string const & path, string const & name,
 			     string const & ext)
 {
 	string real_file, path_element;
 	bool notfound = true;
 	string tmppath = split(path, path_element, ';');
-	
+
 	while (notfound && !path_element.empty()) {
 		path_element = os::slashify_path(path_element);
 		if (!suffixIs(path_element, '/'))
 			path_element+= '/';
 		path_element = subst(path_element, "$$LyX", system_lyxdir);
 		path_element = subst(path_element, "$$User", user_lyxdir);
-		
+
 		real_file = FileSearch(path_element, name, ext);
-		
+
 		if (real_file.empty()) {
 			do {
 				tmppath = split(tmppath, path_element, ';');
@@ -211,12 +211,12 @@ vector<string> const DirList(string const & dir, string const & ext)
 	vector<string> dirlist;
 	DIR * dirp = ::opendir(dir.c_str());
 	if (!dirp) {
-		lyxerr[Debug::FILES] 
+		lyxerr[Debug::FILES]
 			<< "Directory \"" << dir
 			<< "\" does not exist to DirList." << endl;
 		return dirlist;
 	}
- 
+
 	dirent * dire;
 	while ((dire = ::readdir(dirp))) {
 		string const fil = dire->d_name;
@@ -238,9 +238,9 @@ vector<string> const DirList(string const & dir, string const & ext)
 	   vector<string> dirlist;
 	   directory_iterator dit("dir");
 	   while (dit != directory_iterator()) {
-	           string fil = dit->filename;
+		   string fil = dit->filename;
 		   if (prefixIs(fil, extension)) {
-		           dirlist.push_back(fil);
+			   dirlist.push_back(fil);
 		   }
 		   ++dit;
 	   }
@@ -251,8 +251,8 @@ vector<string> const DirList(string const & dir, string const & ext)
 
 
 // Returns the real name of file name in directory path, with optional
-// extension ext.  
-string const FileSearch(string const & path, string const & name, 
+// extension ext.
+string const FileSearch(string const & path, string const & name,
 			string const & ext)
 {
 	// if `name' is an absolute path, we ignore the setting of `path'
@@ -262,14 +262,14 @@ string const FileSearch(string const & path, string const & name,
 	// search first without extension, then with it.
 	if (IsFileReadable(fullname))
 		return fullname;
-	else if (ext.empty()) 
+	else if (ext.empty())
 		return string();
 	else { // Is it not more reasonable to use ChangeExtension()? (SMiyata)
 		fullname += '.';
 		fullname += ext;
 		if (IsFileReadable(fullname))
 			return fullname;
-		else 
+		else
 			return string();
 	}
 }
@@ -279,28 +279,28 @@ string const FileSearch(string const & path, string const & name,
 //   1) user_lyxdir
 //   2) build_lyxdir (if not empty)
 //   3) system_lyxdir
-string const LibFileSearch(string const & dir, string const & name, 
+string const LibFileSearch(string const & dir, string const & name,
 			   string const & ext)
 {
-	string fullname = FileSearch(AddPath(user_lyxdir, dir), name, ext); 
+	string fullname = FileSearch(AddPath(user_lyxdir, dir), name, ext);
 	if (!fullname.empty())
 		return fullname;
-	
-	if (!build_lyxdir.empty()) 
+
+	if (!build_lyxdir.empty())
 		fullname = FileSearch(AddPath(build_lyxdir, dir), name, ext);
 	if (!fullname.empty())
 		return fullname;
-	
+
 	return FileSearch(AddPath(system_lyxdir, dir), name, ext);
 }
 
 
 string const
-i18nLibFileSearch(string const & dir, string const & name, 
+i18nLibFileSearch(string const & dir, string const & name,
 		  string const & ext)
 {
 	// this comment is from intl/dcigettext.c. We try to mimick this
-	// behaviour here.  
+	// behaviour here.
 	/* The highest priority value is the `LANGUAGE' environment
 	   variable. But we don't use the value if the currently
 	   selected locale is the C locale. This is a GNU extension. */
@@ -313,9 +313,9 @@ i18nLibFileSearch(string const & dir, string const & name,
 			lang = GetEnv("LANG");
 		}
 	}
-	
+
 	lang = token(lang, '_', 0);
-	
+
 	if (lang.empty() || lang == "C")
 		return LibFileSearch(dir, name, ext);
 	else {
@@ -356,7 +356,7 @@ bool PutEnv(string const & envstr)
 
 #if HAVE_PUTENV
 	// this leaks, but what can we do about it?
-	//   Is doing a getenv() and a free() of the older value 
+	//   Is doing a getenv() and a free() of the older value
 	//   a good idea? (JMarc)
 	// Actually we don't have to leak...calling putenv like this
 	// should be enough: ... and this is obviously not enough if putenv
@@ -377,7 +377,7 @@ bool PutEnv(string const & envstr)
 	// I will enable the above.
 	//int retval = lyx::putenv(envstr.c_str());
 #else
-#ifdef HAVE_SETENV 
+#ifdef HAVE_SETENV
 	string varname;
 	string const str = envstr.split(varname,'=');
 	int const retval = ::setenv(varname.c_str(), str.c_str(), true);
@@ -429,11 +429,11 @@ int DeleteAllFilesInDir (string const & path)
 	int return_value = 0;
 	while ((de = readdir(dir))) {
 		string const temp = de->d_name;
-		if (temp == "." || temp == "..") 
+		if (temp == "." || temp == "..")
 			continue;
 		string const unlinkpath = AddName (path, temp);
 
-		lyxerr[Debug::FILES] << "Deleting file: " << unlinkpath 
+		lyxerr[Debug::FILES] << "Deleting file: " << unlinkpath
 				     << endl;
 
 		bool deleted = true;
@@ -441,12 +441,12 @@ int DeleteAllFilesInDir (string const & path)
 		if (fi.isOK() && fi.isDir())
 			deleted = (DeleteAllFilesInDir(unlinkpath) == 0);
 		deleted &= (lyx::unlink(unlinkpath) == 0);
- 		if (!deleted) {
-			Alert::err_alert(_("Error! Could not remove file:"), 
+		if (!deleted) {
+			Alert::err_alert(_("Error! Could not remove file:"),
 				unlinkpath);
 			return_value = -1;
 		}
-        }
+	}
 	closedir(dir);
 	return return_value;
 }
@@ -457,14 +457,14 @@ string const CreateTmpDir(string const & tempdir, string const & mask)
 	lyxerr[Debug::FILES]
 		<< "CreateTmpDir: tempdir=`" << tempdir << "'\n"
 		<< "CreateTmpDir:    mask=`" << mask << "'" << endl;
-	
+
 	string const tmpfl(lyx::tempName(tempdir, mask));
 	// lyx::tempName actually creates a file to make sure that it
 	// stays unique. So we have to delete it before we can create
 	// a dir with the same name. Note also that we are not thread
 	// safe because of the gap between unlink and mkdir. (Lgb)
 	lyx::unlink(tmpfl.c_str());
-	
+
 	if (tmpfl.empty() || lyx::mkdir(tmpfl, 0700)) {
 		Alert::err_alert(_("Error! Couldn't create temporary directory:"),
 			     tempdir);
@@ -482,12 +482,12 @@ int DestroyTmpDir(string const & tmpdir, bool Allfiles)
 	if (Allfiles && DeleteAllFilesInDir(tmpdir)) {
 		return -1;
 	}
-	if (lyx::rmdir(tmpdir)) { 
-		Alert::err_alert(_("Error! Couldn't delete temporary directory:"), 
+	if (lyx::rmdir(tmpdir)) {
+		Alert::err_alert(_("Error! Couldn't delete temporary directory:"),
 			     tmpdir);
 		return -1;
 	}
-	return 0; 
+	return 0;
 }
 
 } // namespace anon
@@ -594,7 +594,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 		TempBase = BasePath;
 	else
 		TempBase = AddPath(lyx::getcwd(), BasePath);
-	
+
 	// Handle /./ at the end of the path
 	while (suffixIs(TempBase, "/./"))
 		TempBase.erase(TempBase.length() - 2);
@@ -606,7 +606,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 	while (!RTemp.empty()) {
 		// Split by next /
 		RTemp = split(RTemp, Temp, '/');
-		
+
 		if (Temp == ".") continue;
 		if (Temp == "..") {
 			// Remove one level of TempBase
@@ -729,7 +729,7 @@ string const NormalizePath(string const & path)
 	while (!RTemp.empty()) {
 		// Split by next /
 		RTemp = split(RTemp, Temp, '/');
-		
+
 		if (Temp == ".") {
 			TempBase = "./";
 		} else if (Temp == "..") {
@@ -747,7 +747,7 @@ string const NormalizePath(string const & path)
 	}
 
 	// returns absolute path
-	return TempBase;	
+	return TempBase;
 }
 
 
@@ -771,24 +771,24 @@ string const GetFileContents(string const & fname)
 //
 // Search ${...} as Variable-Name inside the string and replace it with
 // the denoted environmentvariable
-// Allow Variables according to 
+// Allow Variables according to
 //  variable :=  '$' '{' [A-Za-z_]{[A-Za-z_0-9]*} '}'
 //
 
 string const ReplaceEnvironmentPath(string const & path)
 {
-// 
+//
 // CompareChar: Environmentvariables starts with this character
 // PathChar:    Next path component start with this character
 // while CompareChar found do:
 //       Split String with PathChar
-// 	 Search Environmentvariable
+//	 Search Environmentvariable
 //	 if found: Replace Strings
 //
 	char const CompareChar = '$';
-	char const FirstChar = '{'; 
-	char const EndChar = '}'; 
-	char const UnderscoreChar = '_'; 
+	char const FirstChar = '{';
+	char const EndChar = '}';
+	char const UnderscoreChar = '_';
 	string EndString; EndString += EndChar;
 	string FirstString; FirstString += FirstChar;
 	string CompareString; CompareString += CompareChar;
@@ -800,9 +800,9 @@ string const ReplaceEnvironmentPath(string const & path)
 	string result0 = split(path, result1, CompareChar);
 	while (!result0.empty()) {
 		string copy1(result0); // contains String after $
-		
+
 		// Check, if there is an EndChar inside original String.
-		
+
 		if (!regexMatch(copy1, RegExp)) {
 			// No EndChar inside. So we are finished
 			result1 += CompareString + result0;
@@ -833,8 +833,8 @@ string const ReplaceEnvironmentPath(string const & path)
 		bool result = isalpha(*cp1) || (*cp1 == UnderscoreChar);
 		++cp1;
 		while (*cp1 && result) {
-			result = isalnum(*cp1) || 
-				(*cp1 == UnderscoreChar); 
+			result = isalnum(*cp1) ||
+				(*cp1 == UnderscoreChar);
 			++cp1;
 		}
 
@@ -845,7 +845,7 @@ string const ReplaceEnvironmentPath(string const & path)
 			result1 += res1;
 			continue;
 		}
-            
+
 		string env(GetEnv(res1_contents + 1));
 		if (!env.empty()) {
 			// Congratulations. Environmentvariable found
@@ -856,7 +856,7 @@ string const ReplaceEnvironmentPath(string const & path)
 		// Next $-Sign?
 		result0  = split(res0, res1, CompareChar);
 		result1 += res1;
-	} 
+	}
 	return result1;
 }  // ReplaceEnvironmentPath
 
@@ -919,7 +919,7 @@ string const AddPath(string const & path, string const & path_2)
 	}
 
 	if (!path2.empty()) {
-	        string::size_type const p2start = path2.find_first_not_of('/');
+		string::size_type const p2start = path2.find_first_not_of('/');
 		string::size_type const p2end = path2.find_last_not_of('/');
 		string const tmp = path2.substr(p2start, p2end - p2start + 1);
 		buf += tmp + '/';
@@ -928,7 +928,7 @@ string const AddPath(string const & path, string const & path_2)
 }
 
 
-/* 
+/*
  Change extension of oldname to extension.
  Strips path off if no_path == true.
  If no extension on oldname, just appends.
@@ -939,7 +939,7 @@ string const ChangeExtension(string const & oldname, string const & extension)
 	string::size_type last_dot = oldname.rfind('.');
 	if (last_dot < last_slash && last_slash != string::npos)
 		last_dot = string::npos;
-	
+
 	string ext;
 	// Make sure the extension starts with a dot
 	if (!extension.empty() && extension[0] != '.')
@@ -965,7 +965,7 @@ string const GetExtension(string const & name)
 }
 
 // the different filetypes and what they contain in one of the first lines
-// (dots are any characters). 		(Herbert 20020131)
+// (dots are any characters).		(Herbert 20020131)
 // AGR	Grace...
 // BMP	BM...
 // EPS	%!PS-Adobe-3.0 EPSF...
@@ -974,9 +974,9 @@ string const GetExtension(string const & name)
 // JPG	JFIF
 // PDF	%PDF-...
 // PNG	.PNG...
-// PBM	P1... or P4 	(B/W)
+// PBM	P1... or P4	(B/W)
 // PGM	P2... or P5	(Grayscale)
-// PPM	P3... or P6 	(color)
+// PPM	P3... or P6	(color)
 // PS	%!PS-Adobe-2.0 or 1.0,  no "EPSF"!
 // SGI	\001\332...	(decimal 474)
 // TGIF	%TGIF...
@@ -996,7 +996,7 @@ string const getExtFromContents(string const & filename) {
 	if (filename.empty() || !IsFileReadable(filename))
 		// paranoia check
 		return string();
-	
+
 	ifstream ifs(filename.c_str());
 	if (!ifs)
 		// Couldn't open file...
@@ -1068,7 +1068,7 @@ string const getExtFromContents(string const & filename) {
 					format =  "ppm";
 				}
 				break;
-			} 
+			}
 			if (stamp == "\001\332")
 			    format =  "sgi";
 			else if ((stamp == "II") || (stamp == "MM"))
@@ -1120,20 +1120,20 @@ string const getExtFromContents(string const & filename) {
 		else if (contains(str,"BITPIX"))
 			format = "fits";
 	}
-	
+
 	if (!format.empty()) {
 	    lyxerr[Debug::GRAPHICS]
 		<< "Recognised Fileformat: " << format << endl;
 	    return format;
-	} 
-	
+	}
+
 	string const ext(GetExtension(filename));
 	lyxerr[Debug::GRAPHICS]
 		<< "filetools(getExtFromContents)\n"
 		<< "\tCouldn't find a known Type!\n";
 	if (!ext.empty()) {
 	    lyxerr[Debug::GRAPHICS]
-		<< "\twill take the file extension -> " 
+		<< "\twill take the file extension -> "
 		<< ext << endl;
 		return ext;
 	} else {
@@ -1196,9 +1196,9 @@ MakeDisplayPath (string const & path, unsigned int threshold)
 	if (l2 > threshold) {
 		// Yes, shortend it
 		prefix += ".../";
-		
+
 		string temp;
-		
+
 		while (relhome.length() > threshold)
 			relhome = split(relhome, temp, '/');
 
@@ -1250,7 +1250,7 @@ cmdret const do_popen(string const & cmd)
 	// (Claus Hentschel) Check if popen was succesful ;-)
 	if (!inf)
 		return make_pair(-1, string());
-	
+
 	string ret;
 	int c = fgetc(inf);
 	while (c != EOF) {
@@ -1274,13 +1274,13 @@ string const findtexfile(string const & fil, string const & /*format*/)
 	   going to implement this until I see some demand for it.
 	   Lgb
 	*/
-	
+
 	// If the file can be found directly, we just return a
-	// absolute path version of it. 
-        if (FileInfo(fil).exist())
+	// absolute path version of it.
+	if (FileInfo(fil).exist())
 		return MakeAbsPath(fil);
 
-        // No we try to find it using kpsewhich.
+	// No we try to find it using kpsewhich.
 	// It seems from the kpsewhich manual page that it is safe to use
 	// kpsewhich without --format: "When the --format option is not
 	// given, the search path used when looking for a file is inferred
@@ -1305,9 +1305,9 @@ string const findtexfile(string const & fil, string const & /*format*/)
 	cmdret const c = do_popen(kpsecmd);
 
 	lyxerr[Debug::LATEX] << "kpse status = " << c.first << "\n"
-		 << "kpse result = `" << strip(c.second, '\n') 
+		 << "kpse result = `" << strip(c.second, '\n')
 		 << "'" << endl;
-	if (c.first != -1) 
+	if (c.first != -1)
 		return os::internal_path(strip(strip(c.second, '\n'), '\r'));
 	else
 		return string();
@@ -1327,5 +1327,3 @@ void removeAutosaveFile(string const & filename)
 		}
 	}
 }
-
-

@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -84,7 +84,7 @@ void InsetCommandParams::scanCommand(string const & cmd)
 	if (cmd.empty()) return;
 
 	enum { WS, CMDNAME, OPTION, CONTENT } state = WS;
-	
+
 	// Used to handle things like \command[foo[bar]]{foo{bar}}
 	int nestdepth = 0;
 
@@ -105,11 +105,11 @@ void InsetCommandParams::scanCommand(string const & cmd)
 		}
 		if ((state == OPTION  && c == '[') ||
 		    (state == CONTENT && c == '{')) {
-		    	++nestdepth;
+			++nestdepth;
 		}
 		switch (state) {
 		case CMDNAME:	tcmdname += c; break;
-		case OPTION: 	toptions += c; break;
+		case OPTION:	toptions += c; break;
 		case CONTENT:	tcontents += c; break;
 		case WS:
 			if (c == '\\') {
@@ -128,7 +128,7 @@ void InsetCommandParams::scanCommand(string const & cmd)
 	// Don't mess with this.
 	if (!tcmdname.empty())  setCmdName(tcmdname);
 	if (!toptions.empty())  setOptions(toptions);
-	if (!tcontents.empty()) setContents(tcontents); 
+	if (!tcontents.empty()) setContents(tcontents);
 
 	if (lyxerr.debugging(Debug::PARSER))
 		lyxerr << "Command <" <<  cmd
@@ -141,7 +141,7 @@ void InsetCommandParams::scanCommand(string const & cmd)
 
 // This function will not be necessary when lyx3
 void InsetCommandParams::read(LyXLex & lex)
-{    
+{
 	string token;
 
 	if (lex.eatLine()) {
@@ -150,7 +150,7 @@ void InsetCommandParams::read(LyXLex & lex)
 	} else {
 		lex.printError("InsetCommand: Parse error: `$$Token'");
 	}
-	
+
 	while (lex.isOK()) {
 		lex.nextToken();
 		token = lex.getString();
@@ -171,7 +171,7 @@ void InsetCommandParams::write(ostream & os) const
 
 
 string const InsetCommandParams::getCommand() const
-{	
+{
 	string s;
 	if (!getCmdName().empty()) s += "\\"+getCmdName();
 	if (!getOptions().empty()) s += "["+getOptions()+']';

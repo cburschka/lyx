@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * =================================================
- * 
+ *
  *          LyX, The Document Processor
  *          Copyright 1995 Matthias Ettrich.
  *          Copyright 1995-2002 The LyX Team.
@@ -15,7 +15,7 @@
 
 #ifdef __GNUG__
 #pragma interface
-#endif 
+#endif
 
 #include "LString.h"
 
@@ -51,7 +51,7 @@ struct InsetGraphicsParams
 	string rotateOrigin;
 	/// Rotation angle.
 	float rotateAngle;
-	/// clip image 
+	/// clip image
 	bool clip;
 	/// draft mode
 	bool draft;
@@ -59,7 +59,7 @@ struct InsetGraphicsParams
 	bool noUnzip;
 	/// The bounding box with "xLB yLB yRT yRT ", divided by a space!
 	string bb;
-	/// Type of rescaling 
+	/// Type of rescaling
 	sizeType size_type;
 	/// three possible values for rescaling (latex)
 	LyXLength width;
@@ -104,4 +104,4 @@ bool operator==(InsetGraphicsParams const &, InsetGraphicsParams const &);
 ///
 bool operator!=(InsetGraphicsParams const &, InsetGraphicsParams const &);
 
-#endif 
+#endif

@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 2000-2001 The LyX Team.
  *
  * ======================================================
@@ -59,7 +59,7 @@ void InsetCaption::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-string const InsetCaption::editMessage() const 
+string const InsetCaption::editMessage() const
 {
 	return _("Opened Caption Inset");
 }
@@ -87,7 +87,7 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 
 	// Generate the label
 	string const label = _(fl) + " " + num + ":";
-	
+
 	Painter & pain = bv->painter();
 	int const w = lyxfont::width(label, f);
 	pain.text(int(x), baseline, label, f);

@@ -38,7 +38,7 @@ string const InsetUrl::getScreenLabel(Buffer const *) const
 	string temp;
 	if (getCmdName() == "url")
 		temp = _("Url: ");
-	else 
+	else
 		temp = _("HtmlUrl: ");
 
 	if (!getOptions().empty())

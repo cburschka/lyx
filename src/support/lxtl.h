@@ -2,7 +2,7 @@
 /* lxtl.h
  * LyX eXternalization Template Library
  * This file is part of
- * ====================================================== 
+ * ======================================================
  *
  *           LyX, The Document Processor
  *
@@ -28,7 +28,7 @@
 typedef GIOP_format<auto_mem_buffer> gui_format;
 
 /*  Simplify the use of the XTL.  The caller is responsible for creating their
-    own memory buffer.  The buffer type isn't a template parameter because I 
+    own memory buffer.  The buffer type isn't a template parameter because I
     need/want the forward declared buffer class in some other header files
     thereby avoiding an extra file dependency.
     ARRae 20000423

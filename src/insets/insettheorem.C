@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 1998 The LyX Team.
  *
  * ======================================================
@@ -49,7 +49,7 @@ InsetTheorem::InsetTheorem()
 }
 
 
-void InsetTheorem::write(Buffer const * buf, ostream & os) const 
+void InsetTheorem::write(Buffer const * buf, ostream & os) const
 {
 	os << getInsetName() << "\n";
 	InsetCollapsable::write(buf, os);
@@ -62,7 +62,7 @@ Inset * InsetTheorem::clone(Buffer const &, bool) const
 #warning Is this inset used? If YES this is WRONG!!! (Jug)
 #endif
 	InsetTheorem * result = new InsetTheorem;
-	
+
 	result->collapsed_ = collapsed_;
 	return result;
 }
@@ -78,9 +78,9 @@ int InsetTheorem::latex(Buffer const * buf,
 			ostream & os, bool fragile, bool fp) const
 {
 	os << "\\begin{theorem}%\n";
-	
+
 	int i = inset.latex(buf, os, fragile, fp);
 	os << "\\end{theorem}%\n";
-	
+
 	return i + 2;
 }

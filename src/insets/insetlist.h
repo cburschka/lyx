@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1998 The LyX Team.
@@ -19,7 +19,7 @@
 #include "insetcollapsable.h"
 
 /** The list inset
-  
+
 */
 class InsetList : public InsetCollapsable {
 public:

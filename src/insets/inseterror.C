@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -63,7 +63,7 @@ void InsetError::draw(BufferView * bv, LyXFont const & font,
 	LyXFont efont;
 	efont.setSize(font.size()).decSize();
 	efont.setColor(LColor::error);
-   
+
 	// Draw as "Error" in a framed box
 	x += 1;
 	pain.fillRectangle(int(x), baseline - ascent(bv, font) + 1,
@@ -80,7 +80,7 @@ void InsetError::draw(BufferView * bv, LyXFont const & font,
 }
 
 
-string const InsetError::editMessage() const 
+string const InsetError::editMessage() const
 {
 	return _("Opened error");
 }

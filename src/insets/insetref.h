@@ -3,9 +3,9 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1997 LyX Team (this file was created this year)
- * 
+ *
  * ====================================================== */
 
 #ifndef INSET_REF_H
@@ -19,7 +19,7 @@
 
 struct LaTeXFeatures;
 
-/** The reference inset  
+/** The reference inset
  */
 class InsetRef : public InsetCommand {
 public:
@@ -57,7 +57,7 @@ public:
 	bool display() const { return false; }
 	///
 	int latex(Buffer const *, std::ostream &,
-	          bool fragile, bool free_spc) const;
+		  bool fragile, bool free_spc) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///

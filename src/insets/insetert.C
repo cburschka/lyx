@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 1998 The LyX Team.
  *
  *======================================================*/
@@ -89,7 +89,7 @@ InsetERT::InsetERT(BufferParams const & bp,
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
 #endif
-	
+
 	string::const_iterator cit = contents.begin();
 	string::const_iterator end = contents.end();
 	pos_type pos = 0;
@@ -117,7 +117,7 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 		if (token == "status") {
 			lex.next();
 			string const tmp_token = lex.getString();
-			
+
 			if (tmp_token == "Inlined") {
 				status(0, Inlined);
 			} else if (tmp_token == "Collapsed") {
@@ -126,7 +126,7 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 				// leave this as default!
 				status(0, Open);
 			}
-			
+
 			token_found = true;
 		} else {
 			lyxerr << "InsetERT::Read: Missing 'status'-tag!"
@@ -155,7 +155,7 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 #ifdef SET_HARD_FONT
 #ifndef INHERIT_LANG
 	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
-#else 
+#else
 	LyXFont font(LyXFont::ALL_INHERIT);
 #endif
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
@@ -169,7 +169,7 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 		par = par->next();
 	}
 #endif
-	
+
 	if (!token_found) {
 		if (collapsed_) {
 			status(0, Collapsed);
@@ -181,12 +181,12 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 }
 
 
-void InsetERT::write(Buffer const * buf, ostream & os) const 
+void InsetERT::write(Buffer const * buf, ostream & os) const
 {
 	string st;
 
 	switch (status_) {
-	case Open: 
+	case Open:
 		st = "Open";
 		break;
 	case Collapsed:
@@ -229,7 +229,7 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 }
 
 
-string const InsetERT::editMessage() const 
+string const InsetERT::editMessage() const
 {
 	return _("Opened ERT Inset");
 }
@@ -247,8 +247,8 @@ void InsetERT::setFont(BufferView *, LyXFont const &, bool, bool selectall)
 	// fontchange and this messages is not needed
 	if (!selectall)
 		Alert::alert(_("Impossible Operation!"),
-		           _("Not permitted to change font-types inside ERT-insets!"),
-		           _("Sorry."));
+			   _("Not permitted to change font-types inside ERT-insets!"),
+			   _("Sorry."));
 }
 
 
@@ -263,7 +263,7 @@ void InsetERT::updateStatus(BufferView * bv, bool swap) const
 	}
 }
 
- 
+
 void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 {
 	if (button == 3)
@@ -300,7 +300,7 @@ void InsetERT::edit(BufferView * bv, bool front)
 
 
 void InsetERT::insetButtonPress(BufferView * bv,
-                                        int x, int y, int button)
+					int x, int y, int button)
 {
 	if (status_ == Inlined) {
 		inset.insetButtonPress(bv, x, y, button);
@@ -316,15 +316,15 @@ bool InsetERT::insetButtonRelease(BufferView * bv, int x, int y, int button)
 		showInsetDialog(bv);
 		return true;
 	}
- 
+
 	if (status_ != Inlined && (x >= 0)  && (x < button_length) &&
 	    (y >= button_top_y) &&  (y <= button_bottom_y)) {
 		updateStatus(bv, true);
 	} else {
 		LyXFont font(LyXFont::ALL_SANE);
 		int yy = ascent(bv, font) + y - inset.ascent(bv, font);
- 
-		// inlined is special - the text appears above 
+
+		// inlined is special - the text appears above
 		// button_bottom_y
 		if (status_ == Inlined) {
 			inset.insetButtonRelease(bv, x, yy, button);
@@ -338,7 +338,7 @@ bool InsetERT::insetButtonRelease(BufferView * bv, int x, int y, int button)
 
 
 void InsetERT::insetMotionNotify(BufferView * bv,
-                                         int x, int y, int state)
+					 int x, int y, int state)
 {
 	if (status_ == Inlined) {
 		inset.insetMotionNotify(bv, x, y, state);
@@ -373,13 +373,13 @@ int InsetERT::latex(Buffer const *, ostream & os, bool /*fragile*/,
 			lines += 2;
 		}
 	}
-	
+
 	return lines;
 }
 
 
 int InsetERT::ascii(Buffer const *,
-		    ostream &, int /*linelen*/) const 
+		    ostream &, int /*linelen*/) const
 {
 	return 0;
 }
@@ -409,7 +409,7 @@ int InsetERT::linuxdoc(Buffer const *, ostream & os) const
 			lines ++;
 		}
 	}
-	
+
 	return lines;
 }
 
@@ -438,7 +438,7 @@ int InsetERT::docbook(Buffer const *, ostream & os) const
 			lines ++;
 		}
 	}
-	
+
 	return lines;
 }
 
@@ -470,7 +470,7 @@ InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
 	case LFUN_CUT:
 		set_latex_font(bv);
 		break;
-	
+
 	default:
 		break;
 	}
@@ -517,7 +517,7 @@ bool InsetERT::checkInsertChar(LyXFont & /* font */)
 #ifdef SET_HARD_FONT
 #ifndef INHERIT_LANG
 	LyXFont f(LyXFont::ALL_INHERIT, latex_language);
-#else 
+#else
 	LyXFont f(LyXFont::ALL_INHERIT);
 #endif
 	font = f;
@@ -555,8 +555,8 @@ int InsetERT::width(BufferView * bv, LyXFont const & font) const
 }
 
 
-void InsetERT::draw(BufferView * bv, LyXFont const & f, 
-                    int baseline, float & x, bool cleared) const
+void InsetERT::draw(BufferView * bv, LyXFont const & f,
+		    int baseline, float & x, bool cleared) const
 {
 	Painter & pain = bv->painter();
 
@@ -577,9 +577,9 @@ void InsetERT::draw(BufferView * bv, LyXFont const & f,
 		x += static_cast<float>(scroll());
 
 	if (!cleared && (inset.need_update == InsetText::FULL ||
-	                 inset.need_update == InsetText::INIT ||
-	                 top_x != int(x) ||
-	                 top_baseline != baseline))
+			 inset.need_update == InsetText::INIT ||
+			 top_x != int(x) ||
+			 top_baseline != baseline))
 	{
 		// we don't need anymore to clear here we just have to tell
 		// the underlying LyXText that it should do the RowClear!
@@ -598,7 +598,7 @@ void InsetERT::draw(BufferView * bv, LyXFont const & f,
 		inset.draw(bv, f, baseline, x, cleared);
 	} else {
 		draw_collapsed(pain, bl, old_x);
-		inset.draw(bv, f, 
+		inset.draw(bv, f,
 				   bl + descent_collapsed() + inset.ascent(bv, f),
 				   x, cleared);
 	}
@@ -611,7 +611,7 @@ void InsetERT::set_latex_font(BufferView * /* bv */)
 #ifdef SET_HARD_FONT
 #ifndef INHERIT_LANG
 	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
-#else 
+#else
 	LyXFont font(LyXFont::ALL_INHERIT);
 #endif
 
@@ -675,7 +675,7 @@ void InsetERT::close(BufferView * bv) const
 
 
 string const InsetERT::selectNextWordToSpellcheck(BufferView * bv,
-                                                  float &) const
+						  float &) const
 {
 	bv->unlockInset(const_cast<InsetERT *>(this));
 	return string();
@@ -686,7 +686,7 @@ void InsetERT::getDrawFont(LyXFont & font) const
 {
 #ifndef INHERIT_LANG
 	LyXFont f(LyXFont::ALL_INHERIT, latex_language);
-#else 
+#else
 	LyXFont f(LyXFont::ALL_INHERIT);
 #endif
 	font = f;

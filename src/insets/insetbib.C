@@ -12,7 +12,7 @@
 #include "lyxtext.h"
 #include "lyxrc.h"
 #include "font.h"
-#include "LyXView.h" 
+#include "LyXView.h"
 #include "lyxtextclasslist.h"
 
 #include "frontends/Dialogs.h"
@@ -58,15 +58,15 @@ Inset * InsetBibKey::clone(Buffer const &, bool) const
 }
 
 
-void InsetBibKey::setCounter(int c) 
-{ 
-	counter = c; 
+void InsetBibKey::setCounter(int c)
+{
+	counter = c;
 }
 
 
 // I'm sorry but this is still necessary because \bibitem is used also
 // as a LyX 2.x command, and lyxlex is not enough smart to understand
-// real LaTeX commands. Yes, that could be fixed, but would be a waste 
+// real LaTeX commands. Yes, that could be fixed, but would be a waste
 // of time cause LyX3 won't use lyxlex anyway.  (ale)
 void InsetBibKey::write(Buffer const *, ostream & os) const
 {
@@ -111,7 +111,7 @@ string const InsetBibKey::getScreenLabel(Buffer const *) const
 
 
 void InsetBibKey::edit(BufferView * bv, int, int, unsigned int)
-{ 
+{
 	bv->owner()->getDialogs()->showBibitem(this);
 }
 
@@ -159,7 +159,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 		}
 	}
 
-  	if (!buffer->niceFile 
+	if (!buffer->niceFile
 	    && IsFileReadable(MakeAbsPath(style, buffer->filePath()) + ".bst")) {
 		style = MakeAbsPath(style, buffer->filePath());
 	}
@@ -169,7 +169,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	}
 
 	// bibtotoc-Option
-        if (!bibtotoc.empty()) {
+	if (!bibtotoc.empty()) {
 		// maybe a problem when a textclass has no "art" as
 		// part of its name, because it's than book.
 		// For the "official" lyx-layouts it's no problem to support
@@ -189,7 +189,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 
 		} else {
 			// article class
-			os << "\\addcontentsline{toc}{section}{\\refname}";	
+			os << "\\addcontentsline{toc}{section}{\\refname}";
 		}
 	}
 
@@ -200,8 +200,8 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	string db_out;
 	while (!adb.empty()) {
 		if (!buffer->niceFile &&
-		    IsFileReadable(MakeAbsPath(adb, buffer->filePath())+".bib")) 
-                         adb = os::external_path(MakeAbsPath(adb, buffer->filePath()));
+		    IsFileReadable(MakeAbsPath(adb, buffer->filePath())+".bib"))
+			 adb = os::external_path(MakeAbsPath(adb, buffer->filePath()));
 		db_out += adb;
 		db_out += ',';
 		db_in= split(db_in, adb,',');
@@ -229,9 +229,9 @@ vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
 		// If we didn't find a matching file name just fail silently
 		if (!file.empty())
 			vec.push_back(file);
-		
+
 		// Get next file name
-    		bibfiles = split(bibfiles, tmp, ',');
+		bibfiles = split(bibfiles, tmp, ',');
 	}
 
 	return vec;
@@ -273,7 +273,7 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 			}
 		}
 	}
-  	return keys;
+	return keys;
 }
 
 
@@ -293,7 +293,7 @@ bool InsetBibtex::addDatabase(string const & db)
 {
 	string contents(getContents());
 	if (!contains(contents, db)) {
-		if (!contents.empty()) 
+		if (!contents.empty())
 			contents += ",";
 		setContents(contents + db);
 		return true;
@@ -314,7 +314,7 @@ bool InsetBibtex::delDatabase(string const & db)
 			setContents(subst(getContents(), tmp, ", "));
 		} else if (n == 0)
 			setContents(split(getContents(), bd, ','));
-		else 
+		else
 			return false;
 	}
 	return true;
@@ -328,7 +328,7 @@ int bibitemMaxWidth(BufferView * bv, LyXFont const & font)
 	// Ha, now we are mainly at 1.2.0 and it is still here (Jug)
 	// Does look like a hack? It is! (but will change at 0.13)
 	Paragraph * par = bv->buffer()->paragraph;
-    
+
 	while (par) {
 		if (par->bibkey) {
 			int const wx = par->bibkey->width(bv, font);
@@ -348,7 +348,7 @@ string const bibitemWidest(Buffer const * buffer)
 	Paragraph * par = buffer->paragraph;
 	InsetBibKey * bkey = 0;
 	LyXFont font;
-      
+
 	while (par) {
 		if (par->bibkey) {
 			int const wx =
@@ -361,9 +361,9 @@ string const bibitemWidest(Buffer const * buffer)
 		}
 		par = par->next();
 	}
-    
+
 	if (bkey && !bkey->getBibLabel().empty())
 		return bkey->getBibLabel();
-    
+
 	return "99";
 }

@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
  *
  *           Copyright 1998 The LyX Team.
@@ -38,7 +38,7 @@ class Row;
 
 /**
  A text inset is like a TeX box to write full text
- (including styles and other insets) in a given space. 
+ (including styles and other insets) in a given space.
  @author: Jürgen Vigna
  */
 class InsetText : public UpdatableInset {
@@ -170,7 +170,7 @@ public:
 	///
 	void setFont(BufferView *, LyXFont const &,
 		     bool toggleall = false,
-	             bool selectall = false);
+		     bool selectall = false);
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
@@ -240,10 +240,10 @@ public:
 	void toggleSelection(BufferView *, bool kill_selection);
 	///
 	bool searchForward(BufferView *, string const &,
-	                   bool = true, bool = false);
+			   bool = true, bool = false);
 	///
 	bool searchBackward(BufferView *, string const &,
-	                    bool = true, bool = false);
+			    bool = true, bool = false);
 	///
 	bool checkInsertChar(LyXFont &);
 	///
@@ -301,7 +301,7 @@ private:
 					       bool activate_inset = true,
 					       bool selecting = false);
 	///
-	UpdatableInset::RESULT moveLeftIntern(BufferView *, bool behind, 
+	UpdatableInset::RESULT moveLeftIntern(BufferView *, bool behind,
 					      bool activate_inset = true,
 					      bool selecting = false);
 
@@ -315,7 +315,7 @@ private:
 	bool checkAndActivateInset(BufferView * bv, bool behind);
 	///
 	bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
-	                           int button = 0);
+				   int button = 0);
 	///
 	void removeNewlines();
 	///
@@ -344,7 +344,7 @@ private:
 	void reinitLyXText() const;
 	///
 	void collapseParagraphs(BufferParams const & bparams) const;
-	
+
 	/* Private structures and variables */
 	///
 	Paragraph * par;
@@ -405,7 +405,7 @@ private:
 	};
 	///
 	mutable save_state sstate;
-	
+
 	///
 	// this is needed globally so we know that we're using it actually and
 	// so the LyXText-Cache is not erased until used!

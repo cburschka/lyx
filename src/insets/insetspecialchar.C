@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *	    Copyright 1997 Asger Alstrup
  *
  * ====================================================== */
@@ -53,7 +53,7 @@ int InsetSpecialChar::width(BufferView *, LyXFont const & font) const
 	case HYPHENATION:
 	{
 		int w = lyxfont::width('-', font);
-		if (w > 5) 
+		if (w > 5)
 			w -= 2; // to make it look shorter
 		return w;
 	}
@@ -77,7 +77,7 @@ int InsetSpecialChar::width(BufferView *, LyXFont const & font) const
 	{
 		return lyxfont::width('x', font);
 	}
-	
+
 	}
 	return 1; // To shut up gcc
 }
@@ -125,12 +125,12 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 		int ox = lyxfont::width(' ', font) + int(x);
 		int h = lyxfont::ascent('x', font);
 		int xp[4], yp[4];
-		
+
 		xp[0] = ox;	yp[0] = baseline;
 		xp[1] = ox;	yp[1] = baseline - h;
 		xp[2] = ox + w; yp[2] = baseline - h/2;
 		xp[3] = ox;	yp[3] = baseline;
-		
+
 		pain.lines(xp, yp, 4, LColor::special);
 		x += width(bv, font);
 		break;
@@ -140,7 +140,7 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 		float w = width(bv, font);
 		int h = lyxfont::ascent('x', font);
 		int xp[4], yp[4];
-		
+
 		xp[0] = int(x);
 		yp[0] = baseline - max(h / 4, 1);
 
@@ -152,7 +152,7 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 
 		xp[3] = int(x + w);
 		yp[3] = baseline - max(h / 4, 1);
-		
+
 		pain.lines(xp, yp, 4, LColor::special);
 		x += w;
 		break;
@@ -166,20 +166,20 @@ void InsetSpecialChar::write(Buffer const *, ostream & os) const
 {
 	string command;
 	switch (kind_) {
-	case HYPHENATION:	
-		command = "\\-";	
+	case HYPHENATION:
+		command = "\\-";
 		break;
-	case LIGATURE_BREAK: 
-		command = "\\textcompwordmark{}"; 
+	case LIGATURE_BREAK:
+		command = "\\textcompwordmark{}";
 		break;
-	case END_OF_SENTENCE:	
+	case END_OF_SENTENCE:
 		command = "\\@.";
 		break;
 	case LDOTS:
-		command = "\\ldots{}";	
+		command = "\\ldots{}";
 		break;
 	case MENU_SEPARATOR:
-		command = "\\menuseparator"; 
+		command = "\\menuseparator";
 		break;
 	case PROTECTED_SEPARATOR:
 		//command = "\\protected_separator";
@@ -192,7 +192,7 @@ void InsetSpecialChar::write(Buffer const *, ostream & os) const
 
 // This function will not be necessary when lyx3
 void InsetSpecialChar::read(Buffer const *, LyXLex & lex)
-{    
+{
 	lex.nextToken();
 	string const command = lex.getString();
 
@@ -205,7 +205,7 @@ void InsetSpecialChar::read(Buffer const *, LyXLex & lex)
 	else if (command == "\\ldots{}")
 		kind_ = LDOTS;
 	else if (command == "\\menuseparator")
-	        kind_ = MENU_SEPARATOR;
+		kind_ = MENU_SEPARATOR;
 	else if (command == "\\protected_separator"
 		 || command == "~")
 		kind_ = PROTECTED_SEPARATOR;
@@ -218,23 +218,23 @@ int InsetSpecialChar::latex(Buffer const *, ostream & os, bool /*fragile*/,
 			    bool free_space) const
 {
 	switch (kind_) {
-	case HYPHENATION:	  
-		os << "\\-";	
+	case HYPHENATION:
+		os << "\\-";
 		break;
 	case LIGATURE_BREAK:
 		os << "\\textcompwordmark{}";
 		break;
-	case END_OF_SENTENCE:	  
-		os << "\\@.";	
+	case END_OF_SENTENCE:
+		os << "\\@.";
 		break;
-	case LDOTS:		  
-		os << "\\ldots{}";	
+	case LDOTS:
+		os << "\\ldots{}";
 		break;
-	case MENU_SEPARATOR:      
-		os << "\\lyxarrow{}"; 
+	case MENU_SEPARATOR:
+		os << "\\lyxarrow{}";
 		break;
-	case PROTECTED_SEPARATOR: 
-		os << (free_space ? " " : "~"); 
+	case PROTECTED_SEPARATOR:
+		os << (free_space ? " " : "~");
 		break;
 	}
 	return 0;
@@ -247,16 +247,16 @@ int InsetSpecialChar::ascii(Buffer const *, ostream & os, int) const
 	case HYPHENATION:
 	case LIGATURE_BREAK:
 		break;
-	case END_OF_SENTENCE:	  
-		os << ".";	
+	case END_OF_SENTENCE:
+		os << ".";
 		break;
-	case LDOTS:		  
-		os << "...";	
+	case LDOTS:
+		os << "...";
 		break;
-	case MENU_SEPARATOR:      
-		os << "->";   
+	case MENU_SEPARATOR:
+		os << "->";
 		break;
-	case PROTECTED_SEPARATOR: 
+	case PROTECTED_SEPARATOR:
 		os << " ";
 		break;
 	}
@@ -274,10 +274,10 @@ int InsetSpecialChar::linuxdoc(Buffer const *, ostream & os) const
 		os << ".";
 		break;
 	case LDOTS:
-		os << "...";	
+		os << "...";
 		break;
-	case MENU_SEPARATOR:      
-		os << "&lyxarrow;"; 
+	case MENU_SEPARATOR:
+		os << "&lyxarrow;";
 		break;
 	case PROTECTED_SEPARATOR:
 		os << "&nbsp;";
@@ -297,7 +297,7 @@ int InsetSpecialChar::docbook(Buffer const *, ostream & os) const
 		os << ".";
 		break;
 	case LDOTS:
-		os << "...";	
+		os << "...";
 		break;
 	case MENU_SEPARATOR:
 		os << "&lyxarrow;";

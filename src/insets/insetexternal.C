@@ -2,7 +2,7 @@
  * ======================================================
  *
  *           LyX, The Document Processor
- * 	
+ *
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2001 The LyX Team.
  *
@@ -40,7 +40,7 @@ using std::ostream;
 using std::endl;
 
 
-InsetExternal::InsetExternal() 
+InsetExternal::InsetExternal()
 	: view_(0)
 {
 	tempname_ = lyx::tempName(string(), "lyxext");
@@ -60,14 +60,14 @@ InsetExternal::Params InsetExternal::params() const
 {
 	return params_;
 }
- 
- 
+
+
 void InsetExternal::setFromParams(Params const & p)
 {
 	params_.filename = p.filename;
 	params_.parameters = p.parameters;
 	params_.templ = p.templ;
-}      
+}
 
 
 string const InsetExternal::editMessage() const
@@ -108,7 +108,7 @@ void InsetExternal::read(Buffer const *, LyXLex & lex)
 	} else {
 		lex.printError("InsetExternal: Parse error: `$$Token'");
 	}
-	
+
 	while (lex.isOK()) {
 		lex.nextToken();
 		token = lex.getString();
@@ -145,7 +145,7 @@ int InsetExternal::write(string const & format,
 		       << params_.templ.lyxName << endl;
 		return 0;
 	}
-	
+
 	updateExternal(format, buf);
 	os << doSubstitution(buf, cit->second.product);
 	return 0; // CHECK  (FIXME check what ? - jbl)
@@ -185,7 +185,7 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 
 	if (cit == et.formats.end())
 		return;
-	
+
 	if (!cit->second.requirement.empty()) {
 		features.require(cit->second.requirement);
 	}
@@ -245,7 +245,7 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 	result = ReplaceEnvironmentPath(result);
 	result = subst(result, "$$Tempname", tempname_);
 	result = subst(result, "$$Sysdir", system_lyxdir);
-	
+
 	// Handle the $$Contents(filename) syntax
 	if (contains(result, "$$Contents(\"")) {
 
@@ -271,7 +271,7 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 
 void InsetExternal::updateExternal() const
 {
-	updateExternal("LaTeX", view_->buffer());	
+	updateExternal("LaTeX", view_->buffer());
 }
 
 void InsetExternal::updateExternal(string const & format,
@@ -285,7 +285,7 @@ void InsetExternal::updateExternal(string const & format,
 	    cit->second.updateCommand.empty() ||
 	    !et.automaticProduction)
 		return;
-	
+
 	if (!cit->second.updateResult.empty()) {
 		string const resultfile = doSubstitution(buf,
 							 cit->second.updateResult);
@@ -294,7 +294,7 @@ void InsetExternal::updateExternal(string const & format,
 		if (fi2.exist() && fi.exist() &&
 		    ::difftime(fi2.getModificationTime(),
 			       fi.getModificationTime()) >= 0) {
-			lyxerr[Debug::FILES] << resultfile 
+			lyxerr[Debug::FILES] << resultfile
 					     << " is up to date" << endl;
 			return;
 		}
@@ -342,6 +342,5 @@ bool operator==(InsetExternal::Params const & left,
 bool operator!=(InsetExternal::Params const & left,
 		InsetExternal::Params const & right)
 {
-	return 	!(left == right);
+	return	!(left == right);
 }
-

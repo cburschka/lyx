@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *          Copyright 1998-2001 The LyX Team.
  *
  * ======================================================
@@ -147,7 +147,7 @@ int InsetCollapsable::ascent(BufferView * /*bv*/, LyXFont const &) const
 
 int InsetCollapsable::descent(BufferView * bv, LyXFont const & font) const
 {
-	if (collapsed_) 
+	if (collapsed_)
 		return descent_collapsed();
 
 	return descent_collapsed()
@@ -159,7 +159,7 @@ int InsetCollapsable::descent(BufferView * bv, LyXFont const & font) const
 
 int InsetCollapsable::width(BufferView * bv, LyXFont const & font) const
 {
-	if (collapsed_) 
+	if (collapsed_)
 		return width_collapsed();
 
 	int widthCollapsed = width_collapsed();
@@ -178,8 +178,8 @@ void InsetCollapsable::draw_collapsed(Painter & pain,
 }
 
 
-void InsetCollapsable::draw(BufferView * bv, LyXFont const & f, 
-                            int baseline, float & x, bool cleared) const
+void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
+			    int baseline, float & x, bool cleared) const
 {
 	if (need_update != NONE) {
 		const_cast<InsetText *>(&inset)->update(bv, f, true);
@@ -208,9 +208,9 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 		x += static_cast<float>(scroll());
 
 	if (!cleared && (inset.need_update == InsetText::FULL ||
-	                 inset.need_update == InsetText::INIT ||
-	                 top_x != int(x) ||
-	                 top_baseline != baseline))
+			 inset.need_update == InsetText::INIT ||
+			 top_x != int(x) ||
+			 top_baseline != baseline))
 	{
 		// we don't need anymore to clear here we just have to tell
 		// the underlying LyXText that it should do the RowClear!
@@ -224,9 +224,9 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	top_baseline = baseline;
 
 	int const bl = baseline - ascent(bv, f) + ascent_collapsed();
-	
+
 	draw_collapsed(pain, bl, old_x);
-	inset.draw(bv, f, 
+	inset.draw(bv, f,
 			   bl + descent_collapsed() + inset.ascent(bv, f),
 			   x, cleared);
 	if (x < (top_x + button_length + TEXT_TO_INSET_OFFSET))
@@ -235,7 +235,7 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 
 
 void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
-                            unsigned int button)
+			    unsigned int button)
 {
 	UpdatableInset::edit(bv, xp, yp, button);
 
@@ -313,7 +313,7 @@ void InsetCollapsable::insetUnlock(BufferView * bv)
 
 
 void InsetCollapsable::insetButtonPress(BufferView * bv,
-                                        int x, int y, int button)
+					int x, int y, int button)
 {
 	if (!collapsed_ && (y > button_bottom_y)) {
 		LyXFont font(LyXFont::ALL_SANE);
@@ -327,7 +327,7 @@ void InsetCollapsable::insetButtonPress(BufferView * bv,
 
 
 bool InsetCollapsable::insetButtonRelease(BufferView * bv,
-                                          int x, int y, int button)
+					  int x, int y, int button)
 {
 	bool ret = false;
 	if ((button != 3) && (x >= 0)  && (x < button_length) &&
@@ -360,7 +360,7 @@ bool InsetCollapsable::insetButtonRelease(BufferView * bv,
 
 
 void InsetCollapsable::insetMotionNotify(BufferView * bv,
-                                         int x, int y, int state)
+					 int x, int y, int state)
 {
 	if (y > button_bottom_y) {
 		LyXFont font(LyXFont::ALL_SANE);
@@ -380,7 +380,7 @@ void InsetCollapsable::insetKeyPress(XKeyEvent * xke)
 
 
 int InsetCollapsable::latex(Buffer const * buf, ostream & os,
-                            bool fragile, bool free_spc) const
+			    bool fragile, bool free_spc) const
 {
 	return inset.latex(buf, os, fragile, free_spc);
 }
@@ -405,7 +405,7 @@ int InsetCollapsable::docbook(Buffer const * buf, ostream & os) const
 
 #if 0
 int InsetCollapsable::getMaxWidth(BufferView * bv,
-                                  UpdatableInset const * in) const
+				  UpdatableInset const * in) const
 {
 #if 0
 	int const w = UpdatableInset::getMaxWidth(bv, in);
@@ -425,7 +425,7 @@ int InsetCollapsable::getMaxWidth(BufferView * bv,
 
 
 void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
-                              bool reinit)
+			      bool reinit)
 {
 	if (in_update) {
 		if (reinit && owner()) {
@@ -444,7 +444,7 @@ void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
 
 UpdatableInset::RESULT
 InsetCollapsable::localDispatch(BufferView * bv, kb_action action,
-                                string const & arg)
+				string const & arg)
 {
 	UpdatableInset::RESULT result = inset.localDispatch(bv, action, arg);
 	if (result >= FINISHED)
@@ -463,7 +463,7 @@ bool InsetCollapsable::lockInsetInInset(BufferView * bv, UpdatableInset * in)
 
 
 bool InsetCollapsable::unlockInsetInInset(BufferView * bv, UpdatableInset * in,
-                                          bool lr)
+					  bool lr)
 {
 	if (&inset == in) {
 		bv->unlockInset(this);
@@ -535,7 +535,7 @@ UpdatableInset * InsetCollapsable::getFirstLockingInsetOfType(Inset::Code c)
 
 
 void InsetCollapsable::setFont(BufferView * bv, LyXFont const & font,
-                               bool toggleall, bool selectall)
+			       bool toggleall, bool selectall)
 {
 	inset.setFont(bv, font, toggleall, selectall);
 }
@@ -579,7 +579,7 @@ bool InsetCollapsable::nodraw() const
 	return inset.nodraw();
 }
 
- 
+
 int InsetCollapsable::scroll(bool recursive) const
 {
 	int sx = UpdatableInset::scroll(false);
@@ -627,7 +627,7 @@ Inset * InsetCollapsable::getInsetFromID(int id_arg) const
 void InsetCollapsable::open(BufferView * bv)
 {
 	if (!collapsed_) return;
-	
+
 	collapsed_ = false;
 	bv->updateInset(this, false);
 }
@@ -637,7 +637,7 @@ void InsetCollapsable::close(BufferView * bv) const
 {
 	if (collapsed_)
 		return;
-	
+
 	collapsed_ = true;
 	bv->updateInset(const_cast<InsetCollapsable *>(this), false);
 }
@@ -650,7 +650,7 @@ void InsetCollapsable::setLabel(string const & l) const
 
 
 bool InsetCollapsable::searchForward(BufferView * bv, string const & str,
-                                     bool cs, bool mw)
+				     bool cs, bool mw)
 {
 	bool found = inset.searchForward(bv, str, cs, mw);
 	if (first_after_edit && !found)
@@ -661,7 +661,7 @@ bool InsetCollapsable::searchForward(BufferView * bv, string const & str,
 
 
 bool InsetCollapsable::searchBackward(BufferView * bv, string const & str,
-                                      bool cs, bool mw)
+				      bool cs, bool mw)
 {
 	bool found = inset.searchBackward(bv, str, cs, mw);
 	if (first_after_edit && !found)
