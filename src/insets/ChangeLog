@@ -1,3 +1,9 @@
+
+2003-08-04  André Pönitz  <poenitz@gmx.net>
+
+	* insettext.[Ch] (updateLocal): remove 'what' argument by assuimng it
+  is 'FULL' all the time.
+
 2003-08-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetert.C (get_new_label): only add ... to the (closed) label

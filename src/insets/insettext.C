@@ -395,7 +395,7 @@ void InsetText::setUpdateStatus(int what) const
 }
 
 
-void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
+void InsetText::updateLocal(BufferView * bv, bool mark_dirty)
 {
 	if (!bv)
 		return;
@@ -404,7 +404,7 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 		collapseParagraphs(bv);
 
 	text_.partialRebreak();
-	setUpdateStatus(what);
+	setUpdateStatus(FULL);
 	bool flag = mark_dirty ||
 		(need_update != CURSOR && need_update != NONE) ||
 		text_.selection.set();
@@ -439,7 +439,7 @@ void InsetText::insetUnlock(BufferView * bv)
 	if (the_locking_inset) {
 		the_locking_inset->insetUnlock(bv);
 		the_locking_inset = 0;
-		updateLocal(bv, CURSOR_PAR, false);
+		updateLocal(bv, false);
 	}
 	no_selection = true;
 	locked = false;
@@ -460,12 +460,8 @@ void InsetText::insetUnlock(BufferView * bv)
 	} else if (paragraphs.size() > 1) {
 		text_.setCursor(boost::next(first_par), 0);
 	}
-#if 0
-	updateLocal(bv, code, false);
-#else
 	if (code != NONE)
 		setUpdateStatus(code);
-#endif
 }
 
 
@@ -503,7 +499,6 @@ void InsetText::lockInset(BufferView * /*bv*/, UpdatableInset * inset)
 	inset_pos = cpos();
 	inset_par = cpar();
 	inset_boundary = cboundary();
-	//updateLocal(bv, CURSOR, false);
 }
 
 
@@ -580,7 +575,7 @@ bool InsetText::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 		if (scroll())
 			scroll(bv, 0.0F);
 		else
-			updateLocal(bv, CURSOR, false);
+			updateLocal(bv, false);
 		return true;
 	}
 	return the_locking_inset->unlockInsetInInset(bv, inset, lr);
@@ -670,7 +665,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 			}
 			inset->localDispatch(cmd1);
 			if (the_locking_inset)
-				updateLocal(bv, CURSOR, false);
+				updateLocal(bv, false);
 			return;
 		}
 	}
@@ -688,13 +683,8 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 		text_.selection.cursor = text_.cursor;
 		text_.cursor.x_fix(text_.cursor.x());
 
-		if (text_.selection.set()) {
-			text_.clearSelection();
-			updateLocal(bv, FULL, false);
-		} else {
-			text_.clearSelection();
-			updateLocal(bv, CURSOR, false);
-		}
+		text_.clearSelection();
+		updateLocal(bv, false);
 
 		bv->owner()->setLayout(cpar()->layout()->name());
 
@@ -751,7 +741,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 		}
 #endif
 		ret = inset->localDispatch(cmd1);
-		updateLocal(bv, CURSOR_PAR, false);
+		updateLocal(bv, false);
 
 	}
 	return ret;
@@ -780,7 +770,7 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 	if (cur == text_.cursor)
 		return;
 	text_.setSelection();
-	updateLocal(bv, SELECTION, false);
+	updateLocal(bv, false);
 }
 
 
@@ -846,7 +836,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		if (drawFrame_ == LOCKED)
 			code = CURSOR | DRAW_FRAME;
 
-		updateLocal(bv, code, false);
+		updateLocal(bv, false);
 		// Tell the paragraph dialog that we've entered an insettext.
 		bv->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 		return DISPATCHED;
@@ -884,7 +874,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		if (result == DISPATCHED_NOUPDATE)
 			return result;
 		else if (result == DISPATCHED) {
-			updateLocal(bv, CURSOR_PAR, false);
+			updateLocal(bv, false);
 			return result;
 		} else if (result >= FINISHED) {
 			switch (result) {
@@ -894,13 +884,13 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 				break;
 			case FINISHED_UP:
 				if ((result = moveUp(bv)) >= FINISHED) {
-					updateLocal(bv, CURSOR, false);
+					updateLocal(bv, false);
 					bv->unlockInset(this);
 				}
 				break;
 			case FINISHED_DOWN:
 				if ((result = moveDown(bv)) >= FINISHED) {
-					updateLocal(bv, CURSOR, false);
+					updateLocal(bv, false);
 					bv->unlockInset(this);
 				}
 				break;
@@ -909,7 +899,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 				break;
 			}
 			the_locking_inset = 0;
-			updateLocal(bv, CURSOR, false);
+			updateLocal(bv, false);
 			// make sure status gets reset immediately
 			bv->owner()->clearMessage();
 			return result;
@@ -1242,7 +1232,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 	}
 
 	if (updwhat > 0)
-		updateLocal(bv, updwhat, updflag);
+		updateLocal(bv, updflag);
 	/// If the action has deleted all text in the inset, we need to change the
 	// language to the language of the surronding text.
 	if (!was_empty && paragraphs.begin()->empty() &&
@@ -1598,7 +1588,7 @@ bool InsetText::insertInset(BufferView * bv, InsetOld * inset)
 	inset->setOwner(this);
 	text_.insertInset(inset);
 	bv->fitCursor();
-	updateLocal(bv, CURSOR_PAR|CURSOR, true);
+	updateLocal(bv, true);
 	return true;
 }
 
@@ -1691,13 +1681,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 		text_.clearSelection();
 
 	bv->fitCursor();
-
-	bool flag = (selectall || text_.selection.set());
-
-	if (flag)
-		updateLocal(bv, FULL, true);
-	else
-		updateLocal(bv, CURSOR_PAR, true);
+	updateLocal(bv, true);
 }
 
 
@@ -1710,7 +1694,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool front)
 	inset->localDispatch(cmd);
 	if (!the_locking_inset)
 		return false;
-	updateLocal(bv, CURSOR, false);
+	updateLocal(bv, false);
 	return true;
 }
 
@@ -1742,7 +1726,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 	inset->localDispatch(cmd);
 	if (!the_locking_inset)
 		return false;
-	updateLocal(bv, CURSOR, false);
+	updateLocal(bv, false);
 	return true;
 }
 
@@ -1809,7 +1793,7 @@ void InsetText::setDrawFrame(BufferView * bv, DrawFrame how)
 	if (how != drawFrame_) {
 		drawFrame_ = how;
 		if (bv)
-			updateLocal(bv, DRAW_FRAME, false);
+			updateLocal(bv, false);
 	}
 }
 
@@ -1819,7 +1803,7 @@ void InsetText::setFrameColor(BufferView * bv, LColor::color col)
 	if (frame_color != col) {
 		frame_color = col;
 		if (bv)
-			updateLocal(bv, DRAW_FRAME, false);
+			updateLocal(bv, false);
 	}
 }
 
@@ -1940,7 +1924,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool /*force*/) const
 
 	text_.top_y(bv->screen().topCursorVisible(&text_));
 	if (!owner()) {
-		const_cast<InsetText*>(this)->updateLocal(bv, FULL, false);
+		const_cast<InsetText*>(this)->updateLocal(bv, false);
 		// this will scroll the screen such that the cursor becomes visible
 		bv->updateScrollbar();
 	} else {
@@ -2100,7 +2084,7 @@ void InsetText::selectSelectedWord(BufferView * bv)
 		return;
 	}
 	getLyXText(bv)->selectSelectedWord();
-	updateLocal(bv, SELECTION, false);
+	updateLocal(bv, false);
 }
 
 
@@ -2121,7 +2105,7 @@ bool InsetText::nextChange(BufferView * bv, lyx::pos_type & length)
 			locked = true;
 		text_.cursor = cur;
 		text_.setSelectionRange(length);
-		updateLocal(bv, SELECTION, false);
+		updateLocal(bv, false);
 	}
 	return result != lyx::find::SR_NOT_FOUND;
 }
@@ -2145,7 +2129,7 @@ bool InsetText::searchForward(BufferView * bv, string const & str,
 			locked = true;
 		text_.cursor = cur;
 		text_.setSelectionRange(str.length());
-		updateLocal(bv, SELECTION, false);
+		updateLocal(bv, false);
 	}
 	return result != lyx::find::SR_NOT_FOUND;
 }
@@ -2177,7 +2161,7 @@ bool InsetText::searchBackward(BufferView * bv, string const & str,
 			locked = true;
 		text_.cursor = cur;
 		text_.setSelectionRange(str.length());
-		updateLocal(bv, SELECTION, false);
+		updateLocal(bv, false);
 	}
 	return result != lyx::find::SR_NOT_FOUND;
 }

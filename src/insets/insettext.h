@@ -237,7 +237,7 @@ public:
 	ParagraphList paragraphs;
 protected:
 	///
-	void updateLocal(BufferView *, int what, bool mark_dirty);
+	void updateLocal(BufferView *, bool mark_dirty);
 	/// set parameters for an initial lock of this inset
 	void lockInset(BufferView *);
 	/// lock an inset inside this one
