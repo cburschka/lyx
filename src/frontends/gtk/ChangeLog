@@ -1,5 +1,11 @@
 2004-10-11  John Spray  <spray_john@users.sourceforge.net>
 
+	* GWorkArea.C: allow user to scroll only one half workarea height
+	off the end of the document, and make the scrollbar and mousewheel
+	consistant in this respect.
+
+2004-10-11  John Spray  <spray_john@users.sourceforge.net>
+
 	* The Changes dialog
 	* Dialogs.C, Makefile.am, GChanges.C, GChanges.h
 	* ControlChanges.[Ch]: make accept() and reject() return bool

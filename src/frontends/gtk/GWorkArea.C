@@ -317,7 +317,9 @@ void GWorkArea::setScrollbarParams(int height, int pos, int line_height)
 	}
 	adjustment->set_step_increment(line_height);
 	adjustment->set_page_increment(workAreaHeight - line_height);
-	adjustment->set_upper(height);
+	// Allow the user half a screen of blank at the end
+	// to make scrollbar consistant with centering the cursor
+	adjustment->set_upper(height + workAreaHeight / 2);
 	adjustment->set_page_size(workAreaHeight);
 	adjustment->set_value(pos);
 	adjustment->changed();
@@ -344,8 +346,14 @@ bool GWorkArea::onScrollWheel(GdkEventScroll * event)
 	if (event->direction == GDK_SCROLL_UP)
 		step *= -1.0f;
 
-	adjustment->set_value(adjustment->get_value() + step);
+	double target = adjustment->get_value() + step;
+	// Prevent the user getting a whole screen of blank when they
+	// try to scroll past the end of the doc
+	double max = adjustment->get_upper() - workHeight();
+	if (target > max)
+		target = max;
 
+	adjustment->set_value(target);
 	return true;
 }
 
