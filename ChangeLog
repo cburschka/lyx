@@ -1,5 +1,8 @@
 1999-12-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/examples/*: rename the tutorial examples to begin with the
+	two-letters language code.
+
 	* src/lyxfunc.C (getStatus): do not query current font if no
 	buffer exists.
 
