@@ -1,3 +1,8 @@
+2003-02-25  John Levon  <levon@movementarian.org>
+
+	* insetgraphicsParams.h:
+	* insetgraphics.C: fix bug #920 (don't load NoDisplay graphics)
+
 2003-02-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* insetquotes.C (dispString): remove use of acute accent for "'"
