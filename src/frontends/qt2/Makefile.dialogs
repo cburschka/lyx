@@ -8,6 +8,7 @@ DIALOGS = \
 	QCitation \
 	QDocument \
 	QError \
+	QERT \
 	QIndex \
 	QParagraph \
 	QPrint \
@@ -33,6 +34,8 @@ DIALOGSOURCES = \
 	QDocument.C QDocumentDialog.C \
 	QError.h QErrorDialog.h \
 	QError.C QErrorDialog.C \
+	QERT.h QERTDialog.h \
+	QERT.C QERTDialog.C \
 	QIndex.h QIndexDialog.h \
 	QIndex.C QIndexDialog.C \
 	QParagraph.h QParagraphDialog.h \
@@ -60,6 +63,7 @@ MOCDIALOGS = \
 	QCitationDialog_moc.C \
 	QDocumentDialog_moc.C \
 	QErrorDialog_moc.C \
+	QERTDialog_moc.C \
 	QIndexDialog_moc.C \
 	QParagraphDialog_moc.C \
 	QPrintDialog_moc.C \
@@ -85,6 +89,8 @@ UIDIALOGS = \
 	QDocumentDialogBase.C \
 	QErrorDialogBase.C \
 	QErrorDialogBase.h \
+	QERTDialogBase.C \
+	QERTDialogBase.h \
 	QIndexDialogBase.h \
 	QIndexDialogBase.C \
 	QParagraphDialogBase.h \
@@ -110,6 +116,7 @@ UIMOCDIALOGS = \
 	QCitationDialogBase_moc.C \
 	QDocumentDialogBase_moc.C \
 	QErrorDialogBase_moc.C \
+	QERTDialogBase_moc.C \
 	QIndexDialogBase_moc.C \
 	QParagraphDialogBase_moc.C \
 	QPrintDialogBase_moc.C \

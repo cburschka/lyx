@@ -1,6 +1,14 @@
 2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
+	* Makefile.dialogs:
+	* QERT.[Ch]:
+	* QERTDialog.[Ch]:
+	* ui/QERTDialog.ui: add ERT dialog
+ 
+2001-08-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C:
 	* Makefile.am:
 	* Makefile.dialogs: 
 	* QError.[Ch]:
