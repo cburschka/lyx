@@ -100,5 +100,5 @@ bool QSendto::isValid()
 		return false;
 
 	else return dialog_->formatLB->count() != 0 &&
-		!string(dialog_->commandCO->currentText()).empty();
+		!dialog_->commandCO->currentText().isEmpty();
 }

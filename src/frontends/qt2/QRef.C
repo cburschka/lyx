@@ -134,7 +134,7 @@ void QRef::setGotoRef()
 
 void QRef::gotoRef()
 {
-	string ref(dialog_->referenceED->text());
+	string ref(dialog_->referenceED->text().latin1());
 
 	if (at_ref_) {
 		// go back
@@ -155,7 +155,7 @@ void QRef::redoRefs()
 
 	// need this because Qt will send a highlight() here for
 	// the first item inserted
-	string const tmp(dialog_->referenceED->text());
+	string const tmp(dialog_->referenceED->text().latin1());
 
 	for (std::vector<string>::const_iterator iter = refs_.begin();
 		iter != refs_.end(); ++iter) {

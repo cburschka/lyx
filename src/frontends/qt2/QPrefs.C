@@ -97,8 +97,6 @@ void QPrefs::apply()
 {
 	LyXRC & rc(controller().rc());
 
-	// do something ...
-
 	QPrefLanguageModule * langmod(dialog_->languageModule);
 
 	// FIXME: remove rtl_support bool

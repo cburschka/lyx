@@ -56,5 +56,5 @@ void QIndex::apply()
 
 bool QIndex::isValid()
 {
-	return !string(dialog_->keywordED->text()).empty();
+	return !dialog_->keywordED->text().isEmpty();
 }

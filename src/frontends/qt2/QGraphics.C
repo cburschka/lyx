@@ -177,10 +177,10 @@ void QGraphics::update_contents()
 	} else {
 		// get the values from the inset
 		LyXLength anyLength;
-		string const xl(token(igp.bb,' ',0));
-		string const yl(token(igp.bb,' ',1));
-		string const xr(token(igp.bb,' ',2));
-		string const yr(token(igp.bb,' ',3));
+		string const xl(token(igp.bb, ' ', 0));
+		string const yl(token(igp.bb, ' ', 1));
+		string const xr(token(igp.bb, ' ', 2));
+		string const yr(token(igp.bb, ' ', 3));
 		if (isValidLength(xl, &anyLength)) {
 			dialog_->lbX->setText(tostr(anyLength.value()).c_str());
 			string const unit(unit_name[anyLength.unit()]);
@@ -299,16 +299,16 @@ void QGraphics::apply()
 {
 	InsetGraphicsParams & igp = controller().params();
 
-	igp.filename = dialog_->filename->text();
+	igp.filename = dialog_->filename->text().latin1();
 
 	// the bb section
 	igp.bb.erase();
 	if (controller().bbChanged) {
 		string bb;
-		string lbX(dialog_->lbX->text());
-		string lbY(dialog_->lbY->text());
-		string rtX(dialog_->rtX->text());
-		string rtY(dialog_->rtY->text());
+		string lbX(dialog_->lbX->text().latin1());
+		string lbY(dialog_->lbY->text().latin1());
+		string rtX(dialog_->rtX->text().latin1());
+		string rtY(dialog_->rtY->text().latin1());
 		int bb_sum =
 			strToInt(lbX) + strToInt(lbY) +
 			strToInt(rtX) + strToInt(rtX);
@@ -336,7 +336,7 @@ void QGraphics::apply()
 	igp.draft = dialog_->draftCB->isChecked();
 	igp.clip = dialog_->clip->isChecked();
 	igp.subcaption = dialog_->subfigure->isChecked();
-	igp.subcaptionText = dialog_->subcaption->text();
+	igp.subcaptionText = dialog_->subcaption->text().latin1();
 
 	switch (dialog_->showCB->currentItem()) {
 		case 0: igp.display = grfx::DefaultDisplay; break;
@@ -349,11 +349,11 @@ void QGraphics::apply()
 	if (!dialog_->displayCB->isChecked())
 		igp.display = grfx::NoDisplay;
 
-	string value(dialog_->width->text());
+	string value(dialog_->width->text().latin1());
 	if (dialog_->widthUnit->currentItem() > 0) {
 		// width/height combination
 		int const unitNo = getUnitNo(unit_name_gui,
-			string(dialog_->widthUnit->currentText()));
+			dialog_->widthUnit->currentText().latin1());
 		igp.width = LyXLength(value + unit_name_ltx[unitNo]);
 		igp.scale = 0.0;
 	} else {
@@ -361,18 +361,18 @@ void QGraphics::apply()
 		igp.scale = strToDbl(value);
 		igp.width = LyXLength();
 	}
-	value = string(dialog_->height->text());
+	value = dialog_->height->text().latin1();
 	int const unitNo = getUnitNo(unit_name_gui,
-		string(dialog_->heightUnit->currentText()));
+		dialog_->heightUnit->currentText().latin1());
 	igp.height = LyXLength(value + unit_name_ltx[unitNo]);
 
 	igp.keepAspectRatio = dialog_->aspectratio->isChecked();
 
 	igp.noUnzip = dialog_->unzipCB->isChecked();
 
-	igp.lyxscale = strToInt(string(dialog_->displayscale->text()));
+	igp.lyxscale = strToInt(dialog_->displayscale->text().latin1());
 
-	igp.rotateAngle = strToDbl(string(dialog_->angle->text()));
+	igp.rotateAngle = strToDbl(dialog_->angle->text().latin1());
 	while (igp.rotateAngle < -360.0)
 		igp.rotateAngle += 360.0;
 	while (igp.rotateAngle >  360.0)
@@ -384,13 +384,13 @@ void QGraphics::apply()
 		QGraphics::origin_ltx[dialog_->origin->currentItem()];
 
 	// more latex options
-	igp.special = dialog_->latexoptions->text();
+	igp.special = dialog_->latexoptions->text().latin1();
 }
 
 
 void QGraphics::getBB()
 {
-	string const filename(dialog_->filename->text());
+	string const filename(dialog_->filename->text().latin1());
 	if (!filename.empty()) {
 		string const bb(controller().readBB(filename));
 		if (!bb.empty()) {
@@ -412,7 +412,5 @@ void QGraphics::getBB()
 
 bool QGraphics::isValid()
 {
-	// FIXME: we need more here.
-	// why?? LaTeX needs a filename, the rest is user-specific  (Herbert)
 	return !string(dialog_->filename->text().latin1()).empty();
 }

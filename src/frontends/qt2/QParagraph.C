@@ -141,8 +141,8 @@ void QParagraph::apply()
 
 	VSpace const space_top =
 		setVSpaceFromWidgets(dialog_->spacingAbove->currentItem(),
-				     string(dialog_->valueAbove->text()),
-				     string(dialog_->unitAbove->currentText()),
+				     dialog_->valueAbove->text().latin1(),
+				     dialog_->unitAbove->currentText().latin1(),
 				     dialog_->keepAbove->isChecked());
 
 	params.spaceTop(space_top);
@@ -154,8 +154,8 @@ void QParagraph::apply()
 
 	VSpace const space_bottom =
 	setVSpaceFromWidgets(dialog_->spacingBelow->currentItem(),
-			     string(dialog_->valueBelow->text()),
-			     string(dialog_->unitBelow->currentText()),
+			     dialog_->valueBelow->text().latin1(),
+			     dialog_->unitBelow->currentText().latin1(),
 			     dialog_->keepBelow->isChecked());
 
 	params.spaceBottom(space_bottom);
@@ -198,7 +198,7 @@ void QParagraph::apply()
 		break;
 	case 4:
 		linespacing = Spacing::Other;
-		other = dialog_->linespacingValue->text();
+		other = dialog_->linespacingValue->text().latin1();
 		break;
 	}
 
