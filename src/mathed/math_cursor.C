@@ -45,7 +45,6 @@
 
 static MathedArray selarray;
 
-using std::cerr;
 using std::endl;
 
 // This was very smaller, I'll change it later
@@ -85,7 +84,7 @@ struct MathStackXIter {
 
 	MathedXIter * Item(int idx) {
 		if (idx + 1 > i)
-			cerr << "Wrong index: " << idx << " i: " << i << endl;
+			lyxerr << "Wrong index: " << idx << " i: " << i << endl;
 		return &item[i - idx - 1];
 	}
 
