@@ -405,7 +405,7 @@ bool saveParamsAsDefault(BufferParams const &params)
 	defaults.params = params;
 
 	// add an empty paragraph. Is this enough?
-	defaults.paragraph = new Paragraph;
+	defaults.paragraphs.set(new Paragraph);
 
 	return defaults.writeFile(defaults.fileName());
 }
@@ -746,7 +746,7 @@ bool FormDocument::class_apply()
 			setMinibuffer(lv_, _("Converting document to new document class..."));
 			int ret = CutAndPaste::SwitchLayoutsBetweenClasses(
 				old_class, params.textclass,
-				lv_->buffer()->paragraph,
+				&*(lv_->buffer()->paragraphs.begin()),
 				lv_->buffer()->params);
 			if (ret) {
 				string s;

@@ -522,7 +522,7 @@ bool BufferView::lockInset(UpdatableInset * inset)
 			}
 		}
 		// Then do a deep look of the inset and lock the right one
-		Paragraph * par = buffer()->paragraph;
+		Paragraph * par = &*(buffer()->paragraphs.begin());
 		int const id = inset->id();
 		while (par) {
 			InsetList::iterator it =

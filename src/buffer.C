@@ -146,14 +146,13 @@ const int LYX_FORMAT = 220;
 } // namespace anon
 
 Buffer::Buffer(string const & file, bool ronly)
-	: paragraph(0), niceFile(true), lyx_clean(true), bak_clean(true),
+	: niceFile(true), lyx_clean(true), bak_clean(true),
 	  unnamed(false), dep_clean(0), read_only(ronly),
 	  filename_(file), users(0)
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
 //	filename = file;
 	filepath_ = OnlyPath(file);
-//	paragraph = 0;
 //	lyx_clean = true;
 //	bak_clean = true;
 //	dep_clean = 0;
@@ -184,14 +183,7 @@ Buffer::~Buffer()
 		DestroyBufferTmpDir(tmppath);
 	}
 
-	Paragraph * par = paragraph;
-	Paragraph * tmppar;
-	while (par) {
-		tmppar = par->next();
-		delete par;
-		par = tmppar;
-	}
-	paragraph = 0;
+	paragraphs.clear();
 
 	// Remove any previewed LaTeX snippets assocoated with this buffer.
 	grfx::Previews::get().removeLoader(this);
@@ -379,7 +371,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 	if (!first_par)
 		first_par = par;
 
-	paragraph = first_par;
+	paragraphs.set(first_par);
 
 	if (unknown_layouts > 0) {
 		string s = _("Couldn't set the layout for ");
@@ -1848,7 +1840,7 @@ bool Buffer::writeFile(string const & fname) const
 
 	// this will write out all the paragraphs
 	// using recursive descent.
-	paragraph->writeFile(this, ofs, params, depth);
+	paragraphs.begin()->writeFile(this, ofs, params, depth);
 
 	// Write marker that shows file is complete
 	ofs << "\n\\the_end" << endl;
@@ -2123,7 +2115,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 
 void Buffer::writeFileAscii(ostream & ofs, int linelen)
 {
-	Paragraph * par = paragraph;
+	Paragraph * par = &*(paragraphs.begin());
 	while (par) {
 		ofs << asciiParagraph(par, linelen, par->previous() == 0);
 		par = par->next();
@@ -2171,7 +2163,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 	texrow.reset();
 	// The starting paragraph of the coming rows is the
 	// first paragraph of the document. (Asger)
-	texrow.start(paragraph, 0);
+	texrow.start(&*(paragraphs.begin()), 0);
 
 	if (!only_body && nice) {
 		os << "%% " << lyx_docversion << " created this file.  "
@@ -2598,7 +2590,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 		texrow.newline();
 	}
 
-	latexParagraphs(os, paragraph, 0, texrow);
+	latexParagraphs(os, &*(paragraphs.begin()), 0, texrow);
 
 	// add this just in case after all the paragraphs
 	os << endl;
@@ -2800,7 +2792,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	    << " -->\n";
 
 	Paragraph::depth_type depth = 0; // paragraph depth
-	Paragraph * par = paragraph;
+	Paragraph * par = &*(paragraphs.begin());
 	string item_name;
 	vector<string> environment_stack(5);
 
@@ -3215,7 +3207,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		return;
 	}
 
-	Paragraph * par = paragraph;
+	Paragraph * par = &*(paragraphs.begin());
 
 	niceFile = nice; // this will be used by Insetincludes.
 
@@ -3628,7 +3620,7 @@ int Buffer::runChktex()
 
 void Buffer::validate(LaTeXFeatures & features) const
 {
-	Paragraph * par = paragraph;
+	Paragraph * par = &*(paragraphs.begin());
 	LyXTextClass const & tclass = params.getLyXTextClass();
 
 	// AMS Style is at document level
@@ -3733,7 +3725,7 @@ vector<pair<string, string> > const Buffer::getBibkeyList() const
 	}
 
 	vector<StringPair> keys;
-	Paragraph * par = paragraph;
+	Paragraph * par = &*(paragraphs.begin());
 	while (par) {
 		if (par->bibkey) {
 			string const key = par->bibkey->getContents();
@@ -3833,7 +3825,7 @@ bool Buffer::dispatch(int action, string const & argument, bool * result)
 void Buffer::resizeInsets(BufferView * bv)
 {
 	/// then remove all LyXText in text-insets
-	Paragraph * par = paragraph;
+	Paragraph * par = &*(paragraphs.begin());
 	for (; par; par = par->next()) {
 	    par->resizeInsetsLyXText(bv);
 	}
@@ -3910,7 +3902,7 @@ Inset * Buffer::getInsetFromID(int id_arg) const
 Paragraph * Buffer::getParFromID(int id) const
 {
 	if (id < 0) return 0;
-	Paragraph * par = paragraph;
+	Paragraph * par = &*(paragraphs.begin());
 	while (par) {
 		if (par->id() == id) {
 			return par;
@@ -3927,7 +3919,7 @@ Paragraph * Buffer::getParFromID(int id) const
 
 ParIterator Buffer::par_iterator_begin()
 {
-	return ParIterator(paragraph);
+	return ParIterator(&*(paragraphs.begin()));
 }
 
 

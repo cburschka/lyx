@@ -2405,7 +2405,7 @@ Paragraph * LyXText::ownerParagraph() const
 	if (inset_owner) {
 		return inset_owner->paragraph();
 	}
-	return bv_owner->buffer()->paragraph;
+	return &*(bv_owner->buffer()->paragraphs.begin());
 }
 
 
@@ -2414,7 +2414,7 @@ void LyXText::ownerParagraph(Paragraph * p) const
 	if (inset_owner) {
 		inset_owner->paragraph(p);
 	} else {
-		bv_owner->buffer()->paragraph = p;
+		bv_owner->buffer()->paragraphs.set(p);
 	}
 }
 

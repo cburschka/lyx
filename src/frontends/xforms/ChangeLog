@@ -1,12 +1,17 @@
+2002-08-12  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* FormDocument.C (saveParamsAsDefault): ParagraphList changes
+	(class_apply): ditto
+
 2002-08-08  John Levon  <levon@movementarian.org>
 
 	* Menubar_pimpl.C:
 	* Toolbar_pimpl.C: lyxaction cleanup
- 
+
 2002-08-08  John Levon  <levon@movementarian.org>
 
 	* forms/form_thesaurus.fd: allow Esc to close dialog
- 
+
 2002-08-02  Angus Leeming  <leeming@lyx.org>
 
 	* FormInclude.C:
@@ -22,18 +27,18 @@
 2002-08-01  John Levon  <levon@movementarian.org>
 
 	* FormDocument.C: writeFile() change
- 
+
 2002-08-01  John Levon  <levon@movementarian.org>
 
 	* FormPreferences.h:
 	* FormPreferences.C:
 	* guiapi.C:
 	* forms/form_spellchecker.fd: remove options from spellchecker
- 
+
 2002-07-30  John Levon  <levon@movementarian.org>
 
 	* lyx_gui.C: implement remove_read_callback()
- 
+
 2002-07-26  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* XWorkArea.C (work_area_handler): change type of

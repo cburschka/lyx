@@ -181,7 +181,7 @@ bool BufferList::close(Buffer * buf)
 	if (buf->getUser())
 		buf->getUser()->insetUnlock();
 
-	if (buf->paragraph && !buf->isClean() && !quitting) {
+	if (!buf->paragraphs.empty() && !buf->isClean() && !quitting) {
 		if (buf->getUser())
 			buf->getUser()->owner()->prohibitInput();
 		string fname;
@@ -476,12 +476,12 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 			Alert::alert(_("Error!"), _("Unable to open template"),
 				   MakeDisplayPath(tname));
 			// no template, start with empty buffer
-			b->paragraph = new Paragraph;
-			b->paragraph->layout(b->params.getLyXTextClass().defaultLayout());
+			b->paragraphs.set(new Paragraph);
+			b->paragraphs.begin()->layout(b->params.getLyXTextClass().defaultLayout());
 		}
 	} else {  // start with empty buffer
-		b->paragraph = new Paragraph;
-			b->paragraph->layout(b->params.getLyXTextClass().defaultLayout());
+		b->paragraphs.set(new Paragraph);
+		b->paragraphs.begin()->layout(b->params.getLyXTextClass().defaultLayout());
 	}
 
 	if (!isNamed) {

@@ -76,7 +76,7 @@ extern int greek_kb_flag;
 void InsetText::saveLyXTextState(LyXText * t) const
 {
 	// check if my paragraphs are still valid
-	Paragraph * p = par;
+	Paragraph * p = &*(paragraphs.begin());
 	while (p) {
 		if (p == t->cursor.par())
 			break;
@@ -138,8 +138,8 @@ InsetText::InsetText(BufferParams const & bp)
 	: UpdatableInset(), lt(0), in_update(false), do_resize(0),
 	  do_reinit(false)
 {
-	par = new Paragraph;
-	par->layout(bp.getLyXTextClass().defaultLayout());
+	paragraphs.set(new Paragraph);
+	paragraphs.begin()->layout(bp.getLyXTextClass().defaultLayout());
 	init();
 }
 
@@ -148,7 +148,6 @@ InsetText::InsetText(InsetText const & in, bool same_id)
 	: UpdatableInset(in, same_id), lt(0), in_update(false), do_resize(0),
 	  do_reinit(false)
 {
-	par = 0;
 	init(&in, same_id);
 }
 
@@ -163,14 +162,14 @@ InsetText & InsetText::operator=(InsetText const & it)
 void InsetText::init(InsetText const * ins, bool same_id)
 {
 	if (ins) {
-		setParagraphData(ins->par, same_id);
+		setParagraphData(&*(ins->paragraphs.begin()), same_id);
 		autoBreakRows = ins->autoBreakRows;
 		drawFrame_ = ins->drawFrame_;
 		frame_color = ins->frame_color;
 		if (same_id)
 			id_ = ins->id_;
 	} else {
-		Paragraph * p = par;
+		Paragraph * p = &*(paragraphs.begin());
 		while (p) {
 			p->setInsetOwner(this);
 			p = p->next();
@@ -205,27 +204,19 @@ InsetText::~InsetText()
 
 	// NOTE
 
-	while (par) {
-		Paragraph * tmp = par->next();
-		delete par;
-		par = tmp;
-	}
+	paragraphs.clear();
 }
 
 
 void InsetText::clear()
 {
 	// This is a gross hack...
-	LyXLayout_ptr old_layout = par->layout();
+	LyXLayout_ptr old_layout = paragraphs.begin()->layout();
 
-	while (par) {
-		Paragraph * tmp = par->next();
-		delete par;
-		par = tmp;
-	}
-	par = new Paragraph;
-	par->setInsetOwner(this);
-	par->layout(old_layout);
+	paragraphs.clear();
+	paragraphs.set(new Paragraph);
+	paragraphs.begin()->setInsetOwner(this);
+	paragraphs.begin()->layout(old_layout);
 
 	reinitLyXText();
 	need_update = INIT;
@@ -247,7 +238,7 @@ void InsetText::write(Buffer const * buf, ostream & os) const
 
 void InsetText::writeParagraphData(Buffer const * buf, ostream & os) const
 {
-	par->writeFile(buf, os, buf->params, 0);
+	paragraphs.begin()->writeFile(buf, os, buf->params, 0);
 }
 
 
@@ -273,8 +264,10 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 			break;
 		}
 
+		Paragraph * tmp = &*(paragraphs.begin());
+		
 		if (const_cast<Buffer*>(buf)->
-			parseSingleLyXformat2Token(lex, par, return_par,
+			parseSingleLyXformat2Token(lex, tmp, return_par,
 						   token, pos, depth, font)) {
 			// the_end read this should NEVER happen
 			lex.printError("\\the_end read in inset! Error in document!");
@@ -282,8 +275,8 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 		}
 	}
 	if (!return_par)
-		return_par = par;
-	par = return_par;
+		return_par = &*(paragraphs.begin());
+	paragraphs.set(return_par);
 	while (return_par) {
 		return_par->setInsetOwner(this);
 		return_par = return_par->next();
@@ -377,7 +370,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	}
 
 	// no draw is necessary !!!
-	if ((drawFrame_ == LOCKED) && !locked && par->empty()) {
+	if ((drawFrame_ == LOCKED) && !locked && paragraphs.begin()->empty()) {
 		top_baseline = baseline;
 		x += width(bv, f);
 		if (need_update & CLEAR_FRAME)
@@ -570,7 +563,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 		return;
 	}
 
-	if (!autoBreakRows && par->next())
+	if (!autoBreakRows && paragraphs.begin()->next())
 		collapseParagraphs(bv);
 
 	if (the_locking_inset) {
@@ -625,7 +618,7 @@ void InsetText::setUpdateStatus(BufferView * bv, int what) const
 
 void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty) const
 {
-	if (!autoBreakRows && par->next())
+	if (!autoBreakRows && paragraphs.begin()->next())
 		collapseParagraphs(bv);
 	bool clear = false;
 	if (!lt) {
@@ -704,7 +697,7 @@ void InsetText::edit(BufferView * bv, int x, int y, mouse_button::state button)
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text (if different).
-	if (par->empty() && !par->next() &&
+	if (paragraphs.begin()->empty() && !paragraphs.begin()->next() &&
 		bv->getParentLanguage(this) != lt->current_font.language())
 	{
 		LyXFont font(LyXFont::ALL_IGNORE);
@@ -745,9 +738,9 @@ void InsetText::edit(BufferView * bv, bool front)
 		clear = true;
 	}
 	if (front)
-		lt->setCursor(bv, par, 0);
+		lt->setCursor(bv, &*(paragraphs.begin()), 0);
 	else {
-		Paragraph * p = par;
+		Paragraph * p = &*(paragraphs.begin());
 		while (p->next())
 			p = p->next();
 //		int const pos = (p->size() ? p->size()-1 : p->size());
@@ -757,7 +750,7 @@ void InsetText::edit(BufferView * bv, bool front)
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text (if different).
-	if (par->empty() && !par->next() &&
+	if (paragraphs.begin()->empty() && !paragraphs.begin()->next() &&
 		bv->getParentLanguage(this) != lt->current_font.language()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
@@ -807,10 +800,10 @@ void InsetText::insetUnlock(BufferView * bv)
 	} else
 		bv->owner()->setLayout(bv->text->cursor.par()->layout()->name());
 	// hack for deleteEmptyParMech
-	if (!par->empty()) {
-		lt->setCursor(bv, par, 0);
-	} else if (par->next()) {
-		lt->setCursor(bv, par->next(), 0);
+	if (!paragraphs.begin()->empty()) {
+		lt->setCursor(bv, &*(paragraphs.begin()), 0);
+	} else if (paragraphs.begin()->next()) {
+		lt->setCursor(bv, paragraphs.begin()->next(), 0);
 	}
 	if (clear)
 		lt = 0;
@@ -836,12 +829,12 @@ void InsetText::lockInset(BufferView * bv)
 		lt = getLyXText(bv);
 		clear = true;
 	}
-	lt->setCursor(bv, par, 0);
+	lt->setCursor(bv, &*(paragraphs.begin()), 0);
 	lt->clearSelection();
 	finishUndo();
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text (if different).
-	if (par->empty() && !par->next() &&
+	if (paragraphs.begin()->empty() && !paragraphs.begin()->next() &&
 		bv->getParentLanguage(this) != lt->current_font.language()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
@@ -875,7 +868,7 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 	if (!inset)
 		return false;
 	if (!the_locking_inset) {
-		Paragraph * p = par;
+		Paragraph * p = &*(paragraphs.begin());
 		int const id = inset->id();
 		while(p) {
 			InsetList::iterator it =
@@ -943,7 +936,7 @@ bool InsetText::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 
 bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 {
-	if (!autoBreakRows && par->next())
+	if (!autoBreakRows && paragraphs.begin()->next())
 		collapseParagraphs(bv);
 	if (inset == this)
 		return true;
@@ -1176,7 +1169,7 @@ void InsetText::insetMotionNotify(BufferView * bv, int x, int y, mouse_button::s
 UpdatableInset::RESULT
 InsetText::localDispatch(BufferView * bv, FuncRequest const & ev)
 {
-	bool was_empty = (par->empty() && !par->next());
+	bool was_empty = (paragraphs.begin()->empty() && !paragraphs.begin()->next());
 	no_selection = false;
 	UpdatableInset::RESULT
 		result= UpdatableInset::localDispatch(bv, ev);
@@ -1533,7 +1526,7 @@ InsetText::localDispatch(BufferView * bv, FuncRequest const & ev)
 		updateLocal(bv, updwhat, updflag);
 	/// If the action has deleted all text in the inset, we need to change the
 	// language to the language of the surronding text.
-	if (!was_empty && par->empty() && !par->next()) {
+	if (!was_empty && paragraphs.begin()->empty() && !paragraphs.begin()->next()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
 		font.setLanguage(bv->getParentLanguage(this));
 		setFont(bv, font, false);
@@ -1551,14 +1544,14 @@ InsetText::localDispatch(BufferView * bv, FuncRequest const & ev)
 int InsetText::latex(Buffer const * buf, ostream & os, bool moving_arg, bool) const
 {
 	TexRow texrow;
-	buf->latexParagraphs(os, par, 0, texrow, moving_arg);
+	buf->latexParagraphs(os, &*(paragraphs.begin()), 0, texrow, moving_arg);
 	return texrow.rows();
 }
 
 
 int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 {
-	Paragraph * p = par;
+	Paragraph * p = &*(paragraphs.begin());
 	unsigned int lines = 0;
 
 	while (p) {
@@ -1573,7 +1566,7 @@ int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 
 int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
-	Paragraph * p = par;
+	Paragraph * p = &*(paragraphs.begin());
 	unsigned int lines = 0;
 
 	vector<string> environment_stack(10);
@@ -1726,7 +1719,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 
 void InsetText::validate(LaTeXFeatures & features) const
 {
-	Paragraph * p = par;
+	Paragraph * p = &*(paragraphs.begin());
 	while (p) {
 		p->validate(features);
 		p = p->next();
@@ -1966,7 +1959,7 @@ vector<string> const InsetText::getLabelList() const
 {
 	vector<string> label_list;
 
-	Paragraph * tpar = par;
+	Paragraph * tpar = &*(paragraphs.begin());
 	while (tpar) {
 		InsetList::iterator beg = tpar->insetlist.begin();
 		InsetList::iterator end = tpar->insetlist.end();
@@ -1987,7 +1980,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 		the_locking_inset->setFont(bv, font, toggleall, selectall);
 		return;
 	}
-	if ((!par->next() && par->empty()) || cpar(bv)->empty()) {
+	if ((!paragraphs.begin()->next() && paragraphs.begin()->empty()) || cpar(bv)->empty()) {
 		getLyXText(bv)->setFont(bv, font, toggleall);
 		return;
 	}
@@ -2087,15 +2080,11 @@ void InsetText::setParagraphData(Paragraph * p, bool same_id)
 {
 	// we have to unlock any locked inset otherwise we're in troubles
 	the_locking_inset = 0;
-	while (par) {
-		Paragraph * tmp = par->next();
-		delete par;
-		par = tmp;
-	}
 
-	par = new Paragraph(*p, same_id);
-	par->setInsetOwner(this);
-	Paragraph * np = par;
+	paragraphs.clear();
+	paragraphs.set(new Paragraph(*p, same_id));
+	paragraphs.begin()->setInsetOwner(this);
+	Paragraph * np = &*(paragraphs.begin());
 	while (p->next()) {
 		p = p->next();
 		np->next(new Paragraph(*p, same_id));
@@ -2111,8 +2100,8 @@ void InsetText::setParagraphData(Paragraph * p, bool same_id)
 void InsetText::setText(string const & data, LyXFont const & font)
 {
 	clear();
-	for (unsigned int i=0; i < data.length(); ++i)
-		par->insertChar(i, data[i], font);
+	for (unsigned int i = 0; i < data.length(); ++i)
+		paragraphs.begin()->insertChar(i, data[i], font);
 	reinitLyXText();
 }
 
@@ -2223,7 +2212,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 		if (recursive && the_locking_inset)
 			return the_locking_inset->getLyXText(lbv, true);
 		LyXText * lt = cached_text.get();
-		lyx::Assert(lt && lt->firstRow()->par() == par);
+		lyx::Assert(lt && lt->firstRow()->par() == &*(paragraphs.begin()));
 		return lt;
 	}
 	// Super UGLY! (Lgb)
@@ -2296,7 +2285,7 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 	it->second.remove = true;
 	if (recursive) {
 		/// then remove all LyXText in text-insets
-		Paragraph * p = par;
+		Paragraph * p = &*(paragraphs.begin());
 		for (; p; p = p->next()) {
 			p->deleteInsetsLyXText(bv);
 		}
@@ -2314,7 +2303,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	}
 	do_resize = 0;
 //	lyxerr << "InsetText::resizeLyXText\n";
-	if (!par->next() && par->empty()) { // no data, resize not neccessary!
+	if (!paragraphs.begin()->next() && paragraphs.begin()->empty()) { // no data, resize not neccessary!
 		// we have to do this as a fixed width may have changed!
 		LyXText * t = getLyXText(bv);
 		saveLyXTextState(t);
@@ -2334,7 +2323,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 
 	LyXText * t = it->second.text.get();
 	saveLyXTextState(t);
-	for (Paragraph * p = par; p; p = p->next()) {
+	for (Paragraph * p = &*(paragraphs.begin()); p; p = p->next()) {
 		p->resizeInsetsLyXText(bv);
 	}
 	t->init(bv, true);
@@ -2373,7 +2362,8 @@ void InsetText::reinitLyXText() const
 		BufferView * bv = it->first;
 
 		saveLyXTextState(t);
-		for (Paragraph * p = par; p; p = p->next()) {
+		for (Paragraph * p = &*(paragraphs.begin());
+		     p; p = p->next()) {
 			p->resizeInsetsLyXText(bv);
 		}
 		t->init(bv, true);
@@ -2398,7 +2388,7 @@ void InsetText::removeNewlines()
 {
 	bool changed = false;
 
-	for (Paragraph * p = par; p; p = p->next()) {
+	for (Paragraph * p = &*(paragraphs.begin()); p; p = p->next()) {
 		for (int i = 0; i < p->size(); ++i) {
 			if (p->getChar(i) == Paragraph::META_NEWLINE) {
 				changed = true;
@@ -2486,7 +2476,7 @@ Paragraph * InsetText::getParFromID(int id) const
 	}
 	return result;
 #else
-	Paragraph * tmp = par;
+	Paragraph * tmp = &*(paragraphs.begin());
 	while (tmp) {
 		if (tmp->id() == id) {
 			return tmp;
@@ -2508,13 +2498,13 @@ Paragraph * InsetText::firstParagraph() const
 	if (the_locking_inset)
 		if ((result = the_locking_inset->firstParagraph()))
 			return result;
-	return par;
+	return &*(paragraphs.begin());
 }
 
 
 Paragraph * InsetText::getFirstParagraph(int i) const
 {
-	return (i == 0) ? par : 0;
+	return (i == 0) ? &*(paragraphs.begin()) : 0;
 }
 
 
@@ -2528,7 +2518,7 @@ LyXCursor const & InsetText::cursor(BufferView * bv) const
 
 Paragraph * InsetText::paragraph() const
 {
-	return par;
+	return &*(paragraphs.begin());
 }
 
 
@@ -2539,9 +2529,9 @@ void InsetText::paragraph(Paragraph * p)
 	// as we could have to insert a paragraph before this one and just
 	// link the actual to a new ones next and set it with this function
 	// and are done!
-	par = p;
+	paragraphs.set(p);
 	// set ourself as owner for all the paragraphs inserted!
-	Paragraph * np = par;
+	Paragraph * np = &*(paragraphs.begin());
 	while (np) {
 		np->setInsetOwner(this);
 		np = np->next();
@@ -2557,7 +2547,7 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 	if (id_arg == id())
 		return const_cast<InsetText *>(this);
 
-	Paragraph * lp = par;
+	Paragraph * lp = &*(paragraphs.begin());
 
 	while (lp) {
 		for (InsetList::iterator it = lp->insetlist.begin(),
@@ -2576,7 +2566,9 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 }
 
 
-WordLangTuple InsetText::selectNextWordToSpellcheck(BufferView * bv, float & value) const
+WordLangTuple
+InsetText::selectNextWordToSpellcheck(BufferView * bv,
+				      float & value) const
 {
 	bool clear = false;
 	WordLangTuple word;
@@ -2692,7 +2684,7 @@ bool InsetText::searchBackward(BufferView * bv, string const & str,
 		clear = true;
 	}
 	if (!locked) {
-		Paragraph * p = par;
+		Paragraph * p = &*(paragraphs.begin());
 		while (p->next())
 			p = p->next();
 		lt->setCursor(bv, p, p->size());
@@ -2728,25 +2720,25 @@ void InsetText::collapseParagraphs(BufferView * bv) const
 	BufferParams const & bparams = bv->buffer()->params;
 	LyXText * llt = getLyXText(bv);
 
-	while(par->next()) {
-		if (!par->empty() && !par->next()->empty() &&
-			!par->isSeparator(par->size() - 1))
+	while (paragraphs.begin()->next()) {
+		if (!paragraphs.begin()->empty() && !paragraphs.begin()->next()->empty() &&
+			!paragraphs.begin()->isSeparator(paragraphs.begin()->size() - 1))
 		{
-			par->insertChar(par->size(), ' ');
+			paragraphs.begin()->insertChar(paragraphs.begin()->size(), ' ');
 		}
 		if (llt->selection.set()) {
-			if (llt->selection.start.par() == par->next()) {
-				llt->selection.start.par(par);
+			if (llt->selection.start.par() == paragraphs.begin()->next()) {
+				llt->selection.start.par(&*(paragraphs.begin()));
 				llt->selection.start.pos(
-					llt->selection.start.pos() + par->size());
+					llt->selection.start.pos() + paragraphs.begin()->size());
 			}
-			if (llt->selection.end.par() == par->next()) {
-				llt->selection.end.par(par);
+			if (llt->selection.end.par() == paragraphs.begin()->next()) {
+				llt->selection.end.par(&*(paragraphs.begin()));
 				llt->selection.end.pos(
-					llt->selection.end.pos() + par->size());
+					llt->selection.end.pos() + paragraphs.begin()->size());
 			}
 		}
-		par->pasteParagraph(bparams);
+		paragraphs.begin()->pasteParagraph(bparams);
 	}
 	reinitLyXText();
 }
@@ -2773,7 +2765,7 @@ void InsetText::appendParagraphs(BufferParams const & bparams,
 		lastbuffer->next()->previous(lastbuffer);
 		lastbuffer = lastbuffer->next();
 	}
-	lastbuffer = par;
+	lastbuffer = &*(paragraphs.begin());
 	while (lastbuffer->next())
 		lastbuffer = lastbuffer->next();
 	if (!newpar->empty() && !lastbuffer->empty() &&

@@ -24,6 +24,7 @@
 #include "lyxvc.h"
 #include "bufferparams.h"
 #include "texrow.h"
+#include "ParagraphList.h"
 #include "paragraph.h"
 
 #include <boost/shared_ptr.hpp>
@@ -301,7 +302,7 @@ public:
 	    This is a linked list of paragraph, this list holds the
 	    whole contents of the document.
 	 */
-	Paragraph * paragraph;
+	ParagraphList paragraphs;
 
 	/// LyX version control object.
 	LyXVC lyxvc;
@@ -414,7 +415,7 @@ public:
 
 	///
 	inset_iterator inset_iterator_begin() {
-		return inset_iterator(paragraph);
+		return inset_iterator(&*paragraphs.begin());
 	}
 	///
 	inset_iterator inset_iterator_end() {
@@ -422,7 +423,7 @@ public:
 	}
 	///
 	inset_iterator inset_const_iterator_begin() const {
-		return inset_iterator(paragraph);
+		return inset_iterator(&*paragraphs.begin());
 	}
 	///
 	inset_iterator inset_const_iterator_end() const {

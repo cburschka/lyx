@@ -72,7 +72,7 @@ TocList const getTocList(Buffer const * buf)
 	TocList toclist;
 	if (!buf)
 		return toclist;
-	Paragraph * par = buf->paragraph;
+	Paragraph * par = &*(buf->paragraphs.begin());
 
 	LyXTextClass const & textclass = buf->params.getLyXTextClass();
 

@@ -22,6 +22,8 @@
 #include "inset.h"
 #include "LString.h"
 #include "LColor.h"
+#include "ParagraphList.h"
+
 #include "support/types.h"
 
 #include <boost/shared_ptr.hpp>
@@ -351,7 +353,7 @@ private:
 
 	/* Private structures and variables */
 	///
-	Paragraph * par;
+	ParagraphList paragraphs;
 	///
 	mutable bool locked;
 	///
