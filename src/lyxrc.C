@@ -478,13 +478,21 @@ int LyXRC::read(string const & filename)
 			break;
 			
 		case RC_KBMAP_PRIMARY:
-			if (lexrc.next())
-				primary_kbmap = lexrc.GetString();
+			if (lexrc.next()) 
+				if (!LibFileSearch("kbd", lexrc.GetString(), 
+						   "kmap").empty()) 
+					primary_kbmap = lexrc.GetString();
+				else 
+					lexrc.printError("LyX: Keymap `$$Token' not found");
 			break;
 			
 		case RC_KBMAP_SECONDARY:
-			if (lexrc.next())
-				secondary_kbmap = lexrc.GetString();
+			if (lexrc.next()) 
+				if (!LibFileSearch("kbd", lexrc.GetString(), 
+						   "kmap").empty()) 
+					secondary_kbmap = lexrc.GetString();
+				else 
+					lexrc.printError("LyX: Keymap `$$Token' not found");
 			break;
 			
 		case RC_FONT_ENCODING:
