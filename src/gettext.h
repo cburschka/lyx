@@ -34,41 +34,27 @@
 
 #include "LString.h"
 
-#  if HAVE_GETTEXT
-#    include <libintl.h>      // use the header already in the system *EK*
-#    ifdef HAVE_LOCALE_H
-#      include <locale.h>        // for LC_MESSAGES
-#    endif
-#  else
-#    include "../intl/libintl.h"
-#  endif
-
+///
 char const * _(char const *);
-
+///
 string const _(string const &);
+///
+void locale_init();
+///
+void gettext_init(string const & localedir);
 
-//#  define _(str) gettext(str)
-#  define N_(str) (str)              // for detecting static strings
-
-#  ifdef HAVE_LC_MESSAGES
-                                // LC_TIME, LC_CTYPE, even LC_ALL
-#    define locale_init() { setlocale (LC_MESSAGES, ""); setlocale (LC_CTYPE, ""); setlocale(LC_NUMERIC, "C"); }
-#  else
-#    define locale_init()
-#  endif
-#  define gettext_init() { bindtextdomain (PACKAGE, lyx_localedir.c_str()); \
-	textdomain (PACKAGE); }
 #else
 ///
 #  define _(str) (str)
 ///
 #  define S_(str) (str)
 ///
-#  define N_(str) (str)
-///
 #  define locale_init()
 ///
-#  define gettext_init()
+#  define gettext_init(package, localedir)
+
 #endif
+
+#  define N_(str) (str)              // for detecting static strings
 
 #endif

@@ -30,8 +30,8 @@ int main(int argc, char * argv[])
 		lyx_localedir = LOCALEDIR;
 	
 	// initialize for internationalized version *EK*
-	locale_init(); // macro
-	gettext_init(); // macro
+	locale_init(); 
+	gettext_init(lyx_localedir); 
 
 #ifdef __EMX__
 	_wildcard(&argc, &argv);

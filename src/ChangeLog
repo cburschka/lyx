@@ -1,3 +1,15 @@
+2001-03-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* main.C (main): pass lyx_localedir to gettext_init().
+
+	* gettext.h: remove locale_init and gettext_init macros
+
+	* gettext.C (locale_init): new function
+	(gettext_init): new function
+
+	* lyx_gui.C (LyXGUI): use locale_init() instead of explicit
+	setlocale().
+
 2001-03-07  Edwin Leuven  <leuven@fee.uva.nl>
 
         * Moved credits to frontends:

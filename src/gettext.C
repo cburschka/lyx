@@ -1,9 +1,28 @@
+// -*- C++ -*-
+/* This file is part of
+ * ====================================================== 
+ * 
+ *           LyX, The Document Processor
+ *        
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2001 The LyX Team.
+ *
+ * ====================================================== */
+
 #include <config.h>
 
-#include "LString.h"
-#include "gettext.h"
-
 #ifdef ENABLE_NLS
+
+#include "LString.h"
+
+#  if HAVE_GETTEXT
+#    include <libintl.h>      // use the header already in the system *EK*
+#    ifdef HAVE_LOCALE_H
+#      include <locale.h>        // for LC_MESSAGES
+#    endif
+#  else
+#    include "../intl/libintl.h"
+#  endif
 
 char const * _(char const * str)
 {
@@ -31,5 +50,21 @@ string const _(string const & str)
 	else
 		return string();
 }
+
+void locale_init()
+{
+#  ifdef HAVE_LC_MESSAGES
+	setlocale(LC_MESSAGES, "");
+	setlocale(LC_CTYPE, "");
+	setlocale(LC_NUMERIC, "C");
+#  endif
+}
+
+void gettext_init(string const & localedir)
+{
+	bindtextdomain(PACKAGE, localedir.c_str()); 
+	textdomain(PACKAGE);
+}
+
 
 #endif
