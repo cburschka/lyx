@@ -165,8 +165,8 @@ ac_prog=[$]0
 changequote(,)dnl
 srcdir=`echo $ac_prog|sed 's%/[^/][^/]*$%%'`
 srcdir=`echo "${srcdir}" | sed 's%\([^/]\)/*$%\1%'`
-test "x$srcdir" = "x$ac_prog" && srcdir=.
-if test ! -r ${srcdir}/chkconfig.ltx ; then
+test "x${srcdir}" = "x$ac_prog" && srcdir=.
+if test ! -r "${srcdir}"/chkconfig.ltx ; then
   echo "configure: error: cannot find chkconfig.ltx script"
   exit 1
 fi
@@ -409,9 +409,9 @@ if test ${lyx_check_config} = no ; then
 # for some reason. Run ./configure if you need to update it after a
 # configuration change.
 EOF
-  # build the list of available layout files and convert it to commands
-  # for chkconfig.ltx
-  for file in ./layouts/*.layout ${srcdir}/layouts/*.layout ; do
+  # build the list of available layout files and convert it to entries
+  # for the default textclass.lst file
+  for file in ./layouts/*.layout "${srcdir}"/layouts/*.layout ; do
     case $file in
       */\*.layout) ;;
       *) if test -r "$file" ; then
@@ -447,26 +447,34 @@ changequote(,)dnl
 else
   MSG_RESULT(auto)
   rm -f wrap_chkconfig.ltx chkconfig.vars chkconfig.classes chklayouts.tex
+  if ! test -r "chkconfig.ltx" ; then
+    ln -s "${srcdir}"/chkconfig.ltx .
+    rmlink=true
+  fi
   cat >wrap_chkconfig.ltx <<EOF
-\\newcommand\\srcdir{${srcdir}}
 ${linuxdoc_cmd}
 ${docbook_cmd}
-\\input{${srcdir}/chkconfig.ltx}
+\\input{chkconfig.ltx}
 EOF
   ## Construct the list of classes to test for.
   # build the list of available layout files and convert it to commands
   # for chkconfig.ltx
-  for file in ./layouts/*.layout ${srcdir}/layouts/*.layout ; do
+  for file in ./layouts/*.layout "${srcdir}"/layouts/*.layout ; do
     case $file in
       */\*.layout) ;;
-      *) test -r "$file" && echo $file ;;
+      *) if test -r "$file" ; then 
+           class=`echo $file | sed -e 's%^.*layouts/\(.*\)\.layout$%\1%'`
+	   # Generate the proper TestDocClass command for this layout
+	   grep '\\Declare\(LaTeX\|DocBook\|LinuxDoc\)Class' "$file" \
+	      | sed -e 's/^\# *\(.*\)$/\\TestDocClass{'${class}'}{\1}/' 
+	 fi ;;
     esac
-  done | sed -e 's%^.*layouts/\(.*\)\.layout$%\\TestDocClass{\1}%'\
-	     > chklayouts.tex
+  done > chklayouts.tex
 changequote([,])dnl
   [eval] ${LATEX} wrap_chkconfig.ltx 2>/dev/null | grep '^\+'
   [eval] `cat chkconfig.vars | sed 's/-/_/g'`
 changequote(,)dnl
+  test -n "${rmlink}" && rm -f chkconfig.ltx
 fi
 
 # Do we have all the files we need? Useful if latex did not run
@@ -486,7 +494,7 @@ changequote(,)dnl
 echo "creating doc/LaTeXConfig.lyx"
 echo "s/@chk_linuxdoc@/$chk_linuxdoc/g" >> chkconfig.sed
 echo "s/@chk_docbook@/$chk_docbook/g" >> chkconfig.sed
-sed -f chkconfig.sed ${srcdir}/doc/LaTeXConfig.lyx.in >doc/LaTeXConfig.lyx
+sed -f chkconfig.sed "${srcdir}"/doc/LaTeXConfig.lyx.in >doc/LaTeXConfig.lyx
 
 echo "creating $outfile"
 cat >$outfile <<EOF
@@ -649,7 +657,7 @@ for file in $outfile textclass.lst packages.lst \
 	    doc/LaTeXConfig.lyx xfonts/fonts.dir ; do
   # we rename the file first, so that we avoid comparing a file with itself
   mv $file $file.new
-  if test -r $srcdir/$file && diff $file.new $srcdir/$file >/dev/null 2>/dev/null ;
+  if test -r "${srcdir}"/$file && diff $file.new "${srcdir}"/$file >/dev/null 2>/dev/null ;
   then
     echo "removing $file, which is identical to the system global version"
     rm -f $file.new

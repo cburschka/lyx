@@ -35,24 +35,16 @@
 
 % we do not want to stop on errors
 \nonstopmode\makeatletter
-% Have we been called from the configure script?
-\@ifundefined{srcdir}
- {\message{%
-**** WARNING: For proper results, you should not run this script directly.^^J%
-**** Please use the `configure' script.^^J}
-  \newcommand\srcdir{.}}
- {\def\input@path{{\srcdir/}}}
 
 %%% Some useful macros.
 %   Several commands are defined to test for packages:
 %    \AddLayout{<layout>} adds an entry for <layout> in textclass.lst
 %    \AddVariable{<name>}{<value>} creates a new variable chk_<name>,
 %      and gives it the value <value>.
-%    \TestDocClass[<file>]{<name>} tests whether <name>.cls (or <file>,
-%      if it is provided) exists and creates a new entry with
-%      \AddLayout if this is the case. Note that you will probably not
-%      need to use this directly, since the configure script generates
-%      the needed macro calls automatically.
+%    \TestDocClass{<name>}{<command>} if layout <name> has not already
+%      been tested for, execute <command>. Note that you will
+%      probably not need to use this directly, since the configure
+%      script generates the needed macro calls automatically.
 %    \TestPackage[<file>]{<name>} tests whether <name>.sty (or <file>,
 %      if it is provided) exists. 
 %   Both commands call \AddVariable to give value 'yes' or 'no' to
@@ -95,13 +87,10 @@
   \fi}
 \newcommand{\TestPackage}[2][\default]{
   \TestItem[#1]{#2}{package}{sty}{\AddPackage{#2}}{}}
-\newcommand{\TestDocClass}[1]{
+\newcommand{\TestDocClass}[2]{
    \def\layoutname{#1}  % remember the name of the layout file
    \@ifundefined{layout@#1}
-     {\bgroup
-        \catcode`\#=9  % consider # as a space
-        \input{layouts/#1.layout}  % read the layout file
-      \egroup
+     {#2  % execute the command
       \global\@namedef{layout@#1}{}} 
      {} % we have already tried this one.
 }
@@ -109,7 +98,6 @@
   \TestItem[#1]{\layoutname}{document class}{cls}
            {\AddLayout[\firstelement]{\layoutname}{#2}{true}}
            {\AddLayout[\firstelement]{\layoutname}{#2}{false}}
-  \expandafter\endinput
 }
 \newcommand{\DeclareLinuxDocClass}[2][\default]{
   \message{^^J\prefix checking for linuxdoc class \layoutname... }
@@ -118,7 +106,6 @@
      \AddLayout[#1]{\layoutname}{#2}{false}}
     {\message{yes^^J}
      \AddLayout[#1]{\layoutname}{#2}{true}}
-  \expandafter\endinput
 }
 % Only for compatibility. Will be removed later.
 \let\DeclareSGMLClass=\DeclareDocBookClass
@@ -130,7 +117,6 @@
      \AddLayout[#1]{\layoutname}{#2}{false}}
     {\message{yes^^J}
      \AddLayout[#1]{\layoutname}{#2}{true}}
-  \expandafter\endinput
 }
 
 % Stolen from article.cls
