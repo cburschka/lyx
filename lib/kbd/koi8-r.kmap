@@ -1,5 +1,6 @@
 # keyboad mapping for Koi8-r 
 # by Nick Slussar, 1999 <nick@slu.spb.ru>
+# added by Vitaly Lipatov, 2001 (standart russian layout) <vitlav@mail.ru>
 
 \kmap q Ê
 \kmap w Ã
@@ -33,7 +34,13 @@
 \kmap m Ø
 \kmap "," Â
 \kmap "." À
-\kmap "/" £
+\kmap "/" "."
+\kmap "@" "\""
+\kmap "^" ":"
+\kmap "&" "?"
+\kmap "`" "£"
+\kmap "~" "³"
+\kmap "$" ";"
 
 
 \kmap Q ê
@@ -68,4 +75,4 @@
 \kmap M ø
 \kmap "<" â
 \kmap ">" à
-\kmap "?" ³
+\kmap "?" ","
