@@ -218,6 +218,8 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		 this , SLOT(setCustomPapersize(int)));
 	connect(paperModule->papersizeCO, SIGNAL(activated(int)),
 		 this , SLOT(setCustomPapersize(int)));
+	connect(paperModule->portraitRB, SIGNAL(toggled(bool)),
+		 this , SLOT(portraitChanged()));
 
 	connect(paperModule->papersizeCO, SIGNAL(activated(int)),
 		 this , SLOT(change_adaptor()));
@@ -333,6 +335,10 @@ void QDocumentDialog::enableSkip(bool skip)
 		setSkip(layoutModule->skipCO->currentItem());
 }
 
+void QDocumentDialog::portraitChanged()
+{
+	setMargins(paperModule->papersizeCO->currentItem());
+}
 
 void QDocumentDialog::setMargins(int papersize)
 {
@@ -340,7 +346,9 @@ void QDocumentDialog::setMargins(int papersize)
 	marginsModule->marginCO->clear();
 	marginsModule->marginCO->insertItem(qt_("Default"));
 	marginsModule->marginCO->insertItem(qt_("Custom"));
-	if (papersize == 6) {
+	bool a4size = (papersize == 6 || papersize == 0
+			&& lyxrc.default_papersize == BufferParams::PAPER_A4PAPER);
+	if (a4size && paperModule->portraitRB->isChecked()) {
 		marginsModule->marginCO->insertItem(qt_("Small margins"));
 		marginsModule->marginCO->insertItem(qt_("Very small margins"));
 		marginsModule->marginCO->insertItem(qt_("Very wide margins"));

@@ -584,7 +584,11 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 		bool const enable = ( fl_get_choice(paper_->choice_papersize) == 1
 					&& lyxrc.default_papersize == BufferParams::PAPER_A4PAPER )
 				|| fl_get_choice(paper_->choice_papersize) == 7;
-		setEnabled(paper_->choice_paperpackage, enable && fl_get_button(paper_->radio_portrait));
+		if (!enable)
+			fl_set_choice(paper_->choice_paperpackage,
+				BufferParams::PACKAGE_NONE + 1);
+		setEnabled(paper_->choice_paperpackage, 
+			enable && fl_get_button(paper_->radio_portrait));
 	}
 
 	return ButtonPolicy::SMI_VALID;

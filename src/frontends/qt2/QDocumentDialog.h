@@ -57,6 +57,7 @@ protected slots:
 	void setCustomMargins(int);
 	void setSkip(int);
 	void enableSkip(bool);
+	void portraitChanged();
 	void classChanged();
 
 protected:
