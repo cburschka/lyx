@@ -8,8 +8,10 @@
  * Full author contact details are available in file CREDITS
  */
 
-#include "config.h"
+#include <config.h>
+
 #include "format.h"
+#include "buffer.h"
 #include "lyxrc.h"
 #include "debug.h"
 #include "lyx_cb.h" // for ShowMessage() ... to be removed?
@@ -18,6 +20,7 @@
 
 #include "frontends/Alert.h" //to be removed?
 
+#include "support/lstrings.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/systemcall.h"

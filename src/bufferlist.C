@@ -13,6 +13,7 @@
 #include "bufferlist.h"
 #include "lyx_main.h"
 #include "lastfiles.h"
+#include "buffer.h"
 #include "debug.h"
 #include "lyxrc.h"
 #include "lyxtext.h"

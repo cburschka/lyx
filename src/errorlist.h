@@ -13,9 +13,9 @@
  * Full author contact details are available in file CREDITS
  */
 
+#include "LString.h"
 
 #include <vector>
-#include "support/lstrings.h"
 
 class Buffer;
 class TeXErrors;

@@ -29,6 +29,7 @@
 #include "support/forkedcall.h"
 #include "support/forkedcontr.h"
 #include "support/tostr.h"
+#include "support/lstrings.h"
 #include "support/lyxlib.h"
 
 #include <boost/bind.hpp>

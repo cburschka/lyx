@@ -14,6 +14,7 @@
 
 #include <queue>
 #include <vector>
+#include <algorithm>
 
 using std::queue;
 using std::vector;

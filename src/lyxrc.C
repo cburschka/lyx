@@ -28,6 +28,7 @@
 #include "support/tostr.h"
 #include "support/filetools.h"
 #include "support/LAssert.h"
+#include "support/lstrings.h"
 #include "support/userinfo.h"
 
 using std::ostream;

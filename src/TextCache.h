@@ -15,12 +15,12 @@
 #define TEXT_CACHE_H
 
 #include "LString.h"
-#include "lyxtext.h"
-#include "buffer.h"
 
 #include <iosfwd>
 #include <map>
 
+class Buffer;
+class LyXText;
 
 // This is only the very first implemetation and use of the TextCache,
 // operations on it needs to be put into a class or a namespace, that part

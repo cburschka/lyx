@@ -15,6 +15,7 @@
 #include "kbmap.h"
 #include "lyxrow.h"
 #include "bufferlist.h"
+#include "buffer.h"
 #include "BufferView.h"
 #include "lyxserver.h"
 #include "intl.h"

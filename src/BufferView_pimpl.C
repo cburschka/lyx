@@ -10,6 +10,7 @@
 
 #include "BufferView_pimpl.h"
 #include "bufferlist.h"
+#include "buffer.h"
 #include "bufferview_funcs.h"
 #include "lfuns.h"
 #include "debug.h"

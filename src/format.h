@@ -17,11 +17,11 @@
 
 
 
-#include "buffer.h"
 #include "LString.h"
-#include "support/lstrings.h"
 
 #include <vector>
+
+class Buffer;
 
 string const papersize(Buffer const * buffer) ;
 

@@ -14,6 +14,7 @@
 
 #include "TextCache.h"
 #include "buffer.h"
+#include "lyxtext.h"
 #include "bufferlist.h"
 #include "debug.h"
 
