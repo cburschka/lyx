@@ -577,8 +577,9 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			if (!argument.empty()) {
 				last_search = argument;
 				searched_string = argument;
-			} else
+			} else {
 				searched_string = last_search;
+			}
 
 			if (searched_string.empty())
 				break;

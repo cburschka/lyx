@@ -118,7 +118,7 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	LCursor safe = *this;
 
 	for ( ; size(); pop()) {
-		lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
+		//lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 		BOOST_ASSERT(pos() <= lastpos());
 		BOOST_ASSERT(idx() <= lastidx());
 		BOOST_ASSERT(par() <= lastpar());

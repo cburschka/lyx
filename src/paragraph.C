@@ -74,16 +74,12 @@ Paragraph::Paragraph()
 
 
 Paragraph::Paragraph(Paragraph const & par)
-	: y(0), height(0), text_(par.text_), begin_of_body_(par.begin_of_body_),
+	:	itemdepth(par.itemdepth), insetlist(par.insetlist),
+		rows(par.rows), y(par.y), height(par.height),
+		width(par.width), layout_(par.layout_),
+		text_(par.text_), begin_of_body_(par.begin_of_body_),
 	  pimpl_(new Paragraph::Pimpl(*par.pimpl_, this))
 {
-	itemdepth = 0;
-	// this is because of the dummy layout of the paragraphs that
-	// follow footnotes
-	layout_ = par.layout();
-
-	// copy everything behind the break-position to the new paragraph
-	insetlist = par.insetlist;
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it)
@@ -99,22 +95,24 @@ void Paragraph::operator=(Paragraph const & par)
 
 	lyxerr << "Paragraph::operator=()" << endl;
 
-	text_ = par.text_;
-
-	delete pimpl_;
-	pimpl_ = new Pimpl(*par.pimpl_, this);
-
 	itemdepth = par.itemdepth;
-	// this is because of the dummy layout of the paragraphs that
-	// follow footnotes
-	layout_ = par.layout();
 
-	// copy everything behind the break-position to the new paragraph
 	insetlist = par.insetlist;
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it)
 		it->inset = it->inset->clone().release();
+
+	rows = par.rows;
+	y = par.y;
+	height = par.height;
+	width = par.width;
+	layout_ = par.layout();
+	text_ = par.text_;
+	begin_of_body_ = par.begin_of_body_;
+
+	delete pimpl_;
+	pimpl_ = new Pimpl(*par.pimpl_, this);
 }
 
 
