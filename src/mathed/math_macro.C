@@ -119,7 +119,7 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 			h += std::max(c.ascent(), lasc) + 5;
 			c.draw(pain, x + lwid, h);
 			char str[] = "#1:";
-			str[1] += i;
+			str[1] += static_cast<char>(i);
 			drawStr(pain, LM_TC_TEX, size(), x + 3, h, str);
 			h += std::max(c.descent(), ldes) + 5;
 		}

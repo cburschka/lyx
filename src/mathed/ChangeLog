@@ -5,6 +5,12 @@
 
 	* math_fracbase.C: change parameter types to match MathInset
 
+2001-10-01  André Pönitz  <poenitz@gmx.net>
+
+	* math_cursor.[Ch]: remove local parInset() method
+
+	* math_macro.C: add a static_cast
+
 2001-09-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* math_cursor.C: fix type mismatches with what was declared in

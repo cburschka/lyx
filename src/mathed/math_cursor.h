@@ -245,8 +245,6 @@ public:
 	///  
 	pos_type last() const;
 	///
-	MathInset * parInset(int i) const;
-	///
 	MathMatrixInset * outerPar() const;
 	///
 	void seldump(char const * str) const;

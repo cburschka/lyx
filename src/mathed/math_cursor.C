@@ -174,11 +174,6 @@ bool MathCursor::popRight()
 }
 
 
-MathInset * MathCursor::parInset(int i) const
-{
-	return Cursor_[i].par_;
-}
-
 
 #if FILEDEBUG
 void MathCursor::dump(char const *) const
@@ -221,7 +216,7 @@ void MathCursor::dump(char const *) const {}
 bool MathCursor::isInside(MathInset const * p) const
 {
 	for (unsigned i = 0; i < Cursor_.size(); ++i) 
-		if (parInset(i) == p) 
+		if (Cursor_[i].par_ == p) 
 			return true;
 	return false;
 }
