@@ -129,7 +129,8 @@ LyX::LyX(int * argc, char * argv[])
 	}
 
 	if (first_start) {
-		string splash = i18nLibFileSearch("examples", "splash.lyx");
+		string const splash =
+			i18nLibFileSearch("examples", "splash.lyx");
 		lyxerr[Debug::INIT] << "Opening splash document "
 			       << splash << "..." << endl;
 		Buffer * loadb = bufferlist.loadLyXFile(splash);
@@ -286,7 +287,7 @@ void LyX::init(bool gui)
 			    << searchpath << endl;
 
 	string const filename = "chkconfig.ltx";
-	string temp = FileOpenSearch(searchpath, filename, string());
+	string const temp = FileOpenSearch(searchpath, filename, string());
 	system_lyxdir = OnlyPath(temp);
 
 	// Reduce "path/../path" stuff out of system directory
@@ -362,11 +363,12 @@ void LyX::init(bool gui)
 
 	// Check that user LyX directory is ok. We don't do that if
 	// running in batch mode.
-	if (gui)
+	if (gui) {
 		queryUserLyXDir(explicit_userdir);
-	else
+	} else {
 		first_start = false;
-
+	}
+	
 	//
 	// Shine up lyxrc defaults
 	//
@@ -587,7 +589,7 @@ bool LyX::readRcFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 	
-	string lyxrc_path = LibFileSearch(string(), name);
+	string const lyxrc_path = LibFileSearch(string(), name);
 	if (!lyxrc_path.empty()){
 	        lyxerr[Debug::INIT] << "Found " << name
 				    << " in " << lyxrc_path << endl;
@@ -598,8 +600,10 @@ bool LyX::readRcFile(string const & name)
 			return false;
 		}
 		return true;
-	} else
+	} else {
 	  	lyxerr[Debug::INIT] << "Could not find " << name << endl;
+	}
+	
 	return false;
 }
 
@@ -620,7 +624,7 @@ void LyX::readUIFile(string const & name)
 
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 	
-	string ui_path = LibFileSearch("ui", name, "ui");
+	string const ui_path = LibFileSearch("ui", name, "ui");
 
 	if (ui_path.empty()) {
 	  	lyxerr[Debug::INIT] << "Could not find " << name << endl;
@@ -665,7 +669,7 @@ void LyX::readLanguagesFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
-	string lang_path = LibFileSearch(string(), name);
+	string const lang_path = LibFileSearch(string(), name);
 	if (lang_path.empty()) {
 		lyxerr[Debug::INIT] << "Could not find " << name << endl;
 		languages.setDefaults();
@@ -680,7 +684,7 @@ void LyX::readEncodingsFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 
-	string enc_path = LibFileSearch(string(), name);
+	string const enc_path = LibFileSearch(string(), name);
 	if (enc_path.empty()) {
 		lyxerr[Debug::INIT] << "Could not find " << name << endl;
 		return;

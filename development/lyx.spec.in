@@ -1,4 +1,4 @@
-Summary: A WYSYWIG frontend to LaTeX
+Summary: A WYSIWYM (What You See Is What You Mean) frontend to LaTeX
 Name: @PACKAGE@
 Version: @VERSION@
 Release: 1
@@ -14,24 +14,21 @@ Requires: xforms >= 0.88, tetex-xdvi, tetex, tetex-latex
 Obsoletes: tetex-lyx
 
 %description
-LyX is a modern approach of writing documents with a computer
-which breaks with the tradition of the obsolete typewriter
-concept.  It is designed for people who want a professional
-output with a minimum of time and effort, without becoming specia-
-lists in typesetting.  Compared to common word processors LyX
-will increase the productivity a lot, since most of the type-
-setting will be done by the computer, not the author.  With LyX
-the author can concentrate on the contents of his writing,
-since the computer will take care of the look.
+LyX is a modern approach to writing documents which breaks with the
+obsolete "typewriter paradigm" of most other document preparation
+systems.
 
-%package -n tetex-lyx
-Summary: Files for LyX packaged for tetex
-Requires: lyx
-Group: Applications/Publishing
+It is designed for people who want professional quality output
+with a minimum of time and effort, without becoming specialists in
+typesetting.
 
-%description -n tetex-lyx
-This package contains the LaTeX files for LyX installed in the normal
-place that the Redhat tetex package is installed and would see it.
+The major innovation in LyX is WYSIWYM (What You See Is What You Mean).
+That is, the author focuses on content, not on the details of formatting.
+This allows for greater productivity, and leaves the final typesetting
+to the backends (like LaTeX) that are specifically designed for the task.
+
+With LyX, the author can concentrate on the contents of his writing,
+and let the computer take care of the rest.
 
 %prep
 %setup
@@ -107,7 +104,6 @@ texhash
 %attr(-,root,root) %doc ABOUT-NLS ANNOUNCE COPYING 
 %attr(-,root,root) %doc README UPGRADING ChangeLog NEWS
 %attr(-,root,root) %doc lib/CREDITS README.reLyX
-
 %attr(-,root,root) /usr/bin/*
 %attr(-,root,root) /usr/man/*
 %attr(-,root,root) /usr/share/locale/*/LC_MESSAGES/*
