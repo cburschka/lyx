@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file FormIndex.h
+ * \file xforms/FormIndex.h
  * Copyright 2000-2001 the LyX Team
  * Read the file COPYING
  *

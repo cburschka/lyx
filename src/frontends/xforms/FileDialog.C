@@ -1,5 +1,5 @@
 /**
- * \file FileDialog.C
+ * \file xforms/FileDialog.C
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *

@@ -42,7 +42,7 @@ class Qt2Base : public QObject, public ViewBC<Qt2BC>
 	Q_OBJECT
 public:
 	///
-	Qt2Base(ControlButtons &, const QString &);
+	Qt2Base(ControlButtons &, QString const &);
 	///
 	virtual ~Qt2Base() {}
 
@@ -83,7 +83,7 @@ protected slots:
 
 private:
 	/// Pointer to the actual instantiation of xform's form
-	virtual QDialog* form() const = 0;
+	virtual QDialog * form() const = 0;
 
 private:
 	/// dialog title, displayed by WM.
@@ -95,7 +95,7 @@ template <class Dialog>
 class Qt2DB: public Qt2Base
 {
 protected:
-	Qt2DB(ControlButtons &, const QString &);
+	Qt2DB(ControlButtons &, QString const &);
  
 	/// update the dialog 
 	virtual void update();
@@ -113,7 +113,7 @@ protected:
 
 
 template <class Dialog>
-Qt2DB<Dialog>::Qt2DB(ControlButtons & c, const QString & t)
+Qt2DB<Dialog>::Qt2DB(ControlButtons & c, QString const & t)
 	: Qt2Base(c, t)
 {}
 
@@ -166,14 +166,14 @@ public:
 
 protected:
 	///
-	Qt2CB(ControlButtons &, const QString&);
+	Qt2CB(ControlButtons &, QString const &);
 	/// The parent controller
 	Controller & controller() const;
 };
 
 
 template <class Controller, class Base>
-Qt2CB<Controller, Base>::Qt2CB(ControlButtons & c, const QString& t)
+Qt2CB<Controller, Base>::Qt2CB(ControlButtons & c, QString const & t)
 	: Base(c, t)
 {}
 

@@ -50,11 +50,12 @@ public:
 	Timeout & setTimeout(unsigned int msec);
 
 private:
+	///
 	struct Pimpl;
+	///
 	friend struct Pimpl;
 	/// implementation
 	Pimpl * pimpl_;
-
 	/// one-shot or repeating
 	Type type;
 	/// timeout value in milliseconds

@@ -1,5 +1,5 @@
 /**
- * \file FormToc.C
+ * \file xforms/FormToc.C
  * Copyright 2000-2001 The LyX Team.
  * See the file COPYING.
  *

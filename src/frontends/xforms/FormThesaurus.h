@@ -43,10 +43,10 @@ private:
 	FD_form_thesaurus * build_thesaurus();
 
 	/// set the replace word properly
-	void setReplace(const string & templ, const string & nstr);
+	void setReplace(string const & templ, string const & nstr);
 
 	/// update browser entries
-	void updateMeanings(const string & str);
+	void updateMeanings(string const & str);
 
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);

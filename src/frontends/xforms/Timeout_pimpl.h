@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file Timeout_pimpl.h
+ * \file xforms/Timeout_pimpl.h
  * Copyright 2001 LyX Team
  * Read COPYING
  *

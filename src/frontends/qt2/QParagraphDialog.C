@@ -26,9 +26,10 @@
 
 using std::endl;
 
-QParagraphDialog::QParagraphDialog(QParagraph * form, QWidget * parent, const char * name, bool modal, WFlags fl)
+QParagraphDialog::QParagraphDialog(QParagraph * form, QWidget * parent,
+				   char const * name, bool modal, WFlags fl)
 	: QParagraphDialogBase(parent, name, modal, fl), 
-	form_(form)
+	  form_(form)
 {
 	setCaption(name);
 }
@@ -49,7 +50,7 @@ void QParagraphDialog::setReadOnly(bool readonly)
 }
 
 
-void QParagraphDialog::setLabelWidth(const char *text)
+void QParagraphDialog::setLabelWidth(char const * text)
 {
 	// FIXME: should be cleverer here
 	if (!strcmp(_("Senseless with this layout!"),text)) {
@@ -64,20 +65,22 @@ void QParagraphDialog::setLabelWidth(const char *text)
 
 void QParagraphDialog::setAlign(int type)
 {
-	int item=0;
+	int item = 0;
 	switch (type) {
-		case LYX_ALIGN_BLOCK : item=0; break;
-		case LYX_ALIGN_LEFT : item=1; break;
-		case LYX_ALIGN_RIGHT : item=2; break;
-		case LYX_ALIGN_CENTER : item=3; break;
+		case LYX_ALIGN_BLOCK: item = 0; break;
+		case LYX_ALIGN_LEFT: item = 1; break;
+		case LYX_ALIGN_RIGHT: item = 2; break;
+		case LYX_ALIGN_CENTER: item = 3; break;
 		default:
-			item=0;
+			item = 0;
+			break;
 	}
 	alignment->setCurrentItem(item);
 }
 
 
-void QParagraphDialog::setChecks(bool labove, bool lbelow, bool pabove, bool pbelow, bool noindent)
+void QParagraphDialog::setChecks(bool labove, bool lbelow, bool pabove,
+				 bool pbelow, bool noindent)
 {
 	lineAbove->setChecked(labove);
 	lineBelow->setChecked(lbelow);
@@ -87,9 +90,11 @@ void QParagraphDialog::setChecks(bool labove, bool lbelow, bool pabove, bool pbe
 }
 
 
-void QParagraphDialog::setSpace(VSpace::vspace_kind kindabove, VSpace::vspace_kind kindbelow, bool keepabove, bool keepbelow)
+void QParagraphDialog::setSpace(VSpace::vspace_kind kindabove,
+				VSpace::vspace_kind kindbelow,
+				bool keepabove, bool keepbelow)
 {
-	int item=0;
+	int item = 0;
 	
 	switch (kindabove) {
 		case VSpace::NONE: item = 0; break;
@@ -126,9 +131,11 @@ void QParagraphDialog::setSpace(VSpace::vspace_kind kindabove, VSpace::vspace_ki
 
 
 void QParagraphDialog::setAboveLength(float val, float plus, float minus, 
-	LyXLength::UNIT vunit, LyXLength::UNIT punit, LyXLength::UNIT munit)
+				      LyXLength::UNIT vunit,
+				      LyXLength::UNIT punit,
+				      LyXLength::UNIT munit)
 {
-	if (vunit==LyXLength::UNIT_NONE) {
+	if (vunit == LyXLength::UNIT_NONE) {
 		spacingAboveValue->setText("");
 		spacingAbovePlus->setText("");
 		spacingAboveMinus->setText("");
@@ -146,9 +153,11 @@ void QParagraphDialog::setAboveLength(float val, float plus, float minus,
 
 
 void QParagraphDialog::setBelowLength(float val, float plus, float minus, 
-	LyXLength::UNIT vunit, LyXLength::UNIT punit, LyXLength::UNIT munit)
+				      LyXLength::UNIT vunit,
+				      LyXLength::UNIT punit,
+				      LyXLength::UNIT munit)
 {
-	if (vunit==LyXLength::UNIT_NONE) {
+	if (vunit == LyXLength::UNIT_NONE) {
 		spacingBelowValue->setText("");
 		spacingBelowPlus->setText("");
 		spacingBelowMinus->setText("");
@@ -164,11 +173,15 @@ void QParagraphDialog::setBelowLength(float val, float plus, float minus,
 }
 
 
-void QParagraphDialog::setExtra(float widthval, LyXLength::UNIT units, const string percent, int align, 
-	bool hfill, bool startminipage, Paragraph::PEXTRA_TYPE type)
+void QParagraphDialog::setExtra(float widthval, LyXLength::UNIT units,
+				string const & percent, int align, 
+				bool hfill, bool startminipage,
+				Paragraph::PEXTRA_TYPE type)
 {
-	if (type!=Paragraph::PEXTRA_NONE) {
-		lyxerr[Debug::GUI] << "percent : $" << percent << "$ widthval " << widthval << " unit " << long(units) << endl;
+	if (type != Paragraph::PEXTRA_NONE) {
+		lyxerr[Debug::GUI] << "percent : $" << percent << "$ widthval "
+				   << widthval << " unit " << long(units)
+				   << endl;
 		if (percent != "") {
 			extraWidth->setText(percent.c_str());
 			extraUnit->setCurrentItem(11);
@@ -245,7 +258,7 @@ LyXGlueLength QParagraphDialog::getBelowLength() const
 
 LyXLength QParagraphDialog::getExtraWidth() const
 {
-	if (extraUnit->currentItem()!=11) {
+	if (extraUnit->currentItem() != 11) {
 		LyXLength len( 
 			 (extraWidth->text()).toDouble(), 
 			 getLyXLength(extraUnit->currentItem())
@@ -269,7 +282,7 @@ string QParagraphDialog::getExtraWidthPercent() const
 }
 
 
-const char * QParagraphDialog::getLabelWidth() const 
+char const * QParagraphDialog::getLabelWidth() const 
 {
 	return labelWidth->text(); 
 }
@@ -387,7 +400,8 @@ VSpace::vspace_kind QParagraphDialog::getSpaceKind(int val) const
 		case 5: return VSpace::VFILL;
 		case 6: return VSpace::LENGTH;
 		default:
-			lyxerr[Debug::GUI] << "Unknown kind combo entry " << val << std::endl;
+			lyxerr[Debug::GUI] << "Unknown kind combo entry "
+					   << val << std::endl;
 		}
 	return VSpace::NONE;
 }
@@ -408,7 +422,8 @@ LyXLength::UNIT QParagraphDialog::getLyXLength(int val) const
 		case 9: return LyXLength::DD;
 		case 10: return LyXLength::CC;
 		default:
-			lyxerr[Debug::GUI] << "Unknown kind combo entry " << val << std::endl;
+			lyxerr[Debug::GUI] << "Unknown kind combo entry "
+					   << val << std::endl;
 	}
 	return LyXLength::UNIT_NONE;
 }
@@ -416,7 +431,7 @@ LyXLength::UNIT QParagraphDialog::getLyXLength(int val) const
 	
 int QParagraphDialog::getItem(LyXLength::UNIT unit) const 
 {
-	int item=0;
+	int item = 0;
 	switch (unit) {
 		case LyXLength::CM: item = 0; break;
 		case LyXLength::IN: item = 1; break;
@@ -432,7 +447,8 @@ int QParagraphDialog::getItem(LyXLength::UNIT unit) const
 		case LyXLength::MU: item = 0; break;
 		case LyXLength::UNIT_NONE: item = 0; break;
 		default:
-			lyxerr[Debug::GUI] << "Unknown unit " << long(unit) << endl;
+			lyxerr[Debug::GUI] << "Unknown unit " << long(unit)
+					   << endl;
 	}
 	return item;
 }
@@ -440,7 +456,7 @@ int QParagraphDialog::getItem(LyXLength::UNIT unit) const
 
 void QParagraphDialog::enable_extraOptions(int item)
 {
-	bool const enable = (item!=0);
+	bool const enable = (item != 0);
 	extraWidth->setEnabled(enable);
 	extraWidthL->setEnabled(enable);
 	extraUnit->setEnabled(enable);
@@ -450,13 +466,13 @@ void QParagraphDialog::enable_extraOptions(int item)
 
 void QParagraphDialog::enable_minipageOptions(int item)
 {
-	minipageOptions->setEnabled( item==1 );
+	minipageOptions->setEnabled( item == 1 );
 }
 
 
 void QParagraphDialog::enable_spacingAbove(int item)
 {
-	bool const enable = (item==6);
+	bool const enable = (item == 6);
 	spacingAboveValue->setEnabled(enable);
 	spacingAbovePlus->setEnabled(enable);
 	spacingAboveMinus->setEnabled(enable);
@@ -464,7 +480,7 @@ void QParagraphDialog::enable_spacingAbove(int item)
 	spacingAbovePlusUnit->setEnabled(enable);
 	spacingAboveMinusUnit->setEnabled(enable);
 	spacingAboveUnitsL->setEnabled(enable);
-	bool const enablel = ( (item==6) || (item!=6 && spacingBelow->currentItem()==6) );
+	bool const enablel = ( (item == 6) || (item != 6 && spacingBelow->currentItem() == 6) );
 	spacingValueL->setEnabled(enablel);
 	spacingPlusL->setEnabled(enablel);
 	spacingMinusL->setEnabled(enablel);
@@ -473,7 +489,7 @@ void QParagraphDialog::enable_spacingAbove(int item)
 
 void QParagraphDialog::enable_spacingBelow(int item)
 {
-	bool const enable = (item==6);
+	bool const enable = (item == 6);
 	spacingBelowValue->setEnabled(enable);
 	spacingBelowPlus->setEnabled(enable);
 	spacingBelowMinus->setEnabled(enable);
@@ -481,7 +497,7 @@ void QParagraphDialog::enable_spacingBelow(int item)
 	spacingBelowPlusUnit->setEnabled(enable);
 	spacingBelowMinusUnit->setEnabled(enable);
 	spacingBelowUnitsL->setEnabled(enable);
-	bool const enablel = ( (item==6) || (item!=6 && spacingAbove->currentItem()==6) );
+	bool const enablel = ( (item == 6) || (item!=6 && spacingAbove->currentItem() == 6) );
 	spacingValueL->setEnabled(enablel);
 	spacingPlusL->setEnabled(enablel);
 	spacingMinusL->setEnabled(enablel);

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file FormPrint.h
+ * \file xforms/FormPrint.h
  * Copyright 2002 the LyX Team
  * Copyright 1999-2001 Allan Rae
  * Read the file COPYING

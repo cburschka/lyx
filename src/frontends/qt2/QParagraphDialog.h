@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file QParagraphDialog.h
  * Copyright 2001 LyX Team
@@ -25,23 +26,28 @@ class QParagraphDialog : public QParagraphDialogBase
 { Q_OBJECT
 	  
 public:
-	QParagraphDialog(QParagraph * form, QWidget * parent = 0, const char * name = 0, bool modal = FALSE, WFlags fl = 0);
+	QParagraphDialog(QParagraph * form, QWidget * parent = 0,
+			 char const * name = 0, bool modal = FALSE,
+			 WFlags fl = 0);
 	~QParagraphDialog();
 	
 	void setReadOnly(bool);
-	void setLabelWidth(const char *);
+	void setLabelWidth(char const *);
 	void setAlign(int);
 	void setChecks(bool, bool, bool, bool, bool);
 	void setSpace(VSpace::vspace_kind, VSpace::vspace_kind, bool, bool);
-	void setAboveLength(float, float, float, LyXLength::UNIT, LyXLength::UNIT, LyXLength::UNIT);
-	void setBelowLength(float, float, float, LyXLength::UNIT, LyXLength::UNIT, LyXLength::UNIT);
-	void setExtra(float, LyXLength::UNIT, const string, int, bool, bool, Paragraph::PEXTRA_TYPE);
+	void setAboveLength(float, float, float,
+			    LyXLength::UNIT, LyXLength::UNIT, LyXLength::UNIT);
+	void setBelowLength(float, float, float,
+			    LyXLength::UNIT, LyXLength::UNIT, LyXLength::UNIT);
+	void setExtra(float, LyXLength::UNIT,
+		      string const &, int, bool, bool, Paragraph::PEXTRA_TYPE);
 	LyXGlueLength getAboveLength() const;
 	LyXGlueLength getBelowLength() const;
 	LyXLength getExtraWidth() const;
 	string getExtraWidthPercent() const;
 	// FIXME: return a std::string ! 
-	const char * getLabelWidth() const;
+	char const * getLabelWidth() const;
 	LyXAlignment getAlign() const;
 	bool getAboveKeep() const;
 	bool getBelowKeep() const;
@@ -56,17 +62,13 @@ public:
 	Paragraph::MINIPAGE_ALIGNMENT getExtraAlign() const;
 	bool getHfillBetween() const;
 	bool getStartNewMinipage() const;
-	
 protected:
 	void closeEvent (QCloseEvent * e);
-	
 private:
 	QParagraph * form_;
 	VSpace::vspace_kind getSpaceKind(int val) const;
 	LyXLength::UNIT getLyXLength(int val) const;
 	int getItem(LyXLength::UNIT unit) const;
-	
-	
 protected slots:
 	void apply_adaptor();
 	void cancel_adaptor();

@@ -1,5 +1,5 @@
 /**
- * \file Dialogs.C
+ * \file qt2/Dialogs.C
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *

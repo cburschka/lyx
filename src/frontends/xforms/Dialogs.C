@@ -1,5 +1,5 @@
 /**
- * \file Dialogs.C
+ * \file xforms/Dialogs.C
  * Copyright 1995 Matthias Ettrich
  * Copyright 1995-2001 The LyX Team.
  * See the file COPYING.

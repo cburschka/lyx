@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file FormRef.h
+ * \file xforms/FormRef.h
  * Copyright 2000-2001 the LyX Team
  * Read the file COPYING
  *

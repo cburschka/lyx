@@ -1,5 +1,5 @@
 /**
- * \file FormERT.C
+ * \file xforms/FormERT.C
  * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *

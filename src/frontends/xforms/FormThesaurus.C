@@ -27,9 +27,10 @@ using std::vector;
 
 typedef FormCB<ControlThesaurus, FormDB<FD_form_thesaurus> > base_class;
 
+
 FormThesaurus::FormThesaurus(ControlThesaurus & c)
 	: base_class(c, _("LyX: Thesaurus"), false),
-	clickline_(-1)
+	  clickline_(-1)
 {
 }
 

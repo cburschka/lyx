@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file FormERT.h
+ * \file xforms/FormERT.h
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *

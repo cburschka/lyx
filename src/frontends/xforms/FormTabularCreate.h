@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file FormTabularCreate.h
+ * \file xforms/FormTabularCreate.h
  * Copyright 1995 Matthias Ettrich
  * Copyright 1995-2001 the LyX Team
  * Read the file COPYING

@@ -78,9 +78,9 @@ void FormParagraph::changedParagraph()
 	Paragraph const * const p = getCurrentParagraph();
 	if (p == 0 || p == par_)
 		return;
-#ifdef WITH_WARNINGS
-#warning Please someone of you GUII people have a look at this!
-#endif
+
+	// OBS FIX LOOK HERE
+
 	// shouldn't we chage the par_ pointer too?
 	// anyway for me the below function does just nothing!
 	// (Jug 20020108)
@@ -133,7 +133,6 @@ void FormParagraph::build()
 
     // Create the contents of the unit choices
     // Don't include the "%" terms...
-#warning A bit dangerous... (Lgb)
     vector<string> units_vec = getLatexUnits();
 #if 0
     for (vector<string>::iterator it = units_vec.begin();

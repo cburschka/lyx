@@ -1,5 +1,5 @@
 /**
- * \file Timeout_pimpl.C
+ * \file qt2/Timeout_pimpl.C
  * Copyright 2001 LyX Team
  * Read COPYING
  *

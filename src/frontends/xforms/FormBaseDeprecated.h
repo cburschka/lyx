@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file FormBase.h
+ * \file FormBaseDeprecated.h
  * Copyright 2000-2002 the LyX Team
  * Read the file COPYING
  *

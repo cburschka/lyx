@@ -1,10 +1,12 @@
+// -*- C++ -*-
 /**
- * \file Timeout_pimpl.h
+ * \file qt2/Timeout_pimpl.h
  * Copyright 2001 LyX Team
  * Read COPYING
  *
  * \author John Levon
  */
+
 #ifndef TIMEOUTPIMPL_H
 #define TIMEOUTPIMPL_H
 

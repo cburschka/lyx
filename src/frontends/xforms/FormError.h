@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file FormError.h
+ * \file xforms/FormError.h
  * Copyright 2000-2002 the LyX Team
  * Read the file COPYING
  *

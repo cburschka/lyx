@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file ControlAboutLyX.h
+ * \file ControlAboutlyx.h
  * Copyright 2001 The LyX Team.
  * See the file COPYING.
  *

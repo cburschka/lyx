@@ -1,5 +1,5 @@
 /**
- * \file Alert_pimpl.C
+ * \file xforms/Alert_pimpl.C
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *

@@ -1,5 +1,5 @@
 /**
- * \file FormBase.C
+ * \file Toolbar_pimpl.C
  * Copyright 1995 Matthias Ettrich
  * Copyright 1995-2001 The LyX Team.
  * Copyright 1996-1998 Lars Gullik Bjønnes
