@@ -516,9 +516,7 @@ int BufferView::Pimpl::scrollDown(long time)
 
 void BufferView::Pimpl::workAreaKeyPress(KeySym keysym, unsigned int state)
 {
-#if FL_REVISION > 88
 	bv_->owner()->getLyXFunc()->processKeySym(keysym, state);
-#endif
 }
 
 
