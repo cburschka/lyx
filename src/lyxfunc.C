@@ -1408,8 +1408,8 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 					    << id << "]" << endl;
 			break;
 		} else {
-			lyxerr << "Paragraph " << par->id()
-			       << " found." << endl;
+			lyxerr[Debug::INFO] << "Paragraph " << par->id()
+					    << " found." << endl;
 		}
 
 		if (owner->view()->theLockingInset())

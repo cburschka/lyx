@@ -331,9 +331,9 @@ i18nLibFileSearch(string const & dir, string const & name,
 
 string const LibScriptSearch(string const & command)
 {
-	string script = command;
-	string args;
-	split(script, args, ' ');
+	string script;
+	string args = command;
+	split(args, script, ' ');
 	script = LibFileSearch("scripts", script);
 	if (script.empty())
 		return command;

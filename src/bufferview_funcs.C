@@ -198,7 +198,7 @@ string const currentState(BufferView * bv)
 				break;
 			}
 		}
-#if 1
+#ifdef DEVEL_VERSION
 		state << _(", Paragraph: ") << text->cursor.par()->id();
 #endif
 	}

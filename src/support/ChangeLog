@@ -2,6 +2,7 @@
 
 	* filetools.C (LibScriptSearch): new command. Searches for scripts
 	in lyx data directories.
+	(LibScriptSearch): try to use split() correctly.
 
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 

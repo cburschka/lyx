@@ -1,5 +1,10 @@
 2002-03-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* bufferview_funcs.C (currentState): only show paragraph number
+	for is DEVEL_VERSION is set.
+
+	* lyxfunc.C (dispatch): put warning in INFO channel
+
 	* MenuBackend.C (expand): translate the name of floats
 
 	* FloatList.C (FloatList): mark the float names for translation
