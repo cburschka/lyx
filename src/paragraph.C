@@ -80,28 +80,6 @@ Paragraph::Paragraph()
 }
 
 
-#ifndef NO_NEXT
-// This constructor inserts the new paragraph in a list.
-// It is placed after par.
-Paragraph::Paragraph(Paragraph * par)
-	: pimpl_(new Paragraph::Pimpl(this))
-{
-	enumdepth = 0;
-	itemdepth = 0;
-
-	// double linked list begin
-	next_ = par->next_;
-	if (next_)
-		next_->previous_ = this;
-	previous_ = par;
-	previous_->next_ = this;
-	// end
-
-	params().clear();
-}
-#endif
-
-
 Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this, same_ids))
 {
@@ -1407,7 +1385,7 @@ int Paragraph::id() const
 LyXLayout_ptr const & Paragraph::layout() const
 {
 	Inset * inset = inInset();
-	if (inset && inset->lyxCode() == Inset::ENVIRONMENT_CODE) 
+	if (inset && inset->lyxCode() == Inset::ENVIRONMENT_CODE)
 		return static_cast<InsetEnvironment*>(inset)->layout();
 	return layout_;
 }

@@ -58,11 +58,7 @@ public:
 
 	///
 	Paragraph();
-#ifndef NO_NEXT
-	/// this constructor inserts the new paragraph in a list
-	explicit
-	Paragraph(Paragraph * par);
-#endif
+
 	///
 	Paragraph(Paragraph const &, bool same_ids);
 	/// the destructor removes the new paragraph from the list
