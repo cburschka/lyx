@@ -97,7 +97,7 @@ string Token::asString() const
 
 string Token::asInput() const
 {
-	return cs_.size() ? cs_ + ' ' : string(1, char_);
+	return char_ ? string(1, char_) : '\\' + cs_ + ' ';
 }
 
 
@@ -311,7 +311,7 @@ string Parser::verbatimItem()
 				res += '{' + verbatimItem() + '}';
 			}
 			else
-				res += t.asString();
+				res += t.asInput();
 		}
 	}
 	return res;

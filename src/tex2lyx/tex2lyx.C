@@ -169,6 +169,7 @@ bool is_math_env(string const & name)
 bool is_heading(string const & name)
 {
 	return
+		name == "caption" ||
 		name == "title" ||
 		name == "author" ||
 		name == "paragraph" ||
@@ -180,6 +181,15 @@ bool is_heading(string const & name)
 		name == "subsection*" ||
 		name == "subsubsection" ||
 		name == "subsubsection*";
+}
+
+
+bool is_latex_command(string const & name)
+{
+	return
+ 		name == "label" ||
+ 		name == "index" ||
+ 		name == "printindex";
 }
 
 
@@ -259,6 +269,13 @@ void handle_package(string const & name, string const & options)
 }
 
 
+void handle_table(Parser & p, ostream & os)
+{
+	// \begin{table} has been read
+	//parse(end
+}
+
+
 string wrap(string const & cmd, string const & str)
 {
 	return OPEN + cmd + ' ' + str + CLOSE;
@@ -295,8 +312,7 @@ void end_preamble(ostream & os)
 	   << "\\papercolumns " << h_papercolumns << "\n"
 	   << "\\papersides " << h_papersides << "\n"
 	   << "\\paperpagestyle " << h_paperpagestyle << "\n"
-	   << "\\tracking_changes " << h_tracking_changes << "\n"
-	   << h_preamble.str() << "\n";
+	   << "\\tracking_changes " << h_tracking_changes << "\n";
 }
 
 
@@ -475,10 +491,15 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			string const body = p.verbatimItem();
 			// only non-lyxspecific stuff
 			if (name != "noun" && name != "tabularnewline") {
-				h_preamble << "\\" << t.cs() << "{" << name << "}";
+				ostream & out = in_preamble ? h_preamble : os;
+				if (!in_preamble)
+					begin_inset(os, "FormulaMacro\n");
+				out << "\\" << t.cs() << "{" << name << "}";
 				if (opts.size()) 
-					h_preamble << "[" << opts << "]";
-				h_preamble << "{" << body << "}\n";
+					out << "[" << opts << "]";
+				out << "{" << body << "}";
+				if (!in_preamble)
+					end_inset(os);
 			}
 		}
 
@@ -505,15 +526,27 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 		else if (t.cs() == "begin") {
 			string const name = p.getArg('{', '}');
 			active_environments.push(name);
-			if (name == "document") 
+			if (name == "document") {
 				end_preamble(os);
-			else if (name == "abstract")
+				parse(p, os, FLAG_END, mode);
+			} else if (name == "abstract") {
 				handle_par(os);
-			else if (is_math_env(name))
+				parse(p, os, FLAG_END, mode);
+			} else if (is_math_env(name)) {
 				begin_inset(os, "Formula ");	
-			else
 				os << "\\begin{" << name << "}";
-			parse(p, os, FLAG_END, mode);
+				parse(p, os, FLAG_END, MATH_MODE);
+			} else if (name == "table") {
+				handle_table(p, os);
+				parse(p, os, FLAG_END, mode);
+			} else if (name == "thebibliography") {
+				p.verbatimItem(); // swallow next arg
+				handle_table(p, os);
+				parse(p, os, FLAG_END, mode);
+			} else {
+				os << "\\begin{" << name << "}";
+				parse(p, os, FLAG_END, mode);
+			}
 		}
 
 		else if (t.cs() == "end") {
@@ -526,9 +559,14 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				active_environments.pop();
 				if (name == "document" || name == "abstract")
 					;
-				else if (is_math_env(name))
+				else if (name == "table")
+					;
+				else if (name == "thebibliography")
+					;
+				else if (is_math_env(name)) {
 					end_inset(os);	
-				else
+					os << "\\end{" << name << "}";
+				} else
 					os << "\\end{" << name << "}";
 				return;
 			}
@@ -638,14 +676,24 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			os << "\n\\emph default\n";
 		}
 
-		else if (t.cs() == "index") {
+		else if (is_latex_command(t.cs()) && mode == TEXT_MODE) {
 			begin_inset(os, "LatexCommand ");
+			os << '\\' << t.cs() << '{';
 			parse(p, os, FLAG_ITEM, TEXT_MODE);
+			os << '}';
 			end_inset(os);
 		}
 
+		else if (t.cs() == "bibitem") {
+			os << "\n\\layout Bibliography\n\\bibitem ";
+			string opt = p.getArg('[',']');
+			if (opt.size())
+				os << '[' << opt << ']';
+			os << '{' << p.getArg('{','}') << '}' << "\n\n";
+		}
+
 		else
-			(in_preamble ? h_preamble : os) << '\\' << t.asInput();
+			(in_preamble ? h_preamble : os) << t.asInput();
 
 		if (flags & FLAG_LEAVE) {
 			flags &= ~FLAG_LEAVE;
