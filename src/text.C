@@ -527,8 +527,6 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 			}
 
 			x += thiswidth;
-			//lyxerr << "i: " << i << " x: "
-			//<< x << " width: " << width << endl;
 			chunkwidth += thiswidth;
 		}
 
@@ -537,10 +535,11 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 		if (x >= width) {
 			// if no break before, break here
 			if (point == end || chunkwidth >= width - left) {
-				if (i > pos) {
+				if (i > pos)
 					point = i;
-					break;
-				}
+				else
+					point = i + 1;
+
 			}
 			// exit on last registered breakpoint:
 			break;
