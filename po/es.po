@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.3.0\n"
 "POT-Creation-Date: 2003-01-30 03:45+0100\n"
-"PO-Revision-Date: 2003-01-28 19:26+0100\n"
+"PO-Revision-Date: 2003-01-31 15:56+0100\n"
 "Last-Translator: Alfredo Braunstein <abraunst@ictp.trieste.it>\n"
 "Language-Team: es <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1390,7 +1390,7 @@ msgstr "Opciones extra:|#E"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2201
 msgid "Default path:|#p"
-msgstr "Ruta por defecto:"
+msgstr "Directorios por defecto:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2219
 #: ../src/frontends/xforms/forms/form_preferences.fd:2255
@@ -1893,20 +1893,17 @@ msgid "Replace|^R"
 msgstr "Reemplazar"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:80
-#, fuzzy
 msgid "Keyword:"
-msgstr "Clave"
+msgstr "Palabra clave:"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:98
-#, fuzzy
 msgid "Selection:|#S"
-msgstr "Selección:"
+msgstr "Selección:|#S"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:116
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
-#, fuzzy
 msgid "Thesaurus entries:"
-msgstr "Ítem sinonimos"
+msgstr "Sinonimos:"
 
 #: ../src/frontends/xforms/forms/form_url.fd:44
 msgid "URL:|#U"
@@ -3294,9 +3291,8 @@ msgid "Thesaurus"
 msgstr "Sinónimos"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
-#, fuzzy
 msgid "&Keyword:"
-msgstr "&Clave"
+msgstr "&Clave:"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
 msgid "Entry"
@@ -3307,9 +3303,8 @@ msgid "Select a related word"
 msgstr "Seleccionar una palabra relacionada"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
-#, fuzzy
 msgid "&Selection:"
-msgstr "Selección:"
+msgstr "&Selección:"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
@@ -8647,7 +8642,7 @@ msgstr "Seleccionar un archivo gráfico"
 
 #: src/frontends/controllers/ControlGraphics.C:92
 msgid "Clipart|#C#c"
-msgstr ""
+msgstr "Galería"
 
 #: src/frontends/controllers/ControlGraphics.C:157
 msgid "Top left"
@@ -9495,7 +9490,7 @@ msgstr "Elegir una de las unidades o largos relativos"
 
 #: src/frontends/xforms/Alert_pimpl.C:30
 msgid "Dismiss"
-msgstr ""
+msgstr "Cerrar"
 
 #: src/frontends/xforms/Alert_pimpl.C:37 src/frontends/xforms/Alert_pimpl.C:45
 #: src/frontends/xforms/Alert_pimpl.C:49
@@ -9797,7 +9792,7 @@ msgstr "Formato del documento"
 
 #: src/frontends/xforms/FormDocument.C:141
 msgid " Single | OneHalf | Double | Custom "
-msgstr ""
+msgstr " Simple | Uno y medio | Doble | Especial "
 
 #: src/frontends/xforms/FormDocument.C:161
 msgid " SmallSkip | MedSkip | BigSkip | Length "
@@ -9807,12 +9802,11 @@ msgstr ""
 msgid ""
 " Default | Custom | US letter | US legal | US executive | A3 | A4 | A5 | B3 "
 "| B4 | B5 "
-msgstr ""
+msgstr " Por defecto | Especial | Carta US | Oficio US | US executive | A3 | A4 | A5 | B3 | B4 | B5 "
 
 #: src/frontends/xforms/FormDocument.C:228
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Ninguno | Márgenes angostos | Márgenes muy angostos | Márgenes muy amplios "
+msgstr " Ninguno | Márgenes angostos | Márgenes muy angostos | Márgenes muy amplios "
 
 #: src/frontends/xforms/FormDocument.C:278
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
@@ -9826,7 +9820,7 @@ msgstr " Autor-año | Numérico "
 msgid ""
 " default | tiny | script | footnote | small | normal | large | Large | LARGE "
 "| huge | Huge"
-msgstr ""
+msgstr " por defecto | diminuto | índice | nota al pie | normal | grande | Grande | GRANDE | enorme | Enorme"
 
 #: src/frontends/xforms/FormDocument.C:339
 msgid "Document"
@@ -9842,6 +9836,8 @@ msgid ""
 "Your version of libXpm is older than 4.7.\n"
 "The `bullet' tab of the document dialog has been disabled"
 msgstr ""
+"Su versión de libXpm es anterior a 4.7.\n"
+"La pestaña 'marcas de ítems' del diálogo documento fué desactivada"
 
 #: src/frontends/xforms/FormDocument.C:1097
 msgid "Document is read-only. No changes to layout permitted."
@@ -9990,7 +9986,7 @@ msgid ""
 "Pass a filename like \"file.eps.gz\" to the LaTeX output. Useful when LaTeX "
 "should unzip the file. Needs an additional file like \"file.eps.bb\" which "
 "holds the values for the bounding box."
-msgstr ""
+msgstr "Pasar un nombre de archivo como \"file.eps.gz\" a la salida de LaTeX. Útil cuando LaTex debería descomprimir el archivo. Requiere un archivo adicional como \"file.eps.bb\" con los valores de la caja externa."
 
 #: src/frontends/xforms/FormGraphics.C:165
 msgid "Show image only as a rectangle of the original size."
@@ -9999,21 +9995,21 @@ msgstr "Mostrar imagen sólo como un rectángulo del tamaño original."
 #. set up the tooltips for the bounding-box-section
 #: src/frontends/xforms/FormGraphics.C:198
 msgid "The lower left x-value of the bounding box."
-msgstr ""
+msgstr "El valor X del extremo izquierdo inferior de la caja externa."
 
 #: src/frontends/xforms/FormGraphics.C:200
 msgid "The lower left y-value of the bounding box."
-msgstr ""
+msgstr "El valor Y del extremo izquierdo inferior de la caja externa."
 
 #: src/frontends/xforms/FormGraphics.C:202
 msgid ""
 "The upper right x-value of the bounding box; only this input field allows "
 "length + unit, e.g. 5cm and sets the unit for the other input fields."
-msgstr ""
+msgstr "El valor X del extremo derecho superior de la caja externa; solo este campo permite usar \"largo+unidad\" (p.ej. 5cm) y selecciona las unidades para los otros campos."
 
 #: src/frontends/xforms/FormGraphics.C:206
 msgid "The upper right y-value of the bounding box."
-msgstr ""
+msgstr "El valor Y del extremo superior derecho de la caja externa."
 
 #: src/frontends/xforms/FormGraphics.C:208
 msgid "Select unit for the bounding box values."
@@ -10024,7 +10020,7 @@ msgid ""
 "Read the image coordinates new from file. For (e)ps-file the bounding box is "
 "read, otherwise the imagesize in pixels. Default unit is \"bp\", the "
 "PostScript's b(ig) p(oint)."
-msgstr ""
+msgstr "Leer las coordenadas de la imagen de un archivo. Para archivos (e)ps se usará la caja externa, para los otros el tamaño de la imagen en pixels. Las unidades por defecto son \"bp\", el b(ig) p(oint) (punto grande) de PostScript."
 
 #: src/frontends/xforms/FormGraphics.C:216
 msgid "Clip image to the bounding box values."
@@ -10045,17 +10041,17 @@ msgstr "Origen de la rotación."
 
 #: src/frontends/xforms/FormGraphics.C:255
 msgid "Enables use of subfigure with its own caption."
-msgstr ""
+msgstr "Activa el uso de una subfigura con descripción propia."
 
 #: src/frontends/xforms/FormGraphics.C:257
 msgid "Insert the optional subfigure caption."
-msgstr ""
+msgstr "Insertar la descripción opcional de la subfigura."
 
 #: src/frontends/xforms/FormGraphics.C:259
 msgid ""
 "Add any additional LaTeX option, which is defined in the graphicx-package "
 "and not mentioned in the gui's tabfolders."
-msgstr ""
+msgstr "Agregar cualquier opción adicional LaTeX, definida en el paquete graphicx y no implementada en LyX."
 
 #. add the different tabfolders
 #: src/frontends/xforms/FormGraphics.C:264
@@ -10158,11 +10154,11 @@ msgstr "Largo inválido!"
 
 #: src/frontends/xforms/FormParagraph.C:132
 msgid "None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
-msgstr ""
+msgstr "Ninguno|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
 
 #: src/frontends/xforms/FormParagraph.C:136
 msgid "Default|Single|OneHalf|Double|Custom"
-msgstr ""
+msgstr "Por defecto|Simple|Uno y medio|Doble|Especial"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormParagraph.C:151
@@ -10282,7 +10278,7 @@ msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file. $$s can be "
 "used as path to LyX's own collection of conversion scripts."
-msgstr ""
+msgstr "El comando de conversión. $$i es el nombre del archivo de entrada, $$b el nombre sin su extensión, y $$o es el nombre del archivo de salida. $$s es el directorio de la colección de conversores de LyX"
 
 #: src/frontends/xforms/FormPreferences.C:978
 msgid ""
@@ -10305,21 +10301,21 @@ msgstr "Agregar"
 msgid ""
 "Add the current converter to the list of available converters. Note: you "
 "must then \"Apply\" the change."
-msgstr ""
+msgstr "Agregar el conversor actual a la lista de conversores disponibles. Nota: debe pulsar el boton \"Aplicar\" para que los cambios tengan efecto."
 
 #: src/frontends/xforms/FormPreferences.C:990
 msgid ""
 "Modify the contents of the current converter. Note: you must then \"Apply\" "
 "the change."
-msgstr ""
+msgstr "Modificar el contenido del conversor actual. Nota: debe pulsar el boton \"Aplicar\" para que los cambios tengan efecto."
 
 #: src/frontends/xforms/FormPreferences.C:1235
 msgid "All the currently defined formats known to LyX."
-msgstr ""
+msgstr "Todos los formatos actualmente definidos en LyX."
 
 #: src/frontends/xforms/FormPreferences.C:1238
 msgid "The format identifier."
-msgstr ""
+msgstr "El identificador de formato."
 
 #: src/frontends/xforms/FormPreferences.C:1241
 msgid "The format name as it will appear in the menus."
@@ -10327,45 +10323,45 @@ msgstr "El nombre del formato tal como aparecerá en los menúes."
 
 #: src/frontends/xforms/FormPreferences.C:1244
 msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr ""
+msgstr "La tecla rápida. Usar una letra del nombre. Distingue entre mayúsculas y minúsculas."
 
 #: src/frontends/xforms/FormPreferences.C:1248
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
-msgstr ""
+msgstr "Usado para reconocer el archivo. P.ej. ps, pdf, tex. "
 
 #: src/frontends/xforms/FormPreferences.C:1251
 msgid "The command used to launch the viewer application."
-msgstr ""
+msgstr "El comando para ejecutar la aplicación visora."
 
 #: src/frontends/xforms/FormPreferences.C:1254
 msgid ""
 "Remove the current format from the list of available formats. Note: you must "
 "then \"Apply\" the change."
-msgstr ""
+msgstr "Eliminar el conversor actual de la lista de conversores disponibles. Nota: debe pulsar el boton \"Aplicar\" para que los cambios tengan efecto."
 
 #: src/frontends/xforms/FormPreferences.C:1259
 msgid ""
 "Add the current format to the list of available formats. Note: you must then "
 "\"Apply\" the change."
-msgstr ""
+msgstr "Agregar el formato actual de la lista de formatos disponibles. Nota: debe pulsar el boton \"Aplicar\" para que los cambios tengan efecto."
 
 #: src/frontends/xforms/FormPreferences.C:1262
 msgid ""
 "Modify the contents of the current format. Note: you must then \"Apply\" the "
 "change."
-msgstr ""
+msgstr "Modificar el contenido del formato actual. Nota: debe pulsar el boton \"Aplicar\" para que los cambios tengan efecto."
 
 #: src/frontends/xforms/FormPreferences.C:1377
 msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
+msgstr "Imposible eliminar un formato si está siendo usado por un conversor. Eliminar primero el conversor."
 
 #: src/frontends/xforms/FormPreferences.C:1860
 msgid "Monochrome|Grayscale|Color|Do not display"
-msgstr ""
+msgstr "Monocromo|Grises|Color|No mostrar"
 
 #: src/frontends/xforms/FormPreferences.C:1949
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr ""
+msgstr " por defecto | carta US | oficio US | US executive | A3 | A4 |A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2190
 msgid "Default path"
@@ -10540,13 +10536,13 @@ msgstr "Buscar hacia atrás."
 #: src/frontends/xforms/FormSendto.C:49
 msgid ""
 "Export the buffer to this format before running the command below on it."
-msgstr ""
+msgstr "Exportar el documento a este formato antes de pasarlo por el comando de abajo."
 
 #: src/frontends/xforms/FormSendto.C:52
 msgid ""
 "Run this command on the buffer exported to the chosen format. $$FName will "
 "be replaced by the name of this file."
-msgstr ""
+msgstr "Ejecutar este comando en el documento exportado al formato elegido. $$FName seta reemplazado por el nombre de este archivo."
 
 #: src/frontends/xforms/FormShowFile.C:26
 msgid "Show File"
@@ -10638,7 +10634,7 @@ msgstr "Clases de LaTeX|Estilos de LaTeX|Estilos de BibTeX"
 msgid ""
 "Shows the installed classses and styles for LaTeX/BibTeX; available only if "
 "the corresponding LyX layout file exists."
-msgstr ""
+msgstr "Mostrar las clases y estilos instalados para LaTeX/BibTeX; disponible sólo si existen el archivo de estilos de LyX correspondiente."
 
 #: src/frontends/xforms/FormTexinfo.C:55
 msgid "Show full path or only file name."
@@ -10646,7 +10642,7 @@ msgstr "Mostrar ubicación completa o bien sólo nombre de archivo."
 
 #: src/frontends/xforms/FormTexinfo.C:58
 msgid "Runs the script \"TexFiles.sh\" to build new file lists."
-msgstr ""
+msgstr "Ejecutar el script \"TexFiles.sh\" para reconstruir la lista de archivos."
 
 #: src/frontends/xforms/FormTexinfo.C:61
 msgid "Double click to view contents of file."
@@ -10657,7 +10653,7 @@ msgid ""
 "Runs the script \"texhash\" which builds a new LaTeX tree. Needed if you "
 "install a new TeX class or style. You need write permissions for the TeX-"
 "dirs, often /var/lib/texmf and others."
-msgstr ""
+msgstr "Ejecuta el script \"texhash\" que reconstruye el árbol de LaTeX. Necesario si instala una clase o estilo de TeX nuevos. Necesitará permiso de escritura en los directorios de TeX (generalmente /var/lib/texmf y otros)."
 
 #: src/frontends/xforms/FormToc.C:36 src/insets/insettoc.C:33
 msgid "Table of Contents"
@@ -10684,37 +10680,37 @@ msgstr "Introducir ancho para el flotante."
 msgid ""
 "Forces float to the right in a paragraph if the page number is odd, and to "
 "the left if page number is even."
-msgstr ""
+msgstr "Obligar al flotante a ir a la derecha del párrafo si el número de página es impar, a la izquierda si es par."
 
 #: src/frontends/xforms/FormWrap.C:74
 msgid ""
 "Forces float to the left in a paragraph if the pagenumber is odd, and to the "
 "right if page number is even."
-msgstr ""
+msgstr "Obligar al flotante a ir a la izquierda del párrafo si el número de página es impar, a la derecha si es par."
 
 #: src/frontends/xforms/FormWrap.C:77
 msgid "Forces float to the left in the paragraph."
-msgstr ""
+msgstr "Obligar al flotante a ir a la izquierda del párrafo."
 
 #: src/frontends/xforms/FormWrap.C:79
 msgid "Forces float to the right in the paragraph."
-msgstr ""
+msgstr "Obligar al flotante a ir a la derecha del párrafo.<"
 
 #: src/frontends/xforms/XMiniBuffer.C:99
 msgid "[End of history]"
-msgstr ""
+msgstr "[Fin de la historia]"
 
 #: src/frontends/xforms/XMiniBuffer.C:113
 msgid "[Beginning of history]"
-msgstr ""
+msgstr "[Inicio de la historia]"
 
 #: src/frontends/xforms/XMiniBuffer.C:127
 msgid "[no match]"
-msgstr ""
+msgstr "[ninguna coincidencia]"
 
 #: src/frontends/xforms/XMiniBuffer.C:133
 msgid "[only completion]"
-msgstr ""
+msgstr "[única coincidencia]"
 
 #: src/frontends/xforms/combox.C:517
 msgid "Done"
@@ -10835,7 +10831,7 @@ msgstr "Operación imposible!"
 
 #: src/insets/insetert.C:249
 msgid "Not permitted to change font-types inside ERT-insets!"
-msgstr ""
+msgstr "Está prohibido cambiar tipografía dentro de los insets ERT!"
 
 #: src/insets/insetert.C:250 src/insets/insettabular.C:2092
 #: src/insets/insettext.C:1413
@@ -10860,12 +10856,12 @@ msgstr "flotante:"
 
 #: src/insets/insetfloatlist.C:54
 msgid "ERROR: Nonexistent float type!"
-msgstr ""
+msgstr "ERROR: Tipo de flotante inexistente!"
 
 #: src/insets/insetfloatlist.C:132
 #, c-format
 msgid "List of %1$s"
-msgstr ""
+msgstr "Lista de %1$s"
 
 #: src/insets/insetfloatlist.C:138
 msgid "List of "
@@ -10877,11 +10873,11 @@ msgstr "nota al pie"
 
 #: src/insets/insetfoot.C:60
 msgid "Opened Footnote Inset"
-msgstr ""
+msgstr "Inset de nota al pie abierto"
 
 #: src/insets/insetgraphics.C:225
 msgid "Waiting for draw request to start loading..."
-msgstr ""
+msgstr "Esperando por un pedido de dibujo para empezar a cargar..."
 
 #: src/insets/insetgraphics.C:228
 msgid "Loading..."
@@ -10938,11 +10934,11 @@ msgstr "Imposible convertir imagen (¿el archivo no existe?)"
 #: src/insets/insetgraphics.C:679
 #, c-format
 msgid "No information for converting from %1$s to %2$s"
-msgstr ""
+msgstr "No hay información dispobible para convertir de %1$s a %2$s"
 
 #: src/insets/insetgraphics.C:683
 msgid "No information for converting from "
-msgstr ""
+msgstr "No hay información dispobible para convertir de "
 
 #: src/insets/insetgraphics.C:775
 #, c-format
@@ -11032,15 +11028,15 @@ msgstr "Número de página textual"
 
 #: src/insets/insetref.C:120 src/mathed/ref_inset.C:129
 msgid "TextPage: "
-msgstr ""
+msgstr "Página de texto: "
 
 #: src/insets/insetref.C:121 src/mathed/ref_inset.C:130
 msgid "Standard+Textual Page"
-msgstr ""
+msgstr "Estándar+Página de texto"
 
 #: src/insets/insetref.C:121 src/mathed/ref_inset.C:130
 msgid "Ref+Text: "
-msgstr ""
+msgstr "Referencia+Texto: "
 
 #: src/insets/insetref.C:122 src/mathed/ref_inset.C:131
 msgid "PrettyRef"
@@ -11052,19 +11048,19 @@ msgstr ""
 
 #: src/insets/insettabular.C:553
 msgid "Opened Tabular Inset"
-msgstr ""
+msgstr "Inset de tabla abierto"
 
 #: src/insets/insettabular.C:2091
 msgid "Multicolumns can only be horizontally."
-msgstr ""
+msgstr "Multicolumna puede ser usado sólo horizontalmente."
 
 #: src/insets/insettext.C:666
 msgid "Opened Text Inset"
-msgstr ""
+msgstr "Inset de texto abierto"
 
 #: src/insets/insettext.C:1412
 msgid "Cannot include more than one paragraph!"
-msgstr ""
+msgstr "Imposible incluir más de un párrafo!"
 
 #: src/insets/insettext.C:1487 src/text3.C:1130
 msgid "Layout "
@@ -11076,11 +11072,11 @@ msgstr " desconocido:"
 
 #: src/insets/insettext.C:1540 src/text3.C:912
 msgid "Unknown spacing argument: "
-msgstr ""
+msgstr "Argumento de espaciado no reconocido: "
 
 #: src/insets/insettext.C:1659
 msgid "Error: LatexType Command not allowed here.\n"
-msgstr ""
+msgstr "Error: No está permitido un argumento LatexType aquí.\n"
 
 #: src/insets/insettheorem.C:39
 msgid "theorem"
@@ -11184,15 +11180,15 @@ msgstr "pheight%"
 
 #: src/lyx_cb.C:85
 msgid "Save failed. Rename and try again?"
-msgstr ""
+msgstr "El guardado falló. Cambiar el nombre y reintentar?"
 
 #: src/lyx_cb.C:87
 msgid "(If not, document is not saved.)"
-msgstr ""
+msgstr "(Si no, el documento no será guardado.)"
 
 #: src/lyx_cb.C:108
 msgid "Choose a filename to save document as"
-msgstr ""
+msgstr "Elegir un nombre de archivo para guardar el documento"
 
 #: src/lyx_cb.C:112 src/lyxfunc.C:1644
 msgid "Templates|#T#t"
@@ -11208,7 +11204,7 @@ msgstr "¿Guardar de todas maneras?"
 
 #: src/lyx_cb.C:148
 msgid "Another document with same name open!"
-msgstr ""
+msgstr "Hay otro documento abierto con el mismo nombre!"
 
 #: src/lyx_cb.C:150
 msgid "Replace with current document?"
@@ -11232,48 +11228,48 @@ msgstr "Reemplazar archivo?"
 
 #: src/lyx_cb.C:180
 msgid "Document could not be saved!"
-msgstr ""
+msgstr "El documento no pudo ser guardado!"
 
 #: src/lyx_cb.C:181
 msgid "Holding the old name."
-msgstr ""
+msgstr "Se mantendrá el nombre anterior."
 
 #: src/lyx_cb.C:195
 msgid "Chktex does not work with SGML derived documents."
-msgstr ""
+msgstr "Chktex no funciona con documentos derivados de SGML."
 
 #: src/lyx_cb.C:204
 msgid "No warnings found."
-msgstr ""
+msgstr "No se encontraron advertencias."
 
 #: src/lyx_cb.C:206
 msgid "One warning found."
-msgstr ""
+msgstr "Se encontró una advertencia."
 
 #: src/lyx_cb.C:207
 msgid "Use `Navigate->Error' to find it."
-msgstr ""
+msgstr "Usar \"Navegación->Error\" para encontrarla."
 
 #: src/lyx_cb.C:210
 msgid " warnings found."
-msgstr ""
+msgstr " advertencias encontradas."
 
 #: src/lyx_cb.C:211
 msgid "Use `Navigate->Error' to find them."
-msgstr ""
+msgstr "Usar \"Navegación->Error\" para encontrarlas."
 
 #: src/lyx_cb.C:213
 msgid "Chktex run successfully"
-msgstr ""
+msgstr "Chktex se ejecutó exitosamente"
 
 #: src/lyx_cb.C:215
 msgid "It seems chktex does not work."
-msgstr ""
+msgstr "Pareciera que chktex no funciona."
 
 #: src/lyx_cb.C:273
 #, c-format
 msgid "Auto-saving %1$s"
-msgstr ""
+msgstr "Auto-guardado %1$s"
 
 #: src/lyx_cb.C:275
 msgid "Auto-saving "
@@ -11285,7 +11281,7 @@ msgstr "¡El auto-guardado falló!"
 
 #: src/lyx_cb.C:341
 msgid "Autosaving current document..."
-msgstr ""
+msgstr "Auto-guardando el documento actual..."
 
 #: src/lyx_cb.C:423
 msgid "Select file to insert"
@@ -11293,11 +11289,11 @@ msgstr "Seleccionar un archivo a insertar"
 
 #: src/lyx_cb.C:440
 msgid "Error! Specified file is unreadable: "
-msgstr ""
+msgstr "Error! El archivo especificado es ilegible: "
 
 #: src/lyx_cb.C:511 src/mathed/math_hullinset.C:798
 msgid "Enter new label to insert:"
-msgstr ""
+msgstr "Especificar una nueva etiqueta a insertar:"
 
 #: src/lyx_cb.C:529
 msgid "Running configure..."
@@ -11305,24 +11301,24 @@ msgstr "Ejecutando configure..."
 
 #: src/lyx_cb.C:537
 msgid "Reloading configuration..."
-msgstr ""
+msgstr "Releyendo la configuración..."
 
 #: src/lyx_cb.C:539
 msgid "The system has been reconfigured."
-msgstr ""
+msgstr "El sistema ha sido reconfigurado."
 
 #: src/lyx_cb.C:540
 msgid "You need to restart LyX to make use of any"
-msgstr ""
+msgstr "Necesita reiniciar LyX para poder usar cualquier"
 
 #: src/lyx_cb.C:541
 msgid "updated document class specifications."
-msgstr ""
+msgstr "especificación de clase de documento actualizada."
 
 #: src/lyx_main.C:105
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
-msgstr ""
+msgstr "Opción de la línea de comandos errónea \"%1$s\". Terminando."
 
 #: src/lyx_main.C:109
 msgid "Wrong command line option `"
@@ -11334,11 +11330,11 @@ msgstr "'. Terminando."
 
 #: src/lyx_main.C:233
 msgid "Warning: could not determine path of binary."
-msgstr ""
+msgstr "Atención: no pude determinar la ubicación del ejecutable."
 
 #: src/lyx_main.C:235
 msgid "If you have problems, try starting LyX with an absolute path."
-msgstr ""
+msgstr "Si surgen problemas, intente ejecutar LyX con una ubicación absoluta."
 
 #: src/lyx_main.C:342
 msgid "LYX_DIR_13x environment variable no good."
@@ -11346,7 +11342,7 @@ msgstr ""
 
 #: src/lyx_main.C:344
 msgid "System directory set to: "
-msgstr ""
+msgstr "Directorio de sistema puesto a: "
 
 #: src/lyx_main.C:352
 msgid "LyX Warning! Couldn't determine system directory. "
