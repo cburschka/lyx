@@ -147,3 +147,21 @@ PosIterator::PosIterator(BufferView & bv)
 
 	operator=(par.asPosIterator(pos));
 }
+
+
+int distance(PosIterator const & cur, PosIterator const & end)
+{
+	PosIterator p = cur;
+	int count = 0;
+	for (; p != end; ++p, ++count);
+	return count;
+}
+
+
+void advance(PosIterator & cur, int howmuch)
+{
+	for (int i = 0; i < howmuch; ++i)
+		++cur;
+	for (int i = 0; i > howmuch; --i)
+		--cur;
+}

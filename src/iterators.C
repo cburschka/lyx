@@ -15,9 +15,15 @@
 #include "paragraph.h"
 #include "PosIterator.h"
 #include "cursor.h"
+#include "BufferView.h"
+#include "funcrequest.h"
+#include "dispatchresult.h"
+
 
 
 #include "insets/inset.h"
+#include "insets/updatableinset.h"
+#include "insets/insettext.h"
 
 #include <boost/next_prior.hpp>
 #include <boost/optional.hpp>
@@ -373,4 +379,26 @@ PosIterator ParIterator::asPosIterator(lyx::pos_type pos) const
 	p.stack_.push(PosIteratorItem(const_cast<ParagraphList *>(pp.plist),
 				      pp.pit, pos, 0));
 	return p;
+}
+
+
+void ParIterator::lockPath(BufferView * bv) const
+{
+	bv->insetUnlock();
+	int last = size() - 1;
+	for (int i = 0; i < last; ++i) {
+		UpdatableInset * outer = dynamic_cast<UpdatableInset *>((*pimpl_->positions[i].it)->inset);
+		FuncRequest cmd(bv, LFUN_INSET_EDIT);
+		outer->dispatch(cmd);
+		LyXText * txt = outer->getText(*pimpl_->positions[i].index);
+		InsetText * inner = txt->inset_owner;
+		// deep vodoo magic: on a table, the edit call locks the first
+		// cell and further lock calls get lost there.
+		// We have to unlock it to then lock the correct one.
+		if (outer != inner) {
+			outer->insetUnlock(bv);
+			outer->lockInsetInInset(bv, inner);
+			inner->dispatch(FuncRequest(bv, LFUN_INSET_EDIT));
+		}
+	}
 }

@@ -20,6 +20,7 @@
 class LyXText;
 class InsetOld;
 class Cursor;
+class BufferView;
 class PosIterator;
 
 
@@ -59,6 +60,8 @@ public:
 	///
 	friend
 	bool operator==(ParIterator const & iter1, ParIterator const & iter2);
+	///
+	void lockPath(BufferView *) const;
 
 	///
 	PosIterator asPosIterator(lyx::pos_type) const;

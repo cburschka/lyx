@@ -62,7 +62,10 @@ private:
 };
 
 bool operator!=(PosIterator const &, PosIterator const &);
+bool operator==(PosIterator const &, PosIterator const &);
 
+int distance(PosIterator const &, PosIterator const &);
+void advance(PosIterator &, int);
 
 #endif
 

@@ -20,6 +20,7 @@
 class BufferView;
 class LyXFont;
 class LyXText;
+class PosIterator;
 
 
 namespace bv_funcs {
@@ -43,6 +44,11 @@ void update_and_apply_freefont(BufferView * bv, std::string const & data);
 /** Apply the contents of freefont at the current cursor location.
  */
 void apply_freefont(BufferView * bv);
+
+
+void put_selection_at(BufferView * bv, PosIterator & cur,
+		      int length, bool backwards);
+
 
 /// what type of depth change to make
 enum DEPTH_CHANGE {
@@ -88,6 +94,9 @@ extern void toggleAndShow(BufferView *, LyXFont const &,
 			  bool toggleall = true);
 /// replace selection with insertion
 extern void replaceSelection(LyXText * lt);
+
+
+
 }; // namespace bv_funcs
 
 #endif

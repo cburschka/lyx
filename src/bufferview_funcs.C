@@ -26,6 +26,8 @@
 #include "lyxrow.h"
 #include "paragraph.h"
 #include "ParagraphParameters.h"
+#include "PosIterator.h"
+#include "iterators.h"
 
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"
@@ -421,5 +423,35 @@ void replaceSelection(LyXText * text)
 		text->bv()->update();
 	}
 }
+
+
+void put_selection_at(BufferView * bv, PosIterator const & cur,
+		      int length, bool backwards)
+{
+	ParIterator par = bv->buffer()->par_iterator_begin();
+	for (; par.pit() != cur.pit(); ++par)
+		;
+	
+	bv->getLyXText()->clearSelection();
+
+	LyXText * text = par.text() ? par.text() : bv->text;
+	
+	par.lockPath(bv);
+
+	text->setCursor(cur.pit(), cur.pos());
+
+	if (length) {
+		text->setSelectionRange(length);
+		text->setSelection();
+		if (backwards)
+			text->cursor = text->selection.start;
+	}
+	
+	
+	bv->fitCursor();
+	bv->update();
+		
+}
+
 
 }; // namespace bv_funcs
