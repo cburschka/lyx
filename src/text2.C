@@ -280,18 +280,19 @@ void LyXText::setLayout(LCursor & cur, string const & layout)
 {
 	BOOST_ASSERT(this == cur.text());
 	// special handling of new environment insets
-	BufferParams const & params = bv()->buffer()->params();
+	BufferView & bv = cur.bv();
+	BufferParams const & params = bv.buffer()->params();
 	LyXLayout_ptr const & lyxlayout = params.getLyXTextClass()[layout];
 	if (lyxlayout->is_environment) {
 		// move everything in a new environment inset
 		lyxerr << "setting layout " << layout << endl;
-		bv()->owner()->dispatch(FuncRequest(LFUN_HOME));
-		bv()->owner()->dispatch(FuncRequest(LFUN_ENDSEL));
-		bv()->owner()->dispatch(FuncRequest(LFUN_CUT));
+		bv.owner()->dispatch(FuncRequest(LFUN_HOME));
+		bv.owner()->dispatch(FuncRequest(LFUN_ENDSEL));
+		bv.owner()->dispatch(FuncRequest(LFUN_CUT));
 		InsetBase * inset = new InsetEnvironment(params, layout);
 		insertInset(cur, inset);
 		//inset->edit(cur, true);
-		//bv()->owner()->dispatch(FuncRequest(LFUN_PASTE));
+		//bv.owner()->dispatch(FuncRequest(LFUN_PASTE));
 		return;
 	}
 
@@ -396,7 +397,7 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 
 		// Update current font
 		real_current_font.update(font,
-					 bv()->buffer()->params().language,
+					 cur.buffer().params().language,
 					 toggleall);
 
 		// Reduce to implicit settings
@@ -419,7 +420,7 @@ void LyXText::setFont(LCursor & cur, LyXFont const & font, bool toggleall)
 
 	lyxerr << "pos: " << pos << " posend: " << posend << endl;
 
-	BufferParams const & params = bv()->buffer()->params();
+	BufferParams const & params = cur.buffer().params();
 
 	// Don't use forwardChar here as posend might have
 	// pos() == lastpos() and forwardChar would miss it.
@@ -775,10 +776,8 @@ void LyXText::setCounter(Buffer const & buf, par_type pit)
 			par_type tmppit = pit;
 			InsetBase * in = 0;
 			bool isOK = false;
-			while (tmppit != end && pars_[tmppit].inInset()
-			       // the single '=' is intended below
-			       && (in = pars_[tmppit].inInset()))
-			{
+			while (tmppit != end) {
+				in = pars_[tmppit].inInset();
 				if (in->lyxCode() == InsetBase::FLOAT_CODE ||
 				    in->lyxCode() == InsetBase::WRAP_CODE) {
 					isOK = true;
@@ -872,7 +871,7 @@ void LyXText::insertStringAsLines(LCursor & cur, string const & str)
 
 	// only to be sure, should not be neccessary
 	cur.clearSelection();
-	bv()->buffer()->insertStringAsLines(pars_, pit, pos, current_font, str);
+	cur.buffer().insertStringAsLines(pars_, pit, pos, current_font, str);
 
 	redoParagraphs(cur.par(), endpit);
 	cur.resetAnchor();
@@ -1001,12 +1000,12 @@ void LyXText::setCurrentFont(LCursor & cur)
 			}
 	}
 
-	BufferParams const & bufparams = bv()->buffer()->params();
+	BufferParams const & bufparams = cur.buffer().params();
 	current_font = pars_[pit].getFontSettings(bufparams, pos);
 	real_current_font = getFont(pit, pos);
 
 	if (cur.pos() == cur.lastpos()
-	    && bidi.isBoundary(*bv()->buffer(), pars_[pit], cur.pos())
+	    && bidi.isBoundary(cur.buffer(), pars_[pit], cur.pos())
 	    && !cur.boundary()) {
 		Language const * lang = pars_[pit].getParLanguage(bufparams);
 		current_font.setLanguage(lang);
@@ -1186,7 +1185,7 @@ void LyXText::cursorLeft(LCursor & cur)
 		setCursor(cur, cur.par(), cur.pos() - 1, true, false);
 		if (!checkAndActivateInset(cur, false)) {
 			if (false && !boundary &&
-					bidi.isBoundary(*bv()->buffer(), cur.paragraph(), cur.pos() + 1))
+					bidi.isBoundary(cur.buffer(), cur.paragraph(), cur.pos() + 1))
 				setCursor(cur, cur.par(), cur.pos() + 1, true, true);
 		}
 		return;
@@ -1209,7 +1208,7 @@ void LyXText::cursorRight(LCursor & cur)
 	if (cur.pos() != cur.lastpos()) {
 		if (!checkAndActivateInset(cur, true)) {
 			setCursor(cur, cur.par(), cur.pos() + 1, true, false);
-			if (false && bidi.isBoundary(*bv()->buffer(), cur.paragraph(),
+			if (false && bidi.isBoundary(cur.buffer(), cur.paragraph(),
 							 cur.pos()))
 				setCursor(cur, cur.par(), cur.pos(), true, true);
 		}

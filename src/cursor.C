@@ -172,7 +172,16 @@ bool LCursor::getStatus(FuncRequest const & cmd, FuncStatus & status)
 
 BufferView & LCursor::bv() const
 {
+	BOOST_ASSERT(bv_);
 	return *bv_;
+}
+
+
+Buffer & LCursor::buffer() const
+{
+	BOOST_ASSERT(bv_);
+	BOOST_ASSERT(bv_->buffer());
+	return *bv_->buffer();
 }
 
 

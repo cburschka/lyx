@@ -163,8 +163,8 @@ void InsetFloat::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		params_.placement = params.placement;
 		params_.wide      = params.wide;
 		params_.sideways  = params.sideways;
-		wide(params_.wide, cur.bv().buffer()->params());
-		sideways(params_.sideways, cur.bv().buffer()->params());
+		wide(params_.wide, cur.buffer().params());
+		sideways(params_.sideways, cur.buffer().params());
 		cur.bv().update();
 		break;
 	}

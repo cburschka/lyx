@@ -447,7 +447,7 @@ void InsetExternal::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 
 	case LFUN_EXTERNAL_EDIT: {
-		Buffer const & buffer = *cur.bv().buffer();
+		Buffer const & buffer = cur.buffer();
 		InsetExternalParams p;
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
 		external::editExternal(p, buffer);
@@ -455,10 +455,11 @@ void InsetExternal::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_INSET_MODIFY: {
-		Buffer const & buffer = *cur.bv().buffer();
+		Buffer const & buffer = cur.buffer();
 		InsetExternalParams p;
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
 		setParams(p, buffer);
+#warning is this needed?
 		cur.bv().update();
 		break;
 	}

@@ -313,16 +313,17 @@ int MathNestInset::latex(Buffer const &, std::ostream & os,
 
 void MathNestInset::notifyCursorLeaves(LCursor & cur)
 {
-/*
+#warning look here
+#if 0
 	MathArray & ar = cur.cell();
 	// remove base-only "scripts"
 	for (pos_type i = 0; i + 1 < size(); ++i) {
 		MathScriptInset * p = operator[](i).nucleus()->asScriptInset();
-		if (p && p->cell(0).empty() && p->cell(1).empty()) {
+		if (p && p->nargs() == 1) {
 			MathArray ar = p->nuc();
 			erase(i);
 			insert(i, ar);
-			mathcursor->adjust(i, ar.size() - 1);
+			cur.adjust(i, ar.size() - 1);
 		}
 	}
 
@@ -333,10 +334,10 @@ void MathNestInset::notifyCursorLeaves(LCursor & cur)
 		if (p && q && p->name() == q->name()) {
 			p->cell(0).append(q->cell(0));
 			erase(i + 1);
-			mathcursor->adjust(i, -1);
+			cur.adjust(i, -1);
 		}
 	}
-*/
+#endif
 }
 
 

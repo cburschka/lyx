@@ -13,7 +13,6 @@
 #include "insetbranch.h"
 
 #include "buffer.h"
-#include "BufferView.h"
 #include "bufferparams.h"
 #include "BranchList.h"
 #include "cursor.h"
@@ -162,7 +161,7 @@ void InsetBranch::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		} else if (cmd.argument == "assign"
 			   || cmd.argument.empty()) {
 			BranchList const & branchlist =
-				cur.bv().buffer()->params().branchlist();
+				cur.buffer().params().branchlist();
 			if (isBranchSelected(branchlist)) {
 				if (status() != Open)
 					setStatus(Open);

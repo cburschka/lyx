@@ -249,7 +249,7 @@ void InsetText::updateLocal(LCursor & cur)
 			}
 
 			cur.clearSelection();
-			mergeParagraph(cur.bv().buffer()->params(), paragraphs(), 0);
+			mergeParagraph(cur.buffer().params(), paragraphs(), 0);
 		}
 	}
 

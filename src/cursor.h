@@ -18,6 +18,7 @@
 #include <iosfwd>
 #include <vector>
 
+class Buffer;
 class BufferView;
 class FuncStatus;
 class FuncRequest;
@@ -146,6 +147,8 @@ public:
 	void resetAnchor();
 	/// access to owning BufferView
 	BufferView & bv() const;
+	/// access to owning Buffer
+	Buffer & buffer() const;
 	/// get some interesting description of top position
 	void info(std::ostream & os) const;
 	/// are we in math mode (2), text mode (1) or unsure (0)?
@@ -155,8 +158,6 @@ public:
 	void reset(InsetBase &);
 	/// for spellchecking
 	void replaceWord(std::string const & replacestring);
-	/// update our view
-	void update();
 	/// the event was not (yet) dispatched
 	void undispatched();
 	/// the event was already dispatched

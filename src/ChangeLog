@@ -62,6 +62,20 @@
 
 	* lyxfunc.C (dispatch): output lyxrc.write("preferences", false).
 
+2004-04-07  André Pönitz  <poenitz@gmx.net>
+
+	* cursor.[Ch] (selClear, adjust): remove math
+
+	* cursor_slice.C: more agressive assert
+
+	* lyxfunc.C:
+	* BufferView_pimpl.C: rework mouse event dispatch 
+
+	* dociterator.C:
+	* paragraph.C:
+	* text2.C:
+	* text3.C: adjust
+
 2004-04-05  André Pönitz  <poenitz@gmx.net>
 
 	* cursor.[Ch] (valign, halign...): remove unneeded functions

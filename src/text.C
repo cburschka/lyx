@@ -408,18 +408,18 @@ BufferView * LyXText::bv()
 }
 
 
+BufferView * LyXText::bv() const
+{
+	BOOST_ASSERT(bv_owner != 0);
+	return bv_owner;
+}
+
+
 double LyXText::spacing(Paragraph const & par) const
 {
 	if (par.params().spacing().isDefault())
 		return bv()->buffer()->params().spacing().getValue();
 	return par.params().spacing().getValue();
-}
-
-
-BufferView * LyXText::bv() const
-{
-	BOOST_ASSERT(bv_owner != 0);
-	return bv_owner;
 }
 
 
@@ -648,9 +648,8 @@ int LyXText::leftMargin(par_type pit, pos_type pos) const
 	    && align == LYX_ALIGN_BLOCK
 	    && !pars_[pit].params().noindent()
 	    // in tabulars and ert paragraphs are never indented!
-	    && (!pars_[pit].inInset()
-	        || (pars_[pit].inInset()->lyxCode() != InsetOld::TABULAR_CODE
-	            && pars_[pit].inInset()->lyxCode() != InsetOld::ERT_CODE))
+	    && (pars_[pit].ownerCode() != InsetOld::TABULAR_CODE
+	            && pars_[pit].ownerCode() != InsetOld::ERT_CODE)
 	    && (pars_[pit].layout() != tclass.defaultLayout()
 	        || bv()->buffer()->params().paragraph_separation ==
 	           BufferParams::PARSEP_INDENT))
@@ -1062,8 +1061,7 @@ void LyXText::breakParagraph(LCursor & cur, char keep_layout)
 	    && cpar.isChangeEdited(0, cur.pos()))
 		return;
 
-	LyXTextClass const & tclass =
-		bv()->buffer()->params().getLyXTextClass();
+	LyXTextClass const & tclass = cur.buffer().params().getLyXTextClass();
 	LyXLayout_ptr const & layout = cpar.layout();
 
 	// this is only allowed, if the current paragraph is not empty
@@ -1091,7 +1089,7 @@ void LyXText::breakParagraph(LCursor & cur, char keep_layout)
 	// paragraph before or behind and we should react on that one
 	// but we can fix this in 1.3.0 (Jug 20020509)
 	bool const isempty = cpar.allowEmpty() && cpar.empty();
-	::breakParagraph(bv()->buffer()->params(), paragraphs(), cpit,
+	::breakParagraph(cur.buffer().params(), paragraphs(), cpit,
 			 cur.pos(), keep_layout);
 
 	cpit = cur.par();
@@ -1652,7 +1650,7 @@ void LyXText::backspace(LCursor & cur)
 		// layout. I think it is a real bug of all other
 		// word processors to allow it. It confuses the user.
 		// Correction: Pasting is always allowed with standard-layout
-		Buffer & buf = *bv()->buffer();
+		Buffer & buf = cur.buffer();
 		BufferParams const & bufparams = buf.params();
 		LyXTextClass const & tclass = bufparams.getLyXTextClass();
 		par_type const cpit = cur.par();
@@ -2096,17 +2094,17 @@ int LyXText::cursorY(CursorSlice const & cur) const
 string LyXText::currentState(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	Buffer * buffer = bv()->buffer();
+	Buffer & buf = cur.buffer();
 	Paragraph const & par = cur.paragraph();
 	std::ostringstream os;
 
-	bool const show_change = buffer->params().tracking_changes
+	bool const show_change = buf.params().tracking_changes
 		&& cur.pos() != cur.lastpos()
 		&& par.lookupChange(cur.pos()) != Change::UNCHANGED;
 
 	if (show_change) {
 		Change change = par.lookupChangeFull(cur.pos());
-		Author const & a = buffer->params().authors().get(change.author);
+		Author const & a = buf.params().authors().get(change.author);
 		os << _("Change: ") << a.name();
 		if (!a.email().empty())
 			os << " (" << a.email() << ")";
@@ -2118,13 +2116,13 @@ string LyXText::currentState(LCursor & cur)
 	// I think we should only show changes from the default
 	// font. (Asger)
 	LyXFont font = real_current_font;
-	font.reduce(buffer->params().getLyXTextClass().defaultfont());
+	font.reduce(buf.params().getLyXTextClass().defaultfont());
 
 	// avoid _(...) re-entrance problem
-	string const s = font.stateText(&buffer->params());
+	string const s = font.stateText(&buf.params());
 	os << bformat(_("Font: %1$s"), s);
 
-	// os << bformat(_("Font: %1$s"), font.stateText(&buffer->params));
+	// os << bformat(_("Font: %1$s"), font.stateText(&buf.params));
 
 	// The paragraph depth
 	int depth = cur.paragraph().getDepth();
@@ -2155,11 +2153,12 @@ string LyXText::currentState(LCursor & cur)
 		}
 	}
 #ifdef DEVEL_VERSION
-	os << _(", Paragraph: ") << par.id();
+	os << _(", Inset: ") << &cur.inset();
+	os << _(", Paragraph: ") << cur.par();
+	os << _(", Id: ") << par.id();
 	os << _(", Position: ") << cur.pos();
 	Row & row = cur.textRow();
 	os << bformat(_(", Row b:%1$d e:%2$d"), row.pos(), row.endpos());
-	os << _(", Inset: ") << par.inInset();
 #endif
 	return os.str();
 }
@@ -2187,7 +2186,7 @@ string LyXText::getPossibleLabel(LCursor & cur) const
 	if (layout->latextype == LATEX_PARAGRAPH || lyxrc.label_init_length < 0)
 		text.erase();
 
-	string par_text = pars_[pit].asString(*cur.bv().buffer(), false);
+	string par_text = pars_[pit].asString(cur.buffer(), false);
 	for (int i = 0; i < lyxrc.label_init_length; ++i) {
 		if (par_text.empty())
 			break;

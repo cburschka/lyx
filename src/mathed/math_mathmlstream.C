@@ -30,6 +30,7 @@ namespace {
 
 }
 
+
 WriteStream::WriteStream(ostream & os, bool fragile, bool latex)
 	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
 	  pendingspace_(false), line_(0)

@@ -102,9 +102,9 @@ namespace {
 		if (font.language() != ignore_language ||
 				font.number() != LyXFont::IGNORE) {
 			Paragraph & par = cur.paragraph();
-			text->bidi.computeTables(par, *cur.bv().buffer(), cur.textRow());
+			text->bidi.computeTables(par, cur.buffer(), cur.textRow());
 			if (cur.boundary() !=
-					text->bidi.isBoundary(*cur.bv().buffer(), par,
+					text->bidi.isBoundary(cur.buffer(), par,
 							cur.pos(),
 							text->real_current_font))
 				text->setCursor(cur, cur.par(), cur.pos(),
@@ -294,7 +294,7 @@ void LyXText::cursorPrevious(LCursor & cur)
 	lyx::par_type cpar = cur.par();
 
 	int x = cur.x_target();
-	int y = bv()->top_y();
+	int y = cur.bv().top_y();
 	setCursorFromCoordinates(cur, x, y);
 
 	if (cpar == cur.par() && cpos == cur.pos()) {
@@ -303,7 +303,7 @@ void LyXText::cursorPrevious(LCursor & cur)
 		cursorUp(cur);
 	}
 
-	bv()->updateScrollbar();
+	cur.bv().updateScrollbar();
 	finishUndo();
 }
 
@@ -314,7 +314,7 @@ void LyXText::cursorNext(LCursor & cur)
 	lyx::par_type cpar = cur.par();
 
 	int x = cur.x_target();
-	int y = bv()->top_y() + bv()->workHeight();
+	int y = cur.bv().top_y() + cur.bv().workHeight();
 	setCursorFromCoordinates(cur, x, y);
 
 	if (cpar == cur.par() && cpos == cur.pos()) {
@@ -323,7 +323,7 @@ void LyXText::cursorNext(LCursor & cur)
 		cursorDown(cur);
 	}
 
-	bv()->updateScrollbar();
+	cur.bv().updateScrollbar();
 	finishUndo();
 }
 

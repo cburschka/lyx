@@ -17,7 +17,6 @@
 #include "lyxrc.h"
 #include "paragraph.h"
 
-#include "insets/updatableinset.h"
 
 using lyx::pos_type;
 
@@ -60,8 +59,7 @@ void Bidi::computeTables(Paragraph const & par,
 		return;
 	}
 
-	InsetOld * inset = par.inInset();
-	if (inset && inset->lyxCode() == InsetOld::ERT_CODE) {
+	if (par.ownerCode() == InsetBase::ERT_CODE) {
 		start_ = -1;
 		return;
 	}

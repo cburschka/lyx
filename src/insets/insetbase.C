@@ -27,6 +27,7 @@
 
 #include <map>
 
+
 namespace {
 
 struct InsetName {
@@ -36,7 +37,9 @@ struct InsetName {
 	InsetBase::Code code;
 };
 
+
 typedef std::map<std::string, InsetBase::Code> TranslatorMap;
+
 
 TranslatorMap const build_translator()
 {
@@ -285,6 +288,11 @@ bool InsetBase::editing(BufferView * bv) const
 
 bool InsetBase::covers(int x, int y) const
 {
+	//lyxerr << "InsetBase::covers, x: " << x << " y: " << y 
+	//	<< " xo: " << xo() << " yo: " << yo()
+	//	<< " x1: " << xo() << " x2: " << xo() + width()
+	//	<< " y1: " << yo() - ascent() << " y2: " << yo() + descent()
+	//	<< std::endl;
 	return x >= xo()
 			&& x <= xo() + width()
 			&& y >= yo() - ascent()

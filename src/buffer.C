@@ -456,8 +456,7 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 	pars[par].checkInsertChar(font);
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
-	bool autobreakrows = !pars[par].inInset() ||
-		static_cast<InsetText *>(pars[par].inInset())->getAutoBreakRows();
+	bool autobreakrows = pars[par].autoBreakRows();
 	for (string::const_iterator cit = str.begin();
 	    cit != str.end(); ++cit) {
 		if (*cit == '\n') {

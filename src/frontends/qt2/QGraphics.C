@@ -349,11 +349,11 @@ void QGraphics::apply()
 	if (!dialog_->displayCB->isChecked())
 		igp.display = lyx::graphics::NoDisplay;
 
-	string value(fromqstr(dialog_->width->text()));
+	string value = fromqstr(dialog_->width->text());
 	if (dialog_->widthUnit->currentItem() > 0) {
 		// width/height combination
-		int const unitNo = getUnitNo(unit_name_gui,
-			fromqstr(dialog_->widthUnit->currentText()));
+		QString const text = dialog_->widthUnit->currentText();
+		int const unitNo = getUnitNo(unit_name_gui, fromqstr(text));
 		igp.width = LyXLength(value + unit_name_ltx[unitNo]);
 		igp.scale = 0.0;
 	} else {
@@ -362,8 +362,8 @@ void QGraphics::apply()
 		igp.width = LyXLength();
 	}
 	value = fromqstr(dialog_->height->text());
-	int const unitNo = getUnitNo(unit_name_gui,
-		fromqstr(dialog_->heightUnit->currentText()));
+	QString text = dialog_->heightUnit->currentText();
+	int const unitNo = getUnitNo(unit_name_gui, fromqstr(text));
 	igp.height = LyXLength(value + unit_name_ltx[unitNo]);
 
 	igp.keepAspectRatio = dialog_->aspectratio->isChecked();
@@ -373,6 +373,7 @@ void QGraphics::apply()
 	igp.lyxscale = strToInt(fromqstr(dialog_->displayscale->text()));
 
 	igp.rotateAngle = strToDbl(fromqstr(dialog_->angle->text()));
+#warning Guess what happens if the user enters '1e30' here?
 	while (igp.rotateAngle < -360.0)
 		igp.rotateAngle += 360.0;
 	while (igp.rotateAngle >  360.0)

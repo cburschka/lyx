@@ -281,8 +281,8 @@ void params2string(Paragraph const & par, string & data)
 	/// set default alignment
 	os << "\\aligndefault " << layout->align << '\n';
 
-	/// is paragraph in inset
-	os << "\\ininset " << (par.inInset()?1:0) << '\n';
+	/// paragraph is always in inset. This is redundant.
+	os << "\\ininset " << 1 << '\n';
 
 	data = os.str();
 }

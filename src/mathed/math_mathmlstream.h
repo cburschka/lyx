@@ -34,7 +34,7 @@ public:
 	///
 	WriteStream(std::ostream & os, bool fragile, bool latex);
 	///
-	explicit WriteStream(std::ostream & os_);
+	explicit WriteStream(std::ostream & os);
 	///
 	~WriteStream();
 	///

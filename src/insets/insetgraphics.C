@@ -191,7 +191,7 @@ void InsetGraphics::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
-		Buffer const & buffer = *cur.bv().buffer();
+		Buffer const & buffer = cur.buffer();
 		InsetGraphicsParams p;
 		InsetGraphicsMailer::string2params(cmd.argument, buffer, p);
 		if (!p.filename.empty()) {

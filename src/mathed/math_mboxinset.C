@@ -20,6 +20,7 @@
 #include "debug.h"
 #include "metricsinfo.h"
 #include "output_latex.h"
+#include "outputparams.h"
 #include "paragraph.h"
 #include "texrow.h"
 
@@ -59,11 +60,21 @@ void MathMBoxInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathMBoxInset::write(WriteStream & os) const
+void MathMBoxInset::write(WriteStream & ws) const
 {
-	os << "\\mbox{\n";
-	text_.write(*bv_->buffer(), os.os());
-	os << "}";
+	if (ws.latex()) {
+		ws << "\\mbox{\n";
+		TexRow texrow;
+		OutputParams runparams;
+		latexParagraphs(*bv_->buffer(), text_.paragraphs(),
+			ws.os(), texrow, runparams);
+		ws.addlines(texrow.rows());
+		ws << "}";
+	} else {
+		ws << "\\mbox{\n";
+		text_.write(*bv_->buffer(), ws.os());
+		ws << "}";
+	}
 }
 
 

@@ -631,7 +631,7 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			maxCols = max(cols, maxCols);
 
 			paste_tabular.reset(
-				new LyXTabular(cur.bv().buffer()->params(), rows, maxCols));
+				new LyXTabular(cur.buffer().params(), rows, maxCols));
 
 			string::size_type op = 0;
 			int cell = 0;
@@ -1500,7 +1500,7 @@ bool InsetTabular::copySelection(LCursor & cur)
 
 	ostringstream os;
 	OutputParams const runparams;
-	paste_tabular->plaintext(*cur.bv().buffer(), os, runparams, 0, true, '\t');
+	paste_tabular->plaintext(cur.buffer(), os, runparams, 0, true, '\t');
 	cur.bv().stuffClipboard(os.str());
 	return true;
 }
@@ -1544,7 +1544,7 @@ void InsetTabular::cutSelection(LCursor & cur)
 	if (!cur.selection())
 		return;
 
-	bool const track = cur.bv().buffer()->params().tracking_changes;
+	bool const track = cur.buffer().params().tracking_changes;
 	int rs, re, cs, ce;
 	getSelection(cur, rs, re, cs, ce);
 	for (int i = rs; i <= re; ++i)

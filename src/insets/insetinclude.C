@@ -125,7 +125,7 @@ void InsetInclude::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 		InsetCommandParams p;
 		InsetIncludeMailer::string2params(cmd.argument, p);
 		if (!p.getCmdName().empty()) {
-			set(p, *cur.bv().buffer());
+			set(p, cur.buffer());
 			cur.bv().update();
 		}
 		break;

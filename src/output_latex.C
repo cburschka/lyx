@@ -214,8 +214,6 @@ TeXOnePar(Buffer const & buf,
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << &*pit << " '"
 		<< everypar << "'" << endl;
 	BufferParams const & bparams = buf.params();
-
-	InsetOld const * in = pit->inInset();
 	bool further_blank_line = false;
 	LyXLayout_ptr style;
 
@@ -223,7 +221,7 @@ TeXOnePar(Buffer const & buf,
 	// length (all in one row) if that is true then we don't allow
 	// any special options in the paragraph and also we don't allow
 	// any environment other then "Standard" to be valid!
-	if (in == 0 || !in->forceDefaultParagraphs(in)) {
+	if (!pit->forceDefaultParagraphs()) {
 		style = pit->layout();
 
 		if (pit->params().startOfAppendix()) {
@@ -383,7 +381,7 @@ paragraphs);
 		}
 	}
 
-	if (in == 0 || !in->forceDefaultParagraphs(in)) {
+	if (!pit->forceDefaultParagraphs()) {
 		further_blank_line = false;
 
 		if (further_blank_line) {
@@ -447,12 +445,11 @@ void latexParagraphs(Buffer const & buf,
 
 	// if only_body
 	while (par != endpar) {
-		InsetOld * in = par->inInset();
 		// well we have to check if we are in an inset with unlimited
 		// length (all in one row) if that is true then we don't allow
 		// any special options in the paragraph and also we don't allow
 		// any environment other then "Standard" to be valid!
-		if (in == 0 || !in->forceDefaultParagraphs(in)) {
+		if (!par->forceDefaultParagraphs()) {
 			LyXLayout_ptr const & layout = par->layout();
 
 			if (layout->intitle) {

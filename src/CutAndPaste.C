@@ -416,7 +416,7 @@ void cutSelection(LCursor & cur, bool doclear, bool realcut)
 
 	int endpos = cur.selEnd().pos();
 
-	BufferParams const & bufparams = cur.bv().buffer()->params();
+	BufferParams const & bufparams = cur.buffer().params();
 	boost::tie(endpit, endpos) = realcut ?
 		cutSelection(bufparams,
 					  text->paragraphs(),
@@ -470,7 +470,7 @@ void copySelection(LCursor & cur)
 		++pos;
 
 	copySelection(pars, par, cur.selEnd().par(),
-		pos, cur.selEnd().pos(), cur.bv().buffer()->params().textclass);
+		pos, cur.selEnd().pos(), cur.buffer().params().textclass);
 }
 
 
@@ -490,13 +490,13 @@ void pasteSelection(LCursor & cur, size_t sel_index)
 	ErrorList el;
 
 	boost::tie(ppp, endpit) =
-		pasteSelection(*cur.bv().buffer(),
+		pasteSelection(cur.buffer(),
 					    text->paragraphs(),
 					    cur.par(), cur.pos(),
-					    cur.bv().buffer()->params().textclass,
+					    cur.buffer().params().textclass,
 					    sel_index, el);
-	bufferErrors(*cur.bv().buffer(), el);
-	text->bv()->showErrorList(_("Paste"));
+	bufferErrors(cur.buffer(), el);
+	cur.bv().showErrorList(_("Paste"));
 
 	text->redoParagraphs(cur.par(), endpit);
 
@@ -531,7 +531,7 @@ void replaceSelectionWithString(LCursor & cur, string const & str)
 	// Get font setting before we cut
 	pos_type pos = cur.selEnd().pos();
 	LyXFont const font = text->getPar(cur.selBegin().par()).
-		getFontSettings(cur.bv().buffer()->params(), cur.selBegin().pos());
+		getFontSettings(cur.buffer().params(), cur.selBegin().pos());
 
 	// Insert the new string
 	string::const_iterator cit = str.begin();

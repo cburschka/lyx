@@ -21,6 +21,8 @@
 #include "lyxlayout_ptr_fwd.h"
 #include "RowList_fwd.h"
 
+#include "insets/insetbase.h" // only for InsetBase::Code
+
 #include "support/types.h"
 
 #include <string>
@@ -140,9 +142,15 @@ public:
 	void makeSameLayout(Paragraph const & par);
 
 	///
+	void setInsetOwner(UpdatableInset * inset);
+	///
 	UpdatableInset * inInset() const;
 	///
-	void setInsetOwner(UpdatableInset * inset);
+	InsetBase::Code ownerCode() const;
+	///
+	bool autoBreakRows() const;
+	///
+	bool forceDefaultParagraphs() const;
 
 	///
 	lyx::pos_type size() const { return text_.size(); }

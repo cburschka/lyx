@@ -306,10 +306,7 @@ void Paragraph::insertInset(pos_type pos, InsetBase * inset,
 
 bool Paragraph::insetAllowed(InsetOld_code code)
 {
-	//lyxerr << "Paragraph::InsertInsetAllowed" << endl;
-	if (pimpl_->inset_owner)
-		return pimpl_->inset_owner->insetAllowed(code);
-	return true;
+	return pimpl_->inset_owner->insetAllowed(code);
 }
 
 
@@ -716,19 +713,26 @@ InsetBibitem * Paragraph::bibitem() const
 }
 
 
+bool Paragraph::forceDefaultParagraphs() const
+{
+	return inInset()->forceDefaultParagraphs(inInset());
+}
+
+
+bool Paragraph::autoBreakRows() const
+{
+	return static_cast<InsetText *>(inInset())->getAutoBreakRows();
+}
+
+
 namespace {
 
 // paragraphs inside floats need different alignment tags to avoid
 // unwanted space
 
-bool noTrivlistCentering(UpdatableInset const * inset)
+bool noTrivlistCentering(InsetBase::Code code)
 {
-	if (inset) {
-		InsetBase::Code const code = inset->lyxCode();
-		return code == InsetBase::FLOAT_CODE ||
-			code == InsetBase::WRAP_CODE;
-	}
-	return false;
+	return code == InsetBase::FLOAT_CODE || code == InsetBase::WRAP_CODE;
 }
 
 
@@ -745,10 +749,10 @@ string correction(string const & orig)
 
 
 string const corrected_env(string const & suffix, string const & env,
-			   UpdatableInset const * inset)
+	InsetBase::Code code)
 {
 	string output = suffix + "{";
-	if (noTrivlistCentering(inset))
+	if (noTrivlistCentering(code))
 		output += correction(env);
 	else
 		output += env;
@@ -793,27 +797,25 @@ int Paragraph::startTeXParParams(BufferParams const & bparams,
 		break;
 	case LYX_ALIGN_LEFT: {
 		string output;
-		UpdatableInset const * const inset = pimpl_->inset_owner;
 		if (getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\\begin", "flushleft", inset);
+			output = corrected_env("\\begin", "flushleft", ownerCode());
 		else
-			output = corrected_env("\\begin", "flushright", inset);
+			output = corrected_env("\\begin", "flushright", ownerCode());
 		os << output;
 		column += output.size();
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		string output;
-		UpdatableInset const * const inset = pimpl_->inset_owner;
 		if (getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\\begin", "flushright", inset);
+			output = corrected_env("\\begin", "flushright", ownerCode());
 		else
-			output = corrected_env("\\begin", "flushleft", inset);
+			output = corrected_env("\\begin", "flushleft", ownerCode());
 		os << output;
 		column += output.size();
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
-		output = corrected_env("\\begin", "center", pimpl_->inset_owner);
+		output = corrected_env("\\begin", "center", ownerCode());
 		os << output;
 		column += output.size();
 		break;
@@ -854,27 +856,25 @@ int Paragraph::endTeXParParams(BufferParams const & bparams,
 		break;
 	case LYX_ALIGN_LEFT: {
 		string output;
-		UpdatableInset const * const inset = pimpl_->inset_owner;
 		if (getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\\par\\end", "flushleft", inset);
+			output = corrected_env("\\par\\end", "flushleft", ownerCode());
 		else
-			output = corrected_env("\\par\\end", "flushright", inset);
+			output = corrected_env("\\par\\end", "flushright", ownerCode());
 		os << output;
 		column += output.size();
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		string output;
-		UpdatableInset const * const inset = pimpl_->inset_owner;
 		if (getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env("\\par\\end", "flushright", inset);
+			output = corrected_env("\\par\\end", "flushright", ownerCode());
 		else
-			output = corrected_env("\\par\\end", "flushleft", inset);
+			output = corrected_env("\\par\\end", "flushleft", ownerCode());
 		os << output;
 		column += output.size();
 		break;
 	} case LYX_ALIGN_CENTER: {
 		string output;
-		output = corrected_env("\\par\\end", "center", pimpl_->inset_owner);
+		output = corrected_env("\\par\\end", "center", ownerCode());
 		os << output;
 		column += output.size();
 		break;
@@ -902,8 +902,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	// length (all in one row) if that is true then we don't allow
 	// any special options in the paragraph and also we don't allow
 	// any environment other then "Standard" to be valid!
-	bool asdefault =
-		(inInset() && inInset()->forceDefaultParagraphs(inInset()));
+	bool asdefault = forceDefaultParagraphs();
 
 	if (asdefault) {
 		style = bparams.getLyXTextClass().defaultLayout();
@@ -1537,7 +1536,7 @@ bool Paragraph::isRightToLeftPar(BufferParams const & bparams) const
 {
 	return lyxrc.rtl_support
 		&& getParLanguage(bparams)->RightToLeft()
-		&& !(inInset() && inInset()->lyxCode() == InsetBase::ERT_CODE);
+		&& ownerCode() != InsetBase::ERT_CODE;
 }
 
 
@@ -1746,11 +1745,6 @@ int Paragraph::id() const
 
 LyXLayout_ptr const & Paragraph::layout() const
 {
-/*
-	InsetBase * inset = inInset();
-	if (inset && inset->lyxCode() == InsetBase::ENVIRONMENT_CODE)
-		return static_cast<InsetEnvironment*>(inset)->layout();
-*/
 	return layout_;
 }
 
@@ -1764,6 +1758,13 @@ void Paragraph::layout(LyXLayout_ptr const & new_layout)
 UpdatableInset * Paragraph::inInset() const
 {
 	return pimpl_->inset_owner;
+}
+
+
+InsetBase::Code Paragraph::ownerCode() const
+{
+	return pimpl_->inset_owner
+		? pimpl_->inset_owner->lyxCode() : InsetBase::NO_CODE;
 }
 
 
@@ -1798,9 +1799,7 @@ bool Paragraph::isFreeSpacing() const
 
 	// for now we just need this, later should we need this in some
 	// other way we can always add a function to InsetBase too.
-	if (pimpl_->inset_owner)
-		return pimpl_->inset_owner->lyxCode() == InsetBase::ERT_CODE;
-	return false;
+	return ownerCode() == InsetBase::ERT_CODE;
 }
 
 
@@ -1808,9 +1807,7 @@ bool Paragraph::allowEmpty() const
 {
 	if (layout()->keepempty)
 		return true;
-	if (pimpl_->inset_owner)
-		return pimpl_->inset_owner->lyxCode() == InsetBase::ERT_CODE;
-	return false;
+	return ownerCode() == InsetBase::ERT_CODE;
 }
 
 
