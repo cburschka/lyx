@@ -19,6 +19,9 @@ public:
 	void metrics(MathMetricsInfo & mi) const;
 	///
 	void draw(MathPainterInfo &, int x, int y) const;
+	/// draw selection background
+	void drawSelection(MathPainterInfo & pi,
+		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
 	///
 	void infoize(std::ostream & os) const;
 	///

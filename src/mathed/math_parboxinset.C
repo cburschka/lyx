@@ -207,6 +207,34 @@ void MathParboxInset::draw(MathPainterInfo & pi, int x, int y) const
 }
 
 
+void MathParboxInset::drawSelection(MathPainterInfo & pi,
+		idx_type, pos_type pos1, idx_type, pos_type pos2) const
+{
+	int row1 = pos2row(pos1);
+	int row2 = pos2row(pos2);
+	if (row1 == row2) {
+/*
+		MathXArray & c = xcell(0);
+		int x1 = c.xo() + c.pos2x(i1.pos_);
+		int y1 = c.yo() - c.ascent();
+		int x2 = c.xo() + c.pos2x(i2.pos_);
+		int y2 = c.yo() + c.descent();
+		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
+	} else {
+		vector<MathInset::idx_type> indices = idxBetween(idx1, idx2);
+		for (unsigned i = 0; i < indices.size(); ++i) {
+			MathXArray & c = i1.xcell(indices[i]);
+			int x1 = c.xo();
+			int y1 = c.yo() - c.ascent();
+			int x2 = c.xo() + c.width();
+			int y2 = c.yo() + c.descent();
+			pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
+		}
+*/
+	}
+}
+
+
 void MathParboxInset::write(WriteStream & os) const
 {
 	os << "\\parbox";

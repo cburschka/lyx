@@ -182,6 +182,30 @@ void MathNestInset::draw(MathPainterInfo &, int, int) const
 }
 
 
+void MathNestInset::drawSelection(MathPainterInfo & pi,
+		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const
+{
+	if (idx1 == idx2) {
+		MathXArray const & c = xcell(idx1);
+		int x1 = c.xo() + c.pos2x(pos1);
+		int y1 = c.yo() - c.ascent();
+		int x2 = c.xo() + c.pos2x(pos2);
+		int y2 = c.yo() + c.descent();
+		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
+	} else {
+		vector<MathInset::idx_type> indices = idxBetween(idx1, idx2);
+		for (unsigned i = 0; i < indices.size(); ++i) {
+			MathXArray const & c = xcell(indices[i]);
+			int x1 = c.xo();
+			int y1 = c.yo() - c.ascent();
+			int x2 = c.xo() + c.width();
+			int y2 = c.yo() + c.descent();
+			pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
+		}
+	}
+}
+
+
 void MathNestInset::drawMarkers(MathPainterInfo & pi, int x, int y) const
 {
 	if (!editing())

@@ -224,6 +224,13 @@ void MathInset::draw(MathPainterInfo &, int, int) const
 }
 
 
+void MathInset::drawSelection(MathPainterInfo &,
+	idx_type, pos_type, idx_type, pos_type) const
+{
+	lyxerr << "MathInset::drawSelection() called directly!\n";
+}
+
+
 void MathInset::metricsT(TextMetricsInfo const &) const
 {
 #ifdef WITH_WARNINGS

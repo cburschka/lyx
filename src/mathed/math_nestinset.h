@@ -28,7 +28,9 @@ public:
 	void metricsMarkers2(int frame = 1) const;
 	/// draw background if locked
 	void draw(MathPainterInfo & pi, int x, int y) const;
-	/// draw two angular markers
+	/// draw selection background
+	void drawSelection(MathPainterInfo & pi,
+		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
 	void drawMarkers(MathPainterInfo & pi, int x, int y) const;
 	/// draw four angular markers
 	void drawMarkers2(MathPainterInfo & pi, int x, int y) const;

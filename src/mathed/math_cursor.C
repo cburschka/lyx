@@ -660,46 +660,14 @@ void MathCursor::selGet(MathArray & ar)
 
 
 
-void MathCursor::drawSelection(MathPainterInfo & pain) const
+void MathCursor::drawSelection(MathPainterInfo & pi) const
 {
 	if (!selection_)
 		return;
-
 	MathCursorPos i1;
 	MathCursorPos i2;
 	getSelection(i1, i2);
-
-	if (i1.idx_ == i2.idx_) {
-		MathXArray & c = i1.xcell();
-		int x1 = c.xo() + c.pos2x(i1.pos_);
-		int y1 = c.yo() - c.ascent();
-		int x2 = c.xo() + c.pos2x(i2.pos_);
-		int y2 = c.yo() + c.descent();
-		pain.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
-	} else {
-		vector<MathInset::idx_type> indices
-			= i1.par_->idxBetween(i1.idx_, i2.idx_);
-		for (unsigned i = 0; i < indices.size(); ++i) {
-			MathXArray & c = i1.xcell(indices[i]);
-			int x1 = c.xo();
-			int y1 = c.yo() - c.ascent();
-			int x2 = c.xo() + c.width();
-			int y2 = c.yo() + c.descent();
-			pain.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
-		}
-	}
-
-#if 0
-	// draw anchor if different from selection boundary
-	MathCursorPos anc = Anchor_.back();
-	if (anc != i1 && anc != i2) {
-		MathXArray & c = anc.xcell();
-		int x  = c.xo() + c.pos2x(anc.pos_);
-		int y1 = c.yo() - c.ascent();
-		int y2 = c.yo() + c.descent();
-		pain.line(x, y1, x, y2, LColor::math);
-	}
-#endif
+	i1.par_->drawSelection(pi, i1.idx_, i1.pos_, i2.idx_, i2.pos_);
 }
 
 

@@ -110,9 +110,12 @@ public:
 	virtual void substitute(MathMacro const & macro);
 	/// compute the size of the object, sets ascend_, descend_ and width_
 	// updates the (xo,yo)-caches of all contained cells
-	virtual void metrics(MathMetricsInfo & st) const;
+	virtual void metrics(MathMetricsInfo & mi) const;
 	/// draw the object
-	virtual void draw(MathPainterInfo &, int x, int y) const;
+	virtual void draw(MathPainterInfo & pi, int x, int y) const;
+	/// draw selection between two positions
+	virtual void drawSelection(MathPainterInfo & pi,
+		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
 	/// the ascent of the inset above the baseline
 	/// compute the size of the object for text based drawing
 	virtual void metricsT(TextMetricsInfo const & st) const;

@@ -416,6 +416,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	switch (action) {
 
+	case LFUN_WORDRIGHTSEL:
 	case LFUN_RIGHTSEL:
 		sel = true; // fall through...
 	case LFUN_RIGHT:
@@ -427,6 +428,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		//bv->owner()->message(mathcursor->info());
 		break;
 
+	case LFUN_WORDLEFTSEL:
 	case LFUN_LEFTSEL:
 		sel = true; // fall through
 	case LFUN_LEFT:
@@ -543,9 +545,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		mathcursor->selCopy();
 		break;
 
-	case LFUN_WORDRIGHTSEL:
-	case LFUN_WORDLEFTSEL:
-		break;
 
 	// Special casing for superscript in case of LyX handling
 	// dead-keys:
