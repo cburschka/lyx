@@ -35,8 +35,7 @@ enum dispatch_result_t {
 	FINISHED,
 	FINISHED_RIGHT,
 	FINISHED_UP,
-	FINISHED_DOWN,
-	FINISHED_POP
+	FINISHED_DOWN
 };
 
 /** \c DispatchResult is a wrapper for dispatch_result_t.

@@ -2,7 +2,14 @@
 
 	* math_hullinset.C (priv_dispatch): 
 	* math_gridinset.C (priv_dispatch): 
+	* math_cursor.C (dispatch): FINISHED_POP -> FINISHED
+
+2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* math_hullinset.C (priv_dispatch):
+	* math_gridinset.C (priv_dispatch):
 	* math_cursor.C (dispatch): DISPATCHED_POP -> FINISHED_POP
+	(dispatch): 
 
 	* math_scriptinset.h: change dispatch to priv_dispatch and make it
 	protected

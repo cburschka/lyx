@@ -1072,12 +1072,12 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 				idx = nargs() - 1;
 			if (pos > cell(idx).size())
 				pos = cell(idx).size();
-			return FINISHED_POP;
+			return FINISHED;
 
 		case LFUN_CELL_SPLIT:
 			//recordUndo(bv, Undo::ATOMIC);
 			splitCell(idx, pos);
-			return FINISHED_POP;
+			return FINISHED;
 
 		case LFUN_BREAKLINE: {
 			//recordUndo(bv, Undo::INSERT);
@@ -1096,7 +1096,7 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 			pos = cell(idx).size();
 
 			//mathcursor->normalize();
-			return FINISHED_POP;
+			return FINISHED;
 		}
 
 		case LFUN_TABULAR_FEATURE: {
@@ -1152,8 +1152,8 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 				swapCol(col(idx));
 			else
 				return UNDISPATCHED;
-			lyxerr << "returning DISPATCHED_POP" << endl;
-			return FINISHED_POP;
+			lyxerr << "returning FINISHED" << endl;
+			return FINISHED;
 		}
 
 		case LFUN_PASTE: {
@@ -1184,7 +1184,7 @@ DispatchResult MathGridInset::priv_dispatch(FuncRequest const & cmd,
 					for (col_type c = 0; c < grid.ncols(); ++c)
 						cell(i).append(grid.cell(grid.index(r, c)));
 			}
-			return FINISHED_POP;
+			return FINISHED;
 		}
 
 		default:

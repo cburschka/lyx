@@ -1,5 +1,10 @@
 2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* dispatchresult.h: remove FINISHED_POP as FINISHED has the same
+	meaning.
+
+2003-10-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* dispatchresult.h: rename DISPATCHED_POP to FINISHED_POP, remove
 	operator dispatch_result_t, and operators for == != and >=
 

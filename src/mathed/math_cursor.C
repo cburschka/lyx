@@ -1439,7 +1439,7 @@ DispatchResult MathCursor::dispatch(FuncRequest const & cmd)
 		CursorPos & pos = Cursor_[i];
 		DispatchResult res = pos.inset_->dispatch(cmd, pos.idx_, pos.pos_);
 		if (res != UNDISPATCHED) {
-			if (res == FINISHED_POP) {
+			if (res == FINISHED) {
 				Cursor_.shrink(i + 1);
 				selClear();
 			}
