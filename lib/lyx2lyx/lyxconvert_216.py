@@ -99,7 +99,7 @@ def update_tabular(lines):
                     # the end variable refers to cell end, not to file end.
                     end = find_tokens(lines, ['\\layout','\\the_end','\\end_deeper','\\end_float'], i)
                 else:
-                    end = find_token(lines, '\\newline ', i)
+                    end = find_token(lines, '\\newline', i)
 
                 if end == -1:
                     sys.stderr.write("Malformed lyx file\n")
@@ -111,7 +111,7 @@ def update_tabular(lines):
                     del lines[i]
                     end = end -1
 
-                if lines[i] == '\\newline ':
+                if lines[i] == '\\newline':
                     del lines[i]
                 l = l + 1
 
