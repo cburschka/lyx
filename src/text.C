@@ -931,7 +931,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 		textclasslist.Style(bview->buffer()->params.textclass,
 				    par->getLayout());
 	pos_type i = pos;
-
+	
 	if (layout.margintype == MARGIN_RIGHT_ADDRESS_BOX) {
 		/* special code for right address boxes, only newlines count */
 		while (i < par->size()) {
@@ -959,7 +959,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 				last_separator = i;
 				x = width; // this means break
 			} else if (c == Paragraph::META_INSET &&
-				   par->getInset(i)) {
+			           par->getInset(i)) {
 				
 				// check wether a Display() inset is
 				// valid here. if not, change it to
@@ -967,12 +967,14 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 				if (par->getInset(i)->display() &&
 				    (layout.isCommand() ||
 				     (layout.labeltype == LABEL_MANUAL
-				      && i < beginningOfMainBody(bview->buffer(), par)))) {
+				      && i < beginningOfMainBody(bview->buffer(), par))))
+				{
 					// display istn't allowd
 					par->getInset(i)->display(false);
 					x += singleWidth(bview, par, i, c);
 				} else if (par->getInset(i)->display() ||
-					 par->getInset(i)->needFullRow()) {
+				           par->getInset(i)->needFullRow())
+				{
 					// So break the line here
 					if (i == pos) {
 						if (pos < last-1) {
@@ -986,6 +988,16 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 					x = width;  // this means break
 				} else {
 					x += singleWidth(bview, par, i, c);
+					// we have to check this separately as we could have a
+					// lineseparator and then the algorithm below would prefer
+					// that which IS wrong! We should always break on an inset
+					// if it's too long and not on the last separator.
+					// Maybe the only exeption is insets used as chars but
+					// then we would have to have a special function inside
+					// the inset to tell us this. Till then we leave it as
+					// it is now. (Jug 20020106)
+					if (pos < i && x >= width && last_separator >= 0)
+						last_separator = i - 1;
 				}
 			} else  {
 				if (IsLineSeparatorChar(c))
@@ -1003,8 +1015,12 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 					x = left_margin;
 			}
 		}
+		if ((pos+1 < i) && (last_separator < 0) && (x >= width))
+			last_separator = i - 2;
+		else if ((pos < i) && (last_separator < 0) && (x >= width))
+			last_separator = i - 1;
 		// end of paragraph is always a suitable separator
-		if (i == last && x < width)
+		else if (i == last && x < width)
 			last_separator = i;
 	}
 	
@@ -1018,6 +1034,7 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 	if (main_body && last_separator < main_body)
 		last_separator = main_body - 1;
 	
+	lyxerr << last_separator << ":" << pos << endl;
 	return last_separator;
 }
 
@@ -1920,6 +1937,8 @@ void LyXText::insertChar(BufferView * bview, char c)
 	// Is there a break one row above
 	if ((cursor.par()->isLineSeparator(cursor.pos())
 	     || cursor.par()->isNewline(cursor.pos())
+		 || ((cursor.pos() < cursor.par()->size()) &&
+			 cursor.par()->isInset(cursor.pos()+1))
 	     || cursor.row()->fill() == -1)
 	    && row->previous() && row->previous()->par() == row->par()) {
 		pos_type z = nextBreakPoint(bview,

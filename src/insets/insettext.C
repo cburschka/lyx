@@ -361,6 +361,12 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		}
 	}
 
+	// call these methods so that insetWidth, insetAscent and
+	// insetDescent have the right values. 
+	width(bv, f);
+	ascent(bv, f);
+	descent(bv, f);
+
 	// repaint the background if needed
 	if (cleared && backgroundColor() != LColor::background) {
 		top_x = int(x);
@@ -401,12 +407,6 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 			drawFrame(pain, cleared);
 		return;
 	}
-
-	// call these methods so that insetWidth, insetAscent and
-	// insetDescent have the right values. 
-	width(bv, f);
-	ascent(bv, f);
-	descent(bv, f);
 
 	top_baseline = baseline;
 	top_y = baseline - insetAscent;
@@ -509,8 +509,7 @@ void InsetText::drawFrame(Painter & pain, bool cleared) const
 		frame_y = top_baseline - insetAscent + ttoD2;
 		frame_w = insetWidth - TEXT_TO_INSET_OFFSET;
 		frame_h = insetAscent + insetDescent - TEXT_TO_INSET_OFFSET;
-		pain.rectangle(frame_x, frame_y,
-			       frame_w, frame_h,
+		pain.rectangle(frame_x, frame_y, frame_w, frame_h,
 		               frame_color);
 		frame_is_visible = true;
 	}
@@ -2337,10 +2336,9 @@ void InsetText::clearSelection(BufferView * bv)
 
 void InsetText::clearInset(BufferView * bv, int baseline, bool & cleared) const
 {
-	LyXFont dummy;
 	Painter & pain = bv->painter();
 	int w = insetWidth;
-	int h = ascent(bv, dummy) + descent(bv, dummy);
+	int h = insetAscent + insetDescent;
 	int ty = baseline - insetAscent;
 	
 	if (ty < 0) {

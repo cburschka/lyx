@@ -457,7 +457,7 @@ bool BufferView::lockInset(UpdatableInset * inset)
 
 void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 {
-	if (available() && theLockingInset()) {
+	if (available() && theLockingInset() && !theLockingInset()->nodraw()) {
 		LyXCursor cursor = text->cursor;
 		Inset * locking_inset = theLockingInset()->getLockingInset();
 

@@ -1,3 +1,12 @@
+2002-01-05  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (draw): move the calls so that insetWidth/Asc/Desc
+	variables are updated.
+
+	* insettabular.C (resetPos): set always the inset_y as it may be
+	needed in another function.
+	(searchBackward): don't draw while searching.
+
 2002-01-04  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (lockInsetInInset): forgot to set a cursor.

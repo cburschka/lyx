@@ -699,7 +699,6 @@ unsigned int InsetTabular::insetInInsetY()
 {
 	if (!the_locking_inset)
 		return 0;
-	
 	return inset_y + the_locking_inset->insetInInsetY();
 }
 
@@ -1305,6 +1304,11 @@ void InsetTabular::getCursorPos(BufferView * bv, int & x, int & y) const
 
 void InsetTabular::toggleInsetCursor(BufferView * bv)
 {
+	if (nodraw()) {
+		if (isCursorVisible())
+			bv->hideLockedInsetCursor();
+		return;
+	}
 	if (the_locking_inset) {
 		the_locking_inset->toggleInsetCursor(bv);
 		return;
@@ -1325,6 +1329,8 @@ void InsetTabular::toggleInsetCursor(BufferView * bv)
 
 void InsetTabular::showInsetCursor(BufferView * bv, bool show)
 {
+	if (nodraw())
+		return;
 	if (!isCursorVisible()) {
 		LyXFont font; // = GetFont(par, cursor.pos);
 	
@@ -1406,17 +1412,13 @@ int InsetTabular::getCellXPos(int cell) const
 
 void InsetTabular::resetPos(BufferView * bv) const
 {
-	if (!locked || nodraw())
-		return;
 #warning This should be fixed in the right manner (20011128 Jug)
 	// fast hack to fix infinite repaintings!
 	if (in_reset_pos)
 		return;
-	in_reset_pos = true;
-
-	actcol = tabular->column_of_cell(actcell);
 
 	int cell = 0;
+	actcol = tabular->column_of_cell(actcell);
 	actrow = 0;
 	cursor_.y(0);
 	for (; (cell < actcell) && !tabular->IsLastRow(cell); ++cell) {
@@ -1427,6 +1429,13 @@ void InsetTabular::resetPos(BufferView * bv) const
 			++actrow;
 		}
 	}
+	if (!locked || nodraw()) {
+		if (the_locking_inset)
+			inset_y = cursor_.y();
+		return;
+	}
+	// we need this only from here on!!!
+	in_reset_pos = true;
 	static int const offset = ADD_TO_TABULAR_WIDTH + 2;
 	int new_x = getCellXPos(actcell);
 	int old_x = cursor_.x();
@@ -2635,17 +2644,20 @@ Inset * InsetTabular::getInsetFromID(int id_arg) const
 string const
 InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 {
+	nodraw(true);
 	if (the_locking_inset) {
 		string const str(the_locking_inset->selectNextWordToSpellcheck(bv, value));
-		if (!str.empty())
+		if (!str.empty()) {
+			nodraw(false);
 			return str;
+		}
 		if (tabular->IsLastCell(actcell)) {
 			bv->unlockInset(const_cast<InsetTabular *>(this));
+			nodraw(false);
 			return string();
 		}
 		++actcell;
 	}
-	nodraw(true);
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
@@ -2701,10 +2713,15 @@ void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
 bool InsetTabular::searchForward(BufferView * bv, string const & str,
                                  bool const & cs, bool const & mw)
 {
+	nodraw(true);
 	if (the_locking_inset) {
-		if (the_locking_inset->searchForward(bv, str, cs, mw))
+		if (the_locking_inset->searchForward(bv, str, cs, mw)) {
+			nodraw(false);
+			updateLocal(bv, CELL, false);
 			return true;
+		}
 		if (tabular->IsLastCell(actcell)) {
+			nodraw(false);
 			bv->unlockInset(const_cast<InsetTabular *>(this));
 			return false;
 		}
@@ -2714,24 +2731,25 @@ bool InsetTabular::searchForward(BufferView * bv, string const & str,
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
 	inset->edit(bv);
-#if 0
-	bool const res = searchForward(bv, str, cs, mw);
-	updateLocal(bv, NONE, false);
-	bv->updateInset(const_cast<InsetTabular *>(this), false);
-	return res;
-#else
-	return searchForward(bv, str, cs, mw);
-#endif
+	bool const ret = searchForward(bv, str, cs, mw);
+	nodraw(false);
+	updateLocal(bv, CELL, false);
+	return ret;
 }
 
 
 bool InsetTabular::searchBackward(BufferView * bv, string const & str,
                                bool const & cs, bool const & mw)
 {
+	nodraw(true);
 	if (the_locking_inset) {
-		if (the_locking_inset->searchBackward(bv, str, cs, mw))
+		if (the_locking_inset->searchBackward(bv, str, cs, mw)) {
+			nodraw(false);
+			updateLocal(bv, CELL, false);
 			return true;
+		}
 		if (!actcell) { // we are already in the first cell
+			nodraw(false);
 			bv->unlockInset(const_cast<InsetTabular *>(this));
 			return false;
 		}
@@ -2741,13 +2759,10 @@ bool InsetTabular::searchBackward(BufferView * bv, string const & str,
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
 	inset->edit(bv, false);
-#if 0
-	bool const res = searchBackward(bv, str, cs, mw);
-	bv->updateInset(const_cast<InsetTabular *>(this), false);
-	return res;
-#else
-	return searchBackward(bv, str, cs, mw);
-#endif
+	bool const ret = searchBackward(bv, str, cs, mw);
+	nodraw(false);
+	updateLocal(bv, CELL, false);
+	return ret;
 }
 
 
