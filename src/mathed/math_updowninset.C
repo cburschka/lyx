@@ -161,7 +161,7 @@ void MathUpDownInset::Metrics(MathStyles st, int asc, int des)
 	// of this MathScriptInset
 	width_   = std::max(xcell(0).width(), xcell(1).width());
 	ascent_  = up()   ? xcell(0).height() + asc : 0;
-	descent_ = down() ? xcell(1).height() : 0;
+	descent_ = down() ? xcell(1).height() + des : 0;
 	dy0_     = - asc  - xcell(0).descent();
 	dy1_     =   des + xcell(1).ascent();
 }

@@ -13,6 +13,8 @@
 	* xarray.C: less crude MathXArray::x2pos for preciser cursor positioning
 	  using the mouse
 
+	* math_updowninset.C: fix drawing glitches
+
 2001-07-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* formula.C (insetAllowed): allow insertion of label
