@@ -1053,7 +1053,7 @@ string const Buffer::asciiParagraph(Paragraph const & par,
 		}
 	}
 	buffer << word;
-	return STRCONV(buffer.str());
+	return buffer.str();
 }
 
 

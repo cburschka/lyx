@@ -633,7 +633,7 @@ void InsetExternalMailer::string2params(string const & in,
 	if (in.empty())
 		return;
 
-	istringstream data(STRCONV(in));
+	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
@@ -671,5 +671,5 @@ InsetExternalMailer::params2string(InsetExternal::Params const & params,
 	data << name_ << ' ';
 	inset.write(buffer, data);
 	data << "\\end_inset\n";
-	return STRCONV(data.str());
+	return data.str();
 }

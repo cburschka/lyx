@@ -72,7 +72,7 @@ bool font2string(LyXFont const & font, bool toggle, string & data)
 	   << "color " << font.color() << '\n'
 	   << "language " << lang << '\n'
 	   << "toggleall " << tostr(toggle);
-	data = STRCONV(os.str());
+	data = os.str();
 	return true;
 }
 
@@ -81,7 +81,7 @@ bool font2string(LyXFont const & font, bool toggle, string & data)
 // If successful, returns true
 bool string2font(string const & data, LyXFont & font, bool & toggle)
 {
-	istringstream is(STRCONV(data));
+	istringstream is(data);
 	LyXLex lex(0,0);
 	lex.setStream(is);
 
@@ -370,7 +370,7 @@ string const currentState(BufferView * bv)
 	state << _(", Inset: ") <<
 		(text->cursor.par()->inInset() ? text->cursor.par()->inInset()->id() : -1);
 #endif
-	return STRCONV(state.str());
+	return state.str();
 }
 
 

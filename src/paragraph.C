@@ -1160,7 +1160,7 @@ string const Paragraph::asString(Buffer const & buffer,
 			getInset(i)->ascii(buffer, os);
 	}
 
-	return STRCONV(os.str());
+	return os.str();
 }
 
 

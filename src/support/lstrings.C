@@ -399,8 +399,8 @@ bool regexMatch(string const & a, string const & pattern)
 	string regex(pattern);
 	regex = subst(regex, ".", "\\.");
 	regex = subst(regex, "*", ".*");
-	boost::regex reg(STRCONV(regex));
-	return boost::regex_match(STRCONV(a), reg);
+	boost::regex reg(regex);
+	return boost::regex_match(a, reg);
 }
 
 
@@ -616,45 +616,40 @@ string const getStringFromVector(vector<string> const & vec,
 
 string bformat(string const & fmt, string const & arg1)
 {
-	return STRCONV((boost::format(STRCONV(fmt)) % STRCONV(arg1)).str());
+	return (boost::format(fmt) % arg1).str();
 }
 
 
 string bformat(string const & fmt, string const & arg1, string const & arg2)
 {
-	return STRCONV((boost::format(STRCONV(fmt)) % STRCONV(arg1)
-		% STRCONV(arg2)).str());
+	return (boost::format(fmt) % arg1 % arg2).str();
 }
 
 
 string bformat(string const & fmt, int arg1, int arg2)
 {
-	return STRCONV((boost::format(STRCONV(fmt)) % arg1 % arg2).str());
+	return (boost::format(fmt) % arg1 % arg2).str();
 }
 
 
 string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3)
 {
-	return STRCONV((boost::format(STRCONV(fmt)) % STRCONV(arg1)
-		% STRCONV(arg2) % STRCONV(arg3)).str());
+	return (boost::format(fmt) % arg1 % arg2 % arg3).str();
 }
 
 
 string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3, string const & arg4)
 {
-	return STRCONV((boost::format(STRCONV(fmt)) % STRCONV(arg1)
-		% STRCONV(arg2) % STRCONV(arg3) % STRCONV(arg4)).str());
+	return (boost::format(fmt) % arg1 % arg2 % arg3 % arg4).str();
 }
 
 
 string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3, string const & arg4, string const & arg5)
 {
-	return STRCONV((boost::format(STRCONV(fmt)) % STRCONV(arg1)
-		% STRCONV(arg2) % STRCONV(arg3) % STRCONV(arg4)
-		% STRCONV(arg5)).str());
+	return (boost::format(fmt) % arg1 % arg2 % arg3 % arg4 % arg5).str();
 }
 
 #else

@@ -432,7 +432,7 @@ void InsetFloatMailer::string2params(string const & in,
 	if (in.empty())
 		return;
 
-	istringstream data(STRCONV(in));
+	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
@@ -463,5 +463,5 @@ string const InsetFloatMailer::params2string(InsetFloatParams const & params)
 	ostringstream data;
 	data << name_ << ' ';
 	params.write(data);
-	return STRCONV(data.str());
+	return data.str();
 }

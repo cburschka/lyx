@@ -1,3 +1,18 @@
+2003-09-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* tostr.C:
+	* lstrings.C:
+	* filetools.C: Remove usage of STRCONV
+
+	* Makefile.am (libsupport_la_SOURCES): remove lyxstring.C and
+	lyxstring.h
+
+	* std_string.h: modify to always work with std::string, but if
+	with-included-string then use it through namespace lyx. Remove
+	STRCONV.
+
+	* lyxstring.[Ch]: remove files
+
 2003-09-15  Angus Leeming  <leeming@lyx.org>
 
 	* translator.h: add #include <boost/assert.hpp>, so that the template is
@@ -5,7 +20,7 @@
 
 2003-09-11  Angus Leeming  <leeming@lyx.org>
 
-	* cow_ptr.h: 
+	* cow_ptr.h:
 	* copied_ptr.h: added to the repository. Maybe temporarily.
 
 2003-09-09  Lars Gullik Bjønnes  <larsbj@lyx.org>

@@ -91,7 +91,7 @@ string const Spacing::writeEnvirBegin() const
 		ostringstream ost;
 		ost << "\\begin{spacing}{"
 		    << getValue() << '}';
-		return STRCONV(ost.str());
+		return ost.str();
 	}
 	}
 	return string();

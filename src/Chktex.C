@@ -64,7 +64,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 	string const tmp = OnlyFilename(ChangeExtension(file, ".log"));
 
 #if USE_BOOST_FORMAT
-	boost::format msg(STRCONV(_("ChkTeX warning id # %1$d")));
+	boost::format msg(_("ChkTeX warning id # %1$d"));
 #else
 	string const msg(_("ChkTeX warning id # "));
 #endif
@@ -85,7 +85,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 
 #if USE_BOOST_FORMAT
 		msg % warno;
-		terr.insertError(lineno, STRCONV(msg.str()), warning);
+		terr.insertError(lineno, msg.str(), warning);
 		msg.clear();
 #else
 		terr.insertError(lineno, msg + warno, warning);

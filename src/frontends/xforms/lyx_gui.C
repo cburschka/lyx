@@ -347,7 +347,7 @@ string const hexname(LColor::color col)
 	   << setw(2) << g
 	   << setw(2) << b;
 
-	return STRCONV(os.str());
+	return os.str();
 }
 
 

@@ -48,6 +48,10 @@ using lyx::support::suffixIs;
 using lyx::support::Systemcall;
 using lyx::support::unlink;
 
+using boost::regex;
+using boost::smatch;
+
+
 #ifndef CXX_GLOBAL_CSTD
 using std::sscanf;
 #endif
@@ -58,15 +62,6 @@ using std::getline;
 using std::ifstream;
 using std::set;
 using std::vector;
-
-using boost::regex;
-
-#ifndef USE_INCLUDED_STRING
-using boost::smatch;
-#else
-using boost::cmatch;
-#endif
-
 
 // TODO: in no particular order
 // - get rid of the extern BufferList and the call to
@@ -456,13 +451,9 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 
 	while (getline(ifs, token)) {
 		token = rtrim(token, "\r");
-#ifndef USE_INCLUDED_STRING
 		smatch sub;
-#else
-		cmatch sub;
-#endif
-		if (regex_match(STRCONV(token), sub, reg1)) {
-			string data = STRCONV(sub.str(1));
+		if (regex_match(token, sub, reg1)) {
+			string data = sub.str(1);
 			while (!data.empty()) {
 				string citation;
 				data = split(data, citation, ',');
@@ -470,8 +461,8 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 						     << citation << endl;
 				aux_info.citations.insert(citation);
 			}
-		} else if (regex_match(STRCONV(token), sub, reg2)) {
-			string data = sub.STRCONV(str(1));
+		} else if (regex_match(token, sub, reg2)) {
+			string data = sub.str(1);
 			// data is now all the bib files separated by ','
 			// get them one by one and pass them to the helper
 			while (!data.empty()) {
@@ -482,16 +473,16 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 						     << database << '\'' << endl;
 				aux_info.databases.insert(database);
 			}
-		} else if (regex_match(STRCONV(token), sub, reg3)) {
-			string style = STRCONV(sub.str(1));
+		} else if (regex_match(token, sub, reg3)) {
+			string style = sub.str(1);
 			// token is now the style file
 			// pass it to the helper
 			style = ChangeExtension(style, "bst");
 			lyxerr[Debug::LATEX] << "BibTeX style: `"
 					     << style << '\'' << endl;
 			aux_info.styles.insert(style);
-		} else if (regex_match(STRCONV(token), sub, reg4)) {
-			string const file2 = STRCONV(sub.str(1));
+		} else if (regex_match(token, sub, reg4)) {
+			string const file2 = sub.str(1);
 			scanAuxFile(file2, aux_info);
 		}
 	}
@@ -711,21 +702,18 @@ void LaTeX::deplog(DepTable & head)
 		token = rtrim(token, "\r");
 		if (token.empty()) continue;
 
-#ifndef USE_INCLUDED_STRING
 		smatch sub;
-#else
-		cmatch sub;
-#endif
-		if (regex_match(STRCONV(token), sub, reg1)) {
-			foundfile = STRCONV(sub.str(1));
-		} else if (regex_match(STRCONV(token), sub, reg2)) {
-			foundfile = STRCONV(sub.str(1));
-		} else if (regex_match(STRCONV(token), sub, reg3)) {
-			foundfile = STRCONV(sub.str(1));
-		} else if (regex_match(STRCONV(token), sub, reg4)) {
-			foundfile = STRCONV(sub.str(1));
-		} else if (regex_match(STRCONV(token), sub, reg5)) {
-			foundfile = STRCONV(sub.str(1));
+
+		if (regex_match(token, sub, reg1)) {
+			foundfile = sub.str(1);
+		} else if (regex_match(token, sub, reg2)) {
+			foundfile = sub.str(1);
+		} else if (regex_match(token, sub, reg3)) {
+			foundfile = sub.str(1);
+		} else if (regex_match(token, sub, reg4)) {
+			foundfile = sub.str(1);
+		} else if (regex_match(token, sub, reg5)) {
+			foundfile = sub.str(1);
 		} else {
 			continue;
 		}
@@ -758,7 +746,7 @@ void LaTeX::deplog(DepTable & head)
 		// (2) foundfile is in the tmpdir
 		//     insert it into head
 		else if (FileInfo(OnlyFilename(foundfile)).exist()) {
-			if (regex_match(STRCONV(foundfile), unwanted)) {
+			if (regex_match(foundfile, unwanted)) {
 				lyxerr[Debug::DEPEND]
 					<< "We don't want "
 					<< OnlyFilename(foundfile)

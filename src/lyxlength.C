@@ -53,7 +53,7 @@ string const LyXLength::asString() const
 {
 	ostringstream buffer;
 	buffer << val_ << unit_name[unit_]; // setw?
-	return STRCONV(buffer.str());
+	return buffer.str();
 }
 
 
@@ -89,7 +89,7 @@ string const LyXLength::asLatexString() const
 	    buffer << val_ << unit_name[unit_]; // setw?
 	    break;
 	}
-	return STRCONV(buffer.str());
+	return buffer.str();
 }
 
 

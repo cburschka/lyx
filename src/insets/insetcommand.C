@@ -140,7 +140,7 @@ void InsetCommandMailer::string2params(string const & in,
 	if (in.empty())
 		return;
 
-	istringstream data(STRCONV(in));
+	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
@@ -170,5 +170,5 @@ string const InsetCommandMailer::params2string(string const & name,
 	data << name << ' ';
 	params.write(data);
 	data << "\\end_inset\n";
-	return STRCONV(data.str());
+	return data.str();
 }

@@ -26,7 +26,7 @@ string const tostr(unsigned int i)
 {
 	ostringstream os;
 	os << i;
-	return STRCONV(os.str());
+	return os.str();
 }
 
 
@@ -34,7 +34,7 @@ string const tostr(long int i)
 {
 	ostringstream os;
 	os << i;
-	return STRCONV(os.str());
+	return os.str();
 }
 
 
@@ -42,7 +42,7 @@ string const tostr(double d)
 {
 	ostringstream os;
 	os << d;
-	return STRCONV(os.str());
+	return os.str();
 }
 
 
@@ -50,7 +50,7 @@ string const tostr(int i)
 {
 	ostringstream os;
 	os << i;
-	return STRCONV(os.str());
+	return os.str();
 }
 
 
@@ -58,4 +58,3 @@ string const tostr(string const & s)
 {
 	return s;
 }
-

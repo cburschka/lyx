@@ -13,27 +13,23 @@
 #ifndef STD_STRING_H
 #define STD_STRING_H
 
-#if 0
-#ifndef _CONFIG_H
-#error The <config.h> header should always be included before std_string.h
-#endif
-#endif
-
-#ifndef USE_INCLUDED_STRING
 
 #include <string>
+
+#ifdef USE_INCLUDED_STRING
+
 using std::string;
-#define STRCONV(STR) STR
+
 #else
 
-#ifdef __STRING__
-#error The <string> header has been included before std_string.h
-#else
-#define __STRING__
-#endif
-#include "support/lyxstring.h"
+namespace lyx {
+
+using std::string;
+
+}
+
 using lyx::string;
-#define STRCONV(STR) STR.c_str()
+
 #endif
 
 #endif // NOT STD_STRING_H

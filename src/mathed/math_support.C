@@ -697,7 +697,7 @@ string asString(MathArray const & ar)
 	std::ostringstream os;
 	WriteStream ws(os);
 	ws << ar;
-	return STRCONV(os.str());
+	return os.str();
 }
 
 

@@ -25,6 +25,9 @@
 using lyx::support::atoi;
 using lyx::support::LibFileSearch;
 
+using boost::regex;
+using boost::smatch;
+
 using std::endl;
 using std::getline;
 using std::make_pair;
@@ -32,13 +35,6 @@ using std::make_pair;
 using std::ifstream;
 using std::pair;
 
-using boost::regex;
-
-#ifndef USE_INCLUDED_STRING
-using boost::smatch;
-#else
-using boost::cmatch;
-#endif
 
 
 bool CharacterSet::loadFile(string const & fname)
@@ -68,14 +64,10 @@ bool CharacterSet::loadFile(string const & fname)
 	// without the use of a keyword table.
 	regex reg("^([12][0-9][0-9])[ \t]+\"([^ ]+)\".*");
 	while (getline(ifs, line)) {
-#ifndef USE_INCLUDED_STRING
 		smatch sub;
-#else
-		cmatch sub;
-#endif
-		if (regex_match(STRCONV(line), sub, reg)) {
-			int const n = atoi(STRCONV(sub.str(1)));
-			string const str = STRCONV(sub.str(2));
+		if (regex_match(line, sub, reg)) {
+			int const n = atoi(sub.str(1));
+			string const str = sub.str(2);
 			if (lyxerr.debugging(Debug::KBMAP))
 				lyxerr << "Chardef: " << n
 				       << " to [" << str << ']' << endl;

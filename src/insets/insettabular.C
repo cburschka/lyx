@@ -2237,7 +2237,7 @@ bool InsetTabular::copySelection(BufferView * bv)
 	ostringstream os;
 	paste_tabular->ascii(*bv->buffer(), os,
 			     ownerPar(*bv->buffer(), this).params().depth(), true, '\t');
-	bv->stuffClipboard(STRCONV(os.str()));
+	bv->stuffClipboard(os.str());
 	return true;
 }
 
@@ -2665,7 +2665,7 @@ string const InsetTabularMailer::inset2string(Buffer const &) const
 
 int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 {
-	istringstream data(STRCONV(in));
+	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
@@ -2719,5 +2719,5 @@ string const InsetTabularMailer::params2string(InsetTabular const & inset)
 	data << name_ << " \\active_cell " << inset.getActCell() << '\n';
 	inset.write(buffer, data);
 	data << "\\end_inset\n";
-	return STRCONV(data.str());
+	return data.str();
 }

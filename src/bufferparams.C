@@ -337,7 +337,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		}
 	} else if (token == "\\author") {
 		lex.nextToken();
-		istringstream ss(STRCONV(lex.getString()));
+		istringstream ss(lex.getString());
 		Author a;
 		ss >> a;
 		author_map.push_back(pimpl_->authorlist.record(a));
@@ -700,7 +700,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		clsoptions << options << ',';
 	}
 
-	string strOptions(STRCONV(clsoptions.str()));
+	string strOptions(clsoptions.str());
 	if (!strOptions.empty()) {
 		strOptions = rtrim(strOptions, ",");
 		os << '[' << strOptions << ']';
@@ -977,7 +977,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		if (!lyxrc.language_global_options
 		    && tmp == "\\usepackage{babel}")
 			tmp = string("\\usepackage[") +
-				STRCONV(language_options.str()) +
+				language_options.str() +
 				"]{babel}";
 		lyxpreamble += tmp + "\n";
 		lyxpreamble += features.getBabelOptions();

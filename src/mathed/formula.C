@@ -317,5 +317,5 @@ string const InsetFormula::PreviewImpl::latexString() const
 	ostringstream ls;
 	WriteStream wi(ls, false, false);
 	parent().par_->write(wi);
-	return STRCONV(ls.str());
+	return ls.str();
 }

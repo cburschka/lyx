@@ -239,7 +239,7 @@ string const getInfo(InfoMap const & map, string const & key)
 	if (!year.empty())
 		result << ", " << year;
 
-	string const result_str = rtrim(STRCONV(result.str()));
+	string const result_str = rtrim(result.str());
 	if (!result_str.empty())
 		return result_str;
 
@@ -265,7 +265,7 @@ string const escape_special_chars(string const & expr)
 	// The '$' must be prefixed with the escape character '\' for
 	// boost to treat it as a literal.
 	// Thus, to prefix a matched expression with '\', we use:
-	return STRCONV(reg.Merge(STRCONV(expr), "\\\\$&"));
+	return reg.Merge(expr, "\\\\$&");
 }
 
 
@@ -276,7 +276,7 @@ struct RegexMatch
 	// re and icase are used to construct an instance of boost::RegEx.
 	// if icase is true, then matching is insensitive to case
 	RegexMatch(InfoMap const & m, string const & re, bool icase)
-		: map_(m), regex_(STRCONV(re), icase) {}
+		: map_(m), regex_(re, icase) {}
 
 	bool operator()(string const & key) {
 		if (!validRE())
@@ -291,7 +291,7 @@ struct RegexMatch
 
 		// Attempts to find a match for the current RE
 		// somewhere in data.
-		return regex_.Search(STRCONV(data));
+		return regex_.Search(data);
 	}
 
 	bool validRE() const { return regex_.error_code() == 0; }

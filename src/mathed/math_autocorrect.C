@@ -153,7 +153,7 @@ void initAutoCorrect()
 			//lyxerr[Debug::MATHED] << "ignoring line '" << line << '\'' << endl;
 			continue;
 		}
-		istringstream il(STRCONV(line));
+		istringstream il(line);
 
 		//lyxerr[Debug::MATHED] << "line '" << line << '\'' << endl;
 		Correction corr;

@@ -159,7 +159,7 @@ string LaTeXFeatures::getLanguages() const
 	     ++cit)
 		languages << (*cit)->babel() << ',';
 
-	return STRCONV(languages.str());
+	return languages.str();
 }
 
 
@@ -304,7 +304,7 @@ string const LaTeXFeatures::getPackages() const
 		packages << "]{natbib}\n";
 	}
 
-	return STRCONV(packages.str());
+	return packages.str();
 }
 
 
@@ -373,7 +373,7 @@ string const LaTeXFeatures::getMacros() const
 	// floats
 	getFloatDefinitions(macros);
 
-	return STRCONV(macros.str());
+	return macros.str();
 }
 
 
@@ -388,7 +388,7 @@ string const LaTeXFeatures::getBabelOptions() const
 	if (!params.language->latex_options().empty())
 		tmp << params.language->latex_options() << '\n';
 
-	return STRCONV(tmp.str());
+	return tmp.str();
 }
 
 
@@ -406,7 +406,7 @@ string const LaTeXFeatures::getTClassPreamble() const
 		tcpreamble << tclass[*cit]->preamble();
 	}
 
-	return STRCONV(tcpreamble.str());
+	return tcpreamble.str();
 }
 
 
@@ -419,7 +419,7 @@ string const LaTeXFeatures::getLyXSGMLEntities() const
 		entities << "<!ENTITY lyxarrow \"-&gt;\">" << '\n';
 	}
 
-	return STRCONV(entities.str());
+	return entities.str();
 }
 
 
@@ -435,7 +435,7 @@ string const LaTeXFeatures::getIncludedFiles(string const & fname) const
 			     << (IsSGMLFilename(fi->second) ? " SYSTEM \"" : " \"")
 			     << MakeRelPath(fi->second, basename) << "\">";
 
-	return STRCONV(sgmlpreamble.str());
+	return sgmlpreamble.str();
 }
 
 

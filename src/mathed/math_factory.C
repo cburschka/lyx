@@ -118,7 +118,7 @@ void initSymbols()
 
 		// special case of iffont/else/endif
 		if (line.size() >= 7 && line.substr(0, 6) == "iffont") {
-			istringstream is(STRCONV(line));
+			istringstream is(line);
 			string tmp;
 			is >> tmp;
 			is >> tmp;
@@ -135,12 +135,12 @@ void initSymbols()
 		// special case of pre-defined macros
 		if (line.size() > 8 && line.substr(0, 5) == "\\def\\") {
 			//lyxerr << "defining: '" << line << '\'' << endl;
-			istringstream is(STRCONV(line));
+			istringstream is(line);
 			MathMacroTable::create(MathAtom(new MathMacroTemplate(is)));
 			continue;
 		}
 
-		istringstream is(STRCONV(line));
+		istringstream is(line);
 		latexkeys tmp;
 		is >> tmp.name >> tmp.inset;
 		if (isFontName(tmp.inset))

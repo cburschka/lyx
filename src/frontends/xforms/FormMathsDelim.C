@@ -87,7 +87,7 @@ void FormMathsDelim::apply()
 
 	ostringstream os;
 	os << delim_values[left] << ' ' << delim_values[right];
-	controller().dispatchDelim(STRCONV(os.str()));
+	controller().dispatchDelim(os.str());
 }
 
 

@@ -335,7 +335,7 @@ string const InsetGraphics::createLatexOptions() const
 	if (!params().special.empty())
 	    options << params().special << ",\n";
 
-	string opts = STRCONV(options.str());
+	string opts = options.str();
 	// delete last ",\n"
 	return opts.substr(0, opts.size() - 2);
 }
@@ -707,7 +707,7 @@ void InsetGraphicsMailer::string2params(string const & in,
 	if (in.empty())
 		return;
 
-	istringstream data(STRCONV(in));
+	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
@@ -734,5 +734,5 @@ InsetGraphicsMailer::params2string(InsetGraphicsParams const & params,
 	data << name_ << ' ';
 	params.Write(data, buffer.filePath());
 	data << "\\end_inset\n";
-	return STRCONV(data.str());
+	return data.str();
 }

@@ -544,7 +544,7 @@ string const LyXFont::stateText(BufferParams * params) const
 		os << bformat(_("Language: %1$s, "), _(language()->display()));
 	if (number() != OFF)
 		os << bformat(_("  Number %1$s"), _(GUIMiscNames[number()]));
-	return rtrim(STRCONV(os.str()), ", ");
+	return rtrim(os.str(), ", ");
 }
 
 

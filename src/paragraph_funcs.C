@@ -968,14 +968,14 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		change = Change(Change::UNCHANGED);
 	} else if (token == "\\change_inserted") {
 		lex.nextToken();
-		istringstream is(STRCONV(lex.getString()));
+		istringstream is(lex.getString());
 		int aid;
 		lyx::time_type ct;
 		is >> aid >> ct;
 		change = Change(Change::INSERTED, bp.author_map[aid], ct);
 	} else if (token == "\\change_deleted") {
 		lex.nextToken();
-		istringstream is(STRCONV(lex.getString()));
+		istringstream is(lex.getString());
 		int aid;
 		lyx::time_type ct;
 		is >> aid >> ct;

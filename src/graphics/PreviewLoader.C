@@ -255,7 +255,7 @@ struct IncrementedFileName {
 	{
 		ostringstream os;
 		os << base_ << counter_++ << '.' << to_format_;
-		string const file = STRCONV(os.str());
+		string const file = os.str();
 
 		return make_pair(snippet, file);
 	}
@@ -480,7 +480,7 @@ void PreviewLoader::Impl::startLoading()
 	cs << pconverter_->command << ' ' << latexfile << ' '
 	   << int(font_scaling_factor_) << ' ' << pconverter_->to;
 
-	string const command = "sh " + support::LibScriptSearch(STRCONV(cs.str()));
+	string const command = "sh " + support::LibScriptSearch(cs.str());
 
 	// Initiate the conversion from LaTeX to bitmap images files.
 	support::Forkedcall::SignalTypePtr

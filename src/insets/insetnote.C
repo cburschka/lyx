@@ -275,7 +275,7 @@ string const InsetNoteMailer::params2string(string const & name,
 	ostringstream data;
 	data << name << ' ';
 	params.write(data);
-	return STRCONV(data.str());
+	return data.str();
 }
 
 
@@ -287,7 +287,7 @@ void InsetNoteMailer::string2params(string const & in,
 	if (in.empty())
 		return;
 
-	istringstream data(STRCONV(in));
+	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
 	params.read(lex);

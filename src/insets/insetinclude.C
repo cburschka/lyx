@@ -608,7 +608,7 @@ string const InsetInclude::PreviewImpl::latexString() const
 	runparams.flavor = LatexRunParams::LATEX;
 	parent().latex(*view()->buffer(), os, runparams);
 
-	return STRCONV(os.str());
+	return os.str();
 }
 
 
@@ -651,7 +651,7 @@ void InsetIncludeMailer::string2params(string const & in,
 	if (in.empty())
 		return;
 
-	istringstream data(STRCONV(in));
+	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
@@ -688,5 +688,5 @@ InsetIncludeMailer::params2string(InsetInclude::Params const & params)
 	data << name_ << ' ';
 	inset.write(data);
 	data << "\\end_inset\n";
-	return STRCONV(data.str());
+	return data.str();
 }

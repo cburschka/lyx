@@ -76,7 +76,7 @@ void getTexFileList(string const & filename, std::vector<string> & list)
 	std::vector<string>::iterator it  = list.begin();
 	std::vector<string>::iterator end = list.end();
 	for (; it != end; ++it) {
-		*it = STRCONV(regex.Merge(STRCONV((*it)), "/"));
+		*it = regex.Merge((*it), "/");
 	}
 
 	lyx::eliminate_duplicates(list);

@@ -45,7 +45,7 @@ string const LyXGlueLength::asString() const
 
 	if (plus_.zero() && minus_.zero()) {
 		buffer << unit_name[len_.unit()];
-		return STRCONV(buffer.str());
+		return buffer.str();
 	}
 
 	// just len and plus
@@ -54,7 +54,7 @@ string const LyXGlueLength::asString() const
 			buffer << unit_name[len_.unit()];
 		buffer << '+' << plus_.value();
 		buffer << unit_name[plus_.unit()];
-		return STRCONV(buffer.str());
+		return buffer.str();
 	}
 
 	// just len and minus
@@ -63,7 +63,7 @@ string const LyXGlueLength::asString() const
 			buffer << unit_name[len_.unit()];
 		buffer << '-' << minus_.value();
 		buffer << unit_name[minus_.unit()];
-		return STRCONV(buffer.str());
+		return buffer.str();
 	}
 
 	// ok, len, plus AND minus
@@ -74,7 +74,7 @@ string const LyXGlueLength::asString() const
 			buffer << unit_name[len_.unit()];
 		buffer << "+-" << minus_.value();
 		buffer << unit_name[minus_.unit()];
-		return STRCONV(buffer.str());
+		return buffer.str();
 	}
 
 	// this is so rare a case, why bother minimising units ?
@@ -83,7 +83,7 @@ string const LyXGlueLength::asString() const
 	buffer << '+' << plus_.value() << unit_name[plus_.unit()];
 	buffer << '-' << minus_.value() << unit_name[minus_.unit()];
 
-	return STRCONV(buffer.str());
+	return buffer.str();
 }
 
 
@@ -97,7 +97,7 @@ string const LyXGlueLength::asLatexString() const
 		buffer << " plus " << plus_.value() << unit_name[plus_.unit()];
 	if (!minus_.zero())
 		buffer << " minus " << minus_.value() << unit_name[minus_.unit()];
-	return STRCONV(buffer.str());
+	return buffer.str();
 }
 
 

@@ -198,7 +198,7 @@ namespace {
 
 char loweralphaCounter(int n)
 {
-	if (n < 1 || n > 26) 
+	if (n < 1 || n > 26)
 		return '?';
 	return 'a' + n - 1;
 }
@@ -288,6 +288,8 @@ string Counters::counterLabel(string const & format)
 {
 	string label = format;
 	while (true) {
+#warning Using boost::regex would make this code a lot simpler... (Lgb)
+
 		size_t const i = label.find('\\', 0);
 		if (i == string::npos)
 			break;
@@ -333,5 +335,5 @@ string Counters::enumLabel(string const & ctr, string const & langtype)
 			os << alphaCounter(value("enumiv")) << '.';
 	}
 
-	return STRCONV(os.str());
+	return os.str();
 }

@@ -177,7 +177,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 
 		lyxerr[Debug::GRAPHICS] << "\tConversion script:"
 			<< "\n--------------------------------------\n"
-			<< STRCONV(script.str())
+			<< script.str()
 			<< "\n--------------------------------------\n";
 
 		// Output the script to file.
@@ -189,7 +189,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		if (!fs.good())
 			return;
 
-		fs << STRCONV(script.str());
+		fs << script.str();
 		fs.close();
 
 		// The command needed to run the conversion process
@@ -259,7 +259,7 @@ string const move_file(string const & from_file, string const & to_file)
 		<< "\t'rm' -f ${fromfile}\n"
 		<< "}\n";
 
-	return STRCONV(command.str());
+	return command.str();
 }
 
 

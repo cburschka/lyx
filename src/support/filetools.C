@@ -693,7 +693,7 @@ string const NormalizePath(string const & path)
 
 	// Normalise paths like /foo//bar ==> /foo/bar
 	boost::RegEx regex("/{2,}");
-	RTemp = STRCONV(regex.Merge(STRCONV(RTemp), "/"));
+	RTemp = regex.Merge(RTemp, "/");
 
 	while (!RTemp.empty()) {
 		// Split by next /
@@ -729,7 +729,7 @@ string const GetFileContents(string const & fname)
 		if (ifs && ofs) {
 			ofs << ifs.rdbuf();
 			ifs.close();
-			return STRCONV(ofs.str());
+			return ofs.str();
 		}
 	}
 	lyxerr << "LyX was not able to read file '" << fname << '\'' << endl;

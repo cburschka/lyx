@@ -50,7 +50,7 @@ InsetFormulaMacro::InsetFormulaMacro
 
 InsetFormulaMacro::InsetFormulaMacro(string const & s)
 {
-	std::istringstream is(STRCONV(s));
+	std::istringstream is(s);
 	read(is);
 }
 

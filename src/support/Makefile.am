@@ -6,12 +6,7 @@ CLEANFILES = path_defines.C
 
 INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
-EXTRA_DIST = path_defines.C.in lyxstring.C lyxstring.h \
-	     os_unix.C os_win32.C os_os2.C
-
-if USE_LYXSTRING
-LYXSTRING = lyxstring.C lyxstring.h
-endif
+EXTRA_DIST = path_defines.C.in os_unix.C os_win32.C os_os2.C
 
 if USE_COMPRESSION
 COMPRESSION = gzstream.C gzstream.h
@@ -55,7 +50,7 @@ libsupport_la_SOURCES = \
 	lyxmanip.h \
 	lyxtime.C \
 	lyxtime.h \
-	$(LYXSTRING) lyxsum.C \
+	lyxsum.C \
 	mkdir.C \
 	nt_defines.h \
 	os.C \

@@ -213,7 +213,7 @@ string const InsetBranchMailer::params2string(string const & name,
 	params.write(data);
 	// Add all_branches parameter to data:
 	data << params.branchlist.allBranches() << "\n";
-	return STRCONV(data.str());
+	return data.str();
 }
 
 
@@ -225,7 +225,7 @@ void InsetBranchMailer::string2params(string const & in,
 	if (in.empty())
 		return;
 
-	istringstream data(STRCONV(in));
+	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
 	params.read(lex);

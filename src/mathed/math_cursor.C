@@ -1288,7 +1288,7 @@ string MathCursor::info() const
 	if (hasPrevAtom())
 		prevAtom()->infoize2(os);
 	os << "                    ";
-	return STRCONV(os.str());
+	return os.str();
 }
 
 

@@ -846,7 +846,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (cur_spacing == Spacing::Other)
 			cur_value = pit->params().spacing().getValue();
 
-		istringstream is(STRCONV(cmd.argument));
+		istringstream is(cmd.argument);
 		string tmp;
 		is >> tmp;
 		Spacing::Space new_spacing = cur_spacing;
@@ -1018,7 +1018,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_SETXY: {
 		int x = 0;
 		int y = 0;
-		istringstream is(STRCONV(cmd.argument));
+		istringstream is(cmd.argument);
 		is >> x >> y;
 		if (!is)
 			lyxerr << "SETXY: Could not parse coordinates in '"

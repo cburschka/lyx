@@ -79,7 +79,7 @@ string const X11hexname(RGBColor const & col)
 	     << setw(2) << col.g
 	     << setw(2) << col.b;
 
-	return STRCONV(ostr.str());
+	return ostr.str();
 }
 
 

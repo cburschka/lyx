@@ -48,10 +48,10 @@ MathArrayInset::MathArrayInset(string const & name, string const & str)
 	: MathGridInset(1, 1), name_(name)
 {
 	vector< vector<string> > dat;
-	istringstream is(STRCONV(str));
+	istringstream is(str);
 	string line;
 	while (getline(is, line)) {
-		istringstream ls(STRCONV(line));
+		istringstream ls(line);
 		typedef istream_iterator<string> iter;
 		vector<string> v = vector<string>(iter(ls), iter());
 		if (v.size())

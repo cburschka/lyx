@@ -938,7 +938,7 @@ namespace {
 		ostringstream os;
 		MaximaStream ms(os);
 		ms << ar;
-		string expr = STRCONV(os.str());
+		string expr = os.str();
 		string const header = "SIMPSUM:true;";
 
 		string out;
@@ -1061,7 +1061,7 @@ namespace {
 		ostringstream os;
 		MapleStream ms(os);
 		ms << ar;
-		string expr = STRCONV(os.str());
+		string expr = os.str();
 		lyxerr << "ar: '" << ar << "'\n"
 		       << "ms: '" << os.str() << "'" << endl;
 
@@ -1109,7 +1109,7 @@ namespace {
 		ostringstream os;
 		OctaveStream vs(os);
 		vs << ar;
-		string expr = STRCONV(os.str());
+		string expr = os.str();
 		string out;
 
 		lyxerr << "pipe: ar: '" << ar << "'\n"
@@ -1193,7 +1193,7 @@ MathArray pipeThroughExtern(string const & lang, string const & extra,
 	os << '[' << extra << ' ';
 	ns << ar;
 	os << ']';
-	string data = STRCONV(os.str());
+	string data = os.str();
 
 	// search external script
 	string file = LibFileSearch("mathed", "extern_" + lang);

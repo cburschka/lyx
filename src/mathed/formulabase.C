@@ -571,7 +571,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		unsigned int n = 1;
 		string v_align;
 		string h_align;
-		istringstream is(STRCONV(argument));
+		istringstream is(argument);
 		is >> m >> n >> v_align >> h_align;
 		m = max(1u, m);
 		n = max(1u, n);

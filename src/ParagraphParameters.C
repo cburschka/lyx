@@ -446,7 +446,7 @@ void ParagraphParameters::write(ostream & os) const
 
 void setParagraphParams(BufferView & bv, string const & data)
 {
-	istringstream is(STRCONV(data));
+	istringstream is(data);
 	LyXLex lex(0,0);
 	lex.setStream(is);
 
@@ -495,5 +495,5 @@ void params2string(Paragraph const & par, string & data)
 	/// is paragraph in inset
 	os << "\\ininset " << (par.inInset()?1:0) << '\n';
 
-	data = STRCONV(os.str());
+	data = os.str();
 }

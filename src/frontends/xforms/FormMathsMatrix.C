@@ -95,7 +95,7 @@ void FormMathsMatrix::apply()
 
 	ostringstream os;
 	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
-	controller().dispatchMatrix(STRCONV(os.str()));
+	controller().dispatchMatrix(os.str());
 }
 
 
