@@ -32,7 +32,7 @@ pkgdata_DATA = lyxrc.example CREDITS chkconfig.ltx lyxrc.defaults \
                encodings languages symbols
 
 LYXLIBDIRS = bind clipart doc examples help images kbd layouts scripts \
-             templates tex ui
+             templates tex ui xfonts
 
 EXTRA_DIST = CREDITS chkconfig.ltx configure.cmd lyxrc.example \
 	external_templates $(LYXLIBDIRS) \
@@ -50,7 +50,15 @@ libinstalldirs:
 		$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/$$dir ; \
 	done
 
-install-data-local: libinstalldirs
+install-xfonts:
+	files=`sed -e 's/^\([^ ]*\) .*$$/\1/' xfonts/fonts.dir` ; \
+	for i in $${files} ; do \
+	  ln -s `kpsewhich $$i` $(DESTDIR)$(pkgdatadir)/xfonts/$$i ; \
+	done 
+	$(INSTALL_DATA) xfonts/fonts.dir $(DESTDIR)$(pkgdatadir)/xfonts/fonts.dir
+	$(INSTALL_DATA) xfonts/fonts.scale $(DESTDIR)$(pkgdatadir)/xfonts/fonts.scale
+
+install-data-local: libinstalldirs install-xfonts
 	files=`cd ${srcdir} ; echo $(LIBINSTFILES)` ; \
 	for i in $${files} ; do \
 	   $(INSTALL_DATA) ${srcdir}/$$i $(DESTDIR)$(pkgdatadir)/$$i ; \

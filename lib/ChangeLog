@@ -1,5 +1,17 @@
 2002-03-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* create_fonts_dir: 
+	* fonts-xlfd: removed
+
+	* configure.m4: add a replacement for the create_fonts_dir script.
+	This one checks for ttf fonts too. The font links are created in
+	the xfonts/ directory. If running outside libdir, the script
+	checks whether fonts.dir is different from the system-wide one and
+	removes it if it is not.
+
+	* Makefile.am (install-xfonts): new target to install the X font
+	directory 
+
 	* layouts/svjour.inc: remove ProvidesAmsMath
 
 2002-03-19  Kayvan A. Sylvan <kayvan@sylvan.com>
