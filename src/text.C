@@ -2095,12 +2095,7 @@ void LyXText::TableFeatures(BufferView * bview, int feature) const
 	  Language const * lang = cursor.par()->getParLanguage(bview->buffer()->params);
 	  LyXFont font(LyXFont::ALL_INHERIT,lang);
           for (int i = 0; i < number; ++i) {
-#ifdef NEW_WAY
               cursor.par()->InsertChar(pos, LyXParagraph::META_NEWLINE, font);
-#else
-              cursor.par()->InsertChar(pos, LyXParagraph::META_NEWLINE);
-	      cursor.par()->SetFont(pos, font);
-#endif
 	  }
 		
           /* append the row into the table */
@@ -2138,12 +2133,7 @@ void LyXText::TableFeatures(BufferView * bview, int feature) const
 	  Language const * lang = cursor.par()->getParLanguage(bview->buffer()->params);
 	  LyXFont font(LyXFont::ALL_INHERIT,lang);
           for (int i = 0; i < number; ++i) {
-#ifdef NEW_WAY
               cursor.par()->InsertChar(pos, LyXParagraph::META_NEWLINE, font);
-#else
-              cursor.par()->InsertChar(pos, LyXParagraph::META_NEWLINE);
-	      cursor.par()->SetFont(pos, font);
-#endif
 	  }
 
           /* append the row into the table */
@@ -2160,14 +2150,9 @@ void LyXText::TableFeatures(BufferView * bview, int feature) const
           do{
               if (pos && (cursor.par()->IsNewline(pos-1))){
                   if (cursor.par()->table->AppendCellAfterCell(cell_org, cell)) {
-#ifdef NEW_WAY
                       cursor.par()->InsertChar(pos,
 					       LyXParagraph::META_NEWLINE,
 					       font);
-#else
-                      cursor.par()->InsertChar(pos, LyXParagraph::META_NEWLINE);
-		      cursor.par()->SetFont(pos, font);
-#endif
                       if (pos <= cursor.pos())
                           cursor.pos(cursor.pos() + 1);
                       ++pos;
@@ -2180,13 +2165,8 @@ void LyXText::TableFeatures(BufferView * bview, int feature) const
              This saves one byte memory per table ;-) */
           if (cursor.par()->table->AppendCellAfterCell(cell_org, cell)) {
 		  LyXParagraph::size_type last = cursor.par()->Last();
-#ifdef NEW_WAY
 		  cursor.par()->InsertChar(last,
 					   LyXParagraph::META_NEWLINE, font);
-#else
-		  cursor.par()->InsertChar(last, LyXParagraph::META_NEWLINE);
-		  cursor.par()->SetFont(last, font);
-#endif
 	  }
 		
           /* append the column into the table */ 

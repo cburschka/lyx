@@ -2643,13 +2643,8 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 		current_view->text->cursor.par()->getParLanguage(current_view->buffer()->params);
 	LyXFont font(LyXFont::ALL_INHERIT, lang);
 	for (int i = 0; i < xsize * ysize - 1; ++i) {
-#ifdef NEW_WAY
 		current_view->text->cursor.par()
 			->InsertChar(0, LyXParagraph::META_NEWLINE, font);
-#else
-		current_view->text->cursor.par()->InsertChar(0, LyXParagraph::META_NEWLINE);
-		current_view->text->cursor.par()->SetFont(0, font);
-#endif
 	}
 	current_view->text->RedoParagraph(current_view);
    

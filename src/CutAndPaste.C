@@ -412,12 +412,7 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(LyXTextClassList::size_type c1,
 		    + textclasslist.NameOfClass(c1) + _(" to ")
 		    + textclasslist.NameOfClass(c2);
 	    InsetError * new_inset = new InsetError(s);
-#ifdef NEW_WAY
 	    par->InsertInset(0, new_inset);
-#else
-	    par->InsertChar(0, LyXParagraph::META_INSET);
-	    par->InsertInset(0, new_inset);
-#endif
 	}
 	
 	par = par->next;

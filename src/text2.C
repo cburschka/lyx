@@ -2028,12 +2028,7 @@ void LyXText::InsertInset(BufferView * bview, Inset * inset)
 	SetUndo(bview->buffer(), Undo::INSERT, 
 		cursor.par()->ParFromPos(cursor.pos())->previous, 
 		cursor.par()->ParFromPos(cursor.pos())->next);
-#ifdef NEW_WAY
 	cursor.par()->InsertInset(cursor.pos(), inset);
-#else
-	cursor.par()->InsertChar(cursor.pos(), LyXParagraph::META_INSET);
-	cursor.par()->InsertInset(cursor.pos(), inset);
-#endif
 	InsertChar(bview, LyXParagraph::META_INSET);  /* just to rebreak and refresh correctly.
 				      * The character will not be inserted a
 				      * second time */
@@ -2307,12 +2302,7 @@ void LyXText::ReplaceSelectionWithString(BufferView * bview, char const * str)
 
 	// Insert the new string
 	for (int i = 0; str[i]; ++i) {
-#ifdef NEW_WAY
 		sel_end_cursor.par()->InsertChar(pos, str[i], font);
-#else
-		sel_end_cursor.par()->InsertChar(pos, str[i]);
-		sel_end_cursor.par()->SetFont(pos, font);
-#endif
 		++pos;
 	}
 
@@ -2396,12 +2386,7 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 			if (str[i] == ' ' 
 			    && i + 1 < str.length() && str[i + 1] != ' '
 			    && pos && par->GetChar(pos - 1)!= ' ') {
-#ifdef NEW_WAY
 				par->InsertChar(pos, ' ', current_font);
-#else
-				par->InsertChar(pos,' ');
-				par->SetFont(pos, current_font);
-#endif
 				++pos;
 #ifndef NEW_TABLAR
 			} else if (par->table) {
@@ -2415,13 +2400,8 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 						break;
 				} else if ((str[i] != 13) &&
 					   ((str[i] & 127) >= ' ')) {
-#ifdef NEW_WAY
 					par->InsertChar(pos, str[i],
 							current_font);
-#else
-					par->InsertChar(pos, str[i]);
-					par->SetFont(pos, current_font);
-#endif
 					++pos;
 				}
 #endif
@@ -2429,14 +2409,8 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 				InsetSpecialChar * new_inset =
 					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
 				if (par->InsertInsetAllowed(new_inset)) {
-#ifdef NEW_WAY
 					par->InsertInset(pos, new_inset,
 							 current_font);
-#else
-					par->InsertChar(pos, LyXParagraph::META_INSET);
-					par->SetFont(pos, current_font);
-					par->InsertInset(pos, new_inset);
-#endif
 				} else {
 					delete new_inset;
 				}
@@ -2446,14 +2420,8 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 				InsetSpecialChar * new_inset =
 					new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
 				if (par->InsertInsetAllowed(new_inset)) {
-#ifdef NEW_WAY
 					par->InsertInset(pos, new_inset,
 							 current_font);
-#else
-					par->InsertChar(pos, LyXParagraph::META_INSET);
-					par->SetFont(pos, current_font);
-					par->InsertInset(pos, new_inset);
-#endif
 				} else {
 					delete new_inset;
 				}
@@ -2462,12 +2430,7 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 			} else if (str[i] != 13 && 
 				   // Ignore unprintables
 				   (str[i] & 127) >= ' ') {
-#ifdef NEW_WAY
 				par->InsertChar(pos, str[i], current_font);
-#else
-				par->InsertChar(pos, str[i]);
-				par->SetFont(pos, current_font);
-#endif
 				++pos;
 			}
 		} else {
@@ -2501,15 +2464,9 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 					InsetSpecialChar * new_inset =
 						new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
 					if (par->InsertInsetAllowed(new_inset)) {
-#ifdef NEW_WAY
 						par->InsertInset(pos,
 								 new_inset,
 								 current_font);
-#else
-						par->InsertChar(pos, LyXParagraph::META_INSET);
-						par->SetFont(pos, current_font);
-						par->InsertInset(pos, new_inset);
-#endif
 					} else {
 						delete new_inset;
 					}

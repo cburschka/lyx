@@ -959,12 +959,7 @@ bool InsetText::InsertInset(BufferView * bv, Inset * inset)
 	UpdatableInset * i = static_cast<UpdatableInset *>(inset);
 	i->setOwner(static_cast<UpdatableInset *>(this));
     }
-#ifdef NEW_WAY
     cpar(bv)->InsertInset(cpos(bv), inset);
-#else
-    cpar(bv)->InsertChar(cpos(bv), LyXParagraph::META_INSET);
-    cpar(bv)->InsertInset(cpos(bv), inset);
-#endif
     TEXT(bv)->selection = 0;
     UpdateLocal(bv, CURSOR_PAR, true);
     static_cast<UpdatableInset*>(inset)->Edit(bv, 0, 0, 0);

@@ -464,17 +464,10 @@ bool LyXParagraph::InsertFromMinibuffer(LyXParagraph::size_type pos)
 	if ((minibuffer_char == LyXParagraph::META_INSET) &&
 	    !InsertInsetAllowed(minibuffer_inset))
 		return false;
-#ifdef NEW_WAY
 	if (minibuffer_char == LyXParagraph::META_INSET)
 		InsertInset(pos, minibuffer_inset, minibuffer_font);
 	else
 		InsertChar(pos, minibuffer_char, minibuffer_font);
-#else
-	InsertChar(pos, minibuffer_char);
-	SetFont(pos, minibuffer_font);
-	if (minibuffer_char == LyXParagraph::META_INSET)
-		InsertInset(pos, minibuffer_inset);
-#endif
 	return true;
 }
 
@@ -608,43 +601,11 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 
 void LyXParagraph::InsertChar(LyXParagraph::size_type pos, char c)
 {
-#ifndef NEW_WAY
-	// > because last is the next unused position, and you can 
-	// use it if you want
-	if (pos > size()) {
-#ifndef NEW_INSETS
-		if (next
-		    && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
-			NextAfterFootnote()->InsertChar(pos - text.size() - 1,
-							c);
-		else 
-#endif
-			lyxerr.debug() << "ERROR (LyXParagraph::InsertChar): "
-				"position does not exist." << endl;
-		return;
-	}
-	text.insert(text.begin() + pos, c);
-	// Update the font table.
-	for (FontList::iterator it = lower_bound(fontlist.begin(),
-						 fontlist.end(),
-						 pos, matchFT());
-	     it != fontlist.end(); ++it)
-		++(*it).pos;
-   
-	// Update the inset table.
-	for (InsetList::iterator it = lower_bound(insetlist.begin(),
-						  insetlist.end(),
-						  pos, matchIT());
-	     it != insetlist.end(); ++it)
-		++(*it).pos;
-#else
 	LyXFont f(LyXFont::ALL_INHERIT);
 	InsertChar(pos, c, f);
-#endif
 }
 
 
-#ifdef NEW_WAY
 void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
 			      char c, LyXFont const & font)
 {
@@ -679,54 +640,16 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
 
 	SetFont(pos, font);
 }
-#endif
 
 
 void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 			       Inset * inset)
 {
-#ifdef NEW_WAY
 	LyXFont f(LyXFont::ALL_INHERIT);
 	InsertInset(pos, inset, f);
-#else
-	// > because last is the next unused position, and you can 
-	// use it if you want
-	if (pos > size()) {
-#ifndef NEW_INSETS
-		if (next
-		    && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
-			NextAfterFootnote()
-				->InsertInset(pos - text.size() - 1, inset);
-		else
-#endif
-			lyxerr << "ERROR (LyXParagraph::InsertInset): " 
-				"position does not exist: " << pos << endl;
-		return;
-	}
-	if (text[pos] != LyXParagraph::META_INSET) {
-		lyxerr << "ERROR (LyXParagraph::InsertInset): "
-			"there is no LyXParagraph::META_INSET" << endl;
-		return;
-	}
-
-	if (inset) {
-		// Add a new entry in the inset table.
-		InsetList::iterator it = lower_bound(insetlist.begin(),
-						     insetlist.end(),
-						     pos, matchIT());
-		if (it != insetlist.end() && (*it).pos == pos)
-			lyxerr << "ERROR (LyXParagraph::InsertInset): "
-				"there is an inset in position: " << pos << endl;
-		else
-			insetlist.insert(it, InsetTable(pos,inset));
-		if (inset_owner)
-			inset->setOwner(inset_owner);
-	}
-#endif
 }
 
 
-#ifdef NEW_WAY
 void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 			       Inset * inset, LyXFont const & font)
 {
@@ -763,7 +686,6 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 	if (inset_owner)
 		inset->setOwner(inset_owner);
 }
-#endif
 
 
 bool LyXParagraph::InsertInsetAllowed(Inset * inset)

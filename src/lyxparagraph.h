@@ -26,8 +26,6 @@
 #include "support/block.h"
 #include "language.h"
 
-#define NEW_WAY 1
-
 class BufferParams;
 class LyXBuffer;
 class TexRow;
@@ -424,16 +422,12 @@ public:
 					      size_type endpos) const;
 	///
 	void InsertChar(size_type pos, char c);
-#ifdef NEW_WAY
 	///
 	void InsertChar(size_type pos, char c, LyXFont const &);
-#endif
 	///
 	void InsertInset(size_type pos, Inset * inset);
-#ifdef NEW_WAY
 	///
 	void InsertInset(size_type pos, Inset * inset, LyXFont const &);
-#endif
 	///
 	bool InsertInsetAllowed(Inset * inset);
 	///
