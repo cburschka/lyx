@@ -248,7 +248,7 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	/// return all bibkeys from buffer and its childs
-	void fillWithBibKeys(vector<pair<string, string> > & keys) const;
+	void fillWithBibKeys(std::vector<std::pair<string, string> > & keys) const;
 	///
 	std::vector<string> const getLabelList() const;
 
