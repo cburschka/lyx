@@ -1,3 +1,8 @@
+2002-02-20  Juergen Vigna  <jug@sad.it>
+
+	* FormTabular.C (input): don't call the autoapply on exit input calls
+	if we don't really have a change!
+
 2002-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormBase.h (FormCB): tiny bugfix.
