@@ -28,7 +28,7 @@ ControlSearch::ControlSearch(LyXView & lv, Dialogs & d)
 void ControlSearch::find(string const & search,
 			 bool casesensitive, bool matchword, bool forward)
 {
-	bool const found = lyxfind::LyXFind(bufferview(), search,
+	bool const found = lyx::find::find(bufferview(), search,
 					    forward, casesensitive,
 					    matchword);
 
@@ -45,7 +45,7 @@ void ControlSearch::replace(string const & search, string const & replace,
 	// changed
 	bool const once = !all;
 	int const replace_count =
-		lyxfind::LyXReplace(bufferview(),
+		lyx::find::replace(bufferview(),
 				    search, replace, true, casesensitive,
 				    matchword, all, once);
 

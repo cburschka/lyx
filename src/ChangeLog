@@ -1,3 +1,15 @@
+2003-07-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyxfunc.C (dispatch): adjust for lyx::find
+
+	* lyxfind.[hC]: get rid of namespace lyxfind introduce namespace
+	lyx::find instead. Reorganize a bit.
+	(LyXReplace): rename to replace
+	(LyXFind): rename to find
+
+	* BufferView_pimpl.C (trackChanges): adjust for lyx::find
+	(dispatch): ditto
+
 2003-07-26  André Pönitz  <poenitz@gmx.net>
 
 	* text.C (setHeightOfRow): restrict scope of temporary variable
@@ -20,20 +32,20 @@
 
 2003-07-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* ispell.C: 
+	* ispell.C:
 	* encoding.h: add includes
 
 	* lyxrc.C: remove reading of bind files
 
 	* lyx_main.C (init): setup bindings and menus only if we have a
-	gui. 
+	gui.
 
 	* kbmap.C (read): new method. Do the actual reading of bind
-	files. 
+	files.
 
-	* converter.C (dvipdfm_options): 
-	* bufferparams.C: 
-	* lyxrc.C (read): 
+	* converter.C (dvipdfm_options):
+	* bufferparams.C:
+	* lyxrc.C (read):
 	(output): adapt PAPER_* enums.
 
 	* lyxrc.h: include paper.h instead of bufferparams.h (mucho lighter)
@@ -49,7 +61,7 @@
 2003-07-27  José Matos  <jamatos@fep.up.pt>
 
 	* tabular.[Ch] (linuxdoc): add support for tables and figures
-	(linuxdoc). 
+	(linuxdoc).
 
 2003-07-27  José Matos  <jamatos@fep.up.pt>
 
@@ -65,7 +77,7 @@
 
 2003-07.26  Alfredo Braunstein  <abraunst@libero.it>
 
-	* buffer.C (openFileWrite): factorize some code 
+	* buffer.C (openFileWrite): factorize some code
 
 2003-07-26  Angus Leeming  <leeming@lyx.org>
 

@@ -27,7 +27,7 @@ ControlChanges::ControlChanges(Dialog & parent)
 
 bool ControlChanges::find()
 {
-	return lyxfind::findNextChange(kernel().bufferview());
+	return lyx::find::findNextChange(kernel().bufferview());
 }
 
 
@@ -65,12 +65,12 @@ string const ControlChanges::getChangeAuthor()
 void ControlChanges::accept()
 {
 	kernel().dispatch(FuncRequest(LFUN_ACCEPT_CHANGE));
-	lyxfind::findNextChange(kernel().bufferview());
+	lyx::find::findNextChange(kernel().bufferview());
 }
 
 
 void ControlChanges::reject()
 {
 	kernel().dispatch(FuncRequest(LFUN_REJECT_CHANGE));
-	lyxfind::findNextChange(kernel().bufferview());
+	lyx::find::findNextChange(kernel().bufferview());
 }

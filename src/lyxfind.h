@@ -8,7 +8,8 @@
 class BufferView;
 class LyXText;
 
-namespace lyxfind {
+namespace lyx {
+namespace find {
 
 enum SearchResult {
 	//
@@ -20,7 +21,7 @@ enum SearchResult {
 };
 
 
-int LyXReplace(BufferView * bv,
+int replace(BufferView * bv,
 	       string const &, string const &,
 	       bool, bool = true, bool = false,
 	       bool = false, bool = false);
@@ -30,7 +31,7 @@ int LyXReplace(BufferView * bv,
  * text from the actual cursor position in whatever direction
  * we want to go. This does also update the screen.
  */
-bool LyXFind(BufferView *,
+bool find(BufferView *,
 	     string const & searchstr, bool forward,
 	     bool casesens = true, bool matchwrd = false);
 
@@ -42,7 +43,7 @@ bool LyXFind(BufferView *,
  * returning to the calling function.
  */
 
-SearchResult LyXFind(BufferView *, LyXText * text,
+SearchResult find(BufferView *, LyXText * text,
 		     string const & searchstr, bool forward,
 		     bool casesens = true, bool matchwrd = false);
 
@@ -53,6 +54,7 @@ SearchResult findNextChange(BufferView * bv, LyXText * text, lyx::pos_type & len
 
 SearchResult nextChange(BufferView * bv, LyXText * text, lyx::pos_type & length);
 
-} // end namespace LyXFind
+} // namespace find
+} // namespace lyx
 
 #endif // LYXFIND_H

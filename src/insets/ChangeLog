@@ -1,9 +1,15 @@
+2003-07-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insettext.C (nextChange): adjust for lyx::find
+	(searchForward): ditto
+	(searchBackward): ditto
+
 2003-07-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* insetgraphicsParams.C: 
+	* insetgraphicsParams.C:
 	* insetexternal.C: declare extern displayTranslator
-	
-	* insetexternal.C: 
+
+	* insetexternal.C:
 	* renderers.C: add #include "support/LAssert.h"
 
 2003-07-27  José Matos  <jamatos@fep.up.pt>
@@ -12,7 +18,7 @@
 	* insetgraphics.C (linuxdoc):
 	* insettabular.C (linuxdoc):
 	* insettext.[Ch] (linuxdoc): add support for tables and figures
-	(linuxdoc). 
+	(linuxdoc).
 
 2003-07-27  José Matos  <jamatos@fep.up.pt>
 

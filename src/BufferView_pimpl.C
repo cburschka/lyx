@@ -987,7 +987,7 @@ void BufferView::Pimpl::trackChanges()
 #warning changes FIXME
 		//moveCursorUpdate(false);
 
-		bool found = lyxfind::findNextChange(bv_);
+		bool found = lyx::find::findNextChange(bv_);
 		if (found) {
 			owner_->getDialogs().show("changes");
 			return;
@@ -1322,7 +1322,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 #warning FIXME changes
 		//moveCursorUpdate(false);
 
-		while (lyxfind::findNextChange(bv_)) {
+		while (lyx::find::findNextChange(bv_)) {
 			bv_->getLyXText()->acceptChange();
 		}
 		update(BufferView::SELECT);
@@ -1335,7 +1335,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 #warning FIXME changes
 		//moveCursorUpdate(false);
 
-		while (lyxfind::findNextChange(bv_)) {
+		while (lyx::find::findNextChange(bv_)) {
 			bv_->getLyXText()->rejectChange();
 		}
 		update(BufferView::SELECT);

@@ -1,3 +1,14 @@
+2003-07-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ControlThesaurus.C (replace): adjust for lyx::find
+
+	* ControlSearch.C (find): adjust for lyx::find
+	(replace): ditto
+
+	* ControlChanges.C (find): adjust for lyx::find
+	(accept): ditto
+	(reject): ditto
+
 2003-07-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ControlTabular.C (useMetricUnits): adapt PAPER_* enums

@@ -1319,7 +1319,7 @@ int InsetText::linuxdoc(Buffer const * buf, ostream & os) const
 
 	// There is a confusion between the empty paragraph and the default paragraph
 	// The default paragraph is <p></p>, the empty paragraph is *empty*
-	// Since none of the floats of linuxdoc accepts standard paragraphs 
+	// Since none of the floats of linuxdoc accepts standard paragraphs
 	// I disable them. I don't expect problems. (jamatos 2003/07/27)
 	for (; pit != pend; ++pit) {
 		const string name = pit->layout()->latexname();
@@ -2183,10 +2183,10 @@ bool InsetText::nextChange(BufferView * bv, lyx::pos_type & length)
 			return true;
 		text_.cursorRight(true);
 	}
-	lyxfind::SearchResult result =
-		lyxfind::findNextChange(bv, &text_, length);
+	lyx::find::SearchResult result =
+		lyx::find::findNextChange(bv, &text_, length);
 
-	if (result == lyxfind::SR_FOUND) {
+	if (result == lyx::find::SR_FOUND) {
 		LyXCursor cur = text_.cursor;
 		bv->unlockInset(bv->theLockingInset());
 		if (bv->lockInset(this))
@@ -2195,7 +2195,7 @@ bool InsetText::nextChange(BufferView * bv, lyx::pos_type & length)
 		text_.setSelectionRange(length);
 		updateLocal(bv, SELECTION, false);
 	}
-	return result != lyxfind::SR_NOT_FOUND;
+	return result != lyx::find::SR_NOT_FOUND;
 }
 
 
@@ -2207,10 +2207,10 @@ bool InsetText::searchForward(BufferView * bv, string const & str,
 			return true;
 		text_.cursorRight(true);
 	}
-	lyxfind::SearchResult result =
-		lyxfind::LyXFind(bv, &text_, str, true, cs, mw);
+	lyx::find::SearchResult result =
+		lyx::find::find(bv, &text_, str, true, cs, mw);
 
-	if (result == lyxfind::SR_FOUND) {
+	if (result == lyx::find::SR_FOUND) {
 		LyXCursor cur = text_.cursor;
 		bv->unlockInset(bv->theLockingInset());
 		if (bv->lockInset(this))
@@ -2219,7 +2219,7 @@ bool InsetText::searchForward(BufferView * bv, string const & str,
 		text_.setSelectionRange(str.length());
 		updateLocal(bv, SELECTION, false);
 	}
-	return (result != lyxfind::SR_NOT_FOUND);
+	return (result != lyx::find::SR_NOT_FOUND);
 }
 
 bool InsetText::searchBackward(BufferView * bv, string const & str,
@@ -2238,10 +2238,10 @@ bool InsetText::searchBackward(BufferView * bv, string const & str,
 
 		text_.setCursor(pit, pit->size());
 	}
-	lyxfind::SearchResult result =
-		lyxfind::LyXFind(bv, &text_, str, false, cs, mw);
+	lyx::find::SearchResult result =
+		lyx::find::find(bv, &text_, str, false, cs, mw);
 
-	if (result == lyxfind::SR_FOUND) {
+	if (result == lyx::find::SR_FOUND) {
 		LyXCursor cur = text_.cursor;
 		bv->unlockInset(bv->theLockingInset());
 		if (bv->lockInset(this))
@@ -2250,7 +2250,7 @@ bool InsetText::searchBackward(BufferView * bv, string const & str,
 		text_.setSelectionRange(str.length());
 		updateLocal(bv, SELECTION, false);
 	}
-	return (result != lyxfind::SR_NOT_FOUND);
+	return (result != lyx::find::SR_NOT_FOUND);
 }
 
 

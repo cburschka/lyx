@@ -1033,7 +1033,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		}
 		bool fw = (action == LFUN_WORDFINDFORWARD);
 		if (!searched_string.empty()) {
-			lyxfind::LyXFind(view(), searched_string, fw);
+			lyx::find::find(view(), searched_string, fw);
 		}
 	}
 	break;

@@ -19,21 +19,125 @@ using namespace lyx::support;
 using lyx::pos_type;
 using std::endl;
 
-namespace lyxfind {
+namespace lyx {
+namespace find {
 
-/// returns true if the specified string is at the specified  position
-bool IsStringInText(Paragraph * par, pos_type pos,
-		    string const & str, bool const & = true,
-		    bool const & = false);
+namespace {
 
-/// if the string is found: return true and set the cursor to the new position
-SearchResult SearchForward(BufferView *, LyXText * text, string const & str,
-			   bool const & = true, bool const & = false);
-///
-SearchResult SearchBackward(BufferView *, LyXText * text, string const & str,
-			    bool const & = true, bool const & = false);
+// returns true if the specified string is at the specified position
+bool isStringInText(Paragraph const & par, pos_type pos,
+		    string const & str, bool const & cs,
+		    bool const & mw)
+{
+	string::size_type size = str.length();
+	pos_type i = 0;
+	pos_type parsize = par.size();
+	while (((pos + i) < parsize)
+	       && (string::size_type(i) < size)
+	       && (cs ? (str[i] == par.getChar(pos + i))
+		   : (uppercase(str[i]) == uppercase(par.getChar(pos + i))))) {
+		++i;
+	}
 
-int LyXReplace(BufferView * bv,
+	if (size == string::size_type(i)) {
+		// if necessary, check whether string matches word
+		if (!mw)
+			return true;
+		if ((pos <= 0 || !IsLetterCharOrDigit(par.getChar(pos - 1)))
+			&& (pos + pos_type(size) >= parsize
+			|| !IsLetterCharOrDigit(par.getChar(pos + size)))) {
+			return true;
+		}
+	}
+	return false;
+}
+
+// forward search:
+// if the string can be found: return true and set the cursor to
+// the new position, cs = casesensitive, mw = matchword
+SearchResult searchForward(BufferView * bv, LyXText * text, string const & str,
+			   bool const & cs, bool const & mw)
+{
+	ParagraphList::iterator pit = text->cursor.par();
+	ParagraphList::iterator pend = text->ownerParagraphs().end();
+	pos_type pos = text->cursor.pos();
+	UpdatableInset * inset;
+
+	while (pit != pend && !isStringInText(*pit, pos, str, cs, mw)) {
+		if (pos < pit->size()
+		    && pit->isInset(pos)
+		    && (inset = (UpdatableInset *)pit->getInset(pos))
+		    && inset->isTextInset()
+		    && inset->searchForward(bv, str, cs, mw))
+			return SR_FOUND_NOUPDATE;
+
+		if (++pos >= pit->size()) {
+			++pit;
+			pos = 0;
+		}
+	}
+
+	if (pit != pend) {
+		text->setCursor(pit, pos);
+		return SR_FOUND;
+	} else
+		return SR_NOT_FOUND;
+}
+
+
+// backward search:
+// if the string can be found: return true and set the cursor to
+// the new position, cs = casesensitive, mw = matchword
+SearchResult searchBackward(BufferView * bv, LyXText * text,
+			    string const & str,
+			    bool const & cs, bool const & mw)
+{
+	ParagraphList::iterator pit = text->cursor.par();
+	ParagraphList::iterator pbegin = text->ownerParagraphs().begin();
+	pos_type pos = text->cursor.pos();
+
+	// skip past a match at the current cursor pos
+	if (pos > 0) {
+		--pos;
+	} else if (pit != pbegin) {
+		--pit;
+		pos = pit->size();
+	} else {
+		return SR_NOT_FOUND;
+	}
+
+	while (true) {
+		if (pos < pit->size()) {
+			if (pit->isInset(pos) && pit->getInset(pos)->isTextInset()) {
+				UpdatableInset * inset = (UpdatableInset *)pit->getInset(pos);
+				if (inset->searchBackward(bv, str, cs, mw))
+					return SR_FOUND_NOUPDATE;
+			}
+
+			if (isStringInText(*pit, pos, str, cs, mw)) {
+				text->setCursor(pit, pos);
+				return SR_FOUND;
+			}
+		}
+
+		if (pos == 0 && pit == pbegin)
+			break;
+
+		if (pos > 0) {
+			--pos;
+		} else if (pit != pbegin) {
+			--pit;
+			pos = pit->size();
+		}
+	}
+
+	return SR_NOT_FOUND;
+}
+
+} // anon namespace
+
+
+int replace(BufferView * bv,
 	       string const & searchstr, string const & replacestr,
 	       bool forward, bool casesens, bool matchwrd, bool replaceall,
 	       bool once)
@@ -79,7 +183,7 @@ int LyXReplace(BufferView * bv,
 		str2 = lowercase(text->selectionAsString(bv->buffer(), false));
 	}
 	if (str1 != str2) {
-		if (!LyXFind(bv, searchstr, fw, casesens, matchwrd) ||
+		if (!find(bv, searchstr, fw, casesens, matchwrd) ||
 			!replaceall) {
 			return 0;
 		}
@@ -102,7 +206,7 @@ int LyXReplace(BufferView * bv,
 			++replace_count;
 		}
 		if (!once)
-			found = LyXFind(bv, searchstr, fw, casesens, matchwrd);
+			found = find(bv, searchstr, fw, casesens, matchwrd);
 	} while (!once && replaceall && found);
 
 	// FIXME: should be called via an LFUN
@@ -113,7 +217,7 @@ int LyXReplace(BufferView * bv,
 }
 
 
-bool LyXFind(BufferView * bv,
+bool find(BufferView * bv,
 	     string const & searchstr, bool forward,
 	     bool casesens, bool matchwrd)
 {
@@ -150,8 +254,8 @@ bool LyXFind(BufferView * bv,
 	text->clearSelection();
 
 	SearchResult result = forward ?
-		SearchForward(bv, text, searchstr, casesens, matchwrd) :
-		SearchBackward(bv, text, searchstr, casesens, matchwrd);
+		searchForward(bv, text, searchstr, casesens, matchwrd) :
+		searchBackward(bv, text, searchstr, casesens, matchwrd);
 
 	bool found = true;
 	// If we found the cursor inside an inset we will get back
@@ -175,7 +279,7 @@ bool LyXFind(BufferView * bv,
 }
 
 
-SearchResult LyXFind(BufferView * bv, LyXText * text,
+SearchResult find(BufferView * bv, LyXText * text,
 		     string const & searchstr, bool forward,
 		     bool casesens, bool matchwrd)
 {
@@ -187,122 +291,13 @@ SearchResult LyXFind(BufferView * bv, LyXText * text,
 	text->clearSelection();
 
 	SearchResult result = forward ?
-		SearchForward(bv, text, searchstr, casesens, matchwrd) :
-		SearchBackward(bv, text, searchstr, casesens, matchwrd);
+		searchForward(bv, text, searchstr, casesens, matchwrd) :
+		searchBackward(bv, text, searchstr, casesens, matchwrd);
 
 	return result;
 }
 
 
-// returns true if the specified string is at the specified position
-bool IsStringInText(Paragraph const & par, pos_type pos,
-		    string const & str, bool const & cs,
-		    bool const & mw)
-{
-	string::size_type size = str.length();
-	pos_type i = 0;
-	pos_type parsize = par.size();
-	while (((pos + i) < parsize)
-	       && (string::size_type(i) < size)
-	       && (cs ? (str[i] == par.getChar(pos + i))
-		   : (uppercase(str[i]) == uppercase(par.getChar(pos + i))))) {
-		++i;
-	}
-
-	if (size == string::size_type(i)) {
-		// if necessary, check whether string matches word
-		if (!mw)
-			return true;
-		if ((pos <= 0 || !IsLetterCharOrDigit(par.getChar(pos - 1)))
-			&& (pos + pos_type(size) >= parsize
-			|| !IsLetterCharOrDigit(par.getChar(pos + size)))) {
-			return true;
-		}
-	}
-	return false;
-}
-
-// forward search:
-// if the string can be found: return true and set the cursor to
-// the new position, cs = casesensitive, mw = matchword
-SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
-			   bool const & cs, bool const & mw)
-{
-	ParagraphList::iterator pit = text->cursor.par();
-	ParagraphList::iterator pend = text->ownerParagraphs().end();
-	pos_type pos = text->cursor.pos();
-	UpdatableInset * inset;
-
-	while (pit != pend && !IsStringInText(*pit, pos, str, cs, mw)) {
-		if (pos < pit->size()
-		    && pit->isInset(pos)
-		    && (inset = (UpdatableInset *)pit->getInset(pos))
-		    && inset->isTextInset()
-		    && inset->searchForward(bv, str, cs, mw))
-			return SR_FOUND_NOUPDATE;
-
-		if (++pos >= pit->size()) {
-			++pit;
-			pos = 0;
-		}
-	}
-
-	if (pit != pend) {
-		text->setCursor(pit, pos);
-		return SR_FOUND;
-	} else
-		return SR_NOT_FOUND;
-}
-
-
-// backward search:
-// if the string can be found: return true and set the cursor to
-// the new position, cs = casesensitive, mw = matchword
-SearchResult SearchBackward(BufferView * bv, LyXText * text,
-			    string const & str,
-			    bool const & cs, bool const & mw)
-{
-	ParagraphList::iterator pit = text->cursor.par();
-	ParagraphList::iterator pbegin = text->ownerParagraphs().begin();
-	pos_type pos = text->cursor.pos();
-
-	// skip past a match at the current cursor pos
-	if (pos > 0) {
-		--pos;
-	} else if (pit != pbegin) {
-		--pit;
-		pos = pit->size();
-	} else {
-		return SR_NOT_FOUND;
-	}
-
-	while (true) {
-		if (pos < pit->size()) {
-			if (pit->isInset(pos) && pit->getInset(pos)->isTextInset()) {
-				UpdatableInset * inset = (UpdatableInset *)pit->getInset(pos);
-				if (inset->searchBackward(bv, str, cs, mw))
-					return SR_FOUND_NOUPDATE;
-			}
-
-			if (IsStringInText(*pit, pos, str, cs, mw)) {
-				text->setCursor(pit, pos);
-				return SR_FOUND;
-			}
-		}
-
-		if (pos == 0 && pit == pbegin)
-			break;
-
-		if (pos > 0) {
-			--pos;
-		} else if (pit != pbegin) {
-			--pit;
-			pos = pit->size();
-		}
-	}
-
-	return SR_NOT_FOUND;
-}
 
 
 SearchResult nextChange(BufferView * bv, LyXText * text, pos_type & length)
@@ -425,4 +420,5 @@ bool findNextChange(BufferView * bv)
 	return found;
 }
 
-} // end lyxfind namespace
+} // find namespace
+} // lyx namespace
