@@ -12,6 +12,8 @@
 #endif
 
 #include <vector>
+using std::vector;
+using std::pair;
 
 #include "LString.h"
 

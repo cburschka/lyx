@@ -18,6 +18,7 @@
 #endif
 
 #include <vector>
+using std::vector;
 
 #include "LString.h"
 

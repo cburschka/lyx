@@ -1,3 +1,9 @@
+1999-11-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/vc-backend.C, src/LaTeXFeatures.h, 
+	  src/support/LRegex.C, src/support/LRegex.h: add a few "using" 
+	statements to bring templates to global namespace.
+
 1999-11-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxstring.C (operator[] const): make it standard

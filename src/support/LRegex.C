@@ -8,6 +8,8 @@
 #include <regex.h>
 #include "LRegex.h"
 
+using std::make_pair;
+
 ///
 struct LRegex::Impl {
 	///

@@ -5,6 +5,7 @@
 #endif
 
 #include <fstream>
+using std::ifstream;
 
 #include "vc-backend.h"
 #include "debug.h"
