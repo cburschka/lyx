@@ -97,13 +97,15 @@ void InsetExternal::read(Buffer const *, LyXLex & lex)
 	string token;
 
 	// Read inset data from lex and store in format
-	if (lex.EatLine()) {
-		format = lex.GetString();
-	} else
+	if (lex.eatLine()) {
+		format = lex.getString();
+	} else {
 		lex.printError("InsetExternal: Parse error: `$$Token'");
-	while (lex.IsOK()) {
+	}
+	
+	while (lex.isOK()) {
 		lex.nextToken();
-		token = lex.GetString();
+		token = lex.getString();
 		if (token == "\\end_inset")
 			break;
 	}

@@ -87,12 +87,12 @@ void InsetCollapsable::write(Buffer const * buf, ostream & os) const
 
 void InsetCollapsable::read(Buffer const * buf, LyXLex & lex)
 {
-	if (lex.IsOK()) {
+	if (lex.isOK()) {
 		lex.next();
-		string const token = lex.GetString();
+		string const token = lex.getString();
 		if (token == "collapsed") {
 			lex.next();
-			collapsed_ = lex.GetBool();
+			collapsed_ = lex.getBool();
 		} else {
 			lyxerr << "InsetCollapsable::Read: Missing collapsed!"
 			       << endl;

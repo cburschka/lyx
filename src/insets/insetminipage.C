@@ -115,12 +115,12 @@ void InsetMinipage::write(Buffer const * buf, ostream & os) const
 
 void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 {
-	if (lex.IsOK()) {
+	if (lex.isOK()) {
 		lex.next();
-		string const token = lex.GetString();
+		string const token = lex.getString();
 		if (token == "position") {
 			lex.next();
-			pos_ = static_cast<Position>(lex.GetInteger());
+			pos_ = static_cast<Position>(lex.getInteger());
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'position'-tag!"
 				   << endl;
@@ -128,12 +128,12 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 			lex.pushToken(token);
 		}
 	}
-	if (lex.IsOK()) {
+	if (lex.isOK()) {
 		lex.next();
-		string const token = lex.GetString();
+		string const token = lex.getString();
 		if (token == "inner_position") {
 			lex.next();
-			inner_pos_ = static_cast<InnerPosition>(lex.GetInteger());
+			inner_pos_ = static_cast<InnerPosition>(lex.getInteger());
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'inner_position'-tag!"
 				   << endl;
@@ -141,12 +141,12 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 			lex.pushToken(token);
 		}
 	}
-	if (lex.IsOK()) {
+	if (lex.isOK()) {
 		lex.next();
-		string const token = lex.GetString();
+		string const token = lex.getString();
 		if (token == "height") {
 			lex.next();
-			height_ = lex.GetString();
+			height_ = lex.getString();
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'height'-tag!"
 				   << endl;
@@ -154,12 +154,12 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 			lex.pushToken(token);
 		}
 	}
-	if (lex.IsOK()) {
+	if (lex.isOK()) {
 		lex.next();
-		string const token = lex.GetString();
+		string const token = lex.getString();
 		if (token == "width") {
 			lex.next();
-			width_ = lex.GetString();
+			width_ = lex.getString();
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'width'-tag!"
 				   << endl;

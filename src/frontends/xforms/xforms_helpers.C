@@ -130,7 +130,7 @@ bool XformsColor::read(string const & filename)
 	if (!lexrc.setFile(filename))
 		return false;
 
-	while (lexrc.IsOK()) {
+	while (lexrc.isOK()) {
 		int const le = lexrc.lex();
 
 		switch (le) {
@@ -145,13 +145,13 @@ bool XformsColor::read(string const & filename)
 		RGBColor col;
 
 		if (!lexrc.next()) break;
-		col.r = lexrc.GetInteger();
+		col.r = lexrc.getInteger();
 
 		if (!lexrc.next()) break;
-		col.g = lexrc.GetInteger();
+		col.g = lexrc.getInteger();
 
 		if (!lexrc.next()) break;
-		col.b = lexrc.GetInteger();
+		col.b = lexrc.getInteger();
 
 		fl_mapcolor(le, col.r, col.g, col.b);
 	}

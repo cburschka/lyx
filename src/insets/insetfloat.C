@@ -150,12 +150,12 @@ void InsetFloat::write(Buffer const * buf, ostream & os) const
 
 void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 {
-	if (lex.IsOK()) {
+	if (lex.isOK()) {
 		lex.next();
-		string token = lex.GetString();
+		string token = lex.getString();
 		if (token == "placement") {
 			lex.next();
-			floatPlacement_ = lex.GetString();
+			floatPlacement_ = lex.getString();
 		} else {
 			lyxerr << "InsetFloat::Read: Missing placement!"
 			       << endl;
@@ -163,10 +163,10 @@ void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 			lex.pushToken(token);
 		}
 		lex.next();
-		token = lex.GetString();
+		token = lex.getString();
 		if (token == "wide") {
 			lex.next();
-			string const tmptoken = lex.GetString();
+			string const tmptoken = lex.getString();
 			if (tmptoken == "true")
 				wide(true);
 			else

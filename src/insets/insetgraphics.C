@@ -354,7 +354,7 @@ void InsetGraphics::write(Buffer const * buf, ostream & os) const
 
 void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
 {
-	string const token = lex.GetString();
+	string const token = lex.getString();
 
 	if (token == "Graphics")
 		readInsetGraphics(buf, lex);
@@ -370,10 +370,10 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 {
 	bool finished = false;
 
-	while (lex.IsOK() && !finished) {
+	while (lex.isOK() && !finished) {
 		lex.next();
 
-		string const token = lex.GetString();
+		string const token = lex.getString();
 		lyxerr[Debug::INFO] << "Token: '" << token << '\'' 
 				    << std::endl;
 
@@ -383,7 +383,7 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 			finished = true;
 		} else if (token == "FormatVersion") {
 			lex.next();
-			int version = lex.GetInteger();
+			int version = lex.getInteger();
 			if (version > 1)
 				lyxerr
 				<< "This document was created with a newer Graphics widget"
@@ -405,10 +405,10 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 {
 	bool finished = false;
 	
-	while (lex.IsOK() && !finished) {
+	while (lex.isOK() && !finished) {
 		lex.next();
 
-		string const token = lex.GetString();
+		string const token = lex.getString();
 		lyxerr[Debug::INFO] << "Token: " << token << endl;
 		
 		if (token.empty())
@@ -417,7 +417,7 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 			finished = true;
 		} else if (token == "file") {
 			if (lex.next()) {
-				string const name = lex.GetString();
+				string const name = lex.getString();
 				string const path = OnlyPath(buf->fileName());
 				params.filename = MakeAbsPath(name, path);
 			}
@@ -425,25 +425,27 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 			if (lex.next());
 			// kept for backwards compability. Delete in 0.13.x
 		} else if (token == "subcaption") {
-			if (lex.EatLine())
-				params.subcaptionText = lex.GetString();
+			if (lex.eatLine())
+				params.subcaptionText = lex.getString();
 		} else if (token == "label") {
 			if (lex.next());
 			// kept for backwards compability. Delete in 0.13.x
 		} else if (token == "angle") {
 			if (lex.next())
-				params.rotateAngle = lex.GetFloat();
+				params.rotateAngle = lex.getFloat();
 		} else if (token == "size") {
 			// Size of image on screen is ignored in InsetGraphics, just eat
 			// the input.
-			if (lex.next())
-				lex.GetInteger();
-			if (lex.next())
-				lex.GetInteger();
+			if (lex.next()) {
+				lex.getInteger();
+			}
+			if (lex.next()) {
+				lex.getInteger();
+			}
 		} else if (token == "flags") {
 			InsetGraphicsParams::DisplayType tmp = InsetGraphicsParams::COLOR;
 			if (lex.next())
-				switch (lex.GetInteger()) {
+				switch (lex.getInteger()) {
 				case 1: tmp = InsetGraphicsParams::MONOCHROME; break;
 				case 2: tmp = InsetGraphicsParams::GRAYSCALE; break;
 				}
@@ -451,15 +453,19 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 		} else if (token == "subfigure") {
 			params.subcaption = true;
 		} else if (token == "width") {
-			if (lex.next())
-				params.widthResize = static_cast<InsetGraphicsParams::Resize>(lex.GetInteger());
-			if (lex.next())
-				params.widthSize = lex.GetFloat();
+			if (lex.next()) {
+				params.widthResize = static_cast<InsetGraphicsParams::Resize>(lex.getInteger());
+			}
+			if (lex.next()) {
+				params.widthSize = lex.getFloat();
+			}
 		} else if (token == "height") {
-			if (lex.next())
-				params.heightResize = static_cast<InsetGraphicsParams::Resize>(lex.GetInteger());
-			if (lex.next())
-				params.heightSize = lex.GetFloat();
+			if (lex.next()) {
+				params.heightResize = static_cast<InsetGraphicsParams::Resize>(lex.getInteger());
+			}
+			if (lex.next()) {
+				params.heightSize = lex.getFloat();
+			}
 		}
 	}
 }

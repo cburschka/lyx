@@ -286,7 +286,7 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 {
 	if (token == "filename") {
 		lex.next();
-		filename = lex.GetString();
+		filename = lex.getString();
 
 		if (!filename.empty()) {
 			// Make the filename with absolute directory.
@@ -294,38 +294,38 @@ bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
 		}
 	} else if (token == "display") {
 		lex.next();
-		string const type = lex.GetString();
+		string const type = lex.getString();
 
 		display = displayTranslator.find(type);
 	} else if (token == "subcaption") {
 		subcaption = true;
 	} else if (token == "subcaptionText") {
 		lex.next();
-		subcaptionText = lex.GetString();
+		subcaptionText = lex.getString();
 	} else if (token == "widthResize") {
 		lex.next();
-		string const token = lex.GetString();
+		string const token = lex.getString();
 
 		readResize(this, false, token);
 	} else if (token == "width") {
 		lex.next();
-		widthSize = lex.GetFloat();
+		widthSize = lex.getFloat();
 	} else if (token == "heightResize") {
 		lex.next();
-		string const token = lex.GetString();
+		string const token = lex.getString();
 
 		readResize(this, true, token);
 	} else if (token == "height") {
 		lex.next();
-		heightSize = lex.GetFloat();
+		heightSize = lex.getFloat();
 	} else if (token == "rotateOrigin") {
 		lex.next();
-		string const token = lex.GetString();
+		string const token = lex.getString();
 
 		readOrigin(this, token);
 	} else if (token == "rotateAngle") {
 		lex.next();
-		rotateAngle = lex.GetFloat();
+		rotateAngle = lex.getFloat();
 	} else {
 		// If it's none of the above, its not ours.
 		return false;

@@ -193,7 +193,7 @@ void InsetSpecialChar::write(Buffer const *, ostream & os) const
 void InsetSpecialChar::read(Buffer const *, LyXLex & lex)
 {    
 	lex.nextToken();
-	string const command = lex.GetString();
+	string const command = lex.getString();
 
 	if (command == "\\-")
 		kind_ = HYPHENATION;

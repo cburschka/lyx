@@ -243,10 +243,11 @@ void InsetQuotes::write(Buffer const *, ostream & os) const
 void InsetQuotes::read(Buffer const *, LyXLex & lex)
 {
 	lex.nextToken();
-	parseString(lex.GetString());
+	parseString(lex.getString());
 	lex.next();
-	if (lex.GetString() != "\\end_inset")
+	if (lex.getString() != "\\end_inset") {
 		lex.printError("Missing \\end_inset at this point");
+	}
 }
 
 

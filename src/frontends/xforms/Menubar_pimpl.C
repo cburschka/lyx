@@ -231,7 +231,6 @@ string const fixlabel(string const & str)
 #endif
 }
 
-} // namespace anon
 
 
 void add_toc2(int menu, string const & extra_label,
@@ -318,6 +317,7 @@ void add_toc2(int menu, string const & extra_label,
 	}
 }
 
+} // namespace anon
 
 void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 			     vector<int> & smn, Window win)

@@ -178,7 +178,7 @@ void InsetTabular::write(Buffer const * buf, ostream & os) const
 
 void InsetTabular::read(Buffer const * buf, LyXLex & lex)
 {
-	bool const old_format = (lex.GetString() == "\\LyXTable");
+	bool const old_format = (lex.getString() == "\\LyXTable");
 
 	//if (tabular)
 	//delete tabular;
@@ -191,10 +191,10 @@ void InsetTabular::read(Buffer const * buf, LyXLex & lex)
 		return;
 
 	lex.nextToken();
-	string token = lex.GetString();
-	while (lex.IsOK() && (token != "\\end_inset")) {
+	string token = lex.getString();
+	while (lex.isOK() && (token != "\\end_inset")) {
 		lex.nextToken();
-		token = lex.GetString();
+		token = lex.getString();
 	}
 	if (token != "\\end_inset") {
 		lex.printError("Missing \\end_inset at this point. "

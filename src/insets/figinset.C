@@ -1074,10 +1074,10 @@ void InsetFig::read(Buffer const *, LyXLex & lex)
 	string buf;
 	bool finished = false;
 	
-	while (lex.IsOK() && !finished) {
+	while (lex.isOK() && !finished) {
 		lex.next();
 
-		string const token = lex.GetString();
+		string const token = lex.getString();
 		lyxerr[Debug::INFO] << "Token: " << token << endl;
 		
 		if (token.empty())
@@ -1086,8 +1086,8 @@ void InsetFig::read(Buffer const *, LyXLex & lex)
 			finished = true;
 		} else if (token == "file") {
 			if (lex.next()) {
-				buf = lex.GetString();
-				string buf1 = OnlyPath(owner->fileName());
+				buf = lex.getString();
+				string const buf1(OnlyPath(owner->fileName()));
 				fname = MakeAbsPath(buf, buf1);
 				changedfname = true;
 			}
@@ -1095,30 +1095,30 @@ void InsetFig::read(Buffer const *, LyXLex & lex)
 			if (lex.next());
 			// kept for backwards compability. Delete in 0.13.x
 		} else if (token == "subcaption") {
-			if (lex.EatLine())
-				subcaption = lex.GetString();
+			if (lex.eatLine())
+				subcaption = lex.getString();
 		} else if (token == "label") {
 			if (lex.next());
 			// kept for backwards compability. Delete in 0.13.x
 		} else if (token == "angle") {
 			if (lex.next())
-				angle = lex.GetFloat();
+				angle = lex.getFloat();
 		} else if (token == "size") {
 			if (lex.next())
-				wid = lex.GetInteger();
+				wid = lex.getInteger();
 			if (lex.next())
-				hgh = lex.GetInteger();
+				hgh = lex.getInteger();
 		} else if (token == "flags") {
 			if (lex.next())
-				flags = pflags = lex.GetInteger();
+				flags = pflags = lex.getInteger();
 		} else if (token == "subfigure") {
 			subfigure = psubfigure = true;
 		} else if (token == "width") {
 			int typ = 0;
 			if (lex.next())
-				typ = lex.GetInteger();
+				typ = lex.getInteger();
 			if (lex.next())
-				xwid = lex.GetFloat();
+				xwid = lex.getFloat();
 			switch (typ) {
 			case DEF: wtype = DEF; break;
 			case CM: wtype = CM; break;
@@ -1133,9 +1133,9 @@ void InsetFig::read(Buffer const *, LyXLex & lex)
 		} else if (token == "height") {
 			int typ = 0;
 			if (lex.next())
-				typ = lex.GetInteger();
+				typ = lex.getInteger();
 			if (lex.next())
-				xhgh = lex.GetFloat();
+				xhgh = lex.getFloat();
 			switch (typ) {
 			case DEF: htype = DEF; break;
 			case CM: htype = CM; break;

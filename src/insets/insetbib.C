@@ -79,14 +79,13 @@ void InsetBibKey::write(Buffer const *, ostream & os) const
 // This is necessary here because this is written without begin_inset
 // This should be changed!!! (Jug)
 void InsetBibKey::read(Buffer const *, LyXLex & lex)
-{    
-	string token;
-
-	if (lex.EatLine()) {
-		token = lex.GetString();
+{
+	if (lex.eatLine()) {
+		string const token = lex.getString();
 		scanCommand(token);
-	} else
+	} else {
 		lex.printError("InsetCommand: Parse error: `$$Token'");
+	}
 
 	if (prefixIs(getContents(), key_prefix)) {
 		int key = strToInt(getContents().substr(key_prefix.length()));

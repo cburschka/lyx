@@ -39,14 +39,14 @@ void InsetFloatList::read(Buffer const *, LyXLex & lex)
 {
 	string token;
 
-	if (lex.EatLine()) {
-		float_type = lex.GetString();
+	if (lex.eatLine()) {
+		float_type = lex.getString();
 		lyxerr << "FloatList::float_type: " << float_type << endl;
 	} else
 		lex.printError("InsetFloatList: Parse error: `$$Token'");
-	while (lex.IsOK()) {
+	while (lex.isOK()) {
 		lex.nextToken();
-		token = lex.GetString();
+		token = lex.getString();
 		if (token == "\\end_inset")
 			break;
 	}

@@ -234,9 +234,9 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 
 	clear();
 	
-	while (lex.IsOK()) {
+	while (lex.isOK()) {
 		lex.nextToken();
-		token = lex.GetString();
+		token = lex.getString();
 		if (token.empty())
 			continue;
 		if (token == "\\end_inset") {

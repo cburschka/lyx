@@ -621,8 +621,8 @@ void InsetLatexAccent::write(Buffer const *, ostream & os) const
 
 void InsetLatexAccent::read(Buffer const *, LyXLex & lex)
 {
-	lex.EatLine();
-	contents = lex.GetString();
+	lex.eatLine();
+	contents = lex.getString();
 	checkContents();
 }
 

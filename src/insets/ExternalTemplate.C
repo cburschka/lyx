@@ -163,11 +163,11 @@ void ExternalTemplateManager::readTemplates(string const & path)
 		return;
 	}
 	
-	while (lex.IsOK()) {
+	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case TM_TEMPLATE: {
 			lex.next();
-			string temp = lex.GetString();
+			string const temp = lex.getString();
 			ExternalTemplate & tmp = templates[temp];
 			tmp.lyxName = temp;
 			tmp.readTemplate(lex);
@@ -208,11 +208,11 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 
 	pushpophelper pph(lex, templateoptiontags, TO_END);
 	
-	while (lex.IsOK()) {
+	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case TO_GUINAME:
 			lex.next(true);
-			guiName = lex.GetString();
+			guiName = lex.getString();
 			break;
 			
 		case TO_HELPTEXT:
@@ -221,12 +221,12 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 			
 		case TO_FILTER:
 			lex.next(true);
-			fileRegExp = lex.GetString();
+			fileRegExp = lex.getString();
 			break;
 			
 		case TO_VIEWCMD:
 			lex.next(true);
-			viewCommand = lex.GetString();
+			viewCommand = lex.getString();
 			// For security reasons, a command may not be empty!
 			if (viewCommand.empty())
 				viewCommand = "true";
@@ -234,7 +234,7 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 			
 		case TO_EDITCMD:
 			lex.next(true);
-			editCommand = lex.GetString();
+			editCommand = lex.getString();
 			// For security reasons, a command may not be empty!
 			if (editCommand.empty())
 				editCommand = "true";
@@ -242,12 +242,12 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 			
 		case TO_AUTOMATIC:
 			lex.next();
-			automaticProduction = lex.GetBool();
+			automaticProduction = lex.getBool();
 			break;
 			
 		case TO_FORMAT:
 			lex.next(true);
-			formats[lex.GetString()].readFormat(lex);
+			formats[lex.getString()].readFormat(lex);
 			break;
 			
 		case TO_END:
@@ -283,16 +283,16 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 
 	pushpophelper pph(lex, formattags, FO_END);
 	
-	while (lex.IsOK()) {
+	while (lex.isOK()) {
 		switch (lex.lex()) {
 		case FO_PRODUCT:
 			lex.next(true);
-			product = lex.GetString();
+			product = lex.getString();
 			break;
 			
 		case FO_UPDATECMD:
 			lex.next(true);
-			updateCommand = lex.GetString();
+			updateCommand = lex.getString();
 			// For security reasons, a command may not be empty!
 			if (updateCommand.empty())
 				updateCommand = "true";
@@ -300,7 +300,7 @@ void ExternalTemplate::FormatTemplate::readFormat(LyXLex & lex)
 			
 		case FO_REQUIREMENT:
 			lex.next(true);
-			requirement = lex.GetString();
+			requirement = lex.getString();
 			break;
 			
 		case FO_PREAMBLE:

@@ -91,32 +91,37 @@ InsetERT::~InsetERT()
 void InsetERT::read(Buffer const * buf, LyXLex & lex)
 {
 	bool token_found = false;
-	if (lex.IsOK()) {
+	if (lex.isOK()) {
 		lex.next();
-		string const token = lex.GetString();
+		string const token = lex.getString();
 		if (token == "status") {
 			lex.next();
-			string st;
-			if (lex.GetString() == "Inlined")
+			string const tmp_token = lex.getString();
+			
+			if (tmp_token == "Inlined") {
 				status_ = Inlined;
-			else if (lex.GetString() == "Collapsed")
+			} else if (tmp_token == "Collapsed") {
 				status_ = Collapsed;
-			else // leave this as default!
+			} else {
+				// leave this as default!
 				status_ = Open;
+			}
+			
 			token_found = true;
 		} else {
 			lyxerr << "InsetERT::Read: Missing 'status'-tag!"
-				   << endl;
+				   << std::endl;
 			// take countermeasures
 			lex.pushToken(token);
 		}
 	}
 	InsetCollapsable::read(buf, lex);
 	if (!token_found) {
-		if (collapsed_)
+		if (collapsed_) {
 			status_ = Collapsed;
-		else
+		} else {
 			status_ = Open;
+		}
 	}
 	setButtonLabel();
 }

@@ -144,14 +144,16 @@ void InsetCommandParams::read(LyXLex & lex)
 {    
 	string token;
 
-	if (lex.EatLine()) {
-		token = lex.GetString();
+	if (lex.eatLine()) {
+		token = lex.getString();
 		scanCommand(token);
-	} else
+	} else {
 		lex.printError("InsetCommand: Parse error: `$$Token'");
-	while (lex.IsOK()) {
+	}
+	
+	while (lex.isOK()) {
 		lex.nextToken();
-		token = lex.GetString();
+		token = lex.getString();
 		if (token == "\\end_inset")
 			break;
 	}

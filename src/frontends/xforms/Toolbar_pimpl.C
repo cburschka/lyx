@@ -392,7 +392,7 @@ void Toolbar::Pimpl::set(bool doingmain)
 
 			// Set the tooltip
 #if FL_REVISION >= 89
-			string help = _(lyxaction.helpText(item->action));
+			string const help(_(lyxaction.helpText(item->action)));
 			fl_set_object_helper(obj, help.c_str());	
 #else
 			fl_set_object_posthandler(obj, C_Toolbar_BubblePost);
