@@ -26,6 +26,9 @@ What's new
 
 ** Bug fixes
 
+- fix crash when saving file containing a table (only with some
+  compilers) [Bug #1415]
+
 - enable the file dialog to open files with non-latin filenames [Qt only]
 
 - add a couple forgotten MacOSX-related files
