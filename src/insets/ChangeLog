@@ -1,3 +1,16 @@
+2003-11-28  Angus Leeming  <leeming@lyx.org>
+
+	* insetbox.C (d-tor):
+	* insetbranch.C (d-tor):
+	* insetcite.C (d-tor):
+	* insetfloat.C (d-tor):
+	* insetfloatlist.C (d-tor):
+	* insetinclude.C (d-tor):
+	* insetindex.C (d-tor):
+	simplify the invocation of the Mailer::hideDialog() function.
+
+	* insetminipage.C (showInsetDialog):
+	simplify the invocation of the Mailer::showialog() function.
 
 2003-11-28  André Pönitz  <poenitz@gmx.net>
 

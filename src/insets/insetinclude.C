@@ -103,8 +103,7 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 
 InsetInclude::~InsetInclude()
 {
-	InsetIncludeMailer mailer(*this);
-	mailer.hideDialog();
+	InsetIncludeMailer(*this).hideDialog();
 }
 
 

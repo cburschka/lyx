@@ -59,8 +59,7 @@ InsetBranch::InsetBranch(InsetBranch const & in)
 
 InsetBranch::~InsetBranch()
 {
-	InsetBranchMailer mailer("branch", *this);
-	mailer.hideDialog();
+	InsetBranchMailer("branch", *this).hideDialog();
 }
 
 

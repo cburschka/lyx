@@ -156,8 +156,7 @@ InsetFloat::InsetFloat(InsetFloat const & in)
 
 InsetFloat::~InsetFloat()
 {
-	InsetFloatMailer mailer(*this);
-	mailer.hideDialog();
+	InsetFloatMailer(*this).hideDialog();
 }
 
 

@@ -96,8 +96,7 @@ InsetBox::InsetBox(InsetBox const & in)
 
 InsetBox::~InsetBox()
 {
-	InsetBoxMailer mailer(*this);
-	mailer.hideDialog();
+	InsetBoxMailer(*this).hideDialog();
 }
 
 

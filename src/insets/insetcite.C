@@ -226,8 +226,7 @@ InsetCitation::InsetCitation(InsetCommandParams const & p)
 
 InsetCitation::~InsetCitation()
 {
-	InsetCommandMailer mailer("citation", *this);
-	mailer.hideDialog();
+	InsetCommandMailer("citation", *this).hideDialog();
 }
 
 

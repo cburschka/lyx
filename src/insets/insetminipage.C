@@ -274,8 +274,7 @@ bool InsetMinipage::showInsetDialog(BufferView * bv) const
 {
 	if (!inset.showInsetDialog(bv)) {
 		InsetMinipage * tmp = const_cast<InsetMinipage *>(this);
-		InsetMinipageMailer mailer(*tmp);
-		mailer.showDialog(bv);
+		InsetMinipageMailer(*tmp).showDialog(bv);
 	}
 
 	return true;

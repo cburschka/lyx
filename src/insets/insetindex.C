@@ -35,8 +35,7 @@ InsetIndex::InsetIndex(InsetCommandParams const & p)
 
 InsetIndex::~InsetIndex()
 {
-	InsetCommandMailer mailer("index", *this);
-	mailer.hideDialog();
+	InsetCommandMailer("index", *this).hideDialog();
 }
 
 

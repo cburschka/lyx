@@ -48,8 +48,7 @@ InsetFloatList::InsetFloatList(string const & type)
 
 InsetFloatList::~InsetFloatList()
 {
-	InsetCommandMailer mailer("toc", *this);
-	mailer.hideDialog();
+	InsetCommandMailer("toc", *this).hideDialog();
 }
 
 
