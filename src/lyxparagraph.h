@@ -26,7 +26,6 @@
 #include "layout.h"
 #include "support/block.h"
 
-
 #define NEW_INSETTABLE 1
 #define NEW_FONTTABLE 1
 
@@ -34,6 +33,8 @@ class BufferParams;
 class LyXBuffer;
 class TexRow;
 struct LaTeXFeatures;
+
+using std::list;
 
 /// A LyXParagraph holds all text, attributes and insets in a text paragraph
 class LyXParagraph  {

@@ -1686,7 +1686,8 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 			pos_first++;
 
 		pos_end = pos_first + par->text.size() - 1;
-		tmp->text.reserve(pos_end - pos);
+		if (pos_end > pos)
+			tmp->text.reserve(pos_end - pos);
 
 		for (i = pos; i <= pos_end; i++) {
 			par->CutIntoMinibuffer(i - pos_first);
@@ -1853,7 +1854,8 @@ void LyXParagraph::BreakParagraphConservative(LyXParagraph::size_type pos)
 		// InsertFromMinibuffer will enlarge the memory (it uses
 		// InsertChar of course). But doing it by hand
 		// is MUCH faster! (only one time, not thousend times!!)
-		tmp->text.reserve(pos_end - pos);
+		if (pos_end > pos)
+			tmp->text.reserve(pos_end - pos);
 
 		for (i = pos; i <= pos_end; i++) {
       

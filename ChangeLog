@@ -1,3 +1,13 @@
+2000-01-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/paragraph.C (BreakParagraph): do not reserve space on text
+	if we don't need to (otherwise, if pos_end < pos, we end up
+	reserving huge amounts of memory due to bad unsigned karma).
+	(BreakParagraphConservative): ditto, although I have not seen
+	evidence the bug can happen here.
+
+	* src/lyxparagraph.h: add a using std::list.
+
 2000-01-11  Juergen Vigna  <jug@sad.it>
 
 	* src/menus.C (MenuDocu): output an Alert if the documentation-file
