@@ -18,10 +18,10 @@ struct Context {
 	void check_end_layout(std::ostream & os);
 
 	// Output a \begin_deeper if needed
-	void check_deeper(ostream & os);
+	void check_deeper(std::ostream & os);
 
 	// Output a \end_deeper if needed
-	void check_end_deeper(ostream & os);
+	void check_end_deeper(std::ostream & os);
 	
 	// dump content on stream (for debugging purpose), with
 	// description \c desc.
