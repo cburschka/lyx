@@ -90,17 +90,18 @@ public:
 	virtual void write(WriteStream & os) const;
 	/// reproduce itself
 	virtual MathInset * clone() const = 0;
-	///substitutes macro arguments if necessary
+	/// substitutes macro arguments if necessary
 	virtual void substitute(MathMacro const & macro);
 	/// compute the size of the object, sets ascend_, descend_ and width_
+	// updates the (xo,yo)-caches of all contained cells
 	virtual void metrics(MathMetricsInfo const & st) const;
-	/// 
+	/// the ascent of the inset above the baseline
 	virtual int ascent() const { return 1; }
-	///
+	/// the descent of the inset below the baseline
 	virtual int descent() const { return 1; }
-	///
+	/// total width
 	virtual int width() const { return 2; }
-	///
+	/// total height (== ascent + descent)
 	virtual int height() const;
 
 	/// Where should we go when we press the up cursor key?
@@ -145,40 +146,40 @@ public:
 	// selection purposes
 	virtual std::vector<idx_type> idxBetween(idx_type from, idx_type to) const;
 
-	///
+	/// the number of nested cells this inset owns
 	virtual idx_type nargs() const;
 
-	///
+	/// return cell given its number
 	virtual MathArray & cell(idx_type);
-	///
+	/// return cell given its number
 	virtual MathArray const & cell(idx_type) const;
-	///
+	/// return cell plus drawing cache given its number
 	virtual MathXArray & xcell(idx_type);
-	///
+	/// return cell plus drawing cache given its number
 	virtual MathXArray const & xcell(idx_type) const;
 			
-	///
+	/// the number of columns of this inset if it is grid-like
 	virtual col_type ncols() const { return 1; }
-	///
+	/// the number of rows of this inset if it is grid-like
 	virtual row_type nrows() const { return 1; }
-	///
-	virtual col_type col(row_type) const { return 0; }
-	///
-	virtual row_type row(row_type) const { return 0; }
-	///
-	virtual int cellXOffset(row_type) const { return 0; }
-	///
-	virtual int cellYOffset(row_type) const { return 0; }
-	///
+	/// to which column belongs a cell with a given index?
+	virtual col_type col(idx_type) const { return 0; }
+	/// to which row belongs a cell with a given index?
+	virtual row_type row(idx_type) const { return 0; }
+	/// any additional x-offset when drawing a cell?
+	virtual int cellXOffset(idx_type) const { return 0; }
+	/// any additional y-offset when drawing a cell?
+	virtual int cellYOffset(idx_type) const { return 0; }
+	/// add a row after a given one
 	virtual void addRow(row_type) {}
-	///
+	/// delete a given row
 	virtual void delRow(row_type) {}
-	///
+	/// add a column after a given one
 	virtual void addCol(col_type) {}
-	///
+	/// delete a given row
 	virtual void delCol(col_type) {}
 
-	///
+	/// does this inset cover the pixel at (x,y)?
 	virtual bool covers(int x, int y) const;
 
 	/// identifies certain types of insets
@@ -208,40 +209,39 @@ public:
 	virtual bool isActive() const { return nargs() > 0; }
 	/// identifies insets from the outer world
 	virtual bool isHyperActive() const { return 0; }
-	///
+	/// is the a relational operator (used for splitting equations)
 	virtual bool isRelOp() const { return false; }
-	///
-	virtual bool isMacro() const { return false; }
 
-	///
+	/// return the content as char if the inset is able to do so
 	virtual char getChar() const { return 0; }
-	///
+	/// return the content's char code if it has one
 	virtual MathTextCodes code() const { return LM_TC_MIN; }
 	/// identifies things that can get \limits or \nolimits
 	virtual bool takesLimits() const { return false; }
 
 	///
-	virtual void dump() const;
-	///
 	virtual void edit(BufferView *, int, int, unsigned int) {}
 
-	///
+	/// request "external features"
 	virtual void validate(LaTeXFeatures & features) const;
-	///
+	/// char char code if possible
 	virtual void handleFont(MathTextCodes) {}
-	///
+	/// is this inset equal to a given other inset?
 	virtual bool match(MathInset *) const { return false; }
-	///
+	/// replace things by other things
 	virtual void replace(ReplaceData &) {}
 
 	/// write normalized content
 	virtual void normalize(NormalStream &) const;
-	///
+	/// write content as something readable by Maple
 	virtual void maplize(MapleStream &) const;
-	///
+	/// write content as something resembling MathML
 	virtual void mathmlize(MathMLStream &) const;
-	///
+	/// write content as something readable by Octave
 	virtual void octavize(OctaveStream &) const;
+
+	/// dump content to stderr for debugging
+	virtual void dump() const;
 };
 
 std::ostream & operator<<(std::ostream &, MathInset const &);
