@@ -567,53 +567,61 @@ void QPrefsDialog::select_lyxpipe()
 		pathsModule->lyxserverDirED->setText(file.c_str());
 }
 
+namespace {
+ 
+QFont fontFromString(QString const & s) { 
+	QFont f;
+#if QT_VERSION >= 300
+	f.fromString(s);
+	return f;
+#else
+	f.setRawName(s);
+	return f;
+#endif
+}
 
+QString const fontToString(QFont const & f) {
+#if QT_VERSION >= 300
+	return f.toString();
+#else
+	return f.rawName(); 
+#endif
+}
+
+}
+
+ 
 void QPrefsDialog::change_roman()
 {
-#if QT_VERSION >= 300
-	QFont f;
-	f.fromString(screenfontsModule->screenRomanED->text());
+	QFont f(fontFromString(screenfontsModule->screenRomanED->text()));
  
 	// Qt designers hadn't heard of references
 	bool ok; 
-	QFontDialog::getFont(&ok, f);
+	f = QFontDialog::getFont(&ok, f);
 	if (ok)
-		screenfontsModule->screenRomanED->setText(f.toString());
-#else
-	// ??
-#endif
+		screenfontsModule->screenRomanED->setText(fontToString(f));
 }
 
-
+ 
 void QPrefsDialog::change_sans()
 {
-#if QT_VERSION >= 300
-	QFont f;
-	f.fromString(screenfontsModule->screenSansED->text());
+	QFont f(fontFromString(screenfontsModule->screenSansED->text()));
  
 	// Qt designers hadn't heard of references
 	bool ok; 
-	QFontDialog::getFont(&ok, f);
+	f = QFontDialog::getFont(&ok, f);
 	if (ok)
-		screenfontsModule->screenSansED->setText(f.toString());
-#else
-	// ?? rawName is no good
-#endif
+		screenfontsModule->screenSansED->setText(fontToString(f));
 }
 
-
+ 
 void QPrefsDialog::change_typewriter()
 {
-#if QT_VERSION >= 300
-	QFont f;
-	f.fromString(screenfontsModule->screenTypewriterED->text());
+	QFont f(fontFromString(screenfontsModule->screenTypewriterED->text()));
  
 	// Qt designers hadn't heard of references
 	bool ok; 
-	QFontDialog::getFont(&ok, f);
+	f = QFontDialog::getFont(&ok, f);
 	if (ok)
-		screenfontsModule->screenTypewriterED->setText(f.toString());
-#else
-	// ?? rawName is no good
-#endif
+		screenfontsModule->screenTypewriterED->setText(fontToString(f));
 }
