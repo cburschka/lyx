@@ -1,3 +1,10 @@
+2004-04-20  Angus Leeming  <leeming@lyx.org>
+
+	* configure.m4: change the lyxpreview_to_bitmap_command to the
+	new python script.
+
+	* scripts/.cvsignore: new file, ignoring *.pyc.
+
 2004-04-20  Angus Leeming  <angus@localhost.localdomain>
 
 	* external_templates: Comment out the insertion of the definitions

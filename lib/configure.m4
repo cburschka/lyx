@@ -306,8 +306,8 @@ test $dvi_to_ps_command = "dvips" && dvi_to_ps_command="dvips -o \$\$o \$\$i"
 SEARCH_PROG([for a DVI to PDF converter],dvi_to_pdf_command,dvipdfm)
 test $dvi_to_pdf_command = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
 
-# We have a script to convert previewlyx to ppm
-lyxpreview_to_bitmap_command='$$s/lyxpreview2bitmap.sh'
+# We have a script to convert previewlyx to ppm or to png
+lyxpreview_to_bitmap_command='python $$s/lyxpreview2bitmap.py'
 
 # Search a *roff program (used to translate tables in ASCII export)
 LYXRC_PROG([for a *roff formatter], \ascii_roff_command, dnl
@@ -565,6 +565,7 @@ cat >$outfile <<EOF
 \\converter linuxdoc   lyx        "$linuxdoc_to_lyx_command"	""
 \\converter literate   latex      "$literate_to_tex_command"	""
 \\converter literate   lyx        "$literate_to_lyx_command"	""
+\\converter lyxpreview png        "$lyxpreview_to_bitmap_command"	""
 \\converter lyxpreview ppm        "$lyxpreview_to_bitmap_command"	""
 \\converter ps         fax        "$fax_command"	""
 \\converter ps         pdf        "$ps_to_pdf_command"	""
