@@ -38,6 +38,7 @@
 #include "ControlSearch.h"
 #include "ControlSplash.h"
 #include "ControlTabularCreate.h"
+#include "ControlToc.h"
 #include "ControlUrl.h"
 #include "ControlVCLog.h"
 
@@ -63,6 +64,7 @@
 #include "form_search.h"
 #include "form_splash.h"
 #include "form_tabular_create.h"
+#include "form_toc.h"
 #include "form_url.h"
 
 #include "FormBibitem.h"
@@ -84,6 +86,7 @@
 #include "FormSearch.h"
 #include "FormSplash.h"
 #include "FormTabularCreate.h"
+#include "FormToc.h"
 #include "FormUrl.h"
 #include "FormVCLog.h"
 
@@ -92,7 +95,6 @@
 #include "FormParagraph.h"
 #include "FormPreferences.h"
 #include "FormTabular.h"
-#include "FormToc.h"
 
 // Signal enabling all visible popups to be redrawn if so desired.
 // E.g., when the GUI colours have been remapped.
@@ -120,6 +122,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIRef<FormRef, xformsBC>(*lv, *this));
 	add(new GUISearch<FormSearch, xformsBC>(*lv, *this));
 	add(new GUITabularCreate<FormTabularCreate, xformsBC>(*lv, *this));
+	add(new GUIToc<FormToc, xformsBC>(*lv, *this));
 	add(new GUIUrl<FormUrl, xformsBC>(*lv, *this));
 	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));
 
@@ -128,7 +131,6 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new FormParagraph(lv, this));
 	add(new FormPreferences(lv, this));
 	add(new FormTabular(lv, this));
-	add(new FormToc(lv, this));
 	
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

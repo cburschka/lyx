@@ -294,6 +294,20 @@ public:
 };
 
 
+/** Specialization for Toc dialog
+ */
+class ControlToc;
+
+template <class GUIview, class GUIbc>
+class GUIToc :
+	public GUI<ControlToc, GUIview, OkCancelPolicy, GUIbc> {
+public:
+	///
+	GUIToc(LyXView & lv, Dialogs & d)
+		: GUI<ControlToc, GUIview, OkCancelPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for TabularCreate dialog
  */
 class ControlTabularCreate;

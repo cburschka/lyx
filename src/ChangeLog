@@ -1,3 +1,8 @@
+2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* lyxfunc.C (Dispatch): prevent crash in LFUN_GOTO_PARAGRAPH when
+	the LyXParagraph * is 0.
+
 2001-03-29  Juergen Vigna  <jug@sad.it>
 
 	* vspace.C: added support for %, c%, p%, l%.

@@ -65,6 +65,8 @@ libcontrollers_la_SOURCES=\
 	ControlSplash.h \
 	ControlTabularCreate.C \
 	ControlTabularCreate.h \
+	ControlToc.C \
+	ControlToc.h \
 	ControlUrl.C \
 	ControlUrl.h \
 	ControlVCLog.C \

@@ -1227,6 +1227,8 @@ string const LyXFunc::Dispatch(int ac,
 		int id;
 		istr >> id;
 		LyXParagraph * par = TEXT()->GetParFromID(id);
+		if (par == 0)
+			break;
 
 		// Set the cursor
 		TEXT()->SetCursor(owner->view(), par, 0);

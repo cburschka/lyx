@@ -1,5 +1,14 @@
 2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FormMathsPanel.C (c-tor): set button controller cancel label to close.
+
+	* FormToc.[Ch]:
+	* forms/form_toc.fd: implemented controller-view split.
+
+	* Dialogs.C: associated changes.
+
+2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* FormCitation.C:
 	* forms/form_citation.fd: Don't change the name of the button when
 	toggling between regular expression and simple searches.

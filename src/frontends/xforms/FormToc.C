@@ -1,81 +1,45 @@
-// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2000-2001 The LyX Team.
  *
  * ======================================================
+ *
+ * \file FormToc.C
+ * \author Angus Leeming, a.leeming@ic.ac.uk
  */
 
 #include <config.h>
 #include <vector>
 
-#include FORMS_H_LOCATION
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-
-#include "Dialogs.h"
+#include "xformsBC.h"
+#include "ControlToc.h"
 #include "FormToc.h"
-#include "LyXView.h"
 #include "form_toc.h"
-#include "lyxtext.h"
-#include "lyxfunc.h"
-#include "support/lstrings.h"
-
-using std::vector;
-using SigC::slot;
-
-// The current code uses the apply() for handling the Update button and the
-// type-of-table selection and cancel() for the close button.  This is a little
-// confusing to the button controller so I've made an IgnorantPolicy to cover
-// this situation since the dialog doesn't care about buttons. ARRae 20001013
-FormToc::FormToc(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Table of Contents")),
-	  dialog_(0)
-{
-	// let the dialog be shown
-	// These are permanent connections so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showTOC.connect(slot(this, &FormToc::showInset));
-	d->createTOC.connect(slot(this, &FormToc::createInset));
-}
+#include "helper_funcs.h" // getStringFromVector
+#include "support/lstrings.h" // frontStrip, strip
 
 
-FL_FORM * FormToc::form() const
-{
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
-}
+typedef FormCB<ControlToc, FormDB<FD_form_toc> > base_class;
 
-
-void FormToc::disconnect()
-{
-	toclist.clear();
-	FormCommand::disconnect();
-}
+FormToc::FormToc(ControlToc & c)
+	: base_class(c, _("Table of Contents"))
+{}
 
 
 void FormToc::build()
 {
 	dialog_.reset(build_toc());
 
-#if 0
-	fl_addto_choice(dialog_->choice_toc_type,
-			_(" TOC | LOF | LOT | LOA "));
-#else
-	Buffer::Lists const tmp = lv_->view()->buffer()->getLists();
-	Buffer::Lists::const_iterator cit = tmp.begin();
-	Buffer::Lists::const_iterator end = tmp.end();
-	for (; cit != end; ++cit) {
-		fl_addto_choice(dialog_->choice_toc_type, cit->first.c_str());
-	}
-#endif
+	string const choice =
+		" " + getStringFromVector(controller().getTypes(), " | ") + " ";
+	fl_addto_choice(dialog_->choice_toc_type, choice.c_str());
 
         // Manage the cancel/close button
 	bc().setCancel(dialog_->button_cancel);
@@ -85,122 +49,65 @@ void FormToc::build()
 
 void FormToc::update()
 {
-#if 0
-	Buffer::TocType type;
-
-	if (params.getCmdName() == "tableofcontents" )
-		type = Buffer::TOC_TOC;
-
-	else if (params.getCmdName() == "listofalgorithms" )
-		type = Buffer::TOC_LOA;
-
-	else if (params.getCmdName() == "listoffigures" )
-		type = Buffer::TOC_LOF;
-
-	else
-		type = Buffer::TOC_LOT;
-	
-	fl_set_choice( dialog_->choice_toc_type, type+1 );
-#else
-#warning Reimplement (Lgb)
-#endif
-	updateToc();
+	updateType();
+	updateContents();
 }
 
 
-void FormToc::updateToc()
+ButtonPolicy::SMInput FormToc::input(FL_OBJECT *, long)
 {
-#if 0
-  	if (!lv_->view()->available()) {
-		toclist.clear();
-		fl_clear_browser( dialog_->browser_toc );
-		fl_add_browser_line( dialog_->browser_toc,
-				     _("*** No Document ***"));
-		return;
+	updateContents();
+
+	unsigned int const choice = fl_get_browser( dialog_->browser_toc );
+	if (0 < choice && choice - 1 < toclist_.size()) {
+		controller().Goto(toclist_[choice-1].par->id());
 	}
 
-	vector<vector<Buffer::TocItem> > tmp =
-		lv_->view()->buffer()->getTocList();
-	int type = fl_get_choice( dialog_->choice_toc_type ) - 1;
+	return ButtonPolicy::SMI_VALID;
+}
+
+
+void FormToc::updateType()
+{
+	string const type = toc::getType(controller().params().getCmdName());
+	
+	fl_set_choice(dialog_->choice_toc_type, 1);
+	for (int i = 1;
+	     i <= fl_get_choice_maxitems(dialog_->choice_toc_type); ++i) {
+		string const choice =
+			fl_get_choice_item_text(dialog_->choice_toc_type, i);
+
+		if (choice == type) {
+			fl_set_choice(dialog_->choice_toc_type, i);
+			break;
+		}
+	}
+}
+
+
+void FormToc::updateContents()
+{
+	string const type =
+		frontStrip(strip(fl_get_choice_text(dialog_->choice_toc_type)));
+
+	Buffer::SingleList const contents = controller().getContents(type);
 
 	// Check if all elements are the same.
-	if (toclist.size() == tmp[type].size()) {
-		unsigned int i = 0;
-		for (; i < toclist.size(); ++i) {
-			if (toclist[i] !=  tmp[type][i])
-				break;
-		}
-		if (i >= toclist.size()) return;
-	}
-
-	// List has changed. Update browser
-	toclist = tmp[type];
-
-	static Buffer * buffer = 0;
-	int topline = 0;
-	int line = 0;
-	if (buffer == lv_->view()->buffer()) {
-		topline = fl_get_browser_topline( dialog_->browser_toc );
-		line = fl_get_browser( dialog_->browser_toc );
-	} else
-		buffer = lv_->view()->buffer();
-
-	fl_clear_browser( dialog_->browser_toc );
-
-	for (vector<Buffer::TocItem>::const_iterator it = toclist.begin();
-	     it != toclist.end(); ++it)
-		fl_add_browser_line( dialog_->browser_toc,
-				     (string(4 * (*it).depth, ' ')
-				      + (*it).str).c_str());
-
-	fl_set_browser_topline( dialog_->browser_toc, topline );
-	fl_select_browser_line( dialog_->browser_toc, line );
-#else
-#warning Fix Me! (Lgb)
-  	if (!lv_->view()->available()) {
-		toclist.clear();
-		fl_clear_browser( dialog_->browser_toc );
-		fl_add_browser_line( dialog_->browser_toc,
-				     _("*** No Document ***"));
-		return;
-	}
-
-	Buffer::Lists tmp = lv_->view()->buffer()->getLists();
-	string const type =
-		fl_get_choice_item_text(dialog_->choice_toc_type,
-					fl_get_choice(dialog_->choice_toc_type));
-
-	Buffer::Lists::iterator it = tmp.find(type);
-
-	if (it != tmp.end()) {
-		// Check if all elements are the same.
-		if (toclist == it->second) {
-			return;
-		}
-	} else if (it == tmp.end()) {
-		toclist.clear();
-		fl_clear_browser(dialog_->browser_toc);
-		fl_add_browser_line(dialog_->browser_toc,
-				    _("*** No Lists ***"));
+	if (toclist_ == contents) {
 		return;
 	}
 	
 	// List has changed. Update browser
-	toclist = it->second;
+	toclist_ = contents;
 
-	static Buffer * buffer = 0;
-	int topline = 0;
-	int line = 0;
-	if (buffer == lv_->view()->buffer()) {
-		topline = fl_get_browser_topline(dialog_->browser_toc);
-		line = fl_get_browser( dialog_->browser_toc );
-	} else
-		buffer = lv_->view()->buffer();
+	unsigned int const topline =
+		fl_get_browser_topline(dialog_->browser_toc);
+	unsigned int const line = fl_get_browser(dialog_->browser_toc);
 
-	fl_clear_browser(dialog_->browser_toc);
+	fl_clear_browser( dialog_->browser_toc );
 
-	Buffer::SingleList::const_iterator cit = toclist.begin();
-	Buffer::SingleList::const_iterator end = toclist.end();
+	Buffer::SingleList::const_iterator cit = toclist_.begin();
+	Buffer::SingleList::const_iterator end = toclist_.end();
 	
 	for (; cit != end; ++cit) {
 		string const line = string(4 * cit->depth, ' ') + cit->str;
@@ -209,19 +116,4 @@ void FormToc::updateToc()
 	
 	fl_set_browser_topline(dialog_->browser_toc, topline);
 	fl_select_browser_line(dialog_->browser_toc, line);
-#endif
-}
-
- 
-bool FormToc::input(FL_OBJECT *, long)
-{
-	updateToc();
-
-	unsigned int const choice = fl_get_browser( dialog_->browser_toc );
-	if (0 < choice && choice - 1 < toclist.size()) {
-		string const tmp = tostr(toclist[choice-1].par->id());
-		lv_->getLyXFunc()->Dispatch(LFUN_GOTO_PARAGRAPH, tmp);
-	}
-
-	return true;
 }

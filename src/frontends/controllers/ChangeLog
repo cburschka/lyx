@@ -1,5 +1,12 @@
 2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* ControlToc.[Ch]: new files; a controller for the TOC popup.
+
+	* GUI.h:
+	* Makefile.am: associated changes with all of the above.
+
+2001-03-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* ControlExternal.C: bug fixes. Can now apply changes to the inset
 	and edit, view, update the External Material correctly. I hope!
 
