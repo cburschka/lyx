@@ -450,9 +450,14 @@ bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 				resetPos(bv);
 				return true;
 			}
-			actcell = i;
-			in->dispatch(FuncRequest(bv, LFUN_INSET_EDIT));
-			return the_locking_inset->lockInsetInInset(bv, inset);
+			if (in->lockInsetInInset(bv, inset)) {
+				actcell = i;
+				the_locking_inset = in;
+				locked = true;
+				resetPos(bv);
+				in->dispatch(FuncRequest(bv, LFUN_INSET_EDIT));
+				return true;
+			}
 		}
 		return false;
 	}
