@@ -111,25 +111,25 @@ int LyXCursor::iy() const
 }
 
 
-void LyXCursor::row(Row * r)
+void LyXCursor::row(RowList::iterator r)
 {
 	row_ = r;
 }
 
 
-Row * LyXCursor::row() const
+RowList::iterator LyXCursor::row() const
 {
 	return row_;
 }
 
 
-void LyXCursor::irow(Row * r)
+void LyXCursor::irow(RowList::iterator r)
 {
 	irow_ = r;
 }
 
 
-Row * LyXCursor::irow() const
+RowList::iterator LyXCursor::irow() const
 {
 	return irow_;
 }

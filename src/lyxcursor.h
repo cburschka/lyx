@@ -10,10 +10,10 @@
 #ifndef LYXCURSOR_H
 #define LYXCURSOR_H
 
+#include "RowList.h"
 #include "support/types.h"
 
 class Paragraph;
-class Row;
 
 /**
  * The cursor class describes the position of a cursor within a document.
@@ -81,11 +81,11 @@ public:
 	 */
 	int iy() const;
 	/// set the row of the paragraph the cursor is in
-	void row(Row * r);
+	void row(RowList::iterator r);
 	/// return the row of the paragraph this cursor is in
-	Row * row() const;
+	RowList::iterator row() const;
 	/// set the stored next row
-	void irow(Row * r);
+	void irow(RowList::iterator r);
 	/**
 	 * Return the next row, when this
 	 * cursor is at the end of the previous row, for insets that take
@@ -93,7 +93,7 @@ public:
 	 *
 	 * FIXME: explain why we need this ? especially for y...
 	 */
-	Row * irow() const;
+	RowList::iterator irow() const;
 private:
 	/// The paragraph the cursor is in.
 	Paragraph * par_;
@@ -126,9 +126,9 @@ private:
 	/// the stored next-row y position
 	int iy_;
 	/// the containing row
-	Row * row_;
+	RowList::iterator row_;
 	/// the containing row for the next line
-	Row * irow_;
+	RowList::iterator irow_;
 };
 
 /// these three dictate the others

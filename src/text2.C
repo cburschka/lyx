@@ -637,14 +637,14 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 
 void LyXText::redoHeightOfParagraph()
 {
-	Row * tmprow = cursor.row();
+	RowList::iterator tmprow = cursor.row();
 	int y = cursor.y() - tmprow->baseline();
 
 	setHeightOfRow(tmprow);
 
-	while (tmprow->previous()
-	       && tmprow->previous()->par() == tmprow->par()) {
-		tmprow = tmprow->previous();
+	while (tmprow != rows().begin()
+	       && boost::prior(tmprow)->par() == tmprow->par()) {
+		--tmprow;
 		y -= tmprow->height();
 		setHeightOfRow(tmprow);
 	}
@@ -657,14 +657,14 @@ void LyXText::redoHeightOfParagraph()
 
 void LyXText::redoDrawingOfParagraph(LyXCursor const & cur)
 {
-	Row * tmprow = cur.row();
+	RowList::iterator tmprow = cur.row();
 
 	int y = cur.y() - tmprow->baseline();
 	setHeightOfRow(tmprow);
 
-	while (tmprow->previous()
-	       && tmprow->previous()->par() == tmprow->par())  {
-		tmprow = tmprow->previous();
+	while (tmprow != rows().begin()
+	       && boost::prior(tmprow)->par() == tmprow->par())  {
+		--tmprow;
 		y -= tmprow->height();
 	}
 
@@ -1677,7 +1677,7 @@ void LyXText::setCursor(LyXCursor & cur, Paragraph * par,
 	RowList::iterator beg = rows().begin();
 
 	RowList::iterator old_row = row;
-	cur.irow(&*row);
+	cur.irow(row);
 	// if we are before the first char of this row and are still in the
 	// same paragraph and there is a previous row then put the cursor on
 	// the end of the previous row

@@ -1,5 +1,8 @@
 2003-04-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* insettext.C (draw): adjust
+	(crow): return a RowList::iterator not a Row*
+
 	* insetminipage.C (localDispatch): adjust
 
 	* insetert.C (localDispatch): adjust

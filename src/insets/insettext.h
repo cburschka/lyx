@@ -17,6 +17,7 @@
 #include "LString.h"
 #include "LColor.h"
 #include "ParagraphList.h"
+#include "RowList.h"
 
 #include "support/types.h"
 
@@ -340,7 +341,7 @@ private:
 	///
 	bool cboundary(BufferView *) const;
 	///
-	Row * crow(BufferView *) const;
+	RowList::iterator crow(BufferView *) const;
 	///
 	void drawFrame(Painter &, int x) const;
 	///

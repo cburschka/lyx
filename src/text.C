@@ -1504,9 +1504,9 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 
 	// Do not forget the special right address boxes
 	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
-		Row * r = cursor.row();
-		while (r->previous() && r->previous()->par() == r->par()) {
-			r = r->previous();
+		RowList::iterator r = cursor.row();
+		while (r != rows().begin() && boost::prior(r)->par() == r->par()) {
+			--r;
 			y -= r->height();
 		}
 	}
@@ -1668,7 +1668,7 @@ void LyXText::insertChar(char c)
 	}
 
 	// get the cursor row fist
-	Row * row = cursor.row();
+	RowList::iterator row = cursor.row();
 	int y = cursor.y() - row->baseline();
 	if (c != Paragraph::META_INSET) {
 		// Here case LyXText::InsertInset  already insertet the character
@@ -1678,9 +1678,10 @@ void LyXText::insertChar(char c)
 
 	if (!jumped_over_space) {
 		// refresh the positions
-		Row * tmprow = row;
-		while (tmprow->next() && tmprow->next()->par() == row->par()) {
-			tmprow = tmprow->next();
+		RowList::iterator tmprow = row;
+		while (boost::next(tmprow) != rows().end() &&
+		       boost::next(tmprow)->par() == row->par()) {
+			++tmprow;
 			tmprow->pos(tmprow->pos() + 1);
 		}
 	}
@@ -2524,7 +2525,7 @@ void LyXText::backspace()
 		}
 
 		Paragraph * tmppar = cursor.par();
-		Row * tmprow = cursor.row();
+		RowList::iterator tmprow = cursor.row();
 
 		// We used to do cursorLeftIntern() here, but it is
 		// not a good idea since it triggers the auto-delete
@@ -2606,7 +2607,7 @@ void LyXText::backspace()
 			}
 		}
 
-		Row * row = cursor.row();
+		RowList::iterator row = cursor.row();
 		int y = cursor.y() - row->baseline();
 		pos_type z;
 		// remember that a space at the end of a row doesnt count
@@ -2623,9 +2624,10 @@ void LyXText::backspace()
 		if (cursor.pos() && cursor.par()->isNewline(cursor.pos())) {
 			cursor.par()->erase(cursor.pos());
 			// refresh the positions
-			Row * tmprow = row;
-			while (tmprow->next() && tmprow->next()->par() == row->par()) {
-				tmprow = tmprow->next();
+			RowList::iterator tmprow = row;
+			while (boost::next(tmprow) != rows().end() &&
+			       boost::next(tmprow)->par() == row->par()) {
+				++tmprow;
 				tmprow->pos(tmprow->pos() - 1);
 			}
 			if (cursor.par()->isLineSeparator(cursor.pos() - 1))
@@ -2638,8 +2640,9 @@ void LyXText::backspace()
 					    cursor.pos(), current_font);
 				// refresh the positions
 				tmprow = row;
-				while (tmprow->next() && tmprow->next()->par() == row->par()) {
-					tmprow = tmprow->next();
+				while (boost::next(tmprow) != rows().end() &&
+				       boost::next(tmprow)->par() == row->par()) {
+					++tmprow;
 					tmprow->pos(tmprow->pos() + 1);
 				}
 			}
@@ -2647,10 +2650,10 @@ void LyXText::backspace()
 			cursor.par()->erase(cursor.pos());
 
 			// refresh the positions
-			Row * tmprow = row;
-			while (tmprow->next()
-			       && tmprow->next()->par() == row->par()) {
-				tmprow = tmprow->next();
+			RowList::iterator tmprow = row;
+			while (boost::next(tmprow) != rows().end() &&
+			       boost::next(tmprow)->par() == row->par()) {
+				++tmprow;
 				tmprow->pos(tmprow->pos() - 1);
 			}
 
@@ -2662,21 +2665,21 @@ void LyXText::backspace()
 				cursor.par()->erase(cursor.pos());
 				// refresh the positions
 				tmprow = row;
-				while (tmprow->next() &&
-				       tmprow->next()->par() == row->par()) {
-					tmprow = tmprow->next();
+				while (boost::next(tmprow) != rows().end() &&
+				       boost::next(tmprow)->par() == row->par()) {
+					++tmprow;
 					tmprow->pos(tmprow->pos() - 1);
 				}
 			}
 		}
 
 		// is there a break one row above
-		if (row->previous() && row->previous()->par() == row->par()) {
-			z = rowBreakPoint(*row->previous());
+		if (row != rows().begin() && boost::prior(row)->par() == row->par()) {
+			z = rowBreakPoint(*boost::prior(row));
 			if (z >= row->pos()) {
 				row->pos(z + 1);
 
-				Row * tmprow = row->previous();
+				RowList::iterator tmprow = boost::prior(row);
 
 				// maybe the current row is now empty
 				if (row->pos() >= row->par()->size()) {
@@ -2685,8 +2688,9 @@ void LyXText::backspace()
 					need_break_row = rows().end();
 				} else {
 					breakAgainOneRow(row);
-					if (row->next() && row->next()->par() == row->par())
-						need_break_row = row->next();
+					if (boost::next(row) != rows().end() &&
+					    boost::next(row)->par() == row->par())
+						need_break_row = boost::next(row);
 					else
 						need_break_row = rows().end();
 				}
@@ -2712,7 +2716,8 @@ void LyXText::backspace()
 		}
 
 		// break the cursor row again
-		if (row->next() && row->next()->par() == row->par() &&
+		if (boost::next(row) != rows().end() &&
+		    boost::next(row)->par() == row->par() &&
 		    (row->lastPos() == row->par()->size() - 1 ||
 		     rowBreakPoint(*row) != row->lastPos())) {
 
@@ -2721,22 +2726,24 @@ void LyXText::backspace()
 			// is to long to be broken. Well, I don t care this
 			// hack ;-)
 			if (row->lastPos() == row->par()->size() - 1)
-				removeRow(row->next());
+				removeRow(boost::next(row));
 
 			postPaint(y);
 
 			breakAgainOneRow(row);
 			// will the cursor be in another row now?
-			if (row->next() && row->next()->par() == row->par() &&
+			if (boost::next(row) != rows().end() &&
+			    boost::next(row)->par() == row->par() &&
 			    row->lastPos() <= cursor.pos()) {
-				row = row->next();
+				++row;
 				breakAgainOneRow(row);
 			}
 
 			setCursor(cursor.par(), cursor.pos(), false, cursor.boundary());
 
-			if (row->next() && row->next()->par() == row->par())
-				need_break_row = row->next();
+			if (boost::next(row) != rows().end() &&
+			    boost::next(row)->par() == row->par())
+				need_break_row = boost::next(row);
 			else
 				need_break_row = rows().end();
 		} else  {

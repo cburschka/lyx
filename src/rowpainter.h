@@ -14,12 +14,12 @@
 
 #include <config.h>
 
+#include "RowList.h"
 #include "LString.h"
 #include "support/types.h"
 
 class LyXText;
 class BufferView;
-class Row;
 class Paragraph;
 class Painter;
 class LyXFont;
@@ -31,7 +31,7 @@ class VSpace;
 class RowPainter {
 public:
 	/// initialise painter
-	RowPainter(BufferView const & bv, LyXText const & text, Row const & row);
+	RowPainter(BufferView const & bv, LyXText const & text, RowList::iterator rit);
 
 	/// paint the row.
 	void paint(int y_offset, int x_offset, int y);
@@ -81,7 +81,7 @@ private:
 	LyXText const & text_;
 
 	/// The row to paint
-	Row const & row_;
+	RowList::iterator row_;
 
 	/// Row's paragraph
 	Paragraph const & par_;

@@ -195,12 +195,14 @@ unsigned int LyXScreen::topCursorVisible(LyXCursor const & cursor, int top_y)
 	int const vheight = workarea().workHeight();
 	int newtop = top_y;
 
-	Row * row = cursor.row();
+	RowList::iterator row = cursor.row();
 
+#warning SUPER HACK DISABLED (Lgb)
+#if 0
 	// Is this a hack? Yes, probably... (Lgb)
 	if (!row)
 		return max(newtop, 0);
-
+#endif
 	if (cursor.y() - row->baseline() + row->height() - top_y >= vheight) {
 		if (row->height() < vheight
 		    && row->height() > vheight / 4) {
@@ -421,9 +423,8 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 	int y = y_text - text->top_y();
 	// y1 is now the real beginning of row on the screen
 
-
 	while (row != end && y < y2) {
-		RowPainter rp(*bv, *text, *row);
+		RowPainter rp(*bv, *text, row);
 		rp.paint(y + yo, xo, y + text->top_y());
 		y += row->height();
 		++row;
@@ -449,6 +450,6 @@ void LyXScreen::drawOneRow(LyXText * text, BufferView * bv, Row * row,
 	if (y - row->height() > workarea().workHeight())
 		return;
 
-	RowPainter rp(*bv, *text, *row);
+	RowPainter rp(*bv, *text, row);
 	rp.paint(y, xo, y + text->top_y());
 }

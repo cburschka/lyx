@@ -249,7 +249,7 @@ void LyXText::cursorPrevious()
 		return;
 	}
 
-	Row * cursorrow = cursor.row();
+	RowList::iterator cursorrow = cursor.row();
 
 	setCursorFromCoordinates(cursor.x_fix(), y);
 	finishUndo();
@@ -314,7 +314,7 @@ void LyXText::cursorNext()
 
 	getRowNearY(y);
 
-	Row * cursorrow = cursor.row();
+	RowList::iterator cursorrow = cursor.row();
 	setCursorFromCoordinates(cursor.x_fix(), y);
 	// + bv->workHeight());
 	finishUndo();
@@ -1308,7 +1308,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		bv->screen().hideCursor();
 
-		Row * cursorrow = bv->text->cursor.row();
+		RowList::iterator cursorrow = bv->text->cursor.row();
 		bv->text->setCursorFromCoordinates(cmd.x, cmd.y + bv->text->top_y());
 	#if 0
 		// sorry for this but I have a strange error that the y value jumps at

@@ -420,7 +420,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	int yf = y_offset + first;
 	y = 0;
 	while ((rowit != end) && (yf < ph)) {
-		RowPainter rp(*bv, *lt, *rowit);
+		RowPainter rp(*bv, *lt, rowit);
 		rp.paint(y + y_offset + first, int(x), y + lt->top_y());
 		y += rowit->height();
 		yf += rowit->height();
@@ -2142,7 +2142,7 @@ bool InsetText::cboundary(BufferView * bv) const
 }
 
 
-Row * InsetText::crow(BufferView * bv) const
+RowList::iterator InsetText::crow(BufferView * bv) const
 {
 	return getLyXText(bv)->cursor.row();
 }
