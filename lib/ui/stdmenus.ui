@@ -229,10 +229,10 @@ Menuset
 		Submenu "Float|a" "insert_float"
 # YUCK
 		Submenu "Note|N" "insert_note"
-		Submenu "Box" "insert_box"
 		Submenu "Branch|B" "branches"
-		Submenu "Character Style" "charstyle"
+		Submenu "Character Style|y" "charstyle"
 		Submenu "File|e" "insert_file"
+		Item "Box" "box-insert Frameless"
 		Separator
 		Item "Citation Reference...|C" "dialog-show-new-inset citation"
 		Item "Cross Reference...|R" "dialog-show-new-inset ref"
@@ -342,15 +342,6 @@ Menuset
 		Item "LyX Note|N" "note-insert Note"
 		Item "Comment|C" "note-insert Comment"
 		Item "Greyed Out|G" "note-insert Greyedout"
-	End
-
-	Menu "insert_box"
-		Item "Frameless|F" "box-insert Frameless"
-		Item "Boxed|B" "box-insert Boxed"
-		Item "Oval Box|O" "box-insert ovalbox"
-		Item "Oval Box, Thick|T" "box-insert Ovalbox"
-		Item "Shadow Box|S" "box-insert Shadowbox"
-		Item "Double Box|D" "box-insert Doublebox"
 	End
 
 	Menu "branches"
