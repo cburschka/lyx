@@ -1326,7 +1326,6 @@ void LyXText::appendParagraph(Row * row)
 			++z;
 			insertRow(row, row->par(), z);
 			row = row->next();
-			row->height(0);
 		} else {
 			done = true;
 		}
@@ -1355,7 +1354,6 @@ void LyXText::breakAgain(Row * row)
 				++z;
 				insertRow(row, row->par(), z);
 				row = row->next();
-				row->height(0);
 			} else  {
 				row = row->next();
 				++z;
@@ -1398,8 +1396,6 @@ void LyXText::breakAgainOneRow(Row * row)
 			// insert a new row
 			++z;
 			insertRow(row, row->par(), z);
-			row = row->next();
-			row->height(0);
 		} else  {
 			row = row->next();
 			++z;

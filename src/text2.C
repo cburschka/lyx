@@ -371,10 +371,8 @@ void LyXText::insertParagraph(Paragraph * par,
 
 	// and now append the whole paragraph before the new row
 	if (!row) {
-		firstrow->height(0);
 		appendParagraph(firstrow);
 	} else {
-		row->next()->height(0);
 		appendParagraph(row->next());
 	}
 }
