@@ -37,6 +37,8 @@ libinsets_la_SOURCES = \
 	insetcommand.h \
 	insetcommandparams.C \
 	insetcommandparams.h \
+	insetenv.C \
+	insetenv.h \
 	inseterror.C \
 	inseterror.h \
 	insetert.C \

@@ -125,6 +125,8 @@ public:
 		///
 		OPTARG_CODE,
 		///
+		ENVIRONMENT_CODE, 
+		///
 		HFILL_CODE,
 		///
 		NEWLINE_CODE
