@@ -239,7 +239,7 @@ void MathGridInset::write(std::ostream & os, bool fragile) const
 	for (int row = 0; row < nrows(); ++row) {
 		for (int col = 0; col < ncols(); ++col) {
 			cell(index(row, col)).write(os, fragile);
-			os << eocString(row);
+			os << eocString(col);
 		}
 		os << eolString(row);
 	}
