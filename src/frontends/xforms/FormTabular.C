@@ -188,12 +188,16 @@ void FormTabular::update()
 		}
 		pwidth = tabular->GetMColumnPWidth(cell);
 		align = tabular->GetAlignment(cell);
-		if (align == LYX_ALIGN_LEFT)
-			fl_set_button(cell_options_->radio_align_left, 1);
-		else if (align == LYX_ALIGN_RIGHT)
+		// set the horiz. alignment, default is left here
+		fl_set_button(column_options_->radio_align_left, 0);
+		fl_set_button(column_options_->radio_align_right, 0);
+		fl_set_button(column_options_->radio_align_center, 0);
+		if (align == LYX_ALIGN_RIGHT)
 			fl_set_button(cell_options_->radio_align_right, 1);
-		else
+		else if (align == LYX_ALIGN_CENTER)
 			fl_set_button(cell_options_->radio_align_center, 1);
+		else
+			fl_set_button(cell_options_->radio_align_left, 1);
 
 		align = tabular->GetVAlignment(cell);
 		fl_set_button(cell_options_->radio_valign_top, 0);
@@ -214,7 +218,7 @@ void FormTabular::update()
 					cell_options_->choice_value_mcolumn_width,
 					pwidth, default_unit);
 
-		if (bc().bp().isReadOnly()) {
+		if (!bc().bp().isReadOnly()) {
 			setEnabled(cell_options_->input_special_multialign, true);
 			setEnabled(cell_options_->input_mcolumn_width, true);
 			setEnabled(cell_options_->choice_value_mcolumn_width, true);

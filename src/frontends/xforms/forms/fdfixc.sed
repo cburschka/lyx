@@ -74,6 +74,13 @@ s/\(	fdui->form\)\(.*bgn_form.*\)/\1\2\
 /bmtable/ s/fl_add_button/fl_add_bmtable/
 
 
+# For all lines containing fl_add_choice,
+# add a line that turns off the title. (These titles can contain meta-chars
+# that just look nasty ;-)
+/fl_add_choice/a\
+	fl_set_choice_notitle(obj, 1);
+
+
 # For all lines containing "fl_" and a string _not_ containing |,
 # replace the string with _(string)
 /fl_/ s/".[^|]*"/_(&)/

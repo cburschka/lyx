@@ -106,7 +106,7 @@ void LyXAction::init()
 		  N_("Select previous char"), ReadOnly },
 		{ LFUN_BIBDB_ADD, "bibtex-database-add", "", Noop },
 		{ LFUN_BIBDB_DEL, "bibtex-database-del", "", Noop },
-		{ LFUN_INSERT_BIBTEX, "bibtex-insert", N_("Insert bibtex"),
+		{ LFUN_INSERT_BIBTEX, "bibtex-insert", N_("Insert BibTeX"),
 		  Noop },
 		{ LFUN_BIBTEX_STYLE, "bibtex-style", "", Noop },
 		{ LFUN_BOOKMARK_GOTO, "bookmark-goto", "", ReadOnly },

@@ -168,7 +168,7 @@ QFont const getSymbolFont(string const & family)
 		return font;
 	}
 
-	lyxerr[Debug::FONT] << " FAILED :(" << endl;
+	lyxerr[Debug::FONT] << " FAILED :-(" << endl;
 	return font;
 }
 

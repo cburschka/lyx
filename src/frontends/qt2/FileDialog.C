@@ -71,7 +71,7 @@ FileDialog::Result const FileDialog::save(string const & path,
 		dlg.setSelection(toqstr(suggested));
 
 	FileDialog::Result result;
-	lyxerr[Debug::GUI] << "Synchronous FileDialog : " << endl;
+	lyxerr[Debug::GUI] << "Synchronous FileDialog: " << endl;
 	result.first = FileDialog::Chosen;
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
@@ -99,7 +99,7 @@ FileDialog::Result const FileDialog::open(string const & path,
 		dlg.setSelection(toqstr(suggested));
 
 	FileDialog::Result result;
-	lyxerr[Debug::GUI] << "Synchronous FileDialog : " << endl;
+	lyxerr[Debug::GUI] << "Synchronous FileDialog: " << endl;
 	result.first = FileDialog::Chosen;
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;

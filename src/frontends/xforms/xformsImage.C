@@ -382,7 +382,7 @@ int status_report(FL_IMAGE * ob, const char *s)
 		return 0;
 
 	lyxerr[Debug::GRAPHICS]
-		<< "xforms image loader. Status : " << str << std::endl;
+		<< "xforms image loader. Status: " << str << std::endl;
 
 	grfx::xformsImage * ptr =
 		static_cast<grfx::xformsImage *>(ob->u_vdata);
@@ -401,7 +401,7 @@ static void error_report(FL_IMAGE * ob, const char *s)
 		return;
 
 	lyxerr[Debug::GRAPHICS]
-		<< "xforms image loader. Error : " << str << std::endl;
+		<< "xforms image loader. Error: " << str << std::endl;
 
 	grfx::xformsImage * ptr =
 		static_cast<grfx::xformsImage *>(ob->u_vdata);

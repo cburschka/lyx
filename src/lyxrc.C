@@ -779,7 +779,7 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next()) {
 				x11_name = lexrc.getString();
 			} else {
-				lexrc.printError("Missing color name for color : `$$Token'");
+				lexrc.printError("Missing color name for color: `$$Token'");
 				break;
 			}
 
@@ -2083,7 +2083,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_LANGUAGE_PACKAGE:
-		str = _("The latex command for loading the language package. E.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\".");
+		str = _("The LaTeX command for loading the language package. E.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\".");
 		break;
 
 	case RC_LANGUAGE_GLOBAL_OPTIONS:
@@ -2103,15 +2103,15 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_LANGUAGE_COMMAND_BEGIN:
-		str = _("The latex command for changing from the language of the document to another language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the name of the second language.");
+		str = _("The LaTeX command for changing from the language of the document to another language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the name of the second language.");
 		break;
 
 	case RC_LANGUAGE_COMMAND_END:
-		str = _("The latex command for changing back to the language of the document.");
+		str = _("The LaTeX command for changing back to the language of the document.");
 		break;
 
 	case RC_LANGUAGE_COMMAND_LOCAL:
-		str = _("The latex command for local changing of the language.");
+		str = _("The LaTeX command for local changing of the language.");
 		break;
 
 	case RC_DATE_INSERT_FORMAT:

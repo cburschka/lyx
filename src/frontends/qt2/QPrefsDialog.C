@@ -139,7 +139,7 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 
 	// output
 
-	i = new QListViewItem(out, qt_("Ascii"));
+	i = new QListViewItem(out, qt_("ASCII"));
 	pane_map_[i] = asciiModule;
 	i = new QListViewItem(out, i, qt_("Date format"));
 	pane_map_[i] = dateModule;

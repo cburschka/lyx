@@ -1712,7 +1712,7 @@ void LyXFunc::open(string const & fname)
 	if (!f.exist()) {
 		if (!Alert::askQuestion(_("No such file"), disp_fn,
 			_("Start a new document with this filename ?"))) {
-			owner->message(_("Canceled"));
+			owner->message(_("Canceled."));
 			return;
 		}
 		// the user specifically chose this name. Believe them.
@@ -1837,7 +1837,7 @@ void LyXFunc::doImport(string const & argument)
 	if (FileInfo(lyxfile, true).exist() && filename != lyxfile) {
 		if (!Alert::askQuestion(_("A document by the name"),
 			MakeDisplayPath(lyxfile), _("already exists. Overwrite?"))) {
-			owner->message(_("Canceled"));
+			owner->message(_("Canceled."));
 			return;
 		}
 	}

@@ -472,7 +472,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 				string database;
 				data = split(data, database, ',');
 				database = ChangeExtension(database, "bib");
-				lyxerr[Debug::LATEX] << "Bibtex database: `"
+				lyxerr[Debug::LATEX] << "BibTeX database: `"
 						     << database << '\'' << endl;
 				aux_info.databases.insert(database);
 			}
@@ -481,7 +481,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 			// token is now the style file
 			// pass it to the helper
 			style = ChangeExtension(style, "bst");
-			lyxerr[Debug::LATEX] << "Bibtex style: `"
+			lyxerr[Debug::LATEX] << "BibTeX style: `"
 					     << style << '\'' << endl;
 			aux_info.styles.insert(style);
 		} else if (regex_match(STRCONV(token), sub, reg4)) {

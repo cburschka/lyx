@@ -59,7 +59,7 @@ LColor::LColor()
 	{ background, N_("background"), "background", "linen", "background" },
 	{ foreground, N_("text"), "foreground", "black", "foreground" },
 	{ selection, N_("selection"), "selection", "LightBlue", "selection" },
-	{ latex, N_("latex text"), "latex", "DarkRed", "latex" },
+	{ latex, N_("LaTeX text"), "latex", "DarkRed", "latex" },
 	{ preview, N_("previewed snippet"), "preview", "black", "preview" },
 	{ note, N_("note"), "note", "yellow", "note" },
 	{ notebg, N_("note background"), "notebg", "yellow", "notebg" },

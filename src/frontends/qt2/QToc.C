@@ -171,7 +171,7 @@ void QToc::select(string const & text)
 	}
 
 	if (iter == toclist.end()) {
-		lyxerr[Debug::GUI] << "Couldn't find highlighted TOC entry : "
+		lyxerr[Debug::GUI] << "Couldn't find highlighted TOC entry: "
 			<< text << endl;
 		return;
 	}

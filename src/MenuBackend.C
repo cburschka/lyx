@@ -375,9 +375,9 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 
 		if (kind == MenuItem::ImportFormats)
 			if ((*fit)->name() == "text")
-				label = _("Ascii text as lines");
+				label = _("ASCII text as lines");
 			else if ((*fit)->name() == "textparagraph")
-				label = _("Ascii text as paragraphs");
+				label = _("ASCII text as paragraphs");
 		if (!(*fit)->shortcut().empty())
 			label += '|' + (*fit)->shortcut();
 		int const action2 = lyxaction.

@@ -1,3 +1,22 @@
+2003-01-06  Michael Schmitt <Michael.Schmitt@teststep.org>
+
+	* FormGraphics.C:
+	* xformsImage.C:
+	* forms/form_bibtex.fd:
+	* forms/form_citation.fd:
+	* forms/form_document.fd:
+	* forms/form_search.fd: fix inconsistent usage of spaces, colons,
+	capitalization, and the like.
+
+2002-12-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* FormTabular.C: fix bug 572, fix ReadOnly logic.
+
+2003-01-06  Angus Leeming  <leeming@lyx.org>
+
+	* forms/fdfixc.sed: Turn off choice titles as they can contain
+	meta-chars that just look nasty.
+
 2003-01-05  John Levon  <levon@movementarian.org>
 
 	* XLyXKeySym.h:

@@ -1,3 +1,15 @@
+2003-01-06  Michael Schmitt <Michael.Schmitt@teststep.org>
+
+	* LColor.C:
+	* LaTeX.C:
+	* LyXAction.C:
+	* MenuBackend.C:
+	* buffer.C:
+	* exporter.C:
+	* lyxfunc.C:
+	* lyxrc.C: fix inconsistent usage of spaces, colons, capitalization,
+	and the like.
+
 2003-01-05  John Levon  <levon@movementarian.org>
 
 	* BufferView.h:

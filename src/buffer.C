@@ -227,10 +227,10 @@ pair<Buffer::LogType, string> const Buffer::getLogName() const
 
 	if (b_fi.exist() &&
 	    (!f_fi.exist() || f_fi.getModificationTime() < b_fi.getModificationTime())) {
-		lyxerr[Debug::FILES] << "Log name calculated as : " << bname << endl;
+		lyxerr[Debug::FILES] << "Log name calculated as: " << bname << endl;
 		return make_pair(Buffer::buildlog, bname);
 	}
-	lyxerr[Debug::FILES] << "Log name calculated as : " << fname << endl;
+	lyxerr[Debug::FILES] << "Log name calculated as: " << fname << endl;
 	return make_pair(Buffer::latexlog, fname);
 }
 
@@ -2140,7 +2140,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 	// Just to be sure. (Asger)
 	texrow.newline();
 
-	lyxerr[Debug::INFO] << "Finished making latex file." << endl;
+	lyxerr[Debug::INFO] << "Finished making LaTeX file." << endl;
 	lyxerr[Debug::INFO] << "Row count was " << texrow.rows() - 1
 			    << '.' << endl;
 
@@ -2328,8 +2328,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		case LATEX_COMMAND:
 			if (depth!= 0)
 				sgmlError(par, 0,
-					  _("Error : Wrong depth for"
-					    " LatexType Command.\n"));
+					  _("Error: Wrong depth for LatexType Command.\n"));
 
 			if (!environment_stack[depth].empty()) {
 				sgml::closeTag(ofs, depth, false, environment_stack[depth]);
@@ -2802,8 +2801,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		case LATEX_COMMAND:
 			if (depth != 0)
 				sgmlError(par, 0,
-					  _("Error : Wrong depth for "
-					    "LatexType Command.\n"));
+					  _("Error: Wrong depth for LatexType Command.\n"));
 
 			command_name = style->latexname();
 

@@ -256,7 +256,7 @@ void FormGraphics::build()
 	tooltips().init(extra_->check_subcaption, str);
 	str = _("Insert the optional subfigure caption.");
 	tooltips().init(extra_->input_subcaption, str);
-	str = _("Add any additional latex option, which is defined in the "
+	str = _("Add any additional LaTeX option, which is defined in the "
 		"graphicx-package and not mentioned in the gui's tabfolders.");
 	tooltips().init(extra_->input_special, str);
 
