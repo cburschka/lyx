@@ -232,6 +232,7 @@ void add_toc2(int menu, string const & extra_label,
 	      vector<Buffer::TocItem> const & toc_list,
 	      size_type from, size_type to, int depth)
 {
+	int shortcut_count = 0;
 	if (to - from <= max_number_of_items) {
 		for (size_type i = from; i < to; ++i) {
 			int const action = lyxaction.
@@ -243,7 +244,13 @@ void add_toc2(int menu, string const & extra_label,
 			label += "%x" + tostr(action + action_offset);
 			if (i == to - 1 && depth == 0)
 				label += extra_label;
-			fl_addtopup(menu, label.c_str());
+			if (toc_list[i].depth == depth
+			    && ++shortcut_count <= 9) {
+				label += "%h";
+				fl_addtopup(menu, label.c_str(),
+					    tostr(shortcut_count).c_str());
+			} else
+				fl_addtopup(menu, label.c_str());
 		}
 	} else {
 		size_type pos = from;
@@ -274,16 +281,30 @@ void add_toc2(int menu, string const & extra_label,
 			label = limit_string_length(label);
 			if (new_pos == to && depth == 0)
 				label += extra_label;
+			string shortcut;
+			if (toc_list[pos].depth == depth &&
+			    ++shortcut_count <= 9)
+				shortcut = tostr(shortcut_count);
 
 			if (new_pos == pos + 1) {
 				label += "%x" + tostr(action + action_offset);
-				fl_addtopup(menu, label.c_str());
+				if (!shortcut.empty()) {
+					label += "%h";
+					fl_addtopup(menu, label.c_str(),
+						    shortcut.c_str());
+				} else
+					fl_addtopup(menu, label.c_str());
 			} else {
 				int menu2 = get_new_submenu(smn, win);
 				add_toc2(menu2, extra_label, smn, win,
 					 toc_list, pos, new_pos, depth+1);
 				label += "%m";
-				fl_addtopup(menu, label.c_str(), menu2);
+				if (!shortcut.empty()) {
+					label += "%h";
+					fl_addtopup(menu, label.c_str(), menu2,
+						    shortcut.c_str());
+				} else
+					fl_addtopup(menu, label.c_str(), menu2);
 			}
 			pos = new_pos;
 		}
