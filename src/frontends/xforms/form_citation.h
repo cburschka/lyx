@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Tue Jul 11 11:01:26 2000.**/
+/** Header file generated with fdesign on Thu Jul 13 16:53:24 2000.**/
 
 #ifndef FD_form_citation_h_
 #define FD_form_citation_h_
@@ -10,11 +10,9 @@ extern  "C" void C_FormCitationCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
-typedef struct {
+struct FD_form_citation {
+
 	FL_FORM *form_citation;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *box;
 	FL_OBJECT *citeBrsr;
 	FL_OBJECT *bibBrsr;
@@ -28,7 +26,6 @@ typedef struct {
 	FL_OBJECT *textAftr;
 	FL_OBJECT *ok;
 	FL_OBJECT *cancel;
-} FD_form_citation;
-
+};
 
 #endif /* FD_form_citation_h_ */

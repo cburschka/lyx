@@ -7,7 +7,8 @@
 
 #include FORMS_H_LOCATION
 #include <stdlib.h>
-#include "FormTabular.h"
+#include "form_tabular.h"
+#include "FormTabular.h" 
 
 FD_form_tabular * FormTabular::build_tabular()
 {

@@ -33,10 +33,6 @@
 #include "insets/insettext.h"
 #include "frontends/Dialogs.h"
 
-extern void MenuLayoutTabular(bool, InsetTabular *);
-extern bool UpdateLayoutTabular(bool, InsetTabular *);
-extern void TabularOptClose();
-
 const int ADD_TO_HEIGHT = 2;
 const int ADD_TO_TABULAR_WIDTH = 2;
 
@@ -46,8 +42,6 @@ using std::max;
 using std::endl;
 
 #define cellstart(p) ((p % 2) == 0)
-
-#define USE_NEW_LAYOUT 1
 
 InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
 {
@@ -90,12 +84,8 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer * buf)
 InsetTabular::~InsetTabular()
 {
     delete tabular;
-#ifdef USE_NEW_LAYOUT
-    if (buffer->getUser())
-	buffer->getUser()->owner()->getDialogs()->hideTabular(this);
-    else if (dialogs_)
+    if (dialogs_)
 	dialogs_->hideTabular(this);
-#endif
 }
 
 
@@ -150,7 +140,7 @@ int InsetTabular::ascent(BufferView *, LyXFont const &) const
 
 int InsetTabular::descent(BufferView *, LyXFont const &) const
 {
-    return tabular->GetHeightOfTabular() - tabular->GetAscentOfRow(0);
+    return tabular->GetHeightOfTabular() - tabular->GetAscentOfRow(0) + 1;
 }
 
 
@@ -171,7 +161,6 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
     UpdatableInset::draw(bv,font,baseline,x,cleared);
     if (!cleared && ((need_update == INIT) || (need_update == FULL) ||
 		     (top_x != int(x)) || (top_baseline != baseline))) {
-#if 1
 	int h = ascent(bv, font) + descent(bv, font);
 	int tx = display()? 0:top_x;
 	int w =  tx? width(bv, font):pain.paperWidth();
@@ -186,18 +175,6 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 	pain.fillRectangle(tx, ty, w, h);
 	need_update = FULL;
 	cleared = true;
-#else
-	need_update = FULL;
-	resetPos(pain);
-	if (locked) { // repaint this way as the background was not cleared
-		if (the_locking_inset)
-			the_locking_inset->update(bv, font, true);
-		locked = false;
-		bv->updateInset(const_cast<InsetTabular*>(this), false);
-		locked = true;
-		return;
-	}
-#endif
     }
     top_x = int(x);
     top_baseline = baseline;
@@ -361,7 +338,6 @@ void InsetTabular::Edit(BufferView * bv, int x, int y, unsigned int button)
 
 void InsetTabular::InsetUnlock(BufferView * bv)
 {
-    TabularOptClose();
     if (the_locking_inset) {
 	the_locking_inset->InsetUnlock(bv);
 	the_locking_inset = 0;
@@ -434,12 +410,8 @@ bool InsetTabular::UnlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 	if ((inset->LyxCode() == TABULAR_CODE) &&
 	    !the_locking_inset->GetFirstLockingInsetOfType(TABULAR_CODE))
 	{
-#ifdef USE_NEW_LAYOUT
 	    dialogs_ = bv->owner()->getDialogs();
 	    dialogs_->updateTabular(const_cast<InsetTabular *>(this));
-#else
-	    UpdateLayoutTabular(true, const_cast<InsetTabular *>(this));
-#endif
 	    oldcell = actcell;
 	}
 	return true;
@@ -532,15 +504,11 @@ void InsetTabular::InsetButtonRelease(BufferView * bv,
 		return;
 	    }
 	}
-#ifdef USE_NEW_LAYOUT
 	dialogs_ = bv->owner()->getDialogs();
         dialogs_->showTabular(this);
 #if 0
 	else if (ocell != actcell)
 		bview->getOwner()->getPopups().updateTabular();
-#endif
-#else
-	MenuLayoutTabular(true, this);
 #endif
 	return;
     }
@@ -743,13 +711,8 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	break;
     case LFUN_LAYOUT_TABLE:
     {
-#ifdef USE_NEW_LAYOUT
 	dialogs_ = bv->owner()->getDialogs();
         dialogs_->showTabular(this);
-#else
-	int flag = (arg == "true");
-	MenuLayoutTabular(flag, this);
-#endif
     }
     break;
     default:
@@ -952,12 +915,8 @@ void InsetTabular::resetPos(BufferView * bv) const
     if ((!the_locking_inset ||
 	 !the_locking_inset->GetFirstLockingInsetOfType(TABULAR_CODE)) &&
 	(actcell != oldcell)) {
-#ifdef USE_NEW_LAYOUT
 	dialogs_ = bv->owner()->getDialogs();
         dialogs_->updateTabular(const_cast<InsetTabular *>(this));
-#else
-	UpdateLayoutTabular(true, const_cast<InsetTabular *>(this));
-#endif
 	oldcell = actcell;
     }
 }

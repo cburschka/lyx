@@ -7,7 +7,8 @@
 
 #include FORMS_H_LOCATION
 #include <stdlib.h>
-#include "FormCitation.h"
+#include "form_citation.h"
+#include "FormCitation.h" 
 
 FD_form_citation * FormCitation::build_citation()
 {

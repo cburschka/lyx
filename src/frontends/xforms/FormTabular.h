@@ -73,12 +73,11 @@ private:
     /**@name Dialog internal methods */
     //@{
     /// Apply from dialog
-    void apply();
     void apply_create();
-    /// Filter the inputs
-    void input();
     /// Build the dialog
     void build();
+    ///
+    void SetTabularOptions(FL_OBJECT *, long);
     ///
     FD_form_tabular * build_tabular();
     ///
@@ -121,7 +120,6 @@ private:
     //@}
     InsetTabular * inset_;
     int actCell_;
-    bool confirmed_;
 };
 
 #endif

@@ -1,5 +1,7 @@
 2000-07-13  Juergen Vigna  <jug@sad.it>
 
+	* src/text.C (GetVisibleRow): fixed clearing of rows with insets!
+
 	* lib/examples/Literate.lyx: small patch!
 
 	* src/insets/insetbib.C (Read): added this function because of wrong

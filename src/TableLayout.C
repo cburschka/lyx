@@ -23,11 +23,6 @@ extern FD_form_table_options * fd_form_table_options;
 extern FD_form_table_extra * fd_form_table_extra;
 extern BufferView * current_view;
 
-extern bool UpdateLayoutTabular(int);
-extern void TabularOptionsCB(FL_OBJECT * ob, long l);
-extern void SetPWidthTabularCB(FL_OBJECT * ob, long l);
-
-
 static int Confirmed = false;
 static int ActCell;
 
@@ -41,8 +36,6 @@ static int extra_col_cursor_x; // need no y's, one-line input fields
 static int extra_multicol_cursor_x;
 // Joacim
 
-#define IS_TABULAR  (current_view->the_locking_inset && \
-		     current_view->the_locking_inset->GetFirstLockingInsetOfType(Inset::TABULAR_CODE))
 
 bool UpdateLayoutTable(int flag)
 {
@@ -262,13 +255,8 @@ void MenuLayoutTable(int flag)
 }
 
 
-void TableOptionsCB(FL_OBJECT * ob, long l)
+void TableOptionsCB(FL_OBJECT * ob, long)
 {
-    if (IS_TABULAR) {
-	TabularOptionsCB(ob, l);
-	return;
-    }
-
     LyXTable * table = 0;
     int s, num = 0;
     string special, str;
@@ -469,13 +457,8 @@ void TableSpeCloseCB(FL_OBJECT *, long)
     return;
 }
 
-void SetPWidthCB(FL_OBJECT * ob, long l)
+void SetPWidthCB(FL_OBJECT * ob, long)
 {
-    if (IS_TABULAR) {
-	SetPWidthTabularCB(ob, l);
-	return;
-    }
-
     fl_set_object_label(fd_form_table_options->text_warning, "");
     Confirmed = false;
     if (ob == fd_form_table_options->input_column_width) {

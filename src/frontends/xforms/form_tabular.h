@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Wed Jul 12 15:19:16 2000.**/
+/** Header file generated with fdesign on Thu Jul 13 16:53:24 2000.**/
 
 #ifndef FD_form_tabular_h_
 #define FD_form_tabular_h_
@@ -20,23 +20,18 @@ extern  "C" void C_FormTabularCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
-typedef struct {
+struct FD_form_tabular {
+
 	FL_FORM *form_tabular;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *tabFolder;
 	FL_OBJECT *button_close;
 	FL_OBJECT *input_tabular_column;
 	FL_OBJECT *input_tabular_row;
 	FL_OBJECT *text_warning;
-} FD_form_tabular;
+};
+struct FD_form_tabular_options {
 
-typedef struct {
 	FL_FORM *form_tabular_options;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *button_append_column;
 	FL_OBJECT *button_delete_column;
 	FL_OBJECT *button_append_row;
@@ -45,13 +40,10 @@ typedef struct {
 	FL_OBJECT *button_unset_borders;
 	FL_OBJECT *radio_longtable;
 	FL_OBJECT *radio_rotate_tabular;
-} FD_form_tabular_options;
+};
+struct FD_form_column_options {
 
-typedef struct {
 	FL_FORM *form_column_options;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *radio_border_top;
 	FL_OBJECT *radio_border_bottom;
 	FL_OBJECT *radio_border_left;
@@ -64,13 +56,10 @@ typedef struct {
 	FL_OBJECT *radio_valign_center;
 	FL_OBJECT *radio_valign_bottom;
 	FL_OBJECT *input_special_alignment;
-} FD_form_column_options;
+};
+struct FD_form_cell_options {
 
-typedef struct {
 	FL_FORM *form_cell_options;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *radio_multicolumn;
 	FL_OBJECT *radio_linebreak_cell;
 	FL_OBJECT *radio_rotate_cell;
@@ -86,31 +75,24 @@ typedef struct {
 	FL_OBJECT *radio_valign_top;
 	FL_OBJECT *radio_valign_center;
 	FL_OBJECT *radio_valign_bottom;
-} FD_form_cell_options;
+};
+struct FD_form_longtable_options {
 
-typedef struct {
 	FL_FORM *form_longtable_options;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *radio_lt_firsthead;
 	FL_OBJECT *radio_lt_head;
 	FL_OBJECT *radio_lt_foot;
 	FL_OBJECT *radio_lt_lastfoot;
 	FL_OBJECT *radio_lt_newpage;
-} FD_form_longtable_options;
+};
+struct FD_form_create_tabular {
 
-typedef struct {
 	FL_FORM *form_create_tabular;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_cancel;
 	FL_OBJECT *slider_columns;
 	FL_OBJECT *slider_rows;
-} FD_form_create_tabular;
-
+};
 
 #endif /* FD_form_tabular_h_ */

@@ -40,19 +40,14 @@ c: $(OBJS)
 d: c $(COBJS)
 
 
-# -e 's/\([^ ]* \*\)\([^ ]*\)/\1 \2/'
-#
-# Make declarations like "void *cdata;" into "void * cdata;"
-#
+# Modify the header files using the instructions in fdfixh.sed
 e: c
 	for hfil in *.h ; do \
 		if [ -f "$$hfil.patch" ] ; then \
 			(echo "Patching $$hfil with $$hfil.patch" ; \
 			patch -s $$hfil < $$hfil.patch) \
 		fi; \
-		sed < $$hfil > $$hfil.tmp \
-			-e 's/\(extern \)\(.*\)/\1 "C" \2/' \
-			-e '/create_form_/d' ; \
+		sed -f fdfixh.sed < $$hfil > $$hfil.tmp; \
 		mv $$hfil.tmp $$hfil; \
 	done
 
@@ -72,6 +67,7 @@ updatesrc: d e
 
 .c.C:
 	./fdfix.sh $< $@
+	rm $<
 
 clean:
 	rm -f *.[hcC] *.bak

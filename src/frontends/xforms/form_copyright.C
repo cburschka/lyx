@@ -7,7 +7,8 @@
 
 #include FORMS_H_LOCATION
 #include <stdlib.h>
-#include "FormCopyright.h"
+#include "form_copyright.h"
+#include "FormCopyright.h" 
 
 FD_form_copyright * FormCopyright::build_copyright()
 {

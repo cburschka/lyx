@@ -7,7 +7,8 @@
 
 #include FORMS_H_LOCATION
 #include <stdlib.h>
-#include "FormPrint.h"
+#include "form_print.h"
+#include "FormPrint.h" 
 
 FD_form_print * FormPrint::build_print()
 {

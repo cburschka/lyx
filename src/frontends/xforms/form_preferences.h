@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Tue Jul 11 11:01:26 2000.**/
+/** Header file generated with fdesign on Thu Jul 13 16:53:24 2000.**/
 
 #ifndef FD_form_bind_h_
 #define FD_form_bind_h_
@@ -16,32 +16,24 @@ extern  "C" void C_FormPreferencesOKCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
-typedef struct {
-	FL_FORM *form_bind;
-	void *vdata;
-	char *cdata;
-	long  ldata;
-	FL_OBJECT *input_bind;
-} FD_form_bind;
+struct FD_form_bind {
 
-typedef struct {
+	FL_FORM *form_bind;
+	FL_OBJECT *input_bind;
+};
+struct FD_form_misc {
+
 	FL_FORM *form_misc;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *check_banner;
 	FL_OBJECT *check_auto_region_delete;
 	FL_OBJECT *check_exit_confirm;
 	FL_OBJECT *check_display_shortcuts;
 	FL_OBJECT *counter_autosave;
 	FL_OBJECT *counter_line_len;
-} FD_form_misc;
+};
+struct FD_form_screen_fonts {
 
-typedef struct {
 	FL_FORM *form_screen_fonts;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *input_roman;
 	FL_OBJECT *input_sans;
 	FL_OBJECT *input_typewriter;
@@ -58,23 +50,17 @@ typedef struct {
 	FL_OBJECT *input_normal;
 	FL_OBJECT *input_huge;
 	FL_OBJECT *input_huger;
-} FD_form_screen_fonts;
+};
+struct FD_form_interface_fonts {
 
-typedef struct {
 	FL_FORM *form_interface_fonts;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *input_popup_font;
 	FL_OBJECT *input_menu_font;
 	FL_OBJECT *input_encoding;
-} FD_form_interface_fonts;
+};
+struct FD_form_printer {
 
-typedef struct {
 	FL_FORM *form_printer;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *input_command;
 	FL_OBJECT *input_page_range;
 	FL_OBJECT *input_copies;
@@ -93,13 +79,10 @@ typedef struct {
 	FL_OBJECT *input_paper_size;
 	FL_OBJECT *input_name;
 	FL_OBJECT *check_adapt_output;
-} FD_form_printer;
+};
+struct FD_form_paths {
 
-typedef struct {
 	FL_FORM *form_paths;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *input_default_path;
 	FL_OBJECT *button_document_browse;
 	FL_OBJECT *counter_lastfiles;
@@ -114,18 +97,14 @@ typedef struct {
 	FL_OBJECT *check_make_backups;
 	FL_OBJECT *input_backup_path;
 	FL_OBJECT *button_backup_path_browse;
-} FD_form_paths;
+};
+struct FD_form_preferences {
 
-typedef struct {
 	FL_FORM *form_preferences;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_cancel;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *tabfolder_prefs;
-} FD_form_preferences;
-
+};
 
 #endif /* FD_form_bind_h_ */

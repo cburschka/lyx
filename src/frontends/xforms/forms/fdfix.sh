@@ -46,6 +46,12 @@ echo >> $2
 #  For all lines containing "fl_" and a string _not_ containging |,
 #  replace the string with _(string)
 #
+#  -e "/#include \"form_.*\"/a\\
+#  #include \"$classname.h\" "
+#
+#   For all lines containing "#include "form_*"", append a line
+#   containing the header file of the parent class
+#
 # -e '/shortcut/ s/".*[|].*"/scex(_(&))/'
 #
 #  For all lines containing "shortcut" and a string containing |, replace
@@ -90,7 +96,8 @@ export classname
 
 cat $1 | sed \
 -e 's/#include \"forms\.h\"/#include FORMS_H_LOCATION/' \
--e "s/#include \".orm_.*\"/#include \"$classname.h\"/" \
+-e "/#include \"form_.*\"/a\\
+#include \"$classname.h\" " \
 -e '/fl_/ s/".[^|]*"/_(&)/' \
 -e '/shortcut/ s/".*[|].*"/scex(_(&))/' \
 -e '/fl_add/ s/".*[|].*"/idex(_(&))/' \
@@ -100,13 +107,3 @@ cat $1 | sed \
 -e 's/\(fdui->form[^ ]*\)\(.*bgn_form.*\)/\1\2\
   \1->u_vdata = this;/' \
 -e 's/,\([^ ]\)/, \1/g' >> $2
-
-
-
-
-
-
-
-
-
-

@@ -3807,6 +3807,20 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				w = ww;
 			pain.fillRectangle(x_offset, y_offset, w, h);
 		}
+		h += inset->ascent(bview, font) + inset->descent(bview, font);
+		if ((row_ptr->height() - h) > 0) {
+			int w;
+			if (inset_owner)
+				w = inset_owner->width(bview, font);
+			else
+				w = ww;
+			pain.fillRectangle(x_offset,h, w, row_ptr->height()-h);
+		}
+		if (!inset_owner && !inset->display() && !inset->needFullRow())
+		{
+			int w = inset->width(bview, font) + int(x);
+			pain.fillRectangle(w, y_offset, ww - w, row_ptr->height());
+		}
 	}
 	
 	if (selection) {

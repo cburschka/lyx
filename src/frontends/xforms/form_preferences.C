@@ -7,7 +7,8 @@
 
 #include FORMS_H_LOCATION
 #include <stdlib.h>
-#include "FormPreferences.h"
+#include "form_preferences.h"
+#include "FormPreferences.h" 
 
 FD_form_bind * FormPreferences::build_bind()
 {

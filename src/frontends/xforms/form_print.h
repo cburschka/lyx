@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Tue Jul 11 11:01:26 2000.**/
+/** Header file generated with fdesign on Thu Jul 13 16:53:24 2000.**/
 
 #ifndef FD_form_print_h_
 #define FD_form_print_h_
@@ -11,11 +11,9 @@ extern  "C" void C_FormPrintCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
-typedef struct {
+struct FD_form_print {
+
 	FL_FORM *form_print;
-	void *vdata;
-	char *cdata;
-	long  ldata;
 	FL_OBJECT *input_printer;
 	FL_OBJECT *input_file;
 	FL_OBJECT *group_radio_printto;
@@ -35,7 +33,6 @@ typedef struct {
 	FL_OBJECT *input_count;
 	FL_OBJECT *radio_unsorted;
 	FL_OBJECT *input_to_page;
-} FD_form_print;
-
+};
 
 #endif /* FD_form_print_h_ */
