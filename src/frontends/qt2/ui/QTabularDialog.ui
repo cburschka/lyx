@@ -90,7 +90,7 @@
                         <class>QCheckBox</class>
                         <property stdset="1">
                             <name>name</name>
-                            <cstring>MulticolumnCB</cstring>
+                            <cstring>multicolumnCB</cstring>
                         </property>
                         <property stdset="1">
                             <name>text</name>
@@ -174,7 +174,7 @@
                                 <class>QPushButton</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>columnAppendPB</cstring>
+                                    <cstring>columnAddPB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -225,7 +225,7 @@
                                 <class>QPushButton</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>rowAppendPB</cstring>
+                                    <cstring>rowAddPB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -503,7 +503,7 @@
                                 <class>QFrame</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>Frame3_2</cstring>
+                                    <cstring>bordersF</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>sizePolicy</name>
@@ -775,7 +775,7 @@
                         <class>QGroupBox</class>
                         <property stdset="1">
                             <name>name</name>
-                            <cstring>GroupBox33_2</cstring>
+                            <cstring>allBordersGB</cstring>
                         </property>
                         <property stdset="1">
                             <name>title</name>
@@ -889,7 +889,7 @@
                         <class>QCheckBox</class>
                         <property stdset="1">
                             <name>name</name>
-                            <cstring>LongtabularCB</cstring>
+                            <cstring>longTabularCB</cstring>
                         </property>
                         <property stdset="1">
                             <name>text</name>
@@ -904,7 +904,7 @@
                         <class>QGroupBox</class>
                         <property stdset="1">
                             <name>name</name>
-                            <cstring>GroupBox6</cstring>
+                            <cstring>longtableGB</cstring>
                         </property>
                         <property stdset="1">
                             <name>enabled</name>
@@ -1015,7 +1015,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46</cstring>
+                                    <cstring>headerStatusCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1026,7 +1026,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_2</cstring>
+                                    <cstring>firstheaderStatusCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1037,7 +1037,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_3</cstring>
+                                    <cstring>footerStatusCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1048,7 +1048,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_4</cstring>
+                                    <cstring>lastfooterStatusCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1059,7 +1059,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_5</cstring>
+                                    <cstring>headerBorderAboveCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1070,7 +1070,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_5_2</cstring>
+                                    <cstring>firstheaderBorderAboveCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1081,7 +1081,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_5_3</cstring>
+                                    <cstring>footerBorderAboveCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1092,7 +1092,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_5_4</cstring>
+                                    <cstring>lastfooterBorderAboveCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1103,7 +1103,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_5_7</cstring>
+                                    <cstring>lastfooterBorderBelowCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1114,7 +1114,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_5_6</cstring>
+                                    <cstring>footerBorderBelowCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1125,7 +1125,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_5_6</cstring>
+                                    <cstring>firstheaderBorderBelowCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1136,7 +1136,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_5_5</cstring>
+                                    <cstring>headerBorderBelowCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1147,7 +1147,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_5_8</cstring>
+                                    <cstring>lastfooterNoContentsCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1158,7 +1158,7 @@
                                 <class>QCheckBox</class>
                                 <property stdset="1">
                                     <name>name</name>
-                                    <cstring>CheckBox46_5_9</cstring>
+                                    <cstring>firstheaderNoContentsCB</cstring>
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
@@ -1171,7 +1171,7 @@
                         <class>QCheckBox</class>
                         <property stdset="1">
                             <name>name</name>
-                            <cstring>LTnewpageCB</cstring>
+                            <cstring>newpageCB</cstring>
                         </property>
                         <property stdset="1">
                             <name>enabled</name>
@@ -1359,13 +1359,13 @@
 </images>
 <connections>
     <connection>
-        <sender>columnAppendPB</sender>
+        <sender>columnAddPB</sender>
         <signal>clicked()</signal>
         <receiver>QTabularDialogBase</receiver>
         <slot>columnAppend_clicked()</slot>
     </connection>
     <connection>
-        <sender>rowAppendPB</sender>
+        <sender>rowAddPB</sender>
         <signal>clicked()</signal>
         <receiver>QTabularDialogBase</receiver>
         <slot>rowAppend_clicked()</slot>
@@ -1401,15 +1401,15 @@
         <slot>rotateTabular_checked()</slot>
     </connection>
     <connection>
-        <sender>LongtabularCB</sender>
+        <sender>longTabularCB</sender>
         <signal>toggled(bool)</signal>
-        <receiver>GroupBox6</receiver>
+        <receiver>longtableGB</receiver>
         <slot>setEnabled(bool)</slot>
     </connection>
     <connection>
-        <sender>LongtabularCB</sender>
+        <sender>longTabularCB</sender>
         <signal>toggled(bool)</signal>
-        <receiver>LTnewpageCB</receiver>
+        <receiver>newpageCB</receiver>
         <slot>setEnabled(bool)</slot>
     </connection>
     <slot access="protected">columnDelete_clicked()</slot>
@@ -1425,7 +1425,7 @@
 </connections>
 <tabstops>
     <tabstop>TabWidget</tabstop>
-    <tabstop>columnAppendPB</tabstop>
+    <tabstop>columnAddPB</tabstop>
     <tabstop>closePB</tabstop>
 </tabstops>
 </UI>
