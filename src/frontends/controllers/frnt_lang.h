@@ -7,6 +7,8 @@
  * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
+ *
+ * Ease the use of internationalised language strings in the dialogs.
  */
 
 #ifndef FRNT_LANG_H
@@ -16,8 +18,6 @@
 #include <utility>
 #include <vector>
 
-/** Ease the use of internationalised language strings in the dialogs.
- */
 namespace frnt {
 
 ///

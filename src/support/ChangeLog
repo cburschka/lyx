@@ -1,3 +1,15 @@
+2003-10-08  Angus Leeming  <leeming@lyx.org>
+
+	* copied_ptr.h: get rid of the swap member function.
+
+2003-10-08  Angus Leeming  <leeming@lyx.org>
+
+	Fix doxygen warnings.
+
+	* debugstream.h: \file debugStream.h -> \file debugstream.h
+
+	* os.h: move comment so that doxygen is not confused.
+
 2003-10-07  Jürgen Spitzmüller <j.spitzmueller@gmx.de>
 
 	* Makefile.am: fix typo.

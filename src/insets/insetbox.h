@@ -74,7 +74,7 @@ public:
 	///
 	void setButtonLabel();
 	///
-	dispatch_result InsetBox::localDispatch(FuncRequest const &);
+	dispatch_result localDispatch(FuncRequest const &);
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	/// show the Box dialog

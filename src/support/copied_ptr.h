@@ -48,7 +48,6 @@ public:
 
 private:
 	T * ptr_;
-	void swap(copied_ptr &);
 };
 
 
@@ -76,7 +75,7 @@ copied_ptr<T, Traits> & copied_ptr<T, Traits>::operator=(copied_ptr const & othe
 {
 	if (&other != this) {
 		copied_ptr temp(other);
-		swap(temp);
+		std::swap(ptr_, temp.ptr_);
 	}
 	return *this;
 }
@@ -100,13 +99,6 @@ template <typename T, typename Traits>
 T * copied_ptr<T, Traits>::get() const
 {
 	return ptr_;
-}
-
-
-template <typename T, typename Traits>
-void copied_ptr<T, Traits>::swap(copied_ptr & other)
-{
-	std::swap( ptr_, other.ptr_ );
 }
 
 } // namespace support

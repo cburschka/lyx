@@ -49,7 +49,7 @@ CutStack cuts(10);
 } // namespace anon
 
 
-std::vector<string>
+std::vector<string> const
 CutAndPaste::availableSelections(Buffer const & buffer)
 {
 	vector<string> selList;

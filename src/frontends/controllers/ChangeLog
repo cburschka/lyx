@@ -1,3 +1,9 @@
+2003-10-08  Angus Leeming  <leeming@lyx.org>
+
+	Fix doxygen warnings.
+
+	* frnt_lang.h: move comment so that doxygen is not confused.
+
 2003-10-07  Angus Leeming  <leeming@lyx.org>
 
 	* ControlExternal.[Ch]: InsetExternal::Params -> InsetExternalParams.

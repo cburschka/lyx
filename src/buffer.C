@@ -481,7 +481,7 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 
 int Buffer::readParagraph(LyXLex & lex, string const & token,
 			  ParagraphList & pars, ParagraphList::iterator & pit,
-			  Paragraph::depth_type & depth)
+			  lyx::depth_type & depth)
 {
 	static Change current_change;
 	int unknown = 0;
@@ -1483,7 +1483,7 @@ void reset(PAR_TAG & p1, PAR_TAG const & p2)
 // Handle internal paragraph parsing -- layout already processed.
 void Buffer::simpleLinuxDocOnePar(ostream & os,
 	ParagraphList::iterator par,
-	Paragraph::depth_type /*depth*/) const
+	lyx::depth_type /*depth*/) const
 {
 	LyXLayout_ptr const & style = par->layout();
 
@@ -1953,7 +1953,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 void Buffer::simpleDocBookOnePar(ostream & os,
 				 ParagraphList::iterator par, int & desc_on,
-				 Paragraph::depth_type depth) const
+				 lyx::depth_type depth) const
 {
 	bool emph_flag = false;
 

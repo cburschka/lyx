@@ -126,7 +126,7 @@ public:
 private:
 	///
 	std::vector<Format const *> const
-	Converters::intToFormat(std::vector<int> const & input);
+	intToFormat(std::vector<int> const & input);
 	///
 	bool scanLog(Buffer const & buffer, std::string const & command,
 		     std::string const & filename);

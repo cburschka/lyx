@@ -30,8 +30,7 @@ class Paragraph;
 namespace CutAndPaste {
 
 ///
-std::vector<std::string>
-CutAndPaste::availableSelections(Buffer const & buffer);
+std::vector<std::string> const availableSelections(Buffer const & buffer);
 
 ///
 PitPosPair cutSelection(BufferParams const & params,

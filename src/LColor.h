@@ -194,11 +194,11 @@ public:
 	void operator=(LColor const &);
 
 	///
-	void LColor::fill(LColor::color c,
-			std::string const & lyxname,
-			std::string const & x11name = std::string(),
-			std::string const & latexname = std::string(),
-			std::string const & guiname = std::string());
+	void fill(LColor::color c,
+		  std::string const & lyxname,
+		  std::string const & x11name = std::string(),
+		  std::string const & latexname = std::string(),
+		  std::string const & guiname = std::string());
 
 	/// set the given LyX color to the color defined by the X11 name given
 	void setColor(LColor::color col, std::string const & x11name);

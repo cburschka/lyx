@@ -1,3 +1,14 @@
+2003-10-08  Angus Leeming  <leeming@lyx.org>
+
+	Fix doxygen warnings.
+
+	* Spacing.h: \file Spacing.h -> \file tex2lyx/Spacing.h
+	* gettext.C: \file gettext.C -> \file tex2lyx/gettext.C
+	* gettext.h: \file gettext.h -> \file tex2lyx/gettext.h
+	* lyxfont.C: \file lyxfont.C -> \file tex2lyx/lyxfont.C
+	* lyxfont.h: \file lyxfont.h -> \file tex2lyx/lyxfont.h
+	* text.C:    \file text.C    -> \file tex2lyx/text.C
+
 2003-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* tex2lyx.C: adjust for new debugstream.

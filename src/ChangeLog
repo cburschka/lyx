@@ -1,3 +1,28 @@
+2003-10-08  Angus Leeming  <leeming@lyx.org>
+
+	Fix doxygen warnings.
+
+	* CutAndPaste.[Ch] (availableSelections). Now returns a const vector.
+	Remove CutAndPaste:: prefix from header file declaration.
+
+	* LColor.h (fill): remove LColor:: prefix from declaration.
+
+	* buffer.C (readParagraph, simpleLinuxDocOnePar, simpleDocBookOnePar):
+	use lyx::depth_type rather than Paragraph::depth_type so that
+	header file and .C file match.
+
+	* converter.h (intToFormat): remove Converters:: prefix from declaration.
+
+	* Spacing.h: \file Spacing.h -> \file src/Spacing.h
+	* aspell.C: \file aspell_local.C -> \file aspell.C
+	* gettext.C: \file gettext.C -> \file src/gettext.C
+	* gettext.h: \file gettext.h -> \file src/gettext.h
+	* lyxfont.C: \file lyxfont.C -> \file src/lyxfont.C
+	* lyxfont.h: \file lyxfont.h -> \file src/lyxfont.h
+	* text.C: \file text.C -> \file src/text.C
+
+	* toc.C: move comment so that doxygen is not confused.
+
 2003-10-07  Angus Leeming  <leeming@lyx.org>
 
 	* factory.C (createInset): InsetExternal::Params -> InsetExternalParams

@@ -1,3 +1,12 @@
+2003-10-08  Angus Leeming  <leeming@lyx.org>
+
+	Fix doxygen warnings.
+
+	* Alert_pimpl.C: \file Alert_pimpl.C -> \file gtk/Alert_pimpl.C
+	* FileDialog.C: \file FileDialog.C -> \file gtk/FileDialog.C
+	* GView.C: \file GView.C -> \file gtk/GView.C
+	* GView.h: \file GView.h -> \file gtk/GView.h
+
 2003-09-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* GToolbar.C (add): Make it take a ToobarBackend::Item as arg,

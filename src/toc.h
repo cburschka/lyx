@@ -8,6 +8,8 @@
  * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
+ *
+ * Nice functions and objects to handle TOCs
  */
 
 #ifndef TOC_H
@@ -23,8 +25,6 @@ class LyXView;
 class Paragraph;
 class FuncRequest;
 
-/** Nice functions and objects to handle TOCs
- */
 namespace lyx {
 namespace toc {
 
