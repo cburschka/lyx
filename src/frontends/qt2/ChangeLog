@@ -1,3 +1,9 @@
+2003-11-24  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* QContentpane.[Ch] (trackScrollbar): add 
+	* QWorkarea.C (setScrollbarParams): do not track scrollbar signals
+	when manually setting the scrollbar position
+
 2003-11-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ui/QMathDialogBase.ui: remove mention of \frac in tooltip, since

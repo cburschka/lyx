@@ -68,7 +68,9 @@ void QWorkArea::setScrollbarParams(int h, int pos, int line_h)
 	int max = std::max(0, h - height());
 
 	scrollbar_->setRange(0, max);
+	content_->trackScrollbar(false);
 	scrollbar_->setValue(pos);
+	content_->trackScrollbar(true);
 	scrollbar_->setLineStep(line_h);
 	scrollbar_->setPageStep(height());
 }

@@ -76,7 +76,7 @@ mouse_button::state q_motion_state(Qt::ButtonState state)
 
 QContentPane::QContentPane(QWorkArea * parent)
 	: QWidget(parent, "content_pane", WRepaintNoErase),
-	wa_(parent)
+	  wa_(parent), track_scrollbar_(true)
 {
 	setFocusPolicy(QWidget::WheelFocus);
 	setFocus();
@@ -91,7 +91,8 @@ QContentPane::QContentPane(QWorkArea * parent)
 
 void QContentPane::scrollBarChanged(int val)
 {
-	wa_->scrollDocView(val);
+	if (track_scrollbar_)
+		wa_->scrollDocView(val);
 }
 
 
@@ -193,3 +194,10 @@ void QContentPane::paintEvent(QPaintEvent * e)
 	q.drawPixmap(QPoint(r.x(), r.y()),
 		*pixmap_.get(), r);
 }
+
+
+void QContentPane::trackScrollbar(bool track_on)
+{
+	track_scrollbar_ = track_on;
+}
+
