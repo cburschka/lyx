@@ -67,7 +67,9 @@ void BufferView::buffer(Buffer * b)
 
 void BufferView::resize()
 {
-	pimpl_->resizeCurrentBuffer();
+	if (pimpl_->buffer_) {
+		pimpl_->resizeCurrentBuffer();
+	}
 }
 
 
