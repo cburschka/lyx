@@ -8,6 +8,8 @@
 	exist (perhaps because the process was curtailed before the images
 	were loaded.)
 
+	* PreviewLoader.C (unique_filename): store the files in Buffer::tmppath.
+
 2002-07-05  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewImage.h:

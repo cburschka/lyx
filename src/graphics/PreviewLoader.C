@@ -74,21 +74,11 @@ private:
 };
 
 
-string const unique_filename()
+string const unique_filename(string const bufferpath)
 {
-	
-	static string dir;
-	if (dir.empty()) {
-		string const tmp = lyx::tempName();
-		lyx::unlink(tmp);
-		dir = OnlyPath(tmp);
-	}
-
 	static int theCounter = 0;
-	ostringstream os;
-	os << dir << theCounter++ << "lyxpreview";
-
-	return os.str().c_str();
+	string const filename = tostr(theCounter++) + "lyxpreview";
+	return AddName(bufferpath, filename);ostringstream os;
 }
 
 } // namespace anon
@@ -260,7 +250,7 @@ void PreviewLoader::Impl::setConverter()
 
 
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
-	: filename_base_(unique_filename()), parent_(p), buffer_(b)
+	: filename_base_(unique_filename(b.tmppath)), parent_(p), buffer_(b)
 {}
 
 
@@ -411,7 +401,7 @@ void PreviewLoader::Impl::startLoading()
 	// Reset the filename and clear pending_, so we're ready to
 	// start afresh.
 	pending_.clear();
-	filename_base_ = unique_filename();
+	filename_base_ = unique_filename(buffer_.tmppath);
 
 	// The conversion command.
 	ostringstream cs;
@@ -437,8 +427,7 @@ void PreviewLoader::Impl::startLoading()
 		return;
 	}
 	
-	// Store the generation process in a list of all generating processes
-	// (I anticipate that this will be small!)
+	// Store the generation process in a list of all such processes
 	inprogress.pid = call.pid();
 	in_progress_[command] = inprogress;
 }
