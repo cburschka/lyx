@@ -2574,7 +2574,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 					    par->layout);
 
 		// treat <toc> as a special case for compatibility with old code
-		if (par->getChar(0) == Paragraph::META_INSET) {
+		if (par->isInset(0)) {
 		        Inset * inset = par->getInset(0);
 			Inset::Code lyx_code = inset->lyxCode();
 			if (lyx_code == Inset::TOC_CODE){
@@ -3105,7 +3105,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 			// treat label as a special case for
 			// more WYSIWYM handling.
-			if (par->getChar(0) == Paragraph::META_INSET) {
+			if (par->isInset(0)) {
 			        Inset * inset = par->getInset(0);
 				Inset::Code lyx_code = inset->lyxCode();
 				if (lyx_code == Inset::LABEL_CODE){

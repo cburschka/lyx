@@ -911,8 +911,8 @@ LyXText::nextBreakPoint(BufferView * bview, Row const * row, int width) const
 				last_separator = i;
 				i = par->size() - 1; // this means break
 				//x = width;
-			} else if (par->getChar(i) == Paragraph::META_INSET &&
-				   par->getInset(i) && par->getInset(i)->display()){
+			} else if (par->isInset(i) && par->getInset(i) 
+				&& par->getInset(i)->display()) {
 				par->getInset(i)->display(false);
 			}
 			++i;
@@ -1256,7 +1256,7 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
 
 	// Check if any insets are larger
 	for (Paragraph::size_type pos = row_ptr->pos(); pos <= pos_end; ++pos) {
-		if (row_ptr->par()->getChar(pos) == Paragraph::META_INSET) {
+		if (row_ptr->par()->isInset(pos)) {
 			tmpfont = getFont(bview->buffer(), row_ptr->par(), pos);
 			tmpinset = row_ptr->par()->getInset(pos);
 			if (tmpinset) {
@@ -1862,7 +1862,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 	}
    
 	// the display inset stuff
-	if (cursor.row()->par()->getChar(cursor.row()->pos()) == Paragraph::META_INSET
+	if (cursor.row()->par()->isInset(cursor.row()->pos())
 	    && cursor.row()->par()->getInset(cursor.row()->pos())
 	    && (cursor.row()->par()->getInset(cursor.row()->pos())->display() ||
 		cursor.row()->par()->getInset(cursor.row()->pos())->needFullRow()))
@@ -2068,7 +2068,7 @@ void LyXText::prepareToPrint(BufferView * bview,
 		
 		// center displayed insets 
 		Inset * inset;
-		if (row->par()->getChar(row->pos()) == Paragraph::META_INSET
+		if (row->par()->isInset(row->pos())
 		    && (inset=row->par()->getInset(row->pos()))
 		    && (inset->display())) // || (inset->scroll() < 0)))
 		    align = (inset->lyxCode() == Inset::MATHMACRO_CODE)
@@ -2079,7 +2079,7 @@ void LyXText::prepareToPrint(BufferView * bview,
 			ns = numberOfSeparators(bview->buffer(), row);
 			if (ns && row->next() && row->next()->par() == row->par() &&
 			    !(row->next()->par()->isNewline(row->next()->pos() - 1))
-			    && !(row->next()->par()->getChar(row->next()->pos()) == Paragraph::META_INSET
+			    && !(row->next()->par()->isInset(row->next()->pos())
 			         && row->next()->par()->getInset(row->next()->pos())
 			         && row->next()->par()->getInset(row->next()->pos())->display())
 				)
@@ -2732,7 +2732,7 @@ void LyXText::backspace(BufferView * bview)
 		                false, cursor.boundary());
 		
 		// some insets are undeletable here
-		if (cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET) {
+		if (cursor.par()->isInset(cursor.pos())) {
 			if (!cursor.par()->getInset(cursor.pos())->deletable())
 				return; 
 			// force complete redo when erasing display insets
@@ -2933,7 +2933,7 @@ bool LyXText::paintRowBackground(DrawRowParams & p)
 	Paragraph::size_type const last = rowLastPrintable(p.row);
 
 	if (!p.bv->screen()->forceClear() && last == p.row->pos()
-		&& isMetaInset(p.row->par(), p.row->pos())) {
+		&& p.row->par()->isInset(p.row->pos())) {
 		inset = p.row->par()->getInset(p.row->pos());
 		if (inset) {
 			clear_area = inset->doClearArea();
@@ -3690,7 +3690,7 @@ LyXText::getColumnNearX(BufferView * bview, Row * row, int & x,
 	x = int(tmpx);
 	return c;
 }
-
+ 
 
 // returns pointer to a specified row
 Row * LyXText::getRow(Paragraph * par,

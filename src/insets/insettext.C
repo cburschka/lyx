@@ -940,7 +940,7 @@ void InsetText::insetButtonRelease(BufferView * bv, int x, int y, int button)
 						      x - inset_x, y - inset_y,
 						      button);
 	} else {
-		if (isMetaInset(cpar(bv), cpos(bv))) {
+		if (cpar(bv)->isInset(cpos(bv))) {
 			inset = static_cast<UpdatableInset*>(cpar(bv)->getInset(cpos(bv)));
 			if (isHighlyEditableInset(inset)) {
 				inset->insetButtonRelease(bv,
@@ -1744,7 +1744,7 @@ bool InsetText::insertInset(BufferView * bv, Inset * inset)
 	}
 	lt->insertInset(bv, inset);
 #if 0
-	if ((!isMetaInset(cpar(bv), cpos(bv))) ||
+	if ((!cpar(bv)->isInset(cpos(bv))) ||
 		(cpar(bv)->getInset(cpos(bv)) != inset))
 		lt->cursorLeft(bv);
 #endif
@@ -1844,7 +1844,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 
 bool InsetText::checkAndActivateInset(BufferView * bv, bool behind)
 {
-	if (isMetaInset(cpar(bv), cpos(bv))) {
+	if (cpar(bv)->isInset(cpos(bv))) {
 		unsigned int x;
 		unsigned int y;
 		Inset * inset =

@@ -1,3 +1,12 @@
+2001-11-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView2.C:
+	* BufferView_pimpl.C:
+	* buffer.C:
+	* paragraph.h:
+	* text.C: 
+	* text2.C: use par->isInset()
+	 
 2001-11-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* paragraph_pimpl.h:

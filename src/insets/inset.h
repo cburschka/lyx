@@ -539,11 +539,12 @@ inline bool isEditableInset(Inset * i)
 }
  
 /**
- * returns true if poiinter argument is valid
+ * returns true if pointer argument is valid
  * and points to a highly editable inset
  */
 inline bool isHighlyEditableInset(Inset * i)
 {
 	return i && i->editable() == Inset::HIGHLY_EDITABLE;
 }
+
 #endif

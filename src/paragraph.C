@@ -1781,7 +1781,7 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 		}
 	}
 
-	if (style.isEnvironment()){
+	if (style.isEnvironment()) {
 		if (style.latextype == LATEX_LIST_ENVIRONMENT) {
 			os << "\\begin{" << style.latexname() << "}{"
 			   << params().labelWidthString() << "}\n";

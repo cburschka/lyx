@@ -1,3 +1,9 @@
+2001-11-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* inset.h: fix comment
+ 
+	* insettext.C: use par->isInset()
+
 2001-11-22  Allan Rae  <rae@lyx.org>
 
 	* insetcollapsable.h: 

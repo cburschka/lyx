@@ -246,7 +246,7 @@ void LyXText::setCharFont(BufferView * bv, Paragraph * par,
 	LyXFont font = getFont(buf, par, pos);
 	font.update(fnt, buf->params.language, toggleall);
 	// Let the insets convert their font
-	if (isMetaInset(par, pos)) {
+	if (par->isInset(pos)) {
 		Inset * inset = par->getInset(pos);
 		if (isEditableInset(inset)) {
 			UpdatableInset * uinset =
@@ -443,7 +443,7 @@ Inset * LyXText::getInset() const
 	if (cursor.pos() == 0 && cursor.par()->bibkey) {
 		inset =	cursor.par()->bibkey;
 	} else if (cursor.pos() < cursor.par()->size() 
-		   && isMetaInset(cursor.par(), cursor.pos())) {
+		   && cursor.par()->isInset(cursor.pos())) {
 		inset = cursor.par()->getInset(cursor.pos());
 	}
 	return inset;
@@ -1959,7 +1959,7 @@ bool LyXText::gotoNextInset(BufferView * bview,
 		}
       
 	} while (res.par() && 
-		 !(isMetaInset(res.par(), res.pos())
+		 !(res.par()->isInset(res.pos())
 		   && (inset = res.par()->getInset(res.pos())) != 0
 		   && find(codes.begin(), codes.end(), inset->lyxCode())
 		   != codes.end()

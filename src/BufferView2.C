@@ -417,8 +417,7 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 		Inset * locking_inset = theLockingInset()->getLockingInset();
 
 		if ((cursor.pos() - 1 >= 0) &&
-		    (cursor.par()->getChar(cursor.pos() - 1) ==
-		     Paragraph::META_INSET) &&
+		    cursor.par()->isInset(cursor.pos() - 1) &&
 		    (cursor.par()->getInset(cursor.pos() - 1) ==
 		     locking_inset))
 			text->setCursor(this, cursor,

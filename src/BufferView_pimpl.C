@@ -855,7 +855,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 
 
 	if (cursor.pos() < cursor.par()->size()
-	    && isMetaInset(cursor.par(), cursor.pos())
+	    && cursor.par()->isInset(cursor.pos())
 	    && isEditableInset(cursor.par()->getInset(cursor.pos()))) {
 
 		// Check whether the inset really was hit
@@ -880,7 +880,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 	}
 
 	if ((cursor.pos() - 1 >= 0) &&
-	    isMetaInset(cursor.par(), cursor.pos() - 1) &&
+	    cursor.par()->isInset(cursor.pos() - 1) &&
 	    isEditableInset(cursor.par()->getInset(cursor.pos() - 1))) {
 		Inset * tmpinset = cursor.par()->getInset(cursor.pos()-1);
 		LyXFont font = text->getFont(buffer_, cursor.par(),
@@ -1833,7 +1833,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (is_rtl)
 			lt->cursorLeft(bv_, false);
 		if (lt->cursor.pos() < lt->cursor.par()->size()
-		    && isMetaInset(lt->cursor.par(), lt->cursor.pos())
+		    && lt->cursor.par()->isInset(lt->cursor.pos())
 		    && isHighlyEditableInset(lt->cursor.par()->getInset(lt->cursor.pos()))) {
 			Inset * tmpinset = lt->cursor.par()->getInset(lt->cursor.pos());
 			owner_->getLyXFunc()->setMessage(tmpinset->editMessage());
@@ -1865,7 +1865,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			lt->cursorLeft(bv_, false);
 		if ((is_rtl || cur != lt->cursor) && // only if really moved!
 		    lt->cursor.pos() < lt->cursor.par()->size() &&
-		    isMetaInset(lt->cursor.par(), lt->cursor.pos()) &&
+		    lt->cursor.par()->isInset(lt->cursor.pos()) &&
 		    isHighlyEditableInset(lt->cursor.par()->getInset(lt->cursor.pos()))) {
 			Inset * tmpinset = lt->cursor.par()->getInset(lt->cursor.pos());
 			owner_->getLyXFunc()->setMessage(tmpinset->editMessage());
@@ -3410,7 +3410,7 @@ void BufferView::Pimpl::gotoInset(vector<Inset::Code> const & codes,
  
 	string contents;
 	if (same_content &&
-	    isMetaInset(cursor.par(), cursor.pos())) {
+	    cursor.par()->isInset(cursor.pos())) {
 		Inset const * inset = cursor.par()->getInset(cursor.pos());
 		if (find(codes.begin(), codes.end(), inset->lyxCode())
 		    != codes.end())
