@@ -17,12 +17,15 @@
 #       for use of BeginTitle/EndTitle
 # modified 2003-03-11 JMarc for use of TitleLatexType/TitleLatexName
 # modified 2003-04-10 Rod Pinna - added proof env. sent to me by Stacy Prowell
+# modified 2003-07-23 Rod Pinna - changes MaxCounter to Section, 
+#       rather than subsection. The Elsevier doc file allows for 
+#       numbered sections, as does the class file.
 
 # General textclass parameters
 Columns         1
 Sides           2
 PageStyle       headings
-MaxCounter      Counter_Subsection
+MaxCounter      Counter_Section
 
 
 ClassOptions

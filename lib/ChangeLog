@@ -1,8 +1,14 @@
-2003-07-29	Martin Vermeer <martin.vermeer@hut.fi>
+2003-07-23  Rod Pinna  <rpinna@civil.uwa.edu.au>
+
+	* layouts/elsart.layout: change MaxCounter to Section, rather than
+	subsection. The Elsevier doc file allows for numbered sections, as
+	does the class file.
+
+2003-07-29  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* ui/stdmenus.ui: fixed Note submenu issues
 
-2003-07-29	Martin Vermeer <martin.vermeer@hut.fi>
+2003-07-29  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* ui/stdmenus.ui: submenu for Note/Comment/Greyedout
 
