@@ -1,3 +1,7 @@
+2001-10-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* vspace.C (asLatexString): add a missing break
+
 2001-10-15  Herbert Voss  <voss@perce.de>
 
 	* vspace.C (asLatexString): fix bug in output of string for l% and p%.
@@ -154,7 +158,8 @@
 	of a cursor (row, etc.) after a character has been deleted
 	(deleteEmptyParagraphMechanism): call the method above on _all_
 	cursors held by the LyXText when a double space has been
-	detected/deleted. 
+	detected/deleted.
+ 
 2001-09-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView_pimpl.C (buffer): call WorkArea::show to pop-up the
