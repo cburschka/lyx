@@ -10,7 +10,8 @@ BUILTSOURCES =	formcopyrightdialog_moc.C \
 		formurldialog_moc.C \
 		formindexdialog_moc.C \
 		formcitationdialog_moc.C \
-		formtocdialog_moc.C
+		formtocdialog_moc.C \
+		formrefdialog_moc.C
 
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 
@@ -24,8 +25,6 @@ libkde_la_OBJADD = \
         ../xforms/form_preferences.lo \
 	../xforms/FormPrint.lo \
 	../xforms/form_print.lo \
-        ../xforms/FormRef.lo \
-        ../xforms/form_ref.lo \
         ../xforms/FormTabular.lo \
         ../xforms/form_tabular.lo \
         ../xforms/input_validators.lo \
@@ -61,6 +60,10 @@ libkde_la_SOURCES = \
 	FormToc.h \
 	formtocdialog.C \
 	formtocdialog.h \
+	FormRef.C \
+	FormRef.h \
+	formrefdialog.C \
+	formrefdialog.h \
 	$(BUILTSOURCES)
 
 # These still have to be added. Sooner or later. ARRae-20000129
@@ -106,3 +109,7 @@ formcitationdialog_moc.C: formcitationdialog.h
 formtocdialog.C: formtocdialog_moc.C
 formtocdialog_moc.C: formtocdialog.h
 	$(MOC) formtocdialog.h -o formtocdialog_moc.C
+
+formrefdialog.C: formrefdialog_moc.C
+formrefdialog_moc.C: formrefdialog.h
+	$(MOC) formrefdialog.h -o formrefdialog_moc.C

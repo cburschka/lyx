@@ -10,6 +10,15 @@
 
 2000-09-13  John Levon  <moz@compsoc.man.ac.uk>
 
+	* src/frontends/kde/Makefile.am
+	* src/frontends/kde/FormRef.C
+	* src/frontends/kde/FormRef.h
+	* src/frontends/kde/formrefdialog.C
+	* src/frontends/kde/formrefdialog.h: implement
+	cross-ref dialog
+
+2000-09-13  John Levon  <moz@compsoc.man.ac.uk>
+
         * src/frontends/kde/formtocdialog.C
         * src/frontends/kde/formtocdialog.h
         * src/frontends/kde/FormToc.C
