@@ -1060,6 +1060,7 @@ void FormDocument::UpdateClassParams(BufferParams const & params)
 	fl_set_choice_text(class_->choice_pagestyle,
 			   params.pagestyle.c_str());
 
+	fl_set_input(class_->input_extra, tclass.options().c_str());
 }
 
 void FormDocument::class_update(BufferParams const & params)
