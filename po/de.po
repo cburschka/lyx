@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
 "POT-Creation-Date: 2001-01-31 17:06+0100\n"
-"PO-Revision-Date: 2001-01-07 12:05+01:00\n"
+"PO-Revision-Date: 2001-02-09 12:40+01:00\n"
 "Last-Translator: Peter Sütterlin <P.Suetterlin@astro.uu.nl>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -78,11 +78,11 @@ msgstr ""
 
 #: src/buffer.C:1121
 msgid "LyX file format is newer that what"
-msgstr ""
+msgstr "Das LyX Format der Datei ist neuer als von dieser"
 
 #: src/buffer.C:1122
 msgid "is supported in this LyX version. Expect some problems."
-msgstr ""
+msgstr "Version unterstützt wird.  Rechnen sie mit Problemen"
 
 #: src/buffer.C:1146
 msgid "Not a LyX file!"
@@ -683,7 +683,7 @@ msgstr "Layout|L"
 
 #: src/ext_l10n.h:8
 msgid "View|V"
-msgstr "Anzeigen|A"
+msgstr "Anzeigen|g"
 
 #: src/ext_l10n.h:9
 msgid "Navigate|N"
@@ -731,7 +731,7 @@ msgstr "Wiederherstellen|W"
 
 #: src/ext_l10n.h:24
 msgid "Version Control|V"
-msgstr "Versionskontrolle|V"
+msgstr "Versionskontrolle|k"
 
 #: src/ext_l10n.h:26
 msgid "Export|E"
@@ -771,7 +771,7 @@ msgstr "Entwicklung anzeigen|E"
 
 #: src/ext_l10n.h:36 src/ext_l10n.h:51
 msgid "Preferences...|P"
-msgstr "Einstellungen|E"
+msgstr "Einstellungen|i"
 
 #: src/ext_l10n.h:37 src/ext_l10n.h:52
 msgid "Reconfigure|R"
@@ -863,7 +863,7 @@ msgstr "Alle Fußnoten/Randnotizen schließen|R"
 
 #: src/ext_l10n.h:61
 msgid "Multicolumn|M"
-msgstr "Mehrspaltig|#p"
+msgstr "Mehrspaltig|p"
 
 #: src/ext_l10n.h:62
 msgid "Line Top|T"
@@ -895,7 +895,7 @@ msgstr "Rechtsbündig|g"
 
 #: src/ext_l10n.h:69
 msgid "V.Align Top|o"
-msgstr "V.Ausr. oben|o"
+msgstr "V.Ausr. oben|V"
 
 #: src/ext_l10n.h:70
 msgid "V.Align Center|n"
@@ -923,11 +923,11 @@ msgstr "Spalte löschen|c"
 
 #: src/ext_l10n.h:76
 msgid "Math Formula|h"
-msgstr "Formel|F"
+msgstr "Formel|o"
 
 #: src/ext_l10n.h:77
 msgid "Display Formula|D"
-msgstr "Abgesetzte Formel|A"
+msgstr "Abgesetzte Formel|b"
 
 #: src/ext_l10n.h:78
 msgid "Special Character|S"
@@ -983,7 +983,7 @@ msgstr "Tabular...|T"
 
 #: src/ext_l10n.h:91
 msgid "Floats|a"
-msgstr "Floats|a"
+msgstr "Floats|l"
 
 #: src/ext_l10n.h:92
 msgid "Include File|e"
@@ -1023,7 +1023,7 @@ msgstr "Zeilenumbruch|Z"
 
 #: src/ext_l10n.h:101
 msgid "Ellipsis|i"
-msgstr "Fortsetzungspunkte|#F"
+msgstr "Fortsetzungspunkte|F"
 
 #: src/ext_l10n.h:102
 msgid "End of Sentence|E"
@@ -2711,7 +2711,7 @@ msgstr "Französisch"
 
 #: src/ext_l10n.h:522
 msgid "French (GUTenberg)"
-msgstr ""
+msgstr "Französisch (GUTenberg)"
 
 #: src/ext_l10n.h:523
 msgid "Galician"
@@ -2798,7 +2798,6 @@ msgid "Turkish"
 msgstr "Türkisch"
 
 #: src/ext_l10n.h:544
-#, fuzzy
 msgid "Ukrainian"
 msgstr "Ukrainisch"
 
@@ -7572,17 +7571,14 @@ msgid "System directory set to: "
 msgstr "Nutzerverzeichnis: "
 
 #: src/lyx_main.C:321
-#, fuzzy
 msgid "LyX Warning! Couldn't determine system directory. "
-msgstr "Achtung: Das Systemverzeichnis konnte nicht gefunden werden."
+msgstr "Warnung! Das Systemverzeichnis konnte nicht bestimmt werden."
 
 #: src/lyx_main.C:322
-#, fuzzy
 msgid "Try the '-sysdir' command line parameter or "
 msgstr "Verwenden Sie die Kommandozeilenoption `-sysdir' oder setzen"
 
 #: src/lyx_main.C:323
-#, fuzzy
 msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
 msgstr "Sie die Umgebungsvariable LYX_DIR_11x auf das LyX Systemverzeichnis,"
 
