@@ -1,3 +1,7 @@
+2003-11-03  Alfredo Braunstein  <abraunst@libero.it>
+
+	* undo.C (performUndoOrRedo): fix cursor positioning with lockPath
+
 2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text3.C (dispatch): adjust for new DisptchResult semantics.

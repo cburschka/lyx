@@ -184,9 +184,11 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 
 	// set cursor
 	lyxerr <<   "undo, text: " << undo.text
-		<< " inset: " << pit.inset()
-		<< " index: " << undo.index
-		<< std::endl;
+	       << " inset: " << pit.inset()
+	       << " index: " << undo.index
+	       << " par: " << undo.cursor_par
+	       << " pos: " << undo.cursor_pos
+	       << std::endl;
 
 	// set cursor again to force the position to be the right one
 	text->cursor.par(undo.cursor_par);
@@ -200,12 +202,8 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 	// rebreak the entire lyxtext
 	bv->text->fullRebreak();
 
-	InsetOld * inset = pit.inset();
-	if (inset) {
-		// magic needed to cope with inset locking
-		bv->lockInset(dynamic_cast<UpdatableInset *>(inset));
-	}
-
+	pit.lockPath(bv);
+	
 	finishUndo();
 	return true;
 }
