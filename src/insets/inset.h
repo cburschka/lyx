@@ -23,7 +23,7 @@
 class Buffer;
 class LColor_color;
 class FuncRequest;
-class LatexRunParams;
+class OutputParams;
 class LyXCursor;
 class LyXFont;
 class LyXLex;
@@ -181,16 +181,16 @@ public:
 	virtual void read(Buffer const &, LyXLex & lex) = 0;
 	/// returns the number of rows (\n's) of generated tex code.
 	virtual int latex(Buffer const &, std::ostream &,
-			  LatexRunParams const &) const = 0;
+			  OutputParams const &) const = 0;
 	///
-	virtual int ascii(Buffer const &, std::ostream &,
-			  LatexRunParams const &) const = 0;
+	virtual int plaintext(Buffer const &, std::ostream &,
+			  OutputParams const &) const = 0;
 	///
 	virtual int linuxdoc(Buffer const &, std::ostream &,
-			     LatexRunParams const &) const = 0;
+			     OutputParams const &) const = 0;
 	///
 	virtual int docbook(Buffer const &, std::ostream &,
-			    LatexRunParams const &) const = 0;
+			    OutputParams const &) const = 0;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual InsetOld::Code lyxCode() const { return NO_CODE; }

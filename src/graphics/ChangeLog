@@ -1,3 +1,8 @@
+2003-11-05  José Matos  <jamatos@lyx.org>
+
+	* PreviewLoader.C (dumpPreamble): rename ascii to plaintext
+	and LatexRunParams to OutputParams.
+
 2003-10-22  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewImage.C (statusChanged): always pass on the signal, not just

@@ -36,10 +36,10 @@ public:
 
 	/// Standard LaTeX output -- short-circuited
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 	/// Outputting the optional parameter of a LaTeX command
 	int latexOptional(Buffer const &, std::ostream &,
-			  LatexRunParams const &) const;
+			  OutputParams const &) const;
 	/// Write out tothe .lyx file
 	void write(Buffer const & buf, std::ostream & os) const;
 };

@@ -123,14 +123,14 @@ void RefInset::validate(LaTeXFeatures & features) const
 }
 
 
-int RefInset::ascii(std::ostream & os, LatexRunParams const &) const
+int RefInset::plaintext(std::ostream & os, OutputParams const &) const
 {
 	os << '[' << asString(cell(0)) << ']';
 	return 0;
 }
 
 
-int RefInset::linuxdoc(std::ostream & os, LatexRunParams const &) const
+int RefInset::linuxdoc(std::ostream & os, OutputParams const &) const
 {
 	os << "<ref id=\"" << asString(cell(0))
 	   << "\" name=\"" << asString(cell(1)) << "\" >";
@@ -138,7 +138,7 @@ int RefInset::linuxdoc(std::ostream & os, LatexRunParams const &) const
 }
 
 
-int RefInset::docbook(std::ostream & os, LatexRunParams const &) const
+int RefInset::docbook(std::ostream & os, OutputParams const &) const
 {
 	if (cell(1).empty()) {
 		os << "<xref linkend=\"" << asString(cell(0)) << "\">";

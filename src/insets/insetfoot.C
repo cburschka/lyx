@@ -14,10 +14,10 @@
 #include "insetfoot.h"
 
 #include "gettext.h"
-#include "latexrunparams.h"
 // the following are needed just to get the layout of the enclosing
 // paragraph. This seems a bit too much to me (JMarc)
 #include "lyxlayout.h"
+#include "outputparams.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 
@@ -58,9 +58,9 @@ string const InsetFoot::editMessage() const
 
 
 int InsetFoot::latex(Buffer const & buf, ostream & os,
-		     LatexRunParams const & runparams_in) const
+		     OutputParams const & runparams_in) const
 {
-	LatexRunParams runparams = runparams_in;
+	OutputParams runparams = runparams_in;
 	runparams.moving_arg |= ownerPar(buf, this).layout()->intitle;
 
 	os << "%\n\\footnote{";
@@ -73,7 +73,7 @@ int InsetFoot::latex(Buffer const & buf, ostream & os,
 
 
 int InsetFoot::docbook(Buffer const & buf, ostream & os,
-		       LatexRunParams const & runparams) const
+		       OutputParams const & runparams) const
 {
 	os << "<footnote>";
 	int const i = inset.docbook(buf, os, runparams);

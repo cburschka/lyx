@@ -113,7 +113,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 
 
 int InsetCaption::latex(Buffer const & buf, ostream & os,
-			LatexRunParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	// This is a bit too simplistic to take advantage of
 	// caption options we must add more later. (Lgb)
@@ -127,8 +127,8 @@ int InsetCaption::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetCaption::ascii(Buffer const & /*buf*/,ostream & /*os*/,
-			LatexRunParams const & /*runparams*/) const
+int InsetCaption::plaintext(Buffer const & /*buf*/,ostream & /*os*/,
+			OutputParams const & /*runparams*/) const
 {
 	// FIX: Implement me!
 	return 0;
@@ -136,7 +136,7 @@ int InsetCaption::ascii(Buffer const & /*buf*/,ostream & /*os*/,
 
 
 int InsetCaption::docbook(Buffer const & buf, ostream & os,
-			  LatexRunParams const & runparams) const
+			  OutputParams const & runparams) const
 {
 	int ret;
 	os << "<title>";

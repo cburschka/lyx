@@ -20,10 +20,10 @@
 #include "encoding.h"
 #include "language.h"
 #include "LaTeXFeatures.h"
-#include "latexrunparams.h"
 #include "LColor.h"
 #include "lyxlength.h"
 #include "lyxrc.h"
+#include "outputparams.h"
 #include "texrow.h"
 
 
@@ -454,7 +454,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 					     BufferParams const & bparams,
 					     ostream & os,
 					     TexRow & texrow,
-					     LatexRunParams const & runparams,
+					     OutputParams const & runparams,
 					     LyXFont & font,
 					     LyXFont & running_font,
 					     LyXFont & basefont,
@@ -472,7 +472,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 				os << c;
 		} else {
 			InsetOld const * inset = owner_->getInset(i);
-			inset->ascii(buf, os, runparams);
+			inset->plaintext(buf, os, runparams);
 		}
 		return;
 	}

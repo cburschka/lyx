@@ -121,16 +121,16 @@ public:
 
 	/// \returns the number of rows (\n's) of generated code.
 	virtual int latex(Buffer const &, std::ostream &,
-			  LatexRunParams const &) const;
+			  OutputParams const &) const;
 	///
-	virtual int ascii(Buffer const &, std::ostream &,
-			  LatexRunParams const &) const;
+	virtual int plaintext(Buffer const &, std::ostream &,
+			  OutputParams const &) const;
 	///
 	virtual int linuxdoc(Buffer const &, std::ostream &,
-			     LatexRunParams const &) const;
+			     OutputParams const &) const;
 	///
 	virtual int docbook(Buffer const &, std::ostream &,
-			    LatexRunParams const &) const;
+			    OutputParams const &) const;
 
 	/// Update needed features for this inset.
 	virtual void validate(LaTeXFeatures & features) const;

@@ -20,9 +20,9 @@
 
 #include "BufferView.h"
 #include "debug.h"
-#include "latexrunparams.h"
 #include "LColor.h"
 #include "lyx_main.h"
+#include "outputparams.h"
 
 #include "frontends/Painter.h"
 
@@ -100,7 +100,7 @@ void InsetFormula::write(Buffer const &, ostream & os) const
 
 
 int InsetFormula::latex(Buffer const &, ostream & os,
-			LatexRunParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	WriteStream wi(os, runparams.moving_arg, true);
 	par_->write(wi);
@@ -108,8 +108,8 @@ int InsetFormula::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetFormula::ascii(Buffer const &, ostream & os,
-			LatexRunParams const &) const
+int InsetFormula::plaintext(Buffer const &, ostream & os,
+			OutputParams const &) const
 {
 	if (0 && display()) {
 		Dimension dim;
@@ -130,20 +130,20 @@ int InsetFormula::ascii(Buffer const &, ostream & os,
 
 
 int InsetFormula::linuxdoc(Buffer const & buf, ostream & os,
-			   LatexRunParams const & runparams) const
+			   OutputParams const & runparams) const
 {
 	return docbook(buf, os, runparams);
 }
 
 
 int InsetFormula::docbook(Buffer const & buf, ostream & os,
-			  LatexRunParams const & runparams) const
+			  OutputParams const & runparams) const
 {
 	MathMLStream ms(os);
 	ms << MTag("equation");
 	ms <<   MTag("alt");
 	ms <<    "<[CDATA[";
-	int res = ascii(buf, ms.os(), runparams);
+	int res = plaintext(buf, ms.os(), runparams);
 	ms <<    "]]>";
 	ms <<   ETag("alt");
 	ms <<   MTag("math");

@@ -35,13 +35,13 @@ public:
 	virtual void draw(PainterInfo & pi, int x, int y) const;
 	///
 	virtual int latex(Buffer const & buf, std::ostream & os,
-			  LatexRunParams const &) const;
+			  OutputParams const &) const;
 	///
-	int ascii(Buffer const & buf, std::ostream & os,
-		  LatexRunParams const & runparams) const;
+	int plaintext(Buffer const & buf, std::ostream & os,
+		  OutputParams const & runparams) const;
 	///
 	int docbook(Buffer const & buf, std::ostream & os,
-		    LatexRunParams const & runparams) const;
+		    OutputParams const & runparams) const;
 };
 
 

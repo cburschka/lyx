@@ -73,15 +73,15 @@ void InsetPagebreak::draw(PainterInfo & pi, int x, int y) const
 
 
 int InsetPagebreak::latex(Buffer const &, ostream & os,
-			  LatexRunParams const &) const
+			  OutputParams const &) const
 {
 	os << "\\newpage{}";
 	return 0;
 }
 
 
-int InsetPagebreak::ascii(Buffer const &, ostream & os,
-			  LatexRunParams const &) const
+int InsetPagebreak::plaintext(Buffer const &, ostream & os,
+			  OutputParams const &) const
 {
 	os << '\n';
 	return 0;
@@ -89,7 +89,7 @@ int InsetPagebreak::ascii(Buffer const &, ostream & os,
 
 
 int InsetPagebreak::linuxdoc(Buffer const &, std::ostream & os,
-			     LatexRunParams const &) const
+			     OutputParams const &) const
 {
 	os << '\n';
 	return 0;
@@ -97,7 +97,7 @@ int InsetPagebreak::linuxdoc(Buffer const &, std::ostream & os,
 
 
 int InsetPagebreak::docbook(Buffer const &, std::ostream & os,
-			    LatexRunParams const &) const
+			    OutputParams const &) const
 {
 	os << '\n';
 	return 0;

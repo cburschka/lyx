@@ -18,9 +18,9 @@
 #include "math_mathmlstream.h"
 
 #include "gettext.h"
-#include "latexrunparams.h"
 #include "LColor.h"
 #include "lyxlex.h"
+#include "outputparams.h"
 
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
@@ -75,7 +75,7 @@ void InsetFormulaMacro::write(Buffer const &, ostream & os) const
 
 
 int InsetFormulaMacro::latex(Buffer const &, ostream & os,
-			     LatexRunParams const & runparams) const
+			     OutputParams const & runparams) const
 {
 	WriteStream wi(os, runparams.moving_arg, true);
 	par()->write(wi);
@@ -83,8 +83,8 @@ int InsetFormulaMacro::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetFormulaMacro::ascii(Buffer const &, ostream & os,
-			     LatexRunParams const &) const
+int InsetFormulaMacro::plaintext(Buffer const &, ostream & os,
+			     OutputParams const &) const
 {
 	WriteStream wi(os, false, true);
 	par()->write(wi);
@@ -93,16 +93,16 @@ int InsetFormulaMacro::ascii(Buffer const &, ostream & os,
 
 
 int InsetFormulaMacro::linuxdoc(Buffer const & buf, ostream & os,
-				LatexRunParams const & runparams) const
+				OutputParams const & runparams) const
 {
-	return ascii(buf, os, runparams);
+	return plaintext(buf, os, runparams);
 }
 
 
 int InsetFormulaMacro::docbook(Buffer const & buf, ostream & os,
-			       LatexRunParams const & runparams) const
+			       OutputParams const & runparams) const
 {
-	return ascii(buf, os, runparams);
+	return plaintext(buf, os, runparams);
 }
 
 

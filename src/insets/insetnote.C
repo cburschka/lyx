@@ -163,7 +163,7 @@ InsetNote::priv_dispatch(FuncRequest const & cmd,
 
 
 int InsetNote::latex(Buffer const & buf, ostream & os,
-		     LatexRunParams const & runparams) const
+		     OutputParams const & runparams) const
 {
 	string const pt = params_.type;
 
@@ -190,7 +190,7 @@ int InsetNote::latex(Buffer const & buf, ostream & os,
 
 
 int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os,
-			LatexRunParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	string const pt = params_.type;
 
@@ -210,7 +210,7 @@ int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os,
 
 
 int InsetNote::docbook(Buffer const & buf, std::ostream & os,
-		       LatexRunParams const & runparams) const
+		       OutputParams const & runparams) const
 {
 	string const pt = params_.type;
 
@@ -229,14 +229,14 @@ int InsetNote::docbook(Buffer const & buf, std::ostream & os,
 }
 
 
-int InsetNote::ascii(Buffer const & buf, std::ostream & os,
-		     LatexRunParams const & runparams) const
+int InsetNote::plaintext(Buffer const & buf, std::ostream & os,
+		     OutputParams const & runparams) const
 {
 	int i = 0;
 	string const pt = params_.type;
 	if (pt != "Note") {
 		os << "[";
-		i = inset.ascii(buf, os, runparams);
+		i = inset.plaintext(buf, os, runparams);
 		os << "]";
 	}
 	return i;

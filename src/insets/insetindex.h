@@ -37,7 +37,7 @@ public:
 	InsetOld::Code lyxCode() const;
 	///
 	int docbook(Buffer const &, std::ostream &,
-		    LatexRunParams const &) const;
+		    OutputParams const &) const;
 	///
 	DispatchResult priv_dispatch(FuncRequest const & cmd,
 		idx_type & idx, pos_type & pos);

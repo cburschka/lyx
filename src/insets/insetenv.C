@@ -15,7 +15,7 @@
 #include "bufferparams.h"
 #include "gettext.h"
 #include "paragraph.h"
-#include "paragraph_funcs.h"
+#include "output_latex.h"
 #include "texrow.h"
 
 #include "support/std_ostream.h"
@@ -67,7 +67,7 @@ string const InsetEnvironment::editMessage() const
 
 
 int InsetEnvironment::latex(Buffer const & buf, ostream & os,
-			    LatexRunParams const & runparams) const
+			    OutputParams const & runparams) const
 {
 	os << layout_->latexheader;
 	TexRow texrow;

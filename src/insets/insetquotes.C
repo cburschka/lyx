@@ -17,10 +17,10 @@
 #include "debug.h"
 #include "language.h"
 #include "LaTeXFeatures.h"
-#include "latexrunparams.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 
@@ -254,7 +254,7 @@ void InsetQuotes::read(Buffer const &, LyXLex & lex)
 
 
 int InsetQuotes::latex(Buffer const & buf, ostream & os,
-		       LatexRunParams const & runparams) const
+		       OutputParams const & runparams) const
 {
 	// How do we get the local language here??
 	lyx::pos_type curr_pos = ownerPar(buf, this).getPositionOfInset(this);
@@ -305,8 +305,8 @@ int InsetQuotes::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetQuotes::ascii(Buffer const &, ostream & os,
-		       LatexRunParams const &) const
+int InsetQuotes::plaintext(Buffer const &, ostream & os,
+		       OutputParams const &) const
 {
 	os << '"';
 	return 0;
@@ -314,7 +314,7 @@ int InsetQuotes::ascii(Buffer const &, ostream & os,
 
 
 int InsetQuotes::linuxdoc(Buffer const &, ostream & os,
-			  LatexRunParams const &) const
+			  OutputParams const &) const
 {
 	os << '"';
 	return 0;
@@ -322,7 +322,7 @@ int InsetQuotes::linuxdoc(Buffer const &, ostream & os,
 
 
 int InsetQuotes::docbook(Buffer const &, ostream & os,
-			 LatexRunParams const &) const
+			 OutputParams const &) const
 {
 	if (times_ == DoubleQ) {
 		if (side_ == LeftQ)

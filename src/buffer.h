@@ -36,7 +36,7 @@ class LyXLex;
 class LyXRC;
 class LyXVC;
 class LaTeXFeatures;
-class LatexRunParams;
+class OutputParams;
 class Language;
 class Messages;
 class ParIterator;
@@ -135,28 +135,28 @@ public:
 	bool writeFile(std::string const &) const;
 
 	///
-	void writeFileAscii(std::string const &, LatexRunParams const &);
+	void writeFileAscii(std::string const &, OutputParams const &);
 	///
-	void writeFileAscii(std::ostream &, LatexRunParams const &);
+	void writeFileAscii(std::ostream &, OutputParams const &);
 	/// Just a wrapper for the method below, first creating the ofstream.
 	void makeLaTeXFile(std::string const & filename,
 			   std::string const & original_path,
-			   LatexRunParams const &,
+			   OutputParams const &,
 			   bool output_preamble = true,
 			   bool output_body = true);
 	///
 	void makeLaTeXFile(std::ostream & os,
 			   std::string const & original_path,
-			   LatexRunParams const &,
+			   OutputParams const &,
 			   bool output_preamble = true,
 			   bool output_body = true);
 	///
 	void makeLinuxDocFile(std::string const & filename,
-			      LatexRunParams const & runparams_in,
+			      OutputParams const & runparams_in,
 			      bool only_body = false);
 	///
 	void makeDocBookFile(std::string const & filename,
-			     LatexRunParams const & runparams_in,
+			     OutputParams const & runparams_in,
 			     bool only_body = false);
 	/// returns the main language for the buffer (document)
 	Language const * getLanguage() const;

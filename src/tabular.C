@@ -23,8 +23,8 @@
 #include "bufferparams.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
-#include "latexrunparams.h"
 #include "lyxlex.h"
+#include "outputparams.h"
 #include "paragraph.h"
 
 #include "insets/insettabular.h"
@@ -1905,7 +1905,7 @@ int LyXTabular::TeXCellPostamble(ostream & os, int cell) const
 
 
 int LyXTabular::TeXLongtableHeaderFooter(ostream & os, Buffer const & buf,
-					 LatexRunParams const & runparams) const
+					 OutputParams const & runparams) const
 {
 	if (!is_long_tabular)
 		return 0;
@@ -2005,7 +2005,7 @@ bool LyXTabular::isValidRow(int row) const
 
 
 int LyXTabular::TeXRow(ostream & os, int i, Buffer const & buf,
-		       LatexRunParams const & runparams) const
+		       OutputParams const & runparams) const
 {
 	int ret = 0;
 	int cell = getCellNumber(i, 0);
@@ -2042,7 +2042,7 @@ int LyXTabular::TeXRow(ostream & os, int i, Buffer const & buf,
 
 
 int LyXTabular::latex(Buffer const & buf, ostream & os,
-		      LatexRunParams const & runparams) const
+		      OutputParams const & runparams) const
 {
 	int ret = 0;
 
@@ -2150,7 +2150,7 @@ int LyXTabular::latex(Buffer const & buf, ostream & os,
 
 
 int LyXTabular::linuxdoc(Buffer const & buf, ostream & os,
-			 const LatexRunParams & runparams) const
+			 const OutputParams & runparams) const
 {
 	os << "<tabular ca=\"";
 	for (int i = 0; i < columns_; ++i) {
@@ -2192,7 +2192,7 @@ int LyXTabular::linuxdoc(Buffer const & buf, ostream & os,
 
 
 int LyXTabular::docbookRow(Buffer const & buf, ostream & os, int row,
-			   LatexRunParams const & runparams) const
+			   OutputParams const & runparams) const
 {
 	int ret = 0;
 	int cell = getFirstCellInRow(row);
@@ -2234,7 +2234,7 @@ int LyXTabular::docbookRow(Buffer const & buf, ostream & os, int row,
 		}
 
 		os << '>';
-		LatexRunParams runp = runparams;
+		OutputParams runp = runparams;
 		runp.mixed_content = true;
 		ret += getCellInset(cell).docbook(buf, os, runp);
 		os << "</entry>\n";
@@ -2246,7 +2246,7 @@ int LyXTabular::docbookRow(Buffer const & buf, ostream & os, int row,
 
 
 int LyXTabular::docbook(Buffer const & buf, ostream & os,
-			LatexRunParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	int ret = 0;
 
@@ -2422,13 +2422,13 @@ int LyXTabular::asciiBottomHLine(ostream & os, int row,
 
 
 int LyXTabular::asciiPrintCell(Buffer const & buf, ostream & os,
-			       LatexRunParams const & runparams,
+			       OutputParams const & runparams,
 			       int cell, int row, int column,
 			       vector<unsigned int> const & clen,
 			       bool onlydata) const
 {
 	ostringstream sstr;
-	int ret = getCellInset(cell).ascii(buf, sstr, runparams);
+	int ret = getCellInset(cell).plaintext(buf, sstr, runparams);
 
 	if (onlydata) {
 		os << sstr.str();
@@ -2472,8 +2472,8 @@ int LyXTabular::asciiPrintCell(Buffer const & buf, ostream & os,
 }
 
 
-int LyXTabular::ascii(Buffer const & buf, ostream & os,
-		      LatexRunParams const & runparams,
+int LyXTabular::plaintext(Buffer const & buf, ostream & os,
+		      OutputParams const & runparams,
 		      int const depth,
 		      bool onlydata, unsigned char delim) const
 {
@@ -2491,7 +2491,7 @@ int LyXTabular::ascii(Buffer const & buf, ostream & os,
 				if (isMultiColumnReal(cell))
 					continue;
 				ostringstream sstr;
-				getCellInset(cell).ascii(buf, sstr, runparams);
+				getCellInset(cell).plaintext(buf, sstr, runparams);
 				if (clen[j] < sstr.str().length())
 					clen[j] = sstr.str().length();
 			}
@@ -2503,7 +2503,7 @@ int LyXTabular::ascii(Buffer const & buf, ostream & os,
 				if (!isMultiColumnReal(cell) || isPartOfMultiColumn(i, j))
 					continue;
 				ostringstream sstr;
-				getCellInset(cell).ascii(buf, sstr, runparams);
+				getCellInset(cell).plaintext(buf, sstr, runparams);
 				int len = int(sstr.str().length());
 				int const n = cells_in_multicolumn(cell);
 				for (int k = j; len > 0 && k < j + n - 1; ++k)

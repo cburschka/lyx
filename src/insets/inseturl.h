@@ -42,16 +42,16 @@ public:
 	bool display() const { return false; }
 	///
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 	///
-	int ascii(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+	int plaintext(Buffer const &, std::ostream &,
+		  OutputParams const &) const;
 	///
 	int linuxdoc(Buffer const &, std::ostream &,
-		     LatexRunParams const &) const;
+		     OutputParams const &) const;
 	///
 	int docbook(Buffer const &, std::ostream &,
-		    LatexRunParams const &) const;
+		    OutputParams const &) const;
 protected:
 	///
 	virtual

@@ -87,7 +87,6 @@ lyx_SOURCES = \
 	LaTeX.h \
 	LaTeXFeatures.C \
 	LaTeXFeatures.h \
-	latexrunparams.h \
 	LyXAction.C \
 	LyXAction.h \
 	MenuBackend.C \
@@ -223,6 +222,17 @@ lyx_SOURCES = \
 	messages.h \
 	metricsinfo.C \
 	metricsinfo.h \
+	output.C \
+	output.h \
+	outputparams.h \
+	output_docbook.C \
+	output_docbook.h \
+	output_latex.C \
+	output_latex.h \
+	output_linuxdoc.C \
+	output_linuxdoc.h \
+	output_plaintext.C \
+	output_plaintext.h \
 	paper.h \
 	paragraph.C \
 	paragraph.h \

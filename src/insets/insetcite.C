@@ -325,7 +325,7 @@ InsetCitation::priv_dispatch(FuncRequest const & cmd,
 }
 		
 
-int InsetCitation::ascii(Buffer const & buffer, ostream & os, int) const
+int InsetCitation::plaintext(Buffer const & buffer, ostream & os, int) const
 {
 	if (cache.params == params() && cache.style == getStyle(buffer))
 		os << cache.generated_label;
@@ -340,7 +340,7 @@ int InsetCitation::ascii(Buffer const & buffer, ostream & os, int) const
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
 int InsetCitation::latex(Buffer const & buffer, ostream & os,
-			 LatexRunParams const &) const
+			 OutputParams const &) const
 {
 	os << "\\";
 	if (buffer.params().use_natbib)

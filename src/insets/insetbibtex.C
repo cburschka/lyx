@@ -18,8 +18,8 @@
 #include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
-#include "latexrunparams.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
@@ -133,7 +133,7 @@ string const InsetBibtex::getScreenLabel(Buffer const &) const
 
 
 int InsetBibtex::latex(Buffer const & buffer, ostream & os,
-		       LatexRunParams const & runparams) const
+		       OutputParams const & runparams) const
 {
 	// changing the sequence of the commands
 	// 1. \bibliographystyle{style}

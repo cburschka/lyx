@@ -53,7 +53,7 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 
 
 int InsetLine::latex(Buffer const &, ostream & os,
-			LatexRunParams const &) const
+			OutputParams const &) const
 {
 	os << "\\lyxline{}";
 
@@ -67,8 +67,8 @@ int InsetLine::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetLine::ascii(Buffer const &, ostream & os,
-		     LatexRunParams const &) const
+int InsetLine::plaintext(Buffer const &, ostream & os,
+		     OutputParams const &) const
 {
 	os << "-------------------------------------------";
 	return 0;
@@ -76,7 +76,7 @@ int InsetLine::ascii(Buffer const &, ostream & os,
 
 
 int InsetLine::linuxdoc(Buffer const &, std::ostream & os,
-			LatexRunParams const &) const
+			OutputParams const &) const
 {
 	os << '\n';
 	return 0;
@@ -84,7 +84,7 @@ int InsetLine::linuxdoc(Buffer const &, std::ostream & os,
 
 
 int InsetLine::docbook(Buffer const &, std::ostream & os,
-		       LatexRunParams const &) const
+		       OutputParams const &) const
 {
 	os << '\n';
 	return 0;

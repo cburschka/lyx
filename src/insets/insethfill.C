@@ -44,15 +44,15 @@ std::string const InsetHFill::getScreenLabel(Buffer const &) const
 
 
 int InsetHFill::latex(Buffer const &, ostream & os,
-		      LatexRunParams const &) const
+		      OutputParams const &) const
 {
 	os << getCommand();
 	return 0;
 }
 
 
-int InsetHFill::ascii(Buffer const &, ostream & os,
-		      LatexRunParams const &) const
+int InsetHFill::plaintext(Buffer const &, ostream & os,
+		      OutputParams const &) const
 {
 	os << '\t';
 	return 0;
@@ -60,7 +60,7 @@ int InsetHFill::ascii(Buffer const &, ostream & os,
 
 
 int InsetHFill::linuxdoc(Buffer const &, std::ostream & os,
-			 LatexRunParams const &) const
+			 OutputParams const &) const
 {
 	os << '\n';
 	return 0;
@@ -68,7 +68,7 @@ int InsetHFill::linuxdoc(Buffer const &, std::ostream & os,
 
 
 int InsetHFill::docbook(Buffer const &, std::ostream & os,
-			LatexRunParams const &) const
+			OutputParams const &) const
 {
 	os << '\n';
 	return 0;

@@ -242,7 +242,7 @@ string const InsetMinipage::editMessage() const
 
 
 int InsetMinipage::latex(Buffer const & buf, ostream & os,
-			 LatexRunParams const & runparams) const
+			 OutputParams const & runparams) const
 {
 	string s_pos;
 	switch (params_.pos) {

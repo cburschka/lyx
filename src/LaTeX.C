@@ -120,7 +120,7 @@ bool operator!=(Aux_Info const & a, Aux_Info const & o)
  * CLASS LaTeX
  */
 
-LaTeX::LaTeX(string const & latex, LatexRunParams const & rp,
+LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 	     string const & f, string const & p)
 	: cmd(latex), file(f), path(p), runparams(rp)
 {

@@ -21,11 +21,11 @@
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "language.h"
-#include "latexrunparams.h"
 #include "LColor.h"
 #include "lyx_cb.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
@@ -1117,32 +1117,32 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd,
 
 
 int InsetTabular::latex(Buffer const & buf, ostream & os,
-			LatexRunParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	return tabular.latex(buf, os, runparams);
 }
 
 
-int InsetTabular::ascii(Buffer const & buf, ostream & os,
-			LatexRunParams const & runparams) const
+int InsetTabular::plaintext(Buffer const & buf, ostream & os,
+			OutputParams const & runparams) const
 {
 	if (runparams.linelen > 0)
-		return tabular.ascii(buf, os, runparams,
+		return tabular.plaintext(buf, os, runparams,
 				     ownerPar(buf, this).params().depth(),
 				     false, 0);
-	return tabular.ascii(buf, os, runparams, 0, false, 0);
+	return tabular.plaintext(buf, os, runparams, 0, false, 0);
 }
 
 
 int InsetTabular::linuxdoc(Buffer const & buf, ostream & os,
-			   LatexRunParams const & runparams) const
+			   OutputParams const & runparams) const
 {
 	return tabular.linuxdoc(buf,os, runparams);
 }
 
 
 int InsetTabular::docbook(Buffer const & buf, ostream & os,
-			  LatexRunParams const & runparams) const
+			  OutputParams const & runparams) const
 {
 	int ret = 0;
 	InsetOld * master;
@@ -2267,9 +2267,9 @@ bool InsetTabular::copySelection(BufferView * bv)
 				    true, true);
 
 	ostringstream os;
-	LatexRunParams const runparams;
-	paste_tabular->ascii(*bv->buffer(), os, runparams,
-			     ownerPar(*bv->buffer(), this).params().depth(), true, '\t');
+	OutputParams const runparams;	
+	paste_tabular->plaintext(*bv->buffer(), os, runparams,
+				 ownerPar(*bv->buffer(), this).params().depth(), true, '\t');
 	bv->stuffClipboard(os.str());
 	return true;
 }

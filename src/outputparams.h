@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file latexrunparams.h
+ * \file outputparams.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,16 +9,16 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef LatexRunParams_H
-#define LatexRunParams_H
+#ifndef OUTPUTPARAMS_H
+#define OUTPUTPARAMS_H
 
-struct LatexRunParams {
+struct OutputParams {
         enum FLAVOR {
                 LATEX,
                 PDFLATEX
         };
 
-        LatexRunParams() : flavor(LATEX), nice(false),
+        OutputParams() : flavor(LATEX), nice(false),
 			   moving_arg(false), free_spacing(false),
 			   use_babel(false), mixed_content(false),
 			   linelen(0) {}

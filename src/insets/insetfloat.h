@@ -56,13 +56,13 @@ public:
 	InsetOld::Code lyxCode() const { return InsetOld::FLOAT_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 	///
 	int linuxdoc(Buffer const &, std::ostream &,
-		     LatexRunParams const &) const;
+		     OutputParams const &) const;
 	///
 	int docbook(Buffer const &, std::ostream &,
-		    LatexRunParams const &) const;
+		    OutputParams const &) const;
 	///
 	std::string const editMessage() const;
 	///

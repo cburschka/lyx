@@ -241,28 +241,28 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 
 
 int InsetCollapsable::latex(Buffer const & buf, ostream & os,
-			    LatexRunParams const & runparams) const
+			    OutputParams const & runparams) const
 {
 	return inset.latex(buf, os, runparams);
 }
 
 
-int InsetCollapsable::ascii(Buffer const & buf, ostream & os,
-			    LatexRunParams const & runparams) const
+int InsetCollapsable::plaintext(Buffer const & buf, ostream & os,
+			    OutputParams const & runparams) const
 {
-	return inset.ascii(buf, os, runparams);
+	return inset.plaintext(buf, os, runparams);
 }
 
 
 int InsetCollapsable::linuxdoc(Buffer const & buf, ostream & os,
-			       LatexRunParams const & runparams) const
+			       OutputParams const & runparams) const
 {
 	return inset.linuxdoc(buf, os, runparams);
 }
 
 
 int InsetCollapsable::docbook(Buffer const & buf, ostream & os,
-			      LatexRunParams const & runparams) const
+			      OutputParams const & runparams) const
 {
 	return inset.docbook(buf, os, runparams);
 }

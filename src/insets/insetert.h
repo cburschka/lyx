@@ -65,16 +65,16 @@ public:
 	EDITABLE editable() const;
 	///
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 	///
-	int ascii(Buffer const &, std::ostream &,
-		  LatexRunParams const & runparams) const;
+	int plaintext(Buffer const &, std::ostream &,
+		  OutputParams const & runparams) const;
 	///
 	int linuxdoc(Buffer const &, std::ostream &,
-		     LatexRunParams const &) const;
+		     OutputParams const &) const;
 	///
 	int docbook(Buffer const &, std::ostream &,
-		    LatexRunParams const & runparams) const;
+		    OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures &) const {}
 	///

@@ -22,9 +22,9 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "latexrunparams.h"
 #include "LColor.h"
 #include "lyxlex.h"
+#include "outputparams.h"
 #include "paragraph.h"
 
 #include "support/tostr.h"
@@ -185,7 +185,7 @@ string const InsetWrap::editMessage() const
 
 
 int InsetWrap::latex(Buffer const & buf, ostream & os,
-		     LatexRunParams const & runparams) const
+		     OutputParams const & runparams) const
 {
 	os << "\\begin{floating" << params_.type << '}';
 	if (!params_.placement.empty()) {
@@ -201,7 +201,7 @@ int InsetWrap::latex(Buffer const & buf, ostream & os,
 
 
 int InsetWrap::docbook(Buffer const & buf, ostream & os,
-		       LatexRunParams const & runparams) const
+		       OutputParams const & runparams) const
 {
 	os << '<' << params_.type << '>';
 	int const i = inset.docbook(buf, os, runparams);

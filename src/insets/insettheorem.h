@@ -34,7 +34,7 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 	///
 	string const editMessage() const;
 private:

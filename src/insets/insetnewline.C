@@ -50,15 +50,15 @@ void InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
 
 
 int InsetNewline::latex(Buffer const &, ostream &,
-			LatexRunParams const &) const
+			OutputParams const &) const
 {
 	lyxerr << "Eek, calling InsetNewline::latex !" << endl;
 	return 0;
 }
 
 
-int InsetNewline::ascii(Buffer const &, ostream & os,
-			LatexRunParams const &) const
+int InsetNewline::plaintext(Buffer const &, ostream & os,
+			OutputParams const &) const
 {
 	os << '\n';
 	return 0;
@@ -66,7 +66,7 @@ int InsetNewline::ascii(Buffer const &, ostream & os,
 
 
 int InsetNewline::linuxdoc(Buffer const &, std::ostream & os,
-			   LatexRunParams const &) const
+			   OutputParams const &) const
 {
 	os << '\n';
 	return 0;
@@ -74,7 +74,7 @@ int InsetNewline::linuxdoc(Buffer const &, std::ostream & os,
 
 
 int InsetNewline::docbook(Buffer const &, std::ostream & os,
-			  LatexRunParams const &) const
+			  OutputParams const &) const
 {
 	os << '\n';
 	return 0;

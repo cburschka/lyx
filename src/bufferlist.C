@@ -20,6 +20,7 @@
 #include "lastfiles.h"
 #include "lyx_cb.h"
 #include "lyx_main.h"
+#include "output_latex.h"
 #include "paragraph.h"
 
 #include "frontends/Alert.h"
@@ -214,7 +215,7 @@ Buffer * BufferList::getBuffer(unsigned int choice)
 
 
 void BufferList::updateIncludedTeXfiles(string const & mastertmpdir,
-					LatexRunParams const & runparams)
+					OutputParams const & runparams)
 {
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();

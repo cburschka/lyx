@@ -86,7 +86,7 @@ string const InsetRef::getScreenLabel(Buffer const &) const
 
 
 int InsetRef::latex(Buffer const &, ostream & os,
-		    LatexRunParams const &) const
+		    OutputParams const &) const
 {
 	if (getOptions().empty())
 		os << escape(getCommand());
@@ -98,8 +98,8 @@ int InsetRef::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetRef::ascii(Buffer const &, ostream & os,
-		    LatexRunParams const &) const
+int InsetRef::plaintext(Buffer const &, ostream & os,
+		    OutputParams const &) const
 {
 	os << '[' << getContents() << ']';
 	return 0;
@@ -107,7 +107,7 @@ int InsetRef::ascii(Buffer const &, ostream & os,
 
 
 int InsetRef::linuxdoc(Buffer const &, ostream & os,
-		       LatexRunParams const &) const
+		       OutputParams const &) const
 {
 	os << "<ref id=\"" << getContents()
 	   << "\" name=\"" << getOptions() << "\" >";
@@ -116,7 +116,7 @@ int InsetRef::linuxdoc(Buffer const &, ostream & os,
 
 
 int InsetRef::docbook(Buffer const &, ostream & os,
-		      LatexRunParams const &) const
+		      OutputParams const &) const
 {
 	if (getOptions().empty()) {
 		os << "<xref linkend=\"" << getContents() << "\">";

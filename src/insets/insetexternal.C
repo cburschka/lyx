@@ -24,11 +24,11 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "latexrunparams.h"
 #include "lyx_main.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 
 #include "frontends/lyx_gui.h"
 #include "frontends/LyXView.h"
@@ -658,7 +658,7 @@ void InsetExternal::read(Buffer const & buffer, LyXLex & lex)
 
 
 int InsetExternal::latex(Buffer const & buf, ostream & os,
-			 LatexRunParams const & runparams) const
+			 OutputParams const & runparams) const
 {
 	// "nice" means that the buffer is exported to LaTeX format but not
 	// run through the LaTeX compiler.
@@ -669,7 +669,7 @@ int InsetExternal::latex(Buffer const & buf, ostream & os,
 
 	// If the template has specified a PDFLaTeX output, then we try and
 	// use that.
-	if (runparams.flavor == LatexRunParams::PDFLATEX) {
+	if (runparams.flavor == OutputParams::PDFLATEX) {
 		external::Template const * const et_ptr =
 			external::getTemplatePtr(params_);
 		if (!et_ptr)
@@ -688,22 +688,22 @@ int InsetExternal::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetExternal::ascii(Buffer const & buf, ostream & os,
-			 LatexRunParams const &) const
+int InsetExternal::plaintext(Buffer const & buf, ostream & os,
+			 OutputParams const &) const
 {
 	return external::writeExternal(params_, "Ascii", buf, os);
 }
 
 
 int InsetExternal::linuxdoc(Buffer const & buf, ostream & os,
-			    LatexRunParams const &) const
+			    OutputParams const &) const
 {
 	return external::writeExternal(params_, "LinuxDoc", buf, os);
 }
 
 
 int InsetExternal::docbook(Buffer const & buf, ostream & os,
-			   LatexRunParams const &) const
+			   OutputParams const &) const
 {
 	return external::writeExternal(params_, "DocBook", buf, os);
 }
@@ -755,8 +755,8 @@ bool preview_wanted(InsetExternalParams const & params)
 string const latex_string(InsetExternal const & inset, Buffer const & buffer)
 {
 	ostringstream os;
-	LatexRunParams runparams;
-	runparams.flavor = LatexRunParams::LATEX;
+	OutputParams runparams;
+	runparams.flavor = OutputParams::LATEX;
 	inset.latex(buffer, os, runparams);
 
 	return os.str();

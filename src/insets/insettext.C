@@ -28,6 +28,10 @@
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "metricsinfo.h"
+#include "output_docbook.h"
+#include "output_latex.h"
+#include "output_linuxdoc.h"
+#include "output_plaintext.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
@@ -954,7 +958,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 
 
 int InsetText::latex(Buffer const & buf, ostream & os,
-		     LatexRunParams const & runparams) const
+		     OutputParams const & runparams) const
 {
 	TexRow texrow;
 	latexParagraphs(buf, paragraphs, os, texrow, runparams);
@@ -962,8 +966,8 @@ int InsetText::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetText::ascii(Buffer const & buf, ostream & os,
-		     LatexRunParams const & runparams) const
+int InsetText::plaintext(Buffer const & buf, ostream & os,
+		     OutputParams const & runparams) const
 {
 	ParagraphList::const_iterator beg = paragraphs.begin();
 	ParagraphList::const_iterator end = paragraphs.end();
@@ -977,7 +981,7 @@ int InsetText::ascii(Buffer const & buf, ostream & os,
 
 
 int InsetText::linuxdoc(Buffer const & buf, ostream & os,
-			LatexRunParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	linuxdocParagraphs(buf, paragraphs, os, runparams);
 	return 0;
@@ -985,7 +989,7 @@ int InsetText::linuxdoc(Buffer const & buf, ostream & os,
 
 
 int InsetText::docbook(Buffer const & buf, ostream & os,
-		       LatexRunParams const & runparams) const
+		       OutputParams const & runparams) const
 {
 	docbookParagraphs(buf, paragraphs, os, runparams);
 	return 0;

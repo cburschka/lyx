@@ -31,16 +31,16 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 
-	int ascii(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+	int plaintext(Buffer const &, std::ostream &,
+		  OutputParams const &) const;
 
 	int linuxdoc(Buffer const &, std::ostream &,
-		     LatexRunParams const &) const;
+		     OutputParams const &) const;
 
 	int docbook(Buffer const &, std::ostream &,
-		    LatexRunParams const &) const;
+		    OutputParams const &) const;
 
 	void read(Buffer const &, LyXLex & lex);
 

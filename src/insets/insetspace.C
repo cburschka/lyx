@@ -16,10 +16,10 @@
 #include "insetspace.h"
 
 #include "debug.h"
-#include "latexrunparams.h"
 #include "LColor.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
@@ -162,7 +162,7 @@ void InsetSpace::read(Buffer const &, LyXLex & lex)
 
 
 int InsetSpace::latex(Buffer const &, ostream & os,
-		      LatexRunParams const & runparams) const
+		      OutputParams const & runparams) const
 {
 	switch (kind_) {
 	case NORMAL:
@@ -194,8 +194,8 @@ int InsetSpace::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetSpace::ascii(Buffer const &, ostream & os,
-		      LatexRunParams const &) const
+int InsetSpace::plaintext(Buffer const &, ostream & os,
+		      OutputParams const &) const
 {
 	switch (kind_) {
 	case NORMAL:
@@ -214,7 +214,7 @@ int InsetSpace::ascii(Buffer const &, ostream & os,
 
 
 int InsetSpace::linuxdoc(Buffer const &, ostream & os,
-			 LatexRunParams const &) const
+			 OutputParams const &) const
 {
 	switch (kind_) {
 	case NORMAL:
@@ -235,7 +235,7 @@ int InsetSpace::linuxdoc(Buffer const &, ostream & os,
 
 
 int InsetSpace::docbook(Buffer const &, ostream & os,
-			LatexRunParams const &) const
+			OutputParams const &) const
 {
 	switch (kind_) {
 	case NORMAL:

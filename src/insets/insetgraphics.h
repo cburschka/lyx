@@ -46,16 +46,16 @@ public:
 	 fragile commands by adding a #\protect# before.
 	 */
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 	///
-	int ascii(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+	int plaintext(Buffer const &, std::ostream &,
+		  OutputParams const &) const;
 	///
 	int linuxdoc(Buffer const &, std::ostream &,
-		     LatexRunParams const &) const;
+		     OutputParams const &) const;
 	///
 	int docbook(Buffer const &, std::ostream &,
-		    LatexRunParams const &) const;
+		    OutputParams const &) const;
 
 	/** Tell LyX what the latex features you need i.e. what latex packages
 	    you need to be included.
@@ -101,7 +101,7 @@ private:
 	/// Create the options for the latex command.
 	std::string const createLatexOptions() const;
 	/// Convert the file if needed, and return the location of the file.
-	std::string const prepareFile(Buffer const & buf, LatexRunParams const &) const;
+	std::string const prepareFile(Buffer const & buf, OutputParams const &) const;
 
 	///
 	InsetGraphicsParams params_;

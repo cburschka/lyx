@@ -157,7 +157,7 @@ void InsetSpecialChar::read(Buffer const &, LyXLex & lex)
 
 
 int InsetSpecialChar::latex(Buffer const &, ostream & os,
-			    LatexRunParams const &) const
+			    OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:
@@ -180,8 +180,8 @@ int InsetSpecialChar::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetSpecialChar::ascii(Buffer const &, ostream & os,
-			    LatexRunParams const &) const
+int InsetSpecialChar::plaintext(Buffer const &, ostream & os,
+			    OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:
@@ -202,7 +202,7 @@ int InsetSpecialChar::ascii(Buffer const &, ostream & os,
 
 
 int InsetSpecialChar::linuxdoc(Buffer const &, ostream & os,
-			       LatexRunParams const &) const
+			       OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:
@@ -223,7 +223,7 @@ int InsetSpecialChar::linuxdoc(Buffer const &, ostream & os,
 
 
 int InsetSpecialChar::docbook(Buffer const &, ostream & os,
-			      LatexRunParams const &) const
+			      OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:

@@ -40,7 +40,7 @@ public:
 	bool display() const { return true; }
 	///
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 	///
 	void fillWithBibKeys(Buffer const & buffer,
 		std::vector<std::pair<std::string,std::string> > & keys) const;

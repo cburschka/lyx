@@ -65,7 +65,7 @@ string const InsetList::editMessage() const
 
 
 int InsetList::latex(Buffer const * buf, ostream & os,
-		     LatexRunParams const & runparams) const
+		     OutputParams const & runparams) const
 {
 	os << "\\footnote{%\n";
 

@@ -140,7 +140,7 @@ InsetFloatList::priv_dispatch(FuncRequest const & cmd,
 
 
 int InsetFloatList::latex(Buffer const & buf, ostream & os,
-			  LatexRunParams const &) const
+			  OutputParams const &) const
 {
 	FloatList const & floats = buf.params().getLyXTextClass().floats();
 	FloatList::const_iterator cit = floats[getCmdName()];
@@ -169,7 +169,7 @@ int InsetFloatList::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetFloatList::ascii(Buffer const & buffer, ostream & os, LatexRunParams const &) const
+int InsetFloatList::plaintext(Buffer const & buffer, ostream & os, OutputParams const &) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 

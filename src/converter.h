@@ -21,7 +21,7 @@
 class Buffer;
 class Format;
 class Formats;
-class LatexRunParams;
+class OutputParams;
 
 
 ///
@@ -132,7 +132,7 @@ private:
 		     std::string const & filename);
 	///
 	bool runLaTeX(Buffer const & buffer, std::string const & command,
-		      LatexRunParams const &);
+		      OutputParams const &);
 	///
 	ConverterList converterlist_;
 	///

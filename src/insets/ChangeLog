@@ -1,3 +1,45 @@
+2003-11-05  José Matos  <jamatos@lyx.org>
+
+	* inset.h:
+	* insetbibtex.[Ch]:
+	* insetbox.[Ch]:
+	* insetbranch.[Ch]:
+	* insetcaption.[Ch]:
+	* insetcite.[Ch]:
+	* insetcollapsable.[Ch]:
+	* insetcommand.[Ch]:
+	* insetenv.[Ch]:
+	* insetert.[Ch]:
+	* insetexternal.[Ch]:
+	* insetfloat.[Ch]:
+	* insetfloatlist.[Ch]:
+	* insetfoot.[Ch]:
+	* insetgraphics.[Ch]:
+	* insethfill.[Ch]:
+	* insetinclude.[Ch]:
+	* insetindex.[Ch]:
+	* insetlabel.[Ch]:
+	* insetlatexaccent.[Ch]:
+	* insetline.[Ch]:
+	* insetlist.[Ch]:
+	* insetmarginal.[Ch]:
+	* insetminipage.[Ch]:
+	* insetnewline.[Ch]:
+	* insetnote.[Ch]:
+	* insetoptarg.[Ch]:
+	* insetpagebreak.[Ch]:
+	* insetquotes.[Ch]:
+	* insetref.[Ch]:
+	* insetspace.[Ch]:
+	* insetspecialchar.[Ch]:
+	* insettabular.[Ch]:
+	* insettext.[Ch]:
+	* insettheorem.[Ch]:
+	* insettoc.[Ch]:
+	* inseturl.[Ch]:
+	* insetwrap.[Ch]: rename ascii to plaintext
+	and LatexRunParams to OutputParams.
+
 2003-11-05  Alfredo Braunstein  <abraunst@libero.it>
 
 	* insetcollapsable.C (edit): add open() all

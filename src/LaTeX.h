@@ -14,7 +14,7 @@
 #ifndef LATEX_H
 #define LATEX_H
 
-#include "latexrunparams.h"
+#include "outputparams.h"
 
 #include <boost/utility.hpp>
 #include <boost/signals/signal1.hpp>
@@ -132,7 +132,7 @@ public:
 	   cmd = the latex command, file = name of the (temporary) latex file,
 	   path = name of the files original path.
 	*/
-	LaTeX(std::string const & cmd, LatexRunParams const &,
+	LaTeX(std::string const & cmd, OutputParams const &,
 	      std::string const & file, std::string const & path);
 
 	/// runs LaTeX several times
@@ -192,7 +192,7 @@ private:
 	std::string output_file;
 
 	///
-	LatexRunParams runparams;
+	OutputParams runparams;
 };
 
 #endif

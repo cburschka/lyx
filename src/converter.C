@@ -283,9 +283,9 @@ bool Converters::convert(Buffer const * buffer,
 	if (edgepath.empty()) {
 		return false;
 	}
-	LatexRunParams runparams;
+	OutputParams runparams;
 	runparams.flavor = usePdflatex(edgepath) ?
-		LatexRunParams::PDFLATEX : LatexRunParams::LATEX;
+		OutputParams::PDFLATEX : OutputParams::LATEX;
 
 	string path = OnlyPath(from_file);
 	Path p(path);
@@ -492,8 +492,8 @@ bool Converters::formatIsUsed(string const & format)
 bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 			 string const & filename)
 {
-	LatexRunParams runparams;
-	runparams.flavor = LatexRunParams::LATEX;
+	OutputParams runparams;
+	runparams.flavor = OutputParams::LATEX;
 	LaTeX latex("", runparams, filename, "");
 	TeXErrors terr;
 	int result = latex.scanLogFile(terr);
@@ -521,7 +521,7 @@ private:
 
 
 bool Converters::runLaTeX(Buffer const & buffer, string const & command,
-			  LatexRunParams const & runparams)
+			  OutputParams const & runparams)
 {
 	buffer.busy(true);
 	buffer.message(_("Running LaTeX..."));

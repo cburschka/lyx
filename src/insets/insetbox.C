@@ -204,7 +204,7 @@ InsetBox::priv_dispatch(FuncRequest const & cmd,
 
 
 int InsetBox::latex(Buffer const & buf, ostream & os,
-				LatexRunParams const & runparams) const
+				OutputParams const & runparams) const
 {
 	BoxType btype = boxtranslator().find(params_.type);
 
@@ -333,21 +333,21 @@ int InsetBox::latex(Buffer const & buf, ostream & os,
 
 
 int InsetBox::linuxdoc(Buffer const & buf, std::ostream & os,
-		       LatexRunParams const & runparams) const
+		       OutputParams const & runparams) const
 {
 	return inset.linuxdoc(buf, os, runparams);
 }
 
 
 int InsetBox::docbook(Buffer const & buf, std::ostream & os,
-		      LatexRunParams const & runparams) const
+		      OutputParams const & runparams) const
 {
 	return inset.docbook(buf, os, runparams);
 }
 
 
-int InsetBox::ascii(Buffer const & buf, std::ostream & os,
-		    LatexRunParams const & runparams) const
+int InsetBox::plaintext(Buffer const & buf, std::ostream & os,
+		    OutputParams const & runparams) const
 {
 	int i = 0;
 	string const pt = params_.type;
@@ -372,7 +372,7 @@ int InsetBox::ascii(Buffer const & buf, std::ostream & os,
 		break;
 	}
 
-	i = inset.ascii(buf, os, runparams);
+	i = inset.plaintext(buf, os, runparams);
 
 	switch (btype) {
 		case Frameless:

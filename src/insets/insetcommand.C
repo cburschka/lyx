@@ -60,29 +60,29 @@ void InsetCommand::setParams(InsetCommandParams const & p)
 
 
 int InsetCommand::latex(Buffer const &, ostream & os,
-			LatexRunParams const &) const
+			OutputParams const &) const
 {
 	os << getCommand();
 	return 0;
 }
 
 
-int InsetCommand::ascii(Buffer const &, ostream &,
-			LatexRunParams const &) const
+int InsetCommand::plaintext(Buffer const &, ostream &,
+			OutputParams const &) const
 {
 	return 0;
 }
 
 
 int InsetCommand::linuxdoc(Buffer const &, ostream &,
-			   LatexRunParams const &) const
+			   OutputParams const &) const
 {
 	return 0;
 }
 
 
 int InsetCommand::docbook(Buffer const &, ostream &,
-			  LatexRunParams const &) const
+			  OutputParams const &) const
 {
 	return 0;
 }

@@ -47,16 +47,16 @@ public:
 	void read(Buffer const &, LyXLex &);
 	///
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 	///
 	int linuxdoc(Buffer const &, std::ostream &,
-		     LatexRunParams const &) const { return 0; }
+		     OutputParams const &) const { return 0; }
 	///
 	int docbook(Buffer const &, std::ostream &,
-		    LatexRunParams const &) const { return 0; }
+		    OutputParams const &) const { return 0; }
 	///
-	int ascii(Buffer const &, std::ostream &,
-		  LatexRunParams const & runparams) const;
+	int plaintext(Buffer const &, std::ostream &,
+		  OutputParams const & runparams) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 protected:

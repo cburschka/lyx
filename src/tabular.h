@@ -22,7 +22,7 @@
 #include <vector>
 
 class InsetTabular;
-class LatexRunParams;
+class OutputParams;
 
 /* The features the text class offers for tables */
 
@@ -277,16 +277,16 @@ public:
 	void read(Buffer const &, LyXLex &);
 	///
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 	//
 	int linuxdoc(Buffer const & buf, std::ostream & os,
-		     LatexRunParams const &) const;
+		     OutputParams const &) const;
 	///
 	int docbook(Buffer const & buf, std::ostream & os,
-		    LatexRunParams const &) const;
+		    OutputParams const &) const;
 	///
-	int ascii(Buffer const &, std::ostream &,
-		  LatexRunParams const & runparams,
+	int plaintext(Buffer const &, std::ostream &,
+		  OutputParams const & runparams,
 		  int const depth,
 		  bool onlydata, unsigned char delim) const;
 	///
@@ -537,12 +537,12 @@ public:
 	int TeXCellPostamble(std::ostream &, int cell) const;
 	///
 	int TeXLongtableHeaderFooter(std::ostream &, Buffer const & buf,
-				     LatexRunParams const &) const;
+				     OutputParams const &) const;
 	///
 	bool isValidRow(int const row) const;
 	///
 	int TeXRow(std::ostream &, int const row, Buffer const & buf,
-		   LatexRunParams const &) const;
+		   OutputParams const &) const;
 	///
 	// helper function for ASCII returns number of newlines
 	///
@@ -553,13 +553,13 @@ public:
 			     std::vector<unsigned int> const &) const;
 	///
 	int asciiPrintCell(Buffer const &, std::ostream &,
-			   LatexRunParams const &,
+			   OutputParams const &,
 			   int cell, int row, int column,
 			   std::vector<unsigned int> const &,
 					   bool onlydata) const;
 	/// auxiliary function for docbook
 	int docbookRow(Buffer const & buf, std::ostream & os, int,
-		       LatexRunParams const &) const;
+		       OutputParams const &) const;
 
 private:
 	/// renumber cells after structural changes

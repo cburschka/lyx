@@ -64,11 +64,11 @@ TODO
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "latexrunparams.h"
 #include "lyx_main.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"
@@ -133,10 +133,10 @@ string const uniqueID()
 }
 
 
-string findTargetFormat(string const & suffix, LatexRunParams const & runparams)
+string findTargetFormat(string const & suffix, OutputParams const & runparams)
 {
 	// Are we using latex or pdflatex).
-	if (runparams.flavor == LatexRunParams::PDFLATEX) {
+	if (runparams.flavor == OutputParams::PDFLATEX) {
 		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode" << endl;
 		if (contains(suffix, "ps") || suffix == "pdf")
 			return "pdf";
@@ -416,7 +416,7 @@ string const stripExtensionIfPossible(string const & file, string const & to)
 
 
 string const InsetGraphics::prepareFile(Buffer const & buf,
-					LatexRunParams const & runparams) const
+					OutputParams const & runparams) const
 {
 	string orig_file = params().filename.absFilename();
 	string const rel_file = params().filename.relFilename(buf.filePath());
@@ -539,7 +539,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 
 int InsetGraphics::latex(Buffer const & buf, ostream & os,
-			 LatexRunParams const & runparams) const
+			 OutputParams const & runparams) const
 {
 	// If there is no file specified or not existing,
 	// just output a message about it in the latex output.
@@ -616,8 +616,8 @@ int InsetGraphics::latex(Buffer const & buf, ostream & os,
 }
 
 
-int InsetGraphics::ascii(Buffer const &, ostream & os,
-			 LatexRunParams const &) const
+int InsetGraphics::plaintext(Buffer const &, ostream & os,
+			 OutputParams const &) const
 {
 	// No graphics in ascii output. Possible to use gifscii to convert
 	// images to ascii approximation.
@@ -631,7 +631,7 @@ int InsetGraphics::ascii(Buffer const &, ostream & os,
 
 
 int InsetGraphics::linuxdoc(Buffer const & buf, ostream & os,
-			    LatexRunParams const &) const
+			    OutputParams const &) const
 {
 	string const file_name = buf.niceFile() ?
 				params().filename.relFilename(buf.filePath()):
@@ -647,7 +647,7 @@ int InsetGraphics::linuxdoc(Buffer const & buf, ostream & os,
 // http://en.tldp.org/LDP/LDP-Author-Guide/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
 int InsetGraphics::docbook(Buffer const &, ostream & os,
-			   LatexRunParams const &) const
+			   OutputParams const &) const
 {
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will
 	// need to switch to MediaObject. However, for now this is sufficient and

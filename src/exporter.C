@@ -24,9 +24,9 @@
 #include "converter.h"
 #include "format.h"
 #include "gettext.h"
-#include "latexrunparams.h"
 #include "lyxrc.h"
-
+#include "output_plaintext.h"
+#include "outputparams.h"
 #include "frontends/Alert.h"
 
 #include "support/filetools.h"
@@ -60,8 +60,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		      bool put_in_tempdir, string & result_file)
 {
 	string backend_format;
-	LatexRunParams runparams;
-	runparams.flavor = LatexRunParams::LATEX;
+	OutputParams runparams;
+	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = lyxrc.ascii_linelen;
 	vector<string> backends = Backends(*buffer);
 	if (find(backends.begin(), backends.end(), format) == backends.end()) {
@@ -71,7 +71,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 				converters.getPath(*it,	format);
 			if (!p.empty()) {
 				if (converters.usePdflatex(p))
-					runparams.flavor = LatexRunParams::PDFLATEX;
+					runparams.flavor = OutputParams::PDFLATEX;
 				backend_format = *it;
 				break;
 			}
@@ -93,7 +93,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 
 	// Ascii backend
 	if (backend_format == "text")
-		buffer->writeFileAscii(filename, runparams);
+		writeFileAscii(*buffer, filename, runparams);
 	// Linuxdoc backend
 	else if (buffer->isLinuxDoc()) {
 		runparams.nice = !put_in_tempdir;

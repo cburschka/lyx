@@ -26,10 +26,10 @@
 #include "debug.h"
 #include "gettext.h"
 #include "language.h"
-#include "latexrunparams.h"
 #include "lyxfont.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
+#include "outputparams.h"
 #include "paragraph_funcs.h"
 #include "sgml.h"
 #include "texrow.h"
@@ -877,7 +877,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 				BufferParams const & bparams,
 				LyXFont const & outerfont,
 				ostream & os, TexRow & texrow,
-				LatexRunParams const & runparams)
+				OutputParams const & runparams)
 {
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...     " << this << endl;
 
@@ -1023,7 +1023,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 		column += Changes::latexMarkChange(os, running_change, change);
 		running_change = change;
 
-		LatexRunParams rp = runparams;
+		OutputParams rp = runparams;
 		rp.moving_arg = moving_arg;
 		rp.free_spacing = style->free_spacing;
 		pimpl_->simpleTeXSpecialChars(buf, bparams,
@@ -1133,7 +1133,7 @@ void reset(PAR_TAG & p1, PAR_TAG const & p2)
 void Paragraph::simpleLinuxDocOnePar(Buffer const & buf,
 				     ostream & os,
 				     LyXFont const & outerfont,
-				     LatexRunParams const & runparams,
+				     OutputParams const & runparams,
 				     lyx::depth_type /*depth*/) const
 {
 	LyXLayout_ptr const & style = layout();
@@ -1329,7 +1329,7 @@ void Paragraph::simpleDocBookOnePar(Buffer const & buf,
 				    ostream & os,
 				    LyXFont const & outerfont,
 				    int & desc_on,
-				    LatexRunParams const & runparams,
+				    OutputParams const & runparams,
 				    lyx::depth_type depth) const
 {
 	bool emph_flag = false;
@@ -1544,13 +1544,13 @@ bool Paragraph::isMultiLingual(BufferParams const & bparams)
 string const Paragraph::asString(Buffer const & buffer,
 				 bool label) const
 {
-	LatexRunParams runparams;
+	OutputParams runparams;
 	return asString(buffer, runparams, label);
 }
 
 
 string const Paragraph::asString(Buffer const & buffer,
-				 LatexRunParams const & runparams,
+				 OutputParams const & runparams,
 				 bool label) const
 {
 #if 0
@@ -1565,7 +1565,7 @@ string const Paragraph::asString(Buffer const & buffer,
 		else if (c == META_INSET &&
 			 getInset(i)->lyxCode() == InsetOld::MATH_CODE) {
 			ostringstream os;
-			getInset(i)->ascii(buffer, os, runparams);
+			getInset(i)->plaintext(buffer, os, runparams);
 			s += subst(STRCONV(os.str()),'\n',' ');
 		}
 	}
@@ -1583,13 +1583,13 @@ string const Paragraph::asString(Buffer const & buffer,
 				 pos_type beg, pos_type end, bool label) const
 {
 
-	LatexRunParams const runparams;
+	OutputParams const runparams;
 	return asString(buffer, runparams, beg, end, label);
 }
 
 
 string const Paragraph::asString(Buffer const & buffer,
-				 LatexRunParams const & runparams,
+				 OutputParams const & runparams,
 				 pos_type beg, pos_type end, bool label) const
 {
 	ostringstream os;
@@ -1602,7 +1602,7 @@ string const Paragraph::asString(Buffer const & buffer,
 		if (IsPrintable(c))
 			os << c;
 		else if (c == META_INSET)
-			getInset(i)->ascii(buffer, os, runparams);
+			getInset(i)->plaintext(buffer, os, runparams);
 	}
 
 	return os.str();

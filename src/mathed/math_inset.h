@@ -31,7 +31,7 @@ inclusion in the "real LyX insets" FormulaInset and FormulaMacroInset.
 
 */
 
-class LatexRunParams;
+class OutputParams;
 class MathArrayInset;
 class MathAMSArrayInset;
 class MathCharInset;
@@ -237,11 +237,11 @@ public:
 	/// describe content if cursor behind
 	virtual void infoize2(std::ostream &) const {}
 	/// plain ascii output
-	virtual int ascii(std::ostream & os, LatexRunParams const &) const;
+	virtual int plaintext(std::ostream & os, OutputParams const &) const;
 	/// linuxdoc output
-	virtual int linuxdoc(std::ostream & os, LatexRunParams const &) const;
+	virtual int linuxdoc(std::ostream & os, OutputParams const &) const;
 	/// docbook output
-	virtual int docbook(std::ostream & os, LatexRunParams const &) const;
+	virtual int docbook(std::ostream & os, OutputParams const &) const;
 
 	/// dump content to stderr for debugging
 	virtual void dump() const;

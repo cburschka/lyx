@@ -46,16 +46,16 @@ public:
 	void scanCommand(std::string const & c) { p_.scanCommand(c); };
 	///
 	virtual int latex(Buffer const &, std::ostream &,
-			  LatexRunParams const &) const;
+			  OutputParams const &) const;
 	///
-	int ascii(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+	int plaintext(Buffer const &, std::ostream &,
+		  OutputParams const &) const;
 	///
 	virtual int linuxdoc(Buffer const &, std::ostream &,
-			     LatexRunParams const &) const;
+			     OutputParams const &) const;
 	///
 	virtual int docbook(Buffer const &, std::ostream &,
-			    LatexRunParams const & runparams) const;
+			    OutputParams const & runparams) const;
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::NO_CODE; }
 

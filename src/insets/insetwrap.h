@@ -53,10 +53,10 @@ public:
 	InsetOld::Code lyxCode() const { return InsetOld::WRAP_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 	///
 	int docbook(Buffer const &, std::ostream &,
-		    LatexRunParams const &) const;
+		    OutputParams const &) const;
 	///
 	std::string const editMessage() const;
 	///

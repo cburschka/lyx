@@ -33,7 +33,7 @@ class InsetBibitem;
 class InsetOld_code;
 class Language;
 class LaTeXFeatures;
-class LatexRunParams;
+class OutputParams;
 class LyXFont;
 class LyXFont_size;
 class ParagraphParameters;
@@ -84,7 +84,7 @@ public:
 
 	///
 	std::string const asString(Buffer const &,
-				   LatexRunParams const & runparams,
+				   OutputParams const & runparams,
 				   bool label) const;
 	///
 	std::string const asString(Buffer const &, bool label) const;
@@ -95,7 +95,7 @@ public:
 					      bool label) const;
 	///
 	std::string const asString(Buffer const &,
-				   LatexRunParams const & runparams,
+				   OutputParams const & runparams,
 				   lyx::pos_type beg,
 				   lyx::pos_type end,
 				   bool label) const;
@@ -116,13 +116,13 @@ public:
 	///
 	bool simpleTeXOnePar(Buffer const &, BufferParams const &,
 			     LyXFont const & outerfont, std::ostream &,
-			     TexRow & texrow, LatexRunParams const &);
+			     TexRow & texrow, OutputParams const &);
 
 	///
 	void simpleLinuxDocOnePar(Buffer const & buf,
 				  std::ostream & os,
 				  LyXFont const & outerfont,
-				  LatexRunParams const & runparams,
+				  OutputParams const & runparams,
 				  lyx::depth_type depth) const;
 
 	///
@@ -130,7 +130,7 @@ public:
 				 std::ostream &,
 				 LyXFont const & outerfont,
 				 int & desc_on,
-				 LatexRunParams const & runparams,
+				 OutputParams const & runparams,
 				 lyx::depth_type depth) const;
 
 	///

@@ -33,6 +33,10 @@
 #include "lyxrc.h"
 #include "lyxvc.h"
 #include "messages.h"
+#include "output.h"
+#include "output_docbook.h"
+#include "output_latex.h"
+#include "output_linuxdoc.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
@@ -127,19 +131,6 @@ extern BufferList bufferlist;
 namespace {
 
 const int LYX_FORMAT = 225;
-
-bool openFileWrite(ofstream & ofs, string const & fname)
-{
-	ofs.open(fname.c_str());
-	if (!ofs) {
-		string const file = MakeDisplayPath(fname, 50);
-		string text = bformat(_("Could not open the specified "
-					"document\n%1$s."), file);
-		Alert::error(_("Could not open file"), text);
-		return false;
-	}
-	return true;
-}
 
 } // namespace anon
 
@@ -884,36 +875,15 @@ bool Buffer::do_writeFile(ostream & ofs) const
 }
 
 
-void Buffer::writeFileAscii(string const & fname, LatexRunParams const & runparams)
-{
-	ofstream ofs;
-	if (!::openFileWrite(ofs, fname))
-		return;
-	writeFileAscii(ofs, runparams);
-}
-
-
-void Buffer::writeFileAscii(ostream & os, LatexRunParams const & runparams)
-{
-	ParagraphList::iterator beg = paragraphs().begin();
-	ParagraphList::iterator end = paragraphs().end();
-	ParagraphList::iterator it = beg;
-	for (; it != end; ++it) {
-		asciiParagraph(*this, *it, os, runparams, it == beg);
-	}
-	os << "\n";
-}
-
-
 void Buffer::makeLaTeXFile(string const & fname,
 			   string const & original_path,
-			   LatexRunParams const & runparams,
+			   OutputParams const & runparams,
 			   bool output_preamble, bool output_body)
 {
 	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
 
 	ofstream ofs;
-	if (!::openFileWrite(ofs, fname))
+	if (!openFileWrite(ofs, fname))
 		return;
 
 	makeLaTeXFile(ofs, original_path,
@@ -928,10 +898,10 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 void Buffer::makeLaTeXFile(ostream & os,
 			   string const & original_path,
-			   LatexRunParams const & runparams_in,
+			   OutputParams const & runparams_in,
 			   bool output_preamble, bool output_body)
 {
-	LatexRunParams runparams = runparams_in;
+	OutputParams runparams = runparams_in;
 	niceFile() = runparams.nice; // this will be used by Insetincludes.
 
 	// validate the buffer.
@@ -1068,11 +1038,11 @@ bool Buffer::isSGML() const
 
 
 void Buffer::makeLinuxDocFile(string const & fname,
-			      LatexRunParams const & runparams,
+			      OutputParams const & runparams,
 			      bool body_only )
 {
 	ofstream ofs;
-	if (!::openFileWrite(ofs, fname))
+	if (!openFileWrite(ofs, fname))
 		return;
 
 	niceFile() = runparams.nice; // this will be used by included files.
@@ -1131,11 +1101,11 @@ void Buffer::makeLinuxDocFile(string const & fname,
 
 
 void Buffer::makeDocBookFile(string const & fname,
-			     LatexRunParams const & runparams,
+			     OutputParams const & runparams,
 			     bool only_body)
 {
 	ofstream ofs;
-	if (!::openFileWrite(ofs, fname))
+	if (!openFileWrite(ofs, fname))
 		return;
 
 	niceFile() = runparams.nice; // this will be used by Insetincludes.
@@ -1210,8 +1180,8 @@ int Buffer::runChktex()
 	message(_("Running chktex..."));
 
 	// Generate the LaTeX file if neccessary
-	LatexRunParams runparams;
-	runparams.flavor = LatexRunParams::LATEX;
+	OutputParams runparams;
+	runparams.flavor = OutputParams::LATEX;
 	runparams.nice = false;
 	makeLaTeXFile(name, org_path, runparams);
 

@@ -601,15 +601,15 @@ void InsetLatexAccent::read(Buffer const &, LyXLex & lex)
 
 
 int InsetLatexAccent::latex(Buffer const &, ostream & os,
-			    LatexRunParams const &) const
+			    OutputParams const &) const
 {
 	os << contents;
 	return 0;
 }
 
 
-int InsetLatexAccent::ascii(Buffer const &, ostream & os,
-			    LatexRunParams const &) const
+int InsetLatexAccent::plaintext(Buffer const &, ostream & os,
+			    OutputParams const &) const
 {
 	os << contents;
 	return 0;
@@ -617,7 +617,7 @@ int InsetLatexAccent::ascii(Buffer const &, ostream & os,
 
 
 int InsetLatexAccent::linuxdoc(Buffer const &, ostream & os,
-			       LatexRunParams const &) const
+			       OutputParams const &) const
 {
 	os << contents;
 	return 0;
@@ -625,7 +625,7 @@ int InsetLatexAccent::linuxdoc(Buffer const &, ostream & os,
 
 
 int InsetLatexAccent::docbook(Buffer const &, ostream & os,
-			      LatexRunParams const &) const
+			      OutputParams const &) const
 {
 	os << contents;
 	return 0;

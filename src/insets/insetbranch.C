@@ -155,7 +155,7 @@ InsetBranch::priv_dispatch(FuncRequest const & cmd,
 
 
 int InsetBranch::latex(Buffer const & buf, ostream & os,
-	LatexRunParams const & runparams) const
+	OutputParams const & runparams) const
 {
 	string const branch_sel = buf.params().branchlist().allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos)
@@ -165,7 +165,7 @@ int InsetBranch::latex(Buffer const & buf, ostream & os,
 
 
 int InsetBranch::linuxdoc(Buffer const & buf, std::ostream & os,
-			  LatexRunParams const & runparams) const
+			  OutputParams const & runparams) const
 {
 	string const branch_sel = buf.params().branchlist().allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos)
@@ -175,7 +175,7 @@ int InsetBranch::linuxdoc(Buffer const & buf, std::ostream & os,
 
 
 int InsetBranch::docbook(Buffer const & buf, std::ostream & os,
-			 LatexRunParams const & runparams) const
+			 OutputParams const & runparams) const
 {
 	string const branch_sel = buf.params().branchlist().allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos)
@@ -184,12 +184,12 @@ int InsetBranch::docbook(Buffer const & buf, std::ostream & os,
 }
 
 
-int InsetBranch::ascii(Buffer const & buf, std::ostream & os,
-		       LatexRunParams const & runparams) const
+int InsetBranch::plaintext(Buffer const & buf, std::ostream & os,
+		       OutputParams const & runparams) const
 {
 	string const branch_sel = buf.params().branchlist().allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos) {
-		return inset.ascii(buf, os, runparams);
+		return inset.plaintext(buf, os, runparams);
 	}
 	return 0;
 }

@@ -1,3 +1,11 @@
+2003-11-05  José Matos  <jamatos@lyx.org>
+
+	* formula.[Ch] (ascii, linuxdoc, docbook):
+	* formulamacro.[Ch] (ascii, linuxdoc, docbook):
+	* math_inset.[Ch] (ascii, linuxdoc, docbook):
+	* ref_inset.[Ch] (ascii, linuxdoc, docbook):
+	rename ascii to plaintext and LatexRunParams to OutputParams.
+
 2003-11-03  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Adjust for new DispatchResult semantics.
@@ -22,7 +30,6 @@
 
 	* formula.[Ch] (ascii, linuxdoc, docbook):
 	* formulamacro.[Ch] (ascii, linuxdoc, docbook):
-	* math_inset.[Ch] (ascii, linuxdoc, docbook):
 	* math_inset.[Ch] (ascii, linuxdoc, docbook):
 	* ref_inset.[Ch] (ascii, linuxdoc, docbook):
 	add LatexRunParams argument.

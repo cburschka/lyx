@@ -22,10 +22,10 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "latexrunparams.h"
 #include "lyx_main.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
+#include "outputparams.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
@@ -294,7 +294,7 @@ bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
 
 
 int InsetInclude::latex(Buffer const & buffer, ostream & os,
-			LatexRunParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	string incfile(params_.getContents());
 
@@ -364,8 +364,8 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 }
 
 
-int InsetInclude::ascii(Buffer const & buffer, ostream & os,
-			LatexRunParams const &) const
+int InsetInclude::plaintext(Buffer const & buffer, ostream & os,
+			OutputParams const &) const
 {
 	if (isVerbatim(params_))
 		os << GetFileContents(includedFilename(buffer, params_));
@@ -374,7 +374,7 @@ int InsetInclude::ascii(Buffer const & buffer, ostream & os,
 
 
 int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
-			   LatexRunParams const & runparams) const
+			   OutputParams const & runparams) const
 {
 	string incfile(params_.getContents());
 
@@ -401,8 +401,8 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		LatexRunParams runp = runparams;
-		runp.nice = buffer.niceFile();
+		OutputParams runp = runparams;
+		runp.nice = buffer.niceFile();		
 		tmp->makeLinuxDocFile(writefile, runp, true);
 	}
 
@@ -418,7 +418,7 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
 
 
 int InsetInclude::docbook(Buffer const & buffer, ostream & os,
-			  LatexRunParams const & runparams) const
+			  OutputParams const & runparams) const
 {
 	string incfile(params_.getContents());
 
@@ -444,7 +444,7 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		LatexRunParams runp = runparams;
+		OutputParams runp = runparams;
 		runp.nice = buffer.niceFile();
 		tmp->makeDocBookFile(writefile, runp, true);
 	}
@@ -595,8 +595,8 @@ bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
 string const latex_string(InsetInclude const & inset, Buffer const & buffer)
 {
 	ostringstream os;
-	LatexRunParams runparams;
-	runparams.flavor = LatexRunParams::LATEX;
+	OutputParams runparams;
+	runparams.flavor = OutputParams::LATEX;
 	inset.latex(buffer, os, runparams);
 
 	return os.str();

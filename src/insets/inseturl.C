@@ -14,9 +14,9 @@
 
 #include "dispatchresult.h"
 #include "funcrequest.h"
-#include "latexrunparams.h"
 #include "LaTeXFeatures.h"
 #include "gettext.h"
+#include "outputparams.h"
 
 #include "support/lstrings.h"
 
@@ -83,7 +83,7 @@ string const InsetUrl::getScreenLabel(Buffer const &) const
 
 
 int InsetUrl::latex(Buffer const &, ostream & os,
-		    LatexRunParams const & runparams) const
+		    OutputParams const & runparams) const
 {
 	if (!getOptions().empty())
 		os << getOptions() + ' ';
@@ -94,8 +94,8 @@ int InsetUrl::latex(Buffer const &, ostream & os,
 }
 
 
-int InsetUrl::ascii(Buffer const &, ostream & os,
-		    LatexRunParams const &) const
+int InsetUrl::plaintext(Buffer const &, ostream & os,
+		    OutputParams const &) const
 {
 	if (getOptions().empty())
 		os << '[' << getContents() << ']';
@@ -106,7 +106,7 @@ int InsetUrl::ascii(Buffer const &, ostream & os,
 
 
 int InsetUrl::linuxdoc(Buffer const &, ostream & os,
-		       LatexRunParams const &) const
+		       OutputParams const &) const
 {
 	os << '<' << getCmdName()
 	   << " url=\""  << getContents() << "\""
@@ -117,7 +117,7 @@ int InsetUrl::linuxdoc(Buffer const &, ostream & os,
 
 
 int InsetUrl::docbook(Buffer const &, ostream & os,
-		      LatexRunParams const &) const
+		      OutputParams const &) const
 {
 	os << "<ulink url=\"" << subst(getContents(),"&","&amp;")
 	   << "\">" << getOptions() << "</ulink>";

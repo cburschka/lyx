@@ -31,7 +31,7 @@ public:
 	InsetOld::Code lyxCode() const { return InsetOld::MARGIN_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 	///
 	std::string const editMessage() const;
 };

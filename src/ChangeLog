@@ -1,3 +1,27 @@
+2003-11-05  José Matos  <jamatos@lyx.org>
+
+	* output_docbook.[Ch]:
+	* output_latex.[Ch]:
+	* output_linuxdoc.[Ch]:
+	* output_plaintext.[Ch]: New files for output formats.
+	* output.[Ch]: New file for helper functions.
+
+	* buffer.[Ch]:
+	* paragraph_funcs.[Ch]: output functions moved to new files.
+
+	* outputparams.h: rename of latexrunparams.h
+
+	* LaTeX.[Ch]:
+	* buffer.[Ch]:
+	* bufferlist.[Ch]:
+	* converter.[Ch]:
+	* exporter.C:
+	* paragraph.[Ch]:
+	* paragraph_funcs.[Ch]:
+	* paragraph_pimpl.[Ch]:
+	* tabular.[Ch]: rename ascii to plaintext
+	and LatexRunParams to OutputParams.
+	
 2003-11-05  Alfredo Braunstein  <abraunst@libero.it>
 
 	* iterators.[Ch] (text): require bv argument

@@ -17,9 +17,9 @@
 #include "converter.h"
 #include "debug.h"
 #include "format.h"
-#include "latexrunparams.h"
 #include "LColor.h"
 #include "lyxrc.h"
+#include "outputparams.h"
 
 #include "frontends/lyx_gui.h" // hexname
 
@@ -570,8 +570,8 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	// Why on earth is Buffer::makeLaTeXFile a non-const method?
 	Buffer & tmp = const_cast<Buffer &>(buffer_);
 	// Dump the preamble only.
-	LatexRunParams runparams;
-	runparams.flavor = LatexRunParams::LATEX;
+	OutputParams runparams;
+	runparams.flavor = OutputParams::LATEX;
 	runparams.nice = true;
 	runparams.moving_arg = true;
 	runparams.free_spacing = true;
@@ -580,7 +580,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	// FIXME! This is a HACK! The proper fix is to control the 'true'
 	// passed to WriteStream below:
 	// int InsetFormula::latex(Buffer const &, ostream & os,
-	//                         LatexRunParams const & runparams) const
+	//                         OutputParams const & runparams) const
 	// {
 	//	WriteStream wi(os, runparams.moving_arg, true);
 	//	par_->write(wi);

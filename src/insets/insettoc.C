@@ -94,8 +94,8 @@ InsetTOC::priv_dispatch(FuncRequest const & cmd,
 }
 
 
-int InsetTOC::ascii(Buffer const & buffer, ostream & os,
-		    LatexRunParams const &) const
+int InsetTOC::plaintext(Buffer const & buffer, ostream & os,
+		    OutputParams const &) const
 {
 	os << getScreenLabel(buffer) << "\n\n";
 
@@ -107,7 +107,7 @@ int InsetTOC::ascii(Buffer const & buffer, ostream & os,
 
 
 int InsetTOC::linuxdoc(Buffer const &, ostream & os,
-		       LatexRunParams const &) const
+		       OutputParams const &) const
 {
 	if (getCmdName() == "tableofcontents")
 		os << "<toc>";
@@ -116,7 +116,7 @@ int InsetTOC::linuxdoc(Buffer const &, ostream & os,
 
 
 int InsetTOC::docbook(Buffer const &, ostream & os,
-		      LatexRunParams const &) const
+		      OutputParams const &) const
 {
 	if (getCmdName() == "tableofcontents")
 		os << "<toc></toc>";

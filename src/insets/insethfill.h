@@ -29,16 +29,16 @@ public:
 	InsetOld::Code lyxCode() const { return InsetOld::HFILL_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
-		  LatexRunParams const &) const;
+		  OutputParams const &) const;
 	///
-	int ascii(Buffer const &, std::ostream &,
-		  LatexRunParams const & runparams) const;
+	int plaintext(Buffer const &, std::ostream &,
+		  OutputParams const & runparams) const;
 	///
 	int linuxdoc(Buffer const &, std::ostream &,
-		     LatexRunParams const &) const;
+		     OutputParams const &) const;
 	///
 	int docbook(Buffer const &, std::ostream &,
-		    LatexRunParams const & runparams) const;
+		    OutputParams const & runparams) const;
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	/// We don't need \begin_inset and \end_inset

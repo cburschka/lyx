@@ -24,9 +24,9 @@
 #include "gettext.h"
 #include "iterators.h"
 #include "LaTeXFeatures.h"
-#include "latexrunparams.h"
 #include "LColor.h"
 #include "lyxlex.h"
+#include "outputparams.h"
 #include "paragraph.h"
 
 #include "support/lstrings.h"
@@ -272,7 +272,7 @@ string const InsetFloat::editMessage() const
 
 
 int InsetFloat::latex(Buffer const & buf, ostream & os,
-		      LatexRunParams const & runparams) const
+		      OutputParams const & runparams) const
 {
 	FloatList const & floats = buf.params().getLyXTextClass().floats();
 	string const tmptype = (params_.wide ? params_.type + "*" : params_.type);
@@ -314,7 +314,7 @@ int InsetFloat::latex(Buffer const & buf, ostream & os,
 
 
 int InsetFloat::linuxdoc(Buffer const & buf, ostream & os,
-			 LatexRunParams const & runparams) const
+			 OutputParams const & runparams) const
 {
 	FloatList const & floats = buf.params().getLyXTextClass().floats();
 	string const tmptype =  params_.type;
@@ -352,7 +352,7 @@ int InsetFloat::linuxdoc(Buffer const & buf, ostream & os,
 
 
 int InsetFloat::docbook(Buffer const & buf, ostream & os,
-			LatexRunParams const & runparams) const
+			OutputParams const & runparams) const
 {
 	os << '<' << params_.type << '>';
 	int const i = inset.docbook(buf, os, runparams);

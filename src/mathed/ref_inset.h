@@ -36,11 +36,11 @@ public:
 	virtual RefInset * asRefInset() { return this; }
 
 	/// plain ascii output
-	int ascii(std::ostream & os, LatexRunParams const &) const;
+	int plaintext(std::ostream & os, OutputParams const &) const;
 	/// linuxdoc output
-	int linuxdoc(std::ostream & os, LatexRunParams const &) const;
+	int linuxdoc(std::ostream & os, OutputParams const &) const;
 	/// docbook output
-	int docbook(std::ostream & os, LatexRunParams const &) const;
+	int docbook(std::ostream & os, OutputParams const &) const;
 
 	/// small wrapper for the time being
 	DispatchResult localDispatch(FuncRequest const & cmd);
