@@ -165,7 +165,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
-"POT-Creation-Date: 2002-04-24 17:37+0200\n"
+"POT-Creation-Date: 2002-04-25 13:47+0200\n"
 "PO-Revision-Date: 2001-06-23 02:56+01:00\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
@@ -724,7 +724,7 @@ msgstr "Impossible de convertir le fichier"
 msgid "No information for converting from "
 msgstr "Pas d´information pour la conversion de "
 
-#: src/converter.C:581 src/CutAndPaste.C:431 src/CutAndPaste.C:434
+#: src/converter.C:581 src/CutAndPaste.C:425 src/CutAndPaste.C:428
 msgid " to "
 msgstr " vers "
 
@@ -792,11 +792,11 @@ msgstr "Fichier log manquant :"
 msgid "There were errors during the LaTeX run."
 msgstr "LaTeX a produit des erreurs."
 
-#: src/CutAndPaste.C:430
+#: src/CutAndPaste.C:424
 msgid "Layout had to be changed from\n"
 msgstr "Le style de paragraphe est passé de\n"
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:427
 msgid ""
 "\n"
 "because of class conversion from\n"

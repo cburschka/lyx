@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.1.6-fix3\n"
-"POT-Creation-Date: 2002-04-24 17:37+0200\n"
+"POT-Creation-Date: 2002-04-25 13:47+0200\n"
 "PO-Revision-Date: 2002-01-15 19:35GMT+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
@@ -561,7 +561,7 @@ msgstr "Nemô¾em konvertova» súbor"
 msgid "No information for converting from "
 msgstr "®iadne informácie pre konverziu z "
 
-#: src/converter.C:581 src/CutAndPaste.C:431 src/CutAndPaste.C:434
+#: src/converter.C:581 src/CutAndPaste.C:425 src/CutAndPaste.C:428
 msgid " to "
 msgstr " na "
 
@@ -629,11 +629,11 @@ msgstr "Chýba log súbor:"
 msgid "There were errors during the LaTeX run."
 msgstr "Poèas behu LaTeXu sa vyskytli chyby."
 
-#: src/CutAndPaste.C:430
+#: src/CutAndPaste.C:424
 msgid "Layout had to be changed from\n"
 msgstr "Rozlo¾enie musí by» zmenené z\n"
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:427
 msgid ""
 "\n"
 "because of class conversion from\n"

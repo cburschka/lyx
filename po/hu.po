@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6fix1\n"
-"POT-Creation-Date: 2002-04-24 17:37+0200\n"
+"POT-Creation-Date: 2002-04-25 13:47+0200\n"
 "PO-Revision-Date: 2001-02-15 \n"
 "Last-Translator: Zrubecz László <zrubi@k2.jozsef.kando.hu>\n"
 "Language-Team: Magyar <magyar@lists.linux.hu>\n"
@@ -564,7 +564,7 @@ msgstr "Nem lehet átalakítani a fájlt"
 msgid "No information for converting from "
 msgstr "Nem tudom hogy kell átalakítani "
 
-#: src/converter.C:581 src/CutAndPaste.C:431 src/CutAndPaste.C:434
+#: src/converter.C:581 src/CutAndPaste.C:425 src/CutAndPaste.C:428
 msgid " to "
 msgstr " "
 
@@ -635,11 +635,11 @@ msgstr "Hiányzó log fájl:"
 msgid "There were errors during the LaTeX run."
 msgstr "Hibák voltak a LaTeX futtatása közben."
 
-#: src/CutAndPaste.C:430
+#: src/CutAndPaste.C:424
 msgid "Layout had to be changed from\n"
 msgstr "A következõ formátumot meg kellett változtatni a\n"
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:427
 msgid ""
 "\n"
 "because of class conversion from\n"

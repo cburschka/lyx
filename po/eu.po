@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.6fix1\n"
-"POT-Creation-Date: 2002-04-24 17:37+0200\n"
+"POT-Creation-Date: 2002-04-25 13:47+0200\n"
 "PO-Revision-Date: 2001-04-17 12:19+02:00\n"
 "Last-Translator: Iñaki Larrañaga<>\n"
 "Language-Team: Euskara <linux-eu@chanae.alphanet.ch>\n"
@@ -567,7 +567,7 @@ msgstr "Fitxategia ezin bihurtu"
 msgid "No information for converting from "
 msgstr "Bihurketa nondik hasteko informaziorik ez"
 
-#: src/converter.C:581 src/CutAndPaste.C:431 src/CutAndPaste.C:434
+#: src/converter.C:581 src/CutAndPaste.C:425 src/CutAndPaste.C:428
 msgid " to "
 msgstr " hor "
 
@@ -635,11 +635,11 @@ msgstr "Erregistro fitxategia galduta:"
 msgid "There were errors during the LaTeX run."
 msgstr "LaTeX lantzean akatsak sortu dira."
 
-#: src/CutAndPaste.C:430
+#: src/CutAndPaste.C:424
 msgid "Layout had to be changed from\n"
 msgstr "Aurkezpena hemendik aldatu behar da\n"
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:427
 msgid ""
 "\n"
 "because of class conversion from\n"

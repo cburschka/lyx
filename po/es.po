@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.0.0\n"
-"POT-Creation-Date: 2002-04-24 17:37+0200\n"
+"POT-Creation-Date: 2002-04-25 13:47+0200\n"
 "PO-Revision-Date: 2001-02-02 05:24GMT\n"
 "Last-Translator: Germán Poo Caamaño <gpoo@ubiobio.cl>\n"
 "Language-Team: es <es@li.org>\n"
@@ -571,7 +571,7 @@ msgstr "No se puede convertir el archivo"
 msgid "No information for converting from "
 msgstr "No hay información para converción "
 
-#: src/converter.C:581 src/CutAndPaste.C:431 src/CutAndPaste.C:434
+#: src/converter.C:581 src/CutAndPaste.C:425 src/CutAndPaste.C:428
 msgid " to "
 msgstr " para "
 
@@ -639,11 +639,11 @@ msgstr "No se encuentra archivo de registro:"
 msgid "There were errors during the LaTeX run."
 msgstr "Se presentaron errores al ejecutar LaTeX."
 
-#: src/CutAndPaste.C:430
+#: src/CutAndPaste.C:424
 msgid "Layout had to be changed from\n"
 msgstr ""
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:427
 msgid ""
 "\n"
 "because of class conversion from\n"

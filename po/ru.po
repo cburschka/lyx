@@ -30,7 +30,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.1\n"
-"POT-Creation-Date: 2002-04-24 17:37+0200\n"
+"POT-Creation-Date: 2002-04-25 13:47+0200\n"
 "PO-Revision-Date: 2002-02-16 14:29MSK\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: russian <ru@li.org>\n"
@@ -597,7 +597,7 @@ msgid "No information for converting from "
 msgstr "Нет информации для преобразования из "
 
 #
-#: src/converter.C:581 src/CutAndPaste.C:431 src/CutAndPaste.C:434
+#: src/converter.C:581 src/CutAndPaste.C:425 src/CutAndPaste.C:428
 msgid " to "
 msgstr " в "
 
@@ -670,11 +670,11 @@ msgstr "Отсутствует журнал сообщений:"
 msgid "There were errors during the LaTeX run."
 msgstr "Обнаружены ошибки во время работы LaTeX."
 
-#: src/CutAndPaste.C:430
+#: src/CutAndPaste.C:424
 msgid "Layout had to be changed from\n"
 msgstr "Формат должен быть изменён с\n"
 
-#: src/CutAndPaste.C:433
+#: src/CutAndPaste.C:427
 msgid ""
 "\n"
 "because of class conversion from\n"
