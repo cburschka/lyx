@@ -30,7 +30,11 @@ bool MathDecorationInset::upper() const
 
 bool MathDecorationInset::isScriptable() const
 {
-	return true;
+	return
+			name_ == "overbrace" ||
+			name_ == "underbrace" ||
+			name_ == "overleftarrow" ||
+			name_ == "overrightarrow";
 }
 
 
