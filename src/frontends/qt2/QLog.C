@@ -10,63 +10,38 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "qt_helpers.h"
-#include "ControlLog.h"
+#include "controllers/ControlLog.h"
+
 #include "support/std_sstream.h"
+
+#include "QLog.h"
+#include "QLogDialog.h"
+
+#include "qt_helpers.h"
 
 #include <qtextview.h>
 #include <qpushbutton.h>
 
-#include "QLogDialog.h"
-#include "QLog.h"
-#include "Qt2BC.h"
-
-#include <fstream>
-
-using std::ifstream;
-using std::ostringstream;
-using std::string;
 
 typedef QController<ControlLog, QView<QLogDialog> > base_class;
 
 QLog::QLog(Dialog & parent)
-	: base_class(parent, _("LyX: LaTeX Log"))
-{
-}
+	: base_class(parent, "")
+{}
 
 
 void QLog::build_dialog()
 {
 	dialog_.reset(new QLogDialog(this));
-
-	bcview().setCancel(dialog_->closePB);
 }
 
 
 void QLog::update_contents()
 {
-	std::pair<Buffer::LogType, string> const & logfile =
-		controller().logfile();
+	setTitle(controller().title());
 
-	if (logfile.first == Buffer::buildlog)
-		setTitle(_("Build log"));
-	else
-		setTitle(_("LaTeX log"));
+	std::ostringstream ss;
+	controller().getContents(ss);
 
-	dialog_->logTV->setText("");
-
-	ifstream ifstr(logfile.second.c_str());
-	if (!ifstr) {
-		if (logfile.first == Buffer::buildlog)
-			dialog_->logTV->setText(qt_("No build log file found."));
-		else
-			dialog_->logTV->setText(qt_("No LaTeX log file found."));
-		return;
-	}
-
-	ostringstream ost;
-	ost << ifstr.rdbuf();
-
-	dialog_->logTV->setText(toqstr(ost.str()));
+	dialog_->logTV->setText(toqstr(ss.str()));
 }

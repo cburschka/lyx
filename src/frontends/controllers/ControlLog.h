@@ -14,8 +14,6 @@
 #define CONTROLLOG_H
 
 #include "Dialog.h"
-#include "buffer.h" // Buffer::LogType
-#include <utility>
 
 /**
  * A controller for a read-only text browser.
@@ -24,7 +22,9 @@ class ControlLog : public Dialog::Controller {
 public:
 	///
 	ControlLog(Dialog &);
-	///
+	/** \param data should contain "<logtype> <logfile>"
+	 *  where <logtype> is one of "latex", "literate", "lyx2lyx", "vc".
+	 */
 	virtual bool initialiseParams(std::string const & data);
 	///
 	virtual void clearParams();
@@ -32,13 +32,23 @@ public:
 	virtual void dispatchParams() {}
 	///
 	virtual bool isBufferDependent() const { return true; }
-	///
-	std::pair<Buffer::LogType, std::string> const & logfile() const {
-		return logfile_;
-	}
-private:
 
-	std::pair<Buffer::LogType, std::string> logfile_;
+	/// The title displayed by the dialog reflects the \c LOGTYPE
+	std::string const title() const;
+	/// put the log file into the ostream
+	void getContents(std::ostream & ss) const;
+
+private:
+	/// Recognized log file-types
+	enum LOGTYPE {
+		LatexLog,
+		LiterateLog,
+		Lyx2lyxLog,
+		VCLog
+	};
+
+	LOGTYPE type_;
+	std::string logfile_;
 };
 
 #endif // CONTROLLOG_H

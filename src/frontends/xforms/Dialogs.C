@@ -36,7 +36,6 @@
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
 #include "ControlToc.h"
-#include "ControlVCLog.h"
 #include "ControlVSpace.h"
 #include "ControlWrap.h"
 
@@ -72,7 +71,6 @@
 #include "FormText.h"
 #include "FormToc.h"
 #include "FormUrl.h"
-#include "FormVCLog.h"
 #include "FormVSpace.h"
 #include "FormWrap.h"
 
@@ -116,7 +114,7 @@ FormMathsBitmap * createFormBitmap(Dialog & parent, string const & title,
 char const * const dialognames[] = {
 "aboutlyx", "bibitem", "bibtex", "branch", "box", "changes",
 "character", "citation", "error", "errorlist" , "ert", "external", "file",
-"float", "graphics", "include", "index", "label", "latexlog", "mathpanel",
+"float", "graphics", "include", "index", "label", "log", "mathpanel",
 "mathaccents", "matharrows", "mathoperators", "mathrelations", "mathgreek",
 "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
 "mathamsarrows", "mathamsrelations", "mathamsnegatedrelations", "mathamsoperators",
@@ -127,7 +125,7 @@ char const * const dialognames[] = {
 "thesaurus",
 #endif
 
-"toc", "url", "vclog", "vspace", "wrap" };
+"toc", "url", "vspace", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -221,7 +219,7 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setView(new FormText(*dialog,
 					     _("Label"), _("Label:|#L")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
-	} else if (name == "latexlog") {
+	} else if (name == "log") {
 		dialog->setController(new ControlLog(*dialog));
 		dialog->setView(new FormLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
@@ -457,10 +455,6 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new FormUrl(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
-	} else if (name == "vclog") {
-		dialog->setController(new ControlVCLog(*dialog));
-		dialog->setView(new FormVCLog(*dialog));
-		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "vspace") {
 		dialog->setController(new ControlVSpace(*dialog));
 		dialog->setView(new FormVSpace(*dialog));

@@ -34,7 +34,6 @@
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
 #include "ControlToc.h"
-#include "ControlVCLog.h"
 #include "ControlVSpace.h"
 #include "ControlWrap.h"
 
@@ -70,7 +69,6 @@
 #include "QTexinfo.h"
 #include "QToc.h"
 #include "QURL.h"
-#include "QVCLog.h"
 #include "QVSpace.h"
 #include "QWrap.h"
 
@@ -88,7 +86,7 @@ namespace {
 
 char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "branch",
 "changes", "character", "citation", "error", "errorlist", "ert", "external", "file",
-"float", "graphics", "include", "index", "label", "latexlog",
+"float", "graphics", "include", "index", "label", "log",
 "mathpanel", "mathdelimiter", "mathmatrix",
 "minipage", "note", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
 
@@ -96,7 +94,7 @@ char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "branch",
 "thesaurus",
 #endif
 
-"toc", "url", "vclog", "vspace", "wrap" };
+"toc", "url", "vspace", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -197,7 +195,7 @@ Dialog * Dialogs::build(string const & name)
 					   _("LyX: Label"),
 					   qt_("&Label")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
-	} else if (name == "latexlog") {
+	} else if (name == "log") {
 		dialog->setController(new ControlLog(*dialog));
 		dialog->setView(new QLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
@@ -255,10 +253,6 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QURL(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
-	} else if (name == "vclog") {
-		dialog->setController(new ControlVCLog(*dialog));
-		dialog->setView(new QVCLog(*dialog));
-		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "vspace") {
 		dialog->setController(new ControlVSpace(*dialog));
 		dialog->setView(new QVSpace(*dialog));

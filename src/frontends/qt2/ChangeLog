@@ -1,3 +1,10 @@
+2003-12-05  Angus Leeming  <leeming@lyx.org>
+
+	* QLog.C: much simplified, thanks to the more powerful interface
+	of ControlLog.
+
+	* Dialogs.C: no need anymore to build a separate VCLog dialog.
+
 2003-12-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ui/QExternalDialogBase.ui: improved layout.

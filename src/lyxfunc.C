@@ -109,6 +109,7 @@ using lyx::support::os::getTmpDir;
 
 using std::endl;
 using std::make_pair;
+using std::pair;
 using std::string;
 using std::istringstream;
 
@@ -1195,7 +1196,8 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 				data = freefont2string();
 				if (!data.empty())
 					owner->getDialogs().show("character", data);
-			} else if (name == "document")
+			}
+			else if (name == "document")
 				owner->getDialogs().showDocument();
 			else if (name == "findreplace")
 				owner->getDialogs().showSearch();
@@ -1209,6 +1211,26 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 				owner->getDialogs().showPrint();
 			else if (name == "spellchecker")
 				owner->getDialogs().showSpellchecker();
+
+			else if (name == "latexlog") {
+				pair<Buffer::LogType, string> const logfile =
+					owner->buffer()->getLogName();
+				switch (logfile.first) {
+				case Buffer::latexlog:
+					data = "latex ";
+					break;
+				case Buffer::buildlog:
+					data = "literate ";
+					break;
+				}
+				data += logfile.second;
+				owner->getDialogs().show("log", data);
+			}
+			else if (name == "vclog") {
+				string const data = "vc " +
+					owner->buffer()->lyxvc().getLogFile();
+				owner->getDialogs().show("log", data);
+			}
 			else
 				owner->getDialogs().show(name, data);
 			break;

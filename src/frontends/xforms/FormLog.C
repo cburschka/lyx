@@ -14,35 +14,23 @@
 #include "ControlLog.h"
 #include "forms/form_browser.h"
 
-#include "xformsBC.h"
+#include "support/std_sstream.h"
 
 #include "lyx_forms.h"
 
 
-using std::string;
-
-
 FormLog::FormLog(Dialog & parent)
-	: FormController<ControlLog, FormBrowser>(parent, _("LaTeX Log"))
+	: FormController<ControlLog, FormBrowser>(parent, "")
 {}
 
 
 void FormLog::update()
 {
-	bool const buildlog = controller().logfile().first == Buffer::buildlog;
+	setTitle(controller().title());
 
-	string const title = buildlog ?
-		_("LyX: LaTeX Log") :
-		_("LyX: Literate Programming Build Log");
-	setTitle(title);
+	std::ostringstream ss;
+	controller().getContents(ss);
 
 	fl_clear_browser(dialog_->browser);
-	int const valid = fl_load_browser(dialog_->browser,
-					  controller().logfile().second.c_str());
-	if (!valid) {
-		string const error = buildlog ?
-			_("No LaTeX log file found.") :
-			_("No Literate Programming build log file found.");
-		fl_add_browser_line(dialog_->browser, error.c_str());
-	}
+	fl_add_browser_line(dialog_->browser, ss.str().c_str());
 }
