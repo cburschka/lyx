@@ -30,11 +30,6 @@
 using std::string;
 
 
-BufferView * current_view;
-
-GView * GView::view_ = 0;
-
-
 namespace {
 
 void add_el(Gtk::Box::BoxList & list, Gtk::Box & box, bool shrink)
@@ -49,8 +44,6 @@ void add_el(Gtk::Box::BoxList & list, Gtk::Box & box, bool shrink)
 
 GView::GView()
 {
-	view_ = this;
-
 	// The physical store for the boxes making up the layout.
 	box_store_.push_back(boost::shared_ptr<Gtk::Box>(new Gtk::VBox));
 	box_store_.push_back(boost::shared_ptr<Gtk::Box>(new Gtk::HBox));
@@ -91,7 +84,6 @@ GView::GView()
 	toolbar_.reset(new GToolbar(this, 0, 0));
 	toolbar_->init();
 	bufferview_.reset(new BufferView(this, 0, 0, 300, 300));
-	::current_view = bufferview_.get();
 	minibuffer_.reset(new GMiniBuffer(this, *controlcommand_));
 
 	focus_command_buffer.connect(

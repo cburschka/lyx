@@ -42,7 +42,6 @@ public:
 	void focusWorkArea() { workArea_->grab_focus(); }
 	void setGWorkArea(Gtk::Widget * w) { workArea_ = w; }
 
-	static GView * instance() { return view_; }
 	/// show busy cursor
 	virtual void busy(bool) const;
 	/// clear any temporary message and replace with current status
@@ -51,7 +50,6 @@ private:
 	void showViewState();
 	bool onFocusIn(GdkEventFocus * event);
 	virtual void setWindowTitle(std::string const & t, std::string const & it);
-	static GView * view_;
 
 	// The top-most box containing all other boxes.
 	Gtk::VBox top_box_;

@@ -1,5 +1,11 @@
 2004-04-28  Angus Leeming  <leeming@lyx.org>
 
+	* WorkAreaFactory.C (create): pass a LyXView & to QWorkArea c-tor.
+
+	* XWorkArea.[Ch] (c-tor): now receives a LyXView &.
+
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
 	* combox.c (combox_handle): reset the x,y data for the sub-objects
 	on receipt of an FL_DRAWLABEL event. Ensures that all is Ok
 	after the combox has been re-positioned with fl_set_object_position.

@@ -18,12 +18,13 @@
 
 #include "lyx_forms.h"
 
+class LyXView;
 
 ///
 class XWorkArea : public WorkArea {
 public:
 	///
-	XWorkArea(int xpos, int ypos, int width, int height);
+	XWorkArea(LyXView & owner, int xpos, int ypos, int width, int height);
 	///
 	~XWorkArea();
 	///

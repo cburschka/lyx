@@ -19,6 +19,7 @@
 
 #include <qscrollbar.h>
 
+class LyXView;
 class QPixmap;
 class QWidget;
 
@@ -34,7 +35,7 @@ class QWorkArea : public WorkArea, public QWidget {
 public:
 	friend class QContentPane;
 
-	QWorkArea(int x, int y, int w, int h);
+	QWorkArea(LyXView & owner, int x, int y, int w, int h);
 
 	virtual ~QWorkArea();
 	/// return this widget's painter

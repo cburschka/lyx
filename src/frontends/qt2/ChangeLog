@@ -1,3 +1,9 @@
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
+	* WorkAreaFactory.C (create): pass a LyXView & to QWorkArea c-tor.
+
+	* QWorkArea.[Ch] (c-tor): now receives a LyXView &.
+
 2004-04-21  John Levon  <levon@movementarian.org>
 
 	* QLToolbar.C: use GUI name for tooltip

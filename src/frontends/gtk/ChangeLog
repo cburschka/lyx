@@ -1,3 +1,12 @@
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
+	* WorkAreaFactory.C (create): pass a LyXView & to GWorkArea c-tor.
+
+	* GWorkArea.[Ch] (c-tor): now receives a LyXView &. Use it instead
+	of GView::instance.
+
+	* GView.[Ch] (instance): removed.
+
 2004-04-27  Angus Leeming  <leeming@lyx.org>
 
 	* GView.[Ch]: split the window into 'top', 'left', 'center',

@@ -21,6 +21,7 @@
 #include <X11/Xft/Xft.h>
 
 class LColor_color;
+class LyXView;
 
 class ColorCache
 {
@@ -56,7 +57,7 @@ private:
 class GWorkArea : public WorkArea, public SigC::Object
 {
 public:
-	GWorkArea(int width, int height);
+	GWorkArea(LyXView & owner, int width, int height);
 	~GWorkArea();
 
 	virtual Painter & getPainter();

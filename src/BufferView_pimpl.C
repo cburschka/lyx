@@ -121,7 +121,7 @@ BufferView::Pimpl::Pimpl(BufferView & bv, LyXView * owner,
 {
 	xsel_cache_.set = false;
 
-	workarea_.reset(WorkAreaFactory::create(xpos, ypos, width, height));
+	workarea_.reset(WorkAreaFactory::create(*owner_, xpos, ypos, width, height));
 	screen_.reset(LyXScreenFactory::create(workarea()));
 
 	// Setup the signals

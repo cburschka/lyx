@@ -1,3 +1,7 @@
+2004-04-28  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView_pimpl.C (c-tor): pass LyXView & to WorkArea generator.
+
 2004-04-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* LaTeXFeatures.C, lyx_sty.[Ch]: add \lyxdot macro

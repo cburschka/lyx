@@ -96,7 +96,7 @@ int C_event_cb(FL_FORM * form, void * xev)
 } // namespace anon
 
 
-XWorkArea::XWorkArea(int x, int y, int w, int h)
+XWorkArea::XWorkArea(LyXView & owner, int x, int y, int w, int h)
 	: workareapixmap(0), painter_(*this)
 {
 	if (lyxerr.debugging(Debug::WORKAREA)) {

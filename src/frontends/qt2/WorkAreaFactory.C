@@ -15,9 +15,9 @@
 
 namespace WorkAreaFactory {
 
-WorkArea * create(int x, int y, int w, int h)
+WorkArea * create(LyXView & owner, int x, int y, int w, int h)
 {
-	return new QWorkArea(x, y, w, h);
+	return new QWorkArea(owner, x, y, w, h);
 }
 
 } // namespace WorkAreaFactory

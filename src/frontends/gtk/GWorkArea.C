@@ -149,7 +149,7 @@ void inputCommitRelay(GtkIMContext */*imcontext*/, gchar * str, GWorkArea * area
 }
 
 
-GWorkArea::GWorkArea(int width, int height)
+GWorkArea::GWorkArea(LyXView & owner, int width, int height)
 	: workAreaPixmap_(0), painter_(*this), draw_(0), colorHandler_(*this)
 {
 	workArea_.set_size_request(width, height);
@@ -178,13 +178,14 @@ GWorkArea::GWorkArea(int width, int height)
 		Gtk::Box_Helpers::Element(vscrollbar_,Gtk::PACK_SHRINK));
 	hbox_.show();
 
-	GView::instance()->getBox(GView::Center).children().push_back(
+	GView & gview = static_cast<GView &>(owner);
+	gview.getBox(GView::Center).children().push_back(
 		Gtk::Box_Helpers::Element(hbox_));
 
 	workArea_.set_flags(workArea_.get_flags() | Gtk::CAN_DEFAULT |
 			    Gtk::CAN_FOCUS);
 	workArea_.grab_default();
-	GView::instance()->setGWorkArea(&workArea_);
+	gview.setGWorkArea(&workArea_);
 	imContext_ = GTK_IM_CONTEXT(gtk_im_multicontext_new());
 	g_signal_connect(G_OBJECT(imContext_), "commit",
 			 G_CALLBACK(&inputCommitRelay),
