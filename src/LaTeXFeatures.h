@@ -19,6 +19,7 @@
 
 #include <vector>
 #include <set>
+#include <list>
 
 #include "LString.h"
 #include "layout.h"
@@ -26,13 +27,22 @@
 class BufferParams; 
 struct Language;
 
-/** The packages and commands that a buffer needs. This struct
-    contains an entry for each of the latex packages and
-    commands that a buffer might need. This struct is supposed to be
-    extended as the need arises. Remember to update the validate function
-    in buffer.C and paragraph.C when you do so.
+/** The packages and commands that a buffer needs. This class
+    contains a list<string>.  Each of the LaTeX packages that a buffer needs
+    should be added with void require(string const & name).
+
+    i.e require("amssymb")
+
+    To add support you should only need to require() the package name as 
+    packages which don't have special requirements are handled automatically.
+    If your new package does need special consideration you'll need to alter
+    string const getPackages() const;
+    Remember to update the validate function in buffer.C and paragraph.C 
+    when you do so.
 */
-struct LaTeXFeatures {
+class LaTeXFeatures {
+
+public:
 	///
 	LaTeXFeatures(BufferParams const &, LyXTextClass::size_type n) ;
 	/// The packages needed by the document
@@ -43,100 +53,48 @@ struct LaTeXFeatures {
 	string const getTClassPreamble() const;
 	/// The sgml definitions needed by the document (dobook/linuxdoc)
 	string const getLyXSGMLEntities() const;
-	///
+	/// The SGML Required to include the files added with includeFile();
 	string const getIncludedFiles(string const & fname) const;
-	///
+	/// Include a file for use with the SGML entities
+	void includeFile(string const & key, string const & name);
+	/// The float definitions.
 	void getFloatDefinitions(std::ostream & os) const;
-
-	///
+	/// Print requirements to lyxerr
 	void showStruct() const;
-
+	/// 
+	void addExternalPreamble(string const &);
 	/// Provide a string name-space to the requirements
 	void require(string const & name);
+	/// Is the package required?
+	bool isRequired(string const & name) const;
+	///
+	void useFloat(string const & name);
+	///
+	void useLanguage(Language const *);
+	///
+	bool hasLanguages();
+	///
+	string getLanguages() const;
+	///
+	std::set<string> getEncodingSet(string const & doc_encoding);
+	///
+	///
+	void useLayout(std::vector<bool>::size_type const & idx);
+	///
+	BufferParams const & bufferParams() const;
+	///
 
-	/// Static preamble bits from the external material insets
+private:
 	string externalPreambles;
 
-	///
-	bool array;
-	///
-	bool color;     // color.sty
-	///
-	bool graphicx; // graphicx.sty
-	///
-	bool graphics;  // graphics.sty
-	///
-	bool setspace;  // setspace.sty
-	///
-	bool makeidx;   // makeind.sty
-	///
-	bool verbatim;  // verbatim.sty
-	///
-	bool longtable; // longtable.sty
-	///
-	//bool algorithm; // algorithm.sty
-	///
-	bool rotating;  // rotating.sty
-	///
-	bool amssymb;   // amssymb.sty
-	///
-	bool latexsym;   // latexsym.sty
-	///
-	bool pifont;    // pifont.sty
-	///
-	bool subfigure;	// subfigure.sty
-	///
-	bool floatflt;	// floatflt.sty
-	///
-	bool url;       // url.sty
-	///
-	bool varioref;  // varioref.sty
-	///
-	bool prettyref; // prettyref.sty
-	///
-	bool chess;	// skak.sty (new chess support)
-	///
-	bool natbib;    // natbib.sty
-	///
-	bool floats;    // float.sty
-	
-	///
-	bool lyx;
-	///
-	bool lyxline;
-	/// \noun
-	bool noun;
-	/// \lyxarrow
-	bool lyxarrow;
-
-	///
-	bool quotesinglbase;
-	///
-	bool quotedblbase;
-	///
-	bool guilsinglleft;
-	///
-	bool guilsinglright;
-	///
-	bool guillemotleft;
-	///
-	bool guillemotright;
-
-	///
-	bool amsstyle;
-	///
-	bool boldsymbol;
-	///
-	bool binom;
-	
 	std::vector<bool> layout;
 
+	/// Static preamble bits from the external material insets
+
+
+	typedef std::list<string> FeaturesList;
 	///
-	bool ParagraphIndent;
-	///
-	bool NeedLyXFootnoteCode;
-	///
-	bool NeedLyXMinipageIndent;
+	FeaturesList features;
 	///
 	typedef std::set<Language const *> LanguageList;
 	///
@@ -150,8 +108,6 @@ struct LaTeXFeatures {
 	///
 	FileMap IncludedFiles;
 	///
-	BufferParams const & bufferParams() const;
-private:
 	///
 	BufferParams const & params;
 };

@@ -185,10 +185,10 @@ void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 void InsetFloat::validate(LaTeXFeatures & features) const
 {
 	if (contains(placement(), "H")) {
-		features.floats = true;
+		features.require("floats");
 	}
 	
-	features.usedFloats.insert(floatType_);
+	features.useFloat(floatType_);
 	InsetCollapsable::validate(features);
 }
 

@@ -329,12 +329,12 @@ void Paragraph::validate(LaTeXFeatures & features) const
 
 	// check the params.
 	if (params().lineTop() || params().lineBottom())
-		features.lyxline = true;
+		features.require("lyxline");
 	if (!params().spacing().isDefault())
-		features.setspace = true;
+		features.require("setspace");
 	
 	// then the layouts
-	features.layout[getLayout()] = true;
+	features.useLayout(getLayout());
 
 	// then the fonts
 	Language const * doc_language = bparams.language;
@@ -345,7 +345,7 @@ void Paragraph::validate(LaTeXFeatures & features) const
 			lyxerr[Debug::LATEX] << "font.noun: "
 					     << cit->font().noun()
 					     << endl;
-			features.noun = true;
+			features.require("noun");
 			lyxerr[Debug::LATEX] << "Noun enabled. Font: "
 					     << cit->font().stateText(0)
 					     << endl;
@@ -360,7 +360,7 @@ void Paragraph::validate(LaTeXFeatures & features) const
 		case LColor::note:
 			break;
 		default:
-			features.color = true;
+			features.require("color");
 			lyxerr[Debug::LATEX] << "Color enabled. Font: "
 					     << cit->font().stateText(0)
 					     << endl;
@@ -374,7 +374,7 @@ void Paragraph::validate(LaTeXFeatures & features) const
 #endif
 		    language != latex_language)
 		{
-			features.UsedLanguages.insert(language);
+			features.useLanguage(language);
 			lyxerr[Debug::LATEX] << "Found language "
 					     << language->babel() << endl;
 		}
@@ -391,7 +391,7 @@ void Paragraph::validate(LaTeXFeatures & features) const
 			cit->inset->validate(features);
 			if (layout.needprotect &&
 			    cit->inset->lyxCode() == Inset::FOOT_CODE)
-				features.NeedLyXFootnoteCode = true;
+				features.require("NeedLyXFootnoteCode");
 		}
 	}
 }

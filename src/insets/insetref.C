@@ -101,9 +101,9 @@ int InsetRef::docbook(Buffer const *, ostream & os) const
 void InsetRef::validate(LaTeXFeatures & features) const
 {
 	if (getCmdName() == "vref" || getCmdName() == "vpageref")
-		features.varioref = true;
+		features.require("varioref");
 	else if (getCmdName() == "prettyref")
-		features.prettyref = true;
+		features.require("prettyref");
 }
 
 InsetRef::type_info InsetRef::types[] = {

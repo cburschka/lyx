@@ -62,7 +62,7 @@ string const InsetPrintIndex::getScreenLabel(Buffer const *) const
 
 void InsetPrintIndex::validate(LaTeXFeatures & features) const
 {
-	features.makeidx = true;
+	features.require("makeidx");
 }
 
 

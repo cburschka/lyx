@@ -189,7 +189,7 @@ bool MathMacro::idxRight(idx_type &, pos_type &) const
 void MathMacro::validate(LaTeXFeatures & features) const
 {
 	if (name() == "binom")
-		features.binom = true;
+		features.require("binom");
 	//MathInset::validate(features);
 }
 

@@ -2620,12 +2620,12 @@ InsetText * LyXTabular::GetCellInset(int row, int column) const
 void LyXTabular::Validate(LaTeXFeatures & features) const
 {
 	if (IsLongTabular())
-		features.longtable = true;
+		features.require("longtable");
 	if (NeedRotating())
-		features.rotating = true;
-	for (int cell = 0; !features.array && (cell < numberofcells); ++cell) {
+		features.require("rotating");
+	for (int cell = 0; !features.isRequired("array") && (cell < numberofcells); ++cell) {
 		if (GetVAlignment(cell) != LYX_VALIGN_TOP)
-			features.array = true;
+			features.require("array");
 		GetCellInset(cell)->validate(features);
 	}
 }

@@ -2057,16 +2057,13 @@ void Buffer::makeLaTeXFile(string const & fname,
 		if (params.language->babel() == "hebrew"
 		    && default_language->babel() != "hebrew")
 			 // This seems necessary
-			features.UsedLanguages.insert(default_language);
+			features.useLanguage(default_language);
 
 		if (lyxrc.language_use_babel ||
 		    params.language->lang() != lyxrc.default_language ||
-		    !features.UsedLanguages.empty()) {
+		    !features.hasLanguages()) {
 			use_babel = true;
-			for (LaTeXFeatures::LanguageList::const_iterator cit =
-				     features.UsedLanguages.begin();
-			     cit != features.UsedLanguages.end(); ++cit)
-				language_options << (*cit)->babel() << ',';
+			language_options << features.getLanguages();
 			language_options << params.language->babel();
 			if (lyxrc.language_global_options)
 				options << language_options.str() << ',';
@@ -2113,12 +2110,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 			// Create a list with all the input encodings used 
 			// in the document
-			set<string> encodings;
-			for (LaTeXFeatures::LanguageList::const_iterator it =
-				     features.UsedLanguages.begin();
-			     it != features.UsedLanguages.end(); ++it)
-				if ((*it)->encoding()->LatexName() != doc_encoding)
-					encodings.insert((*it)->encoding()->LatexName());
+			set<string> encodings = features.getEncodingSet(doc_encoding);
 
 			ofs << "\\usepackage[";
 			std::copy(encodings.begin(), encodings.end(),
@@ -2234,12 +2226,13 @@ void Buffer::makeLaTeXFile(string const & fname,
 			ofs << "}\n";
 			texrow.newline();
 		}
-		if (features.amsstyle
-		    && !tclass.provides(LyXTextClass::amsmath)) {
+
+		if (features.isRequired("amsstyle")
+			    && !tclass.provides(LyXTextClass::amsmath)) {
 			ofs << "\\usepackage{amsmath}\n";
 			texrow.newline();
 		}
-
+		
 		if (tokenPos(tclass.opt_pagestyle(),
 			     '|', params.pagestyle) >= 0) {
 			if (params.pagestyle == "fancy") {
@@ -3388,8 +3381,8 @@ void Buffer::validate(LaTeXFeatures & features) const
 		textclasslist.TextClass(params.textclass);
     
         // AMS Style is at document level
-        features.amsstyle = (params.use_amsmath ||
-			     tclass.provides(LyXTextClass::amsmath));
+        if (params.use_amsmath || tclass.provides(LyXTextClass::amsmath))
+		features.require("amsstyle");
     
 	while (par) {
 		// We don't use "lyxerr.debug" because of speed. (Asger)
@@ -3418,12 +3411,12 @@ void Buffer::validate(LaTeXFeatures & features) const
 				   || c == 25
 				   || c == 26
 				   || c == 31) {
-					features.latexsym = true;
+					features.require("latexsym");
 				}
 			} else if (font == 1) {
-				features.amssymb = true;
+				features.require("amssymb");
 			} else if ((font >= 2 && font <= 5)) {
-				features.pifont = true;
+				features.require("pifont");
 			}
 		}
 	}

@@ -318,7 +318,7 @@ Inset * InsetSpecialChar::clone(Buffer const &, bool) const
 void InsetSpecialChar::validate(LaTeXFeatures & features) const
 {
 	if (kind_ == MENU_SEPARATOR) {
-		features.lyxarrow = true;
+		features.require("lyxarrow");
 	}
 }
 

@@ -394,10 +394,10 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	if (IsLyXFilename(getFileName()))
 		writefile = ChangeExtension(writefile, ".sgml");
 
-	features.IncludedFiles[include_label] = writefile;
+	features.includeFile(include_label, writefile);
 
 	if (isVerbatim())
-		features.verbatim = true;
+		features.require("verbatim");
 
 	// Here we must do the fun stuff...
 	// Load the file in the include if it needs

@@ -185,7 +185,7 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 		features.require(cit->second.requirement);
 	}
 	if (!cit->second.preamble.empty()) {
-		features.externalPreambles += cit->second.preamble + "\n";
+		features.addExternalPreamble(cit->second.preamble + "\n");
 	}
 }
 

@@ -343,16 +343,16 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 	    && lyxrc.fontenc != "T1") {
 		if (times_ == SingleQ) 
 			switch (type) {
-			case ',': features.quotesinglbase = true; break;
-			case '<': features.guilsinglleft = true; break;
-			case '>': features.guilsinglright = true; break;
+			case ',': features.require("quotesinglbase");  break;
+			case '<': features.require("guilsinglleft");  break;
+			case '>': features.require("guilsinglright"); break;
 			default: break;
 			}
 		else 
 			switch (type) {
-			case ',': features.quotedblbase = true; break;
-			case '<': features.guillemotleft = true; break;
-			case '>': features.guillemotright = true; break;
+			case ',': features.require("quotedblbase");   break;
+			case '<': features.require("guillemotleft");  break;
+			case '>': features.require("guillemotright"); break;
 			default: break;
 			}
 	}

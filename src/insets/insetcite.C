@@ -106,5 +106,5 @@ int InsetCitation::latex(Buffer const * buffer, std::ostream & os,
 void InsetCitation::validate(LaTeXFeatures & features) const
 {
 	if (features.bufferParams().use_natbib)
-		features.natbib = true;
+		features.require("natbib");
 }

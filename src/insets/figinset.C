@@ -1194,8 +1194,9 @@ int InsetFig::docbook(Buffer const *, ostream & os) const
 
 void InsetFig::validate(LaTeXFeatures & features) const
 {
-	features.graphics = true;
-	if (subfigure) features.subfigure = true;
+	features.require("graphics");
+	if (subfigure) 
+		features.require("subfigure");
 }
 
 

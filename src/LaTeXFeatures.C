@@ -25,113 +25,91 @@
 #include "support/lstrings.h"
 #include "FloatList.h"
 #include "language.h"
+#include "encoding.h"
 
 using std::endl;
+using std::set;
 
 LaTeXFeatures::LaTeXFeatures(BufferParams const & p, LyXTextClass::size_type n)
 	: layout(n, false), params(p)
 {
-	// packages
-	array = false;
-	color = false;
-	graphics = false; // INSET_GRAPHICS: remove this when InsetFig is thrown.
-	graphicx = false;
-	setspace = false;
-	makeidx = false;
-	verbatim = false;
-	longtable = false;
-	//algorithm = false;
-	rotating = false;
-	amssymb = false;
-	latexsym = false;
-	pifont = false;
-	subfigure = false;
-	floatflt = false;
-	url = false;
-	varioref = false;
-	prettyref = false;
-	chess = false;
-	natbib = false;
-	floats = false;
 	
-	// commands
-	lyx = false;
-	lyxline = false;
-	noun = false;
-	lyxarrow = false;
-
-	// quotes
-	quotesinglbase = false;
-	quotedblbase = false;
-	guilsinglleft = false;
-	guilsinglright = false;
-	guillemotleft = false;
-	guillemotright = false;
-
-	// Math mode
-	amsstyle = false;
-	binom = false;
-	boldsymbol = false;
-    
-	// special features
-	ParagraphIndent = false;
-	NeedLyXFootnoteCode = false;
-	NeedLyXMinipageIndent = false;
 }
 
 
 void LaTeXFeatures::require(string const & name)
 {
-	if (name == "array") {
-		array = true;
-	} else if (name == "color") {
-		color = true;
-	} else if (name == "graphics") {
-		graphicx = true;
-		graphics = true;// INSET_GRAPHICS: remove this when InsetFig is thrown.
-	} else if (name == "setspace") {
-		setspace = true;
-	} else if (name == "makeidx") {
-		makeidx = true;
-	} else if (name == "verbatim") {
-		verbatim = true;
-	} else if (name == "longtable") {
-		longtable = true;
-	//} else if (name == "algorithm") {
-	//algorithm = true;
-	} else if (name == "rotating") {
-		rotating = true;
-	} else if (name == "amssymb") {
-		amssymb = true;
-	} else if (name == "latexsym") {
-		latexsym = true;
-	} else if (name == "pifont") {
-		pifont = true;
-	} else if (name == "subfigure") {
-		subfigure = true;
-	} else if (name == "floatflt") {
-		floatflt = true;
-	} else if (name == "url") {
-		url = true;
-	} else if (name == "varioref") {
-		varioref = true;
-	} else if (name == "prettyref") {
-		prettyref = true;
-	} else if (name == "chess") {
-		chess = true;
-	} else if (name == "amsstyle") {
-		amsstyle = true;
-	} else if (name == "boldsymbol") {
-		boldsymbol = true;
-	} else if (name == "binom") {
-		binom = true;
-	} else if (name == "natbib") {
-		natbib = true;
-	} else if (name == "float") {
-		floats = true;
-	}
+	// INSET_GRAPHICS: remove this when InsetFig is thrown.
+	if (name == "graphics") {
+		features.push_back("graphicx");
+		features.push_back("graphics");
+	} else
+		features.push_back(name);
+
 }
 
+void LaTeXFeatures::useLayout(std::vector<bool>::size_type const & idx)
+{
+	layout[idx] = true;
+}
+
+bool LaTeXFeatures::isRequired(string const & name) const
+{
+	FeaturesList::const_iterator i = std::find(features.begin(), 
+						   features.end(),
+						   name);
+	return i!= features.end();
+}
+
+void LaTeXFeatures::addExternalPreamble(string const & pream)
+{
+	externalPreambles += pream;
+}
+
+void LaTeXFeatures::useFloat(string const & name)
+{
+	usedFloats.insert(name);
+}
+
+void LaTeXFeatures::useLanguage(Language const * lang)
+{
+	UsedLanguages.insert(lang);
+}
+
+void LaTeXFeatures::includeFile(string const & key, string const & name) 
+{
+	IncludedFiles[key] = name;
+}
+
+bool LaTeXFeatures::hasLanguages() 
+{
+	return !UsedLanguages.empty();
+}
+
+string LaTeXFeatures::getLanguages() const 
+{
+
+	ostringstream languages;
+
+	for (LanguageList::const_iterator cit =
+		    UsedLanguages.begin();
+	     cit != UsedLanguages.end(); 
+	     ++cit)
+		languages << (*cit)->babel() << ',';
+
+	return languages.str().c_str();
+}
+
+set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) 
+{
+	set<string> encodings;
+	for (LanguageList::const_iterator it =
+		     UsedLanguages.begin();
+	     it != UsedLanguages.end(); ++it)
+		if ((*it)->encoding()->LatexName() != doc_encoding)
+			encodings.insert((*it)->encoding()->LatexName());
+	return encodings;
+}
 
 string const LaTeXFeatures::getPackages() const
 {
@@ -139,12 +117,61 @@ string const LaTeXFeatures::getPackages() const
 	LyXTextClass const & tclass =
 		textclasslist.TextClass(params.textclass);
 
-	// array-package
-	if (array)
+
+	/**
+	 *  These are all the 'simple' includes.  i.e
+	 *  packages which we just \usepackage{package}
+	 **/
+
+// array-package
+	if (isRequired("array"))
 		packages << "\\usepackage{array}\n";
 
+	// verbatim.sty
+	if (isRequired("verbatim"))
+		packages << "\\usepackage{verbatim}\n";
+
+	//longtable.sty
+	if (isRequired("longtable"))
+		packages << "\\usepackage{longtable}\n";
+
+	//rotating.sty
+	if (isRequired("rotating"))
+		packages << "\\usepackage{rotating}\n";
+
+
+	// latexsym.sty
+	if (isRequired("latexsym"))
+		packages << "\\usepackage{latexsym}\n";
+
+	// pifont.sty
+	if (isRequired("pifont"))
+		packages << "\\usepackage{pifont}\n";
+
+	// subfigure.sty
+	if (isRequired("subfigure"))
+		packages << "\\usepackage{subfigure}\n";
+
+	// floatflt.sty
+	if (isRequired("floatflt"))
+		packages << "\\usepackage{floatflt}\n";
+
+
+	// varioref.sty
+	if (isRequired("varioref"))
+		packages << "\\usepackage{varioref}\n";
+
+	// prettyref.sty
+	if (isRequired("prettyref"))
+		packages << "\\usepackage{prettyref}\n";
+
+	/**
+	 * The rest of these packages are somewhat more complicated
+	 * than those above.
+	 **/
+
 	// color.sty
-	if (color) {
+	if (isRequired("color")) {
 		if (params.graphicsDriver == "default")
 			packages << "\\usepackage{color}\n";
 		else
@@ -154,14 +181,14 @@ string const LaTeXFeatures::getPackages() const
 	}
 		
 	// makeidx.sty
-	if (makeidx) {
+	if (isRequired("makeidx")) {
 		if (! tclass.provides(LyXTextClass::makeidx))
 			packages << "\\usepackage{makeidx}\n";
 		packages << "\\makeindex\n";
 	}
 
 	// graphicx.sty
-	if (graphicx && params.graphicsDriver != "none") {
+	if (isRequired("graphicx") && params.graphicsDriver != "none") {
 		if (params.graphicsDriver == "default")
 			packages << "\\usepackage{graphicx}\n";
 		else
@@ -172,7 +199,7 @@ string const LaTeXFeatures::getPackages() const
 
 	// INSET_GRAPHICS: remove this when InsetFig is thrown.
 	// graphics.sty
-	if (graphics && params.graphicsDriver != "none") {
+	if (isRequired("graphics") && params.graphicsDriver != "none") {
 		if (params.graphicsDriver == "default")
 			packages << "\\usepackage{graphics}\n";
 		else
@@ -181,23 +208,19 @@ string const LaTeXFeatures::getPackages() const
 				 << "]{graphics}\n";
 	}
 
-	// verbatim.sty
-	if (verbatim)
-		packages << "\\usepackage{verbatim}\n";
-
 	//if (algorithm) {
 	//	packages << "\\usepackage{algorithm}\n";
 	//}
 
 	// lyxskak.sty --- newer chess support based on skak.sty
-	if (chess) {
+	if (isRequired("chess")) {
 		packages << "\\usepackage[ps,mover]{lyxskak}\n";
 	}
 
 	// setspace.sty
 	if ((params.spacing.getSpace() != Spacing::Single
 	     && !params.spacing.isDefault())
-	    || setspace) {
+	    || isRequired("setspace")) {
 		packages << "\\usepackage{setspace}\n";
 	}
 	switch (params.spacing.getSpace()) {
@@ -218,46 +241,13 @@ string const LaTeXFeatures::getPackages() const
 		break;
 	}
 
-	//longtable.sty
-	if (longtable)
-		packages << "\\usepackage{longtable}\n";
-
-	//rotating.sty
-	if (rotating)
-		packages << "\\usepackage{rotating}\n";
-
 	// amssymb.sty
-	if (amssymb || params.use_amsmath)
+	if (isRequired("amssymb") || params.use_amsmath)
 		packages << "\\usepackage{amssymb}\n";
-
-	// latexsym.sty
-	if (latexsym)
-		packages << "\\usepackage{latexsym}\n";
-
-	// pifont.sty
-	if (pifont)
-		packages << "\\usepackage{pifont}\n";
-
-	// subfigure.sty
-	if (subfigure)
-		packages << "\\usepackage{subfigure}\n";
-
-	// floatflt.sty
-	if (floatflt)
-		packages << "\\usepackage{floatflt}\n";
-
 	// url.sty
-	if (url && ! tclass.provides(LyXTextClass::url))
+	if (isRequired("url") && ! tclass.provides(LyXTextClass::url))
 		packages << "\\IfFileExists{url.sty}{\\usepackage{url}}\n"
 			    "                      {\\newcommand{\\url}{\\texttt}}\n";
-
-	// varioref.sty
-	if (varioref)
-		packages << "\\usepackage{varioref}\n";
-
-	// prettyref.sty
-	if (prettyref)
-		packages << "\\usepackage{prettyref}\n";
 
 	// float.sty
 	// We only need float.sty if we use non builtin floats, or if we
@@ -269,17 +259,17 @@ string const LaTeXFeatures::getPackages() const
 		for (; beg != end; ++beg) {
 			Floating const & fl = floatList.getType((*beg));
 			if (!fl.type().empty() && !fl.builtin()) {
-				const_cast<LaTeXFeatures *>(this)->floats = true;
+				const_cast<LaTeXFeatures *>(this)->require("floats");
 				break;
 			}
 		}
 	}
-	if (floats) {
+	if (isRequired("floats")) {
 		packages << "\\usepackage{float}\n";
 	}
 	
 	// natbib.sty
-	if (natbib) {
+	if (isRequired("natbib")) {
 		packages << "\\usepackage[";
 		if (params.use_numerical_citations) {
 			packages << "numbers";
@@ -292,6 +282,7 @@ string const LaTeXFeatures::getPackages() const
 	packages << externalPreambles;
 
 	return packages.str().c_str();
+
 }
 
 
@@ -300,46 +291,46 @@ string const LaTeXFeatures::getMacros() const
 	ostringstream macros;
 
 	// always include this
-	if (true || lyx) 
+	if (true || isRequired("lyx")) 
 		macros << lyx_def << '\n';
 
-	if (lyxline) 
+	if (isRequired("lyxline")) 
 		macros << lyxline_def << '\n';
 
-	if (noun) {
+	if (isRequired("noun")) {
 		macros << noun_def << '\n';
 	}
 
-	if (lyxarrow) {
+	if (isRequired("lyxarrow")) {
 		macros << lyxarrow_def << '\n';
 	}
 
 	// quotes. 
-	if (quotesinglbase)
+	if (isRequired("quotesinglbase"))
 		macros << quotesinglbase_def << '\n';
-	if (quotedblbase)
+	if (isRequired("quotedblbase"))
 		macros << quotedblbase_def << '\n';
-	if (guilsinglleft)
+	if (isRequired("guilsinglleft"))
 		macros << guilsinglleft_def << '\n';
-	if (guilsinglright)
+	if (isRequired("guilsinglright"))
 		macros << guilsinglright_def << '\n';
-	if (guillemotleft)
+	if (isRequired("guillemotleft"))
 		macros << guillemotleft_def << '\n';
-	if (guillemotright)
+	if (isRequired("guillemotright"))
 		macros << guillemotright_def << '\n';
     
         // Math mode    
-	if (boldsymbol && !amsstyle)
+	if (isRequired("boldsymbol") && !isRequired("amsstyle"))
 		macros << boldsymbol_def << '\n';
-	if (binom && !amsstyle)
+	if (isRequired("binom") && !isRequired("amsstyle"))
 		macros << binom_def << '\n';
 
 	// other
-        if (NeedLyXMinipageIndent) 
+        if (isRequired("NeedLyXMinipageIndent"))
 		macros << minipageindent_def;
-        if (ParagraphIndent) 
+        if (isRequired("ParagraphIndent")) 
 		macros << paragraphindent_def;
-        if (NeedLyXFootnoteCode) 
+        if (isRequired("NeedLyXFootnoteCode")) 
 		macros << floatingfootnote_def;
 
 	// floats
@@ -365,9 +356,9 @@ string const LaTeXFeatures::getTClassPreamble() const
 	
 	tcpreamble << tclass.preamble();
 
-	for (unsigned int i = 0; i < tclass.numLayouts(); ++i) {
+	for (LyXTextClass::size_type i = 0; i < tclass.numLayouts(); ++i) {
 		if (layout[i]) {
-			tcpreamble << tclass[i].preamble();
+			tcpreamble  << tclass[i].preamble();
 		}
 	}
 
@@ -380,7 +371,7 @@ string const LaTeXFeatures::getLyXSGMLEntities() const
 	// Definition of entities used in the document that are LyX related.
 	ostringstream entities;
 
-	if (lyxarrow) {
+	if (isRequired("lyxarrow")) {
 		entities << "<!ENTITY lyxarrow \"-&gt;\">"
 			 << '\n';
 	}
@@ -418,7 +409,6 @@ BufferParams const & LaTeXFeatures::bufferParams() const
 {
 	return params;
 }
-
 
 void LaTeXFeatures::getFloatDefinitions(std::ostream & os) const
 {

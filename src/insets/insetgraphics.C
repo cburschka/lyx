@@ -784,10 +784,10 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 	if (params.filename.empty())
 		return ;
 
-	features.graphicx = true;
+	features.require("graphicx");
 
 	if (params.subcaption)
-		features.subfigure = true;
+		features.require("subfigure");
 }
 
 

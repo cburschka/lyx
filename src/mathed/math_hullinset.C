@@ -252,14 +252,17 @@ bool MathHullInset::numberedType() const
 
 void MathHullInset::validate(LaTeXFeatures & features) const
 {
-	features.amsstyle = ams();
+	
+	if (ams())
+		features.require("amsstyle");
+
 
 	// Validation is necessary only if not using AMS math.
 	// To be safe, we will always run mathedvalidate.
 	//if (features.amsstyle)
 	//  return;
 
-	features.boldsymbol = true;
+	features.require("boldsymbol");
 	//features.binom      = true;
 
 	MathNestInset::validate(features);

@@ -91,5 +91,5 @@ int InsetUrl::DocBook(Buffer const *, ostream & os) const
 
 void InsetUrl::validate(LaTeXFeatures & features) const
 {
-	features.url = true;
+	features.require("url");
 }
