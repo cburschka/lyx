@@ -47,7 +47,7 @@ public:
 	///
 	Buffer * owner() const { return owner_; }
 	///
-	VCStatus stat() const { return vcstat; }
+	VCStatus status() const { return vcstatus; }
 protected:
 	///
 	static int doVCCommand(string const &, string const &);
@@ -58,7 +58,7 @@ protected:
 	string master_;
 	
 	/// The status of the VC controlled file.
-	VCStatus vcstat;
+	VCStatus vcstatus;
 	
 	/** The version of the VC file. I am not sure if this can be a
 	    string of if it must be a

@@ -1,3 +1,11 @@
+2000-05-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxvc.C (toggleReadOnly): use VCS::status() instead of stat()
+
+	* src/vc-backend.*: renamed stat() to status() and vcstat to
+	vcstatus. It happens that Tru64 Unix 5.0 has stat() as a macro and
+	compilation broke. The new name seems more relevant, anyway.
+
 2000-05-17  Juergen Vigna  <jug@sad.it>
 
 	* src/BufferView2.C (removeAutoInsets): fixed use of AutoDeleteInsets

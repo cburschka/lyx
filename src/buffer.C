@@ -2272,7 +2272,9 @@ void Buffer::makeLinuxDocFile(string const & fname, int column)
 		LyXLayout const & style =
 			textclasslist.Style(users->buffer()->params.textclass,
 					    par->layout);
+#ifdef WITH_WARNINGS
 #warning please check if this call is really needed!!!
+#endif
 //		par->AutoDeleteInsets();
 
 		// treat <toc> as a special case for compatibility with old code
@@ -2873,7 +2875,9 @@ void Buffer::makeDocBookFile(string const & fname, int column)
 		LyXLayout const & style =
 			textclasslist.Style(users->buffer()->params.textclass,
 					    par->layout);
+#ifdef WITH_WARNINGS
 #warning please check if this call is really needed!!!
+#endif
 //		par->AutoDeleteInsets();
 
 		// environment tag closing

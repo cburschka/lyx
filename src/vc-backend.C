@@ -106,7 +106,7 @@ void RCS::scanMaster()
 			// get locker here
 			if (contains(token, ";")) {
 				locker_ = "Unlocked";
-				vcstat = UNLOCKED;
+				vcstatus = UNLOCKED;
 				continue;
 			}
 			string tmpt, s1, s2;
@@ -118,7 +118,7 @@ void RCS::scanMaster()
 				// s2 is user, and s1 is version
 				if (s1 == version_) {
 					locker_ = s2;
-					vcstat = LOCKED;
+					vcstatus = LOCKED;
 					break;
 				}
 			} while (!contains(tmpt, ";"));
@@ -258,12 +258,12 @@ void CVS::scanMaster()
 				<< mod_date << "'" << endl;
 			if (file_date == mod_date) {
 				locker_ = "Unlocked";
-				vcstat = UNLOCKED;
+				vcstatus = UNLOCKED;
 			} else {
 				// Here we should also to some more checking
 				// to see if there are conflicts or not.
 				locker_ = "Locked";
-				vcstat = LOCKED;
+				vcstatus = LOCKED;
 			}
 			break;
 		}
