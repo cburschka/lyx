@@ -1,5 +1,8 @@
 2003-03-14  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* lyx2lyx/lyxconvert_218.py (remove_pextra): Fix conversion of
+	minipages that contains tabulars.
+
 	* lyx2lyx/lyx2lyx (main): Handle development version files
 
 2003-03-12  Angus Leeming  <leeming@lyx.org>

@@ -164,11 +164,8 @@ def remove_pextra(lines):
 	else:
 	    start = ["\\layout Standard"] + start
 
-	j = find_token_backwards(lines,"\\layout", i-1)
-	j0 = j
-
-	j = find_tokens(lines, ["\\layout", "\\end_float"], i+1)
-	# j can be -1
+	j0 = find_token_backwards(lines,"\\layout", i-1)
+	j = get_next_paragraph(lines, i)
 
 	count = 0
 	while 1:
