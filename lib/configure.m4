@@ -533,6 +533,7 @@ cat >>$outfile <<EOF
 \\converter agr eps "gracebat -hardcopy -printfile \$\$o -hdevice EPS \$\$i 2>/dev/null" ""
 \\converter agr png "gracebat -hardcopy -printfile \$\$o -hdevice PNG \$\$i 2>/dev/null" ""
 \\converter agr jpg "gracebat -hardcopy -printfile \$\$o -hdevice JPEG \$\$i 2>/dev/null" ""
+\\converter agr ppm "gracebat -hardcopy -printfile \$\$o -hdevice PNM \$\$i 2>/dev/null" ""
 EOF
 fi
 
