@@ -161,6 +161,7 @@ void QPrefs::apply()
 
 	rc.fontenc = fromqstr(latexmod->latexEncodingED->text());
 	rc.chktex_command = fromqstr(latexmod->latexChecktexED->text());
+	rc.bibtex_command = fromqstr(latexmod->latexBibtexED->text());
 	rc.auto_reset_options = latexmod->latexAutoresetCB->isChecked();
 	rc.view_dvi_paper_option = fromqstr(latexmod->latexDviPaperED->text());
 	rc.default_papersize =
@@ -472,6 +473,7 @@ void QPrefs::update_contents()
 
 	latexmod->latexEncodingED->setText(toqstr(rc.fontenc));
 	latexmod->latexChecktexED->setText(toqstr(rc.chktex_command));
+	latexmod->latexBibtexED->setText(toqstr(rc.bibtex_command));
 	latexmod->latexAutoresetCB->setChecked(rc.auto_reset_options);
 	latexmod->latexDviPaperED->setText(toqstr(rc.view_dvi_paper_option));
 	latexmod->latexPaperSizeCO->setCurrentItem(rc.default_papersize);

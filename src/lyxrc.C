@@ -65,6 +65,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\auto_reset_options", LyXRC::RC_AUTORESET_OPTIONS },
 	{ "\\autosave", LyXRC::RC_AUTOSAVE },
 	{ "\\backupdir_path", LyXRC::RC_BACKUPDIR_PATH },
+	{ "\\bibtex_command", LyXRC::RC_BIBTEX_COMMAND },
 	{ "\\bind_file", LyXRC::RC_BINDFILE },
 	{ "\\check_lastfiles", LyXRC::RC_CHECKLASTFILES },
 	{ "\\chktex_command", LyXRC::RC_CHKTEX_COMMAND },
@@ -201,6 +202,7 @@ void LyXRC::setDefaults() {
 	default_papersize = PAPER_USLETTER;
 	custom_export_format = "ps";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
+	bibtex_command = "bibtex";
 	fontenc = "default";
 	dpi = 75;
 	// Because a screen typically is wider than a piece of paper:
@@ -553,6 +555,12 @@ int LyXRC::read(string const & filename)
 		case RC_CHKTEX_COMMAND:
 			if (lexrc.next()) {
 				chktex_command = lexrc.getString();
+			}
+			break;
+			
+		case RC_BIBTEX_COMMAND:
+			if (lexrc.next()) {
+				bibtex_command = lexrc.getString();
 			}
 			break;
 
@@ -1160,6 +1168,10 @@ void LyXRC::output(ostream & os) const
 	case RC_CHKTEX_COMMAND:
 		if (chktex_command != system_lyxrc.chktex_command) {
 			os << "\\chktex_command \"" << chktex_command << "\"\n";
+		}
+	case RC_BIBTEX_COMMAND:
+		if (bibtex_command != system_lyxrc.bibtex_command) {
+			os << "\\bibtex_command \"" << bibtex_command << "\"\n";
 		}
 	case RC_KBMAP:
 		if (use_kbmap != system_lyxrc.use_kbmap) {
@@ -1976,6 +1988,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_CHKTEX_COMMAND:
 		str = _("Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\" Refer to the ChkTeX documentation.");
+		break;
+		
+	case RC_BIBTEX_COMMAND:
+		str = _("Define the options of bibtex (cf. man bibtex) or select and alternative compiler (e.g. mlbibtex or bibulus).");
 		break;
 
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:

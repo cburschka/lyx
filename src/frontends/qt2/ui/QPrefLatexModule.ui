@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>376</width>
+            <width>372</width>
             <height>237</height>
         </rect>
     </property>
@@ -21,7 +21,7 @@
         <name>caption</name>
         <string>LaTeX settings</string>
     </property>
-    <vbox>
+    <grid>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -30,7 +30,7 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget>
+        <widget row="0"  column="0" >
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
@@ -177,7 +177,7 @@
                 </spacer>
             </hbox>
         </widget>
-        <widget>
+        <widget row="1"  column="0" >
             <class>QCheckBox</class>
             <property stdset="1">
                 <name>name</name>
@@ -192,7 +192,28 @@
                 <string>Set class options to default on class change</string>
             </property>
         </widget>
-        <widget>
+        <spacer row="3"  column="0" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer3</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="2"  column="0" >
             <class>QGroupBox</class>
             <property stdset="1">
                 <name>name</name>
@@ -211,22 +232,7 @@
                     <name>spacing</name>
                     <number>6</number>
                 </property>
-                <widget row="0"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>latexChecktexLA</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Chec&amp;kTeX command:</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>latexChecktexED</cstring>
-                    </property>
-                </widget>
-                <widget row="1"  column="0" >
+                <widget row="2"  column="0" >
                     <class>QLabel</class>
                     <property stdset="1">
                         <name>name</name>
@@ -241,7 +247,7 @@
                         <cstring>latexDviPaperED</cstring>
                     </property>
                 </widget>
-                <widget row="1"  column="1" >
+                <widget row="2"  column="1" >
                     <class>QLineEdit</class>
                     <property stdset="1">
                         <name>name</name>
@@ -263,30 +269,50 @@
                         <string>CheckTeX start options and flags</string>
                     </property>
                 </widget>
+                <widget row="0"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>latexChecktexLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Chec&amp;kTeX command:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>latexChecktexED</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>latexBibtexED</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>BibTeX command and options</string>
+                    </property>
+                </widget>
+                <widget row="1"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>latexChecktexLA_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;BibTeX command:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>latexChecktexED</cstring>
+                    </property>
+                </widget>
             </grid>
         </widget>
-        <spacer>
-            <property>
-                <name>name</name>
-                <cstring>Spacer3</cstring>
-            </property>
-            <property stdset="1">
-                <name>orientation</name>
-                <enum>Vertical</enum>
-            </property>
-            <property stdset="1">
-                <name>sizeType</name>
-                <enum>Expanding</enum>
-            </property>
-            <property>
-                <name>sizeHint</name>
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-    </vbox>
+    </grid>
 </widget>
 <tabstops>
     <tabstop>latexEncodingED</tabstop>

@@ -98,6 +98,7 @@ enum LyXRCTags {
 	RC_PERS_DICT,
 	RC_ESC_CHARS,
 	RC_CHKTEX_COMMAND,
+	RC_BIBTEX_COMMAND,
 	RC_CURSOR_FOLLOWS_SCROLLBAR,
 	RC_DIALOGS_ICONIFY_WITH_MAIN,
 	RC_MAKE_BACKUP,
@@ -196,6 +197,8 @@ enum LyXRCTags {
 	PAPER_SIZE default_papersize;
 	/// command to run chktex incl. options
 	std::string chktex_command;
+	/// command to run bibtex incl. options
+	std::string bibtex_command;
 	///
 	std::string document_path;
 	///

@@ -17,6 +17,7 @@
 #include "LaTeX.h"
 #include "bufferlist.h"
 #include "gettext.h"
+#include "lyxrc.h"
 #include "debug.h"
 #include "DepTable.h"
 #include "support/filetools.h"
@@ -70,12 +71,10 @@ using std::vector;
 //   BufferList::updateIncludedTeXfiles, this should either
 //   be done before calling LaTeX::funcs or in a completely
 //   different way.
-// - the bibtex command options should be supported.
 // - the makeindex style files should be taken care of with
 //   the dependency mechanism.
 // - makeindex commandline options should be supported
 // - somewhere support viewing of bibtex and makeindex log files.
-// - we should perhaps also scan the bibtex log file
 // - we should perhaps also scan the bibtex log file
 
 extern BufferList bufferlist;
@@ -528,11 +527,7 @@ bool LaTeX::runBibTeX(vector<Aux_Info> const & bibtex_info)
 			continue;
 		result = true;
 
-		// FIXME: the bibtex call should not be hardcoded. bibtex has 
-		// options (--min-crossrefs is useful) and there are also 
-		// alternatives (bibtex8, bibulus, mlbibtex, clbibtex etc.). 
-		// Move to converters? (JSpitzm)
-		string tmp = "bibtex ";
+		string tmp = lyxrc.bibtex_command + " ";
 		tmp += OnlyFilename(ChangeExtension(it->aux_file, string()));
 		Systemcall one;
 		one.startscript(Systemcall::Wait, tmp);

@@ -1737,6 +1737,7 @@ void FormPreferences::OutputsMisc::apply(LyXRC & rc) const
 
 	rc.ascii_roff_command = fl_get_input(dialog_->input_ascii_roff);
 	rc.chktex_command = fl_get_input(dialog_->input_checktex);
+	rc.bibtex_command = fl_get_input(dialog_->input_bibtex);
 	rc.view_dvi_paper_option = fl_get_input(dialog_->input_paperoption);
 	rc.auto_reset_options = fl_get_button(dialog_->check_autoreset_classopt);
 }
@@ -1802,6 +1803,8 @@ void FormPreferences::OutputsMisc::update(LyXRC const & rc)
 		     rc.ascii_roff_command.c_str());
 	fl_set_input(dialog_->input_checktex,
 		     rc.chktex_command.c_str());
+	fl_set_input(dialog_->input_bibtex,
+		     rc.bibtex_command.c_str());
 	fl_set_input(dialog_->input_paperoption,
 		     rc.view_dvi_paper_option.c_str());
 	fl_set_button(dialog_->check_autoreset_classopt,
