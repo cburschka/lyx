@@ -90,6 +90,7 @@ using std::setw;
 #include "support/FileInfo.h"
 #include "lyxtext.h"
 #include "gettext.h"
+#include "language.h"
 
 // Uncomment this line to enable a workaround for the weird behaviour
 // of the cursor between a displayed inset and last character
@@ -109,7 +110,7 @@ extern void MenuExport(Buffer *, string const &);
 extern LyXAction lyxaction;
 
 
-static const float LYX_FORMAT = 2.15;
+static const float LYX_FORMAT = 2.16;
 
 extern int tex_code_break_column;
 
@@ -222,7 +223,9 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 	bool the_end_read = false;
 
 	LyXParagraph * return_par = 0;
-	LyXFont font(LyXFont::ALL_INHERIT);
+	LyXFont font(LyXFont::ALL_INHERIT,params.language_info);
+	if (format < 2.16 && params.language == "hebrew")
+		font.setLanguage(default_language);
 
 	// If we are inserting, we cheat and get a token in advance
 	bool has_token = false;
@@ -331,7 +334,9 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		par->footnoteflag = footnoteflag;
 		par->footnotekind = footnotekind;
 		par->depth = depth;
-		font = LyXFont(LyXFont::ALL_INHERIT);
+		font = LyXFont(LyXFont::ALL_INHERIT,params.language_info);
+		if (format < 2.16 && params.language == "hebrew")
+			font.setLanguage(default_language);
 	} else if (token == "\\end_float") {
 		if (!return_par) 
 			return_par = par;
@@ -344,7 +349,9 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		pos = 0;
 		lex.EatLine();
 		par->layout = LYX_DUMMY_LAYOUT;
-		font = LyXFont(LyXFont::ALL_INHERIT);
+		font = LyXFont(LyXFont::ALL_INHERIT,params.language_info);
+		if (format < 2.16 && params.language == "hebrew")
+			font.setLanguage(default_language);
 	} else if (token == "\\begin_float") {
 		tmpret = lex.FindToken(string_footnotekinds);
 		if (tmpret == -1) ++tmpret;
@@ -648,18 +655,30 @@ bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		else
 			lex.printError("Unknown LaTeX font flag "
 				       "`$$Token'");
-	} else if (token == "\\direction") {
+	} else if (token == "\\lang") {
 		lex.next();
 		string tok = lex.GetString();
-		if (tok == "ltr")
-			font.setDirection(LyXFont::LTR_DIR);
-		else if (tok == "rtl")
-			font.setDirection(LyXFont::RTL_DIR);
+		Languages::iterator lit = languages.find(tok);
+		if (lit != languages.end()) {
+			font.setLanguage(&(*lit).second);
+		} else {
+			font.setLanguage(params.language_info);
+			lex.printError("Unknown language `$$Token'");
+		}
+	} else if (token == "\\direction") { // obsolete
+		if (format >= 2.16)
+			lex.printError("Command \\direction is obsolete");
+		lex.next();
+		string tok = lex.GetString();
+		if (tok == "rtl")
+			font.setLanguage(&languages["hebrew"]);
 		else if (tok == "default")
-			font.setDirection(LyXFont::INHERIT_DIR);
+			if (params.language == "hebrew")
+				font.setLanguage(default_language);
+			else
+				font.setLanguage(params.language_info);
 		else
-			lex.printError("Unknown font flag "
-				       "`$$Token'");
+			lex.printError("Unknown direction `$$Token'");
 	} else if (token == "\\emph") {
 		lex.next();
 		font.setEmph(font.setLyXMisc(lex.GetString()));
@@ -1392,7 +1411,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 				clen[j] = h;
 		}
       
-		font1 = LyXFont(LyXFont::ALL_INHERIT);
+		font1 = LyXFont(LyXFont::ALL_INHERIT,params.language_info);
                 actcell = 0;
 		for (i = 0, actpos = 1; i < par->size(); ++i, ++actpos) {
 			if (!i && !footnoteflag && !noparbreak){
@@ -1702,13 +1721,19 @@ void Buffer::makeLaTeXFile(string const & fname,
 		    && params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
 			options += "landscape,";
 		
-		// language should be a parameter to \documentclass		
-		if (params.language != "default") {
-			if (params.language == "hebrew")
-				options += "english,";
-			else if (lyxrc.rtl_support)
-				options += "hebrew,";
-			options += params.language + ',';
+		// language should be a parameter to \documentclass
+		bool use_babel = false;
+		if (params.language != "default" ||
+		    !features.UsedLanguages.empty() ) {
+			use_babel = true;
+			for (LaTeXFeatures::LanguageList::const_iterator cit =
+				     features.UsedLanguages.begin();
+			     cit != features.UsedLanguages.end(); ++cit) {
+				options += (*cit)->lang + ",";
+			}
+			if (default_language != params.language_info)
+				options += default_language ->lang + ',';
+			options += params.language_info->lang + ',';
 		}
 
 		// the user-defined options
@@ -1864,8 +1889,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 		// We try to load babel late, in case it interferes
 		// with other packages.
-		if (params.language != "default") {
-			ofs << lyxrc.language_package;
+		if (use_babel) {
+			ofs << lyxrc.language_package << endl;
 			texrow.newline();
 		}
 
@@ -1990,9 +2015,12 @@ void Buffer::makeLaTeXFile(string const & fname,
 		texrow.newline();
 	} // only_body
 	lyxerr.debug() << "preamble finished, now the body." << endl;
-	if (lyxrc.language_command_begin &&
-	    params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT)
-		ofs << lyxrc.language_command_rtl;
+	if (!lyxrc.language_auto_begin && params.language != "default") {
+		ofs << subst(lyxrc.language_command_begin, "$$lang",
+			     params.language)
+		    << endl;
+		texrow.newline();
+	}
 	
 	bool was_title = false;
 	bool already_title = false;
@@ -2084,9 +2112,12 @@ void Buffer::makeLaTeXFile(string const & fname,
 		texrow.newline();
 	}
 
-	if (lyxrc.language_command_end &&
-	    params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT)
-		ofs << lyxrc.language_command_ltr;
+	if (!lyxrc.language_auto_end && params.language != "default") {
+		ofs << subst(lyxrc.language_command_end, "$$lang",
+			     params.language)
+		    << endl;
+		texrow.newline();
+	}
 
 	if (!only_body) {
 		ofs << "\\end{document}\n";
@@ -2701,10 +2732,6 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 		}
 		font1 = font2;
 	}
-
-	if (lyxrc.language_command_end &&
-	    params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT)
-		os << lyxrc.language_command_ltr;
 
 	/* needed if there is an optional argument but no contents */
 	if (main_body > 0 && main_body == par->size()) {
@@ -3429,7 +3456,7 @@ int Buffer::runChktex()
 #if 0
 void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 {
-	LyXFont font1(LyXFont::ALL_INHERIT);
+	LyXFont font1(LyXFont::ALL_INHERIT,params.language_info);
 	LyXFont font2;
 	Inset * inset;
 	LyXParagraph::size_type i;

@@ -19,7 +19,7 @@
 #include FORMS_H_LOCATION
 #include "LString.h"
 #include "debug.h"
-#include "direction.h"
+#include "language.h"
 #include "LColor.h"
 
 // It might happen that locale.h defines ON and OFF. This is not good
@@ -122,19 +122,6 @@ public:
 		IGNORE_SIZE
 	};
  
-	enum FONT_DIRECTION {
-		///
-		LTR_DIR,
-		///
-		RTL_DIR,
-		///
-		TOGGLE_DIR,
-		///
-		INHERIT_DIR,
-		///
-		IGNORE_DIR
-	};
-
 	/// Used for emph, underbar, noun and latex toggles
 	enum FONT_MISC_STATE {
 		///
@@ -177,6 +164,12 @@ public:
 	LyXFont(LyXFont::FONT_INIT2);
 	/// Shortcut initialization
 	LyXFont(LyXFont::FONT_INIT3);
+	/// Shortcut initialization
+	LyXFont(LyXFont::FONT_INIT1, Language const * l);
+	/// Shortcut initialization
+	LyXFont(LyXFont::FONT_INIT2, Language const * l);
+	/// Shortcut initialization
+	LyXFont(LyXFont::FONT_INIT3, Language const * l);
 
 	/// LyXFont x, y; x = y;
 	LyXFont & operator=(LyXFont const & x);
@@ -215,10 +208,13 @@ public:
 	LColor::color color() const;
 
  	///
-	FONT_DIRECTION direction() const;
+	Language const * language() const;
 
 	///
-	LyXDirection getFontDirection() const;
+	bool isRightToLeft() const;
+
+	///
+	bool isVisibleRightToLeft() const;
 	
 	///
 	LyXFont & setFamily(LyXFont::FONT_FAMILY f);
@@ -239,7 +235,7 @@ public:
 	///
 	LyXFont & setColor(LColor::color c);
  	///
-	LyXFont & setDirection(LyXFont::FONT_DIRECTION d);
+	LyXFont & setLanguage(Language const * l);
 
 	/// Set family after LyX text format
 	LyXFont & setLyXFamily(string const &);
@@ -275,7 +271,9 @@ public:
  	 * a INHERIT_FAMILY was asked for.  This is necessary for the
  	 * toggle-user-defined-style button on the toolbar.
  	 */
- 	void update(LyXFont const & newfont, bool toggleall = false);
+ 	void update(LyXFont const & newfont, 
+		    Language const * default_lang,
+		    bool toggleall = false);
  
 	/** Reduce font to fall back to template where possible.
 	    Equal fields are reduced to INHERIT */
@@ -293,7 +291,6 @@ public:
 	/// Writes the changes from this font to orgfont in .lyx format in file
 	void lyxWriteChanges(LyXFont const & orgfont, ostream &) const;
 
-
 	/** Writes the head of the LaTeX needed to change to this font.
 	    Writes to string, the head of the LaTeX needed to change
 	    to this font. Returns number of chars written. Base is the
@@ -301,6 +298,7 @@ public:
 	*/
 	int latexWriteStartChanges(ostream &, LyXFont const & base,
 				   LyXFont const & prev) const;
+
 	/** Writes tha tail of the LaTeX needed to chagne to this font.
 	    Returns number of chars written. Base is the font state we want
 	    to achieve.
@@ -358,13 +356,15 @@ public:
 	///
 	friend inline
 	bool operator==(LyXFont const & font1, LyXFont const & font2) {
-		return font1.bits == font2.bits;
+		return font1.bits == font2.bits &&
+			font1.lang == font2.lang;
 	}
 
 	///
 	friend inline
 	bool operator!=(LyXFont const & font1, LyXFont const & font2) {
-		return font1.bits != font2.bits;
+		return font1.bits != font2.bits ||
+			font1.lang != font2.lang;
 	}
 
 	/// compares two fonts, ignoring the setting of the Latex part.
@@ -382,8 +382,7 @@ private:
 				fb1.emph == emph &&
 				fb1.underbar == underbar &&
 				fb1.noun == noun &&
-				fb1.latex == latex &&
-				fb1.direction == direction;
+				fb1.latex == latex;
 		}
 		bool operator!=(FontBits const & fb1) const {
 			return !(fb1 == *this);
@@ -398,10 +397,10 @@ private:
 		FONT_MISC_STATE underbar;
 		FONT_MISC_STATE noun;
 		FONT_MISC_STATE latex;
-		FONT_DIRECTION direction;
 	};
 
 	FontBits bits;
+	Language const * lang;
 	
 	/// Sane font
 	static FontBits sane;
@@ -429,6 +428,7 @@ inline
 LyXFont::LyXFont()
 {
 	bits = sane;
+	lang = default_language;
 }
 
 
@@ -436,6 +436,7 @@ inline
 LyXFont::LyXFont(LyXFont const & x)
 {
 	bits = x.bits;
+	lang = x.lang;
 }
 
 
@@ -443,6 +444,7 @@ inline
 LyXFont::LyXFont(LyXFont::FONT_INIT1)
 {
 	bits = inherit;
+	lang = default_language;
 }
 
 
@@ -450,6 +452,7 @@ inline
 LyXFont::LyXFont(LyXFont::FONT_INIT2)
 {
 	bits = ignore;
+	lang = ignore_language;
 }
 
 
@@ -457,13 +460,36 @@ inline
 LyXFont::LyXFont(LyXFont::FONT_INIT3)
 {
 	bits = sane;
+	lang = default_language;
+}
+inline
+LyXFont::LyXFont(LyXFont::FONT_INIT1, Language const * l)
+{
+	bits = inherit;
+	lang = l;
 }
 
+
+inline
+LyXFont::LyXFont(LyXFont::FONT_INIT2, Language const * l)
+{
+	bits = ignore;
+	lang = l;
+}
+
+
+inline
+LyXFont::LyXFont(LyXFont::FONT_INIT3, Language const * l)
+{
+	bits = sane;
+	lang = l;
+}
 
 inline
 LyXFont & LyXFont::operator=(LyXFont const & x) 
 {
 	bits = x.bits;
+	lang = x.lang;
 	return *this;
 }
 
@@ -532,10 +558,25 @@ LColor::color LyXFont::color() const
 
 
 inline
-LyXFont::FONT_DIRECTION LyXFont::direction() const 
+Language const * LyXFont::language() const 
 {
-	return bits.direction;
+	return lang;
 }
+
+
+inline
+bool LyXFont::isRightToLeft() const 
+{
+	return lang->RightToLeft;
+}
+
+
+inline
+bool LyXFont::isVisibleRightToLeft() const 
+{
+	return (lang->RightToLeft && latex() != ON);
+}
+
 
 inline
 LyXFont & LyXFont::setFamily(LyXFont::FONT_FAMILY f)
@@ -609,9 +650,9 @@ LyXFont & LyXFont::setColor(LColor::color c)
 
 
 inline
-LyXFont & LyXFont::setDirection(LyXFont::FONT_DIRECTION d)
+LyXFont & LyXFont::setLanguage(Language const * l)
 {
-	bits.direction = d;
+	lang = l;
 	return *this;
 }
 

@@ -53,6 +53,7 @@ using std::ifstream;
 #include "lyxtext.h"
 #include "gettext.h"
 #include "layout.h"
+#include "language.h"
 
 extern Combox * combo_language;
 extern BufferList bufferlist;
@@ -164,7 +165,7 @@ void ToggleLockedInsetCursor(long x, long y, int asc, int desc);
 
 /* some function prototypes */
 
-int RunLinuxDoc(int, string const &);
+int RunLinuxDoc(BufferView *, int, string const &);
 int RunDocBook(int, string const &);
 void MenuWrite(Buffer * buf);
 void MenuWriteAs(Buffer * buffer);
@@ -371,7 +372,7 @@ int MenuRunLaTeX(Buffer * buffer)
 	int ret = 0;
 
 	if (buffer->isLinuxDoc())
-		ret = RunLinuxDoc(1, buffer->fileName());
+		ret = RunLinuxDoc(buffer->getUser(), 1, buffer->fileName());
 	else if (buffer->isLiterate())
 	        ret = buffer->runLiterate();
 	else if (buffer->isDocBook())
@@ -792,7 +793,7 @@ void MenuMakeLaTeX(Buffer * buffer)
 			_("DocBook does not have a latex backend"));
 	else {
 		if (buffer->isLinuxDoc())
-			RunLinuxDoc(0, buffer->fileName());
+			RunLinuxDoc(buffer->getUser(), 0, buffer->fileName());
 		else
 			buffer->makeLaTeXFile(s, string(), true);
 		buffer->getUser()->owner()->getMiniBuffer()->Set(
@@ -1125,17 +1126,17 @@ Buffer * NewLyxFile(string const & filename)
 
 
 // Insert ascii file (if filename is empty, prompt for one)
-void InsertAsciiFile(string const & f, bool asParagraph)
+void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 {
 	string fname = f;
 	LyXFileDlg fileDlg;
  
-	if (!current_view->available()) return;
+	if (!bv->available()) return;
      
 	if (fname.empty()) {
 		ProhibitInput();
 		fname = fileDlg.Select(_("File to Insert"), 
-				       current_view->owner()->buffer()->filepath,
+				       bv->owner()->buffer()->filepath,
 				       "*");
   		AllowInput();
 		if (fname.empty()) return;
@@ -1159,19 +1160,20 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 	ifs.unsetf(std::ios::skipws);
 	std::istream_iterator<char> ii(ifs);
 	std::istream_iterator<char> end;
-	string tmpstr(ii, end); // yet a reason for using std::string
+	//string tmpstr(ii, end); // yet a reason for using std::string
 	// alternate approach to get the file into a string:
-	//copy(ii, end, back_inserter(tmpstr));
+	string tmpstr;
+	copy(ii, end, back_inserter(tmpstr));
 	// insert the string
 	current_view->hideCursor();
 	
 	// clear the selection
-	current_view->beforeChange();
+	bv->beforeChange();
 	if (!asParagraph)
-		current_view->text->InsertStringA(tmpstr);
+		bv->text->InsertStringA(tmpstr);
 	else
-		current_view->text->InsertStringB(tmpstr);
-	current_view->update(1);
+		bv->text->InsertStringB(tmpstr);
+	bv->update(1);
 }
 
 
@@ -1285,31 +1287,29 @@ void LayoutsCB(int sel, void *)
  * (flag == 0) make TeX output
  * (flag == 1) make dvi output
  */
-int RunLinuxDoc(int flag, string const & filename)
+int RunLinuxDoc(BufferView * bv, int flag, string const & filename)
 {
-	string name;
 	string s2;
-	string path;
 	string add_flags;
 
 	int errorcode = 0;
 
 	/* generate a path-less extension name */
-	name = ChangeExtension (filename, ".sgml", true);
-	path = OnlyPath (filename);
+	string name = ChangeExtension (filename, ".sgml", true);
+	string path = OnlyPath (filename);
 	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
-		path = current_view->buffer()->tmppath;
+		path = bv->buffer()->tmppath;
 	}
 	Path p(path);
 	
 	if (flag != -1) {
-		if (!current_view->available())
+		if (!bv->available())
 			return 0;
-		current_view->buffer()->makeLinuxDocFile(name, 0);
+		bv->buffer()->makeLinuxDocFile(name, 0);
 #ifdef WITH_WARNINGS
 #warning remove this once we have a proper geometry class
 #endif
-		BufferParams::PAPER_SIZE ps = static_cast<BufferParams::PAPER_SIZE>(current_view->buffer()->params.papersize);
+		BufferParams::PAPER_SIZE ps = static_cast<BufferParams::PAPER_SIZE>(bv->buffer()->params.papersize);
 		switch (ps) {
 		case BufferParams::PAPER_A4PAPER:
 			add_flags = "-p a4";
@@ -1326,7 +1326,7 @@ int RunLinuxDoc(int flag, string const & filename)
 	Systemcalls one;
 	switch (flag) {
 	case -1: /* Import file */
-		current_view->owner()->getMiniBuffer()->Set(_("Importing LinuxDoc SGML file `"), 
+		bv->owner()->getMiniBuffer()->Set(_("Importing LinuxDoc SGML file `"), 
 				MakeDisplayPath(filename), "'...");
 		s2 = "sgml2lyx " + lyxrc.sgml_extra_options + ' ' 
 			+ name;
@@ -1334,20 +1334,20 @@ int RunLinuxDoc(int flag, string const & filename)
 			errorcode = 1;
 		break;
 	case 0: /* TeX output asked */
-		current_view->owner()->getMiniBuffer()->Set(_("Converting LinuxDoc SGML to TeX file..."));
+	      bv->owner()->getMiniBuffer()->Set(_("Converting LinuxDoc SGML to TeX file..."));
 		s2 = "sgml2latex " + add_flags + " -o tex "
 			+ lyxrc.sgml_extra_options + ' ' + name;
 		if (one.startscript(Systemcalls::System, s2)) 
 			errorcode = 1;
 		break;
 	case 1: /* dvi output asked */
-		current_view->owner()->getMiniBuffer()->Set(_("Converting LinuxDoc SGML to dvi file..."));
+		bv->owner()->getMiniBuffer()->Set(_("Converting LinuxDoc SGML to dvi file..."));
 		s2 = "sgml2latex " + add_flags + " -o dvi "
 			+ lyxrc.sgml_extra_options + ' ' + name;
 		if (one.startscript(Systemcalls::System, s2)) {
 			errorcode = 1;
 		} else
-			current_view->buffer()->markDviClean();
+			bv->buffer()->markDviClean();
 		break;
 	default: /* unknown output */
 		break;
@@ -1355,7 +1355,7 @@ int RunLinuxDoc(int flag, string const & filename)
 	
 	AllowInput();
 
-        current_view->buffer()->redraw();
+        bv->buffer()->redraw();
 	return errorcode;
 }
 
@@ -2089,11 +2089,15 @@ void Tex()
 	ToggleAndShow(current_view, font);
 }
 
-void RTLCB()
+void LangCB(string const & l)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
-	font.setDirection (LyXFont::TOGGLE_DIR);
-	ToggleAndShow(current_view, font);
+	Languages::iterator lit = languages.find(l);
+	if (lit != languages.end()) {
+		font.setLanguage(&(*lit).second);
+		ToggleAndShow(current_view, font);
+	} else
+		WriteAlert(_("Error! unknown language"),l);
 }
 
 
@@ -2601,8 +2605,13 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 {
 	bool redo = false;
 	BufferParams * params = &(current_view->buffer()->params);
-	current_view->buffer()->params.language = 
-		combo_language->getline();
+
+	params->language = combo_language->getline();
+	Languages::iterator lit = languages.find(params->language);
+	if (lit != languages.end()) 
+		params->language_info = &(*lit).second;
+	else
+		params->language_info = default_language;
 
 	// If default skip is a "Length" but there's no text in the
 	// input field, reset the kind to "Medskip", which is the default.
@@ -2927,8 +2936,13 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 	current_view->text->cursor.par->table =
 		new LyXTable(xsize, ysize);
 
-	for (int i = 0; i < xsize * ysize - 1; ++i)
+	Language const * lang = 
+		current_view->text->cursor.par->getParLanguage();
+	LyXFont font(LyXFont::ALL_INHERIT,lang);
+	for (int i = 0; i < xsize * ysize - 1; ++i) {
 		current_view->text->cursor.par->InsertChar(0, LyXParagraph::META_NEWLINE);
+		current_view->text->cursor.par->SetFont(0, font);
+	}
 	current_view->text->RedoParagraph();
    
 	current_view->text->UnFreezeUndo();

@@ -211,16 +211,17 @@ public:
 	///
 	string language_package;
 	///
-	bool language_command_begin;
+	bool language_auto_begin;
 	///
-	bool language_command_end;
+	bool language_auto_end;
 	///
-	string language_command_rtl;
+	string language_command_begin;
 	///
-	string language_command_ltr;
-
+	string language_command_end;
 	///
 	bool rtl_support;
+	///
+	string auto_mathmode;
 	///
 	bool show_banner;
 	///

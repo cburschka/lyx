@@ -188,13 +188,10 @@ void LyXScreen::ShowCursor()
 {
 	if (!cursor_visible) {
 		Cursor_Shape shape = BAR_SHAPE;
-		if (text->real_current_font.getFontDirection()
-		    != text->parameters->getDocumentDirection())
-			if (text->real_current_font.getFontDirection()
-			    == LYX_DIR_LEFT_TO_RIGHT)
-				shape = L_SHAPE;
-			else
-				shape = REVERSED_L_SHAPE;
+		if (text->real_current_font.isVisibleRightToLeft()
+		    != text->parameters->language_info->RightToLeft)
+			shape = (text->real_current_font.isVisibleRightToLeft())
+				? REVERSED_L_SHAPE : L_SHAPE;
 		ShowManualCursor(text->cursor.x, text->cursor.y,
 				 text->real_current_font.maxAscent(),
 				 text->real_current_font.maxDescent(),

@@ -14,6 +14,7 @@
 #pragma implementation "lyxparagraph.h"
 #endif
 
+#include <algorithm>
 #include <fstream>
 using std::fstream;
 using std::ios;
@@ -235,7 +236,7 @@ void LyXParagraph::writeFile(ostream & os, BufferParams const & params,
 	if (bibkey)
 		bibkey->Write(os);
 
-	font1 = LyXFont(LyXFont::ALL_INHERIT);
+	font1 = LyXFont(LyXFont::ALL_INHERIT,params.language_info);
 
 	column = 0;
 	for (size_type i = 0; i < size(); ++i) {
@@ -335,6 +336,7 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 	features.layout[GetLayout()] = true;
 
 	// then the fonts
+	Language const * doc_language = current_view->buffer()->params.language_info;
 	for (FontList::const_iterator cit = fontlist.begin();
 	     cit != fontlist.end(); ++cit) {
 		if ((*cit).font.noun() == LyXFont::ON) {
@@ -357,6 +359,12 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 					     << (*cit).font.stateText()
 					     << endl;
 		}
+		Language const * language = (*cit).font.language();
+		if (language != doc_language && language != default_language) {
+			features.UsedLanguages.insert(language);
+			lyxerr[Debug::LATEX] << "Found language "
+					     << language->lang << endl;
+		}		
 	}
 
 	// then the insets
@@ -695,11 +703,17 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos) const
 {
 	if (pos < size()) {
+#ifdef SORTED_FONT_LIST
 		for (FontList::const_iterator cit = fontlist.begin();
-		     cit != fontlist.end(); ++cit) {
+		     cit != fontlist.end() && pos <= (*cit).pos_end; ++cit)
+			if (pos >= (*cit).pos)
+				return (*cit).font;
+#else
+		for (FontList::const_iterator cit = fontlist.begin();
+		     cit != fontlist.end(); ++cit)
 			if (pos >= (*cit).pos && pos <= (*cit).pos_end)
 				return (*cit).font;
-		}
+#endif
 	}
 	// > because last is the next unused position, and you can 
 	// use it if you want
@@ -719,12 +733,30 @@ LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos) const
 			       << pos << " (" << static_cast<int>(pos)
 			       << ")" << endl;
 		}
-	} else if (pos) {
+	} else if (pos > 0) {
 		return GetFontSettings(pos - 1);
-	}
+	} else // pos = size() = 0
+		return LyXFont(LyXFont::ALL_INHERIT,getParLanguage());
+
 	return LyXFont(LyXFont::ALL_INHERIT);
 }
 
+// Gets uninstantiated font setting at position 0
+LyXFont LyXParagraph::GetFirstFontSettings() const
+{
+	if (size() > 0) {
+#ifdef SORTED_FONT_LIST
+		if (!fontlist.empty() && fontlist.front().pos == 0)
+			return fontlist.front().font;
+#else
+		for (FontList::const_iterator cit = fontlist.begin();
+		     cit != fontlist.end(); ++cit)
+			if (0 >= (*cit).pos && 0 <= (*cit).pos_end)
+				return (*cit).font;
+#endif
+	}
+	return LyXFont(LyXFont::ALL_INHERIT);
+}
 
 // Gets the fully instantiated font at a given position in a paragraph
 // This is basically the same function as LyXText::GetFont() in text2.C.
@@ -757,8 +789,7 @@ LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos) const
 			tmpfont = layout.font;
 		else
 			tmpfont = layout.labelfont;
-		if (getParDirection() == LYX_DIR_RIGHT_TO_LEFT)
-			tmpfont.setDirection(LyXFont::RTL_DIR);
+		tmpfont.setLanguage(getParLanguage());
 	}
 
 	// check for environment font information
@@ -1177,7 +1208,7 @@ LyXParagraph * LyXParagraph::PreviousBeforeFootnote()
 {
 	LyXParagraph * tmp;
 	if (previous && previous->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-		tmp = next;
+		tmp = previous;
 		while (tmp && tmp->footnoteflag != LyXParagraph::NO_FOOTNOTE)
 			tmp = tmp->previous;
 		if (tmp && tmp->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE) 
@@ -1587,7 +1618,12 @@ int LyXParagraph::GetEndLabel() const
 			textclasslist.Style(current_view->buffer()->params.textclass,
 					    layout).endlabeltype;
 		if (endlabeltype != END_LABEL_NO_LABEL) {
-			LyXParagraph const * last = LastPhysicalPar();
+			LyXParagraph const * last = this;
+			if( footnoteflag == NO_FOOTNOTE)
+				last = LastPhysicalPar();
+			else if (next->footnoteflag == NO_FOOTNOTE)
+				return endlabeltype;
+
 			if (!last || !last->next)
 				return endlabeltype;
 
@@ -1899,7 +1935,6 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 				       int & foot_count)
 {
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << this << endl;
-	LyXParagraph * par = next;
 	LyXLayout const & style =
 		textclasslist.Style(current_view->buffer()->params.textclass,
 				    layout);
@@ -1938,18 +1973,15 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		texrow.newline();
 	}
 
-	LyXDirection direction = getParDirection();
-	LyXDirection global_direction =
-		current_view->buffer()->params.getDocumentDirection();
-	if (direction != global_direction) {
-		if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			os << lyxrc.language_command_ltr << '\n';
-		else
-			os << lyxrc.language_command_rtl << '\n';
+	Language const * language = getParLanguage();
+	Language const * doc_language = current_view->buffer()->params.language_info;
+	if (language != doc_language) {
+		os << subst(lyxrc.language_command_begin, "$$lang",
+			    language->lang)
+		   << endl;
 		texrow.newline();
 	}
 	
-
 	switch (style.latextype) {
 	case LATEX_COMMAND:
 		os << '\\'
@@ -1972,13 +2004,43 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 	bool need_par = SimpleTeXOnePar(os, texrow);
  
 	// Spit out footnotes
-	while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE
-	       && par->footnoteflag != footnoteflag) {
-		par = par->TeXFootnote(os, texrow,
-				       foot, foot_texrow, foot_count,
-				       direction);
-	    	par->SimpleTeXOnePar(os, texrow);
-	    	par = par->next;
+	LyXParagraph * par = next;
+	if (lyxrc.rtl_support) {
+		if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE
+		    && next->footnoteflag != footnoteflag) {
+			LyXParagraph * p = 0;
+			bool is_rtl = GetFontSettings(size()-1).isRightToLeft();
+			if ( (p = NextAfterFootnote()) != 0 &&
+			     p->GetFontSettings(0).isRightToLeft() != is_rtl)
+				is_rtl = GetFontSettings(0).isRightToLeft();
+			while (par &&
+			       par->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
+			       par->footnoteflag != footnoteflag) {
+				LyXDirection dir = (is_rtl)
+					? LYX_DIR_RIGHT_TO_LEFT 
+					: LYX_DIR_LEFT_TO_RIGHT;
+				par = par->TeXFootnote(os, texrow, foot,
+						       foot_texrow, foot_count,
+						       dir);
+				par->SimpleTeXOnePar(os, texrow);
+				is_rtl = par->GetFontSettings(par->size()-1).isRightToLeft();
+				if (par->next &&
+				    par->next->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
+				    (p = par->NextAfterFootnote()) != 0 &&
+				    p->GetFontSettings(0).isRightToLeft() != is_rtl)
+					is_rtl = GetFontSettings(0).isRightToLeft();
+				par = par->next;
+			}
+		}
+	} else {
+		while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE
+		       && par->footnoteflag != footnoteflag) {
+			par = par->TeXFootnote(os, texrow,
+					       foot, foot_texrow, foot_count,
+					       LYX_DIR_LEFT_TO_RIGHT);
+			par->SimpleTeXOnePar(os, texrow);
+			par = par->next;
+		}
 	}
 
 	// Make sure that \\par is done with the font of the last
@@ -2006,11 +2068,11 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		os << "{\\" << font.latexSize() << " \\par}";
 	}
 
-	if (direction != global_direction)
-		if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			os << '\n' << lyxrc.language_command_rtl;
-		else
-			os << '\n' << lyxrc.language_command_ltr;
+	if (language != doc_language) {
+		os << endl 
+		   << subst(lyxrc.language_command_end, "$$lang",
+			    doc_language->lang);
+	}
 	
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
@@ -2158,14 +2220,25 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow)
 			case LYX_ALIGN_NONE:
 			case LYX_ALIGN_BLOCK:
 			case LYX_ALIGN_LAYOUT:
-			case LYX_ALIGN_SPECIAL: break;
+			case LYX_ALIGN_SPECIAL:
+				break;
 			case LYX_ALIGN_LEFT:
-				os << "\\raggedright ";
-				column+= 13;
+				if (getParLanguage()->lang != "hebrew") {
+					os << "\\raggedright ";
+					column+= 13;
+				} else {
+					os << "\\raggedleft ";
+					column+= 12;
+				}
 				break;
 			case LYX_ALIGN_RIGHT:
-				os << "\\raggedleft ";
-				column+= 12;
+				if (getParLanguage()->lang != "hebrew") {
+					os << "\\raggedleft ";
+					column+= 12;
+				} else {
+					os << "\\raggedright ";
+					column+= 13;
+				}
 				break;
 			case LYX_ALIGN_CENTER:
 				os << "\\centering ";
@@ -2178,7 +2251,13 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow)
 
 		// Fully instantiated font
 		LyXFont font = getFont(i);
-		last_font = running_font;
+		LyXParagraph * p = 0;
+		if (i == 0 && previous && 
+		    previous->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
+		    (p = PreviousBeforeFootnote()) != 0)
+			last_font = p->getFont(p->size()-1);
+		else
+			last_font = running_font;
 
 		// Spaces at end of font change are simulated to be
 		// outside font change, i.e. we write "\textXX{text} "
@@ -2246,7 +2325,13 @@ bool LyXParagraph::SimpleTeXOnePar(ostream & os, TexRow & texrow)
 
 	// If we have an open font definition, we have to close it
 	if (open_font) {
-		running_font.latexWriteEndChanges(os, basefont, basefont);
+		LyXParagraph * p = 0;
+		if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE
+		    && (p =  NextAfterFootnote()) != 0)
+			running_font.latexWriteEndChanges(os, basefont,
+							  p->getFont(0));
+		else
+			running_font.latexWriteEndChanges(os, basefont, basefont);
 	}
 
 	// Needed if there is an optional argument but no contents.
@@ -2989,8 +3074,7 @@ void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
 			if ((inset->LyxCode() == Inset::GRAPHICS_CODE
 			     || inset->LyxCode() == Inset::MATH_CODE
 			     || inset->LyxCode() == Inset::URL_CODE)
-			    && running_font.getFontDirection()
-			    == LYX_DIR_RIGHT_TO_LEFT) {
+			    && running_font.isRightToLeft()) {
 				os << "\\L{";
 				close = true;
 			}
@@ -3661,7 +3745,7 @@ LyXParagraph * LyXParagraph::TeXEnvironment(ostream & os, TexRow & texrow,
 LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 					 ostream & foot, TexRow & foot_texrow,
 					 int & foot_count,
-					 LyXDirection par_direction)
+					 LyXDirection parent_direction)
 {
 	lyxerr[Debug::LATEX] << "TeXFootnote...  " << this << endl;
 	if (footnoteflag == LyXParagraph::NO_FOOTNOTE)
@@ -3697,6 +3781,16 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 		// a '\n' too much. Please tell me if I am wrong. (Lgb)
 		os << '\n';
 		texrow.newline();
+	}
+
+	bool need_closing = false;
+	LyXDirection direction = getParDirection();
+	if (direction != parent_direction) {
+		if (direction == LYX_DIR_LEFT_TO_RIGHT)
+			os << "\\L{";
+		else
+			os << "\\R{";
+		need_closing = true;
 	}
 	
 	BufferParams * params = &current_view->buffer()->params;
@@ -3778,17 +3872,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 	}
 	texrow.newline();
    
- 
- 	LyXDirection direction = getParDirection();
- 	if (direction != par_direction) {
- 		if (direction == LYX_DIR_LEFT_TO_RIGHT)
- 			os << lyxrc.language_command_ltr << '\n';
- 		else
- 			os << lyxrc.language_command_rtl << '\n';
- 		texrow.newline();
- 	}
-
-	if (footnotekind != LyXParagraph::FOOTNOTE
+ 	if (footnotekind != LyXParagraph::FOOTNOTE
 	    || !footer_in_body) {
 		// Process text for all floats except footnotes in body
 		do {
@@ -3909,6 +3993,9 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 		break;
 	}
 
+	if (need_closing)
+		os << "}";
+
 	if (footnotekind != LyXParagraph::FOOTNOTE
 	    && footnotekind != LyXParagraph::MARGIN) {
 		// we need to ensure that real floats like tables and figures
@@ -4027,10 +4114,7 @@ bool LyXParagraph::IsFloat(size_type pos) const
 
 bool LyXParagraph::IsNewline(size_type pos) const
 {
-	bool tmp = false;
-	if (pos >= 0)
-		tmp = IsNewlineChar(GetChar(pos));
-	return tmp;
+	return pos >= 0 && IsNewlineChar(GetChar(pos));
 }
 
 
@@ -4075,33 +4159,47 @@ bool LyXParagraph::IsWord(size_type pos ) const
 	return IsWordChar(GetChar(pos)) ;
 }
 
+Language const * LyXParagraph::getParLanguage() const 
+{
+	if (!table && size() > 0)
+		return FirstPhysicalPar()->GetFirstFontSettings().language();
+	else if (previous)
+		return previous->getParLanguage();
+	else
+		return current_view->buffer()->params.language_info;
+}
+
+Language const * LyXParagraph::getLetterLanguage(size_type pos) const
+{
+	return GetFontSettings(pos).language();
+}
 
 LyXDirection LyXParagraph::getParDirection() const
 {
 	if (!lyxrc.rtl_support || table)
 		return LYX_DIR_LEFT_TO_RIGHT;
-
-	if (size() > 0)
-		return (getFont(0).direction() ==  LyXFont::RTL_DIR)
-			? LYX_DIR_RIGHT_TO_LEFT : LYX_DIR_LEFT_TO_RIGHT;
+	else if (getParLanguage()->RightToLeft)
+		return LYX_DIR_RIGHT_TO_LEFT;
 	else
-		return current_view->buffer()->params.getDocumentDirection();
+		return LYX_DIR_LEFT_TO_RIGHT;
 }
-
 
 LyXDirection
 LyXParagraph::getLetterDirection(LyXParagraph::size_type pos) const
 {
 	if (!lyxrc.rtl_support)
 		return LYX_DIR_LEFT_TO_RIGHT;
+	else if (table && IsNewline(pos))
+		return LYX_DIR_LEFT_TO_RIGHT;
 
-	LyXDirection direction = getFont(pos).getFontDirection();
+	bool is_rtl =  GetFontSettings(pos).isVisibleRightToLeft();
 	if (IsLineSeparator(pos) && 0 < pos && pos < Last() - 1
 	    && !IsLineSeparator(pos + 1)
 	    && !(table && IsNewline(pos + 1))
-	    && (getFont(pos - 1).getFontDirection() != direction
-		|| getFont(pos + 1).getFontDirection() != direction))
+	    && ( GetFontSettings(pos - 1).isVisibleRightToLeft() != is_rtl
+		 || GetFontSettings(pos + 1).isVisibleRightToLeft() != is_rtl))
 		return getParDirection();
 	else
-		return direction;
+		return (is_rtl) ? LYX_DIR_RIGHT_TO_LEFT
+			: LYX_DIR_LEFT_TO_RIGHT;
 }

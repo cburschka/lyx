@@ -49,6 +49,7 @@ BufferParams::BufferParams()
 	secnumdepth = 3;
 	tocdepth = 3;
 	language = "default";
+	language_info = default_language;
 	fonts = "default";
 	inputenc = "latin1";
 	graphicsDriver = "default";
@@ -204,15 +205,17 @@ void BufferParams::readLanguage(LyXLex & lex)
 	if (lit != languages.end()) {
 		// found it
 		language = tmptok;
-		return;
-	}
-	// not found
-	language = "default";
-	if (tmptok != "default") {
-		lyxerr << "Warning: language `"
-		       << tmptok << "' not recognized!\n"
-		       << "         Setting language to `default'."
-		       << endl;
+		language_info = &(*lit).second;
+	} else {
+		// not found
+		language = "default";
+		language_info = default_language;
+		if (tmptok != "default") {
+			lyxerr << "Warning: language `"
+			       << tmptok << "' not recognized!\n"
+			       << "         Setting language to `default'."
+			       << endl;
+		}
 	}
 }
 
@@ -243,12 +246,4 @@ void BufferParams::readGraphicsDriver(LyXLex & lex)
 			break;
 		}      
 	}
-}
-
-
-LyXDirection BufferParams::getDocumentDirection() const
-{
-	return (lyxrc.rtl_support &&
-		(language == "hebrew" || language == "arabic"))
-		? LYX_DIR_RIGHT_TO_LEFT : LYX_DIR_LEFT_TO_RIGHT;
 }

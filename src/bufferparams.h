@@ -30,6 +30,9 @@
   work needs to be done on this class to make it nice. Now everything
   is in public.
   */
+
+struct Language;
+
 class BufferParams {
 public:
 	///
@@ -119,9 +122,6 @@ public:
 	///
 	void setDefSkip(VSpace const & vs) { defskip = vs; }
 
-	///
-	LyXDirection getDocumentDirection() const;
-	
 	/** Wether paragraphs are separated by using a indent like in
 	  articles or by using a little skip like in letters.
 	  */
@@ -178,6 +178,8 @@ public:
 	int tocdepth;
 	///
 	string language;
+	///
+	Language const * language_info;
 	///
 	string inputenc;
 	///

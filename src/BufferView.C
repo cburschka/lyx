@@ -965,7 +965,7 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 	int y_tmp = y + screen->first;
   
 	LyXCursor & cursor = text->cursor;
-	LyXDirection direction = text->real_current_font.getFontDirection();
+	bool is_rtl = text->real_current_font.isVisibleRightToLeft();
 
 	if (cursor.pos < cursor.par->Last()
 	    && cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET
@@ -976,12 +976,12 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 		Inset * tmpinset = cursor.par->GetInset(cursor.pos);
 		LyXFont font = text->GetFont(cursor.par, cursor.pos);
 		int start_x, end_x;
-		if (direction == LYX_DIR_LEFT_TO_RIGHT) {
-			start_x = cursor.x;
-			end_x = cursor.x + tmpinset->width(painter(), font);
-		} else {
+		if (is_rtl) {
 			start_x = cursor.x - tmpinset->width(painter(), font);
 			end_x = cursor.x;
+		} else {
+			start_x = cursor.x;
+			end_x = cursor.x + tmpinset->width(painter(), font);
 		}
 
 		if (x > start_x && x < end_x
@@ -1002,12 +1002,12 @@ Inset * BufferView::checkInsetHit(int & x, int & y)
 		Inset * tmpinset = cursor.par->GetInset(cursor.pos);
 		LyXFont font = text->GetFont(cursor.par, cursor.pos);
 		int start_x, end_x;
-		if (direction == LYX_DIR_LEFT_TO_RIGHT) {
-			start_x = cursor.x;
-			end_x = cursor.x + tmpinset->width(painter(), font);
-		} else {
+		if (is_rtl) {
 			start_x = cursor.x - tmpinset->width(painter(), font);
 			end_x = cursor.x;
+		} else {
+			start_x = cursor.x;
+			end_x = cursor.x + tmpinset->width(painter(), font);
 		}
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y - tmpinset->ascent(painter(), font)
@@ -1400,14 +1400,13 @@ void BufferView::setState()
 {
 	if (!lyxrc.rtl_support)
 		return;
-	
-	if (text->real_current_font.getFontDirection()
-	    == LYX_DIR_LEFT_TO_RIGHT) {
-		if (!owner_->getIntl()->primarykeymap)
-			owner_->getIntl()->KeyMapPrim();
-	} else {
+
+	if (text->real_current_font.isVisibleRightToLeft()) {
 		if (owner_->getIntl()->primarykeymap)
 			owner_->getIntl()->KeyMapSec();
+	} else {
+		if (!owner_->getIntl()->primarykeymap)
+			owner_->getIntl()->KeyMapPrim();
 	}
 }
 

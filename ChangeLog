@@ -1,3 +1,29 @@
+2000-03-16 Dekel Tsur <dekel@math.tau.ac.il>
+	* src/lyxfont.h Replaced the member variable bits.direction by the
+ 	member variable lang. Made many changes in other files.
+ 	This allows having a multi-lingual document
+
+	* src/lyxfunc.C, src/lyx_cb.C Added a new command "language <l>"
+	that change the current language to <l>.
+	Removed the command "font-rtl"
+
+	* src/buffer.C Changed LYX_FORMAT to 2.16 (as I changed the file
+	format for Hebrew documents)
+
+	* src/lyxrc.C, src/lyxfunc.C Added a new lyxrc command "auto_mathmode"
+	When auto_mathmode is "true", pressing a digit key in normal mode 
+	will cause entering into mathmode.
+	If auto_mathmode is "rtl" then this behavior will be active only
+	when writing right-to-left text.
+
+	* src/text2.C (InsertStringA) The string is inserted using the
+	current font.
+
+	* src/paragraph.C (GetEndLabel) Gives a correct result for
+	footnote paragraphs.
+
+	* src/paragraph.C (PreviousBeforeFootnote) Fixed a small bug
+
 2000-03-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/text.C (Backspace): move RemoveParagraph and RemoveRow in

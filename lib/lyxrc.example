@@ -600,10 +600,11 @@
 #\kbmap_secondary hebrew
 #\latex_command elatex
 #\font_encoding default
+#\auto_mathmode rtl
 
 # You also need to bind a key for switching between Hebrew and English.
 # For example,
-#\bind "F12" "font-rtl"
+#\bind "F12" "language hebrew"
 
 # Finally, you need to select iso8859-8 font encoding, and select screen fonts
 # (below are the default fonts. You need to replace them by Hebrew fonts)
@@ -623,18 +624,18 @@
 #\kbmap true
 #\kbmap_primary null
 #\kbmap_secondary arabic
+#\auto_mathmode false
 
 # You also need to bind a key for switching between Arabic and English.
 # For example,
-#\bind "F12" "font-rtl"
+#\bind "F12" "language arabic"
 
 # If you use arabtex, uncomment the following lines
-#\language_command_begin true
-#\language_command_end true
-#\language_command_rtl "\begin{arabtext}"
-#\language_command_ltr "\end{arabtext}"
+#\language_auto_begin false
+#\language_auto_end false
+#\language_command_begin "\begin{arabtext}"
+#\language_command_end "\end{arabtext}"
 #\language_package "\usepackage{arabtex,iso88596}\setcode{iso8859-6}"
-
 
 # Finally, you need to select iso8859-6.8x font encoding,
 # and select screen fonts.

@@ -71,7 +71,7 @@
 
 extern bool cursor_follows_scrollbar;
 
-extern void InsertAsciiFile(string const &, bool);
+extern void InsertAsciiFile(BufferView *, string const &, bool);
 extern void math_insert_symbol(char const *);
 extern Bool math_insert_greek(char const); // why "Bool"?
 extern BufferList bufferlist;
@@ -402,10 +402,6 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 			break;
 		case LFUN_TEX:
 			if (font.latex() == LyXFont::ON)
-				box = LyXFunc::ToggleOn;
-			break;
-		case LFUN_RTL:
-			if (font.direction() == LyXFont::RTL_DIR)
 				box = LyXFunc::ToggleOn;
 			break;
 		default:
@@ -1046,7 +1042,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_FILE_INSERT_ASCII:
 	{
 		bool asPara = (argument == "paragraph");
-		InsertAsciiFile(string(), asPara);
+		InsertAsciiFile(owner->view(), string(), asPara);
 	}
 	break;
 	
@@ -1171,9 +1167,9 @@ string LyXFunc::Dispatch(int ac,
 		owner->getToolbar()->combox->Show();
 		break;
 
-	case LFUN_RTL:
+	case LFUN_LANGUAGE:
 	{
-		RTLCB();
+		LangCB(argument);
 		owner->view()->setState();
 		owner->getMiniBuffer()->Set(CurrentState());
 	}
@@ -2532,6 +2528,34 @@ string LyXFunc::Dispatch(int ac,
 			}
 			
 			owner->view()->beforeChange();
+			
+			if (isdigit(argument[0]) &&
+			    (lyxrc.auto_mathmode == "true" ||
+			     (lyxrc.auto_mathmode == "rtl" &&
+			      owner->view()->text->real_current_font.isVisibleRightToLeft() 
+			      ))) {
+				UpdatableInset * tmpinset = new InsetFormula;
+				LyXCursor & cursor = owner->view()->text->cursor;
+				if (cursor.pos > 0 &&
+				    cursor.par->GetChar(cursor.pos - 1) == '-' &&
+				    (cursor.pos == 1 || 
+				     cursor.par->IsSeparator(cursor.pos - 2) ||
+				     cursor.par->IsNewline(cursor.pos - 2) )
+				    ) {
+					owner->view()->text->Backspace();
+					owner->view()->open_new_inset(tmpinset);
+					tmpinset->LocalDispatch(owner->view(),
+								LFUN_UNKNOWN_ACTION,
+								"-");
+				} else {
+					owner->view()->open_new_inset(tmpinset);
+				}
+				tmpinset->LocalDispatch(owner->view(),
+							LFUN_UNKNOWN_ACTION,
+							argument);
+				return string();
+			}
+
 			for (string::size_type i = 0;
 			     i < argument.length(); ++i) {
 				if (greek_kb_flag) {
@@ -2794,7 +2818,7 @@ void LyXFunc::doImportASCII(bool linorpar)
 	owner->getMiniBuffer()->Set(_("Importing ASCII file"),
 				    MakeDisplayPath(filename), "...");
 	// Insert ASCII file
-	InsertAsciiFile(filename, linorpar);
+	InsertAsciiFile(owner->view(), filename, linorpar);
 	owner->getMiniBuffer()->Set(_("ASCII file "),
 				    MakeDisplayPath(filename),
 				    _("imported."));

@@ -239,7 +239,7 @@ enum kb_action {
 	LFUN_SEQUENCE,                  // Andre' 991111
 	LFUN_SAVEPREFERENCES,           // Lgb 991127
 	LFUN_DATE_INSERT,		// jdblair 20000131
-	LFUN_RTL,                       // Dekel 20000203
+	LFUN_LANGUAGE,                  // Dekel 20000203
 	LFUN_INSET_TEXT,		// Jug 20000214
 	LFUN_INSET_ERT,			// Jug 20000218
 	LFUN_INSERT_GRAPHICS,           // Lgb 20000226

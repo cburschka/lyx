@@ -18,13 +18,15 @@
 #endif
 
 #include <vector>
+#include <set>
 using std::vector;
+using std::set;
 
 #include "LString.h"
 
 class BufferParams; 
 class LyXTextClass;
-
+struct Language;
 
 /** The packages and commands that a buffer needs. This struct
   contains an entry for each of the latex packages and
@@ -132,6 +134,10 @@ struct LaTeXFeatures {
 	bool NeedLyXFootnoteCode;
 	///
 	bool NeedLyXMinipageIndent;
+	///
+	typedef set<Language const *> LanguageList;
+	///
+	LanguageList UsedLanguages;
 	//@}
 };
 

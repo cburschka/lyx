@@ -5,6 +5,9 @@
 #include "gettext.h"
 
 Languages languages;
+Language const * default_language;
+Language ignore_lang = {"ignore", "Ignore", false};
+Language const * ignore_language = &ignore_lang;
 
 class LangInit {
 public:
@@ -13,11 +16,11 @@ public:
 		init = true;
 	}
 private:
-	void newLang(string const & l, string const & d, bool ltr) {
+	void newLang(string const & l, string const & d, bool rtl) {
 		Language lang;
 		lang.lang = l;
 		lang.display = d;
-		lang.leftTOright = ltr;
+		lang.RightToLeft = rtl;
 		languages[l] = lang;
 	}
 	void initL() {
@@ -62,6 +65,7 @@ private:
 		newLang("turkish", N_("Turkish"), false);
 		newLang("usorbian", N_("Usorbian"), false);
 		newLang("welsh", N_("Welsh"), false);
+		default_language = &languages["american"];
 	}
 	static bool init;
 };

@@ -1008,7 +1008,8 @@ void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
 	    layoutfont = GetFont(par, -1);
 	
 	// Update current font
-	real_current_font.update(font, toggleall);
+	real_current_font.update(font, bv->buffer()->params.language_info,
+				 toggleall);
 	
 	// Reduce to implicit settings
 	current_font = real_current_font;
@@ -1029,7 +1030,7 @@ void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
     LyXFont newfont;
     while(s_start < s_end) {
 	newfont = GetFont(par,s_start);
-	newfont.update(font, toggleall);
+	newfont.update(font, bv->buffer()->params.language_info, toggleall);
 	SetCharFont(s_start, newfont);
 	++s_start;
     }

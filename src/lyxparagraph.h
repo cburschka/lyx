@@ -25,6 +25,7 @@
 #include "layout.h"
 #include "support/block.h"
 #include "direction.h"
+#include "language.h"
 
 class BufferParams;
 class LyXBuffer;
@@ -124,6 +125,11 @@ public:
 	LyXParagraph(LyXParagraph * par);
 	/// the destruktors removes the new paragraph from the list
 	~LyXParagraph();
+
+	///
+	Language const * getParLanguage() const;
+	///
+	Language const * getLetterLanguage(size_type pos) const;
 
 	///
 	LyXDirection getParDirection() const;
@@ -364,6 +370,9 @@ public:
 	  This is what is stored in the fonttable
 	 */
 	LyXFont GetFontSettings(size_type pos) const;
+	///
+	LyXFont GetFirstFontSettings() const;
+
 	/** Get fully instantiated font. If pos == -1, use the layout
 	  font attached to this paragraph.
 	  If pos == -2, use the label font of the layout attached here.

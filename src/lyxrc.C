@@ -133,11 +133,12 @@ enum LyXRCTags {
 	RC_HTML_COMMAND,
 	RC_MAKE_BACKUP,
 	RC_RTL_SUPPORT,
+	RC_AUTO_MATHMODE,
 	RC_LANGUAGE_PACKAGE,
+	RC_LANGUAGE_AUTO_BEGIN,
+	RC_LANGUAGE_AUTO_END,
 	RC_LANGUAGE_COMMAND_BEGIN,
 	RC_LANGUAGE_COMMAND_END,
-	RC_LANGUAGE_COMMAND_RTL,
-	RC_LANGUAGE_COMMAND_LTR,
 	RC_PDFLATEX_COMMAND,
 	RC_PDF_MODE,
 	RC_VIEWPDF_COMMAND,
@@ -155,6 +156,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\alternate_language", RC_ALT_LANG },
 	{ "\\ascii_linelen", RC_ASCII_LINELEN },
 	{ "\\ascii_roff_command", RC_ASCIIROFF_COMMAND },
+	{ "\\auto_mathmode", RC_AUTO_MATHMODE },
 	{ "\\auto_region_delete", RC_AUTOREGIONDELETE },
 	{ "\\autosave", RC_AUTOSAVE },
 	{ "\\background_color", RC_BACKGROUND_COLOR },
@@ -183,10 +185,10 @@ keyword_item lyxrcTags[] = {
 	{ "\\kbmap", RC_KBMAP },
 	{ "\\kbmap_primary", RC_KBMAP_PRIMARY },
 	{ "\\kbmap_secondary", RC_KBMAP_SECONDARY },
+	{ "\\language_auto_begin", RC_LANGUAGE_AUTO_BEGIN },
+	{ "\\language_auto_end", RC_LANGUAGE_AUTO_END },
 	{ "\\language_command_begin", RC_LANGUAGE_COMMAND_BEGIN },
 	{ "\\language_command_end", RC_LANGUAGE_COMMAND_END },
-	{ "\\language_command_ltr", RC_LANGUAGE_COMMAND_LTR },
-	{ "\\language_command_rtl", RC_LANGUAGE_COMMAND_RTL },
 	{ "\\language_package", RC_LANGUAGE_PACKAGE },
 	{ "\\lastfiles", RC_LASTFILES },
 	{ "\\latex_command", RC_LATEX_COMMAND },
@@ -247,8 +249,8 @@ keyword_item lyxrcTags[] = {
 	{ "\\view_dvi_command", RC_VIEWDVI_COMMAND },
 	{ "\\view_dvi_paper_option", RC_VIEWDVI_PAPEROPTION },
 	{ "\\view_pdf_command", RC_VIEWPDF_COMMAND },
-        { "\\view_pspic_command", RC_VIEWPSPIC_COMMAND },
-	{ "\\view_ps_command", RC_VIEWPS_COMMAND }
+	{ "\\view_ps_command", RC_VIEWPS_COMMAND },
+        { "\\view_pspic_command", RC_VIEWPSPIC_COMMAND }
 };
 
 /* Let the range depend of the size of lyxrcTags.  Alejandro 240596 */
@@ -344,11 +346,12 @@ void LyXRC::setDefaults() {
 	use_kbmap = false;
 	hasBindFile = false;
 	rtl_support = false;
+	auto_mathmode = "rtl";
 	language_package = "\\usepackage{babel}";
-	language_command_begin = false;
-	language_command_end = false;
-	language_command_rtl = "\\sethebrew";
-	language_command_ltr = "\\unsethebrew";
+	language_auto_begin = true;
+	language_auto_end = true;
+	language_command_begin = "\\selectlanguage{$$lang}";
+	language_command_end = "\\selectlanguage{$$lang}";
 
 	///
 	date_insert_format = "%A, %e %B %Y";
@@ -952,25 +955,29 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				language_package = lexrc.GetString();
 			break;
+		case RC_LANGUAGE_AUTO_BEGIN:
+			if (lexrc.next())
+				language_auto_begin = lexrc.GetBool();
+			break;
+		case RC_LANGUAGE_AUTO_END:
+			if (lexrc.next())
+				language_auto_end = lexrc.GetBool();
+			break;
 		case RC_LANGUAGE_COMMAND_BEGIN:
 			if (lexrc.next())
-				language_command_begin = lexrc.GetBool();
+				language_command_begin = lexrc.GetString();
 			break;
 		case RC_LANGUAGE_COMMAND_END:
 			if (lexrc.next())
-				language_command_end = lexrc.GetBool();
-			break;
-		case RC_LANGUAGE_COMMAND_RTL:
-			if (lexrc.next())
-				language_command_rtl = lexrc.GetString();
-			break;
-		case RC_LANGUAGE_COMMAND_LTR:
-			if (lexrc.next())
-				language_command_ltr = lexrc.GetString();
+				language_command_end = lexrc.GetString();
 			break;
 		case RC_RTL_SUPPORT:
 			if (lexrc.next())
 				rtl_support = lexrc.GetBool();
+			break;
+		case RC_AUTO_MATHMODE:
+			if (lexrc.next())
+				auto_mathmode = lowercase(lexrc.GetString());
 			break;
 		case RC_SHOW_BANNER:
 			if (lexrc.next())
@@ -1268,19 +1275,21 @@ void LyXRC::output(ostream & os) const
 		os << "\\escape_chars \"" << isp_esc_chars << "\"\n";
 	case RC_RTL_SUPPORT:
 		os << "\\rtl " << tostr(rtl_support) << "\n";
-	case RC_LANGUAGE_COMMAND_BEGIN:
-		os << "\\language_command_begin " 
-		   << tostr(language_command_begin) << "\n";
-	case RC_LANGUAGE_COMMAND_END:
-		os << "\\language_command_end " 
-		   << tostr(language_command_end) << "\n";
+	case RC_AUTO_MATHMODE:
+		os << "\\auto_mathmode" << auto_mathmode << "\n";
+	case RC_LANGUAGE_AUTO_BEGIN:
+		os << "\\language_auto_begin " 
+		   << tostr(language_auto_begin) << "\n";
+	case RC_LANGUAGE_AUTO_END:
+		os << "\\language_auto_end " 
+		   << tostr(language_auto_end) << "\n";
 	case RC_LANGUAGE_PACKAGE:
 		os << "\\language_package \"" << language_package << "\"\n";
-	case RC_LANGUAGE_COMMAND_LTR:
-		os << "\\language_command_ltr \"" << language_command_ltr
+	case RC_LANGUAGE_COMMAND_BEGIN:
+		os << "\\language_command_begin \"" << language_command_begin
 		   << "\"\n";
-	case RC_LANGUAGE_COMMAND_RTL:
-		os << "\\language_command_rtl \"" << language_command_rtl
+	case RC_LANGUAGE_COMMAND_END:
+		os << "\\language_command_end \"" << language_command_end
 		   << "\"\n";
 	case RC_MAKE_BACKUP:
 		os << "\\make_backup " << tostr(make_backup) << "\n";

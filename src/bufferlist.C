@@ -36,7 +36,8 @@
 #include "vc-backend.h"
 #include "TextCache.h"
 
-extern int RunLinuxDoc(int, string const &);
+extern int RunLinuxDoc(BufferView *, int, string const &);
+extern BufferView * current_view; // called too many times in this file...
 
 using std::find;
 
@@ -430,7 +431,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 	if (IsSGMLFilename(s)) {
 		FileInfo fi(s);
 		if (fi.exist() && fi.readable()) {
-			if (!RunLinuxDoc(-1, s)) {
+			if (!RunLinuxDoc(current_view, -1, s)) {
 				s = ChangeExtension (s, ".lyx", false);
 			} else { // sgml2lyx failed
 				WriteAlert(_("Error!"),

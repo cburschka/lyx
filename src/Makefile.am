@@ -179,6 +179,8 @@ lyx_SOURCES = \
 	text2.C \
 	toolbar.C \
 	toolbar.h \
+	tracer.C \
+	tracer.h \
 	trans.C \
 	trans.h \
 	trans_decl.h \

@@ -29,7 +29,7 @@ extern void Margin(BufferView *);
 ///
 extern void Figure();
 ///
-extern void RTLCB();
+extern void LangCB(string const &);
 ///
 extern void Table();
 ///

@@ -31,6 +31,7 @@
 #include "LyXView.h"
 #include "lyxrow.h"
 #include "Painter.h"
+#include "tracer.h"
 
 using std::max;
 using std::min;
@@ -320,10 +321,9 @@ void LyXText::ComputeBidiTablesFromTo(Row * row,
 		} else {
 			if (level == 0 ||
 			    (level == 1 && direction == LYX_DIR_RIGHT_TO_LEFT
-			     && row->par->getFont(lpos).direction() ==
-			     LyXFont::RTL_DIR
-			     && row->par->getFont(lpos).latex() ==
-			     LyXFont::ON ) ) {
+			     && row->par->getFont(lpos).isRightToLeft()
+			     && row->par->getFont(lpos).latex() == LyXFont::ON
+			     ) ) {
 				// The last check is needed when the
 				// char is a space
 				stack[level++] = lpos;
@@ -1884,8 +1884,12 @@ void LyXText::TableFeatures(int feature) const
 		
           /* insert the new cells */ 
           int number = cursor.par->table->NumberOfCellsInRow(cell_org);
-          for (int i = 0; i < number; ++i)
+	  Language const * lang = cursor.par->getParLanguage();
+	  LyXFont font(LyXFont::ALL_INHERIT,lang);
+          for (int i = 0; i < number; ++i) {
               cursor.par->InsertChar(pos, LyXParagraph::META_NEWLINE);
+	      cursor.par->SetFont(pos, font);
+	  }
 		
           /* append the row into the table */
           cursor.par->table->AppendRow(cell_org);
@@ -1919,9 +1923,13 @@ void LyXText::TableFeatures(int feature) const
 		
           /* insert the new cells */ 
           int number = cursor.par->table->NumberOfCellsInRow(cell_org);
-          for (int i = 0; i < number; ++i)
+	  Language const * lang = cursor.par->getParLanguage();
+	  LyXFont font(LyXFont::ALL_INHERIT,lang);
+          for (int i = 0; i < number; ++i) {
               cursor.par->InsertChar(pos, LyXParagraph::META_NEWLINE);
-		
+	      cursor.par->SetFont(pos, font);
+	  }
+
           /* append the row into the table */
           cursor.par->table->AppendContRow(cell_org);
           RedoParagraph();
@@ -1931,10 +1939,13 @@ void LyXText::TableFeatures(int feature) const
 	      LyXParagraph::size_type pos = 0;
           int cell_org = actCell;
           int cell = 0;
+	  Language const * lang = cursor.par->getParLanguage();
+	  LyXFont font(LyXFont::ALL_INHERIT,lang);
           do{
               if (pos && (cursor.par->IsNewline(pos-1))){
                   if (cursor.par->table->AppendCellAfterCell(cell_org, cell)) {
                       cursor.par->InsertChar(pos, LyXParagraph::META_NEWLINE);
+		      cursor.par->SetFont(pos, font);
                       if (pos <= cursor.pos)
                           cursor.pos++;
                       ++pos;
@@ -1945,8 +1956,11 @@ void LyXText::TableFeatures(int feature) const
           } while (pos <= cursor.par->Last());
           /* remember that the very last cell doesn't end with a newline.
              This saves one byte memory per table ;-) */
-          if (cursor.par->table->AppendCellAfterCell(cell_org, cell))
-              cursor.par->InsertChar(cursor.par->Last(), LyXParagraph::META_NEWLINE);
+          if (cursor.par->table->AppendCellAfterCell(cell_org, cell)) {
+		  LyXParagraph::size_type last = cursor.par->Last();
+		  cursor.par->InsertChar(last, LyXParagraph::META_NEWLINE);
+		  cursor.par->SetFont(last, font);
+	  }
 		
           /* append the column into the table */ 
           cursor.par->table->AppendColumn(cell_org);
@@ -3296,7 +3310,8 @@ void LyXText::Delete()
 
 void LyXText::Backspace()
 {
-
+	DebugTracer trc1("LyXText::Backspace");
+	
 	/* table stuff -- begin */
 	if (cursor.par->table) {
 		BackspaceInTable();
@@ -3312,6 +3327,8 @@ void LyXText::Backspace()
 	LyXFont rawparfont = cursor.par->GetFontSettings(lastpos - 1);
 
 	if (cursor.pos == 0) {
+		DebugTracer trc("LyXText::Backspace cursor.pos == 0");
+		
 		// The cursor is at the beginning of a paragraph, so the the backspace
 		// will collapse two paragraphs into one.
 		
@@ -3415,6 +3432,8 @@ void LyXText::Backspace()
 			SetCursor(cursor.par, cursor.pos);
 		}
 	} else {
+		DebugTracer trc("LyXText::Backspace normal backspace");
+		
 		/* this is the code for a normal backspace, not pasting
 		 * any paragraphs */ 
 		SetUndo(Undo::DELETE, 
@@ -3599,7 +3618,8 @@ void LyXText::Backspace()
 			SetCursor(cursor.par, cursor.pos, false);
 		}
 	}
-   
+	DebugTracer trc2("LyXText::Backspace wrap up");
+	
 	// restore the current font
 	// That is what a user expects!
 	current_font = rawtmpfont; 
@@ -4456,10 +4476,15 @@ int LyXText::GetColumnNearX(Row * row, int & x) const
 			vc = row->pos+1;
 			tmpx += fill_separator+SingleWidth(row->par, vis2log(row->pos));
 		}
-
 	if (row->pos > last)  // Row is empty?
 		c = row->pos;
-	else if (vc <= last) {
+	else if (vc > last ||
+		 (row->par->table && vc > row->pos && row->par->IsNewline(vc)) ){
+		int pos = (vc > last+1) ? last : vc - 1; 
+		c = vis2log(pos);
+		if (row->par->getLetterDirection(c) == LYX_DIR_LEFT_TO_RIGHT)
+			++c;
+	} else {
 		c = vis2log(vc);
 		LyXDirection direction = row->par->getLetterDirection(c);
 		if (vc > row->pos && row->par->IsLineSeparator(c)
@@ -4467,10 +4492,6 @@ int LyXText::GetColumnNearX(Row * row, int & x) const
 			c = vis2log(vc-1);
 		if (direction == LYX_DIR_RIGHT_TO_LEFT)
 			++c;
-	} else {
-		c = vis2log(last)+1;
-		if (row->par->getLetterDirection(c - 1) == LYX_DIR_RIGHT_TO_LEFT)
-			--c;		
 	}
 
 	if (!row->par->table && row->pos <= last && c > last
