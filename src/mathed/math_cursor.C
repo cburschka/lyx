@@ -279,9 +279,7 @@ bool MathCursor::posLeft()
 {
 	if (pos() == 0)
 		return false;
-
 	--pos();
-
 	return true;
 }
 
@@ -290,9 +288,7 @@ bool MathCursor::posRight()
 {
 	if (pos() == size())
 		return false;
-
 	++pos();
-
 	return true;
 }
 
@@ -313,7 +309,7 @@ bool MathCursor::left(bool sel)
 		return true;
 	} 
 	
-	return posLeft() || idxLeft() || popLeft();
+	return posLeft() || idxLeft() || popLeft() || selection_;
 }
 
 
@@ -333,7 +329,7 @@ bool MathCursor::right(bool sel)
 		return true;
 	}
 
-	return posRight() || idxRight() || popRight();
+	return posRight() || idxRight() || popRight() || selection_;
 }
 
 
@@ -591,7 +587,7 @@ bool MathCursor::up(bool sel)
 		}
 	}
 
-	return goUp();
+	return goUp() || selection_;
 }
 
 
@@ -624,7 +620,7 @@ bool MathCursor::down(bool sel)
 		}
 	}
 
-	return goDown();
+	return goDown() || selection_;
 }
 
 

@@ -23,8 +23,8 @@
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "debug.h"
-#include "mathed/support.h"
-#include "mathed/math_cursor.h"
+#include "support.h"
+#include "math_cursor.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "Painter.h"
@@ -57,9 +57,28 @@ const char * MathMacro::name() const
 }
 
 
+bool MathMacro::defining() const
+{
+	return 0;
+	//return mathcursor && mathcursor->formula()->getInsetName() == name();
+}
+
+
+bool MathMacro::editing() const
+{
+	return mathcursor && mathcursor->isInside(this);
+}
+
+
 void MathMacro::metrics(MathStyles st) const
 {
-	if (mathcursor && mathcursor->isInside(this)) {
+	if (defining()) {
+		size_ = st;
+		mathed_string_dim(LM_TC_TEX, size_, name(), ascent_, descent_, width_);
+		return;
+	}
+
+	if (editing()) {
 		expanded_ = tmplate_->xcell(0);
 		expanded_.metrics(st);
 		size_    = st;
@@ -81,15 +100,16 @@ void MathMacro::metrics(MathStyles st) const
 			descent_ += std::max(c.ascent(),  lasc) + 5;
 			descent_ += std::max(c.descent(), ldes) + 5;
 		}
-	} else {
-		expanded_ = tmplate_->xcell(0);
-		expanded_.data_.substitute(*this);
-		expanded_.metrics(st);
-		size_    = st;
-		width_   = expanded_.width()   + 6;
-		ascent_  = expanded_.ascent()  + 3;
-		descent_ = expanded_.descent() + 3;
-	}
+		return;
+	} 
+
+	expanded_ = tmplate_->xcell(0);
+	expanded_.data_.substitute(*this);
+	expanded_.metrics(st);
+	size_    = st;
+	width_   = expanded_.width()   + 6;
+	ascent_  = expanded_.ascent()  + 3;
+	descent_ = expanded_.descent() + 3;
 }
 
 
@@ -100,10 +120,12 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 
 	metrics(size());
 
-	//LColor::color col;
+	if (defining()) {
+		drawStr(pain, LM_TC_TEX, size_, x, y, name());
+		return;
+	}
 
-	if (mathcursor && mathcursor->isInside(this)) {
-
+	if (editing()) {
 		int h = y - ascent() + 2 + expanded_.ascent();
 		drawStr(pain, LM_TC_TEXTRM, size(), x + 3, h, name());
 
@@ -125,14 +147,10 @@ void MathMacro::draw(Painter & pain, int x, int y) const
 			drawStr(pain, LM_TC_TEX, size(), x + 3, h, str);
 			h += std::max(c.descent(), ldes) + 5;
 		}
-		//col = LColor::red;
-	} else {
-		expanded_.draw(pain, x + 3, y);
-		//col = LColor::black;
+		return;
 	}
 
-	//if (nargs() > 0)
-	//	pain.rectangle(x + 1, y - ascent() + 1, width() - 2, height() - 2, col);
+	expanded_.draw(pain, x + 3, y);
 }
 
 

@@ -73,6 +73,10 @@ private:
 	void operator=(MathMacro const &);
 	///
 	char const * name() const;
+	///
+	bool editing() const;
+	///
+	bool defining() const;
 
 	///
 	MathAtom & tmplate_;
