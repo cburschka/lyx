@@ -300,7 +300,7 @@ void lyxstring::Srep::replace(lyxstring::size_type i, lyxstring::size_type n,
 ///////////////////////////////////////
 // The lyxstring Invariant tester
 ///////////////////////////////////////
-#ifdef DEVEL_VERSION
+#ifdef ENABLE_ASSERTIONS
 
 /** Testing of the lyxstring invariant
  * By creating an object that tests the lyxstring invariant during its
@@ -379,7 +379,7 @@ void lyxstringInvariant::helper() const
 #define TestlyxstringInvariant(s) lyxstringInvariant lyxstring_invariant(s);
 #else
 #define TestlyxstringInvariant(s)
-#endif //DEVEL_VERSION
+#endif /* ENABLE_ASSERTIONS */
 
 
 ///////////////////////////////////////

@@ -4,8 +4,8 @@
 
 //namespace LyX {
 
-#define HAVE_TEMPLATE
-#ifdef HAVE_TEMPLATE
+#ifdef ENABLE_ASSERTIONS
+
 //template<class X, class A> inline void Assert(A assertion)
 template<class A> inline void Assert(A assertion)
 {
@@ -23,7 +23,7 @@ template<class A> inline void Assert(A * ptr)
 		abort();
 	}
 }
-#endif
+#endif /* HAVE_PARTIAL_SPECIALIZATION  */ 
 
 //template<class A, class E> inline void Assert(A assertion, E except)
 //{
@@ -32,12 +32,13 @@ template<class A> inline void Assert(A * ptr)
 
 #else
 
-inline void lyx_assert(...)
-{
-	// nothing
-}
+template<class A> inline void Assert(A /*assertion*/) {;}
 
-#endif
-#endif
+#endif /* ENABLE_ASSERTIONS */
+
 
 //} // end of namespace LyX
+
+
+#endif /* LASSERT_H */
+

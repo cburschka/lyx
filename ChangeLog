@@ -1,3 +1,35 @@
+1999-12-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxfont.C (ascent): Make sure that char is _always_ used as
+	unsigned. 
+	(descent): ditto
+	(lbearing): ditto
+	(rbearing): ditto
+
+	* src/paragraph.C (GetWord): assert on pos>=0
+	(GetChar): ditto
+	
+	* src/support/lyxstring.C: condition the use of an invariant on
+	ENABLE_ASSERTIONS 
+	* src/support/lyxstring.h: ditto
+
+	* src/Bullet.[Ch]: replace DEBUG_AS_DEFAULT by
+	ENABLE_ASSERTIONS. Use LAssert.h instead of plain assert(). 
+
+	* src/support/lstrings.h: add LAssert.h, in case it is needed.
+
+	* src/lyxfunc.C: do not include LAssert.h, it is not used.
+	* src/support/filetools.C: ditto
+
+	* src/support/LAssert.h: make Assert a no-op if ENABLE_ASSERTIONS
+	is not defined. 
+
+	* INSTALL: document the new configure flags
+	
+	* configure.in: suppress --with-debug; add --enable-assertions
+
+	* acinclude.m4: various changes in alignment of help strings.
+
 1999-12-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/kbmap.C: commented out the use of the hash map in kb_map,

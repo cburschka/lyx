@@ -812,12 +812,12 @@ int LyXFont::maxDescent() const
 int LyXFont::ascent(char c) const
 {
 	XFontStruct * finfo = getXFontstruct();
+	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
-	    && static_cast<unsigned char>(c) >= finfo->min_char_or_byte2
-	    && static_cast<unsigned char>(c) <= finfo->max_char_or_byte2) {
-		unsigned int index = c - finfo->min_char_or_byte2;
-		return finfo->per_char[index].ascent;
-	} else
+	    && uc >= finfo->min_char_or_byte2
+	    && uc <= finfo->max_char_or_byte2) 
+		return finfo->per_char[uc - finfo->min_char_or_byte2].ascent;
+	else
 		return finfo->ascent;
 }
 
@@ -825,12 +825,12 @@ int LyXFont::ascent(char c) const
 int LyXFont::descent(char c) const
 {
 	XFontStruct * finfo = getXFontstruct();
+	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
-	    && static_cast<unsigned char>(c) >= finfo->min_char_or_byte2
-	    && static_cast<unsigned char>(c) <= finfo->max_char_or_byte2) {
-		unsigned int index = c - finfo->min_char_or_byte2;
-		return finfo->per_char[index].descent;
-	} else
+	    && uc >= finfo->min_char_or_byte2
+	    && uc <= finfo->max_char_or_byte2) 
+		return finfo->per_char[uc - finfo->min_char_or_byte2].descent;
+	else
 		return finfo->descent;
 }
 
@@ -849,12 +849,12 @@ int LyXFont::width(char c) const
 int LyXFont::lbearing(char c) const
 {
 	XFontStruct * finfo = getXFontstruct();
+	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
-	    && static_cast<unsigned char>(c) >= finfo->min_char_or_byte2
-	    && static_cast<unsigned char>(c) <= finfo->max_char_or_byte2) {
-		unsigned int index = c - finfo->min_char_or_byte2;
-		return finfo->per_char[index].lbearing;
-	} else
+	    && uc >= finfo->min_char_or_byte2
+	    && uc <= finfo->max_char_or_byte2) 
+		return finfo->per_char[uc - finfo->min_char_or_byte2].lbearing;
+	else
 		return 0;
 }
 
@@ -862,12 +862,12 @@ int LyXFont::lbearing(char c) const
 int LyXFont::rbearing(char c) const
 {
 	XFontStruct * finfo = getXFontstruct();
+	unsigned int uc = static_cast<unsigned char>(c);
 	if (finfo->per_char
-	    && static_cast<unsigned char>(c) >= finfo->min_char_or_byte2
-	    && static_cast<unsigned char>(c) <= finfo->max_char_or_byte2) {
-		unsigned int index = c - finfo->min_char_or_byte2;
-		return finfo->per_char[index].rbearing;
-	} else
+	    && uc >= finfo->min_char_or_byte2
+	    && uc <= finfo->max_char_or_byte2) 
+		return finfo->per_char[uc - finfo->min_char_or_byte2].rbearing;
+	else
 		return width(c);
 }
 

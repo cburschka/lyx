@@ -25,6 +25,7 @@ using std::ios;
 #include "tex-strings.h"
 #include "bufferparams.h"
 #include "support/FileInfo.h"
+#include "support/LAssert.h"
 #include "debug.h"
 #include "LaTeXFeatures.h"
 #include "insets/insetinclude.h"
@@ -1023,16 +1024,7 @@ LyXFont::FONT_SIZE LyXParagraph::HighestFontInRange(LyXParagraph::size_type star
 
 char LyXParagraph::GetChar(LyXParagraph::size_type pos)
 {
-#ifdef DEVEL_VERSION
-	/* a workaround to 'fix' some bugs in text-class */
-	if (pos < 0) {
-		// This function is important. It should not work around bugs.
-		// Let's find the bugs instead and fix them. (Asger)
-		lyxerr << "FATAL ERROR (LyXParagraph::GetChar):"
-			" bad position "  << pos << endl;
-		abort();
-	}
-#endif
+	Assert(pos>=0);
 
 	if (pos < size()) {
 		return text[pos];
@@ -1080,16 +1072,7 @@ char LyXParagraph::GetChar(LyXParagraph::size_type pos)
 
 char LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 {
-#ifdef DEVEL_VERSION
-	/* a workaround to 'fix' some bugs in text-class */
-	if (pos < 0) {
-		// This function is important. It should not work around bugs.
-		// Let's find the bugs instead and fix them. (Asger)
-		lyxerr << "FATAL ERROR (LyXParagraph::GetChar):"
-			" bad position "  << pos << endl;
-		abort();
-	}
-#endif
+	Assert(pos>=0);
 
 	if (pos < size()) {
 		return text[pos];
@@ -1135,40 +1118,20 @@ char LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 }
 
 
+// return an string of the current word, and the end of the word in lastpos.
 string LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
-	//Added 98/9/21 by REH
-	// return an string of the current word, and the end of the word
-	// in lastpos.
+{
+	Assert(lastpos>=0);
 
   // the current word is defined as starting at the first character from
   // the immediate left of lastpospos which meets the definition of IsLetter(),
   // continuing to the last character to the right of this meeting
   // IsLetter.
 
-
-  // i just left this in from GetChar()
-{
-#ifdef DEVEL_VERSION
-	/* a workaround to 'fix' some bugs in text-class */
-	if (lastpos < 0) {
-		// This function is important. It should not work around bugs.
-		// Let's find the bugs instead and fix them. (Asger)
-		lyxerr << "FATAL ERROR (LyXParagraph::GetWord):"
-			" bad position " << lastpos << endl;
-		abort();
-	}
-#endif
-
     	string theword;
 
 	// grab a word
-	
-	
-	//i think the devcode aborts before this, but why not be
-	// versatile?
-	if (lastpos < 0) lastpos= 0; 
-
-	
+		
 	// move back until we have a letter
 
 	//there's no real reason to have firstpos & lastpos as

@@ -174,7 +174,7 @@ AC_TYPE_UID_T
 
 # some functions we'd like to have
 AC_ARG_WITH(broken-headers,
-    [  --with-broken-headers      define some functions on SunOS4 and SCO],
+    [  --with-broken-headers   define some functions on SunOS4 and SCO],
     [lyx_broken_headers=$withval])
 if test "x$lyx_broken_headers" = "xyes"; then
   lyx_flags="$lyx_flags broken-headers"
@@ -193,10 +193,18 @@ AC_REPLACE_FUNCS(strerror atexit)
 AC_ARG_WITH(two-colors,[  --with-two-colors       use two color pixmaps],
   [AC_DEFINE(TWO_COLOR_ICONS)
    lyx_flags="$lyx_flags two-colors"])
-AC_ARG_WITH(debug,[  --with-debug            output debug information by default],
-  [AC_DEFINE(DEBUG_AS_DEFAULT,1,
-    [Define if you want debugging turned on as default.])
-   lyx_flags="$lyx_flags debug"])
+AC_ARG_ENABLE(assertions,
+  [  --enable-assertions     add runtime sanity checks in the program],,
+  [if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
+	enable_assertions=yes;
+    else
+	enable_assertions=no;
+    fi;])
+if test "x$enable_assertions" = xyes ; then
+   lyx_flags="$lyx_flags assertions"
+   AC_DEFINE(ENABLE_ASSERTIONS,1,
+    [Define if you want assertions to be enabled in the code])
+fi
 
 ### Finish the work.
 AC_CONFIG_SUBDIRS(lib lib/reLyX)

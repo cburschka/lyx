@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-12-16 07:10+0100\n"
+"POT-Creation-Date: 1999-12-16 14:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,7 +114,7 @@ msgid "Error: Cannot open file: "
 msgstr ""
 
 #: src/buffer.C:2156 src/buffer.C:2746 src/buffer.C:3507 src/buffer.C:3529
-#: src/paragraph.C:3590
+#: src/paragraph.C:3553
 msgid "LYX_ERROR:"
 msgstr ""
 
@@ -176,7 +176,7 @@ msgstr ""
 msgid "Could not run with file:"
 msgstr ""
 
-#: src/buffer.C:3508 src/buffer.C:3530 src/paragraph.C:3591
+#: src/buffer.C:3508 src/buffer.C:3530 src/paragraph.C:3554
 msgid "Cannot open temporary file:"
 msgstr ""
 
@@ -283,8 +283,8 @@ msgstr ""
 msgid "Could not convert file"
 msgstr ""
 
-#: src/bufferlist.C:563 src/lyxfunc.C:2485 src/lyxfunc.C:2624
-#: src/lyxfunc.C:2703
+#: src/bufferlist.C:563 src/lyxfunc.C:2484 src/lyxfunc.C:2623
+#: src/lyxfunc.C:2702
 msgid "Document is already open:"
 msgstr ""
 
@@ -767,8 +767,8 @@ msgstr ""
 msgid "Clipart"
 msgstr ""
 
-#: src/insets/figinset.C:2155 src/lyxfunc.C:2517 src/lyxfunc.C:2580
-#: src/lyxfunc.C:2803
+#: src/insets/figinset.C:2155 src/lyxfunc.C:2516 src/lyxfunc.C:2579
+#: src/lyxfunc.C:2802
 msgid "Document"
 msgstr ""
 
@@ -910,8 +910,8 @@ msgid "Use include|#U"
 msgstr ""
 
 #. launches dialog
-#: src/insets/insetinclude.C:111 src/lyx_cb.C:369 src/lyxfunc.C:2465
-#: src/lyxfunc.C:2555 src/lyxfunc.C:2604 src/lyxfunc.C:2677 src/lyxfunc.C:2778
+#: src/insets/insetinclude.C:111 src/lyx_cb.C:369 src/lyxfunc.C:2464
+#: src/lyxfunc.C:2554 src/lyxfunc.C:2603 src/lyxfunc.C:2676 src/lyxfunc.C:2777
 #: src/menus.C:177 src/menus.C:309 src/menus.C:310 src/menus.C:311
 msgid "Documents"
 msgstr ""
@@ -991,7 +991,7 @@ msgid "Ref: "
 msgstr ""
 
 #. /
-#: src/insets/insettoc.h:35 src/lyxfunc.C:784
+#: src/insets/insettoc.h:35 src/lyxfunc.C:783
 msgid "Table of Contents"
 msgstr ""
 
@@ -1665,7 +1665,7 @@ msgstr ""
 msgid "Save As"
 msgstr ""
 
-#: src/LyXAction.C:149 src/lyxfunc.C:638
+#: src/LyXAction.C:149 src/lyxfunc.C:637
 msgid "Cancel"
 msgstr ""
 
@@ -2029,7 +2029,7 @@ msgstr ""
 msgid "(If not, document is not saved.)"
 msgstr ""
 
-#: src/lyx_cb.C:370 src/lyxfunc.C:2466
+#: src/lyx_cb.C:370 src/lyxfunc.C:2465
 msgid "Templates"
 msgstr ""
 
@@ -2038,9 +2038,9 @@ msgid "Enter Filename to Save Document as"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/lyx_cb.C:382 src/lyxfunc.C:2472 src/lyxfunc.C:2499 src/lyxfunc.C:2564
-#: src/lyxfunc.C:2613 src/lyxfunc.C:2638 src/lyxfunc.C:2648 src/lyxfunc.C:2693
-#: src/lyxfunc.C:2718 src/lyxfunc.C:2728 src/lyxfunc.C:2787
+#: src/lyx_cb.C:382 src/lyxfunc.C:2471 src/lyxfunc.C:2498 src/lyxfunc.C:2563
+#: src/lyxfunc.C:2612 src/lyxfunc.C:2637 src/lyxfunc.C:2647 src/lyxfunc.C:2692
+#: src/lyxfunc.C:2717 src/lyxfunc.C:2727 src/lyxfunc.C:2786
 msgid "Canceled."
 msgstr ""
 
@@ -2145,7 +2145,7 @@ msgid "Executing command:"
 msgstr ""
 
 #: src/lyx_cb.C:828 src/lyx_cb.C:864 src/lyx_cb.C:897 src/lyx_cb.C:924
-#: src/lyxfunc.C:2508
+#: src/lyxfunc.C:2507
 msgid "File already exists:"
 msgstr ""
 
@@ -2732,218 +2732,218 @@ msgstr ""
 msgid "Found."
 msgstr ""
 
-#: src/lyxfunc.C:276
+#: src/lyxfunc.C:275
 msgid "Unknown sequence:"
 msgstr ""
 
-#: src/lyxfunc.C:319 src/lyxfunc.C:2415
+#: src/lyxfunc.C:318 src/lyxfunc.C:2414
 msgid "Unknown action"
 msgstr ""
 
 #. no
-#: src/lyxfunc.C:333
+#: src/lyxfunc.C:332
 msgid "Document is read-only"
 msgstr ""
 
 #. no
-#: src/lyxfunc.C:338
+#: src/lyxfunc.C:337
 msgid "Command not allowed without any document open"
 msgstr ""
 
-#: src/lyxfunc.C:559
+#: src/lyxfunc.C:558
 msgid "Text mode"
 msgstr ""
 
-#: src/lyxfunc.C:765
+#: src/lyxfunc.C:764
 msgid "Unknown import type: "
 msgstr ""
 
-#: src/lyxfunc.C:1093
+#: src/lyxfunc.C:1092
 msgid "Layout "
 msgstr ""
 
-#: src/lyxfunc.C:1094
+#: src/lyxfunc.C:1093
 msgid " not known"
 msgstr ""
 
-#: src/lyxfunc.C:1236
+#: src/lyxfunc.C:1235
 msgid "No cross-reference to toggle"
 msgstr ""
 
-#: src/lyxfunc.C:1587
+#: src/lyxfunc.C:1586
 msgid "Mark removed"
 msgstr ""
 
-#: src/lyxfunc.C:1592
+#: src/lyxfunc.C:1591
 msgid "Mark set"
 msgstr ""
 
-#: src/lyxfunc.C:1695
+#: src/lyxfunc.C:1694
 msgid "Mark off"
 msgstr ""
 
-#: src/lyxfunc.C:1705
+#: src/lyxfunc.C:1704
 msgid "Mark on"
 msgstr ""
 
-#: src/lyxfunc.C:2006
+#: src/lyxfunc.C:2005
 msgid "Push-toolbar needs argument > 0"
 msgstr ""
 
-#: src/lyxfunc.C:2024
+#: src/lyxfunc.C:2023
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr ""
 
-#: src/lyxfunc.C:2048 src/mathed/formula.C:874
+#: src/lyxfunc.C:2047 src/mathed/formula.C:874
 msgid "Math greek mode on"
 msgstr ""
 
-#: src/lyxfunc.C:2059 src/mathed/formula.C:885
+#: src/lyxfunc.C:2058 src/mathed/formula.C:885
 msgid "Math greek keyboard on"
 msgstr ""
 
-#: src/lyxfunc.C:2061 src/mathed/formula.C:887
+#: src/lyxfunc.C:2060 src/mathed/formula.C:887
 msgid "Math greek keyboard off"
 msgstr ""
 
-#: src/lyxfunc.C:2096
+#: src/lyxfunc.C:2095
 msgid "Missing argument"
 msgstr ""
 
 #. / what appears in the minibuffer when opening
-#: src/lyxfunc.C:2112 src/mathed/formula.h:73
+#: src/lyxfunc.C:2111 src/mathed/formula.h:73
 msgid "Math editor mode"
 msgstr ""
 
-#: src/lyxfunc.C:2119
+#: src/lyxfunc.C:2118
 msgid "This is only allowed in math mode!"
 msgstr ""
 
-#: src/lyxfunc.C:2273
+#: src/lyxfunc.C:2272
 msgid "Opening child document "
 msgstr ""
 
-#: src/lyxfunc.C:2305
+#: src/lyxfunc.C:2304
 msgid "Unknown kind of footnote"
 msgstr ""
 
-#: src/lyxfunc.C:2374
+#: src/lyxfunc.C:2373
 msgid "Document is read only"
 msgstr ""
 
-#: src/lyxfunc.C:2467
+#: src/lyxfunc.C:2466
 msgid "Enter Filename for new document"
 msgstr ""
 
-#: src/lyxfunc.C:2468
+#: src/lyxfunc.C:2467
 msgid "newfile"
 msgstr ""
 
-#: src/lyxfunc.C:2487 src/lyxfunc.C:2626 src/lyxfunc.C:2705
+#: src/lyxfunc.C:2486 src/lyxfunc.C:2625 src/lyxfunc.C:2704
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
 msgstr ""
 
-#: src/lyxfunc.C:2510
+#: src/lyxfunc.C:2509
 msgid "Do you want to open the document?"
 msgstr ""
 
 #. loads document
-#: src/lyxfunc.C:2512 src/lyxfunc.C:2575
+#: src/lyxfunc.C:2511 src/lyxfunc.C:2574
 msgid "Opening document"
 msgstr ""
 
-#: src/lyxfunc.C:2519 src/lyxfunc.C:2582
+#: src/lyxfunc.C:2518 src/lyxfunc.C:2581
 msgid "opened."
 msgstr ""
 
-#: src/lyxfunc.C:2528
+#: src/lyxfunc.C:2527
 msgid "Choose template"
 msgstr ""
 
-#: src/lyxfunc.C:2556 src/lyxfunc.C:2605 src/lyxfunc.C:2678 src/lyxfunc.C:2779
+#: src/lyxfunc.C:2555 src/lyxfunc.C:2604 src/lyxfunc.C:2677 src/lyxfunc.C:2778
 msgid "Examples"
 msgstr ""
 
-#: src/lyxfunc.C:2558
+#: src/lyxfunc.C:2557
 msgid "Select Document to Open"
 msgstr ""
 
-#: src/lyxfunc.C:2584
+#: src/lyxfunc.C:2583
 msgid "Could not open document"
 msgstr ""
 
-#: src/lyxfunc.C:2607
+#: src/lyxfunc.C:2606
 msgid "Select ASCII file to Import"
 msgstr ""
 
-#: src/lyxfunc.C:2645 src/lyxfunc.C:2725
+#: src/lyxfunc.C:2644 src/lyxfunc.C:2724
 msgid "A document by the name"
 msgstr ""
 
-#: src/lyxfunc.C:2647 src/lyxfunc.C:2727
+#: src/lyxfunc.C:2646 src/lyxfunc.C:2726
 msgid "already exists. Overwrite?"
 msgstr ""
 
-#: src/lyxfunc.C:2653
+#: src/lyxfunc.C:2652
 msgid "Importing ASCII file"
 msgstr ""
 
-#: src/lyxfunc.C:2657
+#: src/lyxfunc.C:2656
 msgid "ASCII file "
 msgstr ""
 
-#: src/lyxfunc.C:2659 src/lyxfunc.C:2750
+#: src/lyxfunc.C:2658 src/lyxfunc.C:2749
 msgid "imported."
 msgstr ""
 
-#: src/lyxfunc.C:2682
+#: src/lyxfunc.C:2681
 msgid "Select Noweb file to Import"
 msgstr ""
 
-#: src/lyxfunc.C:2685
+#: src/lyxfunc.C:2684
 msgid "Select LaTeX file to Import"
 msgstr ""
 
-#: src/lyxfunc.C:2735
+#: src/lyxfunc.C:2734
 msgid "Importing LaTeX file"
 msgstr ""
 
-#: src/lyxfunc.C:2740
+#: src/lyxfunc.C:2739
 msgid "Importing Noweb file"
 msgstr ""
 
-#: src/lyxfunc.C:2748
+#: src/lyxfunc.C:2747
 msgid "Noweb file "
 msgstr ""
 
-#: src/lyxfunc.C:2748
+#: src/lyxfunc.C:2747
 msgid "LateX file "
 msgstr ""
 
-#: src/lyxfunc.C:2753
+#: src/lyxfunc.C:2752
 msgid "Could not import Noweb file"
 msgstr ""
 
-#: src/lyxfunc.C:2754
+#: src/lyxfunc.C:2753
 msgid "Could not import LaTeX file"
 msgstr ""
 
-#: src/lyxfunc.C:2781
+#: src/lyxfunc.C:2780
 msgid "Select Document to Insert"
 msgstr ""
 
 #. Inserts document
-#: src/lyxfunc.C:2799
+#: src/lyxfunc.C:2798
 msgid "Inserting document"
 msgstr ""
 
-#: src/lyxfunc.C:2805
+#: src/lyxfunc.C:2804
 msgid "inserted."
 msgstr ""
 
-#: src/lyxfunc.C:2807
+#: src/lyxfunc.C:2806
 msgid "Could not insert document"
 msgstr ""
 
@@ -4421,7 +4421,7 @@ msgstr ""
 msgid "Warning: Invalid Length (valid example: 10mm)"
 msgstr ""
 
-#: src/paragraph.C:1964
+#: src/paragraph.C:1927
 msgid "Senseless with this layout!"
 msgstr ""
 
@@ -4638,48 +4638,48 @@ msgstr ""
 msgid "Replace word|#R"
 msgstr ""
 
-#: src/support/filetools.C:178 src/support/filetools.C:187
-#: src/support/filetools.C:194
+#: src/support/filetools.C:177 src/support/filetools.C:186
+#: src/support/filetools.C:193
 msgid "LyX Internal Error!"
 msgstr ""
 
-#: src/support/filetools.C:179
+#: src/support/filetools.C:178
 msgid "Could not test if directory is writeable"
 msgstr ""
 
-#: src/support/filetools.C:188
+#: src/support/filetools.C:187
 msgid "Cannot open directory test file"
 msgstr ""
 
-#: src/support/filetools.C:195
+#: src/support/filetools.C:194
 msgid "Created test file but cannot remove it?"
 msgstr ""
 
-#: src/support/filetools.C:360
+#: src/support/filetools.C:359
 msgid "Error! Cannot open directory:"
 msgstr ""
 
-#: src/support/filetools.C:373
+#: src/support/filetools.C:372
 msgid "Error! Could not remove file:"
 msgstr ""
 
-#: src/support/filetools.C:387
+#: src/support/filetools.C:386
 msgid "Error! Couldn't create temporary directory:"
 msgstr ""
 
-#: src/support/filetools.C:403
+#: src/support/filetools.C:402
 msgid "Error! Couldn't delete temporary directory:"
 msgstr ""
 
-#: src/support/filetools.C:456
+#: src/support/filetools.C:455
 msgid "Internal error!"
 msgstr ""
 
-#: src/support/filetools.C:457
+#: src/support/filetools.C:456
 msgid "Call to createDirectory with invalid name"
 msgstr ""
 
-#: src/support/filetools.C:462
+#: src/support/filetools.C:461
 msgid "Error! Couldn't create directory:"
 msgstr ""
 

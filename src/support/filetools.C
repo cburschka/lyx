@@ -31,7 +31,6 @@ using std::pair;
 #include "FileInfo.h"
 #include "support/path.h"        // I know it's OS/2 specific (SMiyata)
 #include "gettext.h"
-#include "LAssert.h"
 #include "lyxlib.h"
 
 // Which part of this is still necessary? (JMarc).

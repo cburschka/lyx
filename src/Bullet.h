@@ -21,9 +21,7 @@
 
 #include "LString.h"
 
-#ifdef DEBUG_AS_DEFAULT
-#include <cassert>
-#endif
+#include "support/LAssert.h"
 
 ///
 class Bullet {
@@ -69,28 +67,28 @@ public:
 	
 
 protected:
-#ifdef DEBUG_AS_DEFAULT
+#ifdef ENABLE_ASSERTIONS
 	void testInvariant() const
 		{
-			assert(font >= MIN);
-			assert(font < FONTMAX);
-			assert(character >= MIN);
-			assert(character < CHARMAX);
-			assert(size >= MIN);
-			assert(size < SIZEMAX);
-			assert(user_text >= -1);
-			assert(user_text <= 1);
+			Assert(font >= MIN);
+			Assert(font < FONTMAX);
+			Assert(character >= MIN);
+			Assert(character < CHARMAX);
+			Assert(size >= MIN);
+			Assert(size < SIZEMAX);
+			Assert(user_text >= -1);
+			Assert(user_text <= 1);
 			// now some relational/operational tests
 			if (user_text == 1) {
-				assert(font == -1 && (character == -1 && size == -1));
-				//        assert(!text.empty()); // this isn't necessarily an error
+				Assert(font == -1 && (character == -1 && size == -1));
+				//        Assert(!text.empty()); // this isn't necessarily an error
 			}
 			//      else if (user_text == -1) {
-			//        assert(!text.empty()); // this also isn't necessarily an error
+			//        Assert(!text.empty()); // this also isn't necessarily an error
 			//      }
 			//      else {
 			//        // user_text == 0
-			//        assert(text.empty()); // not usually true
+			//        Assert(text.empty()); // not usually true
 			//      }
 		}
 #endif
@@ -154,7 +152,7 @@ private:
 inline Bullet::Bullet(string const & t) 
   :  font(MIN), character(MIN), size(MIN), user_text(1), text(t)
 {
-#ifdef DEBUG_AS_DEFAULT
+#ifdef ENABLE_ASSERTIONS
 	testInvariant();
 #endif
 }
@@ -173,7 +171,7 @@ inline void Bullet::setCharacter(const int c)
 		character = c;
 	}
 	user_text = 0;
-#ifdef DEBUG_AS_DEFAULT
+#ifdef ENABLE_ASSERTIONS
 	testInvariant();
 #endif
 }
@@ -188,7 +186,7 @@ inline void Bullet::setFont(const int f)
 		font = f;
 	}
 	user_text = 0;
-#ifdef DEBUG_AS_DEFAULT
+#ifdef ENABLE_ASSERTIONS
 	testInvariant();
 #endif
 }
@@ -203,7 +201,7 @@ inline void Bullet::setSize(const int s)
 		size = s;
 	}
 	user_text = 0;
-#ifdef DEBUG_AS_DEFAULT
+#ifdef ENABLE_ASSERTIONS
 	testInvariant();
 #endif
 }
@@ -214,7 +212,7 @@ inline void Bullet::setText(string const & t)
 	font = character = size = MIN;
 	user_text = 1;
 	text = t;
-#ifdef DEBUG_AS_DEFAULT
+#ifdef ENABLE_ASSERTIONS
 	testInvariant();
 #endif
 }
@@ -246,7 +244,7 @@ inline string Bullet::getText() const
 
 inline Bullet & Bullet::operator = (const Bullet & b)
 {
-#ifdef DEBUG_AS_DEFAULT
+#ifdef ENABLE_ASSERTIONS
 	b.testInvariant();
 #endif
 	font = b.font;
@@ -254,7 +252,7 @@ inline Bullet & Bullet::operator = (const Bullet & b)
 	size = b.size;
 	user_text = b.user_text;
 	text = b.text;
-#ifdef DEBUG_AS_DEFAULT
+#ifdef ENABLE_ASSERTIONS
     this->testInvariant();
 #endif
 	return *this;

@@ -39,7 +39,7 @@ Bullet::Bullet(const int f, const int c, const int s)
 		size = MIN;
 	}
 	generateText();
-#ifdef DEBUG_AS_DEFAULT
+#ifdef ENABLE_ASSERTIONS
 	testInvariant();
 #endif
 }

@@ -10,6 +10,8 @@
 
 #include <cstring>
 
+#include "LAssert.h"
+
 //#warning verify this please. Lgb
 ///
 template<class T>

@@ -599,7 +599,7 @@ private:
 	    empty_reps.
 	*/
 
-#ifdef DEVEL_VERSION
+#ifdef ENABLE_ASSERTIONS
 	/// lyxstringInvariant is used to test the lyxstring Invariant
 	friend class lyxstringInvariant;
 #endif

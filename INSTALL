@@ -179,20 +179,23 @@ this file.
 In particular, the following options could be useful in some
 desperate cases:
 
-  o --with-debug that specifies whether you want to have debug information
-    by default on standard error.  Default is no. 
-
   o --with-warnings that make the compiler output more warnings during
     the compilation of LyX.  Opposite is --without-warnings.  By default,
     this flag is on for development versions only.
+
+  o --enable-assertions that make the compilier generater run-time
+    code which checks that some variables have sane values.  Opposite
+    is --disable-assertions.  By default, this flag is on for
+    development versions only. 
 
   o --with-broken-headers that provides prototypes to replace functions
     not correctly defined in SunOS4 and SCO header files.  Its only effect is
     to suppress a few warnings.  It is autodetected by default.
 
   o --without-latex-config that disables the automatic detection of your
-    latex.  This detection is automatically disabled if latex cannot be found. 
-    If you find that you have to use this flag, please report it as a bug.
+    latex configuration.  This detection is automatically disabled if
+    latex cannot be found.  If you find that you have to use this
+    flag, please report it as a bug. 
 
   o --without-liberty suppresses the detection of the -liberty library
     (see the section 'Problems').

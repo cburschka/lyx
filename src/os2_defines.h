@@ -17,7 +17,6 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <X11/Xlocale.h>
-/* #include <assert.h> */
 /* #include <malloc.h> */
 #define lstat stat
 #define S_ISLNK(x) false
