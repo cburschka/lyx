@@ -44,7 +44,7 @@ public:
 	void load(string const & file); 
 
 	/// test if file exist
-	bool const fileExists(string const & file); 
+	bool fileExists(string const & file); 
 
 private:
 	/// Dispatch the changed parameters to the kernel.

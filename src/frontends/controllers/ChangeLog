@@ -1,3 +1,8 @@
+2002-01-24  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlInclude.[Ch] (fileExists): remove const type qualifier from
+	bool return type.
+
 2002-01-20  Herbert Voss  <voss@perce.de>
 
 	* ControlInclude.[Ch]: better control of unexistings files

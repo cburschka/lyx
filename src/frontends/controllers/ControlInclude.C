@@ -83,7 +83,7 @@ void ControlInclude::load(string const & file)
 }
 
 
-bool const ControlInclude::fileExists(string const & file)
+bool ControlInclude::fileExists(string const & file)
 {
     string const fileWithAbsPath = MakeAbsPath(file, OnlyPath(params().masterFilename_)); 
     if (IsFileReadable(fileWithAbsPath))
