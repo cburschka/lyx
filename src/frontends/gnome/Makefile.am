@@ -2,11 +2,11 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libgnome.la
 
-INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
-	-I${top_srcdir}/src/frontends/ \
-	-I${top_srcdir}/src/frontends/xforms \
-	-I${top_srcdir}/src/frontends/controllers \
-	${SIGC_CFLAGS} $(BOOST_INCLUDES)
+INCLUDES = $(FRONTEND_INCLUDES) -I$(top_srcdir)/src/ \
+	-I$(top_srcdir)/src/frontends/ \
+	-I$(top_srcdir)/src/frontends/xforms \
+	-I$(top_srcdir)/src/frontends/controllers \
+	$(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 if USE_BASIC_IMAGE_LOADER
 else
@@ -41,7 +41,7 @@ xforms_objects = \
 	../xforms/Tooltips.lo \
 	../xforms/xforms_helpers.lo \
 	../xforms/xformsBC.lo \
-	$(XFORMSGIMAGE) 
+	$(XFORMSGIMAGE)
 
 libgnome.la: xforms.lo $(libgnome_la_OBJECTS) $(libgnome_la_DEPENDENCIES)
 
@@ -53,7 +53,7 @@ xforms.lo: $(xforms_objects)
 ###
 
 #LDFLAGS= $(libgnome_la_OBJADD)
-LYXDATADIRS = 
+LYXDATADIRS =
 
 libgnome_la_SOURCES = \
 	Dialogs.C \

@@ -31,7 +31,7 @@ dist-hook:
 
 rpmdist: dist
 	ln -s lib/images/lyx.xpm . ; \
-	rpm -ta ${PACKAGE}-${VERSION}.tar.gz ; saved_status=$$?; \
+	rpm -ta $(PACKAGE)-$(VERSION).tar.gz ; saved_status=$$?; \
 	rm lyx.xpm; exit $$saved_status
 
 

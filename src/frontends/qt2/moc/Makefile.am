@@ -4,12 +4,12 @@ DISTCLEANFILES += $(libqt2moc_la_SOURCES)
 
 noinst_LTLIBRARIES = libqt2moc.la
 
-INCLUDES = -I${top_srcdir}/src/ \
-	-I${top_srcdir}/src/frontends/ \
-	-I${top_srcdir}/src/frontends/controllers \
-	-I${top_builddir}/src/frontends/qt2 \
-	${SIGC_CFLAGS} \
-	${FRONTEND_INCLUDES} \
+INCLUDES = -I$(top_srcdir)/src/ \
+	-I$(top_srcdir)/src/frontends/ \
+	-I$(top_srcdir)/src/frontends/controllers \
+	-I$(top_builddir)/src/frontends/qt2 \
+	$(SIGC_CFLAGS) \
+	$(FRONTEND_INCLUDES) \
 	$(BOOST_INCLUDES)
 
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR

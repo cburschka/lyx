@@ -4,6 +4,8 @@ SUBDIRS = controllers @FRONTEND@
 
 noinst_LTLIBRARIES = libfrontends.la
 
+LIBS += @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+
 INCLUDES = $(FRONTEND_INCLUDES) -I$(srcdir)/..  $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 libfrontends_la_LIBADD= @FRONTEND_GUILIB@ \

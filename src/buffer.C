@@ -2880,13 +2880,13 @@ void reset(PAR_TAG & p1, PAR_TAG const & p2)
 	p1 = static_cast<PAR_TAG>(p1 & ~p2);
 }
 
-} // namespace anon
+} // anon
 
 
 // Handle internal paragraph parsing -- layout already processed.
 void Buffer::simpleLinuxDocOnePar(ostream & os,
-				  Paragraph * par,
-				  Paragraph::depth_type /*depth*/)
+	Paragraph * par,
+	Paragraph::depth_type /*depth*/)
 {
 	LyXLayout const & style =
 		textclasslist[params.textclass][par->layout()];
@@ -3078,8 +3078,8 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 
 
 // Print an error message.
-void Buffer::sgmlError(Paragraph * par, int pos,
-		       string const & message) const
+void Buffer::sgmlError(Paragraph * /*par*/, int /*pos*/,
+	string const & /*message*/) const
 {
 #warning This is wrong we cannot insert an inset like this!!!
 	// I guess this was Jose' so I explain you more or less why this

@@ -400,7 +400,7 @@ int CutAndPaste::nrOfParagraphs()
 int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 					     textclass_type c2,
 					     Paragraph * par,
-					     BufferParams const & bparams)
+					     BufferParams const & /*bparams*/)
 {
 	int ret = 0;
 	if (!par || c1 == c2)

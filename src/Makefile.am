@@ -6,6 +6,8 @@ MAINTAINERCLEANFILES += $(srcdir)/config.h.in
 
 SUBDIRS = mathed insets graphics support frontends
 
+LIBS += @LIBS@
+
 bin_PROGRAMS = lyx
 
 LYX_CONV_LIBS = mathed/libmathed.la insets/libinsets.la \
@@ -16,7 +18,9 @@ LYX_CONV_LIBS = mathed/libmathed.la insets/libinsets.la \
 #lyx_DEPENDENCIES = $(LYX_CONV_LIBS) $(INCLUDED_SIGC)
 
 lyx_LDADD = $(LYX_CONV_LIBS) $(SIGC_LIBS) $(INCLUDED_SIGC) @INTLLIBS@ \
-	$(PSPELL_LIBS) @AIKSAURUS_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+	$(PSPELL_LIBS) @AIKSAURUS_LIBS@
+
+#  @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 
 #lyx_LDFLAGS=-Wl,-O1
 

@@ -8,3 +8,5 @@ ETAGS_ARGS = --lang=c++
 
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 SIGC_INCLUDES = -I$(top_srcdir) -I$(top_builddir)
+
+LIBS =

@@ -2,10 +2,10 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libxforms.la
 
-INCLUDES = -I${top_srcdir}/images -I${top_srcdir}/src/ \
-	-I${top_srcdir}/src/frontends/ \
-	-I${top_srcdir}/src/frontends/controllers \
-	${SIGC_CFLAGS} $(BOOST_INCLUDES)
+INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src/ \
+	-I$(top_srcdir)/src/frontends/ \
+	-I$(top_srcdir)/src/frontends/controllers \
+	$(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 LYXDATADIRS = forms
 
@@ -16,7 +16,7 @@ else
 XFORMSGIMAGE = xformsGImage.C xformsGImage.h
 endif
 
-# Alphabetical order please.  It makes it easier to figure out what's missing. 
+# Alphabetical order please.  It makes it easier to figure out what's missing.
 libxforms_la_SOURCES = \
 	Alert_pimpl.C \
 	bmtable.c \
@@ -225,7 +225,7 @@ libxforms.la: $(libxforms_la_OBJECTS) $(libxforms_la_DEPENDENCIES)
 # for convenience only
 updatesrc:
 	$(MAKE) -C forms updatesrc
- 
+
 # just copied from old lyx repository
 dist-hook:
 	for subdir in $(LYXDATADIRS) ; do \

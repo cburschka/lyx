@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 noinst_LTLIBRARIES = libmathed.la
 
-INCLUDES = -I${srcdir}/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
+INCLUDES = -I$(srcdir)/../ $(SIGC_CFLAGS) $(BOOST_INCLUDES)
 
 libmathed_la_SOURCES = \
 	textpainter.C \
