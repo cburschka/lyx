@@ -1,3 +1,8 @@
+2002-09-11  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* LyXView.C (LyXView::updateWindowTitle): change the minimised icon
+	to show an asterix if the buffer has changed.
+
 2002-09-11  John Levon  <levon@movementarian.org>
 
 	* Painter.C: draw frame after background. This is needed

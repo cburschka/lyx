@@ -152,25 +152,26 @@ void LyXView::updateLayoutChoice()
 void LyXView::updateWindowTitle()
 {
 	static string last_title = "LyX";
-	string title = "LyX";
-	string icon_title = "LyX";
+	string maximize_title = "LyX";
+	string minimize_title = "LyX";
 
 	if (view()->available()) {
 		string const cur_title = buffer()->fileName();
 		if (!cur_title.empty()) {
-			title += ": " + MakeDisplayPath(cur_title, 30);
-			if (!buffer()->isClean())
-				title += _(" (changed)");
+			maximize_title += ": " + MakeDisplayPath(cur_title, 30);
+			minimize_title = OnlyFilename(cur_title);
+			if (!buffer()->isClean()) {
+				maximize_title += _(" (changed)");
+				minimize_title += "*";
+			}
 			if (buffer()->isReadonly())
-				title += _(" (read only)");
-			// Show only the filename if it's available
-			icon_title = OnlyFilename(cur_title);
+				maximize_title += _(" (read only)");
 		}
 	}
 
-	if (title != last_title) {
-		setWindowTitle(title, icon_title);
-		last_title = title;
+	if (maximize_title != last_title) {
+		setWindowTitle(maximize_title, minimize_title);
+		last_title = maximize_title;
 	}
 }
 
