@@ -2790,7 +2790,7 @@ void Buffer::makeDocBookFile(string const & filename, int column)
 		ofs << "\n [ " << params.preamble << " \n]>\n\n";
 
         string userName(getUserName());
-	ofs << "<!-- DocBook file was created by LyX 1.0 (C) 1995-1999\n"
+	ofs << "<!-- DocBook file was created by LyX 1.1 (C) 1995-1999\n"
 	    << "by <" << userName << "> " << date() << " -->\n";
 
 	if(params.options.empty())
@@ -3107,7 +3107,7 @@ void Buffer::SimpleDocBookOnePar(string & file, string & extra,
 			//         desc_on == 4
 			//
 			if(desc_on!= 3 || i!= 0) {
-				if(tmp_out[0] == '@') {
+				if(!tmp_out.empty() && tmp_out[0] == '@') {
 					if(desc_on == 4)
 						extra += frontStrip(tmp_out, '@');
 					else

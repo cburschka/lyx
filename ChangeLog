@@ -1,3 +1,11 @@
+1999-12-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/buffer.C (makeDocBookFile): update version number in output
+	file. 
+	(SimpleDocBookOnePar): fix an assert when trying to a character
+	access beyond string length
+	[Patch from Jose']
+
 1999-12-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* po/de.po: fix the Export menu
