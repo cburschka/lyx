@@ -1,5 +1,8 @@
 2000-10-02  Allan Rae  <rae@lyx.org>
 
+	* src/lyxfunc.C (Dispatch): missing break; and moved the '}' for
+	LFUN_UNKNOWN_ACTION: so it doesn't wrap around default:.
+
 	* src/frontends/xforms/FormPreferences.[Ch] (restore): D'oh.
 	Left this one out by accident.
 

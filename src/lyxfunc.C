@@ -2921,6 +2921,7 @@ string const LyXFunc::Dispatch(int ac,
 		// a zoom change.
 		textcache.clear();
 	}
+	break;
 
 	case LFUN_SET_COLOR:
 	{
@@ -3000,10 +3001,11 @@ string const LyXFunc::Dispatch(int ac,
 			setErrorMessage(N_("Unknown action"));
 		}
 		break;
+	}
+
 	default:
 		lyxerr << "A truly unknown func!" << endl;
 		break;
-	}
 	} // end of switch
   exit_with_message:
 
