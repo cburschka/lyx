@@ -476,19 +476,24 @@ void BufferView::Pimpl::scrollCB(double value)
 
 int BufferView::Pimpl::scrollUp(long time)
 {
-	if (!buffer_) return 0;
-	if (!screen_.get()) return 0;
+	if (!buffer_ || !screen_.get())
+		return 0;
 
 	double value = workarea_.getScrollbarValue();
 
-	if (value == 0) return 0;
+	if (value == 0)
+		return 0;
 
+#if 1
 	float add_value =  (bv_->text->defaultHeight()
 			    + float(time) * float(time) * 0.125);
 
 	if (add_value > workarea_.height())
 		add_value = float(workarea_.height() -
 				  bv_->text->defaultHeight());
+#else
+	float add_value =  float(workarea_.height()) * float(time) / 100;
+#endif
 
 	value -= add_value;
 
@@ -504,21 +509,26 @@ int BufferView::Pimpl::scrollUp(long time)
 
 int BufferView::Pimpl::scrollDown(long time)
 {
-	if (!buffer_) return 0;
-	if (!screen_.get()) return 0;
+	if (!buffer_ || !screen_.get())
+		return 0;
 
 	double value = workarea_.getScrollbarValue();
 	pair<float, float> p = workarea_.getScrollbarBounds();
 	double const max = p.second;
 
-	if (value == max) return 0;
+	if (value == max)
+		return 0;
 
+#if 1
 	float add_value =  (bv_->text->defaultHeight()
 			    + float(time) * float(time) * 0.125);
 
 	if (add_value > workarea_.height())
 		add_value = float(workarea_.height() -
 				  bv_->text->defaultHeight());
+#else
+	float add_value =  float(workarea_.height()) * float(time) / 100;
+#endif
 
 	value += add_value;
 
@@ -609,9 +619,8 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	if (!buffer_ || !screen_.get())
 		return;
 
-	Inset * inset_hit = checkInsetHit(bv_->text, xpos, ypos);
-
 	// ok ok, this is a hack.
+	// Why??? (Jug20020424)
 	if (button == 4 || button == 5) {
 		switch (button) {
 		case 4:
@@ -621,7 +630,13 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 			scrollDown(lyxrc.wheel_jump);
 			break;
 		}
+		// We shouldn't go further down as we really should only do the
+		// scrolling and be done with this. Otherwise we may open some
+		// dialogs (Jug 20020424).
+		return;
 	}
+
+	Inset * inset_hit = checkInsetHit(bv_->text, xpos, ypos);
 
 	// Middle button press pastes if we have a selection
 	// We do this here as if the selection was inside an inset
@@ -826,7 +841,9 @@ void BufferView::Pimpl::leaveView()
 void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 					      unsigned int button)
 {
-	if (!buffer_ || !screen_.get()) return;
+	// do nothing if we used the mouse wheel
+	if (!buffer_ || !screen_.get() || button == 4 || button == 5)
+		return;
 
 	// If we hit an inset, we have the inset coordinates in these
 	// and inset_hit points to the inset.  If we do not hit an

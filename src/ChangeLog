@@ -1,3 +1,8 @@
+2002-04-24  Juergen Vigna  <jug@sad.it>
+
+	* BufferView_pimpl.C (workAreaButtonPress): fix handling of mouse-wheel
+	(workAreaButtonRelease): don't do anything if it was a mouse-wheel
+
 2002-04-22  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* buffer.C (getBibkeyList): If using \bibliography, return the
