@@ -32,6 +32,8 @@
       // variable scoping. (reported by Thomas Witt)
       // Intel C++ 6.0 (currently in Beta test) doesn't have any front-end
       // changes at all.  (reported by Kirk Klobe)
+      // That can't be right, since it supports template template
+      // arguments (reported by Dave Abrahams)
 #     ifndef BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
 #        define BOOST_NO_ARGUMENT_DEPENDENT_LOOKUP
 #     endif

@@ -10,14 +10,23 @@
 //
 // This software is provided "as is" without express or implied warranty,
 // and with no claim as to its suitability for any purpose.
- 
+
 // For more information, see http://www.boost.org
- 
+
 // William Kempf, Jesse Jones and Karl Nelson were all very helpful in the
 // design of this library.
 
 #ifndef BOOST_FUNCTION_HPP
 #define BOOST_FUNCTION_HPP
+
+#if defined(__sgi) && defined(_COMPILER_VERSION) && _COMPILER_VERSION <= 730
+// Work around a compiler bug.
+// boost::python::detail::function has to be seen by the compiler before the
+// boost::function class template.
+namespace boost { namespace python { namespace detail {
+  class function;
+}}}
+#endif
 
 #include <boost/function/function_base.hpp>
 #include <boost/type_traits/function_traits.hpp>
@@ -51,7 +60,7 @@ namespace boost {
       struct real_get_function_impl<0>
       {
         template<
-          typename R, 
+          typename R,
           typename T1,
           typename T2,
           typename T3,
@@ -70,9 +79,9 @@ namespace boost {
         >
         struct params
         {
-          typedef function0<R, 
+          typedef function0<R,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                            Policy, Mixin, 
+                            Policy, Mixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                             Allocator> type;
         };
@@ -82,7 +91,7 @@ namespace boost {
       struct real_get_function_impl<1>
       {
         template<
-          typename R, 
+          typename R,
           typename T1,
           typename T2,
           typename T3,
@@ -101,9 +110,9 @@ namespace boost {
         >
         struct params
         {
-          typedef function1<R, T1, 
+          typedef function1<R, T1,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                            Policy, Mixin, 
+                            Policy, Mixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                             Allocator> type;
         };
@@ -113,7 +122,7 @@ namespace boost {
       struct real_get_function_impl<2>
       {
         template<
-          typename R, 
+          typename R,
           typename T1,
           typename T2,
           typename T3,
@@ -132,9 +141,9 @@ namespace boost {
         >
         struct params
         {
-          typedef function2<R, T1, T2, 
+          typedef function2<R, T1, T2,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                            Policy, Mixin, 
+                            Policy, Mixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                             Allocator> type;
         };
@@ -144,7 +153,7 @@ namespace boost {
       struct real_get_function_impl<3>
       {
         template<
-          typename R, 
+          typename R,
           typename T1,
           typename T2,
           typename T3,
@@ -163,9 +172,9 @@ namespace boost {
         >
         struct params
         {
-          typedef function3<R, T1, T2, T3, 
+          typedef function3<R, T1, T2, T3,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                            Policy, Mixin, 
+                            Policy, Mixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                             Allocator> type;
         };
@@ -175,7 +184,7 @@ namespace boost {
       struct real_get_function_impl<4>
       {
         template<
-          typename R, 
+          typename R,
           typename T1,
           typename T2,
           typename T3,
@@ -194,9 +203,9 @@ namespace boost {
         >
         struct params
         {
-          typedef function4<R, T1, T2, T3, T4, 
+          typedef function4<R, T1, T2, T3, T4,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                            Policy, Mixin, 
+                            Policy, Mixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                             Allocator> type;
         };
@@ -206,7 +215,7 @@ namespace boost {
       struct real_get_function_impl<5>
       {
         template<
-          typename R, 
+          typename R,
           typename T1,
           typename T2,
           typename T3,
@@ -225,11 +234,11 @@ namespace boost {
         >
         struct params
         {
-          typedef function5<R, T1, T2, T3, T4, T5, 
+          typedef function5<R, T1, T2, T3, T4, T5,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                            Policy, Mixin, 
+                            Policy, Mixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
-                            Allocator> 
+                            Allocator>
           type;
         };
       };
@@ -238,7 +247,7 @@ namespace boost {
       struct real_get_function_impl<6>
       {
         template<
-          typename R, 
+          typename R,
           typename T1,
           typename T2,
           typename T3,
@@ -257,9 +266,9 @@ namespace boost {
         >
         struct params
         {
-          typedef function6<R, T1, T2, T3, T4, T5, T6, 
+          typedef function6<R, T1, T2, T3, T4, T5, T6,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                            Policy, Mixin, 
+                            Policy, Mixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                             Allocator>
           type;
@@ -270,7 +279,7 @@ namespace boost {
       struct real_get_function_impl<7>
       {
         template<
-          typename R, 
+          typename R,
           typename T1,
           typename T2,
           typename T3,
@@ -289,9 +298,9 @@ namespace boost {
         >
         struct params
         {
-          typedef function7<R, T1, T2, T3, T4, T5, T6, T7, 
+          typedef function7<R, T1, T2, T3, T4, T5, T6, T7,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                            Policy, Mixin, 
+                            Policy, Mixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                             Allocator> type;
         };
@@ -301,7 +310,7 @@ namespace boost {
       struct real_get_function_impl<8>
       {
         template<
-          typename R, 
+          typename R,
           typename T1,
           typename T2,
           typename T3,
@@ -320,9 +329,9 @@ namespace boost {
         >
         struct params
         {
-          typedef function8<R, T1, T2, T3, T4, T5, T6, T7, T8, 
+          typedef function8<R, T1, T2, T3, T4, T5, T6, T7, T8,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                            Policy, Mixin, 
+                            Policy, Mixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                             Allocator> type;
         };
@@ -332,7 +341,7 @@ namespace boost {
       struct real_get_function_impl<9>
       {
         template<
-          typename R, 
+          typename R,
           typename T1,
           typename T2,
           typename T3,
@@ -351,9 +360,9 @@ namespace boost {
         >
         struct params
         {
-          typedef function9<R, T1, T2, T3, T4, T5, T6, T7, T8, T9, 
+          typedef function9<R, T1, T2, T3, T4, T5, T6, T7, T8, T9,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                            Policy, Mixin, 
+                            Policy, Mixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                             Allocator> type;
         };
@@ -363,7 +372,7 @@ namespace boost {
       struct real_get_function_impl<10>
       {
         template<
-          typename R, 
+          typename R,
           typename T1,
           typename T2,
           typename T3,
@@ -382,151 +391,151 @@ namespace boost {
         >
         struct params
         {
-          typedef function10<R, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, 
+          typedef function10<R, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                             Policy, Mixin, 
+                             Policy, Mixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                              Allocator> type;
         };
       };
 
 #ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
-      template<bool GetIt, typename Traits> 
+      template<bool GetIt, typename Traits>
       struct get_arg1_type
       {
         typedef unusable type;
       };
 
-      template<typename Traits> 
+      template<typename Traits>
       struct get_arg1_type<true, Traits>
       {
         typedef typename Traits::arg1_type type;
       };
 
-      template<bool GetIt, typename Traits> 
+      template<bool GetIt, typename Traits>
       struct get_arg2_type
       {
         typedef unusable type;
       };
 
-      template<typename Traits> 
+      template<typename Traits>
       struct get_arg2_type<true, Traits>
       {
         typedef typename Traits::arg2_type type;
       };
 
-      template<bool GetIt, typename Traits> 
+      template<bool GetIt, typename Traits>
       struct get_arg3_type
       {
         typedef unusable type;
       };
 
-      template<typename Traits> 
+      template<typename Traits>
       struct get_arg3_type<true, Traits>
       {
         typedef typename Traits::arg3_type type;
       };
 
-      template<bool GetIt, typename Traits> 
+      template<bool GetIt, typename Traits>
       struct get_arg4_type
       {
         typedef unusable type;
       };
 
-      template<typename Traits> 
+      template<typename Traits>
       struct get_arg4_type<true, Traits>
       {
         typedef typename Traits::arg4_type type;
       };
 
-      template<bool GetIt, typename Traits> 
+      template<bool GetIt, typename Traits>
       struct get_arg5_type
       {
         typedef unusable type;
       };
 
-      template<typename Traits> 
+      template<typename Traits>
       struct get_arg5_type<true, Traits>
       {
         typedef typename Traits::arg5_type type;
       };
 
-      template<bool GetIt, typename Traits> 
+      template<bool GetIt, typename Traits>
       struct get_arg6_type
       {
         typedef unusable type;
       };
 
-      template<typename Traits> 
+      template<typename Traits>
       struct get_arg6_type<true, Traits>
       {
         typedef typename Traits::arg6_type type;
       };
 
-      template<bool GetIt, typename Traits> 
+      template<bool GetIt, typename Traits>
       struct get_arg7_type
       {
         typedef unusable type;
       };
 
-      template<typename Traits> 
+      template<typename Traits>
       struct get_arg7_type<true, Traits>
       {
         typedef typename Traits::arg7_type type;
       };
 
-      template<bool GetIt, typename Traits> 
+      template<bool GetIt, typename Traits>
       struct get_arg8_type
       {
         typedef unusable type;
       };
 
-      template<typename Traits> 
+      template<typename Traits>
       struct get_arg8_type<true, Traits>
       {
         typedef typename Traits::arg8_type type;
       };
 
-      template<bool GetIt, typename Traits> 
+      template<bool GetIt, typename Traits>
       struct get_arg9_type
       {
         typedef unusable type;
       };
 
-      template<typename Traits> 
+      template<typename Traits>
       struct get_arg9_type<true, Traits>
       {
         typedef typename Traits::arg9_type type;
       };
 
-      template<bool GetIt, typename Traits> 
+      template<bool GetIt, typename Traits>
       struct get_arg10_type
       {
         typedef unusable type;
       };
 
-      template<typename Traits> 
+      template<typename Traits>
       struct get_arg10_type<true, Traits>
       {
         typedef typename Traits::arg10_type type;
       };
 
-      template<int X, int Y> 
+      template<int X, int Y>
       struct gte
       {
         BOOST_STATIC_CONSTANT(bool, value = (X >= Y));
       };
 
       template<bool IsFunction,
-               typename InR, 
-               typename InT1, 
-               typename InT2, 
-               typename InT3, 
+               typename InR,
+               typename InT1,
+               typename InT2,
+               typename InT3,
                typename InT4,
-               typename InT5, 
-               typename InT6, 
-               typename InT7, 
-               typename InT8, 
+               typename InT5,
+               typename InT6,
+               typename InT7,
+               typename InT8,
                typename InT9,
                typename InT10,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
@@ -539,25 +548,25 @@ namespace boost {
         typedef function_traits<InR> traits;
 
         typedef typename traits::result_type R;
-        typedef typename get_arg1_type<(gte<(traits::arity), 1>::value), 
+        typedef typename get_arg1_type<(gte<(traits::arity), 1>::value),
                                        traits>::type T1;
-        typedef typename get_arg2_type<(gte<(traits::arity), 2>::value), 
+        typedef typename get_arg2_type<(gte<(traits::arity), 2>::value),
                                        traits>::type T2;
-        typedef typename get_arg3_type<(gte<(traits::arity), 3>::value), 
+        typedef typename get_arg3_type<(gte<(traits::arity), 3>::value),
                                        traits>::type T3;
-        typedef typename get_arg4_type<(gte<(traits::arity), 4>::value), 
+        typedef typename get_arg4_type<(gte<(traits::arity), 4>::value),
                                        traits>::type T4;
-        typedef typename get_arg5_type<(gte<(traits::arity), 5>::value), 
+        typedef typename get_arg5_type<(gte<(traits::arity), 5>::value),
                                        traits>::type T5;
-        typedef typename get_arg6_type<(gte<(traits::arity), 6>::value), 
+        typedef typename get_arg6_type<(gte<(traits::arity), 6>::value),
                                        traits>::type T6;
-        typedef typename get_arg7_type<(gte<(traits::arity), 7>::value), 
+        typedef typename get_arg7_type<(gte<(traits::arity), 7>::value),
                                        traits>::type T7;
-        typedef typename get_arg8_type<(gte<(traits::arity), 8>::value), 
+        typedef typename get_arg8_type<(gte<(traits::arity), 8>::value),
                                        traits>::type T8;
-        typedef typename get_arg9_type<(gte<(traits::arity), 9>::value), 
+        typedef typename get_arg9_type<(gte<(traits::arity), 9>::value),
                                        traits>::type T9;
-        typedef typename get_arg10_type<(gte<(traits::arity), 10>::value), 
+        typedef typename get_arg10_type<(gte<(traits::arity), 10>::value),
                                         traits>::type T10;
 
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
@@ -578,15 +587,15 @@ namespace boost {
       };
 
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-      template<typename InR, 
-               typename InT1, 
-               typename InT2, 
-               typename InT3, 
+      template<typename InR,
+               typename InT1,
+               typename InT2,
+               typename InT3,
                typename InT4,
-               typename InT5, 
-               typename InT6, 
-               typename InT7, 
-               typename InT8, 
+               typename InT5,
+               typename InT6,
+               typename InT7,
+               typename InT8,
                typename InT9,
                typename InT10,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
@@ -598,7 +607,7 @@ namespace boost {
                                         InT5, InT6, InT7, InT8, InT9, InT10,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
                                         InPolicy, InMixin,
-#endif // ndef BOOST_FUNCTION_NO_DEPRECATED 
+#endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                                         InAllocator>
       {
         // Not a function, so just map the types directly
@@ -625,20 +634,20 @@ namespace boost {
 #endif // ndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
       template<
-        typename InR, 
-        typename InT1, 
-        typename InT2, 
-        typename InT3, 
+        typename InR,
+        typename InT1,
+        typename InT2,
+        typename InT3,
         typename InT4,
-        typename InT5, 
-        typename InT6, 
-        typename InT7, 
-        typename InT8, 
+        typename InT5,
+        typename InT6,
+        typename InT7,
+        typename InT8,
         typename InT9,
         typename InT10,
         typename InPolicy = empty_function_policy,
         typename InMixin = empty_function_mixin,
-        typename InAllocator = std::allocator<function_base> 
+        typename InAllocator = std::allocator<function_base>
       >
       struct get_function_impl
       {
@@ -647,7 +656,7 @@ namespace boost {
                                            InR, InT1, InT2, InT3, InT4, InT5,
                                            InT6, InT7, InT8, InT9, InT10,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                                           InPolicy, InMixin, 
+                                           InPolicy, InMixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                                            InAllocator> decoder;
         typedef typename decoder::R R;
@@ -685,9 +694,9 @@ namespace boost {
 
         typedef typename real_get_function_impl<
           (count_used_args<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>::value)
-          >::template params<R, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, 
+          >::template params<R, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10,
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-                             Policy, Mixin, 
+                             Policy, Mixin,
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
                              Allocator>::type
         type;
@@ -695,25 +704,25 @@ namespace boost {
 
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
   template<
-    typename InR, 
-    typename InT1, 
-    typename InT2, 
-    typename InT3, 
+    typename InR,
+    typename InT1,
+    typename InT2,
+    typename InT3,
     typename InT4,
-    typename InT5, 
-    typename InT6, 
-    typename InT7, 
-    typename InT8, 
+    typename InT5,
+    typename InT6,
+    typename InT7,
+    typename InT8,
     typename InT9,
     typename InT10,
     typename InMyPolicy = empty_function_policy,
     typename InMyMixin = empty_function_mixin,
-    typename InMyAllocator = std::allocator<function_base> 
+    typename InMyAllocator = std::allocator<function_base>
   >
   class function_traits_builder
   {
-    typedef get_function_impl<InR, InT1, InT2, InT3, InT4, InT5, InT6, InT7, 
-                              InT8, InT9, InT10, InMyPolicy, InMyMixin, 
+    typedef get_function_impl<InR, InT1, InT2, InT3, InT4, InT5, InT6, InT7,
+                              InT8, InT9, InT10, InMyPolicy, InMyMixin,
                               InMyAllocator>
       impl;
 
@@ -740,29 +749,29 @@ namespace boost {
 
 #ifndef BOOST_NO_DEPENDENT_NESTED_DERIVATIONS
     template<typename Policy>
-    struct policy : 
+    struct policy :
         public function_traits_builder<MyR, MyT1, MyT2, MyT3, MyT4, MyT5, MyT6,
-                                       MyT7, MyT8, MyT9, MyT10, Policy, 
+                                       MyT7, MyT8, MyT9, MyT10, Policy,
                                        mixin_type, allocator_type> {};
 
     template<typename Mixin>
-    struct mixin : 
+    struct mixin :
         public function_traits_builder<MyR, MyT1, MyT2, MyT3, MyT4, MyT5, MyT6,
-                                       MyT7, MyT8, MyT9, MyT10, policy_type, 
+                                       MyT7, MyT8, MyT9, MyT10, policy_type,
                                        Mixin, allocator_type> {};
 
     template<typename Allocator>
-    struct allocator : 
+    struct allocator :
         public function_traits_builder<MyR, MyT1, MyT2, MyT3, MyT4, MyT5, MyT6,
-                                       MyT7, MyT8, MyT9, MyT10, policy_type, 
+                                       MyT7, MyT8, MyT9, MyT10, policy_type,
                                        mixin_type, Allocator> {};
 #else
     template<typename Policy>
-    struct policy 
+    struct policy
     {
-      typedef typename function_traits_builder<MyR, MyT1, MyT2, MyT3, MyT4, 
-                                               MyT5, MyT6, MyT7, MyT8, MyT9, 
-                                               MyT10, Policy, mixin_type, 
+      typedef typename function_traits_builder<MyR, MyT1, MyT2, MyT3, MyT4,
+                                               MyT5, MyT6, MyT7, MyT8, MyT9,
+                                               MyT10, Policy, mixin_type,
                                                allocator_type>::type
         type;
     };
@@ -770,8 +779,8 @@ namespace boost {
     template<typename Mixin>
     struct mixin
     {
-      typedef typename function_traits_builder<MyR, MyT1, MyT2, MyT3, MyT4, 
-                                               MyT5, MyT6, MyT7, MyT8, MyT9, 
+      typedef typename function_traits_builder<MyR, MyT1, MyT2, MyT3, MyT4,
+                                               MyT5, MyT6, MyT7, MyT8, MyT9,
                                                MyT10, policy_type, Mixin,
                                                allocator_type>::type
         type;
@@ -780,8 +789,8 @@ namespace boost {
     template<typename Allocator>
     struct allocator
     {
-      typedef typename function_traits_builder<MyR, MyT1, MyT2, MyT3, MyT4, 
-                                               MyT5, MyT6, MyT7, MyT8, MyT9, 
+      typedef typename function_traits_builder<MyR, MyT1, MyT2, MyT3, MyT4,
+                                               MyT5, MyT6, MyT7, MyT8, MyT9,
                                                MyT10, policy_type, mixin_type,
                                                Allocator>::type
         type;
@@ -793,8 +802,8 @@ namespace boost {
   } // end namespace detail
 
   template<
-    typename R, 
-    typename T1 = detail::function::unusable, 
+    typename R,
+    typename T1 = detail::function::unusable,
     typename T2 = detail::function::unusable,
     typename T3 = detail::function::unusable,
     typename T4 = detail::function::unusable,
@@ -806,16 +815,16 @@ namespace boost {
     typename T10 = detail::function::unusable
   >
   class function :
-    public detail::function::get_function_impl<R, T1, T2, T3, T4, T5, T6, T7, 
+    public detail::function::get_function_impl<R, T1, T2, T3, T4, T5, T6, T7,
                                                T8, T9, T10>::type
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
-    , public detail::function::function_traits_builder<R, T1, T2, T3, T4, T5, 
+    , public detail::function::function_traits_builder<R, T1, T2, T3, T4, T5,
                                                        T6, T7, T8, T9, T10>
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
   {
     typedef typename detail::function::get_function_impl<R, T1, T2, T3, T4, T5,
                                                          T6, T7, T8, T9, T10
-                                                         >::type 
+                                                         >::type
       base_type;
 
   public:
@@ -823,16 +832,16 @@ namespace boost {
     typedef typename base_type::policy_type policy_type;
     typedef typename base_type::mixin_type mixin_type;
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
-    typedef typename base_type::allocator_type allocator_type;              
-    typedef function self_type;                                     
-                                                                            
-    function() : base_type() {}                                     
-                                                                            
-    template<typename Functor>                                              
+    typedef typename base_type::allocator_type allocator_type;
+    typedef function self_type;
+
+    function() : base_type() {}
+
+    template<typename Functor>
     function(Functor BOOST_FUNCTION_TARGET_FIX(const &) f) : base_type(f) {}
-                      
+
     function(const self_type& f) : base_type(static_cast<const base_type&>(f)){}
-         
+
     template<typename Functor>
     self_type& operator=(Functor BOOST_FUNCTION_TARGET_FIX(const &) f)
     {
@@ -847,38 +856,38 @@ namespace boost {
     }
 
     self_type& operator=(const self_type& f)
-    {   
+    {
       self_type(f).swap(*this);
       return *this;
     }
 
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
     template<typename Functor>
-    BOOST_FUNCTION_DEPRECATED_PRE 
-        void set(Functor BOOST_FUNCTION_TARGET_FIX(const &) f) 
+    BOOST_FUNCTION_DEPRECATED_PRE
+        void set(Functor BOOST_FUNCTION_TARGET_FIX(const &) f)
     {
       BOOST_FUNCTION_DEPRECATED_INNER
       self_type(f).swap(*this);
     }
 
     BOOST_FUNCTION_DEPRECATED_PRE
-    void set(const base_type& f) 
+    void set(const base_type& f)
     {
       BOOST_FUNCTION_DEPRECATED_INNER
       self_type(f).swap(*this);
     }
 
     BOOST_FUNCTION_DEPRECATED_PRE
-    void set(const self_type& f)                             
+    void set(const self_type& f)
     {
       BOOST_FUNCTION_DEPRECATED_INNER
       self_type(f).swap(*this);
-    }   
+    }
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
   };
 
   template<typename R,
-           typename T1, 
+           typename T1,
            typename T2,
            typename T3,
            typename T4,

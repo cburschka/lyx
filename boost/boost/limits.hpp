@@ -93,15 +93,15 @@ namespace std
 #elif defined(ULLONG_MAX) && defined(ULLONG_MIN)
       static unsigned BOOST_LLT min(){ return ULLONG_MIN; }
       static unsigned BOOST_LLT max(){ return ULLONG_MAX; }
-#elif defined(ULONGLONG_MAX) && defined(ULONG_LONG_MIN)
+#elif defined(ULONGLONG_MAX) && defined(ULONGLONG_MIN)
       static unsigned BOOST_LLT min(){ return ULONGLONG_MIN; }
       static unsigned BOOST_LLT max(){ return ULONGLONG_MAX; }
 #else
       static unsigned BOOST_LLT min(){ return 0uLL; }
       static unsigned BOOST_LLT max(){ return ~0uLL; }
 #endif
-      BOOST_STATIC_CONSTANT(int, digits = sizeof(BOOST_LLT) * CHAR_BIT -1);
-      BOOST_STATIC_CONSTANT(int, digits10 = (CHAR_BIT * sizeof (BOOST_LLT) - 1) * 301L / 1000);
+      BOOST_STATIC_CONSTANT(int, digits = sizeof(BOOST_LLT) * CHAR_BIT);
+      BOOST_STATIC_CONSTANT(int, digits10 = (CHAR_BIT * sizeof (BOOST_LLT)) * 301L / 1000);
       BOOST_STATIC_CONSTANT(bool, is_signed = false);
       BOOST_STATIC_CONSTANT(bool, is_integer = true);
       BOOST_STATIC_CONSTANT(bool, is_exact = true);

@@ -8,11 +8,11 @@
  * provided that the above copyright notice appear in all copies and
  * that both that copyright notice and this permission notice appear
  * in supporting documentation.  Dr John Maddock makes no representations
- * about the suitability of this software for any purpose.
+ * about the suitability of this software for any purpose.  
  * It is provided "as is" without express or implied warranty.
  *
  */
-
+ 
  /*
   *   LOCATION:    see http://www.boost.org for most recent version.
   *   FILE:        c_regex_traits.cpp
@@ -86,7 +86,7 @@ const char* re_char_class_names[] = {
 };
 
 template <class charT,
-	  class traits = ::std::char_traits<charT> >
+          class traits = ::std::char_traits<charT> >
 class parser_buf : public ::std::basic_streambuf<charT, traits>
 {
    typedef ::std::basic_streambuf<charT, traits> base_type;
@@ -129,23 +129,26 @@ parser_buf<charT, traits>::seekoff(off_type off, ::std::ios_base::seekdir way, :
    {
    case ::std::ios_base::beg:
       if((off < 0) || (off > size))
-	 return pos_type(off_type(-1));
+         return pos_type(off_type(-1));
       else
-	 this->setg(g, g + off, g + size);
+         this->setg(g, g + off, g + size);
+      break;
    case ::std::ios_base::end:
       if((off < 0) || (off > size))
-	 return pos_type(off_type(-1));
+         return pos_type(off_type(-1));
       else
-	 this->setg(g, g + size - off, g + size);
+         this->setg(g, g + size - off, g + size);
+      break;
    case ::std::ios_base::cur:
    {
       std::ptrdiff_t newpos = pos + off;
       if((newpos < 0) || (newpos > size))
-	 return pos_type(off_type(-1));
+         return pos_type(off_type(-1));
       else
-	 this->setg(g, g + newpos, g + size);
+         this->setg(g, g + newpos, g + size);
+      break;
    }
-   default: ; // just to avoid warnings from gcc
+   default: ;
    }
    return static_cast<pos_type>(this->gptr() - this->eback());
 }
@@ -197,7 +200,11 @@ message_data<char>::message_data(const std::locale& l, const std::string& regex_
 #ifndef BOOST_NO_STD_MESSAGES
 
    const std::messages<char>* pm = 0;
-   std::messages<char>::catalog cat = -1;
+#ifndef __IBMCPP__
+   std::messages<char>::catalog cat = static_cast<std::messages<wchar_t>::catalog>(-1);
+#else
+   std::messages<char>::catalog cat = reinterpret_cast<std::messages<wchar_t>::catalog>(-1);
+#endif
    if(regex_message_catalogue.size())
    {
       pm = &BOOST_USE_FACET(std::messages<char>, l);
@@ -205,13 +212,13 @@ message_data<char>::message_data(const std::locale& l, const std::string& regex_
 #ifndef BOOST_NO_EXCEPTIONS
       if(cat < 0)
       {
-	 std::string m("Unable to open message catalog: ");
-	 throw std::runtime_error(m + regex_message_catalogue);
+         std::string m("Unable to open message catalog: ");
+         throw std::runtime_error(m + regex_message_catalogue);
       }
 #else
       BOOST_REGEX_NOEH_ASSERT(cat >= 0);
 #endif
-   }
+   } 
 #endif
    std::memset(syntax_map, cpp_regex_traits<char>::syntax_char, 256);
    unsigned i;
@@ -223,18 +230,18 @@ message_data<char>::message_data(const std::locale& l, const std::string& regex_
       new_size = re_get_default_message(0, 0, i+100);
       if(new_size > array_size)
       {
-	 a.reset(new char[new_size]);
-	 array_size = new_size;
+         a.reset(new char[new_size]);
+         array_size = new_size;
       }
       re_get_default_message(a.get(), array_size, i+100);
       std::string s = a.get();
 #ifndef BOOST_NO_STD_MESSAGES
       if((int)cat >= 0)
-	 s = pm->get(cat, 0, i+100, s);
+         s = pm->get(cat, 0, i+100, s);
 #endif
       for(std::size_t j = 0; j < s.size(); ++j)
       {
-	 syntax_map[s[j]] = (unsigned char)(i);
+         syntax_map[s[j]] = (unsigned char)(i);
       }
    }
 
@@ -261,19 +268,19 @@ message_data<char>::message_data(const std::locale& l, const std::string& regex_
       c2 = pm->get(cat, 0, i, c1);
       while(c2.size())
       {
-	 const char* p1, *p2, *p3, *p4;;
-	 p1 = c2.c_str();
-	 while(*p1 && BOOST_REGEX_STD isspace((char)*p1, l))++p1;
-	 p2 = p1;
-	 while(*p2 && !BOOST_REGEX_STD isspace((char)*p2, l))++p2;
-	 p3 = p2;
-	 while(*p3 && BOOST_REGEX_STD isspace((char)*p3, l))++p3;
-	 p4 = p3;
-	 while(*p4 && !BOOST_REGEX_STD isspace((char)*p4, l))++p4;
-	 collating_elements[std::string(p1, p2)] = std::string(p3, p4);
+         const char* p1, *p2, *p3, *p4;;
+         p1 = c2.c_str();
+         while(*p1 && BOOST_REGEX_STD isspace((char)*p1, l))++p1;
+         p2 = p1;
+         while(*p2 && !BOOST_REGEX_STD isspace((char)*p2, l))++p2;
+         p3 = p2;
+         while(*p3 && BOOST_REGEX_STD isspace((char)*p3, l))++p3;
+         p4 = p3;
+         while(*p4 && !BOOST_REGEX_STD isspace((char)*p4, l))++p4;
+         collating_elements[std::string(p1, p2)] = std::string(p3, p4);
 
-	 ++i;
-	 c2 = pm->get(cat, 0, i, c1);
+         ++i;
+         c2 = pm->get(cat, 0, i, c1);
       }
    }
 #endif
@@ -284,14 +291,14 @@ message_data<char>::message_data(const std::locale& l, const std::string& regex_
    {
       for(i = 0; i < re_classes_max; ++i)
       {
-	 s = pm->get(cat, 0, i+300, m);
-	 if(s.size())
-	    classes[s] = i;
+         s = pm->get(cat, 0, i+300, m);
+         if(s.size())
+            classes[s] = i;
       }
       for(i = 0; i <= boost::REG_E_UNKNOWN ; ++i)
       {
-	 s = pm->get(cat, 0, i+200, m);
-	 error_strings[i] = s;
+         s = pm->get(cat, 0, i+200, m);
+         error_strings[i] = s;
       }
    }
 
@@ -390,7 +397,7 @@ boost::uint_fast32_t BOOST_REGEX_CALL cpp_regex_traits<char>::lookup_classname(c
    for(i = 0; i < re_classes_max; ++i)
    {
       if(s == re_char_class_names[i])
-	 return re_char_class_id[i];
+         return re_char_class_id[i];
    }
    return 0;
 }
@@ -418,16 +425,16 @@ void BOOST_REGEX_CALL cpp_regex_traits<char>::transform_primary(std::string& out
       break;
    case re_detail::sort_fixed:
       if((unsigned)sort_delim < out.size())
-	 out.erase((int)sort_delim);
+         out.erase((int)sort_delim);
       break;
    case re_detail::sort_delim:
       for(unsigned int i = 0; i < out.size(); ++i)
       {
-	 if((out[i] == sort_delim) && (i+1 < out.size()))
-	 {
-	    out.erase(i+1);
-	    break;
-	 }
+         if((out[i] == sort_delim) && (i+1 < out.size()))
+         {
+            out.erase(i+1);
+            break;
+         }
       }
    }
 }
@@ -482,20 +489,20 @@ std::string BOOST_REGEX_CALL to_narrow(const std::basic_string<wchar_t>& is, con
       switch(cvt.out(state, is.c_str(), is.c_str() + is.size(), next_in, t.get(), t.get() + bufsize, next_out))
       {
       case std::codecvt_base::ok:
-	 return std::string(t.get(), next_out);
+         return std::string(t.get(), next_out);
       case std::codecvt_base::partial:
-	 bufsize *= 2;
-	 t.reset(new char[bufsize]);
-	 continue;
+         bufsize *= 2;
+         t.reset(new char[bufsize]);
+         continue;
       case std::codecvt_base::error:
-	 // not much we can do here but guess:
+         // not much we can do here but guess:
       case std::codecvt_base::noconv:
-	 std::string out;
-	 for(unsigned i = 0; i < is.size(); ++i)
-	 {
-	    out.append(1, (char)is[i]);
-	 }
-	 return out;
+         std::string out;
+         for(unsigned i = 0; i < is.size(); ++i)
+         {
+            out.append(1, (char)is[i]);
+         }
+         return out;
       }
    }
 }
@@ -523,25 +530,25 @@ std::wstring BOOST_REGEX_CALL to_wide(const std::string& is, const std::codecvt<
       switch(cvt.in(state, is.c_str(), is.c_str() + is.size(), next_in, t.get(), t.get() + bufsize, next_out))
       {
       case std::codecvt_base::ok:
-	 return std::wstring(t.get(), next_out);
+         return std::wstring(t.get(), next_out);
       case std::codecvt_base::partial:
-	 bufsize *= 2;
-	 if(bufsize < maxsize)
-	 {
-	    t.reset(new wchar_t[bufsize]);
-	    continue;
-	 }
-	 //
-	 // error fall through:
+         bufsize *= 2;
+         if(bufsize < maxsize)
+         {
+            t.reset(new wchar_t[bufsize]);
+            continue;
+         }
+         //
+         // error fall through:
       case std::codecvt_base::error:
-	 // not much we can do here but guess:
+         // not much we can do here but guess:
       case std::codecvt_base::noconv:
-	 std::wstring out;
-	 for(unsigned i = 0; i < is.size(); ++i)
-	 {
-	    out.append(1, is[i]);
-	 }
-	 return out;
+         std::wstring out;
+         for(unsigned i = 0; i < is.size(); ++i)
+         {
+            out.append(1, is[i]);
+         }
+         return out;
       }
    }
 }
@@ -589,15 +596,19 @@ message_data<wchar_t>::message_data(const std::locale& l, const std::string& reg
    const cvt_type& cvt = BOOST_USE_FACET(cvt_type, l);
 #ifndef BOOST_NO_STD_MESSAGES
    const std::messages<wchar_t>& msgs = BOOST_USE_FACET(std::messages<wchar_t>, l);
-   std::messages<wchar_t>::catalog cat = -1;
+#ifndef __IBMCPP__
+   std::messages<wchar_t>::catalog cat = static_cast<std::messages<wchar_t>::catalog>(-1);
+#else
+   std::messages<wchar_t>::catalog cat = reinterpret_cast<std::messages<wchar_t>::catalog>(-1);
+#endif
    if(regex_message_catalogue.size())
    {
       cat = msgs.open(regex_message_catalogue, l);
 #ifndef BOOST_NO_EXCEPTIONS
       if(cat < 0)
       {
-	 std::string m("Unable to open message catalog: ");
-	 throw std::runtime_error(m + regex_message_catalogue);
+         std::string m("Unable to open message catalog: ");
+         throw std::runtime_error(m + regex_message_catalogue);
       }
 #else
       BOOST_REGEX_NOEH_ASSERT(cat >= 0);
@@ -614,26 +625,26 @@ message_data<wchar_t>::message_data(const std::locale& l, const std::string& reg
       new_size = re_get_default_message(0, 0, i+100);
       if(new_size > array_size)
       {
-	 a.reset(new char[new_size]);
-	 array_size = new_size;
+         a.reset(new char[new_size]);
+         array_size = new_size;
       }
       re_get_default_message(a.get(), array_size, i+100);
       std::string ns = a.get();
       string_type s = to_wide(ns, cvt);
 #ifndef BOOST_NO_STD_MESSAGES
       if((int)cat >= 0)
-	 s = BOOST_USE_FACET(std::messages<wchar_t>, l).get(cat, 0, (int)i+100, s);
+         s = BOOST_USE_FACET(std::messages<wchar_t>, l).get(cat, 0, (int)i+100, s);
 #endif
       for(unsigned int j = 0; j < s.size(); ++j)
       {
-	 if((s[j] <= UCHAR_MAX) && (s[j] >= 0))
-	    syntax_[s[j]] = static_cast<unsigned char>(i);
-	 else
-	 {
-	    m.c = s[j];
-	    m.type = static_cast<unsigned int>(i);
-	    syntax.push_back(m);
-	 }
+         if((s[j] <= UCHAR_MAX) && (s[j] >= 0))
+            syntax_[s[j]] = static_cast<unsigned char>(i);
+         else
+         {
+            m.c = s[j];
+            m.type = static_cast<unsigned int>(i);
+            syntax.push_back(m);
+         }
       }
    }
 
@@ -646,19 +657,19 @@ message_data<wchar_t>::message_data(const std::locale& l, const std::string& reg
       c2 = msgs.get(cat, 0, (int)i, c1);
       while(c2.size())
       {
-	 const wchar_t* p1, *p2, *p3, *p4;;
-	 p1 = c2.c_str();
-	 while(*p1 && BOOST_REGEX_STD isspace((wchar_t)*p1, l))++p1;
-	 p2 = p1;
-	 while(*p2 && !BOOST_REGEX_STD isspace((wchar_t)*p2, l))++p2;
-	 p3 = p2;
-	 while(*p3 && BOOST_REGEX_STD isspace((wchar_t)*p3, l))++p3;
-	 p4 = p3;
-	 while(*p4 && !BOOST_REGEX_STD isspace((wchar_t)*p4, l))++p4;
-	 collating_elements[std::basic_string<wchar_t>(p1, p2)] = std::basic_string<wchar_t>(p3, p4);
+         const wchar_t* p1, *p2, *p3, *p4;;
+         p1 = c2.c_str();
+         while(*p1 && BOOST_REGEX_STD isspace((wchar_t)*p1, l))++p1;
+         p2 = p1;
+         while(*p2 && !BOOST_REGEX_STD isspace((wchar_t)*p2, l))++p2;
+         p3 = p2;
+         while(*p3 && BOOST_REGEX_STD isspace((wchar_t)*p3, l))++p3;
+         p4 = p3;
+         while(*p4 && !BOOST_REGEX_STD isspace((wchar_t)*p4, l))++p4;
+         collating_elements[std::basic_string<wchar_t>(p1, p2)] = std::basic_string<wchar_t>(p3, p4);
 
-	 ++i;
-	 c2 = msgs.get(cat, 0, (int)i, c1);
+         ++i;
+         c2 = msgs.get(cat, 0, (int)i, c1);
       }
    }
 
@@ -667,20 +678,20 @@ message_data<wchar_t>::message_data(const std::locale& l, const std::string& reg
       c2.erase();
       for(i = 0; i < re_classes_max; ++i)
       {
-	 c1 = msgs.get(cat, 0, static_cast<int>(i+300), c2);
-	 if(c1.size())
-	    classes[c1] = i;
+         c1 = msgs.get(cat, 0, static_cast<int>(i+300), c2);
+         if(c1.size())
+            classes[c1] = i;
       }
       for(i = 0; i <= boost::REG_E_UNKNOWN ; ++i)
       {
-	 c1 = msgs.get(cat, 0, static_cast<int>(i+200), c2);
-	 error_strings[i] = to_narrow(c1, cvt);
+         c1 = msgs.get(cat, 0, static_cast<int>(i+200), c2);
+         error_strings[i] = to_narrow(c1, cvt);
       }
    }
 
    if((int)cat >= 0)
       msgs.close(cat);
-#endif
+#endif      
 }
 
 } // namespace re_detail
@@ -693,7 +704,7 @@ unsigned int BOOST_REGEX_CALL cpp_regex_traits<wchar_t>::do_syntax_type(size_typ
    while(i != j)
    {
       if(((uchar_type)(*i).c) == c)
-	 return (*i).type;
+         return (*i).type;
       ++i;
    }
    return 0;
@@ -709,16 +720,16 @@ void BOOST_REGEX_CALL cpp_regex_traits<wchar_t>::transform_primary(std::basic_st
       break;
    case re_detail::sort_fixed:
       if((unsigned)sort_delim < out.size())
-	 out.erase((int)sort_delim);
+         out.erase((int)sort_delim);
       break;
    case re_detail::sort_delim:
       for(unsigned int i = 0; i < out.size(); ++i)
       {
-	 if((out[i] == sort_delim) && (i+1 < out.size()))
-	 {
-	    out.erase(i+1);
-	    break;
-	 }
+         if((out[i] == sort_delim) && (i+1 < out.size()))
+         {
+            out.erase(i+1);
+            break;
+         }
       }
    }
 }
@@ -769,7 +780,7 @@ boost::uint_fast32_t BOOST_REGEX_CALL cpp_regex_traits<wchar_t>::lookup_classnam
    for(i = 0; i < re_classes_max; ++i)
    {
       if(ns == re_char_class_names[i])
-	 return re_char_class_id[i];
+         return re_char_class_id[i];
    }
    return 0;
 }
@@ -865,3 +876,5 @@ std::size_t BOOST_REGEX_CALL cpp_regex_traits<wchar_t>::strwiden(wchar_t *s1, st
 } // namespace boost
 
 #endif
+
+

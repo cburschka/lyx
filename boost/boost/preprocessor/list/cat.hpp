@@ -1,43 +1,43 @@
-#ifndef BOOST_PREPROCESSOR_LIST_CAT_HPP
-#define BOOST_PREPROCESSOR_LIST_CAT_HPP
-
-/* Copyright (C) 2001
- * Housemarque Oy
- * http://www.housemarque.com
- *
- * Permission to copy, use, modify, sell and distribute this software is
- * granted provided this copyright notice appears in all copies. This
- * software is provided "as is" without express or implied warranty, and
- * with no claim as to its suitability for any purpose.
- *
- * See http://www.boost.org for most recent version.
- */
-
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/list/fold_left.hpp>
-
-/** <p>Catenates all elements of the list.</p>
-
-<p>For example,</p>
-
-<pre>
-BOOST_PP_LIST_CAT(BOOST_PP_TUPLE_TO_LIST(3,(1,2,3)))
-</pre>
-
-<p>expands to:</p>
-
-<pre>
-123
-</pre>
-
-<h3>Test</h3>
-<ul>
-  <li><a href="../../test/list_test.cpp">list_test.cpp</a></li>
-</ul>
-*/
-#define BOOST_PP_LIST_CAT(LIST) BOOST_PP_LIST_CAT_D(0,LIST)
-
-/** <p>Can be used inside BOOST_PP_WHILE() (see for an explanation of the D parameter).</p> */
-#define BOOST_PP_LIST_CAT_D(D,LIST) BOOST_PP_LIST_FOLD_LEFT_D(D,BOOST_PP_LIST_CAT_F,BOOST_PP_TUPLE_ELEM(3,0,LIST),BOOST_PP_TUPLE_ELEM(3,1,LIST))
-#define BOOST_PP_LIST_CAT_F(D,S,X) BOOST_PP_CAT(S,X)
-#endif
+# /* Copyright (C) 2001
+#  * Housemarque Oy
+#  * http://www.housemarque.com
+#  *
+#  * Permission to copy, use, modify, sell and distribute this software is
+#  * granted provided this copyright notice appears in all copies. This
+#  * software is provided "as is" without express or implied warranty, and
+#  * with no claim as to its suitability for any purpose.
+#  */
+#
+# /* Revised by Paul Mensonides (2002) */
+#
+# /* See http://www.boost.org for most recent version. */
+#
+# ifndef BOOST_PREPROCESSOR_LIST_CAT_HPP
+# define BOOST_PREPROCESSOR_LIST_CAT_HPP
+#
+# include <boost/preprocessor/cat.hpp>
+# include <boost/preprocessor/config/config.hpp>
+# include <boost/preprocessor/list/adt.hpp>
+# include <boost/preprocessor/list/fold_left.hpp>
+#
+# /* BOOST_PP_LIST_CAT */
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+#    define BOOST_PP_LIST_CAT(list) BOOST_PP_LIST_FOLD_LEFT(BOOST_PP_LIST_CAT_O, BOOST_PP_LIST_FIRST(list), BOOST_PP_LIST_REST(list))
+# else
+#    define BOOST_PP_LIST_CAT(list) BOOST_PP_LIST_CAT_I(list)
+#    define BOOST_PP_LIST_CAT_I(list) BOOST_PP_LIST_FOLD_LEFT(BOOST_PP_LIST_CAT_O, BOOST_PP_LIST_FIRST(list), BOOST_PP_LIST_REST(list))
+# endif
+#
+# define BOOST_PP_LIST_CAT_O(d, s, x) BOOST_PP_CAT(s, x)
+#
+# /* BOOST_PP_LIST_CAT_D */
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+#    define BOOST_PP_LIST_CAT_D(d, list) BOOST_PP_LIST_FOLD_LEFT_ ## d(BOOST_PP_LIST_CAT_O, BOOST_PP_LIST_FIRST(list), BOOST_PP_LIST_REST(list))
+# else
+#    define BOOST_PP_LIST_CAT_D(d, list) BOOST_PP_LIST_CAT_D_I(d, list)
+#    define BOOST_PP_LIST_CAT_D_I(d, list) BOOST_PP_LIST_FOLD_LEFT_ ## d(BOOST_PP_LIST_CAT_O, BOOST_PP_LIST_FIRST(list), BOOST_PP_LIST_REST(list))
+# endif
+#
+# endif

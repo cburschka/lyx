@@ -26,6 +26,12 @@
 #ifndef BOOST_REGEX_MATCH_HPP
 #define BOOST_REGEX_MATCH_HPP
 
+#ifndef BOOST_REGEX_MAX_STATE_COUNT
+#  define BOOST_REGEX_MAX_STATE_COUNT 100000000
+#endif
+
+#include <boost/limits.hpp>
+
 
 namespace boost{
    namespace re_detail{
@@ -175,6 +181,7 @@ class _priv_match_data
 public:
    typedef typename boost::detail::rebind_allocator<int, Allocator>::type i_alloc;
    typedef typename boost::detail::rebind_allocator<iterator, Allocator>::type it_alloc;
+   typedef typename regex_iterator_traits<iterator>::difference_type difference_type;
 
    match_results_base<iterator, Allocator> temp_match;
    // failure stacks:
@@ -184,9 +191,11 @@ public:
    jstack<int, Allocator> prev_acc;
    int* accumulators;
    unsigned int caccumulators;
+   difference_type state_count;
+   difference_type max_state_count;
    iterator* loop_starts;
 
-   _priv_match_data(const match_results_base<iterator, Allocator>&);
+   _priv_match_data(const match_results_base<iterator, Allocator>&, iterator, iterator, std::size_t);
    
    ~_priv_match_data()
    {
@@ -202,15 +211,34 @@ public:
    {
       return loop_starts;
    }
+   void estimate_max_state_count(iterator a, iterator b, std::size_t states, std::random_access_iterator_tag*)
+   {
+      difference_type dist = std::distance(a,b);
+      states *= states;
+      difference_type lim = std::numeric_limits<difference_type>::max() - 1000 - states;
+      if(dist > (difference_type)(lim / states))
+         max_state_count = lim;
+      else
+         max_state_count = 1000 + states * dist;
+   }
+   void estimate_max_state_count(iterator a, iterator b, std::size_t states, void*)
+   {
+      // we don't know how long the sequence is:
+      max_state_count = BOOST_REGEX_MAX_STATE_COUNT;
+   }
 };
 
 template <class iterator, class Allocator>
-_priv_match_data<iterator, Allocator>::_priv_match_data(const match_results_base<iterator, Allocator>& m)
+_priv_match_data<iterator, Allocator>::_priv_match_data(const match_results_base<iterator, Allocator>& m, iterator a, iterator b, std::size_t states)
   : temp_match(m), matches(64, m.allocator()), prev_pos(64, m.allocator()), prev_record(64, m.allocator())
 {
+  typedef typename regex_iterator_traits<iterator>::iterator_category category;
+  
   accumulators = 0;
   caccumulators = 0;
   loop_starts = 0;
+  state_count = 0;
+  estimate_max_state_count(a, b, states, static_cast<category*>(0));
 }
 
 template <class iterator, class Allocator>
@@ -289,11 +317,6 @@ bool query_match_aux(iterator first,
                      _priv_match_data<iterator, Allocator>& pd,
                      iterator* restart)
 {
-# ifdef BOOST_MSVC
-#  pragma warning(push)
-#  pragma warning(disable: 4127)
-#endif
-
    typedef access_t<charT, traits, Allocator2> access;
 
    if(e.flags() & regbase::failbit)
@@ -302,6 +325,7 @@ bool query_match_aux(iterator first,
    typedef typename traits::size_type traits_size_type;
    typedef typename traits::uchar_type traits_uchar_type;
    typedef typename is_byte<charT>::width_type width_type;
+   typedef typename re_detail::regex_iterator_traits<iterator>::difference_type difference_type;
 
    // declare some local aliases to reduce pointer loads
    // good optimising compilers should make this unnecessary!!
@@ -311,6 +335,7 @@ bool query_match_aux(iterator first,
    jstack<int, Allocator>& prev_acc = pd.prev_acc;
    match_results_base<iterator, Allocator>& temp_match = pd.temp_match;
    temp_match.set_first(first);
+   difference_type& state_count = pd.state_count;
 
    const re_syntax_base* ptr = access::first(e);
    bool match_found = false;
@@ -342,6 +367,7 @@ bool query_match_aux(iterator first,
    while(first != last)
    {
       jm_assert(ptr);
+      ++state_count;
       switch(ptr->type)
       {
       case syntax_element_match:
@@ -821,6 +847,7 @@ bool query_match_aux(iterator first,
    while(true)
    {
       jm_assert(ptr);
+      ++state_count;
       switch(ptr->type)
       {
       case syntax_element_match:
@@ -935,6 +962,26 @@ bool query_match_aux(iterator first,
    failure:
 
    //
+   // check to see if we've been searching too many states:
+   //
+   if(state_count >= pd.max_state_count)
+   {
+#ifndef BOOST_NO_EXCEPTIONS
+      throw std::runtime_error("Max regex search depth exceeded.");
+#else
+      while(matches.empty() == false)
+         matches.pop();
+      while(prev_pos.empty() == false)
+         prev_pos.pop();
+      while(prev_record.empty() == false)
+         prev_record.pop();
+      while(prev_acc.empty() == false)
+         prev_acc.pop();
+      return false;
+#endif
+   }
+
+   //
    // check for possible partial match:
    //
    if((flags & match_partial)
@@ -1042,14 +1089,14 @@ bool query_match_aux(iterator first,
    }
 
    if(match_found || have_partial_match)
+   {
+      pd.state_count = 0;
       return true;
+   }
 
    // if we get to here then everything has failed
    // and no match was found:
    return false;
-# ifdef BOOST_MSVC
-#  pragma warning(pop)
-#endif
 }
 #if defined(BOOST_REGEX_NO_TEMPLATE_SWITCH_MERGE)
 } // namespace
@@ -1185,7 +1232,7 @@ unsigned int reg_grep2(Predicate foo, I first, I last, const reg_expression<char
 
    flags |= match_init;
 
-   _priv_match_data<I, A2> pd(m);
+   _priv_match_data<I, A2> pd(m, first, last, e.size());
 
    const unsigned char* _map = access::get_map(e);
    unsigned int type;
@@ -1656,7 +1703,7 @@ bool regex_match(iterator first, iterator last, match_results<iterator, Allocato
       m.set_line(1, first);
    }
    flags |= match_all; // must match all of input.
-   re_detail::_priv_match_data<iterator, Allocator> pd(m);
+   re_detail::_priv_match_data<iterator, Allocator> pd(m, first, last, e.size());
    iterator restart;
    bool result = re_detail::query_match_aux(first, last, m, e, flags, pd, &restart);
    return result;
@@ -1919,6 +1966,8 @@ inline unsigned int regex_grep(bool (*foo)(const match_results<std::basic_string
 } // namespace boost
 
 #endif   // BOOST_REGEX_MATCH_HPP
+
+
 
 
 

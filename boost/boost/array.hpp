@@ -11,6 +11,7 @@
  * This software is provided "as is" without express or implied
  * warranty, and with no claim as to its suitability for any purpose.
  *
+ * 23 Aug 2002 - fix for Non-MSVC compilers combined with MSVC libraries.
  * 05 Aug 2001 - minor update (Nico Josuttis)
  * 20 Jan 2001 - STLport fix (Beman Dawes)
  * 29 Sep 2000 - Initial Revision (Nico Josuttis)
@@ -20,7 +21,9 @@
 
 #include <cstddef>
 #include <stdexcept>
-#include <iterator>
+
+// Handles broken standard libraries better than <iterator>
+#include <boost/detail/iterator.hpp>
 #include <algorithm>
 
 // FIXES for broken compilers
@@ -50,15 +53,15 @@ namespace boost {
         const_iterator end() const { return elems+N; }
 
         // reverse iterator support
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) && !defined(BOOST_MSVC_STD_ITERATOR)
+#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) && !defined(BOOST_MSVC_STD_ITERATOR) && !defined(BOOST_NO_STD_ITERATOR_TRAITS)
         typedef std::reverse_iterator<iterator> reverse_iterator;
         typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
-#elif defined(BOOST_MSVC) && (BOOST_MSVC == 1300)
+#elif (defined(BOOST_MSVC) && (BOOST_MSVC == 1300) || (defined(__ICL) && defined(_CPPLIB_VER) && (_CPPLIB_VER == 310))) && !defined(__SGI_STL_PORT) && !defined(_STLPORT_VERSION)
         // workaround for broken reverse_iterator in VC7
         typedef std::reverse_iterator<std::_Ptrit<value_type, difference_type, iterator,
                                       reference, iterator, reference> > reverse_iterator;
         typedef std::reverse_iterator<std::_Ptrit<value_type, difference_type, const_iterator,
-		                                const_reference, iterator, reference> > const_reverse_iterator;
+                                      const_reference, iterator, reference> > const_reverse_iterator;
 #else
         // workaround for broken reverse_iterator implementations
         typedef std::reverse_iterator<iterator,T> reverse_iterator;
@@ -160,4 +163,7 @@ namespace boost {
 } /* namespace boost */
 
 #endif /*BOOST_ARRAY_HPP*/
+
+
+
 

@@ -1,35 +1,39 @@
-#ifndef BOOST_PREPROCESSOR_COMPARISON_GREATER_HPP
-#define BOOST_PREPROCESSOR_COMPARISON_GREATER_HPP
-
-/* Copyright (C) 2001
- * Housemarque Oy
- * http://www.housemarque.com
- *
- * Permission to copy, use, modify, sell and distribute this software is
- * granted provided this copyright notice appears in all copies. This
- * software is provided "as is" without express or implied warranty, and
- * with no claim as to its suitability for any purpose.
- *
- * See http://www.boost.org for most recent version.
- */
-
-#include <boost/preprocessor/comparison/less.hpp>
-
-/** <p>Expands to <code>1</code> if <code>X &gt; Y</code> and <code>0</code>
-otherwise.</p>
-
-<p>Both <code>X</code> and <code>Y</code> must expand to integer literals
-in the range [0, BOOST_PP_LIMIT_MAG].</p>
-
-<p>For example, <code>BOOST_PP_GREATER(4,3)</code> expands to <code>1</code>.</p>
-
-<h3>Test</h3>
-<ul>
-  <li><a href="../../test/arithmetic_test.cpp">arithmetic_test.cpp</a></li>
-</ul>
-*/
-#define BOOST_PP_GREATER(X,Y) BOOST_PP_GREATER_D(0,X,Y)
-
-/** <p>Can be used inside BOOST_PP_WHILE() (see for an explanation of the D parameter).</p> */
-#define BOOST_PP_GREATER_D(D,X,Y) BOOST_PP_LESS_D(D,Y,X)
-#endif
+# /* Copyright (C) 2001
+#  * Housemarque Oy
+#  * http://www.housemarque.com
+#  *
+#  * Permission to copy, use, modify, sell and distribute this software is
+#  * granted provided this copyright notice appears in all copies. This
+#  * software is provided "as is" without express or implied warranty, and
+#  * with no claim as to its suitability for any purpose.
+#  */
+#
+# /* Revised by Paul Mensonides (2002) */
+#
+# /* See http://www.boost.org for most recent version. */
+#
+# ifndef BOOST_PREPROCESSOR_COMPARISON_GREATER_HPP
+# define BOOST_PREPROCESSOR_COMPARISON_GREATER_HPP
+#
+# include <boost/preprocessor/comparison/less.hpp>
+# include <boost/preprocessor/config/config.hpp>
+#
+# /* BOOST_PP_GREATER */
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+#    define BOOST_PP_GREATER(x, y) BOOST_PP_LESS(y, x)
+# else
+#    define BOOST_PP_GREATER(x, y) BOOST_PP_GREATER_I(x, y)
+#    define BOOST_PP_GREATER_I(x, y) BOOST_PP_LESS(y, x)
+# endif
+#
+# /* BOOST_PP_GREATER_D */
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+#    define BOOST_PP_GREATER_D(d, x, y) BOOST_PP_LESS_D(d, y, x)
+# else
+#    define BOOST_PP_GREATER_D(d, x, y) BOOST_PP_GREATER_D_I(d, x, y)
+#    define BOOST_PP_GREATER_D_I(d, x, y) BOOST_PP_LESS_D(d, y, x)
+# endif
+#
+# endif

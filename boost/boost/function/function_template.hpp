@@ -253,6 +253,9 @@ namespace boost {
     typedef T1 second_argument_type;
 #endif
 
+    BOOST_STATIC_CONSTANT(int, arity = BOOST_FUNCTION_NUM_ARGS);
+    BOOST_FUNCTION_ARG_TYPES
+
 #ifndef BOOST_NO_VOID_RETURNS
     typedef R         result_type;
 #else
@@ -415,6 +418,25 @@ namespace boost {
       function_base::manager = 0;
       invoker = 0;
     }
+
+#if (defined __SUNPRO_CC) && (__SUNPRO_CC <= 0x530) && !(defined BOOST_NO_COMPILER_CONFIG)
+    // Sun C++ 5.3 can't handle the safe_bool idiom, so don't use it
+    operator bool () const { return !this->empty(); }
+#else
+  private:
+    struct dummy {
+      void nonnull() {};
+    };
+
+    typedef void (dummy::*safe_bool)();
+
+  public:
+    operator safe_bool () const 
+      { return (this->empty())? 0 : &dummy::nonnull; }
+
+    bool operator!() const
+      { return this->empty(); }
+#endif
 
   private:
     void assign_to_own(const BOOST_FUNCTION_FUNCTION& f)

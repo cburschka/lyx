@@ -1,39 +1,59 @@
-#ifndef BOOST_PREPROCESSOR_LIST_SIZE_HPP
-#define BOOST_PREPROCESSOR_LIST_SIZE_HPP
-
-/* Copyright (C) 2001
- * Housemarque Oy
- * http://www.housemarque.com
- *
- * Permission to copy, use, modify, sell and distribute this software is
- * granted provided this copyright notice appears in all copies. This
- * software is provided "as is" without express or implied warranty, and
- * with no claim as to its suitability for any purpose.
- *
- * See http://www.boost.org for most recent version.
- */
-
-#include <boost/preprocessor/list/fold_left.hpp>
-#include <boost/preprocessor/inc.hpp>
-
-/** <p>Expands to the number of elements in the list.</p>
-
-<p>For example,</p>
-
-<pre>
-BOOST_PP_LIST_SIZE(BOOST_PP_TUPLE_TO_LIST(3,(A,B,C)))
-</pre>
-
-<p>expands to <code>3</code>.</p>
-
-<h3>Test</h3>
-<ul>
-  <li><a href="../../test/list_test.cpp">list_test.cpp</a></li>
-</ul>
-*/
-#define BOOST_PP_LIST_SIZE(LIST) BOOST_PP_LIST_SIZE_D(0,LIST)
-
-/** <p>Can be used inside BOOST_PP_WHILE() (see for an explanation of the D parameter).</p> */
-#define BOOST_PP_LIST_SIZE_D(D,LIST) BOOST_PP_LIST_FOLD_LEFT_D(D,BOOST_PP_LIST_SIZE_F,0,LIST)
-#define BOOST_PP_LIST_SIZE_F(D,S,X) BOOST_PP_INC(S)
-#endif
+# /* Copyright (C) 2001
+#  * Housemarque Oy
+#  * http://www.housemarque.com
+#  *
+#  * Permission to copy, use, modify, sell and distribute this software is
+#  * granted provided this copyright notice appears in all copies. This
+#  * software is provided "as is" without express or implied warranty, and
+#  * with no claim as to its suitability for any purpose.
+#  */
+#
+# /* Revised by Paul Mensonides (2002) */
+#
+# /* See http://www.boost.org for most recent version. */
+#
+# ifndef BOOST_PREPROCESSOR_LIST_SIZE_HPP
+# define BOOST_PREPROCESSOR_LIST_SIZE_HPP
+#
+# include <boost/preprocessor/arithmetic/inc.hpp>
+# include <boost/preprocessor/config/config.hpp>
+# include <boost/preprocessor/control/while.hpp>
+# include <boost/preprocessor/list/adt.hpp>
+# include <boost/preprocessor/tuple/elem.hpp>
+# include <boost/preprocessor/tuple/rem.hpp>
+#
+# /* BOOST_PP_LIST_SIZE */
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+#    define BOOST_PP_LIST_SIZE(list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_LIST_SIZE_P, BOOST_PP_LIST_SIZE_O, (0, list)))
+# else
+#    define BOOST_PP_LIST_SIZE(list) BOOST_PP_LIST_SIZE_I(list)
+#    define BOOST_PP_LIST_SIZE_I(list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE(BOOST_PP_LIST_SIZE_P, BOOST_PP_LIST_SIZE_O, (0, list)))
+# endif
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+#    define BOOST_PP_LIST_SIZE_P(d, rl) BOOST_PP_LIST_IS_CONS(BOOST_PP_TUPLE_ELEM(2, 1, rl))
+# else
+#    define BOOST_PP_LIST_SIZE_P(d, rl) BOOST_PP_LIST_SIZE_P_I(BOOST_PP_TUPLE_REM_2 rl)
+#    define BOOST_PP_LIST_SIZE_P_I(im) BOOST_PP_LIST_SIZE_P_II(im)
+#    define BOOST_PP_LIST_SIZE_P_II(r, l) BOOST_PP_LIST_IS_CONS(l)
+# endif
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+#    define BOOST_PP_LIST_SIZE_O(d, rl) (BOOST_PP_INC(BOOST_PP_TUPLE_ELEM(2, 0, rl)), BOOST_PP_LIST_REST(BOOST_PP_TUPLE_ELEM(2, 1, rl)))
+# else
+#    define BOOST_PP_LIST_SIZE_O(d, rl) BOOST_PP_LIST_SIZE_O_I(BOOST_PP_TUPLE_REM_2 rl)
+#    define BOOST_PP_LIST_SIZE_O_I(im) BOOST_PP_LIST_SIZE_O_II(im)
+#    define BOOST_PP_LIST_SIZE_O_II(r, l) (BOOST_PP_INC(r), BOOST_PP_LIST_REST(l))
+# endif
+#
+# /* BOOST_PP_LIST_SIZE_D */
+#
+# if ~BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
+#    define BOOST_PP_LIST_SIZE_D(d, list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_LIST_SIZE_P, BOOST_PP_LIST_SIZE_O, (0, list)))
+# else
+#    define BOOST_PP_LIST_SIZE_D(d, list) BOOST_PP_LIST_SIZE_D_I(d, list)
+#    define BOOST_PP_LIST_SIZE_D_I(d, list) BOOST_PP_TUPLE_ELEM(2, 0, BOOST_PP_WHILE_ ## d(BOOST_PP_LIST_SIZE_P, BOOST_PP_LIST_SIZE_O, (0, list)))
+# endif
+#
+# endif

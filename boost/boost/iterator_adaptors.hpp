@@ -124,6 +124,7 @@
 # include <boost/type.hpp>
 # include <boost/static_assert.hpp>
 # include <boost/type_traits.hpp>
+# include <boost/type_traits/conversion_traits.hpp>
 # include <boost/detail/iterator.hpp>
 # include <boost/detail/select_type.hpp>
 
@@ -761,6 +762,12 @@ namespace detail {
 
       BOOST_STATIC_ASSERT(forward_iter_with_real_reference);
   };
+
+  template <class T, class Result> struct dependent
+  {
+    typedef Result type;
+  };
+
 } // namespace detail
 
 
@@ -880,7 +887,8 @@ struct iterator_adaptor :
 # pragma warning(pop)
 #endif
 
-    value_type operator[](difference_type n) const
+    template <class diff_type>
+    typename detail::dependent<diff_type, value_type>::type operator[](diff_type n) const
         { return *(*this + n); }
 
     self& operator++() {
