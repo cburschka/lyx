@@ -1313,20 +1313,28 @@ void MathCursor::interpret(string const & s)
 	}
 
 	if (isalpha(c) && (lastcode_ == LM_TC_GREEK || lastcode_ == LM_TC_GREEK1)) {
-		static char const greek[26] =
-			{'A', 'B', 'X',  0 , 'E',  0 ,  0 , 'H', 'I',  0 ,
-			 'K',  0 , 'M', 'N', 'O',  0 ,  0 , 'P',  0 , 'T',
-			 0,  0,   0,   0,   0 , 'Z' };
-			
-		MathTextCodes code = LM_TC_SYMB;
-		if ('A' <= c && c <= 'Z' && greek[c - 'A']) {
-			code = LM_TC_RM;
-			c = greek[c - 'A'];
-		}
-		insert(c, code);
+		static char const greekl[][26] =
+			{"alpha", "beta", "chi", "delta", "epsilon", "phi", "gamma", "eta",
+			 "iota", "", "kappa", "lambda", "mu", "nu", "omikron", "pi", "omega",
+			 "rho", "sigma", "tau", "theta", "", "", "xi", "ypsilon", "zeta"};
+		static char const greeku[][26] =
+			{"Alpha", "Beta", "Chi", "Delta", "Epsilon", "Phi", "Gamma", "Eta",
+			 "Iota", "", "Kappa", "Lambda", "Mu", "Nu", "Omikron", "Pi", "Omega",
+			 "Rho", "Sigma", "Tau", "Theta", "", "", "xi", "Ypsilon", "Zeta"};
 	
+		latexkeys const * l = 0;	
+		if ('a' <= c && c <= 'z')
+			l = in_word_set(greekl[c - 'a']);
+		if ('A' <= c && c <= 'Z')
+			l = in_word_set(greeku[c - 'A']);
+	
+		if (l)
+			insert(createMathInset(l));
+		else
+			insert(c, LM_TC_VAR);
+
 #warning greek insert problem? look here!
-		//if (lastcode_ == LM_TC_GREEK1)
+		if (lastcode_ == LM_TC_GREEK1)
 			lastcode_ = LM_TC_VAR;
 		return;	
 	}
