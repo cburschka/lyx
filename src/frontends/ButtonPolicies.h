@@ -28,6 +28,39 @@
     A state machine implementation of the various button policies used by the
     dialogs. Only the policy is implemented here.  Separate ButtonController
     classes are needed for each GUI implementation.
+
+		Policy		| ReadOnly | Apply Button | Repeated Apply
+    ========================================================================
+    OkCancel			|	N  |	N	  |	-
+    OkCancelReadOnly		|	Y  |	N	  |	-
+    OkApplyCancel		|	N  |	Y	  |	Y
+    OkApplyCancelReadOnly	|	Y  |	Y	  |	Y
+    NoRepeatedApply		|	N  |	Y	  |	N
+    NoRepeatedApplyReadOnly	|	Y  |	Y	  |	N
+    Preferences			|	N  |	Y	  | No (Ok-Close)
+    ========================================================================
+
+    Policy
+	The name of the policy
+    ReadOnly
+	Does the policy treat read-only docs differently to read-write docs?
+	This usually means that when an SMI_READ_ONLY input arrives then
+	all the buttons are disabled except Cancel/Close.  The state
+	machine tracks the inputs (valid/invalid) and has states for all
+	combinations. When an SMI_READ_WRITE input arrives the appropriate
+	machine state is entered (just as if the document had always been
+	read-write).
+	NOTE: If a dialog doesn't care about the read-only status of a document
+	(and uses an appropriate policy) it can never get into a read-only state
+	so isReadOnly() can only ever return false even though the document may
+	be read-only.
+    Repeated Apply
+	Simply means that it is alright to use the Apply button multiple times
+	without requiring a change of the dialog contents.  If no repeating is
+	allowed the Ok+Apply buttons are deactivated.  The Preferences dialog
+	has its own special version of repeated apply handling because its Ok
+	button is actually a Save button -- its always reasonable to Save the
+	preferences if the dialog has changed since the last save.
  */
 class ButtonPolicy : public noncopyable
 {
@@ -89,8 +122,10 @@ public:
 	//@{
 	/// Trigger a transition with this input.
 	virtual void input(SMInput) = 0;
-	/// Activation status of OK
+	/// Activation status of a button
 	virtual bool buttonStatus(Button) = 0;
+	/// Are we in a read-only state?
+	virtual bool isReadOnly() = 0;
 	//@}
 
 	/**@name Typedefs */
@@ -104,47 +139,7 @@ public:
 };
 
 
-/** Defines the policy used by the Preferences dialog.
-    Four buttons: Ok (Save), Apply, Cancel/Close, Restore.
-    Note: This scheme supports the relabelling of Cancel to Close and vice versa.
-    This is based on the value of the bool state of the Button::CANCEL.
-    true == Cancel, false == Close
- */
-class PreferencesPolicy : public ButtonPolicy
-{
-public:
-	///
-	PreferencesPolicy();
-	///
-	virtual ~PreferencesPolicy() {}
-	
-	/**@name Access Functions */
-	//@{
-	/// Trigger a transition with this input.
-	virtual void input(SMInput);
-	/** Activation status of a button.
-	    We assume that we haven't gotten into an undefined state.
-	    This is reasonable since we can only reach states defined
-	    in the state machine and they should all have been defined in
-	    the outputs_ variable.  Perhaps we can do something at compile
-	    time to check that all the states have corresponding outputs.
-	 */
-	virtual bool buttonStatus(Button button)
-		{ return button & outputs_[state_]; }
-	//@}
-private:
-	/**@name Private Data Members */
-	//@{
-	/// Current state.
-	State state_;
-	/// Which buttons are active for a given state.
-	StateOutputs outputs_;
-	///
-	StateMachine state_machine_;
-	//@}
-};
-
-
+//--------------------- Actual Policy Classes ----------------------------------
 
 /** Ok and Cancel buttons for dialogs with read-only operation.
     Note: This scheme supports the relabelling of Cancel to Close and vice versa.
@@ -163,9 +158,18 @@ public:
 	//@{
 	/// Trigger a transition with this input.
 	virtual void input(SMInput);
-	/// Activation status of a button.
+	/** Activation status of a button.
+	    We assume that we haven't gotten into an undefined state.
+	    This is reasonable since we can only reach states defined
+	    in the state machine and they should all have been defined in
+	    the outputs_ variable.  Perhaps we can do something at compile
+	    time to check that all the states have corresponding outputs.
+	 */
 	virtual bool buttonStatus(Button button)
 		{ return button & outputs_[state_]; }
+	/// Are we in a read-only state?
+	virtual bool isReadOnly()
+		{ return false; }
 	//@}
 private:
 	/**@name Private Data Members */
@@ -204,6 +208,14 @@ public:
 	/// Activation status of a button.
 	virtual bool buttonStatus(Button button)
 		{ return button & outputs_[state_]; }
+	/// Are we in a read-only state?
+	virtual bool isReadOnly()
+		{
+			return RO_INITIAL == state_
+				|| RO_VALID == state_
+				|| RO_INVALID == state_
+				|| RO_APPLIED == state_;
+		}
 	//@}
 private:
 	/**@name Private Data Members */
@@ -246,6 +258,14 @@ public:
 	/// Activation status of a button.
 	virtual bool buttonStatus(Button button)
 		{ return button & outputs_[state_]; }
+	/// Are we in a read-only state?
+	virtual bool isReadOnly()
+		{
+			return RO_INITIAL == state_
+				|| RO_VALID == state_
+				|| RO_INVALID == state_
+				|| RO_APPLIED == state_;
+		}
 	//@}
 private:
 	/**@name Private Data Members */
@@ -286,6 +306,14 @@ public:
 	/// Activation status of a button.
 	virtual bool buttonStatus(Button button)
 		{ return button & outputs_[state_]; }
+	/// Are we in a read-only state?
+	virtual bool isReadOnly()
+		{
+			return RO_INITIAL == state_
+				|| RO_VALID == state_
+				|| RO_INVALID == state_
+				|| RO_APPLIED == state_;
+		}
 	//@}
 private:
 	/**@name Private Data Members */
@@ -320,6 +348,9 @@ public:
 	/// Activation status of a button.
 	virtual bool buttonStatus(Button button)
 		{ return button & outputs_[state_]; }
+	/// Are we in a read-only state?
+	virtual bool isReadOnly()
+		{ return false; }
 	//@}
 private:
 	/**@name Private Data Members */
@@ -354,6 +385,47 @@ public:
 	/// Activation status of a button.
 	virtual bool buttonStatus(Button button)
 		{ return button & outputs_[state_]; }
+	/// Are we in a read-only state?
+	virtual bool isReadOnly()
+		{ return false; }
+	//@}
+private:
+	/**@name Private Data Members */
+	//@{
+	/// Current state.
+	State state_;
+	/// Which buttons are active for a given state.
+	StateOutputs outputs_;
+	///
+	StateMachine state_machine_;
+	//@}
+};
+
+
+/** Defines the policy used by the Preferences dialog.
+    Four buttons: Ok (Save), Apply, Cancel/Close, Restore.
+    Note: This scheme supports the relabelling of Cancel to Close and vice versa.
+    This is based on the value of the bool state of the Button::CANCEL.
+    true == Cancel, false == Close
+ */
+class PreferencesPolicy : public ButtonPolicy
+{
+public:
+	///
+	PreferencesPolicy();
+	///
+	virtual ~PreferencesPolicy() {}
+	
+	/**@name Access Functions */
+	//@{
+	/// Trigger a transition with this input.
+	virtual void input(SMInput);
+	/// Activation status of a button.
+	virtual bool buttonStatus(Button button)
+		{ return button & outputs_[state_]; }
+	/// Are we in a read-only state?
+	virtual bool isReadOnly()
+		{ return false; }
 	//@}
 private:
 	/**@name Private Data Members */

@@ -22,6 +22,7 @@
 #define BUTTONCONTROLLER_H
 
 #include "ButtonPolicies.h"
+#include <list>
 
 /** General purpose button controller for up to four buttons.
     Controls the activation of the OK, Apply and Cancel buttons.
@@ -45,7 +46,7 @@ public:
 	 */
 	ButtonController(char const * cancel, char const * close)
 		: bp_(), okay_(0), apply_(0), cancel_(0), undo_all_(0),
-		  cancel_label(cancel), close_label(close) {}
+		  read_only_(), cancel_label(cancel), close_label(close) {}
 	/// Somebody else owns the FL_OBJECTs we just manipulate them.
 	~ButtonController() {}
 	//@}
@@ -70,6 +71,12 @@ public:
 	///
 	void setCancelFalseLabel(char const * c)
 		{ close_label = c; }
+	///
+	void addReadOnly(FL_OBJECT * obj)
+		{ read_only_.push_front(obj); }
+	///
+	void eraseReadOnly()
+		{ read_only_.erase(read_only_.begin(), read_only_.end()); }
 	//@}
 
 	/**@name Action Functions */
@@ -161,6 +168,27 @@ public:
 							    close_label);
 				}
 			}
+			if (!read_only_.empty()) {
+				if (bp_.isReadOnly()) {
+					for (std::list<FL_OBJECT *>::iterator
+						     iter = read_only_.begin();
+					     iter != read_only_.end();
+					     ++iter) {
+						fl_deactivate_object(*iter);
+						fl_set_object_lcol(undo_all_,
+								   FL_INACTIVE);
+					}
+				} else {
+					for (std::list<FL_OBJECT *>::iterator
+						     iter = read_only_.begin();
+					     iter != read_only_.end();
+					     ++iter) {
+						fl_activate_object(undo_all_);
+						fl_set_object_lcol(undo_all_,
+								   FL_BLACK);
+					}
+				}
+			}
 		}
 	//@}
 private:
@@ -176,6 +204,8 @@ private:
 	FL_OBJECT * cancel_;
 	///
 	FL_OBJECT * undo_all_;
+	/// List of items to be deactivated when in one of the read-only states
+	std::list<FL_OBJECT *> read_only_;
 	//@}
 	/**@name Cancel/Close Button Labels */
 	//@{

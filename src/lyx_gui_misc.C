@@ -100,12 +100,17 @@ void CloseAllBufferRelatedDialogs()
 	if (fd_form_character->form_character->visible) {
 		fl_hide_form(fd_form_character->form_character);
 	}
+#ifdef USE_OLD_DOCUMENT_LAYOUT
 	if (fd_form_document->form_document->visible) {
 		fl_hide_form(fd_form_document->form_document);
 	}
 	if (fd_form_quotes->form_quotes->visible) {
 		fl_hide_form(fd_form_quotes->form_quotes);
 	}
+	if (fd_form_paper->form_paper->visible) {
+		fl_hide_form(fd_form_paper->form_paper);
+	}
+#endif
 	if (fd_form_preamble->form_preamble->visible) {
 		fl_hide_form(fd_form_preamble->form_preamble);
 	}
@@ -114,9 +119,6 @@ void CloseAllBufferRelatedDialogs()
 	}
 	if (fd_form_figure->form_figure->visible) {
 		fl_hide_form(fd_form_figure->form_figure);
-	}
-	if (fd_form_paper->form_paper->visible) {
-		fl_hide_form(fd_form_paper->form_paper);
 	}
 	if (fd_form_table_options->form_table_options->visible) {
 		fl_hide_form(fd_form_table_options->form_table_options);

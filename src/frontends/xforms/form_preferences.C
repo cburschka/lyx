@@ -371,7 +371,7 @@ FD_form_preferences * FormPreferences::build_preferences()
     fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormPreferencesCancelCB, 0);
-  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 175, 395, 90, 30, _("Ok"));
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 175, 395, 90, 30, _("Save"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormPreferencesOKCB, 0);
   fdui->tabfolder_prefs = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 5, 5, 450, 385, "");
