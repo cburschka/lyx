@@ -28,6 +28,12 @@ FuncRequest::FuncRequest(kb_action act, string const & arg)
 {}
 
 
+FuncRequest::FuncRequest
+		(kb_action act, int ax, int ay, mouse_button::state button)
+	: view_(0), action(act), argument(), x(ax), y(ay), button_(button)
+{}
+
+
 FuncRequest::FuncRequest(BufferView * view, kb_action act)
 	: view_(view), action(act)
 {}
@@ -44,9 +50,14 @@ FuncRequest::FuncRequest
 {}
 
 
-
 FuncRequest::FuncRequest(FuncRequest const & cmd, string const & arg)
 	: view_(cmd.view_), action(cmd.action), argument(arg),
+	  x(cmd.x), y(cmd.y), button_(cmd.button_)
+{}
+	
+
+FuncRequest::FuncRequest(FuncRequest const & cmd, BufferView * view)
+	: view_(view), action(cmd.action), argument(cmd.argument),
 	  x(cmd.x), y(cmd.y), button_(cmd.button_)
 {}
 	

@@ -13,7 +13,6 @@
 #include "BufferView.h"
 #include "frontends/Timeout.h"
 #include "frontends/key_state.h"
-#include "frontends/mouse_state.h"
 #include "frontends/LyXKeySym.h"
 #include "support/types.h"
 
@@ -27,6 +26,7 @@
 class LyXView;
 class WorkArea;
 class LyXScreen;
+class FuncRequest;
 
 ///
 struct BufferView::Pimpl : public boost::signals::trackable {
@@ -72,16 +72,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	int scroll(long time);
 	///
 	void workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state);
-	///
-	void workAreaMotionNotify(int x, int y, mouse_button::state state);
-	///
-	void workAreaButtonPress(int x, int y, mouse_button::state button);
-	///
-	void workAreaButtonRelease(int x, int y, mouse_button::state button);
-	///
-	void doubleClick(int x, int y, mouse_button::state button);
-	///
-	void tripleClick(int x, int y, mouse_button::state button);
 	///
 	void selectionRequested();
 	///

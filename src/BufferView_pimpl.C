@@ -20,6 +20,7 @@
 #include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
+#include "frontends/mouse_state.h"
 #include "lyxtext.h"
 #include "lyxrow.h"
 #include "paragraph.h"
@@ -99,14 +100,10 @@ unsigned int const saved_positions_num = 20;
 // to these connections we avoid a segfault upon startup, and also at exit.
 // (Lgb)
 
+boost::signals::connection dispatchcon;
 boost::signals::connection timecon;
 boost::signals::connection doccon;
 boost::signals::connection resizecon;
-boost::signals::connection bpresscon;
-boost::signals::connection breleasecon;
-boost::signals::connection motioncon;
-boost::signals::connection doublecon;
-boost::signals::connection triplecon;
 boost::signals::connection kpresscon;
 boost::signals::connection selectioncon;
 boost::signals::connection lostcon;
@@ -193,16 +190,8 @@ BufferView::Pimpl::Pimpl(BufferView * bv, LyXView * owner,
 		.connect(boost::bind(&BufferView::Pimpl::scrollDocView, this, _1));
 	resizecon = workarea().workAreaResize
 		.connect(boost::bind(&BufferView::Pimpl::workAreaResize, this));
-	bpresscon = workarea().workAreaButtonPress
-		.connect(boost::bind(&BufferView::Pimpl::workAreaButtonPress, this, _1, _2, _3));
-	breleasecon = workarea().workAreaButtonRelease
-		.connect(boost::bind(&BufferView::Pimpl::workAreaButtonRelease, this, _1, _2, _3));
-	motioncon = workarea().workAreaMotionNotify
-		.connect(boost::bind(&BufferView::Pimpl::workAreaMotionNotify, this, _1, _2, _3));
-	doublecon = workarea().workAreaDoubleClick
-		.connect(boost::bind(&BufferView::Pimpl::doubleClick, this, _1, _2, _3));
-	triplecon = workarea().workAreaTripleClick
-		.connect(boost::bind(&BufferView::Pimpl::tripleClick, this, _1, _2, _3));
+	dispatchcon = workarea().dispatch
+		.connect(boost::bind(&BufferView::Pimpl::dispatch, this, _1));
 	kpresscon = workarea().workAreaKeyPress
 		.connect(boost::bind(&BufferView::Pimpl::workAreaKeyPress, this, _1, _2));
 	selectioncon = workarea().selectionRequested
@@ -492,233 +481,6 @@ void BufferView::Pimpl::workAreaKeyPress(LyXKeySymPtr key,
 }
 
 
-void BufferView::Pimpl::workAreaMotionNotify(int x, int y, mouse_button::state state)
-{
-	// Only use motion with button 1
-	if (!(state & mouse_button::button1))
-		return;
-
-	if (!buffer_)
-		return;
-
-	// Check for inset locking
-	if (bv_->theLockingInset()) {
-		LyXCursor cursor = bv_->text->cursor;
-		LyXFont font = bv_->text->getFont(buffer_,
-						  cursor.par(), cursor.pos());
-		int width = bv_->theLockingInset()->width(bv_, font);
-		int inset_x = font.isVisibleRightToLeft()
-			? cursor.ix() - width : cursor.ix();
-		int start_x = inset_x + bv_->theLockingInset()->scroll();
-
-		FuncRequest cmd(bv_, LFUN_MOUSE_MOTION,
-				  x - start_x, y - cursor.iy() + bv_->text->first_y, state);
-		bv_->theLockingInset()->localDispatch(cmd);
-		return;
-	}
-
-	// The test for not selection possible is needed, that only motion
-	// events are used, where the bottom press event was on
-	//  the drawing area too
-	if (!selection_possible)
-		return;
-
-	screen().hideCursor();
-
-	Row * cursorrow = bv_->text->cursor.row();
-	bv_->text->setCursorFromCoordinates(bv_, x, y + bv_->text->first_y);
-#if 0
-	// sorry for this but I have a strange error that the y value jumps at
-	// a certain point. This seems like an error in my xforms library or
-	// in some other local environment, but I would like to leave this here
-	// for the moment until I can remove this (Jug 20020418)
-	if (y_before < bv_->text->cursor.y())
-		lyxerr << y_before << ":" << bv_->text->cursor.y() << endl;
-#endif
-	// This is to allow jumping over large insets
-	if (cursorrow == bv_->text->cursor.row()) {
-		if (y >= int(workarea().workHeight())) {
-			bv_->text->cursorDown(bv_, false);
-		} else if (y < 0) {
-			bv_->text->cursorUp(bv_, false);
-		}
-	}
-
-	if (!bv_->text->selection.set())
-		update(bv_->text, BufferView::UPDATE); // Maybe an empty line was deleted
-
-	bv_->text->setSelection(bv_);
-	screen().toggleToggle(bv_->text, bv_);
-	fitCursor();
-	showCursor();
-}
-
-
-// Single-click on work area
-void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
-					    mouse_button::state button)
-{
-	if (!buffer_)
-		return;
-
-	// ok ok, this is a hack (for xforms)
-	if (button == mouse_button::button4) {
-		scroll(-lyxrc.wheel_jump);
-		// We shouldn't go further down as we really should only do the
-		// scrolling and be done with this. Otherwise we may open some
-		// dialogs (Jug 20020424).
-		return;
-	} else if (button == mouse_button::button5) {
-		scroll(lyxrc.wheel_jump);
-		// We shouldn't go further down as we really should only do the
-		// scrolling and be done with this. Otherwise we may open some
-		// dialogs (Jug 20020424).
-		return;
-	}
-
-	Inset * inset_hit = checkInsetHit(bv_->text, xpos, ypos);
-
-	// Middle button press pastes if we have a selection
-	// We do this here as if the selection was inside an inset
-	// it could get cleared on the unlocking of the inset so
-	// we have to check this first
-	bool paste_internally = false;
-	if (button == mouse_button::button2 && bv_->getLyXText()->selection.set()) {
-		owner_->dispatch(FuncRequest(LFUN_COPY));
-		paste_internally = true;
-	}
-
-	int const screen_first = bv_->text->first_y;
-
-	if (bv_->theLockingInset()) {
-		// We are in inset locking mode
-
-		// Check whether the inset was hit. If not reset mode,
-		// otherwise give the event to the inset
-		if (inset_hit == bv_->theLockingInset()) {
-			FuncRequest cmd(bv_, LFUN_MOUSE_PRESS, xpos, ypos, button);
-			bv_->theLockingInset()->localDispatch(cmd);
-			return;
-		}
-		bv_->unlockInset(bv_->theLockingInset());
-	}
-
-	if (!inset_hit)
-		selection_possible = true;
-	screen().hideCursor();
-
-	// Clear the selection
-	screen().toggleSelection(bv_->text, bv_);
-	bv_->text->clearSelection();
-	bv_->text->fullRebreak(bv_);
-	update();
-	updateScrollbar();
-
-	// Single left click in math inset?
-	if (isHighlyEditableInset(inset_hit)) {
-		// Highly editable inset, like math
-		UpdatableInset * inset = static_cast<UpdatableInset *>(inset_hit);
-		selection_possible = false;
-		owner_->updateLayoutChoice();
-		owner_->message(inset->editMessage());
-		//inset->edit(bv_, xpos, ypos, button);
-		// We just have to lock the inset before calling a PressEvent on it!
-		// we don't need the edit() call here! (Jug20020329)
-		if (!bv_->lockInset(inset)) {
-			lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
-		}
-		FuncRequest cmd(bv_, LFUN_MOUSE_PRESS, xpos, ypos, button);
-		inset->localDispatch(cmd);
-		return;
-	}
-	// I'm not sure we should continue here if we hit an inset (Jug20020403)
-
-	// Right click on a footnote flag opens float menu
-	if (button == mouse_button::button3) {
-		selection_possible = false;
-		return;
-	}
-
-	if (!inset_hit) // otherwise it was already set in checkInsetHit(...)
-		bv_->text->setCursorFromCoordinates(bv_, xpos, ypos + screen_first);
-	finishUndo();
-	bv_->text->selection.cursor = bv_->text->cursor;
-	bv_->text->cursor.x_fix(bv_->text->cursor.x());
-
-	owner_->updateLayoutChoice();
-	if (fitCursor()) {
-		selection_possible = false;
-	}
-
-	// Insert primary selection with middle mouse
-	// if there is a local selection in the current buffer,
-	// insert this
-	if (button == mouse_button::button2) {
-		if (paste_internally)
-			owner_->dispatch(FuncRequest(LFUN_PASTE));
-		else
-			owner_->dispatch(FuncRequest(LFUN_PASTESELECTION, "paragraph"));
-		selection_possible = false;
-		return;
-	}
-}
-
-
-void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, mouse_button::state button)
-{
-	if (!buffer_)
-		return;
-
-	LyXText * text = bv_->getLyXText();
-
-	if (text->bv_owner && bv_->theLockingInset())
-		return;
-
-	if (button == mouse_button::button1) {
-		if (text->bv_owner) {
-			screen().hideCursor();
-			screen().toggleSelection(text, bv_);
-			text->selectWord(bv_, LyXText::WHOLE_WORD_STRICT);
-			screen().toggleSelection(text, bv_, false);
-		} else {
-			text->selectWord(bv_, LyXText::WHOLE_WORD_STRICT);
-		}
-		// This will fit the cursor on the screen if necessary
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-		workarea().haveSelection(bv_->getLyXText()->selection.set());
-	}
-}
-
-
-void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, mouse_button::state button)
-{
-	if (!buffer_)
-		return;
-
-	LyXText * text = bv_->getLyXText();
-
-	if (text->bv_owner && bv_->theLockingInset())
-	    return;
-
-	if (button == mouse_button::button1) {
-		if (text->bv_owner) {
-			screen().hideCursor();
-			screen().toggleSelection(text, bv_);
-		}
-		text->cursorHome(bv_);
-		text->selection.cursor = text->cursor;
-		text->cursorEnd(bv_);
-		text->setSelection(bv_);
-		if (text->bv_owner) {
-			screen().toggleSelection(text, bv_, false);
-		}
-		// This will fit the cursor on the screen if necessary
-		update(text, BufferView::SELECT|BufferView::FITCUR);
-		workarea().haveSelection(bv_->getLyXText()->selection.set());
-	}
-}
-
-
 void BufferView::Pimpl::selectionRequested()
 {
 	static string sel;
@@ -755,118 +517,6 @@ void BufferView::Pimpl::selectionLost()
 		bv_->text->xsel_cache.set(false);
 	}
 }
-
-
-void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
-					      mouse_button::state button)
-{
-	// do nothing if we used the mouse wheel
-	if (!buffer_ || button == mouse_button::button4 || button == mouse_button::button5)
-		return;
-
-	// If we hit an inset, we have the inset coordinates in these
-	// and inset_hit points to the inset.  If we do not hit an
-	// inset, inset_hit is 0, and inset_x == x, inset_y == y.
-	Inset * inset_hit = checkInsetHit(bv_->text, x, y);
-
-	if (bv_->theLockingInset()) {
-		// We are in inset locking mode.
-
-		// LyX does a kind of work-area grabbing for insets.
-		// Only a ButtonPress FuncRequest outside the inset will
-		// force a insetUnlock.
-		FuncRequest cmd(bv_, LFUN_MOUSE_RELEASE, x, y, button);
-		bv_->theLockingInset()->localDispatch(cmd);
-		return;
-	}
-
-	selection_possible = false;
-
-	if (button == mouse_button::button2)
-		return;
-
-	// finish selection
-	if (button == mouse_button::button1) {
-		workarea().haveSelection(bv_->getLyXText()->selection.set());
-	}
-
-	switchKeyMap();
-	owner_->view_state_changed();
-	owner_->updateMenubar();
-	owner_->updateToolbar();
-
-	// Did we hit an editable inset?
-	if (inset_hit) {
-		selection_possible = false;
-
-		// if we reach this point with a selection, it
-		// must mean we are currently selecting.
-		// But we don't want to open the inset
-		// because that is annoying for the user.
-		// So just pretend we didn't hit it.
-		// this is OK because a "kosher" ButtonRelease
-		// will follow a ButtonPress that clears
-		// the selection.
-		// Note this also fixes selection drawing
-		// problems if we end up opening an inset
-		if (bv_->getLyXText()->selection.set())
-			return;
-
-		// CHECK fix this proper in 0.13
-		// well, maybe 13.0 !!!!!!!!!
-
-		// Following a ref shouldn't issue
-		// a push on the undo-stack
-		// anylonger, now that we have
-		// keybindings for following
-		// references and returning from
-		// references.  IMHO though, it
-		// should be the inset's own business
-		// to push or not push on the undo
-		// stack. They don't *have* to
-		// alter the document...
-		// (Joacim)
-		// ...or maybe the SetCursorParUndo()
-		// below isn't necessary at all anylonger?
-		if (inset_hit->lyxCode() == Inset::REF_CODE) {
-			setCursorParUndo(bv_);
-		}
-
-		owner_->message(inset_hit->editMessage());
-
-		if (isHighlyEditableInset(inset_hit)) {
-			// Highly editable inset, like math
-			UpdatableInset *inset = (UpdatableInset *)inset_hit;
-			FuncRequest cmd(bv_, LFUN_MOUSE_RELEASE, x, y, button);
-			inset->localDispatch(cmd);
-		} else {
-			FuncRequest cmd(bv_, LFUN_MOUSE_RELEASE, x, y, button);
-			inset_hit->localDispatch(cmd);
-			// IMO this is a grosshack! Inset's should be changed so that
-			// they call the actions they have to do with the insetButtonRel.
-			// function and not in the edit(). This should be changed
-			// (Jug 20020329)
-#ifdef WITH_WARNINGS
-#warning Please remove donot call inset->edit() here (Jug 20020812)
-#endif
-			inset_hit->edit(bv_, x, y, button);
-		}
-		return;
-	}
-
-	// Maybe we want to edit a bibitem ale970302
-	if (bv_->text->cursor.par()->bibkey) {
-		bool const is_rtl = bv_->text->cursor.par()->isRightToLeftPar(buffer_->params);
-		int const width = bibitemMaxWidth(bv_, buffer_->params.getLyXTextClass().defaultfont());
-		if ((is_rtl && x > bv_->text->workWidth(bv_)-20-width) ||
-		    (!is_rtl && x < 20+width)) {
-			bv_->text->cursor.par()->bibkey->edit(bv_, 0, 0, mouse_button::none);
-		}
-	}
-
-	return;
-}
-
 
 
 
@@ -1349,8 +999,13 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 
 bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 {
-	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch: action["
-	  << ev.action <<"] arg[" << ev.argument << "]" << endl;
+	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch:"
+		<< " action[" << ev.action <<"]"
+		<< " arg[" << ev.argument << "]"
+		<< " x[" << ev.x << "]"
+		<< " y[" << ev.y << "]"
+		<< " button[" << ev.button() << "]"
+		<< endl;
 
 	LyXTextClass const & tclass = buffer_->params.getLyXTextClass();
 
@@ -1770,10 +1425,353 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		ev.errorMessage(N_("Unknown function!"));
 		break;
 
+	case LFUN_MOUSE_TRIPLE:
+	{
+		if (!buffer_)
+			return false;
+
+		LyXText * text = bv_->getLyXText();
+
+		if (text->bv_owner && bv_->theLockingInset())
+			return false;
+
+		if (ev.button() == mouse_button::button1) {
+			if (text->bv_owner) {
+				screen().hideCursor();
+				screen().toggleSelection(text, bv_);
+			}
+			text->cursorHome(bv_);
+			text->selection.cursor = text->cursor;
+			text->cursorEnd(bv_);
+			text->setSelection(bv_);
+			if (text->bv_owner)
+				screen().toggleSelection(text, bv_, false);
+			// This will fit the cursor on the screen if necessary
+			update(text, BufferView::SELECT|BufferView::FITCUR);
+			workarea().haveSelection(bv_->getLyXText()->selection.set());
+		}
+		break;
+	}
+
+	case LFUN_MOUSE_DOUBLE:
+	{
+		if (!buffer_)
+			return false;
+
+		LyXText * text = bv_->getLyXText();
+
+		if (text->bv_owner && bv_->theLockingInset())
+			return false;
+
+		if (ev.button() == mouse_button::button1) {
+			if (text->bv_owner) {
+				screen().hideCursor();
+				screen().toggleSelection(text, bv_);
+				text->selectWord(bv_, LyXText::WHOLE_WORD_STRICT);
+				screen().toggleSelection(text, bv_, false);
+			} else {
+				text->selectWord(bv_, LyXText::WHOLE_WORD_STRICT);
+			}
+			// This will fit the cursor on the screen if necessary
+			update(text, BufferView::SELECT|BufferView::FITCUR);
+			workarea().haveSelection(bv_->getLyXText()->selection.set());
+		}
+		break;
+	}
+
+	case LFUN_MOUSE_MOTION:
+	{
+		// Only use motion with button 1
+		//if (ev.button() != mouse_button::button1)
+		//	return false;
+
+		if (!buffer_)
+			return false;
+
+		// Check for inset locking
+		if (bv_->theLockingInset()) {
+			LyXCursor cursor = bv_->text->cursor;
+			LyXFont font = bv_->text->getFont(buffer_,
+								cursor.par(), cursor.pos());
+			int width = bv_->theLockingInset()->width(bv_, font);
+			int inset_x = font.isVisibleRightToLeft()
+				? cursor.ix() - width : cursor.ix();
+			int start_x = inset_x + bv_->theLockingInset()->scroll();
+
+			FuncRequest cmd(bv_, LFUN_MOUSE_MOTION,
+			  ev.x - start_x, ev.y - cursor.iy() + bv_->text->first_y, ev.button());
+			bv_->theLockingInset()->localDispatch(cmd);
+			return false;
+		}
+
+		// The test for not selection possible is needed, that only motion
+		// events are used, where the bottom press event was on
+		//  the drawing area too
+		if (!selection_possible) {
+			lyxerr[Debug::ACTION]
+				<< "BufferView::Pimpl::Dispatch: no selection possible\n";
+			return false;
+		}
+
+		screen().hideCursor();
+
+		Row * cursorrow = bv_->text->cursor.row();
+		bv_->text->setCursorFromCoordinates(bv_, ev.x, ev.y + bv_->text->first_y);
+	#if 0
+		// sorry for this but I have a strange error that the y value jumps at
+		// a certain point. This seems like an error in my xforms library or
+		// in some other local environment, but I would like to leave this here
+		// for the moment until I can remove this (Jug 20020418)
+		if (y_before < bv_->text->cursor.y())
+			lyxerr << y_before << ":" << bv_->text->cursor.y() << endl;
+	#endif
+		// This is to allow jumping over large insets
+		if (cursorrow == bv_->text->cursor.row()) {
+			if (ev.y >= int(workarea().workHeight())) {
+				bv_->text->cursorDown(bv_, false);
+			} else if (ev.y < 0) {
+				bv_->text->cursorUp(bv_, false);
+			}
+		}
+
+		if (!bv_->text->selection.set())
+			update(bv_->text, BufferView::UPDATE); // Maybe an empty line was deleted
+
+		bv_->text->setSelection(bv_);
+		screen().toggleToggle(bv_->text, bv_);
+		fitCursor();
+		showCursor();
+		break;
+	}
+
+	// Single-click on work area
+	case LFUN_MOUSE_PRESS:
+	{
+		if (!buffer_)
+			return false;
+
+		// ok ok, this is a hack (for xforms)
+		if (ev.button() == mouse_button::button4) {
+			scroll(-lyxrc.wheel_jump);
+			// We shouldn't go further down as we really should only do the
+			// scrolling and be done with this. Otherwise we may open some
+			// dialogs (Jug 20020424).
+			return false;
+		}
+		if (ev.button() == mouse_button::button5) {
+			scroll(lyxrc.wheel_jump);
+			// We shouldn't go further down as we really should only do the
+			// scrolling and be done with this. Otherwise we may open some
+			// dialogs (Jug 20020424).
+			return false;
+		}
+
+		int x = ev.x;
+		int y = ev.y;
+		Inset * inset_hit = checkInsetHit(bv_->text, x, y);
+
+		// Middle button press pastes if we have a selection
+		// We do this here as if the selection was inside an inset
+		// it could get cleared on the unlocking of the inset so
+		// we have to check this first
+		bool paste_internally = false;
+		if (ev.button() == mouse_button::button2
+				&& bv_->getLyXText()->selection.set())
+		{
+			owner_->dispatch(FuncRequest(LFUN_COPY));
+			paste_internally = true;
+		}
+
+		int const screen_first = bv_->text->first_y;
+
+		if (bv_->theLockingInset()) {
+			// We are in inset locking mode
+
+			// Check whether the inset was hit. If not reset mode,
+			// otherwise give the event to the inset
+			if (inset_hit == bv_->theLockingInset()) {
+				FuncRequest cmd(bv_, LFUN_MOUSE_PRESS, x, y, ev.button());
+				bv_->theLockingInset()->localDispatch(cmd);
+				return false;
+			}
+			bv_->unlockInset(bv_->theLockingInset());
+		}
+
+		if (!inset_hit)
+			selection_possible = true;
+		screen().hideCursor();
+
+		// Clear the selection
+		screen().toggleSelection(bv_->text, bv_);
+		bv_->text->clearSelection();
+		bv_->text->fullRebreak(bv_);
+		update();
+		updateScrollbar();
+
+		// Single left click in math inset?
+		if (isHighlyEditableInset(inset_hit)) {
+			// Highly editable inset, like math
+			UpdatableInset * inset = static_cast<UpdatableInset *>(inset_hit);
+			selection_possible = false;
+			owner_->updateLayoutChoice();
+			owner_->message(inset->editMessage());
+			//inset->edit(bv_, x, y, ev.button());
+			// We just have to lock the inset before calling a PressEvent on it!
+			// we don't need the edit() call here! (Jug20020329)
+			if (!bv_->lockInset(inset)) {
+				lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
+			}
+			FuncRequest cmd(bv_, LFUN_MOUSE_PRESS, x, y, ev.button());
+			inset->localDispatch(cmd);
+			return false;
+		}
+		// I'm not sure we should continue here if we hit an inset (Jug20020403)
+
+		// Right click on a footnote flag opens float menu
+		if (ev.button() == mouse_button::button3) {
+			selection_possible = false;
+			return false;
+		}
+
+		if (!inset_hit) // otherwise it was already set in checkInsetHit(...)
+			bv_->text->setCursorFromCoordinates(bv_, x, y + screen_first);
+		finishUndo();
+		bv_->text->selection.cursor = bv_->text->cursor;
+		bv_->text->cursor.x_fix(bv_->text->cursor.x());
+
+		owner_->updateLayoutChoice();
+		if (fitCursor()) {
+			selection_possible = false;
+		}
+
+		// Insert primary selection with middle mouse
+		// if there is a local selection in the current buffer,
+		// insert this
+		if (ev.button() == mouse_button::button2) {
+			if (paste_internally)
+				owner_->dispatch(FuncRequest(LFUN_PASTE));
+			else
+				owner_->dispatch(FuncRequest(LFUN_PASTESELECTION, "paragraph"));
+			selection_possible = false;
+			return false;
+		}
+		break;
+	}
+
+	case LFUN_MOUSE_RELEASE:
+	{
+		// do nothing if we used the mouse wheel
+		if (!buffer_
+				|| ev.button() == mouse_button::button4
+				|| ev.button() == mouse_button::button5)
+			return false;
+
+		// If we hit an inset, we have the inset coordinates in these
+		// and inset_hit points to the inset.  If we do not hit an
+		// inset, inset_hit is 0, and inset_x == x, inset_y == y.
+		int x = ev.x;
+		int y = ev.y;
+		Inset * inset_hit = checkInsetHit(bv_->text, x, y);
+
+		if (bv_->theLockingInset()) {
+			// We are in inset locking mode.
+
+			// LyX does a kind of work-area grabbing for insets.
+			// Only a ButtonPress FuncRequest outside the inset will
+			// force a insetUnlock.
+			FuncRequest cmd(bv_, LFUN_MOUSE_RELEASE, x, y, ev.button());
+			bv_->theLockingInset()->localDispatch(cmd);
+			return false;
+		}
+
+		selection_possible = false;
+
+		if (ev.button() == mouse_button::button2)
+			return false;
+
+		// finish selection
+		if (ev.button() == mouse_button::button1) {
+			workarea().haveSelection(bv_->getLyXText()->selection.set());
+		}
+
+		switchKeyMap();
+		owner_->view_state_changed();
+		owner_->updateMenubar();
+		owner_->updateToolbar();
+
+		// Did we hit an editable inset?
+		if (inset_hit) {
+			selection_possible = false;
+
+			// if we reach this point with a selection, it
+			// must mean we are currently selecting.
+			// But we don't want to open the inset
+			// because that is annoying for the user.
+			// So just pretend we didn't hit it.
+			// this is OK because a "kosher" ButtonRelease
+			// will follow a ButtonPress that clears
+			// the selection.
+			// Note this also fixes selection drawing
+			// problems if we end up opening an inset
+			if (bv_->getLyXText()->selection.set())
+				return false;
+
+			// CHECK fix this proper in 0.13
+			// well, maybe 13.0 !!!!!!!!!
+
+			// Following a ref shouldn't issue
+			// a push on the undo-stack
+			// anylonger, now that we have
+			// keybindings for following
+			// references and returning from
+			// references.  IMHO though, it
+			// should be the inset's own business
+			// to push or not push on the undo
+			// stack. They don't *have* to
+			// alter the document...
+			// (Joacim)
+			// ...or maybe the SetCursorParUndo()
+			// below isn't necessary at all anylonger?
+			if (inset_hit->lyxCode() == Inset::REF_CODE) {
+				setCursorParUndo(bv_);
+			}
+
+			owner_->message(inset_hit->editMessage());
+
+			if (isHighlyEditableInset(inset_hit)) {
+				// Highly editable inset, like math
+				UpdatableInset *inset = (UpdatableInset *)inset_hit;
+				FuncRequest cmd(bv_, LFUN_MOUSE_RELEASE, x, y, ev.button());
+				inset->localDispatch(cmd);
+			} else {
+				FuncRequest cmd(bv_, LFUN_MOUSE_RELEASE, x, y, ev.button());
+				inset_hit->localDispatch(cmd);
+				// IMO this is a grosshack! Inset's should be changed so that
+				// they call the actions they have to do with the insetButtonRel.
+				// function and not in the edit(). This should be changed
+				// (Jug 20020329)
+	#ifdef WITH_WARNINGS
+	#warning Please remove donot call inset->edit() here (Jug 20020812)
+	#endif
+				inset_hit->edit(bv_, x, y, ev.button());
+			}
+			return false;
+		}
+
+		// Maybe we want to edit a bibitem ale970302
+		if (bv_->text->cursor.par()->bibkey) {
+			bool const is_rtl = bv_->text->cursor.par()->isRightToLeftPar(buffer_->params);
+			int const width = bibitemMaxWidth(bv_, buffer_->params.getLyXTextClass().defaultfont());
+			if ((is_rtl && x > bv_->text->workWidth(bv_)-20-width) ||
+					(!is_rtl && x < 20+width)) {
+				bv_->text->cursor.par()->bibkey->edit(bv_, 0, 0, mouse_button::none);
+			}
+		}
+		return false;
+	}
+
 	default:
-		FuncRequest cmd = ev;
-		cmd.setView(bv_);
-		return bv_->getLyXText()->dispatch(cmd);
+		return bv_->getLyXText()->dispatch(FuncRequest(ev, bv_));
 	} // end of switch
 
 	return true;

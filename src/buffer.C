@@ -1154,6 +1154,7 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 			if (dot != string::npos)
 				tmp_format.erase(dot, 1);
 			file_format = strToInt(tmp_format);
+			//lyxerr << "format: " << file_format << endl;
 			if (file_format == LYX_FORMAT) {
 				// current format
 			} else if (file_format > LYX_FORMAT) {

@@ -25,22 +25,26 @@ public:
 	FuncRequest();
 	/// actions without extra argument
 	explicit FuncRequest(kb_action act);
+	/// actions without extra argument
+	FuncRequest(kb_action act, int x, int y, mouse_button::state button);
 	/// actions with extra argument
 	FuncRequest(kb_action act, string const & arg);
 	/// actions without extra argument
-	FuncRequest(BufferView * view, kb_action act);
+	FuncRequest(BufferView * bv, kb_action act);
 	/// actions with extra argument
-	FuncRequest(BufferView * view, kb_action act, string const & arg);
+	FuncRequest(BufferView * bv, kb_action act, string const & arg);
 	/// for mouse events
-	FuncRequest(BufferView * view, kb_action act,
+	FuncRequest(BufferView * bv, kb_action act,
 		int x, int y, mouse_button::state button);
 	/// for changing requests a bit
 	FuncRequest(FuncRequest const & cmd, string const & arg);
+	/// for changing requests a bit
+	FuncRequest(FuncRequest const & cmd, BufferView * bv);
 
 	/// access to the view
 	BufferView * view() const;
 	/// access to the view
-	void setView(BufferView * view);
+	void setView(BufferView * bv);
 	/// access to button
 	mouse_button::state button() const;
 

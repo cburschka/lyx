@@ -1,4 +1,12 @@
+2002-08-28  André Pönitz <poenitz@gmx.net>
+
+	* commandtags.h: new LFUN_MOUSE_DOUBLE, LFUN_MOUSE_TRIPLE
+
+	* BufferView.h:
+	* BufferView_pimpl.[Ch] move work area mouse event to LFUNs
+
 2002-08-28  Rob Lahaye  <lahaye@snu.ac.kr>
+
 	* buffer.C: increment LYX_FORMAT to 221
 
 	* lyxrc.[Ch]: declare display_graphics as grfx::DisplayType and use

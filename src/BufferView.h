@@ -190,6 +190,7 @@ public:
 	void stuffClipboard(string const &) const;
 	///
 	bool dispatch(FuncRequest const & argument);
+
 private:
 	///
 	struct Pimpl;

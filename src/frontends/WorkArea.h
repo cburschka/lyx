@@ -11,9 +11,9 @@
 #ifndef WORKAREA_H
 #define WORKAREA_H
 
-#include "frontends/mouse_state.h"
 #include "frontends/key_state.h"
 #include "frontends/LyXKeySym.h"
+#include "funcrequest.h"
 
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
@@ -68,16 +68,8 @@ public:
 	boost::signal1<void, int> scrollDocView;
 	/// a key combination has been pressed
 	boost::signal2<void, LyXKeySymPtr, key_modifier::state> workAreaKeyPress;
-	/// a mouse button has been pressed
-	boost::signal3<void, int, int, mouse_button::state> workAreaButtonPress;
-	/// a mouse button has been released
-	boost::signal3<void, int, int, mouse_button::state> workAreaButtonRelease;
-	/// the mouse has moved
-	boost::signal3<void, int, int, mouse_button::state> workAreaMotionNotify;
-	/// a mouse button has been double-clicked
-	boost::signal3<void, int, int, mouse_button::state> workAreaDoubleClick;
-	/// a mouse button has been triple-clicked
-	boost::signal3<void, int, int, mouse_button::state> workAreaTripleClick;
+	/// some mouse event
+	boost::signal1<void, FuncRequest> dispatch;
 	/// emitted when an X client has requested our selection
 	boost::signal0<void> selectionRequested;
 	/// emitted when another X client has stolen our selection

@@ -286,6 +286,8 @@ enum kb_action {
 	LFUN_MOUSE_PRESS,               // André 9 Aug 2002
 	LFUN_MOUSE_MOTION,              // André 9 Aug 2002
 	LFUN_MOUSE_RELEASE,             // André 9 Aug 2002
+	LFUN_MOUSE_DOUBLE,             // André 9 Aug 2002
+	LFUN_MOUSE_TRIPLE,             // André 9 Aug 2002
 	LFUN_EDIT,                      // André 16 Aug 2002
 	LFUN_LASTACTION  /* this marks the end of the table */
 };

@@ -1077,6 +1077,13 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		}
 
 #if 0
+		else if (t.cs() == "infer") {
+			MathArray ar;
+			parse(ar, FLAG_OPTION, mode);
+			cell->push_back(createMathInset(t.cs()));
+			parse2(cell->back(), FLAG_ITEM, mode, false);
+		}
+
 		// Disabled
 		else if (1 && t.cs() == "ar") {
 			MathXYArrowInset * p = new MathXYArrowInset;

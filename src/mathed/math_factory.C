@@ -14,6 +14,7 @@
 #include "math_fontoldinset.h"
 #include "math_fracinset.h"
 #include "math_kerninset.h"
+#include "math_inferinset.h"
 #include "math_lefteqninset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
@@ -241,6 +242,8 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathBinomInset(s == "choose"));
 	if (s == "over" || s == "frac")
 		return MathAtom(new MathFracInset);
+	//if (s == "infer")
+	//	return MathAtom(new MathInferInset);
 	if (s == "atop")
 		return MathAtom(new MathFracInset(true));
 	if (s == "lefteqn")

@@ -18,6 +18,7 @@
 #include "LyXView.h"
 #include "XLyXKeySym.h"
 #include "ColorHandler.h"
+#include "funcrequest.h"
 
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 #include "lyxlookup.h"
@@ -351,24 +352,27 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		if (!ev || ev->xbutton.button == 0) break;
 		// Should really have used xbutton.state
 		lyxerr[Debug::WORKAREA] << "Workarea event: PUSH" << endl;
-		area->workAreaButtonPress(ev->xbutton.x - ob->x,
-					  ev->xbutton.y - ob->y,
-					  x_button_state(ev->xbutton.button));
+		area->dispatch(
+			FuncRequest(LFUN_MOUSE_PRESS, ev->xbutton.x - ob->x,
+							ev->xbutton.y - ob->y,
+							x_button_state(ev->xbutton.button)));
 		break;
 	case FL_RELEASE:
 		if (!ev || ev->xbutton.button == 0) break;
 		// Should really have used xbutton.state
 		lyxerr[Debug::WORKAREA] << "Workarea event: RELEASE" << endl;
-		area->workAreaButtonRelease(ev->xbutton.x - ob->x,
-				      ev->xbutton.y - ob->y,
-				      x_button_state(ev->xbutton.button));
+		area->dispatch(
+			FuncRequest(LFUN_MOUSE_RELEASE, ev->xbutton.x - ob->x,
+							ev->xbutton.y - ob->y,
+							x_button_state(ev->xbutton.button)));
 		break;
 #if FL_VERSION < 1 && FL_REVISION < 89
 	case FL_MOUSE:
 #else
 	case FL_DRAG:
 #endif
-		if (!ev || ! area->scrollbar) break;
+		if (!ev || !area->scrollbar)
+			break;
 		if (ev->xmotion.x != x_old ||
 		    ev->xmotion.y != y_old ||
 		    fl_get_scrollbar_value(area->scrollbar) != scrollbar_value_old
@@ -377,9 +381,10 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			y_old = ev->xmotion.y;
 			scrollbar_value_old = fl_get_scrollbar_value(area->scrollbar);
 			lyxerr[Debug::WORKAREA] << "Workarea event: MOUSE" << endl;
-			area->workAreaMotionNotify(ev->xmotion.x - ob->x,
-					     ev->xmotion.y - ob->y,
-					     x_motion_state(ev->xbutton.state));
+			area->dispatch(
+				FuncRequest(LFUN_MOUSE_MOTION, ev->xbutton.x - ob->x,
+								ev->xbutton.y - ob->y,
+								x_button_state(ev->xbutton.button)));
 		}
 		break;
 #if FL_VERSION < 1 && FL_REVISION < 89
@@ -510,22 +515,26 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		lyxerr[Debug::WORKAREA] << "Workarea event: LEAVE" << endl;
 		break;
 	case FL_DBLCLICK:
-		if (!ev) break;
-		lyxerr[Debug::WORKAREA] << "Workarea event: DBLCLICK" << endl;
-		area->workAreaDoubleClick(ev->xbutton.x - ob->x,
-					  ev->xbutton.y - ob->y,
-					  x_button_state(ev->xbutton.button));
+		if (ev) {
+			lyxerr[Debug::WORKAREA] << "Workarea event: DBLCLICK" << endl;
+			FuncRequest cmd(LFUN_MOUSE_DOUBLE, ev->xbutton.x - ob->x,
+							ev->xbutton.y - ob->y,
+							x_button_state(ev->xbutton.button));
+			area->dispatch(cmd);
+		}
 		break;
 	case FL_TRPLCLICK:
-		if (!ev) break;
-		lyxerr[Debug::WORKAREA] << "Workarea event: TRPLCLICK" << endl;
-		area->workAreaTripleClick(ev->xbutton.x - ob->x,
-					  ev->xbutton.y - ob->y,
-					  x_button_state(ev->xbutton.button));
+		if (ev) {
+			lyxerr[Debug::WORKAREA] << "Workarea event: TRPLCLICK" << endl;
+			FuncRequest cmd(LFUN_MOUSE_TRIPLE, ev->xbutton.x - ob->x,
+							ev->xbutton.y - ob->y,
+							x_button_state(ev->xbutton.button));
+			area->dispatch(cmd);
+		}
 		break;
 	case FL_OTHER:
-		if (!ev) break;
-		lyxerr[Debug::WORKAREA] << "Workarea event: OTHER" << endl;
+		if (ev)
+			lyxerr[Debug::WORKAREA] << "Workarea event: OTHER" << endl;
 		break;
 	}
 

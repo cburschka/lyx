@@ -730,7 +730,7 @@ int LyXRC::read(string const & filename)
 		{
 			string lyx_name, x11_name;
 
-			if (lexrc.next())  {
+			if (lexrc.next()) {
 				lyx_name = lexrc.getString();
 			} else {
 				lexrc.printError("Missing color tag.");

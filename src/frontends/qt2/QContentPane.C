@@ -16,6 +16,7 @@
 
 #include "QWorkArea.h"
 #include "QLyXKeySym.h"
+#include "funcrequest.h"
 
 #include <qevent.h>
 #include <qpainter.h>
@@ -96,19 +97,25 @@ void QContentPane::scrollBarChanged(int val)
  
 void QContentPane::mousePressEvent(QMouseEvent * e)
 {
-	wa_->workAreaButtonPress(e->x(), e->y(), q_button_state(e->button()));
+	FuncRequest cmd
+		(LFUN_MOUSE_PRESS, e->x(), e->y(), q_button_state(e->button()));
+	wa_->dispatch(cmd);
 }
 
 
 void QContentPane::mouseReleaseEvent(QMouseEvent * e)
 {
-	wa_->workAreaButtonRelease(e->x(), e->y(), q_button_state(e->button()));
+	FuncRequest cmd
+		(LFUN_MOUSE_RELEASE, e->x(), e->y(), q_button_state(e->button()));
+	wa_->dispatch(cmd);
 }
 
  
 void QContentPane::mouseMoveEvent(QMouseEvent * e)
 {
-	wa_->workAreaMotionNotify(e->x(), e->y(), q_motion_state(e->state()));
+	FuncRequest cmd
+		(LFUN_MOUSE_RELEASE, e->x(), e->y(), q_motion_state(e->button()));
+	wa_->dispatch(cmd);
 }
 
 
@@ -125,7 +132,9 @@ void QContentPane::keyPressEvent(QKeyEvent * e)
  
 void QContentPane::mouseDoubleClickEvent(QMouseEvent * e)
 {
-	wa_->workAreaDoubleClick(e->x(), e->y(), q_button_state(e->state()));
+	FuncRequest cmd
+		(LFUN_MOUSE_DOUBLE, e->x(), e->y(), q_button_state(e->button()));
+	wa_->dispatch(cmd);
 	// FIXME: triple click 
 }
  

@@ -77,6 +77,8 @@ libmathed_la_SOURCES = \
 	math_gridinset.h \
 	math_hullinset.C \
 	math_hullinset.h \
+	math_inferinset.C \
+	math_inferinset.h \
 	math_inset.C \
 	math_inset.h \
 	math_iterator.C \
