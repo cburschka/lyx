@@ -1,3 +1,9 @@
+
+
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
 #include <config.h>
 
 #include "math_exintinset.h"
@@ -8,8 +14,6 @@
 #include "debug.h"
 
 #include <boost/scoped_ptr.hpp>
-
-using std::endl;
 
 
 MathExIntInset::MathExIntInset(string const & name)
@@ -51,13 +55,13 @@ void MathExIntInset::normalize(NormalStream & os) const
 
 void MathExIntInset::metrics(MathMetricsInfo &) const
 {
-	lyxerr << "should not happen" << endl;
+	lyxerr << "should not happen\n";
 }
 
 
 void MathExIntInset::draw(MathPainterInfo &, int, int) const
 {
-	lyxerr << "should not happen" << endl;
+	lyxerr << "should not happen\n";
 }
 
 
@@ -111,5 +115,5 @@ void MathExIntInset::mathmlize(MathMLStream & os) const
 
 void MathExIntInset::write(WriteStream &) const
 {
-	lyxerr << "should not happen" << endl;
+	lyxerr << "should not happen\n";
 }

@@ -2,6 +2,10 @@
 #ifndef MATH_DIMINSET_H
 #define MATH_DIMINSET_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "math_inset.h"
 #include "dimension.h"
 

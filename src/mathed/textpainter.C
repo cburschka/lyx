@@ -1,5 +1,10 @@
-#include <iostream>
+
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
 #include "textpainter.h"
+#include "support/LOstream.h"
 
 
 TextPainter::TextPainter(int xmax, int ymax)

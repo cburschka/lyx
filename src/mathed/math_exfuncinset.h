@@ -2,6 +2,10 @@
 #ifndef MATH_EXFUNCINSET_H
 #define MATH_EXFUNCINSET_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "math_nestinset.h"
 
 // f(x) in one block (as opposed to 'f','(','x',')' or 'f','x')

@@ -15,14 +15,14 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include <config.h>
 
-#include "Lsstream.h"
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
 #include "math_inset.h"
+#include "Lsstream.h"
 #include "math_scriptinset.h"
 #include "math_mathmlstream.h"
 #include "math_cursor.h"
@@ -34,22 +34,12 @@
 #include "BufferView.h"
 #include "formulabase.h"
 
-
 using std::ostream;
-using std::vector;
 
 
 int MathInset::height() const
 {
 	return ascent() + descent();
-}
-
-
-ostream & operator<<(ostream & os, MathAtom const & at)
-{
-	WriteStream wi(os, false, false);
-	at->write(wi);
-	return os;
 }
 
 
@@ -300,6 +290,14 @@ MathArray asArray(string const & str)
 	MathArray ar;
 	mathed_parse_cell(ar, str);
 	return ar;
+}
+
+
+ostream & operator<<(ostream & os, MathAtom const & at)
+{
+	WriteStream wi(os, false, false);
+	at->write(wi);
+	return os;
 }
 
 

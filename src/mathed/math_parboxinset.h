@@ -1,6 +1,10 @@
 #ifndef MATH_PARBOXINSET_H
 #define MATH_PARBOXINSET_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "math_textinset.h"
 
 // implements support for \parbox

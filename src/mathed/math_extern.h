@@ -1,6 +1,10 @@
 #ifndef MATH_EXTERN_H
 #define MATH_EXTERN_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "LString.h"
 
 class NormalStream;

@@ -22,11 +22,11 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
-#include <config.h>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
+
+#include <config.h>
 
 #include "LString.h"
 #include "frontends/mouse_state.h"

@@ -1,9 +1,14 @@
+
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
 #include <config.h>
 
 #include "math_parinset.h"
 #include "math_mathmlstream.h"
-
 #include "support/LOstream.h"
+
 
 MathParInset::MathParInset(MathArray const & ar)
 {

@@ -2,6 +2,10 @@
 #ifndef MATH_LIMINSET_H
 #define MATH_LIMINSET_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 // lim_{x->x0} f(x) in one block
 // for interfacing external programs
 

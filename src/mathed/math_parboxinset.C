@@ -1,11 +1,13 @@
 
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
 #include "math_parboxinset.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "lyxlength.h"
 #include "debug.h"
-
-using std::vector;
 
 
 MathParboxInset::MathParboxInset()

@@ -1,3 +1,8 @@
+
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
 #include <config.h>
 
 #include "math_symbolinset.h"
@@ -7,9 +12,6 @@
 #include "math_parser.h"
 #include "LaTeXFeatures.h"
 #include "debug.h"
-
-
-using std::ostream;
 
 
 MathSymbolInset::MathSymbolInset(const latexkeys * l)
@@ -175,7 +177,7 @@ void MathSymbolInset::write(WriteStream & os) const
 }
 
 
-void MathSymbolInset::infoize(ostream & os) const
+void MathSymbolInset::infoize(std::ostream & os) const
 {
 	os << "Symbol: " << name();
 }

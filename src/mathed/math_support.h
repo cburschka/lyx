@@ -3,6 +3,10 @@
 #ifndef MATH_SUPPORT_H
 #define MATH_SUPPORT_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "LString.h"
 
 class MathPainterInfo;

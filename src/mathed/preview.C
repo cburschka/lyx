@@ -1,1 +1,1 @@
-// code is currently directly inseide InsetFormula
+// code is currently directly inside InsetFormula

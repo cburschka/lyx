@@ -1,6 +1,10 @@
 #ifndef MATH_FACTORY_H
 #define MATH_FACTORY_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "LString.h"
 #include "math_atom.h"
 

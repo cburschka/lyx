@@ -1,6 +1,10 @@
 #ifndef REF_INSET_H
 #define REF_INSET_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "command_inset.h"
 
 // for \ref 

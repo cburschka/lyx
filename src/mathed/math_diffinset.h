@@ -2,6 +2,10 @@
 #ifndef MATH_DIFFINSET_H
 #define MATH_DIFFINSET_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 // d f(x)/dx in one block
 // for interfacing external programs
 

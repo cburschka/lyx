@@ -1,3 +1,8 @@
+
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
 #include "math_diminset.h"
 #include "Lsstream.h"
 #include "textpainter.h"

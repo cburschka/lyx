@@ -1,4 +1,8 @@
 
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
 #include <config.h>
 
 #include "math_metricsinfo.h"

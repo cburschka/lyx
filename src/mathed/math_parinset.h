@@ -1,6 +1,10 @@
 #ifndef MATH_PARINSET_H
 #define MATH_PARINSET_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "math_hullinset.h"
 
 class MathParInset : public MathHullInset {

@@ -1,6 +1,10 @@
 #ifndef MATH_METRICSINFO_H
 #define MATH_METRICSINFO_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "lyxfont.h"
 #include "LString.h"
 

@@ -1,9 +1,14 @@
+
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
 #include <config.h>
 
 #include "math_ertinset.h"
 #include "math_mathmlstream.h"
-
 #include "support/LOstream.h"
+
 
 MathInset * MathErtInset::clone() const
 {

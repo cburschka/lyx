@@ -1,4 +1,8 @@
 
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
 #include "math_textinset.h"
 #include "math_metricsinfo.h"
 #include "debug.h"

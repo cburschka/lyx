@@ -1,14 +1,15 @@
+
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
 #include "config.h"
-
-#include <iostream>
-
 #include "math_pos.h"
 #include "math_inset.h"
 #include "debug.h"
 #include "support/LAssert.h"
+#include "support/LOstream.h"
 
-
-using std::ostream;
 
 MathCursorPos::MathCursorPos()
 	: par_(0), idx_(0), pos_(0)
@@ -43,7 +44,7 @@ void MathCursorPos::getPos(int & x, int & y) const
 }
 
 
-ostream & operator<<(ostream & os, MathCursorPos const & p)
+std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
 {
 	os << "(par: " << p.par_ << " idx: " << p.idx_ << " pos: " << p.pos_ << ")";
 	return os;

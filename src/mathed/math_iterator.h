@@ -2,6 +2,10 @@
 #ifndef MATH_ITERATOR_H
 #define MATH_ITERATOR_H
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 #include "math_pos.h"
 #include <vector>
 

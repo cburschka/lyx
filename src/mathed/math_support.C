@@ -1,6 +1,9 @@
-#include <config.h>
 
-#include <map>
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
+#include <config.h>
 
 #include "math_support.h"
 #include "lyxfont.h"
@@ -15,8 +18,8 @@
 #include "commandtags.h"
 #include "dimension.h"
 
-using std::map;
-using std::endl;
+#include <map>
+
 using std::max;
 
 
@@ -318,7 +321,7 @@ named_deco_struct deco_table[] = {
 };
 
 
-map<string, deco_struct> deco_list;
+std::map<string, deco_struct> deco_list;
 
 // sort the table on startup
 struct init_deco_table {
@@ -338,7 +341,7 @@ static init_deco_table dummy;
 
 deco_struct const * search_deco(string const & name)
 {
-	map<string, deco_struct>::const_iterator p = deco_list.find(name);
+	std::map<string, deco_struct>::const_iterator p = deco_list.find(name);
 	return (p == deco_list.end()) ? 0 : &(p->second);
 }
 

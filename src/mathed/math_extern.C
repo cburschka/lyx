@@ -1,3 +1,8 @@
+
+#ifdef __GNUG__
+#pragma implementation 
+#endif
+
 // This file contains most of the magic that extracts "context
 // information" from the unstructered layout-oriented stuff in an
 // MathArray.
