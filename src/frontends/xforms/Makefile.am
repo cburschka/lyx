@@ -11,7 +11,7 @@ INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src \
 
 noinst_LTLIBRARIES = libxforms.la
 
-libxforms_la_LIBADD = @XFORMS_IMAGE_LIB@ @XFORMS_LIB@ @XPM_LIB@ forms/*.lo
+libxforms_la_LIBADD = @XFORMS_LIBS@ forms/*.lo
 
 # Alphabetical order please.  It makes it easier to figure out what's missing.
 libxforms_la_SOURCES = \

@@ -1,5 +1,9 @@
 2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* ui/Makefile.am (INCLUDES): 
+	* moc/Makefile.am (INCLUDES): 
+	* Makefile.am (INCLUDES): use QT_INCLUDES
+
 	* QLToolbar.C (clearLayoutList): call Toolbar::clearLayoutList
 
 2003-07-30  Juergen Spitzmueller  <j.spitzmueller@gmx.de>

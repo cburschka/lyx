@@ -1,5 +1,7 @@
 2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* Makefile.am (libxforms_la_LIBADD): use XFORMS_LIBS
+
 	* XFormsToolbar.C (clearLayoutList): call Toolbar::clearLayoutList
 
 2003-08-02  Lars Gullik Bjønnes  <larsbj@lyx.org>

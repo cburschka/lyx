@@ -5,7 +5,6 @@ AC_DEFUN(LYX_PATH_XPM,[
 ### Check for Xpm library
 AC_CHECK_LIB(Xpm, XpmCreateBufferFromImage, XPM_LIB="-lXpm",
 	[LYX_LIB_ERROR(libXpm,Xpm)])
-AC_SUBST(XPM_LIB)
 ### Check for Xpm headers
 lyx_cv_xpm_h_location="<xpm.h>"
 AC_CHECK_HEADER(X11/xpm.h,[
@@ -13,8 +12,6 @@ AC_CHECK_HEADER(X11/xpm.h,[
   lyx_cv_xpm_h_location="<X11/xpm.h>"],[
 AC_CHECK_HEADER(xpm.h,[],[
 LYX_LIB_ERROR(xpm.h,Xpm)])])
-#AC_DEFINE_UNQUOTED(XPM_H_LOCATION,$lyx_cv_xpm_h_location,
-#  [define this to the location of xpm.h to be used with #include, e.g. <xpm.h>])
 AC_SUBST(XPM_H_LOCATION,$lyx_cv_xpm_h_location)
 ### Test for the header version
 if test $ac_cv_header_xpm_h = yes; then
@@ -61,7 +58,6 @@ AC_REQUIRE([LYX_PATH_XPM])
 AC_CHECK_LIB(forms, fl_initialize, XFORMS_LIB="-lforms",
   [AC_CHECK_LIB(xforms, fl_initialize, XFORMS_LIB="-lxforms",
     [LYX_LIB_ERROR(libforms or libxforms,xforms)], $XPM_LIB)], $XPM_LIB)
-AC_SUBST(XFORMS_LIB)
 
 ### Check for xforms headers
 lyx_cv_forms_h_location="<forms.h>"
@@ -108,7 +104,7 @@ fi
 
 
 dnl Check the details of the xforms image loader
-AC_DEFUN(LYX_CHECK_XFORMS_IMAGE_LOADER,
+AC_DEFUN([LYX_CHECK_XFORMS_IMAGE_LOADER],
 [AC_REQUIRE([LYX_PATH_XFORMS])
 save_LIBS=$LIBS
 LIBS="$XFORMS_LIB $XPM_LIB $LIBS"
@@ -134,8 +130,6 @@ AC_SEARCH_LIBS(flimage_dup, flimage,
      XFORMS_IMAGE_LIB="-lflimage $XFORMS_IMAGE_LIB"
   fi])
 
-AC_SUBST(XFORMS_IMAGE_LIB)
-
 if test $lyx_use_jpeg_image_loader = yes ; then
   lyx_flags="$lyx_flags xforms-image-loader"
   AC_DEFINE(USE_JPEG_IMAGE_LOADER, 1,
@@ -144,3 +138,10 @@ fi
 
 AC_LANG_RESTORE
 LIBS=$save_LIBS])
+
+dnl Do all check required to use xforms
+AC_DEFUN([XFORMS_DO_IT_ALL],
+[LYX_PATH_XPM
+LYX_PATH_XFORMS
+LYX_CHECK_XFORMS_IMAGE_LOADER
+AC_SUBST(XFORMS_LIBS, ["$XFORMS_IMAGE_LIB $XFORMS_LIB $XPM_LIB"])])

@@ -14,12 +14,10 @@ EXTRA_DIST = config.h.in stamp-h.in cheaders version.C.in \
 	tracer.C \
 	tracer.h
 
-bin_PROGRAMS = lyx
+LYX_PRE_LIBS = mathed/libmathed.la insets/libinsets.la \
+	frontends/libfrontends.la 
 
-LYX_CONV_LIBS = mathed/libmathed.la insets/libinsets.la \
-	frontends/libfrontends.la \
-	$(FRONTEND_GUILIB) \
-	frontends/controllers/libcontrollers.la \
+LYX_POST_LIBS = frontends/controllers/libcontrollers.la \
 	graphics/libgraphics.la \
 	support/libsupport.la
 
@@ -30,10 +28,23 @@ else
 BOOST_LIBS = -lboost_regex -lboost_signals
 endif
 
-lyx_LDADD = $(LYX_CONV_LIBS) $(BOOST_LIBS) $(INTLLIBS) \
-	$(AIKSAURUS_LIBS) @LIBS@
+OTHERLIBS = $(BOOST_LIBS) $(INTLLIBS) $(AIKSAURUS_LIBS) @LIBS@
 
-lyx_DEPENDENCIES = $(LYX_CONV_LIBS) $(BOOST_LIBS) $(INTLLIBS)
+bin_PROGRAMS = lyx 
+noinst_PROGRAMS = $(FRONTENDS_PROGS)
+EXTRA_PROGRAMS = lyx-xforms lyx-qt
+
+lyx_xforms_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
+	frontends/xforms/libxforms.la $(LYX_POST_LIBS) $(OTHERLIBS) 
+lyx_xforms_SOURCES = main.C
+
+lyx_qt_LDADD = $(lyx_OBJECTS) $(LYX_PRE_LIBS) \
+	frontends/qt2/libqt2.la $(LYX_POST_LIBS) $(OTHERLIBS)
+lyx_qt_SOURCES = main.C
+
+lyx$(EXEEXT): $(FRONTENDS_PROGS)
+	rm -f $@
+	$(LN_S) $< $@
 
 #lyx_LDFLAGS=-Wl,-O1
 
@@ -198,7 +209,6 @@ lyx_SOURCES = \
 	lyxtextclasslist.h \
 	lyxvc.C \
 	lyxvc.h \
-	main.C \
 	messages.C \
 	messages.h \
 	metricsinfo.C \

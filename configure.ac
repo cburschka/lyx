@@ -56,7 +56,7 @@ AC_ISC_POSIX
 AC_AIX
 
 ### check which frontend we want to use
-LYX_USE_FRONTEND
+LYX_USE_FRONTENDS
 
 ### Check for a C++ compiler
 LYX_PROG_CXX
@@ -161,50 +161,47 @@ esac
 
 ### check which frontend we want to use
 
-# XForms tests
-LYX_PATH_XPM
-LYX_PATH_XFORMS
-LYX_CHECK_XFORMS_IMAGE_LOADER
-# QT tests
-QT_DO_IT_ALL
-
-#LYX_USE_FRONTEND
 dnl The code below is not in a macro, because this would cause big
-dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.
-case "$lyx_use_frontend" in
-  xforms)
-	FRONTEND="xforms"
-        RPM_FRONTEND="xforms"
-        RPM_FRONTEND_DEPS='libforms >= 1.0'
-	FRONTEND_GUILIB="frontends/xforms/libxforms.la"
-	FRONTEND_INFO="    libXpm version:               ${XPM_VERSION}\n\
-    libforms version:             ${XFORMS_VERSION}\n"
-	;;
-dnl   gnome)
-dnl     LYX_PATH_XPM
-dnl     LYX_PATH_XFORMS
-dnl     LYX_CHECK_XFORMS_IMAGE_LOADER
-dnl     PKG_CHECK_MODULES(GNOME_FRONTEND, gtkmm-2.0 libglademm-2.0)
-dnl     AC_SUBST(GNOME_FRONTEND_CFLAGS)
-dnl     AC_SUBST(GNOME_FRONTEND_LIBS)
+dnl problems with the AC_REQUIRE contained in QT_DO_IT_ALL.
+for frontend in $FRONTENDS ; do
+  case "$frontend" in
+    xforms)
+	  XFORMS_DO_IT_ALL
+	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-xforms"
+	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS xforms"
+	  RPM_FRONTEND="xforms"
+	  RPM_FRONTEND_DEPS='libforms >= 1.0'
+	  FRONTEND_INFO="${FRONTEND_INFO}\
+  XForms Frontend:\n\
+      libXpm version:               ${XPM_VERSION}\n\
+      libforms version:             ${XFORMS_VERSION}\n"
+	  ;;
+  dnl   gnome)
+  dnl     XFORMS_DO_IT_ALL
+  dnl     PKG_CHECK_MODULES(GNOME_FRONTEND, gtkmm-2.0 libglademm-2.0)
+  dnl     AC_SUBST(GNOME_FRONTEND_CFLAGS)
+  dnl     AC_SUBST(GNOME_FRONTEND_LIBS)
 
-dnl     FRONTEND="xforms gnome"
-dnl     FRONTEND_GUILIB="gnome/*.lo"
-dnl     FRONTEND_LDFLAGS="${GNOME_FRONTEND_LIBS}"
-dnl     FRONTEND_INCLUDES="${GNOME_FRONTEND_CFLAGS}"
-dnl     FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
-dnl	;;
-  qt)
-    RPM_FRONTEND="qt"
-    RPM_FRONTEND_DEPS='qt >= 2.2.1'
-    FRONTEND="qt2"
-    FRONTEND_GUILIB="frontends/qt2/libqt2.la"
-    FRONTEND_INCLUDES="\$(QT_INCLUDES)"
-    FRONTEND_INFO="    Qt version:                   ${QT_VERSION}\n"
-    ;;
-  *)
-    LYX_ERROR(Unknown frontend $lyx_use_frontend);;
-esac
+  dnl     FRONTEND="xforms gnome"
+  dnl     FRONTEND_GUILIB="gnome/*.lo"
+  dnl     FRONTEND_LDFLAGS="${GNOME_FRONTEND_LIBS}"
+  dnl     FRONTEND_INCLUDES="${GNOME_FRONTEND_CFLAGS}"
+  dnl     FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
+  dnl	;;
+    qt)
+	  QT_DO_IT_ALL
+	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt"
+	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS qt2"
+	  RPM_FRONTEND="qt"
+	  RPM_FRONTEND_DEPS='qt >= 2.2.1'
+	  FRONTEND_INFO="${FRONTEND_INFO}\
+  Qt Frontend:\n\
+      Qt version:                   ${QT_VERSION}\n"
+      ;;
+    *)
+	  LYX_ERROR(Unknown frontend $lyx_use_frontend);;
+  esac
+done
 
 ### Setup GNU gettext
 dnl GNU gettext is written in C
@@ -287,7 +284,6 @@ VERSION_INFO="Configuration\n\
   C++ Compiler:                   ${CXX} ${CXX_VERSION}\n\
   C++ Compiler flags:             ${CXXFLAGS}\n\
   Linker flags:                   ${LDFLAGS}\n\
-  Frontend:                       ${lyx_use_frontend}\n\
 ${FRONTEND_INFO}\
   LyX binary dir:                 ${real_bindir}\n\
   LyX files dir:                  ${real_datadir}\n"

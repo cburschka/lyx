@@ -7,7 +7,7 @@ EXTRA_DIST = Makefile.dialogs
 
 INCLUDES = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
 	-I$(top_srcdir)/images \
-	$(FRONTEND_INCLUDES) $(BOOST_INCLUDES) \
+	$(QT_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 
 noinst_LTLIBRARIES = libqt2.la

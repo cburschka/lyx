@@ -1,3 +1,9 @@
+2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Makefile.am: move things around so that both lyx-qt and
+	lyx-xforms can be built (according to --with-frontend). Then lyx
+	is a symbolic link to lyx-[firstfrontend]
+
 2003-08-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* Always use std::endl with lyxerr

@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-SUBDIRS = controllers $(FRONTEND)
+SUBDIRS = controllers $(FRONTENDS_SUBDIRS)
 
 DIST_SUBDIRS = controllers xforms qt2 gnome
 

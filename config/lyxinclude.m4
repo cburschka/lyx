@@ -585,20 +585,18 @@ rm -f conftest*])
 ])
 ### end of LYX_PATH_HEADER
 
-### Check which frontend we want to use. The default is XForms
+### Check which frontends we want to use. The default is XForms only
 ###
-AC_DEFUN(LYX_USE_FRONTEND,
-[AC_MSG_CHECKING([what frontend should be used as main GUI])
+AC_DEFUN(LYX_USE_FRONTENDS,
+[AC_MSG_CHECKING([what frontend should be used for the GUI])
 AC_ARG_WITH(frontend,
   [  --with-frontend=THIS    Use THIS frontend as main GUI:
 			    Possible values: xforms, qt],
-  [lyx_use_frontend="$withval"], [lyx_use_frontend="xforms"])
-AC_MSG_RESULT($lyx_use_frontend)
-AC_SUBST(FRONTEND)
-AC_SUBST(FRONTEND_GUILIB)
-AC_SUBST(FRONTEND_LDFLAGS)
-AC_SUBST(FRONTEND_INCLUDES)
-AC_SUBST(FRONTEND_LIBS)
+  [FRONTENDS="$withval"], [FRONTENDS="xforms"])
+AC_MSG_RESULT($FRONTENDS)
+AC_SUBST(FRONTENDS)
+AC_SUBST(FRONTENDS_SUBDIRS)
+AC_SUBST(FRONTENDS_PROGS)
 ])
 
 

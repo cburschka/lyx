@@ -1,3 +1,9 @@
+2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* configure.ac: only configure the frontends that have been
+	specified; build in FRONTENDS_PROGS the list of programs that
+	should be built
+
 2003-07-31  John Levon  <levon@movementarian.org>
 
 	* NEWS:

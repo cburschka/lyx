@@ -1,3 +1,14 @@
+2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* xforms.m4 (XFORMS_DO_IT_ALL): new macro, which calls all the
+	xforms stuff and AC_SUBSTs XFORMS_LIBS with all libraries needed
+	by the xforms frontend
+
+	* lyxinclude.m4 (LYX_USE_FRONTENDS): renamed from
+	LYX_USE_FRONTEND. Can now accept a list of frontends; the
+	variables defines there are now FRONTENDS, FRONTENDS_SUBDIRS and
+	FRONTENDS_PROGS. 
+
 2003-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxinclude.m4: use AC_HELP_STRING
