@@ -1,3 +1,10 @@
+2000-12-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/ui/default.ui: put TOC at the beginning of the TOC menu.
+
+	* src/lyxfunc.C (getStatus): disable insertion of floats in a
+	tabular. 
+
 2000-12-06  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/frontends/xforms/FormPreferences.C (ScreenFonts::build): changed

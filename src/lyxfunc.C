@@ -346,6 +346,17 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		disable = !Exporter::IsExportable(buf, "program");
 		break;
 
+	case LFUN_INSERTFOOTNOTE:
+	case LFUN_FOOTMELT:
+	case LFUN_MARGINMELT:
+		// Disable insertion of floats in a tabular.
+		disable = false;
+		if (owner->view()->theLockingInset()) {
+			disable = (owner->view()->theLockingInset()->LyxCode() == Inset::TABULAR_CODE) ||
+				owner->view()->theLockingInset()->GetFirstLockingInsetOfType(Inset::TABULAR_CODE);
+		}
+		break;
+
 	case LFUN_LAYOUT_TABULAR:
 		disable = true;
 		if (owner->view()->theLockingInset()) {

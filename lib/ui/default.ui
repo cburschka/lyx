@@ -251,10 +251,10 @@ Menuset
 # NAVIGATE MENU
 #
     Menu "navigate"
+	Toc
+	Separator
 	Item "Error|E" "error-next"
 	Item "Note|N" "note-next"
-	Separator
-	Toc
     End
 
     Menu "documents"
