@@ -503,6 +503,9 @@ ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 		}' \
 	${top_srcdir}/lib/ui/*.ui > $@
 
+i18n.php3: $(POFILES)
+	(cd $(srcdir) ; ./postats.sh $(POFILES)) >$@
+
 force:
 
 # Tell versions [3.59,3.63) of GNU make not to export all variables.
