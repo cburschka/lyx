@@ -178,7 +178,8 @@ void GBox::update()
 			if (special == ids_spec_[i])
 				spc = gui_names_spec_[i];
 		}
-		for (int j = 0; j < widthunitsstore_->children().size(); ++j) {
+		for (unsigned int j = 0; j 
+			< widthunitsstore_->children().size(); ++j) {
 			if (widthunitsstore_->children()[j][stringcol_] == spc)
 				widthunitscombo_->set_active(j);
 		}
@@ -196,7 +197,7 @@ void GBox::update()
 				hspc = gui_names_spec_[i];
 			}
 		}
-		for (int j = 0; j < heightunitscombo_->get_model()->children().size(); ++j) {
+		for (unsigned int j = 0; j < heightunitscombo_->get_model()->children().size(); ++j) {
 			if (heightunitscombo_->get_model()->children()[j][stringcol_] == hspc) {
 				heightunitscombo_->set_active(j);
 			}
@@ -234,7 +235,7 @@ void GBox::setSpecial(bool ibox)
 			(*widthunitsstore_->append())[stringcol_] = *it;
 	}
 
-	int const store_size = widthunitsstore_->children().size();
+	unsigned int const store_size = widthunitsstore_->children().size();
 	if (initselection >= store_size) {
 		widthunitscombo_->set_active(0);
 		onWidthChanged();
@@ -253,7 +254,7 @@ void GBox::updateInnerBoxCombo()
 	// we have to remove "none" then and adjust the combo
 
 	// default: minipage
-	unsigned int i = 2;
+	int i = 2;
 	if (!controller().params().inner_box)
 		// none
 		i = 0;
@@ -357,7 +358,7 @@ void GBox::onHeightChanged()
 	int i = 0;
 	bool spec = false;
 	Glib::ustring special = (*heightunitscombo_->get_active())[stringcol_];
-	for (int j = 1; j < gui_names_spec_.size() ; ++j) {
+	for (unsigned int j = 1; j < gui_names_spec_.size() ; ++j) {
 		if (gui_names_spec_[j] == special) {
 			i=j;
 			spec = true;
@@ -389,9 +390,9 @@ void GBox::onWidthChanged()
 	int i = 0;
 	bool spec = false;
 	Glib::ustring special = (*widthunitscombo_->get_active())[stringcol_];
-	for (int j = 1; j < gui_names_spec_.size() ; ++j) {
+	for (unsigned int j = 1; j < gui_names_spec_.size() ; ++j) {
 		if (gui_names_spec_[j] == special) {
-			i=j;
+			i = j;
 			spec = true;
 		}
 	}
