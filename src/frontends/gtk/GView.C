@@ -47,19 +47,19 @@ void add_el(Gtk::Box::BoxList & list, Gtk::Box & box, bool shrink)
 GView::GView()
 {
 	// The physical store for the boxes making up the layout.
-	box_store_.push_back(boost::shared_ptr<Gtk::Box>(new Gtk::VBox));
-	box_store_.push_back(boost::shared_ptr<Gtk::Box>(new Gtk::HBox));
-	box_store_.push_back(boost::shared_ptr<Gtk::Box>(new Gtk::VBox));
-	box_store_.push_back(boost::shared_ptr<Gtk::Box>(new Gtk::HBox));
-	box_store_.push_back(boost::shared_ptr<Gtk::Box>(new Gtk::HBox));
-	box_store_.push_back(boost::shared_ptr<Gtk::Box>(new Gtk::HBox));
+	box_store_.push_back(BoxPtr(new Gtk::VBox));
+	box_store_.push_back(BoxPtr(new Gtk::HBox));
+	box_store_.push_back(BoxPtr(new Gtk::VBox));
+	box_store_.push_back(BoxPtr(new Gtk::HBox));
+	box_store_.push_back(BoxPtr(new Gtk::HBox));
+	box_store_.push_back(BoxPtr(new Gtk::HBox));
 
 	// Lay them out correctly.
 	add(top_box_);
 
 	Gtk::Box::BoxList & layout1 = top_box_.children();
 	add_el(layout1, *box_store_[0], true);
-	add_el(layout1, *box_store_[1], true);
+	add_el(layout1, *box_store_[1], false);
 	add_el(layout1, *box_store_[2], true);
 
 	Gtk::Box::BoxList & layout2 = box_store_[1]->children();
@@ -88,7 +88,7 @@ GView::GView()
 		boost::bind(&GMiniBuffer::editMode, minibuffer_.get()));
 	view_state_changed.connect(boost::bind(&GView::showViewState, this));
 	signal_focus_in_event().connect(sigc::mem_fun(*this, &GView::onFocusIn));
-	set_default_size(500, 550);
+	set_default_size(620, 550);
 	// Make sure the buttons are disabled if needed.
 	updateToolbars();
 	string const iconName =
