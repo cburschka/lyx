@@ -1,6 +1,8 @@
 2003-04-02  Angus Leeming  <leeming@lyx.org>
 
-	* forms/form_character.fd: rearrange widget order.
+	Rename some variables.
+	* forms/form_document.fd:
+	* FormDocument.C: ABC_doc_DEF to ABC_DEF and ABC_bullet_DEF to ABC_DEF.
 
 2003-04-02  Angus Leeming  <leeming@lyx.org>
 
@@ -31,6 +33,10 @@
 	* forms/README:
 	* forms/fdfix.sh:
 	* forms/fdfixc.sed: update to suit the new combox code.
+
+2003-04-02  Angus Leeming  <leeming@lyx.org>
+
+	* forms/form_character.fd: rearrange widget order.
 
 2003-04-02  Angus Leeming  <leeming@lyx.org>
 

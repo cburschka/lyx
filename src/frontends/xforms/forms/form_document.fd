@@ -795,7 +795,7 @@ label: Fonts:|#F
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_doc_fonts
+name: choice_fonts
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -813,7 +813,7 @@ label: Font Size:|#O
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_doc_fontsize
+name: choice_fontsize
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -831,7 +831,7 @@ label: Class:|#C
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: combox_doc_class
+name: combox_class
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -849,7 +849,7 @@ label: Page style:|#P
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_doc_pagestyle
+name: choice_pagestyle
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -867,7 +867,7 @@ label: Spacing:|#g
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_doc_spacing
+name: choice_spacing
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -885,7 +885,7 @@ label: Extra Options:|#X
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: input_doc_extra
+name: input_extra
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -903,7 +903,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: input_doc_skip
+name: input_skip
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -921,7 +921,7 @@ label: Default Skip:|#u
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_doc_skip
+name: choice_skip
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -957,7 +957,7 @@ label: One|#n
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_doc_sides_one
+name: radio_sides_one
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -975,7 +975,7 @@ label: Two|#T
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_doc_sides_two
+name: radio_sides_two
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1029,7 +1029,7 @@ label: One|#e
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_doc_columns_one
+name: radio_columns_one
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1047,7 +1047,7 @@ label: Two|#w
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_doc_columns_two
+name: radio_columns_two
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1101,7 +1101,7 @@ label: Indent|#I
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_doc_indent
+name: radio_indent
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1119,7 +1119,7 @@ label: Skip|#K
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_doc_skip
+name: radio_skip
 callback: C_FormBaseInputCB
 argument: 0
 	value: 1
@@ -1156,7 +1156,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: input_doc_spacing
+name: input_spacing
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1174,7 +1174,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_doc_skip_units
+name: choice_skip_units
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1560,7 +1560,7 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: bmtable_bullet_panel
+name: bmtable_panel
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1578,7 +1578,7 @@ label: Size:|#z
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: choice_bullet_size
+name: choice_size
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1596,7 +1596,7 @@ label: LaTeX:|#L
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: input_bullet_latex
+name: input_latex
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1632,7 +1632,7 @@ label: 1|#1
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_depth_1
+name: radio_depth_1
 callback: C_FormBaseInputCB
 argument: 0
 	value: 1
@@ -1651,7 +1651,7 @@ label: 2|#2
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_depth_2
+name: radio_depth_2
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1669,7 +1669,7 @@ label: 3|#3
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_depth_3
+name: radio_depth_3
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1687,7 +1687,7 @@ label: 4|#4
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_depth_4
+name: radio_depth_4
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1741,7 +1741,7 @@ label: Standard|#S
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_panel_standard
+name: radio_panel_standard
 callback: C_FormBaseInputCB
 argument: 0
 	value: 1
@@ -1760,7 +1760,7 @@ label: Maths|#M
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_panel_maths
+name: radio_panel_maths
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1778,7 +1778,7 @@ label: Ding 1|#D
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_panel_ding1
+name: radio_panel_ding1
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1796,7 +1796,7 @@ label: Ding 2|#i
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_panel_ding2
+name: radio_panel_ding2
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1814,7 +1814,7 @@ label: Ding 3|#n
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_panel_ding3
+name: radio_panel_ding3
 callback: C_FormBaseInputCB
 argument: 0
 
@@ -1832,7 +1832,7 @@ label: Ding 4|#g
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
-name: radio_bullet_panel_ding4
+name: radio_panel_ding4
 callback: C_FormBaseInputCB
 argument: 0
 
