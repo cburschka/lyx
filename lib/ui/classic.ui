@@ -247,6 +247,8 @@ Menuset
 		Item "End of Sentence|E" "end-of-sentence-period-insert"
 		Item "Ordinary Quote|Q" "self-insert \""
 		Item "Menu Separator|M" "menu-separator-insert"
+		Item "Horizontal Line" "line-insert"
+		Item "Page Break" "pagebreak-insert"
 	End
 
 	Menu "insert_math"

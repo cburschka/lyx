@@ -263,10 +263,12 @@ Menuset
 		Item "Inter-word Space|w" "space-insert normal"
 		Item "Thin Space|T" "space-insert thin"
 		Item "Horizontal Fill|H" "hfill-insert"
+		Item "Horizontal Line" "line-insert"
 		Separator
 		Item "Hyphenation Point|P" "hyphenation-point-insert"
 		Item "Ligature Break|k" "ligature-break-insert"
-		Item "Linebreak|L" "break-line"
+		Item "Line Break|L" "break-line"
+		Item "Page Break" "pagebreak-insert"
 	End
 
 	Menu "insert_math"
