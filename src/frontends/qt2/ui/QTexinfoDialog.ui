@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>299</width>
+            <width>295</width>
             <height>290</height>
         </rect>
     </property>
@@ -212,21 +212,6 @@
                     <name>spacing</name>
                     <number>6</number>
                 </property>
-                <widget>
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>helpPB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Help</string>
-                    </property>
-                    <property>
-                        <name>toolTip</name>
-                        <string>Bring up help file</string>
-                    </property>
-                </widget>
                 <spacer>
                     <property>
                         <name>name</name>
@@ -275,12 +260,6 @@
         <slot>viewClicked()</slot>
     </connection>
     <connection>
-        <sender>helpPB</sender>
-        <signal>clicked()</signal>
-        <receiver>QTexinfoDialogBase</receiver>
-        <slot>helpClicked()</slot>
-    </connection>
-    <connection>
         <sender>rescanPB</sender>
         <signal>clicked()</signal>
         <receiver>QTexinfoDialogBase</receiver>
@@ -308,7 +287,6 @@
     <tabstop>path</tabstop>
     <tabstop>viewPB</tabstop>
     <tabstop>rescanPB</tabstop>
-    <tabstop>helpPB</tabstop>
     <tabstop>closePB</tabstop>
 </tabstops>
 </UI>

@@ -23,7 +23,6 @@ public:
 
 protected slots:
 	virtual void change_adaptor();
-	virtual void helpClicked();
 	virtual void rescanClicked();
 	virtual void viewClicked();
 	virtual void update();

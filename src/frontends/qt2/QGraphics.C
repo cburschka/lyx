@@ -179,8 +179,8 @@ void QGraphics::apply()
 	
 	igp.filename = dialog_->filename->text();
 	
-	if (!controller().bbChanged)		// different to the original one?
-		igp.bb = string();			// don't write anything	    
+	if (!controller().bbChanged)	// different to the original one?
+		igp.bb = string();	// don't write anything	    
 	else {
 		string bb;
 		string lbX(dialog_->lbX->text());
@@ -264,7 +264,6 @@ void QGraphics::apply()
 	
 	igp.special = dialog_->latexoptions->text();
 	
-	igp.testInvariant();
 }
 
 

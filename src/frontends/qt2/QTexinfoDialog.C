@@ -41,11 +41,6 @@ void QTexinfoDialog::closeEvent(QCloseEvent * e)
 	e->accept();
 }
 
-void QTexinfoDialog::helpClicked()
-{
-	form_->controller().help();
-}
-
 void QTexinfoDialog::rescanClicked()
 {
 	// build new *Files.lst
