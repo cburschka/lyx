@@ -1,3 +1,8 @@
+1999-10-21  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/inseturl.C (C_InsetUrl_CloseUrlCB): forgot to pass
+	the 'ob' argument.
+
 1999-10-21  Juergen Vigna  <jug@sad.it>
 
 	* src/table.C (SetPWidth): Just a small fix so the alignment is not

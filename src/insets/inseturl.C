@@ -101,7 +101,7 @@ void InsetUrl::CloseUrlCB(FL_OBJECT *ob, long)
 
 extern "C" void C_InsetUrl_CloseUrlCB(FL_OBJECT *ob, long)
 {
-	InsetUrl::CloseUrlCB(0,0);
+	InsetUrl::CloseUrlCB(ob,0);
 }
 
 void InsetUrl::Edit(int, int)
