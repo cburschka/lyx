@@ -28,7 +28,7 @@
 using SigC::slot;
 
 
-bool Tooltips::enabled_ = false;
+bool Tooltips::enabled_ = true;
 
 SigC::Signal0<void> Tooltips::toggled;
 
