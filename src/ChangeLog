@@ -1,3 +1,18 @@
+2004-08-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* kbsequence.C (print): use UI native formatting for menu
+	shortcuts
+
+	* text.C (insertChar): call Paragraph::insertChar with a font
+	argument (cosmetic)
+
+	* paragraph.C (insertInset, insertChar): the version that takes a
+	LyXFont argument is now a wrapper around the other one (the
+	opposite used to be true). 
+
+	* paragraph_pimpl.C (insertInset, insertChar): remove the LyXFont
+	argument. Font setting is done in Paragraph now.
+
 2004-08-04  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* outputparams.h: add new members intitle and lang.

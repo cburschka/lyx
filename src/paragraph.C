@@ -278,29 +278,32 @@ bool Paragraph::checkInsertChar(LyXFont &)
 }
 
 
-void Paragraph::insertChar(pos_type pos, Paragraph::value_type c)
+void Paragraph::insertChar(pos_type pos, Paragraph::value_type c, 
+			   Change change)
 {
-	insertChar(pos, c, LyXFont(LyXFont::ALL_INHERIT));
+	pimpl_->insertChar(pos, c, change);
 }
 
 
 void Paragraph::insertChar(pos_type pos, Paragraph::value_type c,
 			   LyXFont const & font, Change change)
 {
-	pimpl_->insertChar(pos, c, font, change);
+	pimpl_->insertChar(pos, c, change);
+	setFont(pos, font);
 }
 
 
-void Paragraph::insertInset(pos_type pos, InsetBase * inset)
+void Paragraph::insertInset(pos_type pos, InsetBase * inset, Change change)
 {
-	insertInset(pos, inset, LyXFont(LyXFont::ALL_INHERIT));
+	pimpl_->insertInset(pos, inset, change);
 }
 
 
 void Paragraph::insertInset(pos_type pos, InsetBase * inset,
-	LyXFont const & font, Change change)
+			    LyXFont const & font, Change change)
 {
-	pimpl_->insertInset(pos, inset, font, change);
+	pimpl_->insertInset(pos, inset, change);
+	setFont(pos, font);
 }
 
 

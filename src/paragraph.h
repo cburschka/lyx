@@ -284,14 +284,16 @@ public:
 	void insert(lyx::pos_type pos, std::string const & str,
 		    LyXFont const & font);
 	///
-	void insertChar(lyx::pos_type pos, value_type c);
+	void insertChar(lyx::pos_type pos, value_type c,
+			Change change = Change(Change::INSERTED));
 	///
 	void insertChar(lyx::pos_type pos, value_type c,
 		LyXFont const &, Change change = Change(Change::INSERTED));
 	///
 	bool checkInsertChar(LyXFont &);
 	///
-	void insertInset(lyx::pos_type pos, InsetBase * inset);
+	void insertInset(lyx::pos_type pos, InsetBase * inset, 
+			 Change change = Change(Change::INSERTED));
 	///
 	void insertInset(lyx::pos_type pos, InsetBase * inset,
 		LyXFont const &, Change change = Change(Change::INSERTED));

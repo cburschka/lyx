@@ -253,8 +253,7 @@ Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 }
 
 
-void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
-				  LyXFont const & font, Change change)
+void Paragraph::Pimpl::insertChar(pos_type pos, value_type c, Change change)
 {
 	BOOST_ASSERT(pos <= size());
 
@@ -267,7 +266,6 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 	if (pos == size()) {
 		// when appending characters, no need to update tables
 		owner_->text_.push_back(c);
-		owner_->setFont(pos, font);
 		return;
 	}
 
@@ -285,18 +283,16 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 
 	// Update the insets
 	owner_->insetlist.increasePosAfterPos(pos);
-
-	owner_->setFont(pos, font);
 }
 
 
 void Paragraph::Pimpl::insertInset(pos_type pos,
-				   InsetBase * inset, LyXFont const & font, Change change)
+				   InsetBase * inset, Change change)
 {
 	BOOST_ASSERT(inset);
 	BOOST_ASSERT(pos <= size());
 
-	insertChar(pos, META_INSET, font, change);
+	insertChar(pos, META_INSET, change);
 	BOOST_ASSERT(owner_->text_[pos] == META_INSET);
 
 	// Add a new entry in the insetlist.
