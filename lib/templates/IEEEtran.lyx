@@ -1,5 +1,5 @@
 #LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.15
+\lyxformat 2.16
 \textclass IEEEtran
 \language english
 \inputencoding default
@@ -34,15 +34,12 @@ names so you'll need to make this a 'Comment'.
 \end_inset 
 
 Your Name, Your Co-Author
-\latex latex 
+\begin_float footnote 
+\layout Standard
 
-\backslash 
-thanks{
-\latex default 
 Your name is with xyz Department\SpecialChar \ldots{}
 
-\latex latex 
-}
+\end_float 
 \layout Abstract
 
 This paper presents a simple template for IEEEtran documents.
