@@ -2269,9 +2269,7 @@ FormPreferences::Paths::feedback(FL_OBJECT const * const ob) const
 	if (ob == dialog_->input_serverpipe)
 		return LyXRC::getDescription(LyXRC::RC_SERVERPIPE);
 	if (ob == dialog_->input_path_prefix)
-		return _("Specify those directories which should be"
-			 "prepended to the PATH environment variable. "
-			 "Use the OS native format.");
+		return LyXRC::getDescription(LyXRC::RC_PATH_PREFIX);
 	return string();
 }
 

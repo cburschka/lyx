@@ -1,5 +1,9 @@
 2005-02-01  Angus Leeming  <leeming@lyx.org>
 
+	* lyxrc.C (getDescription): add a description for RC_PATH_PREFIX.
+
+2005-02-01  Angus Leeming  <leeming@lyx.org>
+
 	* lyx_main.C (init, queryUserLyXDir): use fs::exists() before
 	calling fs::is_directory().
 

@@ -1,5 +1,10 @@
 2005-02-01  Angus Leeming  <leeming@lyx.org>
 
+	* FormPreferences.C (feedback): use LyXRC::getDescription for
+	RC_PATH_PREFIX.
+
+2005-02-01  Angus Leeming  <leeming@lyx.org>
+
 	* FormFiledialog.C (Reread): use fs::exists() before
 	calling fs::is_directory().
 
