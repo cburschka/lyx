@@ -6,6 +6,7 @@
 #include "lyxfont.h"
 #include "FontLoader.h"
 #include "font.h"
+#include "math_cursor.h"
 #include "math_defs.h"
 #include "math_inset.h"
 #include "math_parser.h"
@@ -706,6 +707,14 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 			pain.lines(xp, yp, n, LColor::math);
 		}
 	}
+}
+
+
+void mathed_draw_framebox(Painter & pain, int x, int y, MathInset const * p)
+{
+	if (mathcursor && mathcursor->isInside(p))
+		pain.rectangle(x, y - p->ascent(), p->width(), p->height(),
+			LColor::mathframe);
 }
 
 

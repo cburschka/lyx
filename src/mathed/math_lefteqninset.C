@@ -3,10 +3,8 @@
 #endif
 
 #include "math_lefteqninset.h"
-#include "LColor.h"
-#include "Painter.h"
-#include "math_cursor.h"
 #include "math_mathmlstream.h"
+#include "math_support.h"
 
 
 MathLefteqnInset::MathLefteqnInset()
@@ -32,10 +30,7 @@ void MathLefteqnInset::metrics(MathMetricsInfo const & mi) const
 void MathLefteqnInset::draw(Painter & pain, int x, int y) const
 {
 	xcell(0).draw(pain, x + 2, y);
-	if (mathcursor && mathcursor->isInside(this)) {
-		pain.rectangle(x, y - ascent(), xcell(0).width(), height(),
-			LColor::mathframe);
-	}
+	//mathed_draw_framebox(pain, x, y, this);
 }
 
 

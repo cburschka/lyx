@@ -1275,6 +1275,7 @@ bool MathCursor::interpret(string const & s)
 	return true;
 }
 
+
 bool MathCursor::script(bool up)
 {
 	macroModeClose();

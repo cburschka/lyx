@@ -9,6 +9,7 @@
 class Painter;
 class latexkeys;
 class MathMetricsInfo;
+class MathInset;
 
 extern char const * latex_mathspace[];
 
@@ -25,6 +26,8 @@ int mathed_char_descent(MathTextCodes type, MathMetricsInfo const & size,
 
 void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 	string const & name);
+
+void mathed_draw_framebox(Painter & pain, int x, int y, MathInset const *);
 
 void mathed_string_dim(MathTextCodes type, MathMetricsInfo const & size,
 	string const & s, int & asc, int & des, int & wid);

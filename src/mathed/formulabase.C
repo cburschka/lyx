@@ -280,8 +280,8 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 		return;
 	}
 
-	//lyxerr << "insetButtonPress: " << x + xo_ << " " << y + yo_
-	//	<< " but: " << button << "\n";
+	lyxerr << "insetButtonPress: " << x + xo_ << " " << y + yo_
+		<< " but: " << button << "\n";
 	switch (button) {
 		default:
 		case 1:

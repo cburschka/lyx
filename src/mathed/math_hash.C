@@ -1,6 +1,7 @@
 #include <config.h>
 
 #include "math_parser.h"
+#include "math_metricsinfo.h"
 #include "lyxlex.h"
 #include "debug.h"
 #include "support/filetools.h" // LibFileSearch
@@ -65,7 +66,7 @@ key_type wordlist_array[] =
 	{"deg",  LM_TK_FUNC, 0},
 	{"det",  LM_TK_FUNCLIM, 0},
 	{"dim",  LM_TK_FUNC, 0},
-	//{"displaystyle",  LM_TK_STY, LM_ST_DISPLAY},
+	{"displaystyle",  LM_TK_STY, LM_ST_DISPLAY},
 	{"dot",  LM_TK_DECORATION, 0},
 	{"end",  LM_TK_END, 0},
 	{"exp",  LM_TK_FUNC, 0},

@@ -64,6 +64,7 @@ point to write some macros:
 #include "math_macrotemplate.h"
 #include "math_hullinset.h"
 #include "math_rootinset.h"
+#include "math_sizeinset.h"
 #include "math_sqrtinset.h"
 #include "math_scriptinset.h"
 #include "math_specialcharinset.h"
@@ -899,19 +900,6 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			return;
 		}
 
-/*		
-		case LM_TK_STY:
-		{
-			lyxerr[Debug::MATHED] << "LM_TK_STY not implemented\n";
-			//MathArray tmp = array;
-			//MathSizeInset * p = new MathSizeInset(MathStyles(lval_->id));
-			//array.push_back(p);
-			//parse_into(p->cell(0), FLAG_BRACE_FONT);
-			break; 
-		}
-
-*/
-		
 		else if (t.cs() == "begin") {
 			string const name = getArg('{', '}');	
 			if (name == "array") {
@@ -998,6 +986,13 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 					MathAtom p = createMathInset(t.cs());
 					parse_into(p->cell(0), FLAG_ITEM | FLAG_BOX, LM_TC_BOX);
 					array.push_back(p);
+				}
+
+				else if (l->token == LM_TK_STY) {
+					MathAtom p = createMathInset(t.cs());
+					parse_into(p->cell(0), flags, code);
+					array.push_back(p);
+					return;
 				}
 
 				else {

@@ -5,12 +5,10 @@
 #endif
 
 #include "math_boxinset.h"
-#include "support/LOstream.h"
-#include "debug.h"
-#include "Painter.h"
-#include "math_cursor.h"
+#include "math_support.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
+
 
 MathBoxInset::MathBoxInset(string const & name)
 	: MathGridInset(1, 1), name_(name)
@@ -46,8 +44,5 @@ void MathBoxInset::rebreak()
 void MathBoxInset::draw(Painter & pain, int x, int y) const
 {
 	MathGridInset::draw(pain, x, y);
-	if (mathcursor && mathcursor->isInside(this)) {
-		pain.rectangle(x - 1, y - ascent() - 1, width(), height(),
-			LColor::mathframe);
-	}
+	mathed_draw_framebox(pain, x, y, this);
 }

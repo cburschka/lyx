@@ -15,6 +15,7 @@
 #include "math_macroarg.h"
 #include "math_notinset.h"
 #include "math_rootinset.h"
+#include "math_sizeinset.h"
 #include "math_spaceinset.h"
 #include "math_specialcharinset.h"
 #include "math_sqrtinset.h"
@@ -68,6 +69,8 @@ MathAtom createMathInset(latexkeys const * l)
 		return MathAtom(new MathBoxInset(l->name));
 	case LM_TK_FUNC:
 		return MathAtom(new MathFuncInset(l->name));
+	case LM_TK_STY:
+		return MathAtom(new MathSizeInset(l));
 	}
 	return MathAtom(new MathUnknownInset(l->name));
 }
