@@ -6,6 +6,7 @@ struct ColInfo
 	ColInfo() : align('c'), rightline(0), leftline(false) {}
 	char   align;      // column alignment
 	string width;      // column width
+	string special;    // special column alignment
 	int    rightline;  // a line on the right?
 	bool   leftline;
 };
