@@ -65,6 +65,8 @@ public:
 	void push_back(MathAtom const &);
 	///
 	void dump() const;
+	///
+	bool match(MathInset *) const;
 
 	///
 	void validate(LaTeXFeatures & features) const;

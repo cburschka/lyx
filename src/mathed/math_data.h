@@ -19,9 +19,7 @@
 #include <vector>
 
 #include "math_atom.h"
-#include "LString.h"
 
-class MathScriptInset;
 class MathMacro;
 class LaTeXFeatures;
 
@@ -104,6 +102,8 @@ public:
 	void dump2() const;
 	///
 	void substitute(MathMacro const &);
+	///
+	bool match(MathArray const &) const;
 
 	///
 	MathAtom & at(size_type pos);

@@ -178,3 +178,14 @@ bool MathNestInset::covers(int x, int y) const
 	}
 	return x >= x0 && x <= x1 && y >= y0 && y <= y1;
 }
+
+
+bool MathNestInset::match(MathInset * p) const
+{
+	if (nargs() != p->nargs())
+		return false;
+	for (idx_type i = 0; i < nargs(); ++i)
+		if (!cell(i).match(p->cell(i)))
+			return false;
+	return true;
+}

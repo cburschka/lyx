@@ -229,6 +229,8 @@ public:
 	virtual void validate(LaTeXFeatures & features) const;
 	///
 	virtual void handleFont(MathTextCodes) {}
+	///
+	virtual bool match(MathInset *) const { return false; }
 
 	/// write normalized content
 	virtual void normalize(NormalStream &) const;

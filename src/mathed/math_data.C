@@ -204,3 +204,14 @@ MathArray::iterator MathArray::end()
 {
 	return bf_.end();
 }
+
+
+bool MathArray::match(MathArray const & ar) const
+{
+	if (size() != ar.size())
+		return false;
+	for (const_iterator it = begin(), jt = ar.begin(); it != end(); ++it, ++jt)
+		if (!it->nucleus()->match(jt->nucleus()))
+			return false;
+	return true;
+}

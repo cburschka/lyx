@@ -25,19 +25,9 @@
 #include "math_inset.h"
 #include "LString.h"
 
-class MathInset;
-class MathAtom;
-class MathGridInset;
-class MathFuncInset;
-class MathHullInset;
-class MathScriptInset;
-class MathSpaceInset;
 class InsetFormulaBase;
-class MathArray;
-class MathXArray;
 class Painter;
 class Selection;
-class latexkeys;
 
 /// Description of a position 
 struct MathCursorPos {
