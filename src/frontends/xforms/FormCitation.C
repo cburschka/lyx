@@ -33,7 +33,8 @@ using std::find;
 
 
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
-	: FormCommand(lv, d, _("Citation")), dialog_(0)
+	: FormCommand(lv, d, _("Citation"), new OkApplyCancelReadOnlyPolicy),
+	  dialog_(0)
 {
 	// let the dialog be shown
 	// These are permanent connections so we won't bother
@@ -80,6 +81,13 @@ void FormCitation::build()
 	// Workaround dumb xforms sizing bug
 	minw_ = form()->w;
 	minh_ = form()->h;
+
+        // manage the ok, apply and cancel/close buttons
+	bc_.setOK(dialog_->button_ok);
+	bc_.setApply(dialog_->button_apply);
+	bc_.setCancel(dialog_->button_cancel);
+	bc_.setUndoAll(dialog_->button_restore);
+	bc_.refresh();
 }
 
 
@@ -281,11 +289,15 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 	x = dialog_->textAftr->x;
 	fl_set_object_position( dialog_->textAftr, x, y );
 
-	x = dialog_->button_ok->x;
 	y += htext + dh1;
-	fl_set_object_position( dialog_->button_ok,       x, y );
+	x = dialog_->button_restore->x;
+	fl_set_object_position( dialog_->button_restore,     x, y );
+	x = dialog_->button_ok->x;
+	fl_set_object_position( dialog_->button_ok,     x, y );
+	x = dialog_->button_apply->x;
+	fl_set_object_position( dialog_->button_apply,  x, y );
 	x = dialog_->button_cancel->x;
-	fl_set_object_position( dialog_->button_cancel,   x, y );
+	fl_set_object_position( dialog_->button_cancel, x, y );
 }
 
 
@@ -294,6 +306,7 @@ void FormCitation::setSize( int hbrsr, bool bibPresent ) const
 #endif
 bool FormCitation::input( FL_OBJECT *, long data )
 {
+	bool activate = false;
 	State cb = static_cast<State>( data );
 
 	switch( cb ) {
@@ -375,6 +388,7 @@ bool FormCitation::input( FL_OBJECT *, long data )
 
 		setBibButtons( OFF );
 		setCiteButtons( ON );
+		activate = true;
 	}
 	break;
 	case DELETE:
@@ -390,6 +404,7 @@ bool FormCitation::input( FL_OBJECT *, long data )
 
 		setBibButtons( ON );
 		setCiteButtons( OFF );
+		activate = true;
 	}
 	break;
 	case UP:
@@ -410,6 +425,7 @@ bool FormCitation::input( FL_OBJECT *, long data )
 		fl_select_browser_line( dialog_->citeBrsr, sel-1 );
 		citekeys.insert( it-1, tmp );
 		setCiteButtons( ON );
+		activate = true;
 	}
 	break;
 	case DOWN:
@@ -430,12 +446,13 @@ bool FormCitation::input( FL_OBJECT *, long data )
 		fl_select_browser_line( dialog_->citeBrsr, sel+1 );
 		citekeys.insert( it+1, tmp );
 		setCiteButtons( ON );
+		activate = true;
 	}
 	break;
 	default:
 		break;
 	}
-	return true;
+	return activate;
 }
 
 

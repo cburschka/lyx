@@ -27,6 +27,20 @@ int fl_unsigned_int_filter(FL_OBJECT * ob,
 }
 
 
+int fl_lowercase_filter(FL_OBJECT * ob,
+			char const * not_used,
+			char const * unused,
+			int c)
+{
+	if (c == 0 /* final test before handing contents to app */
+	    || strchr("abcdefghijklmnopqrstuvwxyz", c)) {
+		/* since we only accept numerals then it must be valid */
+		return FL_VALID;
+	}
+	return FL_INVALID|FL_RINGBELL;
+}
+
+
 #if 0
 /* I've just moved this code here and written a few comments.
    still to complete it.  ARRae 20000518 */

@@ -1,3 +1,14 @@
+2000-11-02  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/FormCitation.C: made use of ButtonController.
+	Can now Apply to different insets without closing the dialog.
+
+	* src/frontends/xforms/FormPreferences.C: new Colour and Format tabs.
+	Can't actually DO anything with them yet, but I'd like a little
+	feedback.
+
+	* src/frontends/xforms/input_validators.[ch] (fl_lowercase_filter): new.
+
 2000-10-27   Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/mathed/formulamacro.h (LyxCode) Return MATHMACRO_CODE instead

@@ -2,6 +2,7 @@
  * FormPreferences Interface Class Implementation
  */
 
+#include <utility>
 #include <config.h>
 
 #include FORMS_H_LOCATION
@@ -10,6 +11,7 @@
 #pragma implementation
 #endif
 
+#include "Lsstream.h"
 #include "FormPreferences.h"
 #include "form_preferences.h"
 #include "input_validators.h"
@@ -23,6 +25,8 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "lyx_gui_misc.h"
+#include "lyxlex.h"
+#include "input_validators.h"
 #include "xform_helpers.h" // formatted()
 #include "xform_macros.h"
 
@@ -31,16 +35,26 @@ using SigC::slot;
 #endif
 
 using std::find;
+using std::getline;
+using std::istream;
+using std::pair;
 using std::vector;
 
+extern string fmt(char const * fmtstr ...);
 extern Languages languages;
+
+typedef pair<string, vector<int> > X11Colour;
+
+static vector<X11Colour> colourDB;
+static string const colourFile = "/usr/lib/X11/rgb.txt";
+
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
 	  dialog_(0), outputs_tab_(0), look_n_feel_tab_(0), inputs_tab_(0),
-	  usage_tab_(0), colours_(0), inputs_misc_(0), interface_(0),
-	  language_(0), lnf_misc_(0), outputs_misc_(0), paths_(0), printer_(0),
-	  screen_fonts_(0), spellchecker_(0),
+	  usage_tab_(0), colours_(0), formats_(0), inputs_misc_(0),
+	  interface_(0), language_(0), lnf_misc_(0), outputs_misc_(0),
+	  paths_(0), printer_(0), screen_fonts_(0), spellchecker_(0),
 	  combo_default_lang(0), combo_kbmap_1(0), combo_kbmap_2(0),
 	  feedbackObj(0)
 {
@@ -62,6 +76,7 @@ FormPreferences::~FormPreferences()
 	delete outputs_tab_;
 	delete usage_tab_;
 	delete colours_;
+	delete formats_;
 	delete inputs_misc_;
 	delete interface_;
 	delete language_;
@@ -72,8 +87,8 @@ FormPreferences::~FormPreferences()
 	delete screen_fonts_;
 	delete spellchecker_;
 
-	// Must be last to be deleted, or we'll get a SIGSEGV.
-	// Something to do with the Timer mechanism.
+	// Must delete dialog last or we'll end up with a SIGSEGV trying to
+	// access dialog_->timer_feedback in feedbackPost().
 	delete dialog_;
 }
 
@@ -89,15 +104,6 @@ void FormPreferences::ok()
 {
 	FormBase::ok();
 	lv_->getLyXFunc()->Dispatch(LFUN_SAVEPREFERENCES);
-}
-
-
-void FormPreferences::restore()
-{
-	update();
-// if I add an error message line to the dialog it'll have to be controlled
-// within input().  I don't need it yet so I'll leave it commented out.
-//	bc_.valid(input(0));
 }
 
 
@@ -138,6 +144,7 @@ void FormPreferences::build()
 	// build actual tabfolder contents
 	// these will become nested tabfolders
 	buildColours();
+	buildFormats();
 	buildInputsMisc();
 	buildInterface();
 	buildLanguage();
@@ -191,6 +198,9 @@ void FormPreferences::build()
 			   _("Printer"),
 			   printer_->form);
 	fl_addto_tabfolder(outputs_tab_->tabfolder_outer,
+			   _("Formats"),
+			   formats_->form);
+	fl_addto_tabfolder(outputs_tab_->tabfolder_outer,
 			   _("Misc"),
 			   outputs_misc_->form);
 
@@ -217,6 +227,7 @@ void FormPreferences::apply()
 	// and other stuff which may cost us a lot on slower/high-load machines.
 
 	applyColours();
+	applyFormats();
 	applyInputsMisc();
 	applyInterface();
 	applyLanguage();
@@ -235,6 +246,8 @@ void FormPreferences::feedback( FL_OBJECT * ob )
 
 	if( ob->form->fdui == colours_ ) {
 		str = feedbackColours( ob );
+	} else if( ob->form->fdui == formats_ ) {
+		str = feedbackFormats( ob );
 	} else if( ob->form->fdui == inputs_misc_ ) {
 		str = feedbackInputsMisc( ob );
 	} else if( ob->form->fdui == interface_ ) {
@@ -271,7 +284,10 @@ bool FormPreferences::input(FL_OBJECT * ob, long)
 	// some totally ridiculous value somewhere.  Change activate to suit.
 	// comments before each test describe what is _valid_
 
-	if( ob->form->fdui == language_ ) {
+	if( ob->form->fdui == colours_ ) {
+		if( ! inputColours( ob ) )
+			activate = false;
+	} else if( ob->form->fdui == language_ ) {
 		if( ! inputLanguage( ob ) )
 			activate = false;
 	} else if( ob->form->fdui == paths_ ) {
@@ -295,6 +311,7 @@ void FormPreferences::update()
     
 	// read lyxrc entries
 	updateColours();
+	updateFormats();
 	updateInputsMisc();
 	updateInterface();
 	updateLanguage();
@@ -315,6 +332,100 @@ void FormPreferences::applyColours() const
 void FormPreferences::buildColours()
 {
 	colours_ = build_colours();
+
+	FL_OBJECT *obj;
+	obj = colours_->valslider_red;
+	fl_set_slider_bounds(obj, 0, 255);
+	fl_set_slider_precision(obj, 0);
+	fl_set_slider_return(obj, FL_RETURN_END_CHANGED);
+	
+	obj = colours_->valslider_green;
+	fl_set_slider_bounds(obj, 0, 255);
+	fl_set_slider_precision(obj, 0);
+	fl_set_slider_return(obj, FL_RETURN_END_CHANGED);
+	
+	obj = colours_->valslider_blue;
+	fl_set_slider_bounds(obj, 0, 255);
+	fl_set_slider_precision(obj, 0);
+	fl_set_slider_return(obj, FL_RETURN_END_CHANGED);
+
+	fl_set_object_color(colours_->button_colour,
+			    FL_FREE_COL4, FL_FREE_COL4);
+	
+	fl_set_input_return(colours_->input_name, FL_RETURN_END_CHANGED);
+
+	if( loadColourBrowser(colourFile) )
+		fl_set_input(colours_->input_name, colourFile.c_str());
+	else
+		fl_set_input(colours_->input_name, N_("No file found"));
+
+	// deactivate the browse button because it isn't implemented
+	fl_deactivate_object(colours_->button_browse);
+	fl_set_object_lcol(colours_->button_browse, FL_INACTIVE);
+}
+
+
+bool FormPreferences::loadColourBrowser( string const & filename )
+{
+	LyXLex lex(0, 0);
+
+	if (!lex.setFile(filename))
+		return false;
+
+	vector<int> oldrgb(3);
+	oldrgb[0] = -1; oldrgb[1] = -1; oldrgb[2] = -1;
+
+	istream & is = lex.getStream();
+	string line;
+
+	while( 1 ) {
+		getline( is, line );
+		if( line.empty() )
+			break;
+
+		if( line[0] != '!' ) {
+			vector<int> rgb(3);
+			string name;
+			
+			istringstream iss(line);
+			iss >> rgb[0] >> rgb[1] >> rgb[2];
+			while( iss.good() ) {
+				string next;
+				iss >> next;
+				name += next;
+			}
+
+			// remove redundant entries on the fly
+			if( oldrgb != rgb ) {
+				string tmp;
+				name = lowercase( name );
+				if( name == "gray0" )   name = "black";
+				if( name == "gray100" ) name = "white";
+				X11Colour pa( name, rgb );
+				colourDB.push_back(pa);
+			}
+			oldrgb = rgb;
+		}
+	}
+
+	FL_OBJECT * colbr = colours_->browser_x11;
+	fl_freeze_form(colours_->form);
+	fl_clear_browser( colbr );
+
+	for( vector<X11Colour>::const_iterator cit = colourDB.begin();
+	     cit != colourDB.end(); ++cit ) {
+		vector<int> rgb = (*cit).second;
+		string name = fmt("%3d %3d %3d ", rgb[0], rgb[1], rgb[2]) +
+			      (*cit).first;
+		fl_addto_browser(colbr, name.c_str());
+	}
+
+	fl_set_browser_topline(colbr, 1);
+	fl_select_browser_line(colbr, 1);
+	updateColoursBrowser(0);
+	fl_unfreeze_form(colours_->form);
+	
+	return true;
 }
 
 
@@ -324,7 +435,140 @@ string FormPreferences::feedbackColours( FL_OBJECT const * const ) const
 }
 
 
+bool FormPreferences::inputColours( FL_OBJECT const * const ob )
+{
+	bool activate = true;
+	
+	if( ob == colours_->browser_x11 ) {
+		int i = fl_get_browser(colours_->browser_x11);
+		if( i > 0) {
+			updateColoursBrowser(i-1);
+		}
+
+	} else if( ob == colours_->valslider_red
+		   || ob == colours_->valslider_green
+		   || ob == colours_->valslider_blue ) {
+		updateColoursRGB();
+
+	} else if( ob == colours_->input_name) {
+		string file = fl_get_input(colours_->input_name);
+		if( loadColourBrowser(file) )
+			fl_set_input(colours_->input_name, file.c_str());
+		else if( loadColourBrowser(colourFile) )
+			fl_set_input(colours_->input_name, colourFile.c_str());
+		else
+			fl_set_input(colours_->input_name, N_("No file found"));
+	}
+
+	return activate;
+}
+
+
+void FormPreferences::updateColoursBrowser( int i )
+{
+	fl_freeze_form(colours_->form);
+
+	vector<int> rgb = colourDB[i].second;
+    
+	fl_mapcolor(FL_FREE_COL4+i, rgb[0], rgb[1], rgb[2]);
+	fl_mapcolor(FL_FREE_COL4,   rgb[0], rgb[1], rgb[2]);
+	fl_set_slider_value(colours_->valslider_red,   rgb[0]);
+	fl_set_slider_value(colours_->valslider_green, rgb[1]);
+	fl_set_slider_value(colours_->valslider_blue,  rgb[2]);
+	fl_redraw_object(colours_->button_colour);
+
+	fl_unfreeze_form(colours_->form);
+}
+
+
+void FormPreferences::updateColoursRGB()
+{
+	fl_freeze_form(colours_->form);
+
+	vector<int> rgb(3);
+	rgb[0] = fl_get_slider_value(colours_->valslider_red);
+	rgb[1] = fl_get_slider_value(colours_->valslider_green);
+	rgb[2] = fl_get_slider_value(colours_->valslider_blue);
+    
+	fl_mapcolor(FL_FREE_COL4, rgb[0], rgb[1], rgb[2]);
+	fl_redraw_object(colours_->button_colour);
+
+	int top = fl_get_browser_topline(colours_->browser_x11);
+	int i = searchColourEntry( rgb );
+	// change topline only if necessary
+	if(i < top || i > (top+15))
+		fl_set_browser_topline(colours_->browser_x11,
+						       i-8);
+	fl_select_browser_line(colours_->browser_x11, i + 1);
+
+	fl_unfreeze_form(colours_->form);
+}
+
+
+int FormPreferences::searchColourEntry(vector<int> const & rgb ) const
+{
+	int mindiff = 0x7fffffff;
+	vector<X11Colour>::const_iterator mincit = colourDB.begin();
+
+	for( vector<X11Colour>::const_iterator cit = colourDB.begin();
+	     cit != colourDB.end(); ++cit ) {
+		vector<int> rgbDB = (*cit).second;
+		vector<int> diff(3);
+		diff[0] = rgb[0] - rgbDB[0];
+		diff[1] = rgb[1] - rgbDB[1];
+		diff[2] = rgb[2] - rgbDB[2];
+
+		int d = (2 * (diff[0] * diff[0]) +
+		         3 * (diff[1] * diff[1]) +
+		             (diff[2] * diff[2]));
+
+		if( mindiff > d ) {
+			mindiff = d;
+			mincit = cit;
+		}
+	}
+	return static_cast<int>(mincit - colourDB.begin());
+}
+
+
 void FormPreferences::updateColours()
+{
+}
+
+
+void FormPreferences::applyFormats() const
+{
+}
+
+
+void FormPreferences::buildFormats()
+{
+	formats_ = build_formats();
+
+	fl_set_input_return(formats_->input_format, FL_RETURN_CHANGED);
+	fl_set_input_return(formats_->input_viewer, FL_RETURN_CHANGED);
+	fl_set_input_return(formats_->input_gui_name, FL_RETURN_CHANGED);
+	fl_set_input_return(formats_->input_extension, FL_RETURN_CHANGED);
+
+	fl_set_input_filter(formats_->input_format, fl_lowercase_filter);
+}
+
+
+string FormPreferences::feedbackFormats( FL_OBJECT const * const ) const
+{
+	string str;
+
+	return str;
+}
+
+
+bool FormPreferences::inputFormats( FL_OBJECT const * const )
+{
+	return true;
+}
+
+
+void FormPreferences::updateFormats()
 {
 }
 
@@ -494,9 +738,11 @@ void FormPreferences::buildLanguage()
 	fl_set_input_return(language_->input_command_end, FL_RETURN_CHANGED);
 
 	// The default_language is a combo-box and has to be inserted manually
+	fl_freeze_form(language_->form);
 	fl_addto_form(language_->form);
 
 	FL_OBJECT * obj = language_->choice_default_lang;
+	fl_deactivate_object(language_->choice_default_lang);
 	combo_default_lang = new Combox(FL_COMBOX_DROPLIST);
 	combo_default_lang->add(obj->x, obj->y, obj->w, obj->h, 400);
 	combo_default_lang->shortcut("#L",1);
@@ -505,6 +751,7 @@ void FormPreferences::buildLanguage()
 	
 	// ditto kbmap_1
 	obj = language_->choice_kbmap_1;
+	fl_deactivate_object(language_->choice_kbmap_1);
 	combo_kbmap_1 = new Combox(FL_COMBOX_DROPLIST);
 	combo_kbmap_1->add(obj->x, obj->y, obj->w, obj->h, 400);
 	combo_kbmap_1->shortcut("#1",1);
@@ -513,6 +760,7 @@ void FormPreferences::buildLanguage()
 	
 	// ditto kbmap_2
 	obj = language_->choice_kbmap_2;
+	fl_deactivate_object(language_->choice_kbmap_2);
 	combo_kbmap_2 = new Combox(FL_COMBOX_DROPLIST);
 	combo_kbmap_2->add(obj->x, obj->y, obj->w, obj->h, 400);
 	combo_kbmap_2->shortcut("#2",1);
@@ -520,6 +768,7 @@ void FormPreferences::buildLanguage()
 	addLanguages( *combo_kbmap_2 );
 
 	fl_end_form();
+	fl_unfreeze_form(language_->form);
 
 	// set up the feedback mechanism
 	fl_addto_form(language_->form);
@@ -1344,6 +1593,27 @@ void FormPreferences::buildScreenFonts()
 	fl_set_input_return(screen_fonts_->input_huge, FL_RETURN_CHANGED);
 	fl_set_input_return(screen_fonts_->input_huger, FL_RETURN_CHANGED);
 
+	fl_set_input_filter(screen_fonts_->input_tiny,
+			    fl_unsigned_int_filter);
+	fl_set_input_filter(screen_fonts_->input_script,
+			    fl_unsigned_int_filter);
+	fl_set_input_filter(screen_fonts_->input_footnote,
+			    fl_unsigned_int_filter);
+	fl_set_input_filter(screen_fonts_->input_small,
+			    fl_unsigned_int_filter);
+	fl_set_input_filter(screen_fonts_->input_normal,
+			    fl_unsigned_int_filter);
+	fl_set_input_filter(screen_fonts_->input_large,
+			    fl_unsigned_int_filter);
+	fl_set_input_filter(screen_fonts_->input_larger,
+			    fl_unsigned_int_filter);
+	fl_set_input_filter(screen_fonts_->input_largest,
+			    fl_unsigned_int_filter);
+	fl_set_input_filter(screen_fonts_->input_huge,
+			    fl_unsigned_int_filter);
+	fl_set_input_filter(screen_fonts_->input_huger,
+			    fl_unsigned_int_filter);
+
 	// set up the feedback mechanism
 	fl_addto_form(screen_fonts_->form);
 
@@ -1687,7 +1957,7 @@ bool FormPreferences::inputSpellChecker( FL_OBJECT const * const ob )
 		}
 	}
 	
-	return true; // all input is valid!
+	return true; // All input is valid!
 }
 
 
@@ -1877,6 +2147,11 @@ void FormPreferences::FeedbackCB(FL_OBJECT * ob, long)
 extern "C" int C_FormPreferencesFeedbackPost(FL_OBJECT * ob, int event,
 					     FL_Coord, FL_Coord, int, void *)
 {
+	// can occur when form is being deleted. This seems an easier fix than
+	// a call "fl_set_object_posthandler(ob, 0)" for each and every object
+	// in the destructor.
+	if( !ob->form ) return 0;
+
 	FormPreferences * pre =
 		static_cast<FormPreferences*>(ob->form->u_vdata);
 	pre->feedbackPost(ob, event);

@@ -25,19 +25,19 @@
 
 class LyXView;
 class Dialogs;
-
-struct FD_form_preferences;
-struct FD_form_lnf_misc;
-struct FD_form_screen_fonts;
-struct FD_form_interface;
-struct FD_form_printer;
-struct FD_form_paths;
-struct FD_form_outer_tab;
-struct FD_form_inputs_misc;
-struct FD_form_outputs_misc;
-struct FD_form_spellchecker;
-struct FD_form_language;
 struct FD_form_colours;
+struct FD_form_formats;
+struct FD_form_inputs_misc;
+struct FD_form_interface;
+struct FD_form_language;
+struct FD_form_lnf_misc;
+struct FD_form_outer_tab;
+struct FD_form_outputs_misc;
+struct FD_form_paths;
+struct FD_form_preferences;
+struct FD_form_printer;
+struct FD_form_screen_fonts;
+struct FD_form_spellchecker;
 class  Combox;
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
@@ -65,8 +65,6 @@ private:
 	virtual void ok();
 	/// Apply from dialog
 	virtual void apply();
-	/// Restore from dialog
-	virtual void restore();
 	/// Filter the inputs -- return true if entries are valid
 	virtual bool input(FL_OBJECT *, long);
 	/// Build the dialog
@@ -77,6 +75,8 @@ private:
 	virtual FL_FORM * form() const;
 	///
 	void applyColours() const;
+	///
+	void applyFormats() const;
 	///
 	void applyInputsMisc() const;
 	///
@@ -97,6 +97,12 @@ private:
 	void applySpellChecker(); // not const because calls updateSpellChecker!
 	///
 	void buildColours();
+	///
+	bool loadColourBrowser( string const & );
+	///
+	int searchColourEntry(std::vector<int> const & ) const;
+	///
+	void buildFormats();
 	///
 	void buildInputsMisc();
 	///
@@ -120,6 +126,8 @@ private:
 	///
 	string feedbackColours(FL_OBJECT const * const) const;
 	///
+	string feedbackFormats( FL_OBJECT const * const ) const;
+	///
 	string feedbackInputsMisc(FL_OBJECT const * const) const;
 	///
 	string feedbackInterface(FL_OBJECT const * const) const;
@@ -138,6 +146,10 @@ private:
 	///
 	string feedbackSpellChecker(FL_OBJECT const * const) const;
 	///
+	bool inputColours(FL_OBJECT const * const);
+	///
+	bool inputFormats( FL_OBJECT const * const );
+	///
 	bool inputLanguage(FL_OBJECT const * const);
 	///
 	bool inputPaths(FL_OBJECT const * const);
@@ -147,6 +159,12 @@ private:
 	bool inputSpellChecker(FL_OBJECT const * const);
 	///
 	void updateColours();
+	///
+	void updateColoursBrowser( int );
+	///
+	void updateColoursRGB();
+	///
+	void updateFormats();
 	///
 	void updateInputsMisc();
 	///
@@ -182,6 +200,8 @@ private:
 	///
 	FD_form_colours * build_colours();
 	///
+	FD_form_formats * build_formats();
+	///
 	FD_form_inputs_misc * build_inputs_misc();
 	///
 	FD_form_interface * build_interface();
@@ -212,6 +232,8 @@ private:
 	FD_form_outer_tab * usage_tab_;
 	///
 	FD_form_colours * colours_;
+	///
+	FD_form_formats * formats_;
 	///
 	FD_form_inputs_misc * inputs_misc_;
 	///

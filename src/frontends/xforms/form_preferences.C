@@ -329,8 +329,8 @@ FD_form_language * FormPreferences::build_language()
     fl_set_button_shortcut(obj, scex(_("Package|#P")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  fdui->choice_default_lang = obj = fl_add_choice(FL_NORMAL_CHOICE, 231, 56, 200, 30, idex(_("Default language|#D")));
-    fl_set_button_shortcut(obj, scex(_("Default language|#D")), 1);
+  fdui->choice_default_lang = obj = fl_add_choice(FL_NORMAL_CHOICE, 231, 56, 200, 30, idex(_("Default language|#l")));
+    fl_set_button_shortcut(obj, scex(_("Default language|#l")), 1);
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->check_use_kbmap = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 158, 113, 30, 30, idex(_("Keyboard map|#K")));
@@ -397,6 +397,98 @@ FD_form_colours * FormPreferences::build_colours()
   fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
+  fdui->browser_x11 = obj = fl_add_browser(FL_HOLD_BROWSER, 10, 25, 175, 235, idex(_("X11 colour names|#X")));
+    fl_set_button_shortcut(obj, scex(_("X11 colour names|#X")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->input_name = obj = fl_add_input(FL_NORMAL_INPUT, 10, 285, 175, 30, idex(_("Name database|#N")));
+    fl_set_button_shortcut(obj, scex(_("Name database|#N")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->button_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 190, 285, 90, 30, idex(_("Browse|#B")));
+    fl_set_button_shortcut(obj, scex(_("Browse|#B")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->button_colour = obj = fl_add_button(FL_NORMAL_BUTTON, 300, 230, 140, 30, "");
+    fl_set_object_boxtype(obj, FL_BORDER_BOX);
+    fl_set_object_color(obj, FL_WHITE, FL_COL1);
+  fdui->valslider_red = obj = fl_add_valslider(FL_VERT_FILL_SLIDER, 190, 25, 30, 235, idex(_("R|#R")));
+    fl_set_button_shortcut(obj, scex(_("R|#R")), 1);
+    fl_set_object_color(obj, FL_COL1, FL_RED);
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_slider_size(obj, 0.15);
+  fdui->valslider_green = obj = fl_add_valslider(FL_VERT_FILL_SLIDER, 220, 25, 30, 235, idex(_("G|#G")));
+    fl_set_button_shortcut(obj, scex(_("G|#G")), 1);
+    fl_set_object_color(obj, FL_COL1, FL_GREEN);
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_slider_size(obj, 0.15);
+  fdui->valslider_blue = obj = fl_add_valslider(FL_VERT_FILL_SLIDER, 250, 25, 30, 235, idex(_("B|#B")));
+    fl_set_button_shortcut(obj, scex(_("B|#B")), 1);
+    fl_set_object_color(obj, FL_COL1, FL_BLUE);
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+    fl_set_slider_size(obj, 0.15);
+  fdui->browser_lyx_objs = obj = fl_add_browser(FL_HOLD_BROWSER, 300, 25, 140, 200, idex(_("LyX objects|#L")));
+    fl_set_button_shortcut(obj, scex(_("LyX objects|#L")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fl_end_form();
+
+  fdui->form->fdui = fdui;
+
+  return fdui;
+}
+/*---------------------------------------*/
+
+FD_form_formats::~FD_form_formats()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
+
+FD_form_formats * FormPreferences::build_formats()
+{
+  FL_OBJECT *obj;
+  FD_form_formats *fdui = new FD_form_formats;
+
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 360);
+  fdui->form->u_vdata = this;
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 360, "");
+  fdui->browser_formats = obj = fl_add_browser(FL_NORMAL_BROWSER, 30, 30, 160, 270, idex(_("All formats|#A")));
+    fl_set_button_shortcut(obj, scex(_("All formats|#A")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->input_format = obj = fl_add_input(FL_NORMAL_INPUT, 280, 30, 150, 30, idex(_("Format|#F")));
+    fl_set_button_shortcut(obj, scex(_("Format|#F")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->input_gui_name = obj = fl_add_input(FL_NORMAL_INPUT, 280, 70, 150, 30, idex(_("GUI name|#G")));
+    fl_set_button_shortcut(obj, scex(_("GUI name|#G")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->button_delete = obj = fl_add_button(FL_NORMAL_BUTTON, 340, 270, 90, 30, idex(_("Delete|#D")));
+    fl_set_button_shortcut(obj, scex(_("Delete|#D")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->button_add = obj = fl_add_button(FL_NORMAL_BUTTON, 240, 270, 90, 30, idex(_("Add|#A")));
+    fl_set_button_shortcut(obj, scex(_("Add|#A")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->input_extension = obj = fl_add_input(FL_NORMAL_INPUT, 280, 110, 150, 30, idex(_("Extension|#E")));
+    fl_set_button_shortcut(obj, scex(_("Extension|#E")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->input_viewer = obj = fl_add_input(FL_NORMAL_INPUT, 280, 150, 150, 30, idex(_("Viewer|#V")));
+    fl_set_button_shortcut(obj, scex(_("Viewer|#V")), 1);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;
