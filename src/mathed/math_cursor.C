@@ -1396,7 +1396,7 @@ bool MathCursor::interpret(char c)
 		// suppress direct insertion of to spaces in a row
 		// the still allows typing  '<space>a<space>' and deleting the 'a', but
 		// it is better than nothing
-		if (hasPrevAtom() && prevAtom()->getChar() == ' ')
+		if (c == ' ' && hasPrevAtom() && prevAtom()->getChar() == ' ')
 			return true;
 		insert(c, LM_TC_TEXTRM);
 		return true;
