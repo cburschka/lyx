@@ -101,7 +101,7 @@ public:
 	///
 	string const editMessage() const;
 	///
-	void edit(BufferView *, int x, int y, unsigned int);
+	void edit(BufferView *, int x, int y, mouse_button::state);
 	///
 	void edit(BufferView * bv, bool front = true);
 	///
@@ -132,13 +132,11 @@ public:
 	///
 	bool display() const { return tabular->IsLongTabular(); }
 	///
-	bool insetButtonRelease(BufferView *, int, int, int);
+	bool insetButtonRelease(BufferView *, int, int, mouse_button::state);
 	///
-	void insetButtonPress(BufferView *, int, int, int);
+	void insetButtonPress(BufferView *, int, int, mouse_button::state);
 	///
-	void insetMotionNotify(BufferView *, int, int, int);
-	///
-	void insetKeyPress(XKeyEvent *);
+	void insetMotionNotify(BufferView *, int, int, mouse_button::state);
 	///
 	UpdatableInset::RESULT localDispatch(BufferView *, kb_action,
 					     string const &);
@@ -288,11 +286,11 @@ private:
 	}
 	///
 	bool activateCellInset(BufferView *, int x = 0, int y = 0,
-			       int button = 0,
+			       mouse_button::state button = mouse_button::none,
 			       bool behind = false);
 	///
 	bool activateCellInsetAbs(BufferView *, int x = 0, int y = 0,
-				  int button = 0);
+				  mouse_button::state button = mouse_button::none);
 	///
 	bool insetHit(BufferView * bv, int x, int y) const;
 	///

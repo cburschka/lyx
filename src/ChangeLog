@@ -1,3 +1,15 @@
+2002-05-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.h:
+	* BufferView_pimpl.C:
+	* kbmap.h:
+	* kbmap.C:
+	* kbsequence.h:
+	* kbsequence.C:
+	* lyxfunc.h:
+	* lyxfunc.C:
+	* text2.C: use key_state/mouse_state
+ 
 2002-05-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* vc-backend.C (scanMaster): use boost regex and get rid of LRegex

@@ -60,7 +60,7 @@ public:
 	///
 	void update(BufferView *, LyXFont const &, bool =false);
 	///
-	void edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, mouse_button::state);
 	///
 	void edit(BufferView *, bool front = true);
 	///
@@ -89,13 +89,11 @@ public:
 	///
 	int insetInInsetY() const;
 	///
-	bool insetButtonRelease(BufferView *, int, int, int);
+	bool insetButtonRelease(BufferView *, int, int, mouse_button::state);
 	///
-	void insetButtonPress(BufferView *, int, int, int);
+	void insetButtonPress(BufferView *, int, int, mouse_button::state);
 	///
-	void insetMotionNotify(BufferView *, int, int, int);
-	///
-	void insetKeyPress(XKeyEvent *);
+	void insetMotionNotify(BufferView *, int, int, mouse_button::state);
 	///
 	UpdatableInset::RESULT localDispatch(BufferView *, kb_action,
 					     string const &);

@@ -1,3 +1,42 @@
+2002-05-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* inset.C:
+	* inset.h:
+	* insetbib.C:
+	* insetbib.h:
+	* insetcite.h:
+	* insetcite.C:
+	* insetcollapsable.C:
+	* insetcollapsable.h:
+	* inseterror.C:
+	* inseterror.h:
+	* insetert.C:
+	* insetert.h:
+	* insetexternal.C:
+	* insetexternal.h:
+	* insetfloatlist.C:
+	* insetfloatlist.h:
+	* insetgraphics.C:
+	* insetgraphics.h:
+	* insetinclude.C:
+	* insetinclude.h:
+	* insetindex.C:
+	* insetindex.h:
+	* insetlabel.C:
+	* insetlabel.h:
+	* insetparent.C:
+	* insetparent.h:
+	* insetref.C:
+	* insetref.h:
+	* insettabular.C:
+	* insettabular.h:
+	* insettext.C:
+	* insettext.h:
+	* insettoc.C:
+	* insettoc.h:
+	* inseturl.C:
+	* inseturl.h: use mouse_state. Kill insetKeyPress
+ 
 2002-05-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* insetbib.C:

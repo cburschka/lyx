@@ -22,13 +22,13 @@ InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf, bool)
 	: InsetCommand(p), isLatex(buf.isLatex())
 {}
 
-void InsetRef::edit(BufferView * bv, int, int, unsigned int button)
+void InsetRef::edit(BufferView * bv, int, int, mouse_button::state button)
 {
 	// Eventually trigger dialog with button 3 not 1
-	if (button == 3)
+	if (button == mouse_button::button3)
 		bv->owner()->getLyXFunc()->
 			dispatch(LFUN_REF_GOTO, getContents());
-	else if (button == 1)
+	else if (button == mouse_button::button1)
 		bv->owner()->getDialogs()->showRef(this);
 }
 

@@ -18,12 +18,14 @@
 #pragma implementation
 #endif
 
+#include "frontends/mouse_state.h"
 #include "kbsequence.h"
 #include "kbmap.h"
 #include "commandtags.h"
 #include "debug.h"
 
 
+using std::make_pair;
 using std::vector;
 using std::endl;
 using std::hex;
@@ -35,7 +37,7 @@ using std::dec;
 enum { ModsMask = ShiftMask | ControlMask | Mod1Mask };
 
 
-int kb_sequence::addkey(unsigned int key, unsigned int mod, unsigned int nmod)
+int kb_sequence::addkey(unsigned int key, key_modifier::state mod, key_modifier::state nmod)
 {
 	// adding a key to a deleted sequence
 	// starts a new sequence
@@ -46,7 +48,7 @@ int kb_sequence::addkey(unsigned int key, unsigned int mod, unsigned int nmod)
 		modifiers.clear();
 	}
 
-	modifiers.push_back(mod + (nmod << 16));
+	modifiers.push_back(make_pair(mod, nmod));
 	sequence.push_back(key);
 	++length_;
 
@@ -63,8 +65,8 @@ string::size_type kb_sequence::parse(string const & s)
 	if (s.empty()) return 1;
 
 	string::size_type i = 0;
-	unsigned int mod = 0;
-	unsigned int nmod = 0;
+	key_modifier::state mod = key_modifier::none;
+	key_modifier::state nmod = key_modifier::none;
 	while (i < s.length()) {
 		if (s[i] == ' ')
 			++i;
@@ -74,15 +76,15 @@ string::size_type kb_sequence::parse(string const & s)
 		if (i + 1 < s.length() && s[i + 1] == '-') {
 			switch (s[i]) {
 			case 's': case 'S':
-				mod |= ShiftMask;
+				mod |= key_modifier::shift;
 				i += 2;
 				continue;
 			case 'c': case 'C':
-				mod |= ControlMask;
+				mod |= key_modifier::ctrl;
 				i += 2;
 				continue;
 			case 'm': case 'M':
-				mod |= Mod1Mask;
+				mod |= key_modifier::alt;
 				i += 2;
 				continue;
 			default:
@@ -92,15 +94,15 @@ string::size_type kb_sequence::parse(string const & s)
 			   && s[i + 2] == '-') {
 			switch (s[i + 1]) {
 			case 's': case 'S':
-				nmod |= ShiftMask;
+				nmod |= key_modifier::shift;
 				i += 3;
 				continue;
 			case 'c': case 'C':
-				nmod |= ControlMask;
+				nmod |= key_modifier::ctrl;
 				i += 3;
 				continue;
 			case 'm': case 'M':
-				nmod |= Mod1Mask;
+				nmod |= key_modifier::alt;
 				i += 3;
 				continue;
 			default:
@@ -122,7 +124,7 @@ string::size_type kb_sequence::parse(string const & s)
 			i = j;
 
 			addkey(key, mod, nmod);
-			mod = 0;
+			mod = key_modifier::none;
 		}
 	}
 
@@ -143,7 +145,7 @@ string const kb_sequence::print() const
 	//	return buf;
 
 	for (vector<unsigned int>::size_type i = 0; i < length_; ++i) {
-		buf += kb_keymap::printKeysym(sequence[i], modifiers[i] & 0xffff);
+		buf += kb_keymap::printKeysym(sequence[i], modifiers[i].first);
 
 		// append a blank
 		if (i + 1 < length_) {

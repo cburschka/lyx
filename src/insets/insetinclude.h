@@ -77,7 +77,7 @@ public:
 	/// This returns the list of bibkeys on the child buffer
 	std::vector< std::pair<string,string> > const getKeys() const;
 	///
-	void edit(BufferView *, int x, int y, unsigned int button);
+	void edit(BufferView *, int x, int y, mouse_button::state button);
 	///
 	void edit(BufferView * bv, bool front = true);
 	///

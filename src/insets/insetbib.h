@@ -43,7 +43,7 @@ public:
 	///
 	virtual string const getScreenLabel(Buffer const *) const;
 	///
-	void edit(BufferView *, int x, int y, unsigned int button);
+	void edit(BufferView *, int x, int y, mouse_button::state button);
 	///
 	void edit(BufferView * bv, bool front = true);
 	///
@@ -93,7 +93,7 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::BIBTEX_CODE; }
 	///
-	void edit(BufferView *, int x, int y, unsigned int button);
+	void edit(BufferView *, int x, int y, mouse_button::state button);
 	///
 	void edit(BufferView * bv, bool front = true);
 	///

@@ -42,7 +42,7 @@ vector<string> const InsetLabel::getLabelList() const
 }
 
 
-void InsetLabel::edit(BufferView * bv, int, int, unsigned int)
+void InsetLabel::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	pair<bool, string> result = Alert::askForText(_("Enter label:"), getContents());
 	if (result.first) {
@@ -70,7 +70,7 @@ void InsetLabel::edit(BufferView * bv, int, int, unsigned int)
 
 void InsetLabel::edit(BufferView * bv, bool)
 {
-	edit(bv, 0, 0, 0);
+	edit(bv, 0, 0, mouse_button::none);
 }
 
 

@@ -551,7 +551,7 @@ string const InsetTabular::editMessage() const
 }
 
 
-void InsetTabular::edit(BufferView * bv, int x, int y, unsigned int button)
+void InsetTabular::edit(BufferView * bv, int x, int y, mouse_button::state button)
 {
 	UpdatableInset::edit(bv, x, y, button);
 
@@ -566,7 +566,7 @@ void InsetTabular::edit(BufferView * bv, int x, int y, unsigned int button)
 	setPos(bv, x, y);
 	clearSelection();
 	finishUndo();
-	if (insetHit(bv, x, y) && (button != 3)) {
+	if (insetHit(bv, x, y) && (button != mouse_button::button3)) {
 		activateCellInsetAbs(bv, x, y, button);
 	}
 }
@@ -766,9 +766,9 @@ bool InsetTabular::insertInset(BufferView * bv, Inset * inset)
 }
 
 
-void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
+void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, mouse_button::state button)
 {
-	if (hasSelection() && (button == 3))
+	if (hasSelection() && (button == mouse_button::button3))
 		return;
 
 	if (hasSelection()) {
@@ -815,7 +815,7 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 		updateLocal(bv, CELL, false);
 		the_locking_inset = 0;
 	}
-	if (button == 2) {
+	if (button == mouse_button::button2) {
 		localDispatch(bv, LFUN_PASTESELECTION, "paragraph");
 		return;
 	}
@@ -833,13 +833,13 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 
 
 bool InsetTabular::insetButtonRelease(BufferView * bv,
-				      int x, int y, int button)
+				      int x, int y, mouse_button::state button)
 {
 	bool ret = false;
 	if (the_locking_inset)
 		ret = the_locking_inset->insetButtonRelease(bv, x - inset_x,
 													y - inset_y, button);
-	if (button == 3 && !ret) {
+	if (button == mouse_button::button3 && !ret) {
 		bv->owner()->getDialogs()->showTabular(this);
 		return true;
 	}
@@ -847,7 +847,7 @@ bool InsetTabular::insetButtonRelease(BufferView * bv,
 }
 
 
-void InsetTabular::insetMotionNotify(BufferView * bv, int x, int y, int button)
+void InsetTabular::insetMotionNotify(BufferView * bv, int x, int y, mouse_button::state button)
 {
 	if (the_locking_inset) {
 		the_locking_inset->insetMotionNotify(bv,
@@ -868,15 +868,6 @@ void InsetTabular::insetMotionNotify(BufferView * bv, int x, int y, int button)
 	}
 	updateLocal(bv, SELECTION, false);
 	showInsetCursor(bv);
-}
-
-
-void InsetTabular::insetKeyPress(XKeyEvent * xke)
-{
-	if (the_locking_inset) {
-		the_locking_inset->insetKeyPress(xke);
-		return;
-	}
 }
 
 
@@ -1635,7 +1626,7 @@ UpdatableInset::RESULT InsetTabular::moveLeft(BufferView * bv, bool lock)
 	if (!moved)
 		return FINISHED;
 	if (lock) {       // behind the inset
-		if (activateCellInset(bv, 0, 0, 0, true))
+		if (activateCellInset(bv, 0, 0, mouse_button::none, true))
 			return DISPATCHED;
 	}
 	resetPos(bv);
@@ -1707,7 +1698,7 @@ bool InsetTabular::moveNextCell(BufferView * bv, bool lock)
 	if (lock) {
 		bool rtl = tabular->GetCellInset(actcell)->paragraph()->
 			isRightToLeftPar(bv->buffer()->params);
-		activateCellInset(bv, 0, 0, 0, !rtl);
+		activateCellInset(bv, 0, 0, mouse_button::none, !rtl);
 	}
 	resetPos(bv);
 	return true;
@@ -1736,7 +1727,7 @@ bool InsetTabular::movePrevCell(BufferView * bv, bool lock)
 	if (lock) {
 		bool rtl = tabular->GetCellInset(actcell)->paragraph()->
 			isRightToLeftPar(bv->buffer()->params);
-		activateCellInset(bv, 0, 0, 0, !rtl);
+		activateCellInset(bv, 0, 0, mouse_button::none, !rtl);
 	}
 	resetPos(bv);
 	return true;
@@ -2170,7 +2161,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 }
 
 
-bool InsetTabular::activateCellInset(BufferView * bv, int x, int y, int button,
+bool InsetTabular::activateCellInset(BufferView * bv, int x, int y, mouse_button::state button,
 				     bool behind)
 {
 	UpdatableInset * inset =
@@ -2191,7 +2182,7 @@ bool InsetTabular::activateCellInset(BufferView * bv, int x, int y, int button,
 
 
 bool InsetTabular::activateCellInsetAbs(BufferView * bv, int x, int y,
-					int button)
+					mouse_button::state button)
 {
 	inset_x = cursor_.x()
 		- top_x + tabular->GetBeginningOfTextInCell(actcell);
@@ -2695,7 +2686,7 @@ InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
-	inset->edit(bv, 0,  0, 0);
+	inset->edit(bv, 0,  0, mouse_button::none);
 	string const str(selectNextWordInt(bv, value));
 	nodraw(false);
 	if (!str.empty())

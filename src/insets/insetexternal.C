@@ -77,7 +77,7 @@ string const InsetExternal::editMessage() const
 
 
 void InsetExternal::edit(BufferView * bv,
-			 int /*x*/, int /*y*/, unsigned int /*button*/)
+			 int /*x*/, int /*y*/, mouse_button::state)
 {
 	view_ = bv;
 	view_->owner()->getDialogs()->showExternal(this);
@@ -86,7 +86,7 @@ void InsetExternal::edit(BufferView * bv,
 
 void InsetExternal::edit(BufferView * bv, bool)
 {
-	edit(bv, 0, 0, 0);
+	edit(bv, 0, 0, mouse_button::none);
 }
 
 

@@ -67,7 +67,7 @@ public:
 	void setFont(BufferView *, LyXFont const &,
 			     bool toggleall = false, bool selectall = false);
 	///
-	void edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, mouse_button::state);
 	///
 	void edit(BufferView * bv, bool front = true);
 	///
@@ -75,11 +75,11 @@ public:
 	///
 	SigC::Signal0<void> hideDialog;
 	///
-	void insetButtonPress(BufferView *, int x, int y, int button);
+	void insetButtonPress(BufferView *, int x, int y, mouse_button::state button);
 	///
-	bool insetButtonRelease(BufferView * bv, int x, int y, int button);
+	bool insetButtonRelease(BufferView * bv, int x, int y, mouse_button::state button);
 	///
-	void insetMotionNotify(BufferView *, int x, int y, int state);
+	void insetMotionNotify(BufferView *, int x, int y, mouse_button::state state);
 	///
 	int latex(Buffer const *, std::ostream &, bool fragile,
 		  bool free_spc) const;

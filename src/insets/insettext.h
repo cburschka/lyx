@@ -107,7 +107,7 @@ public:
 	///
 	string const editMessage() const;
 	///
-	void edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, mouse_button::state);
 	///
 	void edit(BufferView *, bool front = true);
 	///
@@ -124,13 +124,11 @@ public:
 	///
 	bool updateInsetInInset(BufferView *, Inset *);
 	///
-	bool insetButtonRelease(BufferView *, int, int, int);
+	bool insetButtonRelease(BufferView *, int, int, mouse_button::state);
 	///
-	void insetButtonPress(BufferView *, int, int, int);
+	void insetButtonPress(BufferView *, int, int, mouse_button::state);
 	///
-	void insetMotionNotify(BufferView *, int, int, int);
-	///
-	void insetKeyPress(XKeyEvent *);
+	void insetMotionNotify(BufferView *, int, int, mouse_button::state);
 	///
 	UpdatableInset::RESULT localDispatch(BufferView *,
 					     kb_action, string const &);
@@ -317,7 +315,7 @@ private:
 	bool checkAndActivateInset(BufferView * bv, bool front);
 	///
 	bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
-				   int button = 0);
+				   mouse_button::state button = mouse_button::none);
 	///
 	void removeNewlines();
 	///

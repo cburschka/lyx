@@ -44,8 +44,8 @@ string const InsetParent::getScreenLabel(Buffer const *) const
 }
 
 
-void InsetParent::edit(BufferView * bv, int, int, unsigned int)
-{
+void InsetParent::edit(BufferView * bv, int, int, mouse_button::state)
+{    
 	bv->owner()->getLyXFunc()->
 		dispatch(LFUN_CHILDOPEN, getContents());
 }
@@ -53,7 +53,7 @@ void InsetParent::edit(BufferView * bv, int, int, unsigned int)
 
 void InsetParent::edit(BufferView * bv, bool)
 {
-	edit(bv, 0, 0, 0);
+	edit(bv, 0, 0, mouse_button::none);
 }
 
 

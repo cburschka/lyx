@@ -17,8 +17,8 @@
 
 #include <vector>
 #include "LString.h"
-#include <X11/Xlib.h>
 #include "commandtags.h"
+#include "frontends/mouse_state.h"
 #include "LColor.h"
 
 class LyXFont;
@@ -151,21 +151,21 @@ public:
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
 	///
-	virtual void edit(BufferView *, int x, int y, unsigned int button);
+	virtual void edit(BufferView *, int x, int y, mouse_button::state button);
 	///
 	virtual void edit(BufferView *, bool front = true);
 	///
 	virtual EDITABLE editable() const;
 	/// This is called when the user clicks inside an inset
-	virtual void insetButtonPress(BufferView *, int, int, int) {}
+	virtual void insetButtonPress(BufferView *, int, int, mouse_button::state) {}
 	/// This is called when the user releases the button inside an inset
 	// the bool return is used to see if we opened a dialog so that we can
 	// check this from an outer inset and open the dialog of the
 	// outer inset if that one has one!
-	virtual bool insetButtonRelease(BufferView *, int, int, int)
+	virtual bool insetButtonRelease(BufferView *, int, int, mouse_button::state)
 		{ return editable() == IS_EDITABLE; }
 	/// This is called when the user moves the mouse inside an inset
-	virtual void insetMotionNotify(BufferView *, int , int , int) {}
+	virtual void insetMotionNotify(BufferView *, int , int, mouse_button::state) {}
 	///
 	virtual bool isTextInset() const { return false; }
 	///
@@ -447,22 +447,20 @@ public:
 	///
 	virtual void getCursorPos(BufferView *, int &, int &) const {}
 	///
-	virtual void insetButtonPress(BufferView *, int x, int y, int button);
+	virtual void insetButtonPress(BufferView *, int x, int y, mouse_button::state button);
 	///
 	// the bool return is used to see if we opened a dialog so that we can
 	// check this from an outer inset and open the dialog of the outer inset
 	// if that one has one!
 	///
 	virtual bool insetButtonRelease(BufferView *,
-					int x, int y, int button);
+	                                int x, int y, mouse_button::state button);
 	///
-	virtual void insetKeyPress(XKeyEvent * ev);
-	///
-	virtual void insetMotionNotify(BufferView *, int x, int y, int state);
+	virtual void insetMotionNotify(BufferView *, int x, int y, mouse_button::state state);
 	///
 	virtual void insetUnlock(BufferView *);
 	///
-	virtual void edit(BufferView *, int x, int y, unsigned int button);
+	virtual void edit(BufferView *, int x, int y, mouse_button::state button);
 	///
 	virtual void edit(BufferView *, bool front = true);
 	///

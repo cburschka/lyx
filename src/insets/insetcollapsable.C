@@ -235,7 +235,7 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 
 
 void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
-			    unsigned int button)
+                            mouse_button::state button)
 {
 	UpdatableInset::edit(bv, xp, yp, button);
 
@@ -313,7 +313,7 @@ void InsetCollapsable::insetUnlock(BufferView * bv)
 
 
 void InsetCollapsable::insetButtonPress(BufferView * bv,
-					int x, int y, int button)
+	int x, int y, mouse_button::state button)
 {
 	if (!collapsed_ && (y > button_bottom_y)) {
 		LyXFont font(LyXFont::ALL_SANE);
@@ -327,10 +327,10 @@ void InsetCollapsable::insetButtonPress(BufferView * bv,
 
 
 bool InsetCollapsable::insetButtonRelease(BufferView * bv,
-					  int x, int y, int button)
+	int x, int y, mouse_button::state button)
 {
 	bool ret = false;
-	if ((button != 3) && (x >= 0)  && (x < button_length) &&
+	if ((button != mouse_button::button3) && (x < button_length) &&
 	    (y >= button_top_y) &&  (y <= button_bottom_y))
 	{
 		if (collapsed_) {
@@ -352,7 +352,7 @@ bool InsetCollapsable::insetButtonRelease(BufferView * bv,
 		     inset.ascent(bv, font));
 		ret = inset.insetButtonRelease(bv, x, yy, button);
 	}
-	if ((button == 3) && !ret) {
+	if ((button == mouse_button::button3) && !ret) {
 		return showInsetDialog(bv);
 	}
 	return ret;
@@ -360,7 +360,7 @@ bool InsetCollapsable::insetButtonRelease(BufferView * bv,
 
 
 void InsetCollapsable::insetMotionNotify(BufferView * bv,
-					 int x, int y, int state)
+	int x, int y, mouse_button::state state)
 {
 	if (y > button_bottom_y) {
 		LyXFont font(LyXFont::ALL_SANE);
@@ -370,12 +370,6 @@ void InsetCollapsable::insetMotionNotify(BufferView * bv,
 		     inset.ascent(bv, font));
 		inset.insetMotionNotify(bv, x, yy, state);
 	}
-}
-
-
-void InsetCollapsable::insetKeyPress(XKeyEvent * xke)
-{
-	inset.insetKeyPress(xke);
 }
 
 

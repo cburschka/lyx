@@ -9,6 +9,8 @@
 #include <X11/Xlib.h>
 #include <sigc++/signal_system.h>
 
+#include "frontends/mouse_state.h"
+#include "frontends/key_state.h"
 #include "commandtags.h" // for kb_action enum
 #include "FuncStatus.h"
 #include "kbsequence.h"
@@ -52,7 +54,7 @@ public:
 	void initMiniBuffer();
 
 	///
-	void processKeySym(KeySym k, unsigned int state);
+	void processKeySym(KeySym key, key_modifier::state state);
 
 	/// we need one internal which is called from inside LyXAction and
 	/// can contain the string argument.
@@ -89,7 +91,7 @@ private:
 	///
 	kb_sequence cancel_meta_seq;
 	///
-	unsigned meta_fake_bit;
+	key_modifier::state meta_fake_bit;
 	///
 	void moveCursorUpdate(bool flag = true, bool selecting = false);
 	///
@@ -139,7 +141,7 @@ private:
 inline
 bool LyXFunc::wasMetaKey() const
 {
-	return (meta_fake_bit != 0);
+	return (meta_fake_bit != key_modifier::none);
 }
 
 

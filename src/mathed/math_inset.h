@@ -28,6 +28,7 @@
 #pragma interface
 #endif
 
+#include "frontends/mouse_state.h"
 #include "math_xdata.h"
 #include "math_defs.h"
 
@@ -224,7 +225,7 @@ public:
 	virtual bool needsBraces() const { return true; }
 
 	///
-	virtual void edit(BufferView *, int, int, unsigned int) {}
+	virtual void edit(BufferView *, int, int, mouse_button::state) {}
 
 	/// request "external features"
 	virtual void validate(LaTeXFeatures & features) const;

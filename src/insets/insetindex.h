@@ -35,7 +35,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	void edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, mouse_button::state);
 	///
 	void edit(BufferView * bv, bool front = true);
 	///
@@ -56,7 +56,7 @@ public:
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
 	///
-	void edit(BufferView *, int, int, unsigned int) {}
+	void edit(BufferView *, int, int, mouse_button::state) {}
 	///
 	void edit(BufferView *, bool = true) {}
 	///

@@ -2332,7 +2332,7 @@ void LyXText::cursorUp(BufferView * bview, bool selecting) const
 		Inset * inset_hit =
 			bview->checkInsetHit(const_cast<LyXText *>(this), x, y1);
 		if (inset_hit && isHighlyEditableInset(inset_hit)) {
-			inset_hit->edit(bview, x, y - (y2 - y1), 0);
+			inset_hit->edit(bview, x, y - (y2 - y1), mouse_button::none);
 		}
 	}
 #else
@@ -2356,7 +2356,7 @@ void LyXText::cursorDown(BufferView * bview, bool selecting) const
 		Inset * inset_hit =
 			bview->checkInsetHit(const_cast<LyXText *>(this), x, y1);
 		if (inset_hit && isHighlyEditableInset(inset_hit)) {
-			inset_hit->edit(bview, x, y - (y2 - y1), 0);
+			inset_hit->edit(bview, x, y - (y2 - y1), mouse_button::none);
 		}
 	}
 #else

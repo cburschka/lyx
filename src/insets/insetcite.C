@@ -307,7 +307,7 @@ string const InsetCitation::getScreenLabel(Buffer const * buffer) const
 }
 
 
-void InsetCitation::edit(BufferView * bv, int, int, unsigned int)
+void InsetCitation::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	// A call to edit() indicates that we're no longer loading the
 	// buffer but doing some real work.
@@ -320,7 +320,7 @@ void InsetCitation::edit(BufferView * bv, int, int, unsigned int)
 
 void InsetCitation::edit(BufferView * bv, bool)
 {
-	edit(bv, 0, 0, 0);
+	edit(bv, 0, 0, mouse_button::none);
 }
 
 

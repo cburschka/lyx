@@ -19,6 +19,7 @@
 #include "BufferView.h"
 #include "support/lstrings.h"
 #include "frontends/Painter.h"
+#include "frontends/mouse_state.h" 
 #include "commandtags.h"
 #include "support/lstrings.h"
 #include "gettext.h"
@@ -79,7 +80,7 @@ bool Inset::autoDelete() const
 }
 
 
-void Inset::edit(BufferView *, int, int, unsigned int)
+void Inset::edit(BufferView *, int, int, mouse_button::state)
 {}
 
 
@@ -172,14 +173,14 @@ UpdatableInset::UpdatableInset(UpdatableInset const & in, bool same_id)
 {}
 
 
-void UpdatableInset::insetButtonPress(BufferView *, int x, int y, int button)
+void UpdatableInset::insetButtonPress(BufferView *, int x, int y, mouse_button::state button)
 {
 	lyxerr[Debug::INFO] << "Inset Button Press x=" << x
 		       << ", y=" << y << ", button=" << button << endl;
 }
 
 
-bool UpdatableInset::insetButtonRelease(BufferView *, int x, int y, int button)
+bool UpdatableInset::insetButtonRelease(BufferView *, int x, int y, mouse_button::state button)
 {
 	lyxerr[Debug::INFO] << "Inset Button Release x=" << x
 		       << ", y=" << y << ", button=" << button << endl;
@@ -187,13 +188,7 @@ bool UpdatableInset::insetButtonRelease(BufferView *, int x, int y, int button)
 }
 
 
-void UpdatableInset::insetKeyPress(XKeyEvent *)
-{
-	lyxerr[Debug::INFO] << "Inset Keypress" << endl;
-}
-
-
-void UpdatableInset::insetMotionNotify(BufferView *, int x, int y, int state)
+void UpdatableInset::insetMotionNotify(BufferView *, int x, int y, mouse_button::state state)
 {
 	lyxerr[Debug::INFO] << "Inset Motion Notify x=" << x
 		       << ", y=" << y << ", state=" << state << endl;
@@ -229,7 +224,7 @@ void UpdatableInset::fitInsetCursor(BufferView *) const
 {}
 
 
-void UpdatableInset::edit(BufferView *, int, int, unsigned int)
+void UpdatableInset::edit(BufferView *, int, int, mouse_button::state)
 {}
 
 

@@ -32,7 +32,7 @@ public:
 	///
 	string const getScreenLabel(Buffer const *) const;
 	///
-	void edit(BufferView * bv, int, int, unsigned int);
+	void edit(BufferView * bv, int, int, mouse_button::state);
 	///
 	void edit(BufferView * bv, bool front = true);
 	///

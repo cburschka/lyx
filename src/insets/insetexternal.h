@@ -44,7 +44,7 @@ public:
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
 	///
-	virtual void edit(BufferView *, int x, int y, unsigned int button);
+	virtual void edit(BufferView *, int x, int y, mouse_button::state button);
 	///
 	virtual void edit(BufferView * bv, bool front = true);
 	///

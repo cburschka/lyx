@@ -5,6 +5,7 @@
 
 #include "BufferView.h"
 #include "commandtags.h"
+#include "frontends/mouse_state.h"
 #include "frontends/Timeout.h"
 // FIXME remove me 
 #include "frontends/WorkArea.h"
@@ -66,17 +67,17 @@ struct BufferView::Pimpl : public SigC::Object {
 	///
 	int scrollDown(long time);
 	///
-	void workAreaKeyPress(KeySym, unsigned int state);
+	void workAreaKeyPress(KeySym, key_modifier::state state);
 	///
-	void workAreaMotionNotify(int x, int y, unsigned int state);
+	void workAreaMotionNotify(int x, int y, mouse_button::state state);
 	///
-	void workAreaButtonPress(int x, int y, unsigned int button);
+	void workAreaButtonPress(int x, int y, mouse_button::state button);
 	///
-	void workAreaButtonRelease(int x, int y, unsigned int button);
+	void workAreaButtonRelease(int x, int y, mouse_button::state button);
 	///
-	void doubleClick(int x, int y, unsigned int button);
+	void doubleClick(int x, int y, mouse_button::state button);
 	///
-	void tripleClick(int x, int y, unsigned int button);
+	void tripleClick(int x, int y, mouse_button::state button);
 	///
 	void selectionRequested();
 	///

@@ -38,5 +38,7 @@ libfrontends_la_SOURCES = \
 	WorkArea.h \
 	font_loader.h \
 	font_metrics.h \
+	key_state.h \
+	mouse_state.h \
 	screen.C \
 	screen.h

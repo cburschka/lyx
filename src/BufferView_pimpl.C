@@ -541,16 +541,16 @@ int BufferView::Pimpl::scrollDown(long time)
 }
 
 
-void BufferView::Pimpl::workAreaKeyPress(KeySym keysym, unsigned int state)
+void BufferView::Pimpl::workAreaKeyPress(KeySym keysym, key_modifier::state state)
 {
 	bv_->owner()->getLyXFunc()->processKeySym(keysym, state);
 }
 
 
-void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
+void BufferView::Pimpl::workAreaMotionNotify(int x, int y, mouse_button::state state)
 {
 	// Only use motion with button 1
-	if (!(state & Button1MotionMask))
+	if (!(state & mouse_button::button1))
 		return;
 
 	if (!buffer_ || !screen_.get()) return;
@@ -613,28 +613,27 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 
 // Single-click on work area
 void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
-					    unsigned int button)
+					    mouse_button::state button)
 {
 	if (!buffer_ || !screen_.get())
 		return;
 
 	// ok ok, this is a hack.
-	// Why??? (Jug20020424)
-	if (button == 4 || button == 5) {
-		switch (button) {
-		case 4:
-			scrollUp(lyxrc.wheel_jump); // default 100, set in lyxrc
-			break;
-		case 5:
-			scrollDown(lyxrc.wheel_jump);
-			break;
-		}
+ 
+	if (button == mouse_button::button4) {
+		scrollUp(lyxrc.wheel_jump);
+		// We shouldn't go further down as we really should only do the
+		// scrolling and be done with this. Otherwise we may open some
+		// dialogs (Jug 20020424).
+		return;
+	} else if (button == mouse_button::button5) {
+		scrollDown(lyxrc.wheel_jump);
 		// We shouldn't go further down as we really should only do the
 		// scrolling and be done with this. Otherwise we may open some
 		// dialogs (Jug 20020424).
 		return;
 	}
-
+ 
 	Inset * inset_hit = checkInsetHit(bv_->text, xpos, ypos);
 
 	// Middle button press pastes if we have a selection
@@ -642,7 +641,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	// it could get cleared on the unlocking of the inset so
 	// we have to check this first
 	bool paste_internally = false;
-	if (button == 2 && bv_->getLyXText()->selection.set()) {
+	if (button == mouse_button::button2 && bv_->getLyXText()->selection.set()) {
 		owner_->getLyXFunc()->dispatch(LFUN_COPY);
 		paste_internally = true;
 	}
@@ -693,7 +692,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	// I'm not sure we should continue here if we hit an inset (Jug20020403)
 
 	// Right click on a footnote flag opens float menu
-	if (button == 3) {
+	if (button == mouse_button::button3) {
 		selection_possible = false;
 		return;
 	}
@@ -712,7 +711,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	// Insert primary selection with middle mouse
 	// if there is a local selection in the current buffer,
 	// insert this
-	if (button == 2) {
+	if (button == mouse_button::button2) {
 		if (paste_internally)
 			owner_->getLyXFunc()->dispatch(LFUN_PASTE);
 		else
@@ -724,9 +723,8 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 }
 
 
-void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
+void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, mouse_button::state button)
 {
-	// select a word
 	if (!buffer_)
 		return;
 
@@ -735,7 +733,7 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 	if (text->bv_owner && bv_->theLockingInset())
 		return;
 
-	if (screen_.get() && button == 1) {
+	if (screen_.get() && button == mouse_button::button1) {
 		if (text->bv_owner) {
 			screen_->hideCursor();
 			screen_->toggleSelection(text, bv_);
@@ -751,9 +749,8 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 }
 
 
-void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
+void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, mouse_button::state button)
 {
-	// select a line
 	if (!buffer_)
 		return;
 
@@ -762,7 +759,7 @@ void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 	if (text->bv_owner && bv_->theLockingInset())
 	    return;
 
-	if (screen_.get() && (button == 1)) {
+	if (screen_.get() && (button == mouse_button::button1)) {
 		if (text->bv_owner) {
 			screen_->hideCursor();
 			screen_->toggleSelection(text, bv_);
@@ -838,10 +835,10 @@ void BufferView::Pimpl::leaveView()
 
 
 void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
-					      unsigned int button)
+					      mouse_button::state button)
 {
 	// do nothing if we used the mouse wheel
-	if (!buffer_ || !screen_.get() || button == 4 || button == 5)
+	if (!buffer_ || !screen_.get() || button == mouse_button::button4 || button == mouse_button::button5)
 		return;
 
 	// If we hit an inset, we have the inset coordinates in these
@@ -862,11 +859,11 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 
 	selection_possible = false;
 
-	if (button == 2)
+	if (button == mouse_button::button2)
 		return;
 
 	// finish selection
-	if (button == 1) {
+	if (button == mouse_button::button1) {
 		workarea_.haveSelection(bv_->getLyXText()->selection.set());
 	}
 
@@ -932,7 +929,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	// Maybe we want to edit a bibitem ale970302
 	if (bv_->text->cursor.par()->bibkey && x < 20 +
 	    bibitemMaxWidth(bv_, textclasslist[buffer_->params.textclass].defaultfont())) {
-		bv_->text->cursor.par()->bibkey->edit(bv_, 0, 0, 0);
+		bv_->text->cursor.par()->bibkey->edit(bv_, 0, 0, mouse_button::none);
 	}
 
 	return;

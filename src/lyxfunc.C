@@ -165,7 +165,7 @@ LyXFunc::LyXFunc(LyXView * o)
 	keyseq(toplevel_keymap.get(), toplevel_keymap.get()),
 	cancel_meta_seq(toplevel_keymap.get(), toplevel_keymap.get())
 {
-	meta_fake_bit = 0;
+	meta_fake_bit = key_modifier::none;
 	lyx_dead_action = LFUN_NOACTION;
 	lyx_calling_dead_action = LFUN_NOACTION;
 }
@@ -222,7 +222,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 }
 
 
-void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
+void LyXFunc::processKeySym(KeySym keysym, key_modifier::state state)
 {
 	string argument;
 
@@ -232,8 +232,7 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 		lyxerr << "KeySym is "
 		       << stm
 		       << "["
-		       << keysym << "] State is ["
-		       << state << "]"
+		       << keysym
 		       << endl;
 	}
 	// Do nothing if we have nothing (JMarc)
@@ -256,33 +255,30 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	// cancel and meta-fake keys. RVDK_PATCH_5
 	cancel_meta_seq.reset();
 
-	int action = cancel_meta_seq.addkey(keysym, state
-					    &(ShiftMask|ControlMask
-					      |Mod1Mask));
+	int action = cancel_meta_seq.addkey(keysym, state);
 	if (lyxerr.debugging(Debug::KEY)) {
 		lyxerr << "action first set to [" << action << "]" << endl;
 	}
 
 	// When not cancel or meta-fake, do the normal lookup.
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
-	// Mostly, meta_fake_bit = 0. RVDK_PATCH_5.
+	// Mostly, meta_fake_bit = key_modifier::none. RVDK_PATCH_5.
 	if ((action != LFUN_CANCEL) && (action != LFUN_META_FAKE)) {
+#if 0
 		if (lyxerr.debugging(Debug::KEY)) {
 			lyxerr << "meta_fake_bit is ["
 			       << meta_fake_bit << "]" << endl;
 		}
+#endif 
 		// remove Caps Lock and Mod2 as a modifiers
-		action = keyseq.addkey(keysym,
-				       (state | meta_fake_bit)
-				       &(ShiftMask|ControlMask
-					 |Mod1Mask));
+		action = keyseq.addkey(keysym, (state | meta_fake_bit));
 		if (lyxerr.debugging(Debug::KEY)) {
 			lyxerr << "action now set to ["
 			       << action << "]" << endl;
 		}
 	}
 	// Dont remove this unless you know what you are doing.
-	meta_fake_bit = 0;
+	meta_fake_bit = key_modifier::none;
 
 	// can this happen now ?
 	if (action == LFUN_NOACTION) {
@@ -307,7 +303,7 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	if (action == LFUN_UNKNOWN_ACTION) {
 		// It is unknown, but what if we remove all
 		// the modifiers? (Lgb)
-		action = keyseq.addkey(keysym, 0);
+		action = keyseq.addkey(keysym, key_modifier::none);
 
 		if (lyxerr.debugging(Debug::KEY)) {
 			lyxerr << "Removing modifiers...\n"
@@ -1075,7 +1071,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 
 	case LFUN_CANCEL:                   // RVDK_PATCH_5
 		keyseq.reset();
-		meta_fake_bit = 0;
+		meta_fake_bit = key_modifier::none;
 		if (owner->view()->available())
 			// cancel any selection
 			dispatch(LFUN_MARK_OFF);
@@ -1084,7 +1080,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 
 	case LFUN_META_FAKE:                                 // RVDK_PATCH_5
 	{
-		meta_fake_bit = Mod1Mask;
+		meta_fake_bit = key_modifier::alt;
 		setMessage(keyseq.print());
 	}
 	break;

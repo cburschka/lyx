@@ -57,7 +57,7 @@ public:
 	/// what appears in the minibuffer when opening
 	string const editMessage() const;
 	///
-	void edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, mouse_button::state);
 	///
 	void edit(BufferView * bv, bool front = true);
 	///

@@ -34,8 +34,8 @@
 #include "math_support.h"
 #include "support/lstrings.h"
 #include "frontends/LyXView.h"
-#include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
+#include "frontends/mouse_state.h"
 #include "Lsstream.h"
 #include "math_arrayinset.h"
 #include "math_charinset.h"
@@ -73,7 +73,7 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 		delete new_inset;
 		return false;
 	}
-	new_inset->edit(bv, 0, 0, 0);
+	new_inset->edit(bv, 0, 0, mouse_button::none);
 	return true;
 }
 
@@ -142,7 +142,7 @@ string const InsetFormulaBase::editMessage() const
 }
 
 
-void InsetFormulaBase::edit(BufferView * bv, int x, int y, unsigned int)
+void InsetFormulaBase::edit(BufferView * bv, int x, int y, mouse_button::state)
 {
 	if (!bv->lockInset(this))
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
@@ -278,7 +278,7 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 
 
 bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
-					  int /*x*/, int /*y*/, int button)
+                                          int /*x*/, int /*y*/, mouse_button::state button)
 {
 	//lyxerr << "insetButtonRelease: " << x << " " << y << "\n";
 
@@ -288,7 +288,7 @@ bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 	showInsetCursor(bv);
 	bv->updateInset(this, false);
 
-	if (button == 3) {
+	if (button == mouse_button::button3) {
 		// launch math panel for right mouse button
 		bv->owner()->getDialogs()->showMathPanel();
 		return true;
@@ -298,7 +298,7 @@ bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 
 
 void InsetFormulaBase::insetButtonPress(BufferView * bv,
-					int x, int y, int button)
+					int x, int y, mouse_button::state button)
 {
 	//lyxerr << "insetButtonPress: "
 	//	<< x << " " << y << " but: " << button << "\n";
@@ -337,7 +337,7 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 			break;
 	}
 #else
-	if (button == 1 || !mathcursor) {
+	if (button == mouse_button::button1 || !mathcursor) {
 		delete mathcursor;
 		mathcursor = new MathCursor(this, x == 0);
 		metrics(bv);
@@ -359,7 +359,7 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 
 
 void InsetFormulaBase::insetMotionNotify(BufferView * bv,
-					 int x, int y, int /*button*/)
+	int x, int y, mouse_button::state)
 {
 	if (!mathcursor)
 		return;
@@ -380,12 +380,6 @@ void InsetFormulaBase::insetMotionNotify(BufferView * bv,
 	mathcursor->setPos(x + xo_, y + yo_);
 	showInsetCursor(bv);
 	bv->updateInset(this, false);
-}
-
-
-void InsetFormulaBase::insetKeyPress(XKeyEvent *)
-{
-	lyxerr[Debug::MATHED] << "Used InsetFormulaBase::InsetKeyPress." << endl;
 }
 
 

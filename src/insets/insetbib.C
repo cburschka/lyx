@@ -110,7 +110,7 @@ string const InsetBibKey::getScreenLabel(Buffer const *) const
 }
 
 
-void InsetBibKey::edit(BufferView * bv, int, int, unsigned int)
+void InsetBibKey::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	bv->owner()->getDialogs()->showBibitem(this);
 }
@@ -118,7 +118,7 @@ void InsetBibKey::edit(BufferView * bv, int, int, unsigned int)
 
 void InsetBibKey::edit(BufferView * bv, bool)
 {
-	edit(bv, 0, 0, 0);
+	edit(bv, 0, 0, mouse_button::none);
 }
 
 
@@ -278,7 +278,7 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 }
 
 
-void InsetBibtex::edit(BufferView * bv, int, int, unsigned int)
+void InsetBibtex::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	bv->owner()->getDialogs()->showBibtex(this);
 }
@@ -286,7 +286,7 @@ void InsetBibtex::edit(BufferView * bv, int, int, unsigned int)
 
 void InsetBibtex::edit(BufferView * bv, bool)
 {
-	edit(bv, 0, 0, 0);
+	edit(bv, 0, 0, mouse_button::none);
 }
 
 

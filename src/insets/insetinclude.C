@@ -123,7 +123,7 @@ Inset * InsetInclude::clone(Buffer const & buffer, bool) const
 }
 
 
-void InsetInclude::edit(BufferView * bv, int, int, unsigned int)
+void InsetInclude::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	bv->owner()->getDialogs()->showInclude(this);
 }
@@ -131,7 +131,7 @@ void InsetInclude::edit(BufferView * bv, int, int, unsigned int)
 
 void InsetInclude::edit(BufferView * bv, bool)
 {
-	edit(bv, 0, 0, 0);
+	edit(bv, 0, 0, mouse_button::none);
 }
 
 

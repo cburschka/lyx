@@ -12,8 +12,12 @@
 #pragma interface
 #endif
 
-#include <vector>
+#include <config.h>
+
+#include "frontends/key_state.h"
 #include "LString.h"
+
+#include <vector>
 
 class kb_keymap;
 
@@ -31,11 +35,13 @@ public:
 	/**
 	 * Add a key to the key sequence and look it up in the curmap
 	 * if the latter is defined.
+	 * @param text the text from the key event
 	 * @param mod modifier mask
 	 * @param nmod which modifiers to mask out for equality test
 	 * @return the action matching this key sequence or LFUN_UNKNOWN_ACTION
 	 */
-	int addkey(unsigned int key, unsigned int mod, unsigned int nmod = 0);
+	int addkey(unsigned int text, key_modifier::state mod,
+		key_modifier::state nmod = key_modifier::none);
 
 	/**
 	 * Add a sequence of keys from a string to the sequence
@@ -96,8 +102,9 @@ private:
 	 */
 	std::vector<unsigned int> sequence;
 
+	typedef std::pair<key_modifier::state, key_modifier::state> modifier_pair;
 	/// modifiers for keys in the sequence
-	std::vector<unsigned int> modifiers;
+	std::vector<modifier_pair> modifiers;
 
 	/// Current length of key sequence
 	std::vector<unsigned int>::size_type length_;

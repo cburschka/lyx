@@ -364,7 +364,7 @@ void InsetGraphics::updateInset(string const & filepath) const
 }
 
 
-void InsetGraphics::edit(BufferView *bv, int, int, unsigned int)
+void InsetGraphics::edit(BufferView *bv, int, int, mouse_button::state)
 {
 	bv->owner()->getDialogs()->showGraphics(this);
 }
@@ -372,7 +372,7 @@ void InsetGraphics::edit(BufferView *bv, int, int, unsigned int)
 
 void InsetGraphics::edit(BufferView * bv, bool)
 {
-	edit(bv, 0, 0, 0);
+	edit(bv, 0, 0, mouse_button::none);
 }
 
 

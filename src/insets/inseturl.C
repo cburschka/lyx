@@ -21,7 +21,7 @@ InsetUrl::InsetUrl(InsetCommandParams const & p, bool)
 {}
 
 
-void InsetUrl::edit(BufferView * bv, int, int, unsigned int)
+void InsetUrl::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	bv->owner()->getDialogs()->showUrl(this);
 }
@@ -29,7 +29,7 @@ void InsetUrl::edit(BufferView * bv, int, int, unsigned int)
 
 void InsetUrl::edit(BufferView * bv, bool)
 {
-	edit(bv, 0, 0, 0);
+	edit(bv, 0, 0, mouse_button::none);
 }
 
 

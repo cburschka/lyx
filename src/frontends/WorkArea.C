@@ -47,6 +47,64 @@ void waitForX()
 	XSync(fl_get_display(), 0);
 }
 
+// FIXME !
+mouse_button::state x_button_state(unsigned int button)
+{
+	mouse_button::state b = mouse_button::none;
+	switch (button) {
+		case Button1:
+			b = mouse_button::button1;
+			break;
+		case Button2:
+			b = mouse_button::button2;
+			break;
+		case Button3:
+			b = mouse_button::button3;
+			break;
+		case Button4:
+			b = mouse_button::button4;
+			break;
+		case Button5:
+			b = mouse_button::button5;
+			break;
+		default: // FIXME
+			break;
+	}
+	return b;
+}
+ 
+ 
+// FIXME
+mouse_button::state x_motion_state(unsigned int state)
+{
+	mouse_button::state b = mouse_button::none;
+	if (state & Button1MotionMask)
+		b |= mouse_button::button1;
+	if (state & Button2MotionMask)
+		b |= mouse_button::button2;
+	if (state & Button3MotionMask)
+		b |= mouse_button::button3;
+	if (state & Button4MotionMask)
+		b |= mouse_button::button4;
+	if (state & Button5MotionMask)
+		b |= mouse_button::button5;
+	return b;
+}
+ 
+
+key_modifier::state x_key_state(unsigned int state)
+{
+        key_modifier::state k = key_modifier::none;
+        if (state & ControlMask)
+		k |= key_modifier::ctrl;
+        if (state & ShiftMask)
+		k |= key_modifier::shift;
+        if (state & Mod1Mask)
+		k |= key_modifier::alt;
+        return k;
+}
+ 
+ 
 } // anon namespace
 
 
@@ -357,8 +415,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		lyxerr[Debug::WORKAREA] << "Workarea event: PUSH" << endl;
 		area->workAreaButtonPress(ev->xbutton.x - ob->x,
 					  ev->xbutton.y - ob->y,
-					  ev->xbutton.button);
-		//area->workAreaKeyPress(XK_Pointer_Button1, ev->xbutton.state);
+					  x_button_state(ev->xbutton.button));
 		break;
 	case FL_RELEASE:
 		if (!ev || ev->xbutton.button == 0) break;
@@ -366,7 +423,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		lyxerr[Debug::WORKAREA] << "Workarea event: RELEASE" << endl;
 		area->workAreaButtonRelease(ev->xbutton.x - ob->x,
 				      ev->xbutton.y - ob->y,
-				      ev->xbutton.button);
+				      x_button_state(ev->xbutton.button));
 		break;
 #if FL_REVISION < 89
 	case FL_MOUSE:
@@ -381,7 +438,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			lyxerr[Debug::WORKAREA] << "Workarea event: MOUSE" << endl;
 			area->workAreaMotionNotify(ev->xmotion.x - ob->x,
 					     ev->xmotion.y - ob->y,
-					     ev->xbutton.state);
+					     x_motion_state(ev->xbutton.state));
 		}
 		break;
 #if FL_REVISION < 89
@@ -490,7 +547,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		last_key_pressed = xke->keycode;
 		last_state_pressed = ret_state;
 
-		area->workAreaKeyPress(ret_key, ret_state);
+		area->workAreaKeyPress(ret_key, x_key_state(ret_state));
 	}
 	break;
 
@@ -521,14 +578,14 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		lyxerr[Debug::WORKAREA] << "Workarea event: DBLCLICK" << endl;
 		area->workAreaDoubleClick(ev->xbutton.x - ob->x,
 					  ev->xbutton.y - ob->y,
-					  ev->xbutton.button);
+					  x_button_state(ev->xbutton.button));
 		break;
 	case FL_TRPLCLICK:
 		if (!ev) break;
 		lyxerr[Debug::WORKAREA] << "Workarea event: TRPLCLICK" << endl;
 		area->workAreaTripleClick(ev->xbutton.x - ob->x,
 					  ev->xbutton.y - ob->y,
-					  ev->xbutton.button);
+					  x_button_state(ev->xbutton.button));
 		break;
 	case FL_OTHER:
 		if (!ev) break;

@@ -21,6 +21,7 @@
 
 #include <iosfwd>
 #include "insets/inset.h"
+#include "frontends/mouse_state.h"
 #include "lyxfont.h"
 
 // only for getType():
@@ -64,7 +65,7 @@ public:
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
 	///
-	virtual void edit(BufferView *, int x, int y, unsigned int button);
+	virtual void edit(BufferView *, int x, int y, mouse_button::state button);
 	///
 	virtual void edit(BufferView *, bool front = true);
 	///
@@ -78,13 +79,11 @@ public:
 	///
 	virtual void toggleInsetSelection(BufferView * bv);
 	///
-	virtual void insetButtonPress(BufferView *, int x, int y, int button);
+	virtual void insetButtonPress(BufferView *, int x, int y, mouse_button::state button);
 	///
-	virtual bool insetButtonRelease(BufferView *, int x, int y, int button);
+	virtual bool insetButtonRelease(BufferView *, int x, int y, mouse_button::state button);
 	///
-	virtual void insetKeyPress(XKeyEvent * ev);
-	///
-	virtual void insetMotionNotify(BufferView *, int x, int y, int state);
+	virtual void insetMotionNotify(BufferView *, int x, int y, mouse_button::state state);
 	///
 	virtual void insetUnlock(BufferView *);
 

@@ -36,7 +36,7 @@ Inset::Code InsetTOC::lyxCode() const
 }
 
 
-void InsetTOC::edit(BufferView * bv, int, int, unsigned int)
+void InsetTOC::edit(BufferView * bv, int, int, mouse_button::state)
 {
 	bv->owner()->getDialogs()->showTOC(this);
 }
@@ -44,7 +44,7 @@ void InsetTOC::edit(BufferView * bv, int, int, unsigned int)
 
 void InsetTOC::edit(BufferView * bv, bool)
 {
-	edit(bv, 0, 0, 0);
+	edit(bv, 0, 0, mouse_button::none);
 }
 
 

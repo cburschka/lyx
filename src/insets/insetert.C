@@ -263,10 +263,9 @@ void InsetERT::updateStatus(BufferView * bv, bool swap) const
 	}
 }
 
-
-void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
+void InsetERT::edit(BufferView * bv, int x, int y, mouse_button::state button)
 {
-	if (button == 3)
+	if (button == mouse_button::button3)
 		return;
 
 	if (status_ == Inlined) {
@@ -300,7 +299,7 @@ void InsetERT::edit(BufferView * bv, bool front)
 
 
 void InsetERT::insetButtonPress(BufferView * bv,
-					int x, int y, int button)
+	int x, int y, mouse_button::state button)
 {
 	if (status_ == Inlined) {
 		inset.insetButtonPress(bv, x, y, button);
@@ -310,9 +309,10 @@ void InsetERT::insetButtonPress(BufferView * bv,
 }
 
 
-bool InsetERT::insetButtonRelease(BufferView * bv, int x, int y, int button)
+bool InsetERT::insetButtonRelease(BufferView * bv, int x, int y, 
+	mouse_button::state button)
 {
-	if (button == 3) {
+	if (button == mouse_button::button3) {
 		showInsetDialog(bv);
 		return true;
 	}
@@ -338,7 +338,7 @@ bool InsetERT::insetButtonRelease(BufferView * bv, int x, int y, int button)
 
 
 void InsetERT::insetMotionNotify(BufferView * bv,
-					 int x, int y, int state)
+	int x, int y, mouse_button::state state)
 {
 	if (status_ == Inlined) {
 		inset.insetMotionNotify(bv, x, y, state);

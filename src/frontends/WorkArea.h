@@ -22,6 +22,8 @@
 
 #include FORMS_H_LOCATION
 #include "frontends/Painter.h"
+#include "frontends/mouse_state.h"
+#include "frontends/key_state.h"
 
 ///
 class WorkArea {
@@ -107,13 +109,13 @@ public:
 	///
 	SigC::Signal1<void, double> scrollCB;
 	///
-	SigC::Signal2<void, KeySym, unsigned int> workAreaKeyPress;
+	SigC::Signal2<void, KeySym, key_modifier::state> workAreaKeyPress;
 	///
-	SigC::Signal3<void, int, int, unsigned int> workAreaButtonPress;
+	SigC::Signal3<void, int, int, mouse_button::state> workAreaButtonPress;
 	///
-	SigC::Signal3<void, int, int, unsigned int> workAreaButtonRelease;
+	SigC::Signal3<void, int, int, mouse_button::state> workAreaButtonRelease;
 	///
-	SigC::Signal3<void, int, int, unsigned int> workAreaMotionNotify;
+	SigC::Signal3<void, int, int, mouse_button::state> workAreaMotionNotify;
 	///
 	SigC::Signal0<void> workAreaFocus;
 	///
@@ -123,9 +125,9 @@ public:
 	///
 	SigC::Signal0<void> workAreaLeave;
 	///
-	SigC::Signal3<void, int, int, unsigned int> workAreaDoubleClick;
+	SigC::Signal3<void, int, int, mouse_button::state> workAreaDoubleClick;
 	///
-	SigC::Signal3<void, int, int, unsigned int> workAreaTripleClick;
+	SigC::Signal3<void, int, int, mouse_button::state> workAreaTripleClick;
 	/// emitted when an X client has requested our selection
 	SigC::Signal0<void> selectionRequested;
 	/// emitted when another X client has stolen our selection

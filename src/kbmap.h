@@ -16,6 +16,7 @@
 #endif
 
 #include "LString.h"
+#include "frontends/key_state.h"
 
 #include <boost/shared_ptr.hpp>
 
@@ -44,7 +45,7 @@ public:
 	 * @return the action / LFUN_PREFIX / LFUN_UNKNOWN_ACTION
 	 */
 	int lookup(unsigned int key,
-		   unsigned int mod, kb_sequence * seq) const;
+		   key_modifier::state mod, kb_sequence * seq) const;
 
 	/// Given an action, find all keybindings.
 	string const findbinding(int action,
@@ -55,19 +56,21 @@ public:
 	 * @param key the key
 	 * @param mod the modifiers
 	 */
-	static string const printKeysym(unsigned int key, unsigned int mod);
+	static string const printKeysym(unsigned int key, key_modifier::state mod);
 
 	/// return the ISO value of a keysym
 	static char getiso(unsigned int i);
 
 private:
+	typedef std::pair<key_modifier::state, key_modifier::state> modifier_pair;
+ 
 	///
 	struct kb_key {
 		/// Keysym
 		unsigned int code;
 
 		/// Modifier masks
-		unsigned int mod;
+		modifier_pair mod;
 
 		/// Keymap for prefix keys
 		boost::shared_ptr<kb_keymap> table;

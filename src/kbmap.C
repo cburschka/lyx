@@ -28,16 +28,15 @@ using std::endl;
 enum { ModsMask = ShiftMask | ControlMask | Mod1Mask };
 
 
-string const kb_keymap::printKeysym(unsigned int key, unsigned int mod)
+string const kb_keymap::printKeysym(unsigned int key, key_modifier::state mod)
 {
 	string buf;
-	mod &= ModsMask;
 
 	char const * const s = XKeysymToString(key);
 
-	if (mod & ShiftMask) buf += "S-";
-	if (mod & ControlMask) buf += "C-";
-	if (mod & Mod1Mask) buf += "M-";
+	if (mod & key_modifier::shift) buf += "S-";
+	if (mod & key_modifier::ctrl) buf += "C-";
+	if (mod & key_modifier::alt) buf += "M-";
 	if (s) buf += s;
 	return buf;
 }
@@ -68,7 +67,7 @@ char kb_keymap::getiso(unsigned int c)
 
 string const kb_keymap::printKey(kb_key const & key) const
 {
-	return printKeysym(key.code, key.mod & 0xffff);
+	return printKeysym(key.code, key.mod.first);
 }
 
 
@@ -96,7 +95,7 @@ string::size_type kb_keymap::bind(string const & seq, int action)
 
 
 int kb_keymap::lookup(unsigned int key,
-		      unsigned int mod, kb_sequence * seq) const
+		      key_modifier::state mod, kb_sequence * seq) const
 {
 	if (table.empty()) {
 		seq->curmap = seq->stdmap;
@@ -104,14 +103,13 @@ int kb_keymap::lookup(unsigned int key,
 		return LFUN_UNKNOWN_ACTION;
 	}
 
-	//suppress modifier bits we do not handle
-	mod &= ModsMask;
-
 	for (Table::const_iterator cit = table.begin();
 	     cit != table.end(); ++cit) {
-		unsigned int const msk1 = cit->mod & 0xffff;
-		unsigned int const msk0 = (cit->mod >> 16) & 0xffff;
-		if (cit->code == key && (mod & ~msk0) == msk1) {
+		key_modifier::state mask(cit->mod.second);
+		key_modifier::state check =
+			static_cast<key_modifier::state>(mod & ~mask);
+ 
+		if (cit->code == key && cit->mod.first == check) {
 			// match found
 			if (cit->table.get()) {
 				// this is a prefix key - set new map
@@ -150,11 +148,12 @@ void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
 	unsigned int const code = seq->sequence[r];
 	if (code == NoSymbol) return;
 
-	unsigned int const modmsk = seq->modifiers[r];
+	key_modifier::state const mod1 = seq->modifiers[r].first;
+	key_modifier::state const mod2 = seq->modifiers[r].second;
 
 	// check if key is already there
 	for (Table::iterator it = table.begin(); it != table.end(); ++it) {
-		if (code == it->code && modmsk == it->mod) {
+		if (code == it->code && mod1 == it->mod.first && mod2 == it->mod.second) {
 			// overwrite binding
 			if (r + 1 == seq->length()) {
 				lyxerr[Debug::KBMAP]
@@ -181,7 +180,7 @@ void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
 
 	Table::iterator newone = table.insert(table.end(), kb_key());
 	newone->code = code;
-	newone->mod = modmsk;
+	newone->mod = seq->modifiers[r];
 	if (r + 1 == seq->length()) {
 		newone->action = action;
 		newone->table.reset();

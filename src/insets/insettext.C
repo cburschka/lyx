@@ -675,7 +675,7 @@ string const InsetText::editMessage() const
 }
 
 
-void InsetText::edit(BufferView * bv, int x, int y, unsigned int button)
+void InsetText::edit(BufferView * bv, int x, int y, mouse_button::state button)
 {
 	UpdatableInset::edit(bv, x, y, button);
 
@@ -698,7 +698,8 @@ void InsetText::edit(BufferView * bv, int x, int y, unsigned int button)
 	// we put here -1 and not button as now the button in the
 	// edit call should not be needed we will fix this in 1.3.x
 	// cycle hopefully (Jug 20020509)
-	if (!checkAndActivateInset(bv, x, tmp_y, -1)) {
+	// FIXME: GUII I've changed this to none: probably WRONG
+	if (!checkAndActivateInset(bv, x, tmp_y, mouse_button::none)) {
 		lt->setCursorFromCoordinates(bv, x - drawTextXOffset,
 					    y + insetAscent);
 		lt->cursor.x_fix(lt->cursor.x());
@@ -994,7 +995,8 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 }
 
 
-void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
+void InsetText::insetButtonPress(BufferView * bv, 
+	int x, int y, mouse_button::state button)
 {
 	no_selection = true;
 
@@ -1054,9 +1056,9 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 			return;
 		}
 	}
-	if (!inset) { // && (button == 2)) {
+	if (!inset) { // && (button == mouse_button::button2)) {
 		bool paste_internally = false;
-		if ((button == 2) && getLyXText(bv)->selection.set()) {
+		if ((button == mouse_button::button2) && getLyXText(bv)->selection.set()) {
 			localDispatch(bv, LFUN_COPY, "");
 			paste_internally = true;
 		}
@@ -1092,7 +1094,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,
 		// insert this
-		if (button == 2) {
+		if (button == mouse_button::button2) {
 			if (paste_internally)
 				localDispatch(bv, LFUN_PASTE, "");
 			else
@@ -1106,7 +1108,8 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 }
 
 
-bool InsetText::insetButtonRelease(BufferView * bv, int x, int y, int button)
+bool InsetText::insetButtonRelease(BufferView * bv, 
+	int x, int y, mouse_button::state button)
 {
 	no_selection = true;
 	if (the_locking_inset) {
@@ -1136,7 +1139,7 @@ bool InsetText::insetButtonRelease(BufferView * bv, int x, int y, int button)
 }
 
 
-void InsetText::insetMotionNotify(BufferView * bv, int x, int y, int state)
+void InsetText::insetMotionNotify(BufferView * bv, int x, int y, mouse_button::state state)
 {
 	if (the_locking_inset) {
 		the_locking_inset->insetMotionNotify(bv, x - inset_x,
@@ -1170,15 +1173,6 @@ void InsetText::insetMotionNotify(BufferView * bv, int x, int y, int state)
 		updateLocal(bv, SELECTION, false);
 	}
 	showInsetCursor(bv);
-}
-
-
-void InsetText::insetKeyPress(XKeyEvent * xke)
-{
-	if (the_locking_inset) {
-		the_locking_inset->insetKeyPress(xke);
-		return;
-	}
 }
 
 
@@ -2069,7 +2063,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool front)
 
 
 bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
-				      int button)
+				      mouse_button::state button)
 {
 	x -= drawTextXOffset;
 	int dummyx = x;
@@ -2078,7 +2072,9 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 	// we only do the edit() call if the inset was hit by the mouse
 	// or if it is a highly editable inset. So we should call this
 	// function from our own edit with button < 0.
-	if (button < 0 && !isHighlyEditableInset(inset))
+	// FIXME: GUII jbl. I've changed this to ::none for now which is probably
+	// WRONG
+	if (button == mouse_button::none && !isHighlyEditableInset(inset))
 		return false;
 	
 	if (inset) {
