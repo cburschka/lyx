@@ -973,10 +973,10 @@ void RowPainter::paint()
 
 int paintRows(BufferView const & bv, LyXText const & text,
 	ParagraphList::iterator pit, RowList::iterator rit,
-	int xo, int y, int yf, int yo)
+	int xo, int yo, int y)
 {
 	//lyxerr << "  paintRows: rit: " << &*rit << endl;
-	int const yy = yf - y;
+	int const yy = yo;
 	int const y2 = bv.painter().paperHeight();
 
 	ParagraphList::iterator end = text.ownerParagraphs().end();
@@ -1013,11 +1013,11 @@ int paintText(BufferView & bv)
 	ParagraphList::iterator pit;
 	RowList::iterator rit = bv.text->getRowNearY(topy, pit);
 	int const y = pit->y + rit->y_offset() - topy;
-	return paintRows(bv, *bv.text, pit, rit, 0, y, y, 0);
+	return paintRows(bv, *bv.text, pit, rit, 0, 0, y);
 }
 
 
-void paintTextInset(BufferView & bv, LyXText & text, int x, int baseline)
+void paintTextInset(BufferView & bv, LyXText & text, int xo, int baseline)
 {
 	RowList::iterator rit = text.firstRow();
 	RowList::iterator end = text.endRow();
@@ -1030,9 +1030,9 @@ void paintTextInset(BufferView & bv, LyXText & text, int x, int baseline)
 		text.nextRow(pit, rit);
 	}
 	if (y_offset < 0)
-		paintRows(bv, text, pit, rit, x, 0, y, y);
+		paintRows(bv, text, pit, rit, xo, y, 0);
 	else
-		paintRows(bv, text, pit, rit, x, 0, y_offset, y_offset);
+		paintRows(bv, text, pit, rit, xo, y_offset, 0);
 }
 
 
