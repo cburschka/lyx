@@ -5,7 +5,6 @@
 
 #include "support/types.h"
 
-
 class Inset;
 class BufferView;
 
@@ -24,30 +23,11 @@ public:
 	};
 	///
 	typedef std::vector<InsetTable> List;
-
 	///
-	class iterator {
-	public:
-		///
-		iterator() {}
-		//
-		iterator(List::iterator const & iter);
-		///
-		iterator & operator++();
-		///
-		iterator operator++(int);
-		///
-		lyx::pos_type getPos() const;
-		///
-		Inset * getInset() const;
-		///
-		void setInset(Inset * inset);
-		///
-		friend bool operator==(iterator const &, iterator const &);
-	private:
-		///
-		List::iterator it;
-	};
+	typedef List::iterator iterator;
+	///
+	typedef List::const_iterator const_iterator;
+	
 	///
 	~InsetList();
 	///
@@ -55,9 +35,9 @@ public:
 	///
 	iterator end();
 	///
-	iterator begin() const;
+	const_iterator begin() const;
 	///
-	iterator end() const;
+	const_iterator end() const;
 	///
 	iterator insetIterator(lyx::pos_type pos);
 	///
@@ -80,12 +60,5 @@ private:
 	///
 	List list;
 };
-
-///
-bool operator==(InsetList::iterator const & i1,
-		InsetList::iterator const & i2);
-///
-bool operator!=(InsetList::iterator const & i1,
-		InsetList::iterator const & i2);
 
 #endif

@@ -25,45 +25,7 @@ struct MatchIt {
 	}
 };
 
-}
-
-
-InsetList::iterator::iterator(InsetList::List::iterator const & iter)
-	: it(iter)
-{}
-
-
-InsetList::iterator & InsetList::iterator::operator++()
-{
-	++it;
-	return *this;
-}
-
-
-InsetList::iterator InsetList::iterator::operator++(int)
-{
-	iterator tmp = *this;
-	++*this;
-	return tmp;
-}
-
-
-pos_type InsetList::iterator::getPos() const
-{
-	return it->pos;
-}
-
-
-Inset * InsetList::iterator::getInset() const
-{
-	return it->inset;
-}
-
-
-void InsetList::iterator::setInset(Inset * inset)
-{
-	it->inset = inset;
-}
+} // namespace anon
 
 
 InsetList::~InsetList()
@@ -80,25 +42,25 @@ InsetList::~InsetList()
 
 InsetList::iterator InsetList::begin()
 {
-	return iterator(list.begin());
+	return list.begin();
 }
 
 
 InsetList::iterator InsetList::end()
 {
-	return iterator(list.end());
+	return list.end();
 }
 
 
-InsetList::iterator InsetList::begin() const
+InsetList::const_iterator InsetList::begin() const
 {
-	return iterator(const_cast<InsetList*>(this)->list.begin());
+	return list.begin();
 }
 
 
-InsetList::iterator InsetList::end() const
+InsetList::const_iterator InsetList::end() const
 {
-	return iterator(const_cast<InsetList*>(this)->list.end());
+	return list.end();
 }
 
 
@@ -109,17 +71,18 @@ InsetList::insetIterator(pos_type pos)
 	List::iterator it = lower_bound(list.begin(),
 					list.end(),
 					search_elem, MatchIt());
-	return iterator(it);
+	return it;
 }
 
 
 void InsetList::insert(Inset * inset, lyx::pos_type pos)
 {
 	InsetTable search_elem(pos, 0);
+	List::iterator end = list.end();
 	List::iterator it = lower_bound(list.begin(),
-					list.end(),
+					end,
 					search_elem, MatchIt());
-	if (it != list.end() && it->pos == pos) {
+	if (it != end && it->pos == pos) {
 		lyxerr << "ERROR (InsetList::insert): "
 		       << "There is an inset in position: " << pos << endl;
 	} else {
@@ -131,11 +94,12 @@ void InsetList::insert(Inset * inset, lyx::pos_type pos)
 void InsetList::erase(pos_type pos)
 {
 	InsetTable search_elem(pos, 0);
+	List::iterator end = list.end();
 	List::iterator it =
 		lower_bound(list.begin(),
-			    list.end(),
+			    end,
 			    search_elem, MatchIt());
-	if (it != list.end() && it->pos == pos) {
+	if (it != end && it->pos == pos) {
 		delete it->inset;
 		list.erase(it);
 	}
@@ -145,11 +109,12 @@ void InsetList::erase(pos_type pos)
 Inset * InsetList::release(pos_type pos)
 {
 	InsetTable search_elem(pos, 0);
+	List::iterator end = list.end();
 	List::iterator it =
 		lower_bound(list.begin(),
-			    list.end(),
+			    end,
 			    search_elem, MatchIt());
-	if (it != list.end() && it->pos == pos) {
+	if (it != end && it->pos == pos) {
 		Inset * tmp = it->inset;
 		it->inset = 0;
 		return tmp;
@@ -161,11 +126,12 @@ Inset * InsetList::release(pos_type pos)
 Inset * InsetList::get(pos_type pos) const
 {
 	InsetTable search_elem(pos, 0);
-	List::iterator it =
-		lower_bound(const_cast<InsetList*>(this)->list.begin(),
-			    const_cast<InsetList*>(this)->list.end(),
+	List::const_iterator end = list.end();
+	List::const_iterator it =
+		lower_bound(list.begin(),
+			    end,
 			    search_elem, MatchIt());
-	if (it != const_cast<InsetList*>(this)->list.end() && it->pos == pos)
+	if (it != end && it->pos == pos)
 		return it->inset;
 	return 0;
 }
@@ -174,10 +140,10 @@ Inset * InsetList::get(pos_type pos) const
 void InsetList::increasePosAfterPos(pos_type pos)
 {
 	InsetTable search_elem(pos, 0);
-	List::iterator it = lower_bound(list.begin(),
-					list.end(),
-					search_elem, MatchIt());
 	List::iterator end = list.end();
+	List::iterator it = lower_bound(list.begin(),
+					end,
+					search_elem, MatchIt());
 	for (; it != end; ++it) {
 		++it->pos;
 	}
@@ -224,20 +190,4 @@ void InsetList::resizeInsetsLyXText(BufferView * bv)
 			}
 		}
 	}
-}
-
-
-
-bool operator==(InsetList::iterator const & i1,
-		InsetList::iterator const & i2)
-{
-	return i1.it == i2.it;
-
-}
-
-
-bool operator!=(InsetList::iterator const & i1,
-		InsetList::iterator const & i2)
-{
-	return !(i1 == i2);
 }

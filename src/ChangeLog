@@ -1,5 +1,25 @@
 2003-05-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* toc.C (getTocList): adjust
+
+	* paragraph_pimpl.C (validate): adjust
+
+	* paragraph_funcs.C (optArgInset): use const_iterator, adjust
+
+	* paragraph.C (Paragraph): adjust
+	(getPositionOfInset): use const_iterator, adjust
+	(bibitem): use const_iterator, adjust
+	(setInsetOwner): adjust
+
+	* iterators.C (operator++): adjust
+
+	* InsetList.[Ch]: Replace selfmade iterator with standard
+	vector::iterator also introduce const_iterator. Remove getPos,
+	getInset and setInset from InsetTable. Adjust accordingly.
+
+	* BufferView.C (lockInset): adjust
+	(ChangeInsets): adjust
+
 	* tabular.[Ch]: delete commented same_id functions
 
 2003-05-28  John Levon  <levon@movementarian.org>

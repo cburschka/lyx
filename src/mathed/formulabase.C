@@ -142,7 +142,7 @@ void InsetFormulaBase::validate(LaTeXFeatures &) const
 
 
 void InsetFormulaBase::metrics(BufferView * bv, LyXFont const & f,
-	Dimension & dim) const
+			       Dimension & /*dim*/) const
 {
 	font_ = f;
 	metrics(bv);

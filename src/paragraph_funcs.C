@@ -425,10 +425,10 @@ TeXEnvironment(Buffer const * buf,
 InsetOptArg * optArgInset(Paragraph const & par)
 {
 	// Find the entry.
-	InsetList::iterator it = par.insetlist.begin();
-	InsetList::iterator end = par.insetlist.end();
+	InsetList::const_iterator it = par.insetlist.begin();
+	InsetList::const_iterator end = par.insetlist.end();
 	for (; it != end; ++it) {
-		Inset * ins = it.getInset();
+		Inset * ins = it->inset;
 		if (ins->lyxCode() == Inset::OPTARG_CODE) {
 			return static_cast<InsetOptArg *>(ins);
 		}

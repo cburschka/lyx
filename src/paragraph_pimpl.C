@@ -821,10 +821,10 @@ void Paragraph::Pimpl::validate(LaTeXFeatures & features,
 	InsetList::iterator icit = owner_->insetlist.begin();
 	InsetList::iterator iend = owner_->insetlist.end();
 	for (; icit != iend; ++icit) {
-		if (icit.getInset()) {
-			icit.getInset()->validate(features);
+		if (icit->inset) {
+			icit->inset->validate(features);
 			if (layout.needprotect &&
-			    icit.getInset()->lyxCode() == Inset::FOOT_CODE)
+			    icit->inset->lyxCode() == Inset::FOOT_CODE)
 				features.require("NeedLyXFootnoteCode");
 		}
 	}

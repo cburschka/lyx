@@ -535,15 +535,15 @@ bool BufferView::lockInset(UpdatableInset * inset)
 			InsetList::iterator it = pit->insetlist.begin();
 			InsetList::iterator end = pit->insetlist.end();
 			for (; it != end; ++it) {
-				if (it.getInset() == inset) {
-					text->setCursorIntern(pit, it.getPos());
+				if (it->inset == inset) {
+					text->setCursorIntern(pit, it->pos);
 					theLockingInset(inset);
 					return true;
 				}
-				if (it.getInset()->getInsetFromID(id)) {
-					text->setCursorIntern(pit, it.getPos());
+				if (it->inset->getInsetFromID(id)) {
+					text->setCursorIntern(pit, it->pos);
 					FuncRequest cmd(this, LFUN_INSET_EDIT, "left");
-					it.getInset()->localDispatch(cmd);
+					it->inset->localDispatch(cmd);
 					return theLockingInset()->lockInsetInInset(this, inset);
 				}
 			}
@@ -629,8 +629,8 @@ bool BufferView::ChangeInsets(Inset::Code code,
 		bool changed_inset = false;
 		for (InsetList::iterator it2 = it->insetlist.begin();
 		     it2 != it->insetlist.end(); ++it2) {
-			if (it2.getInset()->lyxCode() == code) {
-				InsetCommand * inset = static_cast<InsetCommand *>(it2.getInset());
+			if (it2->inset->lyxCode() == code) {
+				InsetCommand * inset = static_cast<InsetCommand *>(it2->inset);
 				if (inset->getContents() == from) {
 					inset->setContents(to);
 					changed_inset = true;

@@ -2417,13 +2417,13 @@ Buffer::inset_iterator Buffer::inset_iterator::operator++(int)
 
 Buffer::inset_iterator::reference Buffer::inset_iterator::operator*()
 {
-	return *it.getInset();
+	return *it->inset;
 }
 
 
 Buffer::inset_iterator::pointer Buffer::inset_iterator::operator->()
 {
-	return it.getInset();
+	return it->inset;
 }
 
 
@@ -2435,7 +2435,7 @@ ParagraphList::iterator Buffer::inset_iterator::getPar() const
 
 lyx::pos_type Buffer::inset_iterator::getPos() const
 {
-	return it.getPos();
+	return it->pos;
 }
 
 

@@ -681,14 +681,14 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 			InsetList::iterator const end =
 				pit->insetlist.end();
 			for (; it != end; ++it) {
-				if (it.getInset() == inset) {
-					getLyXText(bv)->setCursorIntern(pit, it.getPos());
+				if (it->inset == inset) {
+					getLyXText(bv)->setCursorIntern(pit, it->pos);
 					lockInset(bv, inset);
 					return true;
 				}
-				if (it.getInset()->getInsetFromID(id)) {
-					getLyXText(bv)->setCursorIntern(pit, it.getPos());
-					it.getInset()->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
+				if (it->inset->getInsetFromID(id)) {
+					getLyXText(bv)->setCursorIntern(pit, it->pos);
+					it->inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 					return the_locking_inset->lockInsetInInset(bv, inset);
 				}
 			}
@@ -1821,10 +1821,10 @@ vector<string> const InsetText::getLabelList() const
 	ParagraphList::const_iterator pit = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();
 	for (; pit != pend; ++pit) {
-		InsetList::iterator beg = pit->insetlist.begin();
-		InsetList::iterator end = pit->insetlist.end();
+		InsetList::const_iterator beg = pit->insetlist.begin();
+		InsetList::const_iterator end = pit->insetlist.end();
 		for (; beg != end; ++beg) {
-			vector<string> const l = beg.getInset()->getLabelList();
+			vector<string> const l = beg->inset->getLabelList();
 			label_list.insert(label_list.end(), l.begin(), l.end());
 		}
 	}
@@ -2359,12 +2359,12 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 	ParagraphList::const_iterator pit = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();
 	for (; pit != pend; ++pit) {
-		InsetList::iterator it = pit->insetlist.begin();
-		InsetList::iterator end = pit->insetlist.end();
+		InsetList::const_iterator it = pit->insetlist.begin();
+		InsetList::const_iterator end = pit->insetlist.end();
 		for (; it != end; ++it) {
-			if (it.getInset()->id() == id_arg)
-				return it.getInset();
-			Inset * in = it.getInset()->getInsetFromID(id_arg);
+			if (it->inset->id() == id_arg)
+				return it->inset;
+			Inset * in = it->inset->getInsetFromID(id_arg);
 			if (in)
 				return in;
 		}
@@ -2654,10 +2654,10 @@ void InsetText::addPreview(grfx::PreviewLoader & loader) const
 	ParagraphList::const_iterator pend = paragraphs.end();
 
 	for (; pit != pend; ++pit) {
-		InsetList::iterator it  = pit->insetlist.begin();
-		InsetList::iterator end = pit->insetlist.end();
+		InsetList::const_iterator it  = pit->insetlist.begin();
+		InsetList::const_iterator end = pit->insetlist.end();
 		for (; it != end; ++it) {
-			it.getInset()->addPreview(loader);
+			it->inset->addPreview(loader);
 		}
 	}
 }

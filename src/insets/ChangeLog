@@ -1,5 +1,10 @@
 2003-05-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* insettext.C (lockInsetInInset): adjust
+	(getLabelList): use const_iterator, adjust
+	(getInsetFromID): use const_iterator, adjust
+	(addPreview): use const_iterator, adjust
+
 	* insetwrap.C (clone): remove const_cast
 
 	* insetnote.C (clone): remove const_cast

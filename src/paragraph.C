@@ -99,9 +99,9 @@ Paragraph::Paragraph(Paragraph const & lp)
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
-		it.setInset(it.getInset()->clone(**buffer_));
+		it->inset = it->inset->clone(**buffer_);
 		// tell the new inset who is the boss now
-		it.getInset()->parOwner(this);
+		it->inset->parOwner(this);
 	}
 }
 
@@ -718,20 +718,20 @@ int Paragraph::beginningOfBody() const
 int Paragraph::getPositionOfInset(Inset const * inset) const
 {
 	// Find the entry.
-	InsetList::iterator it = insetlist.begin();
-	InsetList::iterator end = insetlist.end();
+	InsetList::const_iterator it = insetlist.begin();
+	InsetList::const_iterator end = insetlist.end();
 	for (; it != end; ++it)
-		if (it.getInset() == inset)
-			return it.getPos();
+		if (it->inset == inset)
+			return it->pos;
 	return -1;
 }
 
 
 InsetBibitem * Paragraph::bibitem() const
 {
-	InsetList::iterator it = insetlist.begin();
-	if (it != insetlist.end() && it.getInset()->lyxCode() == Inset::BIBTEX_CODE)
-		return static_cast<InsetBibitem *>(it.getInset());
+	InsetList::const_iterator it = insetlist.begin();
+	if (it != insetlist.end() && it->inset->lyxCode() == Inset::BIBTEX_CODE)
+		return static_cast<InsetBibitem *>(it->inset);
 	return 0;
 }
 
@@ -1220,8 +1220,8 @@ void Paragraph::setInsetOwner(Inset * i)
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it)
-		if (it.getInset())
-			it.getInset()->setOwner(i);
+		if (it->inset)
+			it->inset->setOwner(i);
 }
 
 

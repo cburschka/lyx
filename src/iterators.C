@@ -103,7 +103,7 @@ ParIterator & ParIterator::operator++()
 		// Does the current inset contain more "cells" ?
 		if (p.index) {
 			++(*p.index);
-			ParagraphList * plist = p.it->getInset()->getParagraphs(*p.index);
+			ParagraphList * plist = (*p.it)->inset->getParagraphs(*p.index);
 			if (plist && !plist->empty()) {
 				pimpl_->positions.push(ParPosition(plist->begin(), *plist));
 				return *this;
@@ -118,7 +118,7 @@ ParIterator & ParIterator::operator++()
 		// Try to find the next inset that contains paragraphs
 		InsetList::iterator end = p.pit->insetlist.end();
 		for (; *p.it != end; ++(*p.it)) {
-			ParagraphList * plist = p.it->getInset()->getParagraphs(0);
+			ParagraphList * plist = (*p.it)->inset->getParagraphs(0);
 			if (plist && !plist->empty()) {
 				p.index.reset(0);
 				pimpl_->positions.push(ParPosition(plist->begin(), *plist));
@@ -215,7 +215,7 @@ ParConstIterator & ParConstIterator::operator++()
 		// Does the current inset contain more "cells" ?
 		if (p.index) {
 			++(*p.index);
-			ParagraphList * plist = p.it->getInset()->getParagraphs(*p.index);
+			ParagraphList * plist = (*p.it)->inset->getParagraphs(*p.index);
 			if (plist && !plist->empty()) {
 				pimpl_->positions.push(ParPosition(plist->begin(), *plist));
 				return *this;
@@ -230,7 +230,7 @@ ParConstIterator & ParConstIterator::operator++()
 		// Try to find the next inset that contains paragraphs
 		InsetList::iterator end = p.pit->insetlist.end();
 		for (; *p.it != end; ++(*p.it)) {
-			ParagraphList * plist = p.it->getInset()->getParagraphs(0);
+			ParagraphList * plist = (*p.it)->inset->getParagraphs(0);
 			if (plist && !plist->empty()) {
 				p.index.reset(0);
 				pimpl_->positions.push(ParPosition(plist->begin(), *plist));
