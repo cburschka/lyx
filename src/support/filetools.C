@@ -337,7 +337,7 @@ string const LibScriptSearch(string const & command)
 {
 	string script;
 	string args = command;
-	split(args, script, ' ');
+	args = split(args, script, ' ');
 	script = LibFileSearch("scripts", script);
 	if (script.empty())
 		return command;

@@ -1,3 +1,8 @@
+
+2002-07-18  André Pönitz <poenitz@gmx.net>
+
+	* filetools.C (LibScriptSearch): bug fix
+
 2002-07-17  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* filetools.C (LyXReadLink): add bool 'resolve' to return link
@@ -16,7 +21,7 @@
 
 2002-06-20  Herbert Voss  <voss@perce.de>
 
-	* filetools.[C]: (readExtFromContents) add support for
+	* filetools.[C] (readExtFromContents): add support for
 	(x)fig format images
 		
 2002-06-26  André Pönitz <poenitz@gmx.net>
