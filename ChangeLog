@@ -1,3 +1,8 @@
+2001-07-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* config/lyxinclude.m4 (LYX_PATH_XFORMS): do not warn against
+	xforms 0.89.5
+
 2001-07-18  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/buffer.C (readLyXformat2): Add filename to the error dialog

@@ -642,7 +642,7 @@ case "$lyx_cv_xfversion" in
 Version $lyx_cv_xfversion of xforms is not compatible with LyX. 
    This version of LyX works best with versions 0.88 (recommended) and later.) ;;
     0.88*) ;;
-    0.89[012345]) LYX_WARNING(dnl
+    0.89[01234]) LYX_WARNING(dnl
 LyX should work ok with version $lyx_cv_xfversion of xforms[,] but
 it is an unproven version and might still have some bugs. You should 
 probably use version 0.89.6 (or 0.88) instead) ;;
