@@ -290,21 +290,21 @@ AC_SUBST(VERSION_INFO)
 
 ## Some config.h stuff
 
-AH_VERBATIM([HAVE_STRCHR],
+AH_VERBATIM([HAVE_STRCHR2],
 [
 #ifndef HAVE_STRCHR
 # define strchr(a,b)    index(a,b)
 #endif
 ])
 
-AH_VERBATIM([HAVE_MEMMOVE],
+AH_VERBATIM([HAVE_MEMMOVE2],
 [
 #ifndef HAVE_MEMMOVE
 # define memmove(a,b,c) bcopy(b,a,c)
 #endif
 ])
 
-AH_VERBATIM([HAVE_STRERROR],
+AH_VERBATIM([HAVE_STRERROR2],
 [
 #ifndef HAVE_STRERROR
 #if defined(__cplusplus)
@@ -314,14 +314,14 @@ char * strerror(int n);
 #endif
 ])
 
-AH_VERBATIM([BROKEN_HEADERS],
+AH_VERBATIM([BROKEN_HEADERS2],
 [
 #ifdef BROKEN_HEADERS
 #include "broken_headers.h"
 #endif
 ])
 
-AH_VERBATIM([HAVE_MKSTEMP],
+AH_VERBATIM([HAVE_MKSTEMP2],
 [
 #ifdef HAVE_MKSTEMP
 #ifndef HAVE_DECL_MKSTEMP
@@ -333,14 +333,14 @@ int mkstemp(char*);
 #endif
 ])
 
-AH_VERBATIM([__EMX__],
+AH_VERBATIM([__EMX__2],
 [
 #ifdef __EMX__
 #include "support/os2_defines.h"
 #endif
 ])
 
-AH_VERBATIM([__CYGWIN__],
+AH_VERBATIM([__CYGWIN__2],
 [
 #if defined(__CYGWIN__) || defined(__CYGWIN32__)
 #include "support/nt_defines.h"
