@@ -3603,73 +3603,44 @@ vector<string> const Buffer::getLabelList()
 
 Buffer::Lists const Buffer::getLists() const
 {
-	map<string, int> count;
 	Lists l;
 	LyXParagraph * par = paragraph;
+#ifdef NEW_INSETS
+	bool found;
+	LyXTextClassList::size_type cap;
+	tie(found, cap) = textclasslist.NumberOfLayout(params.textclass, "Caption");
+#endif
+
 	while (par) {
 #ifndef NEW_INSETS
 		if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
 			if (textclasslist.Style(params.textclass, 
 						par->GetLayout()).labeltype
 			    == LABEL_SENSITIVE) {
-				TocItem tmp;
-				tmp.par = par;
-				tmp.depth = 0;
-				tmp.str =  par->String(this, false);
+				string type;
 				switch (par->footnotekind) {
 				case LyXParagraph::FIG:
 				case LyXParagraph::WIDE_FIG:
-				{
-					count["figs"]++;
-					tmp.str = tostr(count["figs"]) + ". "
-						+ tmp.str;
-					Lists::iterator it = l.find("LOF");
-					if (it == l.end()) {
-						SingleList vti;
-						vti.push_back(tmp);
-						l["LOF"] = vti;
-					} else {
-						it->second.push_back(tmp);
-					}
+					type = "LOF";
 					break;
-				}
-				
 				case LyXParagraph::TAB:
 				case LyXParagraph::WIDE_TAB:
-				{
-					count["tables"]++;
-					tmp.str = tostr(count["tables"]) + ". "
-						+ tmp.str;
-					Lists::iterator it = l.find("LOT");
-					if (it == l.end()) {
-						SingleList vti;
-						vti.push_back(tmp);
-						l["LOT"] = vti;
-					} else {
-						it->second.push_back(tmp);
-					}
+					type = "LOT";
 					break;
-				}
-				
 				case LyXParagraph::ALGORITHM:
-				{
-					count["algs"]++;
-					tmp.str = tostr(count["algs"]) + ". "
-						+ tmp.str;
-					Lists::iterator it = l.find("LOA");
-					if (it == l.end()) {
-						SingleList vti;
-						vti.push_back(tmp);
-						l["LOA"] = vti;
-					} else {
-						it->second.push_back(tmp);
-					}
+					type = "LOA";
 					break;
-				}
-				
 				case LyXParagraph::FOOTNOTE:
 				case LyXParagraph::MARGIN:
 					break;
+				}
+				if (!type.empty()) {
+					SingleList & item = l[type];
+					TocItem tmp;
+					tmp.par = par;
+					tmp.depth = 0;
+					tmp.str = tostr(item.size()+1) + ". " + par->String(this, false);
+					item.push_back(tmp);
 				}
 			}
 		} else if (!par->IsDummy()) {
@@ -3681,34 +3652,25 @@ Buffer::Lists const Buffer::getLists() const
 			if (labeltype >= LABEL_COUNTER_CHAPTER
 			    && labeltype <= LABEL_COUNTER_CHAPTER + params.tocdepth) {
 				// insert this into the table of contents
+				SingleList & item = l["TOC"];
 				TocItem tmp;
 				tmp.par = par;
 				tmp.depth = max(0,
 						labeltype - 
 						textclasslist.TextClass(params.textclass).maxcounter());
-				tmp.str =  par->String(this, true);
-				Lists::iterator it = l.find("TOC");
-				if (it == l.end()) {
-					SingleList vti;
-					vti.push_back(tmp);
-					l["TOC"] = vti;
-				} else {
-					it->second.push_back(tmp);
-				}
+				tmp.str = par->String(this, true);
+				item.push_back(tmp);
 			}
 #ifdef NEW_INSETS
 			// For each paragrph, traverse its insets and look for
 			// FLOAT_CODE
 			
-			LyXParagraph::inset_iterator it =
-				par->inset_iterator_begin();
-			LyXParagraph::inset_iterator end =
-				par->inset_iterator_end();
-			bool found;
-			LyXTextClassList::size_type cap;
-			tie(found, cap) = textclasslist
-				.NumberOfLayout(params.textclass, "Caption");
 			if (found) {
+				LyXParagraph::inset_iterator it =
+					par->inset_iterator_begin();
+				LyXParagraph::inset_iterator end =
+					par->inset_iterator_end();
+
 				for (; it != end; ++it) {
 					if ((*it)->LyxCode() == Inset::FLOAT_CODE) {
 						InsetFloat * il =
@@ -3722,19 +3684,12 @@ Buffer::Lists const Buffer::getLists() const
 						LyXParagraph * tmp = il->inset->par;
 						while (tmp) {
 							if (tmp->layout == cap) {
-								count[type]++;
+								SingleList & item = l[type];
 								TocItem ti;
 								ti.par = tmp;
 								ti.depth = 0;
-								ti.str = tostr(count[type]) + ". " + tmp->String(this, false);
-								Lists::iterator it = l.find(type);
-								if (it == l.end()) {
-									SingleList vti;
-									vti.push_back(ti);
-									l[type] = vti;
-								} else {
-									it->second.push_back(ti);
-								}
+								ti.str = tostr(item.size()+1) + ". " + tmp->String(this, false);
+								item.push_back(ti);
 							}
 							tmp = tmp->next();
 						}
