@@ -27,6 +27,10 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
+	void metrics(TextMetricsInfo const & st) const;
+	///
+	void draw(TextPainter &, int x, int y) const;
+	///
 	void write(WriteStream & os) const;
 	///
 	void writeHeader(std::ostream &) const;
@@ -59,6 +63,6 @@ private:
 	/// the font to be used on screen
 	MathTextCodes code_;
 	///
-	mutable MathMetricsInfo mi_;
+	mutable LyXFont font_;
 };
 #endif

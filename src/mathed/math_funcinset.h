@@ -45,6 +45,6 @@ private:
 	///
 	string name_;
 	///
-	mutable MathMetricsInfo mi_;
+	mutable LyXFont font_;
 };
 #endif

@@ -54,6 +54,6 @@ public:
 	/// the font to be used on screen
 	MathTextCodes code_;
 	///
-	mutable MathMetricsInfo mi_;
+	mutable LyXFont font_;
 };
 #endif

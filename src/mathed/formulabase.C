@@ -38,6 +38,7 @@
 #include "font.h"
 #include "Lsstream.h"
 #include "math_arrayinset.h"
+#include "math_charinset.h"
 #include "math_cursor.h"
 #include "math_factory.h"
 #include "math_hullinset.h"
@@ -100,6 +101,8 @@ InsetFormulaBase::InsetFormulaBase()
 	// This is needed as long the math parser is not re-entrant
 	MathMacroTable::builtinMacros();
 	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << "\n";
+	lyxerr << "sizeof(MathMetricsInfo): " << sizeof(MathMetricsInfo) << "\n";
+	lyxerr << "sizeof(MathCharInset): " << sizeof(MathCharInset) << "\n";
 }
 
 
@@ -219,8 +222,7 @@ void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 		y -= yo_;
 		int asc = 0;
 		int des = 0;
-		MathMetricsInfo mi(bv, font_, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
-		math_font_max_dim(LM_TC_TEXTRM, mi, asc, des);
+		math_font_max_dim(font_, asc, des);
 		bv->showLockedInsetCursor(x, y, asc, des);
 		//lyxerr << "toggleInsetCursor: " << x << " " << y << "\n";
 	}
@@ -241,8 +243,7 @@ void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 		y -= yo_;
 		int asc = 0;
 		int des = 0;
-		MathMetricsInfo mi(bv, font_, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
-		math_font_max_dim(LM_TC_TEXTRM, mi, asc, des);
+		math_font_max_dim(font_, asc, des);
 		bv->fitLockedInsetCursor(x, y, asc, des);
 		//lyxerr << "showInsetCursor: x: " << x << " y: " << y << " yo: " << yo_ << "\n";
 	}
@@ -461,12 +462,6 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_TAB:
-		if (0) {
-			TextMetricsInfo mi;
-			par()->metrics(mi);
-			TextPainter tpain(par()->width(), par()->height());
-			par()->draw(tpain, 0, par()->ascent());
-		}
 		mathcursor->idxNext();
 		updateLocal(bv, false);
 		break;

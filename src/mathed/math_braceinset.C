@@ -28,7 +28,8 @@ void MathBraceInset::metrics(MathMetricsInfo const & mi) const
 {
 	xcell(0).metrics(mi);
 	int a, d;
-	mathed_char_dim(LM_TC_TEX, mi, '{', a, d, wid_);
+	whichFont(font_, LM_TC_TEX, mi);
+	mathed_char_dim(font_, '{', a, d, wid_);
 	ascent_  = max(xcell(0).ascent(), a);
 	descent_ = max(xcell(0).descent(), a);
 	width_   = xcell(0).width() + 2 * wid_;
@@ -37,9 +38,9 @@ void MathBraceInset::metrics(MathMetricsInfo const & mi) const
 
 void MathBraceInset::draw(Painter & pain, int x, int y) const
 { 
-	drawChar(pain, LM_TC_TEX, mi_, x, y, '{');
+	drawChar(pain, font_, x, y, '{');
 	xcell(0).draw(pain, x + wid_, y);
-	drawChar(pain, LM_TC_TEX, mi_, x + width_ - wid_, y, '}');
+	drawChar(pain, font_, x + width_ - wid_, y, '}');
 }
 
 

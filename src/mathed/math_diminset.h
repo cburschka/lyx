@@ -16,6 +16,10 @@ public:
 	int descent() const { return descent_; }
 	/// read width
 	int width() const { return width_; }
+	///
+	void metrics(TextMetricsInfo const &) const;
+	///
+	void draw(TextPainter & pain, int x, int y) const;
 
 protected:
 	///

@@ -101,7 +101,7 @@ int MathScriptInset::dy1(MathInset const * nuc) const
 		asc += na + 2;
 	else 
 		asc = max(asc, na);
-	asc = max(asc, mathed_char_ascent(LM_TC_VAR, mi_, 'I'));
+	asc = max(asc, mathed_char_ascent(font_, 'I'));
 	return asc;
 }
 
@@ -161,23 +161,19 @@ int MathScriptInset::width2(MathInset const * nuc) const
 
 int MathScriptInset::nwid(MathInset const * nuc) const
 {
-	return nuc ?
-		nuc->width() :
-		mathed_char_width(LM_TC_TEX, mi_, '.');
+	return nuc ?  nuc->width() : mathed_char_width(font_, '.');
 }
 
 
 int MathScriptInset::nasc(MathInset const * nuc) const
 {
-	return nuc ? nuc->ascent()
-		: mathed_char_ascent(LM_TC_VAR, mi_, 'I');
+	return nuc ? nuc->ascent() : mathed_char_ascent(font_, 'I');
 }
 
 
 int MathScriptInset::ndes(MathInset const * nuc) const
 {
-	return nuc ? nuc->descent()
-		: mathed_char_descent(LM_TC_VAR, mi_, 'I');
+	return nuc ? nuc->descent() : mathed_char_descent(font_, 'I');
 }
 
 
@@ -190,9 +186,10 @@ void MathScriptInset::metrics(MathMetricsInfo const & mi) const
 void MathScriptInset::metrics(MathInset const * nuc,
 	MathMetricsInfo const & mi) const
 {	
-	mi_ = mi;
-	smallerStyleScript(mi_);
-	MathNestInset::metrics(mi_);
+	MathMetricsInfo m = mi;
+	smallerStyleScript(m);
+	MathNestInset::metrics(m);
+	whichFont(font_, LM_TC_VAR, m);
 	if (nuc)
 		nuc->metrics(mi);
 	ascent_  = ascent2(nuc);
@@ -210,7 +207,10 @@ void MathScriptInset::metrics(TextMetricsInfo const & mi) const
 void MathScriptInset::metrics(MathInset const * nuc,
 	TextMetricsInfo const & mi) const
 {	
-	MathNestInset::metrics(mi_);
+	if (hasUp())
+		up().metrics(mi);
+	if (hasDown())
+		down().metrics(mi);
 	if (nuc)
 		nuc->metrics(mi);
 	//ascent_  = ascent2(nuc);
@@ -232,7 +232,7 @@ void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
 	if (nuc)
 		nuc->draw(pain, x + dxx(nuc), y);
 	else // if (editing())
-		drawStr(pain, LM_TC_TEX, mi_, x + dxx(nuc), y, ".");
+		drawStr(pain, font_, x + dxx(nuc), y, ".");
 
 	if (hasUp())
 		up().draw(pain, x + dx1(nuc), y - dy1(nuc));

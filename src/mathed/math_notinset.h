@@ -15,13 +15,13 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream & ns) const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo const & mi) const;
 	///
 	void draw(Painter &, int x, int y) const;
 private:
 	///
-	mutable MathMetricsInfo mi_;
+	mutable LyXFont font_;
 };
 #endif

@@ -168,9 +168,10 @@ void MathHullInset::metrics(MathMetricsInfo const & mi) const
 	}	
 
 	if (numberedType()) {
+		whichFont(mi_.font, LM_TC_BF, mi_);
 		int l = 0;
 		for (row_type row = 0; row < nrows(); ++row)
-			l = max(l, mathed_string_width(LM_TC_BF, mi_, nicelabel(row)));
+			l = max(l, mathed_string_width(mi_.font, nicelabel(row)));
 
 		if (l)
 			width_ += 30 + l;
@@ -179,7 +180,7 @@ void MathHullInset::metrics(MathMetricsInfo const & mi) const
 	// make it at least as high as the current font
 	int asc = 0;
 	int des = 0;
-	math_font_max_dim(LM_TC_TEXTRM, mi_, asc, des);
+	math_font_max_dim(mi_.font, asc, des);
 	ascent_  = max(ascent_,  asc);
 	descent_ = max(descent_, des);
 }
@@ -193,13 +194,13 @@ void MathHullInset::draw(Painter & pain, int x, int y) const
 		int const xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
 		for (row_type row = 0; row < nrows(); ++row) {
 			int const yy = y + rowinfo_[row].offset_;
-			drawStr(pain, LM_TC_BF, mi_, xx, yy, nicelabel(row));
+			drawStr(pain, mi_.font, xx, yy, nicelabel(row));
 		}
 	}
 }
 
-
-void MathHullInset::metrics(TextMetricsInfo const &) const
+/*
+void MathHullInset::metrics(TextMetricsInfo const & mi) const
 {
 	ascent_  = 1;
 	descent_ = 0;
@@ -210,7 +211,9 @@ void MathHullInset::metrics(TextMetricsInfo const &) const
 void MathHullInset::draw(TextPainter & pain, int x, int y) const
 {
 	pain.draw(x, y, normalName(objtype_).c_str());
+	MathGridInset::draw(pain, x, y);
 }
+*/
 
 
 string MathHullInset::label(row_type row) const

@@ -55,7 +55,9 @@ void MathDelimInset::metrics(MathMetricsInfo const & mi) const
 {
 	xcell(0).metrics(mi);
 	int a, d, w;
-	mathed_char_dim(LM_TC_VAR, mi, 'I', a, d, w);
+	LyXFont font;
+	whichFont(font, LM_TC_VAR, mi);
+	mathed_char_dim(font, 'I', a, d, w);
 	int h0   = (a + d) / 2;
 	int a0   = max(xcell(0).ascent(), a)   - h0;
 	int d0   = max(xcell(0).descent(), d)  + h0;

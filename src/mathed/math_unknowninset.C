@@ -59,14 +59,14 @@ void MathUnknownInset::normalize(NormalStream & os) const
 
 void MathUnknownInset::metrics(MathMetricsInfo const & mi) const 
 {
-	mi_ = mi;
-	mathed_string_dim(LM_TC_TEX, mi_, name_, ascent_, descent_, width_);
+	whichFont(font_, LM_TC_TEX, mi);
+	mathed_string_dim(font_, name_, ascent_, descent_, width_);
 }
 
 
 void MathUnknownInset::draw(Painter & pain, int x, int y) const
 { 
-	drawStr(pain, LM_TC_TEX, mi_, x, y, name_);
+	drawStr(pain, font_, x, y, name_);
 }
 
 

@@ -15,7 +15,7 @@
 class MathUnknownInset : public MathDimInset {
 public:
 	///
-	explicit MathUnknownInset(string const & nm);
+	explicit MathUnknownInset(string const & name);
 	///
 	MathInset * clone() const;
 	///
@@ -45,6 +45,6 @@ private:
 	///
 	string name_;
 	///
-	mutable MathMetricsInfo mi_;
+	mutable LyXFont font_;
 };
 #endif

@@ -61,13 +61,6 @@ void MathNestInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathNestInset::draw(Painter & pain, int x, int y) const
-{
-	for (idx_type i = 0; i < nargs(); ++i)
-		xcell(i).draw(pain, x + xcell(i).xo(), y + xcell(i).yo());
-}
-
-
 bool MathNestInset::idxNext(idx_type & idx, pos_type & pos) const
 {
 	if (idx + 1 >= nargs())

@@ -2,7 +2,6 @@
 #define MATH_METRICSINFO_H
 
 #include "lyxfont.h"
-#include "textpainter.h"
 
 class BufferView;
 class MathNestInset;
@@ -24,11 +23,15 @@ enum MathStyles {
 struct MathMetricsInfo {
 	///
 	MathMetricsInfo()
-		: view(0), font(), style(LM_ST_TEXT), inset(0)
+		: view(0), font(), style(LM_ST_TEXT),
+		  inset(0), idx(0),
+		  fullredraw(false)
 	{}
 	///
 	MathMetricsInfo(BufferView * v, LyXFont const & f, MathStyles s)
-		: view(v), font(f), style(s), inset(0)
+		: view(v), font(f), style(s),
+		  inset(0), idx(0),
+		  fullredraw(false)
 	{}
 
 	///
@@ -41,6 +44,8 @@ struct MathMetricsInfo {
 	MathNestInset const * inset;
 	///
 	int idx;
+	///
+	bool fullredraw;
 };
 
 

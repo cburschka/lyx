@@ -11,49 +11,35 @@ class TextPainter;
 class latexkeys;
 class MathMetricsInfo;
 class MathInset;
+class LyXFont;
 
 extern char const * latex_mathspace[];
 
-int mathed_char_height(MathTextCodes type, MathMetricsInfo const & size,
-	unsigned char c, int & asc, int & des);
-void mathed_char_dim(MathTextCodes type, MathMetricsInfo const & size,
-	unsigned char c, int & asc, int & des, int & wid);
-int mathed_char_width(MathTextCodes type, MathMetricsInfo const & size,
-	unsigned char c);
-int mathed_char_ascent(MathTextCodes type, MathMetricsInfo const & size,
-	unsigned char c);
-int mathed_char_descent(MathTextCodes type, MathMetricsInfo const & size,
-	unsigned char c);
+void mathed_char_dim(LyXFont const &, unsigned char c,
+	int & asc, int & des, int & wid);
+int mathed_char_height(LyXFont const &, unsigned char c, int & asc, int & des);
+int mathed_char_width(LyXFont const &, unsigned char c);
+int mathed_char_ascent(LyXFont const &, unsigned char c);
+int mathed_char_descent(LyXFont const &, unsigned char c);
 
 void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 	string const & name);
 
 void mathed_draw_framebox(Painter & pain, int x, int y, MathInset const *);
 
-void mathed_string_dim(MathTextCodes type, MathMetricsInfo const & size,
+void mathed_string_dim(LyXFont const &,
 	string const & s, int & asc, int & des, int & wid);
-int mathed_string_height(MathTextCodes type, MathMetricsInfo const & size,
+int mathed_string_height(LyXFont const &,
 	string const & s, int & asc, int & des);
 
-int mathed_string_width(MathTextCodes type, MathMetricsInfo const & size,
-	string const & s);
-int mathed_string_ascent(MathTextCodes type, MathMetricsInfo const & size,
-	string const & s);
-int mathed_string_descent(MathTextCodes type, MathMetricsInfo const & size,
-	string const & s);
+int mathed_string_width(LyXFont const &, string const & s);
+int mathed_string_ascent(LyXFont const &, string const & s);
+int mathed_string_descent(LyXFont const &, string const & s);
 
-void drawStr(Painter & pain, MathTextCodes type, MathMetricsInfo const & siz,
-	int x, int y, string const & s);
-void drawChar(Painter & pain, MathTextCodes type, MathMetricsInfo const & siz,
-	int x, int y, char c);
+void drawStr(Painter & pain, LyXFont const &, int x, int y, string const & s);
+void drawChar(Painter & pain, LyXFont const & font, int x, int y, char c);
 
-void drawStr(TextPainter & p, MathTextCodes type, MathMetricsInfo const & siz,
-	int x, int y, string const & s);
-void drawChar(TextPainter & p, MathTextCodes type, MathMetricsInfo const & siz,
-	int x, int y, char c);
-
-void math_font_max_dim(MathTextCodes code, MathMetricsInfo const & siz,
-	int & asc, int & desc);
+void math_font_max_dim(LyXFont const &, int & asc, int & desc);
 
 bool math_font_available(MathTextCodes code);
 
@@ -66,5 +52,7 @@ void smallerStyleFrac(MathMetricsInfo & st);
 char const * math_font_name(MathTextCodes type);
 
 string convertDelimToLatexName(string const & name);
+
+void whichFont(LyXFont & f, MathTextCodes type, MathMetricsInfo const & size);
 
 #endif

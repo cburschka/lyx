@@ -93,6 +93,8 @@ private:
 	mutable MathXArray expanded_;
 	///
 	mutable MathMetricsInfo mi_;
+	///
+	mutable LyXFont font_;
 };
 
 

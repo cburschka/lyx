@@ -34,7 +34,7 @@ private:
 	/// width of brace character
 	mutable int wid_;
 	///
-	MathMetricsInfo mi_;
+	mutable LyXFont font_;
 };
 
 #endif

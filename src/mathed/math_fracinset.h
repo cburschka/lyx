@@ -18,9 +18,13 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo const & mi) const;
 	///
 	void draw(Painter &, int x, int y) const;
+	///
+	void metrics(TextMetricsInfo const & mi) const;
+	///
+	void draw(TextPainter &, int x, int y) const;
 	///
 	MathFracInset * asFracInset();
 

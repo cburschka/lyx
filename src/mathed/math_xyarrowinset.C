@@ -29,7 +29,7 @@ MathInset * MathXYArrowInset::clone() const
 
 MathXYMatrixInset const * MathXYArrowInset::targetMatrix() const
 {
-	return mi_.inset ? mi_.inset->asXYMatrixInset() : 0;
+	return target_;
 }
 
 
@@ -66,11 +66,13 @@ MathXArray const & MathXYArrowInset::sourceCell() const
 
 void MathXYArrowInset::metrics(MathMetricsInfo const & mi) const
 {
-	mi_ = mi;
 	MathNestInset::metrics(mi);
+	mi_ = mi;
+	whichFont(font_, LM_TC_TEXTRM, mi);
+	target_ = mi.inset ? mi.inset->asXYMatrixInset() : 0;
 
 	if (editing()) {
-		int w    = mathed_string_width(LM_TC_TEXTRM, mi_, "target: ");
+		int w    = mathed_string_width(font_, "target: ");
 		width_   = w + max(xcell(0).width(), xcell(1).width());
 		ascent_  = xcell(0).ascent();
 		descent_ = xcell(0).descent() + xcell(1).height() + 10;
@@ -78,7 +80,7 @@ void MathXYArrowInset::metrics(MathMetricsInfo const & mi) const
 		width_   = 0;
 		ascent_  = 0;
 		descent_ = 0;
-		//mathed_string_dim(LM_TC_TEXTRM, mi_, "X", ascent_, descent_, width_);
+		//mathed_string_dim(font_, "X", ascent_, descent_, width_);
 	}
 }
 
@@ -92,19 +94,19 @@ void MathXYArrowInset::draw(Painter & pain, int x, int y) const
 		int lasc;
 		int ldes;
 		int lwid;
-		mathed_string_dim(LM_TC_TEXTRM, mi_, "target: ", lasc, ldes, lwid);
+		mathed_string_dim(font_, "target: ", lasc, ldes, lwid);
 
 		xcell(0).draw(pain, x + lwid, y);
-		drawStr(pain, LM_TC_TEXTRM, mi_, x + 3, y, "target");
+		drawStr(pain, font_, x + 3, y, "target");
 		y += max(xcell(0).descent(), ldes) + 5;
 
 		y += max(xcell(1).ascent(), lasc) + 5;
 		xcell(1).draw(pain, x + lwid, y);
-		drawStr(pain, LM_TC_TEXTRM, mi_, x + 3, y, "label");
+		drawStr(pain, font_, x + 3, y, "label");
 
 	} else {
 
-		//drawStr(pain, LM_TC_TEXTRM, mi_, x, y, "X");
+		//drawStr(pain, font_, x, y, "X");
 		MathXArray const & s = sourceCell();
 		MathXArray const & t = targetCell();
 		pain.line(s.xm(), s.ym(), t.xm(), t.ym(), LColor::math);

@@ -6,6 +6,7 @@
 #include "math_mathmlstream.h"
 #include "LColor.h"
 #include "Painter.h"
+#include "textpainter.h"
 
 
 MathSqrtInset::MathSqrtInset()
@@ -40,6 +41,24 @@ void MathSqrtInset::draw(Painter & pain, int x, int y) const
 	xp[2] = x + 5;      yp[2] = y + d - 1;
 	xp[3] = x;          yp[3] = y + (d - a)/2;
 	pain.lines(xp, yp, 4, LColor::math);
+}
+
+
+void MathSqrtInset::metrics(TextMetricsInfo const & mi) const
+{
+	xcell(0).metrics(mi);
+	ascent_  = xcell(0).ascent()  + 1;
+	descent_ = xcell(0).descent();
+	width_   = xcell(0).width()   + 2;
+}
+
+
+void MathSqrtInset::draw(TextPainter & pain, int x, int y) const
+{ 
+	xcell(0).draw(pain, x + 2, y); 
+	pain.horizontalLine(x + 2, y - xcell(0).ascent(), xcell(0).width(), '_');
+	pain.verticalLine  (x + 1, y - xcell(0).ascent() + 1, xcell(0).height());
+	pain.draw(x, y + xcell(0).descent(), '\\');
 }
 
 

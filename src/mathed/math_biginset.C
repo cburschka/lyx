@@ -42,7 +42,9 @@ double MathBigInset::increase() const
 
 void MathBigInset::metrics(MathMetricsInfo const & mi) const
 {
-	double h = mathed_char_height(LM_TC_VAR, mi, 'I', ascent_, descent_);  
+	LyXFont font;
+	whichFont(font, LM_TC_VAR, mi);
+	double h = mathed_char_height(font, 'I', ascent_, descent_);  
 	double f = increase();
 	width_   = 6;
 	ascent_  = int(h + f * h);

@@ -28,11 +28,14 @@ void MathNotInset::normalize(NormalStream & os) const
 
 void MathNotInset::metrics(MathMetricsInfo const & mi) const
 {
-	mi_ = mi;
-	if (math_font_available(LM_TC_CMSY))
-		mathed_char_dim(LM_TC_CMSY, mi_, 54, ascent_, descent_, width_);
-	else
-		mathed_char_dim(LM_TC_VAR, mi_, '/', ascent_, descent_, width_);
+	if (math_font_available(LM_TC_CMSY)) {
+		whichFont(font_, LM_TC_CMSY, mi);
+		mathed_char_dim(font_, 54, ascent_, descent_, width_);
+	}
+	else {
+		whichFont(font_, LM_TC_VAR, mi);
+		mathed_char_dim(font_, '/', ascent_, descent_, width_);
+	}
 	width_ = 0;
 }
 
@@ -40,7 +43,7 @@ void MathNotInset::metrics(MathMetricsInfo const & mi) const
 void MathNotInset::draw(Painter & pain, int x, int y) const
 {  
 	if (math_font_available(LM_TC_CMSY))
-		drawChar(pain, LM_TC_CMSY, mi_, x, y, 54);
+		drawChar(pain, font_, x, y, 54);
 	else
-		drawChar(pain, LM_TC_VAR, mi_, x, y, '/');
+		drawChar(pain, font_, x, y, '/');
 }

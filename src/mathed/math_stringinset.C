@@ -34,20 +34,21 @@ MathInset * MathStringInset::clone() const
 
 int MathStringInset::ascent() const
 {
-	return mathed_string_ascent(code_, mi_, str_);
+	return mathed_string_ascent(font_, str_);
 }
 
 
 int MathStringInset::descent() const
 {
-	return mathed_string_descent(code_, mi_, str_);
+	return mathed_string_descent(font_, str_);
 }
 
 
 int MathStringInset::width() const
 {
-	return mathed_string_width(code_, mi_, str_);
+	return mathed_string_width(font_, str_);
 }
+
 
 void MathStringInset::validate(LaTeXFeatures & features) const
 {
@@ -56,16 +57,17 @@ void MathStringInset::validate(LaTeXFeatures & features) const
 		features.require("amssymb");
 }
 
+
 void MathStringInset::metrics(MathMetricsInfo const & mi) const
 {
-	mi_ = mi;
+	whichFont(font_, code_, mi);
 }
 
 
 void MathStringInset::draw(Painter & pain, int x, int y) const
 { 
 	//lyxerr << "drawing '" << str_ << "' code: " << code_ << endl;
-	drawStr(pain, code_, mi_, x, y, str_);
+	drawStr(pain, font_, x, y, str_);
 }
 
 

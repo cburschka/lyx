@@ -40,7 +40,7 @@ void MathCasesInset::write(WriteStream & os) const
 {
 	if (os.fragile())
 		os << "\\protect";
-	os << "\\begin{cases}";
+	os << "\\begin{cases}\n";
 	MathGridInset::write(os);
 	if (os.fragile())
 		os << "\\protect";

@@ -74,6 +74,10 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
+	void metrics(TextMetricsInfo const & st) const;
+	///
+	void draw(TextPainter &, int x, int y) const;
+	///
 	void halign(string const &);
 	///
 	void halign(char c, col_type col);

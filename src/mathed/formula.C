@@ -43,6 +43,7 @@
 #include "math_hullinset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
+#include "textpainter.h"
 
 using std::ostream;
 using std::ifstream;
@@ -294,9 +295,20 @@ int InsetFormula::latex(Buffer const *, ostream & os, bool fragil, bool) const
 
 int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 {
+#if 1
+	TextMetricsInfo mi;
+	par()->metrics(mi);
+	TextPainter tpain(par()->width(), par()->height());
+	par()->draw(tpain, 0, par()->ascent());
+	tpain.show(os);
+	// reset metrics cache to "real" values
+	metrics();
+	return tpain.textheight();
+#else
 	WriteStream wi(os, false);
 	par_->write(wi);
 	return wi.line();
+#endif
 }
 
 

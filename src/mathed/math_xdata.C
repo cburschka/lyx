@@ -41,7 +41,9 @@ void MathXArray::metrics(MathMetricsInfo const & mi) const
 	drawn_  = false;
 
 	if (data_.empty()) {
-		mathed_char_dim(LM_TC_VAR, mi, 'I', ascent_, descent_, width_);
+		LyXFont font;
+		whichFont(font, LM_TC_VAR, mi);
+		mathed_char_dim(font, 'I', ascent_, descent_, width_);
 		return;
 	}
 

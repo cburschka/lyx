@@ -20,31 +20,31 @@ MathInset * MathSpecialCharInset::clone() const
 
 int MathSpecialCharInset::ascent() const
 {
-	return mathed_char_ascent(LM_TC_CONST, mi_, char_);
+	return mathed_char_ascent(font_, char_);
 }
 
 
 int MathSpecialCharInset::descent() const
 {
-	return mathed_char_descent(LM_TC_CONST, mi_, char_);
+	return mathed_char_descent(font_, char_);
 }
 
 
 int MathSpecialCharInset::width() const
 {
-	return mathed_char_width(LM_TC_CONST, mi_, char_);
+	return mathed_char_width(font_, char_);
 }
 
 
 void MathSpecialCharInset::metrics(MathMetricsInfo const & mi) const
 {
-	mi_ = mi;
+	whichFont(font_, LM_TC_CONST, mi);
 }
 
 
 void MathSpecialCharInset::draw(Painter & pain, int x, int y) const
 { 
-	drawChar(pain, LM_TC_CONST, mi_, x, y, char_);
+	drawChar(pain, font_, x, y, char_);
 }
 
 

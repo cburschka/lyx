@@ -38,6 +38,6 @@ private:
 	/// the character
 	char char_;
 	///
-	mutable MathMetricsInfo mi_;
+	mutable LyXFont font_;
 };
 #endif

@@ -39,7 +39,7 @@ private:
 	///
 	bool expanded_;
 	///
-	mutable MathMetricsInfo mi_;
+	mutable LyXFont font_;
 	///
 	MathTextCodes code_;
 };

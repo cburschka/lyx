@@ -6,6 +6,7 @@
 #include "math_support.h"
 #include "Painter.h"
 #include "math_mathmlstream.h"
+#include "textpainter.h"
 
 
 using std::max;
@@ -47,6 +48,26 @@ void MathFracInset::draw(Painter & pain, int x, int y) const
 	xcell(1).draw(pain, m - xcell(1).width() / 2, y + xcell(1).ascent()  + 2 - 5);
 	if (!atop_)
 		pain.line(x + 2, y - 5, x + width() - 4, y - 5, LColor::math);
+}
+
+
+void MathFracInset::metrics(TextMetricsInfo const & mi) const
+{
+	xcell(0).metrics(mi);
+	xcell(1).metrics(mi);
+	width_   = max(xcell(0).width(), xcell(1).width());
+	ascent_  = xcell(0).height() + 1;
+	descent_ = xcell(1).height();
+}
+
+
+void MathFracInset::draw(TextPainter & pain, int x, int y) const
+{
+	int m = x + width() / 2;
+	xcell(0).draw(pain, m - xcell(0).width() / 2, y - xcell(0).descent() - 1);
+	xcell(1).draw(pain, m - xcell(1).width() / 2, y + xcell(1).ascent());
+	if (!atop_)
+		pain.horizontalLine(x, y, width());
 }
 
 

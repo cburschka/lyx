@@ -376,6 +376,103 @@ void MathGridInset::draw(Painter & pain, int x, int y) const
 }
 
 
+void MathGridInset::metrics(TextMetricsInfo const & mi) const
+{
+	// let the cells adjust themselves
+	//MathNestInset::metrics(mi);
+	for (idx_type i = 0; i < nargs(); ++i) 
+		xcell(i).metrics(mi);
+
+	// compute absolute sizes of vertical structure
+	for (row_type row = 0; row < nrows(); ++row) {
+		int asc  = 0;
+		int desc = 0;
+		for (col_type col = 0; col < ncols(); ++col) {
+			MathXArray const & c = xcell(index(row, col));
+			asc  = max(asc,  c.ascent());
+			desc = max(desc, c.descent());
+		}
+		rowinfo_[row].ascent_  = asc;
+		rowinfo_[row].descent_ = desc;
+	}
+	//rowinfo_[0].ascent_       += hlinesep() * rowinfo_[0].lines_;
+	rowinfo_[nrows()].ascent_  = 0;
+	rowinfo_[nrows()].descent_ = 0;
+
+	// compute vertical offsets
+	rowinfo_[0].offset_ = 0;
+	for (row_type row = 1; row <= nrows(); ++row) {
+		rowinfo_[row].offset_  =	
+			rowinfo_[row - 1].offset_  +
+			rowinfo_[row - 1].descent_ +
+			//rowinfo_[row - 1].skipPixels() +
+			1 + //rowsep() +
+			//rowinfo_[row].lines_ * hlinesep() +
+			rowinfo_[row].ascent_;
+	}
+
+	// adjust vertical offset
+	int h = 0;
+	switch (v_align_) {
+		case 't':
+			h = 0;
+			break;
+		case 'b':
+			h = rowinfo_[nrows() - 1].offset_;
+			break;
+		default:
+			h = rowinfo_[nrows() - 1].offset_ / 2;
+	}
+	for (row_type row = 0; row <= nrows(); ++row)
+		rowinfo_[row].offset_ -= h;
+	
+
+	// compute absolute sizes of horizontal structure
+	for (col_type col = 0; col < ncols(); ++col) {
+		int wid = 0;
+		for (row_type row = 0; row < nrows(); ++row) 
+			wid = max(wid, xcell(index(row, col)).width());
+		colinfo_[col].width_ = wid;
+	}
+	colinfo_[ncols()].width_  = 0;
+
+	// compute horizontal offsets
+	colinfo_[0].offset_ = border();
+	for (col_type col = 1; col <= ncols(); ++col) {
+		colinfo_[col].offset_ =
+			colinfo_[col - 1].offset_ +
+			colinfo_[col - 1].width_ + 
+			colinfo_[col - 1].skip_ +
+			1 ; //colsep() + 
+			//colinfo_[col].lines_ * vlinesep();
+	}
+
+
+	width_   =   colinfo_[ncols() - 1].offset_      
+	               + colinfo_[ncols() - 1].width_
+                 //+ vlinesep() * colinfo_[ncols()].lines_
+	               + 2;
+
+	ascent_  = - rowinfo_[0].offset_          
+	               + rowinfo_[0].ascent_
+                 //+ hlinesep() * rowinfo_[0].lines_
+	               + 1;
+
+	descent_ =   rowinfo_[nrows() - 1].offset_
+	               + rowinfo_[nrows() - 1].descent_
+                 //+ hlinesep() * rowinfo_[nrows()].lines_
+	               + 1;
+
+}
+
+
+void MathGridInset::draw(TextPainter & pain, int x, int y) const
+{
+	for (idx_type idx = 0; idx < nargs(); ++idx)
+		xcell(idx).draw(pain, x + cellXOffset(idx), y + cellYOffset(idx));
+}
+
+
 string MathGridInset::eolString(row_type row) const
 {
 	string eol;

@@ -20,7 +20,11 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	void metrics(MathMetricsInfo const & st) const;
+	void metrics(MathMetricsInfo const & mi) const;
+	///
+	void draw(TextPainter &, int x, int y) const;
+	///
+	void metrics(TextMetricsInfo const & mi) const;
 
 	///
 	void write(WriteStream & os) const;

@@ -44,6 +44,10 @@ public:
 	bool up_;
 	///
 	mutable MathMetricsInfo mi_;
+	///
+	mutable LyXFont font_;
+	///
+	mutable MathXYMatrixInset const * target_;
 };
 
 #endif

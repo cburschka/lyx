@@ -15,6 +15,7 @@
 #include "debug.h"
 #include "math_mathmlstream.h"
 #include "LaTeXFeatures.h"
+#include "textpainter.h"
 
 
 using std::ostream;
@@ -51,15 +52,30 @@ MathInset * MathCharInset::clone() const
 
 void MathCharInset::metrics(MathMetricsInfo const & mi) const
 {
-	mi_ = mi;
-	mathed_char_dim(code_, mi_, char_, ascent_, descent_, width_);
+	whichFont(font_, code_, mi);
+	mathed_char_dim(font_, char_, ascent_, descent_, width_);
 }
 
 
 void MathCharInset::draw(Painter & pain, int x, int y) const
 { 
 	//lyxerr << "drawing '" << char_ << "' code: " << code_ << endl;
-	drawChar(pain, code_, mi_, x, y, char_);
+	drawChar(pain, font_, x, y, char_);
+}
+
+
+void MathCharInset::metrics(TextMetricsInfo const &) const
+{
+	width_   = 1;
+	ascent_  = 1;
+	descent_ = 0;
+}
+
+
+void MathCharInset::draw(TextPainter & pain, int x, int y) const
+{ 
+	lyxerr << "drawing text '" << char_ << "' code: " << code_ << endl;
+	pain.draw(x, y, char_);
 }
 
 
