@@ -1,5 +1,11 @@
+2000-05-31 Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/lyxrc.C (read): Add a missing break in the switch
+
 2000-05-30 Dekel Tsur  <dekel@math.tau.ac.il>
 
+ 	* src/text2.C (InsertStringA): Fix a bug with insertion into table
+	
 	* src/trans_mgr.C (insertVerbatim): Do not use insetquote when the
 	text is Hebrew.
                              

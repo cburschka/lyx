@@ -1017,6 +1017,7 @@ int LyXRC::read(string const & filename)
 		case RC_MARK_FOREIGN_LANGUAGE:
 			if (lexrc.next())
 				mark_foreign_language = lexrc.GetBool();
+			break;
 		case RC_SHOW_BANNER:
 			if (lexrc.next())
 				show_banner = lexrc.GetBool();

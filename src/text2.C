@@ -2869,8 +2869,9 @@ void LyXText::InsertStringA(string const & str)
 			}
 		} else {
                         if (par->table) {
-                                if (i + 1 >= str.length()) {
-                                        ++pos;
+                                if ((i + 1) >= str.length()) {
+					if (pos < par->size())
+						++pos;
                                         break;
                                 }
                                 while((pos < par->size()) &&
