@@ -131,7 +131,9 @@ public:
 		///
 		NEWLINE_CODE,
 		///
-		BRANCH_CODE
+		BRANCH_CODE,
+		///
+		BOX_CODE
 	};
 
 	///

@@ -12,6 +12,7 @@ noinst_LTLIBRARIES = libfdesign.la
 SRCS =  form_aboutlyx.fd \
 	form_bibitem.fd \
 	form_bibtex.fd \
+	form_box.fd \
 	form_browser.fd \
 	form_branch.fd \
 	form_changes.fd \

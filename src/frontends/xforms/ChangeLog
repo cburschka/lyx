@@ -1,3 +1,13 @@
+2003-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* Dialogs.C:
+	* FormBox.C:
+	* FormBox.h:
+	* Makefile.am:
+	* forms/Makefile.am:
+	* forms/form_box.fd: The Box patch. Fancybox support, minipage,
+	parbox
+
 2003-10-01  Angus Leeming  <leeming@lyx.org>
 
 	* FormExternal.C (updateComboChange): changes due to the

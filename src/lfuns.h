@@ -323,6 +323,7 @@ enum kb_action {
 	// 245
 	LFUN_INSERT_BRANCH,
 	LFUN_INSET_DIALOG_SHOW,
+	LFUN_INSERT_BOX,
 
 	LFUN_LASTACTION                  // end of the table
 };

@@ -18,6 +18,7 @@ src/format.C
 src/frontends/LyXView.C
 src/frontends/controllers/ControlAboutlyx.C
 src/frontends/controllers/ControlBibtex.C
+src/frontends/controllers/ControlBox.C
 src/frontends/controllers/ControlDocument.C
 src/frontends/controllers/ControlExternal.C
 src/frontends/controllers/ControlGraphics.C
@@ -93,6 +94,7 @@ src/frontends/xforms/FormAboutlyx.C
 src/frontends/xforms/FormBase.C
 src/frontends/xforms/FormBibitem.C
 src/frontends/xforms/FormBibtex.C
+src/frontends/xforms/FormBox.C
 src/frontends/xforms/FormBranch.C
 src/frontends/xforms/FormChanges.C
 src/frontends/xforms/FormCharacter.C
@@ -142,6 +144,7 @@ src/gettext.h
 src/importer.C
 src/insets/inset.C
 src/insets/insetbibtex.C
+src/insets/insetbox.C
 src/insets/insetbranch.C
 src/insets/insetcaption.C
 src/insets/insetenv.C
@@ -185,6 +188,7 @@ src/mathed/ref_inset.C
 src/paragraph.C
 src/paragraph_funcs.C
 src/rowpainter.C
+src/support/path_defines.C
 src/text.C
 src/text2.C
 src/text3.C

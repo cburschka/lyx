@@ -25,6 +25,8 @@ libinsets_la_SOURCES = \
 	insetbibitem.h \
 	insetbibtex.C \
 	insetbibtex.h \
+	insetbox.C \
+	insetbox.h \
 	insetbranch.C \
 	insetbranch.h \
 	insetcaption.C \

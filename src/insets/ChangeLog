@@ -1,3 +1,10 @@
+2003-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* Makefile.am:
+	* inset.h:
+	* insetbox.C:
+	* insetbox.h: The Box patch. Fancybox support, minipage, parbox
+
 2003-10-02  André Pönitz  <poenitz@gmx.net>
 
 	* insettext.C (read): make sure there is at least one par

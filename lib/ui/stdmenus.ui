@@ -101,10 +101,10 @@ Menuset
 		OptItem "TeX Code Settings...|C" "inset-settings ert"
 # 'a' shortcut to match Insert entry, shouldn't clash with Table Settings
 		OptItem "Float Settings...|a" "inset-settings float"
-		OptItem "Minipage Settings...|M" "inset-settings minipage"
 		OptItem "Text Wrap Settings...|W" "inset-settings wrap"
 		OptItem "Note Settings...|N" "inset-settings note"
 		OptItem "Branch Settings...|B" "inset-settings branch"
+		OptItem "Box Settings...|x" "inset-settings box"
 # Hey, guess what's broken ? Surprise surprise, it's tabular stuff
 # This is in the Table submenu instead for now.
 #	OptItem "Table Settings...|a" "inset-settings tabular"
@@ -229,6 +229,7 @@ Menuset
 		Submenu "Float|a" "insert_float"
 # YUCK
 		Submenu "Note|N" "insert_note"
+		Submenu "Box" "insert_box"
 		Submenu "Branch|B" "branches"
 		Submenu "File|e" "insert_file"
 		Separator
@@ -243,7 +244,6 @@ Menuset
 		Item "URL...|U" "url-insert"
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
-		Item "Minipage|p" "minipage-insert"
 		Item "Short Title" "optional-insert"
 		Item "TeX|X" "ert-insert"
 	End
@@ -337,6 +337,15 @@ Menuset
 		Item "LyX Note|N" "note-insert Note"
 		Item "Comment|C" "note-insert Comment"
 		Item "Greyed Out|G" "note-insert Greyedout"
+	End
+
+	Menu "insert_box"
+		Item "Frameless|F" "box-insert Frameless"
+		Item "Boxed|B" "box-insert Boxed"
+		Item "Oval Box|O" "box-insert ovalbox"
+		Item "Oval Box, Thick|T" "box-insert Ovalbox"
+		Item "Shadow Box|S" "box-insert Shadowbox"
+		Item "Double Box|D" "box-insert Doublebox"
 	End
 
 	Menu "branches"

@@ -225,6 +225,7 @@ void LyXAction::init()
 		{ LFUN_INSET_MINIPAGE, "minipage-insert", Noop },
 		{ LFUN_INSERT_BRANCH, "branch-insert", Noop },
 		{ LFUN_INSERT_NOTE, "note-insert", Noop },
+		{ LFUN_INSERT_BOX, "box-insert", Noop },
 		{ LFUN_GOTONOTE, "note-next", ReadOnly },
 		{ LFUN_INSET_TOGGLE, "inset-toggle", ReadOnly },
 		{ LFUN_DOWN_PARAGRAPH, "paragraph-down", ReadOnly },

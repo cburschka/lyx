@@ -1,0 +1,148 @@
+// -*- C++ -*-
+/**
+ * \file insetbox.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Angus Leeming
+ * \author Martin Vermeer
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
+#ifndef INSETBOX_H
+#define INSETBOX_H
+
+
+#include "insetcollapsable.h"
+#include "lyxlength.h"
+#include "support/translator.h"
+
+
+struct InsetBoxParams {
+	///
+	InsetBoxParams(std::string const &);
+	///	
+	void write(std::ostream & os) const;
+	///
+	void read(LyXLex & lex);
+	///
+	std::string type;
+	/// Use a parbox (true) or minipage (false)
+	bool use_parbox;
+	/// Do we have an inner parbox or minipage to format paragraphs to
+	/// columnwidth?
+	bool inner_box;
+	///
+	LyXLength width;
+	/// "special" widths, see usrguide.dvi §3.5
+	std::string special;
+	///
+	char pos;
+	///
+	char hor_pos;
+	///
+	char inner_pos;
+	///
+	LyXLength height;
+	///
+	std::string height_special;
+};
+
+
+/** The fbox/fancybox inset
+
+*/
+class InsetBox : public InsetCollapsable {
+public:
+	///
+	InsetBox(BufferParams const &, std::string const &);
+	/// Copy constructor
+	InsetBox(InsetBox const &);
+	///
+	~InsetBox();
+	///
+	virtual std::auto_ptr<InsetBase> clone() const;
+	///
+	std::string const editMessage() const;
+	///
+	InsetOld::Code lyxCode() const { return InsetOld::BOX_CODE; }
+	///
+	void write(Buffer const &, std::ostream &) const;
+	///
+	void read(Buffer const & buf, LyXLex & lex);
+	///
+	void setButtonLabel();
+	///
+	dispatch_result InsetBox::localDispatch(FuncRequest const &);
+	///
+	void metrics(MetricsInfo &, Dimension &) const;
+	/// show the Box dialog
+	bool showInsetDialog(BufferView * bv) const;
+	///
+	int latex(Buffer const &, std::ostream &,
+			LatexRunParams const &) const;
+	///
+	int linuxdoc(Buffer const &, std::ostream &) const;
+	///
+	int docbook(Buffer const &, std::ostream &, bool) const;
+	///
+	int ascii(Buffer const &, std::ostream &, int) const;
+	///
+	void validate(LaTeXFeatures &) const;
+	///
+	InsetBoxParams const & params() const { return params_; }
+	///	
+	enum BoxType {
+		Frameless,
+		Boxed,
+		ovalbox,
+		Ovalbox,
+		Shadowbox,
+		Doublebox
+	};
+
+private:
+	friend class InsetBoxParams;
+
+	/// used by the constructors
+	void init();
+	///
+	InsetBoxParams params_;
+};
+
+
+namespace {
+
+typedef Translator<std::string, InsetBox::BoxType> BoxTranslator;
+BoxTranslator const & boxtranslator();
+BoxTranslator const & boxtranslator_loc();
+
+} // anon
+
+
+#include "mailinset.h"
+
+class InsetBoxMailer : public MailInset {
+public:
+	///
+	InsetBoxMailer(InsetBox & inset);
+	///
+	virtual InsetBase & inset() const { return inset_; }
+	///
+	virtual std::string const & name() const { return name_; }
+	///
+	virtual std::string const inset2string(Buffer const &) const;
+	///
+	static std::string const params2string(InsetBoxParams const &);
+	///
+	static void string2params(std::string const &, InsetBoxParams &);
+
+private:
+	///
+	static std::string const name_;
+	///
+	InsetBox & inset_;
+};
+
+#endif // INSET_BOX_H

@@ -525,6 +525,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			case InsetOld::BRANCH_CODE:
 				disable = ev.argument != "branch";
 				break;
+			case InsetOld::BOX_CODE:
+				disable = ev.argument != "box";
+				break;
 			default:
 				break;
 		}
@@ -652,6 +655,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_INSERT_NOTE:
 		code = InsetOld::NOTE_CODE;
+		break;
+	case LFUN_INSERT_BOX:
+		code = InsetOld::BOX_CODE;
 		break;
 	case LFUN_INSERT_BRANCH:
 		code = InsetOld::BRANCH_CODE;
