@@ -24,7 +24,7 @@
 #include "support/LAssert.h"
 
 FeedbackController::FeedbackController()
-	: warning_posted_(false)
+	: warning_posted_(false), message_widget_(0)
 {}
 
 
@@ -42,11 +42,6 @@ void FeedbackController::setMessageWidget(FL_OBJECT * ob)
 // preemptive handler for feedback messages
 void FeedbackController::MessageCB(FL_OBJECT * ob, int event)
 {
-	if (!message_widget_) {
-		// fail silently.
-		return;
-	}
-
 	lyx::Assert(ob);
 
 	switch (event) {
@@ -73,7 +68,8 @@ void FeedbackController::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 		// using the middle mouse button.
 		InputCB(ob, 0);
 
-	} else if (event == FL_ENTER || event == FL_LEAVE){
+	} else if (message_widget_ &&
+		   (event == FL_ENTER || event == FL_LEAVE)) {
 		// Post feedback as the mouse enters the object,
 		// remove it as the mouse leaves.
 		MessageCB(ob, event);
@@ -83,8 +79,6 @@ void FeedbackController::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 
 void FeedbackController::postWarning(string const & warning)
 {
-	lyx::Assert(message_widget_);
-
 	warning_posted_ = true;
 
 	string const str = _("WARNING! ") + warning;
@@ -94,6 +88,8 @@ void FeedbackController::postWarning(string const & warning)
 
 void FeedbackController::postMessage(string const & message)
 {
+	lyx::Assert(message_widget_);
+
 	string const str = formatted(message,
 				     message_widget_->w-10, FL_SMALL_SIZE);
 
