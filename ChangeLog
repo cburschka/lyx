@@ -1,3 +1,15 @@
+2000-10-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/version.h (LYX_RELEASE): version 1.1.5fix2 released.
+
+	* src/minibuffer.C (peek_event): return 1 if there has been a
+	mouse click in the minibuffer.
+
+2000-10-17  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/lyxfunc.C (Dispatch): Call to showState() after insertion of 
+	a char only if real_current_font was changed.
+
 2000-10-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyx_gui.C (init): increase max number of menus to 128.

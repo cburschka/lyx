@@ -129,6 +129,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 	} else if (event == FL_PUSH) {
 		// This actually clears the buffer.
 		mini->PrepareForCommand();
+		return 1;
  	}
 
 	return 0;
