@@ -1,3 +1,10 @@
+2002-02-27  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GraphicsImageXPM.[Ch]: more rigorous use of types (signed/unsigned).
+	(Data d-tor): introduce memory leak temporarily, to "fix" a crash
+	in free_color_table.
+	(unique_color_string): use the correct string c-tor.
+
 2002-02-15  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ImageLoader.[Ch]:

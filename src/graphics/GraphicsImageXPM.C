@@ -236,8 +236,8 @@ void GImageXPM::clip(GParams const & params)
 		// No clipping is necessary.
 		return;
 
-	int const new_width  = params.bb.xr - params.bb.xl;
-	int const new_height = params.bb.yt - params.bb.yb;
+	unsigned int const new_width  = params.bb.xr - params.bb.xl;
+	unsigned int const new_height = params.bb.yt - params.bb.yb;
 
 	if (new_width > image_.width() || new_height > image_.height())
 		// Bounds are invalid.
@@ -301,12 +301,12 @@ void GImageXPM::rotate(GParams const & params)
 	max_x = std::max(max_x, x_rot); min_x = std::min(min_x, x_rot);
 	max_y = std::max(max_y, y_rot); min_y = std::min(min_y, y_rot);
 
-	int const new_width  = 1 + int(max_x - min_x); // round up!
-	int const new_height = 1 + int(max_y - min_y);
+	unsigned int const new_width  = 1 + int(max_x - min_x); // round up!
+	unsigned int const new_height = 1 + int(max_y - min_y);
 
 	unsigned int * new_data = image_.initialisedData(new_width, new_height);
 	unsigned int const * old_data = image_.data();
-	
+
 	// rotate the data
 	for (int y_old = 0; y_old < image_.height(); ++y_old) {
 		for (int x_old = 0; x_old < image_.width(); ++x_old) {
@@ -338,8 +338,8 @@ void GImageXPM::scale(GParams const & params)
 	// boost::tie produces horrible compilation errors on my machine
 	// Angus 25 Feb 2002
 	std::pair<unsigned int, unsigned int> d = getScaledDimensions(params);
-	int const new_width  = d.first;
-	int const new_height = d.second;
+	unsigned int const new_width  = d.first;
+	unsigned int const new_height = d.second;
 	if (new_width == getWidth() && new_height == getHeight())
 		// No scaling needed
 		return;
@@ -373,9 +373,9 @@ void GImageXPM::scale(GParams const & params)
 
 namespace {
 
-void free_color_table(XpmColor * colorTable, int ncolors);
+void free_color_table(XpmColor * colorTable, size_t size);
 
-void copy_color_table(XpmColor const * in, int size, XpmColor * out);
+void copy_color_table(XpmColor const * in, size_t size, XpmColor * out);
 	
 bool contains_color_none(XpmImage const & image);
 
@@ -401,8 +401,9 @@ GImageXPM::Data::Data()
 
 GImageXPM::Data::~Data()
 {
-	if (colorTable_.unique())
-		free_color_table(colorTable_.get(), ncolors_);
+	// Introduce temporary memory leak to fix crash.
+//	if (colorTable_.unique())
+//		free_color_table(colorTable_.get(), ncolors_);
 }
 
 
@@ -465,7 +466,7 @@ void GImageXPM::Data::reset(XpmImage & image)
 	// 2. Ensure that the color table has g_color and m_color entries
 	XpmColor * table = colorTable_.get();
 
-	for (int i = 0; i < ncolors_; ++i) {
+	for (size_t i = 0; i < ncolors_; ++i) {
 		// If the c_color is defined and the equivalent
 		// grayscale one is not, then define it.
 		if (table[i].c_color && !table[i].g_color)
@@ -516,10 +517,10 @@ unsigned int * GImageXPM::Data::initialisedData(int w, int h) const
 unsigned int GImageXPM::Data::color_none_id() const
 {
 	XpmColor * table = colorTable_.get();
-	for (int i = 0; i < ncolors_; ++i) {
+	for (size_t i = 0; i < ncolors_; ++i) {
 		char const * const color = table[i].c_color;
 		if (color && lowercase(color) == "none")
-			return i;
+			return uint(i);
 	}
 	return 0;
 }
@@ -567,9 +568,9 @@ char * mapcolor(char * color, bool toGray)
 }
 
 
-void copy_color_table(XpmColor const * in, int size, XpmColor * out)
+void copy_color_table(XpmColor const * in, size_t size, XpmColor * out)
 {
-	for (int i = 0; i < size; ++i) {
+	for (size_t i = 0; i < size; ++i) {
 		out[i].string   = clone_c_string(in[i].string);
 		out[i].symbolic = clone_c_string(in[i].symbolic);
 		out[i].m_color  = clone_c_string(in[i].m_color);
@@ -580,9 +581,9 @@ void copy_color_table(XpmColor const * in, int size, XpmColor * out)
 }
 
 
-void free_color_table(XpmColor * table, int size)
+void free_color_table(XpmColor * table, size_t size)
 {
-	for (int i = 0; i < size; ++i) {
+	for (size_t i = 0; i < size; ++i) {
 		free(table[i].string);
 		free(table[i].symbolic);
 		free(table[i].m_color);
@@ -607,7 +608,7 @@ char * clone_c_string(char const * in)
 
 bool contains_color_none(XpmImage const & image)
 {
-	for (int i = 0; i < image.ncolors; ++i) {
+	for (size_t i = 0; i < image.ncolors; ++i) {
 		char const * const color = image.colorTable[i].c_color;
 		if (color && lowercase(color) == "none")
 			return true;
@@ -618,14 +619,11 @@ bool contains_color_none(XpmImage const & image)
 
 string const unique_color_string(XpmImage const & image)
 {
-	string id;
-	for (int i = 0; i < image.cpp; ++i) {
-		id.push_back('A');
-	}
+	string id(image.cpp, 'A');
 
 	for(;;) {
 		bool found_it = false;
-		for (int i = 0; i < image.ncolors; ++i) {
+		for (size_t i = 0; i < image.ncolors; ++i) {
 			string const c_id = image.colorTable[i].string;
 			if (c_id == id) {
 				found_it = true;
@@ -638,20 +636,23 @@ string const unique_color_string(XpmImage const & image)
 
 		// A base 57 counter!
 		// eg AAAz+1 = AABA, AABz+1 = AACA, AAzz+1 = ABAA
-		int current_index = int(id.size() - 1);
+		string::size_type current_index = id.size() - 1;
 		bool continue_loop = true;
-		while(continue_loop && current_index >= 0) {
+		while(continue_loop) {
 			continue_loop = false;
 			
 			if (id[current_index] == 'z') {
+				continue_loop = true;
+				if (current_index == 0) // failed!
+					break;
+
 				id[current_index] = 'A';
 				current_index -= 1;
-				continue_loop = true;
 			} else {
 				id[current_index] += 1;
 			}
 		}
-		if (current_index < 0)
+		if (continue_loop)
 			// Unable to find a unique string
 			return string();
 	}

@@ -113,20 +113,20 @@ private:
 		 */
 		XpmImage get() const;
 
-		int width()   const { return width_; }
-		int height()  const { return height_; }
-		int cpp()     const { return cpp_; }
-		int ncolors() const { return ncolors_; }
+		unsigned int width()   const { return width_; }
+		unsigned int height()  const { return height_; }
+		unsigned int cpp()     const { return cpp_; }
+		unsigned int ncolors() const { return ncolors_; }
 		unsigned int const * data() const
 			{ return data_.get(); }
 		XpmColor const * colorTable() const
 			{ return colorTable_.get(); }
 
 	private:
-		int width_;
-		int height_;
-		int cpp_;
-		int ncolors_;
+		unsigned int width_;
+		unsigned int height_;
+		unsigned int cpp_;
+		unsigned int ncolors_;
 		lyx::shared_c_ptr<unsigned int> data_;
 		lyx::shared_c_ptr<XpmColor> colorTable_;
 
