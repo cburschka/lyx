@@ -191,8 +191,6 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 
 void InsetFormulaBase::edit(BufferView * bv, bool front)
 {
-#warning Please have a look if this is right (Jug)
-#warning Does not look wrong... although I do not know what it is supposed to do (Andre)
 	edit(bv, front ? 0 : 1, 0, 0);
 }
 

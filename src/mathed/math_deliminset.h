@@ -18,11 +18,11 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(Painter &, int, int);
+	void draw(Painter &, int x, int y) const;
 	///
 	void write(std::ostream &, bool fragile) const;
 	///
-	void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 private:
 	int dw() const;
 	///

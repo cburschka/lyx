@@ -19,16 +19,16 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(Painter &, int, int);
+	void draw(Painter &, int x, int y) const;
 	///
 	void write(std::ostream &, bool fragile) const;
 	///
 	void writeNormal(std::ostream &) const;
 	///
-	void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 protected:
-	///
-	int dh_;
+	/// cache for the thing's heigth
+	mutable int dh_;
 	///
 	latexkeys const * key_;
 };   

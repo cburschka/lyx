@@ -55,7 +55,7 @@ MathStyles MathInset::size() const
 }
 
 
-void MathInset::size(MathStyles s)
+void MathInset::size(MathStyles s) const
 {
 	size_ = s;
 }
@@ -80,13 +80,13 @@ int MathInset::yo() const
 }
 
 
-void MathInset::xo(int x)
+void MathInset::xo(int x) const
 {
 	xo_ = x;
 }
 
 
-void MathInset::yo(int y)
+void MathInset::yo(int y) const
 {
 	yo_ = y;
 }
@@ -307,7 +307,20 @@ void MathInset::code(MathTextCodes t)
 }
 
 
-void MathInset::metrics(MathStyles st)
+void MathInset::metrics(MathStyles st) const
 {
+	lyxerr[Debug::MATHED] << "MathInset::metrics() called directly!\n";
 	size_ = st;
+}
+
+
+void MathInset::draw(Painter &, int, int) const
+{
+	lyxerr << "MathInset::draw() called directly!\n";
+}
+
+
+void MathInset::write(std::ostream &, bool) const
+{
+	lyxerr << "MathInset::write() called directly!\n";
 }

@@ -49,7 +49,7 @@ void MathMacroTemplate::write(std::ostream & os, bool fragile) const
 }
 
 
-void MathMacroTemplate::metrics(MathStyles st)
+void MathMacroTemplate::metrics(MathStyles st) const
 {
 	xcell(0).metrics(st);
 	size_    = st;
@@ -59,7 +59,7 @@ void MathMacroTemplate::metrics(MathStyles st)
 }
 
 
-void MathMacroTemplate::draw(Painter & pain, int x, int y)
+void MathMacroTemplate::draw(Painter & pain, int x, int y) const
 {
 	xo(x);
 	yo(y);

@@ -45,14 +45,13 @@ MathArray const & MathNestInset::cell(int i) const
 
 void MathNestInset::substitute(MathArray & array, MathMacro const & m) const
 {
-	MathNestInset * p = static_cast<MathNestInset *>(clone());
+	array.push_back(clone());
 	for (int i = 0; i < nargs(); ++i)
-		p->cell(i).substitute(m);
-	array.push_back(p);
+		array.back()->cell(i).substitute(m);
 }
 
 
-void MathNestInset::metrics(MathStyles st)
+void MathNestInset::metrics(MathStyles st) const
 {
 	size_ = st;
 	for (int i = 0; i < nargs(); ++i)
@@ -60,7 +59,7 @@ void MathNestInset::metrics(MathStyles st)
 }
 
 
-void MathNestInset::draw(Painter & pain, int x, int y)
+void MathNestInset::draw(Painter & pain, int x, int y) const
 {
 	xo(x);
 	yo(y);

@@ -33,11 +33,15 @@ class MathMacroTemplate;
 class InsetFormulaMacro: public InsetFormulaBase {
 public:
 	///
-	explicit InsetFormulaMacro();
+	InsetFormulaMacro();
+	///
+	InsetFormulaMacro(InsetFormulaMacro const &);
 	///
 	explicit InsetFormulaMacro(string name, int na);
 	///
 	~InsetFormulaMacro();
+	///
+	void operator=(InsetFormulaMacro const &);
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -69,7 +73,7 @@ public:
 	///
 	MathInsetTypes getType() const;
 	///
-	MathInset * par() const;
+	MathInset const * par() const;
 	///
 	void metrics() const;
 private:

@@ -21,11 +21,11 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(Painter &, int, int);
+	void draw(Painter &, int x, int y) const;
 	///
 	void write(std::ostream &, bool fragile) const;
 	///
-	void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 	///
 	void writeNormal(std::ostream & os) const;
 private:
@@ -33,9 +33,9 @@ private:
 	latexkeys const * key_;
 	///
 	bool upper_;
-	/// height of deco
-	int dh_;
-	/// vertical offset of deco
-	int dy_;
+	/// height cache of deco
+	mutable int dh_;
+	/// vertical offset cache of deco
+	mutable int dy_;
 };
 #endif

@@ -20,15 +20,15 @@ class MathGridInset : public MathNestInset {
 	struct RowInfo {
 		///
 		RowInfo();
-		///
-		int descent_;
-		///
-		int ascent_;
-		/// 
-		int offset_;
-		///
+		/// cached descent
+		mutable int descent_;
+		/// cached ascent
+		mutable int ascent_;
+		/// cached offset
+		mutable int offset_;
+		/// hline abow this row?
 		bool upperline_;
-		///
+		/// hline below this row?
 		bool lowerline_;
 	};
 
@@ -40,11 +40,11 @@ class MathGridInset : public MathNestInset {
 		char h_align_;
 		/// cache for drawing
 		int h_offset;
-		///
-		int width_;
-		///
-		int offset_;
-		///
+		/// cached width
+		mutable int width_;
+		/// cached offset
+		mutable int offset_;
+		/// 
 		bool leftline_;
 		///
 		bool rightline_;
@@ -54,13 +54,11 @@ public:
 	///
 	MathGridInset(int m, int n, string const & nm);
 	///
-	virtual MathInset * clone() const = 0;
-	///
 	void write(std::ostream &, bool fragile) const;
 	///
-	void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 	///
-	void draw(Painter &, int, int);
+	void draw(Painter &, int x, int y) const;
 	///
 	void halign(string const &);
 	///

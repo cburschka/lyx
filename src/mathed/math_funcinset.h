@@ -19,9 +19,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void MathFuncInset::metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 	///
-	void draw(Painter &, int, int);
+	void draw(Painter &, int x, int y) const;
 	///
 	void write(std::ostream &, bool fragile) const;
 	///

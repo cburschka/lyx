@@ -19,7 +19,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(Painter &, int x, int baseline);
+	void metrics(MathStyles st) const;
+	///
+	void draw(Painter &, int x, int y) const;
 	///
 	void write(std::ostream &, bool fragile) const;
 	///

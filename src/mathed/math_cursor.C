@@ -30,12 +30,14 @@
 #include "formulabase.h"
 #include "math_cursor.h"
 #include "math_arrayinset.h"
+#include "math_bigopinset.h"
 #include "math_symbolinset.h"
 #include "math_decorationinset.h"
 #include "math_deliminset.h"
 #include "math_dotsinset.h"
 #include "math_fracinset.h"
 #include "math_funcinset.h"
+#include "math_funcliminset.h"
 #include "math_gridinset.h"
 #include "math_macro.h"
 #include "math_macroarg.h"
@@ -195,7 +197,7 @@ void MathCursor::seldump(char const *) const
 }
 
 
-bool MathCursor::isInside(MathInset * p) const
+bool MathCursor::isInside(MathInset const * p) const
 {
 	for (unsigned i = 0; i < Cursor_.size(); ++i) 
 		if (parInset(i) == p) 
@@ -222,9 +224,9 @@ bool MathCursor::openable(MathInset * p, bool sel, bool useupdown) const
 }
 
 
-bool MathCursor::plainLeft()
+void MathCursor::plainLeft()
 {
-	return array().prev(cursor().pos_);
+	--cursor().pos_;
 }
 
 
@@ -249,8 +251,10 @@ bool MathCursor::left(bool sel)
 		push(p, false);
 		return true;
 	} 
-	if (plainLeft())
+	if (cursor().pos_) {
+		plainLeft();
 		return true;
+	}
 	if (cursor().par_->idxLeft(cursor().idx_, cursor().pos_))
 		return true;
 	if (pop())
@@ -294,14 +298,14 @@ bool MathCursor::right(bool sel)
 void MathCursor::first()
 {
 	Cursor_.clear();
-	push(formula_->par(), true);
+	push(outerPar(), true);
 }
 
 
 void MathCursor::last()
 {
 	Cursor_.clear();
-	push(formula_->par(), false);
+	push(outerPar(), false);
 }
 
 
@@ -314,7 +318,7 @@ void MathCursor::setPos(int x, int y)
 	lastcode_ = LM_TC_MIN;
 	first();
 
-	cursor().par_  = formula()->par();
+	cursor().par_  = outerPar();
 
 	while (1) {
 		cursor().idx_ = -1;
@@ -370,7 +374,7 @@ void MathCursor::end()
 	clearLastCode();
 	if (!cursor().par_->idxEnd(cursor().idx_, cursor().pos_)) {
 		pop();
-		array().next(cursor().pos_);
+		++cursor().pos_;
 	}
 	dump("end 2");
 }
@@ -403,7 +407,7 @@ void MathCursor::insert(char c, MathTextCodes t)
 	}
 
 	array().insert(cursor().pos_, c, t);
-	array().next(cursor().pos_);
+	++cursor().pos_;
 }
 
 
@@ -586,9 +590,9 @@ bool MathCursor::down(bool sel)
 
 bool MathCursor::toggleLimits()
 {
-	if (!prevIsInset())
-		return false;
 	MathScriptInset * p = prevScriptInset();
+	if (!p)
+		return false;
 	int old = p->limits();
 	p->limits(old < 0 ? 1 : -1);
 	return old != p->limits();
@@ -670,9 +674,15 @@ void MathCursor::interpret(string const & s)
 			p = new MathFuncInset(s);
 	} else {
 		switch (l->token) {
-			case LM_TK_SYM: 
 			case LM_TK_BIGSYM: 
+				p = new MathBigopInset(l);
+				break;
+
 			case LM_TK_FUNCLIM:
+				p = new MathFuncLimInset(l);
+				break;
+
+			case LM_TK_SYM: 
 				p = new MathSymbolInset(l);
 				break;
 
@@ -1049,7 +1059,7 @@ MathInset * MathCursor::prevInset() const
 {
 	normalize();
 	int c = cursor().pos_;
-	if (!array().prev(c))
+	if (!c)
 		return 0;
 	return array().nextInset(c);
 }
@@ -1065,7 +1075,7 @@ MathInset * MathCursor::nextInset() const
 MathScriptInset * MathCursor::prevScriptInset() const
 {
 	normalize();
-	MathInset * p = array().prevInset(cursor().pos_);
+	MathInset * p = prevInset();
 	return (p && p->isScriptInset()) ? static_cast<MathScriptInset *>(p) : 0;
 }
 
@@ -1073,7 +1083,7 @@ MathScriptInset * MathCursor::prevScriptInset() const
 MathSpaceInset * MathCursor::prevSpaceInset() const
 {
 	normalize();
-	MathInset * p = array().prevInset(cursor().pos_);
+	MathInset * p = prevInset();
 	return (p && p->isSpaceInset()) ? static_cast<MathSpaceInset *>(p) : 0;
 }
 
@@ -1098,18 +1108,6 @@ MathArray & MathCursor::array() const
 MathXArray & MathCursor::xarray() const
 {
 	return cursor().xcell();
-}
-
-
-bool MathCursor::nextIsInset() const
-{
-	return cursor().pos_ < array().size() && MathIsInset(nextCode());
-}
-
-
-bool MathCursor::prevIsInset() const
-{
-	return cursor().pos_ > 0 && MathIsInset(prevCode());
 }
 
 
@@ -1153,7 +1151,7 @@ void MathCursor::splitCell()
 
 void MathCursor::breakLine()
 {
-	MathMatrixInset * p = static_cast<MathMatrixInset *>(formula()->par());
+	MathMatrixInset * p = outerPar();
 	if (p->getType() == LM_OT_SIMPLE || p->getType() == LM_OT_EQUATION) {
 		p->mutate(LM_OT_EQNARRAY);
 		p->addRow(0);
@@ -1313,4 +1311,11 @@ bool MathCursorPos::idxLeft()
 bool MathCursorPos::idxRight()
 {
 	return par_->idxRight(idx_, pos_);
+}
+
+
+MathMatrixInset * MathCursor::outerPar() const
+{
+	return
+		static_cast<MathMatrixInset *>(const_cast<MathInset *>(formula_->par()));
 }

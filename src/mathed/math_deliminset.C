@@ -51,7 +51,7 @@ void MathDelimInset::write(std::ostream & os, bool fragile) const
 }
 
 
-void MathDelimInset::draw(Painter & pain, int x, int y)
+void MathDelimInset::draw(Painter & pain, int x, int y) const
 { 
 	xo(x);
 	yo(y); 
@@ -86,7 +86,7 @@ int MathDelimInset::dw() const
 }
 
 
-void MathDelimInset::metrics(MathStyles st)
+void MathDelimInset::metrics(MathStyles st) const
 {
 	xcell(0).metrics(st);
 	size_    = st;

@@ -47,6 +47,12 @@ InsetFormulaMacro::InsetFormulaMacro()
 {}
 
 
+InsetFormulaMacro::InsetFormulaMacro(InsetFormulaMacro const & m)
+	: InsetFormulaBase(m),
+		tmacro_(static_cast<MathMacroTemplate *>(m.tmacro_->clone()))
+{}
+
+
 InsetFormulaMacro::InsetFormulaMacro(string nm, int na)
 	: tmacro_(new MathMacroTemplate(nm, na))
 {
@@ -185,15 +191,15 @@ MathInsetTypes InsetFormulaMacro::getType() const
 }
 
 
-MathInset * InsetFormulaMacro::par() const
+MathInset const * InsetFormulaMacro::par() const
 {
-	return const_cast<MathMacroTemplate *>(tmacro_);
+	return tmacro_;
 }
 
 
 void InsetFormulaMacro::metrics() const
 {
-	par()->metrics(LM_ST_TEXT);
+	tmacro_->metrics(LM_ST_TEXT);
 }
 
 
@@ -223,7 +229,7 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	// formula
 	float t = tmacro().width() + 5;
 	x -= t;
-	par()->draw(pain, int(x), baseline);
+	tmacro_->draw(pain, int(x), baseline);
 	x += t;
 }
 

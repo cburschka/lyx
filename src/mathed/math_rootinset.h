@@ -33,13 +33,13 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(Painter &, int x, int baseline);
+	void draw(Painter &, int x, int y) const;
 	///
 	void write(std::ostream &, bool fragile) const;
 	///
 	void writeNormal(std::ostream &) const;
 	///
-	void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 	///
 	bool idxUp(int & idx, int & pos) const;
 	///

@@ -18,11 +18,11 @@ public:
 	///
 	explicit MathSizeInset(MathStyles st);
 	///
-	virtual MathInset * clone() const;
+	MathInset * clone() const;
 	///
-	void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 	///
-	void draw(Painter &, int x, int baseline);
+	void draw(Painter &, int x, int y) const;
 	///
 	void write(std::ostream &, bool fragile) const;
 	///

@@ -30,9 +30,9 @@ public:
 	///
 	void numargs(int);
 	///
-	void draw(Painter &, int, int);
+	void draw(Painter &, int x, int y) const;
 	///
-	void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 private:
 	///
 	int numargs_;

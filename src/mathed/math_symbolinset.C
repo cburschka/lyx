@@ -28,7 +28,7 @@ void MathSymbolInset::writeNormal(ostream & os) const
 }
 
 
-void MathSymbolInset::metrics(MathStyles st)
+void MathSymbolInset::metrics(MathStyles st) const
 {
 	size(st);
 	
@@ -45,7 +45,7 @@ void MathSymbolInset::metrics(MathStyles st)
 }
 
 
-void MathSymbolInset::draw(Painter & pain, int x, int y)
+void MathSymbolInset::draw(Painter & pain, int x, int y) const
 {  
 	xo(x);
 	yo(y);

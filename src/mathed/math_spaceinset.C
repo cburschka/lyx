@@ -19,7 +19,7 @@ MathInset * MathSpaceInset::clone() const
 }
 
 
-void MathSpaceInset::draw(Painter & pain, int x, int y)
+void MathSpaceInset::draw(Painter & pain, int x, int y) const
 { 
 	
 // XPoint p[4] = {{++x, y-3}, {x, y}, {x+width-2, y}, {x+width-2, y-3}};
@@ -51,7 +51,7 @@ void MathSpaceInset::writeNormal(std::ostream & os) const
 }
 
 
-void MathSpaceInset::metrics(MathStyles st)
+void MathSpaceInset::metrics(MathStyles st) const
 {
 	size_  = st;
 	width_ = space_ ? space_ * 2 : 2;

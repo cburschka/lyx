@@ -42,7 +42,13 @@ int MathCharInset::width() const
 }
 
 
-void MathCharInset::draw(Painter & pain, int x, int y)
+void MathCharInset::metrics(MathStyles st) const
+{
+	size_ = st;
+}
+
+
+void MathCharInset::draw(Painter & pain, int x, int y) const
 { 
 	xo(x);
 	yo(y);

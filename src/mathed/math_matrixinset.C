@@ -93,7 +93,7 @@ MathInset * MathMatrixInset::clone() const
 }
 
 
-void MathMatrixInset::metrics(MathStyles /* st */)
+void MathMatrixInset::metrics(MathStyles) const
 {
 	size_ = (getType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
 
@@ -116,7 +116,7 @@ void MathMatrixInset::metrics(MathStyles /* st */)
 }
 
 
-void MathMatrixInset::draw(Painter & pain, int x, int y)
+void MathMatrixInset::draw(Painter & pain, int x, int y) const
 {
 	xo(x);
 	yo(y);

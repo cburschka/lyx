@@ -32,11 +32,15 @@ public:
 	///
 	InsetFormula();
 	///
+	InsetFormula(InsetFormula const &);
+	///
 	explicit InsetFormula(MathInsetTypes);
 	///
 	explicit InsetFormula(string const &);
 	///
 	~InsetFormula();
+	///
+	void operator=(InsetFormula const &);
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -77,7 +81,7 @@ public:
 	///
 	void handleExtern(string const & arg, BufferView * bv);
 	///
-	MathInset * par() const;
+	MathInset const * par() const;
 	///
 	bool display() const;
 	///

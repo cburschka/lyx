@@ -21,7 +21,7 @@ MathInset * MathDotsInset::clone() const
 }     
 
 
-void MathDotsInset::draw(Painter & pain, int x, int y)
+void MathDotsInset::draw(Painter & pain, int x, int y) const
 {
 	mathed_draw_deco(pain, x + 2, y - dh_, width_ - 2, ascent_, key_->id);
 	if (key_->id == LM_vdots || key_->id == LM_ddots)
@@ -32,7 +32,7 @@ void MathDotsInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathDotsInset::metrics(MathStyles st)
+void MathDotsInset::metrics(MathStyles st) const
 {
 	size(st);
 	mathed_char_dim(LM_TC_VAR, size(), 'M', ascent_, descent_, width_);

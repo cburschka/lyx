@@ -35,7 +35,7 @@ MathInset * MathSizeInset::clone() const
 }
 
 
-void MathSizeInset::draw(Painter & pain, int x, int y)
+void MathSizeInset::draw(Painter & pain, int x, int y) const
 {
 	xo(x);
 	yo(y);
@@ -43,7 +43,7 @@ void MathSizeInset::draw(Painter & pain, int x, int y)
 }
 
 
-void MathSizeInset::metrics(MathStyles /* st */)
+void MathSizeInset::metrics(MathStyles /* st */) const
 {
 	xcell(0).metrics(style_);
 	ascent_   = xcell(0).ascent_;

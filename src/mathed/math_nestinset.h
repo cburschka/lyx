@@ -18,32 +18,32 @@ public:
 	///
 	explicit MathNestInset(int na = 0, string const & nm = string());
 
+	///
+	void metrics(MathStyles st) const;
 	/// draw the object, sets xo_ and yo_ cached values 
-	virtual void draw(Painter &, int x, int baseline);
+	void draw(Painter &, int x, int y) const;
 	/// appends itself with macro arguments substituted
-	virtual void substitute(MathArray & array, MathMacro const & macro) const;
-	/// compute the size of the object, sets ascend_, descend_ and width_
-	virtual void metrics(MathStyles st) = 0;
+	void substitute(MathArray & array, MathMacro const & macro) const;
 
 	/// The left key
-	virtual bool idxLeft(int & idx, int & pos) const;
+	bool idxLeft(int & idx, int & pos) const;
 	/// The right key
-	virtual bool idxRight(int & idx, int & pos) const;
+	bool idxRight(int & idx, int & pos) const;
 
 	/// Move one physical cell up
-	virtual bool idxNext(int & idx, int & pos) const;
+	bool idxNext(int & idx, int & pos) const;
 	/// Move one physical cell down
-	virtual bool idxPrev(int & idx, int & pos) const;
+	bool idxPrev(int & idx, int & pos) const;
 
 	/// Target pos when we enter the inset from the left by pressing "Right"
-	virtual bool idxFirst(int & idx, int & pos) const;
+	bool idxFirst(int & idx, int & pos) const;
 	/// Target pos when we enter the inset from the right by pressing "Left"
-	virtual bool idxLast(int & idx, int & pos) const;
+	bool idxLast(int & idx, int & pos) const;
 
 	/// Where should we go if we press home?
-	virtual bool idxHome(int & idx, int & pos) const;
+	bool idxHome(int & idx, int & pos) const;
 	/// Where should we go if we press end?
-	virtual bool idxEnd(int & idx, int & pos) const;
+	bool idxEnd(int & idx, int & pos) const;
 
 	///
 	int nargs() const;

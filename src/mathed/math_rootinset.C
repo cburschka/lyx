@@ -30,7 +30,7 @@ MathInset * MathRootInset::clone() const
 }
 
 
-void MathRootInset::metrics(MathStyles st)
+void MathRootInset::metrics(MathStyles st) const
 {
 	MathNestInset::metrics(st);
 	size_    = st;
@@ -40,7 +40,7 @@ void MathRootInset::metrics(MathStyles st)
 }
 
 
-void MathRootInset::draw(Painter & pain, int x, int y)
+void MathRootInset::draw(Painter & pain, int x, int y) const
 {
 	xo(x);
 	yo(y);

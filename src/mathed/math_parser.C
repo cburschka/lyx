@@ -29,12 +29,13 @@
 #include "array.h"
 #include "math_inset.h"
 #include "math_arrayinset.h"
-#include "math_symbolinset.h"
+#include "math_bigopinset.h"
 #include "math_dotsinset.h"
 #include "math_decorationinset.h"
 #include "math_deliminset.h"
 #include "math_fracinset.h"
 #include "math_funcinset.h"
+#include "math_funcliminset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
@@ -44,6 +45,7 @@
 #include "math_sizeinset.h"
 #include "math_spaceinset.h"
 #include "math_sqrtinset.h"
+#include "math_symbolinset.h"
 #include "debug.h"
 #include "mathed/support.h"
 #include "lyxlex.h"
@@ -657,8 +659,16 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 			break;
 
 		case LM_TK_BIGSYM:  
-		case LM_TK_SYM:
+			limits = 0;
+			array.push_back(new MathBigopInset(yylval.l));
+			break;
+
 		case LM_TK_FUNCLIM:
+			limits = 0;
+			array.push_back(new MathFuncLimInset(yylval.l));
+			break;
+
+		case LM_TK_SYM:
 			limits = 0;
 			array.push_back(new MathSymbolInset(yylval.l));
 			break;

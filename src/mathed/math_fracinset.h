@@ -16,31 +16,31 @@ public:
 	///
 	explicit MathFracInset(const string & name);
 	///
-	virtual MathInset * clone() const;
+	MathInset * clone() const;
 	///
-	virtual void write(std::ostream &, bool fragile) const;
+	void write(std::ostream &, bool fragile) const;
 	///
-	virtual void writeNormal(std::ostream &) const;
+	void writeNormal(std::ostream &) const;
 	///
-	virtual void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 	///
-	virtual void draw(Painter &, int x, int baseline);
+	void draw(Painter &, int x, int y) const;
 	///
-	virtual bool idxUp(int &, int &) const;
+	bool idxUp(int &, int &) const;
 	///
-	virtual bool idxDown(int &, int &) const;
+	bool idxDown(int &, int &) const;
 	///
-	virtual bool idxLeft(int &, int &) const;
+	bool idxLeft(int &, int &) const;
 	///
-	virtual bool idxRight(int &, int &) const;
+	bool idxRight(int &, int &) const;
 	///
-	virtual bool idxFirstUp(int & idx, int & pos) const;
+	bool idxFirstUp(int & idx, int & pos) const;
 	///
-	virtual bool idxFirstDown(int & idx, int & pos) const;
+	bool idxFirstDown(int & idx, int & pos) const;
 	///
-	virtual bool idxLastUp(int & idx, int & pos) const;
+	bool idxLastUp(int & idx, int & pos) const;
 	///
-	virtual bool idxLastDown(int & idx, int & pos) const;
+	bool idxLastDown(int & idx, int & pos) const;
 };
 
 #endif

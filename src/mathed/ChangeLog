@@ -1,3 +1,14 @@
+
+2001-08-06  André Pönitz  <poenitz@gmx.net>
+
+	* formulamacro.C: fix nasty bug due to missing copy constructor
+
+	* math_bigopinset.[Ch]: revival for things like \int, \sum
+
+	* math_funcliminset.[Ch]: dedicated new inset for \lim, \max, \min...
+	
+	* math_diminset.h: make cahce variables mutable
+
 2001-08-01  André Pönitz  <poenitz@gmx.net>
 
 	* math_cursor.C:

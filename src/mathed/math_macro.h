@@ -41,9 +41,9 @@ public:
 	///
 	MathMacro(MathMacro const &);
 	///
-	void draw(Painter &, int, int);
+	void draw(Painter &, int x, int y) const;
 	///
-	void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 	///
 	MathInset * clone() const;
 	///
@@ -69,7 +69,7 @@ private:
 	///
 	MathMacroTemplate const * const tmplate_;
 	///
-	MathXArray expanded_;
+	mutable MathXArray expanded_;
 	///
 	void operator=(MathMacro const &);
 };

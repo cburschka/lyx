@@ -6,7 +6,9 @@
 
 struct latexkeys;
 
-/// big operators
+// "normal" symbols that don't take limits and don't grow in displayed
+// formulae
+
 class MathSymbolInset : public MathDimInset {
 public:
 	///
@@ -18,18 +20,14 @@ public:
 	///
 	void writeNormal(std::ostream &) const;
 	///
-	void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 	///
-	void draw(Painter &, int, int);
-	///
-	bool isScriptable() const { return true; }
+	void draw(Painter &, int x, int y) const;
 
 private:
 	///
 	latexkeys const * sym_;
-	///
-	string ssym_;
-	///
-	MathTextCodes code_;
+	/// cache for the symbol's onscreen string representation
+	mutable string ssym_;
 };
 #endif

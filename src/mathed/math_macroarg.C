@@ -29,7 +29,7 @@ MathInset * MathMacroArgument::clone() const
 }
 
 
-void MathMacroArgument::draw(Painter & pain, int x, int y)
+void MathMacroArgument::draw(Painter & pain, int x, int y) const
 {
 	drawStr(pain, LM_TC_TEX, size(), x, y, str_);
 }

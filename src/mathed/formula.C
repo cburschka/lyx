@@ -55,6 +55,11 @@ InsetFormula::InsetFormula()
 {}
 
 
+InsetFormula::InsetFormula(const InsetFormula & f)
+	: InsetFormulaBase(f), par_(static_cast<MathMatrixInset *>(f.par_->clone()))
+{}
+
+
 InsetFormula::InsetFormula(MathInsetTypes t)
 	: par_(new MathMatrixInset(t))
 {}
@@ -148,8 +153,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const &,
 
 void InsetFormula::metrics() const 
 {
-	const_cast<MathMatrixInset *>(par_)
-		->	metrics(display() ? LM_ST_DISPLAY : LM_ST_TEXT);
+	par_->metrics(display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 }
 
 vector<string> const InsetFormula::getLabelList() const
@@ -314,7 +318,7 @@ bool InsetFormula::display() const
 }
 
 
-MathInset * InsetFormula::par() const
+MathInset const * InsetFormula::par() const
 {
 	return par_;
 }

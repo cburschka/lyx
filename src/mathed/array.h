@@ -76,11 +76,9 @@ public:
 	///
 	void erase();
 	///
-	bool prev(int & pos) const;
-	///
 	bool next(int & pos) const;
 	///
-	bool last(int & pos) const;
+	int last() const;
 
 
 	///
@@ -103,9 +101,9 @@ public:
 	///
 
 	///
-	MathInset * nextInset(int pos) const;
+	MathInset * nextInset(int pos);
 	///
-	MathInset * prevInset(int pos) const;
+	MathInset const * nextInset(int pos) const;
 	///
 	unsigned char getChar(int pos) const;
 	/// read subsequent chars of the same kind.

@@ -24,10 +24,11 @@
 #include "math_defs.h"
 
 class MathInset;
+class MathArrayInset;
 class MathFuncInset;
+class MathMatrixInset;
 class MathScriptInset;
 class MathSpaceInset;
-class MathArrayInset;
 class InsetFormulaBase;
 class MathArray;
 class MathXArray;
@@ -97,7 +98,7 @@ public:
 	/// Put the cursor in the last position
 	void last();
 	///
-	bool plainLeft();
+	void plainLeft();
 	///
 	void plainRight();
 	///
@@ -176,7 +177,7 @@ public:
 	///
 	void pullArg(bool goright);
 	///
-	bool isInside(MathInset *) const;
+	bool isInside(MathInset const *) const;
 	///
 	MathTextCodes nextCode() const;
 	///
@@ -243,6 +244,8 @@ public:
 	///
 	MathInset * parInset(int i) const;
 	///
+	MathMatrixInset * outerPar() const;
+	///
 	void seldump(char const * str) const;
 	///
 	void dump(char const * str) const;
@@ -252,10 +255,6 @@ public:
 	///
 	void gotoX(int x);
 
-	///
-	bool nextIsInset() const;
-	///
-	bool prevIsInset() const;
 	///
 	void merge(MathArray const & arr);
 	///

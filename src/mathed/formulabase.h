@@ -118,7 +118,7 @@ public:
 	///
 	virtual std::vector<string> const getLabelList() const;
 	///
-	virtual MathInset * par() const = 0;
+	virtual MathInset const * par() const = 0;
 	///
 	virtual void metrics() const = 0;
 protected:

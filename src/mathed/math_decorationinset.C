@@ -25,7 +25,7 @@ MathInset * MathDecorationInset::clone() const
 
 
 
-void MathDecorationInset::metrics(MathStyles st)
+void MathDecorationInset::metrics(MathStyles st) const
 {
 	xcell(0).metrics(st);
 	size_    = st;
@@ -51,7 +51,7 @@ void MathDecorationInset::metrics(MathStyles st)
 	}
 }
 
-void MathDecorationInset::draw(Painter & pain, int x, int y)
+void MathDecorationInset::draw(Painter & pain, int x, int y) const
 { 
 	xo(x);
 	yo(x);

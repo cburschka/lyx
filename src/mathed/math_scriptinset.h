@@ -30,9 +30,9 @@ public:
 	///
 	void writeNormal(std::ostream &) const;
 	///
-	void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 	///
-	void draw(Painter &, int x, int baseline);
+	void draw(Painter &, int x, int y) const;
 
 	///
 	bool idxUp(int & idx, int & pos) const;
@@ -82,20 +82,18 @@ private:
 	bool up_;
 	///
 	bool down_;
-	///
-	string ssym_;
 	/// 1: \limits, -1: \nolimits, 0: use default
 	int limits_;
-	/// x offset for drawing the superscript
-	int dx0_;
-	/// x offset for drawing the subscript
-	int dx1_;
-	/// x offset for drawing the inner symbol
-	int dxx_;
-	///
-	int dy0_;
-	///
-	int dy1_;
+	/// x offset cache for drawing the superscript
+	mutable int dx0_;
+	/// x offset cache for drawing the subscript
+	mutable int dx1_;
+	/// x offset cache for drawing the inner symbol
+	mutable int dxx_;
+	/// y offset cache for drawing the superscript
+	mutable int dy0_;
+	/// y offset cache for drawing the subscript
+	mutable int dy1_;
 	///
 	MathInset * symbol_;
 };

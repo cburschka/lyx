@@ -9,6 +9,7 @@
 #include "mathed/support.h"
 #include "math_defs.h"
 #include "Painter.h"
+#include "debug.h"
 
 using std::max;
 using std::min;
@@ -19,7 +20,7 @@ MathXArray::MathXArray()
 {}
 
 
-void MathXArray::metrics(MathStyles st)
+void MathXArray::metrics(MathStyles st) const
 {
 	if (data_.empty()) {
 		mathed_char_dim(LM_TC_VAR, st, 'I', ascent_, descent_, width_); 
@@ -31,12 +32,13 @@ void MathXArray::metrics(MathStyles st)
 	width_   = 0;
 	style_   = st;
 
+	//lyxerr << "MathXArray::metrics(): '" << data_ << "'\n";
 	for (int pos = 0; pos < data_.size(); ++pos) {
-		MathInset * p = data_.nextInset(pos);
+		MathInset const * p = data_.nextInset(pos);
 		p->metrics(st);
-		int asc = p->ascent();
-		int des = p->descent();
-		int wid = p->width();
+		int asc  = p->ascent();
+		int des  = p->descent();
+		int wid  = p->width();
 		ascent_  = max(ascent_, asc);
 		descent_ = max(descent_, des);
 		width_   += wid;
@@ -44,7 +46,7 @@ void MathXArray::metrics(MathStyles st)
 }
 
 
-void MathXArray::draw(Painter & pain, int x, int y)
+void MathXArray::draw(Painter & pain, int x, int y) const
 {
 	xo_ = x;
 	yo_ = y;
@@ -55,7 +57,7 @@ void MathXArray::draw(Painter & pain, int x, int y)
 	}
 
 	for (int pos = 0; pos < data_.size(); ++pos) {
-		MathInset * p = data_.nextInset(pos);
+		MathInset const * p = data_.nextInset(pos);
 		p->draw(pain, x, y);
 		x += p->width();
 	}
@@ -81,8 +83,8 @@ int MathXArray::x2pos(int targetx) const
 		lastx = currx;
 		currx += width(pos);
 	}
-	if (abs(lastx - targetx) < abs(currx - targetx))
-		data_.prev(pos);
+	if (abs(lastx - targetx) < abs(currx - targetx) && pos > 0)
+		--pos;
 	return pos;
 }
 

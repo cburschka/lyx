@@ -50,9 +50,9 @@ public:
 	virtual ~MathInset() {}
 
 	/// draw the object, sets xo_ and yo_ cached values 
-	virtual void draw(Painter &, int x, int baseline) = 0;	
+	virtual void draw(Painter &, int x, int y) const;
 	/// write LaTeX and Lyx code
-	virtual void write(std::ostream &, bool fragile) const = 0;
+	virtual void write(std::ostream &, bool fragile) const;
 	/// write normalized content
 	virtual void writeNormal(std::ostream &) const;
 	/// reproduce itself
@@ -60,17 +60,17 @@ public:
 	/// appends itself with macro arguments substituted
 	virtual void substitute(MathArray & array, MathMacro const & macro) const;
 	/// compute the size of the object, sets ascend_, descend_ and width_
-	virtual void metrics(MathStyles st);
+	virtual void metrics(MathStyles st) const;
 	/// 
-	virtual int ascent() const = 0;
+	virtual int ascent() const { return 1; }
 	///
-	virtual int descent() const = 0;
+	virtual int descent() const { return 1; }
 	///
-	virtual int width() const = 0;
+	virtual int width() const { return 2; }
 	///
 	virtual int height() const;
 	///
-	string const & name() const;
+	virtual string const & name() const;
 	///
 	virtual void setName(string const & n);
 	///
@@ -136,9 +136,9 @@ public:
 	///
 	virtual int yo() const;
 	///
-	virtual void xo(int tx);
+	virtual void xo(int tx) const;
 	///
-	virtual void yo(int ty);
+	virtual void yo(int ty) const;
 	///
 
 	///
@@ -203,19 +203,19 @@ public:
 protected:
 	/// usually the LaTeX name of the thingy
 	string name_;
-	///
-	void size(MathStyles s);
+	/// _sets_ style
+	void size(MathStyles s) const;
 	/// the used font size
-	MathStyles size_;
+	mutable MathStyles size_;
 	/// the inherited text style
-	MathTextCodes code_;
+	mutable MathTextCodes code_;
 
 private:
 	/// the following are used for positioning the cursor with the mouse
 	/// cached cursor start position in pixels from the document left
-	int xo_;
+	mutable int xo_;
 	/// cached cursor start position in pixels from the document top
-	int yo_;
+	mutable int yo_;
 };
 
 std::ostream & operator<<(std::ostream &, MathInset const &);

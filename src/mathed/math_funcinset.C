@@ -38,7 +38,7 @@ void MathFuncInset::writeNormal(std::ostream & os) const
 }
 
 
-void MathFuncInset::metrics(MathStyles st) 
+void MathFuncInset::metrics(MathStyles st) const 
 {
 	size_ = st;
 	if (name_.empty()) 
@@ -48,7 +48,7 @@ void MathFuncInset::metrics(MathStyles st)
 }
 
 
-void MathFuncInset::draw(Painter & pain, int x, int y)
+void MathFuncInset::draw(Painter & pain, int x, int y) const
 { 
 	xo(x);
 	yo(y);

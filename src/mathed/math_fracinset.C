@@ -19,7 +19,7 @@ MathInset * MathFracInset::clone() const
 }
 
 
-void MathFracInset::metrics(MathStyles st)
+void MathFracInset::metrics(MathStyles st) const
 {
 	size_    = smallerStyleFrac(st);
 	xcell(0).metrics(size_);
@@ -30,7 +30,7 @@ void MathFracInset::metrics(MathStyles st)
 }
 
 
-void MathFracInset::draw(Painter & pain, int x, int y)
+void MathFracInset::draw(Painter & pain, int x, int y) const
 {
 	xo(x);
 	yo(y);

@@ -27,9 +27,9 @@ public:
 	///
 	void write(std::ostream &, bool fragile) const;
 	///
-	void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 	///
-	void draw(Painter &, int, int);
+	void draw(Painter &, int x, int y) const;
 	///
 	string label(int row) const;
 	///

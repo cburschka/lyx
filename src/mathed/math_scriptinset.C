@@ -211,7 +211,7 @@ void MathScriptInset::writeNormal(std::ostream & os) const
 }
 
 
-void MathScriptInset::metrics(MathStyles st)
+void MathScriptInset::metrics(MathStyles st) const
 {
 	size_ = st;
 	MathStyles tt = smallerStyleScript(st);
@@ -261,7 +261,7 @@ void MathScriptInset::metrics(MathStyles st)
 }
 
 
-void MathScriptInset::draw(Painter & pain, int x, int y)
+void MathScriptInset::draw(Painter & pain, int x, int y) const
 {  
 	xo(x);
 	yo(y);

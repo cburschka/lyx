@@ -49,7 +49,7 @@ MathInset * MathMacro::clone() const
 }
 
 
-void MathMacro::metrics(MathStyles st)
+void MathMacro::metrics(MathStyles st) const
 {
 	if (mathcursor && mathcursor->isInside(this)) {
 		expanded_ = tmplate_->xcell(0);
@@ -67,7 +67,7 @@ void MathMacro::metrics(MathStyles st)
 		mathed_string_dim(LM_TC_TEXTRM, size_, "#1: ", lasc, ldes, lwid);
 
 		for (int i = 0; i < nargs(); ++i) {
-			MathXArray & c = xcell(i);
+			MathXArray const & c = xcell(i);
 			c.metrics(st);
 			width_    = std::max(width_, c.width() + lwid);
 			descent_ += std::max(c.ascent(),  lasc) + 5;
@@ -85,7 +85,7 @@ void MathMacro::metrics(MathStyles st)
 }
 
 
-void MathMacro::draw(Painter & pain, int x, int y)
+void MathMacro::draw(Painter & pain, int x, int y) const
 {
 	xo(x);
 	yo(y);
@@ -109,7 +109,7 @@ void MathMacro::draw(Painter & pain, int x, int y)
 		mathed_string_dim(LM_TC_TEXTRM, size_, "#1: ", lasc, ldes, lwid);
 
 		for (int i = 0; i < nargs(); ++i) {
-			MathXArray & c = xcell(i);
+			MathXArray const & c = xcell(i);
 			h += std::max(c.ascent(), lasc) + 5;
 			c.draw(pain, x + lwid, h);
 			char str[] = "#1:";
@@ -190,5 +190,5 @@ void MathMacro::validate(LaTeXFeatures & features) const
 {
 	if (name_ == "binom")
 		features.binom = true;
-	MathInset::validate(features);
+	//MathInset::validate(features);
 }

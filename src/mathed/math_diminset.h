@@ -4,7 +4,8 @@
 
 #include "math_inset.h"
 
-/// thing that need the dimension cache
+/// things that need the dimension cache
+
 class MathDimInset : public MathInset {
 public:
 	MathDimInset();
@@ -17,10 +18,10 @@ public:
 
 protected:
 	///
-	int width_;
+	mutable int width_;
 	///
-	int ascent_;
+	mutable int ascent_;
 	///
-	int descent_;
+	mutable int descent_;
 };
 #endif

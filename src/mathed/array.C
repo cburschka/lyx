@@ -38,8 +38,11 @@ MathArray::MathArray(MathArray const & array, int from, int to)
 
 void MathArray::deep_copy(int pos1, int pos2)
 {
-	for (int pos = pos1; pos < pos2; ++pos) 
-		bf_[pos] = bf_[pos]->clone();
+	for (int pos = pos1; pos < pos2; ++pos) {
+		MathInset * p = bf_[pos]->clone();
+		//lyxerr << "cloning: '" <<  bf_[pos] << " to " << p << "'\n";
+		bf_[pos] = p;
+	}
 }
 
 
@@ -53,20 +56,9 @@ bool MathArray::next(int & pos) const
 }
 
 
-bool MathArray::prev(int & pos) const
+int MathArray::last() const
 {
-	if (pos == 0)
-		return false;
-
-	--pos;
-	return true;
-}
-
-
-bool MathArray::last(int & pos) const
-{
-	pos = bf_.size();
-	return prev(pos);
+	return size() - 1;
 }
 
 
@@ -87,15 +79,15 @@ MathArray & MathArray::operator=(MathArray const & array)
 }
 
 
-MathInset * MathArray::nextInset(int pos) const
+MathInset * MathArray::nextInset(int pos)
 {
 	return (pos == size()) ? 0 : bf_[pos];
 }
 
 
-MathInset * MathArray::prevInset(int pos) const
+MathInset const * MathArray::nextInset(int pos) const
 {
-	return (pos == 0) ? 0 : bf_[pos - 1];
+	return (pos == size()) ? 0 : bf_[pos];
 }
 
 
@@ -220,15 +212,14 @@ void MathArray::erase(int pos1, int pos2)
 
 MathInset * MathArray::back() const
 {
-	return prevInset(size());
+	return size() ? bf_.back() : 0;
 }
 
 
 void MathArray::dump2(ostream & os) const
 {
 	for (buffer_type::const_iterator it = bf_.begin(); it != bf_.end(); ++it)
-		os << int(*it) << ' ';
-	os << endl;
+		os << *it << ' ';
 }
 
 
@@ -273,8 +264,11 @@ void MathArray::validate(LaTeXFeatures & features) const
 
 void MathArray::pop_back()
 {	
-	int pos = size();
-	prev(pos);
-	erase(pos, size());
+	if (!size()) {
+		lyxerr << "pop_back from empty array!\n";
+		return;
+	}
+	delete back();
+	bf_.pop_back();
 }
 

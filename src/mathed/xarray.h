@@ -18,9 +18,9 @@ public:
 	///
 	MathXArray();
 	///
-	void metrics(MathStyles st);
+	void metrics(MathStyles st) const;
 	///
-	void draw(Painter & pain, int x, int y);
+	void draw(Painter & pain, int x, int y) const;
 
 	///
 	int xo() const { return xo_; }
@@ -48,17 +48,17 @@ public:
 	///
 	MathArray data_;
 	///
-	int width_;
+	mutable int width_;
 	///
-	int ascent_;
+	mutable int ascent_;
 	///
-	int descent_;
+	mutable int descent_;
 	///
-	int xo_;
+	mutable int xo_;
 	///
-	int yo_;
+	mutable int yo_;
 	///
-	MathStyles style_;
+	mutable MathStyles style_;
 };
 
 std::ostream & operator<<(std::ostream & os, MathXArray const & ar);

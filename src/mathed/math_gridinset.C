@@ -74,7 +74,7 @@ char MathGridInset::valign() const
 	return v_align_;
 }
 
-void MathGridInset::metrics(MathStyles st)
+void MathGridInset::metrics(MathStyles st) const
 {
 	// let the cells adjust themselves
 	MathNestInset::metrics(st);
@@ -193,7 +193,7 @@ void MathGridInset::metrics(MathStyles st)
 */
 }
 
-void MathGridInset::draw(Painter & pain, int x, int y)
+void MathGridInset::draw(Painter & pain, int x, int y) const
 {
 	xo(x);
 	yo(y);

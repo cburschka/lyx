@@ -19,7 +19,7 @@ MathInset * MathSqrtInset::clone() const
 }
 
 
-void MathSqrtInset::metrics(MathStyles st)
+void MathSqrtInset::metrics(MathStyles st) const
 {
 	xcell(0).metrics(st);
 	size_    = st;
@@ -29,7 +29,7 @@ void MathSqrtInset::metrics(MathStyles st)
 }
 
 
-void MathSqrtInset::draw(Painter & pain, int x, int y)
+void MathSqrtInset::draw(Painter & pain, int x, int y) const
 { 
 	xo(x);
 	yo(y);
