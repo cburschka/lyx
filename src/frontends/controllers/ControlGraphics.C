@@ -77,7 +77,7 @@ extern string user_lyxdir;
 
 string const ControlGraphics::Browse(string const & in_name)
 {
-	string const title = N_("Graphics");
+	string const title = N_("Graphics|#G#g");
 	// FIXME: currently we need the second '|' to prevent mis-interpretation 
 	string const pattern = "*.(eps|png|jpeg|jpg|gif)|";
 
@@ -87,9 +87,8 @@ string const ControlGraphics::Browse(string const & in_name)
   	if (!(fileInfo.isOK() && fileInfo.isDir()))
   		// No - bail out to system clipart directory
   		clipdir = AddName (system_lyxdir, "clipart");
-	pair<string, string> dir1(N_("Clipart"), clipdir);
+	pair<string, string> dir1(N_("Clipart|#C#c"), clipdir);
 	
 	// Show the file browser dialog
-	return browseFile(&lv_, in_name, title, pattern, dir1,
-			  make_pair(string(), string()));
+	return browseFile(&lv_, in_name, title, pattern, dir1);
 }

@@ -67,10 +67,10 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 	    break;
 	}
 	
-	pair<string, string> dir1(N_("Documents"), string(lyxrc.document_path));
+	pair<string, string> dir1(N_("Documents|#o#O"),
+				  string(lyxrc.document_path));
 
-	return browseFile(&lv_, in_name, title, pattern, dir1,
-			  make_pair(string(), string()));
+	return browseFile(&lv_, in_name, title, pattern, dir1);
 }
 
 

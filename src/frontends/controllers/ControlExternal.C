@@ -161,7 +161,7 @@ string const ControlExternal::Browse(string const & input) const
 	FileDialog fileDlg(&lv_,
 			   _("Select external file"),
 			   LFUN_SELECT_FILE_SYNC,
-			   make_pair(string(_("Document")), string(buf)));
+			   make_pair(string(_("Document|#o#O")), string(buf)));
 	
 	/// Determine the template file extension
 	ExternalTemplate const & et = params().templ;

@@ -95,8 +95,8 @@ private:
 	 */
 	void browse( FL_OBJECT * input,
 		     string const & title, string const & pattern, 
-		     std::pair<string,string> const & dir1,
-		     std::pair<string,string> const & dir2 );
+		     std::pair<string,string> const & dir1= make_pair(string(),string()), 
+		     std::pair<string,string> const & dir2 = make_pair(string(),string()));
 	
 	/// Fdesign generated methods
 	FD_form_preferences * build_preferences();

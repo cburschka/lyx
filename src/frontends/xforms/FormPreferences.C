@@ -1528,11 +1528,11 @@ bool FormPreferences::Interface::input(FL_OBJECT const * const ob)
 {
 	if (ob == dialog_->button_bind_file_browse) {
 		string dir  = AddName(system_lyxdir, "bind");
-		string name = N_("Sys Bind");
+		string name = N_("Sys Bind|#S#s");
 		pair<string,string> dir1(name, dir);
 
 		dir = AddName(user_lyxdir, "bind");
-		name = N_("User Bind");
+		name = N_("User Bind|#U#u");
 		pair<string,string> dir2(name, dir);
 
 		parent_.browse(dialog_->input_bind_file,
@@ -1540,11 +1540,11 @@ bool FormPreferences::Interface::input(FL_OBJECT const * const ob)
 		
 	} else if (ob == dialog_->button_ui_file_browse) {
 		string dir  = AddName(system_lyxdir, "ui");
-		string name = N_("Sys UI");
+		string name = N_("Sys UI|#S#s");
 		pair<string,string> dir1(name, dir);
 
 		dir = AddName(user_lyxdir, "ui");
-		name = N_("User UI");
+		name = N_("User UI|#U#u");
 		pair<string,string> dir2(name, dir);
 
 		parent_.browse(dialog_->input_ui_file,
@@ -1736,20 +1736,18 @@ bool FormPreferences::Language::input(FL_OBJECT const * const ob)
 
 	if (ob == dialog_->button_kbmap1_browse) {
 		string const dir  = AddName(system_lyxdir, "kbd");
-		string const name = N_("Key maps");
+		string const name = N_("Key maps|#K#k");
 		pair<string, string> dir1(name, dir);
 
 		parent_.browse(dialog_->input_kbmap1,
-			       N_("Keyboard map"), "*.kmap", dir1,
-			       make_pair(string(), string()));
+			       N_("Keyboard map"), "*.kmap", dir1);
 	} else if (ob == dialog_->button_kbmap2_browse) {
 		string const dir  = AddName(system_lyxdir, "kbd");
-		string const name = N_("Key maps");
+		string const name = N_("Key maps|#K#k");
 		pair<string, string> dir1(name, dir);
 
 		parent_.browse(dialog_->input_kbmap2,
-			       N_("Keyboard map"), "*.kmap", dir1,
-			       make_pair(string(), string()));
+			       N_("Keyboard map"), "*.kmap", dir1);
 	}
 
 	return activate;
@@ -2219,35 +2217,24 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 
 	if (ob == dialog_->button_default_path_browse) {
 		parent_.browse(dialog_->input_default_path,
-			       N_("Default path"), string(),
-			       make_pair(string(), string()),
-			       make_pair(string(), string()));
+			       N_("Default path"), string());
 	} else if (ob == dialog_->button_template_path_browse) {
 		parent_.browse(dialog_->input_template_path,
-			       N_("Template path"), string(),
-			       make_pair(string(), string()),
-			       make_pair(string(), string()));
+			       N_("Template path"), string());
 	} else if (ob == dialog_->button_temp_dir_browse) {
 		parent_.browse(dialog_->input_temp_dir,
-			       N_("Temp dir"), string(),
-			       make_pair(string(), string()),
-			       make_pair(string(), string()));
+			       N_("Temp dir"), string());
 	} else if (ob == dialog_->button_lastfiles_browse) {
-		pair<string, string> dir(_("User"), user_lyxdir);
+		pair<string, string> dir(_("User|#U#u"), user_lyxdir);
 
 		parent_.browse(dialog_->input_lastfiles,
-			       N_("Lastfiles"), string(), dir,
-			       make_pair(string(), string()));
+			       N_("Lastfiles"), string(), dir);
 	} else if (ob == dialog_->button_backup_path_browse) {
 		parent_.browse(dialog_->input_backup_path,
-			       N_("Backup path"), string(),
-			       make_pair(string(), string()),
-			       make_pair(string(), string()));
+			       N_("Backup path"), string());
 	} else if (ob == dialog_->button_serverpipe_browse) {
 		parent_.browse(dialog_->input_serverpipe,
-			       N_("LyX Server pipes"), string(),
-			       make_pair(string(), string()),
-			       make_pair(string(), string()));
+			       N_("LyX Server pipes"), string());
 	}
 	
 	return activate;
@@ -2946,9 +2933,7 @@ bool FormPreferences::SpellOptions::input(FL_OBJECT const * const ob)
 
 	if (ob == dialog_->button_personal_dict) {
 		parent_.browse(dialog_->input_personal_dict,
-			       N_("Personal dictionary"), "*.ispell",
-			       make_pair(string(), string()),
-			       make_pair(string(), string()));
+			       N_("Personal dictionary"), "*.ispell");
 	}
 	
 	return true; // All input is valid!

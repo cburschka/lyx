@@ -1,3 +1,11 @@
+2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* helper_funcs.h (browseFile): add default empty button descriptions.
+
+	* ControlGraphics.C (Browse): 
+	* ControlBibtex.C (Browse): 
+	* ControlInclude.C (Browse): add shortcuts to directory buttons
+
 2002-01-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ControlThesaurus.h:

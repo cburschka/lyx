@@ -170,9 +170,9 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 		FileDialog fileDlg(bv->owner(),
 				   _("Choose a filename to save document as"),
 			LFUN_WRITEAS,
-			make_pair(string(_("Documents")),
+			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
-			make_pair(string(_("Templates")),
+			make_pair(string(_("Templates|#T#t")),
 				  string(lyxrc.template_path)));
 
 		if (!IsLyXFilename(fname))

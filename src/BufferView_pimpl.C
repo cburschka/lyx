@@ -1438,9 +1438,9 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 		FileDialog fileDlg(bv_->owner(),
 				   _("Select LyX document to insert"),
 			LFUN_FILE_INSERT,
-			make_pair(string(_("Documents")),
+			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
-			make_pair(string(_("Examples")),
+			make_pair(string(_("Examples|#E#e")),
 				  string(AddPath(system_lyxdir, "examples"))));
 
 		FileDialog::Result result =

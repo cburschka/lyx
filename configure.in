@@ -208,8 +208,8 @@ dnl Ensure gnome-config is available...
     FRONTEND="gnome"
     FRONTEND_GUILIB="gnome/libgnome.la"
     FRONTEND_LDFLAGS="\$(GNOMEMM_LIBDIR)"
-    FRONTEND_INCLUDES="-I\${srcdir}/gnome \$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS)"
-    FRONTEND_LIBS="\$(GNOMEMM_LIBS) \$(GTKMM_LIBS) `gnome-config --libs libglade`";;
+    FRONTEND_INCLUDES="-I\${srcdir}/gnome \$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS) `gnome-config --cflags libglade gnomeui`"
+    FRONTEND_LIBS="\$(GNOMEMM_LIBS) \$(GTKMM_LIBS) `gnome-config --libs libglade gnomeui`";;
   qt2)
     QT2_DO_IT_ALL
     FRONTEND="qt2"

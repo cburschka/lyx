@@ -1,5 +1,10 @@
 2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* BufferView_pimpl.C (MenuInsertLyXFile): 
+	* lyxfunc.C (menuNew): 
+	(open): 
+	(doImport): add shortcuts to directory buttons
+
 	* BufferView_pimpl.C (workAreaButtonRelease): remove dead code (to
 	open a float)
 

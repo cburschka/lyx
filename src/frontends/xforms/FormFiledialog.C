@@ -27,6 +27,8 @@ using std::sort;
 #include "support/lstrings.h"
 #include "gettext.h"
 #include "frontends/Dialogs.h"
+#include "xforms_helpers.h"
+
 
 #ifdef HAVE_ERRNO_H
 #include <cerrno>
@@ -480,7 +482,8 @@ void FileDialog::Private::SetButton(int iIndex, string const & pszName,
 	} else return;
 
 	if (!pszName.empty()) {
-		fl_set_object_label(pObject, pszName.c_str());
+		fl_set_object_label(pObject, idex(pszName.c_str()));
+		fl_set_button_shortcut(pObject, scex(pszName.c_str()), 1);
 		fl_show_object(pObject);
 		*pTemp = pszPath;
 	} else {

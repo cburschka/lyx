@@ -1979,8 +1979,8 @@ void InsetFig::browseFile()
 
 	FileDialog fileDlg(current_view->owner(), _("Select an EPS figure"),
 		LFUN_SELECT_FILE_SYNC,
-		make_pair(string(_("Clip art")), string(bufclip)),
-		make_pair(string(_("Documents")), string(buf)));
+		make_pair(string(_("Clip art|#C#c")), string(bufclip)),
+		make_pair(string(_("Documents|#o#O")), string(buf)));
 
 	bool error = false;
 	do {

@@ -42,8 +42,8 @@ class LyXView;
 string const browseFile(LyXView *lv, string const & filename,
 			string const & title,
 			string const & pattern, 
-			std::pair<string,string> const & dir1,
-			std::pair<string,string> const & dir2);
+			std::pair<string,string> const & dir1 = std::make_pair(string(), string()),
+			std::pair<string,string> const & dir2 = std::make_pair(string(), string()));
 
 
 /// Returns a vector of units that can be used to create a valid LaTeX length.

@@ -1664,9 +1664,9 @@ void LyXFunc::menuNew(bool fromTemplate)
 	if (lyxrc.new_ask_filename) {
 		FileDialog fileDlg(owner, _("Enter filename for new document"),
 				   LFUN_SELECT_FILE_SYNC,
-			make_pair(string(_("Documents")),
+			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
-			make_pair(string(_("Templates")),
+			make_pair(string(_("Templates|#T#t")),
 				  string(lyxrc.template_path)));
 
 		FileDialog::Result result =
@@ -1748,9 +1748,9 @@ void LyXFunc::menuNew(bool fromTemplate)
 	if (fromTemplate) {
 		FileDialog fileDlg(owner, _("Select template file"),
 			LFUN_SELECT_FILE_SYNC,
-			make_pair(string(_("Documents")),
+			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
-			make_pair(string(_("Templates")),
+			make_pair(string(_("Templates|#T#t")),
 				  string(lyxrc.template_path)));
 
 		FileDialog::Result result =
@@ -1789,9 +1789,9 @@ void LyXFunc::open(string const & fname)
 	if (fname.empty()) {
 		FileDialog fileDlg(owner, _("Select document to open"),
 			LFUN_FILE_OPEN,
-			make_pair(string(_("Documents")),
+			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
-			make_pair(string(_("Examples")),
+			make_pair(string(_("Examples|#E#e")),
 				  string(AddPath(system_lyxdir, "examples"))));
 
 		FileDialog::Result result =
@@ -1866,9 +1866,9 @@ void LyXFunc::doImport(string const & argument)
 
 		FileDialog fileDlg(owner, text, 
 			LFUN_IMPORT,
-			make_pair(string(_("Documents")),
+			make_pair(string(_("Documents|#o#O")),
 				  string(lyxrc.document_path)),
-			make_pair(string(_("Examples")),
+			make_pair(string(_("Examples|#E#e")),
 				  string(AddPath(system_lyxdir, "examples"))));
 			
 		string const extension = "*." + formats.extension(format)

@@ -91,7 +91,5 @@ string const ControlPrint::Browse(string const & in_name)
 	string const pattern = "*.ps";
 
 	// Show the file browser dialog
-	return browseFile(&lv_, in_name, title, pattern,
-			   make_pair(string(), string()),
-			   make_pair(string(), string()));
+	return browseFile(&lv_, in_name, title, pattern);
 }
