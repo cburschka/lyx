@@ -1,3 +1,17 @@
+2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* syscontr.C: add std::
+
+	* syscall.C: add std::
+
+	* lstrings.h (compare): add std::
+
+	* lstrings.C (prefixIs): add std::
+	(suffixIs): ditto
+	(subst): ditto
+
+	* LSubstring.C (LSubstring): add std::
+
 2001-05-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxsum.C (sum): use istreambuf_iterator when available.

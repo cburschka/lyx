@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include <cstring>
+#include <cstring> // memcpy
 
 #include "matriz.h"
 

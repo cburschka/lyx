@@ -19,7 +19,7 @@
 
 #include <cstdlib>
 #include <cctype>
-#include <cstring>
+//#include <cstring>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -180,7 +180,7 @@ LyXText * LyXFunc::TEXT(bool flag = true) const
 inline
 void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 {
-	if (selecting || TEXT(flag)->mark_set) {
+	if (selecting || TEXT(flag)->selection.mark()) {
 		TEXT(flag)->SetSelection(owner->view());
 		if (TEXT(flag)->bv_owner)
 		    owner->view()->toggleToggle();
@@ -210,7 +210,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 	// copied verbatim from do_accent_char
 	owner->view()->update(TEXT(false),
 	       BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-	TEXT(false)->sel_cursor = TEXT(false)->cursor;
+	TEXT(false)->selection.cursor = TEXT(false)->cursor;
 }
 
 

@@ -86,9 +86,9 @@ bool LyXFind(BufferView * bv,
    bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
    
    LyXText * ltCur = bv->text;
-   if (ltCur->selection)
-     ltCur->cursor = forward ? ltCur->sel_end_cursor
-     : ltCur->sel_start_cursor;
+   if (ltCur->selection.set())
+     ltCur->cursor = forward ? ltCur->selection.end
+	     : ltCur->selection.start;
 
    if (forward 
        ? SearchForward(bv, searchstr, casesens, matchwrd)

@@ -1,3 +1,14 @@
+2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insettext.C: adjust
+
+	* insetgraphics.[Ch] (statusMessage): change to return string
+	(width): adjust
+	(draw): adjust
+
+	* figinset.C (runqueue): add std::
+	(Recompute): ditto
+
 2001-05-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insetcite.C (Ascii): add std:: qualifier

@@ -446,22 +446,22 @@ void LyXScreen::ToggleSelection(LyXText * text, BufferView * bv,
 				int y_offset, int x_offset)
 {
 	// only if there is a selection
-	if (!text->selection) return;
+	if (!text->selection.set()) return;
 
 	int const bottom = min(
-		max(static_cast<int>(text->sel_end_cursor.y()
-				     - text->sel_end_cursor.row()->baseline()
-				     + text->sel_end_cursor.row()->height()),
+		max(static_cast<int>(text->selection.end.y()
+				     - text->selection.end.row()->baseline()
+				     + text->selection.end.row()->height()),
 		    text->first),
 		static_cast<int>(text->first + owner.height()));
 	int const top = min(
-		max(static_cast<int>(text->sel_start_cursor.y() -
-				     text->sel_start_cursor.row()->baseline()),
+		max(static_cast<int>(text->selection.start.y() -
+				     text->selection.start.row()->baseline()),
 		    text->first),
 		static_cast<int>(text->first + owner.height()));
 
 	if (kill_selection)
-		text->selection = 0;
+		text->selection.set(false);
 	DrawFromTo(text, bv, top - text->first, bottom - text->first,
 		   y_offset, x_offset);
 	expose(0, top - text->first,

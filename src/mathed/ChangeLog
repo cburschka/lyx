@@ -1,3 +1,18 @@
+2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* math_parser.C (yylex): use contains instead of strchr
+	(parse_align): remove last arg, change to take string const & as
+	first arg.
+	(mathed_parse): use string for ar2 and ar, adjust
+
+	* math_decorationinset.C (Write): use compare instead of strcmp
+
+	* formula.C (LocalDispatch): change arg2 to string, adjust for this
+	(LocalDispatch): add std::
+	(LocalDispatch): use contains instead of strchr
+
+	* array.C (move): add std::
+
 2001-05-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* matriz.C: add using directives when needed for C functions

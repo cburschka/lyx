@@ -1535,10 +1535,10 @@ string const Buffer::asciiParagraph(LyXParagraph const * par,
 		} else if (tmp == "Enumerate") {
 			ltype = 2;
 			ltype_depth = depth + 1;
-		} else if (strstr(tmp.c_str(), "ection")) {
+		} else if (contains(tmp, "ection")) {
 			ltype = 3;
 			ltype_depth = depth + 1;
-		} else if (strstr(tmp.c_str(), "aragraph")) {
+		} else if (contains(tmp, "aragraph")) {
 			ltype = 4;
 			ltype_depth = depth + 1;
 		} else if (tmp == "Description") {

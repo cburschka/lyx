@@ -77,11 +77,19 @@ void LyXText::init()
 	width = 0;
 	first = 0;
 	status = LyXText::UNCHANGED;
+
 	// set cursor at the very top position
+#if 0
 	selection = true;	    /* these setting is necessary 
 				       because of the delete-empty-
 				       paragraph mechanism in
 				       SetCursor */
+#else
+	selection.set(true);	    /* these setting is necessary 
+				       because of the delete-empty-
+				       paragraph mechanism in
+				       SetCursor */
+#endif
 	if (bv_owner) {
 		LyXParagraph * par = OwnerParagraph();
 		current_font = GetFont(bv_owner->buffer(), par, 0);
@@ -93,10 +101,16 @@ void LyXText::init()
 	} else
 		current_font = LyXFont(LyXFont::ALL_SANE);
 
+#if 0
 	sel_cursor = cursor;
 	selection = false;
 	mark_set = false;
-   
+#else
+	selection.cursor = cursor;
+	selection.set(false);
+	selection.mark(false);
+#endif
+	
 	// no rebreak necessary
 	need_break_row = 0;
    
@@ -136,7 +150,11 @@ void LyXText::init(BufferView * bview)
 		par = par->next();
 	}
 	SetCursorIntern(bview, firstrow->par(), 0);
+#if 0
 	sel_cursor = cursor;
+#else
+	selection.cursor = cursor;
+#endif
 #if 0
 	printf("TP = %x\n",inset_owner->owner());
 	// Dump all rowinformation:
@@ -526,6 +544,7 @@ LyXParagraph * LyXText::SetLayout(BufferView * bview,
 // set layout over selection and make a total rebreak of those paragraphs
 void LyXText::SetLayout(BufferView * bview, LyXTextClass::size_type layout)
 {
+#if 0
 	LyXCursor tmpcursor = cursor;  /* store the current cursor  */
 
 	// if there is no selection just set the layout
@@ -550,9 +569,35 @@ void LyXText::SetLayout(BufferView * bview, LyXTextClass::size_type layout)
 	ClearSelection(bview);
 	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos(), true);
+#else
+	LyXCursor tmpcursor = cursor;  /* store the current cursor  */
+
+	// if there is no selection just set the layout
+	// of the current paragraph  */
+	if (!selection.set()) {
+		selection.start = cursor;  // dummy selection
+		selection.end = cursor;
+	}
+	LyXParagraph * endpar = SetLayout(bview, cursor, selection.start,
+					  selection.end, layout);
+	RedoParagraphs(bview, selection.start, endpar);
+   
+	// we have to reset the selection, because the
+	// geometry could have changed
+	SetCursor(bview, selection.start.par(),
+		  selection.start.pos(), false);
+	selection.cursor = cursor;
+	SetCursor(bview, selection.end.par(), selection.end.pos(),
+		  false);
+	UpdateCounters(bview, cursor.row());
+	ClearSelection(bview);
+	SetSelection(bview);
+	SetCursor(bview, tmpcursor.par(), tmpcursor.pos(), true);
+#endif
 }
 
 
+#if 0
 // increment depth over selection and
 // make a total rebreak of those paragraphs
 void  LyXText::IncDepth(BufferView * bview)
@@ -635,19 +680,20 @@ void  LyXText::IncDepth(BufferView * bview)
 	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos());
 }
-
-
-// decrement depth over selection and
+#else
+// increment depth over selection and
 // make a total rebreak of those paragraphs
-void  LyXText::DecDepth(BufferView * bview)
+void  LyXText::IncDepth(BufferView * bview)
 {
-	// if there is no selection just set the layout
-	// of the current paragraph
-	if (!selection) {
-		sel_start_cursor = cursor; // dummy selection
-		sel_end_cursor = cursor;
+	// If there is no selection, just use the current paragraph
+	if (!selection.set()) {
+		selection.start = cursor; // dummy selection
+		selection.end = cursor;
 	}
-	LyXParagraph * endpar = sel_end_cursor.par()->next();
+
+	// We end at the next paragraph with depth 0
+	LyXParagraph * endpar = selection.end.par()->next();
+
 	LyXParagraph * undoendpar = endpar;
 
 	if (endpar && endpar->GetDepth()) {
@@ -659,33 +705,114 @@ void  LyXText::DecDepth(BufferView * bview)
 	else if (endpar) {
 		endpar = endpar->next(); // because of parindents etc.
 	}
-   
+	
 	SetUndo(bview->buffer(), Undo::EDIT,
-		sel_start_cursor.par()->previous(),
+		selection.start.par()->previous(),
 		undoendpar);
 
 	LyXCursor tmpcursor = cursor; // store the current cursor
 
 	// ok we have a selection. This is always between sel_start_cursor
 	// and sel_end cursor
-	cursor = sel_start_cursor;
+	cursor = selection.start;
+   
+	bool anything_changed = false;
+   
+	while (true) {
+		// NOTE: you can't change the depth of a bibliography entry
+		if (
+		    textclasslist.Style(bview->buffer()->params.textclass,
+				      cursor.par()->GetLayout()
+				     ).labeltype != LABEL_BIBLIO) {
+			LyXParagraph * prev = cursor.par()->previous();
+
+			if (prev 
+			    && (prev->GetDepth() - cursor.par()->GetDepth() > 0
+				|| (prev->GetDepth() == cursor.par()->GetDepth()
+				    && textclasslist.Style(bview->buffer()->params.textclass,
+						      prev->GetLayout()).isEnvironment()))) {
+				cursor.par()->params.depth(cursor.par()->params.depth() + 1);
+				anything_changed = true;
+				}
+		}
+		if (cursor.par() == selection.end.par())
+                       break;
+		cursor.par(cursor.par()->next());
+	}
+   
+	// if nothing changed set all depth to 0
+	if (!anything_changed) {
+		cursor = selection.start;
+		while (cursor.par() != selection.end.par()) {
+			cursor.par()->params.depth(0);
+			cursor.par(cursor.par()->next());
+		}
+		cursor.par()->params.depth(0);
+	}
+   
+	RedoParagraphs(bview, selection.start, endpar);
+   
+	// we have to reset the selection, because the
+	// geometry could have changed
+	SetCursor(bview, selection.start.par(), selection.start.pos());
+	selection.cursor = cursor;
+	SetCursor(bview, selection.end.par(), selection.end.pos());
+	UpdateCounters(bview, cursor.row());
+	ClearSelection(bview);
+	SetSelection(bview);
+	SetCursor(bview, tmpcursor.par(), tmpcursor.pos());
+}
+#endif
+
+
+// decrement depth over selection and
+// make a total rebreak of those paragraphs
+void  LyXText::DecDepth(BufferView * bview)
+{
+	// if there is no selection just set the layout
+	// of the current paragraph
+	if (!selection.set()) {
+		selection.start = cursor; // dummy selection
+		selection.end = cursor;
+	}
+	LyXParagraph * endpar = selection.end.par()->next();
+	LyXParagraph * undoendpar = endpar;
+
+	if (endpar && endpar->GetDepth()) {
+		while (endpar && endpar->GetDepth()) {
+			endpar = endpar->next();
+			undoendpar = endpar;
+		}
+	} else if (endpar) {
+		endpar = endpar->next(); // because of parindents etc.
+	}
+   
+	SetUndo(bview->buffer(), Undo::EDIT,
+		selection.start.par()->previous(),
+		undoendpar);
+
+	LyXCursor tmpcursor = cursor; // store the current cursor
+
+	// ok we have a selection. This is always between sel_start_cursor
+	// and sel_end cursor
+	cursor = selection.start;
 
 	while (true) {
 		if (cursor.par()->params.depth())
 			cursor.par()->params.depth(cursor.par()->params.depth() - 1);
-		if (cursor.par() == sel_end_cursor.par())
+		if (cursor.par() == selection.end.par())
 			break;
 		cursor.par(cursor.par()->next());
 	}
 
-	RedoParagraphs(bview, sel_start_cursor, endpar);
+	RedoParagraphs(bview, selection.start, endpar);
    
 	// we have to reset the selection, because the
 	// geometry could have changed
-	SetCursor(bview, sel_start_cursor.par(),
-		  sel_start_cursor.pos());
-	sel_cursor = cursor;
-	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
+	SetCursor(bview, selection.start.par(),
+		  selection.start.pos());
+	selection.cursor = cursor;
+	SetCursor(bview, selection.end.par(), selection.end.pos());
 	UpdateCounters(bview, cursor.row());
 	ClearSelection(bview);
 	SetSelection(bview);
@@ -697,7 +824,7 @@ void  LyXText::DecDepth(BufferView * bview)
 void LyXText::SetFont(BufferView * bview, LyXFont const & font, bool toggleall)
 {
 	// if there is no selection just set the current_font
-	if (!selection) {
+	if (!selection.set()) {
 		// Determine basis font
 		LyXFont layoutfont;
 		if (cursor.pos() < BeginningOfMainBody(bview->buffer(),
@@ -724,12 +851,12 @@ void LyXText::SetFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	// and sel_end cursor
    
 	SetUndo(bview->buffer(), Undo::EDIT,
-		sel_start_cursor.par()->previous(),
-		sel_end_cursor.par()->next()); 
+		selection.start.par()->previous(),
+		selection.end.par()->next()); 
 	FreezeUndo();
-	cursor = sel_start_cursor;
-	while (cursor.par() != sel_end_cursor.par() ||
-	       (cursor.pos() < sel_end_cursor.pos())) {
+	cursor = selection.start;
+	while (cursor.par() != selection.end.par() ||
+	       (cursor.pos() < selection.end.pos())) {
 		if (cursor.pos() < cursor.par()->size()) {
 			// an open footnote should behave
 			// like a closed one
@@ -742,13 +869,13 @@ void LyXText::SetFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	}
 	UnFreezeUndo();
    
-	RedoParagraphs(bview, sel_start_cursor, sel_end_cursor.par()->next());
+	RedoParagraphs(bview, selection.start, selection.end.par()->next());
    
 	// we have to reset the selection, because the
 	// geometry could have changed
-	SetCursor(bview, sel_start_cursor.par(), sel_start_cursor.pos());
-	sel_cursor = cursor;
-	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
+	SetCursor(bview, selection.start.par(), selection.start.pos());
+	selection.cursor = cursor;
+	SetCursor(bview, selection.end.par(), selection.end.pos());
 	ClearSelection(bview);
 	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos(), true,
@@ -924,15 +1051,15 @@ bool LyXText::FullRebreak(BufferView * bview)
 // need the selection cursor:
 void LyXText::SetSelection(BufferView * bview)
 {
-	const bool lsel = selection;
+	bool const lsel = selection.set();
 
-	if (!selection) {
-		last_sel_cursor = sel_cursor;
-		sel_start_cursor = sel_cursor;
-		sel_end_cursor = sel_cursor;
+	if (!selection.set()) {
+		last_sel_cursor = selection.cursor;
+		selection.start = selection.cursor;
+		selection.end = selection.cursor;
 	}
    
-	selection = true;
+	selection.set(true);
    
 	// first the toggling area
 	if (cursor.y() < last_sel_cursor.y()
@@ -949,65 +1076,65 @@ void LyXText::SetSelection(BufferView * bview)
    
 	// and now the whole selection
 
-	if (sel_cursor.par() == cursor.par())
-	   if (sel_cursor.pos() < cursor.pos()) {
-		sel_end_cursor = cursor;
-		sel_start_cursor = sel_cursor;
+	if (selection.cursor.par() == cursor.par())
+	   if (selection.cursor.pos() < cursor.pos()) {
+		selection.end = cursor;
+		selection.start = selection.cursor;
 	} else {
-   		sel_end_cursor = sel_cursor; 
-		sel_start_cursor = cursor;
+   		selection.end = selection.cursor; 
+		selection.start = cursor;
 	}
-	else if (sel_cursor.y() < cursor.y() ||
-	    (sel_cursor.y() == cursor.y() && sel_cursor.x() < cursor.x())) {
-		sel_end_cursor = cursor;
-		sel_start_cursor = sel_cursor;
+	else if (selection.cursor.y() < cursor.y() ||
+	    (selection.cursor.y() == cursor.y() && selection.cursor.x() < cursor.x())) {
+		selection.end = cursor;
+		selection.start = selection.cursor;
 	}
 	else {
-		sel_end_cursor = sel_cursor; 
-		sel_start_cursor = cursor;
+		selection.end = selection.cursor; 
+		selection.start = cursor;
 	}
    
 	// a selection with no contents is not a selection
-	if (sel_start_cursor.par() == sel_end_cursor.par() && 
-	    sel_start_cursor.pos() == sel_end_cursor.pos())
-		selection = false;
+	if (selection.start.par() == selection.end.par() && 
+	    selection.start.pos() == selection.end.pos())
+		selection.set(false);
 
-	if (inset_owner && (selection || lsel))
+	if (inset_owner && (selection.set() || lsel))
 		inset_owner->SetUpdateStatus(bview, InsetText::SELECTION);
 }
 
 
 string const LyXText::selectionAsString(Buffer const * buffer) const
 {
-	if (!selection) return string();
+	if (!selection.set()) return string();
 	string result;
 	
 	// Special handling if the whole selection is within one paragraph
-	if (sel_start_cursor.par() == sel_end_cursor.par()) {
-		result += sel_start_cursor.par()->String(buffer,
-							 sel_start_cursor.pos(),
-							 sel_end_cursor.pos());
+	if (selection.start.par() == selection.end.par()) {
+		result += selection.start.par()->String(buffer,
+							 selection.start.pos(),
+							 selection.end.pos());
 		return result;
 	}
 	
 	// The selection spans more than one paragraph
 
 	// First paragraph in selection
-	result += sel_start_cursor.par()->String(buffer,
-						 sel_start_cursor.pos(),
-						 sel_start_cursor.par()->size())
+	result += selection.start.par()->String(buffer,
+						 selection.start.pos(),
+						 selection.start.par()->size())
 		+ "\n\n";
 	
 	// The paragraphs in between (if any)
-	LyXCursor tmpcur(sel_start_cursor);
+	LyXCursor tmpcur(selection.start);
 	tmpcur.par(tmpcur.par()->next());
-	while (tmpcur.par() != sel_end_cursor.par()) {
+	while (tmpcur.par() != selection.end.par()) {
 		result += tmpcur.par()->String(buffer, 0, tmpcur.par()->size()) + "\n\n";
 		tmpcur.par(tmpcur.par()->next()); // Or NextAfterFootnote??
 	}
 
 	// Last paragraph in selection
-	result += sel_end_cursor.par()->String(buffer, 0, sel_end_cursor.pos());
+	result += selection.end.par()->String(buffer, 0, selection.end.pos());
 	
 	return result;
 }
@@ -1015,9 +1142,9 @@ string const LyXText::selectionAsString(Buffer const * buffer) const
 
 void LyXText::ClearSelection(BufferView * /*bview*/) const
 {
-	selection = false;
-	mark_set = false;
-	sel_end_cursor = sel_start_cursor = cursor;
+	selection.set(false);
+	selection.mark(false);
+	selection.end = selection.start = cursor;
 }
 
 
@@ -1085,7 +1212,7 @@ void LyXText::ToggleFree(BufferView * bview,
 		ClearSelection(bview);
 		cursor = resetCursor;
 		SetCursor(bview, cursor.par(), cursor.pos());
-		sel_cursor = cursor;
+		selection.cursor = cursor;
 	}
 	if (inset_owner)
 		inset_owner->SetUpdateStatus(bview, InsetText::CURSOR_PAR);
@@ -1120,13 +1247,13 @@ void LyXText::SetParagraph(BufferView * bview,
 			   bool noindent) 
 {
 	LyXCursor tmpcursor = cursor;
-	if (!selection) {
-		sel_start_cursor = cursor;
-		sel_end_cursor = cursor;
+	if (!selection.set()) {
+		selection.start = cursor;
+		selection.end = cursor;
 	}
 
 	// make sure that the depth behind the selection are restored, too
-	LyXParagraph * endpar = sel_end_cursor.par()->next();
+	LyXParagraph * endpar = selection.end.par()->next();
 	LyXParagraph * undoendpar = endpar;
 
 	if (endpar && endpar->GetDepth()) {
@@ -1140,12 +1267,12 @@ void LyXText::SetParagraph(BufferView * bview,
 	}
    
 	SetUndo(bview->buffer(), Undo::EDIT,
-		sel_start_cursor.par()->previous(),
+		selection.start.par()->previous(),
 		undoendpar);
 
 	
-	LyXParagraph * tmppar = sel_end_cursor.par();
-	while (tmppar != sel_start_cursor.par()->previous()) {
+	LyXParagraph * tmppar = selection.end.par();
+	while (tmppar != selection.start.par()->previous()) {
 		SetCursor(bview, tmppar, 0);
 		status = LyXText::NEED_MORE_REFRESH;
 		refresh_row = cursor.row();
@@ -1176,12 +1303,12 @@ void LyXText::SetParagraph(BufferView * bview,
 		tmppar = cursor.par()->previous();
 	}
 	
-	RedoParagraphs(bview, sel_start_cursor, endpar);
+	RedoParagraphs(bview, selection.start, endpar);
 	
 	ClearSelection(bview);
-	SetCursor(bview, sel_start_cursor.par(), sel_start_cursor.pos());
-	sel_cursor = cursor;
-	SetCursor(bview, sel_end_cursor.par(), sel_end_cursor.pos());
+	SetCursor(bview, selection.start.par(), selection.start.pos());
+	selection.cursor = cursor;
+	SetCursor(bview, selection.end.par(), selection.end.pos());
 	SetSelection(bview);
 	SetCursor(bview, tmpcursor.par(), tmpcursor.pos());
 	if (inset_owner)
@@ -1655,14 +1782,14 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 	bview->stuffClipboard(selectionAsString(bview->buffer()));
 
 	// This doesn't make sense, if there is no selection
-	if (!selection)
+	if (!selection.set())
 		return;
    
-	// OK, we have a selection. This is always between sel_start_cursor
-	// and sel_end_cursor
+	// OK, we have a selection. This is always between selection.start
+	// and selection.end
 
 	// make sure that the depth behind the selection are restored, too
-	LyXParagraph * endpar = sel_end_cursor.par()->next();
+	LyXParagraph * endpar = selection.end.par()->next();
 	LyXParagraph * undoendpar = endpar;
     
 	if (endpar && endpar->GetDepth()) {
@@ -1675,49 +1802,49 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 	}
     
 	SetUndo(bview->buffer(), Undo::DELETE,
-		sel_start_cursor.par()->previous(),
+		selection.start.par()->previous(),
 		undoendpar);
     
 	CutAndPaste cap;
 
 	// there are two cases: cut only within one paragraph or
 	// more than one paragraph
-	if (sel_start_cursor.par() == sel_end_cursor.par()) {
+	if (selection.start.par() == selection.end.par()) {
 		// only within one paragraph
-		endpar = sel_end_cursor.par();
-		int pos = sel_end_cursor.pos();
-		cap.cutSelection(sel_start_cursor.par(), &endpar,
-				 sel_start_cursor.pos(), pos,
+		endpar = selection.end.par();
+		int pos = selection.end.pos();
+		cap.cutSelection(selection.start.par(), &endpar,
+				 selection.start.pos(), pos,
 				 bview->buffer()->params.textclass, doclear);
-		sel_end_cursor.pos(pos);
+		selection.end.pos(pos);
 	} else {
-		endpar = sel_end_cursor.par();
-		int pos = sel_end_cursor.pos();
-		cap.cutSelection(sel_start_cursor.par(), &endpar,
-				 sel_start_cursor.pos(), pos,
+		endpar = selection.end.par();
+		int pos = selection.end.pos();
+		cap.cutSelection(selection.start.par(), &endpar,
+				 selection.start.pos(), pos,
 				 bview->buffer()->params.textclass, doclear);
 		cursor.par(endpar);
-		sel_end_cursor.par(endpar);
-		sel_end_cursor.pos(pos);
-		cursor.pos(sel_end_cursor.pos());
+		selection.end.par(endpar);
+		selection.end.pos(pos);
+		cursor.pos(selection.end.pos());
 	}
 	endpar = endpar->next();
 
 	// sometimes necessary
 	if (doclear)
-		sel_start_cursor.par()->StripLeadingSpaces(bview->buffer()->params.textclass);
+		selection.start.par()->StripLeadingSpaces(bview->buffer()->params.textclass);
 
-	RedoParagraphs(bview, sel_start_cursor, endpar);
+	RedoParagraphs(bview, selection.start, endpar);
 
 	// cutSelection can invalidate the cursor so we need to set
 	// it anew. (Lgb)
-	cursor = sel_start_cursor;
+	cursor = selection.start;
 
 	// need a valid cursor. (Lgb)
 	ClearSelection(bview);
 
 	SetCursor(bview, cursor.par(), cursor.pos());
-	sel_cursor = cursor;
+	selection.cursor = cursor;
 	UpdateCounters(bview, cursor.row());
 }
 
@@ -1735,23 +1862,23 @@ void LyXText::CopySelection(BufferView * bview)
 	bview->stuffClipboard(selectionAsString(bview->buffer()));
 
 	// this doesnt make sense, if there is no selection
-	if (!selection)
+	if (!selection.set())
 		return;
 
-	// ok we have a selection. This is always between sel_start_cursor
+	// ok we have a selection. This is always between selection.start
 	// and sel_end cursor
 
 	// copy behind a space if there is one
-	while (sel_start_cursor.par()->size() > sel_start_cursor.pos()
-	       && sel_start_cursor.par()->IsLineSeparator(sel_start_cursor.pos())
-	       && (sel_start_cursor.par() != sel_end_cursor.par()
-		   || sel_start_cursor.pos() < sel_end_cursor.pos()))
-		sel_start_cursor.pos(sel_start_cursor.pos() + 1); 
+	while (selection.start.par()->size() > selection.start.pos()
+	       && selection.start.par()->IsLineSeparator(selection.start.pos())
+	       && (selection.start.par() != selection.end.par()
+		   || selection.start.pos() < selection.end.pos()))
+		selection.start.pos(selection.start.pos() + 1); 
 
 	CutAndPaste cap;
 
-	cap.copySelection(sel_start_cursor.par(), sel_end_cursor.par(),
-			  sel_start_cursor.pos(), sel_end_cursor.pos(),
+	cap.copySelection(selection.start.par(), selection.end.par(),
+			  selection.start.pos(), selection.end.pos(),
 			  bview->buffer()->params.textclass);
 }
 
@@ -1780,7 +1907,7 @@ void LyXText::PasteSelection(BufferView * bview)
 	SetCursor(bview, cursor.par(), cursor.pos());
 	ClearSelection(bview);
    
-	sel_cursor = cursor;
+	selection.cursor = cursor;
 	SetCursor(bview, actpar, pos);
 	SetSelection(bview);
 	UpdateCounters(bview, cursor.row());
@@ -1797,7 +1924,7 @@ LyXParagraph * LyXText::FirstParagraph() const
 // sets the selection over the number of characters of string, no check!!
 void LyXText::SetSelectionOverString(BufferView * bview, string const & str)
 {
-	sel_cursor = cursor;
+	selection.cursor = cursor;
 	for (int i = 0; str[i]; ++i)
 		CursorRight(bview);
 	SetSelection(bview);
@@ -1811,20 +1938,20 @@ void LyXText::ReplaceSelectionWithString(BufferView * bview,
 	SetCursorParUndo(bview->buffer());
 	FreezeUndo();
 
-	if (!selection) { // create a dummy selection
-		sel_end_cursor = cursor;
-		sel_start_cursor = cursor;
+	if (!selection.set()) { // create a dummy selection
+		selection.end = cursor;
+		selection.start = cursor;
 	}
 
 	// Get font setting before we cut
-	LyXParagraph::size_type pos = sel_end_cursor.pos();
-	LyXFont const font = sel_start_cursor.par()
+	LyXParagraph::size_type pos = selection.end.pos();
+	LyXFont const font = selection.start.par()
 		->GetFontSettings(bview->buffer()->params,
-				  sel_start_cursor.pos());
+				  selection.start.pos());
 
 	// Insert the new string
 	for (string::const_iterator cit = str.begin(); cit != str.end(); ++cit) {
-		sel_end_cursor.par()->InsertChar(pos, (*cit), font);
+		selection.end.par()->InsertChar(pos, (*cit), font);
 		++pos;
 	}
 	
@@ -1910,7 +2037,7 @@ void LyXText::InsertStringA(BufferView * bview, string const & str)
 	
 	RedoParagraphs(bview, cursor, endpar);
 	SetCursor(bview, cursor.par(), cursor.pos());
-	sel_cursor = cursor;
+	selection.cursor = cursor;
 	SetCursor(bview, par, pos);
 	SetSelection(bview);
 }
@@ -2007,7 +2134,7 @@ void LyXText::CheckParagraph(BufferView * bview, LyXParagraph * par,
 			// dangling pointers are possible
 			SetCursor(bview, cursor.par(), cursor.pos(),
 				  false, cursor.boundary());
-			sel_cursor = cursor;
+			selection.cursor = cursor;
 			return;
 		}
 	}
@@ -2039,19 +2166,19 @@ void LyXText::CheckParagraph(BufferView * bview, LyXParagraph * par,
 	// set the cursor again. Otherwise dangling pointers are possible
 	// also set the selection
    
-	if (selection) {
+	if (selection.set()) {
 		tmpcursor = cursor;
-		SetCursorIntern(bview, sel_cursor.par(), sel_cursor.pos(),
-				false, sel_cursor.boundary());
-		sel_cursor = cursor; 
-		SetCursorIntern(bview, sel_start_cursor.par(),
-				sel_start_cursor.pos(),
-				false, sel_start_cursor.boundary());
-		sel_start_cursor = cursor; 
-		SetCursorIntern(bview, sel_end_cursor.par(),
-				sel_end_cursor.pos(),
-				false, sel_end_cursor.boundary());
-		sel_end_cursor = cursor; 
+		SetCursorIntern(bview, selection.cursor.par(), selection.cursor.pos(),
+				false, selection.cursor.boundary());
+		selection.cursor = cursor; 
+		SetCursorIntern(bview, selection.start.par(),
+				selection.start.pos(),
+				false, selection.start.boundary());
+		selection.start = cursor; 
+		SetCursorIntern(bview, selection.end.par(),
+				selection.end.pos(),
+				false, selection.end.boundary());
+		selection.end = cursor; 
 		SetCursorIntern(bview, last_sel_cursor.par(),
 				last_sel_cursor.pos(),
 				false, last_sel_cursor.boundary());
@@ -2338,7 +2465,7 @@ void LyXText::DeleteEmptyParagraphMechanism(BufferView * bview,
 					    LyXCursor const & old_cursor) const
 {
 	// Would be wrong to delete anything if we have a selection.
-	if (selection) return;
+	if (selection.set()) return;
 
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
 	if (textclasslist.Style(bview->buffer()->params.textclass,
@@ -2485,10 +2612,10 @@ void LyXText::DeleteEmptyParagraphMechanism(BufferView * bview,
 
 				SetCursorIntern(bview, cursor.par(), cursor.pos());
 
-				if (sel_cursor.par()  == old_cursor.par()
-				    && sel_cursor.pos() == sel_cursor.pos()) {
+				if (selection.cursor.par()  == old_cursor.par()
+				    && selection.cursor.pos() == selection.cursor.pos()) {
 					// correct selection
-					sel_cursor = cursor;
+					selection.cursor = cursor;
 				}
 		}
 		if (!deleted) {
@@ -2496,7 +2623,7 @@ void LyXText::DeleteEmptyParagraphMechanism(BufferView * bview,
 				RedoParagraphs(bview, old_cursor, old_cursor.par()->next());
 				// correct cursor y
 				SetCursorIntern(bview, cursor.par(), cursor.pos());
-				sel_cursor = cursor;
+				selection.cursor = cursor;
 			}
 		}
 	}

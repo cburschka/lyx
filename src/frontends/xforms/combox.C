@@ -36,7 +36,7 @@
 #endif
 
 #include "combox.h"
-#include <cstring>
+//#include <cstring>
 
 #include "debug.h"
 

@@ -294,7 +294,13 @@ int yylex(void)
 				yylval.i = LM_OT_PAR;
 				return LM_TK_END;
 			}
-			if (strchr(latex_special_chars, c)) {
+			if (
+#if 0
+				strchr(latex_special_chars, c)
+#else
+				contains(latex_special_chars, c)
+#endif
+				) {
 				yylval.i = c;
 				return LM_TK_SPECIAL;
 			} 
@@ -345,13 +351,24 @@ int yylex(void)
 }
 
 
-int parse_align(char * hor, char *)
+#if 0
+int parse_align(char const * hor)
 {
 	int nc = 0;
 	for (char * c = hor; c && *c > ' '; ++c) ++nc;
 	return nc;
 }
-
+#else
+int parse_align(string const & hor)
+{
+	int nc = 0;
+	string::const_iterator cit = hor.begin();
+	string::const_iterator end = hor.end();
+	for (; cit != end; ++cit)
+		if (*cit > ' ') ++nc;
+	return nc;
+}
+#endif
 
 // Accent hacks only for 0.12. Stolen from Cursor.
 int accent = 0;
@@ -837,16 +854,30 @@ void mathed_parse(MathedArray & array, MathParInset * & par, unsigned flags)
 		case LM_TK_BEGIN:
 			if (yylval.i == LM_OT_MATRIX) {
 				//lyxerr << "###### Reading LM_OT_MATRIX \n";
+#if 0
 				char ar[120];
 				char ar2[8];
-				ar[0] = ar2[0] = '\0'; 
+				ar[0] = ar2[0] = '\0';
+#endif
 				char rg = LexGetArg(0);
+#if 1
+				string ar2;
+#endif			
 				if (rg == ']') {
+#if 0
 					strcpy(ar2, yytext.data());
+#else
+					ar2 = yytext.data();
+#endif
 					rg = LexGetArg('{');
 				}
+#if 0
 				strcpy(ar, yytext.data());
-				int const nc = parse_align(ar, ar2);
+				int const nc = parse_align(ar);
+#else
+				string ar(yytext.data());
+				int const nc = parse_align(ar);
+#endif
 
 				MathParInset * mm = new MathMatrixInset(nc, 0);
 				mm->SetAlign(ar2[0], ar);

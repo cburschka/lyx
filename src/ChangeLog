@@ -1,3 +1,40 @@
+2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.C: adjust
+	* text.C: adjust
+	
+
+	* tabular.C (getTokenValue): add std::
+
+	* tabular-old.C (getTokenValue): add std::
+	(getTokenValue): ditto
+	(getTokenValue): ditto
+
+	* screen.C (ToggleSelection): adjust
+
+	* lyxtext.h: put selection cursors inside a Selection struct.
+
+	* lyxfunc.C (moveCursorUpdate): adjust
+
+	* lyxfont.C (latexWriteStartChanges): add std::
+
+	* lyxfind.C: adjust
+
+	* font.h: delete with(char const *, LyXFont const &)
+
+	* buffer.C (parseSingleLyXformat2Token): use contains instead of strstr
+
+	* FontInfo.C (getFontname): add std::
+
+	* BufferView_pimpl.C (resizeCurrentBuffer): adjust
+	(workAreaButtonPress): adjust
+	(tripleClick): adjust
+	(update): adjust
+	(moveCursorUpdate): adjust
+	(Dispatch): adjust
+
+	* BufferView2.C (gotoInset): adjust
+
 2001-05-30  Juergen Vigna  <jug@sad.it>
 
 	* spellchecker.C (USE_ORIGINAL_MANAGER_FUNCS): as it seems only I use

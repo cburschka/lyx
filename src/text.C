@@ -2164,8 +2164,12 @@ void LyXText::SelectWord(BufferView * bview)
 		CursorLeftOneWord(bview);
 
 	// set the sel cursor
+#if 0
 	sel_cursor = cursor;
-
+#else
+	selection.cursor = cursor;
+#endif
+	
 	while (cursor.pos() < cursor.par()->size()
 	       && !cursor.par()->IsSeparator(cursor.pos())
 	       && !cursor.par()->IsKomma(cursor.pos()) )
@@ -2183,7 +2187,11 @@ void LyXText::SelectWord(BufferView * bview)
 
 bool LyXText::SelectWordWhenUnderCursor(BufferView * bview) 
 {
+#if 0
 	if (!selection &&
+#else
+	    if (!selection.set() &&
+#endif
 	    cursor.pos() > 0 && cursor.pos() < cursor.par()->size()
 	    && !cursor.par()->IsSeparator(cursor.pos())
 	    && !cursor.par()->IsKomma(cursor.pos())
@@ -2233,8 +2241,12 @@ string const LyXText::SelectNextWord(BufferView * bview,
 	}
 
 	// Start the selection from here
+#if 0
 	sel_cursor = cursor;
-
+#else
+	selection.cursor = cursor;
+#endif
+	
 	std::ostringstream latex;
 
 	// and find the end of the word 
@@ -2250,6 +2262,7 @@ string const LyXText::SelectNextWord(BufferView * bview,
 
 	// Finally, we copy the word to a string and return it
 	string str;
+#if 0
 	if (sel_cursor.pos() < cursor.pos()) {
 		LyXParagraph::size_type i;
 		for (i = sel_cursor.pos(); i < cursor.pos(); ++i) {
@@ -2257,6 +2270,15 @@ string const LyXText::SelectNextWord(BufferView * bview,
 				str += cursor.par()->GetChar(i);
 		}
 	}
+#else
+	if (selection.cursor.pos() < cursor.pos()) {
+		LyXParagraph::size_type i;
+		for (i = selection.cursor.pos(); i < cursor.pos(); ++i) {
+			if (cursor.par()->GetChar(i) != LyXParagraph::META_INSET)
+				str += cursor.par()->GetChar(i);
+		}
+	}
+#endif
 	return str;
 }
 
@@ -2264,12 +2286,19 @@ string const LyXText::SelectNextWord(BufferView * bview,
 // This one is also only for the spellchecker
 void LyXText::SelectSelectedWord(BufferView * bview)
 {
+#if 0
 	// move cursor to the beginning
 	SetCursor(bview, sel_cursor.par(), sel_cursor.pos());
 	
 	// set the sel cursor
 	sel_cursor = cursor;
-
+#else
+	// move cursor to the beginning
+	SetCursor(bview, selection.cursor.par(), selection.cursor.pos());
+	
+	// set the sel cursor
+	selection.cursor = cursor;
+#endif
 	std::ostringstream latex;
 	
 	// now find the end of the word
@@ -2297,10 +2326,18 @@ void LyXText::DeleteWordForward(BufferView * bview)
 	else {
 		LyXCursor tmpcursor = cursor;
 		tmpcursor.row(0); // ??
-		selection = true; // to avoid deletion 
+#if 0
+		selection = true; // to avoid deletion
+#else
+		selection.set(true); // to avoid deletion
+#endif
 		CursorRightOneWord(bview);
 		SetCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
+#if 0
 		sel_cursor = cursor;
+#else
+		selection.cursor = cursor;
+#endif
 		cursor = tmpcursor;
 		SetSelection(bview); 
 		
@@ -2318,10 +2355,18 @@ void LyXText::DeleteWordBackward(BufferView * bview)
        else {
 	       LyXCursor tmpcursor = cursor;
 	       tmpcursor.row(0); // ??
-	       selection = true; // to avoid deletion 
+#if 0
+	       selection = true; // to avoid deletion
+#else
+	       selection.set(true); // to avoid deletion
+#endif
 	       CursorLeftOneWord(bview);
 	       SetCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
+#if 0
 	       sel_cursor = cursor;
+#else
+	       selection.cursor = cursor;
+#endif
 	       cursor = tmpcursor;
 	       SetSelection(bview);
 	       CutSelection(bview);
@@ -2340,14 +2385,26 @@ void LyXText::DeleteLineForward(BufferView * bview)
 		// We can't store the row over a regular SetCursor
 		// so we set it to 0 and reset it afterwards.
 		tmpcursor.row(0); // ??
-		selection = true; // to avoid deletion 
+#if 0
+		selection = true; // to avoid deletion
+#else
+		selection.set(true); // to avoid deletion
+#endif
 		CursorEnd(bview);
 		SetCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
+#if 0
 		sel_cursor = cursor;
+#else
+		selection.cursor = cursor;
+#endif
 		cursor = tmpcursor;
 		SetSelection(bview);
 		// What is this test for ??? (JMarc)
+#if 0
 		if (!selection) {
+#else
+			if (!selection.set()) {
+#endif
 			DeleteWordForward(bview);
 		} else {
 			CutSelection(bview);
@@ -2868,68 +2925,68 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			pain.fillRectangle(w, y_offset, ww - w, row_ptr->height());
 		}
 	}
-	
-	if (selection) {
+
+	if (selection.set()) {
 		int const w = (inset_owner ?
 			       inset_owner->width(bview, font) : ww);
 		// selection code
 		if (bidi_same_direction) {
-			if (sel_start_cursor.row() == row_ptr &&
-			    sel_end_cursor.row() == row_ptr) {
-				if (sel_start_cursor.x() < sel_end_cursor.x())
-					pain.fillRectangle(x_offset + sel_start_cursor.x(),
+			if (selection.start.row() == row_ptr &&
+			    selection.end.row() == row_ptr) {
+				if (selection.start.x() < selection.end.x())
+					pain.fillRectangle(x_offset + selection.start.x(),
 							   y_offset,
-							   sel_end_cursor.x() - sel_start_cursor.x(),
+							   selection.end.x() - selection.start.x(),
 							   row_ptr->height(),
 							   LColor::selection);
 				else
-					pain.fillRectangle(x_offset + sel_end_cursor.x(),
+					pain.fillRectangle(x_offset + selection.end.x(),
 							   y_offset,
-							   sel_start_cursor.x() - sel_end_cursor.x(),
+							   selection.start.x() - selection.end.x(),
 							   row_ptr->height(),
 							   LColor::selection);
-			} else if (sel_start_cursor.row() == row_ptr) {
+			} else if (selection.start.row() == row_ptr) {
 				if (is_rtl)
 					pain.fillRectangle(x_offset, y_offset,
-							   sel_start_cursor.x(),
+							   selection.start.x(),
 							   row_ptr->height(),
 							   LColor::selection);
 				else
-					pain.fillRectangle(x_offset + sel_start_cursor.x(),
+					pain.fillRectangle(x_offset + selection.start.x(),
 							   y_offset,
-							   w - sel_start_cursor.x(),
+							   w - selection.start.x(),
 							   row_ptr->height(),
 							   LColor::selection);
-			} else if (sel_end_cursor.row() == row_ptr) {
+			} else if (selection.end.row() == row_ptr) {
 				if (is_rtl)
-					pain.fillRectangle(x_offset + sel_end_cursor.x(),
+					pain.fillRectangle(x_offset + selection.end.x(),
 							   y_offset,
-							   w - sel_end_cursor.x(),
+							   w - selection.end.x(),
 							   row_ptr->height(),
 							   LColor::selection);
 				else
 					pain.fillRectangle(x_offset, y_offset,
-							   sel_end_cursor.x(),
+							   selection.end.x(),
 							   row_ptr->height(),
 							   LColor::selection);
-			} else if (y > sel_start_cursor.y()
-				   && y < sel_end_cursor.y()) {
+			} else if (y > selection.start.y()
+				   && y < selection.end.y()) {
 				pain.fillRectangle(x_offset, y_offset, w,
 						   row_ptr->height(),
 						   LColor::selection);
 			}
-		} else if (sel_start_cursor.row() != row_ptr &&
-			    sel_end_cursor.row() != row_ptr &&
-			    y > sel_start_cursor.y()
-			    && y < sel_end_cursor.y()) {
+		} else if (selection.start.row() != row_ptr &&
+			    selection.end.row() != row_ptr &&
+			    y > selection.start.y()
+			    && y < selection.end.y()) {
 			pain.fillRectangle(x_offset, y_offset, w,
 					   row_ptr->height(),
 					   LColor::selection);
-		} else if (sel_start_cursor.row() == row_ptr ||
-			   sel_end_cursor.row() == row_ptr) {
+		} else if (selection.start.row() == row_ptr ||
+			   selection.end.row() == row_ptr) {
 			float tmpx = x;
-			if ((sel_start_cursor.row() != row_ptr && !is_rtl) ||
-			     (sel_end_cursor.row() != row_ptr && is_rtl))
+			if ((selection.start.row() != row_ptr && !is_rtl) ||
+			     (selection.end.row() != row_ptr && is_rtl))
 				pain.fillRectangle(x_offset, y_offset,
 						   int(tmpx),
 						   row_ptr->height(),
@@ -2963,10 +3020,10 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				} else
 					tmpx += SingleWidth(bview, row_ptr->par(), pos);
 				
-				if ((sel_start_cursor.row() != row_ptr ||
-				      sel_start_cursor.pos() <= pos) &&
-				     (sel_end_cursor.row() != row_ptr ||
-				      pos < sel_end_cursor.pos()) )
+				if ((selection.start.row() != row_ptr ||
+				      selection.start.pos() <= pos) &&
+				     (selection.end.row() != row_ptr ||
+				      pos < selection.end.pos()) )
 					// Here we do not use x_offset as x_offset was
 					// added to x.
 					pain.fillRectangle(int(old_tmpx),
@@ -2976,8 +3033,8 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 							   LColor::selection);
 			}
 
-			if ((sel_start_cursor.row() != row_ptr && is_rtl) ||
-			     (sel_end_cursor.row() != row_ptr && !is_rtl) )
+			if ((selection.start.row() != row_ptr && is_rtl) ||
+			     (selection.end.row() != row_ptr && !is_rtl) )
 				pain.fillRectangle(x_offset + int(tmpx),
 						   y_offset,
 						   int(ww - tmpx),

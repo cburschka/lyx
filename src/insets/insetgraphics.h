@@ -97,7 +97,7 @@ private:
 	/// Update the inset after parameter change.
 	void updateInset() const;
 	/// Get the status message, depends on the image loading status.
-	char const * statusMessage() const;
+	string const statusMessage() const;
 	/// Create the options for the latex command.
 	string const createLatexOptions() const;
 	/// Convert the file if needed, and return the location of the file.

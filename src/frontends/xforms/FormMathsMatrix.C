@@ -105,8 +105,8 @@ bool FormMathsMatrix::input(FL_OBJECT * ob, long)
 
 int FormMathsMatrix::AlignFilter(char const * cur, int c)
 {
-	int n = int(fl_get_slider_value(dialog_->slider_columns)+0.5) -
-		int(strlen(cur));
+	int const n = int(fl_get_slider_value(dialog_->slider_columns) + 0.5) -
+		int(std::strlen(cur));
 	if (n < 0)
 		return FL_INVALID;
 

@@ -632,7 +632,8 @@ void runqueue()
 			env[0] = new char[tmp.size() + 1];
 			std::copy(tmp.begin(), tmp.end(), env[0]);
 			env[0][tmp.size()] = '\0';
-			::memcpy(&env[1], environ, sizeof(char*) * (ne + 1));
+			std::memcpy(&env[1], environ,
+				    sizeof(char*) * (ne + 1));
 			environ = env;
 
 			// now make gs command
@@ -1003,7 +1004,8 @@ void InsetFig::draw(BufferView * bv, LyXFont const & f,
 				       wid + 1, hgh + 1);
 		
 	} else {
-		char const * msg = 0;
+		//char const * msg = 0;
+		string msg;
 		string lfname = fname;
 		if (!fname.empty() && GetExtension(fname).empty())
 		    lfname += ".eps";
@@ -1023,16 +1025,16 @@ void InsetFig::draw(BufferView * bv, LyXFont const & f,
 		else if (lyxrc.ps_command.empty()) 
 			msg = _("[no ghostscript]");
 		
-		if (!msg) msg = _("[unknown error]");
+		if (msg.empty()) msg = _("[unknown error]");
 		
 		font.setFamily(LyXFont::SANS_FAMILY);
 		font.setSize(LyXFont::SIZE_FOOTNOTE);
-		string justname = OnlyFilename (fname);
+		string const justname = OnlyFilename (fname);
 		pain.text(int(x + 8), baseline - lyxfont::maxAscent(font) - 4,
 			  justname, font);
 		
 		font.setSize(LyXFont::SIZE_TINY);
-		pain.text(int(x + 8), baseline - 4, msg, strlen(msg), font);
+		pain.text(int(x + 8), baseline - 4, msg, font);
 	}
 	x += width(bv, font);    // ?
 }
@@ -1435,10 +1437,10 @@ void InsetFig::Recompute()
 
 	if (changed) GetPSSizes();
 
-	float sin_a = sin (angle / DEG2PI);  /* rotation; H. Zeller 021296 */
-	float cos_a = cos (angle / DEG2PI);
-	int frame_wid = int(ceil(fabs(cos_a * pswid) + fabs(sin_a * pshgh)));
-	int frame_hgh= int(ceil(fabs(cos_a * pshgh) + fabs(sin_a * pswid)));
+	float sin_a = std::sin (angle / DEG2PI);  /* rotation; H. Zeller 021296 */
+	float cos_a = std::cos (angle / DEG2PI);
+	int frame_wid = int(ceil(std::fabs(cos_a * pswid) + std::fabs(sin_a * pshgh)));
+	int frame_hgh= int(ceil(std::fabs(cos_a * pshgh) + std::fabs(sin_a * pswid)));
 
 	string lfname = fname;
 	if (GetExtension(fname).empty())

@@ -172,10 +172,10 @@ InsetGraphics::~InsetGraphics()
 }
 
 
-char const *
+string const
 InsetGraphics::statusMessage() const
 {
-	char const * msg = 0;
+	string msg;
 
 	if (cacheHandle.get()) {
 		switch (cacheHandle->getImageStatus()) {
@@ -229,10 +229,10 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 	if (cacheHandle.get() && (pixmap = cacheHandle->getImage()))
 		return pixmap->getWidth();
 	else {
-		char const * msg = statusMessage();
+		string const msg = statusMessage();
 		int font_width = 0;
 		
-		if (msg)
+		if (!msg.empty())
 			font_width = lyxfont::width(msg, font);
 		
 		return std::max(50, font_width + 15);
@@ -276,13 +276,13 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 			return;
 		}
 
-		char const * msg = statusMessage();
+		string const msg = statusMessage();
 		
 		paint.rectangle(int(old_x) + 2, baseline - lascent,
 		                lwidth - 4,
 		                lascent + ldescent);
 
-		if (msg) {
+		if (!msg.empty()) {
 			// Print the message.
 			LyXFont msgFont(font);
 			msgFont.setFamily(LyXFont::SANS_FAMILY);
@@ -294,7 +294,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			paint.text(int(old_x) + 8, baseline - 4, 
-					msg, strlen(msg), msgFont);
+					msg, msgFont);
 		}
 	}
 }

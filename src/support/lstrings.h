@@ -16,7 +16,7 @@
 #pragma interface
 #endif
 
-#include <cstring>
+//#include <cstring>
 #include <cctype>
 
 #include "Lsstream.h"
@@ -34,14 +34,14 @@ int compare_no_case(string const & s, string const & s2, unsigned int len);
 inline
 int compare(char const * a, char const * b)
 {
-	return strcmp(a, b);
+	return std::strcmp(a, b);
 }
 
 ///
 inline
 int compare(char const * a, char const * b, unsigned int len)
 {
-	return strncmp(a, b, len);
+	return std::strncmp(a, b, len);
 }
 
 ///

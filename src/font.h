@@ -59,10 +59,10 @@ struct lyxfont {
 		return width(s.c_str(), s.length(), f);
 	}
 	///
-	static
-	int width(char const * s, LyXFont const & f) {
-		return width(s, strlen(s), f);
-	}
+	//static
+	//int width(char const * s, LyXFont const & f) {
+	//	return width(s, strlen(s), f);
+	//}
 	///
 	static
 	int signedWidth(string const & s, LyXFont const & f);

@@ -227,7 +227,7 @@ void MathedArray::move(int p, int shift)
 {
 	if (p <= last_) {
 		need_size(last_ + shift);
-		memmove(&bf_[p + shift], &bf_[p], last_ - p);
+		std::memmove(&bf_[p + shift], &bf_[p], last_ - p);
 		last_ += shift;
 		bf_[last_] = 0;
 	}

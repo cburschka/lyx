@@ -210,7 +210,8 @@ public:
 	  it should not be absolutely needed to move the cursor...
 	  */
 	mutable LyXCursor cursor;
-   
+
+#if 0
 	/* the selection cursor */
 	/// 
 	mutable bool selection;
@@ -223,6 +224,31 @@ public:
 	mutable LyXCursor sel_start_cursor;
 	///
 	mutable LyXCursor sel_end_cursor;
+#else
+	/** The structrue that keeps track of the selections set. */
+	struct Selection {
+		bool set() const {
+			return set_;
+		}
+		void set(bool s) {
+			set_ = s;
+		}
+		bool mark() const {
+			return mark_;
+		}
+		void mark(bool m) {
+			mark_ = m;
+		}
+		LyXCursor cursor;
+		LyXCursor start;
+		LyXCursor end;
+	private:
+		bool set_; // former selection
+		bool mark_; // former mark_set
+		
+	};
+	mutable Selection selection;
+#endif
 	/// needed for the toggling
 	LyXCursor last_sel_cursor;
 	///

@@ -1149,11 +1149,11 @@ bool string2type(string const str, bool & num)
 
 bool getTokenValue(string const & str, const char * token, string & ret)
 {
-	size_t token_length = strlen(token);
+	size_t token_length = std::strlen(token);
 	string::size_type pos = str.find(token);
 
-	if (pos == string::npos || pos+token_length+1 >= str.length()
-		|| str[pos+token_length] != '=')
+	if (pos == string::npos || pos + token_length + 1 >= str.length()
+		|| str[pos + token_length] != '=')
 		return false;
 	ret.erase();
 	pos += token_length + 1;

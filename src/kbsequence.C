@@ -9,7 +9,7 @@
  * ====================================================== */
 
 #include <config.h>
-#include <cstring>
+//#include <cstring>
 #include <X11/Xlib.h>
 
 #include "gettext.h"

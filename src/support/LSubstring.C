@@ -35,7 +35,7 @@ LSubstring::LSubstring(string & s, string const & s2)
 LSubstring::LSubstring(string & s, string::value_type const * p)
 	: ps(&s)
 {
-	n = strlen(p);
+	n = std::strlen(p);
 	pos = s.find(p);
 }
 

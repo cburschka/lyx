@@ -267,7 +267,7 @@ bool BufferView::gotoLabel(string const & label)
 		     != labels.end()) {
 			beforeChange(text);
 			text->SetCursor(this, it.getPar(), it.getPos());
-			text->sel_cursor = text->cursor;
+			text->selection.cursor = text->cursor;
 			update(text, BufferView::SELECT|BufferView::FITCUR);
 			return true;
 		}
@@ -418,7 +418,7 @@ void BufferView::gotoInset(std::vector<Inset::Code> const & codes,
 			}
 	}
 	update(text, BufferView::SELECT|BufferView::FITCUR);
-	text->sel_cursor = text->cursor;
+	text->selection.cursor = text->cursor;
 }
 
 

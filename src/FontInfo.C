@@ -41,15 +41,15 @@ string const FontInfo::getFontname(int size)
 			lyxerr[Debug::FONT] << "Exact font match with\n"
 					    << strings[i] << endl;
 			return strings[i];
-		} else if (fabs(sizes[i] - size - 0.1) < error) {
-			error = fabs(sizes[i] - size - 0.1);
+		} else if (std::fabs(sizes[i] - size - 0.1) < error) {
+			error = std::fabs(sizes[i] - size - 0.1);
 			closestind = i;
 		}
 	}
 
 	if (scalable && lyxrc.use_scalable_fonts) {
 		// We can use scalable
-		string font = resize(strings[scaleindex], size);
+		string const font = resize(strings[scaleindex], size);
 		lyxerr[Debug::FONT] << "Using scalable font to get\n"
 				    << font << endl;
 		return font;

@@ -9,6 +9,8 @@
 #include "mathed/support.h"
 #include "math_parser.h"
 #include "support/LOstream.h"
+#include "support/lstrings.h"
+
 
 using std::ostream;
 
@@ -67,10 +69,10 @@ void MathDecorationInset::Write(ostream & os, bool fragile)
 {
 	latexkeys const * l = lm_get_key_by_id(deco_, LM_TK_WIDE);
 	if (fragile &&
-	    (strcmp(l->name, "overbrace") == 0 ||
-	     strcmp(l->name, "underbrace") == 0 ||
-	     strcmp(l->name, "overleftarrow") == 0 ||
-	     strcmp(l->name, "overrightarrow") == 0))
+	    (compare(l->name, "overbrace") == 0 ||
+	     compare(l->name, "underbrace") == 0 ||
+	     compare(l->name, "overleftarrow") == 0 ||
+	     compare(l->name, "overrightarrow") == 0))
 		os << "\\protect";
 	os << '\\' << l->name << '{';
 	MathParInset::Write(os, fragile);  

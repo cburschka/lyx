@@ -962,13 +962,16 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	{
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		char s[80];
-		char arg2[80];
+		//char arg2[80];
+		
 		// This is just so that too long args won't ooze out of s.
-		strncpy(arg2, arg.c_str(), 80);
-		arg2[79]= '\0';
+		//strncpy(arg2, arg.c_str(), 80);
+		//arg2[79]= '\0';
+		string arg2(arg, 0, 80);
+		
 		int m;
 		int n;
-		int const k = sscanf(arg2, "%d %d %s", &m, &n, s);
+		int const k = sscanf(arg2.c_str(), "%d %d %s", &m, &n, s);
 		s[79] = '\0';
 
 		if (k < 1) {
@@ -979,7 +982,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 
 		if (mathcursor) {
 			MathMatrixInset * p = new MathMatrixInset(m, n);
-			if (k > 2 && int(strlen(s)) > m)
+			if (k > 2 && int(std::strlen(s)) > m)
 				p->SetAlign(s[0], &s[1]);
 			mathcursor->insertInset(p, LM_TC_ACTIVE_INSET);
 			// Andre:
@@ -993,7 +996,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		char lf[40];
 		char rg[40];
-		char arg2[40];
+		//char arg2[40];
 		int ilf = '(';
 		int irg = '.';
 		latexkeys const * l;
@@ -1001,9 +1004,11 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 
 		if (arg.empty())
 			break;
-		::strncpy(arg2, arg.c_str(), 40);
-		arg2[39]= '\0';
-		int const n = sscanf(arg2, "%s %s", lf, rg);
+		//::strncpy(arg2, arg.c_str(), 40);
+		//arg2[39]= '\0';
+		string arg2(arg, 0, 40);
+		
+		int const n = sscanf(arg2.c_str(), "%s %s", lf, rg);
 		lf[39] = '\0';
 		rg[39] = '\0';
 
@@ -1197,8 +1202,12 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 				
 				if (greek_kb_flag < 2)
 					greek_kb_flag = 0;
-				
+#if 0
 			} else if (strchr("!,:;{}", c) && (varcode == LM_TC_TEX||was_macro)) {
+#else
+			} else if (contains("!,:;{}", c)
+				   && (varcode == LM_TC_TEX||was_macro)) {
+#endif
 				mathcursor->Insert(c, LM_TC_TEX);
 				if (c == '{') {
 					mathcursor->Insert('}', LM_TC_TEX);
@@ -1214,11 +1223,29 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 				mathcursor->MacroModeOpen();
 				mathcursor->clearLastCode();
 				mathcursor->Insert(c, LM_TC_MIN);
-			} else if (('0'<= c && c<= '9') || strchr(";:!|[]().,?", c)) {
+			} else if (('0'<= c && c<= '9') ||
+#if 0
+				   strchr(";:!|[]().,?", c)
+#else
+				   contains(";:!|[]().,?", c)
+#endif
+				) {
 				mathcursor->Insert(c, LM_TC_CONST);
-			} else if (strchr("+/-*<>=", c)) {
+			} else if (
+#if 0
+				strchr("+/-*<>=", c)
+#else
+				contains("+/-*<>=", c)
+#endif
+				) {
 				mathcursor->Insert(c, LM_TC_BOP);
-			} else if (strchr(latex_special_chars, c) && c!= '_') {
+			} else if (
+#if 0
+				strchr(latex_special_chars, c)
+#else
+				contains(latex_special_chars, c)
+#endif
+				&& c!= '_') {
 				mathcursor->Insert(c, LM_TC_SPECIAL);
 			} else if (c == '_' || c == '^') {
 				char s[2];

@@ -76,7 +76,7 @@ SystemcallsSingletoncontroller::timer() {
 		int waitrpid = waitpid(pid, &stat_loc, WNOHANG);
 		if (waitrpid == -1) {
 			lyxerr << "LyX: Error waiting for child:" 
-			       << strerror(errno) << endl;
+			       << std::strerror(errno) << endl;
 		} else if (WIFEXITED(stat_loc) || WIFSIGNALED(stat_loc)) {
 			if (WIFEXITED(stat_loc)) {
 				// Ok, the return value goes into retval.
