@@ -43,6 +43,36 @@ public:
 	int latex(Buffer const *, std::ostream &, bool, bool) const;
 	///
 	void validate(LaTeXFeatures &) const;
+private:
+	struct Cache {
+		///
+		enum Style {
+			///
+			BASIC,
+			///
+			NATBIB_AY,
+			///
+			NATBIB_NUM
+		};
+		///
+		Cache() : style(BASIC) {}
+		///
+		Style style;
+		///
+		InsetCommandParams params;
+		///
+		string generated_label;
+		///
+		string screen_label;
+	};
+
+	/// This function does the donkey work of creating the pretty label
+	string const generateLabel(Buffer const *) const;
+	///
+	Cache::Style getStyle(Buffer const * buffer) const;
+
+	///
+	mutable Cache cache;
 };
 
 #endif // INSET_CITE_H

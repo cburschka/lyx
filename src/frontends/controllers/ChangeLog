@@ -1,3 +1,10 @@
+2002-04-22  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* biblio.C (getAbbreviatedAuthor, getYear): Cæsar is dead. RIP; he was
+	way past his use-by date.
+	Make use of the improved info from Buffer::getBibkeyList when using
+	\bibliography. Enables us to provide natbib support in this case too.
+
 2002-04-19  Marco Morandini <morandini@aero.polimi.it>
 
 	* ControlGraphics.C: pass the browseFile dialog a string of only those

@@ -3,6 +3,11 @@
 	* FormBibtex.C: Do not use a blank after the comma for multiple
 	bib-files (which is not read in correctly).
 
+2002-04-22  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitation.C (fillChoice): If the getCiteStrings vec is empty,
+	disable the choice.
+
 2002-04-19  Juergen Vigna  <jug@sad.it>
 
 	* FormParagraph.C (changedParagraph): don't check for p == par_ as

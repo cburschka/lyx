@@ -3701,9 +3701,14 @@ vector<pair<string, string> > const Buffer::getBibkeyList() const
 	vector<StringPair> keys;
 	Paragraph * par = paragraph;
 	while (par) {
-		if (par->bibkey)
-			keys.push_back(StringPair(par->bibkey->getContents(),
-						  par->asString(this, false)));
+		if (par->bibkey) {
+			string const key = par->bibkey->getContents();
+			string const opt = par->bibkey->getOptions();
+			string const ref = par->asString(this, false);
+			string const info = opt + "TheBibliographyRef" + ref;
+			
+			keys.push_back(StringPair(key, info));
+		}
 		par = par->next();
 	}
 

@@ -1,3 +1,9 @@
+2002-04-22  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetcite.[Ch]: take Herbert's patch to give WYSIWYG citation labels
+	when using natbib and make it work efficiently. Must emphasise that the
+	real work is Herbert's.
+
 2002-04-23  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (drawCellSelection): fix off by 1 error.

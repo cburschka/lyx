@@ -175,33 +175,45 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 	lyx::Assert(!map.empty());
 
 	InfoMap::const_iterator it = map.find(key);
+	if (it == map.end())
+		return string();
 
-	string author;
-	if (it != map.end()) {
-		author = parseBibTeX(it->second, "author");
-		if (author.empty())
-			author = parseBibTeX(it->second, "editor");
-
-		vector<string> authors = getVectorFromString(author, "and");
-
-		if (!authors.empty()) {
-			author.erase();
-
-			for (vector<string>::iterator it = authors.begin();
-			     it != authors.end(); ++it) {
-				*it = familyName(strip(*it));
-			}
-
-			author = authors[0];
-			if (authors.size() == 2)
-				author += _(" and ") + authors[1];
-			else if (authors.size() > 2)
-				author += _(" et al.");
+	string::size_type const pos = it->second.find("TheBibliographyRef");
+	if (pos != string::npos) {
+		if (pos <= 2) {
+			return string();
 		}
+
+		string const opt =
+			strip(frontStrip(it->second.substr(0, pos-1)));
+		if (opt.empty())
+			return string();
+
+		string authors;
+		split(opt, authors, '(');
+		return authors;
 	}
 
+	string author = parseBibTeX(it->second, "author");
 	if (author.empty())
-		author = _("Caesar et al.");
+		author = parseBibTeX(it->second, "editor");
+
+	vector<string> authors = getVectorFromString(author, "and");
+
+	if (!authors.empty()) {
+		author.erase();
+
+		for (vector<string>::iterator it = authors.begin();
+		     it != authors.end(); ++it) {
+			*it = familyName(strip(*it));
+		}
+
+		author = authors[0];
+		if (authors.size() == 2)
+			author += _(" and ") + authors[1];
+		else if (authors.size() > 2)
+			author += _(" et al.");
+	}
 
 	return author;
 }
@@ -212,15 +224,29 @@ string const getYear(InfoMap const & map, string const & key)
 	lyx::Assert(!map.empty());
 
 	InfoMap::const_iterator it = map.find(key);
+	if (it == map.end())
+		return string();
 
-	string year;
+	string::size_type const pos = it->second.find("TheBibliographyRef");
+	if (pos != string::npos) {
+		if (pos <= 2) {
+			return string();
+		}
 
-	if (it != map.end())
-		year = parseBibTeX(it->second, "year");
+		string const opt =
+			strip(frontStrip(it->second.substr(0, pos-1)));
+		if (opt.empty())
+			return string();
 
-	if (year.empty())
-		year = "50BC";
+		string authors;
+		string const tmp = split(opt, authors, '(');
+		string year;
+		split(tmp, year, ')');
+		return year;
 
+	}
+
+	string year = parseBibTeX(it->second, "year");
 	return year;
 }
 
@@ -253,9 +279,15 @@ string const getInfo(InfoMap const & map, string const & key)
 	InfoMap::const_iterator it = map.find(key);
 	if (it == map.end())
 		return string();
+
 	// is the entry a BibTeX one or one from lyx-layout "bibliography"?
-	if (!contains(it->second,'='))
-		return it->second.c_str();
+	string const separator("TheBibliographyRef");
+	string::size_type const pos = it->second.find(separator);
+	if (pos != string::npos) {
+		string::size_type const pos2 = pos + separator.size();
+		string const info = strip(frontStrip(it->second.substr(pos2)));
+		return info;
+	}
 
 	// Search for all possible "required" keys
 	string author = parseBibTeX(it->second, "author");
@@ -521,16 +553,15 @@ getNumericalStrings(string const & key,
 		    InfoMap const & map, vector<CiteStyle> const & styles)
 {
 	if (map.empty()) {
-		vector<string> vec(1);
-		vec[0] = _("No database");
-		return vec;
+		return vector<string>();
 	}
-
-	vector<string> vec(styles.size());
 
 	string const author = getAbbreviatedAuthor(map, key);
 	string const year   = getYear(map, key);
+	if (author.empty() || year.empty())
+		return vector<string>();
 
+	vector<string> vec(styles.size());
 	for (vector<string>::size_type i = 0; i != vec.size(); ++i) {
 		string str;
 
@@ -577,25 +608,24 @@ getAuthorYearStrings(string const & key,
 		    InfoMap const & map, vector<CiteStyle> const & styles)
 {
 	if (map.empty()) {
-		vector<string> vec(1);
-		vec[0] = _("No database");
-		return vec;
+		return vector<string>();
 	}
-
-	vector<string> vec(styles.size());
 
 	string const author = getAbbreviatedAuthor(map, key);
 	string const year   = getYear(map, key);
+	if (author.empty() || year.empty())
+		return vector<string>();
 
+	vector<string> vec(styles.size());
 	for (vector<string>::size_type i = 0; i != vec.size(); ++i) {
 		string str;
 
 		switch (styles[i]) {
+		case CITE:
 		case CITET:
 			str = author + " (" + year + ")";
 			break;
 
-		case CITE:
 		case CITEP:
 			str = "(" + author + ", " + year + ")";
 			break;

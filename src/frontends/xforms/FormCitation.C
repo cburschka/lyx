@@ -53,11 +53,17 @@ void fillChoice(FD_form_citation * dialog, vector<string> vec)
 		return;
 
 	// They will be changed. Proceed
-	string const str = " " + getStringFromVector(vec, " | ") + " ";
-
+	string str = " ";
+	if (!vec.empty())
+		str += getStringFromVector(vec, " | ") + " ";
+	
 	fl_clear_choice(dialog->choice_style);
 	fl_addto_choice(dialog->choice_style, str.c_str());
 
+	setEnabled(dialog->choice_style, !vec.empty());
+	if (vec.empty())
+		return;
+		
 	// The width of the choice varies with the contents.
 	// Ensure that it is centred in the frame.
 
@@ -114,15 +120,20 @@ FormCitation::FormCitation(ControlCitation & c)
 
 void FormCitation::apply()
 {
-	vector<biblio::CiteStyle> const & styles =
-		ControlCitation::getCiteStyles();
+	string command = "cite";
+	if (dialog_->choice_style->active != 0) {
+		vector<biblio::CiteStyle> const & styles =
+			ControlCitation::getCiteStyles();
 
-	int const choice = fl_get_choice(dialog_->choice_style) - 1;
-	bool const full  = fl_get_button(dialog_->check_full_author_list);
-	bool const force = fl_get_button(dialog_->check_force_uppercase);
+		int const choice =
+			fl_get_choice(dialog_->choice_style) - 1;
+		bool const full  =
+			fl_get_button(dialog_->check_full_author_list);
+		bool const force =
+			fl_get_button(dialog_->check_force_uppercase);
 
-	string const command =
-		biblio::getCiteCommand(styles[choice], full, force);
+		command = biblio::getCiteCommand(styles[choice], full, force);
+	}
 
 	controller().params().setCmdName(command);
 	controller().params().setContents(getStringFromVector(citekeys));
