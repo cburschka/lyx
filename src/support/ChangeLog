@@ -1,5 +1,15 @@
 2003-09-03  Angus Leeming  <leeming@lyx.org>
 
+	* filename.[Ch] (FileName): new c-tor takes abs_filename arg.
+	(mangledFilename): new function, returning a mangled version of the
+	absolute file name, suitable for use in the temp dir when, for example,
+	converting an image file to another format.
+
+	* filetools.[Ch] (copyFileToDir): removed.
+	(compare_timestamps): new function.
+
+2003-09-03  Angus Leeming  <leeming@lyx.org>
+
 	* translator.h: Assert is in namespace lyx::support...
 
 2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
@@ -22,7 +32,7 @@
 
 2003-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* Makefile.am: contidionalize USE_COMPRESSION
+	* Makefile.am: conditionalize USE_COMPRESSION.
 
 2003-07-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

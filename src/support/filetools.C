@@ -1134,10 +1134,18 @@ bool zippedFile(string const & name)
 }
 
 
+string const unzippedFileName(string const & zipped_file)
+{
+	string const ext = GetExtension(zipped_file);
+	if (ext == "gz" || ext == "z" || ext == "Z")
+		return ChangeExtension(zipped_file, string());
+	return "unzipped_" + zipped_file;
+}
+
+
 string const unzipFile(string const & zipped_file)
 {
-	string const file = ChangeExtension(zipped_file, string());
-	string  const tempfile = tempName(string(), file);
+	string  const tempfile = unzippedFileName(zipped_file);
 	// Run gunzip
 	string const command = "gunzip -c " + zipped_file + " > " + tempfile;
 	Systemcall one;
@@ -1333,43 +1341,29 @@ string const readBB_from_PSFile(string const & file)
 }
 
 
-string const copyFileToDir(string const & path, string const & file_in)
+int compare_timestamps(string const & file1, string const & file2)
 {
-	Assert(AbsolutePath(path));
-
-	// First, make the file path relative to path.
-	string file_out = MakeRelPath(path, NormalizePath(file_in));
-	file_out = os::slashify_path(file_out);
-
-	// Now generate a unique filename.
-	// Remove the extension.
-	file_out = ChangeExtension(file_out, string());
-	// Replace '/' in the file name with '_'
-	file_out = subst(file_out, "/", "_");
-	// Replace '.' in the file name with '_'
-	file_out = subst(file_out, ".", "_");
-	// Append a unique ID
-// 	static int id;
-// 	file_out += '_' + tostr(id++);
-	// Add the extension back on
-	file_out = ChangeExtension(file_out, GetExtension(file_in));
-	// Put this file in the buffer's temp dir
-	file_out = MakeAbsPath(file_out, path);
+	Assert(AbsolutePath(file1) && AbsolutePath(file2));
 
 	// If the original is newer than the copy, then copy the original
 	// to the new directory.
-	FileInfo fi(file_in);
-	FileInfo fi2(file_out);
+	FileInfo f1(file1);
+	FileInfo f2(file2);
 
-	bool success = true;
-	if (fi.exist()) {
-		if (!fi2.exist() ||
-		    difftime(fi.getModificationTime(),
-			     fi2.getModificationTime()) >= 0)
-			success = copy(file_in, file_out);
+	int cmp = 0;
+	if (f1.exist() && f2.exist()) {
+		double const tmp = difftime(f1.getModificationTime(),
+					    f2.getModificationTime());
+		if (tmp != 0)
+			cmp = tmp > 0 ? 1 : -1;
+
+	} else if (f1.exist()) {
+		cmp = 1;
+	} else if (f2.exist()) {
+		cmp = -1;
 	}
 
-	return success ? file_out : string();
+	return cmp;
 }
 
 } //namespace support

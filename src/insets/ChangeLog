@@ -1,5 +1,11 @@
 2003-09-03  Angus Leeming  <leeming@lyx.org>
 
+	* insetexternal.C (updateExternal):
+	* insetgraphics.C (prepareFile): Fix the conversion when exporting to
+	latex.
+
+2003-09-03  Angus Leeming  <leeming@lyx.org>
+
 	* insetexternal.C: don't bring namespace lyx::support into the global
 	namespace.
 

@@ -74,6 +74,7 @@ TODO
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
 
+#include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/lyxalgo.h" // lyx::count
 #include "support/lyxlib.h" // float_equal
@@ -81,11 +82,13 @@ TODO
 #include "support/systemcall.h"
 
 #include <boost/bind.hpp>
+#include <boost/tuple/tuple.hpp>
 
 #include <algorithm> // For the std::max
 
 // set by Exporters
 
+namespace support = lyx::support;
 using namespace lyx::support;
 
 using std::ostream;
@@ -328,14 +331,79 @@ string const InsetGraphics::createLatexOptions() const
 }
 
 
+namespace {
+
+enum CopyStatus {
+	SUCCESS,
+	FAILURE,
+	IDENTICAL_PATHS,
+	IDENTICAL_CONTENTS
+};
+
+
+std::pair<CopyStatus, string> const
+copyToDirIfNeeded(string const & file_in, string const & dir)
+{
+	using support::rtrim;
+
+	support::Assert(AbsolutePath(file_in));
+
+	string const only_path = support::OnlyPath(file_in);
+	if (rtrim(support::OnlyPath(file_in) , "/") == rtrim(dir, "/"))
+		return std::make_pair(IDENTICAL_PATHS, file_in);
+
+	string mangled;
+	if (support::zippedFile(file_in)) {
+		string const ext = GetExtension(file_in);
+		string const unzipped = support::unzippedFileName(file_in);
+		mangled = FileName(unzipped).mangledFilename();
+		mangled += "." + ext;
+	} else
+		mangled = FileName(file_in).mangledFilename();
+
+	string const file_out = support::MakeAbsPath(mangled, dir);
+	
+	unsigned long const checksum_in  = support::sum(file_in);
+	unsigned long const checksum_out = support::sum(file_out);
+
+	if (checksum_in == checksum_out)
+		// Nothing to do...
+		return std::make_pair(IDENTICAL_CONTENTS, file_out);
+
+	bool const success = support::copy(file_in, file_out);
+	if (!success) {
+		lyxerr[Debug::GRAPHICS]
+			<< support::bformat(_("Could not copy the file\n%1$s\n"
+					      "into the temporary directory."),
+					    file_in)
+			<< std::endl;
+	}
+
+	CopyStatus status = success ? SUCCESS : FAILURE;
+	return std::make_pair(status, file_out);
+}
+
+
+string const stripExtensionIfPossible(string const & file, string const & to)
+{
+	// No conversion is needed. LaTeX can handle the graphic file as is.
+	// This is true even if the orig_file is compressed.
+	if (formats.getFormat(to)->extension() == GetExtension(file))
+		return RemoveExtension(file);
+	return file;
+}
+
+} // namespace anon
+
+
 string const InsetGraphics::prepareFile(Buffer const & buf,
 					LatexRunParams const & runparams) const
 {
-	// LaTeX can cope if the graphics file doesn't exist, so just return the
-	// filename.
 	string orig_file = params().filename.absFilename();
 	string const rel_file = params().filename.relFilename(buf.filePath());
 
+	// LaTeX can cope if the graphics file doesn't exist, so just return the
+	// filename.
 	if (!IsFileReadable(orig_file)) {
 		lyxerr[Debug::GRAPHICS]
 			<< "InsetGraphics::prepareFile\n"
@@ -343,11 +411,11 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		return rel_file;
 	}
 
-	bool const zipped = zippedFile(orig_file);
-
 	// If the file is compressed and we have specified that it
 	// should not be uncompressed, then just return its name and
 	// let LaTeX do the rest!
+	bool const zipped = params().filename.isZipped();
+
 	if (zipped && params().noUnzip) {
 		lyxerr[Debug::GRAPHICS]
 			<< "\tpass zipped file to LaTeX but with full path.\n";
@@ -361,95 +429,85 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	string temp_file = orig_file;
 
 	if (zipped) {
-		// Uncompress the file if necessary.
-		// If it has been uncompressed in a previous call to
-		// prepareFile, do nothing.
-		temp_file = MakeAbsPath(OnlyFilename(temp_file), buf.tmppath);
-		lyxerr[Debug::GRAPHICS]
-			<< "\ttemp_file: " << temp_file << endl;
-		if (graphic_->hasFileChanged() || !IsFileReadable(temp_file)) {
-			bool const success = copy(orig_file, temp_file);
-			lyxerr[Debug::GRAPHICS]
-				<< "\tCopying zipped file from "
-				<< orig_file << " to " << temp_file
-				<< (success ? " succeeded\n" : " failed\n");
-		} else
-			lyxerr[Debug::GRAPHICS]
-				<< "\tzipped file " << temp_file
-				<< " exists! Maybe no tempdir ...\n";
-		orig_file = unzipFile(temp_file);
-		lyxerr[Debug::GRAPHICS]
-			<< "\tunzipped to " << orig_file << endl;
-	}
+		CopyStatus status;
+		boost::tie(status, temp_file) =
+			copyToDirIfNeeded(orig_file, buf.tmppath);
 
+		if (status == FAILURE)
+			return orig_file;
+
+		orig_file = unzippedFileName(temp_file);
+		if (!IsFileReadable(orig_file)) {
+			unzipFile(temp_file);
+			lyxerr[Debug::GRAPHICS]
+				<< "\tunzipped to " << orig_file << endl;
+		}
+	}
+	
 	string const from = getExtFromContents(orig_file);
 	string const to   = findTargetFormat(from, runparams);
 	lyxerr[Debug::GRAPHICS]
 		<< "\t we have: from " << from << " to " << to << '\n';
 
-	if (from == to && !lyxrc.use_tempdir) {
-		// No conversion is needed. LaTeX can handle the
-		// graphic file as is.
-		// This is true even if the orig_file is compressed.
-		if (formats.getFormat(to)->extension() == GetExtension(orig_file))
-			return RemoveExtension(orig_file);
-		return orig_file;
-	}
+	if (from == to && !lyxrc.use_tempdir)
+		return stripExtensionIfPossible(orig_file, to);
 
 	// We're going to be running the exported buffer through the LaTeX
 	// compiler, so must ensure that LaTeX can cope with the graphics
 	// file format.
 
-	// Perform all these manipulations on a temporary file if possible.
-	// If we are not using a temp dir, then temp_file contains the
-	// original file.
-	// to allow files with the same name in different dirs
-	// we manipulate the original file "any.dir/file.ext"
-	// to "any_dir_file.ext"! changing the dots in the
-	// dirname is important for the use of ChangeExtension
 	lyxerr[Debug::GRAPHICS]
 		<< "\tthe orig file is: " << orig_file << endl;
 
+	bool conversion_needed = true;
 	if (lyxrc.use_tempdir) {
-		temp_file = copyFileToDir(buf.tmppath, orig_file);
-		if (temp_file.empty()) {
-			string str = bformat(_("Could not copy the file\n%1$s\n"
-					       "into the temporary directory."),
-					     orig_file);
-			Alert::error(_("Graphics display failed"), str);
-			return orig_file;
-		}
+		CopyStatus status;
+		boost::tie(status, temp_file) =
+			copyToDirIfNeeded(orig_file, buf.tmppath);
 
-		if (from == to) {
-			// No conversion is needed. LaTeX can handle the
-			// graphic file as is.
-			if (formats.getFormat(to)->extension() == GetExtension(orig_file))
-				return RemoveExtension(temp_file);
-			return temp_file;
-		}
+		if (status == FAILURE)
+			return orig_file;
+		else if (status == IDENTICAL_CONTENTS)
+			conversion_needed = false;
 	}
 
-	string const outfile_base = RemoveExtension(temp_file);
+	if (from == to)
+		return stripExtensionIfPossible(temp_file, to);
+
+	string const to_file_base = RemoveExtension(temp_file);
+	string const to_file = ChangeExtension(to_file_base, to);
+
+	// Do we need to perform the conversion?
+	// Yes if to_file does not exist or if temp_file is newer than to_file
+	if (!conversion_needed ||
+	    support::compare_timestamps(temp_file, to_file) < 0) {
+		lyxerr[Debug::GRAPHICS]
+			<< bformat(_("No conversion of %1$s is needed after all"),
+				   rel_file)
+			<< std::endl;
+		return to_file_base;
+	}
+
 	lyxerr[Debug::GRAPHICS]
 		<< "\tThe original file is " << orig_file << "\n"
 		<< "\tA copy has been made and convert is to be called with:\n"
 		<< "\tfile to convert = " << temp_file << '\n'
-		<< "\toutfile_base = " << outfile_base << '\n'
+		<< "\tto_file_base = " << to_file_base << '\n'
 		<< "\t from " << from << " to " << to << '\n';
 
 	// if no special converter defined, than we take the default one
 	// from ImageMagic: convert from:inname.from to:outname.to
-	if (!converters.convert(&buf, temp_file, outfile_base, from, to)) {
+	if (!converters.convert(&buf, temp_file, to_file_base, from, to)) {
 		string const command =
 			"sh " + LibFileSearch("scripts", "convertDefault.sh") +
 				' ' + from + ':' + temp_file + ' ' +
-				to + ':' + outfile_base + '.' + to;
+				to + ':' + to_file_base + '.' + to;
 		lyxerr[Debug::GRAPHICS]
 			<< "No converter defined! I use convertDefault.sh:\n\t"
 			<< command << endl;
 		Systemcall one;
 		one.startscript(Systemcall::Wait, command);
-		if (!IsFileReadable(ChangeExtension(outfile_base, to))) {
+		if (!IsFileReadable(ChangeExtension(to_file_base, to))) {
 			string str = bformat(_("No information for converting %1$s "
 				"format files to %2$s.\n"
 				"Try defining a convertor in the preferences."), from, to);
@@ -457,7 +515,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 		}
 	}
 
-	return RemoveExtension(temp_file);
+	return to_file_base;
 }
 
 

@@ -22,11 +22,15 @@ namespace support {
 class FileName {
 public:
 	FileName();
+	/** \param filename the file in question. Must have an absolute path.
+	 *  \param save_abs_path how is the file to be output to file?
+	 */
+	FileName(string const & abs_filename, bool save_abs_path = true);
 
 	/** \param filename the file in question. May have either a relative
-	    or an absolute path.
-	    \param buffer_path if \c filename has a relative path, generate
-	    the absolute path using this.
+	 *  or an absolute path.
+	 *  \param buffer_path if \c filename has a relative path, generate
+	 *  the absolute path using this.
 	 */
 	void set(string const & filename, string const & buffer_path);
 
@@ -39,6 +43,16 @@ public:
 	string const relFilename(string const & buffer_path = string()) const;
 	/// \param buf_path if empty, uses `pwd`
 	string const outputFilename(string const & buf_path = string()) const;
+	/** \return a mangled version of the absolute file name,
+	 *  suitable for use in the temp dir when, for example, converting
+	 *  an image file to another format.
+	 */
+	string const mangledFilename() const;
+
+	/// \return true if the file is compressed.
+	bool isZipped() const;
+	/// \return the absolute file name without its .gz, .z, .Z extension
+	string const unzippedFilename() const;
 
 private:
 	string name_;

@@ -518,28 +518,33 @@ void InsetExternal::updateExternal(string const & format,
 
 	if (external_in_tmpdir && !from_file.empty()) {
 		// We are running stuff through LaTeX
-		from_file = support::copyFileToDir(buf.tmppath, from_file);
-		if (from_file.empty())
+		string const temp_file =
+			support::MakeAbsPath(params_.filename.mangledFilename(),
+					     buf.tmppath);
+		unsigned long const from_checksum = support::sum(from_file);
+		unsigned long const temp_checksum = support::sum(temp_file);
+
+		// Nothing to do...
+		if (from_checksum == temp_checksum)
 			return;
+
+		// Cannot proceed...
+		if (!support::copy(from_file, temp_file))
+ 			return;
+		from_file = temp_file;
 	}
 
 	string const to_file = doSubstitution(params_, buf,
 					      outputFormat.updateResult);
+	string const abs_to_file = support::MakeAbsPath(to_file, buf.filePath());
 
-	support::FileInfo fi(from_file);
-	string abs_to_file = to_file;
-	if (!support::AbsolutePath(to_file))
-		abs_to_file = support::MakeAbsPath(to_file,
-						   support::OnlyPath(from_file));
-	support::FileInfo fi2(abs_to_file);
-	if (fi2.exist() && fi.exist() &&
-	    difftime(fi2.getModificationTime(),
-		     fi.getModificationTime()) >= 0) {
-	} else {
-		string const to_filebase = support::ChangeExtension(to_file, string());
-		converters.convert(&buf, from_file, to_filebase,
-				   from_format, to_format);
-	}
+	// Do we need to perform the conversion?
+	// Yes if to_file does not exist or if from_file is newer than to_file
+	if (support::compare_timestamps(from_file, abs_to_file) < 0)
+		return;
+	
+	string const to_filebase = support::ChangeExtension(to_file, string());
+	converters.convert(&buf, from_file, to_filebase, from_format, to_format);
 }
 
 

@@ -13,6 +13,8 @@
 
 #include "filename.h"
 #include "support/filetools.h"
+#include "lstrings.h"
+#include "LAssert.h"
 
 
 namespace lyx {
@@ -22,6 +24,13 @@ namespace support {
 FileName::FileName()
 	: save_abs_path_(true)
 {}
+
+
+FileName::FileName(string const & abs_filename, bool save_abs)
+	: name_(abs_filename), save_abs_path_(save_abs)
+{
+	Assert(AbsolutePath(name_));
+}
 
 
 void FileName::set(string const & name, string const & buffer_path)
@@ -49,6 +58,32 @@ string const FileName::outputFilename(string const & path) const
 }
 
 
+string const FileName::mangledFilename() const
+{
+	string mname = os::slashify_path(name_);
+	// Remove the extension.
+	mname = ChangeExtension(name_, string());
+	// Replace '/' in the file name with '_'
+	mname = subst(mname, "/", "_");
+	// Replace '.' in the file name with '_'
+	mname = subst(mname, ".", "_");
+	// Add the extension back on
+	return ChangeExtension(mname, GetExtension(name_));
+}
+
+
+bool FileName::isZipped() const
+{
+	return zippedFile(name_);
+}
+
+
+string const FileName::unzippedFilename() const
+{
+	return unzippedFileName(name_);
+}
+
+
 bool operator==(FileName const & lhs, FileName const & rhs)
 {
 	return lhs.absFilename() == rhs.absFilename() &&
@@ -61,5 +96,5 @@ bool operator!=(FileName const & lhs, FileName const & rhs)
 	return !(lhs == rhs);
 }
 
-} //namespace support
+} // namespace support
 } // namespace lyx

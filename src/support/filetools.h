@@ -143,6 +143,9 @@ string const getExtFromContents(string const & name);
 /// check for zipped file
 bool zippedFile(string const & name);
 
+/// \return the name that LyX will give to the unzipped file.
+string const unzippedFileName(string const & zipped_file);
+
 /// unzip a file
 string const unzipFile(string const & zipped_file);
 
@@ -210,14 +213,14 @@ void removeAutosaveFile(string const & filename);
 /// read the BoundingBox entry from a ps/eps/pdf-file
 string const readBB_from_PSFile(string const & file);
 
-/** Copy \c file to directory \c path. The file name is manipulated
-    so that eg some/path/to/file becomes some_path_to_file.
-    \param path where to put the file
-    \param file the file that is copied
-    \returns this file name if the file is copied successfully, else
-    \returns an empty string.
+/** \param file1, file2 the two files to be compared. Must have absolute paths.
+ *  \returns 1 if \c file1 has a more recent timestamp than \c file2,
+ *           0 if their timestamps are the same,
+ *          -1 if \c file2 has a more recent timestamp than \c file1.
+ *  If one of the files does not exist, the return value indicates the file
+ *  which does exist. Eg, if \c file1 exists but \c file2 does not, return 1.
  */
-string const copyFileToDir(string const & path, string const & file);
+int compare_timestamps(string const & file1, string const & file2);
 
 typedef std::pair<int, string> cmd_ret;
 
