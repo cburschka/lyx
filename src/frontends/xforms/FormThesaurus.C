@@ -37,6 +37,12 @@ FormThesaurus::FormThesaurus(ControlThesaurus & c)
 void FormThesaurus::build()
 {
 	dialog_.reset(build_thesaurus());
+
+	fl_set_input_return(dialog_->input_entry,   FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_replace, FL_RETURN_CHANGED);
+
+	setPrehandler(dialog_->input_entry);
+	setPrehandler(dialog_->input_replace);
  
 	// Manage the ok, apply and cancel/close buttons
 	bc().setCancel(dialog_->button_close);

@@ -9,7 +9,7 @@
 /* A common interface for posting feedback messages to a message widget in
  * xforms.
  * Derive FormBase and FormBaseDeprecated from it, so daughter classes of
- * either can interface tooltips in the same way.
+ * either can use the same interface.
  */
 
 #include <config.h>

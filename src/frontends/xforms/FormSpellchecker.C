@@ -35,6 +35,9 @@ void FormSpellchecker::build()
 	fl_set_browser_dblclick_callback(dialog_->browser,
 					 C_FormBaseInputCB, 2);
 
+	fl_set_input_return(dialog_->input, FL_RETURN_CHANGED);
+	setPrehandler(dialog_->input);
+
 	// Manage the buttons
 	bc().setCancel(dialog_->done);
 	bc().addReadOnly(dialog_->replace);

@@ -33,6 +33,9 @@ void FormBibitem::build()
 	fl_set_input_return(dialog_->key,   FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->label, FL_RETURN_CHANGED);
 
+	setPrehandler(dialog_->key);
+	setPrehandler(dialog_->label);
+
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setCancel(dialog_->button_cancel);

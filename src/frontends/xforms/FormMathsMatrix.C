@@ -75,6 +75,7 @@ void FormMathsMatrix::build()
 	dialog_->input_halign->u_vdata = this;
 	fl_set_input_filter(dialog_->input_halign,
 			    C_FormMathsMatrixAlignFilter);
+	setPrehandler(dialog_->input_halign);
 
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);

@@ -1,5 +1,30 @@
 2002-03-09  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* FeedbackController.C: improve a comment.
+
+	* FormFiledialog.C: whitespace change.
+
+	* FormBibitem.C (build):
+	* FormBibtex.C (build):
+	* FormCitation.C (build):
+	* FormDocument.C (build):
+	* FormExternal.C (build):
+	* FormGraphics.C (build):
+	* FormInclude.C (build):
+	* FormIndex.C (build):
+	* FormMathsMatrix.C (build):
+	* FormMinipage.C (build):
+	* FormParagraph.C (build):
+	* FormPrint.C (build):
+	* FormRef.C (build):
+	* FormSendto.C (build):
+	* FormSpellchecker.C (build):
+	* FormTabular.C (build):
+	* FormThesaurus.C (build):
+	* FormUrl.C (build): invoke setPrehandler for all FL_INPUT objects.
+	Means that pasting with the middle mouse button will activate the
+	Ok, Apply buttons.
+
 	* FeedbackController.C (MessageCB): fix crash by removing
 	Assert(message_widget_) and returning silently in this case.
 	Can happen quite justifiably.

@@ -150,6 +150,10 @@ void FormCitation::build()
 	fl_set_button(dialog_->button_search_case, 0);
 	fl_set_button(dialog_->button_search_type, 0);
 
+	setPrehandler(dialog_->input_search);
+	setPrehandler(dialog_->input_before);
+	setPrehandler(dialog_->input_after);
+
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);

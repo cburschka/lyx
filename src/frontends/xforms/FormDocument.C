@@ -121,6 +121,15 @@ void FormDocument::build()
 	fl_set_input_return(paper_->input_head_sep,      FL_RETURN_CHANGED);
 	fl_set_input_return(paper_->input_foot_skip,     FL_RETURN_CHANGED);
 
+	setPrehandler(paper_->input_custom_width);
+	setPrehandler(paper_->input_custom_height);
+	setPrehandler(paper_->input_top_margin);
+	setPrehandler(paper_->input_bottom_margin);
+	setPrehandler(paper_->input_inner_margin);
+	setPrehandler(paper_->input_outer_margin);
+	setPrehandler(paper_->input_head_height);
+	setPrehandler(paper_->input_head_sep);
+	setPrehandler(paper_->input_foot_skip);
 
 	// Create the contents of the unit choices
 	// Don't include the "%" terms...
@@ -200,6 +209,10 @@ void FormDocument::build()
 	fl_set_input_return(class_->input_doc_skip, FL_RETURN_CHANGED);
 	fl_set_input_return(class_->input_doc_spacing, FL_RETURN_CHANGED);
 
+	setPrehandler(class_->input_doc_extra);
+	setPrehandler(class_->input_doc_skip);
+	setPrehandler(class_->input_doc_spacing);
+	
 	// Set input filters on doc spacing to make it accept only
 	// unsigned numbers.
 	fl_set_input_filter(class_->input_doc_spacing, fl_unsigned_float_filter);
@@ -254,6 +267,8 @@ void FormDocument::build()
 	// the document options form
 	options_.reset(build_doc_options());
 	fl_set_input_return(options_->input_float_placement, FL_RETURN_CHANGED);
+	setPrehandler(options_->input_float_placement);
+
 	fl_set_counter_bounds(options_->slider_secnumdepth,-2,5);
 	fl_set_counter_bounds(options_->slider_tocdepth,-1,5);
 	fl_set_counter_step(options_->slider_secnumdepth,1,1);
@@ -282,6 +297,7 @@ void FormDocument::build()
 			  " normal | large | Large | LARGE | huge | Huge"));
 	fl_set_choice(bullets_->choice_bullet_size, 1);
 	fl_set_input_return(bullets_->input_bullet_latex, FL_RETURN_CHANGED);
+	setPrehandler(bullets_->input_bullet_latex);
 	fl_set_input_maxchars(bullets_->input_bullet_latex, 80);
 
 	bc().addReadOnly (bullets_->bmtable_bullet_panel);

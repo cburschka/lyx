@@ -33,6 +33,7 @@ void FormMinipage::build()
 	dialog_.reset(build_minipage());
 
 	fl_set_input_return(dialog_->input_width, FL_RETURN_CHANGED);
+	setPrehandler(dialog_->input_width);
 
 	string const choice = getStringFromVector(getLatexUnits(), "|");
 	fl_addto_choice(dialog_->choice_width_units, subst(choice, "%", "%%").c_str());

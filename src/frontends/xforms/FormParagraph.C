@@ -126,6 +126,11 @@ void FormParagraph::build()
     fl_set_input_return(dialog_->input_linespacing, FL_RETURN_CHANGED);
     fl_set_input_filter(dialog_->input_linespacing, fl_unsigned_float_filter);
 
+    setPrehandler(dialog_->input_space_above);
+    setPrehandler(dialog_->input_space_below);
+    setPrehandler(dialog_->input_labelwidth);
+    setPrehandler(dialog_->input_linespacing);
+
     // Create the contents of the unit choices
     // Don't include the "%" terms...
 #warning A bit dangerous... (Lgb)

@@ -48,7 +48,12 @@ void FormExternal::build()
 	string const choice =
 	    " " + getStringFromVector(controller().getTemplates(), " | ") + " ";
 	fl_addto_choice(dialog_->choice_template, choice.c_str());
-	fl_set_input_return (dialog_->input_filename, FL_RETURN_CHANGED);
+
+	fl_set_input_return (dialog_->input_filename,  FL_RETURN_CHANGED);
+	fl_set_input_return (dialog_->input_parameters, FL_RETURN_CHANGED);
+
+	setPrehandler(dialog_->input_filename);
+	setPrehandler(dialog_->input_parameters);
 
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);

@@ -75,6 +75,12 @@ void FormPrint::build()
 	fl_set_input_filter(dialog_->input_count,
 			    fl_unsigned_int_filter);
 
+	setPrehandler(dialog_->input_printer);
+	setPrehandler(dialog_->input_file);
+	setPrehandler(dialog_->input_from_page);
+	setPrehandler(dialog_->input_to_page);
+	setPrehandler(dialog_->input_count);
+
 	// what limits (if any) make sense for these?
 	fl_set_input_maxchars(dialog_->input_printer, 255);
 	fl_set_input_maxchars(dialog_->input_file, 255);

@@ -46,7 +46,13 @@ void FormRef::build()
 	// Force the user to use the browser to change refs.
 	fl_deactivate_object(dialog_->input_ref);
 
-       // Manage the ok and cancel/close buttons
+	fl_set_input_return(dialog_->input_name, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_ref,  FL_RETURN_CHANGED);
+
+	setPrehandler(dialog_->input_name);
+	setPrehandler(dialog_->input_ref);
+
+	// Manage the ok and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);

@@ -110,6 +110,10 @@ void FormTabular::updateInset(InsetTabular * inset)
 void FormTabular::build()
 {
 	dialog_.reset(build_tabular());
+
+	setPrehandler(dialog_->input_tabular_column);
+	setPrehandler(dialog_->input_tabular_row);
+
 	tabular_options_.reset(build_tabular_options());
 	column_options_.reset(build_column_options());
 	cell_options_.reset(build_cell_options());
@@ -119,10 +123,17 @@ void FormTabular::build()
 	                    FL_RETURN_END);
 	fl_set_input_return(column_options_->input_special_alignment,
 	                    FL_RETURN_END);
+
+	setPrehandler(column_options_->input_column_width);
+	setPrehandler(column_options_->input_special_alignment);
+	
 	fl_set_input_return(cell_options_->input_mcolumn_width,
 	                    FL_RETURN_END);
 	fl_set_input_return(cell_options_->input_special_multialign,
 	                    FL_RETURN_END);
+
+	setPrehandler(cell_options_->input_mcolumn_width);
+	setPrehandler(cell_options_->input_special_multialign);
 
 	fl_addto_tabfolder(dialog_->tabFolder, _("Tabular"),
 	                   tabular_options_->form);

@@ -35,6 +35,7 @@ void FormInclude::build()
 	dialog_.reset(build_include());
 
 	fl_set_input_return(dialog_->input_filename, FL_RETURN_CHANGED);
+	setPrehandler(dialog_->input_filename);
 
 	// Manage the ok and cancel buttons
 	bc().setOK(dialog_->button_ok);

@@ -444,7 +444,7 @@ FileDialog::Private::Private()
 				       C_LyXFileDlg_FileDlgCB, 12);
 		fl_set_object_callback(pFileDlgForm->User2,
 				       C_LyXFileDlg_FileDlgCB, 13);
-		
+
 		// Make sure pressing the close box doesn't crash LyX. (RvdK)
 		fl_set_form_atclose(pFileDlgForm->form,
 				    C_LyXFileDlg_CancelCB, 0);

@@ -81,6 +81,10 @@ void FormGraphics::build()
 	fl_set_input_maxchars(file_->input_rotate_angle, ROTATE_MAXCHARS);
 	fl_set_input_filter(file_->input_rotate_angle, fl_float_filter);
 
+	setPrehandler(file_->input_filename);
+	setPrehandler(file_->input_subcaption);
+	setPrehandler(file_->input_rotate_angle);
+	
 	string const choice_origin = 
 	    "center|"					// c
 	    "leftTop|leftBottom|leftBaseline|"		// lt lb lB
@@ -101,6 +105,10 @@ void FormGraphics::build()
 	fl_set_input_return (lyxview_->input_lyxheight, FL_RETURN_CHANGED);
 	fl_set_input_return (lyxview_->input_lyxscale, FL_RETURN_CHANGED);
 
+	setPrehandler(lyxview_->input_lyxwidth);
+	setPrehandler(lyxview_->input_lyxheight);
+	setPrehandler(lyxview_->input_lyxscale);
+
 	fl_addto_choice(lyxview_->choice_width_lyxwidth, choice_Length_WithUnit.c_str());
 	fl_addto_choice(lyxview_->choice_width_lyxheight, choice_Length_WithUnit.c_str());
 
@@ -116,6 +124,10 @@ void FormGraphics::build()
 	fl_set_input_return (size_->input_scale, FL_RETURN_CHANGED);
 	fl_set_input_return (size_->input_width, FL_RETURN_CHANGED);
 	fl_set_input_return (size_->input_height, FL_RETURN_CHANGED);
+
+	setPrehandler(size_->input_scale);
+	setPrehandler(size_->input_width);
+	setPrehandler(size_->input_height);
 
 	fl_set_input_maxchars(size_->input_scale, SCALE_MAXDIGITS);
 	fl_set_input_maxchars(size_->input_width, WIDTH_MAXDIGITS);
@@ -141,6 +153,12 @@ void FormGraphics::build()
 	fl_set_input_filter(bbox_->input_bb_x0,  fl_unsigned_float_filter);
 	fl_set_input_filter(bbox_->input_bb_y0,  fl_unsigned_float_filter);
 	fl_set_input_filter(bbox_->input_bb_x1,  fl_unsigned_float_filter);
+	fl_set_input_filter(bbox_->input_bb_y1,  fl_unsigned_float_filter);
+
+	setPrehandler(bbox_->input_bb_x0);
+	setPrehandler(bbox_->input_bb_y0);
+	setPrehandler(bbox_->input_bb_x1);
+	setPrehandler(bbox_->input_bb_y1);
 
 	string const bb_units = "pt|cm|in";
 	fl_addto_choice(bbox_->choice_bb_units, bb_units.c_str());
@@ -151,6 +169,7 @@ void FormGraphics::build()
 	special_.reset(build_special());
 
 	fl_set_input_return (special_->input_special, FL_RETURN_CHANGED);
+	setPrehandler(special_->input_special);
 
 	// add the different tabfolders
 	fl_addto_tabfolder(dialog_->tabFolder, _("File"), file_->form);

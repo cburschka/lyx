@@ -32,6 +32,9 @@ void FormUrl::build()
 	fl_set_input_return(dialog_->name, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->url,  FL_RETURN_CHANGED);
 
+	setPrehandler(dialog_->name);
+	setPrehandler(dialog_->url);
+
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);

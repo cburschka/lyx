@@ -45,6 +45,9 @@ void FormBibtex::build()
 	fl_set_input_return(dialog_->database, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->style, FL_RETURN_CHANGED);
 
+	setPrehandler(dialog_->database);
+	setPrehandler(dialog_->style);
+
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setCancel(dialog_->button_cancel);

@@ -35,6 +35,7 @@ void FormSendto::build()
 	dialog_.reset(build_sendto());
 
 	fl_set_input_return(dialog_->input_command, FL_RETURN_CHANGED);
+	setPrehandler(dialog_->input_command);
 
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
