@@ -882,6 +882,12 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		view()->hideCursor();
 
 #if 1
+	if (view()->cursor().innerInset() != view()->theLockingInset()) {
+		lyxerr << "### CURSOR OUT OF SYNC: tli: "
+			<< view()->theLockingInset()
+			<< "\ncursor: " << view()->cursor() << endl; 
+	}
+
 	if (0) {
 		DispatchResult result =
 			view()->cursor().dispatch(FuncRequest(func, view()));

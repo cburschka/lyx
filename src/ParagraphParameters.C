@@ -29,7 +29,6 @@
 #include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
-
 #include "support/std_sstream.h"
 
 using lyx::support::rtrim;

@@ -50,56 +50,61 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cursor)
 DispatchResult LCursor::dispatch(FuncRequest const & cmd)
 {
 	for (int i = data_.size() - 1; i >= 0; --i) {
-		CursorItem & citem = data_[i];
-
+		CursorItem const & citem = data_[i];
 		lyxerr << "trying to dispatch to inset" << citem.inset_ << endl;
 		DispatchResult res = citem.inset_->dispatch(cmd);
-		lyxerr << "   result: " << res.val() << endl;
-
-		switch (res.val()) {
-			case FINISHED:
-				pop();
-				return DispatchResult(true, true);
-
-			case FINISHED_RIGHT: {
-				pop();
-				//InsetText * inset = static_cast<InsetText *>(innerInset());
-				//if (inset)
-				//	inset->moveRightIntern(bv_, false, false);
-				//else
-				//	bv_->text->cursorRight(bv_);
-				innerText()->cursorRight(bv_);
-				return DispatchResult(true);
-			}
-
-			case FINISHED_UP: {
-				pop();
-				//InsetText * inset = static_cast<InsetText *>(inset());
-				//if (inset)
-				//	result = inset->moveUp(bv);
-				return DispatchResult(true);
-			}
-
-			case FINISHED_DOWN: {
-				pop();
-				//InsetText * inset = static_cast<InsetText *>(inset());
-				//if (inset)
-				// 	result = inset->moveDown(bv);
-				return DispatchResult(true);
-			}
-
-			default:
-				break;
-		}
-
-		lyxerr << "# unhandled result: " << res.val() << endl;
+		if (handleResult(res))
+			return DispatchResult(true, true);
 	}
-
 	lyxerr << "trying to dispatch to main text " << bv_->text << endl;
 	DispatchResult res = bv_->text->dispatch(cmd);
 	lyxerr << "   result: " << res.val() << endl;
 	return res;
 }
+
+
+bool LCursor::handleResult(DispatchResult const & res)
+{
+	lyxerr << "LCursor::handleResult: " << res.val() << endl;
+	switch (res.val()) {
+		case FINISHED:
+			pop();
+			return true;
+
+		case FINISHED_RIGHT: {
+			pop();
+			//InsetText * inset = static_cast<InsetText *>(innerInset());
+			//if (inset)
+			//	inset->moveRightIntern(bv_, false, false);
+			//else
+			//	bv_->text->cursorRight(bv_);
+			innerText()->cursorRight(bv_);
+			return true;
+		}
+
+		case FINISHED_UP: {
+			pop();
+			//InsetText * inset = static_cast<InsetText *>(inset());
+			//if (inset)
+			//	result = inset->moveUp(bv);
+			return true;
+		}
+
+		case FINISHED_DOWN: {
+			pop();
+			//InsetText * inset = static_cast<InsetText *>(inset());
+			//if (inset)
+			// 	result = inset->moveDown(bv);
+			return true;
+		}
+
+		default:
+			break;
+			lyxerr << "# unhandled result: " << res.val() << endl;
+			return false;
+	}
+}
+
 
 
 LCursor::LCursor(BufferView * bv)

@@ -57,8 +57,10 @@ class LCursor {
 public:
 	///
 	LCursor(BufferView * bv);
-	///
+	/// dispatch from innermost inset upwards
 	DispatchResult dispatch(FuncRequest const & cmd);
+	/// adjust cursor acording to result
+	bool handleResult(DispatchResult const & res);
 	///
 	void push(InsetOld *, LyXText *);
 	///
