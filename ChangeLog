@@ -1,3 +1,15 @@
+2000-03-02  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (WriteParagraphData): Using the
+ 	par->writeFile() function for writing paragraph-data.
+	(Read): Using buffer->parseSingleLyXformat2Token()-function
+	for parsing paragraph data!
+
+	* src/buffer.C (readLyXformat2): removed all parse data and using
+	the new parseSingleLyXformat2Token()-function.
+	(parseSingleLyXformat2Token): added this function to parse (read)
+	lyx-file-format (this is called also from text-insets now!)
+
 2000-03-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/paragraph.C (BeginningOfMainBody): initialize previous_char

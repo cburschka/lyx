@@ -131,6 +131,14 @@ public:
 	    If par is given, the file is inserted. */
 	bool readLyXformat2(LyXLex &, LyXParagraph * par = 0);
 
+	/* This parses a single LyXformat-Token */
+	bool parseSingleLyXformat2Token(LyXLex &, LyXParagraph *& par,
+					LyXParagraph *& return_par,
+					const string & token, int & pos,
+					char & depth, LyXFont &,
+					LyXParagraph::footnote_flag &,
+					LyXParagraph::footnote_kind &);
+
 	/** Save file
 	    Takes care of auto-save files and backup file if requested.
 	    Returns true if the save is successful, false otherwise.

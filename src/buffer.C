@@ -210,12 +210,11 @@ void Buffer::fileName(string const & newfile)
 // if par = 0 normal behavior
 // else insert behavior
 // Returns false if "\the_end" is not read for formats >= 2.13. (Asger)
+#define USE_PARSE_FUNCTION 1
 bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 {
 	string tmptok;
-	Inset * inset = 0;
 	int pos = 0;
-	int tmpret, tmpret2;
 	char depth = 0; // signed or unsigned?
 	LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
 	LyXParagraph::footnote_kind footnotekind = LyXParagraph::FOOTNOTE;
@@ -260,693 +259,10 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 
 		if (token.empty())
 			continue;
-		else if (token[0] != '\\') {
-			int n = token.length();
-			for (int i = 0; i < n; ++i) {
-				par->InsertChar(pos, token[i]);
-				par->SetFont(pos, font);
-				++pos;
-			}
-		} else if (token == "\\i") {
-			inset = new InsetLatexAccent;
-			inset->Read(lex);
-			par->InsertChar(pos, LyXParagraph::META_INSET); 
-			
-			par->InsertInset(pos, inset);
-			par->SetFont(pos, font);
-			++pos;
-		} else if (token == "\\layout") {
-			if (!return_par) 
-				return_par = par;
-			else {
-				par->text.resize(par->text.size());
-				par = new LyXParagraph(par);
-			}
-			pos = 0;
-			lex.EatLine();
-			string layoutname = lex.GetString();
-			pair<bool, LyXTextClass::LayoutList::size_type> pp
-				= textclasslist.NumberOfLayout(params.textclass,
-								layoutname);
-			if (pp.first) {
-				par->layout = pp.second;
-			} else { // layout not found
-				// use default layout "Standard" (0)
-				par->layout = 0;
-			}
-			// Test whether the layout is obsolete.
-			LyXLayout const & layout =
-				textclasslist.Style(params.textclass,
-						    par->layout); 
-			if (!layout.obsoleted_by().empty())
-				par->layout = 
-					textclasslist.NumberOfLayout(params.textclass, 
-								layout.obsoleted_by()).second;
-			par->footnoteflag = footnoteflag;
-			par->footnotekind = footnotekind;
-			par->depth = depth;
-			font = LyXFont(LyXFont::ALL_INHERIT);
-		} else if (token == "\\end_float") {
-			if (!return_par) 
-				return_par = par;
-			else {
-				par->text.resize(par->text.size());
-				par = new LyXParagraph(par);
-			}
-			footnotekind = LyXParagraph::FOOTNOTE;
-			footnoteflag = LyXParagraph::NO_FOOTNOTE;
-			pos = 0;
-			lex.EatLine();
-			par->layout = LYX_DUMMY_LAYOUT;
-			font = LyXFont(LyXFont::ALL_INHERIT);
-		} else if (token == "\\begin_float") {
-			tmpret = lex.FindToken(string_footnotekinds);
-			if (tmpret == -1) ++tmpret;
-			if (tmpret != LYX_LAYOUT_DEFAULT) 
-				footnotekind = static_cast<LyXParagraph::footnote_kind>(tmpret); // bad
-			if (footnotekind == LyXParagraph::FOOTNOTE
-			    || footnotekind == LyXParagraph::MARGIN)
-				footnoteflag = LyXParagraph::CLOSED_FOOTNOTE;
-			else 
-				footnoteflag = LyXParagraph::OPEN_FOOTNOTE;
-		} else if (token == "\\begin_deeper") {
-			++depth;
-		} else if (token == "\\end_deeper") {
-			if (!depth) {
-				lex.printError("\\end_deeper: "
-					       "depth is already null");
-			}
-			else
-				--depth;
-		} else if (token == "\\begin_preamble") {
-			params.readPreamble(lex);
-		} else if (token == "\\textclass") {
-			lex.EatLine();
-			pair<bool, LyXTextClassList::size_type> pp = 
-				textclasslist.NumberOfClass(lex.GetString());
-			if (pp.first) {
-				params.textclass = pp.second;
-			} else {
-				lex.printError("Unknown textclass `$$Token'");
-				params.textclass = 0;
-			}
-			if (!textclasslist.Load(params.textclass)) {
-				// if the textclass wasn't loaded properly
-				// we need to either substitute another
-				// or stop loading the file.
-				// I can substitute but I don't see how I can
-				// stop loading... ideas??  ARRae980418
-				WriteAlert(_("Textclass Loading Error!"),
-				           string(_("Can't load textclass ")) +
-					   textclasslist.NameOfClass(params.textclass),
-					   _("-- substituting default"));
-				params.textclass = 0;
-			}
-		} else if (token == "\\options") {
-			lex.EatLine();
-			params.options = lex.GetString();
-		} else if (token == "\\language") {
-			params.readLanguage(lex);    
-		} else if (token == "\\fontencoding") {
-			lex.EatLine();
-		} else if (token == "\\inputencoding") {
-			lex.EatLine();
-			params.inputenc = lex.GetString();
-		} else if (token == "\\graphics") {
-			params.readGraphicsDriver(lex);
-		} else if (token == "\\fontscheme") {
-			lex.EatLine();
-			params.fonts = lex.GetString();
-		} else if (token == "\\noindent") {
-			par->noindent = true;
-		} else if (token == "\\fill_top") {
-			par->added_space_top = VSpace(VSpace::VFILL);
-		} else if (token == "\\fill_bottom") {
-			par->added_space_bottom = VSpace(VSpace::VFILL);
-		} else if (token == "\\line_top") {
-			par->line_top = true;
-		} else if (token == "\\line_bottom") {
-			par->line_bottom = true;
-		} else if (token == "\\pagebreak_top") {
-			par->pagebreak_top = true;
-		} else if (token == "\\pagebreak_bottom") {
-			par->pagebreak_bottom = true;
-		} else if (token == "\\start_of_appendix") {
-			par->start_of_appendix = true;
-		} else if (token == "\\paragraph_separation") {
-			tmpret = lex.FindToken(string_paragraph_separation);
-			if (tmpret == -1) ++tmpret;
-			if (tmpret != LYX_LAYOUT_DEFAULT) 
-				params.paragraph_separation =
-					static_cast<BufferParams::PARSEP>(tmpret);
-		} else if (token == "\\defskip") {
-			lex.nextToken();
-			params.defskip = VSpace(lex.GetString());
-		} else if (token == "\\no_isolatin1") { // obsolete
-			lex.nextToken();
-		} else if (token == "\\no_babel") { // obsolete
-			lex.nextToken();
-		} else if (token == "\\no_epsfig") { // obsolete
-			lex.nextToken();
-		} else if (token == "\\epsfig") { // obsolete
-			// Indeed it is obsolete, but we HAVE to be backwards
-			// compatible until 0.14, because otherwise all figures
-			// in existing documents are irretrivably lost. (Asger)
-			params.readGraphicsDriver(lex);
-		} else if (token == "\\quotes_language") {
-			tmpret = lex.FindToken(string_quotes_language);
-			if (tmpret == -1) ++tmpret;
-			if (tmpret != LYX_LAYOUT_DEFAULT) {
-				InsetQuotes::quote_language tmpl = 
-					InsetQuotes::EnglishQ;
-				switch(tmpret) {
-				case 0:
-					tmpl = InsetQuotes::EnglishQ;
-					break;
-				case 1:
-					tmpl = InsetQuotes::SwedishQ;
-					break;
-				case 2:
-					tmpl = InsetQuotes::GermanQ;
-					break;
-				case 3:
-					tmpl = InsetQuotes::PolishQ;
-					break;
-				case 4:
-					tmpl = InsetQuotes::FrenchQ;
-					break;
-				case 5:
-					tmpl = InsetQuotes::DanishQ;
-					break;	
-				}
-				params.quotes_language = tmpl;
-			}
-		} else if (token == "\\quotes_times") {
-			lex.nextToken();
-			switch(lex.GetInteger()) {
-			case 1: 
-				params.quotes_times = InsetQuotes::SingleQ; 
-				break;
-			case 2: 
-				params.quotes_times = InsetQuotes::DoubleQ; 
-				break;
-			}
-                } else if (token == "\\papersize") {
-                                tmpret = lex.FindToken(string_papersize);
-			if (tmpret == -1)
-                                ++tmpret;
-                        else
-                                params.papersize2 = tmpret;
-                } else if (token == "\\paperpackage") {
-			tmpret = lex.FindToken(string_paperpackages);
-			if (tmpret == -1) {
-                                ++tmpret;
-                                params.paperpackage = BufferParams::PACKAGE_NONE;
-                        } else
-                                params.paperpackage = tmpret;
-		} else if (token == "\\use_geometry") {
-			lex.nextToken();
-			params.use_geometry = lex.GetInteger();
-		} else if (token == "\\use_amsmath") {
-			lex.nextToken();
-			params.use_amsmath = lex.GetInteger();
-		} else if (token == "\\paperorientation") {
-			tmpret = lex.FindToken(string_orientation);
-			if (tmpret == -1) ++tmpret;
-			if (tmpret != LYX_LAYOUT_DEFAULT) 
-				params.orientation = static_cast<BufferParams::PAPER_ORIENTATION>(tmpret);
-		} else if (token == "\\paperwidth") {
-			lex.next();
-			params.paperwidth = lex.GetString();
-		} else if (token == "\\paperheight") {
-			lex.next();
-			params.paperheight = lex.GetString();
-		} else if (token == "\\leftmargin") {
-			lex.next();
-			params.leftmargin = lex.GetString();
-		} else if (token == "\\topmargin") {
-			lex.next();
-			params.topmargin = lex.GetString();
-		} else if (token == "\\rightmargin") {
-			lex.next();
-			params.rightmargin = lex.GetString();
-		} else if (token == "\\bottommargin") {
-			lex.next();
-			params.bottommargin = lex.GetString();
-		} else if (token == "\\headheight") {
-			lex.next();
-			params.headheight = lex.GetString();
-		} else if (token == "\\headsep") {
-			lex.next();
-			params.headsep = lex.GetString();
-		} else if (token == "\\footskip") {
-			lex.next();
-			params.footskip = lex.GetString();
-		} else if (token == "\\paperfontsize") {
-			lex.nextToken();
-			params.fontsize = strip(lex.GetString());
-		} else if (token == "\\papercolumns") {
-			lex.nextToken();
-			params.columns = lex.GetInteger();
-		} else if (token == "\\papersides") {
-			lex.nextToken();
-			switch(lex.GetInteger()) {
-			default:
-			case 1: params.sides = LyXTextClass::OneSide; break;
-			case 2: params.sides = LyXTextClass::TwoSides; break;
-			}
-		} else if (token == "\\paperpagestyle") {
-		        lex.nextToken();
-			params.pagestyle = strip(lex.GetString());
-		} else if (token == "\\bullet") {
-			lex.nextToken();
-			int index = lex.GetInteger();
-			lex.nextToken();
-			int temp_int = lex.GetInteger();
-			params.user_defined_bullets[index].setFont(temp_int);
-			params.temp_bullets[index].setFont(temp_int);
-			lex.nextToken();
-			temp_int = lex.GetInteger();
-			params.user_defined_bullets[index].setCharacter(temp_int);
-			params.temp_bullets[index].setCharacter(temp_int);
-			lex.nextToken();
-			temp_int = lex.GetInteger();
-			params.user_defined_bullets[index].setSize(temp_int);
-			params.temp_bullets[index].setSize(temp_int);
-			lex.nextToken();
-			string temp_str = lex.GetString();
-			if (temp_str != "\\end_bullet") {
-				// this element isn't really necessary for
-				// parsing but is easier for humans
-				// to understand bullets. Put it back and
-				// set a debug message?
-				lex.printError("\\end_bullet expected, got" + temp_str);
-				//how can I put it back?
-			}
-		} else if (token == "\\bulletLaTeX") {
-			lex.nextToken();
-			int index = lex.GetInteger();
-			lex.next();
-			string temp_str = lex.GetString(), sum_str;
-			while (temp_str != "\\end_bullet") {
-				// this loop structure is needed when user
-				// enters an empty string since the first
-				// thing returned will be the \\end_bullet
-				// OR
-				// if the LaTeX entry has spaces. Each element
-				// therefore needs to be read in turn
-				sum_str += temp_str;
-				lex.next();
-				temp_str = lex.GetString();
-			}
-			params.user_defined_bullets[index].setText(sum_str);
-			params.temp_bullets[index].setText(sum_str);
-		} else if (token == "\\secnumdepth") {
-			lex.nextToken();
-			params.secnumdepth = lex.GetInteger();
-		} else if (token == "\\tocdepth") {
-			lex.nextToken();
-			params.tocdepth = lex.GetInteger();
-		} else if (token == "\\baselinestretch") { // obsolete
-			lex.nextToken(); // should not be used directly
-			// anymore.
-			// Will probably keep a kind of support just for
-			// compability.
-			params.spacing.set(Spacing::Other, lex.GetFloat());
-		} else if (token == "\\spacing") {
-			lex.next();
-			string tmp = strip(lex.GetString());
-			if (tmp == "single") {
-				params.spacing.set(Spacing::Single);
-			} else if (tmp == "onehalf") {
-				params.spacing.set(Spacing::Onehalf);
-			} else if (tmp == "double") {
-				params.spacing.set(Spacing::Double);
-			} else if (tmp == "other") {
-				lex.next();
-				params.spacing.set(Spacing::Other,
-						   lex.GetFloat());
-			} else {
-				lex.printError("Unknown spacing token: '$$Token'");
-			}
-		} else if (token == "\\float_placement") {
-			lex.nextToken();
-			params.float_placement = lex.GetString();
-		} else if (token == "\\cursor") { // obsolete
-			// this is obsolete, so we just skip it.
-			lex.nextToken();
-		} else if (token == "\\family") { 
-			lex.next();
-			font.setLyXFamily(lex.GetString());
-		} else if (token == "\\series") {
-			lex.next();
-			font.setLyXSeries(lex.GetString());
-		} else if (token == "\\shape") {
-			lex.next();
-			font.setLyXShape(lex.GetString());
-		} else if (token == "\\size") {
-			lex.next();
-			font.setLyXSize(lex.GetString());
-		} else if (token == "\\latex") {
-			lex.next();
-			string tok = lex.GetString();
-			// This is dirty, but gone with LyX3. (Asger)
-			if (tok == "no_latex")
-				font.setLatex(LyXFont::OFF);
-			else if (tok == "latex")
-				font.setLatex(LyXFont::ON);
-			else if (tok == "default")
-				font.setLatex(LyXFont::INHERIT);
-			else
-				lex.printError("Unknown LaTeX font flag "
-					       "`$$Token'");
-		} else if (token == "\\direction") {
-			lex.next();
-			string tok = lex.GetString();
-			if (tok == "ltr")
-				font.setDirection(LyXFont::LTR_DIR);
-			else if (tok == "rtl")
-				font.setDirection(LyXFont::RTL_DIR);
-			else if (tok == "default")
-				font.setDirection(LyXFont::INHERIT_DIR);
-			else
-				lex.printError("Unknown font flag "
-					       "`$$Token'");
-		} else if (token == "\\emph") {
-			lex.next();
-			font.setEmph(font.setLyXMisc(lex.GetString()));
-		} else if (token == "\\bar") {
-			lex.next();
-			string tok = lex.GetString();
-			// This is dirty, but gone with LyX3. (Asger)
-			if (tok == "under")
-				font.setUnderbar(LyXFont::ON);
-			else if (tok == "no")
-				font.setUnderbar(LyXFont::OFF);
-			else if (tok == "default")
-				font.setUnderbar(LyXFont::INHERIT);
-			else
-				lex.printError("Unknown bar font flag "
-					       "`$$Token'");
-		} else if (token == "\\noun") {
-			lex.next();
-			font.setNoun(font.setLyXMisc(lex.GetString()));
-		} else if (token == "\\color") {
-			lex.next();
-			font.setLyXColor(lex.GetString());
-		} else if (token == "\\align") {
-			tmpret = lex.FindToken(string_align);
-			if (tmpret == -1) ++tmpret;
-			if (tmpret != LYX_LAYOUT_DEFAULT) { // tmpret != 99 ???
-				tmpret2 = 1;
-				for (; tmpret > 0; --tmpret)
-					tmpret2 = tmpret2 * 2;
-				par->align = LyXAlignment(tmpret2);
-			}
-		} else if (token == "\\added_space_top") {
-			lex.nextToken();
-			par->added_space_top = lex.GetString();
-		} else if (token == "\\added_space_bottom") {
-			lex.nextToken();
-			par->added_space_bottom = lex.GetString();
-                } else if (token == "\\pextra_type") {
-                        lex.nextToken();
-                        par->pextra_type = lex.GetInteger();
-                } else if (token == "\\pextra_width") {
-                        lex.nextToken();
-			par->pextra_width = lex.GetString();
-                } else if (token == "\\pextra_widthp") {
-                        lex.nextToken();
-			par->pextra_widthp = lex.GetString();
-                } else if (token == "\\pextra_alignment") {
-                        lex.nextToken();
-                        par->pextra_alignment = lex.GetInteger();
-                } else if (token == "\\pextra_hfill") {
-                        lex.nextToken();
-                        par->pextra_hfill = lex.GetInteger();
-                } else if (token == "\\pextra_start_minipage") {
-                        lex.nextToken();
-                        par->pextra_start_minipage = lex.GetInteger();
-		} else if (token == "\\labelwidthstring") {
-			lex.EatLine();
-			par->labelwidthstring = lex.GetString();
-			/* do not delete this token, it is still needed! */ 
-		} else if (token == "\\end_inset") {
-			/* simple ignore this. The insets do not have
-			 *  to read this */
-			// but insets should read it, it is a part of
-			//the inset isn't it? Lgb.
-		} else if (token == "\\begin_inset") {
-			lex.next();
-			tmptok = lex.GetString();
-			/* test the different insets */ 
-			if (tmptok == "Quotes") {
-				inset = new InsetQuotes;
-				inset->Read(lex);
-				par->InsertChar(pos, LyXParagraph::META_INSET);
-				par->InsertInset(pos, inset);
-				par->SetFont(pos, font);
-				++pos;
-			} else if (tmptok == "\\i") {
-				inset = new InsetLatexAccent;
-				inset->Read(lex);
-				par->InsertChar(pos, LyXParagraph::META_INSET);
-				par->InsertInset(pos, inset);
-				par->SetFont(pos, font);
-				++pos;
-			} else if (tmptok == "FormulaMacro") {
-				inset = new InsetFormulaMacro;
-				inset->Read(lex);
-				par->InsertChar(pos, LyXParagraph::META_INSET);
-				par->InsertInset(pos, inset);
-				par->SetFont(pos, font);
-				++pos;
-			} else if (tmptok == "Formula") {
-				inset = new InsetFormula;
-				inset->Read(lex);
-				par->InsertChar(pos, LyXParagraph::META_INSET);
-				par->InsertInset(pos, inset);
-				par->SetFont(pos, font);
-				++pos;
-			} else if (tmptok == "Figure") {
-				inset = new InsetFig(100, 100, this);
-				inset->Read(lex);
-				par->InsertChar(pos, LyXParagraph::META_INSET);
-				par->InsertInset(pos, inset);
-				par->SetFont(pos, font);
-				++pos;
-			} else if (tmptok == "Info") {
-				inset = new InsetInfo;
-				inset->Read(lex);
-				par->InsertChar(pos, LyXParagraph::META_INSET);
-				par->InsertInset(pos, inset);
-				par->SetFont(pos, font);
-				++pos;
-			} else if (tmptok == "Include") {
-				inset = new InsetInclude(string(), this);
-				inset->Read(lex);
-				par->InsertChar(pos, LyXParagraph::META_INSET);
-				par->InsertInset(pos, inset);
-				par->SetFont(pos, font);
-				++pos;
-			} else if (tmptok == "ERT") {
-				inset = new InsetERT(this);
-				inset->Read(lex);
-				par->InsertChar(pos, LyXParagraph::META_INSET);
-				par->InsertInset(pos, inset);
-				par->SetFont(pos, font);
-				++pos;
-			} else if (tmptok == "Text") {
-				inset = new InsetText(this);
-				inset->Read(lex);
-				par->InsertChar(pos, LyXParagraph::META_INSET);
-				par->InsertInset(pos, inset);
-				par->SetFont(pos, font);
-				++pos;
-			} else if (tmptok == "GRAPHICS") {
-				inset = new InsetGraphics;
-				//inset->Read(lex);
-				par->InsertChar(pos, LyXParagraph::META_INSET);
-				par->InsertInset(pos, inset);
-				par->SetFont(pos, font);
-			} else if (tmptok == "LatexCommand") {
-				InsetCommand inscmd;
-				inscmd.Read(lex);
-				if (inscmd.getCmdName() == "cite") {
-					inset = new InsetCitation(inscmd.getContents(), inscmd.getOptions());
-				} else if (inscmd.getCmdName() == "bibitem") {
-					lex.printError("Wrong place for bibitem");
-					inset = inscmd.Clone();
-				} else if (inscmd.getCmdName() == "BibTeX") {
-					inset = new InsetBibtex(inscmd.getContents(), inscmd.getOptions(), this);
-				} else if (inscmd.getCmdName() == "index") {
-					inset = new InsetIndex(inscmd.getContents());
-				} else if (inscmd.getCmdName() == "include") {
-					inset = new InsetInclude(inscmd.getContents(), this);
-				} else if (inscmd.getCmdName() == "label") {
-					inset = new InsetLabel(inscmd.getCommand());
-				} else if (inscmd.getCmdName() == "url"
-					   || inscmd.getCmdName() == "htmlurl") {
-					inset = new InsetUrl(inscmd.getCommand());
-				} else if (inscmd.getCmdName() == "ref"
-					   || inscmd.getCmdName() == "pageref") {
-					if (!inscmd.getOptions().empty() || !inscmd.getContents().empty()) {
-						inset = new InsetRef(inscmd, this);
-					}
-#warning Verify that this else clause is still needed. (Lgb)
-#if 0
-					// This condition comes from a
-					// temporary solution to the latexdel
-					// ref inset that was transformed to
-					// an empty ref inset plus the body
-					// surronded by latexdel insets
-					else {
-						string cont, opt, tmptmptok, cmdname;
-						lex.next();
-						while(lex.IsOK() && lex.GetString() != "\\end_inset" ) {
-							lex.next();
-						}
-						lex.next();
-						while(lex.IsOK()) {
-							tmptmptok = lex.GetString();
-							if(tmptmptok[0] == '\\') {
-								if( tmptmptok == "\\backslash")
-									opt += '\\';
-								else
-									break;
-							}
-							else
-								opt += tmptmptok;
-							opt += ' ';
-							lex.next();
-						}
-						while(lex.IsOK() && lex.GetString() != "\\end_inset" ) {
-							lex.next();
-						}
-						lex.next();
-						while(lex.IsOK()) {
-							tmptmptok = lex.GetString();
-							if(tmptmptok[0] == '\\') {
-								if( tmptmptok == "\\backslash")
-									cont += '\\';
-								else
-									break;
-							}
-							else
-								cont += tmptmptok;
-							cont += ' ';
-							lex.next();
-						}
-						while(lex.IsOK() && lex.GetString() != "\\end_inset" ) {
-							lex.next();
-						}
-
-						cont = strip(cont);
-						opt = strip(opt);
-						cmdname =  "\\" + inscmd.getCmdName();
-						cmdname += "["  + cont  + "]";
-						cmdname += "{"  + opt + "}";
-						inset = new InsetRef(cmdname, this);
-					}
-#endif
-				} else if (inscmd.getCmdName() == "tableofcontents") {
-					inset = new InsetTOC(this);
-				} else if (inscmd.getCmdName() == "listoffigures") {
-					inset = new InsetLOF(this);
-				} else if (inscmd.getCmdName() == "listofalgorithms") {
-					inset = new InsetLOA(this);
-				} else if (inscmd.getCmdName() == "listoftables") {
-					inset = new InsetLOT(this);
-				} else if (inscmd.getCmdName() == "printindex") {
-					inset = new InsetPrintIndex(this);
-				} else if (inscmd.getCmdName() == "lyxparent") {
-					inset = new InsetParent(inscmd.getContents(), this);
-				}
-			       
-				if (inset) {
-					par->InsertChar(pos, LyXParagraph::META_INSET);
-					par->InsertInset(pos, inset);
-					par->SetFont(pos, font);
-					++pos;
-				}
-			}
-		} else if (token == "\\InsetQuotes") {
-			inset = new InsetQuotes;
-			inset->Read(lex);
-			par->InsertChar(pos, LyXParagraph::META_INSET); 
-			par->InsertInset(pos, inset);
-			par->SetFont(pos, font);
-			++pos;
-		} else if (token == "\\InsetFormula") {
-			inset = new InsetFormula;
-			inset->Read(lex);
-			par->InsertChar(pos, LyXParagraph::META_INSET); 
-			par->InsertInset(pos, inset);
-			par->SetFont(pos, font);
-			++pos;
-		} else if (token == "\\SpecialChar") {
-			inset = new InsetSpecialChar;
-			inset->Read(lex);
-			par->InsertChar(pos, LyXParagraph::META_INSET); 
-			par->InsertInset(pos, inset);
-			par->SetFont(pos, font);
-			++pos;
-		} else if (token == "\\Figure") {
-			inset = new InsetFig(100, 100, this);
-			inset->Read(lex);
-			par->InsertChar(pos, LyXParagraph::META_INSET); 
-			par->InsertInset(pos, inset);
-			par->SetFont(pos, font);
-			++pos;
-		} else if (token == "\\newline") { // soon obsolete
-#if 1
-			par->InsertChar(pos, LyXParagraph::META_NEWLINE);
-			par->SetFont(pos, font);
-#else
-			inset = new InsetSpecialChar(InsetSpecialChar::NEWLINE);
-			par->InsertChar(pos, LyXParagraph::META_INSET);
-			par->InsertInset(pos, inset);
-			par->SetFont(pos, font);
-#endif
-			++pos;
-		} else if (token == "\\LyXTable") {
-			par->table = new LyXTable(lex);
-		} else if (token == "\\hfill") {
-			par->InsertChar(pos, LyXParagraph::META_HFILL);
-			par->SetFont(pos, font);
-			++pos;
-		} else if (token == "\\protected_separator") { // obsolete
-#if 1
-			inset = new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
-			par->InsertChar(pos, LyXParagraph::META_INSET);
-			par->InsertInset(pos, inset);
-			par->SetFont(pos, font);
-#else
-			par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
-			par->SetFont(pos, font);
-#endif
-			++pos;
-		} else if (token == "\\bibitem") {  // ale970302
-		        if (!par->bibkey)
-				par->bibkey = new InsetBibKey;
-		        par->bibkey->Read(lex);		        
-		}else if (token == "\\backslash") {
-			par->InsertChar(pos, '\\');
-			par->SetFont(pos, font);
-			++pos;
-		}else if (token == "\\the_end") {
-			the_end_read = true;
-		} else {
-			// This should be insurance for the future: (Asger)
-			lex.printError("Unknown token `$$Token'. "
-				       "Inserting as text.");
-			int n = token.length();
-			for (int i = 0; i < n; ++i) {
-				par->InsertChar(pos, token[i]);
-				par->SetFont(pos, font);
-				++pos;
-			}
-		}
+		the_end_read = parseSingleLyXformat2Token(lex, par, return_par,
+							  token, pos, depth,
+							  font, footnoteflag,
+							  footnotekind);
 	}
    
 	if (!return_par)
@@ -957,6 +273,708 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 	return the_end_read;
 }
 
+
+bool Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
+					LyXParagraph *& return_par,
+					const string & token, int & pos,
+					char & depth, LyXFont & font,
+					LyXParagraph::footnote_flag & footnoteflag,
+					LyXParagraph::footnote_kind & footnotekind)
+{
+	Inset * inset = 0;
+	int tmpret, tmpret2;
+	string tmptok;
+	bool the_end_read = false;
+	
+	if (token[0] != '\\') {
+		int n = token.length();
+		for (int i = 0; i < n; ++i) {
+			par->InsertChar(pos, token[i]);
+			par->SetFont(pos, font);
+			++pos;
+		}
+	} else if (token == "\\i") {
+		inset = new InsetLatexAccent;
+		inset->Read(lex);
+		par->InsertChar(pos, LyXParagraph::META_INSET); 
+			
+		par->InsertInset(pos, inset);
+		par->SetFont(pos, font);
+		++pos;
+	} else if (token == "\\layout") {
+		if (!return_par) 
+			return_par = par;
+		else {
+			par->text.resize(par->text.size());
+			par = new LyXParagraph(par);
+		}
+		pos = 0;
+		lex.EatLine();
+		string layoutname = lex.GetString();
+		pair<bool, LyXTextClass::LayoutList::size_type> pp
+			= textclasslist.NumberOfLayout(params.textclass,
+						       layoutname);
+		if (pp.first) {
+			par->layout = pp.second;
+		} else { // layout not found
+				// use default layout "Standard" (0)
+			par->layout = 0;
+		}
+		// Test whether the layout is obsolete.
+		LyXLayout const & layout =
+			textclasslist.Style(params.textclass,
+					    par->layout); 
+		if (!layout.obsoleted_by().empty())
+			par->layout = 
+				textclasslist.NumberOfLayout(params.textclass, 
+							     layout.obsoleted_by()).second;
+		par->footnoteflag = footnoteflag;
+		par->footnotekind = footnotekind;
+		par->depth = depth;
+		font = LyXFont(LyXFont::ALL_INHERIT);
+	} else if (token == "\\end_float") {
+		if (!return_par) 
+			return_par = par;
+		else {
+			par->text.resize(par->text.size());
+			par = new LyXParagraph(par);
+		}
+		footnotekind = LyXParagraph::FOOTNOTE;
+		footnoteflag = LyXParagraph::NO_FOOTNOTE;
+		pos = 0;
+		lex.EatLine();
+		par->layout = LYX_DUMMY_LAYOUT;
+		font = LyXFont(LyXFont::ALL_INHERIT);
+	} else if (token == "\\begin_float") {
+		tmpret = lex.FindToken(string_footnotekinds);
+		if (tmpret == -1) ++tmpret;
+		if (tmpret != LYX_LAYOUT_DEFAULT) 
+			footnotekind = static_cast<LyXParagraph::footnote_kind>(tmpret); // bad
+		if (footnotekind == LyXParagraph::FOOTNOTE
+		    || footnotekind == LyXParagraph::MARGIN)
+			footnoteflag = LyXParagraph::CLOSED_FOOTNOTE;
+		else 
+			footnoteflag = LyXParagraph::OPEN_FOOTNOTE;
+	} else if (token == "\\begin_deeper") {
+		++depth;
+	} else if (token == "\\end_deeper") {
+		if (!depth) {
+			lex.printError("\\end_deeper: "
+				       "depth is already null");
+		}
+		else
+			--depth;
+	} else if (token == "\\begin_preamble") {
+		params.readPreamble(lex);
+	} else if (token == "\\textclass") {
+		lex.EatLine();
+		pair<bool, LyXTextClassList::size_type> pp = 
+			textclasslist.NumberOfClass(lex.GetString());
+		if (pp.first) {
+			params.textclass = pp.second;
+		} else {
+			lex.printError("Unknown textclass `$$Token'");
+			params.textclass = 0;
+		}
+		if (!textclasslist.Load(params.textclass)) {
+				// if the textclass wasn't loaded properly
+				// we need to either substitute another
+				// or stop loading the file.
+				// I can substitute but I don't see how I can
+				// stop loading... ideas??  ARRae980418
+			WriteAlert(_("Textclass Loading Error!"),
+				   string(_("Can't load textclass ")) +
+				   textclasslist.NameOfClass(params.textclass),
+				   _("-- substituting default"));
+			params.textclass = 0;
+		}
+	} else if (token == "\\options") {
+		lex.EatLine();
+		params.options = lex.GetString();
+	} else if (token == "\\language") {
+		params.readLanguage(lex);    
+	} else if (token == "\\fontencoding") {
+		lex.EatLine();
+	} else if (token == "\\inputencoding") {
+		lex.EatLine();
+		params.inputenc = lex.GetString();
+	} else if (token == "\\graphics") {
+		params.readGraphicsDriver(lex);
+	} else if (token == "\\fontscheme") {
+		lex.EatLine();
+		params.fonts = lex.GetString();
+	} else if (token == "\\noindent") {
+		par->noindent = true;
+	} else if (token == "\\fill_top") {
+		par->added_space_top = VSpace(VSpace::VFILL);
+	} else if (token == "\\fill_bottom") {
+		par->added_space_bottom = VSpace(VSpace::VFILL);
+	} else if (token == "\\line_top") {
+		par->line_top = true;
+	} else if (token == "\\line_bottom") {
+		par->line_bottom = true;
+	} else if (token == "\\pagebreak_top") {
+		par->pagebreak_top = true;
+	} else if (token == "\\pagebreak_bottom") {
+		par->pagebreak_bottom = true;
+	} else if (token == "\\start_of_appendix") {
+		par->start_of_appendix = true;
+	} else if (token == "\\paragraph_separation") {
+		tmpret = lex.FindToken(string_paragraph_separation);
+		if (tmpret == -1) ++tmpret;
+		if (tmpret != LYX_LAYOUT_DEFAULT) 
+			params.paragraph_separation =
+				static_cast<BufferParams::PARSEP>(tmpret);
+	} else if (token == "\\defskip") {
+		lex.nextToken();
+		params.defskip = VSpace(lex.GetString());
+	} else if (token == "\\no_isolatin1") { // obsolete
+		lex.nextToken();
+	} else if (token == "\\no_babel") { // obsolete
+		lex.nextToken();
+	} else if (token == "\\no_epsfig") { // obsolete
+		lex.nextToken();
+	} else if (token == "\\epsfig") { // obsolete
+		// Indeed it is obsolete, but we HAVE to be backwards
+		// compatible until 0.14, because otherwise all figures
+		// in existing documents are irretrivably lost. (Asger)
+		params.readGraphicsDriver(lex);
+	} else if (token == "\\quotes_language") {
+		tmpret = lex.FindToken(string_quotes_language);
+		if (tmpret == -1) ++tmpret;
+		if (tmpret != LYX_LAYOUT_DEFAULT) {
+			InsetQuotes::quote_language tmpl = 
+				InsetQuotes::EnglishQ;
+			switch(tmpret) {
+			case 0:
+				tmpl = InsetQuotes::EnglishQ;
+				break;
+			case 1:
+				tmpl = InsetQuotes::SwedishQ;
+				break;
+			case 2:
+				tmpl = InsetQuotes::GermanQ;
+				break;
+			case 3:
+				tmpl = InsetQuotes::PolishQ;
+				break;
+			case 4:
+				tmpl = InsetQuotes::FrenchQ;
+				break;
+			case 5:
+				tmpl = InsetQuotes::DanishQ;
+				break;	
+			}
+			params.quotes_language = tmpl;
+		}
+	} else if (token == "\\quotes_times") {
+		lex.nextToken();
+		switch(lex.GetInteger()) {
+		case 1: 
+			params.quotes_times = InsetQuotes::SingleQ; 
+			break;
+		case 2: 
+			params.quotes_times = InsetQuotes::DoubleQ; 
+			break;
+		}
+	} else if (token == "\\papersize") {
+		tmpret = lex.FindToken(string_papersize);
+		if (tmpret == -1)
+			++tmpret;
+		else
+			params.papersize2 = tmpret;
+	} else if (token == "\\paperpackage") {
+		tmpret = lex.FindToken(string_paperpackages);
+		if (tmpret == -1) {
+			++tmpret;
+			params.paperpackage = BufferParams::PACKAGE_NONE;
+		} else
+			params.paperpackage = tmpret;
+	} else if (token == "\\use_geometry") {
+		lex.nextToken();
+		params.use_geometry = lex.GetInteger();
+	} else if (token == "\\use_amsmath") {
+		lex.nextToken();
+		params.use_amsmath = lex.GetInteger();
+	} else if (token == "\\paperorientation") {
+		tmpret = lex.FindToken(string_orientation);
+		if (tmpret == -1) ++tmpret;
+		if (tmpret != LYX_LAYOUT_DEFAULT) 
+			params.orientation = static_cast<BufferParams::PAPER_ORIENTATION>(tmpret);
+	} else if (token == "\\paperwidth") {
+		lex.next();
+		params.paperwidth = lex.GetString();
+	} else if (token == "\\paperheight") {
+		lex.next();
+		params.paperheight = lex.GetString();
+	} else if (token == "\\leftmargin") {
+		lex.next();
+		params.leftmargin = lex.GetString();
+	} else if (token == "\\topmargin") {
+		lex.next();
+		params.topmargin = lex.GetString();
+	} else if (token == "\\rightmargin") {
+		lex.next();
+		params.rightmargin = lex.GetString();
+	} else if (token == "\\bottommargin") {
+		lex.next();
+		params.bottommargin = lex.GetString();
+	} else if (token == "\\headheight") {
+		lex.next();
+		params.headheight = lex.GetString();
+	} else if (token == "\\headsep") {
+		lex.next();
+		params.headsep = lex.GetString();
+	} else if (token == "\\footskip") {
+		lex.next();
+		params.footskip = lex.GetString();
+	} else if (token == "\\paperfontsize") {
+		lex.nextToken();
+		params.fontsize = strip(lex.GetString());
+	} else if (token == "\\papercolumns") {
+		lex.nextToken();
+		params.columns = lex.GetInteger();
+	} else if (token == "\\papersides") {
+		lex.nextToken();
+		switch(lex.GetInteger()) {
+		default:
+		case 1: params.sides = LyXTextClass::OneSide; break;
+		case 2: params.sides = LyXTextClass::TwoSides; break;
+		}
+	} else if (token == "\\paperpagestyle") {
+		lex.nextToken();
+		params.pagestyle = strip(lex.GetString());
+	} else if (token == "\\bullet") {
+		lex.nextToken();
+		int index = lex.GetInteger();
+		lex.nextToken();
+		int temp_int = lex.GetInteger();
+		params.user_defined_bullets[index].setFont(temp_int);
+		params.temp_bullets[index].setFont(temp_int);
+		lex.nextToken();
+		temp_int = lex.GetInteger();
+		params.user_defined_bullets[index].setCharacter(temp_int);
+		params.temp_bullets[index].setCharacter(temp_int);
+		lex.nextToken();
+		temp_int = lex.GetInteger();
+		params.user_defined_bullets[index].setSize(temp_int);
+		params.temp_bullets[index].setSize(temp_int);
+		lex.nextToken();
+		string temp_str = lex.GetString();
+		if (temp_str != "\\end_bullet") {
+				// this element isn't really necessary for
+				// parsing but is easier for humans
+				// to understand bullets. Put it back and
+				// set a debug message?
+			lex.printError("\\end_bullet expected, got" + temp_str);
+				//how can I put it back?
+		}
+	} else if (token == "\\bulletLaTeX") {
+		lex.nextToken();
+		int index = lex.GetInteger();
+		lex.next();
+		string temp_str = lex.GetString(), sum_str;
+		while (temp_str != "\\end_bullet") {
+				// this loop structure is needed when user
+				// enters an empty string since the first
+				// thing returned will be the \\end_bullet
+				// OR
+				// if the LaTeX entry has spaces. Each element
+				// therefore needs to be read in turn
+			sum_str += temp_str;
+			lex.next();
+			temp_str = lex.GetString();
+		}
+		params.user_defined_bullets[index].setText(sum_str);
+		params.temp_bullets[index].setText(sum_str);
+	} else if (token == "\\secnumdepth") {
+		lex.nextToken();
+		params.secnumdepth = lex.GetInteger();
+	} else if (token == "\\tocdepth") {
+		lex.nextToken();
+		params.tocdepth = lex.GetInteger();
+	} else if (token == "\\baselinestretch") { // obsolete
+		lex.nextToken(); // should not be used directly
+		// anymore.
+		// Will probably keep a kind of support just for
+		// compability.
+		params.spacing.set(Spacing::Other, lex.GetFloat());
+	} else if (token == "\\spacing") {
+		lex.next();
+		string tmp = strip(lex.GetString());
+		if (tmp == "single") {
+			params.spacing.set(Spacing::Single);
+		} else if (tmp == "onehalf") {
+			params.spacing.set(Spacing::Onehalf);
+		} else if (tmp == "double") {
+			params.spacing.set(Spacing::Double);
+		} else if (tmp == "other") {
+			lex.next();
+			params.spacing.set(Spacing::Other,
+					   lex.GetFloat());
+		} else {
+			lex.printError("Unknown spacing token: '$$Token'");
+		}
+	} else if (token == "\\float_placement") {
+		lex.nextToken();
+		params.float_placement = lex.GetString();
+	} else if (token == "\\cursor") { // obsolete
+		// this is obsolete, so we just skip it.
+		lex.nextToken();
+	} else if (token == "\\family") { 
+		lex.next();
+		font.setLyXFamily(lex.GetString());
+	} else if (token == "\\series") {
+		lex.next();
+		font.setLyXSeries(lex.GetString());
+	} else if (token == "\\shape") {
+		lex.next();
+		font.setLyXShape(lex.GetString());
+	} else if (token == "\\size") {
+		lex.next();
+		font.setLyXSize(lex.GetString());
+	} else if (token == "\\latex") {
+		lex.next();
+		string tok = lex.GetString();
+		// This is dirty, but gone with LyX3. (Asger)
+		if (tok == "no_latex")
+			font.setLatex(LyXFont::OFF);
+		else if (tok == "latex")
+			font.setLatex(LyXFont::ON);
+		else if (tok == "default")
+			font.setLatex(LyXFont::INHERIT);
+		else
+			lex.printError("Unknown LaTeX font flag "
+				       "`$$Token'");
+	} else if (token == "\\direction") {
+		lex.next();
+		string tok = lex.GetString();
+		if (tok == "ltr")
+			font.setDirection(LyXFont::LTR_DIR);
+		else if (tok == "rtl")
+			font.setDirection(LyXFont::RTL_DIR);
+		else if (tok == "default")
+			font.setDirection(LyXFont::INHERIT_DIR);
+		else
+			lex.printError("Unknown font flag "
+				       "`$$Token'");
+	} else if (token == "\\emph") {
+		lex.next();
+		font.setEmph(font.setLyXMisc(lex.GetString()));
+	} else if (token == "\\bar") {
+		lex.next();
+		string tok = lex.GetString();
+		// This is dirty, but gone with LyX3. (Asger)
+		if (tok == "under")
+			font.setUnderbar(LyXFont::ON);
+		else if (tok == "no")
+			font.setUnderbar(LyXFont::OFF);
+		else if (tok == "default")
+			font.setUnderbar(LyXFont::INHERIT);
+		else
+			lex.printError("Unknown bar font flag "
+				       "`$$Token'");
+	} else if (token == "\\noun") {
+		lex.next();
+		font.setNoun(font.setLyXMisc(lex.GetString()));
+	} else if (token == "\\color") {
+		lex.next();
+		font.setLyXColor(lex.GetString());
+	} else if (token == "\\align") {
+		tmpret = lex.FindToken(string_align);
+		if (tmpret == -1) ++tmpret;
+		if (tmpret != LYX_LAYOUT_DEFAULT) { // tmpret != 99 ???
+			tmpret2 = 1;
+			for (; tmpret > 0; --tmpret)
+				tmpret2 = tmpret2 * 2;
+			par->align = LyXAlignment(tmpret2);
+		}
+	} else if (token == "\\added_space_top") {
+		lex.nextToken();
+		par->added_space_top = lex.GetString();
+	} else if (token == "\\added_space_bottom") {
+		lex.nextToken();
+		par->added_space_bottom = lex.GetString();
+	} else if (token == "\\pextra_type") {
+		lex.nextToken();
+		par->pextra_type = lex.GetInteger();
+	} else if (token == "\\pextra_width") {
+		lex.nextToken();
+		par->pextra_width = lex.GetString();
+	} else if (token == "\\pextra_widthp") {
+		lex.nextToken();
+		par->pextra_widthp = lex.GetString();
+	} else if (token == "\\pextra_alignment") {
+		lex.nextToken();
+		par->pextra_alignment = lex.GetInteger();
+	} else if (token == "\\pextra_hfill") {
+		lex.nextToken();
+		par->pextra_hfill = lex.GetInteger();
+	} else if (token == "\\pextra_start_minipage") {
+		lex.nextToken();
+		par->pextra_start_minipage = lex.GetInteger();
+	} else if (token == "\\labelwidthstring") {
+		lex.EatLine();
+		par->labelwidthstring = lex.GetString();
+		/* do not delete this token, it is still needed! */ 
+	} else if (token == "\\end_inset") {
+		/* simple ignore this. The insets do not have
+		 *  to read this */
+		// but insets should read it, it is a part of
+		//the inset isn't it? Lgb.
+	} else if (token == "\\begin_inset") {
+		lex.next();
+		tmptok = lex.GetString();
+		/* test the different insets */ 
+		if (tmptok == "Quotes") {
+			inset = new InsetQuotes;
+			inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+			++pos;
+		} else if (tmptok == "\\i") {
+			inset = new InsetLatexAccent;
+			inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+			++pos;
+		} else if (tmptok == "FormulaMacro") {
+			inset = new InsetFormulaMacro;
+			inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+			++pos;
+		} else if (tmptok == "Formula") {
+			inset = new InsetFormula;
+			inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+			++pos;
+		} else if (tmptok == "Figure") {
+			inset = new InsetFig(100, 100, this);
+			inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+			++pos;
+		} else if (tmptok == "Info") {
+			inset = new InsetInfo;
+			inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+			++pos;
+		} else if (tmptok == "Include") {
+			inset = new InsetInclude(string(), this);
+			inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+			++pos;
+		} else if (tmptok == "ERT") {
+			inset = new InsetERT(this);
+			inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+			++pos;
+		} else if (tmptok == "Text") {
+			inset = new InsetText(this);
+			inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+			++pos;
+		} else if (tmptok == "GRAPHICS") {
+			inset = new InsetGraphics;
+				//inset->Read(lex);
+			par->InsertChar(pos, LyXParagraph::META_INSET);
+			par->InsertInset(pos, inset);
+			par->SetFont(pos, font);
+		} else if (tmptok == "LatexCommand") {
+			InsetCommand inscmd;
+			inscmd.Read(lex);
+			if (inscmd.getCmdName() == "cite") {
+				inset = new InsetCitation(inscmd.getContents(), inscmd.getOptions());
+			} else if (inscmd.getCmdName() == "bibitem") {
+				lex.printError("Wrong place for bibitem");
+				inset = inscmd.Clone();
+			} else if (inscmd.getCmdName() == "BibTeX") {
+				inset = new InsetBibtex(inscmd.getContents(), inscmd.getOptions(), this);
+			} else if (inscmd.getCmdName() == "index") {
+				inset = new InsetIndex(inscmd.getContents());
+			} else if (inscmd.getCmdName() == "include") {
+				inset = new InsetInclude(inscmd.getContents(), this);
+			} else if (inscmd.getCmdName() == "label") {
+				inset = new InsetLabel(inscmd.getCommand());
+			} else if (inscmd.getCmdName() == "url"
+				   || inscmd.getCmdName() == "htmlurl") {
+				inset = new InsetUrl(inscmd.getCommand());
+			} else if (inscmd.getCmdName() == "ref"
+				   || inscmd.getCmdName() == "pageref") {
+				if (!inscmd.getOptions().empty() || !inscmd.getContents().empty()) {
+					inset = new InsetRef(inscmd, this);
+				}
+#warning Verify that this else clause is still needed. (Lgb)
+#if 0
+				// This condition comes from a
+				// temporary solution to the latexdel
+				// ref inset that was transformed to
+				// an empty ref inset plus the body
+				// surronded by latexdel insets
+				else {
+					string cont, opt, tmptmptok, cmdname;
+					lex.next();
+					while(lex.IsOK() && lex.GetString() != "\\end_inset" ) {
+						lex.next();
+					}
+					lex.next();
+					while(lex.IsOK()) {
+						tmptmptok = lex.GetString();
+						if(tmptmptok[0] == '\\') {
+							if( tmptmptok == "\\backslash")
+								opt += '\\';
+							else
+								break;
+						}
+						else
+							opt += tmptmptok;
+						opt += ' ';
+						lex.next();
+					}
+					while(lex.IsOK() && lex.GetString() != "\\end_inset" ) {
+						lex.next();
+					}
+					lex.next();
+					while(lex.IsOK()) {
+						tmptmptok = lex.GetString();
+						if(tmptmptok[0] == '\\') {
+							if( tmptmptok == "\\backslash")
+								cont += '\\';
+							else
+								break;
+						}
+						else
+							cont += tmptmptok;
+						cont += ' ';
+						lex.next();
+					}
+					while(lex.IsOK() && lex.GetString() != "\\end_inset" ) {
+						lex.next();
+					}
+
+					cont = strip(cont);
+					opt = strip(opt);
+					cmdname =  "\\" + inscmd.getCmdName();
+					cmdname += "["  + cont  + "]";
+					cmdname += "{"  + opt + "}";
+					inset = new InsetRef(cmdname, this);
+				}
+#endif
+			} else if (inscmd.getCmdName() == "tableofcontents") {
+				inset = new InsetTOC(this);
+			} else if (inscmd.getCmdName() == "listoffigures") {
+				inset = new InsetLOF(this);
+			} else if (inscmd.getCmdName() == "listofalgorithms") {
+				inset = new InsetLOA(this);
+			} else if (inscmd.getCmdName() == "listoftables") {
+				inset = new InsetLOT(this);
+			} else if (inscmd.getCmdName() == "printindex") {
+				inset = new InsetPrintIndex(this);
+			} else if (inscmd.getCmdName() == "lyxparent") {
+				inset = new InsetParent(inscmd.getContents(), this);
+			}
+			       
+			if (inset) {
+				par->InsertChar(pos, LyXParagraph::META_INSET);
+				par->InsertInset(pos, inset);
+				par->SetFont(pos, font);
+				++pos;
+			}
+		}
+	} else if (token == "\\InsetQuotes") {
+		inset = new InsetQuotes;
+		inset->Read(lex);
+		par->InsertChar(pos, LyXParagraph::META_INSET); 
+		par->InsertInset(pos, inset);
+		par->SetFont(pos, font);
+		++pos;
+	} else if (token == "\\InsetFormula") {
+		inset = new InsetFormula;
+		inset->Read(lex);
+		par->InsertChar(pos, LyXParagraph::META_INSET); 
+		par->InsertInset(pos, inset);
+		par->SetFont(pos, font);
+		++pos;
+	} else if (token == "\\SpecialChar") {
+		inset = new InsetSpecialChar;
+		inset->Read(lex);
+		par->InsertChar(pos, LyXParagraph::META_INSET); 
+		par->InsertInset(pos, inset);
+		par->SetFont(pos, font);
+		++pos;
+	} else if (token == "\\Figure") {
+		inset = new InsetFig(100, 100, this);
+		inset->Read(lex);
+		par->InsertChar(pos, LyXParagraph::META_INSET); 
+		par->InsertInset(pos, inset);
+		par->SetFont(pos, font);
+		++pos;
+	} else if (token == "\\newline") { // soon obsolete
+#if 1
+		par->InsertChar(pos, LyXParagraph::META_NEWLINE);
+		par->SetFont(pos, font);
+#else
+		inset = new InsetSpecialChar(InsetSpecialChar::NEWLINE);
+		par->InsertChar(pos, LyXParagraph::META_INSET);
+		par->InsertInset(pos, inset);
+		par->SetFont(pos, font);
+#endif
+		++pos;
+	} else if (token == "\\LyXTable") {
+		par->table = new LyXTable(lex);
+	} else if (token == "\\hfill") {
+		par->InsertChar(pos, LyXParagraph::META_HFILL);
+		par->SetFont(pos, font);
+		++pos;
+	} else if (token == "\\protected_separator") { // obsolete
+#if 1
+		inset = new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
+		par->InsertChar(pos, LyXParagraph::META_INSET);
+		par->InsertInset(pos, inset);
+		par->SetFont(pos, font);
+#else
+		par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
+		par->SetFont(pos, font);
+#endif
+		++pos;
+	} else if (token == "\\bibitem") {  // ale970302
+		if (!par->bibkey)
+			par->bibkey = new InsetBibKey;
+		par->bibkey->Read(lex);		        
+	}else if (token == "\\backslash") {
+		par->InsertChar(pos, '\\');
+		par->SetFont(pos, font);
+		++pos;
+	}else if (token == "\\the_end") {
+		the_end_read = true;
+	} else {
+		// This should be insurance for the future: (Asger)
+		lex.printError("Unknown token `$$Token'. "
+			       "Inserting as text.");
+		int n = token.length();
+		for (int i = 0; i < n; ++i) {
+			par->InsertChar(pos, token[i]);
+			par->SetFont(pos, font);
+			++pos;
+		}
+	}
+	return the_end_read;
+}
 
 bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 {

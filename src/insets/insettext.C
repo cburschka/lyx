@@ -99,83 +99,20 @@ void InsetText::Write(ostream & os) const
     WriteParagraphData(os);
 }
 
-
 void InsetText::WriteParagraphData(ostream & os) const
 {
-    LyXFont font1 = LyXFont(LyXFont::ALL_INHERIT);
-    LyXFont font2;
-    int column = 0;
-    char c = 0;
-
-    for (int i = 0; i < par->Last(); ++i) {
-        // Write font changes
-        font2 = par->GetFontSettings(i);
-        if (font2 != font1) {
-            font2.lyxWriteChanges(font1, os);
-            column = 0;
-            font1 = font2;
-        }
-        c = par->GetChar(i);
-        // A newline before tags
-        if (column > 0 &&
-            (c == LyXParagraph::META_INSET ||
-             c == LyXParagraph::META_NEWLINE ||
-             c == '\\')) {
-            os << "\n";
-            column = 0;
-        }
-	
-        switch (c) {
-          case LyXParagraph::META_INSET: {
-              Inset * inset = par->GetInset(i);
-              if (inset) {
-		  os << "\n\\begin_inset ";
-		  inset->Write(os);
-		  os << "\n\\end_inset \n\n";
-                  column = 0;
-              }
-          }
-          break;
-          case LyXParagraph::META_NEWLINE: 
-              os << "\\newline\n";
-              column = 0;
-              break;
-          case '\\': 
-              os << "\\backslash\n";
-              column = 0;
-              break;
-          default:
-              if (column > 65 && c==' ') {
-                  os << "\n";
-                  column = 0;
-              }
-              // this check is to amend a bug. LyX sometimes
-              // inserts '\0' this could cause problems.
-              if (c != '\0')
-                  os << c;
-              else
-		      lyxerr << "ERROR (InsetText::writeFile):"
-			      " '\\0' char in structure.\n";
-              column++;
-              break;
-        }
-    }
-    // A newline if the last c was not a tag.
-    if (column > 0 &&
-        (c != LyXParagraph::META_INSET &&
-         c != LyXParagraph::META_NEWLINE &&
-         c != '\\')) {
-        os << "\n";
-        column = 0;
-    }
+    par->writeFile(os, buffer->params, 0, 0);
 }
-
 
 void InsetText::Read(LyXLex & lex)
 {
     string token, tmptok;
-    LyXFont font = LyXFont(LyXFont::ALL_INHERIT);
     int pos = 0;
+    LyXParagraph *return_par = 0;
+    char depth = 0; // signed or unsigned?
+    LyXParagraph::footnote_flag footnoteflag = LyXParagraph::NO_FOOTNOTE;
+    LyXParagraph::footnote_kind footnotekind = LyXParagraph::FOOTNOTE;
+    LyXFont font(LyXFont::ALL_INHERIT);
 
     delete par;
     par = new LyXParagraph;
@@ -185,193 +122,16 @@ void InsetText::Read(LyXLex & lex)
         token = lex.GetString();
         if (token.empty())
             continue;
-        else if (token[0] != '\\') {
-            int n = token.length();
-            for (int i = 0; i < n; ++i) {
-                par->InsertChar(pos, token[i]);
-                par->SetFont(pos, font);
-                ++pos;
-            }
-        } else if (token == "\\newline") {
-            par->InsertChar(pos, LyXParagraph::META_NEWLINE);
-            par->SetFont(pos, font);
-            ++pos;
-        } else if (token == "\\family") { 
-            lex.next();
-            font.setLyXFamily(lex.GetString());
-        } else if (token == "\\series") {
-            lex.next();
-            font.setLyXSeries(lex.GetString());
-        } else if (token == "\\shape") {
-            lex.next();
-            font.setLyXShape(lex.GetString());
-        } else if (token == "\\size") {
-            lex.next();
-            font.setLyXSize(lex.GetString());
-        } else if (token == "\\latex") {
-            lex.next();
-            string tok = lex.GetString();
-            // This is dirty, but gone with LyX3. (Asger)
-            if (tok == "no_latex")
-                font.setLatex(LyXFont::OFF);
-            else if (tok == "latex")
-                font.setLatex(LyXFont::ON);
-            else if (tok == "default")
-                font.setLatex(LyXFont::INHERIT);
-            else
-                lex.printError("Unknown LaTeX font flag "
-                               "`$$Token'");
-	} else if (token == "\\direction") {
-		lex.next();
-		string tok = lex.GetString();
-		if (tok == "ltr")
-			font.setDirection(LyXFont::LTR_DIR);
-		else if (tok == "rtl")
-			font.setDirection(LyXFont::RTL_DIR);
-		else if (tok == "default")
-			font.setDirection(LyXFont::INHERIT_DIR);
-		else
-			lex.printError("Unknown font flag "
-				       "`$$Token'");
-        } else if (token == "\\emph") {
-            lex.next();
-            font.setEmph(font.setLyXMisc(lex.GetString()));
-        } else if (token == "\\bar") {
-            lex.next();
-            string tok = lex.GetString();
-            // This is dirty, but gone with LyX3. (Asger)
-            if (tok == "under")
-                font.setUnderbar(LyXFont::ON);
-            else if (tok == "no")
-                font.setUnderbar(LyXFont::OFF);
-            else if (tok == "default")
-                font.setUnderbar(LyXFont::INHERIT);
-            else
-                lex.printError("Unknown bar font flag "
-                               "`$$Token'");
-        } else if (token == "\\noun") {
-            lex.next();
-            font.setNoun(font.setLyXMisc(lex.GetString()));
-        } else if (token == "\\color") {
-            lex.next();
-            font.setLyXColor(lex.GetString());
-	} else if (token == "\\begin_inset") {
-           Inset * inset = 0;
-           lex.next();
-           tmptok = lex.GetString();
-           // Test the different insets.
-           if (tmptok == "Quotes") {
-               inset = new InsetQuotes(string());
-               inset->Read(lex);
-           } else if (tmptok == "LaTeXAccent" || tmptok == "\\i") {
-               inset = new InsetLatexAccent;
-               inset->Read(lex);
-           } else if (tmptok == "FormulaMacro") {
-               inset = new InsetFormulaMacro;
-               inset->Read(lex);
-           } else if (tmptok == "Formula") {
-               inset = new InsetFormula;
-               inset->Read(lex);
-           } else if (tmptok == "Figure") {
-               inset = new InsetFig(100,100, buffer);
-               inset->Read(lex);
-#if 0
-           } else if (tmptok == "Tabular") {
-               inset = new InsetTabular(buffer);
-               inset->Read(lex);
-#endif
-           } else if (tmptok == "Text") {
-               inset = new InsetText(buffer);
-               inset->Read(lex);
-           } else if (tmptok == "ERT") {
-               inset = new InsetERT(buffer);
-               inset->Read(lex);
-           } else if (tmptok == "Info") {
-               inset = new InsetInfo;
-               inset->Read(lex);
-           } else if (tmptok == "Include") {
-               inset = new InsetInclude(string(), buffer);
-               inset->Read(lex);
-           } else if (tmptok == "LatexCommand") {
-               InsetCommand inscmd;
-               inscmd.Read(lex);
-               if (inscmd.getCmdName()=="cite") {
-                   inset = new InsetCitation(inscmd.getContents(),
-                                             inscmd.getOptions());
-               } else if (inscmd.getCmdName()=="bibitem") {
-                   lex.printError("Wrong place for bibitem");
-                   inset = inscmd.Clone();
-               } else if (inscmd.getCmdName()=="BibTeX") {
-                   inset = new InsetBibtex(inscmd.getContents(),
-                                           inscmd.getOptions(), buffer);
-               } else if (inscmd.getCmdName()=="index") {
-                   inset = new InsetIndex(inscmd.getContents());
-               } else if (inscmd.getCmdName()=="include") {
-                   inset = new InsetInclude(inscmd.getContents(), buffer);
-               } else if (inscmd.getCmdName()=="label") {
-                   inset = new InsetLabel(inscmd.getCommand());
-               } else if (inscmd.getCmdName() == "ref" ||
-                          inscmd.getCmdName() == "pageref") {
-                   inset = new InsetRef(inscmd, buffer);
-               }
-#if 0  // Is this compatibility code needed (Lgb)
-	       else
-                   // The following three are only for compatibility
-                   if (inscmd.getCmdName()=="-") {
-                       inset = new InsetSpecialChar(InsetSpecialChar::HYPHENATION);
-                   } else if (inscmd.getCmdName()=="@.") {
-                       inset = new InsetSpecialChar(InsetSpecialChar::END_OF_SENTENCE);
-                   } else if (inscmd.getCmdName()=="ldots") {
-                       inset = new InsetSpecialChar(InsetSpecialChar::LDOTS);
-                   } else
-                       inset = inscmd.Clone();
-#endif
-           }
-           if (inset) {
-               par->InsertChar(pos, LyXParagraph::META_INSET);
-               par->InsertInset(pos, inset);
-               par->SetFont(pos, font);
-               ++pos;
-           } else {
-               lex.printError("Unknown inset `$$Token'. "
-                              "Inserting as text.");
-           }
-#ifndef NO_COMPABILITY
-        } else if (token == "\\hfill") {
-            // now obsolete, but we have a bak compability
-//            Inset * inset = new InsetSpecialChar(LyXParagraph::META_HFILL);
-//            par->InsertChar(pos, LyXParagraph::META_INSET);
-//            par->InsertInset(pos, inset);
-            par->InsertChar(pos, LyXParagraph::META_HFILL);
-            par->SetFont(pos, font);
-            ++pos;
-        } else if (token == "\\protected_separator") {
-            // now obsolete, but we have a back compability
-#if 0
-            par->InsertChar(pos, LyXParagraph::META_PROTECTED_SEPARATOR);
-#else
-            Inset * inset =
-		   new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
-            par->InsertChar(pos, LyXParagraph::META_INSET);
-            par->InsertInset(pos, inset);
-#endif
-            par->SetFont(pos, font);
-            ++pos;
-#endif
-        } else if (token == "\\bibitem") {  // ale970302
-            if (!par->bibkey)
-                par->bibkey = new InsetBibKey;
-            par->bibkey->Read(lex);                 
-        } else if (token == "\\backslash") {
-            par->InsertChar(pos, '\\');
-            par->SetFont(pos, font);
-            ++pos;
-        } else if (token == "\\end_inset") {
-            break;
-        } else {
-            lex.printError("Unknown tabular token `$$Token'. Not handled!");
+	if (token == "\\end_inset")
 	    break;
-        }
+	if (buffer->parseSingleLyXformat2Token(lex, par, return_par,
+					       token, pos, depth,
+					       font, footnoteflag,
+					       footnotekind)) {
+	    // the_end read this should NEVER happen
+	    lex.printError("\\the_end read in inset! Error in document!");
+	    return;
+	}
     }
     if (token != "\\end_inset") {
         lex.printError("Missing \\end_inset at this point. "
