@@ -56,7 +56,8 @@ extern BufferList bufferlist;
 
 BufferView::BufferView(LyXView * owner, int xpos, int ypos,
 		       int width, int height)
-	: pimpl_(new Pimpl(this, owner, xpos, ypos, width, height))
+	: pimpl_(new Pimpl(this, owner, xpos, ypos, width, height)),
+	  x_target_(0)
 {
 	text = 0;
 }
@@ -579,4 +580,16 @@ void BufferView::haveSelection(bool sel)
 int BufferView::workHeight() const
 {
 	return pimpl_->workarea().workHeight();
+}
+
+
+void BufferView::x_target(int x)
+{
+	x_target_ = x;
+}
+
+
+int BufferView::x_target() const
+{
+	return x_target_;
 }

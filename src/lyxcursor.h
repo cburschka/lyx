@@ -45,21 +45,6 @@ public:
 	void x(int i);
 	/// return the x position in pixels
 	int x() const;
-	/// set the cached x position
-	void x_fix(int i);
-	/**
-	 * Return the cached x position of the cursor. This is used for when
-	 * we have text like :
-	 *
-	 * blah blah blah blah| blah blah blah
-	 * blah blah blah
-	 * blah blah blah blah blah blah
-	 *
-	 * When we move onto row 3, we would like to be vertically aligned
-	 * with where we were in row 1, despite the fact that row 2 is
-	 * shorter than x()
-	 */
-	int x_fix() const;
 	/// set the y position in pixels
 	void y(int i);
 	/// return the y position in pixels
@@ -88,8 +73,6 @@ private:
 	bool boundary_;
 	/// the pixel x position
 	int x_;
-	/// the cached x position
-	int x_fix_;
 	/// the pixel y position
 	int y_;
 };

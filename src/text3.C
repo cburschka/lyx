@@ -260,7 +260,7 @@ void LyXText::cursorPrevious()
 		return;
 	}
 
-	setCursorFromCoordinates(cursor.x_fix(), y);
+	setCursorFromCoordinates(bv()->x_target(), y);
 	finishUndo();
 
 	if (crit == bv()->text->cursorRow()) {
@@ -313,7 +313,7 @@ void LyXText::cursorNext()
 	Row const & rr = *getRowNearY(y, dummypit);
 	y = dummypit->y + rr.y_offset();
 
-	setCursorFromCoordinates(cursor.x_fix(), y);
+	setCursorFromCoordinates(bv()->x_target(), y);
 	// + bv->workHeight());
 	finishUndo();
 
@@ -1326,7 +1326,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 			bv->text->setCursorFromCoordinates(x, y + screen_first);
 		finishUndo();
 		bv->text->selection.cursor = bv->text->cursor;
-		bv->text->cursor.x_fix(bv->text->cursor.x());
+		bv->x_target(bv->text->cursor.x());
 
 		if (bv->fitCursor())
 			selection_possible = false;

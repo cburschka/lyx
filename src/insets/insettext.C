@@ -512,7 +512,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 		text_.setCursorFromCoordinates(cmd.x, cmd.y + dim_.asc);
 		// set the selection cursor!
 		text_.selection.cursor = text_.cursor;
-		text_.cursor.x_fix(text_.cursor.x());
+		bv->x_target(text_.cursor.x());
 
 		text_.clearSelection();
 		updateLocal(bv, false);
@@ -584,7 +584,7 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 	BufferView * bv = cmd.view();
 	LyXCursor cur = text_.cursor;
 	text_.setCursorFromCoordinates (cmd.x, cmd.y + dim_.asc);
-	text_.cursor.x_fix(text_.cursor.x());
+	bv->x_target(text_.cursor.x());
 	if (cur == text_.cursor)
 		return;
 	text_.setSelection();
@@ -632,7 +632,7 @@ InsetText::priv_dispatch(FuncRequest const & cmd,
 			if (!checkAndActivateInset(bv, cmd.x, tmp_y, mouse_button::none)) {
 				text_.setCursorFromCoordinates(cmd.x, cmd.y + dim_.asc);
 				text_.cursor.x(text_.cursor.x());
-				text_.cursor.x_fix(text_.cursor.x());
+				bv->x_target(text_.cursor.x());
 			}
 		}
 

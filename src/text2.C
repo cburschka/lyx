@@ -1339,9 +1339,8 @@ void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
 		BOOST_ASSERT(false);
 	}
 	// now get the cursors x position
-	float x = getCursorX(pit, row, pos, boundary);
-	cur.x(int(x));
-	cur.x_fix(cur.x());
+	cur.x(int(getCursorX(pit, row, pos, boundary)));
+	bv()->x_target(cur.x());
 }
 
 
@@ -1620,7 +1619,7 @@ void LyXText::cursorUp(bool selecting)
 	ParagraphList::iterator cpit = cursorPar();
 	Row const & crow = *cpit->getRow(cursor.pos());
 #if 1
-	int x = cursor.x_fix();
+	int x = bv()->x_target();
 	int y = cursor.y() - crow.baseline() - 1;
 	setCursorFromCoordinates(x, y);
 	if (!selecting) {
@@ -1637,7 +1636,7 @@ void LyXText::cursorUp(bool selecting)
 #else
 	lyxerr << "cursorUp: y " << cursor.y() << " bl: " <<
 		crow.baseline() << endl;
-	setCursorFromCoordinates(cursor.x_fix(),
+	setCursorFromCoordinates(bv()->x_target(),
 		cursor.y() - crow.baseline() - 1);
 #endif
 }
@@ -1648,7 +1647,7 @@ void LyXText::cursorDown(bool selecting)
 	ParagraphList::iterator cpit = cursorPar();
 	Row const & crow = *cpit->getRow(cursor.pos());
 #if 1
-	int x = cursor.x_fix();
+	int x = bv()->x_target();
 	int y = cursor.y() - crow.baseline() + crow.height() + 1;
 	setCursorFromCoordinates(x, y);
 	if (!selecting) {
@@ -1663,7 +1662,7 @@ void LyXText::cursorDown(bool selecting)
 		}
 	}
 #else
-	setCursorFromCoordinates(cursor.x_fix(),
+	setCursorFromCoordinates(bv()->x_target(),
 		 cursor.y() - crow.baseline() + crow.height() + 1);
 #endif
 }

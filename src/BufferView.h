@@ -201,6 +201,11 @@ public:
 
 	/// execute the given function
 	bool dispatch(FuncRequest const & argument);
+	
+	/// set target x position of cursor
+	void BufferView::x_target(int x);
+	/// return target x position of cursor
+	int BufferView::x_target() const;
 
 private:
 	/// Set the current locking inset
@@ -210,6 +215,21 @@ private:
 	friend struct BufferView::Pimpl;
 
 	Pimpl * pimpl_;
+
+	/**
+	 * The target x position of the cursor. This is used for when
+	 * we have text like :
+	 *
+	 * blah blah blah blah| blah blah blah
+	 * blah blah blah
+	 * blah blah blah blah blah blah
+	 *
+	 * When we move onto row 3, we would like to be vertically aligned
+	 * with where we were in row 1, despite the fact that row 2 is
+	 * shorter than x()
+	 */
+	int x_target_;
+
 };
 
 #endif // BUFFERVIEW_H

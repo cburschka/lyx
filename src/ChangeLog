@@ -50,6 +50,13 @@
 	* buffer.h:
 	* bufferview_funcs.C: remove getInsetFromId()
 
+	* lyxcursor.[Ch]:
+	* BufferView.[Ch]: move x_fix from LyXCursor to BufferView
+
+	* lyxfunc.C:
+	* text2.C:
+	* text3.C: adjust
+
 2003-11-03  Alfredo Braunstein  <abraunst@libero.it>
 
 	* PosIterator.C (distance, advance): new

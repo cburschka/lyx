@@ -972,7 +972,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 						text->cursor.x() + inset_x,
 						text->cursor.y() -
 						row.baseline() - 1);
-					text->cursor.x_fix(text->cursor.x());
+					view()->x_target(text->cursor.x());
 #else
 					text->cursorUp(view());
 #endif
@@ -995,7 +995,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 						text->cursor.y() -
 						row.baseline() +
 						row.height() + 1);
-					text->cursor.x_fix(text->cursor.x());
+					view()->x_target(text->cursor.x());
 #else
 					text->cursorDown(view());
 #endif
