@@ -1,3 +1,7 @@
+2003-04-20  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* table.C: use string::erase(), not string::clear() to enable older
+	versions of gcc to compile the code.
 
 2003-04-17  André Pönitz  <poenitz@gmx.net>
 	

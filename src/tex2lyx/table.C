@@ -232,7 +232,7 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 			// stuff before the line break
 			// and look ahead for stuff after the line break
 			os << HLINE << hlines << HLINE << LINE << read_hlines(p) << HLINE;
-			hlines.clear();
+			hlines.erase();
 		}
 
 		else if (t.cs() == "hline")
