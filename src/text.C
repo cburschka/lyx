@@ -21,6 +21,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "encoding.h"
@@ -1936,13 +1937,13 @@ int LyXText::cursorY(CursorSlice const & cur) const
 
 CursorSlice & LyXText::cursor()
 {
-	return cursor_;
+	return bv()->cursor().top();
 }
 
 
 CursorSlice const & LyXText::cursor() const
 {
-	return cursor_;
+	return bv()->cursor().top();
 }
 
 
@@ -1957,4 +1958,56 @@ CursorSlice const & LyXText::anchor() const
 	return anchor_;
 }
 
+
+CursorSlice const & LyXText::selStart() const
+{
+	if (!selection.set())
+		return cursor();
+	// can't use std::min as this creates a new object
+	return anchor() < cursor() ? anchor() : cursor();
+}
+
+
+CursorSlice const & LyXText::selEnd() const
+{
+	if (!selection.set())
+		return cursor();
+	return anchor() > cursor() ? anchor() : cursor();
+}
+
+
+CursorSlice & LyXText::selStart()
+{
+	if (!selection.set())
+		return cursor();
+	return anchor() < cursor() ? anchor() : cursor();
+}
+
+
+CursorSlice & LyXText::selEnd()
+{
+	if (!selection.set())
+		return cursor();
+	return anchor() > cursor() ? anchor() : cursor();
+}
+
+
+void LyXText::setSelection()
+{
+	selection.set(true);
+	// a selection with no contents is not a selection
+	if (cursor().par() == anchor().par() && cursor().pos() == anchor().pos())
+		selection.set(false);
+}
+
+
+void LyXText::clearSelection()
+{
+	selection.set(false);
+	selection.mark(false);
+	anchor() = cursor();
+	// reset this in the bv()!
+	if (bv() && bv()->text())
+		bv()->unsetXSel();
+}
 

@@ -15,13 +15,13 @@
 #define LYXTEXT_H
 
 #include "bufferview_funcs.h"
+#include "cursor_slice.h"
 #include "Bidi.h"
 #include "layout.h"
 #include "lyxfont.h"
 #include "lyxtextclass.h"
 #include "ParagraphList_fwd.h"
 #include "RowList_fwd.h"
-#include "textcursor.h"
 
 #include "insets/inset.h"
 
@@ -41,17 +41,31 @@ class UpdatableInset;
 class VSpace;
 
 
-/**
-  This class used to hold the mapping between buffer paragraphs and
-	screen rows. Nowadays, the Paragraphs take care of their rows
-  themselves and this contains just most of the code for manipulating
-  them and interaction with the Cursor.
-  */
+// The structure that keeps track of the selections set.
+struct Selection {
+	Selection()
+		: set_(false), mark_(false)
+		{}
+	bool set() const {
+		return set_;
+	}
+	void set(bool s) {
+		set_ = s;
+	}
+	bool mark() const {
+		return mark_;
+	}
+	void mark(bool m) {
+		mark_ = m;
+	}
+private:
+	bool set_; // former selection
+	bool mark_; // former mark_set
+};
 
-// The inheritance from TextCursor should go. It's just there to ease
-// transition...
-class LyXText : public TextCursor {
-	// Public Functions
+
+/// This class encapsulates the main text data and operations in LyX
+class LyXText {
 public:
 	/// Constructor
 	LyXText(BufferView *, bool ininset);
@@ -163,11 +177,6 @@ public:
 	 */
 	lyx::pos_type getColumnNearX(ParagraphList::iterator pit,
 		Row const & row, int & x, bool & boundary) const;
-
-	/// need the selection cursor:
-	void setSelection();
-	///
-	void clearSelection();
 
 	/// select the word we need depending on word_location
 	void getWord(CursorSlice & from, CursorSlice & to, lyx::word_location const);
@@ -415,8 +424,38 @@ public:
 	/// access to the selection anchor
 	CursorSlice const & anchor() const;
 
+	///
+	void setSelection();
+	///
+	void clearSelection();
+	///
+	CursorSlice const & selStart() const;
+	///
+	CursorSlice const & selEnd() const;
+	///
+	CursorSlice & selStart();
+	///
+	CursorSlice & selEnd();
+
 
 public:
+/** The cursor.
+	Later this variable has to be removed. There should be no internal
+	cursor in a text (and thus not in a buffer). By keeping this it is
+	(I think) impossible to have several views with the same buffer, but
+	the cursor placed at different places.
+	[later]
+	Since the LyXText now has been moved from Buffer to BufferView
+	it should not be absolutely needed to move the cursor...
+	[even later]
+	Nevertheless, it should still be moved, in order to keep classes
+	and interdependencies small.
+	*/
+	// the other end of the selection
+	CursorSlice anchor_;
+	//
+	Selection selection;
+
 	///
 	int height;
 	///

@@ -12,7 +12,6 @@
 #ifndef CURSOR_H
 #define CURSOR_H
 
-#include "textcursor.h"
 #include "cursor_slice.h"
 
 #include <iosfwd>
@@ -29,7 +28,6 @@ class InsetTabular;
 /**
  * The cursor class describes the position of a cursor within a document.
  */
-
 
 class LCursor {
 public:

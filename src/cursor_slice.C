@@ -112,7 +112,7 @@ void CursorSlice::setPos(int pos)
 
 LyXText * CursorSlice::text() const
 {
-	return asUpdatableInset()->getText(idx_);
+	return asUpdatableInset() ? asUpdatableInset()->getText(idx_) : 0;
 }
 
 
@@ -155,24 +155,15 @@ bool operator>(CursorSlice const & p, CursorSlice const & q)
 }
 
 
-//std::ostream & operator<<(std::ostream & os, CursorSlice const & p)
-//{
-//	os << "(par: " << p.inset_ << " idx: " << p.idx_ << " pos: " << p.pos_ << ')';
-//	return os;
-//}
-
-
 std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
 {
 	os << " inset: " << item.inset_
-//	   << " text: " << item.text()
+	   << " text: " << item.text()
 	   << " idx: " << item.idx_
-//	   << " par: " << item.par_
-//	   << " pos: " << item.pos_
+	   << " par: " << item.par_
+	   << " pos: " << item.pos_
 //	   << " x: " << item.inset_->x()
 //	   << " y: " << item.inset_->y()
 ;
 	return os;
 }
-
-

@@ -260,8 +260,6 @@ lyx_SOURCES = \
 	text.C \
 	text2.C \
 	text3.C \
-	textcursor.C \
-	textcursor.h \
 	toc.C \
 	toc.h \
 	trans.C \

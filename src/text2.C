@@ -471,28 +471,8 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 }
 
 
-// important for the screen
-
-
 // the cursor set functions have a special mechanism. When they
-// realize, that you left an empty paragraph, they will delete it.
-
-// need the selection cursor:
-void LyXText::setSelection()
-{
-	TextCursor::setSelection();
-}
-
-
-void LyXText::clearSelection()
-{
-	TextCursor::clearSelection();
-
-	// reset this in the bv()!
-	if (bv() && bv()->text())
-		bv()->unsetXSel();
-}
-
+// realize you left an empty paragraph, they will delete it.
 
 void LyXText::cursorHome()
 {
