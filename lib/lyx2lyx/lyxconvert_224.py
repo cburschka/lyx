@@ -18,7 +18,7 @@
 import re
 from parser_tools import find_token, find_tokens, find_end_of_inset, find_end_of
 from sys import stderr
-from string import replace, split, find
+from string import replace, split, find, replace, strip
 
 def add_end_layout(lines):
     i = find_token(lines, '\\layout', 0)
@@ -203,7 +203,9 @@ def convert_breaks(lines):
         if line_top == -1 and line_bot == -1 and pb_bot == -1 and pb_top == -1:
             continue
 
-        lines[i] = ""
+        for tag in "\\line_top", "\\line_bottom", "\\pagebreak_top", "\\pagebreak_bottom":
+            lines[i] = replace(lines[i], tag, "")
+        lines[i] = strip(lines[i])
         i = i + 1
 
         #  Create an empty paragraph for line and page break that belong
