@@ -1,3 +1,11 @@
+2001-11-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/CREDITS: add Ben Stanley
+
+2001-11-27  Ben Stanley  <bds02@uow.edu.au>
+
+	* src/tabular.C (Latex): correct line count when writing latex.
+
 2001-09-29  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/paragraph.C (SimpleTeXSpecialChars): Call to textrow.start
