@@ -112,6 +112,20 @@ public:
 };
 
 
+/** Specialization for Copyright dialog
+ */
+class ControlCopyright;
+
+template <class GUIview, class GUIbc>
+class GUICopyright :
+	public GUI<ControlCopyright, GUIview, OkCancelPolicy, GUIbc> {
+public:
+	///
+	GUICopyright(LyXView & lv, Dialogs & d)
+		: GUI<ControlCopyright, GUIview, OkCancelPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for Credits dialog
  */
 class ControlCredits;

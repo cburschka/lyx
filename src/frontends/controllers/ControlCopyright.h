@@ -35,30 +35,5 @@ private:
 	virtual void apply() {}
 };
 
-/** This class instantiates and makes available the GUI-specific
-    ButtonController and View.
- */
-template <class GUIview, class GUIbc>
-class GUICopyright : public ControlCopyright {
-public:
-	///
-	GUICopyright(LyXView &, Dialogs &);
-	///
-	virtual ButtonControllerBase & bc() { return bc_; }
-	///
-	virtual ViewBase & view() { return view_; }
-
-private:
-	///
-	ButtonController<OkCancelPolicy, GUIbc> bc_;
-	///
-	GUIview view_;
-};
-
-template <class GUIview, class GUIbc>
-GUICopyright<GUIview, GUIbc>::GUICopyright(LyXView & lv, Dialogs & d)
-	: ControlCopyright(lv, d),
-	  view_(*this)
-{}
 #endif // CONTROLCOPYRIGHT_H
 

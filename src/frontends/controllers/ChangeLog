@@ -1,3 +1,11 @@
+2001-03-29  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlCitation.C (bibkeysInfo): removed Assert.
+
+	* ControlCopyright.h: moved GUICopyright into GUI.h
+
+	* GUI.h: see above.
+
 2001-03-28  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlInset.h (clearDaughterParams): is empty by default, not pure.

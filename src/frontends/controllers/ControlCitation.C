@@ -59,6 +59,5 @@ void ControlCitation::setDaughterParams()
 
 biblio::InfoMap const & ControlCitation::bibkeysInfo() const
 {
-	Assert(!bibkeysInfo_.empty());
 	return bibkeysInfo_;
 }
