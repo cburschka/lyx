@@ -104,7 +104,7 @@ void FormMathsBitmap::build()
 	x_ = (fdui->form->w - 90) / 2;
 	y_ = y_close + 10;
 
-	char const * const label = _("Close|^[");
+	string const label = _("Close|^[");
 	fdui->button_close = fl_add_button(FL_NORMAL_BUTTON, x_, y_, 90, 30,
 					   idex(label).c_str());
 	fl_set_button_shortcut(fdui->button_close, scex(label).c_str(), 1);

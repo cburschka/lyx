@@ -152,7 +152,7 @@ void FormDocument::build()
 	fl_set_combox_browser_height(obj, 400);
 
 	fl_addto_choice(class_->choice_spacing,
-			_(" Single | OneHalf | Double | Custom "));
+			_(" Single | OneHalf | Double | Custom ").c_str());
 	fl_addto_choice(class_->choice_fontsize, "default|10|11|12");
 	for (int n = 0; tex_fonts[n][0]; ++n) {
 		fl_addto_choice(class_->choice_fonts,tex_fonts[n]);
@@ -172,7 +172,7 @@ void FormDocument::build()
 	fl_addto_choice(class_->choice_pagestyle,
 			"default|empty|plain|headings|fancy");
 	fl_addto_choice(class_->choice_skip,
-			_(" SmallSkip | MedSkip | BigSkip | Length "));
+			_(" SmallSkip | MedSkip | BigSkip | Length ").c_str());
 	fl_addto_choice(class_->choice_skip_units,  units.c_str());
 
 	// Set input filters on doc spacing to make it accept only
@@ -237,12 +237,13 @@ void FormDocument::build()
 
 	fl_addto_choice(paper_->choice_papersize,
 			_(" Default | Custom | US letter | US legal "
-			  "| US executive | A3 | A4 | A5 | B3 | B4 | B5 "));
+			  "| US executive | A3 | A4 | A5 "
+			  "| B3 | B4 | B5 ").c_str());
 	fl_addto_choice(paper_->choice_paperpackage,
 			_(" None "
 			  "| Small Margins "
 			  "| Very small Margins "
-			  "| Very wide Margins "));
+			  "| Very wide Margins ").c_str());
 
 	fl_addto_choice(paper_->choice_custom_width_units,  units.c_str());
 	fl_addto_choice(paper_->choice_custom_height_units, units.c_str());
@@ -282,7 +283,7 @@ void FormDocument::build()
 
 	fl_addto_choice(language_->choice_quotes_language,
 			_(" ``text'' | ''text'' | ,,text`` | ,,text'' |"
-			  " «text» | »text« "));
+			  " «text» | »text« ").c_str());
 
 	// the document options form
 	options_.reset(build_document_options(this));
@@ -302,14 +303,14 @@ void FormDocument::build()
 	fl_set_input_return(options_->input_float_placement, FL_RETURN_CHANGED);
 
 	fl_addto_choice(options_->choice_ams_math,
-			_("Never | Automatically | Yes "));
+			_("Never | Automatically | Yes ").c_str());
 
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		fl_addto_choice(options_->choice_postscript_driver,
 				tex_graphics[n]);
 	}
 	fl_addto_choice(options_->choice_citation_format,
-			_(" Author-year | Numerical "));
+			_(" Author-year | Numerical ").c_str());
 
 	// the document bullets form
 	bullets_.reset(build_document_bullet(this));
@@ -335,8 +336,9 @@ void FormDocument::build()
 	fl_set_input_return(bullets_->input_latex, FL_RETURN_CHANGED);
 
 	fl_addto_choice(bullets_->choice_size,
-			_(" Default | Tiny | Smallest | Smaller | Small |"
-			  " Normal | Large | Larger | Largest | Huge | Huger "));
+			_(" Default | Tiny | Smallest | Smaller "
+			  "| Small | Normal | Large | Larger | Largest "
+			  "| Huge | Huger ").c_str());
 	fl_set_choice(bullets_->choice_size, 1);
 
 	fl_set_input_maxchars(bullets_->input_latex, 80);
@@ -350,15 +352,15 @@ void FormDocument::build()
 		fl_set_tabfolder_autofit(dialog_->tabfolder, FL_FIT);
 
 	// Stack tabs
-	fl_addto_tabfolder(dialog_->tabfolder,_("Document"),
+	fl_addto_tabfolder(dialog_->tabfolder,_("Document").c_str(),
 			   class_->form);
-	fl_addto_tabfolder(dialog_->tabfolder,_("Paper"),
+	fl_addto_tabfolder(dialog_->tabfolder,_("Paper").c_str(),
 			   paper_->form);
-	fl_addto_tabfolder(dialog_->tabfolder,_("Language"),
+	fl_addto_tabfolder(dialog_->tabfolder,_("Language").c_str(),
 			   language_->form);
-	fl_addto_tabfolder(dialog_->tabfolder,_("Extra"),
+	fl_addto_tabfolder(dialog_->tabfolder,_("Extra").c_str(),
 			   options_->form);
-	fbullet = fl_addto_tabfolder(dialog_->tabfolder,_("Bullets"),
+	fbullet = fl_addto_tabfolder(dialog_->tabfolder,_("Bullets").c_str(),
 				     bullets_->form);
 
 	if ((XpmVersion < 4) || (XpmVersion == 4 && XpmRevision < 7)) {

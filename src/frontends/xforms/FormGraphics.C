@@ -263,9 +263,12 @@ void FormGraphics::build()
 		fl_set_tabfolder_autofit(dialog_->tabfolder, FL_FIT);
 
 	// Stack tabs
-	fl_addto_tabfolder(dialog_->tabfolder, _("File"), file_->form);
-	fl_addto_tabfolder(dialog_->tabfolder, _("Bounding Box"), bbox_->form);
-	fl_addto_tabfolder(dialog_->tabfolder, _("Extra"), extra_->form);
+	fl_addto_tabfolder(dialog_->tabfolder, _("File").c_str(),
+			   file_->form);
+	fl_addto_tabfolder(dialog_->tabfolder, _("Bounding Box").c_str(),
+			   bbox_->form);
+	fl_addto_tabfolder(dialog_->tabfolder, _("Extra").c_str(),
+			   extra_->form);
 
 	// set the right default unit
 	switch (lyxrc.default_papersize) {

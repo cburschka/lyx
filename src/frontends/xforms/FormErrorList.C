@@ -80,7 +80,7 @@ void FormErrorList::updateContents()
 	if (Errors.empty()) {
 		fl_clear_browser(dialog_->browser_errors);
 		fl_add_browser_line(dialog_->browser_errors,
-				    _("*** No Lists ***"));
+				    _("*** No Lists ***").c_str());
 		setEnabled(dialog_->browser_errors, false);
 		return;
 	}

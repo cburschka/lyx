@@ -93,8 +93,8 @@ s/CHOICE/COMBOX/
 
 
 # For all lines containing "fl_" and a string _not_ containing |,
-# replace the string with _(string)
-/fl_/ s/".[^|]*"/_(&)/
+# replace the string with _(string).c_str()
+/fl_/ s/".[^|]*"/_(&).c_str()/
 
 
 #  For all lines containing "_shortcut" and a string containing |, 

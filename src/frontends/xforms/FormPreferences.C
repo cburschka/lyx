@@ -227,70 +227,70 @@ void FormPreferences::build()
 	// Stack tabs
 	// Now add them to the tabfolder
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
-			   _("Look & Feel"),
+			   _("Look & Feel").c_str(),
 			   look_n_feel_tab_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
-			   _("Lang Opts"),
+			   _("Lang Opts").c_str(),
 			   lang_opts_tab_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
-			   _("Conversion"),
+			   _("Conversion").c_str(),
 			   converters_tab_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
-			   _("Inputs"),
+			   _("Inputs").c_str(),
 			   inputs_tab_->form);
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
-			   _("Outputs"),
+			   _("Outputs").c_str(),
 			   outputs_tab_->form);
 
 	// now build the nested tabfolders
 	// Starting with look and feel
 	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_inner,
-			   _("Screen Fonts"),
+			   _("Screen Fonts").c_str(),
 			   screen_fonts_.dialog()->form);
 	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_inner,
-			   _("Interface"),
+			   _("Interface").c_str(),
 			   interface_.dialog()->form);
 	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_inner,
-			   _("Colors"),
+			   _("Colors").c_str(),
 			   colors_.dialog()->form);
 	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_inner,
-			   _("Misc"),
+			   _("Misc").c_str(),
 			   lnf_misc_.dialog()->form);
 	fl_addto_tabfolder(look_n_feel_tab_->tabfolder_inner,
-			   _("Identity"),
+			   _("Identity").c_str(),
 			   identity_.dialog()->form);
 
 	// then build converters
 	fl_addto_tabfolder(converters_tab_->tabfolder_inner,
-			   _("Formats"),
+			   _("Formats").c_str(),
 			   formats_.dialog()->form);
 	fl_addto_tabfolder(converters_tab_->tabfolder_inner,
-			   _("Converters"),
+			   _("Converters").c_str(),
 			   converters_.dialog()->form);
 
 	// then build inputs
 	// Paths should probably go in a few inner_tab called Files
 	fl_addto_tabfolder(inputs_tab_->tabfolder_inner,
-			   _("Paths"),
+			   _("Paths").c_str(),
 			   paths_.dialog()->form);
 	fl_addto_tabfolder(inputs_tab_->tabfolder_inner,
-			   _("Misc"),
+			   _("Misc").c_str(),
 			   inputs_misc_.dialog()->form);
 
 	// then building outputs
 	fl_addto_tabfolder(outputs_tab_->tabfolder_inner,
-			   _("Printer"),
+			   _("Printer").c_str(),
 			   printer_.dialog()->form);
 	fl_addto_tabfolder(outputs_tab_->tabfolder_inner,
-			   _("Misc"),
+			   _("Misc").c_str(),
 			   outputs_misc_.dialog()->form);
 
 	// then building usage
 	fl_addto_tabfolder(lang_opts_tab_->tabfolder_inner,
-			   _("Spell checker"),
+			   _("Spell checker").c_str(),
 			   spelloptions_.dialog()->form);
 	fl_addto_tabfolder(lang_opts_tab_->tabfolder_inner,
-			   _("Language"),
+			   _("Language").c_str(),
 			   language_.dialog()->form);
 }
 
@@ -1887,7 +1887,8 @@ void FormPreferences::LnFmisc::build()
 	setPrehandler(dialog_->check_preview_latex);
 	setPrehandler(dialog_->counter_wm_jump);
 
-	fl_addto_choice(dialog_->choice_display, _("Monochrome|Grayscale|Color|Do not display"));
+	fl_addto_choice(dialog_->choice_display,
+			_("Monochrome|Grayscale|Color|Do not display").c_str());
 }
 
 
@@ -1986,7 +1987,8 @@ void FormPreferences::OutputsMisc::build()
 	fl_set_input_return(dialog_->input_paperoption,  FL_RETURN_CHANGED);
 
 	fl_addto_choice(dialog_->choice_default_papersize,
-			_(" default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "));
+			_(" default | US letter | US legal "
+			  "| US executive | A3 | A4 | A5 | B5 ").c_str());
 
 	// set up the feedback mechanism
 	setPrehandler(dialog_->counter_line_len);
@@ -2863,7 +2865,7 @@ void FormPreferences::SpellOptions::build()
 	dialog_.reset(build_preferences_spelloptions(&parent_));
 
 	fl_addto_choice(dialog_->choice_spell_command,
-			_(" ispell | aspell "));
+			_(" ispell | aspell ").c_str());
 	fl_set_input_return(dialog_->input_alt_lang,      FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_escape_chars,  FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_personal_dict, FL_RETURN_CHANGED);

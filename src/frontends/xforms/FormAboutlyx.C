@@ -78,11 +78,11 @@ void FormAboutlyx::build()
 		fl_set_tabfolder_autofit(dialog_->tabfolder, FL_FIT);
 
 	// Stack tabs
-	fl_addto_tabfolder(dialog_->tabfolder, _("Version"),
+	fl_addto_tabfolder(dialog_->tabfolder, _("Version").c_str(),
 			   version_->form);
-	fl_addto_tabfolder(dialog_->tabfolder, _("Credits"),
+	fl_addto_tabfolder(dialog_->tabfolder, _("Credits").c_str(),
 			   credits_->form);
-	fl_addto_tabfolder(dialog_->tabfolder, _("License"),
+	fl_addto_tabfolder(dialog_->tabfolder, _("License").c_str(),
 			   license_->form);
 
 	// Manage the cancel/close button

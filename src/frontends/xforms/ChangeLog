@@ -1,5 +1,24 @@
 2003-05-19  Angus Leeming  <leeming@lyx.org>
 
+	* forms/fdfixc.sed:
+	* FormAboutlyx.C (build):
+	* FormCitation.C (update):
+	* FormDocument.C (build):
+	* FormErrorList.C (updateContents):
+	* FormGraphics.C (build):
+	* FormMathsBitmap.C (build):
+	* FormMathsMatrix.C (build):
+	* FormPreferences.C (build, LnFmisc::build, OutputsMisc::build,
+	SpellOptions::build):
+	* FormRef.C (build, updateBrowser, switch_go_button):
+	* FormTabular.C (build):
+	* FormToc.C (updateContents):
+	gettext's _(str) now returns a string rather
+	than char const *, so must add a .c_str() when passing to the xforms
+	lib.
+
+2003-05-19  Angus Leeming  <leeming@lyx.org>
+
 	* forms/c_str.sed: removed. Renamed as:
 	* forms/tmp_str.sed
 

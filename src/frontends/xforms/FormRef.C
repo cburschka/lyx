@@ -42,7 +42,7 @@ void FormRef::build()
 
 	for (int i = 0; !InsetRef::types[i].latex_name.empty(); ++i)
 		fl_addto_choice(dialog_->choice_format,
-				_(InsetRef::types[i].gui_name.c_str()));
+				_(InsetRef::types[i].gui_name).c_str());
 
 	// Force the user to use the browser to change refs.
 	fl_deactivate_object(dialog_->input_ref);
@@ -175,7 +175,7 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 
 	if (keys.empty()) {
 		fl_add_browser_line(dialog_->browser_refs,
-				    _("*** No labels found in document ***"));
+				    _("*** No labels found in document ***").c_str());
 
 		setEnabled(dialog_->browser_refs, false);
 		setEnabled(dialog_->check_sort,   false);
@@ -273,11 +273,11 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 void FormRef::switch_go_button()
 {
 	if (at_ref_) {
-		fl_set_object_label(dialog_->button_go, _("Go back"));
-		tooltips().init(dialog_->button_go, _("Go back to original place."));
+		fl_set_object_label(dialog_->button_go, _("Go back").c_str());
+		tooltips().init(dialog_->button_go, _("Go back to original place.").c_str());
 	} else {
-		fl_set_object_label(dialog_->button_go, _("Go to"));
-		tooltips().init(dialog_->button_go, _("Go to selected reference."));
+		fl_set_object_label(dialog_->button_go, _("Go to").c_str());
+		tooltips().init(dialog_->button_go, _("Go to selected reference.").c_str());
 	}
 	fl_set_button_shortcut(dialog_->button_go, "#G", 1);
 	fl_show_object(dialog_->button_go);

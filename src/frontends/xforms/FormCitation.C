@@ -461,7 +461,7 @@ void FormCitation::update()
 	fl_set_input(dialog_->input_after,
 		     controller().params().getOptions().c_str());
 
-	fl_set_input(dialog_->input_before, _("Not yet supported"));
+	fl_set_input(dialog_->input_before, _("Not yet supported").c_str());
 	setEnabled(dialog_->input_before, false);
 }
 

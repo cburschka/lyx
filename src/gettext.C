@@ -1,12 +1,13 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file gettext.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 
@@ -30,12 +31,6 @@ Messages & getLyXMessages()
 }
 
 } // anon namespace
-
-
-char const * _(char const * str)
-{
-	return getLyXMessages().get(str).c_str();
-}
 
 
 string const _(string const & str)

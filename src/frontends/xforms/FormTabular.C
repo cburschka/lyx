@@ -127,13 +127,13 @@ void FormTabular::build()
 		fl_set_tabfolder_autofit(dialog_->tabfolder, FL_FIT);
 
 	// Stack tabs
-	fl_addto_tabfolder(dialog_->tabfolder, _("Table"),
+	fl_addto_tabfolder(dialog_->tabfolder, _("Table").c_str(),
 			   tabular_options_->form);
-	fl_addto_tabfolder(dialog_->tabfolder, _("Column/Row"),
+	fl_addto_tabfolder(dialog_->tabfolder, _("Column/Row").c_str(),
 			   column_options_->form);
-	fl_addto_tabfolder(dialog_->tabfolder, _("Cell"),
+	fl_addto_tabfolder(dialog_->tabfolder, _("Cell").c_str(),
 			   cell_options_->form);
-	fl_addto_tabfolder(dialog_->tabfolder, _("LongTable"),
+	fl_addto_tabfolder(dialog_->tabfolder, _("LongTable").c_str(),
 			   longtable_options_->form);
 
 	//  FIXME: addReadOnly everything

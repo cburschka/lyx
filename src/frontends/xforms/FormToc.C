@@ -97,7 +97,7 @@ void FormToc::updateContents()
 	if (type.empty()) {
 		fl_clear_browser(dialog_->browser_toc);
 		fl_add_browser_line(dialog_->browser_toc,
-				    _("*** No Lists ***"));
+				    _("*** No Lists ***").c_str());
 		setEnabled(dialog_->browser_toc, false);
 		return;
 	}
@@ -115,7 +115,7 @@ void FormToc::updateContents()
 	if (contents.empty()) {
 		fl_clear_browser(dialog_->browser_toc);
 		fl_add_browser_line(dialog_->browser_toc,
-				    _("*** No Lists ***"));
+				    _("*** No Lists ***").c_str());
 		setEnabled(dialog_->browser_toc, false);
 		return;
 	}
