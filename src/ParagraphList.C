@@ -65,7 +65,7 @@ ParagraphList::iterator::operator--(int)
 
 
 bool operator==(ParagraphList::iterator const & i1,
-                ParagraphList::iterator const & i2)
+		ParagraphList::iterator const & i2)
 {
 	return &(*const_cast<ParagraphList::iterator&>(i1))
 	    == &(*const_cast<ParagraphList::iterator&>(i2));
@@ -73,7 +73,7 @@ bool operator==(ParagraphList::iterator const & i1,
 
 
 bool operator!=(ParagraphList::iterator const & i1,
-                ParagraphList::iterator const & i2)
+		ParagraphList::iterator const & i2)
 {
 	return !(i1 == i2);
 }
@@ -95,7 +95,7 @@ void ParagraphList::clear()
 }
 
 
-ParagraphList::iterator ParagraphList::begin() 
+ParagraphList::iterator ParagraphList::begin()
 {
 	return iterator(parlist);
 }
