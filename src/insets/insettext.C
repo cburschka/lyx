@@ -72,12 +72,11 @@ using std::pair;
 using std::for_each;
 
 using namespace lyx::support;
+using namespace lyx::graphics;
 using namespace bv_funcs;
 
 using lyx::pos_type;
 using lyx::textclass_type;
-
-namespace grfx = lyx::graphics;
 
 // These functions should probably go into bufferview_funcs somehow (Jug)
 
@@ -2299,7 +2298,7 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 }
 
 
-void InsetText::addPreview(grfx::PreviewLoader & loader) const
+void InsetText::addPreview(PreviewLoader & loader) const
 {
 	ParagraphList::const_iterator pit = paragraphs.begin();
 	ParagraphList::const_iterator pend = paragraphs.end();

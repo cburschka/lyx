@@ -351,7 +351,7 @@ private:
 class InsetTabularMailer : public MailInset {
 public:
 	///
-	InsetTabularMailer(InsetTabular & inset);
+	InsetTabularMailer(InsetTabular const & inset);
 	///
 	virtual InsetBase & inset() const { return inset_; }
 	///

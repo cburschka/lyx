@@ -50,6 +50,7 @@
 
 
 using namespace lyx::support;
+using namespace lyx::graphics;
 
 using std::vector;
 using std::ostream;
@@ -59,7 +60,6 @@ using std::endl;
 using std::swap;
 using std::max;
 
-namespace grfx = lyx::graphics;
 
 namespace {
 
@@ -193,8 +193,7 @@ InsetTabular::InsetTabular(InsetTabular const & tab)
 
 InsetTabular::~InsetTabular()
 {
-	InsetTabularMailer mailer(*this);
-	mailer.hideDialog();
+	InsetTabularMailer(*this).hideDialog();
 }
 
 
@@ -516,8 +515,7 @@ bool InsetTabular::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 	if (the_locking_inset->unlockInsetInInset(bv, inset, lr)) {
 		if (inset->lyxCode() == TABULAR_CODE &&
 		    !the_locking_inset->getFirstLockingInsetOfType(TABULAR_CODE)) {
-			InsetTabularMailer mailer(*this);
-			mailer.updateDialog(bv);
+			InsetTabularMailer(*this).updateDialog(bv);
 			oldcell = actcell;
 		}
 		return true;
@@ -985,13 +983,11 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 	case LFUN_ENDBUFSEL:
 		break;
 	case LFUN_LAYOUT_TABULAR: {
-		InsetTabularMailer mailer(*this);
-		mailer.showDialog(bv);
+		InsetTabularMailer(*this).showDialog(bv);
 		break;
 	}
 	case LFUN_INSET_DIALOG_UPDATE: {
-		InsetTabularMailer mailer(*this);
-		mailer.updateDialog(bv);
+		InsetTabularMailer(*this).updateDialog(bv);
 		break;
 	}
 	case LFUN_TABULAR_FEATURE:
@@ -1448,9 +1444,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 	if ((!the_locking_inset ||
 	     !the_locking_inset->getFirstLockingInsetOfType(TABULAR_CODE)) &&
 	    actcell != oldcell) {
-		InsetTabular * inset = const_cast<InsetTabular *>(this);
-		InsetTabularMailer mailer(*inset);
-		mailer.updateDialog(bv);
+		InsetTabularMailer(*this).updateDialog(bv);
 		oldcell = actcell;
 	}
 	in_reset_pos = 0;
@@ -2031,8 +2025,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		break;
 	}
 
-	InsetTabularMailer mailer(*this);
-	mailer.updateDialog(bv);
+	InsetTabularMailer(*this).updateDialog(bv);
 }
 
 
@@ -2097,26 +2090,14 @@ LyXText * InsetTabular::getLyXText(BufferView const * bv,
 {
 	if (the_locking_inset)
 		return the_locking_inset->getLyXText(bv, recursive);
-#if 0
-	// if we're locked lock the actual insettext and return it's LyXText!!!
-	if (locked) {
-		UpdatableInset * inset =
-			static_cast<UpdatableInset*>(tabular.getCellInset(actcell));
-		inset->edit(const_cast<BufferView *>(bv), 0,  0, 0);
-		return the_locking_inset->getLyXText(bv, recursive);
-	}
-#endif
 	return Inset::getLyXText(bv, recursive);
 }
 
 
 bool InsetTabular::showInsetDialog(BufferView * bv) const
 {
-	if (!the_locking_inset || !the_locking_inset->showInsetDialog(bv)) {
-		InsetTabular * tmp = const_cast<InsetTabular *>(this);
-		InsetTabularMailer mailer(*tmp);
-		mailer.showDialog(bv);
-	}
+	if (!the_locking_inset || !the_locking_inset->showInsetDialog(bv))
+		InsetTabularMailer(*this).showDialog(bv);
 	return true;
 }
 
@@ -2131,9 +2112,7 @@ void InsetTabular::openLayoutDialog(BufferView * bv) const
 			return;
 		}
 	}
-	InsetTabular * tmp = const_cast<InsetTabular *>(this);
-	InsetTabularMailer mailer(*tmp);
-	mailer.showDialog(bv);
+	InsetTabularMailer(*this).showDialog(bv);
 }
 
 
@@ -2476,11 +2455,11 @@ Inset * InsetTabular::getInsetFromID(int id_arg) const
 	if (id_arg == id())
 		return const_cast<InsetTabular *>(this);
 
-	Inset * result;
-	for(int i = 0; i < tabular.rows(); ++i) {
-		for(int j = 0; j < tabular.columns(); ++j) {
-			if ((result = tabular.getCellInset(i, j)->getInsetFromID(id_arg)))
-				return result;
+	for (int i = 0; i < tabular.rows(); ++i) {
+		for (int j = 0; j < tabular.columns(); ++j) {
+			Inset * inset = tabular.getCellInset(i, j)->getInsetFromID(id_arg);
+			if (inset)
+				return inset;
 		}
 	}
 	return 0;
@@ -2505,9 +2484,8 @@ InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 		++actcell;
 	}
 	// otherwise we have to lock the next inset and ask for it's selecttion
-	UpdatableInset * inset =
-		static_cast<UpdatableInset*>(tabular.getCellInset(actcell));
-	inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
+	tabular.getCellInset(actcell)
+		->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 	WordLangTuple word(selectNextWordInt(bv, value));
 	nodraw(false);
 	if (!word.word().empty())
@@ -2531,40 +2509,31 @@ WordLangTuple InsetTabular::selectNextWordInt(BufferView * bv, float & value) co
 	}
 
 	// otherwise we have to lock the next inset and ask for it's selecttion
-	UpdatableInset * inset =
-		static_cast<UpdatableInset*>(tabular.getCellInset(++actcell));
-	inset->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
+	++actcell;
+	tabular.getCellInset(actcell)
+		->localDispatch(FuncRequest(bv, LFUN_INSET_EDIT));
 	return selectNextWordInt(bv, value);
 }
 
 
 void InsetTabular::selectSelectedWord(BufferView * bv)
 {
-	if (the_locking_inset) {
+	if (the_locking_inset)
 		the_locking_inset->selectSelectedWord(bv);
-		return;
-	}
-	return;
 }
 
 
 void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
 {
-	if (the_locking_inset) {
+	if (the_locking_inset)
 		the_locking_inset->toggleSelection(bv, kill_selection);
-	}
 }
 
 
 void InsetTabular::markErased()
 {
-	int cell = 0;
-
-	while (cell < tabular.getNumberOfCells()) {
-		InsetText * inset = tabular.getCellInset(cell);
-		inset->markErased();
-		++cell;
-	}
+	for (int cell = 0; cell < tabular.getNumberOfCells(); ++cell)
+		tabular.getCellInset(cell)->markErased();
 }
 
 
@@ -2675,6 +2644,7 @@ bool InsetTabular::forceDefaultParagraphs(Inset const * in) const
 	return false;
 }
 
+
 bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 				     bool usePaste)
 {
@@ -2728,7 +2698,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 	rows = loctab->rows();
 	int const columns = loctab->columns();
 
-	while ((cell < cells) && (p < len) && (row < rows) &&
+	while (cell < cells && p < len && row < rows &&
 	       (p = buf.find_first_of("\t\n", p)) != string::npos)
 	{
 		if (p >= len)
@@ -2763,7 +2733,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 		op = p;
 	}
 	// check for the last cell if there is no trailing '\n'
-	if ((cell < cells) && (op < len)) {
+	if (cell < cells && op < len) {
 		InsetText * ti = loctab->getCellInset(cell);
 		LyXFont const font = ti->getLyXText(bv)->
 			getFont(bv->buffer(), ti->paragraphs.begin(), 0);
@@ -2774,7 +2744,7 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 }
 
 
-void InsetTabular::addPreview(grfx::PreviewLoader & loader) const
+void InsetTabular::addPreview(PreviewLoader & loader) const
 {
 	int const rows = tabular.rows();
 	int const columns = tabular.columns();
@@ -2786,10 +2756,10 @@ void InsetTabular::addPreview(grfx::PreviewLoader & loader) const
 }
 
 
-string const InsetTabularMailer:: name_("tabular");
+string const InsetTabularMailer::name_("tabular");
 
-InsetTabularMailer::InsetTabularMailer(InsetTabular & inset)
-	: inset_(inset)
+InsetTabularMailer::InsetTabularMailer(InsetTabular const & inset)
+	: inset_(const_cast<InsetTabular &>(inset))
 {}
 
 

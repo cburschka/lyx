@@ -35,13 +35,13 @@
 #include "support/LOstream.h"
 
 using namespace lyx::support;
+using namespace lyx::graphics;
 
 using std::vector;
 using std::ostream;
 using std::endl;
 using std::max;
 
-namespace grfx = lyx::graphics;
 
 InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
 	: UpdatableInset(), collapsed_(collapsed), inset(bp),
@@ -425,7 +425,7 @@ void InsetCollapsable::getCursorPos(BufferView * bv, int & x, int & y) const
 UpdatableInset * InsetCollapsable::getLockingInset() const
 {
 	UpdatableInset * in = inset.getLockingInset();
-	if (const_cast<InsetText *>(&inset) == in)
+	if (&inset == in)
 		return const_cast<InsetCollapsable *>(this);
 	return in;
 }
@@ -587,7 +587,7 @@ InsetCollapsable::selectNextWordToSpellcheck(BufferView * bv, float & value) con
 }
 
 
-void InsetCollapsable::addPreview(grfx::PreviewLoader & loader) const
+void InsetCollapsable::addPreview(PreviewLoader & loader) const
 {
 	inset.addPreview(loader);
 }
