@@ -29,17 +29,17 @@ class DispatchResult;
 class InsetBase {
 public:
 	///
-	typedef int      difference_type;
+	typedef ptrdiff_t  difference_type;
 	/// short of anything else reasonable
-	typedef size_t   size_type;
+	typedef size_t     size_type;
 	/// type for cell indices
-	typedef size_t  idx_type;
+	typedef size_t     idx_type;
 	/// type for cursor positions
-	typedef size_t  pos_type;
+	typedef ptrdiff_t  pos_type;
 	/// type for row numbers
-	typedef size_t  row_type;
+	typedef size_t     row_type;
 	/// type for column numbers
-	typedef size_t  col_type;
+	typedef size_t     col_type;
 
 	/// virtual base class destructor
 	virtual ~InsetBase() {}

@@ -814,7 +814,7 @@ void MathCursor::normalize()
 		lyxerr << endl;
 		dump("error 4");
 	}
-	pos() = min(pos(), size());
+	pos() = pos() < size() ? pos() : size();
 }
 
 

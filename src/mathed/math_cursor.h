@@ -16,6 +16,7 @@
 #include "math_inset.h"
 #include "math_data.h"
 #include "math_iterator.h"
+#include "support/types.h"
 
 #include <string>
 
@@ -40,17 +41,17 @@ this formula's MathHullInset to the current position.
 class MathCursor {
 public:
 	/// short of anything else reasonable
-	typedef MathInset::size_type       size_type;
+	typedef size_t             size_type;
 	/// type for column numbers
-	typedef MathArray::difference_type difference_type;
+	typedef ptrdiff_t          difference_type;
 	/// type for cursor positions within a cell
-	typedef MathInset::pos_type        pos_type;
+	typedef lyx::pos_type      pos_type;
 	/// type for cell indices
-	typedef MathInset::idx_type        idx_type;
+	typedef size_t             idx_type;
 	/// type for row numbers
-	typedef MathInset::row_type        row_type;
+	typedef size_t             row_type;
 	/// type for column numbers
-	typedef MathInset::col_type        col_type;
+	typedef size_t             col_type;
 
 	///
 	explicit MathCursor(InsetFormulaBase *, bool left);

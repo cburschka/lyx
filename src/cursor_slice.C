@@ -3,7 +3,10 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Lars Gullik Bjønnes
+ * \author Matthias Ettrich
  * \author André Pönitz
+ * \author Jürgen Vigna
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -22,14 +25,50 @@ using std::endl;
 
 
 CursorSlice::CursorSlice()
-	: inset_(0), idx_(0), par_(0), pos_(0)
+	: inset_(0), idx_(0), par_(0), pos_(0), boundary_(false)
 {}
 
 
 CursorSlice::CursorSlice(InsetBase * p)
-	: inset_(p), idx_(0), par_(0), pos_(0)
+	: inset_(p), idx_(0), par_(0), pos_(0), boundary_(false)
 {
 	///BOOST_ASSERT(inset_);
+}
+
+
+void CursorSlice::par(lyx::paroffset_type par)
+{
+	par_ = par;
+}
+
+
+lyx::paroffset_type CursorSlice::par() const
+{
+	return par_;
+}
+
+
+void CursorSlice::pos(lyx::pos_type pos)
+{
+	pos_ = pos;
+}
+
+
+lyx::pos_type CursorSlice::pos() const
+{
+	return pos_;
+}
+
+
+void CursorSlice::boundary(bool boundary)
+{
+	boundary_ = boundary;
+}
+
+
+bool CursorSlice::boundary() const
+{
+	return boundary_;
 }
 
 

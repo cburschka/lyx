@@ -15,8 +15,6 @@
 #include "textcursor.h"
 #include "cursor_slice.h"
 
-#include "support/types.h"
-
 #include <iosfwd>
 #include <vector>
 
@@ -35,6 +33,13 @@ class InsetTabular;
 
 class LCursor {
 public:
+	/// type for cell number in inset
+	typedef CursorSlice::idx_type idx_type;
+	/// type for paragraph numbers positions within a cell
+	typedef CursorSlice::par_type par_type;
+	/// type for cursor positions within a cell
+	typedef CursorSlice::pos_type pos_type;
+
 	/// create 'empty' cursor
 	explicit LCursor(BufferView * bv);
 	/// dispatch from innermost inset upwards

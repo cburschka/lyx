@@ -22,10 +22,12 @@ namespace lyx {
 
 	/// a type for positions used in paragraphs
 	// needs to be signed for a while to hold the special value -1 that is
-	// used there...
+	// used there
 	typedef ptrdiff_t  pos_type;
 
 	/// a type for paragraph offsets
+	// FIXME: should be unsigned as well.
+	// however, simply changing it breaks a downward loop somewhere...
 	typedef ptrdiff_t  paroffset_type;
 
 	/// a type for the nesting depth of a paragraph

@@ -16,6 +16,9 @@
 	* text3.C:
 	* undo.C: adjust
 
+	* cursor.h:
+	* cursor_slice.[Ch]: some integer type changes for inset unification
+
 2004-01-08  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* text2.C (undoSpan): add and use

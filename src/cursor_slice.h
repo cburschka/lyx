@@ -4,7 +4,12 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Lars Gullik Bjønnes
+ * \author Matthias Ettrich
+ * \author John Levon
  * \author André Pönitz
+ * \author Dekel Tsur
+ * \author Jürgen Vigna
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -14,6 +19,8 @@
 
 #include <iosfwd>
 #include <cstddef>
+
+#include "support/types.h"
 
 class InsetBase;
 class UpdatableInset;
@@ -34,15 +41,28 @@ public:
 	/// type for cell number in inset
 	typedef size_t idx_type;
 	/// type for paragraph numbers positions within a cell
-	typedef size_t par_type;
+	typedef lyx::paroffset_type par_type;
 	/// type for cursor positions within a cell
-	typedef size_t pos_type;
+	typedef lyx::pos_type pos_type;
 
 	///
 	CursorSlice();
 	///
 	explicit CursorSlice(InsetBase *);
 
+	/// set the paragraph that contains this cursor
+	void par(par_type pit);
+	/// return the paragraph this cursor is in
+	par_type par() const;
+	/// set the position within the paragraph
+	void pos(pos_type p);
+	/// return the position within the paragraph
+	pos_type pos() const;
+
+	/// FIXME
+	void boundary(bool b);
+	/// FIXME
+	bool boundary() const;
 	///
 	/// texted specific stuff
 	///
@@ -76,6 +96,22 @@ public:
 	par_type par_;
 	/// position in this cell
 	pos_type pos_;
+	/**
+	 * When the cursor position is i, is the cursor is after the i-th char
+	 * or before the i+1-th char ? Normally, these two interpretations are
+	 * equivalent, except when the fonts of the i-th and i+1-th char
+	 * differ.
+	 * We use boundary_ to distinguish between the two options:
+	 * If boundary_=true, then the cursor is after the i-th char
+	 * and if boundary_=false, then the cursor is before the i+1-th char.
+	 *
+	 * We currently use the boundary only when the language direction of
+	 * the i-th char is different than the one of the i+1-th char.
+	 * In this case it is important to distinguish between the two
+	 * cursor interpretations, in order to give a reasonable behavior to
+	 * the user.
+	 */
+	bool boundary_;
 };
 
 /// test for equality
@@ -84,5 +120,7 @@ bool operator==(CursorSlice const &, CursorSlice const &);
 bool operator!=(CursorSlice const &, CursorSlice const &);
 /// test for order
 bool operator<(CursorSlice const &, CursorSlice const &);
+/// test for order
+bool operator>(CursorSlice const &, CursorSlice const &);
 
 #endif
