@@ -1,3 +1,8 @@
+2001-05-15  Juergen Vigna  <jug@sad.it>
+
+	* src/tabular.C (TeXCellPreamble): fixed the left border problem for
+	multicolumn cells.
+
 2001-05-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/LaTeXLog.C: add "using" directive
