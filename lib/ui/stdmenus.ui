@@ -190,8 +190,6 @@ Menuset
 # A common feature request JMarc wants to see
 #	Item "Open All Footnotes|F" "open-footnotes"
 #	Item "Close All Footnotes|C" "close-footnotes"
-# FIXME: better in Document menu ? Not sure.
-		Item "Remove All Error Boxes|E" "error-remove-all"
 		Item "Display Tooltips|D" "toggle-tooltips"
 		Separator
 		Submenu "Update|U" "document_update"
@@ -341,7 +339,6 @@ Menuset
 #
 	Menu "navigate"
 		Submenu "Bookmarks|B" "navigate_bookmarks"
-		Item "Error|E" "error-next"
 		Item "Note|N" "note-next"
 		Item "Refs|R" "reference-goto"
 		Separator

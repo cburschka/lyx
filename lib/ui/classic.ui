@@ -78,7 +78,6 @@ Menuset
 		Item "Spellchecker...|S" "spellchecker"
 		Item "Thesaurus..." "thesaurus-entry"
 		Item "Check TeX|h" "buffer-chktex"
-		Item "Remove All Error Boxes|E" "error-remove-all"
 		Item "Open/Close float|l" "inset-toggle"
 		Submenu "Change tracking|g" "edit_change"
 		Separator
@@ -346,7 +345,6 @@ Menuset
 	Menu "navigate"
 		Toc
 		Separator
-		Item "Error|E" "error-next"
 		Item "Note|N" "note-next"
 		Item "Refs|R" "reference-goto"
 		Submenu "Bookmarks|B" "navigate_bookmarks"
