@@ -799,14 +799,14 @@ string const GetFileContents(string const & fname)
 
 string const ReplaceEnvironmentPath(string const & path)
 {
-//
-// CompareChar: Environmentvariables starts with this character
-// PathChar:    Next path component start with this character
-// while CompareChar found do:
-//       Split String with PathChar
-//	 Search Environmentvariable
-//	 if found: Replace Strings
-//
+	//
+	// CompareChar: Environment variables starts with this character
+	// PathChar:    Next path component start with this character
+	// while CompareChar found do:
+	//       Split String with PathChar
+	//	 Search Environmentvariable
+	//	 if found: Replace Strings
+	//
 	char const CompareChar = '$';
 	char const FirstChar = '{';
 	char const EndChar = '}';
@@ -880,7 +880,7 @@ string const ReplaceEnvironmentPath(string const & path)
 		result1 += res1;
 	}
 	return result1;
-}  // ReplaceEnvironmentPath
+}
 
 
 // Make relative path out of two absolute paths
