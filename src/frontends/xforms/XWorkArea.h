@@ -17,7 +17,7 @@
 #include "frontends/WorkArea.h"
 #include "XPainter.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 ///
 class XWorkArea : public WorkArea {

@@ -14,7 +14,7 @@
 #ifndef XMINIBUFFER_H
 #define XMINIBUFFER_H
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #include "LString.h"
 #include <boost/scoped_ptr.hpp>

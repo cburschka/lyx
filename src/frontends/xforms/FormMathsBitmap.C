@@ -22,7 +22,7 @@
 #include "gettext.h"
 #include "support/LAssert.h"
 
-#include XPM_H_LOCATION
+#include "lyx_xpm.h"
 
 #include <algorithm>
 

@@ -19,7 +19,7 @@
 #include "support/lstrings.h" // frontStrip, strip
 #include "debug.h"
 #include "gettext.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #include <vector>
 

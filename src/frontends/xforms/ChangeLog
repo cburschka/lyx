@@ -1,3 +1,15 @@
+2003-05-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyx_xpm.h.in: new file
+
+	* lyx_forms.h.in: new file
+
+	* forms/fdfix.sh: adjust for FORMS_H_LOCATION -> lyx_forms.h change.
+
+	* Makefile.am (EXTRA_DIST): lyx_forms.h.in lyx_xpm.h.in
+
+	* Almost all files:: FORMS_H_LOCATION -> lyx_forms.h
+
 2003-05-12  Alfredo Braunstein  <abraunst@libero.it>
 
 	* FormErrorList.[Ch]:

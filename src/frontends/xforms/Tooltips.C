@@ -22,7 +22,7 @@
 #include "gettext.h"
 #include "support/lstrings.h"
 #include "support/LAssert.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #include <boost/bind.hpp>
 

@@ -24,7 +24,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "Tooltips.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 #include "combox.h"
 #include "xforms_helpers.h"
 

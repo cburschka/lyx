@@ -19,7 +19,7 @@
 
 #include <algorithm>
 #include <boost/tuple/tuple.hpp>
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 using std::pair;
 using std::make_pair;

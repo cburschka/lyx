@@ -16,7 +16,7 @@
 #include "FormBibitem.h"
 #include "Tooltips.h"
 #include "forms/form_bibitem.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 #include "gettext.h"
 #include "support/lstrings.h" // compare
 

@@ -20,7 +20,7 @@
 #include "support/LAssert.h"
 #include "gettext.h"
 #include "debug.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 //#include <boost/scoped_ptr.hpp>
 

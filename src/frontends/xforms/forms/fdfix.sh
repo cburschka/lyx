@@ -140,7 +140,7 @@ INTRO_MESSAGE ${TMP}
 echo "#include <config.h>" >> ${TMP}
 echo "#include \"forms_gettext.h\"" >> ${TMP}
 echo "#include \"gettext.h\"" >> ${TMP}
-echo "#include FORMS_H_LOCATION" >> ${TMP}
+echo "#include \"../lyx_forms.h\"" >> ${TMP}
 
 grep bmtable ${CIN} > /dev/null &&
 	echo "#include \"bmtable.h\"" >> ${TMP}

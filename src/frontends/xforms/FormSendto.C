@@ -19,7 +19,7 @@
 #include "xforms_helpers.h"
 #include "format.h"
 #include "gettext.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 using std::vector;
 

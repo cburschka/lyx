@@ -14,7 +14,7 @@
 #include "Color.h"
 #include <algorithm> // max
 #include <cmath> // floor
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #ifndef CXX_GLOBAL_CSTD
 using std::floor;

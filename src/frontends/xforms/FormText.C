@@ -19,7 +19,7 @@
 
 #include "support/lstrings.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 typedef FormController<ControlCommand, FormView<FD_text> > base_class;
 

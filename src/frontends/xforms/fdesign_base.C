@@ -12,7 +12,7 @@
 
 
 #include "fdesign_base.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 FD_base::~FD_base()
 {

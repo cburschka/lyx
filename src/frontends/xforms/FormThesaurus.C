@@ -18,7 +18,7 @@
 #include "xforms_helpers.h"
 #include "debug.h"
 #include "support/lstrings.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 #include <cctype>
 
 #ifndef CXX_GLOBAL_CSTD

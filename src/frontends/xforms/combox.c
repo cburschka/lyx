@@ -15,7 +15,7 @@
  */
 #include <config.h>
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 #include "combox.h"
 #include "freebrowser.h"
 
@@ -376,7 +376,7 @@ combox_handle(FL_OBJECT * ob, int event, FL_Coord mx, FL_Coord my, int key,
 	/* Fall through */
     case FL_DRAWLABEL:
 	fl_draw_object_label(ob);
- 	break;
+	break;
     case FL_SHORTCUT:
 	show_browser(ob->spec);
 	break;

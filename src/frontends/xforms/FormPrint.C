@@ -22,11 +22,12 @@
 #include "input_validators.h"
 #include "xforms_helpers.h"
 
+#include "lyx_forms.h"
 #include "support/tostr.h"
-#include FORMS_H_LOCATION
 
 
 typedef FormCB<ControlPrint, FormDB<FD_print> > base_class;
+
 
 FormPrint::FormPrint()
 	: base_class(_("Print Document"))

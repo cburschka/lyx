@@ -19,7 +19,7 @@
 #include "support/lstrings.h"
 #include "LString.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 
 void addCheckedLyXLength(BCView & bcview,

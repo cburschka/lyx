@@ -16,7 +16,7 @@
 #include "FormShowFile.h"
 #include "forms/form_browser.h"
 #include "gettext.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 
 FormShowFile::FormShowFile(Dialog & parent)

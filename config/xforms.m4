@@ -13,9 +13,9 @@ AC_CHECK_HEADER(X11/xpm.h,[
   lyx_cv_xpm_h_location="<X11/xpm.h>"],[
 AC_CHECK_HEADER(xpm.h,[],[
 LYX_LIB_ERROR(xpm.h,Xpm)])])
-AC_DEFINE_UNQUOTED(XPM_H_LOCATION,$lyx_cv_xpm_h_location,
-  [define this to the location of xpm.h to be used with #include, e.g. <xpm.h>])
-
+#AC_DEFINE_UNQUOTED(XPM_H_LOCATION,$lyx_cv_xpm_h_location,
+#  [define this to the location of xpm.h to be used with #include, e.g. <xpm.h>])
+AC_SUBST(XPM_H_LOCATION,$lyx_cv_xpm_h_location)
 ### Test for the header version
 if test $ac_cv_header_xpm_h = yes; then
   AC_CACHE_CHECK([xpm header version],lyx_cv_xpmversion,
@@ -23,7 +23,7 @@ if test $ac_cv_header_xpm_h = yes; then
 #line __oline__ "configure"
 #include "confdefs.h"
 
-#include XPM_H_LOCATION
+#include $lyx_cv_xpm_h_location
 "%%%"lyx_cv_xpmv=XpmVersion;lyx_cv_xpmr=XpmRevision"%%%"
 EOF
     eval `(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
@@ -70,8 +70,7 @@ AC_CHECK_HEADER(X11/forms.h,[
   lyx_cv_forms_h_location="<X11/forms.h>"],[
 AC_CHECK_HEADER(forms.h,[],[
 LYX_LIB_ERROR(forms.h,forms)])])
-AC_DEFINE_UNQUOTED(FORMS_H_LOCATION,$lyx_cv_forms_h_location,
-   [define this to the location of forms.h to be used with #include, e.g. <forms.h>])
+AC_SUBST(FORMS_H_LOCATION,$lyx_cv_forms_h_location)
 
 if test $ac_cv_header_forms_h = yes; then
   AC_CACHE_CHECK([xforms header version],lyx_cv_xfversion,
@@ -79,7 +78,7 @@ if test $ac_cv_header_forms_h = yes; then
 #line __oline__ "configure"
 #include "confdefs.h"
 
-#include FORMS_H_LOCATION
+#include $lyx_cv_forms_h_location
 #if ! defined(FL_INCLUDE_VERSION)
 "%%%"(unknown)"%%%"
 #else

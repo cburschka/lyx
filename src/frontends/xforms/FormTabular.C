@@ -29,7 +29,7 @@
 #include "input_validators.h"
 #include "support/lstrings.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 using std::vector;
 using std::bind2nd;

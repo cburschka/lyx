@@ -32,13 +32,13 @@
 #include "frontends/Alert.h"
 
 #include "support/tostr.h"
-#include "support/lstrings.h"  // for strToDbl 
+#include "support/lstrings.h"  // for strToDbl
 #include "support/lyxlib.h"  // for float_equal
 #include "support/filetools.h"  // for MakeAbsPath etc
 
 #include "support/BoostFormat.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 using std::endl;
 using std::vector;

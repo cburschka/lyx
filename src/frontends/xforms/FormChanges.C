@@ -16,7 +16,7 @@
 #include "forms/form_changes.h"
 #include "xforms_helpers.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 typedef FormController<ControlChanges, FormView<FD_changes> > base_class;
 

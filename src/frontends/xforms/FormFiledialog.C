@@ -59,7 +59,7 @@ using std::sort;
 
 #include "FormFiledialog.h"
 #include "forms/form_filedialog.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 namespace {
 

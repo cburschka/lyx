@@ -22,7 +22,7 @@
 #include "helper_funcs.h"
 
 #include "support/lstrings.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 typedef FormController<ControlExternal, FormView<FD_external> > base_class;
 

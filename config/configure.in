@@ -305,6 +305,8 @@ AC_OUTPUT([Makefile \
        src/frontends/Makefile \
        src/frontends/controllers/Makefile \
        src/frontends/xforms/Makefile \
+       src/frontends/xforms/lyx_forms.h \
+       src/frontends/xforms/lyx_xpm.h \
        src/frontends/xforms/forms/Makefile \
        src/frontends/qt2/Makefile \
        src/frontends/qt2/moc/Makefile \

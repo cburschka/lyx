@@ -15,7 +15,7 @@
 
 
 #include "RadioButtonGroup.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #include "support/LAssert.h"
 #include "debug.h" // for lyxerr

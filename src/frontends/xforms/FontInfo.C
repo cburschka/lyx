@@ -26,7 +26,7 @@
 using std::endl;
 using std::abs;
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 /// Load font close to this size
 string const FontInfo::getFontname(int size)

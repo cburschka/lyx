@@ -27,7 +27,7 @@ using std::pow;
 
 using std::endl;
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 LyXColorHandler::LyXColorHandler()
 {

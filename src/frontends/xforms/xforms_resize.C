@@ -14,7 +14,7 @@
 #include "xforms_resize.h"
 #include "support/LAssert.h"
 #include <algorithm> // std::max. Use FL_max in .c code...
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 namespace {
 

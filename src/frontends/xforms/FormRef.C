@@ -20,8 +20,8 @@
 #include "xforms_helpers.h"
 #include "insets/insetref.h"
 #include "helper_funcs.h" // getStringFromVector
-#include "support/lstrings.h" // frontStrip, strip
-#include FORMS_H_LOCATION
+#include "support/lstrings.h" // trim
+#include "lyx_forms.h"
 
 using std::find;
 using std::max;

@@ -21,7 +21,7 @@
 #include "Tooltips.h"
 #include "helper_funcs.h"
 #include "xforms_helpers.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #include "gettext.h"
 #include "support/LAssert.h"

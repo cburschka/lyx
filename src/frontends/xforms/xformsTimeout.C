@@ -13,7 +13,7 @@
 #include "xformsTimeout.h"
 #include "debug.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 
 Timeout::Timeout(unsigned int msec, Type t)

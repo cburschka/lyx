@@ -21,8 +21,8 @@
 #include "xforms_helpers.h"
 #include "gettext.h"
 #include "support/lstrings.h"
+#include "lyx_forms.h"
 #include "support/tostr.h"
-#include FORMS_H_LOCATION
 
 using std::vector;
 using std::find;

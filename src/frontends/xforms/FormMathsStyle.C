@@ -22,7 +22,7 @@
 
 #include "bmtable.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #include "style.xbm"
 #include "font.xbm"

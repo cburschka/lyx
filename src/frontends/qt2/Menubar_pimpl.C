@@ -52,6 +52,10 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
 }
 
 
+Menubar::Pimpl::~Pimpl()
+{}
+
+
 void Menubar::Pimpl::openByName(string const & name)
 {
 	NameMap::const_iterator const cit = name_map_.find(name);
@@ -60,4 +64,20 @@ void Menubar::Pimpl::openByName(string const & name)
 
 	// this will have to do I'm afraid.
 	cit->second->exec(QCursor::pos());
+}
+
+
+void Menubar::Pimpl::update()
+{}
+
+
+QtView * Menubar::Pimpl::view()
+{
+	return owner_;
+}
+
+
+MenuBackend const & Menubar::Pimpl::backend()
+{
+	return menubackend_;
 }

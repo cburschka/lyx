@@ -102,7 +102,7 @@ private:
 
 bool Dialogs::isValidName(string const & name) const
 {
- 	return std::find_if(dialognames, end_dialognames,
+	return std::find_if(dialognames, end_dialognames,
 			    cmpCStr(name.c_str())) != end_dialognames;
 }
 

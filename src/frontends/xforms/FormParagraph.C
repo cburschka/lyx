@@ -31,7 +31,7 @@
 #include "support/tostr.h"
 #include "support/LAssert.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #include <functional>
 

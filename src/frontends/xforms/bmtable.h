@@ -17,7 +17,7 @@
 #define BMTABLE_H
 
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #if defined(__cplusplus)
 extern "C"

@@ -16,7 +16,7 @@
 #include "FormLog.h"
 #include "forms/form_browser.h"
 #include "gettext.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 FormLog::FormLog(Dialog & parent)
 	: FormController<ControlLog, FormBrowser>(parent, _("LaTeX Log"))

@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author unknown
+ * \author Lars Gullik Bjønnes
  * \author John Levon
  *
  * Full author contact details are available in file CREDITS
@@ -32,7 +32,7 @@
 #include "BufferView.h"
 #include "XFormsView.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 #include "ColorHandler.h"
 #include "xforms_helpers.h"
 #include "xfont_loader.h"

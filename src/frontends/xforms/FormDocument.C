@@ -37,8 +37,8 @@
 #include "support/filetools.h" // LibFileSearch
 #include "support/BoostFormat.h"
 
-#include XPM_H_LOCATION
-#include FORMS_H_LOCATION
+#include "lyx_xpm.h"
+#include "lyx_forms.h"
 #include "combox.h"
 
 #include <boost/bind.hpp>

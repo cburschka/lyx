@@ -15,7 +15,7 @@
  */
 #include <config.h>
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 #include "freebrowser.h"
 #include <ctype.h> /* isprint */
 

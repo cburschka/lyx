@@ -24,7 +24,7 @@
 #include "Tooltips.h"
 #include "xforms_helpers.h" // setEnabled
 #include "support/lstrings.h" // strip
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 typedef FormController<ControlInclude, FormView<FD_include> > base_class;
 

@@ -19,7 +19,7 @@
 #include "support/lstrings.h" // frontStrip, strip
 #include "debug.h"
 #include "gettext.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #include <vector>
 
@@ -52,7 +52,7 @@ void FormErrorList::update()
 
 ButtonPolicy::SMInput FormErrorList::input(FL_OBJECT * ob, long)
 {
-	std::vector<ControlErrorList::ErrorItem> const & 
+	std::vector<ControlErrorList::ErrorItem> const &
 		Errors = controller().ErrorList();
 
 	if (ob == dialog_->browser_errors) {
@@ -74,7 +74,7 @@ ButtonPolicy::SMInput FormErrorList::input(FL_OBJECT * ob, long)
 
 void FormErrorList::updateContents()
 {
-	std::vector<ControlErrorList::ErrorItem> const & 
+	std::vector<ControlErrorList::ErrorItem> const &
 		Errors = controller().ErrorList();
 
 	if (Errors.empty()) {

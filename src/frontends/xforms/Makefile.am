@@ -2,6 +2,8 @@ include $(top_srcdir)/config/common.am
 
 SUBDIRS = forms
 
+EXTRA_DIST = lyx_forms.h.in lyx_xpm.h.in
+
 INCLUDES = -I$(top_srcdir)/images -I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/controllers \

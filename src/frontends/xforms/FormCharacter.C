@@ -22,7 +22,7 @@
 #include "gettext.h"
 #include "helper_funcs.h"
 #include "xforms_helpers.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 #include "combox.h"
 
 #include "frnt_lang.h"

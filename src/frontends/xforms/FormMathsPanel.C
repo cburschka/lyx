@@ -30,7 +30,7 @@
 #include "forms/form_maths_space.h"
 #include "forms/form_maths_style.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #include "deco.xpm"
 #include "delim.xpm"

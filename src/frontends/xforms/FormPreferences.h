@@ -21,7 +21,7 @@
 
 #include <boost/scoped_ptr.hpp>
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 #include <utility> // pair
 
 class ControlPrefs;

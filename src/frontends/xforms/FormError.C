@@ -16,7 +16,7 @@
 #include "FormError.h"
 #include "forms/form_error.h"
 #include "xforms_helpers.h" // formatted
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 typedef FormController<ControlError, FormView<FD_error> > base_class;
 

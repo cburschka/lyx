@@ -21,7 +21,7 @@
 #include "xforms_helpers.h"
 #include "insets/insetfloat.h"
 #include "support/lstrings.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 namespace {
 

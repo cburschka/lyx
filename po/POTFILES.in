@@ -1,7 +1,6 @@
 src/BufferView.C
 src/BufferView_pimpl.C
 src/Chktex.C
-src/CutAndPaste.C
 src/LColor.C
 src/LaTeX.C
 src/MenuBackend.C
@@ -50,6 +49,7 @@ src/frontends/qt2/QDocument.C
 src/frontends/qt2/QDocumentDialog.C
 src/frontends/qt2/QERT.C
 src/frontends/qt2/QError.C
+src/frontends/qt2/QErrorList.C
 src/frontends/qt2/QExternal.C
 src/frontends/qt2/QExternalDialog.C
 src/frontends/qt2/QFloat.C
@@ -96,6 +96,7 @@ src/frontends/xforms/FormDialogView.C
 src/frontends/xforms/FormDocument.C
 src/frontends/xforms/FormERT.C
 src/frontends/xforms/FormError.C
+src/frontends/xforms/FormErrorList.C
 src/frontends/xforms/FormExternal.C
 src/frontends/xforms/FormFiledialog.C
 src/frontends/xforms/FormFloat.C

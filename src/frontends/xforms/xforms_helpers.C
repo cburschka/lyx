@@ -23,7 +23,7 @@
 #include "support/filetools.h"
 #include "support/lstrings.h" // frontStrip, strip
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 #include "combox.h"
 
 #include <fstream>

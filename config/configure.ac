@@ -148,14 +148,18 @@ CPPFLAGS="$CPPFLAGS $X_CFLAGS"
 
 ### check which frontend we want to use
 
+# XForms tests
+LYX_PATH_XPM
+LYX_PATH_XFORMS
+LYX_CHECK_XFORMS_IMAGE_LOADER
+# QT tests
+QT_DO_IT_ALL
+
 #LYX_USE_FRONTEND
 dnl The code below is not in a macro, because this would cause big
 dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.
 case "$lyx_use_frontend" in
   xforms)
-	LYX_PATH_XPM
-	LYX_PATH_XFORMS
-	LYX_CHECK_XFORMS_IMAGE_LOADER
 	FRONTEND="xforms"
         RPM_FRONTEND="xforms"
         RPM_FRONTEND_DEPS='libforms >= 1.0'
@@ -179,7 +183,6 @@ dnl     FRONTEND_INCLUDES="-I\${srcdir}/gnome -I\${srcdir}/xforms ${GNOME_FRONTE
 dnl     FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}"
 dnl	;;
   qt)
-    QT_DO_IT_ALL
     RPM_FRONTEND="qt"
     RPM_FRONTEND_DEPS='qt >= 2.2.1'
     FRONTEND="qt2"
@@ -373,6 +376,8 @@ AC_CONFIG_FILES([Makefile \
        src/frontends/Makefile \
        src/frontends/controllers/Makefile \
        src/frontends/xforms/Makefile \
+       src/frontends/xforms/lyx_forms.h \
+       src/frontends/xforms/lyx_xpm.h \
        src/frontends/xforms/forms/Makefile \
        src/frontends/qt2/Makefile \
        src/frontends/qt2/moc/Makefile \

@@ -26,7 +26,7 @@
 #include "support/LAssert.h"
 #include "support/filetools.h" //  LibFileSearch
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 extern "C" {
 

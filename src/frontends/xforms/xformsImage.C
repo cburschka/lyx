@@ -19,7 +19,7 @@
 #include "support/LAssert.h"
 #include "support/lyxfunctional.h"  // compare_memfun
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #ifdef HAVE_FLIMAGE_H
 # include <flimage.h>

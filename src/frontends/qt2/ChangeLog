@@ -1,3 +1,10 @@
+2003-05-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Menubar_pimpl.C (~Pimpl): move out of line
+	(update): ditto
+	(view): ditto
+	(backend): ditto
+
 2003-05-12  Alfredo Braunstein  <abraunst@libero.it>
 
 	* QErrorList.[Ch]:
@@ -18,7 +25,7 @@
 
 2003-05-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* ui/moc/Makefile.am: better lib building 
+	* ui/moc/Makefile.am: better lib building
 
 	* ui/Makefile.am: better lib building
 

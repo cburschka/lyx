@@ -23,7 +23,7 @@
 #include "support/systemcall.h"
 #include "support/filetools.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 using std::endl;
 

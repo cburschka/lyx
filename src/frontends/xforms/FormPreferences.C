@@ -46,7 +46,7 @@
 
 #include <boost/bind.hpp>
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 #include "combox.h"
 
 #include <utility>

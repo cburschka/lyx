@@ -18,7 +18,7 @@
 #include "support/lstrings.h"
 #include "helper_funcs.h"
 #include "debug.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 typedef  FormController<ControlERT, FormView<FD_ert> > base_class;
 

@@ -20,7 +20,7 @@
 #include "xforms_helpers.h"
 #include "support/tostr.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 using std::endl;
 

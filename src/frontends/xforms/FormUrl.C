@@ -16,7 +16,7 @@
 #include "ControlCommand.h"
 #include "FormUrl.h"
 #include "forms/form_url.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 typedef  FormController<ControlCommand, FormView<FD_url> > base_class;
 

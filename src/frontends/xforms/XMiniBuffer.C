@@ -53,7 +53,7 @@ XMiniBuffer::XMiniBuffer(ControlCommandBuffer & control,
 {
 	input_ = create_input_box(this, FL_NORMAL_INPUT, x, y, h, w);
 	freebrowser_.reset(create_freebrowser(this), fl_free_freebrowser);
-	
+
 	info_timer_.reset(new Timeout(1500));
 	idle_timer_.reset(new Timeout(6000));
 	info_con = info_timer_->timeout.connect(boost::bind(&XMiniBuffer::info_timeout, this));

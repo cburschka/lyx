@@ -28,17 +28,19 @@ struct Menubar::Pimpl {
 public:
 	Pimpl(LyXView *, MenuBackend const &);
 
+	~Pimpl();
+	
 	/// opens a top-level submenu given its name
 	void openByName(string const &);
 
 	/// update the state of the menuitems - not needed
-	void update() {}
+	void update();
 
 	/// return the owning view
-	QtView * view() { return owner_; }
+	QtView * view();
 
 	/// return the menu controller
-	MenuBackend const & backend() { return menubackend_; }
+	MenuBackend const & backend();
 private:
 	/// owning view
 	QtView * owner_;

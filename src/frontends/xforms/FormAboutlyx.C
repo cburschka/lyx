@@ -21,7 +21,7 @@
 #include "Lsstream.h"
 #include "version.h"
 
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 namespace {
 

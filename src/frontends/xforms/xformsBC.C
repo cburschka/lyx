@@ -15,7 +15,7 @@
 
 #include "xformsBC.h"
 #include "xforms_helpers.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 
 xformsBC::xformsBC(ButtonController const & parent,

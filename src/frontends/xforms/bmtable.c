@@ -17,7 +17,7 @@
 
 #include <stdlib.h>
 #include "bmtable.h"
-#include XPM_H_LOCATION
+#include "lyx_xpm.h"
 
 #if defined(__cplusplus)
 extern "C"

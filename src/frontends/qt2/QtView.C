@@ -136,7 +136,7 @@ void QtView::update_view_state()
 {
 	// let the user see the explicit message
 	if (statusbar_timer_.isActive())
-       		return;
+		return;
 
 	statusBar()->message(toqstr(getLyXFunc().view_status_message()));
 }

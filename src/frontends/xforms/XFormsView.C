@@ -12,7 +12,7 @@
 
 
 #include "XFormsView.h"
-#include FORMS_H_LOCATION
+#include "lyx_forms.h"
 
 #include "XMiniBuffer.h"
 #include "debug.h"

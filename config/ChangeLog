@@ -1,3 +1,15 @@
+2003-05-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* xforms.m4 (lyx_cv_xpm_h_location): don't define XPM_H_LOCATION,
+	subst it instead.
+	(lyx_cv_forms_h_location): don't define FORMS_H_LOCATION, subst it
+	instead.
+
+	* configure.in: generate lyx_forms.h and lyx_xpm.h.
+
+	* configure.ac: always check for xforms and qt libs regardless of
+	frontend chosen. Generate lyx_forms.h and lyx_xpm.h.
+
 2003-05-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* configure.ac: better lib building.
