@@ -81,16 +81,10 @@ void FigureApplyCB(FL_OBJECT *, long)
 	// The standard layout should always be numer 0;
 	current_view->text->setLayout(current_view, 0);
 
-		current_view->text->
-			setParagraph(current_view, 0, 0,
-				     0, 0,
-				     VSpace (0.3 * buffer->params.spacing.getValue(),
-					     LyXLength::CM),
-				     VSpace (0.3 *
-					     buffer->params.spacing.getValue(),
-					     LyXLength::CM),
-				     Spacing(),
-				     LYX_ALIGN_CENTER, string(), 0);
+	LyXLength len(0.3 * buffer->params.spacing.getValue(), LyXLength::CM);
+	current_view->text->setParagraph(current_view, 0, 0, 0, 0,
+		VSpace(len), VSpace(len), Spacing(),
+		LYX_ALIGN_CENTER, string(), 0);
 	
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
       

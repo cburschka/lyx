@@ -133,6 +133,8 @@ lyx_SOURCES = \
 	lastfiles.h \
 	layout.C \
 	layout.h \
+	lengthcommon.C \
+	lengthcommon.h \
 	lyx_cb.C \
 	lyx_cb.h \
 	lyx_gui.C \
@@ -151,6 +153,10 @@ lyx_SOURCES = \
 	lyxfind.h \
 	lyxfunc.C \
 	lyxfunc.h \
+	lyxgluelength.C \
+	lyxgluelength.h \
+	lyxlength.C \
+	lexlength.h \
 	lyxlex.C \
 	lyxlex.h \
 	lyxlex_pimpl.C \

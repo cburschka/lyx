@@ -11,10 +11,11 @@
 #include <config.h>
 
 #ifdef __GNUG__
-#pragma implementation "vspace.h"
+#pragma implementation
 #endif
 
 #include "vspace.h"
+#include "lengthcommon.h"
 #include "lyx_main.h"
 #include "buffer.h"
 #include "lyxrc.h"
@@ -28,6 +29,7 @@
 
 namespace {
 
+#if 0
 /*  length units
  */
 
@@ -51,6 +53,23 @@ LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
 int number_index;
 int unit_index;
 
+LyXLength::UNIT unitFromString(string const & data)
+{
+	int i = 0;
+	while (i < num_units && data != unit_name[i])
+		++i;
+	return static_cast<LyXLength::UNIT>(i);
+}
+
+#endif
+double           number[4] = { 0, 0, 0, 0 };
+LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
+			      LyXLength::UNIT_NONE,
+			      LyXLength::UNIT_NONE,
+			      LyXLength::UNIT_NONE };
+
+int number_index;
+int unit_index;
 
 inline
 void lyx_advance(string & data, string::size_type n)
@@ -165,6 +184,7 @@ LaTeXLength table[] = {
 	{ "",         0, 0, 0, 0 }   // sentinel, must be empty
 };
 
+
 } // namespace anon
 
 const char * stringFromUnit(int unit)
@@ -242,12 +262,12 @@ bool isValidGlueLength(string const & data, LyXGlueLength * result)
 	// is zero, the corresponding array value is zero or UNIT_NONE,
 	// so we needn't check this.
 	if (result) {
-		result->val_        = number[1] * val_sign;
-		result->unit_       = unit[1];
-		result->plus_val_   = number[table[table_index].plus_val_index];
-		result->minus_val_  = number[table[table_index].minus_val_index];
-		result->plus_unit_  = unit  [table[table_index].plus_uni_index];
-		result->minus_unit_ = unit  [table[table_index].minus_uni_index];
+		result->len_.value  (number[1] * val_sign);
+		result->len_.unit   (unit[1]);
+		result->plus_.value (number[table[table_index].plus_val_index]);
+		result->plus_.unit  (unit  [table[table_index].plus_uni_index]);
+		result->minus_.value(number[table[table_index].minus_val_index]);
+		result->minus_.unit (unit  [table[table_index].minus_uni_index]);
 	}
 	return true;
 }
@@ -309,276 +329,32 @@ bool isValidLength(string const & data, LyXLength * result)
 }
 
 
-
-
-//
-// LyXLength
-//
-
-LyXLength::LyXLength()
-	: val_(0), unit_(LyXLength::PT)
-{}
-
-
-LyXLength::LyXLength(double v, LyXLength::UNIT u)
-	: val_(v), unit_(u)
-{}
-
-
-LyXLength::LyXLength(string const & data)
-{
-	LyXLength tmp;
-	
-	if (!isValidLength (data, &tmp))
-		return; // should raise an exception
-
-	val_  = tmp.val_;
-	unit_ = tmp.unit_;
-}
-
-
-string const LyXLength::asString() const
-{
-	ostringstream buffer;
-	buffer << val_ << unit_name[unit_]; // setw?
-	return buffer.str().c_str();
-}
-
-
-string const LyXLength::asLatexString() const
-{
-	ostringstream buffer;
-	switch(unit_) {
-	case PW:
-	case PE:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
-				<< abs(static_cast<int>(val_)%100) << "\\columnwidth";
-	    break;
-	case PP:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
-				<< abs(static_cast<int>(val_)%100) << "\\pagewidth";
-	    break;
-	case PL:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
-				<< abs(static_cast<int>(val_)%100) << "\\linewidth";
-	    break;
-	default:
-	    buffer << val_ << unit_name[unit_]; // setw?
-	    break;
-	}
-	return buffer.str().c_str();
-}
-
-
-double LyXLength::value() const
-{
-	return val_;
-}
-
-
-LyXLength::UNIT LyXLength::unit() const
-{
-	return unit_;
-}
-
-
-bool operator==(LyXLength const & l1, LyXLength const & l2)
-{
-	return l1.value() == l2.value() && l1.unit() == l2.unit();
-}
-	
-
-LyXLength::UNIT unitFromString (string const & data)
-{
-	int i = 0;
-	while (i < num_units && data != unit_name[i])
-		++i;
-	return static_cast<LyXLength::UNIT>(i);
-}
-
-
-
-//
-// LyXGlueLength
-//
-
-
-LyXGlueLength::LyXGlueLength(
-			double v,  LyXLength::UNIT u,
-			double pv, LyXLength::UNIT pu,
-			double mv, LyXLength::UNIT mu)
-	: LyXLength(v, u),
-	  plus_val_(pv),  minus_val_(mv),
-	  plus_unit_(pu), minus_unit_(mu)
-{}
-
-
-LyXGlueLength::LyXGlueLength(string const & data)
-{
-	LyXGlueLength tmp(0.0, PT);
-
-	// we should really raise exception here
-	if (!isValidGlueLength(data, &tmp))
-		;
-
-	val_        = tmp.val_;
-	unit_       = tmp.unit_;
-	plus_val_   = tmp.plus_val_;
-	plus_unit_  = tmp.plus_unit_;
-	minus_val_  = tmp.minus_val_;
-	minus_unit_ = tmp.minus_unit_;
-}
-
-
-string const LyXGlueLength::asString() const
-{
-	ostringstream buffer;
-
-	if (plus_val_ != 0.0)
-		if (minus_val_ != 0.0)
-			if (unit_ == plus_unit_ && unit_ == minus_unit_)
-				if (plus_val_ == minus_val_)
-					buffer << val_ << "+-"
-					       << plus_val_ << unit_name[unit_];
-				else
-					buffer << val_
-					       << '+' << plus_val_
-					       << '-' << minus_val_
-					       << unit_name[unit_];
-			else
-				if (plus_unit_ == minus_unit_
-				    && plus_val_ == minus_val_)
-					buffer << val_ << unit_name[unit_]
-					       << "+-" << plus_val_
-					       << unit_name[plus_unit_];
-	
-				else
-					buffer << val_ << unit_name[unit_]
-					       << '+' << plus_val_
-					       << unit_name[plus_unit_]
-					       << '-' << minus_val_
-					       << unit_name[minus_unit_];
-		else
-			if (unit_ == plus_unit_)
-				buffer << val_ << '+' << plus_val_
-				       << unit_name[unit_];
-			else
-				buffer << val_ << unit_name[unit_]
-				       << '+' << plus_val_
-				       << unit_name[plus_unit_];
-	
-	else
-		if (minus_val_ != 0.0)
-			if (unit_ == minus_unit_)
-				buffer << val_ << '-' << minus_val_
-				       << unit_name[unit_];
-	
-			else
-				buffer << val_ << unit_name[unit_]
-				       << '-' << minus_val_
-				       << unit_name[minus_unit_];
-		else
-			buffer << val_ << unit_name[unit_];
-
-	return buffer.str().c_str();
-}
-
-
-string const LyXGlueLength::asLatexString() const
-{
-	ostringstream buffer;
-
-	if (plus_val_ != 0.0)
-		if (minus_val_ != 0.0)
-			buffer << val_ << unit_name[unit_]
-			       << " plus "
-			       << plus_val_ << unit_name[plus_unit_]
-			       << " minus "
-			       << minus_val_ << unit_name[minus_unit_];
-		else
-			buffer << val_ << unit_name[unit_]
-			       << " plus "
-			       << plus_val_ << unit_name[plus_unit_];
-	else
-		if (minus_val_ != 0.0)
-			buffer << val_ << unit_name[unit_]
-			       << " minus "
-			       << minus_val_ << unit_name[minus_unit_];
-		else
-			buffer << val_ << unit_name[unit_];
-
-	return buffer.str().c_str();
-}
-
-
-double LyXGlueLength::plusValue() const
-{
-	return plus_val_;
-}
-
-
-LyXLength::UNIT LyXGlueLength::plusUnit() const
-{
-	return plus_unit_;
-}
-
-
-double LyXGlueLength::minusValue() const
-{
-	return minus_val_;
-}
-
-
-LyXLength::UNIT LyXGlueLength::minusUnit() const
-{
-	return minus_unit_;
-}
-
-
-bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2)
-{
-	return l1.value() == l2.value()
-		&& l1.unit() == l2.unit()
-		&& l1.plusValue() == l2.plusValue()
-		&& l1.plusUnit() == l2.plusUnit()
-		&& l1.minusValue() == l2.minusValue()
-		&& l1.minusUnit() == l2.minusUnit();
-}
-
-
-bool operator!=(LyXGlueLength const & l1, LyXGlueLength const & l2)
-{
-	return !(l1 == l2);
-}
-
-
-
 //
 //  VSpace class
 //
 
 VSpace::VSpace()
-	: kind_(NONE), len_(0.0, LyXLength::PT), keep_(false)
+	: kind_(NONE), len_(), keep_(false)
 {}
 
 
 VSpace::VSpace(vspace_kind k)
-	: kind_(k), len_(0.0, LyXLength::PT), keep_(false)
+	: kind_(k), len_(), keep_(false)
 {}
 
 
-VSpace::VSpace(LyXGlueLength l)
+VSpace::VSpace(LyXLength const & l)
 	: kind_(LENGTH), len_(l), keep_(false)
 {}
 
 
-VSpace::VSpace(double v, LyXLength::UNIT u)
-	: kind_(LENGTH), len_(v, u), keep_(false)
+VSpace::VSpace(LyXGlueLength const & l)
+	: kind_(LENGTH), len_(l), keep_(false)
 {}
 
 
 VSpace::VSpace(string const & data)
-	: kind_(NONE), len_(0.0, LyXLength::PT), keep_(false)
+	: kind_(NONE), len_(), keep_(false)
 {
 	if (data.empty())
 		return;
@@ -603,7 +379,7 @@ VSpace::VSpace(string const & data)
 		// without units in added_space_top/bottom.
 		// Let unit default to centimeters here.
 		kind_ = LENGTH;
-		len_  = LyXGlueLength(value, LyXLength::CM);
+		len_  = LyXGlueLength(LyXLength(value, LyXLength::CM));
 	}
 }
 
@@ -689,20 +465,13 @@ string const VSpace::asLatexCommand(BufferParams const & params) const
 int VSpace::inPixels(BufferView * bv) const
 {
 	// Height of a normal line in pixels (zoom factor considered)
-	int height = bv->text->defaultHeight(); // [pixels]
-	int skip  = 0;
-	int width = bv->workWidth();
+	int default_height = bv->text->defaultHeight(); // [pixels]
+	int default_skip   = 0;
+	int default_width  = bv->workWidth();
 
 	if (kind_ == DEFSKIP)
-		skip = bv->buffer()->params.getDefSkip().inPixels(bv);
+		default_skip = bv->buffer()->params.getDefSkip().inPixels(bv);
 
-	return inPixels(height, skip, width);
-}
-
-
-int VSpace::inPixels(int default_height, int default_skip, int default_width)
-	const
-{
 	// Height of a normal line in pixels (zoom factor considered)
 	int height = default_height; // [pixels]
 	
@@ -739,10 +508,10 @@ int VSpace::inPixels(int default_height, int default_skip, int default_width)
 		// we don't care about sign of value, we
 		// display negative space with text too
 		result = 0.0;
-		value  = len_.value();
+		value  = len_.len().value();
 		int val_sign = value < 0.0 ? -1 : 1;
 		
-		switch (len_.unit()) {
+		switch (len_.len().unit()) {
 		case LyXLength::SP:
 			// Scaled point: sp = 1/65536 pt
 			result = zoom * dpi * value
