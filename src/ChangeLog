@@ -1,3 +1,8 @@
+2002-04-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyx_main.C (init): use environment variable LYX_DIR_12x instead
+	of LYX_DIR_11x. Same for LYX_USERDIR_12x.
+
 2002-03-29  Juergen Vigna  <jug@sad.it>
 
 	* lyxfunc.C (dispatch): add a missing fitCursor call.

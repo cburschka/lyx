@@ -3,7 +3,7 @@
 .\"
 .\"  tbl lyx.1 | nroff -man | less
 .\"
-.TH LYX 1 "November 1999" "Version 1.1" "LyX 1.1"
+.TH LYX 1 "April 2002" "Version 1.2" "LyX 1.2"
 .SH NAME
 lyx \- A Document Processor
 .\"
@@ -20,22 +20,26 @@ lyx \- A Document Processor
 format. If your system is properly configured, you can access the full
 documentation within \fBLyX\fR under the Help menu.
 
-\fBLyX\fR is a modern approach of writing documents with a computer
-which breaks with the tradition of the obsolete typewriter concept. It
-is designed for people who want a professional output with a minimum
-of time effort, without becoming specialists in typesetting. Compared
-to common word processors, \fBLyX\fR will increase the productivity a
-lot, since most of the typesetting will be done by the computer, not
-the author. With \fBLyX\fR the author can concentrate on the contents
-of his writing, since the computer will take care of the look. Read more 
-about this concept in the online documentation under the Help menu.
+\fBLyX\fR is a document preparation system. It excels at letting you create
+complex technical and scientific articles with mathematics,
+cross-references, bibliographies, indices, etc. It is very good at
+documents of any length in which the usual processing abilities are
+required: automatic sectioning and pagination, spellchecking, and so
+forth. It can also be used to write a letter to your mom, though
+granted, there are probably simpler programs available for that. It is
+definitely not the best tool for creating banners, flyers, or
+advertisements (we'll explain why later), though with some effort all
+these can be done, too. Some examples of what it is used for: memos,
+letters, dissertations and theses, lecture notes, seminar notebooks,
+conference proceedings, software documentation, books (on PostgreSQL,
+remote sensing, cryptology, fictional novels, poetry, and even a
+children's book or two), articles in refereed scientific journals,
+scripts for plays and movies, business proposals... you get the idea.
 
 Currently, \fBLyX\fR uses the XForms library as a toolkit. \fBLyX\fR
 should run everywhere, where XForms runs. This is on all major Unix
-platforms as well as some PC platforms, including Sun, SGI, HP, Compaq
-Tru64, IBM RS6000, Convex, Cray, i386/Linux, Alpha/Linux,
-i386/FreeBSD, i386/NetBSD, DecSystem(mips)/Ultrix, OS/2 with XFree or 
-PMX and others. 
+platforms as well as Windows, Mac OS X (which actually is a unix
+platform) and OS/2.
 .SH OPTIONS
 \fBLyX\fR supports the following command-line switches, which can also
 be specified as X resources (e. g. in .Xdefaults) with class
@@ -120,7 +124,7 @@ specifies the application name under which resources are to be
 obtained, rather than the default executable file name. 
 .SH ENVIRONMENT
 .TP
-.B LYX_DIR_11x
+.B LYX_DIR_12x
 can be used to specify which system directory to use.
 .PP
 The system directory is determined by searching for the file
@@ -128,7 +132,7 @@ The system directory is determined by searching for the file
 .br
 1) -sysdir command line parameter
 .br
-2) LYX_DIR_11x environment variable
+2) LYX_DIR_12x environment variable
 .br
 3) Maybe <path of binary>/TOP_SRCDIR/lib
 .br
@@ -136,14 +140,14 @@ The system directory is determined by searching for the file
 .br
 5) hardcoded lyx_dir (usually /usr/local/share/lyx on UNIX and %X11ROOT%\\XFree86\\lib\\X11\\lyx on OS/2 with XFree)
 .TP
-.B LYX_USERDIR_11x
+.B LYX_USERDIR_12x
 can be used to specify which user directory to use.
 .PP
 The user directory is, in order of precedence: 
 .br
 1) -userdir command line parameter
 .br
-2) LYX_USERDIR_11x environment variable
+2) LYX_USERDIR_12x environment variable
 .br
 3) $HOME/.<name of binary> if no explicit setting is made
 
@@ -177,10 +181,13 @@ reLyX(1), latex(1), xforms(5).
 
 Full documentation in either native \fBLyX\fR or postscript format.
 .SH BUGS/LIMITATIONS
-There are probably still some bugs in \fBLyX\fR. Please report them to
-lyx-devel@lists.lyx.org with detailed info, including which version of
-\fBLyX\fR you use. Consult the bug-reporting instructions in the
-Introduction (accessible from the Help menu in LyX) first if possible.
+There are still some bugs in \fBLyX\fR. To report one, read if
+possible the Introduction found under the Help menu in LyX. You'll
+find detailed info on submitting bug reports there. If you can't do
+that, send details to the LyX Developers mailing list
+lyx-devel@lists.lyx.org, or use the LyX bug tracker at
+http://bugzilla.lyx.org/. Don't forget to mention which version you
+are having problems with!
 
 \fBLaTeX\fR import is still not perfect and may produce buggy *.lyx
 files. Consult the \fBreLyX\fR documentation.
@@ -199,12 +206,12 @@ Preview of inline images in rare cases does not show the image. If you
 want to preview the image, just click on it and choose fullscreen
 preview.
 
-If you have performance problems, please go through the \fBlyxrc\fR
-configuration file. It contains settings that can be used to improve
-performance on slow systems.
+If you have performance problems, please go through the
+Edit>Preferences... dialog. It contains settings that can be used to
+improve performance on slow systems.
 .SH AUTHORS
 Copyright
 .Cr
-1995, 1996, 1997, 1998, 1999 by Matthias Ettrich
+1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002 by Matthias Ettrich
 (ettrich@informatik.uni-tuebingen.de) and the rest of the \fBLyX
 Team\fR (See Credits under the Help menu item).
