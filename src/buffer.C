@@ -1,15 +1,11 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file buffer.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
  *
- *	     Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- *           This file is Copyright 1996-2001
- *           Lars Gullik Bjønnes
- *
- * ======================================================
+ * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
@@ -258,23 +254,18 @@ void Buffer::setFileName(string const & newfile)
 // We'll remove this later. (Lgb)
 namespace {
 
-#ifdef WITH_WARNINGS
-#warning this is never set to != 0 !!! - remove ?
-#endif
-int unknown_layouts;
-
 void unknownClass(string const & unknown)
 {
 	string msg =
 #if USE_BOOST_FORMAT
 		boost::io::str(boost::format(
-			_("The document uses an unknown textclass \"%1$s\".")) % unknown)
-		+ _("-- substituting default.");
+			_("Using the default document class, because the "
+			" class %1$s is unknown.")) % unknown);
 #else
-		_("The document uses an unknown textclass ")
-		+ unknown + _("-- substituting default.");
+		_("Using the default document class, because the "
+		" class ") + unknown + (" is unknown."); 
 #endif
-	Alert::alert(_("Textclass error"), msg);
+	Alert::warning(_("Unknown document class"), msg);
 }
 
 } // anon
@@ -319,7 +310,6 @@ int Buffer::readHeader(LyXLex & lex)
 // Returns false if "\the_end" is not read (Asger)
 bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 {
-	unknown_layouts = 0;
 	int unknown_tokens = 0;
 
 	Paragraph::depth_type depth = 0;
@@ -329,17 +319,17 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 		unknown_tokens += readHeader(lex);
 
 		if (!params.getLyXTextClass().load()) {
+			string theclass = params.getLyXTextClass().name();
+			string msg =
 #if USE_BOOST_FORMAT
-			Alert::alert(_("Textclass Loading Error!"),
-				   boost::io::str(boost::format(_("Can't load textclass %1$s")) %
-				   params.getLyXTextClass().name()),
-				   _("-- substituting default."));
+				boost::io::str(boost::format(
+					_("Using the default document class, because the "
+					" class %1$s could not be loaded.")) % theclass);
 #else
-			Alert::alert(_("Textclass Loading Error!"),
-				     _("Can't load textclass ")
-				     + params.getLyXTextClass().name(),
-				     _("-- substituting default."));
+				_("Using the default document class, because the "
+				" class ") + theclass + (" could not be loaded.");
 #endif
+			Alert::error(_("Can't load document class"), msg);
 			params.textclass = 0;
 		}
 	} else {
@@ -372,24 +362,21 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 		unknown_tokens += readParagraph(lex, token, paragraphs, pit, depth);
 	}
 
-	if (unknown_layouts > 0) {
-		string s = _("Couldn't set the layout for ");
-		if (unknown_layouts == 1) {
-			s += _("one paragraph");
-		} else {
-			s += tostr(unknown_layouts);
-			s += _(" paragraphs");
-		}
-#if USE_BOOST_FORMAT
-		Alert::alert(_("Textclass Loading Error!"), s,
-			   boost::io::str(boost::format(_("When reading %1$s")) % fileName()));
-#else
-		Alert::alert(_("Textclass Loading Error!"), s,
-			     _("When reading ") + fileName());
-#endif
-	}
 
 	if (unknown_tokens > 0) {
+#if USE_BOOST_FORMAT
+		string s;
+		if (unknown_tokens == 1) {
+			boost::format fmt(_("Encountered one unknown token when reading the document %1$s."));
+			fmt % fileName();
+			s = fmt.str();
+		} else {
+			boost::format fmt(_("Encountered %1$s unknown tokens when reading the document %2$s."));
+			fmt % tostr(unknown_tokens);
+			fmt % fileName();
+			s = fmt.str();
+		}
+#else
 		string s = _("Encountered ");
 		if (unknown_tokens == 1) {
 			s += _("one unknown token");
@@ -397,12 +384,7 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 			s += tostr(unknown_tokens);
 			s += _(" unknown tokens");
 		}
-#if USE_BOOST_FORMAT
-		Alert::alert(_("Textclass Loading Error!"), s,
-			   boost::io::str(boost::format(_("When reading %1$s")) % fileName()));
-#else
-		Alert::alert(_("Textclass Loading Error!"), s,
-			     _("When reading ") +  fileName());
+		Alert::warning(_("Document format failure"), s);
 #endif
 	}
 
@@ -516,6 +498,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 }
 
 
+// FIXME: all the below Alerts should give the filename..
 bool Buffer::readFile(LyXLex & lex, string const & filename, ParagraphList::iterator pit)
 {
 	if (lex.isOK()) {
@@ -535,24 +518,24 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, ParagraphList::iter
 			if (file_format == LYX_FORMAT) {
 				// current format
 			} else if (file_format > LYX_FORMAT) {
-				// future format
-				Alert::alert(_("Warning!"),
-					_("The file was created with a newer version of "
+				Alert::warning(_("Document format failure"),
+					_("This document was created with a newer version of "
 					"LyX. This is likely to cause problems."));
-
 			} else if (file_format < LYX_FORMAT) {
 				// old formats
 				if (file_format < 200) {
-					Alert::alert(_("ERROR!"),
-						   _("Old LyX file format found. "
-						     "Use LyX 0.10.x to read this!"));
+					Alert::error(_("Document format failure"),
+						_("This LyX document is too old to be read "
+						"by this version of LyX. Try LyX 0.10."));
 					return false;
 				} else if (!filename.empty()) {
 					string command =
 						LibFileSearch("lyx2lyx", "lyx2lyx");
 					if (command.empty()) {
-						Alert::alert(_("ERROR!"),
-							     _("Can't find conversion script."));
+						Alert::error(_("Conversion script not found"),
+							_("The document is from an earlier version "
+							  "of LyX, but the conversion script lyx2lyx "
+							  "could not be found."));
 						return false;
 					}
 					command += " -t"
@@ -563,9 +546,10 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, ParagraphList::iter
 							    << endl;
 					cmd_ret const ret = RunCommand(command);
 					if (ret.first) {
-						Alert::alert(_("ERROR!"),
-							     _("An error occured while "
-							       "running the conversion script."));
+						Alert::error(_("Conversion script failed"),
+							_("The document is from an earlier version "
+							  "of LyX, but the lyx2lyx script failed "
+							  "to convert it."));
 						return false;
 					}
 					istringstream is(STRCONV(ret.second));
@@ -584,16 +568,19 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, ParagraphList::iter
 			params.setPaperStuff();
 
 			if (!the_end) {
-				Alert::alert(_("Warning!"),
-					   _("Reading of document is not complete"),
-					   _("Maybe the document is truncated"));
+				Alert::error(_("Document format failure"),
+					_("The document ended unexpectedly, which means "
+					  "that it is probably corrupted."));
 			}
 			return true;
-		} else { // "\\lyxformat" not found
-			Alert::alert(_("ERROR!"), _("Not a LyX file!"));
+		} else {
+			Alert::error(_("Document format failure"),
+				_("The specified document is not a LyX document."));
 		}
-	} else
-		Alert::alert(_("ERROR!"), _("Unable to read file!"));
+	} else {
+		Alert::error(_("Document could not be read"),
+			_("The specified document could not be read."));
+	}
 	return false;
 }
 
@@ -1170,7 +1157,16 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	ofstream ofs(fname.c_str());
 
 	if (!ofs) {
-		Alert::alert(_("LYX_ERROR:"), _("Cannot write file"), fname);
+		string const file = MakeDisplayPath(fname, 50);
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("Could not save the specified document\n%1$s.\n"));
+		fmt % file;
+		string text = fmt.str();
+#else
+		string text = _("Could not save the specified document\n");
+		text += file + _(".\n");
+#endif
+		Alert::error(_("Could not save document"), text);
 		return;
 	}
 
@@ -1627,7 +1623,17 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 {
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
-		Alert::alert(_("LYX_ERROR:"), _("Cannot write file"), fname);
+		string const file = MakeDisplayPath(fname, 50);
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("Could not save the specified document\n%1$s.\n"));
+		fmt % file;
+		string text = fmt.str();
+#else
+		string text = _("Could not save the specified document\n");
+		text += file + _(".\n");
+#endif
+		Alert::error(_("Could not save document"), text);
+		return;
 		return;
 	}
 
@@ -2021,8 +2027,8 @@ int Buffer::runChktex()
 	int res = chktex.run(terr); // run chktex
 
 	if (res == -1) {
-		Alert::alert(_("chktex did not work!"),
-			   _("Could not run with file:"), name);
+		Alert::error(_("chktex failure"),
+			_("Could not run chktex successfully."));
 	} else if (res > 0) {
 		// Insert all errors as errors boxes
 		users->insertErrors(terr);

@@ -21,8 +21,6 @@ bool MenuWrite(BufferView * bv, Buffer * buffer);
 bool WriteAs(BufferView * bv, Buffer * buffer,
 	     string const & filename = string());
 ///
-int MenuRunChktex(Buffer * buffer);
-///
 void QuitLyX();
 ///
 void AutoSave(BufferView * bv);

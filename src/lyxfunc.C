@@ -348,7 +348,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		disable = !mathcursor && !view()->getLyXText()->selection.set();
 		break;
 	case LFUN_RUNCHKTEX:
-		disable = lyxrc.chktex_command == "none";
+		disable = !buf->isLatex() || lyxrc.chktex_command == "none";
 		break;
 	case LFUN_BUILDPROG:
 		disable = !Exporter::IsExportable(buf, "program");
@@ -1054,7 +1054,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_RUNCHKTEX:
-		MenuRunChktex(owner->buffer());
+		owner->buffer()->runChktex();
 		break;
 
 	case LFUN_MENUPRINT:

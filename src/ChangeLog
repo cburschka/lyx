@@ -1,5 +1,14 @@
 2003-03-29  John Levon  <levon@movementarian.org>
 
+	* BufferView.C:
+	* buffer.C:
+	* lyx_cb.h:
+	* lyx_cb.C: more Alert cleanups
+
+	* lyxfunc.C: don't allow chktex if not latex document
+
+2003-03-29  John Levon  <levon@movementarian.org>
+
 	* lyx_cb.C:
 	* BufferView.C:
 	* buffer.C: warnings pushed down from support/,

@@ -177,37 +177,6 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 }
 
 
-int MenuRunChktex(Buffer * buffer)
-{
-	int ret;
-
-	if (buffer->isSGML()) {
-		Alert::alert(_("Chktex does not work with SGML derived documents."));
-		return 0;
-	} else
-		ret = buffer->runChktex();
-
-	if (ret >= 0) {
-		string s;
-		string t;
-		if (ret == 0) {
-			s = _("No warnings found.");
-		} else if (ret == 1) {
-			s = _("One warning found.");
-			t = _("Use `Navigate->Error' to find it.");
-		} else {
-			s += tostr(ret);
-			s += _(" warnings found.");
-			t = _("Use `Navigate->Error' to find them.");
-		}
-		Alert::alert(_("Chktex run successfully"), s, t);
-	} else {
-		Alert::alert(_("Error!"), _("It seems chktex does not work."));
-	}
-	return ret;
-}
-
-
 void QuitLyX()
 {
 	lyxerr[Debug::INFO] << "Running QuitLyX." << endl;

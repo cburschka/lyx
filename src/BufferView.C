@@ -303,9 +303,16 @@ bool BufferView::insertLyXFile(string const & filen)
 	FileInfo const fi(fname);
 
 	if (!fi.readable()) {
-		Alert::alert(_("Error!"),
-			   _("Specified file is unreadable: "),
-			   MakeDisplayPath(fname, 50));
+		string const file = MakeDisplayPath(fname, 50);
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("The specified document\n%1$s\ncould not be read."));
+		fmt % file;
+		string text = fmt.str();
+#else
+		string text = _("The specified document\n");
+		text += file + _(" could not be read.");
+#endif
+		Alert::error(_("Could not read document"), text);
 		return false;
 	}
 
