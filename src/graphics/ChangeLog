@@ -3,6 +3,9 @@
 	* LoaderQueue.[Ch]: a simplification of the code, eliminated
 	the unneeded input bucket.
 
+	* GraphicsCacheItem.C (imageConverted): move warning inside the
+	!success block.
+
 2003-02-25  Alfredo Braunstein  <abraunst@libero.it>
 
 	* PreviewLoader.C (FindFirst): use ==, not < with std::find.
