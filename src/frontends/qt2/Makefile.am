@@ -20,8 +20,8 @@ libqt2_la_SOURCES = \
 	Alert_pimpl.C \
 	qgridview.h \
 	qgridview.cpp \
-bulletstrings.h \
-bulletstrings.C \
+	bulletstrings.h \
+	bulletstrings.C \
 	BulletsModule.C \
 	BulletsModule.h \
 	QBrowseBox.C \

@@ -172,11 +172,14 @@ void Dialogs::updateParagraph()
 
 void Dialogs::showPreamble()
 {
+	// FIXME
 }
 
 
 void Dialogs::showPreferences()
-{}
+{
+	pimpl_->prefs.controller().show();
+}
 
 
 void Dialogs::showPrint()

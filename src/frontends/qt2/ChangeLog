@@ -1,5 +1,16 @@
 2002-11-13  John Levon  <levon@movementarian.org>
 
+	* Dialogs.C:
+	* Dialogs2.C:
+	* Dialog_impl.h:
+	* Makefile.dialogs:
+	* QPrefs.h:
+	* QPrefs.C:
+	* QPrefsDialog.h:
+	* QPrefsDialog.C: add skeleton dialog
+ 
+2002-11-13  John Levon  <levon@movementarian.org>
+
 	* ui/QBibtexDialog.ui: add some change_adaptors()
 
 	* QBibtex.C: fix duplicate entries in style CB, and

@@ -62,6 +62,7 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  minipage(lv, d),
 	  paragraph(lv, d),
 	  preamble(lv, d),
+	  prefs(lv, d),
 	  print(lv, d),
 	  ref(lv, d),
 	  search(lv, d),
