@@ -2396,49 +2396,14 @@ void LyXText::changeCase(BufferView * bview, LyXText::TextCase action)
 	LyXCursor to;
 
 	if (selection.set()) {
-		from = selection.cursor;
-		to = cursor;
+		from = selection.start;
+		to = selection.end;
 	} else {
 		getWord(from, to, PARTIAL_WORD);
-		setCursor(bview, to.par(), to.pos()+1);
+		setCursor(bview, to.par(), to.pos() + 1);
 	}
 
-	setUndo(bview->buffer(), Undo::FINISH,
-		from.par()->previous(), to.par()->next()); 
-
-#if 1
-	changeRegionCase(bview, to, from, action);
-#else
-	while(from != to) {
-		unsigned char c = from.par()->getChar(from.pos());
-		if (!IsInsetChar(c) && !IsHfillChar(c)) {
-			switch (action) {
-			case text_lowercase:
-				c = tolower(c);
-				break;
-			case text_capitalization:
-				c = toupper(c);
-				action = text_lowercase;
-				break;
-			case text_uppercase:
-				c = toupper(c);
-				break;
-			}
-		}
-		from.par()->setChar(from.pos(), c);
-		checkParagraph(bview, from.par(), from.pos());
-		from.pos(from.pos() + 1);
-		if (from.pos() >= from.par()->size()) {
-			from.par(from.par()->next());
-			from.pos(0);
-		}
-	}
-	if (to.row() != from.row()) {
-		refresh_y = from.y() - from.row()->baseline();
-		refresh_row = from.row();
-		status = LyXText::NEED_MORE_REFRESH;
-	}
-#endif
+	changeRegionCase(bview, from, to, action);
 }
 
 
@@ -2447,13 +2412,16 @@ void LyXText::changeRegionCase(BufferView * bview,
 			       LyXCursor const & to,
 			       LyXText::TextCase action)
 {
+	lyx::Assert(from <= to);
+	
 	setUndo(bview->buffer(), Undo::FINISH,
 		from.par()->previous(), to.par()->next());
 
-	LyXCursor tmp(from);
-	
-	while(tmp != to) {
-		unsigned char c = tmp.par()->getChar(tmp.pos());
+	Paragraph::size_type pos = from.pos();
+	Paragraph * par = from.par();
+
+	while (par && (pos != to.pos() || par != to.par())) {
+		unsigned char c = par->getChar(pos);
 		if (!IsInsetChar(c) && !IsHfillChar(c)) {
 			switch (action) {
 			case text_lowercase:
@@ -2468,17 +2436,18 @@ void LyXText::changeRegionCase(BufferView * bview,
 				break;
 			}
 		}
-		tmp.par()->setChar(tmp.pos(), c);
-		checkParagraph(bview, tmp.par(), tmp.pos());
-		tmp.pos(tmp.pos() + 1);
-		if (tmp.pos() >= tmp.par()->size()) {
-			tmp.par(tmp.par()->next());
-			tmp.pos(0);
+		par->setChar(pos, c);
+		checkParagraph(bview, par, pos);
+
+		++pos;
+		if (pos == par->size()) {
+			par = par->next();
+			pos = 0;
 		}
 	}
-	if (to.row() != tmp.row()) {
-		refresh_y = tmp.y() - tmp.row()->baseline();
-		refresh_row = tmp.row();
+	if (to.row() != from.row()) {
+		refresh_y = from.y() - from.row()->baseline();
+		refresh_row = from.row();
 		status = LyXText::NEED_MORE_REFRESH;
 	}
 }

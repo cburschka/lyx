@@ -31,7 +31,6 @@
 #include "math_macrotemplate.h"
 #include "Painter.h"
 
-using std::ostream;
 using std::endl;
 
 MathMacro::MathMacro(MathMacroTemplate const & t)
@@ -110,7 +109,7 @@ void MathMacro::draw(Painter & pain, int x, int y)
 }
 
 
-void MathMacro::dump(ostream & os) const
+void MathMacro::dump(std::ostream & os) const
 {
 	MathMacroTable::dump();
 	os << "\n macro: '" << this << "'\n";
@@ -120,7 +119,7 @@ void MathMacro::dump(ostream & os) const
 	os << endl;
 }
 
-void MathMacro::Write(ostream & os, bool fragile) const
+void MathMacro::Write(std::ostream & os, bool fragile) const
 {
 	os << '\\' << name_;
 	for (int i = 0; i < nargs(); ++i) {
@@ -133,7 +132,7 @@ void MathMacro::Write(ostream & os, bool fragile) const
 }
 
 
-void MathMacro::WriteNormal(ostream & os) const
+void MathMacro::WriteNormal(std::ostream & os) const
 {
 	os << "[macro " << name_ << " ";
 	for (int i = 0; i < nargs(); ++i) {

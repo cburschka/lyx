@@ -1,5 +1,14 @@
 2001-06-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* lyxcursor.h (operator<): new func
+	(operator>): new func
+	(operator>=): new func
+	(operator<=): new func
+
+	* text.C (changeCase): use selection.start and selection.end
+	(changeRegionCase): require from to be <= to. Require par to be a
+	valid paragraph.
+
 	* LaTeXFeatures.C (getFloatDefinitions): std:: qualify ostream
 
 2001-06-27  Juergen Vigna  <jug@sad.it>

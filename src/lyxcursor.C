@@ -29,10 +29,10 @@ void LyXCursor::par(Paragraph * p)
 }
 
 
-Paragraph * LyXCursor::par()
-{
-	return par_;
-}
+//Paragraph * LyXCursor::par()
+//{
+//	return par_;
+//}
 
 
 Paragraph * LyXCursor::par() const
@@ -106,10 +106,10 @@ void LyXCursor::row(Row * r)
 }
 
 
-Row * LyXCursor::row()
-{
-	return row_;
-}
+//Row * LyXCursor::row()
+//{
+//	return row_;
+//}
 
 
 Row * LyXCursor::row() const

@@ -28,7 +28,7 @@ public:
 	///
 	void par(Paragraph * p);
 	///
-	Paragraph * par();
+	//Paragraph * par();
 	///
 	Paragraph * par() const;
 	///
@@ -54,7 +54,7 @@ public:
 	///
 	void row(Row * r);
 	///
-	Row * row();
+	//Row * row();
 	///
 	Row * row() const;
 private:
@@ -88,6 +88,44 @@ inline
 bool operator!=(LyXCursor const & a, LyXCursor const & b)
 {
 	return !(a == b);
+}
+
+///
+inline
+bool operator<(LyXCursor const & a, LyXCursor const & b) 
+{
+	// Can this be done in a nother way?
+	return (a.y() < b.y() && a.pos() < b.pos());
+}
+
+///
+inline
+bool operator>(LyXCursor const & a, LyXCursor const & b) 
+{
+	return b < a;
+}
+
+///
+inline
+bool operator>=(LyXCursor const & a, LyXCursor const & b)
+{
+#if 0
+	return (a > b || a == b);
+#else
+	return !(a < b);
+#endif
+}
+
+
+///
+inline
+bool operator<=(LyXCursor const & a, LyXCursor const & b)
+{
+#if 0
+	return (a < b || a == b);
+#else
+	return !(a > b);
+#endif
 }
 
 #endif
