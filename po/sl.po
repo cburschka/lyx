@@ -1,13 +1,13 @@
 # Slovenski prevodi menujev za LyX.
 # Copyright (C) 2001, The LyX team.
 # Roman Maurer <roman.maurer@amis.net>, 2001.
-# $Id: sl.po,v 1.36.2.2 2001/01/31 16:45:03 larsbj Exp $
+# $Id: sl.po,v 1.36.2.3 2001/05/09 10:19:39 lasgouttes Exp $
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.1.5\n"
-"POT-Creation-Date: 2001-01-31 17:06+0100\n"
-"PO-Revision-Date: 2001-01-07 12:30+0200\n"
+"Project-Id-Version: LyX 1.1.6fix1\n"
+"POT-Creation-Date: 2001-01-31 19:21+0100\n"
+"PO-Revision-Date: 2001-05-05 18:55+0200\n"
 "Last-Translator:  Roman Maurer <roman.maurer@amis.net>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -692,11 +692,11 @@ msgstr "Spisi|S"
 
 #: src/MenuBackend.C:413 src/ext_l10n.h:12 src/ext_l10n.h:17
 msgid "New...|N"
-msgstr "Nov...|N"
+msgstr "Nova...|N"
 
 #: src/ext_l10n.h:13 src/ext_l10n.h:18
 msgid "New from Template...|T"
-msgstr "Nov po vzorcu...|V"
+msgstr "Nova po vzorcu...|V"
 
 #: src/MenuBackend.C:414 src/ext_l10n.h:14 src/ext_l10n.h:19
 msgid "Open...|O"
@@ -768,7 +768,7 @@ msgstr "Prika¾i zgodovino|z"
 
 #: src/ext_l10n.h:36 src/ext_l10n.h:51
 msgid "Preferences...|P"
-msgstr ""
+msgstr "Prikrojitev...|P"
 
 #: src/ext_l10n.h:37 src/ext_l10n.h:52
 msgid "Reconfigure|R"
@@ -796,7 +796,7 @@ msgstr "Prilepi|l"
 
 #: src/ext_l10n.h:43
 msgid "Paste External Selection|x"
-msgstr ""
+msgstr "Prilepi zunanji izbor|z"
 
 #: src/ext_l10n.h:44
 msgid "Find & Replace...|F"
@@ -804,11 +804,11 @@ msgstr "Poi¹èi in zamenjaj...|P"
 
 #: src/ext_l10n.h:45
 msgid "Tabular|T"
-msgstr ""
+msgstr "Tabela|T"
 
 #: src/ext_l10n.h:46
 msgid "Floats & Insets|I"
-msgstr ""
+msgstr "Plovke in vstavki|v"
 
 #: src/ext_l10n.h:47
 msgid "Math Panel|l"
@@ -920,7 +920,7 @@ msgstr "Odstrani stolpec|r"
 
 #: src/ext_l10n.h:76
 msgid "Math Formula|h"
-msgstr ""
+msgstr "Matematièna formula|M"
 
 #: src/ext_l10n.h:77
 msgid "Display Formula|D"
@@ -932,7 +932,7 @@ msgstr "Posebni znak|z"
 
 #: src/ext_l10n.h:79
 msgid "Citation Reference...|C"
-msgstr ""
+msgstr "Sklic na literaturo...|l"
 
 #: src/ext_l10n.h:80
 msgid "Cross Reference...|R"
@@ -952,11 +952,11 @@ msgstr "Opomba ob robu|r"
 
 #: src/ext_l10n.h:84
 msgid "Index Entry...|I"
-msgstr ""
+msgstr "Vnos za stvarno kazalo...|t"
 
 #: src/ext_l10n.h:85
 msgid "Index Entry of Preceeding Word|W"
-msgstr ""
+msgstr "Vnos prej¹nje besede v stvarno kazalo|b"
 
 #: src/ext_l10n.h:86
 msgid "URL...|U"
@@ -964,11 +964,11 @@ msgstr "URL...|U"
 
 #: src/ext_l10n.h:87
 msgid "Note...|N"
-msgstr ""
+msgstr "Opomba...|O"
 
 #: src/ext_l10n.h:88
 msgid "Lists & TOC|O"
-msgstr ""
+msgstr "Seznami in kazala|k"
 
 #: src/ext_l10n.h:89
 msgid "Figure...|g"
@@ -4635,7 +4635,6 @@ msgid "Roman"
 msgstr "pokonèna"
 
 #: src/frontends/xforms/form_preferences.C:108
-#, fuzzy
 msgid "Sans Serif"
 msgstr "brez serifov"
 
@@ -4644,29 +4643,25 @@ msgid "Typewriter"
 msgstr "pisalni stroj"
 
 #: src/frontends/xforms/form_preferences.C:116
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "Zoom %|#Z"
-msgstr "ali %|#o"
+msgstr "Razteg %|#R"
 
 #: src/frontends/xforms/form_preferences.C:127
-#, fuzzy
 msgid "Use scalable fonts"
-msgstr "Vstavi kazalo vsebine"
+msgstr "Raztegljive pisave"
 
 #: src/frontends/xforms/form_preferences.C:132
-#, fuzzy
 msgid "Encoding"
-msgstr "Kodiranje:|#D"
+msgstr "Kodiranje"
 
 #: src/frontends/xforms/form_preferences.C:135
-#, fuzzy
 msgid "script"
-msgstr "Postscript|#P"
+msgstr "drobne"
 
 #: src/LColor.C:85 src/frontends/xforms/form_preferences.C:138
-#, fuzzy
 msgid "footnote"
-msgstr "Vstavi opombo pod èrto"
+msgstr "pod èrto"
 
 #: src/frontends/xforms/form_preferences.C:141
 msgid "large"
@@ -4686,7 +4681,7 @@ msgstr "normalne"
 
 #: src/frontends/xforms/form_preferences.C:154
 msgid "Screen DPI|#D"
-msgstr ""
+msgstr "DPI zaslona|#D"
 
 #: src/frontends/xforms/form_preferences.C:165
 msgid "tiny"
@@ -4702,30 +4697,27 @@ msgstr "majhne"
 
 #: src/frontends/xforms/form_preferences.C:174
 msgid "huger"
-msgstr "ogromnej¹e"
+msgstr "ogromne"
 
 #: src/frontends/xforms/form_preferences.C:202
 msgid "Ascii line length|#A"
-msgstr ""
+msgstr "Velikost vrstice ASCII|#A"
 
 #: src/frontends/xforms/form_preferences.C:214
-#, fuzzy
 msgid "TeX encoding|#T"
-msgstr "Kodiranje:|#D"
+msgstr "Kodiranje v TeXu|#T"
 
 #: src/frontends/xforms/form_preferences.C:221
-#, fuzzy
 msgid "Default paper size|#p"
-msgstr "Velikost papirja:|#P"
+msgstr "Privzeta velikost papirja|#P"
 
 #: src/frontends/xforms/form_preferences.C:229
 msgid "ascii roff|#r"
 msgstr ""
 
 #: src/frontends/xforms/form_preferences.C:236
-#, fuzzy
 msgid "checktex|#c"
-msgstr "Sredina|#n"
+msgstr ""
 
 #: src/frontends/xforms/form_preferences.C:242
 msgid "Outside code interaction"
@@ -4877,9 +4869,8 @@ msgstr ""
 
 #: src/frontends/xforms/form_preferences.C:600
 #: src/frontends/xforms/form_preferences.C:687
-#, fuzzy
 msgid "Delete|#D"
-msgstr "Zbri¹i iz|#D"
+msgstr "Zbri¹i|#Z"
 
 #: src/frontends/xforms/FormPreferences.C:1148
 #: src/frontends/xforms/FormPreferences.C:1150
@@ -4887,24 +4878,20 @@ msgstr "Zbri¹i iz|#D"
 #: src/frontends/xforms/FormPreferences.C:1429
 #: src/frontends/xforms/form_preferences.C:607
 #: src/frontends/xforms/form_preferences.C:694
-#, fuzzy
 msgid "Add|#A"
-msgstr "Dodaj v|#t"
+msgstr "Dodaj|#o"
 
 #: src/frontends/xforms/form_preferences.C:614
-#, fuzzy
 msgid "Converter|#C"
-msgstr "Sredina|#n"
+msgstr "Pretvornik|#P"
 
 #: src/frontends/xforms/form_preferences.C:621
-#, fuzzy
 msgid "From|#F"
-msgstr "Pisave:|#P"
+msgstr "Od|#O"
 
 #: src/frontends/xforms/form_preferences.C:628
-#, fuzzy
 msgid "To|#T"
-msgstr "Dve|#D"
+msgstr "Za|#Z"
 
 #: src/frontends/xforms/form_preferences.C:635
 #, fuzzy
@@ -4927,29 +4914,27 @@ msgstr ""
 
 #: src/frontends/xforms/form_preferences.C:701
 msgid "Extension|#E"
-msgstr ""
+msgstr "Pripona|#P"
 
 #: src/frontends/xforms/form_preferences.C:708
-#, fuzzy
 msgid "Viewer|#V"
-msgstr "Poglej DVI"
+msgstr "Ogledovalnik|#O"
 
 #: src/frontends/xforms/form_preferences.C:715
-#, fuzzy
 msgid "Shortcut|#S"
-msgstr "®al."
+msgstr "Bli¾njica|#B"
 
 #: src/frontends/xforms/form_preferences.C:745
 msgid "Show banner|#S"
-msgstr ""
+msgstr "Prika¾i reklamo|#r"
 
 #: src/frontends/xforms/form_preferences.C:753
 msgid "Auto region delete|#A"
-msgstr ""
+msgstr "Samodejni izbris podroèja|#i"
 
 #: src/frontends/xforms/form_preferences.C:761
 msgid "Exit confirmation|#E"
-msgstr ""
+msgstr "Potrditev ob izhodu|#z"
 
 #: src/frontends/xforms/form_preferences.C:768
 msgid "Display keyboard shortcuts"
@@ -4970,7 +4955,7 @@ msgstr ""
 
 #: src/frontends/xforms/form_preferences.C:796
 msgid "Wheel mouse jump"
-msgstr ""
+msgstr "Poskok mi¹ke s kolesom"
 
 #: src/frontends/xforms/form_preferences.C:827
 msgid "Popup Font"
@@ -4986,9 +4971,8 @@ msgid "Popup Encoding"
 msgstr "Kodiranje:|#D"
 
 #: src/frontends/xforms/form_preferences.C:837
-#, fuzzy
 msgid "Bind file|#B"
-msgstr "Datoteka EPS|#E"
+msgstr "Datoteka s povezavami|#p"
 
 #: src/frontends/xforms/form_preferences.C:843
 #: src/frontends/xforms/form_preferences.C:853
@@ -4998,105 +4982,92 @@ msgstr "Datoteka EPS|#E"
 #: src/frontends/xforms/form_preferences.C:1013
 #: src/frontends/xforms/form_preferences.C:1028
 #: src/frontends/xforms/form_preferences.C:1038
-#, fuzzy
 msgid "Browse..."
-msgstr "Brskaj...|#B"
+msgstr "Brskaj..."
 
 #: src/frontends/xforms/form_preferences.C:847
-#, fuzzy
 msgid "User Interface file|#U"
-msgstr "Uporabi drug jezik:|#U"
+msgstr "Datoteka z uporabni¹kim vmesnikom|#u"
 
 #: src/frontends/xforms/form_preferences.C:857
 msgid "Override X-Windows dead-keys|#O"
-msgstr ""
+msgstr "Prevzemi mrtve tipke oken X|#m"
 
 #: src/frontends/xforms/form_preferences.C:887
-#, fuzzy
 msgid "command"
-msgstr "pokonèna"
+msgstr "ukaz"
 
 #: src/frontends/xforms/form_preferences.C:890
-#, fuzzy
 msgid "page range"
-msgstr "Prelomi strani"
+msgstr "obseg strani"
 
 #: src/frontends/xforms/form_preferences.C:893
-#, fuzzy
 msgid "copies"
-msgstr "Izvodi"
+msgstr "izvodov"
 
 #: src/frontends/xforms/form_preferences.C:896
 msgid "reverse"
-msgstr ""
+msgstr "obrnjeno"
 
 #: src/frontends/xforms/form_preferences.C:899
-#, fuzzy
 msgid "to printer"
-msgstr "Ni moè tiskati"
+msgstr "na tiskalnik"
 
 #: src/frontends/xforms/form_preferences.C:902
 msgid "file extension"
-msgstr ""
+msgstr "pripona datoteke"
 
 #: src/frontends/xforms/form_preferences.C:905
-#, fuzzy
 msgid "spool command"
-msgstr "Opi¹i ukaz"
+msgstr "èakalni ukaz"
 
 #: src/frontends/xforms/form_preferences.C:908
 msgid "paper type"
-msgstr ""
+msgstr "vrsta papirja"
 
 #: src/frontends/xforms/form_preferences.C:911
 msgid "even pages"
-msgstr ""
+msgstr "sode strani"
 
 #: src/frontends/xforms/form_preferences.C:914
 msgid "odd pages"
-msgstr ""
+msgstr "lihe strani"
 
 #: src/frontends/xforms/form_preferences.C:917
-#, fuzzy
 msgid "collated"
-msgstr "nagnjena"
+msgstr "primerjano"
 
 #: src/frontends/xforms/form_preferences.C:923
-#, fuzzy
 msgid "to file"
-msgstr "[ni datoteke]"
+msgstr "v datoteko"
 
 #: src/frontends/xforms/form_preferences.C:926
-#, fuzzy
 msgid "extra options"
-msgstr "Dodatne izbire"
+msgstr "dodatne izbire"
 
 #: src/frontends/xforms/form_preferences.C:929
 msgid "spool printer prefix"
-msgstr ""
+msgstr "predpona za èakalno tiskanje"
 
 #: src/frontends/xforms/form_preferences.C:932
-#, fuzzy
 msgid "paper size"
-msgstr "Velikost papirja:|#P"
+msgstr "velikost papirja"
 
 #: src/frontends/xforms/form_preferences.C:935
-#, fuzzy
 msgid "name"
-msgstr "Ime"
+msgstr "ime"
 
 #: src/frontends/xforms/form_preferences.C:938
 msgid "adapt output"
-msgstr ""
+msgstr "prilagodi izhod"
 
 #: src/frontends/xforms/form_preferences.C:941
 msgid "Printer Command and Flags"
-msgstr ""
+msgstr "Tiskalni¹ki ukazi in zastavice"
 
 #: src/frontends/xforms/form_preferences.C:967
-#, fuzzy
 msgid "Default path|#p"
-msgstr "privzeta"
+msgstr "Privzeta pot|#P"
 
 #: src/frontends/xforms/form_preferences.C:977
 #, fuzzy
@@ -5471,9 +5442,8 @@ msgid "Collated|#C"
 msgstr "Ukaz:|#U"
 
 #: src/frontends/xforms/form_print.C:127
-#, fuzzy
 msgid "to"
-msgstr " z dne "
+msgstr "za"
 
 #: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:37
 #: src/frontends/xforms/form_print.C:129
@@ -5790,9 +5760,9 @@ msgid "List of Algorithms%m"
 msgstr "Seznam algoritmov"
 
 #: src/frontends/xforms/Menubar_pimpl.C:339
-#, fuzzy, c-format
+#, c-format
 msgid "No Table of Contents%i"
-msgstr "Vsebinsko kazalo"
+msgstr "Ni vsebinskega kazala%i"
 
 #: src/frontends/xforms/Menubar_pimpl.C:417
 #, fuzzy, no-c-format
@@ -5839,25 +5809,23 @@ msgstr "presledek, '#', '~', '$' ali '%'."
 #: src/frontends/xforms/xform_helpers.C:276
 #: src/frontends/xforms/xform_helpers.C:321
 msgid "The absolute path is required."
-msgstr ""
+msgstr "Pot mora biti absolutna."
 
 #: src/frontends/xforms/xform_helpers.C:223
 #: src/frontends/xforms/xform_helpers.C:247
 #: src/frontends/xforms/xform_helpers.C:286
 #: src/frontends/xforms/xform_helpers.C:331
 msgid "Directory does not exist."
-msgstr ""
+msgstr "Imenik ne obstaja."
 
 #: src/frontends/xforms/xform_helpers.C:228
 #: src/frontends/xforms/xform_helpers.C:291
-#, fuzzy
 msgid "Cannot write to this directory."
-msgstr "Napaka! Imenika ni moè odpreti:"
+msgstr "Ni moè pisati v ta imenik."
 
 #: src/frontends/xforms/xform_helpers.C:252
-#, fuzzy
 msgid "Cannot read this directory."
-msgstr "Napaka! Imenika ni moè odpreti:"
+msgstr "Tega imenika ni moè brati."
 
 #: src/frontends/xforms/xform_helpers.C:270
 #: src/frontends/xforms/xform_helpers.C:315
@@ -5868,12 +5836,11 @@ msgstr "Nobenih odkritih opozoril."
 #: src/frontends/xforms/xform_helpers.C:297
 #: src/frontends/xforms/xform_helpers.C:342
 msgid "A file is required, not a directory."
-msgstr ""
+msgstr "Zahtevana je datoteka, ne imenik."
 
 #: src/frontends/xforms/xform_helpers.C:302
-#, fuzzy
 msgid "Cannot write to this file."
-msgstr "Ni moè zapisati datoteke"
+msgstr "Ni moè pisati v to datoteko."
 
 #: src/frontends/xforms/xform_helpers.C:336
 #, fuzzy
@@ -6335,98 +6302,84 @@ msgid "OK|#O"
 msgstr "V redu|#r"
 
 #: src/LColor.C:52
-#, fuzzy
 msgid "none"
-msgstr "Opravljeno"
+msgstr "niè"
 
 #: src/LColor.C:53
-#, fuzzy
 msgid "black"
-msgstr "Èrna"
+msgstr "èrna"
 
 #: src/LColor.C:54
-#, fuzzy
 msgid "white"
-msgstr "Bela"
+msgstr "bela"
 
 #: src/LColor.C:55
-#, fuzzy
 msgid "red"
-msgstr "Rdeèa"
+msgstr "rdeèa"
 
 #: src/LColor.C:56
-#, fuzzy
 msgid "green"
-msgstr "Zelena"
+msgstr "zelena"
 
 #: src/LColor.C:57
-#, fuzzy
 msgid "blue"
-msgstr "Modra"
+msgstr "modra"
 
 #: src/LColor.C:58
-#, fuzzy
 msgid "cyan"
-msgstr "Cian"
+msgstr "cian"
 
 #: src/LColor.C:59
-#, fuzzy
 msgid "magenta"
-msgstr "Vijolièna"
+msgstr "vijolièna"
 
 #: src/LColor.C:60
-#, fuzzy
 msgid "yellow"
-msgstr "Rumena"
+msgstr "rumena"
 
 #: src/LColor.C:61
 msgid "cursor"
-msgstr ""
+msgstr "kazalec"
 
 #: src/LColor.C:62
 msgid "background"
-msgstr ""
+msgstr "ozadje"
 
 #: src/LColor.C:63
-#, fuzzy
 msgid "text"
-msgstr "LaTeX "
+msgstr "besedilo"
 
 #: src/LColor.C:64
-#, fuzzy
 msgid "selection"
-msgstr "Okrasek"
+msgstr "izbor"
 
 #: src/LColor.C:65
-#, fuzzy
 msgid "latex"
-msgstr "LaTeX "
+msgstr "latex"
 
 #: src/LColor.C:66
 msgid "floats"
-msgstr ""
+msgstr "plovke"
 
 #: src/LColor.C:67
-#, fuzzy
 msgid "note"
-msgstr "Opomba"
+msgstr "opomba"
 
 #: src/LColor.C:68
 msgid "note background"
-msgstr ""
+msgstr "ozadje opombe"
 
 #: src/LColor.C:69
 msgid "note frame"
-msgstr ""
+msgstr "okvir opombe"
 
 #: src/LColor.C:70
 msgid "depth bar"
-msgstr ""
+msgstr "globinska ¹katla"
 
 #: src/LColor.C:71
-#, fuzzy
 msgid "language"
-msgstr "Jezik"
+msgstr "jezik"
 
 #: src/LColor.C:72
 msgid "command-inset"
@@ -6437,22 +6390,20 @@ msgid "command-inset background"
 msgstr ""
 
 #: src/LColor.C:74
-#, fuzzy
 msgid "command-inset frame"
-msgstr "Vstavi oznako"
+msgstr ""
 
 #: src/LColor.C:75
-#, fuzzy
 msgid "accent"
-msgstr "Nadrejeni:"
+msgstr "poudarek"
 
 #: src/LColor.C:76
 msgid "accent background"
-msgstr ""
+msgstr "ozadje poudarka"
 
 #: src/LColor.C:77
 msgid "accent frame"
-msgstr ""
+msgstr "okvir poudarka"
 
 #: src/LColor.C:78
 msgid "minipage line"
@@ -6460,30 +6411,27 @@ msgstr ""
 
 #: src/LColor.C:79
 msgid "special char"
-msgstr ""
+msgstr "posebni znak"
 
 #: src/LColor.C:80
-#, fuzzy
 msgid "math"
-msgstr "Matematika"
+msgstr "matematika"
 
 #: src/LColor.C:81
 msgid "math background"
-msgstr ""
+msgstr "ozadje matematike"
 
 #: src/LColor.C:82
-#, fuzzy
 msgid "math frame"
-msgstr "Matematièni naèin"
+msgstr "matematièni okvir"
 
 #: src/LColor.C:83
 msgid "math cursor"
-msgstr ""
+msgstr "matematièni kazalec"
 
 #: src/LColor.C:84
-#, fuzzy
 msgid "math line"
-msgstr "Matematièna plo¹èa"
+msgstr "matematièna vrstica"
 
 #: src/LColor.C:86
 msgid "footnote background"
@@ -6499,9 +6447,8 @@ msgid "latex inset"
 msgstr "LaTeX "
 
 #: src/LColor.C:89
-#, fuzzy
 msgid "inset"
-msgstr "Vstavi"
+msgstr "vstavek"
 
 #: src/LColor.C:90
 msgid "inset background"
@@ -6513,9 +6460,8 @@ msgid "inset frame"
 msgstr "Vstavi oznako"
 
 #: src/LColor.C:92
-#, fuzzy
 msgid "error"
-msgstr "Napaka"
+msgstr "napaka"
 
 #: src/LColor.C:93
 msgid "end-of-line marker"
@@ -6558,23 +6504,23 @@ msgstr "Prelomi strani"
 
 #: src/LColor.C:104
 msgid "top of button"
-msgstr ""
+msgstr "vrh gumba"
 
 #: src/LColor.C:105
 msgid "bottom of button"
-msgstr ""
+msgstr "dno gumba"
 
 #: src/LColor.C:106
 msgid "left of button"
-msgstr ""
+msgstr "leva stran gumba"
 
 #: src/LColor.C:107
 msgid "right of button"
-msgstr ""
+msgstr "desna stran gumba"
 
 #: src/LColor.C:108
 msgid "button background"
-msgstr ""
+msgstr "ozadje gumba"
 
 #: src/LColor.C:109
 msgid "inherit"
@@ -8706,13 +8652,12 @@ msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Tako ni mogoèe vstaviti dveh presledkov.  Prosimo, preberite Uèbenik."
 
 #: src/text.C:3458 src/text.C:3464
-#, fuzzy
 msgid "Page Break (top)"
-msgstr "Prelomi strani"
+msgstr "Prelom strani (vrh)"
 
 #: src/text.C:3658 src/text.C:3664
 msgid "Page Break (bottom)"
-msgstr ""
+msgstr "Prelom strani (dno)"
 
 #: src/text.C:3958
 msgid "You can't insert a float in a float!"
@@ -8725,66 +8670,3 @@ msgstr "Opombe ob robu ni moè vstaviti v ministran!"
 #: src/text.C:3993
 msgid "Float would include float!"
 msgstr "Plovka bi zajemala plovko!"
-
-#~ msgid "Text mode"
-#~ msgstr "Besedilni naèin"
-
-#~ msgid "Unable to show log file!"
-#~ msgstr "Datoteke z dnevnikom ni moè prikazati!"
-
-#~ msgid "NO LATEX LOG FILE!"
-#~ msgstr "NI DNEVNIKA LATEXA!"
-
-#~ msgid "Fax no.:|#F"
-#~ msgstr "Faks ¹t.:|#F"
-
-#~ msgid "Dest. Name:|#N"
-#~ msgstr "Ime cilja:|#N"
-
-#~ msgid "Enterprise:|#E"
-#~ msgstr "Podjetje:|#E"
-
-#~ msgid "Phone Book"
-#~ msgstr "Telefonski imenik"
-
-#~ msgid "Select from|#S"
-#~ msgstr "Izberi iz|#S"
-
-#~ msgid "Add to|#t"
-#~ msgstr "Dodaj v|#t"
-
-#~ msgid "Delete from|#D"
-#~ msgstr "Zbri¹i iz|#D"
-
-#~ msgid "Save|#V"
-#~ msgstr "Shrani|#V"
-
-#~ msgid "Destination:"
-#~ msgstr "Cilj:"
-
-#~ msgid "Comment:"
-#~ msgstr "Komentar:"
-
-#~ msgid "Fax File: "
-#~ msgstr "Datoteka s faksom: "
-
-#~ msgid "Empty Phonebook"
-#~ msgstr "Prazen telefonski imenik"
-
-#~ msgid "Save (needed)"
-#~ msgstr "Shrani (potrebno)"
-
-#~ msgid "Cannot open phone book: "
-#~ msgstr "Telefonskega imenika ni moè odpreti:"
-
-#~ msgid "NO OR EMPTY LOGFILE!"
-#~ msgstr "DNEVNIKA NI ALI PA JE PRAZEN!"
-
-#~ msgid "Message-Window"
-#~ msgstr "Okno s sporoèilom"
-
-#~ msgid "@L@b@cEmpty Phonebook"
-#~ msgstr "@L@b@cPrazen imenik"
-
-#~ msgid "Phonebook"
-#~ msgstr "Telefonski imenik"
