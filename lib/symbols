@@ -809,7 +809,7 @@ endif
 iffont msb
 \def\Join{\ltimes\kern-18.5mu\rtimes}
 endif
-\def\mathcircumflex{\mbox{\^{}}}
+\def\mathcircumflex{\mbox{\^{}}}{\^}
 
 textdegree         lyxsymbol             176 0 mathord  x
 
