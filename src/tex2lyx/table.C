@@ -13,6 +13,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <map>
 
 using std::cerr;
 using std::endl;
@@ -21,8 +22,14 @@ using std::ostream;
 using std::ostringstream;
 using std::string;
 using std::vector;
+using std::map;
 
 #include "mathed/math_gridinfo.h"
+
+
+// filled in preamble.C
+std::map<char, int> special_columns;
+
 
 namespace {
 
@@ -54,7 +61,6 @@ string read_hlines(Parser & p)
 	//cerr << "read_hlines(), next token: " << p.next_token() << "\n";
 	return os.str();
 }
-
 
 
 /* rather brutish way to code table structure in a string:
@@ -125,7 +131,19 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo)
 				break;
 			}
 			default:
-				cerr << "ignoring special separator '" << t << "'\n";
+				if (special_columns.find(t.character()) != special_columns.end()) {
+					ColInfo ci;
+					ci.align = 'c';
+					ci.special += t.character();
+					int const nargs = special_columns[t.character()];
+					for (int i = 0; i < nargs; ++i)
+						ci.special += "{" + p.verbatim_item() + "}"; 
+					//cerr << "handling special column '" << t << "' " << nargs
+					//	<< "  '" << ci.special << "'\n";
+					colinfo.push_back(ci);
+				} else {
+					cerr << "ignoring special separator '" << t << "'\n";
+				}
 				break;
 			}
 	}

@@ -13,6 +13,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <map>
 
 using std::cerr;
 using std::endl;
@@ -24,6 +25,8 @@ using std::ostringstream;
 using std::string;
 using std::vector;
 
+// special columntypes
+extern std::map<char, int> special_columns;
 
 namespace {
 
@@ -127,8 +130,8 @@ void handle_package(string const & name, string const & options)
 
 void end_preamble(ostream & os)
 {
-	os << "# tex2lyx 0.0.2 created this file\n"
-	   << "\\lyxformat 222\n"
+	os << "# tex2lyx 0.0.3 created this file\n"
+	   << "\\lyxformat 224\n"
 	   << "\\textclass " << h_textclass << "\n"
 	   << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
 	if (h_options.size())
@@ -284,6 +287,23 @@ void parse_preamble(Parser & p, ostream & os)
 			h_preamble << "\\def\\" << name << '{' << p.verbatim_item() << "}\n";
 		}
 
+		else if (t.cs() == "newcolumntype") {
+			string const name = p.getArg('{', '}');
+			trim(name);
+			int nargs = 0;
+			string opts = p.getOpt();
+			if (opts.size()) {
+				istringstream is(string(opts, 1));
+				//cerr << "opt: " << is.str() << "\n";
+				is >> nargs;
+			}
+			special_columns[name[0]] = nargs;
+			h_preamble << "\\newcolumntype{" << name << "}";
+			if (nargs)
+				h_preamble << "[" << nargs << "]";
+			h_preamble << "{" << p.verbatim_item() << "}\n";
+		}
+
 		else if (t.cs() == "setcounter") {
 			string const name = p.getArg('{', '}');
 			string const content = p.getArg('{', '}');
@@ -303,7 +323,7 @@ void parse_preamble(Parser & p, ostream & os)
 			else if (name == "parindent")
 				h_paragraph_separation = "skip";
 			else
-				h_preamble << "\\setlength{" + name + "}{" + content + "}\n";
+				h_preamble << "\\setlength{" << name << "}{" << content << "}\n";
 		}
 
 		else if (t.cs() == "par")
