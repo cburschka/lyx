@@ -118,17 +118,17 @@ bool QRef::typeAllowed()
 
 void QRef::setGoBack()
 {
-	dialog_->gotoPB->setText(qt_("&Go back"));
+	dialog_->gotoPB->setText(qt_("&Go Back"));
 	QToolTip::remove(dialog_->gotoPB);
-	QToolTip::add(dialog_->gotoPB, qt_("Go back"));
+	QToolTip::add(dialog_->gotoPB, qt_("Jump back"));
 }
 
 
 void QRef::setGotoRef()
 {
-	dialog_->gotoPB->setText(qt_("&Goto"));
+	dialog_->gotoPB->setText(qt_("&Go to Reference"));
 	QToolTip::remove(dialog_->gotoPB);
-	QToolTip::add(dialog_->gotoPB, qt_("Go to reference"));
+	QToolTip::add(dialog_->gotoPB, qt_("Jump to reference"));
 }
 
 

@@ -22,6 +22,9 @@ class QRefDialog : public QRefDialogBase {
 	Q_OBJECT
 public:
 	QRefDialog(QRef * form);
+
+	virtual void show();
+
 public slots:
 	void changed_adaptor();
 	void gotoClicked();
@@ -29,6 +32,7 @@ public slots:
 	void refSelected(QString const &);
 	void sortToggled(bool);
 	void updateClicked();
+
 protected:
 	void closeEvent(QCloseEvent * e);
 private:

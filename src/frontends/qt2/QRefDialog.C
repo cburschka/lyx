@@ -37,6 +37,13 @@ QRefDialog::QRefDialog(QRef * form)
 }
 
 
+void QRefDialog::show()
+{
+	QRefDialogBase::show();
+	refsLB->setFocus();
+}
+
+
 void QRefDialog::changed_adaptor()
 {
 	form_->changed();
@@ -67,7 +74,8 @@ void QRefDialog::refHighlighted(const QString & sel)
 
 void QRefDialog::refSelected(const QString &)
 {
-	form_->gotoRef();
+	// <enter> or double click, inserts ref and closes dialog
+	form_->slotOK();
 }
 
 

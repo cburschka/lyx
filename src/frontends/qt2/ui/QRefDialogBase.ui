@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>391</width>
+            <width>383</width>
             <height>395</height>
         </rect>
     </property>
@@ -86,11 +86,11 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Go to reference</string>
+                        <string>&amp;Go to Reference</string>
                     </property>
                     <property>
                         <name>toolTip</name>
-                        <string>Move the document cursor to reference</string>
+                        <string>Jump to the reference</string>
                     </property>
                 </widget>
             </hbox>
@@ -103,7 +103,7 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Sort</string>
+                <string>&amp;Sort</string>
             </property>
             <property>
                 <name>toolTip</name>
@@ -254,7 +254,11 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Available references in selected document:</string>
+                <string>A&amp;vailable references in the document:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>refsLB</cstring>
             </property>
         </widget>
         <widget row="2"  column="0"  rowspan="1"  colspan="2" >
