@@ -119,7 +119,9 @@ unsigned long lyx::sum(char const * file)
 #ifdef HAVE_SSTREAM
 	ostringstream ostr;
 	ostr << ifs.rdbuf();
-	string w = ostr.str();
+	// The .c_str() is here in case we use our lyxstring class
+	// instead of standard string. 
+	string w = ostr.str().c_str();
 	return do_crc(w.begin(), w.end());
 #else
 	ostrstream ostr;

@@ -422,7 +422,7 @@ void LyXGUI::create_forms()
 	fl_addto_form(fd_form_document->form_document);
 	combo_language = new Combox(FL_COMBOX_DROPLIST);
 	FL_OBJECT * ob = fd_form_document->choice_language;
-	combo_language->add(ob->x, ob->y, ob->w, ob->h, 200);
+	combo_language->add(ob->x, ob->y, ob->w, ob->h, 250);
 	combo_language->shortcut("#G", 1);
 	fl_end_form();
 	int n; // declared here because DEC cxx does not like multiple

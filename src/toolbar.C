@@ -302,7 +302,7 @@ void Toolbar::set(bool doingmain)
 			xpos += standardspacing;
 			if (!combox)
 				combox = new Combox(FL_COMBOX_DROPLIST);
-			combox->add(xpos, ypos, 135, height, 300);
+			combox->add(xpos, ypos, 135, height, 400);
 			combox->setcallback(LayoutsCB);
 			combox->resize(FL_RESIZE_ALL);
 			combox->gravity(NorthWestGravity, NorthWestGravity);

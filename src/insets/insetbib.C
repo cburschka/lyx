@@ -84,7 +84,7 @@ FD_citation_form * create_form_citation_form(void)
 	fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
 
 	bibcombox = new Combox(FL_COMBOX_INPUT);
-	bibcombox->add(80, 10, 130, 30, 120);
+	bibcombox->add(80, 10, 130, 30, 300);
 
 	obj = fl_add_button(FL_RETURN_BUTTON, 20, 90, 90, 30, _("OK"));
 	fl_set_object_lsize(obj, FL_NORMAL_SIZE);

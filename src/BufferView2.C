@@ -25,6 +25,8 @@
 
 extern BufferList bufferlist;
 
+using std::ifstream;
+
 // Inserts a file into current document
 bool BufferView::insertLyXFile(string const & filen)
 	//

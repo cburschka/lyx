@@ -1,3 +1,29 @@
+2000-02-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyx_gui.C (create_forms): make combo box taller (from Dekel
+	Tsur). 
+	* src/toolbar.C (set): ditto
+	* src/insets/insetbib.C (create_form_citation_form): ditto
+
+	* lib/CREDITS: added Dekel Tsur.
+
+	* lib/kbd/hebrew.kmap, lib/kbd/null.kmap,
+	lib/layouts/heb-article.layout, lib/layouts/heb-letter.layout: new
+	hebrew supports files from Dekel Tsur.
+	
+	* lib/kbd/iso8859-8.cdef: new file, from Tzafrir Cohen
+	<tzafrir@technion.ac.il> 
+
+	* src/lyxrc.C: put \date_insert_format at the right place.
+
+	* src/buffer.C (makeLaTeXFile): fix the handling of
+	BufferParams::sides when writing out latex files.
+
+	* src/BufferView2.C: add a "using" directive.
+
+	* src/support/lyxsum.C (sum): when we use lyxstring,
+	ostringstream::str needs an additional .c_str().
+
 2000-02-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/filetools.C (ChangeExtension): patch from Etienne

@@ -1186,7 +1186,7 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 					ofs << "  ";
 				currlinelen = depth * 2;
 				switch(ltype) {
-				case 0: /* Standart */
+				case 0: /* Standard */
 				case 4: /* (Sub)Paragraph */
                                 case 5: /* Description */
 					break;
@@ -1466,10 +1466,15 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 		// if needed
 		if (params.sides != tclass.sides()) {
-			if (params.sides == 2)
-				options += "twoside,";
-			else
+			switch (params.sides) {
+			case LyXTextClass::OneSide:
 				options += "oneside,";
+				break;
+			case LyXTextClass::TwoSides:
+				options += "twoside,";
+				break;
+			}
+
 		}
 
 		// if needed
