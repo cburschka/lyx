@@ -480,15 +480,14 @@ void InsetFormula::updatePreview() const
 		os << char('A' + (*it & 15)) << char('a' + (*it >> 4));
 	string base = os.str();
 	string dir  = OnlyPath(lyx::tempName());
-	string file = dir + base + ".eps";
+	string file = dir + base + ".lyxpreview";
 
 	// everything is fine already
 	if (loader_.filename() == file)
 		return;
 
-	// The real work starts.
-	string const texfile = dir + base + ".tex";
-	std::ofstream of(texfile.c_str());
+	// the real work starts
+	std::ofstream of(file.c_str());
 	of << "\\batchmode"
 	   << "\\documentclass{article}"
 	   << "\\usepackage{amssymb}"
@@ -499,23 +498,6 @@ void InsetFormula::updatePreview() const
 	   << "\\end{document}\n";
 	of.close();
 
-	string const cmd =
-//		"latex " + base + ".tex ; " + "
-//    "dvips -x 2500 -R -E -o " + base + ".eps " + base + ".dvi ";
-	// Herbert says this is faster
-		"pdflatex --interaction batchmode " + base + "; " +
-		"dvips -x 2000 -R -E -o " + base + ".eps " + base + ".dvi ";
-	//lyxerr << "calling: '" << "(cd " + dir + "; " + cmd + ")\n";
-	Systemcall sc;
-	sc.startscript(Systemcall::Wait, "(cd " + dir + "; " + cmd + ")");
-
-	// now we are done, start actual loading
-	loader_.reset(file);
-	//lyxerr << "file '" << file << "' registered for preview\n";
-
-	// clean up a bit
-	lyx::unlink(dir + base + ".tex");
-	lyx::unlink(dir + base + ".aux");
-	lyx::unlink(dir + base + ".dvi");
-	lyx::unlink(dir + base + ".log");
-}
+	// now we are done, start actual loading we will get called back via
+	// InsetFormula::statusChanged() if this is finished
+	loader_.reset(file); }
