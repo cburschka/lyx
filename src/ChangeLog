@@ -1,3 +1,17 @@
+2001-12-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* text.C (workWidth): use Inset::parOwner to find out where the
+	inset has been inserted. This is a huge performance gain for large
+	documents with lots of insets. If Inset::parOwner is not set, fall
+	back on the brute force method
+
+	* paragraph_pimpl.C (insertInset): 
+	* paragraph.C (Paragraph): 
+	(cutIntoMinibuffer): set parOwner of insets when
+	inserting/removing them
+
+	* lyxtext.h: add short comment on deleteEmptyParagraphMechanism
+
 2001-12-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* tabular-old.C (getTokenValue): 

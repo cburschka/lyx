@@ -12,10 +12,11 @@
 #include FORMS_H_LOCATION
  
 #include "Color.h"
-#include "support/lstrings.h"
-#include "lyxlength.h"
+#include "LString.h"
  
 #include <vector>
+
+class LyXLength;
 
 /// Extract shortcut from <ident>|<shortcut> string
 char const * flyx_shortcut_extract(char const * sc);
@@ -32,7 +33,7 @@ void setEnabled(FL_OBJECT *, bool enable);
 
 /// Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const &label, int w,
-		 int=FL_NORMAL_SIZE, int=FL_NORMAL_STYLE);
+		 int = FL_NORMAL_SIZE, int = FL_NORMAL_STYLE);
 
 /// Given an fl_choice, create a vector of its entries
 std::vector<string> const getVectorFromChoice(FL_OBJECT *);

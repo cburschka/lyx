@@ -69,17 +69,26 @@ int LyXText::workWidth(BufferView * bview) const
 int LyXText::workWidth(BufferView * bview, Inset * inset) const
 {
 	Paragraph * par = 0;
-	pos_type pos = 0;
+	pos_type pos = -1;
 
-	Buffer::inset_iterator it = bview->buffer()->inset_iterator_begin();
-	Buffer::inset_iterator end = bview->buffer()->inset_iterator_end();
-	for ( ; it != end; ++it) {
-		if (*it == inset) {
-			par = it.getPar();
-			pos = it.getPos();
-			break;
+	par = inset->parOwner();
+	if (par)
+		pos = par->getPositionOfInset(inset);
+
+	if (!par || pos == -1) {
+		lyxerr << "LyXText::workWidth: something is wrong,"
+			" fall back to the brute force method" << endl;
+		Buffer::inset_iterator it = bview->buffer()->inset_iterator_begin();
+		Buffer::inset_iterator end = bview->buffer()->inset_iterator_end();
+		for ( ; it != end; ++it) {
+			if (*it == inset) {
+				par = it.getPar();
+				pos = it.getPos();
+				break;
+			}
 		}
 	}
+	
 	if (!par) {
 		return workWidth(bview);
 	}

@@ -1,3 +1,8 @@
+2001-12-11  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* inset.h: add par_owner_ member variable and parOwner
+	setter/accessor. 
+
 2001-12-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* insettabular.C (everywhere): adapt because widths are now real

@@ -35,7 +35,8 @@ unsigned int Inset::inset_id = 0;
 
 Inset::Inset()
 	: top_x(0), topx_set(false), top_baseline(0), scx(0),
-	  id_(inset_id++), owner_(0), background_color_(LColor::inherit)
+	  id_(inset_id++), owner_(0), par_owner_(0),
+	  background_color_(LColor::inherit)
 {}
 
 

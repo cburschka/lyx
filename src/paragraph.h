@@ -258,7 +258,7 @@ public:
 	/// Returns the height of the highest font in range
 	LyXFont::FONT_SIZE highestFontInRange(lyx::pos_type startpos,
 	                                      lyx::pos_type endpos,
-										  LyXFont::FONT_SIZE const def_size) const;
+					      LyXFont::FONT_SIZE const def_size) const;
 	///
 	void insertChar(lyx::pos_type pos, value_type c);
 	///

@@ -39,7 +39,7 @@ bool textUndo(BufferView * bv)
 			if (first) {
 				bv->buffer()->redostack.push(
 					createUndo(bv, undo->kind, first,
-							   bv->buffer()->getParFromID(undo->number_of_behind_par)));
+						   bv->buffer()->getParFromID(undo->number_of_behind_par)));
 			}
 		}
 	}
@@ -119,8 +119,10 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			while (tmppar5 && tmppar5 != behind) {
 				tmppar = tmppar5;
 				tmppar5 = tmppar5->next();
-				// a memory optimization for edit: Only layout information
-				// is stored in the undo. So restore the text informations.
+				// a memory optimization for edit:
+				// Only layout information 
+				// is stored in the undo. So restore
+				// the text informations. 
 				if (undo->kind == Undo::EDIT) {
 					tmppar2->setContentsFromPar(tmppar);
 					tmppar->clearContents();
@@ -171,10 +173,11 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			LyXFont font;
 			it->update(bv, font, false);
 #ifdef THIS_DOES_NOT_WORK
-			// we need this anyway as also if the undo was inside an inset
-			// we have to redo the paragraph breaking
+			// we need this anyway as also if the undo was
+			// inside an inset we have to redo the
+			// paragraph breaking
 			bv->text->redoParagraphs(bv, bv->text->cursor,
-									 bv->text->cursor.par());
+						 bv->text->cursor.par());
 #endif
 		} else {
 			bv->text->redoParagraphs(bv, bv->text->cursor, endpar);

@@ -1,4 +1,12 @@
+2001-12-11  Ben Stanley <bds02@uow.edu.au>
+
+	* Menubar_pimpl.C: Fixed a crashing bug when document has more
+	than 80 floats and using xforms 0.88
+
 2001-12-11  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* xforms_helpers.C: include lyxlength.h here
+	* xforms_helpers.h: ... but not here
 
 	* FormTabular.C: use LyXLength instead of string wherever
 	necessary; whitespace changes.

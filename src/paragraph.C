@@ -89,7 +89,7 @@ Paragraph::Paragraph()
 }
 
 
-// This construktor inserts the new paragraph in a list.
+// This constructor inserts the new paragraph in a list.
 Paragraph::Paragraph(Paragraph * par)
 	: layout(0), pimpl_(new Paragraph::Pimpl(this))
 {
@@ -140,6 +140,8 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 	     it != insetlist.end(); ++it)
 	{
 		it->inset = it->inset->clone(*current_view->buffer(), same_ids);
+		// tell the new inset who is the boss now
+		it->inset->parOwner(this);
 	}
 }
 
@@ -438,6 +440,8 @@ void Paragraph::cutIntoMinibuffer(BufferParams const & bparams, pos_type pos)
 					    search_elem, Pimpl::matchIT());
 			if (it != insetlist.end() && it->pos == pos)
 				it->inset = 0;
+			// the inset is not in a paragraph anymore
+			minibuffer_inset->parOwner(0);
 		} else {
 			minibuffer_inset = 0;
 			minibuffer_char = ' ';
@@ -1193,7 +1197,7 @@ int Paragraph::autoDeleteInsets()
 	while (index < insetlist.size()) {
 		if (insetlist[index].inset && insetlist[index].inset->autoDelete()) {
 			erase(insetlist[index].pos); 
-			// Erase() calls to insetlist.erase(&insetlist[index])
+			// erase() calls to insetlist.erase(&insetlist[index])
 			// so index shouldn't be increased.
 			++count;
 		} else

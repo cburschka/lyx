@@ -150,6 +150,7 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 			"there is an inset in position: " << pos << std::endl;
 	} else {
 		owner_->insetlist.insert(it, InsetTable(pos, inset));
+		inset->parOwner(owner_);
 	}
 	
 	if (inset_owner)

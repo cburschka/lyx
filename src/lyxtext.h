@@ -612,7 +612,7 @@ private:
 				  LyXCursor & cur,
 				  LyXCursor const & where) const;
 	
-	///
+	/// delete double space or empty paragraphs around old_cursor 
 	void deleteEmptyParagraphMechanism(BufferView *,
 					   LyXCursor const & old_cursor) const;
 

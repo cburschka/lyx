@@ -337,10 +337,21 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 		if (cit->first == "TOC") continue;
 
 		// All the rest is for floats
-		int menu2 = get_new_submenu(smn, win);
+		int menu_first_sub = get_new_submenu(smn, win);
+		int menu_current = menu_first_sub;
 		Buffer::SingleList::const_iterator ccit = cit->second.begin();
 		Buffer::SingleList::const_iterator eend = cit->second.end();
+		size_type count = 0;
 		for (; ccit != eend; ++ccit) {
+			++count;
+			if (count > max_number_of_items) {
+				int menu_tmp = get_new_submenu(smn, win);
+				string label = _("More");
+				label += "...%m";
+				fl_addtopup(menu_current, label.c_str(), menu_tmp);
+				count = 1;
+				menu_current = menu_tmp;
+			}
 			int const action =
 				lyxaction
 				.getPseudoAction(LFUN_GOTO_PARAGRAPH,
@@ -348,10 +359,10 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 			string label = fixlabel(ccit->str);
 			label = limit_string_length(label);
 			label += "%x" + tostr(action + action_offset);
-			fl_addtopup(menu2, label.c_str());
+			fl_addtopup(menu_current, label.c_str());
 		}
 		string const m = floatList[cit->first]->second.name() + "%m";
-		fl_addtopup(menu, m.c_str(), menu2);
+		fl_addtopup(menu, m.c_str(), menu_first_sub);
 	}
 	
 	

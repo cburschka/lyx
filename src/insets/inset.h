@@ -226,6 +226,10 @@ public:
 	///
 	Inset * owner() const { return owner_; }
 	///
+	void parOwner(Paragraph * par) { par_owner_ = par; }
+	///
+	Paragraph * parOwner() const {return par_owner_; }
+	///
 	void setBackgroundColor(LColor::color);
 	///
 	LColor::color backgroundColor() const;
@@ -318,6 +322,8 @@ protected:
 private:
 	///
 	Inset * owner_;
+	/// the paragraph in which this inset has been inserted
+	Paragraph * par_owner_;
 	///
 	string name_;
 	///

@@ -19,6 +19,7 @@
 #include "support/lstrings.h" // frontStrip, strip
 #include "gettext.h"
 #include "support/LAssert.h"
+#include "lyxlength.h"
 
 using std::ofstream;
 using std::pair;
