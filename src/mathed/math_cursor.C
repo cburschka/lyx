@@ -352,7 +352,7 @@ MathMatrixInset * create_multiline(short int type, int cols)
 	case LM_OT_MULTLINE:
 	case LM_OT_MULTLINEN:
 		columns = 1;
-		align = "c"; // This is incorrect!
+		align = "C";
 		break;
 	case LM_OT_MPAR:
 	case LM_OT_MPARN:

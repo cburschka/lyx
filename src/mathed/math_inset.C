@@ -468,6 +468,10 @@ void MathMatrixInset::Metrics()
     for (i = 1; i < nc; ++i)
 	if (h_align[i] == 'R')
 	    ws[i] += 10*df_width;
+    // Increase ws[i] for 'C' column
+    if (h_align[0] == 'C')
+	if (ws[0] < 7*workWidth/8)
+	    ws[0] = 7*workWidth/8;
 
    // Adjust local tabs
     cxrow = row;
@@ -490,6 +494,14 @@ void MathMatrixInset::Metrics()
 	    case 'r':
 	    case 'R':
 		lf = ws[i] - cxrow->getTab(i);
+		break;
+	    case 'C':
+		if (cxrow == row)
+		    lf = 0;
+		else if (!cxrow->getNext())
+		     lf = ws[i] - cxrow->getTab(i);
+		else
+		    lf = (ws[i] - cxrow->getTab(i))/2; 
 		break;
 	    }
 	    ww = (isvoid) ? lf : lf + cxrow->getTab(i);

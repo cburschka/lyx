@@ -263,6 +263,8 @@ class MathedInset  {
     virtual void  SetStyle(short st) { size = st; } // Metrics();
     ///
     virtual void  SetName(string const & n) { name = n; }
+    ///
+    static int workWidth;
  protected:
     ///
     string name;

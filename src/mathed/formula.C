@@ -76,6 +76,7 @@ MathedCursor * InsetFormula::mathcursor = 0;
 int MathedInset::df_asc;
 int MathedInset::df_des;
 int MathedInset::df_width;
+int MathedInset::workWidth;
 
 
 static
@@ -407,8 +408,9 @@ int InsetFormula::descent(BufferView *, LyXFont const &) const
 }
 
 
-int InsetFormula::width(BufferView *, LyXFont const & f) const
+int InsetFormula::width(BufferView * bv, LyXFont const & f) const
 {
+    MathedInset::workWidth = bv->workWidth();
     lfont_size = f.size();
     par->Metrics();
     return par->Width(); //+2;
@@ -418,6 +420,7 @@ int InsetFormula::width(BufferView *, LyXFont const & f) const
 void InsetFormula::draw(BufferView * bv, LyXFont const & f,
 			int baseline, float & x, bool) const
 {
+	MathedInset::workWidth = bv->workWidth();
 	Painter & pain = bv->painter();
 	// Seems commenting out solves a problem.
 	LyXFont font = mathed_get_font(LM_TC_TEXTRM, LM_ST_TEXT);
@@ -790,7 +793,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
     case LFUN_BREAKLINE:
     {
       bv->lockedInsetStoreUndo(Undo::INSERT);
-      byte c = arg.empty() ? 'e' : arg[0];
+      byte c = arg.empty() ? '1' : arg[0];
       mathcursor->Insert(c, LM_TC_CR);
       if (!label.empty()) {
 	 mathcursor->setLabel(label);
