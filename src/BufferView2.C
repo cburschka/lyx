@@ -346,8 +346,10 @@ void BufferView::selectLastWord()
 {
 	if (!available()) return;
    
+	LyXCursor cur = text->selection.cursor;
 	hideCursor();
 	beforeChange(text);
+	text->selection.cursor = cur;
 	text->selectSelectedWord(this);
 	toggleSelection(false);
 	update(text, BufferView::SELECT|BufferView::FITCUR);

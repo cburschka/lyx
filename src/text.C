@@ -2264,7 +2264,7 @@ bool LyXText::selectWordWhenUnderCursor(BufferView * bview,
 // This function is only used by the spellchecker for NextWord().
 // It doesn't handle LYX_ACCENTs and probably never will.
 string const LyXText::selectNextWord(BufferView * bview,
-				     float & value) const
+                                     float & value) const
 {
 	if (the_locking_inset) {
 		string str = the_locking_inset->selectNextWord(bview, value);

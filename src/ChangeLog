@@ -1,3 +1,8 @@
+2001-08-10  Juergen Vigna  <jug@sad.it>
+
+	* BufferView2.C (selectLastWord): save the selection cursor as this
+	now is cleared in the function LyXText::clearSelection!
+
 2001-08-08  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (Dispatch): use a non-cut-buffer cut on DELTE
