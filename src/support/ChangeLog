@@ -1,3 +1,12 @@
+2002-02-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* syscontr.[Ch]:
+	* syssingleton.C: files removed.
+
+	* syscall.[Ch]: remove the forked calls interface, as nothing, nowhere
+	uses it. Strip down the Systemcalls interface to make it brutally
+	obvious how unsophisticated it is.
+
 2002-02-08  Herbert Voss  <voss@perce.de>
 
 	* filetools.C: (getExtFromContents) adding TGIF-format

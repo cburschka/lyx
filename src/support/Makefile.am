@@ -65,9 +65,6 @@ libsupport_la_SOURCES = \
 	sstream.h \
 	$(REGEX) syscall.C \
 	syscall.h \
-	syscontr.C \
-	syscontr.h \
-	syssingleton.C \
 	tempname.C \
 	textutils.h \
 	translator.h \

@@ -1056,7 +1056,7 @@ string const unzipFile(string const & zipped_file)
     string  const tempfile = lyx::tempName(string(), file);
     // Run gunzip
     string const command = "gunzip -c "+zipped_file+" > "+tempfile;
-    Systemcalls one(Systemcalls::System, command);
+    Systemcalls one(Systemcalls::Wait, command);
     // test that command was executed successfully
     return tempfile;
 }

@@ -1,3 +1,8 @@
+2002-02-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* formula.C: change Systemcalls::System to Systemcalls::Wait and
+	No change of functionality, just reflects the stripped down Systemcalls
+	class.
 
 2002-02-08  André Pönitz <poenitz@gmx.net>
 

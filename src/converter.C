@@ -196,7 +196,7 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 
 	Path p(OnlyPath(filename));
 	Systemcalls one;
-	int const res = one.startscript(Systemcalls::SystemDontWait, command);
+	int const res = one.startscript(Systemcalls::DontWait, command);
 
 	if (res) {
 		Alert::alert(_("Cannot view file"),
@@ -645,7 +645,7 @@ bool Converters::convert(Buffer const * buffer,
 				ShowMessage(buffer, _("Executing command:"), command);
 
 			Systemcalls::Starttype type = (dummy)
-				? Systemcalls::SystemDontWait : Systemcalls::System;
+				? Systemcalls::DontWait : Systemcalls::Wait;
 			Systemcalls one;
 			int res;
 			if (conv.original_dir && buffer) {
@@ -659,7 +659,7 @@ bool Converters::convert(Buffer const * buffer,
 				string const command2 = conv.parselog +
 					" < " + QuoteName(infile2 + ".out") +
 					" > " + QuoteName(logfile);
-				one.startscript(Systemcalls::System, command2);
+				one.startscript(Systemcalls::Wait, command2);
 				if (!scanLog(buffer, command, logfile))
 					return false;
 			}

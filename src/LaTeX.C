@@ -25,7 +25,6 @@
 #include "debug.h"
 #include "support/lyxlib.h"
 #include "support/syscall.h"
-#include "support/syscontr.h"
 #include "support/path.h"
 #include "support/LRegex.h"
 #include "support/LSubstring.h"
@@ -360,7 +359,7 @@ int LaTeX::operator()()
 	string tmp = cmd + ' ' + file + " > nul";
 #endif
         Systemcalls one;
-	return one.startscript(Systemcalls::System, tmp);
+	return one.startscript(Systemcalls::Wait, tmp);
 }
 
 
@@ -377,7 +376,7 @@ bool LaTeX::runMakeIndex(string const & f)
 	string tmp = "makeindex -c -q ";
 	tmp += f;
 	Systemcalls one;
-	one.startscript(Systemcalls::System, tmp);
+	one.startscript(Systemcalls::Wait, tmp);
 	return true;
 }
 
@@ -508,7 +507,7 @@ bool LaTeX::runBibTeX(vector<Aux_Info> const & bibtex_info)
 		string tmp = "bibtex ";
 		tmp += OnlyFilename(ChangeExtension(it->aux_file, string()));
 		Systemcalls one;
-		one.startscript(Systemcalls::System, tmp);
+		one.startscript(Systemcalls::Wait, tmp);
 	}
 	// Return whether bibtex was run
 	return result;

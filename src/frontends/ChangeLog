@@ -1,3 +1,11 @@
+2002-02-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Liason.C:
+	change Systemcalls::System to Systemcalls::Wait and
+	change Systemcalls::SystemDontWait to Systemcalls::DontWait.
+	No change of functionality, just reflects the stripped down Systemcalls
+	class.
+
 2002-01-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Liason.C (printBuffer): use Buffer::filePath

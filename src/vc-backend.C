@@ -17,6 +17,7 @@
 #include "support/path.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/syscall.h"
 
 #include <fstream>
 
@@ -29,7 +30,7 @@ int VCS::doVCCommand(string const & cmd, string const & path)
 	lyxerr[Debug::LYXVC] << "doVCCommand: " << cmd << endl;
         Systemcalls one;
 	Path p(path);
-	int const ret = one.startscript(Systemcalls::System, cmd);
+	int const ret = one.startscript(Systemcalls::Wait, cmd);
 	return ret;
 }
 

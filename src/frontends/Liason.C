@@ -134,13 +134,13 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 			command2 += QuoteName(psname);
 			// First run dvips.
 			// If successful, then spool command
-			res = one.startscript(Systemcalls::System, command);
+			res = one.startscript(Systemcalls::Wait, command);
 			if (res == 0)
-				res = one.startscript(Systemcalls::SystemDontWait,
+				res = one.startscript(Systemcalls::DontWait,
 						      command2);
 		} else
 			// case 2
-			res = one.startscript(Systemcalls::SystemDontWait,
+			res = one.startscript(Systemcalls::DontWait,
 					      command + QuoteName(dviname));
 		break;
 
@@ -149,7 +149,7 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 		command += lyxrc.print_to_file
 			+ QuoteName(MakeAbsPath(pp.file_name, path));
 		command += ' ' + QuoteName(dviname);
-		res = one.startscript(Systemcalls::SystemDontWait, command);
+		res = one.startscript(Systemcalls::DontWait, command);
 		break;
 	}
 	return res == 0;

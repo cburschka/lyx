@@ -35,8 +35,7 @@
 #include "support/FileInfo.h"  // for FileInfo
 #include "helper_funcs.h"      // for browseFile
 #include "support/lstrings.h"
-#include "support/filetools.h" // for AddName
-#include "support/syscall.h"	// for zippedFile()
+#include "support/filetools.h" // for AddName, zippedFile
 #include "BufferView.h"
 
 using std::pair;

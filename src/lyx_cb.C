@@ -537,7 +537,7 @@ void Reconfigure(BufferView * bv)
 
 	// Run configure in user lyx directory
 	Path p(user_lyxdir);
-	Systemcalls one(Systemcalls::System, 
+	Systemcalls one(Systemcalls::Wait, 
 			AddName(system_lyxdir, "configure"));
 	p.pop();
 	bv->owner()->message(_("Reloading configuration..."));

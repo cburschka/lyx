@@ -89,7 +89,6 @@
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/os.h"
-#include "support/syscall.h"
 #include "support/lyxlib.h"
 #include "support/FileInfo.h"
 #include "support/lyxmanip.h"

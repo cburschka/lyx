@@ -1,5 +1,22 @@
 2002-02-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* Chktex.C:
+	* buffer.C:
+	remove #include "support/syscall.h" as it's redundant. Always has been.
+	
+	* Chktex.C:
+	* LaTeX.C:
+	* LyXSendto.C:
+	* converter.C:
+	* lyx_cb.C:
+	* vc-backend.C:
+	change Systemcalls::System to Systemcalls::Wait and
+	change Systemcalls::SystemDontWait to Systemcalls::DontWait.
+	No change of functionality, just reflects the stripped down Systemcalls
+	class.
+
+2002-02-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* debug.[Ch]: add a GRAPHICS type to the enum.
 
 2002-02-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
