@@ -731,27 +731,10 @@ string const Buffer::asciiParagraph(Paragraph const & par,
 				    bool noparbreak) const
 {
 	ostringstream buffer;
-	Paragraph::depth_type depth = 0;
 	int ltype = 0;
 	Paragraph::depth_type ltype_depth = 0;
 	bool ref_printed = false;
-//	if (!par->previous()) {
-#if 0
-	// begins or ends a deeper area ?
-	if (depth != par->params().depth()) {
-		if (par->params().depth() > depth) {
-			while (par->params().depth() > depth) {
-				++depth;
-			}
-		} else {
-			while (par->params().depth() < depth) {
-				--depth;
-			}
-		}
-	}
-#else
-	depth = par.params().depth();
-#endif
+	Paragraph::depth_type depth = par.params().depth();
 
 	// First write the layout
 	string const & tmp = par.layout()->name();

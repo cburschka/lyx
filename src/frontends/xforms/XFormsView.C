@@ -37,9 +37,6 @@ using std::endl;
 //extern void AutoSave(BufferView *);
 extern void QuitLyX();
 
-// This is very temporary
-BufferView * current_view;
-
 extern "C" {
 
 static
@@ -149,7 +146,6 @@ void XFormsView::create_form_form_main(int width, int height)
 
 	bufferview_.reset(new BufferView(this, air, ywork,
 		width - 3 * air, workheight));
-	::current_view = bufferview_.get();
 
 	minibuffer_.reset(new XMiniBuffer(*controlcommand_,
 		air, height - (25 + air), width - (2 * air), 25));

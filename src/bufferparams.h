@@ -154,13 +154,13 @@ public:
 
 	/* this are for the PaperLayout */
 	/// the general papersize (papersize2 or paperpackage
-	char papersize; // add apprip. signedness
+	PAPER_SIZE papersize;
 	///  the selected Geometry papersize
-	char papersize2; // add approp. signedness
+	VMARGIN_PAPER_TYPE papersize2;
 	/// a special paperpackage .sty-file
-	char paperpackage; // add approp. signedness
+	PAPER_PACKAGES paperpackage;
 	///
-	PAPER_ORIENTATION orientation; // add approp. signedness
+	PAPER_ORIENTATION orientation;
 	///
 	bool use_geometry;
 	///

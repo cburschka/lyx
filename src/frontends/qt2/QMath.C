@@ -24,6 +24,7 @@
 #include "iconpalette.h"
 
 // needless to say, this can't last for long
+#warning FIXME Current_view used here!
 extern BufferView * current_view;
 
 
@@ -58,24 +59,28 @@ void QMath::build_dialog()
 
 void QMath::subscript()
 {
+#warning FIXME Current_view used here!
 	current_view->owner()->dispatch(FuncRequest(LFUN_SUBSCRIPT));
 }
 
 
 void QMath::superscript()
 {
+#warning FIXME Current_view used here!
 	current_view->owner()->dispatch(FuncRequest(LFUN_SUPERSCRIPT));
 }
 
 
 void QMath::insert(string const & name)
 {
+#warning FIXME Current_view used here!
 	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + name));
 }
 
 
 void QMath::insertCubeRoot()
 {
+#warning FIXME Current_view used here!
 	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATH, "\\root"));
 	current_view->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "3"));
 	current_view->owner()->dispatch(FuncRequest(LFUN_RIGHT));
@@ -84,17 +89,20 @@ void QMath::insertCubeRoot()
 
 void QMath::insertMatrix(string const & str)
 {
+#warning FIXME Current_view used here!
 	current_view->owner()->dispatch(FuncRequest(LFUN_INSERT_MATRIX, str));
 }
 
 
 void QMath::insertDelim(string const & str)
 {
+#warning FIXME Current_view used here!
 	current_view->owner()->dispatch(FuncRequest(LFUN_MATH_DELIM, str));
 }
 
 
 void QMath::toggleDisplay()
 {
+#warning FIXME Current_view used here!
 	current_view->owner()->dispatch(FuncRequest(LFUN_MATH_DISPLAY));
 }

@@ -1,3 +1,10 @@
+2003-06-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* XFormsView.C: remvoe current_view global variable.
+	(create_form_form_main): and the usage
+
+	* FormDocument.C: adjust for type
+
 2003-06-10  Angus Leeming  <leeming@lyx.org>
 
 	* FormExternal.C (input, updateComboChange):

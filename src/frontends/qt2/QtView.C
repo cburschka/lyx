@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Lars Gullik Bjornes
+ * \author Lars Gullik Bjønnes
  * \author John Levon
  *
  * Full author contact details are available in file CREDITS
@@ -47,7 +47,7 @@ int const statusbar_timer_value = 3000;
 
 } // namespace anon
 
-// FIXME: this has to go away
+#warning FIXME Current_view is used here!
 BufferView * current_view;
 
 qfont_loader fontloader;
@@ -61,6 +61,7 @@ QtView::QtView(unsigned int width, unsigned int height)
 	qApp->setMainWidget(this);
 
 	bufferview_.reset(new BufferView(this, 0, 0, width, height));
+#warning FIXME Current_view is used here!
 	::current_view = bufferview_.get();
 
 	menubar_.reset(new Menubar(this, menubackend));

@@ -16,10 +16,9 @@ void ShowMessage(Buffer const * buf,
 		 string const & msg2 = string(),
 		 string const & msg3 = string());
 ///
-bool MenuWrite(BufferView * bv, Buffer * buffer);
+bool MenuWrite(Buffer * buffer);
 /// write the given file, or ask if no name given
-bool WriteAs(BufferView * bv, Buffer * buffer,
-	     string const & filename = string());
+bool WriteAs(Buffer * buffer, string const & filename = string());
 ///
 void QuitLyX();
 ///

@@ -48,8 +48,6 @@ using std::find_if;
 using std::for_each;
 using std::mem_fun;
 
-extern BufferView * current_view;
-
 
 BufferList::BufferList()
 {}
@@ -81,9 +79,9 @@ bool BufferList::quitWriteBuffer(Buffer * buf)
 		bool succeeded;
 
 		if (buf->isUnnamed())
-			succeeded = WriteAs(current_view, buf);
+			succeeded = WriteAs(buf);
 		else
-			succeeded = MenuWrite(current_view, buf);
+			succeeded = MenuWrite(buf);
 
 		if (!succeeded)
 			return false;
@@ -180,7 +178,7 @@ bool BufferList::close(Buffer * buf, bool ask)
 
 	if (ret == 0) {
 		if (buf->isUnnamed()) {
-			if (!WriteAs(current_view, buf))
+			if (!WriteAs(buf))
 				return false;
 		} else if (buf->save()) {
 			lastfiles->newFile(buf->fileName());

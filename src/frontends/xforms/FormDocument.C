@@ -702,10 +702,10 @@ bool FormDocument::class_apply(BufferParams &params)
 
 void FormDocument::paper_apply(BufferParams & params)
 {
-	params.papersize2 = char(fl_get_choice(paper_->choice_papersize) - 1);
+	params.papersize2 = BufferParams::VMARGIN_PAPER_TYPE(fl_get_choice(paper_->choice_papersize) - 1);
 
 	params.paperpackage =
-		char(fl_get_choice(paper_->choice_paperpackage) - 1);
+		BufferParams::PAPER_PACKAGES(fl_get_choice(paper_->choice_paperpackage) - 1);
 
 	// set params.papersize from params.papersize2 and params.paperpackage
 	params.setPaperStuff();

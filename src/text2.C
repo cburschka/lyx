@@ -1333,12 +1333,14 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	int endpos = selection.end.pos();
 
 	boost::tie(endpit, endpos) = realcut ?
-		CutAndPaste::cutSelection(ownerParagraphs(),
+		CutAndPaste::cutSelection(bv()->buffer()->params,
+					  ownerParagraphs(),
 					  selection.start.par(), endpit,
 					  selection.start.pos(), endpos,
 					  bv()->buffer()->params.textclass,
 					  doclear)
-		: CutAndPaste::eraseSelection(ownerParagraphs(),
+		: CutAndPaste::eraseSelection(bv()->buffer()->params,
+					      ownerParagraphs(),
 					      selection.start.par(), endpit,
 					      selection.start.pos(), endpos,
 					      doclear);
@@ -1406,7 +1408,8 @@ void LyXText::pasteSelection()
 	ErrorList el;
 
 	boost::tie(ppp, endpit) =
-		CutAndPaste::pasteSelection(ownerParagraphs(),
+		CutAndPaste::pasteSelection(*bv()->buffer(),
+					    ownerParagraphs(),
 					    cursor.par(), cursor.pos(),
 					    bv()->buffer()->params.textclass,
 					    el);

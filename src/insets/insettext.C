@@ -2593,40 +2593,6 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 #warning FIXME Check if Changes stuff needs changing here. (Lgb)
 // And it probably does. You have to take a look at this John. (Lgb)
 #warning John, have a look here. (Lgb)
-#if 0
-	BufferParams const & bparams = buffer->params;
-	Paragraph * buf;
-	Paragraph * tmpbuf = newpar;
-	Paragraph * lastbuffer = buf = new Paragraph(*tmpbuf, false);
-	if (bparams.tracking_changes)
-		buf->cleanChanges();
-
-	while (tmpbuf->next()) {
-		tmpbuf = tmpbuf->next();
-		lastbuffer->next(new Paragraph(*tmpbuf, false));
-		lastbuffer->next()->previous(lastbuffer);
-		lastbuffer = lastbuffer->next();
-		if (bparams.tracking_changes)
-			lastbuffer->cleanChanges();
-	}
-
-	lastbuffer = &*(paragraphs.begin());
-	while (lastbuffer->next())
-		lastbuffer = lastbuffer->next();
-	if (!newpar->empty() && !lastbuffer->empty() &&
-		!lastbuffer->isSeparator(lastbuffer->size() - 1))
-	{
-		lastbuffer->insertChar(lastbuffer->size(), ' ');
-	}
-
-	// make the buf exactly the same layout than our last paragraph
-	buf->makeSameLayout(lastbuffer);
-
-	// paste it!
-	lastbuffer->next(buf);
-	buf->previous(lastbuffer);
-	mergeParagraph(buffer->params, paragraphs, lastbuffer);
-#else
 	ParagraphList::iterator pit = plist.begin();
 	ParagraphList::iterator ins = paragraphs.insert(paragraphs.end(), *pit);
 	++pit;
@@ -2636,8 +2602,6 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 	for (; pit != pend; ++pit) {
 		paragraphs.push_back(*pit);
 	}
-
-#endif
 
 	reinitLyXText();
 }

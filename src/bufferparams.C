@@ -165,14 +165,14 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		if (tmpret == -1)
 			++tmpret;
 		else
-			papersize2 = tmpret;
+			papersize2 = VMARGIN_PAPER_TYPE(tmpret);
 	} else if (token == "\\paperpackage") {
 		int tmpret = lex.findToken(string_paperpackages);
 		if (tmpret == -1) {
 			++tmpret;
 			paperpackage = BufferParams::PACKAGE_NONE;
 		} else
-			paperpackage = tmpret;
+			paperpackage = PAPER_PACKAGES(tmpret);
 	} else if (token == "\\use_geometry") {
 		lex.nextToken();
 		use_geometry = lex.getInteger();
@@ -473,6 +473,9 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 	if (!use_geometry &&
 	    (paperpackage == PACKAGE_NONE)) {
 		switch (papersize) {
+		case PAPER_A3PAPER:
+			clsoptions << "a3paper,";
+			break;
 		case PAPER_A4PAPER:
 			clsoptions << "a4paper,";
 			break;
@@ -490,6 +493,8 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 			break;
 		case PAPER_LEGALPAPER:
 			clsoptions << "legalpaper,";
+			break;
+		case PAPER_DEFAULT:
 			break;
 		}
 	}
@@ -589,6 +594,8 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 	// At the very beginning the text parameters.
 	if (paperpackage != PACKAGE_NONE) {
 		switch (paperpackage) {
+		case PACKAGE_NONE:
+			break;
 		case PACKAGE_A4:
 			os << "\\usepackage{a4}\n";
 			texrow.newline();

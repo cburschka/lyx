@@ -102,6 +102,9 @@ public:
 
 	string const get(string const & m) const
 	{
+		if (m.empty())
+			return m;
+
 		char * old = strdup(setlocale(LC_ALL, 0));
 		char * n = setlocale(LC_ALL, lang_.c_str());
 		const char* msg = gettext(m.c_str());

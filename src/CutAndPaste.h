@@ -23,29 +23,33 @@ class ErrorList;
 ///
 namespace CutAndPaste {
 ///
-PitPosPair cutSelection(ParagraphList & pars,
-	     ParagraphList::iterator startpit,
-	     ParagraphList::iterator endpit,
-	     int start, int end, lyx::textclass_type tc,
-	     bool doclear = false);
+PitPosPair cutSelection(BufferParams const & params,
+			ParagraphList & pars,
+			ParagraphList::iterator startpit,
+			ParagraphList::iterator endpit,
+			int start, int end, lyx::textclass_type tc,
+			bool doclear = false);
 ///
-PitPosPair eraseSelection(ParagraphList & pars,
-	       ParagraphList::iterator startpit,
-	       ParagraphList::iterator endpit,
-	       int start, int end, bool doclear = false);
+PitPosPair eraseSelection(BufferParams const & params,
+			  ParagraphList & pars,
+			  ParagraphList::iterator startpit,
+			  ParagraphList::iterator endpit,
+			  int start, int end, bool doclear = false);
 ///
 bool copySelection(ParagraphList::iterator startpit,
 		   ParagraphList::iterator endpit,
 		   int start, int end, lyx::textclass_type tc);
 ///
 std::pair<PitPosPair, ParagraphList::iterator>
-pasteSelection(ParagraphList & pars,
+pasteSelection(Buffer const & buffer,
+	       ParagraphList & pars,
 	       ParagraphList::iterator pit, int pos,
 	       lyx::textclass_type tc, ErrorList &);
 
 ///
 std::pair<PitPosPair, ParagraphList::iterator>
-pasteSelection(ParagraphList & pars,
+pasteSelection(Buffer const & buffer,
+	       ParagraphList & pars,
 	       ParagraphList::iterator pit, int pos,
 	       lyx::textclass_type tc,
 	       size_t cuts_indexm, ErrorList &);

@@ -1,3 +1,33 @@
+2003-06-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* text2.C (cutSelection): adjust
+	(pasteSelection): adjust
+
+	* messages.C: handle get of empty string
+
+	* main.C (main): use sync_with_stdio(false)
+
+	* lyxfunc.C (dispatch): adjust
+
+	* lyx_cb.[Ch] (MenuWrite): remove unneeded BufferView arg
+	(WriteAs): remove unneeded BufferView arg.
+
+	* bufferparams.h: use correct types on papersize, papersize2 and
+	paperpackage.
+
+	* bufferparams.C (readToken): adjust for type
+	(writeLaTeX): add missing cases to switch.
+
+	* bufferlist.C (quitWriteBuffer): adjust
+	(close): adjust
+
+	* buffer.C (asciiParagraph): remove some commented code.
+
+	* CutAndPaste.C: remove current_view extern variable.
+	(cutSelection): add BufferParams arg.
+	(eraseSelection): add BufferParams arg.
+	(pasteSelection): add Buffer const & arg
+
 2003-06-07  John Levon  <levon@movementarian.org>
 
 	* buffer.C:
@@ -16,7 +46,7 @@
 2003-06-06  Alfredo Braunstein  <abraunst@libero.it>
 
 	* BufferView_pimpl.C (dispatch): use Dialogs::visible
-	
+
 2003-06-04  Angus Leeming  <leeming@lyx.org>
 
 	* buffer.C: bump format to 224.

@@ -39,8 +39,6 @@ using std::for_each;
 using lyx::pos_type;
 using lyx::textclass_type;
 
-extern BufferView * current_view;
-
 // Jürgen, note that this means that you cannot currently have a list
 // of selections cut/copied. So IMHO later we should have a
 // list/vector/deque that we could store
@@ -66,19 +64,21 @@ limited_stack<pair<ParagraphList, textclass_type> > cuts(10);
 
 } // namespace anon
 
-PitPosPair CutAndPaste::cutSelection(ParagraphList & pars,
+PitPosPair CutAndPaste::cutSelection(BufferParams const & params,
+				     ParagraphList & pars,
 				     ParagraphList::iterator startpit,
 				     ParagraphList::iterator endpit,
 				     int startpos, int endpos,
 				     textclass_type tc, bool doclear)
 {
 	copySelection(startpit, endpit, startpos, endpos, tc);
-	return eraseSelection(pars, startpit, endpit, startpos,
+	return eraseSelection(params, pars, startpit, endpit, startpos,
 			      endpos, doclear);
 }
 
 
-PitPosPair CutAndPaste::eraseSelection(ParagraphList & pars,
+PitPosPair CutAndPaste::eraseSelection(BufferParams const & params,
+				       ParagraphList & pars,
 				       ParagraphList::iterator startpit,
 				       ParagraphList::iterator endpit,
 				       int startpos, int endpos, bool doclear)
@@ -138,10 +138,7 @@ PitPosPair CutAndPaste::eraseSelection(ParagraphList & pars,
 	if (all_erased &&
 	    (startpit->hasSameLayout(*boost::next(startpit)) ||
 	     boost::next(startpit)->empty())) {
-#warning current_view used here.
-// should we pass buffer or buffer->params around?
-		Buffer * buffer = current_view->buffer();
-		mergeParagraph(buffer->params, pars, startpit);
+		mergeParagraph(params, pars, startpit);
 		// this because endpar gets deleted here!
 		endpit = startpit;
 		endpos = startpos;
@@ -196,16 +193,18 @@ bool CutAndPaste::copySelection(ParagraphList::iterator startpit,
 
 
 pair<PitPosPair, ParagraphList::iterator>
-CutAndPaste::pasteSelection(ParagraphList & pars,
+CutAndPaste::pasteSelection(Buffer const & buffer,
+			    ParagraphList & pars,
 			    ParagraphList::iterator pit, int pos,
 			    textclass_type tc,
 			    ErrorList & errorlist)
 {
-	return pasteSelection(pars, pit, pos, tc, 0, errorlist);
+	return pasteSelection(buffer, pars, pit, pos, tc, 0, errorlist);
 }
 
 pair<PitPosPair, ParagraphList::iterator>
-CutAndPaste::pasteSelection(ParagraphList & pars,
+CutAndPaste::pasteSelection(Buffer const & buffer,
+			    ParagraphList & pars,
 			    ParagraphList::iterator pit, int pos,
 			    textclass_type tc, size_t cut_index,
 			    ErrorList & errorlist)
@@ -258,7 +257,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 					tmpbuf->erase(i--);
 				}
 			} else {
-				LyXFont f1 = tmpbuf->getFont(current_view->buffer()->params, i, outerFont(pit, pars));
+				LyXFont f1 = tmpbuf->getFont(buffer.params, i, outerFont(pit, pars));
 				LyXFont f2 = f1;
 				if (!pit->checkInsertChar(f1)) {
 					tmpbuf->erase(i--);
@@ -288,17 +287,17 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 			case Inset::INCLUDE_CODE: {
 				InsetInclude * ii = static_cast<InsetInclude*>(lit->inset);
 				InsetInclude::Params ip = ii->params();
-				ip.masterFilename_ = current_view->buffer()->fileName();
+				ip.masterFilename_ = buffer.fileName();
 				ii->set(ip);
 				break;
 			}
-				
+
 			case Inset::TABULAR_CODE: {
 				InsetTabular * it = static_cast<InsetTabular*>(lit->inset);
-				it->buffer(current_view->buffer());
+				it->buffer(const_cast<Buffer*>(&buffer));
 				break;
 			}
-				
+
 			default:
 				break; // nothing
 			}
@@ -310,7 +309,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	// Open the paragraph for inserting the buf
 	// if necessary.
 	if (pit->size() > pos || boost::next(pit) == pars.end()) {
-		breakParagraphConservative(current_view->buffer()->params,
+		breakParagraphConservative(buffer.params,
 					   pars, pit, pos);
 		paste_the_end = true;
 	}
@@ -328,7 +327,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	if (boost::next(pit) == last_paste)
 		last_paste = pit;
 
-	mergeParagraph(current_view->buffer()->params, pars, pit);
+	mergeParagraph(buffer.params, pars, pit);
 
 	// Store the new cursor position.
 	pit = last_paste;
@@ -339,15 +338,15 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	if (boost::next(last_paste) != pars.end() &&
 	    paste_the_end) {
 		if (boost::next(last_paste)->hasSameLayout(*last_paste)) {
-			mergeParagraph(current_view->buffer()->params, pars,
+			mergeParagraph(buffer.params, pars,
 				       last_paste);
 		} else if (boost::next(last_paste)->empty()) {
 			boost::next(last_paste)->makeSameLayout(*last_paste);
-			mergeParagraph(current_view->buffer()->params, pars,
+			mergeParagraph(buffer.params, pars,
 				       last_paste);
 		} else if (last_paste->empty()) {
 			last_paste->makeSameLayout(*boost::next(last_paste));
-			mergeParagraph(current_view->buffer()->params, pars,
+			mergeParagraph(buffer.params, pars,
 				       last_paste);
 		} else
 			boost::next(last_paste)->stripLeadingSpaces();

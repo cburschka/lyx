@@ -75,7 +75,7 @@ void ShowMessage(Buffer const * buf,
 // Menu callbacks
 //
 
-bool MenuWrite(BufferView * bv, Buffer * buffer)
+bool MenuWrite(Buffer * buffer)
 {
 	if (buffer->save()) {
 		lastfiles->newFile(buffer->fileName());
@@ -92,13 +92,13 @@ bool MenuWrite(BufferView * bv, Buffer * buffer)
 		text, 0, 1, _("&Rename"), _("&Cancel"));
 
 	if (ret == 0)
-		return WriteAs(bv, buffer);
+		return WriteAs(buffer);
 	return false;
 }
 
 
 
-bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
+bool WriteAs(Buffer * buffer, string const & filename)
 {
 	string fname = buffer->fileName();
 	string const oldname = fname;
@@ -153,7 +153,7 @@ bool WriteAs(BufferView * bv, Buffer * buffer, string const & filename)
 	bool unnamed = buffer->isUnnamed();
 	buffer->setUnnamed(false);
 
-	if (!MenuWrite(bv, buffer)) {
+	if (!MenuWrite(buffer)) {
 		buffer->setFileName(oldname);
 		buffer->setUnnamed(unnamed);
 		return false;

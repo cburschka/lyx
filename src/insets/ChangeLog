@@ -1,3 +1,7 @@
+2003-06-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* insettext.C (appendParagraphs): remove some commented code.
+
 2003-06-10  Angus Leeming  <leeming@lyx.org>
 
 	* graphicinset.[Ch] (params): removed.
@@ -205,7 +209,7 @@
 
 	* insetert.C (clone): remove const_cast
 
-	* delete commented same_id functions from a lot of files. 
+	* delete commented same_id functions from a lot of files.
 
 2003-05-28  John Levon  <levon@movementarian.org>
 

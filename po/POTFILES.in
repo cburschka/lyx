@@ -53,7 +53,6 @@ src/frontends/qt2/QExternal.C
 src/frontends/qt2/QExternalDialog.C
 src/frontends/qt2/QFloat.C
 src/frontends/qt2/QGraphics.C
-src/frontends/qt2/QGraphicsDialog.C
 src/frontends/qt2/QInclude.C
 src/frontends/qt2/QLPrintDialog.C
 src/frontends/qt2/QLog.C
@@ -133,6 +132,7 @@ src/frontends/xforms/xformsBC.h
 src/frontends/xforms/xforms_helpers.C
 src/gettext.h
 src/importer.C
+src/insets/graphicinset.C
 src/insets/inset.C
 src/insets/insetbibtex.C
 src/insets/insetcaption.C
@@ -151,7 +151,6 @@ src/insets/insetmarginal.C
 src/insets/insetminipage.C
 src/insets/insetnote.C
 src/insets/insetoptarg.C
-src/insets/insetparent.C
 src/insets/insetref.C
 src/insets/insettabular.C
 src/insets/insettext.C

@@ -1056,14 +1056,14 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			string const str = bformat(_("Saving document %1$s..."),
 			   MakeDisplayPath(owner->buffer()->fileName()));
 			owner->message(str);
-			MenuWrite(view(), owner->buffer());
+			MenuWrite(owner->buffer());
 			owner->message(str + _(" done."));
 		} else
-			WriteAs(view(), owner->buffer());
+			WriteAs(owner->buffer());
 		break;
 
 	case LFUN_WRITEAS:
-		WriteAs(view(), owner->buffer(), argument);
+		WriteAs(owner->buffer(), argument);
 		break;
 
 	case LFUN_MENURELOAD: {

@@ -13,8 +13,12 @@
 #include "gettext.h"
 #include "support/os.h"
 
+#include <ios>
+
 int main(int argc, char * argv[])
 {
+	std::ios::sync_with_stdio(false);
+
 	os::init(&argc, &argv);
 
 	// initialize for internationalized version *EK*
