@@ -20,9 +20,11 @@
 #include "lyxrc.h"
 
 #include <sstream>
+#include <iomanip>
 
 
 using std::ostringstream;
+using std::setprecision;
 using std::string;
 
 
@@ -59,33 +61,31 @@ string const LyXLength::asString() const
 
 string const LyXLength::asLatexString() const
 {
-	char buffer[80];
+	ostringstream os;
 	switch (unit_) {
 	case PTW:
-		snprintf(buffer, 78, "%.2f\\textwidth", val_/100.0);
+		os << setprecision(2) << val_/100.0 << "\\textwidth";
 		break;
 	case PCW:
-		snprintf(buffer, 78, "%.2f\\columnwidth", val_/100.0);
+		os << setprecision(2) << val_/100.0 << "\\columnwidth";
 		break;
 	case PPW:
-		snprintf(buffer, 78, "%.2f\\paperwidth", val_/100.0);
+		os << setprecision(2) << val_/100.0 << "\\paperwidth";
 		break;
 	case PLW:
-		snprintf(buffer, 78, "%.2f\\linewidth", val_/100.0);
+		os << setprecision(2) << val_/100.0 << "\\linewidth";
 		break;
 	case PPH:
-		snprintf(buffer, 78, "%.2f\\paperheight", val_/100.0);
+		os << setprecision(2) << val_/100.0 << "\\paperheight";
 		break;
 	case PTH:
-		snprintf(buffer, 78, "%.2f\\textheight", val_/100.0);
+		os << setprecision(2) << val_/100.0 << "\\textheight";
 		break;
 	default:
-		snprintf(buffer, 78, "%f%s", val_, unit_name[unit_]);
+		os << setprecision(2) << val_ << unit_name[unit_];
 	  break;
 	}
-	// paranoia
-	buffer[79] = 0;
-	return buffer;
+	return os.str();
 }
 
 
