@@ -1,3 +1,11 @@
+2001-11-08  José Matos  <jamatos@fep.up.pt>
+
+	* buffer.C (sgmlLineBreak): renamed from linux_doc_line_break.
+	(simpleDocBookOnePar): removed code made obsolete by the new inset code.
+
+	* paragraph.h:
+	* paragraph.C (sgmlConvertChar): renamed from linuxDocConvertChar.
+
 2001-11-07  José Matos  <jamatos@fep.up.pt>
 
 	* buffer.h:

@@ -2708,7 +2708,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 // writes newline, if necessary.
 namespace {
 
-void linux_doc_line_break(ostream & os, string::size_type & colcount,
+void sgmlLineBreak(ostream & os, string::size_type & colcount,
 			  string::size_type newcol)
 {
 	colcount += newcol;
@@ -2916,18 +2916,18 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 			++char_line_count;
 		} else {
 			string sgml_string;
-			if (par->linuxDocConvertChar(c, sgml_string)
+			if (par->sgmlConvertChar(c, sgml_string)
 			    && !style.free_spacing) { 
 				// in freespacing mode, spaces are
 				// non-breaking characters
 				if (desc_on) {// if char is ' ' then...
 
 					++char_line_count;
-					linux_doc_line_break(os, char_line_count, 6);
+					sgmlLineBreak(os, char_line_count, 6);
 					os << "</tag>";
 					desc_on = false;
 				} else  {
-					linux_doc_line_break(os, char_line_count, 1);
+					sgmlLineBreak(os, char_line_count, 1);
 					os << c;
 				}
 			} else {
@@ -2946,7 +2946,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 	// resets description flag correctly
 	if (desc_on) {
 		// <tag> not closed...
-		linux_doc_line_break(os, char_line_count, 6);
+		sgmlLineBreak(os, char_line_count, 6);
 		os << "</tag>";
 	}
 }
@@ -3299,33 +3299,10 @@ void Buffer::simpleDocBookOnePar(ostream & os, string & extra,
 
 		if (c == Paragraph::META_INSET) {
 			Inset * inset = par->getInset(i);
-			ostringstream ost;
-			inset->docbook(this, ost);
-			string tmp_out = ost.str().c_str();
-
-			//
-			// This code needs some explanation:
-			// Two insets are treated specially
-			//   label if it is the first element in a command paragraph
-			//         desc_on == 3
-			//   graphics inside tables or figure floats can't go on
-			//   title (the equivalente in latex for this case is caption
-			//   and title should come first
-			//         desc_on == 4
-			//
-			if (desc_on!= 3 || i!= 0) {
-				if (!tmp_out.empty() && tmp_out[0] == '@') {
-					if (desc_on == 4)
-						extra += frontStrip(tmp_out, '@');
-					else
-						os << frontStrip(tmp_out, '@');
-				}
-				else
-					os << tmp_out;
-			}
+			inset->docbook(this, os);
 		} else {
 			string sgml_string;
-			par->linuxDocConvertChar(c, sgml_string);
+			par->sgmlConvertChar(c, sgml_string);
 
 			if (style.pass_thru) {
 				os << c;

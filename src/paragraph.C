@@ -1685,7 +1685,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 }
 
 
-bool Paragraph::linuxDocConvertChar(char c, string & sgml_string)
+bool Paragraph::sgmlConvertChar(char c, string & sgml_string)
 {
 	bool retval = false;
 	switch (c) {

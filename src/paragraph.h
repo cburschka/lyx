@@ -341,7 +341,7 @@ public:
         void unsetPExtraType(BufferParams const &);
 #endif
 	///
-	bool linuxDocConvertChar(char c, string & sgml_string);
+	bool sgmlConvertChar(char c, string & sgml_string);
 
 	ParagraphParameters & params();
 	ParagraphParameters const & params() const;
