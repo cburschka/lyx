@@ -1086,13 +1086,14 @@ string LyXText::selectionAsString() const
 
 	// First paragraph in selection
 	result += sel_start_cursor.par->String(sel_start_cursor.pos,
-					       sel_start_cursor.par->Last());
+					       sel_start_cursor.par->Last())
+		+ "\n\n";
 	
 	// The paragraphs in between (if any)
 	LyXCursor tmpcur(sel_start_cursor);
 	tmpcur.par = tmpcur.par->Next();
 	while (tmpcur.par != sel_end_cursor.par) {
-		result += tmpcur.par->String(false);
+		result += tmpcur.par->String(0, tmpcur.par->Last()) + "\n\n";
 		tmpcur.par = tmpcur.par->Next(); // Or NextAfterFootnote??
 	}
 

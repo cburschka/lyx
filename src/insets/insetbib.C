@@ -204,6 +204,11 @@ string InsetCitation::getScreenLabel() const
 	return temp + ']';
 }
 
+int InsetCitation::Ascii(ostream & os) const
+{
+	os << getScreenLabel();;
+	return 0;
+}
 
 InsetBibKey::InsetBibKey(string const & key, string const & label):
 	InsetCommand("bibitem", key, label)

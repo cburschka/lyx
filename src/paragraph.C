@@ -4276,7 +4276,7 @@ bool LyXParagraph::isMultiLingual()
 string LyXParagraph::String(bool label)
 {
 	string s;
-	if (label && !IsDummy())
+	if (label && !IsDummy() && !labelstring.empty())
 		s += labelstring + ' ';
 	string::size_type len = s.size();
 
@@ -4313,6 +4313,20 @@ string LyXParagraph::String(LyXParagraph::size_type beg,
 			    LyXParagraph::size_type end)
 {
 	string s;
+	int actcell = 0;
+	int cell = 1;
+	if (table)
+		for (LyXParagraph::size_type i = 0; i < beg; ++i)
+			if (IsNewline(i)) {
+				if (cell >= table->NumberOfCellsInRow(actcell))
+					cell = 1;
+				else
+					++cell;
+				++actcell;
+			}
+
+	if (beg == 0 && !IsDummy() && !labelstring.empty())
+		s += labelstring + ' ';
 
 	for (LyXParagraph::size_type i = beg; i < end; ++i) {
 		unsigned char c = GetChar(i);
@@ -4327,16 +4341,21 @@ string LyXParagraph::String(LyXParagraph::size_type beg,
 			GetInset(i)->Ascii(ost);
 			ost << '\0';
 #endif
-			s += subst(ost.str(),'\n',' ');
+			s += ost.str();
+		} else if (table && IsNewlineChar(c)) {
+			if (cell >= table->NumberOfCellsInRow(actcell)) {
+				s += '\n';
+				cell = 1;
+			} else {
+				s += ' ';
+				++cell;
+			}
+			++actcell;
 		}
 	}
 
 	//if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE)
 	//	s += NextAfterFootnote()->String(false);
 
-	if (!IsDummy()) {
-		if (isRightToLeftPar())
-			reverse(s.begin(), s.end());
-	}
 	return s;
 }

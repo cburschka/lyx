@@ -43,6 +43,7 @@ public:
 	EDITABLE Editable() const {
 		return IS_EDITABLE;
 	}
+	int Ascii(std::ostream &) const;
 	///
 	struct Holder {
 		InsetCitation * inset;
