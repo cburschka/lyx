@@ -19,11 +19,6 @@ class MathDelimInset : public MathNestInset {
 public:
 	///
 	MathDelimInset(latexkeys const *, latexkeys const *);
-
-#warning Remove this ass soon the Math panel patch is applied
-	///
-	MathDelimInset(int, int);
-
 	///
 	MathInset * clone() const;
 	///
