@@ -1,7 +1,16 @@
+2004-06-08  Lars Gullik Bjonnes  <larsbj@lyx.org>
+
+	* Makefile.in.in (xforms_l10n.pot, qt_l10n.pot, layouts_l10n.pot)
+	(languages_l10n.pot, ui_l10n.pot): Set awk variable top_srcdir to
+	Makefile variable $(top_srcdir), add a awk function fixupfilename
+	use it in printint out the filename to the pot file.
+
+	* *.po: remerge
+
 2004-06-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* Makefile.in.in (layouts_l10n.pot): add the ListName entries (bug
-	#1312) 
+	#1312)
 
 	* *.po: remerge
 

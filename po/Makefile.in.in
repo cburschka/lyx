@@ -377,7 +377,11 @@ l10n_pots: xforms_l10n.pot qt_l10n.pot layouts_l10n.pot languages_l10n.pot ui_l1
 
 xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 	LC_ALL=C ; export LC_ALL ; \
-	awk ' \
+	awk -v top_srcdir="$(top_srcdir)" ' \
+		function fixupfilename() \
+		{\
+			return substr(FILENAME, length(top_srcdir "/") + 1);\
+		}\
 		BEGIN { \
 			print "#, fuzzy"; \
 			print "msgid \"\""; \
@@ -394,9 +398,7 @@ xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 			if (NF > 1 && skip == 0) { \
 				line=$$0;\
 				sub(/label: /,"",line);\
-				fna=FILENAME;\
-				sub("(\\.\\./)+", "", fna);\
-				printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", fna, FNR, line);\
+				printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", fixupfilename(), FNR, line);\
 			}\
 			skip=0; \
 		}' \
@@ -404,7 +406,11 @@ xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 
 qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 	LC_ALL=C ; export LC_ALL ; \
-	awk ' \
+	awk -v top_srcdir="$(top_srcdir)" ' \
+		function fixupfilename() \
+		{\
+			return substr(FILENAME, length(top_srcdir "/") + 1);\
+		}\
 		/<string>/ { \
 			line=$$0; \
 			sub(/.*<string>/, "", line); \
@@ -414,47 +420,47 @@ qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 			gsub(/&gt;/, ">", line); \
 			gsub(/\"/, "\\\"", line); \
 			if (length(line) > 0) {\
-				fna=FILENAME;\
-				sub("(\\.\\./)+", "", fna);\
 				printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n",\
-					fna, FNR, line); \
+					fixupfilename(), FNR, line); \
 			} \
 		}' \
 	${top_srcdir}/src/frontends/qt2/ui/*.ui > $@
 
 layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout $(top_srcdir)/lib/layouts/*.inc
 	LC_ALL=C ; export LC_ALL ; \
-	awk ' \
+	awk -v top_srcdir="$(top_srcdir)" ' \
+		function fixupfilename() \
+		{\
+			return substr(FILENAME, length(top_srcdir "/") + 1);\
+		}\
 		/^Style / { \
 			line=$$0; \
 			sub(/Style /, "", line); \
-			fna=FILENAME;\
-			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-				fna, FNR, line); \
+				fixupfilename(), FNR, line); \
 		} \
 		/GuiName/ { \
 			line=$$0; \
 			sub(/[[:space:]]*GuiName[[:space:]]*/, "", line); \
 			gsub(/"/, "", line); \
-			fna=FILENAME;\
-			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-				fna, FNR, line); \
+				fixupfilename(), FNR, line); \
 		} \
 		/ListName/ { \
 			line=$$0; \
 			sub(/[[:space:]]*ListName[[:space:]]*/, "", line); \
 			gsub(/"/, "", line); \
-			fna=FILENAME;\
-			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-				fna, FNR, line); \
+				fixupfilename(), FNR, line); \
 		}' \
 	${top_srcdir}/lib/layouts/*.layout ${top_srcdir}/lib/layouts/*.inc > $@
 
 languages_l10n.pot: $(top_srcdir)/lib/languages
-	awk ' \
+	awk -v top_srcdir="$(top_srcdir)" ' \
+		function fixupfilename() \
+		{\
+			return substr(FILENAME, length(top_srcdir "/") + 1);\
+		}\
 		/^#/ { \
 			next; \
 		} \
@@ -462,42 +468,38 @@ languages_l10n.pot: $(top_srcdir)/lib/languages
 			match($$0,"\"[^\"]*\""); \
 			lang=substr($$0,RSTART,RLENGTH); \
 			gsub(/\"/, "", lang); \
-			fna=FILENAME;\
-			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-			fna, FNR, lang); \
+			fixupfilename(), FNR, lang); \
 		}' \
 	${top_srcdir}/lib/languages > $@
 
 ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui
 	LC_ALL=C ; export LC_ALL ; \
-	awk ' \
+	awk -v top_srcdir="$(top_srcdir)" ' \
+		function fixupfilename() \
+		{\
+			return substr(FILENAME, length(top_srcdir "/") + 1);\
+		}\
 		/^[^#]*Submenu/ { \
 			line=$$0; \
 			sub(/[^"]*"/, "", line); \
 			sub(/".*/, "", line); \
-			fna=FILENAME;\
-			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-				fna, FNR, line); \
+				fixupfilename(), FNR, line); \
 		} \
 		/^[^#]*Toolbar/ { \
 			line=$$0; \
 			sub(/[^"]*"/, "", line); \
 			sub(/".*/, "", line); \
-			fna=FILENAME;\
-			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-				fna, FNR, line); \
+				fixupfilename(), FNR, line); \
 		} \
 		/^[^#]*Item/ { \
 			line=$$0; \
 			sub(/[^"]*"/, "", line); \
 			sub(/".*/, "", line); \
-			fna=FILENAME;\
-			sub("(\\.\\./)+", "", fna);\
 			printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
-				fna, FNR, line); \
+				fixupfilename(), FNR, line); \
 		}' \
 	${top_srcdir}/lib/ui/*.ui > $@
 
