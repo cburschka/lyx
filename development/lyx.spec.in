@@ -39,16 +39,7 @@ CXXFLAGS="$RPM_OPT_FLAGS" CFLAGS="$RPM_OPT_FLAGS" \
 ./configure --prefix=%{_prefix} --mandir=%{_mandir} \
 	--bindir=%{_bindir} --datadir=%{_datadir} \
 	--without-warnings --with-included-string
-# The following check is to ensure that lyx RPMs generated on RH 6.X machines
-# with gcc-2.95 still run against older Redhat OS/compiler combinations.
-# It will eventually be ripped out.
-if [ -r /usr/lib/libstdc++-libc6.1-1.so.2 ]
-then
-	make CXX=g++ LYX_LIBS='/usr/lib/libstdc++-libc6.1-1.so.2 -lforms -lXpm'
-else
-	make
-fi
-
+make
 
 %install
 unset LINGUAS || true

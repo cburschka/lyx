@@ -1,6 +1,9 @@
 #ifndef SP_BASE_H
 #define SP_BASE_H
 
+// needed for pid_t typedef
+#include <sys/types.h>
+
 class BufferParams;
 
 class SpellBase
