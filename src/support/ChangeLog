@@ -1,3 +1,9 @@
+2002-07-17  Herbert Voss  <voss@perce.de>
+
+	* DestroyLyXTmpDir.C: delete _all_ files when exit
+	
+	* filetools.C (getExtFromContents): detect epsi-files
+
 2002-07-20  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyxstring.C (operator>>): replace code which works only with

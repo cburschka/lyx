@@ -87,6 +87,8 @@ What's new
 
 - fix handling of 'no display' option in 1.1.6 figure insets
 
+- handle correctly fig and epsi files
+
 - handle correctly zipped eps files (others worked well)
 
 - fix the default rotation origin for graphics inset
@@ -141,6 +143,8 @@ What's new
 
 - merge patches for win32 that were in 1.2.0 release from Claus
   Hentschel 
+
+- make sure all temporary files are deleted at exit
 
 - fix command line crash and give useful exit status on some errors
 
