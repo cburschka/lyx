@@ -37,13 +37,13 @@ class ParagraphList;
 class LyXText {
 public:
 	/// what repainting is needed
-	enum text_status {
+	enum refresh_status {
 		/// no repaint is needed
-		UNCHANGED = 0,
+		REFRESH_NONE = 0,
 		/// the refresh_row needs repainting
-		NEED_VERY_LITTLE_REFRESH = 1,
+		REFRESH_ROW = 1,
 		/// everything from refresh_y downwards needs repainting
-		NEED_MORE_REFRESH = 2
+		REFRESH_AREA = 2
 	};
 
 	///
@@ -207,26 +207,25 @@ public:
 	 * Return the status. This represents what repaints are
 	 * pending after some operation (e.g. inserting a char).
 	 */
-	text_status status() const;
+	refresh_status refreshStatus() const;
 
 private:
 	/**
 	 * The pixel y position from which to repaint the screen.
 	 * The position is absolute along the height of outermost
-	 * lyxtext (I think). NEED_MORE_REFRESH and NEED_LITTLE_REFRESH
+	 * lyxtext (I think). REFRESH_AREA and REFRESH_ROW
 	 * repaints both use this as a starting point (if it's within
 	 * the viewable portion of the lyxtext).
 	 */
 	int refresh_y;
 	/**
 	 * The row from which to repaint the screen, used by screen.c.
-	 * This must be set if the pending update is NEED_LITTLE_REFRESH.
-	 * It doesn't make any difference for NEED_MORE_REFRESH.
+	 * This must be set if the pending update is REFRESH_ROW.
+	 * It doesn't make any difference for REFRESH_AREA.
 	 */
 	Row * refresh_row;
 
-	/// refresh status
-	text_status status_;
+	refresh_status refresh_status_;
 
 	/// only the top-level LyXText has this non-zero
 	BufferView * bv_owner;

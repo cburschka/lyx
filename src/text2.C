@@ -2442,15 +2442,15 @@ void LyXText::ownerParagraph(int id, Paragraph * p) const
 }
 
 
-LyXText::text_status LyXText::status() const
+LyXText::refresh_status LyXText::refreshStatus() const
 {
-	return status_;
+	return refresh_status_;
 }
 
 
 void LyXText::clearPaint()
 {
-	status_ = UNCHANGED;
+	refresh_status_ = REFRESH_NONE;
 	refresh_row = 0;
 	refresh_y = 0;
 }
@@ -2458,14 +2458,13 @@ void LyXText::clearPaint()
 
 void LyXText::postPaint(int start_y)
 {
-	text_status old = status_;
+	refresh_status old = refresh_status_;
 
-	status_ = NEED_MORE_REFRESH;
+	refresh_status_ = REFRESH_AREA;
 	refresh_row = 0;
 
-	if (old != UNCHANGED && refresh_y < start_y) {
+	if (old != REFRESH_NONE && refresh_y < start_y)
 		return;
-	}
 
 	refresh_y = start_y;
 
@@ -2483,17 +2482,17 @@ void LyXText::postPaint(int start_y)
 // make refresh_y be 0, and use row->y etc.
 void LyXText::postRowPaint(Row * row, int start_y)
 {
-	if (status_ != UNCHANGED && refresh_y < start_y) {
-		status_ = NEED_MORE_REFRESH;
+	if (refresh_status_ != REFRESH_NONE && refresh_y < start_y) {
+		refresh_status_ = REFRESH_AREA;
 		return;
 	} else {
 		refresh_y = start_y;
 	}
 
-	if (status_ == NEED_MORE_REFRESH)
+	if (refresh_status_ == REFRESH_AREA)
 		return;
 
-	status_ = NEED_VERY_LITTLE_REFRESH;
+	refresh_status_ = REFRESH_ROW;
 	refresh_row = row;
 
 	if (!inset_owner)

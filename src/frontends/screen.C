@@ -252,15 +252,15 @@ void LyXScreen::update(BufferView & bv, int yo, int xo)
 
 	workarea().getPainter().start();
 
-	switch (text->status()) {
-	case LyXText::NEED_MORE_REFRESH:
+	switch (text->refreshStatus()) {
+	case LyXText::REFRESH_AREA:
 	{
 		int const y = max(int(text->refresh_y - text->top_y()), 0);
 		drawFromTo(text, &bv, y, vheight, yo, xo);
 		expose(0, y, vwidth, vheight - y);
 	}
 	break;
-	case LyXText::NEED_VERY_LITTLE_REFRESH:
+	case LyXText::REFRESH_ROW:
 	{
 		// ok I will update the current cursor row
 		drawOneRow(text, &bv, text->refresh_row, text->refresh_y,
@@ -273,7 +273,7 @@ void LyXScreen::update(BufferView & bv, int yo, int xo)
 		}
 	}
 	break;
-	case LyXText::UNCHANGED:
+	case LyXText::REFRESH_NONE:
 		// Nothing needs done
 		break;
 	}

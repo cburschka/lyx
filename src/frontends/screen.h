@@ -123,9 +123,9 @@ public:
 	 * @param yo the x offset into the text
 	 *
 	 * Updates part of the screen. If bv->text->status is
-	 * LyXText::NEED_MORE_REFRESH, we update from the
+	 * LyXText::REFRESH_AREA, we update from the
 	 * point of change and to the end of the screen.
-	 * If text->status is LyXText::NEED_VERY_LITTLE_REFRESH,
+	 * If text->status is LyXText::REFRESH_ROW,
 	 * we only update the current row.
 	 */
 	virtual void update(BufferView & bv, int yo = 0, int xo = 0);

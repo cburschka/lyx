@@ -411,7 +411,7 @@ void InsetTabular::update(BufferView * bv, bool reinit)
 	if (the_locking_inset)
 		the_locking_inset->update(bv, reinit);
 	if (need_update < FULL &&
-		bv->text->status() == LyXText::NEED_MORE_REFRESH)
+		bv->text->refreshStatus() == LyXText::REFRESH_AREA)
 	{
 		need_update = FULL;
 	}

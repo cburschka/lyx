@@ -67,7 +67,7 @@ namespace {
 		if (!lt->isInInset()) {
 			bv->update(lt, BufferView::SELECT);
 			bv->showCursor();
-		} else if (bv->text->status() != LyXText::UNCHANGED) {
+		} else if (bv->text->refreshStatus() != LyXText::REFRESH_NONE) {
 			bv->theLockingInset()->hideInsetCursor(bv);
 			bv->update(BufferView::SELECT);
 			bv->showCursor();
