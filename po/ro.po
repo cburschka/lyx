@@ -1,3 +1,4 @@
+# translation of @PACKAGE.po to @LANGUAGE
 # translation of lyx.po to Romanian
 # This file is distributed under the same license as the LyX package.
 # Claudiu Costin <claudiuc@calderon.pcnet.ro>, 1999.
@@ -6,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: @PACKAGE\n"
 "POT-Creation-Date: 2003-04-06 23:27+0300\n"
-"PO-Revision-Date: 11 04 2003 00:31\n"
+"PO-Revision-Date: 15 04 2003 00:57\n"
 "Last-Translator: Claudiu Costin <claudiuc@kde.org>\n"
 "Language-Team: Romanian <ro-kde@egroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -16,20 +17,19 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:62
 msgid "Negative|#N"
-msgstr "Navigare|#N"
+msgstr "Negativ|#N"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:80
-#, fuzzy
 msgid "Neg Medium|#E"
-msgstr "Mediu"
+msgstr "Neg. mediu|#e"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:98
 msgid "Neg Thick|#T"
-msgstr ""
+msgstr "Neg. gros|#o"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:116
 msgid "Thick|#H"
-msgstr ""
+msgstr "Gros|#G"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:134
 #, fuzzy
@@ -57,7 +57,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:206
 msgid "Thin|#I"
-msgstr ""
+msgstr "Subþire|#S"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:224
 msgid "Medium|#M"
@@ -385,9 +385,8 @@ msgid "Clip to bounding box|#C"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:578
-#, fuzzy
 msgid "Get from file|#G"
-msgstr "cãtre fiºier"
+msgstr "Fiºier|#F"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:620
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:481
@@ -596,12 +595,11 @@ msgstr "Codificarea"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:701
 msgid "Layout & Bindings"
-msgstr ""
+msgstr "Aspect ºi mapãri"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:719
-#, fuzzy
 msgid "User Interface file:|#U"
-msgstr "Fiºier interfaþã utilizator|#u"
+msgstr "Fiºier interfaþã utilizator:|#u"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:737
 #: ../src/frontends/xforms/forms/form_bibtex.fd:188
@@ -770,7 +768,7 @@ msgstr "Rãsfoieºte...|#o"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1721
 msgid "RtL support|#R"
-msgstr ""
+msgstr "Suport RTL|#R"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1739
 msgid "Auto begin|#b"
@@ -903,7 +901,6 @@ msgid "Date format:|#f"
 msgstr "Format datã:|#d"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2622
-#, fuzzy
 msgid "Name:"
 msgstr "Nume:"
 
@@ -1017,7 +1014,6 @@ msgid "Keyword:|#K"
 msgstr "Cuvînt cheie:|C"
 
 #: ../src/frontends/xforms/forms/form_minipage.fd:43
-#, fuzzy
 msgid "Width"
 msgstr "Lãþime"
 
@@ -1042,9 +1038,8 @@ msgid "Bottom|#B"
 msgstr "Jos|#J"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:44
-#, fuzzy
 msgid "Inset keys:|#I"
-msgstr "Inserare|I"
+msgstr "Chei inset:|#i"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:62
 msgid "Bibliography keys:|#k"
@@ -1099,9 +1094,8 @@ msgid "Style:|#S"
 msgstr "Stil:|#S"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:314
-#, fuzzy
 msgid "Full author list|#F"
-msgstr "Floatflt|#F"
+msgstr "Listã completã autori|#c"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:332
 msgid "Force upper case|#u"
@@ -1242,9 +1236,8 @@ msgid "Replace|#R"
 msgstr "Înlocuieºte|#n"
 
 #: ../src/frontends/xforms/forms/form_search.fd:152
-#, fuzzy
 msgid "Match word|#M"
-msgstr "Mod matematic"
+msgstr "Cuvînt de cãutat|#c"
 
 #: ../src/frontends/xforms/forms/form_search.fd:170
 msgid "Replace all|#a"
@@ -1276,9 +1269,8 @@ msgid "Use input|#U"
 msgstr "Utilizeazã codarea textului|#t"
 
 #: ../src/frontends/xforms/forms/form_include.fd:225
-#, fuzzy
 msgid "Use include|#i"
-msgstr "Ghidul utilizatorului|G"
+msgstr "Utilizeazã includere|#i"
 
 #: ../src/frontends/xforms/forms/form_include.fd:261
 msgid "Preview|#P"
@@ -1346,9 +1338,8 @@ msgid "Rotate 90°|#9"
 msgstr "Roteºte 90°|#9"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:302
-#, fuzzy
 msgid "Spec. Table"
-msgstr "Spaþiere deasupra"
+msgstr "Tabel special"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:344
 #: ../src/frontends/xforms/forms/form_tabular.fd:820
@@ -1610,14 +1601,12 @@ msgid "Centered|#C"
 msgstr "Centrat|#C"
 
 #: ../src/frontends/xforms/forms/form_document.fd:152
-#, fuzzy
 msgid "Save as Document Defaults|#v"
-msgstr "Salveazã formatul ca implicit|S"
+msgstr "Salveazã ca valori implicite de document|#v"
 
 #: ../src/frontends/xforms/forms/form_document.fd:170
-#, fuzzy
 msgid "Use Class Defaults|#C"
-msgstr "Verificã ultimele fiºiere|#V"
+msgstr "Utilizeazã valorile implicite ale clasei|#c"
 
 #: ../src/frontends/xforms/forms/form_document.fd:212
 msgid "Dimensions"
@@ -1650,26 +1639,23 @@ msgstr "Mãrimi personalizate|#M"
 
 #: ../src/frontends/xforms/forms/form_document.fd:446
 msgid "Special (A4 portrait only):|#S"
-msgstr ""
+msgstr "Special (numai A4 portret):|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:464
-#, fuzzy
 msgid "Top:|#T"
-msgstr "&Sus"
+msgstr "Sus:|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:500
 msgid "Bottom:|#B"
 msgstr "Jos:|#B"
 
 #: ../src/frontends/xforms/forms/form_document.fd:536
-#, fuzzy
 msgid "Inner:|#I"
-msgstr "Inserare|I"
+msgstr "Interior:|#I"
 
 #: ../src/frontends/xforms/forms/form_document.fd:572
-#, fuzzy
 msgid "Outer:|#u"
-msgstr "Altul...|#T"
+msgstr "Exterior:|#E"
 
 #: ../src/frontends/xforms/forms/form_document.fd:608
 msgid "Headheight:|#H"
@@ -1684,9 +1670,8 @@ msgid "Footskip:|#F"
 msgstr "Separaþie de subsol:|#u"
 
 #: ../src/frontends/xforms/forms/form_document.fd:740
-#, fuzzy
 msgid "Sides"
-msgstr "Slide"
+msgstr "Feþe"
 
 #: ../src/frontends/xforms/forms/form_document.fd:758
 msgid "Separation"
@@ -1705,19 +1690,16 @@ msgid "Font Size:|#O"
 msgstr "Mãrime font:|#o"
 
 #: ../src/frontends/xforms/forms/form_document.fd:830
-#, fuzzy
 msgid "Class:|#C"
-msgstr "Clasã:|#l"
+msgstr "Clasã:|#C"
 
 #: ../src/frontends/xforms/forms/form_document.fd:848
-#, fuzzy
 msgid "Page style:|#P"
-msgstr "Stil de paginã:|#p"
+msgstr "Stil de paginã:|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:866
-#, fuzzy
 msgid "Spacing:|#g"
-msgstr "Spaþiere|#a"
+msgstr "Spaþiere:|#a"
 
 #: ../src/frontends/xforms/forms/form_document.fd:884
 msgid "Extra Options:|#X"
@@ -1729,24 +1711,23 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:956
 msgid "One|#n"
-msgstr ""
+msgstr "Unu|#U"
 
 #: ../src/frontends/xforms/forms/form_document.fd:974
 msgid "Two|#T"
-msgstr ""
+msgstr "Doi|#D"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1028
 msgid "One|#e"
-msgstr ""
+msgstr "Unu|#n"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1046
 msgid "Two|#w"
-msgstr ""
+msgstr "Doi|#o"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1100
-#, fuzzy
 msgid "Indent|#I"
-msgstr "Indentare"
+msgstr "Indentare|#I"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1118
 #, fuzzy
@@ -1755,14 +1736,12 @@ msgstr "Salt|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1215
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:190
-#, fuzzy
 msgid "Quote Style"
-msgstr "Stil citare   "
+msgstr "Stil de citare   "
 
 #: ../src/frontends/xforms/forms/form_document.fd:1287
-#, fuzzy
 msgid "Single|#S"
-msgstr "Simplu"
+msgstr "Simplu|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1305
 msgid "Double|#D"
@@ -1770,45 +1749,39 @@ msgstr "Dublu|#D"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1383
 msgid "Float Placement:|#L"
-msgstr "Poziþionare flotant:|#L"
+msgstr "Poziþionare flotant:|#P"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1401
-#, fuzzy
 msgid "Section number depth:"
-msgstr "Adîncimea numerelor secþionale"
+msgstr "Adîncimea numerelor secþionale:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1423
-#, fuzzy
 msgid "Table of contents depth:"
-msgstr "Cuprins"
+msgstr "Adîncime Cuprins:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1445
-#, fuzzy
 msgid "PS Driver:|#S"
-msgstr "Serii:|#S"
+msgstr "Driver PS:|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1463
-#, fuzzy
 msgid "Use Natbib|#N"
-msgstr "Utilizeazã includere|#u"
+msgstr "Utilizeazã Natbib|#u"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1481
 msgid "Citation style:|#i"
-msgstr "Stil de citare|#c"
+msgstr "Stil de citare:|#c"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1499
-#, fuzzy
 msgid "Use AMS Math:|#M"
-msgstr "Stil matematic AMS|#M"
+msgstr "Utilizeazã stil matematic AMS:|#M"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1541
 msgid "Bullet depth"
 msgstr "Adîncime marcher"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1595
-#, fuzzy
 msgid "LaTeX:|#L"
-msgstr "LaTeX|#L"
+msgstr "LaTeX:|#L"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1631
 msgid "1|#1"
@@ -1827,12 +1800,10 @@ msgid "4|#4"
 msgstr "4|#4"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1740
-#, fuzzy
 msgid "Standard|#S"
-msgstr "Standard"
+msgstr "Standard|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1759
-#, fuzzy
 msgid "Maths|#M"
 msgstr "Matematic|#M"
 
@@ -1858,7 +1829,7 @@ msgstr "Director:|#D"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:80
 msgid "Pattern:|#P"
-msgstr ""
+msgstr "Model:|#M"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:116
 msgid "Filename:|#F"
@@ -1870,16 +1841,15 @@ msgstr "Acasã|#A"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:170
 msgid "User1|#1"
-msgstr ""
+msgstr "Utilizator1|#1"
 
 #: ../src/frontends/xforms/forms/form_filedialog.fd:188
 msgid "User2|#2"
-msgstr ""
+msgstr "Utilizator2|#2"
 
 #: ../src/frontends/xforms/forms/form_wrap.fd:152
-#, fuzzy
 msgid "Outer|#O"
-msgstr "Altul ("
+msgstr "Exterior|#E"
 
 #: ../src/frontends/xforms/forms/form_wrap.fd:170
 msgid "Default|#D"
@@ -1892,7 +1862,7 @@ msgstr "Pagini"
 
 #: ../src/frontends/xforms/forms/form_print.fd:62
 msgid "Destination"
-msgstr "Destination"
+msgstr "Destinaþie"
 
 #: ../src/frontends/xforms/forms/form_print.fd:80
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:231
@@ -1900,33 +1870,28 @@ msgid "Copies"
 msgstr "Copii"
 
 #: ../src/frontends/xforms/forms/form_print.fd:170
-#, fuzzy
 msgid "Sorted|#S"
-msgstr "Stat"
+msgstr "Sortat|#S"
 
 #: ../src/frontends/xforms/forms/form_print.fd:224
-#, fuzzy
 msgid "Reverse order|#R"
-msgstr "&Ordine inversã"
+msgstr "Ordine inversã|#i"
 
 #: ../src/frontends/xforms/forms/form_print.fd:242
-#, fuzzy
 msgid "Number:|#N"
-msgstr "Numãr"
+msgstr "Numãr:|#N"
 
 #: ../src/frontends/xforms/forms/form_print.fd:301
-#, fuzzy
 msgid "Odd numbered pages|#O"
-msgstr "Tipãreºte numai paginile impare"
+msgstr "Pagini impare numerotate|#i"
 
 #: ../src/frontends/xforms/forms/form_print.fd:319
 msgid "Even numbered pages|#E"
 msgstr "Pagini pare numerotate|#p"
 
 #: ../src/frontends/xforms/forms/form_print.fd:355
-#, fuzzy
 msgid "Printer:|#P"
-msgstr "Imprimantã"
+msgstr "Imprimantã:|#I"
 
 #: ../src/frontends/xforms/forms/form_print.fd:427
 msgid "All|#l"
@@ -1944,62 +1909,53 @@ msgstr "De la:|#e"
 #: src/frontends/controllers/character.C:200
 #: src/frontends/controllers/character.C:254
 #: src/frontends/controllers/frnt_lang.C:45
-#, fuzzy
 msgid "Reset"
-msgstr "Indentare"
+msgstr "Reseteazã"
 
 #: ../src/frontends/xforms/forms/form_maths_style.fd:152
-#, fuzzy
 msgid "textrm"
-msgstr "Format "
+msgstr "textrm"
 
 #: ../src/frontends/xforms/forms/form_ert.fd:79
-#, fuzzy
 msgid "Open|#O"
-msgstr "Deschide...|D"
+msgstr "Deschide|#D"
 
 #: ../src/frontends/xforms/forms/form_ert.fd:97
 msgid "Collapsed|#C"
-msgstr "Contras|#C"
+msgstr "Colapsat|#C"
 
 #: ../src/frontends/xforms/forms/form_ert.fd:115
-#, fuzzy
 msgid "Inlined View|#I"
-msgstr "Inserare|I"
+msgstr "Vizualizare în-linie|#V"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:44
 msgid "Word count:"
-msgstr ""
+msgstr "Numãr de cuvinte:"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:62
-#, fuzzy
 msgid "Unknown:"
-msgstr "necunoscut"
+msgstr "Necunoscut:"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:98
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:195
-#, fuzzy
 msgid "Replacement:"
-msgstr "Poziþionare flotante:|#L"
+msgstr "Înlocuitor:|#l"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:116
-#, fuzzy
 msgid "Suggestions:|#g"
-msgstr "Question"
+msgstr "Sugestii:|#S"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:134
 msgid "Add|#d"
-msgstr "Adaugã|#d"
+msgstr "Adaugã|#A"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:152
-#, fuzzy
 msgid "Ignore|#I"
-msgstr "&Ignorã cuvîntul"
+msgstr "Ignorã|#I"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:170
-#, fuzzy
 msgid "Ignore All|#g"
-msgstr "&Ignorã cuvîntul"
+msgstr "Ignorã tot|#o"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:224
 msgid "0 %"
@@ -2007,9 +1963,8 @@ msgstr "0 %"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:258
-#, fuzzy
 msgid "Insert matrix"
-msgstr "Insereazã apendix"
+msgstr "Insereazã matrice"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
@@ -2020,9 +1975,8 @@ msgstr "&Linii:"
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
-#, fuzzy
 msgid "Number of rows"
-msgstr "Numãrul de copii de tipãrit"
+msgstr "Numãrul de linii"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
@@ -2033,14 +1987,13 @@ msgstr "&Coloane:"
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
-#, fuzzy
 msgid "Number of columns"
-msgstr "Procente din coloanã"
+msgstr "Numãrul de coloane"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
 msgid "Resize this to the correct table dimensions"
-msgstr ""
+msgstr "Redimensionaþi pentru a corecta dimesiunile tabelului"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
@@ -2071,9 +2024,8 @@ msgstr "Închide"
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
-#, fuzzy
 msgid "Top"
-msgstr "&Sus"
+msgstr "Sus"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
@@ -2093,18 +2045,16 @@ msgstr "Jos"
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:332
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:108
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:114
-#, fuzzy
 msgid "Vertical alignment"
-msgstr "Vertical"
+msgstr "Aliniere verticalã"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
 msgid "&Vertical:"
 msgstr "&Vertical:"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
-#, fuzzy
 msgid "Horizontal alignment per column (l,c,r)"
-msgstr "Aliniere orizontalã per coloanã (t,c,b)"
+msgstr "Aliniere orizontalã per coloanã (l,c,r)"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
 msgid "&Horizontal:"
@@ -2150,7 +2100,7 @@ msgstr "Renunþã"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
+msgstr "Proceseazã fiºierul convertit cu aceastã comandã ($$FName = numele de fiºier)"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:176
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:94
@@ -2159,14 +2109,13 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:366
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:124
 msgid "New Item"
-msgstr ""
+msgstr "Item nou"
 
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
 msgid "Available export converters"
 msgstr "Convertoare de export disponibile"
 
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
-#, fuzzy
 msgid "Insert table"
 msgstr "Insereazã tabel"
 
@@ -2228,9 +2177,8 @@ msgid "&Close"
 msgstr "În&chide"
 
 #: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
-#, fuzzy
 msgid "Version control log"
-msgstr "Controlul versiunii|v"
+msgstr "Jurnalul de control a versiunilor"
 
 #: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
 #: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
@@ -2241,29 +2189,24 @@ msgstr "&Actualizeazã"
 
 #: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
 #: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
-#, fuzzy
 msgid "Update the display"
-msgstr "Afiºare matematicã|m"
+msgstr "Actualizeazã ecranul"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
-#, fuzzy
 msgid "Printer settings"
-msgstr "Minipaginã"
+msgstr "Setãri imprimantã"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:71
-#, fuzzy
 msgid "Printer &name:"
-msgstr "Imprimantã"
+msgstr "&Nume imprimantã:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:93
-#, fuzzy
 msgid "Printer co&mmand:"
-msgstr "Comenzi utilizator"
+msgstr "&Comandã de tipãrire:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:108
-#, fuzzy
 msgid "Name of the default printer"
-msgstr "Mãrime implicitã foaie"
+msgstr "Numele imprimantei implicite"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:119
 msgid "Adapt outp&ut"
@@ -2271,45 +2214,39 @@ msgstr "A&dapteazã rezultatul"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:123
 msgid "Use printer name explicitely"
-msgstr ""
+msgstr "Utilizeazã explicit numele imprimantei"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:159
 msgid "Command Options"
 msgstr "Opþiuni comandã"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:178
-#, fuzzy
 msgid "Re&verse:"
-msgstr "invers"
+msgstr "&Invers:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:207
-#, fuzzy
 msgid "To p&rinter:"
-msgstr "la imprimantã"
+msgstr "&La imprimanta:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:222
-#, fuzzy
 msgid "Paper si&ze:"
-msgstr "mãrime foaie"
+msgstr "&Mãrime foaie:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:251
-#, fuzzy
 msgid "To &file:"
-msgstr "cãtre fiºier"
+msgstr "&Cãtre fiºierul:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:287
-#, fuzzy
 msgid "Spool &command:"
-msgstr "comandã de spool"
+msgstr "Comandã de \"&spool\":"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:316
 msgid "&Odd pages:"
 msgstr "Pagini &impare:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:338
-#, fuzzy
 msgid "Paper t&ype:"
-msgstr "tip foaie"
+msgstr "&Tip de foaie:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:360
 msgid "E&xtra options:"
@@ -2333,18 +2270,16 @@ msgid "File ex&tension:"
 msgstr "E&xtensie de fiºier:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:456
-#, fuzzy
 msgid "Lan&dscape:"
-msgstr "peisaj"
+msgstr "&Peisaj:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:478
 msgid "Co&pies:"
 msgstr "C&opii:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:493
-#, fuzzy
 msgid "Pa&ge range:"
-msgstr "domeniu paginã"
+msgstr "&Domeniu de pagini:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:508
 msgid "Specify the command option names for your printer command"
@@ -2352,12 +2287,11 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QLogDialogBase.ui:22
 msgid "Log"
-msgstr ""
+msgstr "Jurnal"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:23
-#, fuzzy
 msgid "Minipage settings"
-msgstr "Minipaginã"
+msgstr "Setãri minipaginã"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:75
 #: ../src/frontends/qt2/ui/PageLayoutModuleBase.ui:87
@@ -2367,9 +2301,8 @@ msgid "&Width:"
 msgstr "&Lãþime:"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:93
-#, fuzzy
 msgid "Middle"
-msgstr "&Mijloc"
+msgstr "Mijloc"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:119
 msgid "A&lignment:"
@@ -2378,13 +2311,12 @@ msgstr "A&linierea:"
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:152
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:158
 msgid "Units of width value"
-msgstr ""
+msgstr "Unitãþi din valoarea lãþimii"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:170
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:176
-#, fuzzy
 msgid "Width value"
-msgstr "Lãþime"
+msgstr "Valoare lãþime"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:181
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:187
@@ -2392,33 +2324,29 @@ msgid "&Units:"
 msgstr "&Unitãþi:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:118
-#, fuzzy
 msgid "&First level"
-msgstr "Primul antet"
+msgstr "&Primul nivel"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:178
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:413
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:669
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:963
-#, fuzzy
 msgid "Size:"
-msgstr "Mãrime:|#e"
+msgstr "Mãrime:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:190
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:425
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:681
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:975
 #: src/frontends/qt2/QDocument.C:133 src/frontends/qt2/QDocument.C:143
-#, fuzzy
 msgid "default"
-msgstr "Implicit"
+msgstr "implicit"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:196
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:431
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:687
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:981
 #: src/frontends/controllers/character.C:122 src/lyxfont.C:52
-#, fuzzy
 msgid "Tiny"
 msgstr "Tiny"
 
@@ -2427,7 +2355,6 @@ msgstr "Tiny"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:693
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:987
 #: src/frontends/controllers/character.C:126 src/lyxfont.C:52
-#, fuzzy
 msgid "Smallest"
 msgstr "Smallest"
 
@@ -2436,7 +2363,6 @@ msgstr "Smallest"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:699
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:993
 #: src/frontends/controllers/character.C:130 src/lyxfont.C:52
-#, fuzzy
 msgid "Smaller"
 msgstr "Smaller"
 
@@ -2445,7 +2371,6 @@ msgstr "Smaller"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:705
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:999
 #: src/frontends/controllers/character.C:134 src/lyxfont.C:52
-#, fuzzy
 msgid "Small"
 msgstr "Small"
 
@@ -2454,7 +2379,6 @@ msgstr "Small"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:711
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:1005
 #: src/frontends/controllers/character.C:138 src/lyxfont.C:52
-#, fuzzy
 msgid "Normal"
 msgstr "Normal"
 
@@ -2471,7 +2395,6 @@ msgstr "Large"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:723
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:1017
 #: src/frontends/controllers/character.C:146 src/lyxfont.C:53
-#, fuzzy
 msgid "Larger"
 msgstr "Larger"
 
@@ -2480,7 +2403,6 @@ msgstr "Larger"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:729
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:1023
 #: src/frontends/controllers/character.C:150 src/lyxfont.C:53
-#, fuzzy
 msgid "Largest"
 msgstr "Largest"
 
@@ -2497,21 +2419,20 @@ msgstr "Huge"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:741
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:1035
 #: src/frontends/controllers/character.C:158 src/lyxfont.C:53
-#, fuzzy
 msgid "Huger"
-msgstr "Huge"
+msgstr "Huger"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:353
 msgid "&Second level"
-msgstr ""
+msgstr "Al &doilea nivel"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:609
 msgid "&Third level"
-msgstr ""
+msgstr "Al &treilea nivel"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:901
 msgid "Fou&rth level"
-msgstr ""
+msgstr "Al p&atrulea nivel"
 
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
@@ -3332,7 +3253,7 @@ msgstr "Înãlþimea imaginii la tipãrire"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
 msgid "Units of height value"
-msgstr ""
+msgstr "Unitãþi de valoare înãlþime"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
 msgid "&Height"
@@ -3692,9 +3613,8 @@ msgstr "&Previzualizare instantanee"
 
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23
 #: src/frontends/xforms/FormWrap.C:30
-#, fuzzy
 msgid "Wrap Options"
-msgstr "Opþiuni suplimentare"
+msgstr "Opþiuni limitare text"
 
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
 msgid "Default (outer)"
@@ -3757,9 +3677,8 @@ msgid "Alig&nment:"
 msgstr "&Alinierea:"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:183
-#, fuzzy
 msgid "In&dent paragraph"
-msgstr "Paragraf deasupra"
+msgstr "In&denteazã paragraful"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:196
 msgid "&Spacing"
@@ -3779,7 +3698,7 @@ msgstr "&Pãstreazã spaþiul:"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:256
 msgid "Include space even at the top/bottom of the page"
-msgstr ""
+msgstr "Include spaþiu chiar ºi în susul/josul paginii"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:267
 msgid "&Unit:"
@@ -3849,7 +3768,7 @@ msgstr "Cea mai &lungã etichetã"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:560
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:571
 msgid "This text defines the width of the paragraph label"
-msgstr ""
+msgstr "Acest text defineºte lãtimea etichetei de paragraf"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:584
 msgid "L&ines"
@@ -3865,11 +3784,11 @@ msgstr "Adaugã o linie orizontalã deasupra paragrafului"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:618
 msgid "B&elow"
-msgstr "&De desubt"
+msgstr "&Dedesubt"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:622
 msgid "Add a horizontal rule below the paragraph"
-msgstr ""
+msgstr "Adaugã o linie orizontalã sub paragraf"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:635
 msgid "&Page Breaks"
@@ -3881,15 +3800,15 @@ msgstr "D&easupra"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:658
 msgid "Start a new page above this paragraph"
-msgstr ""
+msgstr "Începe o paginã nouã deasupra acestui paragraf"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:669
 msgid "Belo&w"
-msgstr "D&e desubt"
+msgstr "D&edesubt"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:673
 msgid "Start a new page below this paragraph"
-msgstr ""
+msgstr "Începe o paginã nouã sub acest paragraf"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:107
 msgid "&Backup directory:"
@@ -3900,9 +3819,8 @@ msgid "&Document templates:"
 msgstr "&Modele de documente:"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:137
-#, fuzzy
 msgid "Ly&XServer pipe:"
-msgstr "Conducã server LyX|#s"
+msgstr "Conducã server Ly&X:"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:152
 msgid "&Use temporary directory"
@@ -3926,7 +3844,7 @@ msgstr "În-&linie"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
 msgid "Show ERT inline"
-msgstr ""
+msgstr "Afiºeazã ERT în-linie"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
 msgid "&Collapsed"
@@ -3934,19 +3852,17 @@ msgstr "&Contras"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
 msgid "Show ERT button only"
-msgstr ""
+msgstr "Afiºeazã numai butonul ERT"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
 msgid "&Open"
 msgstr "&Deschide"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
-#, fuzzy
 msgid "Show ERT contents"
-msgstr "Cuprins"
+msgstr "Afiºeazã conþinutul ERT"
 
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
-#, fuzzy
 msgid "Table Of Contents"
 msgstr "Cuprins"
 
@@ -3956,7 +3872,7 @@ msgstr "&Tip"
 
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
 msgid "Contents list"
-msgstr "Contents list"
+msgstr "Lista cuprinsului"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
 #: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:34
@@ -3964,28 +3880,24 @@ msgid "Reference"
 msgstr "Referinþã"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
-#, fuzzy
 msgid "Update the reference list"
-msgstr "&Insereazã referinþã"
+msgstr "Actualizeazã lista de referinþe"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:89
-#, fuzzy
 msgid "&Go to reference"
-msgstr "Referinþã formatatã"
+msgstr "&Du-te la referinþã"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
-#, fuzzy
 msgid "Move the document cursor to reference"
-msgstr "Este posibil ca documentul sã fie trunchiat"
+msgstr "Mutã cursorul documentului la referinþã"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
 msgid "Sort"
 msgstr "Sorteazã"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
-#, fuzzy
 msgid "Sort references in alphabetical order"
-msgstr "Sortez referinþele în ordine alfabeticã ?"
+msgstr "Sorteazã referinþele în ordine alfabeticã "
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
 msgid "<reference>"
@@ -3997,7 +3909,7 @@ msgstr "<paginã>"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:137
 msgid "on page <page>"
-msgstr ""
+msgstr "la pagina <paginã>"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:143
 msgid "<reference> on page <page>"
@@ -4009,7 +3921,7 @@ msgstr "Referinþã formatatã"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
 msgid "Reference as it appears in output"
-msgstr "Referinþã aºa cum apare la tipãrire"
+msgstr "Referinþa, aºa cum apare la tipãrire"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
 msgid "&Reference:"
@@ -4035,7 +3947,7 @@ msgstr "&Document:"
 #: ../lib/layouts/aapaper.layout:77 ../lib/layouts/aapaper.inc:113
 #: src/frontends/xforms/FormThesaurus.C:36
 msgid "Thesaurus"
-msgstr "Tezaur"
+msgstr "Dicþionar"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
 msgid "&Keyword:"
@@ -4047,7 +3959,7 @@ msgstr "Înregistrare"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
 msgid "Select a related word"
-msgstr "Selecteazã un cuvînt corespunzãtor"
+msgstr "Selectaþi un cuvînt corespunzãtor"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
 msgid "&Selection:"
@@ -4146,9 +4058,8 @@ msgid "LyX: Enter text"
 msgstr "LyX: Introduceþi textul"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:66
-#, fuzzy
 msgid "&Dummy"
-msgstr "Sumar"
+msgstr "&Nimic"
 
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:139
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:214 src/bufferlist.C:81
@@ -4167,11 +4078,11 @@ msgstr "Comandã &roff:"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:90
 msgid "Max. line length of exported ASCII/LaTeX/ SGML files"
-msgstr ""
+msgstr "Lungimea maximã a liniei a fiºierelor ASCII/LaTeX/SGML exportate"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:124
 msgid "Output &line length:"
-msgstr ""
+msgstr "Lungimea &liniei:"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:139
 msgid "External app for formating tables in ASCII output"
@@ -4192,7 +4103,7 @@ msgstr "Expresie &regulatã"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:161
 msgid "Interpret search entry as a regular expression"
-msgstr "Interpreteazã textul de cãutat ca fiin expresie regulatã "
+msgstr "Interpreteazã textul de cãutat ca fiind expresie regulatã "
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:172
 msgid "&Case sensitive"
@@ -4264,7 +4175,7 @@ msgstr "Forþeazã la &majuscule"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:511
 msgid "Force upper case in citation"
-msgstr "Forþeazã majuscule în citare"
+msgstr "Forþeazã la majuscule în citare"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:531
 msgid "Text to place after citation"
@@ -4413,7 +4324,7 @@ msgstr "&Reseteazã opþiunile clasei cînd clasa documentului este modificatã"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:192
 msgid "Set class options to default on class change"
-msgstr ""
+msgstr "La modificarea clasei, seteazã opþiunile clasei la valorile implicite"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:203
 msgid "External Applications"
@@ -4424,13 +4335,14 @@ msgid "Chec&kTeX command:"
 msgstr "Comandã Chec&kTeX:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:237
-#, fuzzy
 msgid "DVI viewer paper size options:"
-msgstr "opþiuni suplimentare"
+msgstr "Opþiuni mãrime paginã pentru previzualizorul DVI:"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:252
 msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr ""
+"Opþiuni suplimentare pentru mãrimea paginii (-paper) la cîteva "
+"din vizualizatoare DVI"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:263
 msgid "CheckTeX start options and flags"
@@ -4787,9 +4699,8 @@ msgid "BibTeX database to use"
 msgstr "Baza de date BibTeX de utilizat"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
-#, fuzzy
 msgid "Selected BibTeX databases"
-msgstr "Baze de date BibTeX disponibile"
+msgstr "Baze de date BibTeX selectate"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
 msgid "Add a BibTeX database file"
@@ -4797,7 +4708,7 @@ msgstr "Adaugã un fiºier bazã de date BibTeX"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:109
 msgid "Browse for a BibTeX database file"
-msgstr "Selectare fiºier bazã de date BibTeX"
+msgstr "Rãsfoieºte dupã un fiºier bazã de date BibTeX"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
 msgid "&Delete"
@@ -4805,17 +4716,15 @@ msgstr "ª&terge"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:124
 msgid "Remove the selected database"
-msgstr ""
+msgstr "ªterge baza de date selectatã"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:156
-#, fuzzy
 msgid "St&yle"
-msgstr "Stil:  "
+msgstr "&Stil"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:164
-#, fuzzy
 msgid "The BibTeX style"
-msgstr "Comutã stilul TeX"
+msgstr "Stil BibTeX"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:183
 msgid "Choose a style file"
@@ -4830,14 +4739,12 @@ msgid "Add bibliography to the table of contents"
 msgstr "Adaugã bibliografia la cuprins"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:293
-#, fuzzy
 msgid "Chose a style file"
 msgstr "Alegeþi un fiºier de stil"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:316
-#, fuzzy
 msgid "Select a database"
-msgstr "Selectaþi fiºierul de ieºire"
+msgstr "Selectaþi o bazã de date"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22 src/LyXAction.C:130
 #: src/frontends/xforms/FormPrint.C:33
@@ -4845,18 +4752,16 @@ msgid "Print"
 msgstr "Tipãreºte"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:101
-#, fuzzy
 msgid "Page number to print from"
-msgstr "Nu pot tipãri"
+msgstr "Numãrul de paginã de la care începe tipãrirea"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:112
 msgid "&to"
 msgstr "&la"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:131
-#, fuzzy
 msgid "Page number to print to"
-msgstr "Nu pot tipãri"
+msgstr "Numãrul de paginã pînã la care se tipãreºte"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:144
 msgid "Fro&m"
@@ -4864,38 +4769,32 @@ msgstr "&De la"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:152
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:171
-#, fuzzy
 msgid "Print all pages"
-msgstr "Tipãreºte fiecare paginã"
+msgstr "Tipãreºte toate paginiile"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:163
 msgid "&All"
 msgstr "&Tot"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:184
-#, fuzzy
 msgid "Print &odd-numbered pages"
-msgstr "Tipãreºte numai paginile impare"
+msgstr "Tipãreºte paginile &impare"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:199
-#, fuzzy
 msgid "Print &even-numbered pages"
-msgstr "Tipãreºte numai paginile pare"
+msgstr "Tipãreºte paginile &pare"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:214
-#, fuzzy
 msgid "Re&verse order"
 msgstr "&Ordine inversã"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:218
-#, fuzzy
 msgid "Print in reverse order"
 msgstr "Tipãreºte în ordine inversã"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:258
-#, fuzzy
 msgid "Number of copies"
-msgstr "Numãrul de copii de tipãrit"
+msgstr "Numãrul de copii"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:273
 msgid "&Collate"
@@ -4910,22 +4809,20 @@ msgid "&Print"
 msgstr "&Tipãreºte"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:375
-#, fuzzy
 msgid "Print Destination"
-msgstr "Destinaþia"
+msgstr "Destinaþia tipãririi"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:397
-#, fuzzy
 msgid "P&rinter"
-msgstr "Imprimantã"
+msgstr "I&mprimantã"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:405
 msgid "Send output to the printer"
-msgstr ""
+msgstr "Trimite documentul la imprimantã"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:416
 msgid "Send output to the given printer"
-msgstr ""
+msgstr "Trimite documentul la imprimanta precizatã"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:427
 msgid "&File"
@@ -4933,28 +4830,24 @@ msgstr "&Fiºier"
 
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:431
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:446
-#, fuzzy
 msgid "Send output to a file"
-msgstr "Selectaþi fiºierul de ieºire"
+msgstr "Trimite documentul în fiºier"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:81
-#, fuzzy
 msgid "Use Class Defaults"
-msgstr "Verificã ultimele fiºiere|#V"
+msgstr "Utilizeazã paramentrii impliciþi ai clasei"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:85
-#, fuzzy
 msgid "Reset to  the default settings for the document class"
-msgstr "setãrile implicite pentru aceastã clasã de document?"
+msgstr "Reseteazã la valorile implicite ale clasei de document"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:103
-#, fuzzy
 msgid "Save as Document Defaults"
-msgstr "Salveazã formatul ca implicit|S"
+msgstr "Salveazã valorile ca implicite pentru document"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:107
 msgid "Save settings as LyX's default document settings"
-msgstr ""
+msgstr "Salveazã setãrile ca valori implicite LyX pentru document"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:22
 #: src/frontends/xforms/FormPreferences.C:219
@@ -4962,37 +4855,32 @@ msgid "Screen Fonts"
 msgstr "Fonturi ecran"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:110
-#, fuzzy
 msgid "Sa&ns Serif:"
-msgstr "Sans Serif"
+msgstr "Sa&ns Serif:"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:157
-#, fuzzy
 msgid "T&ypewriter:"
-msgstr "Typewriter"
+msgstr "&Maºinã de scris:"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:172
 msgid "&Roman:"
 msgstr "&Roman:"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:246
-#, fuzzy
 msgid "Screen &DPI:"
-msgstr "DPI ecran|#D"
+msgstr "&DPI ecran:"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:272
 msgid "&Zoom %:"
 msgstr "&Scalare %:"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:323
-#, fuzzy
 msgid "Font Sizes"
-msgstr "Mãrimea fontului:|#O"
+msgstr "Mãrimi font"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:457
-#, fuzzy
 msgid "Hugest:"
-msgstr "Huge"
+msgstr "Hugest:"
 
 #: ../lib/layouts/broadway.layout:26 ../lib/layouts/hollywood.layout:40
 msgid "Dialogue"
@@ -5023,9 +4911,8 @@ msgid "Speaker"
 msgstr "Vorbitor"
 
 #: ../lib/layouts/broadway.layout:130 ../lib/layouts/hollywood.layout:161
-#, fuzzy
 msgid "Parenthetical"
-msgstr "Matrice"
+msgstr "Între paranteze"
 
 #: ../lib/layouts/broadway.layout:164
 msgid "CURTAIN"
@@ -5089,7 +4976,7 @@ msgstr "Titlu"
 #: ../lib/layouts/cl2emult.layout:59 ../lib/layouts/paper.layout:121
 #: ../lib/layouts/scrclass.inc:166
 msgid "Author"
-msgstr "Author"
+msgstr "Autor"
 
 #: ../lib/layouts/broadway.layout:216 ../lib/layouts/hollywood.layout:311
 #: ../lib/layouts/egs.layout:261 ../lib/layouts/lyxmacros.inc:101
@@ -5102,34 +4989,28 @@ msgid "Mainline"
 msgstr "Minisec"
 
 #: ../lib/layouts/chess.layout:64
-#, fuzzy
 msgid "Variation"
-msgstr "Separaþia"
+msgstr "Variaþie"
 
 #: ../lib/layouts/chess.layout:74
-#, fuzzy
 msgid "SubVariation"
-msgstr "Separaþia"
+msgstr "SubVariaþie"
 
 #: ../lib/layouts/chess.layout:83
-#, fuzzy
 msgid "SubVariation2"
-msgstr "Separaþia"
+msgstr "SubVariaþie2"
 
 #: ../lib/layouts/chess.layout:92
-#, fuzzy
 msgid "SubVariation3"
-msgstr "Separaþia"
+msgstr "SubVariaþie3"
 
 #: ../lib/layouts/chess.layout:101
-#, fuzzy
 msgid "SubVariation4"
-msgstr "Separaþia"
+msgstr "SubVariaþie4"
 
 #: ../lib/layouts/chess.layout:110
-#, fuzzy
 msgid "SubVariation5"
-msgstr "Separaþia"
+msgstr "SubVariaþie5"
 
 #: ../lib/layouts/chess.layout:120
 msgid "HideMoves"
@@ -5141,12 +5022,11 @@ msgstr "Tablã de ºah"
 
 #: ../lib/layouts/chess.layout:141
 msgid "BoardCentered"
-msgstr "BoardCentered"
+msgstr ""
 
 #: ../lib/layouts/chess.layout:156
-#, fuzzy
 msgid "HighLight"
-msgstr "Înãlþime"
+msgstr ""
 
 #: ../lib/layouts/chess.layout:176
 msgid "Arrow"
@@ -5180,7 +5060,7 @@ msgstr "Enumerate"
 #: ../lib/layouts/db_stdlists.inc:23 ../lib/layouts/paper.layout:102
 #: ../lib/layouts/scrclass.inc:25
 msgid "Description"
-msgstr "Description"
+msgstr "Descriere"
 
 #: ../lib/layouts/aastex.layout:82 ../lib/layouts/scrmacros.inc:6
 #: ../lib/layouts/aapaper.layout:53 ../lib/layouts/egs.layout:165
@@ -5192,7 +5072,7 @@ msgstr "Listã"
 #: ../lib/layouts/apa.layout:148 ../lib/layouts/revtex4.layout:150
 #: ../lib/layouts/latex8.layout:78
 msgid "Affiliation"
-msgstr "Affiliation"
+msgstr ""
 
 #: ../lib/layouts/aastex.layout:90 ../lib/layouts/aastex.layout:282
 #: ../lib/layouts/aapaper.layout:73 ../lib/layouts/amsdefs.inc:205
@@ -5278,7 +5158,7 @@ msgstr "Tabel_Referinþe"
 #: ../lib/layouts/aa.layout:58 ../lib/layouts/aa.layout:218
 #: ../lib/layouts/stdlayouts.inc:84 ../lib/layouts/latex8.layout:115
 msgid "Caption"
-msgstr "Titlu"
+msgstr "Caption"
 
 #: ../lib/layouts/aastex.layout:116 ../lib/layouts/aastex.layout:403
 msgid "MathLetters"
@@ -5367,7 +5247,7 @@ msgstr "Conjecture"
 #: ../lib/layouts/amsmaths-seq.inc:40 ../lib/layouts/heb-article.layout:61
 #: ../lib/layouts/amsmaths.inc:105 ../lib/layouts/amsmaths-plain.inc:43
 msgid "Corollary"
-msgstr "Corollary"
+msgstr "Corolar"
 
 #: ../lib/layouts/llncs.layout:368 ../lib/layouts/IEEEtran.layout:178
 #: ../lib/layouts/foils.layout:283 ../lib/layouts/elsart.layout:350
@@ -5375,7 +5255,7 @@ msgstr "Corollary"
 #: ../lib/layouts/amsmaths-seq.inc:104 ../lib/layouts/heb-article.layout:79
 #: ../lib/layouts/amsmaths.inc:260 ../lib/layouts/amsmaths-plain.inc:131
 msgid "Definition"
-msgstr "Definition"
+msgstr "Definiþie"
 
 #: ../lib/layouts/llncs.layout:380 ../lib/layouts/IEEEtran.layout:222
 #: ../lib/layouts/svjour.inc:438 ../lib/layouts/amsmaths-seq.inc:136
@@ -5411,7 +5291,7 @@ msgstr "Problemã"
 #: ../lib/layouts/svjour.inc:470 ../lib/layouts/siamltex.layout:234
 #: ../lib/layouts/heb-article.layout:97 ../lib/layouts/amsdefs.inc:27
 msgid "Proof"
-msgstr "Proof"
+msgstr ""
 
 #: ../lib/layouts/llncs.layout:410 ../lib/layouts/svjour.inc:476
 msgid "Property"
@@ -5423,11 +5303,11 @@ msgstr "Proprietate"
 #: ../lib/layouts/amsmaths-seq.inc:56 ../lib/layouts/amsmaths.inc:152
 #: ../lib/layouts/amsmaths-plain.inc:65
 msgid "Proposition"
-msgstr "Propoziþie"
+msgstr "Afirmaþie"
 
 #: ../lib/layouts/llncs.layout:422 ../lib/layouts/svjour.inc:488
 msgid "Question"
-msgstr "Question"
+msgstr "Întrebare"
 
 #: ../lib/layouts/llncs.layout:428 ../lib/layouts/IEEEtran.layout:233
 #: ../lib/layouts/elsart.layout:409 ../lib/layouts/svjour.inc:494
@@ -5450,9 +5330,8 @@ msgid "Theorem"
 msgstr "Teoremã"
 
 #: ../lib/layouts/hollywood.layout:55 src/frontends/xforms/Menubar_pimpl.C:230
-#, fuzzy
 msgid "More"
-msgstr "&Ignorã cuvîntul"
+msgstr ""
 
 #: ../lib/layouts/hollywood.layout:83
 msgid "FADE_IN:"
@@ -5476,11 +5355,11 @@ msgstr "Tranziþie"
 
 #: ../lib/layouts/hollywood.layout:243
 msgid "TITLE_OVER:"
-msgstr ""
+msgstr "TITLE_OVER:"
 
 #: ../lib/layouts/hollywood.layout:257
 msgid "INTERCUT"
-msgstr ""
+msgstr "INTERCUT"
 
 #: ../lib/layouts/hollywood.layout:271
 msgid "FADE_OUT"
@@ -5513,7 +5392,7 @@ msgstr "Quote"
 #: ../lib/layouts/linuxdoc.layout:278 ../lib/layouts/db_lyxmacros.inc:11
 #: ../lib/layouts/manpage.layout:155
 msgid "Code"
-msgstr "Code"
+msgstr "Cod"
 
 #: ../lib/layouts/linuxdoc.layout:346 ../lib/layouts/IEEEtran.layout:358
 #: ../lib/layouts/ijmpd.layout:75 ../lib/layouts/foils.layout:160
@@ -5537,7 +5416,7 @@ msgstr "Etichetare"
 
 #: ../lib/layouts/scrlettr.layout:48 ../lib/layouts/g-brief-en.layout:31
 msgid "Letter"
-msgstr "Letter"
+msgstr "Scrisoare"
 
 #: ../lib/layouts/scrlettr.layout:70 ../lib/layouts/dinbrief.layout:48
 #: ../lib/layouts/scrlttr2.layout:100 ../lib/layouts/g-brief-en.layout:517
@@ -5549,7 +5428,7 @@ msgstr "Deschidere"
 #: ../lib/layouts/scrlttr2.layout:122 ../lib/layouts/g-brief-en.layout:591
 #: ../lib/layouts/stdletter.inc:106 ../lib/layouts/heb-letter.layout:20
 msgid "Closing"
-msgstr "Closing"
+msgstr "Închidere"
 
 #: ../lib/layouts/scrlettr.layout:93 ../lib/layouts/scrlttr2.layout:130
 msgid "PS"
@@ -5583,7 +5462,7 @@ msgstr "Semnãturã"
 #: ../lib/layouts/amsdefs.inc:167 ../lib/layouts/lyxmacros.inc:78
 #: ../lib/layouts/aapaper.inc:31
 msgid "Address"
-msgstr "Address"
+msgstr "Adresã"
 
 #: ../lib/layouts/scrlettr.layout:162 ../lib/layouts/scrlttr2.layout:192
 #: ../lib/layouts/stdletter.inc:179
@@ -5655,7 +5534,7 @@ msgstr "Axiomã"
 #: ../lib/layouts/IEEEtran.layout:200 ../lib/layouts/amsmaths-seq.inc:120
 #: ../lib/layouts/amsmaths.inc:318 ../lib/layouts/amsmaths-plain.inc:153
 msgid "Condition"
-msgstr "Condition"
+msgstr "Condiþie"
 
 #: ../lib/layouts/IEEEtran.layout:266 ../lib/layouts/amsmaths-seq.inc:168
 #: ../lib/layouts/amsmaths.inc:438 ../lib/layouts/amsmaths-plain.inc:219
@@ -5725,7 +5604,7 @@ msgstr "Betreff"
 
 #: ../lib/layouts/dinbrief.layout:160
 msgid "Stadt"
-msgstr ""
+msgstr "Stadt"
 
 #: ../lib/layouts/dinbrief.layout:180 ../lib/layouts/g-brief-de.layout:467
 msgid "Datum"
@@ -5760,26 +5639,22 @@ msgid "LyX-Code"
 msgstr "Cod LyX"
 
 #: ../lib/layouts/cv.layout:57
-#, fuzzy
 msgid "SubSection"
-msgstr "Subsecþiune"
+msgstr "SubSecþiune"
 
 #: ../lib/layouts/cv.layout:62
-#, fuzzy
 msgid "Topic"
-msgstr "&Sus"
+msgstr "Topic"
 
 #: ../lib/layouts/cv.layout:104 ../lib/layouts/foils.layout:200
 #: ../lib/layouts/aguplus.inc:67
-#, fuzzy
 msgid "Left_Header"
-msgstr "Antet"
+msgstr "Antet_Stînga"
 
 #: ../lib/layouts/cv.layout:123 ../lib/layouts/foils.layout:208
 #: ../lib/layouts/aguplus.inc:93
-#, fuzzy
 msgid "Right_Header"
-msgstr "Antet dreapta"
+msgstr "Antet_Dreapta"
 
 #: ../lib/layouts/entcs.layout:45
 msgid "FrontMatter"
@@ -5801,12 +5676,11 @@ msgstr "Adresã_destinaþie"
 
 #: ../lib/layouts/scrlttr2.layout:200
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: ../lib/layouts/scrlttr2.layout:209
-#, fuzzy
 msgid "E-Mail"
-msgstr "EMail"
+msgstr "E-Mail"
 
 #: ../lib/layouts/scrlttr2.layout:225 ../lib/layouts/g-brief-en.layout:363
 #: ../lib/layouts/g-brief-de.layout:363
@@ -5815,7 +5689,7 @@ msgstr "Bank"
 
 #: ../lib/layouts/scrlttr2.layout:233
 msgid "Logo"
-msgstr ""
+msgstr "Logo"
 
 #: ../lib/layouts/egs.layout:131 ../lib/layouts/db_stdlayouts.inc:34
 #: ../lib/layouts/stdlayouts.inc:31
@@ -5824,7 +5698,7 @@ msgstr "Quotation"
 
 #: ../lib/layouts/egs.layout:242 ../lib/layouts/stdlayouts.inc:65
 msgid "Verse"
-msgstr "Verse"
+msgstr "Vers"
 
 #: ../lib/layouts/egs.layout:312 ../lib/layouts/obsolete.inc:10
 msgid "LaTeX_Title"
@@ -5876,7 +5750,7 @@ msgstr "Suprapunere"
 
 #: ../lib/layouts/slides.layout:215
 msgid "InvisibleText"
-msgstr "Text invizibil"
+msgstr "TextInvizibil"
 
 #: ../lib/layouts/slides.layout:244
 msgid "VisibleText"
@@ -5891,14 +5765,12 @@ msgid "AddressForOffprints"
 msgstr "AddressForOffprints"
 
 #: ../lib/layouts/kluwer.layout:214
-#, fuzzy
 msgid "RunningTitle"
-msgstr "Running_LaTeX_Title"
+msgstr ""
 
 #: ../lib/layouts/kluwer.layout:237
-#, fuzzy
 msgid "RunningAuthor"
-msgstr "Author"
+msgstr ""
 
 #: ../lib/layouts/foils.layout:40
 msgid "Foilhead"
@@ -5906,19 +5778,19 @@ msgstr "Foilhead"
 
 #: ../lib/layouts/foils.layout:63
 msgid "ShortFoilhead"
-msgstr ""
+msgstr "ShortFoilhead"
 
 #: ../lib/layouts/foils.layout:70
 msgid "Rotatefoilhead"
-msgstr ""
+msgstr "Rotatefoilhead"
 
 #: ../lib/layouts/foils.layout:77
 msgid "ShortRotatefoilhead"
-msgstr ""
+msgstr "ShortRotatefoilhead"
 
 #: ../lib/layouts/foils.layout:88
 msgid "TickList"
-msgstr ""
+msgstr "TickList"
 
 #: ../lib/layouts/foils.layout:111
 msgid "CrossList"
@@ -5926,17 +5798,15 @@ msgstr "CrossList"
 
 #: ../lib/layouts/foils.layout:173
 msgid "My_Logo"
-msgstr ""
+msgstr "My_Logo"
 
 #: ../lib/layouts/foils.layout:193
-#, fuzzy
 msgid "Restriction"
-msgstr "Descriere"
+msgstr "Restricþie"
 
 #: ../lib/layouts/foils.layout:215
-#, fuzzy
 msgid "Right_Footer"
-msgstr "Antet dreapta"
+msgstr "Subsol_Dreapta"
 
 #: ../lib/layouts/foils.layout:320 ../lib/layouts/siamltex.layout:249
 #: ../lib/layouts/amsmaths.inc:93
@@ -5951,22 +5821,21 @@ msgstr "Lemã*"
 #: ../lib/layouts/foils.layout:334 ../lib/layouts/siamltex.layout:261
 #: ../lib/layouts/amsmaths.inc:116
 msgid "Corollary*"
-msgstr "Corollary*"
+msgstr "Corolar*"
 
 #: ../lib/layouts/foils.layout:341 ../lib/layouts/siamltex.layout:267
 #: ../lib/layouts/amsmaths.inc:164
 msgid "Proposition*"
-msgstr "Propoziþie*"
+msgstr "Afirmaþie*"
 
 #: ../lib/layouts/foils.layout:348 ../lib/layouts/siamltex.layout:273
 #: ../lib/layouts/amsmaths.inc:282
 msgid "Definition*"
-msgstr "Definition*"
+msgstr "Definiþie*"
 
 #: ../lib/layouts/elsart.layout:131
-#, fuzzy
 msgid "Author_Address"
-msgstr "AuthorAddr"
+msgstr "Author_Address"
 
 #: ../lib/layouts/elsart.layout:145 ../lib/layouts/revtex4.layout:182
 msgid "Author_Email"
@@ -6001,21 +5870,19 @@ msgstr "FirstName"
 
 #: ../lib/layouts/db_stdtitle.inc:45
 msgid "Surname"
-msgstr "Prenume"
+msgstr "Surname"
 
 #: ../lib/layouts/db_stdtitle.inc:65
 msgid "RevisionHistory"
-msgstr ""
+msgstr "RevisionHistory"
 
 #: ../lib/layouts/db_stdtitle.inc:86
-#, fuzzy
 msgid "Revision"
-msgstr "Question"
+msgstr "Revision"
 
 #: ../lib/layouts/db_stdtitle.inc:102
-#, fuzzy
 msgid "RevisionRemark"
-msgstr "Remarcã"
+msgstr "RevisionRemark"
 
 #: ../lib/layouts/g-brief-en.layout:93
 msgid "Street"
@@ -6035,7 +5902,7 @@ msgstr "Stat"
 
 #: ../lib/layouts/g-brief-en.layout:173
 msgid "ReturnAddress"
-msgstr "Adresã de întoarcere"
+msgstr "ReturnAddress"
 
 #: ../lib/layouts/g-brief-en.layout:194
 msgid "MyRef"
@@ -6078,9 +5945,8 @@ msgid "BankAccount"
 msgstr "BankAccount"
 
 #: ../lib/layouts/g-brief-en.layout:424
-#, fuzzy
 msgid "PostalComment"
-msgstr "PostalCommend"
+msgstr "PostalComment"
 
 #: ../lib/layouts/g-brief-en.layout:446
 msgid "PostalCommend"
@@ -6116,19 +5982,19 @@ msgstr "Slide*"
 
 #: ../lib/layouts/seminar.layout:76
 msgid "SlideHeading"
-msgstr "AntetSlide"
+msgstr "SlideHeading"
 
 #: ../lib/layouts/seminar.layout:81
 msgid "SlideSubHeading"
-msgstr "SubantetSlide"
+msgstr "SlideSubHeading"
 
 #: ../lib/layouts/seminar.layout:86
 msgid "ListOfSlides"
-msgstr "Listã de slide-uri"
+msgstr "ListOfSlides"
 
 #: ../lib/layouts/seminar.layout:95
 msgid "SlideContents"
-msgstr "CuprinsSlide"
+msgstr "SlideContents"
 
 #: ../lib/layouts/seminar.layout:104
 msgid "ProgressContents"
@@ -6160,7 +6026,7 @@ msgstr "Land"
 
 #: ../lib/layouts/g-brief-de.layout:173
 msgid "RetourAdresse"
-msgstr "Adresã de retur"
+msgstr "RetourAdresse"
 
 #: ../lib/layouts/g-brief-de.layout:194
 msgid "MeinZeichen"
@@ -6212,11 +6078,11 @@ msgstr "Gruss"
 
 #: ../lib/layouts/svjour.inc:103
 msgid "Headnote"
-msgstr "Notã de antet"
+msgstr "Headnote"
 
 #: ../lib/layouts/svjour.inc:130 ../lib/layouts/scrclass.inc:192
 msgid "Dedication"
-msgstr "Dedication"
+msgstr "Dedicaþie"
 
 #: ../lib/layouts/svjour.inc:264
 msgid "Offprints"
@@ -6237,19 +6103,19 @@ msgstr "Acknowledgments"
 
 #: ../lib/layouts/apa.layout:55
 msgid "RightHeader"
-msgstr "Antet dreapta"
+msgstr "AntetDreapta"
 
 #: ../lib/layouts/apa.layout:95
 msgid "ShortTitle"
-msgstr "TitluScurt"
+msgstr "ShortTitle"
 
 #: ../lib/layouts/apa.layout:130
 msgid "TwoAuthors"
-msgstr ""
+msgstr "TwoAuthors"
 
 #: ../lib/layouts/apa.layout:136
 msgid "ThreeAuthors"
-msgstr ""
+msgstr "ThreeAuthors"
 
 #: ../lib/layouts/apa.layout:142
 msgid "FourAuthors"
@@ -6257,11 +6123,11 @@ msgstr "FourAuthors"
 
 #: ../lib/layouts/apa.layout:168
 msgid "TwoAffiliations"
-msgstr ""
+msgstr "TwoAffiliations"
 
 #: ../lib/layouts/apa.layout:174
 msgid "ThreeAffiliations"
-msgstr ""
+msgstr "ThreeAffiliations"
 
 #: ../lib/layouts/apa.layout:180
 msgid "FourAffiliations"
@@ -6273,7 +6139,7 @@ msgstr "CopNum"
 
 #: ../lib/layouts/apa.layout:217
 msgid "ThickLine"
-msgstr "LinieSubþire"
+msgstr "LinieGroasã"
 
 #: ../lib/layouts/apa.layout:225
 msgid "CenteredCaption"
@@ -6289,7 +6155,7 @@ msgstr "FitBitmap"
 
 #: ../lib/layouts/apa.layout:298
 msgid "Seriate"
-msgstr "Înseriazã"
+msgstr "Seriate"
 
 #: ../lib/layouts/siamltex.layout:96 ../lib/layouts/stdstarsections.inc:56
 #: ../lib/layouts/aguplus.inc:53
@@ -6303,7 +6169,7 @@ msgstr "AMS"
 #: ../lib/layouts/amsmaths-seq.inc:200 ../lib/layouts/amsmaths.inc:497
 #: ../lib/layouts/amsmaths-plain.inc:267
 msgid "Conclusion"
-msgstr "Conclusion"
+msgstr "Concluzie"
 
 #: ../lib/layouts/heb-article.layout:88
 msgid "Remarks"
@@ -6327,7 +6193,7 @@ msgstr "REVTEX_Title"
 
 #: ../lib/layouts/stdstarsections.inc:20
 msgid "Chapter*"
-msgstr "Chapter*"
+msgstr "Capitol*"
 
 #: ../lib/layouts/stdstarsections.inc:65
 msgid "Subparagraph*"
@@ -6347,12 +6213,11 @@ msgstr "Traducãtor"
 
 #: ../lib/layouts/amsdefs.inc:318
 msgid "Subjectclass"
-msgstr "ClasãSubiect"
+msgstr "Subjectclass"
 
 #: ../lib/layouts/amsmaths.inc:50
-#, fuzzy
 msgid "TheoremStyle"
-msgstr "Teoremã"
+msgstr "TheoremStyle"
 
 #: ../lib/layouts/amsmaths.inc:188
 msgid "Conjecture*"
@@ -6364,7 +6229,7 @@ msgstr "Fact*"
 
 #: ../lib/layouts/amsmaths.inc:306
 msgid "Example*"
-msgstr "Example*"
+msgstr "Exemplu*"
 
 #: ../lib/layouts/amsmaths.inc:377
 msgid "Remark*"
@@ -6384,38 +6249,35 @@ msgstr "Acknowledgement*"
 
 #: ../lib/layouts/amsmaths.inc:509
 msgid "Conclusion*"
-msgstr "Conclusion*"
+msgstr "Concluzie*"
 
 #: ../lib/layouts/paper.layout:143
 msgid "SubTitle"
-msgstr "Subtitlu"
+msgstr "SubTitle"
 
 #: ../lib/layouts/paper.layout:154
 msgid "Institution"
 msgstr "Instituþie"
 
 #: ../lib/layouts/aguplus.inc:107
-#, fuzzy
 msgid "Revised"
-msgstr "Indentare"
+msgstr "Revised"
 
 #: ../lib/layouts/aguplus.inc:121
 msgid "CCC"
 msgstr "CCC"
 
 #: ../lib/layouts/aguplus.inc:134
-#, fuzzy
 msgid "PaperId"
-msgstr "Hîrtie"
+msgstr "PaperId"
 
 #: ../lib/layouts/aguplus.inc:141
 msgid "AuthorAddr"
 msgstr "AuthorAddr"
 
 #: ../lib/layouts/aguplus.inc:148
-#, fuzzy
 msgid "SlugComment"
-msgstr "Comentariu"
+msgstr "SlugComment"
 
 #: ../lib/layouts/aguplus.inc:171
 msgid "  GuiName\t\tPlate"
@@ -6427,13 +6289,12 @@ msgid "  GuiName\t\tPlanotable"
 msgstr "PlaceTable"
 
 #: ../lib/layouts/aguplus.inc:192
-#, fuzzy
 msgid "Table_Caption"
-msgstr "Titlu"
+msgstr "Table_Caption"
 
 #: ../lib/layouts/scrclass.inc:108
 msgid "Addpart"
-msgstr ""
+msgstr "Addpart"
 
 #: ../lib/layouts/scrclass.inc:114
 msgid "Addchap"
@@ -6461,11 +6322,11 @@ msgstr "Publishers"
 
 #: ../lib/layouts/scrclass.inc:198
 msgid "Titlehead"
-msgstr "Titlu_Antet"
+msgstr "Titlehead"
 
 #: ../lib/layouts/scrclass.inc:210
 msgid "Uppertitleback"
-msgstr ""
+msgstr "Uppertitleback"
 
 #: ../lib/layouts/scrclass.inc:216
 msgid "Lowertitleback"
@@ -6476,19 +6337,16 @@ msgid "Extratitle"
 msgstr "Extratitle"
 
 #: ../lib/layouts/scrclass.inc:246
-#, fuzzy
 msgid "Captionabove"
-msgstr "Titlu"
+msgstr "Captionabove"
 
 #: ../lib/layouts/scrclass.inc:252
-#, fuzzy
 msgid "Captionbelow"
-msgstr "Titlu"
+msgstr "Captionbelow"
 
 #: ../lib/layouts/scrclass.inc:258
-#, fuzzy
 msgid "Dictum"
-msgstr "Datum"
+msgstr "Dictum"
 
 #: ../lib/languages:2
 msgid "Afrikaans"
@@ -6516,16 +6374,15 @@ msgstr "Belarusã"
 
 #: ../lib/languages:8
 msgid "Basque"
-msgstr "Bascã"
+msgstr "Basc"
 
 #: ../lib/languages:9
-#, fuzzy
 msgid "Portuguese"
 msgstr "Portughez"
 
 #: ../lib/languages:10
 msgid "Breton"
-msgstr "Bretonã"
+msgstr "Breton"
 
 #: ../lib/languages:11
 msgid "British"
@@ -6533,39 +6390,39 @@ msgstr "Britanic"
 
 #: ../lib/languages:12
 msgid "Bulgarian"
-msgstr "Bulgarã"
+msgstr "Bulgar"
 
 #: ../lib/languages:13
 msgid "Canadian"
-msgstr "Canadianã"
+msgstr "Canadian"
 
 #: ../lib/languages:14 ../lib/languages:25 ../lib/languages:26
 msgid "French"
-msgstr "Francezã"
+msgstr "Francez"
 
 #: ../lib/languages:15
 msgid "Catalan"
-msgstr "Catalanã"
+msgstr "Catalan"
 
 #: ../lib/languages:16
 msgid "Croatian"
-msgstr "Croatã"
+msgstr "Croat"
 
 #: ../lib/languages:17
 msgid "Czech"
-msgstr "Cehã"
+msgstr "Ceh"
 
 #: ../lib/languages:18
 msgid "Danish"
-msgstr "Danezã"
+msgstr "Danez"
 
 #: ../lib/languages:19
 msgid "Dutch"
-msgstr "Olandezã"
+msgstr "Olandez"
 
 #: ../lib/languages:20
 msgid "English"
-msgstr "Englezã"
+msgstr "Englez"
 
 #: ../lib/languages:21
 msgid "Esperanto"
@@ -6573,23 +6430,23 @@ msgstr "Esperanto"
 
 #: ../lib/languages:23
 msgid "Estonian"
-msgstr "Estonianã"
+msgstr "Estonian"
 
 #: ../lib/languages:24
 msgid "Finnish"
-msgstr "Finlandezã"
+msgstr "Finlandez"
 
 #: ../lib/languages:27
 msgid "Galician"
-msgstr "Galicã"
+msgstr "Galic"
 
 #: ../lib/languages:30 ../lib/languages:31
 msgid "German"
-msgstr "Germanã"
+msgstr "German"
 
 #: ../lib/languages:33
 msgid "Hebrew"
-msgstr "Israelianã"
+msgstr "Israelian"
 
 #: ../lib/languages:35
 msgid "Irish"
@@ -6601,7 +6458,7 @@ msgstr "Italian"
 
 #: ../lib/languages:37
 msgid "Kazakh"
-msgstr ""
+msgstr "Cazac"
 
 #: ../lib/languages:38
 msgid "Lsorbian"
@@ -6620,7 +6477,6 @@ msgid "Polish"
 msgstr "Polonez"
 
 #: ../lib/languages:43
-#, fuzzy
 msgid "Portugese"
 msgstr "Portughez"
 
@@ -6637,14 +6493,12 @@ msgid "Scottish"
 msgstr "Scoþian"
 
 #: ../lib/languages:47
-#, fuzzy
 msgid "Serbian"
-msgstr "Înseriazã"
+msgstr "Sîrb"
 
 #: ../lib/languages:48
-#, fuzzy
 msgid "Serbo-Croatian"
-msgstr "Croat"
+msgstr "Sîrbo-Croat"
 
 #: ../lib/languages:49
 msgid "Spanish"
@@ -6663,18 +6517,16 @@ msgid "Swedish"
 msgstr "Suedez"
 
 #: ../lib/languages:53
-#, fuzzy
 msgid "Thai"
-msgstr "Aceasta"
+msgstr "Tailandez"
 
 #: ../lib/languages:54
 msgid "Turkish"
 msgstr "Turc"
 
 #: ../lib/languages:55
-#, fuzzy
 msgid "Ukrainian"
-msgstr "Tranziþie"
+msgstr "Ucrainian"
 
 #: ../lib/languages:56
 msgid "Usorbian"
@@ -6702,7 +6554,7 @@ msgstr "Format|F"
 
 #: ../lib/ui/default.ui:11
 msgid "View|V"
-msgstr "Vizualizeazã|V"
+msgstr "Vizualizare|V"
 
 #: ../lib/ui/default.ui:12
 msgid "Navigate|N"
@@ -6717,9 +6569,8 @@ msgid "Help|H"
 msgstr "Ajutor|A"
 
 #: ../lib/ui/default.ui:22
-#, fuzzy
 msgid "New|N"
-msgstr "Nou...|N"
+msgstr "Nou|N"
 
 #: ../lib/ui/default.ui:23
 msgid "New from Template...|T"
@@ -6771,17 +6622,16 @@ msgid "Exit|x"
 msgstr "Ieºire|I"
 
 #: ../lib/ui/default.ui:43
-#, fuzzy
 msgid "Register...|R"
-msgstr "Înregistreazã|r"
+msgstr "Înregistreazã...|r"
 
 #: ../lib/ui/default.ui:44
 msgid "Check In Changes...|I"
-msgstr "Verificã modificãrile...|I"
+msgstr ""
 
 #: ../lib/ui/default.ui:45
 msgid "Check Out for Edit|O"
-msgstr "Verificã pentru editare|e"
+msgstr ""
 
 #: ../lib/ui/default.ui:46
 msgid "Revert to Last Version|L"
@@ -6832,19 +6682,16 @@ msgid "Tabular|T"
 msgstr "Tabular|T"
 
 #: ../lib/ui/default.ui:75
-#, fuzzy
 msgid "Math|M"
-msgstr "Matematic|#M"
+msgstr "Matematic|M"
 
 #: ../lib/ui/default.ui:78
-#, fuzzy
 msgid "Spellchecker...|S"
-msgstr "Verificator ortografic"
+msgstr "Verificator ortografic...|V"
 
 #: ../lib/ui/default.ui:79
-#, fuzzy
 msgid "Thesaurus..."
-msgstr "Tezaur"
+msgstr "Dicþionar..."
 
 #: ../lib/ui/default.ui:80
 msgid "Check TeX|h"
@@ -6855,9 +6702,8 @@ msgid "Remove All Error Boxes|E"
 msgstr "Eliminã toate mesajele de eroare|e"
 
 #: ../lib/ui/default.ui:82
-#, fuzzy
 msgid "Open/Close float|l"
-msgstr "Flotant închis"
+msgstr "Închide/deschide flotant|l"
 
 #: ../lib/ui/default.ui:83
 #, fuzzy
@@ -6865,9 +6711,8 @@ msgid "Change tracking|g"
 msgstr "Rupere de paginã"
 
 #: ../lib/ui/default.ui:85
-#, fuzzy
 msgid "Preferences...|P"
-msgstr "Preferinþe"
+msgstr "Preferinþe....|P"
 
 #: ../lib/ui/default.ui:86
 msgid "Reconfigure|R"
@@ -6903,15 +6748,15 @@ msgstr "Linie dreapta|d"
 
 #: ../lib/ui/default.ui:102
 msgid "Align Left|e"
-msgstr "Aliniazã stînga|e"
+msgstr "Aliniazã stînga|s"
 
 #: ../lib/ui/default.ui:103 ../lib/ui/default.ui:184
 msgid "Align Center|C"
-msgstr "Aliniazã centrat|C"
+msgstr "Aliniazã centrat|c"
 
 #: ../lib/ui/default.ui:104
 msgid "Align Right|i"
-msgstr "Aliniazã dreapta|i"
+msgstr "Aliniazã dreapta|d"
 
 #: ../lib/ui/default.ui:106
 msgid "V.Align Top|o"
@@ -6919,7 +6764,7 @@ msgstr "Aliniazã vertical sus|u"
 
 #: ../lib/ui/default.ui:107
 msgid "V.Align Center|n"
-msgstr "Aliniazã vertical central|c"
+msgstr "Aliniazã vertical central|e"
 
 #: ../lib/ui/default.ui:108
 msgid "V.Align Bottom|V"
@@ -6931,7 +6776,7 @@ msgstr "Adaugã o linie|A"
 
 #: ../lib/ui/default.ui:111
 msgid "Delete Row|w"
-msgstr "ªterge linia|a"
+msgstr "ªterge linia|i"
 
 #: ../lib/ui/default.ui:112 ../lib/ui/default.ui:143
 msgid "Copy Row"
@@ -6944,11 +6789,11 @@ msgstr "Linii"
 
 #: ../lib/ui/default.ui:115
 msgid "Add Column|u"
-msgstr "Adaugã o coloanã|u"
+msgstr "Adaugã o coloanã|o"
 
 #: ../lib/ui/default.ui:116
 msgid "Delete Column|D"
-msgstr "ªterge coloana|o"
+msgstr "ªterge coloana|c"
 
 #: ../lib/ui/default.ui:117 ../lib/ui/default.ui:148
 msgid "Copy Column"
@@ -6960,22 +6805,20 @@ msgid "Swap Columns"
 msgstr "Coloane"
 
 #: ../lib/ui/default.ui:130
-#, fuzzy
 msgid "Toggle Numbering|N"
-msgstr "Comutã sublinierea fontului"
+msgstr "Comutã numerotarea|n"
 
 #: ../lib/ui/default.ui:131
-#, fuzzy
 msgid "Toggle Numbering of Line|u"
-msgstr "Comutã sublinierea fontului"
+msgstr "Comutã numerotarea liniei|u"
 
 #: ../lib/ui/default.ui:133
 msgid "Change Limits Type|L"
-msgstr "Modificã tipul limitelor|L"
+msgstr "Modificã tipul limitei|l"
 
 #: ../lib/ui/default.ui:135
 msgid "Change Formula Type|F"
-msgstr "Modificã tipul formulei|F"
+msgstr "Modificã tipul formulei|f"
 
 #: ../lib/ui/default.ui:137
 msgid "Use Computer Algebra System|S"
@@ -6987,32 +6830,31 @@ msgstr "Aliniere|A"
 
 #: ../lib/ui/default.ui:141
 msgid "Add Row|R"
-msgstr "Adaugã o linie|R"
+msgstr "Adaugã o linie|l"
 
 #: ../lib/ui/default.ui:142
 msgid "Delete Row|D"
-msgstr "ªterge linia|l"
+msgstr "ªterge linia|i"
 
 #: ../lib/ui/default.ui:146
 msgid "Add Column|C"
-msgstr "Adaugã o coloanã|C"
+msgstr "Adaugã o coloanã|c"
 
 #: ../lib/ui/default.ui:147
 msgid "Delete Column|e"
-msgstr "ªterge coloana|l"
+msgstr "ªterge coloana|o"
 
 #: ../lib/ui/default.ui:153
 msgid "Default|t"
-msgstr "Implicit|i"
+msgstr "Implicit|I"
 
 #: ../lib/ui/default.ui:154
 msgid "Display|D"
 msgstr "Afiºeazã|A"
 
 #: ../lib/ui/default.ui:155
-#, fuzzy
 msgid "Inline|I"
-msgstr "Inserare|I"
+msgstr "În-linie|i"
 
 #: ../lib/ui/default.ui:159
 msgid "Octave"
@@ -7044,9 +6886,8 @@ msgid "Maple, evalf"
 msgstr ""
 
 #: ../lib/ui/default.ui:170 ../lib/ui/default.ui:236
-#, fuzzy
 msgid "Inline Formula|I"
-msgstr "Figurã în text|#t"
+msgstr "Formulã în-linie|i"
 
 #: ../lib/ui/default.ui:171
 msgid "Displayed Formula|D"
@@ -7054,7 +6895,7 @@ msgstr "Formulã afiºatã|F"
 
 #: ../lib/ui/default.ui:172
 msgid "Eqnarray Environment|q"
-msgstr "Mediu \"eqnarray\"|q"
+msgstr "Mediu \"Eqnarray\"|q"
 
 #: ../lib/ui/default.ui:173
 msgid "Align Environment|A"
@@ -7065,26 +6906,24 @@ msgid "AlignAt Environment"
 msgstr "Mediu \"AlignAt\""
 
 #: ../lib/ui/default.ui:175
-#, fuzzy
 msgid "Flalign Environment|f"
-msgstr "Alinierea"
+msgstr "Mediu \"Flalign\"|F"
 
 #: ../lib/ui/default.ui:178
 msgid "Gather Environment"
-msgstr "Mediu \"gather\""
+msgstr "Mediu \"Gather\""
 
 #: ../lib/ui/default.ui:179
-#, fuzzy
 msgid "Multline Environment"
-msgstr "Alinierea"
+msgstr "Mediu \"Multline\""
 
 #: ../lib/ui/default.ui:183
 msgid "Align Left|L"
-msgstr "Aliniazã stînga|L"
+msgstr "Aliniazã stînga|s"
 
 #: ../lib/ui/default.ui:185
 msgid "Align Right|R"
-msgstr "Aliniazã dreapta|R"
+msgstr "Aliniazã dreapta|d"
 
 #: ../lib/ui/default.ui:187
 #, fuzzy
@@ -7097,14 +6936,12 @@ msgid "V.Align Center|e"
 msgstr "Aliniazã vertical central|c"
 
 #: ../lib/ui/default.ui:189
-#, fuzzy
 msgid "V.Align Bottom|B"
 msgstr "Aliniazã vertical jos|o"
 
 #: ../lib/ui/default.ui:195
-#, fuzzy
 msgid "Math|h"
-msgstr "Matematic|#M"
+msgstr "Matematic|M"
 
 #: ../lib/ui/default.ui:197
 msgid "Special Character|S"
@@ -7131,17 +6968,14 @@ msgid "Marginal Note|M"
 msgstr "Notã marginalã|m"
 
 #: ../lib/ui/default.ui:203
-#, fuzzy
 msgid "Short Title"
-msgstr "TitluScurt"
+msgstr "Titlu scurt"
 
 #: ../lib/ui/default.ui:204
-#, fuzzy
 msgid "Bibliography Key"
-msgstr "Bibliografie"
+msgstr "Cheie bibliograficã"
 
 #: ../lib/ui/default.ui:205
-#, fuzzy
 msgid "Index Entry...|I"
 msgstr "Intrare index...|i"
 
@@ -7158,37 +6992,32 @@ msgid "Lists & TOC|O"
 msgstr "Liste ºi cuprins|L"
 
 #: ../lib/ui/default.ui:210
-#, fuzzy
 msgid "TeX|T"
-msgstr "LaTeX|#T"
+msgstr "TeX|T"
 
 #: ../lib/ui/default.ui:211
-#, fuzzy
 msgid "Minipage|p"
-msgstr "Minipaginã"
+msgstr "Minipaginã|p"
 
 #: ../lib/ui/default.ui:212
 msgid "Graphics...|G"
 msgstr "Graficã...|G"
 
 #: ../lib/ui/default.ui:213
-#, fuzzy
 msgid "Tabular Material...|b"
-msgstr "Tabular...|a"
+msgstr "Material tabular...|t"
 
 #: ../lib/ui/default.ui:214
 msgid "Floats|a"
 msgstr "Flotante|F"
 
 #: ../lib/ui/default.ui:216
-#, fuzzy
 msgid "Include File...|d"
-msgstr "Includere"
+msgstr "Include fiºier...|d"
 
 #: ../lib/ui/default.ui:217
-#, fuzzy
 msgid "Insert File|e"
-msgstr "Insereazã figurã"
+msgstr "Insereazã fiºier|e"
 
 #: ../lib/ui/default.ui:218
 msgid "External Material...|x"
@@ -7196,11 +7025,11 @@ msgstr "Material extern...|x"
 
 #: ../lib/ui/default.ui:222
 msgid "Superscript|S"
-msgstr "Superscript|S"
+msgstr "Exponent|E"
 
 #: ../lib/ui/default.ui:223
 msgid "Subscript|u"
-msgstr "Subscript|u"
+msgstr "Indice|I"
 
 #: ../lib/ui/default.ui:224
 msgid "HFill|H"
@@ -7237,7 +7066,7 @@ msgstr "Ghilimea simplã|G"
 
 #: ../lib/ui/default.ui:232
 msgid "Menu Separator|M"
-msgstr "Separator meniu|m"
+msgstr "Separator de meniu|m"
 
 #: ../lib/ui/default.ui:237
 msgid "Display Formula|D"
@@ -7245,27 +7074,27 @@ msgstr "Afiºeazã formula|f"
 
 #: ../lib/ui/default.ui:238
 msgid "Eqnarray Environment|E"
-msgstr "Mediu \"eqnarray\"|e"
+msgstr "Mediu \"Eqnarray\"|e"
 
 #: ../lib/ui/default.ui:239
 msgid "AMS align Environment|A"
-msgstr "Mediu \"align\" AMS|A"
+msgstr "Mediu \"Align\" AMS|A"
 
 #: ../lib/ui/default.ui:240
 msgid "AMS alignat Environment|t"
-msgstr "Mediu \"alignat\" AMS|t"
+msgstr "Mediu \"AlignAt\" AMS|t"
 
 #: ../lib/ui/default.ui:241
 msgid "AMS flalign Environment|f"
-msgstr "Mediu \"flalign\" AMS|f"
+msgstr "Mediu \"Flalign\" AMS|f"
 
 #: ../lib/ui/default.ui:244
 msgid "AMS gather Environment"
-msgstr "Mediu \"gather\" AMS"
+msgstr "Mediu \"Gather\" AMS"
 
 #: ../lib/ui/default.ui:245
 msgid "AMS multline Environment"
-msgstr "Mediu \"multline\" AMS"
+msgstr "Mediu \"Multline\" AMS"
 
 #: ../lib/ui/default.ui:247
 msgid "Array Environment|y"
@@ -7276,26 +7105,24 @@ msgid "Cases Environment|C"
 msgstr "Mediu \"Cases\"|C"
 
 #: ../lib/ui/default.ui:249
-#, fuzzy
 msgid "Split Environment|S"
-msgstr "Mediu \"Align\"|A"
+msgstr "Mediu \"Split\"|S"
 
 #: ../lib/ui/default.ui:251
 msgid "Font Change|f"
 msgstr "Modificare font|f"
 
 #: ../lib/ui/default.ui:252
-#, fuzzy
 msgid "Math Panel|l"
-msgstr "Panou matematic...|P"
+msgstr "Panou matematic|m"
 
 #: ../lib/ui/default.ui:256
 msgid "Math normal font"
-msgstr ""
+msgstr "Font matematic normal"
 
 #: ../lib/ui/default.ui:258
 msgid "Math calligraphic family"
-msgstr ""
+msgstr "Font matematic caligrafic"
 
 #: ../lib/ui/default.ui:259
 msgid "Math fraktur family"
@@ -7316,9 +7143,8 @@ msgid "Math bold series"
 msgstr "Mod matematic"
 
 #: ../lib/ui/default.ui:265
-#, fuzzy
 msgid "Text normal font"
-msgstr "Text dupã"
+msgstr "Font normal text"
 
 #: ../lib/ui/default.ui:267
 #, fuzzy
