@@ -49,6 +49,7 @@ string get_font_name(Gdk_Font const & font);
  *
  * This function was lifted from e-font.c from the gabber package.
  */
+extern "C"
 gchar * get_font_name(GdkFont const * font);
 
 #endif

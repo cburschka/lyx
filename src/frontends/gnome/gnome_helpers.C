@@ -26,11 +26,12 @@ string get_font_name(Gdk_Font const & font)
 }
 
 
+extern "C"
 gchar *
 get_font_name (const GdkFont * font)
 {
 	Atom font_atom, atom;
-	Bool status;
+	bool status = false;
 
 #ifdef E_FONT_VERBOSE
 	gint i;
@@ -44,14 +45,14 @@ get_font_name (const GdkFont * font)
 		gint num_fonts;
 		gchar **font_names;
 
-		num_fonts = XFontsOfFontSet (GDK_FONT_XFONT (font), &font_structs, &font_names);
+		num_fonts = XFontsOfFontSet (XFontSet(GDK_FONT_XFONT (font)), &font_structs, &font_names);
 #ifdef E_FONT_VERBOSE
 		g_print ("Fonts of fontset:\n");
 		for (i = 0; i < num_fonts; i++) g_print ("  %s\n", font_names[i]);
 #endif
 		status = XGetFontProperty (font_structs[0], font_atom, &atom);
 	} else {
-		status = XGetFontProperty (GDK_FONT_XFONT (font), font_atom, &atom);
+		status = XGetFontProperty ( (XFontStruct*)GDK_FONT_XFONT (font), font_atom, &atom);
 	}
 
 	if (status) {
