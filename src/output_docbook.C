@@ -234,11 +234,8 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 	string id = par->getDocbookId();
 	id = id.empty()? "" : " id = \"" + id + "\"";
 
-	if (bstyle->latexparam().find('#') != string::npos) {
-		counters.step(bstyle->counter);
-	}
-	
 	if (!bstyle->latexparam().empty()) {
+		counters.step(bstyle->counter);
 		id = bstyle->latexparam();
 		if (id.find('#') != string::npos) {
 			string el = expandLabel(buf.params().getLyXTextClass(),

@@ -1,3 +1,7 @@
+2004-10-25  José Matos  <jamatos@lyx.org>
+
+	* output_docbook.C (makeCommand): merge two if's that tested the same condition.
+
 2004-10-25  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* sgml.C (escapeString): fix warning in a better way
