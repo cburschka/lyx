@@ -87,8 +87,8 @@ else
   AC_SUBST(USE_INCLUDED_SIGC)
 
 AC_ARG_ENABLE(threads,
-[  --disable-threads       disables support threading.],
-enable_threads=$enableval,enable_threads="yes")
+[  --enable-threads       enable support threading.],
+enable_threads=$enableval,enable_threads="no")
 AC_ARG_ENABLE(checks,
 [  --disable-checks        disables unnecessary tests needed for bug reports.],
 enable_checks=$enableval,enable_checks="yes"

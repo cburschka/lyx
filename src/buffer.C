@@ -2891,14 +2891,16 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			    << sgml_includedfiles << " \n]>\n\n";
 	}
 
-	if (params.options.empty())
-		sgmlOpenTag(ofs, 0, top_element);
-	else {
-		string top = top_element;
+	string top = top_element;	
+	top += " lang=\"";
+	top += params.language->code();
+	top += "\"";
+
+	if (!params.options.empty()) {
 		top += " ";
 		top += params.options;
-		sgmlOpenTag(ofs, 0, top);
 	}
+	sgmlOpenTag(ofs, 0, top);
 
 	ofs << "<!-- DocBook file was created by " << LYX_DOCVERSION 
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
