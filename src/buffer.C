@@ -116,6 +116,20 @@ namespace {
 
 const int LYX_FORMAT = 224;
 
+bool openFileWrite(ofstream & ofs, string const & fname)
+{
+	ofs.open(fname.c_str());
+	if (!ofs) {
+		string const file = MakeDisplayPath(fname, 50);
+		string text = bformat(_("Could not open the specified "
+					"document\n%1$s."), file);
+		Alert::error(_("Could not open file"), text);
+		return false;
+	}
+	return true;
+}
+
+
 } // namespace anon
 
 Buffer::Buffer(string const & file, bool ronly)
@@ -622,9 +636,8 @@ bool Buffer::writeFile(string const & fname) const
 	}
 
 	ofstream ofs(fname.c_str());
-	if (!ofs) {
+	if (!ofs)
 		return false;
-	}
 
 #ifdef HAVE_LOCALE
 	// Use the standard "C" locale for file output.
@@ -875,13 +888,9 @@ string const Buffer::asciiParagraph(Paragraph const & par,
 
 void Buffer::writeFileAscii(string const & fname, int linelen)
 {
-	ofstream ofs(fname.c_str());
-	if (!ofs) {
-		string const file = MakeDisplayPath(fname, 50);
-		string text = bformat(_("Could not save the document\n%1$s."), file);
-		Alert::error(_("Could not save document"), text);
+	ofstream ofs;
+	if (!::openFileWrite(ofs, fname))
 		return;
-	}
 	writeFileAscii(ofs, linelen);
 }
 
@@ -898,7 +907,6 @@ void Buffer::writeFileAscii(ostream & os, int linelen)
 }
 
 
-
 void Buffer::makeLaTeXFile(string const & fname,
 			   string const & original_path,
 			   LatexRunParams const & runparams,
@@ -906,14 +914,9 @@ void Buffer::makeLaTeXFile(string const & fname,
 {
 	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
 
-	ofstream ofs(fname.c_str());
-	if (!ofs) {
-		string const file = MakeDisplayPath(fname, 50);
-		string text = bformat(_("Could not open the specified document\n%1$s."),
-			file);
-		Alert::error(_("Could not open file"), text);
+	ofstream ofs;
+	if (!::openFileWrite(ofs, fname))
 		return;
-	}
 
 	makeLaTeXFile(ofs, original_path,
 		      runparams, only_body, only_preamble);
@@ -1068,15 +1071,9 @@ bool Buffer::isSGML() const
 
 void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 {
-	ofstream ofs(fname.c_str());
-
-	if (!ofs) {
-		string const file = MakeDisplayPath(fname, 50);
-		string text = bformat(_("Could not save the specified document\n%1$s.\n"),
-			file);
-		Alert::error(_("Could not save document"), text);
+	ofstream ofs;
+	if (!::openFileWrite(ofs, fname))
 		return;
-	}
 
 	niceFile = nice; // this will be used by included files.
 
@@ -1504,14 +1501,9 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 
 void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 {
-	ofstream ofs(fname.c_str());
-	if (!ofs) {
-		string const file = MakeDisplayPath(fname, 50);
-		string text = bformat(_("Could not save the specified document\n%1$s.\n"),
-			file);
-		Alert::error(_("Could not save document"), text);
+	ofstream ofs;
+	if (!::openFileWrite(ofs, fname))
 		return;
-	}
 
 	niceFile = nice; // this will be used by Insetincludes.
 
