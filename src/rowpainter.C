@@ -855,17 +855,19 @@ int paintPars(BufferView const & bv, Painter & pain,
 	ParagraphList & pars = text.paragraphs();
 
 	int y = pars[pit].y + text.yo_ - bv.top_y();
-	int const y2 = pain.paperHeight();
 
 	for (; pit != end; ++pit) {
 		RowList::iterator row = pars[pit].rows.begin();
 		RowList::iterator rend = pars[pit].rows.end();
 
+		// We draw full paragraphs to get the (xo, yo) cache of all
+		// contained insets right. This is needed for properly working
+		// editXY. And maybe not even sufficient.
+		// FIXME: Alfredo, please have a look at the coordinate business
+		// again.
 		for ( ; row != rend; ++row) {
 			RowPainter(bv, pain, text, pit, row, y);
 			y += row->height();
-			if (y >= y2)
-				break;
 		}
 
 	}
@@ -878,7 +880,6 @@ int paintPars(BufferView const & bv, Painter & pain,
 
 void refreshPar(BufferView const & bv, LyXText const & text, par_type pit)
 {
-
 	static NullPainter nop;
 	paintPars(bv, nop, text, pit, pit + 1);
 }
