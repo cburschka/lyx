@@ -1,3 +1,8 @@
+2005-02-01  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.C (init, queryUserLyXDir): use fs::exists() before
+	calling fs::is_directory().
+
 2005-01-31  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (priv_exec): specify explicitly the relative location

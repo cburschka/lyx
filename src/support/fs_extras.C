@@ -22,6 +22,11 @@
 #   endif
 # endif
 
+#if defined (BOOST_WINDOWS)
+# define WIN32_LEAN_AND_MEAN
+# include <windows.h>
+#endif
+
 namespace fs = boost::filesystem;
 
 namespace boost {

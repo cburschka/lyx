@@ -484,7 +484,8 @@ void LyX::init(bool gui)
 	if (reconfigure)
 		reconfigureUserLyXDir();
 
-	if (fs::is_directory(lyxrc.document_path))
+	if (fs::exists(lyxrc.document_path) &&
+	    fs::is_directory(lyxrc.document_path))
 		package().document_dir() = lyxrc.document_path;
 
 	package().temp_dir() = createLyXTmpDir(lyxrc.tempdir_path);
@@ -612,7 +613,8 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	bool reconfigure = false;
 
 	// Does user directory exist?
-	if (fs::is_directory(package().user_support())) {
+	if (fs::exists(package().user_support()) &&
+	    fs::is_directory(package().user_support())) {
 		first_start = false;
 		string const configure_script =
 			AddName(package().system_support(), "configure");

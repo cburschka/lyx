@@ -184,7 +184,7 @@ void FileDialog::Private::Reread()
 		if (!mask_.empty() && mask_[0] != '.' && fname[0] == '.')
 			continue;
 
-		bool const isDir = fs::is_directory(*beg);
+		bool const isDir = fs::exists(*beg) && fs::is_directory(*beg);
 
 		// filters files according to pattern and type
 			typedef vector<string>::const_iterator viterator;

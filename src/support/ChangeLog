@@ -1,3 +1,7 @@
+2005-02-01  Angus Leeming  <leeming@lyx.org>
+
+	* fs_extras.C: #include <windows.h>
+
 2005-01-31  Angus Leeming  <leeming@lyx.org>
 
 	* package.[Ch] (init_package, c-tor): define and use an enum to

@@ -106,7 +106,6 @@ string const MakeLatexName(string const & file)
 }
 
 
-// Substitutes spaces with underscores in filename (and path)
 string const QuoteName(string const & name)
 {
 	return (os::shell() == os::UNIX) ?
@@ -307,8 +306,8 @@ string const LibScriptSearch(string const & command_in)
 	string::size_type const pos1 = command.find(token_scriptpath);
 	if (pos1 == string::npos)
 		return command;
-	// Find the end of the "$$s/some_script" word within command.
-	// Assumes that the script name does not contain spaces.
+	// Find the end of the "$$s/some_subdir/some_script" word within
+	// command. Assumes that the script name does not contain spaces.
 	string::size_type const start_script = pos1 + 4;
 	string::size_type const pos2 = command.find(' ', start_script);
 	string::size_type const size_script = pos2 == string::npos?
