@@ -1,3 +1,9 @@
+2003-05-23  Angus Leeming  <leeming@lyx.org>
+
+	* latexrunparams.h: rename fragile as moving_arg.
+	* paragraph.C (simpleTeXOnePar): ditto.
+	* paragraph_pimpl.C (simpleTeXSpecialChars): ditto.
+
 2003-05-23  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* undo_funcs.C (textHandleUndo): comment out next/previous stuff

@@ -64,7 +64,7 @@ int InsetFoot::latex(Buffer const * buf, ostream & os,
 	LatexRunParams runparams = runparams_in;
 	if (buf && parOwner()) {
 		LyXLayout_ptr const & layout = parOwner()->layout();
-		runparams.fragile |= layout->intitle;
+		runparams.moving_arg |= layout->intitle;
 	}
 
 	os << "%\n\\footnote{";

@@ -83,7 +83,7 @@ void InsetFormulaMacro::write(Buffer const *, ostream & os) const
 int InsetFormulaMacro::latex(Buffer const *, ostream & os,
 			     LatexRunParams const & runparams) const
 {
-	WriteStream wi(os, runparams.fragile, true);
+	WriteStream wi(os, runparams.moving_arg, true);
 	par()->write(wi);
 	return 2;
 }

@@ -536,7 +536,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				if (font.family() == LyXFont::TYPEWRITER_FAMILY)
 					os << '~';
 
-				if (runparams.fragile)
+				if (runparams.moving_arg)
 					os << "\\protect ";
 
 				os << "\\\\\n";

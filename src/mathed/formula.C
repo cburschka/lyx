@@ -131,7 +131,7 @@ void InsetFormula::write(Buffer const *, ostream & os) const
 int InsetFormula::latex(Buffer const *, ostream & os,
 			LatexRunParams const & runparams) const
 {
-	WriteStream wi(os, runparams.fragile, true);
+	WriteStream wi(os, runparams.moving_arg, true);
 	par_->write(wi);
 	return wi.line();
 }

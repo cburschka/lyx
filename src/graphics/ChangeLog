@@ -1,3 +1,7 @@
+2003-05-23  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewLoader.C (dumpPreamble): rename fragile as moving_arg.
+
 2003-05-22  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C (dumpPreamble): no longer pass a free_spacing arg to

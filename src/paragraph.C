@@ -959,8 +959,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		basefont = getLayoutFont(bparams, outerfont);
 	}
 
-	bool fragile = runparams.fragile;
-	fragile |= style->needprotect;
+	bool moving_arg = runparams.moving_arg;
+	moving_arg |= style->needprotect;
 
 	// Which font is currently active?
 	LyXFont running_font(basefont);
@@ -978,7 +978,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 			++column;
 		}
 		if (!asdefault)
-			column += startTeXParParams(bparams, os, fragile);
+			column += startTeXParParams(bparams, os, moving_arg);
 
 	}
 
@@ -1003,7 +1003,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 
 			if (!asdefault)
 				column += startTeXParParams(bparams, os,
-							    fragile);
+							    moving_arg);
 		}
 
 		value_type c = getChar(i);
@@ -1062,7 +1062,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		running_change = change;
 
 		LatexRunParams rp = runparams;
-		rp.fragile = fragile;
+		rp.moving_arg = moving_arg;
 		rp.free_spacing = style->free_spacing;
 		pimpl_->simpleTeXSpecialChars(buf, bparams,
 					      os, texrow, runparams,
@@ -1104,7 +1104,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	}
 
 	if (!asdefault) {
-		column += endTeXParParams(bparams, os, fragile);
+		column += endTeXParParams(bparams, os, moving_arg);
 	}
 
 	lyxerr[Debug::LATEX] << "SimpleTeXOnePar...done " << this << endl;

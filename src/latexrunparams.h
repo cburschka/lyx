@@ -19,7 +19,7 @@ struct LatexRunParams {
         };
 
         LatexRunParams() : flavor(LATEX), nice(false),
-			   fragile(false), free_spacing(false),
+			   moving_arg(false), free_spacing(false),
 			   use_babel(false) {}
 
 	/** The latex that we export depends occasionally on what is to
@@ -34,10 +34,11 @@ struct LatexRunParams {
 	*/
 	bool nice;
 
-	/** fragile == true means that the inset should take care about
+	/** moving_arg == true means that the environment in which the inset
+	    is typeset is a moving argument. The inset should take care about
 	    fragile commands by preceding the latex with \protect.
 	*/
-	bool fragile;
+	bool moving_arg;
 
 	/** free_spacing == true means that the inset is in a free-spacing
 	    paragraph.

@@ -76,7 +76,7 @@ int InsetUrl::latex(Buffer const *, ostream & os,
 {
 	if (!getOptions().empty())
 		os << getOptions() + ' ';
-	if (runparams.fragile)
+	if (runparams.moving_arg)
 		os << "\\protect";
 	os << "\\url{" << getContents() << '}';
 	return 0;

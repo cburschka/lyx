@@ -567,16 +567,16 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
 	runparams.nice = true;
-	runparams.fragile = true;
+	runparams.moving_arg = true;
 	runparams.free_spacing = true;
 	tmp.makeLaTeXFile(os, buffer_.filePath(), runparams, false, true);
 
 	// FIXME! This is a HACK! The proper fix is to control the 'true'
 	// passed to WriteStream below:
 	// int InsetFormula::latex(Buffer const *, ostream & os,
-	//                         bool fragile, bool) const
+	//                         LatexRunParams const & runparams) const
 	// {
-	//	WriteStream wi(os, fragile, true);
+	//	WriteStream wi(os, runparams.moving_arg, true);
 	//	par_->write(wi);
 	//	return wi.line();
 	// }
