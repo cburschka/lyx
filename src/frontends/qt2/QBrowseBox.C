@@ -30,10 +30,7 @@ QBrowseBox::QBrowseBox(int rows, int cols, QWidget* parent, const char* name, WF
 {
 	setNumRows(rows);
 	setNumCols(cols);
-	setCellWidth(width()/cols);
-	setCellHeight(height()/rows);
 
-	texts_   = new QString[rows * cols];
 	pixmaps_ = new QPixmap[rows * cols];
 
 	activecell_.setX(-1);
@@ -44,6 +41,9 @@ QBrowseBox::QBrowseBox(int rows, int cols, QWidget* parent, const char* name, WF
 	else
 		setFrameStyle(QFrame::Panel | QFrame::Raised);
 
+	setVScrollBarMode(QScrollView::AlwaysOff);
+	setHScrollBarMode(QScrollView::AlwaysOff);
+
 	viewport()->setFocusPolicy(QWidget::StrongFocus);
 	// setMouseTracking must be called after setFocusPolicy
 	viewport()->setMouseTracking(true);
@@ -52,10 +52,8 @@ QBrowseBox::QBrowseBox(int rows, int cols, QWidget* parent, const char* name, WF
 }
 
 
-
 QBrowseBox::~QBrowseBox()
 {
-	delete [] texts_;
 	delete [] pixmaps_;
 }
 
@@ -68,62 +66,32 @@ int QBrowseBox::coordsToIndex(int row, int col)
 }
 
 
-void QBrowseBox::insertItem(QString const & text, int row, int col)
-{
-	texts_[coordsToIndex(row, col)] = text;
-}
-
-
-void QBrowseBox::insertItem(char const * text, int row, int col)
-{
-	insertItem(QString(text), row, col);
-}
-
-
 void QBrowseBox::insertItem(QPixmap pixmap, int row, int col)
 {
 	pixmaps_[coordsToIndex(row, col)] = pixmap;
 }
 
 
-void QBrowseBox::insertItem( QPixmap pixmap)
+void QBrowseBox::insertItem(QPixmap pixmap)
 {
 	int w = pixmap.width() / numCols();
 	int h = pixmap.height() / numRows();
 
-	for (int row = 0; row < numRows(); ++row)
+	for (int row = 0; row < numRows(); ++row) {
 		for (int col = 0; col < numCols(); ++col) {
 			QPixmap small(w,h);
 			bitBlt(&small,0,0,&pixmap,col*w,row*h,w,h,Qt::CopyROP,false);
 			insertItem(small, row, col);
 		}
+	}
 
-	resize(pixmap.width() + (numCols() + 1) * frameWidth(),
-	       pixmap.height() + (numRows() + 1) * frameWidth());
+	setCellWidth(pixmap.width() / numCols());
+	setCellHeight(pixmap.height() / numRows());
+	setMinimumWidth(pixmap.width() + (numCols() + 1) * 1);
+	setMinimumHeight(pixmap.height() + (numRows() + 1) * 1);
+	resize(minimumSize());
 }
 
-
-void QBrowseBox::removeItem(int row, int col)
-{
-	texts_[coordsToIndex(row, col)] = "";
-	pixmaps_[coordsToIndex(row, col)].resize(0, 0);
-}
-
-
-void QBrowseBox::clear()
-{
-	for (int row = 0; row < numRows(); ++row)
-		for (int col = 0; col < numCols(); ++col)
-			removeItem(row, col);
-}
-
-
-QString QBrowseBox::text(int row, int col)
-{
-	if (col < 0 || col >= numCols() || row < 0 || row >= numRows())
-		return "";
-	return texts_[coordsToIndex(row, col)];
-}
 
 QPixmap QBrowseBox::pixmap(int row, int col)
 {
@@ -132,10 +100,12 @@ QPixmap QBrowseBox::pixmap(int row, int col)
 	return pixmaps_[coordsToIndex(row, col)];
 }
 
+
 int QBrowseBox::exec(const QPoint& pos)
 {
 	return exec(pos.x(),pos.y());
 }
+
 
 int QBrowseBox::exec(const QWidget* trigger)
 {
@@ -160,6 +130,7 @@ int QBrowseBox::exec(const QWidget* trigger)
 	}
 }
 
+
 int QBrowseBox::exec(int x,int y)
 {
 	firstrelease_ = true;
@@ -174,6 +145,7 @@ int QBrowseBox::exec(int x,int y)
 	else
 		return -1;
 }
+
 
 void QBrowseBox::keyPressEvent(QKeyEvent * e)
 {
@@ -209,6 +181,7 @@ void QBrowseBox::keyPressEvent(QKeyEvent * e)
 	}
 }
 
+
 void QBrowseBox::contentsMouseReleaseEvent(QMouseEvent *)
 {
 
@@ -222,48 +195,31 @@ void QBrowseBox::contentsMouseReleaseEvent(QMouseEvent *)
 	}
 }
 
+
 void QBrowseBox::closeEvent(QCloseEvent * e)
 {
 	e->accept();
 	qApp->exit_loop();
 }
 
+
 void QBrowseBox::paintCell(QPainter * painter, int row, int col)
 {
-	painter->setClipRect(cellGeometry(row,col));//, QPainter::CoordPainter);
-	bool ispixmap = false;
+	painter->setClipRect(cellGeometry(row, col));
 
-	if (!pixmaps_[coordsToIndex(row,col)].isNull()) {
-		painter->drawPixmap(0,0,pixmaps_[coordsToIndex(row, col)]);
-		ispixmap = true;
-	}
+	int const index = coordsToIndex(row, col);
+
+	painter->drawPixmap(0, 0, pixmaps_[index]);
 
 	if (activecell_.x() == row && activecell_.y() == col) {
-		if (ispixmap)
-			qDrawShadeRect(painter, 0, 0, cellWidth(),
-				       cellHeight(), colorGroup(), false, 1);
-		else
-			qDrawShadePanel(painter, 0, 0, cellWidth(),
-					cellHeight(), colorGroup(), false, 1);
+		qDrawShadeRect(painter, 0, 0, cellWidth(),
+			       cellHeight(), colorGroup(), false, 1);
 	} else {
 		qDrawPlainRect(painter, 0, 0, cellWidth(),
 			       cellHeight(), colorGroup().background(), 1);
 	}
 
-	if (!texts_[coordsToIndex(row, col)].isEmpty()) {
-		painter->drawText(0, 0, cellWidth(),
-				  cellHeight(), AlignCenter,
-				  texts_[coordsToIndex(row, col)]);
-	}
 	painter->setClipping(false);
-}
-
-
-void QBrowseBox::resizeEvent(QResizeEvent * e)
-{
-	QGridView::resizeEvent(e);
-	setCellWidth(contentsRect().width() / numCols());
-	setCellHeight(contentsRect().height() / numRows());
 }
 
 

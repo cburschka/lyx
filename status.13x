@@ -36,8 +36,8 @@ What's new
 
 - add support for the hspell spell-checker for hebrew [Qt only]
 
-- update dutch, german and russian interface localisation. Fix
-  Help>Table of Contents.
+- update dutch, german, polish [bug #1002] and russian interface
+  localisation. Fix Help>Table of Contents.
 
 ** Bug fixes
 
@@ -52,6 +52,8 @@ What's new
 - fix float placement text not being updated in Document dialog [Qt only]
 
 - fix duplicate keyboard accelerator in the paragraph dialog [Qt only]
+
+- fix display of bullet pixmaps in document dialog [bug #908, Qt 3.1.1 only]
 
 - fix loading of included files that are under revision control
 
@@ -68,6 +70,8 @@ What's new
 - add support for macro \bmod in mathed
 
 - add macro \Pr in the list of selectable functions of the math panel
+
+- fix document class for mwbk textclass
 
 - fix building of xforms dialogs' source on SMP machines [Bug #944,
   xforms only]

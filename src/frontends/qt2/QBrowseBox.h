@@ -29,14 +29,8 @@ public:
 	QBrowseBox(int rows, int cols, QWidget* parent=0, char const * name=0, WFlags f=0);
 	~QBrowseBox();
 
-	void insertItem(QString const & text, int row, int col);
-	void insertItem(char const * text, int row, int col);
-	void insertItem(QPixmap pixmap, int row, int col);
 	void insertItem(QPixmap pixmap);
-	void removeItem(int row, int col);
-	void clear();
 
-	QString text(int row, int col);
 	QPixmap pixmap(int row, int col);
 
 	int exec(QPoint const & pos);
@@ -48,7 +42,6 @@ signals:
 
 protected:
 	virtual void keyPressEvent(QKeyEvent * e);
-	virtual void resizeEvent(QResizeEvent *e);
 	virtual void contentsMouseReleaseEvent(QMouseEvent *);
 	virtual void closeEvent(QCloseEvent * e);
 	virtual void contentsMouseMoveEvent(QMouseEvent * e);
@@ -63,9 +56,10 @@ private:
 	void moveUp();
 	void moveDown();
 
+	void insertItem(QPixmap pixmap, int row, int col);
+
 	int coordsToIndex(int row, int col);
 
-	QString * texts_;
 	QPixmap* pixmaps_;
 	QPoint activecell_;
 	bool firstrelease_;
