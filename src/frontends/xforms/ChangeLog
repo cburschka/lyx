@@ -4,6 +4,10 @@
 	Author-Year/Numerical citation choice only if the natbib checkbox is
 	active.
 
+	* FormFloat.[Ch]: added new method input() to control the behaviour of
+	the buttons better.
+	* forms/form_float.fd: renamed Here as button_here_definitely.
+
 	* FormGraphics.C:
 	* forms/form_graphics.fd: add callbacks to a few widgets that didn't
 	have them, so enabling the Ok, Apply buttons appropriately.

@@ -32,9 +32,6 @@ FormFloat::FormFloat(ControlFloat & c)
 // FIX: Needs to be implemented. (Lgb)
 // A way to set to float default is missing.
 // A way to set "force[!]" is missing.
-// Also there are two groups of buttons [Here] and [top,bottom,page,here],
-// is is not really possible to choose from both groups. So this should
-// be disallowed by the dialog too.
 
 void FormFloat::build()
 {
@@ -50,14 +47,14 @@ void FormFloat::build()
 	bc().addReadOnly(dialog_->radio_bottom);
 	bc().addReadOnly(dialog_->radio_page);
 	bc().addReadOnly(dialog_->radio_here);
-	bc().addReadOnly(dialog_->Here);
+	bc().addReadOnly(dialog_->button_here_definitely);
 }
 
 
 void FormFloat::apply()
 {
 	string placement;
-	if (fl_get_button(dialog_->Here)) {
+	if (fl_get_button(dialog_->button_here_definitely)) {
 		placement += "H";
 	} else {
 		if (fl_get_button(dialog_->radio_top)) {
@@ -83,12 +80,13 @@ void FormFloat::update()
 	bool bottom = false;
 	bool page = false;
 	bool here = false;
-	bool Here = false;
+	bool here_definitely = false;
 
 	string placement(controller().params().placement);
+	std::cerr << "FormFloat::update() " << placement << std::endl;
 	
 	if (contains(placement, "H")) {
-		Here = true;
+		here_definitely = true;
 	} else {
 		if (contains(placement, "t")) {
 			top = true;
@@ -107,7 +105,22 @@ void FormFloat::update()
 	fl_set_button(dialog_->radio_bottom, bottom);
 	fl_set_button(dialog_->radio_page, page);
 	fl_set_button(dialog_->radio_here, here);
-	fl_set_button(dialog_->Here, Here);
-
+	fl_set_button(dialog_->button_here_definitely, here_definitely);
 }
 
+
+ButtonPolicy::SMInput FormFloat::input(FL_OBJECT * ob, long)
+{
+	if (ob == dialog_->button_here_definitely) {
+		if (fl_get_button(dialog_->button_here_definitely)) {
+			fl_set_button(dialog_->radio_top,    false);
+			fl_set_button(dialog_->radio_bottom, false);
+			fl_set_button(dialog_->radio_page,   false);
+			fl_set_button(dialog_->radio_here,   false);
+		}
+	} else {
+		if (fl_get_button(dialog_->button_here_definitely)) {
+			fl_set_button(dialog_->button_here_definitely, false);
+		}
+	}
+}

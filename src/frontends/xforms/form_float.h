@@ -20,12 +20,12 @@ struct FD_form_float {
 	FL_OBJECT *radio_top;
 	FL_OBJECT *radio_bottom;
 	FL_OBJECT *radio_page;
+	FL_OBJECT *radio_here;
+	FL_OBJECT *button_here_definitely;
 	FL_OBJECT *button_cancel;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_restore;
-	FL_OBJECT *radio_here;
-	FL_OBJECT *Here;
 };
 
 #endif /* FD_form_float_h_ */

@@ -51,6 +51,20 @@ FD_form_float * FormFloat::build_float()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
+    char const * const dummy = N_("Here, if possible|#i");
+    fdui->radio_here = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 190, 60, 152, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  {
+    char const * const dummy = N_("Here, definitely|#H");
+    fdui->button_here_definitely = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 110, 152, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  {
     char const * const dummy = N_("Cancel|^[");
     fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 280, 160, 70, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
@@ -74,20 +88,6 @@ FD_form_float * FormFloat::build_float()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseRestoreCB, 0);
-  {
-    char const * const dummy = N_("Here, if possible|#i");
-    fdui->radio_here = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 190, 60, 152, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  {
-    char const * const dummy = N_("Here, definitely|#H");
-    fdui->Here = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 110, 152, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

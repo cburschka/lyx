@@ -38,6 +38,8 @@ private:
 	virtual void build();
 	/// Update dialog before/whilst showing it.
 	virtual void update();
+	/// Filter the inputs on callback from xforms
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
 	/// Fdesign generated method
 	FD_form_float * build_float();
