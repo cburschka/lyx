@@ -264,8 +264,7 @@ bool intSymbolTest(MathInset * p)
 
 bool differentialTest(MathInset * p)
 {
-	string s = extractString(p);
-	return s.size() && s[0] == 'd';
+	return extractString(p) == "d";
 }
 
 
@@ -305,16 +304,12 @@ void extractIntegrals(MathArray & ar)
 			p->core(MathArray(st, jt));
 		}
 
-		// is the differential just 'd' oder 'dsomething'?
-		// and replace the original stuff by the new inset
-		string s = extractString(jt->nucleus());
+		// use the atom behind the 'd' as differential
 		MathArray diff;
-		if (s.size() == 1 && jt + 1 != ar.end()) {
-			// use the next atom as differential
+		if (jt + 1 != ar.end()) {
 			diff.push_back(*(jt + 1));
 			ar.erase(it + 1, jt + 2);
 		} else {
-			diff.push_back(MathAtom(new MathStringInset(s.substr(1))));
 			ar.erase(it + 1, jt + 1);
 		}
 		p->differential(diff);
@@ -326,11 +321,11 @@ void extractIntegrals(MathArray & ar)
 
 void extractStructure(MathArray & ar)
 {
-	extractStrings(ar);
 	extractMatrices(ar);
 	extractDelims(ar);
 	extractFunctions(ar);
 	extractIntegrals(ar);
+	extractStrings(ar);
 }
 
 

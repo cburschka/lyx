@@ -72,7 +72,12 @@ void MathExIntInset::draw(Painter &, int, int) const
 
 void MathExIntInset::maplize(MapleStream & os) const
 {
-	os << int_.nucleus() << '(' << core_ << ',' << diff_;
+	os << int_.nucleus() << '(';
+	if (core_.size())
+		os << core_;
+	else 
+		os << '1';
+	os << ',' << diff_;
 	if (hasScripts()) {
 		MathScriptInset * p = scripts_->asScriptInset();
 		os << '=' << p->down().data_ << ".." << p->up().data_;
