@@ -1,5 +1,8 @@
+2003-04-29  Alfredo Braunstein  <abraunst@libero.it>
 
-2003-04-29 André Pönitz <poenitz@gmx.net>
+	* text3.C (gotoInset): YABG (yet another bad getChar)
+
+2003-04-29  André Pönitz  <poenitz@gmx.net>
 
 	* paragraph.h: make operator= private unimplemented as long as
 	  it is unusable
@@ -7,17 +10,20 @@
 	* ParagraphList.C: whitespace
 
 	* paragraph.[Ch]:
-	  paragraph_pimpl.[Ch]:
-	  paragraph_funcs.C:
-		CutAndPaste.C:
-	  undo_funcs.C: whitespace + Paragraph *  -> Paragraph (const) &
+	* paragraph_pimpl.[Ch]:
+	* paragraph_funcs.C:
+	* CutAndPaste.C:
+	* undo_funcs.C: whitespace + Paragraph *  -> Paragraph (const) &
 
 	* text2.C:
 	  undo_funcs.[Ch]: Paragraph * -> ParagraphList::iterator
 
 2003-04-29  Alfredo Braunstein  <abraunst@libero.it>
 
-	* CutAndPaste.C (cutSelection): big rework, some bugs fixed
+	* CutAndPaste.[Ch] (cutSelection): big rework, some bugs fixed
+	* paragraph.[Ch] (erase):
+	* paragraph_pimpl.[Ch] (erase): change return type and value
+	* text2.C (cutSelection): some rework
  
 2003-04-28  John Levon  <levon@movementarian.org>
 
@@ -30,7 +36,7 @@
 
 	* buffer.C (readFile): ws changes only.
 
-2003-04-28 André Pönitz <poenitz@gmx.net>
+2003-04-28  André Pönitz  <poenitz@gmx.net>
 
 	* undo_funcs.C:
 	* lyxfunc.C:
@@ -38,7 +44,7 @@
 	* BufferView_pimpl.C:
 	* BufferView.C: getParFromID related ParagraphList::iterator changes
 
-2003-04-28 André Pönitz <poenitz@gmx.net>
+2003-04-28  André Pönitz  <poenitz@gmx.net>
 
 	* tabular.[Ch]: part of Lars' Paragraph * -> ParagraphList::iterator
 	  Changes

@@ -201,14 +201,15 @@ bool LyXText::gotoNextInset(vector<Inset::Code> const & codes,
 
 
 void LyXText::gotoInset(vector<Inset::Code> const & codes,
-				  bool same_content)
+			bool same_content)
 {
 	bv()->hideCursor();
 	bv()->beforeChange(this);
 	update();
 
 	string contents;
-	if (same_content && cursor.par()->isInset(cursor.pos())) {
+	if (same_content && cursor.pos() < cursor.par()->size()
+	    && cursor.par()->isInset(cursor.pos())) {
 		Inset const * inset = cursor.par()->getInset(cursor.pos());
 		if (find(codes.begin(), codes.end(), inset->lyxCode())
 		    != codes.end())
@@ -1403,9 +1404,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			UpdatableInset * inset = static_cast<UpdatableInset *>(inset_hit);
 			selection_possible = false;
 			bv->owner()->message(inset->editMessage());
-			//inset->edit(bv, x, y, cmd.button());
 			// We just have to lock the inset before calling a PressEvent on it!
-			// we don't need the edit() call here! (Jug20020329)
 			if (!bv->lockInset(inset))
 				lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
 			FuncRequest cmd1(bv, LFUN_MOUSE_PRESS, x, y, cmd.button());
