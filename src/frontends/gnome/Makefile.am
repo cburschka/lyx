@@ -19,10 +19,10 @@ libgnome_la_OBJADD = \
 	../xforms/FormMathsDelim.lo \
 	../xforms/FormMathsMatrix.lo \
 	../xforms/FormMathsPanel.lo \
-	../xforms/FormMathsSpace.lo \
-	../xforms/FileDialog.lo \
-	../xforms/FormFiledialog.lo \
-	../xforms/form_filedialog.lo 
+	../xforms/FormMathsSpace.lo 
+#	../xforms/FileDialog.lo \
+#	../xforms/FormFiledialog.lo \
+#	../xforms/form_filedialog.lo 
 #	../xforms/Timeout_pimpl.lo \
 #	../xforms/Color.lo \
 #	../xforms/FormFiledialog.lo \
@@ -65,12 +65,6 @@ LDFLAGS= $(libgnome_la_OBJADD)
 LYXDATADIRS = 
 #ETAGS_ARGS = --lang=c++
 libgnome_la_SOURCES = \
-	Dialogs.C \
-	GUIRunTime.C \
-	Menubar_pimpl.C \
-	Menubar_pimpl.h \
-	Timeout_pimpl.C \
-	Timeout_pimpl.h \
 	gnomeBC.C \
 	gnomeBC.h \
 	gnome_helpers.C \
@@ -80,14 +74,21 @@ libgnome_la_SOURCES = \
 	support.c \
 	support.h \
 	pixbutton.h \
+	Dialogs.C \
 	GnomeBase.C \
 	GnomeBase.h \
+	GUIRunTime.C \
+	FileDialog.C \
 	FormCopyright.C \
 	FormCopyright.h \
 	FormCredits.C \
 	FormCredits.h \
 	FormUrl.C \
-	FormUrl.h
+	FormUrl.h \
+	Menubar_pimpl.C \
+	Menubar_pimpl.h \
+	Timeout_pimpl.C \
+	Timeout_pimpl.h
 
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \
