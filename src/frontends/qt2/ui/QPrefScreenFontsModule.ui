@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>203</width>
-            <height>360</height>
+            <width>270</width>
+            <height>358</height>
         </rect>
     </property>
     <property stdset="1">
@@ -34,9 +34,9 @@
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>Layout17</cstring>
+                <cstring>Layout4</cstring>
             </property>
-            <grid>
+            <hbox>
                 <property stdset="1">
                     <name>margin</name>
                     <number>0</number>
@@ -45,106 +45,123 @@
                     <name>spacing</name>
                     <number>6</number>
                 </property>
-                <widget row="1"  column="2" >
-                    <class>QPushButton</class>
+                <widget>
+                    <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>screenSansPB</cstring>
+                        <cstring>Layout4</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>C&amp;hoose...</string>
-                    </property>
+                    <grid>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget row="0"  column="1" >
+                            <class>QComboBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenRomanCO</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>duplicatesEnabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget row="2"  column="0" >
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenSansLA</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Sa&amp;ns Serif :</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>screenSansCO</cstring>
+                            </property>
+                        </widget>
+                        <widget row="0"  column="0"  rowspan="2"  colspan="1" >
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenRomanLA</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>&amp;Roman :</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>screenRomanCO</cstring>
+                            </property>
+                        </widget>
+                        <widget row="3"  column="1" >
+                            <class>QComboBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenTypewriterCO</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>duplicatesEnabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget row="1"  column="1"  rowspan="2"  colspan="1" >
+                            <class>QComboBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenSansCO</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>duplicatesEnabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget row="3"  column="0" >
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>screenTypewriterLA</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>T&amp;ypewriter :</string>
+                            </property>
+                            <property>
+                                <name>buddy</name>
+                                <cstring>screenTypewriterCO</cstring>
+                            </property>
+                        </widget>
+                    </grid>
                 </widget>
-                <widget row="2"  column="1" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
+                <spacer>
+                    <property>
                         <name>name</name>
-                        <cstring>screenTypewriterED</cstring>
-                    </property>
-                </widget>
-                <widget row="1"  column="1" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>screenSansED</cstring>
-                    </property>
-                </widget>
-                <widget row="0"  column="2" >
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>screenRomanPB</cstring>
+                        <cstring>Spacer3</cstring>
                     </property>
                     <property stdset="1">
-                        <name>text</name>
-                        <string>Ch&amp;oose...</string>
-                    </property>
-                </widget>
-                <widget row="0"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>screenRomanLA</cstring>
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
                     </property>
                     <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Roman:</string>
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
                     </property>
                     <property>
-                        <name>buddy</name>
-                        <cstring>screenRomanED</cstring>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
                     </property>
-                </widget>
-                <widget row="0"  column="1" >
-                    <class>QLineEdit</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>screenRomanED</cstring>
-                    </property>
-                </widget>
-                <widget row="2"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>screenTypewriterLA</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>T&amp;ypewriter:</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>screenTypewriterED</cstring>
-                    </property>
-                </widget>
-                <widget row="1"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>screenSansLA</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Sa&amp;ns Serif:</string>
-                    </property>
-                    <property>
-                        <name>buddy</name>
-                        <cstring>screenSansED</cstring>
-                    </property>
-                </widget>
-                <widget row="2"  column="2" >
-                    <class>QPushButton</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>screenTypewriterPB</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Choos&amp;e...</string>
-                    </property>
-                </widget>
-            </grid>
+                </spacer>
+            </hbox>
         </widget>
         <widget>
             <class>QLayoutWidget</class>
@@ -518,12 +535,6 @@
     </vbox>
 </widget>
 <tabstops>
-    <tabstop>screenRomanED</tabstop>
-    <tabstop>screenRomanPB</tabstop>
-    <tabstop>screenSansED</tabstop>
-    <tabstop>screenSansPB</tabstop>
-    <tabstop>screenTypewriterED</tabstop>
-    <tabstop>screenTypewriterPB</tabstop>
     <tabstop>screenZoomSB</tabstop>
     <tabstop>screenDpiSB</tabstop>
     <tabstop>screenTinyED</tabstop>

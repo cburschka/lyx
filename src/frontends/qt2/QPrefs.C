@@ -230,9 +230,9 @@ void QPrefs::apply()
 
 	LyXRC const oldrc(rc);
  
-	rc.roman_font_name = fontmod->screenRomanED->text().latin1();
-	rc.sans_font_name = fontmod->screenSansED->text().latin1();
-	rc.typewriter_font_name = fontmod->screenTypewriterED->text().latin1();
+	rc.roman_font_name = fontmod->screenRomanCO->currentText().latin1();
+	rc.sans_font_name = fontmod->screenSansCO->currentText().latin1();
+	rc.typewriter_font_name = fontmod->screenTypewriterCO->currentText().latin1();
 	rc.zoom = fontmod->screenZoomSB->value();
 	rc.dpi = fontmod->screenDpiSB->value();
 	rc.font_sizes[LyXFont::SIZE_TINY] = strToDbl(fontmod->screenTinyED->text().latin1());
@@ -428,9 +428,31 @@ void QPrefs::update_contents()
 
 	QPrefScreenFontsModule * fontmod(dialog_->screenfontsModule);
 
-	fontmod->screenRomanED->setText(rc.roman_font_name.c_str());
-	fontmod->screenSansED->setText(rc.sans_font_name.c_str());
-	fontmod->screenTypewriterED->setText(rc.typewriter_font_name.c_str());
+	QString roman(rc.roman_font_name.c_str());
+	QString sans(rc.sans_font_name.c_str());
+	QString typewriter(rc.typewriter_font_name.c_str());
+ 
+	for (int i = 0; i < fontmod->screenRomanCO->count(); ++i) {
+		if (fontmod->screenRomanCO->text(i) == roman) {
+			fontmod->screenRomanCO->setCurrentItem(i);
+			break;
+		}
+	}
+
+	for (int i = 0; i < fontmod->screenSansCO->count(); ++i) {
+		if (fontmod->screenSansCO->text(i) == sans) {
+			fontmod->screenSansCO->setCurrentItem(i);
+			break;
+		}
+	}
+
+	for (int i = 0; i < fontmod->screenTypewriterCO->count(); ++i) {
+		if (fontmod->screenTypewriterCO->text(i) == typewriter) {
+			fontmod->screenTypewriterCO->setCurrentItem(i);
+			break;
+		}
+	}
+
 	fontmod->screenZoomSB->setValue(rc.zoom);
 	fontmod->screenDpiSB->setValue(int(rc.dpi));
 	fontmod->screenTinyED->setText(tostr(rc.font_sizes[LyXFont::SIZE_TINY]).c_str());

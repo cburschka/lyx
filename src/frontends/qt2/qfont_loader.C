@@ -176,13 +176,13 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 	} else 
 		switch (f.family()) {
 		case LyXFont::ROMAN_FAMILY:
-			font.setFamily("times");
+			font.setFamily(lyxrc.roman_font_name.c_str());
 			break;
 		case LyXFont::SANS_FAMILY:
-			font.setFamily("helvetica");
+			font.setFamily(lyxrc.sans_font_name.c_str());
 			break;
 		case LyXFont::TYPEWRITER_FAMILY:
-			font.setFamily("courier");
+			font.setFamily(lyxrc.typewriter_font_name.c_str());
 			break;
 		default:
 			break;
@@ -190,8 +190,6 @@ qfont_loader::font_info::font_info(LyXFont const & f)
 
 	font.setPointSizeFloat(lyxrc.font_sizes[f.size()]
 			       * lyxrc.zoom / 100.0);
-
-	// FIXME: lyxrc, check for failure etc.
 
 	switch (f.series()) {
 		case LyXFont::MEDIUM_SERIES:

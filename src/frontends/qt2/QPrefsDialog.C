@@ -47,7 +47,8 @@
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>
-#include <qfontdialog.h>
+#include <qfontdatabase.h>
+#include <qstringlist.h>
 #include <qcolordialog.h>
 #include <qcolor.h>
 #include "qcoloritem.h"
@@ -179,6 +180,15 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 		colorsModule->lyxObjectsLB->insertItem(ci);
 	}
 
+	QFontDatabase fontdb;
+	QStringList families(fontdb.families());
+	 
+	for (QStringList::Iterator it = families.begin(); it != families.end(); ++it) {
+		screenfontsModule->screenRomanCO->insertItem(*it); 
+		screenfontsModule->screenSansCO->insertItem(*it); 
+		screenfontsModule->screenTypewriterCO->insertItem(*it); 
+        }
+ 
 	connect(uiModule->uiFilePB, SIGNAL(clicked()), this, SLOT(select_ui()));
 	connect(uiModule->bindFilePB, SIGNAL(clicked()), this, SLOT(select_bind()));
  
@@ -192,10 +202,6 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(pathsModule->backupDirPB, SIGNAL(clicked()), this, SLOT(select_backupdir()));
 	connect(pathsModule->workingDirPB, SIGNAL(clicked()), this, SLOT(select_workingdir()));
 	connect(pathsModule->lyxserverDirPB, SIGNAL(clicked()), this, SLOT(select_lyxpipe()));
- 
-	connect(screenfontsModule->screenRomanPB, SIGNAL(clicked()), this, SLOT(change_roman()));
-	connect(screenfontsModule->screenSansPB, SIGNAL(clicked()), this, SLOT(change_sans()));
-	connect(screenfontsModule->screenTypewriterPB, SIGNAL(clicked()), this, SLOT(change_typewriter()));
  
 	connect(colorsModule->colorChangePB, SIGNAL(clicked()), this, SLOT(change_color()));
 	connect(colorsModule->lyxObjectsLB, SIGNAL(selected(int)), this, SLOT(change_color()));
@@ -279,9 +285,9 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(printerModule->printerExtraED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(printerModule->printerSpoolPrefixED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(printerModule->printerPaperSizeED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenRomanED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenSansED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(screenfontsModule->screenTypewriterED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenRomanCO, SIGNAL(activated(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenSansCO, SIGNAL(activated(const QString&)), this, SLOT(change_adaptor()));
+	connect(screenfontsModule->screenTypewriterCO, SIGNAL(activated(const QString&)), this, SLOT(change_adaptor()));
 	connect(screenfontsModule->screenZoomSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(screenfontsModule->screenDpiSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(screenfontsModule->screenTinyED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
@@ -565,63 +571,4 @@ void QPrefsDialog::select_lyxpipe()
 	string file(form_->controller().browse(pathsModule->lyxserverDirED->text().latin1(), _("Give a filename for the LyX server pipe")));
 	if (!file.empty())
 		pathsModule->lyxserverDirED->setText(file.c_str());
-}
-
-namespace {
- 
-QFont fontFromString(QString const & s) { 
-	QFont f;
-#if QT_VERSION >= 300
-	f.fromString(s);
-	return f;
-#else
-	f.setRawName(s);
-	return f;
-#endif
-}
-
-QString const fontToString(QFont const & f) {
-#if QT_VERSION >= 300
-	return f.toString();
-#else
-	return f.rawName(); 
-#endif
-}
-
-}
-
- 
-void QPrefsDialog::change_roman()
-{
-	QFont f(fontFromString(screenfontsModule->screenRomanED->text()));
- 
-	// Qt designers hadn't heard of references
-	bool ok; 
-	f = QFontDialog::getFont(&ok, f);
-	if (ok)
-		screenfontsModule->screenRomanED->setText(fontToString(f));
-}
-
- 
-void QPrefsDialog::change_sans()
-{
-	QFont f(fontFromString(screenfontsModule->screenSansED->text()));
- 
-	// Qt designers hadn't heard of references
-	bool ok; 
-	f = QFontDialog::getFont(&ok, f);
-	if (ok)
-		screenfontsModule->screenSansED->setText(fontToString(f));
-}
-
- 
-void QPrefsDialog::change_typewriter()
-{
-	QFont f(fontFromString(screenfontsModule->screenTypewriterED->text()));
- 
-	// Qt designers hadn't heard of references
-	bool ok; 
-	f = QFontDialog::getFont(&ok, f);
-	if (ok)
-		screenfontsModule->screenTypewriterED->setText(fontToString(f));
 }

@@ -70,10 +70,6 @@ public slots:
  
 	void change_color();
  
-	void change_roman();
-	void change_sans();
-	void change_typewriter();
-
 	void select_ui();
 	void select_bind();
 	void select_keymap1();

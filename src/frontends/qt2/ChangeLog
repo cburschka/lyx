@@ -1,5 +1,14 @@
 2002-11-17  John Levon  <levon@movementarian.org>
 
+	* ui/QPrefScreenFontsModule.ui:
+	* QPrefsDialog.h:
+	* QPrefsDialog.C:
+	* QPrefs.C: use font families properly
+
+	* qfont_loader.C: and obey them
+ 
+2002-11-17  John Levon  <levon@movementarian.org>
+
 	* QPrefsDialog.C: partial fonts fix
  
 2002-11-17  John Levon  <levon@movementarian.org>
