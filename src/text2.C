@@ -1371,7 +1371,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 
 		// reset the enumeration counter. They are always resetted
 		// when there is any other layout between
-		for (int i = par->enumdepth + 1; i < 4; i++) {
+		for (int i = par->enumdepth; i < 4; ++i) {
 			buf->counters().set(buf->counters().enums[i], 0);
 		}
 	}
