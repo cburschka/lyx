@@ -24,7 +24,7 @@
 
 
 ControlMath::ControlMath(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d)
+	: ControlDialogBD(lv, d), active_(0)
 {}
 
 
