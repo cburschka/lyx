@@ -58,7 +58,7 @@ void FormSpellchecker::build()
 
 	// set up the tooltips
 	string str = _("Type replacement for unknown word "
-			" or select from suggestions.");
+			"or select from suggestions.");
 	tooltips().init(dialog_->input_replacement, str);
 	str = _("List of replacement suggestions from dictionary.");
 	tooltips().init(dialog_->browser_suggestions, str);

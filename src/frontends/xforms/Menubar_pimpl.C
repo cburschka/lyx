@@ -233,7 +233,7 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 	for (Menu::const_iterator i = menu.begin(); i != end; ++i, ++it) {
 		if (i->kind() == MenuItem::Separator)
 			*last = "%l";
-		else {
+		else if (i->kind() == MenuItem::Command) {
 			FuncStatus flag
 				= view->getLyXFunc().getStatus(i->action());
 			if (!(i->optional() && flag.disabled())

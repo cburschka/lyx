@@ -1983,7 +1983,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_UIFILE:
-		str = _("The  UI (user interface) file. Can either specify an absolute path, or LyX will look in its global and local ui/ directories.");
+		str = _("The UI (user interface) file. Can either specify an absolute path, or LyX will look in its global and local ui/ directories.");
 		break;
 
 	case RC_KBMAP:
@@ -1993,7 +1993,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_ASCIIROFF_COMMAND:
-		str = _("Use to define an external program to render tables in the ASCII output. E.g. \"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" is specified, an internal routine is used.");
+		str = _("Use to define an external program to render tables in the ASCII output. E.g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"none\" is specified, an internal routine is used.");
 		break;
 
 	case RC_ASCII_LINELEN:
