@@ -1,5 +1,5 @@
-#LyX 1.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 220
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
 \textclass article
 \language english
 \inputencoding default
@@ -485,6 +485,41 @@ Publications of the Astronomical Society of the Pacific
 .
 \layout Subsection
 
+AGU Journal of Geophysical Research
+\layout Description
+
+Found: @chk_jgrga@
+\layout Description
+
+CTAN:
+\family typewriter 
+ macros/latex/contrib/supported/aguplus
+\layout Description
+
+Notes: The document class 
+\family sans 
+jgrga
+\family default 
+ can be used to write articles for the Journal of Geophysical Research,
+ published by the American Geophysical Union.
+\begin_deeper 
+\layout Standard
+
+The layout consists of two parts: the general part 
+\family typewriter 
+aguplus.inc
+\family default 
+, and the journal specific part 
+\family typewriter 
+jgrga.layout
+\family default 
+.
+ It is not very thoroughly tested yet.
+ It would be straightforward to extend this to support other publications
+ of the AGU.
+\end_deeper 
+\layout Subsection
+
 broadway
 \layout Description
 
@@ -640,6 +675,22 @@ WWW:
 \end_inset 
 
 
+\layout Subsection
+
+egs (European Geophysical Society journals)
+\layout Description
+
+Found: @chk_egs@
+\layout Description
+
+CTAN: N/A
+\layout Description
+
+Notes: The document class 
+\family sans 
+egs
+\family default 
+ can be used to write articles for the European Geophysical Society.
 \layout Subsection
 
 entcs

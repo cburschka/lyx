@@ -3,8 +3,7 @@
 #
 # Necessary LaTeX files to be found on
 #
-# http://www.linmpi.mpg.de/english/services/software/latex/localtex/localltx.html
-# (both AGU++ 1.6b and AGUTeX 5.01 needed)
+# ftp://ftp.agu.org/journals/latex/journals
 #
 # Input general definitions
 Input stdclass.inc
