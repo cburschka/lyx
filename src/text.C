@@ -3645,18 +3645,15 @@ void LyXText::Backspace()
 		}
 		
 		// break the cursor row again
-		z = NextBreakPoint(row, paperwidth);
-		
-		if (z != RowLast(row) || 
-		    (row->next && row->next->par == row->par &&
-		     RowLast(row) == row->par->Last() - 1)){
-			
+		if (row->next && row->next->par == row->par &&
+		    (RowLast(row) == row->par->Last() - 1 ||
+		     NextBreakPoint(row, paperwidth) != RowLast(row))) {
+
 			/* it can happen that a paragraph loses one row
 			 * without a real breakup. This is when a word
 			 * is to long to be broken. Well, I don t care this 
 			 * hack ;-) */ 
-			if (row->next && row->next->par == row->par &&
-			    RowLast(row) == row->par->Last() - 1)
+			if (RowLast(row) == row->par->Last() - 1)
 				RemoveRow(row->next);
 			
 			refresh_y = y;
@@ -3667,10 +3664,7 @@ void LyXText::Backspace()
 			SetCursor(cursor.par, cursor.pos, false, cursor.boundary);
 			// cursor MUST be in row now
 			
-			if (row->next && row->next->par == row->par)
-				need_break_row = row->next;
-			else
-				need_break_row = 0;
+			need_break_row = row->next;
 		} else  {
 			// set the dimensions of the row
 			row->fill = Fill(row, paperwidth);

@@ -35,6 +35,7 @@
 using std::endl;
 
 extern void LoadLyXFile(string const &);
+extern void QuitLyX();
 
 string system_lyxdir;
 string build_lyxdir;
@@ -144,6 +145,7 @@ LyX::LyX(int * argc, char * argv[])
 		// Maybe we could do something more clever than aborting...
 		if (dispatched) {
 			lyxerr << "We are done!" << endl;
+			QuitLyX();
 			return;
 		}
 

@@ -1,3 +1,13 @@
+2000-09-09  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/lyx_main.C (LyX): Call to QuitLyX() to remove temporary
+	directory!
+
+2000-07-08  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* text.C (Backspace): Prevent rebreaking of a row if it is the last
+	row of the paragraph.
+
 2000-09-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/lyxrc.example: remove description of all entries related to
