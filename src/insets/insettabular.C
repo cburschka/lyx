@@ -2443,15 +2443,16 @@ string InsetTabular::selectNextWord(BufferView * bv, float & value) const
 		str = the_locking_inset->selectNextWord(bv, value);
 		if (!str.empty())
 			return str;
-	}
-	if (tabular->IsLastCell(actcell)) {
-		bv->unlockInset(const_cast<InsetTabular *>(this));
-		return string();
+		if (tabular->IsLastCell(actcell)) {
+			bv->unlockInset(const_cast<InsetTabular *>(this));
+			return string();
+		}
+		++actcell;
 	}
 	
 	// otherwise we have to lock the next inset and ask for it's selecttion
 	UpdatableInset * inset =
-		static_cast<UpdatableInset*>(tabular->GetCellInset(++actcell));
+		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
 	inset->edit(bv, 0,  0, 0);
 	string str = selectNextWordInt(bv, value);
 	if (!str.empty())
@@ -2461,12 +2462,14 @@ string InsetTabular::selectNextWord(BufferView * bv, float & value) const
 
 string InsetTabular::selectNextWordInt(BufferView * bv, float & value) const
 {
-	if (the_locking_inset) {
-		string str;
-		str = the_locking_inset->selectNextWord(bv, value);
-		if (!str.empty())
-			return str;
-	}
+	// when entering this function the inset should be ALWAYS locked!
+	lyx::Assert(the_locking_inset);
+
+	string str;
+	str = the_locking_inset->selectNextWord(bv, value);
+	if (!str.empty())
+		return str;
+
 	if (tabular->IsLastCell(actcell)) {
 		bv->unlockInset(const_cast<InsetTabular *>(this));
 		return string();

@@ -1534,7 +1534,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	for (int i = 0; i < par->size(); ++i) {
 		if (par->isNewline(i)) {
 			++cell;
-			if (cell > GetNumberOfCells()) {
+			if (cell > numberofcells) {
 				lyxerr << "Some error in reading old table format occured!" <<
 					endl << "Terminating when reading cell[" << cell << "]!" <<
 					endl;
@@ -1686,7 +1686,7 @@ bool LyXTabular::NeedRotating() const
 
 bool LyXTabular::IsLastCell(int cell) const
 {
-	if ((cell + 1) < GetNumberOfCells())
+	if ((cell + 1) < numberofcells)
 		return false;
 	return true;
 }
@@ -1730,7 +1730,7 @@ int LyXTabular::GetLastCellBelow(int cell) const
 
 int LyXTabular::GetCellNumber(int row, int column) const
 {
-#if 1
+#if 0
 	if (column >= columns_)
 		column = columns_ - 1;
 	else if (column < 0)
@@ -1740,7 +1740,7 @@ int LyXTabular::GetCellNumber(int row, int column) const
 	else if (row < 0)
 		row = 0;
 #else
-	lyx::Assert(column < 0 || column >= columns_ || row < 0 || row >= rows_);
+	lyx::Assert(column >= 0 || column < columns_ || row >= 0 || row < rows_);
 #endif
 	return cell_info[row][column].cellno;
 }
