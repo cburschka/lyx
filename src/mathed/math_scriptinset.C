@@ -332,15 +332,17 @@ bool MathScriptInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
 
 	else {
 		// in nucleus
-		// don't go up/down unless in last position
-		if (pos != cell(2).size())
-			return false;
 		// don't go up/down if there is no cell.
 		if (!has(up))
 			return false;
-		// otherwise move into the first position
-		idx = up;
-		pos = 0;
+		// go up/down only if in the last position
+		// or in the first position of something with displayed limits
+		if (pos == cell(2).size() || (pos == 0 && hasLimits())) {
+			idx = up;
+			pos = 0;
+			return true;
+		}
+		return false;
 	}
 	return true;
 }
