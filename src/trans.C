@@ -351,7 +351,7 @@ string const Trans::process(char c, TransManager & k)
 	if (t.empty() && c != 0) {
 		dt[0] = c;
 		return k.normalkey(c, dt);
-	} else if (!t.empty()) {
+	} else if (!t.empty() && t[0] != char(0)) {
 		dt = t;
 		return k.normalkey(c, dt);
 	} else {
