@@ -89,7 +89,7 @@ void QLPopupMenu::populate(Menu * menu)
 		if (m->kind() == MenuItem::Separator) {
 			insertSeparator();
 		} else if (m->kind() == MenuItem::Submenu) {
-			pair<int, QLPopupMenu *> res = createMenu(this, m, owner_);
+			pair<int, QLPopupMenu *> res = createMenu(this, &(*m), owner_);
 			setItemEnabled(res.first, !disabled(m->submenu()));
 			res.second->populate(m->submenu());
 		} else {
