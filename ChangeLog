@@ -1,3 +1,13 @@
+2001-07-16  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/buffer.C (parseSingleLyXformat2Token): Generate error insets
+	for unknown layouts.
+
+2001-07-13  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/buffer.C (readLyXformat2): Generate an error dialog if there are
+	unknown layouts.
+
 2001-07-06  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lib/layouts/IEEEtran.layout: Add qed box at the end of proof.

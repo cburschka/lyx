@@ -238,6 +238,7 @@ void Buffer::setFileName(string const & newfile)
 	updateTitles();
 }
 
+int unknown_layouts;
 
 // candidate for move to BufferView
 // (at least some parts in the beginning of the func)
@@ -249,6 +250,7 @@ void Buffer::setFileName(string const & newfile)
 // Returns false if "\the_end" is not read for formats >= 2.13. (Asger)
 bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 {
+	unknown_layouts = 0;
 	int pos = 0;
 	char depth = 0; // signed or unsigned?
 #ifndef NEW_INSETS
@@ -314,7 +316,18 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 		return_par = par;
 
 	paragraph = return_par;
-	
+
+	if (unknown_layouts > 0) {
+		string s = _("Couldn't set the layout for ");
+		if (unknown_layouts == 1) {
+			s += _("one paragraph");
+		} else {
+			s += tostr(unknown_layouts);
+			s += _(" paragraphs");
+		}
+		WriteAlert(_("Textclass Loading Error!"),s);
+	}	
+
 	return the_end_read;
 }
 
@@ -365,6 +378,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		} else { // layout not found
 			// use default layout "Standard" (0)
 			par->layout = 0;
+			++unknown_layouts;
+			string const s = _("Layout had to be changed from\n")
+				+ layoutname + _(" to ")
+				+ textclasslist.NameOfLayout(params.textclass, par->layout);
+			InsetError * new_inset = new InsetError(s);
+			par->InsertInset(0, new_inset);
 		}
 		// Test whether the layout is obsolete.
 		LyXLayout const & layout =
