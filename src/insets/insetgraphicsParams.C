@@ -35,14 +35,6 @@ using std::string;
 using std::ostream;
 
 
-namespace lyx {
-namespace graphics {
-/// The translator between the DisplayType and the corresponding lyx string.
-extern Translator<DisplayType, string> displayTranslator;
-}
-}
-
-
 InsetGraphicsParams::InsetGraphicsParams()
 {
 	init();
@@ -161,7 +153,7 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 	if (lyxscale != 100)
 		os << "\tlyxscale " << lyxscale << '\n';
 	if (display != lyx::graphics::DefaultDisplay)
-		os << "\tdisplay " << lyx::graphics::displayTranslator.find(display) << '\n';
+		os << "\tdisplay " << lyx::graphics::displayTranslator().find(display) << '\n';
 	if (!float_equal(scale, 0.0, 0.05)) {
 		if (!float_equal(scale, 100.0, 0.05))
 			os << "\tscale " << scale << '\n';
@@ -208,7 +200,7 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token, string const 
 	} else if (token == "display") {
 		lex.next();
 		string const type = lex.getString();
-		display = lyx::graphics::displayTranslator.find(type);
+		display = lyx::graphics::displayTranslator().find(type);
 	} else if (token == "scale") {
 		lex.next();
 		scale = lex.getFloat();

@@ -29,6 +29,8 @@
 #include "lyxlex.h"
 #include "lyxfont.h"
 
+#include "graphics/GraphicsTypes.h"
+
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/translator.h"
@@ -49,13 +51,6 @@ using std::ofstream;
 using std::ostream;
 using std::string;
 
-
-namespace lyx {
-namespace graphics {
-/// The translator between the DisplayType and the corresponding lyx string.
-extern Translator<DisplayType, string> displayTranslator;
-}
-}
 
 namespace {
 
@@ -357,7 +352,7 @@ int LyXRC::read(string const & filename)
 
 		case RC_DISPLAY_GRAPHICS:
 			if (lexrc.next()) {
-				display_graphics = lyx::graphics::displayTranslator.find(lexrc.getString());
+				display_graphics = lyx::graphics::displayTranslator().find(lexrc.getString());
 			}
 			break;
 
@@ -1134,7 +1129,7 @@ void LyXRC::output(ostream & os) const
 			os << "# Display graphics within LyX\n"
 			   << "# monochrome|grayscale|color|none\n"
 			   << "\\display_graphics "
-			   << lyx::graphics::displayTranslator.find(display_graphics)
+			   << lyx::graphics::displayTranslator().find(display_graphics)
 			   << '\n';
 		}
 

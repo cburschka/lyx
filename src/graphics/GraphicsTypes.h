@@ -15,6 +15,8 @@
 #ifndef GRAPHICSTYPES_H
 #define GRAPHICSTYPES_H
 
+#include "support/translator.h"
+
 
 namespace lyx {
 namespace graphics {
@@ -62,8 +64,8 @@ enum DisplayType {
 };
 
 
-///
-void setDisplayTranslator();
+/// The translator between the Display enum and corresponding lyx string.
+Translator<DisplayType, std::string> const & displayTranslator();
 
 } // namespace graphics
 } // namespace lyx

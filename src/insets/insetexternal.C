@@ -51,16 +51,6 @@ using std::ostringstream;
 using std::vector;
 
 
-namespace lyx {
-namespace graphics {
-
-/// The translator between the DisplayType and the corresponding lyx string.
-extern Translator<DisplayType, string> displayTranslator;
-
-} // namespace graphics
-} // namespace lyx
-
-
 namespace {
 
 lyx::graphics::DisplayType const defaultDisplayType = lyx::graphics::NoDisplay;
@@ -164,7 +154,7 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 
 	if (display != defaultDisplayType)
 		os << "\tdisplay "
-		   << lyx::graphics::displayTranslator.find(display)
+		   << lyx::graphics::displayTranslator().find(display)
 		   << '\n';
 
 	if (lyxscale != defaultLyxScale)
@@ -269,7 +259,7 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 		case EX_DISPLAY: {
 			lex.next();
 			string const name = lex.getString();
-			display = lyx::graphics::displayTranslator.find(name);
+			display = lyx::graphics::displayTranslator().find(name);
 			break;
 		}
 

@@ -11,8 +11,6 @@
 #include <config.h>
 
 #include "graphics/GraphicsTypes.h"
-#include "support/translator.h"
-
 
 using std::string;
 
@@ -20,29 +18,29 @@ using std::string;
 namespace lyx {
 namespace graphics {
 
+namespace {
+
 /// The translator between the Display enum and corresponding lyx string.
-Translator<DisplayType, string> displayTranslator(DefaultDisplay, "default");
-
-void setDisplayTranslator()
+Translator<DisplayType, string> const initTranslator()
 {
-	/// This variable keeps a tab on whether the translator is set.
-	static bool done = false;
+	Translator<DisplayType, string> translator(DefaultDisplay, "default");
 
-	if (!done) {
-		done = true;
+	// Fill the display translator
+	translator.addPair(MonochromeDisplay, "monochrome");
+	translator.addPair(GrayscaleDisplay, "grayscale");
+	translator.addPair(ColorDisplay, "color");
+	translator.addPair(NoDisplay, "none");
 
-		// Fill the display translator
-		displayTranslator.addPair(DefaultDisplay, "default");
-		displayTranslator.addPair(MonochromeDisplay, "monochrome");
-		displayTranslator.addPair(GrayscaleDisplay, "grayscale");
-		displayTranslator.addPair(ColorDisplay, "color");
-		displayTranslator.addPair(NoDisplay, "none");
+	return translator;
+}
 
-		// backward compatibility for old lyxrc.display_graphics
-		displayTranslator.addPair(MonochromeDisplay, "mono");
-		displayTranslator.addPair(GrayscaleDisplay, "gray");
-		displayTranslator.addPair(NoDisplay, "no");
-	}
+} // namespace anon
+
+Translator<DisplayType, string> const & displayTranslator() 
+{
+	static Translator<DisplayType, string> const translator =
+		initTranslator();
+	return translator;
 }
 
 } // namespace graphics

@@ -1,3 +1,10 @@
+2003-10-13  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_main.C (LyX): remove call to setDisplayTranslator().
+
+	* lyxrc.C: displayTranslator is now a function,
+	declared in GraphicsTypes.h.
+
 2003-10-13  Joao Luis Meloni Assirati <assirati@fma.if.usp.br>
 
 	* lyxsocket.[Ch]: new files. A simple local socket interface for lyx.

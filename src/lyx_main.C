@@ -113,11 +113,6 @@ LyX::LyX(int & argc, char * argv[])
 	// we need to parse for "-dbg" and "-help"
 	bool const want_gui = easyParse(argc, argv);
 
-	// set the DisplayTranslator only once; should that be done here??
-	// if this should not be in this file, please also remove
-	// #include "graphics/GraphicsTypes.h" at the top -- Rob Lahaye.
-	lyx::graphics::setDisplayTranslator();
-
 	if (want_gui)
 		lyx_gui::parse_init(argc, argv);
 
