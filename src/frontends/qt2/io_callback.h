@@ -13,9 +13,12 @@
 #include <config.h>
 
 #include "lyxserver.h"
+#include "debug.h"
  
 #include <qsocketnotifier.h>
 
+#include <boost/scoped_ptr.hpp>
+ 
 /**
  * io_callback - a simple wrapper for asynchronous pipe notification
  *
@@ -30,17 +33,19 @@ public:
 	/// connect a read ready notification for fd to the LyXComm
 	io_callback(int fd, LyXComm * comm)
 		: comm_(comm) {
-		QSocketNotifier * sn = new QSocketNotifier(fd,
-			QSocketNotifier::Read, this);
-		connect(sn, SIGNAL(activated(int)), this, SLOT(data_received()));
+		sn_.reset(new QSocketNotifier(fd, QSocketNotifier::Read, this));
+		connect(sn_.get(), SIGNAL(activated(int)), this, SLOT(data_received()));
 	}
-
+ 
 public slots:
 	void data_received() {
 		comm_->read_ready();
 	}
 
 private:
+	/// our notifier
+	boost::scoped_ptr<QSocketNotifier> sn_;
+ 
 	LyXComm * comm_;
 };
 

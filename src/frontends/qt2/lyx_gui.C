@@ -47,7 +47,7 @@ using std::exit;
 #endif
 
 using std::vector;
-using std::hex;
+using std::map;
 using std::endl;
 
 extern BufferList bufferlist;
@@ -147,9 +147,23 @@ bool lyx_gui::font_available(LyXFont const & font)
 	return fontloader.available(font);
 }
 
+ 
+namespace {
+	map<int, io_callback *> io_callbacks;
+}
 
+ 
 void lyx_gui::set_read_callback(int fd, LyXComm * comm)
 {
-	// FIXME: "leak"
-	new io_callback(fd, comm);
+	io_callbacks[fd] = new io_callback(fd, comm);
+}
+
+
+void lyx_gui::remove_read_callback(int fd)
+{
+	map<int, io_callback *>::iterator it = io_callbacks.find(fd);
+	if (it != io_callbacks.end()) {
+		delete it->second;
+		io_callbacks.erase(it);
+	}
 }
