@@ -6,21 +6,13 @@
 
 #include "math_macroarg.h"
 #include "mathed/support.h"
-#include "debug.h"
-
-
-MathMacroArgument::MathMacroArgument()
-	: expnd_mode_(false), number_(1)
-{
-	SetType(LM_OT_MACRO_ARG);
-}
+#include "Lsstream.h"
 
 
 MathMacroArgument::MathMacroArgument(int n)
-	: expnd_mode_(false), number_(n)
-{
-	SetType(LM_OT_MACRO_ARG);
-}
+	: MathParInset(LM_ST_TEXT, "", LM_OT_MACRO_ARG),
+	  expnd_mode_(false), number_(n)
+{}
 
 
 MathedInset * MathMacroArgument::Clone()
@@ -59,14 +51,15 @@ void MathMacroArgument::Metrics()
 	} else {
 		std::ostringstream ost;
 		ost << '#' << number_;
-		width = mathed_string_width(LM_TC_TEX, size(), ost.str().c_str());
+		width = mathed_string_width(LM_TC_TEX, size(),
+					    ost.str().c_str());
 		mathed_string_height(LM_TC_TEX, size(), ost.str().c_str(),
 				     ascent, descent);
 	}
 }
 
 
-void MathMacroArgument::Write(ostream & os, bool fragile)
+void MathMacroArgument::Write(std::ostream & os, bool fragile)
 {
 	if (expnd_mode_) {
 		MathParInset::Write(os, fragile);

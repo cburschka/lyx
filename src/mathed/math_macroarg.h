@@ -14,8 +14,6 @@
 class MathMacroArgument : public MathParInset {
 public:
 	///
-	MathMacroArgument();
-	///
 	explicit
 	MathMacroArgument(int);
 	///
