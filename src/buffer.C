@@ -372,6 +372,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		par->InsertInset(pos, inset, font);
 		++pos;
 	} else if (token == "\\layout") {
+#ifndef NEW_INSETS
 		if (!return_par) 
 			return_par = par;
 		else {
@@ -398,14 +399,195 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			par->layout = 
 				textclasslist.NumberOfLayout(params.textclass, 
 							     layout.obsoleted_by()).second;
-#ifndef NEW_INSETS
 		par->footnoteflag = footnoteflag;
 		par->footnotekind = footnotekind;
-#endif
 		par->params.depth(depth);
 		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
 		if (file_format < 216 && params.language->lang() == "hebrew")
 			font.setLanguage(default_language);
+#else
+                lex.EatLine();
+                string const layoutname = lex.GetString();
+                pair<bool, LyXTextClass::LayoutList::size_type> pp
+                        = textclasslist.NumberOfLayout(params.textclass,
+                                                       layoutname);
+
+#ifdef USE_CAPTION
+		// The is the compability reading of layout caption.
+		// It can be removed in LyX version 1.3.0. (Lgb)
+		if (compare_no_case(layoutname, "caption") == 0) {
+			// We expect that the par we are now working on is
+			// really inside a InsetText inside a InsetFloat.
+			// We also know that captions can only be
+			// one paragraph. (Lgb)
+			
+			// We should now read until the next "\layout"
+			// is reached.
+			// This is probably not good enough, what if the
+			// caption is the last par in the document (Lgb)
+			istream & ist = lex.getStream();
+			stringstream ss;
+			string line;
+			int begin = 0;
+			while (true) {
+				getline(ist, line);
+				if (prefixIs(line, "\\layout")) {
+					lex.pushToken(line);
+					break;
+				}
+				if (prefixIs(line, "\\begin_inset"))
+					++begin;
+				if (prefixIs(line, "\\end_inset")) {
+					if (begin)
+						--begin;
+					else {
+						lex.pushToken(line);
+						break;
+					}
+				}
+				
+				ss << line << '\n';
+			}
+			// Now we should have the whole layout in ss
+			// we should now be able to give this to the
+			// caption inset.
+			ss << "\\end_inset\n";
+			
+			// This seems like a bug in stringstream.
+			// We really should be able to use ss
+			// directly. (Lgb)
+			istringstream is(ss.str());
+			LyXLex tmplex(0, 0);
+			tmplex.setStream(is);
+			Inset * inset = new InsetCaption;
+			inset->Read(this, tmplex);
+			par->InsertInset(pos, inset, font);
+			++pos;
+		} else {
+#endif
+			// BEGIN pextra_minipage compability
+			// This should be removed in 1.3.x (Lgb)
+			
+			// This compability code is not perfect. In a couple
+			// of rand cases it fails. When the minipage par is
+			// the first par in the document, and when there are
+			// none or only one regular paragraphs after the
+			// minipage. Currently I am not investing any effort
+			// in fixing those cases.
+			static LyXParagraph * minipar = 0;
+			
+			if (minipar
+			    && par->params.pextraType() == LyXParagraph::PEXTRA_MINIPAGE) {
+				lyxerr << "minipages in a row" << endl;
+				if (par->params.pextraStartMinipage()) {
+					lyxerr << "start new minipage" << endl;
+					// minipages in a row
+					minipar->previous()->next(par);
+					par->previous()->next(0);
+					par->previous(minipar->previous());
+					InsetMinipage * mini = new InsetMinipage;
+					// Before we insert the list of
+					// minipages into the inset we have
+					// to clean up a bit.
+					// This is not quite correct yet since
+					// we do want to use some of these
+					// parameters to set options in the
+					// minipage isnet.
+					LyXParagraph * tmp = minipar;
+					while (tmp) {
+						tmp->params.pextraType(0);
+						tmp->params.pextraWidth(string());
+						tmp->params.pextraWidthp(string());
+						tmp->params.pextraAlignment(0);
+						tmp->params.pextraHfill(false);
+						tmp->params.pextraStartMinipage(false);
+						tmp = tmp->next();
+					}
+					
+					mini->inset->par = minipar;
+					par->previous()->InsertInset(par->previous()->size(), mini);
+					minipar = par;
+				} else {
+					lyxerr << "new minipage par" << endl;
+					//nothing to do just continue reading
+				}
+				
+			} else if (minipar) {
+				lyxerr << "last minipage par read" << endl;
+				// The last paragraph read was not part of a
+				// minipage but the par linked list is...
+				// So we need to remove the last par from the
+				// rest, insert the rest of the paragraphs into
+				// a InsetMinipage, insert this minipage into
+				// prevpar, append the current par to prevpar
+				// and continue...
+				par->previous()->next(0);
+				par->previous(minipar->previous());
+				minipar->previous()->next(par);
+				minipar->previous(0);
+				InsetMinipage * mini = new InsetMinipage;
+				
+				// Before we insert the list of
+				// minipages into the inset we have
+				// to clean up a bit.
+				// This is not quite correct yet since we
+				// do want to use some of these parameters
+				// to set options in the minipage isnet.
+				LyXParagraph * tmp = minipar;
+				while (tmp) {
+					tmp->params.pextraType(0);
+					tmp->params.pextraWidth(string());
+					tmp->params.pextraWidthp(string());
+					tmp->params.pextraAlignment(0);
+					tmp->params.pextraHfill(false);
+					tmp->params.pextraStartMinipage(false);
+					tmp = tmp->next();
+				}
+				
+				mini->inset->par = minipar;
+				par->previous()->InsertInset(par->previous()->size(), mini);
+				minipar = 0;
+			} else if (par->params.pextraType() == LyXParagraph::PEXTRA_MINIPAGE) {
+				
+				// par is the first paragraph in a minipage
+				lyxerr << "begin minipage" << endl;
+				minipar = par;
+				
+			}
+			// End of pextra_minipage compability
+			
+			if (!return_par)
+				return_par = par;
+			else {
+				par->fitToSize();
+				par = new LyXParagraph(par);
+			}
+			pos = 0;
+			if (pp.first) {
+				par->layout = pp.second;
+			} else {
+				// layout not found
+				// use default layout "Standard" (0)
+				par->layout = 0;
+			}
+			// Test whether the layout is obsolete.
+			LyXLayout const & layout =
+				textclasslist.Style(params.textclass,
+						    par->layout);
+			if (!layout.obsoleted_by().empty())
+				par->layout = textclasslist
+					.NumberOfLayout(params.textclass,
+							layout.obsoleted_by())
+					.second;
+			par->params.depth(depth);
+			font = LyXFont(LyXFont::ALL_INHERIT, params.language);
+			if (file_format < 216
+			    && params.language->lang() == "hebrew")
+				font.setLanguage(default_language);
+#ifdef USE_CAPTION
+                }
+#endif
+#endif
 #ifndef NEW_INSETS
 	} else if (token == "\\end_float") {
 		if (!return_par) 
@@ -434,14 +616,14 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			footnoteflag = LyXParagraph::OPEN_FOOTNOTE;
 #else
 	} else if (token == "\\begin_float") {
-		// This is the compability reader, unfinished but tested.
-		// (Lgb)
+		// This is the compability reader. It can be removed in
+		// LyX version 1.3.0. (Lgb)
 		lex.next();
 		string const tmptok = lex.GetString();
 		//lyxerr << "old float: " << tmptok << endl;
 		
 		Inset * inset = 0;
-		string old_float;
+		stringstream old_float;
 		
 		if (tmptok == "footnote") {
 			inset = new InsetFoot;
@@ -449,37 +631,37 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			inset = new InsetMarginal;
 		} else if (tmptok == "fig") {
 			inset = new InsetFloat("figure");
-			old_float += "placement htbp\n";
+			old_float << "placement htbp\n";
 		} else if (tmptok == "tab") {
 			inset = new InsetFloat("table");
-			old_float += "placement htbp\n";
+			old_float << "placement htbp\n";
 		} else if (tmptok == "alg") {
 			inset = new InsetFloat("algorithm");
-			old_float += "placement htbp\n";
+			old_float << "placement htbp\n";
 		} else if (tmptok == "wide-fig") {
 			InsetFloat * tmp = new InsetFloat("figure");
 			tmp->wide(true);
 			inset = tmp;
-			old_float += "placement htbp\n";
+			old_float << "placement htbp\n";
 		} else if (tmptok == "wide-tab") {
 			InsetFloat * tmp = new InsetFloat("table");
 			tmp->wide(true);
 			inset = tmp;
-			old_float += "placement htbp\n";
+			old_float << "placement htbp\n";
 		}
 
 		if (!inset) return false; // no end read yet
 		
-		old_float += "collapsed true\n";
+		old_float << "collapsed true\n";
 
 		// Here we need to check for \end_deeper and handle that
 		// before we do the footnote parsing.
 		// This _is_ a hack! (Lgb)
-		while(true) {
+		while (true) {
 			lex.next();
 			string const tmp = lex.GetString();
 			if (tmp == "\\end_deeper") {
-				lyxerr << "\\end_deeper caught!" << endl;
+				//lyxerr << "\\end_deeper caught!" << endl;
 				if (!depth) {
 					lex.printError("\\end_deeper: "
 						       "depth is already null");
@@ -487,21 +669,19 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 					--depth;
 				
 			} else {
-				old_float += tmp;
-				old_float += ' ';
+				old_float << tmp << ' ';
 				break;
 			}
 		}
 		
-		old_float += lex.getLongString("\\end_float");
-		old_float += "\n\\end_inset\n";
-		//lyxerr << "float body: " << old_float << endl;
-
-		istringstream istr(old_float);
-		
+		old_float << lex.getLongString("\\end_float")
+			  << "\n\\end_inset\n";
+		//lyxerr << "Float Body:\n" << old_float.str() << endl;
+		// That this does not work seems like a bug
+		// in stringstream. (Lgb)
+		istringstream istr(old_float.str());
 		LyXLex nylex(0, 0);
 		nylex.setStream(istr);
-		
 		inset->Read(this, nylex);
 		par->InsertInset(pos, inset, font);
 		++pos;
@@ -3420,9 +3600,11 @@ vector<string> const Buffer::getLabelList()
 
 vector<vector<Buffer::TocItem> > const Buffer::getTocList() const
 {
+#ifndef NEW_INSETS
 	int figs = 0;
 	int tables = 0;
 	int algs = 0;
+#endif
 	vector<vector<TocItem> > l(4);
 	LyXParagraph * par = paragraph;
 	while (par) {

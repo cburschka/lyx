@@ -1,5 +1,11 @@
 2001-03-11  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* FloatList.C (FloatList): update from the new_insets branch.
+	* Floating.[Ch]: ditto
+	* LaTeXFeatures.C: ditto
+	* buffer.C: ditto
+	* lyxlex_pimpl.C: ditto
+	
 	* paragraph.C (Last): remove when NEW_INSETS is defined.
 
 	* other file: changes because of the above.

@@ -20,7 +20,9 @@
 #include "lyxinset.h"
 #include "lyxfont.h"
 #include "LColor.h"
-
+#if 1 // NEW_INSETS
+#include "lyxparagraph.h"
+#endif
 
 class Painter;
 class InsetText;
@@ -145,10 +147,14 @@ protected:
     LColor::color framecolor;
     ///
     LyXFont labelfont;
+#ifdef NEW_INSETS
+public:
+#endif
     ///
     InsetText * inset;
     // Instead of making these ints protected we could have a
     // protected method "clickInButton" (Lgb)
+protected:
     ///
     mutable int
 	button_length, button_top_y, button_bottom_y;

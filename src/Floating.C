@@ -42,6 +42,24 @@ string const & Floating::placement() const
 }
 
 
+string const & Floating::ext() const
+{
+	return ext_;
+}
+
+
+string const & Floating::within() const
+{
+	return within_;
+}
+
+
+string const & Floating::style() const
+{
+	return style_;
+}
+
+
 string const & Floating::name() const
 {
 	return name_;

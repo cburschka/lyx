@@ -38,6 +38,12 @@ public:
 	///
 	string const & placement() const;
 	///
+	string const & ext() const;
+	///
+	string const & within() const;
+	///
+	string const & style() const;
+	///
 	string const & name() const;
 	///
 	bool builtin() const;

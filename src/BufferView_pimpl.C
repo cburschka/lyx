@@ -111,9 +111,6 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	  current_scrollbar_value(0), cursor_timeout(400),
 	  workarea_(xpos, ypos, width, height), using_xterm_cursor(false)
 {
-	//buffer_ = 0;
-	//workarea_ = new WorkArea(xpos, ypos, width, height);
-	
 	// Setup the signals
 	workarea_.scrollCB.connect(slot(this, &BufferView::Pimpl::scrollCB));
 	workarea_.workAreaExpose

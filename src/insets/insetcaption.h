@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2000-2001 The LyX Team.
  *
  *======================================================
  */
@@ -24,15 +24,59 @@
 class InsetCaption : public InsetText {
 public:
 	///
+	InsetCaption();
+	///
 	void Write(Buffer const * buf, std::ostream & os) const;
 	///
 	void Read(Buffer const * buf, LyXLex & lex);
 	///
-	Inset::Code LyxCode() const {
-		return CAPTION_CODE;
-	}
+	virtual
+	bool display() const;
+	///
+	virtual
+	bool needFullRow() const;
+	///
+	virtual
+	Inset::Code LyxCode() const;
+	///
+	virtual
+	string const EditMessage() const;
+	///
+	virtual
+	void draw(BufferView * bv, LyXFont const & f,
+			  int baseline, float & x, bool cleared) const;
+	///
+	virtual
+	int Latex(Buffer const * buf, std::ostream & os,
+			  bool fragile, bool free_spc) const;
+	///
+	virtual
+	int Ascii(Buffer const * buf, std::ostream & os, int linelen) const;
+	///
+	virtual
+	int DocBook(Buffer const * buf, std::ostream & os) const;
 protected:
 private:
 };
 
+
+inline
+bool InsetCaption::display() const
+{
+	return true;
+}
+
+
+inline
+bool InsetCaption::needFullRow() const 
+{
+	return true;
+}
+
+
+inline
+Inset::Code InsetCaption::LyxCode() const 
+{
+	return CAPTION_CODE;
+}
 #endif

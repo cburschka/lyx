@@ -330,21 +330,44 @@ string const LaTeXFeatures::getMacros()
 	// \floatstyle{ruled}
 	// \newfloat{algorithm}{htbp}{loa}
 	// \floatname{algorithm}{Algorithm}
-	UsedFloats::const_iterator beg = usedFloats.begin();
+	UsedFloats::const_iterator cit = usedFloats.begin();
 	UsedFloats::const_iterator end = usedFloats.end();
-	for (; beg != end; ++beg) {
-		Floating const & fl = floatList.getType((*beg));
+	ostringstream floats;
+	for (; cit != end; ++cit) {
+		Floating const & fl = floatList.getType((*cit));
+
+		// For builtin floats we do nothing.
+		if (fl.builtin()) continue;
 		
 		// We have to special case "table" and "figure"
-		if ((fl.type() == "tabular" && !fl.builtin()) ||
-		    (fl.type() == "figure" && !fl.builtin())) {
+		if (fl.type() == "tabular" || fl.type() == "figure") {
 			// Output code to modify "table" or "figure"
 			// but only if builtin == false
-			
 		} else {
 			// The other non builtin floats.
+
+			string type = fl.type();
+			string placement = fl.placement();
+			string ext = fl.ext();
+			string within = fl.within();
+			string style = fl.style();
+			string name = fl.name();
+			floats << "\\floatstyle{" << style << "}\n"
+			       << "\\newfloat{" << type << "}{" << placement
+			       << "}{" << ext << "}";
+			if (!within.empty())
+				floats << "[" << within << "]";
+			floats << "\n"
+			       << "\\floatname{" << type << "}{"
+			       << name << "}\n";
+
+			// What missing here is to code to minimalize the code
+			// outputted so that the same flotastyle will not be
+			// used several times. when the same style is still in
+			// effect. (Lgb)
 		}
 	}
+	macros += floats.str();
 
 	for (LanguageList::const_iterator cit = UsedLanguages.begin();
 	     cit != UsedLanguages.end(); ++cit)

@@ -76,10 +76,27 @@ using std::endl;
 //   \newfloat{algorithm}{htbp}{loa}[<sect>]
 //   \floatname{algorithm}{Algorithm}
 //
+// The intention is that floats should be definable from two places:
+//          - layout files
+//          - the "gui" (i.e. by the user)
+//
+// From layout files.
+// This should only be done for floats defined in a documentclass and that
+// does not need any additional packages. The two most known floats in this
+// category is "table" and "figure". Floats defined in layout files are only
+// stored in lyx files if the user modifies them.
+//
+// By the user.
+// There should be a gui dialog (and also a collection of lyxfuncs) where
+// the user can modify existing floats and/or create new ones.
+//
+// The individual floats will also have some settable
+// variables: wide and placement.
+//
 // Lgb
 
 InsetFloat::InsetFloat(string const & type)
-	: InsetCollapsable()
+	: InsetCollapsable(), wide_(false)
 {
 	string lab(_("float:"));
 	lab += type;
@@ -92,7 +109,6 @@ InsetFloat::InsetFloat(string const & type)
 	setAutoCollapse(false);
 	floatType_ = type;
 	setInsetName(type);
-	//floatPlacement = "H";
 }
 
 
@@ -196,6 +212,21 @@ void InsetFloat::InsetButtonRelease(BufferView * bv, int x, int y, int button)
 string const & InsetFloat::type() const 
 {
 	return floatType_;
+}
+
+
+void InsetFloat::placement(string const & p)
+{
+	// Here we should only allow the placement to be set
+	// if a valid value.
+#warning FIX!
+	floatPlacement_ = p;
+}
+
+
+string const & InsetFloat::placement() const
+{
+	return floatPlacement_;
 }
 
 

@@ -6,24 +6,42 @@
 
 #include "FloatList.h"
 
+// This class is now mostly finished, except one thing, it is a global
+// object. This will not do. The user (and layout files) are free to
+// create floats and modify them to fit into a certain document. So it is
+// pretty clear that each layout needs its own list, as do documents.
+// However this is also not enough since we really want the user to be
+// able to create "presistent" floats, in the sense that a user created
+// float can be used across sessions and across documents. So we need a
+// global¹ floatlist as well. The interaction between these are not quite
+// clear, but it seems natural that the definition found in the document
+// takes precedence.
+// We also have the issue about what get stored _in_ the lyx file.
+//
+// ¹ not absolutely global but somewhere where documents,layouts and
+// the bufferview can have access to it.
+//
+// Lgb
+
 FloatList::FloatList()
 {
 	// Insert the latex builtin float-types
-
+	// (these will later be read from a layout file)
+	
 	// table
 	Floating table("table", "htbp", "lot", "", "plain", "Table", true);
-	list[table.type()] = table;
+	newFloat(table);
 
 	// figure
 	Floating figure("figure", "htbp", "lof", "", "plain", "Figure", true);
-	list[figure.type()] = figure;
+	newFloat(figure);
 	
 	// And we add algorithm too since LyX has
 	// supported that for a long time,
 	// but support for this should probably be moved to a layout file.
 	Floating algorithm("algorithm", "htbp", "loa",
 			   "", "ruled", "Algorithm");
-	list[algorithm.type()] = algorithm;
+	newFloat(algorithm);
 }
 
 

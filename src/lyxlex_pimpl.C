@@ -9,6 +9,9 @@
 #include "support/lyxalgo.h"
 #include "support/filetools.h"
 #include "debug.h"
+#if 1 // to get NEW_INSETS
+#include "lyxparagraph.h"
+#endif
 
 using std::sort;
 using std::ostream;
@@ -139,10 +142,28 @@ void LyXLex::Pimpl::setCommentChar(char c)
 bool LyXLex::Pimpl::next(bool esc /* = false */)
 {
 	if (!pushTok.empty()) {
+#ifndef NEW_INSETS
 		pushTok.copy(buff, string::npos);
 		buff[pushTok.length()] = '\0';
 		pushTok.erase();
 		return true;
+#else
+		// There can have been a whole line pushed so
+		// we extract the first word and leaves the rest
+		// in pushTok. (Lgb)
+		if (pushTok.find(' ') != string::npos) {
+			string tmp;
+			pushTok = split(pushTok, tmp, ' ');
+			tmp.copy(buff, string::npos);
+			buff[tmp.length()] = '\0';
+			return true;
+		} else {
+			pushTok.copy(buff, string::npos);
+			buff[pushTok.length()] = '\0';
+			pushTok.erase();
+			return true;
+		}     
+#endif
 	}
 	if (!esc) {
 		unsigned char c = 0; // getc() returns an int
@@ -380,6 +401,15 @@ int LyXLex::Pimpl::lex()
 	
 bool LyXLex::Pimpl::EatLine()
 {
+#ifndef NEW_INSETS
+	// This is not handling the pushed token
+	if (!pushTok.empty()) {
+		pushTok.copy(buff, string::npos);
+		buff[pushTok.length()] = '\0';
+		pushTok.erase();
+		return true;
+	}
+#endif
 	int i = 0;
 	unsigned char c = '\0';
 	char cc = 0;
@@ -412,10 +442,28 @@ bool LyXLex::Pimpl::EatLine()
 bool LyXLex::Pimpl::nextToken()
 {
 	if (!pushTok.empty()) {
+#ifndef NEW_INSETS
 		pushTok.copy(buff, string::npos);
 		buff[pushTok.length()] = '\0';
 		pushTok.erase();
 		return true;
+#else
+		// There can have been a whole line pushed so
+		// we extract the first word and leaves the rest
+		// in pushTok. (Lgb)
+		if (pushTok.find(' ') != string::npos) {
+			string tmp;
+			pushTok = split(pushTok, tmp, ' ');
+			tmp.copy(buff, string::npos);
+			buff[tmp.length()] = '\0';
+			return true;
+		} else {
+			pushTok.copy(buff, string::npos);
+			buff[pushTok.length()] = '\0';
+			pushTok.erase();
+			return true;
+		}
+#endif
 	}
 
 	status = 0;
