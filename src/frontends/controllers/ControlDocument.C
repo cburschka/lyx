@@ -67,10 +67,14 @@ void ControlDocument::apply()
 	if (!bufferIsAvailable())
 		return;
 
+	view().apply();
+
+	// this must come first so that a language change
+	// is correctly noticed
+	setLanguage();
+
 	classApply();
 
-	view().apply();
-	setLanguage();
 	buffer()->params = *bp_;
 
 	lv_.view()->redoCurrentBuffer();
@@ -114,7 +118,6 @@ void ControlDocument::classApply()
 		return;
 
 	// successfully loaded
-	view().apply();
 	buffer()->params = *bp_;
 
 	lv_.message(_("Converting document to new document class..."));
