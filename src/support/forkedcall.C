@@ -270,6 +270,29 @@ int Forkedcall::generateChild()
 			argv.push_back(&*vit);
 		prev = *vit;
 	}
+	// Strip quotes. Does so naively, assuming that the word begins
+	// and ends in quotes.
+	vector<char *>::iterator ait = argv.begin();
+	vector<char *>::iterator const aend = argv.end();
+	for (; ait != aend; ++ait) {
+		char * word = *ait;
+		std::size_t const len = strlen(word);
+		if (len >= 2) {
+			char & first = word[0];
+			char & last = word[len-1];
+
+			if (first == last &&
+			    (first == '\'' || first == '"')) {
+				first = '\0';
+				last = '\0';
+				*ait += 1;
+			}
+		}
+	}
+
+	ait = argv.begin();
+	for (; ait != aend; ++ait)
+		std::cout << *ait << std::endl;
 	argv.push_back(0);
 
 #ifndef __EMX__

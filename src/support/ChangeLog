@@ -1,3 +1,8 @@
+2004-10-25  Angus Leeming  <leeming@lyx.org>
+
+	* forkedcall.C (generateChild): strip quotes from each argument
+	of argv.
+
 2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* pch.h: use proper signal include
