@@ -224,7 +224,7 @@ void InsetTabular::buffer(Buffer * b)
 
 void InsetTabular::write(Buffer const * buf, ostream & os) const
 {
-	os << " Tabular" << endl;
+	os << "Tabular" << endl;
 	tabular.write(buf, os);
 }
 
