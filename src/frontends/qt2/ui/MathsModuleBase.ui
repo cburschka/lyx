@@ -1,0 +1,93 @@
+<!DOCTYPE UI><UI>
+<class>MathsModuleBase</class>
+<include location="global">config.h</include>
+<include location="local">qt_helpers.h</include>
+<widget>
+    <class>QWidget</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>MathsModuleBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>351</width>
+            <height>233</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Form1</string>
+    </property>
+    <vbox>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget>
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>amsautoCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Use AMS math package automatically</string>
+            </property>
+            <property stdset="1">
+                <name>checked</name>
+                <bool>false</bool>
+            </property>
+        </widget>
+        <widget>
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>amsCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Use AMS &amp;math package</string>
+            </property>
+        </widget>
+        <spacer>
+            <property>
+                <name>name</name>
+                <cstring>Spacer1</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+    </vbox>
+</widget>
+<connections>
+    <connection>
+        <sender>amsautoCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>amsCB</receiver>
+        <slot>setDisabled(bool)</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>amsautoCB</tabstop>
+</tabstops>
+</UI>

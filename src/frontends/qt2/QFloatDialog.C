@@ -15,6 +15,8 @@
 
 #include "ControlFloat.h"
 
+#include "floatplacement.h"
+
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 
@@ -34,6 +36,12 @@ QFloatDialog::QFloatDialog(QFloat * form)
 		form, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
+
+	// enable span columns checkbox
+	floatFP->useWide();
+
+	connect(floatFP, SIGNAL(changed()),
+		this, SLOT(change_adaptor()));
 }
 
 
@@ -47,44 +55,4 @@ void QFloatDialog::closeEvent(QCloseEvent * e)
 {
 	form_->slotWMHide();
 	e->accept();
-}
-
-void QFloatDialog::tbhpClicked()
-{
-	heredefinitelyCB->setChecked(false);
-	bool allow(topCB->isChecked());
-	allow |= bottomCB->isChecked();
-	allow |= pageCB->isChecked();
-	allow |= herepossiblyCB->isChecked();
-	ignoreCB->setEnabled(allow);
-}
-
-
-void QFloatDialog::heredefinitelyClicked()
-{
-	if (heredefinitelyCB->isChecked());
-		ignoreCB->setEnabled(false);
-
-	topCB->setChecked(false);
-	bottomCB->setChecked(false);
-	pageCB->setChecked(false);
-	herepossiblyCB->setChecked(false);
-	ignoreCB->setChecked(false);
-}
-
-
-void QFloatDialog::spanClicked()
-{
-	bool const span(spanCB->isChecked());
-
-	if (!defaultsCB->isChecked()) {
-		herepossiblyCB->setEnabled(!span);
-		heredefinitelyCB->setEnabled(!span);
-	}
-
-	if (!span)
-		return;
-
-	herepossiblyCB->setChecked(false);
-	heredefinitelyCB->setChecked(false);
 }

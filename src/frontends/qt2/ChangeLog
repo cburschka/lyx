@@ -1,5 +1,35 @@
 2003-03-28  John Levon  <levon@movementarian.org>
 
+	* QFloat.C:
+	* QFloatDialog.h:
+	* QFloatDialog.C:
+	* ui/QFloatDialog.ui:
+	* Makefile.dialogs:
+	* moc/Makefile.am:
+	* floatplacement.h:
+	* floatplacement.C: move the float code into its
+	  own widget
+
+	* QDocument.C:
+	* QDocumentDialog.h:
+	* QDocumentDialog.C: use that widget
+
+	* Makefile.dialogs:
+	* QDocument.C:
+	* QDocumentDialog.h:
+	* QDocumentDialog.C:
+	* ui/QDocumentDialogBase.ui:
+	* ui/ClassModuleBase.ui:
+	* ui/PaperModuleBase.ui:
+	* ui/PackagesModuleBase.ui:
+	* ui/MathsModuleBase.ui:
+	* ui/LatexModuleBase.ui:
+	* ui/PageLayoutModuleBase.ui:
+	* ui/TextLayoutModuleBase.ui: big re-organisation
+	of the doc dialog panes
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
 	* panelstack.C: make sure the first panel is visible
 
 	* QDocument.h:

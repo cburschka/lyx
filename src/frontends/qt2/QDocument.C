@@ -30,6 +30,7 @@
 #include "vspace.h"
 #include "bufferparams.h"
 #include "qt_helpers.h"
+#include "floatplacement.h"
 
 #include <qpushbutton.h>
 #include <qmultilineedit.h>
@@ -101,11 +102,11 @@ void QDocument::build_dialog()
 	// packages
 	for (int n = 0; tex_graphics[n][0]; ++n) {
 		QString enc = tex_graphics[n];
-		dialog_->packagesModule->psdriverCO->insertItem(enc);
+		dialog_->latexModule->psdriverCO->insertItem(enc);
 	}
 
 	// paper
-	QComboBox * cb = dialog_->paperModule->papersizeCO;
+	QComboBox * cb = dialog_->pageLayoutModule->papersizeCO;
 	cb->insertItem(qt_("Default"));
        	cb->insertItem(qt_("Custom"));
        	cb->insertItem(qt_("US letter"));
@@ -121,37 +122,37 @@ void QDocument::build_dialog()
 	// layout
 	for (LyXTextClassList::const_iterator cit = textclasslist.begin();
 	     cit != textclasslist.end(); ++cit) {
-		dialog_->layoutModule->classCO->insertItem(toqstr(cit->description()));
+		dialog_->latexModule->classCO->insertItem(toqstr(cit->description()));
 	}
 
 	for (int n = 0; tex_fonts[n][0]; ++n) {
 		QString font = tex_fonts[n];
-		dialog_->layoutModule->fontsCO->insertItem(font);
+		dialog_->textLayoutModule->fontsCO->insertItem(font);
 	}
 
-	dialog_->layoutModule->fontsizeCO->insertItem(qt_("default"));
-	dialog_->layoutModule->fontsizeCO->insertItem(qt_("10"));
-	dialog_->layoutModule->fontsizeCO->insertItem(qt_("11"));
-	dialog_->layoutModule->fontsizeCO->insertItem(qt_("12"));
+	dialog_->textLayoutModule->fontsizeCO->insertItem(qt_("default"));
+	dialog_->textLayoutModule->fontsizeCO->insertItem(qt_("10"));
+	dialog_->textLayoutModule->fontsizeCO->insertItem(qt_("11"));
+	dialog_->textLayoutModule->fontsizeCO->insertItem(qt_("12"));
 
-	dialog_->layoutModule->skipCO->insertItem(qt_("SmallSkip"));
-	dialog_->layoutModule->skipCO->insertItem(qt_("MedSkip"));
-	dialog_->layoutModule->skipCO->insertItem(qt_("BigSkip"));
-	dialog_->layoutModule->skipCO->insertItem(qt_("Length"));
+	dialog_->textLayoutModule->skipCO->insertItem(qt_("SmallSkip"));
+	dialog_->textLayoutModule->skipCO->insertItem(qt_("MedSkip"));
+	dialog_->textLayoutModule->skipCO->insertItem(qt_("BigSkip"));
+	dialog_->textLayoutModule->skipCO->insertItem(qt_("Length"));
 
-	dialog_->layoutModule->pagestyleCO->insertItem(qt_("default"));
-	dialog_->layoutModule->pagestyleCO->insertItem(qt_("empty"));
-	dialog_->layoutModule->pagestyleCO->insertItem(qt_("plain"));
-	dialog_->layoutModule->pagestyleCO->insertItem(qt_("headings"));
-	dialog_->layoutModule->pagestyleCO->insertItem(qt_("fancy"));
+	dialog_->pageLayoutModule->pagestyleCO->insertItem(qt_("default"));
+	dialog_->pageLayoutModule->pagestyleCO->insertItem(qt_("empty"));
+	dialog_->pageLayoutModule->pagestyleCO->insertItem(qt_("plain"));
+	dialog_->pageLayoutModule->pagestyleCO->insertItem(qt_("headings"));
+	dialog_->pageLayoutModule->pagestyleCO->insertItem(qt_("fancy"));
 
-	dialog_->layoutModule->lspacingCO->insertItem(
+	dialog_->textLayoutModule->lspacingCO->insertItem(
 		qt_("Single"), Spacing::Single);
-	dialog_->layoutModule->lspacingCO->insertItem(
+	dialog_->textLayoutModule->lspacingCO->insertItem(
 		qt_("OneHalf"), Spacing::Onehalf);
-	dialog_->layoutModule->lspacingCO->insertItem(
+	dialog_->textLayoutModule->lspacingCO->insertItem(
 		qt_("Double"), Spacing::Double);
-	dialog_->layoutModule->lspacingCO->insertItem(
+	dialog_->textLayoutModule->lspacingCO->insertItem(
 		qt_("Custom"), Spacing::Other);
 
 	// margins
@@ -242,12 +243,12 @@ void QDocument::apply()
 
 	// packages
 	params.graphicsDriver =
-		fromqstr(dialog_->packagesModule->psdriverCO->currentText());
+		fromqstr(dialog_->latexModule->psdriverCO->currentText());
 
-	if (dialog_->packagesModule->amsautoCB->isChecked()) {
+	if (dialog_->mathsModule->amsautoCB->isChecked()) {
 		params.use_amsmath = BufferParams::AMS_AUTO;
 	} else {
-		if (dialog_->packagesModule->amsCB->isChecked())
+		if (dialog_->mathsModule->amsCB->isChecked())
 			params.use_amsmath = BufferParams::AMS_ON;
 		else
 			params.use_amsmath = BufferParams::AMS_OFF;
@@ -255,18 +256,18 @@ void QDocument::apply()
 
 	// layout
 	params.textclass =
-		dialog_->layoutModule->classCO->currentItem();
+		dialog_->latexModule->classCO->currentItem();
 
 	params.fonts =
-		fromqstr(dialog_->layoutModule->fontsCO->currentText());
+		fromqstr(dialog_->textLayoutModule->fontsCO->currentText());
 
 	params.fontsize =
-		fromqstr(dialog_->layoutModule->fontsizeCO->currentText());
+		fromqstr(dialog_->textLayoutModule->fontsizeCO->currentText());
 
 	params.pagestyle =
-		fromqstr(dialog_->layoutModule->pagestyleCO->currentText());
+		fromqstr(dialog_->pageLayoutModule->pagestyleCO->currentText());
 
-	switch (dialog_->layoutModule->lspacingCO->currentItem()) {
+	switch (dialog_->textLayoutModule->lspacingCO->currentItem()) {
 	case 0:
 		params.spacing.set(Spacing::Single);
 		break;
@@ -278,18 +279,23 @@ void QDocument::apply()
 		break;
 	case 3:
 		params.spacing.set(Spacing::Other,
-				   dialog_->layoutModule->
+				   dialog_->textLayoutModule->
 				   lspacingLE->text().toFloat()
 				   );
 		break;
 	}
 
-	if (dialog_->layoutModule->indentRB->isChecked())
+	if (dialog_->textLayoutModule->twoColumnCB->isChecked())
+		params.columns = 2;
+	else
+		params.columns = 1;
+
+	if (dialog_->textLayoutModule->indentRB->isChecked())
 		params.paragraph_separation = BufferParams::PARSEP_INDENT;
 	else
 		params.paragraph_separation = BufferParams::PARSEP_SKIP;
 
-	switch (dialog_->layoutModule->skipCO->currentItem()) {
+	switch (dialog_->textLayoutModule->skipCO->currentItem()) {
 	case 0:
 		params.setDefSkip(VSpace(VSpace::SMALLSKIP));
 		break;
@@ -302,10 +308,10 @@ void QDocument::apply()
 	case 3:
 	{
 		LyXLength::UNIT unit =
-			dialog_->layoutModule->skipLengthCO->
+			dialog_->textLayoutModule->skipLengthCO->
 			currentLengthItem();
 		double length =
-			dialog_->layoutModule->skipLE->text().toDouble();
+			dialog_->textLayoutModule->skipLE->text().toDouble();
 		VSpace vs = VSpace(LyXGlueLength(LyXLength(length,unit)));
 		params.setDefSkip(vs);
 		break;
@@ -318,32 +324,26 @@ void QDocument::apply()
 	}
 
 	params.options =
-		fromqstr(dialog_->layoutModule->optionsLE->text());
+		fromqstr(dialog_->latexModule->optionsLE->text());
 
-	params.float_placement =
-		fromqstr(dialog_->layoutModule->floatPlacementLE->text());
+	params.float_placement = dialog_->floatModule->get();
 
 	// paper
 	params.papersize2 =
-		dialog_->paperModule->papersizeCO->currentItem();
+		dialog_->pageLayoutModule->papersizeCO->currentItem();
 
-	params.paperwidth = widgetsToLength(dialog_->paperModule->paperwidthLE,
-		dialog_->paperModule->paperwidthUnitCO);
+	params.paperwidth = widgetsToLength(dialog_->pageLayoutModule->paperwidthLE,
+		dialog_->pageLayoutModule->paperwidthUnitCO);
 
-	params.paperheight = widgetsToLength(dialog_->paperModule->paperheightLE,
-		dialog_->paperModule->paperheightUnitCO);
+	params.paperheight = widgetsToLength(dialog_->pageLayoutModule->paperheightLE,
+		dialog_->pageLayoutModule->paperheightUnitCO);
 
-	if (dialog_->paperModule->twoColumnCB->isChecked())
-		params.columns = 2;
-	else
-		params.columns = 1;
-
-	if (dialog_->paperModule->facingPagesCB->isChecked())
+	if (dialog_->pageLayoutModule->facingPagesCB->isChecked())
 		params.sides = LyXTextClass::TwoSides;
 	else
 		params.sides = LyXTextClass::OneSide;
 
-	if (dialog_->paperModule->landscapeRB->isChecked())
+	if (dialog_->pageLayoutModule->landscapeRB->isChecked())
 		params.orientation = BufferParams::ORIENTATION_LANDSCAPE;
 	else
 		params.orientation = BufferParams::ORIENTATION_PORTRAIT;
@@ -479,18 +479,18 @@ void QDocument::update_contents()
 
 	// packages
 	QString text = toqstr(params.graphicsDriver);
-	int nitem = dialog_->packagesModule->psdriverCO->count();
+	int nitem = dialog_->latexModule->psdriverCO->count();
 	for (int n = 0; n < nitem ; ++n) {
 		QString enc = tex_graphics[n];
 		if (enc == text) {
-			dialog_->packagesModule->psdriverCO->setCurrentItem(n);
+			dialog_->latexModule->psdriverCO->setCurrentItem(n);
 		}
 	}
 
 
-	dialog_->packagesModule->amsCB->setChecked(
+	dialog_->mathsModule->amsCB->setChecked(
 		params.use_amsmath == BufferParams::AMS_ON);
-	dialog_->packagesModule->amsautoCB->setChecked(
+	dialog_->mathsModule->amsautoCB->setChecked(
 		params.use_amsmath == BufferParams::AMS_AUTO);
 
 	switch (params.spacing.getSpace()) {
@@ -502,10 +502,10 @@ void QDocument::update_contents()
 
 
 	// layout
-	for (int n = 0; n<dialog_->layoutModule->classCO->count(); ++n) {
-		if (dialog_->layoutModule->classCO->text(n) ==
+	for (int n = 0; n<dialog_->latexModule->classCO->count(); ++n) {
+		if (dialog_->latexModule->classCO->text(n) ==
 		    toqstr(controller().textClass().description())) {
-			dialog_->layoutModule->classCO->setCurrentItem(n);
+			dialog_->latexModule->classCO->setCurrentItem(n);
 			break;
 		}
 	}
@@ -518,23 +518,23 @@ void QDocument::update_contents()
 
 	for (int n = 0; tex_fonts[n][0]; ++n) {
 		if (tex_fonts[n] == params.fonts) {
-			dialog_->layoutModule->fontsCO->setCurrentItem(n);
+			dialog_->textLayoutModule->fontsCO->setCurrentItem(n);
 			break;
 		}
 	}
 
-	dialog_->layoutModule->lspacingCO->setCurrentItem(nitem);
+	dialog_->textLayoutModule->lspacingCO->setCurrentItem(nitem);
 	if (params.spacing.getSpace() == Spacing::Other) {
-		dialog_->layoutModule->lspacingLE->setText(
+		dialog_->textLayoutModule->lspacingLE->setText(
 			toqstr(tostr(params.spacing.getValue())));
 		dialog_->setLSpacing(3);
 	}
 
 	if (params.paragraph_separation
 	    == BufferParams::PARSEP_INDENT) {
-		dialog_->layoutModule->indentRB->setChecked(true);
+		dialog_->textLayoutModule->indentRB->setChecked(true);
 	} else {
-		dialog_->layoutModule->skipRB->setChecked(true);
+		dialog_->textLayoutModule->skipRB->setChecked(true);
 	}
 
 	int skip = 0;
@@ -552,47 +552,50 @@ void QDocument::update_contents()
 	{
 		skip = 3;
 		string const length = params.getDefSkip().asLyXCommand();
-		dialog_->layoutModule->skipLengthCO->setCurrentItem(LyXLength(length).unit());
-		dialog_->layoutModule->skipLE->setText(toqstr(tostr(LyXLength(length).value())));
+		dialog_->textLayoutModule->skipLengthCO->setCurrentItem(LyXLength(length).unit());
+		dialog_->textLayoutModule->skipLE->setText(toqstr(tostr(LyXLength(length).value())));
 		break;
 	}
 	default:
 		skip = 0;
 		break;
 	}
-	dialog_->layoutModule->skipCO->setCurrentItem(skip);
+	dialog_->textLayoutModule->skipCO->setCurrentItem(skip);
 	dialog_->setSkip(skip);
 
+	dialog_->textLayoutModule->twoColumnCB->setChecked(
+		params.columns == 2);
+
 	if (!params.options.empty()) {
-		dialog_->layoutModule->optionsLE->setText(
+		dialog_->latexModule->optionsLE->setText(
 			toqstr(params.options));
 	} else {
-		dialog_->layoutModule->optionsLE->setText("");
+		dialog_->latexModule->optionsLE->setText("");
 	}
+
+	dialog_->floatModule->set(params.float_placement);
 
 	// paper
 	int const psize = params.papersize2;
-	dialog_->paperModule->papersizeCO->setCurrentItem(psize);
+	dialog_->pageLayoutModule->papersizeCO->setCurrentItem(psize);
 	dialog_->setMargins(psize);
 	dialog_->setCustomPapersize(psize);
 
 	bool const landscape =
 		params.orientation == BufferParams::ORIENTATION_LANDSCAPE;
-	dialog_->paperModule->landscapeRB->setChecked(landscape);
-	dialog_->paperModule->portraitRB->setChecked(!landscape);
+	dialog_->pageLayoutModule->landscapeRB->setChecked(landscape);
+	dialog_->pageLayoutModule->portraitRB->setChecked(!landscape);
 
-	dialog_->paperModule->facingPagesCB->setChecked(
+	dialog_->pageLayoutModule->facingPagesCB->setChecked(
 		params.sides == LyXTextClass::TwoSides);
 
-	dialog_->paperModule->twoColumnCB->setChecked(
-		params.columns == 2);
 
 
-	lengthToWidgets(dialog_->paperModule->paperwidthLE,
-		dialog_->paperModule->paperwidthUnitCO, params.paperwidth, defaultUnit);
+	lengthToWidgets(dialog_->pageLayoutModule->paperwidthLE,
+		dialog_->pageLayoutModule->paperwidthUnitCO, params.paperwidth, defaultUnit);
 
-	lengthToWidgets(dialog_->paperModule->paperheightLE,
-		dialog_->paperModule->paperheightUnitCO, params.paperheight, defaultUnit);
+	lengthToWidgets(dialog_->pageLayoutModule->paperheightLE,
+		dialog_->pageLayoutModule->paperheightUnitCO, params.paperheight, defaultUnit);
 
 	// margins
 
@@ -642,7 +645,7 @@ void QDocument::useClassDefaults()
 {
 	BufferParams & params = controller().params();
 
-	params.textclass = dialog_->layoutModule->classCO->currentItem();
+	params.textclass = dialog_->latexModule->classCO->currentItem();
 	params.useClassDefaults();
 	update_contents();
 }

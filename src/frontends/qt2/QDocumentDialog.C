@@ -17,9 +17,10 @@
 
 #include "QDocumentDialog.h"
 
-#include "ui/ClassModuleBase.h"
-#include "ui/PackagesModuleBase.h"
-#include "ui/PaperModuleBase.h"
+#include "ui/TextLayoutModuleBase.h"
+#include "ui/MathsModuleBase.h"
+#include "ui/LaTeXModuleBase.h"
+#include "ui/PageLayoutModuleBase.h"
 #include "ui/LanguageModuleBase.h"
 #include "ui/BulletsModuleBase.h"
 #include "BulletsModule.h"
@@ -28,6 +29,7 @@
 #include "ui/MarginsModuleBase.h"
 #include "ui/PreambleModuleBase.h"
 #include "panelstack.h"
+#include "floatplacement.h"
 
 #include "Spacing.h"
 #include "support/lstrings.h"
@@ -60,26 +62,30 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
 
-	layoutModule = new ClassModuleBase(this);
-	paperModule = new PaperModuleBase(this);
+	textLayoutModule = new TextLayoutModuleBase(this);
+	pageLayoutModule = new PageLayoutModuleBase(this);
 	marginsModule = new MarginsModuleBase(this);
 	langModule = new LanguageModuleBase(this);
 	bulletsModule = new BulletsModule(this);
 	numberingModule = new NumberingModuleBase(this);
 	biblioModule = new BiblioModuleBase(this);
-	packagesModule = new PackagesModuleBase(this);
+	mathsModule = new MathsModuleBase(this);
+	floatModule = new FloatPlacement(this, "floatplacement");
+	latexModule = new LaTeXModuleBase(this);
 	preambleModule = new PreambleModuleBase(this);
 
-	docPS->addPanel(layoutModule, _("Layout"));
-	docPS->addPanel(paperModule, _("Paper"));
-	docPS->addPanel(marginsModule, _("Margins"));
+	docPS->addPanel(latexModule, _("Document Class"));
+	docPS->addPanel(textLayoutModule, _("Text Layout"));
+	docPS->addPanel(pageLayoutModule, _("Page Layout"));
+	docPS->addPanel(marginsModule, _("Page Margins"));
 	docPS->addPanel(langModule, _("Language"));
 	docPS->addPanel(numberingModule, _("Table of Contents"));
 	docPS->addPanel(biblioModule, _("Bibliography"));
-	docPS->addPanel(packagesModule, _("LaTeX packages"));
+	docPS->addPanel(mathsModule, _("Math options"));
+	docPS->addPanel(floatModule, _("Float Placement"));
 	docPS->addPanel(bulletsModule, _("Bullets"));
 	docPS->addPanel(preambleModule, _("LaTeX Preamble"));
-	docPS->setCurrentPanel(_("Layout"));
+	docPS->setCurrentPanel(_("Document Class"));
 
 	// preamble
 	connect(preambleModule->preambleMLE, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
@@ -96,28 +102,30 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	// numbering
 	connect(numberingModule->sectionnrDepthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
 	connect(numberingModule->tocDepthSB, SIGNAL(valueChanged(int)), this, SLOT(change_adaptor()));
-	// packages
-	connect(packagesModule->amsCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(packagesModule->psdriverCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	// layout
-	connect(layoutModule->classCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(layoutModule->optionsLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(layoutModule->pagestyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(layoutModule->fontsCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(layoutModule->fontsizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(layoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(layoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(setLSpacing(int)));
-	connect(layoutModule->lspacingLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(layoutModule->floatPlacementLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(layoutModule->skipRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(layoutModule->indentRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(layoutModule->skipCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(layoutModule->skipLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(layoutModule->skipLengthCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-
-	connect(layoutModule->classCO, SIGNAL(activated(int)), this, SLOT(classChanged()));
-	connect(layoutModule->skipCO, SIGNAL(activated(int)), this, SLOT(setSkip(int)));
-	connect(layoutModule->skipRB, SIGNAL(toggled(bool)), this, SLOT(enableSkip(bool)));
+	// maths
+	connect(mathsModule->amsCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(mathsModule->amsautoCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	// float
+	connect(floatModule, SIGNAL(changed()), this, SLOT(change_adaptor()));
+	// latex class
+	connect(latexModule->classCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(latexModule->optionsLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(latexModule->psdriverCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(latexModule->classCO, SIGNAL(activated(int)), this, SLOT(classChanged()));
+	// text layout
+	connect(textLayoutModule->fontsCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->fontsizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)), this, SLOT(setLSpacing(int)));
+	connect(textLayoutModule->lspacingLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->indentRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipLengthCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(textLayoutModule->skipCO, SIGNAL(activated(int)), this, SLOT(setSkip(int)));
+	connect(textLayoutModule->skipRB, SIGNAL(toggled(bool)), this, SLOT(enableSkip(bool)));
+	connect(textLayoutModule->twoColumnCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
 
 	// margins
 	connect(marginsModule->marginCO, SIGNAL(activated(int)), this, SLOT(setCustomMargins(int)));
@@ -137,21 +145,20 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(marginsModule->footskipLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(marginsModule->footskipUnit, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 
-	// paper
-	connect(paperModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setMargins(int)));
-	connect(paperModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
-	connect(paperModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
-	connect(paperModule->portraitRB, SIGNAL(toggled(bool)), this, SLOT(portraitChanged()));
-
-	connect(paperModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(paperModule->paperheightLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(paperModule->paperwidthLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
-	connect(paperModule->paperwidthUnitCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(paperModule->paperheightUnitCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(paperModule->portraitRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(paperModule->landscapeRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(paperModule->twoColumnCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(paperModule->facingPagesCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	// page layout
+	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setMargins(int)));
+	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
+	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(setCustomPapersize(int)));
+	connect(pageLayoutModule->portraitRB, SIGNAL(toggled(bool)), this, SLOT(portraitChanged()));
+	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->paperheightLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->paperwidthLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->paperwidthUnitCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->paperheightUnitCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->portraitRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->landscapeRB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->facingPagesCB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
+	connect(pageLayoutModule->pagestyleCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 
 	// bullets
 	connect(bulletsModule->bulletsizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
@@ -197,30 +204,30 @@ void QDocumentDialog::closeEvent(QCloseEvent * e)
 
 void QDocumentDialog::setLSpacing(int item)
 {
-	layoutModule->lspacingLE->setEnabled(item == 3);
+	textLayoutModule->lspacingLE->setEnabled(item == 3);
 }
 
 
 void QDocumentDialog::setSkip(int item)
 {
 	bool const enable = (item == 3);
-	layoutModule->skipLE->setEnabled(enable);
-	layoutModule->skipLengthCO->setEnabled(enable);
+	textLayoutModule->skipLE->setEnabled(enable);
+	textLayoutModule->skipLengthCO->setEnabled(enable);
 }
 
 
 void QDocumentDialog::enableSkip(bool skip)
 {
-	layoutModule->skipCO->setEnabled(skip);
-	layoutModule->skipLE->setEnabled(skip);
-	layoutModule->skipLengthCO->setEnabled(skip);
+	textLayoutModule->skipCO->setEnabled(skip);
+	textLayoutModule->skipLE->setEnabled(skip);
+	textLayoutModule->skipLengthCO->setEnabled(skip);
 	if (skip)
-		setSkip(layoutModule->skipCO->currentItem());
+		setSkip(textLayoutModule->skipCO->currentItem());
 }
 
 void QDocumentDialog::portraitChanged()
 {
-	setMargins(paperModule->papersizeCO->currentItem());
+	setMargins(pageLayoutModule->papersizeCO->currentItem());
 }
 
 void QDocumentDialog::setMargins(int papersize)
@@ -231,7 +238,7 @@ void QDocumentDialog::setMargins(int papersize)
 	marginsModule->marginCO->insertItem(qt_("Custom"));
 	bool a4size = (papersize == 6 || papersize == 0
 			&& lyxrc.default_papersize == BufferParams::PAPER_A4PAPER);
-	if (a4size && paperModule->portraitRB->isChecked()) {
+	if (a4size && pageLayoutModule->portraitRB->isChecked()) {
 		marginsModule->marginCO->insertItem(qt_("Small margins"));
 		marginsModule->marginCO->insertItem(qt_("Very small margins"));
 		marginsModule->marginCO->insertItem(qt_("Very wide margins"));
@@ -247,13 +254,13 @@ void QDocumentDialog::setCustomPapersize(int papersize)
 {
 	bool const custom = (papersize == 1);
 
-	paperModule->paperwidthL->setEnabled(custom);
-	paperModule->paperwidthLE->setEnabled(custom);
-	paperModule->paperwidthUnitCO->setEnabled(custom);
-	paperModule->paperheightL->setEnabled(custom);
-	paperModule->paperheightLE->setEnabled(custom);
-	paperModule->paperheightLE->setFocus();
-	paperModule->paperheightUnitCO->setEnabled(custom);
+	pageLayoutModule->paperwidthL->setEnabled(custom);
+	pageLayoutModule->paperwidthLE->setEnabled(custom);
+	pageLayoutModule->paperwidthUnitCO->setEnabled(custom);
+	pageLayoutModule->paperheightL->setEnabled(custom);
+	pageLayoutModule->paperheightLE->setEnabled(custom);
+	pageLayoutModule->paperheightLE->setFocus();
+	pageLayoutModule->paperheightUnitCO->setEnabled(custom);
 }
 
 
@@ -294,16 +301,16 @@ void QDocumentDialog::setCustomMargins(int margin)
 
 void QDocumentDialog::updateFontsize(string const & items, string const & sel)
 {
-	layoutModule->fontsizeCO->clear();
-	layoutModule->fontsizeCO->insertItem("default");
+	textLayoutModule->fontsizeCO->clear();
+	textLayoutModule->fontsizeCO->insertItem("default");
 
 	for (int n=0; !token(items,'|',n).empty(); ++n)
-		layoutModule->fontsizeCO->
+		textLayoutModule->fontsizeCO->
 			insertItem(toqstr(token(items,'|',n)));
 
-	for (int n = 0; n<layoutModule->fontsizeCO->count(); ++n) {
-		if (fromqstr(layoutModule->fontsizeCO->text(n)) == sel) {
-			layoutModule->fontsizeCO->setCurrentItem(n);
+	for (int n = 0; n<textLayoutModule->fontsizeCO->count(); ++n) {
+		if (fromqstr(textLayoutModule->fontsizeCO->text(n)) == sel) {
+			textLayoutModule->fontsizeCO->setCurrentItem(n);
 			break;
 		}
 	}
@@ -312,16 +319,16 @@ void QDocumentDialog::updateFontsize(string const & items, string const & sel)
 
 void QDocumentDialog::updatePagestyle(string const & items, string const & sel)
 {
-	layoutModule->pagestyleCO->clear();
-	layoutModule->pagestyleCO->insertItem("default");
+	pageLayoutModule->pagestyleCO->clear();
+	pageLayoutModule->pagestyleCO->insertItem("default");
 
 	for (int n=0; !token(items,'|',n).empty(); ++n)
-		layoutModule->pagestyleCO->
+		pageLayoutModule->pagestyleCO->
 			insertItem(toqstr(token(items,'|',n)));
 
-	for (int n = 0; n<layoutModule->pagestyleCO->count(); ++n) {
-		if (fromqstr(layoutModule->pagestyleCO->text(n))==sel) {
-			layoutModule->pagestyleCO->setCurrentItem(n);
+	for (int n = 0; n<pageLayoutModule->pagestyleCO->count(); ++n) {
+		if (fromqstr(pageLayoutModule->pagestyleCO->text(n))==sel) {
+			pageLayoutModule->pagestyleCO->setCurrentItem(n);
 			break;
 		}
 	}
@@ -333,7 +340,7 @@ void QDocumentDialog::classChanged()
 	ControlDocument & cntrl = form_->controller();
 	BufferParams & params = cntrl.params();
 
-	lyx::textclass_type const tc = layoutModule->classCO->currentItem();
+	lyx::textclass_type const tc = latexModule->classCO->currentItem();
 
 	if (form_->controller().loadTextclass(tc)) {
 		params.textclass = tc;
@@ -349,10 +356,10 @@ void QDocumentDialog::classChanged()
 					params.pagestyle);
 		}
 	} else {
-		for (int n = 0; n<layoutModule->classCO->count(); ++n) {
-			if (layoutModule->classCO->text(n) ==
+		for (int n = 0; n<latexModule->classCO->count(); ++n) {
+			if (latexModule->classCO->text(n) ==
 			    toqstr(cntrl.textClass().description())) {
-				layoutModule->classCO->setCurrentItem(n);
+				latexModule->classCO->setCurrentItem(n);
 				break;
 			}
 		}

@@ -19,9 +19,10 @@
 #include "ui/BulletsModuleBase.h"
 #include "BulletsModule.h"
 
-#include "ui/ClassModuleBase.h"
-#include "ui/PackagesModuleBase.h"
-#include "ui/PaperModuleBase.h"
+#include "ui/TextLayoutModuleBase.h"
+#include "ui/MathsModuleBase.h"
+#include "ui/LaTeXModuleBase.h"
+#include "ui/PageLayoutModuleBase.h"
 #include "ui/LanguageModuleBase.h"
 #include "ui/BiblioModuleBase.h"
 #include "ui/NumberingModuleBase.h"
@@ -29,6 +30,7 @@
 #include "ui/PreambleModuleBase.h"
 
 class QDocument;
+class FloatPlacement;
 
 class QDocumentDialog : public QDocumentDialogBase {
 	Q_OBJECT
@@ -62,15 +64,17 @@ protected:
 	void closeEvent(QCloseEvent * e);
 
 private:
-	ClassModuleBase * layoutModule;
-	PaperModuleBase * paperModule;
+	TextLayoutModuleBase * textLayoutModule;
+	PageLayoutModuleBase * pageLayoutModule;
 	MarginsModuleBase * marginsModule;
 	LanguageModuleBase * langModule;
 	BulletsModule * bulletsModule;
 	NumberingModuleBase * numberingModule;
 	BiblioModuleBase * biblioModule;
-	PackagesModuleBase * packagesModule;
+	MathsModuleBase * mathsModule;
+	LaTeXModuleBase * latexModule;
 	PreambleModuleBase * preambleModule;
+	FloatPlacement * floatModule;
 
 	QDocument * form_;
 };

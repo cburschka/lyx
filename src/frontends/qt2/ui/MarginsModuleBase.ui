@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>341</width>
+            <width>337</width>
             <height>370</height>
         </rect>
     </property>
@@ -383,6 +383,13 @@
             <property stdset="1">
                 <name>name</name>
                 <cstring>marginCO</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>5</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
             </property>
         </widget>
     </grid>

@@ -3,12 +3,13 @@
 UIFILES = \
 	BiblioModuleBase.ui \
 	BulletsModuleBase.ui \
-	ClassModuleBase.ui \
+	TextLayoutModuleBase.ui \
 	LanguageModuleBase.ui \
+	LaTeXModuleBase.ui \
 	MarginsModuleBase.ui \
 	NumberingModuleBase.ui \
-	PackagesModuleBase.ui \
-	PaperModuleBase.ui \
+	MathsModuleBase.ui \
+	PageLayoutModuleBase.ui \
 	PreambleModuleBase.ui \
 	QAboutDialogBase.ui \
 	QAskForTextDialog.ui \
@@ -66,6 +67,7 @@ MOCFILES = \
 	BulletsModule.C BulletsModule.h \
 	emptytable.C emptytable.h \
 	FileDialog_private.C FileDialog_private.h \
+	floatplacement.C floatplacement.h \
 	iconpalette.C iconpalette.h \
 	io_callback.C io_callback.h \
 	lengthcombo.C lengthcombo.h \

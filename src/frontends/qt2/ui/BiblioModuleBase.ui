@@ -13,15 +13,15 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>180</width>
-            <height>130</height>
+            <width>450</width>
+            <height>376</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>Form1</string>
     </property>
-    <grid>
+    <vbox>
         <property stdset="1">
             <name>margin</name>
             <number>11</number>
@@ -30,83 +30,152 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="0"  column="0" >
-            <class>QGroupBox</class>
+        <widget>
+            <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
-                <cstring>GroupBox3</cstring>
+                <cstring>Layout4</cstring>
             </property>
-            <property stdset="1">
-                <name>sizePolicy</name>
-                <sizepolicy>
-                    <hsizetype>7</hsizetype>
-                    <vsizetype>5</vsizetype>
-                </sizepolicy>
-            </property>
-            <property stdset="1">
-                <name>title</name>
-                <string>Style</string>
-            </property>
-            <grid>
+            <hbox>
                 <property stdset="1">
                     <name>margin</name>
-                    <number>11</number>
+                    <number>0</number>
                 </property>
                 <property stdset="1">
                     <name>spacing</name>
                     <number>6</number>
                 </property>
-                <widget row="0"  column="0"  rowspan="1"  colspan="2" >
-                    <class>QCheckBox</class>
+                <widget>
+                    <class>QLayoutWidget</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>natbibCB</cstring>
+                        <cstring>Layout3</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Use &amp;NatBib</string>
-                    </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QCheckBox</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>natbibCB</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Use &amp;NatBib</string>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Use the LaTeX natbib package</string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLayoutWidget</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>Layout2</cstring>
+                            </property>
+                            <hbox>
+                                <property stdset="1">
+                                    <name>margin</name>
+                                    <number>0</number>
+                                </property>
+                                <property stdset="1">
+                                    <name>spacing</name>
+                                    <number>6</number>
+                                </property>
+                                <widget>
+                                    <class>QLabel</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>citationStyleL</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>enabled</name>
+                                        <bool>false</bool>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>text</name>
+                                        <string>Cite &amp;style:</string>
+                                    </property>
+                                    <property>
+                                        <name>buddy</name>
+                                        <cstring>citeStyleCO</cstring>
+                                    </property>
+                                </widget>
+                                <widget>
+                                    <class>QComboBox</class>
+                                    <property stdset="1">
+                                        <name>name</name>
+                                        <cstring>citeStyleCO</cstring>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>enabled</name>
+                                        <bool>false</bool>
+                                    </property>
+                                    <property stdset="1">
+                                        <name>sizePolicy</name>
+                                        <sizepolicy>
+                                            <hsizetype>5</hsizetype>
+                                            <vsizetype>0</vsizetype>
+                                        </sizepolicy>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                    </vbox>
                 </widget>
-                <widget row="1"  column="0" >
-                    <class>QLabel</class>
-                    <property stdset="1">
+                <spacer>
+                    <property>
                         <name>name</name>
-                        <cstring>citationStyleL</cstring>
+                        <cstring>Spacer1</cstring>
                     </property>
                     <property stdset="1">
-                        <name>enabled</name>
-                        <bool>false</bool>
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
                     </property>
                     <property stdset="1">
-                        <name>text</name>
-                        <string>Cite &amp;Style:</string>
+                        <name>sizeType</name>
+                        <enum>Minimum</enum>
                     </property>
                     <property>
-                        <name>buddy</name>
-                        <cstring>citeStyleCO</cstring>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
                     </property>
-                </widget>
-                <widget row="1"  column="1" >
-                    <class>QComboBox</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>citeStyleCO</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>enabled</name>
-                        <bool>false</bool>
-                    </property>
-                    <property stdset="1">
-                        <name>sizePolicy</name>
-                        <sizepolicy>
-                            <hsizetype>7</hsizetype>
-                            <vsizetype>0</vsizetype>
-                        </sizepolicy>
-                    </property>
-                </widget>
-            </grid>
+                </spacer>
+            </hbox>
         </widget>
-    </grid>
+        <spacer>
+            <property>
+                <name>name</name>
+                <cstring>Spacer2</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+    </vbox>
 </widget>
 <connections>
     <connection>
