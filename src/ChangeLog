@@ -1,5 +1,9 @@
 2003-04-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* messages.C: remove one more localedir class variable.
+
+2003-04-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* messages.C (getLocaleDir): singleton generation function
 	(Pimpl): use it.
 	(Messages): add a default constructor.

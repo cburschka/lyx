@@ -114,8 +114,6 @@ public:
 private:
 	///
 	string lang_;
-	///
-	string localedir_;
 };
 #endif
 
