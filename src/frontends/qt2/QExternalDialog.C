@@ -78,9 +78,7 @@ QExternalDialog::QExternalDialog(QExternal * form)
 	xrED->setValidator(new QIntValidator(xrED));
 	ytED->setValidator(new QIntValidator(ytED));
 
-	// The width is initially set to 'scale' and so should accept
-	// a pure number only.
-	widthED->setValidator(new QDoubleValidator(0, 1000, 2, widthED));
+	widthED->setValidator(unsignedLengthValidator(widthED));
 	heightED->setValidator(unsignedLengthValidator(heightED));
 }
 

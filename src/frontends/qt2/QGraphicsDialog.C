@@ -67,8 +67,7 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	rtX->setValidator(new QIntValidator(rtX));
 	rtY->setValidator(new QIntValidator(rtY));
 		
-	displayscale->setValidator(new QDoubleValidator(0, 1000, 2, 
-		displayscale));
+	displayscale->setValidator(new QIntValidator(displayscale));
 	height->setValidator(unsignedLengthValidator(height));
 	width->setValidator(unsignedLengthValidator(width));
 }

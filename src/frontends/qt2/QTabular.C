@@ -12,6 +12,7 @@
 
 #include <config.h>
 
+#include "checkedwidgets.h"
 #include "QTabular.h"
 #include "QTabularDialog.h"
 #include "Qt2BC.h"
@@ -75,6 +76,10 @@ void QTabular::build_dialog()
 	bcview().addReadOnly(dialog_->lastfooterBorderBelowCB);
 	bcview().addReadOnly(dialog_->lastfooterNoContentsCB);
 	bcview().addReadOnly(dialog_->newpageCB);
+	
+	// initialize the length validator
+	addCheckedLineEdit(bcview(), dialog_->widthED, 
+		dialog_->fixedWidthColLA);
 }
 
 

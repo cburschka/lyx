@@ -15,6 +15,7 @@
 
 #include "floatplacement.h"
 #include "lengthcombo.h"
+#include "lengthvalidator.h"
 #include "panelstack.h"
 #include "qt_helpers.h"
 
@@ -37,6 +38,7 @@
 #include <qpixmap.h>
 #include <qcolor.h>
 #include <qcolordialog.h>
+#include <qvalidator.h>
 
 using lyx::support::token;
 
@@ -44,6 +46,19 @@ using std::string;
 
 namespace lyx {
 namespace frontend {
+
+
+namespace {
+
+LengthValidator * unsignedLengthValidator(QLineEdit * ed)
+{
+	LengthValidator * v = new LengthValidator(ed);
+	v->setBottom(LyXLength());
+	return v;
+}
+
+} // namespace anon
+
 
 QDocumentDialog::QDocumentDialog(QDocument * form)
 	: QDocumentDialogBase(0, 0, false, 0), form_(form)
@@ -172,6 +187,30 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 		SLOT(branchDoubleClicked(QListViewItem *)));
 	connect(branchesModule->colorPB, SIGNAL(clicked()), this, SLOT(toggleBranchColor()));
 	branchesModule->branchesLV->setSorting(0);
+	
+	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
+		textLayoutModule->lspacingLE));
+	
+	textLayoutModule->skipLE->setValidator(unsignedLengthValidator(
+		textLayoutModule->skipLE));
+	pageLayoutModule->paperheightLE->setValidator(unsignedLengthValidator(
+		pageLayoutModule->paperheightLE));
+	pageLayoutModule->paperwidthLE->setValidator(unsignedLengthValidator(
+		pageLayoutModule->paperwidthLE));
+	marginsModule->topLE->setValidator(unsignedLengthValidator(
+		marginsModule->topLE));
+	marginsModule->bottomLE->setValidator(unsignedLengthValidator(
+		marginsModule->bottomLE));
+	marginsModule->innerLE->setValidator(unsignedLengthValidator(
+		marginsModule->innerLE));
+	marginsModule->outerLE->setValidator(unsignedLengthValidator(
+		marginsModule->outerLE));
+	marginsModule->headsepLE->setValidator(unsignedLengthValidator(
+		marginsModule->headsepLE));
+	marginsModule->headheightLE->setValidator(unsignedLengthValidator(
+		marginsModule->headheightLE));
+	marginsModule->footskipLE->setValidator(unsignedLengthValidator(
+		marginsModule->footskipLE));
 }
 
 

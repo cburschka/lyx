@@ -1,3 +1,16 @@
+2004-12-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* lengthvalidator.C: revert to correct if clause.
+	
+	* QDocument.C:
+	* QDocumentDialog.C:
+	* QTabular.C:
+	* QTabularDialog.C:
+	* QPrefs.C: implement length validators
+	
+	* QExternalDialog.C:
+	* QGraphicsDialog.C: chose correct validators
+
 2004-11-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* qt_helpers.[Ch]: new member function widgetsToLength

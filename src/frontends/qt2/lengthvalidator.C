@@ -32,7 +32,7 @@ LengthValidator::LengthValidator(QWidget * parent, const char * name)
 QValidator::State LengthValidator::validate(QString & qtext, int &) const
 {
 	string const text = fromqstr(qtext);
-	if (!text.empty() && isStrDbl(text))
+	if (text.empty() || isStrDbl(text))
 		return QValidator::Acceptable;
 
 	if (glue_length_) {

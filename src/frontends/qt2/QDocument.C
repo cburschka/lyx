@@ -10,6 +10,7 @@
 
 #include <config.h>
 
+#include "checkedwidgets.h"
 #include "QDocument.h"
 #include "QDocumentDialog.h"
 #include "Qt2BC.h"
@@ -174,6 +175,27 @@ void QDocument::build_dialog()
 	bcview().setApply(dialog_->applyPB);
 	bcview().setCancel(dialog_->closePB);
 	bcview().setRestore(dialog_->restorePB);
+	
+	// initialize the length validator
+	addCheckedLineEdit(bcview(), dialog_->textLayoutModule->skipLE);
+	addCheckedLineEdit(bcview(), dialog_->pageLayoutModule->paperheightLE, 
+		dialog_->pageLayoutModule->paperheightL);
+	addCheckedLineEdit(bcview(), dialog_->pageLayoutModule->paperwidthLE, 
+		dialog_->pageLayoutModule->paperwidthL);
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->topLE, 
+		dialog_->marginsModule->topL);
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->bottomLE, 
+		dialog_->marginsModule->bottomL);
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->innerLE, 
+		dialog_->marginsModule->innerL);
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->outerLE, 
+		dialog_->marginsModule->outerL);
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->headsepLE, 
+		dialog_->marginsModule->headsepL);
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->headheightLE, 
+		dialog_->marginsModule->headheightL);
+	addCheckedLineEdit(bcview(), dialog_->marginsModule->footskipLE, 
+		dialog_->marginsModule->footskipL);
 }
 
 
@@ -322,12 +344,10 @@ void QDocument::apply()
 		break;
 	case 3:
 	{
-		LyXLength::UNIT unit =
-			dialog_->textLayoutModule->skipLengthCO->
-			currentLengthItem();
-		double length =
-			dialog_->textLayoutModule->skipLE->text().toDouble();
-		VSpace vs = VSpace(LyXGlueLength(LyXLength(length,unit)));
+		VSpace vs = VSpace(
+			widgetsToLength(dialog_->textLayoutModule->skipLE, 
+				dialog_->textLayoutModule->skipLengthCO)
+			);
 		params.setDefSkip(vs);
 		break;
 	}
@@ -573,8 +593,9 @@ void QDocument::update_contents()
 	{
 		skip = 3;
 		string const length = params.getDefSkip().asLyXCommand();
-		dialog_->textLayoutModule->skipLengthCO->setCurrentItem(LyXLength(length).unit());
-		dialog_->textLayoutModule->skipLE->setText(toqstr(tostr(LyXLength(length).value())));
+		lengthToWidgets(dialog_->textLayoutModule->skipLE, 
+			dialog_->textLayoutModule->skipLengthCO, 
+			length, defaultUnit);
 		break;
 	}
 	default:

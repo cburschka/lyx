@@ -49,6 +49,7 @@
 #include <qpushbutton.h>
 #include <qspinbox.h>
 #include <qstring.h>
+#include <qvalidator.h>
 
 using std::string;
 
@@ -276,6 +277,28 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	connect(screenfontsModule->screenHugerED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(identityModule->nameED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(identityModule->emailED, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	
+	// initialize the validators
+	screenfontsModule->screenTinyED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenTinyED));
+	screenfontsModule->screenSmallestED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenSmallestED));
+	screenfontsModule->screenSmallerED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenSmallerED));
+	screenfontsModule->screenSmallED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenSmallED));
+	screenfontsModule->screenNormalED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenNormalED));
+	screenfontsModule->screenLargeED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenLargeED));
+	screenfontsModule->screenLargerED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenLargerED));
+	screenfontsModule->screenLargestED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenLargestED));
+	screenfontsModule->screenHugeED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenHugeED));
+	screenfontsModule->screenHugerED->setValidator(new QDoubleValidator(
+		screenfontsModule->screenHugerED));
 }
 
 

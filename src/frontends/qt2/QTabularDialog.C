@@ -14,6 +14,7 @@
 
 #include "QTabularDialog.h"
 #include "QTabular.h"
+#include "lengthvalidator.h"
 #include "qt_helpers.h"
 
 #include "controllers/ControlTabular.h"
@@ -28,12 +29,26 @@ namespace lyx {
 namespace frontend {
 
 
+namespace {
+
+LengthValidator * unsignedLengthValidator(QLineEdit * ed)
+{
+	LengthValidator * v = new LengthValidator(ed);
+	v->setBottom(LyXLength());
+	return v;
+}
+
+} // namespace anon
+
+
 QTabularDialog::QTabularDialog(QTabular * form)
 	: QTabularDialogBase(0, 0, false, 0),
 	form_(form)
 {
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
+		
+	widthED->setValidator(unsignedLengthValidator(widthED));
 }
 
 
