@@ -154,7 +154,16 @@ void InsetText::init(InsetText const * ins)
 	if (ins) {
 		textwidth_ = ins->textwidth_;
 		text_.bv_owner = ins->text_.bv_owner;
-		setParagraphData(ins->paragraphs);
+
+		paragraphs = ins->paragraphs;
+
+		ParagraphList::iterator pit = paragraphs.begin();
+		ParagraphList::iterator end = paragraphs.end();
+		for (; pit != end; ++pit)
+			pit->setInsetOwner(this);
+
+		reinitLyXText();
+
 		autoBreakRows = ins->autoBreakRows;
 		drawFrame_ = ins->drawFrame_;
 		frame_color = ins->frame_color;
@@ -1588,32 +1597,11 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 }
 
 
-void InsetText::setParagraphData(ParagraphList const & plist)
-{
-	// we have to unlock any locked inset otherwise we're in troubles
-	the_locking_inset = 0;
-
-	// But it it makes no difference that is a lot better.
-#warning FIXME.
-	// See if this can be simplified when std::list is in effect.
-	paragraphs.clear();
-
-	ParagraphList::const_iterator it = plist.begin();
-	ParagraphList::const_iterator end = plist.end();
-	for (; it != end; ++it) {
-		paragraphs.push_back(*it);
-		paragraphs.back().setInsetOwner(this);
-	}
-
-	reinitLyXText();
-}
-
-
 void InsetText::markNew(bool track_changes)
 {
 	ParagraphList::iterator pit = paragraphs.begin();
-	ParagraphList::iterator pend = paragraphs.end();
-	for (; pit != pend; ++pit) {
+	ParagraphList::iterator end = paragraphs.end();
+	for (; pit != end; ++pit) {
 		if (track_changes) {
 			pit->trackChanges();
 		} else {
@@ -1774,7 +1762,9 @@ void InsetText::resizeLyXText(BufferView * bv, bool /*force*/) const
 		inset_x = cix() - top_x + drawTextXOffset;
 		inset_y = ciy() + drawTextYOffset;
 	}
+#endif
 
+#if 1
 	text_.top_y(bv->screen().topCursorVisible(&text_));
 	if (!owner()) {
 		const_cast<InsetText*>(this)->updateLocal(bv, false);

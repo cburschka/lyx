@@ -123,8 +123,6 @@ public:
 	///
 	void writeParagraphData(Buffer const *, std::ostream &) const;
 	///
-	void setParagraphData(ParagraphList const &);
-	///
 	void setText(string const &, LyXFont const &);
 	///
 	void setAutoBreakRows(bool);
