@@ -22,7 +22,7 @@
 #endif
 
 #include "math_inset.h"
-#include "math_pos.h"
+#include "math_iterator.h"
 #include "LString.h"
 
 class InsetFormulaBase;
@@ -36,9 +36,9 @@ class Selection;
 [Have a look at math_inset.h first]
 
 The MathCursor is different from the kind of cursor used in the Outer
-World. It contains a stack of MathCursorPositions, each of which is made
+World. It contains a stack of MathCursorPos, each of which is made
 up of a inset pointer, an index and a position offset, marking a path from
-this formula's mathHullInset to the current position.
+this formula's MathHullInset to the current position.
 
 */
 
@@ -55,8 +55,6 @@ public:
 	typedef MathInset::row_type        row_type;
 	/// type for column numbers
 	typedef MathInset::col_type        col_type;
-	/// how to store a cursor
-	typedef std::vector<MathCursorPos> cursor_type;
 
 	///
 	explicit MathCursor(InsetFormulaBase *, bool left);
@@ -246,7 +244,7 @@ public:
 	/// dump selection information for debugging
 	void dump(char const * str) const;
 	/// moves on
-	void setSelection(cursor_type const & where, size_type n);
+	void setSelection(MathIterator const & where, size_type n);
 	///
 	void insert(char c);
 	///
@@ -303,9 +301,9 @@ private:
 	idx_type & idx();
 
 	/// path of positions the cursor had to go if it were leaving each inset
-	cursor_type Cursor_;
+	MathIterator Cursor_;
 	/// path of positions the anchor had to go if it were leaving each inset
-	mutable cursor_type Anchor_;
+	mutable MathIterator Anchor_;
 	/// pointer to enclsing LyX inset
 	InsetFormulaBase * formula_;
 	// Selection stuff

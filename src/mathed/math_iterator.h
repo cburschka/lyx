@@ -2,18 +2,33 @@
 #ifndef MATH_ITERATOR_H
 #define MATH_ITERATOR_H
 
-#include "math_cursor.h"
+#include "math_pos.h"
+#include <vector>
 
-// this helper struct is used for traversing math insets
+// this is used for traversing math insets
 
-class MathIterator {
+class MathIterator : private std::vector<MathCursorPos> {
 public:
-	/// default constructor, used for end of range
-	//MathIterator();
+	// re-use inherited stuff
+	typedef std::vector<MathCursorPos> base_type;
+	using base_type::clear;
+	using base_type::size;
+	using base_type::push_back;
+	using base_type::pop_back;
+	using base_type::back;
+	using base_type::begin;
+	using base_type::end;
+	using base_type::operator[];
+	using base_type::size_type;
+	using base_type::difference_type;
+	using base_type::const_iterator;
+	friend bool operator!=(MathIterator const &, MathIterator const &);
+	friend bool operator==(MathIterator const &, MathIterator const &);
+
+	/// default constructor
+	MathIterator();
 	/// start with given inset
 	explicit MathIterator(MathInset * p);
-	/// start with given position
-	//explicit MathIterator(MathCursor::cursor_type const & cursor);
 	///
 	MathCursorPos const & operator*() const;
 	///
@@ -21,13 +36,7 @@ public:
 	/// move on one step
 	void operator++();
 	/// move on several steps
-	void jump(MathInset::difference_type);
-	/// read access to top most item (inline after running gprof!)
-	MathCursorPos const & position() const { return cursor_.back(); }
-	/// write access to top most item
-	MathCursorPos & position() { return cursor_.back(); }
-	/// read access to full path
-	MathCursor::cursor_type const & cursor() const;
+	void jump(difference_type);
 	/// read access to top most inset
 	MathInset const * par() const;
 	/// read access to top most inset
@@ -42,9 +51,6 @@ private:
 	void push(MathInset *);
 	/// own level up
 	void pop();
-
-	/// current position
-	MathCursor::cursor_type cursor_;
 };
 
 ///

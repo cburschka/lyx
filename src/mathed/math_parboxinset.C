@@ -189,7 +189,7 @@ void MathParboxInset::metrics(MathMetricsInfo & mi) const
 	dim_.w = lyx_width_;
 	dim_.a = rows_.front().dim.a;
 	dim_.d = rows_.back().dim.d + yo;
-	metricsMarkers();
+	metricsMarkers2();
 	xcell(0).setDim(dim_);
 #endif
 }
@@ -203,7 +203,7 @@ void MathParboxInset::draw(MathPainterInfo & pi, int x, int y) const
 #else
 	xcell(0).drawExternal(pi, x + 1, y, rows_);
 #endif
-	drawMarkers(pi, x, y);
+	drawMarkers2(pi, x, y);
 }
 
 

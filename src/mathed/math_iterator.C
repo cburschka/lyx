@@ -1,12 +1,13 @@
 #include <config.h>
 
 #include "math_iterator.h"
+#include "math_inset.h"
 #include "debug.h"
 #include "support/LAssert.h"
 
 
-//MathIterator::MathIterator()
-//{}
+MathIterator::MathIterator()
+{}
 
 
 MathIterator::MathIterator(MathInset * p)
@@ -15,32 +16,21 @@ MathIterator::MathIterator(MathInset * p)
 }
 
 
-//MathIterator::MathIterator(MathCursor::cursor_type const & c)
-//	: cursor_(c)
-//{}
-
-
-MathCursor::cursor_type const & MathIterator::cursor() const
-{
-	return cursor_;
-}
-
-
 MathInset const * MathIterator::par() const
 {
-	return position().par_;
+	return back().par_;
 }
 
 
 MathInset * MathIterator::par()
 {
-	return position().par_;
+	return back().par_;
 }
 
 
 MathArray const & MathIterator::cell() const
 {
-	MathCursorPos const & top = position();
+	MathCursorPos const & top = back();
 	return top.par_->cell(top.idx_);
 }
 
@@ -49,33 +39,33 @@ MathArray const & MathIterator::cell() const
 void MathIterator::push(MathInset * p)
 {
 	//lyxerr << "push: " << p << endl;
-	cursor_.push_back(MathCursorPos(p));
+	push_back(MathCursorPos(p));
 }
 
 
 void MathIterator::pop()
 {
 	//lyxerr << "pop: " << endl;
-	lyx::Assert(cursor_.size());
-	cursor_.pop_back();
+	lyx::Assert(size());
+	pop_back();
 }
 
 
 MathCursorPos const & MathIterator::operator*() const
 {
-	return position();
+	return back();
 }
 
 
 MathCursorPos const & MathIterator::operator->() const
 {
-	return position();
+	return back();
 }
 
 
 void MathIterator::goEnd()
 {
-	MathCursorPos & top = position();
+	MathCursorPos & top = back();
 	top.idx_ = top.par_->nargs() - 1;
 	top.pos_ = cell().size();
 }
@@ -83,7 +73,7 @@ void MathIterator::goEnd()
 
 void MathIterator::operator++()
 {
-	MathCursorPos   & top = position();
+	MathCursorPos   & top = back();
 	MathArray const & ar  = top.par_->cell(top.idx_);
 
 	// move into the current inset if possible
@@ -96,7 +86,7 @@ void MathIterator::operator++()
 		return;
 	}
 
-	// otherwise move on one cell position if possible
+	// otherwise move on one cell back if possible
 	if (top.pos_ < ar.size()) {
 		// pos() == size() is valid!
 		++top.pos_;
@@ -113,37 +103,31 @@ void MathIterator::operator++()
 		}
 	}
 
-	// otherwise leave array, move on one position
+	// otherwise leave array, move on one back
 	// this might yield pos() == size(), but that's a ok.
 	pop();
 	// it certainly invalidates top
-	++position().pos_;
+	++back().pos_;
 }
 
 
-void MathIterator::jump(MathInset::difference_type i)
+void MathIterator::jump(difference_type i)
 {
-	position().pos_ += i;
-	//lyx::Assert(position().pos_ >= 0);
-	lyx::Assert(position().pos_ <= cell().size());
+	back().pos_ += i;
+	//lyx::Assert(back().pos_ >= 0);
+	lyx::Assert(back().pos_ <= cell().size());
 }
 
 
 bool operator==(MathIterator const & it, MathIterator const & jt)
 {
-	//lyxerr << "==: " << it.cursor().size() << " " << jt.cursor().size() << endl;
-	if (it.cursor().size() != jt.cursor().size())
-		return false;
-	return it.cursor() == jt.cursor();
+	return MathIterator::base_type(it) == MathIterator::base_type(jt);
 }
 
 
 bool operator!=(MathIterator const & it, MathIterator const & jt)
 {
-	//lyxerr << "!=: " << it.cursor().size() << " " << jt.cursor().size() << endl;
-	if (it.cursor().size() != jt.cursor().size())
-		return true;
-	return it.cursor() != jt.cursor();
+	return MathIterator::base_type(it) != MathIterator::base_type(jt);
 }
 
 

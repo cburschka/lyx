@@ -882,7 +882,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 	//lyxerr << "searching '" << str << "' in " << this << ar << endl;
 
 	for (MathIterator it = current; it != iend(par().nucleus()); ++it) {
-		if (it.cell().matchpart(ar, it.position().pos_)) {
+		if (it.cell().matchpart(ar, it.back().pos_)) {
 			bv->unlockInset(bv->theLockingInset());
 			if (!bv->lockInset(this)) {
 				lyxerr << "Cannot lock inset" << endl;
@@ -891,7 +891,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 			delete mathcursor;
 			mathcursor = new MathCursor(this, true);
 			metrics(bv);
-			mathcursor->setSelection(it.cursor(), ar.size());
+			mathcursor->setSelection(it, ar.size());
 			current = it;
 			it.jump(ar.size());
 			updateLocal(bv, false);

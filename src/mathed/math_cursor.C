@@ -173,7 +173,7 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 	if (t->asScriptInset())
 		return false;
 
-	if (!sel) {
+	if (sel) {
 		// we can't move into anything new during selection
 		if (depth() == Anchor_.size())
 			return false;
@@ -258,15 +258,14 @@ void MathCursor::last()
 }
 
 
-bool positionable(MathCursor::cursor_type const & cursor,
-		  MathCursor::cursor_type const & anchor)
+bool positionable(MathIterator const & cursor, MathIterator const & anchor)
 {
 	// avoid deeper nested insets when selecting
 	if (cursor.size() > anchor.size())
 		return false;
 
 	// anchor might be deeper, should have same path then
-	for (MathCursor::cursor_type::size_type i = 0; i < cursor.size(); ++i)
+	for (MathIterator::size_type i = 0; i < cursor.size(); ++i)
 		if (cursor[i].par_ != anchor[i].par_)
 			return false;
 
@@ -522,7 +521,7 @@ bool MathCursor::up(bool sel)
 	dump("up 1");
 	macroModeClose();
 	selHandle(sel);
-	cursor_type save = Cursor_;
+	MathIterator save = Cursor_;
 	if (goUpDown(true))
 		return true;
 	Cursor_ = save;
@@ -536,7 +535,7 @@ bool MathCursor::down(bool sel)
 	dump("down 1");
 	macroModeClose();
 	selHandle(sel);
-	cursor_type save = Cursor_;
+	MathIterator save = Cursor_;
 	if (goUpDown(false))
 		return true;
 	Cursor_ = save;
@@ -845,8 +844,8 @@ void MathCursor::pullArg()
 
 void MathCursor::touch()
 {
-	cursor_type::const_iterator it = Cursor_.begin();
-	cursor_type::const_iterator et = Cursor_.end();
+	MathIterator::const_iterator it = Cursor_.begin();
+	MathIterator::const_iterator et = Cursor_.end();
 	for ( ; it != et; ++it)
 		it->xcell().touch();
 }
@@ -1191,23 +1190,23 @@ bool MathCursor::goUpDown(bool up)
 bool MathCursor::bruteFind
 	(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 {
-	cursor_type best_cursor;
+	MathIterator best_cursor;
 	double best_dist = 1e10;
 
 	MathIterator it = ibegin(formula()->par().nucleus());
 	MathIterator et = iend(formula()->par().nucleus());
 	while (1) {
 		// avoid invalid nesting when selecting
-		if (!selection_ || positionable(it.cursor(), Anchor_)) {
+		if (!selection_ || positionable(it, Anchor_)) {
 			int xo, yo;
-			it.position().getPos(xo, yo);
+			it.back().getPos(xo, yo);
 			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
 				double d = (x - xo) * (x - xo) + (y - yo) * (y - yo);
 				// '<=' in order to take the last possible position
 				// this is important for clicking behind \sum in e.g. '\sum_i a'
 				if (d <= best_dist) {
 					best_dist   = d;
-					best_cursor = it.cursor();
+					best_cursor = it;
 				}
 			}
 		}
@@ -1516,7 +1515,7 @@ bool MathCursor::interpret(char c)
 }
 
 
-void MathCursor::setSelection(cursor_type const & where, size_type n)
+void MathCursor::setSelection(MathIterator const & where, size_type n)
 {
 	selection_ = true;
 	Anchor_ = where;
