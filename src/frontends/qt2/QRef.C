@@ -73,6 +73,7 @@ void QRef::update_contents()
 
 	dialog_->sortCB->setChecked(sort_);
 
+	int const orig = dialog_->bufferCO->currentItem();
 	// insert buffer list
 	dialog_->bufferCO->clear();
 	vector<string> const buffers = controller().getBufferList();
@@ -80,7 +81,10 @@ void QRef::update_contents()
 		it != buffers.end(); ++it) {
 		dialog_->bufferCO->insertItem(toqstr(*it));
 	}
-	dialog_->bufferCO->setCurrentItem(controller().getBufferNum());
+	if (orig != -1 && orig < dialog_->bufferCO->count())
+		dialog_->bufferCO->setCurrentItem(orig);
+	else
+		dialog_->bufferCO->setCurrentItem(controller().getBufferNum());
 
 	updateRefs();
 }
@@ -183,5 +187,6 @@ void QRef::updateRefs()
 	refs_ = controller().getLabelList(name);
 	dialog_->sortCB->setEnabled(!refs_.empty());
 	dialog_->refsLB->setEnabled(!refs_.empty());
+	dialog_->gotoPB->setEnabled(!refs_.empty());
 	redoRefs();
 }

@@ -4,6 +4,8 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Kalle Dalheimer
+ * \author John Levon
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,6 +14,7 @@
 
 #include "qt_helpers.h"
 #include "controllers/ControlCitation.h"
+#include "ButtonController.h"
 
 #include <qcheckbox.h>
 #include <qlineedit.h>
@@ -68,6 +71,21 @@ void QCitationDialog::setButtons()
 	deletePB->setEnabled(sel_nr >= 0);
 	upPB->setEnabled(sel_nr > 0);
 	downPB->setEnabled(sel_nr >= 0 && sel_nr < int(selectedLB->count() - 1));
+}
+
+
+void QCitationDialog::openFind()
+{
+	if (form_->readOnly())
+		return;
+	
+	if (selectedLB->count() == 0 && add_->availableLB->count() != 0){
+		// open the find dialog
+		add();
+		// and let the user press ok after a selection
+		if (selectedLB->count() != 0)
+			form_->bc().valid();
+	}
 }
 
 

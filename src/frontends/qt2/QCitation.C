@@ -62,6 +62,9 @@ void QCitation::apply()
 
 	string const after = fromqstr(dialog_->textAfterED->text());
 	controller().params().setOptions(after);
+	
+	style_ = choice;
+	open_find_ = false;
 }
 
 
@@ -69,6 +72,7 @@ void QCitation::hide()
 {
 	citekeys.clear();
 	bibkeys.clear();
+	open_find_ = true;
 
 	QDialogView::hide();
 }
@@ -94,6 +98,8 @@ void QCitation::build_dialog()
 	// add when enabled !
 	//bcview().addReadOnly(dialog_->textBeforeED);
 	bcview().addReadOnly(dialog_->textAfterED);
+	
+	open_find_ = true;
 }
 
 
@@ -147,8 +153,12 @@ void QCitation::updateStyle()
 
 	vector<biblio::CiteStyle>::const_iterator cit =
 		find(styles.begin(), styles.end(), cs.style);
-
-	dialog_->citationStyleCO->setCurrentItem(0);
+	
+	// restore the latest natbib style 
+	if (style_ >= 0 && style_ < dialog_->citationStyleCO->count())
+		dialog_->citationStyleCO->setCurrentItem(style_);
+	else
+		dialog_->citationStyleCO->setCurrentItem(0);
 	dialog_->fulllistCB->setChecked(false);
 	dialog_->forceuppercaseCB->setChecked(false);
 
@@ -179,6 +189,11 @@ void QCitation::update_contents()
 
 	fillStyles();
 	updateStyle();
+	
+	// open the find dialog if nothing has been selected (yet)
+	// the bool prevents that this is also done after "apply"
+	if (open_find_)
+		dialog_->openFind();
 }
 
 

@@ -47,11 +47,15 @@ private:
 	void updateStyle();
 
 	void updateBrowser(QListBox *, std::vector<std::string> const &) const;
+	/// check if apply has been pressed
+	bool open_find_;
 
 	/// selected keys
 	std::vector<std::string> citekeys;
 	/// available bib keys
 	std::vector<std::string> bibkeys;
+	/// selected natbib style
+	int style_;
 };
 
 #endif // QCITATION_H

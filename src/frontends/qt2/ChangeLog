@@ -1,3 +1,14 @@
+2004-02-18  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* QCitation.[Ch]:
+	* QCitationDialog.[Ch]: open the find dialog if an inset is 
+	new (new method openFind()). Fixes bug 1146.
+	
+	* QCitation.C: restore the chosen natbib style.
+	
+	* QRef.C: Disable goto button if there is no ref (bug 1037)
+	Restore setting of the buffer combo (bug 1511)
+
 2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* floatplacement.C (set): "c" -> 'c' in calls to contains

@@ -28,6 +28,8 @@ public:
 	~QCitationDialog();
 
 	void setButtons();
+	/// open the find dialog if nothing selected
+	void openFind();
 
 	QCitationFindDialogBase * add_;
 
