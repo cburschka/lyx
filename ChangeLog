@@ -1,3 +1,9 @@
+2003-02-17  John Levon  <levon@movementarian.org>
+
+	* config/configure.ac:
+	* config/configure.in: remove the -isystem fiddling. Let's see
+	  if Solaris people complain...
+
 2003-02-13  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* most source files all over: remove the use of #pragma
