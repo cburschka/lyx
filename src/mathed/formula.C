@@ -44,7 +44,6 @@
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "textpainter.h"
-#include "preview.h"
 
 #include <fstream>
 #include <boost/bind.hpp>
@@ -468,7 +467,7 @@ void InsetFormula::updatePreview()
 	// is this old data?
 	if (it != theCache.end()) {
 		// we have already a loader, connect to it anyway
-		lyxerr << "### updatePreview(), old loader: " << loader_ << "\n";
+		//lyxerr << "### updatePreview(), old loader: " << loader_ << "\n";
 		loader_ = it->second.get();
 		loader_->statusChanged.connect
 			(boost::bind(&InsetFormula::statusChanged, this));
@@ -482,7 +481,7 @@ void InsetFormula::updatePreview()
 	string file = os.str();
 
 	// the real work starts
-	lyxerr << "### updatePreview(), new file " << file << "\n";
+	//lyxerr << "### updatePreview(), new file " << file << "\n";
 	std::ofstream of(file.c_str());
 	of << "\\batchmode"
 		 << "\\documentclass{article}"
@@ -496,8 +495,8 @@ void InsetFormula::updatePreview()
 
 	// now we are done, start actual loading we will get called back via
 	// InsetFormula::statusChanged() if this is finished
-	lyxerr << "### updatePreview(), new loader: " << loader_ << "\n";
 	theCache[data].reset(new grfx::Loader(file));
+	//lyxerr << "### updatePreview(), new loader: " << loader_ << "\n";
 	loader_ = theCache.find(data)->second.get();
 	loader_->startLoading();
 	loader_->statusChanged.connect(boost::bind(&InsetFormula::statusChanged, this));
