@@ -11,6 +11,7 @@
 
 using std::max;
 
+
 MathDelimInset::MathDelimInset(string const & l, string const & r)
 	: MathNestInset(1), left_(l), right_(r)
 {}
@@ -51,7 +52,9 @@ void MathDelimInset::write(MathWriteInfo & os) const
 
 void MathDelimInset::writeNormal(std::ostream & os) const
 {
-	os << "[delim " << latexName(left_) << " " << latexName(right_) << "]";
+	os << "[delim " << latexName(left_) << ' ' << latexName(right_) << ' ';
+	cell(0).writeNormal(os);
+	os << "]";
 }
 
 

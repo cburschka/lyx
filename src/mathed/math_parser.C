@@ -15,6 +15,34 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
+/* 
+
+If someone desperately needs partial "structures" (such as a few cells of
+an array inset or similar) (s)he could uses the following hack as starting
+point to write some macros:
+
+  \newif\ifcomment
+  \commentfalse
+  \ifcomment
+	  \def\makeamptab{\catcode`\&=4\relax}
+	  \def\makeampletter{\catcode`\&=11\relax}
+    \def\b{\makeampletter\expandafter\makeamptab\bi}
+    \long\def\bi#1\e{}
+  \else
+    \def\b{}\def\e{}
+  \fi
+
+  ...
+
+  \[\begin{array}{ccc}
+   1 & 2\b & 3^2\\
+   4 & 5\e & 6\\
+   7 & 8 & 9
+  \end{array}\]
+
+*/
+
+
 #include <config.h>
 
 #include <cctype>
@@ -28,6 +56,7 @@
 #include "array.h"
 #include "math_inset.h"
 #include "math_arrayinset.h"
+#include "math_braceinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
 #include "math_factory.h"
@@ -642,9 +671,6 @@ bool Parser::parse_normal(MathAtom & matrix)
 
 void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 {
-	stack<MathTextCodes> fontcodes;
-	fontcodes.push(LM_TC_MIN);
-
 	bool panic  = false;
 	int  limits = 0;
 
@@ -695,11 +721,10 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			break;
 
 		else if (t.cat() == catLetter)
-			add(array, t.character(), fontcodes.top());
+			add(array, t.character(), code);
 
-		else if (t.cat() == catSpace &&
-				(fontcodes.top() == LM_TC_TEXTRM || code == LM_TC_TEXTRM))
-			add(array, ' ', fontcodes.top());
+		else if (t.cat() == catSpace && code == LM_TC_TEXTRM)
+			add(array, t.character(), code);
 
 		else if (t.cat() == catParameter) {
 			Token const & n	= getToken();
@@ -707,15 +732,15 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		else if (t.cat() == catBegin) {
-			add(array, '{', LM_TC_TEX);
-			fontcodes.push(LM_TC_MIN);
+			array.push_back(MathAtom(new MathBraceInset));
+			parse_into(array.back()->cell(0), FLAG_BRACE_LAST, LM_TC_MIN);
 		}
 
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
 				return;
+			lyxerr << "found '}' unexpectedly, array: '" << array << "'\n";
 			add(array, '}', LM_TC_TEX);
-			fontcodes.pop();
 		}
 		
 		else if (t.cat() == catAlign) {
@@ -742,7 +767,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 			return;
 
 		else if (t.cat() == catOther)
-			add(array, t.character(), fontcodes.top());
+			add(array, t.character(), code);
 		
 		//
 		// codesequences
@@ -930,8 +955,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 				}
 
 				else if (l->token == LM_TK_OLDFONT) {
-					fontcodes.pop();
-					fontcodes.push(static_cast<MathTextCodes>(l->id));
+					code = static_cast<MathTextCodes>(l->id);
 				}
 
 				else {

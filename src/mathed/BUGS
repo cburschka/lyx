@@ -12,6 +12,8 @@ Items marked with
   !!   - mark "not a bug, a feature" replies, usually with a request for
          further discussion
 
+	pp   - partially fixed
+
 Unmarked items are known unfixed but probably unverified bugs.
 
 ----------------------------------------------------------------------
@@ -60,7 +62,7 @@ Misc:
 // - When you press the mouse just to the left of the middle point of
 //   some char, the cursor will be positioned to the right of the char.
 
-- It is possible to put two or more consecutive spaces in math text mode
+pp - It is possible to put two or more consecutive spaces in math text mode
 
 // - Text in superscript is not smaller than normal text.
 
@@ -113,9 +115,9 @@ Eran Tromer:
 //   enter the cell its cell and press 
 //   M-m ( M-f 1 <right> <right> <right>       (zoom=100, screenDPI=100)
 
-- When selecting multiple cells in a array using the keyboard, <left>
-  etc. should can move whole cell at a time -- no need to navigate 
-  within cells.
+// - When selecting multiple cells in a array using the keyboard, <left>
+//   etc. should can move whole cell at a time -- no need to navigate 
+//   within cells.
 
 - When selecting, maybe give a visual indication of the "original" 
   anchor, when it differs from the "actual" one.

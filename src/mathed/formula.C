@@ -291,14 +291,6 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			break;
 		}
 
-		case LFUN_MATH_EXTERN:
-			bv->lockedInsetStoreUndo(Undo::EDIT);
-			handleExtern(arg);
-			// re-compute inset dimension
-			metrics(bv);
-			updateLocal(bv, true);
-			break;
-
 		case LFUN_MATH_MUTATE:
 		{
 			bv->lockedInsetStoreUndo(Undo::EDIT);
@@ -308,6 +300,16 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			mat()->mutate(arg);
 			mathcursor->setPos(x, y);
 			mathcursor->normalize();
+			updateLocal(bv, true);
+			break;
+		}
+
+		case LFUN_MATH_EXTERN:
+		{
+			bv->lockedInsetStoreUndo(Undo::EDIT);
+			handleExtern(arg);
+			// re-compute inset dimension
+			metrics(bv);
 			updateLocal(bv, true);
 			break;
 		}

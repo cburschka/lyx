@@ -24,7 +24,7 @@ void MathSymbolInset::write(MathWriteInfo & os) const
 
 void MathSymbolInset::writeNormal(ostream & os) const
 {
-	os << "[" << sym_->name << "] ";
+	os << "[symbol " << sym_->name << "]";
 }
 
 

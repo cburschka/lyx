@@ -33,6 +33,7 @@
 #include "math_cursor.h"
 #include "math_factory.h"
 #include "math_arrayinset.h"
+#include "math_braceinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
 #include "math_matrixinset.h"
@@ -786,7 +787,6 @@ void MathCursor::drawSelection(Painter & pain) const
 	MathCursorPos i1;
 	MathCursorPos i2;
 	getSelection(i1, i2);
-
 	//lyxerr << "selection from: " << i1 << " to " << i2 << "\n";
 
 	if (i1.idx_ == i2.idx_) {
@@ -808,6 +808,18 @@ void MathCursor::drawSelection(Painter & pain) const
 			pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 		}
 	}
+
+#if 0
+	// draw anchor if different from selection boundary
+	MathCursorPos anc = Anchor_.back();
+	if (anc != i1 && anc != i2) {
+		MathXArray & c = anc.xcell();
+		int x  = c.xo() + c.pos2x(anc.pos_);
+		int y1 = c.yo() - c.ascent();
+		int y2 = c.yo() + c.descent();
+		pain.line(x, y1, x, y2, LColor::mathline);
+	}
+#endif
 }
 
 
@@ -1385,8 +1397,19 @@ void MathCursor::interpret(char c)
 		return;
 	}
 
+/*
 	if (strchr("{}", c)) {
 		insert(c, LM_TC_TEX);
+		return;
+	}
+*/
+
+	if (c == '{') {
+		niceInsert(MathAtom(new MathBraceInset));
+		return;
+	}
+
+	if (c == '}') {
 		return;
 	}
 

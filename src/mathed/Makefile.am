@@ -24,6 +24,8 @@ libmathed_la_SOURCES = \
 	math_atom.h \
 	math_binominset.C \
 	math_binominset.h \
+	math_braceinset.C \
+	math_braceinset.h \
 	math_boxinset.C \
 	math_boxinset.h \
 	math_charinset.C \
